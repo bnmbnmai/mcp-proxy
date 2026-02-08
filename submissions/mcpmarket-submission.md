@@ -9,9 +9,9 @@
 **Description:**  
 Give your AI agent access to the web through residential proxies. Fetch any URL through 190+ country exit nodes with rotating or sticky sessions. Pay-per-use via x402 micropayments (USDC on Base).
 
-**npm Package:** @apollo-intel/mcp-proxy
+**npm Package:** @apollo_ai/mcp-proxy
 
-**GitHub:** https://github.com/apollo-intel/mcp-proxy
+**GitHub:** https://github.com/bnmbnmai/mcp-proxy
 
 **Homepage:** https://apolloai.team
 

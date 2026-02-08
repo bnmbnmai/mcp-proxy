@@ -18,9 +18,9 @@ npm whoami
 npm publish --access public
 ```
 
-**Note:** The @apollo-intel org may need to be created first:
+**Note:** The @apollo_ai org may need to be created first:
 - Go to https://www.npmjs.com/org/create
-- Create org: apollo-intel
+- Create org: apollo_ai
 - Then publish
 
 ## Step 2: GitHub Repository
@@ -28,13 +28,13 @@ npm publish --access public
 ```bash
 # Create repo on GitHub: https://github.com/new
 # Name: mcp-proxy
-# Org: apollo-intel (or personal account)
+# Org: apollo_ai (or personal account)
 
 cd projects/apollo-mcp-server
 git init
 git add .
 git commit -m "Initial release: Apollo Proxy MCP Server v1.0.0"
-git remote add origin https://github.com/apollo-intel/mcp-proxy.git
+git remote add origin https://github.com/bnmbnmai/mcp-proxy.git
 git push -u origin main
 ```
 
@@ -65,18 +65,18 @@ After npm publish, verify installation works:
 
 ```bash
 # Test global install
-npm install -g @apollo-intel/mcp-proxy
+npm install -g @apollo_ai/mcp-proxy
 apollo-proxy-mcp --help
 
 # Test npx
-npx @apollo-intel/mcp-proxy
+npx @apollo_ai/mcp-proxy
 ```
 
 ## Key Info for Forms
 
 | Field | Value |
 |-------|-------|
-| Package Name | @apollo-intel/mcp-proxy |
+| Package Name | @apollo_ai/mcp-proxy |
 | Homepage | https://apolloai.team |
 | Author | Apollo Intelligence Network |
 | Email | apollo_08@agentmail.to |

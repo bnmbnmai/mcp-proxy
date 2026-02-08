@@ -4,7 +4,7 @@
 
 A Model Context Protocol (MCP) server that provides web fetching capabilities through Apollo's global residential proxy network. Pay per request via x402 micropayments (USDC on Base).
 
-[![npm version](https://img.shields.io/npm/v/@apollo-intel/mcp-proxy)](https://www.npmjs.com/package/@apollo-intel/mcp-proxy)
+[![npm version](https://img.shields.io/npm/v/@apollo_ai/mcp-proxy)](https://www.npmjs.com/package/@apollo_ai/mcp-proxy)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Features
@@ -21,7 +21,7 @@ A Model Context Protocol (MCP) server that provides web fetching capabilities th
 ### Installation
 
 ```bash
-npm install -g @apollo-intel/mcp-proxy
+npm install -g @apollo_ai/mcp-proxy
 ```
 
 ### Claude Desktop Configuration
@@ -33,7 +33,7 @@ Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_
   "mcpServers": {
     "apollo-proxy": {
       "command": "npx",
-      "args": ["@apollo-intel/mcp-proxy"]
+      "args": ["@apollo_ai/mcp-proxy"]
     }
   }
 }
@@ -48,7 +48,7 @@ Add to your Cursor MCP settings:
   "mcpServers": {
     "apollo-proxy": {
       "command": "npx",
-      "args": ["@apollo-intel/mcp-proxy"]
+      "args": ["@apollo_ai/mcp-proxy"]
     }
   }
 }

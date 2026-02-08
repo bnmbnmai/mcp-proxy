@@ -14,11 +14,11 @@ Apollo Proxy MCP Server
 MCP server providing residential proxy access for AI agents. Fetch any URL through 190+ country exit nodes with rotating or sticky sessions. Pay-per-use via x402 micropayments (USDC on Base).
 
 ### npm Package
-`@apollo-intel/mcp-proxy`
+`@apollo_ai/mcp-proxy`
 
 ### Installation
 ```bash
-npm install -g @apollo-intel/mcp-proxy
+npm install -g @apollo_ai/mcp-proxy
 ```
 
 ### Claude Desktop Config
@@ -27,7 +27,7 @@ npm install -g @apollo-intel/mcp-proxy
   "mcpServers": {
     "apollo-proxy": {
       "command": "npx",
-      "args": ["@apollo-intel/mcp-proxy"]
+      "args": ["@apollo_ai/mcp-proxy"]
     }
   }
 }
@@ -46,4 +46,4 @@ $0.005/request (x402, USDC on Base)
 
 ### Links
 - Homepage: https://apolloai.team
-- GitHub: https://github.com/apollo-intel/mcp-proxy
+- GitHub: https://github.com/bnmbnmai/mcp-proxy
