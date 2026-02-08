@@ -1,0 +1,79 @@
+{
+  "name": "@apollo_ai/mcp-proxy",
+  "version": "1.0.0",
+  "description": "MCP server for Apollo's x402 proxy relay - fetch any URL through 190+ country residential proxies via micropayments",
+  "type": "module",
+  "bin": {
+    "apollo-proxy-mcp": "build/index.js"
+  },
+  "main": "./build/index.js",
+  "types": "./build/index.d.ts",
+  "scripts": {
+    "build": "tsc && chmod 755 build/index.js",
+    "prepare": "npm run build",
+    "start": "node build/index.js"
+  },
+  "files": [
+    "build",
+    "README.md"
+  ],
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "proxy",
+    "web-scraping",
+    "residential-proxy",
+    "x402",
+    "micropayments",
+    "ai-agent",
+    "claude",
+    "anthropic",
+    "usdc",
+    "base",
+    "crypto",
+    "apollo"
+  ],
+  "author": "Apollo Intelligence Network <apollo_08@agentmail.to>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apollo-ai-net/mcp-proxy.git"
+  },
+  "homepage": "https://apolloai.team",
+  "bugs": {
+    "url": "https://github.com/apollo-ai-net/mcp-proxy/issues"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.12.0",
+    "zod": "^3.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "mcp": {
+    "tools": [
+      {
+        "name": "proxy_fetch",
+        "description": "Fetch any URL through Apollo's residential proxy network (190+ countries)"
+      },
+      {
+        "name": "proxy_status",
+        "description": "Check Apollo proxy service availability and pricing"
+      },
+      {
+        "name": "list_countries",
+        "description": "List available proxy exit countries"
+      }
+    ],
+    "pricing": {
+      "model": "pay-per-use",
+      "currency": "USDC",
+      "network": "Base",
+      "per_request": "$0.005"
+    }
+  }
+}
