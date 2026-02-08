@@ -37,11 +37,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/apollo-ai-net/mcp-proxy.git"
+    "url": "git+https://github.com/bnmbnmai/mcp-proxy.git"
   },
   "homepage": "https://apolloai.team",
   "bugs": {
-    "url": "https://github.com/apollo-ai-net/mcp-proxy/issues"
+    "url": "https://github.com/bnmbnmai/mcp-proxy/issues"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.12.0",
