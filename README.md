@@ -1,157 +1,131 @@
-# Apollo Proxy MCP Server 🌐
+# Apollo Intelligence MCP Server 🏛️
 
-**Give your AI agent access to the web through residential proxies.**
+**19 tools for AI agents: intelligence feeds, real-time search, proxy infrastructure — all via x402 micropayments.**
 
-A Model Context Protocol (MCP) server that provides web fetching capabilities through Apollo's global residential proxy network. Pay per request via x402 micropayments (USDC on Base).
+Give your AI agent access to curated market intelligence, web scraping through 190+ country residential proxies, real-time X/Twitter search, GitHub trending data, and more. Pay per request with USDC on Base — no API keys, no subscriptions.
 
 [![npm version](https://img.shields.io/npm/v/@apollo_ai/mcp-proxy)](https://www.npmjs.com/package/@apollo_ai/mcp-proxy)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-## Features
-
-- 🌍 **190+ Countries** — Exit from any country in the world
-- 🏠 **Residential IPs** — Real residential IPs, not datacenter proxies
-- 🔄 **Rotating or Sticky** — New IP per request or maintain session
-- 💰 **Pay Per Use** — $0.005/request via x402 (USDC on Base)
-- ⚡ **Fast Integration** — Works with Claude Desktop, Cursor, and any MCP client
-- 🤖 **Agent-Native** — Built for AI agents that need web access
+[![x402scan](https://img.shields.io/badge/x402scan-listed-blue)](https://www.x402scan.com/server/3e61cb80-3b13-48cc-be79-db9dd85f57a4)
 
 ## Quick Start
 
-### Installation
+### Claude Desktop
+
+Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "apollo": {
+      "command": "npx",
+      "args": ["@apollo_ai/mcp-proxy"]
+    }
+  }
+}
+```
+
+### Cursor / Windsurf / Any MCP Client
+
+```json
+{
+  "mcpServers": {
+    "apollo": {
+      "command": "npx",
+      "args": ["@apollo_ai/mcp-proxy"]
+    }
+  }
+}
+```
+
+### Install Globally
 
 ```bash
 npm install -g @apollo_ai/mcp-proxy
 ```
 
-### Claude Desktop Configuration
+## All 19 Tools
 
-Add to your Claude Desktop config (`~/Library/Application Support/Claude/claude_desktop_config.json`):
+### 🔍 Search & Scraping
 
-```json
-{
-  "mcpServers": {
-    "apollo-proxy": {
-      "command": "npx",
-      "args": ["@apollo_ai/mcp-proxy"]
-    }
-  }
-}
+| Tool | Description | Cost |
+|------|-------------|------|
+| `web_scrape` | Scrape any URL — proxy rotation, content extraction, markdown output | $0.02 |
+| `web_search` | Web search with site filters (Reddit, HN, GitHub, Twitter) | $0.01 |
+| `x_search` | Real-time X/Twitter search — posts, engagement, AI analysis (via Grok) | $0.75 |
+| `proxy_fetch` | Raw residential proxy relay — 190+ countries, rotating or sticky | $0.01 |
+| `proxy_status` | Check service availability and pricing | Free |
+| `list_countries` | List 190+ available proxy exit countries | Free |
+
+### 📊 Intelligence Feeds
+
+| Tool | Description | Cost |
+|------|-------------|------|
+| `agent_intel` | Agent economy opportunities — grants, bounties, hackathons, market gaps | $0.05 |
+| `sentiment` | Real-time social sentiment (crypto, DeFi, AI, tech) via Grok | $0.02 |
+| `pain_points` | NLP-clustered pain points from Quora, G2, Reddit, Upwork → SaaS ideas | $0.08 |
+| `agentic_trends` | Agentic economy signals — funding, adoption, multi-agent trends | $0.05 |
+| `keyword_opportunities` | Keyword flywheel — seed → variants → opportunity mapping | $0.05 |
+| `micro_saas` | Validated micro-SaaS ideas with market sizing and competition analysis | $0.10 |
+| `web3_hackathons` | Live hackathon tracker — ETHGlobal, DoraHacks, Devpost, Devfolio | $0.05 |
+| `github_trending` | GitHub repos ranked by star velocity, AI-categorized | $0.05 |
+| `producthunt` | Daily Product Hunt launches with AI categorization | $0.05 |
+| `weekly_digest` | Consolidated weekly intelligence report with cross-feed synthesis | $0.25 |
+
+### 📦 Bundles (Save 33-50%)
+
+| Tool | Includes | Cost |
+|------|----------|------|
+| `opportunity_bundle` | Keywords + pain points + micro-SaaS ideas | $0.15 |
+| `agentic_insights_bundle` | Trends + pain points + agent intel | $0.12 |
+| `builder_intel_bundle` | GitHub trending + Product Hunt + agent intel | $0.10 |
+
+## Usage Examples
+
+### Find market opportunities
+```
+Search for pain points in "billing automation" and suggest micro-SaaS ideas
 ```
 
-### Cursor Configuration
-
-Add to your Cursor MCP settings:
-
-```json
-{
-  "mcpServers": {
-    "apollo-proxy": {
-      "command": "npx",
-      "args": ["@apollo_ai/mcp-proxy"]
-    }
-  }
-}
+### Research competitors
+```
+Scrape https://competitor.com/pricing through a US proxy and extract the content
 ```
 
-## Tools
-
-### `proxy_fetch`
-
-Fetch any URL through residential proxies.
-
-**Parameters:**
-- `target_url` (required) — URL to fetch
-- `country` — ISO country code (default: "US")
-- `method` — HTTP method: GET, POST, HEAD (default: "GET")
-- `session_type` — "rotating" or "sticky" (default: "rotating")
-
-**Example:**
+### Track trending repos
 ```
-fetch https://example.com through a German proxy
+Show me GitHub trending repos in the AI agents category
 ```
 
-### `proxy_status`
-
-Check service availability and pricing.
-
-**Example:**
+### Real-time social intelligence
 ```
-check if apollo proxy is available
+Search X/Twitter for discussions about "MCP protocol" in the last week
 ```
 
-### `list_countries`
-
-List available proxy exit countries by region.
-
-**Parameters:**
-- `region` — all, americas, europe, asia, africa, oceania
-
-**Example:**
+### Web search with site filters
 ```
-list asian proxy countries
+Search for "x402 micropayments" on Reddit and Hacker News
 ```
 
-## Pricing
-
-| Metric | Value |
-|--------|-------|
-| Cost per request | $0.005 USDC |
-| Max response size | 250KB |
-| Rate limit | 100 req/min |
-| Network | Base (Ethereum L2) |
-
-Payments are handled via [x402](https://x402.org) protocol. Your agent needs a USDC wallet on Base mainnet.
-
-**Payment Address:** `0xf59621FC406D266e18f314Ae18eF0a33b8401004`
-
-## Use Cases
-
-### Web Scraping
+### Get weekly intelligence
 ```
-Fetch the pricing page from competitor.com using a US proxy
+Give me the weekly intelligence digest — what opportunities should I focus on?
 ```
 
-### Geo-Restricted Content
-```
-Get the news homepage from bbc.co.uk through a UK proxy
-```
+## How Payment Works
 
-### API Access
-```
-Fetch https://api.example.com/data via Japan proxy
-```
+All paid tools use the [x402 protocol](https://x402.org) — an open standard for machine-to-machine micropayments.
 
-### Market Research
-```
-Check product availability on amazon.de using a German proxy
-```
+1. Your agent makes a request
+2. Server returns `402 Payment Required` with payment details
+3. Agent's wallet sends USDC on Base to complete the payment
+4. Server delivers the response
 
-## Supported Countries
+**No API keys. No subscriptions. No accounts.** Just a USDC wallet on Base mainnet.
 
-### Americas
-US, CA, MX, BR, AR, CL, CO, PE, VE, EC, PA, CR, GT, DO, PR
+**Payment wallet:** `0xf59621FC406D266e18f314Ae18eF0a33b8401004`
 
-### Europe  
-GB, DE, FR, NL, IT, ES, PT, PL, CZ, AT, CH, BE, SE, NO, DK, FI, IE, GR, RO, HU, BG, HR, SK, SI, UA, RU, TR
-
-### Asia
-JP, KR, SG, IN, ID, TH, VN, PH, MY, TW, HK, PK, BD, LK, NP, MM, KH, LA, MN, KZ, IL, AE, SA
-
-### Africa
-ZA, NG, EG
-
-### Oceania
-AU, NZ
-
-## API Reference
-
-This MCP server is a client to Apollo's x402 API at `https://apolloai.team`.
-
-Direct API endpoints:
-- `GET /api/proxy/request` — Proxy fetch ($0.005)
-- `GET /api/proxy/status` — Service status ($0.001)
-- `GET /.well-known/x402` — x402 discovery document
+> **Note:** x402 payment handling depends on your MCP client. Clients like [x402scan Composer](https://www.x402scan.com/composer) handle payments automatically. For Claude Desktop, you'll need an x402-compatible wallet integration.
 
 ## Environment Variables
 
@@ -159,19 +133,45 @@ Direct API endpoints:
 |----------|-------------|---------|
 | `APOLLO_API_URL` | Override API endpoint | `https://apolloai.team` |
 
+## Data Freshness
+
+All intelligence feeds are pre-computed by Apollo's multi-agent system and refreshed every 2-6 hours:
+
+- **Scrape daemon** runs autonomously — DDG, HN, Reddit, GitHub via residential proxies
+- **NLP pipeline** — keyword expansion, pain point clustering, opportunity scoring
+- **Zero LLM cost per request** — all data pre-computed from real sources
+- **X/Twitter search** — real-time via Grok (not cached)
+
+## API Reference
+
+This MCP server wraps Apollo's x402 API at `https://apolloai.team`. You can also call the API directly:
+
+```bash
+# Discovery document (lists all endpoints)
+curl https://apolloai.team/.well-known/x402
+
+# Any endpoint returns 402 with payment info
+curl https://apolloai.team/api/pain-points
+
+# Free landing page
+curl https://apolloai.team/
+```
+
+**Direct API endpoints:** [apolloai.team](https://apolloai.team) | **Marketplace listing:** [x402scan](https://www.x402scan.com/server/3e61cb80-3b13-48cc-be79-db9dd85f57a4)
+
 ## Requirements
 
 - Node.js 18+
-- MCP-compatible client (Claude Desktop, Cursor, etc.)
-- For paid endpoints: x402-compatible wallet with USDC on Base
+- MCP-compatible client (Claude Desktop, Cursor, Windsurf, etc.)
+- For paid tools: x402-compatible wallet with USDC on Base
 
 ## About Apollo
 
-Apollo is a multi-agent intelligence system that provides curated data and infrastructure services for AI agents. We believe in the agent economy — AI systems that can transact directly with each other.
+Apollo is a multi-agent intelligence system that provides curated data and infrastructure services for AI agents. We believe in the agent economy — AI systems that transact directly with each other.
 
 - **Website:** [apolloai.team](https://apolloai.team)
+- **x402scan:** [Marketplace listing](https://www.x402scan.com/server/3e61cb80-3b13-48cc-be79-db9dd85f57a4)
 - **Contact:** apollo_08@agentmail.to
-- **x402 Discovery:** [/.well-known/x402](https://apolloai.team/.well-known/x402)
 
 ## License
 
@@ -179,4 +179,4 @@ MIT
 
 ---
 
-Built with 🧠 by [Apollo Intelligence Network](https://apolloai.team)
+Built by [Apollo Intelligence Network](https://apolloai.team) 🏛️

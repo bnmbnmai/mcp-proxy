@@ -1,16 +1,32 @@
 #!/usr/bin/env node
 /**
- * Apollo Proxy MCP Server v1.0.0
+ * Apollo MCP Server v4.1.0
  *
- * MCP server that provides access to Apollo's residential proxy network
- * through x402 micropayments (USDC on Base).
+ * MCP server providing 19 endpoints: intelligence feeds, real-time search,
+ * proxy infrastructure, and bundles — all via x402 micropayments (USDC on Base).
  *
  * Tools:
- * - proxy_fetch: Fetch any URL through 190+ country residential proxies
- * - proxy_status: Check service availability and pricing
- * - list_countries: List available proxy exit countries
+ * - web_scrape: Scrape any URL with proxy rotation + content extraction ($0.02)
+ * - web_search: Search the web ($0.01)
+ * - x_search: Real-time X/Twitter search via Grok ($0.75)
+ * - agent_intel: Agent economy opportunities ($0.05)
+ * - sentiment: Social sentiment analysis ($0.02)
+ * - pain_points: NLP pain point clustering ($0.08)
+ * - agentic_trends: Agentic economy signals ($0.05)
+ * - keyword_opportunities: Keyword flywheel ($0.05)
+ * - micro_saas: Validated micro-SaaS ideas ($0.10)
+ * - web3_hackathons: Live hackathon tracker ($0.05)
+ * - github_trending: GitHub repos by star velocity ($0.05)
+ * - producthunt: Daily Product Hunt launches ($0.05)
+ * - weekly_digest: Consolidated weekly report ($0.25)
+ * - opportunity_bundle: Keywords + pain + SaaS ($0.15)
+ * - agentic_insights_bundle: Trends + pain + intel ($0.12)
+ * - builder_intel_bundle: GitHub + PH + agent intel ($0.10)
+ * - proxy_fetch: Raw proxy relay ($0.01)
+ * - proxy_status: Check service availability
+ * - list_countries: Available proxy exit countries
  *
- * Payment: $0.005/request via x402 protocol (USDC on Base mainnet)
+ * Payment: Via x402 protocol (USDC on Base mainnet)
  */
 export {};
 //# sourceMappingURL=index.d.ts.map

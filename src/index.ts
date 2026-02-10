@@ -1,16 +1,32 @@
 #!/usr/bin/env node
 /**
- * Apollo Proxy MCP Server v1.0.0
- * 
- * MCP server that provides access to Apollo's residential proxy network
- * through x402 micropayments (USDC on Base).
- * 
+ * Apollo MCP Server v4.1.0
+ *
+ * MCP server providing 19 endpoints: intelligence feeds, real-time search,
+ * proxy infrastructure, and bundles — all via x402 micropayments (USDC on Base).
+ *
  * Tools:
- * - proxy_fetch: Fetch any URL through 190+ country residential proxies
- * - proxy_status: Check service availability and pricing
- * - list_countries: List available proxy exit countries
- * 
- * Payment: $0.005/request via x402 protocol (USDC on Base mainnet)
+ * - web_scrape: Scrape any URL with proxy rotation + content extraction ($0.02)
+ * - web_search: Search the web ($0.01)
+ * - x_search: Real-time X/Twitter search via Grok ($0.75)
+ * - agent_intel: Agent economy opportunities ($0.05)
+ * - sentiment: Social sentiment analysis ($0.02)
+ * - pain_points: NLP pain point clustering ($0.08)
+ * - agentic_trends: Agentic economy signals ($0.05)
+ * - keyword_opportunities: Keyword flywheel ($0.05)
+ * - micro_saas: Validated micro-SaaS ideas ($0.10)
+ * - web3_hackathons: Live hackathon tracker ($0.05)
+ * - github_trending: GitHub repos by star velocity ($0.05)
+ * - producthunt: Daily Product Hunt launches ($0.05)
+ * - weekly_digest: Consolidated weekly report ($0.25)
+ * - opportunity_bundle: Keywords + pain + SaaS ($0.15)
+ * - agentic_insights_bundle: Trends + pain + intel ($0.12)
+ * - builder_intel_bundle: GitHub + PH + agent intel ($0.10)
+ * - proxy_fetch: Raw proxy relay ($0.01)
+ * - proxy_status: Check service availability
+ * - list_countries: Available proxy exit countries
+ *
+ * Payment: Via x402 protocol (USDC on Base mainnet)
  */
 
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
@@ -19,7 +35,7 @@ import { z } from "zod";
 
 // Apollo API configuration
 const APOLLO_API_BASE = process.env.APOLLO_API_URL || "https://apolloai.team";
-const USER_AGENT = "apollo-mcp-proxy/1.0.0";
+const USER_AGENT = "apollo-mcp-server/4.1.0";
 
 // Available countries for proxy exit (ISO 3166-1 alpha-2)
 const PROXY_COUNTRIES = [
@@ -34,20 +50,20 @@ const PROXY_COUNTRIES = [
 
 // Create MCP server instance
 const server = new McpServer({
-  name: "apollo-proxy",
-  version: "1.0.0",
+  name: "apollo-intelligence",
+  version: "4.1.0",
 });
 
 /**
- * Make a request to Apollo's x402 API
- * Note: x402 payment headers are handled by the calling agent's wallet
+ * Make a request to Apollo's x402 API.
+ * x402 payment headers are handled by the calling agent's wallet.
  */
 async function makeApolloRequest<T>(
   endpoint: string,
   params?: Record<string, string>
 ): Promise<{ data: T | null; error: string | null; statusCode: number }> {
   const url = new URL(endpoint, APOLLO_API_BASE);
-  
+
   if (params) {
     for (const [key, value] of Object.entries(params)) {
       url.searchParams.set(key, value);
@@ -61,17 +77,16 @@ async function makeApolloRequest<T>(
 
   try {
     const response = await fetch(url.toString(), { headers });
-    
+
     if (response.status === 402) {
-      // Payment required - return x402 payment info
       const paymentHeader = response.headers.get("x-payment");
       const wwwAuth = response.headers.get("www-authenticate");
-      
       return {
         data: null,
-        error: `Payment required (x402). This endpoint costs $0.005 USDC on Base. ` +
-               `Configure your agent with an x402-compatible wallet to use this service. ` +
-               `Payment info: ${paymentHeader || wwwAuth || 'See apolloai.team'}`,
+        error:
+          `Payment required (x402). This endpoint costs $0.005 USDC on Base. ` +
+          `Configure your agent with an x402-compatible wallet to use this service. ` +
+          `Payment info: ${paymentHeader || wwwAuth || "See apolloai.team"}`,
         statusCode: 402,
       };
     }
@@ -85,7 +100,7 @@ async function makeApolloRequest<T>(
       };
     }
 
-    const data = await response.json() as T;
+    const data = (await response.json()) as T;
     return { data, error: null, statusCode: response.status };
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
@@ -98,106 +113,554 @@ async function makeApolloRequest<T>(
 }
 
 // ============================================
+// Tool: web_scrape
+// ============================================
+server.registerTool(
+  "web_scrape",
+  {
+    description:
+      "Scrape any URL and get back clean, LLM-ready text. Uses residential proxies " +
+      "with 190+ country coverage, intelligent content extraction (HTML→clean text/markdown), " +
+      "metadata parsing (title, description, OG tags), and link extraction. " +
+      "Cost: $0.02/request (USDC on Base). 250KB content cap. 60 req/min.",
+    inputSchema: {
+      url: z.string().url().describe("The URL to scrape (must be http:// or https://)"),
+      extract: z.boolean().default(true).describe("Extract clean text from HTML (default: true). Set false for raw HTML."),
+      include_links: z.boolean().default(false).describe("Include extracted links from the page"),
+      country: z.string().length(2).default("US").describe("ISO country code for proxy exit (e.g., US, GB, DE, JP)"),
+      format: z.enum(["raw", "text", "markdown"]).default("markdown").describe("Output format: raw HTML, clean text, or markdown"),
+    },
+  },
+  async ({ url, extract = true, include_links = false, country = "US", format = "markdown" }) => {
+    console.error(`[apollo-mcp] web_scrape: ${url} (extract=${extract}, country=${country})`);
+    const result = await makeApolloRequest<any>("/api/scrape", {
+      url,
+      extract: String(extract),
+      include_links: String(include_links),
+      country: country.toUpperCase(),
+      format,
+    });
+
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `Scrape failed: ${result.error}` }], isError: true };
+    }
+
+    const data = result.data!;
+    const parts = [`## Scraped: ${data.title || data.url}`, ``];
+    if (data.description) parts.push(`> ${data.description}`, ``);
+    parts.push(
+      `**URL:** ${data.url}`, `**Status:** ${data.status_code}`,
+      `**Method:** ${data.method_used} (${data.proxy_country})`,
+      `**Size:** ${data.content_length} bytes | **Time:** ${data.elapsed_ms}ms`,
+      `**Cost:** $0.02`, ``, `### Content`, ``, data.content.slice(0, 15000)
+    );
+    if (data.links && data.links.length > 0) {
+      parts.push(``, `### Links (${data.links.length})`, ``,
+        ...data.links.slice(0, 20).map((l: any) => `- [${l.text || l.url}](${l.url})`));
+    }
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// ============================================
+// Tool: web_search
+// ============================================
+server.registerTool(
+  "web_search",
+  {
+    description:
+      "Search the web and get structured results with titles, URLs, and descriptions. " +
+      "Supports site filtering (reddit, hn, github, twitter, producthunt). " +
+      "Cost: $0.01/query (USDC on Base). Max 20 results per query.",
+    inputSchema: {
+      query: z.string().min(2).describe("Search query (at least 2 characters)"),
+      count: z.number().min(1).max(20).default(10).describe("Number of results to return (max 20)"),
+      site: z.string().default("").describe("Optional site filter: reddit, hn, github, twitter, producthunt"),
+    },
+  },
+  async ({ query, count = 10, site = "" }) => {
+    console.error(`[apollo-mcp] web_search: "${query}" (count=${count}, site=${site || "all"})`);
+    const params: Record<string, string> = { q: query, count: String(count) };
+    if (site) params.site = site;
+    const result = await makeApolloRequest<any>("/api/scrape/search", params);
+
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `Search failed: ${result.error}` }], isError: true };
+    }
+
+    const data = result.data!;
+    const parts = [
+      `## Search Results: "${data.query}"`, ``,
+      `**Results:** ${data.total_results}${data.site_filter !== "all" ? ` | **Site:** ${data.site_filter}` : ""}`,
+      `**Cost:** $0.01`, ``,
+    ];
+    for (const [i, r] of data.results.entries()) {
+      parts.push(`### ${i + 1}. ${r.title}`, `${r.url}${r.age ? ` (${r.age})` : ""}`);
+      if (r.description) parts.push(`${r.description}`);
+      parts.push(``);
+    }
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// ============================================
+// Tool: x_search (X/Twitter Intelligence)
+// ============================================
+server.registerTool(
+  "x_search",
+  {
+    description:
+      "Search X/Twitter in real-time — get posts, engagement metrics, and AI analysis. " +
+      "Powered by Grok's x_search. Filter by handles and date range. " +
+      "Cost: $0.75/query (USDC on Base). Premium: real data not available via web scraping.",
+    inputSchema: {
+      query: z.string().min(2).describe("Search query (keywords, hashtags, handles)"),
+      count: z.number().min(1).max(25).default(10).describe("Max posts to return (1-25, default 10)"),
+      handles: z.string().default("").describe("Comma-separated handles to filter (max 10, optional)"),
+      exclude_handles: z.string().default("").describe("Comma-separated handles to exclude (max 10, optional)"),
+      from_date: z.string().default("").describe("Start date filter (YYYY-MM-DD, optional)"),
+      to_date: z.string().default("").describe("End date filter (YYYY-MM-DD, optional)"),
+    },
+  },
+  async ({ query, count = 10, handles = "", exclude_handles = "", from_date = "", to_date = "" }) => {
+    console.error(`[apollo-mcp] x_search: "${query}" (count=${count})`);
+    const params: Record<string, string> = { q: query, count: String(count) };
+    if (handles) params.handles = handles;
+    if (exclude_handles) params.exclude_handles = exclude_handles;
+    if (from_date) params.from_date = from_date;
+    if (to_date) params.to_date = to_date;
+
+    const result = await makeApolloRequest<any>("/api/x-search", params);
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `X search failed: ${result.error}` }], isError: true };
+    }
+
+    const data = result.data!;
+    const parts = [`## X/Twitter Search: "${data.query}"`, ``, `**Posts found:** ${data.total_posts} | **Cost:** $0.75`, ``];
+    for (const [i, p] of data.posts.entries()) {
+      const eng = p.engagement || {};
+      const engStr = [
+        eng.likes ? `${eng.likes}❤️` : null,
+        eng.reposts ? `${eng.reposts}🔁` : null,
+        eng.views ? `${eng.views}👁️` : null,
+      ].filter(Boolean).join(" ");
+      parts.push(`### ${i + 1}. ${p.author} — ${p.date}`, `${p.content}`, engStr ? `*${engStr}*` : "", p.url ? `[Link](${p.url})` : "", ``);
+    }
+    if (data.analysis) parts.push(`---`, `**Analysis:** ${data.analysis}`, ``);
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// ============================================
+// Tool: pain_points
+// ============================================
+server.registerTool(
+  "pain_points",
+  {
+    description:
+      "Get pain points for any niche — aggregated from Quora, G2, Reddit, Upwork. " +
+      "NLP-powered clustering into micro-SaaS ideas. " +
+      "Cost: $0.08/request (USDC on Base).",
+    inputSchema: {
+      keyword: z.string().min(2).describe("Niche keyword (e.g., 'billing automation', 'freelance income', 'crypto trading')"),
+    },
+  },
+  async ({ keyword }) => {
+    console.error(`[apollo-mcp] pain_points: "${keyword}"`);
+    const result = await makeApolloRequest<any>("/api/pain-points", { keyword });
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `Pain points failed: ${result.error}` }], isError: true };
+    }
+    const d = result.data!;
+    const parts = [
+      `## Pain Points: "${d.keyword}"`,
+      `**Sources:** ${d.total_sources_scraped} items from ${Object.keys(d.source_count || {}).join(", ")}`,
+      ``, `### Top Pain Points (${(d.pain_points || []).length})`,
+      ...(d.pain_points || []).slice(0, 10).map((p: any, i: number) => `${i + 1}. **[${p.type}]** ${p.pain}`),
+      ``, `### Pain Clusters`,
+      ...(d.pain_clusters || []).slice(0, 5).map((c: any) => `- **${c.cluster}** (${c.count} pains) → ${c.saas_suggestion}`),
+      ``, `### Keyword Variants`,
+      ...(d.related_searches || []).slice(0, 8).map((v: any) => `- ${v.keyword} (${v.type})`),
+    ];
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// ============================================
+// Tool: agentic_trends
+// ============================================
+server.registerTool(
+  "agentic_trends",
+  {
+    description: "Agentic economy trends — market signals, funding, multi-agent adoption. 60% reports + 40% forums. Cost: $0.05/request.",
+    inputSchema: {},
+  },
+  async () => {
+    console.error("[apollo-mcp] agentic_trends");
+    const result = await makeApolloRequest<any>("/api/agentic-trends");
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `Trends failed: ${result.error}` }], isError: true };
+    }
+    const d = result.data!;
+    const parts = [
+      `## Agentic Economy Trends`,
+      `**Sources:** ${d.total_sources} (${d.source_mix?.reports_publications || 0} reports + ${d.source_mix?.forums_communities || 0} forums)`,
+      ``, `### Signal Categories`,
+      ...(d.signal_categories || []).map((s: any) => `- **${s.type}** (${s.count} signals)`),
+      ``, `### Market Size Signals`,
+      ...(d.market_size_signals || []).map((m: any) => `- ${m.title?.slice(0, 80)} — ${m.market_size}`),
+      ``, `### Top Keywords`,
+      (d.top_keywords || []).slice(0, 8).map((k: any) => k.keyword).join(", "),
+    ];
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// ============================================
+// Tool: keyword_opportunities
+// ============================================
+server.registerTool(
+  "keyword_opportunities",
+  {
+    description:
+      "Keyword flywheel — seed a keyword, get variants, opportunities, and cross-linked feeds. " +
+      "Self-reinforcing intelligence loop. Cost: $0.05/request.",
+    inputSchema: {
+      seed: z.string().min(2).describe("Seed keyword (e.g., 'money making', 'AI automation', 'no-code tools')"),
+    },
+  },
+  async ({ seed }) => {
+    console.error(`[apollo-mcp] keyword_opportunities: "${seed}"`);
+    const result = await makeApolloRequest<any>("/api/keyword-opps", { seed });
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `Keyword opps failed: ${result.error}` }], isError: true };
+    }
+    const d = result.data!;
+    const parts = [
+      `## Keyword Opportunities: "${d.seed_keyword}"`,
+      `**Variants:** ${(d.keyword_variants || []).length} | **Opportunities:** ${(d.opportunities || []).length}`,
+      ``, `### Top Variants`,
+      ...(d.keyword_variants || []).slice(0, 10).map((v: any) => `- ${v.keyword} (${v.type}, relevance: ${v.relevance})`),
+      ``, `### Opportunities Found`,
+      ...(d.opportunities || []).slice(0, 8).map((o: any, i: number) => `${i + 1}. **${o.title?.slice(0, 80)}**\n   ${o.description?.slice(0, 120)}`),
+      ``, `### Cross-Linked Feeds`,
+      ...Object.entries(d.feed_links || {}).map(([k, v]) => `- ${k}: ${v}`),
+    ];
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// ============================================
+// Tool: opportunity_bundle
+// ============================================
+server.registerTool(
+  "opportunity_bundle",
+  {
+    description: "Opportunity Pack — keywords + pain points + micro-SaaS ideas in one bundle. 35% off vs buying individually. Cost: $0.15/request.",
+    inputSchema: {
+      keyword: z.string().min(2).describe("Focus keyword for the opportunity pack"),
+    },
+  },
+  async ({ keyword }) => {
+    console.error(`[apollo-mcp] opportunity_bundle: "${keyword}"`);
+    const result = await makeApolloRequest<any>("/api/bundle/opportunity-pack", { keyword });
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `Bundle failed: ${result.error}` }], isError: true };
+    }
+    return { content: [{ type: "text" as const, text: `## Opportunity Pack: "${result.data!.keyword}"\n\n` + JSON.stringify(result.data, null, 2).slice(0, 10000) }] };
+  }
+);
+
+// ============================================
+// Tool: agent_intel
+// ============================================
+server.registerTool(
+  "agent_intel",
+  {
+    description:
+      "Agent economy opportunities — grants, bounties, hackathons, partnerships, market gaps. " +
+      "Curated and updated every 2 hours. Cost: $0.05/request.",
+    inputSchema: {},
+  },
+  async () => {
+    console.error("[apollo-mcp] agent_intel");
+    const result = await makeApolloRequest<any>("/api/agent-intel");
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `Agent intel failed: ${result.error}` }], isError: true };
+    }
+    const d = result.data!;
+    const parts = [
+      `## Agent Economy Intel`,
+      `**Total opportunities:** ${d.total_opportunities || 0}`,
+      `**Last scan:** ${d.last_scan || "unknown"}`, ``,
+      `### Top Opportunities`,
+      ...(d.top_opportunities || []).slice(0, 10).map((o: any, i: number) => `${i + 1}. **${o.name}** [${o.type}] — ${o.value || "N/A"}`),
+    ];
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// ============================================
+// Tool: sentiment
+// ============================================
+server.registerTool(
+  "sentiment",
+  {
+    description:
+      "Real-time social sentiment analysis from X/Twitter across crypto, DeFi, AI agents, and tech. " +
+      "Powered by Grok. Cost: $0.02/request.",
+    inputSchema: {
+      topic: z.string().default("").describe("Optional topic filter: crypto, ai, tech, agent"),
+    },
+  },
+  async ({ topic = "" }) => {
+    console.error(`[apollo-mcp] sentiment: topic=${topic || "all"}`);
+    const params: Record<string, string> = {};
+    if (topic) params.topic = topic;
+    const result = await makeApolloRequest<any>("/api/sentiment", params);
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `Sentiment failed: ${result.error}` }], isError: true };
+    }
+    const d = result.data!;
+    const parts = [`## Market Sentiment`, `**Topics analyzed:** ${d.topics_analyzed || 0}`, ``];
+    for (const [key, val] of Object.entries(d.topics || {})) {
+      const t = val as any;
+      parts.push(`### ${key}`, `Sentiment: ${t.sentiment || "N/A"}`, `Confidence: ${t.confidence || "N/A"}`, ``);
+    }
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// ============================================
+// Tool: micro_saas
+// ============================================
+server.registerTool(
+  "micro_saas",
+  {
+    description: "Validated micro-SaaS opportunities with pain points, market signals, and competition analysis. Cost: $0.10/request.",
+    inputSchema: {},
+  },
+  async () => {
+    console.error("[apollo-mcp] micro_saas");
+    const result = await makeApolloRequest<any>("/api/micro-saas");
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `Micro-SaaS failed: ${result.error}` }], isError: true };
+    }
+    const d = result.data!;
+    const ideas = d.ideas || d.micro_saas_ideas || [];
+    const parts = [
+      `## Micro-SaaS Ideas`, `**Total ideas:** ${ideas.length}`, ``,
+      ...ideas.slice(0, 10).map((idea: any, i: number) =>
+        `${i + 1}. **${idea.name || idea.idea}**\n   Pain: ${idea.pain || "N/A"}\n   Market: ${idea.market_size || "N/A"}\n   Competition: ${idea.competition || "N/A"}`
+      ),
+    ];
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// ============================================
+// Tool: web3_hackathons
+// ============================================
+server.registerTool(
+  "web3_hackathons",
+  {
+    description: "Live Web3 hackathon tracker — ETHGlobal, DoraHacks, Devpost, Devfolio. Includes prize pools, deadlines, requirements. Cost: $0.05/request.",
+    inputSchema: {},
+  },
+  async () => {
+    console.error("[apollo-mcp] web3_hackathons");
+    const result = await makeApolloRequest<any>("/api/web3-hackathons");
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `Hackathons failed: ${result.error}` }], isError: true };
+    }
+    const d = result.data!;
+    const hacks = d.hackathons || [];
+    const parts = [
+      `## Web3 Hackathons`, `**Total:** ${d.total_events || hacks.length}`, ``,
+      ...hacks.slice(0, 15).map((h: any, i: number) => {
+        const lines = [`${i + 1}. **${h.name}** (${h.platform || "unknown"})`];
+        if (h.prize_pool) lines.push(`   Prize: ${h.prize_pool}`);
+        if (h.deadline || h.end_date) lines.push(`   Deadline: ${h.deadline || h.end_date}`);
+        if (h.url) lines.push(`   ${h.url}`);
+        return lines.join("\n");
+      }),
+    ];
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// ============================================
+// Tool: github_trending
+// ============================================
+server.registerTool(
+  "github_trending",
+  {
+    description:
+      "GitHub trending repos ranked by star velocity (stars/day). AI-categorized across " +
+      "AI agents, web3, infra, devtools. Cost: $0.05/request.",
+    inputSchema: {
+      language: z.string().default("").describe("Filter by language (e.g., python, rust, typescript)"),
+      category: z.string().default("").describe("Filter by category: ai-agents, web3, infra, devtools"),
+    },
+  },
+  async ({ language = "", category = "" }) => {
+    console.error(`[apollo-mcp] github_trending: lang=${language || "all"}, cat=${category || "all"}`);
+    const params: Record<string, string> = {};
+    if (language) params.language = language;
+    if (category) params.category = category;
+    const result = await makeApolloRequest<any>("/api/github-trending", params);
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `GitHub trending failed: ${result.error}` }], isError: true };
+    }
+    const d = result.data!;
+    const repos = d.trending_repos || d.highlights || [];
+    const parts = [
+      `## GitHub Trending`, `**Total repos:** ${d.total_repos || repos.length}`, ``,
+      ...repos.slice(0, 15).map((r: any, i: number) =>
+        `${i + 1}. **${r.repo || r.name}** — ${r.stars || "?"} stars (${r.velocity || r.star_velocity || "?"})\n   ${r.language || ""} | ${(r.categories || []).join(", ")}\n   ${r.url || ""}`
+      ),
+    ];
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// ============================================
+// Tool: producthunt
+// ============================================
+server.registerTool(
+  "producthunt",
+  {
+    description:
+      "Daily Product Hunt launches with AI categorization. Track what's shipping across " +
+      "AI, devtools, web3, SaaS. Cost: $0.05/request.",
+    inputSchema: {
+      category: z.string().default("").describe("Filter by category: ai, devtools, web3, saas, design"),
+    },
+  },
+  async ({ category = "" }) => {
+    console.error(`[apollo-mcp] producthunt: category=${category || "all"}`);
+    const params: Record<string, string> = {};
+    if (category) params.category = category;
+    const result = await makeApolloRequest<any>("/api/producthunt", params);
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `Product Hunt failed: ${result.error}` }], isError: true };
+    }
+    const d = result.data!;
+    const launches = d.launches || d.highlights || [];
+    const parts = [
+      `## Product Hunt Launches`, `**Total:** ${d.total_launches || launches.length}`, ``,
+      ...launches.slice(0, 15).map((l: any, i: number) =>
+        `${i + 1}. **${l.title || l.name}** — ${(l.categories || []).join(", ")}\n   ${l.description || ""}\n   ${l.url || ""}`
+      ),
+    ];
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// ============================================
+// Tool: weekly_digest
+// ============================================
+server.registerTool(
+  "weekly_digest",
+  {
+    description:
+      "Consolidated weekly intelligence report. All feeds combined with cross-feed synthesis " +
+      "and priority ranking. 7-day lookback. Cost: $0.25/request.",
+    inputSchema: {},
+  },
+  async () => {
+    console.error("[apollo-mcp] weekly_digest");
+    const result = await makeApolloRequest<any>("/api/weekly-digest");
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `Weekly digest failed: ${result.error}` }], isError: true };
+    }
+    return { content: [{ type: "text" as const, text: `## Weekly Intelligence Digest\n\n` + JSON.stringify(result.data, null, 2).slice(0, 15000) }] };
+  }
+);
+
+// ============================================
+// Tool: agentic_insights_bundle
+// ============================================
+server.registerTool(
+  "agentic_insights_bundle",
+  {
+    description: "Agentic Insights bundle — trends + pain points + agent intel in one request. Cost: $0.12/request.",
+    inputSchema: {},
+  },
+  async () => {
+    console.error("[apollo-mcp] agentic_insights_bundle");
+    const result = await makeApolloRequest<any>("/api/bundle/agentic-insights");
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `Agentic insights bundle failed: ${result.error}` }], isError: true };
+    }
+    return { content: [{ type: "text" as const, text: `## Agentic Insights Bundle\n\n` + JSON.stringify(result.data, null, 2).slice(0, 15000) }] };
+  }
+);
+
+// ============================================
+// Tool: builder_intel_bundle
+// ============================================
+server.registerTool(
+  "builder_intel_bundle",
+  {
+    description: "Builder Intel bundle — GitHub trending + Product Hunt launches + agent intel. Cost: $0.10/request.",
+    inputSchema: {},
+  },
+  async () => {
+    console.error("[apollo-mcp] builder_intel_bundle");
+    const result = await makeApolloRequest<any>("/api/bundle/builder-intel");
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `Builder intel bundle failed: ${result.error}` }], isError: true };
+    }
+    return { content: [{ type: "text" as const, text: `## Builder Intel Bundle\n\n` + JSON.stringify(result.data, null, 2).slice(0, 15000) }] };
+  }
+);
+
+// ============================================
 // Tool: proxy_fetch
 // ============================================
 server.registerTool(
   "proxy_fetch",
   {
-    description: 
+    description:
       "Fetch any URL through Apollo's residential proxy network. " +
       "Supports 190+ countries, rotating or sticky sessions, and handles " +
-      "anti-bot protection. Cost: $0.005/request (USDC on Base). " +
+      "anti-bot protection. Cost: $0.01/request (USDC on Base). " +
       "Max response: 250KB. Rate limit: 100 req/min.",
     inputSchema: {
-      target_url: z
-        .string()
-        .url()
-        .describe("The URL to fetch through the proxy (must be http:// or https://)"),
-      country: z
-        .string()
-        .length(2)
-        .default("US")
-        .describe("ISO country code for proxy exit (e.g., US, GB, DE, JP)"),
-      method: z
-        .enum(["GET", "POST", "HEAD"])
-        .default("GET")
-        .describe("HTTP method to use"),
-      session_type: z
-        .enum(["rotating", "sticky"])
-        .default("rotating")
-        .describe("rotating = new IP per request, sticky = same IP for session"),
+      target_url: z.string().url().describe("The URL to fetch through the proxy (must be http:// or https://)"),
+      country: z.string().length(2).default("US").describe("ISO country code for proxy exit (e.g., US, GB, DE, JP)"),
+      method: z.enum(["GET", "POST", "HEAD"]).default("GET").describe("HTTP method to use"),
+      session_type: z.enum(["rotating", "sticky"]).default("rotating").describe("rotating = new IP per request, sticky = same IP for session"),
     },
   },
   async ({ target_url, country = "US", method = "GET", session_type = "rotating" }) => {
     console.error(`[apollo-mcp] proxy_fetch: ${method} ${target_url} via ${country}`);
-
-    interface ProxyResponse {
-      service: string;
-      status: string;
-      target_url: string;
-      proxy_country: string;
-      response: {
-        status_code: number;
-        content_type: string;
-        body: string | object;
-        headers: Record<string, string>;
-        bytes_returned: number;
-        truncated: boolean;
-      };
-      price_paid_usd: number;
-      generated_at: string;
-    }
-
-    const result = await makeApolloRequest<ProxyResponse>("/api/proxy/request", {
+    const result = await makeApolloRequest<any>("/api/proxy/request", {
       target_url,
       country: country.toUpperCase(),
       method,
       session_type,
     });
-
     if (result.error) {
-      return {
-        content: [
-          {
-            type: "text" as const,
-            text: `Proxy fetch failed: ${result.error}`,
-          },
-        ],
-        isError: true,
-      };
+      return { content: [{ type: "text" as const, text: `Proxy fetch failed: ${result.error}` }], isError: true };
     }
-
     const data = result.data!;
     const responseBody = typeof data.response.body === "object"
       ? JSON.stringify(data.response.body, null, 2)
       : String(data.response.body);
-
-    // Summarize the response
     const summary = [
-      `## Proxy Fetch Result`,
-      ``,
+      `## Proxy Fetch Result`, ``,
       `**Target:** ${data.target_url}`,
       `**Proxy Country:** ${data.proxy_country}`,
       `**Status:** ${data.response.status_code}`,
       `**Content-Type:** ${data.response.content_type}`,
       `**Bytes:** ${data.response.bytes_returned}${data.response.truncated ? " (truncated)" : ""}`,
-      `**Cost:** $${data.price_paid_usd}`,
-      ``,
-      `### Response Body`,
-      ``,
-      "```",
-      responseBody.slice(0, 10000), // Limit display size
-      "```",
+      `**Cost:** $${data.price_paid_usd}`, ``,
+      `### Response Body`, ``, "```",
+      responseBody.slice(0, 10000), "```",
     ].join("\n");
-
-    return {
-      content: [
-        {
-          type: "text" as const,
-          text: summary,
-        },
-      ],
-    };
+    return { content: [{ type: "text" as const, text: summary }] };
   }
 );
 
@@ -207,74 +670,33 @@ server.registerTool(
 server.registerTool(
   "proxy_status",
   {
-    description: 
-      "Check Apollo proxy service availability, pricing, and limits. " +
-      "Use this to verify the service is online before making requests.",
+    description: "Check Apollo proxy service availability, pricing, and limits. Use this to verify the service is online before making requests.",
     inputSchema: {},
   },
   async () => {
     console.error("[apollo-mcp] proxy_status: checking service availability");
-
-    interface StatusResponse {
-      service: string;
-      status: string;
-      pricing: {
-        per_request_usd: number;
-        max_response_bytes: number;
-        rate_limit: string;
-      };
-      description: string;
-      supported_types: string[];
-      supported_countries: string;
-      session_types: string[];
-      supported_methods: string[];
-    }
-
-    const result = await makeApolloRequest<StatusResponse>("/api/proxy/status");
-
+    const result = await makeApolloRequest<any>("/api/proxy/status");
     if (result.error) {
-      return {
-        content: [
-          {
-            type: "text" as const,
-            text: `Status check failed: ${result.error}`,
-          },
-        ],
-        isError: true,
-      };
+      return { content: [{ type: "text" as const, text: `Status check failed: ${result.error}` }], isError: true };
     }
-
     const data = result.data!;
     const status = [
-      `## Apollo Proxy Service Status`,
-      ``,
-      `**Service:** ${data.service}`,
-      `**Status:** ${data.status}`,
-      ``,
+      `## Apollo Proxy Service Status`, ``,
+      `**Service:** ${data.service}`, `**Status:** ${data.status}`, ``,
       `### Pricing`,
       `- Per request: $${data.pricing.per_request_usd} USDC (Base mainnet)`,
       `- Max response size: ${(data.pricing.max_response_bytes / 1024).toFixed(0)}KB`,
-      `- Rate limit: ${data.pricing.rate_limit}`,
-      ``,
+      `- Rate limit: ${data.pricing.rate_limit}`, ``,
       `### Capabilities`,
       `- Proxy types: ${data.supported_types.join(", ")}`,
       `- Countries: ${data.supported_countries}`,
       `- Session types: ${data.session_types.join(", ")}`,
-      `- HTTP methods: ${data.supported_methods.join(", ")}`,
-      ``,
+      `- HTTP methods: ${data.supported_methods.join(", ")}`, ``,
       `### Payment`,
       `Payments handled via x402 protocol. Configure your agent with a USDC wallet on Base mainnet.`,
       `Wallet: 0xf59621FC406D266e18f314Ae18eF0a33b8401004`,
     ].join("\n");
-
-    return {
-      content: [
-        {
-          type: "text" as const,
-          text: status,
-        },
-      ],
-    };
+    return { content: [{ type: "text" as const, text: status }] };
   }
 );
 
@@ -284,20 +706,15 @@ server.registerTool(
 server.registerTool(
   "list_countries",
   {
-    description: 
+    description:
       "List available proxy exit countries. Apollo supports 190+ countries " +
       "for residential proxy exits. Returns ISO 3166-1 alpha-2 country codes.",
     inputSchema: {
-      region: z
-        .enum(["all", "americas", "europe", "asia", "africa", "oceania"])
-        .default("all")
-        .describe("Filter by region (optional)"),
+      region: z.enum(["all", "americas", "europe", "asia", "africa", "oceania"]).default("all").describe("Filter by region (optional)"),
     },
   },
   async ({ region = "all" }) => {
     console.error(`[apollo-mcp] list_countries: region=${region}`);
-
-    // Group countries by region
     const regions: Record<string, string[]> = {
       americas: ["US", "CA", "MX", "BR", "AR", "CL", "CO", "PE", "VE", "EC", "PA", "CR", "GT", "DO", "PR"],
       europe: ["GB", "DE", "FR", "NL", "IT", "ES", "PT", "PL", "CZ", "AT", "CH", "BE", "SE", "NO", "DK", "FI", "IE", "GR", "RO", "HU", "BG", "HR", "SK", "SI", "UA", "RU", "TR"],
@@ -305,37 +722,15 @@ server.registerTool(
       africa: ["ZA", "NG", "EG"],
       oceania: ["AU", "NZ"],
     };
-
-    let countries: string[];
-    if (region === "all") {
-      countries = PROXY_COUNTRIES;
-    } else {
-      countries = regions[region] || [];
-    }
-
+    const countries = region === "all" ? PROXY_COUNTRIES : regions[region] || [];
     const output = [
-      `## Available Proxy Countries`,
-      ``,
-      `**Region:** ${region}`,
-      `**Total:** ${countries.length} countries`,
-      ``,
-      `### Country Codes`,
-      ``,
-      countries.join(", "),
-      ``,
-      `---`,
+      `## Available Proxy Countries`, ``,
+      `**Region:** ${region}`, `**Total:** ${countries.length} countries`, ``,
+      `### Country Codes`, ``, countries.join(", "), ``, `---`,
       `Use any 2-letter ISO country code with proxy_fetch.`,
       `Example: \`proxy_fetch(target_url="https://example.com", country="DE")\``,
     ].join("\n");
-
-    return {
-      content: [
-        {
-          type: "text" as const,
-          text: output,
-        },
-      ],
-    };
+    return { content: [{ type: "text" as const, text: output }] };
   }
 );
 
@@ -345,10 +740,10 @@ server.registerTool(
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("Apollo Proxy MCP Server running on stdio");
-  console.error("  Tools: proxy_fetch, proxy_status, list_countries");
-  console.error("  Endpoint: https://apolloai.team/api/proxy/*");
-  console.error("  Payment: $0.005/request (USDC on Base)");
+  console.error("Apollo MCP Server v4.1.0 running on stdio");
+  console.error("  Tools: web_scrape, web_search, x_search, agent_intel, sentiment, pain_points, agentic_trends, keyword_opportunities, micro_saas, web3_hackathons, github_trending, producthunt, weekly_digest, opportunity_bundle, agentic_insights_bundle, builder_intel_bundle, proxy_fetch, proxy_status, list_countries");
+  console.error("  Endpoint: https://apolloai.team/api/*");
+  console.error("  Payment: x402 (USDC on Base mainnet)");
 }
 
 main().catch((error) => {
