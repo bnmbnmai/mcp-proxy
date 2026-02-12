@@ -1,0 +1,21 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.bnmbnmai/apollo-proxy",
+  "description": "19 intelligence tools for AI agents. x402 micropayments, web scraping, search, proxy relay.",
+  "repository": {
+    "url": "https://github.com/bnmbnmai/mcp-proxy",
+    "source": "github"
+  },
+  "version": "4.2.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@apollo_ai/mcp-proxy",
+      "version": "4.2.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": []
+    }
+  ]
+}

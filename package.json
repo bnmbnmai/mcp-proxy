@@ -1,7 +1,7 @@
 {
   "name": "@apollo_ai/mcp-proxy",
-  "version": "4.1.0",
-  "description": "MCP server for Apollo Intelligence Network — 19 endpoints: intelligence feeds, real-time search, proxy infrastructure. x402 micropayments (USDC on Base).",
+  "version": "4.2.0",
+  "description": "MCP server for Apollo Intelligence Network \u2014 19 endpoints: intelligence feeds, real-time search, proxy infrastructure. x402 micropayments (USDC on Base).",
   "type": "module",
   "bin": {
     "apollo-proxy-mcp": "build/index.js"
@@ -56,30 +56,88 @@
   },
   "mcp": {
     "tools": [
-      { "name": "web_scrape", "description": "Scrape any URL — proxy rotation + content extraction. $0.02/req" },
-      { "name": "web_search", "description": "Search the web. Site filters, structured results. $0.01/query" },
-      { "name": "x_search", "description": "Real-time X/Twitter search via Grok. $0.75/query" },
-      { "name": "agent_intel", "description": "Curated agent economy opportunities. $0.05/req" },
-      { "name": "sentiment", "description": "Real-time social sentiment via Grok. $0.02/req" },
-      { "name": "pain_points", "description": "NLP pain point clustering + SaaS suggestions. $0.08/req" },
-      { "name": "agentic_trends", "description": "Agentic economy signals + funding data. $0.05/req" },
-      { "name": "keyword_opportunities", "description": "Keyword flywheel expansion. $0.05/req" },
-      { "name": "micro_saas", "description": "Validated micro-SaaS ideas with revenue estimates. $0.10/req" },
-      { "name": "web3_hackathons", "description": "Rich hackathon data — prizes, dates, locations. $0.05/req" },
-      { "name": "github_trending", "description": "GitHub repos by star velocity, AI-categorized. $0.05/req" },
-      { "name": "producthunt", "description": "Daily Product Hunt launches, AI-categorized. $0.05/req" },
-      { "name": "weekly_digest", "description": "Weekly intelligence synthesis. $0.25/req" },
-      { "name": "opportunity_bundle", "description": "Bundle: keywords + pains + micro-SaaS. 35% off. $0.15/req" },
-      { "name": "agentic_insights_bundle", "description": "Bundle: trends + pains + intel. 33% off. $0.12/req" },
-      { "name": "builder_intel_bundle", "description": "Bundle: GitHub + PH + intel. 33% off. $0.10/req" },
-      { "name": "proxy_fetch", "description": "Raw proxy relay — residential proxies (190+ countries). $0.01/req" },
-      { "name": "proxy_status", "description": "Check service availability and pricing" },
-      { "name": "list_countries", "description": "List available proxy exit countries (190+)" }
+      {
+        "name": "web_scrape",
+        "description": "Scrape any URL \u2014 proxy rotation + content extraction. $0.02/req"
+      },
+      {
+        "name": "web_search",
+        "description": "Search the web. Site filters, structured results. $0.01/query"
+      },
+      {
+        "name": "x_search",
+        "description": "Real-time X/Twitter search via Grok. $0.75/query"
+      },
+      {
+        "name": "agent_intel",
+        "description": "Curated agent economy opportunities. $0.05/req"
+      },
+      {
+        "name": "sentiment",
+        "description": "Real-time social sentiment via Grok. $0.02/req"
+      },
+      {
+        "name": "pain_points",
+        "description": "NLP pain point clustering + SaaS suggestions. $0.08/req"
+      },
+      {
+        "name": "agentic_trends",
+        "description": "Agentic economy signals + funding data. $0.05/req"
+      },
+      {
+        "name": "keyword_opportunities",
+        "description": "Keyword flywheel expansion. $0.05/req"
+      },
+      {
+        "name": "micro_saas",
+        "description": "Validated micro-SaaS ideas with revenue estimates. $0.10/req"
+      },
+      {
+        "name": "web3_hackathons",
+        "description": "Rich hackathon data \u2014 prizes, dates, locations. $0.05/req"
+      },
+      {
+        "name": "github_trending",
+        "description": "GitHub repos by star velocity, AI-categorized. $0.05/req"
+      },
+      {
+        "name": "producthunt",
+        "description": "Daily Product Hunt launches, AI-categorized. $0.05/req"
+      },
+      {
+        "name": "weekly_digest",
+        "description": "Weekly intelligence synthesis. $0.25/req"
+      },
+      {
+        "name": "opportunity_bundle",
+        "description": "Bundle: keywords + pains + micro-SaaS. 35% off. $0.15/req"
+      },
+      {
+        "name": "agentic_insights_bundle",
+        "description": "Bundle: trends + pains + intel. 33% off. $0.12/req"
+      },
+      {
+        "name": "builder_intel_bundle",
+        "description": "Bundle: GitHub + PH + intel. 33% off. $0.10/req"
+      },
+      {
+        "name": "proxy_fetch",
+        "description": "Raw proxy relay \u2014 residential proxies (190+ countries). $0.01/req"
+      },
+      {
+        "name": "proxy_status",
+        "description": "Check service availability and pricing"
+      },
+      {
+        "name": "list_countries",
+        "description": "List available proxy exit countries (190+)"
+      }
     ],
     "pricing": {
       "model": "pay-per-use",
       "currency": "USDC",
       "network": "Base (eip155:8453)"
     }
-  }
+  },
+  "mcpName": "io.github.bnmbnmai/apollo-proxy"
 }
