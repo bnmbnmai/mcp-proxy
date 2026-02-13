@@ -1,12 +1,13 @@
 # Apollo Intelligence MCP Server 🏛️
 
-**19 tools for AI agents: intelligence feeds, real-time search, proxy infrastructure — all via x402 micropayments.**
+**21 tools for AI agents: intelligence feeds, real-time search, crypto data, proxy infrastructure — all via x402 micropayments.**
 
-Give your AI agent access to curated market intelligence, web scraping through 190+ country residential proxies, real-time X/Twitter search, GitHub trending data, and more. Pay per request with USDC on Base — no API keys, no subscriptions.
+Give your AI agent access to curated market intelligence, web scraping through 190+ country residential proxies, real-time X/Twitter search, crypto prices, GitHub trending data, and more. Pay per request with USDC on Base — no API keys, no subscriptions.
 
 [![npm version](https://img.shields.io/npm/v/@apollo_ai/mcp-proxy)](https://www.npmjs.com/package/@apollo_ai/mcp-proxy)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![x402scan](https://img.shields.io/badge/x402scan-listed-blue)](https://www.x402scan.com/server/3e61cb80-3b13-48cc-be79-db9dd85f57a4)
+[![MCP](https://img.shields.io/badge/MCP-compatible-green)](https://modelcontextprotocol.io)
 
 ## Quick Start
 
@@ -44,7 +45,7 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
 npm install -g @apollo_ai/mcp-proxy
 ```
 
-## All 19 Tools
+## All 21 Tools
 
 ### 🔍 Search & Scraping
 
@@ -71,6 +72,13 @@ npm install -g @apollo_ai/mcp-proxy
 | `github_trending` | GitHub repos ranked by star velocity, AI-categorized | $0.05 |
 | `producthunt` | Daily Product Hunt launches with AI categorization | $0.05 |
 | `weekly_digest` | Consolidated weekly intelligence report with cross-feed synthesis | $0.25 |
+
+### 💰 Crypto
+
+| Tool | Description | Cost |
+|------|-------------|------|
+| `crypto_prices` | Live cryptocurrency prices from CoinGecko — any token | $0.01 |
+| `crypto_trending` | Trending cryptocurrencies with price changes and market cap | $0.02 |
 
 ### 📦 Bundles (Save 33-50%)
 
@@ -110,6 +118,11 @@ Search for "x402 micropayments" on Reddit and Hacker News
 ### Get weekly intelligence
 ```
 Give me the weekly intelligence digest — what opportunities should I focus on?
+```
+
+### Check crypto markets
+```
+What are the trending cryptocurrencies right now? Show prices and market caps.
 ```
 
 ## How Payment Works
