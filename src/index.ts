@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
- * Apollo MCP Server v4.1.0
+ * Apollo MCP Server v4.2.0
  *
- * MCP server providing 19 endpoints: intelligence feeds, real-time search,
- * proxy infrastructure, and bundles — all via x402 micropayments (USDC on Base).
+ * MCP server providing 21 tools: intelligence feeds, real-time search,
+ * crypto data, proxy infrastructure, and bundles — all via x402 micropayments (USDC on Base).
  *
  * Tools:
  * - web_scrape: Scrape any URL with proxy rotation + content extraction ($0.02)
@@ -19,6 +19,8 @@
  * - github_trending: GitHub repos by star velocity ($0.05)
  * - producthunt: Daily Product Hunt launches ($0.05)
  * - weekly_digest: Consolidated weekly report ($0.25)
+ * - crypto_prices: Live crypto prices from CoinGecko ($0.01)
+ * - crypto_trending: Trending cryptocurrencies ($0.02)
  * - opportunity_bundle: Keywords + pain + SaaS ($0.15)
  * - agentic_insights_bundle: Trends + pain + intel ($0.12)
  * - builder_intel_bundle: GitHub + PH + agent intel ($0.10)
@@ -35,7 +37,7 @@ import { z } from "zod";
 
 // Apollo API configuration
 const APOLLO_API_BASE = process.env.APOLLO_API_URL || "https://apolloai.team";
-const USER_AGENT = "apollo-mcp-server/4.1.0";
+const USER_AGENT = "apollo-mcp-server/4.2.0";
 
 // Available countries for proxy exit (ISO 3166-1 alpha-2)
 const PROXY_COUNTRIES = [
@@ -735,13 +737,83 @@ server.registerTool(
 );
 
 // ============================================
+// Tool: crypto_prices
+// ============================================
+server.registerTool(
+  "crypto_prices",
+  {
+    description:
+      "Live cryptocurrency prices from CoinGecko. Get real-time price, market cap, " +
+      "and 24h change for any token. No API key needed. Cost: $0.01/request.",
+    inputSchema: {
+      ids: z.string().default("bitcoin,ethereum,solana").describe("Comma-separated CoinGecko coin IDs (e.g., bitcoin,ethereum,solana,base-protocol)"),
+      vs_currencies: z.string().default("usd").describe("Target currencies: usd, eur, btc, eth (comma-separated)"),
+    },
+  },
+  async ({ ids = "bitcoin,ethereum,solana", vs_currencies = "usd" }) => {
+    console.error(`[apollo-mcp] crypto_prices: ${ids}`);
+    const result = await makeApolloRequest<any>("/api/crypto-prices", {
+      ids,
+      vs_currencies,
+      include_market_cap: "true",
+      include_24hr_change: "true",
+    });
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `Crypto prices failed: ${result.error}` }], isError: true };
+    }
+    const prices = result.data!.prices || {};
+    const parts = [`## Crypto Prices`, ``];
+    for (const [coin, data] of Object.entries(prices) as [string, any][]) {
+      const currencies = Object.keys(data).filter(k => !k.includes("_"));
+      for (const curr of currencies) {
+        const price = data[curr];
+        const change = data[`${curr}_24h_change`];
+        const mcap = data[`${curr}_market_cap`];
+        const changeStr = change !== undefined ? ` (${change > 0 ? "+" : ""}${change.toFixed(2)}%)` : "";
+        const mcapStr = mcap ? ` | MCap: ${(mcap / 1e9).toFixed(2)}B` : "";
+        parts.push(`**${coin.toUpperCase()}:** ${price.toLocaleString()} ${curr.toUpperCase()}${changeStr}${mcapStr}`);
+      }
+    }
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// ============================================
+// Tool: crypto_trending
+// ============================================
+server.registerTool(
+  "crypto_trending",
+  {
+    description:
+      "Trending cryptocurrencies — top movers by search volume on CoinGecko. " +
+      "Shows what's hot in crypto right now. Cost: $0.02/request.",
+    inputSchema: {
+      limit: z.number().min(1).max(15).default(10).describe("Max results (1-15, default 10)"),
+    },
+  },
+  async ({ limit = 10 }) => {
+    console.error(`[apollo-mcp] crypto_trending: limit=${limit}`);
+    const result = await makeApolloRequest<any>("/api/crypto-trending", { limit: String(limit) });
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `Crypto trending failed: ${result.error}` }], isError: true };
+    }
+    const coins = result.data!.trending_coins || [];
+    const parts = [`## Trending Cryptocurrencies`, `**Total:** ${coins.length}`, ``];
+    coins.forEach((c: any, i: number) => {
+      parts.push(`${i + 1}. **${c.symbol}** (${c.name}) — Rank #${c.market_cap_rank || "?"}`);
+    });
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// ============================================
 // Main entry point
 // ============================================
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("Apollo MCP Server v4.1.0 running on stdio");
-  console.error("  Tools: web_scrape, web_search, x_search, agent_intel, sentiment, pain_points, agentic_trends, keyword_opportunities, micro_saas, web3_hackathons, github_trending, producthunt, weekly_digest, opportunity_bundle, agentic_insights_bundle, builder_intel_bundle, proxy_fetch, proxy_status, list_countries");
+  console.error("Apollo MCP Server v4.2.0 running on stdio");
+  console.error("  Tools: web_scrape, web_search, x_search, agent_intel, sentiment, pain_points, agentic_trends, keyword_opportunities, micro_saas, web3_hackathons, github_trending, producthunt, weekly_digest, opportunity_bundle, agentic_insights_bundle, builder_intel_bundle, proxy_fetch, proxy_status, list_countries, crypto_prices, crypto_trending");
   console.error("  Endpoint: https://apolloai.team/api/*");
   console.error("  Payment: x402 (USDC on Base mainnet)");
 }
