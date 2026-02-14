@@ -1,17 +1,17 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.bnmbnmai/apollo-proxy",
-  "description": "21 AI tools: intel feeds, crypto, GitHub trending, X search, proxy. x402 USDC.",
+  "description": "26 AI tools: DeFi yields/protocols, OSINT, crypto, intel feeds, GitHub trending, X search, proxy. x402 USDC.",
   "repository": {
     "url": "https://github.com/bnmbnmai/mcp-proxy",
     "source": "github"
   },
-  "version": "4.2.0",
+  "version": "4.4.0",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@apollo_ai/mcp-proxy",
-      "version": "4.2.0",
+      "version": "4.4.0",
       "transport": {
         "type": "stdio"
       },
