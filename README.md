@@ -1,6 +1,6 @@
 # Apollo Intelligence MCP Server 🏛️
 
-**21 tools for AI agents: intelligence feeds, real-time search, crypto data, proxy infrastructure — all via x402 micropayments.**
+**26 tools for AI agents: intelligence feeds, DeFi data, real-time search, crypto data, OSINT, proxy infrastructure — all via x402 micropayments.**
 
 Give your AI agent access to curated market intelligence, web scraping through 190+ country residential proxies, real-time X/Twitter search, crypto prices, GitHub trending data, and more. Pay per request with USDC on Base — no API keys, no subscriptions.
 
@@ -45,7 +45,7 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
 npm install -g @apollo_ai/mcp-proxy
 ```
 
-## All 21 Tools
+## All 26 Tools
 
 ### 🔍 Search & Scraping
 
@@ -73,12 +73,22 @@ npm install -g @apollo_ai/mcp-proxy
 | `producthunt` | Daily Product Hunt launches with AI categorization | $0.05 |
 | `weekly_digest` | Consolidated weekly intelligence report with cross-feed synthesis | $0.25 |
 
-### 💰 Crypto
+### 💰 Crypto & DeFi
 
 | Tool | Description | Cost |
 |------|-------------|------|
 | `crypto_prices` | Live cryptocurrency prices from CoinGecko — any token | $0.01 |
 | `crypto_trending` | Trending cryptocurrencies with price changes and market cap | $0.02 |
+| `defi_yields` | Top DeFi yields across 18K+ pools — filter by chain, TVL, stablecoin | $0.03 |
+| `defi_protocols` | DeFi protocol TVL rankings — 7000+ protocols, category filtering | $0.02 |
+
+### 🔒 OSINT
+
+| Tool | Description | Cost |
+|------|-------------|------|
+| `ip_intel` | Multi-source IP intelligence — geo, ports, vulns, threats (4 sources) | $0.03 |
+| `domain_intel` | Domain intelligence — DNS, SSL certs, geo, threat analysis | $0.03 |
+| `fx_rates` | Live FX rates for 30+ currencies from ECB data | $0.005 |
 
 ### 📦 Bundles (Save 33-50%)
 
