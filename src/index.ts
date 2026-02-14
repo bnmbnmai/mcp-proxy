@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
- * Apollo MCP Server v4.2.0
+ * Apollo MCP Server v4.4.0
  *
- * MCP server providing 21 tools: intelligence feeds, real-time search,
- * crypto data, proxy infrastructure, and bundles — all via x402 micropayments (USDC on Base).
+ * MCP server providing 26 tools: intelligence feeds, DeFi data, real-time search,
+ * crypto data, OSINT, proxy infrastructure, and bundles — all via x402 micropayments (USDC on Base).
  *
  * Tools:
  * - web_scrape: Scrape any URL with proxy rotation + content extraction ($0.02)
@@ -24,6 +24,8 @@
  * - ip_intel: Multi-source IP intelligence ($0.03)
  * - domain_intel: Multi-source domain intelligence ($0.03)
  * - fx_rates: Live FX rates from ECB ($0.005)
+ * - defi_yields: Top DeFi yields across 18K+ pools ($0.03)
+ * - defi_protocols: DeFi protocol TVL rankings ($0.02)
  * - opportunity_bundle: Keywords + pain + SaaS ($0.15)
  * - agentic_insights_bundle: Trends + pain + intel ($0.12)
  * - builder_intel_bundle: GitHub + PH + agent intel ($0.10)
@@ -897,14 +899,83 @@ server.tool(
   }
 );
 
+// Tool: defi_yields
+server.tool(
+  "defi_yields",
+  "Top DeFi yields across 18K+ pools from DefiLlama. Filter by chain, TVL, stablecoin. $0.03/query via x402.",
+  {
+    chain: z.string().default("all").describe("Filter by chain: all, ethereum, solana, base, arbitrum, polygon, avalanche, binance, optimism"),
+    min_tvl: z.number().default(100000).describe("Minimum TVL in USD (default 100000)"),
+    stablecoin: z.string().default("all").describe("Filter: all, true (stablecoins only), false (non-stablecoins)"),
+    sort: z.string().default("apy").describe("Sort by: apy, tvl, apy_base"),
+    limit: z.number().default(20).describe("Max results (1-200)"),
+  },
+  async ({ chain = "all", min_tvl = 100000, stablecoin = "all", sort = "apy", limit = 20 }) => {
+    console.error(`[apollo-mcp] defi_yields: chain=${chain}, min_tvl=${min_tvl}`);
+    const params: Record<string, string> = { chain, min_tvl: String(min_tvl), stablecoin, sort, limit: String(limit) };
+    const result = await makeApolloRequest<any>("/api/defi-yields", params);
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `DeFi yields failed: ${result.error}` }], isError: true };
+    }
+    const d = result.data!;
+    const yields = d.yields || [];
+    const parts = [`## Top DeFi Yields (${d.pools_matching} matching from ${d.total_pools_scanned} pools)`, ``];
+    yields.slice(0, limit).forEach((y: any, i: number) => {
+      parts.push(`${i + 1}. **${y.symbol}** (${y.project} / ${y.chain}) — APY: ${y.apy}% | TVL: $${(y.tvl_usd / 1e6).toFixed(1)}M${y.stablecoin ? ' 🟢 stable' : ''}${y.il_risk === 'yes' ? ' ⚠️ IL' : ''}`);
+    });
+    if (d.top_chains_by_tvl?.length) {
+      parts.push(``, `### Top Chains by TVL`);
+      d.top_chains_by_tvl.slice(0, 5).forEach((c: any) => {
+        parts.push(`- **${c.chain}:** $${(c.tvl_usd / 1e9).toFixed(1)}B`);
+      });
+    }
+    parts.push(``, `*Source: ${d.source} | Filters: chain=${chain}, min_tvl=$${min_tvl}*`);
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// Tool: defi_protocols
+server.tool(
+  "defi_protocols",
+  "Top DeFi protocols by TVL from DefiLlama. 7000+ protocols, category filtering. $0.02/query via x402.",
+  {
+    category: z.string().default("all").describe("Filter: all, Lending, DEX, Liquid Staking, Bridge, CDP, Yield, Derivatives"),
+    chain: z.string().default("all").describe("Filter by chain presence: all, ethereum, solana, base, arbitrum"),
+    limit: z.number().default(20).describe("Max results (1-200)"),
+  },
+  async ({ category = "all", chain = "all", limit = 20 }) => {
+    console.error(`[apollo-mcp] defi_protocols: category=${category}, chain=${chain}`);
+    const params: Record<string, string> = { category, chain, limit: String(limit) };
+    const result = await makeApolloRequest<any>("/api/defi-protocols", params);
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `DeFi protocols failed: ${result.error}` }], isError: true };
+    }
+    const d = result.data!;
+    const protocols = d.protocols || [];
+    const parts = [`## Top DeFi Protocols by TVL (${d.protocols_matching} matching from ${d.total_protocols})`, ``];
+    protocols.slice(0, limit).forEach((p: any, i: number) => {
+      const change1d = p.change_1d >= 0 ? `+${p.change_1d}%` : `${p.change_1d}%`;
+      parts.push(`${i + 1}. **${p.name}** (${p.symbol}) — TVL: $${(p.tvl_usd / 1e9).toFixed(2)}B | 24h: ${change1d} | ${p.category} | ${p.chain_count} chains`);
+    });
+    if (d.categories?.length) {
+      parts.push(``, `### Categories`);
+      d.categories.slice(0, 8).forEach((c: any) => {
+        parts.push(`- ${c.name}: ${c.count} protocols`);
+      });
+    }
+    parts.push(``, `*Source: ${d.source} | Filters: category=${category}, chain=${chain}*`);
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
 // ============================================
 // Main entry point
 // ============================================
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("Apollo MCP Server v4.3.0 running on stdio");
-  console.error("  Tools: web_scrape, web_search, x_search, agent_intel, sentiment, pain_points, agentic_trends, keyword_opportunities, micro_saas, web3_hackathons, github_trending, producthunt, weekly_digest, opportunity_bundle, agentic_insights_bundle, builder_intel_bundle, proxy_fetch, proxy_status, list_countries, crypto_prices, crypto_trending, ip_intel, domain_intel, fx_rates");
+  console.error("Apollo MCP Server v4.4.0 running on stdio");
+  console.error("  Tools: web_scrape, web_search, x_search, agent_intel, sentiment, pain_points, agentic_trends, keyword_opportunities, micro_saas, web3_hackathons, github_trending, producthunt, weekly_digest, opportunity_bundle, agentic_insights_bundle, builder_intel_bundle, proxy_fetch, proxy_status, list_countries, crypto_prices, crypto_trending, ip_intel, domain_intel, fx_rates, defi_yields, defi_protocols");
   console.error("  Endpoint: https://apolloai.team/api/*");
   console.error("  Payment: x402 (USDC on Base mainnet)");
 }

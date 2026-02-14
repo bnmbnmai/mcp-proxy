@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
- * Apollo MCP Server v4.2.0
+ * Apollo MCP Server v4.4.0
  *
- * MCP server providing 21 tools: intelligence feeds, real-time search,
- * crypto data, proxy infrastructure, and bundles — all via x402 micropayments (USDC on Base).
+ * MCP server providing 26 tools: intelligence feeds, DeFi data, real-time search,
+ * crypto data, OSINT, proxy infrastructure, and bundles — all via x402 micropayments (USDC on Base).
  *
  * Tools:
  * - web_scrape: Scrape any URL with proxy rotation + content extraction ($0.02)
@@ -24,6 +24,8 @@
  * - ip_intel: Multi-source IP intelligence ($0.03)
  * - domain_intel: Multi-source domain intelligence ($0.03)
  * - fx_rates: Live FX rates from ECB ($0.005)
+ * - defi_yields: Top DeFi yields across 18K+ pools ($0.03)
+ * - defi_protocols: DeFi protocol TVL rankings ($0.02)
  * - opportunity_bundle: Keywords + pain + SaaS ($0.15)
  * - agentic_insights_bundle: Trends + pain + intel ($0.12)
  * - builder_intel_bundle: GitHub + PH + agent intel ($0.10)
