@@ -21,6 +21,9 @@
  * - weekly_digest: Consolidated weekly report ($0.25)
  * - crypto_prices: Live crypto prices from CoinGecko ($0.01)
  * - crypto_trending: Trending cryptocurrencies ($0.02)
+ * - ip_intel: Multi-source IP intelligence ($0.03)
+ * - domain_intel: Multi-source domain intelligence ($0.03)
+ * - fx_rates: Live FX rates from ECB ($0.005)
  * - opportunity_bundle: Keywords + pain + SaaS ($0.15)
  * - agentic_insights_bundle: Trends + pain + intel ($0.12)
  * - builder_intel_bundle: GitHub + PH + agent intel ($0.10)
@@ -806,14 +809,102 @@ server.registerTool(
   }
 );
 
+// Tool: ip_intel
+server.tool(
+  "ip_intel",
+  "Multi-source IP intelligence — geolocation, open ports, vulnerabilities, threat classification from Shodan, GreyNoise, AlienVault OTX, ip-api. $0.03/query via x402.",
+  {
+    ip: z.string().describe("IPv4 address to investigate"),
+  },
+  async ({ ip }) => {
+    console.error(`[apollo-mcp] ip_intel: ${ip}`);
+    const result = await makeApolloRequest<any>("/api/ip-intel", { ip });
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `IP intel failed: ${result.error}` }], isError: true };
+    }
+    const d = result.data!;
+    const parts = [
+      `## IP Intelligence: ${d.ip}`,
+      `**Threat Score:** ${d.threat_score}/100 — ${d.classification}`,
+      `**Location:** ${d.geo?.city || "?"}, ${d.geo?.country || "?"} (${d.geo?.isp || "?"})`,
+      `**ASN:** ${d.geo?.asn || "?"}`,
+      `**Ports:** ${(d.ports || []).join(", ") || "none"}`,
+      `**Vulnerabilities:** ${(d.vulns || []).length}`,
+      `**Hostnames:** ${(d.hostnames || []).join(", ") || "none"}`,
+      `**GreyNoise:** ${d.greynoise?.classification || "unknown"} (noise=${d.greynoise?.noise}, riot=${d.greynoise?.riot})`,
+      `**OTX:** ${d.otx?.pulse_count || 0} threat pulses`,
+      `**Reasons:** ${(d.threat_reasons || []).join("; ")}`,
+      `**Sources:** ${(d.sources || []).join(", ")} (${d.source_count}/4)`,
+    ];
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// Tool: domain_intel
+server.tool(
+  "domain_intel",
+  "Multi-source domain intelligence — DNS, SSL certificates, geo, threat analysis from CertSpotter, AlienVault OTX, ip-api. $0.03/query via x402.",
+  {
+    domain: z.string().describe("Domain name to investigate (no protocol prefix)"),
+  },
+  async ({ domain }) => {
+    console.error(`[apollo-mcp] domain_intel: ${domain}`);
+    const result = await makeApolloRequest<any>("/api/domain-intel", { domain });
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `Domain intel failed: ${result.error}` }], isError: true };
+    }
+    const d = result.data!;
+    const parts = [
+      `## Domain Intelligence: ${d.domain}`,
+      `**Primary IP:** ${d.primary_ip || "unresolved"}`,
+      `**DNS A:** ${(d.dns?.a || []).join(", ") || "none"}`,
+      `**IP Location:** ${d.ip_geo?.city || "?"}, ${d.ip_geo?.country || "?"} (${d.ip_geo?.isp || "?"})`,
+      `**SSL:** ${d.ssl?.total_certs_found ? `${d.ssl.total_certs_found} certs found` : "no certs"}`,
+      d.ssl?.dns_names ? `**SSL SANs:** ${d.ssl.dns_names.slice(0, 5).join(", ")}` : "",
+      d.ssl?.not_after ? `**SSL Expires:** ${d.ssl.not_after}` : "",
+      `**OTX:** ${d.otx?.pulse_count || 0} threat pulses`,
+      `**Threats:** ${(d.threat_indicators || []).join("; ")}`,
+      `**Sources:** ${(d.sources || []).join(", ")} (${d.source_count})`,
+    ].filter(Boolean);
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// Tool: fx_rates
+server.tool(
+  "fx_rates",
+  "Live foreign exchange rates for 30+ currencies from ECB data. $0.005/query via x402.",
+  {
+    base: z.string().default("USD").describe("Base currency ISO code (default USD)"),
+    symbols: z.string().default("").describe("Comma-separated target currencies (empty = all)"),
+  },
+  async ({ base = "USD", symbols = "" }) => {
+    console.error(`[apollo-mcp] fx_rates: base=${base}`);
+    const params: Record<string, string> = { base };
+    if (symbols) params.symbols = symbols;
+    const result = await makeApolloRequest<any>("/api/fx-rates", params);
+    if (result.error) {
+      return { content: [{ type: "text" as const, text: `FX rates failed: ${result.error}` }], isError: true };
+    }
+    const d = result.data!;
+    const rates = d.rates || {};
+    const parts = [`## FX Rates (Base: ${d.base}, Date: ${d.date})`, ``];
+    Object.entries(rates).forEach(([currency, rate]) => {
+      parts.push(`- **${currency}:** ${rate}`);
+    });
+    parts.push(``, `*Source: ${d.source} | ${d.currency_count} currencies*`);
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
 // ============================================
 // Main entry point
 // ============================================
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("Apollo MCP Server v4.2.0 running on stdio");
-  console.error("  Tools: web_scrape, web_search, x_search, agent_intel, sentiment, pain_points, agentic_trends, keyword_opportunities, micro_saas, web3_hackathons, github_trending, producthunt, weekly_digest, opportunity_bundle, agentic_insights_bundle, builder_intel_bundle, proxy_fetch, proxy_status, list_countries, crypto_prices, crypto_trending");
+  console.error("Apollo MCP Server v4.3.0 running on stdio");
+  console.error("  Tools: web_scrape, web_search, x_search, agent_intel, sentiment, pain_points, agentic_trends, keyword_opportunities, micro_saas, web3_hackathons, github_trending, producthunt, weekly_digest, opportunity_bundle, agentic_insights_bundle, builder_intel_bundle, proxy_fetch, proxy_status, list_countries, crypto_prices, crypto_trending, ip_intel, domain_intel, fx_rates");
   console.error("  Endpoint: https://apolloai.team/api/*");
   console.error("  Payment: x402 (USDC on Base mainnet)");
 }

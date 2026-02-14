@@ -1,7 +1,7 @@
 {
   "name": "@apollo_ai/mcp-proxy",
-  "version": "4.2.0",
-  "description": "MCP server for Apollo Intelligence Network \u2014 19 endpoints: intelligence feeds, real-time search, proxy infrastructure. x402 micropayments (USDC on Base).",
+  "version": "4.3.0",
+  "description": "MCP server for Apollo Intelligence Network \u2014 21 endpoints: intelligence feeds, crypto data, real-time search, proxy infrastructure. x402 micropayments (USDC on Base).",
   "type": "module",
   "bin": {
     "apollo-proxy-mcp": "build/index.js"
@@ -131,6 +131,14 @@
       {
         "name": "list_countries",
         "description": "List available proxy exit countries (190+)"
+      },
+      {
+        "name": "crypto_prices",
+        "description": "Live crypto prices from CoinGecko. Any token, real-time. $0.01/req"
+      },
+      {
+        "name": "crypto_trending",
+        "description": "Trending cryptocurrencies by search volume. $0.02/req"
       }
     ],
     "pricing": {
