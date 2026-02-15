@@ -1,7 +1,7 @@
 {
   "name": "@apollo_ai/mcp-proxy",
   "version": "4.4.0",
-  "description": "MCP server for Apollo Intelligence Network \u2014 21 endpoints: intelligence feeds, crypto data, real-time search, proxy infrastructure. x402 micropayments (USDC on Base).",
+  "description": "MCP server for Apollo Intelligence Network \u2014 26 tools: DeFi, OSINT, crypto, intel feeds, search, proxy. x402 micropayments (USDC on Base).",
   "type": "module",
   "bin": {
     "apollo-proxy-mcp": "build/index.js"
