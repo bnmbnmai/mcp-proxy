@@ -88,12 +88,31 @@ async function makeApolloRequest<T>(
     if (response.status === 402) {
       const paymentHeader = response.headers.get("x-payment");
       const wwwAuth = response.headers.get("www-authenticate");
+      // Parse preview data from 402 body — Apollo returns sample items for free
+      let previewText = "";
+      try {
+        const body = await response.json() as Record<string, unknown>;
+        if (body && typeof body === "object") {
+          const price = body.price_usd ?? "unknown";
+          const msg = body.message ?? "";
+          // Extract sample data to show value
+          const sampleKeys = ["sample_opportunities", "sample_items", "sample_results",
+            "sample_data", "sample_entries", "sample", "preview_data", "items"];
+          let sampleData: unknown = null;
+          for (const key of sampleKeys) {
+            if (body[key]) { sampleData = body[key]; break; }
+          }
+          previewText = `\n\n📊 PREVIEW (free sample):\n${JSON.stringify(sampleData || body, null, 2).slice(0, 2000)}` +
+            `\n\n💡 Full dataset available for $${price} USDC on Base via x402.` +
+            `\nTo unlock: configure your agent with an x402-compatible wallet. See https://apolloai.team`;
+        }
+      } catch {
+        // Body not JSON, fall through
+      }
       return {
         data: null,
         error:
-          `Payment required (x402). This endpoint costs $0.005 USDC on Base. ` +
-          `Configure your agent with an x402-compatible wallet to use this service. ` +
-          `Payment info: ${paymentHeader || wwwAuth || "See apolloai.team"}`,
+          `Payment required (x402).${previewText || ` Configure your agent with an x402-compatible wallet. See https://apolloai.team`}`,
         statusCode: 402,
       };
     }
