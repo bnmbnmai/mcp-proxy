@@ -148,6 +148,8 @@ All paid tools use the [x402 protocol](https://x402.org) — an open standard fo
 
 **Payment wallet:** `0xf59621FC406D266e18f314Ae18eF0a33b8401004`
 
+> **📖 [Getting Started Guide](https://apolloai.team/docs/getting-started)** — Step-by-step instructions for Python, TypeScript, Go, and MCP. Make your first paid request in under 5 minutes.
+
 > **Note:** x402 payment handling depends on your MCP client. Clients like [x402scan Composer](https://www.x402scan.com/composer) handle payments automatically. For Claude Desktop, you'll need an x402-compatible wallet integration.
 
 ## Environment Variables
@@ -198,7 +200,7 @@ curl https://apolloai.team/openapi.json
 curl https://apolloai.team/
 ```
 
-**Direct API endpoints:** [apolloai.team](https://apolloai.team) | **Marketplace listing:** [x402scan](https://www.x402scan.com/server/3e61cb80-3b13-48cc-be79-db9dd85f57a4)
+**Direct API endpoints:** [apolloai.team](https://apolloai.team) | **Getting Started:** [Guide](https://apolloai.team/docs/getting-started) | **Marketplace:** [x402scan](https://www.x402scan.com/server/3e61cb80-3b13-48cc-be79-db9dd85f57a4)
 
 ## Requirements
 
