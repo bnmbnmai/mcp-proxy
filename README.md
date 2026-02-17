@@ -165,6 +165,21 @@ All intelligence feeds are pre-computed by Apollo's multi-agent system and refre
 - **Zero LLM cost per request** — all data pre-computed from real sources
 - **X/Twitter search** — real-time via Grok (not cached)
 
+## OpenAPI Specification
+
+Full OpenAPI 3.1 spec for all 27 endpoints: [`openapi.json`](./openapi.json)
+
+Import into Postman, Insomnia, or any API client to explore and test all endpoints interactively.
+
+## Ecosystem
+
+Apollo is listed across the x402 ecosystem:
+
+- **x402 Official Ecosystem:** [x402.org/ecosystem](https://x402.org/ecosystem)
+- **x402scan Marketplace:** [x402scan listing](https://www.x402scan.com/server/3e61cb80-3b13-48cc-be79-db9dd85f57a4)
+- **npm:** [@apollo_ai/mcp-proxy](https://www.npmjs.com/package/@apollo_ai/mcp-proxy)
+- **GitHub:** [bnmbnmai/mcp-proxy](https://github.com/bnmbnmai/mcp-proxy)
+
 ## API Reference
 
 This MCP server wraps Apollo's x402 API at `https://apolloai.team`. You can also call the API directly:
@@ -173,8 +188,11 @@ This MCP server wraps Apollo's x402 API at `https://apolloai.team`. You can also
 # Discovery document (lists all endpoints)
 curl https://apolloai.team/.well-known/x402
 
-# Any endpoint returns 402 with payment info
+# Any endpoint returns 402 with payment info + preview data
 curl https://apolloai.team/api/pain-points
+
+# OpenAPI spec
+curl https://apolloai.team/openapi.json
 
 # Free landing page
 curl https://apolloai.team/
