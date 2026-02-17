@@ -1,0 +1,732 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Apollo Intelligence Network API",
+    "description": "27 x402-gated API endpoints for AI agents. Intelligence feeds, DeFi data, OSINT, crypto prices, real-time search, and residential proxy infrastructure. Pay per request with USDC on Base mainnet — no API keys, no subscriptions.\n\nAll paid endpoints return HTTP 402 with payment instructions. Include an x402 payment header to access. See https://apolloai.team/.well-known/x402 for payment details.",
+    "version": "3.0.0",
+    "contact": {
+      "name": "Apollo Intelligence Network",
+      "url": "https://apolloai.team"
+    },
+    "license": {
+      "name": "Proprietary"
+    },
+    "x-x402": {
+      "network": "eip155:8453",
+      "asset": "USDC",
+      "wallet": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+      "discovery": "https://apolloai.team/.well-known/x402"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://apolloai.team",
+      "description": "Production (Base mainnet)"
+    }
+  ],
+  "paths": {
+    "/.well-known/x402": {
+      "get": {
+        "summary": "x402 Discovery Document",
+        "description": "Returns all x402-gated resources and payment requirements. Free endpoint.",
+        "tags": ["Discovery"],
+        "responses": {
+          "200": {
+            "description": "x402 discovery document with all resources",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "version": {"type": "integer"},
+                    "resources": {
+                      "type": "array",
+                      "items": {"type": "string", "format": "uri"}
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/agent-intel": {
+      "get": {
+        "summary": "Agent Economy Intelligence",
+        "description": "Live agent economy opportunities — bounties, hackathons, grants, platforms. Refreshed every 4h. Multi-source NLP-curated.",
+        "tags": ["Intelligence Feeds"],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {"type": "string", "enum": ["all", "bounties", "platforms", "x402", "defi"]},
+            "description": "Filter by category"
+          }
+        ],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {
+            "description": "Agent economy intelligence data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total_opportunities": {"type": "integer"},
+                    "last_scan": {"type": "string", "format": "date-time"},
+                    "top_opportunities": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "name": {"type": "string"},
+                          "type": {"type": "string"},
+                          "priority": {"type": "string"},
+                          "value": {"type": "string"},
+                          "link": {"type": "string", "format": "uri"},
+                          "actionable_next_step": {"type": "string"}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "x-x402-price": "$0.05"
+      }
+    },
+    "/api/sentiment": {
+      "get": {
+        "summary": "Social Sentiment Analysis",
+        "description": "Real-time social sentiment on crypto, DeFi, AI agents, tech macro via Grok. Refreshed every 4h.",
+        "tags": ["Intelligence Feeds"],
+        "parameters": [
+          {
+            "name": "topic",
+            "in": "query",
+            "schema": {"type": "string"},
+            "description": "Topic to get sentiment for"
+          }
+        ],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Sentiment analysis data"}
+        },
+        "x-x402-price": "$0.02"
+      }
+    },
+    "/api/pain-points": {
+      "get": {
+        "summary": "Pain Points Feed",
+        "description": "NLP-clustered pain points from Quora, G2, Reddit, Upwork with micro-SaaS suggestions. Multi-source intelligence.",
+        "tags": ["Intelligence Feeds"],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Clustered pain points with SaaS opportunity mapping"}
+        },
+        "x-x402-price": "$0.08"
+      }
+    },
+    "/api/agentic-trends": {
+      "get": {
+        "summary": "Agentic Economy Trends",
+        "description": "Market signals, funding, adoption from reports and forums. Agentic economy intelligence updated daily.",
+        "tags": ["Intelligence Feeds"],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Agentic economy trend data"}
+        },
+        "x-x402-price": "$0.05"
+      }
+    },
+    "/api/keyword-opps": {
+      "get": {
+        "summary": "Keyword Opportunity Flywheel",
+        "description": "Seed a keyword, get variants + opportunity mapping + cross-linked feeds.",
+        "tags": ["Intelligence Feeds"],
+        "parameters": [
+          {
+            "name": "seed",
+            "in": "query",
+            "required": true,
+            "schema": {"type": "string"},
+            "description": "Seed keyword (e.g., 'AI automation', 'no-code tools')"
+          }
+        ],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Keyword variants and opportunity mapping"}
+        },
+        "x-x402-price": "$0.05"
+      }
+    },
+    "/api/micro-saas": {
+      "get": {
+        "summary": "Micro-SaaS Ideas",
+        "description": "Validated micro-SaaS ideas with market sizing and competition analysis. Refreshed every 4h.",
+        "tags": ["Intelligence Feeds"],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {"type": "string", "enum": ["all", "saas", "data", "agent"]},
+            "description": "Filter by category"
+          }
+        ],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Curated micro-SaaS opportunities"}
+        },
+        "x-x402-price": "$0.10"
+      }
+    },
+    "/api/web3-hackathons": {
+      "get": {
+        "summary": "Web3 Hackathon Tracker",
+        "description": "Live hackathon aggregator — ETHGlobal, DoraHacks, Devpost, Devfolio. Only events with open registration.",
+        "tags": ["Intelligence Feeds"],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {"type": "string", "enum": ["all", "ethglobal", "solana", "base", "ethereum", "polygon"]},
+            "description": "Filter by ecosystem"
+          }
+        ],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Active hackathons with prizes, dates, registration links"}
+        },
+        "x-x402-price": "$0.05"
+      }
+    },
+    "/api/github-trending": {
+      "get": {
+        "summary": "GitHub Trending Repos",
+        "description": "GitHub repos ranked by star velocity (stars/day). AI-categorized. Filter by language, topic, timeframe.",
+        "tags": ["Intelligence Feeds"],
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query",
+            "schema": {"type": "string", "enum": ["all", "python", "typescript", "rust", "go", "javascript"]},
+            "description": "Filter by language"
+          },
+          {
+            "name": "topic",
+            "in": "query",
+            "schema": {"type": "string", "enum": ["all", "ai", "llm", "web3", "mcp", "agent"]},
+            "description": "Filter by topic"
+          },
+          {
+            "name": "timeframe",
+            "in": "query",
+            "schema": {"type": "string", "enum": ["daily", "weekly", "monthly"]},
+            "description": "Time window: daily (7d), weekly (14d), monthly (60d)"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {"type": "integer", "minimum": 1, "maximum": 50},
+            "description": "Max repos (1-50)"
+          }
+        ],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Trending repos with star velocity and categorization"}
+        },
+        "x-x402-price": "$0.05"
+      }
+    },
+    "/api/producthunt": {
+      "get": {
+        "summary": "Product Hunt Launches",
+        "description": "Daily Product Hunt launches with AI categorization. Filter by category.",
+        "tags": ["Intelligence Feeds"],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "schema": {"type": "string", "enum": ["all", "ai", "devtools", "web3", "saas", "design", "productivity"]},
+            "description": "Filter by category"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {"type": "integer", "minimum": 1, "maximum": 50},
+            "description": "Max launches (1-50)"
+          }
+        ],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Product Hunt launches with categorization"}
+        },
+        "x-x402-price": "$0.05"
+      }
+    },
+    "/api/weekly-digest": {
+      "get": {
+        "summary": "Weekly Intelligence Digest",
+        "description": "Consolidated weekly intelligence report with cross-feed synthesis. Premium intelligence.",
+        "tags": ["Intelligence Feeds"],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Comprehensive weekly intelligence synthesis"}
+        },
+        "x-x402-price": "$0.25"
+      }
+    },
+    "/api/x-search": {
+      "get": {
+        "summary": "Real-time X/Twitter Search",
+        "description": "Search X/Twitter posts with engagement metrics and AI analysis. Powered by Grok.",
+        "tags": ["Search & Scraping"],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {"type": "string"},
+            "description": "Search query (keywords, hashtags, handles)"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "schema": {"type": "integer", "minimum": 1, "maximum": 25, "default": 10},
+            "description": "Max posts to return"
+          },
+          {
+            "name": "handles",
+            "in": "query",
+            "schema": {"type": "string"},
+            "description": "Comma-separated handles to filter (max 10)"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "schema": {"type": "string", "format": "date"},
+            "description": "Start date (YYYY-MM-DD)"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "schema": {"type": "string", "format": "date"},
+            "description": "End date (YYYY-MM-DD)"
+          }
+        ],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "X/Twitter posts with engagement metrics and AI analysis"}
+        },
+        "x-x402-price": "$0.75"
+      }
+    },
+    "/api/scrape": {
+      "get": {
+        "summary": "Web Scraping Service",
+        "description": "Fetch any URL through residential proxies with content extraction. Returns clean text/markdown.",
+        "tags": ["Search & Scraping"],
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {"type": "string", "format": "uri"},
+            "description": "URL to scrape"
+          },
+          {
+            "name": "extract",
+            "in": "query",
+            "schema": {"type": "boolean", "default": true},
+            "description": "Extract clean text"
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "schema": {"type": "string", "enum": ["raw", "text", "markdown"], "default": "markdown"},
+            "description": "Output format"
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "schema": {"type": "string", "default": "US"},
+            "description": "Proxy country ISO code (e.g., US, GB, DE)"
+          }
+        ],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Scraped content in requested format"}
+        },
+        "x-x402-price": "$0.02"
+      }
+    },
+    "/api/scrape/search": {
+      "get": {
+        "summary": "Web Search",
+        "description": "Web search with site filters (Reddit, HN, GitHub, Twitter). Returns top results with titles, URLs, and descriptions.",
+        "tags": ["Search & Scraping"],
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {"type": "string"},
+            "description": "Search query"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "schema": {"type": "integer", "minimum": 1, "maximum": 20, "default": 10},
+            "description": "Number of results"
+          },
+          {
+            "name": "site",
+            "in": "query",
+            "schema": {"type": "string", "enum": ["", "reddit", "hn", "github", "twitter", "producthunt"]},
+            "description": "Site filter"
+          }
+        ],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Search results"}
+        },
+        "x-x402-price": "$0.01"
+      }
+    },
+    "/api/proxy/request": {
+      "get": {
+        "summary": "Residential Proxy Relay",
+        "description": "Raw proxy relay — send a target URL, fetched through 190+ country residential proxies. 250KB response cap.",
+        "tags": ["Proxy Infrastructure"],
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {"type": "string", "format": "uri"},
+            "description": "URL to fetch through proxy"
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "schema": {"type": "string"},
+            "description": "ISO country code (e.g., US, GB, DE, JP)"
+          },
+          {
+            "name": "method",
+            "in": "query",
+            "schema": {"type": "string", "enum": ["GET", "POST", "HEAD"], "default": "GET"},
+            "description": "HTTP method"
+          },
+          {
+            "name": "session_type",
+            "in": "query",
+            "schema": {"type": "string", "enum": ["rotating", "sticky"], "default": "rotating"},
+            "description": "Session type: rotating (new IP each request) or sticky"
+          }
+        ],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Proxied response content"}
+        },
+        "x-x402-price": "$0.01"
+      }
+    },
+    "/api/proxy/session": {
+      "post": {
+        "summary": "Dedicated Proxy Session",
+        "description": "Create a 1-5 minute dedicated residential IP session with geo-targeting. 250MB cap.",
+        "tags": ["Proxy Infrastructure"],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Session created with dedicated IP and session_id"}
+        },
+        "x-x402-price": "$0.50/min"
+      }
+    },
+    "/api/proxy/status": {
+      "get": {
+        "summary": "Proxy Service Status",
+        "description": "Check proxy service availability, countries, and pricing.",
+        "tags": ["Proxy Infrastructure"],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Service status, available countries, pricing"}
+        },
+        "x-x402-price": "$0.001"
+      }
+    },
+    "/api/crypto-prices": {
+      "get": {
+        "summary": "Live Cryptocurrency Prices",
+        "description": "Real-time crypto prices from CoinGecko. Any token. Includes market cap, 24h change, volume.",
+        "tags": ["Crypto & DeFi"],
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": true,
+            "schema": {"type": "string"},
+            "description": "Comma-separated CoinGecko coin IDs (e.g., bitcoin,ethereum,solana)"
+          },
+          {
+            "name": "vs_currencies",
+            "in": "query",
+            "schema": {"type": "string", "default": "usd"},
+            "description": "Target currencies (e.g., usd,eur,btc)"
+          },
+          {
+            "name": "include_market_cap",
+            "in": "query",
+            "schema": {"type": "boolean", "default": true}
+          },
+          {
+            "name": "include_24hr_change",
+            "in": "query",
+            "schema": {"type": "boolean", "default": true}
+          },
+          {
+            "name": "include_24hr_vol",
+            "in": "query",
+            "schema": {"type": "boolean", "default": false}
+          }
+        ],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Cryptocurrency price data"}
+        },
+        "x-x402-price": "$0.01"
+      }
+    },
+    "/api/crypto-trending": {
+      "get": {
+        "summary": "Trending Cryptocurrencies",
+        "description": "Top movers by search volume on CoinGecko. Includes price, market cap rank, and 24h change.",
+        "tags": ["Crypto & DeFi"],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {"type": "integer", "minimum": 1, "maximum": 15, "default": 15}
+          }
+        ],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Trending cryptocurrency data"}
+        },
+        "x-x402-price": "$0.02"
+      }
+    },
+    "/api/ip-intel": {
+      "get": {
+        "summary": "IP Threat Intelligence",
+        "description": "Multi-source IP intelligence from 4 OSINT sources (Shodan InternetDB, GreyNoise, AlienVault OTX, ip-api). Geolocation, open ports, vulnerabilities, threat classification.",
+        "tags": ["OSINT"],
+        "parameters": [
+          {
+            "name": "ip",
+            "in": "query",
+            "required": true,
+            "schema": {"type": "string", "format": "ipv4"},
+            "description": "IPv4 address to investigate"
+          }
+        ],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Comprehensive IP intelligence report"}
+        },
+        "x-x402-price": "$0.03"
+      }
+    },
+    "/api/domain-intel": {
+      "get": {
+        "summary": "Domain Intelligence",
+        "description": "Multi-source domain intelligence — DNS records, SSL certificates, registration info, geo, and threat analysis.",
+        "tags": ["OSINT"],
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "query",
+            "required": true,
+            "schema": {"type": "string"},
+            "description": "Domain name (no protocol prefix)"
+          }
+        ],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Comprehensive domain intelligence report"}
+        },
+        "x-x402-price": "$0.03"
+      }
+    },
+    "/api/fx-rates": {
+      "get": {
+        "summary": "Foreign Exchange Rates",
+        "description": "Live FX rates for 30+ currencies. Real-time conversion from any base currency. ECB data via Frankfurter.",
+        "tags": ["Utility"],
+        "parameters": [
+          {
+            "name": "base",
+            "in": "query",
+            "schema": {"type": "string", "default": "USD"},
+            "description": "Base currency ISO code"
+          }
+        ],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Exchange rates for 30+ currencies"}
+        },
+        "x-x402-price": "$0.005"
+      }
+    },
+    "/api/defi-yields": {
+      "get": {
+        "summary": "DeFi Yield Data",
+        "description": "Top DeFi yields across 18K+ pools from DefiLlama. Filter by chain, TVL, stablecoin. Real-time APY.",
+        "tags": ["Crypto & DeFi"],
+        "parameters": [
+          {
+            "name": "chain",
+            "in": "query",
+            "schema": {"type": "string", "enum": ["all", "ethereum", "solana", "base", "polygon", "multi"]},
+            "description": "Filter by chain"
+          }
+        ],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "DeFi yield pool data"}
+        },
+        "x-x402-price": "$0.03"
+      }
+    },
+    "/api/defi-protocols": {
+      "get": {
+        "summary": "DeFi Protocol Rankings",
+        "description": "Top DeFi protocols by TVL from DefiLlama. 7000+ protocols, category filtering, TVL changes.",
+        "tags": ["Crypto & DeFi"],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "DeFi protocol TVL rankings"}
+        },
+        "x-x402-price": "$0.02"
+      }
+    },
+    "/api/bundle/opportunity-pack": {
+      "get": {
+        "summary": "Opportunity Pack Bundle",
+        "description": "Keywords + pain points + micro-SaaS ideas. 35% discount vs individual endpoints.",
+        "tags": ["Bundles"],
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "required": true,
+            "schema": {"type": "string"},
+            "description": "Keyword for the opportunity pack"
+          }
+        ],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Combined opportunity intelligence"}
+        },
+        "x-x402-price": "$0.15"
+      }
+    },
+    "/api/bundle/agentic-insights": {
+      "get": {
+        "summary": "Agentic Insights Bundle",
+        "description": "Trends + pain points + agent-intel. Premium intelligence pack. 33% discount.",
+        "tags": ["Bundles"],
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "schema": {"type": "string"},
+            "description": "Focus keyword for insights"
+          }
+        ],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Combined agentic intelligence"}
+        },
+        "x-x402-price": "$0.12"
+      }
+    },
+    "/api/bundle/builder-intel": {
+      "get": {
+        "summary": "Builder Intel Bundle",
+        "description": "GitHub trending + Product Hunt launches + agent intel. Everything a builder agent needs. 33% off.",
+        "tags": ["Bundles"],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Combined builder intelligence"}
+        },
+        "x-x402-price": "$0.10"
+      }
+    },
+    "/api/feedback": {
+      "get": {
+        "summary": "Community Feedback",
+        "description": "View community feedback and ratings on Apollo feeds.",
+        "tags": ["Utility"],
+        "responses": {
+          "402": {"$ref": "#/components/responses/PaymentRequired"},
+          "200": {"description": "Community feedback data"}
+        },
+        "x-x402-price": "$0.001"
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "PaymentRequired": {
+        "description": "Payment required. Response includes x402 payment instructions in the `payment-required` header (base64-encoded JSON).",
+        "headers": {
+          "payment-required": {
+            "description": "Base64-encoded JSON with x402 payment requirements including network, asset, amount, payTo address, and Bazaar extensions.",
+            "schema": {"type": "string"}
+          }
+        },
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "message": {"type": "string", "example": "Showing 2 sample items. Pay $0.05 (USDC on Base) for the full dataset."},
+                "how_to_pay": {"type": "string"},
+                "network": {"type": "string", "example": "Base (eip155:8453)"},
+                "asset": {"type": "string", "example": "USDC"},
+                "price_usd": {"type": "number"},
+                "sample_opportunities": {
+                  "type": "array",
+                  "description": "Preview data (2 sample items from the full dataset)"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "x402Payment": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-PAYMENT",
+        "description": "x402 payment proof. Create using @x402/fetch or @x402/axios SDK."
+      }
+    }
+  },
+  "tags": [
+    {"name": "Discovery", "description": "Free discovery and protocol endpoints"},
+    {"name": "Intelligence Feeds", "description": "Curated intelligence data feeds ($0.02-$0.25)"},
+    {"name": "Search & Scraping", "description": "Real-time search and web scraping ($0.01-$0.75)"},
+    {"name": "Proxy Infrastructure", "description": "Residential proxy relay and sessions ($0.001-$0.50/min)"},
+    {"name": "Crypto & DeFi", "description": "Live crypto prices, DeFi yields, protocol data ($0.01-$0.03)"},
+    {"name": "OSINT", "description": "Open-source intelligence — IP and domain analysis ($0.03)"},
+    {"name": "Utility", "description": "FX rates, feedback, and utility endpoints ($0.001-$0.005)"},
+    {"name": "Bundles", "description": "Discounted multi-feed bundles ($0.10-$0.15)"}
+  ]
+}
