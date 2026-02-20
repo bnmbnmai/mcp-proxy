@@ -1,6 +1,6 @@
 # Apollo Intelligence MCP Server 🏛️
 
-**26 tools for AI agents: intelligence feeds, DeFi data, real-time search, crypto data, OSINT, proxy infrastructure — all via x402 micropayments.**
+**34 tools for AI agents: intelligence feeds, economic data, DeFi, real-time search, crypto, OSINT, weather, ML/NLP, proxy infrastructure — all via x402 micropayments.**
 
 Give your AI agent access to curated market intelligence, web scraping through 190+ country residential proxies, real-time X/Twitter search, crypto prices, GitHub trending data, and more. Pay per request with USDC on Base — no API keys, no subscriptions.
 
@@ -45,7 +45,7 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
 npm install -g @apollo_ai/mcp-proxy
 ```
 
-## All 26 Tools
+## All 34 Tools
 
 ### 🔍 Search & Scraping
 
@@ -72,6 +72,7 @@ npm install -g @apollo_ai/mcp-proxy
 | `github_trending` | GitHub repos ranked by star velocity, AI-categorized | $0.05 |
 | `producthunt` | Daily Product Hunt launches with AI categorization | $0.05 |
 | `weekly_digest` | Consolidated weekly intelligence report with cross-feed synthesis | $0.25 |
+| `stackexchange` | StackOverflow Q&A search — answers, scores, tags | $0.02 |
 
 ### 💰 Crypto & DeFi
 
@@ -82,13 +83,30 @@ npm install -g @apollo_ai/mcp-proxy
 | `defi_yields` | Top DeFi yields across 18K+ pools — filter by chain, TVL, stablecoin | $0.03 |
 | `defi_protocols` | DeFi protocol TVL rankings — 7000+ protocols, category filtering | $0.02 |
 
-### 🔒 OSINT
+### 📈 Economic Data
+
+| Tool | Description | Cost |
+|------|-------------|------|
+| `economic_indicators` | Federal Reserve (FRED) data — GDP, CPI, unemployment, rates, 800K+ series | $0.03 |
+| `country_metrics` | World Bank development indicators — 260+ countries, GDP, population, literacy | $0.02 |
+| `fx_rates` | Live FX rates for 30+ currencies from ECB data | $0.005 |
+
+### 🔒 OSINT & Security
 
 | Tool | Description | Cost |
 |------|-------------|------|
 | `ip_intel` | Multi-source IP intelligence — geo, ports, vulns, threats (4 sources) | $0.03 |
 | `domain_intel` | Domain intelligence — DNS, SSL certs, geo, threat analysis | $0.03 |
-| `fx_rates` | Live FX rates for 30+ currencies from ECB data | $0.005 |
+| `ip_geo` | IP geolocation + ASN — country, city, coordinates, organization | $0.01 |
+| `malware_feed` | URLhaus threat feed — 20K+ active malware URLs from abuse.ch | $0.02 |
+| `geocode` | Forward + reverse geocoding via OpenStreetMap/Nominatim | $0.01 |
+
+### 🌤️ Weather & ML
+
+| Tool | Description | Cost |
+|------|-------------|------|
+| `weather` | Current weather + 7-day forecast from Open-Meteo | $0.01 |
+| `ml_analyze` | Text sentiment, entity extraction, or summarization via HuggingFace | $0.01–$0.02 |
 
 ### 📦 Bundles (Save 33-50%)
 

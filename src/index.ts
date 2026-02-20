@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 /**
- * Apollo MCP Server v4.4.0
+ * Apollo MCP Server v4.7.0
  *
- * MCP server providing 26 tools: intelligence feeds, DeFi data, real-time search,
- * crypto data, OSINT, proxy infrastructure, and bundles — all via x402 micropayments (USDC on Base).
+ * MCP server providing 34 tools: intelligence feeds, DeFi data, economic indicators,
+ * real-time search, crypto data, OSINT, weather, ML/NLP, proxy infrastructure,
+ * and bundles — all via x402 micropayments (USDC on Base).
  *
  * Tools:
  * - web_scrape: Scrape any URL with proxy rotation + content extraction ($0.02)
@@ -42,7 +43,7 @@ import { z } from "zod";
 
 // Apollo API configuration
 const APOLLO_API_BASE = process.env.APOLLO_API_URL || "https://apolloai.team";
-const USER_AGENT = "apollo-mcp-server/4.2.0";
+const USER_AGENT = "apollo-mcp-server/4.6.0";
 
 // Available countries for proxy exit (ISO 3166-1 alpha-2)
 const PROXY_COUNTRIES = [
@@ -58,7 +59,7 @@ const PROXY_COUNTRIES = [
 // Create MCP server instance
 const server = new McpServer({
   name: "apollo-intelligence",
-  version: "4.1.0",
+  version: "4.7.0",
 });
 
 /**
@@ -68,7 +69,7 @@ const server = new McpServer({
 async function makeApolloRequest<T>(
   endpoint: string,
   params?: Record<string, string>
-): Promise<{ data: T | null; error: string | null; statusCode: number }> {
+): Promise<{ data: T | null; error: string | null; statusCode: number; preview: Record<string, unknown> | null; priceUsd: number | null }> {
   const url = new URL(endpoint, APOLLO_API_BASE);
 
   if (params) {
@@ -86,34 +87,24 @@ async function makeApolloRequest<T>(
     const response = await fetch(url.toString(), { headers });
 
     if (response.status === 402) {
-      const paymentHeader = response.headers.get("x-payment");
-      const wwwAuth = response.headers.get("www-authenticate");
       // Parse preview data from 402 body — Apollo returns sample items for free
-      let previewText = "";
+      let preview: Record<string, unknown> | null = null;
+      let priceUsd: number | null = null;
       try {
         const body = await response.json() as Record<string, unknown>;
         if (body && typeof body === "object") {
-          const price = body.price_usd ?? "unknown";
-          const msg = body.message ?? "";
-          // Extract sample data to show value
-          const sampleKeys = ["sample_opportunities", "sample_items", "sample_results",
-            "sample_data", "sample_entries", "sample", "preview_data", "items"];
-          let sampleData: unknown = null;
-          for (const key of sampleKeys) {
-            if (body[key]) { sampleData = body[key]; break; }
-          }
-          previewText = `\n\n📊 PREVIEW (free sample):\n${JSON.stringify(sampleData || body, null, 2).slice(0, 2000)}` +
-            `\n\n💡 Full dataset available for $${price} USDC on Base via x402.` +
-            `\nTo unlock: configure your agent with an x402-compatible wallet. See https://apolloai.team`;
+          preview = body;
+          priceUsd = typeof body.price_usd === "number" ? body.price_usd : null;
         }
       } catch {
-        // Body not JSON, fall through
+        // Body not JSON
       }
       return {
         data: null,
-        error:
-          `Payment required (x402).${previewText || ` Configure your agent with an x402-compatible wallet. See https://apolloai.team`}`,
+        error: "x402_payment_required",
         statusCode: 402,
+        preview,
+        priceUsd,
       };
     }
 
@@ -123,19 +114,107 @@ async function makeApolloRequest<T>(
         data: null,
         error: `API error (${response.status}): ${errorText.slice(0, 500)}`,
         statusCode: response.status,
+        preview: null,
+        priceUsd: null,
       };
     }
 
     const data = (await response.json()) as T;
-    return { data, error: null, statusCode: response.status };
+    return { data, error: null, statusCode: response.status, preview: null, priceUsd: null };
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
     return {
       data: null,
       error: `Request failed: ${message}`,
       statusCode: 0,
+      preview: null,
+      priceUsd: null,
     };
   }
+}
+
+/**
+ * Format a 402 preview response as useful tool output.
+ * Returns preview data as SUCCESS (not error) so MCP clients display it properly.
+ */
+function formatPreviewResponse(
+  result: { preview: Record<string, unknown> | null; priceUsd: number | null },
+  toolName: string
+): { content: { type: "text"; text: string }[] } {
+  const preview = result.preview;
+  const price = result.priceUsd ?? "unknown";
+
+  // Extract sample data from the preview body
+  const sampleKeys = [
+    "sample_opportunities", "sample_items", "sample_results",
+    "sample_data", "sample_entries", "sample_launches", "sample_pools",
+    "sample_protocols", "sample_coins", "sample_prices",
+    "preview_data", "items",
+  ];
+  let sampleData: unknown = null;
+  let totalCount: unknown = null;
+  if (preview) {
+    for (const key of sampleKeys) {
+      if (preview[key]) { sampleData = preview[key]; break; }
+    }
+    // Look for total count indicators
+    for (const key of Object.keys(preview)) {
+      if (key.startsWith("total_") || key === "count") {
+        totalCount = preview[key];
+        break;
+      }
+    }
+  }
+
+  const parts: string[] = [
+    `## ${toolName} — Preview (Free Sample)`,
+    "",
+  ];
+
+  if (totalCount !== null && totalCount !== undefined) {
+    parts.push(`**Full dataset:** ${totalCount} items available`);
+  }
+
+  if (sampleData) {
+    parts.push(`**Sample data:**`);
+    parts.push("```json");
+    parts.push(JSON.stringify(sampleData, null, 2).slice(0, 3000));
+    parts.push("```");
+  } else if (preview) {
+    parts.push("```json");
+    parts.push(JSON.stringify(preview, null, 2).slice(0, 3000));
+    parts.push("```");
+  }
+
+  parts.push("");
+  parts.push(`---`);
+  parts.push(`💡 **Full dataset: $${price} USDC** on Base mainnet via x402 protocol.`);
+  parts.push(`To unlock all data, configure your agent with an x402-compatible wallet.`);
+  parts.push(`Setup guide: https://apolloai.team | npm: \`npx @apollo_ai/mcp-proxy\``);
+
+  // Return as SUCCESS (not error) — the preview IS useful data
+  return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+}
+
+/**
+ * Handle a tool result: return data on success, preview on 402, error otherwise.
+ */
+function handleToolError(
+  result: { data: unknown; error: string | null; statusCode: number; preview: Record<string, unknown> | null; priceUsd: number | null },
+  toolName: string
+): { content: { type: "text"; text: string }[]; isError?: boolean } | null {
+  if (!result.error) return null; // Success — let the tool format its own data
+
+  // For 402s with preview data, return as success with preview content
+  if (result.statusCode === 402 && result.preview) {
+    return formatPreviewResponse(result, toolName);
+  }
+
+  // For real errors, return as error
+  return {
+    content: [{ type: "text" as const, text: `${toolName} failed: ${result.error}` }],
+    isError: true,
+  };
 }
 
 // ============================================
@@ -167,9 +246,7 @@ server.registerTool(
       format,
     });
 
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `Scrape failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "Scrape"); if (err) return err; }
 
     const data = result.data!;
     const parts = [`## Scraped: ${data.title || data.url}`, ``];
@@ -210,9 +287,7 @@ server.registerTool(
     if (site) params.site = site;
     const result = await makeApolloRequest<any>("/api/scrape/search", params);
 
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `Search failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "Search"); if (err) return err; }
 
     const data = result.data!;
     const parts = [
@@ -257,9 +332,7 @@ server.registerTool(
     if (to_date) params.to_date = to_date;
 
     const result = await makeApolloRequest<any>("/api/x-search", params);
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `X search failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "X search"); if (err) return err; }
 
     const data = result.data!;
     const parts = [`## X/Twitter Search: "${data.query}"`, ``, `**Posts found:** ${data.total_posts} | **Cost:** $0.75`, ``];
@@ -294,9 +367,7 @@ server.registerTool(
   async ({ keyword }) => {
     console.error(`[apollo-mcp] pain_points: "${keyword}"`);
     const result = await makeApolloRequest<any>("/api/pain-points", { keyword });
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `Pain points failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "Pain points"); if (err) return err; }
     const d = result.data!;
     const parts = [
       `## Pain Points: "${d.keyword}"`,
@@ -324,9 +395,7 @@ server.registerTool(
   async () => {
     console.error("[apollo-mcp] agentic_trends");
     const result = await makeApolloRequest<any>("/api/agentic-trends");
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `Trends failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "Trends"); if (err) return err; }
     const d = result.data!;
     const parts = [
       `## Agentic Economy Trends`,
@@ -358,9 +427,7 @@ server.registerTool(
   async ({ seed }) => {
     console.error(`[apollo-mcp] keyword_opportunities: "${seed}"`);
     const result = await makeApolloRequest<any>("/api/keyword-opps", { seed });
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `Keyword opps failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "Keyword opps"); if (err) return err; }
     const d = result.data!;
     const parts = [
       `## Keyword Opportunities: "${d.seed_keyword}"`,
@@ -390,9 +457,7 @@ server.registerTool(
   async ({ keyword }) => {
     console.error(`[apollo-mcp] opportunity_bundle: "${keyword}"`);
     const result = await makeApolloRequest<any>("/api/bundle/opportunity-pack", { keyword });
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `Bundle failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "Bundle"); if (err) return err; }
     return { content: [{ type: "text" as const, text: `## Opportunity Pack: "${result.data!.keyword}"\n\n` + JSON.stringify(result.data, null, 2).slice(0, 10000) }] };
   }
 );
@@ -411,9 +476,7 @@ server.registerTool(
   async () => {
     console.error("[apollo-mcp] agent_intel");
     const result = await makeApolloRequest<any>("/api/agent-intel");
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `Agent intel failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "Agent intel"); if (err) return err; }
     const d = result.data!;
     const parts = [
       `## Agent Economy Intel`,
@@ -444,9 +507,7 @@ server.registerTool(
     const params: Record<string, string> = {};
     if (topic) params.topic = topic;
     const result = await makeApolloRequest<any>("/api/sentiment", params);
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `Sentiment failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "Sentiment"); if (err) return err; }
     const d = result.data!;
     const parts = [`## Market Sentiment`, `**Topics analyzed:** ${d.topics_analyzed || 0}`, ``];
     for (const [key, val] of Object.entries(d.topics || {})) {
@@ -469,9 +530,7 @@ server.registerTool(
   async () => {
     console.error("[apollo-mcp] micro_saas");
     const result = await makeApolloRequest<any>("/api/micro-saas");
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `Micro-SaaS failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "Micro-SaaS"); if (err) return err; }
     const d = result.data!;
     const ideas = d.ideas || d.micro_saas_ideas || [];
     const parts = [
@@ -496,9 +555,7 @@ server.registerTool(
   async () => {
     console.error("[apollo-mcp] web3_hackathons");
     const result = await makeApolloRequest<any>("/api/web3-hackathons");
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `Hackathons failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "Hackathons"); if (err) return err; }
     const d = result.data!;
     const hacks = d.hackathons || [];
     const parts = [
@@ -535,9 +592,7 @@ server.registerTool(
     if (language) params.language = language;
     if (category) params.category = category;
     const result = await makeApolloRequest<any>("/api/github-trending", params);
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `GitHub trending failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "GitHub trending"); if (err) return err; }
     const d = result.data!;
     const repos = d.trending_repos || d.highlights || [];
     const parts = [
@@ -568,9 +623,7 @@ server.registerTool(
     const params: Record<string, string> = {};
     if (category) params.category = category;
     const result = await makeApolloRequest<any>("/api/producthunt", params);
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `Product Hunt failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "Product Hunt"); if (err) return err; }
     const d = result.data!;
     const launches = d.launches || d.highlights || [];
     const parts = [
@@ -597,9 +650,7 @@ server.registerTool(
   async () => {
     console.error("[apollo-mcp] weekly_digest");
     const result = await makeApolloRequest<any>("/api/weekly-digest");
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `Weekly digest failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "Weekly digest"); if (err) return err; }
     return { content: [{ type: "text" as const, text: `## Weekly Intelligence Digest\n\n` + JSON.stringify(result.data, null, 2).slice(0, 15000) }] };
   }
 );
@@ -616,9 +667,7 @@ server.registerTool(
   async () => {
     console.error("[apollo-mcp] agentic_insights_bundle");
     const result = await makeApolloRequest<any>("/api/bundle/agentic-insights");
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `Agentic insights bundle failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "Agentic insights bundle"); if (err) return err; }
     return { content: [{ type: "text" as const, text: `## Agentic Insights Bundle\n\n` + JSON.stringify(result.data, null, 2).slice(0, 15000) }] };
   }
 );
@@ -635,9 +684,7 @@ server.registerTool(
   async () => {
     console.error("[apollo-mcp] builder_intel_bundle");
     const result = await makeApolloRequest<any>("/api/bundle/builder-intel");
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `Builder intel bundle failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "Builder intel bundle"); if (err) return err; }
     return { content: [{ type: "text" as const, text: `## Builder Intel Bundle\n\n` + JSON.stringify(result.data, null, 2).slice(0, 15000) }] };
   }
 );
@@ -668,9 +715,7 @@ server.registerTool(
       method,
       session_type,
     });
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `Proxy fetch failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "Proxy fetch"); if (err) return err; }
     const data = result.data!;
     const responseBody = typeof data.response.body === "object"
       ? JSON.stringify(data.response.body, null, 2)
@@ -702,9 +747,7 @@ server.registerTool(
   async () => {
     console.error("[apollo-mcp] proxy_status: checking service availability");
     const result = await makeApolloRequest<any>("/api/proxy/status");
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `Status check failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "Status check"); if (err) return err; }
     const data = result.data!;
     const status = [
       `## Apollo Proxy Service Status`, ``,
@@ -782,9 +825,7 @@ server.registerTool(
       include_market_cap: "true",
       include_24hr_change: "true",
     });
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `Crypto prices failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "Crypto prices"); if (err) return err; }
     const prices = result.data!.prices || {};
     const parts = [`## Crypto Prices`, ``];
     for (const [coin, data] of Object.entries(prices) as [string, any][]) {
@@ -818,9 +859,7 @@ server.registerTool(
   async ({ limit = 10 }) => {
     console.error(`[apollo-mcp] crypto_trending: limit=${limit}`);
     const result = await makeApolloRequest<any>("/api/crypto-trending", { limit: String(limit) });
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `Crypto trending failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "Crypto trending"); if (err) return err; }
     const coins = result.data!.trending_coins || [];
     const parts = [`## Trending Cryptocurrencies`, `**Total:** ${coins.length}`, ``];
     coins.forEach((c: any, i: number) => {
@@ -840,9 +879,7 @@ server.tool(
   async ({ ip }) => {
     console.error(`[apollo-mcp] ip_intel: ${ip}`);
     const result = await makeApolloRequest<any>("/api/ip-intel", { ip });
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `IP intel failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "IP intel"); if (err) return err; }
     const d = result.data!;
     const parts = [
       `## IP Intelligence: ${d.ip}`,
@@ -871,9 +908,7 @@ server.tool(
   async ({ domain }) => {
     console.error(`[apollo-mcp] domain_intel: ${domain}`);
     const result = await makeApolloRequest<any>("/api/domain-intel", { domain });
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `Domain intel failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "Domain intel"); if (err) return err; }
     const d = result.data!;
     const parts = [
       `## Domain Intelligence: ${d.domain}`,
@@ -904,9 +939,7 @@ server.tool(
     const params: Record<string, string> = { base };
     if (symbols) params.symbols = symbols;
     const result = await makeApolloRequest<any>("/api/fx-rates", params);
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `FX rates failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "FX rates"); if (err) return err; }
     const d = result.data!;
     const rates = d.rates || {};
     const parts = [`## FX Rates (Base: ${d.base}, Date: ${d.date})`, ``];
@@ -914,6 +947,43 @@ server.tool(
       parts.push(`- **${currency}:** ${rate}`);
     });
     parts.push(``, `*Source: ${d.source} | ${d.currency_count} currencies*`);
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// Tool: stackexchange
+server.tool(
+  "stackexchange",
+  "Search programming Q&A from StackExchange (StackOverflow + 170+ sites). No API key needed. $0.02/query via x402.",
+  {
+    query: z.string().describe("Search query for question titles"),
+    site: z.string().default("stackoverflow").describe("StackExchange site (default: stackoverflow)"),
+    tagged: z.string().default("").describe("Comma-separated tags to filter (e.g., python,django)"),
+    sort: z.string().default("relevance").describe("Sort by: relevance, votes, creation, hot"),
+    page: z.number().default(1).describe("Page number (1-10)"),
+    pagesize: z.number().default(10).describe("Results per page (1-30, default 10)"),
+  },
+  async ({ query, site = "stackoverflow", tagged = "", sort = "relevance", page = 1, pagesize = 10 }) => {
+    console.error(`[apollo-mcp] stackexchange: query=${query}, site=${site}`);
+    const params: Record<string, string> = { query, site, sort, page: String(page), pagesize: String(pagesize) };
+    if (tagged) params.tagged = tagged;
+    const result = await makeApolloRequest<any>("/api/stackexchange", params);
+    { const err = handleToolError(result, "StackExchange"); if (err) return err; }
+    const d = result.data!;
+    const questions = d.questions || [];
+    const parts = [`## StackExchange Results (${d.total} total on ${d.site})`, ``];
+    questions.forEach((q: any, i: number) => {
+      const status = q.is_answered ? "✅" : "❌";
+      parts.push(`${i + 1}. **${q.title}** ${status}`);
+      parts.push(`   - Score: ${q.score} | Answers: ${q.answer_count} | Views: ${q.view_count}`);
+      parts.push(`   - Tags: ${q.tags?.join(", ") || "none"}`);
+      parts.push(`   - Link: ${q.link}`);
+      parts.push("");
+    });
+    if (d.has_more) {
+      parts.push(`*More results available (page ${d.page})*`);
+    }
+    parts.push(``, `*Source: ${d.source} | Quota remaining: ${d.quota_remaining}*`);
     return { content: [{ type: "text" as const, text: parts.join("\n") }] };
   }
 );
@@ -933,9 +1003,7 @@ server.tool(
     console.error(`[apollo-mcp] defi_yields: chain=${chain}, min_tvl=${min_tvl}`);
     const params: Record<string, string> = { chain, min_tvl: String(min_tvl), stablecoin, sort, limit: String(limit) };
     const result = await makeApolloRequest<any>("/api/defi-yields", params);
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `DeFi yields failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "DeFi yields"); if (err) return err; }
     const d = result.data!;
     const yields = d.yields || [];
     const parts = [`## Top DeFi Yields (${d.pools_matching} matching from ${d.total_pools_scanned} pools)`, ``];
@@ -966,9 +1034,7 @@ server.tool(
     console.error(`[apollo-mcp] defi_protocols: category=${category}, chain=${chain}`);
     const params: Record<string, string> = { category, chain, limit: String(limit) };
     const result = await makeApolloRequest<any>("/api/defi-protocols", params);
-    if (result.error) {
-      return { content: [{ type: "text" as const, text: `DeFi protocols failed: ${result.error}` }], isError: true };
-    }
+    { const err = handleToolError(result, "DeFi protocols"); if (err) return err; }
     const d = result.data!;
     const protocols = d.protocols || [];
     const parts = [`## Top DeFi Protocols by TVL (${d.protocols_matching} matching from ${d.total_protocols})`, ``];
@@ -988,13 +1054,235 @@ server.tool(
 );
 
 // ============================================
+// Tool: economic_indicators
+// ============================================
+server.tool(
+  "economic_indicators",
+  "Federal Reserve (FRED) economic data — GDP, CPI, unemployment, interest rates, and 800K+ series. $0.03/query via x402.",
+  {
+    series_id: z.string().default("GDP").describe("FRED series ID: GDP, CPIAUCSL, UNRATE, DFF, T10Y2Y, FEDFUNDS, M2SL, etc."),
+    limit: z.number().default(12).describe("Number of observations (1-100)"),
+    sort_order: z.enum(["asc", "desc"]).default("desc").describe("Sort: desc (newest first) or asc"),
+  },
+  async ({ series_id = "GDP", limit = 12, sort_order = "desc" }) => {
+    console.error(`[apollo-mcp] economic_indicators: series=${series_id}`);
+    const result = await makeApolloRequest<any>("/api/economic-indicators", {
+      series_id, limit: String(limit), sort_order,
+    });
+    { const err = handleToolError(result, "Economic indicators"); if (err) return err; }
+    const d = result.data!;
+    const parts = [`## ${d.title || series_id}`, `*${d.frequency || ""} | ${d.units || ""} | Source: FRED*`, ``];
+    (d.observations || []).slice(0, limit).forEach((o: any) => {
+      parts.push(`- ${o.date}: **${o.value}**`);
+    });
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// ============================================
+// Tool: country_metrics
+// ============================================
+server.tool(
+  "country_metrics",
+  "World Bank development indicators — GDP, population, literacy, life expectancy for 260+ countries. $0.02/query via x402.",
+  {
+    country: z.string().default("US").describe("ISO 2-letter country code (e.g., US, CN, IN, BR, DE)"),
+    indicator: z.string().default("NY.GDP.MKTP.CD").describe("World Bank indicator ID: NY.GDP.MKTP.CD (GDP), SP.POP.TOTL (population), SE.ADT.LITR.ZS (literacy)"),
+    per_page: z.number().default(10).describe("Results per page (1-50)"),
+  },
+  async ({ country = "US", indicator = "NY.GDP.MKTP.CD", per_page = 10 }) => {
+    console.error(`[apollo-mcp] country_metrics: ${country} / ${indicator}`);
+    const result = await makeApolloRequest<any>("/api/country-metrics", {
+      country, indicator, per_page: String(per_page),
+    });
+    { const err = handleToolError(result, "Country metrics"); if (err) return err; }
+    const d = result.data!;
+    const parts = [`## ${d.indicator_name || indicator} — ${d.country_name || country}`, `*Source: World Bank*`, ``];
+    (d.data || []).slice(0, per_page).forEach((o: any) => {
+      const val = o.value !== null ? Number(o.value).toLocaleString() : "N/A";
+      parts.push(`- ${o.date}: **${val}**`);
+    });
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// ============================================
+// Tool: malware_feed
+// ============================================
+server.tool(
+  "malware_feed",
+  "URLhaus malware URL feed from abuse.ch — 20K+ active threat URLs with status, threat type, and tags. $0.02/query via x402.",
+  {
+    status: z.enum(["all", "online", "offline"]).default("online").describe("Filter by URL status"),
+    threat: z.string().default("all").describe("Filter by threat type: all, malware_download, phishing"),
+    tag: z.string().default("").describe("Filter by tag (e.g., Emotet, QakBot, AgentTesla)"),
+    hours: z.number().default(24).describe("Lookback window in hours (1-720)"),
+    limit: z.number().default(20).describe("Max results (1-100)"),
+  },
+  async ({ status = "online", threat = "all", tag = "", hours = 24, limit = 20 }) => {
+    console.error(`[apollo-mcp] malware_feed: status=${status}, hours=${hours}`);
+    const params: Record<string, string> = { status, threat, hours: String(hours), limit: String(limit) };
+    if (tag) params.tag = tag;
+    const result = await makeApolloRequest<any>("/api/malware-feed", params);
+    { const err = handleToolError(result, "Malware feed"); if (err) return err; }
+    const d = result.data!;
+    const parts = [`## URLhaus Malware Feed (${d.total_urls || 0} URLs, last ${hours}h)`, ``];
+    (d.urls || []).slice(0, limit).forEach((u: any) => {
+      parts.push(`- **${u.status}** | ${u.threat} | ${u.url} | Tags: ${(u.tags || []).join(", ") || "none"} | Added: ${u.date_added}`);
+    });
+    if (d.stats) parts.push(``, `*Stats: ${d.stats.online || 0} online, ${d.stats.offline || 0} offline*`);
+    parts.push(``, `*Source: abuse.ch URLhaus*`);
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// ============================================
+// Tool: ip_geo
+// ============================================
+server.tool(
+  "ip_geo",
+  "IP geolocation + ASN lookup via GeoJS — country, city, coordinates, timezone, organization. $0.01/query via x402.",
+  {
+    ip: z.string().describe("IPv4 or IPv6 address to geolocate"),
+  },
+  async ({ ip }) => {
+    console.error(`[apollo-mcp] ip_geo: ${ip}`);
+    const result = await makeApolloRequest<any>("/api/ip-geo", { ip });
+    { const err = handleToolError(result, "IP geolocation"); if (err) return err; }
+    const d = result.data!;
+    const parts = [
+      `## IP Geolocation: ${ip}`,
+      `- **Country:** ${d.country || "?"} (${d.country_code || "?"})`,
+      `- **City:** ${d.city || "?"}, ${d.region || "?"}`,
+      `- **Coords:** ${d.latitude || "?"}, ${d.longitude || "?"}`,
+      `- **Organization:** ${d.organization || "?"}`,
+      `- **ASN:** ${d.asn || "?"}`,
+      `- **Timezone:** ${d.timezone || "?"}`,
+      ``, `*Source: GeoJS*`,
+    ];
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// ============================================
+// Tool: geocode
+// ============================================
+server.tool(
+  "geocode",
+  "Forward + reverse geocoding via OpenStreetMap/Nominatim. Address to coordinates or coordinates to address. $0.01/query via x402.",
+  {
+    q: z.string().optional().describe("Forward geocode: address or place name (e.g., 'Boise, Idaho')"),
+    lat: z.string().optional().describe("Reverse geocode: latitude"),
+    lon: z.string().optional().describe("Reverse geocode: longitude"),
+    limit: z.number().default(5).describe("Max results for forward geocoding (1-10)"),
+  },
+  async ({ q, lat, lon, limit = 5 }) => {
+    console.error(`[apollo-mcp] geocode: q=${q}, lat=${lat}, lon=${lon}`);
+    const params: Record<string, string> = { limit: String(limit) };
+    if (q) params.q = q;
+    if (lat) params.lat = lat;
+    if (lon) params.lon = lon;
+    const result = await makeApolloRequest<any>("/api/geocode", params);
+    { const err = handleToolError(result, "Geocode"); if (err) return err; }
+    const d = result.data!;
+    const parts = [`## Geocode Results`];
+    if (d.results) {
+      (d.results as any[]).slice(0, limit).forEach((r: any, i: number) => {
+        parts.push(`${i + 1}. **${r.display_name}** — ${r.lat}, ${r.lon} (${r.type || "place"})`);
+      });
+    } else if (d.address) {
+      parts.push(`**${d.display_name}** — ${d.lat}, ${d.lon}`);
+    }
+    parts.push(``, `*Source: Nominatim/OpenStreetMap*`);
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// ============================================
+// Tool: weather
+// ============================================
+server.tool(
+  "weather",
+  "Current weather + 7-day forecast from Open-Meteo. Temperature, wind, precipitation, weather codes. $0.01/query via x402.",
+  {
+    lat: z.string().describe("Latitude (e.g., 43.62)"),
+    lon: z.string().describe("Longitude (e.g., -116.20)"),
+    forecast: z.boolean().default(false).describe("Include 7-day forecast (default: current only)"),
+  },
+  async ({ lat, lon, forecast = false }) => {
+    console.error(`[apollo-mcp] weather: ${lat}, ${lon}, forecast=${forecast}`);
+    const endpoint = forecast ? "/api/weather/forecast" : "/api/weather/current";
+    const result = await makeApolloRequest<any>(endpoint, { lat, lon });
+    { const err = handleToolError(result, "Weather"); if (err) return err; }
+    const d = result.data!;
+    const parts = [`## Weather at ${lat}, ${lon}`];
+    if (d.current) {
+      parts.push(`**Current:** ${d.current.temperature_2m}°C | Wind: ${d.current.wind_speed_10m} km/h | ${d.current.description || ""}`);
+    }
+    if (d.daily?.time) {
+      parts.push(``, `### 7-Day Forecast`);
+      d.daily.time.forEach((date: string, i: number) => {
+        const hi = d.daily.temperature_2m_max?.[i] ?? "?";
+        const lo = d.daily.temperature_2m_min?.[i] ?? "?";
+        const precip = d.daily.precipitation_sum?.[i] ?? 0;
+        parts.push(`- ${date}: ${lo}°C – ${hi}°C | Precip: ${precip}mm`);
+      });
+    }
+    parts.push(``, `*Source: Open-Meteo*`);
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// ============================================
+// Tool: ml_analyze
+// ============================================
+server.tool(
+  "ml_analyze",
+  "Text analysis: sentiment, named entities, or summarization via HuggingFace models. $0.01–$0.02/query via x402.",
+  {
+    text: z.string().describe("Text to analyze"),
+    task: z.enum(["sentiment", "entities", "summarize"]).default("sentiment").describe("Analysis task"),
+  },
+  async ({ text, task = "sentiment" }) => {
+    console.error(`[apollo-mcp] ml_analyze: task=${task}, len=${text.length}`);
+    const endpoint = task === "sentiment" ? "/api/ml/sentiment" : task === "entities" ? "/api/ml/entities" : "/api/ml/summarize";
+    const result = await makeApolloRequest<any>(endpoint, { text });
+    { const err = handleToolError(result, `ML ${task}`); if (err) return err; }
+    const d = result.data!;
+    const parts = [`## ML Analysis: ${task}`];
+    if (task === "sentiment") {
+      parts.push(`**Sentiment:** ${d.sentiment} (confidence: ${(d.confidence * 100).toFixed(1)}%)`);
+      if (d.scores) parts.push(`Scores: ${JSON.stringify(d.scores)}`);
+    } else if (task === "entities") {
+      parts.push(`**Entities found:**`);
+      (d.entities || []).forEach((e: any) => parts.push(`- ${e.entity} (${e.type}, ${(e.score * 100).toFixed(0)}%)`));
+    } else {
+      parts.push(`**Summary:** ${d.summary}`);
+      if (d.compression_ratio) parts.push(`Compression: ${(d.compression_ratio * 100).toFixed(0)}%`);
+    }
+    return { content: [{ type: "text" as const, text: parts.join("\n") }] };
+  }
+);
+
+// ============================================
 // Main entry point
 // ============================================
+const TOOL_LIST = [
+  "web_scrape", "web_search", "x_search", "agent_intel", "sentiment", "pain_points",
+  "agentic_trends", "keyword_opportunities", "micro_saas", "web3_hackathons",
+  "github_trending", "producthunt", "weekly_digest", "crypto_prices", "crypto_trending",
+  "ip_intel", "domain_intel", "fx_rates", "stackexchange", "defi_yields", "defi_protocols",
+  "opportunity_bundle", "agentic_insights_bundle", "builder_intel_bundle",
+  "proxy_fetch", "proxy_status", "list_countries",
+  "economic_indicators", "country_metrics", "malware_feed", "ip_geo", "geocode",
+  "weather", "ml_analyze",
+];
+
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error("Apollo MCP Server v4.4.0 running on stdio");
-  console.error("  Tools: web_scrape, web_search, x_search, agent_intel, sentiment, pain_points, agentic_trends, keyword_opportunities, micro_saas, web3_hackathons, github_trending, producthunt, weekly_digest, opportunity_bundle, agentic_insights_bundle, builder_intel_bundle, proxy_fetch, proxy_status, list_countries, crypto_prices, crypto_trending, ip_intel, domain_intel, fx_rates, defi_yields, defi_protocols");
+  console.error(`Apollo MCP Server v4.7.0 running on stdio`);
+  console.error(`  Tools: ${TOOL_LIST.length} (${TOOL_LIST.join(", ")})`);
   console.error("  Endpoint: https://apolloai.team/api/*");
   console.error("  Payment: x402 (USDC on Base mainnet)");
 }
