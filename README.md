@@ -4,6 +4,8 @@
 
 Give your AI agent access to curated market intelligence, web scraping through 190+ country residential proxies, real-time X/Twitter search, crypto prices, GitHub trending data, and more. Pay per request with USDC on Base — no API keys, no subscriptions.
 
+**🆓 Free trial: 3 requests/day per IP — no payment needed.** Just install and start using it.
+
 [![npm version](https://img.shields.io/npm/v/@apollo_ai/mcp-proxy)](https://www.npmjs.com/package/@apollo_ai/mcp-proxy)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![x402scan](https://img.shields.io/badge/x402scan-listed-blue)](https://www.x402scan.com/server/3e61cb80-3b13-48cc-be79-db9dd85f57a4)
