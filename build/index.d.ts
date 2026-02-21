@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Apollo MCP Server v4.7.0
+ * Apollo MCP Server v4.7.1
  *
  * MCP server providing 34 tools: intelligence feeds, DeFi data, economic indicators,
  * real-time search, crypto data, OSINT, weather, ML/NLP, proxy infrastructure,

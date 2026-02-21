@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Apollo MCP Server v4.7.0
+ * Apollo MCP Server v4.7.1
  *
  * MCP server providing 34 tools: intelligence feeds, DeFi data, economic indicators,
  * real-time search, crypto data, OSINT, weather, ML/NLP, proxy infrastructure,
@@ -59,7 +59,7 @@ const PROXY_COUNTRIES = [
 // Create MCP server instance
 const server = new McpServer({
   name: "apollo-intelligence",
-  version: "4.7.0",
+  version: "4.7.1",
 });
 
 /**
@@ -1281,7 +1281,7 @@ const TOOL_LIST = [
 async function main() {
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error(`Apollo MCP Server v4.7.0 running on stdio`);
+  console.error(`Apollo MCP Server v4.7.1 running on stdio`);
   console.error(`  Tools: ${TOOL_LIST.length} (${TOOL_LIST.join(", ")})`);
   console.error("  Endpoint: https://apolloai.team/api/*");
   console.error("  Payment: x402 (USDC on Base mainnet)");
