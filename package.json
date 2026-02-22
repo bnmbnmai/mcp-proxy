@@ -1,7 +1,7 @@
 {
   "name": "@apollo_ai/mcp-proxy",
-  "version": "4.7.2",
-  "description": "MCP server for Apollo Intelligence Network — 34 tools: DeFi, OSINT, crypto, weather, ML/NLP, economic data, intel feeds, search, proxy. x402 micropayments (USDC on Base). Free trial: 3 requests/day.",
+  "version": "4.8.0",
+  "description": "MCP server for Apollo Intelligence Network \u2014 36 tools: intelligence feeds, OSINT, DeFi, economic data, security scanning, crypto, weather, ML/NLP, and proxy infrastructure via x402 micropayments",
   "type": "module",
   "bin": {
     "apollo-proxy-mcp": "build/index.js"
@@ -58,7 +58,7 @@
     "tools": [
       {
         "name": "web_scrape",
-        "description": "Scrape any URL — proxy rotation + content extraction. $0.02/req"
+        "description": "Scrape any URL \u2014 proxy rotation + content extraction. $0.02/req"
       },
       {
         "name": "web_search",
@@ -94,7 +94,7 @@
       },
       {
         "name": "web3_hackathons",
-        "description": "Rich hackathon data — prizes, dates, locations. $0.05/req"
+        "description": "Rich hackathon data \u2014 prizes, dates, locations. $0.05/req"
       },
       {
         "name": "github_trending",
@@ -122,7 +122,7 @@
       },
       {
         "name": "proxy_fetch",
-        "description": "Raw proxy relay — residential proxies (190+ countries). $0.01/req"
+        "description": "Raw proxy relay \u2014 residential proxies (190+ countries). $0.01/req"
       },
       {
         "name": "proxy_status",

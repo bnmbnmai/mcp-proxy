@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * Apollo MCP Server v4.7.1
+ * Apollo MCP Server v4.8.0
  *
- * MCP server providing 34 tools: intelligence feeds, DeFi data, economic indicators,
+ * MCP server providing 36 tools: intelligence feeds, DeFi data, economic indicators,
  * real-time search, crypto data, OSINT, weather, ML/NLP, proxy infrastructure,
  * and bundles — all via x402 micropayments (USDC on Base).
  *
@@ -31,6 +31,8 @@
  * - agentic_insights_bundle: Trends + pain + intel ($0.12)
  * - builder_intel_bundle: GitHub + PH + agent intel ($0.10)
  * - proxy_fetch: Raw proxy relay ($0.01)
+ * - ip_reputation: IP abuse scoring via AbuseIPDB ($0.03)
+ * - malware_url_check: VirusTotal URL scanning ($0.05)
  * - proxy_status: Check service availability
  * - list_countries: Available proxy exit countries
  *

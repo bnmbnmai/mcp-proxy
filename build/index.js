@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * Apollo MCP Server v4.7.1
+ * Apollo MCP Server v4.8.0
  *
- * MCP server providing 34 tools: intelligence feeds, DeFi data, economic indicators,
+ * MCP server providing 36 tools: intelligence feeds, DeFi data, economic indicators,
  * real-time search, crypto data, OSINT, weather, ML/NLP, proxy infrastructure,
  * and bundles — all via x402 micropayments (USDC on Base).
  *
@@ -31,6 +31,8 @@
  * - agentic_insights_bundle: Trends + pain + intel ($0.12)
  * - builder_intel_bundle: GitHub + PH + agent intel ($0.10)
  * - proxy_fetch: Raw proxy relay ($0.01)
+ * - ip_reputation: IP abuse scoring via AbuseIPDB ($0.03)
+ * - malware_url_check: VirusTotal URL scanning ($0.05)
  * - proxy_status: Check service availability
  * - list_countries: Available proxy exit countries
  *
@@ -55,7 +57,7 @@ const PROXY_COUNTRIES = [
 // Create MCP server instance
 const server = new McpServer({
     name: "apollo-intelligence",
-    version: "4.7.1",
+    version: "4.8.0",
 });
 /**
  * Make a request to Apollo's x402 API.
@@ -1185,6 +1187,83 @@ server.tool("ml_analyze", "Text analysis: sentiment, named entities, or summariz
     return { content: [{ type: "text", text: parts.join("\n") }] };
 });
 // ============================================
+// Tool: ip_reputation
+// ============================================
+server.tool("ip_reputation", "IP reputation and abuse scoring via AbuseIPDB — confidence score, abuse reports, ISP info. Checks against 300K+ reported IPs. $0.03/query via x402.", {
+    ip: z.string().describe("IPv4 or IPv6 address to check"),
+    max_age: z.number().default(30).describe("Max age of abuse reports in days (1-365, default 30)"),
+}, async ({ ip, max_age = 30 }) => {
+    console.error(`[apollo-mcp] ip_reputation: ${ip}`);
+    const result = await makeApolloRequest("/api/ip-reputation", {
+        ip, max_age: String(max_age),
+    });
+    {
+        const err = handleToolError(result, "IP reputation");
+        if (err)
+            return err;
+    }
+    const d = result.data;
+    const data = d.data || d;
+    const parts = [
+        `## IP Reputation: ${data.ipAddress || ip}`,
+        `**Abuse Confidence:** ${data.abuseConfidenceScore ?? "?"}%`,
+        `**Total Reports:** ${data.totalReports ?? 0}`,
+        `**ISP:** ${data.isp || "?"}`,
+        `**Country:** ${data.countryCode || "?"}`,
+        `**Domain:** ${data.domain || "?"}`,
+        `**Usage Type:** ${data.usageType || "?"}`,
+        `**Whitelisted:** ${data.isWhitelisted ? "yes" : "no"}`,
+        `**Last Reported:** ${data.lastReportedAt || "never"}`,
+    ];
+    if (data.reports?.length) {
+        parts.push(``, `### Recent Reports`);
+        data.reports.slice(0, 5).forEach((r) => {
+            parts.push(`- ${r.reportedAt}: ${r.comment || "no comment"} (cat: ${(r.categories || []).join(", ")})`);
+        });
+    }
+    parts.push(``, `*Source: AbuseIPDB*`);
+    return { content: [{ type: "text", text: parts.join("\n") }] };
+});
+// ============================================
+// Tool: malware_url_check
+// ============================================
+server.tool("malware_url_check", "Scan a URL for malware/phishing with VirusTotal — 70+ antivirus engines analyze the URL. Returns detection results, threat labels, and community votes. $0.05/query via x402.", {
+    url: z.string().url().describe("URL to scan for malware/phishing"),
+    wait: z.boolean().default(false).describe("Wait for fresh analysis (slower but more current)"),
+}, async ({ url, wait = false }) => {
+    console.error(`[apollo-mcp] malware_url_check: ${url}`);
+    const result = await makeApolloRequest("/api/malware/url", {
+        url, wait: String(wait),
+    });
+    {
+        const err = handleToolError(result, "Malware URL check");
+        if (err)
+            return err;
+    }
+    const d = result.data;
+    const stats = d.stats || d.last_analysis_stats || {};
+    const parts = [
+        `## URL Scan: ${d.url || url}`,
+        `**Malicious:** ${stats.malicious || 0} engines`,
+        `**Suspicious:** ${stats.suspicious || 0} engines`,
+        `**Clean:** ${stats.harmless || stats.undetected || 0} engines`,
+        `**Total Engines:** ${(stats.malicious || 0) + (stats.suspicious || 0) + (stats.harmless || 0) + (stats.undetected || 0)}`,
+    ];
+    if (d.categories) {
+        const cats = typeof d.categories === "object" ? Object.values(d.categories).slice(0, 5) : [];
+        if (cats.length)
+            parts.push(`**Categories:** ${cats.join(", ")}`);
+    }
+    if (d.threat_names?.length) {
+        parts.push(`**Threats:** ${d.threat_names.slice(0, 5).join(", ")}`);
+    }
+    if (d.community_votes) {
+        parts.push(`**Community:** ${d.community_votes.harmless || 0} clean, ${d.community_votes.malicious || 0} malicious`);
+    }
+    parts.push(``, `*Source: VirusTotal (${d.engines_used || "70+"} engines)*`);
+    return { content: [{ type: "text", text: parts.join("\n") }] };
+});
+// ============================================
 // Main entry point
 // ============================================
 const TOOL_LIST = [
@@ -1195,12 +1274,12 @@ const TOOL_LIST = [
     "opportunity_bundle", "agentic_insights_bundle", "builder_intel_bundle",
     "proxy_fetch", "proxy_status", "list_countries",
     "economic_indicators", "country_metrics", "malware_feed", "ip_geo", "geocode",
-    "weather", "ml_analyze",
+    "weather", "ml_analyze", "ip_reputation", "malware_url_check",
 ];
 async function main() {
     const transport = new StdioServerTransport();
     await server.connect(transport);
-    console.error(`Apollo MCP Server v4.7.1 running on stdio`);
+    console.error(`Apollo MCP Server v4.8.0 running on stdio`);
     console.error(`  Tools: ${TOOL_LIST.length} (${TOOL_LIST.join(", ")})`);
     console.error("  Endpoint: https://apolloai.team/api/*");
     console.error("  Payment: x402 (USDC on Base mainnet)");
