@@ -1,49 +1,46 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "Apollo Intelligence Network API",
-    "description": "27 x402-gated API endpoints for AI agents. Intelligence feeds, DeFi data, OSINT, crypto prices, real-time search, and residential proxy infrastructure. Pay per request with USDC on Base mainnet — no API keys, no subscriptions.\n\nAll paid endpoints return HTTP 402 with payment instructions. Include an x402 payment header to access. See https://apolloai.team/.well-known/x402 for payment details.",
-    "version": "3.0.0",
-    "contact": {
-      "name": "Apollo Intelligence Network",
-      "url": "https://apolloai.team"
-    },
-    "license": {
-      "name": "Proprietary"
-    },
-    "x-x402": {
-      "network": "eip155:8453",
-      "asset": "USDC",
-      "wallet": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
-      "discovery": "https://apolloai.team/.well-known/x402"
-    }
+    "title": "Apollo Intelligence API",
+    "description": "40 x402-gated API endpoints: intelligence feeds, economic data, DeFi, crypto, OSINT, NLP, proxy, weather. Pay per request with USDC on Base.",
+    "version": "3.0.0"
   },
-  "servers": [
-    {
-      "url": "https://apolloai.team",
-      "description": "Production (Base mainnet)"
-    }
-  ],
   "paths": {
     "/.well-known/x402": {
       "get": {
-        "summary": "x402 Discovery Document",
-        "description": "Returns all x402-gated resources and payment requirements. Free endpoint.",
-        "tags": ["Discovery"],
+        "summary": "Discovery Document",
+        "description": "x402 Discovery Document \u2014 enables automatic registration on x402scan.com\nPoints to /api/* endpoints (paid via x402)",
+        "operationId": "discovery_document__well_known_x402_get",
         "responses": {
           "200": {
-            "description": "x402 discovery document with all resources",
+            "description": "Successful Response",
             "content": {
               "application/json": {
                 "schema": {
+                  "additionalProperties": true,
                   "type": "object",
-                  "properties": {
-                    "version": {"type": "integer"},
-                    "resources": {
-                      "type": "array",
-                      "items": {"type": "string", "format": "uri"}
-                    }
-                  }
+                  "title": "Response Discovery Document  Well Known X402 Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/.well-known/x402-manifest": {
+      "get": {
+        "summary": "Discovery Manifest",
+        "description": "Alias for /.well-known/x402 \u2014 some crawlers/agents look for this path.",
+        "operationId": "discovery_manifest__well_known_x402_manifest_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Discovery Manifest  Well Known X402 Manifest Get"
                 }
               }
             }
@@ -53,656 +50,42 @@
     },
     "/api/agent-intel": {
       "get": {
-        "summary": "Agent Economy Intelligence",
-        "description": "Live agent economy opportunities — bounties, hackathons, grants, platforms. Refreshed every 4h. Multi-source NLP-curated.",
-        "tags": ["Intelligence Feeds"],
+        "summary": "Agent Intel",
+        "description": "Agent economy opportunities \u2014 bounties, platforms, hackathons, market signals.",
+        "operationId": "agent_intel_api_agent_intel_get",
         "parameters": [
           {
             "name": "category",
             "in": "query",
-            "schema": {"type": "string", "enum": ["all", "bounties", "platforms", "x402", "defi"]},
-            "description": "Filter by category"
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Filter: all, bounties, platforms, x402, defi",
+              "default": "all",
+              "title": "Category"
+            },
+            "description": "Filter: all, bounties, platforms, x402, defi"
           }
         ],
         "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
           "200": {
-            "description": "Agent economy intelligence data",
+            "description": "Successful Response",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
-                  "properties": {
-                    "total_opportunities": {"type": "integer"},
-                    "last_scan": {"type": "string", "format": "date-time"},
-                    "top_opportunities": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "properties": {
-                          "name": {"type": "string"},
-                          "type": {"type": "string"},
-                          "priority": {"type": "string"},
-                          "value": {"type": "string"},
-                          "link": {"type": "string", "format": "uri"},
-                          "actionable_next_step": {"type": "string"}
-                        }
-                      }
-                    }
-                  }
+                  "additionalProperties": true,
+                  "title": "Response Agent Intel Api Agent Intel Get"
                 }
               }
             }
-          }
-        },
-        "x-x402-price": "$0.05"
-      }
-    },
-    "/api/sentiment": {
-      "get": {
-        "summary": "Social Sentiment Analysis",
-        "description": "Real-time social sentiment on crypto, DeFi, AI agents, tech macro via Grok. Refreshed every 4h.",
-        "tags": ["Intelligence Feeds"],
-        "parameters": [
-          {
-            "name": "topic",
-            "in": "query",
-            "schema": {"type": "string"},
-            "description": "Topic to get sentiment for"
-          }
-        ],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Sentiment analysis data"}
-        },
-        "x-x402-price": "$0.02"
-      }
-    },
-    "/api/pain-points": {
-      "get": {
-        "summary": "Pain Points Feed",
-        "description": "NLP-clustered pain points from Quora, G2, Reddit, Upwork with micro-SaaS suggestions. Multi-source intelligence.",
-        "tags": ["Intelligence Feeds"],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Clustered pain points with SaaS opportunity mapping"}
-        },
-        "x-x402-price": "$0.08"
-      }
-    },
-    "/api/agentic-trends": {
-      "get": {
-        "summary": "Agentic Economy Trends",
-        "description": "Market signals, funding, adoption from reports and forums. Agentic economy intelligence updated daily.",
-        "tags": ["Intelligence Feeds"],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Agentic economy trend data"}
-        },
-        "x-x402-price": "$0.05"
-      }
-    },
-    "/api/keyword-opps": {
-      "get": {
-        "summary": "Keyword Opportunity Flywheel",
-        "description": "Seed a keyword, get variants + opportunity mapping + cross-linked feeds.",
-        "tags": ["Intelligence Feeds"],
-        "parameters": [
-          {
-            "name": "seed",
-            "in": "query",
-            "required": true,
-            "schema": {"type": "string"},
-            "description": "Seed keyword (e.g., 'AI automation', 'no-code tools')"
-          }
-        ],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Keyword variants and opportunity mapping"}
-        },
-        "x-x402-price": "$0.05"
-      }
-    },
-    "/api/micro-saas": {
-      "get": {
-        "summary": "Micro-SaaS Ideas",
-        "description": "Validated micro-SaaS ideas with market sizing and competition analysis. Refreshed every 4h.",
-        "tags": ["Intelligence Feeds"],
-        "parameters": [
-          {
-            "name": "category",
-            "in": "query",
-            "schema": {"type": "string", "enum": ["all", "saas", "data", "agent"]},
-            "description": "Filter by category"
-          }
-        ],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Curated micro-SaaS opportunities"}
-        },
-        "x-x402-price": "$0.10"
-      }
-    },
-    "/api/web3-hackathons": {
-      "get": {
-        "summary": "Web3 Hackathon Tracker",
-        "description": "Live hackathon aggregator — ETHGlobal, DoraHacks, Devpost, Devfolio. Only events with open registration.",
-        "tags": ["Intelligence Feeds"],
-        "parameters": [
-          {
-            "name": "category",
-            "in": "query",
-            "schema": {"type": "string", "enum": ["all", "ethglobal", "solana", "base", "ethereum", "polygon"]},
-            "description": "Filter by ecosystem"
-          }
-        ],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Active hackathons with prizes, dates, registration links"}
-        },
-        "x-x402-price": "$0.05"
-      }
-    },
-    "/api/github-trending": {
-      "get": {
-        "summary": "GitHub Trending Repos",
-        "description": "GitHub repos ranked by star velocity (stars/day). AI-categorized. Filter by language, topic, timeframe.",
-        "tags": ["Intelligence Feeds"],
-        "parameters": [
-          {
-            "name": "language",
-            "in": "query",
-            "schema": {"type": "string", "enum": ["all", "python", "typescript", "rust", "go", "javascript"]},
-            "description": "Filter by language"
           },
-          {
-            "name": "topic",
-            "in": "query",
-            "schema": {"type": "string", "enum": ["all", "ai", "llm", "web3", "mcp", "agent"]},
-            "description": "Filter by topic"
-          },
-          {
-            "name": "timeframe",
-            "in": "query",
-            "schema": {"type": "string", "enum": ["daily", "weekly", "monthly"]},
-            "description": "Time window: daily (7d), weekly (14d), monthly (60d)"
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "schema": {"type": "integer", "minimum": 1, "maximum": 50},
-            "description": "Max repos (1-50)"
-          }
-        ],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Trending repos with star velocity and categorization"}
-        },
-        "x-x402-price": "$0.05"
-      }
-    },
-    "/api/producthunt": {
-      "get": {
-        "summary": "Product Hunt Launches",
-        "description": "Daily Product Hunt launches with AI categorization. Filter by category.",
-        "tags": ["Intelligence Feeds"],
-        "parameters": [
-          {
-            "name": "category",
-            "in": "query",
-            "schema": {"type": "string", "enum": ["all", "ai", "devtools", "web3", "saas", "design", "productivity"]},
-            "description": "Filter by category"
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "schema": {"type": "integer", "minimum": 1, "maximum": 50},
-            "description": "Max launches (1-50)"
-          }
-        ],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Product Hunt launches with categorization"}
-        },
-        "x-x402-price": "$0.05"
-      }
-    },
-    "/api/weekly-digest": {
-      "get": {
-        "summary": "Weekly Intelligence Digest",
-        "description": "Consolidated weekly intelligence report with cross-feed synthesis. Premium intelligence.",
-        "tags": ["Intelligence Feeds"],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Comprehensive weekly intelligence synthesis"}
-        },
-        "x-x402-price": "$0.25"
-      }
-    },
-    "/api/x-search": {
-      "get": {
-        "summary": "Real-time X/Twitter Search",
-        "description": "Search X/Twitter posts with engagement metrics and AI analysis. Powered by Grok.",
-        "tags": ["Search & Scraping"],
-        "parameters": [
-          {
-            "name": "q",
-            "in": "query",
-            "required": true,
-            "schema": {"type": "string"},
-            "description": "Search query (keywords, hashtags, handles)"
-          },
-          {
-            "name": "count",
-            "in": "query",
-            "schema": {"type": "integer", "minimum": 1, "maximum": 25, "default": 10},
-            "description": "Max posts to return"
-          },
-          {
-            "name": "handles",
-            "in": "query",
-            "schema": {"type": "string"},
-            "description": "Comma-separated handles to filter (max 10)"
-          },
-          {
-            "name": "from_date",
-            "in": "query",
-            "schema": {"type": "string", "format": "date"},
-            "description": "Start date (YYYY-MM-DD)"
-          },
-          {
-            "name": "to_date",
-            "in": "query",
-            "schema": {"type": "string", "format": "date"},
-            "description": "End date (YYYY-MM-DD)"
-          }
-        ],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "X/Twitter posts with engagement metrics and AI analysis"}
-        },
-        "x-x402-price": "$0.75"
-      }
-    },
-    "/api/scrape": {
-      "get": {
-        "summary": "Web Scraping Service",
-        "description": "Fetch any URL through residential proxies with content extraction. Returns clean text/markdown.",
-        "tags": ["Search & Scraping"],
-        "parameters": [
-          {
-            "name": "url",
-            "in": "query",
-            "required": true,
-            "schema": {"type": "string", "format": "uri"},
-            "description": "URL to scrape"
-          },
-          {
-            "name": "extract",
-            "in": "query",
-            "schema": {"type": "boolean", "default": true},
-            "description": "Extract clean text"
-          },
-          {
-            "name": "format",
-            "in": "query",
-            "schema": {"type": "string", "enum": ["raw", "text", "markdown"], "default": "markdown"},
-            "description": "Output format"
-          },
-          {
-            "name": "country",
-            "in": "query",
-            "schema": {"type": "string", "default": "US"},
-            "description": "Proxy country ISO code (e.g., US, GB, DE)"
-          }
-        ],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Scraped content in requested format"}
-        },
-        "x-x402-price": "$0.02"
-      }
-    },
-    "/api/scrape/search": {
-      "get": {
-        "summary": "Web Search",
-        "description": "Web search with site filters (Reddit, HN, GitHub, Twitter). Returns top results with titles, URLs, and descriptions.",
-        "tags": ["Search & Scraping"],
-        "parameters": [
-          {
-            "name": "q",
-            "in": "query",
-            "required": true,
-            "schema": {"type": "string"},
-            "description": "Search query"
-          },
-          {
-            "name": "count",
-            "in": "query",
-            "schema": {"type": "integer", "minimum": 1, "maximum": 20, "default": 10},
-            "description": "Number of results"
-          },
-          {
-            "name": "site",
-            "in": "query",
-            "schema": {"type": "string", "enum": ["", "reddit", "hn", "github", "twitter", "producthunt"]},
-            "description": "Site filter"
-          }
-        ],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Search results"}
-        },
-        "x-x402-price": "$0.01"
-      }
-    },
-    "/api/proxy/request": {
-      "get": {
-        "summary": "Residential Proxy Relay",
-        "description": "Raw proxy relay — send a target URL, fetched through 190+ country residential proxies. 250KB response cap.",
-        "tags": ["Proxy Infrastructure"],
-        "parameters": [
-          {
-            "name": "url",
-            "in": "query",
-            "required": true,
-            "schema": {"type": "string", "format": "uri"},
-            "description": "URL to fetch through proxy"
-          },
-          {
-            "name": "country",
-            "in": "query",
-            "schema": {"type": "string"},
-            "description": "ISO country code (e.g., US, GB, DE, JP)"
-          },
-          {
-            "name": "method",
-            "in": "query",
-            "schema": {"type": "string", "enum": ["GET", "POST", "HEAD"], "default": "GET"},
-            "description": "HTTP method"
-          },
-          {
-            "name": "session_type",
-            "in": "query",
-            "schema": {"type": "string", "enum": ["rotating", "sticky"], "default": "rotating"},
-            "description": "Session type: rotating (new IP each request) or sticky"
-          }
-        ],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Proxied response content"}
-        },
-        "x-x402-price": "$0.01"
-      }
-    },
-    "/api/proxy/session": {
-      "post": {
-        "summary": "Dedicated Proxy Session",
-        "description": "Create a 1-5 minute dedicated residential IP session with geo-targeting. 250MB cap.",
-        "tags": ["Proxy Infrastructure"],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Session created with dedicated IP and session_id"}
-        },
-        "x-x402-price": "$0.50/min"
-      }
-    },
-    "/api/proxy/status": {
-      "get": {
-        "summary": "Proxy Service Status",
-        "description": "Check proxy service availability, countries, and pricing.",
-        "tags": ["Proxy Infrastructure"],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Service status, available countries, pricing"}
-        },
-        "x-x402-price": "$0.001"
-      }
-    },
-    "/api/crypto-prices": {
-      "get": {
-        "summary": "Live Cryptocurrency Prices",
-        "description": "Real-time crypto prices from CoinGecko. Any token. Includes market cap, 24h change, volume.",
-        "tags": ["Crypto & DeFi"],
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {"type": "string"},
-            "description": "Comma-separated CoinGecko coin IDs (e.g., bitcoin,ethereum,solana)"
-          },
-          {
-            "name": "vs_currencies",
-            "in": "query",
-            "schema": {"type": "string", "default": "usd"},
-            "description": "Target currencies (e.g., usd,eur,btc)"
-          },
-          {
-            "name": "include_market_cap",
-            "in": "query",
-            "schema": {"type": "boolean", "default": true}
-          },
-          {
-            "name": "include_24hr_change",
-            "in": "query",
-            "schema": {"type": "boolean", "default": true}
-          },
-          {
-            "name": "include_24hr_vol",
-            "in": "query",
-            "schema": {"type": "boolean", "default": false}
-          }
-        ],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Cryptocurrency price data"}
-        },
-        "x-x402-price": "$0.01"
-      }
-    },
-    "/api/crypto-trending": {
-      "get": {
-        "summary": "Trending Cryptocurrencies",
-        "description": "Top movers by search volume on CoinGecko. Includes price, market cap rank, and 24h change.",
-        "tags": ["Crypto & DeFi"],
-        "parameters": [
-          {
-            "name": "limit",
-            "in": "query",
-            "schema": {"type": "integer", "minimum": 1, "maximum": 15, "default": 15}
-          }
-        ],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Trending cryptocurrency data"}
-        },
-        "x-x402-price": "$0.02"
-      }
-    },
-    "/api/ip-intel": {
-      "get": {
-        "summary": "IP Threat Intelligence",
-        "description": "Multi-source IP intelligence from 4 OSINT sources (Shodan InternetDB, GreyNoise, AlienVault OTX, ip-api). Geolocation, open ports, vulnerabilities, threat classification.",
-        "tags": ["OSINT"],
-        "parameters": [
-          {
-            "name": "ip",
-            "in": "query",
-            "required": true,
-            "schema": {"type": "string", "format": "ipv4"},
-            "description": "IPv4 address to investigate"
-          }
-        ],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Comprehensive IP intelligence report"}
-        },
-        "x-x402-price": "$0.03"
-      }
-    },
-    "/api/domain-intel": {
-      "get": {
-        "summary": "Domain Intelligence",
-        "description": "Multi-source domain intelligence — DNS records, SSL certificates, registration info, geo, and threat analysis.",
-        "tags": ["OSINT"],
-        "parameters": [
-          {
-            "name": "domain",
-            "in": "query",
-            "required": true,
-            "schema": {"type": "string"},
-            "description": "Domain name (no protocol prefix)"
-          }
-        ],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Comprehensive domain intelligence report"}
-        },
-        "x-x402-price": "$0.03"
-      }
-    },
-    "/api/fx-rates": {
-      "get": {
-        "summary": "Foreign Exchange Rates",
-        "description": "Live FX rates for 30+ currencies. Real-time conversion from any base currency. ECB data via Frankfurter.",
-        "tags": ["Utility"],
-        "parameters": [
-          {
-            "name": "base",
-            "in": "query",
-            "schema": {"type": "string", "default": "USD"},
-            "description": "Base currency ISO code"
-          }
-        ],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Exchange rates for 30+ currencies"}
-        },
-        "x-x402-price": "$0.005"
-      }
-    },
-    "/api/defi-yields": {
-      "get": {
-        "summary": "DeFi Yield Data",
-        "description": "Top DeFi yields across 18K+ pools from DefiLlama. Filter by chain, TVL, stablecoin. Real-time APY.",
-        "tags": ["Crypto & DeFi"],
-        "parameters": [
-          {
-            "name": "chain",
-            "in": "query",
-            "schema": {"type": "string", "enum": ["all", "ethereum", "solana", "base", "polygon", "multi"]},
-            "description": "Filter by chain"
-          }
-        ],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "DeFi yield pool data"}
-        },
-        "x-x402-price": "$0.03"
-      }
-    },
-    "/api/defi-protocols": {
-      "get": {
-        "summary": "DeFi Protocol Rankings",
-        "description": "Top DeFi protocols by TVL from DefiLlama. 7000+ protocols, category filtering, TVL changes.",
-        "tags": ["Crypto & DeFi"],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "DeFi protocol TVL rankings"}
-        },
-        "x-x402-price": "$0.02"
-      }
-    },
-    "/api/bundle/opportunity-pack": {
-      "get": {
-        "summary": "Opportunity Pack Bundle",
-        "description": "Keywords + pain points + micro-SaaS ideas. 35% discount vs individual endpoints.",
-        "tags": ["Bundles"],
-        "parameters": [
-          {
-            "name": "keyword",
-            "in": "query",
-            "required": true,
-            "schema": {"type": "string"},
-            "description": "Keyword for the opportunity pack"
-          }
-        ],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Combined opportunity intelligence"}
-        },
-        "x-x402-price": "$0.15"
-      }
-    },
-    "/api/bundle/agentic-insights": {
-      "get": {
-        "summary": "Agentic Insights Bundle",
-        "description": "Trends + pain points + agent-intel. Premium intelligence pack. 33% discount.",
-        "tags": ["Bundles"],
-        "parameters": [
-          {
-            "name": "keyword",
-            "in": "query",
-            "schema": {"type": "string"},
-            "description": "Focus keyword for insights"
-          }
-        ],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Combined agentic intelligence"}
-        },
-        "x-x402-price": "$0.12"
-      }
-    },
-    "/api/bundle/builder-intel": {
-      "get": {
-        "summary": "Builder Intel Bundle",
-        "description": "GitHub trending + Product Hunt launches + agent intel. Everything a builder agent needs. 33% off.",
-        "tags": ["Bundles"],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Combined builder intelligence"}
-        },
-        "x-x402-price": "$0.10"
-      }
-    },
-    "/api/feedback": {
-      "get": {
-        "summary": "Community Feedback",
-        "description": "View community feedback and ratings on Apollo feeds.",
-        "tags": ["Utility"],
-        "responses": {
-          "402": {"$ref": "#/components/responses/PaymentRequired"},
-          "200": {"description": "Community feedback data"}
-        },
-        "x-x402-price": "$0.001"
-      }
-    }
-  },
-  "components": {
-    "responses": {
-      "PaymentRequired": {
-        "description": "Payment required. Response includes x402 payment instructions in the `payment-required` header (base64-encoded JSON).",
-        "headers": {
-          "payment-required": {
-            "description": "Base64-encoded JSON with x402 payment requirements including network, asset, amount, payTo address, and Bazaar extensions.",
-            "schema": {"type": "string"}
-          }
-        },
-        "content": {
-          "application/json": {
-            "schema": {
-              "type": "object",
-              "properties": {
-                "message": {"type": "string", "example": "Showing 2 sample items. Pay $0.05 (USDC on Base) for the full dataset."},
-                "how_to_pay": {"type": "string"},
-                "network": {"type": "string", "example": "Base (eip155:8453)"},
-                "asset": {"type": "string", "example": "USDC"},
-                "price_usd": {"type": "number"},
-                "sample_opportunities": {
-                  "type": "array",
-                  "description": "Preview data (2 sample items from the full dataset)"
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
                 }
               }
             }
@@ -710,23 +93,2778 @@
         }
       }
     },
-    "securitySchemes": {
-      "x402Payment": {
-        "type": "apiKey",
-        "in": "header",
-        "name": "X-PAYMENT",
-        "description": "x402 payment proof. Create using @x402/fetch or @x402/axios SDK."
+    "/api/sentiment": {
+      "get": {
+        "summary": "Sentiment",
+        "description": "Real-time X/Twitter sentiment across crypto, DeFi, AI agents, tech macro.",
+        "operationId": "sentiment_api_sentiment_get",
+        "parameters": [
+          {
+            "name": "topic",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Topic to get sentiment for",
+              "default": "agent economy",
+              "title": "Topic"
+            },
+            "description": "Topic to get sentiment for"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Sentiment Api Sentiment Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/weekly-digest": {
+      "get": {
+        "summary": "Weekly Digest",
+        "description": "Weekly consolidated intel \u2014 top opportunities, trends, recommendations.",
+        "operationId": "weekly_digest_api_weekly_digest_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Weekly Digest Api Weekly Digest Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/micro-saas": {
+      "get": {
+        "summary": "Micro Saas",
+        "description": "Curated micro-SaaS ideas and buildable opportunities.",
+        "operationId": "micro_saas_api_micro_saas_get",
+        "parameters": [
+          {
+            "name": "vertical",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Filter: all, saas, data, agent",
+              "default": "all",
+              "title": "Vertical"
+            },
+            "description": "Filter: all, saas, data, agent"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Micro Saas Api Micro Saas Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/web3-hackathons": {
+      "get": {
+        "summary": "Web3 Hackathons",
+        "description": "Web3 hackathon aggregator \u2014 ETHGlobal, Solana, Base, Ethereum, Polygon (registration open only).",
+        "operationId": "web3_hackathons_api_web3_hackathons_get",
+        "parameters": [
+          {
+            "name": "platform",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Filter: all, ethglobal, solana, base, ethereum, polygon",
+              "default": "all",
+              "title": "Platform"
+            },
+            "description": "Filter: all, ethglobal, solana, base, ethereum, polygon"
+          },
+          {
+            "name": "chain",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Filter by chain: all, ethereum, solana, base, polygon, multi",
+              "default": "all",
+              "title": "Chain"
+            },
+            "description": "Filter by chain: all, ethereum, solana, base, polygon, multi"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Web3 Hackathons Api Web3 Hackathons Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/proxy/request": {
+      "get": {
+        "summary": "Proxy Request",
+        "description": "Proxy relay service. Send us a target URL and we fetch it through\nour residential proxy network. $0.005/request with 250KB cap.\nRate limit: 100 req/min per wallet.",
+        "operationId": "proxy_request_api_proxy_request_get",
+        "parameters": [
+          {
+            "name": "target_url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The URL to fetch through the proxy (required)",
+              "title": "Target Url"
+            },
+            "description": "The URL to fetch through the proxy (required)"
+          },
+          {
+            "name": "method",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "HTTP method: GET, POST, HEAD",
+              "default": "GET",
+              "title": "Method"
+            },
+            "description": "HTTP method: GET, POST, HEAD"
+          },
+          {
+            "name": "proxy_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Proxy type: residential only",
+              "default": "residential",
+              "title": "Proxy Type"
+            },
+            "description": "Proxy type: residential only"
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "ISO country code (e.g., US, GB, DE, JP)",
+              "default": "US",
+              "title": "Country"
+            },
+            "description": "ISO country code (e.g., US, GB, DE, JP)"
+          },
+          {
+            "name": "session_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Session type: rotating (new IP per request) or sticky",
+              "default": "rotating",
+              "title": "Session Type"
+            },
+            "description": "Session type: rotating (new IP per request) or sticky"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Proxy Request Api Proxy Request Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Proxy Request",
+        "description": "Proxy relay service. Send us a target URL and we fetch it through\nour residential proxy network. $0.005/request with 250KB cap.\nRate limit: 100 req/min per wallet.",
+        "operationId": "proxy_request_api_proxy_request_get",
+        "parameters": [
+          {
+            "name": "target_url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The URL to fetch through the proxy (required)",
+              "title": "Target Url"
+            },
+            "description": "The URL to fetch through the proxy (required)"
+          },
+          {
+            "name": "method",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "HTTP method: GET, POST, HEAD",
+              "default": "GET",
+              "title": "Method"
+            },
+            "description": "HTTP method: GET, POST, HEAD"
+          },
+          {
+            "name": "proxy_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Proxy type: residential only",
+              "default": "residential",
+              "title": "Proxy Type"
+            },
+            "description": "Proxy type: residential only"
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "ISO country code (e.g., US, GB, DE, JP)",
+              "default": "US",
+              "title": "Country"
+            },
+            "description": "ISO country code (e.g., US, GB, DE, JP)"
+          },
+          {
+            "name": "session_type",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Session type: rotating (new IP per request) or sticky",
+              "default": "rotating",
+              "title": "Session Type"
+            },
+            "description": "Session type: rotating (new IP per request) or sticky"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Proxy Request Api Proxy Request Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/proxy/status": {
+      "get": {
+        "summary": "Proxy Status",
+        "description": "Check proxy service availability and configuration.",
+        "operationId": "proxy_status_api_proxy_status_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Proxy Status Api Proxy Status Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/scrape": {
+      "get": {
+        "summary": "Scrape Url",
+        "description": "Scraping as a Service \u2014 Fetch any URL through residential proxies with\nintelligent content extraction. Returns clean text/markdown suitable for\nLLM consumption.\n\n$0.01/request. 250KB content cap. Rate limit: 60 req/min per wallet.",
+        "operationId": "scrape_url_api_scrape_get",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The URL to scrape",
+              "title": "Url"
+            },
+            "description": "The URL to scrape"
+          },
+          {
+            "name": "extract",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Extract clean text (default: true)",
+              "default": true,
+              "title": "Extract"
+            },
+            "description": "Extract clean text (default: true)"
+          },
+          {
+            "name": "include_links",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include extracted links",
+              "default": false,
+              "title": "Include Links"
+            },
+            "description": "Include extracted links"
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Proxy country ISO code (e.g., US, GB, DE)",
+              "default": "US",
+              "title": "Country"
+            },
+            "description": "Proxy country ISO code (e.g., US, GB, DE)"
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Output format: raw, text, markdown",
+              "default": "markdown",
+              "title": "Format"
+            },
+            "description": "Output format: raw, text, markdown"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Scrape Url Api Scrape Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Scrape Url",
+        "description": "Scraping as a Service \u2014 Fetch any URL through residential proxies with\nintelligent content extraction. Returns clean text/markdown suitable for\nLLM consumption.\n\n$0.01/request. 250KB content cap. Rate limit: 60 req/min per wallet.",
+        "operationId": "scrape_url_api_scrape_get",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "The URL to scrape",
+              "title": "Url"
+            },
+            "description": "The URL to scrape"
+          },
+          {
+            "name": "extract",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Extract clean text (default: true)",
+              "default": true,
+              "title": "Extract"
+            },
+            "description": "Extract clean text (default: true)"
+          },
+          {
+            "name": "include_links",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Include extracted links",
+              "default": false,
+              "title": "Include Links"
+            },
+            "description": "Include extracted links"
+          },
+          {
+            "name": "country",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Proxy country ISO code (e.g., US, GB, DE)",
+              "default": "US",
+              "title": "Country"
+            },
+            "description": "Proxy country ISO code (e.g., US, GB, DE)"
+          },
+          {
+            "name": "format",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Output format: raw, text, markdown",
+              "default": "markdown",
+              "title": "Format"
+            },
+            "description": "Output format: raw, text, markdown"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Scrape Url Api Scrape Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/scrape/search": {
+      "get": {
+        "summary": "Scrape Search",
+        "description": "Web Search \u2014 Query Brave Search and return structured results.\n$0.005/query. Max 20 results per query.",
+        "operationId": "scrape_search_api_scrape_search_get",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Search query",
+              "title": "Q"
+            },
+            "description": "Search query"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "description": "Number of results (max 20)",
+              "default": 10,
+              "title": "Count"
+            },
+            "description": "Number of results (max 20)"
+          },
+          {
+            "name": "site",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Site filter: reddit, hn, github, twitter, producthunt",
+              "default": "",
+              "title": "Site"
+            },
+            "description": "Site filter: reddit, hn, github, twitter, producthunt"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Scrape Search Api Scrape Search Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/x-search": {
+      "get": {
+        "summary": "X Search Endpoint",
+        "description": "Real-time X/Twitter Intelligence \u2014 search posts, analyze sentiment,\ntrack conversations via Grok's x_search.\n\n$0.25/query. Returns structured post data with engagement metrics\nand AI-synthesized analysis. Max 25 posts per query.\n\nPremium data source: real-time access to X/Twitter that agents can't\nget through standard web scraping.",
+        "operationId": "x_search_endpoint_api_x_search_get",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Search query (keywords, hashtags, handles)",
+              "title": "Q"
+            },
+            "description": "Search query (keywords, hashtags, handles)"
+          },
+          {
+            "name": "count",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "description": "Max posts to return (1-25, default 10)",
+              "default": 10,
+              "title": "Count"
+            },
+            "description": "Max posts to return (1-25, default 10)"
+          },
+          {
+            "name": "handles",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Comma-separated handles to filter (max 10)",
+              "default": "",
+              "title": "Handles"
+            },
+            "description": "Comma-separated handles to filter (max 10)"
+          },
+          {
+            "name": "exclude_handles",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Comma-separated handles to exclude (max 10)",
+              "default": "",
+              "title": "Exclude Handles"
+            },
+            "description": "Comma-separated handles to exclude (max 10)"
+          },
+          {
+            "name": "from_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Start date (YYYY-MM-DD)",
+              "default": "",
+              "title": "From Date"
+            },
+            "description": "Start date (YYYY-MM-DD)"
+          },
+          {
+            "name": "to_date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "End date (YYYY-MM-DD)",
+              "default": "",
+              "title": "To Date"
+            },
+            "description": "End date (YYYY-MM-DD)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response X Search Endpoint Api X Search Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/pain-points": {
+      "get": {
+        "summary": "Pain Points Feed",
+        "description": "Multi-source pain point intelligence with NLP clustering.\n\nScraped from Reddit, HN, ProductHunt, IndieHackers. Updated every 2h by autonomous pipeline.\n$0.03/request.\nReturns: pain points, clusters, micro-SaaS suggestions, top keywords.",
+        "operationId": "pain_points_feed_api_pain_points_get",
+        "parameters": [
+          {
+            "name": "keyword",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Optional keyword filter (e.g., 'billing', 'automation'). Empty = all pain points.",
+              "default": "",
+              "title": "Keyword"
+            },
+            "description": "Optional keyword filter (e.g., 'billing', 'automation'). Empty = all pain points."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Pain Points Feed Api Pain Points Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/agentic-trends": {
+      "get": {
+        "summary": "Agentic Trends Feed",
+        "description": "Agentic economy trends \u2014 market signals, funding, adoption.\n\nScraped from Reddit, HN, GitHub, Twitter. Updated every 2h.\n$0.02/request.",
+        "operationId": "agentic_trends_feed_api_agentic_trends_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Agentic Trends Feed Api Agentic Trends Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/keyword-opps": {
+      "get": {
+        "summary": "Keyword Opps Feed",
+        "description": "Keyword flywheel \u2014 seed \u2192 variants \u2192 opportunities.\n\nUpdated every 2h by autonomous pipeline. $0.02/request.\nReturns keyword variants, opportunity mapping, cross-linked feeds.",
+        "operationId": "keyword_opps_feed_api_keyword_opps_get",
+        "parameters": [
+          {
+            "name": "seed",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Optional seed keyword filter (e.g., 'AI automation'). Empty = all keywords.",
+              "default": "",
+              "title": "Seed"
+            },
+            "description": "Optional seed keyword filter (e.g., 'AI automation'). Empty = all keywords."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Keyword Opps Feed Api Keyword Opps Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/bundle/opportunity-pack": {
+      "get": {
+        "summary": "Opportunity Pack",
+        "description": "Opportunity Pack \u2014 keywords + pain points + micro-SaaS ideas.\n\n$0.05 (save 50% vs buying individually). Premium bundle.",
+        "operationId": "opportunity_pack_api_bundle_opportunity_pack_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Opportunity Pack Api Bundle Opportunity Pack Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/bundle/agentic-insights": {
+      "get": {
+        "summary": "Agentic Insights",
+        "description": "Agentic Insights Pack \u2014 trends + pain points + agent intel.\n\n$0.07 (save 50% vs buying individually). Premium bundle.",
+        "operationId": "agentic_insights_api_bundle_agentic_insights_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Agentic Insights Api Bundle Agentic Insights Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/bundle/builder-intel": {
+      "get": {
+        "summary": "Builder Intel Bundle",
+        "description": "Builder Intel \u2014 GitHub trending + PH launches + agent intel.\n\n$0.05 (save 40% vs $0.06 buying individually). Built for builder agents.",
+        "operationId": "builder_intel_bundle_api_bundle_builder_intel_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "type": "object",
+                  "title": "Response Builder Intel Bundle Api Bundle Builder Intel Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/producthunt": {
+      "get": {
+        "summary": "Producthunt Feed",
+        "description": "Product Hunt daily launches \u2014 AI-categorized new products.\n\nSources the public PH Atom feed. $0.03/request. Updated every 4h.",
+        "operationId": "producthunt_feed_api_producthunt_get",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Filter by category: all, ai, devtools, web3, saas, design, productivity",
+              "default": "all",
+              "title": "Category"
+            },
+            "description": "Filter by category: all, ai, devtools, web3, saas, design, productivity"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "description": "Max launches (1-50)",
+              "default": 30,
+              "title": "Limit"
+            },
+            "description": "Max launches (1-50)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Producthunt Feed Api Producthunt Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/github-trending": {
+      "get": {
+        "summary": "Github Trending Feed",
+        "description": "GitHub trending repos \u2014 new repositories ranked by star velocity.\n\nStar velocity = stars/day since creation. Surfaces genuinely new,\nfast-growing repos across AI, web3, agent infra, and general categories.\n$0.02/request. Updated every 4h.",
+        "operationId": "github_trending_feed_api_github_trending_get",
+        "parameters": [
+          {
+            "name": "language",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Filter by language: python, typescript, rust, go, javascript, or 'all'",
+              "default": "all",
+              "title": "Language"
+            },
+            "description": "Filter by language: python, typescript, rust, go, javascript, or 'all'"
+          },
+          {
+            "name": "topic",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Filter by topic: ai, llm, web3, mcp, agent, or 'all'",
+              "default": "all",
+              "title": "Topic"
+            },
+            "description": "Filter by topic: ai, llm, web3, mcp, agent, or 'all'"
+          },
+          {
+            "name": "since",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Time window: daily (7d), weekly (14d), monthly (60d)",
+              "default": "daily",
+              "title": "Since"
+            },
+            "description": "Time window: daily (7d), weekly (14d), monthly (60d)"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "description": "Max repos (1-50)",
+              "default": 30,
+              "title": "Limit"
+            },
+            "description": "Max repos (1-50)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Github Trending Feed Api Github Trending Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/crypto-prices": {
+      "get": {
+        "summary": "Crypto Prices",
+        "description": "Live cryptocurrency prices from CoinGecko. Any token, real-time.",
+        "operationId": "crypto_prices_api_crypto_prices_get",
+        "parameters": [
+          {
+            "name": "ids",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Comma-separated CoinGecko coin IDs (e.g., bitcoin,ethereum,solana)",
+              "default": "bitcoin,ethereum,solana",
+              "title": "Ids"
+            },
+            "description": "Comma-separated CoinGecko coin IDs (e.g., bitcoin,ethereum,solana)"
+          },
+          {
+            "name": "vs_currencies",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Target currencies: usd, eur, btc, eth (comma-separated)",
+              "default": "usd",
+              "title": "Vs Currencies"
+            },
+            "description": "Target currencies: usd, eur, btc, eth (comma-separated)"
+          },
+          {
+            "name": "include_market_cap",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Include market cap",
+              "default": "true",
+              "title": "Include Market Cap"
+            },
+            "description": "Include market cap"
+          },
+          {
+            "name": "include_24hr_change",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Include 24h change",
+              "default": "true",
+              "title": "Include 24Hr Change"
+            },
+            "description": "Include 24h change"
+          },
+          {
+            "name": "include_24hr_vol",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Include 24h volume",
+              "default": "false",
+              "title": "Include 24Hr Vol"
+            },
+            "description": "Include 24h volume"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Crypto Prices Api Crypto Prices Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/crypto-trending": {
+      "get": {
+        "summary": "Crypto Trending",
+        "description": "Trending cryptocurrencies \u2014 top movers by search volume on CoinGecko.",
+        "operationId": "crypto_trending_api_crypto_trending_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 15,
+              "minimum": 1,
+              "description": "Max results (1-15)",
+              "default": 15,
+              "title": "Limit"
+            },
+            "description": "Max results (1-15)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Crypto Trending Api Crypto Trending Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ip-intel": {
+      "get": {
+        "summary": "Ip Intel",
+        "description": "Multi-source IP intelligence: geo, ports, vulns, threat classification, reputation.",
+        "operationId": "ip_intel_api_ip_intel_get",
+        "parameters": [
+          {
+            "name": "ip",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "IPv4 address to investigate",
+              "title": "Ip"
+            },
+            "description": "IPv4 address to investigate"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Ip Intel Api Ip Intel Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/domain-intel": {
+      "get": {
+        "summary": "Domain Intel",
+        "description": "Multi-source domain intelligence: DNS, SSL certs, geo, threat analysis.",
+        "operationId": "domain_intel_api_domain_intel_get",
+        "parameters": [
+          {
+            "name": "domain",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Domain name to investigate (no protocol prefix)",
+              "title": "Domain"
+            },
+            "description": "Domain name to investigate (no protocol prefix)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Domain Intel Api Domain Intel Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/fx-rates": {
+      "get": {
+        "summary": "Fx Rates",
+        "description": "Live foreign exchange rates from ECB via Frankfurter.",
+        "operationId": "fx_rates_api_fx_rates_get",
+        "parameters": [
+          {
+            "name": "base",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Base currency ISO code",
+              "default": "USD",
+              "title": "Base"
+            },
+            "description": "Base currency ISO code"
+          },
+          {
+            "name": "symbols",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Comma-separated target currencies (empty = all)",
+              "default": "",
+              "title": "Symbols"
+            },
+            "description": "Comma-separated target currencies (empty = all)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Fx Rates Api Fx Rates Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/stackexchange": {
+      "get": {
+        "summary": "Stackexchange Search",
+        "description": "Search programming Q&A from StackExchange (StackOverflow + 170+ sites). No API key needed.",
+        "operationId": "stackexchange_search_api_stackexchange_get",
+        "parameters": [
+          {
+            "name": "query",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Search query for questions",
+              "default": "",
+              "title": "Query"
+            },
+            "description": "Search query for questions"
+          },
+          {
+            "name": "site",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "StackExchange site (stackoverflow, serverfault, superuser, etc.)",
+              "default": "stackoverflow",
+              "title": "Site"
+            },
+            "description": "StackExchange site (stackoverflow, serverfault, superuser, etc.)"
+          },
+          {
+            "name": "tagged",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Comma-separated tags to filter (e.g., python,django)",
+              "default": "",
+              "title": "Tagged"
+            },
+            "description": "Comma-separated tags to filter (e.g., python,django)"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Sort by: relevance, votes, creation, hot",
+              "default": "relevance",
+              "title": "Sort"
+            },
+            "description": "Sort by: relevance, votes, creation, hot"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 10,
+              "minimum": 1,
+              "description": "Page number (1-10)",
+              "default": 1,
+              "title": "Page"
+            },
+            "description": "Page number (1-10)"
+          },
+          {
+            "name": "pagesize",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 30,
+              "minimum": 1,
+              "description": "Results per page (1-30)",
+              "default": 10,
+              "title": "Pagesize"
+            },
+            "description": "Results per page (1-30)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Stackexchange Search Api Stackexchange Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/weather/current": {
+      "get": {
+        "summary": "Weather Current",
+        "description": "Current weather conditions via Open-Meteo. No API key needed.",
+        "operationId": "weather_current_api_weather_current_get",
+        "parameters": [
+          {
+            "name": "lat",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "description": "Latitude (-90 to 90)",
+              "title": "Lat"
+            },
+            "description": "Latitude (-90 to 90)"
+          },
+          {
+            "name": "lon",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "description": "Longitude (-180 to 180)",
+              "title": "Lon"
+            },
+            "description": "Longitude (-180 to 180)"
+          },
+          {
+            "name": "units",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "fahrenheit or celsius",
+              "default": "fahrenheit",
+              "title": "Units"
+            },
+            "description": "fahrenheit or celsius"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Weather Current Api Weather Current Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/weather/forecast": {
+      "get": {
+        "summary": "Weather Forecast",
+        "description": "7-day weather forecast via Open-Meteo. No API key needed.",
+        "operationId": "weather_forecast_api_weather_forecast_get",
+        "parameters": [
+          {
+            "name": "lat",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "description": "Latitude",
+              "title": "Lat"
+            },
+            "description": "Latitude"
+          },
+          {
+            "name": "lon",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "number",
+              "description": "Longitude",
+              "title": "Lon"
+            },
+            "description": "Longitude"
+          },
+          {
+            "name": "days",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 16,
+              "minimum": 1,
+              "description": "Number of days (1-16)",
+              "default": 7,
+              "title": "Days"
+            },
+            "description": "Number of days (1-16)"
+          },
+          {
+            "name": "units",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "fahrenheit or celsius",
+              "default": "fahrenheit",
+              "title": "Units"
+            },
+            "description": "fahrenheit or celsius"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Weather Forecast Api Weather Forecast Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ip-reputation": {
+      "get": {
+        "summary": "Ip Reputation",
+        "description": "IP reputation check via AbuseIPDB. Threat intelligence and abuse reports.",
+        "operationId": "ip_reputation_api_ip_reputation_get",
+        "parameters": [
+          {
+            "name": "ip",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "IPv4 or IPv6 address to check",
+              "title": "Ip"
+            },
+            "description": "IPv4 or IPv6 address to check"
+          },
+          {
+            "name": "max_age",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 365,
+              "minimum": 1,
+              "description": "Max age of reports in days",
+              "default": 30,
+              "title": "Max Age"
+            },
+            "description": "Max age of reports in days"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Ip Reputation Api Ip Reputation Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/malware/url": {
+      "get": {
+        "summary": "Malware Url Scan",
+        "description": "URL malware scanning via VirusTotal. 70+ antivirus engines.",
+        "operationId": "malware_url_scan_api_malware_url_get",
+        "parameters": [
+          {
+            "name": "url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "URL to scan",
+              "title": "Url"
+            },
+            "description": "URL to scan"
+          },
+          {
+            "name": "wait",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Wait for fresh analysis",
+              "default": false,
+              "title": "Wait"
+            },
+            "description": "Wait for fresh analysis"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Malware Url Scan Api Malware Url Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ml/sentiment": {
+      "get": {
+        "summary": "Ml Sentiment",
+        "description": "Text sentiment analysis via Hugging Face.",
+        "operationId": "ml_sentiment_api_ml_sentiment_get",
+        "parameters": [
+          {
+            "name": "text",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Text to analyze",
+              "title": "Text"
+            },
+            "description": "Text to analyze"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Ml Sentiment Api Ml Sentiment Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ml/entities": {
+      "get": {
+        "summary": "Ml Entities",
+        "description": "Named Entity Recognition via Hugging Face. Extract persons, orgs, locations.",
+        "operationId": "ml_entities_api_ml_entities_get",
+        "parameters": [
+          {
+            "name": "text",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Text to analyze",
+              "title": "Text"
+            },
+            "description": "Text to analyze"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Ml Entities Api Ml Entities Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ml/summarize": {
+      "get": {
+        "summary": "Ml Summarize",
+        "description": "Text summarization via Hugging Face.",
+        "operationId": "ml_summarize_api_ml_summarize_get",
+        "parameters": [
+          {
+            "name": "text",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Text to summarize",
+              "title": "Text"
+            },
+            "description": "Text to summarize"
+          },
+          {
+            "name": "max_length",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 300,
+              "minimum": 50,
+              "description": "Max summary length",
+              "default": 150,
+              "title": "Max Length"
+            },
+            "description": "Max summary length"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Ml Summarize Api Ml Summarize Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/defi-yields": {
+      "get": {
+        "summary": "Defi Yields",
+        "description": "Top DeFi yields across chains from DefiLlama. Free API, real-time, 18K+ pools.",
+        "operationId": "defi_yields_api_defi_yields_get",
+        "parameters": [
+          {
+            "name": "chain",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Filter by chain: all, ethereum, solana, base, arbitrum, polygon, avalanche, binance, optimism",
+              "default": "all",
+              "title": "Chain"
+            },
+            "description": "Filter by chain: all, ethereum, solana, base, arbitrum, polygon, avalanche, binance, optimism"
+          },
+          {
+            "name": "min_tvl",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "description": "Minimum TVL in USD (default $100K)",
+              "default": 100000,
+              "title": "Min Tvl"
+            },
+            "description": "Minimum TVL in USD (default $100K)"
+          },
+          {
+            "name": "stablecoin",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Filter: all, true (stablecoin only), false (non-stablecoin only)",
+              "default": "all",
+              "title": "Stablecoin"
+            },
+            "description": "Filter: all, true (stablecoin only), false (non-stablecoin only)"
+          },
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Sort by: apy, tvl, apy_base",
+              "default": "apy",
+              "title": "Sort"
+            },
+            "description": "Sort by: apy, tvl, apy_base"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "description": "Max results (1-200)",
+              "default": 50,
+              "title": "Limit"
+            },
+            "description": "Max results (1-200)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Defi Yields Api Defi Yields Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/defi-protocols": {
+      "get": {
+        "summary": "Defi Protocols",
+        "description": "Top DeFi protocols by TVL from DefiLlama. Categories, chain breakdown, TVL changes.",
+        "operationId": "defi_protocols_api_defi_protocols_get",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Filter by category: all, Lending, DEX, Liquid Staking, Bridge, CDP, Yield, Derivatives",
+              "default": "all",
+              "title": "Category"
+            },
+            "description": "Filter by category: all, Lending, DEX, Liquid Staking, Bridge, CDP, Yield, Derivatives"
+          },
+          {
+            "name": "chain",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Filter by chain presence: all, ethereum, solana, base, arbitrum",
+              "default": "all",
+              "title": "Chain"
+            },
+            "description": "Filter by chain presence: all, ethereum, solana, base, arbitrum"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "description": "Max results (1-200)",
+              "default": 50,
+              "title": "Limit"
+            },
+            "description": "Max results (1-200)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Defi Protocols Api Defi Protocols Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/economic-indicators": {
+      "get": {
+        "summary": "Economic Indicators",
+        "description": "Federal Reserve Economic Data (FRED) \u2014 authoritative US economic indicators.\n\nKey indicators:\n- GDP: Gross Domestic Product (quarterly)\n- UNRATE: Unemployment Rate (monthly)  \n- CPIAUCSL: Consumer Price Index / inflation (monthly)\n- FEDFUNDS: Federal Funds Rate (daily)\n- T10Y2Y: Treasury yield spread / recession signal (daily)\n- INDPRO: Industrial Production (monthly)\n- PAYEMS: Nonfarm Payrolls (monthly)\n- HOUST: Housing Starts (monthly)\n- PCEC1: Personal Consumption (monthly)\n- PSAVERT: Personal Saving Rate (monthly)\n- M2SL: M2 Money Supply (weekly)\n- DEXUSEU: USD/EUR Exchange Rate (daily)",
+        "operationId": "economic_indicators_api_economic_indicators_get",
+        "parameters": [
+          {
+            "name": "indicators",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Comma-separated indicator IDs (GDP, UNRATE, CPIAUCSL, FEDFUNDS, T10Y2Y, INDPRO, PAYEMS, HOUST, PCEC1, PSAVERT, M2SL, DEXUSEU)",
+              "default": "GDP,UNRATE,CPIAUCSL,FEDFUNDS,T10Y2Y",
+              "title": "Indicators"
+            },
+            "description": "Comma-separated indicator IDs (GDP, UNRATE, CPIAUCSL, FEDFUNDS, T10Y2Y, INDPRO, PAYEMS, HOUST, PCEC1, PSAVERT, M2SL, DEXUSEU)"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 50,
+              "minimum": 1,
+              "description": "Number of observations per indicator",
+              "default": 12,
+              "title": "Limit"
+            },
+            "description": "Number of observations per indicator"
+          },
+          {
+            "name": "detail",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Get detailed data for a single indicator (overrides indicators list)",
+              "default": "",
+              "title": "Detail"
+            },
+            "description": "Get detailed data for a single indicator (overrides indicators list)"
+          },
+          {
+            "name": "years",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 50,
+              "minimum": 0,
+              "description": "Years of history (0 = auto based on indicator frequency)",
+              "default": 0,
+              "title": "Years"
+            },
+            "description": "Years of history (0 = auto based on indicator frequency)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Economic Indicators Api Economic Indicators Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/country-metrics": {
+      "get": {
+        "summary": "Country Metrics",
+        "description": "World Bank country development indicators for 260+ countries.\n\nUse aliases (gdp, population, inflation) or full WB indicator IDs.\nCompare mode: pass 'compare' param with country codes for cross-country ranking.",
+        "operationId": "country_metrics_api_country_metrics_get",
+        "parameters": [
+          {
+            "name": "country",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "2-letter ISO country code (US, CN, DE, IN, BR, JP, GB, FR, etc.)",
+              "default": "US",
+              "title": "Country"
+            },
+            "description": "2-letter ISO country code (US, CN, DE, IN, BR, JP, GB, FR, etc.)"
+          },
+          {
+            "name": "indicators",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Comma-separated indicator aliases: gdp, gdp_growth, gdp_per_capita, population, pop_growth, life_expectancy, infant_mortality, inflation, unemployment, trade, gni_per_capita, literacy, energy_use, internet_users, co2_emissions",
+              "default": "",
+              "title": "Indicators"
+            },
+            "description": "Comma-separated indicator aliases: gdp, gdp_growth, gdp_per_capita, population, pop_growth, life_expectancy, infant_mortality, inflation, unemployment, trade, gni_per_capita, literacy, energy_use, internet_users, co2_emissions"
+          },
+          {
+            "name": "years",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 50,
+              "minimum": 1,
+              "description": "Years of historical data",
+              "default": 10,
+              "title": "Years"
+            },
+            "description": "Years of historical data"
+          },
+          {
+            "name": "compare",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Compare countries: comma-separated codes (e.g. US,CN,DE). Compares on first indicator.",
+              "default": "",
+              "title": "Compare"
+            },
+            "description": "Compare countries: comma-separated codes (e.g. US,CN,DE). Compares on first indicator."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Country Metrics Api Country Metrics Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/malware-feed": {
+      "get": {
+        "summary": "Malware Feed",
+        "description": "Live malware URL threat intelligence feed from URLhaus (abuse.ch).\n\n20,000+ malware distribution URLs updated every 5 minutes.\nFilter by status (online/offline), threat type, malware family tags.\nUse check_url to verify if a URL is a known malware distributor.",
+        "operationId": "malware_feed_api_malware_feed_get",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 500,
+              "minimum": 1,
+              "description": "Max malware URLs to return",
+              "default": 50,
+              "title": "Limit"
+            },
+            "description": "Max malware URLs to return"
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Filter by status: 'online' or 'offline'",
+              "default": "",
+              "title": "Status"
+            },
+            "description": "Filter by status: 'online' or 'offline'"
+          },
+          {
+            "name": "threat",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Filter by threat type: malware_download, phishing",
+              "default": "",
+              "title": "Threat"
+            },
+            "description": "Filter by threat type: malware_download, phishing"
+          },
+          {
+            "name": "tag",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Filter by malware tag: Mozi, ClearFake, Emotet, AgentTesla, mirai",
+              "default": "",
+              "title": "Tag"
+            },
+            "description": "Filter by malware tag: Mozi, ClearFake, Emotet, AgentTesla, mirai"
+          },
+          {
+            "name": "hours",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 168,
+              "minimum": 1,
+              "description": "Time window in hours (max 168 = 1 week)",
+              "default": 24,
+              "title": "Hours"
+            },
+            "description": "Time window in hours (max 168 = 1 week)"
+          },
+          {
+            "name": "check_url",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Check if a specific URL is in the malware feed",
+              "default": "",
+              "title": "Check Url"
+            },
+            "description": "Check if a specific URL is in the malware feed"
+          },
+          {
+            "name": "stats_only",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "description": "Return feed statistics only (no URL list)",
+              "default": false,
+              "title": "Stats Only"
+            },
+            "description": "Return feed statistics only (no URL list)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Malware Feed Api Malware Feed Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/ip-geo": {
+      "get": {
+        "summary": "Ip Geo",
+        "description": "IP geolocation: country, city, coordinates, ASN, organization, timezone.\n\nSingle IP or batch mode (up to 10). If no IP specified, returns caller's info.",
+        "operationId": "ip_geo_api_ip_geo_get",
+        "parameters": [
+          {
+            "name": "ip",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "IPv4 or IPv6 address to geolocate",
+              "default": "",
+              "title": "Ip"
+            },
+            "description": "IPv4 or IPv6 address to geolocate"
+          },
+          {
+            "name": "batch",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Comma-separated IPs for batch lookup (max 10)",
+              "default": "",
+              "title": "Batch"
+            },
+            "description": "Comma-separated IPs for batch lookup (max 10)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Ip Geo Api Ip Geo Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/geocode": {
+      "get": {
+        "summary": "Geocode",
+        "description": "Geocoding via OpenStreetMap/Nominatim.\n\nForward: pass 'q' with address/place name.\nReverse: pass 'lat' and 'lon' coordinates.",
+        "operationId": "geocode_api_geocode_get",
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Address or place name for forward geocoding",
+              "default": "",
+              "title": "Q"
+            },
+            "description": "Address or place name for forward geocoding"
+          },
+          {
+            "name": "lat",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "description": "Latitude for reverse geocoding",
+              "default": 0.0,
+              "title": "Lat"
+            },
+            "description": "Latitude for reverse geocoding"
+          },
+          {
+            "name": "lon",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "description": "Longitude for reverse geocoding",
+              "default": 0.0,
+              "title": "Lon"
+            },
+            "description": "Longitude for reverse geocoding"
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 10,
+              "minimum": 1,
+              "description": "Max results (forward geocoding)",
+              "default": 5,
+              "title": "Limit"
+            },
+            "description": "Max results (forward geocoding)"
+          },
+          {
+            "name": "country_codes",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Limit to countries (e.g. 'us,ca')",
+              "default": "",
+              "title": "Country Codes"
+            },
+            "description": "Limit to countries (e.g. 'us,ca')"
+          },
+          {
+            "name": "zoom",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "maximum": 18,
+              "minimum": 0,
+              "description": "Detail level for reverse (3=country, 10=city, 18=building)",
+              "default": 18,
+              "title": "Zoom"
+            },
+            "description": "Detail level for reverse (3=country, 10=city, 18=building)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Geocode Api Geocode Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/proxy/session": {
+      "get": {
+        "summary": "Proxy Session Create",
+        "description": "Create a session proxy \u2014 returns a session_id for use with /api/proxy/session/fetch.\n\n$0.50/min. 5min max. 250MB cap. Geo-targeting. 500%+ markup.\nCredentials are NEVER exposed \u2014 all proxying is server-side.\nMax 5 sessions per wallet, 50 global.",
+        "operationId": "proxy_session_create_api_proxy_session_get",
+        "parameters": [
+          {
+            "name": "country",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "ISO country code",
+              "default": "US",
+              "title": "Country"
+            },
+            "description": "ISO country code"
+          },
+          {
+            "name": "duration_min",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "description": "Session duration in minutes (1-5)",
+              "default": 1,
+              "title": "Duration Min"
+            },
+            "description": "Session duration in minutes (1-5)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Proxy Session Create Api Proxy Session Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/proxy/session/fetch": {
+      "get": {
+        "summary": "Proxy Session Fetch",
+        "description": "Fetch a URL using an active session proxy. No additional payment required.\n\nUse the session_id from /api/proxy/session. Session must be active (not expired).",
+        "operationId": "proxy_session_fetch_api_proxy_session_fetch_get",
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "Session ID from /api/proxy/session",
+              "title": "Session Id"
+            },
+            "description": "Session ID from /api/proxy/session"
+          },
+          {
+            "name": "target_url",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "description": "URL to fetch through the session proxy",
+              "title": "Target Url"
+            },
+            "description": "URL to fetch through the session proxy"
+          },
+          {
+            "name": "method",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "HTTP method: GET, POST, HEAD",
+              "default": "GET",
+              "title": "Method"
+            },
+            "description": "HTTP method: GET, POST, HEAD"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Proxy Session Fetch Api Proxy Session Fetch Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/feedback": {
+      "get": {
+        "summary": "Feedback",
+        "description": "Community feedback \u2014 rate feeds, suggest improvements.\n\n$0.001/submission. Helps improve feed quality.",
+        "operationId": "feedback_api_feedback_get",
+        "parameters": [
+          {
+            "name": "feed",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Feed name (e.g., 'pain-points', 'sentiment')",
+              "default": "",
+              "title": "Feed"
+            },
+            "description": "Feed name (e.g., 'pain-points', 'sentiment')"
+          },
+          {
+            "name": "rating",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "description": "Rating 1-5",
+              "default": 0,
+              "title": "Rating"
+            },
+            "description": "Rating 1-5"
+          },
+          {
+            "name": "comment",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Optional comment (max 500 chars)",
+              "default": "",
+              "title": "Comment"
+            },
+            "description": "Optional comment (max 500 chars)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Feedback Api Feedback Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Feedback",
+        "description": "Community feedback \u2014 rate feeds, suggest improvements.\n\n$0.001/submission. Helps improve feed quality.",
+        "operationId": "feedback_api_feedback_get",
+        "parameters": [
+          {
+            "name": "feed",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Feed name (e.g., 'pain-points', 'sentiment')",
+              "default": "",
+              "title": "Feed"
+            },
+            "description": "Feed name (e.g., 'pain-points', 'sentiment')"
+          },
+          {
+            "name": "rating",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "description": "Rating 1-5",
+              "default": 0,
+              "title": "Rating"
+            },
+            "description": "Rating 1-5"
+          },
+          {
+            "name": "comment",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "description": "Optional comment (max 500 chars)",
+              "default": "",
+              "title": "Comment"
+            },
+            "description": "Optional comment (max 500 chars)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": true,
+                  "title": "Response Feedback Api Feedback Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
       }
     }
   },
-  "tags": [
-    {"name": "Discovery", "description": "Free discovery and protocol endpoints"},
-    {"name": "Intelligence Feeds", "description": "Curated intelligence data feeds ($0.02-$0.25)"},
-    {"name": "Search & Scraping", "description": "Real-time search and web scraping ($0.01-$0.75)"},
-    {"name": "Proxy Infrastructure", "description": "Residential proxy relay and sessions ($0.001-$0.50/min)"},
-    {"name": "Crypto & DeFi", "description": "Live crypto prices, DeFi yields, protocol data ($0.01-$0.03)"},
-    {"name": "OSINT", "description": "Open-source intelligence — IP and domain analysis ($0.03)"},
-    {"name": "Utility", "description": "FX rates, feedback, and utility endpoints ($0.001-$0.005)"},
-    {"name": "Bundles", "description": "Discounted multi-feed bundles ($0.10-$0.15)"}
-  ]
+  "components": {
+    "schemas": {
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
 }
