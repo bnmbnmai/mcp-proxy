@@ -1,21 +1,31 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.bnmbnmai/apollo-proxy",
-  "description": "26 AI tools: DeFi, OSINT, crypto, intel feeds, search, proxy. x402 micropayments.",
+  "name": "team.apolloai/intelligence",
+  "title": "Apollo Intelligence",
+  "description": "36 tools: intel feeds, DeFi, crypto, OSINT, NLP, scraping, proxy. x402 micropayments.",
   "repository": {
     "url": "https://github.com/bnmbnmai/mcp-proxy",
     "source": "github"
   },
-  "version": "4.6.0",
+  "version": "4.8.1",
+  "websiteUrl": "https://apolloai.team",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@apollo_ai/mcp-proxy",
-      "version": "4.6.0",
+      "version": "4.8.1",
       "transport": {
         "type": "stdio"
       },
-      "environmentVariables": []
+      "environmentVariables": [
+        {
+          "description": "Override API endpoint (default: https://apolloai.team)",
+          "name": "APOLLO_API_URL",
+          "format": "string",
+          "isRequired": false,
+          "isSecret": false
+        }
+      ]
     }
   ]
 }
