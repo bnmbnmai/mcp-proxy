@@ -45,7 +45,7 @@ import { z } from "zod";
 
 // Apollo API configuration
 const APOLLO_API_BASE = process.env.APOLLO_API_URL || "https://apolloai.team";
-const USER_AGENT = "apollo-mcp-server/4.6.0";
+const USER_AGENT = "apollo-mcp-server/4.8.0";
 
 // Available countries for proxy exit (ISO 3166-1 alpha-2)
 const PROXY_COUNTRIES = [

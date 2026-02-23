@@ -1,6 +1,6 @@
 # Apollo Intelligence MCP Server 🏛️
 
-**34 tools for AI agents: intelligence feeds, economic data, DeFi, real-time search, crypto, OSINT, weather, ML/NLP, proxy infrastructure — all via x402 micropayments.**
+**36 tools for AI agents: intelligence feeds, economic data, DeFi, real-time search, crypto, OSINT, weather, ML/NLP, proxy infrastructure — all via x402 micropayments.**
 
 Give your AI agent access to curated market intelligence, web scraping through 190+ country residential proxies, real-time X/Twitter search, crypto prices, GitHub trending data, and more. Pay per request with USDC on Base — no API keys, no subscriptions.
 
@@ -47,7 +47,7 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
 npm install -g @apollo_ai/mcp-proxy
 ```
 
-## All 34 Tools
+## All 36 Tools
 
 ### 🔍 Search & Scraping
 
@@ -101,6 +101,8 @@ npm install -g @apollo_ai/mcp-proxy
 | `domain_intel` | Domain intelligence — DNS, SSL certs, geo, threat analysis | $0.03 |
 | `ip_geo` | IP geolocation + ASN — country, city, coordinates, organization | $0.01 |
 | `malware_feed` | URLhaus threat feed — 20K+ active malware URLs from abuse.ch | $0.02 |
+| `ip_reputation` | IP abuse scoring via AbuseIPDB — confidence score, reports, categories | $0.03 |
+| `malware_url_check` | VirusTotal URL scanning — malware detection across 70+ engines | $0.05 |
 | `geocode` | Forward + reverse geocoding via OpenStreetMap/Nominatim | $0.01 |
 
 ### 🌤️ Weather & ML
@@ -189,7 +191,7 @@ All intelligence feeds are pre-computed by Apollo's multi-agent system and refre
 
 ## OpenAPI Specification
 
-Full OpenAPI 3.1 spec for all 27 endpoints: [`openapi.json`](./openapi.json)
+Full OpenAPI 3.1 spec for all 40 endpoints: [`openapi.json`](./openapi.json)
 
 Import into Postman, Insomnia, or any API client to explore and test all endpoints interactively.
 
