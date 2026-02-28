@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * Apollo MCP Server v4.8.0
+ * Apollo MCP Server v4.9.0
  *
- * MCP server providing 36 tools: intelligence feeds, DeFi data, economic indicators,
+ * MCP server providing 40 tools: intelligence feeds, DeFi data, economic indicators,
  * real-time search, crypto data, OSINT, weather, ML/NLP, proxy infrastructure,
  * and bundles — all via x402 micropayments (USDC on Base).
  *
@@ -35,6 +35,10 @@
  * - malware_url_check: VirusTotal URL scanning ($0.05)
  * - proxy_status: Check service availability
  * - list_countries: Available proxy exit countries
+ * - breach_check: Email breach check via HaveIBeenPwned ($0.05)
+ * - eth_balance: Ethereum wallet balance via Etherscan ($0.03)
+ * - eth_transactions: Ethereum transaction history via Etherscan ($0.03)
+ * - eth_gas: Live Ethereum gas prices via Etherscan ($0.02)
  *
  * Payment: Via x402 protocol (USDC on Base mainnet)
  */
@@ -43,7 +47,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { z } from "zod";
 // Apollo API configuration
 const APOLLO_API_BASE = process.env.APOLLO_API_URL || "https://apolloai.team";
-const USER_AGENT = "apollo-mcp-server/4.8.0";
+const USER_AGENT = "apollo-mcp-server/4.9.0";
 // Available countries for proxy exit (ISO 3166-1 alpha-2)
 const PROXY_COUNTRIES = [
     "US", "GB", "DE", "FR", "NL", "CA", "AU", "JP", "KR", "SG",
@@ -57,7 +61,7 @@ const PROXY_COUNTRIES = [
 // Create MCP server instance
 const server = new McpServer({
     name: "apollo-intelligence",
-    version: "4.8.0",
+    version: "4.9.0",
 });
 /**
  * Make a request to Apollo's x402 API.
@@ -1264,6 +1268,130 @@ server.tool("malware_url_check", "Scan a URL for malware/phishing with VirusTota
     return { content: [{ type: "text", text: parts.join("\n") }] };
 });
 // ============================================
+// Tool: breach_check
+// ============================================
+server.tool("breach_check", "Email data breach check via Have I Been Pwned (Troy Hunt). Check if an email has appeared in known data breaches. Returns breach count, risk level, and security recommendations. $0.05/query via x402.", {
+    email: z.string().email().describe("Email address to check for breaches"),
+    full: z.boolean().default(false).describe("Return full breach details (data types exposed, PwnCount, etc.)"),
+}, async ({ email, full = false }) => {
+    console.error(`[apollo-mcp] breach_check: ${email}`);
+    const params = { email };
+    if (full)
+        params.full = "true";
+    const result = await makeApolloRequest("/api/breach-check", params);
+    {
+        const err = handleToolError(result, "Breach check");
+        if (err)
+            return err;
+    }
+    const d = result.data;
+    const parts = [
+        `## Breach Check: ${d.email || email}`,
+        `**Breaches Found:** ${d.breach_count ?? d.total_breaches ?? 0}`,
+        `**Risk Level:** ${d.risk_level || "unknown"}`,
+    ];
+    if (d.breaches?.length) {
+        parts.push(``, `### Breaches`);
+        d.breaches.slice(0, 10).forEach((b) => {
+            parts.push(`- **${b.Name || b.name}** (${b.BreachDate || b.date || "?"}) — ${b.PwnCount?.toLocaleString() || "?"} accounts`);
+            if (full && b.DataClasses)
+                parts.push(`  Data: ${b.DataClasses.join(", ")}`);
+        });
+    }
+    if (d.recommendations?.length) {
+        parts.push(``, `### Recommendations`);
+        d.recommendations.forEach((r) => parts.push(`- ${r}`));
+    }
+    parts.push(``, `*Source: Have I Been Pwned (Troy Hunt)*`);
+    return { content: [{ type: "text", text: parts.join("\n") }] };
+});
+// ============================================
+// Tool: eth_balance
+// ============================================
+server.tool("eth_balance", "Ethereum address ETH balance lookup via Etherscan. Returns balance in wei and formatted ETH. Essential for crypto wallets and DeFi agents. $0.03/query via x402.", {
+    address: z.string().describe("Ethereum address (0x...)"),
+}, async ({ address }) => {
+    console.error(`[apollo-mcp] eth_balance: ${address}`);
+    const result = await makeApolloRequest("/api/eth/balance", { address });
+    {
+        const err = handleToolError(result, "ETH balance");
+        if (err)
+            return err;
+    }
+    const d = result.data;
+    const parts = [
+        `## ETH Balance: ${d.address || address}`,
+        `**Balance:** ${d.balance_eth ?? d.balance ?? "?"} ETH`,
+        `**Wei:** ${d.balance_wei ?? "?"}`,
+    ];
+    if (d.usd_value)
+        parts.push(`**USD Value:** $${d.usd_value.toLocaleString()}`);
+    parts.push(``, `*Source: Etherscan*`);
+    return { content: [{ type: "text", text: parts.join("\n") }] };
+});
+// ============================================
+// Tool: eth_transactions
+// ============================================
+server.tool("eth_transactions", "Ethereum transaction history for an address via Etherscan. Returns recent transactions with value, gas, timestamps, and confirmation details. $0.03/query via x402.", {
+    address: z.string().describe("Ethereum address (0x...)"),
+    page: z.number().default(1).describe("Page number (default 1)"),
+    offset: z.number().default(10).describe("Results per page (max 100, default 10)"),
+}, async ({ address, page = 1, offset = 10 }) => {
+    console.error(`[apollo-mcp] eth_transactions: ${address}`);
+    const result = await makeApolloRequest("/api/eth/transactions", {
+        address, page: String(page), offset: String(offset),
+    });
+    {
+        const err = handleToolError(result, "ETH transactions");
+        if (err)
+            return err;
+    }
+    const d = result.data;
+    const txs = d.transactions || [];
+    const parts = [`## ETH Transactions: ${d.address || address}`, `**Total:** ${txs.length} transactions`, ``];
+    txs.slice(0, offset).forEach((tx, i) => {
+        const value = tx.value_eth ?? (tx.value ? (Number(tx.value) / 1e18).toFixed(6) : "0");
+        const dir = tx.from?.toLowerCase() === address.toLowerCase() ? "→" : "←";
+        const other = dir === "→" ? tx.to : tx.from;
+        parts.push(`${i + 1}. ${dir} **${value} ETH** ${dir === "→" ? "to" : "from"} ${other?.slice(0, 10)}...`);
+        if (tx.timeStamp)
+            parts.push(`   ${new Date(Number(tx.timeStamp) * 1000).toISOString().slice(0, 19)} | Gas: ${tx.gasPrice ? (Number(tx.gasPrice) / 1e9).toFixed(1) + " gwei" : "?"}`);
+    });
+    parts.push(``, `*Source: Etherscan*`);
+    return { content: [{ type: "text", text: parts.join("\n") }] };
+});
+// ============================================
+// Tool: eth_gas
+// ============================================
+server.tool("eth_gas", "Current Ethereum gas prices via Etherscan. Returns safe, standard, and fast gas prices in gwei with estimated USD costs for common transactions. $0.02/query via x402.", {}, async () => {
+    console.error(`[apollo-mcp] eth_gas`);
+    const result = await makeApolloRequest("/api/eth/gas");
+    {
+        const err = handleToolError(result, "ETH gas");
+        if (err)
+            return err;
+    }
+    const d = result.data;
+    const parts = [`## Ethereum Gas Prices`];
+    if (d.gas_prices) {
+        const g = d.gas_prices;
+        parts.push(`**Safe:** ${g.safe ?? g.SafeGasPrice ?? "?"} gwei`, `**Standard:** ${g.standard ?? g.ProposeGasPrice ?? "?"} gwei`, `**Fast:** ${g.fast ?? g.FastGasPrice ?? "?"} gwei`);
+    }
+    else {
+        parts.push(`**Safe:** ${d.SafeGasPrice ?? d.safe ?? "?"} gwei`);
+        parts.push(`**Standard:** ${d.ProposeGasPrice ?? d.standard ?? "?"} gwei`);
+        parts.push(`**Fast:** ${d.FastGasPrice ?? d.fast ?? "?"} gwei`);
+    }
+    if (d.estimated_costs) {
+        parts.push(``, `### Estimated Costs`);
+        for (const [type, cost] of Object.entries(d.estimated_costs)) {
+            parts.push(`- **${type}:** $${typeof cost === 'object' ? (cost.standard_usd ?? JSON.stringify(cost)) : cost}`);
+        }
+    }
+    parts.push(``, `*Source: Etherscan*`);
+    return { content: [{ type: "text", text: parts.join("\n") }] };
+});
+// ============================================
 // Main entry point
 // ============================================
 const TOOL_LIST = [
@@ -1275,11 +1403,12 @@ const TOOL_LIST = [
     "proxy_fetch", "proxy_status", "list_countries",
     "economic_indicators", "country_metrics", "malware_feed", "ip_geo", "geocode",
     "weather", "ml_analyze", "ip_reputation", "malware_url_check",
+    "breach_check", "eth_balance", "eth_transactions", "eth_gas",
 ];
 async function main() {
     const transport = new StdioServerTransport();
     await server.connect(transport);
-    console.error(`Apollo MCP Server v4.8.0 running on stdio`);
+    console.error(`Apollo MCP Server v4.9.0 running on stdio`);
     console.error(`  Tools: ${TOOL_LIST.length} (${TOOL_LIST.join(", ")})`);
     console.error("  Endpoint: https://apolloai.team/api/*");
     console.error("  Payment: x402 (USDC on Base mainnet)");

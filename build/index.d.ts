@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 /**
- * Apollo MCP Server v4.8.0
+ * Apollo MCP Server v4.9.0
  *
- * MCP server providing 36 tools: intelligence feeds, DeFi data, economic indicators,
+ * MCP server providing 40 tools: intelligence feeds, DeFi data, economic indicators,
  * real-time search, crypto data, OSINT, weather, ML/NLP, proxy infrastructure,
  * and bundles — all via x402 micropayments (USDC on Base).
  *
@@ -35,6 +35,10 @@
  * - malware_url_check: VirusTotal URL scanning ($0.05)
  * - proxy_status: Check service availability
  * - list_countries: Available proxy exit countries
+ * - breach_check: Email breach check via HaveIBeenPwned ($0.05)
+ * - eth_balance: Ethereum wallet balance via Etherscan ($0.03)
+ * - eth_transactions: Ethereum transaction history via Etherscan ($0.03)
+ * - eth_gas: Live Ethereum gas prices via Etherscan ($0.02)
  *
  * Payment: Via x402 protocol (USDC on Base mainnet)
  */
