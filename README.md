@@ -2,9 +2,17 @@
 
 **40 tools for AI agents: intelligence feeds, economic data, DeFi, real-time search, crypto, OSINT, weather, ML/NLP, proxy infrastructure — all via x402 micropayments.**
 
-Give your AI agent access to curated market intelligence, web scraping through 190+ country residential proxies, real-time X/Twitter search, crypto prices, GitHub trending data, and more. Pay per request with USDC on Base — no API keys, no subscriptions.
+Give your AI agent access to curated market intelligence, web scraping through 190+ country residential proxies, real-time X/Twitter search, crypto prices, GitHub trending data, and more.
 
-**🆓 Free trial: 3 requests/day per IP — no payment needed.** Just install and start using it.
+**🆓 Free trial: 5 requests/day per IP — no payment needed.** Just install and start using it.
+
+**🔑 API Key (easiest):** Get a free key with $0.10 balance — no crypto needed:
+```bash
+curl -X POST https://apolloai.team/api/keys/signup -H "Content-Type: application/json" -d '{"name":"my-agent"}'
+```
+Then set `APOLLO_API_KEY=ak_YOUR_KEY` in your MCP config (see below).
+
+**💎 x402 (crypto):** Pay per request with USDC on Base — fully automatic via x402 protocol.
 
 [![npm version](https://img.shields.io/npm/v/@apollo_ai/mcp-proxy)](https://www.npmjs.com/package/@apollo_ai/mcp-proxy)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -22,7 +30,10 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
   "mcpServers": {
     "apollo": {
       "command": "npx",
-      "args": ["@apollo_ai/mcp-proxy"]
+      "args": ["@apollo_ai/mcp-proxy"],
+      "env": {
+        "APOLLO_API_KEY": "ak_YOUR_KEY_HERE"
+      }
     }
   }
 }
@@ -35,11 +46,16 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
   "mcpServers": {
     "apollo": {
       "command": "npx",
-      "args": ["@apollo_ai/mcp-proxy"]
+      "args": ["@apollo_ai/mcp-proxy"],
+      "env": {
+        "APOLLO_API_KEY": "ak_YOUR_KEY_HERE"
+      }
     }
   }
 }
 ```
+
+> **Note:** The `APOLLO_API_KEY` env var is optional. Without it, you get 5 free requests/day. Get a key for more: `curl -X POST https://apolloai.team/api/keys/signup -H "Content-Type: application/json" -d '{"name":"my-agent"}'`
 
 ### Install Globally
 
@@ -47,7 +63,7 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
 npm install -g @apollo_ai/mcp-proxy
 ```
 
-## All 36 Tools
+## All 40 Tools
 
 ### 🔍 Search & Scraping
 

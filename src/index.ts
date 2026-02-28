@@ -49,6 +49,7 @@ import { z } from "zod";
 
 // Apollo API configuration
 const APOLLO_API_BASE = process.env.APOLLO_API_URL || "https://apolloai.team";
+const APOLLO_API_KEY = process.env.APOLLO_API_KEY || "";
 const USER_AGENT = "apollo-mcp-server/4.9.0";
 
 // Available countries for proxy exit (ISO 3166-1 alpha-2)
@@ -88,6 +89,11 @@ async function makeApolloRequest<T>(
     "User-Agent": USER_AGENT,
     "Accept": "application/json",
   };
+
+  // Add API key auth if configured (bypasses x402 payment)
+  if (APOLLO_API_KEY) {
+    headers["Authorization"] = `Bearer ${APOLLO_API_KEY}`;
+  }
 
   try {
     const response = await fetch(url.toString(), { headers });
@@ -194,9 +200,16 @@ function formatPreviewResponse(
 
   parts.push("");
   parts.push(`---`);
-  parts.push(`💡 **Full dataset: $${price} USDC** on Base mainnet via x402 protocol.`);
-  parts.push(`To unlock all data, configure your agent with an x402-compatible wallet.`);
-  parts.push(`Setup guide: https://apolloai.team | npm: \`npx @apollo_ai/mcp-proxy\``);
+  parts.push(`💡 **Full dataset: $${price} USDC**`);
+  parts.push("");
+  parts.push(`🔑 **Easiest way — Get a free API key (no crypto needed):**`);
+  parts.push("```bash");
+  parts.push(`curl -X POST https://apolloai.team/api/keys/signup -H "Content-Type: application/json" -d '{"name":"my-agent"}'`);
+  parts.push("```");
+  parts.push(`Returns an API key with **$0.10 free balance** (~2-10 requests). Then set: \`export APOLLO_API_KEY=ak_YOUR_KEY\``);
+  parts.push("");
+  parts.push(`💎 **Or:** Pay per-request with USDC on Base via x402 protocol.`);
+  parts.push(`Setup: https://apolloai.team/docs/getting-started`);
 
   // Return as SUCCESS (not error) — the preview IS useful data
   return { content: [{ type: "text" as const, text: parts.join("\n") }] };
@@ -768,8 +781,8 @@ server.registerTool(
       `- Session types: ${data.session_types.join(", ")}`,
       `- HTTP methods: ${data.supported_methods.join(", ")}`, ``,
       `### Payment`,
-      `Payments handled via x402 protocol. Configure your agent with a USDC wallet on Base mainnet.`,
-      `Wallet: 0xf59621FC406D266e18f314Ae18eF0a33b8401004`,
+      `**Option 1 (easiest):** Set \`APOLLO_API_KEY\` env var. Get a free key: \`curl -X POST https://apolloai.team/api/keys/signup -H "Content-Type: application/json" -d '{"name":"my-agent"}'\``,
+      `**Option 2:** x402 protocol — USDC on Base mainnet. Wallet: 0xf59621FC406D266e18f314Ae18eF0a33b8401004`,
     ].join("\n");
     return { content: [{ type: "text" as const, text: status }] };
   }
