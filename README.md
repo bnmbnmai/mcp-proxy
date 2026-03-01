@@ -119,7 +119,16 @@ npm install -g @apollo_ai/mcp-proxy
 | `malware_feed` | URLhaus threat feed — 20K+ active malware URLs from abuse.ch | $0.02 |
 | `ip_reputation` | IP abuse scoring via AbuseIPDB — confidence score, reports, categories | $0.03 |
 | `malware_url_check` | VirusTotal URL scanning — malware detection across 70+ engines | $0.05 |
+| `breach_check` | Email breach check via HaveIBeenPwned (Troy Hunt) | $0.05 |
 | `geocode` | Forward + reverse geocoding via OpenStreetMap/Nominatim | $0.01 |
+
+### ⛓️ Ethereum / Etherscan
+
+| Tool | Description | Cost |
+|------|-------------|------|
+| `eth_balance` | Ethereum wallet balance via Etherscan | $0.03 |
+| `eth_transactions` | Ethereum transaction history via Etherscan | $0.03 |
+| `eth_gas` | Live Ethereum gas prices via Etherscan | $0.02 |
 
 ### 🌤️ Weather & ML
 
