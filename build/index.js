@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Apollo MCP Server v4.9.0
+ * Apollo MCP Server v4.10.0
  *
  * MCP server providing 40 tools: intelligence feeds, DeFi data, economic indicators,
  * real-time search, crypto data, OSINT, weather, ML/NLP, proxy infrastructure,
@@ -45,10 +45,92 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
+import * as fs from "node:fs";
+import * as path from "node:path";
+import * as os from "node:os";
 // Apollo API configuration
 const APOLLO_API_BASE = process.env.APOLLO_API_URL || "https://apolloai.team";
-const APOLLO_API_KEY = process.env.APOLLO_API_KEY || "";
-const USER_AGENT = "apollo-mcp-server/4.9.0";
+let APOLLO_API_KEY = process.env.APOLLO_API_KEY || "";
+const USER_AGENT = "apollo-mcp-server/4.10.0";
+// --- Auto-provision API key for zero-friction onboarding ---
+const KEY_CACHE_DIR = path.join(os.homedir(), ".apollo-mcp");
+const KEY_CACHE_FILE = path.join(KEY_CACHE_DIR, "key.json");
+/**
+ * Load a cached API key from ~/.apollo-mcp/key.json.
+ * Returns the key string or null if not found / expired / invalid.
+ */
+function loadCachedKey() {
+    try {
+        if (!fs.existsSync(KEY_CACHE_FILE))
+            return null;
+        const raw = JSON.parse(fs.readFileSync(KEY_CACHE_FILE, "utf-8"));
+        if (raw && typeof raw.key === "string" && raw.key.startsWith("ak_")) {
+            return raw.key;
+        }
+    }
+    catch {
+        // Corrupt file — ignore, will re-provision
+    }
+    return null;
+}
+/**
+ * Auto-provision an API key via POST /api/keys/signup.
+ * Stores the key in ~/.apollo-mcp/key.json for future sessions.
+ * Returns the key string or null on failure.
+ */
+async function autoProvisionKey() {
+    try {
+        const resp = await fetch(`${APOLLO_API_BASE}/api/keys/signup`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "User-Agent": USER_AGENT },
+            body: JSON.stringify({ name: `mcp-auto-${os.hostname().slice(0, 20)}` }),
+        });
+        if (!resp.ok)
+            return null;
+        const data = await resp.json();
+        const key = data.key;
+        if (typeof key !== "string" || !key.startsWith("ak_"))
+            return null;
+        // Cache for future sessions
+        fs.mkdirSync(KEY_CACHE_DIR, { recursive: true });
+        fs.writeFileSync(KEY_CACHE_FILE, JSON.stringify({
+            key,
+            created: new Date().toISOString(),
+            balance_usd: data.balance_usd ?? 0.10,
+            note: "Auto-provisioned by apollo-mcp-server. Delete this file to re-provision.",
+        }, null, 2), "utf-8");
+        console.error(`[apollo-mcp] Auto-provisioned API key (${key.slice(0, 7)}…) with $0.10 free balance. Stored in ${KEY_CACHE_FILE}`);
+        return key;
+    }
+    catch {
+        // Network error or server down — fall back to free trial
+        return null;
+    }
+}
+/**
+ * Ensure we have an API key: env var > cached file > auto-provision.
+ * Called once at startup.
+ */
+async function ensureApiKey() {
+    if (APOLLO_API_KEY) {
+        console.error(`[apollo-mcp] Using API key from APOLLO_API_KEY env var (${APOLLO_API_KEY.slice(0, 7)}…)`);
+        return;
+    }
+    const cached = loadCachedKey();
+    if (cached) {
+        APOLLO_API_KEY = cached;
+        console.error(`[apollo-mcp] Using cached API key from ${KEY_CACHE_FILE} (${cached.slice(0, 7)}…)`);
+        return;
+    }
+    console.error("[apollo-mcp] No API key found. Auto-provisioning free key…");
+    const provisioned = await autoProvisionKey();
+    if (provisioned) {
+        APOLLO_API_KEY = provisioned;
+    }
+    else {
+        console.error("[apollo-mcp] Auto-provision failed. Using free trial (5 requests/day per IP).");
+    }
+}
 // Available countries for proxy exit (ISO 3166-1 alpha-2)
 const PROXY_COUNTRIES = [
     "US", "GB", "DE", "FR", "NL", "CA", "AU", "JP", "KR", "SG",
@@ -62,7 +144,7 @@ const PROXY_COUNTRIES = [
 // Create MCP server instance
 const server = new McpServer({
     name: "apollo-intelligence",
-    version: "4.9.0",
+    version: "4.10.0",
 });
 /**
  * Make a request to Apollo's x402 API.
@@ -1418,11 +1500,14 @@ const TOOL_LIST = [
     "breach_check", "eth_balance", "eth_transactions", "eth_gas",
 ];
 async function main() {
+    // Auto-provision API key before connecting (zero-friction onboarding)
+    await ensureApiKey();
     const transport = new StdioServerTransport();
     await server.connect(transport);
-    console.error(`Apollo MCP Server v4.9.0 running on stdio`);
+    console.error(`Apollo MCP Server v4.10.0 running on stdio`);
     console.error(`  Tools: ${TOOL_LIST.length} (${TOOL_LIST.join(", ")})`);
     console.error("  Endpoint: https://apolloai.team/api/*");
+    console.error(`  Auth: ${APOLLO_API_KEY ? `API key (${APOLLO_API_KEY.slice(0, 7)}…)` : "free trial (5/day)"}`);
     console.error("  Payment: x402 (USDC on Base mainnet)");
 }
 main().catch((error) => {

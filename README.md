@@ -4,13 +4,11 @@
 
 Give your AI agent access to curated market intelligence, web scraping through 190+ country residential proxies, real-time X/Twitter search, crypto prices, GitHub trending data, and more.
 
-**🆓 Free trial: 5 requests/day per IP — no payment needed.** Just install and start using it.
+**🚀 Zero-config: just install and go.** The server auto-provisions a free API key with $0.10 balance on first run — no signup, no wallet, no configuration needed.
 
-**🔑 API Key (easiest):** Get a free key with $0.10 balance — no crypto needed:
-```bash
-curl -X POST https://apolloai.team/api/keys/signup -H "Content-Type: application/json" -d '{"name":"my-agent"}'
-```
-Then set `APOLLO_API_KEY=ak_YOUR_KEY` in your MCP config (see below).
+**🆓 Free trial: 5 requests/day per IP** on top of your auto-provisioned balance.
+
+**🔑 Bring your own key:** Set `APOLLO_API_KEY` env var to use a specific key (overrides auto-provisioning).
 
 **💎 x402 (crypto):** Pay per request with USDC on Base — fully automatic via x402 protocol.
 
@@ -24,6 +22,19 @@ Then set `APOLLO_API_KEY=ak_YOUR_KEY` in your MCP config (see below).
 ### Claude Desktop
 
 Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "apollo": {
+      "command": "npx",
+      "args": ["@apollo_ai/mcp-proxy"]
+    }
+  }
+}
+```
+
+That's it! The server auto-provisions a free API key on first run. To use your own key instead:
 
 ```json
 {
@@ -46,6 +57,21 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
   "mcpServers": {
     "apollo": {
       "command": "npx",
+      "args": ["@apollo_ai/mcp-proxy"]
+    }
+  }
+}
+```
+
+> **Note:** No env vars needed. The server auto-provisions a free API key (`$0.10 balance`) on first run and caches it in `~/.apollo-mcp/key.json`. Set `APOLLO_API_KEY` env var to override.
+
+To use a specific key:
+
+```json
+{
+  "mcpServers": {
+    "apollo": {
+      "command": "npx",
       "args": ["@apollo_ai/mcp-proxy"],
       "env": {
         "APOLLO_API_KEY": "ak_YOUR_KEY_HERE"
@@ -55,7 +81,7 @@ Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
 }
 ```
 
-> **Note:** The `APOLLO_API_KEY` env var is optional. Without it, you get 5 free requests/day. Get a key for more: `curl -X POST https://apolloai.team/api/keys/signup -H "Content-Type: application/json" -d '{"name":"my-agent"}'`
+> **Tip:** Without `APOLLO_API_KEY`, the server auto-provisions a free key on first run. You also get 5 free requests/day per IP on top of the provisioned balance.
 
 ### Install Globally
 
