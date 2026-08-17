@@ -21,6 +21,10 @@ export const USDC_BASE = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913";
 export const NETWORK_V1 = "base";
 export const NETWORK_V2 = "eip155:8453";
 export const TICKS_PATH = "/ticks";
+export const MANIFEST_PATH = "/manifest.json";
+export const PRODUCT_ID = "idaho-hay-feeder-ticks";
+export const PRODUCT_NAME = "Idaho + PNW Market Ticks";
+export const PRODUCT_VERSION = "1.1.0";
 
 const PUBLIC_SOURCE_MARKERS = [
   "twin falls",
@@ -172,7 +176,7 @@ export function loadTicks(): TicksPayload {
   if (!board && !historyFile) {
     return {
       ok: true,
-      product: "idaho-hay-feeder-ticks",
+      product: PRODUCT_ID,
       sources: [
         "Twin Falls",
         "Blackfoot",
@@ -198,7 +202,7 @@ export function loadTicks(): TicksPayload {
   const hasTicks = rows.length + points.length > 0;
   return {
     ok: true,
-    product: "idaho-hay-feeder-ticks",
+        product: PRODUCT_ID,
     sources: [
       "Twin Falls",
       "Blackfoot",
@@ -225,6 +229,244 @@ export function loadTicks(): TicksPayload {
 const TICKS_DESCRIPTION =
   "Idaho + PNW official ticks: hay, feeder, IF_FV130, IBC grain, WD1, AMS 3058 Columbia Basin hay, AMS 2914 pulses";
 
+const GROUP_LABELS: { id: string; name: string }[] = [
+  { id: "hay", name: "Hay" },
+  { id: "cattle", name: "Cattle" },
+  { id: "produce", name: "Produce" },
+  { id: "grain", name: "Grain" },
+  { id: "water", name: "Water" },
+  { id: "pulses", name: "Pulses" },
+];
+
+const SAMPLE_SERIES_IDS = [
+  "cattle-tf-feeder-steer",
+  "hay.ams_3058.columbia_basin.alfalfa.premium",
+  "ams.if_fv130.onion.yellow_hybrid.us1.sack50.jumbo.columbia_umatilla",
+  "ibc.id.grain.idaho_falls.barley_malting",
+  "ams.2914.pnw.garbanzo",
+];
+
+function originFromResource(resourceUrl: string): string {
+  return resourceUrl.replace(/\/ticks\/?$/, "") || "https://ticks.bnm.farm";
+}
+
+function str(value: unknown): string {
+  return typeof value === "string" ? value : value == null ? "" : String(value);
+}
+
+function num(value: unknown): number | null {
+  return typeof value === "number" && Number.isFinite(value) ? value : null;
+}
+
+function inferCadence(source: string, market: string): string | null {
+  const blob = `${source} ${market}`;
+  if (/weekly/i.test(blob)) return "weekly";
+  if (/wednesday/i.test(blob)) return "wednesday auction";
+  if (/rental pool procedures/i.test(blob)) return "posted procedures";
+  return null;
+}
+
+function uniqueSorted(values: string[]): string[] {
+  return [...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b));
+}
+
+function latestDate(values: string[]): string | null {
+  const dates = values.filter((v) => /^\d{4}-\d{2}-\d{2}/.test(v)).sort();
+  return dates.at(-1) ?? null;
+}
+
+function sampleFromRow(row: Record<string, unknown>, seriesLabel: string): Record<string, unknown> {
+  return {
+    sample: true,
+    id: str(row.id),
+    name: seriesLabel || str(row.label) || str(row.commodity),
+    group: str(row.group),
+    commodity: str(row.commodity) || null,
+    market: str(row.market) || null,
+    unit: str(row.unit) || null,
+    asOf: str(row.asOf) || null,
+    price: num(row.price),
+    source: str(row.source) || null,
+  };
+}
+
+export function buildManifest(resourceUrl = "https://ticks.bnm.farm/ticks"): Record<string, unknown> {
+  const payload = loadTicks();
+  const origin = originFromResource(resourceUrl);
+  const ticks = payload.ticks as Record<string, unknown>[];
+  const failed = payload.failed as Record<string, unknown>[];
+  const series = payload.history.series as Record<string, unknown>[];
+  const points = payload.history.points as Record<string, unknown>[];
+  const emptyReports = payload.history.emptyReports as Record<string, unknown>[];
+  const seriesById = new Map(series.map((s) => [str(s.id), s]));
+
+  const pointsBySeries = new Map<string, { count: number; first: string | null; last: string | null }>();
+  for (const point of points) {
+    const id = str(point.series || point.id);
+    if (!id) continue;
+    const day = str(point.reportDate || point.asOf).slice(0, 10);
+    const prev = pointsBySeries.get(id) || { count: 0, first: null, last: null };
+    prev.count += 1;
+    if (day) {
+      if (!prev.first || day < prev.first) prev.first = day;
+      if (!prev.last || day > prev.last) prev.last = day;
+    }
+    pointsBySeries.set(id, prev);
+  }
+
+  const asOfBySource: Record<string, string> = {};
+  for (const row of ticks) {
+    const source = str(row.source);
+    const asOf = str(row.asOf).slice(0, 10);
+    if (!source || !asOf) continue;
+    if (!asOfBySource[source] || asOf > asOfBySource[source]) asOfBySource[source] = asOf;
+  }
+
+  const groups = GROUP_LABELS.map((group) => {
+    const rows = ticks.filter((row) => str(row.group) === group.id);
+    const bySource = new Map<string, Record<string, unknown>[]>();
+    for (const row of rows) {
+      const key = str(row.source) || "unknown";
+      const list = bySource.get(key) || [];
+      list.push(row);
+      bySource.set(key, list);
+    }
+    const sources = [...bySource.entries()].map(([name, sourceRows]) => {
+      const ids = sourceRows.map((row) => str(row.id));
+      const hist = ids.map((id) => pointsBySeries.get(id)).filter(Boolean);
+      return {
+        name,
+        sourceUrl: str(sourceRows[0]?.sourceUrl) || null,
+        cadence: inferCadence(name, str(sourceRows[0]?.market)),
+        tickCount: sourceRows.length,
+        latestAsOf: latestDate(sourceRows.map((row) => str(row.asOf).slice(0, 10))),
+        geography: uniqueSorted(sourceRows.map((row) => str(row.market))),
+        units: uniqueSorted(sourceRows.map((row) => str(row.unit))),
+        history: {
+          seriesWithPoints: hist.length,
+          pointCount: hist.reduce((n, h) => n + (h?.count ?? 0), 0),
+        },
+        series: sourceRows.map((row) => ({
+          id: str(row.id),
+          name: str(seriesById.get(str(row.id))?.label) || str(row.label) || str(row.commodity),
+        })),
+      };
+    });
+    return {
+      id: group.id,
+      name: group.name,
+      tickCount: rows.length,
+      units: uniqueSorted(rows.map((row) => str(row.unit))),
+      geography: uniqueSorted(rows.map((row) => str(row.market))),
+      latestAsOf: latestDate(rows.map((row) => str(row.asOf).slice(0, 10))),
+      history: {
+        available: rows.some((row) => (pointsBySeries.get(str(row.id))?.count ?? 0) > 0),
+        pointCount: rows.reduce((n, row) => n + (pointsBySeries.get(str(row.id))?.count ?? 0), 0),
+      },
+      sources,
+    };
+  }).filter((group) => group.tickCount > 0 || group.sources.length > 0);
+
+  const samples: Record<string, unknown>[] = [];
+  const used = new Set<string>();
+  for (const id of SAMPLE_SERIES_IDS) {
+    const row = ticks.find((t) => str(t.id) === id);
+    if (!row) continue;
+    samples.push(sampleFromRow(row, str(seriesById.get(id)?.label)));
+    used.add(id);
+  }
+  for (const group of GROUP_LABELS) {
+    if (samples.length >= 5) break;
+    const row = ticks.find((t) => str(t.group) === group.id && !used.has(str(t.id)));
+    if (!row) continue;
+    samples.push(sampleFromRow(row, str(seriesById.get(str(row.id))?.label)));
+    used.add(str(row.id));
+  }
+
+  const empty = [
+    ...failed.map((item) => ({
+      status: "empty",
+      product: false,
+      id: str(item.id) || null,
+      name: str(item.label) || str(item.id) || "empty report",
+      reason: str(item.reason) || "No official row. Not a product.",
+      source: str(item.source) || null,
+      sourceUrl: str(item.sourceUrl) || null,
+    })),
+    ...emptyReports
+      .filter((item) => /organic/i.test(`${item.series ?? ""} ${item.reason ?? ""}`))
+      .slice(-1)
+      .map((item) => ({
+        status: "empty",
+        product: false,
+        id: str(item.series) || "hay-idaho-organic",
+        name: "USDA organic (Idaho) hay",
+        reason: str(item.reason) || "Official print has no organic row. Not a product.",
+        source: str(item.source) || null,
+        sourceUrl: str(item.sourceUrl) || null,
+        latestEmptyAsOf: str(item.reportDate).slice(0, 10) || null,
+      })),
+  ];
+
+  const amount = amountAtomic();
+  return {
+    ok: true,
+    product: {
+      id: PRODUCT_ID,
+      name: PRODUCT_NAME,
+      version: PRODUCT_VERSION,
+    },
+    paidEndpoint: `${origin}${TICKS_PATH}`,
+    discoveryUrl: `${origin}/`,
+    manifestUrl: `${origin}${MANIFEST_PATH}`,
+    priceAtomic: amount,
+    priceDisplay: amount === "20000" ? "$0.02" : amount ? `${amount} atomic USDC` : null,
+    network: NETWORK_V2,
+    networkName: "Base",
+    asset: USDC_BASE,
+    assetSymbol: "USDC",
+    payTo: PAY_TO,
+    fetchedAt: payload.fetchedAt,
+    latestAsOfBySource: asOfBySource,
+    tickCount: ticks.length,
+    status: payload.status,
+    schema: {
+      tickFields: {
+        id: "string — deterministic series id",
+        group: "hay | cattle | produce | grain | water | pulses",
+        commodity: "string",
+        label: "string",
+        market: "string — geography / barn / shipping point",
+        classGrade: "string",
+        unit: "$/ton | $/cwt | $/pair | $/50 lb | $/25 lb | $/bu | $/AF",
+        price: "number | null — official print only",
+        lo: "number | optional",
+        hi: "number | optional",
+        mid: "number | optional",
+        asOf: "YYYY-MM-DD",
+        source: "string",
+        sourceUrl: "string — official PDF or page",
+        note: "string | optional",
+      },
+      paidResponse: {
+        ticks: "current official snapshot (all public series on this collect)",
+        failed: "current honest-empty / failed official fetches",
+        history: {
+          series: "id / label / unit / group catalog",
+          points: "dated official prints already stored — days between reports are not filled in",
+          emptyReports: "official prints with no row (organic hay stays empty)",
+        },
+        fetchedAt: "ISO timestamp of the last official collect",
+      },
+    },
+    groups,
+    empty,
+    samples,
+    sampleNote:
+      "samples are marked sample:true and are a few real official rows for identification. The paid GET /ticks body has the full current snapshot. This manifest does not list every current price.",
+  };
+}
+
 export function ticksOutputSchema(): Record<string, unknown> {
   return {
     input: {
@@ -240,7 +482,7 @@ export function ticksOutputSchema(): Record<string, unknown> {
       type: "json",
       example: {
         ok: true,
-        product: "idaho-hay-feeder-ticks",
+        product: PRODUCT_ID,
         sources: [
           "Twin Falls",
           "Blackfoot",
@@ -275,7 +517,7 @@ export function bazaarExtension(): Record<string, unknown> {
 export function wellKnownX402(): Record<string, unknown> {
   return {
     version: 1,
-    resources: [`GET ${TICKS_PATH}`],
+    resources: [`GET ${TICKS_PATH}`, `GET ${MANIFEST_PATH}`],
   };
 }
 
@@ -290,6 +532,15 @@ export function openApiSpec(resourceUrl: string): Record<string, unknown> {
     },
     servers: [{ url: origin }],
     paths: {
+      [MANIFEST_PATH]: {
+        get: {
+          operationId: "getTicksManifest",
+          summary: "Free catalog / manifest (no payment)",
+          description:
+            "Machine-readable catalog generated from the live official board. Series ids, sources, freshness, and a few sample ticks. Does not include the full paid snapshot.",
+          responses: { "200": { description: "Free manifest JSON" } },
+        },
+      },
       [TICKS_PATH]: {
         get: {
           operationId: "getIdahoTicks",
@@ -555,13 +806,19 @@ export function handleRequest(req: IncomingMessage, res: ServerResponse, port: n
 
   if (path === "/") {
     sendJson(res, 200, {
-      door: "idaho-hay-feeder-ticks",
+      door: PRODUCT_ID,
       path: TICKS_PATH,
+      manifest: MANIFEST_PATH,
       payTo: PAY_TO,
       network: NETWORK_V1,
       asset: USDC_BASE,
       priceAtomic: amountAtomic(),
     });
+    return;
+  }
+
+  if (path === MANIFEST_PATH || path === "/catalog.json") {
+    sendJson(res, 200, buildManifest(resourceUrl(req, port)));
     return;
   }
 

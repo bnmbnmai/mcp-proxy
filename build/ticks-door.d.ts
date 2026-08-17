@@ -16,6 +16,10 @@ export declare const USDC_BASE = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913";
 export declare const NETWORK_V1 = "base";
 export declare const NETWORK_V2 = "eip155:8453";
 export declare const TICKS_PATH = "/ticks";
+export declare const MANIFEST_PATH = "/manifest.json";
+export declare const PRODUCT_ID = "idaho-hay-feeder-ticks";
+export declare const PRODUCT_NAME = "Idaho + PNW Market Ticks";
+export declare const PRODUCT_VERSION = "1.1.0";
 export type TickStatus = "ok" | "empty" | "stale";
 export type TicksPayload = {
     ok: true;
@@ -36,6 +40,7 @@ export type TicksPayload = {
 export declare const DEFAULT_TICKS_DIR: string;
 export declare function ticksDir(): string;
 export declare function loadTicks(): TicksPayload;
+export declare function buildManifest(resourceUrl?: string): Record<string, unknown>;
 export declare function ticksOutputSchema(): Record<string, unknown>;
 export declare function bazaarExtension(): Record<string, unknown>;
 export declare function wellKnownX402(): Record<string, unknown>;
