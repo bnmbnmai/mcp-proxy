@@ -32,10 +32,14 @@ export type TicksPayload = {
         series: unknown[];
     };
 };
+/** Media-box default: farm-plan collector writes board.json / history.json here. */
+export declare const DEFAULT_TICKS_DIR: string;
+export declare function ticksDir(): string;
 export declare function loadTicks(): TicksPayload;
 export declare function paymentRequiredBody(resourceUrl: string): Record<string, unknown>;
 export declare function paymentRequiredV2(resourceUrl: string): Record<string, unknown>;
 export declare function handleRequest(req: IncomingMessage, res: ServerResponse, port: number): void;
+export declare function bindHost(): string;
 export declare function createTicksServer(port?: number): {
     server: import("http").Server<typeof IncomingMessage, typeof ServerResponse>;
     port: number;

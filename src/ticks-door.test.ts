@@ -1,10 +1,10 @@
 import { createServer } from "node:http";
-import { mkdtempSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, loadTicks } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks } from "./ticks-door.js";
 
 async function withServer(
   envPatch: Record<string, string | undefined>,
@@ -78,6 +78,25 @@ async function main(): Promise<void> {
       assert.deepEqual(body.ticks, []);
     },
   );
+
+  const liveBoard = join(DEFAULT_TICKS_DIR, "board.json");
+  if (existsSync(liveBoard)) {
+    await withServer(
+      { TICKS_DIR: DEFAULT_TICKS_DIR, X402_SKIP_SETTLE: "1", X402_USDC_ATOMIC: "" },
+      async (base) => {
+        const unpaid = await fetch(`${base}${TICKS_PATH}`);
+        assert.equal(unpaid.status, 402);
+        const paid = await fetch(`${base}${TICKS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+        assert.equal(paid.status, 200);
+        const body = (await paid.json()) as ReturnType<typeof loadTicks>;
+        const blob = JSON.stringify(body).toLowerCase();
+        for (const marker of ["twin falls", "blackfoot", "ams_3056", "ams_3059"]) {
+          assert.ok(blob.includes(marker), `paid JSON must include ${marker} when cache exists`);
+        }
+        assert.ok(body.ticks.length + body.history.points.length > 0, "real ticks present");
+      },
+    );
+  }
 
   console.log("ticks-door tests ok");
 }

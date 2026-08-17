@@ -1,6 +1,6 @@
 # Idaho hay + feeder ticks — x402 door
 
-Thin pay-per-pull HTTP door. Not the Apollo Intelligence catalog. Not listed on x402scan / Bazaar until a paid call on a host that actually has ticks returns them.
+Thin pay-per-pull HTTP door. Not the Apollo Intelligence catalog. Not listed on x402scan / Bazaar. Public go-live is later.
 
 ## Path
 
@@ -8,15 +8,13 @@ Thin pay-per-pull HTTP door. Not the Apollo Intelligence catalog. Not listed on 
 GET /ticks
 ```
 
-Unpaid:
+Unpaid (must be **HTTP 402**):
 
 ```bash
 curl -i http://127.0.0.1:4020/ticks
 ```
 
-Expect **HTTP 402** and payment instructions. Receive address is in the JSON body (`payTo`) and in the `PAYMENT-REQUIRED` header.
-
-## Receive address
+Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 
 | | |
 |---|---|
@@ -25,37 +23,70 @@ Expect **HTTP 402** and payment instructions. Receive address is in the JSON bod
 | Network | `base` / `eip155:8453` |
 | **payTo** | **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`** |
 
-This repo does **not** publish a list price. If you need `maxAmountRequired` / `amount` on the 402, set `X402_USDC_ATOMIC` at deploy (USDC 6-decimal atomic units). Do not invent hay or cattle prices; do not invent a catalog of tool fees.
+This repo does **not** publish a list price. Set `X402_USDC_ATOMIC` at deploy if agents need `maxAmountRequired`.
 
-## Paid call
+## Env (apollo / media box)
 
-Retry with an x402 payment header (`X-PAYMENT` v1 or `PAYMENT-SIGNATURE` v2). Settlement uses `X402_FACILITATOR_URL` when set. For a local smoke of the JSON shape only:
+| Variable | Default | Purpose |
+|---|---|---|
+| `TICKS_DIR` | `$HOME/projects/farm-plan/data/prices` | Directory with `board.json` + `history.json` from farm-plan `collect-prices.py` / farm-api |
+| `TICKS_PATH` | `$TICKS_DIR/board.json` | Override the board file only |
+| `FARM_DATA_DIR` | (unset) | If set and `TICKS_DIR` is not, reads `$FARM_DATA_DIR/prices` |
+| `BIND_HOST` | `0.0.0.0` | LAN bind is OK |
+| `PORT` | `4020` | Listen port |
+| `X402_SKIP_SETTLE` | unset | `1` = local/test path: any `X-PAYMENT` header serves ticks (not for public) |
+| `X402_FACILITATOR_URL` | unset | Public facilitator for real settlement |
+| `X402_USDC_ATOMIC` | unset | Optional amount in USDC 6-decimal units |
+| `X402_RESOURCE_URL` | request host | Public URL prefix if behind a reverse proxy |
+
+The door **only reads** the farm-plan price cache. It does not scrape. Refresh ticks on apollo the same way the Market tab already does:
 
 ```bash
-X402_SKIP_SETTLE=1 node build/ticks-door.js
-curl -s http://127.0.0.1:4020/ticks -H 'X-PAYMENT: test'
+# already-collected cache (typical)
+ls ~/projects/farm-plan/data/prices/board.json
+
+# optional refresh (official barn + USDA only; do not invent prices)
+FARM_DATA_DIR=~/projects/farm-plan/data \
+  python3 ~/projects/farm-plan/scripts/collect-prices.py --pause 2.5
+# or: click Fetch latest cash on farm.bnm.farm Market tab
 ```
 
-On this public repo host the paid body is an **honest empty/stale** payload unless you point the door at the farm-plan price cache that already collects Twin Falls, Blackfoot, AMS_3056 hay, and AMS_3059 NW Direct:
+If `board.json` / `history.json` are missing, a paid call returns an honest empty/stale JSON. No family ledger, no basic-auth dump.
+
+## Run on apollo (LAN)
 
 ```bash
-TICKS_DIR=/path/to/farm-plan/data/prices PORT=4020 node build/ticks-door.js
-```
-
-Reads `board.json` / `history.json` only. Does not scrape. Does not put family / basic-auth on a public dump.
-
-## Run
-
-```bash
+cd ~/projects/mcp-proxy   # this repo checkout
+git checkout cursor/idaho-ticks-x402-3187
+npm install
 npm run build
-npm run start:ticks
+
+export TICKS_DIR=$HOME/projects/farm-plan/data/prices
+export BIND_HOST=0.0.0.0
+export PORT=4020
+# local smoke only — do not use on a public host
+export X402_SKIP_SETTLE=1
+
+./scripts/run-apollo-ticks-door.sh
+# or: npm run start:ticks
 ```
 
-Default listen: `0.0.0.0:4020` (`PORT` overrides).
+From another machine on the LAN (media box is often `192.168.1.243`):
+
+```bash
+# unpaid → 402
+curl -i http://192.168.1.243:4020/ticks
+
+# documented test path (settle-skip) → real ticks when the cache exists
+curl -s http://192.168.1.243:4020/ticks -H 'X-PAYMENT: test' | head
+```
+
+Paid JSON includes Twin Falls, Blackfoot, AMS_3056 hay, and AMS_3059 NW Direct **when those series are in the cache**. A source that 403s on this host is listed under `failed` (honest), not filled in.
 
 ## Out of scope
 
-- Apollo OSINT / scrape / proxy tools
+- Apollo OSINT / scrape / proxy catalog
 - x402scan / Bazaar / SKILL.md listing
 - LINK, prediction markets, auto-trade
 - Keys in the repo
+- Public internet go-live

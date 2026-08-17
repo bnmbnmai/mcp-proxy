@@ -1,6 +1,6 @@
 # Apollo Intelligence MCP Server 🏛️
 
-**Idaho hay + feeder ticks (thin x402 door):** `GET /ticks` — unpaid calls return HTTP 402. Receive USDC on Base at `0xf59621FC406D266e18f314Ae18eF0a33b8401004`. See [`docs/IDAHO-TICKS-X402.md`](./docs/IDAHO-TICKS-X402.md). This is not a listing and not the old 40-tool catalog.
+**Idaho hay + feeder ticks (thin x402 door):** `GET /ticks` — unpaid calls return HTTP 402. Receive USDC on Base at `0xf59621FC406D266e18f314Ae18eF0a33b8401004`. On apollo, point `TICKS_DIR` at `~/projects/farm-plan/data/prices` (LAN bind OK). See [`docs/IDAHO-TICKS-X402.md`](./docs/IDAHO-TICKS-X402.md). Not a listing and not the old 40-tool catalog.
 
 **40 tools for AI agents: intelligence feeds, economic data, DeFi, real-time search, crypto, OSINT, weather, ML/NLP, proxy infrastructure — all via x402 micropayments.**
 

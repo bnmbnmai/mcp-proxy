@@ -12,7 +12,8 @@
  */
 import { createServer as createHttpServer } from "node:http";
 import { readFileSync, existsSync, statSync } from "node:fs";
-import { resolve } from "node:path";
+import { homedir } from "node:os";
+import { join, resolve } from "node:path";
 export const PAY_TO = "0xf59621FC406D266e18f314Ae18eF0a33b8401004";
 export const USDC_BASE = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913";
 export const NETWORK_V1 = "base";
@@ -22,9 +23,12 @@ const PUBLIC_SOURCE_MARKERS = [
     "twin falls",
     "blackfoot",
     "ams_3056",
+    "ams-3056",
     "ams_3059",
+    "ams-3059",
     "northwest direct",
     "idaho direct hay",
+    "idaho hay",
 ];
 const PUBLIC_SERIES_PREFIXES = [
     "cattle-tf-",
@@ -39,8 +43,20 @@ function amountAtomic() {
     const raw = env("X402_USDC_ATOMIC");
     return raw.length > 0 ? raw : null;
 }
-function ticksDir() {
-    return resolve(env("TICKS_DIR", env("FARM_DATA_DIR") ? `${env("FARM_DATA_DIR")}/prices` : ""));
+/** Media-box default: farm-plan collector writes board.json / history.json here. */
+export const DEFAULT_TICKS_DIR = join(homedir(), "projects/farm-plan/data/prices");
+export function ticksDir() {
+    if (Object.prototype.hasOwnProperty.call(process.env, "TICKS_DIR")) {
+        const explicit = env("TICKS_DIR");
+        if (explicit)
+            return resolve(explicit);
+        if (env("FARM_DATA_DIR"))
+            return resolve(env("FARM_DATA_DIR"), "prices");
+        return "";
+    }
+    if (env("FARM_DATA_DIR"))
+        return resolve(env("FARM_DATA_DIR"), "prices");
+    return resolve(DEFAULT_TICKS_DIR);
 }
 function boardPath() {
     const explicit = env("TICKS_PATH");
@@ -114,7 +130,7 @@ export function loadTicks() {
             product: "idaho-hay-feeder-ticks",
             sources: ["Twin Falls", "Blackfoot", "AMS_3056 hay", "AMS_3059 NW Direct"],
             status: "empty",
-            reason: "Ticks are not on this host. Point TICKS_PATH or TICKS_DIR at farm-plan data/prices (board.json / history.json).",
+            reason: `Ticks are not on this host. Default cache is ${DEFAULT_TICKS_DIR} (board.json / history.json). Set TICKS_DIR or TICKS_PATH.`,
             fetchedAt: null,
             ticks: [],
             failed: [],
@@ -258,12 +274,15 @@ export function handleRequest(req, res, port) {
         return;
     }
     if (path === "/") {
+        const dir = ticksDir();
         sendJson(res, 200, {
             door: "idaho-hay-feeder-ticks",
             path: TICKS_PATH,
             payTo: PAY_TO,
             network: NETWORK_V1,
             asset: USDC_BASE,
+            ticksDir: dir || null,
+            board: boardPath() && existsSync(boardPath()) ? boardPath() : null,
         });
         return;
     }
@@ -297,6 +316,9 @@ export function handleRequest(req, res, port) {
         }, { "PAYMENT-REQUIRED": paymentRequiredHeader });
     });
 }
+export function bindHost() {
+    return env("BIND_HOST", "0.0.0.0");
+}
 export function createTicksServer(port = Number(env("PORT", "4020")) || 4020) {
     const server = createHttpServer((req, res) => {
         try {
@@ -315,9 +337,13 @@ function isMain() {
 }
 if (isMain()) {
     const { server, port } = createTicksServer();
-    server.listen(port, "0.0.0.0", () => {
-        console.error(`idaho ticks x402 door on :${port}${TICKS_PATH}`);
+    const host = bindHost();
+    server.listen(port, host, () => {
+        const board = boardPath();
+        console.error(`idaho ticks x402 door on ${host}:${port}${TICKS_PATH}`);
         console.error(`payTo ${PAY_TO} USDC ${USDC_BASE} on Base`);
+        console.error(`ticksDir ${ticksDir() || "(unset)"}`);
+        console.error(`board ${board && existsSync(board) ? board : "missing — paid body will be empty/stale"}`);
     });
 }
 //# sourceMappingURL=ticks-door.js.map
