@@ -90,13 +90,47 @@ async function main(): Promise<void> {
         assert.equal(paid.status, 200);
         const body = (await paid.json()) as ReturnType<typeof loadTicks>;
         const blob = JSON.stringify(body).toLowerCase();
-        for (const marker of ["twin falls", "blackfoot", "ams_3056", "ams_3059"]) {
+        for (const marker of ["twin falls", "blackfoot", "ams_3056", "ams_3059", "if_fv130"]) {
           assert.ok(blob.includes(marker), `paid JSON must include ${marker} when cache exists`);
         }
         assert.ok(body.ticks.length + body.history.points.length > 0, "real ticks present");
+        const organic = body.ticks.filter((row) => {
+          const rec = row as Record<string, unknown>;
+          return String(rec.id ?? "").toLowerCase() === "hay-idaho-organic";
+        });
+        for (const row of organic) {
+          const rec = row as Record<string, unknown>;
+          assert.equal(rec.price, undefined, "organic hay must stay empty — do not invent a price");
+        }
       },
     );
   }
+
+  await withServer(
+    { TICKS_DIR: dir, X402_USDC_ATOMIC: "20000", X402_RESOURCE_URL: "https://ticks.bnm.farm" },
+    async (base) => {
+      const unpaid = await fetch(`${base}${TICKS_PATH}`);
+      assert.equal(unpaid.status, 402);
+      const body = (await unpaid.json()) as {
+        payTo: string;
+        accepts: { maxAmountRequired?: string; resource?: string; outputSchema?: { input?: { discoverable?: boolean } } }[];
+      };
+      assert.equal(body.payTo, PAY_TO);
+      assert.equal(body.accepts[0]?.maxAmountRequired, "20000");
+      assert.equal(body.accepts[0]?.resource, "https://ticks.bnm.farm/ticks");
+      assert.equal(body.accepts[0]?.outputSchema?.input?.discoverable, true);
+
+      const wellKnown = await fetch(`${base}/.well-known/x402`);
+      assert.equal(wellKnown.status, 200);
+      const discovered = (await wellKnown.json()) as { resources: string[] };
+      assert.ok(discovered.resources.includes("GET /ticks"));
+
+      const spec = await fetch(`${base}/openapi.json`);
+      assert.equal(spec.status, 200);
+      const openapi = (await spec.json()) as { paths: Record<string, unknown> };
+      assert.ok(openapi.paths["/ticks"]);
+    },
+  );
 
   console.log("ticks-door tests ok");
 }
