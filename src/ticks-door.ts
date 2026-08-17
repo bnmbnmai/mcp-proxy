@@ -192,6 +192,10 @@ export function ticksOutputSchema(): Record<string, unknown> {
       type: "http",
       method: "GET",
       discoverable: true,
+      schema: {
+        type: "object",
+        properties: {},
+      },
     },
     output: {
       type: "json",

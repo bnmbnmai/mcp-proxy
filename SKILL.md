@@ -73,6 +73,11 @@ Farm-plan `board.json` `cacheTtlSeconds` is **14400** (4 hours). `fetchedAt` is 
 
 The 402 `accepts[].outputSchema` marks `GET /ticks` `discoverable: true` for CDP Bazaar / x402scan.
 
+## Listings submitted
+
+- x402scan register (origin + endpoint): [recipient 0xf596…1004](https://www.x402scan.com/recipient/0xf59621FC406D266e18f314Ae18eF0a33b8401004) — resource `https://ticks.bnm.farm/ticks`, origin id `c6f584c5-e494-41d1-aa02-2efb07ac3546`
+- CDP / Chainlink Agents Bazaar: no public submit form. Door already uses CDP facilitator `https://api.cdp.coinbase.com/platform/v2/x402`. Bazaar indexes after a successful CDP verify+settle (this box has no CDP API key; facilitator returns 401). Local EIP-3009 settle still works for real pays.
+
 ## Out of scope
 
 - `farm.bnm.farm`, `water.bnm.farm`, `storm.bnm.farm` stay family/agent gated
