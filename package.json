@@ -9,9 +9,11 @@
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "scripts": {
-    "build": "tsc && chmod 755 build/index.js",
+    "build": "tsc && chmod 755 build/index.js build/ticks-door.js",
     "prepare": "npm run build",
-    "start": "node build/index.js"
+    "start": "node build/index.js",
+    "start:ticks": "node build/ticks-door.js",
+    "test:ticks": "npm run build && node build/ticks-door.test.js"
   },
   "files": [
     "build",
