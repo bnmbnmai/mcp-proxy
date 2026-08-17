@@ -90,7 +90,7 @@ async function main(): Promise<void> {
         assert.equal(paid.status, 200);
         const body = (await paid.json()) as ReturnType<typeof loadTicks>;
         const blob = JSON.stringify(body).toLowerCase();
-        for (const marker of ["twin falls", "blackfoot", "ams_3056", "ams_3059", "if_fv130", "ibc.id.grain"]) {
+        for (const marker of ["twin falls", "blackfoot", "ams_3056", "ams_3059", "if_fv130", "ibc.id.grain", "wd1."]) {
           assert.ok(blob.includes(marker), `paid JSON must include ${marker} when cache exists`);
         }
         assert.ok(body.ticks.length + body.history.points.length > 0, "real ticks present");
@@ -98,6 +98,10 @@ async function main(): Promise<void> {
           String((row as Record<string, unknown>).id ?? "").startsWith("ibc.id.grain."),
         );
         assert.ok(grain.length >= 16, `paid JSON must include IBC grain ticks already in the cache (got ${grain.length})`);
+        const wd1 = body.ticks.filter((row) =>
+          String((row as Record<string, unknown>).id ?? "").startsWith("wd1."),
+        );
+        assert.ok(wd1.length >= 5, `paid JSON must include WD1 rental-pool ticks already in the cache (got ${wd1.length})`);
         const organic = body.ticks.filter((row) => {
           const rec = row as Record<string, unknown>;
           return String(rec.id ?? "").toLowerCase() === "hay-idaho-organic";
