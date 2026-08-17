@@ -40,6 +40,14 @@ const PUBLIC_SOURCE_MARKERS = [
   "water district 1",
   "rental pool",
   "wd1.",
+  "ams_3058",
+  "ams-3058",
+  "ams_2914",
+  "ams-2914",
+  "ams.2914",
+  "columbia basin",
+  "columbia_umatilla",
+  "umatilla",
 ];
 
 const PUBLIC_SERIES_PREFIXES = [
@@ -47,8 +55,10 @@ const PUBLIC_SERIES_PREFIXES = [
   "cattle-bf-",
   "cattle-nw-",
   "hay-id-",
+  "hay.ams_3058.",
   "ibc.id.grain.",
   "wd1.",
+  "ams.2914.",
 ];
 
 export type TickStatus = "ok" | "empty" | "stale";
@@ -171,6 +181,9 @@ export function loadTicks(): TicksPayload {
         "IF_FV130 onions/potatoes",
         "IBC Idaho elevator grain",
         "WD1 rental-pool $/AF",
+        "AMS_3058 Columbia Basin hay",
+        "IF_FV130 WA-OR produce",
+        "AMS_2914 PNW pulses",
       ],
       status: "empty",
       reason:
@@ -194,11 +207,14 @@ export function loadTicks(): TicksPayload {
       "IF_FV130 onions/potatoes",
       "IBC Idaho elevator grain",
       "WD1 rental-pool $/AF",
+      "AMS_3058 Columbia Basin hay",
+      "IF_FV130 WA-OR produce",
+      "AMS_2914 PNW pulses",
     ],
     status: hasTicks ? "ok" : "stale",
     reason: hasTicks
       ? null
-      : "Price cache is present but has no Twin Falls / Blackfoot / AMS_3056 / AMS_3059 / IF_FV130 / IBC grain / WD1 ticks.",
+      : "Price cache is present but has no official hay / feeder / IF_FV130 / IBC / WD1 / 3058 / 2914 ticks.",
     fetchedAt,
     ticks: rows,
     failed,
@@ -207,7 +223,7 @@ export function loadTicks(): TicksPayload {
 }
 
 const TICKS_DESCRIPTION =
-  "Idaho hay + feeder + onion + potato + IBC grain + WD1 rental-pool ticks (Twin Falls, Blackfoot, AMS_3056, AMS_3059, IF_FV130, IBC, WD1)";
+  "Idaho + PNW official ticks: hay, feeder, IF_FV130, IBC grain, WD1, AMS 3058 Columbia Basin hay, AMS 2914 pulses";
 
 export function ticksOutputSchema(): Record<string, unknown> {
   return {
@@ -233,6 +249,9 @@ export function ticksOutputSchema(): Record<string, unknown> {
           "IF_FV130 onions/potatoes",
           "IBC Idaho elevator grain",
           "WD1 rental-pool $/AF",
+          "AMS_3058 Columbia Basin hay",
+          "IF_FV130 WA-OR produce",
+          "AMS_2914 PNW pulses",
         ],
         status: "ok",
         reason: null,
@@ -276,7 +295,7 @@ export function openApiSpec(resourceUrl: string): Record<string, unknown> {
           operationId: "getIdahoTicks",
           summary: TICKS_DESCRIPTION,
           description:
-            "Unpaid GET returns HTTP 402 (USDC on Base, $0.02 / 20000 atomic). After a valid x402 pay, JSON ticks from the farm-plan price cache (hay, feeder cattle, IF_FV130 onions/potatoes, IBC Idaho elevator grain, WD1 rental-pool $/AF). Organic hay is honest-empty when the cache has no official organic quotes.",
+            "Unpaid GET returns HTTP 402 (USDC on Base, $0.02 / 20000 atomic). After a valid x402 pay, JSON ticks from the farm-plan price cache (hay, feeder, IF_FV130 ID+WA-OR, IBC grain, WD1, AMS 3058 Columbia Basin hay, AMS 2914 PNW pulses). Organic hay is honest-empty when the cache has no official organic quotes.",
           responses: {
             "402": { description: "Payment required (x402)" },
             "200": { description: "Paid ticks JSON" },

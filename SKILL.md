@@ -46,6 +46,9 @@ When the cache is fresh you get the same public series the LAN door already serv
 - USDA AMS Specialty Crops Idaho Falls (**IF_FV130**) onions and potatoes
 - Idaho Barley Commission (**IBC**) elevator grain — barley $/cwt and wheat $/bu as printed (Idaho Falls, Twin Falls/Buhl, Meridian, Lewiston, Moscow/Genesee, Nezperce/Craigmont). Blank printed cells stay empty.
 - Water District 1 (**WD1**) rental-pool posted all-in **$/AF** (common above Milner, flow aug, assignment fill / no-fill). Official 2026 procedures PDF only — nothing invented.
+- USDA AMS **3058** Columbia Basin hay ($/ton) as printed
+- IF_FV130 **Columbia Basin / Umatilla Basin (WA-OR)** onions and potatoes (`.columbia_umatilla` — does not replace Idaho `id_malheur` / `tf_burley`)
+- USDA AMS **2914** PNW warehouse pulse bids ($/cwt): garbanzo, Brewer, Pardina, whole green pea. Min-Dak / Michigan / CBOT left off.
 
 **Organic hay stays empty** unless an official organic quote is in the cache. Treasure Valley is not filled in. Failed official fetches are listed under `failed`, not guessed.
 
