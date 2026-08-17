@@ -44,6 +44,7 @@ When the cache is fresh you get the same public series the LAN door already serv
 - USDA AMS Idaho Direct Hay (AMS_3056) — conventional / premium squares
 - USDA AMS Northwest Direct Cattle (AMS_3059)
 - USDA AMS Specialty Crops Idaho Falls (**IF_FV130**) onions and potatoes
+- Idaho Barley Commission (**IBC**) elevator grain — barley $/cwt and wheat $/bu as printed (Idaho Falls, Twin Falls/Buhl, Meridian, Lewiston, Moscow/Genesee, Nezperce/Craigmont). Blank printed cells stay empty.
 
 **Organic hay stays empty** unless an official organic quote is in the cache. Treasure Valley is not filled in. Failed official fetches are listed under `failed`, not guessed.
 

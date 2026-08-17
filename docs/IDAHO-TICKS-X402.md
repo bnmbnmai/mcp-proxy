@@ -84,7 +84,7 @@ curl -i http://192.168.1.243:4020/ticks
 curl -s http://192.168.1.243:4020/ticks -H 'X-PAYMENT: test' | head
 ```
 
-Paid JSON includes Twin Falls, Blackfoot, AMS_3056 hay, AMS_3059 NW Direct, and IF_FV130 onions/potatoes **when those series are in the cache**. A source that 403s on this host is listed under `failed` (honest), not filled in. Organic hay stays empty unless an official organic quote is present.
+Paid JSON includes Twin Falls, Blackfoot, AMS_3056 hay, AMS_3059 NW Direct, IF_FV130 onions/potatoes, and IBC Idaho elevator grain **when those series are in the cache**. A source that 403s on this host is listed under `failed` (honest), not filled in. Organic hay stays empty unless an official organic quote is present.
 
 ## Out of scope
 

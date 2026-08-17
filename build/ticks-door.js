@@ -32,12 +32,15 @@ const PUBLIC_SOURCE_MARKERS = [
     "if_fv130",
     "if-fv130",
     "idaho falls",
+    "idaho barley commission",
+    "ibc.id.grain",
 ];
 const PUBLIC_SERIES_PREFIXES = [
     "cattle-tf-",
     "cattle-bf-",
     "cattle-nw-",
     "hay-id-",
+    "ibc.id.grain.",
 ];
 function env(name, fallback = "") {
     return (process.env[name] ?? fallback).trim();
@@ -131,7 +134,14 @@ export function loadTicks() {
         return {
             ok: true,
             product: "idaho-hay-feeder-ticks",
-            sources: ["Twin Falls", "Blackfoot", "AMS_3056 hay", "AMS_3059 NW Direct", "IF_FV130 onions/potatoes"],
+            sources: [
+                "Twin Falls",
+                "Blackfoot",
+                "AMS_3056 hay",
+                "AMS_3059 NW Direct",
+                "IF_FV130 onions/potatoes",
+                "IBC Idaho elevator grain",
+            ],
             status: "empty",
             reason: `Ticks are not on this host. Default cache is ${DEFAULT_TICKS_DIR} (board.json / history.json). Set TICKS_DIR or TICKS_PATH.`,
             fetchedAt: null,
@@ -144,18 +154,25 @@ export function loadTicks() {
     return {
         ok: true,
         product: "idaho-hay-feeder-ticks",
-        sources: ["Twin Falls", "Blackfoot", "AMS_3056 hay", "AMS_3059 NW Direct", "IF_FV130 onions/potatoes"],
+        sources: [
+            "Twin Falls",
+            "Blackfoot",
+            "AMS_3056 hay",
+            "AMS_3059 NW Direct",
+            "IF_FV130 onions/potatoes",
+            "IBC Idaho elevator grain",
+        ],
         status: hasTicks ? "ok" : "stale",
         reason: hasTicks
             ? null
-            : "Price cache is present but has no Twin Falls / Blackfoot / AMS_3056 / AMS_3059 / IF_FV130 ticks.",
+            : "Price cache is present but has no Twin Falls / Blackfoot / AMS_3056 / AMS_3059 / IF_FV130 / IBC grain ticks.",
         fetchedAt,
         ticks: rows,
         failed,
         history: { points, emptyReports, series },
     };
 }
-const TICKS_DESCRIPTION = "Idaho hay + feeder + onion + potato ticks (Twin Falls, Blackfoot, AMS_3056, AMS_3059, IF_FV130)";
+const TICKS_DESCRIPTION = "Idaho hay + feeder + onion + potato + IBC elevator grain ticks (Twin Falls, Blackfoot, AMS_3056, AMS_3059, IF_FV130, IBC)";
 export function ticksOutputSchema() {
     return {
         input: {
@@ -172,7 +189,14 @@ export function ticksOutputSchema() {
             example: {
                 ok: true,
                 product: "idaho-hay-feeder-ticks",
-                sources: ["Twin Falls", "Blackfoot", "AMS_3056 hay", "AMS_3059 NW Direct", "IF_FV130 onions/potatoes"],
+                sources: [
+                    "Twin Falls",
+                    "Blackfoot",
+                    "AMS_3056 hay",
+                    "AMS_3059 NW Direct",
+                    "IF_FV130 onions/potatoes",
+                    "IBC Idaho elevator grain",
+                ],
                 status: "ok",
                 reason: null,
                 fetchedAt: "2026-08-14T00:00:00Z",
@@ -211,7 +235,7 @@ export function openApiSpec(resourceUrl) {
                 get: {
                     operationId: "getIdahoTicks",
                     summary: TICKS_DESCRIPTION,
-                    description: "Unpaid GET returns HTTP 402 (USDC on Base, $0.02 / 20000 atomic). After a valid x402 pay, JSON ticks from the farm-plan price cache (hay, feeder cattle, IF_FV130 onions/potatoes). Organic hay is honest-empty when the cache has no official organic quotes.",
+                    description: "Unpaid GET returns HTTP 402 (USDC on Base, $0.02 / 20000 atomic). After a valid x402 pay, JSON ticks from the farm-plan price cache (hay, feeder cattle, IF_FV130 onions/potatoes, IBC Idaho elevator grain). Organic hay is honest-empty when the cache has no official organic quotes.",
                     responses: {
                         "402": { description: "Payment required (x402)" },
                         "200": { description: "Paid ticks JSON" },
