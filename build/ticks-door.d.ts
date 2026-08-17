@@ -36,6 +36,10 @@ export type TicksPayload = {
 export declare const DEFAULT_TICKS_DIR: string;
 export declare function ticksDir(): string;
 export declare function loadTicks(): TicksPayload;
+export declare function ticksOutputSchema(): Record<string, unknown>;
+export declare function bazaarExtension(): Record<string, unknown>;
+export declare function wellKnownX402(): Record<string, unknown>;
+export declare function openApiSpec(resourceUrl: string): Record<string, unknown>;
 export declare function paymentRequiredBody(resourceUrl: string): Record<string, unknown>;
 export declare function paymentRequiredV2(resourceUrl: string): Record<string, unknown>;
 export declare function handleRequest(req: IncomingMessage, res: ServerResponse, port: number): void;

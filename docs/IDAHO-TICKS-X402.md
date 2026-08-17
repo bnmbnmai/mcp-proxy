@@ -1,6 +1,8 @@
 # Idaho hay + feeder ticks — x402 door
 
-Thin pay-per-pull HTTP door. Not the Apollo Intelligence catalog. Not listed on x402scan / Bazaar. Public go-live is later.
+Thin pay-per-pull HTTP door. Not the Apollo Intelligence catalog.
+
+Public ungated host: **`https://ticks.bnm.farm/ticks`**. See `SKILL.md` for the live SKU.
 
 ## Path
 
@@ -11,6 +13,7 @@ GET /ticks
 Unpaid (must be **HTTP 402**):
 
 ```bash
+curl -i https://ticks.bnm.farm/ticks
 curl -i http://127.0.0.1:4020/ticks
 ```
 
@@ -23,7 +26,7 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 | Network | `base` / `eip155:8453` |
 | **payTo** | **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`** |
 
-This repo does **not** publish a list price. Set `X402_USDC_ATOMIC` at deploy if agents need `maxAmountRequired`.
+Live LAN list price is **$0.02 USDC** (`X402_USDC_ATOMIC=20000`). Set `X402_USDC_ATOMIC` to override.
 
 ## Env (apollo / media box)
 
@@ -36,7 +39,7 @@ This repo does **not** publish a list price. Set `X402_USDC_ATOMIC` at deploy if
 | `PORT` | `4020` | Listen port |
 | `X402_SKIP_SETTLE` | unset | `1` = local/test path: any `X-PAYMENT` header serves ticks (not for public) |
 | `X402_FACILITATOR_URL` | unset | Public facilitator for real settlement |
-| `X402_USDC_ATOMIC` | unset | Optional amount in USDC 6-decimal units |
+| `X402_USDC_ATOMIC` | `20000` ($0.02) | List price in USDC 6-decimal units |
 | `X402_RESOURCE_URL` | request host | Public URL prefix if behind a reverse proxy |
 
 The door **only reads** the farm-plan price cache. It does not scrape. Refresh ticks on apollo the same way the Market tab already does:
@@ -81,12 +84,11 @@ curl -i http://192.168.1.243:4020/ticks
 curl -s http://192.168.1.243:4020/ticks -H 'X-PAYMENT: test' | head
 ```
 
-Paid JSON includes Twin Falls, Blackfoot, AMS_3056 hay, and AMS_3059 NW Direct **when those series are in the cache**. A source that 403s on this host is listed under `failed` (honest), not filled in.
+Paid JSON includes Twin Falls, Blackfoot, AMS_3056 hay, AMS_3059 NW Direct, IF_FV130 (Idaho + WA-OR), IBC grain, WD1, AMS 3058 Columbia Basin hay, and AMS 2914 PNW pulses **when those series are in the cache**. A source that 403s on this host is listed under `failed` (honest), not filled in. Organic hay stays empty unless an official organic quote is present.
 
 ## Out of scope
 
 - Apollo OSINT / scrape / proxy catalog
-- x402scan / Bazaar / SKILL.md listing
 - LINK, prediction markets, auto-trade
 - Keys in the repo
-- Public internet go-live
+- Ungating farm / water / storm

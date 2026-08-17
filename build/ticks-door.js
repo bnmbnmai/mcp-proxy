@@ -29,12 +29,32 @@ const PUBLIC_SOURCE_MARKERS = [
     "northwest direct",
     "idaho direct hay",
     "idaho hay",
+    "if_fv130",
+    "if-fv130",
+    "idaho falls",
+    "idaho barley commission",
+    "ibc.id.grain",
+    "water district 1",
+    "rental pool",
+    "wd1.",
+    "ams_3058",
+    "ams-3058",
+    "ams_2914",
+    "ams-2914",
+    "ams.2914",
+    "columbia basin",
+    "columbia_umatilla",
+    "umatilla",
 ];
 const PUBLIC_SERIES_PREFIXES = [
     "cattle-tf-",
     "cattle-bf-",
     "cattle-nw-",
     "hay-id-",
+    "hay.ams_3058.",
+    "ibc.id.grain.",
+    "wd1.",
+    "ams.2914.",
 ];
 function env(name, fallback = "") {
     return (process.env[name] ?? fallback).trim();
@@ -128,7 +148,18 @@ export function loadTicks() {
         return {
             ok: true,
             product: "idaho-hay-feeder-ticks",
-            sources: ["Twin Falls", "Blackfoot", "AMS_3056 hay", "AMS_3059 NW Direct"],
+            sources: [
+                "Twin Falls",
+                "Blackfoot",
+                "AMS_3056 hay",
+                "AMS_3059 NW Direct",
+                "IF_FV130 onions/potatoes",
+                "IBC Idaho elevator grain",
+                "WD1 rental-pool $/AF",
+                "AMS_3058 Columbia Basin hay",
+                "IF_FV130 WA-OR produce",
+                "AMS_2914 PNW pulses",
+            ],
             status: "empty",
             reason: `Ticks are not on this host. Default cache is ${DEFAULT_TICKS_DIR} (board.json / history.json). Set TICKS_DIR or TICKS_PATH.`,
             fetchedAt: null,
@@ -141,15 +172,103 @@ export function loadTicks() {
     return {
         ok: true,
         product: "idaho-hay-feeder-ticks",
-        sources: ["Twin Falls", "Blackfoot", "AMS_3056 hay", "AMS_3059 NW Direct"],
+        sources: [
+            "Twin Falls",
+            "Blackfoot",
+            "AMS_3056 hay",
+            "AMS_3059 NW Direct",
+            "IF_FV130 onions/potatoes",
+            "IBC Idaho elevator grain",
+            "WD1 rental-pool $/AF",
+            "AMS_3058 Columbia Basin hay",
+            "IF_FV130 WA-OR produce",
+            "AMS_2914 PNW pulses",
+        ],
         status: hasTicks ? "ok" : "stale",
         reason: hasTicks
             ? null
-            : "Price cache is present but has no Twin Falls / Blackfoot / AMS_3056 / AMS_3059 ticks.",
+            : "Price cache is present but has no official hay / feeder / IF_FV130 / IBC / WD1 / 3058 / 2914 ticks.",
         fetchedAt,
         ticks: rows,
         failed,
         history: { points, emptyReports, series },
+    };
+}
+const TICKS_DESCRIPTION = "Idaho + PNW official ticks: hay, feeder, IF_FV130, IBC grain, WD1, AMS 3058 Columbia Basin hay, AMS 2914 pulses";
+export function ticksOutputSchema() {
+    return {
+        input: {
+            type: "http",
+            method: "GET",
+            discoverable: true,
+            schema: {
+                type: "object",
+                properties: {},
+            },
+        },
+        output: {
+            type: "json",
+            example: {
+                ok: true,
+                product: "idaho-hay-feeder-ticks",
+                sources: [
+                    "Twin Falls",
+                    "Blackfoot",
+                    "AMS_3056 hay",
+                    "AMS_3059 NW Direct",
+                    "IF_FV130 onions/potatoes",
+                    "IBC Idaho elevator grain",
+                    "WD1 rental-pool $/AF",
+                    "AMS_3058 Columbia Basin hay",
+                    "IF_FV130 WA-OR produce",
+                    "AMS_2914 PNW pulses",
+                ],
+                status: "ok",
+                reason: null,
+                fetchedAt: "2026-08-14T00:00:00Z",
+                ticks: [],
+                failed: [],
+                history: { points: [], emptyReports: [], series: [] },
+            },
+        },
+    };
+}
+export function bazaarExtension() {
+    return {
+        bazaar: {
+            info: ticksOutputSchema(),
+        },
+    };
+}
+export function wellKnownX402() {
+    return {
+        version: 1,
+        resources: [`GET ${TICKS_PATH}`],
+    };
+}
+export function openApiSpec(resourceUrl) {
+    const origin = resourceUrl.replace(/\/ticks\/?$/, "") || "https://ticks.bnm.farm";
+    return {
+        openapi: "3.1.0",
+        info: {
+            title: "Idaho ticks x402 door",
+            version: "1.0.0",
+            description: TICKS_DESCRIPTION,
+        },
+        servers: [{ url: origin }],
+        paths: {
+            [TICKS_PATH]: {
+                get: {
+                    operationId: "getIdahoTicks",
+                    summary: TICKS_DESCRIPTION,
+                    description: "Unpaid GET returns HTTP 402 (USDC on Base, $0.02 / 20000 atomic). After a valid x402 pay, JSON ticks from the farm-plan price cache (hay, feeder, IF_FV130 ID+WA-OR, IBC grain, WD1, AMS 3058 Columbia Basin hay, AMS 2914 PNW pulses). Organic hay is honest-empty when the cache has no official organic quotes.",
+                    responses: {
+                        "402": { description: "Payment required (x402)" },
+                        "200": { description: "Paid ticks JSON" },
+                    },
+                },
+            },
+        },
     };
 }
 export function paymentRequiredBody(resourceUrl) {
@@ -160,11 +279,11 @@ export function paymentRequiredBody(resourceUrl) {
         asset: USDC_BASE,
         payTo: PAY_TO,
         resource: resourceUrl,
-        description: "Idaho hay + feeder ticks (Twin Falls, Blackfoot, AMS_3056, AMS_3059)",
+        description: TICKS_DESCRIPTION,
         mimeType: "application/json",
-        outputSchema: null,
+        outputSchema: ticksOutputSchema(),
         maxTimeoutSeconds: 60,
-        extra: { name: "USDC", version: "2" },
+        extra: { name: "USD Coin", version: "2", assetTransferMethod: "eip3009" },
     };
     if (amount)
         acceptV1.maxAmountRequired = amount;
@@ -186,7 +305,7 @@ export function paymentRequiredV2(resourceUrl) {
         asset: USDC_BASE,
         payTo: PAY_TO,
         maxTimeoutSeconds: 60,
-        extra: { name: "USDC", version: "2" },
+        extra: { name: "USD Coin", version: "2", assetTransferMethod: "eip3009" },
     };
     if (amount)
         accept.amount = amount;
@@ -195,11 +314,13 @@ export function paymentRequiredV2(resourceUrl) {
         error: "PAYMENT-SIGNATURE header is required",
         resource: {
             url: resourceUrl,
-            description: "Idaho hay + feeder ticks (Twin Falls, Blackfoot, AMS_3056, AMS_3059)",
+            description: TICKS_DESCRIPTION,
             mimeType: "application/json",
+            serviceName: "Idaho ticks",
+            tags: ["idaho", "hay", "cattle", "onions", "potatoes"],
         },
         accepts: [accept],
-        extensions: {},
+        extensions: bazaarExtension(),
     };
 }
 function paymentHeader(req) {
@@ -215,29 +336,149 @@ function paymentHeader(req) {
 function skipSettle() {
     return env("X402_SKIP_SETTLE") === "1";
 }
-async function facilitatorVerify(payment, requirements) {
+function decodePayment(payment) {
+    const tryParse = (raw) => {
+        try {
+            const parsed = JSON.parse(raw);
+            return parsed && typeof parsed === "object" && !Array.isArray(parsed)
+                ? parsed
+                : null;
+        }
+        catch {
+            return null;
+        }
+    };
+    return tryParse(payment) ?? tryParse(Buffer.from(payment, "base64").toString("utf8"));
+}
+function paymentPayload(payment) {
+    const decoded = decodePayment(payment);
+    if (!decoded)
+        return null;
+    if (decoded.payload && typeof decoded.payload === "object")
+        return decoded;
+    if (decoded.authorization && decoded.signature) {
+        return { x402Version: 1, scheme: "exact", network: NETWORK_V1, payload: decoded };
+    }
+    return decoded;
+}
+function facilitatorBody(payment, requirements) {
+    const payload = paymentPayload(payment);
+    return {
+        x402Version: payload?.x402Version ?? 1,
+        paymentPayload: payload ?? { paymentHeader: payment },
+        paymentRequirements: requirements,
+        paymentHeader: payment,
+    };
+}
+async function facilitatorPost(path, payment, requirements) {
     const base = env("X402_FACILITATOR_URL");
     if (!base)
-        return false;
-    const url = `${base.replace(/\/$/, "")}/verify`;
+        return null;
+    const url = `${base.replace(/\/$/, "")}${path}`;
     try {
         const res = await fetch(url, {
             method: "POST",
             headers: { "Content-Type": "application/json", Accept: "application/json" },
-            body: JSON.stringify({
-                x402Version: 1,
-                paymentHeader: payment,
-                paymentRequirements: requirements,
-            }),
+            body: JSON.stringify(facilitatorBody(payment, requirements)),
         });
-        if (!res.ok)
-            return false;
-        const body = (await res.json());
-        return body.isValid === true || body.success === true;
+        const text = await res.text();
+        let body = {};
+        try {
+            const parsed = JSON.parse(text);
+            if (parsed && typeof parsed === "object" && !Array.isArray(parsed))
+                body = parsed;
+        }
+        catch {
+            body = { rawStatus: res.status };
+        }
+        if (!res.ok) {
+            console.error(`facilitator ${path} HTTP ${res.status}`);
+            return null;
+        }
+        return body;
     }
-    catch {
+    catch (err) {
+        console.error(`facilitator ${path} error ${err instanceof Error ? err.name : "unknown"}`);
+        return null;
+    }
+}
+async function facilitatorVerify(payment, requirements) {
+    const body = await facilitatorPost("/verify", payment, requirements);
+    if (!body)
         return false;
-    }
+    return body.isValid === true || body.success === true;
+}
+async function facilitatorSettle(payment, requirements) {
+    const body = await facilitatorPost("/settle", payment, requirements);
+    if (!body)
+        return false;
+    return body.success === true || body.isValid === true || typeof body.transaction === "string";
+}
+function localSettleKeyFile() {
+    const explicit = env("X402_SETTLE_KEY_FILE");
+    return explicit ? resolve(explicit) : "";
+}
+async function localEip3009Settle(payment, requirements) {
+    const keyFile = localSettleKeyFile();
+    if (!keyFile || !existsSync(keyFile))
+        return false;
+    const wrapper = paymentPayload(payment);
+    const inner = (wrapper?.payload && typeof wrapper.payload === "object"
+        ? wrapper.payload
+        : wrapper) ?? {};
+    const auth = (inner.authorization && typeof inner.authorization === "object"
+        ? inner.authorization
+        : null);
+    const signature = typeof inner.signature === "string" ? inner.signature : "";
+    if (!auth || !signature)
+        return false;
+    const wantAmount = amountAtomic();
+    const to = String(auth.to ?? "").toLowerCase();
+    const value = String(auth.value ?? "");
+    if (to !== PAY_TO.toLowerCase())
+        return false;
+    if (wantAmount && value !== wantAmount)
+        return false;
+    const helper = resolve(new URL("./../scripts/local-eip3009-settle.py", import.meta.url).pathname);
+    if (!existsSync(helper))
+        return false;
+    const { spawn } = await import("node:child_process");
+    return await new Promise((resolveOk) => {
+        const child = spawn("python3", [helper], {
+            env: { ...process.env, X402_SETTLE_KEY_FILE: keyFile },
+            stdio: ["pipe", "pipe", "pipe"],
+        });
+        let out = "";
+        child.stdout.on("data", (chunk) => {
+            out += String(chunk);
+        });
+        child.stderr.on("data", () => {
+            /* never forward; may be noisy, must not leak key */
+        });
+        child.on("close", (code) => {
+            if (code !== 0) {
+                resolveOk(false);
+                return;
+            }
+            try {
+                const parsed = JSON.parse(out);
+                if (parsed.ok && parsed.tx)
+                    console.error(`local eip3009 settle ${parsed.tx}`);
+                resolveOk(parsed.ok === true);
+            }
+            catch {
+                resolveOk(false);
+            }
+        });
+        child.on("error", () => resolveOk(false));
+        child.stdin.write(JSON.stringify({
+            asset: USDC_BASE,
+            authorization: auth,
+            signature,
+            requirements: { payTo: requirements.payTo, asset: requirements.asset },
+        }));
+        child.stdin.end();
+    });
 }
 function sendJson(res, status, body, extraHeaders = {}) {
     const payload = JSON.stringify(body);
@@ -274,16 +515,22 @@ export function handleRequest(req, res, port) {
         return;
     }
     if (path === "/") {
-        const dir = ticksDir();
         sendJson(res, 200, {
             door: "idaho-hay-feeder-ticks",
             path: TICKS_PATH,
             payTo: PAY_TO,
             network: NETWORK_V1,
             asset: USDC_BASE,
-            ticksDir: dir || null,
-            board: boardPath() && existsSync(boardPath()) ? boardPath() : null,
+            priceAtomic: amountAtomic(),
         });
+        return;
+    }
+    if (path === "/.well-known/x402" || path === "/.well-known/x402.json") {
+        sendJson(res, 200, wellKnownX402());
+        return;
+    }
+    if (path === "/openapi.json") {
+        sendJson(res, 200, openApiSpec(resourceUrl(req, port)));
         return;
     }
     if (path !== TICKS_PATH) {
@@ -305,8 +552,13 @@ export function handleRequest(req, res, port) {
         return;
     }
     const accept = body402.accepts[0];
-    void facilitatorVerify(payment, accept).then((ok) => {
-        if (ok) {
+    void (async () => {
+        const verified = await facilitatorVerify(payment, accept);
+        if (verified && (await facilitatorSettle(payment, accept))) {
+            serve();
+            return;
+        }
+        if (await localEip3009Settle(payment, accept)) {
             serve();
             return;
         }
@@ -314,7 +566,7 @@ export function handleRequest(req, res, port) {
             ...body402,
             error: "Payment present but not settled. Set X402_FACILITATOR_URL or pay with a valid x402 X-PAYMENT header.",
         }, { "PAYMENT-REQUIRED": paymentRequiredHeader });
-    });
+    })();
 }
 export function bindHost() {
     return env("BIND_HOST", "0.0.0.0");
