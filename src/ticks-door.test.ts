@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH } from "./ticks-door.js";
 
 async function withServer(
   envPatch: Record<string, string | undefined>,
@@ -125,6 +125,25 @@ async function main(): Promise<void> {
           String((row as Record<string, unknown>).id ?? "").startsWith("ams.2914."),
         );
         assert.ok(pulses.length >= 4, `paid JSON must include AMS 2914 PNW pulses (got ${pulses.length})`);
+        const free = await fetch(`${base}${MANIFEST_PATH}`);
+        assert.equal(free.status, 200);
+        const manifest = (await free.json()) as {
+          tickCount: number;
+          groups: { id: string; tickCount: number }[];
+          empty: { product?: boolean; name?: string; reason?: string }[];
+          samples: unknown[];
+        };
+        assert.equal(manifest.tickCount, body.ticks.length, "manifest count must match live public board");
+        for (const id of ["hay", "cattle", "produce", "grain", "water", "pulses"]) {
+          assert.ok(manifest.groups.some((g) => g.id === id && g.tickCount > 0), `manifest group ${id}`);
+        }
+        assert.ok(
+          manifest.empty.some((e) => e.product === false && /organic/i.test(`${e.name ?? ""} ${e.reason ?? ""}`)),
+          "organic hay must be labeled empty, not a product",
+        );
+        assert.ok(manifest.samples.length >= 3 && manifest.samples.length <= 5);
+        assert.ok(manifest.samples.every((s) => (s as { sample?: boolean }).sample === true));
+        assert.ok(!("ticks" in manifest), "manifest must not dump paid ticks[]");
         const organic = body.ticks.filter((row) => {
           const rec = row as Record<string, unknown>;
           return String(rec.id ?? "").toLowerCase() === "hay-idaho-organic";
@@ -155,11 +174,24 @@ async function main(): Promise<void> {
       assert.equal(wellKnown.status, 200);
       const discovered = (await wellKnown.json()) as { resources: string[] };
       assert.ok(discovered.resources.includes("GET /ticks"));
+      assert.ok(discovered.resources.includes("GET /manifest.json"));
 
       const spec = await fetch(`${base}/openapi.json`);
       assert.equal(spec.status, 200);
       const openapi = (await spec.json()) as { paths: Record<string, unknown> };
       assert.ok(openapi.paths["/ticks"]);
+      assert.ok(openapi.paths[MANIFEST_PATH]);
+
+      const manifestRes = await fetch(`${base}${MANIFEST_PATH}`);
+      assert.equal(manifestRes.status, 200, "GET /manifest.json is free (no payment)");
+      const manifest = (await manifestRes.json()) as {
+        tickCount: number;
+        samples: unknown[];
+        schema?: { paidResponse?: { ticks?: string } };
+      };
+      assert.equal(typeof manifest.tickCount, "number");
+      assert.ok(!("ticks" in manifest), "manifest must not dump paid ticks[]");
+      assert.ok(manifest.schema?.paidResponse?.ticks);
     },
   );
 

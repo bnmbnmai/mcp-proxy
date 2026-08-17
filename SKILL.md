@@ -52,6 +52,8 @@ When the cache is fresh you get the same public series the LAN door already serv
 
 **Organic hay stays empty** unless an official organic quote is in the cache. Treasure Valley is not filled in. Failed official fetches are listed under `failed`, not guessed.
 
+Paid JSON is the **current snapshot** (`ticks`) plus **history metadata already in the cache** (`history.points` are dated official prints — days between reports are not filled in). Organic hay stays empty unless an official organic quote is in the cache.
+
 Typical paid shape:
 
 ```json
@@ -72,6 +74,7 @@ Farm-plan `board.json` `cacheTtlSeconds` is **14400** (4 hours). `fetchedAt` is 
 
 ## Discovery (unpaid, 200)
 
+- `GET https://ticks.bnm.farm/manifest.json` — free catalog generated from the live board (series ids, sources, freshness, a few sample ticks). Not the paid snapshot.
 - `GET https://ticks.bnm.farm/.well-known/x402`
 - `GET https://ticks.bnm.farm/.well-known/x402.json`
 - `GET https://ticks.bnm.farm/openapi.json`
