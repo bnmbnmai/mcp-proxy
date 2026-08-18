@@ -376,6 +376,27 @@ function readJsonFile(path: string): Record<string, unknown> | null {
   }
 }
 
+/** Newest official row per series when board.json is missing or unreadable. */
+export function latestTicksFromHistory(points: Record<string, unknown>[]): Record<string, unknown>[] {
+  const latest = new Map<string, Record<string, unknown>>();
+  for (const point of points) {
+    const series = String(point.series ?? point.id ?? "").trim();
+    if (!series) continue;
+    if (typeof point.price !== "number" || !Number.isFinite(point.price)) continue;
+    const key = `${String(point.reportDate ?? point.asOf ?? "")}\0${String(point.collectedAt ?? "")}`;
+    const prev = latest.get(series);
+    const prevKey = prev
+      ? `${String(prev.reportDate ?? prev.asOf ?? "")}\0${String(prev.collectedAt ?? "")}`
+      : "";
+    if (!prev || key > prevKey) latest.set(series, point);
+  }
+  return [...latest.values()].map((point) => {
+    const id = String(point.series ?? point.id ?? "");
+    const asOf = String(point.asOf ?? point.reportDate ?? "").slice(0, 10);
+    return { ...point, id, asOf: asOf || null };
+  });
+}
+
 export function loadTicks(): TicksPayload {
   const boardFile = boardPath();
   const histFile = historyPath();
@@ -392,11 +413,17 @@ export function loadTicks(): TicksPayload {
     .map(publicEmptyReport)
     .filter((row): row is { id: string; status: "empty" } => row !== null);
   const series = asRecordArray(hist.series).filter(isPublicTick).map(stripCollectMemo);
+  const ticks = rows.length > 0
+    ? rows
+    : latestTicksFromHistory(points).filter(isPublicTick).map(stripCollectMemo);
   const fetchedAt = typeof board?.fetchedAt === "string"
     ? board.fetchedAt
     : typeof board?.cachedAt === "string"
       ? board.cachedAt
-      : null;
+      : points.reduce<string | null>((latest, point) => {
+          const collected = typeof point.collectedAt === "string" ? point.collectedAt : "";
+          return collected && (!latest || collected > latest) ? collected : latest;
+        }, null);
 
   if (!board && !historyFile) {
     return {
@@ -424,7 +451,7 @@ export function loadTicks(): TicksPayload {
     };
   }
 
-  const hasTicks = rows.length + points.length > 0;
+  const hasTicks = ticks.length + points.length > 0;
   return {
     ok: true,
     product: "idaho-hay-feeder-ticks",
@@ -445,7 +472,7 @@ export function loadTicks(): TicksPayload {
       ? null
       : "Price cache is present but has no official hay / feeder / IF_FV130 / IBC / WD1 / 3058 / 2914 ticks.",
     fetchedAt,
-    ticks: rows,
+    ticks,
     failed,
     history: { points, emptyReports, series },
   };

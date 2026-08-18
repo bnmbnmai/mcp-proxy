@@ -225,6 +225,104 @@ async function main(): Promise<void> {
     },
   );
 
+  const histOnly = mkdtempSync(join(tmpdir(), "ticks-hist-"));
+  writeFileSync(
+    join(histOnly, "history.json"),
+    JSON.stringify({
+      points: [
+        {
+          series: "cattle-bf-feeder-steer",
+          reportDate: "2026-08-07",
+          price: 419.59,
+          source: "Blackfoot Livestock Auction representative sales",
+          sourceUrl: "https://blackfootlivestockauction.com/representative-sales/",
+          unit: "$/cwt",
+          group: "cattle",
+          commodity: "Feeder steers",
+        },
+        {
+          series: "cattle-bf-feeder-steer",
+          reportDate: "2026-08-14",
+          collectedAt: "2026-08-17T19:28:42Z",
+          price: 376.57,
+          source: "Blackfoot Livestock Auction representative sales",
+          sourceUrl: "https://blackfootlivestockauction.com/representative-sales/",
+          unit: "$/cwt",
+          group: "cattle",
+          commodity: "Feeder steers",
+        },
+        {
+          series: "cattle-bf-feeder-heifer",
+          reportDate: "2026-08-14",
+          price: 347.4,
+          source: "Blackfoot Livestock Auction representative sales",
+          unit: "$/cwt",
+          group: "cattle",
+          commodity: "Feeder heifers",
+        },
+        {
+          series: "cattle-bf-yearling-heifer",
+          reportDate: "2026-08-14",
+          price: 300.0,
+          source: "Blackfoot Livestock Auction representative sales",
+          unit: "$/cwt",
+          group: "cattle",
+          commodity: "Yearling heifers",
+        },
+        {
+          series: "cattle-bf-cull-cow",
+          reportDate: "2026-08-14",
+          price: 167.36,
+          source: "Blackfoot Livestock Auction representative sales",
+          unit: "$/cwt",
+          group: "cattle",
+          commodity: "Cull cows",
+        },
+        {
+          series: "cattle-bf-bull",
+          reportDate: "2026-08-14",
+          price: 203.5,
+          source: "Blackfoot Livestock Auction representative sales",
+          unit: "$/cwt",
+          group: "cattle",
+          commodity: "Bulls",
+        },
+        {
+          series: "hay-id-organic-alfalfa",
+          reportDate: "2026-08-06",
+          price: 200,
+          source: "USDA AMS Idaho Direct Hay Report (AMS_3056)",
+          group: "hay",
+          commodity: "Alfalfa",
+          kind: "organic",
+        },
+      ],
+      emptyReports: [],
+      series: [],
+    }),
+  );
+
+  await withServer(
+    { TICKS_DIR: histOnly, X402_SKIP_SETTLE: "1", X402_USDC_ATOMIC: "" },
+    async (base) => {
+      const unpaid = await fetch(`${base}${TICKS_PATH}`);
+      assert.equal(unpaid.status, 402);
+      const paid = await fetch(`${base}${TICKS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const body = (await paid.json()) as ReturnType<typeof loadTicks>;
+      const byId = Object.fromEntries(
+        (body.ticks as { id?: string; price?: number; asOf?: string }[]).map((row) => [row.id, row]),
+      );
+      assert.equal(byId["cattle-bf-feeder-steer"]?.price, 376.57);
+      assert.equal(byId["cattle-bf-feeder-steer"]?.asOf, "2026-08-14");
+      assert.equal(byId["cattle-bf-feeder-heifer"]?.price, 347.4);
+      assert.equal(byId["cattle-bf-yearling-heifer"]?.price, 300);
+      assert.equal(byId["cattle-bf-cull-cow"]?.price, 167.36);
+      assert.equal(byId["cattle-bf-bull"]?.price, 203.5);
+      assert.ok(!body.ticks.some((row) => /organic/i.test(JSON.stringify(row))));
+    },
+  );
+
   const memoDir = mkdtempSync(join(tmpdir(), "ticks-memo-"));
   writeFileSync(
     join(memoDir, "board.json"),
