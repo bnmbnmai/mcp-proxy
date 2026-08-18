@@ -78,12 +78,11 @@ function main(): void {
     reason: null,
     fetchedAt: "2026-08-18T00:00:00.000Z",
     asOf: "2026-03-04",
-    unlisted: true,
     sources: { listing: LISTING_URL, letterBase: LETTER_BASE },
     letters: [citra],
   });
   const manBlob = JSON.stringify(manifest);
-  assert.equal(manifest.unlisted, true);
+  assert.equal(manifest.unlisted, undefined);
   assert.equal(manifest.letterCount, 1);
   assert.ok(!manBlob.includes("www.citra100mg.com"), "free manifest must not dump letter body");
   assert.ok(!manBlob.includes("unapproved and misbranded drugs in violation"));
