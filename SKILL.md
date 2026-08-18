@@ -50,9 +50,9 @@ When the cache is fresh you get the same public series the LAN door already serv
 - IF_FV130 **Columbia Basin / Umatilla Basin (WA-OR)** onions and potatoes (`.columbia_umatilla` — does not replace Idaho `id_malheur` / `tf_burley`)
 - USDA AMS **2914** PNW warehouse pulse bids ($/cwt): garbanzo, Brewer, Pardina, whole green pea. Min-Dak / Michigan / CBOT left off.
 
-**Organic hay stays empty** unless an official organic quote is in the cache. Treasure Valley is not filled in. Failed official fetches are listed under `failed`, not guessed.
+Treasure Valley is not filled in. Failed official fetches are listed under `failed`, not guessed. Organic hay is not a product.
 
-Paid JSON is the **current snapshot** (`ticks`) plus **history metadata already in the cache** (`history.points` are dated official prints — days between reports are not filled in). Organic hay stays empty unless an official organic quote is in the cache.
+Paid JSON is the **current snapshot** (`ticks`) plus **history metadata already in the cache** (`history.points` are dated official prints — days between reports are not filled in). Empty reports, when present, are `{ id, status }` only.
 
 Typical paid shape:
 

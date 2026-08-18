@@ -323,36 +323,7 @@
         "price": 128.48
       }
     ],
-    "emptyReports": [
-      {
-        "reportDate": "2025-02-13",
-        "source": "USDA AMS Idaho Direct Hay Report (AMS_3056)",
-        "sourceUrl": "https://esmis.nal.usda.gov/sites/default/release-files/x346d418q/cf95m677v/4m90gr86v/AMS_3056.PDF",
-        "series": "hay-id-organic-alfalfa",
-        "reason": "No report. This report has no organic row. USDA printed no organic hay trade. We are not inventing a number and not reusing an older organic price as current."
-      },
-      {
-        "reportDate": "2025-02-20",
-        "source": "USDA AMS Idaho Direct Hay Report (AMS_3056)",
-        "sourceUrl": "https://esmis.nal.usda.gov/sites/default/release-files/x346d418q/3b593573m/g158db57f/AMS_3056.PDF",
-        "series": "hay-id-organic-alfalfa",
-        "reason": "No report. This report has no organic row. USDA printed no organic hay trade. We are not inventing a number and not reusing an older organic price as current."
-      },
-      {
-        "reportDate": "2025-02-26",
-        "source": "USDA AMS Idaho Direct Hay Report (AMS_3056)",
-        "sourceUrl": "https://esmis.nal.usda.gov/sites/default/release-files/x346d418q/s1786j24m/1c18gb71f/AMS_3056.PDF",
-        "series": "hay-id-organic-alfalfa",
-        "reason": "No report. This report has no organic row. USDA printed no organic hay trade. We are not inventing a number and not reusing an older organic price as current."
-      },
-      {
-        "reportDate": "2025-03-06",
-        "source": "USDA AMS Idaho Direct Hay Report (AMS_3056)",
-        "sourceUrl": "https://esmis.nal.usda.gov/sites/default/release-files/x346d418q/41689d95h/fq979r104/AMS_3056.PDF",
-        "series": "hay-id-organic-alfalfa",
-        "reason": "No report. This report has no organic row. USDA printed no organic hay trade. We are not inventing a number and not reusing an older organic price as current."
-      }
-    ],
+    "emptyReports": [],
     "series": [
       {
         "id": "cattle-tf-feeder-steer",

@@ -84,9 +84,9 @@ curl -i http://192.168.1.243:4020/ticks
 curl -s http://192.168.1.243:4020/ticks -H 'X-PAYMENT: test' | head
 ```
 
-Paid JSON includes Twin Falls, Blackfoot, AMS_3056 hay, AMS_3059 NW Direct, IF_FV130 (Idaho + WA-OR), IBC grain, WD1, AMS 3058 Columbia Basin hay, and AMS 2914 PNW pulses **when those series are in the cache**. A source that 403s on this host is listed under `failed` (honest), not filled in. Organic hay stays empty unless an official organic quote is present.
+Paid JSON includes Twin Falls, Blackfoot, AMS_3056 hay, AMS_3059 NW Direct, IF_FV130 (Idaho + WA-OR), IBC grain, WD1, AMS 3058 Columbia Basin hay, and AMS 2914 PNW pulses **when those series are in the cache**. A source that 403s on this host is listed under `failed` (honest), not filled in. Organic hay is not a product. If `history.emptyReports` remains, each row is `{ id, status }` only — no collect memos.
 
-Free catalog (no payment): `GET /manifest.json` — generated from the live board (series ids, sources, freshness, a few sample ticks). Not the paid snapshot.
+Free catalog (no payment): `GET /manifest.json` and `GET /catalog.json` — series ids, sources, freshness, a few sample ticks. Not the paid snapshot. No internal collect memos.
 
 ## Out of scope
 

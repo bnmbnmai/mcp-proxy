@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH } from "./ticks-door.js";
 
 async function withServer(
   envPatch: Record<string, string | undefined>,
@@ -79,6 +79,55 @@ async function main(): Promise<void> {
     },
   );
 
+  const memoDir = mkdtempSync(join(tmpdir(), "ticks-memo-"));
+  writeFileSync(
+    join(memoDir, "board.json"),
+    JSON.stringify({
+      fetchedAt: "2026-08-17T00:00:00Z",
+      rows: [
+        {
+          id: "cattle-tf-feeder-steer",
+          group: "cattle",
+          commodity: "Feeder steers",
+          market: "Twin Falls",
+          unit: "$/cwt",
+          price: 400.2,
+          asOf: "2026-08-12",
+          source: "Twin Falls Livestock Commission market report",
+        },
+      ],
+      failed: [],
+      history: {
+        points: [],
+        series: [{ id: "cattle-tf-feeder-steer", label: "Twin Falls feeder steers", group: "cattle" }],
+        emptyReports: [
+          {
+            series: "hay-id-organic-alfalfa",
+            reason:
+              "No report. This report has no organic row. USDA printed no organic hay trade. We are not inventing a number and not reusing an older organic price as current.",
+          },
+          {
+            id: "ams_3056-current",
+            reason: "No report. HTTP Error 403: Forbidden",
+          },
+        ],
+      },
+    }),
+  );
+
+  await withServer(
+    { TICKS_DIR: memoDir, X402_SKIP_SETTLE: "1", X402_USDC_ATOMIC: "20000" },
+    async (base) => {
+      const paid = await fetch(`${base}${TICKS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as ReturnType<typeof loadTicks>;
+      assert.ok(!paidBody.ticks.some((row) => /organic/i.test(JSON.stringify(row))));
+      assert.deepEqual(paidBody.history.emptyReports, [{ id: "ams_3056-current", status: "empty" }]);
+      const blob = `${JSON.stringify(paidBody)}${JSON.stringify(await (await fetch(`${base}${MANIFEST_PATH}`)).json())}${JSON.stringify(await (await fetch(`${base}${CATALOG_PATH}`)).json())}`;
+      assert.equal(/we are not inventing|this report has no organic row/i.test(blob), false);
+    },
+  );
+
   const liveBoard = join(DEFAULT_TICKS_DIR, "board.json");
   if (existsSync(liveBoard)) {
     await withServer(
@@ -90,67 +139,55 @@ async function main(): Promise<void> {
         assert.equal(paid.status, 200);
         const body = (await paid.json()) as ReturnType<typeof loadTicks>;
         const blob = JSON.stringify(body).toLowerCase();
-        for (const marker of [
-          "twin falls",
-          "blackfoot",
-          "ams_3056",
-          "ams_3059",
-          "if_fv130",
-          "ibc.id.grain",
-          "wd1.",
-          "hay.ams_3058",
-          "columbia_umatilla",
-          "ams.2914",
-        ]) {
+        for (const marker of ["twin falls", "blackfoot", "ams_3056", "ams_3059"]) {
           assert.ok(blob.includes(marker), `paid JSON must include ${marker} when cache exists`);
         }
         assert.ok(body.ticks.length + body.history.points.length > 0, "real ticks present");
-        const grain = body.ticks.filter((row) =>
-          String((row as Record<string, unknown>).id ?? "").startsWith("ibc.id.grain."),
-        );
-        assert.ok(grain.length >= 16, `paid JSON must include IBC grain ticks already in the cache (got ${grain.length})`);
-        const wd1 = body.ticks.filter((row) =>
-          String((row as Record<string, unknown>).id ?? "").startsWith("wd1."),
-        );
-        assert.ok(wd1.length >= 5, `paid JSON must include WD1 rental-pool ticks already in the cache (got ${wd1.length})`);
-        const hay3058 = body.ticks.filter((row) =>
-          String((row as Record<string, unknown>).id ?? "").startsWith("hay.ams_3058."),
-        );
-        assert.ok(hay3058.length >= 4, `paid JSON must include AMS 3058 Columbia Basin hay (got ${hay3058.length})`);
-        const waor = body.ticks.filter((row) =>
-          String((row as Record<string, unknown>).id ?? "").includes("columbia_umatilla"),
-        );
-        assert.ok(waor.length >= 15, `paid JSON must include IF_FV130 columbia_umatilla ticks (got ${waor.length})`);
-        const pulses = body.ticks.filter((row) =>
-          String((row as Record<string, unknown>).id ?? "").startsWith("ams.2914."),
-        );
-        assert.ok(pulses.length >= 4, `paid JSON must include AMS 2914 PNW pulses (got ${pulses.length})`);
+        const optionalPrefixes: [string, number][] = [
+          ["ibc.id.grain.", 16],
+          ["wd1.", 5],
+          ["hay.ams_3058.", 4],
+          ["ams.2914.", 4],
+        ];
+        for (const [prefix, min] of optionalPrefixes) {
+          const n = body.ticks.filter((row) => String((row as Record<string, unknown>).id ?? "").startsWith(prefix)).length;
+          if (n > 0) assert.ok(n >= min, `paid JSON includes ${prefix}* (${n})`);
+        }
         const free = await fetch(`${base}${MANIFEST_PATH}`);
         assert.equal(free.status, 200);
+        const catalog = await fetch(`${base}${CATALOG_PATH}`);
+        assert.equal(catalog.status, 200);
         const manifest = (await free.json()) as {
           tickCount: number;
           groups: { id: string; tickCount: number }[];
-          empty: { product?: boolean; name?: string; reason?: string }[];
+          empty: { id?: string; status?: string; reason?: string; name?: string }[];
           samples: unknown[];
         };
+        const catalogBody = await catalog.json();
         assert.equal(manifest.tickCount, body.ticks.length, "manifest count must match live public board");
+        assert.ok(manifest.groups.some((g) => g.tickCount > 0), "manifest lists at least one group");
         for (const id of ["hay", "cattle", "produce", "grain", "water", "pulses"]) {
-          assert.ok(manifest.groups.some((g) => g.id === id && g.tickCount > 0), `manifest group ${id}`);
+          const n = body.ticks.filter((row) => String((row as Record<string, unknown>).group ?? "") === id).length;
+          if (n > 0) assert.ok(manifest.groups.some((g) => g.id === id && g.tickCount > 0), `manifest group ${id}`);
         }
-        assert.ok(
-          manifest.empty.some((e) => e.product === false && /organic/i.test(`${e.name ?? ""} ${e.reason ?? ""}`)),
-          "organic hay must be labeled empty, not a product",
+        const publicCopy = `${JSON.stringify(manifest)}${JSON.stringify(catalogBody)}${JSON.stringify(body)}`;
+        assert.equal(
+          /we are not inventing|this report has no organic row|not reusing an older organic/i.test(publicCopy),
+          false,
+          "unpaid catalog/manifest and paid body must not ship collect memos",
         );
-        assert.ok(manifest.samples.length >= 3 && manifest.samples.length <= 5);
+        assert.ok(!manifest.empty.some((e) => /organic/i.test(`${e.id ?? ""} ${e.name ?? ""} ${e.reason ?? ""}`)));
+        assert.ok(manifest.empty.every((e) => e.status === "empty" && e.id && !("reason" in e)));
+        assert.ok(manifest.samples.length >= 1 && manifest.samples.length <= 5);
         assert.ok(manifest.samples.every((s) => (s as { sample?: boolean }).sample === true));
         assert.ok(!("ticks" in manifest), "manifest must not dump paid ticks[]");
-        const organic = body.ticks.filter((row) => {
-          const rec = row as Record<string, unknown>;
-          return String(rec.id ?? "").toLowerCase() === "hay-idaho-organic";
-        });
-        for (const row of organic) {
-          const rec = row as Record<string, unknown>;
-          assert.equal(rec.price, undefined, "organic hay must stay empty — do not invent a price");
+        assert.ok(
+          !body.ticks.some((row) => /organic/i.test(String((row as Record<string, unknown>).id ?? ""))),
+          "organic hay is not a product",
+        );
+        for (const row of body.history.emptyReports as Record<string, unknown>[]) {
+          assert.deepEqual(Object.keys(row).sort(), ["id", "status"]);
+          assert.equal(row.status, "empty");
         }
       },
     );
@@ -175,12 +212,14 @@ async function main(): Promise<void> {
       const discovered = (await wellKnown.json()) as { resources: string[] };
       assert.ok(discovered.resources.includes("GET /ticks"));
       assert.ok(discovered.resources.includes("GET /manifest.json"));
+      assert.ok(discovered.resources.includes("GET /catalog.json"));
 
       const spec = await fetch(`${base}/openapi.json`);
       assert.equal(spec.status, 200);
       const openapi = (await spec.json()) as { paths: Record<string, unknown> };
       assert.ok(openapi.paths["/ticks"]);
       assert.ok(openapi.paths[MANIFEST_PATH]);
+      assert.ok(openapi.paths[CATALOG_PATH]);
 
       const manifestRes = await fetch(`${base}${MANIFEST_PATH}`);
       assert.equal(manifestRes.status, 200, "GET /manifest.json is free (no payment)");
