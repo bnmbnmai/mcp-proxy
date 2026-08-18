@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, NETWORK_V2, bazaarExtension } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, NETWORK_V2, bazaarExtension, cdpEnvStatus } from "./ticks-door.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
   IMPORT_ALERTS_MANIFEST_PATH,
@@ -51,7 +51,14 @@ async function withServer(
 }
 
 async function main(): Promise<void> {
-  await withServer({ TICKS_PATH: "", TICKS_DIR: "", FARM_DATA_DIR: "", X402_USDC_ATOMIC: "" }, async (base) => {
+  await withServer({
+    TICKS_PATH: "",
+    TICKS_DIR: "",
+    FARM_DATA_DIR: "",
+    X402_USDC_ATOMIC: "",
+    CDP_API_KEY_ID: undefined,
+    CDP_API_KEY_SECRET: undefined,
+  }, async (base) => {
     const res = await fetch(`${base}${TICKS_PATH}`);
     assert.equal(res.status, 402, "unpaid GET /ticks must be 402");
     const body = (await res.json()) as {
@@ -105,6 +112,7 @@ async function main(): Promise<void> {
     assert.ok((wk.instructions ?? "").includes("three paid"));
     assert.ok(!wk.resources.some((r) => r.includes("/gain")));
     assert.ok(!wk.resources.some((r) => r.includes(WARNING_LETTERS_PATH)));
+    assert.equal(cdpEnvStatus(), "CDP env not set");
 
     const specRes = await fetch(`${base}${OPENAPI_PATH}`);
     assert.equal(specRes.status, 200);
@@ -627,6 +635,31 @@ async function main(): Promise<void> {
       assert.match(paidBody.letters[0]?.subject ?? "", /Unapproved New Drugs/);
       assert.ok(paidBody.letters[0]?.body.includes("WARNING LETTER"));
       assert.ok(paidBody.letters[0]?.body.includes("reviewed your website"));
+    },
+  );
+
+  await withServer(
+    {
+      X402_FACILITATOR_URL: "https://api.cdp.coinbase.com/platform/v2/x402",
+      CDP_API_KEY_ID: undefined,
+      CDP_API_KEY_SECRET: undefined,
+      X402_SKIP_SETTLE: undefined,
+      TICKS_DIR: "",
+      TICKS_PATH: "",
+    },
+    async (base) => {
+      assert.equal(cdpEnvStatus(), "CDP env not set");
+      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH]) {
+        const unpaid = await fetch(`${base}${path}`);
+        assert.equal(unpaid.status, 402, `unpaid ${path} must stay 402`);
+        const present = await fetch(`${base}${path}`, { headers: { "X-PAYMENT": "test" } });
+        assert.equal(present.status, 402, `${path} fails closed without CDP env`);
+        const body = (await present.json()) as { error?: string };
+        assert.equal(body.error, "CDP env not set");
+      }
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.equal(wk.resources.length, 3);
+      assert.ok(!wk.resources.some((r) => r.includes(WARNING_LETTERS_PATH)));
     },
   );
 

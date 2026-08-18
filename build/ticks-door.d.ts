@@ -58,6 +58,7 @@ export declare function loadTicks(): TicksPayload;
 export declare function buildTicksManifest(resourceUrl?: string): Record<string, unknown>;
 export declare function paymentRequiredBody(resourceUrl: string, sku?: DoorSku): Record<string, unknown>;
 export declare function paymentRequiredV2(resourceUrl: string, sku?: DoorSku): Record<string, unknown>;
+export declare function cdpEnvStatus(): "set" | "CDP env not set";
 export declare function llmsTxt(): string;
 export declare function wellKnownX402(req: IncomingMessage, port: number): Record<string, unknown>;
 export declare function buildOpenApi(req: IncomingMessage, port: number): Record<string, unknown>;

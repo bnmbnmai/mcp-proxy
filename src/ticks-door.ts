@@ -18,6 +18,7 @@ import { createServer as createHttpServer, type IncomingMessage, type ServerResp
 import { readFileSync, existsSync, statSync } from "node:fs";
 import { homedir } from "node:os";
 import { join, resolve } from "node:path";
+import { generateJwt } from "@coinbase/cdp-sdk/auth";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
   IMPORT_ALERTS_MANIFEST_PATH,
@@ -765,6 +766,35 @@ function facilitatorBody(payment: string, requirements: Record<string, unknown>)
   };
 }
 
+export function cdpEnvStatus(): "set" | "CDP env not set" {
+  return env("CDP_API_KEY_ID") && env("CDP_API_KEY_SECRET") ? "set" : "CDP env not set";
+}
+
+function cdpApiKeySecret(): string {
+  return env("CDP_API_KEY_SECRET").replace(/\\n/g, "\n");
+}
+
+async function cdpAuthHeaders(method: "GET" | "POST", url: string): Promise<Record<string, string> | null> {
+  if (cdpEnvStatus() !== "set") {
+    console.error("CDP env not set");
+    return null;
+  }
+  try {
+    const parsed = new URL(url);
+    const jwt = await generateJwt({
+      apiKeyId: env("CDP_API_KEY_ID"),
+      apiKeySecret: cdpApiKeySecret(),
+      requestMethod: method,
+      requestHost: parsed.host,
+      requestPath: parsed.pathname,
+    });
+    return { Authorization: `Bearer ${jwt}` };
+  } catch {
+    console.error("CDP facilitator JWT failed");
+    return null;
+  }
+}
+
 async function facilitatorPost(
   path: "/verify" | "/settle",
   payment: string,
@@ -772,11 +802,21 @@ async function facilitatorPost(
 ): Promise<Record<string, unknown> | null> {
   const base = env("X402_FACILITATOR_URL");
   if (!base) return null;
+  if (cdpEnvStatus() !== "set") {
+    console.error("CDP env not set");
+    return { error: "CDP env not set" };
+  }
   const url = `${base.replace(/\/$/, "")}${path}`;
+  const auth = await cdpAuthHeaders("POST", url);
+  if (!auth) return { error: "CDP env not set" };
   try {
     const res = await fetch(url, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        ...auth,
+      },
       body: JSON.stringify(facilitatorBody(payment, requirements)),
     });
     const text = await res.text();
@@ -791,6 +831,7 @@ async function facilitatorPost(
       console.error(`facilitator ${path} HTTP ${res.status}`);
       return null;
     }
+    console.error(`facilitator ${path} authenticated`);
     return body;
   } catch (err) {
     console.error(`facilitator ${path} error ${err instanceof Error ? err.name : "unknown"}`);
@@ -800,7 +841,7 @@ async function facilitatorPost(
 
 async function facilitatorVerify(payment: string, requirements: Record<string, unknown>): Promise<boolean> {
   const body = await facilitatorPost("/verify", payment, requirements);
-  if (!body) return false;
+  if (!body || body.error === "CDP env not set") return false;
   return body.isValid === true || body.success === true;
 }
 
@@ -1183,6 +1224,17 @@ async function servePaid(
     return;
   }
 
+  if (env("X402_FACILITATOR_URL") && cdpEnvStatus() !== "set") {
+    console.error("CDP env not set");
+    sendJson(
+      res,
+      402,
+      { ...body402, error: "CDP env not set" },
+      { "PAYMENT-REQUIRED": paymentRequiredHeader },
+    );
+    return;
+  }
+
   const accept = (body402.accepts as Record<string, unknown>[])[0];
   const verified = await facilitatorVerify(payment, accept);
   if (verified && (await facilitatorSettle(payment, accept))) {
@@ -1346,6 +1398,7 @@ if (isMain()) {
     console.error(`${IMPORT_ALERTS_PATH} $${Number(amountAtomicFor("import-alerts")) / 1e6} USDC`);
     console.error(`${MARINERS_PATH} $${Number(amountAtomicFor("mariners")) / 1e6} USDC`);
     console.error(`payTo ${PAY_TO} USDC ${USDC_BASE} on Base`);
+    console.error(cdpEnvStatus() === "set" ? "CDP facilitator auth: env set" : "CDP env not set");
     console.error(`ticksDir ${ticksDir() || "(unset)"}`);
     console.error(`board ${board && existsSync(board) ? board : "missing — paid /ticks body will be empty/stale"}`);
   });
