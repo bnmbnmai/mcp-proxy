@@ -29,9 +29,12 @@ export const NETWORK_V1 = "base";
 export const NETWORK_V2 = "eip155:8453";
 export const TICKS_PATH = "/ticks";
 export const MANIFEST_PATH = "/manifest.json";
+export const CATALOG_PATH = "/catalog.json";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
 export const PRODUCT_NAME = "Idaho + PNW Market Ticks";
 export const PRODUCT_VERSION = "1.1.0";
+const COLLECT_MEMO_RE =
+  /we are not inventing|this report has no organic row|not reusing an older organic|usda printed no organic/i;
 
 const PUBLIC_SOURCE_MARKERS = [
   "twin falls",
@@ -144,7 +147,15 @@ function historyPath(): string {
   return board ? resolve(board, "..", "history.json") : "";
 }
 
+export function isOrganicHay(row: Record<string, unknown>): boolean {
+  const blob = [row.id, row.series, row.kind, row.commodity, row.label, row.name]
+    .map((v) => String(v ?? "").toLowerCase())
+    .join(" ");
+  return /\borganic\b/.test(blob);
+}
+
 function isPublicTick(row: Record<string, unknown>): boolean {
+  if (isOrganicHay(row)) return false;
   const id = String(row.id ?? row.series ?? "").toLowerCase();
   if (PUBLIC_SERIES_PREFIXES.some((p) => id.startsWith(p))) return true;
   const blob = [
@@ -160,25 +171,25 @@ function isPublicTick(row: Record<string, unknown>): boolean {
   return PUBLIC_SOURCE_MARKERS.some((m) => blob.includes(m));
 }
 
+export function publicEmptyReport(row: Record<string, unknown>): { id: string; status: "empty" } | null {
+  if (isOrganicHay(row)) return null;
+  const id = String(row.id ?? row.series ?? "").trim();
+  if (!id) return null;
+  return { id, status: "empty" };
+}
+
+function stripCollectMemo<T extends Record<string, unknown>>(row: T): T {
+  const next = { ...row };
+  for (const key of ["reason", "note", "message"] as const) {
+    const value = next[key];
+    if (typeof value === "string" && COLLECT_MEMO_RE.test(value)) delete next[key];
+  }
+  return next;
+}
+
 function asRecordArray(value: unknown): Record<string, unknown>[] {
   if (!Array.isArray(value)) return [];
   return value.filter((item): item is Record<string, unknown> => !!item && typeof item === "object");
-}
-
-/** Paid failed/emptyReports stay, but drop first-person collect notes. */
-function sanitizePublicReason(reason: unknown): string {
-  return str(reason)
-    .replace(/\s*We are not inventing[^.]*\./gi, "")
-    .replace(/\s*and not reusing an older[^.]*\./gi, "")
-    .replace(/\s+/g, " ")
-    .trim();
-}
-
-function publicFailedRow(item: Record<string, unknown>): Record<string, unknown> {
-  const next = { ...item };
-  if ("reason" in next) next.reason = sanitizePublicReason(next.reason);
-  if ("note" in next) next.note = sanitizePublicReason(next.note);
-  return next;
 }
 
 function readJsonFile(path: string): Record<string, unknown> | null {
@@ -199,14 +210,16 @@ export function loadTicks(): TicksPayload {
   const board = readJsonFile(boardFile);
   const historyFile = readJsonFile(histFile);
 
-  const rows = asRecordArray(board?.rows).filter(isPublicTick);
-  const failed = asRecordArray(board?.failed).filter(isPublicTick).map(publicFailedRow);
+  const rows = asRecordArray(board?.rows).filter(isPublicTick).map(stripCollectMemo);
+  const failed = asRecordArray(board?.failed).filter(isPublicTick).map(stripCollectMemo);
   const hist = (board?.history && typeof board.history === "object"
     ? (board.history as Record<string, unknown>)
     : historyFile) ?? {};
-  const points = asRecordArray(hist.points).filter(isPublicTick);
-  const emptyReports = asRecordArray(hist.emptyReports).filter(isPublicTick).map(publicFailedRow);
-  const series = asRecordArray(hist.series).filter(isPublicTick);
+  const points = asRecordArray(hist.points).filter(isPublicTick).map(stripCollectMemo);
+  const emptyReports = asRecordArray(hist.emptyReports)
+    .map(publicEmptyReport)
+    .filter((row): row is { id: string; status: "empty" } => row !== null);
+  const series = asRecordArray(hist.series).filter(isPublicTick).map(stripCollectMemo);
   const fetchedAt = typeof board?.fetchedAt === "string"
     ? board.fetchedAt
     : typeof board?.cachedAt === "string"
@@ -334,7 +347,6 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
   const failed = payload.failed as Record<string, unknown>[];
   const series = payload.history.series as Record<string, unknown>[];
   const points = payload.history.points as Record<string, unknown>[];
-  const emptyReports = payload.history.emptyReports as Record<string, unknown>[];
   const seriesById = new Map(series.map((s) => [str(s.id), s]));
 
   const pointsBySeries = new Map<string, { count: number; first: string | null; last: string | null }>();
@@ -420,6 +432,10 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
     used.add(str(row.id));
   }
 
+  const empty = failed
+    .map((item) => publicEmptyReport(item))
+    .filter((row): row is { id: string; status: "empty" } => row !== null);
+
   const amount = amountAtomicFor("ticks");
   return {
     ok: true,
@@ -466,12 +482,13 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
         history: {
           series: "id / label / unit / group catalog",
           points: "dated official prints already stored — days between reports are not filled in",
-          emptyReports: "official prints with no row",
+          emptyReports: "id + status only when an official print has no row",
         },
         fetchedAt: "ISO timestamp of the last official collect",
       },
     },
     groups,
+    empty,
     samples,
     sampleNote:
       "samples are marked sample:true and are a few real official rows for identification. The paid GET /ticks body has the full current snapshot. This manifest does not list every current price.",
@@ -802,12 +819,12 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   if (path === "/.well-known/x402" || path === "/.well-known/x402.json") {
     sendJson(res, 200, {
       version: 1,
-      resources: [`GET ${TICKS_PATH}`, `GET ${MANIFEST_PATH}`, `GET ${IMPORT_ALERTS_PATH}`, `GET ${IMPORT_ALERTS_MANIFEST_PATH}`],
+      resources: [`GET ${TICKS_PATH}`, `GET ${MANIFEST_PATH}`, `GET ${CATALOG_PATH}`, `GET ${IMPORT_ALERTS_PATH}`, `GET ${IMPORT_ALERTS_MANIFEST_PATH}`],
     });
     return;
   }
 
-  if (path === MANIFEST_PATH || path === "/catalog.json") {
+  if (path === MANIFEST_PATH || path === CATALOG_PATH) {
     sendJson(res, 200, buildTicksManifest(resourceUrl(req, port, TICKS_PATH)));
     return;
   }
@@ -827,7 +844,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH] });
 }
 
 export function bindHost(): string {
