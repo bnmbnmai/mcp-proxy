@@ -3,3 +3,12 @@ node_modules/
 dist/
 .DS_Store
 .mcpregistry_*
+build/*.test.*
+# Shop door compile output — tsc locally, do not commit
+build/ticks-door.*
+build/import-alerts.*
+build/mariners.*
+build/warning-letters.*
+data/import-alerts/
+data/mariners/
+data/warning-letters/

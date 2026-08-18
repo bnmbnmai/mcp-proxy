@@ -1,7 +1,7 @@
 {
   "name": "@apollo_ai/mcp-proxy",
   "version": "4.10.0",
-  "description": "MCP server for Apollo Intelligence Network \u2014 40 tools: intelligence feeds, OSINT, DeFi, economic data, security scanning, crypto, weather, ML/NLP, and proxy infrastructure via x402 micropayments",
+  "description": "MCP server for Apollo Intelligence Network — 40 tools: intelligence feeds, OSINT, DeFi, economic data, security scanning, crypto, weather, ML/NLP, and proxy infrastructure via x402 micropayments",
   "type": "module",
   "bin": {
     "apollo-proxy-mcp": "build/index.js"
@@ -9,9 +9,14 @@
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "scripts": {
-    "build": "tsc && chmod 755 build/index.js",
+    "build": "tsc && chmod 755 build/index.js build/ticks-door.js build/import-alerts.js build/mariners.js build/warning-letters.js",
     "prepare": "npm run build",
-    "start": "node build/index.js"
+    "start": "node build/index.js",
+    "start:ticks": "node build/ticks-door.js",
+    "collect:import-alerts": "node build/import-alerts.js",
+    "collect:mariners": "node build/mariners.js",
+    "collect:warning-letters": "node build/warning-letters.js",
+    "test:ticks": "npm run build && node build/import-alerts.test.js && node build/mariners.test.js && node build/warning-letters.test.js && node build/ticks-door.test.js"
   },
   "files": [
     "build",
@@ -44,6 +49,7 @@
     "url": "https://github.com/bnmbnmai/mcp-proxy/issues"
   },
   "dependencies": {
+    "@coinbase/cdp-sdk": "^1.55.0",
     "@modelcontextprotocol/sdk": "^1.12.0",
     "zod": "^3.24.0"
   },
@@ -58,7 +64,7 @@
     "tools": [
       {
         "name": "web_scrape",
-        "description": "Scrape any URL \u2014 proxy rotation + content extraction. $0.02/req"
+        "description": "Scrape any URL — proxy rotation + content extraction. $0.02/req"
       },
       {
         "name": "web_search",
@@ -94,7 +100,7 @@
       },
       {
         "name": "web3_hackathons",
-        "description": "Rich hackathon data \u2014 prizes, dates, locations. $0.05/req"
+        "description": "Rich hackathon data — prizes, dates, locations. $0.05/req"
       },
       {
         "name": "github_trending",
@@ -122,7 +128,7 @@
       },
       {
         "name": "proxy_fetch",
-        "description": "Raw proxy relay \u2014 residential proxies (190+ countries). $0.01/req"
+        "description": "Raw proxy relay — residential proxies (190+ countries). $0.01/req"
       },
       {
         "name": "proxy_status",
@@ -194,11 +200,11 @@
       },
       {
         "name": "ip_reputation",
-        "description": "IP abuse scoring via AbuseIPDB \u2014 confidence score, reports. $0.03/req"
+        "description": "IP abuse scoring via AbuseIPDB — confidence score, reports. $0.03/req"
       },
       {
         "name": "malware_url_check",
-        "description": "VirusTotal URL scanning \u2014 malware detection across 70+ engines. $0.05/req"
+        "description": "VirusTotal URL scanning — malware detection across 70+ engines. $0.05/req"
       },
       {
         "name": "breach_check",
