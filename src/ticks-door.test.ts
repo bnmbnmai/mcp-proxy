@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus } from "./ticks-door.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
   IMPORT_ALERTS_MANIFEST_PATH,
@@ -21,6 +21,11 @@ import {
   WARNING_LETTERS_MANIFEST_PATH,
   WARNING_LETTERS_PATH,
 } from "./warning-letters.js";
+import {
+  FORM_483_AMOUNT_ATOMIC,
+  FORM_483_MANIFEST_PATH,
+  FORM_483_PATH,
+} from "./form-483.js";
 
 async function withServer(
   envPatch: Record<string, string | undefined>,
@@ -56,6 +61,7 @@ async function main(): Promise<void> {
     TICKS_DIR: "",
     FARM_DATA_DIR: "",
     X402_USDC_ATOMIC: "",
+    FORM_483_DIR: join(tmpdir(), "form-483-absent-"),
     CDP_API_KEY_ID: undefined,
     CDP_API_KEY_SECRET: undefined,
   }, async (base) => {
@@ -117,6 +123,7 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.some((r) => r.endsWith(IMPORT_ALERTS_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(WARNING_LETTERS_PATH)));
+    assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)), "do not list /form-483 without a cached body");
     assert.ok(wk.resources.every((r) => r.startsWith("http")), "well-known resources must be absolute URLs");
     assert.ok(wk.openapi?.endsWith(OPENAPI_PATH));
     assert.ok(wk.llmsTxt?.endsWith(LLMS_PATH));
@@ -171,6 +178,8 @@ async function main(): Promise<void> {
     assert.ok(spec.paths[LLMS_PATH]?.get);
     assert.ok(spec.paths[WARNING_LETTERS_MANIFEST_PATH]?.get);
     assert.equal(spec.paths[WARNING_LETTERS_MANIFEST_PATH]?.get?.["x-auth"]?.mode, "none");
+    assert.equal(spec.paths[FORM_483_PATH], undefined, "no stub /form-483 in OpenAPI without a cached body");
+    assert.equal(spec.paths[FORM_483_MANIFEST_PATH], undefined);
     assert.equal(spec.paths["/gain"], undefined);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
@@ -185,6 +194,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /import-alerts"));
     assert.ok(llmsBody.includes("GET /mariners"));
     assert.ok(llmsBody.includes("GET /warning-letters"));
+    assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.toLowerCase().includes("/gain"));
     assert.ok(!llmsBody.includes("WASDE"));
 
@@ -200,6 +210,7 @@ async function main(): Promise<void> {
       MARINERS_PATH,
       WARNING_LETTERS_PATH,
     ]);
+    assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
     assert.equal(shop.openapi, OPENAPI_PATH);
     assert.equal(shop.wellKnown, WELL_KNOWN_PATH);
     assert.equal(shop.llmsTxt, LLMS_PATH);
@@ -756,6 +767,133 @@ async function main(): Promise<void> {
     },
   );
 
+  const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
+  writeFileSync(
+    join(f483Dir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "fda-form-483-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-08-18T00:00:00.000Z",
+      asOf: "2026-07-31",
+      sources: {
+        listing:
+          "https://www.fda.gov/about-fda/office-inspections-and-investigations/oii-foia-electronic-reading-room",
+        mediaBase: "https://www.fda.gov/media/",
+      },
+      letters: [
+        {
+          id: "cascade-specialty-pharmacy-llc-193964",
+          mediaId: "193964",
+          firm: "Cascade Specialty Pharmacy LLC",
+          fei: "3015133983",
+          recordDate: "2026-07-17",
+          publishedOn: "2026-07-31",
+          issuedOn: "2026-07-17",
+          state: "Washington",
+          country: null,
+          establishmentType: "Producer of Non Sterile Drug Products",
+          sourceUrl: "https://www.fda.gov/media/193964/download",
+          filename: "cascade_specialty_pharmacy_llc_3015133983_483_7-17-26_redacted.508.pdf",
+          body: "This document lists observations made by the FDA representative(s) during the inspection of your facility. They are inspectional observations.\nDURING AN INSPECTION OF YOUR FIRM WE OBSERVED:\nOBSERVATION 1\nThe responsibilities and procedures applicable to the quality control unit are not fully followed.\nSpecifically,\nYour firm's written procedure designates the pharmacist as responsible for ensuring the accuracy of compounding records. For example: your firm manufactured Gabapentin 100 mg/mL Suspension Stock Solution Lot 656519.",
+          observations: [
+            {
+              n: 1,
+              text: "OBSERVATION 1\nThe responsibilities and procedures applicable to the quality control unit are not fully followed.",
+            },
+          ],
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      FORM_483_DIR: f483Dir,
+      FORM_483_TTL_MS: String(24 * 3600 * 1000),
+      X402_SKIP_SETTLE: "1",
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${FORM_483_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /form-483 must be 402");
+      const body402 = (await unpaid.json()) as {
+        payTo: string;
+        asset: string;
+        resource: string;
+        accepts: { maxAmountRequired?: string }[];
+      };
+      assert.equal(body402.resource, FORM_483_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, FORM_483_AMOUNT_ATOMIC);
+      const f483Pr = unpaid.headers.get("payment-required");
+      assert.ok(f483Pr, "v2 PAYMENT-REQUIRED header");
+      const f483V2 = JSON.parse(Buffer.from(f483Pr, "base64").toString("utf8")) as {
+        extensions?: { bazaar?: { info?: { input?: { method?: string } } } };
+      };
+      assert.equal(f483V2.extensions?.bazaar?.info?.input?.method, "GET");
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === FORM_483_PATH), true);
+      assert.equal(shop.products.length, 5);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
+        resources: string[];
+        instructions?: string;
+      };
+      assert.equal(wk.resources.length, 5);
+      assert.ok(wk.resources.some((r) => r.endsWith(FORM_483_PATH)));
+      assert.ok((wk.instructions ?? "").includes("five paid"));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
+        paths: Record<string, { get?: { "x-payment-info"?: { price?: { amount?: string } } } }>;
+      };
+      assert.equal(spec.paths[FORM_483_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
+      assert.ok(spec.paths[FORM_483_MANIFEST_PATH]?.get);
+      assert.equal(
+        Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
+        5,
+      );
+
+      const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llmsBody.includes("GET /form-483"));
+      assert.ok(!llmsBody.includes("WASDE"));
+
+      const manifest = await fetch(`${base}${FORM_483_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "form-483 free manifest is free");
+      const man = (await manifest.json()) as {
+        letterCount?: number;
+        letters?: { firm?: string; body?: string }[];
+        openapi?: string;
+        wellKnown?: string;
+      };
+      assert.equal(man.letterCount, 1);
+      assert.ok(man.openapi?.endsWith(OPENAPI_PATH));
+      assert.ok(man.wellKnown?.endsWith(WELL_KNOWN_PATH));
+      assert.equal(man.letters?.[0]?.firm, "Cascade Specialty Pharmacy LLC");
+      assert.ok(!JSON.stringify(man).includes("Gabapentin 100 mg/mL"));
+      assert.ok(!("body" in (man.letters?.[0] ?? {})));
+
+      const paid = await fetch(`${base}${FORM_483_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        letters: { firm: string; recordDate: string; body: string }[];
+      };
+      assert.equal(paidBody.product, "fda-form-483-bodies");
+      assert.equal(paidBody.letters[0]?.firm, "Cascade Specialty Pharmacy LLC");
+      assert.equal(paidBody.letters[0]?.recordDate, "2026-07-17");
+      assert.ok(paidBody.letters[0]?.body.includes("This document lists observations"));
+      assert.ok(paidBody.letters[0]?.body.includes("Gabapentin 100 mg/mL"));
+      assert.equal(isPublicBazaarSku("form-483"), true);
+      const persistReqs = facilitatorPaymentRequirements("https://ticks.bnm.farm/form-483", "form-483");
+      assert.equal(persistReqs.resource, "https://ticks.bnm.farm/form-483");
+      const persist = facilitatorBody("not-json", persistReqs);
+      const persistPayload = persist.paymentPayload as { resource?: string; extensions?: { bazaar?: unknown } };
+      assert.equal(persistPayload.resource, "https://ticks.bnm.farm/form-483");
+      assert.deepEqual(persistPayload.extensions?.bazaar, bazaarExtension("form-483"));
+    },
+  );
+
   await withServer(
     {
       X402_FACILITATOR_URL: "http://127.0.0.1:9",
@@ -764,10 +902,11 @@ async function main(): Promise<void> {
       X402_SKIP_SETTLE: undefined,
       TICKS_DIR: "",
       TICKS_PATH: "",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-402-"),
     },
     async (base) => {
       assert.equal(cdpEnvStatus(), "CDP env not set");
-      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, WARNING_LETTERS_PATH]) {
+      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, WARNING_LETTERS_PATH, FORM_483_PATH]) {
         const unpaid = await fetch(`${base}${path}`);
         assert.equal(unpaid.status, 402, `unpaid ${path} must stay 402`);
         const present = await fetch(`${base}${path}`, { headers: { "X-PAYMENT": "test" } });
@@ -778,12 +917,17 @@ async function main(): Promise<void> {
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
       assert.equal(wk.resources.length, 4);
       assert.ok(wk.resources.some((r) => r.includes(WARNING_LETTERS_PATH)));
+      assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)));
     },
   );
 
   assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "warning-letters"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
-  for (const sku of PUBLIC_BAZAAR_SKUS) {
+  assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
+  assert.deepEqual(publicBazaarSkus(), [...PUBLIC_BAZAAR_SKUS]);
+  const hidden = facilitatorPaymentRequirements("https://ticks.bnm.farm/form-483", "form-483");
+  assert.equal(hidden.extensions, undefined, "/form-483 must not persist to Bazaar until a real body is cached");
+  for (const sku of publicBazaarSkus()) {
     const resource = `https://ticks.bnm.farm/${sku === "ticks" ? "ticks" : sku}`;
     const reqs = facilitatorPaymentRequirements(resource, sku);
     assert.equal(reqs.resource, resource);
