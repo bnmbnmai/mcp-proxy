@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, NETWORK_V2, bazaarExtension, cdpEnvStatus } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku } from "./ticks-door.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
   IMPORT_ALERTS_MANIFEST_PATH,
@@ -672,6 +672,41 @@ async function main(): Promise<void> {
       assert.ok(!wk.resources.some((r) => r.includes(WARNING_LETTERS_PATH)));
     },
   );
+
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners"]);
+  assert.equal(isPublicBazaarSku("warning-letters"), false);
+  for (const sku of PUBLIC_BAZAAR_SKUS) {
+    const resource = `https://ticks.bnm.farm/${sku === "ticks" ? "ticks" : sku}`;
+    const reqs = facilitatorPaymentRequirements(resource, sku);
+    assert.equal(reqs.resource, resource);
+    assert.equal(reqs.payTo, PAY_TO);
+    assert.equal((reqs.extra as { name?: string }).name, "USD Coin");
+    assert.ok(reqs.extensions && typeof reqs.extensions === "object");
+    const bazaar = (reqs.extensions as { bazaar?: { info?: { input?: { method?: string } } } }).bazaar;
+    assert.equal(bazaar?.info?.input?.method, "GET");
+    assert.deepEqual(bazaar, bazaarExtension(sku));
+    assert.equal(
+      Object.prototype.hasOwnProperty.call(reqs, "outputSchema"),
+      false,
+      "do not reintroduce outputSchema: null on CDP v1 persist",
+    );
+
+    const persist = facilitatorBody("not-json", reqs);
+    const payload = persist.paymentPayload as { resource?: string; extensions?: { bazaar?: unknown } };
+    assert.equal(payload.resource, resource, "CDP persist needs paymentPayload.resource");
+    assert.deepEqual(payload.extensions?.bazaar, bazaarExtension(sku));
+    assert.deepEqual(
+      (persist.paymentRequirements as { extensions?: { bazaar?: unknown } }).extensions?.bazaar,
+      bazaarExtension(sku),
+    );
+  }
+  const hidden = facilitatorPaymentRequirements(
+    "https://ticks.bnm.farm/warning-letters",
+    "warning-letters",
+  );
+  assert.equal(hidden.extensions, undefined, "/warning-letters must not persist to Bazaar");
+  const hiddenBody = facilitatorBody("not-json", hidden);
+  assert.equal((hiddenBody.paymentPayload as { extensions?: unknown }).extensions, undefined);
 
   console.log("ticks-door tests ok");
 }

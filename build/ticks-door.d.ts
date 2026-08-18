@@ -44,6 +44,9 @@ export type TicksPayload = {
     };
 };
 export type DoorSku = "ticks" | "import-alerts" | "mariners" | "warning-letters";
+/** Public SKUs Coinbase Bazaar may index. /warning-letters stays unlisted. */
+export declare const PUBLIC_BAZAAR_SKUS: readonly DoorSku[];
+export declare function isPublicBazaarSku(sku: DoorSku): boolean;
 /** x402 Bazaar discovery block (v2 PAYMENT-REQUIRED extensions.bazaar). */
 export declare function bazaarExtension(sku: DoorSku): Record<string, unknown>;
 /** Media-box default: farm-plan collector writes board.json / history.json here. */
@@ -58,6 +61,18 @@ export declare function loadTicks(): TicksPayload;
 export declare function buildTicksManifest(resourceUrl?: string): Record<string, unknown>;
 export declare function paymentRequiredBody(resourceUrl: string, sku?: DoorSku): Record<string, unknown>;
 export declare function paymentRequiredV2(resourceUrl: string, sku?: DoorSku): Record<string, unknown>;
+/**
+ * PaymentRequirements sent to CDP verify/settle.
+ * Public doors attach extensions.bazaar so the facilitator can catalog them.
+ * /warning-letters is omitted so it stays off Bazaar.
+ */
+export declare function facilitatorPaymentRequirements(resourceUrl: string, sku: DoorSku): Record<string, unknown>;
+/**
+ * Shop persist body for CDP verify/settle.
+ * CDP catalogs on settle only when paymentPayload.resource is set and bazaar
+ * is present (v2: payload.extensions; v1 clients do not copy it, so we echo it).
+ */
+export declare function facilitatorBody(payment: string, requirements: Record<string, unknown>): Record<string, unknown>;
 export declare function cdpEnvStatus(): "set" | "CDP env not set";
 export declare function llmsTxt(): string;
 export declare function wellKnownX402(req: IncomingMessage, port: number): Record<string, unknown>;

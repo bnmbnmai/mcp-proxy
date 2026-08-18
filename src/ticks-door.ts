@@ -121,6 +121,13 @@ function env(name: string, fallback = ""): string {
 
 export type DoorSku = "ticks" | "import-alerts" | "mariners" | "warning-letters";
 
+/** Public SKUs Coinbase Bazaar may index. /warning-letters stays unlisted. */
+export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = ["ticks", "import-alerts", "mariners"];
+
+export function isPublicBazaarSku(sku: DoorSku): boolean {
+  return (PUBLIC_BAZAAR_SKUS as readonly string[]).includes(sku);
+}
+
 function amountAtomicFor(sku: DoorSku): string {
   if (sku === "import-alerts") {
     const raw = env("IMPORT_ALERTS_USDC_ATOMIC");
@@ -755,11 +762,51 @@ function paymentPayload(payment: string): Record<string, unknown> | null {
   return decoded;
 }
 
-function facilitatorBody(payment: string, requirements: Record<string, unknown>): Record<string, unknown> {
-  const payload = paymentPayload(payment);
+/**
+ * PaymentRequirements sent to CDP verify/settle.
+ * Public doors attach extensions.bazaar so the facilitator can catalog them.
+ * /warning-letters is omitted so it stays off Bazaar.
+ */
+export function facilitatorPaymentRequirements(
+  resourceUrl: string,
+  sku: DoorSku,
+): Record<string, unknown> {
+  const accept = {
+    ...((paymentRequiredBody(resourceUrl, sku).accepts as Record<string, unknown>[])[0]),
+  };
+  if (isPublicBazaarSku(sku)) {
+    accept.extensions = { bazaar: bazaarExtension(sku) };
+  }
+  return accept;
+}
+
+/**
+ * Shop persist body for CDP verify/settle.
+ * CDP catalogs on settle only when paymentPayload.resource is set and bazaar
+ * is present (v2: payload.extensions; v1 clients do not copy it, so we echo it).
+ */
+export function facilitatorBody(
+  payment: string,
+  requirements: Record<string, unknown>,
+): Record<string, unknown> {
+  const raw = paymentPayload(payment);
+  const resource = typeof requirements.resource === "string" ? requirements.resource : undefined;
+  const reqExt = requirements.extensions;
+  const payload: Record<string, unknown> = raw ? { ...raw } : { paymentHeader: payment };
+  if (resource && payload.resource == null) {
+    payload.resource = resource;
+  }
+  if (
+    reqExt &&
+    typeof reqExt === "object" &&
+    !Array.isArray(reqExt) &&
+    payload.extensions == null
+  ) {
+    payload.extensions = reqExt;
+  }
   return {
-    x402Version: payload?.x402Version ?? 1,
-    paymentPayload: payload ?? { paymentHeader: payment },
+    x402Version: payload.x402Version ?? 1,
+    paymentPayload: payload,
     paymentRequirements: requirements,
     paymentHeader: payment,
   };
@@ -816,6 +863,19 @@ async function facilitatorPost(
       if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) body = parsed as Record<string, unknown>;
     } catch {
       body = { rawStatus: res.status };
+    }
+    const extHdr = res.headers.get("extension-responses") ?? res.headers.get("EXTENSION-RESPONSES");
+    if (extHdr) {
+      try {
+        const decoded = JSON.parse(Buffer.from(extHdr, "base64").toString("utf8")) as {
+          bazaar?: { status?: string };
+        };
+        if (decoded.bazaar?.status) {
+          console.error(`facilitator ${path} bazaar ${decoded.bazaar.status}`);
+        }
+      } catch {
+        // header is diagnostic only
+      }
     }
     if (!res.ok) {
       console.error(`facilitator ${path} HTTP ${res.status}`);
@@ -1213,7 +1273,7 @@ async function servePaid(
     return;
   }
 
-  const accept = (body402.accepts as Record<string, unknown>[])[0];
+  const accept = facilitatorPaymentRequirements(resource, sku);
   const verified = await facilitatorVerify(payment, accept);
   if (verified && (await facilitatorSettle(payment, accept))) {
     await serve();
