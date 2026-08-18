@@ -9,6 +9,8 @@
  * GET /mariners/manifest.json — free count + official source (no notice body)
  * GET /warning-letters — FDA warning-letter bodies ($0.05)
  * GET /warning-letters/manifest.json — free count + source (no letter body)
+ * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
+ * GET /form-483/manifest.json — free id / date / firm (no observation body)
  *
  * Unpaid paid paths → HTTP 402. Public doors echo extensions.bazaar +
  * paymentPayload.resource on facilitator persist. No keys in the repo.
@@ -41,6 +43,14 @@ import {
   loadWarningLetters,
   loadWarningLettersManifest,
 } from "./warning-letters.js";
+import {
+  FORM_483_AMOUNT_ATOMIC,
+  FORM_483_MANIFEST_PATH,
+  FORM_483_PATH,
+  hasCachedForm483Body,
+  loadForm483,
+  loadForm483Manifest,
+} from "./form-483.js";
 
 export const PAY_TO = "0xf59621FC406D266e18f314Ae18eF0a33b8401004";
 export const USDC_BASE = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913";
@@ -119,9 +129,9 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "warning-letters";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "warning-letters" | "form-483";
 
-/** Public SKUs Coinbase Bazaar may index. */
+/** Always-public SKUs. /form-483 joins only when a real 483 body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "ticks",
   "import-alerts",
@@ -129,8 +139,26 @@ export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "warning-letters",
 ];
 
+export function form483IsPublic(): boolean {
+  return hasCachedForm483Body();
+}
+
+export function publicBazaarSkus(): DoorSku[] {
+  const skus: DoorSku[] = [...PUBLIC_BAZAAR_SKUS];
+  if (form483IsPublic()) skus.push("form-483");
+  return skus;
+}
+
 export function isPublicBazaarSku(sku: DoorSku): boolean {
-  return (PUBLIC_BAZAAR_SKUS as readonly string[]).includes(sku);
+  return publicBazaarSkus().includes(sku);
+}
+
+function paidCountWord(): string {
+  return form483IsPublic() ? "five" : "four";
+}
+
+function noNextSkuWord(): string {
+  return form483IsPublic() ? "No sixth public SKU." : "No fifth public SKU.";
 }
 
 function amountAtomicFor(sku: DoorSku): string {
@@ -145,6 +173,10 @@ function amountAtomicFor(sku: DoorSku): string {
   if (sku === "warning-letters") {
     const raw = env("WARNING_LETTERS_USDC_ATOMIC");
     return raw.length > 0 ? raw : WARNING_LETTERS_AMOUNT_ATOMIC;
+  }
+  if (sku === "form-483") {
+    const raw = env("FORM_483_USDC_ATOMIC");
+    return raw.length > 0 ? raw : FORM_483_AMOUNT_ATOMIC;
   }
   const raw = env("X402_USDC_ATOMIC");
   return raw.length > 0 ? raw : TICKS_AMOUNT_ATOMIC;
@@ -170,6 +202,11 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
     description:
       "Call GET /warning-letters when you need official FDA warning-letter bodies (firm, date, subject, full letter text) parsed from fda.gov HTML. Not the import-alerts IA feed. Does not invent letter text.",
     resourcePath: WARNING_LETTERS_PATH,
+  },
+  "form-483": {
+    description:
+      "Call GET /form-483 when you need official FDA Form 483 inspectional observation bodies parsed from posted OII FOIA Electronic Reading Room PDFs. Not warning letters. Not CMS 2567. Does not invent observation text.",
+    resourcePath: FORM_483_PATH,
   },
 };
 
@@ -241,6 +278,20 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         sourceUrl:
           "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/citra100mg-722606-03042026",
         body: "WARNING LETTER\nMarch 4, 2026\nRE: Notice of Unlawful Sale of Unapproved and Misbranded Drugs…",
+      },
+    ],
+  },
+  "form-483": {
+    ok: true,
+    product: "fda-form-483-bodies",
+    status: "ok",
+    letters: [
+      {
+        firm: "Cascade Specialty Pharmacy LLC",
+        fei: "3015133983",
+        recordDate: "2026-07-17",
+        sourceUrl: "https://www.fda.gov/media/193964/download",
+        body: "This document lists observations made by the FDA representative(s) during the inspection of your facility.\nOBSERVATION 1\nThe responsibilities and procedures applicable to the quality control unit are not fully followed.",
       },
     ],
   },
@@ -1033,31 +1084,44 @@ function withShopDiscovery(
 }
 
 export function llmsTxt(): string {
-  return [
-    "# BNM Data Shop",
-    "",
-    "Official public data as JSON at https://ticks.bnm.farm. Four paid GETs. USDC on Base (eip155:8453). payTo 0xf59621FC406D266e18f314Ae18eF0a33b8401004.",
-    "",
-    "## Paid",
-    "",
+  const listed483 = form483IsPublic();
+  const paid = [
     "- GET /ticks — $0.02 — Idaho + PNW market ticks (USDA AMS, Idaho grain, WD1 $/AF)",
     "- GET /import-alerts — $0.05 — FDA Import Alerts / DWPE firm-product snapshot",
     "- GET /mariners — $0.05 — USCG D13 / Northwest Local Notice to Mariners",
     "- GET /warning-letters — $0.05 — FDA warning-letter bodies (firm, date, subject, full letter text)",
+  ];
+  if (listed483) {
+    paid.push("- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs)");
+  }
+  const free = [
+    `- GET /openapi.json — OpenAPI 3.1 with x-payment-info for the ${paidCountWord()} paid doors`,
+    `- GET /.well-known/x402 — absolute URLs of the ${paidCountWord()} paid routes only`,
+    `- GET / — shop JSON (payTo + the ${paidCountWord()} products)`,
+    "- GET /manifest.json — Idaho ticks count + schema",
+    "- GET /import-alerts/manifest.json — FDA count + schema (not the firm dump)",
+    "- GET /mariners/manifest.json — LNM count + official PDF (not the notice body)",
+    "- GET /warning-letters/manifest.json — FDA letter count + firm/date/subject (not the letter body)",
+  ];
+  if (listed483) {
+    free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (not the observation body)");
+  }
+  return [
+    "# BNM Data Shop",
+    "",
+    `Official public data as JSON at https://ticks.bnm.farm. ${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs. USDC on Base (eip155:8453). payTo 0xf59621FC406D266e18f314Ae18eF0a33b8401004.`,
+    "",
+    "## Paid",
+    "",
+    ...paid,
     "",
     "Unpaid GET returns HTTP 402 with PAYMENT-REQUIRED and extensions.bazaar. After a valid X-PAYMENT, the same URL returns JSON. No API key. No request body.",
     "",
     "## Free discovery",
     "",
-    "- GET /openapi.json — OpenAPI 3.1 with x-payment-info for the four paid doors",
-    "- GET /.well-known/x402 — absolute URLs of the four paid routes only",
-    "- GET / — shop JSON (payTo + the four products)",
-    "- GET /manifest.json — Idaho ticks count + schema",
-    "- GET /import-alerts/manifest.json — FDA count + schema (not the firm dump)",
-    "- GET /mariners/manifest.json — LNM count + official PDF (not the notice body)",
-    "- GET /warning-letters/manifest.json — FDA letter count + firm/date/subject (not the letter body)",
+    ...free,
     "",
-    "No fifth public SKU. Free manifests are not the paid body.",
+    `${noNextSkuWord()} Free manifests are not the paid body.`,
     "",
   ].join("\n");
 }
@@ -1073,10 +1137,14 @@ function discoveryOrigin(req: IncomingMessage, port: number): string {
   return resourceUrl(req, port, "").replace(/\/$/, "") || "https://ticks.bnm.farm";
 }
 
+function paidDiscoveryPaths(): string[] {
+  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, WARNING_LETTERS_PATH];
+  if (form483IsPublic()) paths.push(FORM_483_PATH);
+  return paths;
+}
+
 function paidDiscoveryUrls(req: IncomingMessage, port: number): string[] {
-  return [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, WARNING_LETTERS_PATH].map((path) =>
-    resourceUrl(req, port, path),
-  );
+  return paidDiscoveryPaths().map((path) => resourceUrl(req, port, path));
 }
 
 export function wellKnownX402(req: IncomingMessage, port: number): Record<string, unknown> {
@@ -1085,7 +1153,7 @@ export function wellKnownX402(req: IncomingMessage, port: number): Record<string
     resources: paidDiscoveryUrls(req, port),
     ...shopDiscoveryPointers(req, port),
     instructions:
-      "GET each resource unpaid for HTTP 402 with extensions.bazaar. Pay USDC on Base. Free OpenAPI is at /openapi.json. Only these four paid routes exist.",
+      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Pay USDC on Base. Free OpenAPI is at /openapi.json. Only these ${paidCountWord()} paid routes exist.`,
   };
 }
 
@@ -1162,10 +1230,16 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const iaAtomic = amountAtomicFor("import-alerts");
   const lnmAtomic = amountAtomicFor("mariners");
   const wlAtomic = amountAtomicFor("warning-letters");
+  const f483Atomic = amountAtomicFor("form-483");
   const ticksPrice = (Number(ticksAtomic) / 1e6).toFixed(2);
   const iaPrice = (Number(iaAtomic) / 1e6).toFixed(2);
   const lnmPrice = (Number(lnmAtomic) / 1e6).toFixed(2);
   const wlPrice = (Number(wlAtomic) / 1e6).toFixed(2);
+  const f483Price = (Number(f483Atomic) / 1e6).toFixed(2);
+  const listed483 = form483IsPublic();
+  const paidList = listed483
+    ? "/ticks ($0.02), /import-alerts ($0.05), /mariners ($0.05), /warning-letters ($0.05), /form-483 ($0.05)"
+    : "/ticks ($0.02), /import-alerts ($0.05), /mariners ($0.05), /warning-letters ($0.05)";
   return {
     openapi: "3.1.0",
     info: {
@@ -1174,7 +1248,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       description: "Official public data as JSON. Unpaid paid routes return HTTP 402.",
       contact: { name: "BNM Data Shop", url: "https://bnm.farm/" },
       "x-guidance":
-        "Four paid GETs: /ticks ($0.02), /import-alerts ($0.05), /mariners ($0.05), /warning-letters ($0.05), USDC on Base. Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. Free manifests do not include the paid body. No request body. No fifth public SKU.",
+        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. Free manifests do not include the paid body. No request body. ${noNextSkuWord()}`,
     },
     "x-discovery": {
       ownershipProofs: [PAY_TO],
@@ -1264,6 +1338,29 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           },
         }),
       },
+      ...(listed483
+        ? {
+            [FORM_483_PATH]: {
+              get: paidOpenApiOp({
+                operationId: "getForm483",
+                summary: "FDA Form 483 observation bodies",
+                description: SKU_COPY["form-483"].description,
+                priceUsdc: f483Price,
+                amountAtomic: f483Atomic,
+                example: BAZAAR_OUTPUT_EXAMPLE["form-483"],
+                outputSchema: {
+                  type: "object",
+                  properties: {
+                    ok: { type: "boolean" },
+                    product: { type: "string" },
+                    status: { type: "string" },
+                    letters: { type: "array", items: { type: "object" } },
+                  },
+                },
+              }),
+            },
+          }
+        : {}),
       [MANIFEST_PATH]: {
         get: freeOpenApiOp("Idaho ticks free manifest", "Count, schema, and samples. Not the paid snapshot."),
       },
@@ -1282,17 +1379,36 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           "Count, firm, date, subject, and official source URL. Not the letter body.",
         ),
       },
+      ...(listed483
+        ? {
+            [FORM_483_MANIFEST_PATH]: {
+              get: freeOpenApiOp(
+                "FDA Form 483 free manifest",
+                "Count, id, firm, and dates. Not the observation body.",
+              ),
+            },
+          }
+        : {}),
       [WELL_KNOWN_PATH]: {
-        get: freeOpenApiOp("x402 well-known fan-out", "Absolute URLs of the four live paid routes only."),
+        get: freeOpenApiOp(
+          "x402 well-known fan-out",
+          `Absolute URLs of the ${paidCountWord()} live paid routes only.`,
+        ),
       },
       [OPENAPI_PATH]: {
         get: freeOpenApiOp("OpenAPI discovery document", "This document."),
       },
       [LLMS_PATH]: {
-        get: freeOpenApiOp("Short agent guidance", "The four paid doors and free discovery URLs. Not a paid SKU."),
+        get: freeOpenApiOp(
+          "Short agent guidance",
+          `The ${paidCountWord()} paid doors and free discovery URLs. Not a paid SKU.`,
+        ),
       },
       "/": {
-        get: freeOpenApiOp("Shop discovery JSON", "payTo, network, and the four public products."),
+        get: freeOpenApiOp(
+          "Shop discovery JSON",
+          `payTo, network, and the ${paidCountWord()} public products.`,
+        ),
       },
     },
     components: {
@@ -1412,6 +1528,17 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
           amountAtomic: amountAtomicFor("warning-letters"),
           manifest: WARNING_LETTERS_MANIFEST_PATH,
         },
+        ...(form483IsPublic()
+          ? [
+              {
+                path: FORM_483_PATH,
+                product: "fda-form-483-bodies",
+                priceUsdc: "0.05",
+                amountAtomic: amountAtomicFor("form-483"),
+                manifest: FORM_483_MANIFEST_PATH,
+              },
+            ]
+          : []),
       ],
     });
     return;
@@ -1467,12 +1594,22 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === FORM_483_MANIFEST_PATH) {
+    sendJson(res, 200, withShopDiscovery(await loadForm483Manifest(), req, port));
+    return;
+  }
+
+  if (path === FORM_483_PATH) {
+    await servePaid(req, res, port, "form-483", () => loadForm483());
+    return;
+  }
+
   if (path === TICKS_PATH) {
     await servePaid(req, res, port, "ticks", () => loadTicks());
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
 }
 
 export function bindHost(): string {
@@ -1504,6 +1641,7 @@ if (isMain()) {
     console.error(`${IMPORT_ALERTS_PATH} $${Number(amountAtomicFor("import-alerts")) / 1e6} USDC`);
     console.error(`${MARINERS_PATH} $${Number(amountAtomicFor("mariners")) / 1e6} USDC`);
     console.error(`${WARNING_LETTERS_PATH} $${Number(amountAtomicFor("warning-letters")) / 1e6} USDC`);
+    console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
     console.error(`payTo ${PAY_TO} USDC ${USDC_BASE} on Base`);
     console.error(`ticksDir ${ticksDir() || "(unset)"}`);
     console.error(`board ${board && existsSync(board) ? board : "missing — paid /ticks body will be empty/stale"}`);

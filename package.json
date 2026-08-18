@@ -9,14 +9,15 @@
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "scripts": {
-    "build": "tsc && chmod 755 build/index.js build/ticks-door.js build/import-alerts.js build/mariners.js build/warning-letters.js",
+    "build": "tsc && chmod 755 build/index.js build/ticks-door.js build/import-alerts.js build/mariners.js build/warning-letters.js build/form-483.js",
     "prepare": "npm run build",
     "start": "node build/index.js",
     "start:ticks": "node build/ticks-door.js",
     "collect:import-alerts": "node build/import-alerts.js",
     "collect:mariners": "node build/mariners.js",
     "collect:warning-letters": "node build/warning-letters.js",
-    "test:ticks": "npm run build && node build/import-alerts.test.js && node build/mariners.test.js && node build/warning-letters.test.js && node build/ticks-door.test.js"
+    "collect:form-483": "node build/form-483.js",
+    "test:ticks": "npm run build && node build/import-alerts.test.js && node build/mariners.test.js && node build/warning-letters.test.js && node build/form-483.test.js && node build/ticks-door.test.js"
   },
   "files": [
     "build",
