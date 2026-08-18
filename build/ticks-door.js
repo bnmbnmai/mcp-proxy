@@ -5,6 +5,8 @@
  * GET /ticks — Idaho hay + feeder ticks ($0.02 USDC on Base)
  * GET /import-alerts — FDA Import Alert / DWPE firm ticks ($0.05)
  * GET /import-alerts/manifest.json — free catalog + schema + sample rows
+ * GET /mariners — USCG D13 / Northwest Local Notice to Mariners ($0.05)
+ * GET /mariners/manifest.json — free count + official source (no notice body)
  *
  * Unpaid paid paths → HTTP 402. Does not list on x402scan/Bazaar, does not
  * resurrect the Apollo Intelligence catalog. No keys in the repo.
@@ -14,6 +16,7 @@ import { readFileSync, existsSync, statSync } from "node:fs";
 import { homedir } from "node:os";
 import { join, resolve } from "node:path";
 import { IMPORT_ALERTS_AMOUNT_ATOMIC, IMPORT_ALERTS_MANIFEST_PATH, IMPORT_ALERTS_PATH, TICKS_AMOUNT_ATOMIC, loadImportAlerts, loadManifest, } from "./import-alerts.js";
+import { MARINERS_AMOUNT_ATOMIC, MARINERS_MANIFEST_PATH, MARINERS_PATH, loadMariners, loadMarinersManifest, } from "./mariners.js";
 export const PAY_TO = "0xf59621FC406D266e18f314Ae18eF0a33b8401004";
 export const USDC_BASE = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913";
 export const NETWORK_V1 = "base";
@@ -70,6 +73,10 @@ function amountAtomicFor(sku) {
         const raw = env("IMPORT_ALERTS_USDC_ATOMIC");
         return raw.length > 0 ? raw : IMPORT_ALERTS_AMOUNT_ATOMIC;
     }
+    if (sku === "mariners") {
+        const raw = env("MARINERS_USDC_ATOMIC");
+        return raw.length > 0 ? raw : MARINERS_AMOUNT_ATOMIC;
+    }
     const raw = env("X402_USDC_ATOMIC");
     return raw.length > 0 ? raw : TICKS_AMOUNT_ATOMIC;
 }
@@ -81,6 +88,10 @@ const SKU_COPY = {
     "import-alerts": {
         description: "FDA Import Alert / DWPE firm ticks (official cms_ia HTML)",
         resourcePath: IMPORT_ALERTS_PATH,
+    },
+    mariners: {
+        description: "USCG District 13 / Northwest Local Notice to Mariners (official weekly PDF)",
+        resourcePath: MARINERS_PATH,
     },
 };
 /** Media-box default: farm-plan collector writes board.json / history.json here. */
@@ -744,6 +755,13 @@ export async function handleRequest(req, res, port) {
                     amountAtomic: amountAtomicFor("import-alerts"),
                     manifest: IMPORT_ALERTS_MANIFEST_PATH,
                 },
+                {
+                    path: MARINERS_PATH,
+                    product: "uscg-d13-lnm",
+                    priceUsdc: "0.05",
+                    amountAtomic: amountAtomicFor("mariners"),
+                    manifest: MARINERS_MANIFEST_PATH,
+                },
             ],
         });
         return;
@@ -751,7 +769,7 @@ export async function handleRequest(req, res, port) {
     if (path === "/.well-known/x402" || path === "/.well-known/x402.json") {
         sendJson(res, 200, {
             version: 1,
-            resources: [`GET ${TICKS_PATH}`, `GET ${MANIFEST_PATH}`, `GET ${CATALOG_PATH}`, `GET ${IMPORT_ALERTS_PATH}`, `GET ${IMPORT_ALERTS_MANIFEST_PATH}`],
+            resources: [`GET ${TICKS_PATH}`, `GET ${MANIFEST_PATH}`, `GET ${CATALOG_PATH}`, `GET ${IMPORT_ALERTS_PATH}`, `GET ${IMPORT_ALERTS_MANIFEST_PATH}`, `GET ${MARINERS_PATH}`, `GET ${MARINERS_MANIFEST_PATH}`],
         });
         return;
     }
@@ -763,15 +781,23 @@ export async function handleRequest(req, res, port) {
         sendJson(res, 200, await loadManifest());
         return;
     }
+    if (path === MARINERS_MANIFEST_PATH) {
+        sendJson(res, 200, await loadMarinersManifest());
+        return;
+    }
     if (path === IMPORT_ALERTS_PATH) {
         await servePaid(req, res, port, "import-alerts", () => loadImportAlerts());
+        return;
+    }
+    if (path === MARINERS_PATH) {
+        await servePaid(req, res, port, "mariners", () => loadMariners());
         return;
     }
     if (path === TICKS_PATH) {
         await servePaid(req, res, port, "ticks", () => loadTicks());
         return;
     }
-    sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH] });
+    sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH] });
 }
 export function bindHost() {
     return env("BIND_HOST", "0.0.0.0");
@@ -798,6 +824,7 @@ if (isMain()) {
         console.error(`bnm data shop x402 door on ${host}:${port}`);
         console.error(`${TICKS_PATH} $${Number(amountAtomicFor("ticks")) / 1e6} USDC`);
         console.error(`${IMPORT_ALERTS_PATH} $${Number(amountAtomicFor("import-alerts")) / 1e6} USDC`);
+        console.error(`${MARINERS_PATH} $${Number(amountAtomicFor("mariners")) / 1e6} USDC`);
         console.error(`payTo ${PAY_TO} USDC ${USDC_BASE} on Base`);
         console.error(`ticksDir ${ticksDir() || "(unset)"}`);
         console.error(`board ${board && existsSync(board) ? board : "missing — paid /ticks body will be empty/stale"}`);

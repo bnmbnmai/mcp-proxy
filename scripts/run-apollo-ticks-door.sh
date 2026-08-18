@@ -17,6 +17,8 @@ echo "TICKS_DIR=$TICKS_DIR"
 echo "BIND_HOST=$BIND_HOST PORT=$PORT"
 echo "unpaid /ticks ($0.02): curl -i http://<lan-ip>:$PORT/ticks"
 echo "unpaid /import-alerts ($0.05): curl -i http://<lan-ip>:$PORT/import-alerts"
+echo "unpaid /mariners ($0.05): curl -i http://<lan-ip>:$PORT/mariners"
 echo "free manifest: curl -s http://<lan-ip>:$PORT/import-alerts/manifest.json"
+echo "free mariners: curl -s http://<lan-ip>:$PORT/mariners/manifest.json"
 echo "paid smoke: X402_SKIP_SETTLE=1 … then curl -s http://<lan-ip>:$PORT/ticks -H 'X-PAYMENT: test'"
 exec node build/ticks-door.js

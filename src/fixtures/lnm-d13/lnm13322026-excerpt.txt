@@ -1,0 +1,75 @@
+8/12/26, 12:23 PM                                                                     Maritime Safety Information Products | Navigation Center
+
+                                 Local Notice to Mariners for Northwest District                                                                         08/12/2026
+
+                                                                                        Anacortes Harbor
+   Federal Discrepancies
+                                 NAME                                      LLNR                                                   STATUS                                                         AID TYPE
+ Anacortes Channel Light 4                                            19055            TRLB/STRUCT MISSING/STRUCT DEST                                                                   FD
+
+
+   Temporary Changes
+                                                   NAME                                                              LLNR                         STATUS                                 AID TYPE
+ Anacortes Channel Light 4                                                                                 19055                     TRLB                               FD
+
+
+
+                                                                                                  Astoria
+   Federal Discrepancies
+                                                    NAME                                                               LLNR                            STATUS                             AID TYPE
+ Tansy Point Range Buoy 35B                                                                                  10090                     SINKING                              FD
+
+
+   Additional MSI Categories
+                 TITLE                   SUBCATEGORY                                                                    DESCRIPTION                                                                   LOCATION
+ Tansy Point -                      Marine Construction The M/V ESSAYONS will be conducting dredging activities near Puget Island, (RM 19+40 to RM 21+05), between 31 Jul – 04 Aug                   Lat:
+ Astoria/General/Marine             (Excluding Bridges)     2026. Disposal sites with be located at RM 8 (WA side). USACE requests mariners transit at their slowest safe speed to minimize wake 46° 13' 23"
+ Construction (Excluding                                    when in the vicinity of a dredge and proceed with caution after passing arrangements have been made on VHF-FM channel 13.            Lon:
+ Bridges)/Dredging                                          Vessel(s) and/or equipment may encroach into the channel. Mariners are advised that the start and ending dates for dredging              -123° 44'
+                                                            activities may vary due to unforeseen on-site conditions, such as gill net fishing, weather and other factors.                           54"
+
+
+
+                                                                                  Baker Bay West Channel
+   Federal Discrepancies
+                                                         NAME                                                                 LLNR                           STATUS                              AID TYPE
+ Baker Bay West Channel Entrance Jetty Light 1                                                                          14415              DAYMK MISSING                                 FD
+
+
+
+                                                                                      Bay Center Channel
+   Additional MSI Categories
+                 TITLE                   SUBCATEGORY                                                                     DESCRIPTION                                                                  LOCATION
+ South Willapa Bay - Bay Center         Marine              Willapa Bay Maintenance Dredging will be conducting dredging and disposal operations on the Palix River near Bay Center, WA from
+ Channel/General/Marine                 Construction        23 Jul – 30 Aug 2026. Dredging and disposal operations will be 24 hours per day, 7 days per week. The Derrick "Ellis Island" will
+ Construction (Excluding                (Excluding Bridges) perform all dredging. The tug "James T" will perform all towing operations. Both the Derrick "Ellis Island" and Tug “James T" will
+ Bridges)/Dredging                                          monitor VHF channel 16 and use VHF channel 72 for operations. Disposal sites will occur at the South Channel Placement Site located
+                                                            in Willapa Bay. Dredging. Mariners are requested to transit at their slowest safe speed to minimize wake and proceed with caution
+                                                            after passing arrangements have been made. For additional information, contact Darrell Jamieson at (360) 984-9178 or email
+                                                            djamieson@orn.net
+
+
+
+                                                                                          Bellingham Bay
+   Additional MSI Categories
+                         TITLE                          SUBCATEGORY                                                             DESCRIPTION                                                           LOCATION
+ Hale Passage - Bellingham Bay/General/Marine           Marine Events    29 AUG 2026, 1200-1300. Aquatic leg of multisport relay race held in Bellingham Bay. Leg begins at Waypoint Park and
+ Events/Regatta (Race)                                                   ends at Marine Park. 50+ paddle craft expected to participate.
+ Hale Passage - Bellingham Bay/General/Marine           Marine Events    02 APR - 24 SEP 2026, 1800-2100. Weekly sailing regatta on Thursday evenings in Bellingham Bay.
+ Events/Regatta (Race)
+
+
+
+                                                                                          Bonneville Pool
+   Federal Discrepancies
+                                                               NAME                                                                        LLNR                    STATUS                     AID TYPE
+ Bonneville Pool Lighted Buoy 4                                                                                                    11768                 SINKING                    FD
+ Wind Mountain Lower Range Front Light 17                                                                                          11840                 LT EXT                     FD
+ Bonneville Pool Light 22                                                                                                          11855                 LT EXT                     FD
+
+
+   Federal Discrepancies Corrected
+                                        NAME                                            LLNR                         STATUS                             AID TYPE                 CORRECTION DATE
+ Wind Mountain Lower Range Rear Light                                               11845         WATCHING PROPERLY                               FD                   2026-08-01
+
+

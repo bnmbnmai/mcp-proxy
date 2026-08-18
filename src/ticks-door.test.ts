@@ -11,6 +11,11 @@ import {
   IMPORT_ALERTS_PATH,
   TICKS_AMOUNT_ATOMIC,
 } from "./import-alerts.js";
+import {
+  MARINERS_AMOUNT_ATOMIC,
+  MARINERS_MANIFEST_PATH,
+  MARINERS_PATH,
+} from "./mariners.js";
 
 async function withServer(
   envPatch: Record<string, string | undefined>,
@@ -288,6 +293,109 @@ async function main(): Promise<void> {
       assert.equal(paidBody.product, "fda-import-alerts");
       assert.equal(paidBody.ticks[0]?.firm, "Clover Valley Meat Co.");
       assert.equal(paidBody.ticks[0]?.list, "red");
+    },
+  );
+
+  const marinersDir = mkdtempSync(join(tmpdir(), "mariners-"));
+  writeFileSync(
+    join(marinersDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "uscg-d13-lnm",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-08-18T00:00:00.000Z",
+      asOf: "2026-08-12",
+      week: "32-2026",
+      year: 2026,
+      edition: "32-2026",
+      district: "13",
+      districtName: "Northwest",
+      sources: {
+        listing: "https://www.navcen.uscg.gov/local-notices-to-mariners?district=13+0&subdistrict=n",
+        pdfPattern: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13{WW}{YYYY}.pdf",
+        pdfUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf",
+      },
+      editions: [
+        {
+          week: 32,
+          year: 2026,
+          edition: "32-2026",
+          href: "/sites/default/files/pdf/lnms/lnm13322026.pdf",
+          sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf",
+        },
+      ],
+      notices: [
+        {
+          week: "32-2026",
+          section: "Federal Discrepancies",
+          waterway: "Anacortes Harbor",
+          text: "Anacortes Channel Light 4 LLNR 19055 TRLB/STRUCT MISSING/STRUCT DEST FD",
+          sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf",
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      MARINERS_DIR: marinersDir,
+      MARINERS_TTL_MS: String(24 * 3600 * 1000),
+      X402_SKIP_SETTLE: "1",
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${MARINERS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /mariners must be 402");
+      const body402 = (await unpaid.json()) as {
+        payTo: string;
+        asset: string;
+        resource: string;
+        accepts: { maxAmountRequired?: string; payTo: string }[];
+      };
+      assert.equal(body402.payTo, PAY_TO);
+      assert.equal(body402.asset, USDC_BASE);
+      assert.equal(body402.resource, MARINERS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, MARINERS_AMOUNT_ATOMIC);
+      assert.ok(unpaid.headers.get("payment-required"), "v2 PAYMENT-REQUIRED header");
+
+      const ticksUnpaid = await fetch(`${base}${TICKS_PATH}`);
+      assert.equal(ticksUnpaid.status, 402);
+      const ticks402 = (await ticksUnpaid.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(ticks402.accepts[0]?.maxAmountRequired, TICKS_AMOUNT_ATOMIC);
+
+      const iaUnpaid = await fetch(`${base}${IMPORT_ALERTS_PATH}`);
+      assert.equal(iaUnpaid.status, 402);
+
+      const manifest = await fetch(`${base}${MARINERS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "unpaid mariners manifest is free");
+      const man = (await manifest.json()) as {
+        free: boolean;
+        noticeCount?: number;
+        week?: string;
+        sources?: { pdfUrl?: string };
+      };
+      assert.equal(man.free, true);
+      assert.equal(man.noticeCount, 1);
+      assert.equal(man.week, "32-2026");
+      assert.ok(man.sources?.pdfUrl?.includes("lnm13322026.pdf"));
+      const manBlob = JSON.stringify(man);
+      assert.ok(!manBlob.includes("Anacortes Channel Light 4"), "free manifest must not dump notice body");
+      assert.ok(!manBlob.includes("organic"));
+      assert.ok(!manBlob.includes("inventing"));
+
+      const root = await fetch(`${base}/`);
+      const shop = (await root.json()) as { products: { path: string; priceUsdc: string }[] };
+      assert.ok(shop.products.some((p) => p.path === MARINERS_PATH && p.priceUsdc === "0.05"));
+
+      const paid = await fetch(`${base}${MARINERS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        notices: { text: string; section: string }[];
+      };
+      assert.equal(paidBody.product, "uscg-d13-lnm");
+      assert.equal(paidBody.notices[0]?.section, "Federal Discrepancies");
+      assert.ok(paidBody.notices[0]?.text.includes("Anacortes Channel Light 4"));
     },
   );
 

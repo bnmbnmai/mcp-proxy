@@ -5,6 +5,8 @@
  * GET /ticks — Idaho hay + feeder ticks ($0.02 USDC on Base)
  * GET /import-alerts — FDA Import Alert / DWPE firm ticks ($0.05)
  * GET /import-alerts/manifest.json — free catalog + schema + sample rows
+ * GET /mariners — USCG D13 / Northwest Local Notice to Mariners ($0.05)
+ * GET /mariners/manifest.json — free count + official source (no notice body)
  *
  * Unpaid paid paths → HTTP 402. Does not list on x402scan/Bazaar, does not
  * resurrect the Apollo Intelligence catalog. No keys in the repo.
@@ -36,7 +38,7 @@ export type TicksPayload = {
         series: unknown[];
     };
 };
-export type DoorSku = "ticks" | "import-alerts";
+export type DoorSku = "ticks" | "import-alerts" | "mariners";
 /** Media-box default: farm-plan collector writes board.json / history.json here. */
 export declare const DEFAULT_TICKS_DIR: string;
 export declare function ticksDir(): string;
