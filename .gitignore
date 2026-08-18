@@ -5,3 +5,4 @@ dist/
 .mcpregistry_*
 build/*.test.*
 data/import-alerts/
+data/mariners/
