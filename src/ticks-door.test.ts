@@ -640,7 +640,7 @@ async function main(): Promise<void> {
 
   await withServer(
     {
-      X402_FACILITATOR_URL: "https://api.cdp.coinbase.com/platform/v2/x402",
+      X402_FACILITATOR_URL: "http://127.0.0.1:9",
       CDP_API_KEY_ID: undefined,
       CDP_API_KEY_SECRET: undefined,
       X402_SKIP_SETTLE: undefined,
@@ -653,9 +653,9 @@ async function main(): Promise<void> {
         const unpaid = await fetch(`${base}${path}`);
         assert.equal(unpaid.status, 402, `unpaid ${path} must stay 402`);
         const present = await fetch(`${base}${path}`, { headers: { "X-PAYMENT": "test" } });
-        assert.equal(present.status, 402, `${path} fails closed without CDP env`);
+        assert.equal(present.status, 402, `${path} unpaid-or-unsettled stays 402 without inventing keys`);
         const body = (await present.json()) as { error?: string };
-        assert.equal(body.error, "CDP env not set");
+        assert.notEqual(body.error, "CDP env not set");
       }
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
       assert.equal(wk.resources.length, 3);

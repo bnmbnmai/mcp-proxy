@@ -774,11 +774,8 @@ function cdpApiKeySecret(): string {
   return env("CDP_API_KEY_SECRET").replace(/\\n/g, "\n");
 }
 
-async function cdpAuthHeaders(method: "GET" | "POST", url: string): Promise<Record<string, string> | null> {
-  if (cdpEnvStatus() !== "set") {
-    console.error("CDP env not set");
-    return null;
-  }
+async function cdpAuthHeaders(method: "GET" | "POST", url: string): Promise<Record<string, string>> {
+  if (cdpEnvStatus() !== "set") return {};
   try {
     const parsed = new URL(url);
     const jwt = await generateJwt({
@@ -790,8 +787,7 @@ async function cdpAuthHeaders(method: "GET" | "POST", url: string): Promise<Reco
     });
     return { Authorization: `Bearer ${jwt}` };
   } catch {
-    console.error("CDP facilitator JWT failed");
-    return null;
+    return {};
   }
 }
 
@@ -802,13 +798,8 @@ async function facilitatorPost(
 ): Promise<Record<string, unknown> | null> {
   const base = env("X402_FACILITATOR_URL");
   if (!base) return null;
-  if (cdpEnvStatus() !== "set") {
-    console.error("CDP env not set");
-    return { error: "CDP env not set" };
-  }
   const url = `${base.replace(/\/$/, "")}${path}`;
   const auth = await cdpAuthHeaders("POST", url);
-  if (!auth) return { error: "CDP env not set" };
   try {
     const res = await fetch(url, {
       method: "POST",
@@ -831,7 +822,6 @@ async function facilitatorPost(
       console.error(`facilitator ${path} HTTP ${res.status}`);
       return null;
     }
-    console.error(`facilitator ${path} authenticated`);
     return body;
   } catch (err) {
     console.error(`facilitator ${path} error ${err instanceof Error ? err.name : "unknown"}`);
@@ -841,7 +831,7 @@ async function facilitatorPost(
 
 async function facilitatorVerify(payment: string, requirements: Record<string, unknown>): Promise<boolean> {
   const body = await facilitatorPost("/verify", payment, requirements);
-  if (!body || body.error === "CDP env not set") return false;
+  if (!body) return false;
   return body.isValid === true || body.success === true;
 }
 
@@ -1224,17 +1214,6 @@ async function servePaid(
     return;
   }
 
-  if (env("X402_FACILITATOR_URL") && cdpEnvStatus() !== "set") {
-    console.error("CDP env not set");
-    sendJson(
-      res,
-      402,
-      { ...body402, error: "CDP env not set" },
-      { "PAYMENT-REQUIRED": paymentRequiredHeader },
-    );
-    return;
-  }
-
   const accept = (body402.accepts as Record<string, unknown>[])[0];
   const verified = await facilitatorVerify(payment, accept);
   if (verified && (await facilitatorSettle(payment, accept))) {
@@ -1398,7 +1377,6 @@ if (isMain()) {
     console.error(`${IMPORT_ALERTS_PATH} $${Number(amountAtomicFor("import-alerts")) / 1e6} USDC`);
     console.error(`${MARINERS_PATH} $${Number(amountAtomicFor("mariners")) / 1e6} USDC`);
     console.error(`payTo ${PAY_TO} USDC ${USDC_BASE} on Base`);
-    console.error(cdpEnvStatus() === "set" ? "CDP facilitator auth: env set" : "CDP env not set");
     console.error(`ticksDir ${ticksDir() || "(unset)"}`);
     console.error(`board ${board && existsSync(board) ? board : "missing — paid /ticks body will be empty/stale"}`);
   });
