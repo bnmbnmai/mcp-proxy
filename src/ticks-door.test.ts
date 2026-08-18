@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH } from "./ticks-door.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
   IMPORT_ALERTS_MANIFEST_PATH,
@@ -87,6 +87,72 @@ async function main(): Promise<void> {
     },
   );
 
+  const memoDir = mkdtempSync(join(tmpdir(), "ticks-memo-"));
+  writeFileSync(
+    join(memoDir, "board.json"),
+    JSON.stringify({
+      fetchedAt: "2026-08-17T00:00:00Z",
+      rows: [
+        {
+          id: "cattle-tf-feeder-steer",
+          group: "cattle",
+          commodity: "Feeder steers",
+          market: "Twin Falls",
+          unit: "$/cwt",
+          price: 400.2,
+          asOf: "2026-08-12",
+          source: "Twin Falls Livestock Commission market report",
+        },
+      ],
+      failed: [
+        {
+          id: "hay-idaho-organic",
+          reason:
+            "No report. This report has no organic row. USDA printed no organic hay trade. We are not inventing a number and not reusing an older organic price as current.",
+        },
+      ],
+      history: {
+        points: [],
+        series: [
+          { id: "cattle-tf-feeder-steer", label: "Twin Falls feeder steers", group: "cattle" },
+          { id: "hay-id-organic-alfalfa", label: "USDA organic (Idaho)", group: "hay" },
+        ],
+        emptyReports: [
+          {
+            series: "hay-id-organic-alfalfa",
+            reason:
+              "No report. This report has no organic row. USDA printed no organic hay trade. We are not inventing a number and not reusing an older organic price as current.",
+          },
+          {
+            id: "ams_3056-current",
+            reason: "No report. HTTP Error 403: Forbidden",
+          },
+        ],
+      },
+    }),
+  );
+
+  await withServer(
+    { TICKS_DIR: memoDir, X402_SKIP_SETTLE: "1", X402_USDC_ATOMIC: "20000" },
+    async (base) => {
+      const paid = await fetch(`${base}${TICKS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as ReturnType<typeof loadTicks>;
+      assert.ok(!paidBody.ticks.some((row) => /organic/i.test(JSON.stringify(row))));
+      assert.ok(!paidBody.failed.some((row) => /organic/i.test(JSON.stringify(row))));
+      assert.ok(!paidBody.history.series.some((row) => /organic/i.test(JSON.stringify(row))));
+      assert.deepEqual(paidBody.history.emptyReports, [{ id: "ams_3056-current", status: "empty" }]);
+      const manifest = await (await fetch(`${base}${MANIFEST_PATH}`)).json() as {
+        empty?: { id?: string; status?: string; reason?: string; name?: string }[];
+      };
+      const catalog = await (await fetch(`${base}${CATALOG_PATH}`)).json();
+      const blob = `${JSON.stringify(paidBody)}${JSON.stringify(manifest)}${JSON.stringify(catalog)}`;
+      assert.equal(/we are not inventing|this report has no organic row|usda organic/i.test(blob), false);
+      assert.ok((manifest.empty ?? []).every((e) => e.status === "empty" && e.id && !("reason" in e)));
+      assert.ok(!(manifest.empty ?? []).some((e) => /organic/i.test(`${e.id ?? ""} ${e.name ?? ""}`)));
+    },
+  );
+
   const liveBoard = join(DEFAULT_TICKS_DIR, "board.json");
   if (existsSync(liveBoard)) {
     await withServer(
@@ -102,16 +168,28 @@ async function main(): Promise<void> {
           assert.ok(blob.includes(marker), `paid JSON must include ${marker} when cache exists`);
         }
         assert.ok(body.ticks.length + body.history.points.length > 0, "real ticks present");
-        const ticksManifest = await fetch(`${base}/manifest.json`);
+        const ticksManifest = await fetch(`${base}${MANIFEST_PATH}`);
         assert.equal(ticksManifest.status, 200);
-        const tm = (await ticksManifest.json()) as { tickCount: number; empty?: unknown };
+        const catalogRes = await fetch(`${base}${CATALOG_PATH}`);
+        assert.equal(catalogRes.status, 200);
+        const tm = (await ticksManifest.json()) as {
+          tickCount: number;
+          empty?: { id?: string; status?: string; reason?: string; name?: string }[];
+        };
+        const catalogBody = await catalogRes.json();
         assert.equal(tm.tickCount, body.ticks.length);
-        const manBlob = JSON.stringify(tm).toLowerCase();
-        assert.equal(Object.prototype.hasOwnProperty.call(tm, "empty"), false, "public manifest must not list empty products");
-        assert.ok(!manBlob.includes("inventing"), "public manifest must not include collect-policy prose");
-        assert.ok(!manBlob.includes("usda organic"), "public manifest must not list organic hay as a product");
-        const paidBlob = JSON.stringify(body).toLowerCase();
-        assert.ok(!paidBlob.includes("we are not inventing"), "paid /ticks must not include first-person collect notes");
+        const publicCopy = `${JSON.stringify(tm)}${JSON.stringify(catalogBody)}${JSON.stringify(body)}`.toLowerCase();
+        assert.ok(!publicCopy.includes("inventing"), "unpaid catalog/manifest and paid body must not include collect-policy prose");
+        assert.ok(!publicCopy.includes("usda organic"), "organic hay is not a product");
+        assert.ok(!publicCopy.includes("we are not inventing"), "must not include first-person collect notes");
+        assert.ok(!(tm.empty ?? []).some((e) => /organic/i.test(`${e.id ?? ""} ${e.name ?? ""} ${e.reason ?? ""}`)));
+        assert.ok((tm.empty ?? []).every((e) => e.status === "empty" && e.id && !("reason" in e)));
+        assert.ok(!body.ticks.some((row) => /organic/i.test(String((row as Record<string, unknown>).id ?? ""))));
+        for (const row of body.history.emptyReports as Record<string, unknown>[]) {
+          assert.deepEqual(Object.keys(row).sort(), ["id", "status"]);
+          assert.equal(row.status, "empty");
+          assert.ok(!/organic/i.test(String(row.id ?? "")));
+        }
       },
     );
   }
