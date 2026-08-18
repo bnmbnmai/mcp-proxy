@@ -7,6 +7,8 @@
  * GET /import-alerts/manifest.json — free catalog + schema + sample rows
  * GET /mariners — USCG D13 / Northwest Local Notice to Mariners ($0.05)
  * GET /mariners/manifest.json — free count + official source (no notice body)
+ * GET /warning-letters — unlisted FDA warning-letter bodies ($0.05). Not a public SKU.
+ * GET /warning-letters/manifest.json — unlisted free count + source (no letter body)
  *
  * Unpaid paid paths → HTTP 402. Does not list on x402scan/Bazaar, does not
  * resurrect the Apollo Intelligence catalog. No keys in the repo.
@@ -15,8 +17,10 @@ import { createServer as createHttpServer } from "node:http";
 import { readFileSync, existsSync, statSync } from "node:fs";
 import { homedir } from "node:os";
 import { join, resolve } from "node:path";
+import { generateJwt } from "@coinbase/cdp-sdk/auth";
 import { IMPORT_ALERTS_AMOUNT_ATOMIC, IMPORT_ALERTS_MANIFEST_PATH, IMPORT_ALERTS_PATH, TICKS_AMOUNT_ATOMIC, loadImportAlerts, loadManifest, } from "./import-alerts.js";
 import { MARINERS_AMOUNT_ATOMIC, MARINERS_MANIFEST_PATH, MARINERS_PATH, loadMariners, loadMarinersManifest, } from "./mariners.js";
+import { WARNING_LETTERS_AMOUNT_ATOMIC, WARNING_LETTERS_MANIFEST_PATH, WARNING_LETTERS_PATH, loadWarningLetters, loadWarningLettersManifest, } from "./warning-letters.js";
 export const PAY_TO = "0xf59621FC406D266e18f314Ae18eF0a33b8401004";
 export const USDC_BASE = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913";
 export const NETWORK_V1 = "base";
@@ -26,9 +30,10 @@ export const MANIFEST_PATH = "/manifest.json";
 export const CATALOG_PATH = "/catalog.json";
 export const WELL_KNOWN_PATH = "/.well-known/x402";
 export const OPENAPI_PATH = "/openapi.json";
+export const LLMS_PATH = "/llms.txt";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
 export const PRODUCT_NAME = "Idaho + PNW Market Ticks";
-export const PRODUCT_VERSION = "1.1.0";
+export const PRODUCT_VERSION = "1.2.0";
 const COLLECT_MEMO_RE = /we are not inventing|this report has no organic row|not reusing an older organic|usda printed no organic/i;
 const PUBLIC_SOURCE_MARKERS = [
     "twin falls",
@@ -79,6 +84,10 @@ function amountAtomicFor(sku) {
         const raw = env("MARINERS_USDC_ATOMIC");
         return raw.length > 0 ? raw : MARINERS_AMOUNT_ATOMIC;
     }
+    if (sku === "warning-letters") {
+        const raw = env("WARNING_LETTERS_USDC_ATOMIC");
+        return raw.length > 0 ? raw : WARNING_LETTERS_AMOUNT_ATOMIC;
+    }
     const raw = env("X402_USDC_ATOMIC");
     return raw.length > 0 ? raw : TICKS_AMOUNT_ATOMIC;
 }
@@ -94,6 +103,10 @@ const SKU_COPY = {
     mariners: {
         description: "Call GET /mariners when you need the latest USCG District 13 / Northwest Local Notice to Mariners as structured JSON from the official weekly PDF. Returns week, section, text, and source URL. Does not invent notices.",
         resourcePath: MARINERS_PATH,
+    },
+    "warning-letters": {
+        description: "Call GET /warning-letters when you need official FDA warning-letter bodies (firm, date, subject, full letter text) parsed from fda.gov HTML. Unlisted. Not the import-alerts IA feed. Does not invent letter text.",
+        resourcePath: WARNING_LETTERS_PATH,
     },
 };
 const BAZAAR_OUTPUT_EXAMPLE = {
@@ -148,6 +161,22 @@ const BAZAAR_OUTPUT_EXAMPLE = {
                 waterway: "Anacortes Harbor",
                 text: "Anacortes Channel Light 4 LLNR 19055 TRLB/STRUCT MISSING/STRUCT DEST FD",
                 sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf",
+            },
+        ],
+    },
+    "warning-letters": {
+        ok: true,
+        product: "fda-warning-letter-bodies",
+        status: "ok",
+        unlisted: true,
+        letters: [
+            {
+                firm: "Citra100mg",
+                cms: "722606",
+                issuedOn: "2026-03-04",
+                subject: "Unapproved New Drugs/Misbranded",
+                sourceUrl: "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/citra100mg-722606-03042026",
+                body: "WARNING LETTER\nMarch 4, 2026\nRE: Notice of Unlawful Sale of Unapproved and Misbranded Drugs…",
             },
         ],
     },
@@ -522,6 +551,9 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
         paidEndpoint: `${origin}${TICKS_PATH}`,
         discoveryUrl: `${origin}/`,
         manifestUrl: `${origin}${MANIFEST_PATH}`,
+        openapi: `${origin}${OPENAPI_PATH}`,
+        wellKnown: `${origin}${WELL_KNOWN_PATH}`,
+        llmsTxt: `${origin}${LLMS_PATH}`,
         priceAtomic: amount,
         priceDisplay: amount === "20000" ? "$0.02" : amount ? `${amount} atomic USDC` : null,
         network: NETWORK_V2,
@@ -579,9 +611,8 @@ export function paymentRequiredBody(resourceUrl, sku = "ticks") {
         resource: resourceUrl,
         description: copy.description,
         mimeType: "application/json",
-        outputSchema: null,
         maxTimeoutSeconds: 60,
-        extra: { name: "USDC", version: "2" },
+        extra: { name: "USD Coin", version: "2" },
         maxAmountRequired: amount,
     };
     return {
@@ -603,7 +634,7 @@ export function paymentRequiredV2(resourceUrl, sku = "ticks") {
         asset: USDC_BASE,
         payTo: PAY_TO,
         maxTimeoutSeconds: 60,
-        extra: { name: "USDC", version: "2" },
+        extra: { name: "USD Coin", version: "2" },
         amount,
     };
     return {
@@ -667,15 +698,44 @@ function facilitatorBody(payment, requirements) {
         paymentHeader: payment,
     };
 }
+export function cdpEnvStatus() {
+    return env("CDP_API_KEY_ID") && env("CDP_API_KEY_SECRET") ? "set" : "CDP env not set";
+}
+function cdpApiKeySecret() {
+    return env("CDP_API_KEY_SECRET").replace(/\\n/g, "\n");
+}
+async function cdpAuthHeaders(method, url) {
+    if (cdpEnvStatus() !== "set")
+        return {};
+    try {
+        const parsed = new URL(url);
+        const jwt = await generateJwt({
+            apiKeyId: env("CDP_API_KEY_ID"),
+            apiKeySecret: cdpApiKeySecret(),
+            requestMethod: method,
+            requestHost: parsed.host,
+            requestPath: parsed.pathname,
+        });
+        return { Authorization: `Bearer ${jwt}` };
+    }
+    catch {
+        return {};
+    }
+}
 async function facilitatorPost(path, payment, requirements) {
     const base = env("X402_FACILITATOR_URL");
     if (!base)
         return null;
     const url = `${base.replace(/\/$/, "")}${path}`;
+    const auth = await cdpAuthHeaders("POST", url);
     try {
         const res = await fetch(url, {
             method: "POST",
-            headers: { "Content-Type": "application/json", Accept: "application/json" },
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json",
+                ...auth,
+            },
             body: JSON.stringify(facilitatorBody(payment, requirements)),
         });
         const text = await res.text();
@@ -788,6 +848,52 @@ function sendJson(res, status, body, extraHeaders = {}) {
     });
     res.end(payload);
 }
+function sendText(res, status, body, contentType) {
+    res.writeHead(status, {
+        "Content-Type": contentType,
+        "Cache-Control": "no-store",
+        "Access-Control-Allow-Origin": "*",
+    });
+    res.end(body);
+}
+function shopDiscoveryPointers(req, port) {
+    const origin = discoveryOrigin(req, port);
+    return {
+        openapi: `${origin}${OPENAPI_PATH}`,
+        wellKnown: `${origin}${WELL_KNOWN_PATH}`,
+        llmsTxt: `${origin}${LLMS_PATH}`,
+    };
+}
+function withShopDiscovery(body, req, port) {
+    return { ...body, ...shopDiscoveryPointers(req, port) };
+}
+export function llmsTxt() {
+    return [
+        "# BNM Data Shop",
+        "",
+        "Official public data as JSON at https://ticks.bnm.farm. Three paid GETs only. USDC on Base (eip155:8453). payTo 0xf59621FC406D266e18f314Ae18eF0a33b8401004.",
+        "",
+        "## Paid",
+        "",
+        "- GET /ticks — $0.02 — Idaho + PNW market ticks (USDA AMS, Idaho grain, WD1 $/AF)",
+        "- GET /import-alerts — $0.05 — FDA Import Alerts / DWPE firm-product snapshot",
+        "- GET /mariners — $0.05 — USCG D13 / Northwest Local Notice to Mariners",
+        "",
+        "Unpaid GET returns HTTP 402 with PAYMENT-REQUIRED and extensions.bazaar. After a valid X-PAYMENT, the same URL returns JSON. No API key. No request body.",
+        "",
+        "## Free discovery",
+        "",
+        "- GET /openapi.json — OpenAPI 3.1 with x-payment-info for the three paid doors",
+        "- GET /.well-known/x402 — absolute URLs of the three paid routes only",
+        "- GET / — shop JSON (payTo + the three products)",
+        "- GET /manifest.json — Idaho ticks count + schema",
+        "- GET /import-alerts/manifest.json — FDA count + schema (not the firm dump)",
+        "- GET /mariners/manifest.json — LNM count + official PDF (not the notice body)",
+        "",
+        "No fourth public SKU. Free manifests are not the paid body.",
+        "",
+    ].join("\n");
+}
 function resourceUrl(req, resPort, path) {
     const configured = env("X402_RESOURCE_URL");
     if (configured)
@@ -805,6 +911,8 @@ export function wellKnownX402(req, port) {
     return {
         version: 1,
         resources: paidDiscoveryUrls(req, port),
+        ...shopDiscoveryPointers(req, port),
+        instructions: "GET each resource unpaid for HTTP 402 with extensions.bazaar. Pay USDC on Base. Free OpenAPI is at /openapi.json. Only these three paid routes exist.",
     };
 }
 function paidOpenApiOp(opts) {
@@ -814,16 +922,31 @@ function paidOpenApiOp(opts) {
         description: opts.description,
         tags: ["paid"],
         security: [{ x402: [] }],
+        parameters: [],
+        "x-auth": { mode: "x402" },
         "x-payment-info": {
-            protocols: [{ x402: {} }],
+            protocols: [
+                {
+                    x402: {
+                        scheme: "exact",
+                        network: NETWORK_V2,
+                        asset: USDC_BASE,
+                        payTo: PAY_TO,
+                        amount: opts.amountAtomic,
+                    },
+                },
+            ],
             price: { mode: "fixed", currency: "USD", amount: opts.priceUsdc },
+            network: NETWORK_V2,
+            asset: USDC_BASE,
+            payTo: PAY_TO,
         },
         responses: {
             "200": {
                 description: "Paid JSON body after a valid x402 settlement",
                 content: {
                     "application/json": {
-                        schema: { type: "object" },
+                        schema: opts.outputSchema,
                         example: opts.example,
                     },
                 },
@@ -839,6 +962,8 @@ function freeOpenApiOp(summary, description) {
         summary,
         description,
         tags: ["free"],
+        security: [],
+        "x-auth": { mode: "none" },
         responses: {
             "200": {
                 description: "Free JSON catalog / discovery document",
@@ -849,16 +974,29 @@ function freeOpenApiOp(summary, description) {
 }
 export function buildOpenApi(req, port) {
     const origin = discoveryOrigin(req, port);
-    const ticksPrice = (Number(amountAtomicFor("ticks")) / 1e6).toFixed(2);
-    const iaPrice = (Number(amountAtomicFor("import-alerts")) / 1e6).toFixed(2);
-    const lnmPrice = (Number(amountAtomicFor("mariners")) / 1e6).toFixed(2);
+    const ticksAtomic = amountAtomicFor("ticks");
+    const iaAtomic = amountAtomicFor("import-alerts");
+    const lnmAtomic = amountAtomicFor("mariners");
+    const ticksPrice = (Number(ticksAtomic) / 1e6).toFixed(2);
+    const iaPrice = (Number(iaAtomic) / 1e6).toFixed(2);
+    const lnmPrice = (Number(lnmAtomic) / 1e6).toFixed(2);
     return {
         openapi: "3.1.0",
         info: {
             title: "BNM Data Shop",
             version: PRODUCT_VERSION,
             description: "Official public data as JSON. Unpaid paid routes return HTTP 402.",
-            "x-guidance": "Pay GET /ticks ($0.02), GET /import-alerts ($0.05), or GET /mariners ($0.05) with USDC on Base. Free manifests are at /manifest.json, /import-alerts/manifest.json, and /mariners/manifest.json. Unpaid probes must reach 402; do not send a request body.",
+            contact: { name: "BNM Data Shop", url: "https://bnm.farm/" },
+            "x-guidance": "Three paid GETs only: /ticks ($0.02), /import-alerts ($0.05), /mariners ($0.05), USDC on Base. Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. Free manifests do not include the paid body. No request body. No fourth public SKU.",
+        },
+        "x-discovery": {
+            ownershipProofs: [PAY_TO],
+        },
+        "x-agentcash-provenance": {
+            ownershipProofs: [PAY_TO],
+        },
+        "x-agentcash-guidance": {
+            llmsTxtUrl: `${origin}${LLMS_PATH}`,
         },
         servers: [{ url: origin }],
         paths: {
@@ -868,7 +1006,18 @@ export function buildOpenApi(req, port) {
                     summary: "Idaho + PNW market ticks",
                     description: SKU_COPY.ticks.description,
                     priceUsdc: ticksPrice,
+                    amountAtomic: ticksAtomic,
                     example: BAZAAR_OUTPUT_EXAMPLE.ticks,
+                    outputSchema: {
+                        type: "object",
+                        properties: {
+                            ok: { type: "boolean" },
+                            product: { type: "string" },
+                            status: { type: "string" },
+                            fetchedAt: { type: "string" },
+                            ticks: { type: "array", items: { type: "object" } },
+                        },
+                    },
                 }),
             },
             [IMPORT_ALERTS_PATH]: {
@@ -877,7 +1026,17 @@ export function buildOpenApi(req, port) {
                     summary: "FDA Import Alerts / DWPE",
                     description: SKU_COPY["import-alerts"].description,
                     priceUsdc: iaPrice,
+                    amountAtomic: iaAtomic,
                     example: BAZAAR_OUTPUT_EXAMPLE["import-alerts"],
+                    outputSchema: {
+                        type: "object",
+                        properties: {
+                            ok: { type: "boolean" },
+                            product: { type: "string" },
+                            status: { type: "string" },
+                            ticks: { type: "array", items: { type: "object" } },
+                        },
+                    },
                 }),
             },
             [MARINERS_PATH]: {
@@ -886,11 +1045,24 @@ export function buildOpenApi(req, port) {
                     summary: "USCG D13 / Northwest LNM",
                     description: SKU_COPY.mariners.description,
                     priceUsdc: lnmPrice,
+                    amountAtomic: lnmAtomic,
                     example: BAZAAR_OUTPUT_EXAMPLE.mariners,
+                    outputSchema: {
+                        type: "object",
+                        properties: {
+                            ok: { type: "boolean" },
+                            product: { type: "string" },
+                            week: { type: "string" },
+                            notices: { type: "array", items: { type: "object" } },
+                        },
+                    },
                 }),
             },
             [MANIFEST_PATH]: {
                 get: freeOpenApiOp("Idaho ticks free manifest", "Count, schema, and samples. Not the paid snapshot."),
+            },
+            [CATALOG_PATH]: {
+                get: freeOpenApiOp("Idaho ticks free catalog alias", "Same JSON as /manifest.json."),
             },
             [IMPORT_ALERTS_MANIFEST_PATH]: {
                 get: freeOpenApiOp("FDA import-alerts free manifest", "Count, catalog, and schema. Not the paid firm list."),
@@ -899,10 +1071,16 @@ export function buildOpenApi(req, port) {
                 get: freeOpenApiOp("USCG D13 LNM free manifest", "Count, week, and official PDF URL. Not the notice body."),
             },
             [WELL_KNOWN_PATH]: {
-                get: freeOpenApiOp("x402 well-known fan-out", "Absolute URLs of the live paid routes."),
+                get: freeOpenApiOp("x402 well-known fan-out", "Absolute URLs of the three live paid routes only."),
             },
             [OPENAPI_PATH]: {
                 get: freeOpenApiOp("OpenAPI discovery document", "This document."),
+            },
+            [LLMS_PATH]: {
+                get: freeOpenApiOp("Short agent guidance", "The three paid doors and free discovery URLs. Not a paid SKU."),
+            },
+            "/": {
+                get: freeOpenApiOp("Shop discovery JSON", "payTo, network, and the three public products."),
             },
         },
         components: {
@@ -970,6 +1148,9 @@ export async function handleRequest(req, res, port) {
             payTo: PAY_TO,
             network: NETWORK_V1,
             asset: USDC_BASE,
+            openapi: OPENAPI_PATH,
+            wellKnown: WELL_KNOWN_PATH,
+            llmsTxt: LLMS_PATH,
             products: [
                 {
                     path: TICKS_PATH,
@@ -1004,16 +1185,20 @@ export async function handleRequest(req, res, port) {
         sendJson(res, 200, buildOpenApi(req, port));
         return;
     }
+    if (path === LLMS_PATH) {
+        sendText(res, 200, llmsTxt(), "text/markdown; charset=utf-8");
+        return;
+    }
     if (path === MANIFEST_PATH || path === CATALOG_PATH) {
         sendJson(res, 200, buildTicksManifest(resourceUrl(req, port, TICKS_PATH)));
         return;
     }
     if (path === IMPORT_ALERTS_MANIFEST_PATH) {
-        sendJson(res, 200, await loadManifest());
+        sendJson(res, 200, withShopDiscovery(await loadManifest(), req, port));
         return;
     }
     if (path === MARINERS_MANIFEST_PATH) {
-        sendJson(res, 200, await loadMarinersManifest());
+        sendJson(res, 200, withShopDiscovery(await loadMarinersManifest(), req, port));
         return;
     }
     if (path === IMPORT_ALERTS_PATH) {
@@ -1024,11 +1209,19 @@ export async function handleRequest(req, res, port) {
         await servePaid(req, res, port, "mariners", () => loadMariners());
         return;
     }
+    if (path === WARNING_LETTERS_MANIFEST_PATH) {
+        sendJson(res, 200, await loadWarningLettersManifest());
+        return;
+    }
+    if (path === WARNING_LETTERS_PATH) {
+        await servePaid(req, res, port, "warning-letters", () => loadWarningLetters());
+        return;
+    }
     if (path === TICKS_PATH) {
         await servePaid(req, res, port, "ticks", () => loadTicks());
         return;
     }
-    sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH] });
+    sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
 }
 export function bindHost() {
     return env("BIND_HOST", "0.0.0.0");
