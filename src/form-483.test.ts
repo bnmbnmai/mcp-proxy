@@ -1,10 +1,11 @@
 import assert from "node:assert/strict";
-import { mkdtempSync, readFileSync } from "node:fs";
+import { mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   LETTER_FIELDS,
+  LISTING_JSON_URL,
   LISTING_URL,
   RECORD_TYPE_483,
   buildForm483Manifest,
@@ -12,6 +13,7 @@ import {
   isReal483Body,
   parse483Text,
   parseListingHtml,
+  parseListingJson,
   parseObservations,
 } from "./form-483.js";
 
@@ -37,7 +39,19 @@ async function main(): Promise<void> {
   assert.ok(!listed.some((row) => row.mediaId === "193646"), "Untitled Letter is not a Form 483");
   assert.ok(!listed.some((row) => /redica|cms.?2567|wasde/i.test(JSON.stringify(row))));
   assert.equal(LISTING_URL.includes("oii-foia-electronic-reading-room"), true);
+  assert.equal(LISTING_JSON_URL.includes("datatables-json/ora-foia-reading.json"), true);
   assert.equal(RECORD_TYPE_483, "483");
+
+  const fromJson = parseListingJson(JSON.parse(readFx("listing.json")));
+  assert.equal(fromJson.length, 5, "official JSON excerpt has five posted 483 PDFs");
+  assert.equal(fromJson[0]?.mediaId, "194143", "newest published 483 is first");
+  assert.equal(fromJson[0]?.firm, "Veterinary Pharmacy Corporation");
+  assert.equal(fromJson[0]?.publishedOn, "2026-08-12");
+  assert.equal(fromJson[0]?.sourceUrl, "https://www.fda.gov/media/194143/download");
+  assert.ok(fromJson.some((row) => row.mediaId === "193964"));
+  assert.ok(fromJson.some((row) => row.mediaId === "193769"), "HTML first-slice leftover is still a 483");
+  assert.ok(!fromJson.some((row) => row.mediaId === "193646"), "Untitled Letter is not a Form 483");
+  assert.ok(!fromJson.some((row) => /redica|cms.?2567|wasde|483 response|amended 483/i.test(JSON.stringify(row))));
 
   const cascade = parse483Text(readFx("193964-cascade-excerpt.txt"), {
     sourceUrl: "https://www.fda.gov/media/193964/download",
@@ -85,7 +99,11 @@ async function main(): Promise<void> {
     reason: null,
     fetchedAt: "2026-08-18T00:00:00.000Z",
     asOf: "2026-07-31",
-    sources: { listing: LISTING_URL, mediaBase: "https://www.fda.gov/media/" },
+    sources: {
+      listing: LISTING_URL,
+      listingJson: LISTING_JSON_URL,
+      mediaBase: "https://www.fda.gov/media/",
+    },
     letters: [cascade],
   });
   const manBlob = JSON.stringify(manifest);
@@ -102,11 +120,20 @@ async function main(): Promise<void> {
   const prevDir = process.env.FORM_483_DIR;
   process.env.FORM_483_DIR = cache;
   try {
-    const snap = await collectForm483({ htmlDir: fixtures, limit: 1, pauseMs: 0 });
+    const snap = await collectForm483({ htmlDir: fixtures, limit: 10, pauseMs: 0 });
     assert.equal(snap.status, "ok");
+    assert.ok(snap.listedCount === 5, "JSON listing counts official 483 rows, not Untitled Letter");
     assert.ok(snap.letters.some((l) => l.mediaId === "193964" && isReal483Body(l.body)));
+    assert.ok(snap.letters.some((l) => l.mediaId === "193728" && isReal483Body(l.body)));
     assert.ok(snap.letters.every((l) => isReal483Body(l.body)));
     assert.ok(!snap.letters.some((l) => l.mediaId === "193646"));
+    assert.ok(!snap.letters.some((l) => l.mediaId === "194143"), "no invented body when official text is absent");
+
+    writeFileSync(join(cache, "snapshot.json"), JSON.stringify(snap));
+    const merged = await collectForm483({ htmlDir: fixtures, limit: 1, pauseMs: 0 });
+    assert.ok(merged.letters.some((l) => l.mediaId === "193964" && isReal483Body(l.body)), "re-collect keeps cached bodies");
+    assert.ok(merged.letters.some((l) => l.mediaId === "193728"));
+    assert.ok(!merged.letters.some((l) => l.mediaId === "194143"), "still no invented Veterinary body");
   } finally {
     if (prevDir === undefined) delete process.env.FORM_483_DIR;
     else process.env.FORM_483_DIR = prevDir;
