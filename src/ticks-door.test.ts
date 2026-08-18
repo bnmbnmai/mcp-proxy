@@ -98,10 +98,14 @@ async function main(): Promise<void> {
         assert.equal(paid.status, 200);
         const body = (await paid.json()) as ReturnType<typeof loadTicks>;
         const blob = JSON.stringify(body).toLowerCase();
-        for (const marker of ["twin falls", "blackfoot", "ams_3056", "ams_3059"]) {
+        for (const marker of ["twin falls", "blackfoot", "ams_3056", "ams_3059", "ibc.id.grain", "wd1.", "hay.ams_3058", "ams.2914"]) {
           assert.ok(blob.includes(marker), `paid JSON must include ${marker} when cache exists`);
         }
         assert.ok(body.ticks.length + body.history.points.length > 0, "real ticks present");
+        const ticksManifest = await fetch(`${base}/manifest.json`);
+        assert.equal(ticksManifest.status, 200);
+        const tm = (await ticksManifest.json()) as { tickCount: number };
+        assert.equal(tm.tickCount, body.ticks.length);
       },
     );
   }
@@ -189,6 +193,7 @@ async function main(): Promise<void> {
       assert.ok(man.samples.every((s) => s.sample === true));
       assert.ok(man.samples.length <= 2);
       assert.ok(!JSON.stringify(man).includes("phone"));
+      assert.equal((man as { tickCount?: number }).tickCount, 1);
 
       const paid = await fetch(`${base}${IMPORT_ALERTS_PATH}`, { headers: { "X-PAYMENT": "test" } });
       assert.equal(paid.status, 200);

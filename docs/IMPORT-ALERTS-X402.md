@@ -19,7 +19,7 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 | Network | `base` / `eip155:8453` |
 | **payTo** | **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`** |
 
-Public host later: `ticks.bnm.farm` (no family / basic-auth). This VM cannot deploy there.
+Public host: `https://ticks.bnm.farm` (no family / basic-auth). Live on apollo 2026-08-18.
 
 ## Sources (official HTML)
 

@@ -419,7 +419,18 @@ export function manifestFromSnapshot(snap, catalogHtml) {
             ? parseCatalog(catalogHtml)
             : [];
     const samples = sampleRowsFrom(snap?.ticks ?? [], 2);
-    return buildManifest(catalog, samples);
+    const base = buildManifest(catalog, samples);
+    if (!snap)
+        return base;
+    const firms = new Set(snap.ticks.map((t) => `${t.alertNumber}|${t.list}|${t.country}|${t.firm}`));
+    return {
+        ...base,
+        fetchedAt: snap.fetchedAt,
+        asOf: snap.asOf,
+        tickCount: snap.ticks.length,
+        firmCount: firms.size,
+        alerts: snap.alerts,
+    };
 }
 export async function loadManifest() {
     const cached = readSnapshot();
