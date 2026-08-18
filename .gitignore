@@ -6,3 +6,4 @@ dist/
 build/*.test.*
 data/import-alerts/
 data/mariners/
+data/warning-letters/

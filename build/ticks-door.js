@@ -7,6 +7,8 @@
  * GET /import-alerts/manifest.json — free catalog + schema + sample rows
  * GET /mariners — USCG D13 / Northwest Local Notice to Mariners ($0.05)
  * GET /mariners/manifest.json — free count + official source (no notice body)
+ * GET /warning-letters — unlisted FDA warning-letter bodies ($0.05). Not a public SKU.
+ * GET /warning-letters/manifest.json — unlisted free count + source (no letter body)
  *
  * Unpaid paid paths → HTTP 402. Does not list on x402scan/Bazaar, does not
  * resurrect the Apollo Intelligence catalog. No keys in the repo.
@@ -17,6 +19,7 @@ import { homedir } from "node:os";
 import { join, resolve } from "node:path";
 import { IMPORT_ALERTS_AMOUNT_ATOMIC, IMPORT_ALERTS_MANIFEST_PATH, IMPORT_ALERTS_PATH, TICKS_AMOUNT_ATOMIC, loadImportAlerts, loadManifest, } from "./import-alerts.js";
 import { MARINERS_AMOUNT_ATOMIC, MARINERS_MANIFEST_PATH, MARINERS_PATH, loadMariners, loadMarinersManifest, } from "./mariners.js";
+import { WARNING_LETTERS_AMOUNT_ATOMIC, WARNING_LETTERS_MANIFEST_PATH, WARNING_LETTERS_PATH, loadWarningLetters, loadWarningLettersManifest, } from "./warning-letters.js";
 export const PAY_TO = "0xf59621FC406D266e18f314Ae18eF0a33b8401004";
 export const USDC_BASE = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913";
 export const NETWORK_V1 = "base";
@@ -80,6 +83,10 @@ function amountAtomicFor(sku) {
         const raw = env("MARINERS_USDC_ATOMIC");
         return raw.length > 0 ? raw : MARINERS_AMOUNT_ATOMIC;
     }
+    if (sku === "warning-letters") {
+        const raw = env("WARNING_LETTERS_USDC_ATOMIC");
+        return raw.length > 0 ? raw : WARNING_LETTERS_AMOUNT_ATOMIC;
+    }
     const raw = env("X402_USDC_ATOMIC");
     return raw.length > 0 ? raw : TICKS_AMOUNT_ATOMIC;
 }
@@ -95,6 +102,10 @@ const SKU_COPY = {
     mariners: {
         description: "Call GET /mariners when you need the latest USCG District 13 / Northwest Local Notice to Mariners as structured JSON from the official weekly PDF. Returns week, section, text, and source URL. Does not invent notices.",
         resourcePath: MARINERS_PATH,
+    },
+    "warning-letters": {
+        description: "Call GET /warning-letters when you need official FDA warning-letter bodies (firm, date, subject, full letter text) parsed from fda.gov HTML. Unlisted. Not the import-alerts IA feed. Does not invent letter text.",
+        resourcePath: WARNING_LETTERS_PATH,
     },
 };
 const BAZAAR_OUTPUT_EXAMPLE = {
@@ -149,6 +160,22 @@ const BAZAAR_OUTPUT_EXAMPLE = {
                 waterway: "Anacortes Harbor",
                 text: "Anacortes Channel Light 4 LLNR 19055 TRLB/STRUCT MISSING/STRUCT DEST FD",
                 sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf",
+            },
+        ],
+    },
+    "warning-letters": {
+        ok: true,
+        product: "fda-warning-letter-bodies",
+        status: "ok",
+        unlisted: true,
+        letters: [
+            {
+                firm: "Citra100mg",
+                cms: "722606",
+                issuedOn: "2026-03-04",
+                subject: "Unapproved New Drugs/Misbranded",
+                sourceUrl: "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/citra100mg-722606-03042026",
+                body: "WARNING LETTER\nMarch 4, 2026\nRE: Notice of Unlawful Sale of Unapproved and Misbranded Drugs…",
             },
         ],
     },
@@ -1151,6 +1178,14 @@ export async function handleRequest(req, res, port) {
     }
     if (path === MARINERS_PATH) {
         await servePaid(req, res, port, "mariners", () => loadMariners());
+        return;
+    }
+    if (path === WARNING_LETTERS_MANIFEST_PATH) {
+        sendJson(res, 200, await loadWarningLettersManifest());
+        return;
+    }
+    if (path === WARNING_LETTERS_PATH) {
+        await servePaid(req, res, port, "warning-letters", () => loadWarningLetters());
         return;
     }
     if (path === TICKS_PATH) {

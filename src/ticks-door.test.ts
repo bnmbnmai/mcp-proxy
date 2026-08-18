@@ -16,6 +16,11 @@ import {
   MARINERS_MANIFEST_PATH,
   MARINERS_PATH,
 } from "./mariners.js";
+import {
+  WARNING_LETTERS_AMOUNT_ATOMIC,
+  WARNING_LETTERS_MANIFEST_PATH,
+  WARNING_LETTERS_PATH,
+} from "./warning-letters.js";
 
 async function withServer(
   envPatch: Record<string, string | undefined>,
@@ -99,6 +104,7 @@ async function main(): Promise<void> {
     assert.ok(wk.llmsTxt?.endsWith(LLMS_PATH));
     assert.ok((wk.instructions ?? "").includes("three paid"));
     assert.ok(!wk.resources.some((r) => r.includes("/gain")));
+    assert.ok(!wk.resources.some((r) => r.includes(WARNING_LETTERS_PATH)));
 
     const specRes = await fetch(`${base}${OPENAPI_PATH}`);
     assert.equal(specRes.status, 200);
@@ -145,10 +151,12 @@ async function main(): Promise<void> {
     assert.ok(spec.paths["/"]?.get);
     assert.ok(spec.paths[LLMS_PATH]?.get);
     assert.equal(spec.paths["/gain"], undefined);
+    assert.equal(spec.paths[WARNING_LETTERS_PATH], undefined);
+    assert.equal(spec.paths[WARNING_LETTERS_MANIFEST_PATH], undefined);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
       3,
-      "OpenAPI must not grow a fourth paid path",
+      "OpenAPI must not grow a fourth public paid path",
     );
 
     const llms = await fetch(`${base}${LLMS_PATH}`);
@@ -159,6 +167,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /mariners"));
     assert.ok(!llmsBody.toLowerCase().includes("/gain"));
     assert.ok(!llmsBody.includes("WASDE"));
+    assert.ok(!llmsBody.includes(WARNING_LETTERS_PATH));
 
     const shop = (await (await fetch(`${base}/`)).json()) as {
       products: { path: string }[];
@@ -527,6 +536,97 @@ async function main(): Promise<void> {
       assert.equal(paidBody.product, "uscg-d13-lnm");
       assert.equal(paidBody.notices[0]?.section, "Federal Discrepancies");
       assert.ok(paidBody.notices[0]?.text.includes("Anacortes Channel Light 4"));
+    },
+  );
+
+  const wlDir = mkdtempSync(join(tmpdir(), "warning-letters-"));
+  writeFileSync(
+    join(wlDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "fda-warning-letter-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-08-18T00:00:00.000Z",
+      asOf: "2026-03-04",
+      unlisted: true,
+      sources: {
+        listing:
+          "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/warning-letters",
+        letterBase:
+          "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/",
+      },
+      letters: [
+        {
+          id: "citra100mg-722606-03042026",
+          firm: "Citra100mg",
+          cms: "722606",
+          issuedOn: "2026-03-04",
+          subject: "Unapproved New Drugs/Misbranded",
+          issuingOffice: "Center for Drug Evaluation and Research",
+          sourceUrl:
+            "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/citra100mg-722606-03042026",
+          body: "WARNING LETTER\nMarch 4, 2026\nRE: Notice of Unlawful Sale of Unapproved and Misbranded Drugs to United States Consumers Over the Internet\nThis is to advise you that the United States (U.S.) Food and Drug Administration (FDA) recently reviewed your website.",
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      WARNING_LETTERS_DIR: wlDir,
+      WARNING_LETTERS_TTL_MS: String(24 * 3600 * 1000),
+      X402_SKIP_SETTLE: "1",
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${WARNING_LETTERS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /warning-letters must be 402");
+      const body402 = (await unpaid.json()) as {
+        payTo: string;
+        asset: string;
+        resource: string;
+        accepts: { maxAmountRequired?: string }[];
+      };
+      assert.equal(body402.resource, WARNING_LETTERS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, WARNING_LETTERS_AMOUNT_ATOMIC);
+      const wlPr = unpaid.headers.get("payment-required");
+      assert.ok(wlPr, "v2 PAYMENT-REQUIRED header");
+      const wlV2 = JSON.parse(Buffer.from(wlPr, "base64").toString("utf8")) as {
+        extensions?: { bazaar?: { info?: { input?: { method?: string } } } };
+      };
+      assert.equal(wlV2.extensions?.bazaar?.info?.input?.method, "GET");
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === WARNING_LETTERS_PATH), false);
+      assert.equal(shop.products.length, 3);
+
+      const manifest = await fetch(`${base}${WARNING_LETTERS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "unlisted free manifest is free");
+      const man = (await manifest.json()) as {
+        unlisted?: boolean;
+        letterCount?: number;
+        letters?: { firm?: string; body?: string }[];
+      };
+      assert.equal(man.unlisted, true);
+      assert.equal(man.letterCount, 1);
+      assert.equal(man.letters?.[0]?.firm, "Citra100mg");
+      assert.ok(!JSON.stringify(man).includes("reviewed your website"));
+      assert.ok(!("body" in (man.letters?.[0] ?? {})));
+
+      const paid = await fetch(`${base}${WARNING_LETTERS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        unlisted?: boolean;
+        letters: { firm: string; issuedOn: string; subject: string; body: string }[];
+      };
+      assert.equal(paidBody.product, "fda-warning-letter-bodies");
+      assert.equal(paidBody.unlisted, true);
+      assert.equal(paidBody.letters[0]?.firm, "Citra100mg");
+      assert.equal(paidBody.letters[0]?.issuedOn, "2026-03-04");
+      assert.match(paidBody.letters[0]?.subject ?? "", /Unapproved New Drugs/);
+      assert.ok(paidBody.letters[0]?.body.includes("WARNING LETTER"));
+      assert.ok(paidBody.letters[0]?.body.includes("reviewed your website"));
     },
   );
 

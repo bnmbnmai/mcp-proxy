@@ -7,6 +7,8 @@
  * GET /import-alerts/manifest.json — free catalog + schema + sample rows
  * GET /mariners — USCG D13 / Northwest Local Notice to Mariners ($0.05)
  * GET /mariners/manifest.json — free count + official source (no notice body)
+ * GET /warning-letters — unlisted FDA warning-letter bodies ($0.05). Not a public SKU.
+ * GET /warning-letters/manifest.json — unlisted free count + source (no letter body)
  *
  * Unpaid paid paths → HTTP 402. Does not list on x402scan/Bazaar, does not
  * resurrect the Apollo Intelligence catalog. No keys in the repo.
@@ -41,7 +43,7 @@ export type TicksPayload = {
         series: unknown[];
     };
 };
-export type DoorSku = "ticks" | "import-alerts" | "mariners";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "warning-letters";
 /** x402 Bazaar discovery block (v2 PAYMENT-REQUIRED extensions.bazaar). */
 export declare function bazaarExtension(sku: DoorSku): Record<string, unknown>;
 /** Media-box default: farm-plan collector writes board.json / history.json here. */
