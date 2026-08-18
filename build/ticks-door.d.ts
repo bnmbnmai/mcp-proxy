@@ -16,6 +16,7 @@ export declare const NETWORK_V1 = "base";
 export declare const NETWORK_V2 = "eip155:8453";
 export declare const TICKS_PATH = "/ticks";
 export declare const MANIFEST_PATH = "/manifest.json";
+export declare const CATALOG_PATH = "/catalog.json";
 export declare const PRODUCT_ID = "idaho-hay-feeder-ticks";
 export declare const PRODUCT_NAME = "Idaho + PNW Market Ticks";
 export declare const PRODUCT_VERSION = "1.1.0";
@@ -39,6 +40,11 @@ export type DoorSku = "ticks" | "import-alerts";
 /** Media-box default: farm-plan collector writes board.json / history.json here. */
 export declare const DEFAULT_TICKS_DIR: string;
 export declare function ticksDir(): string;
+export declare function isOrganicHay(row: Record<string, unknown>): boolean;
+export declare function publicEmptyReport(row: Record<string, unknown>): {
+    id: string;
+    status: "empty";
+} | null;
 export declare function loadTicks(): TicksPayload;
 export declare function buildTicksManifest(resourceUrl?: string): Record<string, unknown>;
 export declare function paymentRequiredBody(resourceUrl: string, sku?: DoorSku): Record<string, unknown>;
