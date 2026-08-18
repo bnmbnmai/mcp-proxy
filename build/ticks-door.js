@@ -24,6 +24,8 @@ export const NETWORK_V2 = "eip155:8453";
 export const TICKS_PATH = "/ticks";
 export const MANIFEST_PATH = "/manifest.json";
 export const CATALOG_PATH = "/catalog.json";
+export const WELL_KNOWN_PATH = "/.well-known/x402";
+export const OPENAPI_PATH = "/openapi.json";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
 export const PRODUCT_NAME = "Idaho + PNW Market Ticks";
 export const PRODUCT_VERSION = "1.1.0";
@@ -786,12 +788,134 @@ function sendJson(res, status, body, extraHeaders = {}) {
     });
     res.end(payload);
 }
-function resourceUrl(req, port, path) {
+function resourceUrl(req, resPort, path) {
     const configured = env("X402_RESOURCE_URL");
     if (configured)
         return configured.replace(/\/$/, "") + path;
-    const host = req.headers.host || `127.0.0.1:${port}`;
+    const host = req.headers.host || `127.0.0.1:${resPort}`;
     return `http://${host}${path}`;
+}
+function discoveryOrigin(req, port) {
+    return resourceUrl(req, port, "").replace(/\/$/, "") || "https://ticks.bnm.farm";
+}
+function paidDiscoveryUrls(req, port) {
+    return [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH].map((path) => resourceUrl(req, port, path));
+}
+export function wellKnownX402(req, port) {
+    return {
+        version: 1,
+        resources: paidDiscoveryUrls(req, port),
+    };
+}
+function paidOpenApiOp(opts) {
+    return {
+        operationId: opts.operationId,
+        summary: opts.summary,
+        description: opts.description,
+        tags: ["paid"],
+        security: [{ x402: [] }],
+        "x-payment-info": {
+            protocols: [{ x402: {} }],
+            price: { mode: "fixed", currency: "USD", amount: opts.priceUsdc },
+        },
+        responses: {
+            "200": {
+                description: "Paid JSON body after a valid x402 settlement",
+                content: {
+                    "application/json": {
+                        schema: { type: "object" },
+                        example: opts.example,
+                    },
+                },
+            },
+            "402": {
+                description: "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body",
+            },
+        },
+    };
+}
+function freeOpenApiOp(summary, description) {
+    return {
+        summary,
+        description,
+        tags: ["free"],
+        responses: {
+            "200": {
+                description: "Free JSON catalog / discovery document",
+                content: { "application/json": { schema: { type: "object" } } },
+            },
+        },
+    };
+}
+export function buildOpenApi(req, port) {
+    const origin = discoveryOrigin(req, port);
+    const ticksPrice = (Number(amountAtomicFor("ticks")) / 1e6).toFixed(2);
+    const iaPrice = (Number(amountAtomicFor("import-alerts")) / 1e6).toFixed(2);
+    const lnmPrice = (Number(amountAtomicFor("mariners")) / 1e6).toFixed(2);
+    return {
+        openapi: "3.1.0",
+        info: {
+            title: "BNM Data Shop",
+            version: PRODUCT_VERSION,
+            description: "Official public data as JSON. Unpaid paid routes return HTTP 402.",
+            "x-guidance": "Pay GET /ticks ($0.02), GET /import-alerts ($0.05), or GET /mariners ($0.05) with USDC on Base. Free manifests are at /manifest.json, /import-alerts/manifest.json, and /mariners/manifest.json. Unpaid probes must reach 402; do not send a request body.",
+        },
+        servers: [{ url: origin }],
+        paths: {
+            [TICKS_PATH]: {
+                get: paidOpenApiOp({
+                    operationId: "getTicks",
+                    summary: "Idaho + PNW market ticks",
+                    description: SKU_COPY.ticks.description,
+                    priceUsdc: ticksPrice,
+                    example: BAZAAR_OUTPUT_EXAMPLE.ticks,
+                }),
+            },
+            [IMPORT_ALERTS_PATH]: {
+                get: paidOpenApiOp({
+                    operationId: "getImportAlerts",
+                    summary: "FDA Import Alerts / DWPE",
+                    description: SKU_COPY["import-alerts"].description,
+                    priceUsdc: iaPrice,
+                    example: BAZAAR_OUTPUT_EXAMPLE["import-alerts"],
+                }),
+            },
+            [MARINERS_PATH]: {
+                get: paidOpenApiOp({
+                    operationId: "getMariners",
+                    summary: "USCG D13 / Northwest LNM",
+                    description: SKU_COPY.mariners.description,
+                    priceUsdc: lnmPrice,
+                    example: BAZAAR_OUTPUT_EXAMPLE.mariners,
+                }),
+            },
+            [MANIFEST_PATH]: {
+                get: freeOpenApiOp("Idaho ticks free manifest", "Count, schema, and samples. Not the paid snapshot."),
+            },
+            [IMPORT_ALERTS_MANIFEST_PATH]: {
+                get: freeOpenApiOp("FDA import-alerts free manifest", "Count, catalog, and schema. Not the paid firm list."),
+            },
+            [MARINERS_MANIFEST_PATH]: {
+                get: freeOpenApiOp("USCG D13 LNM free manifest", "Count, week, and official PDF URL. Not the notice body."),
+            },
+            [WELL_KNOWN_PATH]: {
+                get: freeOpenApiOp("x402 well-known fan-out", "Absolute URLs of the live paid routes."),
+            },
+            [OPENAPI_PATH]: {
+                get: freeOpenApiOp("OpenAPI discovery document", "This document."),
+            },
+        },
+        components: {
+            securitySchemes: {
+                x402: {
+                    type: "apiKey",
+                    in: "header",
+                    name: "X-PAYMENT",
+                    description: "x402 payment payload. Unpaid GET returns HTTP 402 with PAYMENT-REQUIRED.",
+                },
+            },
+        },
+    };
 }
 async function servePaid(req, res, port, sku, load) {
     const copy = SKU_COPY[sku];
@@ -872,11 +996,12 @@ export async function handleRequest(req, res, port) {
         });
         return;
     }
-    if (path === "/.well-known/x402" || path === "/.well-known/x402.json") {
-        sendJson(res, 200, {
-            version: 1,
-            resources: [`GET ${TICKS_PATH}`, `GET ${MANIFEST_PATH}`, `GET ${CATALOG_PATH}`, `GET ${IMPORT_ALERTS_PATH}`, `GET ${IMPORT_ALERTS_MANIFEST_PATH}`, `GET ${MARINERS_PATH}`, `GET ${MARINERS_MANIFEST_PATH}`],
-        });
+    if (path === WELL_KNOWN_PATH || path === "/.well-known/x402.json") {
+        sendJson(res, 200, wellKnownX402(req, port));
+        return;
+    }
+    if (path === OPENAPI_PATH) {
+        sendJson(res, 200, buildOpenApi(req, port));
         return;
     }
     if (path === MANIFEST_PATH || path === CATALOG_PATH) {
@@ -903,7 +1028,7 @@ export async function handleRequest(req, res, port) {
         await servePaid(req, res, port, "ticks", () => loadTicks());
         return;
     }
-    sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH] });
+    sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH] });
 }
 export function bindHost() {
     return env("BIND_HOST", "0.0.0.0");

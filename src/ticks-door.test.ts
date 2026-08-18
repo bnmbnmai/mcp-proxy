@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, bazaarExtension } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, bazaarExtension } from "./ticks-door.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
   IMPORT_ALERTS_MANIFEST_PATH,
@@ -79,6 +79,34 @@ async function main(): Promise<void> {
       v2.extensions?.bazaar?.info?.input,
       (declared.info as { input: unknown }).input,
     );
+
+    const wellKnown = await fetch(`${base}${WELL_KNOWN_PATH}`);
+    assert.equal(wellKnown.status, 200);
+    const wk = (await wellKnown.json()) as { version: number; resources: string[] };
+    assert.equal(wk.version, 1);
+    assert.ok(wk.resources.some((r) => r.endsWith(TICKS_PATH) && r.startsWith("http")));
+    assert.ok(wk.resources.some((r) => r.endsWith(IMPORT_ALERTS_PATH)));
+    assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_PATH)));
+    assert.ok(wk.resources.every((r) => r.startsWith("http")), "well-known resources must be absolute URLs");
+
+    const specRes = await fetch(`${base}${OPENAPI_PATH}`);
+    assert.equal(specRes.status, 200);
+    const spec = (await specRes.json()) as {
+      openapi: string;
+      info: { title: string; version: string };
+      paths: Record<string, { get?: { "x-payment-info"?: { protocols?: unknown; price?: { amount?: string } }; responses?: Record<string, unknown> } }>;
+    };
+    assert.equal(spec.openapi, "3.1.0");
+    assert.ok(spec.info.title);
+    assert.ok(spec.info.version);
+    for (const paid of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH]) {
+      const op = spec.paths[paid]?.get;
+      assert.ok(op?.["x-payment-info"], `${paid} must declare x-payment-info`);
+      assert.ok(op?.responses?.["402"], `${paid} must declare 402`);
+    }
+    assert.equal(spec.paths[TICKS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.02");
+    assert.equal(spec.paths[IMPORT_ALERTS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
+    assert.equal(spec.paths[MARINERS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
   });
 
   const dir = mkdtempSync(join(tmpdir(), "idaho-ticks-"));
