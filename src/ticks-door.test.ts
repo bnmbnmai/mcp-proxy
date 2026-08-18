@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, bazaarExtension } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, NETWORK_V2, bazaarExtension } from "./ticks-door.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
   IMPORT_ALERTS_MANIFEST_PATH,
@@ -82,31 +82,94 @@ async function main(): Promise<void> {
 
     const wellKnown = await fetch(`${base}${WELL_KNOWN_PATH}`);
     assert.equal(wellKnown.status, 200);
-    const wk = (await wellKnown.json()) as { version: number; resources: string[] };
+    const wk = (await wellKnown.json()) as {
+      version: number;
+      resources: string[];
+      openapi?: string;
+      llmsTxt?: string;
+      instructions?: string;
+    };
     assert.equal(wk.version, 1);
+    assert.equal(wk.resources.length, 3, "well-known lists the three live doors only");
     assert.ok(wk.resources.some((r) => r.endsWith(TICKS_PATH) && r.startsWith("http")));
     assert.ok(wk.resources.some((r) => r.endsWith(IMPORT_ALERTS_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_PATH)));
     assert.ok(wk.resources.every((r) => r.startsWith("http")), "well-known resources must be absolute URLs");
+    assert.ok(wk.openapi?.endsWith(OPENAPI_PATH));
+    assert.ok(wk.llmsTxt?.endsWith(LLMS_PATH));
+    assert.ok((wk.instructions ?? "").includes("three paid"));
+    assert.ok(!wk.resources.some((r) => r.includes("/gain")));
 
     const specRes = await fetch(`${base}${OPENAPI_PATH}`);
     assert.equal(specRes.status, 200);
     const spec = (await specRes.json()) as {
       openapi: string;
-      info: { title: string; version: string };
-      paths: Record<string, { get?: { "x-payment-info"?: { protocols?: unknown; price?: { amount?: string } }; responses?: Record<string, unknown> } }>;
+      info: { title: string; version: string; contact?: { name?: string; url?: string } };
+      "x-discovery"?: { ownershipProofs?: string[] };
+      "x-agentcash-provenance"?: { ownershipProofs?: string[] };
+      "x-agentcash-guidance"?: { llmsTxtUrl?: string };
+      paths: Record<string, {
+        get?: {
+          "x-auth"?: { mode?: string };
+          security?: unknown;
+          "x-payment-info"?: {
+            protocols?: { x402?: { payTo?: string; network?: string; asset?: string; amount?: string } }[];
+            price?: { amount?: string };
+            payTo?: string;
+          };
+          responses?: Record<string, unknown>;
+        };
+      }>;
     };
     assert.equal(spec.openapi, "3.1.0");
     assert.ok(spec.info.title);
     assert.ok(spec.info.version);
+    assert.equal(spec.info.contact?.url, "https://bnm.farm/");
+    assert.deepEqual(spec["x-discovery"]?.ownershipProofs, [PAY_TO]);
+    assert.deepEqual(spec["x-agentcash-provenance"]?.ownershipProofs, [PAY_TO]);
+    assert.ok(spec["x-agentcash-guidance"]?.llmsTxtUrl?.endsWith(LLMS_PATH));
     for (const paid of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH]) {
       const op = spec.paths[paid]?.get;
       assert.ok(op?.["x-payment-info"], `${paid} must declare x-payment-info`);
+      assert.equal(op?.["x-auth"]?.mode, "x402");
       assert.ok(op?.responses?.["402"], `${paid} must declare 402`);
+      assert.equal(op?.["x-payment-info"]?.payTo, PAY_TO);
+      assert.equal(op?.["x-payment-info"]?.protocols?.[0]?.x402?.network, NETWORK_V2);
+      assert.equal(op?.["x-payment-info"]?.protocols?.[0]?.x402?.asset, USDC_BASE);
     }
     assert.equal(spec.paths[TICKS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.02");
     assert.equal(spec.paths[IMPORT_ALERTS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[MARINERS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
+    assert.equal(spec.paths[CATALOG_PATH]?.get?.["x-auth"]?.mode, "none");
+    assert.deepEqual(spec.paths[CATALOG_PATH]?.get?.security, []);
+    assert.ok(spec.paths["/"]?.get);
+    assert.ok(spec.paths[LLMS_PATH]?.get);
+    assert.equal(spec.paths["/gain"], undefined);
+    assert.equal(
+      Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
+      3,
+      "OpenAPI must not grow a fourth paid path",
+    );
+
+    const llms = await fetch(`${base}${LLMS_PATH}`);
+    assert.equal(llms.status, 200);
+    const llmsBody = await llms.text();
+    assert.ok(llmsBody.includes("GET /ticks"));
+    assert.ok(llmsBody.includes("GET /import-alerts"));
+    assert.ok(llmsBody.includes("GET /mariners"));
+    assert.ok(!llmsBody.toLowerCase().includes("/gain"));
+    assert.ok(!llmsBody.includes("WASDE"));
+
+    const shop = (await (await fetch(`${base}/`)).json()) as {
+      products: { path: string }[];
+      openapi?: string;
+      wellKnown?: string;
+      llmsTxt?: string;
+    };
+    assert.deepEqual(shop.products.map((p) => p.path), [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH]);
+    assert.equal(shop.openapi, OPENAPI_PATH);
+    assert.equal(shop.wellKnown, WELL_KNOWN_PATH);
+    assert.equal(shop.llmsTxt, LLMS_PATH);
   });
 
   const dir = mkdtempSync(join(tmpdir(), "idaho-ticks-"));
@@ -438,8 +501,22 @@ async function main(): Promise<void> {
       assert.ok(!manBlob.includes("inventing"));
 
       const root = await fetch(`${base}/`);
-      const shop = (await root.json()) as { products: { path: string; priceUsdc: string }[] };
+      const shop = (await root.json()) as {
+        products: { path: string; priceUsdc: string }[];
+        openapi?: string;
+        wellKnown?: string;
+      };
       assert.ok(shop.products.some((p) => p.path === MARINERS_PATH && p.priceUsdc === "0.05"));
+      assert.equal(shop.products.length, 3);
+      assert.equal(shop.openapi, OPENAPI_PATH);
+      assert.equal(shop.wellKnown, WELL_KNOWN_PATH);
+
+      const iaMan = (await (await fetch(`${base}${IMPORT_ALERTS_MANIFEST_PATH}`)).json()) as {
+        openapi?: string;
+        wellKnown?: string;
+      };
+      assert.ok(iaMan.openapi?.endsWith(OPENAPI_PATH));
+      assert.ok(iaMan.wellKnown?.endsWith(WELL_KNOWN_PATH));
 
       const paid = await fetch(`${base}${MARINERS_PATH}`, { headers: { "X-PAYMENT": "test" } });
       assert.equal(paid.status, 200);

@@ -41,9 +41,10 @@ export const MANIFEST_PATH = "/manifest.json";
 export const CATALOG_PATH = "/catalog.json";
 export const WELL_KNOWN_PATH = "/.well-known/x402";
 export const OPENAPI_PATH = "/openapi.json";
+export const LLMS_PATH = "/llms.txt";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
 export const PRODUCT_NAME = "Idaho + PNW Market Ticks";
-export const PRODUCT_VERSION = "1.1.0";
+export const PRODUCT_VERSION = "1.2.0";
 const COLLECT_MEMO_RE =
   /we are not inventing|this report has no organic row|not reusing an older organic|usda printed no organic/i;
 
@@ -575,6 +576,9 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
     paidEndpoint: `${origin}${TICKS_PATH}`,
     discoveryUrl: `${origin}/`,
     manifestUrl: `${origin}${MANIFEST_PATH}`,
+    openapi: `${origin}${OPENAPI_PATH}`,
+    wellKnown: `${origin}${WELL_KNOWN_PATH}`,
+    llmsTxt: `${origin}${LLMS_PATH}`,
     priceAtomic: amount,
     priceDisplay: amount === "20000" ? "$0.02" : amount ? `${amount} atomic USDC` : null,
     network: NETWORK_V2,
@@ -847,6 +851,60 @@ function sendJson(res: ServerResponse, status: number, body: unknown, extraHeade
   res.end(payload);
 }
 
+function sendText(res: ServerResponse, status: number, body: string, contentType: string): void {
+  res.writeHead(status, {
+    "Content-Type": contentType,
+    "Cache-Control": "no-store",
+    "Access-Control-Allow-Origin": "*",
+  });
+  res.end(body);
+}
+
+function shopDiscoveryPointers(req: IncomingMessage, port: number): Record<string, string> {
+  const origin = discoveryOrigin(req, port);
+  return {
+    openapi: `${origin}${OPENAPI_PATH}`,
+    wellKnown: `${origin}${WELL_KNOWN_PATH}`,
+    llmsTxt: `${origin}${LLMS_PATH}`,
+  };
+}
+
+function withShopDiscovery(
+  body: Record<string, unknown>,
+  req: IncomingMessage,
+  port: number,
+): Record<string, unknown> {
+  return { ...body, ...shopDiscoveryPointers(req, port) };
+}
+
+export function llmsTxt(): string {
+  return [
+    "# BNM Data Shop",
+    "",
+    "Official public data as JSON at https://ticks.bnm.farm. Three paid GETs only. USDC on Base (eip155:8453). payTo 0xf59621FC406D266e18f314Ae18eF0a33b8401004.",
+    "",
+    "## Paid",
+    "",
+    "- GET /ticks — $0.02 — Idaho + PNW market ticks (USDA AMS, Idaho grain, WD1 $/AF)",
+    "- GET /import-alerts — $0.05 — FDA Import Alerts / DWPE firm-product snapshot",
+    "- GET /mariners — $0.05 — USCG D13 / Northwest Local Notice to Mariners",
+    "",
+    "Unpaid GET returns HTTP 402 with PAYMENT-REQUIRED and extensions.bazaar. After a valid X-PAYMENT, the same URL returns JSON. No API key. No request body.",
+    "",
+    "## Free discovery",
+    "",
+    "- GET /openapi.json — OpenAPI 3.1 with x-payment-info for the three paid doors",
+    "- GET /.well-known/x402 — absolute URLs of the three paid routes only",
+    "- GET / — shop JSON (payTo + the three products)",
+    "- GET /manifest.json — Idaho ticks count + schema",
+    "- GET /import-alerts/manifest.json — FDA count + schema (not the firm dump)",
+    "- GET /mariners/manifest.json — LNM count + official PDF (not the notice body)",
+    "",
+    "No fourth public SKU. Free manifests are not the paid body.",
+    "",
+  ].join("\n");
+}
+
 function resourceUrl(req: IncomingMessage, resPort: number, path: string): string {
   const configured = env("X402_RESOURCE_URL");
   if (configured) return configured.replace(/\/$/, "") + path;
@@ -866,6 +924,9 @@ export function wellKnownX402(req: IncomingMessage, port: number): Record<string
   return {
     version: 1,
     resources: paidDiscoveryUrls(req, port),
+    ...shopDiscoveryPointers(req, port),
+    instructions:
+      "GET each resource unpaid for HTTP 402 with extensions.bazaar. Pay USDC on Base. Free OpenAPI is at /openapi.json. Only these three paid routes exist.",
   };
 }
 
@@ -874,7 +935,9 @@ function paidOpenApiOp(opts: {
   summary: string;
   description: string;
   priceUsdc: string;
+  amountAtomic: string;
   example: Record<string, unknown>;
+  outputSchema: Record<string, unknown>;
 }): Record<string, unknown> {
   return {
     operationId: opts.operationId,
@@ -882,16 +945,31 @@ function paidOpenApiOp(opts: {
     description: opts.description,
     tags: ["paid"],
     security: [{ x402: [] }],
+    parameters: [],
+    "x-auth": { mode: "x402" },
     "x-payment-info": {
-      protocols: [{ x402: {} }],
+      protocols: [
+        {
+          x402: {
+            scheme: "exact",
+            network: NETWORK_V2,
+            asset: USDC_BASE,
+            payTo: PAY_TO,
+            amount: opts.amountAtomic,
+          },
+        },
+      ],
       price: { mode: "fixed", currency: "USD", amount: opts.priceUsdc },
+      network: NETWORK_V2,
+      asset: USDC_BASE,
+      payTo: PAY_TO,
     },
     responses: {
       "200": {
         description: "Paid JSON body after a valid x402 settlement",
         content: {
           "application/json": {
-            schema: { type: "object" },
+            schema: opts.outputSchema,
             example: opts.example,
           },
         },
@@ -908,6 +986,8 @@ function freeOpenApiOp(summary: string, description: string): Record<string, unk
     summary,
     description,
     tags: ["free"],
+    security: [],
+    "x-auth": { mode: "none" },
     responses: {
       "200": {
         description: "Free JSON catalog / discovery document",
@@ -919,17 +999,30 @@ function freeOpenApiOp(summary: string, description: string): Record<string, unk
 
 export function buildOpenApi(req: IncomingMessage, port: number): Record<string, unknown> {
   const origin = discoveryOrigin(req, port);
-  const ticksPrice = (Number(amountAtomicFor("ticks")) / 1e6).toFixed(2);
-  const iaPrice = (Number(amountAtomicFor("import-alerts")) / 1e6).toFixed(2);
-  const lnmPrice = (Number(amountAtomicFor("mariners")) / 1e6).toFixed(2);
+  const ticksAtomic = amountAtomicFor("ticks");
+  const iaAtomic = amountAtomicFor("import-alerts");
+  const lnmAtomic = amountAtomicFor("mariners");
+  const ticksPrice = (Number(ticksAtomic) / 1e6).toFixed(2);
+  const iaPrice = (Number(iaAtomic) / 1e6).toFixed(2);
+  const lnmPrice = (Number(lnmAtomic) / 1e6).toFixed(2);
   return {
     openapi: "3.1.0",
     info: {
       title: "BNM Data Shop",
       version: PRODUCT_VERSION,
       description: "Official public data as JSON. Unpaid paid routes return HTTP 402.",
+      contact: { name: "BNM Data Shop", url: "https://bnm.farm/" },
       "x-guidance":
-        "Pay GET /ticks ($0.02), GET /import-alerts ($0.05), or GET /mariners ($0.05) with USDC on Base. Free manifests are at /manifest.json, /import-alerts/manifest.json, and /mariners/manifest.json. Unpaid probes must reach 402; do not send a request body.",
+        "Three paid GETs only: /ticks ($0.02), /import-alerts ($0.05), /mariners ($0.05), USDC on Base. Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. Free manifests do not include the paid body. No request body. No fourth public SKU.",
+    },
+    "x-discovery": {
+      ownershipProofs: [PAY_TO],
+    },
+    "x-agentcash-provenance": {
+      ownershipProofs: [PAY_TO],
+    },
+    "x-agentcash-guidance": {
+      llmsTxtUrl: `${origin}${LLMS_PATH}`,
     },
     servers: [{ url: origin }],
     paths: {
@@ -939,7 +1032,18 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           summary: "Idaho + PNW market ticks",
           description: SKU_COPY.ticks.description,
           priceUsdc: ticksPrice,
+          amountAtomic: ticksAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE.ticks,
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              status: { type: "string" },
+              fetchedAt: { type: "string" },
+              ticks: { type: "array", items: { type: "object" } },
+            },
+          },
         }),
       },
       [IMPORT_ALERTS_PATH]: {
@@ -948,7 +1052,17 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           summary: "FDA Import Alerts / DWPE",
           description: SKU_COPY["import-alerts"].description,
           priceUsdc: iaPrice,
+          amountAtomic: iaAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["import-alerts"],
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              status: { type: "string" },
+              ticks: { type: "array", items: { type: "object" } },
+            },
+          },
         }),
       },
       [MARINERS_PATH]: {
@@ -957,11 +1071,24 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           summary: "USCG D13 / Northwest LNM",
           description: SKU_COPY.mariners.description,
           priceUsdc: lnmPrice,
+          amountAtomic: lnmAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE.mariners,
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              week: { type: "string" },
+              notices: { type: "array", items: { type: "object" } },
+            },
+          },
         }),
       },
       [MANIFEST_PATH]: {
         get: freeOpenApiOp("Idaho ticks free manifest", "Count, schema, and samples. Not the paid snapshot."),
+      },
+      [CATALOG_PATH]: {
+        get: freeOpenApiOp("Idaho ticks free catalog alias", "Same JSON as /manifest.json."),
       },
       [IMPORT_ALERTS_MANIFEST_PATH]: {
         get: freeOpenApiOp("FDA import-alerts free manifest", "Count, catalog, and schema. Not the paid firm list."),
@@ -970,10 +1097,16 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
         get: freeOpenApiOp("USCG D13 LNM free manifest", "Count, week, and official PDF URL. Not the notice body."),
       },
       [WELL_KNOWN_PATH]: {
-        get: freeOpenApiOp("x402 well-known fan-out", "Absolute URLs of the live paid routes."),
+        get: freeOpenApiOp("x402 well-known fan-out", "Absolute URLs of the three live paid routes only."),
       },
       [OPENAPI_PATH]: {
         get: freeOpenApiOp("OpenAPI discovery document", "This document."),
+      },
+      [LLMS_PATH]: {
+        get: freeOpenApiOp("Short agent guidance", "The three paid doors and free discovery URLs. Not a paid SKU."),
+      },
+      "/": {
+        get: freeOpenApiOp("Shop discovery JSON", "payTo, network, and the three public products."),
       },
     },
     components: {
@@ -1061,6 +1194,9 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
       payTo: PAY_TO,
       network: NETWORK_V1,
       asset: USDC_BASE,
+      openapi: OPENAPI_PATH,
+      wellKnown: WELL_KNOWN_PATH,
+      llmsTxt: LLMS_PATH,
       products: [
         {
           path: TICKS_PATH,
@@ -1098,18 +1234,23 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === LLMS_PATH) {
+    sendText(res, 200, llmsTxt(), "text/markdown; charset=utf-8");
+    return;
+  }
+
   if (path === MANIFEST_PATH || path === CATALOG_PATH) {
     sendJson(res, 200, buildTicksManifest(resourceUrl(req, port, TICKS_PATH)));
     return;
   }
 
   if (path === IMPORT_ALERTS_MANIFEST_PATH) {
-    sendJson(res, 200, await loadManifest());
+    sendJson(res, 200, withShopDiscovery(await loadManifest(), req, port));
     return;
   }
 
   if (path === MARINERS_MANIFEST_PATH) {
-    sendJson(res, 200, await loadMarinersManifest());
+    sendJson(res, 200, withShopDiscovery(await loadMarinersManifest(), req, port));
     return;
   }
 
@@ -1128,7 +1269,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
 }
 
 export function bindHost(): string {
