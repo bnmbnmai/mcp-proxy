@@ -674,9 +674,8 @@ export function paymentRequiredBody(resourceUrl: string, sku: DoorSku = "ticks")
     resource: resourceUrl,
     description: copy.description,
     mimeType: "application/json",
-    outputSchema: null,
     maxTimeoutSeconds: 60,
-    extra: { name: "USDC", version: "2" },
+    extra: { name: "USD Coin", version: "2" },
     maxAmountRequired: amount,
   };
 
@@ -700,7 +699,7 @@ export function paymentRequiredV2(resourceUrl: string, sku: DoorSku = "ticks"): 
     asset: USDC_BASE,
     payTo: PAY_TO,
     maxTimeoutSeconds: 60,
-    extra: { name: "USDC", version: "2" },
+    extra: { name: "USD Coin", version: "2" },
     amount,
   };
   return {

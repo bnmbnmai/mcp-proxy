@@ -76,6 +76,16 @@ async function main(): Promise<void> {
       TICKS_AMOUNT_ATOMIC,
       "Idaho /ticks list price is $0.02 (20000 atomic)",
     );
+    assert.equal(
+      (body.accepts[0] as { extra?: { name?: string } }).extra?.name,
+      "USD Coin",
+      "CDP v1 extra.name must be the on-chain USDC name",
+    );
+    assert.equal(
+      Object.prototype.hasOwnProperty.call(body.accepts[0] as object, "outputSchema"),
+      false,
+      "outputSchema: null 400s CDP v1 verify",
+    );
     const pr = res.headers.get("payment-required");
     assert.ok(pr, "v2 PAYMENT-REQUIRED header");
     const v2 = JSON.parse(Buffer.from(pr, "base64").toString("utf8")) as {
