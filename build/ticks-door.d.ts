@@ -19,6 +19,8 @@ export declare const NETWORK_V2 = "eip155:8453";
 export declare const TICKS_PATH = "/ticks";
 export declare const MANIFEST_PATH = "/manifest.json";
 export declare const CATALOG_PATH = "/catalog.json";
+export declare const WELL_KNOWN_PATH = "/.well-known/x402";
+export declare const OPENAPI_PATH = "/openapi.json";
 export declare const PRODUCT_ID = "idaho-hay-feeder-ticks";
 export declare const PRODUCT_NAME = "Idaho + PNW Market Ticks";
 export declare const PRODUCT_VERSION = "1.1.0";
@@ -53,6 +55,8 @@ export declare function loadTicks(): TicksPayload;
 export declare function buildTicksManifest(resourceUrl?: string): Record<string, unknown>;
 export declare function paymentRequiredBody(resourceUrl: string, sku?: DoorSku): Record<string, unknown>;
 export declare function paymentRequiredV2(resourceUrl: string, sku?: DoorSku): Record<string, unknown>;
+export declare function wellKnownX402(req: IncomingMessage, port: number): Record<string, unknown>;
+export declare function buildOpenApi(req: IncomingMessage, port: number): Record<string, unknown>;
 export declare function handleRequest(req: IncomingMessage, res: ServerResponse, port: number): Promise<void>;
 export declare function bindHost(): string;
 export declare function createTicksServer(port?: number): {
