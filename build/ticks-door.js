@@ -1,19 +1,19 @@
 #!/usr/bin/env node
 /**
- * Thin x402 pay-per-pull door for Idaho hay + feeder ticks.
+ * Thin x402 pay-per-pull door for the BNM Data Shop.
  *
- * One HTTP resource: GET /ticks
- *   unpaid → HTTP 402 with payment instructions (USDC on Base)
- *   paid   → JSON ticks from a local farm-plan prices cache, or an honest
- *            empty/stale payload when that cache is not on this host.
+ * GET /ticks — Idaho hay + feeder ticks ($0.02 USDC on Base)
+ * GET /import-alerts — FDA Import Alert / DWPE firm ticks ($0.05)
+ * GET /import-alerts/manifest.json — free catalog + schema + sample rows
  *
- * Does not scrape, does not list on x402scan/Bazaar, does not resurrect
- * the Apollo Intelligence catalog. No keys in the repo.
+ * Unpaid paid paths → HTTP 402. Does not list on x402scan/Bazaar, does not
+ * resurrect the Apollo Intelligence catalog. No keys in the repo.
  */
 import { createServer as createHttpServer } from "node:http";
 import { readFileSync, existsSync, statSync } from "node:fs";
 import { homedir } from "node:os";
 import { join, resolve } from "node:path";
+import { IMPORT_ALERTS_AMOUNT_ATOMIC, IMPORT_ALERTS_MANIFEST_PATH, IMPORT_ALERTS_PATH, TICKS_AMOUNT_ATOMIC, loadImportAlerts, loadManifest, } from "./import-alerts.js";
 export const PAY_TO = "0xf59621FC406D266e18f314Ae18eF0a33b8401004";
 export const USDC_BASE = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913";
 export const NETWORK_V1 = "base";
@@ -39,10 +39,24 @@ const PUBLIC_SERIES_PREFIXES = [
 function env(name, fallback = "") {
     return (process.env[name] ?? fallback).trim();
 }
-function amountAtomic() {
+function amountAtomicFor(sku) {
+    if (sku === "import-alerts") {
+        const raw = env("IMPORT_ALERTS_USDC_ATOMIC");
+        return raw.length > 0 ? raw : IMPORT_ALERTS_AMOUNT_ATOMIC;
+    }
     const raw = env("X402_USDC_ATOMIC");
-    return raw.length > 0 ? raw : null;
+    return raw.length > 0 ? raw : TICKS_AMOUNT_ATOMIC;
 }
+const SKU_COPY = {
+    ticks: {
+        description: "Idaho hay + feeder ticks (Twin Falls, Blackfoot, AMS_3056, AMS_3059)",
+        resourcePath: TICKS_PATH,
+    },
+    "import-alerts": {
+        description: "FDA Import Alert / DWPE firm ticks (official cms_ia HTML)",
+        resourcePath: IMPORT_ALERTS_PATH,
+    },
+};
 /** Media-box default: farm-plan collector writes board.json / history.json here. */
 export const DEFAULT_TICKS_DIR = join(homedir(), "projects/farm-plan/data/prices");
 export function ticksDir() {
@@ -152,22 +166,22 @@ export function loadTicks() {
         history: { points, emptyReports, series },
     };
 }
-export function paymentRequiredBody(resourceUrl) {
-    const amount = amountAtomic();
+export function paymentRequiredBody(resourceUrl, sku = "ticks") {
+    const amount = amountAtomicFor(sku);
+    const copy = SKU_COPY[sku];
     const acceptV1 = {
         scheme: "exact",
         network: NETWORK_V1,
         asset: USDC_BASE,
         payTo: PAY_TO,
         resource: resourceUrl,
-        description: "Idaho hay + feeder ticks (Twin Falls, Blackfoot, AMS_3056, AMS_3059)",
+        description: copy.description,
         mimeType: "application/json",
         outputSchema: null,
         maxTimeoutSeconds: 60,
         extra: { name: "USDC", version: "2" },
+        maxAmountRequired: amount,
     };
-    if (amount)
-        acceptV1.maxAmountRequired = amount;
     return {
         x402Version: 1,
         error: "X-PAYMENT header is required",
@@ -175,11 +189,12 @@ export function paymentRequiredBody(resourceUrl) {
         payTo: PAY_TO,
         network: NETWORK_V1,
         asset: USDC_BASE,
-        resource: TICKS_PATH,
+        resource: copy.resourcePath,
     };
 }
-export function paymentRequiredV2(resourceUrl) {
-    const amount = amountAtomic();
+export function paymentRequiredV2(resourceUrl, sku = "ticks") {
+    const amount = amountAtomicFor(sku);
+    const copy = SKU_COPY[sku];
     const accept = {
         scheme: "exact",
         network: NETWORK_V2,
@@ -187,15 +202,14 @@ export function paymentRequiredV2(resourceUrl) {
         payTo: PAY_TO,
         maxTimeoutSeconds: 60,
         extra: { name: "USDC", version: "2" },
+        amount,
     };
-    if (amount)
-        accept.amount = amount;
     return {
         x402Version: 2,
         error: "PAYMENT-SIGNATURE header is required",
         resource: {
             url: resourceUrl,
-            description: "Idaho hay + feeder ticks (Twin Falls, Blackfoot, AMS_3056, AMS_3059)",
+            description: copy.description,
             mimeType: "application/json",
         },
         accepts: [accept],
@@ -250,14 +264,41 @@ function sendJson(res, status, body, extraHeaders = {}) {
     });
     res.end(payload);
 }
-function resourceUrl(req, port) {
+function resourceUrl(req, port, path) {
     const configured = env("X402_RESOURCE_URL");
     if (configured)
-        return configured.replace(/\/$/, "") + TICKS_PATH;
+        return configured.replace(/\/$/, "") + path;
     const host = req.headers.host || `127.0.0.1:${port}`;
-    return `http://${host}${TICKS_PATH}`;
+    return `http://${host}${path}`;
 }
-export function handleRequest(req, res, port) {
+async function servePaid(req, res, port, sku, load) {
+    const copy = SKU_COPY[sku];
+    const payment = paymentHeader(req);
+    const resource = resourceUrl(req, port, copy.resourcePath);
+    const body402 = paymentRequiredBody(resource, sku);
+    const v2 = paymentRequiredV2(resource, sku);
+    const paymentRequiredHeader = Buffer.from(JSON.stringify(v2), "utf-8").toString("base64");
+    if (!payment) {
+        sendJson(res, 402, body402, { "PAYMENT-REQUIRED": paymentRequiredHeader });
+        return;
+    }
+    const serve = async () => sendJson(res, 200, await load());
+    if (skipSettle()) {
+        await serve();
+        return;
+    }
+    const accept = body402.accepts[0];
+    const ok = await facilitatorVerify(payment, accept);
+    if (ok) {
+        await serve();
+        return;
+    }
+    sendJson(res, 402, {
+        ...body402,
+        error: "Payment present but not settled. Set X402_FACILITATOR_URL or pay with a valid x402 X-PAYMENT header.",
+    }, { "PAYMENT-REQUIRED": paymentRequiredHeader });
+}
+export async function handleRequest(req, res, port) {
     const url = new URL(req.url || "/", `http://${req.headers.host || "127.0.0.1"}`);
     const path = url.pathname.replace(/\/+$/, "") || "/";
     if (req.method === "OPTIONS") {
@@ -276,58 +317,54 @@ export function handleRequest(req, res, port) {
     if (path === "/") {
         const dir = ticksDir();
         sendJson(res, 200, {
-            door: "idaho-hay-feeder-ticks",
-            path: TICKS_PATH,
+            shop: "bnm-data-shop",
             payTo: PAY_TO,
             network: NETWORK_V1,
             asset: USDC_BASE,
+            products: [
+                {
+                    path: TICKS_PATH,
+                    product: "idaho-hay-feeder-ticks",
+                    priceUsdc: "0.02",
+                    amountAtomic: amountAtomicFor("ticks"),
+                },
+                {
+                    path: IMPORT_ALERTS_PATH,
+                    product: "fda-import-alerts",
+                    priceUsdc: "0.05",
+                    amountAtomic: amountAtomicFor("import-alerts"),
+                    manifest: IMPORT_ALERTS_MANIFEST_PATH,
+                },
+            ],
             ticksDir: dir || null,
             board: boardPath() && existsSync(boardPath()) ? boardPath() : null,
         });
         return;
     }
-    if (path !== TICKS_PATH) {
-        sendJson(res, 404, { error: "not_found", path: TICKS_PATH });
+    if (path === IMPORT_ALERTS_MANIFEST_PATH) {
+        sendJson(res, 200, await loadManifest());
         return;
     }
-    const payment = paymentHeader(req);
-    const resource = resourceUrl(req, port);
-    const body402 = paymentRequiredBody(resource);
-    const v2 = paymentRequiredV2(resource);
-    const paymentRequiredHeader = Buffer.from(JSON.stringify(v2), "utf-8").toString("base64");
-    if (!payment) {
-        sendJson(res, 402, body402, { "PAYMENT-REQUIRED": paymentRequiredHeader });
+    if (path === IMPORT_ALERTS_PATH) {
+        await servePaid(req, res, port, "import-alerts", () => loadImportAlerts());
         return;
     }
-    const serve = () => sendJson(res, 200, loadTicks());
-    if (skipSettle()) {
-        serve();
+    if (path === TICKS_PATH) {
+        await servePaid(req, res, port, "ticks", () => loadTicks());
         return;
     }
-    const accept = body402.accepts[0];
-    void facilitatorVerify(payment, accept).then((ok) => {
-        if (ok) {
-            serve();
-            return;
-        }
-        sendJson(res, 402, {
-            ...body402,
-            error: "Payment present but not settled. Set X402_FACILITATOR_URL or pay with a valid x402 X-PAYMENT header.",
-        }, { "PAYMENT-REQUIRED": paymentRequiredHeader });
-    });
+    sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH] });
 }
 export function bindHost() {
     return env("BIND_HOST", "0.0.0.0");
 }
 export function createTicksServer(port = Number(env("PORT", "4020")) || 4020) {
     const server = createHttpServer((req, res) => {
-        try {
-            handleRequest(req, res, port);
-        }
-        catch (err) {
+        void handleRequest(req, res, port).catch((err) => {
             const message = err instanceof Error ? err.message : String(err);
-            sendJson(res, 500, { error: "server_error", message });
-        }
+            if (!res.headersSent)
+                sendJson(res, 500, { error: "server_error", message });
+        });
     });
     return { server, port };
 }
@@ -340,10 +377,12 @@ if (isMain()) {
     const host = bindHost();
     server.listen(port, host, () => {
         const board = boardPath();
-        console.error(`idaho ticks x402 door on ${host}:${port}${TICKS_PATH}`);
+        console.error(`bnm data shop x402 door on ${host}:${port}`);
+        console.error(`${TICKS_PATH} $${Number(amountAtomicFor("ticks")) / 1e6} USDC`);
+        console.error(`${IMPORT_ALERTS_PATH} $${Number(amountAtomicFor("import-alerts")) / 1e6} USDC`);
         console.error(`payTo ${PAY_TO} USDC ${USDC_BASE} on Base`);
         console.error(`ticksDir ${ticksDir() || "(unset)"}`);
-        console.error(`board ${board && existsSync(board) ? board : "missing — paid body will be empty/stale"}`);
+        console.error(`board ${board && existsSync(board) ? board : "missing — paid /ticks body will be empty/stale"}`);
     });
 }
 //# sourceMappingURL=ticks-door.js.map

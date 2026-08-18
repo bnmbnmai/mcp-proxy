@@ -23,7 +23,7 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 | Network | `base` / `eip155:8453` |
 | **payTo** | **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`** |
 
-This repo does **not** publish a list price. Set `X402_USDC_ATOMIC` at deploy if agents need `maxAmountRequired`.
+List price is **$0.02** USDC (`20000` atomic). Override with `X402_USDC_ATOMIC` if needed. Import-alert ticks are a separate SKU at `GET /import-alerts` ($0.05) — see [`docs/IMPORT-ALERTS-X402.md`](./IMPORT-ALERTS-X402.md).
 
 ## Env (apollo / media box)
 
@@ -36,7 +36,7 @@ This repo does **not** publish a list price. Set `X402_USDC_ATOMIC` at deploy if
 | `PORT` | `4020` | Listen port |
 | `X402_SKIP_SETTLE` | unset | `1` = local/test path: any `X-PAYMENT` header serves ticks (not for public) |
 | `X402_FACILITATOR_URL` | unset | Public facilitator for real settlement |
-| `X402_USDC_ATOMIC` | unset | Optional amount in USDC 6-decimal units |
+| `X402_USDC_ATOMIC` | `20000` | `/ticks` amount in USDC 6-decimal units ($0.02) |
 | `X402_RESOURCE_URL` | request host | Public URL prefix if behind a reverse proxy |
 
 The door **only reads** the farm-plan price cache. It does not scrape. Refresh ticks on apollo the same way the Market tab already does:
