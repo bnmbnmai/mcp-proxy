@@ -82,18 +82,122 @@ function amountAtomicFor(sku) {
 }
 const SKU_COPY = {
     ticks: {
-        description: "Idaho + PNW official ticks: hay, feeder, IF_FV130, IBC grain, WD1, AMS 3058, AMS 2914",
+        description: "Call GET /ticks when you need the current official Idaho + PNW market snapshot (USDA AMS hay, cattle, produce, pulses; IBC grain; WD1 $/AF). JSON ticks plus stored history points; days between reports are not filled in.",
         resourcePath: TICKS_PATH,
     },
     "import-alerts": {
-        description: "FDA Import Alert / DWPE firm ticks (official cms_ia HTML)",
+        description: "Call GET /import-alerts when you need the current FDA Import Alert / DWPE red and green firm-product snapshot from official cms_ia HTML. First-slice alert pages only. Does not wrap openFDA.",
         resourcePath: IMPORT_ALERTS_PATH,
     },
     mariners: {
-        description: "USCG District 13 / Northwest Local Notice to Mariners (official weekly PDF)",
+        description: "Call GET /mariners when you need the latest USCG District 13 / Northwest Local Notice to Mariners as structured JSON from the official weekly PDF. Returns week, section, text, and source URL. Does not invent notices.",
         resourcePath: MARINERS_PATH,
     },
 };
+const BAZAAR_OUTPUT_EXAMPLE = {
+    ticks: {
+        ok: true,
+        product: "idaho-hay-feeder-ticks",
+        status: "ok",
+        fetchedAt: "2026-08-17T21:22:50Z",
+        ticks: [
+            {
+                id: "cattle-tf-feeder-steer",
+                group: "cattle",
+                commodity: "Feeder steers",
+                market: "Twin Falls Livestock Commission (Wednesday auction)",
+                unit: "$/cwt",
+                asOf: "2026-08-12",
+                price: 400.2,
+                source: "Twin Falls Livestock Commission market report",
+            },
+        ],
+    },
+    "import-alerts": {
+        ok: true,
+        product: "fda-import-alerts",
+        status: "ok",
+        fetchedAt: "2026-08-18T00:56:39.767Z",
+        asOf: "2026-08-17",
+        ticks: [
+            {
+                alertNumber: "16-81",
+                type: "DWPE",
+                list: "red",
+                firm: "Clover Valley Meat Co.",
+                country: "AUSTRALIA",
+                product: "Alligator & Crocodile, Other Aquatic Species — Crocodile",
+                datePublished: "06/08/2012",
+                sourceUrl: "https://www.accessdata.fda.gov/cms_ia/importalert_49.html",
+                asOf: "2026-08-17",
+            },
+        ],
+    },
+    mariners: {
+        ok: true,
+        product: "uscg-d13-lnm",
+        status: "ok",
+        week: "32-2026",
+        asOf: "2026-08-12",
+        notices: [
+            {
+                week: "32-2026",
+                section: "Federal Discrepancies",
+                waterway: "Anacortes Harbor",
+                text: "Anacortes Channel Light 4 LLNR 19055 TRLB/STRUCT MISSING/STRUCT DEST FD",
+                sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf",
+            },
+        ],
+    },
+};
+/** x402 Bazaar discovery block (v2 PAYMENT-REQUIRED extensions.bazaar). */
+export function bazaarExtension(sku) {
+    return {
+        info: {
+            input: {
+                type: "http",
+                method: "GET",
+                queryParams: {},
+            },
+            output: {
+                type: "json",
+                example: BAZAAR_OUTPUT_EXAMPLE[sku],
+            },
+        },
+        schema: {
+            $schema: "https://json-schema.org/draft/2020-12/schema",
+            type: "object",
+            properties: {
+                input: {
+                    type: "object",
+                    properties: {
+                        type: { type: "string", const: "http" },
+                        method: { type: "string", enum: ["GET", "HEAD", "DELETE"] },
+                        queryParams: {
+                            type: "object",
+                            additionalProperties: { type: "string" },
+                        },
+                        headers: {
+                            type: "object",
+                            additionalProperties: { type: "string" },
+                        },
+                    },
+                    required: ["type", "method"],
+                    additionalProperties: false,
+                },
+                output: {
+                    type: "object",
+                    properties: {
+                        type: { type: "string" },
+                        example: { type: "object" },
+                    },
+                    required: ["type"],
+                },
+            },
+            required: ["input"],
+        },
+    };
+}
 /** Media-box default: farm-plan collector writes board.json / history.json here. */
 export const DEFAULT_TICKS_DIR = join(homedir(), "projects/farm-plan/data/prices");
 export function ticksDir() {
@@ -509,7 +613,9 @@ export function paymentRequiredV2(resourceUrl, sku = "ticks") {
             mimeType: "application/json",
         },
         accepts: [accept],
-        extensions: {},
+        extensions: {
+            bazaar: bazaarExtension(sku),
+        },
     };
 }
 function paymentHeader(req) {

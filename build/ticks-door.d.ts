@@ -39,6 +39,8 @@ export type TicksPayload = {
     };
 };
 export type DoorSku = "ticks" | "import-alerts" | "mariners";
+/** x402 Bazaar discovery block (v2 PAYMENT-REQUIRED extensions.bazaar). */
+export declare function bazaarExtension(sku: DoorSku): Record<string, unknown>;
 /** Media-box default: farm-plan collector writes board.json / history.json here. */
 export declare const DEFAULT_TICKS_DIR: string;
 export declare function ticksDir(): string;

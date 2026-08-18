@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, bazaarExtension } from "./ticks-door.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
   IMPORT_ALERTS_MANIFEST_PATH,
@@ -63,6 +63,21 @@ async function main(): Promise<void> {
       (body.accepts[0] as { maxAmountRequired?: string }).maxAmountRequired,
       TICKS_AMOUNT_ATOMIC,
       "Idaho /ticks list price is $0.02 (20000 atomic)",
+    );
+    const pr = res.headers.get("payment-required");
+    assert.ok(pr, "v2 PAYMENT-REQUIRED header");
+    const v2 = JSON.parse(Buffer.from(pr, "base64").toString("utf8")) as {
+      extensions?: { bazaar?: { info?: { input?: { type?: string; method?: string } } } };
+      resource?: { description?: string };
+    };
+    assert.equal(v2.extensions?.bazaar?.info?.input?.type, "http");
+    assert.equal(v2.extensions?.bazaar?.info?.input?.method, "GET");
+    assert.ok((v2.resource?.description ?? "").includes("Call GET /ticks"));
+    assert.ok((v2.resource?.description ?? "").length <= 500);
+    const declared = bazaarExtension("ticks");
+    assert.deepEqual(
+      v2.extensions?.bazaar?.info?.input,
+      (declared.info as { input: unknown }).input,
     );
   });
 
@@ -262,7 +277,12 @@ async function main(): Promise<void> {
       assert.equal(body402.asset, USDC_BASE);
       assert.equal(body402.resource, IMPORT_ALERTS_PATH);
       assert.equal(body402.accepts[0]?.maxAmountRequired, IMPORT_ALERTS_AMOUNT_ATOMIC);
-      assert.ok(unpaid.headers.get("payment-required"), "v2 PAYMENT-REQUIRED header");
+      const iaPr = unpaid.headers.get("payment-required");
+      assert.ok(iaPr, "v2 PAYMENT-REQUIRED header");
+      const iaV2 = JSON.parse(Buffer.from(iaPr, "base64").toString("utf8")) as {
+        extensions?: { bazaar?: { info?: { input?: { method?: string } } } };
+      };
+      assert.equal(iaV2.extensions?.bazaar?.info?.input?.method, "GET");
 
       const ticksUnpaid = await fetch(`${base}${TICKS_PATH}`);
       assert.equal(ticksUnpaid.status, 402);
@@ -356,7 +376,13 @@ async function main(): Promise<void> {
       assert.equal(body402.asset, USDC_BASE);
       assert.equal(body402.resource, MARINERS_PATH);
       assert.equal(body402.accepts[0]?.maxAmountRequired, MARINERS_AMOUNT_ATOMIC);
-      assert.ok(unpaid.headers.get("payment-required"), "v2 PAYMENT-REQUIRED header");
+      const lnmPr = unpaid.headers.get("payment-required");
+      assert.ok(lnmPr, "v2 PAYMENT-REQUIRED header");
+      const lnmV2 = JSON.parse(Buffer.from(lnmPr, "base64").toString("utf8")) as {
+        extensions?: { bazaar?: { info?: { input?: { method?: string }; output?: { example?: unknown } } } };
+      };
+      assert.equal(lnmV2.extensions?.bazaar?.info?.input?.method, "GET");
+      assert.ok(lnmV2.extensions?.bazaar?.info?.output?.example);
 
       const ticksUnpaid = await fetch(`${base}${TICKS_PATH}`);
       assert.equal(ticksUnpaid.status, 402);
