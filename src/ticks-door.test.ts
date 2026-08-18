@@ -112,16 +112,16 @@ async function main(): Promise<void> {
       instructions?: string;
     };
     assert.equal(wk.version, 1);
-    assert.equal(wk.resources.length, 3, "well-known lists the three live doors only");
+    assert.equal(wk.resources.length, 4, "well-known lists the four live doors");
     assert.ok(wk.resources.some((r) => r.endsWith(TICKS_PATH) && r.startsWith("http")));
     assert.ok(wk.resources.some((r) => r.endsWith(IMPORT_ALERTS_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_PATH)));
+    assert.ok(wk.resources.some((r) => r.endsWith(WARNING_LETTERS_PATH)));
     assert.ok(wk.resources.every((r) => r.startsWith("http")), "well-known resources must be absolute URLs");
     assert.ok(wk.openapi?.endsWith(OPENAPI_PATH));
     assert.ok(wk.llmsTxt?.endsWith(LLMS_PATH));
-    assert.ok((wk.instructions ?? "").includes("three paid"));
+    assert.ok((wk.instructions ?? "").includes("four paid"));
     assert.ok(!wk.resources.some((r) => r.includes("/gain")));
-    assert.ok(!wk.resources.some((r) => r.includes(WARNING_LETTERS_PATH)));
     assert.equal(cdpEnvStatus(), "CDP env not set");
 
     const specRes = await fetch(`${base}${OPENAPI_PATH}`);
@@ -152,7 +152,7 @@ async function main(): Promise<void> {
     assert.deepEqual(spec["x-discovery"]?.ownershipProofs, [PAY_TO]);
     assert.deepEqual(spec["x-agentcash-provenance"]?.ownershipProofs, [PAY_TO]);
     assert.ok(spec["x-agentcash-guidance"]?.llmsTxtUrl?.endsWith(LLMS_PATH));
-    for (const paid of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH]) {
+    for (const paid of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, WARNING_LETTERS_PATH]) {
       const op = spec.paths[paid]?.get;
       assert.ok(op?.["x-payment-info"], `${paid} must declare x-payment-info`);
       assert.equal(op?.["x-auth"]?.mode, "x402");
@@ -164,17 +164,18 @@ async function main(): Promise<void> {
     assert.equal(spec.paths[TICKS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.02");
     assert.equal(spec.paths[IMPORT_ALERTS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[MARINERS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
+    assert.equal(spec.paths[WARNING_LETTERS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[CATALOG_PATH]?.get?.["x-auth"]?.mode, "none");
     assert.deepEqual(spec.paths[CATALOG_PATH]?.get?.security, []);
     assert.ok(spec.paths["/"]?.get);
     assert.ok(spec.paths[LLMS_PATH]?.get);
+    assert.ok(spec.paths[WARNING_LETTERS_MANIFEST_PATH]?.get);
+    assert.equal(spec.paths[WARNING_LETTERS_MANIFEST_PATH]?.get?.["x-auth"]?.mode, "none");
     assert.equal(spec.paths["/gain"], undefined);
-    assert.equal(spec.paths[WARNING_LETTERS_PATH], undefined);
-    assert.equal(spec.paths[WARNING_LETTERS_MANIFEST_PATH], undefined);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
-      3,
-      "OpenAPI must not grow a fourth public paid path",
+      4,
+      "OpenAPI lists the four public paid paths",
     );
 
     const llms = await fetch(`${base}${LLMS_PATH}`);
@@ -183,9 +184,9 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /ticks"));
     assert.ok(llmsBody.includes("GET /import-alerts"));
     assert.ok(llmsBody.includes("GET /mariners"));
+    assert.ok(llmsBody.includes("GET /warning-letters"));
     assert.ok(!llmsBody.toLowerCase().includes("/gain"));
     assert.ok(!llmsBody.includes("WASDE"));
-    assert.ok(!llmsBody.includes(WARNING_LETTERS_PATH));
 
     const shop = (await (await fetch(`${base}/`)).json()) as {
       products: { path: string }[];
@@ -193,7 +194,12 @@ async function main(): Promise<void> {
       wellKnown?: string;
       llmsTxt?: string;
     };
-    assert.deepEqual(shop.products.map((p) => p.path), [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH]);
+    assert.deepEqual(shop.products.map((p) => p.path), [
+      TICKS_PATH,
+      IMPORT_ALERTS_PATH,
+      MARINERS_PATH,
+      WARNING_LETTERS_PATH,
+    ]);
     assert.equal(shop.openapi, OPENAPI_PATH);
     assert.equal(shop.wellKnown, WELL_KNOWN_PATH);
     assert.equal(shop.llmsTxt, LLMS_PATH);
@@ -632,7 +638,8 @@ async function main(): Promise<void> {
         wellKnown?: string;
       };
       assert.ok(shop.products.some((p) => p.path === MARINERS_PATH && p.priceUsdc === "0.05"));
-      assert.equal(shop.products.length, 3);
+      assert.ok(shop.products.some((p) => p.path === WARNING_LETTERS_PATH && p.priceUsdc === "0.05"));
+      assert.equal(shop.products.length, 4);
       assert.equal(shop.openapi, OPENAPI_PATH);
       assert.equal(shop.wellKnown, WELL_KNOWN_PATH);
 
@@ -665,7 +672,6 @@ async function main(): Promise<void> {
       reason: null,
       fetchedAt: "2026-08-18T00:00:00.000Z",
       asOf: "2026-03-04",
-      unlisted: true,
       sources: {
         listing:
           "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/warning-letters",
@@ -713,18 +719,22 @@ async function main(): Promise<void> {
       assert.equal(wlV2.extensions?.bazaar?.info?.input?.method, "GET");
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
-      assert.equal(shop.products.some((p) => p.path === WARNING_LETTERS_PATH), false);
-      assert.equal(shop.products.length, 3);
+      assert.equal(shop.products.some((p) => p.path === WARNING_LETTERS_PATH), true);
+      assert.equal(shop.products.length, 4);
 
       const manifest = await fetch(`${base}${WARNING_LETTERS_MANIFEST_PATH}`);
-      assert.equal(manifest.status, 200, "unlisted free manifest is free");
+      assert.equal(manifest.status, 200, "warning-letters free manifest is free");
       const man = (await manifest.json()) as {
         unlisted?: boolean;
         letterCount?: number;
         letters?: { firm?: string; body?: string }[];
+        openapi?: string;
+        wellKnown?: string;
       };
-      assert.equal(man.unlisted, true);
+      assert.equal(man.unlisted, undefined);
       assert.equal(man.letterCount, 1);
+      assert.ok(man.openapi?.endsWith(OPENAPI_PATH));
+      assert.ok(man.wellKnown?.endsWith(WELL_KNOWN_PATH));
       assert.equal(man.letters?.[0]?.firm, "Citra100mg");
       assert.ok(!JSON.stringify(man).includes("reviewed your website"));
       assert.ok(!("body" in (man.letters?.[0] ?? {})));
@@ -737,7 +747,7 @@ async function main(): Promise<void> {
         letters: { firm: string; issuedOn: string; subject: string; body: string }[];
       };
       assert.equal(paidBody.product, "fda-warning-letter-bodies");
-      assert.equal(paidBody.unlisted, true);
+      assert.equal(paidBody.unlisted, undefined);
       assert.equal(paidBody.letters[0]?.firm, "Citra100mg");
       assert.equal(paidBody.letters[0]?.issuedOn, "2026-03-04");
       assert.match(paidBody.letters[0]?.subject ?? "", /Unapproved New Drugs/);
@@ -757,7 +767,7 @@ async function main(): Promise<void> {
     },
     async (base) => {
       assert.equal(cdpEnvStatus(), "CDP env not set");
-      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH]) {
+      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, WARNING_LETTERS_PATH]) {
         const unpaid = await fetch(`${base}${path}`);
         assert.equal(unpaid.status, 402, `unpaid ${path} must stay 402`);
         const present = await fetch(`${base}${path}`, { headers: { "X-PAYMENT": "test" } });
@@ -766,13 +776,13 @@ async function main(): Promise<void> {
         assert.notEqual(body.error, "CDP env not set");
       }
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
-      assert.equal(wk.resources.length, 3);
-      assert.ok(!wk.resources.some((r) => r.includes(WARNING_LETTERS_PATH)));
+      assert.equal(wk.resources.length, 4);
+      assert.ok(wk.resources.some((r) => r.includes(WARNING_LETTERS_PATH)));
     },
   );
 
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners"]);
-  assert.equal(isPublicBazaarSku("warning-letters"), false);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "warning-letters"]);
+  assert.equal(isPublicBazaarSku("warning-letters"), true);
   for (const sku of PUBLIC_BAZAAR_SKUS) {
     const resource = `https://ticks.bnm.farm/${sku === "ticks" ? "ticks" : sku}`;
     const reqs = facilitatorPaymentRequirements(resource, sku);
@@ -798,13 +808,6 @@ async function main(): Promise<void> {
       bazaarExtension(sku),
     );
   }
-  const hidden = facilitatorPaymentRequirements(
-    "https://ticks.bnm.farm/warning-letters",
-    "warning-letters",
-  );
-  assert.equal(hidden.extensions, undefined, "/warning-letters must not persist to Bazaar");
-  const hiddenBody = facilitatorBody("not-json", hidden);
-  assert.equal((hiddenBody.paymentPayload as { extensions?: unknown }).extensions, undefined);
 
   console.log("ticks-door tests ok");
 }

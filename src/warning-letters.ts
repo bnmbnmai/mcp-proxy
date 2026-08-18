@@ -1,8 +1,7 @@
 /**
- * Unlisted FDA warning-letter BODIES door.
+ * FDA warning-letter BODIES door.
  * Official fda.gov warning-letter HTML only. Does not invent letter text.
  * Does not scrape Redica / Thompson / Apify. Not the /import-alerts IA feed.
- * Not a public lander / catalog / well-known SKU.
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -59,7 +58,6 @@ export type WarningLettersSnapshot = {
   reason: string | null;
   fetchedAt: string;
   asOf: string | null;
-  unlisted: true;
   sources: {
     listing: string;
     letterBase: string;
@@ -242,7 +240,6 @@ export function emptySnapshot(reason: string): WarningLettersSnapshot {
     reason,
     fetchedAt: new Date().toISOString(),
     asOf: null,
-    unlisted: true,
     sources: { listing: LISTING_URL, letterBase: LETTER_BASE },
     letters: [],
   };
@@ -265,7 +262,6 @@ export function assembleSnapshot(
     reason: withBody.length > 0 ? null : "Official pages had no WARNING LETTER body block.",
     fetchedAt,
     asOf,
-    unlisted: true,
     sources: { listing: LISTING_URL, letterBase: LETTER_BASE },
     letters,
   };
@@ -275,8 +271,13 @@ export function readSnapshot(): WarningLettersSnapshot | null {
   const path = snapshotPath();
   if (!existsSync(path)) return null;
   try {
-    const raw = JSON.parse(readFileSync(path, "utf-8")) as WarningLettersSnapshot;
-    if (raw && raw.product === PRODUCT_ID && Array.isArray(raw.letters)) return raw;
+    const raw = JSON.parse(readFileSync(path, "utf-8")) as WarningLettersSnapshot & {
+      unlisted?: unknown;
+    };
+    if (raw && raw.product === PRODUCT_ID && Array.isArray(raw.letters)) {
+      const { unlisted: _drop, ...rest } = raw;
+      return rest;
+    }
   } catch {
     /* corrupt */
   }
@@ -394,8 +395,7 @@ export function buildWarningLettersManifest(snap: WarningLettersSnapshot | null)
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    unlisted: true,
-    note: "Count + firm + date + subject + official source only. Letter body is the paid GET /warning-letters payload. Not a public lander SKU.",
+    note: "Count + firm + date + subject + official source only. Letter body is the paid GET /warning-letters payload.",
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
     network: "base",
     asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
@@ -462,7 +462,6 @@ if (isMain()) {
             status: snap.status,
             fetchedAt: snap.fetchedAt,
             asOf: snap.asOf,
-            unlisted: snap.unlisted,
             letterCount: snap.letters.filter((l) => l.body.length > 0).length,
             letters: snap.letters.map((l) => ({
               id: l.id,
