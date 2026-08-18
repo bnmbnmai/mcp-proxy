@@ -131,6 +131,22 @@ function asRecordArray(value) {
         return [];
     return value.filter((item) => !!item && typeof item === "object");
 }
+/** Paid failed/emptyReports stay, but drop first-person collect notes. */
+function sanitizePublicReason(reason) {
+    return str(reason)
+        .replace(/\s*We are not inventing[^.]*\./gi, "")
+        .replace(/\s*and not reusing an older[^.]*\./gi, "")
+        .replace(/\s+/g, " ")
+        .trim();
+}
+function publicFailedRow(item) {
+    const next = { ...item };
+    if ("reason" in next)
+        next.reason = sanitizePublicReason(next.reason);
+    if ("note" in next)
+        next.note = sanitizePublicReason(next.note);
+    return next;
+}
 function readJsonFile(path) {
     if (!path || !existsSync(path) || !statSync(path).isFile())
         return null;
@@ -150,12 +166,12 @@ export function loadTicks() {
     const board = readJsonFile(boardFile);
     const historyFile = readJsonFile(histFile);
     const rows = asRecordArray(board?.rows).filter(isPublicTick);
-    const failed = asRecordArray(board?.failed).filter(isPublicTick);
+    const failed = asRecordArray(board?.failed).filter(isPublicTick).map(publicFailedRow);
     const hist = (board?.history && typeof board.history === "object"
         ? board.history
         : historyFile) ?? {};
     const points = asRecordArray(hist.points).filter(isPublicTick);
-    const emptyReports = asRecordArray(hist.emptyReports).filter(isPublicTick);
+    const emptyReports = asRecordArray(hist.emptyReports).filter(isPublicTick).map(publicFailedRow);
     const series = asRecordArray(hist.series).filter(isPublicTick);
     const fetchedAt = typeof board?.fetchedAt === "string"
         ? board.fetchedAt
@@ -363,30 +379,6 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
         samples.push(sampleFromRow(row, str(seriesById.get(str(row.id))?.label)));
         used.add(str(row.id));
     }
-    const empty = [
-        ...failed.map((item) => ({
-            status: "empty",
-            product: false,
-            id: str(item.id) || null,
-            name: str(item.label) || str(item.id) || "empty report",
-            reason: str(item.reason) || "No official row. Not a product.",
-            source: str(item.source) || null,
-            sourceUrl: str(item.sourceUrl) || null,
-        })),
-        ...emptyReports
-            .filter((item) => /organic/i.test(`${item.series ?? ""} ${item.reason ?? ""}`))
-            .slice(-1)
-            .map((item) => ({
-            status: "empty",
-            product: false,
-            id: str(item.series) || "hay-idaho-organic",
-            name: "USDA organic (Idaho) hay",
-            reason: str(item.reason) || "Official print has no organic row. Not a product.",
-            source: str(item.source) || null,
-            sourceUrl: str(item.sourceUrl) || null,
-            latestEmptyAsOf: str(item.reportDate).slice(0, 10) || null,
-        })),
-    ];
     const amount = amountAtomicFor("ticks");
     return {
         ok: true,
@@ -429,17 +421,16 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
             },
             paidResponse: {
                 ticks: "current official snapshot (all public series on this collect)",
-                failed: "current honest-empty / failed official fetches",
+                failed: "current failed official fetches",
                 history: {
                     series: "id / label / unit / group catalog",
                     points: "dated official prints already stored — days between reports are not filled in",
-                    emptyReports: "official prints with no row (organic hay stays empty)",
+                    emptyReports: "official prints with no row",
                 },
                 fetchedAt: "ISO timestamp of the last official collect",
             },
         },
         groups,
-        empty,
         samples,
         sampleNote: "samples are marked sample:true and are a few real official rows for identification. The paid GET /ticks body has the full current snapshot. This manifest does not list every current price.",
     };

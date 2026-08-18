@@ -104,8 +104,14 @@ async function main(): Promise<void> {
         assert.ok(body.ticks.length + body.history.points.length > 0, "real ticks present");
         const ticksManifest = await fetch(`${base}/manifest.json`);
         assert.equal(ticksManifest.status, 200);
-        const tm = (await ticksManifest.json()) as { tickCount: number };
+        const tm = (await ticksManifest.json()) as { tickCount: number; empty?: unknown };
         assert.equal(tm.tickCount, body.ticks.length);
+        const manBlob = JSON.stringify(tm).toLowerCase();
+        assert.equal(Object.prototype.hasOwnProperty.call(tm, "empty"), false, "public manifest must not list empty products");
+        assert.ok(!manBlob.includes("inventing"), "public manifest must not include collect-policy prose");
+        assert.ok(!manBlob.includes("usda organic"), "public manifest must not list organic hay as a product");
+        const paidBlob = JSON.stringify(body).toLowerCase();
+        assert.ok(!paidBlob.includes("we are not inventing"), "paid /ticks must not include first-person collect notes");
       },
     );
   }
