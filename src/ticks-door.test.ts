@@ -228,7 +228,7 @@ async function main(): Promise<void> {
   );
 
   await withServer(
-    { TICKS_DIR: dir, X402_SKIP_SETTLE: "1", X402_USDC_ATOMIC: "" },
+    { TICKS_DIR: dir, X402_SKIP_SETTLE: "1", X402_USDC_ATOMIC: "", FORM_483_DIR: join(tmpdir(), "form-483-absent-ticks-") },
     async (base) => {
       const unpaid = await fetch(`${base}${TICKS_PATH}`);
       assert.equal(unpaid.status, 402);
@@ -320,7 +320,7 @@ async function main(): Promise<void> {
   );
 
   await withServer(
-    { TICKS_DIR: histOnly, X402_SKIP_SETTLE: "1", X402_USDC_ATOMIC: "" },
+    { TICKS_DIR: histOnly, X402_SKIP_SETTLE: "1", X402_USDC_ATOMIC: "", FORM_483_DIR: join(tmpdir(), "form-483-absent-hist-") },
     async (base) => {
       const unpaid = await fetch(`${base}${TICKS_PATH}`);
       assert.equal(unpaid.status, 402);
@@ -386,7 +386,7 @@ async function main(): Promise<void> {
   );
 
   await withServer(
-    { TICKS_DIR: memoDir, X402_SKIP_SETTLE: "1", X402_USDC_ATOMIC: "20000" },
+    { TICKS_DIR: memoDir, X402_SKIP_SETTLE: "1", X402_USDC_ATOMIC: "20000", FORM_483_DIR: join(tmpdir(), "form-483-absent-memo-") },
     async (base) => {
       const paid = await fetch(`${base}${TICKS_PATH}`, { headers: { "X-PAYMENT": "test" } });
       assert.equal(paid.status, 200);
@@ -409,7 +409,7 @@ async function main(): Promise<void> {
   const liveBoard = join(DEFAULT_TICKS_DIR, "board.json");
   if (existsSync(liveBoard)) {
     await withServer(
-      { TICKS_DIR: DEFAULT_TICKS_DIR, X402_SKIP_SETTLE: "1", X402_USDC_ATOMIC: "" },
+      { TICKS_DIR: DEFAULT_TICKS_DIR, X402_SKIP_SETTLE: "1", X402_USDC_ATOMIC: "", FORM_483_DIR: join(tmpdir(), "form-483-absent-default-") },
       async (base) => {
         const unpaid = await fetch(`${base}${TICKS_PATH}`);
         assert.equal(unpaid.status, 402);
@@ -496,6 +496,7 @@ async function main(): Promise<void> {
       IMPORT_ALERTS_DIR: iaDir,
       IMPORT_ALERTS_TTL_MS: String(24 * 3600 * 1000),
       X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-ia-"),
     },
     async (base) => {
       const unpaid = await fetch(`${base}${IMPORT_ALERTS_PATH}`);
@@ -595,6 +596,7 @@ async function main(): Promise<void> {
       MARINERS_DIR: marinersDir,
       MARINERS_TTL_MS: String(24 * 3600 * 1000),
       X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-lnm-"),
     },
     async (base) => {
       const unpaid = await fetch(`${base}${MARINERS_PATH}`);
@@ -710,6 +712,7 @@ async function main(): Promise<void> {
       WARNING_LETTERS_DIR: wlDir,
       WARNING_LETTERS_TTL_MS: String(24 * 3600 * 1000),
       X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-wl-"),
     },
     async (base) => {
       const unpaid = await fetch(`${base}${WARNING_LETTERS_PATH}`);

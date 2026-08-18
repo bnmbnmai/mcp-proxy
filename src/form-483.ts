@@ -18,10 +18,15 @@ export const PRODUCT_NAME = "FDA Form 483 observation bodies";
 
 export const LISTING_URL =
   "https://www.fda.gov/about-fda/office-inspections-and-investigations/oii-foia-electronic-reading-room";
+export const LISTING_JSON_URL =
+  "https://www.fda.gov/datatables-json/ora-foia-reading.json?_format=json";
 export const MEDIA_BASE = "https://www.fda.gov/media/";
 export const MEDIA_PATH_RE = /\/media\/(\d+)\/download/i;
 export const RECORD_TYPE_483 = "483";
-export const DEFAULT_FIRST_SLICE = 3;
+/** Target real extractable 483 bodies per collect. `0` = keep walking the official list. */
+export const DEFAULT_FIRST_SLICE = 25;
+/** Max official PDF downloads per collect. Image-only scans are skipped, not invented. `0` = no cap. */
+export const DEFAULT_MAX_FETCH = 80;
 
 export const LETTER_FIELDS = [
   "id",
@@ -82,8 +87,12 @@ export type Form483Snapshot = {
   reason: string | null;
   fetchedAt: string;
   asOf: string | null;
+  listedCount?: number;
+  fetchedPdfs?: number;
+  skippedNoText?: number;
   sources: {
     listing: string;
+    listingJson?: string;
     mediaBase: string;
   };
   letters: Form483Letter[];
@@ -202,7 +211,48 @@ export function parseListingHtml(html: string): Form483Listing[] {
       sourceUrl: absolutePdfUrl(href[1]),
     });
   }
-  return found;
+  return sortListings(found);
+}
+
+function listingDateKey(row: Pick<Form483Listing, "publishedOn" | "recordDate">): string {
+  return `${row.publishedOn ?? ""}|${row.recordDate ?? ""}`;
+}
+
+export function sortListings(rows: Form483Listing[]): Form483Listing[] {
+  return [...rows].sort((a, b) => listingDateKey(b).localeCompare(listingDateKey(a)));
+}
+
+/** Official DataTables JSON for the same OII FOIA reading room. Record Type 483 only. */
+export function parseListingJson(raw: unknown): Form483Listing[] {
+  const rows = Array.isArray(raw) ? raw : [];
+  const found: Form483Listing[] = [];
+  const seen = new Set<string>();
+  for (const row of rows) {
+    if (!row || typeof row !== "object") continue;
+    const rec = row as Record<string, unknown>;
+    const typeLabel = stripTags(String(rec.field_foia_record_type ?? rec.field_foia_record_type_1 ?? ""));
+    if (typeLabel !== RECORD_TYPE_483) continue;
+    const hrefBlob = String(rec.field_foia_record_type_1 ?? rec.field_foia_record_type ?? "");
+    const href = hrefBlob.match(/href="([^"]*\/media\/\d+\/download[^"]*)"/i);
+    if (!href?.[1]) continue;
+    const mediaId = mediaIdFromUrl(href[1]);
+    if (!mediaId || seen.has(mediaId)) continue;
+    seen.add(mediaId);
+    const firm = stripTags(String(rec.field_company_name_1 ?? "")) || mediaId;
+    found.push({
+      id: letterId(firm, mediaId),
+      mediaId,
+      firm,
+      fei: stripTags(String(rec.field_fein ?? "")) || null,
+      recordDate: isoDate(String(rec.field_record_date ?? "")),
+      publishedOn: isoDate(String(rec.field_publish_date ?? "")),
+      state: stripTags(String(rec.field_state_1 ?? "")) || null,
+      country: stripTags(String(rec.field_country_1 ?? rec.field_country ?? "")) || null,
+      establishmentType: stripTags(String(rec.field_establishment_type_1 ?? "")) || null,
+      sourceUrl: absolutePdfUrl(href[1]),
+    });
+  }
+  return sortListings(found);
 }
 
 export function isReal483Body(text: string): boolean {
@@ -280,7 +330,7 @@ export function emptySnapshot(reason: string): Form483Snapshot {
     reason,
     fetchedAt: new Date().toISOString(),
     asOf: null,
-    sources: { listing: LISTING_URL, mediaBase: MEDIA_BASE },
+    sources: { listing: LISTING_URL, listingJson: LISTING_JSON_URL, mediaBase: MEDIA_BASE },
     letters: [],
   };
 }
@@ -289,7 +339,9 @@ export function assembleSnapshot(
   letters: Form483Letter[],
   fetchedAt = new Date().toISOString(),
 ): Form483Snapshot {
-  const withBody = letters.filter((l) => isReal483Body(l.body));
+  const withBody = letters
+    .filter((l) => isReal483Body(l.body))
+    .sort((a, b) => listingDateKey(b).localeCompare(listingDateKey(a)));
   const asOf =
     withBody
       .flatMap((l) => [l.publishedOn, l.recordDate, l.issuedOn])
@@ -303,7 +355,7 @@ export function assembleSnapshot(
     reason: withBody.length > 0 ? null : "Official OII FOIA 483 PDFs had no extractable observation text.",
     fetchedAt,
     asOf,
-    sources: { listing: LISTING_URL, mediaBase: MEDIA_BASE },
+    sources: { listing: LISTING_URL, listingJson: LISTING_JSON_URL, mediaBase: MEDIA_BASE },
     letters: withBody,
   };
 }
@@ -337,8 +389,17 @@ function htmlDir(): string {
 }
 
 function firstSliceLimit(): number {
-  const raw = Number(env("FORM_483_LIMIT", String(DEFAULT_FIRST_SLICE)));
-  return Number.isFinite(raw) && raw > 0 ? Math.floor(raw) : DEFAULT_FIRST_SLICE;
+  const raw = env("FORM_483_LIMIT", String(DEFAULT_FIRST_SLICE));
+  if (raw === "0") return 0;
+  const n = Number(raw);
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : DEFAULT_FIRST_SLICE;
+}
+
+function maxFetchLimit(): number {
+  const raw = env("FORM_483_MAX_FETCH", String(DEFAULT_MAX_FETCH));
+  if (raw === "0") return 0;
+  const n = Number(raw);
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : DEFAULT_MAX_FETCH;
 }
 
 function readNamedFile(dir: string, names: string[]): string | null {
@@ -356,6 +417,14 @@ export async function fetchFdaText(url: string): Promise<string> {
   });
   if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
   return await res.text();
+}
+
+export async function fetchFdaJson(url: string): Promise<unknown> {
+  const res = await fetch(url, {
+    headers: { "User-Agent": HTTP_UA, Accept: "application/json" },
+  });
+  if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
+  return await res.json();
 }
 
 export async function fetchFdaBytes(url: string): Promise<Uint8Array> {
@@ -393,57 +462,121 @@ function pause(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
 }
 
+async function loadOfficialListings(dir: string): Promise<Form483Listing[]> {
+  if (dir) {
+    const jsonText = readNamedFile(dir, ["listing.json", "ora-foia-reading.json"]);
+    if (jsonText) {
+      try {
+        const listed = parseListingJson(JSON.parse(jsonText));
+        if (listed.length > 0) return listed;
+      } catch {
+        /* fall through to HTML excerpt */
+      }
+    }
+    const html = readNamedFile(dir, ["listing.html", "listing-excerpt.html"]);
+    return html ? parseListingHtml(html) : [];
+  }
+  try {
+    const listed = parseListingJson(await fetchFdaJson(LISTING_JSON_URL));
+    if (listed.length > 0) return listed;
+  } catch {
+    /* official JSON missed; HTML first page still has posted 483 rows */
+  }
+  return parseListingHtml(await fetchFdaText(LISTING_URL));
+}
+
+function priorBodies(): Map<string, Form483Letter> {
+  const prior = new Map<string, Form483Letter>();
+  for (const letter of readSnapshot()?.letters ?? []) {
+    if (isReal483Body(letter.body)) prior.set(letter.mediaId, letter);
+  }
+  return prior;
+}
+
 export async function collectForm483(opts?: {
   pauseMs?: number;
   htmlDir?: string;
   limit?: number;
+  maxFetch?: number;
 }): Promise<Form483Snapshot> {
   const dir = opts?.htmlDir ?? htmlDir();
-  const pauseMs = opts?.pauseMs ?? (dir ? 0 : 1500);
-  const listingHtml =
-    readNamedFile(dir, ["listing.html", "listing-excerpt.html"]) ?? (await fetchFdaText(LISTING_URL));
-  const listed = parseListingHtml(listingHtml).slice(0, opts?.limit ?? firstSliceLimit());
-  if (listed.length === 0) {
+  const pauseMs = opts?.pauseMs ?? (dir ? 0 : 800);
+  const allListed = await loadOfficialListings(dir);
+  const target = opts?.limit ?? firstSliceLimit();
+  const fetchCap = opts?.maxFetch ?? (dir ? 0 : maxFetchLimit());
+  if (allListed.length === 0) {
     const snap = emptySnapshot("Official OII FOIA listing had no posted Form 483 PDF links.");
     writeSnapshot(snap);
     return snap;
   }
   const cacheDir = form483Dir();
   mkdirSync(cacheDir, { recursive: true });
+  const prior = priorBodies();
   const letters: Form483Letter[] = [];
-  for (const row of listed) {
+  const seen = new Set<string>();
+  let fetchedPdfs = 0;
+  let skippedNoText = 0;
+  const realCount = (): number => letters.filter((l) => isReal483Body(l.body)).length;
+  for (const row of allListed) {
+    if (target > 0 && realCount() >= target) break;
+    const cached = prior.get(row.mediaId);
+    if (cached) {
+      letters.push(cached);
+      seen.add(row.mediaId);
+      continue;
+    }
+    if (fetchCap > 0 && fetchedPdfs >= fetchCap) break;
     if (!dir) await pause(pauseMs);
     try {
+      const localText = readNamedFile(dir, [
+        `${row.mediaId}.txt`,
+        `${row.mediaId}-excerpt.txt`,
+        `${row.mediaId}-cascade-excerpt.txt`,
+        `${row.mediaId}-annovex-excerpt.txt`,
+      ]);
+      if (dir && !localText) {
+        skippedNoText += 1;
+        continue;
+      }
+      const pdfFile = join(cacheDir, `${row.mediaId}.pdf`);
       const text =
-        readNamedFile(dir, [
-          `${row.mediaId}.txt`,
-          `${row.mediaId}-excerpt.txt`,
-          `${row.mediaId}-cascade-excerpt.txt`,
-          `${row.mediaId}-annovex-excerpt.txt`,
-        ]) ??
+        localText ??
         (await (async () => {
-          const pdfFile = join(cacheDir, `${row.mediaId}.pdf`);
-          const bytes = await fetchFdaBytes(row.sourceUrl);
-          writeFileSync(pdfFile, bytes);
+          if (!existsSync(pdfFile)) {
+            writeFileSync(pdfFile, await fetchFdaBytes(row.sourceUrl));
+            fetchedPdfs += 1;
+          }
           return pdfToText(pdfFile);
         })());
-      letters.push(
-        parse483Text(text, {
-          sourceUrl: row.sourceUrl,
-          firm: row.firm,
-          fei: row.fei,
-          recordDate: row.recordDate,
-          publishedOn: row.publishedOn,
-          state: row.state,
-          country: row.country,
-          establishmentType: row.establishmentType,
-        }),
-      );
+      const parsed = parse483Text(text, {
+        sourceUrl: row.sourceUrl,
+        firm: row.firm,
+        fei: row.fei,
+        recordDate: row.recordDate,
+        publishedOn: row.publishedOn,
+        state: row.state,
+        country: row.country,
+        establishmentType: row.establishmentType,
+      });
+      if (!isReal483Body(parsed.body)) {
+        skippedNoText += 1;
+        continue;
+      }
+      letters.push(parsed);
+      seen.add(row.mediaId);
     } catch {
-      /* skip rows whose official PDF text could not be fetched */
+      skippedNoText += 1;
     }
   }
-  const snap = assembleSnapshot(letters);
+  for (const [mediaId, letter] of prior) {
+    if (!seen.has(mediaId)) letters.push(letter);
+  }
+  const snap = {
+    ...assembleSnapshot(letters),
+    listedCount: allListed.length,
+    fetchedPdfs,
+    skippedNoText,
+  };
   writeSnapshot(snap);
   return snap;
 }
@@ -497,7 +630,11 @@ export function buildForm483Manifest(snap: Form483Snapshot | null): Record<strin
       sourceUrl: l.sourceUrl,
     })),
     schema: { fields: [...LETTER_FIELDS] },
-    sources: snap?.sources ?? { listing: LISTING_URL, mediaBase: MEDIA_BASE },
+    sources: snap?.sources ?? {
+      listing: LISTING_URL,
+      listingJson: LISTING_JSON_URL,
+      mediaBase: MEDIA_BASE,
+    },
   };
 }
 
@@ -507,9 +644,8 @@ export async function loadForm483Manifest(): Promise<Record<string, unknown>> {
   try {
     const dir = htmlDir();
     if (dir) {
-      const listingHtml = readNamedFile(dir, ["listing.html", "listing-excerpt.html"]);
-      if (listingHtml) {
-        const listed = parseListingHtml(listingHtml);
+      const listed = await loadOfficialListings(dir);
+      if (listed.length > 0) {
         return buildForm483Manifest(
           assembleSnapshot(
             listed.map((row) => ({
@@ -553,6 +689,9 @@ if (isMain()) {
             fetchedAt: snap.fetchedAt,
             asOf: snap.asOf,
             letterCount: snap.letters.filter((l) => isReal483Body(l.body)).length,
+            listedCount: snap.listedCount ?? snap.letters.length,
+            fetchedPdfs: snap.fetchedPdfs ?? 0,
+            skippedNoText: snap.skippedNoText ?? 0,
             listed: snap.letters.some((l) => isReal483Body(l.body)),
             letters: snap.letters.map((l) => ({
               id: l.id,
