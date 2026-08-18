@@ -20,6 +20,7 @@ export const NETWORK_V1 = "base";
 export const NETWORK_V2 = "eip155:8453";
 export const TICKS_PATH = "/ticks";
 export const MANIFEST_PATH = "/manifest.json";
+export const CATALOG_PATH = "/catalog.json";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
 export const PRODUCT_NAME = "Idaho + PNW Market Ticks";
 export const PRODUCT_VERSION = "1.1.0";
@@ -96,7 +97,16 @@ function historyPath() {
     const board = boardPath();
     return board ? resolve(board, "..", "history.json") : "";
 }
+const COLLECT_MEMO_RE = /we are not inventing|this report has no organic row|not reusing an older organic|usda printed no organic/i;
+export function isOrganicHay(row) {
+    const blob = [row.id, row.series, row.kind, row.commodity, row.label, row.name]
+        .map((v) => String(v ?? "").toLowerCase())
+        .join(" ");
+    return /\borganic\b/.test(blob);
+}
 function isPublicTick(row) {
+    if (isOrganicHay(row))
+        return false;
     const id = String(row.id ?? row.series ?? "").toLowerCase();
     if (PUBLIC_SERIES_PREFIXES.some((p) => id.startsWith(p)))
         return true;
@@ -111,6 +121,23 @@ function isPublicTick(row) {
         .map((v) => String(v ?? "").toLowerCase())
         .join(" ");
     return PUBLIC_SOURCE_MARKERS.some((m) => blob.includes(m));
+}
+export function publicEmptyReport(row) {
+    if (isOrganicHay(row))
+        return null;
+    const id = String(row.id ?? row.series ?? "").trim();
+    if (!id)
+        return null;
+    return { id, status: "empty" };
+}
+function stripCollectMemo(row) {
+    const next = { ...row };
+    for (const key of ["reason", "note", "message"]) {
+        const value = next[key];
+        if (typeof value === "string" && COLLECT_MEMO_RE.test(value))
+            delete next[key];
+    }
+    return next;
 }
 function asRecordArray(value) {
     if (!Array.isArray(value))
@@ -136,12 +163,14 @@ export function loadTicks() {
     const board = readJsonFile(boardFile);
     const historyFile = readJsonFile(histFile);
     const rows = asRecordArray(board?.rows).filter(isPublicTick);
-    const failed = asRecordArray(board?.failed).filter(isPublicTick);
+    const failed = asRecordArray(board?.failed).filter(isPublicTick).map(stripCollectMemo);
     const hist = (board?.history && typeof board.history === "object"
         ? board.history
         : historyFile) ?? {};
     const points = asRecordArray(hist.points).filter(isPublicTick);
-    const emptyReports = asRecordArray(hist.emptyReports).filter(isPublicTick);
+    const emptyReports = asRecordArray(hist.emptyReports)
+        .map(publicEmptyReport)
+        .filter((row) => row !== null);
     const series = asRecordArray(hist.series).filter(isPublicTick);
     const fetchedAt = typeof board?.fetchedAt === "string"
         ? board.fetchedAt
@@ -193,9 +222,9 @@ export function loadTicks() {
             ? null
             : "Price cache is present but has no official hay / feeder / IF_FV130 / IBC / WD1 / 3058 / 2914 ticks.",
         fetchedAt,
-        ticks: rows,
+        ticks: rows.map(stripCollectMemo),
         failed,
-        history: { points, emptyReports, series },
+        history: { points: points.map(stripCollectMemo), emptyReports, series: series.map(stripCollectMemo) },
     };
 }
 const TICKS_DESCRIPTION = "Idaho + PNW official ticks: hay, feeder, IF_FV130, IBC grain, WD1, AMS 3058 Columbia Basin hay, AMS 2914 pulses";
@@ -261,7 +290,6 @@ export function buildManifest(resourceUrl = "https://ticks.bnm.farm/ticks") {
     const failed = payload.failed;
     const series = payload.history.series;
     const points = payload.history.points;
-    const emptyReports = payload.history.emptyReports;
     const seriesById = new Map(series.map((s) => [str(s.id), s]));
     const pointsBySeries = new Map();
     for (const point of points) {
@@ -350,30 +378,9 @@ export function buildManifest(resourceUrl = "https://ticks.bnm.farm/ticks") {
         samples.push(sampleFromRow(row, str(seriesById.get(str(row.id))?.label)));
         used.add(str(row.id));
     }
-    const empty = [
-        ...failed.map((item) => ({
-            status: "empty",
-            product: false,
-            id: str(item.id) || null,
-            name: str(item.label) || str(item.id) || "empty report",
-            reason: str(item.reason) || "No official row. Not a product.",
-            source: str(item.source) || null,
-            sourceUrl: str(item.sourceUrl) || null,
-        })),
-        ...emptyReports
-            .filter((item) => /organic/i.test(`${item.series ?? ""} ${item.reason ?? ""}`))
-            .slice(-1)
-            .map((item) => ({
-            status: "empty",
-            product: false,
-            id: str(item.series) || "hay-idaho-organic",
-            name: "USDA organic (Idaho) hay",
-            reason: str(item.reason) || "Official print has no organic row. Not a product.",
-            source: str(item.source) || null,
-            sourceUrl: str(item.sourceUrl) || null,
-            latestEmptyAsOf: str(item.reportDate).slice(0, 10) || null,
-        })),
-    ];
+    const empty = failed
+        .map((item) => publicEmptyReport(item))
+        .filter((row) => row !== null);
     const amount = amountAtomic();
     return {
         ok: true,
@@ -420,7 +427,7 @@ export function buildManifest(resourceUrl = "https://ticks.bnm.farm/ticks") {
                 history: {
                     series: "id / label / unit / group catalog",
                     points: "dated official prints already stored — days between reports are not filled in",
-                    emptyReports: "official prints with no row (organic hay stays empty)",
+                    emptyReports: "id + status only when an official print has no row",
                 },
                 fetchedAt: "ISO timestamp of the last official collect",
             },
@@ -479,7 +486,7 @@ export function bazaarExtension() {
 export function wellKnownX402() {
     return {
         version: 1,
-        resources: [`GET ${TICKS_PATH}`, `GET ${MANIFEST_PATH}`],
+        resources: [`GET ${TICKS_PATH}`, `GET ${MANIFEST_PATH}`, `GET ${CATALOG_PATH}`],
     };
 }
 export function openApiSpec(resourceUrl) {
@@ -497,15 +504,23 @@ export function openApiSpec(resourceUrl) {
                 get: {
                     operationId: "getTicksManifest",
                     summary: "Free catalog / manifest (no payment)",
-                    description: "Machine-readable catalog generated from the live official board. Series ids, sources, freshness, and a few sample ticks. Does not include the full paid snapshot.",
+                    description: "Machine-readable catalog generated from the live official board. Series ids, sources, freshness, and a few sample ticks. Does not include the full paid snapshot or collect memos.",
                     responses: { "200": { description: "Free manifest JSON" } },
+                },
+            },
+            [CATALOG_PATH]: {
+                get: {
+                    operationId: "getTicksCatalog",
+                    summary: "Free catalog (alias of /manifest.json)",
+                    description: "Same unpaid JSON as /manifest.json. No collect memos.",
+                    responses: { "200": { description: "Free catalog JSON" } },
                 },
             },
             [TICKS_PATH]: {
                 get: {
                     operationId: "getIdahoTicks",
                     summary: TICKS_DESCRIPTION,
-                    description: "Unpaid GET returns HTTP 402 (USDC on Base, $0.02 / 20000 atomic). After a valid x402 pay, JSON ticks from the farm-plan price cache (hay, feeder, IF_FV130 ID+WA-OR, IBC grain, WD1, AMS 3058 Columbia Basin hay, AMS 2914 PNW pulses). Organic hay is honest-empty when the cache has no official organic quotes.",
+                    description: "Unpaid GET returns HTTP 402 (USDC on Base, $0.02 / 20000 atomic). After a valid x402 pay, JSON ticks from the farm-plan price cache (hay, feeder, IF_FV130 ID+WA-OR, IBC grain, WD1, AMS 3058 Columbia Basin hay, AMS 2914 PNW pulses).",
                     responses: {
                         "402": { description: "Payment required (x402)" },
                         "200": { description: "Paid ticks JSON" },
@@ -770,7 +785,7 @@ export function handleRequest(req, res, port) {
         });
         return;
     }
-    if (path === MANIFEST_PATH || path === "/catalog.json") {
+    if (path === MANIFEST_PATH || path === CATALOG_PATH) {
         sendJson(res, 200, buildManifest(resourceUrl(req, port)));
         return;
     }
