@@ -205,6 +205,12 @@ export function parseListingDatatables(raw: unknown): WarningLetterListing[] {
   return parseListingHtml(`<table>${rows.join("")}</table>`);
 }
 
+export function listingHasMore(start: number, pageRows: number, total: number): boolean {
+  if (pageRows === 0) return false;
+  if (total > 0 && start + pageRows >= total) return false;
+  return true;
+}
+
 export function viewDomIdFromListingHtml(html: string): string | null {
   const js = html.match(/js-view-dom-id-([a-f0-9]{16,})/i);
   if (js) return js[1];
@@ -454,7 +460,7 @@ export async function loadOfficialListings(
           seen.add(row.id);
           listed.push(row);
         }
-        if (rows.length < pageSize) break;
+        if (!listingHasMore(start, rows.length, total)) break;
         await pause(250);
       }
       if (listed.length > 0) return { listed, listedCount: total || listed.length, fetchedPages };

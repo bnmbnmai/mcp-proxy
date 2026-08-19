@@ -10,6 +10,7 @@ import {
   LISTING_URL,
   buildWarningLettersManifest,
   collectWarningLetters,
+  listingHasMore,
   parseLetterHtml,
   parseListingDatatables,
   parseListingHtml,
@@ -50,6 +51,10 @@ async function main(): Promise<void> {
     viewDomIdFromListingHtml('<div class="js-view-dom-id-b3fcfaf49f1d99e7d65629520b72f602fdba57bfebeb3ddd0943ba0c75247637">'),
     "b3fcfaf49f1d99e7d65629520b72f602fdba57bfebeb3ddd0943ba0c75247637",
   );
+  assert.equal(listingHasMore(0, 98, 3662), true, "a short first page is not the end of 3662 letters");
+  assert.equal(listingHasMore(100, 100, 3662), true);
+  assert.equal(listingHasMore(3600, 62, 3662), false);
+  assert.equal(listingHasMore(0, 0, 3662), false);
 
   const citra = parseLetterHtml(
     readFx("citra100mg-722606-03042026-excerpt.html"),
