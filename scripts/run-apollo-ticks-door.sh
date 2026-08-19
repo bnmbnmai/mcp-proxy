@@ -14,6 +14,7 @@ if [[ ! -f build/ticks-door.js ]]; then
 fi
 
 echo "TICKS_DIR=$TICKS_DIR"
+echo "GMP_MD_DIR=${GMP_MD_DIR:-$HOME/projects/mcp-proxy/data/gmp-md}"
 echo "BIND_HOST=$BIND_HOST PORT=$PORT"
 echo "unpaid /ticks (\$0.02): curl -i http://<lan-ip>:$PORT/ticks"
 echo "unpaid /import-alerts (\$0.05): curl -i http://<lan-ip>:$PORT/import-alerts"
@@ -26,6 +27,7 @@ echo "unpaid /untitled-letters (\$0.05): curl -i http://<lan-ip>:$PORT/untitled-
 echo "unpaid /awa (\$0.05): curl -i http://<lan-ip>:$PORT/awa"
 echo "unpaid /form-483 (\$0.05): curl -i http://<lan-ip>:$PORT/form-483"
 echo "unpaid /gmp (\$0.05): curl -i http://<lan-ip>:$PORT/gmp"
+echo "unpaid /gmp-md (\$0.05): curl -i http://<lan-ip>:$PORT/gmp-md"
 echo "free manifest: curl -s http://<lan-ip>:$PORT/import-alerts/manifest.json"
 echo "free mariners: curl -s http://<lan-ip>:$PORT/mariners/manifest.json"
 echo "free mariners-d11: curl -s http://<lan-ip>:$PORT/mariners-d11/manifest.json"
@@ -36,5 +38,6 @@ echo "free untitled-letters: curl -s http://<lan-ip>:$PORT/untitled-letters/mani
 echo "free awa: curl -s http://<lan-ip>:$PORT/awa/manifest.json"
 echo "free form-483: curl -s http://<lan-ip>:$PORT/form-483/manifest.json"
 echo "free gmp: curl -s http://<lan-ip>:$PORT/gmp/manifest.json"
+echo "free gmp-md: curl -s http://<lan-ip>:$PORT/gmp-md/manifest.json"
 echo "paid smoke: X402_SKIP_SETTLE=1 … then curl -s http://<lan-ip>:$PORT/ticks -H 'X-PAYMENT: test'"
 exec node build/ticks-door.js
