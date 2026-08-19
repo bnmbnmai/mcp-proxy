@@ -3,19 +3,24 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
+  D7_LNM_LISTING_URL,
+  D7_SPEC,
   D11_LNM_LISTING_URL,
   D11_SPEC,
   LNM_LISTING_URL,
   NOTICE_FIELDS,
   buildMarinersManifest,
   latestEdition,
+  lnmPdfFilename,
   parseListingHtml,
   parseLnmText,
+  specFromArgv,
 } from "./mariners.js";
 
 const root = dirname(fileURLToPath(import.meta.url));
 const fixtures = join(root, "../src/fixtures/lnm-d13");
 const d11Fixtures = join(root, "../src/fixtures/lnm-d11");
+const d7Fixtures = join(root, "../src/fixtures/lnm-d7");
 
 function readFx(name: string): string {
   return readFileSync(join(fixtures, name), "utf-8");
@@ -23,6 +28,10 @@ function readFx(name: string): string {
 
 function readD11(name: string): string {
   return readFileSync(join(d11Fixtures, name), "utf-8");
+}
+
+function readD7(name: string): string {
+  return readFileSync(join(d7Fixtures, name), "utf-8");
 }
 
 function main(): void {
@@ -162,6 +171,74 @@ function main(): void {
   assert.ok(!d11Blob.includes("Berkeley Marina Channel Light 2"));
   assert.ok(!d11Blob.includes("WAMS"));
   assert.ok(d11Blob.includes(D11_LNM_LISTING_URL));
+
+  const d7Editions = parseListingHtml(readD7("listing-excerpt.html"));
+  assert.deepEqual(
+    d7Editions.map((e) => e.edition),
+    ["26-2026", "31-2026", "32-2026"],
+    "same NavCEN listing walker reads D7 week/year + PDF hrefs",
+  );
+  const d7Latest = latestEdition(d7Editions);
+  assert.equal(d7Latest?.edition, "32-2026");
+  assert.equal(
+    d7Latest?.sourceUrl,
+    "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm07322026.pdf",
+  );
+  assert.equal(lnmPdfFilename("7", 32, 2026), "lnm07322026.pdf");
+  assert.equal(specFromArgv(["node", "mariners.js", "--district=7"]).district, "7");
+  const d7Parsed = parseLnmText(readD7("lnm07322026-excerpt.txt"), {
+    week: "32-2026",
+    sourceUrl: d7Latest!.sourceUrl,
+  });
+  assert.equal(d7Parsed.asOf, "2026-08-12", "Southeast District header date is the same walker");
+  assert.ok(d7Parsed.notices.length >= 4, "D7 excerpt has aid rows and MSI");
+  assert.ok(
+    d7Parsed.notices.some(
+      (n) =>
+        n.section === "Federal Discrepancies" &&
+        n.waterway === "Altamaha Sound" &&
+        n.text.includes("Altamaha Sound Daybeacon 197") &&
+        n.text.includes("36887"),
+    ),
+    "Altamaha Sound Daybeacon 197 is on the official D7 week 32 PDF",
+  );
+  assert.ok(
+    d7Parsed.notices.some(
+      (n) => n.section === "Additional MSI Categories" && /Army Terminal Channel/i.test(n.text),
+    ),
+    "Bahia De San Juan Army Terminal MSI notice is official D7 text",
+  );
+  const d7Manifest = buildMarinersManifest(
+    {
+      ok: true,
+      product: "uscg-d7-lnm",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-08-19T00:00:00.000Z",
+      asOf: d7Parsed.asOf,
+      week: "32-2026",
+      year: 2026,
+      edition: "32-2026",
+      district: "7",
+      districtName: "Southeast",
+      sources: {
+        listing: D7_LNM_LISTING_URL,
+        pdfPattern: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm07{WW}{YYYY}.pdf",
+        pdfUrl: d7Latest!.sourceUrl,
+      },
+      editions: d7Editions,
+      notices: d7Parsed.notices,
+    },
+    D7_SPEC,
+  );
+  assert.equal(d7Manifest.product, "uscg-d7-lnm");
+  assert.equal(d7Manifest.district, "7");
+  assert.equal(d7Manifest.noticeCount, d7Parsed.notices.length);
+  assert.ok(d7Manifest.noticeCount && Number(d7Manifest.noticeCount) > 0);
+  const d7Blob = JSON.stringify(d7Manifest);
+  assert.ok(!d7Blob.includes("Altamaha Sound Daybeacon 197"));
+  assert.ok(!d7Blob.includes("Army Terminal Channel Port Entry Light"));
+  assert.ok(d7Blob.includes(D7_LNM_LISTING_URL));
 
   console.log("mariners parser tests ok");
 }

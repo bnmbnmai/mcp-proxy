@@ -1,6 +1,6 @@
 # USCG D11 / Southwest LNM — x402 door
 
-Sixth live door. Same NavCEN weekly-PDF walker as `/mariners` (D13). Official USCG District 11 / Southwest **northern** Local Notice to Mariners only. D11 south had no 2026 weekly PDFs on collect — not shipped. Does not invent notices. Does not wrap CBP AD/CVD.
+Sixth live door. Same NavCEN weekly-PDF walker as `/mariners` (D13). Official USCG District 11 / Southwest **northern** Local Notice to Mariners only. D11 south had no 2026 weekly PDFs on collect — not shipped. D7 / Southeast is a separate SKU at `/mariners-d7`. Does not invent notices. Does not wrap CBP AD/CVD.
 
 ## Paths
 

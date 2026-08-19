@@ -44,7 +44,7 @@ Cursor cloud VMs gitignore `data/warning-letters/` and cannot restart `idaho-tic
 
 The HTML first page is 10 rows. `DEFAULT_FIRST_SLICE = 3` was the stub (`letterCount` 3). Collect now walks the official listing AJAX (`recordsTotal` ~3662) and **keeps** cached bodies.
 
-Live after apollo collect + `idaho-ticks-x402.service` restart (2026-08-19): **letterCount 296**, asOf **2026-08-13**, fetchedAt **2026-08-19T15:20:36.317Z**. Price still $0.05. Sixth door is `/mariners-d11`.
+Live after apollo collect + `idaho-ticks-x402.service` restart (2026-08-19): **letterCount 296**, asOf **2026-08-13**, fetchedAt **2026-08-19T15:20:36.317Z**. Price still $0.05. Seventh door is `/mariners-d7`.
 
 ```bash
 # on the media-box / apollo host
