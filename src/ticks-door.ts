@@ -17,6 +17,8 @@
  * GET /warning-letters/manifest.json — free count + source (no letter body)
  * GET /untitled-letters — FDA Untitled Letter bodies, CDER OPDP + CBER promo ($0.05)
  * GET /untitled-letters/manifest.json — free count + id/firm/date/product (no letter text)
+ * GET /awa — USDA APHIS AWA inspection-report observation text ($0.05)
+ * GET /awa/manifest.json — free count + id/firm/date/sourceUrl (no observation text)
  * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
  * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.05). Listed only when a real body is cached.
@@ -76,6 +78,13 @@ import {
   loadUntitledLettersManifest,
 } from "./untitled-letters.js";
 import {
+  AWA_AMOUNT_ATOMIC,
+  AWA_MANIFEST_PATH,
+  AWA_PATH,
+  loadAwa,
+  loadAwaManifest,
+} from "./awa.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -102,7 +111,7 @@ export const CATALOG_PATH = "/catalog.json";
 export const WELL_KNOWN_PATH = "/.well-known/x402";
 export const OPENAPI_PATH = "/openapi.json";
 export const LLMS_PATH = "/llms.txt";
-/** x402scan origin page for the live paid doors. /untitled-letters is a live public SKU. */
+/** x402scan origin page for the live paid doors. /awa is a live public SKU. */
 export const X402SCAN_SERVER_URL =
   "https://www.x402scan.com/server/c6f584c5-e494-41d1-aa02-2efb07ac3546";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
@@ -172,7 +181,7 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "form-483" | "gmp";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "form-483" | "gmp";
 
 /** Always-public SKUs. /form-483 and /gmp join only when a real observation body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
@@ -184,6 +193,7 @@ export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "mariners-d8",
   "warning-letters",
   "untitled-letters",
+  "awa",
 ];
 
 export function form483IsPublic(): boolean {
@@ -205,7 +215,7 @@ export function isPublicBazaarSku(sku: DoorSku): boolean {
   return publicBazaarSkus().includes(sku);
 }
 
-const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"] as const;
+const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven"] as const;
 const NEXT_SKU_WORDS = [
   "first",
   "second",
@@ -218,6 +228,7 @@ const NEXT_SKU_WORDS = [
   "ninth",
   "tenth",
   "eleventh",
+  "twelfth",
 ] as const;
 
 function paidCountWord(): string {
@@ -228,7 +239,7 @@ function paidCountWord(): string {
 function noNextSkuWord(): string {
   const n = publicBazaarSkus().length;
   const next = NEXT_SKU_WORDS[n] ?? `${n + 1}th`;
-  return `/untitled-letters is a live public SKU on purpose. No ${next} public SKU.`;
+  return `/awa is a live public SKU on purpose. No ${next} public SKU.`;
 }
 
 function amountAtomicFor(sku: DoorSku): string {
@@ -254,6 +265,10 @@ function amountAtomicFor(sku: DoorSku): string {
   if (sku === "untitled-letters") {
     const raw = env("UNTITLED_LETTERS_USDC_ATOMIC");
     return raw.length > 0 ? raw : UNTITLED_LETTERS_AMOUNT_ATOMIC;
+  }
+  if (sku === "awa") {
+    const raw = env("AWA_USDC_ATOMIC");
+    return raw.length > 0 ? raw : AWA_AMOUNT_ATOMIC;
   }
   if (sku === "form-483") {
     const raw = env("FORM_483_USDC_ATOMIC");
@@ -307,6 +322,11 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
     description:
       "Call GET /untitled-letters when you need official FDA Untitled Letter text (CDER OPDP + CBER APLB promo) extracted from per-letter PDFs at /media/{id}/download. Not /warning-letters HTML. Not the HTML index. Does not invent letter text.",
     resourcePath: UNTITLED_LETTERS_PATH,
+  },
+  awa: {
+    description:
+      "Call GET /awa when you need official USDA APHIS Animal Welfare Act inspection-report observation/narrative text extracted from per-report PDFs on the Public Search Tool. Not the Salesforce metadata index. Not Data Liberation. Not /form-483. Not CMS 2567. Not CQC.",
+    resourcePath: AWA_PATH,
   },
   "form-483": {
     description:
@@ -453,6 +473,22 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         cites: ["FD&C Act"],
         said: "FDA has determined that the video and TV ad are false or misleading.",
         body: "The Office of Prescription Drug Promotion (OPDP) of the U.S. Food and Drug Administration (FDA) has reviewed the promotional communications…",
+      },
+    ],
+  },
+  awa: {
+    ok: true,
+    product: "aphis-awa-inspection-observation-text",
+    status: "ok",
+    cards: [
+      {
+        firm: "Utah State University",
+        date: "2026-07-07",
+        certificate: "87-R-0002",
+        inspectionId: "INS-0001617878",
+        sourceUrl:
+          "https://aphis.file.force.com/sfc/dist/version/download/?oid=00Dt0000000GyZH&ids=068SJ00001KXrsj&asPdf=false",
+        body: "Inspection Report\nUtah State University\n2.31(c)(7) Critical\nInstitutional Animal Care and Use Committee (IACUC).\n82 naked mole rats were euthanized by a method not on the approved protocol.",
       },
     ],
   },
@@ -1288,6 +1324,7 @@ export function llmsTxt(): string {
     "- GET /mariners-d8 — $0.05 — USCG D8 / Gulf Local Notice to Mariners",
     "- GET /warning-letters — $0.05 — FDA warning-letter bodies (firm, date, subject, full letter text)",
     "- GET /untitled-letters — $0.05 — FDA Untitled Letter text (CDER OPDP + CBER promo PDFs)",
+    "- GET /awa — $0.05 — USDA APHIS AWA inspection-report observation text (official per-report PDFs)",
   ];
   if (listed483) {
     paid.push("- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs)");
@@ -1307,6 +1344,7 @@ export function llmsTxt(): string {
     "- GET /mariners-d8/manifest.json — D8 LNM count + official PDF (not the notice body)",
     "- GET /warning-letters/manifest.json — FDA letter count + firm/date/subject (not the letter body)",
     "- GET /untitled-letters/manifest.json — FDA untitled count + id/firm/date/product (not the letter text)",
+    "- GET /awa/manifest.json — APHIS AWA count + id/firm/date/sourceUrl (not the observation text)",
   ];
   if (listed483) {
     free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (not the observation body)");
@@ -1351,7 +1389,7 @@ function discoveryOrigin(req: IncomingMessage, port: number): string {
 }
 
 function paidDiscoveryPaths(): string[] {
-  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH];
+  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH];
   if (form483IsPublic()) paths.push(FORM_483_PATH);
   if (gmpIsPublic()) paths.push(GMP_PATH);
   return paths;
@@ -1449,6 +1487,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const lnmD8Atomic = amountAtomicFor("mariners-d8");
   const wlAtomic = amountAtomicFor("warning-letters");
   const ulAtomic = amountAtomicFor("untitled-letters");
+  const awaAtomic = amountAtomicFor("awa");
   const f483Atomic = amountAtomicFor("form-483");
   const gmpAtomic = amountAtomicFor("gmp");
   const ticksPrice = (Number(ticksAtomic) / 1e6).toFixed(2);
@@ -1459,6 +1498,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const lnmD8Price = (Number(lnmD8Atomic) / 1e6).toFixed(2);
   const wlPrice = (Number(wlAtomic) / 1e6).toFixed(2);
   const ulPrice = (Number(ulAtomic) / 1e6).toFixed(2);
+  const awaPrice = (Number(awaAtomic) / 1e6).toFixed(2);
   const f483Price = (Number(f483Atomic) / 1e6).toFixed(2);
   const gmpPrice = (Number(gmpAtomic) / 1e6).toFixed(2);
   const listed483 = form483IsPublic();
@@ -1472,6 +1512,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
     "/mariners-d8 ($0.05)",
     "/warning-letters ($0.05)",
     "/untitled-letters ($0.05)",
+    "/awa ($0.05)",
   ];
   if (listed483) paidBits.push("/form-483 ($0.05)");
   if (listedGmp) paidBits.push("/gmp ($0.05)");
@@ -1650,6 +1691,25 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           },
         }),
       },
+      [AWA_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getAwa",
+          summary: "USDA APHIS AWA inspection-report observation text",
+          description: SKU_COPY.awa.description,
+          priceUsdc: awaPrice,
+          amountAtomic: awaAtomic,
+          example: BAZAAR_OUTPUT_EXAMPLE.awa,
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              status: { type: "string" },
+              cards: { type: "array", items: { type: "object" } },
+            },
+          },
+        }),
+      },
       ...(listed483
         ? {
             [FORM_483_PATH]: {
@@ -1727,6 +1787,12 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
         get: freeOpenApiOp(
           "FDA untitled-letters free manifest",
           "Count, id, firm, date, product, and official source URL. Not the letter text.",
+        ),
+      },
+      [AWA_MANIFEST_PATH]: {
+        get: freeOpenApiOp(
+          "APHIS AWA free manifest",
+          "Count, id, firm, date, and official source URL. Not the observation text.",
         ),
       },
       ...(listed483
@@ -1916,6 +1982,13 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
           amountAtomic: amountAtomicFor("untitled-letters"),
           manifest: UNTITLED_LETTERS_MANIFEST_PATH,
         },
+        {
+          path: AWA_PATH,
+          product: "aphis-awa-inspection-observation-text",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("awa"),
+          manifest: AWA_MANIFEST_PATH,
+        },
         ...(form483IsPublic()
           ? [
               {
@@ -2033,6 +2106,16 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === AWA_MANIFEST_PATH) {
+    sendJson(res, 200, withShopDiscovery(await loadAwaManifest(), req, port));
+    return;
+  }
+
+  if (path === AWA_PATH) {
+    await servePaid(req, res, port, "awa", () => loadAwa());
+    return;
+  }
+
   if (path === FORM_483_MANIFEST_PATH) {
     sendJson(res, 200, withShopDiscovery(await loadForm483Manifest(), req, port));
     return;
@@ -2058,7 +2141,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
 }
 
 export function bindHost(): string {
@@ -2094,6 +2177,7 @@ if (isMain()) {
     console.error(`${MARINERS_D8_PATH} $${Number(amountAtomicFor("mariners-d8")) / 1e6} USDC`);
     console.error(`${WARNING_LETTERS_PATH} $${Number(amountAtomicFor("warning-letters")) / 1e6} USDC`);
     console.error(`${UNTITLED_LETTERS_PATH} $${Number(amountAtomicFor("untitled-letters")) / 1e6} USDC`);
+    console.error(`${AWA_PATH} $${Number(amountAtomicFor("awa")) / 1e6} USDC`);
     console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
     console.error(`${GMP_PATH} $${Number(amountAtomicFor("gmp")) / 1e6} USDC${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
     console.error(`payTo ${PAY_TO} USDC ${USDC_BASE} on Base`);
