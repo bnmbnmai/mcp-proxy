@@ -15,6 +15,8 @@
  * GET /warning-letters/manifest.json — free count + source (no letter body)
  * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
+ * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.05). Listed only when a real body is cached.
+ * GET /gmp/manifest.json — free id / firm / date / rating (no observation text)
  *
  * Unpaid paid paths → HTTP 402. Public doors echo extensions.bazaar +
  * paymentPayload.resource on facilitator persist. No keys in the repo.
@@ -65,6 +67,14 @@ import {
   loadForm483,
   loadForm483Manifest,
 } from "./form-483.js";
+import {
+  GMP_AMOUNT_ATOMIC,
+  GMP_MANIFEST_PATH,
+  GMP_PATH,
+  hasCachedGmpBody,
+  loadGmp,
+  loadGmpManifest,
+} from "./gmp.js";
 
 export const PAY_TO = "0xf59621FC406D266e18f314Ae18eF0a33b8401004";
 export const USDC_BASE = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913";
@@ -76,7 +86,7 @@ export const CATALOG_PATH = "/catalog.json";
 export const WELL_KNOWN_PATH = "/.well-known/x402";
 export const OPENAPI_PATH = "/openapi.json";
 export const LLMS_PATH = "/llms.txt";
-/** x402scan origin page for the live paid doors. Seventh door is /mariners-d7. */
+/** x402scan origin page for the live paid doors. Eighth door is /gmp. */
 export const X402SCAN_SERVER_URL =
   "https://www.x402scan.com/server/c6f584c5-e494-41d1-aa02-2efb07ac3546";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
@@ -146,9 +156,9 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "warning-letters" | "form-483";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "warning-letters" | "form-483" | "gmp";
 
-/** Always-public SKUs. /form-483 joins only when a real 483 body is cached. */
+/** Always-public SKUs. /form-483 and /gmp join only when a real observation body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "ticks",
   "import-alerts",
@@ -162,9 +172,14 @@ export function form483IsPublic(): boolean {
   return hasCachedForm483Body();
 }
 
+export function gmpIsPublic(): boolean {
+  return hasCachedGmpBody();
+}
+
 export function publicBazaarSkus(): DoorSku[] {
   const skus: DoorSku[] = [...PUBLIC_BAZAAR_SKUS];
   if (form483IsPublic()) skus.push("form-483");
+  if (gmpIsPublic()) skus.push("gmp");
   return skus;
 }
 
@@ -195,7 +210,7 @@ function paidCountWord(): string {
 function noNextSkuWord(): string {
   const n = publicBazaarSkus().length;
   const next = NEXT_SKU_WORDS[n] ?? `${n + 1}th`;
-  return `/mariners-d7 is a live public SKU on purpose. No ${next} public SKU.`;
+  return `/mariners-d7 and /gmp are live public SKUs on purpose. No ${next} public SKU.`;
 }
 
 function amountAtomicFor(sku: DoorSku): string {
@@ -219,6 +234,10 @@ function amountAtomicFor(sku: DoorSku): string {
   if (sku === "form-483") {
     const raw = env("FORM_483_USDC_ATOMIC");
     return raw.length > 0 ? raw : FORM_483_AMOUNT_ATOMIC;
+  }
+  if (sku === "gmp") {
+    const raw = env("GMP_USDC_ATOMIC");
+    return raw.length > 0 ? raw : GMP_AMOUNT_ATOMIC;
   }
   const raw = env("X402_USDC_ATOMIC");
   return raw.length > 0 ? raw : TICKS_AMOUNT_ATOMIC;
@@ -259,6 +278,11 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
     description:
       "Call GET /form-483 when you need official FDA Form 483 inspectional observation bodies parsed from posted OII FOIA Electronic Reading Room PDFs. Not warning letters. Not CMS 2567. Does not invent observation text.",
     resourcePath: FORM_483_PATH,
+  },
+  gmp: {
+    description:
+      "Call GET /gmp when you need official Health Canada Drug GMP inspection report-card observation text plus C.02 cites from fullReportCard.ashx. Not the 21k-row public search index. Does not invent observations.",
+    resourcePath: GMP_PATH,
   },
 };
 
@@ -376,6 +400,21 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         recordDate: "2026-07-17",
         sourceUrl: "https://www.fda.gov/media/193964/download",
         body: "This document lists observations made by the FDA representative(s) during the inspection of your facility.\nOBSERVATION 1\nThe responsibilities and procedures applicable to the quality control unit are not fully followed.",
+      },
+    ],
+  },
+  gmp: {
+    ok: true,
+    product: "hc-gmp-report-cards",
+    status: "ok",
+    cards: [
+      {
+        firm: "Apotex Inc",
+        inspectionNumber: "88796",
+        referenceNumber: "501259",
+        inspectedOn: "2026-04-13",
+        sourceUrl: "https://www.drug-inspections.canada.ca/gmp/fullReportCard-en.html?insNumber=88796&lang=en",
+        body: "Summary of observations\n1. C.02.011 - Manufacturing control\nInvestigations into deviations, reports, and/or follow-up actions were inadequate.",
       },
     ],
   },
@@ -1172,6 +1211,7 @@ function withShopDiscovery(
 
 export function llmsTxt(): string {
   const listed483 = form483IsPublic();
+  const listedGmp = gmpIsPublic();
   const paid = [
     "- GET /ticks — $0.02 — Idaho + PNW market ticks (USDA AMS, Idaho grain, WD1 $/AF)",
     "- GET /import-alerts — $0.05 — FDA Import Alerts / DWPE firm-product snapshot",
@@ -1182,6 +1222,9 @@ export function llmsTxt(): string {
   ];
   if (listed483) {
     paid.push("- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs)");
+  }
+  if (listedGmp) {
+    paid.push("- GET /gmp — $0.05 — Health Canada Drug GMP report-card observation text + C.02 cites");
   }
   const free = [
     `- GET /openapi.json — OpenAPI 3.1 with x-payment-info for the ${paidCountWord()} paid doors`,
@@ -1196,6 +1239,9 @@ export function llmsTxt(): string {
   ];
   if (listed483) {
     free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (not the observation body)");
+  }
+  if (listedGmp) {
+    free.push("- GET /gmp/manifest.json — Health Canada GMP count + id/firm/date/rating (not the observation text)");
   }
   return [
     "# BNM Data Shop",
@@ -1236,6 +1282,7 @@ function discoveryOrigin(req: IncomingMessage, port: number): string {
 function paidDiscoveryPaths(): string[] {
   const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, WARNING_LETTERS_PATH];
   if (form483IsPublic()) paths.push(FORM_483_PATH);
+  if (gmpIsPublic()) paths.push(GMP_PATH);
   return paths;
 }
 
@@ -1330,6 +1377,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const lnmD7Atomic = amountAtomicFor("mariners-d7");
   const wlAtomic = amountAtomicFor("warning-letters");
   const f483Atomic = amountAtomicFor("form-483");
+  const gmpAtomic = amountAtomicFor("gmp");
   const ticksPrice = (Number(ticksAtomic) / 1e6).toFixed(2);
   const iaPrice = (Number(iaAtomic) / 1e6).toFixed(2);
   const lnmPrice = (Number(lnmAtomic) / 1e6).toFixed(2);
@@ -1337,10 +1385,20 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const lnmD7Price = (Number(lnmD7Atomic) / 1e6).toFixed(2);
   const wlPrice = (Number(wlAtomic) / 1e6).toFixed(2);
   const f483Price = (Number(f483Atomic) / 1e6).toFixed(2);
+  const gmpPrice = (Number(gmpAtomic) / 1e6).toFixed(2);
   const listed483 = form483IsPublic();
-  const paidList = listed483
-    ? "/ticks ($0.02), /import-alerts ($0.05), /mariners ($0.05), /mariners-d11 ($0.05), /mariners-d7 ($0.05), /warning-letters ($0.05), /form-483 ($0.05)"
-    : "/ticks ($0.02), /import-alerts ($0.05), /mariners ($0.05), /mariners-d11 ($0.05), /mariners-d7 ($0.05), /warning-letters ($0.05)";
+  const listedGmp = gmpIsPublic();
+  const paidBits = [
+    "/ticks ($0.02)",
+    "/import-alerts ($0.05)",
+    "/mariners ($0.05)",
+    "/mariners-d11 ($0.05)",
+    "/mariners-d7 ($0.05)",
+    "/warning-letters ($0.05)",
+  ];
+  if (listed483) paidBits.push("/form-483 ($0.05)");
+  if (listedGmp) paidBits.push("/gmp ($0.05)");
+  const paidList = paidBits.join(", ");
   return {
     openapi: "3.1.0",
     info: {
@@ -1500,6 +1558,29 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
             },
           }
         : {}),
+      ...(listedGmp
+        ? {
+            [GMP_PATH]: {
+              get: paidOpenApiOp({
+                operationId: "getGmp",
+                summary: "Health Canada Drug GMP report-card observation bodies",
+                description: SKU_COPY.gmp.description,
+                priceUsdc: gmpPrice,
+                amountAtomic: gmpAtomic,
+                example: BAZAAR_OUTPUT_EXAMPLE.gmp,
+                outputSchema: {
+                  type: "object",
+                  properties: {
+                    ok: { type: "boolean" },
+                    product: { type: "string" },
+                    status: { type: "string" },
+                    cards: { type: "array", items: { type: "object" } },
+                  },
+                },
+              }),
+            },
+          }
+        : {}),
       [MANIFEST_PATH]: {
         get: freeOpenApiOp("Idaho ticks free manifest", "Count, schema, and samples. Not the paid snapshot."),
       },
@@ -1530,6 +1611,16 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
               get: freeOpenApiOp(
                 "FDA Form 483 free manifest",
                 "Count, id, firm, and dates. Not the observation body.",
+              ),
+            },
+          }
+        : {}),
+      ...(listedGmp
+        ? {
+            [GMP_MANIFEST_PATH]: {
+              get: freeOpenApiOp(
+                "Health Canada GMP free manifest",
+                "Count, id, firm, date, and rating. Not the observation text.",
               ),
             },
           }
@@ -1698,6 +1789,17 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
               },
             ]
           : []),
+        ...(gmpIsPublic()
+          ? [
+              {
+                path: GMP_PATH,
+                product: "hc-gmp-report-cards",
+                priceUsdc: "0.05",
+                amountAtomic: amountAtomicFor("gmp"),
+                manifest: GMP_MANIFEST_PATH,
+              },
+            ]
+          : []),
       ],
     });
     return;
@@ -1783,12 +1885,22 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === GMP_MANIFEST_PATH) {
+    sendJson(res, 200, withShopDiscovery(await loadGmpManifest(), req, port));
+    return;
+  }
+
+  if (path === GMP_PATH) {
+    await servePaid(req, res, port, "gmp", () => loadGmp());
+    return;
+  }
+
   if (path === TICKS_PATH) {
     await servePaid(req, res, port, "ticks", () => loadTicks());
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
 }
 
 export function bindHost(): string {
@@ -1823,6 +1935,7 @@ if (isMain()) {
     console.error(`${MARINERS_D7_PATH} $${Number(amountAtomicFor("mariners-d7")) / 1e6} USDC`);
     console.error(`${WARNING_LETTERS_PATH} $${Number(amountAtomicFor("warning-letters")) / 1e6} USDC`);
     console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
+    console.error(`${GMP_PATH} $${Number(amountAtomicFor("gmp")) / 1e6} USDC${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
     console.error(`payTo ${PAY_TO} USDC ${USDC_BASE} on Base`);
     console.error(`ticksDir ${ticksDir() || "(unset)"}`);
     console.error(`board ${board && existsSync(board) ? board : "missing — paid /ticks body will be empty/stale"}`);

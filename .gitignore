@@ -10,9 +10,11 @@ build/import-alerts.*
 build/mariners.*
 build/warning-letters.*
 build/form-483.*
+build/gmp.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
 data/mariners-d7/
 data/warning-letters/
 data/form-483/
+data/gmp/

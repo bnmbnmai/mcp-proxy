@@ -1,0 +1,44 @@
+{
+  "status": "ok",
+  "fetchedAt": "2026-08-19T17:00:05.117Z",
+  "asOf": "2026-07-30",
+  "cardCount": 500,
+  "listedCount": 21456,
+  "reportCardCount": 4147,
+  "fetchedCards": 327,
+  "skippedNoText": 27,
+  "reused": 200,
+  "addedThisRun": 300,
+  "sample": [
+    {
+      "inspectionNumber": "89542",
+      "firm": "Valuemed Professional Products Ltd.",
+      "inspectedOn": "2026-07-30",
+      "observationCount": 3
+    },
+    {
+      "inspectionNumber": "89324",
+      "firm": "17029594 Canada Inc.",
+      "inspectedOn": "2026-07-29",
+      "observationCount": 4
+    },
+    {
+      "inspectionNumber": "89404",
+      "firm": "Equimedconnect Inc.",
+      "inspectedOn": "2026-07-23",
+      "observationCount": 5
+    },
+    {
+      "inspectionNumber": "89341",
+      "firm": "Neilmed Pharmaceuticals Inc",
+      "inspectedOn": "2026-07-21",
+      "observationCount": 1
+    },
+    {
+      "inspectionNumber": "89121",
+      "firm": "Cerapie Pharma Inc.",
+      "inspectedOn": "2026-07-21",
+      "observationCount": 5
+    }
+  ]
+}
