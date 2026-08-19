@@ -42,14 +42,14 @@ Do not set `X402_SKIP_SETTLE` on the standing public unit. Family / basic-auth s
 
 Cursor cloud VMs gitignore `data/untitled-letters/` and cannot restart `idaho-ticks-x402.service`. Live `cardCount` does not move until the media-box worker runs collect and restarts the door.
 
-Official indexes list **121** Untitled Letter PDFs (115 CDER OPDP + 6 CBER promo) as of 2026-08-19. Seed on disk was **5**. First fill landed **35**. Second fill landed **65**. This run is one more slice, not the whole archive.
+Official indexes list **121** Untitled Letter PDFs (115 CDER OPDP + 6 CBER promo) as of 2026-08-19. Seed on disk was **5**. Fills landed **35**, then **65**, then **95**. This remainder slice walked the rest of the official index.
 
-Live after apollo collect + `idaho-ticks-x402.service` restart (2026-08-19): **cardCount 95**, asOf **2026-07-15**, fetchedAt **2026-08-19T22:43:24.208Z**. Price still $0.05. No new SKU. `/gmp` still **3500**.
+Live after apollo collect + `idaho-ticks-x402.service` restart (2026-08-19): **cardCount 119**, asOf **2026-07-15**, fetchedAt **2026-08-19T22:51:15.174Z**. Price still $0.05. No new SKU. `/gmp` still **3500**. `/awa` still **5**. Two official `/media/{id}/download` PDFs were fetched but skipped: **131190** (Kowa LIVALO — `pdftotext` garbled) and **188672** (AstraZeneca FLUMIST — extract has `CBERAPLB@` but no `\bAPLB\b` / OPDP token).
 
 ```bash
 # on the media-box / apollo host
 cd ~/projects/mcp-proxy
-git checkout cursor/untitled-letters-fill-b794
+git checkout cursor/untitled-letters-fill-886c
 npm run build
 
 export UNTITLED_LETTERS_DIR=$HOME/projects/mcp-proxy/data/untitled-letters
@@ -63,7 +63,7 @@ systemctl --user restart idaho-ticks-x402.service
 
 The door only serves bodies already in `UNTITLED_LETTERS_DIR/snapshot.json`. Re-running collect fills that file. Restart the ticks door after collect so the paid payload and free manifest pick up the new count.
 
-A paid `GET /untitled-letters` must not re-collect with a small limit and wipe the cache. Fill is this command. Do not wipe `data/gmp/` (live cardCount 3500).
+A paid `GET /untitled-letters` must not re-collect with a small limit and wipe the cache. Fill is this command. Do not wipe `data/gmp/` (live cardCount 3500). Do not harvest AWA (live cardCount 5).
 
 ## Local smoke (cloud VM / laptop)
 
