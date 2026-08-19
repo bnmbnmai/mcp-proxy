@@ -2,22 +2,26 @@
   "status": "ok",
   "liveManifest": "https://ticks.bnm.farm/untitled-letters/manifest.json",
   "product": "fda-untitled-letter-bodies",
-  "fetchedAt": "2026-08-19T22:43:24.208Z",
+  "fetchedAt": "2026-08-19T22:51:15.174Z",
   "asOf": "2026-07-15",
-  "cardCount": 95,
-  "liveBodiesBefore": 65,
+  "cardCount": 119,
+  "liveBodiesBefore": 95,
   "listedCount": 121,
   "cderListed": 115,
   "cberListed": 6,
-  "fetchedPdfs": 30,
-  "skippedNoText": 0,
-  "reused": 63,
-  "addedThisRun": 30,
+  "fetchedPdfs": 26,
+  "skippedNoText": 2,
+  "reused": 95,
+  "addedThisRun": 24,
+  "skippedMediaIds": [
+    "131190",
+    "188672"
+  ],
   "offices": {
-    "OPDP": 93,
-    "CBER": 2
+    "OPDP": 114,
+    "CBER": 5
   },
-  "note": "Bodies are gitignored (data/untitled-letters/). This file is id/firm/date/product only. Text is official FDA /media/{id}/download Untitled Letter PDFs (CDER OPDP + CBER promo), not the HTML index, not warning-letter HTML, not close-out/promotional-material PDFs. Live GET https://ticks.bnm.farm/untitled-letters/manifest.json after apollo collect + idaho-ticks-x402 restart: cardCount 95, asOf 2026-07-15, fetchedAt 2026-08-19T22:43:24.208Z. Stop after this +30 slice past 65; do not auto-loop. GMP snapshot left at 3500.",
+  "note": "Bodies are gitignored (data/untitled-letters/). This file is id/firm/date/product only. Text is official FDA /media/{id}/download Untitled Letter PDFs (CDER OPDP + CBER promo), not the HTML index, not warning-letter HTML, not close-out/promotional-material PDFs. Live GET https://ticks.bnm.farm/untitled-letters/manifest.json after apollo collect + idaho-ticks-x402 restart: cardCount 119, asOf 2026-07-15, fetchedAt 2026-08-19T22:51:15.174Z. Remainder slice past 95 walked the official 121-PDF index; addedThisRun 24; skippedNoText 2 (media 131190 garbled pdftotext; media 188672 CBER FLUMIST has CBERAPLB@ but no \\bAPLB\\b / OPDP token). Stop after this remainder; do not auto-loop. GMP snapshot left at 3500. AWA snapshot left at 5.",
   "sample": [
     {
       "id": "sanofi-vaccines-us-inc-193721",
@@ -172,6 +176,28 @@
       "citeCount": 3,
       "bodyChars": 12586,
       "sourceUrl": "https://www.fda.gov/media/191630/download"
+    },
+    {
+      "id": "novartis-pharmaceuticals-corporation-191632",
+      "mediaId": "191632",
+      "firm": "Novartis Pharmaceuticals Corporation",
+      "date": "2026-03-09",
+      "product": "KYMRIAH (tisagenlecleucel)",
+      "office": "CBER",
+      "citeCount": 3,
+      "bodyChars": 10980,
+      "sourceUrl": "https://www.fda.gov/media/191632/download"
+    },
+    {
+      "id": "kite-pharma-inc-191633",
+      "mediaId": "191633",
+      "firm": "Kite Pharma, Inc.",
+      "date": "2026-03-09",
+      "product": "TECARTUS (brexucabtagene autoleucel)",
+      "office": "CBER",
+      "citeCount": 4,
+      "bodyChars": 10723,
+      "sourceUrl": "https://www.fda.gov/media/191633/download"
     },
     {
       "id": "novo-nordisk-inc-191387",
@@ -1063,6 +1089,248 @@
       "citeCount": 4,
       "bodyChars": 20410,
       "sourceUrl": "https://www.fda.gov/media/169419/download"
+    },
+    {
+      "id": "althera-pharmaceuticals-158997",
+      "mediaId": "158997",
+      "firm": "Althera Pharmaceuticals",
+      "date": "2022-06-02",
+      "product": "NDA 213072 ROSZET (rosuvastatin ezetimibe) tables, for oral use",
+      "office": "OPDP",
+      "citeCount": 3,
+      "bodyChars": 21572,
+      "sourceUrl": "https://www.fda.gov/media/158997/download"
+    },
+    {
+      "id": "bausch-health-companies-inc-159926",
+      "mediaId": "159926",
+      "firm": "Bausch Health Companies Inc",
+      "date": "2022-03-31",
+      "product": "DUOBRII\u2122 (halobetasol propionate and tazarotene) lotion, for topical use",
+      "office": "OPDP",
+      "citeCount": 3,
+      "bodyChars": 21213,
+      "sourceUrl": "https://www.fda.gov/media/159926/download"
+    },
+    {
+      "id": "eli-lilly-company-155627",
+      "mediaId": "155627",
+      "firm": "Eli Lilly & Company",
+      "date": "2022-01-19",
+      "product": "TRULICITY\u00ae (dulaglutide) injection, for subcutaneous use",
+      "office": "OPDP",
+      "citeCount": 3,
+      "bodyChars": 14001,
+      "sourceUrl": "https://www.fda.gov/media/155627/download"
+    },
+    {
+      "id": "emgality-155419",
+      "mediaId": "155419",
+      "firm": "Emgality",
+      "date": "2021-12-13",
+      "product": "EMGALITY (galcanezumab-gnlm) injection, for subcutaneous use",
+      "office": "OPDP",
+      "citeCount": 6,
+      "bodyChars": 13681,
+      "sourceUrl": "https://www.fda.gov/media/155419/download"
+    },
+    {
+      "id": "alkindi-sprinkle-151527",
+      "mediaId": "151527",
+      "firm": "Alkindi Sprinkle",
+      "date": "2021-08-09",
+      "product": "ALKINDI\u00ae SPRINKLE (hydrocortisone) oral granules",
+      "office": "OPDP",
+      "citeCount": 3,
+      "bodyChars": 10637,
+      "sourceUrl": "https://www.fda.gov/media/151527/download"
+    },
+    {
+      "id": "amgen-150751",
+      "mediaId": "150751",
+      "firm": "Amgen",
+      "date": "2021-07-07",
+      "product": "NEULASTA\u00ae (pegfilgrastim) injection, for subcutaneous use",
+      "office": "OPDP",
+      "citeCount": 3,
+      "bodyChars": 17264,
+      "sourceUrl": "https://www.fda.gov/media/150751/download"
+    },
+    {
+      "id": "biohaven-pharmaceuticals-146528",
+      "mediaId": "146528",
+      "firm": "Biohaven Pharmaceuticals",
+      "date": "2021-03-08",
+      "product": "NURTEC ODT (rimegepant) orally disintegrating tablets, for sublingual or oral use",
+      "office": "OPDP",
+      "citeCount": 4,
+      "bodyChars": 17156,
+      "sourceUrl": "https://www.fda.gov/media/146528/download"
+    },
+    {
+      "id": "azurity-pharmaceuticals-inc-144115",
+      "mediaId": "144115",
+      "firm": "Azurity Pharmaceuticals Inc.",
+      "date": "2020-11-24",
+      "product": "XATMEP\u00ae (methotrexate) oral solution",
+      "office": "OPDP",
+      "citeCount": 3,
+      "bodyChars": 9684,
+      "sourceUrl": "https://www.fda.gov/media/144115/download"
+    },
+    {
+      "id": "xeris-pharmaceuticals-inc-141347",
+      "mediaId": "141347",
+      "firm": "Xeris Pharmaceuticals, Inc.",
+      "date": "2020-08-14",
+      "product": "GVOKETM (glucagon) injection, for subcutaneous use",
+      "office": "OPDP",
+      "citeCount": 3,
+      "bodyChars": 15326,
+      "sourceUrl": "https://www.fda.gov/media/141347/download"
+    },
+    {
+      "id": "rockwell-medical-inc-133021",
+      "mediaId": "133021",
+      "firm": "Rockwell Medical, Inc",
+      "date": "2019-11-18",
+      "product": "NDA 206317; NDA 208551",
+      "office": "OPDP",
+      "citeCount": 3,
+      "bodyChars": 13397,
+      "sourceUrl": "https://www.fda.gov/media/133021/download"
+    },
+    {
+      "id": "nascent-biotech-inc-132641",
+      "mediaId": "132641",
+      "firm": "Nascent Biotech, Inc.",
+      "date": "2019-11-01",
+      "product": "Pritumumab",
+      "office": "OPDP",
+      "citeCount": 5,
+      "bodyChars": 12286,
+      "sourceUrl": "https://www.fda.gov/media/132641/download"
+    },
+    {
+      "id": "coopersurgical-inc-129526",
+      "mediaId": "129526",
+      "firm": "CooperSurgical, Inc.",
+      "date": "2019-07-25",
+      "product": "ParaGard\u00ae T380A INTRAUTERINE COPPER CONTRACEPTIVE",
+      "office": "OPDP",
+      "citeCount": 3,
+      "bodyChars": 16120,
+      "sourceUrl": "https://www.fda.gov/media/129526/download"
+    },
+    {
+      "id": "aclaris-therapeutics-inc-128151",
+      "mediaId": "128151",
+      "firm": "Aclaris Therapeutics, Inc.",
+      "date": "2019-06-14",
+      "product": "ESKATA\u00ae (hydrogen peroxide) topical solution",
+      "office": "OPDP",
+      "citeCount": 3,
+      "bodyChars": 20314,
+      "sourceUrl": "https://www.fda.gov/media/128151/download"
+    },
+    {
+      "id": "vivus-inc-126604",
+      "mediaId": "126604",
+      "firm": "VIVUS, Inc.",
+      "date": "2019-05-22",
+      "product": "QSYMIA (phentermine and topiramate extended-release) capsules, for oral use, CIV",
+      "office": "OPDP",
+      "citeCount": 3,
+      "bodyChars": 18298,
+      "sourceUrl": "https://www.fda.gov/media/126604/download"
+    },
+    {
+      "id": "phoenix-molecular-imaging-center-120674",
+      "mediaId": "120674",
+      "firm": "Phoenix Molecular Imaging Center",
+      "date": "2019-02-15",
+      "product": "Sodium Acetate (C-11)",
+      "office": "OPDP",
+      "citeCount": 5,
+      "bodyChars": 11167,
+      "sourceUrl": "https://www.fda.gov/media/120674/download"
+    },
+    {
+      "id": "eisai-inc-117097",
+      "mediaId": "117097",
+      "firm": "Eisai Inc.",
+      "date": "2018-10-11",
+      "product": "NDA 202834; 208277",
+      "office": "OPDP",
+      "citeCount": 3,
+      "bodyChars": 9161,
+      "sourceUrl": "https://www.fda.gov/media/117097/download"
+    },
+    {
+      "id": "ascend-therapeutics-us-llc-114329",
+      "mediaId": "114329",
+      "firm": "ASCEND Therapeutics US, LLC",
+      "date": "2018-08-16",
+      "product": "EstroGel\u00ae 0.06% (estradiol gel) for topical use",
+      "office": "OPDP",
+      "citeCount": 3,
+      "bodyChars": 13102,
+      "sourceUrl": "https://www.fda.gov/media/114329/download"
+    },
+    {
+      "id": "arog-pharmaceuticals-inc-114446",
+      "mediaId": "114446",
+      "firm": "Arog Pharmaceuticals, Inc.",
+      "date": "2018-06-28",
+      "product": "Crenolanib besylate",
+      "office": "OPDP",
+      "citeCount": 5,
+      "bodyChars": 12078,
+      "sourceUrl": "https://www.fda.gov/media/114446/download"
+    },
+    {
+      "id": "pfizer-inc-130321",
+      "mediaId": "130321",
+      "firm": "Pfizer Inc.",
+      "date": "2018-06-19",
+      "product": "ESTRING\u00ae (estradiol vaginal ring)",
+      "office": "OPDP",
+      "citeCount": 3,
+      "bodyChars": 14178,
+      "sourceUrl": "https://www.fda.gov/media/130321/download"
+    },
+    {
+      "id": "csl-behring-llc-111817",
+      "mediaId": "111817",
+      "firm": "CSL Behring LLC",
+      "date": "2018-02-27",
+      "product": "IDELVION (Coagulation Factor IX (Recombinant), Albumin Fusion",
+      "office": "CBER",
+      "citeCount": 2,
+      "bodyChars": 7710,
+      "sourceUrl": "https://www.fda.gov/media/111817/download"
+    },
+    {
+      "id": "collegium-pharmaceuticals-inc-111101",
+      "mediaId": "111101",
+      "firm": "Collegium Pharmaceuticals, Inc.",
+      "date": "2018-02-09",
+      "product": "XTAMPZA ER\u2122 (oxycodone) extended-release capsules, for oral use, CII",
+      "office": "OPDP",
+      "citeCount": 3,
+      "bodyChars": 15525,
+      "sourceUrl": "https://www.fda.gov/media/111101/download"
+    },
+    {
+      "id": "university-of-california-los-angeles-ucla-110684",
+      "mediaId": "110684",
+      "firm": "University of California Los Angeles (UCLA)",
+      "date": "2017-12-28",
+      "product": "Gallium 68 (68GA-PSMA) (Prostate Cancer Imaging webpage and brochure)",
+      "office": "OPDP",
+      "citeCount": 4,
+      "bodyChars": 9537,
+      "sourceUrl": "https://www.fda.gov/media/110684/download"
     }
   ]
 }
