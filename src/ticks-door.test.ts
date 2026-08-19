@@ -55,6 +55,8 @@ async function withServer(
   }
 }
 
+const FRESH_FETCHED_AT = new Date(Date.now() - 60_000).toISOString();
+
 async function main(): Promise<void> {
   await withServer({
     TICKS_PATH: "",
@@ -558,7 +560,7 @@ async function main(): Promise<void> {
       product: "uscg-d13-lnm",
       status: "ok",
       reason: null,
-      fetchedAt: "2026-08-18T00:00:00.000Z",
+      fetchedAt: FRESH_FETCHED_AT,
       asOf: "2026-08-12",
       week: "32-2026",
       year: 2026,
@@ -683,7 +685,7 @@ async function main(): Promise<void> {
       product: "fda-warning-letter-bodies",
       status: "ok",
       reason: null,
-      fetchedAt: "2026-08-18T00:00:00.000Z",
+      fetchedAt: FRESH_FETCHED_AT,
       asOf: "2026-03-04",
       sources: {
         listing:
@@ -778,7 +780,7 @@ async function main(): Promise<void> {
       product: "fda-form-483-bodies",
       status: "ok",
       reason: null,
-      fetchedAt: "2026-08-18T00:00:00.000Z",
+      fetchedAt: FRESH_FETCHED_AT,
       asOf: "2026-07-31",
       sources: {
         listing:
