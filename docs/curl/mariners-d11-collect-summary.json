@@ -1,0 +1,19 @@
+{
+  "source": "https://www.navcen.uscg.gov/local-notices-to-mariners?district=11+0&subdistrict=n",
+  "pdfUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11322026.pdf",
+  "liveManifest": "https://ticks.bnm.farm/mariners-d11/manifest.json",
+  "product": "uscg-d11-lnm",
+  "district": "11",
+  "districtName": "Southwest",
+  "week": "32-2026",
+  "asOf": "2026-08-12",
+  "fetchedAt": "2026-08-19T16:03:08.169Z",
+  "noticeCount": 197,
+  "sections": [
+    { "section": "Additional MSI Categories", "count": 63 },
+    { "section": "Federal Discrepancies", "count": 46 },
+    { "section": "Private Discrepancies", "count": 86 },
+    { "section": "Temporary Changes", "count": 2 }
+  ],
+  "note": "Notice text is gitignored (data/mariners-d11/). Same NavCEN walker as /mariners (D13). D11 south had no 2026 weekly PDFs. Live GET https://ticks.bnm.farm/mariners-d11/manifest.json after apollo collect + idaho-ticks-x402 restart."
+}
