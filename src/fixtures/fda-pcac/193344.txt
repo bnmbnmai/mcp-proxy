@@ -1,0 +1,3051 @@
+FDA Briefing Document
+
+       Pharmacy Compounding Advisory Committee (PCAC)
+                          Meeting
+
+                                    July 23 -24, 2026
+
+
+
+
+The attached package contains background information prepared by the Food and Drug
+Administration (FDA or Agency) for the panel members of the Pharmacy Compounding Advisory
+Committee (advisory committee). We are bringing certain compounding issues to this advisory
+committee to obtain the advisory committee’s advice. The background package may not include all
+issues relevant to the final committee recommendation and instead is intended to focus on issues
+identified by the Agency for discussion by the advisory committee. The FDA will not issue a final
+determination on the issues at hand until input from the advisory committee process has been
+considered and all reviews have been finalized. The final determination may be affected by issues
+not discussed at the advisory committee meeting.
+
+
+
+
+                                                                                                    1
+  Emideltide-Related
+ Bulk Drug Substances
+(Emideltide (free base)
+and Emideltide acetate)
+
+
+
+
+                          2
+                                         Table of Contents
+ 1. FDA Evaluation of Emideltide-related bulk drug substances...…..…....................................4
+     I.      Introduction….……………………………………………..…………......................9
+     II.     Evaluation Criteria…….…….………………………..……………........................10
+             A. Is the substance well characterized, physically and chemically?.......................10
+             B. Has the substance been used historically in compounding?...............................20
+             C. Available evidence of effectiveness or lack of effectiveness of drug products
+                 compounded with the substance ……………….…………………………...…23
+             D. Are there concerns about the safety of the substance for use in
+                 compounding?....................................................................................................41
+     III.    Conclusion and Recommendation…..…………………..………..………………..53
+     IV.     References……………..……….………………..…...………...…………………..57
+     V.      Appendices………………………………………………….……………………...64
+2. Emideltide-related bulk drug substance Nominations…...……..……………...………….....71
+     I.      LDT Health Solutions Inc…………………………………....………..…………...72
+     II.     Wells Pharmacy Network……………………………………………………….....78
+
+
+
+
+                                                                                                                                  3
+FDA Evaluation of Emideltide –
+ Related Bulk Drug Substances
+  (Emideltide (free base) and
+      Emideltide acetate)
+
+
+
+
+                                 4
+DATE:           5/11/2026
+
+FROM:           Hong Ding, Ph.D. (Primary)
+                Chemist, Office of Product Quality Assessment II (OPQAII),
+                Office of Pharmaceutical Quality (OPQ)
+
+                Jamiele Mattocks, Pharm.D., B.C.A.C.P.
+                Consumer Safety Officer (CSO),
+                Office of Compounding Quality and Compliance (OCQC),
+                Office of Compliance (OC)
+
+                Tracy Rupp, Pharm.D., M.P.H., B.C.P.S.
+                Lead Consumer Safety Officer, OCQC, OC
+
+                Edna Albuquerque, Ph.D.
+                Senior Pharmacology/Toxicology Reviewer, Division of
+                Pharmacology/Toxicology for Rare Diseases, Pediatrics, Urologic, and
+                Reproductive Medicine/Specialty Medicine (DPT-RPURM/SM),
+                Office of New Drugs (OND)
+
+                Andrea Benedict, Ph.D.
+                Nonclinical Team Leader, DPT-RPURM/SM, OND
+
+                Katie Park, Pharm.D., M.P.H.
+                Clinical Analyst, Pharmacy Compounding Review Team (PCRT),
+                Office of Specialty Medicine (OSM), OND
+
+                Suhail Kasim, M.D. M.P.H.
+                Lead Physician, PCRT, OSM, OND
+
+THROUGH: Russell Wesdyk, B.S., MBA
+         Associate Director for Regulatory Affairs, OPQA2, OPQ
+
+                Alex Gorovets, M.D.
+                Deputy Director, OSM, OND
+
+                Matt Lash, JD
+                Acting Director, OCQC, OC
+                Deputy Director, OC
+U.S. Food & Drug Administration
+10903 New Hampshire Avenue
+Silver Spring, MD 20993
+www.fda.gov
+
+
+
+
+                                                                                       5
+TO:          Pharmacy Compounding Advisory Committee
+
+SUBJECT: Evaluation of Emideltide-related bulk drug substances: Emideltide (free base) and
+Emideltide acetate for Inclusion on the 503A Bulk Drug Substances List. Emideltide is also
+referred to as Delta Sleeping Inducing Peptide (DSIP).
+
+
+
+
+                                                                                         6
+List of Abbreviations
+ Abbreviation           Term
+ AASM                   American Academy of Sleep Medicine
+ ACP                    American College of Physicians
+ AE                     adverse event
+ API                    active pharmaceutical ingredient
+ ASAM                   American Society of Addiction Medicine
+ BDS                    bulk drug substance
+ BET                    bacterial endotoxins test
+ BSA                    body surface area
+ CAS                    Chemical Abstract Service
+ CBT-I                  cognitive behavioral therapy for insomnia
+ CDC                    Centers for Disease Control and Prevention
+ CINA                   Clinical Institute Narcotic Assessment
+ CO                     crossover
+ CoA                    certificate of analysis
+ COWS                   Clinical Opioid Withdrawal Scale
+ CQA                    critical quality attribute
+ CSF                    cerebrospinal fluid
+ DB                     double-blind
+ DNS                    disturbed nocturnal sleep
+ DORA                   dual orexin receptor antagonist
+ DSIP                   Delta Sleeping Inducing Peptide
+ DSM-5                  Diagnostic and Statistical Manual of Mental
+                        Disorders Fifth Edition
+ DSM-5-TR               Diagnostic and Statistical Manual of Mental
+                        Disorders Fifth Edition Text Revision
+ EDS                    excessive daytime sleepiness
+ EEG                    electroencephalogram
+ ESS                    Epworth Sleepiness Scale
+ EWL                    Eigenschaftswörterliste
+ FAERS                  FDA Adverse Event Reporting System
+ FD&C Act               Federal Food, Drug, and Cosmetic Act
+ GABAB                  Gamma-hydroxybutyric acid B subtype
+ GC                     gas chromatography
+ GRAS                   Generally Recognized as Safe
+ HH                     hypnagogic/hypnopompic hallucination
+ HPLC                   high-performance liquid chromatography
+ HSA                    human serum albumin
+ ICV                    intracebroventricular
+ INN                    International Nonproprietary Name
+ IP                     intraperitoneal
+ IPS                    International Peptide Society Submission
+
+
+
+
+                                                                      7
+IUPAC    International Union of Pure and Applied
+         Chemistry
+IV       intravenous
+KF       Karl Fischer
+LDT      Laboratory Diagnosis Testing
+MRT      multiple relaxation test
+MS       mass spectrometry
+MSLT     Multiple Sleep Latency Test
+MWT      Maintenance of Wakefulness Test
+NF       National Formulary
+NMR      nuclear magnetic resonance
+NOA      number of awakenings
+NREM     non-rapid eye movement
+OOWS     Objective Opioid Withdrawal Scale
+OTC      over-the-counter
+OUD      opioid use disorder
+PBS      phosphate buffered solution
+PC       placebo-controlled
+POMS     profile of mood states
+QOS      quality of sleep
+R        randomized
+REM      rapid eye movement
+ROA      route of administration
+SAMHSA   Substance Abuse and Mental Health Services
+         Administration
+SC       subcutaneous
+SE       sleep efficiency
+SOL      sleep onset latency
+SOREM    sleep-onset REM
+SOWS     Subjective Opioid Withdrawal Scale
+SP       sleep paralysis
+SPPS     solid phase peptide synthesis
+SSS      Stanford Sleepiness Scale
+SWS      slow-wave sleep
+TST      total sleep time
+USAN     United States Adopted Name
+USP      United States Pharmacopeia
+WASO     wake after sleep onset
+WHO      World Health Organization
+
+
+
+
+                                                      8
+I. INTRODUCTION
+
+ The Food and Drug Administration (FDA, the Agency, or we) received nominations for
+ emideltide-related bulk drug substances (BDSs) for inclusion on the list of BDSs that can be
+ used in compounding under section 503A of the Federal Food, Drug, and Cosmetic Act (FD&C
+ Act). 1 Emideltide is also referred to as Delta Sleeping Inducing Peptide (DSIP). 2 The nominators
+ of emideltide-related BDSs provided inconsistent information in the nomination packages
+ regarding the specific BDS proposed. Specifically, it is unclear whether the nominations were for
+ emideltide (free base) or emideltide acetate. Emideltide (free base) and emideltide acetate are
+ different BDSs. Please see additional information in section II.A. The nominations were
+ withdrawn,3 and FDA is evaluating the substances at its discretion.
+
+ Emideltide is reported to be a nonapeptide. FDA has decided to evaluate both emideltide (free
+ base) and emideltide acetate because it is unclear which substance the nominators intended to
+ nominate and the available information often did not clearly identify the specific bulk drug
+ substance at issue or whether drug products containing such substance were compounded.
+
+ Emideltide acetate and emideltide (free base) were evaluated for the following use(s): opioid
+ withdrawal and two sleep disorders that included chronic insomnia4 and narcolepsy.5,6 FDA
+ evaluated emideltide-related BDSs to compound drug products for subcutaneous (SC) injection
+ administration in a 1000 mcg/mL (1 mg/mL) concentration.
+
+
+
+
+ 1
+   The nomination of “emideltide” from Wells Pharmacy Network (Document ID:FDA-2015-N-3534-0287) can be
+ accessed at https://www.regulations.gov/document/FDA-2015-N-3534-0287. The nomination of “emideltide” from
+ LDT Health Solutions, Inc. (Document ID: FDA-2018-N-2973-0002) can be accessed at
+ https://www.regulations.gov/document/FDA-2018-N-2973-0002. These nominations were withdrawn, but because
+ FDA is evaluating emideltide (free base) and emideltide acetate on its own initiative, FDA considered information
+ submitted in these nominations as part of this evaluation.
+ 2
+   DSIP promotes a particular type of sleep which is characterized by an increase in the delta rhythm of the EEG
+ (Pollard and Pomfrett 2001).
+ 3
+   Document IDs: FDA-2015-N-3534-0484 and FDA-2015-N-3534-0485.
+ 4
+   Emideltide was nominated for “insomnia”, but we focused on “chronic insomnia” as this is the condition that was
+ discussed in the references submitted by the nominators.
+ 5
+   We have explained that it is necessary to evaluate a nominated bulk drug substance in the context of the uses
+ proposed for compounded drug products that include the substance, though we acknowledge that inclusion of a
+ substance on the 503A Bulks List may not be limited to a specific use. See 84 FR 4696, 4701.
+ 6
+   Emideltide was also nominated for “paradoxical sleep disorder.” However, FDA did not evaluate this proposed use
+ because the nominations did not include sufficient information for the Agency to evaluate whether the substance is
+ appropriate for this use in compounded products.
+
+
+
+                                                                                                                  9
+ There is no applicable United States Pharmacopeia (USP) or National Formulary (NF) drug
+ substance monograph for emideltide (free base) or its acetate form, and neither is a component of
+ an FDA-approved drug.
+
+ We have evaluated publicly available data on the physicochemical characteristics, historical use,
+ safety, and effectiveness in compounding of these substances. For the reasons discussed below,
+ we believe the evaluation criteria weigh against placing both emideltide (free base) and
+ emideltide acetate on the list of bulk drug substances that can be used to compound drug
+ products in accordance with section 503A of the FD&C Act (503A Bulks List).
+
+II. EVALUATION CRITERIA
+
+      A. Is the Substance Well-Characterized, Physically and Chemically? 7
+
+ Emideltide is a common name and not United States Adopted Name (USAN). 8 FDA has
+ encountered multiple salts, and derivatives, including different active moieties, sold
+ commercially under the same common name. Inconsistent naming conventions that do not
+ follow established chemical nomenclature standards (e.g., USAN, INN, IUPAC) 9,10 represent a
+ safety risk for patients as they may be dosed with a different bulk drug substance than the
+ physician ordered. From a chemical analysis standpoint, inconsistent naming conventions for
+ emideltide-related BDSs also introduce risks because of the inability to determine which bulk
+ drug substance a particular reference standard is referencing.
+
+ As discussed above, this evaluation pertains to emideltide (free base) and emideltide acetate.
+
+
+
+
+ 7
+   Among the conditions that must be met for a drug compounded using bulk drug substances to be eligible for the
+ exemptions in section 503A of the FD&C Act is that the bulk drug substances are manufactured by an establishment
+ that is registered under section 510 of the FD&C Act and that each bulk drug substance is accompanied by a valid
+ CoA. Sections 503A(b)(1)(A)(ii) and (iii). A bulk drug substance is deemed to be adulterated if the methods used in,
+ or the facilities or controls used for, its manufacture, processing, packing, or holding do not conform to or are not
+ operated or administered in conformity with current good manufacturing practice. Section 501(a)(2)(B).
+ 8
+   United States Adopted Name (USAN) is a unique, nonproprietary name for a drug sold in the United States. The
+ USAN Council, which is sponsored by several organizations, assigns USANs. This program and naming convention
+ are intended to help physicians, pharmaceutical manufacturers of active ingredients and finished dosage forms, and
+ pharmacists ensure that the patient is provided with the drug the physician intended.
+ 9
+   INN: International Nonproprietary Name from World Health Organization (WHO).
+ 10
+    IUPAC: International Union of Pure and Applied Chemistry.
+
+
+
+                                                                                                                   10
+A BDS or API 11 used in a drug product may be a free base (i.e., the native molecule) or a salt or
+an ester of the free base, all of which share the same active moiety. 12 Different active moieties
+are not interchangeable because they can have different safety and efficacy profiles. Similarly, a
+free base or the various salts or esters of an active moiety are distinct chemical entities, each with
+a different chemical structure and unique physical/chemical, or pharmacokinetic/
+pharmacodynamic characteristics. As a result, each may offer distinct properties (e.g., different
+solubilities, permeability, melting points, stability, or flow characteristics) and may also have
+different safety and/or efficacy profiles. All distinct active moieties, as well as free bases, salts,
+or esters of any given active moiety, are distinct BDSs for these reasons.
+
+Emideltide, originally found in rabbit cerebral venous blood (Monnier M, 1963), is reported to
+be a nine amino acid peptide composed of Тrр-Аlа-Gly-Gly-Asp-Ala-Ser-Gly-Glu, and was
+synthesized later (Monnier M, 1976).
+
+There is no applicable USP or NF drug substance monograph for emideltide (free base) or its
+acetate form. Common names for the BDSs listed in public databases include DSIP moiety. 13
+
+Table 1 below summarizes the identifying information available in the public domain for each
+BDS.
+
+
+
+
+11
+   The terms BDS and API are used interchangeably in the compounding context. See 21 CFR 207.3 (“Bulk drug
+substance, as referenced in sections 503A(b)(1)(A) and 503B(a)(2) of the FD&C Act, previously defined in §
+207.3(a)(4), means the same as "active pharmaceutical ingredient" as defined in § 207.1.”). An API is defined in
+FDA regulations at 21 CFR 207.1, which states “Active pharmaceutical ingredient means any substance that is
+intended for incorporation into a finished drug product and is intended to furnish pharmacological activity or other
+direct effect in the diagnosis, cure, mitigation, treatment, or prevention of disease, or to affect the structure or any
+function of the body. Active pharmaceutical ingredient does not include intermediates used in the synthesis of the
+substance.”
+12
+   “Active moiety is the molecule or ion, excluding those appended portions of the molecule that cause the drug to
+be an ester, salt (including a salt with hydrogen or coordination bonds), or other noncovalent derivative (such as a
+complex, chelate, or clathrate) of the molecule, responsible for the physiological or pharmacological action of the
+drug substance.” 21 CFR 314.3.
+13
+   Information available at https://www.lifetein.com/peptide-product/emideltide-delta-sleep-inducing-peptide-p-
+10003.html?srsltid=AfmBOoo9sXOnen9N8ltrLR-oUN8s o qd0el0IE51Mj-Syz4jQ3gij8d. Accessed 05/22/25.
+
+
+
+                                                                                                                       11
+Table 1. Summary of Basic Information on Emideltide Related BDSs
+ Characteristic                 Emideltide (Free Base)                      Emideltide Acetate
+ UNII Code                         YN28Z5YZ73                                     N/A
+ CAS No.*                           62568-57-4                                    N/A
+ MF/MW (g/mol)                     C35H48N10O15/848.814                  C35H48N10O15. Acetate/908.8
+                               Тrр-Аlа-Gly-Gly-Asp-Ala-            Тrр-Аlа-Gly-Gly-Asp-Ala-Ser-Gly-
+ Chemical Structure
+                                     Ser-Gly-Glu                            Glu. CH3COOH
+ Supplier                                Yes                                      Yes
+ Active moiety                   Emideltide (free base)                  Emideltide (free base)
+Information available at https://www.chemicalbook.com/ChemicalProductProperty EN CB6478191.htm.
+Abbreviations: CAS, Chemical Abstract Service; MF, molecular formula; MW, molecular weight; UNII, Unique
+Ingredient Identifier
+
+Two nominations were submitted which, as discussed above, were later withdrawn. The
+nominators provided inconsistent information about the different emideltide-related BDSs in
+their nominations. Due to the inconsistencies in the nominations as well as inconsistencies in the
+public domain and literature, there was lack of clarity about emideltide-related BDSs including
+the nominated BDS. All chemistry-related information about the BDSs provided by both
+nominators is summarized in Table 2.
+
+Table 2. Summary of Information Submitted in Two Withdrawn Nominations
+ Nominator                                   1                                          2
+ Nominated BDS                           Emideltide                                    DSIP
+ BDS per UNII                          YN28Z5YZ73                                YN28Z5YZ73
+ Code                          (Matches emideltide (free base))          (Matches emideltide (free base))
+ CoA                         CoA provided for DSIP Acetate             CoA provided for DSIP free base
+                                      62568-57-4                                62568-57-4
+ CAS No.
+                             (Matches emideltide (free base))          (Matches emideltide (free base))
+                                       C35H48N10O15
+                                                                             C35H57N13O14S24S2
+                                                                             (provided in the CoA)
+ MF                                (provided in the CoA)
+                                                                          (Does not correspond to any
+                               (Matches emideltide (free base))
+                                                                              emideltide structure)
+                               848.814 (provided in the CoA)             848.814 (provided in the CoA)
+ MW                           (Matches emideltide (free base))          (Matches emideltide (free base))
+                              H-Тrр-Аlа-Gly-Gly-Asp-Ala-Ser-           Тrр-Аlа-Gly-Gly-Asp-Ala-Ser-Gly-
+ Chemical Name                         Gly-Glu-OH                                     Glu
+                              (Matches emideltide (free base))          (Matches emideltide (free base))
+Italics in the table above represents the information identified by FDA.
+Abbreviations: BDS, bulk drug substance; CAS, Chemical Abstract Service; CoA, Certificate of Analysis; DSIP,
+Delta Sleeping Inducing Peptide; MF, molecular formula; MW, molecular weight; UNII, Unique Ingredient
+Identifier
+
+One nomination named “emideltide” as nominated BDS. The nomination included a certificate
+of analysis (CoA) for the nominated BDS. The chemical name provided in CoA by the
+nominator does not correspond to the emideltide. The chemical name, Chemical Abstract Service
+(CAS) number, molecular formula, molecular weight, and amino acid sequence information
+provided by the nominator refers to emideltide (free base), but the chemical name and acetic acid
+
+
+
+                                                                                                               12
+content testing in CoA refers to emideltide acetate. Clinical references provided in the
+nomination refer to emideltide (free base). It is unclear whether emideltide or emideltide acetate
+was intended to be the nominated BDS based on the information provided.
+
+The second nomination identified the nominated BDS as “DSIP” which is consistent with the
+CoA for the nominated BDS. The chemical name, molecular formula, and molecular weight
+provided by the nominator refers to emideltide (free base).
+
+FDA is choosing to concurrently evaluate both BDSs under different sub-sections of this
+evaluation: (II.A.1) emideltide (free base) and (II.A.2) emideltide acetate.
+
+The nominators have proposed to compound this BDS into the following dosage form:
+
+   •   Injection/SC Injection
+
+For an injection product, in general, critical quality attributes (CQAs) including sterility,
+bacterial endotoxins test (BET), and foreign particulates are critical safety factors. For this
+reason, bioburden load (i.e., microbial enumeration test) and BET are critical for the BDSs to be
+used in compounding injectable solutions. Evaluation of the solubility of the BDS is also critical
+to ensure that no BDS precipitates are formed in the compounded drug product.
+
+There is no USP drug substance monograph for any of the emideltide-related BDSs. We
+reviewed physical and chemical characterization-related information provided by the nominators
+and performed a literature search for additional information on each of the emideltide-related
+BDSs. Databases searched for information on emideltide-related BDSs in preparation of this
+section included SciFinder, Analytical Profiles of Drug Substances, PubMed, the European
+Pharmacopoeia, and the USP-NF.
+
+        1. Emideltide (Free Base)
+
+Emideltide (free base) is reported to be a naturally occurring nonapeptide (Trp-Ala-Gly-Gly-
+Asp-Ala-Ser-Gly-Glu) that is commercially available as a synthetic peptide as showed in
+Figure 1. The molecular formula of emideltide (free base) is C35H48N10O15, and its molecular
+weight is 848.8 g/mol.
+
+
+
+
+                                                                                                 13
+Figure 1. The Structure of Emideltide (Free Base)
+
+
+
+
+                a. Stability of the Bulk Drug Substance and Likely Dosage Forms
+
+Emideltide (free base) as a white crystalline or powder is stored at -20°C, 14 and the BDS remains
+stable for three years. Under 4°C, the BDS remains stable for two years. It is reported that
+lyophilized emideltide (free base) is stable at room temperature for 3 weeks. For long-term
+storage it is recommended to add a carrier protein (0.1% human serum albumin [HSA] or body
+surface area [BSA]) and prevent freeze-thaw cycles. 15
+
+FDA notes that peptides such as emideltide (free base) can be extremely sensitive to product
+formulation, process, and environmental conditions (e.g., pH, heat (temperature), concentration,
+in-process related impurities, excipients etc.), which may lead to the aggregation and degradation
+of peptides. This could result in loss of their biological activity (Zapadka et al. 2017). Multiple
+analytical methods may be needed to detect various aggregates, including size exclusion
+chromatography or field flow fractionation, involving equipment compounders may not be
+typically available in a compounding facility. Hence, peptides may require more and/or specific
+analytical in-process and final product testing for impurities than what is required for small
+molecules. Uncontrolled manufacturing processes as well as impurities may increase the risk of
+product aggregation. Product formulation is critical to the quality and stability of peptide drug
+products, as it is necessary to maintain the peptide molecules in their native state (in the
+formulation) to the extent possible. Significant amounts of aggregates can form in formulated
+products, especially during storage or when exposed to stress conditions.
+
+                b. Probable Routes of Bulk Drug Substance Synthesis
+
+The emideltide (free base), originally found in rabbit cerebral venous blood, is reported to be a
+naturally occurring nonapeptide (Trp-Ala-Gly-Gly-Asp-Ala-Ser-Gly-Glu) that is commercially
+
+
+
+14
+     Information available at https://www.novoprolabs.com/p/emideltide-318939.html. Accessed 05/22/25.
+15
+     Information available at https://www.invivochem.com/emideltide.html. Accessed 05/22/25.
+
+
+
+                                                                                                         14
+available as a synthetic peptide. There is a lack of information on the route of synthesis of the
+BDS.
+
+              c. Likely Impurities 16
+
+Generally speaking, peptide-related impurities and peptide synthesis process-related impurities
+contribute to and are considered in understanding the impurity profile for all peptides, including
+emideltide (free base). For most synthetic peptides, the solid-phase peptide synthesis method has
+been widely used by industry for peptide synthesis. The solid phase synthesis of peptides may
+lead to potential peptide-related impurities due to incomplete coupling reactions, truncations, or
+side reactions. These peptide-related impurities are typically similar in structure to the target
+peptide and may be difficult to identify and quantify without sophisticated analytical methods.
+Additional potential common impurities may be derived from impurities in the protected amino
+acid starting materials (e.g., isomeric impurities, free amino acids) and other species that may
+carry over into the drug substance. In addition, residual solvents, coupling reagents, activators,
+catalysts, and scavengers may exist as solid phase peptide synthesis (SPPS) process related
+impurities. The drug substance and its proposed product-related impurities may also include
+peptide-related aggregates.
+
+The CoA for emideltide (free base) was provided in the withdrawn nomination packages (Figure
+2). The following analytical methods were applied in CoA: visual test for appearance, solubility
+determination, nuclear magnetic resonance (NMR) and mass spectrometry (MS) for chemical
+structure confirmation, and high-performance liquid chromatography (HPLC) method for purity.
+However, there is no information on the impurity limits/testing results as attribute control in the
+withdrawn nominator’s CoA to demonstrate quality control of impurity profile of emideltide
+(free base).
+
+Because there is lack of information regarding potential impurities that can be present in
+emideltide (free base) and the lack of information on the potential of peptide aggregation, we
+cannot rule out the potential for immunogenicity associated with these impurities and peptide
+related aggregates.
+
+
+
+
+16
+  This evaluation contains a non-exhaustive list of potential impurities in the bulk drug substance and does not
+address fully the potential safety concerns associated with those impurities. The compounder should use the
+information about the impurities identified in the CoA accompanying the bulk drug substance to evaluate any
+potential safety and quality issues associated with impurities in a drug product compounded using that bulk drug
+substance taking into account the amount of the impurity, dose, route of administration (ROA), and chronicity of
+dosing. Available nonclinical toxicity data for likely impurities of concern (e.g., nitrosamines, potential mutagenic
+substances, and potential teratogenic substances) in the nominated bulk drug substance are discussed in the
+Nonclinical Assessment at Section C.I. as part of the safety assessment of the substance.
+
+
+
+                                                                                                                        15
+Figure 2. Nominator-Submitted Example of a CoA for Emideltide (Free Base)
+
+
+
+
+            d. Physiochemical Characteristics Pertinent to Product Performance, Such as Particle
+               Size and Polymorphism
+
+Emideltide (free base) is a white to off-white lyophilized powder. It is soluble in water at 0.5
+mg/mL for free base. 17 Because the emideltide (free base) has limited solubility in water,
+formulation of the proposed SC injectable dosage form at the concentration of 1,000 mcg/mL
+may have solubility issue upon reconstitution.
+
+
+
+
+ Information available at https://www.chemicalbook.com/ChemicalProductProperty EN CB6478191.htm.
+17
+
+Accessed 05/22/25.
+
+
+
+
+                                                                                                   16
+            e. Any Other Information About the Substance That May Be Relevant, Such as
+               Whether the Bulk Drug Substance is Poorly Characterized or Difficult To
+               Characterize.
+
+No bioburden/endotoxin test is mentioned in the CoA provided by the nominator. Endotoxin
+testing is considered a CQA to control microbiological quality of a BDS intended for an injection
+product. No such relevant information for emideltide (free base) was identified in the public
+domain. In addition, there is no residual solvent testing in the nomination.
+
+Conclusions: Emideltide (free base) is reported to be a peptide consisting of nine amino acids.
+As reported in the literature, emideltide (free base) is expected to be stable under reported
+storage conditions below -20°C. Also, since emideltide (free base) peptide has limited water
+solubility, the particle size distribution (PSD) control for emideltide (free base) powder may be
+needed.
+
+Emideltide (free base) is considered not well-characterized from the physical and chemical
+characterization perspectives based on (1) inconsistent naming conventions that do not follow
+established chemical nomenclature standards (e.g., USAN, INN, IUPAC), and (2) certain critical
+characterization data specific to emideltide (free base), including specific tests for impurities,
+aggregates, and endotoxins, were not found in the publicly available scientific literature, and the
+nominations did not provide scientific literature or other information such as CoAs as evidence
+to establish identity, purity, and impurity profiles of the substance. As discussed in Section
+II.C.2.d., FDA is concerned about the potential for immunogenicity of emideltide (free base)
+when formulated in an injectable dosage form for SC administration due to the potential for
+peptide aggregation as well as potential peptide-related impurities, as discussed in the impurity
+section. Injectable routes of administration may present a particular risk for immunogenicity. We
+also note that the stability, pharmacological activity, and immunogenic properties of peptides
+such as emideltide (free base) are highly sensitive to the manufacturing process and quality
+attributes of the compounded/finished drug product. In addition, due to reportedly limited water
+solubility of emideltide (free base), it is unclear how it would be possible to formulate the
+proposed injectable dosage form with the concentration of 1 mg/mL.
+
+        2. Emideltide Acetate
+
+Emideltide acetate is the acetate salt of emideltide. It is a synthetic nonapeptide (Trp-Ala-Gly-
+Gly-Asp-Ala-Ser-Gly-Glu) as showed in Figure 3. The molecular formula of emideltide acetate
+is C35H48N10O15, x(C2H4O2) and its molecular weight is 848.8 plus x60 g/mol.
+
+Figure 3. The Structure of Emideltide Acetate
+
+
+
+
+                                                                                                    17
+              a. Stability of the Bulk Drug Substance and Likely Dosage Forms
+
+Emideltide acetate as a solid powder is stored at -20°C, and the BDS remains stable for four
+years. Emideltide acetate BDS solution can maintain efficacy for more than one month if the
+solution is stored at -20°C. Repeated freeze and thaw cycles should be avoided. 18
+
+FDA notes that peptides such as emideltide acetate can be extremely sensitive to product
+formulation, process, and environmental conditions (e.g., pH, heat (temperature), concentration,
+in-process related impurities, excipients, etc.), which may lead to the aggregation and
+degradation of peptides. This could result in loss of their biological activity (Zapadka et al.
+2017). Multiple analytical methods may be needed to detect various aggregates, including size
+exclusion chromatography or field flow fractionation, involving equipment compounders may
+not be typically available in a compounding facility. Hence, peptides may require more and/or
+specific analytical in-process and final product testing for impurities than what is required for
+small molecules. Uncontrolled manufacturing processes as well as impurities may increase the
+risk of product aggregation. Product formulation is critical to the quality and stability of peptide
+drug products, as it is necessary to maintain the peptide molecules in their native state (in the
+formulation) to the extent possible. Significant amounts of aggregates can form in formulated
+products, especially during storage or when exposed to stress conditions.
+
+              b. Probable Routes of Bulk Drug Substance
+
+Emideltide acetate is a synthetic nonapeptide. There is a lack of information on the route of
+synthesis of the BDS.
+
+              c. Likely Impurities 19
+
+Generally speaking, peptide-related impurities and peptide synthesis process-related impurities
+contribute to and are considered in understanding the impurity profile for all peptides, including
+emideltide acetate. For most synthetic peptides, the solid-phase peptide synthesis method has
+been widely used by industry for peptide synthesis. The solid phase synthesis of peptides may
+lead to potential peptide-related impurities due to incomplete coupling reactions, truncations, or
+side reactions. These peptide-related impurities are typically similar in structure to the target
+peptide and may be difficult to identify and quantify without sophisticated analytical methods.
+Additional potential common impurities may be derived from impurities in the protected amino
+acid starting materials (e.g., isomeric impurities, free amino acids) and other species that may
+
+
+18
+   Information available at https://www.caymanchem.com/product/34426/helping-make-research-possible.
+Accessed 05/22/25.
+19
+   This evaluation contains a non-exhaustive list of potential impurities in the bulk drug substance and does not
+address fully the potential safety concerns associated with those impurities. The compounder should use the
+information about the impurities identified in the CoA accompanying the bulk drug substance to evaluate any
+potential safety and quality issues associated with impurities in a drug product compounded using that bulk drug
+substance taking into account the amount of the impurity, dose, ROA, and chronicity of dosing. Available
+nonclinical toxicity data for likely impurities of concern (e.g., nitrosamines, potential mutagenic substances, and
+potential teratogenic substances) in the nominated bulk drug substance are discussed in the Nonclinical Assessment
+at Section C.I. as part of the safety assessment of the substance.
+
+
+
+                                                                                                                  18
+carry over into the drug substance. In addition, residual solvents, coupling reagents, activators,
+catalysts, and scavengers may exist as SPPS process related impurities. The drug substance and
+its proposed product-related impurities may also include peptide-related aggregates.
+
+The CoA for emideltide acetate was provided in the withdrawn nomination package (Figure 4).
+The following analytical methods were applied in CoA: visual test for appearance, solubility
+determination, amino acid composition confirmation, Karl Fischer (KF) method for water
+content testing, HPLC method for purity, acetic acid and related substances content, gas
+chromatography (GC) method for organic solvent residue, and MS spectrum for identification.
+However, there is no information on the specified impurity limits/testing results as attribute
+control in the withdrawn nomination CoA to demonstrate quality control of impurity profile of
+emideltide acetate.
+
+Because there is a lack of information regarding potential impurities that can be present in
+emideltide acetate and the lack of information on the potential of peptide aggregation, we cannot
+rule out the potential for immunogenicity associated with these impurities and peptide-related
+aggregates.
+
+Figure 4. Nominator-Submitted Example of a CoA for Emideltide Acetate
+
+
+
+
+                                                                                                 19
+                 d. Physiochemical Characteristics Pertinent to Product Performance, Such as
+                    Particle Size and Polymorphism
+
+Emideltide acetate is a solid powder. It is soluble in water at 10 mg/mL in phosphate buffered
+solution (PBS, pH7.2) base. 20 Because the emideltide acetate has high solubility in water,
+formulating the proposed SC injectable dosage form at the concentration of 1,000 mcg/mL
+should not be an issue.
+
+                 e. Any Other Information About the Substance That May Be Relevant, Such as
+                    Whether the Bulk Drug Substance is Poorly Characterized or Difficult To
+                    Characterize
+
+No bioburden/endotoxin test is mentioned in the CoA provided by the withdrawn nominator.
+Endotoxin testing is considered a CQA to control microbiological quality of a BDS intended for
+an injection product. No such relevant information for emideltide acetate was identified in the
+public domain.
+
+Conclusions: Emideltide acetate is a salt form of peptide consisting of nine amino acids. As
+reported in the literature, emideltide acetate is expected to be stable under reported storage
+conditions below -20°C.
+
+Emideltide acetate is considered not well-characterized from the physical and chemical
+characterization perspectives based on (1) inconsistent naming conventions that do not follow
+established chemical nomenclature standards (e.g., USAN, INN, IUPAC) , and (2) certain critical
+characterization data specific to emideltide acetate were not found in the publicly available
+scientific literature, and the provided CoA, which was offered to establish identity, purity, and
+impurity profiles of the substance, lacked specific tests (including impurities, aggregates, and
+endotoxins). As discussed in Section II.C.2.d., FDA is concerned about the potential for
+immunogenicity of emideltide acetate when formulated in an injectable dosage form for SC
+administration due to the potential for peptide aggregation as well as potential peptide related
+impurities, as discussed in the impurities section. Injectable routes of administration may present
+a particular risk for immunogenicity. We also note that the stability, pharmacological activity,
+and immunogenic properties of peptides such as emideltide acetate are highly sensitive to the
+manufacturing process and quality attributes of the compounded/finished drug product.
+
+        B. Has the Substance Been Used Historically in Compounding?
+
+This evaluation focuses on emideltide (free base) and emideltide acetate for SC administration
+and its use in opioid withdrawal and two sleep disorders that included chronic insomnia and
+narcolepsy; however, FDA searched generally for information on the historical use of
+emideltide-related BDSs in compounding. Information about use may not specify specific
+attributes of the product, such as ROA. Databases searched for information on for this evaluation
+included PubMed, EMBASE, European Pharmacopoeia (11.8 Edition) 21, Japanese
+
+
+
+20
+     Information available at https://cdn.caymanchem.com/cdn/insert/34426.pdf. Accessed 05/22/25.
+21
+     Information available at https://pheur.edqm.eu/home (subscription required). Accessed 03/31/25.
+
+
+
+                                                                                                       20
+Pharmacopoeia (18th Edition), 22 International Pharmacopoeia (12th Edition), 23 NatMed Pro
+Database, 24 GlobalEdge, 25 USP/NF, 26 FDA Adverse Event Reporting System (FAERS) public
+dashboard, 27 Compounding Today, 28 Google/Google Scholar and the Outsourcing Facility
+Product Reporting Database. 29 It is often unclear which form of emideltide is being discussed in
+information from these sources and whether it was compounded or not. Therefore, FDA will
+consider the information discussed in this section in its evaluation of all forms of emideltide, as
+appropriate.
+
+          1. Length of Time the Substance Has Been Used in Compounding
+
+The nominators submitted 33 articles but none of the articles explicitly discussed the use of a
+compounded formulation of emideltide-related products in humans. 30 A literature search
+revealed a human study involving emideltide published as early as 1981 (Schneider-Helmert et
+al. 1981). However, it is unclear whether this study used a compounded emideltide-related drug
+product. Based on a press release from the office of the U.S. Attorney for the Eastern District of
+Kentucky, a pharmacy compounded and distributed products containing emideltide from
+10/25/18 to 4/1/20, but it is unclear which form of emideltide was being used to compound the
+products. 31
+
+          2. The Medical Condition(s) It Has Been Used To Treat
+
+A literature search revealed that emideltide-related BDS have been studied in various medical
+conditions. Several articles discuss the use of emideltide for sleep disorders (Schneider-Helmert
+and Schoenenberger 1981; Bes et al. 1992; Monti et al. 1987). It is unclear whether these studies
+used compounded emideltide-related drug products.
+
+Emideltide has also been studied for alcohol and opioid withdrawal (Dick et al. 1984; Backmund
+et al. 1998). One study discussed the use of intravenous (IV) emideltide 35 nmol/kg body weight
+diluted in 4 mL of 0.9% saline for opioid detoxification. This study noted that emideltide was
+provided by Strathmann AG & Co., Hamburg, Germany and is “not yet available for clinical
+
+
+22
+   Information available at https://www.pmda.go.jp/english/rs-sb-std/standards-development/jp/0029.html. Accessed
+03/31/25.
+23
+   Information available at https://digicollections.net/phint/2025/index.html#d/b.1. Accessed 04/13/26.
+24
+   Information available at https://naturalmedicines.therapeuticresearch.com/ (subscription required). Accessed
+04/02/25.
+25
+   Information available at https://globaledge.msu.edu/industries/healthcare/regulatory-agencies. Accessed 04/02/25.
+26
+   Information available at https://www.uspnf.com/ (subscription required). Accessed 04/02/25.
+27
+   Information available at https://fis.fda.gov/sense/app/95239e26-e0be-42d9-a960-9a5f7f1c25ee/sheet/7a47a261-
+d58b-4203-a8aa-6d3021737452/state/analysis. Accessed 04/02/25.
+28
+   Information available at https://compoundingtoday.com (subscription required). Accessed 04/02/25.
+29
+   Information available at https://dps.fda.gov/outsourcingfacility. Accessed 04/02/25.
+30
+   Nomination of “emideltide” from Wells Pharmacy Network (Document ID:FDA-2015-N-3534-0287) can be
+accessed at https://www.regulations.gov/document/FDA-2015-N-3534-0287; Nomination of “DSIP” from LDT
+Health Solution Inc (Document ID: FDA-2018-N-2973-0002) can be accessed at
+https://www.regulations.gov/document/FDA-2018-N-2973-0002. Accessed 04/02/25.
+31
+   Information available at https://www.justice.gov/usao-edky/pr/nicholasville-compounding-pharmacy-and-its-
+owner-sentenced-unlawful-distribution. Accessed 03/01/24.
+
+
+
+                                                                                                                  21
+use” (Backmund et al. 1998, 258). Another article discusses the use of intravenous emideltide for
+alcohol or opiate withdrawal. The study authors note that emideltide was administered once
+“withdrawal symptoms had become obvious” at a dose of 25 nmol/kg body weight diluted in 10
+mL of “physiological serum” (Dick et al. 1984, 365). The study authors noted that the emideltide
+used in the study was provided by Hoffman-La Roche & Cie S.A., Basel. It is unclear whether
+the emideltide used in either of these studies was compounded.
+
+An online search revealed integrative neurology clinics, medical concierge services, medical
+spas, wellness clinics, and online retailers in the US marketing emideltide-related drug products
+for various uses including sleep disorders, stress reduction, pain management, cancer,
+neurodegenerative diseases (Alzheimer’s disease, Parkinson’s disease), alcohol and drug
+detoxification. It is unclear whether compounded products are being used in these instances. 32
+
+          3. How Widespread Its Use Has Been
+
+No outsourcing facilities have reported compounding drug products containing emideltide-
+related BDS to FDA. 33 An online search identified websites of integrative neurology clinics,
+medical concierge services, medical spas, wellness clinics, and online retailers in the US that are
+marketing emideltide injection and nasal spray products. 34 Many of the websites do not describe
+or clearly state whether the emideltide-related products marketed are compounded.
+
+One website offers emideltide 2 mg/mL in a 4 mL vial and provides “sterile injection syringes”
+and “detailed instructions” in a “ready to use” kit. This website claims that their emideltide
+product is “pharmaceutical grade” and is “made in the USA.” The website also offers a
+“complementary telemed consult” for “training purposes at the request of the patient.” 35 An
+online neurology clinic offers prescriptions for emideltide 5 mg and states that it is available as a
+“lyophilized powder form that can be reconstituted using sterile water.” The website claims that
+emideltide is available for SC injection or as a nasal spray and recommends purchasing
+emideltide from “reputable compounding pharmacies” but does not specifically name any
+compounding pharmacies offering emideltide-related products. 36 An online retail website offers
+emideltide 5 mg vials in 3 mL vacuum-sealed vials and states that the product is “American-
+
+
+
+
+32
+   Information available at https://drjennpb.com/product/dsip-kit/, https://lifexmd.com/peptide-therapy-for-sleep-all-
+about-dsip/, https://mindbodyneurology.com/product/dsip/, https://www.limitlesslifenootropics.com/product/dsip-
+delta-sleep-inducing-peptide-5mg/. Accessed 08/21/24.
+33
+   Drug Quality and Security Act, signed into law on November 27, 2013, created a new section 503B in the FD&C
+Act. Under section 503B, a compounder can become an outsourcing facility. Outsourcing facilities are required to
+provide FDA with a list of drugs they compounded during the previous six-month period upon initial registration
+and in June and December each year. This retrospective information does not identify drugs that outsourcing
+facilities intend to produce in the future.
+34
+   Information available at https://drjennpb.com/product/dsip-kit/, https://lifexmd.com/peptide-therapy-for-sleep-all-
+about-dsip/, https://mindbodyneurology.com/product/dsip/, https://www.limitlesslifenootropics.com/product/dsip-
+delta-sleep-inducing-peptide-5mg/. Accessed 03/18/24.
+35
+   Information available at https://drjennpb.com/product/dsip-kit/. Accessed 04/04/24.
+36
+   Information available at https://mindbodyneurology.com/product/dsip/. Accessed 04/04/24.
+
+
+
+                                                                                                                    22
+made” and is of the “highest standard possible.” 37 None of the websites searched indicate
+whether their marketed products contain the base or a salt or ester of emideltide. An online
+search did not identify any compounding pharmacies marketing emideltide-related compounded
+preparations.
+
+         4. Recognition of the Substance in Other Countries or Foreign Pharmacopeias
+
+No form of emideltide is recognized in the European Pharmacopoeia (11th Edition, 11.8), the
+Japanese Pharmacopoeia (18th Edition), or the International Pharmacopoeia (11th Edition).
+Emideltide (free base) and emideltide acetate are not registered drugs in any country searched via
+GlobalEdge.
+
+Conclusions: It is often unclear whether the emideltide discussed in the sources considered for
+this section is a salt formulation or the free base. Emideltide-related BDS have been studied for
+use in humans since at least 1981. There is evidence that emideltide-related BDS have been used
+in compounding since at least 2018. Emideltide-related injection and intranasal products are
+available in the US through integrative neurology clinics, medical concierge services, medical
+spas, wellness clinics, and online retailers for various uses. However, it is unclear whether these
+products are compounded or if pharmacies are currently compounding products containing
+emideltide-related BDS. At the time of this evaluation, currently available data and published
+literature is too limited to inform the historical use of any form of emideltide compounded drug
+products.
+
+     C. Available Evidence of Effectiveness or Lack of Effectiveness of Drug Products
+        Compounded With the Substance
+
+The following databases were consulted in the preparation of this section: PubMed, Embase,
+Cochrane Database of Systematic Reviews, ClinicalTrials.gov, professional healthcare
+organization websites, and various online clinical references and websites. In addition to a
+review of pertinent information from these databases, this section provides a brief overview and
+a discussion of the uses evaluated, chronic insomnia, narcolepsy, and opioid withdrawal.
+
+The clinical articles submitted by the nominators and those identified by FDA do not always
+clearly identify whether the emideltide form administered in the clinical studies was a salt
+formulation or the free base. Therefore, the substance will be generally referred to as emideltide,
+unless the article under discussion clearly specifies the use of the free base or the acetate salt.
+
+         1. Chronic Insomnia
+
+American Academy of Sleep Medicine (AASM) clinical practice guideline defined insomnia as a
+complaint of trouble initiating or maintaining sleep which is associated with daytime
+consequences and is not attributable to environmental circumstances or inadequate opportunity
+to sleep (Sateia et al. 2017). Appendix 1 includes diagnostic criteria on insomnia disorder as
+
+
+
+ Information available at https://www.limitlesslifenootropics.com/product/dsip-delta-sleep-inducing-peptide-5mg/.
+37
+
+Accessed 04/04/24.
+
+
+
+                                                                                                               23
+published in Diagnostic and Statistical Manual of Mental Disorders Fifth Edition Text Revision
+(DSM-5-TR).
+
+Prevalence of chronic insomnia is estimated to be at least 6% to 10% and is more common in
+women, older adults, persons who work irregular shifts, and in persons with disabilities (Medalie
+and Cifu 2017; Winkelman 2015). Chronic insomnia is associated with numerous adverse effects
+on function, health, and quality of life (Sateia et al. 2017). Direct and indirect costs of insomnia
+in the United States estimates $100 billion, primarily due to lost productivity, health care
+resource use and accidents (Shaha 2023).
+
+Goals of treating insomnia are to improve sleep quality or satisfaction and to resolve daytime
+consequences (Edinger et al. 2015). AASM clinical practice guideline developed a list of patient-
+oriented clinically relevant outcome measures to guide clinical decision making and defined
+clinical significance thresholds for each outcome to determine if a change in an outcome was
+clinically significant (Appendix 2). These include sleep onset latency (SOL), 38 total sleep time
+(TST), 39 wake after sleep onset (WASO), 40 quality of sleep (QOS), 41 sleep efficiency (SE), 42 and
+number of awakenings (NOA). 43 The sleep variables can be objectively assessed in a sleep
+laboratory with polysomnography or actigraphy, or subjectively with patient-reported sleep
+diaries, questionnaires, and sleep logs (Sateia et al. 2017).
+
+Treatment of insomnia often involves psychological therapy, pharmacologic therapy, or
+multimodal approaches. The American College of Physicians (ACP) clinical practice guideline
+recommends that all adult patients receive cognitive behavioral therapy (CBT-I) 44 as the initial
+treatment for chronic insomnia disorder (Qaseem et al. 2016). Pharmacologic therapies (see
+Section II.C.1.c) include benzodiazepines, nonbenzodiazepine sedative-hypnotics, ramelteon,
+doxepin, and dual orexin receptor antagonists (DORAs). The AASM or ACP practice guidelines
+on the treatment of chronic insomnia in adults do not discuss the use of emideltide.
+
+
+
+
+38
+   SOL refers to the amount of time from lights turned off until the onset of any sleep stage. Normal SOL in adults is
+less than 20 minutes. In children, sleep latency is estimated at 10–26 min, depending on study methods. Sleep
+latency does not change between childhood and adolescence (Zolovska and Shatkin 2013). Prolonged sleep latency
+would be characterized as difficulty falling asleep.
+39
+   TST refers to sleep duration during a given sleep period time (usually at night). Reduced TST relates to prolonged
+SOL, night awakenings, and early-morning waking.
+40
+   Wake after sleep onset is defined as the sum of wake time individuals spend awake after sleep onset and before
+awakening (or sleep offset). Night awakenings reference the number of complete awakenings occurring after sleep
+initiation.
+41
+   QOS is a patient-reported measure, the definition of which varies by measurement tools and patient perceptions.
+42
+   SE is defined as the percentage of time spent in bed during which sleep occurs; it is calculated as (TST / time in
+bed) × 100.
+43
+   NOA is defined as the number of awakenings after sleep onset, excluding the final awakening.
+44
+   CBT-I is multimodal cognitive behavioral therapy targeted specifically to insomnia. It consists of a combination
+of cognitive therapy, behavioral interventions (such as sleep restriction and stimulus control), and educational
+interventions (such as sleep hygiene).
+
+
+
+                                                                                                                   24
+Clinical trials to support efficacy of FDA-approved drugs indicated for insomnia evaluated
+endpoints such as sleep latency, sleep duration, SE, and NOA as recorded on polysomnogram
+and by patient reports to establish efficacy in confirmatory clinical trials.
+
+              a. Reports of Trials, Clinical Evidence, and Anecdotal Reports of Effectiveness, or
+                 Lack of Effectiveness, of the Bulk Drug Substance
+
+The nominator cited four articles that discussed emideltide for the treatment of chronic insomnia.
+However, we limited our discussion in this section to three articles (Schneider-Helmert and
+Schoenenberger 1981; Schneider-Helmert 1987; Bes et al. 1992). The fourth article (Schneider-
+Helmert et al. 1981) discussed use of emideltide in healthy volunteers (See Section II.D.2.a).
+
+We also searched published medical literature on emideltide for the treatment of chronic
+insomnia and retrieved additional publications (Graf and Kastin 1986; Monti et al. 1987;
+Schneider-Helmert and Schoenenberger 1983; Schneider-Helmert 1986). The key findings of
+publications identified in the FDA search and those included in the nomination are summarized
+below.
+
+Schneider-Helmert and Schoenenberger 1981:
+
+This randomized (R), double-blind (DB), intra-subject placebo-controlled (PC) crossover (CO)
+study in six middle-aged subjects with chronic insomnia investigated the effects of IV emideltide
+on disturbed sleep. 45 During three nights of test periods, subjects were randomly assigned to
+either the sequence placebo-emideltide-placebo or emideltide-placebo-emideltide and received
+placebo or emideltide 25 nmol/kg IV over 4 minutes immediately before bedtime. Study
+analyzed polysomnographic recordings as well as subjective ratings of sleepiness and daytime
+activities self-reported in a diary and questionnaire using Stanford Sleepiness Scale (SSS). 46
+
+Compared to the nights that each subject was on placebo, an analysis of 60-min intervals of sleep
+recording showed slight arousing effect in the first hour after emideltide injection, however,
+sleep-promoting effects began in the second hour after emideltide injection and persisted up to 6
+hours during the night, with fewer interruptions during sleep. Emideltide did not influence SOL
+or final waking times compared to placebo treatment, whereas the authors reported “tendencies
+toward a lower NOA and a higher total SE (ratio time asleep/recording time)”. The SSS ratings
+showed no significant difference in day-time activity or sleepiness although mean sleepiness
+scale indicated higher alertness in the morning after emideltide than placebo.
+
+There were several study limitations. The study had small sample size that evaluated six subjects
+where there was intra-(within) subject comparison of effects of drug versus placebo on
+sequential nights. It was unclear based on the sequence for the treatment period: either placebo-
+emideltide-placebo or emideltide-placebo-emideltide, whether there may have been delayed
+
+
+
+45
+   Subjects complaining primarily of unstable sleep with too many awakenings and difficulties in staying asleep; this
+was objectively confirmed by the sleep recording data of the initial nights on placebo.
+46
+   The SSS represents a scale for the subjective evaluation of sleepiness based upon self-rating (Schneider-Helmert
+et al.1981). A 7-point scale with ‘1’ for the highest possible level of alertness (Schneider-Helmert 1987).
+
+
+
+                                                                                                                  25
+effects of emideltide when subsequent night polysomnography recording was obtained when
+subjects were on placebo. Schneider-Helmert et al. (1981) reported that 13-22 hours after
+emideltide administration delayed effects of emideltide on subsequent sleep were observed (see
+Section II.D.2.a). Furthermore, there was insufficient information to interpret effectiveness for
+the following reasons: results were reported in p values and the differences in some of the
+outcomes reported mean change in percentages without numerical data for sleep outcomes
+following emideltide treatment only without reporting results for placebo. It is unclear whether
+the observed “tendencies toward a lower NOA and a higher total sleep efficiency” in small
+numbers of subjects were clinically meaningful changes.
+
+Schneider-Helmert 1987:
+
+This DB, “placebo-controlled” 47 study investigated the effects of IV emideltide on sleep and
+daytime performance in 14 middle-aged subjects with chronic insomnia. Subjects received seven
+successive emideltide IV injections 30 nmol/kg on nights 3 (treatment 1) through 9 (treatment 7).
+Placebo (IV glucose) was administered during the first night of adaptation period (also
+considered baseline) and on the posttreatment night. After the first night, the subjects spent a full
+day in the psychophysiological laboratory for testing of daytime performance and evaluating
+subjective sleepiness and relaxation using SSS and multiple relaxation test (MRT). These tests
+were repeated after six emideltide injections. Data on subjective evaluation of sleep, daytime
+behavior and psychological state were also collected on self-rating post-sleep inventories, mood
+scale, SSS, and diaries.
+
+Study results for sleep and daytime performance were compared with baseline values within
+study subjects as well as with an age and sex-matched external control groups of healthy subjects
+who were administered placebo IV injections to establish normative values for night sleep
+variables, performance tests 48 and spontaneous sleep tendency as measured by the MRT.
+
+The study reported that initial dose of IV emideltide improved sleep induction and maintenance
+when compared to the baseline values and were further augmented with continuation of
+treatment over one week. Mean SOL of 58.4 minutes at baseline was reduced to 38.9 minutes
+after first emideltide injection and 27.6 minutes after final injection, indicating that subjects went
+to sleep earlier. Wake after sleep onset was also reduced from mean 120.8 minutes at baseline to
+78 minutes and 65.6 minutes after first and last injection, respectively. Total sleep time increased
+from mean 313 minutes at baseline to 363.1 and 385 minutes, after first and last injections,
+respectively. Sleep efficiency, which takes TST into consideration, also increased by 27% of the
+baseline value. Compared to baseline measures, these effects were maintained for the first post-
+
+
+47
+   Because study subjects were compared with externally matched control group who received placebo, FDA
+interpreted the study design as “externally matched controlled” study rather than the authors interpretation as
+“placebo-controlled” study. Although author used the term “placebo control” on study subjects who received
+placebo during baseline and posttreatment night, the analyses were based on subjects who were compared with
+externally matched control group.
+48
+   Prior to the study, for assessments of daytime performance, authors conducted independent experiment in 13
+subjects with normal sleep and 13 study subjects with chronic insomnia (matched for age and sex) to establish
+reference values of performance tests that included the MRT. There was insufficient information regarding the
+reliability and validity of the outcomes for daytime performance that were considered by the authors.
+
+
+
+                                                                                                                  26
+treatment night and were reported statistically significant during study period. Mean values of
+subjective estimates on mood scales and postsleep inventories, when compared to baseline, also
+showed higher activation, concentration and wellbeing, less anxiety and lower sleepiness.
+Daytime performance showed that “there was no significant performance decrement after
+emideltide in any of the measures extending over a period from 1.5 through 10 hours after
+morning awakening” suggesting “absence of hang-over effects.”
+
+When sleep and daytime performance before and after emideltide were compared with externally
+matched control group with normal sleep, study reported that emideltide treatment normalized
+SE, induction (SOL) and maintenance of sleep (WASO) after only one week of treatment.
+Daytime performance also increased after emideltide to an average of 29% above that of
+controls, even though daytime performance in subjects with chronic insomnia (prior to any
+treatment at baseline) was initially not different from that of the controls.
+
+Although the author concluded that emideltide was effective in treatment of impaired sleep and
+improved daytime functioning in subjects with chronic insomnia there were several study
+limitations. Particularly, the small sample size and poor study methodology limit interpretations
+to conclude whether the observed changes in small number of subjects (n=14) were clinically
+meaningful changes. AASM clinical practice guideline defined clinical significance thresholds
+and that an adequate control group needs to be appropriately defined to compare the magnitude
+of these outcomes. Even though the authors described the study as “placebo-controlled”, there
+was no placebo arm in the study, therefore, no results for placebo arm were reported. Comparing
+clinical benefit of emideltide to matched external control group of healthy subjects is challenging
+to interpret due to inherent limitations of the externally controlled design (e.g., imbalances in
+measured and unmeasured confounders).
+
+Bes et al. 1992:
+
+This DB, PC study investigated sleep-inducing, sleep-maintaining or sleep modulating effects of
+emideltide in 16 subjects with chronic insomnia in the sleep laboratory over five consecutive
+nights; first two nights were baseline (B1, B2) and three following nights were treatment nights
+(T1, T2, T3). Half of the subjects received IV emideltide 25 nmol/kg and half of the subjects
+received placebo (glucose solution) between 5 pm and 7 pm. Independent raters measured
+objective polysomnographic recordings every night and study subjects filled out profile of mood
+states (POMS) 49 and sleep quality scale every morning to evaluate subjective tiredness and sleep
+quality.
+
+Emideltide treated subjects had (numerically) shorter SOL compared to placebo. None of the
+other variables for objective sleep measures showed any differences neither between nor within
+the groups. There was no significant difference in objective sleep measures or subjective sleep
+quality between emideltide group and placebo group.
+
+The authors reported that short-term treatment of chronic insomnia with IV emideltide had little
+therapeutic benefit as indices of sleep quality, sleep latency and tiredness showed weak effect
+
+
+49
+     POMS was used to measure fatigue and vigor, as expression of subjective tiredness.
+
+
+
+                                                                                                 27
+compared to placebo, and that difference in sleep latency should be interpreted with caution
+because the sleep latency for placebo group on second treatment night was considerably higher
+than any of other nights while there were no changes in sleep latency within emideltide group.
+The results of the present study indicated that three doses of emideltide showed at best some
+weak effects. Also, there was a significant difference in POMS dimension of fatigue within
+emideltide group but not between the groups. Additionally, author addressed several factors to
+consider when interpreting the results; improvement of baseline night (B2) might have been due
+to possible rebound sleep from the first night of slight sleep-deprived state.
+
+Schneider-Helmert and Schoenenberger 1983:
+
+This study that discussed the pharmacodynamic response of different regimens of emideltide
+injections included series of five different investigational studies conducted in small numbers of
+subjects with chronic insomnia in addition to healthy volunteers. Investigational studies that
+were series I and II were conducted in healthy subjects who received a single emideltide
+injection (see Section II.D.2.a. for discussions of data in healthy volunteers for investigational
+studies). Series III, IV and V in the publication referred to three DB, PC investigational studies
+in small numbers of subjects with chronic insomnia when IV emideltide 25 nmol/kg (21.3 µg/kg)
+infusion was administered either over 4 minutes 1 hour prior to bedtime as a single dose (series
+III) or repeated on four consecutive evenings (series IV) or repeatedly administered on six
+consecutive mornings (series V). 50
+
+In series III and IV of investigational studies in subjects with chronic insomnia the authors
+observed that emideltide infusion over 4 minutes when administered 1 hour prior to bedtime
+either as single dose or on four consecutive evenings, sleep-promoting effects started to appear in
+the second hour after emideltide injection and persisted for at least 6 hours during the night with
+fewer interruptions during sleep. In series IV, when data were compared with normative values,
+means of sleep variables including SE, percent time of awake and drowsiness, and proportion of
+rapid eye movement (REM) sleep improved with consecutive treatments. The author stated that
+these variables after the fourth emideltide injections were closer to the normal values compared
+to placebo. Of note, the author did not indicate nor describe the methods of obtaining normal
+values of each sleep variables.
+
+In series V, two sleep-disturbed neurotic subjects with insomnia received repeated emideltide
+injections in the morning (9:00 AM) for 6 days, which was preceded and followed by days on
+placebo injections. Improvements in the amount and stability of sleep (i.e., higher SE and
+reduced indices of arousals or full awakenings from sleep) were reported following emideltide
+
+
+
+50
+  “In series III, emideltide was administered prior to sleep to six severe chronic insomniacs in a placebo controlled,
+double-blind, randomized crossover design. In series IV, treatment of 4 severe insomniacs was for the first time
+repeated daily; emideltide was injected 1 h prior to sleep on 4 consecutive evenings after a baseline placebo period,
+again with extensive polygraphy under double-blind conditions. Series V was carried out in order to evaluate
+primarily other psychotropic effects than sleep; emideltide repeated daily injections under double-blind conditions in
+the morning to 2 sleep-disturbed neurotic inpatients on 6 days, which was preceded and followed by placebo
+periods, providing wide psychological testing, evaluating psychotherapeutic work and recording night sleep
+throughout the 2-week experimental period.”
+
+
+
+                                                                                                                   28
+when compared with data for days on placebo in the intra-subject assessment. Authors observed
+that when these two subjects with “disturbed nocturnal sleep” would remain fully active during
+the day and sleeping was allowed 13 h after emideltide, sleep only occurred when the sleep
+phase of the circadian rhythm came about, and/or if the environmental conditions were
+appropriate (i.e., going to bed, no stimulation). Subjective assessment by two psychotherapists
+indicated that aside from being alert and showing performance improvement, emideltide also
+improved stress tolerance and coping ability. There are limitations to interpret study results in the
+series of investigational studies conducted in small numbers of subjects with chronic insomnia
+where there were insufficient details on study design.
+
+Schneider-Helmert 1986:
+
+This DB study evaluated sleep outcomes in middle-aged (29-59 years, n=9) and elderly (60-83
+years, n=9) subjects with chronic insomnia over eight successive nights. After first two nights of
+placebo (baseline periods), each group stratified by age received IV emideltide 30 nmol/kg each
+evening over five nights and followed up after one week. Sleep outcomes were recorded during
+placebo baseline period, emideltide treatment day 5 and 6, and post-treatment nights.
+
+The study reported that the objective sleep outcomes for mean SOL, WASO, TST and SE
+improved in both groups. In the middle-aged insomnia group, the authors reported improved
+sleep that reached normal levels by the end of emideltide treatment (compared to externally
+controlled middle-aged healthy subjects) and was maintained during the follow-up week. In
+elderly insomnia group who took between 1-2 hours to go to sleep at baseline, sleep latency
+reduced to within 22-30 minutes after IV emideltide. Although the elderly insomnia group slept
+fewer hours at baseline (mean TST 241.6 vs. 329.1 middle-aged group) larger immediate
+treatment effect for TST were observed on IV emideltide compared to middle-aged group (+ 97
+minutes in elderly group vs + 57 minutes in middle-aged group).
+
+The author concluded that emideltide corrected pathophysiological mechanisms underlying
+chronic insomnia. However, small sample sizes, lack of adequate control group and comparing
+clinical benefits of emideltide to matched external control group limit the interpretation of
+effectiveness of emideltide for insomnia.
+
+Monti et al. 1987:
+
+This R, DB, PC, CO study evaluated the effects of IV emideltide in six subjects with severe
+chronic insomnia over nine nights. First three nights were adaptation periods to the laboratory
+and baseline measurements when subjects were given placebo. During the four nights, subjects
+randomly received IV emideltide 25 nmol/kg over 4 minutes or placebo. The last two nights
+were used for assessing withdrawal effects when placebo was again administered. This same
+procedure was completed twice with a four-day washout period where subjects did not receive
+any medications.
+
+Although IV emideltide showed slightly decreased sleep latency, almost no change in mean
+number of nocturnal awakenings and mean increase 20 minutes TST, there were no significant
+differences compared to baseline measures or placebo phase in this intra-subject study.
+Subjective ratings of QOS were also not significantly different compared to placebo. The authors
+
+
+
+                                                                                                  29
+concluded that emideltide effects observed on sleep improvement were of little clinical
+significance.
+
+Graf and Kastin 1986:
+
+The review article considered data from most of the above-mentioned clinical studies. The
+authors stated that although emideltide appeared to exert an effect on disturbed sleep, the results
+were preliminary and that there was insufficient evidence to show that emideltide reliably
+induced or maintained sleep.
+
+              b. Whether the Product Compounded With This Bulk Drug Substance is Intended
+                 To Be Used in a Serious or Life-Threatening Disease
+
+Insomnia is a commonly encountered disorder; however, it is underdiagnosed and undertreated,
+leading to a significant health burden characterized by decreased quality of life and increased
+morbidity and mortality (Shaha 2023). Insomnia is associated with increased motor vehicle
+accidents and falls, increased healthcare utilization, and decreased survival rates. Insomnia also
+interacts with various medical conditions and predisposes to development of number of
+psychiatric disorders (Asnis et al. 2015).
+
+              c. Therapies That Have Been Used for the Condition(s) Under Consideration
+
+There are FDA-approved drug products indicated for the same medical condition as that
+proposed for the emideltide compounded drug product(s). 51 FDA approved therapies for
+insomnia in adults are listed in Table 3.
+
+Table 3. FDA-Approved Therapies for Insomnia in Adults 52,53
+
+                FDA Approved Therapy
+
+               Ambien, Elduar (zolpidem)
+
+                  Belsomra (suvorexant)
+
+                 Dayvigo (lemborexant)
+
+                    Doral (quazepam)
+
+
+
+
+51
+   FDA considers the existence of FDA-approved or OTC monograph drug products to treat the same condition as
+that proposed for the nomination relevant to FDA’s consideration of the safety criterion, to the extent there may be
+therapies that have been demonstrated to be safe under the conditions of use set forth in the approved labeling. See
+84 FR 4696.
+52
+   Information about the drugs listed in this table can be found at the following website:
+https://fdalabel.fda.gov/fdalabel/ui/search. Accessed 03/26/24.
+53
+   https://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/sleep-disorder-sedative-
+hypnotic-drug-information. Accessed 03/26/24.
+
+
+
+                                                                                                                   30
+             FDA Approved Therapy
+
+                    Estazolam
+
+                    Flurazepam
+
+                Halcion (triazolam)
+
+               Lunesta (eszopiclone)
+
+              Quviviq (daridorexant)
+
+               Restoril (temazepam)
+
+               Rozerem (ramelteon)
+
+               Seconal (secobarbital)
+
+                 Silenor (doxepin)
+
+                 Sonata (zaleplon)
+
+There are no FDA-approved treatments for insomnia in the pediatric population. FDA-approved
+drugs are sometimes prescribed off-label for the management of some sleep disorders in children
+and adolescents (e.g., antihistamines, a-adrenergic agonists like clonidine, antidepressants,
+antipsychotics) for their sedative side effects without sufficient information on their efficacy,
+safety, or the dosing regimen in these populations (Gringras et al. 2017). The dietary supplement
+melatonin is also sometimes used for sleep in pediatric populations (Ivanenko et al. 2021,
+Gringras et al. 2017).
+
+Conclusion: There was no study evaluating effectiveness to support use of emideltide (free base)
+or emideltide acetate via the nominated SC route of administration (ROA) for chronic insomnia.
+We were only able to find data regarding administration of emideltide via IV ROA.
+
+There is insufficient evidence to make a conclusion on the effectiveness of IV emideltide for
+chronic insomnia. Although some studies showed that short-term IV emideltide appeared to exert
+an effect on disturbed sleep, the results appear inconclusive and at best preliminary. Clinical
+studies authored by Schneider-Helmert reported improved sleep outcomes following short-term
+IV emideltide in subjects with chronic insomnia, whereas in the two DB PC studies by Bes et al.
+1992 and Monti et al. 1987 who conducted similarly designed investigations did not reach the
+same conclusions. Even when studies yielded positive treatment response, it seems unclear
+whether observed effects on sleep outcomes provided clinically significant improvement and that
+the changes were clinically meaningful. Similar observation was noted in another article by Graf
+and Kastin (1986). This is particularly due to lack of or poor selection of control groups (i.e.,
+externally matched control group); many of the studies included intra-(within) subject
+comparison of effects of drug versus placebo treatment at baseline, rather than comparing
+treatments in subjects with chronic insomnia who were in a separate study arm treated with
+placebo. AASM clinical practice guideline defined clinical significance thresholds and that an
+
+
+
+                                                                                               31
+adequate control group needs to be appropriately defined to compare the magnitude of these
+outcomes. Additionally, small sample sizes in the clinical studies, different baseline
+characteristics in subjects across these studies and imbalanced outcomes in sleep measures,
+heterogeneity of subjects with insomnia, different treatment regimens and environmental
+conditions limit the interpretation of effectiveness of emideltide for insomnia. There was also no
+information regarding benefit with long-term administration of IV emideltide for chronic
+insomnia.
+
+Professional society guidelines do not discuss the use of emideltide (free base) or emideltide
+acetate for insomnia. Insomnia is a serious condition, and there are FDA approved therapies with
+established efficacy for insomnia.
+
+          2. Narcolepsy
+
+Narcolepsy is characterized by sleep-wake instability that manifests as excessive daytime
+sleepiness (EDS), 54 cataplexy, 55 sleep paralysis (SP), 56 hypnagogic/hypnopompic hallucinations
+(HH), 57 and disturbed nocturnal sleep (DNS) 58 (Abad 2023). Appendix 3 includes diagnostic
+criteria on narcolepsy and its subtypes as published in DSM-5-TR.
+
+Narcolepsy is also often associated with REM sleep parasomnias such as vivid dreams and
+nightmares and non-REM sleep parasomnias such as sleepwalking and enuresis (Barateau et al.
+2023). There is a high burden of illness associated with comorbid conditions such as
+hypertension, stroke, heart failure, myocardial infarction, hyperlipidemia, insulin resistance,
+thyroid disease, obesity, neuropsychiatric conditions, and other sleep disorders (Abad 2023,
+Anderson 2021). Mortality rate is 1.5 times higher compared to non-narcoleptics. It is important
+to diagnose the condition early and manage effectively.
+
+Objective confirmation of narcolepsy diagnosis is required because many narcolepsy patients
+require life-long therapy with potentially addictive drugs (Abad 2023). The gold standard tests
+are an overnight polysomnogram followed by a Multiple Sleep Latency Test (MSLT) 59 and a
+
+
+54
+   EDS is the most prominent symptom associated with narcolepsy and consists of daily episodes of overwhelming
+need for sleep or lapse into sleep (sleep attacks) which usually last less than 10 minutes but can last up to an hour.
+55
+   Cataplexy is an emotionally triggered sudden and transient involuntary loss of skeletal muscle tone with preserved
+consciousness ranging from partial muscle weakness to complete paralysis, which last from several seconds to
+several minutes (Abad 2023). Frequency of attacks varies from dozens per day to a few per year (Bassetti et al.
+2019).
+56
+   SP is described as a terrifying and temporary inability to move the limbs, speak, breathe deeply, or open the eyes.
+57
+   Rapid transitions between wake and REM sleep can result in SP or hallucinations during sleep onset (hypnagogic)
+or sleep offset (hypnopompic) in 33-80% of narcolepsy patients. Hallucinations can be visual, auditory, kinetic, and
+tactile.
+58
+   About 30-95% of patients with narcolepsy experience disrupted night sleep with inability to stay asleep, frequent
+awakening and reduced TST.
+59
+   MSLT is an objective measure of a patient’s ability or tendency to fall asleep. MSLT checks for EDS by
+measuring how quickly you fall asleep in a quiet environment during the day. Patient is given five opportunities to
+
+
+
+
+                                                                                                                   32
+cerebrospinal fluid (CSF) hypocretin-1 test. Evaluation should include a thorough workup of
+other possible contributing factors of EDS. FDA-approved products for narcolepsy evaluated
+endpoints such as polysomnogram findings, the MSLT, the Maintenance of Wakefulness Test
+(MWT) 60 and the Epworth Sleepiness Scale (ESS). 61
+
+Narcolepsy currently has no known cure, and patients may need long-term treatment.
+Pharmacological interventions are the mainstay of treatment and are primarily symptom-based.
+Treatment goals are geared toward reducing EDS, cataplexy, other REM-related symptoms, and
+nocturnal sleep disruptions to improve patient quality of life. Currently, there are several FDA
+approved drugs for treatment of EDS and/or cataplexy (see Section II.C.2.c.). AASM 62
+recommends that off-label treatments for cataplexy may be considered. Non-pharmacological
+approaches, including behavioral and psychosocial strategies, are important adjunct interventions
+to consider alongside pharmacological treatments.
+
+The AASM and the European Narcolepsy guideline 63 published practice guidelines on the
+treatment of narcolepsy in adults. These guidelines do not discuss the use of emideltide.
+
+              a. Reports of Trials, Clinical Evidence, and Anecdotal Reports of Effectiveness, or
+                 Lack of Effectiveness, of the Bulk Drug Substance
+
+The nominator did not provide any clinical references to support use of emideltide in narcolepsy.
+We identified one case report that is described below.
+
+Schneider-Helmert 1984:
+
+35-year-old male with 10 years history of narcolepsy was administered emideltide to evaluate its
+potential effects on narcolepsy. Three investigational periods included: a week of baseline (B)
+measurements, a week of evening dose (E) of IV emideltide 25 nmol/kg, and a week of morning
+dose (M) of IV emideltide 25 nmol/kg. Effects on wakefulness and sleep were evaluated using
+
+
+nap during the day under standardized conditions (usually at a medical sleep facility). Each scheduled nap is 20
+minutes in length, with anywhere from 1.5 to 3 hours between naps. A mean sleep-onset latency of 8 minutes of
+less, and two or more sleep-onset REM episodes (SOREMs) during the naps is consistent with narcolepsy
+(Anderson 2021). Also known as a daytime nap study, the MSLT is used to diagnose narcolepsy and idiopathic
+hypersomnia. Available at https://sleepeducation.org/patients/multiple-sleep-latency-test/. Accessed 04/15/24.
+60
+   The MWT is used to measure how alert you are during the day. It shows whether you can stay awake for a defined
+period of time. The test is based on the idea that, in some cases, your ability to stay awake may be more important
+than how fast you fall asleep. This is an indicator of how well you can function and remain alert in quiet times of
+inactivity. Available at https://sleepeducation.org/patients/maintenance-of-wakefulness-test/. Accessed 10/23/23.
+61
+   The ESS is a self-administered questionnaire with 8 questions. Respondents are asked to rate, on a 4-point scale
+(0-3), their usual chances of dozing off or falling asleep while engaged in eight different activities. The ESS score
+(the sum of 8 item scores, 0-3) can range from 0 to 24. The higher the ESS score, the higher that person’s average
+sleep propensity in daily life (ASP), or their ‘daytime sleepiness’. Available at
+https://epworthsleepinessscale.com/about-the-ess/. Accessed 04/15/24.
+62
+   Treatment of central disorders of hypersomnolence: an American Academy of Sleep Medicine Clinical Practice
+Guideline (Maski et al. 2021).
+63
+   European guideline and expert statements on the management of narcolepsy in adults and children (Bassetti et al.
+2021).
+
+
+
+                                                                                                                  33
+the self-reported SSS, performance test, MSLT, and all-night polysomnography. The study
+showed that emideltide reduced frequency of sleep attacks (from 6 sleep attacks at B to 3 sleep
+attacks during weeks of E or M dosing), frequency of naps (from napping daily at B to every
+second day on E dosing and every third day on week of M dosing). The subject reportedly
+experienced increased activity, alertness, and performance during daytime. These effects,
+however, were more pronounced with morning injections than evening injections since the
+performance dropped in the late afternoon with evening injections whereas steady level of
+performance maintained throughout the day with morning injections. The TST following M
+injections was 287 minutes whereas at B and E dosing TST was up to 349 minutes. In addition,
+the study reported that emideltide treatment did not provoke cataplectic symptoms, SP or HH.
+
+The author concluded that these effects were due to an accentuation of circadian wake-sleep
+rhythm similar to emideltide effects on insomnia found in several studies. However, single-
+subject case report limits interpretation of effectiveness of emideltide due to insufficient
+methodological rigor, potential recall bias, researcher subjectivity and issues of reliability and
+external validity.
+
+              b. Whether the Product Compounded With This Bulk Drug Substance is Intended
+                 To Be Used in a Serious or Life-Threatening Disease
+
+Narcolepsy is a rare, disabling, and chronic sleep disorder characterized by EDS that is
+associated with psychiatric co-morbidities and medical comorbidities affecting the
+endocrinological and cardiovascular domains. There is increased risk of mortality associated
+with narcolepsy. A constellation of altered neuropsychological process as well as other
+psychological aspects contributes to a detrimental impact on the patient’s quality of life and
+economic burden (Franceschini et al. 2020).
+
+              c. Therapies That Have Been Used for the Condition(s) Under Consideration
+
+There are FDA-approved drug products indicated for the same medical condition as that
+proposed for the emideltide compounded drug product(s). 64 FDA approved therapies for
+narcolepsy in adults are listed in Table 4.
+
+
+
+
+64
+  FDA considers the existence of FDA-approved or OTC monograph drug products to treat the same condition as
+that proposed for the nomination relevant to FDA’s consideration of the safety criterion, to the extent there may be
+therapies that have been demonstrated to be safe under the conditions of use set forth in the approved labeling. See
+84 FR 4696.
+
+
+
+                                                                                                                   34
+There is insufficient evidence to make a conclusion on the effectiveness of IV emideltide (free
+base) or emideltide acetate for narcolepsy. The single-subject case report limits interpretation of
+effectiveness of emideltide due to insufficient methodological rigor, potential recall bias,
+researcher subjectivity, issues of reliability and external validity that limits its generalizability.
+Narcolepsy is a chronic condition and there is lack of long-term data on effectiveness.
+Professional society guidelines do not discuss the use of emideltide (free base) or emideltide
+acetate for narcolepsy. Narcolepsy is a serious condition and there are FDA approved therapies
+with established efficacy for the treatment of cataplexy or EDS in pediatric patients and adults
+with narcolepsy.
+
+         3. Opioid Withdrawal
+
+Physical dependence to opioids is an expected physiological response to chronic opioid
+exposure, associated with a down-regulation of endogenous endorphins and dynorphins. Abrupt
+cessation of opioids in physically dependent patients results in acute withdrawal symptoms.
+Opioid withdrawal symptoms occur both in patients who have been using prescribed opioids
+appropriately and in patients with opioid use disorder (OUD). Precipitated opioid withdrawal
+occurs when substances with opioid antagonist properties, such as naltrexone, naloxone, or
+buprenorphine, are taken concurrently with full opioid agonists.
+
+OUD is a chronic, relapsing neurobiological disease influenced by genetic, psychosocial, and
+environmental factors included in the Diagnostic and Statistical Manual of Mental Disorders,
+Fifth Edition (DSM-5) (Pergolizzi et al. 2020; Appendix 4). Among people aged 12 or older in
+the United States in 2023, 2.0 percent (or 5.7 million people) met diagnostic criteria for OUD in
+the past year. 66 With an increase in fentanyl in the illicit drug supply, the age-adjusted rate of
+opioid overdose deaths increased over the past two decades, from 4.1 deaths per 100,000
+standard population in 2002 to 25.0 in 2022. 67 In patients with OUD, the occurrence of
+withdrawal symptoms and the relief of withdrawal when opioids are used are important drivers
+of continuing use. Concern about withdrawal prevents some patients with OUD from seeking
+treatment, and symptoms of withdrawal contribute to relapse in patients attempting to recover
+from OUD.
+
+Opioid withdrawal syndrome consists of a wide range of symptoms that are both physiological
+and psychological as outlined in DSM-5-TR (Appendix 5). These symptoms are related to
+noradrenergic hyperactivity. Opioid withdrawal symptoms can be very uncomfortable but are
+usually not life-threatening. The onset of opioid withdrawal symptoms depends on the half-life
+of the specific opioid used. For instance, discontinuation of short-acting opioids (e.g., heroin)
+may result in symptoms starting within 12 hours, reaching maximum intensity in 36-72 hours
+and lasting 7-10 days. In contrast, discontinuation of long-acting opioids (e.g., methadone) may
+
+
+
+66
+   See Substance Abuse and Mental Health Services Administration (SAMHSA). Key Substance Use and Mental
+Health Indicators in the United States: Results from the 2023 National Survey on Drug Use and Health. Available at
+https://www.samhsa.gov/data/sites/default/files/reports/rpt47095/National%20Report/National%20Report/2023-
+nsduh-annual-national.pdf. Accessed 06/25/25.
+67
+   See CDC. NCHS Data Brief: Drug Overdose Deaths in the United States, 2002–2022. March 2024. Available at
+https://www.cdc.gov/nchs/data/databriefs/db491.pdf. Accessed 06/25/25.
+
+
+
+                                                                                                                36
+result in withdrawal symptoms within 30 hours, peak at 72-96 hours and last for ≥ 14 days
+(Pergolizzi et al. 2020).
+
+Several clinician-rated and patient-reported scales for assessing opioid withdrawal have been
+developed, including: Objective Opioid Withdrawal Scale (OOWS), 68 Clinical Opioid
+Withdrawal Scale (COWS) 69, Subjective Opioid Withdrawal Scale (SOWS) 70 and the Clinical
+Institute Narcotic Assessment (CINA). 71 These scales have been used to measure opioid
+withdrawal symptoms during the initial assessment to make the diagnosis or to assess
+effectiveness of withdrawal management in clinical practice. 72
+
+Effective opioid withdrawal management is important for treatment engagement and mitigation
+of risks of opioid relapse and overdose (Torres-Lockhart et al. 2022). The primary goals of
+opioid withdrawal management are to relieve acute suffering of opioid withdrawal and engage
+patients in initiating treatment for OUD (Torres-Lockhart et al. 2022). For most patients with
+OUD, the maintenance use of either mu agonist, partial agonist, or antagonist medications
+(combined with psychosocial treatment) is considered superior to withdrawal management
+(combined with psycho-social treatment), followed finally by psychosocial treatment on its own.
+Withdrawal management is generally believed to be associated with higher rates of relapse to
+illicit opioid use and overdose compared to maintenance treatment options. 73
+
+Opioid withdrawal is usually medically managed in either inpatient or outpatient settings using
+one of two approaches. In the first approach, the opioid of abuse is replaced with the opioid
+agonist methadone or partial opioid agonist buprenorphine to relieve symptoms. The dose of
+methadone or buprenorphine is then gradually reduced to allow the patient to adjust to the
+absence of an opioid (“detoxification”) (Schuckit 2016). In the second approach, alpha-2-
+adrenergic agonists, such as clonidine or lofexidine, are used to reduce withdrawal symptoms
+after opioid cessation. Of these medications, only lofexidine is approved for the treatment of
+opioid withdrawal. In addition, a variety of “comfort medications” to treat specific withdrawal
+symptoms (e.g., over-the-counter OTC analgesics, anti-diarrheals, anti-emetics, etc.) are often
+used, either by health care providers or by patients themselves. These medications may also be
+used as adjunctive treatment with buprenorphine or methadone for withdrawal management.
+
+
+
+
+68
+   OOWS is an objective measure in which the clinician checks for 13 signs of opioid withdrawal (e.g., yawning,
+perspiration).
+69
+   COWS is a clinical assessment for 11 medical signs and symptoms of opioid withdrawal (e.g., gastrointestinal
+distress).
+70
+   SOWS is a measure of 16 subjective symptoms of withdrawal, in which the patient rates their experience on a 5-
+point scale (e.g., I feel restless).
+71
+   CINA is a mix of subjective and objective measures assessing 11 common signs and symptoms of opioid
+withdrawal.
+72
+   The ASAM National Practice Guideline for the Treatment of Opioid Use Disorder: 2020 Focused Update, page
+25/91.
+73
+   The ASAM National Practice Guideline for the Treatment of Opioid Use Disorder: 2020 Focused Update, page
+27/91.
+
+
+
+                                                                                                                37
+Professional Society and Other Guidelines:
+
+The American Society of Addiction Medicine (ASAM) published clinical practice guideline 74 on
+the treatment of opioid withdrawal. The Substance Abuse and Mental Health Services
+Administration (SAMHSA) has also published best practices for detoxification, including opioid
+detoxification. 75 Neither of these guidelines discuss the use of emideltide in adults or children.
+
+             a. Reports of Trials, Clinical Evidence, and Anecdotal Reports of Effectiveness, or
+                Lack of Effectiveness, of the Bulk Drug Substance
+
+The nominators cited two references for opioid withdrawal (Dick et al. 1984; Backmund et al.
+1998)
+
+Dick et al. 1984:
+
+The uncontrolled, open-label study evaluated emideltide in the treatment of withdrawal in
+individuals who use alcohol (n=47) or opioid (n=60; 40 males and 20 females) and were
+admitted to the inpatient facility at the University Hospital of Psychiatry in Geneva, Switzerland.
+However, we limit our discussions to effectiveness of emideltide in the sub-group of individuals
+who used opioids. These subjects reported taking heroin, methadone, both methadone and
+heroin, or pentazocine with varying doses and duration. Emideltide IV 25 nmol/kg (0.0214
+mg/kg) was administered for withdrawal symptoms with maximal daily number of 6 injections
+for up to six days. Two different regimens were utilized; (1) Injection on request during
+recurrence of withdrawal symptoms and discontinuation after definitive clearance, and (2)
+Injections at fixed intervals scheduled every 6-8 hours during 3 consecutive days. For both
+regimens, additional injection was administered within 1 hour if it was ineffective. If still
+unsuccessful, the subject was considered a treatment failure and switched to other therapeutics.
+Treatment effects were assessed based on the clinical evaluation of objective signs of withdrawal
+by staff members and subjective report by the study subjects.
+
+Of the 60 subjects enrolled who used opioids, 40 subjects who were assessed, were reported to
+show “good decrease or complete disappearance of the following objective signs”: tachycardia,
+hypertension, tremor, perspiration, gooseflesh, yawning, lacrimation, diarrhea, rhinorrhea as well
+as subjective somatic symptoms: abdominal cramps, aching bones and muscles, hot and cold
+fleshes, nausea and anorexia. Anxiety decreased slowly within hours following several
+injections. However, certain number of subjects who were considered to have been successfully
+treated experienced a relapse of anxiety with marked insomnia within 24-72 hours after
+treatment discontinuation; only 13 subjects did not experience insomnia. When comparing the
+influences of the two different treatment regimens stated above, recurrent anxiety and insomnia
+occurred more often when injections were given on request.
+
+
+
+
+74
+   The ASAM National Practice Guideline for the Treatment of Opioid Use Disorder: 2020 Focused Update, pages
+1-91.
+75
+   See SAMHSA. Medications for Opioid Use Disorder. Treatment Improvement Protocol (TIP) 63. Available at
+https://library.samhsa.gov/sites/default/files/pep21-02-01-002.pdf. Accessed 06/25/25.
+
+
+
+                                                                                                           38
+The authors concluded that emideltide improved both objective and subjective clinical signs and
+symptoms of opioid withdrawal. However, the authors noted that “nothing allows [sic] to draw
+any conclusion as to a potential usefulness of a maintenance treatment with DSIP.” The study
+design also limits interpretation of effectiveness of emideltide due to small study sample size, ill-
+defined study population, lack of blinding, absence of a comparison group, and use of subjective
+assessments which were not evaluated using standard clinical scales (refer to Section II.C.3).
+Most importantly, the study protocol did not adequately describe the methods used to confirm
+the outcomes of improved or unimproved.
+
+Backmund et al. 1998:
+
+This open label study evaluated effectiveness of short-term emideltide for treatment of acute
+opioid withdrawal syndrome in seven subjects meeting the DSM-4 diagnosis of opioid
+dependence. The presence and severity of withdrawal symptoms were measured before and
+during detoxification using the SOWS 1. Subjects with a score more than 25 on the SOWS 1
+were administered emideltide IV 35 nmol/kg using a fixed schedule: on day 1, four and up to six
+injections; on days 2, 3, and 4, four injections; on days 5, 6, and 7, two injections. The study
+reported mean SOWS 1 scores decreased from 34.4 one hour before the first injection to 17.8
+after the first injection (timepoint of post-injection comparison measurement not provided by the
+authors). The study also reported improvements in both physical and withdrawal symptoms.
+However, only two subjects received all scheduled emideltide injections and successfully
+detoxified after the scheduled regimen. These two subjects on day 3 required doxepin to treat
+insomnia. The recurrence of withdrawal symptoms was not suppressed after the second and
+following injections except in one subject.
+
+The authors concluded that emideltide reduced opioid withdrawal symptoms after the first
+injection, however “it remains an open question whether DSIP could be an effective alternative
+detoxification approach” and stated that further placebo-controlled studies should be performed
+to verify effectiveness of emideltide in the treatment of acute opioid withdrawal symptoms.
+Similar to previous experimental studies, the study design also limits interpretation of
+effectiveness of emideltide due to small sample size, lack of blinding, and absence of a
+comparison group.
+
+            b. Whether the Product Compounded With This Bulk Drug Substance is Intended
+               To Be Used in a Serious or Life-Threatening Disease
+
+Opioid use disorder is a public health crisis. Between 1999 and 2017, there were more than
+702,000 deaths from drug overdose in the United States, of which 57% involved opioids. There
+has been an increase in hospitalization due to illicit opioid use and their comorbid conditions
+(Herscher et al. 2020). Opioid withdrawal symptoms, however, can be very uncomfortable but
+are usually not life-threatening (Pergolizzi et al. 2020).
+
+
+
+
+                                                                                                   39
+analgesics, antiemetics, antidiarrheals, and antihistamines are used for specific symptoms
+associated with opioid withdrawal and are available over the counter (Hersher et al. 2020).
+
+Conclusion: There was no study evaluating effectiveness to support use of emideltide (free base)
+or emideltide acetate via the nominated SC ROA for treatment of opioid withdrawal. We were
+only able to find data regarding administration of emideltide via IV ROA.
+
+There is insufficient evidence to make a conclusion on the effectiveness of emideltide (free base)
+or emideltide acetate via the IV ROA for the treatment of opioid withdrawal. Although available
+clinical studies reported positive outcomes of emideltide on improvement of both objective and
+subjective opioid withdrawal symptoms, results should be interpreted cautiously due to small
+number of published studies, small sample sizes, different treatment regimen and several
+limitations owing to nonrandomized and uncontrolled study design. Professional society
+guidelines do not discuss the use of emideltide (free base) or emideltide acetate for opioid
+withdrawal. There are FDA approved therapies with established efficacy for opioid withdrawal.
+
+Overall Conclusion
+
+Based on available clinical data, there is insufficient evidence concerning effectiveness to
+support the use of emideltide (free base) or emideltide acetate via the IV ROA for the treatment
+of chronic insomnia, narcolepsy, and opioid withdrawal. Clinical studies for chronic insomnia
+appear to be inconclusive and at best preliminary. Publications included in this evaluation by
+several authors did not reach same conclusion and for those studies that showed positive
+treatment response had poor study methodologies (i.e., lack of or poor selection of control
+groups) to assess whether any changes in outcomes were clinically meaningful. Studies were also
+limited by small sample sizes, different baseline characteristics in subjects across studies,
+different treatment regimen and unknown long-term benefit. Clinical studies for narcolepsy and
+opioid withdrawal were limited by clinical study design (case report, study without blinding or
+randomization), small sample size, large variabilities of subjective assessments, and wide range
+of doses and treatment durations.
+
+FDA did not identify any data to support the effectiveness of emideltide (free base) or emideltide
+acetate for the treatment of chronic insomnia, narcolepsy, and opioid withdrawal via the
+nominated SC ROA.
+
+Clinical practice guidelines do not discuss the use of emideltide (free base) or emideltide acetate
+for the management of chronic insomnia, narcolepsy, and opioid withdrawal. Sleep disorders
+encompassing chronic insomnia and narcolepsy as well as opioid withdrawal are serious
+conditions and there are FDA-approved treatments with established efficacy for these medical
+conditions.
+
+    D. Are There Concerns About the Safety of the Substance for Use in Compounding?
+
+        1. Nonclinical Assessment
+
+The nominators submitted nonclinical information. Specifically, Wells Pharmacy Network
+submitted a list of four articles reporting nonclinical studies of emideltide-related BDSs. Three
+
+
+
+
+                                                                                                    41
+articles report pharmacological properties of emideltide, 80 and one reports the effects of repeat-
+dose exposures to an emideltide-containing product on the incidence of spontaneous cancers in
+mice. 81 LDT Health Solutions submitted a list of 16 additional nonclinical studies published in
+the literature. Of the 16 studies, 15 describe pharmacological properties of emideltide-related
+BDSs 82 and one describes the blood brain barrier permeability of a derivative of emideltide. 83
+
+The following databases were consulted in preparation of this section: PubMed, Embase,
+National Toxicology Program website, European Chemicals Agency, Web of Science, National
+Institutes of Health’s dietary supplement label database, Google, Google Scholar, FDA’s
+Generally Recognized as Safe (GRAS) Notice Inventory, Pharmapendium, Society of
+Toxicology, USP, and Drugs@FDA.
+
+The nonclinical articles submitted by the nominators and those identified by FDA do not always
+clearly identify emideltide as free base or acetate salt. Therefore, in this section, the substance
+used in in-vitro and in-vivo experiments discussed in the articles will be generally referred to as
+emideltide-related BDS, unless the article under discussion clearly specifies the use of the free
+base or the acetate salt.
+
+               a. General Pharmacology of the Drug Substance
+
+Emideltide 84 is the nonproprietary name assigned to a nonapeptide that was first isolated from
+the blood of rabbits in response to electrical stimulation of the thalamus and shown to have
+sleep-inducing properties (Schoenenberger et al. 1977). Figure 5 illustrates the amino acid
+sequence of emideltide, which is the active moiety of emideltide (free base) and emideltide
+acetate.
+
+Figure 5. Amino Acid Sequence of Emideltide (Adapted From Bjartell et al. 1988)
+
+
+
+
+Since its discovery in the 1970’s, emideltide has been commonly referred to as delta sleep-
+inducing peptide (or DSIP) in the literature (Iyer et al. 1988; Kafi et al. 1979; Monnier et al.
+1977a; Polc et al. 1978; Schoenenberger et al. 1977; Šušić 1987; Ursin and Larsen 1983; Young
+and Key 1984). The name DSIP was originally coined because treatment of animals with the
+
+
+80
+   Khvatova et al. 1995; Khvatova et al. 2003; Nakamura et al. 1988.
+81
+   Popovich et al. 2003.
+82
+   Gimble et al. 2009; Graf and Kastin 1984; Iyer et al. 1988; Kastin et al. 1980; Kovalzon et al. 2006; Kutilin et al.
+2014; McLay et al. 2001; Mikhaleva et al. 2014; Nakamura et al. 1986; Oaknin et al. 1986; Sahu and Kalra 1987;
+Spath-Schwalbe et al. 1995; Stanojlovic et al. 2004; Sudakov et al. 1995; Yukhananov et al. 1992.
+83
+   Banks et al. 1984.
+84
+   World Health Organization (1993) INN Proposed List 70, available at
+https://www.who.int/publications/m/item/inn-pl-70. Accessed 05/28/24.
+
+
+
+                                                                                                                      42
+peptide consistently increased the power of electroencephalographic (EEG) delta waves and
+spindles, which are hallmarks of the deep sleep phase also known as non-rapid eye movement
+(NREM) sleep (Girardeau and Lopes-Dos-Santos 2021). 85 To be consistent with the name of the
+bulk drug substance the nominator submitted, the peptide is referred to as emideltide throughout
+this section.
+
+The delta sleep-inducing effects of emideltide appear to be conserved across species. For
+instance, intracebroventricular (ICV) treatment of rabbits with an emideltide-related BDS
+(6 nmol/kg; 3.5-minute ICV infusion): (i) induced a significant increase in the power of EEG
+delta waves that was accompanied by an increase in spindle activity, and (ii) had no effect on the
+power of higher frequency EEG waves characteristic of REM sleep (Monnier et al. 1977a;
+Schoenenberger and Monnier 1977). Likewise, ICV treatment of cats or rats with an emideltide-
+related BDS (7 nmol/kg) significantly prolonged their NREM sleep while having no effect on the
+duration of their REM sleep, as assessed in EEG recordings (Šušić et al. 1987; Ursin and Larsen
+1983).
+
+The delta sleep-inducing properties of emideltide have been observed not only when it is
+delivered directly into the brain but also when it is delivered via peripheral parenteral routes of
+administration, including IV, SC, and intraperitoneal (IP). For instance, IV treatment of free-
+moving rabbits with an emideltide-related BDS (30 nmol/kg) significantly increased the power
+of EEG delta waves, with the effect being observed within 5 h after the injection of emideltide
+(Monnier et al. 1977b). Likewise, IV treatment of free-moving rats with an emideltide-related
+BDS (30, 40, or 80 nmol/kg) significantly increased the power of EEG delta waves between 1
+and 4.5 h after the treatment; the effect was dose dependent and increased in magnitude with the
+increase in the emideltide-related BDS dose (Kafi et al. 1979).
+
+Significant (although not always selective) increases in the power of EEG delta waves have also
+been observed in: (i) adult male albino rats following an IP injection of emideltide (80 μg/kg;
+free base dissolved in 0.9% NaCl acidified with 0.01 M acetic acid), and (ii) adult cats treated
+with a SC injection of an emideltide-related BDS (120 nmol/kg) (Miller et al. 1986; Šušić 1987).
+The findings that a systemically delivered emideltide-related BDS is pharmacologically active
+and induces deep sleep similarly to an emideltide-related BDS delivered directly into the brain
+can be accounted for by the fact that emideltide can cross the blood brain barrier (see section
+II.D.1.b).
+
+There are, however, inconsistent findings in the literature regarding the effects of emideltide-
+related BDSs on the sleep architecture of animals. For instance, while ICV treatment of cats with
+an emideltide-related BDS (7 nmol/kg) selectively prolonged their NREM sleep (Šušić et al.
+1987), an IV treatment of cats with a higher dose of an emideltide-related BDS (30 nmol/kg)
+prolonged not only their NREM sleep but also their REM sleep (Polc et al. 1978). Likewise,
+
+
+
+85
+  In humans, delta waves, which are high-amplitude EEG waves in the frequency of 0.5 to 4 Hz, prevail during the
+NREM sleep deepest stage (stage 3). Spindles, on the other hand, which are bursts of EEG waves in the frequency of
+10 to 15 Hz, prevail during a lighter stage (stage 2) of the NREM sleep phase. Studies in humans and rodents have
+suggested that both slow delta waves and spindles are key for memory consolidation (Girardeau and Lopes-Dos-
+Santos 2021).
+
+
+
+                                                                                                               43
+while the ICV treatment of rats with the emideltide-related BDS dose of 7 nmol/kg selectively
+prolonged their NREM sleep (Ursin and Larsen 1983), ICV treatment of rats with a slightly
+lower dose (6 nmol/kg) prolonged both NREM and REM sleep (Young and Key 1984). Tobler
+and Borbély also reported contradictory findings because they failed to detect increases in the
+power of EEG delta waves recorded for 2 h following treatment of rats with an emideltide-
+related BDS (40-160 nmol/kg, IP; 7-24 nmol/animal, ICV) (Tobler and Borbély 1980). The
+reasons underlying the discrepant findings have not been discussed or elucidated.
+
+The pharmacological effects of emideltide on sleep appear to involve activation of the opioid
+system because treatment of rats with the opioid receptor antagonist naloxone (0.1 mg/kg, SC)
+prevented the ability of an emideltide-related BDS (6 nmol/kg, ICV) to prolong sleep duration
+(Young and Key 1984). According to data from an in-vitro study, emideltide does not interact
+directly with opioid receptors because it does not displace binding of the opioid receptor ligand
+[3H]diprenorphine to rat brain membranes and human placental membranes (Nakamura et al.
+1989). Instead, via a calcium-dependent mechanism, emideltide has been reported to facilitate
+the release of enkephalins from neurons in different brain regions, including the cerebral cortex,
+the hypothalamus, the hippocampus, and the thalamus (Nakamura et al. 1991).
+
+In addition to inducing sleep, emideltide has been shown to induce hypothermia, suppress stress
+responses, act as an antioxidant, act as anticonvulsant, and induce analgesia in rodents (Khvatova
+et al. 1995; Khvatova et al. 2003; Kovalzon and Strekalova 2006). Naloxone-induced inhibition
+of the dose-dependent analgesic effect of centrally administered emideltide-related BDS in mice
+and rats indicates that emideltide-induced analgesia – like emideltide’s sleep-inducing properties
+– is mediated at least in part by activation of the opioid system (Nakamura et al. 1988).
+
+Researchers have hypothesized that, by virtue of stimulating the opioid system, emideltide-
+related BDSs could be an effective therapeutic intervention to halt the clinical signs and
+symptoms of opioid and alcohol withdrawal syndromes (Dick et al. 1983). However, it is
+important to note that the ability of psychostimulants such as cocaine and amphetamine to
+stimulate endorphin release in the reward brain regions has been proposed to contribute to their
+positive reinforcing and addictive properties (Olive et al. 2001). Thus, by stimulating endorphin
+release in reward brain regions, emideltide-related BDSs could have reinforcing properties that
+could, in turn, contribute to the development of addiction. At the time of this evaluation, the
+nominator did not submit, and FDA did not identify nonclinical studies assessing the abuse
+potential of emideltide-related BDSs.
+
+            b. Pharmacokinetics/Toxicokinetics
+
+In-vivo and in-vitro nonclinical studies have reported that emideltide can cross the blood brain
+barrier and the blood-CSF barrier (Banks et al. 1982; Kastin et al. 1981; Zlokovic et al. 1988).
+
+Because emideltide can be metabolized by peptidyl dipeptidase A present in brain microvessel
+endothelial cells (Augustijns et al. 1995), clinically relevant drug-drug interactions may occur in
+subjects receiving concomitantly emideltide-related BDSs and drugs that can inhibit dipeptidase
+(e.g., captopril). Dipeptidase inhibitors are likely to prevent the metabolic degradation of
+emideltide, and, thereby, increase its pharmacologically active concentrations (Augustijns et al.
+1995).
+
+
+
+                                                                                                   44
+In one in-vivo study, Mongrel dogs (10 to 25 kg) received a bolus IV injection of an emideltide-
+related BDS (0.1 mg/kg) and had their CSF drawn at various times after the injection (Banks et
+al. 1982). The authors reported that CSF emideltide concentrations, measured by means of
+HPLC, increased significantly with time following the IV injection, peaked at 30 minutes after
+the injection, and declined thereafter to baseline (Banks et al. 1982).
+
+In another in-vivo study, male Sprague Dawley rats (100 to 275 g) received a bolus IV injection
+of an emideltide-related BDS (low doses ranged from 0.7 to 2 mg/kg; high dose: 10 mg/kg) or
+vehicle (saline) and had their brains harvested 5 seconds after the injection (Kastin et al. 1981).
+The authors reported that concentrations of emideltide, measured by means of an
+immunohistochemical assay, were significantly higher in brain tissue from rats treated with the
+high dose of the emideltide-related BDS compared to vehicle-treated rats (Kastin et al. 1981).
+
+In an in-vitro study, the blood-to-CSF flux of radiolabeled emideltide (125I-emideltide) was
+assessed during in-situ perfusion of isolated choroid plexuses of the lateral ventricles of adult
+sheep with 125I-emideltide-containing blood perfusate (Zlokovic et al. 1988). The following
+findings indicated that 125I-emideltide crosses from the blood into the CSF: (i) radioactivity
+levels measured in the venous perfusate were consistently lower (by ~5%) than those measured
+in the arterial perfusate, and (ii) the radioactivity in the venous perfusate corresponded to 125I-
+emideltide (rather than an emideltide metabolite or free 125I). The authors provided evidence that
+the flux of emideltide through the choroid plexus is a saturable process and suggested that this
+process may contribute to the brain uptake of emideltide (Zlokovic et al. 1988).
+
+According to findings from in-vitro and in-vivo studies, the half-life of emideltide is very short.
+For instance, in dogs treated with emideltide (free base; doses ranging from ~0.05 to ~0.1 mg/kg,
+IV), the half-life of emideltide was 3-6 min (Kato et al. 1984). In rats and in a monkey treated
+with emideltide (free base; rats: 2.0 mg/kg, monkey: 0.2 mg/kg, IV), the half-lives of emideltide
+were approximately 2-3 min (Kato et al. 1984). In an in-vitro study in which emideltide was
+incubated with human serum or rat serum at 37°C, the half-lives of emideltide were 5-10 min
+and <5 min, respectively (Graf et al. 1987).
+
+The short half-life of emideltide appears to be due primarily to its rapid hydrolysis into shorter
+peptides rather than its aggregation or protein binding (Graf et al. 1987). In human and rat blood,
+multiple peptidases catalyze the proteolytic breakdown of emideltide starting at its N-terminal
+domain (Graf et al. 1987).
+
+According to data from in-vitro studies, emideltide is a substrate for peptidases in brain tissue as
+well. Shorter peptides resulting from the breakdown of emideltide starting at its N-terminal
+domain have been detected in rat and mouse brain tissue in vitro (Huang and Lajtha 1978; Marks
+et al. 1977).
+
+At the time of this evaluation, the nominator did not submit, and FDA did not identify
+pharmacokinetic or toxicokinetic studies of emideltide (free base) or emideltide acetate delivered
+via the nominated SC ROA.
+
+
+
+
+                                                                                                  45
+              c. Acute Toxicity 86
+
+At the time of this evaluation, the nominator did not submit acute toxicity studies of emideltide
+(free base) or emideltide acetate. FDA identified one published article describing the acute
+effects of a single dose of emideltide on colonic temperature, blood pressure, and heart frequency
+(Yehuda et al. 1988).
+
+Yehuda and colleagues assigned rats to treatments at 6AM, 9AM, 12 PM, 3 PM, 6 PM, 9 PM, 12
+AM, or 3 AM. At each time, rats received a single IP injection of an emideltide-related BDS (0.1
+mg/kg) or saline and 30 minutes later had their mean blood pressure, colonic temperature, and
+heart rate measured with a tail cuff, a telethermometer, and a polygraph, respectively. Treatment
+with the emideltide-related BDS had no effect on mean blood pressure. However, it significantly
+reduced the heart rate of the rats by ~3% when treatment was delivered between 6AM and 3PM
+and by ~10% when treatment was delivered between 6PM and 3 AM (Yehuda et al. 1988). The
+treatment with the emideltide-related BDS changed the circadian rhythm of the colonic
+temperature of rats. Specifically, the colonic temperatures of saline-treated rats were higher in
+the evening than in the morning hours. The colonic temperatures of rats treated with the
+emideltide-related BDS between 9AM and 6PM were significantly higher than those of rats
+treated with saline at the same time points. They were also significantly higher than those of rats
+treated with the emideltide-related BDS between 9PM and 6AM (Yehuda et al. 1988).
+
+It is unknown whether the emideltide-induced bradycardia and the emideltide-induced shift in
+the circadian thermoregulation toward higher diurnal temperatures are in any way related to the
+induction of a sleep state by emideltide.
+
+              d. Repeat-Dose Toxicity 87
+
+At the time of this evaluation, the nominator did not submit, and FDA did not identify repeat-
+dose toxicity studies of emideltide (free base) or emideltide acetate.
+
+
+
+
+86
+   Acute toxicity refers to adverse effects observed following administration of a single dose of a substance, or
+multiple doses given within a short period (approximately 24 hours). For more information on general approaches
+for acute toxicity studies, please refer to FDA’s guidance for industry M3(R2) Nonclinical Safety Studies for the
+Conduct of Human Clinical Trials and Marketing Authorization for Pharmaceuticals (January 2010), available at
+https://www.fda.gov/media/71542/download.
+87
+   Repeat-dose toxicity studies consist of in-vivo animal studies that seek to evaluate the toxicity of the test
+substance when it is repetitively administered daily for an extended period. For more information on general
+approaches for repeat-dose toxicity studies, please refer to FDA’s guidance for industry M3(R2) Nonclinical Safety
+Studies for the Conduct of Human Clinical Trials and Marketing Authorization for Pharmaceuticals (January 2010),
+available at https://www.fda.gov/media/71542/download.
+
+
+
+                                                                                                               46
+              e. Genotoxicity 88
+
+In the nominator-submitted article published by Popovich and collaborators, the authors analyzed
+the frequency of chromosome aberrations in bone marrow cells harvested from female SHR
+mice 89 treated subcutaneously with the emideltide (free base)-containing product Deltaran 90 (to
+deliver the emideltide dose of 2.5 μg/mouse/day or 100 μg/kg/day) or vehicle (saline, 0.1
+mL/animal/day, SC) for 5 consecutive days/month. All mice (n = 4/treatment) were treated
+between the ages of 3 and 12 months (Popovich et al. 2003).
+
+The authors reported that the mean frequency of chromosome aberrations in bone marrow cells
+from control (saline-treated) mice increased from 2.1% at 3 months of age to 8.4% at 12 months
+of age. They also reported that the mean frequency of chromosome aberrations in bone marrow
+cells from Deltaran-treated mice at 12 months of age was approximately 23% lower than that in
+bone marrow cells from age-matched, vehicle-treated mice (Popovich et al. 2003).
+
+The finding that the 9-month treatment with Deltaran reduced the frequency of chromosome
+aberrations in SHR mice should be interpreted with caution in part because it may be unrelated to
+the presence of emideltide in Deltaran. An earlier in-vitro study reported that glycine is a potent
+antimutagenic substance (Roy et al. 2002). Specifically, with a potency of 80nM, glycine
+inhibited the mutagenic effect of N-methyl-N’-nitrosoguanidine by 50% in a strain of Salmonella
+typhimurium (Roy et al. 2002).
+
+At the time of this evaluation, FDA did not identify studies assessing the genotoxic potential of
+emideltide (free base) or emideltide acetate.
+
+
+
+
+88
+   The genotoxicity assessment battery usually consists of a gene mutagenicity assay (for single dose trials) and a
+variety of clastogenicity/genotoxicity assays. To support multiple dose administration in humans, additional
+genotoxicity testing assessment is usually conducted to detect chromosomal damage in mammalian systems. For
+more information on general approaches for genotoxicity studies, please refer to FDA’s guidance for industry
+S2(R1) Genotoxicity Testing and Data Interpretation for Pharmaceuticals Intended for Human Use (June 2012),
+available at https://www.fda.gov/media/71980/download.
+89
+   The SHR mouse strain is an outbred mouse strain derived from Swiss mice and is commonly used in experimental
+carcinogenicity studies (Anisimov et al. 2003).
+90
+   Deltaran is a product consisting of a lyophilized mixture of synthetic emideltide (free base) and glycine [1:10,
+weight/weight] and is reconstituted in saline (0.9% NaCl). According to Popovich et al. (2003), Deltaran is designed
+at the M.M. Shemyakin and Yu.A. Ovchinnikov Institute of Bioorganic Chemistry, Russian Academy of Sciences
+and is marketed in glass ampoules containing the lyophilized powder mixture of 0.3 mg emideltide (free base) and
+3.0 mg glycine (Popovich et al. 2003).
+
+
+
+                                                                                                                 47
+              f. Developmental and Reproductive Toxicity 91
+
+At the time of this evaluation, the nominator did not submit, and FDA did not identify
+nonclinical developmental and reproductive studies of emideltide (free base) or emideltide
+acetate.
+
+              g. Carcinogenicity 92
+
+In the nominator-submitted article published by Popovich and collaborators, the authors
+conducted an experiment to assess the effects of the emideltide (free base)-containing product
+Deltaran on the incidence of spontaneous tumors in female SHR mice. In this experiment, female
+SHR mice were treated with SC injections of: (i) Deltaran to deliver the emideltide dose of 2.5
+μg/mouse/day or 100 μg/kg/day for 5 consecutive days/month (n = 50 mice/treatment), or (ii)
+vehicle (0.9% NaCl, 0.1 mL/mouse/day, SC, 5 days/month). The treatments began when mice
+were 3 months old and continued throughout the lifespan of each mouse (Popovich et al. 2003).
+
+The authors reported that, starting at approximately 7 months of age, Deltaran-treated mice were
+approximately 10% lighter than control mice. The reduced body weight of Deltaran-treated mice
+was not due to reduced food consumption (Popovich et al. 2003). The mean lifespan of the last
+10% of surviving Deltaran-treated mice was approximately 20% longer than that of the last 10%
+of surviving control mice (Popovich et al. 2003). The longer lifespan of the last surviving mice in
+the Deltaran group was likely due to the delayed appearance and the reduced number of tumors
+in this group compared to that in the control group. The Deltaran treatment significantly reduced
+the incidence of adenocarcinoma of the mammary gland and leukemia in female SHR mice
+(Popovich et al. 2003).
+
+It is unclear whether the finding that the intermittent treatment with Deltaran reduced the
+incidence of malignant tumors in female SHR mice was due to emideltide because earlier studies
+reported that glycine, the other ingredient in Deltaran, has anti-tumorigenic properties (Rose et
+al. 1999). In addition, the study by Popovich and collaborators is not adequately designed to
+assess the potential for the emideltide-containing product to induce carcinogenicity.
+
+
+
+91
+   Developmental and reproductive toxicity studies are usually designed to assess the potential adverse effects of a
+substance within a complete reproductive cycle, from conception to reproductive capacity in subsequent generations,
+and to identify the potential effects of a substance on pre-, peri-, and postnatal development. Developmental toxicity
+or teratogenicity refers to adverse effects (can include embryo-fetal mortality, structural abnormalities, functional
+impairment, or alterations to growth) and can occur in pups either as a result of the exposure of their parents to the
+substance, prior to the pups’ birth, or by direct exposure of the pups to the substance after birth. For more
+information on general approaches for reproductive and developmental toxicity studies, please refer to FDA’s
+guidance for industry S5(R3) Detection of Reproductive and Developmental Toxicity for Human Pharmaceuticals
+(May 2021), available at https://www.fda.gov/media/148475/download.
+92
+   Studies that assess cancer risk in animals are used as predictive tools to evaluate the potential for drugs to cause
+tumors when used by humans on a chronic basis. Carcinogenicity studies are conducted if the clinical use is
+expected to be continuous for a minimum of 6 months of life, or if intermittent clinical use is expected to total 6
+months or more of life. For more information on general approaches for carcinogenicity studies, please refer to
+FDA’s guidance for industry S1B Testing for Carcinogenicity of Pharmaceuticals (July 1997), available at
+https://www.fda.gov/media/71935/download.
+
+
+
+                                                                                                                    48
+In general terms, in a typical study designed to assess the carcinogenic potential of a substance or
+a mix of substances, male and female mice (or rats) receive daily treatments with the test article
+for a minimum of 2 years. 93 As discussed by Haseman and colleagues, rodent carcinogenicity
+studies in which treatments last 12 to 18 months would be equivalent to evaluating human cancer
+in 30- to 50-year-old subjects and would, therefore, result in markedly reduced sensitivity to
+detect the carcinogenic potential of an exposure (Haseman et al. 2001). In the study by Popovich
+and colleagues, the intermittent treatment of SHR mice with Deltaran between the age of 3
+months and end of life resulted in exposures far shorter than 12 months. Considering that the
+longest surviving mouse lived 2.5 years (~30 months; Popovich et al. 2003), mice received
+Deltaran for a maximum of 4.5 months.
+
+At the time of this evaluation, FDA did not identify 2-year carcinogenicity studies of emideltide
+(free base) or emideltide (acetate). In addition, considering that the primary mechanisms of
+action, off-target actions, and pharmacokinetic profile of emideltide-related BDSs are unknown
+at this time, FDA could not conduct a weight-of-evidence analysis similar to that published the
+guidance entitled S1B(R1) Addendum to S1B Testing for Carcinogenicity of Pharmaceuticals 94
+to assess the potential for emideltide-related BDSs to induce carcinogenicity.
+
+Conclusions: From the nonclinical pharmacological perspective, emideltide has sleep-inducing
+properties that are conserved across species and are mediated via opioid-dependent mechanisms.
+Although emideltide does not appear to interact directly with opioid receptors, it can stimulate
+calcium-dependent release of endorphins. Emideltide-induced stimulation of the opioid system
+also contributes to its analgesic properties and could potentially be beneficial to suppress signs
+and symptoms of alcohol and opioid withdrawal syndromes. However, stimulation of the opioid
+system by emideltide could lead to development of addiction and, at the time of this evaluation,
+FDA did not identify nonclinical studies to inform the potential addictive liability of emideltide-
+related BDSs. From the nonclinical toxicological perspective, the findings that Deltaran (a
+product containing emideltide (free base) and glycine) reduced the frequency of chromosome
+aberrations in bone marrow cells of female SHR mice and the incidence of spontaneous
+malignant tumors in those mice could not be interpreted as evidence that emideltide-related
+BDSs have no potential to trigger genotoxicity or carcinogenicity in part because glycine has
+been reported to have antimutagenic and anticarcinogenic properties. At the time of this
+evaluation, the nominator did not submit, and FDA did not identify nonclinical toxicity studies to
+inform safety considerations for potential clinical uses of emideltide (free base) or emideltide
+acetate.
+
+         2. Human Safety
+
+The following databases were consulted in the preparation of this section: PubMed, Embase,
+Cochrane Database of Systematic Reviews, FAERS, ClinicalTrials.gov, professional healthcare
+organization websites, and various online clinical references and websites.
+
+
+
+93
+  See footnote 91.
+94
+  S1B(R1) Addendum to S1B Testing for Carcinogenicity of Pharmaceuticals: Guidance for Industry (November
+2022), available at https://www.fda.gov/regulatory-information/search-fda-guidance-documents/s1br1-addendum-
+s1b-testing-carcinogenicity-pharmaceuticals.
+
+
+
+                                                                                                               49
+The clinical articles submitted by the nominator and those identified by FDA do not always
+clearly identify whether the emideltide form administered in the clinical studies was a salt
+formulation or the free base. Therefore, the substance will be generally referred to as emideltide,
+unless the article under discussion clearly specifies the use of the free base or the acetate salt.
+
+              a. Pharmacokinetic Data
+
+Although we identified limited PK information via IV ROA, there was no information for the
+proposed SC ROA for emideltide (free base) or emideltide acetate.
+
+Emideltide has a short plasma half-life of 8 minutes. It is degraded in blood through reactions
+catalyzed by aminopeptidases (see section II.D.1.b). Plasma concentrations of emideltide
+correspond with the sleep-wake circadian rhythm in humans. An elevation of endogenous
+emideltide concentration has been shown to be associated with suppression of both slow-wave
+sleep (SWS) and REM sleep (Pollard and Pomfrett 2001).
+
+We included discussions below from two articles that were studies conducted in healthy
+volunteers that were limited to PD data. Of note, the nominator submitted the article by
+Schneider-Helmert et al. 1981.
+
+Schneider-Helmert et al. (1981):
+
+This study was the first-in-human pilot R, DB, PC, and CO study of emideltide in six middle-
+aged otherwise healthy subjects to determine acute and delayed effects of emideltide on
+psychological, physiological as well as sleeping behavior. Objective polygraphy recordings,
+video monitoring, and subjective evaluations using questionnaires, EWL, 95 SSS and stress test
+were obtained. During two consecutive experimental days, each pair of subjects randomly
+received either placebo or emideltide 25 nmol/kg (21.23 mcg/kg) IV over 20 min (investigational
+treatments at 09:00 AM). Although five subjects reported “feeling of pressure to sleep”
+immediately following emideltide infusions, 2 hours after the investigational treatment subjects
+did not experience sleepiness, reduced vigilance, nor impaired mental functioning. Total sleep
+time during the 130 minutes immediately following treatments was reportedly longer (median
+sleep time increased by 59%) after emideltide than placebo treatment without impairing
+alertness. Delayed effects on subsequent night sleep after the experiment (13-22 hour after
+emideltide administration) were shorter sleep onset, reduced percentage of stage 1 (decrease light
+sleep), and prolonged deeper sleep especially SWS and REM sleep, indicating better SE. There
+were no differences in mood, concentration, or sleepiness.
+
+Schneider-Helmert and Schoenenberger (1983):
+
+This study discussed series of five different investigational studies conducted in small numbers
+of subjects that included healthy volunteers and subjects with insomnia. In the series of
+investigational studies in healthy volunteers, the dose-pharmacodynamic response of varying
+
+
+
+95
+  EWL is an adjective list developed for psychopharmacologic studies, is a sensitive measure of activity,
+concentration, mood, extraversion, depression, and anxiety.
+
+
+
+                                                                                                            50
+infusion rates of IV emideltide 25 nmol/kg (21.3 µg/kg) administered during the day showed
+different effects on TST. Based on polysomnographic recordings with shorter emideltide
+infusion time 2.5 minutes TST increased by 30 minutes, and with emideltide infusion time 7.5
+minutes the TST increased by 1 hour. Emideltide was completely ineffective if infused over 1
+minute. Although the latency to sleep onset was not reported, authors reported optimal effects on
+TST were observed in healthy volunteers with emideltide IV infusion when given over 4 to 8
+minutes range. In the series of investigational studies in subjects with insomnia the authors
+observed that IV emideltide infusion over 4 minutes when administered 1 hour prior to bedtime
+on four consecutive evenings showed latency to sleep onset of 1 hour (see Section II.C.1.a. for
+additional discussions of data in subjects with insomnia for investigational studies referred to as
+series III - V in the publication).
+
+              b.   Reported Adverse Reactions (FAERS, Case Reports and Anecdotal Cases
+                   Assessing Safety)
+
+The Office of Surveillance and Epidemiology conducted a search of the FAERS database for
+reports of adverse events (AEs) for emideltide through March 3, 2024. The search retrieved zero
+reports.
+
+We did not identify any relevant case reports in the medical literature.
+
+              c. Clinical Studies Assessing Safety
+
+We identified several studies that administered IV emideltide to humans. For the list of
+references and details of the studies refer to Appendix 6. Based on these clinical studies, doses of
+emideltide between 25 – 150 nmol/kg have been administered intravenously to 209 subjects for 1
+to 15 days. Clinical studies were not identified that had information for emideltide (free base) or
+emideltide acetate for the proposed SC ROA.
+
+Clinical studies summarized in Appendix 6 showed that IV emideltide for chronic insomnia was
+found to be well tolerated and not associated with significant AEs. Dick et al. (1984) evaluated
+IV emideltide for the treatment of withdrawal syndrome in alcohol and opiate addicts (Appendix
+6 and Section II.C.3.a). 96 Although no significant AEs were reported in 95 of the 107 subjects
+with withdrawal syndrome, nine subjects experienced minor transient side effects such as
+perspiration, headaches, nausea, and vertigo. Three subjects presented with serious adverse
+effects: two subjects experienced hypotension at the beginning of the first injection and the third
+subject experienced repetitive episodes of general discomfort with perspiration and nausea
+lasting 15 minutes. There was no additional information for one of these subjects who received a
+second injection and experienced “progressive hypotension.” A certain number of successfully
+treated subjects who had opioid withdrawal experienced a relapse of anxiety with marked
+
+
+
+96
+  DSIP 25 nmol/kg (21.4 µg/kg) was administered intravenously for complete and abrupt withdrawal symptoms
+with up to 6 daily injections each day for up to six days. Two different regimens were utilized; 1. Injection on
+request during recurrence of withdrawal symptoms and stop after definitive clearance 2. Injections at fixed intervals
+scheduled every 6-8 hours during 3 consecutive days. For both regimens, new injection was administered within 1
+hour if it was ineffective.
+
+
+
+                                                                                                                   51
+insomnia within 24-72 hours after treatment cessation. The author reported that some of the side
+effects were attributed to the solubility difficulties of some of the vials which were obtained from
+Hoffman-La Roche. It is not clear what the authors meant or how this information is applicable
+to the interpretations of safety. “Solubility difficulties” for emideltide was not reported in other
+publications. The adverse effects experienced by the subjects are confounded to interpretation
+because of the underlying nature of the symptoms experienced during opiate and alcohol
+withdrawal.
+
+             d. Other Safety Information
+
+Immunogenicity and Aggregation Concerns
+
+FDA has issued guidance regarding immunogenicity assessment for therapeutic protein
+products. 97 The guidance describes immunogenicity as the propensity of a therapeutic protein
+product to generate immune responses to itself and to related proteins including endogenous
+proteins or peptides, or to induce immunologically related adverse clinical events. Although this
+guidance addresses therapeutic protein products, the concerns about immunogenicity are also
+relevant to peptides (such as emideltide (free base) and emideltide acetate), which can similarly
+elicit an immune response; this immune response may be enhanced when peptides are given via
+injectable ROA, such as IV and SC. In general, SC ROA is associated with increased
+immunogenicity compared to IV ROA.
+
+The consequences of triggering an immune response may range from antibody responses with no
+apparent clinical manifestations to life-threatening and catastrophic reactions. Such outcomes are
+often unpredictable in patients administered therapeutic protein or peptide products. One possible
+consequence of the development of an immune response is the development of neutralizing
+antibody activity that may lead to loss of effectiveness or even result in the neutralization of the
+activity of the endogenous peptide counterpart.
+
+Unlike small molecule APIs, peptides are distinct because they may have an inherent tendency to
+aggregate. Aggregation refers to the processes through which peptides associate into larger
+species consisting of multiple peptide chains. Aggregates can be highly ordered or amorphous
+and the formation can be reversible or irreversible (Zapadka et al. 2017). Peptides with as few as
+two amino acids have been shown to aggregate (Frederix et al. 2011). Aggregates can impact the
+pharmacology of the peptide. In addition, aggregation is a risk factor in immunogenicity and for
+decreased pharmacotherapeutic effect of the drug product due to effects on bioavailability,
+formation of precipitates, or anti-drug antibody production (Ratanji et al. 2014).
+
+As a peptide with nine amino acids that is administered through the SC ROA, emideltide may
+pose a significant risk for immunogenicity, potentially amplified by aggregation as well as
+potential peptide-related impurities, as discussed above. The nominator did not provide, and
+FDA is not aware of, information about emideltide (free base) or emideltide acetate to suggest
+that these substances do not present these risks.
+
+
+
+97
+  See FDA’s guidance for industry. Immunogenicity Assessment for Therapeutic Protein Products (August 2014),
+available at https://www.fda.gov/media/85017/download. Accessed 04/03/25.
+
+
+
+                                                                                                           52
+              e. Therapies That Have Been Used for the Condition(s) Under Consideration
+
+There are FDA-approved drug products that treat the same medical conditions as that proposed
+for compounded drug products containing emideltide-related BDSs. 98 See subsections c. in
+Section II.C.1-3 for a list of FDA-approved drug products indicated for the medical conditions
+considered in this evaluation.
+
+Conclusions: There are no safety data for emideltide (free base) and emideltide acetate
+administered by the nominator proposed SC ROA.
+
+Available clinical data for emideltide-related products administered IV in small numbers of
+subjects with chronic insomnia reported no significant adverse effects. However, studies in
+subjects with withdrawal symptoms reported transient headache, nausea, and vertigo as common
+side effects with cases of hypotension that was “progressive” following second IV emideltide
+injection. Considering that the context of use may be for chronic intermittent use, safety for
+emideltide-related products is insufficiently characterized. In subjects treated for withdrawal
+symptoms any adverse effects may have been confounded to interpretation because of the
+underlying nature of the symptoms experienced during opiate and alcohol withdrawal.
+
+Emideltide is a peptide containing 9 amino acids and a peptide sequence of this length has the
+potential to be immunogenic. Immunogenic response may be enhanced when peptides like
+emideltide-related BDSs are administered via injectable ROA, such as IV and SC due to
+potential for aggregation as well as potential peptide-related impurities. The nominator did not
+provide, and FDA is not aware of, information about emideltide (free base) or emideltide acetate
+to suggest that these substances do not present these risks.
+
+At the time of this evaluation, there are FDA-approved drugs for treating serious conditions like
+insomnia, narcolepsy, and opioid withdrawal in adults.
+III. CONCLUSION AND RECOMMENDATION
+
+We have balanced the criteria described in section II above to evaluate emideltide-related BDS
+(emideltide (free base) and emideltide acetate) for the 503A Bulks List. After considering the
+information currently available, a balancing of the criteria weighs against emideltide (free base
+and emideltide acetate being placed on that list based on the following:
+
+1. Conclusions on the physical and chemical characterization for each emideltide-related BDS,
+   emideltide (free base) and emideltide acetate, are included in subsections 1.1 and 1.2.
+
+     1.1 Emideltide (free base) is reported to be a peptide consisting of nine amino acids. As
+         reported in the literature, emideltide (free base) is expected to be stable under reported
+         storage conditions below -20°C. Also, since emideltide (free base) peptide has limited
+
+
+
+98
+  FDA considers the existence of FDA-approved or OTC monograph drug products to treat the same condition as
+that proposed for the nomination relevant to FDA’s consideration of the safety criterion, to the extent there may be
+therapies that have been demonstrated to be safe under the conditions of use set forth in the approved labeling. See
+84 FR 4696.
+
+
+
+                                                                                                                   53
+       water solubility, the BDS particle size distribution (PSD) control for emideltide (free
+       base) powder may be needed.
+
+       Emideltide (free base) is considered not well-characterized from the physical and
+       chemical characterization perspectives based on (1) inconsistent naming conventions that
+       do not follow established chemical nomenclature standards (e.g., USAN, INN, IUPAC),
+       and (2) certain critical characterization data specific to emideltide (free base), including
+       specific tests for impurities, aggregates, and endotoxins, were not found in the publicly
+       available scientific literature, and the nominations did not provide scientific literature or
+       other information such as CoAs as evidence to establish identity, purity, and impurity
+       profiles of the substance. As discussed in Section II.C.2.d., FDA is concerned about the
+       potential for immunogenicity of emideltide (free base) when formulated in an injectable
+       dosage form for SC administration due to the potential for peptide aggregation as well as
+       potential peptide-related impurities, as discussed in the impurity section. Injectable routes
+       of administration may present a particular risk for immunogenicity. We also note that the
+       stability, pharmacological activity, and immunogenic properties of peptides such as
+       emideltide (free base) are highly sensitive to the manufacturing process and quality
+       attributes of the compounded/finished drug product. In addition, due to reportedly limited
+       water solubility of emideltide (free base), it is unclear how it would be possible to
+       formulate the proposed injectable dosage form with the concentration of 1 mg/mL.
+
+   1.2 Emideltide acetate is a salt form of a peptide consisting of nine amino acids. As reported
+       in the literature, emideltide acetate is expected to be stable under reported storage
+       conditions below -20°C.
+
+       Emideltide acetate is considered not well-characterized from the physical and chemical
+       characterization perspective based on (1) inconsistent naming conventions that do not
+       follow established chemical nomenclature standards (e.g., USAN, INN, IUPAC), and (2)
+       certain critical characterization data specific to emideltide acetate were not found in the
+       publicly available scientific literature, and the provided CoA, which was offered to
+       establish identity, purity, and impurity profiles of the substance, lacked specific tests
+       (including impurities, aggregates, and endotoxins). As discussed in Section II.C.2.d.,
+       FDA is concerned about the potential for immunogenicity of emideltide acetate when
+       formulated in an injectable dosage form for SC administration due to the potential for
+       peptide aggregation as well as potential peptide related impurities, as discussed in the
+       impurities section. Injectable routes of administration may present a particular risk for
+       immunogenicity. We also note that the stability, pharmacological activity, and
+       immunogenic properties of peptides such as emideltide acetate are highly sensitive to the
+       manufacturing process and quality attributes of the compounded/finished drug product.
+
+2. Emideltide-related BDSs have been studied for use in humans since at least 1981. There is
+   evidence that emideltide-related BDSs have been used in compounding since at least 2018.
+   Emideltide-related injection and intranasal products are available in the US through
+   integrative neurology clinics, medical concierge services, medical spas, wellness clinics, and
+   online retailers for various uses. However, it is unclear whether these products are
+   compounded or if pharmacies are currently compounding products containing emideltide-
+   related BDSs. At the time of this evaluation, currently available data and published literature
+
+
+
+                                                                                                  54
+   is too limited to inform the historical use of any form of emideltide compounded drug
+   products.
+
+3. Based on available clinical data, there is insufficient information concerning effectiveness to
+   support the use of emideltide (free base) and emideltide acetate via IV ROA for the treatment
+   of chronic insomnia, narcolepsy, and opioid withdrawal. Clinical studies for chronic
+   insomnia appear to be inconclusive and at best preliminary. Publications included in this
+   evaluation by several authors did not reach same conclusion and for those studies that
+   showed positive treatment response had poor study methodologies (i.e., lack of or poor
+   selection of control groups) to assess whether any changes in outcomes were clinically
+   meaningful. Studies were also limited by small sample sizes, different baseline
+   characteristics in subjects across studies, different treatment regimen and unknown long-term
+   benefit. Clinical studies for narcolepsy and opioid withdrawal were limited by clinical study
+   design (case report, study without blinding or randomization), small sample size, large
+   variabilities on subject report, and wide range of doses and treatment durations.
+
+   FDA did not identify any data to support the effectiveness of emideltide (free base) or
+   emideltide acetate for the treatment of chronic insomnia, narcolepsy, and opioid withdrawal
+   via the nominated SC ROA.
+
+   Clinical practice guidelines do not discuss the use of emideltide (free base) or emideltide
+   acetate for the management of insomnia, narcolepsy, and opioid withdrawal. Sleep disorders
+   encompassing chronic insomnia and narcolepsy as well as opioid withdrawal are serious
+   conditions and there are FDA-approved treatments with established efficacy for these
+   medical conditions.
+
+4. From the nonclinical pharmacological perspective, emideltide has sleep-inducing properties
+   that are conserved across species and are mediated via opioid-dependent mechanisms.
+   Although emideltide does not appear to interact directly with opioid receptors, it can
+   stimulate calcium-dependent release of endorphins. Emideltide-induced stimulation of the
+   opioid system also contributes to its analgesic properties and could potentially be beneficial
+   to suppress signs and symptoms of alcohol and opioid withdrawal syndromes. However,
+   stimulation of the opioid system by emideltide-related BDSs could lead to development of
+   addiction, and, at the time of this evaluation, FDA did not identify nonclinical studies to
+   inform the potential addictive potential of emideltide-related BDSs. From the nonclinical
+   toxicological perspective, the findings that Deltaran (a product containing emideltide (free
+   base) and glycine) reduced the frequency of chromosome aberrations in bone marrow cells of
+   female SHR mice and the incidence of spontaneous malignant tumors in those mice could not
+   be interpreted as evidence that emideltide-related BDSs have no potential to trigger
+   genotoxicity or carcinogenicity in part because glycine has been reported to have
+   antimutagenic and anticarcinogenic properties. At the time of this evaluation, the nominator
+   did not submit, and FDA did not identify nonclinical toxicity studies to inform safety
+   considerations for potential clinical uses of emideltide (free base) or emideltide acetate.
+
+   There are no clinical safety data for emideltide (free base) and emideltide acetate
+   administered by the nominator proposed SC ROA. Although available clinical data for
+   emideltide-related products administered IV in small numbers of subjects with chronic
+
+
+
+                                                                                                55
+   insomnia reported no significant adverse effects, studies in subjects with withdrawal
+   symptoms reported transient headache, nausea, and vertigo as common side effects with
+   cases of hypotension that was “progressive” following second emideltide injection
+   administered IV. Considering that the context of use may be for chronic intermittent use,
+   safety for emideltide-related products is insufficiently characterized. In subjects treated for
+   withdrawal symptoms any adverse effects may have been confounded to interpretation
+   because of the underlying nature of the symptoms experienced during opiate and alcohol
+   withdrawal.
+
+   Emideltide is a peptide containing 9 amino acids and a peptide sequence of this length has
+   the potential to be immunogenic. Immunogenic response may be enhanced when peptides
+   like emideltide-related BDSs are administered via injectable ROA, such as IV and SC due to
+   potential for aggregation as well as potential peptide-related impurities. The nominator did
+   not provide, and FDA is not aware of, information about emideltide (free base) or emideltide
+   acetate to suggest that these substances do not present these risks. At the time of this
+   evaluation, there are FDA-approved drugs for treating serious conditions like insomnia,
+   narcolepsy, and opioid withdrawal in adults.
+
+On balance, physicochemical characterization, information on historical use, evidence of
+effectiveness, and safety information identified for both emideltide (free base) and emideltide
+acetate weigh against them being added to the 503A Bulks List. Although available data suggests
+that these substances have been used historically in compounding, FDA’s proposal is based on
+lack of data related to physiochemical characterization, lack of evidence of effectiveness and
+insufficient safety information on the use of the substances. These substances are not well
+characterized from a physical and chemical characterization perspective, and endotoxin testing
+for injectable ROA is lacking. In addition, based on their limited solubility in water, it is unclear
+how it would be possible to formulate the proposed injectable dosage form with concentration of
+1,000 mcg/ml without co-solvent used. FDA also did not identify information that addresses
+additional concerns related to potential aggregation and immunogenicity risks for emideltide
+(free base) and emideltide acetate, as described above. We do not have nonclinical and clinical
+safety data or effectiveness data for chronic insomnia, narcolepsy and opioid withdrawal for the
+proposed SC ROA. Although available clinical data for emideltide-related products administered
+IV in small numbers of subjects with chronic insomnia reported no significant adverse events,
+studies in subjects with withdrawal symptoms reported transient headache, nausea, and vertigo as
+common side effects with cases of hypotension that was “progressive” following second
+emideltide injection administered IV. The lack of data discussed above, and the existence of
+FDA-approved drugs to treat chronic insomnia, narcolepsy, and opioid withdrawal, particularly
+considering these are serious and /or life-threatening conditions, weighs against emideltide-
+related BDSs being added to the 503A Bulks List. Accordingly, we propose not adding
+emideltide (free base) or emideltide acetate to the 503A Bulks List.
+
+
+
+
+                                                                                                     56
+IV. REFERENCES
+
+Abad, VC, 2023, Pharmacological Options for Narcolepsy: Are They the Way Forward?, Expert
+Rev Neurother 23(9):819-834.
+
+American Psychiatric Association, 2022, Diagnostic and Statistical Manual of Mental Disorders,
+5th edition, text revision DSM-5-TR, Arlington VA, American Psychiatric Association
+Publishing.
+
+Anderson, D, 2021, Narcolepsy: A Clinical Review, JAAPA, 34(6):20-25.
+
+Anisimov, VN, VK Khavinson, IG Popovich, MA Zabezhinski, IN Alimova, SV Rosenfeld, NY
+Zavarzina, AV Semenchenko and AI Yashin, 2003, Effect of Epitalon on Biomarkers of Aging,
+Life Span and Spontaneous Tumor Incidence in Female Swiss-Derived SHR Mice,
+Biogerontology, 4(4):193-202.
+
+Asnis, GM, M Thomas and MA Henderson, 2015, Pharmacotherapy Treatment Options for
+Insomnia: A Primer for Clinicians, Int J Mol Sci, 17(1):50.
+
+Augustijns, PF, KY Ng, TM Williams and RT Borchardt, 1995, Peptidyl Dipeptidase A-
+Catalyzed Metabolism of Delta Sleep-Inducing Peptide in Bovine Brain Microvessel Endothelial
+Cells: A Cell Culture Model of the Blood Brain Barrier, Biochem Biophys Res Commun,
+210(3):987-994.
+
+Backmund, M, K Meyer, HB Rothenhaeusler and M Soyka, 1998, Opioid Detoxification With
+Delta Sleep-inducing Peptide: Results of an Open Clinical Trial, J Clin Psychopharmacol,
+18(3):257-258.
+
+Banks, WA, AJ Kastin and DH Coy, 1982, Delta Sleep-Inducing Peptide Crosses the Blood-
+Brain-Barrier in Dogs: Some Correlations With Protein Binding, Pharmacol Biochem Behav,
+17(5):1009-1014.
+
+Banks, WA, AJ Kastin and DH Coy, 1984, Evidence That [125I] N-Tyr-Delta Sleep-Inducing
+Peptide Crosses the Blood-Brain Barrier by a Non-Competitive Mechanism, Brain Res,
+301(2):201-207.
+
+Barateau, L, F Pizza, S Chenini, L Peter-Derex and Y Dauvilliers, 2023, Narcolepsies, Update in
+2023, Rev Neurol (Paris), 179(7):727-740.
+
+Bassetti, CLA, A Adamantidis, D Burdakov, F Han, S Gay, U Kallweit, R Khatami, F Koning,
+BR Kornum, GJ Lammers, RS Liblau, PH Luppi, G Mayer, T Pollmächer, T Sakurai, F Sallusto,
+TE Scammell, M Tafti and Y Dauvilliers, 2019, Narcolepsy - Clinical Spectrum,
+Aetiopathophysiology, Diagnosis and Treatment, Nat Rev Neurol, 15(9):519-539.
+
+Bes, F, W Hofman, J Schuur, and C Van Boxtel, 1992, Effects of Delta Sleep-Inducing Peptide
+on Sleep of Chronic Insomniac Patients, A Double-blind Study, Neuropsychobiology, 26(4):193-
+197.
+
+
+
+
+                                                                                             57
+Bjartell, A, R Ekman, F Sundler and E Widerlöv, 1988, Delta Sleep-Inducing Peptide (DSIP):
+An Overview of Central Actions and Possible Relationship to Psychiatric Illnesses, Nordisk
+Psykiatrisk Tidsskrift, 42(2):111-117.
+
+Dick, P, C Costa, K Fayolle, ME Grandjean, A Khoshbeen and R Tissot, 1984, DSIP in the
+Treatment of Withdrawal Syndromes From Alcohol and Opiates, Eur Neurol, 23(5):364-371.
+
+Dick, P, M Grandjean and R Tissot, 1983, Successful Treatment of Withdrawal Symptoms with
+Delta Sleep-Inducing Peptide, a Neuropeptide With Potential Agonistic Activity on Opiate
+Receptors, Neuropsychobiol, 10(4):205-208.
+
+Edinger, JD, DJ Buysse, L Deriy, A Germain, DS Lewin, JC Ong and TI Morgenthaler, 2015,
+Quality Measures for the Care of Patients With Insomnia, J Clin Sleep Med, 11(3):311-334.
+
+Fanceschini, C, F Pizza, E Antelmi, MC Folli and G Plazzi, 2020, Narcolepsy Treatment:
+Pharmacological and Behavioral Strategies in Adults and Children, Sleep Breath, 24(2):615-627.
+
+Frederix, PW, RV Ulijn, NT Hunt and T Tuttle, 2011, Virtual Screening for Dipeptide
+Aggregation: Toward Predictive Tools for Peptide Self-Assembly, J Phys Chem Lett,
+2(19):2380-2384.
+
+Gimble, JM, AA Ptitsyn, BC Goh, T Hebert, G Yu, X Wu, S Zvonic, XM Shi and ZE Floyd,
+2009, Delta Sleep-Inducing Peptide and Glucocorticoid-Induced Leucine Zipper: Potential Links
+Between Circadian Mechanisms and Obesity?, Obes Rev, 10(s2):46-51.
+
+Girardeau, G and V Lopes-Dos-Santos, 2021, Brain Neural Patterns and the Memory Function of
+Sleep, Science, 374(6567):560-564.
+
+Graf, MV and AJ Kastin, 1984, Delta-Sleep-Inducing Peptide (DSIP): A Review, Neurosci
+Biobehav Rev, 8(1):83-93.
+
+Graf, MV and AJ Kastin, 1986, Delta-Sleep-Inducing Peptide (DSIP): An Update, Peptides,
+7(6):1165-1187.
+
+Graf, MV, B Saegesser and GA Schoenenberger, 1987, Degradation and Aggregation of Delta
+Sleep-Inducing Peptide (DSIP) and Two Analogs in Plasma and Serum, Peptides, 8(4):599-603.
+
+Gringras, P, T Nir, J Breddy, A Frydman-Marom and RL Findling, 2017, Efficacy and Safety of
+Pediatric Prolonged-Release Melatonin for Insomnia in Children With Autism Spectrum
+Disorder, J Am Acad Child Adolesc Psychiatry, 56(11):948-957 e4”.
+
+Herscher, M, M Fine, R Navalurkar, L Hirt and L Wang, 2020, Diagnosis and Management of
+Opioid Use Disorder in Hospitalized Patients, Med Clin North Am, 104(4):695-708.
+
+Huang, JT and A Lajtha, 1978, The Degradation of a Nonapeptide, Sleep Inducing Peptide, in
+Rat Brain: Comparison With Enkephalin Breakdown, Res Commun Chem Pathol Pharmacol,
+19(2):191-199.
+
+
+
+
+                                                                                             58
+Ivanenko, A, A Baroni, R Gruber, S Hartselle, KP Johnson, J Owens, U Ramtekkar and C
+Whitmore, 2021, Sleep Disorders: Parents’ Medication Guide, Am Acad Child Adol Psych, 1-
+14.
+
+Iyer, KS, G Marks, A Kastin and S McCann, 1988, Evidence for a Role of Delta Sleep-Inducing
+Peptide in Slow-Wave Sleep and Sleep-Related Growth Hormone Release in the Rat, Proc Natl
+Acad Sci USA, 85(10):3653-3656.
+
+Kaeser, HE, 1984, A Clinical Trial With DSIP, Eur Neurol, 23(5):386-388.
+
+Kafi, S, M Monnier and J-M Gallard, 1979, The Delta-Sleep Inducing Peptide (DSIP) Increases
+Duration of Sleep in Rats, Neurosci Lett, 13(2):169-172.
+
+Kastin, AJ, C Nissen and DH Coy, 1981, Permeability of Blood-Brain Barrier to DSIP Peptides,
+Pharmacol Biochem Behav, 15(6):955-959.
+
+Kastin, AJ, GA Olson, AV Schally and DH Coy, 1980, DSIP – More Than a Sleep Peptide?,
+Trends Neurosci, 3(7):163-165.
+
+Kato, N, Y Honda, S Ebihara, H Naruse and Y Takahashi, 1984, Development of an Enzyme
+Immunoassay for Delta Sleep-Inducing Peptide (DSIP) and Its Use in the Determination of the
+Metabolic Clearance Rate of Dsip Administered to Dogs, Neuroendocr, 39(1):39-44.
+
+Khvatova, EM, NA Rubanova, IA Prudchenko and Mikhaleva, II, 1995, Effects of Delta-Sleep
+Inducing Peptide (DSIP) and Some Analogues on the Activity of Monoamine Oxidase Type A in
+Rat Brain Under Hypoxia Stress, FEBS Lett, 368(2):367-369.
+
+Khvatova, EM, VN Samartzev, PP Zagoskin, IA Prudchenko and Mikhaleva, II, 2003, Delta
+Sleep Inducing Peptide (DSIP): Effect on Respiration Activity in Rat Brain Mitochondria and
+Stress Protective Potency Under Experimental Hypoxia, Peptides, 24(2):307-311.
+
+Kovalzon, VM and TV Strekalova, 2006, Delta Sleep‐Inducing Peptide (DSIP): A Still
+Unresolved Riddle, J Neurochem, 97(2):303-309.
+
+Kutilin, DS, TI Bondarenko, IV Kornienko and Mikhaleva, II, 2014, Effect of Delta Sleep-
+Inducing Peptide on the Expression of Antioxidant Enzyme Genes in the Brain and Blood of
+Rats During Physiological Aging, Bull Exp Biol Med, 157(5):616-619.
+
+Laffont, F, HP Cathala, A Ernst, M Bormer, D Schneider-Helmert and GA Schoenenberger,
+1984, Sleep Disturbances in a Case of Brain-Stem Lesions; Pharmacological Study,
+Electroencephalogr Clin Neurophysiol, 57(1):32-34.
+
+Marks, N, F Stern, AJ Kastin and DH Coy, 1977, Degradation of Delta Sleep Inducing Peptide
+(DSIP) and Its Analogs by Brain Extracts, Brain Res Bull, 2(6):491-493.
+
+Maski, K, LM Trotti, S Kotagal, RR Auger, JA Rowley, SD Hashmi and NF Watson, 2021,
+Treatment of Central Disorders of Hypersomnolence: An American Academy of Sleep Medicine
+Clinical Practice Guideline, J Clin Sleep Med, 17(9):1881-1893.
+
+
+
+                                                                                              59
+McLay, RN, W Pan and AJ Kastin, 2001, Effects of Peptides on Animal and Human Behavior: A
+Review of Studies Published in the First Twenty Years of the Journal Peptides, Peptides,
+22(12):2181-2255.
+
+Medalie, L and AS Cifu, 2017, Management of Chronic Insomnia Disorder in Adults, JAMA,
+317(7):762-763.
+
+Mikhaleva, II, VT Ivanov, LV Onoprienko, IA Prudchenko, LD Chikin, RI Yakubovskaya, ER
+Nemtsova and OA Bezborodova, 2014, [Antioxidative and Detoxifying Effects of Analogues of
+Delta-Sleep Inducing Peptide (DSIP)], Bioorg Khim, 40(1):3-11.
+
+Miller, LH, BA Turnbull, AJ Kastin and DH Coy, 1986, Sleep-Wave Activity of a Delta Sleep-
+Inducing Peptide Analog Correlates With Its Penetrance of the Blood-Brain Barrier, Sleep,
+9(1):80-84.
+
+Monnier, M, L Dudler, R Gächter, P Maier, H Tobler and G Schönenberger, 1977a, The Delta
+Sleep Inducing Peptide (DSIP): Comparative Properties of the Original and Synthetic
+Nonapeptide, Experientia, 33(4):548-552.
+
+Monnier, M, L Dudler, R Gächter and G Schoenenberger, 1977b, Delta Sleep-Inducing Peptide
+(DSIP): EEG and Motor Activity in Rabbits Following Intravenous Administration, Neurosci
+Lett, 6(1):9-13.
+
+Monti, JM, J Debellis, P Alterwain, T Pellejero and D Monti, 1987, Study of Delta Sleep-
+Inducing Peptide Efficacy in Improving Sleep on Short-Term Administration to Chronic
+Insomniacs, Int J Clin Pharmacol Res, 7(2):105-110.
+
+Nakamura, A, M Nakashima, H Kanemoto, T Sugao, Y Fukumura and H Shiomi, 1986, Delta
+Sleep-Inducing Peptide (DSIP) Has Potent Analgesic Activity in Mice, Eur J Pharmacol,
+121(1):157-158.
+
+Nakamura, A, M Nakashima, T Sugao, H Kanemoto, Y Fukumura and H Shiomi, 1988, Potent
+Antinociceptive Effect of Centrally Administered Delta-Sleep-Inducing Peptide (DSIP), Eur J
+Pharmacol, 155(3):247-253.
+
+Nakamura, A, M Nakashima, K Sakai, M Niwa, M Nozaki and H Shiomi, 1989, Delta-Sleep-
+Inducing Peptide (DSIP) Stimulates the Release of Immunoreactive Met-Enkephalin From Rat
+Lower Brainstem Slices in Vitro, Brain Res, 481(1):165-168.
+
+Nakamura, A, K Sakai, Y Takahashi and H Shiomi, 1991, Characterization of Delta-Sleep-
+Inducing Peptide-Evoked Release of Met-Enkephalin From Brain Synaptosomes in Rats, J
+Neurochem, 57(3):1013-1018.
+
+Olive, MF, HN Koenig, MA Nannini and CW Hodge, 2001, Stimulation of Endorphin
+Neurotransmission in the Nucleus Accumbens by Ethanol, Cocaine, and Amphetamine, J
+Neurosci, 21(23):RC184.
+
+
+
+
+                                                                                              60
+Oaknin, S, ME Troiani, SM Webb and RJ Reiter, 1986, Influence of Delta-Sleep Inducing
+Peptide on Melatonin Synthesis in the Rat Pineal Gland, Neurosci Lett, 70(1):127-131.
+
+Pergolizzi, JV, Jr., RB Raffa and MH Rosenblatt, 2020, Opioid Withdrawal Symptoms, a
+Consequence of Chronic Opioid Use and Opioid Use Disorder: Current Understanding and
+Approaches to Management, J Clin Pharm Ther, 45(5):892-903.
+
+Polc, P, J Schneeberger and W Haefely, 1978, Effect of the Delta Sleep-Inducing Peptide (DSIP)
+on the Sleep-Wakefulness Cycle of Cats, Neurosci Lett, 9(1):33-36.
+
+Pollard, BJ and CJ Pomfrett, 2001, Delta Sleep-Inducing Peptide, Eur J Anaesthesiol, 18(7):419-
+422.
+
+Popovich, IG, BO Voitenkov, VN Anisimov, VT Ivanov, Mikhaleva, II, MA Zabezhinski, IN
+Alimova, DA Baturin, NY Zavarzina, SV Rosenfeld, AV Semenchenko and AI Yashin, 2003,
+Effect of Delta-Sleep Inducing Peptide-Containing Preparation Deltaran on Biomarkers of
+Aging, Life Span and Spontaneous Tumor Incidence in Female SHR Mice, Mech Ageing Dev,
+124(6):721-731.
+
+Qaseem, A, D Kansagara, MA Forciea, M Cooke and TD Denberg, 2016, Management of
+Chronic Insomnia Disorder in Adults: A Clinical Practice Guideline From the American College
+of Physicians, Ann Intern Med, 165(2):125-133.
+
+Ratanji, KD, JP Derrick, RJ Dearman and I Kimber, 2014, Immunogenicity of Therapeutic
+Proteins: Influence of Aggregation, J Immunotoxicol, 11(2):99-109.
+
+Rose, ML, RC Cattley, C Dunn, V Wong, X Li and RG Thurman, 1999, Dietary Glycine
+Prevents the Development of Liver Tumors Caused by the Peroxisome Proliferator WY-14,643,
+Carcinogenesis, 20(11):2075-2081.
+
+Roy, MK, Y Kuwabara, K Hara, Y Watanabe and Y Tamai, 2002, Antimutagenic Effect of
+Amino Acids on the Mutagenicity of N-Methyl-N′-Nitro-N-Nitrosoguanidine (MNNG), Biosci
+Biotechnol Biochem, 66(6):1400-1402.
+
+Sahu, A and SP Kalra, 1987, Delta Sleep-Inducing Peptide (DSIP) Stimulates LH Release in
+Steroid-Primed Ovariectomized Rats, Life Sci, 40(12):1201-1206.
+
+Sateia, MJ, DJ Buysse, AD Krystal, DN Neubauer and JL Heald, 2017, Clinical Practice
+Guideline for the Pharmacologic Treatment of Chronic Insomnia in Adults: An American
+Academy of Sleep Medicine Clinical Practice Guideline, J Clin Sleep Med, 13(2):307-349.
+
+Schneider-Helmert, D, 1984, Effects of DSIP on Narcolepsy, Eur Neurol, 23(5):353-357.
+
+Schneider-Helmert, D, 1986, Efficacy of DSIP to Normalize Sleep in Middle-Aged and Elderly
+Chronic Insomniacs, Eur Neurol, 25(6):448-453.
+
+Schneider-Helmert, D, 1987, Effects of Delta-Sleep-Inducing Peptide on 24-Hour Sleep-Wake
+Behaviour in Severe Chronic Insomnia, Eur Neurol, 27(2):120-129.
+
+
+
+                                                                                             61
+Schneider-Helmert, D, F Gnirss, M Monnier, J Schenker and GA Schoenenberger, 1981, Acute
+and Delayed Effects of DSIP (Delta Sleep-Inducing Peptide) on Human Sleep Behavior, Int J
+Clin Pharmacol Ther Toxicol, 19(8):341-5.
+
+Schneider-Helmert, D and GA Schoenenberger, 1981, The Influence of Synthetic DSIP (Delta-
+Sleep-Inducing-Peptide) on Disturbed Human Sleep, Experientia, 37(9):913-917.
+
+Schneider-Helmert, D and GA Schoenenberger, 1983, Effects of DSIP in Man. Multifunctional
+Psychophysiological Properties Besides Induction of Natural Sleep, Neuropsychobiol, 9(4):197-
+206.
+
+Schoenenberger, GA, P Maier, H Tobler and M Monnier, 1977, A Naturally Occurring Delta-
+EEG Enhancing Nonapeptide in Rabbits. X. Final Isolation, Characterization and Activity Test,
+Pflügers Archiv, 369(2):99-109.
+
+Schoenenberger, GA and M Monnier, 1977, Characterization of a Delta-Electroencephalogram
+(δ-Sleep)-Inducing Peptide, Proc Natl Acad Sci USA, 74(3):1282-1286.
+
+Schuckit, MA, 2016, Treatment of Opioid-Use Disorders, N Engl J Med, 375(4):357-368.
+
+Shaha, DP, 2023, Insomnia Management: A Review and Update, J Fam Pract 72(s6):S31-S36.
+
+Spath-Schwalbe, E, A Schafer, D Uthgenannt, J Born and HL Fehm, 1995, Delta-Sleep-Inducing
+Peptide Does Not Affect CRH and Meal-Induced ACTH and Cortisol Secretion,
+Psychoneuroendocrinology, 20(3):231-237.
+
+Stanojlovic, O, D Zivanovic, S Mirkovic and I Mikhaleva, 2004, Delta Sleep-Inducing Peptide
+and Its Tetrapeptide Analogue Alleviate Severity of Metaphit Seizures, Pharmacol Biochem
+Behav, 77(2):227-234.
+
+Sudakov, KV, JP Coghlan, AV Kotov, RM Salieva, V Polyntsev Yu and EV Koplik, 1995,
+Delta-Sleep-Inducing Peptide Sequels in the Mechanisms of Resistance to Emotional Stress, Ann
+N Y Acad Sci, 771:240-251.
+
+Šušić, V, 1987, The Effect of Subcutaneous Administration of Delta Sleep-Inducing Peptide
+(DSIP) on Some Parameters of Sleep in the Cat, Physiol Behav, 40(5):569-572.
+
+Šušić, V, G Maširević and S Totić, 1987, The Effects of Delta-Sleep-Inducing Peptide (DSIP) on
+Wakefulness and Sleep Patterns in the Cat, Brain Res, 414(2):262-270.
+
+2020, The Asam National Practice Guideline for the Treatment of Opioid Use Disorder: Focused
+Update, J Addict Med, 14(2s1):1-91.
+
+Tobler, I and AA Borbély, 1980, Effect of Delta Sleep Inducing Peptide (DSIP) and Arginine
+Vasotocin (AVT) on Sleep and Motor Activity in the Rat, Waking Sleeping, 4(2):139-153.
+
+Torres-Lockhart, KE, TY Lu, MB Weimer, MR Stein and CO Cunningham, 2022, Clinical
+Management of Opioid Withdrawal, Addiction, 117(9):2540-2550.
+
+
+
+                                                                                              62
+Ursin, R and M Larsen, 1983, Increased Sleep Following Intracerebroventricular Injection of the
+Delta Sleep-Inducing Peptide in Rats, Neurosci Lett, 40(2):145-149.
+
+Winkelman, JW, 2015, Insomnia Disorder, N Engl J Med 373(15):1437-1444.
+
+Yehuda, S, T Caspy and RL Carasso, 1988, The Orcadian Cycle Effects of DSIP on Colonic
+Temperature, Blood Pressure, and Heart Rate in Control and Area Postrema-Lesioned Rats, Int J
+Neurosci, 42(3-4):259-265.
+
+Young, A and B Key, 1984, Antagonism of the Effect of Delta Sleep-Inducing Peptide by
+Naloxone in the Rat, Neuropharmacology, 23(11):1347-1350.
+
+Yukhananov, RY, TM Tennila, TI Miroshnicenko, VS Kudrin, AN Ushakov, EI Melnik,
+Michaleva, II, KS Rayevsky, MM Airaksinen and AI Maisky, 1992, Ethanol and Delta-Sleep-
+Inducing Peptide: Effects on Brain Monoamines, Pharmacol Biochem Behav, 43(3):683-687.
+
+Zapadka, KL, FJ Becher, AL Gomes Dos Santos and SE Jackson, 2017, Factors Affecting the
+Physical Stability (Aggregation) of Peptide Therapeutics, Interface Focus, 7(6):20170030.
+
+Zlokovic, BV, MB Segal, H Davson and RM Jankov, 1988, Passage of Delta Sleep-Inducing
+Peptide (DSIP) Across the Blood-Cerebrospinal Fluid Barrier, Peptides, 9(3):533-538.
+
+Zolovska, B and J Shatkin, Key Differences in Pediatric Versus Adult Sleep, in: Kushida CA,
+editor, Encyclopedia of Sleep, Academic Press; 2013:573-578.
+
+
+
+
+                                                                                              63
+V.      APPENDICES
+
+APPENDIX 1: Diagnostic and Statistical Manual of Mental Disorders, Fifth Edition, Text
+Revision, Diagnostic Criteria for Insomnia Disorder
+
+A. A predominant complaint of dissatisfaction with sleep quantity or quality, associated with
+   one (or more) of the following symptoms:
+
+     1. Difficulty initiating sleep. (In children, this may manifest as difficulty initiating sleep
+        without caregiver intervention).
+     2. Difficulty maintaining sleep, characterized by frequent awakenings or problems returning
+        to sleep after awakenings. (In children, this may manifest as difficulty returning to sleep
+        without caregiver intervention).
+     3. Early-morning awakening with inability to return to sleep.
+
+B. The sleep disturbance causes clinically significant distress or impairment in social,
+   occupational, educational, academic, behavioral, or other important areas of functioning.
+C. The sleep difficulty occurs at least 3 nights per week.
+D. The sleep difficulty is present for at least 3 months.
+E. The sleep difficulty occurs despite adequate opportunity for sleep.
+F. The insomnia is not better explained by and does not occur exclusively during the course of
+   another sleep-wake disorder (e.g., narcolepsy, a breathing-related sleep disorder, a circadian
+   rhythm sleep-wake disorder, a parasomnia).
+G. The insomnia is not attributable to the physiological effects of a substance (e.g., a drug of
+   abuse, a medication).
+H. Coexisting mental disorders and medical conditions do not adequately explain the
+   predominant complaint of insomnia.
+
+Specify if:
+Episodic: Symptoms last at least 1 month but less than 3 months.
+Persistent: Symptoms last 3 months or longer.
+Recurrent: Two (or more) episodes within the space of 1 year.
+
+Source: DSM-5-TR, 2022
+
+
+
+
+                                                                                                 64
+APPENDIX 2: Clinical Significance Thresholds for Sleep Outcomes That Are “Important”
+for Clinical Decision Making (Sateia 2017)
+
+
+
+
+                                                                                  65
+APPENDIX 3: Diagnostic and Statistical Manual of Mental Disorders, Fifth Edition, Text
+Revision, Diagnostic Criteria for Narcolepsy
+
+A. Recurrent periods of an irrepressible need to sleep, lapsing into sleep, or napping occurring
+   within the same day. These must have been occurring at least three times per week over the
+   past 3 months.
+B. The presence of at least one of the following:
+
+   1. Episodes of cataplexy, defined as either (a) or (b), occurring at least a few times per
+      month:
+
+       a. In individuals with long-standing disease, brief (seconds to minutes) episodes of
+          sudden bilateral loss of muscle tone with maintained consciousness that are
+          precipitated by laughter or joking.
+       b. In children or in individuals within 6 months of onset, spontaneous grimaces or jaw-
+          opening episodes with tongue thrusting or global hypotonia, without any obvious
+          emotional triggers.
+
+   2. Hypocretin deficiency, as measured using cerebrospinal fluid (CSF) hypocretin-1
+      immunoreactivity values (less than or equal to one-third of values obtained in healthy
+      subjects tested using the same assay, or less than or equal to 110 pg/mL). Low CSF levels
+      of hypocretin-1 must not be observed in the context of acute brain injury, inflammation,
+      or infection.
+   3. Nocturnal sleep polysomnography showing REM sleep latency less than or equal to 15
+      minutes, or a MSLT showing a mean sleep latency less than or equal to 8 minutes and
+      two or more SOREM periods.
+
+Specify whether:
+G47.411 Narcolepsy with cataplexy or hypocretin deficiency (type 1): Criterion B1 (episodes of
+cataplexy) or Criterion B2 (low CSF hypocretin-1levels) is met.
+G47.419 Narcolepsy without cataplexy and either without hypocretin deficiency or hypocretin
+unmeasured (type 2): Criterion B3 (positive polysomnography/multiple sleep latency test) is met,
+but Criterion B1 is not met (i.e., no cataplexy is present) and Criterion B2 is not met (i.e., CSF
+hypocretin-1 levels are not low or have not been measured).
+G47.421 Narcolepsy with cataplexy or hypocretin deficiency due to a medical condition.
+G47.429 Narcolepsy without cataplexy and without hypocretin deficiency due to a medical
+condition.
+
+Source: DSM-5-TR, 2022
+
+
+
+
+                                                                                                   66
+APPENDIX 4: Diagnostic and Statistical Manual of Mental Disorders, Fifth Edition,
+Diagnostic Criteria for Opioid Use Disorder
+
+A. A problematic pattern of opioid use leading to clinically significant impairment or distress, as
+   manifested by at least two of the following, occurring within a 12- month period.
+
+   1. Opioids are often taken in larger amounts or over a longer period than was intended.
+   2. There is a persistent desire or unsuccessful efforts to cut down or control opioid use.
+   3. A great deal of time is spent in activities necessary to obtain the opioid, use the opioid, or
+       recover from its effects.
+   4. Craving, or a strong desire or urge to use opioids.
+   5. Recurrent opioid use resulting in failure to fulfill major role obligations at work, school,
+       or home.
+   6. Continued opioid use despite having persistent or recurrent social or interpersonal
+       problems caused or exacerbated by the effects of opioids.
+   7. Important social, occupational, or recreational activities are given up or reduced because
+       of opioid use.
+   8. Recurrent opioid use in situations in which it is physically hazardous.
+   9. Continued opioid use despite knowledge of having a persistent or recurrent physical or
+       psychological problem that is likely to have been caused or exacerbated by the substance.
+   10. Tolerance, as defined by either of the following:
+
+       a. A need for markedly increased amounts of opioids to achieve intoxication or desired
+          effect.
+       b. A markedly diminished effect with continued use of the same amount of an opioid.
+
+       Note: This criterion is not considered to be met for those taking opioids solely under
+       appropriate medical supervision.
+
+   11. Witdrawal, as manifested by either of the following:
+
+       a. The characteristic opioid withdrawal syndrome (refer to Criteria A and B of the
+          criteria set for opioid withdrawal).
+       b. Opioids (or a closely related substance) are taken to relieve or avoid withdrawal
+          symptoms.
+
+       Note: This criterion is not considered to be met for those individuals taking opioids solely
+       under appropriate medical supervision.
+
+Source: DSM-5-TR, 2022
+
+
+
+
+                                                                                                  67
+APPENDIX 5: Diagnostic and Statistical Manual of Mental Disorders, Fifth Edition, Text
+Revision, Diagnostic Criteria for Opioid Withdrawals
+
+A. Presence of either of the following:
+
+   a. Cessation of (or reduction in) opioid use that has been heavy and prolonged (i.e., several
+      weeks or longer).
+   b. Administration of an opioid antagonist after a period of opioid use.
+
+B. Three (or more) of the following developing within minutes to several days after Criterion A:
+
+   1.   Dysphoric mood.
+   2.   Nausea or vomiting.
+   3.   Muscle aches.
+   4.   Lacrimation or rhinorrhea.
+   5.   Pupillary dilation, piloerection, or sweating.
+   6.   Diarrhea.
+   7.   Yawning.
+   8.   Fever.
+   9.   Insomnia.
+
+C. The signs or symptoms in Criterion B cause clinically significant distress or impairment in
+   social, occupational, or other important areas of functioning.
+D. The signs or symptoms are not attributable to another medical condition and are not better
+   explained by another mental disorder, including intoxication or withdrawal from another
+   substance.
+
+Source: DSM-5-TR, 2022
+
+
+
+
+                                                                                                 68
+Emideltide – Related Bulk Drug
+ Substances (Emideltide (free
