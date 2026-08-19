@@ -5,6 +5,8 @@ import { fileURLToPath } from "node:url";
 import {
   D7_LNM_LISTING_URL,
   D7_SPEC,
+  D8_LNM_LISTING_URL,
+  D8_SPEC,
   D11_LNM_LISTING_URL,
   D11_SPEC,
   LNM_LISTING_URL,
@@ -21,6 +23,7 @@ const root = dirname(fileURLToPath(import.meta.url));
 const fixtures = join(root, "../src/fixtures/lnm-d13");
 const d11Fixtures = join(root, "../src/fixtures/lnm-d11");
 const d7Fixtures = join(root, "../src/fixtures/lnm-d7");
+const d8Fixtures = join(root, "../src/fixtures/lnm-d8");
 
 function readFx(name: string): string {
   return readFileSync(join(fixtures, name), "utf-8");
@@ -32,6 +35,10 @@ function readD11(name: string): string {
 
 function readD7(name: string): string {
   return readFileSync(join(d7Fixtures, name), "utf-8");
+}
+
+function readD8(name: string): string {
+  return readFileSync(join(d8Fixtures, name), "utf-8");
 }
 
 function main(): void {
@@ -239,6 +246,74 @@ function main(): void {
   assert.ok(!d7Blob.includes("Altamaha Sound Daybeacon 197"));
   assert.ok(!d7Blob.includes("Army Terminal Channel Port Entry Light"));
   assert.ok(d7Blob.includes(D7_LNM_LISTING_URL));
+
+  const d8Editions = parseListingHtml(readD8("listing-excerpt.html"));
+  assert.deepEqual(
+    d8Editions.map((e) => e.edition),
+    ["26-2026", "32-2026", "33-2026"],
+    "same NavCEN listing walker reads D8 Gulf week/year + PDF hrefs",
+  );
+  const d8Latest = latestEdition(d8Editions);
+  assert.equal(d8Latest?.edition, "33-2026");
+  assert.equal(
+    d8Latest?.sourceUrl,
+    "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm0833g2026.pdf",
+  );
+  assert.equal(lnmPdfFilename("8", 33, 2026, "g"), "lnm0833g2026.pdf");
+  assert.equal(specFromArgv(["node", "mariners.js", "--district=8"]).district, "8");
+  const d8Parsed = parseLnmText(readD8("lnm0833g2026-excerpt.txt"), {
+    week: "33-2026",
+    sourceUrl: d8Latest!.sourceUrl,
+  });
+  assert.equal(d8Parsed.asOf, "2026-08-19", "Heartland (Gulf) District header date is the same walker");
+  assert.ok(d8Parsed.notices.length >= 3, "D8 excerpt has aid rows and MSI");
+  assert.ok(
+    d8Parsed.notices.some(
+      (n) =>
+        n.section === "Federal Discrepancies" &&
+        n.waterway === "Acadiana Navigation Channel" &&
+        n.text.includes("Acadiana Navigation Channel Light 6") &&
+        n.text.includes("20305"),
+    ),
+    "Acadiana Navigation Channel Light 6 is on the official D8 week 33 PDF",
+  );
+  assert.ok(
+    d8Parsed.notices.some(
+      (n) => n.section === "Additional MSI Categories" && /Algiers Lock/i.test(n.text),
+    ),
+    "Algiers Canal GIWW lock MSI notice is official D8 text",
+  );
+  const d8Manifest = buildMarinersManifest(
+    {
+      ok: true,
+      product: "uscg-d8-lnm",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-08-19T00:00:00.000Z",
+      asOf: d8Parsed.asOf,
+      week: "33-2026",
+      year: 2026,
+      edition: "33-2026",
+      district: "8",
+      districtName: "Gulf",
+      sources: {
+        listing: D8_LNM_LISTING_URL,
+        pdfPattern: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm08{WW}g{YYYY}.pdf",
+        pdfUrl: d8Latest!.sourceUrl,
+      },
+      editions: d8Editions,
+      notices: d8Parsed.notices,
+    },
+    D8_SPEC,
+  );
+  assert.equal(d8Manifest.product, "uscg-d8-lnm");
+  assert.equal(d8Manifest.district, "8");
+  assert.equal(d8Manifest.noticeCount, d8Parsed.notices.length);
+  assert.ok(d8Manifest.noticeCount && Number(d8Manifest.noticeCount) > 0);
+  const d8Blob = JSON.stringify(d8Manifest);
+  assert.ok(!d8Blob.includes("Acadiana Navigation Channel Light 6"));
+  assert.ok(!d8Blob.includes("Algiers Lock"));
+  assert.ok(d8Blob.includes(D8_LNM_LISTING_URL));
 
   console.log("mariners parser tests ok");
 }

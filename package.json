@@ -17,6 +17,7 @@
     "collect:mariners": "node build/mariners.js",
     "collect:mariners-d11": "node build/mariners.js --district=11",
     "collect:mariners-d7": "node build/mariners.js --district=7",
+    "collect:mariners-d8": "node build/mariners.js --district=8",
     "collect:warning-letters": "node build/warning-letters.js",
     "collect:form-483": "node build/form-483.js",
     "collect:gmp": "node build/gmp.js",

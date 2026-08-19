@@ -10,6 +10,7 @@ Seventh live door. Same NavCEN weekly-PDF walker as `/mariners` (D13) and `/mari
 | `GET /mariners-d7/manifest.json` | free | HTTP 200 count + official source + schema (no notice body) |
 | `GET /mariners` | unpaid → **HTTP 402** | **$0.05** — D13 / Northwest, unchanged |
 | `GET /mariners-d11` | unpaid → **HTTP 402** | **$0.05** — D11 / Southwest northern, unchanged |
+| `GET /mariners-d8` | unpaid → **HTTP 402** | **$0.05** — D8 / Gulf, separate SKU |
 
 Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**. `extra.name` is **USD Coin**. Network is Base.
 
