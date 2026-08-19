@@ -1383,7 +1383,7 @@ async function main(): Promise<void> {
           holder: "Novartis Pharma Schweiz AG",
           sourceUrl:
             "https://www.swissmedic.ch/dam/swissmedic/en/dokumente/zulassung/swisspar/70227-rhapsido-01-swisspar-20280818.pdf.download.pdf/SwissPAR_inkl.%20FI_Rhapsido.pdf",
-          body: "Swiss Public Assessment Report\nRhapsido\nInternational non-proprietary name: remibrutinib\nTwo identically designed pivotal Phase 3 studies, REMIX-1 (A2301) and REMIX-2 (A2302)\nOverall, the benefit/risk ratio for remibrutinib was assessed as positive for adult patients with CSU who are inadequately controlled by second-generation H1-antihistamines.",
+          body: "Date: 18 August 2026\nSwissmedic, Swiss Agency for Therapeutic Products\nSwiss Public Assessment Report\nRhapsido\nInternational non-proprietary name: remibrutinib\nMarketing authorisation no.: 70227\n6 Clinical aspects\nTwo identically designed pivotal Phase 3 studies, REMIX-1 (A2301) and REMIX-2 (A2302), were conducted in adult patients with CSU.\n6.5 Final clinical benefit-risk assessment\nOverall, the benefit/risk ratio for remibrutinib was assessed as positive for adult patients with CSU who are inadequately controlled by second-generation H1-antihistamines.\n7 Risk management plan summary\nThe RMP summaries contain information on the medicinal products' safety profiles.",
         },
       ],
     }),
