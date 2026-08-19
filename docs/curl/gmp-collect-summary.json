@@ -1,18 +1,18 @@
 {
   "status": "ok",
   "liveManifest": "https://ticks.bnm.farm/gmp/manifest.json",
-  "fetchedAt": "2026-08-19T21:52:05.436Z",
+  "fetchedAt": "2026-08-19T21:57:36.284Z",
   "asOf": "2026-07-30",
-  "cardCount": 2500,
-  "liveBodiesBefore": 2300,
+  "cardCount": 2700,
+  "liveBodiesBefore": 2500,
   "listedCount": 21456,
   "reportCardCount": 4147,
   "fetchedCards": 247,
   "skippedNoText": 47,
   "skippedKnown": 0,
-  "reused": 2300,
+  "reused": 2500,
   "addedThisRun": 200,
-  "note": "Bodies are gitignored (data/gmp/). This file is id/firm/date/count only. Text is official fullReportCard.ashx, not invented. Rating-only cards skipped. Live GET https://ticks.bnm.farm/gmp/manifest.json after apollo collect + idaho-ticks-x402 restart: cardCount 2500, asOf 2026-07-30, fetchedAt 2026-08-19T21:52:05.436Z. Stop after this 3:50 pulse slice; do not auto-loop.",
+  "note": "Bodies are gitignored (data/gmp/). This file is id/firm/date/count only. Text is official fullReportCard.ashx, not invented. Rating-only cards skipped. Live GET https://ticks.bnm.farm/gmp/manifest.json after apollo collect + idaho-ticks-x402 restart: cardCount 2700, asOf 2026-07-30, fetchedAt 2026-08-19T21:57:36.284Z. Stop after this 3:55 pulse slice; do not auto-loop.",
   "sample": [
     {
       "inspectionNumber": "89542",
