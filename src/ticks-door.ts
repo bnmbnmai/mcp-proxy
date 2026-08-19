@@ -62,6 +62,9 @@ export const CATALOG_PATH = "/catalog.json";
 export const WELL_KNOWN_PATH = "/.well-known/x402";
 export const OPENAPI_PATH = "/openapi.json";
 export const LLMS_PATH = "/llms.txt";
+/** x402scan origin page for the five live paid doors. Not a sixth SKU. */
+export const X402SCAN_SERVER_URL =
+  "https://www.x402scan.com/server/c6f584c5-e494-41d1-aa02-2efb07ac3546";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
 export const PRODUCT_NAME = "Idaho + PNW Market Ticks";
 export const PRODUCT_VERSION = "1.2.0";
@@ -776,6 +779,8 @@ export function paymentRequiredBody(resourceUrl: string, sku: DoorSku = "ticks")
     network: NETWORK_V1,
     asset: USDC_BASE,
     resource: copy.resourcePath,
+    // Body-only crawlers miss PAYMENT-REQUIRED; bazaar stays on the v2 header too.
+    extensions: { bazaar: bazaarExtension(sku) },
   };
 }
 
@@ -790,6 +795,7 @@ export function paymentRequiredV2(resourceUrl: string, sku: DoorSku = "ticks"): 
     maxTimeoutSeconds: 60,
     extra: { name: "USD Coin", version: "2" },
     amount,
+    description: copy.description,
   };
   return {
     x402Version: 2,
@@ -1123,6 +1129,11 @@ export function llmsTxt(): string {
     "",
     `${noNextSkuWord()} Free manifests are not the paid body.`,
     "",
+    "## Agent catalogs",
+    "",
+    `- x402scan — ${X402SCAN_SERVER_URL}`,
+    "- Chainlink for Agents / CDP Bazaar — not listed until a CDP facilitator settle catalogs the route. Validate already accepts all five paid URLs.",
+    "",
   ].join("\n");
 }
 
@@ -1151,9 +1162,10 @@ export function wellKnownX402(req: IncomingMessage, port: number): Record<string
   return {
     version: 1,
     resources: paidDiscoveryUrls(req, port),
+    ownershipProofs: [PAY_TO],
     ...shopDiscoveryPointers(req, port),
     instructions:
-      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Pay USDC on Base. Free OpenAPI is at /openapi.json. Only these ${paidCountWord()} paid routes exist.`,
+      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Pay USDC on Base. Free OpenAPI is at /openapi.json. Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
   };
 }
 
