@@ -15,6 +15,8 @@
  * GET /mariners-d8/manifest.json — free count + official source (no notice body)
  * GET /warning-letters — FDA warning-letter bodies ($0.05)
  * GET /warning-letters/manifest.json — free count + source (no letter body)
+ * GET /untitled-letters — FDA Untitled Letter bodies, CDER OPDP + CBER promo ($0.05)
+ * GET /untitled-letters/manifest.json — free count + id/firm/date/product (no letter text)
  * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
  * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.05). Listed only when a real body is cached.
@@ -67,6 +69,13 @@ import {
   loadWarningLettersManifest,
 } from "./warning-letters.js";
 import {
+  UNTITLED_LETTERS_AMOUNT_ATOMIC,
+  UNTITLED_LETTERS_MANIFEST_PATH,
+  UNTITLED_LETTERS_PATH,
+  loadUntitledLetters,
+  loadUntitledLettersManifest,
+} from "./untitled-letters.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -93,7 +102,7 @@ export const CATALOG_PATH = "/catalog.json";
 export const WELL_KNOWN_PATH = "/.well-known/x402";
 export const OPENAPI_PATH = "/openapi.json";
 export const LLMS_PATH = "/llms.txt";
-/** x402scan origin page for the live paid doors. Ninth door is /mariners-d8. */
+/** x402scan origin page for the live paid doors. /untitled-letters is a live public SKU. */
 export const X402SCAN_SERVER_URL =
   "https://www.x402scan.com/server/c6f584c5-e494-41d1-aa02-2efb07ac3546";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
@@ -163,7 +172,7 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "form-483" | "gmp";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "form-483" | "gmp";
 
 /** Always-public SKUs. /form-483 and /gmp join only when a real observation body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
@@ -174,6 +183,7 @@ export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "mariners-d7",
   "mariners-d8",
   "warning-letters",
+  "untitled-letters",
 ];
 
 export function form483IsPublic(): boolean {
@@ -218,7 +228,7 @@ function paidCountWord(): string {
 function noNextSkuWord(): string {
   const n = publicBazaarSkus().length;
   const next = NEXT_SKU_WORDS[n] ?? `${n + 1}th`;
-  return `/mariners-d8 and /gmp are live public SKUs on purpose. No ${next} public SKU.`;
+  return `/untitled-letters is a live public SKU on purpose. No ${next} public SKU.`;
 }
 
 function amountAtomicFor(sku: DoorSku): string {
@@ -240,6 +250,10 @@ function amountAtomicFor(sku: DoorSku): string {
   if (sku === "warning-letters") {
     const raw = env("WARNING_LETTERS_USDC_ATOMIC");
     return raw.length > 0 ? raw : WARNING_LETTERS_AMOUNT_ATOMIC;
+  }
+  if (sku === "untitled-letters") {
+    const raw = env("UNTITLED_LETTERS_USDC_ATOMIC");
+    return raw.length > 0 ? raw : UNTITLED_LETTERS_AMOUNT_ATOMIC;
   }
   if (sku === "form-483") {
     const raw = env("FORM_483_USDC_ATOMIC");
@@ -288,6 +302,11 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
     description:
       "Call GET /warning-letters when you need official FDA warning-letter bodies (firm, date, subject, full letter text) parsed from fda.gov HTML. Not the import-alerts IA feed. Does not invent letter text.",
     resourcePath: WARNING_LETTERS_PATH,
+  },
+  "untitled-letters": {
+    description:
+      "Call GET /untitled-letters when you need official FDA Untitled Letter text (CDER OPDP + CBER APLB promo) extracted from per-letter PDFs at /media/{id}/download. Not /warning-letters HTML. Not the HTML index. Does not invent letter text.",
+    resourcePath: UNTITLED_LETTERS_PATH,
   },
   "form-483": {
     description:
@@ -417,6 +436,23 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         sourceUrl:
           "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/citra100mg-722606-03042026",
         body: "WARNING LETTER\nMarch 4, 2026\nRE: Notice of Unlawful Sale of Unapproved and Misbranded Drugs…",
+      },
+    ],
+  },
+  "untitled-letters": {
+    ok: true,
+    product: "fda-untitled-letter-bodies",
+    status: "ok",
+    cards: [
+      {
+        firm: "Bayer HealthCare Pharmaceuticals, Inc.",
+        date: "2026-04-28",
+        product: "NUBEQA® (darolutamide) tablets, for oral use",
+        office: "OPDP",
+        sourceUrl: "https://www.fda.gov/media/192241/download",
+        cites: ["FD&C Act"],
+        said: "FDA has determined that the video and TV ad are false or misleading.",
+        body: "The Office of Prescription Drug Promotion (OPDP) of the U.S. Food and Drug Administration (FDA) has reviewed the promotional communications…",
       },
     ],
   },
@@ -1251,6 +1287,7 @@ export function llmsTxt(): string {
     "- GET /mariners-d7 — $0.05 — USCG D7 / Southeast Local Notice to Mariners",
     "- GET /mariners-d8 — $0.05 — USCG D8 / Gulf Local Notice to Mariners",
     "- GET /warning-letters — $0.05 — FDA warning-letter bodies (firm, date, subject, full letter text)",
+    "- GET /untitled-letters — $0.05 — FDA Untitled Letter text (CDER OPDP + CBER promo PDFs)",
   ];
   if (listed483) {
     paid.push("- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs)");
@@ -1269,6 +1306,7 @@ export function llmsTxt(): string {
     "- GET /mariners-d7/manifest.json — D7 LNM count + official PDF (not the notice body)",
     "- GET /mariners-d8/manifest.json — D8 LNM count + official PDF (not the notice body)",
     "- GET /warning-letters/manifest.json — FDA letter count + firm/date/subject (not the letter body)",
+    "- GET /untitled-letters/manifest.json — FDA untitled count + id/firm/date/product (not the letter text)",
   ];
   if (listed483) {
     free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (not the observation body)");
@@ -1313,7 +1351,7 @@ function discoveryOrigin(req: IncomingMessage, port: number): string {
 }
 
 function paidDiscoveryPaths(): string[] {
-  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH];
+  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH];
   if (form483IsPublic()) paths.push(FORM_483_PATH);
   if (gmpIsPublic()) paths.push(GMP_PATH);
   return paths;
@@ -1410,6 +1448,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const lnmD7Atomic = amountAtomicFor("mariners-d7");
   const lnmD8Atomic = amountAtomicFor("mariners-d8");
   const wlAtomic = amountAtomicFor("warning-letters");
+  const ulAtomic = amountAtomicFor("untitled-letters");
   const f483Atomic = amountAtomicFor("form-483");
   const gmpAtomic = amountAtomicFor("gmp");
   const ticksPrice = (Number(ticksAtomic) / 1e6).toFixed(2);
@@ -1419,6 +1458,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const lnmD7Price = (Number(lnmD7Atomic) / 1e6).toFixed(2);
   const lnmD8Price = (Number(lnmD8Atomic) / 1e6).toFixed(2);
   const wlPrice = (Number(wlAtomic) / 1e6).toFixed(2);
+  const ulPrice = (Number(ulAtomic) / 1e6).toFixed(2);
   const f483Price = (Number(f483Atomic) / 1e6).toFixed(2);
   const gmpPrice = (Number(gmpAtomic) / 1e6).toFixed(2);
   const listed483 = form483IsPublic();
@@ -1431,6 +1471,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
     "/mariners-d7 ($0.05)",
     "/mariners-d8 ($0.05)",
     "/warning-letters ($0.05)",
+    "/untitled-letters ($0.05)",
   ];
   if (listed483) paidBits.push("/form-483 ($0.05)");
   if (listedGmp) paidBits.push("/gmp ($0.05)");
@@ -1590,6 +1631,25 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           },
         }),
       },
+      [UNTITLED_LETTERS_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getUntitledLetters",
+          summary: "FDA Untitled Letter bodies (CDER OPDP + CBER promo)",
+          description: SKU_COPY["untitled-letters"].description,
+          priceUsdc: ulPrice,
+          amountAtomic: ulAtomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["untitled-letters"],
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              status: { type: "string" },
+              cards: { type: "array", items: { type: "object" } },
+            },
+          },
+        }),
+      },
       ...(listed483
         ? {
             [FORM_483_PATH]: {
@@ -1661,6 +1721,12 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
         get: freeOpenApiOp(
           "FDA warning-letters free manifest",
           "Count, firm, date, subject, and official source URL. Not the letter body.",
+        ),
+      },
+      [UNTITLED_LETTERS_MANIFEST_PATH]: {
+        get: freeOpenApiOp(
+          "FDA untitled-letters free manifest",
+          "Count, id, firm, date, product, and official source URL. Not the letter text.",
         ),
       },
       ...(listed483
@@ -1843,6 +1909,13 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
           amountAtomic: amountAtomicFor("warning-letters"),
           manifest: WARNING_LETTERS_MANIFEST_PATH,
         },
+        {
+          path: UNTITLED_LETTERS_PATH,
+          product: "fda-untitled-letter-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("untitled-letters"),
+          manifest: UNTITLED_LETTERS_MANIFEST_PATH,
+        },
         ...(form483IsPublic()
           ? [
               {
@@ -1950,6 +2023,16 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === UNTITLED_LETTERS_MANIFEST_PATH) {
+    sendJson(res, 200, withShopDiscovery(await loadUntitledLettersManifest(), req, port));
+    return;
+  }
+
+  if (path === UNTITLED_LETTERS_PATH) {
+    await servePaid(req, res, port, "untitled-letters", () => loadUntitledLetters());
+    return;
+  }
+
   if (path === FORM_483_MANIFEST_PATH) {
     sendJson(res, 200, withShopDiscovery(await loadForm483Manifest(), req, port));
     return;
@@ -1975,7 +2058,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
 }
 
 export function bindHost(): string {
@@ -2010,6 +2093,7 @@ if (isMain()) {
     console.error(`${MARINERS_D7_PATH} $${Number(amountAtomicFor("mariners-d7")) / 1e6} USDC`);
     console.error(`${MARINERS_D8_PATH} $${Number(amountAtomicFor("mariners-d8")) / 1e6} USDC`);
     console.error(`${WARNING_LETTERS_PATH} $${Number(amountAtomicFor("warning-letters")) / 1e6} USDC`);
+    console.error(`${UNTITLED_LETTERS_PATH} $${Number(amountAtomicFor("untitled-letters")) / 1e6} USDC`);
     console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
     console.error(`${GMP_PATH} $${Number(amountAtomicFor("gmp")) / 1e6} USDC${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
     console.error(`payTo ${PAY_TO} USDC ${USDC_BASE} on Base`);
