@@ -1,0 +1,16 @@
+{
+  "unpaidStatus": 402,
+  "amountAtomic": "50000",
+  "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+  "cardCount": 5,
+  "asOf": "2026-08-18",
+  "products": [
+    { "name": "Rhapsido", "inn": "remibrutinib", "ma": "70227", "date": "2026-08-18" },
+    { "name": "Reblozyl", "inn": "luspatercept", "ma": "69592", "date": "2026-07-16" },
+    { "name": "IMDYLLTRA", "inn": "tarlatamab", "ma": "69132", "date": "2026-07-15" },
+    { "name": "Inluriyo", "inn": "imlunestrant", "ma": "70233", "date": "2026-07-14" },
+    { "name": "Dawnzera", "inn": "donidalorsen", "ma": "69883", "date": "2026-06-30" }
+  ],
+  "skipped": ["mNEXSPIKE MA 70272 EMA-reliance stub", "Koselugo (01) extension"],
+  "liveTicksSwisspar": "404 until apollo pulls"
+}

@@ -15,7 +15,8 @@ Live paid doors (all return HTTP 402 unpaid, official bodies when paid):
 | `GET https://ticks.bnm.farm/warning-letters` | $0.05 | FDA warning-letter HTML |
 | `GET https://ticks.bnm.farm/form-483` | $0.05 | OII FOIA 483 PDFs |
 | `GET https://ticks.bnm.farm/gmp` | $0.05 | Health Canada Drug GMP report-card observation text + C.02 cites |
-| `GET https://ticks.bnm.farm/gmp-md` | $0.05 | Health Canada medical-device report-card observation text + MDR cites (this PR; not live until apollo restart) |
+| `GET https://ticks.bnm.farm/gmp-md` | $0.05 | Health Canada medical-device report-card observation text + MDR cites |
+| `GET https://ticks.bnm.farm/swisspar` | $0.05 | Swissmedic first-authorisation SwissPAR evaluation text |
 
 CDP `POST /platform/v2/x402/validate` for each URL: `valid: true`, `simulation.outcome: accepted`.
 
