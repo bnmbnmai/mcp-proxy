@@ -1,9 +1,10 @@
 /**
  * USCG Local Notice to Mariners — official weekly NavCEN PDF only.
  * One parser walks District 13 / Northwest (`/mariners`), District 11 /
- * Southwest northern (`/mariners-d11`), and District 7 / Southeast
- * (`/mariners-d7`). Does not invent notices. Does not wrap CBP AD/CVD.
- * D11 south has no 2026 weekly PDFs — not shipped.
+ * Southwest northern (`/mariners-d11`), District 7 / Southeast
+ * (`/mariners-d7`), and District 8 / Gulf (`/mariners-d8`). Does not invent
+ * notices. Does not wrap CBP AD/CVD. D11 south has no 2026 weekly PDFs —
+ * not shipped. D8 rivers is a separate NavCEN listing — not this SKU.
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -17,6 +18,8 @@ export const MARINERS_D11_PATH = "/mariners-d11";
 export const MARINERS_D11_MANIFEST_PATH = "/mariners-d11/manifest.json";
 export const MARINERS_D7_PATH = "/mariners-d7";
 export const MARINERS_D7_MANIFEST_PATH = "/mariners-d7/manifest.json";
+export const MARINERS_D8_PATH = "/mariners-d8";
+export const MARINERS_D8_MANIFEST_PATH = "/mariners-d8/manifest.json";
 export const MARINERS_AMOUNT_ATOMIC = "50000";
 export const PRODUCT_ID = "uscg-d13-lnm";
 export const PRODUCT_NAME = "USCG D13 / Northwest LNM";
@@ -24,6 +27,8 @@ export const D11_PRODUCT_ID = "uscg-d11-lnm";
 export const D11_PRODUCT_NAME = "USCG D11 / Southwest LNM";
 export const D7_PRODUCT_ID = "uscg-d7-lnm";
 export const D7_PRODUCT_NAME = "USCG D7 / Southeast LNM";
+export const D8_PRODUCT_ID = "uscg-d8-lnm";
+export const D8_PRODUCT_NAME = "USCG D8 / Gulf LNM";
 
 export const LNM_LISTING_URL =
   "https://www.navcen.uscg.gov/local-notices-to-mariners?district=13+0&subdistrict=n";
@@ -31,16 +36,21 @@ export const D11_LNM_LISTING_URL =
   "https://www.navcen.uscg.gov/local-notices-to-mariners?district=11+0&subdistrict=n";
 export const D7_LNM_LISTING_URL =
   "https://www.navcen.uscg.gov/local-notices-to-mariners?district=7+0&subdistrict=n";
+export const D8_LNM_LISTING_URL =
+  "https://www.navcen.uscg.gov/local-notices-to-mariners?district=8+0&subdistrict=g";
 export const LNM_PDF_BASE = "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/";
 export const LNM_PDF_PATTERN = "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13{WW}{YYYY}.pdf";
 export const D11_LNM_PDF_PATTERN = "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11{WW}{YYYY}.pdf";
 export const D7_LNM_PDF_PATTERN = "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm07{WW}{YYYY}.pdf";
+export const D8_LNM_PDF_PATTERN = "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm08{WW}g{YYYY}.pdf";
 export const DISTRICT = "13";
 export const DISTRICT_NAME = "Northwest";
 export const D11_DISTRICT = "11";
 export const D11_DISTRICT_NAME = "Southwest";
 export const D7_DISTRICT = "7";
 export const D7_DISTRICT_NAME = "Southeast";
+export const D8_DISTRICT = "8";
+export const D8_DISTRICT_NAME = "Gulf";
 
 export type LnmSpec = {
   productId: string;
@@ -49,6 +59,8 @@ export type LnmSpec = {
   districtName: string;
   listingUrl: string;
   pdfPattern: string;
+  /** Official weekly PDF infix (`g` for D8 Gulf `lnm08{WW}g{YYYY}.pdf`). */
+  pdfInfix?: string;
   path: string;
   cacheDir: string;
   dirEnv: string;
@@ -106,13 +118,30 @@ export const D7_SPEC: LnmSpec = {
   userAgent: "bnm-data-shop/1.0 (USCG D7 LNM public PDF; +https://www.navcen.uscg.gov/)",
 };
 
-/** NavCEN weekly PDF prefix is two digits (`lnm07…`, `lnm11…`, `lnm13…`). */
+export const D8_SPEC: LnmSpec = {
+  productId: D8_PRODUCT_ID,
+  productName: D8_PRODUCT_NAME,
+  district: D8_DISTRICT,
+  districtName: D8_DISTRICT_NAME,
+  listingUrl: D8_LNM_LISTING_URL,
+  pdfPattern: D8_LNM_PDF_PATTERN,
+  pdfInfix: "g",
+  path: MARINERS_D8_PATH,
+  cacheDir: "mariners-d8",
+  dirEnv: "MARINERS_D8_DIR",
+  ttlEnv: "MARINERS_D8_TTL_MS",
+  listingPathEnv: "MARINERS_D8_LISTING_PATH",
+  pdfPathEnv: "MARINERS_D8_PDF_PATH",
+  userAgent: "bnm-data-shop/1.0 (USCG D8 LNM public PDF; +https://www.navcen.uscg.gov/)",
+};
+
+/** NavCEN weekly PDF prefix is two digits (`lnm07…`, `lnm08…g`, `lnm11…`, `lnm13…`). */
 export function lnmPdfCode(district: string): string {
   return district.padStart(2, "0");
 }
 
-export function lnmPdfFilename(district: string, week: number, year: number): string {
-  return `lnm${lnmPdfCode(district)}${String(week).padStart(2, "0")}${year}.pdf`;
+export function lnmPdfFilename(district: string, week: number, year: number, infix = ""): string {
+  return `lnm${lnmPdfCode(district)}${String(week).padStart(2, "0")}${infix}${year}.pdf`;
 }
 
 export const NOTICE_FIELDS = ["week", "section", "text", "sourceUrl"] as const;
@@ -279,7 +308,7 @@ export function parseLnmText(
     const trimmed = collapseWs(line);
     if (!trimmed) continue;
 
-    if (/Local Notice to Mariners for \S+ District/i.test(trimmed)) {
+    if (/Local Notice to Mariners for .+ District/i.test(trimmed)) {
       const dated = trimmed.match(AS_OF_RE);
       if (dated) {
         const [, mm, dd, yyyy] = dated;
@@ -448,7 +477,7 @@ export async function collectMariners(spec: LnmSpec = D13_SPEC): Promise<Mariner
   const override = pdfPathOverride(spec);
   const pdfFile = override && existsSync(override)
     ? override
-    : join(dir, lnmPdfFilename(spec.district, latest.week, latest.year));
+    : join(dir, lnmPdfFilename(spec.district, latest.week, latest.year, spec.pdfInfix ?? ""));
   if (!(override && existsSync(override))) {
     const bytes = await fetchBytes(latest.sourceUrl, "application/pdf", spec);
     writeFileSync(pdfFile, bytes);
@@ -591,9 +620,22 @@ export function loadMarinersD7Manifest(): Promise<Record<string, unknown>> {
   return loadMarinersManifest(D7_SPEC);
 }
 
+export function collectMarinersD8(): Promise<MarinersSnapshot> {
+  return collectMariners(D8_SPEC);
+}
+
+export function loadMarinersD8(): Promise<MarinersSnapshot> {
+  return loadMariners(D8_SPEC);
+}
+
+export function loadMarinersD8Manifest(): Promise<Record<string, unknown>> {
+  return loadMarinersManifest(D8_SPEC);
+}
+
 export function specFromArgv(argv: string[] = process.argv): LnmSpec {
   const raw = argv.find((arg) => arg.startsWith("--district="))?.slice("--district=".length);
   if (raw === "11") return D11_SPEC;
+  if (raw === "8" || raw === "08") return D8_SPEC;
   if (raw === "7" || raw === "07") return D7_SPEC;
   return D13_SPEC;
 }

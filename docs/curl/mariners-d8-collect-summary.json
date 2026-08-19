@@ -1,0 +1,25 @@
+{
+  "source": "https://www.navcen.uscg.gov/local-notices-to-mariners?district=8+0&subdistrict=g",
+  "pdfUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm0833g2026.pdf",
+  "liveManifest": "https://ticks.bnm.farm/mariners-d8/manifest.json",
+  "product": "uscg-d8-lnm",
+  "district": "8",
+  "districtName": "Gulf",
+  "week": "33-2026",
+  "asOf": "2026-08-19",
+  "fetchedAt": "2026-08-19T17:46:03.886Z",
+  "noticeCount": 1258,
+  "sections": [
+    { "section": "Additional MSI Categories", "count": 232 },
+    { "section": "Federal Discrepancies", "count": 590 },
+    { "section": "Federal Discrepancies Corrected", "count": 34 },
+    { "section": "Private Discrepancies", "count": 308 },
+    { "section": "Temporary Changes", "count": 94 }
+  ],
+  "leakTest": {
+    "weeklyPdfs": "2026 D8 Gulf weekly PDFs exist (lnm08{WW}g{YYYY}.pdf through week 33)",
+    "bulkJsonCsv": "404 — no district-8 weekly LNM JSON/CSV",
+    "msi": "Light List GeoJSON + national ATON/MSIB GIS layers only; not a weekly D8 notice-body dump"
+  },
+  "note": "Notice text is gitignored (data/mariners-d8/). Same NavCEN walker as /mariners (D13), /mariners-d11, and /mariners-d7. D8 rivers (lnm08{WW}r{YYYY}.pdf) is a separate listing — not this SKU. Live GET https://ticks.bnm.farm/mariners-d8/manifest.json after apollo collect + idaho-ticks-x402 restart."
+}
