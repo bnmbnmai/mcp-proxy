@@ -1,13 +1,14 @@
 {
   "status": "ok",
-  "fetchedAt": "2026-08-19T16:57:39.669Z",
+  "fetchedAt": "2026-08-19T17:00:05.117Z",
   "asOf": "2026-07-30",
-  "cardCount": 200,
+  "cardCount": 500,
   "listedCount": 21456,
   "reportCardCount": 4147,
-  "fetchedCards": 222,
-  "skippedNoText": 22,
-  "addedThisRun": 200,
+  "fetchedCards": 327,
+  "skippedNoText": 27,
+  "reused": 200,
+  "addedThisRun": 300,
   "sample": [
     {
       "inspectionNumber": "89542",
