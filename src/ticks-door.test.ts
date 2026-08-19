@@ -47,6 +47,11 @@ import {
   GMP_MANIFEST_PATH,
   GMP_PATH,
 } from "./gmp.js";
+import {
+  GMP_MD_AMOUNT_ATOMIC,
+  GMP_MD_MANIFEST_PATH,
+  GMP_MD_PATH,
+} from "./gmp-md.js";
 
 async function withServer(
   envPatch: Record<string, string | undefined>,
@@ -55,6 +60,9 @@ async function withServer(
   const prev: Record<string, string | undefined> = {};
   if (!Object.prototype.hasOwnProperty.call(envPatch, "GMP_DIR")) {
     envPatch = { ...envPatch, GMP_DIR: join(tmpdir(), "gmp-absent-withserver-") };
+  }
+  if (!Object.prototype.hasOwnProperty.call(envPatch, "GMP_MD_DIR")) {
+    envPatch = { ...envPatch, GMP_MD_DIR: join(tmpdir(), "gmp-md-absent-withserver-") };
   }
   for (const [k, v] of Object.entries(envPatch)) {
     prev[k] = process.env[k];
@@ -172,6 +180,7 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.some((r) => r.endsWith(AWA_PATH)));
     assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)), "do not list /form-483 without a cached body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_PATH)), "do not list /gmp without a cached observation body");
+    assert.ok(!wk.resources.some((r) => r.includes(GMP_MD_PATH)), "do not list /gmp-md without a cached observation body");
     assert.ok(wk.resources.every((r) => r.startsWith("http")), "well-known resources must be absolute URLs");
     assert.ok(wk.openapi?.endsWith(OPENAPI_PATH));
     assert.ok(wk.llmsTxt?.endsWith(LLMS_PATH));
@@ -239,6 +248,8 @@ async function main(): Promise<void> {
     assert.equal(spec.paths[FORM_483_MANIFEST_PATH], undefined);
     assert.equal(spec.paths[GMP_PATH], undefined, "no stub /gmp in OpenAPI without a cached body");
     assert.equal(spec.paths[GMP_MANIFEST_PATH], undefined);
+    assert.equal(spec.paths[GMP_MD_PATH], undefined, "no stub /gmp-md in OpenAPI without a cached body");
+    assert.equal(spec.paths[GMP_MD_MANIFEST_PATH], undefined);
     assert.equal(spec.paths["/gain"], undefined);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
@@ -260,6 +271,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /awa"));
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
+    assert.ok(!llmsBody.includes("GET /gmp-md"));
     assert.ok(!llmsBody.toLowerCase().includes("/gain"));
     assert.ok(!llmsBody.includes("WASDE"));
     assert.ok(llmsBody.includes(X402SCAN_SERVER_URL));
@@ -284,6 +296,7 @@ async function main(): Promise<void> {
     ]);
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_PATH));
+    assert.ok(!shop.products.some((p) => p.path === GMP_MD_PATH));
     assert.equal(shop.openapi, OPENAPI_PATH);
     assert.equal(shop.wellKnown, WELL_KNOWN_PATH);
     assert.equal(shop.llmsTxt, LLMS_PATH);
@@ -1604,6 +1617,140 @@ async function main(): Promise<void> {
     },
   );
 
+  const gmpMdDir = mkdtempSync(join(tmpdir(), "gmp-md-"));
+  writeFileSync(
+    join(gmpMdDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "hc-md-inspection-cards",
+      status: "ok",
+      reason: null,
+      fetchedAt: FRESH_FETCHED_AT,
+      asOf: "2026-05-25",
+      license: "Contains information licensed under the Open Government Licence – Canada.",
+      sources: {
+        listing: "https://www.drug-inspections.canada.ca/md/index-en.html",
+        search: "https://www.drug-inspections.canada.ca/md/handler/searchResult.ashx",
+        card: "https://www.drug-inspections.canada.ca/md/handler/fullReportCard.ashx",
+      },
+      cards: [
+        {
+          id: "can-med-healthcare-501",
+          inspectionNumber: "501",
+          firm: "CAN-MED HEALTHCARE",
+          referenceNumber: "111868",
+          site: "Nova Scotia",
+          inspectedOn: "2026-05-25",
+          rating: "Non-compliant",
+          ratingDesc: "Non-compliant",
+          insType: "Domestic - Regular - Onsite",
+          insSubType: null,
+          sourceUrl: "https://www.drug-inspections.canada.ca/md/fullReportCard-en.html?insNumber=501&lang=en",
+          outcome: ["The inspection resulted in a non-compliant rating."],
+          measuresTaken: ["Detention of products"],
+          body: "Health Canada medical-device inspection report card\nEstablishment: CAN-MED HEALTHCARE\nInspection: 501\nReference: 111868\nInspected: 2026-05-25\nRating: Non-compliant\n\nSummary of observations\n\n1. MDR s.58 (b) Recall procedure\nRisk 1: The company did not adequately implement the written procedure for recalls.",
+          observations: [
+            {
+              n: 1,
+              regulation: "MDR s.58 (b) Recall procedure",
+              cite: "MDR s.58 (b)",
+              text: "Risk 1: The company did not adequately implement the written procedure for recalls.",
+            },
+          ],
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      FORM_483_DIR: f483Dir,
+      GMP_DIR: gmpDir,
+      GMP_MD_DIR: gmpMdDir,
+      X402_SKIP_SETTLE: "1",
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${GMP_MD_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /gmp-md must be 402");
+      const body402 = (await unpaid.json()) as {
+        payTo: string;
+        asset: string;
+        resource: string;
+        accepts: { maxAmountRequired?: string; extra?: { name?: string } }[];
+      };
+      assert.equal(body402.resource, GMP_MD_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, GMP_MD_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === GMP_MD_PATH), true);
+      assert.equal(shop.products.some((p) => p.path === GMP_PATH), true, "/gmp stays its own door");
+      assert.equal(shop.products.length, 12, "twelfth product is /gmp-md when a real MD body is cached");
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
+        resources: string[];
+        instructions?: string;
+      };
+      assert.equal(wk.resources.length, 12);
+      assert.ok(wk.resources.some((r) => r.endsWith(GMP_MD_PATH)));
+      assert.ok(wk.resources.some((r) => r.endsWith(GMP_PATH)));
+      assert.ok((wk.instructions ?? "").includes("twelve paid"));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
+        paths: Record<string, { get?: { "x-payment-info"?: { price?: { amount?: string } } } }>;
+      };
+      assert.equal(spec.paths[GMP_MD_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
+      assert.ok(spec.paths[GMP_MD_MANIFEST_PATH]?.get);
+      assert.equal(
+        Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
+        12,
+      );
+
+      const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llmsBody.includes("GET /gmp-md"));
+      assert.ok(llmsBody.includes("GET /gmp"));
+      assert.ok(!llmsBody.includes("WASDE"));
+      assert.ok(!llmsBody.includes("TCPA"));
+
+      const manifest = await fetch(`${base}${GMP_MD_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "gmp-md free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        cards?: { firm?: string; body?: string; observations?: unknown }[];
+        openapi?: string;
+        wellKnown?: string;
+      };
+      assert.equal(man.cardCount, 1);
+      assert.ok(man.openapi?.endsWith(OPENAPI_PATH));
+      assert.ok(man.wellKnown?.endsWith(WELL_KNOWN_PATH));
+      assert.equal(man.cards?.[0]?.firm, "CAN-MED HEALTHCARE");
+      assert.ok(!JSON.stringify(man).includes("written procedure for recalls"));
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+      assert.ok(!("observations" in (man.cards?.[0] ?? {})));
+
+      const paid = await fetch(`${base}${GMP_MD_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { firm: string; inspectionNumber: string; body: string }[];
+      };
+      assert.equal(paidBody.product, "hc-md-inspection-cards");
+      assert.equal(paidBody.cards[0]?.firm, "CAN-MED HEALTHCARE");
+      assert.equal(paidBody.cards[0]?.inspectionNumber, "501");
+      assert.ok(paidBody.cards[0]?.body.includes("MDR s.58 (b)"));
+      assert.ok(paidBody.cards[0]?.body.includes("written procedure for recalls"));
+      assert.ok(!paidBody.cards[0]?.body.includes("C.02."));
+      assert.equal(isPublicBazaarSku("gmp-md"), true);
+      const persistReqs = facilitatorPaymentRequirements("https://ticks.bnm.farm/gmp-md", "gmp-md");
+      assert.equal(persistReqs.resource, "https://ticks.bnm.farm/gmp-md");
+      assert.equal((persistReqs.extra as { name?: string }).name, "USD Coin");
+      const persist = facilitatorBody("not-json", persistReqs);
+      const persistPayload = persist.paymentPayload as { resource?: string; extensions?: { bazaar?: unknown } };
+      assert.equal(persistPayload.resource, "https://ticks.bnm.farm/gmp-md");
+      assert.deepEqual(persistPayload.extensions?.bazaar, bazaarExtension("gmp-md"));
+    },
+  );
+
   await withServer(
     {
       X402_FACILITATOR_URL: "http://127.0.0.1:9",
@@ -1616,7 +1763,7 @@ async function main(): Promise<void> {
     },
     async (base) => {
       assert.equal(cdpEnvStatus(), "CDP env not set");
-      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, FORM_483_PATH, GMP_PATH]) {
+      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
         const unpaid = await fetch(`${base}${path}`);
         assert.equal(unpaid.status, 402, `unpaid ${path} must stay 402`);
         const present = await fetch(`${base}${path}`, { headers: { "X-PAYMENT": "test" } });
@@ -1634,22 +1781,27 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D8_PATH)));
       assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)));
       assert.ok(!wk.resources.some((r) => r.includes(GMP_PATH)));
+      assert.ok(!wk.resources.some((r) => r.includes(GMP_MD_PATH)));
     },
   );
 
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
+  process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
   assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters", "untitled-letters", "awa"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
+  assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
   assert.deepEqual(publicBazaarSkus(), [...PUBLIC_BAZAAR_SKUS]);
   const hidden = facilitatorPaymentRequirements("https://ticks.bnm.farm/form-483", "form-483");
   assert.equal(hidden.extensions, undefined, "/form-483 must not persist to Bazaar until a real body is cached");
   const hiddenGmp = facilitatorPaymentRequirements("https://ticks.bnm.farm/gmp", "gmp");
   assert.equal(hiddenGmp.extensions, undefined, "/gmp must not persist to Bazaar until a real observation body is cached");
+  const hiddenGmpMd = facilitatorPaymentRequirements("https://ticks.bnm.farm/gmp-md", "gmp-md");
+  assert.equal(hiddenGmpMd.extensions, undefined, "/gmp-md must not persist to Bazaar until a real observation body is cached");
   for (const sku of publicBazaarSkus()) {
     const resource = `https://ticks.bnm.farm/${sku === "ticks" ? "ticks" : sku}`;
     const reqs = facilitatorPaymentRequirements(resource, sku);
