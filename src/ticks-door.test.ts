@@ -28,6 +28,11 @@ import {
   WARNING_LETTERS_PATH,
 } from "./warning-letters.js";
 import {
+  UNTITLED_LETTERS_AMOUNT_ATOMIC,
+  UNTITLED_LETTERS_MANIFEST_PATH,
+  UNTITLED_LETTERS_PATH,
+} from "./untitled-letters.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -150,7 +155,7 @@ async function main(): Promise<void> {
     assert.equal(wk.version, 1);
     assert.deepEqual(wk.ownershipProofs, [PAY_TO]);
     assert.ok((wk.instructions ?? "").includes(X402SCAN_SERVER_URL));
-    assert.equal(wk.resources.length, 7, "well-known lists the seven always-public doors");
+    assert.equal(wk.resources.length, 8, "well-known lists the eight always-public doors");
     assert.ok(wk.resources.some((r) => r.endsWith(TICKS_PATH) && r.startsWith("http")));
     assert.ok(wk.resources.some((r) => r.endsWith(IMPORT_ALERTS_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_PATH)));
@@ -158,12 +163,13 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D7_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D8_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(WARNING_LETTERS_PATH)));
+    assert.ok(wk.resources.some((r) => r.endsWith(UNTITLED_LETTERS_PATH)));
     assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)), "do not list /form-483 without a cached body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_PATH)), "do not list /gmp without a cached observation body");
     assert.ok(wk.resources.every((r) => r.startsWith("http")), "well-known resources must be absolute URLs");
     assert.ok(wk.openapi?.endsWith(OPENAPI_PATH));
     assert.ok(wk.llmsTxt?.endsWith(LLMS_PATH));
-    assert.ok((wk.instructions ?? "").includes("seven paid"));
+    assert.ok((wk.instructions ?? "").includes("eight paid"));
     assert.ok(!wk.resources.some((r) => r.includes("/gain")));
     assert.equal(cdpEnvStatus(), "CDP env not set");
 
@@ -195,7 +201,7 @@ async function main(): Promise<void> {
     assert.deepEqual(spec["x-discovery"]?.ownershipProofs, [PAY_TO]);
     assert.deepEqual(spec["x-agentcash-provenance"]?.ownershipProofs, [PAY_TO]);
     assert.ok(spec["x-agentcash-guidance"]?.llmsTxtUrl?.endsWith(LLMS_PATH));
-    for (const paid of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH]) {
+    for (const paid of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH]) {
       const op = spec.paths[paid]?.get;
       assert.ok(op?.["x-payment-info"], `${paid} must declare x-payment-info`);
       assert.equal(op?.["x-auth"]?.mode, "x402");
@@ -211,12 +217,15 @@ async function main(): Promise<void> {
     assert.equal(spec.paths[MARINERS_D7_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[MARINERS_D8_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[WARNING_LETTERS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
+    assert.equal(spec.paths[UNTITLED_LETTERS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[CATALOG_PATH]?.get?.["x-auth"]?.mode, "none");
     assert.deepEqual(spec.paths[CATALOG_PATH]?.get?.security, []);
     assert.ok(spec.paths["/"]?.get);
     assert.ok(spec.paths[LLMS_PATH]?.get);
     assert.ok(spec.paths[WARNING_LETTERS_MANIFEST_PATH]?.get);
     assert.equal(spec.paths[WARNING_LETTERS_MANIFEST_PATH]?.get?.["x-auth"]?.mode, "none");
+    assert.ok(spec.paths[UNTITLED_LETTERS_MANIFEST_PATH]?.get);
+    assert.equal(spec.paths[UNTITLED_LETTERS_MANIFEST_PATH]?.get?.["x-auth"]?.mode, "none");
     assert.equal(spec.paths[FORM_483_PATH], undefined, "no stub /form-483 in OpenAPI without a cached body");
     assert.equal(spec.paths[FORM_483_MANIFEST_PATH], undefined);
     assert.equal(spec.paths[GMP_PATH], undefined, "no stub /gmp in OpenAPI without a cached body");
@@ -224,8 +233,8 @@ async function main(): Promise<void> {
     assert.equal(spec.paths["/gain"], undefined);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
-      7,
-      "OpenAPI lists the seven always-public paid paths",
+      8,
+      "OpenAPI lists the eight always-public paid paths",
     );
 
     const llms = await fetch(`${base}${LLMS_PATH}`);
@@ -238,6 +247,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /mariners-d7"));
     assert.ok(llmsBody.includes("GET /mariners-d8"));
     assert.ok(llmsBody.includes("GET /warning-letters"));
+    assert.ok(llmsBody.includes("GET /untitled-letters"));
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.toLowerCase().includes("/gain"));
@@ -259,6 +269,7 @@ async function main(): Promise<void> {
       MARINERS_D7_PATH,
       MARINERS_D8_PATH,
       WARNING_LETTERS_PATH,
+      UNTITLED_LETTERS_PATH,
     ]);
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_PATH));
@@ -706,7 +717,8 @@ async function main(): Promise<void> {
       assert.ok(shop.products.some((p) => p.path === MARINERS_D7_PATH && p.priceUsdc === "0.05"));
       assert.ok(shop.products.some((p) => p.path === MARINERS_D8_PATH && p.priceUsdc === "0.05"));
       assert.ok(shop.products.some((p) => p.path === WARNING_LETTERS_PATH && p.priceUsdc === "0.05"));
-      assert.equal(shop.products.length, 7);
+      assert.ok(shop.products.some((p) => p.path === UNTITLED_LETTERS_PATH && p.priceUsdc === "0.05"));
+      assert.equal(shop.products.length, 8);
       assert.equal(shop.openapi, OPENAPI_PATH);
       assert.equal(shop.wellKnown, WELL_KNOWN_PATH);
 
@@ -1076,7 +1088,8 @@ async function main(): Promise<void> {
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === WARNING_LETTERS_PATH), true);
       assert.equal(shop.products.some((p) => p.path === MARINERS_D8_PATH), true);
-      assert.equal(shop.products.length, 7);
+      assert.equal(shop.products.some((p) => p.path === UNTITLED_LETTERS_PATH), true);
+      assert.equal(shop.products.length, 8);
 
       const manifest = await fetch(`${base}${WARNING_LETTERS_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "warning-letters free manifest is free");
@@ -1109,6 +1122,104 @@ async function main(): Promise<void> {
       assert.match(paidBody.letters[0]?.subject ?? "", /Unapproved New Drugs/);
       assert.ok(paidBody.letters[0]?.body.includes("WARNING LETTER"));
       assert.ok(paidBody.letters[0]?.body.includes("reviewed your website"));
+    },
+  );
+
+  const ulDir = mkdtempSync(join(tmpdir(), "untitled-letters-"));
+  writeFileSync(
+    join(ulDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "fda-untitled-letter-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: FRESH_FETCHED_AT,
+      asOf: "2026-04-28",
+      license: "17 USC 105",
+      sources: {
+        cder: "https://www.fda.gov/drugs/warning-letters-and-notice-violation-letters-pharmaceutical-companies/untitled-letters",
+        cber: "https://www.fda.gov/vaccines-blood-biologics/enforcement-actions-cber/untitled-letters-regarding-advertising-promotional-labeling-approved-biologics",
+        hub: "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/issuance-untitled-letters",
+        mediaBase: "https://www.fda.gov/media/",
+      },
+      cards: [
+        {
+          id: "bayer-healthcare-pharmaceuticals-inc-192241",
+          mediaId: "192241",
+          firm: "Bayer HealthCare Pharmaceuticals, Inc.",
+          date: "2026-04-28",
+          product: "NUBEQA® (darolutamide) tablets, for oral use",
+          office: "OPDP",
+          center: "CDER",
+          sourceUrl: "https://www.fda.gov/media/192241/download",
+          body: "The Office of Prescription Drug Promotion (OPDP) of the U.S. Food and Drug Administration (FDA) has reviewed the promotional communications, a direct-to-consumer (DTC) YouTube video (PP-NUB-US-4393-1) (video) and a Spanish language broadcast advertisement (PP-NUB-US-4601-1) (TV ad) for NUBEQA (darolutamide) tablets, for oral use (Nubeqa) submitted by Bayer HealthCare Pharmaceuticals, Inc. (Bayer) under cover of Form FDA 2253. FDA has determined that the video and TV ad are false or misleading. Thus, the video and TV ad misbrand Nubeqa and make the distribution of the drug in violation of the Federal Food, Drug, and Cosmetic Act (FD&C Act). The video and TV ad are misleading because they include claims and representations about the benefits of Nubeqa but omit important risk information associated with the drug.",
+          cites: ["FD&C Act"],
+          said: "FDA has determined that the video and TV ad are false or misleading. Thus, the video and TV ad misbrand Nubeqa and make the distribution of the drug in violation of the Federal Food, Drug, and Cosmetic Act (FD&C Act).",
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      UNTITLED_LETTERS_DIR: ulDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-ul-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${UNTITLED_LETTERS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /untitled-letters must be 402");
+      const body402 = (await unpaid.json()) as {
+        payTo: string;
+        asset: string;
+        resource: string;
+        accepts: { maxAmountRequired?: string }[];
+      };
+      assert.equal(body402.resource, UNTITLED_LETTERS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, UNTITLED_LETTERS_AMOUNT_ATOMIC);
+      const ulPr = unpaid.headers.get("payment-required");
+      assert.ok(ulPr, "v2 PAYMENT-REQUIRED header");
+      const ulV2 = JSON.parse(Buffer.from(ulPr, "base64").toString("utf8")) as {
+        extensions?: { bazaar?: { info?: { input?: { method?: string } } } };
+      };
+      assert.equal(ulV2.extensions?.bazaar?.info?.input?.method, "GET");
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === UNTITLED_LETTERS_PATH), true);
+      assert.equal(shop.products.some((p) => p.path === WARNING_LETTERS_PATH), true);
+      assert.equal(shop.products.length, 8);
+
+      const manifest = await fetch(`${base}${UNTITLED_LETTERS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "untitled-letters free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        cards?: { firm?: string; body?: string; cites?: unknown; said?: string }[];
+        openapi?: string;
+        wellKnown?: string;
+      };
+      assert.equal(man.cardCount, 1);
+      assert.ok(man.openapi?.endsWith(OPENAPI_PATH));
+      assert.ok(man.wellKnown?.endsWith(WELL_KNOWN_PATH));
+      assert.equal(man.cards?.[0]?.firm, "Bayer HealthCare Pharmaceuticals, Inc.");
+      assert.ok(!JSON.stringify(man).includes("Office of Prescription Drug Promotion"));
+      assert.ok(!JSON.stringify(man).includes("false or misleading"));
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+      assert.ok(!("cites" in (man.cards?.[0] ?? {})));
+      assert.ok(!("said" in (man.cards?.[0] ?? {})));
+
+      const paid = await fetch(`${base}${UNTITLED_LETTERS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { firm: string; date: string; product: string; body: string; cites: string[]; said: string }[];
+      };
+      assert.equal(paidBody.product, "fda-untitled-letter-bodies");
+      assert.equal(paidBody.cards[0]?.firm, "Bayer HealthCare Pharmaceuticals, Inc.");
+      assert.equal(paidBody.cards[0]?.date, "2026-04-28");
+      assert.match(paidBody.cards[0]?.product ?? "", /NUBEQA/);
+      assert.ok(paidBody.cards[0]?.body.includes("Office of Prescription Drug Promotion"));
+      assert.ok(paidBody.cards[0]?.said.includes("false or misleading"));
+      assert.ok(paidBody.cards[0]?.cites.includes("FD&C Act"));
     },
   );
 
@@ -1179,18 +1290,19 @@ async function main(): Promise<void> {
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === FORM_483_PATH), true);
-      assert.equal(shop.products.length, 8);
+      assert.equal(shop.products.length, 9);
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
         resources: string[];
         instructions?: string;
       };
-      assert.equal(wk.resources.length, 8);
+      assert.equal(wk.resources.length, 9);
       assert.ok(wk.resources.some((r) => r.endsWith(FORM_483_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D11_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D7_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D8_PATH)));
-      assert.ok((wk.instructions ?? "").includes("eight paid"));
+      assert.ok(wk.resources.some((r) => r.endsWith(UNTITLED_LETTERS_PATH)));
+      assert.ok((wk.instructions ?? "").includes("nine paid"));
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
         paths: Record<string, { get?: { "x-payment-info"?: { price?: { amount?: string } } } }>;
@@ -1199,7 +1311,7 @@ async function main(): Promise<void> {
       assert.ok(spec.paths[FORM_483_MANIFEST_PATH]?.get);
       assert.equal(
         Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
-        8,
+        9,
       );
 
       const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();
@@ -1308,16 +1420,17 @@ async function main(): Promise<void> {
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === GMP_PATH), true);
-      assert.equal(shop.products.length, 9, "ninth product is /gmp when a real observation body is cached");
+      assert.equal(shop.products.length, 10, "tenth product is /gmp when a real observation body is cached");
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
         resources: string[];
         instructions?: string;
       };
-      assert.equal(wk.resources.length, 9);
+      assert.equal(wk.resources.length, 10);
       assert.ok(wk.resources.some((r) => r.endsWith(GMP_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D8_PATH)));
-      assert.ok((wk.instructions ?? "").includes("nine paid"));
+      assert.ok(wk.resources.some((r) => r.endsWith(UNTITLED_LETTERS_PATH)));
+      assert.ok((wk.instructions ?? "").includes("ten paid"));
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
         paths: Record<string, { get?: { "x-payment-info"?: { price?: { amount?: string } } } }>;
@@ -1326,7 +1439,7 @@ async function main(): Promise<void> {
       assert.ok(spec.paths[GMP_MANIFEST_PATH]?.get);
       assert.equal(
         Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
-        9,
+        10,
       );
 
       const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();
@@ -1384,7 +1497,7 @@ async function main(): Promise<void> {
     },
     async (base) => {
       assert.equal(cdpEnvStatus(), "CDP env not set");
-      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, FORM_483_PATH, GMP_PATH]) {
+      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, FORM_483_PATH, GMP_PATH]) {
         const unpaid = await fetch(`${base}${path}`);
         assert.equal(unpaid.status, 402, `unpaid ${path} must stay 402`);
         const present = await fetch(`${base}${path}`, { headers: { "X-PAYMENT": "test" } });
@@ -1393,8 +1506,9 @@ async function main(): Promise<void> {
         assert.notEqual(body.error, "CDP env not set");
       }
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
-      assert.equal(wk.resources.length, 7);
+      assert.equal(wk.resources.length, 8);
       assert.ok(wk.resources.some((r) => r.includes(WARNING_LETTERS_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(UNTITLED_LETTERS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D11_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D7_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D8_PATH)));
@@ -1405,8 +1519,9 @@ async function main(): Promise<void> {
 
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters", "untitled-letters"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
+  assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.deepEqual(publicBazaarSkus(), [...PUBLIC_BAZAAR_SKUS]);
