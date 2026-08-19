@@ -9,7 +9,7 @@
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "scripts": {
-    "build": "tsc && chmod 755 build/index.js build/ticks-door.js build/import-alerts.js build/mariners.js build/warning-letters.js build/form-483.js build/gmp.js build/untitled-letters.js build/awa.js",
+    "build": "tsc && chmod 755 build/index.js build/ticks-door.js build/import-alerts.js build/mariners.js build/warning-letters.js build/form-483.js build/gmp.js build/untitled-letters.js build/awa.js build/swisspar.js",
     "prepare": "npm run build",
     "start": "node build/index.js",
     "start:ticks": "node build/ticks-door.js",
@@ -23,7 +23,8 @@
     "collect:gmp": "node build/gmp.js",
     "collect:untitled-letters": "node build/untitled-letters.js",
     "collect:awa": "node build/awa.js",
-    "test:ticks": "npm run build && node build/import-alerts.test.js && node build/mariners.test.js && node build/warning-letters.test.js && node build/form-483.test.js && node build/gmp.test.js && node build/untitled-letters.test.js && node build/awa.test.js && node build/ticks-door.test.js"
+    "collect:swisspar": "node build/swisspar.js",
+    "test:ticks": "npm run build && node build/import-alerts.test.js && node build/mariners.test.js && node build/warning-letters.test.js && node build/form-483.test.js && node build/gmp.test.js && node build/untitled-letters.test.js && node build/awa.test.js && node build/swisspar.test.js && node build/ticks-door.test.js"
   },
   "files": [
     "build",

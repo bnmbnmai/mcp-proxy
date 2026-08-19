@@ -1,0 +1,2085 @@
+Date: 15 July 2026
+Swissmedic, Swiss Agency for Therapeutic Products
+
+
+
+
+Swiss Public Assessment Report
+
+
+
+IMDYLLTRA
+
+
+
+International non-proprietary name: tarlatamab
+Pharmaceutical form:                                      powder for concentrate and solution
+                                                          stabiliser for solution for infusion
+Dosage strength(s):                                       1 mg, 10 mg
+Route(s) of administration:                               intravenous use
+Marketing authorisation holder:                           Amgen Switzerland AG
+Marketing authorisation no.:                              69132
+Decision and decision date:                               approved on 8 May 2026
+
+
+
+
+Note:
+This assessment report is as adopted by Swissmedic with all information of a commercially
+confidential nature deleted.
+
+SwissPARs are final documents that provide information on submissions at a particular point in time.
+They are not updated after publication.
+
+
+
+
+    Swissmedic | Hallerstrasse 7 | 3012 Bern | www.swissmedic.ch | Tel. +41 58 462 02 11 | anfragen@swissmedic.ch
+Table of contents
+1            Terms, Definitions, Abbreviations ....................................................................................3
+2            Background information on the procedure .....................................................................4
+2.1          Applicant’s request(s) and information regarding procedure ................................................4
+2.2          Indication and dosage..........................................................................................................4
+2.2.1        Requested indication ...........................................................................................................4
+2.2.2        Approved indication .............................................................................................................4
+2.2.3        Requested dosage ..............................................................................................................4
+2.2.4        Approved dosage ................................................................................................................4
+2.3          Regulatory history (milestones) ...........................................................................................5
+3            Medical context..................................................................................................................6
+4            Quality aspects ..................................................................................................................7
+4.1          Drug substance ...................................................................................................................7
+4.2          Drug product........................................................................................................................7
+4.3          Quality conclusions ..............................................................................................................8
+5            Nonclinical aspects ...........................................................................................................9
+6            Clinical aspects ...............................................................................................................10
+6.1          Clinical pharmacology........................................................................................................10
+6.2          Dose finding and dose recommendation ............................................................................11
+6.3          Efficacy ..............................................................................................................................11
+6.4          Safety ................................................................................................................................12
+6.5          Final clinical benefit risk assessment .................................................................................13
+7            Risk management plan summary ...................................................................................14
+8            Appendix ..........................................................................................................................15
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                                                                   2 / 15
+1            Terms, Definitions, Abbreviations
+
+ADA               Anti-drug antibody
+ADME              Absorption, distribution, metabolism, elimination
+AE                Adverse event
+CD3               T-cell receptor-associated complex cluster of differentiation 3
+CI                Confidence interval
+CRS               Cytokine release syndrome
+CYP               Cytochrome P450
+DCR               Disease control rate
+DLL3              Delta-like ligand 3
+DOR               Duration of response
+ECOG              Eastern Cooperative Oncology Group
+EMA               European Medicines Agency
+ERA               Environmental risk assessment
+FDA               Food and Drug Administration (USA)
+HR                Hazard ratio
+ICANS             Immune effector cell-associated neurotoxicity syndrome
+IVSS              Intravenous solution stabiliser
+LoQ               List of Questions
+MAH               Marketing Authorisation Holder
+Max               Maximum
+Min               Minimum
+NCI-ODWG          National Cancer Institute Organ Dysfunction Working Group
+ORR               Objective response rate
+OS                Overall survival
+PD                Pharmacodynamics
+PFS               Progression-free survival
+PK                Pharmacokinetics
+PopPK             Population pharmacokinetics
+Q2W               Once every second week
+QTcF              Corrected QT Interval using Fridericia's formula
+RMP               Risk management plan
+SAE               Serious adverse event
+SCLC              Small cell lung cancer
+scFc              Single-chain crystallisable fragment
+scFv              Single-chain variable fragment
+SwissPAR          Swiss Public Assessment Report
+TEAE              Treatment-emergent adverse event
+TPA               Federal Act of 15 December 2000 on Medicinal Products and Medical Devices (SR
+                  812.21)
+TPO               Ordinance of 21 September 2018 on Therapeutic Products (SR 812.212.21)
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                      3 / 15
+2            Background information on the procedure
+
+2.1          Applicant’s request(s) and information regarding procedure
+
+New active substance status
+The applicant requested new active substance status for tarlatamab in the above-mentioned
+medicinal product.
+
+Fast-track authorisation procedure
+The applicant requested a fast-track authorisation procedure in accordance with Article 7 TPO.
+
+Orphan drug status
+The applicant requested orphan drug status in accordance with Article 4 paragraph 1 letter adecies no. 2
+TPA.
+Orphan drug status was granted on 19 June 2023.
+
+
+2.2          Indication and dosage
+
+2.2.1        Requested indication
+
+IMDYLLTRA is indicated for the treatment of adult patients with small cell lung cancer (SCLC) with
+disease progression on or after platinum-based chemotherapy.
+
+
+2.2.2        Approved indication
+
+IMDYLLTRA is indicated for the treatment of adult patients with locally advanced or metastatic small
+cell lung cancer (SCLC) with disease progression on or after platinum-based chemotherapy.
+
+
+2.2.3        Requested dosage
+
+Summary of the requested standard dosage:
+60-minute IV infusion with an initial dose of 1 mg tarlatamab on cycle 1 day 1 followed by 10 mg
+target doses on cycle 1 days 8 and 15, and every 2 weeks (Q2W) thereafter (i.e. cycle 2 and following
+cycles day 1/day 15 dosing). Cycles of 28 days.
+
+
+2.2.4        Approved dosage
+
+(see appendix)
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                       4 / 15
+2.3            Regulatory history (milestones)
+
+ Application                                     1 September 2025
+ Formal control completed                        5 September 2025
+ List of Questions (LoQ)                         5 November 2025
+ Response to LoQ                                 3 February 2026
+ Preliminary decision                            24 March 2026
+ Response to preliminary decision                21 April 2026
+ Final decision                                  8 May 2026
+ Decision                                        approval
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                        5 / 15
+3            Medical context
+
+Small cell lung cancer (SCLC), a poorly differentiated neuroendocrine carcinoma, is a distinct
+histological form of lung cancer. SCLC accounts for 13% of newly diagnosed cases of lung cancer
+worldwide. SCLC tumours are highly aggressive, rapidly growing, and often present with metastatic
+disease at time of diagnosis. First-line treatment of metastatic SCLC with platinum-based combination
+chemotherapy leads to rapid responses; however, most patients relapse within 6 months, with less
+than 5% surviving at 5 years1. Recent addition of immunotherapy to platinum-based chemotherapy
+improved the survival outcomes of these patients. In these studies, the median overall survival (OS)
+was 10.3 months for platinum-based chemotherapy alone versus 12.3 to 13.0 months in patients with
+the added immune checkpoint-inhibitor2,3. For patients who exhaust these options, the current
+available second-line treatments in Switzerland include topotecan and lurbinectedin (at the time of the
+assessment the latter is authorised under temporary approval and only for patients without
+metastases to the central nervous system). In Japan, amrubicin is a widely accepted second-line
+treatment even though it did not demonstrate improved OS over topotecan in clinical trials. The
+reported median OS for these second-line chemotherapies ranges from approximately 8 to 10
+months4,5. There is an unmet medical need to improve the survival outcomes of patients who
+experience disease progression under or after platinum-based chemotherapy.
+
+
+
+
+References:
+1. GF Cittolin-Santos et al., The changing landscape of small cell lung cancer, Cancer, 2024 Jul
+    15;130(14):2453-2461.
+2. L Horn et al., First-Line Atezolizumab plus Chemotherapy in Extensive-Stage Small-Cell Lung
+    Cancer, N Engl J Med 2018;379:2220-2229
+3. L Paz-Ares et al., Durvalumab plus platinum–etoposide versus platinum–etoposide in first-line
+    treatment of extensive-stage small-cell lung cancer (CASPIAN): a randomised, controlled, open-
+    label, phase 3 trial, Lancet 2019 Nov 23;394(10212):1929-1939.
+4. J von Pawel et al., Randomized phase III trial of amrubicin versus topotecan as second-line
+    treatment for patients with small-cell lung cancer, J Clin Oncol 2014;32:4012-4019.
+5. J Trigo et al., Lurbinectedin as second-line treatment for patients with small-cell lung cancer: a
+    single-arm, open-label, phase 2 basket trial, Lancet Oncol 2020;21:645-654.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                       6 / 15
+4            Quality aspects
+
+4.1          Drug substance
+
+Tarlatamab is a novel single-chain antibody derivative of the bispecific T-cell engager (BiTE®) class,
+expressed in a Chinese hamster ovary (CHO) cell line. Tarlatamab consists of two single-chain
+variable fragment (scFv) binding domains, specific for antigen delta-like ligand 3 (DLL3) and for the T-
+cell receptor-associated complex cluster of differentiation 3 (CD3). The scFv binding domains are
+fused to a single-chain fragment crystallisable half-life extension (scFc HLE) moiety. Tarlatamab is
+aglycosylated through engineering by eliminating the glycosylation site in the Fc domain.
+Tarlatamab is produced in a Chinese hamster ovary (CHO) cell system using a well-established
+Master Cell Bank and Working Cell Bank, each extensively characterised for identity, stability, and
+absence of adventitious agents. The manufacturing process includes sequential stages of cell
+expansion, perfusion bioreactor operation, harvest, protein A chromatography, low-pH viral
+inactivation, cation-exchange chromatography, mixed-mode anion exchange purification, viral
+filtration, and ultrafiltration/diafiltration.
+These steps collectively ensure efficient removal of impurities including host cell proteins, DNA,
+leached protein A and process reagents. Process validation demonstrated consistent performance
+across multiple consecutive batches, confirming reproducible cell growth, product expression, viral
+safety, and control of product-related variants.
+Several changes were implemented during development of the manufacturing process for the drug
+substance, including changes to manufacturing site and production scale. However, comparability
+studies, including batch release data, extended characterisation data, and stress stability data,
+demonstrated comparability between the different processes.
+The characterisation of the physicochemical and biological properties of the tarlatamab drug
+substance and its impurities were performed using state-of-the-art methods.
+The specifications for release and stability of the drug substance include relevant tests and
+acceptance criteria, e.g. for identity, purity and impurities, quantity, and potency. Specifications are
+based on published limits, stability data, clinical experience and batch analysis data.
+Batch analysis data for development, clinical, and process validation batches of tarlatamab drug
+substance were provided. All specific analytical methods are described and are fully validated.
+No significant changes were observed during storage of tarlatamab drug substance under the
+proposed storage conditions.
+
+
+4.2          Drug product
+
+Drug Product
+Tarlatamab drug product is supplied as a sterile lyophilised powder for reconstitution, available in
+1 mg/vial and 10 mg/vial presentations. The formulation contains sucrose, L-glutamic acid,
+polysorbate 80, sodium hydroxide and water for injection, selected to ensure product stability, cake
+integrity, and consistent reconstitution time. The excipients are commonly used in parenteral products
+and comply with applicable compendia. The product is filled into Type I glass vials with an elastomeric
+stopper and aluminium seal, and the container closure system complies with relevant compendial
+requirements for sterility, extractables, leachables and mechanical performance.
+Due to the low concentration of tarlatamab administered to patients, an IV solution stabiliser (IVSS) is
+included in the tarlatamab intravenous infusion preparation to prevent loss through adsorption of
+tarlatamab to the surfaces of the infusion bag and tubing. The tarlatamab IV infusion is prepared by
+first aseptically adding the appropriate amount of the IVSS to an infusion bag containing normal
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                           7 / 15
+saline. Following reconstitution of the drug product with sterile water for injection, an appropriate
+amount of tarlatamab is added aseptically to the infusion bag containing the IVSS and saline.
+Several drug product dosage strengths, formulations, presentations, and filling facilities were used
+during clinical development. However, comparability studies, which included batch release data,
+extended characterisation data, and stress stability data, demonstrated comparability of the relevant
+quality attributes between the different processes.
+Compatibility studies were conducted to establish the in-use stability of diluted drug product with the
+intended materials and conditions of use.
+Manufacture of the drug product comprises drug substance thawing, preparation of formulation buffer,
+mixing, bioburden reduction filtration, sterile filtration, aseptic filling, lyophilisation, capping and visual
+inspection. Process controls include in-process measurements of pH, protein concentration,
+polysorbate 80 concentration, osmolality, bioburden and filter integrity
+The drug product manufacturing process is validated with several consecutive batches. The data
+demonstrated a consistent production.
+The specifications for release and stability of the drug product include relevant tests and acceptance
+criteria, e.g. for identity, purity and impurities, quantity, potency, appearance, pH, osmolality, visible
+and subvisible particles, bacterial endotoxins, and sterility. The drug product specifications comply
+with current compendial or regulatory guidelines.
+Batch analysis data for several batches of the drug product, including development batches, clinical
+batches, and process validation batches, were provided. All batch release data comply with the drug
+product specifications, which were valid at the time of batch release. All specific analytical methods
+are validated.
+The vials are stored at 2°C to 8°C. The stability data support a shelf life of 48 months.
+
+IV Solution Stabiliser (IVSS)
+The IVSS is supplied as a sterile solution in a 10R glass vial containing 7 mL of deliverable solution.
+The IVSS is a buffered, preservative-free, colourless to slightly yellow, and clear solution. The
+container closure system for the IVSS is a 10R Type I borosilicate glass vial, with elastomeric stopper,
+and aluminium seal with flip-off cap. The formulation for IVSS has stayed the same throughout the
+development of IMDYLLTRA and is the same formulation in the commercial presentation.
+IVSS formulation contains citric acid monohydrate, lysine hydrochloride, polysorbate 80, at a final pH
+of 7.0.
+The 7 mL/10R IVSS manufacturing process consists of the following unit operations: formulation,
+bioburden reduction filtration, filtered IVSS hold, sterile filtration, filling, stoppering, capping, and
+inspection and storage.
+The manufacturing process is validated with several consecutive batches. The data demonstrated a
+consistent production.
+The specifications for release and stability include relevant tests and acceptance criteria. Batch
+analysis data for several batches were provided and batch release data comply with the
+specifications, which were valid at the time of batch release.
+
+
+4.3          Quality conclusions
+
+Satisfactory and consistent quality of the drug substance and drug product has been demonstrated.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                              8 / 15
+5            Nonclinical aspects
+
+For the review of the market authorisation application for IMDYLLTRA, the Division Nonclinical
+Assessment conducted an abridged evaluation, which was essentially based on the FDA assessment
+report (“Multi-Disciplinary Review and Evaluation - BLA 761344 IMDELLTRA - Tarlatamab”) provided
+by the applicant. Impurities, ERA and RMP were subject to a full review.
+
+Overall, the submitted nonclinical documentation is considered appropriate to support the approval of
+IMDYLLTRA in the proposed indication. The pharmaco-toxicological profile has been sufficiently
+characterised. All nonclinical data that are relevant for safety are adequately mentioned in the
+Information for healthcare professionals.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                     9 / 15
+6            Clinical aspects
+
+6.1          Clinical pharmacology
+
+ADME
+Absorption
+As tarlatamab is administered intravenously, bioavailability is complete and no bioequivalence or
+bioavailability studies were required.
+
+Distribution
+The volume of distribution at steady state is 8.53 L (33%).
+
+Metabolism
+No dedicated metabolism studies have been conducted for tarlatamab, which is consistent with its
+biological nature. As a monoclonal antibody-based molecule, tarlatamab is expected to be degraded
+into small peptides and amino acids via ubiquitous catabolic proteolytic pathways.
+
+Elimination and Steady State
+Tarlatamab exhibited a median terminal elimination half‑life of 11.2 days (range: 4.3–26.5 days), with
+an estimated systemic clearance of 0.65 L/day (CV 44%). PopPK analyses indicated that steady state
+was reached by approximately Cycle 2 Day 15. Importantly, systemic exposure following the first
+10 mg dose (Cycle 1 Day 8) was already comparable to steady‑state exposure achieved with repeated
+dosing of 10 mg every 2 weeks.
+
+No dedicated renal or hepatic impairment studies were conducted; however, patients with varying
+degrees of renal and hepatic function were included in the popPK analysis. Several covariates were
+identified, including baseline body weight, hepatic impairment (NCI-ODWG), number of prior
+anticancer therapies, anti-tarlatamab antibodies, and race.
+None of these covariates had a clinically meaningful impact on tarlatamab exposure (generally within
+±10–15%). Therefore, no dose adjustment is considered necessary.
+
+Interactions
+No clinical drug–drug interaction studies were conducted, which is acceptable given the low intrinsic
+interaction potential of monoclonal antibodies. Transient cytokine-mediated effects on CYP enzymes
+cannot be excluded early in treatment or during cytokine release syndrome and are adequately
+addressed in the Information for healthcare professionals.
+
+Pharmacodynamics
+Primary pharmacology
+Tarlatamab is a bispecific T-cell engager targeting delta-like ligand 3 (DLL3) on small cell lung cancer
+cells and CD3 on T cells, thereby redirecting activated T cells toward DLL3-expressing tumour cells.
+Its antitumour activity is mediated through T-cell activation, cytokine release, and cytotoxic elimination
+of tumour cells. Treatment induces transient immune activation, characterised by reversible T-cell
+redistribution, activation marker expression, and short-lived cytokine elevations that attenuate with
+repeated dosing.
+
+Secondary pharmacology (safety)
+Concentration–QTcF analysis showed no clinically meaningful QT prolongation at the recommended
+10 mg Q2W dose.
+
+Exposure efficacy/safety relationship
+Exposure–response analyses demonstrated significant relationships between tarlatamab exposure
+and key efficacy endpoints, including overall survival (OS), progression‑free survival (PFS), objective
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                         10 / 15
+response rate (ORR), disease control rate (DCR), and best tumour size reduction (BTSR), with
+efficacy increasing with exposure and reaching a plateau at the proposed dose of 10 mg every
+2 weeks (Q2W). No exposure–response relationship was observed for duration of response (DOR).
+While some covariate associations were considered biologically implausible and likely non-causal,
+higher baseline tumour burden and mild to moderate hepatic impairment were independently
+associated with poorer OS and PFS outcomes, and higher tumour burden was also associated with a
+lower DCR.
+From a safety perspective, only grade ≥3 neutropenia showed a positive exposure–risk relationship,
+while no clinically relevant exposure–safety relationships were identified for cytokine release
+syndrome, neurological events, or other adverse events. Overall, the exposure–efficacy and
+exposure–safety profiles support 10 mg Q2W as an appropriate and optimal dosing regimen.
+
+Immunogenicity
+Treatment-emergent anti-drug antibodies (ADAs) were observed in 7.7% of patients, while
+neutralising antibodies (NAbs) were rare (3.1%). No clinically meaningful impact of ADA on
+tarlatamab PK was identified.
+
+
+6.2          Dose finding and dose recommendation
+
+The requested dose of tarlatamab uses a step-up dosing method: at the first dose (Cycle 1 Day 1
+[C1D1]) the administered tarlatamab dose is 1 mg, on Cycle 1 Day 8 (C1D8) and C1D15 a 10 mg
+dose of tarlatamab is administered. Thereafter, 10 mg of tarlatamab is administered every two weeks
+(Q2W).
+
+The requested dose was identified based on the results of Phase 1-2 studies. Part 1 of the Study
+20200491 was designed to evaluate the safety and efficacy of 10 and 100 mg Q2W doses of
+tarlatamab. The applicant concluded that compared with the 100 mg group, subjects in the 10 mg
+group experienced fewer treatment-emergent adverse events (TEAEs) leading to discontinuation of
+tarlatamab, fewer serious adverse events, and fewer fatal adverse events. Consistent with the dose-
+response data, exposures with the 10 mg target dose regimen were associated with improved
+tolerability but comparable efficacy relative to the 100 mg dose. The 10 mg dose was later evaluated
+in the Phase 3 pivotal study to support the requested authorisation. The proposed tarlatamab dose of
+10 mg Q2W is acceptable from a regulatory point of view.
+
+
+6.3          Efficacy
+
+The applicant submitted results from an open-label, randomised (at 1:1 ratio), Phase 3 study
+DeLLphi-304, which evaluated tarlatamab over the investigator’s choice of single-agent chemotherapy
+(topotecan, lurbinectedin or amrubicin [in Japan]) in SCLC patients after platinum-based first-line
+chemotherapy. The study included SCLC patients who had progressed after 1 prior line of platinum-
+based therapy. Patients were stratified by prior anti-PD-(L)1 exposure, chemotherapy-free interval (≥
+180, < 180 to ≥ 90, or < 90 days), presence of brain metastases, and preferred standard of care
+(topotecan/amrubicin vs lurbinectedin). The selection of stratification factors in this pivotal study is
+acceptable, as well as the chosen treatment options in the control arm. The study intended to enrol a
+total of 490 participants. Patients were treated until disease progression or unacceptable toxicity in
+both treatment arms.
+
+The primary of endpoint of this study was overall survival (OS). Secondary endpoints (under type 1
+error control) were progression-free survival (PFS) as assessed by investigator and the following
+patient reported outcomes (PROs): change at week 19 in symptom scores with respect to dyspnoea,
+cough, chest pain, and in scores for physical functioning and global health status. The study had two
+prespecified analyses: an interim analysis, which was planned to occur at 259 OS events, and the
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                      11 / 15
+primary analysis, which was planned to occur at 345 OS events. The applicant assumed that 345 OS
+events provided 91% power to demonstrate superiority at an alternative hazard ratio (HR) of 0.7 with
+log-rank test using 2-sided overall type I error of 0.05 in a group sequential design with 1 interim
+analysis and 1 primary OS analysis. The applicant expected a 3.6-month improvement in OS of the
+tarlatamab group compared to the chemotherapy group. The overall study design, selection of the
+primary endpoint, and statistical assumptions are acceptable from a regulatory point of view.
+
+The study randomised 255 patients in the standard of care arm and 254 patients in the tarlatamab
+arm. In the overall randomised study population, the median age was 65 years, 69% were male, and
+47.2% were from Europe. Regarding baseline disease characteristics, 67.2% had an ECOG
+performance status of 1 and 91.0% had metastatic disease at baseline. Regarding prior treatments,
+97.6% had 1 prior line of therapy (2.4% received ≥2 lines of therapy), 70.7% received prior PD-(L)1
+therapy, and 62.9% had prior radiotherapy. The studied patient population is representative of the
+Swiss population of SCLC patients who progressed on or after platinum-based therapy, and both
+study arms were adequately balanced.
+
+The submitted results included the prespecified interim analysis (data cut-off 29 January 2025). At this
+analysis point the study demonstrated a clinically meaningful and statistically significant difference in
+OS with 43.7% (111/254) OS events reported in the tarlatamab arm and 59.6% (152/255) in the
+chemotherapy group (HR 0.60, 95% confidence intervals [CI]: 0.47, 0.77), 1-sided p-value <0.001,).
+The median OS in the tarlatamab arm was 13.6 months versus 8.3 months in the comparator arm.
+Further, the study demonstrated a statistically significant difference in PFS as assessed by
+investigator. The median PFS was 4.2 months in the tarlatamab arm compared with 3.2 months in the
+chemotherapy arm. The HR for PFS was 0.72 (95% CI: 0.59, 0.88; p <0.001). See the attached
+Information for healthcare professionals for further results.
+
+In exploratory subgroup analyses of the pivotal DeLLphi‑304 study, in patients with DLL3 expression
+<25% (staining intensity 2+ or 3+) 34 of 52 patients experienced OS events in the standard therapy
+arm and 33 of 52 patients in the tarlatamab arm. Median OS was 7.9 months (95% CI: 5.2, 9.2) with
+standard therapy and 7.8 months (95% CI: 5.6, 11.1) with tarlatamab. The hazard ratio (HR) for OS
+was 0.95 (95% CI: 0.59, 1.54). In the same subgroup, median PFS was 3.8 months (95% CI: 2.3, 5.6)
+in the standard therapy arm and 1.6 months (95% CI: 1.3, 2.8) in the tarlatamab arm. The HR for PFS
+was 1.50 (95% CI: 0.97, 2.30). Nonetheless, the utility of DLL3 expression as a predictive biomarker,
+as well as the clinical relevance of specific DLL3 expression cut‑offs, have not been established or
+defined.
+
+The requested indication encompasses subsequent lines of treatment after progression on or after
+platinum-based chemotherapy. Supportive evidence for the inclusion of patients after two lines of
+treatment is provided in the study DeLLphi-301. This single-arm study included patients who
+progressed following 1 platinum-based regimen and at least 1 other line of therapy. 99 patients in this
+study were treated with the 10 mg tarlatamab dose. The following results were reported in these
+patients: confirmed ORR of 41.4%, median PFS was 4.3 months, and median OS was 14.3 months.
+See the attached Information for healthcare professionals for further details.
+
+
+6.4          Safety
+
+In the pivotal study DeLLphi‑304, fewer patients experienced grade ≥3 treatment emergent adverse
+events (TEAEs) in the tarlatamab arm compared with the chemotherapy arm (54.0% versus 79.9%,
+respectively), as well as lower rates of adverse events (AE) leading to discontinuation of study
+treatment (2.8% vs 6.1%). Fatal adverse events were reported in 0.4% and 1.6% of patients,
+respectively.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                       12 / 15
+Tarlatamab has a safety profile that is distinct from chemotherapy. The most frequently reported
+TEAE of any grade in the tarlatamab arm of the pivotal study was cytokine release syndrome (CRS,
+56.3% versus 1.2%, respectively). Grade ≥2 CRS events (i.e. patient requires at least low-flow
+oxygen) were reported in 13.9% of patients in the tarlatamab arm. According to pooled analyses of
+patients treated with the 10 mg tarlatamab dose (n=385), the majority of grade ≥2 CRS events
+occurred during the first two drug administrations (Cycle 1 Day 1 [C1D1]: 13.2%, C1D8: 4.2%,
+C1D15: 0.8%, C2 and beyond: 0.5%). At C1D1, the median time to onset of first CRS events was 8.8
+hours (first quartile [Q1] 5.9, Q3 13.2) and 20.8 hours (Q1 12.2, Q3 25.4) at C1D8. In the pivotal
+study, 209 of the 255 patients were enrolled under a monitoring protocol requiring 48‑hour
+observation in an appropriate healthcare facility on C1D1 and C1D8. The remaining patients were
+enrolled later under an amended protocol requiring 6-8 hours of monitoring on C1D1 and C1D8.
+Nonetheless, the pooled analysis of patients who were monitored under the 6-8 hour protocol (n=104)
+had comparable baseline characteristics and similar CRS outcomes compared to patients with longer
+inpatient monitoring. Therefore, the proposed 6-8 hour inpatient monitoring at C1D1 and C1D8 is
+acceptable. Of note, on C1D1 and C1D8, patients should be advised to remain for 48 hours after the
+start of each tarlatamab infusion in the vicinity of an appropriate healthcare facility and be
+accompanied by a caregiver.
+
+Another known safety risk for bispecific T-cell engagers is Immune Effector Cell-Associated
+Neurotoxicity Syndrome (ICANS). In the pooled analysis of patients treated with the 10 mg dose of
+tarlatamab, 0.4% (2/473) of patients experienced a fatal event of ICANS or an associated neurological
+event.
+
+See the attached Information for healthcare professionals for other relevant information on the
+undesirable effects of tarlatamab.
+
+
+6.5          Final clinical benefit risk assessment
+
+The Phase 3 study DeLLphi-304 demonstrated statistically significant and clinically meaningful OS
+benefit for tarlatamab over single-agent chemotherapy in SCLC patients who had disease progression
+on or after platinum-based chemotherapy. Supportive evidence for later lines of treatment come from
+Phase 2 study DeLLphi-301, which enrolled patients who received prior platinum-based
+chemotherapy and at least one additional line of treatment.
+
+Regarding safety, the pivotal study demonstrated lower rates of grade ≥3 TEAEs and AEs leading to
+discontinuation of study treatment in the tarlatamab arm compared with the standard chemotherapy
+arm. Tarlatamab demonstrated a different safety profile compared to chemotherapy. Mechanism of
+action-related toxicities such as CRS and ICANS are known for bispecific T-cell engagers.
+Undesirable effects and management of toxicities are adequately described in the Information for
+healthcare professionals.
+
+In conclusion, the benefit-risk assessment is positive.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                      13 / 15
+7            Risk management plan summary
+
+The RMP summaries contain information on the medicinal products′ safety profiles and explain the
+measures that are taken to further investigate and monitor the risks, as well as to prevent or minimise
+them.
+The RMP summaries are published separately on the Swissmedic website. It is the responsibility of
+the marketing authorisation holder to ensure that the content of the published RMP summaries is
+accurate and correct. As the RMPs are international documents, their summaries might differ from the
+content in the Information for healthcare professionals / product information approved and published
+in Switzerland, e.g. by mentioning risks that occur in populations or indications not included in the
+Swiss authorisations.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                      14 / 15
+8            Appendix
+
+Approved Information for healthcare professionals
+Please be aware that the following version of the Information for healthcare professionals for
+IMDYLLTRA was approved with the submission described in the SwissPAR. This Information for
+healthcare professionals may have been updated since the SwissPAR was published.
+
+Please note that the valid and relevant reference document for the effective and safe use of medicinal
+products in Switzerland is the Information for healthcare professionals currently authorised by
+Swissmedic (see www.swissmedicinfo.ch).
+
+Note:
+The following Information for healthcare professionals has been translated by the MAH. It is the
+responsibility of the authorisation holder to ensure the translation is correct. The only binding and
+legally valid text is the Information for healthcare professionals approved in one of the official Swiss
+languages.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                         15 / 15
+                                                 Information for healthcare professionals
+
+
+▼This medicine is subject to additional monitoring. This will allow quick identification of new
+safety information. Healthcare professionals are asked to report any suspected new or serious
+adverse reactions. See the "Undesirable effects" section for advice on the reporting of adverse
+reactions.
+
+
+
+IMDYLLTRA®
+
+
+Composition
+
+Active ingredient
+
+Tarlatamab, produced in Chinese Hamster Ovary (CHO) cells by recombinant DNA
+technology.
+
+Excipients
+
+IMDYLLTRA (1 mg and 10 mg)
+
+L-glutamic acid, Sucrose, Polysorbate 80, Sodium hydroxide (for pH adjustment).
+
+IV Solution Stabiliser
+
+Citric acid monohydrate, Lysine hydrochloride, Polysorbate 80, Sodium hydroxide (for pH
+adjustment), water for injection.
+
+
+
+Pharmaceutical form and active substance quantity per unit
+
+Powder for concentrate and solution Stabiliser for solution for infusion.
+
+White to slightly yellow, lyophilized powder.
+
+Single-use vial containing 1 mg tarlatamab lyophilized powder.
+
+After reconstitution of 1 mg powder with 1.3 mL of Water for Injection, the resulting
+concentration is 0.9 mg/mL tarlatamab.
+
+Single-use vial containing 10 mg tarlatamab lyophilized powder.
+
+After reconstitution of 10 mg powder with 4.4 mL Water for Injection, the resulting
+concentration is 2.4 mg/mL tarlatamab.
+
+
+
+
+                                                                                            1/30
+                                                 Information for healthcare professionals
+
+Indications/Uses
+
+IMDYLLTRA is indicated for the treatment of adult patients with locally advanced or metastatic
+small cell lung cancer (SCLC) with disease progression on or after platinum-based
+chemotherapy.
+
+
+
+Dosage/Administration
+
+The administration of IMDYLLTRA should only be carried out under the guidance of medical
+personnel experienced in the treatment of malignant diseases, cytokine release syndrome
+(CRS), and neurological toxicities, including immune effector cell-associated neurotoxicity
+syndrome (ICANS). It should be administered in an appropriate healthcare facility.
+
+
+
+Traceability
+
+To ensure the traceability of biotechnologically produced medicinal products, it is
+recommended that the trade name and batch number be documented for each treatment.
+
+
+
+Posology
+
+The recommended dosage and schedule of IMDYLLTRA is intravenous infusions over 1 hour,
+with an initial dose of 1 mg Day 1 of Cycle 1 followed by 10 mg on Days 8, 15, and every
+2 weeks thereafter as shown in Table 1. Treat patients until disease progression or
+unacceptable toxicity.
+
+
+
+Table 1. Recommended Dosage Schedule of IMDYLLTRA
+
+Dosing Schedule                    Day                Dose of IMDYLLTRA
+Step-up Dose and Schedule
+Cycle 1 (28-day cycle)                                Step-up dose
+                                   Day 1
+                                                      1 mg
+
+
+
+                                   Day 8              10 mg
+
+
+
+                                   Day 15             10 mg
+
+Cycle 2 and subsequent
+                                   Day 1 and 15       10 mg
+infusions (28-day cycles)
+
+
+                                                                                              2/30
+                                                    Information for healthcare professionals
+
+
+
+
+•   See Table 2 for recommended concomitant medications.
+
+•   Monitor patients from the start of the infusion for 6 to 8 hours on Day 1 and Day 8 of
+    Cycle 1.
+•   On subsequent infusions, monitor patients at the discretion of the healthcare provider.
+•   On Day 1 and Day 8 of Cycle 1, recommend patients to remain within proximity of an
+    appropriate healthcare setting for 48 hours from the start of each IMDYLLTRA infusion,
+    accompanied by a caregiver.
+•   Inform both the patients and the caregiver on the signs and symptoms of cytokine release
+    syndrome (CRS) and immune effector cell-associated neurotoxicity syndrome (ICANS)
+    prior to discharge.
+
+
+Recommended Concomitant Medications for IMDYLLTRA Administration for Day 1 and Day 8
+of Cycle 1
+Administer recommended concomitant medications for IMDYLLTRA administration as
+presented in Table 2 to reduce the risk of cytokine release syndrome (see section “Warnings
+and Precautions”).
+
+
+
+Table 2. Concomitant Medications for IMDYLLTRA Administration for Day 1 and Day 8
+Treatment Day                        Medication                      Administration
+
+Day 1 and Day 8           Administer 8 mg of                Within 1-hour prior to IMDYLLTRA
+                          dexamethasone intravenously       administration
+                          (or equivalent)
+                          Administration of 1 liter of      Immediately after completion of
+                          normal saline intravenously       IMDYLLTRA infusion
+                          over 2 to 4 hours is
+                          recommended per standard of
+                          care guidelines
+
+
+
+Restarting IMDYLLTRA After Dosage Delay
+
+If a dose of IMDYLLTRA is delayed, restart therapy based on the recommendations listed in
+Table 3 and resume the dosing schedule accordingly (see section “Recommended Dose
+
+
+
+
+                                                                                              3/30
+                                                                 Information for healthcare professionals
+
+Modifications and Adverse Reaction Management”). Administer recommended concomitant
+medications as indicated in section “Posology”.
+
+
+
+Table 3. Recommendations for Restarting Therapy with IMDYLLTRA after Dosage Delay
+       Last Dose               Time Since the Last                                      Actiona
+     Administered              Dose Administered
+                             2 weeks or less                     Administer IMDYLLTRA 10 mg, then resume
+                             (≤ 14 days)                         with the planned dosage schedule.
+     1 mg on Day 1                                               Administer IMDYLLTRA 1 mg. If tolerated,
+                             Greater than 2 weeks
+                                                                 increase to 10 mg 1 week later. Then resume
+                             (> 14 days)
+                                                                 with the planned dosage schedule.
+                             3 weeks or less                     Administer IMDYLLTRA 10 mg, then resume
+                             (≤ 21 days)                         with the planned dosage schedule.
+    10 mg on Day 8                                               Administer IMDYLLTRA 1 mg. If tolerated,
+                             Greater than 3 weeks
+                                                                 increase to 10 mg 1 week later. Then resume
+                             (> 21 days)
+                                                                 with the planned dosage schedule.
+                             4 weeks or less                     Administer IMDYLLTRA 10 mg, then resume
+    10 mg on Day 15          (≤ 28 days)                         with the planned dosage schedule.
+and every 2 weeks                                                Administer IMDYLLTRA 1 mg. If tolerated,
+                             Greater than 4 weeks
+        thereafter                                               increase to 10 mg 1 week later. Then resume
+                             (> 28 days)
+                                                                 with the planned dosage schedule.
+a
+    Administer recommended concomitant medications before and after Day 1 and Day 8 of IMDYLLTRA infusions and monitor
+patients accordingly (see section “Dosage/Administration”, Table 1 and Table 2).
+
+
+
+
+Recommended Dose Modifications and Adverse Reaction Management
+
+No dosage reduction for IMDYLLTRA is recommended. See Table 4 for recommended actions
+for the management of CRS, Table 5 for recommended actions for the management of ICANS,
+and Table 6 for the management of neutropenia and other adverse reactions.
+
+
+
+Cytokine Release Syndrome (CRS)
+
+Diagnose CRS based on clinical presentation (see section “Warnings and Precautions”).
+Evaluate for and treat other causes of fever, hypoxia, and hypotension. If CRS is suspected,
+manage according to the recommendations in Table 4. Patients who experience Grade 2 or
+higher CRS (e.g., hypotension not responsive to fluids, or hypoxia requiring supplemental
+
+
+                                                                                                                         4/30
+                                                 Information for healthcare professionals
+
+oxygen) should be monitored for CRS signs and symptoms including fever, hypotension and
+hypoxia using pulse oximetry or cardiac telemetry as indicated. For severe or life-threatening
+CRS, patients should be treated by local guidelines for CRS management.
+
+
+
+Table 4. Guidelines for Grading, Dosage Modification and Management of Cytokine Release
+Syndromea
+                                        IMDYLLTRA
+ CRS
+           Defining Symptoms                 Dosage                      Management
+Grade
+                                        Modification
+Grade 1   Symptoms require          Withhold                 • Administer symptomatic
+          symptomatic               IMDYLLTRA until             treatment (e.g.,
+          treatment only (e.g.,     event resolves, then        acetaminophen/paracetamol) for
+          fever > 38°C without      resume IMDYLLTRA            fever.
+          hypotension or            at the next scheduled   •  Consider treatment with
+          hypoxia).                 doseb.                     dexamethasone 4 mg to 10 mg
+                                                               PO or IV (or equivalent)c
+Grade 2   Symptoms require and      Withhold                 • Recommend hospitalization with
+          respond to moderate       IMDYLLTRA until             monitoring for fever,
+          intervention.             event resolves, then        hypotension and hypoxia using
+          • Fever ≥ 38°C,           resume IMDYLLTRA            pulse oximetry or cardiac
+          • Hypotension             at the next scheduled       telemetry.
+             responsive to fluids   doseb.                   • Administer symptomatic
+             not requiring                                      treatment (e.g., paracetamol) for
+             vasopressors,                                      fever.
+             and/or                                          • Administer supplemental oxygen
+          • Hypoxia requiring                                   and intravenous fluids when
+             low flow nasal                                     indicated.
+             cannula or blow-by.                             • Consider dexamethasonec (or
+                                                                equivalent) 8 mg PO or IV.
+
+
+                                                            When resuming treatment at the
+                                                            next planned dose, monitor patients
+                                                            at the physician’s discretion in an
+                                                            appropriate healthcare settingb.
+Grade 3   Severe symptoms           Withhold                In addition to Grade 2 treatment:
+          defined as                IMDYLLTRA until the      • Recommend intensive
+
+
+
+                                                                                               5/30
+                                                   Information for healthcare professionals
+
+                                         IMDYLLTRA
+ CRS
+          Defining Symptoms                   Dosage                    Management
+Grade
+                                         Modification
+          temperature ≥ 38°C         event resolves, then        monitoring, e.g., ICU care.
+          with:                      resume IMDYLLTRA        • Administer dexamethasonec (or
+          • Hemodynamic              at the next scheduled       equivalent) 8 mg IV every
+             instability requiring   doseb.                      8 hours up to 3 doses.
+             a vasopressor (with                             • Vasopressor support as needed.
+             or without                                      • High flow oxygen support as
+             vasopressin) and/or For recurrent                   needed.
+          • Worsening hypoxia        Grade 3 events,         Prior to the next dose, administer
+             or respiratory          permanently             concomitant medications as
+             distress requiring      discontinue             recommended for Day 1 and Day 8
+             high flow nasal         IMDYLLTRA.              (see Table 2).
+             canula (> 6 L/min
+             oxygen) or face                                 When resuming treatment at the
+             mask.                                           next planned dose, monitor patients
+                                                             at the physician’s discretion in an
+                                                             appropriate healthcare settingb.
+Grade 4   Life-threatening           Permanently             •   ICU care.
+          symptoms defined as        discontinue             •   Per Grade 3 treatment.
+          temperature ≥ 38°C         IMDYLLTRA.
+          with:
+          • Hemodynamic
+             instability requiring
+             multiple
+             vasopressors
+             (excluding
+             vasopressin)
+             and/or
+             Worsening hypoxia
+             or respiratory
+             distress despite
+             oxygen
+             administration
+             requiring positive
+
+
+                                                                                                6/30
+                                                                 Information for healthcare professionals
+
+                                                      IMDYLLTRA
+    CRS
+                  Defining Symptoms                       Dosage                               Management
+Grade
+                                                      Modification
+                     pressure.
+a
+    CRS based on American Society for Transplantation and Cellular Therapy (ASTCT) Consensus Grading (2019).
+b
+    See section “Dosage/Administration”, Table 3 for recommendations on restarting IMDYLLTRA after dose delays.
+c
+    Taper steroids per standard of care guidelines.
+
+
+
+Immune Effector Cell-Associated Neurotoxicity Syndrome (ICANS)
+
+Monitor patient for signs and symptoms of neurotoxicity. Rule out other causes of neurologic
+symptoms. Provide intensive-care for severe or life-threatening neurologic toxicities. If ICANS
+is suspected, manage according to the recommendations in Table 5.
+
+
+
+Table 5. Guidelines for Grading, Dose Modification and Management of Immune Effector
+Cell-Associated Neurotoxicity Syndromea
+                                                           IMDYLLTRA
+        ICANS
+                          Defining Symptoms                   Dosage                              Management
+        Gradea
+                                                          Modifications
+Grade 1                   ICE score 7-9b with           • Withhold                     • Supportive care.
+                          no depressed level               IMDYLLTRA until
+                          of consciousness.                ICANS resolves,
+                                                           then resume
+                                                           IMDYLLTRA at
+                                                           the next
+                                                           scheduled dosec.
+Grade 2                   ICE score 3-6b                • Withhold                     • Supportive care.
+                          and/or mild                      IMDYLLTRA until            •    Dexamethasoned (or
+                          somnolence awaking               ICANS resolves,                 equivalent) 8 mg to 10 mg
+                          to voice.                        then resume                     PO or IV. Repeat every
+                                                           IMDYLLTRA at                    12 hours or
+                                                           the next                        methylprednisolone (or
+                                                           scheduled dose .     c
+                                                                                           equivalent) 1 mg/kg IV
+                                                                                           every 12 hours if
+                                                                                           symptoms worsen.
+                                                                                      •    Monitor neurologic
+                                                                                           symptoms and consider
+                                                                                           consultation with
+
+
+                                                                                                                    7/30
+                                            Information for healthcare professionals
+
+                                        IMDYLLTRA
+   ICANS
+            Defining Symptoms             Dosage                        Management
+   Gradea
+                                        Modifications
+                                                                   neurologist and other
+                                                                   specialists for further
+                                                                   evaluation and
+                                                                   management.
+                                                              •    Monitor patients at the
+                                                                   physician’s discretion
+                                                                   following the next dose of
+                                                                   IMDYLLTRAc.
+Grade 3     ICE score 0-2b and/or •      Withhold             • Recommend intensive
+            depressed level of           IMDYLLTRA until          monitoring, e.g., ICU care.
+            consciousness                the ICANS            • Consider mechanical
+            awakening only to            resolves, then           ventilation for airway
+            tactile stimulus             resume                   protection.
+            and/or any clinical          IMDYLLTRA at             Dexamethasoned (or
+            seizure focal or             the next                 equivalent) 10 mg IV every
+            generalized that             scheduled dose . c
+                                                                  6 hours or
+            resolves rapidly        •    If there is no           methylprednisolone (or
+                                         improvement to           equivalent) 1 mg/kg IV
+            Or                           Grade ≤ 1 within         every 12 hours.
+                                         7 days,              • Consider repeat
+            Nonconvulsive                permanently              neuroimaging (CT or MRI)
+            seizures on EEG that         discontinue              every 2-3 days if patient
+            resolve with                 IMDYLLTRA.               has persistent Grade ≥ 3
+            intervention and/or     •    For recurrent            neurotoxicity.
+            focal or local edema         Grade 3 events,      • Monitor patients at the
+            seen on                      permanently              physician’s discretion
+            neuroimaging.                discontinue.             following the next dose of
+                                                                  IMDYLLTRAc.
+Grade 4     ICE score 0b (patient   • Permanently             • ICU care.
+            is unarousable and          discontinue           • Consider mechanical
+            unable to perform           IMDYLLTRA.                ventilation for airway
+            ICE) and/or stupor or                                 protection.
+            coma and/or                                       • High-dose corticosteroids,
+            life-threatening                                      such as
+
+
+                                                                                              8/30
+                                                                   Information for healthcare professionals
+
+                                                              IMDYLLTRA
+        ICANS
+                             Defining Symptoms                  Dosage                                 Management
+        Gradea
+                                                              Modifications
+                            prolonged seizure                                                  methylprednisoloned
+                            (> 5 minutes) or                                                   1000 mg/day in divided
+                            repetitive clinical or                                             doses IV for 3 days.
+                            EEG-detectable                                                 • Consider repeat
+                            seizures without                                                   neuroimaging (CT or MRI)
+                            return to baseline in                                              every 2-3 days if patient
+                            between and/or                                                     has persistent Grade ≥ 3
+                            diffuse cerebral                                                   neurotoxicity.
+                            edema on                                                       • Treat convulsive status
+                            neuroimaging,                                                      epilepticus per institutional
+                            decerebrate or                                                     guidelines.
+                            decorticate posturing
+                            or papilledema,
+                            cranial nerve VI
+                            palsy, or Cushing’s
+                            triad.
+a
+    ICANS based on American Society for Transplantation and Cellular Therapy (ASTCT) Consensus Grading (2019).
+b
+    If patient is arousable and able to perform Immune Effector Cell-Associated Encephalopathy (ICE) Assessment, assess:
+Orientation (oriented to year, month, city, hospital = 4 points); Naming (names 3 objects, e.g., point to clock, pen, button = 3
+points); Following commands (e.g., "show me 2 fingers" or "close your eyes and stick out your tongue" = 1 point); Writing (ability to
+write a standard sentence = 1 point); and Attention (count backwards from 100 by ten = 1 point). If patient is unarousable and
+unable to perform ICE Assessment (Grade 4 ICANS) = 0 points.
+c
+    See Table 3 for recommendations on restarting IMDYLLTRA after dose delays (see section “Dosage/Administration”).
+d
+    Taper steroids per standard of care guidelines.
+
+
+
+
+                                                                                                                                   9/30
+                                                Information for healthcare professionals
+
+Table 6. Recommended Treatment Interruptions of IMDYLLTRA for the Management of
+Neutropenia and Other Adverse Reactionsa,b
+      Adverse Reactions                 Severityb                Dosage Modificationa
+Neutropenia (see section                                     No treatment interruption
+“Warnings and Precautions”)                                  needed.
+                                 Grades 1 and 2
+
+
+
+                                                            • Interrupt IMDYLLTRA for at
+                                                               least 3 days and until the
+                                                               event improves to Grade
+                                                               ≤ 2, then restart
+                                 Grade 3
+                                                               IMDYLLTRA.
+                                                             Consider using granulocyte
+                                                             colony stimulating factor (G-
+                                                             CSF).
+                                                            • Interrupt IMDYLLTRA for at
+                                                               least 3 days and until the
+                                                               event improves to Grade
+                                                               ≤ 2, then restart
+                                                               IMDYLLTRA.
+                                                            • If event lasts for > 7 days or
+                                 Grade 4
+                                                               Grade 4 event reoccurs,
+                                                               permanently discontinue
+                                                               IMDYLLTRA.
+                                                             Consider using granulocyte
+                                                             colony stimulating factor (G-
+                                                             CSF).
+Other Adverse Reactions (see                                 Withhold IMDYLLTRA until
+section “Undesirable effects”)                               recovery to Grade ≤ 1 or
+                                                             baseline.
+
+                                 Grade 3 or 4
+                                                             Consider permanently
+                                                             discontinuing if adverse
+                                                             reaction does not resolve within
+                                                             28 days.
+
+
+
+                                                                                         10/30
+                                                                 Information for healthcare professionals
+
+           Adverse Reactions                               Severityb                       Dosage Modificationa
+
+
+                                                                                     • Consider permanent
+                                                                                        discontinuation for Grade 4
+                                                                                        events.
+a
+    For recommendations on restarting IMDYLLTRA after dose delays see Table 3 (section “Dosage/Administration”).
+b
+    Severity based on National Cancer Institute Common Terminology Criteria for Adverse Events (NCI CTCAE), Version 5.0.
+
+
+
+Method of administration
+
+       •    IV line for premedication can be used for IMDYLLTRA. IV line flush should be
+            conducted between administering concomitant medication and IMDYLLTRA.
+
+       •    Administer the entire contents of IMDYLLTRA as an intravenous infusion over 1-hour at
+            a constant flow rate using an infusion pump. The pump should be programmable,
+            lockable, non-elastomeric, and have an alarm (see section “Other information”). Upon
+            completion of the IMDYLLTRA infusion, the IV administration line should be flushed
+            over 3-5 minutes using 0.9% Sodium Chloride for Injection.
+
+
+
+Table 7. IMDYLLTRA Administration Information
+           Infusion Duration for 250 mL IV
+                                                                              Infusion Rate (mL/hour)
+                        Preparation
+
+                            1-hour                                                    250 mL/hour
+
+
+       •    IV tubing is primed with 0.9% Sodium Chloride for Injection OR final prepared
+            IMDYLLTRA.
+
+       •    For the infusion rate per infusion duration, refer to Table 7.
+
+
+
+Special dosage instructions
+
+Patients with impaired hepatic function
+
+Based on the population pharmacokinetic results, no dose adjustment is required in patients
+with mild or moderate hepatic impairment (see section “Pharmacokinetics”). IMDYLLTRA has
+not been studied in patients with severe hepatic impairment.
+
+
+
+
+                                                                                                                           11/30
+                                                 Information for healthcare professionals
+
+Patients with impaired renal function
+
+Based on the population pharmacokinetic results, no dose adjustment is required in patients
+with mild or moderate renal impairment (see section “Pharmacokinetics”). IMDYLLTRA has not
+been studied in patients with severe renal impairment.
+
+
+
+Pediatric population
+
+The safety and efficacy of IMDYLLTRA in children and adolescents under 18 years of age
+have not been established.
+
+
+
+Elderly patients
+
+Of the 473 patients with SCLC who received 10 mg IMDYLLTRA as monotherapy, 50.7% were
+age 65 or older and 11% were 75 years or older. In clinical studies, no overall differences in
+IMDYLLTRA pharmacokinetics, safety or efficacy were observed between geriatric patients
+(≥ 65 years old) and younger patients. No dose adjustment is required for geriatric patients.
+
+
+
+Contraindications
+
+Hypersensitivity to the active substance or to any of the excipients (see section “Composition”).
+
+
+
+Warnings and Precautions
+
+Cytokine release syndrome (CRS)
+
+Administration of IMDYLLTRA has been associated with CRS which may be serious or life-
+threatening. CRS may be associated with symptoms including pyrexia, hypotension, hypoxia,
+fatigue, tachycardia, headache, chills, nausea, and vomiting. The majority of these events did
+not lead to IMDYLLTRA discontinuation in clinical trials.
+
+Administer IMDYLLTRA in a healthcare facility equipped to monitor and manage CRS. Ensure
+patients are euvolemic prior to initiating the infusions. Closely monitor patients for signs and
+symptoms of CRS during the initiation of IMDYLLTRA treatment. To mitigate the risk of CRS, it
+is important to initiate IMDYLLTRA at the recommended starting dose in Table 1. CRS should
+be managed according to the recommendations in Table 4.
+
+
+
+
+                                                                                              12/30
+                                                   Information for healthcare professionals
+
+Immune Effector Cell-associated Neurotoxicity Syndrome (ICANS)
+
+Administration of IMDYLLTRA has been associated with ICANS which may be serious or life-
+threatening. ICANS can occur up to several weeks following administration of IMDYLLTRA.
+Adverse events that may be associated with ICANS include headache, encephalopathy,
+confusion, delirium, seizure, ataxia, neurotoxicity, and tremor. Patients should be closely
+monitored for signs and symptoms of ICANS during IMDYLLTRA treatment. ICANS should be
+managed according to the recommendations in Table 5.
+
+
+
+Cytopenia
+
+Administration of IMDYLLTRA has been associated with cytopenias including neutropenia,
+thrombocytopenia, and anemia. For neutropenia Grade 3 or 4 supportive measure with the use
+of G-CSF is recommended. Patients should be closely monitored for signs and symptoms of
+neutropenia during IMDYLLTRA treatment. Neutropenia should be managed according to the
+recommendations in Table 6.
+
+Monitor complete blood counts prior to administration of all doses of IMDYLLTRA up through
+Cycle 5 Day 15 and then prior to administration of IMDYLLTRA on Day 1 of each cycle starting
+with Cycle 6. More frequent evaluation may be necessary as clinically indicated. Withhold or
+permanently discontinue based on severity.
+
+
+
+Infections
+
+Administration of tarlatamab has been associated with serious infections, including life
+threatening and fatal infections. The most frequent infections include pneumonia, urinary tract
+infection, COVID 19, upper respiratory tract infection, respiratory tract infection, candida
+infection, oral candidiasis and nasopharyngitis.
+
+Patients should be monitored for signs and symptoms of infections prior to and during
+treatment with tarlatamab. Infections should be managed according to the recommendations in
+Table 6.
+
+
+
+Hepatotoxicity
+
+IMDYLLTRA can cause transient liver lab abnormalities.
+
+Monitor liver enzymes and bilirubin prior to treatment and before each dose with IMDYLLTRA,
+and as clinically indicated. Withhold IMDYLLTRA or permanently discontinue based on
+severity.
+
+                                                                                               13/30
+                                                Information for healthcare professionals
+
+
+
+
+Hypersensitivity
+
+Hypersensitivity reactions have been reported in patients treated with IMDYLLTRA including
+rare severe events. Clinical signs and symptoms of hypersensitivity may include but are not
+limited to rash and bronchospasm. Monitor patients for signs and symptoms of hypersensitivity
+during treatment with IMDYLLTRA and manage as clinically indicated. Withhold or consider
+permanent discontinuation of IMDYLLTRA based on severity.
+
+
+
+Women of childbearing potential
+
+In women of childbearing potential, pregnancy status should be verified before starting
+treatment with IMDYLLTRA (see section “Pregnancy, lactation”).
+
+
+
+Sodium
+
+This medicinal product provides less than 1 mmol (23 mg) sodium over a 24 hour infusion i.e.,
+“essentially sodium-free”.
+
+
+
+Interactions
+
+No formal drug interaction studies have been conducted with IMDYLLTRA. Initiation of
+IMDYLLTRA treatment causes transient release of cytokines that may suppress CYP450
+enzymes and may result in increased exposures of concomitant CYP substrates. In patients
+who are receiving concomitant CYP450 substrates, particularly those with a narrow therapeutic
+index, monitor for known undesirable effects. Adjust the dose of the concomitant drug as
+needed.
+
+
+
+Pregnancy, lactation
+
+Women of childbearing potential
+
+In women of childbearing potential, pregnancy status should be verified before starting
+treatment with IMDYLLTRA.
+
+Women of childbearing potential should use a reliable method of contraception during
+treatment with IMDYLLTRA and for 2 months after the last dose.
+
+
+
+
+                                                                                           14/30
+                                                 Information for healthcare professionals
+
+Pregnancy
+
+There are no data from the use of IMDYLLTRA in pregnant women. In a study conducted in
+mice using a murine surrogate molecule, there was no indication of embryo-fetal toxicity (see
+“Preclinical data” section). However, based on its mechanism of action, tarlatamab may cause
+fetal harm when administered to pregnant women. Therefore, IMDYLLTRA should not be
+administered during pregnancy unless clearly necessary.
+
+
+
+Breast-feeding
+
+It is unknown whether tarlatamab is secreted in human milk or has effects on breastfed infants.
+Because many medicinal products, including antibodies, can be secreted in human milk, a risk
+to the newborns/infants cannot be excluded. Therefore, breastfeeding is not recommended
+during treatment with IMDYLLTRA and for 2 months after the last dose.
+
+
+
+Fertility
+
+There are no clinical studies to evaluate the effect of IMDYLLTRA on fertility.
+
+
+
+Effect on ability to drive and use machines
+
+Studies of the effects of IMDYLLTRA on the ability to drive and use machines have not been
+performed. However, due to the potential for ICANS and other associated neurological events
+following IMDYLLTRA infusion, advise patients to refrain from driving and engaging in
+hazardous occupations or activities, such as operating heavy or potentially dangerous
+machinery, in the event of any neurologic symptoms until they resolve.
+
+
+
+Undesirable effects
+
+Summary of the safety profile
+
+The safety of IMDYLLTRA was evaluated in 473 patients with metastatic small cell lung cancer
+(SCLC) who received 10 mg as monotherapy. The mean/average duration of exposure to
+IMDYLLTRA was 18 weeks (range: 6 to 38 weeks).
+
+The most common adverse reactions (≥ 15%) are: CRS (56.7%), decreased appetite (36.4%),
+pyrexia (31.9%), dysgeusia (31.3%), constipation (30.4%), anaemia (30.0%), fatigue (29.8%),
+nausea (24.9%), asthenia (19.0%), neutropenia (16.9%), hyponatremia (16.7%), headache
+(16.3%), lymphopenia (15.6%).
+
+
+                                                                                          15/30
+                                                Information for healthcare professionals
+
+
+
+
+Tabulated list of adverse reactions
+
+Adverse reactions reported in IMDYLLTRA clinical studies are displayed in Table 8 below.
+
+Adverse reactions are listed according to the MedDRA system organ classification and by
+frequency. Frequency categories are defined as very common (≥ 1/10), common (≥ 1/100 to
+< 1/10), uncommon (≥ 1/1 000 to < 1/100), rare (≥ 1/10 000 to < 1/1 000), or very rare
+(< 1/10 000). Within each frequency grouping, where relevant, adverse reactions are
+presented in order of decreasing seriousness.
+
+
+
+Table 8. Adverse Reactions Reported in IMDYLLTRA 10 mg Pooled Clinical Studies
+MedDRA system         Undesirable effect        All grades                Grade ≥ 3
+organ class
+Blood and lymphatic Anaemia                     Very common (30.0%)       Common
+system disorders      Neutropeniaa,c            Very common (16.9%)       Common
+                      Lymphopenia     b
+                                                Very common (15.6%)       Very common (10.6%)
+                      Thrombocytopenia          Common                    Uncommon
+                      Leukopenia                Common                    Uncommon
+Gastrointestinal      Constipation              Very common (30.4%)       Uncommon
+disorders             Nausea                    Very common (24.9%)       Uncommon
+                      Vomiting                  Very common (14.2%)       Uncommon
+General disorders     Pyrexia                   Very common (31.9%)       Uncommon
+and administration    Fatigue                   Very common (29.8%)       Common
+site conditions       Asthenia                  Very common (19.0%)       Common
+                      Chills                    Common                    Very rare*
+Immune system         Cytokine release          Very common (56.7%)       Common
+disorders             syndromec
+Investigations        Weight decreased          Very common (14.8%)       Common
+                      Alanine                   Very common (10.4%)       Common
+                      aminotransferase
+                      increased
+                      Aspartate                 Common                    Common
+                      aminotransferase
+                      increased
+                      White blood cell count    Common                    Common
+
+
+
+                                                                                           16/30
+                                                                      Information for healthcare professionals
+
+MedDRA system                     Undesirable effect                 All grades             Grade ≥ 3
+organ class
+                                  decreased
+Metabolism and                    Decreased appetite                 Very common (36.4%)    Common
+nutrition disorders               Hyponatraemia                      Very common (16.7%)    Common
+                                  Hypokalaemia                       Very common (10.4%)    Common
+                                  Hypomagnesaemia                    Common                 Uncommon
+Musculoskeletal                   Myalgia                            Common                 Very rare*
+and connective
+tissue disorders
+Nervous system                    Dysgeusia                          Very common (31.3%)    Very rare*
+disorders                         Headache                           Very common (16.3%)    Very rare*
+                                  Dizziness                          Common                 Very rare*
+                                  Immune effector                    Common                 Uncommon
+                                  cell-associated
+                                  neurotoxicity
+                                  syndromec
+                                  Tremor                             Common                 Very rare*
+                                  Neurotoxicity                      Uncommon               Very rare*
+                                  Seizure                            Uncommon               Uncommon
+                                  Ataxia                             Uncommon               Uncommon
+                                  Encephalopathy                     Uncommon               Uncommon
+Psychiatric                       Confusional state                  Common                 Uncommon
+disorders                         Delirium                           Common                 Uncommon
+Respiratory,                      Dyspnoea                           Very common (11.0%)    Common
+thoracic and
+mediastinal
+disorders
+Skin and                          Pruritus                           Very common (10.4%)    Uncommon
+subcutaneous                      Rash                               Common                 Uncommon
+tissue disorders
+* No Grade ≥ 3 were reported.
+a
+    Includes neutrophil count decreased
+b
+    Includes lymphocyte count decreased.
+c
+    Additional information is provided in “Descriptions of selected adverse reactions”.
+
+
+
+
+                                                                                                          17/30
+                                                 Information for healthcare professionals
+
+Description of selected adverse reactions
+
+Cytokine release syndrome (CRS)
+
+In clinical trials with pooled safety data for 473 patients with SCLC enrolled in DeLLphi-300,
+DeLLphi-301 and Study DeLLphi-304, receiving the IMDYLLTRA 10 mg dose, CRS occurred
+in 56.7% of patients, with Grade 1 in 39.3%, Grade 2 in 15.4% of patients, Grade 3 in 1.7% of
+patients and grade 4 events in 0.2% of patients. Serious events of CRS were reported in
+19.7% of patients. After the first dose of IMDYLLTRA, 41.4% of patients experienced CRS,
+with 34% of patients experiencing any grade CRS after the second dose. The majority of CRS
+events occurred after the first two doses, with 8.5% of patients experiencing CRS following
+third dose or later. Following the Day 1 infusion, 13.7% of patients experienced ≥ Grade 2
+CRS. Following the Day 8 infusion, 4.4% of patients experienced ≥ Grade 2 CRS. The median
+time from the most recent dose of IMDYLLTRA to the first onset of CRS was 15.9 hours
+(range: 9 to 26.5 hours).
+
+In patients treated with IMDYLLTRA at 10 mg enrolled in Study DeLLphi-304 (n = 252), CRS
+occurred in 56.3% of patients, including Grade 1 in 42.5%, Grade 2 in 12.7% and Grade 3 in
+1.2% of patients. No patients had Grade 4 or Grade 5 events. Most patients experienced CRS
+after the first two doses of IMDYLLTRA with 6.3% experiencing CRS after the third dose or
+later. Following the Day 1 infusion, 11.5% of patients experienced ≥ Grade 2 CRS. Following
+the Day 8 infusion, 4.8% of patients experienced ≥ Grade 2 CRS. For those Grade 1 events
+that progressed to Grade 2 or greater, the median time from Grade 1 event to Grade 2 event is
+22.3 hours (range: 6.5 to 40.1 hours).
+
+
+
+ICANS
+
+In clinical trials with pooled safety data for 473 patients with SCLC enrolled in Study
+DeLLphi-300, Study DeLLphi-301 and Study DeLLphi-304 receiving IMDYLLTRA 10 mg dose,
+ICANS was reported in 4.7% of patients. The median time from the first dose of IMDYLLTRA
+to the first onset of ICANS was 9.0 days (range: 2 to 13 days). The median time to resolution
+of ICANS was 4 days (range: 2 to 8 days).
+
+
+
+Cytopenia
+
+IMDYLLTRA can cause cytopenias including neutropenia, thrombocytopenia, and anemia.
+
+In the pooled safety population, (see “Undesirable effects”) based on laboratory data,
+decreased neutrophils occurred in 16% of patients, including 9% Grade 3 or 4. The median
+
+
+
+                                                                                             18/30
+                                                  Information for healthcare professionals
+
+time to onset for Grade 3 or 4 decreased neutrophil count was 41 days (range: 2 to 306 days).
+Decreased platelets occurred in 30%, including 2.2% Grade 3 or 4. The median time to onset
+for Grade 3 or 4 decreased platelets was 67 days (range: 3 to 420 days). Decreased
+hemoglobin occurred in 56% of patients, including 4.7% Grade 3 or 4.
+
+Febrile neutropenia was reported as an adverse event in 1.5% of patients treated with
+IMDYLLTRA.
+
+
+
+Infections
+
+IMDYLLTRA can cause serious infections, including life threatening and fatal infections.
+
+In the pooled safety population, (see “Undesirable effects”), infections including opportunistic
+infections occurred in 43% of patients who received IMDYLLTRA, including 14% Grade 3 or 4.
+The most frequent infections were pneumonia (11%), urinary tract infection (9%), COVID 19
+(6%), upper respiratory tract infection (4.7%), respiratory tract infection (4%), candida infection
+(2.1%), oral candidiasis (2.1%) and nasopharyngitis (2.1%).
+
+Monitor patients for signs and symptoms of infection prior to and during treatment with
+IMDYLLTRA and treat as clinically indicated. Withhold or permanently discontinue
+IMDYLLTRA based on severity.
+
+
+
+Hepatotoxicity
+
+IMDYLLTRA can cause hepatotoxicity.
+
+In the pooled safety population (see “Undesirable effects”), based on laboratory data, elevated
+ALT occurred in 39% of patients who received IMDYLLTRA, including 2.5% Grade 3 or 4 ALT.
+Elevated AST occurred in 43% of patients, including 3.2% Grade 3 or 4. Elevated bilirubin
+occurred in 16% of patients, including 1.3% Grade 3 or 4 (see “Undesirable effects”). Liver
+enzyme elevation can occur with or without concurrent CRS.
+
+Monitor liver enzymes and bilirubin prior to treatment with IMDYLLTRA, and as clinically
+indicated. Withhold IMDYLLTRA or permanently discontinue based on severity.
+
+
+
+Immunogenicity
+
+The observed incidence of anti-drug antibodies is highly dependent on the sensitivity and
+specificity of the assay. Differences in assay methods preclude meaningful comparisons of the
+incidence of anti-drug antibodies in the studies described below with the incidence of
+
+
+                                                                                              19/30
+                                                 Information for healthcare professionals
+
+anti-tarlatamab antibodies in other studies, including those of tarlatamab or of other DLL3 T-
+cell engager products. Across Study DeLLphi-300, Study DeLLphi-301 and Study DeLLphi-
+304, the incidence of anti-tarlatamab antibody development was 7.7% (34/444) in patients
+receiving the dose of 10 mg. In Studies DeLLphi-301 and DeLLphi-304 which employed the
+neutralising assay, 7.5% (27/359) of the patients developed anti-tarlatamab antibody, including
+3.1% (11/359) of patients developed anti-tarlatamab neutralising antibodies. Positive anti-
+tarlatamab antibody binding status had no clinically relevant impact on efficacy, safety and
+pharmacokinetics.
+
+
+
+Reporting suspected adverse reactions after authorisation of the medicinal product is very
+important. It allows continued monitoring of the benefit/risk balance of the medicinal product.
+Healthcare professionals are asked to report any suspected new or serious adverse reactions
+online via the ElViS portal (Electronic Vigilance System). You can obtain information about this
+at www.swissmedic.ch.
+
+
+
+Overdose
+
+There is no clinical experience with overdose with IMDYLLTRA. Doses up to 100 mg every two
+weeks and 200 mg every three weeks have been administered in clinical trials. In the event of
+an overdose, the patient should be treated symptomatically, and supportive measures
+instituted as required.
+
+
+
+Properties/Effects
+
+ATC code
+
+L01FX33
+
+
+
+Mechanism of action
+
+Tarlatamab is a bispecific DLL3-directed CD3 T-cell engager that binds to DLL3 expressed on
+the surface of tumor cells and CD3 expressed on the surface of T cells. The binding of
+tarlatamab to T cells and DLL3-positive tumour cells triggers T-cell activation, production of
+inflammatory cytokines, release of cytotoxic proteins, which results in redirected lysis of tumour
+cells.
+
+
+
+
+                                                                                               20/30
+                                                   Information for healthcare professionals
+
+Pharmacodynamics
+
+The pharmacodynamic response after a single infusion of tarlatamab was characterised by
+T-cell redistribution and activation, and transient cytokine elevation. Peripheral T-cell
+redistribution (i.e., T-cell adhesion to blood vessel endothelium and/or transmigration into
+tissue) occurred within 24 hours after the initial dose of tarlatamab at 1 mg on Day 1. T-cell
+counts declined within 6 hours post infusion and returned to baseline levels in majority of the
+patients prior to the next infusion on Day 8.
+
+
+
+Serum cytokines IL-2, IL-6, IL-8, IL-10, IFN-γ and TNF-α were transiently elevated following
+the initial dose of tarlatamab at 1 mg on Day 1. Cytokine levels peaked within the first 2 days
+following the start of tarlatamab infusion and generally returned to baseline levels prior to the
+next infusion on Day 8. In subsequent treatments, cytokine elevation occurred in fewer patients
+with lesser intensity compared to the initial infusion on Day 1.
+
+
+
+Clinical efficacy
+
+Study DeLLphi-304
+
+The efficacy of IMDYLLTRA was demonstrated in patients enrolled in a phase 3 multicenter,
+randomized, open-label trial (Study DeLLphi-304). Eligible patients were required to have
+SCLC with disease progression following platinum-based regimen. In regions where Standard
+of Care (SOC) first-line systemic treatment for extensive -stage disease included platinum-
+based containing chemotherapy in combination with PD-L1 inhibitor, patients were required to
+have failed PD-L1 inhibitor as part of their first line systemic treatment or to be ineligible to
+receive PD-L1 inhibitor therapy. Additionally, patients were required to have an ECOG
+Performance Status of 0-1, and at least one measurable lesion as defined by Response
+Evaluation Criteria in Solid Tumors (RECIST v1.1). The trials excluded patients with
+symptomatic brain metastases or active immunodeficiency.
+
+A total of 509 patients with SCLC previously treated with platinum-based chemotherapy were
+enrolled and randomized 1:1 to receive either IMDYLLTRA or Standard of Care (SOC)
+chemotherapy. 254 patients were randomized to IMDYLLTRA at an initial dose of 1 mg on
+Day 1 followed by 10 mg on Days 8, 15, and every 2 weeks thereafter until disease
+progression or unacceptable toxicity. SOC chemotherapies included topotecan, lurbinectedin
+or amrubicin. Randomization was stratified by prior anti-PD-L1 exposure (yes vs no), platinum
+sensitivity status (chemotherapy-free interval ≥ 180 days, < 180 to ≥ 90 days, or < 90 days),
+presence of brain metastases (yes vs no) and standard of care (topotecan/amrubicin vs
+
+
+                                                                                                    21/30
+                                                Information for healthcare professionals
+
+lurbinectedin). Treatment continued until disease progression or unacceptable toxicity. Tumor
+assessments were performed every 6 weeks for the first 48 weeks and every 12 weeks
+thereafter.
+
+The baseline demographics and disease characteristics of the study population were: median
+age of 65 years (range: 20 to 86); 52.1% age 65 or older; 69% male; 57.2% White and 40.1%
+Asian; 32% ECOG PS of 0 and 67.2% ECOG PS of 1; 91% patients had metastatic disease at
+baseline; 44.8% had brain metastases at baseline; 35.2% had liver metastases at baseline.
+68.8% patients were former smokers; 20.6% were current smokers, 10.6% were never
+smokers. All patients received at least one line of prior platinum-based chemotherapy (range: 1
+to 3 lines); 70.7% received prior anti-PD-L1 therapy; 223 patients (43.8%) had
+chemotherapy-free interval < 90 days after end of first line platinum therapy, while 286 patients
+(56.2%) had chemotherapy-free interval ≥ 90 days.
+
+The primary efficacy outcome measure was Overall Survival (OS). Key secondary efficacy
+outcomes included Progression-free survival (PFS) based on investigator assessment per
+Response Evaluation Criteria in Solid Tumors (RECIST v1.1) and select patient reported
+outcomes. Additional endpoints were overall response rate (ORR) and duration of response
+(DOR) based on investigator assessment per RECIST 1.1.
+
+Patients received a median of 5 cycles of IMDYLLTRA treatment (range: 1 to 19 cycles), and a
+median of 4 cycles of SOC treatment (range: 1 to 21 cycles).
+
+The trial demonstrated a statistically significant and clinically meaningful improvement in OS,
+stratified hazard ratio (HR) = 0.60 (95 %-CI: 0.47; 0.77) with a 40% reduced risk of death for
+patients randomized to IMDYLLTRA as compared with SOC at the prespecified interim
+analysis, when 263 events were observed .The trial also demonstrated a statistically significant
+and clinically meaningful improvement in PFS, HR = 0.72 [95% CI: 0.59, 0.88] resulting in a
+28% reduced risk of disease progression or death in patients randomized to IMDYLLTRA
+compared with patients randomized to SOC. Efficacy results are summarized in Table 9.
+
+
+
+
+                                                                                            22/30
+                                                                   Information for healthcare professionals
+
+Table 9. Efficacy Results for Patients with SCLC in Study DeLLphi- 304
+             Efficacy Parameter                        IMDYLLTRA (N = 254)                     Standard of Care
+                                                                                                     (N = 255)
+    Overall survival (OS)
+    Deaths (%)                                                  111 (43.7)                           152 (59.6)
+    Mediana in months (95% CI)                               13.6 (11.1, NE)                    8.3 (7.0, 10.2)
+    Hazard ratiob (95% CI)                                                       0.60 (0.47, 0.77)
+    p-value (stratified log-rank)                                                    < 0.001
+    Progression-free survival (PFS)c
+    Events (%)                                                  191 (75.2)                           205 (80.4)
+    Mediana in months (95% CI)                                4.2 (3.0, 4.4)                     3.2 (2.9, 4.2)
+    Hazard ratiob (95% CI)                                                       0.72 (0.59, 0.88)
+    p-value (stratified log-rank)                                                    < 0.001
+    Overall Response Rate (ORR)c
+    ORR, % (95% CI)                                         35.0 (29.2, 41.3)                  20.4 (15.6, 25.9)
+    Complete Response, n (%)                                       3 (1.2)                             0 (0.0)
+    Partial Response, n (%)                                      86 (33.9)                           52 (20.4)
+    Duration of Response (DOR) c
+    Mediana in months (95% CI)                                6.9 (4.5, 12.4)                    5.5 (4.2, 5.7)
+    Min, Max (+ for censored)                                    1.9, 15.3   +
+                                                                                                     1.3+, 12.5+
+    Responders with duration ≥ 6                                    46.1                                26.9
+    monthsd, %
+    Responders with duration ≥ 12                                   13.5                                1.9
+    monthsd, %
+a
+    per Kaplan-Meier estimates.
+b
+    Hazard ratio based on the stratified Cox proportional hazard model.
+c
+    PFS, ORR, DOR based on investigator assessment per RECIST 1.1.
+d
+    Based on observed duration of response.
++
+    Denotes ongoing response. At the time of analysis, 47% (42/89) of responders randomized to IMDYLLTRA and 15% (8/52) of
+responders randomized to SOC had ongoing responses.
+
+
+
+
+109 patients in the tarlatamab arm and 114 patients in the SOC arm had (CFI) < 90 days at
+baseline. The hazard ratio for OS was 0.6 (95% CI: 0.43, 0.84) with a median OS of 10.9
+months (95% CI: 8.7, 12.3) and 6.4 months (95% CI: 5.0, 7.9) in the tarlatamab and SOC arm,
+respectively.
+
+145 patients in the tarlatamab arm and 141 patients in the SOC arm had (CFI) ≥ 90 days at
+baseline. The hazard ratio for OS was 0.65 (95% CI: 0.45, 0.93) with a median OS of 17.1
+
+
+                                                                                                                       23/30
+                                                Information for healthcare professionals
+
+months (95% CI: 13.6, NE) and 10.6 months (95% CI: 8.7, NE) in the tarlatamab and SOC
+arm, respectively.
+
+
+
+Patient-Reported Outcomes
+
+Patient-reported outcomes were collected using EORTC QLQ-C30 and EORTC QLQ-LC13.
+Compliance rates were comparable between groups and were above 69% throughout 18
+weeks from baseline.
+
+Tarlatamab demonstrated statistically significant improvements in dyspnea and cough.
+Dyspnea, derived from EORTC QLQ-C30 and EORTC QLQ-LC13, showed a mean difference
+of –9.14 (95% CI: –12.64 to –5.64; p < 0.001) at week 18 in favor of tarlatamab for the patients
+who answered at least one item in the Week 18 questionnaire (N = 118, 46.6% tarlatamab and
+N = 88, 34.5% standard chemotherapy). A cough improvement was achieved in 16.1% of
+patients treated with tarlatamab, compared with 9.0% of patients who received standard
+chemotherapy (odds ratio [OR] 2.04; 95% CI: 1.17–3.55; p = 0.012) of achieving improvement
+compared with standard of care (SOC).
+
+
+
+Study DeLLphi-301
+
+The efficacy of IMDYLLTRA was evaluated in patients enrolled in a phase 2, open label
+multicentre trial, Study DeLLphi-301. Eligible patients were required to have extensive-stage
+SCLC with disease progression after receiving previous treatment including platinum-based
+chemotherapy, an ECOG Performance Status of 0-1, and at least one measurable lesion as
+defined by Response Evaluation Criteria in Solid Tumours (RECIST v1.1). The trials excluded
+patients with symptomatic brain metastases, evidence of interstitial lung disease or non-
+infectious pneumonitis and active immunodeficiency.
+
+Study DeLLphi-301 Part 1 was a dose comparison that randomised 176 patients in a 1:1 ratio
+to receive either 10 mg or 100 mg of tarlatamab (as a 60-minute intravenous (IV) infusion). At
+the prespecified interim analysis, 30 patients per arm were used to determine the selected
+dose for part 2. Part 2 was a dose expansion that enrolled 100 patients (part 1 and 2
+combined) at the selected dose of 10 mg. A total of 99 patients received tarlatamab 10 mg
+intravenously every 2 weeks across Part 1 and Part 2 (combined). Treatment continued until
+disease progression or unacceptable toxicity. Tumour assessments were performed every
+6 weeks for the first 48 weeks and every 12 weeks thereafter.
+
+The key efficacy outcome measures were ORR and DOR as assessed by Blinded
+Independent Central Review (BICR) according to RECIST v1.1.
+
+                                                                                             24/30
+                                                                Information for healthcare professionals
+
+For patients who received tarlatamab 10 mg, the baseline demographics and disease
+characteristics of the study population were: median age of 64 years (range: 35 to 82); 48.5%
+age 65 or older; 71.7% male; 57.6% White and 41.4% Asian; 26.3% ECOG PS of 0 and 73.7%
+ECOG PS of 1; 98% had metastatic disease; and 22.2% had a history of brain metastases.
+100% received prior platinum therapy, 20.2% received prior topotecan therapy, 69.7%
+received prior anti- PD-L1 therapy;8.1% had never smoked, 73.7% formerly smoked, and
+18.2% currently smoked. Time to progression was < 90 days for 27/69 (39.1%) subjects and
+≥ 90 days for 42/69 (60.9%) subjects.
+
+ORR and DOR were generally similar to the total population in the subgroups that had < 90 or
+≥ 90 days to progression after first line platinum therapy. Efficacy results are summarised in
+Table 10.
+
+
+Table 10. Efficacy Results for Patients with SCLC in Study DeLLphi-301 who Received
+IMDYLLTRA 10 mg
+                  Efficacy Parameter                                     IMDYLLTRA (N = 99)
+
+Overall Response Rate (ORR)f
+
+ORR, % (95% CI)a                                                               41 (32, 52)
+
+             Complete Response, n (%)                                              1 (1)
+
+                Partial Response, n (%)                                          40 (40)
+
+Duration of Response (DOR) a, f
+
+               Medianb, months (range)                                         9.7 (5.9, NE)
+
+     Responders with duration ≥ 6 monthsc, %                                        66
+
+    Responders with duration ≥ 9 monthsd, %                                         49
+
+    Responders with duration ≥ 12 monthse, %                                        39
+a
+    Assessed by Blinded Independent Central Review, CI = Confidence Interval
+b
+    Median based on Kaplan-Meier estimate.
+c
+    Observed proportion of responders beyond the 6-month landmark.
+d
+    Observed proportion of responders beyond the 9-month landmark.
+e
+    Observed proportion of responders beyond the 12-month landmark.
+f
+    DOR based on DCO of Jan 12, 2024.
+
+
+
+
+Pharmacokinetics
+
+The peak serum concentration (Cmax), trough serum concentrations (Ctrough) and area under the
+serum concentration versus time curve at steady state (AUCtau), of tarlatamab increased dose
+
+                                                                                                    25/30
+                                               Information for healthcare professionals
+
+proportionally in the evaluated dose range of 1 mg to 100 mg Q2W (10 times the
+recommended dosage). Approximate steady state in serum tarlatamab exposures were
+achieved by Day 15.
+
+
+
+Distribution
+
+The mean value (CV%) for volume of distribution at steady state based on individual
+parameters is 8.53 L (33.3%).
+
+
+
+Metabolism
+
+The metabolic pathway of tarlatamab has not been characterised. Like other protein
+therapeutics, tarlatamab is expected to be degraded into small peptides and amino acids via
+catabolic pathways.
+
+
+
+Elimination
+
+The estimated systemic clearance (inter-subject CV%) was 0.728 L/day (34%) and terminal
+elimination half-life was approximately 10.6 days in subjects with SCLC.
+
+
+
+Kinetics in specific patient groups
+
+No clinically significant differences in the pharmacokinetics of tarlatamab were observed based
+on age (20 to 86 years), body weight (35 to 149 kg), sex, race (68% White and 27% Asian),
+mild or moderate renal impairment (eGFR 30 to < 90 mL/min), or mild hepatic impairment (total
+bilirubin ≤ upper limit of normal (ULN) and AST > ULN).
+
+The effects of severe renal impairment (eGFR 15 to < 30 mL/min), end-stage renal disease
+(eGFR < 15 mL/min), or moderate to severe hepatic impairment (total bilirubin > 1.5 × ULN
+and any AST) on the pharmacokinetics of tarlatamab are unknown.
+
+
+
+Preclinical data
+
+Carcinogenicity and genotoxicity
+
+No carcinogenicity or genotoxicity studies have been conducted with tarlatamab.
+
+
+
+
+                                                                                          26/30
+                                                  Information for healthcare professionals
+
+Reproductive and developmental toxicology
+
+Based on its mechanism of action, tarlatamab may cause foetal harm when administered to a
+pregnant woman. In a murine embryo-foetal development study, there were no effects of the
+murine surrogate molecule of tarlatamab, designated muS757, on any maternal parameter,
+including mean maternal body weights or body weight gains. In addition, there were no
+muS757-related macroscopic findings or effects on any ovarian, uterine, or litter parameters at
+any dose level and administration of muS757 did not produce any foetal external, visceral, or
+skeletal malformations or variations.
+
+No studies have been conducted to evaluate the effects of tarlatamab on fertility.
+
+
+
+Other information
+
+Incompatibilities
+
+No known incompatibilities.
+
+Shelf life
+
+Unopened vials:
+
+IMDYLLTRA vial and stabiliser solution vial may be used only up to the date indicated with
+<EXP> on the container.
+
+Special storage precautions
+
+Store IMDYLLTRA and Solution Stabiliser vials in the original package refrigerated at 2°C to
+8°C and protect from light until time of use. Do not freeze.
+
+Store lyophilized IMDYLLTRA and Solution Stabiliser vials for a maximum of 24 hours at room
+temperature in the original carton to protect from light.
+
+The information in Table 11 indicates the storage time for the prepared IMDYLLTRA infusion
+bag.
+
+
+
+
+                                                                                             27/30
+                                                                     Information for healthcare professionals
+
+Table 11. Maximum Storage Time
+                                     Room Temperature                             Refrigerated
+                                     20°C to 25°C                                 2°C to 8°C
+                                                                                  protect from light
+Prepared                             8 hoursa                                     7 daysa
+IMDYLLTRA Infusion
+Bag
+a
+    Storage time includes total time permitted from point of reconstitution of the vial to the end of administration. Once removed from
+the refrigerator, bring the infusion bag to room temperature and complete administration of the diluted IMDYLLTRA infusion
+solution within 8 hours (including preparation and infusion time).
+If the prepared IMDYLLTRA infusion bag is not administered within the time frames and temperatures indicated, it must be
+discarded; it should not be refrigerated again.
+
+
+
+
+Instructions for use
+
+Aseptic preparation
+
+IMDYLLTRA does not contain antimicrobial preservatives. Therefore, if the in-use
+storage time is to exceed 24 hours, the solution for infusion must be prepared using
+validated aseptic techniques. Reconstitution of IMDYLLTRA is with Water for Injection.
+
+Do not use Solution Stabiliser for reconstitution of IMDYLLTRA. The Solution Stabiliser is
+used to coat the intravenous bag prior to addition of reconstituted IMDYLLTRA to prevent
+adsorption of IMDYLLTRA to IV bags and IV tubing.
+
+
+
+Table 12. Required Amount of Water for Injection to Reconstitute IMDYLLTRAa
+IMDYLLTRA vial                            Amount of Water for                     Final Concentration
+Strength (mg)                             Injection, needed to                    (mg/mL)
+                                          reconstitute
+                                          IMDYLLTRA (mL)
+
+1 mg                                      1.3 mL                                  0.9 mg/mL
+
+10 mg                                     4.4 mL                                  2.4 mg/mL
+a Each vial contains overfill to allow for withdrawal of 1.1 mL (1 mg vial) or 4.2 mL (10 mg vial) after reconstitution to ensure
+
+delivery at the stated concentration of labelled vial strength.
+
+
+
+
+a. Transfer required amount of Water for Injection (refer to Table 12) into the IMDYLLTRA vial
+       to provide a final IMDYLLTRA concentration of 0.9 mg/mL (1 mg vial) or 2.4 mg/mL (10 mg
+
+
+                                                                                                                                    28/30
+                                                                     Information for healthcare professionals
+
+       vial). Direct Water for Injection along the walls of the IMDYLLTRA vial and not directly on
+       the lyophilizat.
+
+             •    Do not use IV Solution Stabiliser to reconstitute IMDYLLTRA.
+
+b. Gently swirl contents. Do not shake.
+
+c. Inspect that the solution is clear to slightly opalescent, colourless to slightly yellow. Do not
+       use if solution is cloudy or has particulates.
+
+
+
+Preparation of solution for infusion
+
+Table 13. Preparation Guide for 1-hour infusion
+IMDYLLTRA                   IMDYLLTRA                 Volume of               Volume of                Volume of
+Vial Strength               Dose (mg)                 0.9% NaCl to            Solution                 reconstituted
+(mg)a                                                 withdraw                Stabiliser to            IMDYLLTRA to
+                                                      from IV bag             add to IV bag            add to IV bag
+                                                      (mL)                    (mL)                     (mL)
+            1                         1                        14                      13                   1.1
+            10                       10                        17                      13                   4.2
+a
+    The final concentrations for the different strength vials are NOT the same following reconstitution.
+
+
+
+
+Withdraw 0.9% Sodium Chloride for Injection
+
+       •     Withdraw the required volume from a pre-filled 250 mL 0.9% Sodium Chloride bag.
+             Refer to Table 13. Disregard any overfill in the IV bag.
+
+Add Solution Stabiliser
+
+       •     Transfer 13 mL of IVSS to the IV bag containing 0.9% Sodium Chloride for Injection.
+
+       •     Gently mix the contents of the bag to avoid foaming. Do not shake.
+
+Add reconstituted IMDYLLTRA
+
+       •     Transfer the required volume of reconstituted IMDYLLTRA into the stabilised IV bag
+             containing 0.9% Sodium Chloride for Injection and Solution Stabiliser. Refer to
+             Table 13.
+
+       •     Gently mix the contents of the bag to avoid foaming. Do not shake.
+
+Remove the air from the IV bag.
+
+       •     Remove air from the IV bag using an empty syringe to avoid foaming.
+
+
+
+
+                                                                                                                       29/30
+                                                 Information for healthcare professionals
+
+   •    Prime the IV tubing separately with 0.9% Sodium Chloride for Injection OR final
+        prepared IMDYLLTRA solution for infusion.
+
+
+
+Other considerations
+
+Material Compatibility Information
+
+   •    IV bags composed of ethyl vinyl acetate (EVA), polyolefin, and polyvinyl chloride (PVC)
+        have been shown to be compatible with tarlatamab at the specified administration
+        conditions.
+
+   •    IV line and catheter materials composed of polyolefin, PVC, and polyurethane have
+        been shown to be compatible with tarlatamab at the specified administration conditions.
+
+   •    The use of Closed System Transfer Device (CSTD) is not recommended due to
+        potential risk for medication error. Amgen has not performed compatibility testing of vial
+        adaptor CSTDs with IMDYLLTRA.
+
+
+
+Authorisation number
+
+69132 (Swissmedic)
+
+
+
+Packs
+
+Pack with 1 vial of IMDYLLTRA 1 mg and 2 vials of Stabiliser solution 7 mL [A]
+
+Pack with 1 vial of IMDYLLTRA 10 mg and 2 vials of Stabiliser solution 7 mL [A]
+
+
+
+Marketing authorisation holder
+
+Amgen Switzerland AG, Risch
+
+Domicile: 6343 Rotkreuz
+
+
+
+Date of revision of the text
+
+March 2026
+
+
+
+
+                                                                                             30/30
+
