@@ -9,6 +9,8 @@
  * GET /mariners/manifest.json — free count + official source (no notice body)
  * GET /mariners-d11 — USCG D11 / Southwest Local Notice to Mariners ($0.05)
  * GET /mariners-d11/manifest.json — free count + official source (no notice body)
+ * GET /mariners-d7 — USCG D7 / Southeast Local Notice to Mariners ($0.05)
+ * GET /mariners-d7/manifest.json — free count + official source (no notice body)
  * GET /warning-letters — FDA warning-letter bodies ($0.05)
  * GET /warning-letters/manifest.json — free count + source (no letter body)
  * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
@@ -32,13 +34,18 @@ import {
   loadManifest,
 } from "./import-alerts.js";
 import {
+  D7_SPEC,
   D11_SPEC,
   MARINERS_AMOUNT_ATOMIC,
+  MARINERS_D7_MANIFEST_PATH,
+  MARINERS_D7_PATH,
   MARINERS_D11_MANIFEST_PATH,
   MARINERS_D11_PATH,
   MARINERS_MANIFEST_PATH,
   MARINERS_PATH,
   loadMariners,
+  loadMarinersD7,
+  loadMarinersD7Manifest,
   loadMarinersD11,
   loadMarinersD11Manifest,
   loadMarinersManifest,
@@ -69,7 +76,7 @@ export const CATALOG_PATH = "/catalog.json";
 export const WELL_KNOWN_PATH = "/.well-known/x402";
 export const OPENAPI_PATH = "/openapi.json";
 export const LLMS_PATH = "/llms.txt";
-/** x402scan origin page for the live paid doors. Sixth door is /mariners-d11. */
+/** x402scan origin page for the live paid doors. Seventh door is /mariners-d7. */
 export const X402SCAN_SERVER_URL =
   "https://www.x402scan.com/server/c6f584c5-e494-41d1-aa02-2efb07ac3546";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
@@ -139,7 +146,7 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "warning-letters" | "form-483";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "warning-letters" | "form-483";
 
 /** Always-public SKUs. /form-483 joins only when a real 483 body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
@@ -147,6 +154,7 @@ export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "import-alerts",
   "mariners",
   "mariners-d11",
+  "mariners-d7",
   "warning-letters",
 ];
 
@@ -187,7 +195,7 @@ function paidCountWord(): string {
 function noNextSkuWord(): string {
   const n = publicBazaarSkus().length;
   const next = NEXT_SKU_WORDS[n] ?? `${n + 1}th`;
-  return `/mariners-d11 is a live public SKU on purpose. No ${next} public SKU.`;
+  return `/mariners-d7 is a live public SKU on purpose. No ${next} public SKU.`;
 }
 
 function amountAtomicFor(sku: DoorSku): string {
@@ -195,8 +203,13 @@ function amountAtomicFor(sku: DoorSku): string {
     const raw = env("IMPORT_ALERTS_USDC_ATOMIC");
     return raw.length > 0 ? raw : IMPORT_ALERTS_AMOUNT_ATOMIC;
   }
-  if (sku === "mariners" || sku === "mariners-d11") {
-    const raw = sku === "mariners-d11" ? env("MARINERS_D11_USDC_ATOMIC") : env("MARINERS_USDC_ATOMIC");
+  if (sku === "mariners" || sku === "mariners-d11" || sku === "mariners-d7") {
+    const envName = sku === "mariners-d7"
+      ? "MARINERS_D7_USDC_ATOMIC"
+      : sku === "mariners-d11"
+        ? "MARINERS_D11_USDC_ATOMIC"
+        : "MARINERS_USDC_ATOMIC";
+    const raw = env(envName);
     return raw.length > 0 ? raw : MARINERS_AMOUNT_ATOMIC;
   }
   if (sku === "warning-letters") {
@@ -231,6 +244,11 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
     description:
       "Call GET /mariners-d11 when you need the latest USCG District 11 / Southwest (northern) Local Notice to Mariners as structured JSON from the official weekly PDF. Same NavCEN walker as /mariners. Returns week, section, text, and source URL. Does not invent notices.",
     resourcePath: MARINERS_D11_PATH,
+  },
+  "mariners-d7": {
+    description:
+      "Call GET /mariners-d7 when you need the latest USCG District 7 / Southeast Local Notice to Mariners as structured JSON from the official weekly PDF. Same NavCEN walker as /mariners. Returns week, section, text, and source URL. Does not invent notices.",
+    resourcePath: MARINERS_D7_PATH,
   },
   "warning-letters": {
     description:
@@ -312,6 +330,22 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         waterway: "Berkeley",
         text: "Berkeley Marina Channel Light 2 LLNR 5430 LT EXT FD",
         sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11322026.pdf",
+      },
+    ],
+  },
+  "mariners-d7": {
+    ok: true,
+    product: "uscg-d7-lnm",
+    status: "ok",
+    week: "32-2026",
+    asOf: "2026-08-12",
+    notices: [
+      {
+        week: "32-2026",
+        section: "Federal Discrepancies",
+        waterway: "Altamaha Sound",
+        text: "Altamaha Sound Daybeacon 197 LLNR 36887 STRUCT DEST/TRUB FD",
+        sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm07322026.pdf",
       },
     ],
   },
@@ -1143,6 +1177,7 @@ export function llmsTxt(): string {
     "- GET /import-alerts — $0.05 — FDA Import Alerts / DWPE firm-product snapshot",
     "- GET /mariners — $0.05 — USCG D13 / Northwest Local Notice to Mariners",
     "- GET /mariners-d11 — $0.05 — USCG D11 / Southwest Local Notice to Mariners",
+    "- GET /mariners-d7 — $0.05 — USCG D7 / Southeast Local Notice to Mariners",
     "- GET /warning-letters — $0.05 — FDA warning-letter bodies (firm, date, subject, full letter text)",
   ];
   if (listed483) {
@@ -1156,6 +1191,7 @@ export function llmsTxt(): string {
     "- GET /import-alerts/manifest.json — FDA count + schema (not the firm dump)",
     "- GET /mariners/manifest.json — D13 LNM count + official PDF (not the notice body)",
     "- GET /mariners-d11/manifest.json — D11 LNM count + official PDF (not the notice body)",
+    "- GET /mariners-d7/manifest.json — D7 LNM count + official PDF (not the notice body)",
     "- GET /warning-letters/manifest.json — FDA letter count + firm/date/subject (not the letter body)",
   ];
   if (listed483) {
@@ -1198,7 +1234,7 @@ function discoveryOrigin(req: IncomingMessage, port: number): string {
 }
 
 function paidDiscoveryPaths(): string[] {
-  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, WARNING_LETTERS_PATH];
+  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, WARNING_LETTERS_PATH];
   if (form483IsPublic()) paths.push(FORM_483_PATH);
   return paths;
 }
@@ -1291,18 +1327,20 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const iaAtomic = amountAtomicFor("import-alerts");
   const lnmAtomic = amountAtomicFor("mariners");
   const lnmD11Atomic = amountAtomicFor("mariners-d11");
+  const lnmD7Atomic = amountAtomicFor("mariners-d7");
   const wlAtomic = amountAtomicFor("warning-letters");
   const f483Atomic = amountAtomicFor("form-483");
   const ticksPrice = (Number(ticksAtomic) / 1e6).toFixed(2);
   const iaPrice = (Number(iaAtomic) / 1e6).toFixed(2);
   const lnmPrice = (Number(lnmAtomic) / 1e6).toFixed(2);
   const lnmD11Price = (Number(lnmD11Atomic) / 1e6).toFixed(2);
+  const lnmD7Price = (Number(lnmD7Atomic) / 1e6).toFixed(2);
   const wlPrice = (Number(wlAtomic) / 1e6).toFixed(2);
   const f483Price = (Number(f483Atomic) / 1e6).toFixed(2);
   const listed483 = form483IsPublic();
   const paidList = listed483
-    ? "/ticks ($0.02), /import-alerts ($0.05), /mariners ($0.05), /mariners-d11 ($0.05), /warning-letters ($0.05), /form-483 ($0.05)"
-    : "/ticks ($0.02), /import-alerts ($0.05), /mariners ($0.05), /mariners-d11 ($0.05), /warning-letters ($0.05)";
+    ? "/ticks ($0.02), /import-alerts ($0.05), /mariners ($0.05), /mariners-d11 ($0.05), /mariners-d7 ($0.05), /warning-letters ($0.05), /form-483 ($0.05)"
+    : "/ticks ($0.02), /import-alerts ($0.05), /mariners ($0.05), /mariners-d11 ($0.05), /mariners-d7 ($0.05), /warning-letters ($0.05)";
   return {
     openapi: "3.1.0",
     info: {
@@ -1401,6 +1439,25 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           },
         }),
       },
+      [MARINERS_D7_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getMarinersD7",
+          summary: "USCG D7 / Southeast LNM",
+          description: SKU_COPY["mariners-d7"].description,
+          priceUsdc: lnmD7Price,
+          amountAtomic: lnmD7Atomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["mariners-d7"],
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              week: { type: "string" },
+              notices: { type: "array", items: { type: "object" } },
+            },
+          },
+        }),
+      },
       [WARNING_LETTERS_PATH]: {
         get: paidOpenApiOp({
           operationId: "getWarningLetters",
@@ -1457,6 +1514,9 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       },
       [MARINERS_D11_MANIFEST_PATH]: {
         get: freeOpenApiOp("USCG D11 LNM free manifest", "Count, week, and official PDF URL. Not the notice body."),
+      },
+      [MARINERS_D7_MANIFEST_PATH]: {
+        get: freeOpenApiOp("USCG D7 LNM free manifest", "Count, week, and official PDF URL. Not the notice body."),
       },
       [WARNING_LETTERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
@@ -1614,6 +1674,13 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
           manifest: MARINERS_D11_MANIFEST_PATH,
         },
         {
+          path: MARINERS_D7_PATH,
+          product: D7_SPEC.productId,
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("mariners-d7"),
+          manifest: MARINERS_D7_MANIFEST_PATH,
+        },
+        {
           path: WARNING_LETTERS_PATH,
           product: "fda-warning-letter-bodies",
           priceUsdc: "0.05",
@@ -1671,6 +1738,11 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === MARINERS_D7_MANIFEST_PATH) {
+    sendJson(res, 200, withShopDiscovery(await loadMarinersD7Manifest(), req, port));
+    return;
+  }
+
   if (path === IMPORT_ALERTS_PATH) {
     await servePaid(req, res, port, "import-alerts", () => loadImportAlerts());
     return;
@@ -1683,6 +1755,11 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
 
   if (path === MARINERS_D11_PATH) {
     await servePaid(req, res, port, "mariners-d11", () => loadMarinersD11());
+    return;
+  }
+
+  if (path === MARINERS_D7_PATH) {
+    await servePaid(req, res, port, "mariners-d7", () => loadMarinersD7());
     return;
   }
 
@@ -1711,7 +1788,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
 }
 
 export function bindHost(): string {
@@ -1743,6 +1820,7 @@ if (isMain()) {
     console.error(`${IMPORT_ALERTS_PATH} $${Number(amountAtomicFor("import-alerts")) / 1e6} USDC`);
     console.error(`${MARINERS_PATH} $${Number(amountAtomicFor("mariners")) / 1e6} USDC`);
     console.error(`${MARINERS_D11_PATH} $${Number(amountAtomicFor("mariners-d11")) / 1e6} USDC`);
+    console.error(`${MARINERS_D7_PATH} $${Number(amountAtomicFor("mariners-d7")) / 1e6} USDC`);
     console.error(`${WARNING_LETTERS_PATH} $${Number(amountAtomicFor("warning-letters")) / 1e6} USDC`);
     console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
     console.error(`payTo ${PAY_TO} USDC ${USDC_BASE} on Base`);
