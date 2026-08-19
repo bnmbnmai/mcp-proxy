@@ -458,17 +458,17 @@ function htmlDir(): string {
 }
 
 function firstSliceLimit(): number {
-  const raw = env("UNTITLED_LETTERS_LIMIT", "8");
+  const raw = env("UNTITLED_LETTERS_LIMIT", "30");
   if (raw === "0") return 0;
   const n = Number(raw);
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 8;
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 30;
 }
 
 function maxFetchLimit(): number {
-  const raw = env("UNTITLED_LETTERS_MAX_FETCH", "12");
+  const raw = env("UNTITLED_LETTERS_MAX_FETCH", "40");
   if (raw === "0") return 0;
   const n = Number(raw);
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 12;
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 40;
 }
 
 function readNamedFile(dir: string, names: string[]): string | null {
