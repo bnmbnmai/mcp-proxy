@@ -1,0 +1,164 @@
+      DEPARTMENT OF HEALTH & HUMAN SERVICES                                     Public Health Service
+
+
+
+                                                                                Food and Drug Administration
+                                                                                Silver Spring, MD 20993
+
+
+March 9, 2026
+
+Iovance Biotherapeutics
+Attention: Justin Custer
+Senior Director Regulatory Affairs
+825 Industrial Road, Suite 100
+San Carlos, CA 94070
+
+RE:       AMTAGVI (lifileucel)
+          BLA 125773/74, 75, 76, 83
+
+Dear Mr. Custer:
+
+The Advertising and Promotional Labeling Branch (APLB) of the U.S. Food and Drug
+Administration (FDA) has reviewed various promotional materials for AMTAGVI® (lifileucel)
+suspension, for intravenous infusion, from Iovance Biotherapeutics (Iovance) that include
+exploratory analyses, such as Overall Survival (OS) data, in conjunction with representations
+or suggestions that AMTAGVI is effective for this type of clinical benefit. The OS data,
+together with such representations or suggestions, are currently presented on the AMTAGVI
+Healthcare Provider website 1 and in the following promotional pieces:
+
+      •   Sales Aid (PRC-US-00171) - Updated Core Sales Aid
+      •   Exhibit (PRC-US-00225) - Updated Tabletop Panel
+      •   Slides (PRC-US-00245) - Updated Speaker Slide Deck
+      •   Slides (PRC-US-00377) - Updated Clinical Overview Slides
+      •   Sales Aid (PRC-US-00378) - Updated Community CSA
+      •   Exhibit (PRC-US-00461) - ASCO Booth Panels
+      •   Exhibit (PRC-US-00395) - CVA Touchscreen
+      •   www-website (PRC-US-00469) - Updated HCP website
+      •   Promotional Labeling (PRC-US-00220) - AMTAGVI fact sheet
+      •   Slides (PRC-US-00478) - AMTAGVI intro deck
+      •   www-ecomm (PR-US-00483) - AMTAGVI referral email
+      •   www-ecomm (PRC-US-00484) - AMTAGVI data email
+
+The promotional materials make false or misleading claims and representations about the
+benefits of AMTAGVI. Thus, the promotional materials misbrand AMTAGVI within the
+meaning of the Federal Food, Drug, and Cosmetic Act (FD&C Act) and make its distribution
+violative. 21 U.S.C. 321(n); 331(a); 352(a), (n). See 21 CFR 202.1(e)(5). These violations are
+
+1 AMTAGVI Healthcare Provider website https://www.amtagvi.com/hcp/treatment-outcomes/efficacy/ (last
+
+accessed March 2026).
+Custer                                                                                Page 2
+Iovance Biotherapeutics
+AMTAGVI (lifileucel) – BLA 125773/74, 75, 76, 83
+
+particularly concerning from a public health perspective because the promotional materials
+make misleading representations about AMTAGVI being more effective or having greater
+clinical benefit than has been demonstrated. This may cause doctors and patients to
+inaccurately weigh the risks versus benefits of treatment with AMTAGVI, which can be fatal
+or life-threatening.
+
+Background
+
+According to the FDA-approved prescribing information (PI) for AMTAGVI:
+
+       AMTAGVI is a tumor-derived autologous T cell immunotherapy indicated for
+       the treatment of adult patients with unresectable or metastatic melanoma
+       previously treated with a PD-1 blocking antibody, and if BRAF V600
+       mutation positive, a BRAF inhibitor with or without a MEK inhibitor.
+
+This indication was approved under accelerated approval based on objective response
+rate (ORR), and continued approval may be contingent upon confirmatory trials for this
+endpoint and demonstration of clinical benefit. This pathway can allow for earlier approval
+of drugs intended to treat serious conditions and fill an unmet medical need. Accelerated
+approval is based on an effect on a surrogate or intermediate clinical endpoint that is
+thought to be reasonably likely to predict clinical benefit, rather than on a direct
+measurement of clinical benefit. FDA has required sponsors of drugs approved under the
+accelerated approval pathway, including AMTAGVI, to conduct a confirmatory trial to
+verify and describe the clinical benefit of the drug. 2
+
+AMTAGVI has a BOXED WARNING regarding treatment-related mortality, prolonged
+severe cytopenia, severe infection, and cardiopulmonary and renal impairment. Its
+WARNINGS AND PRECAUTIONS also include life-threatening internal organ
+hemorrhage, acute respiratory failure, acute renal failure, and hypersensitivity reactions.
+
+False or Misleading Benefit Presentation
+
+Prescription drug advertisements and labeling (promotional communications) misbrand a
+drug if they are false or misleading with respect to efficacy. The determination of whether
+a promotional communication is misleading includes, among other things, not only
+representations made or suggested in the promotional communication, but also the
+extent to which the promotional communication fails to reveal facts material in light of the
+representations made or with respect to consequences that may result from the use of
+the drug as recommended or suggested in the promotional communication. See section
+201(n) of the FD&C Act, 21 U.S.C. 321(n).
+
+You include representations in AMTAGVI’s promotional materials suggesting that it is
+effective in providing OS benefits. For example, AMTAGVI’s promotional materials
+include the headline, “19.7% of patients were alive at 5-year follow-up”, and a graph
+
+2 We note that the confirmatory trial for AMTAGVI, a Phase 3 Study to Investigate Lifileucel Regimen Plus
+
+Pembrolizumab Compared with Pembrolizumab Alone in Participants with Untreated Advanced Melanoma is
+currently ongoing; however, this study has not been completed (See:
+https://clinicaltrials.gov/study/NCT05727904?term=NCT05727904&rank=1)
+Custer                                                                        Page 3
+Iovance Biotherapeutics
+AMTAGVI (lifileucel) – BLA 125773/74, 75, 76, 83
+
+illustrating the duration of response extended to 60 months. Your presentations include
+data for a time-to-event endpoint from this single-arm study, which has statistical
+limitations that render it uninterpretable. AMTAGVI’s study was designed as a
+multicenter, multicohort, open-label single-arm study (i.e., with no comparator arm).
+Efficacy for AMTAGVI was established based on ORR and duration of response. In the
+absence of an appropriate comparator for AMTAGVI, it is not possible to determine if the
+observed effect you represented is attributable to AMTAGVI or to other factor(s), such as
+the natural history of the disease. Consequently, your promotional advertising and
+labeling that represents or suggests AMTAGVI is effective in providing OS is misleading.
+We acknowledge that you have the following statement (in smaller less prominent font)
+presented next to the OS presentations “Overall survival in this single-arm trial is
+descriptive and conclusions cannot be drawn.” However, this statement does not
+sufficiently mitigate the overall misleading message about OS for AMTAGVI.
+
+Conclusion and Requested Action
+
+For the reasons discussed above, your promotional materials misbrand AMTAGVI within
+the meaning of the FD&C Act and make its distribution violative. See 21 U.S.C. 321(n),
+331(a), and 352(a), (n); 21 CFR 202.1(e)(5).
+
+This letter notifies you of our concerns and provides you with an opportunity to address them.
+APLB requests that you cease any violations of the FD&C Act. Within 15 working days of
+receipt, please submit a written response to this letter addressing the concerns described,
+listing all advertising and promotional labeling materials (including the
+dissemination/publication date and Material ID Code) for AMTAGVI that contain the same or
+similar representations or suggestions, and explaining your plans for discontinuation of such.
+
+If you believe that your product is not in violation of the FD&C Act, please include in your
+submission to us your reasoning and any supporting information for our consideration
+within 15 working days from the date of receipt of this letter.
+
+The concerns discussed in this letter do not constitute an exhaustive list of potential
+violations. It is your responsibility to ensure compliance with all applicable requirements of
+the FD&C Act and its implementing regulations.
+
+Please submit your response to your eCTD under the heading 1.15.1.6 and email a copy of
+your response to CBERAPLB@fda.hhs.gov. We remind you that only written communications
+are considered official responses. All correspondence should include a subject line that
+clearly identifies the submission as a Response to Untitled Letter and refer to the BLA/STN
+numbers.
+Custer                                                                         Page 4
+Iovance Biotherapeutics
+AMTAGVI (lifileucel) – BLA 125773/74, 75, 76, 83
+
+Questions related to the submission of your response letter should be emailed to
+CBERAPLB@fda.hhs.gov.
+
+
+                                               Sincerely,
+
+
+                                               Melissa Mendoza, J.D.
+                                               Office Director
+                                               Office of Compliance and Biologics Quality
+                                               Center for Biologics Evaluation and Research
+
