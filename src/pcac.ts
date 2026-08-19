@@ -255,7 +255,7 @@ export function isCombinedSponsorPack(text: string): boolean {
 export function isRealPcacBody(text: string): boolean {
   if (isCombinedSponsorPack(text)) return false;
   const compact = text.replace(/\s+/g, " ").trim();
-  if (compact.length < 800) return false;
+  if (compact.length < 400) return false;
   if (/Federal Register Volume/i.test(text) && /Notice of Meeting/i.test(text) && compact.length < 4000) {
     return false;
   }

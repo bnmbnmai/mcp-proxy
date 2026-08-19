@@ -84,7 +84,7 @@ async function main(): Promise<void> {
     mediaId: "193343",
   });
   assert.ok(isRealPcacBody(bpcText.body));
-  assert.ok(/we propose not adding BPC-157/i.test(bpcText.body));
+  assert.ok(/we\s+propose not adding BPC-157/i.test(bpcText.body));
 
   const kpvText = parsePcacText(readFx("193346.txt"), {
     sourceUrl: "https://www.fda.gov/media/193346/download",
@@ -92,7 +92,7 @@ async function main(): Promise<void> {
     mediaId: "193346",
   });
   assert.ok(isRealPcacBody(kpvText.body));
-  assert.ok(/we propose not adding KPV/i.test(kpvText.body));
+  assert.ok(/we\s+propose not adding KPV/i.test(kpvText.body));
 
   const fake = parsePcacText(readFx("no-evaluation.txt"), {
     sourceUrl: FR_NOTICE_URL,
