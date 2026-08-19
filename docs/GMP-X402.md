@@ -55,7 +55,7 @@ Do not set `X402_SKIP_SETTLE` on the standing public unit. Family / basic-auth s
 
 Cursor cloud VMs gitignore `data/gmp/` and cannot restart `idaho-ticks-x402.service`. Live `cardCount` does not move until the media-box worker runs collect and restarts the door.
 
-Live after apollo collect + `idaho-ticks-x402.service` restart (2026-08-19): **cardCount 3300**, asOf **2026-07-30**, fetchedAt **2026-08-19T22:12:59.863Z**. Price still $0.05. No new SKU.
+Live after apollo collect + `idaho-ticks-x402.service` restart (2026-08-19): **cardCount 3500**, asOf **2026-07-30**, fetchedAt **2026-08-19T22:21:16.509Z**. Price still $0.05. No new SKU.
 
 ```bash
 # on the media-box / apollo host
