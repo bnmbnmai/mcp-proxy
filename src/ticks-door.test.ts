@@ -15,6 +15,8 @@ import {
   MARINERS_AMOUNT_ATOMIC,
   MARINERS_D7_MANIFEST_PATH,
   MARINERS_D7_PATH,
+  MARINERS_D8_MANIFEST_PATH,
+  MARINERS_D8_PATH,
   MARINERS_D11_MANIFEST_PATH,
   MARINERS_D11_PATH,
   MARINERS_MANIFEST_PATH,
@@ -148,19 +150,20 @@ async function main(): Promise<void> {
     assert.equal(wk.version, 1);
     assert.deepEqual(wk.ownershipProofs, [PAY_TO]);
     assert.ok((wk.instructions ?? "").includes(X402SCAN_SERVER_URL));
-    assert.equal(wk.resources.length, 6, "well-known lists the six always-public doors");
+    assert.equal(wk.resources.length, 7, "well-known lists the seven always-public doors");
     assert.ok(wk.resources.some((r) => r.endsWith(TICKS_PATH) && r.startsWith("http")));
     assert.ok(wk.resources.some((r) => r.endsWith(IMPORT_ALERTS_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D11_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D7_PATH)));
+    assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D8_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(WARNING_LETTERS_PATH)));
     assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)), "do not list /form-483 without a cached body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_PATH)), "do not list /gmp without a cached observation body");
     assert.ok(wk.resources.every((r) => r.startsWith("http")), "well-known resources must be absolute URLs");
     assert.ok(wk.openapi?.endsWith(OPENAPI_PATH));
     assert.ok(wk.llmsTxt?.endsWith(LLMS_PATH));
-    assert.ok((wk.instructions ?? "").includes("six paid"));
+    assert.ok((wk.instructions ?? "").includes("seven paid"));
     assert.ok(!wk.resources.some((r) => r.includes("/gain")));
     assert.equal(cdpEnvStatus(), "CDP env not set");
 
@@ -192,7 +195,7 @@ async function main(): Promise<void> {
     assert.deepEqual(spec["x-discovery"]?.ownershipProofs, [PAY_TO]);
     assert.deepEqual(spec["x-agentcash-provenance"]?.ownershipProofs, [PAY_TO]);
     assert.ok(spec["x-agentcash-guidance"]?.llmsTxtUrl?.endsWith(LLMS_PATH));
-    for (const paid of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, WARNING_LETTERS_PATH]) {
+    for (const paid of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH]) {
       const op = spec.paths[paid]?.get;
       assert.ok(op?.["x-payment-info"], `${paid} must declare x-payment-info`);
       assert.equal(op?.["x-auth"]?.mode, "x402");
@@ -206,6 +209,7 @@ async function main(): Promise<void> {
     assert.equal(spec.paths[MARINERS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[MARINERS_D11_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[MARINERS_D7_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
+    assert.equal(spec.paths[MARINERS_D8_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[WARNING_LETTERS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[CATALOG_PATH]?.get?.["x-auth"]?.mode, "none");
     assert.deepEqual(spec.paths[CATALOG_PATH]?.get?.security, []);
@@ -220,8 +224,8 @@ async function main(): Promise<void> {
     assert.equal(spec.paths["/gain"], undefined);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
-      6,
-      "OpenAPI lists the six always-public paid paths",
+      7,
+      "OpenAPI lists the seven always-public paid paths",
     );
 
     const llms = await fetch(`${base}${LLMS_PATH}`);
@@ -232,6 +236,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /mariners"));
     assert.ok(llmsBody.includes("GET /mariners-d11"));
     assert.ok(llmsBody.includes("GET /mariners-d7"));
+    assert.ok(llmsBody.includes("GET /mariners-d8"));
     assert.ok(llmsBody.includes("GET /warning-letters"));
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
@@ -252,6 +257,7 @@ async function main(): Promise<void> {
       MARINERS_PATH,
       MARINERS_D11_PATH,
       MARINERS_D7_PATH,
+      MARINERS_D8_PATH,
       WARNING_LETTERS_PATH,
     ]);
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
@@ -698,8 +704,9 @@ async function main(): Promise<void> {
       assert.ok(shop.products.some((p) => p.path === MARINERS_PATH && p.priceUsdc === "0.05"));
       assert.ok(shop.products.some((p) => p.path === MARINERS_D11_PATH && p.priceUsdc === "0.05"));
       assert.ok(shop.products.some((p) => p.path === MARINERS_D7_PATH && p.priceUsdc === "0.05"));
+      assert.ok(shop.products.some((p) => p.path === MARINERS_D8_PATH && p.priceUsdc === "0.05"));
       assert.ok(shop.products.some((p) => p.path === WARNING_LETTERS_PATH && p.priceUsdc === "0.05"));
-      assert.equal(shop.products.length, 6);
+      assert.equal(shop.products.length, 7);
       assert.equal(shop.openapi, OPENAPI_PATH);
       assert.equal(shop.wellKnown, WELL_KNOWN_PATH);
 
@@ -911,6 +918,104 @@ async function main(): Promise<void> {
     },
   );
 
+  const marinersD8Dir = mkdtempSync(join(tmpdir(), "mariners-d8-"));
+  writeFileSync(
+    join(marinersD8Dir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "uscg-d8-lnm",
+      status: "ok",
+      reason: null,
+      fetchedAt: FRESH_FETCHED_AT,
+      asOf: "2026-08-19",
+      week: "33-2026",
+      year: 2026,
+      edition: "33-2026",
+      district: "8",
+      districtName: "Gulf",
+      sources: {
+        listing: "https://www.navcen.uscg.gov/local-notices-to-mariners?district=8+0&subdistrict=g",
+        pdfPattern: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm08{WW}g{YYYY}.pdf",
+        pdfUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm0833g2026.pdf",
+      },
+      editions: [
+        {
+          week: 33,
+          year: 2026,
+          edition: "33-2026",
+          href: "/sites/default/files/pdf/lnms/lnm0833g2026.pdf",
+          sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm0833g2026.pdf",
+        },
+      ],
+      notices: [
+        {
+          week: "33-2026",
+          section: "Federal Discrepancies",
+          waterway: "Acadiana Navigation Channel",
+          text: "Acadiana Navigation Channel Light 6 LLNR 20305 STRUCT DEST/TRLB FD",
+          sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm0833g2026.pdf",
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      MARINERS_D8_DIR: marinersD8Dir,
+      MARINERS_D8_TTL_MS: String(24 * 3600 * 1000),
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-lnm-d8-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${MARINERS_D8_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /mariners-d8 must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; extra?: { name?: string } }[];
+      };
+      assert.equal(body402.resource, MARINERS_D8_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, MARINERS_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
+
+      const d13Unpaid = await fetch(`${base}${MARINERS_PATH}`);
+      assert.equal(d13Unpaid.status, 402, "D8 door must not replace GET /mariners");
+      const d11Unpaid = await fetch(`${base}${MARINERS_D11_PATH}`);
+      assert.equal(d11Unpaid.status, 402, "D8 door must not replace GET /mariners-d11");
+      const d7Unpaid = await fetch(`${base}${MARINERS_D7_PATH}`);
+      assert.equal(d7Unpaid.status, 402, "D8 door must not replace GET /mariners-d7");
+
+      const manifest = await fetch(`${base}${MARINERS_D8_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "unpaid D8 mariners manifest is free");
+      const man = (await manifest.json()) as {
+        free: boolean;
+        product?: string;
+        noticeCount?: number;
+        week?: string;
+        asOf?: string;
+        district?: string;
+      };
+      assert.equal(man.free, true);
+      assert.equal(man.product, "uscg-d8-lnm");
+      assert.equal(man.district, "8");
+      assert.equal(man.noticeCount, 1);
+      assert.equal(man.week, "33-2026");
+      assert.equal(man.asOf, "2026-08-19");
+      assert.ok(!JSON.stringify(man).includes("Acadiana Navigation Channel Light 6"));
+
+      const paid = await fetch(`${base}${MARINERS_D8_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        district?: string;
+        notices: { text: string; section: string }[];
+      };
+      assert.equal(paidBody.product, "uscg-d8-lnm");
+      assert.equal(paidBody.district, "8");
+      assert.equal(paidBody.notices[0]?.section, "Federal Discrepancies");
+      assert.ok(paidBody.notices[0]?.text.includes("Acadiana Navigation Channel Light 6"));
+    },
+  );
+
   const wlDir = mkdtempSync(join(tmpdir(), "warning-letters-"));
   writeFileSync(
     join(wlDir, "snapshot.json"),
@@ -970,7 +1075,8 @@ async function main(): Promise<void> {
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === WARNING_LETTERS_PATH), true);
-      assert.equal(shop.products.length, 6);
+      assert.equal(shop.products.some((p) => p.path === MARINERS_D8_PATH), true);
+      assert.equal(shop.products.length, 7);
 
       const manifest = await fetch(`${base}${WARNING_LETTERS_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "warning-letters free manifest is free");
@@ -1073,17 +1179,18 @@ async function main(): Promise<void> {
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === FORM_483_PATH), true);
-      assert.equal(shop.products.length, 7);
+      assert.equal(shop.products.length, 8);
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
         resources: string[];
         instructions?: string;
       };
-      assert.equal(wk.resources.length, 7);
+      assert.equal(wk.resources.length, 8);
       assert.ok(wk.resources.some((r) => r.endsWith(FORM_483_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D11_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D7_PATH)));
-      assert.ok((wk.instructions ?? "").includes("seven paid"));
+      assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D8_PATH)));
+      assert.ok((wk.instructions ?? "").includes("eight paid"));
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
         paths: Record<string, { get?: { "x-payment-info"?: { price?: { amount?: string } } } }>;
@@ -1092,7 +1199,7 @@ async function main(): Promise<void> {
       assert.ok(spec.paths[FORM_483_MANIFEST_PATH]?.get);
       assert.equal(
         Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
-        7,
+        8,
       );
 
       const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();
@@ -1201,15 +1308,16 @@ async function main(): Promise<void> {
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === GMP_PATH), true);
-      assert.equal(shop.products.length, 8, "eighth product is /gmp when a real observation body is cached");
+      assert.equal(shop.products.length, 9, "ninth product is /gmp when a real observation body is cached");
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
         resources: string[];
         instructions?: string;
       };
-      assert.equal(wk.resources.length, 8);
+      assert.equal(wk.resources.length, 9);
       assert.ok(wk.resources.some((r) => r.endsWith(GMP_PATH)));
-      assert.ok((wk.instructions ?? "").includes("eight paid"));
+      assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D8_PATH)));
+      assert.ok((wk.instructions ?? "").includes("nine paid"));
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
         paths: Record<string, { get?: { "x-payment-info"?: { price?: { amount?: string } } } }>;
@@ -1218,7 +1326,7 @@ async function main(): Promise<void> {
       assert.ok(spec.paths[GMP_MANIFEST_PATH]?.get);
       assert.equal(
         Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
-        8,
+        9,
       );
 
       const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();
@@ -1276,7 +1384,7 @@ async function main(): Promise<void> {
     },
     async (base) => {
       assert.equal(cdpEnvStatus(), "CDP env not set");
-      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, WARNING_LETTERS_PATH, FORM_483_PATH, GMP_PATH]) {
+      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, FORM_483_PATH, GMP_PATH]) {
         const unpaid = await fetch(`${base}${path}`);
         assert.equal(unpaid.status, 402, `unpaid ${path} must stay 402`);
         const present = await fetch(`${base}${path}`, { headers: { "X-PAYMENT": "test" } });
@@ -1285,10 +1393,11 @@ async function main(): Promise<void> {
         assert.notEqual(body.error, "CDP env not set");
       }
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
-      assert.equal(wk.resources.length, 6);
+      assert.equal(wk.resources.length, 7);
       assert.ok(wk.resources.some((r) => r.includes(WARNING_LETTERS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D11_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D7_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(MARINERS_D8_PATH)));
       assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)));
       assert.ok(!wk.resources.some((r) => r.includes(GMP_PATH)));
     },
@@ -1296,7 +1405,7 @@ async function main(): Promise<void> {
 
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "warning-letters"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");

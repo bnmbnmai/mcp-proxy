@@ -32,7 +32,7 @@ Paid body fields: `week`, `section`, `waterway`, `text`, `sourceUrl`. Text is co
 
 Do not set `X402_SKIP_SETTLE` on the standing public unit.
 
-D11 / Southwest northern is a separate SKU at `/mariners-d11`. D7 / Southeast is `/mariners-d7`. Same walker. See `docs/MARINERS-D11-X402.md` and `docs/MARINERS-D7-X402.md`.
+D11 / Southwest northern is a separate SKU at `/mariners-d11`. D7 / Southeast is `/mariners-d7`. D8 / Gulf is `/mariners-d8`. Same walker. See `docs/MARINERS-D11-X402.md`, `docs/MARINERS-D7-X402.md`, and `docs/MARINERS-D8-X402.md`.
 
 ```bash
 cd ~/projects/mcp-proxy

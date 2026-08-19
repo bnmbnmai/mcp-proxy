@@ -1,6 +1,6 @@
 # Live shop — listed where / still missing
 
-Verified 2026-08-19 from apollo. No self-settle. No family hosts. Eighth door is `/gmp` on purpose. Free manifests are not the paid body.
+Verified 2026-08-19 from apollo. No self-settle. No family hosts. Ninth door is `/mariners-d8` on purpose. Free manifests are not the paid body.
 
 Live paid doors (all return HTTP 402 unpaid, official bodies when paid):
 
@@ -11,6 +11,7 @@ Live paid doors (all return HTTP 402 unpaid, official bodies when paid):
 | `GET https://ticks.bnm.farm/mariners` | $0.05 | USCG D13 LNM |
 | `GET https://ticks.bnm.farm/mariners-d11` | $0.05 | USCG D11 / Southwest LNM |
 | `GET https://ticks.bnm.farm/mariners-d7` | $0.05 | USCG D7 / Southeast LNM |
+| `GET https://ticks.bnm.farm/mariners-d8` | $0.05 | USCG D8 / Gulf LNM |
 | `GET https://ticks.bnm.farm/warning-letters` | $0.05 | FDA warning-letter HTML |
 | `GET https://ticks.bnm.farm/form-483` | $0.05 | OII FOIA 483 PDFs |
 | `GET https://ticks.bnm.farm/gmp` | $0.05 | Health Canada Drug GMP report-card observation text + C.02 cites |
@@ -21,11 +22,11 @@ CDP `POST /platform/v2/x402/validate` for each URL: `valid: true`, `simulation.o
 
 | Catalog | URL | Status |
 |---|---|---|
-| Shop well-known | https://ticks.bnm.farm/.well-known/x402 | Eight absolute paid URLs |
-| OpenAPI | https://ticks.bnm.farm/openapi.json | Eight paid paths + `x-payment-info` |
-| llms.txt | https://ticks.bnm.farm/llms.txt | Eight paid GETs; free manifests called out as not the body |
-| Shop JSON | https://ticks.bnm.farm/ | Eight products |
-| x402scan origin | https://www.x402scan.com/server/c6f584c5-e494-41d1-aa02-2efb07ac3546 | Registered earlier: `/ticks`, `/import-alerts`, `/mariners`, `/warning-letters`, `/form-483`. `/mariners-d11` and `/mariners-d7` are live on the shop well-known. |
+| Shop well-known | https://ticks.bnm.farm/.well-known/x402 | Nine absolute paid URLs |
+| OpenAPI | https://ticks.bnm.farm/openapi.json | Nine paid paths + `x-payment-info` |
+| llms.txt | https://ticks.bnm.farm/llms.txt | Nine paid GETs; free manifests called out as not the body |
+| Shop JSON | https://ticks.bnm.farm/ | Nine products |
+| x402scan origin | https://www.x402scan.com/server/c6f584c5-e494-41d1-aa02-2efb07ac3546 | Registered earlier: `/ticks`, `/import-alerts`, `/mariners`, `/warning-letters`, `/form-483`. `/mariners-d11`, `/mariners-d7`, and `/mariners-d8` are live on the shop well-known. |
 | x402scan register | https://www.x402scan.com/resources/register | Public add form (REST register is SIWX-gated) |
 | CDP validate | `POST https://api.cdp.coinbase.com/platform/v2/x402/validate` | All five accepted |
 
