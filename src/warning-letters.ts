@@ -16,11 +16,23 @@ export const PRODUCT_NAME = "FDA warning-letter bodies";
 
 export const LISTING_URL =
   "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/warning-letters";
+export const LISTING_AJAX_URL = "https://www.fda.gov/datatables/views/ajax";
+export const LISTING_VIEW_NAME = "warning_letter_solr_index";
+export const LISTING_VIEW_DISPLAY = "warning_letter_solr_block";
+export const LISTING_VIEW_PATH =
+  "/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/warning-letters";
+export const LISTING_VIEW_BASE_PATH =
+  "inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/warning-letters/datatables-data";
 export const LETTER_BASE =
   "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/";
 export const LETTER_PATH_RE =
   /\/inspections-compliance-enforcement-and-criminal-investigations\/warning-letters\/([a-z0-9-]+-\d{6}-\d{8})/i;
-export const DEFAULT_FIRST_SLICE = 3;
+/** Additional real letter bodies this run. Cached IDs do not count. `0` = keep walking. */
+export const DEFAULT_FIRST_SLICE = 50;
+/** Max official letter-page fetches per collect. `0` = no cap. */
+export const DEFAULT_MAX_FETCH = 200;
+/** Official DataTables page size (listing `lengthMenu` allows 100). */
+export const DEFAULT_PAGE_SIZE = 100;
 
 export const LETTER_FIELDS = [
   "id",
@@ -58,11 +70,24 @@ export type WarningLettersSnapshot = {
   reason: string | null;
   fetchedAt: string;
   asOf: string | null;
+  listedCount?: number;
+  fetchedPages?: number;
+  skippedNoBody?: number;
+  reused?: number;
+  addedThisRun?: number;
   sources: {
     listing: string;
+    listingAjax?: string;
     letterBase: string;
   };
   letters: WarningLetter[];
+};
+
+export type DatatablesPage = {
+  draw?: number;
+  recordsTotal?: number;
+  recordsFiltered?: number;
+  data?: unknown[];
 };
 
 const HTTP_UA = "bnm-data-shop/1.0 (FDA warning-letter public HTML; +https://www.fda.gov/)";
@@ -167,6 +192,26 @@ export function parseListingHtml(html: string): WarningLetterListing[] {
   return found;
 }
 
+/** Official listing DataTables `data` rows are HTML cells. Reuses parseListingHtml. */
+export function parseListingDatatables(raw: unknown): WarningLetterListing[] {
+  if (!raw || typeof raw !== "object") return [];
+  const data = (raw as DatatablesPage).data;
+  if (!Array.isArray(data)) return [];
+  const rows = data.map((row) => {
+    if (!Array.isArray(row)) return "";
+    const cells = row.map((cell) => `<td>${String(cell ?? "")}</td>`).join("");
+    return `<tr>${cells}</tr>`;
+  });
+  return parseListingHtml(`<table>${rows.join("")}</table>`);
+}
+
+export function viewDomIdFromListingHtml(html: string): string | null {
+  const js = html.match(/js-view-dom-id-([a-f0-9]{16,})/i);
+  if (js) return js[1];
+  const json = html.match(/"view_dom_id"\s*:\s*"([a-f0-9]+)"/i);
+  return json ? json[1] : null;
+}
+
 function metaContent(html: string, name: string): string | null {
   const re = new RegExp(`<meta[^>]+name="${name}"[^>]+content="([^"]*)"`, "i");
   const m = html.match(re) || html.match(new RegExp(`<meta[^>]+content="([^"]*)"[^>]+name="${name}"`, "i"));
@@ -240,7 +285,7 @@ export function emptySnapshot(reason: string): WarningLettersSnapshot {
     reason,
     fetchedAt: new Date().toISOString(),
     asOf: null,
-    sources: { listing: LISTING_URL, letterBase: LETTER_BASE },
+    sources: { listing: LISTING_URL, listingAjax: LISTING_AJAX_URL, letterBase: LETTER_BASE },
     letters: [],
   };
 }
@@ -262,7 +307,7 @@ export function assembleSnapshot(
     reason: withBody.length > 0 ? null : "Official pages had no WARNING LETTER body block.",
     fetchedAt,
     asOf,
-    sources: { listing: LISTING_URL, letterBase: LETTER_BASE },
+    sources: { listing: LISTING_URL, listingAjax: LISTING_AJAX_URL, letterBase: LETTER_BASE },
     letters,
   };
 }
@@ -295,8 +340,22 @@ function htmlDir(): string {
 }
 
 function firstSliceLimit(): number {
-  const raw = Number(env("WARNING_LETTERS_LIMIT", String(DEFAULT_FIRST_SLICE)));
-  return Number.isFinite(raw) && raw > 0 ? Math.floor(raw) : DEFAULT_FIRST_SLICE;
+  const raw = env("WARNING_LETTERS_LIMIT", String(DEFAULT_FIRST_SLICE));
+  if (raw === "0") return 0;
+  const n = Number(raw);
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : DEFAULT_FIRST_SLICE;
+}
+
+function maxFetchLimit(): number {
+  const raw = env("WARNING_LETTERS_MAX_FETCH", String(DEFAULT_MAX_FETCH));
+  if (raw === "0") return 0;
+  const n = Number(raw);
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : DEFAULT_MAX_FETCH;
+}
+
+function pageSizeLimit(): number {
+  const raw = Number(env("WARNING_LETTERS_PAGE_SIZE", String(DEFAULT_PAGE_SIZE)));
+  return Number.isFinite(raw) && raw > 0 ? Math.min(100, Math.floor(raw)) : DEFAULT_PAGE_SIZE;
 }
 
 function readHtmlDirFile(dir: string, names: string[]): string | null {
@@ -316,62 +375,203 @@ export async function fetchFdaHtml(url: string): Promise<string> {
   return await res.text();
 }
 
+export async function fetchFdaJson(url: string): Promise<unknown> {
+  const res = await fetch(url, {
+    headers: { "User-Agent": HTTP_UA, Accept: "application/json" },
+  });
+  if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
+  return await res.json();
+}
+
 function pause(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
+}
+
+function listingAjaxUrl(start: number, length: number, viewDomId: string): string {
+  const url = new URL(LISTING_AJAX_URL);
+  url.searchParams.set("_drupal_ajax", "1");
+  url.searchParams.set("_wrapper_format", "drupal_ajax");
+  url.searchParams.set("pager_element", "0");
+  url.searchParams.set("view_args", "");
+  url.searchParams.set("view_base_path", LISTING_VIEW_BASE_PATH);
+  url.searchParams.set("view_display_id", LISTING_VIEW_DISPLAY);
+  url.searchParams.set("view_dom_id", viewDomId);
+  url.searchParams.set("view_name", LISTING_VIEW_NAME);
+  url.searchParams.set("view_path", LISTING_VIEW_PATH);
+  url.searchParams.set("draw", "1");
+  url.searchParams.set("start", String(start));
+  url.searchParams.set("length", String(length));
+  return url.toString();
+}
+
+function readListingAjaxFile(dir: string): unknown | null {
+  const text = readHtmlDirFile(dir, ["listing-ajax.json", "listing.json"]);
+  if (!text) return null;
+  try {
+    return JSON.parse(text);
+  } catch {
+    return null;
+  }
+}
+
+export async function loadOfficialListings(
+  dir: string,
+  maxRows = 0,
+): Promise<{
+  listed: WarningLetterListing[];
+  listedCount: number;
+  fetchedPages: number;
+}> {
+  if (dir) {
+    const ajax = readListingAjaxFile(dir);
+    if (ajax) {
+      const listed = parseListingDatatables(ajax);
+      if (listed.length > 0) return { listed, listedCount: listed.length, fetchedPages: 0 };
+    }
+    const html = readHtmlDirFile(dir, ["listing.html", "listing-excerpt.html"]);
+    const listed = html ? parseListingHtml(html) : [];
+    return { listed, listedCount: listed.length, fetchedPages: 0 };
+  }
+  const listingHtml = await fetchFdaHtml(LISTING_URL);
+  const viewDomId = viewDomIdFromListingHtml(listingHtml);
+  const pageSize = pageSizeLimit();
+  if (viewDomId) {
+    try {
+      const listed: WarningLetterListing[] = [];
+      const seen = new Set<string>();
+      let fetchedPages = 0;
+      let total = 0;
+      for (let start = 0; start < 20000; start += pageSize) {
+        if (total > 0 && start >= total) break;
+        if (maxRows > 0 && listed.length >= maxRows) break;
+        const page = (await fetchFdaJson(listingAjaxUrl(start, pageSize, viewDomId))) as DatatablesPage;
+        fetchedPages += 1;
+        total = Number(page.recordsTotal) || total;
+        const rows = parseListingDatatables(page);
+        if (rows.length === 0) break;
+        for (const row of rows) {
+          if (seen.has(row.id)) continue;
+          seen.add(row.id);
+          listed.push(row);
+        }
+        if (rows.length < pageSize) break;
+        await pause(250);
+      }
+      if (listed.length > 0) return { listed, listedCount: total || listed.length, fetchedPages };
+    } catch {
+      /* official AJAX missed; first HTML page still has letter links */
+    }
+  }
+  const listed = parseListingHtml(listingHtml);
+  return { listed, listedCount: listed.length, fetchedPages: 0 };
+}
+
+function priorBodies(): Map<string, WarningLetter> {
+  const prior = new Map<string, WarningLetter>();
+  for (const letter of readSnapshot()?.letters ?? []) {
+    if (letter.body.length > 0) prior.set(letter.id, letter);
+  }
+  return prior;
+}
+
+function keepPriorSnapshot(
+  prior: Map<string, WarningLetter>,
+  extra: Partial<WarningLettersSnapshot>,
+  reason: string | null,
+): WarningLettersSnapshot {
+  const snap = {
+    ...assembleSnapshot([...prior.values()]),
+    ...extra,
+  };
+  if (reason && snap.letters.length > 0) snap.reason = reason;
+  writeSnapshot(snap);
+  return snap;
 }
 
 export async function collectWarningLetters(opts?: {
   pauseMs?: number;
   htmlDir?: string;
   limit?: number;
+  maxFetch?: number;
 }): Promise<WarningLettersSnapshot> {
   const dir = opts?.htmlDir ?? htmlDir();
-  const pauseMs = opts?.pauseMs ?? (dir ? 0 : 1500);
-  const listingHtml =
-    readHtmlDirFile(dir, ["listing.html", "listing-excerpt.html"]) ?? (await fetchFdaHtml(LISTING_URL));
-  const listed = parseListingHtml(listingHtml).slice(0, opts?.limit ?? firstSliceLimit());
-  if (listed.length === 0) {
+  const pauseMs = opts?.pauseMs ?? (dir ? 0 : 800);
+  const target = opts?.limit ?? firstSliceLimit();
+  const fetchCap = opts?.maxFetch ?? (dir ? 0 : maxFetchLimit());
+  const prior = priorBodies();
+  const listingCap = target > 0 ? target + prior.size + pageSizeLimit() : 0;
+  const { listed: allListed, listedCount, fetchedPages } = await loadOfficialListings(dir, listingCap);
+  if (allListed.length === 0) {
+    if (prior.size > 0) {
+      return keepPriorSnapshot(
+        prior,
+        { listedCount: 0, fetchedPages, skippedNoBody: 0, reused: prior.size, addedThisRun: 0 },
+        "Official listing missed; kept cached bodies.",
+      );
+    }
     const snap = emptySnapshot("Official FDA warning-letter listing had no letter page links.");
     writeSnapshot(snap);
     return snap;
   }
   const letters: WarningLetter[] = [];
-  for (const row of listed) {
+  const seen = new Set<string>();
+  let skippedNoBody = 0;
+  let reused = 0;
+  let addedThisRun = 0;
+  let fetchedLetters = 0;
+  for (const row of allListed) {
+    if (target > 0 && addedThisRun >= target) break;
+    const cached = prior.get(row.id);
+    if (cached) {
+      letters.push(cached);
+      seen.add(row.id);
+      reused += 1;
+      continue;
+    }
+    if (fetchCap > 0 && fetchedLetters >= fetchCap) break;
     if (!dir) await pause(pauseMs);
     try {
       const html =
         readHtmlDirFile(dir, [`${row.id}.html`, `${row.id}-excerpt.html`]) ??
-        (await fetchFdaHtml(row.sourceUrl));
-      const parsed = parseLetterHtml(html, row.sourceUrl);
+        (dir ? null : await fetchFdaHtml(row.sourceUrl));
+      if (dir && !html) {
+        skippedNoBody += 1;
+        continue;
+      }
+      if (!dir) fetchedLetters += 1;
+      const parsed = parseLetterHtml(html ?? "", row.sourceUrl);
       if (!parsed.firm || parsed.firm === parsed.id) parsed.firm = row.firm || parsed.firm;
       if (!parsed.issuedOn) parsed.issuedOn = row.issuedOn;
+      if (!parsed.body) {
+        skippedNoBody += 1;
+        continue;
+      }
       letters.push(parsed);
-    } catch (err) {
-      const message = err instanceof Error ? err.message : String(err);
-      letters.push({
-        id: row.id,
-        firm: row.firm,
-        cms: slugCms(row.id),
-        issuedOn: row.issuedOn,
-        subject: "",
-        issuingOffice: null,
-        sourceUrl: row.sourceUrl,
-        body: "",
-      });
-      void message;
+      seen.add(row.id);
+      addedThisRun += 1;
+    } catch {
+      skippedNoBody += 1;
     }
   }
-  const snap = assembleSnapshot(letters);
+  for (const [id, letter] of prior) {
+    if (!seen.has(id)) letters.push(letter);
+  }
+  const snap = {
+    ...assembleSnapshot(letters),
+    listedCount,
+    fetchedPages,
+    skippedNoBody,
+    reused,
+    addedThisRun,
+  };
   writeSnapshot(snap);
   return snap;
 }
 
 export async function loadWarningLetters(): Promise<WarningLettersSnapshot> {
   const cached = readSnapshot();
-  const ttlMs = Number(env("WARNING_LETTERS_TTL_MS", String(6 * 3600 * 1000)));
-  if (cached) {
-    const age = Date.now() - Date.parse(cached.fetchedAt);
-    if (Number.isFinite(age) && age >= 0 && age < ttlMs) return cached;
+  if (cached && cached.letters.some((l) => l.body.length > 0)) {
+    return cached;
   }
   try {
     return await collectWarningLetters();
@@ -463,6 +663,11 @@ if (isMain()) {
             fetchedAt: snap.fetchedAt,
             asOf: snap.asOf,
             letterCount: snap.letters.filter((l) => l.body.length > 0).length,
+            listedCount: snap.listedCount ?? snap.letters.length,
+            fetchedPages: snap.fetchedPages ?? 0,
+            skippedNoBody: snap.skippedNoBody ?? 0,
+            reused: snap.reused ?? 0,
+            addedThisRun: snap.addedThisRun ?? 0,
             letters: snap.letters.map((l) => ({
               id: l.id,
               firm: l.firm,
