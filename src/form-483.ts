@@ -23,10 +23,12 @@ export const LISTING_JSON_URL =
 export const MEDIA_BASE = "https://www.fda.gov/media/";
 export const MEDIA_PATH_RE = /\/media\/(\d+)\/download/i;
 export const RECORD_TYPE_483 = "483";
-/** Target real extractable 483 bodies per collect. `0` = keep walking the official list. */
+/** Additional real extractable bodies this run. Cached / already-known IDs do not count. `0` = keep walking. */
 export const DEFAULT_FIRST_SLICE = 25;
 /** Max official PDF downloads per collect. Image-only scans are skipped, not invented. `0` = no cap. */
-export const DEFAULT_MAX_FETCH = 80;
+export const DEFAULT_MAX_FETCH = 200;
+/** Free public id/firm/dates listing. Never paid. Used only when FORM_483_SKIP_LIVE=1. */
+export const LIVE_MANIFEST_URL = "https://ticks.bnm.farm/form-483/manifest.json";
 
 export const LETTER_FIELDS = [
   "id",
@@ -90,6 +92,9 @@ export type Form483Snapshot = {
   listedCount?: number;
   fetchedPdfs?: number;
   skippedNoText?: number;
+  skippedKnown?: number;
+  reused?: number;
+  addedThisRun?: number;
   sources: {
     listing: string;
     listingJson?: string;
@@ -111,6 +116,14 @@ export function form483Dir(): string {
 
 export function snapshotPath(): string {
   return join(form483Dir(), "snapshot.json");
+}
+
+export function skippedNoTextPath(): string {
+  return join(form483Dir(), "skipped-no-text.json");
+}
+
+export function knownIdsPath(): string {
+  return join(form483Dir(), "known-ids.json");
 }
 
 export function decodeEntities(raw: string): string {
@@ -493,36 +506,152 @@ function priorBodies(): Map<string, Form483Letter> {
   return prior;
 }
 
+/** Accepts `{ mediaIds }`, live `{ letters: [{ mediaId }] }`, or a string array. No bodies. */
+export function parseKnownMediaIds(raw: unknown): string[] {
+  if (Array.isArray(raw)) {
+    return raw.flatMap((item) => {
+      if (typeof item === "string" && /^\d+$/.test(item.trim())) return [item.trim()];
+      if (item && typeof item === "object" && "mediaId" in item) {
+        const id = String((item as { mediaId: unknown }).mediaId).trim();
+        return /^\d+$/.test(id) ? [id] : [];
+      }
+      return [];
+    });
+  }
+  if (raw && typeof raw === "object") {
+    const rec = raw as { mediaIds?: unknown; letters?: unknown };
+    if (Array.isArray(rec.mediaIds)) return parseKnownMediaIds(rec.mediaIds);
+    if (Array.isArray(rec.letters)) return parseKnownMediaIds(rec.letters);
+  }
+  return [];
+}
+
+function readIdSetFile(path: string): Set<string> {
+  if (!existsSync(path)) return new Set();
+  try {
+    return new Set(parseKnownMediaIds(JSON.parse(readFileSync(path, "utf-8"))));
+  } catch {
+    return new Set();
+  }
+}
+
+export function readSkippedNoTextIds(): Set<string> {
+  return readIdSetFile(skippedNoTextPath());
+}
+
+export function writeSkippedNoTextIds(ids: Set<string>): void {
+  const path = skippedNoTextPath();
+  mkdirSync(dirname(path), { recursive: true });
+  writeFileSync(
+    path,
+    JSON.stringify(
+      { mediaIds: [...ids].sort((a, b) => Number(b) - Number(a)), updatedAt: new Date().toISOString() },
+      null,
+      2,
+    ) + "\n",
+  );
+}
+
+function skipIdsFromEnv(): string[] {
+  return env("FORM_483_SKIP_IDS")
+    .split(/[, \s]+/)
+    .map((id) => id.trim())
+    .filter((id) => /^\d+$/.test(id));
+}
+
+function skipLiveEnabled(opts?: { skipLive?: boolean }): boolean {
+  if (opts?.skipLive === true) return true;
+  if (opts?.skipLive === false) return false;
+  const raw = env("FORM_483_SKIP_LIVE").toLowerCase();
+  return raw === "1" || raw === "true" || raw === "yes";
+}
+
+async function loadKnownSkipIds(opts?: { knownIds?: string[]; skipLive?: boolean }): Promise<Set<string>> {
+  const ids = new Set<string>([...skipIdsFromEnv(), ...(opts?.knownIds ?? [])]);
+  for (const id of readIdSetFile(knownIdsPath())) ids.add(id);
+  const knownManifest = env("FORM_483_KNOWN_MANIFEST");
+  if (knownManifest && existsSync(knownManifest)) {
+    try {
+      for (const id of parseKnownMediaIds(JSON.parse(readFileSync(knownManifest, "utf-8")))) ids.add(id);
+    } catch {
+      /* ignore unreadable local manifest */
+    }
+  }
+  if (skipLiveEnabled(opts)) {
+    try {
+      const url = env("FORM_483_LIVE_MANIFEST", LIVE_MANIFEST_URL);
+      for (const id of parseKnownMediaIds(await fetchFdaJson(url))) ids.add(id);
+    } catch {
+      /* live host unreachable; cache / skip-ids still apply */
+    }
+  }
+  return ids;
+}
+
+function keepPriorSnapshot(
+  prior: Map<string, Form483Letter>,
+  extra: Partial<Form483Snapshot>,
+  reason: string | null,
+): Form483Snapshot {
+  const snap = {
+    ...assembleSnapshot([...prior.values()]),
+    ...extra,
+  };
+  if (reason && snap.letters.length > 0) {
+    snap.reason = reason;
+  }
+  writeSnapshot(snap);
+  return snap;
+}
+
 export async function collectForm483(opts?: {
   pauseMs?: number;
   htmlDir?: string;
   limit?: number;
   maxFetch?: number;
+  knownIds?: string[];
+  skipLive?: boolean;
 }): Promise<Form483Snapshot> {
   const dir = opts?.htmlDir ?? htmlDir();
   const pauseMs = opts?.pauseMs ?? (dir ? 0 : 800);
   const allListed = await loadOfficialListings(dir);
   const target = opts?.limit ?? firstSliceLimit();
   const fetchCap = opts?.maxFetch ?? (dir ? 0 : maxFetchLimit());
+  const cacheDir = form483Dir();
+  mkdirSync(cacheDir, { recursive: true });
+  const prior = priorBodies();
   if (allListed.length === 0) {
+    if (prior.size > 0) {
+      return keepPriorSnapshot(prior, { listedCount: 0, fetchedPdfs: 0, skippedNoText: 0 }, "Official listing missed; kept cached bodies.");
+    }
     const snap = emptySnapshot("Official OII FOIA listing had no posted Form 483 PDF links.");
     writeSnapshot(snap);
     return snap;
   }
-  const cacheDir = form483Dir();
-  mkdirSync(cacheDir, { recursive: true });
-  const prior = priorBodies();
+  const knownSkip = await loadKnownSkipIds(opts);
+  const imageSkip = readSkippedNoTextIds();
   const letters: Form483Letter[] = [];
   const seen = new Set<string>();
   let fetchedPdfs = 0;
   let skippedNoText = 0;
-  const realCount = (): number => letters.filter((l) => isReal483Body(l.body)).length;
+  let skippedKnown = 0;
+  let reused = 0;
+  let addedThisRun = 0;
   for (const row of allListed) {
-    if (target > 0 && realCount() >= target) break;
+    if (target > 0 && addedThisRun >= target) break;
     const cached = prior.get(row.mediaId);
     if (cached) {
       letters.push(cached);
       seen.add(row.mediaId);
+      reused += 1;
+      continue;
+    }
+    if (knownSkip.has(row.mediaId)) {
+      skippedKnown += 1;
+      continue;
+    }
+    if (imageSkip.has(row.mediaId)) {
+      skippedNoText += 1;
       continue;
     }
     if (fetchCap > 0 && fetchedPdfs >= fetchCap) break;
@@ -535,6 +664,7 @@ export async function collectForm483(opts?: {
         `${row.mediaId}-annovex-excerpt.txt`,
       ]);
       if (dir && !localText) {
+        imageSkip.add(row.mediaId);
         skippedNoText += 1;
         continue;
       }
@@ -559,15 +689,18 @@ export async function collectForm483(opts?: {
         establishmentType: row.establishmentType,
       });
       if (!isReal483Body(parsed.body)) {
+        imageSkip.add(row.mediaId);
         skippedNoText += 1;
         continue;
       }
       letters.push(parsed);
       seen.add(row.mediaId);
+      addedThisRun += 1;
     } catch {
       skippedNoText += 1;
     }
   }
+  writeSkippedNoTextIds(imageSkip);
   for (const [mediaId, letter] of prior) {
     if (!seen.has(mediaId)) letters.push(letter);
   }
@@ -576,6 +709,9 @@ export async function collectForm483(opts?: {
     listedCount: allListed.length,
     fetchedPdfs,
     skippedNoText,
+    skippedKnown,
+    reused,
+    addedThisRun,
   };
   writeSnapshot(snap);
   return snap;
@@ -583,10 +719,8 @@ export async function collectForm483(opts?: {
 
 export async function loadForm483(): Promise<Form483Snapshot> {
   const cached = readSnapshot();
-  const ttlMs = Number(env("FORM_483_TTL_MS", String(6 * 3600 * 1000)));
-  if (cached) {
-    const age = Date.now() - Date.parse(cached.fetchedAt);
-    if (Number.isFinite(age) && age >= 0 && age < ttlMs) return cached;
+  if (cached && cached.letters.some((l) => isReal483Body(l.body))) {
+    return cached;
   }
   try {
     return await collectForm483();
@@ -692,6 +826,9 @@ if (isMain()) {
             listedCount: snap.listedCount ?? snap.letters.length,
             fetchedPdfs: snap.fetchedPdfs ?? 0,
             skippedNoText: snap.skippedNoText ?? 0,
+            skippedKnown: snap.skippedKnown ?? 0,
+            reused: snap.reused ?? 0,
+            addedThisRun: snap.addedThisRun ?? 0,
             listed: snap.letters.some((l) => isReal483Body(l.body)),
             letters: snap.letters.map((l) => ({
               id: l.id,

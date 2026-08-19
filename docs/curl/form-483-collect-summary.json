@@ -1,32 +1,16 @@
 {
   "source": "https://www.fda.gov/about-fda/office-inspections-and-investigations/oii-foia-electronic-reading-room",
   "listingJson": "https://www.fda.gov/datatables-json/ora-foia-reading.json?_format=json",
-  "fetchedAt": "2026-08-18T20:17:29.334Z",
-  "asOf": "2026-08-12",
+  "liveManifest": "https://ticks.bnm.farm/form-483/manifest.json",
+  "fetchedAt": null,
+  "asOf": null,
   "officialListed483Pdfs": 2120,
-  "liveBodiesBefore": 3,
-  "realBodiesThisCollect": 15,
-  "additionalVsLive": 12,
-  "fetchedPdfsThisPass": 44,
-  "skippedNoText": 104,
-  "note": "Bodies are gitignored (data/form-483/). This file is id/firm/dates only. Image-only scans are skipped; text is official pdftotext, not invented. Live ticks.bnm.farm still needs the media-box worker to run collect and restart the door.",
-  "liveAlready": [
-    { "mediaId": "193964", "firm": "Cascade Specialty Pharmacy LLC" },
-    { "mediaId": "193490", "firm": "Turbare Manufacturing" },
-    { "mediaId": "193728", "firm": "Annovex Pharma Inc" }
-  ],
-  "additionalBodies": [
-    { "mediaId": "194143", "firm": "Veterinary Pharmacy Corporation", "publishedOn": "2026-08-12" },
-    { "mediaId": "193817", "firm": "Boston IVF Fertility Services at The Women's Hospital, LLC", "publishedOn": "2026-07-24" },
-    { "mediaId": "193769", "firm": "Lt Col Luke Weather Jr Veterans Affairs Medical Center", "publishedOn": "2026-07-23" },
-    { "mediaId": "193727", "firm": "Sincerus Florida, LLC", "publishedOn": "2026-07-22" },
-    { "mediaId": "193675", "firm": "Hillyard GMP", "publishedOn": "2026-07-17" },
-    { "mediaId": "193644", "firm": "Center for Assisted Reproduction", "publishedOn": "2026-07-15" },
-    { "mediaId": "193642", "firm": "Berkshire Sterile Manufacturing", "publishedOn": "2026-07-15" },
-    { "mediaId": "193610", "firm": "Milla Pharmaceuticals, Inc.", "publishedOn": "2026-07-14" },
-    { "mediaId": "193603", "firm": "Baxalta US Inc.", "publishedOn": "2026-07-14" },
-    { "mediaId": "193616", "firm": "Central California Blood Center", "publishedOn": "2026-07-14" },
-    { "mediaId": "193570", "firm": "Ascendis Pharma LLC", "publishedOn": "2026-07-13" },
-    { "mediaId": "193583", "firm": "Eduardo Patricio Yanez Ruiz, MD", "publishedOn": "2026-07-13" }
-  ]
+  "liveBodiesBefore": 189,
+  "realBodiesThisCollect": 0,
+  "additionalVsLive": 0,
+  "fetchedPdfsThisPass": 0,
+  "skippedNoText": 0,
+  "skippedKnown": 0,
+  "note": "PR 18 still says live cache is 3. Verified public manifest letterCount is 189. FORM_483_LIMIT is additional (cached / live IDs do not count). Bodies are gitignored. Image-only scans are skipped; text is official pdftotext, not invented. Live ticks.bnm.farm will not move until the media-box worker runs collect and restarts the door. Collect numbers on this file are filled after the VM run.",
+  "additionalBodies": []
 }

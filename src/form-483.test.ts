@@ -7,14 +7,17 @@ import {
   LETTER_FIELDS,
   LISTING_JSON_URL,
   LISTING_URL,
+  LIVE_MANIFEST_URL,
   RECORD_TYPE_483,
   buildForm483Manifest,
   collectForm483,
   isReal483Body,
   parse483Text,
+  parseKnownMediaIds,
   parseListingHtml,
   parseListingJson,
   parseObservations,
+  readSkippedNoTextIds,
 } from "./form-483.js";
 
 const fixtures = join(dirname(fileURLToPath(import.meta.url)), "../src/fixtures/fda-form-483");
@@ -40,7 +43,14 @@ async function main(): Promise<void> {
   assert.ok(!listed.some((row) => /redica|cms.?2567|wasde/i.test(JSON.stringify(row))));
   assert.equal(LISTING_URL.includes("oii-foia-electronic-reading-room"), true);
   assert.equal(LISTING_JSON_URL.includes("datatables-json/ora-foia-reading.json"), true);
+  assert.equal(LIVE_MANIFEST_URL.includes("/form-483/manifest.json"), true);
   assert.equal(RECORD_TYPE_483, "483");
+  assert.deepEqual(parseKnownMediaIds({ mediaIds: ["193964", "194143"] }), ["193964", "194143"]);
+  assert.deepEqual(
+    parseKnownMediaIds({ letters: [{ mediaId: "193964", firm: "Cascade Specialty Pharmacy LLC" }] }),
+    ["193964"],
+  );
+  assert.ok(!JSON.stringify(parseKnownMediaIds({ letters: [{ mediaId: "193964", body: "OBSERVATION 1" }] })).includes("OBSERVATION"));
 
   const fromJson = parseListingJson(JSON.parse(readFx("listing.json")));
   assert.equal(fromJson.length, 5, "official JSON excerpt has five posted 483 PDFs");
@@ -134,6 +144,31 @@ async function main(): Promise<void> {
     assert.ok(merged.letters.some((l) => l.mediaId === "193964" && isReal483Body(l.body)), "re-collect keeps cached bodies");
     assert.ok(merged.letters.some((l) => l.mediaId === "193728"));
     assert.ok(!merged.letters.some((l) => l.mediaId === "194143"), "still no invented Veterinary body");
+    assert.ok((merged.addedThisRun ?? 0) === 0, "LIMIT is additional; cached 2 already meet no new-body target until extras exist");
+
+    const onlyCascade = {
+      ...snap,
+      letters: snap.letters.filter((l) => l.mediaId === "193964"),
+    };
+    writeFileSync(join(cache, "snapshot.json"), JSON.stringify(onlyCascade));
+    const filled = await collectForm483({ htmlDir: fixtures, limit: 1, pauseMs: 0 });
+    assert.ok(filled.letters.some((l) => l.mediaId === "193964"), "cached Cascade is reused and does not consume LIMIT");
+    assert.ok(filled.letters.some((l) => l.mediaId === "193728" && isReal483Body(l.body)), "LIMIT=1 additional still extracts Annovex");
+    assert.equal(filled.addedThisRun, 1);
+    assert.ok((filled.reused ?? 0) >= 1);
+    assert.ok(!filled.letters.some((l) => l.mediaId === "194143"), "no invented Veterinary body");
+
+    writeFileSync(join(cache, "snapshot.json"), JSON.stringify({ ...snap, letters: [] }));
+    const knownOnly = await collectForm483({
+      htmlDir: fixtures,
+      limit: 1,
+      pauseMs: 0,
+      knownIds: ["193964", "193728"],
+    });
+    assert.ok(!knownOnly.letters.some((l) => l.mediaId === "193964"), "known live IDs are not re-fetched or invented");
+    assert.ok(!knownOnly.letters.some((l) => l.mediaId === "193728"));
+    assert.ok((knownOnly.skippedKnown ?? 0) >= 2, "known live IDs are skipped without inventing text");
+    assert.ok(readSkippedNoTextIds().has("194143"), "image-only / no-text IDs persist so later fills do not re-walk them");
   } finally {
     if (prevDir === undefined) delete process.env.FORM_483_DIR;
     else process.env.FORM_483_DIR = prevDir;
