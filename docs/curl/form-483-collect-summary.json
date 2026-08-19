@@ -2,317 +2,1462 @@
   "source": "https://www.fda.gov/about-fda/office-inspections-and-investigations/oii-foia-electronic-reading-room",
   "listingJson": "https://www.fda.gov/datatables-json/ora-foia-reading.json?_format=json",
   "liveManifest": "https://ticks.bnm.farm/form-483/manifest.json",
-  "fetchedAt": "2026-08-19T00:15:49.141Z",
+  "fetchedAt": "2026-08-19T03:20:06.074Z",
   "asOf": "2026-02-03",
   "officialListed483Pdfs": 2120,
-  "liveBodiesBefore": 189,
-  "realBodiesThisCollect": 60,
-  "additionalVsLive": 60,
-  "fetchedPdfsThisPass": 207,
-  "skippedNoText": 147,
-  "skippedKnown": 189,
-  "reused": 0,
-  "note": "Bodies are gitignored (data/form-483/). This file is id/firm/dates only. Image-only / cover-only scans are skipped; text is official pdftotext, not invented. Live ticks.bnm.farm letterCount stays 189 until the media-box worker runs collect and restarts the door.",
+  "liveBodiesBefore": 289,
+  "realBodiesThisCollect": 240,
+  "additionalVsLive": 240,
+  "fetchedPdfsThisPass": 248,
+  "skippedNoText": 160,
+  "skippedKnown": 289,
+  "reused": 160,
+  "addedByPass": [
+    80,
+    80,
+    80
+  ],
+  "note": "Bodies are gitignored (data/form-483/). This file is id/firm/dates only. Image-only / cover-only scans are skipped; text is official pdftotext, not invented. Three VM passes of FORM_483_LIMIT=80 (additional). Zero overlap with the live 289. Includes US Specialty Formulations 190899, which is extractable but missing from the live door. Live ticks.bnm.farm letterCount stays 289; this Cursor cloud VM did not use the media-box worker and did not deploy.",
   "additionalBodies": [
     {
       "mediaId": "190899",
       "firm": "US Specialty Formulations LLC",
-      "publishedOn": "2026-02-03"
+      "publishedOn": "2026-02-03",
+      "recordDate": "2026-01-14"
     },
     {
-      "mediaId": "186008",
-      "firm": "Suzhou Suncadia Biopharmaceutical CO., Ltd.",
-      "publishedOn": "2025-03-28"
+      "mediaId": "179799",
+      "firm": "Hikma Pharmaceuticals USA Inc.",
+      "publishedOn": "2024-07-09",
+      "recordDate": "2024-06-12"
     },
     {
-      "mediaId": "185930",
-      "firm": "Eli Lilly and Company",
-      "publishedOn": "2025-03-24"
+      "mediaId": "179540",
+      "firm": "Brookfield Medical Surgical Supplies",
+      "publishedOn": "2024-06-28",
+      "recordDate": "2024-05-10"
     },
     {
-      "mediaId": "185939",
-      "firm": "Eli Lilly and Company",
-      "publishedOn": "2025-03-24"
+      "mediaId": "179610",
+      "firm": "Torrent Pharmaceuticals Limited",
+      "publishedOn": "2024-06-26",
+      "recordDate": "2024-06-12"
     },
     {
-      "mediaId": "185936",
-      "firm": "Bushu Pharmaceuticals Ltd.",
-      "publishedOn": "2025-03-24"
+      "mediaId": "179455",
+      "firm": "Dr. Reddy's Laboratories Limited CTO -- Unit 6",
+      "publishedOn": "2024-06-20",
+      "recordDate": "2024-06-07"
     },
     {
-      "mediaId": "185741",
-      "firm": "MedisourceRx",
-      "publishedOn": "2025-03-11"
+      "mediaId": "179391",
+      "firm": "Chugai Pharma Manufacturing Co., Ltd.",
+      "publishedOn": "2024-06-14",
+      "recordDate": "2024-04-02"
     },
     {
-      "mediaId": "185578",
-      "firm": "Piramal, Piramal Pharma Limited",
-      "publishedOn": "2025-03-06"
+      "mediaId": "178630",
+      "firm": "Jubilant DraxImage Radiopharmacies Inc.",
+      "publishedOn": "2024-06-13",
+      "recordDate": "2024-03-13"
     },
     {
-      "mediaId": "185699",
-      "firm": "Glenmark Pharmaceuticals Ltd.",
-      "publishedOn": "2025-03-06"
+      "mediaId": "179231",
+      "firm": "Cipla Ltd.",
+      "publishedOn": "2024-06-07",
+      "recordDate": "2024-05-08"
     },
     {
-      "mediaId": "185507",
-      "firm": "Zhejiang Huahai Pharmaceutical Co., Ltd.",
-      "publishedOn": "2025-03-06"
+      "mediaId": "179134",
+      "firm": "Jiangsu Hengrui Pharmceuticals Co., Ltd",
+      "publishedOn": "2024-06-04",
+      "recordDate": "2024-01-16"
     },
     {
-      "mediaId": "185510",
-      "firm": "Janssen Vaccines Corporation",
-      "publishedOn": "2025-03-06"
+      "mediaId": "178599",
+      "firm": "Delta Pharma, Inc.",
+      "publishedOn": "2024-05-21",
+      "recordDate": "2024-04-12"
     },
     {
-      "mediaId": "185524",
-      "firm": "Indoco Remedies Limited",
-      "publishedOn": "2025-03-06"
+      "mediaId": "178585",
+      "firm": "Eugia Pharma Specialities Limited",
+      "publishedOn": "2024-05-13",
+      "recordDate": "2024-05-03"
     },
     {
-      "mediaId": "185506",
-      "firm": "AstraZeneca Pharmaceuticals LP Frederick Manufacturing Center",
-      "publishedOn": "2025-03-06"
+      "mediaId": "178169",
+      "firm": "Zydus Lifesciences Ltd.",
+      "publishedOn": "2024-04-29",
+      "recordDate": "2024-04-23"
     },
     {
-      "mediaId": "185522",
-      "firm": "Daizo Corporation",
-      "publishedOn": "2025-03-06"
+      "mediaId": "177871",
+      "firm": "Sun Pharmaceutical Industries Limited",
+      "publishedOn": "2024-04-17",
+      "recordDate": "2023-12-15"
     },
     {
-      "mediaId": "185729",
-      "firm": "Dr. Reddy's Laboratories Ltd., Biologics",
-      "publishedOn": "2025-03-06"
+      "mediaId": "177845",
+      "firm": "Eugia Steriles Private Limited",
+      "publishedOn": "2024-04-16",
+      "recordDate": "2024-04-05"
     },
     {
-      "mediaId": "185521",
-      "firm": "Rovi Pharma Industrial Services S.A.",
-      "publishedOn": "2025-03-06"
+      "mediaId": "177746",
+      "firm": "Zydus Lifesciences Limited",
+      "publishedOn": "2024-04-12",
+      "recordDate": "2024-03-27"
     },
     {
-      "mediaId": "185519",
-      "firm": "Zhejiang Peptides Biotech Co, Ltd.",
-      "publishedOn": "2025-03-06"
+      "mediaId": "177653",
+      "firm": "Cipla Limited",
+      "publishedOn": "2024-04-10",
+      "recordDate": "2024-04-04"
     },
     {
-      "mediaId": "185549",
-      "firm": "Oishi Koseido Co., Ltd.",
-      "publishedOn": "2025-03-06"
+      "mediaId": "177580",
+      "firm": "Alkem Laboratories Limited",
+      "publishedOn": "2024-04-09",
+      "recordDate": "2024-03-27"
     },
     {
-      "mediaId": "185523",
-      "firm": "Amman Pharmaceutical Industries",
-      "publishedOn": "2025-03-06"
+      "mediaId": "177529",
+      "firm": "Jubilant Generics Limited",
+      "publishedOn": "2024-04-05",
+      "recordDate": "2024-02-02"
     },
     {
-      "mediaId": "185505",
-      "firm": "Wuxi Biologics Co., Ltd.",
-      "publishedOn": "2025-03-06"
+      "mediaId": "177488",
+      "firm": "Contract Pharmaceuticals Limited Canada",
+      "publishedOn": "2024-04-03",
+      "recordDate": "2023-11-03"
     },
     {
-      "mediaId": "185576",
-      "firm": "Fuji Yakuhin Co., Ltd.",
-      "publishedOn": "2025-03-06"
+      "mediaId": "177229",
+      "firm": "Catalent Indiana, LLC",
+      "publishedOn": "2024-03-22",
+      "recordDate": "2023-11-15"
     },
     {
-      "mediaId": "185544",
-      "firm": "Chunghwa Chemical Synthesis & Biotech Co., Ltd.",
-      "publishedOn": "2025-03-06"
+      "mediaId": "177221",
+      "firm": "Stokes Healthcare Inc.",
+      "publishedOn": "2024-03-22",
+      "recordDate": "2023-10-25"
     },
     {
-      "mediaId": "185525",
-      "firm": "Meiji Seika Pharma Co., Ltd.",
-      "publishedOn": "2025-03-06"
+      "mediaId": "177225",
+      "firm": "Front Door Pharmacy, LLC",
+      "publishedOn": "2024-03-22",
+      "recordDate": "2021-06-07"
     },
     {
-      "mediaId": "185520",
-      "firm": "Vetter Pharma-Fertigung GmbH & Co. KG",
-      "publishedOn": "2025-03-06"
+      "mediaId": "177153",
+      "firm": "Medi-Fare Drug",
+      "publishedOn": "2024-03-21",
+      "recordDate": "2023-05-26"
     },
     {
-      "mediaId": "185527",
-      "firm": "Kyowa Hakko Bio Co., Ltd.",
-      "publishedOn": "2025-03-06"
+      "mediaId": "177155",
+      "firm": "Sentara Enterprises",
+      "publishedOn": "2024-03-20",
+      "recordDate": "2023-07-14"
     },
     {
-      "mediaId": "185518",
-      "firm": "Hanlim Pharm Co., Ltd.",
-      "publishedOn": "2025-03-06"
+      "mediaId": "177078",
+      "firm": "Eugia SEZ Private Limited",
+      "publishedOn": "2024-03-15",
+      "recordDate": "2024-02-29"
     },
     {
-      "mediaId": "185637",
-      "firm": "BPI Labs LLC",
-      "publishedOn": "2025-02-28"
-    },
-    {
-      "mediaId": "185650",
-      "firm": "Carolina Infusion",
-      "publishedOn": "2025-02-28"
-    },
-    {
-      "mediaId": "185620",
-      "firm": "Compounded Solutions in Pharmacy",
-      "publishedOn": "2025-02-27"
-    },
-    {
-      "mediaId": "185573",
-      "firm": "Japan Food Research Laboratories",
-      "publishedOn": "2025-02-24"
-    },
-    {
-      "mediaId": "185444",
-      "firm": "Triangle Compounding Pharmacy Inc",
-      "publishedOn": "2025-02-19"
-    },
-    {
-      "mediaId": "185494",
-      "firm": "CMC Enterprise Pharmacy",
-      "publishedOn": "2025-02-19"
-    },
-    {
-      "mediaId": "185443",
-      "firm": "Exela Pharma Sciences LLC",
-      "publishedOn": "2025-02-14"
-    },
-    {
-      "mediaId": "185420",
+      "mediaId": "176469",
       "firm": "Boothwyn Pharmacy LLC",
-      "publishedOn": "2025-02-12"
+      "publishedOn": "2024-02-29",
+      "recordDate": "2021-09-08"
     },
     {
-      "mediaId": "185430",
+      "mediaId": "176315",
+      "firm": "Eugia Pharma Specialities Limited",
+      "publishedOn": "2024-02-13",
+      "recordDate": "2024-02-02"
+    },
+    {
+      "mediaId": "176194",
+      "firm": "Empower Clinic Services LCC dba Empower Pharmacy",
+      "publishedOn": "2024-02-12",
+      "recordDate": "2023-12-01"
+    },
+    {
+      "mediaId": "176195",
+      "firm": "Wedgewood Connect, LLC",
+      "publishedOn": "2024-02-12",
+      "recordDate": "2023-11-17"
+    },
+    {
+      "mediaId": "176079",
+      "firm": "Sichuan Deebio Pharmaceutical Co. Ltd.",
+      "publishedOn": "2024-02-08",
+      "recordDate": "2023-09-08"
+    },
+    {
+      "mediaId": "175832",
+      "firm": "Alvotech Hf",
+      "publishedOn": "2024-01-31",
+      "recordDate": "2024-01-19"
+    },
+    {
+      "mediaId": "175809",
+      "firm": "Eugia US Manufacturing LLC",
+      "publishedOn": "2024-01-30",
+      "recordDate": "2023-12-22"
+    },
+    {
+      "mediaId": "175813",
+      "firm": "Baxter Pharmaceuticals India Pvt Ltd.",
+      "publishedOn": "2024-01-30",
+      "recordDate": "2023-01-27"
+    },
+    {
+      "mediaId": "175704",
+      "firm": "Hybrid Pharma LLC",
+      "publishedOn": "2024-01-25",
+      "recordDate": "2023-11-09"
+    },
+    {
+      "mediaId": "175707",
+      "firm": "STAQ Pharma of Ohio, LLC",
+      "publishedOn": "2024-01-25",
+      "recordDate": "2023-10-04"
+    },
+    {
+      "mediaId": "175706",
+      "firm": "Precision Equine LLC",
+      "publishedOn": "2024-01-25",
+      "recordDate": "2023-09-22"
+    },
+    {
+      "mediaId": "175708",
+      "firm": "Central Admixture Pharmacy Services Inc",
+      "publishedOn": "2024-01-25",
+      "recordDate": "2023-08-25"
+    },
+    {
+      "mediaId": "97981",
+      "firm": "Ranier\u2019s Compounding Laboratory",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2019-02-06"
+    },
+    {
+      "mediaId": "113612",
+      "firm": "Ranier\u2019s Compounding Laboratory",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2019-02-06"
+    },
+    {
+      "mediaId": "111719",
+      "firm": "Denver Solutions, LLC dba Leiter's Health",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-11-15"
+    },
+    {
+      "mediaId": "111690",
+      "firm": "Pentec Health",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-11-05"
+    },
+    {
+      "mediaId": "99260",
+      "firm": "Premier Pharmacy Labs Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
+    },
+    {
+      "mediaId": "104437",
+      "firm": "Complete Pharmacy & Medical Solutions LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
+    },
+    {
+      "mediaId": "104654",
+      "firm": "Delta Pharma Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
+    },
+    {
+      "mediaId": "106082",
+      "firm": "Infusion Options, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
+    },
+    {
+      "mediaId": "106836",
+      "firm": "LEESAR, INC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
+    },
+    {
+      "mediaId": "106846",
+      "firm": "Auro Pharmacies Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
+    },
+    {
+      "mediaId": "107150",
+      "firm": "Imprimis NJOF, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
+    },
+    {
+      "mediaId": "109511",
+      "firm": "SSM Health Care St. Louis DBA SSM St. Clare Health Center",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
+    },
+    {
+      "mediaId": "110129",
+      "firm": "PharMEDium Services, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
+    },
+    {
+      "mediaId": "110150",
+      "firm": "PharMEDium Services, LLC.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
+    },
+    {
+      "mediaId": "110466",
+      "firm": "PharMEDium Services, LLC.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
+    },
+    {
+      "mediaId": "110603",
+      "firm": "PharMEDium Services, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
+    },
+    {
+      "mediaId": "111056",
+      "firm": "Empower Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
+    },
+    {
+      "mediaId": "111291",
+      "firm": "Leiter's Enterprises, Inc. dba Leiter's",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
+    },
+    {
+      "mediaId": "112089",
+      "firm": "SCA Pharmaceuticals, LLC.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
+    },
+    {
+      "mediaId": "112143",
+      "firm": "Apollo Care LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
+    },
+    {
+      "mediaId": "112298",
+      "firm": "Coastal Meds, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
+    },
+    {
+      "mediaId": "112561",
+      "firm": "Edge Pharmacy Services, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
+    },
+    {
+      "mediaId": "113085",
+      "firm": "Wells Pharmacy Network, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
+    },
+    {
+      "mediaId": "113359",
       "firm": "Pine Pharmaceuticals, LLC",
-      "publishedOn": "2025-02-12"
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
     },
     {
-      "mediaId": "185399",
-      "firm": "Turbare Manufacturing",
-      "publishedOn": "2025-02-07"
+      "mediaId": "113594",
+      "firm": "Eagle Pharmacy Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
     },
     {
-      "mediaId": "185236",
-      "firm": "Overton Brooks VA Medical Center",
-      "publishedOn": "2025-02-07"
+      "mediaId": "114353",
+      "firm": "Stokes Healthcare Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
     },
     {
-      "mediaId": "185398",
-      "firm": "F.H. Investments Inc.",
-      "publishedOn": "2025-02-07"
+      "mediaId": "115061",
+      "firm": "FH Investments Inc. dba Asteria Health",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
     },
     {
-      "mediaId": "185397",
-      "firm": "Empower Clinic Services, LLC",
-      "publishedOn": "2025-02-07"
+      "mediaId": "115069",
+      "firm": "Medcraft LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-24"
     },
     {
-      "mediaId": "185237",
-      "firm": "OurPharma LLC",
-      "publishedOn": "2025-02-07"
+      "mediaId": "106102",
+      "firm": "Right Value Drug Stores, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-12"
     },
     {
-      "mediaId": "185396",
-      "firm": "AnazaoHealth Corporation",
-      "publishedOn": "2025-02-07"
+      "mediaId": "106662",
+      "firm": "QuVa Pharma, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-12"
     },
     {
-      "mediaId": "185240",
-      "firm": "SCA Pharmaceuticals LLC",
-      "publishedOn": "2025-01-21"
+      "mediaId": "109719",
+      "firm": "QuVa Pharma, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-10-12"
     },
     {
-      "mediaId": "185187",
-      "firm": "QuVa Pharma Inc",
-      "publishedOn": "2025-01-16"
+      "mediaId": "106203",
+      "firm": "Magellan Diagnostics, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-09-27"
     },
     {
-      "mediaId": "185084",
-      "firm": "Taylor Farms Colorado, Inc.",
-      "publishedOn": "2025-01-14"
+      "mediaId": "106817",
+      "firm": "Becton Dickinson & Company",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-09-27"
     },
     {
-      "mediaId": "185102",
-      "firm": "Zhejiang Tianyu Pharmaceutical Co. Ltd.",
-      "publishedOn": "2025-01-14"
+      "mediaId": "115808",
+      "firm": "Talon Compounding Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-08-30"
     },
     {
-      "mediaId": "184987",
-      "firm": "Hubei Gedian Humanwell Pharmaceutical Co., Ltd.",
-      "publishedOn": "2025-01-10"
+      "mediaId": "115829",
+      "firm": "Nutrishare Inc",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-08-30"
     },
     {
-      "mediaId": "184979",
-      "firm": "Hubei Gedian Humanwell Pharmaceutical Co., Ltd.",
-      "publishedOn": "2025-01-10"
+      "mediaId": "116068",
+      "firm": "American Pharmacy of Illinois, Inc. dba Alwan Pharmacy and Compounding Center",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-08-30"
     },
     {
-      "mediaId": "184861",
-      "firm": "Mylan Laboratories Ltd.",
-      "publishedOn": "2025-01-03"
+      "mediaId": "115838",
+      "firm": "Auro Pharmacies",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-08-28"
     },
     {
-      "mediaId": "184381",
+      "mediaId": "93202",
+      "firm": "Fujifilm Medical Systems U.S.A., Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-08-22"
+    },
+    {
+      "mediaId": "113344",
+      "firm": "Guardian Pharmacy Services",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-08-02"
+    },
+    {
+      "mediaId": "113405",
+      "firm": "Guardian Pharmacy Services",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-08-02"
+    },
+    {
+      "mediaId": "114951",
+      "firm": "Sharp Drugs, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-08-01"
+    },
+    {
+      "mediaId": "114889",
+      "firm": "Pharmcore Inc. dba Hallandale Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-07-26"
+    },
+    {
+      "mediaId": "114908",
+      "firm": "Drug Crafters, L.P.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-07-26"
+    },
+    {
+      "mediaId": "114920",
+      "firm": "CFP Acquisitions, Inc",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-07-26"
+    },
+    {
+      "mediaId": "114926",
+      "firm": "Wells Pharmacy Network LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-07-26"
+    },
+    {
+      "mediaId": "114932",
+      "firm": "Drug Depot, Inc. dba APS Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-07-26"
+    },
+    {
+      "mediaId": "114335",
+      "firm": "Well Care Discount Pharmacy, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-07-20"
+    },
+    {
+      "mediaId": "114343",
+      "firm": "People\u2019s Custom Rx and Clinical Care, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-07-20"
+    },
+    {
+      "mediaId": "114283",
+      "firm": "La Vita Compounding Pharmacy, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-07-09"
+    },
+    {
+      "mediaId": "114133",
+      "firm": "Stonegate Pharmacy LP",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-07-02"
+    },
+    {
+      "mediaId": "114553",
+      "firm": "Mylan Pharmaceuticals Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-07-02"
+    },
+    {
+      "mediaId": "113573",
+      "firm": "Coast Quality Pharmacy LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-06-11"
+    },
+    {
+      "mediaId": "98539",
+      "firm": "Delta Pharma Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-06-08"
+    },
+    {
+      "mediaId": "113688",
+      "firm": "Home Care Pharmacy of Palm Coast, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-05-31"
+    },
+    {
+      "mediaId": "110472",
+      "firm": "KRS Global Biotechnology, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-05-30"
+    },
+    {
+      "mediaId": "112957",
+      "firm": "QuVa Pharma, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-05-30"
+    },
+    {
+      "mediaId": "113070",
+      "firm": "Nephron Pharmaceuticals Corporation dba Nephron Sterile Compounding Center",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-05-30"
+    },
+    {
+      "mediaId": "113328",
+      "firm": "OPS International Incorporated D/B/A Olympia Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-05-30"
+    },
+    {
+      "mediaId": "113901",
+      "firm": "Zimmer Biomet, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-05-29"
+    },
+    {
+      "mediaId": "113911",
+      "firm": "Zimmer Biomet, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-05-29"
+    },
+    {
+      "mediaId": "110468",
+      "firm": "Pharmacy Doctors Enterprises dba Zion Clinical Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-05-23"
+    },
+    {
+      "mediaId": "111873",
+      "firm": "Lynnfield Drug, Inc. dba Freedom Fertility Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-05-23"
+    },
+    {
+      "mediaId": "100180",
+      "firm": "Bayview Pharmacy Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-05-22"
+    },
+    {
+      "mediaId": "104216",
+      "firm": "MedPark Pharmacy LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-05-22"
+    },
+    {
+      "mediaId": "107172",
+      "firm": "Essential Pharmacy Compounding LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-05-22"
+    },
+    {
+      "mediaId": "107992",
+      "firm": "Central Illinois Compounding, Inc. dba Preckshot Professional Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-05-22"
+    },
+    {
+      "mediaId": "92574",
+      "firm": "Pharm D Solutions, LLC.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-05-09"
+    },
+    {
+      "mediaId": "106856",
+      "firm": "California Stem Cell Treatment Center/Cell Surgical Network",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-05-09"
+    },
+    {
+      "mediaId": "106861",
+      "firm": "California Stem Cell Treatment",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-05-09"
+    },
+    {
+      "mediaId": "112792",
+      "firm": "Medlife Pharmacy and Compounding",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-05-09"
+    },
+    {
+      "mediaId": "112997",
+      "firm": "PharMEDium Services, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-05-09"
+    },
+    {
+      "mediaId": "113271",
+      "firm": "Infuscience Inc",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-05-09"
+    },
+    {
+      "mediaId": "103064",
+      "firm": "Nutripack LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-05-04"
+    },
+    {
+      "mediaId": "103072",
+      "firm": "Evanger's Dog and Cat Food Company, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-05-04"
+    },
+    {
+      "mediaId": "112199",
+      "firm": "Rose Acre Farms-Hyde County Egg",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-04-25"
+    },
+    {
+      "mediaId": "106814",
+      "firm": "Cantrell Drug Company",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-04-19"
+    },
+    {
+      "mediaId": "112675",
+      "firm": "Cantrell Drug Company",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-04-19"
+    },
+    {
+      "mediaId": "112662",
+      "firm": "Vitalab Pharmacy, Incorporated (dba Vasco Pharmacy)",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-04-16"
+    },
+    {
+      "mediaId": "112689",
+      "firm": "Chen Shwezin dba Park Compounding Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-04-16"
+    },
+    {
+      "mediaId": "112693",
+      "firm": "One Way Drug LLC dba Partell Specialty Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-04-16"
+    },
+    {
+      "mediaId": "108730",
+      "firm": "Prescription Labs, Inc. dba Greenpark Compounding Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-04-12"
+    },
+    {
+      "mediaId": "112012",
+      "firm": "New England Life Care, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-04-09"
+    },
+    {
+      "mediaId": "112499",
+      "firm": "SCA Pharmaceuticals, LLC.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-04-09"
+    },
+    {
+      "mediaId": "112529",
+      "firm": "West Coast Nuclear Pharmacy, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-04-09"
+    },
+    {
+      "mediaId": "112544",
+      "firm": "Rocky Mountain Pharmacy Inc",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-04-09"
+    },
+    {
+      "mediaId": "104882",
+      "firm": "Vulto Creamery, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-04-02"
+    },
+    {
+      "mediaId": "111618",
+      "firm": "RC Compounding Services, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-03-16"
+    },
+    {
+      "mediaId": "111380",
+      "firm": "Option Care Enterprises Inc. dba Option Care",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-03-06"
+    },
+    {
+      "mediaId": "111396",
+      "firm": "New England Life Care, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-03-06"
+    },
+    {
+      "mediaId": "104444",
+      "firm": "Oakdell Pharmacy LLC,",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-03-02"
+    },
+    {
+      "mediaId": "111401",
+      "firm": "Philips Medical Systems (Cleveland) Inc",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-03-02"
+    },
+    {
+      "mediaId": "94896",
+      "firm": "American Pharmacy of Illinois Inc. dba Alwan\u2019s Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-03-01"
+    },
+    {
+      "mediaId": "94928",
+      "firm": "American Pharmacy of Illinois Inc. dba Alwan\u2019s Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-03-01"
+    },
+    {
+      "mediaId": "106513",
+      "firm": "Absolute Veterinary Compounding Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-03-01"
+    },
+    {
+      "mediaId": "111280",
+      "firm": "Professional Arts Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-02-26"
+    },
+    {
+      "mediaId": "110779",
+      "firm": "Techni Med, Inc. dba The Compounder",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-02-21"
+    },
+    {
+      "mediaId": "110787",
+      "firm": "Cape Drugs",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-02-21"
+    },
+    {
+      "mediaId": "111149",
+      "firm": "College Pharmacy, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-02-21"
+    },
+    {
+      "mediaId": "111170",
+      "firm": "The Compounding Pharmacy of America",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-02-21"
+    },
+    {
+      "mediaId": "111297",
+      "firm": "Infusion Partners, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-02-21"
+    },
+    {
+      "mediaId": "110612",
+      "firm": "The Wellness Center Pharmacy, Inc., dba Designer Drugs",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-02-06"
+    },
+    {
+      "mediaId": "111121",
+      "firm": "Zimmer Biomet, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-02-06"
+    },
+    {
+      "mediaId": "107435",
+      "firm": "New England Life Care, Inc., dba Advanced Compounding Solutions",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-02-02"
+    },
+    {
+      "mediaId": "92094",
+      "firm": "The Wellness Center Pharmacy, Inc., dba Designer Drugs",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-02-01"
+    },
+    {
+      "mediaId": "89196",
+      "firm": "LeeSar, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-01-16"
+    },
+    {
+      "mediaId": "110027",
+      "firm": "American CryoStem Corporation",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-01-10"
+    },
+    {
+      "mediaId": "106703",
+      "firm": "Sincerus Florida, LLC.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-01-08"
+    },
+    {
+      "mediaId": "109984",
+      "firm": "SCA Pharmaceuticals, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-01-08"
+    },
+    {
+      "mediaId": "110455",
+      "firm": "Intrathecal Compounding Specialists, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-01-08"
+    },
+    {
+      "mediaId": "110274",
+      "firm": "WellRx, LLC dba HomeRx, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-01-05"
+    },
+    {
+      "mediaId": "110386",
+      "firm": "Guardian Pharmacy Services",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-01-05"
+    },
+    {
+      "mediaId": "110395",
+      "firm": "Diplomat Pharmacy Inc. dba Diplomat Specialty Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2018-01-05"
+    },
+    {
+      "mediaId": "109711",
+      "firm": "Peoples Pharmacy, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-12-22"
+    },
+    {
+      "mediaId": "109728",
+      "firm": "Peoples Pharmacy, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-12-22"
+    },
+    {
+      "mediaId": "109986",
+      "firm": "Baxter Healthcare Corporation",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-12-14"
+    },
+    {
+      "mediaId": "108868",
+      "firm": "Dignity Health-Northridge Hospital Medical Center",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-12-01"
+    },
+    {
+      "mediaId": "104849",
+      "firm": "RAM Pharma, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-11-28"
+    },
+    {
+      "mediaId": "108726",
+      "firm": "University Rx Specialists Inc",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-11-22"
+    },
+    {
+      "mediaId": "109080",
+      "firm": "Keystone Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-11-22"
+    },
+    {
+      "mediaId": "108269",
+      "firm": "Banner Pharmacy Services, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-11-20"
+    },
+    {
+      "mediaId": "108284",
+      "firm": "Banner Pharmacy Services, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-11-20"
+    },
+    {
+      "mediaId": "108716",
+      "firm": "United Pharmacy, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-11-20"
+    },
+    {
+      "mediaId": "107360",
+      "firm": "Mytilini Enterprises LLC dba Bedford Pharmacy Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-11-06"
+    },
+    {
+      "mediaId": "107407",
+      "firm": "US Specialty Formulations LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-10-25"
+    },
+    {
+      "mediaId": "107854",
+      "firm": "RXQ Compounding LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-10-25"
+    },
+    {
+      "mediaId": "107424",
+      "firm": "D&S Enterprises, LLC dba Miller\u2019s Health Mart Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-10-20"
+    },
+    {
+      "mediaId": "108062",
+      "firm": "Meridian Medical Technologies, Inc. a Pfizer Company",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-10-13"
+    },
+    {
+      "mediaId": "108066",
+      "firm": "Akorn, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-10-13"
+    },
+    {
+      "mediaId": "108230",
+      "firm": "Akorn, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-10-13"
+    },
+    {
+      "mediaId": "107034",
+      "firm": "Triangle Compounding Pharmacy Inc",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-10-02"
+    },
+    {
+      "mediaId": "107049",
+      "firm": "One Way Drug, LLC dba Partell Specialty Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-10-02"
+    },
+    {
+      "mediaId": "107233",
+      "firm": "Jeffreys Drug Store",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-10-02"
+    },
+    {
+      "mediaId": "107273",
+      "firm": "Infusion Systems of SW Florida Inc. dba Myerlee Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-10-02"
+    },
+    {
+      "mediaId": "107389",
+      "firm": "JD & SN Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-10-02"
+    },
+    {
+      "mediaId": "107618",
+      "firm": "Carepoint Healthcare, LLC dba Carepoint Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-09-29"
+    },
+    {
+      "mediaId": "107752",
+      "firm": "New England Life Care, Inc., dba Advanced Compounding Solutions",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-09-29"
+    },
+    {
+      "mediaId": "104894",
+      "firm": "Brookfield Medical/Surgical Supply Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-09-27"
+    },
+    {
+      "mediaId": "107441",
+      "firm": "Accurate Rx Pharmacy Consulting, LLC dba Accurate Rx Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-09-21"
+    },
+    {
+      "mediaId": "107393",
+      "firm": "Triad Rx, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-09-19"
+    },
+    {
+      "mediaId": "107470",
+      "firm": "Diamond Drugs, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-09-19"
+    },
+    {
+      "mediaId": "107516",
+      "firm": "Stanley Specialty Pharmacy Compounding and Wellness Center",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-09-19"
+    },
+    {
+      "mediaId": "107343",
+      "firm": "Custom RX, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-09-15"
+    },
+    {
+      "mediaId": "107349",
+      "firm": "Heartland Home Infusions, Inc., dba HHI Infusion Services",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-09-15"
+    },
+    {
+      "mediaId": "88289",
+      "firm": "US Compounding Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-09-14"
+    },
+    {
+      "mediaId": "107324",
+      "firm": "US Stem Cell Clinic, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-09-14"
+    },
+    {
+      "mediaId": "100069",
+      "firm": "Maplerose Enterprises LLC dba Pencol Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-09-12"
+    },
+    {
+      "mediaId": "106809",
+      "firm": "Buderer Drug Company, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-09-12"
+    },
+    {
+      "mediaId": "106823",
+      "firm": "I.V. Specialty Ltd.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-09-12"
+    },
+    {
+      "mediaId": "106828",
+      "firm": "Wickliffe Pharmaceutical Inc",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-09-12"
+    },
+    {
+      "mediaId": "107190",
+      "firm": "Option Care",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-09-12"
+    },
+    {
+      "mediaId": "107256",
+      "firm": "Kelley-Ross Compounding Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-09-12"
+    },
+    {
+      "mediaId": "107284",
+      "firm": "First Call Pharmacy, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-09-12"
+    },
+    {
+      "mediaId": "107157",
+      "firm": "Biomed PA Inc. dba Soleo Health",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-30"
+    },
+    {
+      "mediaId": "107013",
+      "firm": "Buffalo Pharmacies Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-21"
+    },
+    {
+      "mediaId": "107057",
+      "firm": "Heartland I.V. Care",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-21"
+    },
+    {
+      "mediaId": "107068",
+      "firm": "Gipsco Investment Corp. dba Lee Silsby Compounding Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-21"
+    },
+    {
+      "mediaId": "107321",
+      "firm": "Tri-Med Inc. dba Advanced Care Infusion-Shelby",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-21"
+    },
+    {
+      "mediaId": "107326",
+      "firm": "ImprimisRx NJ",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-21"
+    },
+    {
+      "mediaId": "99021",
+      "firm": "W & C dba The Apothecary",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-14"
+    },
+    {
+      "mediaId": "106945",
+      "firm": "Diversified Pharmacy Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-11"
+    },
+    {
+      "mediaId": "106950",
+      "firm": "Boothwyn Pharmacy LLC.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-11"
+    },
+    {
+      "mediaId": "106956",
+      "firm": "Safeway, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-11"
+    },
+    {
+      "mediaId": "106103",
+      "firm": "Vital Rx, Inc. dba Atlantic Pharmacy and Compounding",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-10"
+    },
+    {
+      "mediaId": "106206",
+      "firm": "Coram Healthcare Corporation of Indiana",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-08"
+    },
+    {
+      "mediaId": "106455",
+      "firm": "Option Care Enterprises Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-08"
+    },
+    {
+      "mediaId": "106688",
+      "firm": "Pharmacy Resources Incorporated",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-08"
+    },
+    {
+      "mediaId": "106696",
+      "firm": "SaveWay Compounding Pharmacy, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-08"
+    },
+    {
+      "mediaId": "106706",
+      "firm": "Snyder Mark Drugs Roselle, Inc. dba Mark Drugs Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-08"
+    },
+    {
+      "mediaId": "94528",
+      "firm": "Isomeric Pharmacy Solution, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-04"
+    },
+    {
+      "mediaId": "99733",
+      "firm": "Isomeric Pharmacy Solutions LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-04"
+    },
+    {
+      "mediaId": "104240",
+      "firm": "Isomeric Pharmacy Solutions LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-04"
+    },
+    {
+      "mediaId": "106097",
+      "firm": "Bella Pharmaceuticals, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-03"
+    },
+    {
+      "mediaId": "106341",
+      "firm": "Diabetes Corporation of America dba DCA Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-03"
+    },
+    {
+      "mediaId": "106351",
+      "firm": "Pharmacy Associates, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-03"
+    },
+    {
+      "mediaId": "106401",
+      "firm": "Pharmacy Specialists of Central FL Inc., dba Pharmacy Specialists",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-03"
+    },
+    {
+      "mediaId": "106405",
+      "firm": "Joe Wise Pharmacy, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-03"
+    },
+    {
+      "mediaId": "106664",
+      "firm": "Brookfield Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-03"
+    },
+    {
+      "mediaId": "106668",
+      "firm": "Park Infusioncare LP dba Preferred Homecare",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-08-03"
+    },
+    {
+      "mediaId": "106108",
+      "firm": "Tiberius, Inc., dba Custom Scripts Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-07-26"
+    },
+    {
+      "mediaId": "106667",
+      "firm": "ARJ Infusion Services, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-07-26"
+    },
+    {
+      "mediaId": "106375",
+      "firm": "J.W. Platt, RPh LLC., dba The Wellness Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-07-24"
+    },
+    {
+      "mediaId": "106479",
+      "firm": "Millers of Wyckoff, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-07-24"
+    },
+    {
+      "mediaId": "106526",
+      "firm": "Garda Rx LLC.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-07-24"
+    },
+    {
+      "mediaId": "106053",
+      "firm": "DNA Pharmacy Services dba Palm Beach Compounding",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-07-21"
+    },
+    {
+      "mediaId": "106413",
+      "firm": "Meditech Laboratories, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-07-21"
+    },
+    {
+      "mediaId": "106502",
+      "firm": "Nutrishare Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-07-21"
+    },
+    {
+      "mediaId": "91010",
+      "firm": "Medistat RX L.L.C.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-07-06"
+    },
+    {
+      "mediaId": "94559",
+      "firm": "Medistat RX, LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-07-06"
+    },
+    {
+      "mediaId": "105795",
+      "firm": "Shiraz Specialty Pharmacy Inc. dba Axis Pharmacy Northwest",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-06-21"
+    },
+    {
+      "mediaId": "104078",
+      "firm": "American Specialty Pharmacy",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-06-15"
+    },
+    {
+      "mediaId": "104843",
+      "firm": "SterRx",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-06-15"
+    },
+    {
+      "mediaId": "104879",
+      "firm": "California Pharmacy & Compounding Center",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-06-15"
+    },
+    {
+      "mediaId": "105042",
       "firm": "RC Outsourcing LLC",
-      "publishedOn": "2024-12-12"
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-06-15"
     },
     {
-      "mediaId": "184179",
-      "firm": "TAILSTORM HEALTH INC",
-      "publishedOn": "2024-12-10"
+      "mediaId": "105802",
+      "firm": "Qualgen LLC",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-06-15"
     },
     {
-      "mediaId": "184171",
-      "firm": "Fresenius Kabi Oncology Limited",
-      "publishedOn": "2024-12-05"
+      "mediaId": "104346",
+      "firm": "Hartley Medical Center Pharmacy Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-06-05"
     },
     {
-      "mediaId": "183861",
-      "firm": "Apicore Pharmaceuticals Private Ltd.",
-      "publishedOn": "2024-11-26"
+      "mediaId": "104902",
+      "firm": "Brookfield Medical/Surgical Supply Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-05-24"
     },
     {
-      "mediaId": "183626",
-      "firm": "OSRX Inc.",
-      "publishedOn": "2024-11-21"
+      "mediaId": "105639",
+      "firm": "Repro-Med Systems, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-05-22"
     },
     {
-      "mediaId": "183580",
-      "firm": "Takeda Pharmaceutical Company, Limited",
-      "publishedOn": "2024-11-15"
+      "mediaId": "105074",
+      "firm": "TSDR Pharmacy Inc. dba brandMD Skin Care",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-05-17"
     },
     {
-      "mediaId": "183579",
-      "firm": "Astellas Pharma Inc.",
-      "publishedOn": "2024-11-15"
+      "mediaId": "105083",
+      "firm": "Sancilio & Company, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-05-16"
     },
     {
-      "mediaId": "183426",
-      "firm": "US Specialty Formulations",
-      "publishedOn": "2024-11-12"
+      "mediaId": "76184",
+      "firm": "Setton Pistachio of Terra Bella, Inc.",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-05-15"
     },
     {
-      "mediaId": "183428",
-      "firm": "IntegraDose Compounding Services",
-      "publishedOn": "2024-11-12"
+      "mediaId": "78744",
+      "firm": "American National Red Cross",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-05-15"
     },
     {
-      "mediaId": "183393",
-      "firm": "Avenue Pharmacy Inc dba Pathway Pharmacy",
-      "publishedOn": "2024-11-06"
+      "mediaId": "104643",
+      "firm": "AnazaoHealth Corporation",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-05-15"
     },
     {
-      "mediaId": "183268",
-      "firm": "Staska Pharmaceuticals Inc",
-      "publishedOn": "2024-11-05"
-    },
-    {
-      "mediaId": "183269",
-      "firm": "Aarti Drugs Limited",
-      "publishedOn": "2024-11-01"
-    },
-    {
-      "mediaId": "183238",
-      "firm": "Nephron Sterile Compounding Center",
-      "publishedOn": "2024-10-31"
+      "mediaId": "104798",
+      "firm": "Nephron Pharmaceuticals Corporation",
+      "publishedOn": "2024-01-17",
+      "recordDate": "2017-05-15"
     }
   ]
 }
