@@ -1,6 +1,6 @@
 # USCG D13 / Northwest LNM — x402 door
 
-Separate SKU from Idaho ticks and FDA import alerts. Official USCG District 13 / Northwest weekly Local Notice to Mariners PDF only. Does not invent notices. Does not wrap CBP AD/CVD.
+Separate SKU from Idaho ticks, FDA import alerts, and USCG D11 (`/mariners-d11`). Official USCG District 13 / Northwest weekly Local Notice to Mariners PDF only. Does not invent notices. Does not wrap CBP AD/CVD. `/mariners` stays D13.
 
 ## Paths
 
@@ -31,6 +31,8 @@ Paid body fields: `week`, `section`, `waterway`, `text`, `sourceUrl`. Text is co
 | `MARINERS_PDF_PATH` | unset | Optional already-fetched weekly PDF |
 
 Do not set `X402_SKIP_SETTLE` on the standing public unit.
+
+D11 / Southwest northern is a separate SKU at `/mariners-d11`. Same walker, `district=11`. See `docs/MARINERS-D11-X402.md`.
 
 ```bash
 cd ~/projects/mcp-proxy

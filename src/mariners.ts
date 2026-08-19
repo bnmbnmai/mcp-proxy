@@ -1,6 +1,8 @@
 /**
- * USCG District 13 / Northwest Local Notice to Mariners — official weekly PDF only.
- * Does not invent notices. Does not wrap CBP AD/CVD or other districts.
+ * USCG Local Notice to Mariners — official weekly NavCEN PDF only.
+ * One parser walks District 13 / Northwest (`/mariners`) and District 11 /
+ * Southwest northern (`/mariners-d11`). Does not invent notices.
+ * Does not wrap CBP AD/CVD. D11 south has no 2026 weekly PDFs — not shipped.
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -10,16 +12,73 @@ import { dirname, join, resolve } from "node:path";
 
 export const MARINERS_PATH = "/mariners";
 export const MARINERS_MANIFEST_PATH = "/mariners/manifest.json";
+export const MARINERS_D11_PATH = "/mariners-d11";
+export const MARINERS_D11_MANIFEST_PATH = "/mariners-d11/manifest.json";
 export const MARINERS_AMOUNT_ATOMIC = "50000";
 export const PRODUCT_ID = "uscg-d13-lnm";
 export const PRODUCT_NAME = "USCG D13 / Northwest LNM";
+export const D11_PRODUCT_ID = "uscg-d11-lnm";
+export const D11_PRODUCT_NAME = "USCG D11 / Southwest LNM";
 
 export const LNM_LISTING_URL =
   "https://www.navcen.uscg.gov/local-notices-to-mariners?district=13+0&subdistrict=n";
+export const D11_LNM_LISTING_URL =
+  "https://www.navcen.uscg.gov/local-notices-to-mariners?district=11+0&subdistrict=n";
 export const LNM_PDF_BASE = "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/";
 export const LNM_PDF_PATTERN = "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13{WW}{YYYY}.pdf";
+export const D11_LNM_PDF_PATTERN = "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11{WW}{YYYY}.pdf";
 export const DISTRICT = "13";
 export const DISTRICT_NAME = "Northwest";
+export const D11_DISTRICT = "11";
+export const D11_DISTRICT_NAME = "Southwest";
+
+export type LnmSpec = {
+  productId: string;
+  productName: string;
+  district: string;
+  districtName: string;
+  listingUrl: string;
+  pdfPattern: string;
+  path: string;
+  cacheDir: string;
+  dirEnv: string;
+  ttlEnv: string;
+  listingPathEnv: string;
+  pdfPathEnv: string;
+  userAgent: string;
+};
+
+export const D13_SPEC: LnmSpec = {
+  productId: PRODUCT_ID,
+  productName: PRODUCT_NAME,
+  district: DISTRICT,
+  districtName: DISTRICT_NAME,
+  listingUrl: LNM_LISTING_URL,
+  pdfPattern: LNM_PDF_PATTERN,
+  path: MARINERS_PATH,
+  cacheDir: "mariners",
+  dirEnv: "MARINERS_DIR",
+  ttlEnv: "MARINERS_TTL_MS",
+  listingPathEnv: "MARINERS_LISTING_PATH",
+  pdfPathEnv: "MARINERS_PDF_PATH",
+  userAgent: "bnm-data-shop/1.0 (USCG D13 LNM public PDF; +https://www.navcen.uscg.gov/)",
+};
+
+export const D11_SPEC: LnmSpec = {
+  productId: D11_PRODUCT_ID,
+  productName: D11_PRODUCT_NAME,
+  district: D11_DISTRICT,
+  districtName: D11_DISTRICT_NAME,
+  listingUrl: D11_LNM_LISTING_URL,
+  pdfPattern: D11_LNM_PDF_PATTERN,
+  path: MARINERS_D11_PATH,
+  cacheDir: "mariners-d11",
+  dirEnv: "MARINERS_D11_DIR",
+  ttlEnv: "MARINERS_D11_TTL_MS",
+  listingPathEnv: "MARINERS_D11_LISTING_PATH",
+  pdfPathEnv: "MARINERS_D11_PDF_PATH",
+  userAgent: "bnm-data-shop/1.0 (USCG D11 LNM public PDF; +https://www.navcen.uscg.gov/)",
+};
 
 export const NOTICE_FIELDS = ["week", "section", "text", "sourceUrl"] as const;
 
@@ -53,7 +112,7 @@ export type MarinersNotice = {
 
 export type MarinersSnapshot = {
   ok: true;
-  product: typeof PRODUCT_ID;
+  product: string;
   status: "ok" | "empty" | "stale";
   reason: string | null;
   fetchedAt: string;
@@ -61,8 +120,8 @@ export type MarinersSnapshot = {
   week: string | null;
   year: number | null;
   edition: string | null;
-  district: typeof DISTRICT;
-  districtName: typeof DISTRICT_NAME;
+  district: string;
+  districtName: string;
   sources: {
     listing: string;
     pdfPattern: string;
@@ -71,8 +130,6 @@ export type MarinersSnapshot = {
   editions: LnmEdition[];
   notices: MarinersNotice[];
 };
-
-const HTTP_UA = "bnm-data-shop/1.0 (USCG D13 LNM public PDF; +https://www.navcen.uscg.gov/)";
 const AID_ROW_RE = /^(?<name>.+?)\s+(?<llnr>\d{4,5}(?:\.\d+)?)\s+(?<rest>.+)$/;
 const PAGE_DATE_RE = /^(\d{1,2})\/(\d{1,2})\/(\d{2}),/;
 const AS_OF_RE = /\b(\d{2})\/(\d{2})\/(\d{4})\b/;
@@ -81,13 +138,13 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export function marinersDir(): string {
-  if (env("MARINERS_DIR")) return resolve(env("MARINERS_DIR"));
-  return resolve(join(homedir(), "projects/mcp-proxy/data/mariners"));
+export function marinersDir(spec: LnmSpec = D13_SPEC): string {
+  if (env(spec.dirEnv)) return resolve(env(spec.dirEnv));
+  return resolve(join(homedir(), "projects/mcp-proxy/data", spec.cacheDir));
 }
 
-export function snapshotPath(): string {
-  return join(marinersDir(), "snapshot.json");
+export function snapshotPath(spec: LnmSpec = D13_SPEC): string {
+  return join(marinersDir(spec), "snapshot.json");
 }
 
 export function absolutePdfUrl(href: string): string {
@@ -187,7 +244,7 @@ export function parseLnmText(
     const trimmed = collapseWs(line);
     if (!trimmed) continue;
 
-    if (/Local Notice to Mariners for Northwest District/i.test(trimmed)) {
+    if (/Local Notice to Mariners for \S+ District/i.test(trimmed)) {
       const dated = trimmed.match(AS_OF_RE);
       if (dated) {
         const [, mm, dd, yyyy] = dated;
@@ -235,11 +292,15 @@ export function parseLnmText(
   return { asOf, notices };
 }
 
-export function emptySnapshot(reason: string, editions: LnmEdition[] = []): MarinersSnapshot {
+export function emptySnapshot(
+  reason: string,
+  editions: LnmEdition[] = [],
+  spec: LnmSpec = D13_SPEC,
+): MarinersSnapshot {
   const latest = latestEdition(editions);
   return {
     ok: true,
-    product: PRODUCT_ID,
+    product: spec.productId,
     status: "empty",
     reason,
     fetchedAt: new Date().toISOString(),
@@ -247,11 +308,11 @@ export function emptySnapshot(reason: string, editions: LnmEdition[] = []): Mari
     week: latest?.edition ?? null,
     year: latest?.year ?? null,
     edition: latest?.edition ?? null,
-    district: DISTRICT,
-    districtName: DISTRICT_NAME,
+    district: spec.district,
+    districtName: spec.districtName,
     sources: {
-      listing: LNM_LISTING_URL,
-      pdfPattern: LNM_PDF_PATTERN,
+      listing: spec.listingUrl,
+      pdfPattern: spec.pdfPattern,
       pdfUrl: latest?.sourceUrl ?? null,
     },
     editions,
@@ -265,22 +326,26 @@ export function assembleSnapshot(opts: {
   asOf: string | null;
   notices: MarinersNotice[];
   fetchedAt?: string;
+  spec?: LnmSpec;
 }): MarinersSnapshot {
+  const spec = opts.spec ?? D13_SPEC;
   return {
     ok: true,
-    product: PRODUCT_ID,
+    product: spec.productId,
     status: opts.notices.length > 0 ? "ok" : "empty",
-    reason: opts.notices.length > 0 ? null : "Official D13/Northwest PDF had no parseable notice rows.",
+    reason: opts.notices.length > 0
+      ? null
+      : `Official ${spec.districtName} PDF had no parseable notice rows.`,
     fetchedAt: opts.fetchedAt ?? new Date().toISOString(),
     asOf: opts.asOf,
     week: opts.latest.edition,
     year: opts.latest.year,
     edition: opts.latest.edition,
-    district: DISTRICT,
-    districtName: DISTRICT_NAME,
+    district: spec.district,
+    districtName: spec.districtName,
     sources: {
-      listing: LNM_LISTING_URL,
-      pdfPattern: LNM_PDF_PATTERN,
+      listing: spec.listingUrl,
+      pdfPattern: spec.pdfPattern,
       pdfUrl: opts.latest.sourceUrl,
     },
     editions: opts.editions,
@@ -302,49 +367,55 @@ export function pdfToText(pdfPath: string): string {
   return result.stdout || "";
 }
 
-async function fetchBytes(url: string, accept: string): Promise<Uint8Array> {
+async function fetchBytes(url: string, accept: string, spec: LnmSpec): Promise<Uint8Array> {
   const res = await fetch(url, {
-    headers: { "User-Agent": HTTP_UA, Accept: accept },
+    headers: { "User-Agent": spec.userAgent, Accept: accept },
   });
   if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
   return new Uint8Array(await res.arrayBuffer());
 }
 
-async function fetchText(url: string): Promise<string> {
+async function fetchText(url: string, spec: LnmSpec): Promise<string> {
   const res = await fetch(url, {
-    headers: { "User-Agent": HTTP_UA, Accept: "text/html" },
+    headers: { "User-Agent": spec.userAgent, Accept: "text/html" },
   });
   if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
   return await res.text();
 }
 
-function listingPath(): string {
-  return env("MARINERS_LISTING_PATH");
+function listingPath(spec: LnmSpec): string {
+  return env(spec.listingPathEnv);
 }
 
-function pdfPathOverride(): string {
-  return env("MARINERS_PDF_PATH");
+function pdfPathOverride(spec: LnmSpec): string {
+  return env(spec.pdfPathEnv);
 }
 
-export async function collectMariners(): Promise<MarinersSnapshot> {
-  const listingHtml = listingPath() && existsSync(listingPath())
-    ? readFileSync(listingPath(), "utf-8")
-    : await fetchText(LNM_LISTING_URL);
+export async function collectMariners(spec: LnmSpec = D13_SPEC): Promise<MarinersSnapshot> {
+  const listingFile = listingPath(spec);
+  const listingHtml = listingFile && existsSync(listingFile)
+    ? readFileSync(listingFile, "utf-8")
+    : await fetchText(spec.listingUrl, spec);
   const editions = parseListingHtml(listingHtml);
   const latest = latestEdition(editions);
   if (!latest) {
-    const snap = emptySnapshot("Official D13/Northwest listing had no weekly PDF links.");
-    writeSnapshot(snap);
+    const snap = emptySnapshot(
+      `Official ${spec.districtName} listing had no weekly PDF links.`,
+      [],
+      spec,
+    );
+    writeSnapshot(snap, spec);
     return snap;
   }
 
-  const dir = marinersDir();
+  const dir = marinersDir(spec);
   mkdirSync(dir, { recursive: true });
-  const pdfFile = pdfPathOverride() && existsSync(pdfPathOverride())
-    ? pdfPathOverride()
-    : join(dir, `lnm${DISTRICT}${String(latest.week).padStart(2, "0")}${latest.year}.pdf`);
-  if (!(pdfPathOverride() && existsSync(pdfPathOverride()))) {
-    const bytes = await fetchBytes(latest.sourceUrl, "application/pdf");
+  const override = pdfPathOverride(spec);
+  const pdfFile = override && existsSync(override)
+    ? override
+    : join(dir, `lnm${spec.district}${String(latest.week).padStart(2, "0")}${latest.year}.pdf`);
+  if (!(override && existsSync(override))) {
+    const bytes = await fetchBytes(latest.sourceUrl, "application/pdf", spec);
     writeFileSync(pdfFile, bytes);
   }
 
@@ -355,38 +426,39 @@ export async function collectMariners(): Promise<MarinersSnapshot> {
     latest,
     asOf: parsed.asOf,
     notices: parsed.notices,
+    spec,
   });
-  writeSnapshot(snap);
+  writeSnapshot(snap, spec);
   return snap;
 }
 
-export function readSnapshot(): MarinersSnapshot | null {
-  const path = snapshotPath();
+export function readSnapshot(spec: LnmSpec = D13_SPEC): MarinersSnapshot | null {
+  const path = snapshotPath(spec);
   if (!existsSync(path)) return null;
   try {
     const raw = JSON.parse(readFileSync(path, "utf-8")) as MarinersSnapshot;
-    if (raw && raw.product === PRODUCT_ID && Array.isArray(raw.notices)) return raw;
+    if (raw && raw.product === spec.productId && Array.isArray(raw.notices)) return raw;
   } catch {
     /* corrupt */
   }
   return null;
 }
 
-export function writeSnapshot(snap: MarinersSnapshot): void {
-  const path = snapshotPath();
+export function writeSnapshot(snap: MarinersSnapshot, spec: LnmSpec = D13_SPEC): void {
+  const path = snapshotPath(spec);
   mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, JSON.stringify(snap, null, 2) + "\n");
 }
 
-export async function loadMariners(): Promise<MarinersSnapshot> {
-  const cached = readSnapshot();
-  const ttlMs = Number(env("MARINERS_TTL_MS", String(6 * 3600 * 1000)));
+export async function loadMariners(spec: LnmSpec = D13_SPEC): Promise<MarinersSnapshot> {
+  const cached = readSnapshot(spec);
+  const ttlMs = Number(env(spec.ttlEnv, String(6 * 3600 * 1000)));
   if (cached) {
     const age = Date.now() - Date.parse(cached.fetchedAt);
     if (Number.isFinite(age) && age >= 0 && age < ttlMs) return cached;
   }
   try {
-    return await collectMariners();
+    return await collectMariners(spec);
   } catch (err) {
     if (cached) {
       return {
@@ -396,7 +468,9 @@ export async function loadMariners(): Promise<MarinersSnapshot> {
       };
     }
     return emptySnapshot(
-      `USCG D13 LNM PDF is not on this host and live fetch failed. ${err instanceof Error ? err.message : String(err)}`,
+      `USCG ${spec.districtName} LNM PDF is not on this host and live fetch failed. ${err instanceof Error ? err.message : String(err)}`,
+      [],
+      spec,
     );
   }
 }
@@ -411,20 +485,23 @@ export function sectionCounts(notices: MarinersNotice[]): { section: string; cou
     .sort((a, b) => a.section.localeCompare(b.section));
 }
 
-export function buildMarinersManifest(snap: MarinersSnapshot | null): Record<string, unknown> {
+export function buildMarinersManifest(
+  snap: MarinersSnapshot | null,
+  spec: LnmSpec = D13_SPEC,
+): Record<string, unknown> {
   const notices = snap?.notices ?? [];
   return {
-    product: PRODUCT_ID,
-    name: PRODUCT_NAME,
+    product: spec.productId,
+    name: spec.productName,
     free: true,
-    note: "Count + official source + schema only. Notice text is the paid GET /mariners body.",
+    note: `Count + official source + schema only. Notice text is the paid GET ${spec.path} body.`,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
     network: "base",
     asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
     amountAtomic: MARINERS_AMOUNT_ATOMIC,
     priceUsdc: "0.05",
-    district: DISTRICT,
-    districtName: DISTRICT_NAME,
+    district: spec.district,
+    districtName: spec.districtName,
     week: snap?.week ?? null,
     year: snap?.year ?? null,
     edition: snap?.edition ?? null,
@@ -433,8 +510,8 @@ export function buildMarinersManifest(snap: MarinersSnapshot | null): Record<str
     noticeCount: notices.length,
     sections: sectionCounts(notices),
     sources: snap?.sources ?? {
-      listing: LNM_LISTING_URL,
-      pdfPattern: LNM_PDF_PATTERN,
+      listing: spec.listingUrl,
+      pdfPattern: spec.pdfPattern,
       pdfUrl: null,
     },
     schema: {
@@ -444,15 +521,32 @@ export function buildMarinersManifest(snap: MarinersSnapshot | null): Record<str
   };
 }
 
-export async function loadMarinersManifest(): Promise<Record<string, unknown>> {
-  const cached = readSnapshot();
-  if (cached) return buildMarinersManifest(cached);
+export async function loadMarinersManifest(spec: LnmSpec = D13_SPEC): Promise<Record<string, unknown>> {
+  const cached = readSnapshot(spec);
+  if (cached) return buildMarinersManifest(cached, spec);
   try {
-    const snap = await collectMariners();
-    return buildMarinersManifest(snap);
+    const snap = await collectMariners(spec);
+    return buildMarinersManifest(snap, spec);
   } catch {
-    return buildMarinersManifest(null);
+    return buildMarinersManifest(null, spec);
   }
+}
+
+export function collectMarinersD11(): Promise<MarinersSnapshot> {
+  return collectMariners(D11_SPEC);
+}
+
+export function loadMarinersD11(): Promise<MarinersSnapshot> {
+  return loadMariners(D11_SPEC);
+}
+
+export function loadMarinersD11Manifest(): Promise<Record<string, unknown>> {
+  return loadMarinersManifest(D11_SPEC);
+}
+
+export function specFromArgv(argv: string[] = process.argv): LnmSpec {
+  const raw = argv.find((arg) => arg.startsWith("--district="))?.slice("--district=".length);
+  return raw === "11" ? D11_SPEC : D13_SPEC;
 }
 
 function isMain(): boolean {
@@ -461,11 +555,14 @@ function isMain(): boolean {
 }
 
 if (isMain()) {
-  collectMariners()
+  const spec = specFromArgv();
+  collectMariners(spec)
     .then((snap) => {
       console.log(
         JSON.stringify(
           {
+            product: snap.product,
+            district: snap.district,
             status: snap.status,
             fetchedAt: snap.fetchedAt,
             asOf: snap.asOf,
@@ -473,7 +570,7 @@ if (isMain()) {
             noticeCount: snap.notices.length,
             sections: sectionCounts(snap.notices),
             sourceUrl: snap.sources.pdfUrl,
-            snapshot: snapshotPath(),
+            snapshot: snapshotPath(spec),
           },
           null,
           2,
