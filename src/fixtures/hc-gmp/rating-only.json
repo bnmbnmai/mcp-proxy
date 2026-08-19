@@ -1,0 +1,23 @@
+{
+  "activityList": [
+    "No recent evidence assessed"
+  ],
+  "establishmentName": "Example Labs Inc",
+  "iidExist": false,
+  "insOutcomeList": [
+    "Inspection resulted in a Compliant rating."
+  ],
+  "insStartDate": "/Date(1776096000000-0400)/",
+  "insSubType": "Regular Inspection",
+  "insType": "GMP Domestic",
+  "insepctionNumber": 1,
+  "measureTakenList": [
+    "Drug Establishment Licence was maintained."
+  ],
+  "observation": "",
+  "rating": "C",
+  "ratingDesc": "Compliant",
+  "referenceNumber": "000000",
+  "regulation": "",
+  "data": []
+}
