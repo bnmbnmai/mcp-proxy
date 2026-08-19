@@ -42,14 +42,14 @@ Do not set `X402_SKIP_SETTLE` on the standing public unit. Family / basic-auth s
 
 Cursor cloud VMs gitignore `data/untitled-letters/` and cannot restart `idaho-ticks-x402.service`. Live `cardCount` does not move until the media-box worker runs collect and restarts the door.
 
-Official indexes list **121** Untitled Letter PDFs (115 CDER OPDP + 6 CBER promo) as of 2026-08-19. Seed on disk was **5**. First fill landed **35**. This run is one more slice, not the whole archive.
+Official indexes list **121** Untitled Letter PDFs (115 CDER OPDP + 6 CBER promo) as of 2026-08-19. Seed on disk was **5**. First fill landed **35**. Second fill landed **65**. This run is one more slice, not the whole archive.
 
-Live after apollo collect + `idaho-ticks-x402.service` restart (2026-08-19): **cardCount 65**, asOf **2026-07-15**, fetchedAt **2026-08-19T22:38:46.780Z**. Price still $0.05. No new SKU. `/gmp` still **3500**.
+Live after apollo collect + `idaho-ticks-x402.service` restart (2026-08-19): **cardCount 95**, asOf **2026-07-15**, fetchedAt **2026-08-19T22:43:24.208Z**. Price still $0.05. No new SKU. `/gmp` still **3500**.
 
 ```bash
 # on the media-box / apollo host
 cd ~/projects/mcp-proxy
-git checkout cursor/untitled-letters-fill-b1b3
+git checkout cursor/untitled-letters-fill-b794
 npm run build
 
 export UNTITLED_LETTERS_DIR=$HOME/projects/mcp-proxy/data/untitled-letters

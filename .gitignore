@@ -12,6 +12,7 @@ build/warning-letters.*
 build/form-483.*
 build/gmp.*
 build/untitled-letters.*
+build/awa.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
@@ -21,3 +22,4 @@ data/warning-letters/
 data/form-483/
 data/gmp/
 data/untitled-letters/
+data/awa/
