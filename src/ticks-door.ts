@@ -557,7 +557,7 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         referenceNumber: "111868",
         inspectedOn: "2026-05-25",
         sourceUrl: "https://www.drug-inspections.canada.ca/md/fullReportCard-en.html?insNumber=501&lang=en",
-        body: "Summary of observations\n1. MDR s.58 (b) Recall procedure\nRisk 1: The company did not adequately implement the written procedure for recalls.",
+        body: "Health Canada medical-device inspection report card\nSummary of observations\n1. MDR s.NN (official cite + observation narrative after payment)",
       },
     ],
   },
