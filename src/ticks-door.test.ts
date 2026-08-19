@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, X402SCAN_SERVER_URL, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus } from "./ticks-door.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
   IMPORT_ALERTS_MANIFEST_PATH,
@@ -94,6 +94,12 @@ async function main(): Promise<void> {
       false,
       "outputSchema: null 400s CDP v1 verify",
     );
+    assert.equal(
+      (body as { extensions?: { bazaar?: { info?: { input?: { method?: string } } } } }).extensions
+        ?.bazaar?.info?.input?.method,
+      "GET",
+      "402 JSON body also carries extensions.bazaar for body-only crawlers",
+    );
     const pr = res.headers.get("payment-required");
     assert.ok(pr, "v2 PAYMENT-REQUIRED header");
     const v2 = JSON.parse(Buffer.from(pr, "base64").toString("utf8")) as {
@@ -104,6 +110,13 @@ async function main(): Promise<void> {
     assert.equal(v2.extensions?.bazaar?.info?.input?.method, "GET");
     assert.ok((v2.resource?.description ?? "").includes("Call GET /ticks"));
     assert.ok((v2.resource?.description ?? "").length <= 500);
+    const v2Accepts = (
+      JSON.parse(Buffer.from(pr, "base64").toString("utf8")) as {
+        accepts?: { description?: string }[];
+      }
+    ).accepts;
+    assert.ok((v2Accepts?.[0]?.description ?? "").includes("Call GET /ticks"));
+    assert.ok((v2Accepts?.[0]?.description ?? "").length <= 500);
     const declared = bazaarExtension("ticks");
     assert.deepEqual(
       v2.extensions?.bazaar?.info?.input,
@@ -118,8 +131,11 @@ async function main(): Promise<void> {
       openapi?: string;
       llmsTxt?: string;
       instructions?: string;
+      ownershipProofs?: string[];
     };
     assert.equal(wk.version, 1);
+    assert.deepEqual(wk.ownershipProofs, [PAY_TO]);
+    assert.ok((wk.instructions ?? "").includes(X402SCAN_SERVER_URL));
     assert.equal(wk.resources.length, 4, "well-known lists the four live doors");
     assert.ok(wk.resources.some((r) => r.endsWith(TICKS_PATH) && r.startsWith("http")));
     assert.ok(wk.resources.some((r) => r.endsWith(IMPORT_ALERTS_PATH)));
@@ -199,6 +215,8 @@ async function main(): Promise<void> {
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.toLowerCase().includes("/gain"));
     assert.ok(!llmsBody.includes("WASDE"));
+    assert.ok(llmsBody.includes(X402SCAN_SERVER_URL));
+    assert.ok(!llmsBody.includes("TCPA"));
 
     const shop = (await (await fetch(`${base}/`)).json()) as {
       products: { path: string }[];
