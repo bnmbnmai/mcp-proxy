@@ -1911,8 +1911,8 @@ async function main(): Promise<void> {
 
       const leak402 = JSON.stringify(body402);
       assert.ok(!leak402.includes("foreign correspondent banking and virtual currency customers"));
-      assert.ok(!leak402.includes("United Texas Bank, N.A."));
       assert.ok(!leak402.includes("IT IS ORDERED"));
+      assert.ok(!leak402.includes("Numbered article"));
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === OCC_CD_PATH), true);
