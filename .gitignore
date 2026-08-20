@@ -24,6 +24,7 @@ build/ncua-orders.*
 build/fincen-orders.*
 build/ferc-orders.*
 build/ofac-orders.*
+build/bis-orders.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
@@ -45,3 +46,4 @@ data/ncua-orders/
 data/fincen-orders/
 data/ferc-orders/
 data/ofac-orders/
+data/bis-orders/
