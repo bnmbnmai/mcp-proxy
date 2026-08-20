@@ -1,0 +1,7 @@
+{
+  "title": "Rice Lake Weighing Systems, Inc.",
+  "docket": "936706",
+  "html_url": "https://www.federalregister.gov/documents/2026/08/12/2026-99999/rice-lake",
+  "raw_text": "This Federal Register raw_text is not the official ofac.treasury.gov PDF TEXT.",
+  "full_text": "full_text dump from federalregister.gov is a KILL for this SKU."
+}
