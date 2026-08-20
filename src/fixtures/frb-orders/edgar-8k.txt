@@ -1,0 +1,6 @@
+<SUBMISSION>
+<TYPE>8-K
+<FILENAME>ex991-consentorder.htm
+EX-99.1
+Community Bankshares, Inc. furnished an exhibit describing an enforcement action.
+This is an EDGAR 8-K exhibit of another bank, not the official FRB PDF.
