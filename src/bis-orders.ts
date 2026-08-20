@@ -282,6 +282,7 @@ export function normalizeDocket(raw: string | null | undefined): string | null {
     if (fromName) return fromName[1].toUpperCase();
   }
   const slug = raw.trim();
+  if (isoDate(slug)) return null;
   if (/^[A-Za-z0-9][A-Za-z0-9._-]{2,80}$/.test(slug) && !/\s/.test(slug)) return slug;
   return null;
 }
@@ -348,7 +349,10 @@ export function parseListingHtml(html: string): BisOrderListing[] {
     const institution =
       cells.find((c) => ENTITY_RE.test(c) || PERSON_NAME_RE.test(c)) ?? cells[1] ?? "";
     const sourceUrl = href.startsWith("http") ? href : href ? `${PDF_ORIGIN}${href}` : "";
-    const docket = normalizeDocket(cells.find((c) => DOCKET_RE.test(c) || /^[A-Za-z0-9._-]{3,}$/.test(c)) ?? "") ?? "";
+    const docket =
+      normalizeDocket(cells.find((c) => DOCKET_RE.test(c)) ?? "") ??
+      normalizeDocket(cells.find((c) => normalizeDocket(c)) ?? "") ??
+      "";
     rows.push({
       institution,
       docket,
