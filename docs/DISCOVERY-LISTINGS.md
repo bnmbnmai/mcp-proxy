@@ -24,6 +24,7 @@ Live paid doors (all return HTTP 402 unpaid, official bodies when paid):
 | `GET https://ticks.bnm.farm/frb-orders` | $0.05 | FRB institution C&D / written-agreement / PCA PDF text (this PR; not live — do not deploy / do not restart apollo) |
 | `GET https://ticks.bnm.farm/ncua-orders` | $0.05 | NCUA institution consent C&D HTML text (this PR; not live — do not deploy / do not restart apollo) |
 | `GET https://ticks.bnm.farm/fincen-orders` | $0.05 | FinCEN institution consent-order PDF text (this PR; not live — do not deploy / do not restart apollo) |
+| `GET https://ticks.bnm.farm/ferc-orders` | $0.05 | FERC institution stipulation-and-consent / show-cause / civil-penalty PDF text (this PR; not live — do not deploy / do not restart apollo) |
 
 CDP `POST /platform/v2/x402/validate` for each URL: `valid: true`, `simulation.outcome: accepted`.
 

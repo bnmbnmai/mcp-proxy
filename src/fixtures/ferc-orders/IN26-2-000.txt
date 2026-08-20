@@ -1,0 +1,1328 @@
+Document Accession #: 20260407-3069           Filed Date: 04/07/2026
+
+
+
+
+                                      195 FERC ¶ 61,016
+                                 UNITED STATES OF AMERICA
+                          FEDERAL ENERGY REGULATORY COMMISSION
+
+         Before Commissioners: Laura V. Swett, Chairman;
+                               David Rosner, Lindsay S. See,
+                               Judy W. Chang, and David LaCerte.
+
+         Terra-Gen, LLC                                                    Docket No. IN26-2-000
+
+                ORDER APPROVING STIPULATION AND CONSENT AGREEMENT
+
+                                           (Issued April 7, 2026)
+
+                The Commission approves the attached Stipulation and Consent Agreement
+         (Agreement) between the Office of Enforcement and Regulatory Accounting
+         (Enforcement) and Terra-Gen, LLC (Terra-Gen). This order is in the public interest
+         because the Agreement resolves on fair and equitable terms Enforcement’s investigation
+         (Investigation) under Part 1b of the Commission’s regulations, 18 C.F.R. Part 1b (2025),
+         into whether: (a) Terra-Gen’s participation in the California Independent System
+         Operator (CAISO) ancillary services market during the period of July 7, 2020 through
+         April 17, 2022 (Relevant Period) violated the CAISO Open Access Transmission Tariff
+         (Tariff), the Commission’s Market Behavior Rule (18 C.F.R. § 35.41(a)), section 222 of
+         the Federal Power Act (16 U.S.C. § 824v), and the Commission’s Anti-Manipulation
+         Rule (18 C.F.R. § 1.c.2); and (b) Terra-Gen violated the Commission’s Duty of Candor
+         Rule (18 C.F.R. § 35.41(b)) in connection with a compliance report that it submitted to
+         Enforcement pursuant to a prior Commission-approved settlement of an unrelated matter.
+
+                Terra-Gen stipulates to the facts set forth in Section II of the Agreement and
+         admits the violations set forth in Section III.A of the Agreement. Terra-Gen neither
+         admits nor denies the alleged violation set forth in Section III.B of the Agreement.
+         Terra-Gen agrees to: (a) pay a civil penalty of $4,950,000 to the United States Treasury;
+         (b) disgorge $681,007, plus interest, to CAISO; and (c) be subject to the compliance
+         monitoring requirements as provided in the Agreement.
+
+         I.    Facts
+
+               A.      Background
+
+                Terra-Gen is a Delaware limited liability company. Through subsidiaries, Terra-
+         Gen owns and operates multiple resources in the CAISO footprint, including the
+         resources at issue in the Agreement: Mojave 89 and Mojave 90 (together, Resources).
+Document Accession #: 20260407-3069                Filed Date: 04/07/2026
+
+         Docket No. IN26-2-000                                                               -2-
+
+         4.     Mojave 16/17/18 LLC (a wholly-owned subsidiary of Terra-Gen) owns and
+         operates Mojave 89. Mojave 16/17/18 LLC has market-based rate authorization from the
+         Commission.1
+
+         5.     Mojave 3/4/5 LLC (another wholly-owned subsidiary of Terra-Gen) owns and
+         operates Mojave 90. Mojave 3/4/5 LLC also has market-based rate authorization from
+         the Commission.2
+
+         6.     During the Relevant Period, TGP Energy Management, LLC (TGP Energy) was
+         the Scheduling Coordinator for both Resources. TGP Energy is another wholly-owned
+         subsidiary of Terra-Gen.
+
+         7.     At the beginning of the Relevant Period, each Resource consisted of a wind farm
+         and an associated battery energy storage system (BESS) with a single CAISO resource
+         ID, because each Resource was registered as a hybrid resource. However, on November
+         19, 2020, Terra-Gen converted the Mojave 90 registration from hybrid to co-located.
+         This conversion resulted in two separate CAISO resource IDs for Mojave 90—one ID for
+         the wind component and one ID for the BESS component. Mojave 89 underwent a
+         similar conversion after the Relevant Period.
+
+                   B.       Terra-Gen’s participation in the CAISO ancillary services market
+
+         8.     During the Relevant Period, Terra-Gen (through TGP Energy): (a) offered the
+         Resources into the CAISO day-ahead market to provide ancillary services; and (b)
+         obtained ancillary service awards based on those offers. Under the CAISO Tariff, these
+         awards were binding in the real-time market and required Terra-Gen (acting through TGP
+         Energy) to place the Resources on automatic generation control for the duration of the
+         awards, so that CAISO could directly dispatch the Resources when and as needed.3
+
+         9.     However, in numerous hours during the Relevant Period, when the Resources
+         received binding regulation-down awards from CAISO (i.e. when CAISO instructed the
+         Resources to purchase energy off the grid and store it in the Resources’ BESSs) and the
+         real-time Locational Marginal Price (LMP) was high, Terra-Gen (through its relevant
+         subsidiaries) employed a strategy to avoid this obligation by:
+
+                   a.       Claiming outages for the Resources’ BESS, even though there was no
+                            legitimate basis for doing so; and/or
+
+
+                   1
+                       Mojave 16/17/18 LLC, Docket No. ER19-1662-000 (May 30, 2019) (delegated
+         order).
+                   2
+                       Mojave 3/4/5 LLC, Docket No. ER19-1660-000 (May 30, 2019) (delegated
+         order).
+                   3
+                       See generally CAISO Tariff sections 8.7, 34.13, and 37.3.1.1.
+Document Accession #: 20260407-3069           Filed Date: 04/07/2026
+
+         Docket No. IN26-2-000                                                               -3-
+
+                b.     Removing the Resources from automatic generation control, and therefore
+                       preventing CAISO from implementing regulation-down awards, even
+                       though the Resources were operationally capable of meeting regulation-
+                       down awards.
+
+         This strategy was devised by, implemented by, and maintained at the direction of TGP
+         Energy’s former Vice President of Origination (Former Vice President).
+
+         10.    Engaging in this conduct only when LMPs were high was a deliberate effort by
+         Terra-Gen (through TGP Energy) to gain the financial benefits of avoiding high-priced
+         purchases of energy from the grid when instructed to do so by CAISO. In contrast, the
+         Resources did not claim outages or disconnect from automatic generation control when
+         they received regulation-up awards, because these awards allowed Terra-Gen (through
+         TGP Energy) to profit by selling energy into the grid in real time.
+
+         11.    Taking an outage or disconnecting from automatic generation control in real-time
+         was financially beneficial to Terra-Gen (through TGP Energy) when LMPs were high.
+         As the Former Vice President explained to his business team, given that Terra-Gen
+         (through its relevant subsidiaries) “pa[id] for all the energy” when it was awarded a
+         regulation-down award, but was only required to “pay a small amount back” of its day-
+         ahead awards when it left the market, it made “sense to keep leaving the market
+         whenever [they were] regulated down at high prices.” The Former Vice President
+         specifically instructed his team: “If CAISO signals the battery to regulate down in a high
+         pricing even[t], we will leave the market, resulting in only a small portion of lost
+         revenue.”
+
+         12.   In another contemporaneous email sent to the Former Vice President, a TGP
+         Energy employee described this behavior as “leaving and rejoining the market”
+         depending on real-time LMPs. Under the Former Vice President’s direction, the TGP
+         Energy staff in his business unit kept account of when “CAISO was watching” to decide
+         whether to claim outages for the Resources and/or turn off the Resources’ automatic
+         generation control connections.
+
+         13.    Enforcement identified 152 hours during the Relevant Period for which Mojave 89
+         did not provide regulation-down services as dispatched by CAISO. Terra-Gen identified
+         110 hours during the Relevant Period for which Mojave 90 did not provide regulation-
+         down services as dispatched; Enforcement confirmed that Mojave 90 did not provide
+         those services during those 110 hours.
+
+         14.   By selectively avoiding regulation-down awards during these combined 262 hours,
+         Terra-Gen (through its relevant subsidiaries) was unjustly enriched in the total amount of
+         $681,007 ($527,480 for Mojave 89 and $153,527 for Mojave 90). This represents Terra-
+         Gen’s total net profit during these 262 hours—meaning, total energy and regulation
+Document Accession #: 20260407-3069           Filed Date: 04/07/2026
+
+         Docket No. IN26-2-000                                                               -4-
+
+         award payments minus charges incurred for not following CAISO’s regulation-down
+         dispatch signals in real time.
+
+                C.     Terra-Gen’s compliance reporting obligations
+
+         15.    In 2021, Terra-Gen reached a settlement with Enforcement in an earlier
+         investigation arising from conduct unrelated to this Investigation.4 The Commission-
+         approved Stipulation and Consent Agreement (Prior Settlement) required Terra-Gen to:
+         (a) pay a civil penalty; (b) make disgorgement; and (c) submit two annual compliance
+         monitoring reports to Enforcement. Among other things, these compliance reports were
+         required to “identify any known violations of the CAISO Tariff or Commission
+         regulations during the applicable period, including a description of the nature of the
+         violation and what steps were taken to rectify the situation.”
+
+         16.    On September 1, 2022, Terra-Gen submitted its First Compliance Report to
+         Enforcement as required by the Prior Settlement. This Report did not disclose any
+         violations of the Tariff associated with Mojave 89.
+
+         17.    However, three months before submitting the First Compliance Report, on June 2,
+         2022, the CAISO Market Monitor and the Former Vice President (and members of his
+         business unit) had a phone call to discuss the Market Monitor’s concerns related to
+         Mojave 89. These concerns involved Mojave 89’s failure to respond to CAISO
+         regulation-down awards in the ancillary services market (i.e., the same conduct at issue in
+         this Investigation).
+
+         18.     As evidenced by his internal email sent on September 1, 2022, the Former Vice
+         President recognized that the Mojave 89 concerns raised by the Market Monitor
+         constituted a violation of the Tariff. On the same day (September 1, 2022) that Terra-
+         Gen was to submit its First Compliance Report to Enforcement (but before it was
+         submitted), the Former Vice President alerted the Terra-Gen personnel responsible for
+         assembling the First Compliance Report—including, among others, a Terra-Gen
+         executive within the highest levels of the company (High Level Executive)—about the
+         Market Monitor’s inquiry into Mojave 89. The Former Vice President wrote in the email
+         that, “we did violate the tariff” (referring to the conduct that was the subject of the
+         Market Monitor’s prior inquiry). (Emphasis added.) The High Level Executive withheld
+         disclosure pending further internal discussion, despite the Prior Settlement requiring that
+         it be reported in the First Compliance Report.
+
+
+
+
+                4
+                The Commission approved the Stipulation and Consent Agreement in Terra-
+         Gen, LLC, 176 FERC ¶ 61,071 (2021).
+Document Accession #: 20260407-3069           Filed Date: 04/07/2026
+
+         Docket No. IN26-2-000                                                               -5-
+
+         19.    On September 13, 2022, following a referral from the Market Monitor about the
+         practices of Mojave 89 in the ancillary services market, Enforcement sent a document
+         preservation notice to Terra-Gen.
+
+         20.    On October 6, 2022, Terra-Gen provided Enforcement with an Amended First
+         Compliance Report (Amended Report) that disclosed the Market Monitor’s inquiry into
+         Mojave 89. Terra-Gen noted that it had submitted the First Compliance Report on
+         September 1, 2022, and stated that “Terra-Gen’s senior management has since confirmed
+         that representatives of Terra-Gen’s energy marketing group were contacted by the
+         [Market Monitor] in May 2022 regarding the operation of Terra-Gen’s Mojave 89 hybrid
+         wind and energy storage resource (Mojave 89 Resource) in the CAISO regulation
+         market.” (Emphasis added.) This statement gave Enforcement the misleading
+         impression that Terra-Gen did not know about the communications between the Market
+         Monitor and the Former Vice President (and his TGP Energy team) until sometime after
+         submission of the First Compliance Report. In fact, as discussed above, Terra-Gen
+         personnel—including the High Level Executive—knew about the communications before
+         the submission.
+
+         21.    Finally, Terra-Gen stated in the Amended Report that its “senior management is in
+         the process of determining whether any aspects of the operation of the Mojave 89
+         Resource in the regulation market may have violated the CAISO tariff.”
+
+                D.     Terra-Gen’s improved compliance culture
+
+         22.    Since the events giving rise to this Investigation, Terra-Gen has made substantial,
+         positive changes to its internal compliance program.
+
+         23.    Among other things, Terra-Gen has:
+
+                a.     Terminated the employment of the Former Vice President who led TGP
+                       Energy during the Relevant Period.
+
+                b.     Established an internal energy market compliance function under the charge
+                       of the company’s Chief Environment Health & Safety Officer.
+
+                c.     Created a new position of “Director – Energy Markets Compliance,” to
+                       oversee internal compliance functions specific to Commission regulations
+                       and CAISO requirements (the individual initially holding this position has
+                       since been elevated to Senior Director, Compliance & Project
+                       Implementation, overseeing two compliance specialists primarily focused
+                       on FERC and energy markets compliance).
+Document Accession #: 20260407-3069        Filed Date: 04/07/2026
+
+         Docket No. IN26-2-000                                                            -6-
+
+               d.    Created a new position of “FERC EQR Compliance Specialist,” to ensure
+                     accurate transactional reporting to the Commission, and tasked this
+                     Specialist with reviewing and correcting prior company filings.
+
+               e.    Created a new position of “Compliance Specialist, Energy Markets.”
+
+               f.    Enhanced its policy on reporting suspected violations of Commission
+                     regulations and the CAISO Tariff.
+
+               g.    Created a monthly survey that relevant employees (including all members
+                     of senior management) are required to take regarding knowledge of any
+                     actual or suspected violations of Commission regulations or the CAISO
+                     Tariff.
+
+               h.    Established an anonymous reporting tool through a third-party service for
+                     employees to report suspected regulatory violations or concerns via a
+                     website or hotline.
+
+               i.    Hired outside counsel to conduct annual training (beginning in 2022) for
+                     relevant employees on compliance with Part II of the Federal Power Act,
+                     the Commission’s regulations, and the company’s FERC Compliance
+                     Program Manual.
+
+               j.    Engaged a third-party consultant to administer an in-person compliance
+                     training in 2023 with respect to the CAISO market design and participation.
+                     This third-party consultant was also engaged to develop annual computer-
+                     based training modules for all relevant personnel (i.e., all personnel with
+                     market scheduling responsibilities), with respect to CAISO market
+                     participation and covering topics that include Commission regulatory
+                     requirements. Terra-Gen required the same personnel to undertake a
+                     CAISO-created computer-based training regimen on relevant market
+                     requirements.
+
+               k.    Updated its internal Code of Ethics to include an emphasized obligation to
+                     report any suspected violations of the Code of Ethics and regulatory
+                     requirements, and mandated training on the new Code of Ethics for all
+                     current employees and all future new hires.
+
+               l.    Engaged another third-party consultant to provide additional CAISO Tariff
+                     compliance training, and to conduct a months-long comprehensive internal
+                     compliance audit focused on CAISO Tariff compliance, which resulted in a
+                     report that identified areas in which Terra-Gen could enhance its practices
+                     and procedures, and recommended ways in which to do so.
+Document Accession #: 20260407-3069          Filed Date: 04/07/2026
+
+         Docket No. IN26-2-000                                                               -7-
+
+         24.   Terra-Gen has cooperated fully in the Investigation.
+
+         II.   Violations
+
+                Enforcement determined that Terra-Gen’s above-described conduct violated the
+         CAISO Tariff, the Commission’s Market Behavior Rule (18 C.F.R § 35.41(a)), the
+         Commission’s Duty of Candor Rule (18 C.F.R § 35.41(b)), and the Commission’s Anti-
+         Manipulation Rule (18 C.F.R § 1.c.2). Terra-Gen admits all violations except violation
+         of the Anti-Manipulation Rule.
+
+               A.     Violations of the CAISO Tariff and the Commission’s Market
+                      Behavior and Duty of Candor Rules
+
+                      1.     Violation of CAISO Tariff section 8.75
+
+         26.   CAISO Tariff section 8.7 provides in relevant part: “Once the CAISO has given
+         Scheduling Coordinators notice of the Day-Ahead and Real-Time Market Ancillary
+         Service Awards and Ancillary Service Schedules, these awards and Schedules represent
+         binding commitments made in the markets between the CAISO and the Scheduling
+         Coordinators concerned, subject to any amendments issued as described above.”
+
+         27.    Enforcement determined that Terra-Gen (through TGP Energy) violated section
+         8.7 by disregarding its “binding commitments.” Instead, Terra-Gen (through its relevant
+         subsidiaries) selectively and improperly declared outages for the Resources and/or
+         disconnected the Resources from automatic generation control upon receiving regulation-
+         down awards from CAISO at a time of high LMPs.
+
+                      2.     Violation of CAISO Tariff section 34.13.16
+
+         28.   CAISO Tariff section 34.13.1 provides in relevant part:
+
+               Resources must:
+
+               a.     unless otherwise stated in the Dispatch Instruction, comply with a
+                      Dispatch Instruction immediately upon receipt;
+
+               b.     respond to all Dispatch Instructions in accordance with Good Utility
+                      Practice;
+
+
+
+
+               5
+                  CAISO, CAISO Tariff, § 8.7 (Ancillary Services Awards) (1.0.0).
+               6
+                  CAISO, CAISO Tariff, § 34.13.1 (Response Required by Resources to Dispatch
+         Instructions) (1.0.0 & 2.0.0).
+Document Accession #: 20260407-3069            Filed Date: 04/07/2026
+
+         Docket No. IN26-2-000                                                                 -8-
+
+               c.        meet voltage criteria in accordance with the provision in the CAISO
+                         Tariff;
+
+               d.        meet any applicable Operational Ramp Rates;
+
+               e.        respond to Dispatch Instructions for Ancillary Services within the
+                         required time periods and (in the case of Participating Generators
+                         providing Regulation) respond to [automatic generation control]
+                         from the EMS;
+
+               f.        if a time frame is stated in a Dispatch Instruction, respond to a
+                         Dispatch Instruction within the stated time frame; and
+
+               g.        not intentionally generate above or below Dispatch Operating Target.
+
+         (Emphasis added.)
+
+         29.    Enforcement determined that Terra-Gen (through TGP Energy) violated section
+         34.13.1 by deliberately disregarding certain of CAISO’s dispatch instructions—to wit,
+         regulation-down awards during times of high LMPs—and choosing, instead, to declare
+         outages and/or disconnect from automatic generation control to avoid paying the high
+         prices. In these instances, there was no legitimate basis for taking outages or
+         disconnecting the Resources from automatic generation control.
+
+                         3.    Violation of CAISO Tariff section 37.3.1.17
+
+         30.    CAISO Tariff section 37.3.1.1 provides in relevant part: “Market Participants must
+         submit Bids for Energy, RUC Capacity and Ancillary Services and Submissions to Self-
+         Provide an Ancillary Service from resources that are reasonably expected to be available
+         and capable of performing at the levels specified in the Bid, and to remain available and
+         capable of so performing based on all information that is known to the Market Participant
+         or should have been known to the Market Participant at the time of submission.”
+
+         31.    Enforcement determined that Terra-Gen (through TGP Energy) violated section
+         37.3.1.1. by submitting bids in the day-ahead market with full knowledge that it planned
+         to make the Resources unavailable in the real-time market (by declaring outages and/or
+         disconnecting from automatic generation control) if CAISO made a regulation-down
+         award when LMPs were high.
+
+
+
+
+               7
+                    CAISO, CAISO Tariff, § 37.3.1.1 (Expected Conduct) (3.0.0).
+Document Accession #: 20260407-3069          Filed Date: 04/07/2026
+
+         Docket No. IN26-2-000                                                              -9-
+
+                      4.     Violation of 18 C.F.R. § 35.41(a)
+
+         32.    The Commission’s Market Behavior Rule, 18 C.F.R. § 35.41(a), requires Sellers
+         to “operate and schedule generating facilities . . . declare outages, and commit or
+         otherwise bid supply in a manner that complies with the Commission-approved rules and
+         regulations of the applicable market.”
+
+         33.    Enforcement determined that Terra-Gen (through its subsidiaries) did not operate
+         the Resources, declare outages, or bid supply “in a manner that complies with the
+         Commission-approved rules and regulations of the applicable market.” In particular,
+         Enforcement determined that Terra-Gen (through TGP Energy) disregarded certain of its
+         obligations as a participant in CAISO’s ancillary services market, including the
+         obligation to respond to all CAISO regulation-down awards through automatic generation
+         control in real time. Enforcement determined that Terra-Gen (through TGP Energy)
+         violated its obligations by selectively claiming unjustified outages and removing the
+         Resources from automatic generation control when doing so advanced its financial
+         interests.
+
+                      5.     Violation of 18 C.F.R. § 35.41(b)
+
+         34.     Enforcement also determined that Terra-Gen (through its subsidiaries) violated
+         the Commission’s Duty of Candor Rule, 18 C.F.R. § 35.41(b), which requires a Seller to
+         “provide accurate and factual information and not submit false or misleading information,
+         or omit material information, in any communication with the Commission . . . unless
+         Seller exercises due diligence to prevent such occurrences.” Enforcement found that
+         Terra-Gen violated this provision as follows:
+
+               a.     Terra-Gen violated 18 C.F.R. § 35.41(b) by omission in its First
+                      Compliance Report. As noted above, pursuant to the Prior Settlement,
+                      Terra-Gen was obligated to report “any known violations of the CAISO
+                      Tariff or Commission regulations during the applicable period.” The
+                      Former Vice President wrote in an internal email sent on September 1,
+                      2022, that Terra-Gen had violated the Tariff in connection with the conduct
+                      identified in the Market Monitor’s inquiry. This email was sent to, among
+                      others, the High Level Executive, who signed and verified under oath the
+                      First Compliance Report. This email was sent a few hours before Terra-
+                      Gen submitted the First Compliance Report to Enforcement. However,
+                      Terra-Gen did not include the information in that Report.
+
+               b.     Terra-Gen stated in its First Compliance Report that it “ha[d] not received
+                      notice of other violations of the CAISO Tariff or the Commission’s
+                      regulations during the applicable period.” Enforcement determined this
+                      was misleading in light of the information that Terra-Gen had received
+                      prior to submission of the First Compliance Report.
+Document Accession #: 20260407-3069          Filed Date: 04/07/2026
+
+         Docket No. IN26-2-000                                                              - 10 -
+
+               c.     In the Amended Report, Terra-Gen stated that it had submitted the First
+                      Compliance Report on September 1, 2022 and that its “senior management
+                      had since confirmed that representatives of Terra-Gen’s energy marketing
+                      group were contacted by the [Market Monitor] in May 2022 regarding the
+                      operation of Terra-Gen’s Mojave 89 hybrid wind and energy storage
+                      resource . . ..” (Emphasis added.) Enforcement determined this was
+                      misleading, because the Market Monitor had contacted Terra-Gen in May
+                      2022 and a member of Terra-Gen’s senior management (the High Level
+                      Executive) was aware of this hours before submitting the First Compliance
+                      Report. For example, in the same September 1, 2022 email in which he
+                      stated that a violation of the Tariff had occurred, the Former Vice President
+                      forwarded the Market Monitor’s initial May 19, 2022 inquiry about the
+                      matter and acknowledged his participation in a prior call with the Market
+                      Monitor to discuss the Market Monitor’s inquiry into Mojave 89. This
+                      prior call occurred in June 2022, long before the submission of the First
+                      Compliance Report.
+
+                      Thus, by September 1, 2022, and prior to submitting the First Compliance
+                      Report, the High Level Executive and other Terra-Gen personnel
+                      responsible for assembling and submitting the First Compliance Report,
+                      knew about the prior inquiry made by the Market Monitor. Indeed, in an
+                      internal email sent on September 1, 2022, before submitting the First
+                      Compliance Report to Enforcement, the High Level Executive (a)
+                      acknowledged the Market Monitor’s prior inquiry into Mojave 89, but (b)
+                      stated that Terra-Gen had a plan to not disclose the inquiry to Enforcement
+                      in the First Compliance Report and, instead, supplement later if the Market
+                      Monitor pursued the issue.
+
+               d.     Last, Terra-Gen stated in its Amended Report that “senior management is
+                      in the process of determining whether any aspects of the operation of the
+                      Mojave 89 Resource in the regulation market may have violated the CAISO
+                      tariff.” (Emphasis added.) Enforcement determined this also was
+                      misleading, because before submitting the First Compliance Report, the
+                      Former Vice President had plainly stated in the September 1 email that
+                      Terra-Gen had violated the Tariff. Even if others at Terra-Gen did not take
+                      his statement at face value, the Former Vice President’s statement qualified
+                      as reason enough to believe that Terra-Gen “may” have violated the Tariff.
+
+         35.   Enforcement determined that Terra-Gen did not exercise due diligence in
+         connection with these misstatements and omissions.
+Document Accession #: 20260407-3069             Filed Date: 04/07/2026
+
+         Docket No. IN26-2-000                                                                  - 11 -
+
+                B.     Violation of Section 222 of the Federal Power Act and the
+                       Commission’s Anti-Manipulation Rule
+
+         36.    Section 222 of the Federal Power Act (16 U.S.C. § 824v) and the Commission’s
+         Anti-Manipulation Rule promulgated thereunder (18 C.F.R. § 1c.2) broadly prohibit
+         fraudulent and manipulative practices within the nation’s interstate electricity markets. In
+         relevant part, the Rule provides: “It shall be unlawful for any entity, directly or indirectly,
+         in connection with the purchase or sale of electric energy . . . subject to the jurisdiction of
+         the Commission,” to “employ any device, scheme, or artifice to defraud,” or to “engage
+         in any act, practice, or course of business that operates or would operate as a fraud or
+         deceit upon any entity.”
+
+         37.    Enforcement determined that Terra-Gen (through TGP Energy) engaged in a
+         “scheme,” “practice, or course of business” during the Relevant Period that operated as a
+         fraud on CAISO and its ancillary services market. As detailed above, the Former Vice
+         President developed a strategy consisting of selectively exiting the CAISO real-time
+         ancillary services market by declaring outages for the Resources and/or disconnecting the
+         Resources from automatic generation control if—and only if—CAISO directed Terra-
+         Gen (through TGP Energy) to purchase electricity from the grid (through a regulation-
+         down award) at a time of high LMPs. The Former Vice President directed the employees
+         under his supervision to engage in the manipulative conduct.
+
+         38.     This scheme included bidding for ancillary services in the day-ahead market with
+         the intention of submitting illegitimate outages and/or disconnecting from automatic
+         generation control in unfavorable economic conditions. By selectively participating in
+         the ancillary services market—that is, by reaping the profits of regulation-up awards and
+         simultaneously avoiding regulation-down awards when the LMPs were high—Terra-Gen
+         (through TGP Energy) was able to maximize its profits and minimize or eliminate the
+         risks that are naturally attendant to participation in the CAISO ancillary services market.
+
+         39.     Terra-Gen (through TGP Energy) received more than $680,000 in unjust profits
+         from CAISO, but refused to deliver in real-time when economic conditions did not suit
+         its financial interests.
+
+         40.    Enforcement determined that the evidence, moreover, demonstrates that Terra-Gen
+         (through TGP Energy) acted with the intention of defrauding the market, i.e., with
+         scienter. The Former Vice President calculated that Terra-Gen would make more money
+         by offering bids into the day-ahead market, and then avoiding regulation-down awards in
+         the real-time market through unjustified outages and/or disconnecting from automatic
+         generation control, as opposed to complying with the Tariff and fulfilling all ancillary
+         services awards under all conditions. The Former Vice President directed his team via
+         email to engage in this unlawful scheme: “If CAISO signals the battery to regulate down
+Document Accession #: 20260407-3069            Filed Date: 04/07/2026
+
+         Docket No. IN26-2-000                                                                 - 12 -
+
+         in a high pricing even[t], we will leave the market, resulting in only a small portion of
+         lost revenue.”
+
+         41.    Enforcement determined that additional evidence that Terra-Gen acted with
+         scienter is provided by contemporaneous internal emails demonstrating that the Former
+         Vice President and his team would not engage in the scheme if they believed that CAISO
+         was “watching.” For example, in an email sent to the Former Vice President on July 10,
+         2021, a member of his business team reported that Terra-Gen had incurred several
+         thousands of dollars in losses as a result of a CAISO regulation-down award. This
+         employee explained that because “CAISO was carefully watching our battery,” the team
+         “did not have much opportunity to leave the market to prevent” the losses. Enforcement
+         determined that this evidence proves that Terra-Gen (through certain TGP Energy
+         personnel) knew that its actions were in violation of Commission regulations and/or the
+         CAISO Tariff and actively took steps to avoid detection.
+
+         42.     Last, the CAISO ancillary services market is a Commission-regulated interstate
+         market that is subject to the Commission-approved Tariff, and, therefore, the
+         manipulative conduct described herein was carried out “in connection with the purchase
+         or sale of electric energy . . . subject to the jurisdiction of the Commission.”
+
+         III.   Stipulation and Consent Agreement
+
+                Enforcement and Terra-Gen have resolved the Investigation by means of the
+         attached Agreement.
+
+                Terra-Gen stipulates to the facts set forth in section II of the Agreement, admits
+         the violations described in section III.A of the Agreement, and neither admits nor denies
+         the violations described in section III.B of the Agreement.
+
+                Terra-Gen agrees to pay a civil penalty of $4,950,000 to the United States
+         Treasury, by wire transfer, within ten days after the Effective Date of the Agreement, as
+         defined therein.
+
+                Terra-Gen agrees to pay disgorgement within ten days of the Effective Date of the
+         Agreement to CAISO in the amount of $681,007, plus interest, calculated pursuant to
+         section 35.19a of the Commission’s regulations (18 C.F.R. § 35.19a). This disgorgement
+         shall be allocated by CAISO in its discretion for the benefit of CAISO’s customers,
+         subject to prior approval by Enforcement of CAISO’s allocation plan.
+
+                Terra-Gen agrees to submit annual compliance monitoring reports to Enforcement
+         for two years following the Effective Date of this Agreement, plus a third year at
+         Enforcement’s sole discretion. The first annual compliance monitoring report shall be
+         submitted one year after the Effective Date. The second annual compliance monitoring
+         report shall be submitted one year from the date of the first report.
+Document Accession #: 20260407-3069            Filed Date: 04/07/2026
+
+         Docket No. IN26-2-000                                                                 - 13 -
+
+         IV.    Determination of Appropriate Sanctions and Remedies
+
+                In recommending the appropriate remedy, Enforcement considered the factors in
+         the Revised Policy Statement on Penalty Guidelines,8 including the fact that Terra-Gen
+         fully cooperated with Enforcement during the Investigation and admitted most of the
+         above-described violations.9
+
+                The Commission concludes that the Agreement is a fair and equitable resolution of
+         the matters concerned and is in the public interest, as it reflects the nature and seriousness
+         of the conduct and recognizes the specific considerations stated above and in the
+         Agreement.
+
+               The Commission also concludes that Terra-Gen’s civil penalty is consistent with
+         the Revised Policy Statement on Penalty Guidelines.
+
+               The Commission directs Terra-Gen to pay the civil penalty to the United States
+         Treasury, by wire transfer, within ten days after the Effective Date of the Agreement.
+
+                The Commission further directs Terra-Gen to make the disgorgement payment,
+         plus interest, as required under the Agreement, within ten days after the Effective Date of
+         the Agreement.
+
+                The Commission directs Terra-Gen to comply with the compliance monitoring
+         provisions set forth in the Agreement.
+
+               The Commission directs CAISO to allocate the disgorgement funds as set forth in
+         the Agreement.
+
+
+
+
+                8
+                    Enforcement of Statutes, Orders, Rules, and Regulations, 132 FERC ¶ 61,216
+         (2010).
+                9
+                   The following is applicable to small entities including businesses with 1,500 or
+         fewer employees, independent schools / universities, trade associations, other non-profits,
+         cities, counties, towns, townships, villages, school districts, and other special districts -
+         The National Ombudsman resolves concerns of uneven or excessive federal regulatory
+         enforcement. Reviews are confidential and do not waive the right to pursue
+         administrative appeals or any other legal action. 888-REG-FAIR /
+         Ombudsman@SBA.gov.
+Document Accession #: 20260407-3069        Filed Date: 04/07/2026
+
+         Docket No. IN26-2-000                                                         - 14 -
+
+         The Commission orders:
+
+               The attached Stipulation and Consent Agreement is hereby approved without
+         modification.
+
+         By the Commission.
+
+         (SEAL)
+
+
+
+
+                                                   Debbie-Anne A. Reese,
+                                                         Secretary.
+Document Accession #: 20260407-3069          Filed Date: 04/07/2026
+
+
+
+
+                               UNITED STATES OF AMERICA
+                        FEDERAL ENERGY REGULATORY COMMISSION
+
+               Terra-Gen, LLC                                     Docket No.        IN26-2-000
+
+
+                           STIPULATION AND CONSENT AGREEMENT
+
+         I.    INTRODUCTION
+
+                 1.     The Office of Enforcement and Regulatory Accounting (Enforcement) of
+         the Federal Energy Regulatory Commission (Commission or FERC) and Terra-Gen, LLC
+         (Terra-Gen) enter into this Stipulation and Consent Agreement (Agreement) to resolve a
+         nonpublic, preliminary investigation (Investigation) conducted by Enforcement pursuant
+         to Part 1b of the Commission’s regulations, 18 C.F.R. Part 1b (2025). This Investigation
+         focused on: (a) Terra-Gen’s practices at its Mojave 89 and Mojave 90 resources
+         (together, Resources) in connection with the California Independent System Operator
+         (CAISO) ancillary services market, during the period of July 7, 2020 through April 17,
+         2022 (Relevant Period); and (b) Terra-Gen’s disclosure failures related to an inquiry
+         made by CAISO’s Department of Market Monitoring (Market Monitor) into Mojave 89
+         in compliance reports submitted to Enforcement, which reports were required by a
+         Commission-approved settlement of an unrelated matter.
+
+                2.     Terra-Gen stipulates to the facts set forth in Section II of this Agreement,
+         admits the violations identified in Section III.A., and neither admits nor denies the
+         violation identified in Section III.B. Terra-Gen agrees to: (a) pay a civil penalty of
+         $4,950,000 to the United States Treasury; (b) disgorge $681,007, plus interest, to CAISO;
+         and (c) be subject to the compliance monitoring as provided more fully below.
+
+         II.   STIPULATIONS
+
+         Enforcement and Terra-Gen hereby stipulate and agree to the following facts.
+
+               A.     Background
+
+               3.      Terra-Gen is a Delaware limited liability company. Through subsidiaries,
+         Terra-Gen owns and operates multiple resources in the CAISO footprint, including the
+         Resources at issue in this Agreement.
+
+                4.    Mojave 16/17/18 LLC (a wholly-owned subsidiary of Terra-Gen) owns and
+         operates Mojave 89. Mojave 16/17/18 LLC has market-based rate authorization from the
+Document Accession #: 20260407-3069                Filed Date: 04/07/2026
+
+
+
+
+         Commission.1
+
+                5.    Mojave 3/4/5 LLC (another wholly-owned subsidiary of Terra-Gen) owns
+         and operates Mojave 90. Mojave 3/4/5 LLC also has market-based rate authorization
+         from the Commission.2
+
+               6.     During the Relevant Period, TGP Energy Management, LLC (TGP Energy)
+         was the Scheduling Coordinator for both Resources. TGP Energy is another wholly-
+         owned subsidiary of Terra-Gen.
+
+                7.     At the beginning of the Relevant Period, each Resource consisted of a wind
+         farm and an associated battery energy storage system (BESS) with a single CAISO
+         resource ID, because each Resource was registered as a hybrid resource. However, on
+         November 19, 2020, Terra-Gen converted the Mojave 90 registration from hybrid to co-
+         located. This conversion resulted in two separate CAISO resource IDs for Mojave 90—
+         one ID for the wind component and one for the BESS component. Mojave 89 underwent
+         a similar conversion after the Relevant Period.
+
+                   B.       Terra-Gen’s participation in the CAISO ancillary services market
+
+                8.     During the Relevant Period, Terra-Gen (through TGP Energy): (a) offered
+         the Resources into the CAISO day-ahead market to provide ancillary services; and (b)
+         obtained ancillary service awards based on those offers. Under the CAISO Open Access
+         Transmission Tariff (Tariff), these awards were binding in the real-time market and
+         required Terra-Gen (acting through TGP Energy) to place the Resources on automatic
+         generation control for the duration of the awards, so that CAISO could directly dispatch
+         the Resources when and as needed.3
+
+                9.      However, in numerous hours during the Relevant Period, when the
+         Resources received binding regulation-down awards from CAISO (i.e. when CAISO
+         instructed the Resources to purchase energy off the grid and store it in the Resources’
+         BESSs) and the real-time Locational Marginal Price (LMP) was high, Terra-Gen
+         (through its relevant subsidiaries) employed a strategy to avoid this obligation by:
+
+                   a.       Claiming outages for the Resources’ BESSs, even though there was no
+                            legitimate basis for doing so; and/or
+
+                   b.       Removing the Resources from automatic generation control, and therefore
+
+                   1
+                       Mojave 16/17/18 LLC, Docket No. ER19-1662-000 (May 30, 2019) (delegated
+         order).
+                   2
+                       Mojave 3/4/5 LLC, Docket No. ER19-1660-000 (May 30, 2019) (delegated
+         order).
+                   3
+                       See generally CAISO Tariff sections 8.7, 34.13, and 37.3.1.1.
+                                                          2
+Document Accession #: 20260407-3069           Filed Date: 04/07/2026
+
+
+
+
+                       preventing CAISO from implementing regulation-down awards, even
+                       though the Resources were operationally capable of meeting regulation-
+                       down awards.
+
+         This strategy was devised by, implemented by, and maintained at the direction of TGP
+         Energy’s former Vice President of Origination (Former Vice President).
+
+                 10.    Engaging in this conduct only when LMPs were high was a deliberate
+         effort by Terra-Gen (through TGP Energy) to gain the financial benefits of avoiding
+         high-priced purchases of energy from the grid when instructed to do so by CAISO. In
+         contrast, the Resources did not claim outages or disconnect from automatic generation
+         control when they received regulation-up awards, because these awards allowed Terra-
+         Gen (through TGP Energy) to profit by selling energy into the grid in real time.
+
+                 11.    Taking an outage or disconnecting from automatic generation control in
+         real-time was financially beneficial to Terra-Gen (through TGP Energy) when LMPs
+         were high. As the Former Vice President explained to his business team, given that
+         Terra-Gen (through its relevant subsidiaries) “pa[id] for all the energy” when it was
+         awarded a regulation-down award, but was only required to “pay a small amount back”
+         of its day-ahead awards when it left the market, it made “sense to keep leaving the market
+         whenever [they were] regulated down at high prices.” The Former Vice President
+         specifically instructed his team: “If CAISO signals the battery to regulate down in a high
+         pricing even[t], we will leave the market, resulting in only a small portion of lost
+         revenue.”
+
+               12.     In another contemporaneous email sent to the Former Vice President, a
+         TGP Energy employee described this behavior as “leaving and rejoining the market”
+         depending on real-time LMPs. Under the Former Vice President’s direction, the TGP
+         Energy staff in his business unit kept account of when “CAISO was watching” to decide
+         whether to claim outages for the Resources and/or turn off the Resources’ automatic
+         generation control connections.
+
+                13.    Enforcement identified 152 hours during the Relevant Period for which
+         Mojave 89 did not provide regulation-down services as dispatched by CAISO. Terra-
+         Gen identified 110 hours during the Relevant Period for which Mojave 90 did not provide
+         regulation-down services as dispatched; Enforcement confirmed that Mojave 90 did not
+         provide those services during those 110 hours.
+
+                14.    By selectively avoiding regulation-down awards during these combined
+         262 hours, Terra-Gen (through its relevant subsidiaries) was unjustly enriched in the total
+         amount of $681,007 ($527,480 for Mojave 89 and $153,527 for Mojave 90). This
+         represents Terra-Gen’s total net profit during these 262 hours—meaning, total energy and
+         regulation award payments minus charges incurred for not following CAISO’s
+         regulation-down dispatch signals in real time.
+                                                     3
+Document Accession #: 20260407-3069           Filed Date: 04/07/2026
+
+
+
+
+                C.     Terra-Gen’s compliance reporting obligations
+
+                15.     In 2021, Terra-Gen reached a settlement with Enforcement in an earlier
+         investigation arising from conduct unrelated to this Investigation.4 The Commission-
+         approved Stipulation and Consent Agreement (Prior Settlement) required Terra-Gen to:
+         (a) pay a civil penalty; (b) make disgorgement; and (c) submit two annual compliance
+         monitoring reports to Enforcement. Among other things, these compliance reports were
+         required to “identify any known violations of the CAISO Tariff or Commission
+         regulations during the applicable period, including a description of the nature of the
+         violation and what steps were taken to rectify the situation.”
+
+                16.     On September 1, 2022, Terra-Gen submitted its First Compliance Report to
+         Enforcement as required by the Prior Settlement. This Report did not disclose any
+         violations of the Tariff associated with Mojave 89.
+
+                 17.    However, three months before submitting the First Compliance Report, on
+         June 2, 2022, the CAISO Market Monitor and the Former Vice President (and members
+         of his business unit) had a phone call to discuss the Market Monitor’s concerns related to
+         Mojave 89. These concerns involved Mojave 89’s failure to respond to CAISO
+         regulation-down awards in the ancillary services market (i.e., the same conduct at issue in
+         this Investigation).
+
+                 18.    As evidenced by his internal email sent on September 1, 2022, the Former
+         Vice President recognized that the Mojave 89 concerns raised by the Market Monitor
+         constituted a violation of the Tariff. On the same day (September 1, 2022) that Terra-
+         Gen was to submit its First Compliance Report to Enforcement (but before it was
+         submitted), the Former Vice President alerted the Terra-Gen personnel responsible for
+         assembling the First Compliance Report—including, among others, a Terra-Gen
+         executive within the highest levels of the company (High Level Executive)—about the
+         Market Monitor’s inquiry into Mojave 89. The Former Vice President wrote in the email
+         that, “we did violate the tariff” (referring to the conduct that was the subject of the
+         Market Monitor’s prior inquiry). (Emphasis added.) The High Level Executive withheld
+         disclosure pending further internal discussion, despite the Prior Settlement requiring that
+         it be reported in the First Compliance Report.
+
+                19.    On September 13, 2022, following a referral from the Market Monitor
+         about the practices of Mojave 89 in the ancillary services market, Enforcement sent a
+         document preservation notice to Terra-Gen.
+
+                20.    On October 6, 2022, Terra-Gen provided Enforcement with an Amended
+
+                4
+                The Commission approved the Stipulation and Consent Agreement in Terra-
+         Gen, LLC, Docket No. IN21-7-000 (August 2, 2021).
+
+                                                      4
+Document Accession #: 20260407-3069           Filed Date: 04/07/2026
+
+
+
+
+         First Compliance Report (Amended Report) that disclosed the Market Monitor’s inquiry
+         into Mojave 89. Terra-Gen noted that it had submitted the First Compliance Report on
+         September 1, 2022, and stated that “Terra-Gen’s senior management has since confirmed
+         that representatives of Terra-Gen’s energy marketing group were contacted by the
+         [Market Monitor] in May 2022 regarding the operation of Terra-Gen’s Mojave 89 hybrid
+         wind and energy storage resource (Mojave 89 Resource) in the CAISO regulation
+         market.” (Emphasis added.) This statement gave Enforcement the misleading
+         impression that Terra-Gen did not know about the communications between the Market
+         Monitor and the Former Vice President (and his TGP Energy team) until sometime after
+         submission of the First Compliance Report. In fact, as discussed above, Terra-Gen
+         personnel—including a member of senior management (the High Level Executive)—
+         knew about the communications before the submission.
+
+              21.    Finally, Terra-Gen stated in the Amended Report that its “senior
+         management is in the process of determining whether any aspects of the operation of the
+         Mojave 89 Resource in the regulation market may have violated the CAISO tariff.”
+
+                D.     Terra-Gen’s improved compliance culture
+
+                22.     Since the events giving rise to this Investigation, Terra-Gen has made
+         substantial, positive changes to its internal compliance program.
+
+                23.    Among other things, Terra-Gen has:
+
+                a.     Terminated the employment of the Former Vice President who led TGP
+                       Energy during the Relevant Period.
+
+                b.     Established an internal energy market compliance function under the charge
+                       of the company’s Chief Environment Health & Safety Officer.
+
+                c.     Created a new position of “Director – Energy Markets Compliance,” to
+                       oversee internal compliance functions specific to Commission regulations
+                       and CAISO requirements (the individual initially holding this position has
+                       since been elevated to Senior Director, Compliance & Project
+                       Implementation, overseeing two compliance specialists primarily focused
+                       on FERC and energy markets compliance).
+
+                d.     Created a new position of “FERC EQR Compliance Specialist,” to ensure
+                       accurate transactional reporting to the Commission, and tasked this
+                       Specialist with reviewing and correcting prior company filings.
+
+                e.     Created a new position of “Compliance Specialist, Energy Markets.”
+
+                f.     Enhanced its policy on reporting suspected violations of Commission
+
+                                                      5
+Document Accession #: 20260407-3069         Filed Date: 04/07/2026
+
+
+
+
+                     regulations and the CAISO Tariff.
+
+               g.    Created a monthly survey that relevant employees (including all members
+                     of senior management) are required to take regarding knowledge of any
+                     actual or suspected violations of Commission regulations or the CAISO
+                     Tariff.
+
+               h.    Established an anonymous reporting tool through a third-party service for
+                     employees to report suspected regulatory violations or concerns via a
+                     website or hotline.
+
+               i.    Hired outside counsel to conduct annual training (beginning in 2022) for
+                     relevant employees on compliance with Part II of the Federal Power Act,
+                     the Commission’s regulations, and the company’s FERC Compliance
+                     Program Manual.
+
+               j.    Engaged a third-party consultant to administer an in-person compliance
+                     training in 2023 with respect to the CAISO market design and participation.
+                     This third-party consultant was also engaged to develop annual computer-
+                     based training modules for all relevant personnel (i.e., all personnel with
+                     market scheduling responsibilities), with respect to CAISO market
+                     participation and covering topics that include Commission regulatory
+                     requirements. Terra-Gen required the same personnel to undertake a
+                     CAISO-created computer-based training regimen on relevant market
+                     requirements.
+
+               k.    Updated its internal Code of Ethics to include an emphasized obligation to
+                     report any suspected violations of the Code of Ethics and regulatory
+                     requirements, and mandated training on the new Code of Ethics for all
+                     current employees and all future new hires.
+
+               l.    Engaged another third-party consultant to provide additional CAISO Tariff
+                     compliance training, and to conduct a months-long comprehensive internal
+                     compliance audit focused on CAISO Tariff compliance, which resulted in a
+                     report that identified areas in which Terra-Gen could enhance its practices
+                     and procedures, and recommended ways in which to do so.
+
+               24.   Terra-Gen has cooperated fully in the Investigation.
+
+
+
+
+                                                   6
+Document Accession #: 20260407-3069          Filed Date: 04/07/2026
+
+
+
+
+         III.   VIOLATIONS
+
+                A.    Violations of the CAISO Tariff and the Commission’s Market
+                      Behavior and Duty of Candor Rules
+
+                25.    Terra-Gen admits that it violated CAISO Tariff sections 8.7, 34.13.1, and
+         37.3.1.1, as well as 18 C.F.R. §§ 35.41(a) and (b).
+
+                      1.     Violation of CAISO Tariff section 8.7
+
+                26.   CAISO Tariff section 8.7 provides in relevant part: “Once the CAISO has
+         given Scheduling Coordinators notice of the Day-Ahead and Real-Time Market Ancillary
+         Service Awards and Ancillary Service Schedules, these awards and Schedules represent
+         binding commitments made in the markets between the CAISO and the Scheduling
+         Coordinators concerned . . ..”
+
+                27.    Enforcement determined that Terra-Gen (through TGP Energy) violated
+         section 8.7 by disregarding its “binding commitments.” Instead, Terra-Gen (through its
+         relevant subsidiaries) selectively and improperly declared outages for the Resources
+         and/or disconnected the Resources from automatic generation control upon receiving
+         regulation-down awards from CAISO at a time of high LMPs.
+
+                      2.     Violation of CAISO Tariff section 34.13.1
+
+                28.   CAISO Tariff section 34.13.1 provides in relevant part:
+
+                Resources must:
+
+                a.    unless otherwise stated in the Dispatch Instruction, comply with a
+                      Dispatch Instruction immediately upon receipt;
+
+                b.    respond to all Dispatch Instructions in accordance with Good Utility
+                      Practice;
+
+                c.    meet voltage criteria in accordance with the provision in the CAISO
+                      Tariff;
+
+                d.    meet any applicable Operational Ramp Rates;
+
+                e.    respond to Dispatch Instructions for Ancillary Services within the
+                      required time periods and (in the case of Participating Generators
+                      providing Regulation) respond to [automatic generation control]
+                      from the EMS;
+
+                f.    if a time frame is stated in a Dispatch Instruction, respond to a
+                                                     7
+Document Accession #: 20260407-3069           Filed Date: 04/07/2026
+
+
+
+
+                       Dispatch Instruction within the stated time frame; and
+
+                g.     not intentionally generate above or below Dispatch Operating Target.
+
+         (Emphasis added.)
+
+                29.    Enforcement determined that Terra-Gen (through TGP Energy) violated
+         section 34.13.1 by deliberately disregarding certain of CAISO’s dispatch instructions—to
+         wit, regulation-down awards during times of high LMPs—and choosing, instead, to
+         declare outages and/or disconnect from automatic generation control to avoid paying the
+         high prices. In these instances, there was no legitimate basis for taking outages or
+         disconnecting the Resources from automatic generation control.
+
+                       3.     Violation of CAISO Tariff section 37.3.1.1
+
+                30.    CAISO Tariff section 37.3.1.1 provides in relevant part: “Market
+         Participants must submit Bids for Energy, RUC Capacity and Ancillary Services and
+         Submissions to Self-Provide an Ancillary Service from resources that are reasonably
+         expected to be available and capable of performing at the levels specified in the Bid, and
+         to remain available and capable of so performing based on all information that is known
+         to the Market Participant or should have been known to the Market Participant at the time
+         of submission.”
+
+                31.    Enforcement determined that Terra-Gen (through TGP Energy) violated
+         section 37.3.1.1. by submitting bids in the day-ahead market with full knowledge that it
+         planned to make the Resources unavailable in the real-time market (by declaring outages
+         and/or disconnecting from automatic generation control) if CAISO made a regulation-
+         down award when LMPs were high.
+
+                       4.     Violation of 18 C.F.R. § 35.41(a)
+
+                32.    The Commission’s Market Behavior Rule, 18 C.F.R. § 35.41(a), requires
+         Sellers to “operate and schedule generating facilities . . . declare outages, and commit or
+         otherwise bid supply in a manner that complies with the Commission-approved rules and
+         regulations of the applicable market.”
+
+                33.    Enforcement determined that Terra-Gen (through TGP Energy) also
+         violated § 35.41(a). As explained above, Terra-Gen (through TGP Energy) did not
+         operate the Resources, declare outages, or bid supply “in a manner that complies with the
+         Commission-approved rules and regulations of the applicable market.” In particular,
+         Terra-Gen (through TGP Energy) disregarded certain of its obligations as a participant in
+         CAISO’s ancillary services market, including the obligation to respond to all CAISO
+         regulation-down awards through automatic generation control in real time. Terra-Gen
+         (through TGP Energy) violated its obligations by selectively claiming unjustified outages
+
+                                                      8
+Document Accession #: 20260407-3069          Filed Date: 04/07/2026
+
+
+
+
+         and removing the Resources from automatic generation control when doing so advanced
+         its financial interests.
+
+                      5.     Violation of 18 C.F.R. § 35.41(b)
+
+                34.    Enforcement determined that Terra-Gen violated the Commission’s Duty of
+         Candor Rule, 18 C.F.R. § 35.41(b), which requires a Seller to “provide accurate and
+         factual information and not submit false or misleading information, or omit material
+         information, in any communication with the Commission . . . unless Seller exercises due
+         diligence to prevent such occurrences.” Terra-Gen violated this provision as follows:
+
+               a.     Terra-Gen violated 18 C.F.R. § 35.41(b) by omission in its First
+                      Compliance Report. As noted above, pursuant to the Prior Settlement,
+                      Terra-Gen was obligated to report “any known violations of the CAISO
+                      Tariff or Commission regulations during the applicable period.” The
+                      Former Vice President wrote in an internal email sent on September 1,
+                      2022, that Terra-Gen had violated the Tariff in connection with the conduct
+                      identified in the Market Monitor’s inquiry. This email was sent to, among
+                      others, the High Level Executive, who signed and verified under oath the
+                      First Compliance Report. This email was sent a few hours before Terra-
+                      Gen submitted the First Compliance Report to Enforcement. However,
+                      Terra-Gen did not include the information in that Report.
+
+               b.     Terra-Gen stated in its First Compliance Report that it “ha[d] not received
+                      notice of other violations of the CAISO Tariff or the Commission’s
+                      regulations during the applicable period.” This was misleading in light of
+                      the information that Terra-Gen had received prior to submission of the First
+                      Compliance Report.
+
+               c.     In the Amended Report, Terra-Gen stated that it had submitted the First
+                      Compliance Report on September 1, 2022 and that its “senior management
+                      had since confirmed that representatives of Terra-Gen’s energy marketing
+                      group were contacted by the [Market Monitor] in May 2022 regarding the
+                      operation of Terra-Gen’s Mojave 89 hybrid wind and energy storage
+                      resource . . ..” (Emphasis added.) This was misleading, because the
+                      Market Monitor had contacted Terra-Gen in May 2022 and a member of
+                      Terra-Gen’s senior management (the High Level Executive) was aware of
+                      this hours before submitting the First Compliance Report. For example, in
+                      the same September 1, 2022 email in which he stated that a violation of the
+                      Tariff had occurred, the Former Vice President forwarded the Market
+                      Monitor’s initial May 19, 2022 inquiry about the matter and acknowledged
+                      his participation in a prior call with the Market Monitor to discuss the
+                      Market Monitor’s inquiry into Mojave 89. This prior call occurred in June
+
+                                                    9
+Document Accession #: 20260407-3069             Filed Date: 04/07/2026
+
+
+
+
+                       2022, long before the submission of the First Compliance Report.
+
+                       Thus, by September 1, 2022, and prior to submitting the First Compliance
+                       Report, the High Level Executive and other Terra-Gen personnel
+                       responsible for assembling and submitting the First Compliance Report,
+                       knew about the prior inquiry made by the Market Monitor. Indeed, in an
+                       internal email sent on September 1, 2022, before submitting the First
+                       Compliance Report to Enforcement, the High Level Executive (a)
+                       acknowledged the Market Monitor’s prior inquiry into Mojave 89, but (b)
+                       stated that Terra-Gen had a plan to not disclose the inquiry to Enforcement
+                       in the First Compliance Report and, instead, supplement later if the Market
+                       Monitor pursued the issue.
+
+                d.     Last, Terra-Gen stated in its Amended Report that “senior management is
+                       in the process of determining whether any aspects of the operation of the
+                       Mojave 89 Resource in the regulation market may have violated the CAISO
+                       tariff.” (Emphasis added.) This also was misleading, because before
+                       submitting the First Compliance Report, the Former Vice President had
+                       plainly stated in the September 1 email that Terra-Gen had violated the
+                       Tariff. Even if others at Terra-Gen did not take his statement at face value,
+                       the Former Vice President’s statement qualified as reason enough to believe
+                       that Terra-Gen “may” have violated the Tariff.
+
+               35.    Enforcement determined that Terra-Gen did not exercise due diligence in
+         connection with these misstatements and omissions.
+
+                B.     Violation of Section 222 of the Federal Power Act and the
+                       Commission’s Anti-Manipulation Rule
+
+                 36.    Section 222 of the Federal Power Act (16 U.S.C. § 824v) and the
+         Commission’s Anti-Manipulation Rule promulgated thereunder (18 C.F.R. § 1c.2)
+         broadly prohibit fraudulent and manipulative practices within the nation’s interstate
+         electricity markets. In relevant part, the Rule provides: “It shall be unlawful for any
+         entity, directly or indirectly, in connection with the purchase or sale of electric energy . . .
+         subject to the jurisdiction of the Commission,” to “employ any device, scheme, or artifice
+         to defraud,” or to “engage in any act, practice, or course of business that operates or
+         would operate as a fraud or deceit upon any entity.”
+
+                37.    Enforcement determined that Terra-Gen (through TGP Energy) engaged in
+         a “scheme,” “practice, or course of business” during the Relevant Period that operated as
+         a fraud on CAISO and its ancillary services market. As detailed above, the Former Vice
+         President developed a strategy consisting of selectively exiting the CAISO real-time
+         ancillary services market by declaring outages for the Resources and/or disconnecting the
+         Resources from automatic generation control if—and only if—CAISO directed Terra-
+                                                       10
+Document Accession #: 20260407-3069           Filed Date: 04/07/2026
+
+
+
+
+         Gen (through TGP Energy) to purchase electricity from the grid (through a regulation-
+         down award) at a time of high LMPs. The Former Vice President directed the employees
+         under his supervision to engage in the manipulative conduct.
+
+                38.     This scheme included bidding for ancillary services in the day-ahead
+         market with the intention of submitting illegitimate outages and/or disconnecting from
+         automatic generation control in unfavorable economic conditions. By selectively
+         participating in the ancillary services market—that is, by reaping the profits of
+         regulation-up awards and simultaneously avoiding regulation-down awards when the
+         LMPs were high—Terra-Gen (through TGP Energy) was able to maximize its profits and
+         minimize or eliminate the risks that are naturally attendant to participation in the CAISO
+         ancillary services market.
+
+                39.     Terra-Gen (through TGP Energy) received $681,007 in unjust profits from
+         CAISO, but refused to deliver in real-time when economic conditions did not suit its
+         financial interests.
+
+                40.     The evidence, moreover, shows unequivocally that Terra-Gen (through
+         TGP Energy) acted with the intention of defrauding the market, i.e., with scienter. The
+         Former Vice President calculated that Terra-Gen would make more money by offering
+         bids into the day-ahead market, and then avoiding regulation-down awards in the real-
+         time market through unjustified outages and/or disconnecting from automatic generation
+         control, as opposed to complying with the Tariff and fulfilling all ancillary services
+         awards under all conditions. The Former Vice President directed his team via email to
+         engage in this unlawful scheme: “If CAISO signals the battery to regulate down in a high
+         pricing even[t], we will leave the market, resulting in only a small portion of lost
+         revenue.”
+
+                 41.    Additional evidence that Terra-Gen acted with scienter is provided by
+         contemporaneous internal emails demonstrating that the Former Vice President and his
+         team would not engage in the scheme if they believed that CAISO was “watching.” For
+         example, in an email sent to the Former Vice President on July 10, 2021, a member of his
+         business team reported that Terra-Gen had incurred several thousands of dollars in losses
+         as a result of a CAISO regulation-down award. This employee explained that because
+         “CAISO was carefully watching our battery,” the team “did not have much opportunity to
+         leave the market to prevent” the losses. This proves that Terra-Gen (through certain TGP
+         Energy personnel) knew that its actions were in violation of Commission regulations
+         and/or the CAISO Tariff and actively took steps to avoid detection.
+
+                 42.    Last, the CAISO ancillary services market is a Commission-regulated
+         interstate market that is subject to the Commission-approved Tariff, and, therefore, the
+         manipulative conduct described herein was carried out “in connection with the purchase
+         or sale of electric energy . . . subject to the jurisdiction of the Commission.”
+
+                                                    11
+Document Accession #: 20260407-3069            Filed Date: 04/07/2026
+
+
+
+
+         IV.    REMEDIES AND SANCTIONS
+
+                43.    For purposes of settling the claims released pursuant to Paragraph 51,
+         Terra-Gen agrees with and stipulates to the facts set forth in Section II of this Agreement,
+         admits to the violations described in Section III.A. of this Agreement, and neither admits
+         nor denies the violation described in Section III.B. of this Agreement. Terra-Gen further
+         agrees to undertake the obligations set forth in the following paragraphs.
+
+                A.     Civil Penalty
+
+                44.    Terra-Gen agrees to pay a civil penalty of $4,950,000 to the United States
+         Treasury, by wire transfer, within ten days after the Effective Date of this Agreement, as
+         defined herein.
+
+                B.     Disgorgement
+
+                 45.   Terra-Gen agrees to pay disgorgement within ten days of the Effective Date
+         of this Agreement to CAISO, in the amount of $681,007, plus interest, calculated
+         pursuant to section 35.19a of the Commission’s regulations, 18 C.F.R. § 35.19a (2025).
+         This disgorgement shall be allocated by CAISO in its discretion for the benefit of CAISO
+         customers, subject to prior approval by Enforcement of CAISO’s allocation plan.
+
+                C.     Compliance
+
+                46.     Terra-Gen agrees that it shall make annual compliance monitoring reports
+         to Enforcement for two years following the Effective Date of this Agreement. The first
+         annual compliance monitoring report shall be submitted one year after the Effective Date.
+         The second annual compliance monitoring report shall be submitted one year from the
+         date of the first report. After receipt of the second annual report, Enforcement may, at its
+         sole discretion, require Terra-Gen to submit a report for one additional year.
+
+                 47.     Each compliance monitoring report shall: (1) identify any known violations
+         of Commission regulations or the CAISO Tariff that occurred during the applicable
+         period, including a description of the nature of the violation and what steps were taken to
+         rectify the situation; (2) describe all compliance measures and procedures Terra-Gen
+         instituted or modified during the reporting period related to compliance with Commission
+         regulations or the CAISO Tariff; and (3) describe all Commission-related compliance
+         training that Terra-Gen administered during the reporting period, including the dates such
+         training occurred, the topics covered, and the procedures used to confirm which
+         personnel attended.
+
+                48.    Each compliance monitoring report shall also include an affidavit executed
+         by an officer of Terra-Gen stating that the report is true and accurate to the best of his/her
+         knowledge.
+
+                                                      12
+Document Accession #: 20260407-3069             Filed Date: 04/07/2026
+
+
+
+
+              49.    Upon request by Enforcement, Terra-Gen shall provide to Enforcement
+         documentation supporting the contents of its reports.
+
+         V.     TERMS
+
+             50.     The “Effective Date” of this Agreement shall be the date on which the
+         Commission issues an order approving this Agreement without material modification.
+
+                 51.     Commission approval of this Agreement without material modification
+         shall release Terra-Gen and forever bar the Commission from holding Terra-Gen, any
+         affiliated entity, any successor in interest, and their respective agents, officers, directors,
+         or employees, both past and present, liable for any and all administrative or civil claims
+         brought by the Commission arising out of Enforcement’s determination of the specific
+         violations addressed in this Agreement that arose on or before this Agreement’s Effective
+         Date.
+
+                52.    Failure by Terra-Gen to make the disgorgement, interest, or civil penalty
+         payments, or to comply with the compliance obligations agreed to herein, or any other
+         provision of this Agreement, shall be deemed a violation of a final order of the
+         Commission issued pursuant to the Federal Power Act (FPA), 16 U.S.C. § 792, et seq.
+         and may subject Terra-Gen to additional action under the enforcement provisions of the
+         FPA.
+
+                53.    If Terra-Gen does not make the required civil penalty and disgorgement
+         payments described above within the times agreed by the parties, interest will be
+         calculated pursuant to 18 C.F.R. § 35.19a(a)(2)(iii) from the date that payment is due, in
+         addition to the penalty specified above and any other enforcement action and penalty that
+         the Commission may take or impose.
+
+                54.     This Agreement binds Terra-Gen and its agents, successors, and assignees.
+         This Agreement does not create any additional or independent obligations on Terra-Gen,
+         or any affiliated entity, its agents, officers, directors, or employees, other than the
+         obligations identified in this Agreement.
+
+                55.     The signatories to this Agreement agree that they enter into this Agreement
+         voluntarily and that, other than the recitations set forth herein, no tender, offer, or
+         promise of any kind by any member, employee, officer, director, agent, or representative
+         of Enforcement or Terra-Gen has been made to induce the signatories or any other party
+         to enter into this Agreement.
+
+                56.    Unless the Commission issues an order approving this Agreement in its
+         entirety and without material modification, this Agreement shall be null and void and of
+         no effect whatsoever, and neither Enforcement nor Terra-Gen shall be bound by any
+         provision or term of this Agreement, unless otherwise agreed to in writing by
+
+                                                       13
+Document Accession #: 20260407-3069            Filed Date: 04/07/2026
+
+
+
+
+         Enforcement and Terra-Gen.
+
+                 57.    In connection with the civil penalty provided for herein, Terra-Gen agrees
+         that the Commission’s order approving this Agreement without material modification
+         shall be a final and unappealable order assessing a civil penalty under section 316A(b) of
+         the FPA, 16 U.S.C. § 825o-1(b). Terra-Gen waives findings of fact and conclusions of
+         law, rehearing of any Commission order approving this Agreement without material
+         modification, and judicial review by any court of any Commission order approving this
+         Agreement without material modification.
+
+                58.  This Agreement can be modified only if in writing and signed by
+         Enforcement and Terra-Gen, and any modifications will not be effective unless approved
+         by the Commission.
+
+                59.    Each of the undersigned warrants that he or she is an authorized
+         representative of the entity designated, is authorized to bind such entity, and accepts this
+         Agreement on the entity’s behalf.
+
+                 60.    The undersigned representative of Terra-Gen affirms that he or she has read
+         this Agreement, that all of the matters set forth in this Agreement are true and correct to
+         the best of his or her knowledge, information and belief, and that he or she understands
+         that this Agreement is entered into by Enforcement in express reliance on those
+         representations.
+
+               61.    This Agreement is executed in duplicate, each of which so executed shall
+         be deemed to be an original.
+
+
+
+
+                                                      14
+Document Accession #: 20260407-3069   Filed Date: 04/07/2026
+
+   Document Content(s)
+   IN26-2-000.docx...........................................................1
+
