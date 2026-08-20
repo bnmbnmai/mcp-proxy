@@ -3,7 +3,7 @@
  * Official per-order PDFs from files.consumerfinance.gov only. Does not invent order text.
  * Does not wrap the enforcement-actions index or action HTML (teaser + PDF URL only).
  * Does not wrap the Consumer Complaint Database (complaint_what_happened is a KILL).
- * Distinct from FTC /ftc-wl and from queued bank-regulator doors.
+ * Distinct from FTC /ftc-wl and OCC /occ-cd.
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";

@@ -1,0 +1,15 @@
+[
+  {
+    "Institution": "United Texas Bank, National Association",
+    "CharterNumber": "25377",
+    "Company": "",
+    "Individual": "",
+    "Location": "Dallas, TX",
+    "TypeCode": "C&D",
+    "TypeDescription": "Cease-and-Desist Order (C&D) or Personal Cease-and-Desist Order (PC&D)",
+    "StartDate": "06/16/2026",
+    "StartDocuments": ["AA-ENF-2026-29"],
+    "TerminationDate": "",
+    "DocketNumber": "AA-ENF-2026-29"
+  }
+]

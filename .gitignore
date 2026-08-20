@@ -17,6 +17,7 @@ build/swisspar.*
 build/pcac.*
 build/ftc-wl.*
 build/cfpb-orders.*
+build/occ-cd.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
@@ -31,3 +32,4 @@ data/swisspar/
 data/pcac/
 data/ftc-wl/
 data/cfpb-orders/
+data/occ-cd/

@@ -1,6 +1,6 @@
 # CFPB consent-order / administrative-order text — x402 door
 
-Official CFPB-authored **consent-order / administrative-order TEXT** extracted from per-order PDFs on files.consumerfinance.gov. Does not invent order text. Not the enforcement-actions HTML index. Not the action-page teaser ($2.5M, no numbered findings). Not the Consumer Complaint Database (`complaint_what_happened` is a KILL). Not FTC `/ftc-wl`. Not queued bank-regulator doors (`/occ-cd`, `/fdic-orders`).
+Official CFPB-authored **consent-order / administrative-order TEXT** extracted from per-order PDFs on files.consumerfinance.gov. Does not invent order text. Not the enforcement-actions HTML index. Not the action-page teaser ($2.5M, no numbered findings). Not the Consumer Complaint Database (`complaint_what_happened` is a KILL). Not FTC `/ftc-wl`. Not OCC `/occ-cd`. Not queued bank-regulator doors (`/fdic-orders`).
 
 Always listed on well-known / OpenAPI / llms.txt / shop catalog. Unpaid `GET /cfpb-orders` is HTTP 402.
 
