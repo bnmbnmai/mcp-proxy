@@ -29,6 +29,7 @@ Live paid doors (all return HTTP 402 unpaid, official bodies when paid):
 | `GET https://ticks.bnm.farm/ofac-orders` | $0.05 | OFAC institution/company enforcement-release PDF text |
 | `GET https://ticks.bnm.farm/bis-orders` | $0.05 | BIS institution/company charging-letter / order / settlement PDF text |
 | `GET https://ticks.bnm.farm/cftc-orders` | $0.05 | CFTC institution/company enforcement-order / settlement PDF text |
+| `GET https://ticks.bnm.farm/fifra-orders` | $0.05 | EPA FIFRA institution/company order / consent PDF text |
 
 CDP `POST /platform/v2/x402/validate` for each URL: `valid: true`, `simulation.outcome: accepted`.
 

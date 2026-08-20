@@ -45,6 +45,8 @@
  * GET /bis-orders/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
  * GET /cftc-orders — CFTC institution enforcement-order / settlement PDF text ($0.05)
  * GET /cftc-orders/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
+ * GET /fifra-orders — EPA FIFRA institution order / consent PDF text ($0.05)
+ * GET /fifra-orders/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
  * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
  * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.05). Listed only when a real body is cached.
@@ -204,6 +206,13 @@ import {
   loadCftcOrdersManifest,
 } from "./cftc-orders.js";
 import {
+  FIFRA_ORDERS_AMOUNT_ATOMIC,
+  FIFRA_ORDERS_MANIFEST_PATH,
+  FIFRA_ORDERS_PATH,
+  loadFifraOrders,
+  loadFifraOrdersManifest,
+} from "./fifra-orders.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -238,7 +247,7 @@ export const CATALOG_PATH = "/catalog.json";
 export const WELL_KNOWN_PATH = "/.well-known/x402";
 export const OPENAPI_PATH = "/openapi.json";
 export const LLMS_PATH = "/llms.txt";
-/** x402scan origin page for the live paid doors. /cftc-orders is a live public SKU. */
+/** x402scan origin page for the live paid doors. /fifra-orders is a live public SKU. */
 export const X402SCAN_SERVER_URL =
   "https://www.x402scan.com/server/c6f584c5-e494-41d1-aa02-2efb07ac3546";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
@@ -308,7 +317,7 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "form-483" | "gmp" | "gmp-md";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "form-483" | "gmp" | "gmp-md";
 /** Always-public SKUs. /form-483, /gmp, and /gmp-md join only when a real observation body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "ticks",
@@ -333,6 +342,7 @@ export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "ofac-orders",
   "bis-orders",
   "cftc-orders",
+  "fifra-orders",
 ];
 
 export function form483IsPublic(): boolean {
@@ -359,7 +369,7 @@ export function isPublicBazaarSku(sku: DoorSku): boolean {
   return publicBazaarSkus().includes(sku);
 }
 
-const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five"] as const;
+const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six"] as const;
 const NEXT_SKU_WORDS = [
   "first",
   "second",
@@ -386,6 +396,7 @@ const NEXT_SKU_WORDS = [
   "twenty-third",
   "twenty-fourth",
   "twenty-fifth",
+  "twenty-sixth",
 ] as const;
 
 function paidCountWord(): string {
@@ -396,7 +407,7 @@ function paidCountWord(): string {
 function noNextSkuWord(): string {
   const n = publicBazaarSkus().length;
   const next = NEXT_SKU_WORDS[n] ?? `${n + 1}th`;
-  return `/cftc-orders is a live public SKU on purpose. No ${next} public SKU.`;
+  return `/fifra-orders is a live public SKU on purpose. No ${next} public SKU.`;
 }
 
 function amountAtomicFor(sku: DoorSku): string {
@@ -478,6 +489,10 @@ function amountAtomicFor(sku: DoorSku): string {
   if (sku === "cftc-orders") {
     const raw = env("CFTC_ORDERS_USDC_ATOMIC");
     return raw.length > 0 ? raw : CFTC_ORDERS_AMOUNT_ATOMIC;
+  }
+  if (sku === "fifra-orders") {
+    const raw = env("FIFRA_ORDERS_USDC_ATOMIC");
+    return raw.length > 0 ? raw : FIFRA_ORDERS_AMOUNT_ATOMIC;
   }
   if (sku === "form-483") {
     const raw = env("FORM_483_USDC_ATOMIC");
@@ -598,13 +613,18 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
   },
   "bis-orders": {
     description:
-      "Call GET /bis-orders when you need official BIS institution/company charging-letter / order / settlement text extracted from per-order PDFs on bis.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not CFTC /cftc-orders.",
+      "Call GET /bis-orders when you need official BIS institution/company charging-letter / order / settlement text extracted from per-order PDFs on bis.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not CFTC /cftc-orders. Not FIFRA /fifra-orders.",
     resourcePath: BIS_ORDERS_PATH,
   },
   "cftc-orders": {
     description:
-      "Call GET /cftc-orders when you need official CFTC institution/company enforcement-order / settlement text extracted from per-order PDFs on cftc.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl.",
+      "Call GET /cftc-orders when you need official CFTC institution/company enforcement-order / settlement text extracted from per-order PDFs on cftc.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not FIFRA /fifra-orders.",
     resourcePath: CFTC_ORDERS_PATH,
+  },
+  "fifra-orders": {
+    description:
+      "Call GET /fifra-orders when you need official EPA FIFRA institution/company order / consent text extracted from per-order PDFs on yosemite.epa.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not CFTC /cftc-orders. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl.",
+    resourcePath: FIFRA_ORDERS_PATH,
   },
   "form-483": {
     description:
@@ -971,6 +991,21 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         date: "2026-07-31",
         sourceUrl: "https://www.cftc.gov/media/14456/ENF_UBSFinancial%20ServicesOrder073126/download",
         body: "UNITED STATES OF AMERICA\nBefore the\nCOMMODITY FUTURES TRADING COMMISSION\nUBS Financial Services Inc.\nCFTC Docket No. 26-04\nORDER INSTITUTING PROCEEDINGS",
+      },
+    ],
+  },
+  "fifra-orders": {
+    ok: true,
+    product: "fifra-institution-order-bodies",
+    status: "ok",
+    cards: [
+      {
+        id: "FIFRA-05-2026-0015",
+        institution: "Travel Caddy, Inc. dba Travelon",
+        docket: "FIFRA-05-2026-0015",
+        date: "2026-07-29",
+        sourceUrl: "https://yosemite.epa.gov/OA/RHC/EPAAdmin.nsf/Filings/F4CB3764E5AB61EA85258E43006880DC/$File/FIFRA-05-2026-0015_CAFO_TravelCaddyIncdbaTravelon_FranklinParkIllinois_14PGS.pdf",
+        body: "UNITED STATES ENVIRONMENTAL PROTECTION AGENCY\nConsent Agreement and Final Order\nTravel Caddy, Inc. doing business as Travelon\nFIFRA-05-2026-0015",
       },
     ],
   },
@@ -1836,6 +1871,7 @@ export function llmsTxt(): string {
     "- GET /ofac-orders — $0.05 — OFAC institution enforcement-release text (official ofac.treasury.gov PDFs)",
     "- GET /bis-orders — $0.05 — BIS institution charging-letter / order text (official bis.gov PDFs)",
     "- GET /cftc-orders — $0.05 — CFTC institution enforcement-order / settlement text (official cftc.gov PDFs)",
+    "- GET /fifra-orders — $0.05 — EPA FIFRA institution order / consent text (official yosemite.epa.gov PDFs)",
   ];
   if (listed483) {
     paid.push("- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs)");
@@ -1872,6 +1908,7 @@ export function llmsTxt(): string {
     "- GET /ofac-orders/manifest.json — OFAC order count + institution/docket/date/sourceUrl (not the order body)",
     "- GET /bis-orders/manifest.json — BIS order count + institution/docket/date/sourceUrl (not the order body)",
     "- GET /cftc-orders/manifest.json — CFTC order count + institution/docket/date/sourceUrl (not the order body)",
+    "- GET /fifra-orders/manifest.json — EPA FIFRA order count + institution/docket/date/sourceUrl (not the order body)",
   ];
   if (listed483) {
     free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (not the observation body)");
@@ -1919,7 +1956,7 @@ function discoveryOrigin(req: IncomingMessage, port: number): string {
 }
 
 function paidDiscoveryPaths(): string[] {
-  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH];
+  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH];
   if (form483IsPublic()) paths.push(FORM_483_PATH);
   if (gmpIsPublic()) paths.push(GMP_PATH);
   if (gmpMdIsPublic()) paths.push(GMP_MD_PATH);
@@ -2032,6 +2069,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const ofacOrdersAtomic = amountAtomicFor("ofac-orders");
   const bisOrdersAtomic = amountAtomicFor("bis-orders");
   const cftcOrdersAtomic = amountAtomicFor("cftc-orders");
+  const fifraOrdersAtomic = amountAtomicFor("fifra-orders");
   const f483Atomic = amountAtomicFor("form-483");
   const gmpAtomic = amountAtomicFor("gmp");
   const gmpMdAtomic = amountAtomicFor("gmp-md");
@@ -2057,6 +2095,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const ofacOrdersPrice = (Number(ofacOrdersAtomic) / 1e6).toFixed(2);
   const bisOrdersPrice = (Number(bisOrdersAtomic) / 1e6).toFixed(2);
   const cftcOrdersPrice = (Number(cftcOrdersAtomic) / 1e6).toFixed(2);
+  const fifraOrdersPrice = (Number(fifraOrdersAtomic) / 1e6).toFixed(2);
   const f483Price = (Number(f483Atomic) / 1e6).toFixed(2);
   const gmpPrice = (Number(gmpAtomic) / 1e6).toFixed(2);
   const gmpMdPrice = (Number(gmpMdAtomic) / 1e6).toFixed(2);
@@ -2086,6 +2125,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
     "/ofac-orders ($0.05)",
     "/bis-orders ($0.05)",
     "/cftc-orders ($0.05)",
+    "/fifra-orders ($0.05)",
   ];
   if (listed483) paidBits.push("/form-483 ($0.05)");
   if (listedGmp) paidBits.push("/gmp ($0.05)");
@@ -2531,6 +2571,25 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           },
         }),
       },
+      [FIFRA_ORDERS_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getFifraOrders",
+          summary: "EPA FIFRA institution order / consent text",
+          description: SKU_COPY["fifra-orders"].description,
+          priceUsdc: fifraOrdersPrice,
+          amountAtomic: fifraOrdersAtomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["fifra-orders"],
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              status: { type: "string" },
+              cards: { type: "array", items: { type: "object" } },
+            },
+          },
+        }),
+      },
       ...(listed483
         ? {
             [FORM_483_PATH]: {
@@ -2714,6 +2773,12 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       [CFTC_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "CFTC institution orders free manifest",
+          "Count, institution, docket, date, and official PDF URL. Not the order body.",
+        ),
+      },
+      [FIFRA_ORDERS_MANIFEST_PATH]: {
+        get: freeOpenApiOp(
+          "EPA FIFRA institution orders free manifest",
           "Count, institution, docket, date, and official PDF URL. Not the order body.",
         ),
       },
@@ -3012,6 +3077,13 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
           amountAtomic: amountAtomicFor("cftc-orders"),
           manifest: CFTC_ORDERS_MANIFEST_PATH,
         },
+        {
+          path: FIFRA_ORDERS_PATH,
+          product: "fifra-institution-order-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("fifra-orders"),
+          manifest: FIFRA_ORDERS_MANIFEST_PATH,
+        },
         ...(form483IsPublic()
           ? [
               {
@@ -3280,6 +3352,16 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === FIFRA_ORDERS_MANIFEST_PATH) {
+    sendJson(res, 200, withShopDiscovery(await loadFifraOrdersManifest(), req, port));
+    return;
+  }
+
+  if (path === FIFRA_ORDERS_PATH) {
+    await servePaid(req, res, port, "fifra-orders", () => loadFifraOrders());
+    return;
+  }
+
   if (path === FORM_483_MANIFEST_PATH) {
     sendJson(res, 200, withShopDiscovery(await loadForm483Manifest(), req, port));
     return;
@@ -3315,7 +3397,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
 }
 
 export function bindHost(): string {
@@ -3365,6 +3447,7 @@ if (isMain()) {
     console.error(`${OFAC_ORDERS_PATH} $${Number(amountAtomicFor("ofac-orders")) / 1e6} USDC`);
     console.error(`${BIS_ORDERS_PATH} $${Number(amountAtomicFor("bis-orders")) / 1e6} USDC`);
     console.error(`${CFTC_ORDERS_PATH} $${Number(amountAtomicFor("cftc-orders")) / 1e6} USDC`);
+    console.error(`${FIFRA_ORDERS_PATH} $${Number(amountAtomicFor("fifra-orders")) / 1e6} USDC`);
     console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
     console.error(`${GMP_PATH} $${Number(amountAtomicFor("gmp")) / 1e6} USDC${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
     console.error(`${GMP_MD_PATH} $${Number(amountAtomicFor("gmp-md")) / 1e6} USDC${gmpMdIsPublic() ? "" : " (unlisted until a real MD observation body is cached)"}`);
