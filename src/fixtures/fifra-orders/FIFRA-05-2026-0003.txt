@@ -1,0 +1,707 @@
+                                                                Docket No.           FILED:                      Regional Hearing Clerk, U.S
+
+
+
+
+                                                                                                     Dec 18, 2025
+                                                                                                       9:24 am
+
+                                                                                                U.S. EPA REGION 5
+                     UNITED STATES ENVIRONMENTAL PROTECTION AGENCY                               HEARING CLERK
+                                         REGION 5
+
+
+In the Matter of:                               )       Docket No. FIFRA-05-2026-0003
+                                                )
+Parasol Medical, LLC                            )       Proceeding to Assess a Civil Penalty
+Buffalo Grove, Illinois                         )       Under Section 14(a) of the Federal
+                                                )       Insecticide, Fungicide, and Rodenticide
+        Respondent.                             )       Act, 7 U.S.C. § 136l(a)
+                                                )
+
+
+                                   Consent Agreement and Final Order
+
+                                           Preliminary Statement
+
+        1.    This is an administrative action commenced and concluded under Section 14(a) of the
+
+Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA), 7 U.S.C. § 136l(a), and Sections 22.13(b)
+
+and 22.18(b)(2) and (3) of the Consolidated Rules of Practice Governing the Administrative Assessment
+
+of Civil Penalties and the Revocation/Termination or Suspension of Permits (Consolidated Rules) as
+
+codified at 40 C.F.R. Part 22.
+
+        2.    The Complainant is the Director of the Enforcement and Compliance Assurance Division,
+
+United States Environmental Protection Agency (EPA), Region 5.
+
+        3.    Respondent is Parasol Medical, LLC, a limited liability company doing business in the
+
+State of Illinois.
+
+        4.    Where the parties agree to settle one or more causes of action before the filing of a
+
+complaint, the administrative action may be commenced and concluded simultaneously by the issuance
+
+of a consent agreement and final order (CAFO). 40 C.F.R. § 22.13(b).
+
+        5.    The parties agree that settling this action without the filing of a complaint or the
+
+adjudication of any issue of fact or law is in their interest and in the public interest.
+        6.     Respondent consents to the assessment of the civil penalty specified in this CAFO, and to
+
+the terms of this CAFO.
+
+                               Jurisdiction and Waiver of Right to Hearing
+
+        7.     Respondent admits the jurisdictional allegations in this CAFO and neither admits nor denies
+
+the factual allegations in this CAFO.
+
+        8.     Respondent waives its right to request a hearing as provided at 40 C.F.R. § 22.15(c), any
+
+right to contest the allegations in this CAFO and its right to appeal this CAFO. Respondent waives any
+
+rights or defenses that Respondent has or may have for this matter to be resolved in federal court,
+
+including but not limited to any right to a jury trial, and waives any right to challenge the lawfulness of
+
+the final order accompanying the consent agreement.
+
+        9.     Respondent certifies that it is complying with FIFRA, 7 U.S.C. §§ 136-136y, and the
+
+regulations at 40 C.F.R. § 152 and 40 C.F.R. § 167.20.
+
+                                  Statutory and Regulatory Background
+
+        10. Section 12(a)(1)(A) of FIFRA, 7 U.S.C. § 136j(a)(1)(A), states that it is unlawful for any
+
+person in any State to distribute or sell to any person any pesticide that is not registered under Section 3
+
+of FIFRA, 7 U.S.C. § 136a.
+
+        11. 40 C.F.R. § 152.15(a)(1) states that a substance is considered to be intended for a pesticidal
+
+purpose, and thus to be a pesticide requiring registration, if the person who distributes or sells the
+
+substance claims, states, or implies (by labeling or otherwise) that the substance can or should be used as
+
+a pesticide.
+
+        12. Section 12(a)(1)(E) of FIFRA, 7 U.S.C. § 136j(a)(1)(E), states that it is unlawful for any
+
+person in any State to distribute or sell to any person any pesticide which is adulterated or misbranded.
+
+        13. Section 2(q)(1)(C) of FIFRA, 7 U.S.C. § 136(q)(1)(C), states that a pesticide is misbranded
+
+if it is an imitation of, or is offered for sale under the name of, another pesticide.
+
+
+                                                       2
+       14. Section 2(q)(1)(F) of FIFRA, 7 U.S.C. § 136(q)(1)(F), states that a pesticide is misbranded
+
+if the label does not contain directions for use which are necessary for effecting the purpose for which
+
+the product is intended and if complied with, are adequate to protect health and the environment.
+
+       15. 40 C.F.R. § 156.10(i)(2)(vi) requires that the method of application, including instructions
+
+for dilution, be included under the headings “Directions for Use” on the product label.
+
+       16. 40 C.F.R. § 156.10(i)(2)(ix) requires that specific instructions concerning the storage,
+
+residue removal and disposal of the pesticide and its container, be grouped and appear under the
+
+heading, “Storage and Disposal” on the product label.
+
+       17. 40 C.F.R. § 156.10(i)(1)(i) requires that directions, when followed, be adequate to protect
+
+the public from fraud and from personal injury.
+
+       18. The term “person” means “any individual, partnership, association, corporation, or any
+
+organized group of persons whether incorporated or not.” 7 U.S.C. § 136(s).
+
+       19. The term “distribute or sell” means “to distribute, sell, offer for sale, hold for distribution,
+
+hold for sale, hold for shipment, ship, deliver for shipment, release for shipment, or receive and (having
+
+so received) deliver or offer to deliver.” 7 U.S.C. § 136(gg).
+
+       20. A “pesticide” is, among other things, any substance or mixture of substances intended for
+
+preventing, destroying, repelling, or mitigating any pest. 7 U.S.C. § 136(u).
+
+       21. A “pest” is any insect, rodent, nematode, fungus, weed, or any other form of terrestrial or
+
+aquatic plant or animal life or virus, bacteria, or other micro-organism which the Administrator declares
+
+to be a pest under Section 25(c)(1) of FIFRA, 7 U.S.C § 136w(c)(1). 7 U.S.C. § 136(t).
+
+       22. The term “pesticide product” means “a pesticide in the particular form (including
+
+composition, packaging, and labeling) in which the pesticide is, or is intended to be, distributed or sold.
+
+The term includes any physical apparatus used to deliver or apply the pesticide if distributed or sold with
+
+the pesticide.” 40 C.F.R. § 152.3.
+
+
+                                                     3
+       23. The term “label” means the “written, printed, or graphic matter on, or attached to, the
+
+pesticide or device or any of its containers or wrappers.” 7 U.S.C. § 136(p)(1).
+
+       24. The term “labeling” means “all labels and all other written, printed, or graphic matter (A)
+
+accompanying the pesticide or device at any time; or (B) to which reference is made on the label or in
+
+literature accompanying the pesticide or device.” 7 U.S.C. § 136(p)(2).
+
+       25. The Administrator of EPA may assess a civil penalty against any registrant, commercial
+
+applicator, wholesaler, dealer, retailer, or other distributor who violates any provision of FIFRA of up to
+
+$24,885 for each offense, pursuant to Section 14(a)(l) of FIFRA, 7 U.S.C. § 136l(a)(l), and 40 C.F.R.
+
+Part 19.
+
+                              Factual Allegations and Alleged Violations
+
+       26. At all times relevant to this CAFO, Respondent was a “person” as that term is defined at
+
+Section 2(s) of FIFRA, 7 U.S.C. § 136(s).
+
+       27. At all times relevant to this CAFO, Respondent owned or operated a business located at
+
+1000 Asbury Drive, Suite 1, Buffalo Grove, Illinois 60089 (the Facility).
+
+       28. On August 16, 2023, inspectors employed by EPA and authorized to conduct inspections
+
+under FIFRA conducted an inspection at the Facility (the Inspection).
+
+                                    Parasol Fall Prevention Products
+
+       29. During the Inspection, the inspectors collected photographs of the following fall prevention
+
+products being stored at the Facility:
+
+             a. Wireless Bed Pad 30 Days (Product ID WB30)
+
+             b. Wired Bed Pad 30 Days (Product ID SB6L8)
+
+             c. Wireless Chair Pad 30 Days (Product ID WC30)
+
+             d. Wired Chair Pad 30 Days – 8 ft Cord (Product ID SC6L8)
+
+             e. Wired Chair Pad 30 Days – 12 ft cord (Product ID SC6L12)
+
+
+                                                     4
+             f. Wired Chair Pad 30 Days – 3 ft cord (Product ID SC6S3)
+
+       30. On September 22, 2023, EPA received labels and distribution records from Respondent for
+
+the fall prevention products listed in paragraph 29.
+
+       31. The fall prevention products listed in paragraph 29 each bore text printed on the pad itself
+
+with the statement “Treated with MicrobeCare a proprietary antimicrobial.”
+
+       32. Respondent’s claims that its fall prevention products are treated with an antimicrobial
+
+indicate that the products will protect the health of the users of those products by preventing, destroying,
+
+repelling, or mitigating microbes.
+
+       33. The fall prevention products listed in paragraph 29 are each a “pesticide” as defined at
+
+Section 2(u) of FIFRA, 7 U.S.C. § 136(u).
+
+       34. The fall prevention products listed in paragraph 29 are not registered as a pesticide with
+
+EPA under Section 3 of FIFRA, 7 U.S.C. § 136a.
+
+       35. Respondent distributed or sold the fall prevention products listed in paragraph 29 on 390
+
+separate occasions between August 18, 2022, and August 15, 2023.
+
+       36. Respondent’s sale or distribution of the fall prevention products listed in paragraph 29 on
+
+390 separate occasions constitute 390 unlawful acts pursuant to Section 12(a)(1)(A) of FIFRA, 7 U.S.C.
+
+§ 136j(a)(1)(A).
+
+                                            Tone Stethoscopes
+
+       37. During the Inspection, the inspectors collected photographs of Tone brand stethoscopes.
+
+       38. On September 22, 2023, EPA received labels and distribution records from Respondent for
+
+Tone stethoscopes.
+
+       39. The Tone stethoscope bore text printed on the stethoscope itself with the statement “Treated
+
+with MicrobeCare a proprietary antimicrobial.”
+
+       40. The box containing each Tone stethoscope bore the following claims, among other things:
+
+
+                                                       5
+             a. Fully antimicrobial, convertible cardiology stethoscope
+
+             b. Treated with MicrobeCare bonded antimicrobial technology
+
+             c. MicrobeCare is a patented bonded antimicrobial technology that is odorless, colorless,
+
+                   and non-leaching. MicrobeCare creates a durable invisible barrier against mold,
+
+                   mildew, fungus, algae and bacteria. Microbecare uses a molecular bond to hold the
+
+                   antimicrobial to its applied surface, thus retaining its full antimicrobial strength where
+
+                   it is applied.
+
+       41. Respondent’s claims on its Tone stethoscope and box as listed in paragraphs 39 and 40
+
+above indicate that the products will protect the health of the users of those products by preventing,
+
+destroying, repelling, or mitigating microbes.
+
+       42. Tone stethoscopes are a “pesticide” as defined at Section 2(u) of FIFRA, 7 U.S.C. § 136(u).
+
+       43. Tone stethoscopes are not registered as a pesticide with EPA under Section 3 of FIFRA,
+
+7 U.S.C. § 136a.
+
+       44. Respondent distributed or sold the Tone stethoscopes on three separate occasions between
+
+August 18, 2022, and August 15, 2023.
+
+       45. Respondent’s sale or distribution of Tone stethoscopes on three separate occasions
+
+constitutes three unlawful acts pursuant to Section 12(a)(1)(A) of FIFRA, 7 U.S.C. § 136j(a)(1)(A).
+
+                           MicrobeCare Antimicrobial (EPA Reg. No. 89160-2)
+
+       46. During the Inspection, the inspectors collected photographs of MicrobeCare Antimicrobial
+
+(EPA Registration Number (EPA Reg. No.89160-2) in 6-oz aerosol containers.
+
+       47. On September 22, 2023, EPA received distribution records from Respondent for
+
+MicrobeCare Antimicrobial (EPA Reg. No. 89160-2).
+
+       48. MicrobeCare Antimicrobial (EPA Reg. No. 89160-2) is a “pesticide” as that term is defined
+
+by Section 2(u) of FIFRA, 7 U.S.C. § 136(u).
+
+
+                                                       6
+       49. EPA registered MicrobeCare Antimicrobial (EPA Reg. No. 89160-2) under FIFRA Section
+
+3(c)(7)(A) and accepted its master label on November 28, 2012. EPA also registered MicrobeCare 70-2
+
+(EPA Reg. No. 89160-3) under FIFRA Section 3(c)(7)(A) and accepted its master label on July 1, 2021.
+
+       50. During the Inspection, EPA observed and photographed bottles identified with EPA Reg.
+
+No. 89160-2 (MicrobeCare Antimicrobial) but were labeled as MicrobeCare 70-2.
+
+       51. The following are examples of claims listed on the final printed label of bottles present
+
+during the Inspection which are on the EPA-accepted master label associated with MicrobeCare 70-2
+
+(EPA Reg. No. 89160-3) but are not on the EPA-accepted master label associated with MicrobeCare
+
+Antimicrobial (EPA Reg. No. 89160-2):
+
+             a. Kills 99.9% of bacteria, germs and viruses
+
+             b. Bonded disinfectant and antimicrobial treatment
+
+             c. Germicidal. Bactericidal. Tuberculocidal. Virucidal. Fungicidal.
+
+       52. The following claims are listed under the directions for use on the final printed label
+
+photographed during the Inspection but are not listed under the directions for use or target organisms on
+
+the EPA-accepted master label associated with EPA Reg. No. 89160-2:
+
+             a. Allow surfaces to air dry or wipe dry with a clean microfiber cloth or wipe… For
+
+                 Disinfection: All surfaces must remain wet for 10 minutes. For Sanitizing: All surfaces
+
+                 must remain wet for 5 minutes. For use as a virucide: All surfaces must remain wet for
+
+                 10 minutes.
+
+             b. Germicide: Against Staphylococcus aureus; Pseudomonas aeruginosa; Influenza A,
+
+                 Subtype H1N1; and Trichophyton interdigitale in 10 minutes. Bactericide: Against
+
+                 Staphylococcus aureus and Pseudomonas aeruginosa in 10 minutes. Tuberculocidal:
+
+                 Against Mycobacterium Bovis in 10 minutes. Virucide: Against Influenza A, Subtype
+
+                 H1N1 in 10 minutes. Fungicide: Against Trichophyton interdigitale in 5 minutes.
+
+
+                                                    7
+       53. The following claim is required under the “Storage and Disposal” subheading on the EPA-
+
+accepted master label for EPA Reg. No. 89160-2 but was missing from the final printed label on
+
+containers photographed during the Inspection: “when stored in original unopened containers at or
+
+below 25 C (77 F) MicrobeCare Antimicrobial must be used by the Use by date identified.”
+
+       54. Respondent distributed or sold MicrobeCare Antimicrobial (EPA Reg. No. 89160-2) with
+
+claims and labels associated with a different pesticide, MicrobeCare 70-2 (EPA Reg. No. 89160-3), and
+
+therefore in imitation of MicrobeCare 70-2 (EPA Reg. No. 89160-3).
+
+       55. Respondent distributed or sold MicrobeCare Antimicrobial (EPA Reg. No. 89160-2) on
+
+three separate occasions between August 18, 2022, and August 15, 2023.
+
+       56. Respondent distributed or sold MicrobeCare Antimicrobial (EPA Reg. No. 89160-2), a
+
+“pesticide” as that term is defined under FIFRA, which was not labeled in accordance with the master
+
+label for the product accepted by EPA on November 28, 2012.
+
+       57. By distributing or selling MicrobeCare Antimicrobial (EPA Reg. No. 89160-2) using the
+
+label for MicrobeCare 70-2 (EPA Reg. No. 89160-3), Respondent failed to provide the accurate method
+
+of application including instructions for dilution under the heading “Directions for Use” on the product
+
+label as required by 40 C.F.R. § 156.10(i)(2)(vi).
+
+       58. By distributing or selling MicrobeCare Antimicrobial (EPA Reg. No. 89160-2) using the
+
+label for MicrobeCare 70-2 (EPA Reg. No. 89160-3), Respondent failed to provide specific instructions
+
+concerning the storage, residue removal and disposal of the pesticide and its container under the
+
+heading, “Storage and Disposal” on the product label as required by 40 C.F.R. § 156.10(i)(2)(ix).
+
+       59. By distributing or selling MicrobeCare Antimicrobial (EPA Reg. No. 89160-2) using the
+
+label for MicrobeCare 70-2 (EPA Reg. No. 89160-3), Respondent failed to provide directions that would
+
+be adequate to protect the public from fraud and personal injury, as required by 40 C.F.R.
+
+§ 156.10(i)(1)(i).
+
+
+                                                     8
+       60. MicrobeCare Antimicrobial (EPA Reg. No. 89160-2), as referenced in paragraphs 46
+
+through 56 above, was misbranded as that term is defined by Sections 2(q)(1)(C) and 2(q)(1)(F) of
+
+FIFRA, 7 U.S.C. §§ 1362(q)(1)(C) and 2(q)(1)(F).
+
+       61. Respondent’s distributions or sales of MicrobeCare Antimicrobial (EPA Reg. No. 89160-2)
+
+on three occasions constitute three unlawful acts pursuant to Section 12(a)(1)(E) of FIFRA, 7 U.S.C.
+
+§ 136j(a)(1)(E).
+
+                                              Civil Penalty
+
+       62. Pursuant to Section 14(a)(4) of FIFRA, 7 U.S.C. § 136l(a)(4), Complainant determined that
+
+an appropriate civil penalty to settle this action is $206,640. In determining the penalty amount,
+
+Complainant considered the appropriateness of the penalty to the size of Respondent’s business, the
+
+effect on Respondent’s ability to continue in business, and the gravity of the violation. Complainant also
+
+considered EPA’s FIFRA Enforcement Response Policy, dated December 2009.
+
+       63. Respondent agrees to pay a civil penalty in the amount of $206,640 (“Assessed Penalty”)
+
+within thirty (30) days after the effective date of this CAFO.
+
+       64. Respondent shall pay the Assessed Penalty and any interest, fees, and other charges due
+
+using any method, or combination of appropriate methods, as provided on the EPA website:
+
+https://www.epa.gov/financial/makepayment. For additional instructions see:
+
+https://www.epa.gov/financial/additional-instructions-making-payments-epa.
+
+       65. When making a payment, Respondent shall:
+
+           a. Identify every payment with Respondent’s name and the docket number of this CAFO,
+
+               FIFRA-05-2026-0003,
+
+           b. Concurrently with any payment or within 24 hours of any payment, Respondent shall
+
+               serve proof of such payment to the following person(s):
+
+
+
+
+                                                     9
+                      Regional Hearing Clerk (E-19J)
+                      U.S. EPA, Region 5
+                      r5hearingclerk@epa.gov
+
+                      Angela Bouche (ECP-17J)
+                      Pesticides and Toxics Compliance Section
+                      U.S. EPA, Region 5
+                      bouche.angela@epa.gov
+                      and
+                      R5lecab@epa.gov
+
+                      Jamie Getz (C-14J)
+                      Office of Regional Counsel
+                      U.S. EPA, Region 5
+                      getz.jamie@epa.gov
+
+                      U.S. Environmental Protection Agency
+                      Cincinnati Finance Center
+                      Via electronic mail to: CINWD_AcctsReceivable@epa.gov
+
+“Proof of payment” means, as applicable, a copy of the check, confirmation of credit card or debit card
+
+payment, or confirmation of wire or automated clearinghouse transfer, and any other information
+
+required to demonstrate that payment has been made according to EPA requirements, in the amount due,
+
+and identified with the appropriate docket number and Respondent’s name.
+
+       66. Interest, Charges, and Penalties on Late Payments. Pursuant to 31 U.S.C. § 3717, 31 C.F.R.
+
+§ 901.9, and 40 C.F.R. § 13.11, if Respondent fails to timely pay any portion of the Assessed Penalty,
+
+interest, or other charges and penalties per this CAFO, the entire unpaid balance of the Assessed Penalty
+
+and all accrued interest shall become immediately due and owing, and EPA is authorized to recover the
+
+following amounts.
+
+            a. Interest. Interest begins to accrue from the effective date of this CAFO. If the Assessed
+
+                Penalty is paid in full within thirty (30) days, interest accrued is waived. If the Assessed
+
+                Penalty is not paid in full within thirty (30) days, interest will continue to accrue until
+
+                any unpaid portion of the Assessed Penalty as well as any interest, penalties, and other
+
+                charges are paid in full. To protect the interests of the United States the rate of interest is
+
+                                                     10
+                set at the IRS “standard” underpayment rate, any lower rate would fail to provide
+
+                Respondent adequate incentive for timely payment.
+
+             b. Handling Charges. Respondent will be assessed monthly a charge to cover EPA’s costs
+
+                of processing and handling overdue debts.
+
+             c. Late Payment Penalty. A late payment penalty of six percent (6%) per annum, will be
+
+                assessed monthly on all debts, including any portion of the Assessed Penalty, interest,
+
+                penalties, and other charges, that remain delinquent more than ninety (90) days.
+
+       67. Late Penalty Actions. In addition to the amounts described in the prior Paragraph, if
+
+Respondent fails to timely pay any portion of the Assessed Penalty, interest, or other charges and
+
+penalties per this CAFO, EPA may take additional actions. Such actions EPA may take include, but are
+
+not limited to, the following.
+
+           a. Refer the debt to a credit reporting agency or a collection agency pursuant to 40
+
+               C.F.R. §§ 13.13 and 13.14.
+
+           b. Collect the debt by administrative offset (i.e., the withholding of money payable by the
+
+               United States government to, or held by the United States government for, a person to
+
+               satisfy the debt the person owes the United States government), which includes, but is not
+
+               limited to, referral to the Internal Revenue Service for offset against income tax refunds,
+
+               40 C.F.R. Part 13, Subparts C and H.
+
+           c. Suspend or revoke Respondent’s licenses or other privileges, or suspend or disqualify
+
+               Respondent from doing business with EPA or engaging in programs EPA sponsors or
+
+               funds, 40 C.F.R. § 13.17.
+
+           d. Request that the Attorney General bring a civil action in the appropriate district court to
+
+               recover the amount outstanding pursuant to 7 U.S.C.§ 136l(a)(5).
+
+       68. Allocation of Payments. Pursuant to 31 C.F.R. § 901.9(f) and 40 C.F.R. § 13.11(d), a partial
+
+
+                                                    11
+payment of debt will be applied first to outstanding handling charges, second to late penalty charges,
+
+third to accrued interest, and last to the principal that is the outstanding Assessed Penalty amount.
+
+       69. Tax Treatment of Penalties. Penalties, interest, and other charges paid pursuant to this
+
+CAFO shall not be deductible for purposes of federal taxes.
+
+       70. Pursuant to 26 U.S.C. § 6050X and 26 C.F.R. § 1.6050X-1, EPA is required to send to the
+
+Internal Revenue Service (“IRS”) annually, a completed IRS Form 1098-F (“Fines, Penalties, and Other
+
+Amounts”) with respect to any court order or settlement agreement (including administrative
+
+settlements), that require a payor to pay an aggregate amount that EPA reasonably believes will be equal
+
+to, or in excess of, $50,000 for the payor’s violation of any law or the investigation or inquiry into the
+
+payor’s potential violation of any law, including amounts paid for “restitution or remediation of
+
+property” or to come “into compliance with a law.” EPA is further required to furnish a written
+
+statement, which provides the same information provided to the IRS, to each payor (i.e., a copy of IRS
+
+Form 1098-F). Failure to comply with providing IRS Form W-9 or Tax Identification Number (“TIN”),
+
+as described below, may subject Respondent to a penalty, per 26 U.S.C. § 6723, 26 U.S.C. § 6724(d)(3),
+
+and 26 C.F.R. § 301.6723-1. In order to provide EPA with sufficient information to enable it to fulfill
+
+these obligations, EPA herein requires, and Respondent herein agrees, that:
+
+           a. Respondent shall complete an IRS Form W-9 (“Request for Taxpayer Identification
+
+               Number and Certification”), which is available at https://www.irs.gov/pub/irs-
+
+               pdf/fw9.pdf;
+
+           b. Respondent shall therein certify that its completed IRS Form W-9 includes Respondent’s
+
+               correct TIN or that Respondent has applied and is waiting for issuance of a TIN;
+
+           c. Respondent shall email its completed Form W-9 to Milton Wise at EPA’s Cincinnati
+
+               Finance Center at wise.milton@epa.gov, within 30 days after the effective date of this
+
+               CAFO, and EPA recommends encrypting IRS Form W-9 email correspondence; and
+
+
+                                                     12
+           d. In the event that that Respondent has certified in its completed IRS Form W-9 that it does
+
+               not yet have a TIN but has applied for a TIN, Respondent shall provide EPA’s Cincinnati
+
+               Finance Center with Respondent’s TIN, via email, within five (5) days of Respondent’s
+
+               receipt of a TIN issued by the IRS.
+
+                                                General Provisions
+
+       71. The parties consent to service of this CAFO by e-mail at the following valid e-mail
+
+addresses: getz.jamie@epa.gov (for Complainant), and audrey@lighthouseadvisorspllc.net (for
+
+Respondent). Respondent understands that the CAFO will become publicly available upon filing.
+
+       72. Respondent’s full compliance with this CAFO resolves only Respondent’s liability under
+
+FIFRA for federal civil penalties for the violations alleged in the CAFO.
+
+       73. This CAFO does not affect the rights of EPA or the United States to pursue appropriate
+
+injunctive or other equitable relief or criminal sanctions for any violations of law.
+
+       74. This CAFO does not affect Respondent’s responsibility to comply with FIFRA and other
+
+applicable federal, state and local laws.
+
+       75. This CAFO is a “final order” for purposes of EPA’s FIFRA Enforcement Response Policy.
+
+       76. The terms of this CAFO bind Respondent, its successors and assigns.
+
+       77. Each person signing this CAFO certifies that he or she has the authority to sign for the party
+
+whom he or she represents and to bind that party to its terms.
+
+       78. Each party agrees to bear its own costs and attorneys fees, in this action.
+
+       79. This CAFO constitutes the entire agreement between the parties.
+
+
+
+
+                                                     13
+Parasol Medical, LLC, Respondent
+
+
+
+                                         Michael D. Digitally  signed by
+                                                       Michael D. Kilcran
+                                                       Date: 2025.12.02
+                                         Kilcran       15:24:30 -06'00'
+
+Date                                     Michael Kilcran II
+                                         President
+                                         Parasol Medical, LLC
+
+
+
+United States Environmental Protection Agency, Complainant
+
+
+
+CAROLYN Digitally      signed by
+               CAROLYN PERSOON
+               Date: 2025.12.17
+PERSOON 14:43:17 -06'00'
+Carolyn Persoon
+Acting Division Director
+Enforcement and Compliance Assurance Division
+United States Environmental Protection Agency, Region 5
+
+
+
+
+                                                 14
+In the Matter of Parasol Medical,
+LLC Docket No.:FIFRA-05-2026-0003
+
+
+                                            Final Order
+
+       This Consent Agreement and Final Order, as agreed to by the parties, shall become effective
+
+immediately upon filing with the Regional Hearing Clerk. This Final Order concludes this proceeding
+
+pursuant to 40 C.F.R. §§ 22.18 and 22.31. IT IS SO ORDERED.
+
+
+               Digitally signed by ANN
+
+ANN COYLE COYLE
+          Date: 2025.12.17
+               17:02:18 -06'00'
+
+Ann L. Coyle
+Regional Judicial Officer
+United States Environmental Protection Agency
+Region 5
+
+
+
+
+                                                  15
+

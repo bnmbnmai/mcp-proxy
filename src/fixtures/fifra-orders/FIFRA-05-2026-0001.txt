@@ -1,0 +1,625 @@
+                                                      Docket No.               FILED:                      Regional Hearing Cle
+
+
+
+
+                                                                                               Oct 10, 2025
+                                                                                                 9:00 am
+              UNITED STATES ENVIRONMENTAL PROTECTION AGENCY                                 U.S. EPA REGION 5
+                                  REGION 5                                                   HEARING CLERK
+
+
+
+
+In the Matter of:                               )       Docket No.: FIFRA-05-2026-0001
+                                                )
+Crown Chemical, Inc.                            )       Proceeding to Assess a Civil Penalty
+Crestwood, Illinois                             )       Under Section 14(a) of the Federal
+                                                )       Insecticide, Fungicide, and Rodenticide
+        Respondent.                             )       Act, 7 U.S.C. § 136l(a)
+                                                )
+
+
+                               Consent Agreement and Final Order
+
+                                       Preliminary Statement
+
+        1.      This is an administrative action commenced and concluded under Section 14(a) of
+
+the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA), 7 U.S.C. § 136l(a), and
+
+Sections 22.13(b) and 22.18(b)(2) and (3) of the Consolidated Rules of Practice Governing the
+
+Administrative Assessment of Civil Penalties and the Revocation/Termination or Suspension of
+
+Permits (Consolidated Rules) as codified at 40 C.F.R. Part 22.
+
+        2.      The Complainant is the Director of the Enforcement and Compliance Assurance
+
+Division, United States Environmental Protection Agency (EPA), Region 5.
+
+        3.      Respondent is Crown Chemical, Inc. (Crown Chemical), a corporation doing
+
+business in the State of Illinois.
+
+        4.      Where the parties agree to settle one or more causes of action before the filing of a
+
+complaint, the administrative action may be commenced and concluded simultaneously by the
+
+issuance of a consent agreement and final order (CAFO). 40 C.F.R. § 22.13(b).
+
+        5.      The parties agree that settling this action without the filing of a complaint or the
+
+adjudication of any issue of fact or law is in their interest and in the public interest.
+       6.      Respondent consents to the assessment of the civil penalty specified in this CAFO,
+
+and to the terms of this CAFO.
+
+                          Jurisdiction and Waiver of Right to Hearing
+
+       7.      Respondent admits the jurisdictional allegations in this CAFO and neither admits
+
+nor denies the factual allegations in this CAFO.
+
+       8.      Respondent waives its right to request a hearing as provided at 40 C.F.R. § 22.15(c),
+
+any right to contest the allegations in this CAFO and its right to appeal this CAFO. Respondent
+
+waives any rights or defenses that Respondent has or may have for this matter to be resolved in
+
+federal court, including but not limited to any right to a jury trial, and waives any right to
+
+challenge the lawfulness of the final order accompanying the consent agreement.
+
+       9.      Respondent certifies that it is complying with FIFRA, 7 U.S.C. §§ 136-136y, and
+
+the regulations at 40 C.F.R. § 152.
+
+                             Statutory and Regulatory Background
+
+       10.     Section 3(a) of FIFRA, 7 U.S.C. § 136a(a), states that no person in any State may
+
+distribute or sell to any person any pesticide that is not registered under Section 3 of FIFRA.
+
+       11.     Section 12(a)(1)(A) of FIFRA, 7 U.S.C. § 136j(a)(1)(A), states it is unlawful for any
+
+person in any state to distribute or sell to any person any pesticide that is not registered under
+
+Section 3 of FIFRA or whose registration has been cancelled or suspended, except to the extent
+
+that distribution or sale otherwise has been authorized by EPA.
+
+       12.     40 C.F.R. § 152.15(a)(1) states that a substance is considered to be intended for
+
+pesticidal purpose, and thus a pesticide required to be registered under FIFRA, if the person who
+
+distributes or sell the substance claims, states, or otherwise implies (by labeling or otherwise)
+
+that the substance can or should be used as a pesticide.
+
+
+
+                                                   2
+        13.     Section 2(s) of FIFRA, 7 U.S.C. § 136(s), defines the term “person” as “any
+
+individual, partnership, association, corporation, or any organized group of persons whether
+
+incorporated or not.”
+
+        14.     Section 2(gg) of FIFRA, 7 U.S.C. § 136(gg), defines the term “distribute or sell” as
+
+“to distribute, sell, offer for sale, hold for distribution, hold for sale, hold for shipment, ship,
+
+deliver for shipment, release for shipment, or receive and (having so received) deliver or offer to
+
+deliver.” See also 40 C.F.R. § 152.3.
+
+        15.     Section 2(u) of FIFRA, 7 U.S.C. § 136(u), defines the term “pesticide” as, among
+
+other things, “any substance or mixture of substances intended for preventing, destroying,
+
+repelling, or mitigating any pest.” See also 40 C.F.R. § 152.3.
+
+        16.     Section 2(t) of FIFRA, 7 U.S.C. § 136(t), defines the term “pest” as “any insect,
+
+rodent, nematode, fungus, weed, or any other form of terrestrial or aquatic plant or animal life or
+
+virus, bacteria, or other micro-organism which the Administrator [of the EPA] declares to be a
+
+pest” under Section 25(c)(1) of FIFRA. See also 40 C.F.R. § 152.5.
+
+        17.     Section 14(a)(1) of FIFRA, 7 U.S.C. § 136l(a)(1), and 40 C.F.R. Part 19, provides
+
+that any registrant, commercial applicator, wholesaler, dealer, retailer or other distributor who
+
+violates any provision of FIFRA may be assessed a civil penalty by EPA of up to $24,885 for
+
+each offense where penalties are assessed on or after January 8, 2025.
+
+                            Factual Allegations and Alleged Violations
+
+        18.     Respondent is a “person” as defined at Section 2(s) of FIFRA, 7 U.S.C. § 136(s).
+
+        19.     At all times relevant to this CAFO, Respondent owned or operated a place of
+
+business at 4701 W. 136th Street, Crestwood, Illinois 60418 (facility).
+
+
+
+
+                                                    3
+       20.       On or about July 9, 2024, inspectors employed by the EPA and Illinois Department
+
+of Agriculture (IDOA) and authorized to conduct inspections under FIFRA, conducted an
+
+inspection at the Respondent’s facility.
+
+                                Ready Quat Ready-to-Use Sanitizer
+
+       21.       During the inspection, the inspectors collected a label for Ready Quat Ready-to-
+
+Use Sanitizer.
+
+       22.       Ready Quat Ready-to-Use Sanitizer is a “pesticide” as that term is defined in
+
+Section 2(u) of FIFRA, 7 U.S.C. § 136(u), because it is intended for preventing, destroying,
+
+repelling, or mitigating certain pests.
+
+       23.       On or about May 15, 2024 through June 12, 2024, Respondent distributed or sold
+
+Ready Quat Ready-to-Use Sanitizer to its customers on three separate occasions.
+
+       24.       At the time Respondent distributed or sold Ready Quat Ready-to-Use Sanitizer, it
+
+was not a registered pesticide as required by FIFRA and its underlying regulations.
+
+                                  Blue Lagoon Acid Bowl Cleaner
+
+       25.       During the inspection, the inspectors collected a label for Blue Lagoon Acid Bowl
+
+Cleaner.
+
+       26.       The label identifies the EPA registration number for Blue Lagoon Acid Bowl
+
+Cleaner as EPA Reg. No. 10324-158-35772.
+
+       27.       The label also includes, but is not limited to, the following language:
+
+              a. “Disinfects;”
+
+              b. “Deodorizes;”
+
+
+
+
+                                                   4
+             c. “This product is an acid disinfectant bathroom toilet bowl cleaner, especially
+
+                 formulated to kill many germs* commonly found in hospitals and industrial
+
+                 environments.”
+
+             d. “*KILLS HIV ON PRECLEANED ENVIRONMENTAL TOILET
+
+                 BOWLS/URINALS PREVIOUSLY SOILD WITH BLOOD/BODY
+
+                 FLUIDS in health care settings or other settings in which there is an expected
+
+                 likelihood of soiling of inanimate toilet bowls/urinals with body fluids and in
+
+                 which the toilet bowl/urinal likely to be soiled with blood or bodily fluids can
+
+                 be associated with the potential for transmission of human immunodeficiency
+
+                 virus Type 1 (HIV-1) associated with AIDS.”
+
+       28.     Blue Lagoon Acid Bowl Cleaner, EPA Reg. No. 10324-158-35772, is a
+
+“pesticide” as that term is defined in Section 2(u) of FIFRA, 7 U.S.C. § 136(u), because it is
+
+intended for preventing, destroying, repelling, or mitigating certain pests.
+
+       29.     On or about April 2, 2021, the EPA registration for Blue Lagoon Acid Bowl
+
+Cleaner, EPA Reg. No. 10324-158-35772, was cancelled.
+
+       30.     Respondent produced Blue Lagoon Acid Bowl Cleaner, EPA Reg. No. 10324-158-
+
+35772, after April 2, 2021.
+
+       31.     From on or about June 6, 2022 through June 13, 2022, Respondent distributed or
+
+sold Blue Lagoon Acid Bowl Cleaner, EPA Reg. No. 10324-158-35772, which was produced
+
+after the product registration was cancelled on April 2, 2021, on at least 6 separate occasions.
+
+                                            Counts 1-3
+
+       32.     Complainant incorporates the above paragraphs of this CAFO, as if set forth in this
+
+paragraph.
+
+
+
+                                                 5
+       33.     From on or about May 15, 2024 through on or about June 12, 2024, Respondent
+
+distributed or sold the unregistered pesticide, Ready Quat Ready-to-Use Sanitizer, to various
+
+persons on 3 separate occasions.
+
+       34.     Respondent’s distribution or sale of the unregistered pesticide, Ready Quat
+
+Ready-to-Use Sanitizer on 3 separate occasions, constitutes 3 separate unlawful acts pursuant to
+
+Section 12(a)(1)(A) of FIFRA, 7 U.S.C. § 136j(a)(1)(A).
+
+       35.     Respondent’s violation of Section 12(a)(1)(A) of FIFRA, 7 U.S.C.
+
+§ 136j(a)(1)(A), on 3 separate occasions subjects Respondent to the issuance of a CAFO
+
+assessing a civil penalty under Section 14(a) of FIFRA, 7 U.S.C. § 136l(a), for each of the 3
+
+violations.
+
+                                           Counts 4-9
+
+       36.     Complainant incorporates the above paragraphs of this CAFO, as if set forth in this
+
+paragraph.
+
+       37.     From on or about May 24, 2022 through on or about June 13, 2022, Respondent
+
+distributed or sold the unregistered pesticide, Blue Lagoon Acid Bowl Cleaner to various
+
+persons on 6 separate occasions.
+
+       38.     Respondent’s distribution or sale of a cancelled pesticide Blue Lagoon Acid Bowl
+
+Cleaner on 6 separate occasions, constitutes 6 separate unlawful acts pursuant to Section
+
+12(a)(1)(A) of FIFRA, 7 U.S.C. § 136j(a)(1)(A).
+
+       39.     Respondent’s violation of Section 12(a)(1)(A) of FIFRA, 7 U.S.C.
+
+§ 136j(a)(1)(A), on 6 separate occasions subjects Respondent to the issuance of a CAFO
+
+assessing a civil penalty under Section 14(a) of FIFRA, 7 U.S.C. § 136l(a), for each of the 6
+
+violations.
+
+
+
+                                                6
+                                       Civil Penalty
+
+       40.    Pursuant to Section 14(a)(4) of FIFRA, 7 U.S.C. § 136l(a)(4), Complainant
+
+determined that an appropriate civil penalty to settle this action is $56,000. In determining the
+
+penalty amount, Complainant considered the appropriateness of the penalty to the size of
+
+Respondent’s business, the effect on Respondent’s ability to continue in business, and the gravity
+
+of the violation. Complainant also considered EPA’s FIFRA Enforcement Response Policy,
+
+dated December 2009.
+
+       41.    Respondent agrees to pay a civil penalty in the amount of $56,000
+
+(“Assessed Penalty”).
+
+       42.    Respondent shall pay the Assessed Penalty and any interest, fees, and other
+
+charges due using any method, or combination of appropriate methods, that do not
+
+include payment with a paper check, as provided on the EPA website:
+
+https://www.epa.gov/financial/makepayment. For additional instructions see:
+
+https://www.epa.gov/financial/additional-instructions-making-payments-epa.
+
+       43.    When making a payment, Respondent shall:
+
+             a. Identify every payment with Respondent’s name and the docket number
+
+                of this CAFO, FIFRA-05-2026-0001,
+
+             b. Concurrently with any payment or within 24 hours of any payment,
+
+
+
+
+                                             7
+                Respondent shall serve proof of such payment to the following person(s):
+
+                      Regional Hearing Clerk (E-19J)
+                      U.S. EPA, Region 5
+                      r5hearingclerk@epa.gov
+
+                      Claudia Niess (ECP-17J)
+                      Pesticides and Toxics Compliance Section
+                      U.S. EPA, Region 5
+                      niess.claudia@epa.gov
+                      and
+                      R5lecab@epa.gov
+
+                      Nidhi K. O’Meara (C-14J)
+                      Office of Regional Counsel
+                      U.S. EPA, Region 5
+                      omeara.nidhi@epa.gov
+
+                      U.S. Environmental Protection Agency
+                      Cincinnati Finance Center Via
+                      electronic mail to:
+                      CINWD_AcctsReceivable@epa.gov
+
+            “Proof of payment” means, as applicable, a copy of the check, confirmation of
+
+            credit card or debit card payment, or confirmation of wire or automated
+
+            clearinghouse transfer, and any other information required to demonstrate that
+
+            payment has been made according to EPA requirements, in the amount due, and
+
+            identified with the appropriate docket number and Respondent’s name.
+
+       44. Interest, Charges, and Penalties on Late Payments. Pursuant to 31 U.S.C. §
+
+3717, 31 C.F.R. § 901.9, and 40 C.F.R. § 13.11, if Respondent fails to timely pay any
+
+portion of the Assessed Penalty, interest, or other charges and penalties per this CAFO, the
+
+entire unpaid balance of the Assessed Penalty and all accrued interest shall become
+
+immediately due and owing, and EPA is authorized to recover the following amounts.
+
+             a. Interest. Interest begins to accrue from the effective date of this CAFO. If
+
+                 the Assessed Penalty is paid in full within thirty (30) days, interest accrued
+
+
+
+                                                 8
+                is waived. If the Assessed Penalty is not paid in full within thirty (30) days,
+
+                interest will continue to accrue until any unpaid portion of the Assessed
+
+                Penalty as well as any interest, penalties, and other charges are paid in full.
+
+                To protect the interests of the United States the rate of interest is set at the
+
+                IRS “standard” underpayment rate, any lower rate would fail to provide
+
+                Respondent adequate incentive for timely payment.
+
+             b. Handling Charges. Respondent will be assessed monthly a charge to cover
+
+                EPA’s costs of processing and handling overdue debts.
+
+             c. Late Payment Penalty. A late payment penalty of six percent (6%) per
+
+                 annum, will be assessed monthly on all debts, including any portion of the
+
+                 Assessed Penalty, interest, penalties, and other charges, that remain
+
+                 delinquent more than ninety (90) days.
+
+       45.     Late Penalty Actions. In addition to the amounts described in the prior
+
+Paragraph, if Respondent fails to timely pay any portion of the Assessed Penalty, interest, or
+
+other charges and penalties per this CAFO, EPA may take additional actions. Such actions
+
+EPA may take include, but are not limited to, the following.
+
+             a. Refer the debt to a credit reporting agency or a collection agency pursuant to 40
+
+                 C.F.R. §§ 13.13 and 13.14.
+
+             b. Collect the debt by administrative offset (i.e., the withholding of money
+
+                 payable by the United States government to, or held by the United States
+
+                 government for, a person to satisfy the debt the person owes the United
+
+                 States government), which includes, but is not limited to, referral to the
+
+
+
+
+                                                  9
+                  Internal Revenue Service for offset against income tax refunds, 40 C.F.R.
+
+                  Part 13, Subparts C and H.
+
+             c. Suspend or revoke Respondent’s licenses or other privileges or suspend
+
+                  or disqualify Respondent from doing business with EPA or engaging in
+
+                  programs EPA sponsors or funds, 40 C.F.R. § 13.17.
+
+             d. Request that the Attorney General bring a civil action in the appropriate
+
+                  district court to recover the amount outstanding pursuant to 7 U.S.C. §
+
+                  136l(a)(5).
+
+       46.     Allocation of Payments. Pursuant to 31 C.F.R. § 901.9(f) and 40 C.F.R. § 13.11(d),
+
+a partial payment of debt will be applied first to outstanding handling charges, second to late
+
+penalty charges, third to accrued interest, and last to the principal that is the outstanding
+
+Assessed Penalty amount.
+
+       47.     Tax Treatment of Penalties. Penalties, interest, and other charges paid pursuant to
+
+this CAFO shall not be deductible for purposes of federal taxes.
+
+       48.     Pursuant to 26 U.S.C. § 6050X and 26 C.F.R. § 1.6050X-1, EPA is required to send
+
+to the Internal Revenue Service (“IRS”) annually, a completed IRS Form 1098-F (“Fines,
+
+Penalties, and Other Amounts”) with respect to any court order or settlement agreement
+
+(including administrative settlements), that require a payor to pay an aggregate amount that EPA
+
+reasonably believes will be equal to, or in excess of, $50,000 for the payor’s violation of any law
+
+or the investigation or inquiry into the payor’s potential violation of any law, including amounts
+
+paid for “restitution or remediation of property” or to come “into compliance with a law.” EPA is
+
+further required to furnish a written statement, which provides the same information provided to
+
+the IRS, to each payor (i.e., a copy of IRS Form 1098-F). Failure to comply with providing IRS
+
+
+
+                                                  10
+Form W-9 or Tax Identification Number (“TIN”), as described below, may subject Respondent
+
+to a penalty, per 26 U.S.C. § 6723, 26 U.S.C. § 6724(d)(3), and 26 C.F.R. § 301.6723-1. In order
+
+to provide EPA with sufficient information to enable it to fulfill these obligations, EPA herein
+
+requires, and Respondent herein agrees, that:
+
+             a. Respondent shall complete an IRS Form W-9 (“Request for Taxpayer
+
+                 Identification Number and Certification”), which is available at
+
+                 https://www.irs.gov/pub/irs-pdf/fw9.pdf;
+
+             b. Respondent shall therein certify that its completed IRS Form W-9 includes
+
+                 Respondent’s correct TIN or that Respondent has applied and is waiting for
+
+                 issuance of a TIN;
+
+             c. Respondent shall email its completed Form W-9 to Milton Wise at EPA’s
+
+                 Cincinnati Finance Center at wise.milton@epa.gov, within 30 days after the
+
+                 effective date of this CAFO, and EPA recommends encrypting IRS Form W-9
+
+                 email correspondence; and
+
+             d. In the event that that Respondent has certified in its completed IRS Form W-9
+
+                 that it does not yet have a TIN but has applied for a TIN, Respondent shall
+
+                 provide EPA’s Cincinnati Finance Center with Respondent’s TIN, via email,
+
+                 within five (5) days of Respondent’s receipt of a TIN issued by the IRS.
+
+                                       General Provisions
+
+       49.     The parties consent to service of this CAFO by e-mail at the following valid e-mail
+
+addresses: Nidhi O’Meara at omeara.nidhi@epa.gov (counsel for Complainant), and Allison
+
+Payne at payne@khlaw.com (counsel for Respondent). Respondent understands that the CAFO
+
+will become publicly available upon filing.
+
+
+
+                                                11
+          50.   Respondent’s full compliance with this CAFO resolves only Respondent’s liability
+
+under FIFRA for federal civil penalties for the violations alleged in the CAFO.
+
+          51.   This CAFO does not affect the rights of EPA or the United States to pursue
+
+appropriate injunctive or other equitable relief or criminal sanctions for any violations of law.
+
+          52.   This CAFO does not affect Respondent’s responsibility to comply with FIFRA and
+
+other applicable federal, state and local laws.
+
+          53.   This CAFO is a “final order” for purposes of EPA’s FIFRA Enforcement Response
+Policy.
+
+          54.   The terms of this CAFO bind Respondent, its successors and assigns.
+
+          55.   Each person signing this CAFO certifies that he or she has the authority to sign for
+
+the party whom he or she represents and to bind that party to its terms.
+
+          56.   Each party agrees to bear its own costs and attorneys’ fees, in this action.
+
+          57.   This CAFO constitutes the entire agreement between the parties.
+
+
+
+
+                                                  12
+In the Matter of Crown Chemical, Inc.
+
+
+Crown Chemical, Inc., Respondent
+
+
+
+
+October 6, 2025
+Date                                    Michael Spain
+                                        President
+                                        Crown Chemical, Inc.
+
+
+
+
+                                          13
+In the Matter of Crown Chemical, Inc.
+Docket No.: FIFRA-05-2026-0001
+
+United States Environmental Protection Agency, Complainant
+
+
+                         Digitally signed by CAROLYN
+CAROLYN                  PERSOON
+                         Date: 2025.10.09 10:39:29
+PERSOON                  -05'00'
+
+Carolyn Persoon
+Acting Director
+Enforcement and Compliance Assurance Division
+United States Environmental Protection Agency
+Region 5
+
+
+
+
+                                                14
+In the Matter of Crown Chemical, Inc.
+Docket No.: FIFRA-05-2026-0001
+
+
+                                              Final Order
+
+       This Consent Agreement and Final Order, as agreed to by the parties, shall become
+
+effective immediately upon filing with the Regional Hearing Clerk. This Final Order concludes
+
+this proceeding pursuant to 40 C.F.R. §§ 22.18 and 22.31. IT IS SO ORDERED.
+
+
+                      Digitally signed by ANN
+                      COYLE
+ANN COYLE             Date: 2025.10.09 12:22:21
+                      -05'00'
+
+Ann L. Coyle
+Regional Judicial Officer
+United States Environmental Protection Agency
+Region 5
+
+
+
+
+                                                  15
+

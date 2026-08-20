@@ -428,6 +428,9 @@ export function isRealBisOrderBody(text: string): boolean {
   if (/COMMODITY FUTURES TRADING COMMISSION/i.test(text) && /CFTC Docket No\.\s*\d{2}-\d{2}/i.test(text)) {
     return false;
   }
+  if (/ENVIRONMENTAL PROTECTION AGENCY/i.test(text) && /FIFRA-\d{2}-\d{4}-\d{4}/i.test(text)) {
+    return false;
+  }
   const bis = /Bureau of Industry and Security/i.test(text);
   const kind =
     /PROPOSED CHARGING LETTER/i.test(text) ||
