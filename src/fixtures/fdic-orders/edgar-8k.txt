@@ -1,0 +1,11 @@
+<SUBMISSION>
+<TYPE>8-K
+<FILENAME>ex991-consentorder.htm
+EX-99.1 CONSENT ORDER
+FEDERAL DEPOSIT INSURANCE CORPORATION
+FIRST GUARANTY BANK
+HAMMOND, LOUISIANA
+CONSENT ORDER FDIC-26-0005b
+complete-submission.txt harvested from sec.gov Archives/edgar.
+This is an EDGAR 8-K exhibit, not the official orders.fdic.gov PDF text.
+</SUBMISSION>
