@@ -1,0 +1,59 @@
+[
+  {
+    "institution": "Federated Metals Corp. Whiting Superfund Site",
+    "docket": "05-711427",
+    "date": "2026-08-05",
+    "title": "Interim Record of Decision",
+    "sourceUrl": "https://semspub.epa.gov/work/05/711427.pdf",
+    "pdfId": "05-711427.pdf"
+  },
+  {
+    "institution": "Meeker Avenue Plume Superfund Site",
+    "docket": "02-744534",
+    "date": "2024-09-27",
+    "title": "Record of Decision",
+    "sourceUrl": "https://semspub.epa.gov/work/02/744534.pdf",
+    "pdfId": "02-744534.pdf"
+  },
+  {
+    "institution": "Ten-Mile Drain Superfund Site",
+    "docket": "05-988133",
+    "date": "2024-01-22",
+    "title": "Record of Decision",
+    "sourceUrl": "https://semspub.epa.gov/work/05/988133.pdf",
+    "pdfId": "05-988133.pdf"
+  },
+  {
+    "institution": "Velsicol Chemical Corporation Superfund Site",
+    "docket": "05-978074",
+    "date": "2022-10-06",
+    "title": "Record of Decision",
+    "sourceUrl": "https://semspub.epa.gov/work/05/978074.pdf",
+    "pdfId": "05-978074.pdf"
+  },
+  {
+    "institution": "Pike and Mulberry Streets PCE Plume Superfund Site",
+    "docket": "05-964773",
+    "date": "2021-03-11",
+    "title": "Record of Decision",
+    "sourceUrl": "https://semspub.epa.gov/work/05/964773.pdf",
+    "pdfId": "05-964773.pdf"
+  },
+  {
+    "institution": "Jane Q Public",
+    "individual": "Jane Q Public",
+    "docket": "05-999999",
+    "date": "2026-01-01",
+    "title": "Record of Decision",
+    "sourceUrl": "https://semspub.epa.gov/work/05/999999.pdf",
+    "pdfId": "05-999999.pdf"
+  },
+  {
+    "institution": "Federated Metals Corp. Whiting Superfund Site",
+    "docket": "05-709513",
+    "date": "2026-03-26",
+    "title": "Proposed Plan",
+    "sourceUrl": "https://semspub.epa.gov/work/05/709513.pdf",
+    "pdfId": "05-709513.pdf"
+  }
+]

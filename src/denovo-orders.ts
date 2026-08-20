@@ -427,6 +427,9 @@ export function isRealDenovoOrderBody(text: string): boolean {
   if (/\d{2}-\d{3}-01air/i.test(text) && /Confirmation of the regulatory status/i.test(text)) {
     return false;
   }
+  if (/RECORD OF DECISION/i.test(text) && /DECLARATION/i.test(text) && /\b(CERCLA|Superfund)\b/i.test(text)) {
+    return false;
+  }
   const fda = /Food and Drug Administration|\bFDA\b/i.test(text);
   const cdrh = /Center for Devices and Radiological Health|\bCDRH\b/i.test(text);
   const kind =

@@ -31,6 +31,7 @@ build/fifra-orders.*
 build/denovo-orders.*
 build/ttb-oic.*
 build/air-letters.*
+build/superfund-rods.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
@@ -59,3 +60,4 @@ data/fifra-orders/
 data/denovo-orders/
 data/ttb-oic/
 data/air-letters/
+data/superfund-rods/
