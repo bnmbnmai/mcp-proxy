@@ -1,0 +1,51 @@
+[
+  {
+    "institution": "The 21st Amendment Brewery Cafe, LLC",
+    "docket": "21st-amendment",
+    "date": "2026-06-30",
+    "title": "Offer in Compromise",
+    "sourceUrl": "https://www.ttb.gov/system/files/2026-07/ABSTMT-21st_Amendment_Brewery_Cafe_Redacted.pdf",
+    "pdfId": "ABSTMT-21st_Amendment_Brewery_Cafe_Redacted.pdf"
+  },
+  {
+    "institution": "Delmic Enterprise LLC",
+    "docket": "delmic-enterprise",
+    "date": "2026-06-16",
+    "title": "Offer in Compromise",
+    "sourceUrl": "https://www.ttb.gov/system/files/2026-06/ABSMT_Delmic_Enterprise_Redacted.pdf",
+    "pdfId": "ABSMT_Delmic_Enterprise_Redacted.pdf"
+  },
+  {
+    "institution": "Societe Brewing Company, LLC",
+    "docket": "societe-brewing",
+    "date": "2026-01-06",
+    "title": "Offer in Compromise",
+    "sourceUrl": "https://www.ttb.gov/system/files/2026-06/Societe_Brewing_Company_OICD_Redacted.pdf",
+    "pdfId": "Societe_Brewing_Company_OICD_Redacted.pdf"
+  },
+  {
+    "institution": "Satellite Spirits Inc.",
+    "docket": "satellite-spirits",
+    "date": "2025-12-10",
+    "title": "Offer in Compromise",
+    "sourceUrl": "https://www.ttb.gov/system/files/2025-12/Satellite_Spirits_OIC_Redacted.pdf",
+    "pdfId": "Satellite_Spirits_OIC_Redacted.pdf"
+  },
+  {
+    "institution": "Workhorse Brewing Company, Inc.",
+    "docket": "workhorse-brewing",
+    "date": "2025-11-30",
+    "title": "Offer in Compromise",
+    "sourceUrl": "https://www.ttb.gov/system/files/2025-12/Workhorse_Brewery_DAAFO_11_20_25_Redacted.pdf",
+    "pdfId": "Workhorse_Brewery_DAAFO_11_20_25_Redacted.pdf"
+  },
+  {
+    "institution": "Jane Q Public",
+    "individual": "Jane Q Public",
+    "docket": "jane-public",
+    "date": "2026-01-01",
+    "title": "Offer in Compromise",
+    "sourceUrl": "https://www.ttb.gov/system/files/2026-01/Jane_Q_Public_Redacted.pdf",
+    "pdfId": "Jane_Q_Public_Redacted.pdf"
+  }
+]

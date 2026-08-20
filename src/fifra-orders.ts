@@ -421,6 +421,9 @@ export function isRealFifraOrderBody(text: string): boolean {
   if (/Center for Devices and Radiological Health/i.test(text) && /De Novo request/i.test(text) && /DEN\d{6}/i.test(text)) {
     return false;
   }
+  if (/ALCOHOL AND TOBACCO TAX AND TRADE BUREAU/i.test(text) && /ABSTRACT AND STATEMENT/i.test(text)) {
+    return false;
+  }
   const epa =
     /UNITED STATES ENVIRONME?N?TAL PROTECTION AGENCY|ENVIRONMENTAL PROTECTION AGENCY|U\.S\.\s+Environmental Protection Agency|U\.S\.\s+EPA\s+REGION/i.test(
       text,

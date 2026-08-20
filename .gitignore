@@ -29,6 +29,7 @@ build/bis-orders.*
 build/cftc-orders.*
 build/fifra-orders.*
 build/denovo-orders.*
+build/ttb-oic.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
@@ -55,3 +56,4 @@ data/bis-orders/
 data/cftc-orders/
 data/fifra-orders/
 data/denovo-orders/
+data/ttb-oic/

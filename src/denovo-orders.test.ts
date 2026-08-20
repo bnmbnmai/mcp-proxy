@@ -126,6 +126,12 @@ async function main(): Promise<void> {
   });
   assert.equal(isRealDenovoOrderBody(cftc.body), false, "CFTC /cftc-orders is not this SKU");
 
+  const ttb = parseDenovoOrderText(readFx("ttb-oic.txt"), {
+    sourceUrl: "https://www.ttb.gov/system/files/2026-07/ABSTMT-21st_Amendment_Brewery_Cafe_Redacted.pdf",
+    institution: "The 21st Amendment Brewery Cafe, LLC",
+  });
+  assert.equal(isRealDenovoOrderBody(ttb.body), false, "TTB /ttb-oic is not this SKU");
+
   const manifest = buildDenovoOrdersManifest({
     ok: true,
     product: "fda-denovo-classification-order-bodies",
