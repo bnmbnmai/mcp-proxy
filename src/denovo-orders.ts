@@ -424,6 +424,9 @@ export function isRealDenovoOrderBody(text: string): boolean {
   if (/ALCOHOL AND TOBACCO TAX AND TRADE BUREAU/i.test(text) && /ABSTRACT AND STATEMENT/i.test(text)) {
     return false;
   }
+  if (/\d{2}-\d{3}-01air/i.test(text) && /Confirmation of the regulatory status/i.test(text)) {
+    return false;
+  }
   const fda = /Food and Drug Administration|\bFDA\b/i.test(text);
   const cdrh = /Center for Devices and Radiological Health|\bCDRH\b/i.test(text);
   const kind =

@@ -437,6 +437,9 @@ export function isRealBisOrderBody(text: string): boolean {
   if (/ALCOHOL AND TOBACCO TAX AND TRADE BUREAU/i.test(text) && /ABSTRACT AND STATEMENT/i.test(text)) {
     return false;
   }
+  if (/\d{2}-\d{3}-01air/i.test(text) && /Confirmation of the regulatory status/i.test(text)) {
+    return false;
+  }
   const bis = /Bureau of Industry and Security/i.test(text);
   const kind =
     /PROPOSED CHARGING LETTER/i.test(text) ||

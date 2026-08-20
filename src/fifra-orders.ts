@@ -424,6 +424,9 @@ export function isRealFifraOrderBody(text: string): boolean {
   if (/ALCOHOL AND TOBACCO TAX AND TRADE BUREAU/i.test(text) && /ABSTRACT AND STATEMENT/i.test(text)) {
     return false;
   }
+  if (/\d{2}-\d{3}-01air/i.test(text) && /Confirmation of the regulatory status/i.test(text)) {
+    return false;
+  }
   const epa =
     /UNITED STATES ENVIRONME?N?TAL PROTECTION AGENCY|ENVIRONMENTAL PROTECTION AGENCY|U\.S\.\s+Environmental Protection Agency|U\.S\.\s+EPA\s+REGION/i.test(
       text,
