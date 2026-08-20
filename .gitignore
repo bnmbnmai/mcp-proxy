@@ -16,6 +16,7 @@ build/untitled-letters.*
 build/awa.*
 build/swisspar.*
 build/pcac.*
+build/ftc-wl.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
@@ -29,3 +30,4 @@ data/untitled-letters/
 data/awa/
 data/swisspar/
 data/pcac/
+data/ftc-wl/

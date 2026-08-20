@@ -18,6 +18,7 @@ Live paid doors (all return HTTP 402 unpaid, official bodies when paid):
 | `GET https://ticks.bnm.farm/gmp-md` | $0.05 | Health Canada medical-device report-card observation text + MDR cites |
 | `GET https://ticks.bnm.farm/swisspar` | $0.05 | Swissmedic first-authorisation SwissPAR evaluation text |
 | `GET https://ticks.bnm.farm/pcac` | $0.05 | FDA PCAC 503A briefing-memo evaluation text |
+| `GET https://ticks.bnm.farm/ftc-wl` | $0.05 | FTC BCP warning-letter PDF text |
 
 CDP `POST /platform/v2/x402/validate` for each URL: `valid: true`, `simulation.outcome: accepted`.
 
