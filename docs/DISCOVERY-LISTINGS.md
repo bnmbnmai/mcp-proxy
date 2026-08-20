@@ -19,6 +19,7 @@ Live paid doors (all return HTTP 402 unpaid, official bodies when paid):
 | `GET https://ticks.bnm.farm/pcac` | $0.05 | FDA PCAC 503A briefing-memo evaluation text (this PR; not live until apollo) |
 | `GET https://ticks.bnm.farm/ftc-wl` | $0.05 | FTC BCP warning-letter PDF text (this PR; not live until apollo) |
 | `GET https://ticks.bnm.farm/cfpb-orders` | $0.05 | CFPB consent-order / administrative-order PDF text (this PR; not live until apollo) |
+| `GET https://ticks.bnm.farm/occ-cd` | $0.05 | OCC institution C&D / consent-order PDF text (this PR; not live — do not deploy / do not restart apollo) |
 
 CDP `POST /platform/v2/x402/validate` for each URL: `valid: true`, `simulation.outcome: accepted`.
 

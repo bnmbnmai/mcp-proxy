@@ -1,0 +1,222 @@
+[
+  {
+    "Institution": "United Texas Bank, National Association",
+    "CharterNumber": "25377",
+    "Company": "",
+    "Individual": "",
+    "Location": "Dallas, TX",
+    "TypeCode": "C&D",
+    "TypeDescription": "Cease-and-Desist Order (C&D) or Personal Cease-and-Desist Order (PC&D)",
+    "Amount": "0.00",
+    "StartDate": "06/16/2026",
+    "StartDocuments": [
+      "AA-ENF-2026-29"
+    ],
+    "TerminationDate": "",
+    "TerminationDocuments": [],
+    "DocketNumber": "AA-ENF-2026-29",
+    "SubjectMatters": [
+      "Board / Management Oversight",
+      "BSA Independent Testing/Audit",
+      "BSA Internal Controls",
+      "BSA Officer",
+      "BSA Program Violation / 12 CFR 21.21",
+      "BSA Risk Assessment",
+      "BSA Training",
+      "BSA Violation Cited",
+      "BSA/AML",
+      "Customer/Enhanced Due Diligence (CDD/EDD)",
+      "OFAC Compliance Issue",
+      "SAR/CTR Monitoring/Filing Issue"
+    ]
+  },
+  {
+    "Institution": "Community Federal Savings Bank",
+    "CharterNumber": "717528",
+    "Company": "",
+    "Individual": "",
+    "Location": "Woodhaven, NY",
+    "TypeCode": "C&D",
+    "TypeDescription": "Cease-and-Desist Order (C&D) or Personal Cease-and-Desist Order (PC&D)",
+    "Amount": "0.00",
+    "StartDate": "04/24/2026",
+    "StartDocuments": [
+      "AA-ENF-2025-21"
+    ],
+    "TerminationDate": "",
+    "TerminationDocuments": [],
+    "DocketNumber": "AA-ENF-2025-21",
+    "SubjectMatters": [
+      "BSA Independent Testing/Audit",
+      "BSA Internal Controls",
+      "BSA Officer",
+      "BSA Program Violation / 12 CFR 21.21",
+      "BSA Risk Assessment",
+      "BSA SAR Violation / 12 CFR 21.11 or 163.180",
+      "BSA Violation Cited",
+      "BSA/AML",
+      "Customer/Enhanced Due Diligence (CDD/EDD)",
+      "SAR/CTR Monitoring/Filing Issue"
+    ]
+  },
+  {
+    "Institution": "The Federal Savings Bank",
+    "CharterNumber": "716195",
+    "Company": "",
+    "Individual": "",
+    "Location": "Chicago, IL",
+    "TypeCode": "C&D",
+    "TypeDescription": "Cease-and-Desist Order (C&D) or Personal Cease-and-Desist Order (PC&D)",
+    "Amount": "0.00",
+    "StartDate": "04/02/2026",
+    "StartDocuments": [
+      "AA-ENF-2025-63"
+    ],
+    "TerminationDate": "",
+    "TerminationDocuments": [],
+    "DocketNumber": "AA-ENF-2025-63",
+    "SubjectMatters": []
+  },
+  {
+    "Institution": "Eastern National Bank",
+    "CharterNumber": "15748",
+    "Company": "",
+    "Individual": "",
+    "Location": "Miami, FL",
+    "TypeCode": "C&D",
+    "TypeDescription": "Cease-and-Desist Order (C&D) or Personal Cease-and-Desist Order (PC&D)",
+    "Amount": "0.00",
+    "StartDate": "04/24/2025",
+    "StartDocuments": [
+      "AA-EC-2025-04"
+    ],
+    "TerminationDate": "",
+    "TerminationDocuments": [],
+    "DocketNumber": "AA-EC-2025-04",
+    "SubjectMatters": [
+      "Asset Quality",
+      "Board / Management Oversight",
+      "Capital",
+      "Compensation",
+      "Concentration Risk Management",
+      "Earnings",
+      "Insider Issues",
+      "Lending Issues",
+      "Liquidity",
+      "Noncompliance with Enforcement Action",
+      "Sensitivity to Market Risk",
+      "Strategic Planning"
+    ]
+  },
+  {
+    "Institution": "42 North Private Bank",
+    "CharterNumber": "713964",
+    "Company": "",
+    "Individual": "",
+    "Location": "Canton, MA",
+    "TypeCode": "C&D",
+    "TypeDescription": "Cease-and-Desist Order (C&D) or Personal Cease-and-Desist Order (PC&D)",
+    "Amount": "0.00",
+    "StartDate": "01/30/2025",
+    "StartDocuments": [
+      "AA-ENF-2024-110"
+    ],
+    "TerminationDate": "",
+    "TerminationDocuments": [],
+    "DocketNumber": "AA-ENF-2024-110",
+    "SubjectMatters": [
+      "Board / Management Oversight",
+      "Capital",
+      "Earnings",
+      "Liquidity",
+      "Noncompliance with Enforcement Action",
+      "Sensitivity to Market Risk",
+      "Strategic Planning"
+    ]
+  },
+  {
+    "Institution": "JPMorgan Chase Bank, National Association",
+    "CharterNumber": "8",
+    "Company": "",
+    "Individual": "Dorsey, Ezekiel",
+    "Location": "Columbus, OH",
+    "TypeCode": "Prohibition",
+    "TypeDescription": "Prohibition/Removal Orders",
+    "Amount": "0.00",
+    "StartDate": "06/26/2026",
+    "StartDocuments": [
+      "AA-ENF-2026-28"
+    ],
+    "TerminationDate": "",
+    "TerminationDocuments": [],
+    "DocketNumber": "AA-ENF-2026-28",
+    "SubjectMatters": [
+      "Insider Issues",
+      "Theft / Misappropriation of Funds"
+    ]
+  },
+  {
+    "Institution": "JPMorgan Chase Bank, National Association",
+    "CharterNumber": "8",
+    "Company": "",
+    "Individual": "Ahmed, Shaira",
+    "Location": "Columbus, OH",
+    "TypeCode": "Prohibition",
+    "TypeDescription": "Prohibition/Removal Orders",
+    "Amount": "0.00",
+    "StartDate": "03/24/2026",
+    "StartDocuments": [
+      "AA-ENF-2026-15"
+    ],
+    "TerminationDate": "",
+    "TerminationDocuments": [],
+    "DocketNumber": "AA-ENF-2026-15",
+    "SubjectMatters": []
+  },
+  {
+    "Institution": "1st National Bank of Texas",
+    "CharterNumber": "20482",
+    "Company": "",
+    "Individual": "McBee, Jim D.",
+    "Location": "Webster, TX",
+    "TypeCode": "CMP",
+    "TypeDescription": "Civil Money Penalty (CMP)",
+    "Amount": "20000.00",
+    "StartDate": "12/22/1993",
+    "StartDocuments": [
+      "93-312"
+    ],
+    "TerminationDate": "N/A",
+    "TerminationDocuments": [
+      "N/A"
+    ],
+    "DocketNumber": "",
+    "SubjectMatters": []
+  },
+  {
+    "Institution": "Bank of America, National Association",
+    "CharterNumber": "13044",
+    "Company": "",
+    "Individual": "",
+    "Location": "Charlotte, NC",
+    "TypeCode": "C&D",
+    "TypeDescription": "Cease-and-Desist Order (C&D) or Personal Cease-and-Desist Order (PC&D)",
+    "Amount": "0.00",
+    "StartDate": "07/14/2022",
+    "StartDocuments": [
+      "2022-023"
+    ],
+    "TerminationDate": "06/11/2026",
+    "TerminationDocuments": [
+      "AA-ENF-2026-32"
+    ],
+    "DocketNumber": "AA-ENF-2022-21",
+    "SubjectMatters": [
+      "Audit",
+      "Compliance Risk Management",
+      "Consumer Law",
+      "Internal Audit",
+      "Unfair or Deceptive (UDAP)"
+    ]
+  }
+]
