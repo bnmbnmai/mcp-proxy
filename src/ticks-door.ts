@@ -23,6 +23,8 @@
  * GET /swisspar/manifest.json — free count + name/date/MA/sourceUrl (no evaluation text)
  * GET /pcac — FDA PCAC 503A briefing-memo evaluation text ($0.05)
  * GET /pcac/manifest.json — free count + substance/date/meeting/mediaId/sourceUrl (no evaluation text)
+ * GET /ftc-wl — FTC BCP warning-letter PDF text ($0.05)
+ * GET /ftc-wl/manifest.json — free count + firm/date/subject/sourceUrl (no letter body)
  * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
  * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.05). Listed only when a real body is cached.
@@ -103,6 +105,13 @@ import {
   loadPcacManifest,
 } from "./pcac.js";
 import {
+  FTC_WL_AMOUNT_ATOMIC,
+  FTC_WL_MANIFEST_PATH,
+  FTC_WL_PATH,
+  loadFtcWl,
+  loadFtcWlManifest,
+} from "./ftc-wl.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -129,7 +138,7 @@ export const CATALOG_PATH = "/catalog.json";
 export const WELL_KNOWN_PATH = "/.well-known/x402";
 export const OPENAPI_PATH = "/openapi.json";
 export const LLMS_PATH = "/llms.txt";
-/** x402scan origin page for the live paid doors. /pcac is a live public SKU. */
+/** x402scan origin page for the live paid doors. /ftc-wl is a live public SKU. */
 export const X402SCAN_SERVER_URL =
   "https://www.x402scan.com/server/c6f584c5-e494-41d1-aa02-2efb07ac3546";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
@@ -199,7 +208,7 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "form-483" | "gmp";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "form-483" | "gmp";
 
 /** Always-public SKUs. /form-483 and /gmp join only when a real observation body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
@@ -214,6 +223,7 @@ export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "awa",
   "swisspar",
   "pcac",
+  "ftc-wl",
 ];
 
 export function form483IsPublic(): boolean {
@@ -235,7 +245,7 @@ export function isPublicBazaarSku(sku: DoorSku): boolean {
   return publicBazaarSkus().includes(sku);
 }
 
-const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen"] as const;
+const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"] as const;
 const NEXT_SKU_WORDS = [
   "first",
   "second",
@@ -250,6 +260,8 @@ const NEXT_SKU_WORDS = [
   "eleventh",
   "twelfth",
   "thirteenth",
+  "fourteenth",
+  "fifteenth",
 ] as const;
 
 function paidCountWord(): string {
@@ -260,7 +272,7 @@ function paidCountWord(): string {
 function noNextSkuWord(): string {
   const n = publicBazaarSkus().length;
   const next = NEXT_SKU_WORDS[n] ?? `${n + 1}th`;
-  return `/pcac is a live public SKU on purpose. No ${next} public SKU.`;
+  return `/ftc-wl is a live public SKU on purpose. No ${next} public SKU.`;
 }
 
 function amountAtomicFor(sku: DoorSku): string {
@@ -298,6 +310,10 @@ function amountAtomicFor(sku: DoorSku): string {
   if (sku === "pcac") {
     const raw = env("PCAC_USDC_ATOMIC");
     return raw.length > 0 ? raw : PCAC_AMOUNT_ATOMIC;
+  }
+  if (sku === "ftc-wl") {
+    const raw = env("FTC_WL_USDC_ATOMIC");
+    return raw.length > 0 ? raw : FTC_WL_AMOUNT_ATOMIC;
   }
   if (sku === "form-483") {
     const raw = env("FORM_483_USDC_ATOMIC");
@@ -366,6 +382,11 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
     description:
       "Call GET /pcac when you need official FDA-authored PCAC 503A briefing-memo evaluation text extracted from per-substance PDFs. Not the FR notice or docket 0001. Not CDER multidisciplinary reviews. Not combined sponsor/AdComm packs.",
     resourcePath: PCAC_PATH,
+  },
+  "ftc-wl": {
+    description:
+      "Call GET /ftc-wl when you need official FTC Bureau of Consumer Protection warning-letter text extracted from per-letter PDFs on ftc.gov. Not the legal-library index. Not the Drupal node. Not FDA /warning-letters. Not official templates.",
+    resourcePath: FTC_WL_PATH,
   },
   "form-483": {
     description:
@@ -559,6 +580,21 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         mediaId: "193344",
         sourceUrl: "https://www.fda.gov/media/193344/download",
         body: "FDA Briefing Document\nPharmacy Compounding Advisory Committee (PCAC) Meeting\nJuly 23 -24, 2026\nFDA Evaluation of Emideltide-Related Bulk Drug Substances",
+      },
+    ],
+  },
+  "ftc-wl": {
+    ok: true,
+    product: "ftc-bcp-warning-letter-bodies",
+    status: "ok",
+    cards: [
+      {
+        id: "vtron-inc-dba-vtron-lasers",
+        firm: "Vtron Inc. d/b/a Vtron Lasers",
+        date: "2026-07-06",
+        subject: "Warning Letter Regarding “Made in the USA” Representations",
+        sourceUrl: "https://www.ftc.gov/system/files/ftc_gov/pdf/vtron-lasers-musa-warningletter.pdf",
+        body: "Bureau of Consumer Protection\nJuly 6, 2026\nVtron Inc. d/b/a Vtron Lasers\nRe: Warning Letter Regarding “Made in the USA” Representations",
       },
     ],
   },
@@ -1397,6 +1433,7 @@ export function llmsTxt(): string {
     "- GET /awa — $0.05 — USDA APHIS AWA inspection-report observation text (official per-report PDFs)",
     "- GET /swisspar — $0.05 — Swissmedic first-authorisation SwissPAR evaluation text (official per-product PDFs)",
     "- GET /pcac — $0.05 — FDA PCAC 503A briefing-memo evaluation text (official per-substance PDFs)",
+    "- GET /ftc-wl — $0.05 — FTC BCP warning-letter text (official per-letter PDFs)",
   ];
   if (listed483) {
     paid.push("- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs)");
@@ -1419,6 +1456,7 @@ export function llmsTxt(): string {
     "- GET /awa/manifest.json — APHIS AWA count + id/firm/date/sourceUrl (not the observation text)",
     "- GET /swisspar/manifest.json — SwissPAR count + name/date/MA/sourceUrl (not the evaluation text)",
     "- GET /pcac/manifest.json — FDA PCAC count + substance/date/meeting/mediaId/sourceUrl (not the evaluation text)",
+    "- GET /ftc-wl/manifest.json — FTC BCP count + firm/date/subject/sourceUrl (not the letter body)",
   ];
   if (listed483) {
     free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (not the observation body)");
@@ -1463,7 +1501,7 @@ function discoveryOrigin(req: IncomingMessage, port: number): string {
 }
 
 function paidDiscoveryPaths(): string[] {
-  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH];
+  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH];
   if (form483IsPublic()) paths.push(FORM_483_PATH);
   if (gmpIsPublic()) paths.push(GMP_PATH);
   return paths;
@@ -1564,6 +1602,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const awaAtomic = amountAtomicFor("awa");
   const swissparAtomic = amountAtomicFor("swisspar");
   const pcacAtomic = amountAtomicFor("pcac");
+  const ftcWlAtomic = amountAtomicFor("ftc-wl");
   const f483Atomic = amountAtomicFor("form-483");
   const gmpAtomic = amountAtomicFor("gmp");
   const ticksPrice = (Number(ticksAtomic) / 1e6).toFixed(2);
@@ -1577,6 +1616,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const awaPrice = (Number(awaAtomic) / 1e6).toFixed(2);
   const swissparPrice = (Number(swissparAtomic) / 1e6).toFixed(2);
   const pcacPrice = (Number(pcacAtomic) / 1e6).toFixed(2);
+  const ftcWlPrice = (Number(ftcWlAtomic) / 1e6).toFixed(2);
   const f483Price = (Number(f483Atomic) / 1e6).toFixed(2);
   const gmpPrice = (Number(gmpAtomic) / 1e6).toFixed(2);
   const listed483 = form483IsPublic();
@@ -1593,6 +1633,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
     "/awa ($0.05)",
     "/swisspar ($0.05)",
     "/pcac ($0.05)",
+    "/ftc-wl ($0.05)",
   ];
   if (listed483) paidBits.push("/form-483 ($0.05)");
   if (listedGmp) paidBits.push("/gmp ($0.05)");
@@ -1828,6 +1869,25 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           },
         }),
       },
+      [FTC_WL_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getFtcWl",
+          summary: "FTC BCP warning-letter text",
+          description: SKU_COPY["ftc-wl"].description,
+          priceUsdc: ftcWlPrice,
+          amountAtomic: ftcWlAtomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["ftc-wl"],
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              status: { type: "string" },
+              cards: { type: "array", items: { type: "object" } },
+            },
+          },
+        }),
+      },
       ...(listed483
         ? {
             [FORM_483_PATH]: {
@@ -1923,6 +1983,12 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
         get: freeOpenApiOp(
           "FDA PCAC free manifest",
           "Count, substance, date, meeting, mediaId, and official source URL. Not the evaluation text.",
+        ),
+      },
+      [FTC_WL_MANIFEST_PATH]: {
+        get: freeOpenApiOp(
+          "FTC BCP warning-letters free manifest",
+          "Count, firm, date, subject, and official PDF URL. Not the letter body.",
         ),
       },
       ...(listed483
@@ -2133,6 +2199,13 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
           amountAtomic: amountAtomicFor("pcac"),
           manifest: PCAC_MANIFEST_PATH,
         },
+        {
+          path: FTC_WL_PATH,
+          product: "ftc-bcp-warning-letter-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("ftc-wl"),
+          manifest: FTC_WL_MANIFEST_PATH,
+        },
         ...(form483IsPublic()
           ? [
               {
@@ -2280,6 +2353,16 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === FTC_WL_MANIFEST_PATH) {
+    sendJson(res, 200, withShopDiscovery(await loadFtcWlManifest(), req, port));
+    return;
+  }
+
+  if (path === FTC_WL_PATH) {
+    await servePaid(req, res, port, "ftc-wl", () => loadFtcWl());
+    return;
+  }
+
   if (path === FORM_483_MANIFEST_PATH) {
     sendJson(res, 200, withShopDiscovery(await loadForm483Manifest(), req, port));
     return;
@@ -2305,7 +2388,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
 }
 
 export function bindHost(): string {
@@ -2344,6 +2427,7 @@ if (isMain()) {
     console.error(`${AWA_PATH} $${Number(amountAtomicFor("awa")) / 1e6} USDC`);
     console.error(`${SWISSPAR_PATH} $${Number(amountAtomicFor("swisspar")) / 1e6} USDC`);
     console.error(`${PCAC_PATH} $${Number(amountAtomicFor("pcac")) / 1e6} USDC`);
+    console.error(`${FTC_WL_PATH} $${Number(amountAtomicFor("ftc-wl")) / 1e6} USDC`);
     console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
     console.error(`${GMP_PATH} $${Number(amountAtomicFor("gmp")) / 1e6} USDC${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
     console.error(`payTo ${PAY_TO} USDC ${USDC_BASE} on Base`);
