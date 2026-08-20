@@ -1,0 +1,81 @@
+United States    Hiroki Komatsu
+Department of
+                 Breeding Technology Group,
+Agriculture
+                 Global Integrated Agri-Tech R&D Department,
+Marketing and    Global Agricultural Research & Business Center, KAGOME Co., LTD.
+Regulatory
+Programs
+                 Re: Confirmation of the regulatory status of gene edited tomato for enhanced abiotic
+Washington, DC   stress tolerance
+20250
+                 Dear Hiroki Komatsu:
+
+                 Thank you for your letter received June 22, 2026 (26-173-01air), inquiring whether the
+                 tomato (Solanum lycopersicum) product described in your letter is a regulated article
+                 under 7 CFR part 340. Your letter describes genome edited tomato developed using
+                 CRISPR-Cas, resulting in the desired enhanced abiotic stress tolerance.
+
+                 The Plant Protection Act of 2000 (PPA) provides USDA with broad authority to
+                 protect U.S. agriculture, the environment, and the economy by, among other things,
+                 regulating the introduction of plants and articles to prevent the dissemination or
+                 establishment of a plant pest within the United States. As such, USDA, through the
+                 Animal and Plant Health Inspection Service, regulates the “Introduction of Organisms
+                 and Products Altered or Produced Through Genetic Engineering Which are Plant Pests
+                 or Which There is Reason to Believe Are Plant Pests,” as described in 7 CFR part 340.
+                 These regulations only apply to organisms that USDA deems regulated articles under §
+                 340.1.
+
+                 In your letter, you describe how you used particle bombardment to transiently
+                 introduce non-integrating plasmids with gene-editing elements into tomato to introduce
+                 edits in target genes, claimed as confidential business information (CBI), through DNA
+                 repair without the presence of an externally provided DNA template. You used
+                 polymerase chain reaction (PCR), T7 Endonuclease I cleavage assay, and Sanger
+                 sequencing to confirm modifications to the target genes. You subsequently used
+                 conventional breeding methods and PCR to confirm the absence of unintended
+                 insertion of plasmid sequences.
+
+                 Based on the representations you made in your letter, including your description of the
+                 results of your confirmation methods, your modified tomato plants are not themselves
+                 plant pests and no plant pest sequences were integrated into the genome of tomato.
+                 Consistent with previous responses to similar letters of inquiry, USDA does not
+                 consider your modified tomato plants to be regulated pursuant to 7 CFR part 340.
+
+                 Although your modified tomato is not regulated under 7 CFR part 340, it may be
+                 subject to other USDA regulations or other regulatory authorities. For example,
+                 importation of your plant or its seeds may be subject to Plant Protection and
+                 Quarantine (PPQ) permit and/or quarantine requirements. For further information, you
+                 may contact the PPQ general number for such inquiries at (877) 770-5990. To inquire
+                 about the regulatory status of your plant with the Environmental Protection Agency,
+
+                 USDA is an equal opportunity provider, employer, and lender.
+                                                                 KAGOME Co., LTD.
+                                                                           Page 2
+
+ please contact Alan Reynolds at reynolds.alan@epa.gov or (703) 605-0515. To inquire
+ about the regulatory status of your plant with the Food and Drug Administration
+ (FDA), please contact FDA at PlantBiotech@fda.hhs.gov.
+
+ Should you become aware at any time of any issues that may affect USDA’s
+ conclusion regarding this inquiry, you should immediately notify us in writing of the
+ nature of the issue.
+
+ Sincerely,
+
+
+
+  DONNA LALLI Digitally signed by DONNA LALLI
+              Date: 2026.08.14 09:05:45 -04'00'
+
+
+ Donna A. Lalli, Ph.D.
+ APHIS Deputy Administrator
+ Biotechnology Regulatory Services
+ Animal and Plant Health Inspection Service
+ U.S. Department of Agriculture
+
+
+
+
+USDA is an equal opportunity provider, employer, and lender.
+

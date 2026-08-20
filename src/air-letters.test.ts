@@ -139,6 +139,12 @@ async function main(): Promise<void> {
   });
   assert.equal(isRealAirLetterBody(cftc.body), false, "CFTC /cftc-orders is not this SKU");
 
+  const superfund = parseAirLetterText(readFx("superfund-rod.txt"), {
+    sourceUrl: "https://semspub.epa.gov/work/05/711427.pdf",
+    institution: "Federated Metals Corp. Whiting Superfund Site",
+  });
+  assert.equal(isRealAirLetterBody(superfund.body), false, "Superfund /superfund-rods is not this SKU");
+
   const manifest = buildAirLettersManifest({
     ok: true,
     product: "aphis-air-confirmation-letter-bodies",
