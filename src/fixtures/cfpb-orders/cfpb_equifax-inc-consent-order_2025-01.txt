@@ -1,0 +1,3380 @@
+            2025-CFPB-0002   Document 1        Filed 01/17/2025   Page 1 of 75
+
+
+
+                   UNITED STATES OF AMERICA
+             CONSUMER FINANCIAL PROTECTION BUREAU
+
+ADMINISTRATIVE PROCEEDING
+File No. 2025-CFPB-0002
+
+
+In the Matter of:
+
+                                                CONSENT ORDER
+
+
+
+Equifax Inc. and Equifax
+Information Services LLC
+
+
+      The Consumer Financial Protection Bureau (Bureau) has reviewed the
+
+consumer credit file dispute processes, procedures, and systems of Equifax
+
+Information Services LLC and has identified violations of the Fair Credit
+
+Reporting Act (FCRA), 15 U.S.C. § 1681 et seq., and the Consumer Financial
+
+Protection Act of 2010 (CFPA), 12 U.S.C. §§ 5531 and 5536. Under §§ 1053 and
+
+1055 of the CFPA, 12 U.S.C. §§ §§ 5563, 5565, the Bureau issues this Consent
+
+Order (Consent Order).
+
+                                          I.
+
+                                    Overview
+
+1.    Equifax Information Services LLC operates a nationwide credit reporting
+
+      agency. It aggregates data about most adult consumers in the United States
+
+                                          1
+           2025-CFPB-0002     Document 1       Filed 01/17/2025   Page 2 of 75
+
+
+
+     and sells that data to its business customers in the form of consumer reports
+
+     that are used by lenders, employers, landlords, and others to make important
+
+     decisions about consumers. Equifax Inc. is the parent company to Equifax
+
+     Information Services LLC.
+
+2.   The consequences to a consumer of having inaccurate or incomplete
+
+     information on a consumer report may be severe. Accordingly, under the Fair
+
+     Credit Reporting Act, consumers are entitled to dispute the accuracy or
+
+     completeness of information that Consumer Reporting Agencies maintain
+
+     about them. If a consumer disputes such information, then the FCRA
+
+     requires Consumer Reporting Agencies to reinvestigate that information and
+
+     report the results of that reinvestigation to the consumer.
+
+3.   The Fair Credit Reporting Act imposes certain obligations on Respondent to
+
+     reinvestigate the accuracy of disputed information. Section 611 of the FCRA
+
+     requires Respondent to process Disputes by, among other things: (1)
+
+     providing notice of the Dispute to the Furnisher who reported the disputed
+
+     information, including all relevant information provided by the consumer in
+
+     connection with the Dispute; (2) conducting a reasonable reinvestigation to
+
+     determine whether the disputed information is inaccurate; and (3) providing
+
+     the consumer the results of the reinvestigation, including whether
+
+     Respondent determined that the disputed information was inaccurate or
+
+
+                                           2
+           2025-CFPB-0002     Document 1       Filed 01/17/2025   Page 3 of 75
+
+
+
+     incomplete and how Respondent acted on that determination (e.g., by
+
+     deleting or modifying the information or by maintaining it as originally
+
+     reported).
+
+4.   Respondent processes approximately 765,000 Disputes per month.
+
+5.   Since at least October 2017, Respondent’s flawed Dispute policies and
+
+     processes as well as other technology failures resulted in inaccurate or
+
+     incomplete information remaining on Consumer Files to the detriment of
+
+     millions of consumers.
+
+6.   Respondent violated requirements of the Fair Credit Reporting Act
+
+     throughout the Dispute reinvestigation process. Further, in some instances,
+
+     Equifax failed to timely block consumer information resulting from identity
+
+     theft and provided inaccurate credit scores and consumer report information
+
+     to lenders and others in violation of the Fair Credit Reporting Act and the
+
+     Consumer Financial Protection Act.
+
+7.   Specifically, Respondent violated the Fair Credit Reporting Act and the
+
+     Consumer Financial Protection Act in the following ways:
+
+8.   Equifax failed to meet the reasonable reinvestigation requirements of the
+
+     FCRA § 611, including, among other things, by failing in some instances to
+
+     review and consider all relevant information in processing consumer-
+
+     submitted disputes regarding the accuracy of information in their credit files;
+
+
+                                           3
+          2025-CFPB-0002    Document 1         Filed 01/17/2025   Page 4 of 75
+
+
+
+     •     Equifax committed unfair acts and practices by using ineffective
+           systems and flawed processes with known limitations, information
+           loss, and excessive deference to furnishers to reinvestigate consumer
+           disputes, in violation of the CFPA, 12 U.S.C. §§ 5531 and 5536;
+
+     •     Equifax failed to maintain reasonable procedures to assure maximum
+           possible accuracy of consumer information related to its processing of
+           consumer disputes, in violation of the requirements of FCRA §
+           607(b);
+
+     •     Equifax failed in some instances to timely block the reporting of
+           identity-theft related information in consumers’ files and failed to
+           provide consumers with required identity theft notifications and
+           information, in violation of the requirements of FCRA § 605B;
+
+     •     Equifax failed to maintain reasonable procedures to assure maximum
+           possible accuracy of consumer information when, as a result of a
+           coding error, it provided inaccurate credit scores and credit attributes
+           to lenders and others, in violation of the requirements of FCRA
+           § 607(b); and
+
+     •     Equifax committed unfair acts and practices when, as a result of a
+           coding error, it provided inaccurate credit scores and credit attributes
+           to lenders and others, in violation of the CFPA, 12 U.S.C. §§ 5531
+           and 5536.
+                                         II.
+
+                                  Jurisdiction
+
+9.   The Bureau has jurisdiction over this matter under §§ 1053 and 1055 of the
+
+     CFPA, 12 U.S.C. §§ 5563 and 5565, and § 621 of the FCRA, 15 U.S.C.
+
+     § 1681s(b)(1)(H).
+
+
+
+
+                                         4
+            2025-CFPB-0002    Document 1       Filed 01/17/2025   Page 5 of 75
+
+
+
+                                         III.
+
+                                     Stipulation
+
+10.   Respondent has executed a “Stipulation and Consent to the Issuance of a
+
+      Consent Order,” dated January 16, 2025(Stipulation), which is incorporated
+
+      by reference and is accepted by the Bureau. By this Stipulation, Respondent
+
+      has consented to the issuance of this Consent Order by the Bureau under
+
+      Sections 1053 and 1055 of the CFPA, 12 U.S.C. §§ 5563, 5565, without
+
+      admitting or denying any of the findings of fact or conclusions of law, except
+
+      that Respondent admits the facts necessary to establish the Bureau’s
+
+      jurisdiction over Respondent and the subject matter of this action.
+
+                                         IV.
+
+                                     Definitions
+
+11.   The following definitions apply to this Consent Order:
+
+      a.     “Board” means Respondent’s duly-elected and acting Board of
+
+             Directors.
+
+      b.     “Consumer File” is synonymous in meaning and equal in scope to the
+
+             definition of the term “file,” as of the Effective Date, in § 603(g) of
+
+             the FCRA and, “when used in connection with information on any
+
+             consumer, means all of the information on that consumer recorded
+
+             and retained by a consumer reporting agency regardless of how that
+
+                                           5
+     2025-CFPB-0002       Document 1       Filed 01/17/2025   Page 6 of 75
+
+
+
+     information is stored.” 15 U.S.C. § 1681a(g).
+
+c.   “Consumer Reporting Agency” or “CRA” is synonymous in meaning
+
+     and equal in scope to the definition of the term, as of the Effective
+
+     Date, in § 603 of the FCRA, 15 U.S.C. § 1681a(f), and includes “any
+
+     person which, for monetary fees, dues, or on a cooperative nonprofit
+
+     basis, regularly engages in whole or in part in the practice of
+
+     assembling or evaluating consumer credit information or other
+
+     information on consumers for the purpose of furnishing consumer
+
+     reports to third parties, and which uses any means or facility of
+
+     interstate commerce for the purpose of preparing or furnishing
+
+     consumer reports.”
+
+d.   “Dispute” means a dispute initiated by a consumer directly, or
+
+     indirectly through a reseller, to a Consumer Reporting Agency
+
+     regarding the completeness or accuracy of any item of information
+
+     contained in a Consumer File at the Consumer Reporting Agency.
+
+e.   “Effective Date” means the date on which the Consent Order is
+
+     entered on the administrative docket.
+
+f.   “Enforcement Director” means the Enforcement Director of the
+
+     Enforcement Division for the Consumer Financial Protection Bureau,
+
+     or their delegate.
+
+
+                                       6
+     2025-CFPB-0002    Document 1       Filed 01/17/2025   Page 7 of 75
+
+
+
+g.   “Executive” means any individual who is Respondent’s Chief
+
+     Executive Officer, Chief Operating Officer, Chief Legal Officer, or
+
+     USIS Business Unit President (or officers with comparable
+
+     responsibilities, if the Respondent does not employ officers with those
+
+     titles) at any time during the duration of this Consent Order, for the
+
+     duration of their service in that role.
+
+h.   “Furnisher” is synonymous in meaning and equal in scope to the
+
+     definition of that term, as of the Effective Date, in Subpart E of
+
+     Regulation V, 12 C.F.R. § 1022.41(c), and includes “an entity that
+
+     furnishes information relating to consumers to one or more consumer
+
+     reporting agencies for inclusion in a consumer report.”
+
+i.   “Initiate” or “initiated” refers to when a consumer selects the
+
+     information on the consumer’s file to submit a Dispute to the
+
+     Respondent. Initiate does not refer to the point in time at which the
+
+     consumer submits the Dispute to the Respondent.
+
+j.   “Person” means any individual, partnership, limited liability
+
+     partnership, company, limited liability company, corporation,
+
+     association (incorporated or unincorporated), trust, estate, cooperative
+
+     organization, or other entity.
+
+k.   “Reinvestigation” means a Consumer Reporting Agency’s actions to
+
+
+                                    7
+     2025-CFPB-0002       Document 1       Filed 01/17/2025   Page 8 of 75
+
+
+
+     address a Dispute. It is synonymous in meaning and equal in scope to
+
+     the term, as of the Effective Date, as used in the FCRA § 611, 15
+
+     U.S.C. § 1681i.
+
+l.   “Related Consumer Action” means a private action by or on behalf of
+
+     one or more consumers or an enforcement action by another
+
+     governmental agency brought against Respondent based on
+
+     substantially the same facts as described in Section V of this Consent
+
+     Order.
+
+m.   “Repeat Dispute” means a Dispute where the consumer has previously
+
+     submitted a Dispute about the same information within the prior 90
+
+     days.
+
+n.   “Respondent” and “Equifax” means Equifax Inc. and Equifax
+
+     Information Services LLC, individually and collectively, and their
+
+     successors and assigns. Neither Respondent nor Equifax includes any
+
+     other subsidiary or affiliate of Equifax Inc. except Equifax
+
+     Information Services LLC.
+
+o.   “Supervision Director” means the Supervision Director of the
+
+     Supervision Division for the Consumer Financial Protection Bureau,
+
+     or their delegate.
+
+
+
+
+                                       8
+            2025-CFPB-0002     Document 1        Filed 01/17/2025   Page 9 of 75
+
+
+
+                                            V.
+
+                          Bureau Findings and Conclusions
+
+      The Bureau finds the following:
+
+12.   Equifax Information Services LLC operates a nationwide Consumer
+
+      Reporting Agency with headquarters in Atlanta, Georgia.
+
+13.   Respondent collects, analyzes, maintains, and provides consumer report
+
+      information and other account information, including information related to
+
+      the credit history of consumers, which is used or expected to be used in
+
+      connection with decisions regarding the offering or provision of a consumer
+
+      financial product or service. 12 U.S.C. § 5481(15)(A)(ix). Respondent’s
+
+      products or services are consumer financial products or services covered by
+
+      the Consumer Financial Protection Act. 12 U.S.C. § 5481(5).
+
+14.   Because Respondent engages in offering or providing a consumer financial
+
+      product or service, Respondent is a “covered person” under the CFPA. 12
+
+      U.S.C. § 5481(6).
+
+15.   Respondent is a “consumer reporting agency” as defined by the Fair Credit
+
+      Reporting Act. See 15 U.S.C. § 1681a(f). Further, Respondent is a
+
+      “consumer reporting agency that compiles and maintains files on consumers
+
+      on a nationwide basis,” as that term is defined in FCRA Section 603(p). Id. §
+
+      1681a(p). Respondent is therefore subject to the Fair Credit Reporting Act.
+
+
+                                            9
+           2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 10 of 75
+
+
+
+                      Findings and Conclusions as to
+ Respondent’s Failures in Handling and Reinvestigating Consumer Disputes
+16.   The FCRA provides that consumers who identify any inaccurate or
+
+      incomplete information in their Consumer File at a Consumer Reporting
+
+      Agency may initiate a Dispute with the Consumer Reporting Agency.
+
+17.   Consumers typically initiate Disputes with Respondent by mail or phone, or
+
+      online via Respondent’s myEquifax portal. In addition to identifying the
+
+      inaccurate item of information, consumers who submit Disputes may submit
+
+      documents to support their claims, such as letters from creditors or court
+
+      documents.
+
+18.   Respondent processes Disputes using multiple internal platforms and systems
+
+      and an external platform called e-OSCAR, which is jointly owned by
+
+      Respondent and three other Consumer Reporting Agencies. e-OSCAR is
+
+      used across the credit reporting industry to transfer Dispute information
+
+      between certain Consumer Reporting Agencies and companies that furnish
+
+      consumer information to those Consumer Reporting Agencies.
+
+19.   Since at least October 2017, Respondent’s systems have suffered from flaws
+
+      in processing disputes, as detailed below.
+
+                                   Intake Failures
+20.   Respondent’s intake processes significantly limit consumers’ ability to fully
+
+      and accurately describe the nature of their Disputes.
+
+                                          10
+           2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 11 of 75
+
+
+
+21.   Once a consumer submits a Dispute, Respondent typically sends it on to the
+
+      Furnisher to obtain the Furnisher’s response.
+
+22.   Respondent currently relies on numeric codes to categorize mail or phone
+
+      Disputes that it sends to Furnishers for reinvestigation through e-OSCAR.
+
+      Consumers who submit Disputes online, however, only have access to a
+
+      limited set of pre-populated narrative descriptions to characterize their
+
+      Disputes, which map to less than a quarter of the total internal codes
+
+      available. And Respondent fails to provide sufficient guidance to consumers
+
+      to allow them to meaningfully select among even this more limited set of
+
+      Dispute codes. As a result, the information Respondent passes on to the
+
+      Furnisher may not fully or accurately describe the nature of the Dispute.
+
+23.   Respondent’s internal policies also unduly restrict the selection of Dispute
+
+      codes for Disputes submitted by phone or mail. Respondent’s procedures and
+
+      systems encourage agents to select only a small set of the most common (and
+
+      generic) Dispute codes, increasing the likelihood that agents will fail to fully
+
+      and accurately characterize many Disputes.
+
+24.   Respondent sometimes includes additional information in a Dispute
+
+      description field when sending a Dispute to the Furnisher. However, even
+
+      when included, the additional information is sometimes high-level, cryptic or
+
+      garbled. Internal policies and training do not sufficiently instruct phone or
+
+
+                                           11
+           2025-CFPB-0002     Document 1      Filed 01/17/2025   Page 12 of 75
+
+
+
+      mail agents as to what to include in this field and when, if at all, such
+
+      information is mandatory. Further, Respondent does not provide guidance to
+
+      consumers using the myEquifax portal as to what additional information
+
+      might assist in resolving the Dispute, so consumers rarely provide any
+
+      additional information in this field.
+
+           Unreasonable Reliance on Furnishers’ Responses to Disputes
+                 and Other Reinvestigation Processing Failures
+25.   Once intake is complete, Respondent’s processes provide that a Dispute
+
+      typically follows one of three paths: it is sent to the Furnisher for
+
+      investigation; sent to Respondent’s public records vendor; or handled by
+
+      Respondent via an internal reinvestigation.
+
+26.   Sent to the Furnisher. For most Disputes involving credit account or other
+
+      debt-related information, Respondent will contact the Furnisher via the e-
+
+      OSCAR system using an Automated Credit Dispute Verification (ACDV)
+
+      form. This form includes one or two numeric codes describing the general
+
+      nature of the Dispute selected based on the consumer’s input or by
+
+      Respondent’s agents, whatever limited additional text is included in the
+
+      description field, and attaches any supporting documents provided by the
+
+      consumer. After receiving the Dispute, the Furnisher responds to Respondent
+
+      via e-OSCAR with another form including a two-digit code indicating
+
+      whether the disputed information is accurate as furnished or whether it
+
+                                           12
+           2025-CFPB-0002      Document 1    Filed 01/17/2025   Page 13 of 75
+
+
+
+      should be changed or deleted. To the extent a change or update is required,
+
+      the response also provides the updated account information. Respondent
+
+      either keeps the information in the Consumer File unchanged, modifies it, or
+
+      removes it based on this response from the Furnisher.
+
+27.   This process is almost entirely automated. Respondent conducts little to no
+
+      review of the Furnisher’s response to flag any logical inconsistencies, and
+
+      there is no way for the Furnisher to provide information about the substance
+
+      of the Dispute or its investigation beyond the two-digit code.
+
+28.   Sent to Public Records Vendor. For public record bankruptcy Disputes,
+
+      Respondent sends similar automated transmissions to its public records
+
+      vendor, but it does not send any associated documents that may have been
+
+      submitted by a consumer. The public records vendor provides a cursory
+
+      response regarding the consumer’s bankruptcy status.
+
+29.   Internal Reinvestigations. For a limited number of Disputes, Respondent
+
+      does not contact the Furnisher or public-records vendor. Instead, it follows
+
+      internal business rules and updates the Consumer File accordingly. For
+
+      example, in limited circumstances Respondent will update credit account or
+
+      debt information without contacting a Furnisher if a consumer submits
+
+      certain types of supporting documents that Respondent considers acceptable
+
+      under its internal criteria to resolve the Dispute.
+
+
+                                            13
+           2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 14 of 75
+
+
+
+30.   Each of the three paths has systemic failures that lead Respondent to
+
+      reinvestigate some consumer disputes in an inadequate and unreasonable
+
+      manner.
+
+31.   Unreasonable Reliance on Furnisher Responses to Disputes. Respondent
+
+      fails to meaningfully review Furnisher responses even when it possesses
+
+      information that contradicts those responses. In the vast majority of Disputes,
+
+      Respondent accepts the Furnisher’s response as to whether to modify the
+
+      disputed information without any review.
+
+32.   For example, where consumer-submitted documents call a Furnisher’s
+
+      response to a Dispute into question, Respondent does not check the response
+
+      for inconsistencies. Instead, it relies on the Furnisher’s response. Equifax
+
+      does not consider, and has no process for considering, systemic problems
+
+      that may exist with certain Furnishers in the context of individual Disputes.
+
+      Further, Respondent conducts no additional manual review of a Furnisher
+
+      response where there is facially illogical information in the response or the
+
+      response is illogical when compared to data in Respondent’s systems, and
+
+      relies on automated system rules to address illogical information provided in
+
+      Furnisher responses. These automated systems rules do not capture all
+
+      illogical Furnisher responses.
+
+
+
+
+                                           14
+           2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 15 of 75
+
+
+
+33.   Failed Processes for Consumer Documents. Respondent has repeatedly
+
+      failed to review and consider relevant documents submitted by consumers
+
+      due to its inappropriately restrictive policies for internal consideration of
+
+      such proof documents and other processing failures.
+
+34.   As a result of its restrictive criteria for acceptable proof documents,
+
+      Respondent sometimes excludes credible documents from consideration in a
+
+      Dispute. Its policies provide that it will accept only a narrowly defined set of
+
+      consumer-submitted proof documents. And even for that narrow set of
+
+      documents, the policy generally requires the document to include the
+
+      consumer’s name and address, full account number, and depending on the
+
+      source, features like the Furnisher’s letterhead. Many documents that are
+
+      otherwise reliable lack one or more of these specific features (e.g., they only
+
+      have a partial account number) and are rejected on that basis.
+
+35.   Additionally, Respondent sometimes fails to accept documents that should be
+
+      considered valid under its own policies.
+
+36.   Respondent also does not publish its list of acceptable document types or the
+
+      criteria it applies to each type and does not inform consumers when or why
+
+      documents they submit are not considered sufficient under its policy.
+
+
+
+
+                                           15
+           2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 16 of 75
+
+
+
+37.   Furthermore, Respondent’s agents did not review most documents submitted
+
+      through its online channel at all, in a clear violation of Respondent’s own
+
+      policy.
+
+38.   Repeat Disputes. Respondent has no effective process to identify situations
+
+      where a consumer is forced to send another Dispute about the same
+
+      inaccurate information because Respondent has failed to correct the
+
+      information in their Consumer File, or where Respondent is again reporting
+
+      inaccurate information that has previously been corrected.
+
+39.   Respondent’s policies provide that if a consumer submits more than two
+
+      Disputes about the same item of information within a 90-day period, the
+
+      subsequent Disputes are presumptively frivolous or irrelevant unless the
+
+      consumer provides new information that was not included in the prior
+
+      dispute. But Respondent has inadequate procedures for assessing whether the
+
+      failure to correct the information was due to failures in Respondent’s or a
+
+      Furnisher’s prior reinvestigation, or whether the item was previously
+
+      corrected and has reverted to incorrect information. In instances where the
+
+      item was previously corrected, Respondent does not alert the Furnisher that a
+
+      consumer has previously successfully disputed the information and treats it
+
+      as a new dispute (to the extent it is processed at all). Consumers who are
+
+
+
+
+                                          16
+           2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 17 of 75
+
+
+
+      attempting to remove or correct inaccurate information are therefore trapped
+
+      in a cycle of repeatedly filing Disputes.
+
+40.   Respondent has recognized internally that it lacks policies and procedures to
+
+      identify these consumers and correct potentially inaccurate information. But
+
+      despite this knowledge, Respondent has failed to devote the resources to
+
+      improve its internal processes and procedures and correct this omission.
+
+41.   Bankruptcy Disputes. Respondent’s policies and processes for public
+
+      records bankruptcy Disputes are also flawed. Generally, before February
+
+      2023, when a consumer submitted a bankruptcy Dispute, Respondent
+
+      submitted the Dispute to its public records vendor but did not provide any
+
+      consumer-supplied documents. Respondent’s public records vendor used
+
+      only its automated system to search public records for the consumer’s
+
+      bankruptcy and report the findings to Respondent. Respondent relied on
+
+      these findings without further review and did not implement any safeguards
+
+      to ensure that the data it received from its vendor was accurate. Further,
+
+      Respondent did not meaningfully audit, monitor, or test its public records
+
+      vendor’s data.
+
+42.   Respondent’s policies also did not contemplate its agents consulting Public
+
+      Access to Court Electronic Records (PACER) (a low-cost and readily
+
+      available source of bankruptcy records) to resolve bankruptcy Disputes, even
+
+
+                                           17
+           2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 18 of 75
+
+
+
+      when consumers supplied documentary evidence that contradicted the public
+
+      records vendor’s response.
+
+43.   Respondent’s flawed system has resulted in the inaccurate reporting of some
+
+      consumers’ bankruptcy statuses. Respondent has in numerous instances
+
+      improperly deleted or failed to delete consumers’ bankruptcy filing
+
+      information from their Consumer Files. And Respondent has failed to submit
+
+      notifications and accurate information to Furnishers regarding bankruptcy
+
+      Disputes.
+
+           Inaccurate, Incomplete, and Confusing Notices to Consumers
+                           Regarding Dispute Outcomes
+44.   When the Reinvestigation is complete, Respondent informs consumers
+
+      through a standardized letter (Results Letter) that is automatically generated.
+
+      Results Letters include a short explanatory paragraph describing the result of
+
+      the Dispute, and then the revised information as it will appear on the
+
+      Consumer File. Respondent’s Results Letters are poorly drafted and routinely
+
+      fail to inform the consumer of the outcome of the Dispute.
+
+45.   Some Results Letters contain contradictory statements in the explanatory
+
+      paragraphs (e.g., in the same letter, both “The information you disputed has
+
+      been verified as accurate” and “THIS ITEM HAS BEEN DELETED FROM
+
+      THE CREDIT FILE.”). Further, the explanatory paragraphs and revised
+
+      Consumer File entries contained in the Results Letters are also sometimes
+
+                                           18
+           2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 19 of 75
+
+
+
+      inconsistent— sometimes Respondent will reference changes in the
+
+      explanatory paragraph that do not appear in the revised Consumer File.
+
+46.   Respondent fails to reasonably explain to consumers how to identify
+
+      information that has changed following a Dispute. Respondent does not
+
+      include a before and after version of the disputed item of information,
+
+      meaning consumers will likely fail to identify or understand specific changes
+
+      made to information in a credit account or debt tradeline.
+
+47.   In 2020, Respondent also identified inaccuracies in the Results Letters sent to
+
+      consumers who filed bankruptcy Disputes. The letters inaccurately
+
+      characterized approximately 50,000 consumers’ bankruptcy statuses as
+
+      “discharged” when they should have been characterized as “dismissed.”
+
+48.   Further, between February 2022 and May 2023, Respondent sent
+
+      approximately 250,000 consumers Results Letters stating that the
+
+      reinvestigation was still in process when in fact the reinvestigation had
+
+      concluded.
+
+       Improper Reinsertion of Information Deleted as a Result of Disputes
+49.   The reappearance of information in a Consumer File that was previously
+
+      deleted after it was disputed by a consumer and found to be inaccurate,
+
+      incomplete, or unverifiable is referred to by the FCRA as a “reinsertion.”
+
+
+
+
+                                           19
+           2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 20 of 75
+
+
+
+      Respondent has inadequate procedures in place to identify and prevent the
+
+      improper reinsertion of data.
+
+50.   Respondent’s general policy is to “suppress” information that has been
+
+      deleted as a result of a consumer’s Dispute. A suppressed item is not
+
+      displayed on a consumer report, but an electronic footprint remains in the
+
+      relevant metadata of Respondent’s system to prevent the unintended
+
+      reinsertion of the previously deleted information. But in some circumstances,
+
+      Respondent will “hard delete” information from a Consumer File—leaving
+
+      no record it had been there in the first instance, and thus providing no check
+
+      on reinsertion of the inaccurate, deleted information.
+
+51.   Respondent also generally allows reinsertion of a previously deleted
+
+      tradeline or bankruptcy record unless there is an exact match between certain
+
+      fields in the suppressed record and the new record, or only trivial differences.
+
+      As a result, information that should be blocked can be reinserted. Because of
+
+      Respondent’s matching rules, any new submission of the same information
+
+      by a different Furnisher could circumvent Respondent’s reinsertion
+
+      procedures. This has a significant impact on consumers when their debt is
+
+      sold to a new debt collector or debt buyer.
+
+
+
+
+                                           20
+           2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 21 of 75
+
+
+
+52.   Respondent allowed Furnishers in some instances to submit batch files that
+
+      permitted Furnishers to wrongfully overwrite information that previously
+
+      may have been corrected.
+
+53.   In some instances where Respondent recognizes that previously deleted
+
+      information has been reinserted—and in all the instances described above
+
+      where Respondent does not recognize the reinsertion at all—Respondent did
+
+      not require the Furnishers to certify that the information was complete and
+
+      accurate and Respondent did not timely notify consumers that the previously
+
+      deleted information was reinserted, provide the identity and contact
+
+      information of Furnishers contacted in connection with the reinsertion, or
+
+      inform consumers of their right to add a statement to their Consumer File
+
+      disputing the accuracy or completeness of the disputed information as
+
+      required under FCRA section 611(a)(5)(B), 15 U.S.C. § 1681i(a)(5)(B).
+
+54.   In addition to failing to prevent improper reinsertion, Respondent’s policies
+
+      and processes for dealing with Disputes about reinsertion are also flawed.
+
+      Respondent does not have a Dispute code that it assigns to Disputes
+
+      concerning previously deleted information. Even when a consumer
+
+      specifically identifies information re-appearing as the result of a reinsertion,
+
+      Respondent typically does not take any steps to determine if the information
+
+      was previously removed due to a Dispute or if it was reinserted due to an
+
+
+                                           21
+           2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 22 of 75
+
+
+
+      error by Respondent. Instead, Respondent codes reinsertion Disputes as if
+
+      there had never been a prior Dispute resulting in the deletion of that
+
+      information.
+
+          Lack of Systems of Record Related to Dispute Reinvestigation
+55.   Respondent also fails to maintain certain systems of record necessary for it to
+
+      fully and accurately record past consumer Disputes and reasonably process
+
+      new consumer Disputes. Information on prior Disputes must be gathered
+
+      from multiple locations in various systems and the results of a prior Dispute
+
+      must be reconstructed with limited information.
+
+        Failure to Comply with Timing and Other Statutory Requirements
+56.   FCRA § 611 imposes strict timing obligations and other specific statutory
+
+      obligations for reinvestigations. Respondent repeatedly failed to meet these
+
+      requirements.
+
+57.   In numerous instances, Respondent failed to conduct reasonable
+
+      reinvestigations within the timelines required, and, in some instances deleted
+
+      tradelines regardless of whether the Furnisher response indicated the
+
+      tradeline information was correct or not.
+
+58.   In numerous instances, Respondent failed to conduct reasonable
+
+      reinvestigations within the timelines required, or at all, as a result of coding
+
+      errors.
+
+
+
+                                           22
+           2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 23 of 75
+
+
+
+59.   In numerous instances, Respondent failed to conduct reasonable
+
+      reinvestigations, including failing to review and consider all relevant
+
+      information submitted by the consumer, such as by failing to upload and
+
+      review images of documents submitted with Disputes by consumers. The
+
+      failure to review the images caused significant delay in Dispute
+
+      reinvestigation.
+
+60.   In numerous instances, Respondent failed to send Dispute notices to
+
+      Furnishers within 5 business days after receiving Disputes as a result of, for
+
+      example, staffing issues and coding errors that resulted in delayed
+
+      investigations of Disputes.
+
+61.   In numerous instances, Respondent failed to send Dispute results notices to
+
+      consumers within 5 business days of completion of a reinvestigation due to,
+
+      for example, staffing issues.
+
+                       Findings and Conclusions as to
+         Respondent’s FCRA Violations Related to Dispute Processing
+                          Violations of FCRA § 611(a)(1)
+           Failures to Conduct a Reasonable Reinvestigation of Disputes
+62.   Under FCRA § 611(a)(1), “if the completeness or accuracy of any item of
+
+      information contained in a consumer’s file at a consumer reporting agency is
+
+      disputed by the consumer and the consumer notifies the agency directly, or
+
+      indirectly through a reseller, of such dispute, the agency shall, free of charge,
+
+
+
+                                           23
+           2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 24 of 75
+
+
+
+      conduct a reasonable reinvestigation to determine whether the disputed
+
+      information is inaccurate and record the current status of the disputed
+
+      information, or delete the item from the file … ” 15 U.S.C. § 1681i(a)(1)
+
+      (emphasis added). These reinvestigations must be completed within 30 days
+
+      of receipt of the Dispute, unless extended for 15 days due to receipt of
+
+      additional relevant information from the consumer while the Dispute is
+
+      pending. See id.
+
+63.   As described above in Paragraphs 57–59, Respondent has on numerous
+
+      occasions failed to initiate reinvestigations entirely and failed to process
+
+      Disputes and conduct reinvestigations in a timely and reasonable fashion.
+
+64.   As described above in paragraphs 20–43 and 55, Respondent failed to
+
+      employ reasonable procedures with respect to the intake, reinvestigation, and
+
+      consumer communications phases of Dispute investigation, including by
+
+      unreasonably and exclusively relying on Furnishers’ responses to Disputes
+
+      and failing to conduct its own reasonable reinvestigations. Respondent’s
+
+      reinvestigations routinely consistent solely of implementing the Furnisher’s
+
+      instructions despite (1) having evidence of that Furnisher’s unreliability, and
+
+      (2) the existence of readily available, cost-effective additional measures.
+
+65.   Therefore, Respondent’s actions violated section 611(a)(1) of the FCRA, 15
+
+      U.S.C. § 1681i(a)(1).
+
+
+                                           24
+           2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 25 of 75
+
+
+
+                          Violations of FCRA § 611(a)(2)
+         Failures to Provide Timely Notice and All Relevant Information
+                         to Furnishers Regarding Disputes
+66.   Under FCRA § 611(a)(2), “[b]efore the expiration of the 5-business-day
+
+      period [after receipt of a Dispute], the [Consumer Reporting Agency] shall
+
+      provide notification of the dispute to any person [here, the Furnisher] who
+
+      provided any item of information in dispute … The notice shall include all
+
+      relevant information regarding the dispute that the agency has received from
+
+      the consumer or reseller.” 15 U.S.C. § 1681i(a)(2) (emphasis added).
+
+67.   As described above in Paragraphs 22–24, 26, 28, and 41, Respondent failed
+
+      to transmit all relevant information to Furnishers.
+
+68.   As described above in Paragraph 60, Respondent also violated the timing
+
+      requirements of Section 611(a)(2) in some instances by failing to transmit
+
+      information to Furnishers in a timely fashion.
+
+69.   Therefore, Respondent’s actions violate section 611(a)(2) of the FCRA, 15
+
+      U.S.C. § 1681i(a)(2).
+
+                          Violations of FCRA § 611(a)(4)
+                 Related to Reinvestigation of Consumer Disputes
+70.   Under FCRA § 611(a)(4), “[i]n conducting any reinvestigation under
+
+      paragraph (1) with respect to disputed information in the file of any
+
+      consumer, the consumer reporting agency shall review and consider all
+
+
+
+
+                                           25
+           2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 26 of 75
+
+
+
+      relevant information submitted by the consumer….” 15 U.S.C. § 1681i(a)(4)
+
+      (emphasis added).
+
+71.   As described above in Paragraphs 31–40, and 55, Respondent’s Dispute
+
+      processing systems and processes are deficient in a number of ways, all of
+
+      which undermine the company’s ability to “review and consider all relevant
+
+      information.” Among other things, Respondent subjects consumer-submitted
+
+      documents to unduly restrictive criteria and sometimes fails to review them
+
+      at all. In addition, in other circumstances, Respondent failed to review and
+
+      forward consumer-submitted proof documents. Therefore, Respondent has
+
+      failed to meet its obligation to review and consider all relevant information
+
+      submitted by the consumer in violation of FCRA § 611(a)(4). 15 U.S.C. §
+
+      1681i(a)(4).
+
+                        Violations of FCRA § 611(a)(5)
+        Related to Unlawfully Reinserting Previously Deleted Information
+72.   Under FCRA § 611(a)(5)(B)(i), “[i]f any information is deleted from a
+
+      consumer’s file” because it was previously found to be inaccurate,
+
+      incomplete, or unverifiable pursuant to FCRA 611(a)(5)(A), “the information
+
+      may not be reinserted in the file by the consumer reporting agency unless the
+
+      person who furnishes the information certifies that the information is
+
+      complete and accurate….” Under subsection (ii), “the consumer reporting
+
+      agency shall notify the consumer of the reinsertion . . . not later than 5
+
+                                           26
+           2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 27 of 75
+
+
+
+      business days after the reinsertion….” Under subsection (iii), “[a]s part of, or
+
+      in addition to, the notice under clause (ii), a consumer reporting agency shall
+
+      provide to a consumer in writing not later than 5 business days after the date
+
+      of reinsertion (I) a statement that the disputed information has been
+
+      reinserted; (II) the business name and address of any furnisher of information
+
+      contacted and the telephone number of such furnisher, if reasonably
+
+      available, or of any furnisher of information that contacted the consumer
+
+      reporting agency, in connection with the reinsertion of such information; and
+
+      (III) a notice that the consumer has the right to add a statement to the
+
+      consumer’s file disputing the accuracy or completeness of the disputed
+
+      information.” 15 U.S.C. § 1681i(a)(5)(B). And under FCRA § 611(a)(5)(C),
+
+      a “consumer reporting agency shall maintain reasonable procedures designed
+
+      to prevent the reappearance in a consumer’s file, and in consumer reports on
+
+      the consumer, of information that is deleted pursuant to this paragraph . . . .”
+
+      15 U.S.C. § 1681i(a)(5)(C).
+
+73.   As described above in Paragraphs 49–54, Respondent failed to maintain
+
+      reasonable procedures to identify and prevent the wrongful reappearance of
+
+      information previously deleted as a result of a Dispute. And on numerous
+
+      occasions, Respondent reinserted information into a Consumer File without
+
+
+
+
+                                           27
+           2025-CFPB-0002      Document 1     Filed 01/17/2025   Page 28 of 75
+
+
+
+      notifying the consumer or otherwise adhering to the requirements of FCRA
+
+      § 611(a)(5)(B).
+
+74.   Therefore, Respondent’s actions violated sections 611(a)(5)(B)–(C) of the
+
+      FCRA, 15 U.S.C. §§ 1681i(a)(5)(B)–(C).
+
+                         Violations of FCRA § 611(a)(6)
+       Failures to Provide Adequate Notices of Results of Reinvestigations
+75.   Under FCRA § 611(a)(6)(A), a Consumer Reporting Agency is required to
+
+      “provide written notice to a consumer of the results of a reinvestigation under
+
+      this subsection not later than 5 business days after the completion of the
+
+      reinvestigation . . . .” And under FCRA § 611(a)(6)(B)(i)–(ii), once a
+
+      reinvestigation is completed, the Consumer Reporting Agency is required to
+
+      provide the consumer with “a statement that the reinvestigation is
+
+      completed” and “a consumer report that is based upon the consumer’s file as
+
+      that file is revised as a result of the reinvestigation,” either as part of or in
+
+      addition to the notice of the results of the investigation. 15 U.S.C.
+
+      § 1681i(a)(6)(B)(i)–(ii).
+
+76.   As described above in Paragraphs 44–48, Respondent’s Results Letters failed
+
+      to accurately describe the results of its reinvestigations in multiple respects,
+
+      including by inaccurately describing the status and outcome of
+
+      reinvestigations.
+
+
+
+                                            28
+           2025-CFPB-0002     Document 1     Filed 01/17/2025   Page 29 of 75
+
+
+
+77.   And as described above in Paragraph 61, Respondent failed to reliably send
+
+      Results Letters within 5 days of completion of the reinvestigation.
+
+78.   And, in numerous instances, after investigating a Dispute, Respondent failed
+
+      to send a consumer report based upon the consumer’s file as that file is
+
+      revised as a result of the reinvestigation.
+
+79.   Therefore, Respondent’s actions violated section 611(a)(6)(A)–(B) of the
+
+      FCRA, 15 U.S.C. § 1681i(a)(6)(A)–(B).
+
+                         Violations of FCRA § 607(b)
+             Failure to Maintain Reasonable Procedures to Assure
+           Maximum Possible Accuracy Related to Processing Disputes
+80.   Under FCRA § 607(b), in preparing consumer reports, Respondent is
+
+      required to maintain “reasonable procedures to assure maximum possible
+
+      accuracy of the information concerning the individual about whom the report
+
+      relates.” 15 U.S.C § 1681e(b).
+
+81.   As described above in Paragraphs 41–43 and 49–55, Respondent has failed
+
+      to maintain reasonable procedures relating to Dispute handling to assure
+
+      maximum possible accuracy of consumer information in its consumer reports
+
+      by failing to (i) adopt reasonable policies and procedures to prevent the
+
+      wrongful reinsertion of tradelines, collection accounts, and other information
+
+      that has been previously deleted; and (ii) maintain meaningful oversight over
+
+      its public records vendor.
+
+
+                                           29
+             2025-CFPB-0002   Document 1    Filed 01/17/2025   Page 30 of 75
+
+
+
+82.   Therefore, Respondent has violated section 607(b) of the FCRA, 15 U.S.C. §
+
+      1681i(a)(2).
+
+           Findings and Conclusions as to Respondent’s CFPA Violations
+                          Related to Dispute Processing
+ Violations of CFPA’s Prohibition Against Engaging in Unfair Acts or Practices
+83.   Under Section 1031(c) of the CFPA, an act or practice is unfair when it
+
+      “causes or is likely to cause substantial injury to consumers which is not
+
+      reasonably avoidable by consumers; and … such substantial injury is not
+
+      outweighed by countervailing benefits to consumers or to competition.” 12
+
+      U.S.C. § 5531(c).
+
+84.   Respondent engaged in unfair conduct by using ineffective systems and
+
+      flawed processes, and excessively deferring to Furnishers to address
+
+      Disputes.
+
+85.   Respondent’s systems and processes are unfair due to their excessive
+
+      deference to Furnisher responses in the majority of Disputes, and their failure
+
+      in some instances to adequately inform consumers of the results of
+
+      reinvestigations.
+
+86.   Specifically, and as described in more detail in Paragraphs 20–55 above,
+
+      Respondent:
+
+      a.      Placed unreasonable limitations on consumers’ and its agents’ ability
+
+              to accurately describe Disputes, including using generic Dispute codes
+
+                                           30
+     2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 31 of 75
+
+
+
+      that inaccurately described consumers’ Disputes and failed to provide
+
+      Furnishers with all relevant documents and information;
+
+b.    Conducted some reinvestigations by doing nothing more than
+
+      implementing the Furnisher’s response, and did not seek or take into
+
+      account additional, relevant information, despite having or receiving
+
+      evidence of that Furnisher’s unreliability;
+
+c.    Placed additional unreasonable restrictions on the information it will
+
+      consider in the reinvestigation processes, including by refusing to
+
+      consider certain consumer-submitted supporting documents, failed to
+
+      place any safeguards to ensure data related to bankruptcies are
+
+      accurate or meaningfully reinvestigate public record bankruptcy
+
+      disputes, and failed to implement processes allowing the company to
+
+      identify or escalate repeat Disputes where consumers are disputing in
+
+      good faith an inaccuracy in their file;
+
+d.    In some instances generated unintelligible and, at times, inaccurate
+
+      consumer “results of investigation” letters that deprived consumers of
+
+      the ability to understand Dispute outcomes and take further actions;
+
+      and
+
+e.    Implemented flawed policies that caused Respondent to fail to
+
+      identify and prevent the wrongful reinsertion of information
+
+
+                                    31
+           2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 32 of 75
+
+
+
+             previously deleted as the result of a Dispute and permitted the
+
+             wrongful reinsertion of that information.
+
+87.   Respondent’s acts and practices caused or were likely to cause substantial
+
+      injury to consumers because consumers were unable to correct inaccurate
+
+      information. Such injuries to consumers may include a higher cost for credit,
+
+      or denial of credit, housing, or employment as a result of inaccurate
+
+      information in their credit files, as well as the time and money spent by
+
+      consumers attempting to correct consumer report inaccuracies in the face of
+
+      ineffective systems and flawed processes.
+
+88.   These injuries are not reasonably avoidable by consumers, who cannot
+
+      prevent Respondent or Furnishers from making errors in their files or predict
+
+      when or how it will happen and have no control over the Dispute process
+
+      after they submit a dispute. Respondent’s practices, policies, and procedures
+
+      frustrate consumers’ ability to correct the errors and avoid or mitigate the
+
+      harm caused by inaccuracies in their Consumer Files, including by failing to
+
+      prevent the reinsertion of inaccurate, successfully-disputed information.
+
+      Further, Respondent sent confusing, inconsistent, and inaccurate
+
+      communications to consumers addressing Disputes that made it difficult for
+
+      consumers to determine if their efforts to address inaccurate information in
+
+
+
+
+                                           32
+           2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 33 of 75
+
+
+
+      their Consumer Files were successful or take additional action to avoid or
+
+      mitigate the harm.
+
+89.   The persistence of inaccurate information on consumer reports that is
+
+      perpetuated by ineffective and limited Dispute processes does not benefit
+
+      consumers or competition.
+
+90.   Respondent therefore engaged in unfair acts and practices, in violation of the
+
+      CFPA. 12 U.S.C. §§ 5531(c), 5536(a)(1)(B).
+
+                       Findings and Conclusions as to
+             Respondent’s Identity Theft Block Processing Failures
+                       Violations of FCRA § 605B(a)
+  Related to Consumer-Submitted Documents Regarding Identity Theft Blocks
+91.   FCRA § 605B(a) generally provides that “a consumer reporting agency shall
+
+      block the reporting of any information in the file of a consumer that the
+
+      consumer identifies as information that resulted from an alleged identity
+
+      theft, not later than 4 business days after the receipt by such agency of – (1)
+
+      appropriate proof of the identity of the consumer; (2) a copy of an identity
+
+      theft report; (3) the identification of such information by the consumer; and
+
+      (4) a statement by the consumer that the information is not information
+
+      relating to any transaction by the consumer.” 15 U.S.C. § 1681c-2(a).
+
+92.   Between 2017 and 2019, Respondent failed to review FTC affidavits and
+
+      police reports related to identity theft when Disputes related to identity theft
+
+
+
+                                           33
+           2025-CFPB-0002      Document 1    Filed 01/17/2025   Page 34 of 75
+
+
+
+      were submitted in the online channel and therefore failed to block the
+
+      relevant information. Since that time, Respondent does such a review, but it
+
+      imposes restrictive requirements, not disclosed to consumers, on what
+
+      affidavits or reports it will accept, with the result that it rejects some identity-
+
+      theft affidavits and reports as invalid.
+
+93.   In numerous instances, Respondent failed to timely upload images related to
+
+      identity theft blocks, resulting in processing beyond the statutorily provided
+
+      period.
+
+94.   Therefore, Respondent’s actions violated section 605B(a) of the FCRA, 15
+
+      U.S.C. § 1681c-2(a).
+
+                        Violations of FCRA § 605B(c)
+      Related to Consumer Communications Regarding Identity Theft Blocks
+95.   Under FCRA § 605B(c)(2), if a block of information (resulting from identity
+
+      theft) is declined or rescinded under this subsection, the affected consumer
+
+      shall be notified promptly, in the same manner as consumers are notified of
+
+      the reinsertion of information under section 611(a)(5)(B). 15 U.S.C. § 1681c-
+
+      2(c)(2). Section 611(a)(5)(B)(ii) provides that a Consumer Reporting Agency
+
+      must provide notice of a reinsertion within 5 business days, and subsection
+
+      (iii) in turn requires the Consumer Reporting Agency to provide a statement
+
+      that the item has been reinserted, the contact information of any Furnisher
+
+      contacted in connection with the reinsertion of information, including
+
+                                            34
+           2025-CFPB-0002      Document 1    Filed 01/17/2025   Page 35 of 75
+
+
+
+      telephone number (if reasonably available), and a notice that the consumer
+
+      has the right to add a statement to the consumer’s file disputing the accuracy
+
+      or completeness of the disputed information. 15 U.S.C. § 1681i(a)(5)(B).
+
+96.   Respondent has repeatedly failed to provide consumers with a reasonably
+
+      available telephone number for Furnishers when identity theft blocks are
+
+      declined or rescinded. In addition, Respondent has repeatedly failed to
+
+      explicitly inform consumers of the right to add a statement to the consumer’s
+
+      file disputing the accuracy or completeness of disputed information when
+
+      identity theft blocks have been declined or rescinded.
+
+97.   In numerous instances, Respondent failed to send notifications related to
+
+      identity theft block requests due to agent error.
+
+98.   Therefore, Respondent’s actions violated sections 605B(c)(2) and
+
+      611(a)(5)(B)(ii) of the FCRA, 15 U.S.C. §§ 1681c-2(c)(2) and
+
+      1681i(a)(5)(B)(ii).
+
+                     Findings and Conclusions as to Respondent’s
+                    Inaccurate Consumer Reports, Coding Failures,
+                            and Other Technology Failures
+99.   Respondent’s failure to correctly implement code changes resulted in
+
+      miscalculations in some consumer credit scores and consumer credit
+
+      attributes.
+
+
+
+
+                                            35
+          2025-CFPB-0002     Document 1      Filed 01/17/2025   Page 36 of 75
+
+
+
+100. On March 17, 2022, Respondent made a code change in its Online Model
+
+     Server (OMS) that affected the calculations of some consumers’ credit scores
+
+     (OMS Coding Error). As a result, certain scoring models relying on date-
+
+     based attributes used a fixed date instead of the then-current date – for
+
+     example, whether a consumer had ever been 60 days late on a credit card,
+
+     were calculated from a fixed date rather than the current date. Scoring
+
+     models, such as FICO algorithms, were applied to these incorrect attributes,
+
+     and thus, in some instances, the scores did not accurately reflect the
+
+     consumers’ credit profile. Respondent therefore sold incorrect scores and, in
+
+     some cases, sold incorrect attributes. When Respondent sold incorrect
+
+     attributes, other scores generated by third parties may also have yielded
+
+     scores that did not accurately reflect a consumer’s credit profile. This coding
+
+     error persisted until April 8, 2022.
+
+101. During the period the flawed OMS code was used, Respondent concluded
+
+     that over 600,000 consumers were underscored by 10 or more points and
+
+     139,000 consumers saw a score decrease of 25 points or more. Thousands of
+
+     consumers may have been offered less favorable credit terms as a result of
+
+     these errors.
+
+102. Additionally, in March 2022, Respondent made another coding error
+
+     (Tradeline Duplication Coding Error) that caused the duplication of certain
+
+
+                                            36
+          2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 37 of 75
+
+
+
+     disputed collection tradelines in 46,400 Consumer Files. While Respondent
+
+     remediated the coding error issue on April 12, 2022, Respondent did not
+
+     finish removing the duplicate collection tradelines until at least November
+
+     2022. During that process, Respondent found 10,000 additional instances of
+
+     system-generated duplicate tradelines since at least January 1, 2020.
+
+       Findings and Conclusions as to Respondent’s FCRA Violations
+         Regarding Inaccurate Consumer Reports, Coding Failures,
+                      and Other Technology Failures
+103. FCRA § 607(b) provides that “[w]henever a consumer reporting agency
+
+     prepares a consumer report it shall follow reasonable procedures to assure
+
+     maximum possible accuracy of the information concerning the individual
+
+     about whom the report relates.” 15 U.S.C § 1681e(b).
+
+104. In connection with its OMS Coding Error, Respondent failed to employ
+
+     reasonable and adequate procedures when updating its code for calculating
+
+     and transmitting information about consumers.
+
+105. Respondent’s Tradeline Duplication Coding Error resulted in the duplication
+
+     of collection tradelines that consumers had disputed through the myEquifax
+
+     portal and internal systems. Respondent subsequently identified that three of
+
+     its systems were sending other duplicate tradelines to its dispute platform
+
+     resulting in additional duplicate tradelines.
+
+
+
+
+                                          37
+           2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 38 of 75
+
+
+
+106. Therefore, Respondent has violated section 607(b) of the FCRA, 15 U.S.C. §
+
+     1681e(b).
+
+        Findings and Conclusions as to Respondent’s CFPA Violations
+         Regarding Inaccurate Consumer Reports, Coding Failures,
+                      and Other Technology Failures
+107. Under Section 1031(c) of the CFPA, an act or practice is unfair when it
+
+     “causes or is likely to cause substantial injury to consumers which is not
+
+     reasonably avoidable by consumers; and … such substantial injury is not
+
+     outweighed by countervailing benefits to consumers or to competition.” 12
+
+     U.S.C. § 5531(c).
+
+108. Respondent’s OMS Coding Error was an unfair act under the CFPA. 12
+
+     U.S.C. § 5531(c). Specifically, Respondent engaged in unfair conduct when
+
+     it introduced “test code” in a production environment in a scoring model
+
+     server and, as a result, provided inaccurate consumer credit scores to its
+
+     customers.
+
+109. Respondent’s own score shift analysis shows that more than 600,000
+
+     consumers had a score decrease of at least 10 points as a result of the
+
+     erroneous code change, and more than 100,000 consumers had a score
+
+     decrease of greater than 25 points. Consumers were not scored appropriately
+
+     and may have been offered worse terms for credit as a result.
+
+
+
+
+                                          38
+           2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 39 of 75
+
+
+
+110. Consumers could not avoid Respondent’s coding and system errors or the
+
+     method and speed with which the company responded to them.
+
+111. There is no benefit to consumers or competition of system changes or
+
+     “upgrades” without appropriate safeguards that resulted in inaccurate credit
+
+     scores.
+
+112. Respondent therefore engaged in unfair acts and practices, in violation of the
+
+     CFPA, 12 U.S.C. §§ 5531(c), 5536(a)(1)(B).
+
+                       Findings and Conclusions as to
+          Respondent’s Violations of the CFPA’s Prohibition Against
+                Violating Federal Consumer Financial Law
+113. Section 1036(a)(1)(A) of the CFPA prohibits a covered person from offering
+
+     or providing to a consumer any financial product or service not in conformity
+
+     with “Federal consumer financial law” or otherwise committing any act or
+
+     omission in violation of a “Federal consumer financial law.” 12 U.S.C. §
+
+     5536(a)(1)(A).
+
+114. The Fair Credit Reporting Act is a Federal consumer financial law. 15 U.S.C.
+
+     1681 et seq.
+
+115. Respondent’s violations, described above, constituted violations of Section
+
+     1036(a)(1)(A) of the CFPA, 12 U.S.C. § 5536(a)(1)(A); 15 U.S.C.
+
+     § 1691c(b).
+
+
+
+
+                                          39
+           2025-CFPB-0002    Document 1     Filed 01/17/2025   Page 40 of 75
+
+
+
+                                          VI.
+
+                            CONDUCT PROVISIONS
+
+                               Prohibited Conduct
+IT IS ORDERED, under §§ 1053 and 1055 of the CFPA, that:
+
+116. Respondent and its officers, agents, servants, employees, and attorneys, and
+
+     all other persons in active concert or participation with them who receive
+
+     actual notice of this Consent Order, whether acting directly or indirectly,
+
+     may not violate Sections 605B, 607(b), or 611(a)(1-6) of the FCRA, 15
+
+     U.S.C. §§ 1681c-2, 1681e(b), 1681i(a)(1)-(6), or Sections 1031 and 1036 of
+
+     the CFPA, 12 U.S.C. §§ 5531, 5536, and are prohibited from:
+
+      a.    Failing to substantively review and consider all relevant information
+
+            submitted by the consumer, including consumer-submitted documents
+
+            with respect to disputed information, failing to process such
+
+            documents, or failing to transmit such documents to Furnishers;
+
+      b.    Adopting a Furnisher’s response as to the accuracy of a disputed item
+
+            of information without evaluation of the Furnisher’s response,
+
+            including whether the Furnisher’s response contains information that
+
+            is illogical or conflicts with other information in Respondent’s
+
+            systems as required by Paragraphs 123–125; and
+
+
+
+
+                                          40
+           2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 41 of 75
+
+
+
+      c.    Sending a consumer a notice of the results of a Reinvestigation
+
+            containing materially contradictory, misleading, incomplete, or
+
+            inaccurate information.
+
+
+                             Affirmative Requirements
+IT IS ORDERED, under §§ 1053 and 1055 of the CFPA, that:
+
+117. Respondent, and its officers, agents, servants, employees, and attorneys who
+
+     have actual notice of this Consent Order, in connection with the
+
+     Reinvestigation of Disputes or in connection with collecting, analyzing,
+
+     maintaining, or providing consumer report information, must take the
+
+     affirmative actions in Paragraphs 118–140.
+
+                       (1)     Reinvestigation of Disputes
+118. Establish, implement, and maintain reasonable policies, procedures, and
+
+     systems regarding the Reinvestigation of Disputes, which must at a minimum
+
+     include the functionality and changes described in Paragraphs 119–125.
+
+119. Establish, implement, and maintain reasonable online consumer dispute
+
+     submission portal(s) (“Dispute Portal”) (including but not limited to any
+
+     current or future web-based, app-based, or other non-telephone or U.S. Mail-
+
+     based submissions), as follows:
+
+      a.    The Dispute Portal must have the following functionality:
+
+
+
+
+                                           41
+2025-CFPB-0002   Document 1    Filed 01/17/2025   Page 42 of 75
+
+
+
+  i.   A consumer user interface that provides guidance to and
+
+       prompts consumers to identify with particularity any item of
+
+       information, including for example, a specific field or section of
+
+       a reported account, in their Consumer File about which the
+
+       consumer disputes the completeness or accuracy;
+
+ ii.   A consumer user interface that displays the relevant reported
+
+       account or other item of information as it exists in the
+
+       Consumer File as of the time the Dispute is initiated;
+
+iii.   A consumer user interface that clearly lists the relevant dispute
+
+       descriptions (each of which must correspond to a specific
+
+       internal dispute code, all of which must be made available to
+
+       the consumer as part of the interface) or disputed data fields
+
+       consumers can use to describe the disputed item of information
+
+       on the consumer’s file, which must correspond to the
+
+       descriptions or fields communicated to Furnishers, and provides
+
+       an example of each for consumers;
+
+iv.    A consumer user interface that identifies examples of
+
+       information that may be relevant to resolving the type of
+
+       Dispute being initiated and prompts consumers to provide such
+
+       information;
+
+
+                              42
+ 2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 43 of 75
+
+
+
+  v.    A consumer user interface that identifies examples of
+
+        documents or types of documents that may be relevant to
+
+        resolving the type of Dispute being initiated, discloses
+
+        examples of consumer-submitted documents that Respondent
+
+        considers acceptable as proof for that type of Dispute to update
+
+        or remove an item of information as part of Respondent’s
+
+        Reinvestigation, and prompts consumers to submit such
+
+        documents if available and designate documents as associated
+
+        with specific disputed credit or debt accounts or other disputed
+
+        items of information;
+
+ vi.    A consumer user interface that prompts consumers to identify
+
+        any other tradeline or information in the Consumer File relevant
+
+        to the Dispute;
+
+vii.    A consumer user interface that requires consumers to review
+
+        the Dispute prior to final submission to ensure the consumer
+
+        has provided all relevant information and that the images of any
+
+        documents submitted by the consumer are complete and
+
+        legible;
+
+viii.   A system that makes available to the consumer a copy of the
+
+        submitted Dispute and proof of receipt of a Dispute, and
+
+
+                                43
+           2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 44 of 75
+
+
+
+                  provides access to view consumer-submitted documentation
+
+                  and the status of the Dispute; and
+
+           ix.    A consumer user interface that provides consumers the ability
+
+                  to review and export current Disputes and associated
+
+                  documents, and review and export Disputes and associated
+
+                  documents submitted within the prior two (2) years.
+
+      b.    Respondent may not require consumers to submit to arbitration or any
+
+            other form of alternative dispute resolution to resolve any allegations,
+
+            claims, actions, or disputes between the consumers and Respondent as
+
+            a condition of using the Dispute Portal.
+
+      c.    The Dispute Portal must be available to consumers within 120 days
+
+            after the Testing Completion Date in Paragraph 132 below.
+
+120. Establish, implement, and maintain reasonable intake procedures, processes,
+
+     and training for Respondent’s agents who intake Disputes via telephone,
+
+     within 120 days after the Testing Completion Date in Paragraph 132 below
+
+     where consumer-facing scripts or communications are used, to ensure that:
+
+      a.    Respondent’s agents provide guidance and prompt consumers to
+
+            identify with particularity any item of information, including a
+
+            specific field or section of a reported account, in their Consumer File
+
+            about which the consumer disputes the completeness or accuracy;
+
+
+                                          44
+     2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 45 of 75
+
+
+
+b.    Respondent’s agents provide guidance using examples of information
+
+      that may be relevant to resolving the type of Dispute being initiated
+
+      and prompt consumers to provide such information;
+
+c.    Respondent’s agents provide guidance and prompt consumers to
+
+      identify any other tradelines or information in the Consumer File
+
+      relevant to the Dispute;
+
+d.    Respondent’s agents identify for consumers examples of documents
+
+      or types of documents that may be relevant to resolving the type of
+
+      Dispute being initiated, disclose examples of consumer-submitted
+
+      documents that Respondent considers acceptable as proof to update or
+
+      remove an item of information as part of Respondent’s
+
+      Reinvestigation, and advise consumers that they may submit a
+
+      separate dispute including such documents via Respondent’s Dispute
+
+      Portal or via U.S. Mail;
+
+e.    Respondent’s agents have access to a user interface that displays the
+
+      relevant reported account or other item of information as it currently
+
+      exists in the Consumer File, as of the time the Dispute is initiated;
+
+f.    Respondent’s agents have access to a user interface that clearly lists
+
+      relevant dispute descriptions (each of which must correspond to a
+
+      specific internal dispute code, all of which must be made available to
+
+
+                                    45
+           2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 46 of 75
+
+
+
+            the agents as part of the agent user interface) that can be used to
+
+            describe the disputed item of information on the consumer’s file,
+
+            which must correspond to the descriptions used internally by
+
+            Respondent and communicated to Furnishers, and provides an
+
+            example of each for Respondent’s agents; and
+
+      g.    Respondent’s agents inform consumers that Respondent maintains,
+
+            and that consumers can access, a system where consumers can view
+
+            submitted disputes and their status.
+
+121. Establish, implement, and maintain reasonable intake procedures, processes,
+
+     and training for Respondent’s agents who intake Disputes via U.S. Mail,
+
+     within 120 days after the Testing Completion Date in Paragraph 132 below,
+
+     to ensure that:
+
+      a.    Respondent’s agents have access to a user interface that displays the
+
+            relevant reported account or other item of information as it exists in
+
+            the Consumer File as of the time the Dispute is submitted for
+
+            processing;
+
+      b.    Respondent’s agents have access to a user interface that clearly lists
+
+            relevant dispute descriptions (each of which must correspond to a
+
+            specific internal dispute code, all of which must be made available to
+
+            the agents as part of the agent user interface) that can be used to
+
+
+                                          46
+           2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 47 of 75
+
+
+
+            describe the disputed item of information on the consumer’s file,
+
+            which must correspond to the descriptions used internally by
+
+            Respondent and communicated to Furnishers, and provides an
+
+            example of each for Respondent’s agents; and
+
+      c.    Respondent’s agents have access to a system containing Disputes
+
+            submitted within the prior two (2) years, including all consumer-
+
+            submitted documents, and results of reinvestigations.
+
+122. Establish, implement, and maintain an internal interface that contains fields
+
+     sufficient for Respondent to categorize consumer-submitted documents by
+
+     type after a Dispute is submitted, including distinguishing between
+
+     documents that are relevant to the substance of the Dispute and documents
+
+     that are submitted for purposes of establishing identification only, and
+
+     distinguishing between different types of documents used to support claims
+
+     related to Disputes.
+
+123. Establish, implement, and maintain reasonable policies and procedures to
+
+     define specific circumstances under which a Furnisher’s response to a
+
+     consumer dispute that Respondent has forwarded to the Furnisher will be
+
+     deemed illogical (the “Illogical Response Policies”), by:
+
+      a.    Establishing and implementing rules and standards, subject to non-
+
+            objection by the Supervision Director as described in Paragraphs 143–
+
+
+                                          47
+           2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 48 of 75
+
+
+
+            145, sufficient to identify logical inconsistencies in Furnisher
+
+            responses to Disputes that would be considered illogical or otherwise
+
+            identified for review, rejection, or suppression (“Dispute Logic
+
+            Rules”);
+
+      b.    Reviewing its Illogical Response Policies, including its Dispute Logic
+
+            Rules, at least once per year to determine if any additions or revisions
+
+            are appropriate; and
+
+      c.    Documenting the monitoring and assessments performed pursuant to
+
+            subparagraphs (b) and (c).
+
+124. Establish, implement, and maintain reasonable metrics (Furnisher Metrics) to
+
+     identify (1) Furnishers who may be failing to reasonably investigate
+
+     Disputes; (2) Furnishers for which further action is necessary to remedy any
+
+     deficiencies regarding investigation of Disputes; and (3) Furnishers with
+
+     persistent deficiencies regarding investigation of Disputes whose data should
+
+     be removed from Consumer Files. The Furnisher Metrics must take into
+
+     consideration a Furnisher’s rate of triggering Respondent’s Illogical
+
+     Response Policies, a Furnisher’s rate of Repeat Disputes, and a Furnisher’s
+
+     rate of verifying the accuracy of disputed information. Respondent must
+
+     annually review these metrics and revise as appropriate to ensure their
+
+     efficacy.
+
+
+                                          48
+           2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 49 of 75
+
+
+
+125. Establish, implement, and maintain reasonable policies, procedures, and
+
+     systems under which Respondent must conduct the additional actions
+
+     described below in connection with the following categories of Disputes:
+
+      a.    For Disputes where the Furnisher’s response is identified as illogical
+
+            under the Illogical Response Policies, Respondent must establish and
+
+            implement a reasonable process designed to resolve the illogical
+
+            condition as part of completing its Reinvestigation, including by
+
+            requesting and considering further information from the Furnisher
+
+            when necessary.
+
+      b.    For Repeat Disputes that have not been determined to be frivolous or
+
+            irrelevant, Respondent may not adopt a position in resolving the
+
+            Dispute and completing its Reinvestigation that is contrary to or
+
+            inconsistent with the consumer’s position regarding the Dispute
+
+            absent a review of prior Disputes regarding the same item of
+
+            information to determine potential causes of the Repeat Dispute.
+
+                               (2) Disputes Systems
+126. Establish, implement, and maintain reasonable policies and procedures and
+
+     corresponding system enhancements to allow for the following functionality:
+
+      a.    Maintaining a single record where the following information for each
+
+            Dispute can be accessed for a period of three (3) years from the date
+
+
+                                           49
+     2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 50 of 75
+
+
+
+      Respondent receives the Dispute (except for telephone recordings,
+
+      which must be retained for one year):
+
+       i.   All information submitted by a consumer in connection with the
+
+            Dispute;
+
+      ii.   All information received from Furnishers in connection with
+
+            the Dispute;
+
+     iii.   All changes made to the Consumer’s File in connection with
+
+            the Dispute;
+
+     iv.    All recordings of telephone calls and other communications
+
+            with the consumer or the Furnisher relating to the Dispute; and
+
+      v.    Respondent’s resolution of the Dispute;
+
+b.    Maintaining database(s) or other information retrieval system(s)
+
+      capable of retrieving the information described above in (a) through
+
+      either a bulk request, or through queries on an on-demand basis. Such
+
+      system(s) must include:
+
+       i.   The ability to search and export all Dispute records for any
+
+            subset of consumers reliably, and in a reasonable timeframe,
+
+            according to the following requirements:
+
+
+
+
+                                    50
+           2025-CFPB-0002   Document 1     Filed 01/17/2025   Page 51 of 75
+
+
+
+                  (1)   Exports should capture all information described in (a),
+
+                        which may be contained within separate files that can be
+
+                        associated by one or more primary keys;
+
+                  (2)   Exports must be readable by standard, publicly available
+
+                        software;
+
+                  (3)   System(s) must be capable of compiling written reports
+
+                        related to Disputes containing selected data fields into a
+
+                        single file in a standard and widely available format (e.g.,
+
+                        .csv, .tsv, .json, .xls), subject to reasonable size and record
+
+                        limitations; and
+
+      c.    Maintaining reasonable processes and search functions that provide
+
+            Respondent’s relevant employees and contractors the ability to review
+
+            all information described in subsection (a) in connection with the
+
+            Reinvestigation of Disputes.
+
+127. Establish, implement, and maintain reasonable policies and procedures to
+
+     prevent the improper reinsertion of previously removed or deleted items of
+
+     information pursuant to a Dispute. These policies and procedures must
+
+     ensure compliance with FCRA § 611(a)(5)(B)-(C) and include:
+
+      a.    Processes, including matching rules (“Matching Rules”) that will be
+
+            subject to non-objection by the Supervision Director as required by
+
+
+                                         51
+           2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 52 of 75
+
+
+
+            Paragraphs 143–145, to identify likely identical accounts, for
+
+            preventing the reinsertion by Respondent of information that was
+
+            previously reported by the same Furnisher or another Furnisher and
+
+            was deleted from a Consumer’s File as a result of a Reinvestigation,
+
+            unless the Furnisher certifies that the previously deleted information
+
+            to be reinserted is complete and accurate;
+
+      b.    Processes for ensuring consumers are notified of the reinsertion of any
+
+            information deleted as a result of a Reinvestigation; and
+
+      c.    Processes to analyze and document the effectiveness of these
+
+            procedures and consider, at least once per year, whether revisions or
+
+            enhancements are necessary.
+
+128. Establish, implement, and maintain systems and processes to provide for
+
+     enhanced review of Repeat Disputes including:
+
+      a.    Reasonable policies and procedures to require review of the record
+
+            described in Paragraph 126(a) of any prior Disputes regarding the
+
+            same item of information submitted by the consumer within the
+
+            immediately preceding 90 days, prior to determining that the newly
+
+            submitted Dispute is frivolous or irrelevant;
+
+      b.    A field or other system indicator to clearly identify a Dispute as a
+
+            Repeat Dispute and a field or other system indication to clearly
+
+
+                                          52
+           2025-CFPB-0002   Document 1    Filed 01/17/2025   Page 53 of 75
+
+
+
+            identify whether any previous Disputes about that item of information
+
+            resulted in deletion or modification of that item of information;
+
+      c.    Monthly sampling of the Disputes identified as Repeat Disputes by
+
+            Respondent and a review of that sample to determine whether any
+
+            revisions or enhancements to Respondent’s Dispute processes are
+
+            necessary.
+
+129. Establish, implement, and maintain systems and processes to provide for
+
+     review of Disputes involving consumer bankruptcy public records, including
+
+     but not limited to verification of any disputed public records information
+
+     with a public record source or with Public Access to Court Electronic
+
+     Records (PACER) for the relevant bankruptcy court. The systems and
+
+     processes required by this paragraph must include (i) monthly quality
+
+     assessments of a sample of disputes related to consumer bankruptcy and (ii)
+
+     biennial audits of any vendor involved in verifying disputed items of
+
+     information related to consumer bankruptcy. For avoidance of doubt, nothing
+
+     in this Consent Order relieves Respondent of any existing obligations related
+
+     to bankruptcy disputes, including but not limited to obligations arising under
+
+     the August 19, 2008 Order in White v. Experian Info. Solutions, No. SA CV-
+
+     05-1070 DOC (C.D. Cal.).
+
+
+
+
+                                         53
+           2025-CFPB-0002      Document 1    Filed 01/17/2025   Page 54 of 75
+
+
+
+                     (3) Communications with Consumers
+130. Establish, implement, and maintain template communications within 90 days
+
+     after the Testing Completion Date in Paragraph 132 below, for notifications
+
+     of the results of investigations of Disputes (Results Letters), notifications of
+
+     reinserted items of information, notifications of the rescission of blocks
+
+     related to identity theft, and notifications that Respondent has determined a
+
+     dispute to be frivolous or irrelevant. Respondent, as part of its Compliance
+
+     Plan, must review all other standard or template communications related to
+
+     Disputes and determine whether additional template communications should
+
+     be subject to the Consumer Testing requirements (described in Paragraph
+
+     132) and include in the Compliance Plan a list of all the templates considered
+
+     and those included in the Testing.
+
+131. Respondent’s Results Letters must include for each disputed item of
+
+     information:
+
+      a.    If the item of information is part of a credit account or debt, reported
+
+            account information as it appeared at the time the Dispute was
+
+            initiated and the account information as it appears following the
+
+            Reinvestigation;
+
+
+
+
+                                            54
+           2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 55 of 75
+
+
+
+      b.    A clear description or summary of the changes made as a result of the
+
+            Reinvestigation in a manner distinct from any other changes made to
+
+            the item of information; and
+
+      c.    If applicable, descriptions of all dispute codes transmitted to the
+
+            Furnisher in connection with the Dispute, with appropriate
+
+            explanations of the meaning of each code.
+
+132. Within 60 days of the Effective Date and prior to finalizing any dispute
+
+     submission interfaces (described in Paragraph 119) or consumer
+
+     communications (described in Paragraph 130), Respondent must retain a
+
+     qualified third-party consultant with expertise in consumer testing to perform
+
+     testing to ensure appropriate consumer understanding of the relevant
+
+     interfaces or communications. The consumer testing must be completed
+
+     within 1 year of the Effective Date (Testing Completion Date).
+
+133. Within 15 days of the Testing Completion Date, Respondent will submit to
+
+     the Enforcement Director a report from the third-party consultant affirming
+
+     the testing has been performed, describing the results of that testing, and
+
+     making all underlying workpapers available upon request. Respondent will
+
+     include a submission with the report describing whether and when
+
+     Respondent addressed issues identified in the third-party consultant report.
+
+
+
+
+                                          55
+           2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 56 of 75
+
+
+
+                  (4) Accountability, Evaluation, and Training
+134. Establish, implement, and maintain a program (“Audit Program”) to:
+
+      a.    Regularly audit and monitor the processing of Disputes for
+
+            compliance with this Consent Order, the FCRA, and the CFPA;
+
+      b.    Ensure that Respondent takes corrective actions that address any
+
+            findings from the program; and
+
+      c.    Ensure that Respondent retains records sufficient to demonstrate the
+
+            program, all findings and results, and all corrective actions.
+
+135. As part of the Audit Program described in Paragraph 134, Respondent will:
+
+      a.    Review on a quarterly basis:
+
+             i.    Aggregate data on Furnisher responses to Disputes that
+
+                   triggered the Dispute Logic Rules or Illogical Response
+
+                   Policies, to assess Respondent’s implementation of the Illogical
+
+                   Response Policies and individual Furnisher compliance with the
+
+                   Illogical Response Policies;
+
+            ii.    A sample of Disputes, including the full dispute record
+
+                   described in Paragraph 126, that triggered the Dispute Logic
+
+                   Rules or Illogical Response Policies to assess Respondent’s
+
+                   implementation of the Illogical Response Policies and
+
+                   Respondent’s compliance with the requirements of Paragraph
+
+
+                                          56
+           2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 57 of 75
+
+
+
+                  125. The composition of this sample may be informed by the
+
+                  review described in subparagraph (a)(i);
+
+           iii.   A sample of Disputes, including the full dispute record
+
+                  described in Paragraph 126, to assess Respondent’s
+
+                  implementation of the other requirements of this Consent
+
+                  Order.
+
+      b.    Conduct any remediation that is necessary or appropriate based on the
+
+            reviews in subparagraph (a).
+
+136. Establish, implement, and maintain a program to conduct consumer testing of
+
+     all consumer interfaces related to Disputes used to satisfy the requirements of
+
+     Paragraph 119 and all template consumer communications used to satisfy the
+
+     requirements of Paragraph 130 to ensure consumer understanding of each.
+
+     Under this program, each interface and template communication will be
+
+     tested no less frequently than every two (2) years.
+
+137. Establish a committee (Consumer Disputes Committee), comprised of senior
+
+     executives (including the Chief Compliance Officer) and individuals whose
+
+     regular responsibilities include Respondent’s compliance with the FCRA
+
+     with respect to processing Disputes and the conduct identified in this
+
+     Consent Order, which is charged with overseeing Respondent’s compliance
+
+
+
+
+                                          57
+     2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 58 of 75
+
+
+
+with this Consent Order and the programs required by this Section. The
+
+Consumer Disputes Committee must:
+
+a.    Assess the potential risk to consumers from ongoing or recurring
+
+      technology issues related to Disputes that have caused—or that create
+
+      a material risk of—violations of this Consent Order or of the
+
+      provisions of the CFPA or the FCRA identified in Paragraph 116
+
+      (Disputes-Related Compliance Risk);
+
+b.    Direct the development and implementation of any new or revised
+
+      policies, to be reviewed and approved by the Consumer Disputes
+
+      Committee, as well as procedures to address any risks identified
+
+      across Respondent’s departments, business units, and service
+
+      providers that process or support the processing of Disputes;
+
+c.    Meet at least quarterly;
+
+d.    Retain records sufficient to demonstrate the work of the Consumer
+
+      Disputes Committee, including minutes and materials from each
+
+      meeting; and
+
+e.    Regularly report to the Board of Directors on the Consumer Disputes
+
+      Committee’s work and Respondent’s compliance with the FCRA with
+
+      respect to processing Disputes and issues identified in this Consent
+
+      Order.
+
+
+                                    58
+           2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 59 of 75
+
+
+
+138. Establish, implement, and maintain training materials for agents and
+
+     employees responsible for processing Disputes to describe and provide
+
+     appropriate instruction about the requirements described in Paragraphs 118–
+
+     129 above and develop a program for training all relevant employees and
+
+     contractors on those provisions.
+
+                       (5) Monitoring of Coding Changes
+139. Establish, implement, and maintain policies and procedures to address
+
+     potential consumer impact in connection with the development, testing, and
+
+     implementation of any changes it makes to its systems. This implementation
+
+     or revision will include but not be limited to requiring a review, including by
+
+     its Change Advisory Board, for any system change that is reasonably
+
+     anticipated to materially impact Consumer Files or reports based on
+
+     Consumer Files once placed into a production environment.
+
+140. Establish, implement, and maintain systems and procedures to ensure it
+
+     monitors the results of any changes to its systems, including but not limited
+
+     to the impact of any such changes on Consumer Files or reports based on
+
+     Consumer Files.
+
+
+
+
+                                          59
+           2025-CFPB-0002   Document 1    Filed 01/17/2025   Page 60 of 75
+
+
+
+                                       VII.
+
+                                Compliance Plan
+
+IT IS FURTHER ORDERED that:
+
+141. Within 90 days of the Effective Date, Respondent must establish, implement.
+
+     and maintain a comprehensive compliance plan designed to ensure that
+
+     Respondent’s conduct regarding (1) the Reinvestigation of Disputes, (2) the
+
+     monitoring of coding changes, and (3) all other conduct described in the
+
+     Bureaus Findings and Conclusions, complies with all applicable laws that the
+
+     Bureau enforces, including Federal consumer financial laws, and the terms of
+
+     this Consent Order (Compliance Plan). Respondent must review the
+
+     Compliance Plan annually and either renew it as written or revise it as
+
+     appropriate to ensure compliance with this Order. The Compliance Plan must
+
+     include:
+
+      a.    Detailed steps for addressing each action required by this Consent
+
+            Order;
+
+      b.    A mechanism to ensure that the Board, or a committee thereof, is kept
+
+            apprised of the status of compliance actions; and
+
+      c.    Specific timeframes and deadlines for implementation of the detailed
+
+            steps described above.
+
+142. Respondent must provide the Compliance Plan to the Bureau upon request.
+
+                                         60
+           2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 61 of 75
+
+
+
+143. Within 90 days of the Effective Date, Respondent must submit to the
+
+     Supervision Director for review and determination of non-objection the
+
+     portion of its Compliance Plan implementing the Dispute Logic Rules
+
+     described in Paragraph 123(a) and the Matching Rules described in
+
+     Paragraph 127(a).
+
+144. The Supervision Director will have the discretion to make a determination of
+
+     non-objection to the Dispute Logic Rules and Matching Rules or direct
+
+     Respondent to revise them. If the Supervision Director directs Respondent to
+
+     revise the Dispute Logic Rules or Matching Rules, Respondent must revise
+
+     and resubmit them to the Supervision Director.
+
+145. After receiving notification that the Supervision Director has made a
+
+     determination of non-objection to the portions of the Compliance Plan
+
+     implementing the Dispute Logic Rules and Matching Rules, Respondent
+
+     must implement them and adhere to the steps, recommendations, deadlines,
+
+     and timeframes outlined in the Compliance Plan.
+
+                                      VIII.
+
+                         Role of the Board and Executives
+
+IT IS FURTHER ORDERED that:
+
+146. The Board has the ultimate responsibility for ensuring that Respondent
+
+     complies with this Consent Order.
+
+                                          61
+           2025-CFPB-0002   Document 1    Filed 01/17/2025   Page 62 of 75
+
+
+
+147. Respondent’s Executives and Respondent’s Board, or a committee thereof,
+
+     must review all plans and reports required by this Consent Order, and any
+
+     submissions to the Bureau prior to such submission.
+
+148. One year after the Effective Date and yearly thereafter, Respondent must
+
+     submit to the Supervision Director an accurate written compliance progress
+
+     report (Compliance Report) that has been approved by the Board, the
+
+     accuracy of which is sworn to under penalty of perjury, and which:
+
+      a.    Describes the steps that Respondent’s Board and Executives have
+
+            taken to reasonably assess whether Respondent is complying with the
+
+            Compliance Plan and each applicable paragraph and subparagraph of
+
+            this Consent Order;
+
+      b.    Describes in detail whether and how Respondent has complied with
+
+            the Compliance Plan and each applicable paragraph and subparagraph
+
+            of the Order, including the manner of verification of such compliance
+
+            and any corrective actions taken to remedy potential non-compliance
+
+            with the applicable requirement, paragraph, or subparagraph; and
+
+      c.    Attaches a copy of each Order Acknowledgment obtained under
+
+            Section XII, unless previously submitted to the Bureau.
+
+149. Respondent’s Board and Executives must:
+
+
+
+
+                                         62
+           2025-CFPB-0002   Document 1     Filed 01/17/2025   Page 63 of 75
+
+
+
+      a.    Authorize whatever actions are necessary for Respondent to assess
+
+            whether Respondent is complying with the Compliance Plan and each
+
+            applicable paragraph and subparagraph of this Consent Order;
+
+      b.    Authorize whatever actions, including corrective actions, are
+
+            necessary for Respondent to fully comply with the Compliance Plan
+
+            and each applicable paragraph and subparagraph of this Consent
+
+            Order; and
+
+      c.    Require timely reporting by management to Respondent’s Board and
+
+            Executives on the status of compliance obligations.
+
+                         MONETARY PROVISIONS
+                                         IX.
+
+                      Order to Pay Civil Money Penalty
+
+IT IS FURTHER ORDERED that:
+
+150. Under Section 1055(c) of the CFPA, 12 U.S.C. § 5565(c), by reason of the
+
+     violations of law described in Section V of this Consent Order, Respondent
+
+     must pay a civil money penalty of $15 million to the Bureau.
+
+151. Within 10 days of the Effective Date, Respondent must pay the civil money
+
+     penalty by wire transfer to the Bureau or to the Bureau’s agent in compliance
+
+     with the Bureau’s wiring instructions.
+
+
+
+                                         63
+           2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 64 of 75
+
+
+
+152. The civil money penalties paid under this Consent Order will be deposited in
+
+     the Civil Penalty Fund of the Bureau as required by Section 1017(d) of the
+
+     CFPA, 12 U.S.C. § 5497(d).
+
+153. Respondent, for all purposes, must treat the civil money penalties paid under
+
+     this Consent Order as penalties paid to the government. Regardless of how
+
+     the Bureau ultimately uses those funds, Respondent may not:
+
+      a.    Claim, assert, or apply for a tax deduction, tax credit, or any other tax
+
+            benefit for any civil money penalty paid under this Consent Order; or
+
+      b.    Seek or accept, directly or indirectly, reimbursement or
+
+            indemnification from any source, including but not limited to payment
+
+            made under any insurance policy, with regard to any civil money
+
+            penalty paid under this Consent Order.
+
+154. To preserve the deterrent effect of the civil money penalties in any Related
+
+     Consumer Action, Respondent may not argue that Respondent is entitled to,
+
+     nor may Respondent benefit by, any offset or reduction of any compensatory
+
+     monetary remedies imposed in the Related Consumer Action because of the
+
+     civil money penalty paid in this action or because of any payment that the
+
+     Bureau makes from the Civil Penalty Fund. If the court in any Related
+
+     Consumer Action offsets or otherwise reduces the amount of compensatory
+
+     monetary remedies imposed against Respondent based on the civil money
+
+
+                                          64
+           2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 65 of 75
+
+
+
+     penalty paid in this action or based on any payment that the Bureau makes
+
+     from the Civil Penalty Fund, Respondent must, within 30 days after entry of
+
+     a final order granting such offset or reduction, notify the Bureau, and pay the
+
+     amount of the offset or reduction to the U.S. Treasury. Such a payment will
+
+     not be considered an additional civil money penalty and will not change the
+
+     amount of the civil money penalty imposed in this action.
+
+                                          X.
+
+                        Additional Monetary Provisions
+
+155. In the event of any default on Respondent’s obligations to make payment
+
+     under this Consent Order, interest, computed under 28 U.S.C. § 1961, as
+
+     amended, will accrue on any outstanding amounts not paid from the
+
+     Effective Date to the date of payment, and will immediately become due and
+
+     payable.
+
+156. Respondent must relinquish all dominion, control, and title to the funds paid
+
+     to the fullest extent permitted by law and no part of the funds may be
+
+     returned to Respondent.
+
+157. Respondent acknowledges that its Taxpayer Identification Number (Social
+
+     Security Number or Employer Identification Number), which Respondent
+
+     previously submitted to the Bureau, may be used for collecting and reporting
+
+
+
+                                          65
+           2025-CFPB-0002     Document 1     Filed 01/17/2025   Page 66 of 75
+
+
+
+     on any delinquent amount arising out of this Consent Order, in accordance
+
+     with 31 U.S.C. § 7701.
+
+158. Within 30 days of the entry of a final judgment, consent order, or settlement
+
+     in a Related Consumer Action, Respondent must notify the Enforcement
+
+     Director of the final judgment, consent order, or settlement in writing. That
+
+     notification must indicate the amount of redress, if any, that Respondent paid
+
+     or are required to pay to consumers and describe the consumers or classes of
+
+     consumers to whom that redress has been or will be paid.
+
+                         COMPLIANCE PROVISIONS
+                                           XI.
+
+                             Reporting Requirements
+
+IT IS FURTHER ORDERED that:
+
+159. Respondent must notify the Bureau of any development that may affect
+
+     compliance obligations arising under this Consent Order, including but not
+
+     limited to a dissolution, assignment, sale, merger, or other action that would
+
+     result in the emergence of a successor company; the creation or dissolution
+
+     of a subsidiary, parent, or affiliate that engages in any acts or practices
+
+     subject to this Consent Order; the filing of any bankruptcy or insolvency
+
+     proceeding by or against Respondent; or a change in Respondent’s name or
+
+     address. Respondent must provide this notice, if practicable, at least 30 days
+
+
+                                           66
+           2025-CFPB-0002   Document 1    Filed 01/17/2025   Page 67 of 75
+
+
+
+     before the development, but in any case no later than 14 days after the
+
+     development.
+
+160. Within 7 days of the Effective Date, Respondent must:
+
+      a.    Designate at least one telephone number and email, physical, and
+
+            postal addresses as points of contact that the Bureau may use to
+
+            communicate with Respondent; and
+
+      b.    Designate at least one telephone number and email, physical, and
+
+            postal addresses as points of contact for consumers with inquiries
+
+            related to consumer relief under the Consent Order.
+
+161. Respondent must report any change in the information required to be
+
+     submitted under Paragraph 160 at least 30 days before the change or within
+
+     14 days after the learning about the change, whichever is sooner.
+
+                                       XII.
+
+                    Order Distribution and Acknowledgment
+
+IT IS FURTHER ORDERED that:
+
+162. Within 7 days of the Effective Date, Respondent must submit to the
+
+     Supervision Director an acknowledgment of receipt of this Consent Order,
+
+     sworn under penalty of perjury.
+
+163. Within 30 days of the Effective Date, Respondent must deliver a copy of this
+
+     Consent Order to each of its Board members and executive officers, as well
+
+                                         67
+          2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 68 of 75
+
+
+
+     as to any managers, employees, service providers, or other agents and
+
+     representatives who have managerial or supervisory responsibilities related
+
+     to the subject matter of the Consent Order.
+
+164. For 5 years from the Testing Completion Date, Respondent must deliver a
+
+     copy of this Consent Order to any business entity resulting from any change
+
+     in structure referred to in Section XI, any future board members and
+
+     executive officers, as well as to any managers, employees, Service Providers,
+
+     or other agents and representatives who will have managerial or supervisory
+
+     responsibilities related to the subject matter of the Consent Order before they
+
+     assume their responsibilities.
+
+165. Respondent must secure a signed and dated statement acknowledging receipt
+
+     of a copy of this Consent Order, within 30 days of delivery, from all persons
+
+     receiving a copy of this Consent Order under this Section.
+
+166. Ninety days from the Effective Date, Respondent must submit to the Bureau
+
+     a list of all persons and their titles to whom this Consent Order has been
+
+     delivered under the Section of this Consent Order titled “Order Distribution
+
+     and Acknowledgment” and a copy of all signed and dated statements
+
+     acknowledging receipt of this Consent Order under Paragraph 165.
+
+
+
+
+                                          68
+           2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 69 of 75
+
+
+
+                                       XIII.
+
+                                  Recordkeeping
+
+IT IS FURTHER ORDERED that:
+
+167. Respondent must create and retain the following business records:
+
+      a.     All documents and records necessary to demonstrate full compliance
+
+             with the Compliance Plan, and each provision of this Consent Order,
+
+             including all submissions to the Bureau;
+
+      b.     Meeting minutes of the Board, its committees, and the committee
+
+             described in Paragraph 137 regarding Respondent’s compliance with
+
+             this Consent Order and the Compliance Plan, with sufficient detail to
+
+             document the substance of all matters discussed;
+
+      c.     All documents and records pertaining to the requirements of this
+
+             Consent Order;
+
+      d.     For a period of 5 years from the Testing Completion Date, Records
+
+             of each individual Dispute in the manner described in Paragraph 126
+
+             above; and
+
+      e.     All final audit reports and associated workpapers, and compliance
+
+             monitoring reports and associated workpapers, if any, regarding
+
+             Respondent’s compliance with this Consent Order.
+
+
+
+
+                                           69
+          2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 70 of 75
+
+
+
+168. All such documents and records must be maintained in their original
+
+     electronic format. Data should be centralized, and maintained in such a way
+
+     that access, retrieval, auditing, and production are not hindered.
+
+169. Respondent must make the documents identified in Paragraph 167 available
+
+     to the Bureau upon the Bureau’s request.
+
+                                       XIV.
+
+                                      Notices
+
+      IT IS FURTHER ORDERED that:
+
+170. Unless otherwise directed in writing by the Bureau, Respondent must
+
+     provide all submissions, requests, communications, or other documents
+
+     relating to this Consent Order in writing, with the subject line, “In re Equifax
+
+     Inc. and Equifax Information Services LLC, File No. 2025-CFPB-0002,” and
+
+     send them to the following email or secure electronic transmission to:
+
+     Enforcement_Compliance@cfpb.gov addressed as follows:
+
+            ATTN: Enforcement Director
+            Consumer Financial Protection Bureau
+
+            ATTN: Supervision Director
+            Consumer Financial Protection Bureau
+
+
+
+
+                                          70
+           2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 71 of 75
+
+
+
+                                       XV.
+
+                            Compliance Monitoring
+
+IT IS FURTHER ORDERED that:
+
+171. Within 14 days of receipt of a written request from the Bureau, Respondent
+
+     must submit additional Compliance Reports or other requested information,
+
+     which must be made under penalty of perjury; provide sworn testimony; or
+
+     produce documents.
+
+172. For purposes of this Section, the Bureau may communicate directly with
+
+     Respondent, unless Respondent retains counsel related to these
+
+     communications.
+
+173. Respondent must permit Bureau representatives to interview any employee
+
+     or other person affiliated with Respondent who has agreed to such an
+
+     interview regarding: (a) this matter; (b) anything related to or associated with
+
+     the conduct described in Section V; or (c) compliance with the Consent
+
+     Order. The person interviewed may have counsel present.
+
+174. Nothing in this Consent Order will limit the Bureau’s lawful use of civil
+
+     investigative demands under 12 C.F.R. § 1080.6 or other compulsory
+
+     process.
+
+
+
+
+                                          71
+           2025-CFPB-0002   Document 1    Filed 01/17/2025   Page 72 of 75
+
+
+
+                                      XVI.
+
+                 Modifications to Non-Material Requirements
+
+IT IS FURTHER ORDERED that:
+
+175. Respondent may seek a modification to non-material requirements of this
+
+     Consent Order (e.g., reasonable extensions of time and changes to reporting
+
+     requirements) by submitting a written request to the Supervision Director.
+
+176. The Enforcement Director may, in their discretion, modify any non-material
+
+     requirements of this Consent Order (e.g., reasonable extensions of time and
+
+     changes to reporting requirements) if they determine good cause justifies the
+
+     modification. Any such modification by the Supervision Director must be in
+
+     writing.
+
+                                      XVII.
+
+                      ADMINISTRATIVE PROVISIONS
+
+IT IS FURTHER ORDERED that:
+
+177. The provisions of this Consent Order do not bar, estop, or otherwise prevent
+
+     the Bureau from taking any other action against Respondent, except as
+
+     described in Paragraph 178. Further, for the avoidance of doubt, the
+
+     provisions of this Consent Order do not bar, estop, or otherwise prevent any
+
+     other person or governmental agency from taking any action against
+
+     Respondent.
+
+                                         72
+           2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 73 of 75
+
+
+
+178. The Bureau releases and discharges Respondent from all potential liability
+
+     for law violations that the Bureau has or might have asserted based on the
+
+     practices described in Section V of this Consent Order, to the extent such
+
+     practices occurred before the Effective Date and the Bureau knows about
+
+     them as of the Effective Date. The Bureau may use the practices described in
+
+     this Consent Order in future enforcement actions against Respondent and its
+
+     affiliates, including, without limitation, to establish a pattern or practice of
+
+     violations or the continuation of a pattern or practice of violations or to
+
+     calculate the amount of any penalty. This release does not preclude or affect
+
+     any right of the Bureau to determine and ensure compliance with the Consent
+
+     Order, or to seek penalties for any violations of the Consent Order.
+
+179. This Consent Order is intended to be, and will be construed as, a final
+
+     Consent Order issued under Section 1053 of the CFPA, 12 U.S.C. § 5563,
+
+     and expressly does not form, and may not be construed to form, a contract
+
+     binding the Bureau or the United States.
+
+180. This Consent Order will terminate on the later of 5 years from the Testing
+
+     Completion Date or 5 years from the most recent date that the Bureau
+
+     initiates an action alleging any violation of the Consent Order by Respondent
+
+     if such action is initiated within 5 years of the Testing Completion Date,
+
+     whichever is later. If such action is dismissed or the relevant adjudicative
+
+
+                                           73
+           2025-CFPB-0002    Document 1    Filed 01/17/2025   Page 74 of 75
+
+
+
+      body rules that Respondent did not violate any provision of the Consent
+
+      Order, and the dismissal or ruling is either not appealed or upheld on appeal,
+
+      then Consent Order will terminate as though the action had never been filed.
+
+      The Consent Order will remain effective and enforceable until such time,
+
+      except to the extent that any provisions of this Consent Order have been
+
+      amended, suspended, waived, or terminated in writing by the Bureau or its
+
+      designated agent.
+
+181. Calculation of time limitations will run from the Effective Date and be based
+
+      on calendar days, unless otherwise noted.
+
+182. Should Respondent seek to transfer or assign all or part of its operations that
+
+      are subject to this Consent Order, Respondent must, as a condition of sale,
+
+      obtain the written agreement of the transferee or assignee to comply with all
+
+      applicable provisions of this Consent Order.
+
+183. The provisions of this Consent Order will be enforceable by the Bureau. For
+
+      any violation of this Consent Order, the Bureau may impose the maximum
+
+      amount of civil money penalties allowed under Section 1055(c) of the CFPA,
+
+      12 U.S.C. § 5565(c). In connection with any attempt by the Bureau to
+
+      enforce this Consent Order in federal district court, the Bureau may serve
+
+      Respondent wherever Respondent may be found and Respondent may not
+
+      contest that court’s personal jurisdiction over Respondent.
+
+
+                                          74
+          2025-CFPB-0002     Document 1    Filed 01/17/2025   Page 75 of 75
+
+
+
+184. This Consent Order and the accompanying Stipulation contain the complete
+
+     agreement between the parties. The parties have made no promises,
+
+     representations, or warranties other than what is contained in this Consent
+
+     Order and the accompanying Stipulation. This Consent Order and the
+
+     accompanying Stipulation supersede any prior oral or written
+
+     communications, discussions, or understandings.
+
+185. Nothing in this Consent Order or the accompanying Stipulation may be
+
+     construed as allowing Respondent, Respondent’s Board, its Executives,
+
+     officers, or employees to violate any law, rule, or regulation.
+
+  IT IS SO ORDERED, this 17th day of January, 2025.
+
+
+                                      ____________________________
+                                      Rohit Chopra
+                                      Director
+                                      Consumer Financial Protection Bureau
+
+
+
+
+                                          75
+
