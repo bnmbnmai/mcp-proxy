@@ -15,6 +15,7 @@ build/gmp-md.*
 build/untitled-letters.*
 build/awa.*
 build/swisspar.*
+build/pcac.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
@@ -27,3 +28,4 @@ data/gmp-md/
 data/untitled-letters/
 data/awa/
 data/swisspar/
+data/pcac/
