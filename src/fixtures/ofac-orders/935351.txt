@@ -1,0 +1,231 @@
+                       DEPARTMENT OF THE TREASURY
+                         OFFICE OF FOREIGN ASSETS CONTROL
+
+
+Enforcement Release: March 17, 2026
+
+     TradeStation Securities, Inc. Settles with OFAC for $1,110,661 Related to Apparent
+                       Violations of Multiple Sanctions Regulations
+
+TradeStation Securities, Inc., a Florida-headquartered brokerage firm that operates online securities
+trading platforms, has agreed to pay OFAC $1,110,661 to settle its potential civil liability for 481
+apparent violations of multiple sanctions programs. For nearly a year, from June 21, 2021 to
+June 15, 2022, TradeStation provided investment services to customers located in Iran, Syria, and
+the Crimea region of Ukraine (“Crimea”) following a series of compliance control failures, enabling
+those customers to execute securities-related transactions.
+
+The settlement amount reflects OFAC’s determination that the apparent violations were non-
+egregious and voluntarily self-disclosed. The settlement amount further reflects the significant
+remedial measures TradeStation implemented upon discovery of the apparent violations. More
+broadly, this enforcement action highlights the importance for financial institutions and other firms
+to deploy testing mechanisms to ensure that compliance tools are adequately implemented and
+functioning as intended.
+
+Description of the Apparent Violations
+
+TradeStation, founded in 1995, is a brokerage firm that offers desktop, web, and mobile platforms
+for retail and institutional investors to trade equities, options, and futures. TradeStation provides
+clearing, execution, and settlement services, as well as various financial products, including margin
+lending and securities lending programs. TradeStation and its affiliates operate worldwide,
+providing access to over 160 electronic exchanges and market centers globally.
+
+In June 2022, TradeStation identified failures in its sanctions compliance systems as well as failures
+by sanctions compliance personnel to credibly test and validate sanctions-related tools and controls.
+Upon discovery of the sanctions compliance control failures, TradeStation conducted a review of
+transactions and the associated Internet Protocol (IP) addresses. This review led TradeStation to
+identify and disclose the 481 apparent violations.
+
+TradeStation’s Sanctions Compliance Systems
+
+As a general matter, during its customer onboarding process, TradeStation conducts background
+checks regarding the identity and residence of its prospective customers in accordance with its
+Know Your Customer procedures. Each prospective customer is screened against OFAC’s List of
+Specially Designated Nationals and Blocked Persons (the “SDN List”) and TradeStation rescreens
+its existing customers against the SDN List on a daily basis. Each prospective customer’s primary
+residence is screened to ensure they do not reside in a sanctioned jurisdiction.
+
+From June 2021 to June 2022, TradeStation employed two tiers of geo-blocking technology to
+verify the location of its users while they utilized TradeStation’s web-based and mobile platforms to
+prevent access to TradeStation’s platforms from sanctioned jurisdictions. A key element of this
+system was a firewall designed to deny users with IP addresses associated with sanctioned
+jurisdictions from accessing TradeStation’s systems (the “first-tier geo-blocking”). TradeStation
+ran a separate third-party IP address verification tool that acted as a second layer of defense by
+authenticating a user’s IP address upon login to TradeStation’s web-based and mobile platforms and
+denied access based on location (the “second-tier geo-blocking”).
+
+Separately, TradeStation also subscribed to a third-party service that alerted TradeStation’s
+sanctions compliance personnel to access attempts that had been prevented by the first and second
+tier geo-blocking controls. These notifications, which were delivered daily, documented efforts by
+TradeStation clients to access its platforms in jurisdictions subject to OFAC sanctions and other
+certain jurisdictions.
+
+Failures in TradeStation’s IP Geo-Blocking Measures
+
+In April 2018, TradeStation designed and implemented proprietary software to improve the
+functionality and the overall user experience of TradeStation’s mobile platform. This new software,
+however, inadvertently rendered TradeStation’s second-tier geo-blocking ineffective for users of its
+mobile platform. Instead of identifying and screening the user’s IP address at the time of an
+attempted login to prevent users from sanctioned jurisdictions from trading, the second-tier geo-
+blocking protocol detected the IP address of the U.S.-located server from which TradeStation’s new
+mobile platform software ran. This prevented the second-tier geo-blocking controls from
+functioning as designed, rendering them incapable of identifying users in Iran, Syria, and Crimea.
+
+Additionally, on June 21, 2021, one of TradeStation’s employees inadvertently failed to reenable
+the first-tier geo-blocking control after disabling it to install a software update from TradeStation’s
+cloud services provider. This left TradeStation’s first-tier geo-blocking controls effectively
+disabled, and they remained so until at least June 15, 2022. This resulted in a nearly 12-month
+period during which TradeStation was not restricting access to its mobile platform by users with IP
+addresses associated with sanctioned jurisdictions (although sanctioned users attempting to access
+the web-based platform would have been blocked by the second-tier geo-blocking controls).
+Consequently, users located in Iran, Syria, and Crimea were able to access TradeStation’s mobile
+platform and execute 481 trades during this time.
+
+Failures to Test or Validate TradeStation’s Sanctions Compliance Systems
+
+In 2018, TradeStation’s internal technology development affiliate developed an automated testing
+tool for its on-premises servers that would simulate access attempts by users with IP addresses
+associated with sanctioned jurisdictions. However, TradeStation later discovered that its third-party
+internet service and cloud providers were blocking these test access attempts before they could
+reach TradeStation’s systems. TradeStation discontinued the use of this tool in November 2021
+without replacing it, and, as a result, TradeStation had no effective testing mechanism—neither
+related to its on-premises servers nor its mobile platform—in place to ensure that its IP geo-
+blocking controls were functioning as intended at the time the 481 apparent violations occurred.
+
+As noted, TradeStation maintained a third-party service that alerted sanctions compliance personnel
+of access attempts from sanctioned jurisdictions. On September 21, 2021, a TradeStation-affiliated
+
+                                                   2
+employee received an email from the third-party provider of its daily notifications that
+TradeStation’s subscription would be expiring. This employee failed to renew the subscription and
+did not notify others in TradeStation’s sanctions compliance department about the expiration of the
+daily notifications. For a period of over eight months, TradeStation’s sanctions compliance
+personnel failed to address the absence of its once-daily OFAC alerts and did not consider or act on
+what the lack of notifications might have signaled about TradeStation’s sanctions compliance
+program.
+
+Summary of Apparent Violations
+
+As a result of the conduct described above, between June 21, 2021 and June 15, 2022, TradeStation
+processed 481 trades through TradeStation’s mobile application for a total of $4,442,645, in
+apparent violation of § 560.204 of the Iranian Transaction and Sanctions Regulations (ITSR),
+31 C.F.R. part 560, § 542.207 of the Syrian Sanctions Regulations (the “SySR”), 31 C.F.R.
+part 542, 1 and § 589.207 of the Ukraine-/Russia-Related Sanctions Regulations (URSR), 31 C.F.R.
+part 589 (the “Apparent Violations”).
+
+Penalty Calculations and General Factors Analysis
+
+OFAC determined that TradeStation self-disclosed the Apparent Violations and that the Apparent
+Violations constitute a non-egregious case. Accordingly, under OFAC’s Economic Sanctions
+Enforcement Guidelines (“Enforcement Guidelines”), 31 C.F.R. part 501, app. A., the base civil
+monetary penalty applicable in this matter equals the sum of one-half of the transaction value for
+each apparent violation, which is $2,221,322.
+
+The settlement amount of $1,110,661 reflects OFAC’s consideration of the General Factors under
+the Enforcement Guidelines.
+
+OFAC determined the following to be aggravating factors:
+
+    (1) TradeStation failed to exercise a minimal degree of caution or care by leaving significant
+        compliance deficiencies unaddressed for approximately a year. TradeStation knew or
+        should have known about the importance of testing its systems because TradeStation
+        received a Cautionary Letter from OFAC earlier in 2021, regarding apparent violations
+        resulting from other deficiencies related to its geo-blocking software. Despite this warning,
+        TradeStation failed to ensure its IP geo-blocking controls were properly tested, including
+        discontinuing use of its automated testing tool for on-premises servers in November 2021.
+        TradeStation also failed to address its nonreceipt of the once-daily OFAC alerts for a period
+        of over eight months, the absence of which should have served as an additional warning
+        sign.
+
+1
+  On June 30, 2025, President Trump issued E.O. 14312, “Providing for the Revocation of Syria Sanctions,” which
+revoked, effective July 1, 2025, six Executive orders that formed the foundation of the SySR, and terminated the
+national emergency underlying those Executive orders, which resulted in the removal of the SySR effective July 1,
+2025. The issuance of E.O. 14312 and revocation of these sanctions does not affect past, present, or future OFAC
+enforcement investigations or actions related to any apparent violations of the Syrian Sanctions Regulations arising
+from activities that occurred prior to May 23, 2025.
+
+                                                           3
+   (2) TradeStation harmed the objectives of U.S. sanctions programs by processing 481 securities
+       trades on behalf of individuals located in sanctioned jurisdictions and providing such
+       persons access to the U.S. financial system.
+
+   (3) TradeStation is a sophisticated, heavily regulated, and technology-driven firm. TradeStation
+       and its affiliates operate across more than 160 electronic exchanges and market centers
+       globally. TradeStation is one of the oldest online brokers for retail investment.
+
+OFAC found the following to be mitigating factors:
+
+   (1) TradeStation promptly took significant remedial steps after discovering the Apparent
+       Violations, including by implementing numerous new technical controls and solutions to
+       ensure that any future failures of its IP geo-blocking mechanisms or OFAC-related alert
+       functions could be quickly identified.
+
+   (2) The volume of Apparent Violations represents a small percentage of the total volume of
+       transactions conducted by TradeStation during the relevant time period, and TradeStation
+       received less than $2,000 in revenue from the Apparent Violations.
+
+   (3) TradeStation voluntarily self-disclosed the apparent violations to OFAC and cooperated
+       with OFAC’s investigation by responding to requests for information in a timely and well-
+       organized manner.
+
+Compliance Considerations
+
+This enforcement action highlights the importance of regular testing and auditing to ensure
+sanctions compliance controls are effectively mitigating risk and preventing sanctions violations.
+Controls only work if they are effectively implemented. The most well-designed sanctions
+compliance program can be rendered wholly ineffectual by human and technical errors.
+Comprehensive, independent, and objective testing and auditing can help catch problems early and
+provide opportunities for remediation, thereby limiting risk of violating sanctions.
+
+Regular testing and auditing also provide opportunities for evaluating sources of sanctions risk and
+ensuring that appropriate controls are in place to address them. Controls should be well designed to
+address particular sanctions risks, including those presented by particular technology offerings.
+These controls may include appropriately calibrated screening protocols, geo-blocking controls, and
+Virtual Private Network detection software. They may also include controls to validate proper
+system operation and execution following any outage, including due to planned maintenance or
+upgrade. Broker-dealers utilizing real-time order placement and trade execution platforms should
+also consider appropriate investments to ensure the modernization and adequate functionality of
+their sanctions-related compliance solutions.
+
+Firms should not treat testing and auditing—or any other sanctions compliance undertaking—as a
+box-checking exercise. Sanctions risks are dynamic and may fluctuate as prohibitions change or as
+businesses evolve. While technological solutions are often a critical part of an effective sanctions
+
+                                                 4
+compliance program, firms should ensure they are not overly relying on a patchwork of software or
+taking a “set it and forget it” approach to compliance.
+
+OFAC Enforcement and Compliance Resources
+
+On May 2, 2019, OFAC published A Framework for OFAC Compliance Commitments in order to
+provide organizations subject to U.S. jurisdiction, as well as foreign entities that conduct business in
+or with the United States or U.S. persons, or that use goods or services exported from the United
+States, with OFAC’s perspective on the essential components of a sanctions compliance program.
+The Framework also outlines how OFAC may incorporate these components into its evaluation of
+apparent violations and resolution of investigations resulting in settlements. The Framework
+includes an appendix that offers a brief analysis of some of the root causes of apparent violations of
+U.S. economic and trade sanctions programs OFAC has identified during its investigative process.
+
+Information concerning the civil penalties process can be found in the OFAC regulations governing
+each sanctions program; the Reporting, Procedures, and Penalties Regulations, 31 C.F.R. part 501;
+and the Economic Sanctions Enforcement Guidelines, 31 C.F.R. part 501, app. A. These
+references, as well as recent civil penalties and enforcement information, can be found on OFAC’s
+website at https://ofac.treasury.gov/civil-penalties-and-enforcement-information.
+
+Whistleblower Program
+
+The U.S. Department of the Treasury’s Financial Crimes Enforcement Network (FinCEN)
+maintains a whistleblower incentive program for violations of OFAC-administered sanctions, in
+addition to violations of the Bank Secrecy Act. Individuals located in the United States or abroad
+who provide information about sanctions violations may be eligible for awards, if the information
+they provide leads to a successful enforcement action that results in monetary penalties exceeding
+$1,000,000. The incentive program is available for whistleblowers providing information relating
+to potential violations at any type of enterprise in any commercial sector.
+
+For more information regarding OFAC regulations, please go to: https://ofac.treasury.gov/.
+
+
+
+
+                                                   5
+

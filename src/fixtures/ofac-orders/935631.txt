@@ -1,0 +1,328 @@
+                           DEPARTMENT OF THE TREASURY
+                             OFFICE OF FOREIGN ASSETS CONTROL
+
+
+
+
+Enforcement Release: May 18, 2026
+
+
+      Adani Enterprises Limited Settles with OFAC for $275,000,000 Related to Apparent
+                             Violations of Iran-related Sanctions
+
+Adani Enterprises Limited (AEL), a diversified multinational company headquartered in India, has
+agreed to pay $275,000,000 to settle its potential civil liability for apparent violations of OFAC
+sanctions on Iran. From November 2023 to June 2025, AEL purchased shipments of liquified
+petroleum gas (LPG) from a Dubai-based trader purporting to supply Omani and Iraqi gas. Red
+flags should have put AEL on notice that the LPG actually originated from Iran. During this time
+period, AEL caused U.S. financial institutions to process 32 U.S. dollar (USD) denominated
+payments totaling approximately $192,104,044 for the shipments. The settlement amount reflects
+OFAC’s determination that AEL’s apparent violations were egregious and not voluntarily self-
+disclosed and further reflects the AEL’s remedial measures following discovery of the conduct and
+the cooperation AEL provided for OFAC’s investigation.
+
+Description of the Apparent Violations
+
+In June 2023, AEL entered the liquified petroleum gas (LPG)1 market by importing LPG and selling
+to customers in India.2 Adani Ports and Special Economic Zone Ltd. (APSEZ) operates Mundra
+Port in Gujarat, on India’s western coast. However, neither AEL nor any of its affiliates had, prior
+to this time, traded LPG on their own account through Mundra Port.
+
+At the time, given the competition from established LPG importers in the Indian market, AEL
+needed a discounted source of LPG. In July 2023, representatives of AEL, including the head of its
+newly formed LPG unit (the “LPG Head”), met with representatives of a Dubai-based trading
+company (the “Dubai Supplier”) involved in supplying purportedly Omani-origin LPG to another
+Indian entity.3 In September 2023, the Dubai Supplier informed AEL that it would be able to
+provide the company with LPG through an affiliated entity. A contemporaneous internal AEL
+document describes the Dubai Supplier as providing “discounted LPG from Middle East” on a spot
+basis. The Dubai Supplier operated through a number of different affiliated entities. At the time,
+AEL relied on APSEZ’s 2020 OFAC sanctions compliance program, which prohibited Iranian
+and/or sanctioned vessels and Iranian-origin cargo from entering APSEZ-controlled ports. AEL
+conducted its standard Know Your Customer verification process on the Dubai Supplier and its
+affiliates involved in LPG sales to AEL, which identified no hits against OFAC’s List of Specially
+Designated Nationals (SDN) and Blocked Persons (the “SDN List”).
+
+1
+  LPG is typically a mixture of propane and butane, though cargos may be composed entirely of one product type.
+2
+  A significant increase in LNG prices resulting from the Russian invasion of Ukraine made LPG more attractive to
+consumers in certain markets, including India and Bangladesh, where substitution was possible.
+3
+  AEL was introduced to the Dubai Supplier by an individual affiliated with an entity designated subsequently in
+December 2025 pursuant to E.O. 13902 for operating in the petroleum sector of the Iranian economy.
+While the Dubai Supplier represented itself as a reputable middleman supplying LPG primarily
+from Oman, as well as Iraq, in reality the company served as a conduit for illicit Iranian supply to
+enter the market. Indeed, an affiliate of the Dubai Supplier had been designated by OFAC in March
+2023 pursuant to E.O. 13846 for purchasing LPG from Iran-based SDN Persian Gulf Petrochemical
+Industries for resale. It does not appear that AEL was aware of the designation at the time.
+
+AEL’s Purchases from Dubai Supplier
+
+Following discussions regarding pricing and timing of the shipment, AEL completed its first
+purchase from the Dubai Supplier in November 2023, with a cargo of fully refrigerated propane
+shipped on a 25-year old Handysize LPG tanker.4 Shipping documents associated with the
+transaction identify the cargo’s origin as Sohar, Oman. AEL paid $5,672,024 for the shipment.
+AEL would go on to purchase 34 additional cargos of Iranian-origin LPG from the Dubai Supplier
+or its affiliates. As they did for all LPG imports, AEL and APSEZ reviewed Know Your Customer
+documentation, reviewed shipping documentation and vessel port of calls lists, and checked vessels,
+vessel operators, and LPG sellers against the SDN List. None of the parties involved in AEL’s LPG
+imports were sanctioned at the time of the LPG shipments, and none of the documentation provided
+to AEL contained any information explicitly pointing to Iranian origin of the LPG. However, AEL
+and APSEZ’s sanctions compliance program did not include other measures to account for risks
+arising from its dealings, as described below.
+
+Payments for these shipments were generally made in USD or AED from accounts at UAE or
+Indian banks on a collection basis, against documents sent by the relevant suppliers through banking
+channels. In total, U.S. financial institutions processed $192,104,044 in payments for 32 shipments
+of Iranian-origin LPG purchased by AEL from the Dubai Supplier or its affiliates. Payments for the
+three remaining shipments of Iranian-origin LPG were either never completed or were conducted
+entirely in AED.
+
+AEL Overlooked Red Flags That Should Have Prompted Additional Investigation
+
+From the earliest days of the relationship, a number of red flags called into question the true source
+of the Dubai Supplier’s cargo. On at least four separate occasions between March 2023 and
+February 2024, AEL learned of third-party concerns that cargos supplied by the Dubai Supplier may
+have originated in Iran. For instance, in March and April 2023, prior to AEL’s entering the LPG
+market, APSEZ and the LPG Head received inquiries from an Indian state-owned entity alleging
+that a specific vessel would be coming into Mundra carrying Iranian-origin LPG imported by a third
+party. The LPG Head was aware at the time that the purchaser of the cargo was a customer of the
+Dubai Supplier and that the Dubai supplier used the vessel to carry purportedly Omani-origin LPG.
+The vessel was accepted at Mundra after checking shipping documentation and confirming that
+such documentation did not reflect an explicit Iranian nexus. AEL would later purchase two cargos,
+later discovered to be of Iranian-origin LPG, from the Dubai Supplier that were shipped on the same
+vessel. Moreover, for the entire period in which the Apparent Violations occurred, vessels carrying
+
+4
+ Handysize vessels are typically capable of carrying between 15,000 and 25,000 cbm of gas. Because larger vessels
+benefit from economies of scale and are more fuel-efficient, it is more expensive on a cost per metric ton basis to carry
+cargo on a handysize tanker compared to a very large gas carrier (VLGC).
+
+                                                            2
+the Dubai Supplier’s cargos routinely engaged in suspicious behavior, including (1) Automatic
+Identification System (AIS)5 manipulation, such as spoofing and prolonged unexplained AIS dark
+periods; (2) uneconomic or illogical vessel movements or port calls; and (3) frequent name,
+ownership, and flag state change.
+
+Indeed, as early as AEL’s first shipment, signs were present that the cargos did not originate from
+the jurisdictions identified in the certificates of origin. The November 2023 shipment of fully
+refrigerated propane was identified as being loaded in Sohar, Oman. Yet, Sohar is not a significant
+source of Omani LPG exports, which originate primarily from Salalah, Oman. Furthermore,
+facilities for exporting fully-refrigerated LPG did not exist at Sohar at the time.6 Transaction
+documentation provided by the Dubai Supplier also bore indica of falsification, including: (1)
+illogical and nonsequential numbering of certificates of origin, (2) repeated unexplained delays in
+post-shipment issuance of documents, and (3) use of outdated document templates. It does not
+appear that AEL took sufficient action in response to any of these red flags while the Apparent
+Violations were ongoing.
+
+Another red flag was the price of the Dubai Supplier’s cargo. Iran, virtually alone among Middle
+Eastern sources of LPG, offered significantly discounted LPG. The prices AEL received from the
+Dubai Supplier were sufficiently below the predominant market rate that, at a minimum, AEL
+should have exercised a greater degree of scrutiny in confirming the source of its LPG, all the more
+so given that the LPG was allegedly sourced from jurisdictions neighboring Iran. Given the (1)
+claimed origin of the cargos supplied by the Dubai Supplier, (2) expected freight costs for
+shipments carried on vessels chartered by the Dubai Supplier, and (3) reasonable estimates for
+associated port fees and profit margins, the prices offered by the Dubai Supplier do not appear to
+have been commercially reasonable.
+
+Furthermore, on at least one occasion, payments owed to the Dubai Supplier appear to have been
+stopped due to sanctions concerns. In February 2024, the Dubai Supplier’s bank stopped payment
+for one of the shipments due to “internal policy,” though the bank does not appear to have
+specifically referenced U.S. sanctions concerns. The Dubai Supplier then directed AEL to make
+payment via a new account at another Dubai-based bank and to contact specific employees at a
+specific branch of the new bank. In February 2024, the Dubai Supplier’s bank stopped payment for
+the shipment, raising concerns about whether the purportedly Omani cargo originated in Iraq or
+Iran. The bank eventually allowed the payment to proceed after the Dubai Supplier provided
+additional, apparently falsified shipping documentation.
+
+For its part, AEL does not appear to have taken sufficient steps to investigate these red flags beyond
+reviewing shipping documentation and obtaining assurance from the Dubai Supplier that it was not
+selling Iranian-origin LPG after receipt of some of the third-party allegations. AEL appears to have
+believed that the allegations originated from competitors seeking to prevent it from entering the
+
+
+5
+  AIS is shipboard broadcast system that acts like a transponder, providing information such as ship name, position,
+course and speed, classification, call sign, registration number, MMSI, and other information.
+6
+  Because cryogenic storage tanks and associated loading infrastructure did not exist at Sohar Port, the cargo would
+need to have originated either (1) outside of Oman or (2) have been loaded as a semi-refrigerated cargo and cooled to
+fully refrigerated while the vessel was in transit, significantly increasing fuel burn and overall shipping costs.
+
+                                                           3
+LPG market and that if the shipping documents were valid on their face, no additional inquiry was
+required.
+
+Suspension of LPG Imports and Investigation
+
+Following public reports in June 2025 of allegations that AEL was engaged in the importation of
+Iranian-origin LPG, AEL immediately suspended all LPG imports and engaged U.S.-based counsel
+to conduct a comprehensive investigation of the company’s LPG business. AEL extensively
+cooperated with OFAC’s investigation, including by proactively disclosing the findings of its
+investigation, producing large volumes of documentation, meaningfully answering all the agency’s
+questions, and promptly resolving its potential liability. Additionally, AEL implemented extensive
+enhancements to its sanctions compliance program that apply across AEL’s corporate group.
+
+Summary of Apparent Violations
+
+Accordingly, this conduct resulted in 32 apparent violations (the “Apparent Violations”)
+of § 560.203(a) of the Iranian Transactions and Sanctions Regulations (ITSR), 31 C.F.R. part 560,
+by causing U.S. financial institutions to facilitate certain trade-related transactions involving goods
+of Iranian origin, in violation of § 560.206 of the ITSR. The settlement agreement for this action
+can be found here.
+
+Penalty Calculations and General Factors Analysis
+
+OFAC determined that AEL did not voluntarily self-disclose the Apparent Violations and that the
+Apparent Violations constitute an egregious case. Accordingly, under OFAC’s Economic Sanctions
+Enforcement Guidelines (“Enforcement Guidelines”), 31 C.F.R. part 501, app. A., the base civil
+monetary penalty applicable in this matter is the statutory maximum penalty of $384,208,088.
+
+The settlement amount of $275,000,000 reflects OFAC’s consideration of the General Factors under
+the Enforcement Guidelines.
+
+OFAC determined the following to be aggravating factors:
+
+   (1) AEL acted recklessly and had reason to know of the Apparent Violations due to the presence
+       of red flags pointing to potential links to Iran. These included warnings received from third
+       parties that LPG cargos being imported by AEL may have been of Iranian-origin, and the
+       economic, commercial, and logistical implausibility of the cargos’ origin and pricing. AEL
+       also did not conduct additional due diligence that may have revealed that the vessels
+       carrying its LPG cargos routinely engaged in suspicious behavior such as Automatic
+       Identification System manipulation, uneconomic or illogical vessel movements or port calls,
+       and frequent name, ownership, and flag state changes. Furthermore, as recognized in its
+       then-existing sanctions compliance program, the company knew that actions which cause a
+       U.S. person to violate Iran sanctions, such as initiating payments processed by U.S. financial
+       institutions, could expose the company to civil or criminal penalties under U.S. law.
+
+
+
+
+                                                   4
+   (2) AEL caused substantial harm to sanctions program objectives by contributing to Iran’s
+       ability to derive revenue from its energy sector—funds that the regime uses to support its
+       illicit nuclear program, fund its terrorist and proxy groups, and oppress its own people.
+       Restricting Iran’s energy exports represents a core objective of U.S. sanctions targeting Iran;
+       AEL’s actions were in direct contravention of this purpose and provided substantial
+       economic benefit to accrue to the Iranian government.
+
+   (3) AEL is a large and sophisticated international company with multiple business lines,
+       including in the energy and infrastructure sectors.
+
+OFAC determined the following to be mitigating factors:
+
+   (1) AEL has not received a penalty notice or Finding of Violation from OFAC in the five years
+       preceding the earliest date of the transactions giving rise to the Apparent Violations.
+
+   (2) At the time of the shipments, AEL’s nascent LPG business was a small percentage of AEL’s
+       overall revenue, representing less than 1.5% of AEL’s consolidated revenue for 2025.
+
+   (3) AEL provided substantial cooperation to OFAC, including by conducting a thorough,
+       independent internal investigation on an expedited basis and at substantial cost, responding
+       promptly to OFAC’s requests for information, and providing large volumes of data
+       regarding the Apparent Violations.
+
+   (4) AEL has implemented significant remedial measures to respond to the Apparent Violations,
+       including ceasing imports of LPG into India, enhancing its sanctions compliance policy and
+       controls, and implementing certain compliance commitments. AEL has already begun
+       implementing some of these commitments, including the following:
+
+           o Creating and adopting a robust risk-based U.S. sanctions compliance policy and
+             written due diligence protocol overseen by a dedicated Group Head of Compliance;
+
+           o Applying the enhanced sanctions compliance policy across AEL, in order to foster
+             consistency, comprehensiveness, and uniformity in how sanctions-related diligence
+             is conducted across its business units;
+
+           o Incorporating into its sanctions risk assessment consideration of risks relating to
+             maritime transport of hydrocarbons, including risks identified in OFAC’s published
+             guidance;
+
+           o Deploying information technology solutions for maritime intelligence specifically
+             designed to mitigate risks in the marine transportation sector.
+
+Compliance Considerations
+
+This case highlights the risks and potential costs that non-U.S. companies are exposed to when
+using the U.S. financial system for transactions that involve the purchase, sale, and maritime
+
+                                                  5
+transport of energy products from regions with a high risk of sanctions evasion activity. Restricting
+Iran’s energy exports has represented a core objective of U.S. sanctions targeting Iran across
+successive administrations. OFAC issued guidance in 2019, 2020, 2024, and 2025 specifically
+identifying the risks presented by Iran’s efforts to ship clandestinely petroleum, petroleum products,
+and petrochemical products, revenues from which it uses to fund its destabilizing activities,
+including advancing its nuclear weapons and ballistic missile programs and supporting terrorist
+groups that threaten the national interests of the United States and its allies and partners.
+
+Iran employs sophisticated evasion typologies to circumvent sanctions, particularly with respect to
+hydrocarbon exports. Industry participants, especially buyers of energy products and financial
+institutions facilitating related transactions, should carefully review transaction details for
+indications that they are dealing in products or cargoes of Iranian origin. Importers should conduct
+appropriate due diligence to corroborate the origin of energy products, including taking steps to
+verify the authenticity of certificates of origin issued by a relevant competent authority, particularly
+when issued in jurisdictions where certain actors are known to obfuscate Iranian origin, such as
+Oman, United Arab Emirates, or Iraq. Importantly, relying solely on counterparty documentation
+and warranties with respect to cargo origin may be insufficient to mitigate the risk of potential
+violations of OFAC-administered sanctions regulations.
+
+Energy importers must be familiar with and monitor for typologies associated with Iran’s reliance
+on a shadow fleet of vessels to transport its energy exports. Indeed, a majority of the vessels
+involved in the Apparent Violations were later designated by OFAC. As noted above, OFAC has
+released extensive guidance, including the 2025 Guidance for Shipping and Maritime Stakeholders
+on Detecting and Mitigating Iranian Oil Sanctions Evasion, advising industry of the risks of
+engaging with this shadow fleet and the specific typologies employed in Iran’s maritime sanction
+evasion. Examples of common shadow fleet activity include non-commercially viable activity like
+successive STS transfers, deliberate vessel position information manipulation, fraudulent vessel
+identity claims, use of older, poorly maintained vessels, and nexuses to sanctioned actors or activity
+through opaque vessel management and ownerships structures, among others. Energy importers
+should continuously monitor for new trends in sanctions evasion and proactively adapt compliance
+protocols to prevent violations.
+
+This case also embodies the adage “if a deal is too good to be true, it probably is.” Buyers of
+energy products originating from high-risk regions are encouraged to closely scrutinize and deploy
+enhanced due diligence when presented with proposals offering prices significantly below
+prevailing market rates. Additional caution is especially warranted when significantly below-
+market prices are being offered by entities with limited public profile or trading history, and where
+multiple affiliated entities are used to conduct similar transactions for unexplained reasons.
+Compliance with U.S. sanctions is also not an exercise in box-checking; allegations of involvement
+by counterparties in sanctions evasion should be swiftly and thoroughly investigated.
+
+Finally, this case demonstrates that even in cases where the threshold for voluntary self-disclosure
+credit is not met, OFAC is prepared to offer substantial mitigation in the event of prompt disclosure,
+rapid investigation, and significant cooperation.
+
+OFAC Enforcement and Compliance Resources
+
+                                                   6
+On May 2, 2019, OFAC published A Framework for OFAC Compliance Commitments in order to
+provide organizations subject to U.S. jurisdiction, as well as foreign entities that conduct business in
+or with the United States or U.S. persons, or that use goods or services exported from the United
+States, with OFAC’s perspective on the essential components of a sanctions compliance program.
+The Framework also outlines how OFAC may incorporate these components into its evaluation of
+apparent violations and resolution of investigations resulting in settlements. The Framework
+includes an appendix that offers a brief analysis of some of the root causes of apparent violations of
+U.S. economic and trade sanctions programs OFAC has identified during its investigative process.
+
+Information concerning the civil penalties process can be found in the OFAC regulations governing
+each sanctions program; the Reporting, Procedures, and Penalties Regulations, 31 C.F.R. part 501;
+and the Economic Sanctions Enforcement Guidelines, 31 C.F.R. part 501, app. A. These
+references, as well as recent civil penalties and enforcement information, can be found on OFAC’s
+website at https://ofac.treasury.gov/civil-penalties-and-enforcement-information.
+
+Whistleblower Program
+
+The U.S. Department of the Treasury’s Financial Crimes Enforcement Network (FinCEN)
+maintains a whistleblower incentive program for violations of OFAC-administered sanctions, in
+addition to other violations of the International Emergency Economic Powers Act and violations of
+the Bank Secrecy Act. Individuals located in the United States or abroad who provide information
+about sanctions violations may be eligible for awards if the information they provide leads to a
+successful enforcement action that results in monetary penalties exceeding $1,000,000. The
+incentive program is available for whistleblowers providing information relating to potential
+violations in any commercial sector.
+
+
+
+
+                                                   7
+
