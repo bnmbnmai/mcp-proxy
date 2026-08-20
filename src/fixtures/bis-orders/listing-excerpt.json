@@ -1,0 +1,51 @@
+[
+  {
+    "institution": "Plexon, Inc.",
+    "docket": "plexon-inc",
+    "date": "2026-08-14",
+    "title": "Proposed Charging Letter",
+    "sourceUrl": "https://www.bis.gov/media/documents/plexon-inc.-8-14-2026.pdf",
+    "pdfId": "plexon-inc.-8-14-2026"
+  },
+  {
+    "institution": "Coastal PVA Technology, Inc.",
+    "docket": "E3050",
+    "date": "2026-04-13",
+    "title": "Proposed Charging Letter",
+    "sourceUrl": "https://www.bis.gov/media/documents/coastal-pva-technology-inc-4-13-2026-rev.pdf",
+    "pdfId": "coastal-pva-technology-inc-4-13-2026-rev"
+  },
+  {
+    "institution": "Andritz Inc.",
+    "docket": "andritz-inc",
+    "date": "2025-07-29",
+    "title": "Order Relating to Andritz, Inc.",
+    "sourceUrl": "https://www.bis.gov/sites/default/files/documents/Andritz%20Inc.%20Final%20Order%207-29-2025.pdf",
+    "pdfId": "Andritz Inc. Final Order 7-29-2025"
+  },
+  {
+    "institution": "Alpha and Omega Semiconductor Incorporated",
+    "docket": "E2995",
+    "date": "2025-06-27",
+    "title": "Order Relating to Alpha and Omega Semiconductor Incorporated",
+    "sourceUrl": "https://www.bis.gov/sites/default/files/documents/E2995_Alpha%20and%20Omega%20Semiconductor%20%28AOS%29%20Final%20Order%206.27.25.pdf",
+    "pdfId": "E2995_Alpha and Omega Semiconductor (AOS) Final Order 6.27.25"
+  },
+  {
+    "institution": "Charles McGonigal",
+    "individual": "Charles McGonigal",
+    "docket": "E2946",
+    "date": "2024-07-11",
+    "title": "11-h Order",
+    "sourceUrl": "https://efoia.bis.doc.gov/index.php/documents/export-violations/export-violations-2024/1618-e2946-charles-mcgonigal-11-h-order-7-11-2024",
+    "pdfId": "e2946-charles-mcgonigal-11-h-order-7-11-2024"
+  },
+  {
+    "institution": "Unicat Catalyst Technologies, LLC",
+    "docket": "E2994",
+    "date": "2024-12-20",
+    "title": "Order Relating to Unicat Catalyst Technologies, LLC",
+    "sourceUrl": "https://www.bis.gov/sites/default/files/documents/E2994-Unicat%20Catalyst%20Technologies%20Final%20Order%20-%2012-20-2024.pdf",
+    "pdfId": "E2994-Unicat Catalyst Technologies Final Order - 12-20-2024"
+  }
+]
