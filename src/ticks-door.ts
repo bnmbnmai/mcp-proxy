@@ -735,7 +735,7 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         docket: "26-019-B-HC",
         date: "2026-04-14",
         sourceUrl: "https://www.federalreserve.gov/newsevents/pressreleases/files/enf20260416a1.pdf",
-        body: "BOARD OF GOVERNORS OF THE FEDERAL RESERVE SYSTEM\nDocket No. 26-019-B-HC\nCOMMUNITY BANKSHARES, INC.\nOrder to Cease and Desist\nWHEREAS",
+        body: "BOARD OF GOVERNORS OF THE FEDERAL RESERVE SYSTEM\nDocket No. 26-019-B-HC\nCOMMUNITY BANKSHARES, INC.\nOrder to Cease and Desist",
       },
     ],
   },
