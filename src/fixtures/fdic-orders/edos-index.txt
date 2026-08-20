@@ -1,0 +1,9 @@
+{
+  "attributes": { "type": "EDOS_Order__c", "url": "/services/data/v62.0/sobjects/EDOS_Order__c/a0xSJ00000edos01" },
+  "Name": "MutualOne Bank",
+  "Docket_Number__c": "FDIC-26-0001b",
+  "Order_Type__c": "Consent Order",
+  "Issued_Date__c": "2026-01-13",
+  "ContentDocumentId": "069SJ000013gUnXYAU",
+  "records": [{ "attributes": { "type": "ContentDocument" }, "Id": "069SJ000013gUnXYAU" }]
+}

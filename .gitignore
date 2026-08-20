@@ -18,6 +18,7 @@ build/pcac.*
 build/ftc-wl.*
 build/cfpb-orders.*
 build/occ-cd.*
+build/fdic-orders.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
@@ -33,3 +34,4 @@ data/pcac/
 data/ftc-wl/
 data/cfpb-orders/
 data/occ-cd/
+data/fdic-orders/
