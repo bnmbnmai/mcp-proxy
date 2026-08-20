@@ -1,0 +1,474 @@
+                             UNITED STATES OF AMERICA
+                                      Before the
+                        COMMODITY FUTURES TRADING COMMISSION
+                                                                                                       RECEIVED CFTC
+                                                       )
+    In the Matter of:                                  )
+                                                       )
+        UBS Financial Services Inc.,                   )
+                                                       )    CFTC Docket No. 26-04                       Office of Proceedings
+                            Respondent.                )                                                 Proceedings Clerk
+                                                       )                                             01:44 pm, Jul 31 2026
+                                                       )
+
+                 ORDER INSTITUTING PROCEEDINGS PURSUANT TO
+              SECTION 6(c) AND (d) OF THE COMMODITY EXCHANGE ACT,
+              MAKING FINDINGS, AND IMPOSING REMEDIAL SANCTIONS
+
+                                          I.        INTRODUCTION
+
+        The Commodity Futures Trading Commission (“Commission”) has reason to believe that
+from January 2019 through June 2023 (“Relevant Period”), UBS Financial Services Inc.
+(“Respondent” or “UBS FSI”) violated Commission Regulation (“Regulation”) 166.3, 17 C.F.R.
+§ 166.3 (2025). Therefore, the Commission deems it appropriate and in the public interest that
+public administrative proceedings be, and hereby are, instituted to determine whether
+Respondent engaged in the violations set forth herein and to determine whether any order should
+be issued imposing remedial sanctions.
+
+       In anticipation of the institution of an administrative proceeding, Respondent has
+submitted an Offer of Settlement (“Offer”), which the Commission has determined to accept.
+Respondent admits the facts set forth in Section II below, acknowledges that its conduct violated
+Regulation 166.3, consents to the entry of this Order Instituting Proceedings Pursuant to Section
+6(c) and (d) of the Commodity Exchange Act, Making Findings, and Imposing Remedial
+Sanctions (“Order”), and acknowledges service of this Order.1
+
+
+
+
+1
+ Respondent agrees to the use of the findings of fact and conclusions of law in this Order in this proceeding and in
+any other proceeding brought by the Commission or to which the Commission is a party or claimant, including but
+not limited to, a proceeding in bankruptcy or receivership, and agrees that they shall be taken as true and correct and
+be given preclusive effect therein, without further proof. Respondent does not consent, however, to the use of this
+Order, or the findings or conclusions herein, as the sole basis for any other proceeding brought by the Commission
+or to which the Commission is a party or claimant, other than: a proceeding in bankruptcy or receivership; or a
+proceeding to enforce the terms of this Order.
+                                        II.    FINDINGS
+
+The Commission finds the following:
+
+A.     SUMMARY
+
+        During the Relevant Period, UBS FSI, a registered futures commission merchant
+(“FCM”), failed to adequately configure and administer its anti-money laundering (“AML”)
+transaction monitoring systems for wire transfers that were denominated in foreign currencies
+and effectuated through retail customer accounts. Through this conduct, UBS FSI failed to
+diligently supervise activities related to its business as an FCM in violation of Regulation 166.3.
+
+        Customers of UBS FSI were able to utilize accounts opened for commodities or securities
+trading to transfer foreign currency (“FX”). Specifically, they could send FX from and receive
+FX into retail customer commodity accounts via wire transfers. Due to deficiencies in UBS
+FSI’s configuration of the relevant surveillance tools and data governance practices, thousands of
+FX wires sent or received through retail customer commodity accounts held at UBS FSI were
+either insufficiently monitored or omitted from transaction monitoring for AML compliance. As
+these failures reflect, UBS FSI lacked a reasonably designed process for subjecting FX wires
+transmitted through retail customer commodity accounts to AML transaction monitoring.
+
+       In accepting Respondent’s Offer, the Commission acknowledges Respondent’s
+representations concerning its remediation in connection with this matter.
+
+B.     RESPONDENT
+
+       UBS Financial Services Inc. is a registered FCM with its principal place of business
+located in Weehawken, New Jersey. UBS FSI has been registered with the Commission as an
+FCM since 1982.
+
+C.     FACTS
+
+       1.      UBS FSI Failed to Diligently Supervise Its Manual and Automated
+               Surveillance Systems for FX Wires.
+
+        As an FCM, UBS FSI has an affirmative duty to diligently supervise its business by,
+among other things, establishing and implementing reasonable controls to monitor transactions to
+detect and report suspicious activity. Beginning prior to January 2019 and continuing to
+February 2021, UBS FSI used a manually-generated report to monitor FX wire transactions sent
+or received by retail commodity accountholders for suspicious activity. The manual report was
+deficient, as it failed to capture all relevant FX wires for monitoring and was not tailored to
+identify patterns of suspicious activity in FX wire transactions. UBS FSI was aware of these
+vulnerabilities because it was the subject of prior enforcement proceedings by other government
+agencies and a self-regulatory organization. In resolving those earlier proceedings, UBS FSI
+represented in 2018 that it would address the deficiencies in the manual surveillance process by
+implementing an automated AML transaction monitoring system by mid-2019. Despite those
+
+                                                 2
+representations, UBS FSI continued to rely on the manual report system for two years after the
+2018 settlements.
+
+        In 2021, UBS FSI transitioned to using an automated system to monitor all wire
+transactions conducted through retail accounts at the firm, including FX wires, for suspicious
+activity. UBS FSI, however, failed to properly configure the data flowing into the new system,
+causing issues that impacted the efficacy of its suspicious activity monitoring function.
+Accordingly, the deficiencies in UBS FSI’s AML transaction monitoring program span both a
+portion of time when the manual report was still in use, and a more recent period of time during
+which the new automated system was in use.
+
+        Overall, due to these issues, UBS FSI estimates that more than 28,000 FX wires
+effectuated through retail customer commodity accounts with a total U.S. dollar value of at least
+$8.9 billion were insufficiently monitored or omitted from AML transaction monitoring during
+the Relevant Period.
+
+               a.      UBS FSI Failed to Timely Correct Known Deficiencies in Its Manual
+                       Surveillance Report.
+
+        Beginning prior to January 2019 and continuing until February 2021, UBS FSI utilized a
+manually-generated report to capture inbound and outbound FX wire transfers conducted
+through retail customer commodity accounts. As UBS FSI knew from the December 2018
+enforcement proceedings by other agencies referenced above, the report was not reasonably
+designed to detect and cause the reporting of suspicious transactions occurring in connection
+with retail customer commodity accounts. The report suffered from three primary deficiencies in
+its design and execution, as detailed below.
+
+        First, while the report was intended to generate surveillance alerts for FX wires transacted
+through retail customer commodity accounts, it was not reasonably tailored to address money
+laundering risks. The parameters that the report applied to wire data to generate alerts focused
+only on the volume of the FX wires and the notional value and type of currency involved in each
+transaction. The manual report did not capture a range of suspicious activity detection scenarios,
+such as transfers to/from high-risk jurisdictions, round dollar transactions, suspicious payment
+instructions, deviation of actual behavior from expected behavior, velocity of funds movement
+across products, or activity in dormant accounts. UBS FSI understood at the time that the
+manual report did not identify those types of activities. It further understood that only an
+automated solution would provide comprehensive monitoring capabilities. Despite those known
+deficiencies and its 2018 representations in connection with the resolution of the prior
+enforcement actions that it would implement a new system by mid-2019, UBS FSI took more
+than two years after the 2018 settlements to implement an automated system. This delayed
+implementation led to significant gaps in its AML surveillance of FX wires during the
+intervening period.
+
+       Second, the firm’s process for manually collecting and marrying data from multiple
+sources to produce the data set for the report lacked adequate documentation. The process
+required UBS FSI personnel to query as many as four different data systems to compile a list of
+
+                                                 3
+all FX wires transacted through retail customer commodity accounts for a given period;
+manually search for customer identification information and relevant account numbers associated
+with the transactions; and then subject the compiled wire data files to a set of coded queries. The
+process involved significant data cleanup work, and its manual nature could result in input errors.
+UBS FSI also did not maintain official written supervisory procedures that documented the
+process for compiling the report or the individuals responsible for the report as part of its
+governance or AML programs.
+
+        Third, the report was generally reviewed on a quarterly basis, which led at times to a
+series of backlogs. Given the manual nature of the alert generation process, UBS FSI staff did
+not execute the report on a more frequent basis. The delays between the wire activity and the
+alert generation and review process created the risk that UBS FSI was not positioned to intervene
+in a timely manner to address any suspicious activity that was identified.
+
+        Despite being on notice of these deficiencies, UBS FSI failed to timely resolve them.
+While UBS FSI originally planned to implement the automated system in 2019, it ultimately did
+not deploy that system until March 2021, when it began generating alerts on February 2021
+transactions. UBS FSI continued to rely on the manual surveillance report as a compensating
+control in the interim period.
+
+        New deficiencies in the manual report also came to light in October 2020, when UBS FSI
+discovered a coding error that had prevented certain FX wires from triggering alerts for nearly
+the entirety of the prior two years. While UBS personnel were aware at that time that the coding
+error affected prior iterations of the report, they took no immediate steps to escalate the issue
+upon its discovery or determine the volume of missed alerts. An examination by a self-
+regulatory organization later caused UBS FSI to revisit the issue and commence an internal
+lookback in December 2020, approximately two months after UBS FSI personnel first
+discovered the issue and its effect on prior reports. According to the assessment conducted by
+UBS FSI, the manual report process failed to properly generate more than 400 alerts because of
+the coding error. After the issue was identified and corrected, UBS FSI did not implement any
+quality assurance processes with respect to the coding logic to ensure that the FX report was
+functioning as intended for the remaining months of its use.
+
+               b.     UBS FSI’s Flawed Implementation of an Automated AML
+                      Transaction Monitoring System for FX Wires Hindered the
+                      Effectiveness of Its Surveillance Program.
+
+       Once UBS FSI implemented the automated system for AML transaction monitoring in
+March 2021, not all of the relevant FX wires were transferred from source systems to that
+platform as intended, and certain wires that did transfer to the platform were missing
+counterparty information, affecting monitoring. Accordingly, even after the transition to the
+automated system, UBS FSI lacked an effective FX wires surveillance program.
+
+       Many of the missed wires during this period resulted from the fact that UBS FSI
+incorrectly configured the system to rely on retail customer commodity account FX wire data
+from an intra-day data feed of relevant transactions rather than a complete post-settlement “end-
+
+                                                4
+of-day” data feed. As a result of that error, the system ingested an incomplete list of
+transactions. In addition, in January 2022, UBS FSI staff changed their practice for labeling FX
+wire postings without communicating the change to the staff who handled the processing logic
+for the system, and as a result the system’s logic continued to look for the prior labeling practice
+and failed to identify certain transactions as FX wires. UBS FSI did not remediate either of these
+issues until October 2022, more than a year after the system’s implementation.
+
+       Issues leading to missing counterparty information in the automated system included the
+absence of a common identifier (e.g., a wire reference number) to link certain data fields between
+account postings and wire files and the incorrect formatting of wire reference numbers and
+currency codes.
+
+         These gaps resulted from two key deficiencies in the firm’s data governance practices.
+First, prior to the automated system going live, UBS FSI did not subject the key data elements to
+a full testing and mapping exercise or certification process. As a result, UBS FSI did not trace
+the relevant data points from the system back to their master sources to confirm that they had
+been correctly selected for monitoring. Second, until December 2022, UBS FSI did not
+implement any kind of exception queue or error reporting mechanism to detect instances when
+information pertaining to a wire could not be ingested into the system. For both reasons, UBS
+FSI was not equipped to identify gaps or inadequacies in the flow of wire information from
+upstream source systems and data feeds to the system. UBS FSI failed to identify these post-
+implementation flaws until around May 2022.
+
+       2.      UBS FSI’s Remediation
+
+        UBS FSI has represented that it has undertaken the following remediation. Once UBS
+self-identified the data issues in or around May 2022, it voluntarily brought the issues to the
+attention of other regulators that were examining its transaction monitoring program for FX
+wires at that time. In August 2022, after other government agencies and a self-regulatory
+organization had initiated investigations into UBS FSI’s AML transaction monitoring systems
+for FX wires, UBS FSI engaged a third-party consultant to evaluate the root causes of the data
+issues described above, assess corrective actions, and test the flow of wire-related information to
+the automated surveillance system. By the fourth quarter of 2022, UBS FSI remediated the core
+data issues that contributed to the FX wire data discrepancies described above. The consultant
+has also completed data testing of UBS FSI’s FX wire AML data, issued an initial report, and is
+validating UBS FSI’s resolution of the data issues in preparation for producing a final report.
+UBS FSI has also established a supervision structure for the handling and oversight of the
+relevant transaction data pursuant to its firmwide data management framework.
+
+        UBS FSI further engaged the same consultant to conduct a “lookback” over the
+population of FX wires that were either insufficiently monitored or omitted from monitoring
+during the Relevant Period due to the above-referenced deficiencies in UBS FSI’s AML
+transaction monitoring processes. UBS FSI regularly reported the results of the lookback in
+monthly meetings with representatives of the Commission and three other regulators.
+
+
+
+                                                 5
+        Finally, UBS FSI voluntarily engaged the same consultant to conduct an ongoing “look-
+across” data review of other transaction types surveilled by the automated system at issue to
+ensure that there are no similar data issues impacting the AML transaction monitoring of other
+transaction types.
+
+                                 III.   LEGAL DISCUSSION
+
+A.     UBS FSI Failed to Diligently Supervise Its FX Wires Surveillance System in Violation
+       of Regulation 166.3.
+
+           Regulation 166.3, 17 C.F.R. § 166.3 (2025), imposes on every Commission registrant
+(except associated persons who have no supervisory duties) an affirmative duty to “diligently
+supervise the handling by its partners, officers, employees and agents . . . of all commodity
+interest accounts carried, operated, advised or introduced by the registrant and all other
+activities of its partners, officers, employees and agents . . . relating to its business as a
+Commission registrant.” A violation of Regulation 166.3 is an independent violation for which
+no underlying violation is necessary. See, e.g., In re Collins, CFTC No. 94-13, 1997 WL
+761927, at *10 (Dec. 10, 1997) (“It is well settled that a violation under Rule 166.3 is ‘an
+independent and primary violation for which no underlying violation is necessary.’” (citation
+omitted)); In re GNP Commodities, Inc., CFTC No. 89-1, 1992 WL 201158, at *17 n.11 (Aug.
+11, 1992) (“Rule 166.3 establishes failure to supervise as an independent and primary violation
+. . . .” (citation omitted)), aff’d in relevant part and modified sub nom. Monieson v. CFTC, 996
+F.2d 852 (7th Cir. 1993).
+
+        For a registrant to fulfill its duties under Regulation 166.3, it must both design an
+adequate program of supervision and ensure that the program is diligently followed. See GNP
+Commodities, 1992 WL 201158, at *17-19 (providing that, even if an adequate supervisory
+system is in place, Regulation 166.3 can still be violated if the supervisory system is not
+diligently enforced). As a result, a violation of Regulation 166.3 “is demonstrated by showing
+either that: (1) the registrant’s supervisory system was generally inadequate; or (2) the
+registrant failed to perform its supervisory duties diligently.” In re FCStone, LLC, CFTC No.
+15-21, 2015 WL 2066891, at *3 (May 1, 2015) (consent order) (citing In re Murlas
+Commodities, Inc., CFTC No. 85-29, 1995 WL 523563, at *9 (Sept. 1, 1995)).
+
+        As an FCM, UBS FSI had a duty to design an adequate program of supervision for AML
+transaction monitoring and ensure that the program was followed. During the Relevant Period,
+UBS FSI failed to fulfill those obligations with respect to its FX wires monitoring program.
+UBS FSI was aware of significant vulnerabilities in the manually-generated report system that
+hindered the firm’s ability to effectively monitor FX wire transactions effectuated through retail
+customer commodity accounts, but failed to reasonably address the vulnerabilities from January
+2019 to February 2021. UBS FSI also failed to design adequate policies and procedures to
+govern the use of the manually-generated report. In addition, once it switched to an automated
+system in approximately March 2021, UBS FSI did not exercise adequate oversight over the
+configuration and functioning of that system. UBS FSI therefore violated Regulation 166.3.
+
+
+
+                                                6
+                            IV.     FINDINGS OF VIOLATIONS
+
+        Based on the foregoing, the Commission finds that, during the Relevant Period, UBS FSI
+violated Regulation 166.3, 17 C.F.R. § 166.3 (2025).
+
+                             V.      OFFER OF SETTLEMENT
+
+       Respondent has submitted the Offer in which it knowingly and voluntarily:
+
+A.     Consents to the resolution of this matter in an administrative proceeding;
+
+B.     Acknowledges service of this Order;
+
+C.     Admits the facts described in Section II of this Order and acknowledges that its conduct
+       violated Regulation 166.3, 17 C.F.R. § 166.3 (2025);
+
+D.     Admits the jurisdiction of the Commission with respect to all matters set forth in this
+       Order and for any action or proceeding brought or authorized by the Commission based
+       on violation of or enforcement of this Order;
+
+E.     Waives:
+
+       1.    The filing and service of a complaint and notice of hearing;
+
+       2.    A hearing;
+
+       3.    All post-hearing procedures;
+
+       4.    Any and all rights or defenses that it has or might have for the matter to be
+             adjudicated in a federal district court in the first instance, including any associated
+             right to a jury trial;
+
+       5.    Judicial review by any court;
+
+       6.    Any and all objections to the participation by any member of the Commission’s
+             staff in the Commission’s consideration of the Offer;
+
+       7.    Any and all claims that it may possess under the Equal Access to Justice Act, 5
+             U.S.C. § 504, and 28 U.S.C. § 2412, and/or the rules promulgated by the
+             Commission in conformity therewith, Part 148 of the Regulations, 17 C.F.R.
+             pt. 148 (2025), relating to, or arising from, this proceeding;
+
+       8.    Any and all claims that it may possess under the Small Business Regulatory
+             Enforcement Fairness Act of 1996, Pub. L. No. 104-121, tit. II, §§ 201–253, 110
+             Stat. 847, 857–74 (codified as amended at 28 U.S.C. § 2412 and in scattered
+             sections of 5 U.S.C. and 15 U.S.C.), relating to, or arising from, this proceeding;
+             and
+
+                                                 7
+     9.    Any claims of Double Jeopardy based on the institution of this proceeding or the
+           entry in this proceeding of any order imposing a civil monetary penalty or any
+           other relief, including this Order;
+
+F.   Agrees for purposes of the waiver of any and all rights under the Equal Access to Justice
+     Act specified in Paragraph E.7 above, that Respondent is not the prevailing part in this
+     action;
+
+G.   Stipulates that the record basis on which this Order is entered shall consist solely of the
+     findings contained in this Order to which Respondent has consented in the Offer;
+
+H.   Consents, solely on the basis of the Offer, to the Commission’s entry of this Order that:
+
+     1.    Makes findings by the Commission that Respondent violated Regulation 166.3, 17
+           C.F.R. § 166.3 (2025);
+
+     2.    Orders Respondent to cease and desist from violating Regulation 166.3, 17 C.F.R.
+           § 166.3 (2025);
+
+     3.    Orders Respondent to pay a civil monetary penalty in the amount of eight million
+           dollars ($8,000,000), plus any post-judgment interest; and
+
+     4.    Orders Respondent and its successors and assigns to comply with the conditions
+           and undertakings consented to in the Offer and as set forth in Part VI of this Order;
+           and
+
+I.   Represents that it has already engaged in remedial measures relating to its FX wires
+     monitoring program, including, but not limited to, the following:
+
+     1.     In August 2022, Respondent engaged a third-party consultant to evaluate the root
+            causes of the data issues described above, assess corrective actions, and test the
+            flow of wire-related information to the automated surveillance system. The
+            consultant has completed the data testing, issued an initial report, and is validating
+            Respondent’s resolution of the data issues in preparation for producing a final
+            report. Respondent has also established a supervision structure for the handling
+            and oversight of the relevant transaction data pursuant to its firmwide data
+            management framework;
+
+     2.     Respondent further engaged the same consultant to conduct a “lookback” over the
+            population of FX wires that were either insufficiently monitored or omitted from
+            monitoring during the Relevant Period due to the above-referenced deficiencies in
+            Respondent’s AML transaction monitoring processes; and
+
+     3.     Respondent engaged the same consultant to conduct an ongoing “look-across”
+            data review of other transaction types surveilled by the automated system at issue
+            to ensure that there are no similar data issues impacting the AML monitoring of
+            other money movement transaction types.
+
+                                               8
+     Upon consideration, the Commission has determined to accept the Offer.
+
+                                      VI.     ORDER
+
+Accordingly, IT IS HEREBY ORDERED THAT:
+
+A.   Respondent shall cease and desist from violating Regulation 166.3, 17 C.F.R. § 166.3
+     (2025).
+
+B.   Respondent shall pay a civil monetary penalty in the amount of eight million dollars
+     ($8,000,000) (“CMP Obligation”) within thirty (30) days of the date of the entry of this
+     Order. If the CMP Obligation is not paid in full within thirty (30) days of the date of the
+     entry of this Order, then post-judgment interest shall accrue on the unpaid portion of the
+     CMP Obligation beginning on the date of entry of this Order and shall be determined by
+     using the Treasury Bill rate prevailing on the date of entry of this Order pursuant to 28
+     U.S.C. § 1961.
+
+     Respondent shall pay the CMP Obligation and any post-judgment interest by electronic
+     funds transfer, U.S. postal money order, certified check, bank cashier’s check, or bank
+     money order. If payment is to be made other than by electronic funds transfer, then the
+     payment shall be made payable to the Commodity Futures Trading Commission and sent
+     to the address below:
+
+            MMAC/ESC/AMK326
+            Commodity Futures Trading Commission
+            6500 S. MacArthur Blvd.
+            HQ Room 266
+            Oklahoma City, OK 73169
+            9-amz-ar-cftc@faa.gov
+
+     If payment is to be made by electronic funds transfer, Respondent shall contact the
+     Federal Aviation Administration at the above email address to receive payment
+     instructions and shall fully comply with those instructions. Respondent shall accompany
+     payment of the CMP Obligation with a cover letter that identifies the paying Respondent
+     and the name and docket number of this proceeding. The paying Respondent shall
+     simultaneously transmit copies of the cover letter and the form of payment to the Chief
+     Financial Officer, Commodity Futures Trading Commission, Three Lafayette Centre,
+     1155 21st Street, NW, Washington, D.C. 20581.
+
+C.   Respondent and its successors and assigns shall comply with the following conditions
+     and undertakings set forth in the Offer:
+
+     1.     Cooperation, in General: Respondent shall cooperate fully and expeditiously with
+            the Commission, including the Commission’s Division of Enforcement, and any
+            other governmental agency or any self-regulatory organization, in this action, and
+            in any current or future Commission investigation or action related thereto.
+
+                                              9
+              Respondent shall also cooperate in any investigation, civil litigation, or
+              administrative matter related to, or arising from, the subject matter of this action.
+
+       2.     Partial Satisfaction: Respondent understands and agrees that any acceptance by
+              the Commission of any partial payment of Respondent's CMP Obligation shall
+              not be deemed a waiver of its obligation to make further payments pursuant to this
+              Order, or a waiver of the Commission's right to seek to compel payment of any
+              remaining balance.
+
+       3.     Change of Address/Phone: Until such time as Respondent satisfies in full its
+              CMP Obligation as set forth in this Order, Respondent shall provide written
+              notice to the Commission by certified mail of any change to its telephone number
+              and mailing address within ten calendar days of the change.
+
+       4.     Notices to Creditors: Until such time as Respondent satisfies in full its CMP
+              Obligation, upon the commencement by or against Respondent of insolvency,
+              receivership or bankruptcy proceedings or any other proceedings for the
+              settlement of Respondent's debts, all notices to creditors required to be furnished
+              to the Commission under Title 11 of the United States Code or other applicable
+              law with respect to such insolvency, receivership bankruptcy or other
+              proceedings, shall be sent to the address below:
+
+                       Secretary of the Commission
+                       Office of the General Counsel
+                       Commodity Futures Trading Commission
+                       Three Lafayette Centre
+                       1155 21st Street N.W.
+                       Washington, DC 20581
+
+
+The provisions of this Order shall be effective as of this date.
+
+By the Commission.
+
+
+
+ ~h~
+Christopher J. Kirkpatrick
+Secretary of the Commission
+Commodity Futures Trading Commission
+
+Dated: July 31, 2026
+

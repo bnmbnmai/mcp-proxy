@@ -1,0 +1,273 @@
+                                                  March 4, 2026
+
+LifeVac LLC
+℅ Natalya Valerio
+Consultant
+mdi Consultants, Inc.
+55 Northern Blvd., Suite 200
+Great Neck, New York 11021
+
+
+Re: DEN250012
+    Trade/Device Name: LifeVac
+    Regulation Number: 21 CFR 874.5400
+    Regulation Name: Suction anti-choking device as a second-line treatment
+    Regulatory Class: Class II
+    Product Code: QXN
+    Dated: April 11, 2025
+    Received: April 11, 2025
+
+Dear Natalya Valerio:
+
+The Center for Devices and Radiological Health (CDRH) of the Food and Drug Administration (FDA) has
+completed its review of your De Novo request for classification of the LifeVac, an over-the-counter device
+under 21 CFR Part 801 Subpart C with the following indications for use:
+
+           The LifeVac is a non-powered, non-invasive, single-use-only airway clearance device intended to
+           resolve choking in a victim with a complete airway obstruction when a current choking protocol has
+           been followed without success. LifeVac should only be used to remove an object/food from a victim
+           with a complete airway obstruction. LifeVac is intended for use on adult or pediatric choking victims
+           who are at least 1 year of age. LifeVac can be administered by a lay person or a medical professional
+           (18 years or older) in various settings including at home or nursing homes, restaurants, schools, and
+           other outside environments.
+
+FDA concludes that this device should be classified into Class II. This order, therefore, classifies the
+LifeVac, and substantially equivalent devices of this generic type, into Class II under the generic name
+suction anti-choking device as a second-line treatment.
+
+
+
+
+U.S. Food & Drug Administration
+10903 New Hampshire Avenue                                                           Doc ID# 04017.08.04
+Silver Spring, MD 20993
+www.fda.gov
+DEN250012 - Natalya Valerio                                                                              Page   2
+
+FDA identifies this generic type of device as:
+
+       Suction anti-choking device as a second-line treatment. A suction anti-choking device as a
+       second-line treatment is intended to be used, by application of suction, to resolve choking in victims
+       experiencing complete airway obstruction. The device is intended to be used as a second-line
+       treatment in an emergency situation after unsuccessful use of a basic life support (BLS) choking
+       protocol.
+
+Section 513(f)(2) of the Food, Drug and Cosmetic Act (the FD&C Act) was amended by section 607 of the
+Food and Drug Administration Safety and Innovation Act (FDASIA) on July 9, 2012. This law provides two
+options for De Novo classification. First, any person who receives a "not substantially equivalent" (NSE)
+determination in response to a 510(k) for a device that has not been previously classified under the Act may
+request FDA to make a risk-based classification of the device under section 513(a)(1) of the Act. On
+December 13, 2016, the 21st Century Cures Act removed a requirement that a De Novo request be submitted
+within 30 days of receiving an NSE determination. Alternatively, any person who determines that there is no
+legally marketed device upon which to base a determination of substantial equivalence may request FDA to
+make a risk-based classification of the device under section 513(a)(1) of the Act without first submitting a
+510(k). FDA shall, within 120 days of receiving such a request, classify the device. This classification shall
+be the initial classification of the device. Within 30 days after the issuance of an order classifying the device,
+FDA must publish a notice in the Federal Register announcing the classification.
+
+On April 11, 2025, FDA received your De Novo requesting classification of the LifeVac. The request was
+submitted under section 513(f)(2) of the FD&C Act. In order to classify the LifeVac into class I or II, it is
+necessary that the proposed class have sufficient regulatory controls to provide reasonable assurance of the
+safety and effectiveness of the device for its intended use. After review of the information submitted in the
+De Novo request, FDA has determined that, for the previously stated indications for use, the LifeVac can be
+classified in class II with the establishment of special controls for class II. FDA believes that class II
+(special) controls provide reasonable assurance of the safety and effectiveness of the device type. The
+identified risks and mitigation measures associated with the device type are summarized in the following
+table:
+
+          Identified Risks to Health                      Mitigation Measures
+          Injury or death from choking                    Clinical information
+              • due to delayed initiation of basic        Postmarket surveillance
+                  life support (BLS) choking protocol     Non-clinical performance testing
+              • due to use error                          Human factors testing
+              • due to inadequate suction                 Training
+              • due to device failure                     Labeling
+          Injury to oral/oropharyngeal tissue             Clinical information
+              • due to device use                         Postmarket surveillance
+              • due to use error                          Non-clinical performance testing
+              • due to device failure                     Human factors testing
+                                                          Training
+                                                          Labeling
+          Adverse tissue reaction                         Biocompatibility evaluation
+DEN250012 - Natalya Valerio                                                                          Page    3
+
+In combination with the general controls of the FD&C Act, the suction anti-choking device as a second-line
+treatment is subject to the following special controls:
+
+   (1)   Premarket clinical information, or a combination of premarket clinical information and postmarket
+         surveillance (in accordance with special control (2)), must demonstrate, in the intended patient
+         population:
+         (i) How often the device is used consistent with anticipated conditions of use, including how
+               often the device is used after unsuccessful use of a BLS choking protocol and how often the
+               device is used on patients experiencing a complete airway obstruction;
+         (ii) The delay in initiating a BLS choking protocol due to use of the device;
+         (iii) The rate of successful device use to resolve choking; and
+         (iv) The adverse event profile of the device, including injuries and device malfunctions.
+
+   (2)   Information obtained from postmarket surveillance must demonstrate the information described in
+         special control (1)(i)-(iv), in consideration of the premarket information obtained in accordance
+         with special control (1), unless FDA determines, based on the totality of the premarket information,
+         that information from postmarket surveillance is not required for such demonstration. Such
+         postmarket surveillance must be conducted per a protocol determined appropriate by FDA for such
+         demonstration (in consideration of the premarket information obtained in accordance with special
+         control (1)), and must include initiation, enrollment, and reporting requirements to ensure timely
+         periodic updates to FDA on postmarket surveillance progress and outcomes.
+
+   (3)   Non-clinical performance testing must demonstrate that the device performs as intended under
+         anticipated conditions of use, including the following:
+         (i) Verification of device performance in dislodging a complete obstruction in representative
+               simulated airway models;
+         (ii) Verification of pressures generated; and
+         (iii) Verification of device and material durability.
+
+   (4)   The patient/user-contacting components of the device must be demonstrated to be biocompatible.
+
+   (5)   Human factors testing must demonstrate that the device can be used as intended based on the
+         device user interface and directions for use.
+
+   (6)   Training must be included with sufficient educational elements so that upon training completion,
+         the user can correctly use the device, including identification of a complete airway obstruction and
+         performance of a BLS choking protocol.
+
+   (7)   Labeling must include the following:
+         (i) Instructions to use the device only in the event of complete airway obstruction and after a
+               BLS choking protocol fails;
+         (ii) Description and access to the training required in special control (6); and
+         (iii) A summary of any completed postmarket surveillance data collected as required by special
+               control (2), including updated labeling to accurately reflect outcomes observed in postmarket
+               surveillance.
+DEN250012 - Natalya Valerio                                                                            Page    4
+
+In order to satisfy special control (1) and (2) above, and in consideration of the premarket clinical
+information provided, FDA has determined that you must conduct postmarket surveillance. FDA has
+determined that to be an appropriate protocol as described in special control (2), your protocol for conducting
+such postmarket surveillance must collect data with the LifeVac acquired under anticipated conditions of use
+and in the intended patient population, with a justified sample size. This protocol must include:
+
+   Study(ies) of device users’ behavior and device use, including survey data and real-world data that is
+   routinely collected, that determines:
+       • Rate at which device successfully resolves choking
+       • Adverse events both related to device and to all procedures that were used on a choking patient
+       • Whether users called 911 and performed a BLS choking protocol
+       • Whether device was used on patients experiencing a complete airway obstruction
+       • Whether there is a delay in initiating a BLS choking protocol due to device use
+
+Within 30 days of receipt of this order, you must submit a complete study protocol for your study(ies) as
+described above. FDA expects to work with you to determine that your study protocol is appropriate as
+described in special control (2) within 60 days of this order. Your submission should be clearly labeled
+“Postmarket Study Protocol” and submitted to the Agency as specified below. Please reference the De Novo
+number above to facilitate processing. If there are multiple protocols being finalized after granting of this De
+Novo request, please submit each protocol as a separate submission, identified by their unique study
+name(s).
+
+From the date the study protocol is determined to be appropriate, you must meet the following timelines:
+
+  •   First subject enrolled within 6 months
+  •   20% of subjects enrolled within 18 months
+  •   50% of subjects enrolled within 36 months
+  •   100% of subjects enrolled within 60 months
+
+In addition, to ensure timely periodic updates to FDA on postmarket surveillance progress and outcomes
+consistent with special control (2), you must submit separate periodic reports on the progress of the
+study(ies) as follows:
+   • Postmarket surveillance progress reports every six (6) months until subject enrollment has been
+      completed, and annually thereafter, from the date the protocol is determined to be appropriate, unless
+      otherwise specified by FDA.
+   • If any enrollment milestones are not met, you must begin submitting enrollment status reports every
+      three (3) months, in addition to your periodic postmarket study progress reports, until enrollment has
+      been completed, or FDA notifies you otherwise.
+   • Submit the final postmarket study report three (3) months from study completion (i.e., last subject’s
+      last follow-up date).
+
+Each postmarket surveillance report should be submitted to the Agency as specified below, identified
+“Postmarket Surveillance Report” in accordance with how the study is identified above, and bearing the
+applicable De Novo reference number.
+DEN250012 - Natalya Valerio                                                                           Page      5
+
+Be advised that failure to comply with any special control requirement, including the postmarket surveillance
+initiation, enrollment, completion, and reporting per the postmarket surveillance protocol determined to be
+appropriate by FDA as outlined above, may result in the adulteration and misbranding of your device.
+
+Although this letter refers to your product as a device, please be aware that some granted products may
+instead be combination products. If you have questions on whether your product is a combination product,
+contact CDRHProductJurisdiction@fda.hhs.gov.
+
+Section 510(m) of the FD&C Act provides that FDA may exempt a class II device from the premarket
+notification requirements under section 510(k) of the FD&C Act, if FDA determines that premarket
+notification is not necessary to provide reasonable assurance of the safety and effectiveness of the device
+type. FDA has determined premarket notification is necessary to provide reasonable assurance of the safety
+and effectiveness of the device type and, therefore, the device is not exempt from the premarket notification
+requirements of the FD&C Act. Thus, persons who intend to market this device type must submit a
+premarket notification containing information on the suction anti-choking device as a second-line treatment
+they intend to market prior to marketing the device.
+
+Please be advised that FDA's decision to grant this De Novo request does not mean that FDA has made a
+determination that your device complies with other requirements of the FD&C Act or any Federal statutes
+and regulations administered by other Federal agencies. You must comply with all the FD&C Act's
+requirements, including, but not limited to: registration and listing (21 CFR Part 807); labeling (21 CFR Part
+801); medical device reporting (reporting of medical device-related adverse events) (21 CFR 803) for
+devices or postmarketing safety reporting (21 CFR 4, Subpart B) for combination products (see
+https://www.fda.gov/combination-products/guidance-regulatory-information/postmarketing-safety-reporting-
+combination-products); good manufacturing practice requirements as set forth in the Quality Management
+System Regulation (QMSR) (21 CFR Part 820) for devices or current good manufacturing practices (21 CFR
+4, Subpart A) for combination products; and if applicable, the electronic product radiation control provisions
+(Sections 531-542 of the FD&C Act; 21 CFR 1000-1050).
+
+All medical devices, including Class I and unclassified devices and combination product device constituent
+parts are required to be in compliance with the final Unique Device Identification System Rule ("UDI
+Rule"). The UDI Rule requires, among other things, that a device bear a unique device identifier (UDI) on its
+label and package (21 CFR 801.20(a)) unless an exception or alternative applies (21 CFR 801.20(b)) and that
+the dates on the device label be formatted in accordance with 21 CFR 801.18. The UDI Rule (21 CFR
+830.300(a) and 830.320(b)) also requires that certain information be submitted to the Global Unique Device
+Identification Database (GUDID) (21 CFR Part 830 Subpart E). For additional information on these
+requirements, please see the UDI System webpage at https://www.fda.gov/medical-devices/device-advice-
+comprehensive-regulatory-assistance/unique-device-identification-system-udi-system.
+
+A notice announcing this classification order will be published in the Federal Register. A copy of this order
+and supporting documentation are on file in the Dockets Management Branch (HFA-305), Food and Drug
+Administration, 5630 Fishers Lane, Room 1061, Rockville, MD 20852 and are available for inspection
+between 9 a.m. and 4 p.m., Monday through Friday.
+
+As a result of this order, you may immediately market your device as described in the De Novo request,
+subject to the general control provisions of the FD&C Act and the special controls identified in this order.
+DEN250012 - Natalya Valerio                                                                           Page      6
+
+
+
+For comprehensive regulatory information about medical devices and radiation-emitting products, please see
+Device Advice (https://www.fda.gov/medical-devices/device-advice-comprehensive-regulatory-assistance)
+and CDRH Learn (https://www.fda.gov/training-and-continuing-education/cdrh-learn). Additionally, you
+may contact the Division of Industry and Consumer Education (DICE) to ask a question about a specific
+regulatory topic. See the DICE website (https://www.fda.gov/medical-devices/device-advice-comprehensive-
+regulatory-assistance/contact-us-division-industry-and-consumer-education-dice) for more information or
+contact DICE by email (DICE@fda.hhs.gov) or phone (1-800-638-2041 or 301-796-7100).
+
+All required documents should be submitted, unless otherwise specified, to the address below and should
+reference the above De Novo number to facilitate processing.
+
+       Postmarket Mandated Studies Program
+       U.S. Food and Drug Administration
+       Center for Devices and Radiological Health
+       Document Control Center - WO66-G609
+       10903 New Hampshire Avenue
+       Silver Spring, MD 20993-0002
+
+Alternatively, documents can be submitted electronically through the CDRH Portal. For more information on
+the CDRH Portal, please visit https://www.fda.gov/medical-devices/industry-medical-devices/send-and-
+track-medical-device-premarket-submissions-online-cdrh-portal.
+
+If you have any questions concerning the contents of the letter, please contact Joyce Lin, Ph.D., at 301-796-
+5544.
+
+                                                 Sincerely,
+
+                                                   SRINIVAS NANDKUMAR -S
+                                                 Srinivas Nandkumar, Ph.D.
+                                                 Director
+                                                 DHT1B: Division of Dental and
+                                                   ENT Devices
+                                                 OHT1: Office of Ophthalmic, Anesthesia,
+                                                   Respiratory, ENT, and Dental Devices
+                                                 Office of Product Evaluation and Quality
+                                                 Center for Devices and Radiological Health
+
