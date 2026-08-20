@@ -1,0 +1,1434 @@
+FDA Briefing Document
+
+       Pharmacy Compounding Advisory Committee (PCAC)
+                          Meeting
+
+                                    July 23 - 24, 2026
+
+
+
+
+The attached package contains background information prepared by the Food and Drug
+Administration (FDA or Agency) for the panel members of the Pharmacy Compounding Advisory
+Committee (advisory committee). We are bringing certain compounding issues to this advisory
+committee to obtain the advisory committee’s advice. The background package may not include all
+issues relevant to the final committee recommendation and instead is intended to focus on issues
+identified by the Agency for discussion by the advisory committee. The FDA will not issue a final
+determination on the issues at hand until input from the advisory committee process has been
+considered and all reviews have been finalized. The final determination may be affected by issues
+not discussed at the advisory committee meeting.
+
+
+
+
+                                                                                                    1
+   KPV–Related
+Bulk Drug Substances
+(KPV (Free Base) and
+    KPV acetate)
+
+
+
+
+                       2
+       FDA Evaluation of
+KPV–Related Bulk Drug Substances
+(KPV (Free Base) and KPV acetate)
+
+
+
+
+                                4
+DATE:           5/12/2026
+FROM:           Jing Li, PhD
+                Pharmaceutical Scientist, Office of Product Quality Assessment II (OPQA II),
+                Office of Pharmaceutical Quality (OPQ)
+                Nga-Lai Poon, PharmD
+                Regulatory Specialist, Office of Compounding Quality and Compliance (OCQC),
+                Office of Compliance (OC)
+                Kemi Asante, PharmD, MPH, RAC
+                Lead Consumer Safety Officer, OCQC, OC
+                Edna Albuquerque, PhD
+                Senior Pharmacology/Toxicology Reviewer, Division of
+                Pharmacology/Toxicology for Rare Diseases, Pediatrics, Urologic, and
+                Reproductive Medicine/Specialty Medicine (DPT-RPURM/SM), Office of New
+                Drugs (OND)
+                Andrea Benedict, PhD
+                Nonclinical Supervisor, DPT-RPURM/SM, OND
+                Emily Kneeream, PharmD
+                Clinical Analyst, Pharmacy Compounding Review Team (PCRT), Office of
+                Specialty Medicine (OSM), OND
+                Suhail Kasim, M.D., MPH
+                Lead Physician, PCRT, OSM, OND
+THROUGH: Russell Wesdyk, BS, MBA
+         Associate Director Regulatory Affairs, OPQA II, OPQ
+                Alex Gorovets, M.D.
+                Deputy Director, OSM, OND
+
+                Matt Lash, J.D.
+                Acting Director, OCQC, OC
+                Deputy Director, OC
+
+TO:             Pharmacy Compounding Advisory Committee
+SUBJECT:        Evaluation of KPV-related Bulk Drug Substances (KPV (free base) and KPV
+                acetate) for Inclusion on the 503A Bulk Drug Substances List
+U.S. Food & Drug Administration
+10903 New Hampshire Avenue
+Silver Spring, MD 20993
+www.fda.gov
+
+
+
+
+                                                                                               5
+List of Abbreviations
+
+ Abbreviation           Term
+ AE                     adverse event
+ α-MSH                  α-melanocyte-stimulating hormone
+ API                    active pharmaceutical ingredient
+ BPC                    Body Protection Compound
+ BDS                    bulk drug substance
+ CAS                    Chemical Abstracts Service
+ CDC                    Centers for Disease Control and Prevention
+ CoA                    Certificate of Analysis
+ FAERS                  FDA Adverse Events Reporting System
+ FD&C Act               Federal Food, Drug, and Cosmetic Act
+ FDA                    Food and Drug Administration
+ HFCS                   Human Foods Complaint Systems
+ INN                    International Nonproprietary Names
+ IUPAC                  International Union of Pure and Applied Chemistry
+ MF/MW                  Molecular formula/ Molecular weight
+ KPV                    lysine-proline-valine
+ NF                     National Formulary
+ NIH                    National Institutes of Health
+ OF                     outsourcing facility
+ UNII                   Unique Ingredient Identifier
+ USAN                   United States Adopted Name
+ USP                    United States Pharmacopeia
+
+
+
+
+                                                                            6
+I.   INTRODUCTION
+The Food and Drug Administration (FDA, the Agency, or we) received a nomination for KPV
+(lysine-proline-valine) related bulk drug substances (BDSs) for inclusion on the list of BDSs that
+can be used in compounding under section 503A of the Federal Food, Drug, and Cosmetic Act
+(FD&C Act). 1 The nominator of KPV-related BDSs provided inconsistent information in the
+nomination package regarding the specific BDS proposed. Specifically, it is unclear whether the
+nomination was for KPV (free base) or KPV acetate. KPV (free base) and KPV acetate are
+different active pharmaceutical ingredients and hence are considered different BDSs. Please see
+additional information in section II.A. The nomination was withdrawn 2, and FDA is evaluating
+the substances at its discretion.
+
+KPV is reported to be a tripeptide composed of the amino acids lysine (K), proline (P), and
+valine (V). Although it is unclear whether the nominator intended to nominate KPV (free base)
+or KPV acetate, FDA has decided to evaluate both on its own initiative.
+
+KPV-related BDSs were evaluated for the following uses: wound healing and inflammatory
+conditions.3 The KPV-related drug products proposed in the nominations are cream and gel,
+0.1% for topical administration.
+
+There is no applicable United States Pharmacopeia (USP) or National Formulary (NF) drug
+substance monograph for KPV (free base) or its acetate form, and neither are a component of an
+FDA-approved drug.
+
+We have evaluated publicly available data on physicochemical characteristics, historical use,
+effectiveness, and safety in compounding of these substances. For the reasons discussed below,
+we believe the evaluation criteria weigh against placing KPV (free base) or KPV acetate on the
+list of bulk drug substances that can be used to compound drug products in accordance with
+section 503A of the FD&C Act (503A Bulks List).
+
+
+
+
+1
+  The nomination of “KPV (lysine-proline-valine)” was from Wells Pharmacy Network (Document ID:
+FDA-2015-N-3534-0294) can be accessed at: https://www.regulations.gov/document/FDA-2015-N-3534-
+0294. The nomination was withdrawn, but because FDA is evaluating KPV (free base) and KPV acetate
+on its own initiative, FDA considered information submitted in this nomination as part of this evaluation.
+2
+  Document ID: FDA-2015-N-3534-0484.
+3
+  We have explained that it is necessary to evaluate a nominated bulk drug substance in the context of the
+uses proposed for compounded drug products that include the substance, though we acknowledge that
+inclusion of a substance on the 503A Bulks List may not be limited to a specific use. See 84 FR 4696,
+4701.
+
+
+
+                                                                                                         7
+II. EVALUATION CRITERIA
+
+     A. Is the Substance Well-Characterized, Physically and Chemically? 4
+KPV is a common name and not a United States Adopted Name (USAN). 5 FDA has encountered
+multiple salts, and derivatives, including different active moieties, sold commercially under the
+same common name for similarly situated products. Inconsistent naming conventions that do not
+follow established chemical nomenclature standards (e.g., INN 6, IUPAC 7, USAN) represent a
+safety risk for patients as they may be dosed with a different BDS than the physician ordered.
+From a chemical analysis standpoint, inconsistent naming conventions for KPV-related BDSs
+also introduce risks because of the inability to determine which BDS a particular reference
+standard is referencing.
+
+A BDS or active pharmaceutical ingredient (API) 8 used in a drug product may be a free base
+(i.e., the native molecule) or a salt or an ester of the free base, all of which share the same active
+moiety. 9 Different active moieties are not interchangeable because they can have different safety
+and efficacy profiles. A free base or the various salts or ester forms of an active moiety are
+
+4
+  Among the conditions that must be met for a drug compounded using bulk drug substances to be eligible
+for the exemptions in section 503A of the FD&C Act is that the bulk drug substances are manufactured
+by an establishment that is registered under section 510 of the FD&C Act and that each bulk drug
+substance is accompanied by a valid certificate of analysis. Sections 503A(b)(1)(A)(ii) and (iii). A bulk
+drug substance is deemed to be adulterated if the methods used in, or the facilities or controls used for, its
+manufacture, processing, packing, or holding do not conform to or are not operated or administered in
+conformity with current good manufacturing practice. Section 501(a)(2)(B).
+5
+  United States Adopted Name (USAN) is a unique, nonproprietary name for a drug sold in the United
+States. The USAN Council, which is sponsored by several organizations, assigns USANs. This program
+and naming convention are intended to help physicians, pharmaceutical manufacturers of active
+ingredients and finished dosage forms, and pharmacists ensure that the patient is provided with the drug
+the physician intended.
+6
+  International Nonproprietary Names (INN) facilitate the identification of pharmaceutical substances or
+active pharmaceutical ingredients. Each INN is a unique name that is globally recognized and is public
+property. A nonproprietary name is also known as a generic name.
+7
+  The International Union of Pure and Applied Chemistry (IUPAC) is an international federation of
+National Adhering Organizations working for the advancement of the chemical sciences, especially by
+developing nomenclature and terminology.
+8
+  The terms BDS and API are used interchangeably in the compounding context. See 21 CFR 207.3
+(“Bulk drug substance, as referenced in sections 503A(b)(1)(A) and 503B(a)(2) of the Federal Food,
+Drug, and Cosmetic Act, previously defined in § 207.3(a)(4), means the same as "active pharmaceutical
+ingredient" as defined in § 207.1.”). An API is defined in FDA regulations at 21 CFR 207.1, which states
+“Active pharmaceutical ingredient means any substance that is intended for incorporation into a finished
+drug product and is intended to furnish pharmacological activity or other direct effect in the diagnosis,
+cure, mitigation, treatment, or prevention of disease, or to affect the structure or any function of the body.
+Active pharmaceutical ingredient does not include intermediates used in the synthesis of the substance.”
+9
+  “Active moiety is the molecule or ion, excluding those appended portions of the molecule that cause the
+drug to be an ester, salt (including a salt with hydrogen or coordination bonds), or other noncovalent
+derivative (such as a complex, chelate, or clathrate) of the molecule, responsible for the physiological or
+pharmacological action of the drug substance.”21 CFR 314.3.
+
+
+
+                                                                                                             8
+distinct APIs, each with a different chemical structure and unique physical/chemical, or
+pharmacokinetic/pharmacodynamic characteristics. As a result, each may offer distinct
+properties (e.g., different solubilities, permeability, melting points, stability, or flow
+characteristics) and may also have different safety and/or efficacy profiles. All distinct active
+moieties, as well as free bases, salts, or esters of any given active moiety, are distinct BDSs for
+these reasons.
+
+For the purpose of this assessment, we will consider both KPV (free base) and KPV acetate and
+will evaluate the physical and chemical characterization of each. Table 1 below summarizes
+available identifying information obtained from public domain for each BDS.
+
+Table 1. Summary of Basic Information on KPV (Free Base) and KPV Acetate.
+ Characteristic              KPV (Free Base)                      KPV Acetate
+ UNII Code
+      10
+                               Not available                      Not available
+                                                        The CAS number used is the same
+ CAS No.                       67727-97-3
+                                                               as KPV (free base)*
+ MF/MW (g/mol)              C16H30N4O4/342.43           C16H30N4O4·CH3COOH/402.5 11,12
+ Peptide
+                            H-Lys-Pro-Val-OH              H-Lys-Pro-Val-OH .CH3COOH
+ Sequence
+ Supplier 13                       Yes                                Yes
+ Active Moiety                KPV (free base)                    KPV (free base)
+* CAS is an abbreviation of Chemical Abstracts Service. The CAS number for KPV acetate is the same as that for
+KPV (free base) in most public references (for more information, see the Echemi website for KPV, available at:
+https://www.echemi.com/produce/pr2305301691-kpv-peptide-alpha-msh-11-13-acetate-salt-98-white-powder-
+youngshe.html; and the JennysChem website for KPV, available at: https://jennyschem.com/lys-pro-val-nh2-kpv-
+acetate-salt-67727-97-3/). MF/MW: molecular formula/molecular weight; UNII: Unique Ingredient Identifier
+
+One nomination was submitted, which, as discussed above, was later withdrawn. The nominator
+provided inconsistent information about the different KPV BDSs in their nomination package.
+Due to inconsistencies in the nomination, it is unclear which KPV-related BDS the nominator
+intended to nominate. For example, the certificate of analysis (CoA) submitted with the
+nomination refers to one BDS by name in the title and a different BDS by the molecular formula.
+All chemistry-related information about the BDSs provided by the nominator is summarized in
+Table 2.
+
+
+10
+   The Unique Ingredient Identifier (UNII) is an alphanumeric identifier linked to a substance's molecular
+structure or descriptive information and is generated by the Global Substance Registration System
+(GSRS) of the Food and Drug Administration (FDA).
+11
+   See the Echemi website for KPV, available at: https://www.echemi.com/produce/pr2305301691-kpv-
+peptide-alpha-msh-11-13-acetate-salt-98-white-powder-youngshe.html. Accessed April 03, 2025.
+12
+   See the JennysChem product page for KPV, available at: https://jennyschem.com/lys-pro-val-nh2-kpv-
+acetate-salt-67727-97-3/. Accessed April 03, 2025.
+13
+   The existence of a supplier of BDS may be relevant to FDA’s characterization analysis because it
+indicates that consistent production of the BDS according to a standard may be possible. BDSs with
+suppliers are also frequently accompanied by certificates of analysis (COAs) associated with their
+production, which can help FDA to identify and characterize BDSs.
+
+
+
+                                                                                                                 9
+Table 2. Summary of Information Submitted in the Withdrawn Nomination.
+ Nominator           1
+ Nominated BDS       KPV
+ BDS per UNII
+                     Not available
+ Code
+ CoA                 CoA provided for KPV Acetate
+ CAS No.             67727-97-3 (matches KPV free base)
+                     C16H30N4O4 (provided in the nomination package/CoA that matches KPV
+ MF
+                     free base)
+ MW (g/mol)          Not provided
+                     (2S)-2-[[(2S)-1-[(2S)-2,6-diaminohexanoyl]pyrrolidine-2-
+ Chemical Name
+                     carbonyl]amino]-3-methylbutanoic acid (matches KPV free base)
+Italics in the table above represents the information identified by the FDA.
+
+Due to FDA’s significant safety concerns related to this nomination/BDS, FDA is choosing to
+concurrently evaluate both BDSs (KPV (free base) and KPV acetate) in this section under two
+different subsections (II.A.1 and II.A.2) and will provide a separate conclusion for each of the
+two BDSs.
+
+The nominator has proposed to compound this BDS into the following dosage form:
+
+     •   Cream/Gel with the Strength of 0.1% for Topical Use
+
+There is no USP drug substance monograph for KPV (free base) or its acetate salt. We reviewed
+physical and chemical characterization-related information provided by the nominator and
+performed a literature search for additional information on KPV (free base) and its acetate,
+especially those that may impact the performance for the proposed cream/gel dosage forms.
+Databases searched for information on KPV (free base) and its acetate in preparation of this
+section included SciFinder, Analytical Profiles of Drug Substances, PubMed, the European
+Pharmacopoeia, and the USP-NF.
+
+     1. KPV (Free Base)
+KPV is reported to be a tripeptide composed of the amino acids lysine (K), proline (P), and
+valine (V). It is naturally produced in the body and is a fragment derived from the neuropeptide
+produced in the pituitary gland called α-melanocyte-stimulating hormone (α-MSH) 14. The
+molecular formula of KPV (free base) is C16H30N4O4 and its molecular weight is 342.43 g/mol.
+Its chemical structure is shown in Figure 1. There is no CoA for KPV (free base) in the
+nomination.
+
+
+
+
+14
+  See the MindBodyFunctionalMedicine website for KPV, available at:
+https://mindbodyfunctionalmedicine.com/blog/peptide-therapy-kpv-the-anti-inflammation-pro-healing-
+peptide/. Accessed August 26, 2024.
+
+
+
+                                                                                                     10
+Figure 1. The Chemical Structure of KPV (Free Base). 15
+
+
+
+
+            a. Stability of the API and Likely Dosage Forms
+It is reported that lyophilized KPV (free base) is stable up to 3 years when stored at -20°C in a
+tightly closed container, up to 2 years at 4°C, and up to 3 months at 15°C. Upon reconstitution,
+reports indicate the aqueous solution is recommended to be stored at -80°C for 6 months, at -2°C
+for 1 month, and 10°C for 1 week. 16
+
+FDA notes that peptides can be extremely sensitive to product formulation, process, and
+environmental conditions (e.g., pH, heat (temperature), concentration, in-process related
+impurities, excipients etc.), which may lead to the aggregation and degradation of peptides. This
+could result in loss of their biological activity (Zapadka et al. 2017). Multiple analytical methods
+may be needed to detect various aggregates, including size exclusion chromatography or field
+flow fractionation. Hence, peptides may require more and/or specific analytical in-process and
+finished product testing for impurities than what is required for small molecules. Uncontrolled
+manufacturing processes as well as impurities may increase the risk of product aggregation.
+Significant amounts of aggregates can form in formulated products, especially during storage or
+when exposed to stress conditions. Therefore, product formulation is critical to the quality and
+stability of peptide drug products, as it is necessary to maintain the peptide molecules in their
+native state (in the formulation) to the extent possible.
+
+            b. Probable Routes of API Synthesis
+KPV was reported to be synthesized via the following four steps:
+1. Using a polymer-bonded polyoxyethylene-RAM (Rink Amide linker) resin as a synthetic
+   solid phase substrate and pretreating it.
+2. Adding N-fluorenylmethoxycarbonyl-AA-OH and a polypeptide linking reagent to the resin
+   for amino acid synthesis, washing the resin, and removing N- protected with
+   methoxycarbonyl, cleaning the resin again.
+
+
+
+
+15
+   See the Peptide Sciences website for KPV 5 mg, available at: https://www.peptidesciences.com/kpv-
+5mg. Accessed April 10, 2025.
+16
+   See the CoA for KPV 2 mg, available at: https://www.uk-
+peptides.com/image/catalog/COA/COA%20PEPTIDES%20WEBSITE%2042.pdf. Accessed August 26,
+2024.
+
+
+
+                                                                                                   11
+3. The peptide chain obtained is carboxylated by acetic acid or dichloromethane to obtain a
+   carboxylated peptide chain.
+4. Cutting the peptide chain with trifluoroacetic acid, triisopropylsilane and water, washing
+   same with methyl tributyl ether, and centrifuging same for precipitation, and drying the
+   precipitate and purifying same using HPLC (high-performance liquid chromatography) to
+   obtain KPV peptide. 17
+
+             c. Likely Impurities 18
+Generally speaking, peptide-related impurities and peptide synthesis process-related impurities
+contribute to and are considered in understanding the impurity profile for all peptides, including
+KPV (free base). For most synthetic peptides, solid-phase peptide synthesis method has been
+widely used by industry for peptide synthesis. The solid-phase synthesis of peptides may lead to
+potential peptide-related impurities due to incomplete coupling reactions, truncations, or side
+reactions. These peptide-related impurities are typically similar in structure to the target peptide
+and may be difficult to identify and quantify without sophisticated analytical methods.
+Additional potential common impurities may be derived from impurities in the protected amino
+acid starting materials (e.g., isomeric impurities and free amino acids) and other species that may
+carry over into drug substances. In addition, residual solvents, coupling reagents, activators,
+catalysts, and scavengers may exist as solid-phase peptide synthesis process related impurities.
+Drug substance and its proposed product-related impurities may also include peptide-related
+aggregates.
+
+There is no CoA for KPV (free base) in the nomination. We conducted literature searches and
+found that most of CoA for KPV (free base) only contains purity testing result, as shown in the
+example CoA below (Figure 2). 19 However, there is no information on the impurity limits/testing
+results as attribute control in the CoA to demonstrate quality control of impurity profile of KPV
+(free base). In addition, there is lack of information on the potential of peptide aggregation for
+KPV (free base).
+
+
+
+
+17
+   See the patent for the preparation of KPV and analogs thereof, available at:
+https://patents.google.com/patent/WO2017107241A1/en. Accessed August 26, 2024.
+18
+   This evaluation contains a non-exhaustive list of potential impurities in the bulk drug substance and
+does not address fully the potential safety concerns associated with those impurities. The compounder
+should use the information about the impurities identified in the certificate of analysis accompanying the
+bulk drug substance to evaluate any potential safety and quality issues associated with impurities in a drug
+product compounded using that bulk drug substance taking in account the amount of the impurity, dose,
+route of administration, and chronicity of dosing. When available, nonclinical toxicity data for likely
+impurities of concern (e.g., nitrosamines, potential mutagenic substances, and potential teratogenic
+substances) in the nominated bulk drug substance are discussed in the Nonclinical Assessment at
+Section D.1. as part of the safety assessment of the substance.
+19
+   See the UK Peptides website for KPV 2 mg, available at: https://www.uk-peptides.com/kpv-2mg.
+Accessed August 26, 2024.
+
+
+
+                                                                                                         12
+Figure 2. Example of a Certificate of Analysis for KPV (Free Base).
+
+
+
+
+            d. Physicochemical Characteristics Pertinent to Product Performance, Such as
+               Particle Size and Polymorphism
+KPV (free base) is white to off-white lyophilized powder. Based on the publicly available
+literature, KPV (free base) is soluble in water up to 0.70 mg/mL. 20
+
+For topical drug products such as creams, solubility and particle size are generally important
+characteristics for BDS that need to be controlled to ensure potency uniformity. If BDS is soluble
+in the vehicle, then potency uniformity would be based largely upon adequate distribution of the
+component throughout the mix. If the BDS is insoluble in the vehicle, then in addition to
+assuring uniformity of distribution in the mix, potency uniformity depends upon control of
+particle size, and use of a validated mixing process. Particle size can also affect the activity of
+the drug substance because the smaller the particle size the greater its surface area, which may
+influence its activity.
+
+Because the nominator did not provide any information on how to compound proposed cream or
+gel final product, especially what vehicle will be used, we cannot evaluate how the
+
+
+
+20
+  See the CoA for KPV 2 mg, available at: https://www.uk-
+peptides.com/image/catalog/COA/COA%20PEPTIDES%20WEBSITE%2042.pdf. Accessed August 26,
+2024.
+
+
+
+                                                                                                 13
+physicochemical characteristics of KPV (free base), especially solubility and particle size, will
+impact the performance of the proposed final product(s).
+
+            e. Any Other Information About the Substance That May Be Relevant, Such as
+               Whether the API Is Poorly Characterized or Difficult to Characterize
+Because there is a lack of CoA for KPV (free base), we do not know if microbiological tests,
+which are required for topical products, are in place to control microbiological quality of the
+BDS proposed for compounding cream/gel dosage form. Lack of control of microbiological
+quality of a BDS (e.g., establishing an acceptable level of microorganisms) may affect
+physical/chemical stability or effectiveness of product. No such relevant information was
+identified in the public domain.
+
+Conclusions: KPV (free base) is reported to be a small peptide consisting of three amino acids,
+including lysine (K), proline (P), and valine (V). As reported in the literature, KPV (free base) is
+expected to be stable for up to 3 years when stored at -20°C.
+
+KPV (free base) is deemed to be not well-characterized from the physical and chemical
+characterization perspective because (1) inconsistent naming conventions that do not follow
+established chemical nomenclature standards (e.g., INN, IUPAC, USAN), and (2) BDS specific
+quality control attributes, including impurities, aggregates, and microbiological tests, were not
+found in the publicly available scientific literature and lack of a CoA in the nomination package
+which are offered as evidence to establishing identity, purity, and impurity profiles of the
+substance.
+
+In addition, due to lack of information on the formulation of proposed cream/gel final products,
+we cannot evaluate how the physical and chemical characteristics, especially limited water
+solubility (0.7 mg/mL) and particle size, impact the performance of final products.
+
+       2. KPV Acetate
+KPV acetate is reported to be an acetate salt form of KPV (free base) peptide of three amino
+acids. The molecular formula of KPV acetate is C16H30N4O4·CH3COOH and its molecular
+weight is 402.5 g/mol. The chemical structure of KPV acetate is shown in Figure 3.
+
+Figure 3. The Chemical Structure of KPV Acetate.
+
+
+
+
+The nominator provided the following CoA for KPV acetate with the quality control attribute
+testing results, including identification, amino acid composition, assay, related substances
+
+
+
+
+                                                                                                    14
+(impurities), water content and acetate content (Figure 4). There are no testing results for the
+quality control attribute on aggregates and microbiological testing levels.
+
+Figure 4. Example of a Certificate of Analysis for KPV Acetate.
+
+
+
+
+           a. Stability of the API and Likely Dosage Forms
+Based on the CoA provided by the nominator, long-term storage conditions for KPV acetate are
+“in a sealed container at 2°C to 8°C”.
+
+FDA notes that peptides can be extremely sensitive to product formulation, process, and
+environmental conditions (e.g., pH, heat (temperature), concentration, in-process related
+impurities, excipients etc.), which may lead to the aggregation and degradation of peptides. This
+could result in loss of their biological activity (Zapadka et al. 2017). Multiple analytical methods
+may be needed to detect various aggregates, including size exclusion chromatography or field
+flow fractionation. Hence, peptides may require more and/or specific analytical in-process and
+finished product testing for impurities than what is required for small molecules. Uncontrolled
+manufacturing processes as well as impurities may increase the risk of product aggregation.
+Significant amounts of aggregates can form in formulated products, especially during storage or
+when exposed to stress conditions. Therefore, product formulation is critical to the quality and
+stability of peptide drug products, as it is necessary to maintain the peptide molecules in their
+native state (in the formulation) to the extent possible.
+
+It was reported that KPV acetate forms Lys–Pro–DKP (DKP: lys–pro–diketopiperazine) as one
+of the major degradation products under various forced degradation conditions, including acid
+and alkaline hydrolysis, and oxidative degradation by H2O2. Under basic conditions, KPV
+acetate produced several nonpolar degradation products (DP1, DP2 and DP3: degradation
+
+
+
+                                                                                                   15
+products without elucidation of the structure) in addition to Lys–Pro–DKP. When treated with
+0.5% H2O2, the reaction was rapid, and KPV acetate degraded to Lys–Pro–DKP, proline and
+valine. 21
+
+             b. Probable Routes of API Synthesis
+KPV (free base) can be synthesized using the solid-phase synthesis methodology, as mentioned
+in A.1.b. Then, the free base can be converted into acetate form of KPV (free base).
+
+             c. Likely Impurities 22
+Generally speaking, peptide-related impurities and peptide synthesis process-related impurities
+contribute to and are considered in understanding the impurity profile for all peptides, including
+KPV acetate. For most synthetic peptides, solid-phase peptide synthesis method has been widely
+used by industry for peptide synthesis. The solid phase synthesis of peptides may lead to
+potential peptide-related impurities due to incomplete coupling reactions, truncations, or side
+reactions. These peptide-related impurities are typically similar in structure to the target peptide
+and may be difficult to identify and quantify without sophisticated analytical methods.
+Additional potential common impurities may be derived from impurities in the protected amino
+acid starting materials (e.g., isomeric impurities and free amino acids) and other species that may
+carry over into drug substances. In addition, residual solvents, coupling reagents, activators,
+catalysts, and scavengers may exist as solid phase peptide synthesis process-related impurities.
+Drug substance and its proposed product-related impurities may also include peptide-related
+aggregates.
+
+In the CoA the nominator provided there is total impurity limit of ≤2.0% with the testing result
+of 0.9% and any individual impurity limit of ≤1.0% with the testing result of 0.24% for KPV
+acetate. However, there is no information on the nature of single impurity in the nomination. In
+addition, there is no information on what synthetic method is used to produce nominated KPV
+acetate, it is difficult to predict the nature of individual impurity as well as peptide-related
+aggregates.
+
+
+
+
+21
+   See the PhD dissertation by Kasturi Pawar (Auburn University, Alabama) entitled: Microneedle-
+Assisted Iontophoretic Transdermal Delivery Of Drugs; available at:
+https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=394644499822140e9922599fe8efbb65
+5f105976#:~:text=Under%20various%20forced%20degradation%20conditions%2C%20KPV%20forms,a
+s%20shown%20in%20Fig.%205.4A%2C%205.4B%20and. Accessed April 10, 2025.
+22
+   This evaluation contains a non-exhaustive list of potential impurities in the bulk drug substance and
+does not address fully the potential safety concerns associated with those impurities. The compounder
+should use the information about the impurities identified in the certificate of analysis accompanying the
+bulk drug substance to evaluate any potential safety and quality issues associated with impurities in a drug
+product compounded using that bulk drug substance taking into account the amount of the impurity, dose,
+route of administration, and chronicity of dosing. When available, nonclinical toxicity data for likely
+impurities of concern (e.g., nitrosamines, potential mutagenic substances, and potential teratogenic
+substances) in the nominated bulk drug substance are discussed in the Nonclinical Assessment at Section
+D.I. as part of the safety assessment of the substance.
+
+
+
+                                                                                                         16
+            d. Physicochemical Characteristics Pertinent to Product Performance, Such as
+               Particle Size and Polymorphism
+KPV acetate is a white to off-white solid powder. It is reported to dissolve in water at
+5 mg/mL. 23 Therefore, water solubility and particle size will not be issues of concern for the
+proposed cream/gel dosage forms.
+
+            e. Any Other Information About the Substance That May Be Relevant, Such as
+               Whether the Bulk Drug Substance is Poorly Characterized or Difficult to
+               Characterize Polymorphism
+In the CoA the nominator provided, there is no testing data for microbiological quality control of
+KPV acetate, which are required for topical products, to control the BDS proposed for
+compounding cream/gel dosage forms. Lack of control of microbiological quality of a BDS (e.g.,
+presence of unacceptable level of microorganisms) may affect the physical/chemical stability,
+safety, or effectiveness of the product. No such relevant information was identified in the public
+domain.
+
+Conclusions: KPV acetate is reported to be an acetate salt form of KPV (free base) peptide
+consisting of three amino acids. As reported in the literature, KPV acetate is expected to be
+stable under reported storage conditions (at 2°C to 8°C).
+
+KPV acetate is deemed to be not well-characterized from the physical and chemical
+characterization perspective because (1) inconsistent naming conventions that do not follow
+established chemical nomenclature standards (e.g., INN, IUPAC, USAN), and (2) lack of
+information on the nature of individual impurity, potential peptide related aggregates, as well as
+microbiological testing data, none of which were found in the CoA or reported in publicly
+available scientific literature.
+
+In addition, due to lack of information on the formulation of proposed cream/gel final products,
+we cannot evaluate how the physical and chemical characteristics, such as particle size, impact
+the performance of final products.
+
+     B. Has the Substance Been Used Historically in Compounding?
+This evaluation focuses on KPV (free base) and KPV acetate for the topical route of
+administration and its use in wound healing and inflammatory conditions; however, FDA
+searched generally for information on the historical use of KPV (free base) and KPV acetate in
+compounding. Information about use may not specify specific attributes of the product, such as
+route of administration. Databases searched for information on both substances for this
+evaluation included PubMed, EMBASE, Google/Google Scholar, Micromedex, Clinical
+Pharmacology, NatMedPro Database, USP-NF, European Pharmacopoeia, Japanese
+Pharmacopoeia, European Medicines Agency, GlobalEdge.com, and the Outsourcing Facility
+
+
+
+
+23
+  See the PeptideSciences website for KPV 5 mg, available at: https://www.peptidesciences.com/kpv-
+5mg. Accessed August 26, 2024.
+
+
+
+                                                                                                     17
+(OF) Product Reporting Database. 24 It is often unclear whether the KPV discussed in this section
+is the salt form or the free base and whether it was compounded or not. Therefore, FDA will
+consider the information discussed in this section in its evaluation for both the free base and salt
+form as appropriate.
+
+       1. Length of Time the Substance Has Been Used in Compounding
+The nominator did not provide historical use data.
+
+The earliest and extent of KPV (free base) and KPV acetate use in compounding is unknown. No
+published studies were found in which non-compounded or compounded drug products
+containing KPV (free base) or KPV acetate were used in humans. According to OF reports
+submitted to the FDA, OFs have not reported preparing single or multiple-API compounded drug
+products containing KPV (free base) or KPV acetate from January 2017 to June 2025. 25
+
+       2. The Medical Condition(s) It Has Been Used to Treat
+Results from a Google search indicate that KPV as a single ingredient and in combination with
+other substances is promoted on websites.
+
+The websites assert that single ingredient KPV is used for a wide array of inflammatory
+conditions, improves wound healing and skin health, strengthens the immune system, protects
+against nerve damage and stroke, 26 promotes gut health, acts as an antimicrobial, reduces tumor
+growth in the body (Appendix 1), and is effective in treating psoriasis. 27 KPV is also promoted
+for inflammatory bowel diseases, colitis, and Crohn’s disease. 28 It is promoted as helpful in mast
+cell activation syndrome, histamine intolerance, recovery from COVID-19, Lyme disease, mold
+toxicity, and pain syndromes. 29 It is unclear whether compounded products are being used in all
+of these instances.
+
+
+
+
+24
+   See the FDA Outsourcing Facility Product Report Database, available at:
+https://www.accessdata.fda.gov/scripts/cder/outsourcingfacility/.
+25
+   The Drug Quality and Security Act, signed into law on November 27, 2013, created a new section 503B
+in the Federal Food, Drug, and Cosmetic Act. Under section 503B, a compounder can become an
+outsourcing facility. Outsourcing facilities are required to provide FDA with a list of drugs they
+compounded during the previous six-month period upon initial registration and in June and December
+each year. This retrospective information does not identify drugs that outsourcing facilities intend to
+produce in the future. See the FDA Outsourcing Facility Product Report Database, available at:
+https://www.accessdata.fda.gov/scripts/cder/outsourcingfacility/.
+26
+   See the GeneMedics website for KPV, available at: https://www.genemedics.com/kpv. Accessed
+2/10/24.
+27
+   See the Guyer Consulting webpage on immune peptides, available at: https://guyerwc.com/peptides/.
+Accessed 8/15/24.
+28
+   See the website of Dr. Toni Varela on peptide therapy, available at:
+https://www.drtonivarela.com/peptide-therapy. Accessed 2/10/24.
+29
+   See the Peak Health Institute website on KPV, available at https://www.peakhealthinstitute.com/the-
+power-of-kpv-peptide-a-game-changer-in-functional-regenerative-medicine/. Accessed 12/4/25.
+
+
+
+                                                                                                     18
+KPV is promoted as a compounded drug product in combination with BPC-157, TB-500,
+AOD9604, and Follistatin-344 as a “regenerative combo” for muscle, joint, and cartilage
+repair. 30
+
+        3. How Widespread Its Use Has Been
+Results from an internet search for compounded drug products containing KPV (free base) or
+KPV acetate revealed that online websites offer options for obtaining KPV from compounding
+pharmacies through use of telemedicine and online consultations. 31 Several websites promote
+KPV as single-API injectable 32, oral 33, topical, and nasal spray 34 drug products, as well as multi-
+API products containing substances such as BPC-157, TB-500, AOD-9604, and Follistatin-
+344. 35
+
+OFs have not reported compounding drug products containing KPV (free base) or KPV acetate
+from 2017 to June 2025.
+
+        4. Recognition of the Substance in Other Countries or Foreign Pharmacopeias
+A search of the European Pharmacopoeia (11.8 edition, 2025), and the Japanese Pharmacopoeia
+(18th Edition) did not show any monograph listings for KPV (free base) or KPV acetate. The
+European Medicines Agency did not list any products containing KPV (free base) or KPV
+acetate that are authorized for use.
+
+Conclusions: It is often unclear whether the KPV discussed in the sources considered for this
+section are the salt formulation or the free base. Available literature indicates that the extent of
+KPV (free base) or KPV acetate use in compounding is unknown. Published literature did not
+reveal studies in which compounded drug products containing KPV (free base) or KPV acetate
+were used in humans. According to the Outsourcing Facility Product Reports, outsourcing
+facilities did not report compounding drug products containing KPV (free base) or KPV acetate.
+Based on internet searches, it appears that compounders promote KPV as injectable, oral, topical
+
+30
+   See the Age Management of West Michigan website on KPV, available at:
+https://www.agemanagementmi.com/kpv. Accessed 8/15/24.
+31
+   For examples, see the following websites: The Dr. Toni Varela website on peptide therapy, available at:
+https://www.drtonivarela.com/peptide-therapy; the BluVida website on peptide therapy, available at:
+https://bluvida.com/peptide-therapy/; and the Fallon Wellness Pharmacy website, available at:
+https://fallonwellnesspharmacy.com/product-category/peptides/. Accessed 2/10/24.
+32
+   See the BluVida website on KPV peptide, available at: https://bluvida.com/encyclopedia/peptide-kpv-
+peptide/. Accessed 8/15/24.
+33
+   See the Peak Health Institute website on KPV, available at https://www.peakhealthinstitute.com/the-
+power-of-kpv-peptide-a-game-changer-in-functional-regenerative-medicine/; and the Age Management of
+West Michigan website on KPV, available at: https://www.agemanagementmi.com/kpv. Accessed
+8/15/24.
+34
+   See the Wellness Lounge on KPV: available at https://www.akwellnesslounge.com/blog/peptide-
+spotlight-kpv and RegenFx Wellness, available at https://regenivwellness.com/kpv-peptide. Accessed
+12/4/25.
+35
+   See the Wellness Lounge on KPV: available at https://www.akwellnesslounge.com/blog/peptide-
+spotlight-kpv and the Age Management of West Michigan website on KPV, available at:
+https://www.agemanagementmi.com/kpv. Accessed 12/4/25.
+
+
+
+                                                                                                        19
+and nasal spray formulations. Different websites advertise that KPV (unspecified forms) may be
+used to suppress inflammatory conditions, to improve wound healing and skin health, and to
+protect against nerve damage and stroke.
+
+     C. Available Evidence of Effectiveness or Lack of Effectiveness of Drug Products
+        Compounded With the Substance
+The following databases were consulted for the preparation of this section: PubMed, Embase,
+ClinicalTrials.gov, DailyMed, Drugs@FDA, relevant professional healthcare organization
+websites, and various online clinical references and websites such as information from National
+Institutes of Health (NIH) and Centers for Disease Control and Prevention (CDC).
+
+The references submitted by the nominator do not clearly identify whether the KPV form was a
+salt formulation or the free base, and our search did not identify data, such as clinical studies, on
+these substances administered in humans. Therefore, throughout this section, the substances will
+be generally referred to as KPV unless otherwise specified as free base or acetate salt.
+
+KPV-related BDSs were nominated for the following uses: “wound healing, inflammatory
+conditions (psoriasis, eczema, etc.).” The nomination cited nine literature references 36 in support
+of the nomination; none were studies of KPV administered in humans. The nominated uses are
+briefly described below.
+
+Wound healing: A wound is a disruption of the normal structure and function of the epidermis
+and associated underlying tissues. Wounds are broadly classified as either acute or chronic and
+by their clinical presentation. Treatments vary depending on the specific wound type. 37 We note
+that the nominator has not provided information about what specific type of wound that KPV is
+intended to be used for.
+
+Inflammatory conditions: Inflammatory conditions are diseases that affect various body organ
+systems. Inflammation can be either acute or chronic (Pahwa et al. 2025) and treatment may
+vary. The nominator listed the proposed use “Inflammatory Conditions (psoriasis, eczema, etc.).”
+
+        1. Reports of Trials, Clinical Evidence, and Anecdotal Reports of Effectiveness, or Lack
+           of Effectiveness, of the Bulk Drug Substance
+We reviewed information from the nominator-cited references; the nominator did not provide
+clinical evidence on the use of KPV in wound healing or inflammatory conditions. We
+performed our own search of published medical literature on additional relevant information on
+
+
+36
+   The nominator cited nine references in their nomination; eight references are studies on various alpha-
+MSH (alpha-melanocyte stimulating hormone is an endogenous neuropeptide a common precursor
+protein of all melanocortin peptides, which expresses in the pituitary gland (Singh and Mukhopadhyay
+2014) derivatives conducted in animals) and one reference is on KPV delivery skin permeation using
+human cadaver skin.
+37
+   See the UptoDate website on the basic principles of wound healing, available at:
+https://www.uptodate.com/contents/basic-principles-of-wound-
+healing?search=wound%20healing&source=search_result&selectedTitle=1%7E150&usage_type=default
+&display_rank=1. Accessed 8/5/2024.
+
+
+
+                                                                                                        20
+this substance; however, we did not identify data, such as clinical studies, on the use of KPV in
+humans. 38
+
+The nominator has not provided clinical evidence on the use of KPV in wound healing or
+inflammatory conditions.
+
+        2. Whether the Product Compounded With This Bulk Drug Substance Is Intended To Be
+           Used in a Serious or Life-Threatening Disease
+Wounds and certain inflammatory conditions can be serious or life-threatening.
+
+        3. Therapies That Have Been Used for the Condition(s) Under Consideration
+There are FDA-approved drug products that treat the same medical condition as those proposed
+for the KPV compounded drug product(s). 39 For wound healing, treatments vary depending on
+the specific wound type. Inflammatory conditions cover a wide variety of diseases and
+conditions for which treatment may vary.
+
+Conclusions: There is a lack of evidence to evaluate the effectiveness of KPV (free base) and
+KPV acetate products for the nominated uses of wound healing and inflammatory conditions.
+The nomination did not include, and FDA did not find any information on the use of KPV (free
+base) or KPV acetate administered in humans. Acute and chronic wounds as well as
+inflammatory conditions are associated with morbidity and can be serious or life-threatening. In
+addition, there are currently various FDA-approved therapies with established efficacy for the
+management of wounds and treatment of various inflammatory diseases including psoriasis and
+eczema.
+
+     D. Are There Concerns About the Safety of the Substance for Use in Compounding?
+
+        1. Nonclinical Assessment
+The nominator submitted a list of 8 articles describing nonclinical studies of KPV. Five articles
+describe pharmacological studies of KPV (Brzoska et al. 2008; Dalmasso et al. 2008; Getting et
+al. 2003; Luger and Brzoska 2007; Pawar et al. 2017). Three articles describe pharmacological
+studies of N-acetylated KPV (Brzoska et al. 2008; Hiltz and Lipton 1989) and KPV dimer
+(Dalmasso et al. 2008), which are out of the scope of this evaluation and are, therefore, not
+discussed further.
+
+The following databases were consulted in preparation of this section: Drugs@FDA, Embase,
+European Chemicals Agency, FDA’s Generally Recognized as Safe (GRAS) Notice Inventory,
+Google, Google Scholar, NIH’s dietary supplement label database, National Toxicology Program
+website, Pharmapendium, PubMed, Society of Toxicology, USP, and Web of Science.
+
+
+
+38
+   See 80 FR 65765 for information necessary to fully evaluate a substance.
+39
+   FDA considers the existence of FDA-approved or over-the-counter (OTC) monograph drug products to
+treat the same condition as that proposed for the nomination relevant to FDA’s consideration of the
+effectiveness criterion, to the extent there may be alternative therapies that have been demonstrated to be
+effective for certain conditions. See 84 FR 4696.
+
+
+
+                                                                                                         21
+The biological activities of α-MSH are mediated primarily by its ability to bind to and activate
+the melanocortin (MC) receptor subtypes MC1, MC3, MC4, and MC5, which are G-protein-
+coupled receptors. The melanotropic properties of α-MSH (i.e., the ability of α-MSH to promote
+the synthesis and deposit of melanin) result primarily from α-MSH-induced activation of MC1
+receptor signaling in melanocytes, whereas the anti-inflammatory properties of α-MSH result
+primarily from α-MSH-induced activation of signaling via MC3, MC4, and MC5 receptors in
+different cells throughout the body (Brzoska et al. 2008). However, as discussed below, several
+lines of evidence suggest that MC receptors are unlikely to be the molecular targets underlying
+the anti-inflammatory and wound-healing properties of KPV.
+
+In in-vitro studies, KPV was unable to displace radiolabeled α-MSH binding to rat brain tissue,
+murine melanoma cells, and MC1R-expressing murine macrophages (Lyson et al. 1994;
+Mandrika et al. 2001; Tatro and Entwistle 1994). In addition, in contrast to α-MSH, KPV did not
+increase cyclic AMP (adenosine monophosphate) levels in MC1 receptor-expressing murine
+macrophages (Mandrika et al. 2001). Finally, in-vitro and in-vivo studies using either a
+pharmacological or a genetic approach failed to demonstrate the involvement of MC2, MC3, and
+MC4 receptors in the anti-inflammatory responses and wound-healing effects induced by KPV
+(Getting et al. 2003).
+
+Researchers have proposed that the following actions may contribute to the anti-inflammatory
+properties of KPV: (i) KPV-induced inhibition of nuclear factor-κB activation leading to a
+reduction in the expression of proinflammatory cytokines, and (ii) KPV-induced inhibition of the
+effects of proinflammatory cytokines such as interleukin 1β (Getting et al. 2003; Mandrika et al.
+2001). The di/tripeptide transporter PepT1 has also been proposed to mediate the anti-
+inflammatory effects of KPV in the human intestinal epithelial cells Caco2-BBE and HT29-
+CL.19A and the human T cells Jurkat (Dalmasso et al. 2008).
+
+Considering the anti-inflammatory properties of KPV and its effectiveness in rodent models of
+wound healing (Bonfiglio et al. 2006; Getting et al. 2003; Zhao et al. 2022), researchers have
+suggested that investigational clinical studies are needed to determine whether KPV could be
+used as a therapeutic intervention to promote healing of skin wounds and ulcers (Böhm and
+Luger 2019).
+
+       b. Pharmacokinetics/Toxicokinetics
+At the time of this evaluation, the nominator did not submit, and FDA did not identify
+pharmacokinetic or toxicokinetic studies of KPV (free base) or KPV acetate.
+
+According to an in-vitro study conducted in human cadaver skin, KPV does not permeate well
+through skin (Pawar et al. 2017). This characteristic could limit the systemic bioavailability of
+KPV applied topically to the skin, and, thereby, preclude systemic toxicity. However, it could
+also limit the potential usefulness of KPV as a topical therapeutic agent because it could prevent
+KPV’s distribution to epidermal layers below the stratum corneum (the outermost skin layer).
+
+Pawar and colleagues reported that strategies known to breach the structural tightness of skin,
+including iontophoresis and/or microneedle abrasion, increased the penetration of KPV through
+the stratum corneum and into the inner epidermal layers of human cadaver skin in vitro (Pawar et
+al. 2017). Studies are needed to determine whether strategies that facilitate the distribution of
+
+
+
+                                                                                                 23
+topically applied KPV (free base) or KPV acetate through the epidermal layers of skin can also
+increase its systemic absorption.
+
+        c. Acute Toxicity 40
+At the time of this evaluation, the nominator did not submit, and FDA did not identify acute
+toxicity studies of KPV (free base) or KPV acetate.
+
+        d. Repeat-Dose Toxicity 41
+At the time of this evaluation, the nominator did not submit, and FDA did not identify repeat-
+dose toxicity studies of KPV (free base) or KPV acetate.
+
+        e. Genotoxicity 42
+At the time of this evaluation, the nominator did not submit, and FDA did not identify
+genotoxicity studies of KPV (free base) or KPV acetate.
+
+        f. Developmental and Reproductive Toxicity 43
+At the time of this evaluation, the nominator did not submit, and FDA did not identify
+nonclinical developmental and reproductive studies of KPV (free base) or KPV acetate.
+
+
+
+
+40
+   Acute toxicity refers to adverse effects observed following administration of a single dose of a
+substance, or multiple doses given within a short period (approximately 24 hours). For more information
+on general approaches for acute toxicity studies, please refer to FDA’s guidance for industry M3(R2)
+Nonclinical Safety Studies for the Conduct of Human Clinical Trials and Marketing Authorization for
+Pharmaceuticals (January 2010), available at: https://www.fda.gov/media/71542/download.
+41
+   Repeat-dose toxicity studies consist of in-vivo animal studies that seek to evaluate the toxicity of the
+test substance when it is repetitively administered daily for an extended period. For more information on
+general approaches for repeat-dose toxicity studies, please refer to FDA’s guidance for industry M3(R2)
+Nonclinical Safety Studies for the Conduct of Human Clinical Trials and Marketing Authorization for
+Pharmaceuticals (January 2010), available at: https://www.fda.gov/media/71542/download.
+42
+   The genotoxicity assessment battery usually consists of a gene mutagenicity assay (for single-dose
+trials) and a variety of clastogenicity/genotoxicity assays. To support multiple dose administration in
+humans, additional genotoxicity testing assessment is usually conducted to detect chromosomal damage
+in mammalian systems. For more information on general approaches for genotoxicity studies, please refer
+to FDA’s guidance for industry S2(R1) Genotoxicity Testing and Data Interpretation for Pharmaceuticals
+Intended for Human Use (June 2012), available at: https://www.fda.gov/media/71980/download.
+43
+   Developmental and reproductive toxicity studies are usually designed to assess the potential adverse
+effects of a substance within a complete reproductive cycle, from conception to reproductive capacity in
+subsequent generations, and to identify the potential effects of a substance on pre-, peri-, and postnatal
+development. Developmental toxicity or teratogenicity refers to adverse effects (can include embryo-fetal
+mortality, structural abnormalities, functional impairment, or alterations to growth) and can occur in pups
+either as a result of the exposure of their parents to the substance, prior to the pups’ birth, or by direct
+exposure of the pups to the substance after birth. For more information on general approaches for
+reproductive and developmental toxicity studies, please refer to FDA’s guidance for industry S5(R3)
+Detection of Reproductive and Developmental Toxicity for Human Pharmaceuticals (May 2021),
+available at: https://www.fda.gov/media/148475/download.
+
+
+
+                                                                                                          24
+        g. Carcinogenicity 44
+At the time of this evaluation, the nominator did not submit, and FDA did not identify
+nonclinical carcinogenicity studies of KPV (free base) or KPV acetate.
+
+Conclusions: At the time of this evaluation, the nominator submitted, and FDA identified
+nonclinical pharmacological studies suggesting that KPV-related BDSs can have anti-
+inflammatory and wound-healing properties in in-vivo and in-vitro models. It has been suggested
+that the ability of KPV to inhibit the effects of inflammatory cytokines and the NF-κB-induced
+expression of inflammatory interleukins may contribute to the anti-inflammatory effects.
+However, the molecular targets underlying the pharmacological effects of KPV-related BDSs
+remain unknown.
+
+Although the nominator did not submit, and FDA did not identify pharmacokinetic studies of
+KPV (free base) or KPV acetate, an in-vitro study reported that KPV (unidentified form) does
+not permeate through cadaver human skin. This low skin permeability to KPV could limit the
+systemic toxicity of KPV applied topically to the skin. However, it could also limit the potential
+effectiveness of KPV as a topical therapeutic agent because it could prevent the penetration of
+KPV through the stratum corneum into the lower layers of the epidermis. Strategies that can
+breach the tightness of the skin (e.g., iontophoresis and microneedle abrasion) have been shown
+to increase the skin permeability to KPV and facilitate its access to epidermal layers below the
+stratum corneum in vitro. It remains to be determined whether such strategies may also increase
+the systemic absorption of topically administered KPV (free base) or KPV acetate in vivo and,
+thereby, facilitate the development of untoward systemic effects. At the time of this evaluation,
+the nominator did not submit, and FDA did not identify nonclinical toxicity studies to inform
+safety considerations for potential clinical uses of KPV (free base) or KPV acetate applied
+topically to the skin.
+
+        2. Human Safety
+The following databases were consulted in the preparation of this section: PubMed, Embase,
+FDA Adverse Event Reporting System (FAERS), Human Foods Program (HFP) 45 Human Foods
+Complaint System (HFCS) 46, ClinicalTrials.gov, professional healthcare organization websites,
+and various online clinical references and websites. Note that throughout this section, the
+substance will be generally referred to as KPV unless otherwise specified as free base or acetate
+salt.
+The nomination did not include, and FDA did not find information on products containing KPV
+(free base) or KPV acetate administered in humans.
+
+
+44
+   Studies that assess cancer risk in animals are used as predictive tools to evaluate the potential for drugs
+to cause tumors when used by humans on a chronic basis. Carcinogenicity studies are conducted if the
+clinical use is expected to be continuous for a minimum of 6 months of life, or if intermittent clinical use
+is expected to total 6 months or more of life. For more information on general approaches for
+carcinogenicity studies, please refer to FDA’s guidance for industry S1B Testing for Carcinogenicity of
+Pharmaceuticals (July 1997), available at: https://www.fda.gov/media/71935/download.
+45
+   Formerly the Center for Food Safety and Nutrition (CFSAN).
+46
+   Formerly the CFSAN Adverse Event Reporting System (CAERS).
+
+
+
+                                                                                                             25
+        a. Pharmacokinetic Data
+FDA did not identify clinical studies in humans assessing pharmacokinetics or
+pharmacodynamics of KPV (free base) or KPV acetate via any route of administration.
+
+        b. Reported Adverse Reactions (Case Reports and Anecdotal Cases Assessing Safety)
+
+FAERS
+The Office of Surveillance and Epidemiology (OSE) conducted a search of the FAERS database
+and medical literature for reports of adverse events (AEs) associated with KPV through
+December 3, 2025. The FAERS search did not retrieve any reports and the literature search did
+not identify any cases of adverse events. 47,48
+
+HFCS
+Human Foods Program collects reports of AEs and product complaint reports submitted to FDA
+for food, dietary supplements, and cosmetics in the HFCS. A search of HFCS was conducted for
+AEs associated with KPV for the date range of 1/1/2004 to 12/3/2025 and did not retrieve cases
+where KPV was administered.
+
+We did not find case reports on the use of KPV in humans.
+
+        c. Clinical Studies Assessing Safety
+The nomination did not include, and FDA has not identified, any clinical studies or human
+exposure data for KPV via any route of administration. Therefore, potential safety risks
+associated with the use of KPV in humans are unknown.
+
+        d. Other Safety Information
+Immunogenicity and Aggregation Concerns
+FDA has issued guidance regarding immunogenicity assessment for therapeutic protein
+products. 49 The guidance describes immunogenicity as the propensity of a therapeutic protein
+47
+   It is important to note that FAERS data have limitations. Reporting is voluntary. In general, there is no
+certainty that reported adverse event was due to the suspect product. FDA does not require that a causal
+relationship between a product and event be proven, and the report may not always contain enough detail
+to properly evaluate an event. Further, FDA does not receive all adverse event reports that may potentially
+occur with a product, especially for compounded products. Considering these limitations, FDA cannot
+make definitive conclusions regarding the safety of KPV based on FAERS data alone. For additional
+information, see Questions and Answers on the FDA FAERS website, available at:
+https://www.fda.gov/drugs/surveillance/questions-and-answers-fdas-adverse-event-reporting-system-
+faers. Accessed 4/23/2025.
+48
+   Compounders under section 503A of the FD&C Act generally do not report adverse events to FDA.
+FDA encourages compounders, health care professionals, and consumers to report adverse events and
+product quality concerns associated with compounded drugs to FDA’s MedWatch Adverse Event
+Reporting program. Unless an adverse event report is submitted to FDA, the Agency may not be aware of
+adverse events associated with a product compounded under section 503A.
+49
+   See FDA’s guidance for industry Immunogenicity Assessment for Therapeutic Protein Products
+(August 2014), available at: https://www.fda.gov/media/85017/download.
+
+
+
+                                                                                                         26
+product to generate immune responses to itself and to related proteins including endogenous
+proteins or peptides, or to induce immunologically related adverse clinical events. Although this
+guidance addresses therapeutic protein products, the concerns about immunogenicity are also
+relevant to peptides (such as KPV (free base) and KPV acetate), which can similarly elicit an
+immunogenic response.
+
+The consequences of triggering an immune response may range from antibody responses with no
+apparent clinical manifestations to life-threatening and catastrophic reactions. Such outcomes are
+often unpredictable in patients administered therapeutic protein or peptide products. One possible
+consequence of the development of an immune response is the development of neutralizing
+antibody activity that may lead to loss of efficacy or even result in the neutralization of the
+activity of the endogenous peptide counterpart.
+
+In addition, compared to small-molecule APIs, peptides are distinct because they may have an
+inherent tendency to aggregate. Aggregation refers to the processes through which peptides
+associate into larger species consisting of multiple peptide chains. Aggregates can be highly
+ordered or amorphous and the formation can be reversible or irreversible (Zapadka et al. 2017).
+Peptides with as few as two amino acids have been shown to aggregate (Frederix et al. 2011).
+Aggregates can impact the pharmacology of the peptide. In addition, aggregation is a risk factor
+in immunogenicity and for decreased pharmacotherapeutic effect of the drug product due to
+effects on bioavailability, formation of precipitates, or anti-drug antibody production (Ratanji et
+al. 2014).
+
+The nominators did not provide, and FDA did not identify clinical studies or human exposure
+data assessing immunogenicity or aggregation of KPV-related BDSs. Based on available
+information there is insufficient data to conclude that KPV (free base) or KPV acetate do not
+present these risks.
+
+        e. Therapies That Have Been Used for the Condition(s) Under Consideration
+There are FDA-approved drug products that treat the same medical conditions as those proposed
+for KPV-related BDSs. 50
+
+Conclusions: There is lack of clinical and nonclinical safety information on the use of KPV (free
+base) and KPV acetate. FDA is particularly concerned about the lack of any human data on drug
+products containing these substances administered via any route of administration, including lack
+of information to assess immunogenicity or aggregation of KPV-related bulk drug substances.
+Therefore, potential safety risks associated with the use in humans are unknown. There are
+currently available FDA-approved therapies for the management of wounds and to treat various
+inflammatory diseases.
+
+
+
+
+50
+  FDA considers the existence of FDA-approved or OTC monograph drug products to treat the same
+condition as that proposed for the nomination relevant to FDA’s consideration of the safety criterion, to
+the extent there may be therapies that have been demonstrated to be safe under the conditions of use set
+forth in the approved labeling. See 84 FR 4696.
+
+
+
+                                                                                                            27
+III. CONCLUSION AND RECOMMENDATION
+We have balanced the criteria described in section II above to evaluate KPV (free base) and KPV
+acetate for the 503A Bulks List. After considering the information currently available, a
+balancing of the criteria weighs against KPV (free base) or KPV acetate being placed on that list
+based on the following:
+
+1. Conclusions on the physical and chemical characterization for each KPV-related BDS, KPV
+   (free base) and KPV acetate, are included in subsections 1.1 and 1.2.
+
+   1.1.
+   KPV (free base) is reported to be a small peptide consisting of 3 amino acids, including
+   lysine (K), proline (P), and valine (V). As reported in the literature, KPV (free base) is
+   expected to be stable for up to 3 years when stored at -20°C.
+
+   KPV (free base) is deemed to be not well-characterized from the physical and chemical
+   characterization perspective because (1) inconsistent naming conventions that do not follow
+   established chemical nomenclature standards (e.g., INN, IUPAC, USAN), and (2) BDS
+   specific quality control attributes, including impurities, aggregates, and microbiological tests,
+   were not found in the publicly available scientific literature and lack of CoA in the
+   nomination package which are offered as evidence to establishing identity, purity, and
+   impurity profiles of the substance.
+
+   In addition, due to lack of information on the formulation of proposed cream/gel final
+   products, we cannot evaluate how the physical and chemical characteristics, especially
+   limited water solubility (0.7 mg/mL) and particle size, impact the performance of final
+   products.
+
+   1.2.
+   KPV acetate is reported to be an acetate salt of KPV peptide consisting of 3 amino acids. As
+   reported in the literature, KPV acetate is expected to be stable under reported storage
+   conditions (at 2°C to 8°C).
+
+   KPV acetate is deemed to be not well-characterized from the physical and chemical
+   characterization perspective because (1) inconsistent naming conventions that do not follow
+   established chemical nomenclature standards (e.g., INN, IUPAC, USAN), and (2) BDS
+   specific quality control attributes, including impurities, aggregates, and microbiological tests,
+   were not found in the publicly available scientific literature and lack of CoA in the
+   nomination package which are offered as evidence to establishing identity, purity, and
+   impurity profiles of the substance.
+
+   In addition, due to lack of information on the formulation of proposed cream/gel final
+   products, we cannot evaluate how the physical and chemical characteristics, such as particle
+   size, impact the performance of final products.
+
+
+
+
+                                                                                                  28
+2. Available literature indicates that the extent of KPV (free base) or KPV acetate use in
+   compounding is unknown. Published literature did not reveal studies in which compounded
+   drug products containing KPV (free base) or KPV acetate were used in humans. OFs have
+   not reported preparing single or multiple-API products containing KPV (free base) or KPV
+   acetate. Internet search results indicate that websites promote KPV as single-API or multiple-
+   API compounded drug products in oral, injectable, topical, and nasal spray formulations.
+   KPV is promoted to treat inflammatory conditions, improve wound healing and skin health,
+   and protect against nerve damage and stroke.
+
+3. There is a lack of evidence to evaluate the effectiveness of KPV (free base) and KPV acetate
+   products for the nominated uses of wound healing and inflammatory conditions. The
+   nomination did not include, and FDA did not find any information on the use of these
+   substances administered in humans. Acute and chronic wounds as well as inflammatory
+   conditions are associated with morbidity and can be serious or life-threatening. In addition,
+   there are currently various FDA-approved therapies with established efficacy for the
+   management of wounds and treatment of various inflammatory diseases including psoriasis
+   and eczema.
+
+4. There is a lack of clinical and nonclinical safety information on the use of KPV (free base)
+   and KPV acetate. FDA is particularly concerned about the lack of any human data on drug
+   products containing these substances administered via any route of administration, including
+   lack of information to assess immunogenicity or aggregation of KPV-related substances.
+   Therefore, potential safety risks associated with the use in humans are unknown. There are
+   currently available FDA-approved therapies for the management of wounds and to treat
+   various inflammatory diseases.
+
+On balance, the physicochemical characterization, information on historical use, lack of any
+effectiveness and safety information in humans for both KPV (free base) and KPV acetate weigh
+against their being added to the 503A Bulks List. In particular, FDA’s proposal is based on the
+fact that these substances are not well-characterized from a physical and chemical
+characterization perspective, the extent of use in compounding is unknown, and there is non-
+existing information on the use of these substances administered in humans to make a conclusion
+on their clinical safety and effectiveness. There are currently FDA-approved therapies for the
+management of wounds and for the treatment of various inflammatory diseases. Accordingly, we
+propose not adding KPV (free base) or KPV acetate to the 503A Bulks List.
+
+
+
+
+                                                                                               29
+IV. REFERENCES
+Böhm, M and T Luger, 2019, Are Melanocortin Peptides Future Therapeutics for Cutaneous
+Wound Healing? Exp Dermatol, 28(3):219-224.
+
+Bonfiglio, V, G Camillieri, T Avitabile, GM Leggio and F Drago, 2006, Effects of the COOH-
+Terminal Tripeptide Alpha-MSH(11-13) on Corneal Epithelial Wound Healing: Role of Nitric
+Oxide, Exp Eye Res, 83(6):1366-1372.
+
+Brzoska, T, TA Luger, C Maaser, C Abels and M Böhm, 2008, Α Melanocyte-Stimulating
+Hormone and Related Tripeptides: Biochemistry, Antiinflammatory and Protective Effects in
+Vitro and in Vivo, and Future Perspectives for the Treatment of Immune-Mediated Inflammatory
+Diseases, Endocr Rev, 29(5):581-602.
+
+Dalmasso, G, L Charrier-Hisamuddin, HT Nguyen, Y Yan, S Sitaraman and D Merlin, 2008,
+Pept1-Mediated Tripeptide KPV Uptake Reduces Intestinal Inflammation, Gastroenterology,
+134(1):166-178.
+
+Frederix, PW, RV Ulijn, NT Hunt and T Tuttle, 2011, Virtual Screening for Dipeptide
+Aggregation: Toward Predictive Tools for Peptide Self-Assembly, J Phys Chem Lett,
+2(19):2380-2384.
+
+Getting, SJ, HB Schiöth and M Perretti, 2003, Dissection of the Anti-Inflammatory Effect of the
+Core and C-Terminal (KPV) α-Melanocyte-Stimulating Hormone Peptides, J Pharmacol Exp
+Ther, 306(2):631-637.
+
+Hiltz, ME and JM Lipton, 1989, Antiinflammatory Activity of a COOH-Terminal Fragment of
+the Neuropeptide Alpha-MSH, Faseb J, 3(11):2282-2284.
+
+Luger, TA and T Brzoska, 2007, Alpha-MSH Related Peptides: A New Class of Anti-
+Inflammatory and Immunomodulating Drugs, Ann Rheum Dis, 66 Suppl 3(Suppl 3):iii52-55.
+
+Lyson, K, G Ceriani, A Takashima, A Catania and JM Lipton, 1994, Binding of Anti-
+Inflammatory Alpha-Melanocyte-Stimulating-Hormone Peptides and Proinflammatory
+Cytokines to Receptors on Melanoma Cells, Neuroimmunomodulation, 1(2):121-126.
+
+Mandrika, I, R Muceniece and JE Wikberg, 2001, Effects of Melanocortin Peptides on
+Lipopolysaccharide/Interferon-Gamma-Induced NF-Kappab DNA Binding and Nitric Oxide
+Production in Macrophage-Like Raw 264.7 Cells: Evidence for Dual Mechanisms of Action,
+Biochem Pharmacol, 61(5):613-621.
+
+Pahwa, R, A Goyal and I Jialal, 2025, Chronic Inflammation, Statpearls.
+
+Pawar, K, CS Kolli, VK Rangari and RJ Babu, 2017, Transdermal Iontophoretic Delivery of
+Lysine-Proline-Valine (KPV) Peptide across Microporated Human Skin, J Pharm Sci,
+106(7):1814-1820.
+
+
+
+
+                                                                                              30
+Ratanji, KD, JP Derrick, RJ Dearman and I Kimber, 2014, Immunogenicity of Therapeutic
+Proteins: Influence of Aggregation, J Immunotoxicol, 11(2):99-109.
+
+Singh, M and K Mukhopadhyay, 2014, Alpha-Melanocyte Stimulating Hormone: An Emerging
+Anti-Inflammatory Antimicrobial Peptide, Biomed Res Int, 2014:874610.
+
+Tatro, JB and ML Entwistle, 1994, Heterogeneity of Brain Melanocortin Receptors Suggested by
+Differential Ligand Binding in Situ, Brain Res, 635(1-2):148-158.
+
+Zapadka KL, FJ Becher, AL Gomes Dos Santos and SE Jackson, 2017, Factors affecting the
+physical stability (aggregation) of peptide therapeutics, Interface Focus, 7(6).
+
+Zhao, Y, L Huang, G Lin, M Tong, Y Xie, H Pan, J Shangguan, Q Yao, S Xu and H Xu, 2022,
+Skin-Adaptive Film Dressing with Smart-Release of Growth Factors Accelerated Diabetic
+Wound Healing, Int J Biol Macromol, 222(Pt B):2729-2743.
+
+
+
+
+                                                                                          31
+V. APPENDIX
+APPENDIX 1: GENTLE GIANT CARE LLC, KPV (ACCESSED 2/10/24)
+
+
+
+
+                                                            32
+    KPV–Related
+ Bulk Drug Substances
+ (KPV (Free Base) and
+KPV acetate) Nomination
+
+
+
+
+                          33
+                                                    •   CHEBI:160254
+
+                                                    •   ZINC2012357
+
+                                                    •   (2S)-2-[[(2S)-1-[(2S)-2,6-
+                                                        diaminohexanoyl]pyrrolidine-2-
+                                                        carbonyl]amino]-3-methylbutanoic acid
+
+                                                    •   N-[Hydroxy(1-lysylpyrrolidin-2-
+                                                        yl)methylidene]valine
+
+                                                                   Molecular Formula:
+                                                                       C16H30N4O4
+
+                                                                 Amino Acid Sequence:
+                                                                     Lys-Pro-Val
+
+                                                                          CAS:
+                                                                       67727-97-3
+
+What is the common name of the substance?                                  KPV
+
+
+Does the substance have a UNII code?
+                                                                            NO
+
+What is the chemical grade of the substance?            Provided by FDA Registered Supplier/COA
+
+                                                     Assay, Description, Solubility, etc.; Example of
+What is the strength, quality, stability, and
+purity of the ingredient?                          Certificate of Analysis for this chemical is attached.
+
+How is the ingredient supplied?                                    Lyophilized Powder
+Is the substance recognized in foreign
+pharmacopeias or registered in other                                        No
+countries?
+Has information been submitted about the
+substance to the USP for consideration of drug                              No
+monograph development?
+What dosage form(s) will be compounded using
+                                                                        Cream/Gel
+the bulk drug substance?
+What strength(s) will be compounded from the
+                                                                           0.1%
+nominated substance?
+What is the anticipated route(s) of
+administration of the compounded drug                                     Topical
+product(s)?
+                                                 Hiltz ME, Lipton JM. Antiinflammatory activity of a
+                                                 COOH-terminal fragment of the neuropeptide
+                                                 alpha-MSH. FASEB J. 1989 Sep;3(11):2282-4. PMID:
+Are there safety and efficacy data on            2550304.
+compounded drugs using the nominated
+substance?                                       Brzoska T, Luger TA, Maaser C, Abels C, Böhm M.
+                                                 Alpha-melanocyte-stimulating hormone and
+                                                 related tripeptides: biochemistry, antiinflammatory
+                                                 and protective effects in vitro and in vivo, and
+                                                                                                            35
+                                          future perspectives for the treatment of immune-
+                                          mediated inflammatory diseases. Endocr Rev. 2008
+                                          Aug;29(5):581-602. doi: 10.1210/er.2007-0027.
+                                          Epub 2008 Jul 8. PMID: 18612139.
+
+
+                                          Luger TA, Brzoska T. alpha-MSH related peptides: a
+                                          new class of anti-inflammatory and
+                                          immunomodulating drugs. Ann Rheum Dis. 2007
+                                          Nov;66 Suppl 3(Suppl 3):iii52-5. doi:
+                                          10.1136/ard.2007.079780. PMID: 17934097; PMCID:
+                                          PMC2095288.
+
+
+                                          de Souza KS, Cantaruti TA, Azevedo GM Jr, Galdino
+                                          DA, Rodrigues CM, Costa RA, Vaz NM, Carvalho CR.
+                                          Improved cutaneous wound healing after
+                                          intraperitoneal injection of alpha-melanocyte-
+                                          stimulating hormone. Exp Dermatol. 2015
+                                          Mar;24(3):198-203. doi: 10.1111/exd.12609. Epub
+                                          2015 Jan 12. PMID: 25431356.
+
+
+                                          Brzoska T, Böhm M, Lügering A, Loser K, Luger TA.
+                                          Terminal signal: anti-inflammatory effects of α-
+                                          melanocyte-stimulating hormone related peptides
+                                          beyond the pharmacophore. Adv Exp Med Biol.
+                                          2010;681:107-16. doi: 10.1007/978-1-4419-6354-
+                                          3 8. PMID: 21222263.
+
+
+                                          Getting SJ, Schiöth HB, Perretti M. Dissection of the
+                                          anti-inflammatory effect of the core and C-terminal
+                                          (KPV) alpha-melanocyte-stimulating hormone
+                                          peptides. J Pharmacol Exp Ther. 2003
+                                          Aug;306(2):631-7. doi: 10.1124/jpet.103.051623.
+                                          Epub 2003 May 15. PMID: 12750433.
+
+                                          Pawar K, Kolli CS, Rangari VK, Babu RJ. Transdermal
+                                          Iontophoretic Delivery of Lysine-Proline-Valine
+                                          (KPV) Peptide Across Microporated Human Skin. J
+                                          Pharm Sci. 2017 Jul;106(7):1814-1820. doi:
+                                          10.1016/j.xphs.2017.03.017. Epub 2017 Mar 24.
+                                          PMID: 28343991.
+
+Has the bulk drug substance been used
+                                                                   YES
+previously to compound drug product(s)?
+What is the proposed use for the drug       Wound healing, Inflammatory conditions (psoriasis,
+product(s) to be compounded with the                           eczema, etc)
+nominated substance?
+
+
+
+                                                                                                  36
+What is the reason for use of a compounded
+drug product rather than an FDA-approved     no FDA-approved product available
+product?
+Is there any other relevant information?         Added as an Attachment
+
+
+
+
+                                                                                 37
+                   References included with nomination FDA-2015-N-3534-0294
+Capsoni F, Ongari A, Colombo G, Turcatti F, Catania A. The synthetic melanocortin (CKPV)2 exerts
+broad anti-inflammatory effects in human neutrophils. Peptides. 2007 Oct;28(10):2016-22. doi:
+10.1016/j.peptides.2007.08.001. Epub 2007 Aug 7. PMID: 17850921.
+Dalmasso G, Charrier-Hisamuddin L, Nguyen HT, Yan Y, Sitaraman S, Merlin D. PepT1-mediated
+tripeptide KPV uptake reduces intestinal inflammation. Gastroenterology. 2008 Jan;134(1):166-78. doi:
+10.1053/j.gastro.2007.10.026. Epub 2007 Oct 17. PMID: 18061177; PMCID: PMC2431115.
+
+
+
+
+                                                                                                        38
