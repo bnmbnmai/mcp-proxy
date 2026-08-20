@@ -1,0 +1,8 @@
+HTTP/1.1 406 Not Acceptable
+Not acceptable format requested via ?_format=json
+
+{
+  "@type": "GovernmentOrganization",
+  "name": "Financial Crimes Enforcement Network",
+  "url": "https://www.fincen.gov/news/enforcement-actions?_format=json"
+}
