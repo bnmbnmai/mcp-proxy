@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<rss version="2.0">
+  <channel>
+    <title>OFAC RSS teaser — not the enforcement-release TEXT</title>
+    <item>
+      <title>Rice Lake Weighing Systems, Inc. — 08/12/2026 — $60,764</title>
+      <link>https://ofac.treasury.gov/media/936706/download</link>
+      <guid>https://ofac.treasury.gov/media/936706/download</guid>
+      <description>Chart/teaser/RSS listing only. Not the official PDF TEXT.</description>
+    </item>
+  </channel>
+</rss>

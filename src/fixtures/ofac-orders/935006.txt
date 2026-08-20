@@ -1,0 +1,210 @@
+                       DEPARTMENT OF THE TREASURY
+                         OFFICE OF FOREIGN ASSETS CONTROL
+
+
+
+
+Enforcement Release: February 12, 2026
+
+
+ IMG Academy, LLC Settles with OFAC for $1.7 Million Related to Apparent Violations of
+                             Counternarcotics Sanctions
+
+IMG Academy, a school and athletic training facility headquartered in Bradenton, Florida, has
+agreed to pay $1,720,000 to settle its potential civil liability for apparent violations of OFAC
+counternarcotics sanctions. Over five consecutive years, IMG Academy repeatedly transacted with
+two individuals whom OFAC sanctioned based upon their ties to a sanctioned Mexican-based drug
+cartel.
+
+The settlement amount reflects OFAC’s determination that IMG Academy’s apparent violations
+were non-egregious and not voluntarily self-disclosed. It also reflects IMG Academy’s substantial
+cooperation with OFAC and remedial measures taken since IMG Academy became aware of the
+apparent violations. More broadly, this enforcement action highlights the importance of institutions
+across a wide variety of sectors, including academic institutions, implementing effective, risk-based
+controls to avoid sanctions violations and prevent illicit actors from obtaining benefits in the United
+States.
+
+Background and Description of the Apparent Violations
+
+IMG Academy offers elite academic and sports training opportunities to U.S. and international
+student-athletes through full-time boarding school programs, professional training programs, camps,
+online coaching services, and college sports recruiting resources. IMG Academy’s student body
+includes athletes from all over the world, and it has recruiting offices or representatives in Mexico,
+China, Japan, and South Korea.
+
+Between 2018 and 2022, IMG Academy entered into yearly contracts, in the form of tuition
+enrollment agreements (TEAs or “agreements”), with two Specially Designated National (SDN)
+individuals—hereafter “SDN 1” and “SDN 2,” or “the SDNs” collectively—sanctioned under the
+Foreign Narcotics Kingpin Designation Act for providing financial support and services to a
+sanctioned Mexican Drug Trafficking Organization (DTO) and/or to its principal leader. IMG
+Academy also received and processed tuition and related payments pursuant to these agreements
+throughout the course of its relationship with the SDNs. These agreements and transactions were
+undertaken for the enrollment and attendance of the SDNs’ two student-athlete children.
+
+                         IMG Academy TEAs with Sanctioned Individuals
+
+In January 2018, SDN 1 enrolled their child (“Student-Athlete 1”) in one of IMG Academy’s
+boarding programs and entered into a TEA with IMG Academy. For each of the five academic
+years that followed, IMG Academy and SDN 1 renewed their TEAs annually until Student-Athlete
+1’s graduation in Spring 2023. SDN 1’s payment obligations pursuant to each TEA ranged from
+$47,026 for half a semester to $98,867 for a full academic year of Student-Athlete 1’s enrollment.
+In July 2020, SDN 2 enrolled their child (“Student-Athlete 2”) into one of IMG Academy’s student-
+athlete boarding programs and entered into a TEA with IMG Academy. In the two academic years
+that followed, IMG Academy and SDN 2 renewed their TEAs annually for each subsequent
+academic year until Student-Athlete 2 withdrew from the program in June 2022. SDN 2’s payment
+obligations pursuant to each TEA ranged from $100,549 to $102,235 for each full academic year of
+Student-Athlete 2’s enrollment.
+
+Each TEA obligated SDN 1 and SDN 2 to be unconditionally responsible for payment of their
+respective child’s account, which included charges for tuition, lodging, and ancillary fees and
+expenses incurred by each child during their attendance.
+
+                            Transactions for the Benefit of Blocked TEAs
+
+SDN 1 and SDN 2 primarily satisfied their payment obligations to IMG Academy through third-
+party wire transfers and credit card payments that the SDNs placed on file with IMG. Specifically,
+IMG Academy would receive wire transfers from non-designated third-party individuals and
+entities, primarily located in Mexico, into its bank account at a U.S. financial institution, for further
+credit to each student-athlete account. IMG Academy would also charge payments to credit cards
+that were on file for each student-athlete. In addition, when a positive end-of-year balance existed
+on either student-athlete’s account, IMG Academy would apply the amounts from one academic
+school year to the next to satisfy a portion of IMG Academy’s new TEA with the respective SDN.
+
+As a result of the conduct described above, between 2019 and 2025, IMG Academy dealt in the
+property or interests in property of SDN 1 and SDN 2, on 89 occasions, in apparent violation of
+31 C.F.R. § 598.202 of the Foreign Narcotics Kingpin Sanctions Regulations (FNKSR) (the
+“Apparent Violations”) by entering into three TEAs with SDN 1, three TEAs with SDN 2, and by
+engaging in 83 transactions to satisfy tuition and related payment obligations associated with IMG
+Academy’s TEAs with SDN 1 and SDN 2.
+
+Penalty Calculations and General Factors Analysis
+
+OFAC determined that IMG Academy did not voluntarily self-disclose the Apparent Violations and
+that the Apparent Violations constitute a non-egregious case. Although IMG Academy informed
+OFAC of the Apparent Violations as soon as it became aware of them, OFAC had already initiated
+an investigation at the time IMG Academy made its disclosure. Accordingly, under OFAC’s
+Economic Sanctions Enforcement Guidelines (“Enforcement Guidelines”), 31 C.F.R. Part 501,
+app. A., the base civil monetary penalty applicable in this matter equals the applicable schedule
+amount, which is $1,720,000.
+
+The settlement amount of $1,720,000 reflects OFAC’s consideration of the General Factors under
+the Enforcement Guidelines.
+
+OFAC determined the following to be aggravating factors:
+
+
+
+
+                                                    2
+   (1) IMG Academy demonstrated reckless disregard for U.S. sanctions requirements in
+       committing the Apparent Violations, including by failing to conduct sanctions screening
+       checks on its counterparties. During the application process, enrollment stage, and upon
+       signing of each TEA, the SDNs provided full name details that matched their entries on the
+       SDN List. Minimal due diligence at any point throughout this process would have revealed
+       that these customers were sanctioned. This failure allowed numerous violations to occur
+       over an extended period of time.
+
+   (2) Although IMG may have lacked actual knowledge that the individuals with whom it dealt
+       with were sanctioned, IMG Academy did have actual knowledge of the underlying
+       transactions giving rise to the apparent violations. IMG Academy entered into annual
+       tuition enrollment agreements directly with the SDNs, invoiced the SDNs by name, and
+       routinely communicated with each of them about payment obligations or the processing of
+       overpayments, credits, or refunds into each respective student athlete account.
+
+   (3) As a result of IMG Academy’s conduct, designated individuals who provided financial
+       support and services to a sanctioned Mexican drug cartel were able to conduct commerce
+       with U.S. persons and gain access to the U.S. financial system. This conduct allowed the
+       children of two of the designated DTO’s leaders to obtain elite academic and athletic
+       training services in the United States.
+
+OFAC determined the following to be mitigating factors:
+
+   (1) IMG Academy has not received a Penalty Notice or Finding of Violation from OFAC in the
+       five years preceding the earliest date of the transactions giving rise to the Apparent
+       Violations.
+
+   (2) IMG Academy took immediate remedial steps after learning of the Apparent Violations and
+       has since developed and implemented an OFAC sanctions compliance program.
+       Specifically, after an ownership change in June 2023, IMG Academy hired, among other
+       leadership positions, a new Chief Legal Officer who conducted a comprehensive lookback
+       and implemented a risk-based sanctions compliance program.
+
+   (3) IMG Academy cooperated with OFAC by timely and substantively responding to all
+       requests for information. IMG Academy also agreed to toll the statute of limitations
+       throughout the course of OFAC’s investigation.
+
+Compliance Considerations
+
+This case highlights the pervasiveness of sanctions risk across a wide variety of sectors and
+institutions. Even for entities operating largely domestically, the presence of international
+touchpoints creates opportunities for impermissible dealings with sanctioned actors, inadvertently or
+otherwise. Sanctions risk can vary tremendously based upon numerous factors. While factors like
+sector and geographic location often predominate, they are by no means exclusive. Academic
+institutions are not immune. Sanctioned persons, like many others, may wish to avail themselves or
+their families of the opportunities available in the United States, including potentially to distance
+
+
+
+                                                 3
+their children from their own illicit activities. Consequently, academic institutions should be on the
+lookout for payment arrangements that may involve sanctioned persons.
+
+In addition to courting and enrolling students from around the world, schools and universities often
+host visiting faculty from other countries and engage in international exchange programs. They
+may collaborate with foreign institutions, maintain international research and commercial ties,
+invest in companies located abroad, or operate global campuses. Certain of these activities may be
+exempt from sanctions or covered by a general license, but others are not. As with any other
+enterprise, academic institutions must be sure they understand all sources of sanctions risk and
+implement effective controls to ensure their activities do not violate U.S. sanctions prohibitions.
+
+Strong management commitment and a comprehensive risk assessment are the logical first steps.
+Academic institutions face some unique risks given the variety of parties who may satisfy financial
+obligations for a student. As a starting point, it may be advisable to screen students, counterparties
+to tuition agreements, and payors against OFAC’s SDN List, in addition to using available
+information to understand whether any associated parties are located in a comprehensively
+sanctioned jurisdiction or otherwise have ties to a sanctioned person or entity. A determination can
+then be made regarding whether the activity is exempt or authorized, or whether applying for a
+specific license from OFAC is appropriate. Academic institutions may also wish to conduct regular
+independent testing and auditing to ensure their controls are operating effectively and provide
+training for all relevant personnel to facilitate ongoing compliance. Such steps, if taken in earnest,
+may help substantially reduce the chances of violating U.S. sanctions.
+
+OFAC Enforcement and Compliance Resources
+
+On May 2, 2019, OFAC published A Framework for OFAC Compliance Commitments in order to
+provide organizations subject to U.S. jurisdiction, as well as foreign entities that conduct business in
+or with the United States or U.S. persons, or that use goods or services exported from the United
+States, with OFAC’s perspective on the essential components of a sanctions compliance program.
+The Framework also outlines how OFAC may incorporate these components into its evaluation of
+apparent violations and resolution of investigations resulting in settlements. The Framework
+includes an appendix that offers a brief analysis of some of the root causes of apparent violations of
+U.S. economic and trade sanctions programs OFAC has identified during its investigative process.
+
+Information concerning the civil penalties process can be found in the OFAC regulations governing
+each sanctions program; the Reporting, Procedures, and Penalties Regulations, 31 C.F.R. part 501;
+and the Economic Sanctions Enforcement Guidelines, 31 C.F.R. part 501, app. A. These
+references, as well as recent civil penalties and enforcement information, can be found on OFAC’s
+website at https://ofac.treasury.gov/civil-penalties-and-enforcement-information.
+
+Whistleblower Program
+
+The U.S. Department of the Treasury’s Financial Crimes Enforcement Network (FinCEN)
+maintains a whistleblower incentive program for violations of OFAC-administered sanctions, in
+addition to violations of the Bank Secrecy Act. Individuals located in the United States or abroad
+who provide information may be eligible for awards, if the information they provide leads to a
+
+
+
+                                                   4
+successful enforcement action that results in monetary penalties exceeding $1,000,000 and the
+statutory requirements in 31 U.S.C. 5323 are otherwise met. The incentive program is available for
+whistleblowers providing information relating to potential violations at any type of enterprise in any
+commercial sector. FinCEN is currently accepting whistleblower tips.
+
+For more information regarding OFAC regulations, please go to: https://ofac.treasury.gov/.
+
+
+
+
+                                                  5
+

@@ -1,0 +1,196 @@
+                           DEPARTMENT OF THE TREASURY
+                             OFFICE OF FOREIGN ASSETS CONTROL
+
+
+Enforcement Release: August 12, 2026
+
+     Rice Lake Weighing Systems Settles with OFAC for Iran-Related Apparent Violations
+
+Rice Lake Weighing Systems (“Rice Lake”), a Wisconsin-based manufacturer and distributor of
+scales and other weight-related products and equipment, has agreed to pay $60,764 to settle its and
+its Italian subsidiary’s potential civil liability for eight apparent violations of OFAC sanctions on
+Iran. The apparent violations occurred when Rice Lake’s Italian subsidiary exported weighing
+equipment from Italy to Iran through a distributor in the United Arab Emirates with the knowledge
+that these goods were ultimately destined for Iran. The settlement amount reflects OFAC’s
+determination that these apparent violations were non-egregious and voluntarily self-disclosed.
+
+Description of the Apparent Violations
+
+In November 2016, Rice Lake acquired an Italian company, Dini Argeo S.r.l. (“Dini”), which
+manufactures and distributes a variety of products used in weighing equipment. At the time, Dini
+had a business relationship with an Iranian weighing systems company, Pand Weighing Control
+(“Pandtec”), to which it had sold products prior to being acquired by Rice Lake. Dini continued
+such sales after the acquisition, as authorized under General License (GL) H, then in effect. 1
+
+Following the May 8, 2018 announcement of the United States’ withdrawal from the Joint
+Comprehensive Plan of Action with Iran and the revocation of GL H, 2 Dini—an entity owned or
+controlled by a U.S. person—was no longer authorized to sell its goods to Iran directly or indirectly.
+
+On August 8, 2018, Rice Lake’s Import Export Coordinator emailed Dini’s General Manager to
+convey that sales to Iran by Rice Lake’s foreign subsidiaries were now prohibited. The English-
+language email stated, in part, “you are prohibited from any transactions involving Iran, or a citizen
+of Iran, no matter where located,” and excerpted language from the Iranian Transactions and
+Sanctions Regulations (ITSR). Rice Lake did not include any further explanation or translation.
+Moreover, Rice Lake does not appear to have taken sufficient steps to ensure its subsidiary
+understood the prohibitions, took steps to comply with them, or monitor their adherence to the
+renewed restrictions.
+
+In keeping with the instruction from Rice Lake, Dini stopped selling directly to Iranian customers at
+that time. Dini personnel, however, do not appear to have understood that selling goods indirectly
+to Iran was also prohibited, as would become evident the following year. Between June 2019 and
+November 2021, Dini fulfilled eight orders of weighing and scale equipment and components worth
+approximately $121,527 to a United Arab Emirates (UAE)-based distributor of weighing equipment
+with the knowledge that the UAE distributor would reexport them to Iran. Although sales
+documents did not identify Pandtec as the ultimate recipient of the goods, there were numerous
+
+1
+  On January 16, 2016, OFAC issued GL H authorizing, subject to certain conditions, an entity owned or controlled by a
+U.S. person and established or maintained outside the United States to engage in transactions with any person subject to
+the jurisdiction of the Government of Iran that would otherwise be prohibited by 31 C.F.R. § 560.215.
+2
+  OFAC revoked GL H on June 27, 2018 and issued a general license that authorized, through November 4, 2018, the
+wind down of activities involving Iran that were previously authorized pursuant to GL H.
+indications that the goods in question were continuing to reach Pandtec in Iran. For example, on at
+least five occasions in 2019 and 2020, a Pandtec employee emailed Dini employees with questions
+about Rice Lake’s products they were potentially interested in or with technical questions about
+products they had previously purchased. Additionally, all emails from the Pandtec employees
+throughout this period included references to Iran in the signature block. Dini personnel thus knew
+or had reason to know that these goods would be reexported to Pandtec, the Iranian company with
+which Dini had previously had a direct relationship. In addition, the UAE distributor eventually
+revealed that the goods were ultimately intended for Pandtec.
+
+In late 2021, Rice Lake received a tip that its products were being sold in Iran and immediately
+initiated an investigation. Rice Lake soon found that the sales by Dini to the UAE distributor were
+likely being diverted to Iran and promptly directed Dini to cease all future sales to the UAE
+distributor. Rice Lake subsequently disclosed the violations to OFAC and began implementing
+compliance enhancements.
+
+Dini’s indirect exportation of weighing equipment on eight occasions between June 2019 and
+November 2021 with the knowledge that those goods were ultimately destined for Iran appears to
+have violated ITSR § 560.215(a) because Dini knowingly engaged in trade-related transactions with
+a person subject to the jurisdiction of the Government of Iran that would be prohibited by ITSR
+§§ 560.204(a) and 560.206(a)(2) if engaged in by a U.S. person (the “Apparent Violations”).
+
+Penalty Calculations and General Factors Analysis
+
+OFAC determined that the Apparent Violations were voluntarily self-disclosed and constitute a
+non-egregious case. Accordingly, under OFAC’s Economic Sanctions Enforcement Guidelines (the
+“Enforcement Guidelines”), 31 C.F.R. part 501, app. A, the base civil monetary penalty applicable
+in this matter equals the sum of one-half of the transaction value for each apparent violation, which
+is $60,764.
+
+The settlement amount of $60,764 reflects OFAC’s consideration of the General Factors under the
+Enforcement Guidelines.
+
+OFAC determined the following to be aggravating factors:
+
+   (1) Dini acted with reckless disregard for U.S. sanctions requirements by engaging in indirect
+       sales to Iran that it should have known were just as prohibited as direct sales were. Rice
+       Lake failed to exercise due caution or care for U.S. sanctions requirements in failing to
+       provide sufficient explanation concerning the risks of indirect dealings with Iran or guidance
+       regarding the practical application of the prohibition.
+
+   (2) Dini knew or had reason to know that the goods sold were ultimately destined for Iran, even
+       if it mistakenly believed that such sales were permissible.
+
+   (3) The weighing products sold were of the kind used by commercial businesses and therefore
+       likely furthered economic activity within Iran. The sales occurred over a period of more
+       than two years.
+
+                                                 2
+OFAC determined the following to be mitigating factors:
+
+    (1) Neither Rice Lake nor Dini have been the subject of any OFAC enforcement action in the
+        five years preceding the earliest date of the transactions giving rise to the Apparent
+        Violations.
+
+    (2) The transactions at issue represent only a very small portion of either Rice Lake or Dini’s
+        sales during the relevant time period.
+
+    (3) Rice Lake took prompt remedial measures. After learning of the potential indirect sales to
+        Iran, Rice Lake immediately began a comprehensive and through investigation with the
+        assistance of outside counsel knowledgeable in U.S. sanctions, including identifying any
+        other possible apparent violations. Rice Lake also worked with outside counsel to design
+        and implement compliance program improvements designed to address the failures that gave
+        rise to the apparent violations; specifically, the training of subsidiary employees, the vetting
+        of end distributors, and adding reexport control warnings to its commercial invoices.
+
+    (4) Rice Lake was highly cooperative with OFAC’s investigation, responding to multiple OFAC
+        inquiries and document requests in a timely fashion. Rice Lake also agreed to toll the statute
+        of limitations.
+
+Compliance Considerations
+
+This enforcement action highlights the sanctions risks U.S. companies with global operations face
+for the activities of their subsidiaries or affiliates. This is especially the case with sanctions
+programs like Iran that require foreign entities owned or controlled by U.S. persons to comply to
+nearly the same extent as their U.S. parent. 3 These considerations are separate and apart from the
+liability foreign companies face under other prohibitions that can apply to non-U.S. persons, such as
+for causing U.S. persons to violate sanctions. U.S. individuals and entities should ensure that any
+foreign subsidiaries that they own or control understand and fully comply with the sanctions
+prohibitions that apply to them. The compliance failures of a foreign subsidiary can create liability
+for its U.S. parent. This case also highlights the ongoing risk of goods or items being re-exported to
+Iran by the non-U.S. subsidiary of a U.S. company.
+
+U.S. companies should ensure their foreign subsidiaries implement effective, risk-based controls to
+mitigate any sanctions risks. This includes making sure that all relevant personnel, not just
+management, within foreign subsidiaries understand how OFAC sanctions might impact their day-
+to-day operations. Misunderstandings can give rise to liability, and enforcement action may be
+appropriate where reasonable steps were not taken to avoid them. Clear guidance to and regular
+training of all relevant personnel, not just managers, are essential core elements of any effective
+sanctions compliance program. Guidance and training should be designed to empower employees
+who encounter the risks and should be tailored to take into account key differences such as local
+
+3
+ See, e.g., Department of Commerce, Department of the Treasury, and Department of Justice, “Tri-Seal Compliance
+Note: Obligations of foreign-based persons to comply with U.S. sanctions and export control laws” (Mar. 6, 2024);
+Frequently Asked Question (FAQ) 11; and FAQ 644.
+
+                                                         3
+language and business customs. Oversight controls, such as centralized monitoring and regular
+testing and auditing, also provide critical opportunities to identify weaknesses and take corrective
+action before violations occur. Controls should also take into account the specific risk factors
+facing a given entity. For example, companies with counterparties located in jurisdictions known to
+be of high risk for diversion, such as the UAE, should pay particular attention to the risks of indirect
+dealings with parties subject to sanctions.
+
+Finally, this case underscores the importance of paying careful attention to developments in the
+sanctions programs OFAC administers and enforces. Sanctions risk is dynamic and can change
+quickly for numerous reasons, including because the prohibitions themselves can shift.
+
+OFAC Enforcement and Compliance Resources
+
+On May 2, 2019, OFAC published A Framework for OFAC Compliance Commitments (the
+“Framework”) in order to provide organizations subject to U.S. jurisdiction, as well as foreign
+entities that conduct business in or with the United States or U.S. persons, or that use goods or
+services exported from the United States, with OFAC’s perspective on the essential components of
+a sanctions compliance program. The Framework also outlines how OFAC may incorporate these
+components into its evaluation of apparent violations and resolution of investigations resulting in
+settlements. The Framework includes an appendix that offers a brief analysis of some of the root
+causes of apparent violations of U.S. economic and trade sanctions programs OFAC has identified
+during its investigative process.
+
+Information concerning the civil penalties process can be found in the OFAC regulations governing
+each sanctions program; the Reporting, Procedures, and Penalties Regulations, 31 C.F.R. part 501;
+and the Enforcement Guidelines. These references, as well as recent civil penalties and
+enforcement information, can be found on OFAC’s website at https://ofac.treasury.gov/civil-
+penalties-and-enforcement-information.
+
+Whistleblower Program
+
+The U.S. Department of the Treasury’s Financial Crimes Enforcement Network maintains a
+whistleblower incentive program for violations of OFAC-administered sanctions, in addition to
+other violations of the International Emergency Economic Powers Act, the Foreign Narcotics
+Kingpin Designation Act, the Trading With the Enemy Act, and the Bank Secrecy Act. Individuals
+located in the United States or abroad who provide information about sanctions violations may be
+eligible for awards if the information they provide leads to a successful enforcement action that
+results in monetary penalties exceeding $1,000,000. The incentive program is available for
+whistleblowers providing information relating to potential violations in any commercial sector.
+
+For more information regarding OFAC regulations, please visit: https://ofac.treasury.gov.
+
+
+
+
+                                                   4
+

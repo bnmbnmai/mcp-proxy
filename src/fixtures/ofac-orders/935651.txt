@@ -1,0 +1,262 @@
+                          DEPARTMENT OF THE TREASURY
+                            OFFICE OF FOREIGN ASSETS CONTROL
+
+
+
+Enforcement Release: June 1, 2026
+
+
+    FTI Consulting, Inc., a Global Business Advisory Firm, Settles with OFAC for $1,050,000
+    Related to Apparent Violations of Dealing in Prohibited Debt of Sanctioned Russian Bank
+
+FTI Consulting, Inc. (“FTI”), a Washington D.C.-based international consulting and advisory firm,
+has agreed to pay $1,050,000 to settle its potential civil liability for apparent violations of OFAC
+sanctions targeting Russia’s financial sector. Between April 2019 and May 2021, FTI indirectly
+dealt in prohibited debt of VTB Bank OAO (“VTB”), a Russian state-owned bank, on six occasions.
+These prohibited dealings occurred when FTI extended debt of more than 14 days maturity to VTB
+by indirectly issuing invoices to VTB that went unpaid or were paid long past the expiration of the
+permissible 14-day tenor. All the while, even when invoices remained unpaid for long periods, FTI
+continued to perform valuable services for the benefit of VTB and continued to extend prohibited
+debt to VTB.
+
+The settlement amount reflects OFAC’s determinations that FTI’s apparent violations were non-
+egregious and not voluntarily self-disclosed, as well as FTI’s cooperation with OFAC’s
+investigation. This action also emphasizes the foundational principle, adopted broadly throughout
+OFAC’s regulations and the relevant restrictions here, that it is prohibited to do indirectly what one
+cannot do directly. Firms should ensure that their analysis of sanctions risks is comprehensive and
+accounts for such prohibitions; they should also understand that OFAC will look closely at the
+underlying economic and practical realities governing formal arrangements in considering potential
+violations.
+
+Description of the Apparent Violations
+
+FTI is often engaged by law firms to provide consulting services in support of firms’ clients. In late
+2018, a global law firm reached out to an FTI Senior Managing Director in the economic consulting
+unit about engaging FTI to provide expert economic consulting services on behalf of the law firm’s
+client, VTB, for a civil suit in Singapore. FTI, the law firm, and VTB soon thereafter agreed in
+principle to have FTI support VTB in the litigation, with the actual contract forthcoming. At that
+time, and at all relevant times thereafter, U.S. persons were prohibited from certain dealings with
+VTB because VTB had been added to OFAC’s Sectoral Sanctions Identification (SSI) list.
+Specifically, VTB was subject to Directive 1 under Executive Order (E.O.) 13662 (“Directive 1”),
+which prohibits U.S. persons from dealing in new debt of more than 14 days maturity of any person
+subject to it; the Directive also prohibits any transaction that evades or avoids any of the
+prohibitions set forth in Directive 1. 1 OFAC’s guidance on Directive 1 explains that the issuance of
+an invoice by a U.S. person is an example of new debt subject to the restrictions of Directive 1, that
+U.S. persons are prohibited from extending debt with an impermissible term to a non-sanctioned
+
+
+1
+ On June 29, 2014, Treasury added VTB to its SSI List and subjected it to the restrictions of Directive 1. See
+“Announcement of Additional Treasury Sanctions on Russian Financial Institutions and on a Defense Technology
+Entity,” July 29, 2014.
+party if an SSI entity is an indirect borrower, and that such debt may not be issued “for the benefit
+of” an SSI entity by a U.S. person. 2
+
+In early 2019, FTI’s chief compliance officials, who recognized that dealing with VTB could
+expose FTI to sanctions risks, deliberated over different payment options for the provision of FTI’s
+economic consulting services for VTB. Pursuant to the compliance officials’ advice, and in
+collaboration with the law firm and VTB, FTI set up its engagement in support of VTB to be
+directly with the law firm. As agreed in the attendant letter of engagement between FTI and the law
+firm, FTI would issue invoices to the law firm; upon the law firm’s receipt of payment from VTB
+for FTI’s invoices, the law firm would pay FTI. FTI had no recourse to collect payment from the
+law firm unless and until the firm received payment from VTB for payment of FTI’s invoices. FTI
+also had no recourse against VTB if the invoices went unpaid.
+
+In April 2019, FTI performed work on the litigation matter and sent the law firm two invoices. The
+law firm then sent the invoices, totaling approximately $54,000, to VTB for payment. By indirectly
+issuing invoices that VTB was ultimately responsible for paying, FTI extended new debt to VTB.
+
+In May 2019, FTI had yet to be paid for the two invoices it had already issued when it began
+discussions with the law firm about performing additional work for the same litigation matter in
+Singapore. The law firm relayed messages between FTI and VTB about the scope of the work and
+budget, which was subject to VTB’s approval. As with the prior engagement, an FTI Senior
+Managing Director based in New York consulted with FTI’s Legal and Compliance departments
+regarding the engagement’s terms and during the second engagement. FTI and the law firm agreed
+to use the same payment structure as the first engagement (which VTB had approved), where the
+law firm was engaged as FTI’s client in the letter of engagement, with payment of FTI’s fees
+subject to the law firm first receiving payment from VTB. FTI and the law firm agreed to use a
+retainer for the second engagement, which called for FTI drawing down funds against a retainer
+VTB would first pay to the law firm.
+
+On June 7, 2019, FTI sent the law firm an invoice of approximately $90,000 for the retainer
+payment, which the law firm told FTI it had sent to VTB, and assured FTI that the law firm would
+get payment from VTB for FTI. VTB, however, did not make the retainer payment. Despite the
+lack of funding for the retainer, FTI commenced work on the second engagement and sought
+payment that would have originated from VTB for the retainer. In late June 2019, FTI joined a call
+with the law firm and VTB to discuss the overdue payments.
+
+Despite not receiving payment for the two April 2019 invoices for the first engagement, nor
+payment for its third invoice for the retainer for the second engagement, FTI continued to work on
+the VTB litigation matter by drafting expert economic analysis. On July 4, 2019, FTI inquired
+again about VTB’s lack of payment for the retainer amount and requested the law firm set up
+another call with VTB if it continued to fail to make the outstanding payment. FTI issued its fourth
+invoice on July 13, 2019; by that time the first three invoices were outstanding for 99, 92, and 35
+days, respectively. FTI continued to work on the VTB matter without receiving payment and issued
+its fifth invoice on July 24, 2019. In September 2019, VTB made a partial payment of
+approximately $57,000 to the law firm for the retainer invoice, 90 days after FTI had first issued the
+
+2
+    Frequently Asked Questions (FAQs) 370, 408, and 419, released on November 28, 2017.
+
+                                                          2
+invoice; the law firm in turn paid FTI. FTI issued its sixth and final invoice for the VTB matter on
+November 26, 2019.
+
+As of March 2020, after having issued six invoices with a total value of approximately $353,862,
+FTI had received only one partial payment for one of the six invoices. At that time, FTI’s Senior
+Manager leading the consulting engagement sought assistance from FTI’s compliance officer to
+resolve VTB’s lack of payment. FTI subsequently told the law firm it expected the law firm to pay
+all outstanding invoices using its own funds. The law firm, however, reiterated the terms of the
+letter of engagement and told FTI that the law firm did not take on the credit risk of VTB not
+making payment. In June 2020, VTB made a second payment of approximately $19,400 for one of
+FTI’s invoices to the law firm, followed by the law firm paying FTI, 198 days after FTI had issued
+the invoice. FTI continued to seek answers and payments from the law firm until May 2021, when
+the law firm notified FTI that it was no longer representing VTB. FTI did not attempt to collect
+payment from the law firm after the law firm terminated its relationship with VTB. FTI
+subsequently submitted a notification of a potential violation to OFAC after investigating FTI’s
+actions.
+
+Under § 589.202(c) of the Ukraine-/Russia-Related Sanctions Regulations (URSR), 3 31 C.F.R.
+part 589, the following activities by a U.S. person or within the United States are prohibited: for
+new debt or new equity issued on or after November 28, 2017, all transactions in, provision of
+financing for, and other dealings in new debt of longer than 14 days maturity or new equity of
+persons determined to be subject to Directive 1, their property, or their interests in property.
+Moreover, the prohibition in Directive 1 of E.O. 13662, as implemented in § 589.213 of the URSR,
+31 C.F.R. part 589, prohibits any transaction on or after the effective date that evades or avoids, has
+the purpose of evading or avoiding, causes a violation of, or attempts to violate any of the
+prohibitions set forth in 31 C.F.R. part 589.
+
+Between April 2019 and May 2021, FTI appears to have violated §§ 589.202 and 589.213 on six
+occasions when FTI dealt in new debt of longer than 14 days maturity to VTB, an entity that at the
+time of the transactions was subject to the prohibitions of § 589.202 of the URSR. FTI dealt in new
+debt of VTB through its indirect issuance of invoices, which represented new debt subject to the
+restrictions of Directive 1, to VTB, which VTB was responsible for paying and from which VTB
+benefited (the “Apparent Violations”).
+
+Penalty Calculations and General Factors Analysis
+
+OFAC determined that FTI did not voluntarily self-disclose the Apparent Violations,
+notwithstanding its notification to OFAC, and that the Apparent Violations constitute a non-
+egregious case. Accordingly, under OFAC’s Economic Sanctions Enforcement Guidelines
+(“Enforcement Guidelines”), 31 C.F.R. part 501, app. A., the base civil monetary penalty applicable
+in this matter equals the applicable schedule amount, which is $525,000.
+
+The settlement amount of $1,050,000, aggravated above the base penalty, reflects OFAC’s
+consideration of the General Factors under the Enforcement Guidelines, in particular the importance
+of anticipated impact of promoting future compliance by similarly situated persons.
+
+3
+    Directive 1 of Executive Order 13662 was incorporated into the URSR which was published on May 2, 2022.
+
+                                                          3
+OFAC determined the following to be aggravating factors:
+
+   (1) FTI, with the involvement of certain senior managers, recklessly missed multiple warning
+       signs that it was dealing in prohibited debt of VTB. At the outset of the engagement, FTI
+       was aware of and discussed the prohibitions applicable to VTB; the risks it identified
+       informed the unique payment arrangement FTI entered into with the law firm. Thereafter,
+       despite believing the arrangement lawfully shielded FTI from the risk of violation, FTI
+       should have realized it was dealing in prohibited debt of VTB when it repeatedly issued
+       invoices for ultimate payment by VTB, continued to work on and issue new invoices for the
+       VTB matter despite not being paid by VTB, and joined a call with VTB to discuss late
+       payments. Another warning sign arose when the law firm told FTI that the law firm did not
+       take on the credit risk of VTB’s non-payment of FTI’s invoices.
+
+   (2) FTI harmed the objectives of the sanctions program by extending an impermissibly long
+       period of credit to VTB when the aim of U.S. sanctions policy was to prevent VTB from
+       receiving such benefits. The indirect payment arrangement caused harm by obscuring
+       transaction activity that, under a direct payment arrangement, could have successfully been
+       screened against by intermediary parties.
+
+   (3) FTI is a large and commercially sophisticated entity with an extensive global presence,
+       providing consulting services to international business entities in various industries and
+       jurisdictions. In light of OFAC’s broad prohibitions on indirect dealings with sanctioned
+       persons, this action seeks to promote greater awareness and scrutiny of such undertakings
+       and deter future violations by the subject person and other similarly situated persons.
+
+OFAC determined the following to be mitigating factors:
+
+   (1) FTI agreed to toll the statute of limitations and cooperated with OFAC’s investigation by
+       providing comprehensive contemporaneous documentation about the underlying conduct,
+       including by waiving privilege.
+
+   (2) The volume and amount of the transactions at issue is very small compared to the total
+       amount of payments that FTI makes and receives from clients and law firms.
+
+   (3) FTI has made enhancements its sanctions compliance program, including by: (1) requiring
+       training that addresses sectoral sanctions and raising awareness within its legal department
+       with respect to law firm engagements in particular; (2) updating its sanctions compliance
+       and restricted party screening policies and procedures; (3) supplementing its sanctions
+       compliance resources; and (4) bolstering risk assessments and implementing additional
+       controls in response to Russia’s full-scale invasion of Ukraine.
+
+   (4) FTI has not been the subject of a Finding of Violation or Penalty Notice by OFAC in the
+       past five years.
+
+
+
+
+                                                 4
+Compliance Considerations
+
+This case highlights how OFAC regulations apply to prohibited dealings conducted indirectly just
+as they do to those committed directly. Transacting indirectly through another party does not make
+permissible what is otherwise prohibited, 4 regardless of whether the relevant OFAC program
+broadly proscribes dealing with a sanctioned person or restricts specified transactions. Indirect
+dealings risk engaging in evasion or avoidance rather than achieving compliance. U.S. persons
+cannot structure around sanctions prohibitions by having another party transact with a sanctioned
+entity on behalf of the U.S. person.
+
+Additionally, this case underscores that U.S. persons must exercise caution when dealing with
+sanctioned persons who are subject to less-than-full-blocking measures. Such prohibitions can still
+be expansive in their application. While organizations may engage in certain transactions with less-
+than-fully blocked entities, it is imperative that they scrutinize each dealing to ensure that the
+underlying activity as well as any related transactions do not violate OFAC prohibitions.
+
+Lastly, when assessing risks, firms should scrupulously account for the economic and practical
+realities of a proposed dealing or transaction and use appropriate controls to avoid arrangements
+that may merely create the appearance of compliance or unintentionally result in prohibited
+conduct. OFAC prohibitions extend to efforts to evade or avoid restrictions as well. In the case of
+debt restrictions, a sanctioned entity’s failure to make contracted or expected payments may create
+significant sanctions risks.
+
+OFAC Enforcement and Compliance Resources
+
+On May 2, 2019, OFAC published A Framework for OFAC Compliance Commitments in order to
+provide organizations subject to U.S. jurisdiction, as well as foreign entities that conduct business in
+or with the United States or U.S. persons, or that use goods or services exported from the United
+States, with OFAC’s perspective on the essential components of a sanctions compliance program.
+The Framework also outlines how OFAC may incorporate these components into its evaluation of
+apparent violations and resolution of investigations resulting in settlements. The Framework
+includes an appendix that offers a brief analysis of some of the root causes of apparent violations of
+U.S. economic and trade sanctions programs OFAC has identified during its investigative process.
+Information concerning the civil penalties process can be found in the OFAC regulations governing
+each sanctions program; the Reporting, Procedures, and Penalties Regulations, 31 C.F.R. part 501;
+and the Economic Sanctions Enforcement Guidelines, 31 C.F.R. part 501, app. A. These
+references, as well as recent civil penalties and enforcement information, can be found on OFAC’s
+website at https://ofac.treasury.gov/civil-penalties-and-enforcement-information.
+
+Whistleblower Program
+
+The U.S. Department of the Treasury’s Financial Crimes Enforcement Network (FinCEN)
+maintains a whistleblower incentive program for violations of OFAC-administered sanctions, in
+addition to other violations of the IEEPA and violations of the Bank Secrecy Act. Individuals
+located in the United States or abroad who provide information about sanctions violations to
+
+4
+    See FAQ 419; see also FAQ 72 and FAQ 400.
+
+                                                   5
+FinCEN’s whistleblower incentive program may be eligible for awards, if the information they
+provide leads to a successful enforcement action that results in monetary penalties exceeding
+$1,000,000 and the statutory requirements in 31 U.S.C. 5323 are otherwise met. The incentive
+program is available for whistleblowers providing information relating to potential violations at any
+type of enterprise in any commercial sector. FinCEN is currently accepting whistleblower tips.
+
+For more information regarding OFAC regulations, please go to: https://ofac.treasury.gov/.
+
+
+
+
+                                                  6
+

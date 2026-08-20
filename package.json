@@ -9,7 +9,7 @@
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "scripts": {
-    "build": "tsc && chmod 755 build/index.js build/ticks-door.js build/import-alerts.js build/mariners.js build/warning-letters.js build/form-483.js build/gmp.js build/gmp-md.js build/untitled-letters.js build/awa.js build/swisspar.js build/pcac.js build/ftc-wl.js build/cfpb-orders.js build/occ-cd.js build/fdic-orders.js build/frb-orders.js build/ncua-orders.js build/fincen-orders.js build/ferc-orders.js",
+    "build": "tsc && chmod 755 build/index.js build/ticks-door.js build/import-alerts.js build/mariners.js build/warning-letters.js build/form-483.js build/gmp.js build/gmp-md.js build/untitled-letters.js build/awa.js build/swisspar.js build/pcac.js build/ftc-wl.js build/cfpb-orders.js build/occ-cd.js build/fdic-orders.js build/frb-orders.js build/ncua-orders.js build/fincen-orders.js build/ferc-orders.js build/ofac-orders.js",
     "prepare": "npm run build",
     "start": "node build/index.js",
     "start:ticks": "node build/ticks-door.js",
@@ -34,7 +34,8 @@
     "collect:ncua-orders": "node build/ncua-orders.js",
     "collect:fincen-orders": "node build/fincen-orders.js",
     "collect:ferc-orders": "node build/ferc-orders.js",
-    "test:ticks": "npm run build && node build/import-alerts.test.js && node build/mariners.test.js && node build/warning-letters.test.js && node build/form-483.test.js && node build/gmp.test.js && node build/gmp-md.test.js && node build/untitled-letters.test.js && node build/awa.test.js && node build/swisspar.test.js && node build/pcac.test.js && node build/ftc-wl.test.js && node build/cfpb-orders.test.js && node build/occ-cd.test.js && node build/fdic-orders.test.js && node build/frb-orders.test.js && node build/ncua-orders.test.js && node build/fincen-orders.test.js && node build/ferc-orders.test.js && node build/ticks-door.test.js"
+    "collect:ofac-orders": "node build/ofac-orders.js",
+    "test:ticks": "npm run build && node build/import-alerts.test.js && node build/mariners.test.js && node build/warning-letters.test.js && node build/form-483.test.js && node build/gmp.test.js && node build/gmp-md.test.js && node build/untitled-letters.test.js && node build/awa.test.js && node build/swisspar.test.js && node build/pcac.test.js && node build/ftc-wl.test.js && node build/cfpb-orders.test.js && node build/occ-cd.test.js && node build/fdic-orders.test.js && node build/frb-orders.test.js && node build/ncua-orders.test.js && node build/fincen-orders.test.js && node build/ferc-orders.test.js && node build/ofac-orders.test.js && node build/ticks-door.test.js"
   },
   "files": [
     "build",
