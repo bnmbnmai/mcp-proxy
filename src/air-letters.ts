@@ -1,9 +1,8 @@
 /**
- * TTB institution/company Offer in Compromise TEXT door.
- * Official Abstract and Statement PDFs from ttb.gov only.
- * Does not invent order text. Page-1 is often a scan; tesseract --psm 6 is OK.
- * Institution/company only. Not people. Not the press teaser.
- * Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders.
+ * USDA APHIS BRS Am I Regulated (AIR) confirmation-letter TEXT door.
+ * Official confirmation-letter PDFs from direct.aphis.usda.gov only.
+ * Does not invent letter text. Institution/company only. Not people. Not the press teaser.
+ * Not TTB /ttb-oic. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders.
  */
 
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
@@ -12,19 +11,19 @@ import { homedir, tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-export const TTB_OIC_PATH = "/ttb-oic";
-export const TTB_OIC_MANIFEST_PATH = "/ttb-oic/manifest.json";
-export const TTB_OIC_AMOUNT_ATOMIC = "50000";
-export const PRODUCT_ID = "ttb-institution-oic-bodies";
-export const PRODUCT_NAME = "TTB Offer in Compromise text";
+export const AIR_LETTERS_PATH = "/air-letters";
+export const AIR_LETTERS_MANIFEST_PATH = "/air-letters/manifest.json";
+export const AIR_LETTERS_AMOUNT_ATOMIC = "50000";
+export const PRODUCT_ID = "aphis-air-confirmation-letter-bodies";
+export const PRODUCT_NAME = "APHIS AIR confirmation-letter text";
 
-export const LISTING_URL = "https://www.ttb.gov/business-central/fo/administrative-cases";
-export const PDF_HOST = "www.ttb.gov";
-export const PDF_ORIGIN = "https://www.ttb.gov";
-export const DOCKET_BARE_RE = /^([A-Za-z0-9][A-Za-z0-9._-]{3,80})$/;
-export const MEDIA_RE = /\/system\/files\/(\d{4}-\d{2})\/([^/?#]+\.pdf)/i;
+export const LISTING_URL = "https://www.aphis.usda.gov/confirmation-letters";
+export const PDF_HOST = "direct.aphis.usda.gov";
+export const PDF_ORIGIN = "https://direct.aphis.usda.gov";
+export const DOCKET_BARE_RE = /^(\d{2}-\d{3}-01air)$/i;
+export const MEDIA_RE = /\/sites\/default\/files\/(\d{2}-\d{3}-01air)(?:-response)?\.pdf/i;
 export const LICENSE = "17 USC 105";
-export const ATTRIBUTION = "TTB";
+export const ATTRIBUTION = "USDA APHIS";
 
 export const CARD_FIELDS = [
   "id",
@@ -37,7 +36,7 @@ export const CARD_FIELDS = [
   "body",
 ] as const;
 
-export type TtbOicListingRow = {
+export type AirLetterListingRow = {
   institution?: string;
   individual?: string;
   docket?: string;
@@ -48,7 +47,7 @@ export type TtbOicListingRow = {
   pdfId?: string;
 };
 
-export type TtbOicListing = {
+export type AirLetterListing = {
   id: string;
   docket: string;
   institution: string;
@@ -58,7 +57,7 @@ export type TtbOicListing = {
   pdfId: string;
 };
 
-export type TtbOicCard = {
+export type AirLetterCard = {
   id: string;
   docket: string;
   pdfId: string;
@@ -69,7 +68,7 @@ export type TtbOicCard = {
   body: string;
 };
 
-export type TtbOicSnapshot = {
+export type AirLetterSnapshot = {
   ok: true;
   product: typeof PRODUCT_ID;
   status: "ok" | "empty" | "stale";
@@ -84,60 +83,60 @@ export type TtbOicSnapshot = {
   reused?: number;
   addedThisRun?: number;
   sources: { listing: string; pdfHost: string };
-  cards: TtbOicCard[];
+  cards: AirLetterCard[];
 };
 
-const HTTP_UA = "bnm-data-shop/1.0 (TTB public institution OIC; +https://www.ttb.gov/business-central/fo/administrative-cases)";
-const OFFICIAL_HOSTS = new Set(["www.ttb.gov", "ttb.gov"]);
+const HTTP_UA = "bnm-data-shop/1.0 (APHIS public institution AIR letters; +https://www.aphis.usda.gov/confirmation-letters)";
+const OFFICIAL_HOSTS = new Set(["direct.aphis.usda.gov", "www.aphis.usda.gov", "aphis.usda.gov"]);
 const ENTITY_RE =
-  /\b(Inc\.?|LLC|L\.L\.C\.|L\.P\.|LP|Corp\.?|Corporation|Company|Co\.|Ltd\.?|Limited|Enterprise|Brewery|Brewing|Spirits|Cafe|Café)\b/i;
+  /\b(Inc\.?|LLC|L\.L\.C\.|L\.P\.|LP|Corp\.?|Corporation|Company|Co\.|Ltd\.?|Limited|University|Institute|College)\b/i;
 const PERSON_NAME_RE = /^[A-Z][a-z]+(?:\s+[A-Z]\.?)?(?:\s+[A-Z][a-z]+){1,3}$/;
 
-export const SEED_LISTINGS: TtbOicListing[] = [
+export const SEED_LISTINGS: AirLetterListing[] = [
   {
-    id: "21st-amendment",
-    docket: "21st-amendment",
-    institution: "The 21st Amendment Brewery Cafe, LLC",
-    date: "2026-06-30",
-    title: "Offer in Compromise",
-    sourceUrl: "https://www.ttb.gov/system/files/2026-07/ABSTMT-21st_Amendment_Brewery_Cafe_Redacted.pdf",
-    pdfId: "ABSTMT-21st_Amendment_Brewery_Cafe_Redacted.pdf",
+    id: "26-173-01air",
+    docket: "26-173-01air",
+    institution: "KAGOME Co., LTD.",
+    date: "2026-06-22",
+    title: "AIR confirmation letter",
+    sourceUrl: "https://direct.aphis.usda.gov/sites/default/files/26-173-01air-response.pdf",
+    pdfId: "26-173-01air-response.pdf",
   },
   {
-    id: "delmic-enterprise",
-    docket: "delmic-enterprise",
-    institution: "Delmic Enterprise LLC",
-    date: "2026-06-16",
-    title: "Offer in Compromise",
-    sourceUrl: "https://www.ttb.gov/system/files/2026-06/ABSMT_Delmic_Enterprise_Redacted.pdf",
-    pdfId: "ABSMT_Delmic_Enterprise_Redacted.pdf",
+    id: "26-009-01air",
+    docket: "26-009-01air",
+    institution: "KAGOME Co., LTD.",
+    date: "2026-01-08",
+    title: "AIR confirmation letter",
+    sourceUrl: "https://direct.aphis.usda.gov/sites/default/files/26-009-01air-response.pdf",
+    pdfId: "26-009-01air-response.pdf",
   },
   {
-    id: "societe-brewing",
-    docket: "societe-brewing",
-    institution: "Societe Brewing Company, LLC",
-    date: "2026-01-06",
-    title: "Offer in Compromise",
-    sourceUrl: "https://www.ttb.gov/system/files/2026-06/Societe_Brewing_Company_OICD_Redacted.pdf",
-    pdfId: "Societe_Brewing_Company_OICD_Redacted.pdf",
+    id: "25-364-01air",
+    docket: "25-364-01air",
+    institution: "LaSemilla. Co. Ltd",
+    date: "2026-01-05",
+    title: "AIR confirmation letter",
+    sourceUrl: "https://direct.aphis.usda.gov/sites/default/files/25-364-01air-response.pdf",
+    pdfId: "25-364-01air-response.pdf",
   },
   {
-    id: "satellite-spirits",
-    docket: "satellite-spirits",
-    institution: "Satellite Spirits Inc.",
-    date: "2025-12-10",
-    title: "Offer in Compromise",
-    sourceUrl: "https://www.ttb.gov/system/files/2025-12/Satellite_Spirits_OIC_Redacted.pdf",
-    pdfId: "Satellite_Spirits_OIC_Redacted.pdf",
+    id: "25-317-01air",
+    docket: "25-317-01air",
+    institution: "Inari Agriculture, Inc.",
+    date: "2025-11-13",
+    title: "AIR confirmation letter",
+    sourceUrl: "https://direct.aphis.usda.gov/sites/default/files/25-317-01air-response.pdf",
+    pdfId: "25-317-01air-response.pdf",
   },
   {
-    id: "workhorse-brewing",
-    docket: "workhorse-brewing",
-    institution: "Workhorse Brewing Company, Inc.",
-    date: "2025-11-30",
-    title: "Offer in Compromise",
-    sourceUrl: "https://www.ttb.gov/system/files/2025-12/Workhorse_Brewery_DAAFO_11_20_25_Redacted.pdf",
-    pdfId: "Workhorse_Brewery_DAAFO_11_20_25_Redacted.pdf",
+    id: "25-226-01air",
+    docket: "25-226-01air",
+    institution: "The Traits Company",
+    date: "2025-07-29",
+    title: "AIR confirmation letter",
+    sourceUrl: "https://direct.aphis.usda.gov/sites/default/files/25-226-01air-response.pdf",
+    pdfId: "25-226-01air-response.pdf",
   },
 ];
 
@@ -145,13 +144,13 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export function ttbOicDir(): string {
-  if (env("TTB_OIC_DIR")) return resolve(env("TTB_OIC_DIR"));
-  return resolve(join(homedir(), "projects/mcp-proxy/data/ttb-oic"));
+export function airLettersDir(): string {
+  if (env("AIR_LETTERS_DIR")) return resolve(env("AIR_LETTERS_DIR"));
+  return resolve(join(homedir(), "projects/mcp-proxy/data/air-letters"));
 }
 
 export function snapshotPath(): string {
-  return join(ttbOicDir(), "snapshot.json");
+  return join(airLettersDir(), "snapshot.json");
 }
 
 export function decodeEntities(raw: string): string {
@@ -190,7 +189,7 @@ export function isoDate(raw: string | null | undefined): string | null {
   return null;
 }
 
-export function officialTtbOicPdfUrl(urlOrPath: string | null | undefined): string | null {
+export function officialAirLetterPdfUrl(urlOrPath: string | null | undefined): string | null {
   if (!urlOrPath) return null;
   try {
     const parsed = new URL(urlOrPath.trim(), PDF_ORIGIN);
@@ -199,26 +198,27 @@ export function officialTtbOicPdfUrl(urlOrPath: string | null | undefined): stri
     if (!OFFICIAL_HOSTS.has(host)) return null;
     const media = decodeURIComponent(parsed.pathname).match(MEDIA_RE) || parsed.pathname.match(MEDIA_RE);
     if (!media) return null;
-    return `${PDF_ORIGIN}/system/files/${media[1]}/${media[2]}`;
+    return `${PDF_ORIGIN}/sites/default/files/${media[1]}-response.pdf`;
   } catch {
     return null;
   }
 }
 
 export function pdfIdFromUrl(url: string | null | undefined): string | null {
-  const official = officialTtbOicPdfUrl(url) || url || "";
+  const official = officialAirLetterPdfUrl(url) || url || "";
   try {
     const parsed = new URL(official, PDF_ORIGIN);
     const media = parsed.pathname.match(MEDIA_RE);
-    return media?.[2] ?? null;
+    return media?.[1] ? `${media[1]}-response.pdf` : null;
   } catch {
     return null;
   }
 }
 
 export function slugFromUrl(url: string): string {
-  const file = pdfIdFromUrl(url) || "";
-  return file.replace(/\.pdf$/i, "").replace(/_Redacted$/i, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") || "unknown";
+  const official = officialAirLetterPdfUrl(url) || url || "";
+  const media = official.match(MEDIA_RE);
+  return media?.[1]?.toLowerCase() || "unknown";
 }
 
 export function normalizeDocket(raw: string | null | undefined): string | null {
@@ -228,7 +228,7 @@ export function normalizeDocket(raw: string | null | undefined): string | null {
   return null;
 }
 
-export function isPeopleRow(row: TtbOicListingRow): boolean {
+export function isPeopleRow(row: AirLetterListingRow): boolean {
   if ((row.individual ?? "").trim()) return true;
   const name = (row.institution ?? "").trim();
   if (!name) return true;
@@ -236,20 +236,20 @@ export function isPeopleRow(row: TtbOicListingRow): boolean {
   return PERSON_NAME_RE.test(name);
 }
 
-export function isInstitutionOrderRow(row: TtbOicListingRow): boolean {
+export function isInstitutionOrderRow(row: AirLetterListingRow): boolean {
   if (isPeopleRow(row)) return false;
-  if (!officialTtbOicPdfUrl(row.sourceUrl ?? "")) return false;
+  if (!officialAirLetterPdfUrl(row.sourceUrl ?? "")) return false;
   const kind = `${row.title ?? ""} ${row.type ?? ""} ${row.sourceUrl ?? ""}`;
-  if (!/OIC|Offer|ABSTMT|ABSMT|Compromise/i.test(kind) && !MEDIA_RE.test(kind)) return false;
+  if (!/AIR|confirmation|01air|7 CFR part 340/i.test(kind) && !MEDIA_RE.test(kind)) return false;
   return true;
 }
 
-export function parseListingRows(rows: TtbOicListingRow[]): TtbOicListing[] {
-  const found: TtbOicListing[] = [];
+export function parseListingRows(rows: AirLetterListingRow[]): AirLetterListing[] {
+  const found: AirLetterListing[] = [];
   const seen = new Set<string>();
   for (const row of rows) {
     if (!isInstitutionOrderRow(row)) continue;
-    const sourceUrl = officialTtbOicPdfUrl(row.sourceUrl ?? "");
+    const sourceUrl = officialAirLetterPdfUrl(row.sourceUrl ?? "");
     const pdfId = (row.pdfId ?? "").trim() || pdfIdFromUrl(sourceUrl ?? "") || "";
     const docket = normalizeDocket(row.docket) || slugFromUrl(sourceUrl ?? "");
     if (!docket || !sourceUrl || !pdfId) continue;
@@ -260,7 +260,7 @@ export function parseListingRows(rows: TtbOicListingRow[]): TtbOicListing[] {
       docket,
       institution: (row.institution ?? "").trim(),
       date: isoDate(row.date),
-      title: "Offer in Compromise",
+      title: "AIR confirmation letter",
       sourceUrl,
       pdfId,
     });
@@ -269,22 +269,25 @@ export function parseListingRows(rows: TtbOicListingRow[]): TtbOicListing[] {
   return found;
 }
 
-export function parseListingHtml(html: string): TtbOicListing[] {
-  const rows: TtbOicListingRow[] = [];
+export function parseListingHtml(html: string): AirLetterListing[] {
+  const rows: AirLetterListingRow[] = [];
   const links = [
     ...html.matchAll(
-      /(\d{2}\/\d{2}\/\d{4}|\d{4}-\d{2}-\d{2})[\s\S]{0,240}?<a[^>]+href="([^"]+\.pdf[^"]*)"[^>]*>([\s\S]*?)<\/a>/gi,
+      /(?:(\d{2}\/\d{2}\/\d{4}|\d{4}-\d{2}-\d{2})[\s\S]{0,240}?)?<a[^>]+href="([^"]+\.pdf[^"]*)"[^>]*>([\s\S]*?)<\/a>/gi,
     ),
   ];
   for (const m of links) {
+    const href = m[2].startsWith("http") ? m[2] : `${PDF_ORIGIN}${m[2].startsWith("/") ? "" : "/"}${m[2]}`;
+    if (!officialAirLetterPdfUrl(href)) continue;
     const title = stripTags(m[3]);
+    const docket = slugFromUrl(href);
     rows.push({
       institution: title,
-      date: m[1],
-      title: "Offer in Compromise",
-      sourceUrl: m[2].startsWith("http") ? m[2] : `${PDF_ORIGIN}${m[2]}`,
-      pdfId: pdfIdFromUrl(m[2].startsWith("http") ? m[2] : `${PDF_ORIGIN}${m[2]}`) ?? "",
-      docket: slugFromUrl(m[2].startsWith("http") ? m[2] : `${PDF_ORIGIN}${m[2]}`),
+      date: m[1] || undefined,
+      title: "AIR confirmation letter",
+      sourceUrl: href,
+      pdfId: pdfIdFromUrl(href) ?? "",
+      docket,
     });
   }
   return parseListingRows(rows);
@@ -293,7 +296,7 @@ export function parseListingHtml(html: string): TtbOicListing[] {
 export function isIndexTeaserDump(text: string): boolean {
   if (/Index only — institution \/ docket \/ date \/ PDF URL/i.test(text)) return true;
   if (/FDA De Novo press teaser|EPA FIFRA press teaser/i.test(text)) return true;
-  if (/INSTRUCTIONS/i.test(text) && !/ABSTRACT AND STATEMENT/i.test(text) && !/Offer-in-Compromise/i.test(text)) {
+  if (/INSTRUCTIONS/i.test(text) && !/Confirmation of the regulatory status/i.test(text) && !/7 CFR part 340/i.test(text)) {
     return true;
   }
   return false;
@@ -309,7 +312,7 @@ export function isPeopleDump(text: string): boolean {
   return false;
 }
 
-export function isRealTtbOicBody(text: string): boolean {
+export function isRealAirLetterBody(text: string): boolean {
   if (isIndexTeaserDump(text) || isFederalRegisterDump(text) || isPeopleDump(text)) return false;
   const compact = text.replace(/\s+/g, " ").trim();
   if (compact.length < 1200) return false;
@@ -317,13 +320,14 @@ export function isRealTtbOicBody(text: string): boolean {
   if (/ENVIRONMENTAL PROTECTION AGENCY/i.test(text) && /FIFRA-\d{2}-\d{4}-\d{4}/i.test(text)) return false;
   if (/COMMODITY FUTURES TRADING COMMISSION/i.test(text) && /CFTC Docket No/i.test(text)) return false;
   if (/Bureau of Industry and Security/i.test(text) && /PROPOSED CHARGING LETTER|ORDER RELATING TO/i.test(text)) return false;
-  if (/\d{2}-\d{3}-01air/i.test(text) && /Confirmation of the regulatory status/i.test(text)) return false;
-  const ttb = /ALCOHOL AND TOBACCO TAX AND TRADE BUREAU/i.test(text);
-  const kind = /ABSTRACT AND STATEMENT/i.test(text) && /Offer-in-Compromise|Offer in Compromise|\bOIC\b/i.test(text);
-  return ttb && kind;
+  if (/ALCOHOL AND TOBACCO TAX AND TRADE BUREAU/i.test(text) && /ABSTRACT AND STATEMENT/i.test(text)) return false;
+  const aphis = /Animal and\s+Plant Health\s+Inspection Service|Biotechnology\s+Regulatory\s+Services/i.test(text);
+  const kind = /Confirmation of the regulatory status/i.test(text) && /7 CFR part 340/i.test(text);
+  const docket = /\d{2}-\d{3}-01air/i.test(text);
+  return aphis && kind && docket;
 }
 
-export function parseTtbOicText(
+export function parseAirLetterText(
   text: string,
   meta: {
     sourceUrl: string;
@@ -334,9 +338,9 @@ export function parseTtbOicText(
     id?: string;
     title?: string;
   },
-): TtbOicCard {
+): AirLetterCard {
   const body = text.replace(/\f/g, "\n").trim();
-  const sourceUrl = officialTtbOicPdfUrl(meta.sourceUrl) || meta.sourceUrl;
+  const sourceUrl = officialAirLetterPdfUrl(meta.sourceUrl) || meta.sourceUrl;
   const docket = normalizeDocket(meta.docket) || normalizeDocket(meta.id) || slugFromUrl(sourceUrl);
   const pdfId = meta.pdfId || pdfIdFromUrl(sourceUrl) || docket;
   return {
@@ -345,13 +349,13 @@ export function parseTtbOicText(
     pdfId,
     institution: (meta.institution && meta.institution.trim()) || docket,
     date: meta.date ?? isoDate(body.slice(0, 4000)),
-    title: meta.title || "Offer in Compromise",
+    title: meta.title || "AIR confirmation letter",
     sourceUrl,
     body,
   };
 }
 
-export function emptySnapshot(reason: string): TtbOicSnapshot {
+export function emptyAirLettersSnapshot(reason: string): AirLetterSnapshot {
   return {
     ok: true,
     product: PRODUCT_ID,
@@ -366,14 +370,14 @@ export function emptySnapshot(reason: string): TtbOicSnapshot {
   };
 }
 
-export function assembleSnapshot(cards: TtbOicCard[], fetchedAt = new Date().toISOString()): TtbOicSnapshot {
-  const withBody = cards.filter((c) => isRealTtbOicBody(c.body)).sort((a, b) => `${b.date ?? ""}${b.docket}`.localeCompare(`${a.date ?? ""}${a.docket}`));
+export function assembleAirLettersSnapshot(cards: AirLetterCard[], fetchedAt = new Date().toISOString()): AirLetterSnapshot {
+  const withBody = cards.filter((c) => isRealAirLetterBody(c.body)).sort((a, b) => `${b.date ?? ""}${b.docket}`.localeCompare(`${a.date ?? ""}${a.docket}`));
   const asOf = withBody.map((c) => c.date).filter((d): d is string => Boolean(d)).sort().at(-1) ?? null;
   return {
     ok: true,
     product: PRODUCT_ID,
     status: withBody.length > 0 ? "ok" : "empty",
-    reason: withBody.length > 0 ? null : "Official TTB Offer in Compromise PDFs had no extractable order text.",
+    reason: withBody.length > 0 ? null : "Official APHIS AIR confirmation-letter PDFs had no extractable letter text.",
     fetchedAt,
     asOf,
     license: LICENSE,
@@ -383,14 +387,14 @@ export function assembleSnapshot(cards: TtbOicCard[], fetchedAt = new Date().toI
   };
 }
 
-function parseSnapshotFile(raw: unknown): TtbOicSnapshot | null {
+function parseSnapshotFile(raw: unknown): AirLetterSnapshot | null {
   if (!raw || typeof raw !== "object") return null;
-  const snap = raw as TtbOicSnapshot;
+  const snap = raw as AirLetterSnapshot;
   if (snap.product !== PRODUCT_ID || !Array.isArray(snap.cards)) return null;
   return snap;
 }
 
-export function readSnapshot(): TtbOicSnapshot | null {
+export function readAirLettersSnapshot(): AirLetterSnapshot | null {
   const path = snapshotPath();
   if (existsSync(path)) {
     try {
@@ -401,14 +405,14 @@ export function readSnapshot(): TtbOicSnapshot | null {
   return null;
 }
 
-export function writeSnapshot(snap: TtbOicSnapshot): void {
+export function writeAirLettersSnapshot(snap: AirLetterSnapshot): void {
   const path = snapshotPath();
   mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, JSON.stringify(snap, null, 2) + "\n");
 }
 
-export async function fetchTtbOicBytes(url: string): Promise<Uint8Array> {
-  const official = officialTtbOicPdfUrl(url) || url;
+export async function fetchAirLetterBytes(url: string): Promise<Uint8Array> {
+  const official = officialAirLetterPdfUrl(url) || url;
   const res = await fetch(official, { headers: { "User-Agent": HTTP_UA, Accept: "application/pdf" } });
   if (!res.ok) throw new Error(`${official} HTTP ${res.status}`);
   const bytes = new Uint8Array(await res.arrayBuffer());
@@ -417,14 +421,14 @@ export async function fetchTtbOicBytes(url: string): Promise<Uint8Array> {
 }
 
 function digitalPdfText(pdfPath: string): string {
-  const helper = env("TTB_OIC_PDFTOTEXT") || "pdftotext";
+  const helper = env("AIR_LETTERS_PDFTOTEXT") || "pdftotext";
   const result = spawnSync(helper, ["-layout", pdfPath, "-"], { encoding: "utf8", maxBuffer: 20 * 1024 * 1024 });
   if (result.error || result.status !== 0) return "";
   return result.stdout || "";
 }
 
 function ocrPdfText(pdfPath: string): string {
-  const work = join(tmpdir(), `ttb-oic-ocr-${Date.now()}`);
+  const work = join(tmpdir(), `air-letters-ocr-${Date.now()}`);
   mkdirSync(work, { recursive: true });
   const prefix = join(work, "p");
   const ppm = spawnSync("pdftoppm", ["-png", pdfPath, prefix], { encoding: "utf8" });
@@ -443,23 +447,23 @@ function ocrPdfText(pdfPath: string): string {
 
 export function pdfToText(pdfPath: string): string {
   const digital = digitalPdfText(pdfPath);
-  if (isRealTtbOicBody(digital)) return digital;
+  if (isRealAirLetterBody(digital)) return digital;
   const ocr = ocrPdfText(pdfPath);
   if (ocr.trim()) return `${ocr}\n${digital}`.trim();
   return digital;
 }
 
 function listingDir(): string {
-  return env("TTB_OIC_JSON_DIR") || env("TTB_OIC_LISTING_DIR");
+  return env("AIR_LETTERS_JSON_DIR") || env("AIR_LETTERS_LISTING_DIR");
 }
 
 function firstSliceLimit(): number {
-  const n = Number(env("TTB_OIC_LIMIT", "5"));
+  const n = Number(env("AIR_LETTERS_LIMIT", "5"));
   return Number.isFinite(n) && n > 0 ? Math.floor(n) : 5;
 }
 
 function maxFetchLimit(): number {
-  const n = Number(env("TTB_OIC_MAX_FETCH", "8"));
+  const n = Number(env("AIR_LETTERS_MAX_FETCH", "8"));
   return Number.isFinite(n) && n > 0 ? Math.floor(n) : 8;
 }
 
@@ -472,11 +476,11 @@ function readNamedFile(dir: string, names: string[]): string | null {
   return null;
 }
 
-async function loadOfficialListings(dir: string): Promise<{ listed: TtbOicListing[]; listedCount: number }> {
+async function loadOfficialListings(dir: string): Promise<{ listed: AirLetterListing[]; listedCount: number }> {
   if (dir) {
     const json = readNamedFile(dir, ["listing-excerpt.json", "listing.json"]);
     if (json) {
-      const rows = JSON.parse(json) as TtbOicListingRow[];
+      const rows = JSON.parse(json) as AirLetterListingRow[];
       const listed = Array.isArray(rows) ? parseListingRows(rows) : [];
       return { listed, listedCount: listed.length };
     }
@@ -486,23 +490,23 @@ async function loadOfficialListings(dir: string): Promise<{ listed: TtbOicListin
   return { listed: [...SEED_LISTINGS], listedCount: SEED_LISTINGS.length };
 }
 
-export async function collectTtbOic(opts?: {
+export async function collectAirLetters(opts?: {
   pauseMs?: number;
   jsonDir?: string;
   limit?: number;
   maxFetch?: number;
-}): Promise<TtbOicSnapshot> {
+}): Promise<AirLetterSnapshot> {
   const dir = opts?.jsonDir ?? listingDir();
   const { listed: allListed, listedCount } = await loadOfficialListings(dir);
   const target = opts?.limit ?? firstSliceLimit();
   const fetchCap = opts?.maxFetch ?? (dir ? 0 : maxFetchLimit());
-  const cacheDir = ttbOicDir();
+  const cacheDir = airLettersDir();
   mkdirSync(cacheDir, { recursive: true });
-  const prior = new Map<string, TtbOicCard>();
-  for (const card of readSnapshot()?.cards ?? []) {
-    if (isRealTtbOicBody(card.body)) prior.set(card.id, card);
+  const prior = new Map<string, AirLetterCard>();
+  for (const card of readAirLettersSnapshot()?.cards ?? []) {
+    if (isRealAirLetterBody(card.body)) prior.set(card.id, card);
   }
-  const cards: TtbOicCard[] = [];
+  const cards: AirLetterCard[] = [];
   const seen = new Set<string>();
   let fetchedPdfs = 0;
   let skippedNoText = 0;
@@ -529,13 +533,13 @@ export async function collectTtbOic(opts?: {
         localText ??
         (await (async () => {
           if (!existsSync(pdfFile)) {
-            writeFileSync(pdfFile, await fetchTtbOicBytes(row.sourceUrl));
+            writeFileSync(pdfFile, await fetchAirLetterBytes(row.sourceUrl));
             fetchedPdfs += 1;
           }
           return pdfToText(pdfFile);
         })());
-      const parsed = parseTtbOicText(text, row);
-      if (!isRealTtbOicBody(parsed.body)) {
+      const parsed = parseAirLetterText(text, row);
+      if (!isRealAirLetterBody(parsed.body)) {
         skippedNoText += 1;
         continue;
       }
@@ -549,37 +553,37 @@ export async function collectTtbOic(opts?: {
   for (const [id, card] of prior) {
     if (!seen.has(id)) cards.push(card);
   }
-  const snap = { ...assembleSnapshot(cards), listedCount, fetchedPdfs, skippedNoText, reused, addedThisRun };
-  writeSnapshot(snap);
+  const snap = { ...assembleAirLettersSnapshot(cards), listedCount, fetchedPdfs, skippedNoText, reused, addedThisRun };
+  writeAirLettersSnapshot(snap);
   return snap;
 }
 
-export async function loadTtbOic(): Promise<TtbOicSnapshot> {
-  const cached = readSnapshot();
-  if (cached && cached.cards.some((c) => isRealTtbOicBody(c.body))) return cached;
+export async function loadAirLetters(): Promise<AirLetterSnapshot> {
+  const cached = readAirLettersSnapshot();
+  if (cached && cached.cards.some((c) => isRealAirLetterBody(c.body))) return cached;
   try {
-    return await collectTtbOic();
+    return await collectAirLetters();
   } catch (err) {
     if (cached) {
-      return { ...cached, status: "stale", reason: `Live TTB OIC fetch failed; showing last cache. ${err instanceof Error ? err.message : String(err)}` };
+      return { ...cached, status: "stale", reason: `Live AIR letter fetch failed; showing last cache. ${err instanceof Error ? err.message : String(err)}` };
     }
-    return emptySnapshot(`TTB OIC PDFs are not on this host and live fetch failed. ${err instanceof Error ? err.message : String(err)}`);
+    return emptyAirLettersSnapshot(`AIR letter PDFs are not on this host and live fetch failed. ${err instanceof Error ? err.message : String(err)}`);
   }
 }
 
-export function buildTtbOicManifest(snap: TtbOicSnapshot | null): Record<string, unknown> {
-  const cards = (snap?.cards ?? []).filter((c) => isRealTtbOicBody(c.body));
+export function buildAirLettersManifest(snap: AirLetterSnapshot | null): Record<string, unknown> {
+  const cards = (snap?.cards ?? []).filter((c) => isRealAirLetterBody(c.body));
   return {
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + institution + docket + date + official PDF URL only. Order body is the paid GET /ttb-oic payload. Not people. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders.",
+    note: "Count + institution + docket + date + official PDF URL only. Letter body is the paid GET /air-letters payload. Not people. Not TTB /ttb-oic. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders.",
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
     network: "base",
     asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
-    amountAtomic: TTB_OIC_AMOUNT_ATOMIC,
+    amountAtomic: AIR_LETTERS_AMOUNT_ATOMIC,
     priceUsdc: "0.05",
     fetchedAt: snap?.fetchedAt ?? null,
     asOf: snap?.asOf ?? null,
@@ -590,8 +594,8 @@ export function buildTtbOicManifest(snap: TtbOicSnapshot | null): Record<string,
   };
 }
 
-export async function loadTtbOicManifest(): Promise<Record<string, unknown>> {
-  return buildTtbOicManifest(readSnapshot());
+export async function loadAirLettersManifest(): Promise<Record<string, unknown>> {
+  return buildAirLettersManifest(readAirLettersSnapshot());
 }
 
 function isMain(): boolean {
@@ -600,7 +604,7 @@ function isMain(): boolean {
 }
 
 if (isMain()) {
-  collectTtbOic()
+  collectAirLetters()
     .then((snap) => {
       console.log(JSON.stringify({
         status: snap.status,

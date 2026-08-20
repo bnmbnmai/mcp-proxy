@@ -51,6 +51,8 @@
  * GET /denovo-orders/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
  * GET /ttb-oic — TTB institution Offer in Compromise PDF text ($0.05)
  * GET /ttb-oic/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
+ * GET /air-letters — USDA APHIS AIR confirmation-letter PDF text ($0.05)
+ * GET /air-letters/manifest.json — free count + institution/docket/date/sourceUrl (no letter body)
  * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
  * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.05). Listed only when a real body is cached.
@@ -231,6 +233,13 @@ import {
   loadTtbOicManifest,
 } from "./ttb-oic.js";
 import {
+  AIR_LETTERS_AMOUNT_ATOMIC,
+  AIR_LETTERS_MANIFEST_PATH,
+  AIR_LETTERS_PATH,
+  loadAirLetters,
+  loadAirLettersManifest,
+} from "./air-letters.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -265,7 +274,7 @@ export const CATALOG_PATH = "/catalog.json";
 export const WELL_KNOWN_PATH = "/.well-known/x402";
 export const OPENAPI_PATH = "/openapi.json";
 export const LLMS_PATH = "/llms.txt";
-/** x402scan origin page for the live paid doors. /ttb-oic is a live public SKU. */
+/** x402scan origin page for the live paid doors. /air-letters is a live public SKU. */
 export const X402SCAN_SERVER_URL =
   "https://www.x402scan.com/server/c6f584c5-e494-41d1-aa02-2efb07ac3546";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
@@ -335,7 +344,7 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "form-483" | "gmp" | "gmp-md";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "form-483" | "gmp" | "gmp-md";
 /** Always-public SKUs. /form-483, /gmp, and /gmp-md join only when a real observation body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "ticks",
@@ -363,6 +372,7 @@ export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "fifra-orders",
   "denovo-orders",
   "ttb-oic",
+  "air-letters",
 ];
 
 export function form483IsPublic(): boolean {
@@ -389,7 +399,7 @@ export function isPublicBazaarSku(sku: DoorSku): boolean {
   return publicBazaarSkus().includes(sku);
 }
 
-const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six", "twenty-seven", "twenty-eight"] as const;
+const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six", "twenty-seven", "twenty-eight", "twenty-nine"] as const;
 const NEXT_SKU_WORDS = [
   "first",
   "second",
@@ -419,6 +429,7 @@ const NEXT_SKU_WORDS = [
   "twenty-sixth",
   "twenty-seventh",
   "twenty-eighth",
+  "twenty-ninth",
 ] as const;
 
 function paidCountWord(): string {
@@ -429,7 +440,7 @@ function paidCountWord(): string {
 function noNextSkuWord(): string {
   const n = publicBazaarSkus().length;
   const next = NEXT_SKU_WORDS[n] ?? `${n + 1}th`;
-  return `/ttb-oic is a live public SKU on purpose. No ${next} public SKU.`;
+  return `/air-letters is a live public SKU on purpose. No ${next} public SKU.`;
 }
 
 function amountAtomicFor(sku: DoorSku): string {
@@ -523,6 +534,10 @@ function amountAtomicFor(sku: DoorSku): string {
   if (sku === "ttb-oic") {
     const raw = env("TTB_OIC_USDC_ATOMIC");
     return raw.length > 0 ? raw : TTB_OIC_AMOUNT_ATOMIC;
+  }
+  if (sku === "air-letters") {
+    const raw = env("AIR_LETTERS_USDC_ATOMIC");
+    return raw.length > 0 ? raw : AIR_LETTERS_AMOUNT_ATOMIC;
   }
   if (sku === "form-483") {
     const raw = env("FORM_483_USDC_ATOMIC");
@@ -663,8 +678,13 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
   },
   "ttb-oic": {
     description:
-      "Call GET /ttb-oic when you need official TTB institution/company Offer in Compromise text extracted from Abstract and Statement PDFs on ttb.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl.",
+      "Call GET /ttb-oic when you need official TTB institution/company Offer in Compromise text extracted from Abstract and Statement PDFs on ttb.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not AIR /air-letters.",
     resourcePath: TTB_OIC_PATH,
+  },
+  "air-letters": {
+    description:
+      "Call GET /air-letters when you need official USDA APHIS institution/company Am I Regulated (AIR) confirmation-letter text extracted from per-letter PDFs on direct.aphis.usda.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not TTB /ttb-oic. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl.",
+    resourcePath: AIR_LETTERS_PATH,
   },
   "form-483": {
     description:
@@ -1076,6 +1096,21 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         date: "2026-06-30",
         sourceUrl: "https://www.ttb.gov/system/files/2026-07/ABSTMT-21st_Amendment_Brewery_Cafe_Redacted.pdf",
         body: "DEPARTMENT OF THE TREASURY\nALCOHOL AND TOBACCO TAX AND TRADE BUREAU\nABSTRACT AND STATEMENT\nThe 21st Amendment Brewery Cafe, LLC\nOffer-in-Compromise",
+      },
+    ],
+  },
+  "air-letters": {
+    ok: true,
+    product: "aphis-air-confirmation-letter-bodies",
+    status: "ok",
+    cards: [
+      {
+        id: "26-173-01air",
+        institution: "KAGOME Co., LTD.",
+        docket: "26-173-01air",
+        date: "2026-06-22",
+        sourceUrl: "https://direct.aphis.usda.gov/sites/default/files/26-173-01air-response.pdf",
+        body: "United States Department of Agriculture\nAnimal and Plant Health Inspection Service\nBiotechnology Regulatory Services\nRe: Confirmation of the regulatory status\n26-173-01air\n7 CFR part 340",
       },
     ],
   },
@@ -1944,6 +1979,7 @@ export function llmsTxt(): string {
     "- GET /fifra-orders — $0.05 — EPA FIFRA institution order / consent text (official yosemite.epa.gov PDFs)",
     "- GET /denovo-orders — $0.05 — FDA De Novo classification-order text (official accessdata.fda.gov PDFs)",
     "- GET /ttb-oic — $0.05 — TTB Offer in Compromise text (official ttb.gov PDFs)",
+    "- GET /air-letters — $0.05 — USDA APHIS AIR confirmation-letter text (official direct.aphis.usda.gov PDFs)",
   ];
   if (listed483) {
     paid.push("- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs)");
@@ -1983,6 +2019,7 @@ export function llmsTxt(): string {
     "- GET /fifra-orders/manifest.json — EPA FIFRA order count + institution/docket/date/sourceUrl (not the order body)",
     "- GET /denovo-orders/manifest.json — FDA De Novo order count + institution/docket/date/sourceUrl (not the order body)",
     "- GET /ttb-oic/manifest.json — TTB OIC count + institution/docket/date/sourceUrl (not the order body)",
+    "- GET /air-letters/manifest.json — APHIS AIR letter count + institution/docket/date/sourceUrl (not the letter body)",
   ];
   if (listed483) {
     free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (not the observation body)");
@@ -2030,7 +2067,7 @@ function discoveryOrigin(req: IncomingMessage, port: number): string {
 }
 
 function paidDiscoveryPaths(): string[] {
-  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH];
+  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH];
   if (form483IsPublic()) paths.push(FORM_483_PATH);
   if (gmpIsPublic()) paths.push(GMP_PATH);
   if (gmpMdIsPublic()) paths.push(GMP_MD_PATH);
@@ -2146,6 +2183,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const fifraOrdersAtomic = amountAtomicFor("fifra-orders");
   const denovoOrdersAtomic = amountAtomicFor("denovo-orders");
   const ttbOicAtomic = amountAtomicFor("ttb-oic");
+  const airLettersAtomic = amountAtomicFor("air-letters");
   const f483Atomic = amountAtomicFor("form-483");
   const gmpAtomic = amountAtomicFor("gmp");
   const gmpMdAtomic = amountAtomicFor("gmp-md");
@@ -2174,6 +2212,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const fifraOrdersPrice = (Number(fifraOrdersAtomic) / 1e6).toFixed(2);
   const denovoOrdersPrice = (Number(denovoOrdersAtomic) / 1e6).toFixed(2);
   const ttbOicPrice = (Number(ttbOicAtomic) / 1e6).toFixed(2);
+  const airLettersPrice = (Number(airLettersAtomic) / 1e6).toFixed(2);
   const f483Price = (Number(f483Atomic) / 1e6).toFixed(2);
   const gmpPrice = (Number(gmpAtomic) / 1e6).toFixed(2);
   const gmpMdPrice = (Number(gmpMdAtomic) / 1e6).toFixed(2);
@@ -2206,6 +2245,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
     "/fifra-orders ($0.05)",
     "/denovo-orders ($0.05)",
     "/ttb-oic ($0.05)",
+    "/air-letters ($0.05)",
   ];
   if (listed483) paidBits.push("/form-483 ($0.05)");
   if (listedGmp) paidBits.push("/gmp ($0.05)");
@@ -2708,6 +2748,25 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           },
         }),
       },
+      [AIR_LETTERS_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getAirLetters",
+          summary: "USDA APHIS AIR confirmation-letter text",
+          description: SKU_COPY["air-letters"].description,
+          priceUsdc: airLettersPrice,
+          amountAtomic: airLettersAtomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["air-letters"],
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              status: { type: "string" },
+              cards: { type: "array", items: { type: "object" } },
+            },
+          },
+        }),
+      },
       ...(listed483
         ? {
             [FORM_483_PATH]: {
@@ -2910,6 +2969,12 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
         get: freeOpenApiOp(
           "TTB Offer in Compromise free manifest",
           "Count, institution, docket, date, and official PDF URL. Not the order body.",
+        ),
+      },
+      [AIR_LETTERS_MANIFEST_PATH]: {
+        get: freeOpenApiOp(
+          "APHIS AIR confirmation letters free manifest",
+          "Count, institution, docket, date, and official PDF URL. Not the letter body.",
         ),
       },
       ...(listed483
@@ -3228,6 +3293,13 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
           amountAtomic: amountAtomicFor("ttb-oic"),
           manifest: TTB_OIC_MANIFEST_PATH,
         },
+        {
+          path: AIR_LETTERS_PATH,
+          product: "aphis-air-confirmation-letter-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("air-letters"),
+          manifest: AIR_LETTERS_MANIFEST_PATH,
+        },
         ...(form483IsPublic()
           ? [
               {
@@ -3526,6 +3598,16 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === AIR_LETTERS_MANIFEST_PATH) {
+    sendJson(res, 200, withShopDiscovery(await loadAirLettersManifest(), req, port));
+    return;
+  }
+
+  if (path === AIR_LETTERS_PATH) {
+    await servePaid(req, res, port, "air-letters", () => loadAirLetters());
+    return;
+  }
+
   if (path === FORM_483_MANIFEST_PATH) {
     sendJson(res, 200, withShopDiscovery(await loadForm483Manifest(), req, port));
     return;
@@ -3561,7 +3643,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
 }
 
 export function bindHost(): string {
@@ -3614,6 +3696,7 @@ if (isMain()) {
     console.error(`${FIFRA_ORDERS_PATH} $${Number(amountAtomicFor("fifra-orders")) / 1e6} USDC`);
     console.error(`${DENOVO_ORDERS_PATH} $${Number(amountAtomicFor("denovo-orders")) / 1e6} USDC`);
     console.error(`${TTB_OIC_PATH} $${Number(amountAtomicFor("ttb-oic")) / 1e6} USDC`);
+    console.error(`${AIR_LETTERS_PATH} $${Number(amountAtomicFor("air-letters")) / 1e6} USDC`);
     console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
     console.error(`${GMP_PATH} $${Number(amountAtomicFor("gmp")) / 1e6} USDC${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
     console.error(`${GMP_MD_PATH} $${Number(amountAtomicFor("gmp-md")) / 1e6} USDC${gmpMdIsPublic() ? "" : " (unlisted until a real MD observation body is cached)"}`);

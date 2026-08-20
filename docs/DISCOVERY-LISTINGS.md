@@ -32,6 +32,7 @@ Live paid doors (all return HTTP 402 unpaid, official bodies when paid):
 | `GET https://ticks.bnm.farm/fifra-orders` | $0.05 | EPA FIFRA institution/company order / consent PDF text |
 | `GET https://ticks.bnm.farm/denovo-orders` | $0.05 | FDA De Novo institution/company classification-order PDF text |
 | `GET https://ticks.bnm.farm/ttb-oic` | $0.05 | TTB institution/company Offer in Compromise PDF text |
+| `GET https://ticks.bnm.farm/air-letters` | $0.05 | USDA APHIS institution/company AIR confirmation-letter PDF text |
 
 CDP `POST /platform/v2/x402/validate` for each URL: `valid: true`, `simulation.outcome: accepted`.
 
