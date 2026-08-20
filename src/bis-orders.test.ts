@@ -198,6 +198,12 @@ async function main(): Promise<void> {
   });
   assert.equal(isRealBisOrderBody(ftc.body), false, "FTC /ftc-wl is not this SKU");
 
+  const cftc = parseBisOrderText(readFx("cftc-order.txt"), {
+    sourceUrl: "https://www.cftc.gov/media/14456/ENF_UBSFinancial%20ServicesOrder073126/download",
+    institution: "UBS Financial Services Inc.",
+  });
+  assert.equal(isRealBisOrderBody(cftc.body), false, "CFTC /cftc-orders is not this SKU");
+
   const ncua = parseBisOrderText(readFx("ncua-order.txt"), {
     sourceUrl:
       "https://ncua.gov/news/enforcement-actions/administrative-orders/2021/administrative-order-matter-live-life-federal-credit-union",
