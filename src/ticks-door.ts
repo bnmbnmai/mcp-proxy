@@ -27,6 +27,8 @@
  * GET /ftc-wl/manifest.json — free count + firm/date/subject/sourceUrl (no letter body)
  * GET /cfpb-orders — CFPB consent-order / administrative-order PDF text ($0.05)
  * GET /cfpb-orders/manifest.json — free count + firm/date/title/fileNo/sourceUrl (no order body)
+ * GET /occ-cd — OCC institution C&D / consent-order PDF text ($0.05)
+ * GET /occ-cd/manifest.json — free count + bank/docket/date/sourceUrl (no order body)
  * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
  * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.05). Listed only when a real body is cached.
@@ -123,6 +125,13 @@ import {
   loadCfpbOrdersManifest,
 } from "./cfpb-orders.js";
 import {
+  OCC_CD_AMOUNT_ATOMIC,
+  OCC_CD_MANIFEST_PATH,
+  OCC_CD_PATH,
+  loadOccCd,
+  loadOccCdManifest,
+} from "./occ-cd.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -157,7 +166,7 @@ export const CATALOG_PATH = "/catalog.json";
 export const WELL_KNOWN_PATH = "/.well-known/x402";
 export const OPENAPI_PATH = "/openapi.json";
 export const LLMS_PATH = "/llms.txt";
-/** x402scan origin page for the live paid doors. /cfpb-orders is a live public SKU. */
+/** x402scan origin page for the live paid doors. /occ-cd is a live public SKU. */
 export const X402SCAN_SERVER_URL =
   "https://www.x402scan.com/server/c6f584c5-e494-41d1-aa02-2efb07ac3546";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
@@ -227,7 +236,7 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "form-483" | "gmp" | "gmp-md";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "form-483" | "gmp" | "gmp-md";
 
 /** Always-public SKUs. /form-483, /gmp, and /gmp-md join only when a real observation body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
@@ -244,6 +253,7 @@ export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "pcac",
   "ftc-wl",
   "cfpb-orders",
+  "occ-cd",
 ];
 
 export function form483IsPublic(): boolean {
@@ -270,7 +280,7 @@ export function isPublicBazaarSku(sku: DoorSku): boolean {
   return publicBazaarSkus().includes(sku);
 }
 
-const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen"] as const;
+const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen"] as const;
 const NEXT_SKU_WORDS = [
   "first",
   "second",
@@ -288,6 +298,7 @@ const NEXT_SKU_WORDS = [
   "fourteenth",
   "fifteenth",
   "sixteenth",
+  "seventeenth",
 ] as const;
 
 function paidCountWord(): string {
@@ -298,7 +309,7 @@ function paidCountWord(): string {
 function noNextSkuWord(): string {
   const n = publicBazaarSkus().length;
   const next = NEXT_SKU_WORDS[n] ?? `${n + 1}th`;
-  return `/cfpb-orders is a live public SKU on purpose. No ${next} public SKU.`;
+  return `/occ-cd is a live public SKU on purpose. No ${next} public SKU.`;
 }
 
 function amountAtomicFor(sku: DoorSku): string {
@@ -344,6 +355,10 @@ function amountAtomicFor(sku: DoorSku): string {
   if (sku === "cfpb-orders") {
     const raw = env("CFPB_ORDERS_USDC_ATOMIC");
     return raw.length > 0 ? raw : CFPB_ORDERS_AMOUNT_ATOMIC;
+  }
+  if (sku === "occ-cd") {
+    const raw = env("OCC_CD_USDC_ATOMIC");
+    return raw.length > 0 ? raw : OCC_CD_AMOUNT_ATOMIC;
   }
   if (sku === "form-483") {
     const raw = env("FORM_483_USDC_ATOMIC");
@@ -426,6 +441,11 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
     description:
       "Call GET /cfpb-orders when you need official CFPB-authored consent-order / administrative-order text extracted from per-order PDFs on files.consumerfinance.gov. Not the enforcement index. Not the action-page teaser. Not the Consumer Complaint Database. Not FTC /ftc-wl.",
     resourcePath: CFPB_ORDERS_PATH,
+  },
+  "occ-cd": {
+    description:
+      "Call GET /occ-cd when you need official OCC institution Cease-and-Desist / Consent Order text extracted from per-order PDFs on occ.gov/static/enforcement-actions. Not EASearch ExportToJSON metadata. Not IAP / people / prohibition / CMP-against-person. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not SEC EDGAR complete-submission .txt.",
+    resourcePath: OCC_CD_PATH,
   },
   "form-483": {
     description:
@@ -655,6 +675,21 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         sourceUrl:
           "https://files.consumerfinance.gov/f/documents/cfpb_american-honda-finance-corp-consent-order_2025-01.pdf",
         body: "UNITED STATES OF AMERICA\nCONSUMER FINANCIAL PROTECTION BUREAU\nADMINISTRATIVE PROCEEDING File No. 2025-CFPB-0003\nCONSENT ORDER\nAmerican Honda Finance Corp.",
+      },
+    ],
+  },
+  "occ-cd": {
+    ok: true,
+    product: "occ-institution-cd-bodies",
+    status: "ok",
+    cards: [
+      {
+        id: "AA-ENF-2026-29",
+        bank: "United Texas Bank, National Association",
+        docket: "AA-ENF-2026-29",
+        date: "2026-06-16",
+        sourceUrl: "https://www.occ.gov/static/enforcement-actions/eaAA-ENF-2026-29.pdf",
+        body: "UNITED STATES OF AMERICA\nDEPARTMENT OF THE TREASURY\nOFFICE OF THE COMPTROLLER OF THE CURRENCY\nAA-ENF-2026-29\nCONSENT ORDER\nUnited Texas Bank, N.A.\nDallas, Texas",
       },
     ],
   },
@@ -1511,6 +1546,7 @@ export function llmsTxt(): string {
     "- GET /pcac — $0.05 — FDA PCAC 503A briefing-memo evaluation text (official per-substance PDFs)",
     "- GET /ftc-wl — $0.05 — FTC BCP warning-letter text (official per-letter PDFs)",
     "- GET /cfpb-orders — $0.05 — CFPB consent-order / administrative-order text (official per-order PDFs)",
+    "- GET /occ-cd — $0.05 — OCC institution C&D / consent-order text (official per-order PDFs)",
   ];
   if (listed483) {
     paid.push("- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs)");
@@ -1538,6 +1574,7 @@ export function llmsTxt(): string {
     "- GET /pcac/manifest.json — FDA PCAC count + substance/date/meeting/mediaId/sourceUrl (not the evaluation text)",
     "- GET /ftc-wl/manifest.json — FTC BCP count + firm/date/subject/sourceUrl (not the letter body)",
     "- GET /cfpb-orders/manifest.json — CFPB order count + firm/date/title/fileNo/sourceUrl (not the order body)",
+    "- GET /occ-cd/manifest.json — OCC C&D count + bank/docket/date/sourceUrl (not the order body)",
   ];
   if (listed483) {
     free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (not the observation body)");
@@ -1585,7 +1622,7 @@ function discoveryOrigin(req: IncomingMessage, port: number): string {
 }
 
 function paidDiscoveryPaths(): string[] {
-  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH];
+  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH];
   if (form483IsPublic()) paths.push(FORM_483_PATH);
   if (gmpIsPublic()) paths.push(GMP_PATH);
   if (gmpMdIsPublic()) paths.push(GMP_MD_PATH);
@@ -1689,6 +1726,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const pcacAtomic = amountAtomicFor("pcac");
   const ftcWlAtomic = amountAtomicFor("ftc-wl");
   const cfpbOrdersAtomic = amountAtomicFor("cfpb-orders");
+  const occCdAtomic = amountAtomicFor("occ-cd");
   const f483Atomic = amountAtomicFor("form-483");
   const gmpAtomic = amountAtomicFor("gmp");
   const gmpMdAtomic = amountAtomicFor("gmp-md");
@@ -1705,6 +1743,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const pcacPrice = (Number(pcacAtomic) / 1e6).toFixed(2);
   const ftcWlPrice = (Number(ftcWlAtomic) / 1e6).toFixed(2);
   const cfpbOrdersPrice = (Number(cfpbOrdersAtomic) / 1e6).toFixed(2);
+  const occCdPrice = (Number(occCdAtomic) / 1e6).toFixed(2);
   const f483Price = (Number(f483Atomic) / 1e6).toFixed(2);
   const gmpPrice = (Number(gmpAtomic) / 1e6).toFixed(2);
   const gmpMdPrice = (Number(gmpMdAtomic) / 1e6).toFixed(2);
@@ -1725,6 +1764,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
     "/pcac ($0.05)",
     "/ftc-wl ($0.05)",
     "/cfpb-orders ($0.05)",
+    "/occ-cd ($0.05)",
   ];
   if (listed483) paidBits.push("/form-483 ($0.05)");
   if (listedGmp) paidBits.push("/gmp ($0.05)");
@@ -1999,6 +2039,25 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           },
         }),
       },
+      [OCC_CD_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getOccCd",
+          summary: "OCC institution C&D / consent-order text",
+          description: SKU_COPY["occ-cd"].description,
+          priceUsdc: occCdPrice,
+          amountAtomic: occCdAtomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["occ-cd"],
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              status: { type: "string" },
+              cards: { type: "array", items: { type: "object" } },
+            },
+          },
+        }),
+      },
       ...(listed483
         ? {
             [FORM_483_PATH]: {
@@ -2129,6 +2188,12 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
         get: freeOpenApiOp(
           "CFPB consent-orders free manifest",
           "Count, firm, date, title, fileNo, and official PDF URL. Not the order body.",
+        ),
+      },
+      [OCC_CD_MANIFEST_PATH]: {
+        get: freeOpenApiOp(
+          "OCC institution C&D free manifest",
+          "Count, bank, docket, date, and official PDF URL. Not the order body.",
         ),
       },
       ...(listed483
@@ -2363,6 +2428,13 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
           amountAtomic: amountAtomicFor("cfpb-orders"),
           manifest: CFPB_ORDERS_MANIFEST_PATH,
         },
+        {
+          path: OCC_CD_PATH,
+          product: "occ-institution-cd-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("occ-cd"),
+          manifest: OCC_CD_MANIFEST_PATH,
+        },
         ...(form483IsPublic()
           ? [
               {
@@ -2541,6 +2613,16 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === OCC_CD_MANIFEST_PATH) {
+    sendJson(res, 200, withShopDiscovery(await loadOccCdManifest(), req, port));
+    return;
+  }
+
+  if (path === OCC_CD_PATH) {
+    await servePaid(req, res, port, "occ-cd", () => loadOccCd());
+    return;
+  }
+
   if (path === FORM_483_MANIFEST_PATH) {
     sendJson(res, 200, withShopDiscovery(await loadForm483Manifest(), req, port));
     return;
@@ -2576,7 +2658,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
 }
 
 export function bindHost(): string {
@@ -2617,6 +2699,7 @@ if (isMain()) {
     console.error(`${PCAC_PATH} $${Number(amountAtomicFor("pcac")) / 1e6} USDC`);
     console.error(`${FTC_WL_PATH} $${Number(amountAtomicFor("ftc-wl")) / 1e6} USDC`);
     console.error(`${CFPB_ORDERS_PATH} $${Number(amountAtomicFor("cfpb-orders")) / 1e6} USDC`);
+    console.error(`${OCC_CD_PATH} $${Number(amountAtomicFor("occ-cd")) / 1e6} USDC`);
     console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
     console.error(`${GMP_PATH} $${Number(amountAtomicFor("gmp")) / 1e6} USDC${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
     console.error(`${GMP_MD_PATH} $${Number(amountAtomicFor("gmp-md")) / 1e6} USDC${gmpMdIsPublic() ? "" : " (unlisted until a real MD observation body is cached)"}`);
