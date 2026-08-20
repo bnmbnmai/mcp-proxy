@@ -22,6 +22,7 @@ build/occ-cd.*
 build/fdic-orders.*
 build/frb-orders.*
 build/ncua-orders.*
+build/fincen-orders.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
@@ -41,3 +42,4 @@ data/occ-cd/
 data/fdic-orders/
 data/frb-orders/
 data/ncua-orders/
+data/fincen-orders/
