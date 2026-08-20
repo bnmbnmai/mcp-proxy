@@ -1005,7 +1005,7 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         docket: "FIFRA-05-2026-0015",
         date: "2026-07-29",
         sourceUrl: "https://yosemite.epa.gov/OA/RHC/EPAAdmin.nsf/Filings/F4CB3764E5AB61EA85258E43006880DC/$File/FIFRA-05-2026-0015_CAFO_TravelCaddyIncdbaTravelon_FranklinParkIllinois_14PGS.pdf",
-        body: "UNITED STATES ENVIRONMENTAL PROTECTION AGENCY\nConsent Agreement and Final Order\nTravel Caddy, Inc. doing business as Travelon\nFIFRA-05-2026-0015",
+        body: "UNITED STATES ENVIRONMENTAL PROTECTION AGENCY\nConsent Agreement and Final Order\nTravel Caddy, Inc. dba Travelon\nFIFRA-05-2026-0015",
       },
     ],
   },

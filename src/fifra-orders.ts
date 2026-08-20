@@ -418,9 +418,15 @@ export function isRealFifraOrderBody(text: string): boolean {
   if (/COMMODITY FUTURES TRADING COMMISSION/i.test(text) && /CFTC Docket No/i.test(text)) {
     return false;
   }
-  const epa = /UNITED STATES ENVIRONMENTAL PROTECTION AGENCY|ENVIRONMENTAL PROTECTION AGENCY/i.test(text);
-  const fifra = /Federal Insecticide, Fungicide, and Rodenticide Act|\bFIFRA\b/i.test(text);
-  const kind = /CONSENT AGREEMENT AND FINAL ORDER/i.test(text) || /\bCAFO\b/i.test(text);
+  const epa =
+    /UNITED STATES ENVIRONME?N?TAL PROTECTION AGENCY|ENVIRONMENTAL PROTECTION AGENCY|U\.S\.\s+Environmental Protection Agency|U\.S\.\s+EPA\s+REGION/i.test(
+      text,
+    );
+  const fifra = /Federal Insecticide,? Fungicide, and Rodenticide Act|\bFIFRA\b/i.test(text);
+  const kind =
+    /CONSENT AGREEMENT AND FINAL ORDER/i.test(text) ||
+    /\bCAFO\b/i.test(text) ||
+    (/CONSENT AGREEMENT/i.test(text) && /Final Order/i.test(text));
   const docket = DOCKET_LABEL_RE.test(text);
   return epa && fifra && kind && docket;
 }
