@@ -1,0 +1,3392 @@
+            2025-CFPB-0001    Document 1       Filed 01/16/2025   Page 1 of 75
+
+
+
+
+                   UNITED STATES OF AMERICA
+             CONSUMER FINANCIAL PROTECTION BUREAU
+
+ADMINISTRATIVE PROCEEDING
+File No. 2025-CFPB-0001
+
+
+ In the Matter of:
+
+                                                 CONSENT ORDER
+
+
+
+ BLOCK, INC.
+
+
+
+
+      The Consumer Financial Protection Bureau (Bureau) has reviewed the
+
+practices of Block, Inc. (Respondent, as defined below) with respect to certain
+
+deposit and peer-to-peer money-transfer activities and the provision of stored-value
+
+or payment instruments through its mobile payment application, Cash App. The
+
+Bureau has identified the following violations of law: Respondent failed to provide
+
+effective customer service for Cash App in a manner that was unfair in violation of
+
+the Consumer Financial Protection Act (CFPA), 12 U.S.C. §§ 5531(c) and
+
+5536(a)(1)(B); failed to take timely, appropriate, and effective measures to prevent,
+
+detect, limit, and address fraud on the Cash App platform in a manner that was
+
+unfair in violation of the CFPA, 12 U.S.C. §§ 5531(c) and 5536(a)(1)(B);
+
+
+                                           1
+            2025-CFPB-0001    Document 1        Filed 01/16/2025   Page 2 of 75
+
+
+
+
+employed dispute resolution and chargeback practices in a manner that was unfair
+
+in violation of the CFPA, 12 U.S.C. §§ 5531(c) and 5536(a)(1)(B); made
+
+representations to consumers relating to Cash App in a manner was deceptive in
+
+violation of the CFPA, 12 U.S.C. §§ 5531(a) and 5536(a)(1)(B); failed to comply
+
+with error resolution requirements of the Electronic Fund Transfer Act (EFTA) and
+
+Regulation E, as set forth in 12 C.F.R. § 1005.11, including § 1005.11(b)-(d), and
+
+§ 1005.18(e); failed to retain evidence of compliance with the EFTA and
+
+Regulation E for a period of at least two years in violation of 12 C.F.R. § 1005.13;
+
+failed to comply with limitation of liability requirements in a manner that violated
+
+Regulation E, 12 C.F.R. §§ 1005.6-1005.7; and, through its violations of the EFTA
+
+and Regulation E, violated the CFPA, 12 U.S.C. § 5336(a)(1)(A). Under §§ 1053
+
+and 1055 of CFPA, 12 U.S.C. §§ 5563, 5565, the Bureau issues this Consent Order
+
+(Consent Order).
+
+                                           I.
+
+                                    Jurisdiction
+
+1.    The Bureau has jurisdiction over this matter under §§ 1053 and 1055 of the
+
+      CFPA, 12 U.S.C. §§ 5563 and 5565 and EFTA, 15 U.S.C. § 1693o.
+
+
+
+
+                                           2
+          2025-CFPB-0001     Document 1         Filed 01/16/2025   Page 3 of 75
+
+
+
+
+                                          II.
+
+                                   Stipulation
+
+2.   Respondent has executed a “Stipulation and Consent to the Issuance of a
+
+     Consent Order,” dated January 15, 2025 (Stipulation), which is incorporated
+
+     by reference and is accepted by the Bureau. By this Stipulation, Respondent
+
+     has consented to the issuance of this Consent Order by the Bureau under
+
+     §§ 1053 and 1055 of the CFPA, 12 U.S.C. §§ 5563, 5565, without admitting
+
+     or denying any of the findings of fact or conclusions of law, except that
+
+     Respondent admits the facts necessary to establish the Bureau’s jurisdiction
+
+     over Respondent and the subject matter of this action.
+
+                                       III.
+
+                                   Definitions
+
+3.   The following definitions apply to this Consent Order:
+
+     a.    “Affected Consumers” includes, relating to transactions as of July 1,
+
+           2019, the following:
+
+          i.   Consumers (No Investigation Affected Consumers) for whom
+
+               Respondent failed to initiate or complete investigations following a
+
+               Notice of Error disputing an Unauthorized Transfer, who did not
+
+               receive refunds, and who fall into one of the following categories:
+
+
+                                          3
+2025-CFPB-0001   Document 1       Filed 01/16/2025   Page 4 of 75
+
+
+
+
+      (1) a consumer who, after filing a Notice of Error with
+
+         Respondent regarding an Unauthorized Transfer that
+
+         originated from the consumer’s linked bank deposit account
+
+         debit card, was instructed by Respondent to contact their
+
+         bank in connection with an Unauthorized Transfer; or
+
+      (2) a consumer who filed a Notice of Error, and Respondent
+
+         then directed the consumer to reach out to the merchant to
+
+         resolve their dispute instead of beginning or completing an
+
+         investigation; or
+
+      (3) a consumer who filed a Notice of Error, and Respondent
+
+         then required the consumer to first reach out to law
+
+         enforcement and obtain a police report before Respondent
+
+         would begin or complete an investigation; or
+
+      (4) a consumer who filed a Notice of Error, and Respondent
+
+         then sent a “need more information” macro requiring the
+
+         consumer to provide additional information not required to
+
+         initiate an investigation under Regulation E and Respondent
+
+         did not conduct or complete an investigation on the basis of
+
+         the customer’s failure to provide this information; or
+
+
+
+                              4
+ 2025-CFPB-0001     Document 1       Filed 01/16/2025   Page 5 of 75
+
+
+
+
+         (5) a consumer who filed a Notice of Error alleging that an
+
+            unauthorized third party had taken control of their account,
+
+            and Respondent did not refund the consumer on the basis
+
+            that the consumer had indicated that they had been deceived
+
+            into allowing the unauthorized third party to take control of
+
+            the account; or
+
+         (6) a consumer who filed a Notice of Error alleging that a peer-
+
+            to-peer payment was unauthorized because their device was
+
+            lost or stolen, and Respondent did not conduct or complete
+
+            an investigation on that basis.
+
+ii.   Consumers (60 Day Affected Consumers) who submitted a Notice
+
+      of Error regarding an Unauthorized Transfer more than sixty days
+
+      after the Unauthorized Transfer took place, but submitted such
+
+      Notice of Error either:
+
+         (1) within sixty days after Respondent’s transmittal of a
+
+            periodic statement to the consumer reflecting the
+
+            Unauthorized Transfer, which Respondent then declined to
+
+            refund on the basis that the consumer had not timely
+
+            submitted the Notice of Error; or
+
+
+
+                                 5
+  2025-CFPB-0001     Document 1       Filed 01/16/2025   Page 6 of 75
+
+
+
+
+          (2) with respect to a Cash Card transaction, within sixty days
+
+             from the date the consumer electronically accessed the
+
+             account information reflecting the Unauthorized Transfer, or
+
+             the date on which the financial institution sent the consumer
+
+             a written account history requested by the consumer
+
+             pursuant to 12 C.F.R. § 1005.18(c)(1)(iii) reflecting the
+
+             Unauthorized Transfer, which Respondent denied to refund
+
+             on the basis that the consumer had not timely submitted the
+
+             Notice of Error.
+
+iii.   Consumers (Partial Refund Affected Consumers) who submitted a
+
+       Notice of Error regarding an Unauthorized Transfer:
+
+          (1) more than sixty days after the transmittal of a periodic
+
+             statement to the consumer reflecting the Unauthorized
+
+             Transfer, for which Respondent failed to provide a partial
+
+             refund in compliance with 12 C.F.R. § 1005.6(b)(3); or
+
+          (2) with respect to Cash Card transaction, more than sixty days
+
+             from the date the consumer electronically accessed the
+
+             account information reflecting the Unauthorized Transfer, or
+
+             the date on which the financial institution sent the consumer
+
+             a written account history requested by the consumer
+
+                                  6
+ 2025-CFPB-0001     Document 1       Filed 01/16/2025   Page 7 of 75
+
+
+
+
+            pursuant to 12 C.F.R. § 1005.18(c)(1)(iii) reflecting the
+
+            Unauthorized Transfer, for which Respondent failed to
+
+            provide a partial refund in compliance with 12 C.F.R.
+
+            § 1005.6(b)(3).
+
+iv.   Consumers who had accounts frozen by Respondent for a period of
+
+      at least fourteen days and then unfrozen (Frozen Account Affected
+
+      Consumers), where the balance on the account at the time it was
+
+      frozen (inclusive of any transfers that were suspended during the
+
+      period of the freeze that were subsequently unsuspended) was at
+
+      least $25, except instances where (1) the account was frozen for
+
+      purposes of complying with a request from law enforcement, with
+
+      a court order or other governmental order, or with statutory or
+
+      regulatory requirements; or (2) in the context of enhanced
+
+      verification suspension actions by Respondent requiring the
+
+      customer to submit verification information and the consumer
+
+      failed to submit information sufficient to overcome the suspension,
+
+      causing the delay.
+
+v.    Consumers for whom Respondent did not provide a provisional
+
+      credit in the amount of the alleged error within ten business days of
+
+      receiving the consumer’s Notice of Error when Respondent was
+
+                                 7
+       2025-CFPB-0001     Document 1       Filed 01/16/2025   Page 8 of 75
+
+
+
+
+            unable to complete its investigation within ten business days of
+
+            receiving the Notice of Error, where the amount of the alleged
+
+            error was at least $10 (No Provisional Credits Affected
+
+            Consumers).
+
+b.      “Board” means Respondent’s duly-elected and acting Board of
+
+        Directors.
+
+c.      “Clearly and Prominently” means:
+
+       i.   in textual communications (e.g., printed publications or words
+
+            displayed on the screen of an electronic device), the disclosure
+
+            must be of a type size and location sufficiently noticeable for an
+
+            ordinary consumer to read and comprehend it, in print that
+
+            contrasts with the background on which it appears;
+
+      ii.   in communications disseminated orally or through audible means
+
+            (e.g., radio or streaming audio), the disclosure must be delivered in
+
+            a volume and cadence sufficient for an ordinary consumer to hear
+
+            and comprehend it;
+
+     iii.   in communications disseminated through video means (e.g.,
+
+            television or streaming video), the disclosure must be in writing in
+
+            a form consistent with subsection (i), and must appear on the
+
+
+
+                                       8
+      2025-CFPB-0001        Document 1       Filed 01/16/2025   Page 9 of 75
+
+
+
+
+           screen for a duration sufficient for an ordinary consumer to read
+
+           and comprehend it;
+
+     iv.   in communications made through interactive media such as the
+
+           internet, online services, and software, the disclosure must be
+
+           unavoidable and presented in a form consistent with subsection (i);
+
+     v.    in communications that contain both audio and visual portions, the
+
+           disclosure must be presented simultaneously in both the audio and
+
+           visual portions of the communication; and
+
+     vi.   in all instances, the disclosure must be presented in an
+
+           understandable language and syntax, and with nothing contrary to,
+
+           inconsistent with, or in mitigation of the disclosures used in any
+
+           communication with the consumer.
+
+d.     “Effective Date” means the date on which the Consent Order is
+
+       entered on the administrative docket.
+
+e.     “Enforcement Director” means the Enforcement Director of the
+
+       Enforcement Division of the Consumer Financial Protection Bureau,
+
+       or their delegate.
+
+f.     “Notice of Error” means an oral or written notice from a consumer
+
+       regarding any of the types of errors identified in 12 C.F.R.
+
+
+
+                                         9
+     2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 10 of 75
+
+
+
+
+      § 1005.11(a)(1), which meets the requirements of 12 C.F.R.
+
+      § 1005.11(b).
+
+g.    “Related Consumer Action” means a private action by or on behalf of
+
+      one or more consumers or an enforcement action by another
+
+      governmental agency brought against Respondent based on
+
+      substantially the same facts as described in Section IV of this Consent
+
+      Order.
+
+h.    “Respondent” means Block, Inc., and its successors and assigns.
+
+i.    “Unauthorized Transfer” means an “electronic fund transfer from a
+
+      consumer’s account initiated by a person other than the consumer
+
+      without actual authority to initiate such transfer and from which the
+
+      consumer receives no benefit, but the term does not include any
+
+      electronic fund transfer (A) initiated by a person other than the
+
+      consumer who was furnished with the card, code, or other means of
+
+      access to such consumer’s account by such consumer, unless the
+
+      consumer has notified the financial institution involved that transfers
+
+      by such other person are no longer authorized, (B) initiated with
+
+      fraudulent intent by the consumer or any person acting in concert with
+
+      the consumer, or (C) which constitutes an error committed by a
+
+      financial institution.” 15 U.S.C. § 1693a(12).
+
+                                    10
+          2025-CFPB-0001     Document 1     Filed 01/16/2025   Page 11 of 75
+
+
+
+
+                                          IV.
+
+                       Bureau Findings and Conclusions
+
+The Bureau finds the following:
+
+4.    Respondent is a publicly traded Delaware corporation whose principal
+
+      executive offices are in Oakland, California. Respondent operates the Cash
+
+      App payment system (Cash App or the App), which is a mobile payments
+
+      application launched in 2013 through which consumers can send and receive
+
+      money through peer-to-peer transfers. Cash App also supports a number of
+
+      other types of transactions, including transfers of money in or out of the App
+
+      and purchases using a prepaid virtual or physical card (Cash Card) linked to
+
+      the funds in a consumer’s Cash App account. Respondent made
+
+      approximately $7.5 billion in gross profit in 2023, approximately $4 billion
+
+      of which was generated by Cash App.
+
+5.    Respondent is a covered person under the CFPA because it engages in
+
+      offering and providing consumer financial products or services. Its Cash
+
+      App application includes deposit-taking activities, transmitting or
+
+      exchanging funds and providing payment and other financial data processing
+
+      products or services to consumers by technological means, which are offered
+
+
+
+
+                                          11
+              2025-CFPB-0001     Document 1    Filed 01/16/2025   Page 12 of 75
+
+
+
+
+         to or provided for use by consumers primarily for personal, family, or
+
+         household purposes. 12 U.S.C. §§ 5481(5), (6), (15)(A)(iv), (15)(A)(vii).
+
+6.       Respondent is a “financial institution” under EFTA and Regulation E
+
+         because it is a person that directly or indirectly holds an account belonging
+
+         to a consumer, or that issues an access device and agrees with a consumer to
+
+         provide electronic fund transfer services. 15 U.S.C. § 1693a(9); 12 C.F.R.
+
+         § 1005.2(i).
+
+     Respondent’s Failure to Provide Customer Support by Telephone for Cash App
+
+7.       From 2016 until February 2021, Respondent failed to provide live customer
+
+         support for Cash App.
+
+8.       Respondent did not provide its customers with a telephone line that had live
+
+         customer support until February 2021, but still included a telephone number
+
+         on the back of its Cash Card and in its Cash App Terms of Service. This
+
+         telephone number did not connect consumers to customer support of any
+
+         type. Instead, it led to a pre-recorded message directing consumers to contact
+
+         customer support through the App. For years, it did not allow consumers to
+
+         leave messages.
+
+9.       Because consumers could not reach a customer representative at this
+
+         number, many would search for a Cash App telephone number online. This
+
+         provided an opening for fraudsters, who posted fake Cash App customer
+
+                                              12
+           2025-CFPB-0001     Document 1    Filed 01/16/2025   Page 13 of 75
+
+
+
+
+      service phone numbers on websites to trick consumers. As a result,
+
+      consumers seeking assistance from Respondent instead unwittingly
+
+      contacted fraudsters posing as Cash App customer service representatives
+
+      and were tricked into providing information that allowed the fraudsters to
+
+      take over the consumers’ accounts.
+
+10.   For example, some consumers called a fake Cash App customer support
+
+      phone number and were instructed by the fake Cash App customer service
+
+      representatives to download malware described as a “remote support
+
+      application” or “remote access tool.” After the consumer followed the
+
+      instructions, the fraudsters would be able to remove or transfer funds out of
+
+      the consumer’s Cash App account and into their own.
+
+11.   Respondent did not alert consumers that it did not have a customer service
+
+      telephone line, even after account takeovers from the use of fake customer
+
+      service telephone numbers occurred. Respondent was aware of the fake Cash
+
+      App support numbers, but did nothing to inform consumers about risks of
+
+      this or other scams and fraud until late 2020. Respondent made some
+
+      attempts to have ads for fake support numbers removed from the internet,
+
+      but its efforts were ineffective.
+
+12.   As a result of the fake phone numbers and Respondent’s actions and failures
+
+      to act, fraudsters were able to gain unauthorized access to and take over
+
+                                           13
+           2025-CFPB-0001      Document 1    Filed 01/16/2025   Page 14 of 75
+
+
+
+
+      control of consumers’ accounts and steal consumers’ money. In many
+
+      instances, these fraudsters could also obtain access to and then
+
+      misappropriate information stored on the consumer’s phone, including
+
+      personal identifying information of the consumer. Consumers complained
+
+      they lost substantial amounts of money as a result of contacting fake Cash
+
+      App representatives.
+
+13.   Respondent’s failure to provide live telephone support also harmed
+
+      consumers who had their identities or personal information stolen elsewhere
+
+      and used to open Cash App accounts, but who were not themselves Cash
+
+      App customers. Many of these consumers were unaware that their identities
+
+      were being misappropriated until they received Cash Cards they had not
+
+      requested in the mail.
+
+14.   Even though stolen consumer personal information was being used to open
+
+      unauthorized Cash App accounts, Respondent did not provide any
+
+      reasonable mechanism for non-customer consumers to contact the company
+
+      to report identity theft until it provided a live customer service telephone line
+
+      in 2021. The only way these consumers would be able to reach Respondent
+
+      was either to contact Cash App via social media, send a letter by U.S. mail
+
+      or sign up for a new Cash App account, which allowed them to contact
+
+      Respondent through the App or website, and get an email response.
+
+                                            14
+           2025-CFPB-0001    Document 1     Filed 01/16/2025   Page 15 of 75
+
+
+
+
+15.   The difficulty and delay faced by identity theft victims whose identities were
+
+      stolen elsewhere frustrated their ability to explain the account was created
+
+      without their consent or knowledge.
+
+16.   Until 2021, Respondent did not provide live customer service. The telephone
+
+      number Respondent provided ended in a recording, which did not allow
+
+      consumers to leave a message, except for a limited time. Nevertheless,
+
+      Respondent made the following representations to consumers in Cash App’s
+
+      Terms of Service at various times in 2019 and 2020:
+
+      a.    “In case of errors or questions about your account call us at (855) 949-
+
+            7782 … as soon as you can if you think an error has occurred in your
+
+            Account.”
+
+      b.    “In case of errors or questions about your account call us at (855) 949-
+
+            7782, please note … this is the only phone number customers can call
+
+            for Cash App support….”
+
+      c.    “Please let us know if you believe there is an Unauthorized
+
+            Transaction on your Account. Telephoning is the best way of keeping
+
+            your possible losses down.”
+
+17.   These statements represented to consumers that they could reach Respondent
+
+      by telephone when in fact they could not.
+
+
+
+                                          15
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 16 of 75
+
+
+
+
+18.   Even when consumers communicated with Respondent through the App or
+
+      the U.S. mail, at times Respondent was slow to respond; it could take days
+
+      for consumers to get a response and additional time to receive a substantive
+
+      response. Moreover, the response consumers received was often a form
+
+      response that did not directly respond to the consumers’ individual issues.
+
+      As a result, their issues – including those related to the money that
+
+      consumers held on the App, and to the amounts that consumers could not
+
+      access or that had been illegally transferred – were not always timely
+
+      addressed by Respondent.
+
+  Respondent’s Deficient Investigation and Consumer Communication Process
+
+19.   Under EFTA and Regulation E, Respondent is required to promptly
+
+      investigate to determine whether an error occurred within ten business days
+
+      of receiving a Notice of Error from a consumer, and to report the results to
+
+      the consumer within three business days after completing its investigation.
+
+      15 U.S.C. § 1693f; 12 C.F.R. § 1005.11(c); 12 C.F.R. § 1005.18(a); and 12
+
+      C.F.R. § 1005.18(e)(2).
+
+20.   Respondent’s policies and procedures relating to Regulation E were
+
+      noncompliant, and initially conceived and developed by individuals who did
+
+      not have experience in Regulation E compliance.
+
+
+
+                                          16
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 17 of 75
+
+
+
+
+21.   Respondent’s lack of live customer support until 2021 impeded consumers’
+
+      ability to provide Notices of Error, including errors relating to Unauthorized
+
+      Transfers.
+
+22.   Even for consumers who were able to reach Respondent to provide Notices
+
+      of Error, Respondent delayed or avoided investigations. Sometimes
+
+      Respondent would respond to Notices of Error by instructing consumers to
+
+      look elsewhere for help rather than investigate the issue itself. For example,
+
+      Respondent would:
+
+      a.    tell consumers to reach out to the merchant to resolve their dispute,
+
+            rather than promptly investigating the errors itself;
+
+      b.    refuse to investigate claims of Unauthorized Transfers for peer-to-peer
+
+            transfers that originated from the consumer’s linked deposit account
+
+            debit card, instead telling consumers to file chargeback requests with
+
+            their bank; or
+
+      c.    tell consumers that the outcome of their claim may be negatively
+
+            affected unless they reached out to law enforcement and obtained-a
+
+            police report.
+
+23.   Respondent represented to consumers in the Cash App Terms of Service that
+
+      their “dispute resolution rights are determined by the funding source used to
+
+      fund the applicable transaction. Please consult the terms and conditions of
+
+                                          17
+           2025-CFPB-0001     Document 1     Filed 01/16/2025   Page 18 of 75
+
+
+
+
+      such funding source for more detail.” But consumers’ error resolution rights
+
+      are provided in EFTA and Regulation E, and do not depend on the source
+
+      used to fund the transfer at issue.
+
+24.   When consumers sent Notices of Error through the App, Respondent would
+
+      automatically send template communications called “macros.” One macro
+
+      was the “need more information” macro. This macro asked a series of
+
+      questions seeking information not required by Regulation E before starting
+
+      an investigation, such as whether and when the consumer attempted to
+
+      contact the merchant. If the consumer didn’t provide this information,
+
+      Respondent either did not complete its investigation or did not initiate an
+
+      investigation at all.
+
+25.   Respondent used several other macros that had the effect of delaying,
+
+      frustrating, and otherwise obfuscating consumers’ ability to have errors
+
+      addressed by the company, including the “pushback” and “inquiry” macros.
+
+26.   “Pushback” macros essentially told consumers there was nothing more
+
+      Respondent could do and the case would be closed, even though Respondent
+
+      failed to address the issue at all. For these prematurely closed cases, the
+
+      consumer would have to contact Respondent again to open a new case,
+
+      repeating the same facts.
+
+
+
+                                            18
+           2025-CFPB-0001     Document 1    Filed 01/16/2025   Page 19 of 75
+
+
+
+
+27.   Respondent also used bulk “inquiry” macros just to clear queues for
+
+      unresolved old cases. Respondent would ask consumers if their issue was
+
+      still unresolved even though Respondent had not done anything to actually
+
+      help the consumer resolve the issue. By finally responding to the consumer’s
+
+      initial inquiry, even just to ask if the issue was still unresolved, Respondent
+
+      pushed the issue back to the consumer and cleared its queue of the
+
+      consumer’s case.
+
+28.   Respondent has maintained other policies that it used to turn away
+
+      consumers without investigating Notices of Error. For example, Respondent
+
+      had a policy of not investigating Notices of Error received more than 60
+
+      days after the unauthorized transaction took place, rather than in the
+
+      timeframes as required by 12 C.F.R. § 1005.11(b)(1)(i) or § 1005.18(e).
+
+29.   Even where Respondent did conduct Regulation E investigations, it did not
+
+      always begin these investigations promptly upon receiving a Notice of Error.
+
+      When it was slow to investigate consumers’ Notices of Error, Respondent
+
+      did not ensure that those consumers had the funds they were entitled to in
+
+      the meantime by providing provisional credits.
+
+30.   Under Regulation E, 12 C.F.R. § 1005.11(c), Respondent was required to
+
+      provide consumers provisional credits in the amount of the alleged error if
+
+      its investigation took longer than 10 business days. However, where
+
+                                           19
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 20 of 75
+
+
+
+
+      Respondent took longer than 10 business days to investigate Unauthorized
+
+      Transfers, Respondent often failed to provide provisional credits at all or in a
+
+      timely manner.
+
+31.   For example, Respondent maintained and enforced a policy that failed to
+
+      provide provisional credits at all for allegations of account takeovers and
+
+      peer-to-peer Unauthorized Transfers, even though it would often take more
+
+      than 10 business days to complete such investigations. Respondent also
+
+      failed to provide provisional credits where required for at least 153,866
+
+      claims of unauthorized Cash Card transfers where Respondent took longer
+
+      than 10 business days to investigate.
+
+32.   Many of Respondent’s actions following investigations were also
+
+      nonexistent, delayed, or insufficient. For example, Respondent failed to
+
+      refund some consumers within one business day of determining that an error
+
+      occurred, which is required by Regulation E, 12 C.F.R. § 1005.11(c)(1).
+
+33.   Additionally, contrary to Regulation E, 12 C.F.R. § 1005.11(d)(1),
+
+      Respondent did not provide any written explanation of its findings when
+
+      Respondent found no error occurred or that an error occurred in a manner or
+
+      amount different from that described by the consumer occurred. Nor did it
+
+      note the consumer’s right to request the documents that Respondent relied
+
+      on in making its determination.
+
+                                          20
+          2025-CFPB-0001    Document 1     Filed 01/16/2025   Page 21 of 75
+
+
+
+
+34.   Respondent’s affirmative communications with consumers were also
+
+      deficient. For example, Respondent did not always notify consumers when
+
+      the consumer’s account was locked due to a suspected account takeover.
+
+      Respondent also did not always notify consumers when their Cash Card was
+
+      suspended. Consumers would not learn of these restrictions until they were
+
+      unable to complete a transaction.
+
+35.   When Respondent closed or froze accounts, Respondent did not provide any
+
+      explanation of why the account was closed or frozen beyond a generic
+
+      statement that the customer violated the Terms of Service. Likewise, after
+
+      Respondent instituted an appeals process for closed and frozen accounts in
+
+      or around 2021, Respondent did not proactively inform the consumer that it
+
+      had a process that allowed the consumer to appeal the actions taken on their
+
+      account.
+
+36.   When consumers whose accounts were frozen appealed or asked for
+
+      reconsideration of the freezing, Respondent’s response was slow. Even
+
+      where such appeals were successful, Respondent regularly took weeks to
+
+      unfreeze accounts. In many cases, even though consumers may have been
+
+      permitted to withdraw their funds, some consumers were unaware of that
+
+      fact. Many consumers complained that they could not access their money.
+
+
+
+                                          21
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 22 of 75
+
+
+
+
+37.   Respondent’s communications also contained inaccurate information. For
+
+      example, Respondent’s macros often misstated consumers’ error resolution
+
+      rights under Regulation E and Respondent had insufficient quality control
+
+      for macros’ content.
+
+38.   Finally, Respondent failed to retain evidence of compliance with EFTA and
+
+      Regulation E for a period of at least two years.
+
+Respondent’s Denial of Refunds and Failure to Conduct Reasonable Investigations
+
+39.   Respondent has wrongly denied many refunds to Cash App consumers who
+
+      submitted a Notice of Error.
+
+40.   Respondent represented to consumers that its policy was to make refunds for
+
+      Unauthorized Transfers; for example, in the Cash App Terms of Service,
+
+      Respondent stated under the heading, “Your Liability for Unauthorized
+
+      Transactions”: “We will protect you from Unauthorized Transactions in your
+
+      Account.”
+
+41.   But despite Respondent’s stated policy, Respondent’s policies and practices
+
+      for refunds for Unauthorized Transfers due to account takeovers were
+
+      constantly changing, and often not in compliance with Regulation E. In
+
+      many instances, Respondent did not actually issue refunds for Unauthorized
+
+      Transfers. For example:
+
+
+
+                                          22
+           2025-CFPB-0001   Document 1    Filed 01/16/2025   Page 23 of 75
+
+
+
+
+      a.    For a period of time, Respondent refused refunds for consumers who
+
+            had experienced account takeovers where they were deceived into
+
+            providing access to their account.
+
+      b.    Respondent denied all refunds for peer-to-peer Unauthorized
+
+            Transfers in which consumers provided a Notice of Error on the App
+
+            unless Respondent determined the Unauthorized Transfer resulted
+
+            from an account takeover.
+
+      c.    Respondent would at times deny requests for refunds, only relying on
+
+            the fact that the claimed unauthorized activity was from a device that
+
+            “regularly accesses the account” or a “known device,” and on that
+
+            basis incorrectly concluded that the transactions were authorized.
+
+      d.    If a consumer who provided a Notice of Error of an Unauthorized
+
+            Transfer had previously transacted with the recipient, Respondent
+
+            would at times deny the refund requests, only relying on the presence
+
+            of this factor in determining that these transactions were authorized.
+
+             Respondent’s Wrongful Use of the Chargeback Process
+
+42.   Respondent also wrongfully used the chargeback process and failed to
+
+      conduct investigations of consumers’ allegations of Unauthorized Transfers
+
+      where the funding source was the consumers’ bank account. Except for a
+
+      period of a year, from 2017 until 2022, Respondent directed consumers who
+
+                                         23
+          2025-CFPB-0001     Document 1    Filed 01/16/2025   Page 24 of 75
+
+
+
+
+      alleged a peer-to-peer Unauthorized Transfer originating from their linked
+
+      bank account to file chargeback requests with their bank, rather than
+
+      Respondent doing its own investigation, as required by Regulation E.
+
+43.   When a consumer files a chargeback with their bank, Respondent can accept
+
+      the chargeback, which returns money to the consumer’s bank, or Respondent
+
+      can challenge the request.
+
+44.   From 2019 to at least 2023, Respondent challenged at least 75% of the peer-
+
+      to-peer chargebacks it received without assessing whether the underlying
+
+      transaction was unauthorized. An internal document from August 2020
+
+      admitted, “[c]urrently we challenge nearly every chargeback we receive and
+
+      make few distinctions about the nature of the payment.” Respondent
+
+      persisted in its chargeback practices even though it knew that some of the
+
+      consumers disputing transactions had been the victims of fraud or account
+
+      takeovers.
+
+45.   Respondent rejected these chargebacks without conducting an internal
+
+      evaluation to determine whether the transactions were unauthorized; and,
+
+      despite card network requirements, Respondent did not provide such
+
+      information through the network as part of its chargeback rejections.
+
+46.   Even though it consistently challenged “nearly every chargeback,”
+
+      Respondent also acquiesced nearly every time an issuing bank re-presented a
+
+                                          24
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 25 of 75
+
+
+
+
+      chargeback after the initial denial. Not all issuing banks re-present denied
+
+      chargebacks however, because doing so incurs costs like extra time and
+
+      money.
+
+47.   Respondent’s chargeback practices had the effect of reducing the number of
+
+      chargebacks it had to pay out. The percentage of chargeback requests that
+
+      Respondent ultimately did not have to pay out was referred to as the “win
+
+      rate” or the “stick rate.” From 2019 to 2022, Respondent maintained a win
+
+      rate/stick rate between 25-36%.
+
+48.   As a result of these chargeback processes, Respondent was able to minimize
+
+      the number of investigations it had to complete and the number of refunds it
+
+      had to provide.
+
+ Respondent’s Security Policies and Practices Put Customers at Greater Risk of
+                                     Harm
+
+49.   Respondent’s risk controls did not sufficiently deter fraud on the platform.
+
+50.   There were widespread reports that fraud was occurring on the Cash App
+
+      platform, including account takeovers in which fraudsters exploited the Cash
+
+      App platform to drain consumer accounts of funds. But Respondent
+
+      reassured consumers that it would protect against fraud, encouraged
+
+      consumers to rely on Cash App as an alternative to a bank, and implied its
+
+      platform was safe.
+
+
+                                          25
+             2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 26 of 75
+
+
+
+
+51.     Despite the fraud and potential for fraud on the Cash App platform that had
+
+        been widely reported and Respondent’s representations to consumers about
+
+        safety, Respondent’s efforts to combat fraud were not effective.
+
+52.     Respondent’s first formal audit of Cash App’s fraud strategy, conducted at
+
+        the end of 2020, concluded that Respondent did not have and should develop
+
+        and establish a fraud governance model to ensure a consistent approach to
+
+        fraud prevention.
+
+  Respondent Engaged in Unfair Acts or Practices in Violation of the CFPA
+
+53.     It is unlawful for any covered person to engage in an unfair act or practice in
+
+        connection with the offering or provision of a consumer financial product or
+
+        service. 12 U.S.C. §§ 5531 and 5536(a)(1)(B).
+
+54.     An act or practice is unfair under the CFPA if it “causes or is likely to cause
+
+        substantial injury to consumers which is not reasonably avoidable by
+
+        consumers” and “such substantial injury is not outweighed by countervailing
+
+        benefits to consumers or to competition.” 12 U.S.C. § 5531(c)(1).
+
+      Respondent’s Acts or Practices Related to Ineffective Customer Support Are
+                                       Unfair
+
+55.     Respondent failed to provide Cash App consumers with a meaningful way to
+
+        reach customer service to obtain an effective and timely response to their
+
+        issues with fraud, account access, and other account-related problems.
+
+
+                                            26
+           2025-CFPB-0001    Document 1    Filed 01/16/2025      Page 27 of 75
+
+
+
+
+56.   By failing to provide meaningful or effective customer support, Respondent
+
+      caused or was likely to cause substantial injury to Cash App consumers,
+
+      including in the following ways:
+
+      a.    consumers were blocked from access to or recovery of their funds for
+
+            an extended period of time, causing the consumer to be unable to pay
+
+            bills or access their funds for other necessities;
+
+      b.    non-customer consumers could not take steps to mitigate theft of their
+
+            identity and the creation of and use of accounts in their name without
+
+            their permission on the Cash App platform; and
+
+      c.    consumers were harmed or put at risk of harm from fraudulent
+
+            customer service scams capitalizing on the lack of a Cash App
+
+            customer service phone line, where fraudsters posing as customer
+
+            service agents gained access to consumers’ accounts.
+
+57.   This injury or likely injury was not reasonably avoidable, because:
+
+      a.    Respondent held Cash App consumers’ funds, and in order to address
+
+            an error, regain access to funds, or report an Unauthorized Transfer,
+
+            they needed to be able to reach Respondent to resolve it;
+
+      b.    non-Cash App consumers who suffered identity theft needed to be
+
+            able to reach Respondent in order to close fraudulent accounts or
+
+            provide notice of any Unauthorized Transfers resulting from such
+
+                                          27
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 28 of 75
+
+
+
+
+            accounts, and until they were able to do that, they were exposed to
+
+            potential Unauthorized Transfers; and
+
+      c.    Cash App consumers could not have reasonably known that
+
+            Respondent, despite its advertising of a live customer support phone
+
+            line for addressing issues like fraudulent transactions, in fact
+
+            maintained no such customer support.
+
+58.   The substantial injury was not outweighed by countervailing benefits to
+
+      consumers or competition.
+
+ Respondent’s Acts or Practices Related to Failure to Take Timely, Appropriate,
+ and Effective Measures to Prevent, Detect, Limit, and Address Fraud Are Unfair
+
+59.   Respondent’s failure to take timely, appropriate, and effective measures to
+
+      prevent, detect, limit, and address fraud on the Cash App platform as
+
+      described in Paragraphs 49 through 52 caused or was likely to cause
+
+      substantial injury. Respondent’s deficient customer service, security, and
+
+      regulatory compliance put consumers at risk of being defrauded via identity
+
+      theft, Unauthorized Transfers, and account takeovers.
+
+60.   Consumers could not reasonably avoid such substantial injury or likely
+
+      injury because Respondent controls and sets the anti-fraud protocols for its
+
+      platform, which were ineffective. Therefore, consumers could not have
+
+      anticipated or acted to avoid the harm.
+
+
+                                          28
+           2025-CFPB-0001     Document 1    Filed 01/16/2025   Page 29 of 75
+
+
+
+
+61.   The substantial injury was not outweighed by the countervailing benefits to
+
+      consumers or competition. Lack of sufficient fraud protection does not
+
+      benefit consumers or competition.
+
+Respondent’s Acts or Practices Related to Card Network Chargebacks Are Unfair
+
+62.   Respondent’s practice of directing Cash App consumers with unauthorized
+
+      peer-to-peer transaction claims, including those who provide Notices of
+
+      Error, to file chargeback claims through their banks, instead of conducting
+
+      Regulation E investigations, and challenging nearly all incoming
+
+      chargebacks without ascertaining their-validity, caused or was likely to cause
+
+      substantial injury. This practice delayed resolution of the consumers’ issues,
+
+      required additional unnecessary action on the part of the consumers, put
+
+      consumers at risk of not getting refunds to which they were entitled, and for
+
+      some consumers resulted in no refund where a refund should have been
+
+      provided.
+
+63.   This substantial injury or likely injury was not reasonably avoidable by
+
+      consumers because Respondent has sole control over whether it investigates
+
+      on consumers’ behalf, what, if any steps, it takes to ascertain the validity of a
+
+      chargeback request, and its policies and practices with respect to responding
+
+      to chargeback requests.
+
+
+
+                                           29
+            2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 30 of 75
+
+
+
+
+64.    This substantial injury was not outweighed by countervailing benefits to
+
+       consumers or competition. Neither consumers nor competition benefit from
+
+       Respondent’s failure to provide a Regulation E investigation or an efficient
+
+       and appropriate dispute process.
+
+65.    Therefore, as to the acts and practices described in Paragraphs 42 through
+
+       48, Respondent engaged in unfair acts or practices in violation of the CFPA,
+
+       12 U.S.C. §§ 5531 and 5536(a)(1)(B).
+
+      Respondent’s Misrepresentations to Consumers Are Deceptive Acts or
+                      Practices in Violation of the CFPA
+
+66.    The CFPA prohibits covered persons from engaging in deceptive acts and
+
+       practices. 12 U.S.C. §§ 5531(a), 5536(a)(1)(B).
+
+67.    An act or practice is deceptive if it involves a material misrepresentation or
+
+       omission that is likely to mislead consumers acting reasonably under the
+
+       circumstances.
+
+68.    Respondent made the following representations to consumers regarding
+
+       Cash App:
+
+       a.    that it protects Cash App consumers from Unauthorized Transfers by
+
+             providing refunds for Unauthorized Transfers;
+
+
+
+
+                                           30
+           2025-CFPB-0001     Document 1    Filed 01/16/2025   Page 31 of 75
+
+
+
+
+      b.    resolution for Cash App consumers’ issues of peer-to-peer
+
+            Unauthorized Transfers would be handled only by the issuing bank;
+
+            and
+
+      c.    Unauthorized Transfers could be reported orally, and that Respondent
+
+            provided live customer service by telephone.
+
+69.   In truth and in fact:
+
+      a.    Respondent did not always provide refunds for Unauthorized
+
+            Transfers;
+
+      b.    Cash App consumers’ error resolution rights are determined by
+
+            Regulation E, which requires the financial institution that receives the
+
+            Notice of Error – in this case Respondent— to conduct an
+
+            investigation; and
+
+      c.    until 2021, Respondent did not provide a way for consumers to report
+
+            Unauthorized Transfers orally nor did Respondent provide live
+
+            customer service by telephone.
+
+70.   These representations are material and misled or were likely to mislead
+
+      consumers acting reasonably.
+
+71.   Respondent therefore engaged in deceptive acts and practices in violation of
+
+      the CFPA, 12 U.S.C. §§ 5531(a); 5536(a)(1)(B).
+
+
+
+                                           31
+           2025-CFPB-0001     Document 1    Filed 01/16/2025   Page 32 of 75
+
+
+
+
+            Respondent’s Violations of the EFTA and Regulation E
+
+          Respondent Failed to Conduct Investigations Timely or at All
+
+72.   The EFTA requires a financial institution to, upon receiving notice of
+
+      consumer error, “investigate [an] alleged error, determine whether an error
+
+      has occurred, and report or mail the results of such investigation and
+
+      determination to the consumer within ten business days” of receiving Notice
+
+      of Error. 15 U.S.C. § 1693f(a).
+
+73.   Regulation E provides that “A financial institution shall comply with the
+
+      requirements [to investigate, report on, and correct Notices of Error] with
+
+      respect to any oral or written Notice of Error from the consumer that: (i) Is
+
+      received by the institution no later than 60 days after the institution sends the
+
+      periodic statement or provides the passbook documentation, required by
+
+      § 1005.9, on which the alleged error is first reflected; (ii) Enables the
+
+      institution to identify the consumer's name and account number; and
+
+      (iii) Indicates why the consumer believes an error exists and includes to the
+
+      extent possible the type, date, and amount of the error….” 12 C.F.R.
+
+      § 1005.11(b)(1). With respect to prepaid accounts, the time frame for a
+
+      consumer to submit a Notice of Error may vary. 12 C.F.R. § 1005.18(e)(2).
+
+74.   Section 1005.11 of Regulation E requires that a financial institution must
+
+      begin its investigation promptly upon receipt of an oral or written Notice of
+
+                                           32
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 33 of 75
+
+
+
+
+      Error and may not delay initiating or completing an investigation pending
+
+      receipt of information from the consumer. See Comments 11(b)(1)-2 and
+
+      11(c)-2.
+
+75.   In numerous instances, Respondent failed to conduct investigations promptly
+
+      or in some cases at all upon Notices of Error from consumers that provided
+
+      the required information.
+
+76.   Therefore, Respondent violated Regulation E, 12 C.F.R. §§ 1005.11;
+
+      1005.18(a); 1005.18(e)(2).
+
+                 Respondent Failed to Provide Provisional Credits
+
+77.   Under Regulation E, the financial institution may take up to 45 days for an
+
+      investigation if it cannot complete its investigation within 10 business days,
+
+      but it generally must provide consumers with provisional credits if it needs
+
+      this additional time. 12 C.F.R. § 1005.11(c)(2).
+
+78.   In numerous instances, Respondent failed to provide provisional credits in a
+
+      timely manner or at all where it took more than 10 business days to
+
+      investigate Notices of Error.
+
+79.   Therefore, Respondent violated Regulation E, 12 C.F.R. §§ 1005.11(c)(2);
+
+      1005.18(a); 1005.18(e)(2).
+
+
+
+
+                                          33
+           2025-CFPB-0001     Document 1    Filed 01/16/2025   Page 34 of 75
+
+
+
+
+            Respondent Failed to Conduct Reasonable Investigations
+
+80.   When conducting an error resolution investigation under the EFTA and
+
+      Regulation E, a financial institution “must determine whether an error has
+
+      occurred,” 15 U.S.C. § 1693f, and the investigation “must be reasonable,” 71
+
+      Fed. Reg. 1638, 1654 (Jan. 10, 2006).
+
+81.   In numerous instances, Respondent failed to conduct reasonable error
+
+      resolution investigations by not reviewing any relevant information and
+
+      records for the particular account to make a determination of error, and it
+
+      made determinations without reasonably considering such evidence, the
+
+      consumer’s assertions, or the bases of the consumer’s assertions. For
+
+      example, in certain instances, Respondent ignored a consumer’s narrative
+
+      when making its determination to not refund. Therefore, Respondent
+
+      violated the EFTA and Regulation E, 15 U.S.C. § 1693f, 12 C.F.R.
+
+      §§ 1005.11(c); 1005.18(a); 1005.18(e)(2).
+
+             Respondent Failed to Correct Errors within One Business Day
+
+82.   Regulation E requires that after an investigation, if an error is found, the
+
+      financial institution must correct the error “within one business day after
+
+      determining that an error occurred.” 12 C.F.R. §§ 1005.11(c)(1);
+
+      1005.11(c)(2)(iii); and 1005.18(a).
+
+
+
+                                           34
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 35 of 75
+
+
+
+
+83.   In numerous instances, Respondent failed to refund Cash App consumers
+
+      within one business day of determining that an error occurred.
+
+84.   Therefore, Respondent violated Regulation E, 12 C.F.R.
+
+      §§ 1005.11(c)(1); 1005.11(c)(2)(iii); 1005.18(a); and 1005.18(e)(2).
+
+  Respondent Failed to Provide the Required Information in Report of Results of
+                                 Investigations
+
+85.   Under 12 C.F.R. § 1005.11(d)(1), if the financial institution determines that
+
+      no error occurred or that an error occurred in a manner or amount different
+
+      from that described by the consumer, the financial institution’s report of the
+
+      results of investigation “shall include a written explanation of the
+
+      institution’s findings and shall note the consumer’s right to request the
+
+      documents that the institution relied on in making its determination.”
+
+86.   In numerous instances, where Respondent determined that no error occurred
+
+      or a different error occurred, Respondent failed to provide an explanation of
+
+      findings in its written responses to Cash App consumers’ errors and to note
+
+      the consumer’s right to request the documents that the institution relied on in
+
+      making its determination.
+
+87.   Therefore, Respondent violated Regulation E, 12 C.F.R. § 1005.11(d)(1); §
+
+      1005.18(a); and § 1005.18(e)(2).
+
+
+
+
+                                          35
+              2025-CFPB-0001     Document 1    Filed 01/16/2025   Page 36 of 75
+
+
+
+
+      Respondent Failed to Conduct Investigations After Receiving Notice of Error
+                        Within 60 Days of Periodic Statement
+
+88.      Regulation E provides that “A financial institution shall comply with the
+
+         requirements [to investigate, report on, and correct Notices of Error] with
+
+         respect to any oral or written Notice of Error from the consumer that: (i) Is
+
+         received by the institution no later than 60 days after the institution sends the
+
+         periodic statement or provides the passbook documentation, required by
+
+         § 1005.9, on which the alleged error is first reflected; (ii) Enables the
+
+         institution to identify the consumer's name and account number; and
+
+         (iii) Indicates why the consumer believes an error exists and includes to the
+
+         extent possible the type, date, and amount of the error….” 12 C.F.R.
+
+         § 1005.11(b)(1).
+
+89.      In numerous instances, Respondent failed to investigate Notices of Error that
+
+         were received within 60 days of sending its periodic statement.
+
+90.      Therefore, Respondent violated Regulation E, 12 C.F.R. § 1005.11(b)(1).
+
+      Respondent Failed to Conduct Investigations After Notice of Error Received
+                 Within 60 Days of Electronically Accessing Account
+
+91.      Regulation E covering prepaid products provides that “[a] financial
+
+         institution need not furnish periodic statements required by [12 C.F.R. §]
+
+         1005.9(b) if the financial institution makes available to the consumer: (i)
+
+         The consumer’s account balance, through a readily available telephone line;
+
+                                              36
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 37 of 75
+
+
+
+
+      (ii) An electronic history of the consumer’s account transactions, such as
+
+      through a Web site, that covers at least 12 months preceding the date the
+
+      consumer electronically accesses the account; and (iii) A written history of
+
+      the consumer’s account transactions that is provided promptly in response to
+
+      an oral or written request and that covers at least 24 months preceding the
+
+      date the financial institution receives the consumer’s request.” 12 C.F.R.
+
+      § 1005.18(c)(1).
+
+92.   A financial institution that provides information under § 1005.18(c)(1) “shall
+
+      comply with the following: (i) For purposes of § 1005.6(b)(3), the 60-day
+
+      period for reporting any Unauthorized Transfer shall begin on the earlier of:
+
+      (A) The date the consumer electronically accesses the consumer’s account
+
+      under paragraph (c)(1)(ii) of this section, provided that the electronic
+
+      account transaction history made available to the consumer reflects the
+
+      Unauthorized Transfer; or (B) The date the financial institution sends a
+
+      written history of the consumer’s account transactions requested by the
+
+      consumer under paragraph (c)(1)(iii) of this section in which the
+
+      Unauthorized Transfer is first reflected.” 12 C.F.R. § 1005.18(e)(1).
+
+93.   In numerous instances, Respondent failed to investigate sufficient Notices of
+
+      Error relating to its prepaid products, including Cash Card and stored
+
+      balance transactions, that were received within 60 days of the date the Cash
+
+                                          37
+           2025-CFPB-0001      Document 1    Filed 01/16/2025   Page 38 of 75
+
+
+
+
+      App consumer electronically accessed their account under paragraph
+
+      (c)(1)(ii).
+
+94.   Therefore, Respondent violated Regulation E, 12 C.F.R. § 1005.18(e)(1).
+
+             Respondent Failed to Comply with Limitations of Liability
+
+95.   Under 12 C.F.R. § 1005.6(a), a consumer may be held liable, within the
+
+      limitations described in 12 C.F.R. § 1005.6(b), for an Unauthorized Transfer
+
+      involving the consumer's account only if the financial institution has
+
+      provided the disclosures required by § 1005.7(b)(1), (2), and (3) and
+
+      § 1005.18(d)(1), as appropriate, to account for the disclosures provided in
+
+      connection with the prepaid account.
+
+96.   Under § 1005.7(b)(2), a financial institution must provide an initial
+
+      disclosure that contains the telephone number and address of the person or
+
+      office to be notified when the consumer believes that an Unauthorized
+
+      Transfer has been or may be made.
+
+97.   If a financial institution provides the disclosures required under § 1005.7(b),
+
+      a consumer’s liability for Unauthorized Transfers will be limited to the
+
+      extent provided in § 1005.6(b). That is, if the consumer fails to notify the
+
+      financial institution within two business days after learning of the loss or
+
+      theft of an access device, the consumer's liability shall not exceed the lesser
+
+      of $500 or the sum of:
+
+                                            38
+           2025-CFPB-0001      Document 1    Filed 01/16/2025   Page 39 of 75
+
+
+
+
+            (i) $50 or the amount of unauthorized transfers that occur within the
+            two business days, whichever is less; and (ii) The amount of
+            unauthorized transfers that occur after the close of two business days
+            and before notice to the institution, provided the institution establishes
+            that these transfers would not have occurred had the consumer
+            notified the institution within that two-day period.
+
+      12 C.F.R. § 1005.6(b)(2).
+
+98.   If a financial institution fails to provide the initial disclosure required by
+
+      § 1005.7(b)(2), it cannot hold consumers liable for Unauthorized Transfers.
+
+      12 C.F.R. § 1005.6(a).
+
+99.   Respondent did not provide the disclosures required by § 1005.7(b)(2).
+
+      Before 2021, Respondent did not provide a telephone number that would
+
+      allow a Cash App consumer to provide notice of an Unauthorized Transfer.
+
+100. Therefore, until that time, Respondent was not entitled to hold Cash App
+
+      consumers liable for Unauthorized Transfers.
+
+101. During that time, Respondent withheld refunds to Cash App consumers for
+
+      Unauthorized Transfers.
+
+102. Respondent therefore violated Regulation E, 12 C.F.R. §§ 1005.6; 1005.7;
+
+      1005.18(a); and 1005.18(e)(1).
+
+                  Respondent Failed to Retain Required Records
+
+103. Section 1005.13(b)(1) requires that “[a]ny person subject to [EFTA and
+
+      Subpart A of Regulation E] [to] retain evidence of compliance with the
+
+
+                                            39
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 40 of 75
+
+
+
+
+      requirements imposed by [EFTA and Subpart A of Regulation E] for a
+
+      period of not less than two years from the date disclosures are required to be
+
+      made or action is required to be taken.” 12 C.F.R. § 1005.13(b)(1).
+
+104. Respondent failed to retain evidence of compliance with the EFTA and
+
+      Regulation E for a period of at least two years in violation of 12 C.F.R.
+
+      § 1005.13.
+
+105. Respondent therefore violated Regulation E, 12 C.F.R. §§ 1005.13 and
+
+      1005.18(a).
+
+                          Respondent Violated the CFPA
+
+106. Respondent’s violations of EFTA and Regulation E described above also
+
+      constitute violations of section 1036(a)(1)(A) of the CFPA, which makes it
+
+      unlawful for covered persons to “offer or provide to a consumer any
+
+      financial product or service not in conformity with Federal consumer
+
+      financial law, or otherwise commit any act or omission in violation of a
+
+      Federal consumer financial law.” 12 U.S.C. § 5536(a)(1)(A).
+
+
+
+
+                                          40
+           2025-CFPB-0001      Document 1    Filed 01/16/2025   Page 41 of 75
+
+
+
+
+                                            V.
+
+                                Conduct Provisions
+
+                                Prohibited Conduct
+
+IT IS ORDERED, under §§ 1053 and 1055 of the CFPA, that:
+
+107. Respondent and its officers, agents, servants, employees, and attorneys, and
+
+      all other persons in active concert or participation with them who receive
+
+      actual notice of this Consent Order, whether acting directly or indirectly, in
+
+      connection with deposit and peer-to-peer money transfer activities and the
+
+      provision of stored-value or payment instruments through its mobile
+
+      payment application, Cash App, may not violate sections 1031 and 1036 of
+
+      the CFPA, 12 U.S.C. §§ 5531 and 5536; EFTA and Regulation E,
+
+      specifically, 15 U.S.C. § 1693l; 12 C.F.R. §§ 1005.6-1005.7; 1005.11,
+
+      including §§ 1005.11(b)-(d); 1005.13; 1005.18(a); and 1005.18(e); and is
+
+      prohibited from:
+
+      a.    deploying written communications in response to consumer
+
+            communications that are:
+
+            i. deceptive; or
+
+
+
+
+                                            41
+     2025-CFPB-0001    Document 1     Filed 01/16/2025   Page 42 of 75
+
+
+
+
+      ii. likely to delay resolving a consumer’s inquiry by requiring further
+
+         information or response from the consumer that is unnecessary for
+
+         the resolution.
+
+b.    denying refunds without conducting an investigation in compliance
+
+      with Paragraph 108(e) for Notices of Error regarding Unauthorized
+
+      Transfers;
+
+c.    misrepresenting, expressly or impliedly, to consumers concerning
+
+      Cash App:
+
+      i. any fact material to consumers concerning Cash App, including
+
+         how consumers may communicate with Respondent about issues
+
+         relating to Cash App, including Notices of Error; or
+
+      ii. consumers’ rights under EFTA or Regulation E, including:
+
+            (1) the availability of refunds for consumers whose access
+
+                devices are used without the consumers’ knowledge or
+
+                permission; or
+
+            (2) consumers’ liability for Unauthorized Transfers;
+
+d.    requiring a consumer to take the following steps, or representing to a
+
+      consumer that the following steps are required, for an investigation to
+
+      be initiated, after a Notice of Error:
+
+
+                                    42
+     2025-CFPB-0001    Document 1     Filed 01/16/2025   Page 43 of 75
+
+
+
+
+      i. contacting the recipient of the peer-to-peer transfer at issue;
+
+      ii. filing a police report or otherwise making contact with law
+
+         enforcement agencies; or
+
+     iii. providing any additional information beyond that required from a
+
+         Notice of Error pursuant to 12 C.F.R. § 1005.11(b).
+
+e.    terminating, delaying, or suspending an investigation of a Notice of
+
+      Error on the basis that a consumer has not responded to a request by
+
+      Respondent for additional information;
+
+f.    holding a consumer liable, in part or in full, for an Unauthorized
+
+      Transfer from their Cash App account:
+
+      i. where Respondent has not provided the disclosures required by 12
+
+         C.F.R. § 1005.7(b) at the time the consumer’s Cash App account is
+
+         opened or before the consumer makes their first account funding or
+
+         peer-to-peer transaction;
+
+      ii. where the consumer has submitted a Notice of Error reporting the
+
+         Unauthorized Transfer within 60 days of Respondent’s transmittal
+
+         of their periodic statement; or
+
+     iii. with respect to a Cash Card transaction, where the consumer has
+
+         submitted a Notice of Error reporting the Unauthorized Transfer
+
+         within sixty days from the date the consumer electronically
+
+                                     43
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 44 of 75
+
+
+
+
+               accessed the account information reflecting the Unauthorized
+
+               Transfer, or the date on which the financial institution sent the
+
+               consumer a written account history requested by the consumer
+
+               pursuant to 12 C.F.R. § 1005.18(c)(1)(iii) reflecting the
+
+               Unauthorized Transfer.
+
+      g.    directing consumers who have filed a Notice of Error with
+
+            Respondent regarding a Cash App transaction from a linked
+
+            instrument to contact the bank that issued the debit card linked to their
+
+            Cash App account to dispute the transaction;
+
+      h.    Re-presenting a fraud or unauthorized transaction chargeback related
+
+            to a Cash App peer-to-peer transfer without conducting an internal
+
+            evaluation that determines that the transaction was unauthorized.
+
+                            Affirmative Requirements
+
+IT IS ORDERED, under §§ 1053 and 1055 of the CFPA, that:
+
+108. Respondent must take the following affirmative actions in connection with
+
+      deposit and peer-to-peer money transfer activities and the provision of
+
+      stored-value or payment instruments through its mobile payment application,
+
+      Cash App:
+
+      a.   maintain live customer service, which is:
+
+
+                                          44
+     2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 45 of 75
+
+
+
+
+      i. capable of intaking and then either appropriately resolving or
+
+         escalating the following:
+
+             (1) consumer complaints and Notices of Error;
+
+             (2) consumer issues concerning accessing accounts, including
+
+                account freezes, suspensions, or blocks;
+
+             (3) suspicious activity and suspected fraud, including non-
+
+                customers’ reports of fraudulent use of their identities on
+
+                Cash App; and
+
+            (4) any other consumer issues and questions.
+
+      ii. available twenty-four hours a day, with human voice
+
+         communication available at least 12 hours each day, and with
+
+         human chat available at least 18 hours each day.
+
+b.    Clearly and Prominently display and provide on Cash App’s landing
+
+      page and within the App information regarding the live customer
+
+      service, including directions on how to access it and the hours of its
+
+      availability;
+
+c.    establish, implement, and maintain a procedure which, within 24
+
+      hours of freezing, suspending, locking, closing, or otherwise
+
+      restricting access to or limiting the functionality of any Cash App
+
+
+
+                                    45
+     2025-CFPB-0001   Document 1    Filed 01/16/2025   Page 46 of 75
+
+
+
+
+      account, provides a consumer with a written explanation, unless
+
+      prohibited from doing so by law enforcement:
+
+      i. of Respondent’s decision to restrict access to or limit the
+
+         functionality of the account (including when the decision is based
+
+         on suspected fraud);
+
+      ii. of the procedure for appealing any such decision; and
+
+     iii. Except when the consumer’s funds are frozen, Clearly and
+
+         Prominently informing the consumer:
+
+            (1) whether they can transfer their funds out of Cash App; and
+
+            (2) how they can transfer their funds out of Cash App, if
+
+                possible.
+
+d.    establish, implement, and maintain a procedure for consumers to
+
+      appeal Respondent’s decision to restrict access to or limit the
+
+      functionality of their Cash App account, including:
+
+      i. Clearly and Prominently displaying on Cash App’s customer
+
+         support primary webpage and within the App instructions for
+
+         initiating an appeal, or other change in status; and
+
+      ii. a timeframe of 10 business days-from receiving the request for
+
+         appeal or other change in status to grant or deny the consumer’s
+
+
+
+                                   46
+     2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 47 of 75
+
+
+
+
+         request with written notification providing the explanation if
+
+         denied.
+
+e.    upon receipt of a Notice of Error from a consumer:
+
+      i. conduct a prompt, thorough, and reasonable investigation;
+
+      ii. provide a report of the results of the investigation of the Notice of
+
+         Error to the consumer within three business days after completing
+
+         its investigation, and if Respondent determines that no error
+
+         occurred or that an error occurred in an amount or manner different
+
+         from that described by the consumer, such report shall include a
+
+         written explanation of its findings and shall note the consumer’s
+
+         right to request the documents that Respondent relied on in making
+
+         its determination, copies of which shall promptly be provided to
+
+         the consumer upon request;
+
+     iii. correct errors within one business day of Respondent’s
+
+         determination that an error has occurred;
+
+     iv. provide a provisional credit in the amount of the alleged error
+
+         within ten business days of receiving the Notice of Error if
+
+         Respondent is unable to complete its investigation by that time;
+
+
+
+
+                                    47
+    2025-CFPB-0001     Document 1    Filed 01/16/2025   Page 48 of 75
+
+
+
+
+f. implement and maintain policies, procedures, safeguards, and measures
+
+   reasonably designed to mitigate, prevent, detect, limit, and address
+
+   fraudulently induced transactions in Cash App, including:
+
+      i. to identify accounts suspected of fraudulently inducing
+
+         transactions from Cash App customers to prevent them from
+
+         operating on the Cash App platform;
+
+     ii. to prevent individuals associated with the accounts referenced in
+
+         subsection (i) from returning to the Cash App platform;
+
+     iii. to adequately staff and continuously operate and maintain a system
+
+         to receive and track complaints and data related to fraudulently
+
+         induced transactions and track trends relating to the same;
+
+     iv. to provide consumer refunds in connection with fraudulently
+
+         induced transactions in accordance with Cash App policies; and
+
+      v. when Respondent suspects a transfer is the result of or may be an
+
+         attempt at a fraudulently induced transaction, Clearly and
+
+         Prominently disclose a readily understandable consumer fraud
+
+         warning within the user experience through which Respondent
+
+         allows consumers to initiate a transfer, segregated from all other
+
+         disclosures and containing only information related to fraud
+
+         prevention.
+
+                                    48
+           2025-CFPB-0001     Document 1    Filed 01/16/2025   Page 49 of 75
+
+
+
+
+      g.    establish and implement policies to ensure that Respondent provides
+
+            sufficient information from its records in the chargeback process to
+
+            allow for efficient and appropriate resolution; and
+
+      h.    develop, maintain, and implement policies and procedures to retain,
+
+            for a period of no less than 2 years, evidence demonstrating its
+
+            compliance with the EFTA and Regulation E.
+
+                         Establishment of Committees
+
+109. Respondent must establish and maintain at least a single committee that shall
+
+      be composed of officers and employees best positioned to assess and address
+
+      the risks detailed for each working group below, including, at a minimum,
+
+      the Chief Risk Officer, Chief Compliance Officer, Business Lead, Cash
+
+      Customer Operations lead, and the Data Science Lead or the functional
+
+      equivalents of these roles, and maintain the following working groups
+
+      relating to Cash App:
+
+      a.    a Customer Support working group that shall:
+
+            i. assess risks and create and help implement policies and procedures
+
+               that encourage and incentivize escalation and problem-solving
+
+               regarding customer service issues affecting the ability of
+
+               consumers to provide Notice of Error or otherwise address their
+
+               concerns about access to or problems with their accounts, or
+
+                                           49
+     2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 50 of 75
+
+
+
+
+         affecting the ability of non-customers to address issues relating to
+
+         fraud;
+
+      ii. provide regular reports to Respondent’s senior executives and the
+
+         Board, or a committee thereof, on outstanding issues relating to
+
+         customer service that present potential risk to consumers’ ability to
+
+         address issues with funds or fraud on Cash App;
+
+     iii. assess the adequacy of issue identification, escalation, and tracking
+
+         policies and procedures for customer service issues, including by
+
+         conducting periodic assessments of customer service processes
+
+         against consumer complaints to determine whether customer
+
+         service issues that present risk to consumers are being
+
+         appropriately escalated; and
+
+     iv. propose and implement solutions for problems identified, including
+
+         recommendations to the Board, or a committee thereof, regarding
+
+         additional resources needed to address and remediate customer
+
+         service issues that pose risk to consumers.
+
+b.    a Fraud and Security working group that shall:
+
+      i. assess risks and create and help implement policies and procedures
+
+         that encourage and incentivize escalation and problem-solving
+
+
+
+                                    50
+     2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 51 of 75
+
+
+
+
+         regarding issues relating to fraud and security of accounts on Cash
+
+         App;
+
+      ii. provide regular reports to Respondent’s senior executives and the
+
+         Board, or a committee thereof, on outstanding issues relating to
+
+         fraud and security of accounts on Cash App that present potential
+
+         risk to consumers, including processes addressing account
+
+         takeovers, identity theft and fraud, Unauthorized Transfers, and
+
+         data security;
+
+     iii. assess the adequacy of issue identification, escalation, and tracking
+
+         policies and procedures, including by conducting periodic
+
+         assessments of security processes against consumer complaints to
+
+         determine whether issues that present security risks to consumers
+
+         are being appropriately escalated; and
+
+     iv. propose and implement solutions for problems identified, including
+
+         recommendations to the Board, or a committee thereof, regarding
+
+         additional resources needed to address and remediate issues that
+
+         pose security risks to consumers.
+
+c.    an EFTA and Regulation E Compliance working group that shall:
+
+      i. assess risks and create and direct the implementation of policies
+
+         and procedures that encourage and incentivize escalation and
+
+                                    51
+2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 52 of 75
+
+
+
+
+    problem-solving regarding issues relating to compliance with
+
+    EFTA and Regulation E by Respondent with respect to Cash App
+
+    or any new product or feature Respondent introduces;
+
+ ii. provide regular reports to Respondent’s senior executives and the
+
+    Board, or a committee thereof, on outstanding issues relating to
+
+    compliance with the EFTA and Regulation E in connection with
+
+    Cash App, including patterns and trends regarding increased
+
+    Notices of Error and how Respondent plans to address such
+
+    patterns and trends;
+
+iii. assess the adequacy of issue identification, escalation, and tracking
+
+    policies and procedures, including by conducting periodic
+
+    assessments of compliance with the EFTA and Regulation E in
+
+    connection with Cash App against consumer complaints to
+
+    determine whether issues relating to such compliance are
+
+    appropriately escalated; and
+
+iv. propose and implement solutions for problems identified, including
+
+    recommendations to the Board, or a committee thereof, regarding
+
+    additional resources needed to address and remediate issues
+
+    relating to compliance with the EFTA and Regulation E in
+
+    connection with Cash App.
+
+                               52
+           2025-CFPB-0001      Document 1     Filed 01/16/2025   Page 53 of 75
+
+
+
+
+                                            VI.
+
+                                  Compliance Plan
+
+IT IS FURTHER ORDERED that:
+
+110. Within 120 days of the Effective Date, Respondent must create and
+
+      implement a comprehensive compliance plan designed to ensure that
+
+      Respondent’s deposit-taking activities, and activities relating to transmitting
+
+      or exchanging funds, or otherwise acting as a custodian of funds, or selling,
+
+      providing, or issuing stored value or payment instruments, or providing
+
+      payments or other financial data processing products or services complies
+
+      with all applicable laws that the Bureau enforces, including Federal
+
+      consumer financial laws, and the terms of this Consent Order (Compliance
+
+      Plan).
+
+111. The Compliance Plan must include, at a minimum:
+
+      a.       detailed steps for addressing each action required by this Consent
+
+               Order;
+
+      b.       a mechanism to ensure that the Board is kept apprised of the status of
+
+               compliance actions; and
+
+      c.       specific timeframes and deadlines for implementation of the steps
+
+               described above.
+
+
+
+                                            53
+           2025-CFPB-0001   Document 1    Filed 01/16/2025   Page 54 of 75
+
+
+
+
+112. Respondent will provide the Compliance Plan to the Bureau upon request.
+
+                                       VII.
+
+                       Role of the Board and Executives
+
+IT IS FURTHER ORDERED that:
+
+113. Respondent’s Board has the ultimate responsibility for ensuring that
+
+      Respondent complies this Consent Order.
+
+114. Respondent’s Chief Executive Officer, Chief Operating Officer/Chief
+
+      Financial Officer, and the Business Lead (collectively Respondent’s
+
+      Executives) and Respondent’s Board, or a committee thereof, must review
+
+      all plans and reports required by this Consent Order, and any submissions to
+
+      the Bureau prior to such submission.
+
+115. One year after the Effective Date, and yearly thereafter, Respondent must
+
+      submit to the Enforcement Director an accurate written compliance progress
+
+      report (Compliance Report) that has been approved by the Board, or a
+
+      committee thereof, the accuracy of which is sworn to under penalty of
+
+      perjury, and which, at a minimum:
+
+      a.    describes the steps that Respondent’s Board, or a committee
+
+            thereof, and Respondent’s Executives have taken to reasonably
+
+            assess whether Respondent is complying with the Redress Plan,
+
+
+                                         54
+           2025-CFPB-0001     Document 1    Filed 01/16/2025   Page 55 of 75
+
+
+
+
+              Compliance Plan, and each applicable paragraph and subparagraph of
+
+              the Order;
+
+      b.      describes in detail whether and how Respondent has complied with
+
+              the Redress Plan, Compliance Plan, and each applicable paragraph
+
+              and subparagraph of the Order, including the manner of verification of
+
+              such compliance and any corrective actions taken to remedy potential
+
+              non-compliance with the applicable requirement, paragraph, or
+
+              subparagraph; and
+
+      c.      attaches a copy of each Order Acknowledgment obtained under
+
+              Section XII, unless previously submitted to the Bureau.
+
+116. Respondent’s Board, or a committee thereof, and Respondent’s Executives
+
+      must:
+
+      a.      authorize whatever actions are necessary for Respondent to assess
+
+              whether Respondent is complying with the Redress Plan, Compliance
+
+              Plan, and each applicable paragraph and subparagraph of the Order;
+
+      b.      authorize whatever actions, including corrective actions, are necessary
+
+              for Respondent to fully comply with the Redress Plan, Compliance
+
+              Plan, and each applicable paragraph and subparagraph of the Order;
+
+              and
+
+
+
+                                           55
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 56 of 75
+
+
+
+
+      c.    require timely reporting by management to Respondent’s Board, or a
+
+            committee thereof, and Respondent’s Executives on the status of
+
+            compliance obligations.
+
+                         MONETARY PROVISIONS
+
+                                      VIII.
+
+                             Order to Pay Redress
+
+IT IS FURTHER ORDERED that:
+
+117. Within 10 days of the Effective Date, Respondent must reserve or deposit
+
+      into a segregated deposit account $75 million, for the purpose of providing
+
+      redress to Affected Consumers as required by this Section. Redress to
+
+      Affected Consumers is not to exceed $120 million.
+
+118. Respondent must pay a pro rata amount of redress to each Affected
+
+      Consumer as follows:
+
+      a.    for No Investigation Affected Consumers and 60 Day Affected
+
+            Consumers, Respondent must provide redress by paying a pro rata
+
+            portion of the amount of the alleged Unauthorized Transfer.
+
+      b.    For Partial Refund Affected Consumers, Respondent must provide
+
+            redress by paying a pro rata portion of the amount to which each such
+
+
+
+
+                                          56
+           2025-CFPB-0001     Document 1    Filed 01/16/2025   Page 57 of 75
+
+
+
+
+            Affected Consumer would have been entitled pursuant to 12 C.F.R.
+
+            § 1005.6(b)(3).
+
+      c.    For each Frozen Account Affected Consumer, Respondent must
+
+            provide redress by paying a pro rata portion of $50.
+
+      d.    For each No Provisional Credit Affected Consumer, Respondent must
+
+            provide redress by paying a pro rata portion of the amount that would
+
+            have accrued, at a 30% APR (up to $50) on the full amount of the
+
+            alleged Unauthorized Transfer for the duration of the period of time
+
+            that the consumer would have had use of a provisional credit.
+
+119. Within 120 days of the Effective Date, Respondent must submit to the
+
+      Enforcement Director for review and non-objection a comprehensive written
+
+      plan for providing redress consistent with this Consent Order (Redress Plan).
+
+      The Enforcement Director will have the discretion to make a determination
+
+      of non-objection to the Redress Plan or direct Respondent to revise it. If the
+
+      Enforcement Director directs Respondent to revise the Redress Plan,
+
+      Respondent must revise and resubmit the Redress Plan to the Enforcement
+
+      Director within 15 days. After receiving notification that the Enforcement
+
+      Director has made a determination of non-objection to the Redress Plan,
+
+      Respondent must implement and adhere to the steps, recommendations,
+
+      deadlines, and timeframes outlined in the Redress Plan.
+
+                                           57
+          2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 58 of 75
+
+
+
+
+120. The Redress Plan must:
+
+     a.    describe Respondent’s methodology used to identify all Affected
+
+           Consumers and determine the amount of the refund that Respondent
+
+           will provide to each Affected Consumer to comply with Paragraph
+
+           118;
+
+     b.    include a final list of all Affected Consumers and the amount of the
+
+           refund that Respondent will provide to each Affected Consumer to
+
+           comply with Paragraph 118;
+
+     c.    include the form of the communication (Redress Notice) to be sent
+
+           notifying Affected Consumers who are entitled to redress of their right
+
+           to redress;
+
+     d.    describe the process for providing redress to Affected Consumers, and
+
+           must include the following requirements:
+
+           i. Respondent must send each Affected Consumer, or their
+
+              authorized representative, a redress payment in the amount of the
+
+              refund required by Paragraph 118;
+
+           ii. Respondent may make redress payments to Affected Consumers as
+
+              follows:
+
+                  (1) for consumers who have transacted on a Cash App account
+
+                     within the last six months as of the date of the Redress Plan,
+
+                                         58
+           2025-CFPB-0001     Document 1    Filed 01/16/2025   Page 59 of 75
+
+
+
+
+                       Respondent may provide redress in the form of a credit to
+
+                       such Cash App account (Credit Redress);
+
+                    (2) for consumers who have not transacted on a Cash App
+
+                       account within the last six months as of the date of the
+
+                       Redress Plan or on the date payments are made, Respondent
+
+                       must provide redress to such consumers in the manner set
+
+                       forth in the Redress Plan (Non-Credit Redress).
+
+      e.    set forth all procedures, deadlines, and timeframes for completing
+
+            each step of the Redress Plan, consistent with the terms of this
+
+            Consent Order; and
+
+      f.    identify Respondent’s officers, agents, servants, employees, and
+
+            attorneys responsible for executing administration of the Redress
+
+            Plan.
+
+121. Respondent must pay Credit Redress and must begin paying non-Credit
+
+      Redress as provided for in the Redress Plan (as applicable) within 30 days
+
+      after the Enforcement Director has made a determination of non-objection to
+
+      the Redress Plan.
+
+122. Within 15 days of completing the Redress Plan, Respondent must submit to
+
+      the Bureau a redress report detailing the number of consumers and consumer
+
+      accounts who received redress, the total amount of redress paid to those
+
+                                           59
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 60 of 75
+
+
+
+
+      consumers, and any remainder of funds to be wired to the Bureau pursuant
+
+      to Paragraph 123 (Redress Report).
+
+123. After completing the Redress Plan, if the amount of redress provided to
+
+      Affected Consumers is less than $75 million, 90 days after submitting the
+
+      Redress Report to the Bureau, Respondent must pay to the Bureau, by wire
+
+      transfer to the Bureau or to the Bureau’s agent, and according to the
+
+      Bureau’s wiring instructions, the difference between the amount of redress
+
+      provided to Affected Consumers and $75 million.
+
+124. The Bureau may use these remaining funds to pay additional redress to
+
+      Affected Consumers. If the Bureau determines, in its sole discretion, that
+
+      additional redress is wholly or partially impracticable or otherwise
+
+      inappropriate, or if funds remain after the additional redress is completed,
+
+      the Bureau will deposit any remaining funds in the U.S. Treasury.
+
+      Respondent will have no right to challenge any actions that the Bureau or its
+
+      representatives may take under this Section.
+
+125. Respondent may not condition the payment of any redress to any Affected
+
+      Consumer under this Consent Order on that Affected Consumer waiving any
+
+      right.
+
+
+
+
+                                          60
+           2025-CFPB-0001    Document 1     Filed 01/16/2025   Page 61 of 75
+
+
+
+
+                                          IX.
+
+                       Order to Pay Civil Money Penalty
+
+IT IS FURTHER ORDERED that:
+
+126. Under § 1055(c) of the CFPA, 12 U.S.C. § 5565(c), by reason of the
+
+      violations of law described in Section IV of this Consent Order, Respondent
+
+      must pay a civil money penalty of $55 million to the Bureau.
+
+127. Within 10 days of the Effective Date, Respondent must pay the civil money
+
+      penalty by wire transfer to the Bureau or to the Bureau’s agent in
+
+      compliance with the Bureau’s wiring instructions.
+
+128. The civil money penalty paid under this Consent Order will be deposited in
+
+      the Civil Penalty Fund of the Bureau as required by § 1017(d) of the CFPA,
+
+      12 U.S.C. § 5497(d).
+
+129. Respondent, for all purposes, must treat the civil money penalty paid under
+
+      this Consent Order as a penalty paid to the government. Regardless of how
+
+      the Bureau ultimately uses those funds, Respondent may not:
+
+      a.    claim, assert, or apply for a tax deduction, tax credit, or any other tax
+
+            benefit for any civil money penalty paid under this Consent Order; or
+
+      b.    seek or accept, directly or indirectly, reimbursement or
+
+            indemnification from any source, including but not limited to payment
+
+
+                                          61
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 62 of 75
+
+
+
+
+            made under any insurance policy, with regard to any civil money
+
+            penalty paid under this Consent Order.
+
+130. To preserve the deterrent effect of the civil money penalty in any Related
+
+      Consumer Action, Respondent may not argue that Respondent is entitled to,
+
+      nor may Respondent benefit by, any offset or reduction of any compensatory
+
+      monetary remedies imposed in the Related Consumer Action because of the
+
+      civil money penalty paid in this action or because of any payment that the
+
+      Bureau makes from the Civil Penalty Fund. If the court in any Related
+
+      Consumer Action offsets or otherwise reduces the amount of compensatory
+
+      monetary remedies imposed against Respondent based on the civil money
+
+      penalty paid in this action or based on any payment that the Bureau makes
+
+      from the Civil Penalty Fund, Respondent must, within 30 days after entry of
+
+      a final order granting such offset or reduction, notify the Bureau, and pay the
+
+      amount of the offset or reduction to the U.S. Treasury. Such a payment will
+
+      not be considered an additional civil money penalty and will not change the
+
+      amount of the civil money penalty imposed in this action.
+
+
+
+
+                                          62
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 63 of 75
+
+
+
+
+                                          X.
+
+                        Additional Monetary Provisions
+
+IT IS FURTHER ORDERED that:
+
+131. In the event of any default on Respondent’s obligations to make payment
+
+      under this Consent Order, interest, computed under 28 U.S.C. § 1961, as
+
+      amended, will accrue on any outstanding amounts not paid from the date of
+
+      default to the date of payment, and will immediately become due and
+
+      payable.
+
+132. Respondent must relinquish all dominion, control, and title to the funds paid
+
+      to the fullest extent permitted by law and no part of the funds may be
+
+      returned to Respondent.
+
+133. Respondent acknowledges that its Taxpayer Identification Number (Social
+
+      Security Number or Employer Identification Number), which Respondent
+
+      previously submitted to the Bureau, may be used for collecting and reporting
+
+      on any delinquent amount arising out of this Order, in accordance with 31
+
+      U.S.C. § 7701.
+
+134. Within 30 days of the entry of a final judgment, consent order, or settlement
+
+      in a Related Consumer Action, Respondent must notify the Enforcement
+
+      Director of the final judgment, consent order, or settlement in writing. That
+
+
+
+                                          63
+           2025-CFPB-0001     Document 1     Filed 01/16/2025   Page 64 of 75
+
+
+
+
+      notification must indicate the amount of redress, if any, that Respondent paid
+
+      or is required to pay to consumers and describe the consumers or classes of
+
+      consumers to whom that redress has been or will be paid.
+
+                         COMPLIANCE PROVISIONS
+
+                                           XI.
+
+                             Reporting Requirements
+
+IT IS FURTHER ORDERED that:
+
+135. Respondent must notify the Bureau of any development that may affect
+
+      compliance obligations arising under this Consent Order, including but not
+
+      limited to a dissolution, assignment, sale, merger, or other action that would
+
+      result in the emergence of a successor company; the creation or dissolution
+
+      of a subsidiary, parent, or affiliate that engages in any acts or practices
+
+      subject to this Consent Order; the filing of any bankruptcy or insolvency
+
+      proceeding by or against Respondent; or a change in Respondent’s name or
+
+      address. Respondent must provide this notice, if practicable, at least 30 days
+
+      before the development, but in any case no later than 14 days after the
+
+      development.
+
+136. Within 7 days of the Effective Date, Respondent must:
+
+
+
+
+                                           64
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 65 of 75
+
+
+
+
+      a.    designate at least one telephone number and email, physical, and
+
+            postal addresses as points of contact that the Bureau may use to
+
+            communicate with Respondent;
+
+      b.    designate at least one telephone number and email, and postal
+
+            addresses as points of contact for consumers with inquiries related to
+
+            consumer relief under the Consent Order;
+
+      c.    identify all businesses doing business in the United States, including
+
+            its territories, for which Respondent is the majority owner, or that
+
+            Respondent directly or indirectly controls, by all of their names,
+
+            telephone numbers, and postal, email, and Internet addresses; and
+
+      d.    describe the activities of each such business, including the products
+
+            and services offered, and the means of advertising, marketing, and
+
+            sales.
+
+137. Respondent must report any change in the information required to be
+
+      submitted under Paragraph 136 at least 30 days before the change or as soon
+
+      as practicable after the learning about the change, whichever is sooner.
+
+
+
+
+                                          65
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 66 of 75
+
+
+
+
+                                        XII.
+
+                    Order Distribution and Acknowledgment
+
+IT IS FURTHER ORDERED that:
+
+138. Within 7 days of the Effective Date, Respondent must submit to the
+
+      Enforcement Director an acknowledgment of receipt of this Consent Order,
+
+      sworn under penalty of perjury.
+
+139. Within 30 days of the Effective Date, Respondent must deliver a copy of this
+
+      Consent Order to each of its Board members and executive officers, as well
+
+      as to any managers, employees, service providers, or other agents and
+
+      representatives who have material responsibilities related to the subject
+
+      matter of the Consent Order.
+
+140. For 5 years from the Effective Date, Respondent must deliver a copy of this
+
+      Consent Order to any business entity resulting from any change in structure
+
+      referred to in Section XI, any future Board members and executive officers,
+
+      as well as to any managers, employees, service providers, or other agents
+
+      and representatives who will have material responsibilities related to the
+
+      subject matter of the Consent Order before they assume their
+
+      responsibilities.
+
+
+
+
+                                          66
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 67 of 75
+
+
+
+
+141. Respondent must secure a signed and dated statement acknowledging receipt
+
+      of a copy of this Consent Order, within 30 days of delivery, from all persons
+
+      receiving a copy of this Consent Order under this Section.
+
+142. Ninety days from the Effective Date, Respondent must submit to the Bureau
+
+      a list of all persons and their titles to whom this Consent Order has been
+
+      delivered under the Section of this Order titled “Order Distribution and
+
+      Acknowledgment” and a copy of all signed and dated statements
+
+      acknowledging receipt of this Consent Order under Paragraph 139.
+
+                                       XIII.
+
+                                  Recordkeeping
+
+IT IS FURTHER ORDERED that:
+
+143. Respondent must create and retain the following business records:
+
+      a.    all documents and records necessary to demonstrate full compliance
+
+            with the Compliance Plan, Redress Plan, and each provision of this
+
+            Consent Order, and the CFPA, the EFTA, and Regulation E, including
+
+            all submissions to the Bureau.
+
+      b.    all documents and records pertaining to the Redress Plan, described in
+
+            Section VIII above.
+
+      c.    copies of all material changes to advertisements, websites or mobile
+
+
+                                          67
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 68 of 75
+
+
+
+
+            apps (in their native forms or in a manner sufficient to view the
+
+            consumer experience), form communications to consumers, and other
+
+            marketing materials relating to Cash App regarding the following:
+
+            i. whether Respondent provides protection from liability or refunds
+
+               for Unauthorized Transfers,
+
+            ii. compliance with consumer laws,
+
+           iii. fraud prevention safeguards,
+
+           iv. whether resolution of consumers’ issues relating to peer-to-peer
+
+               Unauthorized Transfers are the responsibility of the issuing bank,
+
+               and
+
+            v. how Unauthorized Transfers may be reported to Respondent.
+
+      d.    evidence demonstrating compliance with the EFTA and Regulation E,
+
+            including but not limited to all consumer complaints, Notices of Error,
+
+            and refund requests relating to Cash App (whether received directly or
+
+            indirectly, such as through a third party), and any responses to those
+
+            complaints or requests.
+
+144. All documents and records must be maintained in their original electronic
+
+      format. Data should be centralized, and maintained in such a way that
+
+      access, retrieval, auditing and production are not hindered, including but not
+
+      limited to retaining data and modifications to data in a manner that allows
+
+                                          68
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 69 of 75
+
+
+
+
+      for historical analysis without delayed recovery from archives or deep
+
+      storage.
+
+145. Respondent must make the documents identified in Paragraph 143 available
+
+      to the Bureau upon the Bureau’s request.
+
+                                        XIV.
+
+                                      Notices
+
+IT IS FURTHER ORDERED that:
+
+146. Unless otherwise directed in writing by the Bureau, Respondent must
+
+      provide all submissions, requests, communications, or other documents
+
+      relating to this Consent Order in writing, with the subject line, “In re Block,
+
+      Inc., File No. 2025-CFPB-0001,” and send them to the following email:
+
+      Enforcement_Compliance@cfpb.gov addressed as follows:
+
+
+            ATTN: Enforcement Director
+            Consumer Financial Protection Bureau
+            Enforcement Division
+
+
+
+
+                                          69
+          2025-CFPB-0001     Document 1    Filed 01/16/2025   Page 70 of 75
+
+
+
+
+                                       XV.
+
+                         Cooperation with the Bureau
+
+IT IS FURTHER ORDERED that:
+
+147. Respondent must cooperate fully to help the Bureau determine the identity
+
+      and location of, and the amount of injury sustained by, each Affected
+
+      Consumer. Respondent must provide such information in its or its agents’
+
+      possession or control within 14 days of receiving a written request from the
+
+      Bureau.
+
+148. Respondent must remain registered for the Bureau’s Company Portal and in
+
+      connection with responding to consumer complaints and inquiries on the
+
+      Company Portal must comply with the timely response requirements that
+
+      §1034(b)(1)-(3) of the CFPA, 12 U.S.C. § 5534(b).
+
+149. Unless otherwise prohibited by law or regulation, Respondent must identify
+
+      Clearly and Prominently to consumers that they can file a complaint with the
+
+      Bureau and provide the applicable telephone, website, and mailing
+
+      information to do so on the Cash App Support Center webpage and the
+
+      support portal on the App.
+
+
+
+
+                                          70
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 71 of 75
+
+
+
+
+                                        XVI.
+
+                             Compliance Monitoring
+
+IT IS FURTHER ORDERED that:
+
+150. Within 14 days of receipt of a written request from the Bureau, Respondent
+
+      must submit additional Compliance Reports or other requested information,
+
+      which must be made under penalty of perjury; provide sworn testimony; or
+
+      produce documents.
+
+151. For purposes of this Section, the Bureau may communicate directly with
+
+      Respondent, unless Respondent retains counsel related to these
+
+      communications.
+
+152. Respondent must permit Bureau representatives to interview any employee
+
+      or other person affiliated with Respondent who has agreed to such an
+
+      interview regarding: (a) this matter; (b) anything related to or associated
+
+      with the conduct described in Section IV; or (c) compliance with the
+
+      Consent Order. The person interviewed may have counsel present.
+
+153. Nothing in this Consent Order will limit the Bureau’s lawful use of civil
+
+      investigative demands under 12 C.F.R. § 1080.6 or other compulsory
+
+      process.
+
+
+
+
+                                          71
+           2025-CFPB-0001     Document 1    Filed 01/16/2025   Page 72 of 75
+
+
+
+
+                                      XVII.
+
+                    Modifications to Non-Material Requirements
+
+IT IS FURTHER ORDERED that:
+
+154. Respondent may seek a modification to non-material requirements of this
+
+      Consent Order (e.g., reasonable extensions of time and changes to reporting
+
+      requirements) by submitting a written request to the Enforcement Director.
+
+155. The Enforcement Director may, in their discretion, modify any non-material
+
+      requirements of this Consent Order (e.g., reasonable extensions of time and
+
+      changes to reporting requirements) if they determine good cause justifies the
+
+      modification. Any such modification by the Enforcement Director must be
+
+      in writing.
+
+                                      XVIII.
+
+                        ADMINISTRATIVE PROVISIONS
+
+IT IS FURTHER ORDERED that:
+
+156. The provisions of this Consent Order do not bar, estop, or otherwise prevent
+
+      the Bureau from taking any other action against Respondent, except as
+
+      described in Paragraph 157. Further, for the avoidance of doubt, the
+
+      provisions of this Consent Order do not bar, estop, or otherwise prevent any
+
+
+
+
+                                           72
+           2025-CFPB-0001     Document 1    Filed 01/16/2025   Page 73 of 75
+
+
+
+
+      other person or governmental agency from taking any action against
+
+      Respondent.
+
+157. The Bureau releases and discharges Respondent from all potential liability
+
+      for law violations that the Bureau has or might have asserted based on the
+
+      practices described in Section IV of this Consent Order, to the extent such
+
+      practices occurred before the Effective Date and the Bureau knows about
+
+      them as of the Effective Date. The Bureau may use the practices described in
+
+      this Consent Order in future enforcement actions against Respondent and its
+
+      affiliates, including, without limitation, to establish a pattern or practice of
+
+      violations or the continuation of a pattern or practice of violations or to
+
+      calculate the amount of any penalty. This release does not preclude or affect
+
+      any right of the Bureau to determine and ensure compliance with the
+
+      Consent Order, or to seek penalties for any violations of the Consent Order.
+
+158. This Consent Order is intended to be, and will be construed as, a final
+
+      Consent Order issued under § 1053 of the CFPA, 12 U.S.C. § 5563, and
+
+      expressly does not form, and may not be construed to form, a contract
+
+      binding the Bureau or the United States.
+
+159. This Consent Order will terminate on the later of 5 years from the Effective
+
+      Date or 5 years from the most recent date that the Bureau initiates an action
+
+      alleging any violation of the Consent Order by Respondent if such action is
+
+                                           73
+           2025-CFPB-0001    Document 1    Filed 01/16/2025   Page 74 of 75
+
+
+
+
+      initiated within 5 years of the Effective Date. If such action is dismissed or
+
+      the relevant adjudicative body rules that Respondent did not violate any
+
+      provision of the Consent Order, and the dismissal or ruling is either not
+
+      appealed or upheld on appeal, then the Consent Order will terminate as
+
+      though the action had never been filed. The Consent Order will remain
+
+      effective and enforceable until such time, except to the extent that any
+
+      provisions of this Consent Order have been amended, suspended, waived, or
+
+      terminated in writing by the Bureau or its designated agent.
+
+160. Calculation of time limitations will run from the Effective Date and be based
+
+      on calendar days, unless otherwise noted.
+
+161. Should Respondent seek to transfer or assign all or part of its operations that
+
+      are subject to this Consent Order, Respondent must, as a condition of sale,
+
+      obtain the written agreement of the transferee or assignee to comply with all
+
+      applicable provisions of this Consent Order.
+
+162. The provisions of this Consent Order will be enforceable by the Bureau. For
+
+      any violation of this Consent Order, the Bureau may impose the maximum
+
+      amount of civil money penalties allowed under § 1055(c) of the CFPA, 12
+
+      U.S.C. § 5565(c). In connection with any attempt by the Bureau to enforce
+
+      this Consent Order in federal district court, the Bureau may serve
+
+
+
+                                          74
+          2025-CFPB-0001     Document 1    Filed 01/16/2025   Page 75 of 75
+
+
+
+
+      Respondent wherever Respondent may be found and Respondent may not
+
+      contest that court’s personal jurisdiction over Respondent.
+
+163. This Consent Order and the accompanying Stipulation contain the complete
+
+      agreement between the parties. The parties have made no promises,
+
+      representations, or warranties other than what is contained in this Consent
+
+      Order and the accompanying Stipulation. This Consent Order and the
+
+      accompanying Stipulation supersede any prior oral or written
+
+      communications, discussions, or understandings.
+
+164. Nothing in this Consent Order or the accompanying Stipulation may be
+
+      construed as allowing Respondent, its Board, its Executives, officers, or
+
+      employees to violate any law, rule, or regulation.
+
+IT IS SO ORDERED, this 16th day of January, 2025.
+
+
+                                      ____________________________
+                                      Rohit Chopra
+                                      Director
+                                      Consumer Financial Protection Bureau
+
+
+
+
+                                          75
+
