@@ -1,0 +1,754 @@
+Document Accession #: 20260112-3012          Filed Date: 01/12/2026
+
+
+
+
+                                         194 FERC ¶ 61,029
+                                    UNITED STATES OF AMERICA
+                           FEDERAL ENERGY REGULATORY COMMISSION
+
+         Before Commissioners: Laura V. Swett, Chairman;
+                               David Rosner, Lindsay S. See,
+                               Judy W. Chang, and David LaCerte.
+
+         Tenaska Power Services Co.                                   Docket No. IN25-13-000
+
+                   ORDER APPROVING STIPULATION AND CONSENT AGREEMENT
+
+                                        (Issued January 12, 2026)
+
+         1.      The Commission approves the attached Stipulation and Consent Agreement
+         (Agreement) between the Office of Enforcement and Regulatory Accounting
+         (Enforcement) and Tenaska Power Services Co. (TPS). This order is in the public
+         interest because the Agreement resolves on fair and equitable terms Enforcement’s
+         investigation (Investigation) under Part 1b of the Commission’s regulations, 18 C.F.R.
+         Part 1b (2025), into whether TPS violated the ISO New England Inc. (ISO-NE) Open
+         Access Transmission Tariff (Tariff) and the Commission’s regulations while submitting
+         offers for the output from an approximately 250 MW natural gas-fired generator in
+         Agawam, Massachusetts (the Berkshire Generator) on January 11-12, 2021 (the Relevant
+         Period).1
+
+         2.     TPS stipulates to the facts set forth in Section II of the Agreement, but neither
+         admits nor denies the alleged violations in Section III of the Agreement. TPS agrees to
+         (a) pay a civil penalty of $51,000 to the United States Treasury; (b) disgorge $78,354,
+         plus interest, to ISO-NE; and (c) provide compliance monitoring reports to Enforcement
+         as provided in the Agreement.
+
+         I.    Facts
+
+         3.      During the Relevant Period, TPS served as the Lead Market Participant in ISO-NE
+         for the Energy and Ancillary Services from the Berkshire Generator. As Lead Market
+         Participant, TPS was required to submit offers on behalf of the Berkshire Generator
+         (including all information necessary to submit such offers) and to respond to ISO-NE’s
+
+
+               1
+                During the Relevant Period, the Berkshire Generator was owned by Berkshire
+         Power Company LLC (Berkshire Power). Berkshire Power was subsequently sold in
+         September 2024. See Berkshire Power Co., LLC, 188 FERC ¶ 62,137 (2024).
+Document Accession #: 20260112-3012              Filed Date: 01/12/2026
+
+         Docket No. IN25-13-000                                                                 -2-
+
+         directives to start, shutdown, or change output. TPS is authorized by the Commission to
+         sell power at market-based rates.2
+
+         4.    During the Relevant Period, the Berkshire Generator had an ISO-NE Capacity
+         Supply Obligation (CSO) of 229 MW.
+
+         5.     The owner of the Berkshire Generator during the Relevant Period, Berkshire
+         Power, as noted above, was an affiliate of TPS. During the Relevant Period, Berkshire
+         Power compensated TPS for performing the duties of Lead Market Participant on behalf
+         of the Berkshire Generator’s Energy and Ancillary Services in the ISO-NE energy
+         markets.
+
+         6.     In consultation with Berkshire Power and plant operators, TPS procured natural
+         gas fuel for the Berkshire Generator through requests to an affiliated fuel supplier,
+         Tenaska Marketing Ventures (Tenaska Marketing).
+
+         7.      During the Relevant Period, TPS submitted day-ahead and real-time energy offers
+         for the Berkshire Generator and accepted the other obligations under ISO-NE’s tariff
+         applicable to Lead Market Participants. Under ISO-NE Tariff Section III.1.7.20(b), Lead
+         Market Participants are responsible for submitting energy offers from generators
+         (including the physical operating characteristics of the generators), updating such offers,
+         and communicating the availability and unavailability of generators for which they
+         submit offers.
+
+         8.     The Economic Maximum (EcoMax) is one of the physical parameters for a
+         generator that must be communicated to ISO-NE. A generator’s EcoMax is the
+         maximum available output that a Market Participant offers to supply. A Market
+         Participant must maintain an up-to-date EcoMax for all hours in which the Generator
+         Asset has been offered.3
+
+         9.     In addition, resources with CSOs have “strict performance obligations.”4
+         Specifically, under ISO-NE Tariff Section III.13.6.1.1.1, resources must “offer into both
+         the day-ahead and real-time energy markets a MW amount equal to or greater than [the]
+         Capacity Supply Obligation when the resource is physically available.” Under ISO-NE
+         Tariff Section III.1.10.1A(c)(v), resources with CSOs must also “keep supply offers open
+                2
+                 See Tenaska Power Servs. Co., Docket No. ER94-389-000 (May 26, 1994)
+         (unreported).
+                3
+                    See ISO-NE Tariff § I.2.2.
+                4
+                See New England Power Generators Association, Inc. v. ISO New England Inc.,
+         144 FERC ¶ 61,157 at P 55 (NEPGA), order on reh’g, 145 FERC ¶ 61,206 (2013).
+Document Accession #: 20260112-3012           Filed Date: 01/12/2026
+
+         Docket No. IN25-13-000                                                               -3-
+
+         throughout the operating day.”5 During the Relevant Period, as Lead Market Participant
+         for a Capacity Resource, TPS was offering energy from its affiliated Capacity Resource.
+
+         10.    In exchange for being offered into the ISO-NE energy markets on a daily basis,
+         resources with CSOs receive monthly capacity payments. During January 2021,
+         Berkshire Power’s monthly capacity payment was approximately $1,214,490.
+
+         11.     The Commission has found that the ISO-NE tariff excuses performance by a
+         resource with a CSO where the resource is physically unavailable due to its inability to
+         procure fuel or transportation for the resource to run beyond its day-ahead commitment,
+         or when not scheduled in the day-ahead market.6 An economic decision not to procure
+         fuel (e.g., where fuel has become more expensive after an offer is submitted) does not
+         excuse a lack of performance.7
+
+         12.    On Saturday, January 9, 2021, TPS submitted a Day-Ahead energy offer to
+         ISO-NE for Monday, January 11, 2021 for the Berkshire Generator with an EcoMax of
+         251 MW. On January 10, 2021, ISO-NE notified TPS that the Berkshire Generator had
+         received a day-ahead award at its EcoMax for every hour of January 11, 2021.
+
+         13.   On January 11, 2021, TPS submitted Day-Ahead energy offers for January 12,
+         2021 for the Berkshire Generator with an identical EcoMax of 251 MW. Also on
+         January 11, ISO-NE notified TPS that the Berkshire Generator had received a day-ahead
+         award at its EcoMax for every hour of January 12, 2021.
+
+         14.    ISO-NE dispatched the Berkshire Generator on January 11, 2021, consistent with
+         its day-ahead award. On January 11, the Berkshire Generator initially operated and
+         produced energy at its full EcoMax of 251 MW.
+
+         15.    Shortly after 10:00 am on January 11, 2021, after the Berkshire Generator received
+         its day-ahead award for January 11, but before it received its day-ahead award for
+         January 12, Tennessee Gas Pipeline (the natural gas pipeline serving the Berkshire
+         Generator) issued an Operational Flow Order (OFO) affecting the meter connected to the
+         Berkshire Generator. After Berkshire Power informed TPS of the OFO issued to
+         Berkshire, and that the OFO indicated that planned natural gas fuel deliveries to the
+         Berkshire Generator could be impacted, TPS understood that additional fuel supplies
+         would need to be secured for the generator to operate at its EcoMax.
+
+
+
+               5
+                   NEPGA at P 49.
+               6
+                   NEPGA at P 56 (explaining the ISO-NE tariff’s requirements).
+               7
+                   Id.
+Document Accession #: 20260112-3012             Filed Date: 01/12/2026
+
+         Docket No. IN25-13-000                                                                -4-
+
+         16.     Following the issuance of the OFO, TPS, working with Tenaska Marketing,
+         immediately attempted to locate additional intraday supplies of natural gas to make up for
+         the expected reduction of scheduled gas deliveries to the Berkshire Generator. TPS
+         learned that additional intraday non-firm gas supplies could be obtained to operate the
+         Berkshire Generator at its dispatched EcoMax, but that the prices for those fuel supplies
+         would be elevated. TPS advised Berkshire Power and plant operators of the fuel supply
+         situation. At that time, Berkshire Power did not authorize TPS to purchase additional
+         fuel.
+
+         17.    Berkshire Power personnel subsequently contacted the ISO-NE control room and
+         requested to reduce the dispatch of the Berkshire Generator from 251 MW to 150 MW
+         (an amount that was below both the Berkshire Generator’s EcoMax and CSO). Berkshire
+         Power personnel did not mention that fuel was available to operate the Berkshire
+         Generator at full EcoMax and at the CSO.
+
+         18.    With Berkshire Power personnel’s knowledge, ISO-NE personnel then placed the
+         Berkshire Generator into a “limited-energy generator” (LEG) status with a maximum
+         physical output equal to 150 MW. LEG status is limited to generators that, due to
+         physical design considerations or environmental restrictions, are unable to operate
+         continuously at full output on a daily basis.8 However, the Berkshire Generator did not
+         qualify for LEG status. Immediately following the communications between Berkshire
+         personnel and ISO-NE, ISO-NE began sending reduced dispatch instructions to the
+         Berkshire Generator, dropping the dispatch requirement from the unit’s EcoMax to its
+         EcoMin, and the Berkshire Generator reduced its output accordingly, from 251 MW to
+         150 MW.
+
+         19.      Early on January 12, 2021, the pipeline supplying gas to the Berkshire Generator
+         removed the OFO condition. At 6:36 AM, a Berkshire Generator operator contacted the
+         ISO-NE Operations Control Room to request that the generator be dispatched back up to
+         its full day-ahead EcoMax award of 251 MW. During the call, the ISO-NE Control
+         Room operator asked for, and received, confirmation that the Berkshire Generator
+         operator was requesting that ISO-NE remove the LEG designation. ISO-NE then
+         resumed dispatch of the Berkshire Generator at its full EcoMax.
+
+         20.   The Investigation arose out of a referral from ISO-NE’s Internal Market Monitor.
+
+         21.   TPS fully cooperated with Enforcement during the Investigation.
+
+
+
+
+               8
+                   See ISO-NE Tariff § I.2.2.
+Document Accession #: 20260112-3012           Filed Date: 01/12/2026
+
+         Docket No. IN25-13-000                                                                 -5-
+
+         II.    Violations
+
+         22.     Enforcement determined that during the Relevant Period, TPS violated provisions
+         of the ISO-NE tariff and 18 C.F.R. §§ 35.41(a) and (b) when its affiliate, Berkshire
+         Power, sought to avoid additional more expensive fuel purchases that would have
+         enabled the Berkshire Generator, an ISO-NE capacity resource, to run at the levels
+         dispatched by ISO-NE per the resource’s day ahead award.
+
+         23.     Resources in ISO-NE with CSOs have a strict performance obligation. Capacity
+         resources receive guaranteed monthly capacity payments in exchange for which they are
+         required to be offered into the ISO-NE energy markets on a daily basis and to be
+         available for operation regardless of whether a daily offer is accepted. Nonperformance
+         by or inaccurate information about these resources can have substantial economic and
+         reliability effects.
+
+         24.    Section III.13.6.1.1.1 of the ISO-NE Tariff requires Generating Capacity
+         Resources, like the Berkshire Generator resource, to “be offered into both the Day-Ahead
+         Energy Market and Real-Time Energy Market at a MW amount equal to or greater than
+         its Capacity Supply Obligation whenever the resource is physically available . . . .”
+
+         25.     ISO-NE Tariff Section III.13.6.1.1.2 requires that Day-Ahead and Real-Time
+         Energy Market offers “reflect the then-known unit-specific operating characteristics
+         (taking into account, among other things, the physical design characteristics of the unit)
+         consistent with Good Utility Practice. Resources must re-declare to the ISO any changes
+         to the offer parameters that occur in real time to reflect the known capability of the
+         resource.”
+
+         26.    In NEPGA, 144 FERC ¶ 61,157 at P 47, the Commission held that the ISO-NE
+         Tariff establishes “a strict performance obligation on capacity resources and that capacity
+         resources may not take economic outages, including outages based on economic
+         decisions not to procure fuel or transportation.”
+
+         27.     Enforcement determined that TPS violated Sections III.13.6.1.1.1 and
+         III.13.6.1.1.2 of the ISO-NE Tariff during the Relevant Period by modifying the real-time
+         offers of the Berkshire Generator based on economic factors rather than physical
+         availability. Further, even if such a revised offer was permitted, TPS did not ascertain
+         whether LEG status was appropriate for the plant and did not dispute, through Berkshire
+         Power, LEG status for which the Berkshire Generator was ineligible. The effect of these
+         actions was to enable Berkshire Power to take an economic outage inconsistent with the
+         performance obligation of resources with CSOs.
+
+         28.     Section 35.41(a) of the Commission’s regulations, 18 C.F.R. § 35.41(a), provides
+         that: “[w]here a Seller participates in a Commission-approved organized market, Seller
+         must operate and schedule generating facilities, undertake maintenance, declare outages,
+Document Accession #: 20260112-3012            Filed Date: 01/12/2026
+
+         Docket No. IN25-13-000                                                                    -6-
+
+         and commit or otherwise bid supply in a manner that complies with the Commission-
+         approved rules and regulations of the applicable market.” Section 35.36(a)(1) of the
+         Commission’s regulations, 18 C.F.R. § 35.36(a)(1), defines “Seller” as “any person that
+         has authorization to or seeks authorization to engage in sales for resale of electric energy,
+         capacity or ancillary services at market-based rates under section 205 of the Federal
+         Power Act.”
+
+         29.     TPS has, and had during the Relevant Period, market-based rate authorization and
+         failed to schedule the Berkshire Generator consistent with the ISO-NE Tariff, as
+         described above. Enforcement therefore concluded that TPS violated 18 C.F.R.
+         § 35.41(a).
+
+         30.     Section 35.41(b) of the Commission’s regulations, 18 C.F.R. § 35.41(b), provides
+         that: “[a] Seller must provide accurate and factual information and not submit false or
+         misleading information, or omit material information, in any communication with the
+         Commission, Commission-approved market monitors, Commission-approved regional
+         transmission organizations, Commission-approved independent system operators, or
+         jurisdictional transmission providers, unless Seller exercises due diligence to prevent
+         such occurrences.”
+
+         31.    Enforcement determined that attempts to reduce the dispatched level of the
+         Berkshire Generator resource falsely and misleadingly communicated to ISO-NE a
+         physical inability to operate at the resource’s CSO. These false communications violated
+         18 C.F.R. § 35.41(b) because such a reduction was not due to a physical inability to
+         operate but rather an economic decision not to procure higher-priced fuel.
+
+         III.   Stipulation and Consent Agreement
+
+         32.  Enforcement and TPS have resolved the Investigation by means of the attached
+         Agreement.
+
+         33.   TPS stipulates to the facts set forth in Section II of the Agreement, but neither
+         admits nor denies the violations described in Section III of the Agreement.
+
+         34.    TPS agrees to pay a civil penalty of $51,000 to the United States Treasury.
+
+         35.    TPS agrees to pay $78,354, plus interest, in disgorgement to ISO-NE.
+
+         36.   TPS agrees to submit an annual compliance monitoring report to Enforcement for
+         one year with the second year at Enforcement’s discretion.
+Document Accession #: 20260112-3012            Filed Date: 01/12/2026
+
+         Docket No. IN25-13-000                                                                   -7-
+
+         IV.    Determination of Appropriate Remedies and Sanctions
+
+        37.    In recommending the appropriate remedy, Enforcement considered the factors
+        described in the Revised Policy Statement on Penalty Guidelines,9 including that TPS
+        cooperated with Enforcement during the Investigation.
+
+         38.    The Commission concludes that the Agreement is a fair and equitable resolution of
+         the matters concerned and is in the public interest, as it reflects the nature and seriousness
+         of the conduct and recognizes the specific considerations stated above and in the
+         Agreement.
+
+         39.   The Commission also concludes that TPS’s civil penalty is consistent with the
+         Revised Policy Statement on Penalty Guidelines.10
+
+         40.    The Commission directs TPS to make the civil penalty payment and disgorgement
+         as required by the Agreement within twenty days after the Effective Date of the
+         Agreement.
+
+         41.   The Commission directs ISO-NE to allocate the disgorgement funds as set forth in
+         the Agreement.
+
+         The Commission orders:
+
+               The attached Stipulation and Consent Agreement is hereby approved without
+         modification.
+
+         By the Commission.
+
+         (SEAL)
+
+
+
+                                                        Debbie-Anne A. Reese,
+                                                              Secretary.
+
+
+
+
+                9
+                Enforcement of Statutes, Orders, Rules, and Regulations, Revised Policy
+         Statement on Penalty Guidelines, 132 FERC ¶ 61,216 (2010).
+                10
+                     Id.
+Document Accession #: 20260112-3012           Filed Date: 01/12/2026
+
+
+
+
+                                UNITED STATES OF AMERICA
+                         FEDERAL ENERGY REGULATORY COMMISSION
+
+             Tenaska Power Services Co.                              Docket No. IN25-13-000
+
+                            STIPULATION AND CONSENT AGREEMENT
+
+             I.    INTRODUCTION
+
+             1.     The Office of Enforcement and Regulatory Accounting (Enforcement) of the
+             Federal Energy Regulatory Commission (Commission) and Tenaska Power
+             Services Co. (TPS)1 enter into this Stipulation and Consent Agreement (Agreement)
+             to resolve a nonpublic, preliminary investigation (the Investigation) conducted by
+             Enforcement pursuant to Part 1b of the Commission’s regulations, 18 C.F.R. Part
+             1b (2025). As described more fully in Section II below, the Investigation concerned
+             whether TPS violated the ISO New England Inc. (ISO-NE) Tariff and the
+             Commission’s regulations while submitting offers for the output from an
+             approximately 250 MW natural gas-fired generator in Agawam, Massachusetts (the
+             Berkshire Generator) owned by TPS’s affiliate at the time, Berkshire Power
+             Company, LLC (Berkshire Power),2 on January 11-12, 2021 (Relevant Period).
+
+             2.     TPS stipulates to the facts in Section II, but neither admits nor denies the
+             alleged violations in Section III. TPS agrees to: (a) pay $78,354 in disgorgement,
+             plus interest, to ISO-NE that Berkshire Power received during the Relevant Period;
+             (b) pay a civil penalty of $51,000 to the United States Treasury; and (c) provide
+             compliance monitoring reports to Enforcement as provided more fully below.
+
+             II.   STIPULATIONS
+
+             Enforcement and TPS hereby stipulate and agree to the following facts:
+
+             3.     During the Relevant Period, TPS served as the Lead Market Participant in
+             ISO-NE for the Energy and Ancillary Services from the Berkshire Generator. As
+             Lead Market Participant, TPS was required to submit offers on behalf of the
+             Berkshire Generator (including all information necessary to submit such offers)
+             and to respond to ISO-NE’s directives to start, shutdown, or change output.
+
+
+
+
+         1
+          TPS’s parent company is Tenaska Energy, Inc.
+         2
+          Berkshire Power was subsequently sold in September 2024. See Berkshire Power
+         Co., LLC, 188 FERC ¶ 62,137 (2024).
+Document Accession #: 20260112-3012           Filed Date: 01/12/2026
+
+
+
+
+         TPS is authorized by the Commission to sell power at market-based rates.3
+
+         4.    During the Relevant Period, the Berkshire Generator had an ISO-NE Capacity
+         Supply Obligation (CSO) of 229 MW.
+
+         5.     The owner of the Berkshire Generator during the Relevant Period, Berkshire Power,
+         as noted above, was an affiliate of TPS. During the Relevant Period, Berkshire Power
+         compensated TPS for performing the duties of Lead Market Participant on behalf of the
+         Berkshire Generator’s Energy and Ancillary Services in the ISO-NE energy markets.
+
+         6.     In consultation with Berkshire Power and plant operators, TPS procured natural gas
+         fuel for the Berkshire Generator through requests to an affiliated fuel supplier, Tenaska
+         Marketing Ventures (Tenaska Marketing).
+
+         7.      During the Relevant Period, TPS submitted day-ahead and real-time energy offers
+         for the Berkshire Generator and accepted the other obligations under ISO-NE’s tariff
+         applicable to Lead Market Participants. Under ISO-NE Tariff Section III.1.7.20(b), Lead
+         Market Participants are responsible for submitting energy offers from generators (including
+         the physical operating characteristics of the generators), updating such offers, and
+         communicating the availability and unavailability of generators for which they submit
+         offers.
+
+         8.     The Economic Maximum (EcoMax) is one of the physical parameters for a
+         generator that must be communicated to ISO-NE. A generator’s EcoMax is the maximum
+         available output that a Market Participant offers to supply. A Market Participant must
+         maintain an up-to-date EcoMax for all hours in which the Generator Asset has been
+         offered.4
+
+         9.     In addition, resources with CSOs have “strict performance obligations.”5
+         Specifically, under ISO-NE Tariff Section III.13.6.1.1.1, resources must “offer into both
+         the day-ahead and real-time energy markets a MW amount equal to or greater than [the]
+         Capacity Supply Obligation when the resource is physically available.” Under ISO-NE
+         Tariff Section III.1.10.1A(c)(v), resources with CSOs must also “keep supply offers open
+         throughout the operating day.”6 During the Relevant Period, as Lead Market Participant
+         for a Capacity Resource, TPS was offering energy from its affiliated Capacity Resource.
+
+
+
+         3
+           See Tenaska Power Servs. Co., Docket No. ER94-389-000 (May 26, 1994) (unreported).
+         4
+           See ISO-NE Tariff § I.2.2.
+         5
+            See New England Power Generators Association, Inc. v. ISO New England Inc.,
+         144 FERC ¶ 61,157 at P 55 (NEPGA), order on reh’g, 145 FERC ¶ 61,206 (2013).
+         6
+           NEPGA at P 49.
+
+
+                                                     2
+Document Accession #: 20260112-3012              Filed Date: 01/12/2026
+
+
+
+
+            10.    In exchange for being offered into the ISO-NE energy markets on a daily basis,
+            resources with CSOs receive monthly capacity payments. During January 2021, Berkshire
+            Power’s monthly capacity payment was approximately $1,214,490.
+
+            11.     The Commission has found that the ISO-NE tariff excuses performance by a
+            resource with a CSO where the resource is physically unavailable due to its inability to
+            procure fuel or transportation for the resource to run beyond its day-ahead commitment, or
+            when not scheduled in the day-ahead market.7 An economic decision not to procure fuel
+            (e.g., where fuel has become more expensive after an offer is submitted) does not excuse a
+            lack of performance.8
+
+            12.   On Saturday, January 9, 2021, TPS submitted a Day-Ahead energy offer to ISO-NE
+            for Monday, January 11, 2021 for the Berkshire Generator with an EcoMax of 251 MW.
+            On January 10, 2021, ISO-NE notified TPS that the Berkshire Generator had received a
+            day-ahead award at its EcoMax for every hour of January 11, 2021.
+
+            13.    On January 11, 2021, TPS submitted Day-Ahead energy offers for January 12, 2021
+            for the Berkshire Generator with an identical EcoMax of 251 MW. Also on January 11,
+            ISO-NE notified TPS that the Berkshire Generator had received a day-ahead award at its
+            EcoMax for every hour of January 12, 2021.
+
+            14.    ISO-NE dispatched the Berkshire Generator on January 11, 2021, consistent with
+            its day-ahead award. On January 11, the Berkshire Generator initially operated and
+            produced energy at its full EcoMax of 251 MW.
+
+            15.    Shortly after 10:00 am on January 11, 2021, after the Berkshire Generator received
+            its day-ahead award for January 11, but before it received its day-ahead award for January
+            12, Tennessee Gas Pipeline (the natural gas pipeline serving the Berkshire Generator)
+            issued an Operational Flow Order (OFO) affecting the meter connected to the Berkshire
+            Generator. After Berkshire Power informed TPS of the OFO issued to Berkshire, and that
+            the OFO indicated that planned natural gas fuel deliveries to the Berkshire Generator could
+            be impacted, TPS understood that additional fuel supplies would need to be secured for the
+            generator to operate at its EcoMax.
+
+            16.    Following the issuance of the OFO, TPS, working with Tenaska Marketing,
+            immediately attempted to locate additional intraday supplies of natural gas to make up for
+            the expected reduction of scheduled gas deliveries to the Berkshire Generator. TPS learned
+            that additional intraday non-firm gas supplies could be obtained to operate the Berkshire
+            Generator at its dispatched EcoMax, but that the prices for those fuel supplies would be
+
+
+
+      7
+          NEPGA at P 56 (explaining the ISO-NE tariff’s requirements).
+      8
+          Id.
+
+                                                        3
+Document Accession #: 20260112-3012              Filed Date: 01/12/2026
+
+
+
+
+            elevated. TPS advised Berkshire Power and plant operators of the fuel supply situation.
+            At that time, Berkshire Power did not authorize TPS to purchase additional fuel.
+
+            17.     Berkshire Power personnel subsequently contacted the ISO-NE control room and
+            requested to reduce the dispatch of the Berkshire Generator from 251 MW to 150 MW (an
+            amount that was below both the Berkshire Generator’s EcoMax and CSO). Berkshire
+            Power personnel did not mention that fuel was available to operate the Berkshire Generator
+            at full EcoMax and at the CSO.
+
+            18.     With Berkshire Power personnel’s knowledge, ISO-NE personnel then placed the
+            Berkshire Generator into a “limited-energy generator” (LEG) status with a maximum
+            physical output equal to 150 MW. LEG status is limited to generators that, due to physical
+            design considerations or environmental restrictions, are unable to operate continuously at
+            full output on a daily basis.9 However, the Berkshire Generator did not qualify for LEG
+            status. Immediately following the communications between Berkshire personnel and ISO-
+            NE, ISO-NE began sending reduced dispatch instructions to the Berkshire Generator,
+            dropping the dispatch requirement from the unit’s EcoMax to its EcoMin, and the
+            Berkshire Generator reduced its output accordingly, from 251 MW to 150 MW.
+
+            19.      Early on January 12, 2021, the pipeline supplying gas to the Berkshire Generator
+            removed the OFO condition. At 6:36 AM, a Berkshire Generator operator contacted the
+            ISO-NE Operations Control Room to request that the generator be dispatched back up to
+            its full day-ahead EcoMax award of 251 MW. During the call, the ISO-NE Control Room
+            operator asked for, and received confirmation that the Berkshire Generator operator was
+            requesting that ISO-NE remove the LEG designation. ISO-NE then resumed dispatch of
+            the Berkshire Generator at its full EcoMax.
+
+            20.    The Investigation arose out of a referral from ISO-NE’s Internal Market Monitor.
+
+            21.    TPS fully cooperated with Enforcement during the Investigation.
+
+            III.   VIOLATIONS
+
+            22.     Enforcement determined that during the Relevant Period, TPS violated provisions
+            of the ISO-NE tariff and 18 C.F.R. §§ 35.41(a) and (b) when its affiliate, Berkshire Power,
+            sought to avoid additional more expensive fuel purchases that would have enabled the
+            Berkshire Generator, an ISO-NE capacity resource, to run at the levels dispatched by ISO-
+            NE per the resource’s day ahead award.
+
+            23.    Resources in ISO-NE with CSOs have a strict performance obligation. Capacity
+            resources receive guaranteed monthly capacity payments in exchange for which they are
+            required to be offered into the ISO-NE energy markets on a daily basis and to be available
+
+
+      9
+          See ISO-NE Tariff § I.2.2.
+
+                                                        4
+Document Accession #: 20260112-3012            Filed Date: 01/12/2026
+
+
+
+
+         for operation regardless of whether a daily offer is accepted. Nonperformance by or
+         inaccurate information about these resources can have substantial economic and reliability
+         effects.
+
+         24.     Section III.13.6.1.1.1 of the ISO-NE Tariff requires Generating Capacity Resources,
+         like the Berkshire Generator resource, to “be offered into both the Day-Ahead Energy
+         Market and Real-Time Energy Market at a MW amount equal to or greater than its Capacity
+         Supply Obligation whenever the resource is physically available.”
+
+         25.    ISO-NE Tariff Section III.13.6.1.1.2 requires that Day-Ahead and Real-Time
+         Energy Market offers “reflect the then-known unit-specific operating characteristics
+         (taking into account, among other things, the physical design characteristics of the unit)
+         consistent with Good Utility Practice. Resources must re-declare to the ISO any changes
+         to the offer parameters that occur in real time to reflect the known capability of the
+         resource.”
+
+         26.    In NEPGA, 144 FERC ¶ 61,157 at P 47, the Commission held that the ISO-NE Tariff
+         establishes “a strict performance obligation on capacity resources and that capacity
+         resources may not take economic outages, including outages based on economic decisions
+         not to procure fuel or transportation.”
+
+         27.    Enforcement determined that TPS violated Sections III.13.6.1.1.1 and III.13.6.1.1.2
+         of the ISO-NE Tariff during the Relevant Period by modifying the real-time offers of the
+         Berkshire Generator based on economic factors rather than physical availability. Further,
+         even if such a revised offer was permitted, TPS did not ascertain whether LEG status was
+         appropriate for the plant and did not dispute, through Berkshire Power, LEG status for
+         which the Berkshire Generator was ineligible. The effect of these actions was to enable
+         Berkshire Power to take an economic outage inconsistent with the performance obligation
+         of resources with CSOs.
+
+         28.     Section 35.41(a) of the Commission’s regulations, 18 C.F.R. § 35.41(a), provides
+         that: “[w]here a Seller participates in a Commission-approved organized market, Seller
+         must operate and schedule generating facilities, undertake maintenance, declare outages,
+         and commit or otherwise bid supply in a manner that complies with the Commission-
+         approved rules and regulations of the applicable market.” Section 35.36(a)(1) of the
+         Commission’s regulations, 18 C.F.R. § 35.36(a)(1), defines “Seller” as “any person that
+         has authorization to or seeks authorization to engage in sales for resale of electric energy,
+         capacity or ancillary services at market-based rates under section 205 of the Federal Power
+         Act.”
+
+         29.     TPS has, and had during the Relevant Period, market-based rate authorization and
+         failed to schedule the Berkshire Generator consistent with the ISO-NE Tariff, as described
+         above. Enforcement therefore concluded that TPS violated 18 C.F.R. § 35.41(a).
+
+
+
+                                                      5
+Document Accession #: 20260112-3012           Filed Date: 01/12/2026
+
+
+
+
+         30.     Section 35.41(b) of the Commission’s regulations, 18 C.F.R. § 35.41(b), provides
+         that: “[a] Seller must provide accurate and factual information and not submit false or
+         misleading information, or omit material information, in any communication with the
+         Commission, Commission-approved market monitors, Commission-approved regional
+         transmission organizations, Commission-approved independent system operators, or
+         jurisdictional transmission providers, unless Seller exercises due diligence to prevent such
+         occurrences.”
+
+         31.    Enforcement determined that attempts to reduce the dispatched level of the
+         Berkshire Generator resource falsely and misleadingly communicated to ISO-NE a
+         physical inability to operate at the resource’s CSO. These false communications violated
+         18 C.F.R. § 35.41(b) because such a reduction was not due to a physical inability to operate
+         but rather an economic decision not to procure higher-priced fuel.
+
+         IV.    REMEDIES AND SANCTIONS
+
+         32.     For purposes of settling any and all claims, civil and administrative disputes and
+         proceedings arising from or related to TPS’s conduct evaluated in Enforcement’s
+         Investigation, TPS agrees with the facts as stipulated in Section II of this Agreement, but
+         it neither admits nor denies the violations described in Section III of this Agreement. TPS
+         further agrees to undertake the obligations set forth in the following paragraphs.
+
+                A.     Civil Penalty
+
+         33.    TPS agrees to pay a civil penalty of $51,000 to the United States Treasury, by wire
+         transfer, within twenty days after the Effective Date of this Agreement, as defined herein.
+
+                B.     Disgorgement
+
+         34.    TPS agrees to pay $78,354 in disgorgement, plus interest, to ISO-NE that Berkshire
+         Power received during the Relevant Period, within twenty days of the Effective Date of
+         this Agreement to ISO-NE, by wire transfer, to be allocated by ISO-NE in its discretion for
+         the benefit of ISO-NE customers and upon approval by Enforcement of ISO-NE’s plan for
+         doing so.
+
+                C.     Compliance
+
+         35.     TPS shall make an annual compliance monitoring report to Enforcement one year
+         after the Effective Date of the Agreement. This compliance monitoring report shall be
+         submitted no later than 30 days after the end of the one-year reporting period that follows
+         the Effective Date of the Agreement. After the receipt of the first annual report,
+         Enforcement may, at its sole discretion, require TPS to submit an annual report for one
+         additional year. If a second compliance monitoring report is required, it shall be due one
+         year after the first compliance monitoring report is submitted.
+
+
+
+                                                      6
+Document Accession #: 20260112-3012            Filed Date: 01/12/2026
+
+
+
+
+         36.    Each compliance monitoring report shall: (1) identify any known violations subject
+         to the Commission’s jurisdiction that occurred during the prior year, including a description
+         of the nature of the violation and what steps were taken to rectify the situation; (2) describe
+         all compliance measures and procedures TPS instituted or modified during the reporting
+         period related to its compliance with FERC-jurisdictional markets, including but not
+         limited to new or updated compliance measures and procedures related to the facts and
+         circumstances described in Section II; and (3) describe all Commission-related compliance
+         training that TPS administered during the reporting period, including the dates such
+         training occurred, the topics covered, and the procedures used to confirm which personnel
+         attended.
+
+         37.    Each compliance monitoring report shall also include an affidavit executed by an
+         officer of TPS stating that it is true and accurate to the best of his/her knowledge.
+
+         38.   Upon request by Enforcement, TPS shall provide to Enforcement documentation
+         supporting the contents of its reports.
+
+         V.     TERMS
+
+         39.    The “Effective Date” of this Agreement shall be the date on which the Commission
+         issues an order approving this Agreement without material modification. When effective,
+         this Agreement shall resolve the matters specifically addressed herein that arose on or
+         before the Effective Date as to TPS and any affiliated entity, and their respective agents,
+         officers, directors, or employees, both past and present.
+
+         40.    Commission approval of this Agreement without material modification shall release
+         TPS and forever bar the Commission from holding TPS, any affiliated entity, any successor
+         in interest, and their respective agents, officers, directors, or employees, both past and
+         present, liable for any and all administrative or civil claims arising out of the conduct
+         covered by the Investigation, including conduct addressed and stipulated to in this
+         Agreement, which occurred on or before the Agreement’s Effective Date.
+
+         41.    Failure by TPS to make the disgorgement or civil penalty payments, or to comply
+         with the compliance obligations agreed to herein, or any other provision of this Agreement,
+         shall be deemed a violation of a final order of the Commission issued pursuant to the
+         Federal Power Act (FPA), 16 U.S.C. § 792, et seq., and may subject TPS to additional
+         action under the enforcement provisions of the FPA.
+
+         42.    If TPS does not make the required civil penalty and disgorgement payments
+         described above within the times agreed by the parties, interest will be calculated pursuant
+         to 18 C.F.R. § 35.19a(a)(2)(iii)(A), (B) from the date that payments are due, in addition to
+         the penalty specified above and any other enforcement action and penalty that the
+         Commission may take or impose.
+
+
+
+                                                       7
+Document Accession #: 20260112-3012            Filed Date: 01/12/2026
+
+
+
+
+         43.     This Agreement binds TPS and its agents, successors, and assignees. This
+         Agreement does not create any additional or independent obligations on TPS, or any
+         affiliated entity, its agents, officers, directors, or employees, other than the obligations
+         identified in this Agreement.
+
+         44.    The signatories to this Agreement agree that they enter into the Agreement
+         voluntarily and that, other than the recitations set forth herein, no tender, offer or promise
+         of any kind by any member, employee, officer, director, agent or representative of
+         Enforcement or TPS has been made to induce the signatories or any other party to enter
+         into the Agreement.
+
+         45.   Unless the Commission issues an order approving the Agreement in its entirety and
+         without material modification, the Agreement shall be null and void and of no effect
+         whatsoever, and neither Enforcement nor TPS shall be bound by any provision or term of
+         the Agreement, unless otherwise agreed to in writing by Enforcement and TPS.
+
+         46.     In connection with the civil penalty provided for herein, TPS agrees that the
+         Commission’s order approving the Agreement without material modification shall be a
+         final and non-appealable order assessing a civil penalty under section 316A(b) of the FPA,
+         16 U.S.C. § 825o-1(b). TPS waives findings of fact and conclusions of law, rehearing of
+         any Commission order approving the Agreement without material modification, and
+         judicial review by any court of any Commission order approving the Agreement without
+         material modification.
+
+         47.   This Agreement can be modified only if in writing and signed by Enforcement and
+         TPS, and any modifications will not be effective unless approved by the Commission.
+
+         48.    Each of the undersigned warrants that he or she is an authorized representative of
+         the entity designated, is authorized to bind such entity, and accepts the Agreement on the
+         entity’s behalf.
+
+         49.    The undersigned representative of TPS affirms that he or she has read the
+         Agreement, that all of the matters set forth in the Agreement are true and correct to the best
+         of his or her knowledge, information and belief, and that he or she understands that the
+         Agreement is entered into by Enforcement in express reliance on those representations.
+
+
+
+
+                                                       8
+Document Accession #: 20260112-3012   Filed Date: 01/12/2026
+
+
+
+
+                                            9
+Document Accession #: 20260112-3012   Filed Date: 01/12/2026
+
+   Document Content(s)
+   IN25-13-000.docx..........................................................1
+

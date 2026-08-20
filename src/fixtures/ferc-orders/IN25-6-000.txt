@@ -1,0 +1,670 @@
+Document Accession #: 20260417-3061            Filed Date: 04/17/2026
+
+
+
+
+                                      195 FERC ¶ 61,048
+                                  UNITED STATES OF AMERICA
+                           FEDERAL ENERGY REGULATORY COMMISSION
+
+
+         Before Commissioners: Laura V. Swett, Chairman;
+                               David Rosner, Lindsay S. See,
+                               Judy W. Chang, and David LaCerte.
+
+
+         Interstate Power and Light Company                                  Docket No. IN25-6-000
+
+
+                 ORDER APPROVING STIPULATION AND CONSENT AGREEMENT
+
+
+                                           (Issued April 17, 2026)
+
+         1.     The Commission approves the attached Stipulation and Consent Agreement
+         (Agreement) between the Office of Enforcement and Regulatory Accounting
+         (Enforcement) and Interstate Power and Light Company (Interstate). This order is in the
+         public interest because the Agreement resolves on fair and equitable terms Enforcement’s
+         investigation (Investigation) under Part 1b of the Commission’s regulations, 18 C.F.R.
+         Part 1b (2025), into whether Alliant Energy Corporate Services, Inc. (AECS), acting on
+         the behalf of Interstate, misrepresented to Potomac Economics (Potomac), the market
+         monitor for the Midcontinent Independent System Operator, Inc. (MISO), the operational
+         status of the Marshalltown Combustion Turbine generating station (MTown CT) in
+         connection with a routine audit performed by Potomac in December 2023 and January
+         2024 (the Relevant Period).
+
+         2.     Interstate stipulates to the facts in Section II of the Agreement but it neither admits
+         nor denies the alleged violations described in Section III of the Agreement. Interstate
+         agrees to: (a) pay a civil penalty of $70,000 to the United States Treasury; and (b) be
+         subject to compliance monitoring as provided more fully below.
+Document Accession #: 20260417-3061             Filed Date: 04/17/2026
+
+         Docket No. IN25-6-000                                                                  -2-
+
+         I.     Facts
+
+         3.   The MTown CT1 is a three-unit natural gas fired combustion turbine that
+         commenced operations in 1978. Each combustion turbine unit has a capacity rating of
+         63 MW. MTown CT is owned and operated by Interstate.2
+
+         4.    AECS is responsible for bidding each of the MTown CT Units into MISO’s
+         annual Planning Resource Auction (PRA). This includes MISO’s 2023-24 PRA, which
+         occurred on April 21, 2023.
+
+         5.     MISO’s 2023-24 PRA was the first to implement MISO’s seasonal market design.
+         Under this construct, resources like MTown CT were bid based on their seasonal
+         availability and resources that clear the PRA are, in turn, subject to seasonal performance
+         requirements.3 Where resources are unable to meet those requirements due to prolonged
+         outages they are generally required to procure replacement capacity or pay Capacity
+         Replacement Non-Compliance Charges (CRNCC Charges).4 MISO’s Tariff imposes
+         CRNCC Charges on capacity resources whose outages “were not planned but were
+         known or could have been reasonably anticipated at the time of the PRA . . . .”5
+
+
+
+
+                1
+                 The Marshalltown combustion turbine generating station is distinct from the
+         three-unit natural gas fired combined cycle Marshalltown Generating Station that
+         commenced operations in 2017 and three-unit Sutherland Generating Station that retired
+         in 2010 and 2016. In order to avoid confusion, the Marshalltown combustion turbine
+         generating station is referred to in this settlement as MTown CT, which is consistent with
+         the resource’s naming convention with the MISO.
+                2
+                Interstate and AECS are both wholly owned subsidiaries of Alliant Energy
+         Corporation, for which AECS is the centralized service company.
+                3
+                   See MISO, FERC Electric Tariff, Module E-1, § 69A.4.1 (37.0) (establishing
+         criteria for the Seasonal Accredited Capacity of Capacity Resources) and § 69A.7.1
+         (49.0.0) (discussing procedures for the PRA, including those concerning the participation
+         of Seasonal Accredited Capacity resources); see also id., Module A, § 1.S (74.0.0)
+         (defining Seasonal Accredited Capacity as “The amount of accredited Capacity, for a
+         given Season, in MW, assigned to a Planning Resource after accounting for its historic
+         availability.”).
+                4
+                    Id., Module E-1, § 69A.3.1.h(a) (40.0.0).
+                5
+                    Id.
+Document Accession #: 20260417-3061            Filed Date: 04/17/2026
+
+         Docket No. IN25-6-000                                                                   -3-
+
+         6.      In the Summer and Fall seasons of the 2023–24 PRA, AECS offered in the full
+         capacity of MTown CT Unit 1 (one of the three combustion turbine units operating at
+         Marshalltown). When those seasons came to pass, however, MTown CT Unit 1 was only
+         partially available due to derates caused by equipment failures.
+
+         7.     On December 12, 2023, Potomac e-mailed AECS indicating that Potomac was
+         conducting an “audit” of “outages associated” with MTown CT Unit 1 (the Audit
+         Inquiry). Specifically, Potomac sought information concerning a forced outage ticket for
+         MTown CT Unit 1 that was dated in December 2022. The Audit Inquiry indicated that
+         Potomac was looking for information concerning the underlying “equipment failure” and
+         any “plans for repair” to the unit.
+
+         8.     The Audit Inquiry further stated that Potomac was acting in its capacity as MISO’s
+         Independent Market Monitor and contained in the body of the email the text of Section
+         35.41(b) of the Commission’s regulations, which prohibits anyone authorized under the
+         Federal Power Act to make sales for resale of electric energy, capacity, or ancillary
+         services at market-based rates to make a false or misleading statement to, among others,
+         Commission-approved market monitors, such as Potomac.
+
+         9.      After the Audit Inquiry was received, AECS employees began preparing a
+         response. Contemporaneous communications indicate that those employees were aware
+         of the relationship between Potomac’s inquiry into the prolonged derate at Marshalltown
+         Unit 1 and the possibility of CRNCC Charges.
+
+         10.    On December 20, 2023, AECS employees provided their response to the Audit
+         Inquiry (the Audit Response). In the Audit Response, AECS made specific factual
+         representations concerning MTown CT Unit 1 and the circumstances around its return to
+         service.
+
+         11.     AECS explained in the Audit Response how the December 2022 forced outage
+         ticket that was the subject of the Audit Inquiry was linked to an earlier forced outage at
+         MTown CT Unit 1 that occurred in August 2022.
+
+         12.    AECS also stated in the Audit Response that, between August 2022 and May
+         2023, AECS had taken steps to identify a vendor to perform repairs on MTown CT Unit
+         1 and during that period had vetted a vendor that could provide those services.
+
+         13.   AECS represented to Potomac that at some point between May 2023 and
+         September 2023, a new forced outage occurred at MTown CT Unit 3 (another of the three
+         combustion turbine units operating at Marshalltown).
+Document Accession #: 20260417-3061           Filed Date: 04/17/2026
+
+         Docket No. IN25-6-000                                                                 -4-
+
+         14.    AECS also explained in the Audit Response that AECS decided to prioritize
+         repairs to MTown CT Unit 3 using the vendor that had been vetted to repair MTown CT
+         Unit 1, which could only repair one turbine at a time.
+
+         15.    AECS went on to describe in the Audit Response how the decision to prioritize
+         repairs to MTown CT Unit 3, and other issues, delayed MTown CT Unit 1’s return to
+         service.
+
+         16.   On December 20, 2023, AECS sent the Audit Response to Potomac. The AECS
+         employee who prepared the Audit Response provided a copy of the response to a
+         supervisor but did not obtain supervisory review of its contents.
+
+         17.   On December 27, 2023, Potomac provided AECS a series of follow-up questions
+         concerning the Audit Response.
+
+         18.     On January 10, 2024, AECS provided Potomac with a new timeline and
+         description of events (the Revised Response), which both revealed and corrected several
+         false statements in the Audit Response.
+
+         19.   Although AECS’s Audit Response indicated MTown CT Unit 3 had suffered a
+         new outage in or later than May 2023, in the Revised Response AECS explained that in
+         fact MTown CT Unit 3 had been significantly derated since July 2022.
+
+         20.    In its Revised Response, AECS explained that it had sent damaged components
+         for MTown CT Unit 3 to a vendor for repairs in November 2022. In September 2023, the
+         vendor released MTown CT Unit 3 back to AECS and AECS placed it into service. That
+         same month AECS began the process of securing funding and attempted to vet an
+         alternative vendor for MTown CT Unit 1 but subsequently determined to replace MTown
+         CT Unit 1 in November 2023. AECS secured funding and purchased a new unit in
+         November 2023.
+
+         21.    The representations AECS made in the Audit Response were generally consistent
+         with a timeline that would reduce the likelihood of the imposition of CRNCC Charges
+         because they suggested a May 2023 (or later) outage at MTown CT Unit 3 contributed to
+         a delay in MTown CT Unit 1’s return to service. However, in light of AECS’s
+         corrections in the Revised Response, Potomac went on to recommend CRNCC Charges
+         be assessed against Interstate arising from the availability status of MTown CT Unit 1
+         during the Summer 2023 and Fall 2023 seasons. Those charges subsequently were
+         assessed against, and paid by, Interstate.
+
+         22.     The AECS employee who prepared and submitted the Audit Response to Potomac
+         on behalf of Interstate failed to exercise sufficient care in preparing the Audit Response;
+         failed to make use of data sources available to them to confirm the accuracy of the Audit
+Document Accession #: 20260417-3061            Filed Date: 04/17/2026
+
+         Docket No. IN25-6-000                                                                   -5-
+
+         Response; and failed to secure supervisory review to help support the accuracy of the Audit
+         Response. AECS asserts that this evidence establishes that the inaccurate statements
+         contained in the Audit Response were made inadvertently.
+
+         23.   AECS, on its own behalf and on behalf of Interstate, fully cooperated with
+         Enforcement during the Investigation.
+
+         II.    Violations
+
+         24.   Enforcement concluded that Interstate, by submitting false information to Potomac
+         through AECS, violated 18 C.F.R. § 35.41(b)’s requirement that Sellers “must . . . not
+         submit false or misleading information . . . in any communication with . . . Commission
+         approved market monitors[.]”6
+
+         26.    Section 35.36(a)(1) of the Commission’s regulations defines “Seller” as “any person
+         that has authorization to or seeks authorization to engage in sales for resale of electric
+         energy, capacity or ancillary services at market-based rates under section 205 of the Federal
+         Power Act.”7 Interstate possessed market-based rate authorization during the Relevant
+         Period.8
+
+         27.      Section 35.41(b) of the Commission’s regulations provides that a “Seller must
+         provide accurate and factual information and not submit false or misleading information,
+         or omit material information, in any communication with the Commission, Commission-
+         approved market monitors, [or] Commission-approved regional transmission organizations
+         . . . unless Seller exercises due diligence to prevent such occurrences.”9
+
+         28.     Enforcement determined that the representations made by AECS on behalf of
+         Interstate in the Audit Response communication provided a false description of events
+         concerning MTown CT Unit 1, and those statements were relevant to the potential
+         assessment by MISO of CRNCC Charges against Interstate.
+
+         29.   Enforcement determined that Interstate, by submitting false information to Potomac
+         through AECS, violated 18 C.F.R. § 35.41(b)’s requirement that Sellers “must . . . not
+
+
+                6
+                    18 C.F.R. § 35.41(b).
+                7
+                    Id. § 35.36(a)(1).
+                8
+                See Franklin County Wind, LLC, et al., Docket Nos. ER12-1932-000, et al.
+         (November 20, 2012) (delegated order).
+                9
+                    18 C.F.R. § 35.41(b).
+Document Accession #: 20260417-3061            Filed Date: 04/17/2026
+
+         Docket No. IN25-6-000                                                                    -6-
+
+         submit false or misleading information . . . in any communication with . . . Commission-
+         approved market monitors[.]”
+
+         30.     Enforcement concluded that during the Relevant Period AECS on behalf of
+         Interstate did not exercise due diligence to prevent the misstatements to Potomac, as it did
+         not take sufficient steps to ensure accuracy of the statements contained in the Audit
+         Response, employ a process to ensure accuracy of the statements contained in the Audit
+         Response, or exercise reasonable care to ensure the accuracy of the Audit Response.
+
+         III.   Stipulation and Consent Agreement
+
+         31.    Enforcement and Interstate have resolved the Investigation by means of the
+         attached Agreement.
+
+         32.   Interstate stipulates to the facts set forth in Section II of the Agreement and neither
+         admits nor denies the alleged violations describe in Section III of the Agreement.
+
+         33.    Interstate agrees to pay a civil penalty of $70,000 to the United States Treasury
+         within 10 days of the Effective Date of the Agreement.
+
+         34.   Interstate agrees, in accordance with the terms of the Agreement, to submit annual
+         compliance monitoring reports to Enforcement for two years with one additional year at
+         Enforcement’s discretion.
+
+         IV.    Determination of Appropriate Sanctions and Remedies
+
+         35.     In recommending the appropriate remedy, Enforcement considered the factors in
+         the Revised Policy Statement on Penalty Guidelines,10 including the fact that the
+         Interstate cooperated with Enforcement during the Investigation.11
+
+
+
+                10
+                     Enforcement of Statutes, Orders, Rules, and Regulations, 132 FERC ¶ 61,216
+         (2010).
+                11
+                   The following is applicable to small entities including businesses with 1,500 or
+         fewer employees, independent schools / universities, trade associations, other non-profits,
+         cities, counties, towns, townships, villages, school districts, and other special districts -
+         The National Ombudsman resolves concerns of uneven or excessive federal regulatory
+         enforcement. Reviews are confidential and do not waive the right to pursue
+         administrative appeals or any other legal action. 888-REG-FAIR /
+         Ombudsman@SBA.gov.
+Document Accession #: 20260417-3061            Filed Date: 04/17/2026
+
+         Docket No. IN25-6-000                                                                    -7-
+
+         36.    The Commission concludes that the Agreement is a fair and equitable resolution of
+         the matters concerned and is in the public interest, as it reflects the nature and seriousness
+         of the conduct.
+
+         37.   The Commission also concludes that Interstate’s civil penalty is consistent with
+         the Revised Policy Statement on Penalty Guidelines.
+
+         38.    The Commission directs Interstate to make the civil penalty payment as required
+         under the Agreement.
+
+         39.    The Commission directs Interstate to comply with the compliance provisions in
+         the Agreement, including requiring Interstate to submit annual compliance monitoring
+         reports to Enforcement for two years, with a third year at Enforcement’s sole discretion.
+
+         The Commission orders:
+
+               The attached Stipulation and Consent Agreement is hereby approved without
+         modification.
+
+         By the Commission.
+
+         (SEAL)
+
+
+
+
+                                                          Carlos D. Clay,
+                                                         Deputy Secretary.
+Document Accession #: 20260417-3061           Filed Date: 04/17/2026
+
+
+
+
+                               UNITED STATES OF AMERICA
+                        FEDERAL ENERGY REGULATORY COMMISSION
+
+
+         Interstate Power and Light Company                        Docket No. IN25-6-000
+
+
+                           STIPULATION AND CONSENT AGREEMENT
+
+
+         I.    INTRODUCTION
+
+        1.     The Office of Enforcement and Regulatory Accounting (Enforcement) of the
+        Federal Energy Regulatory Commission (Commission) and Interstate Power and Light
+        Company (Interstate), enter into this Stipulation and Consent Agreement (Agreement) to
+        resolve a nonpublic, preliminary investigation (the Investigation) conducted by
+        Enforcement pursuant to Part 1b of the Commission’s regulations, 18 C.F.R. Part 1b
+        (2025). As described more fully in Section II below, the Investigation concerned whether
+        Alliant Energy Corporate Services, Inc. (AECS), acting on behalf of Interstate,
+        misrepresented to Potomac Economics (Potomac), the market monitor for the
+        Midcontinent Independent System Operator, Inc. (MISO), the operational status of the
+        Marshalltown Combustion Turbine generating station (MTown CT)1 in connection with a
+        routine audit performed by Potomac in December 2023 and January 2024 (the Relevant
+        Period).
+
+        2.     Interstate stipulates to the facts in Section II, but neither admits nor denies the
+        alleged violations in Section III. Interstate agrees to: (a) pay a civil penalty of $70,000 to
+        the United States Treasury; and (b) be subject to compliance monitoring as provided more
+        fully below.
+
+         II.   STIPULATIONS
+
+         3.    Enforcement and Interstate hereby stipulate and agree to the following facts.
+
+
+         1
+           The Marshalltown Combustion Turbine generating station is distinct from the three-unit
+         natural gas fired combined cycle Marshalltown Generating Station that commenced
+         operations in 2017 and the three-unit Sutherland Generating Station that retired in 2010
+         and 2016. In order to avoid confusion, the Marshalltown Combustion Turbine generating
+         station is referred to in this settlement as MTown CT, which is consistent with the
+         resource’s naming convention with MISO.
+Document Accession #: 20260417-3061           Filed Date: 04/17/2026
+
+
+
+
+         4.     MTown CT is a three-unit natural gas fired combustion turbine that commenced
+         operations in 1978. Each combustion turbine unit has a capacity rating of 63 MW.
+         MTown CT is owned and operated by Interstate.2
+
+         5.    AECS is responsible for bidding each of the MTown CT Units into MISO’s
+         annual Planning Resource Auction (PRA). This includes MISO’s 2023-24 PRA, which
+         occurred on April 21, 2023.
+
+         6.     MISO’s 2023-24 PRA was the first to implement MISO’s seasonal market design.
+         Under this construct, resources like MTown CT are bid based on their seasonal availability
+         and resources that clear the PRA are, in turn, subject to seasonal performance
+         requirements.3 Where resources are unable to meet those requirements due to prolonged
+         outages, they are generally required to procure replacement capacity or pay Capacity
+         Replacement Non-Compliance Charges (CRNCC Charges).4 MISO’s Tariff imposes
+         CRNCC Charges on capacity resources whose outages “were not planned but were known
+         or could have been reasonably anticipated at the time of the PRA . . . .”5
+
+         7.      In the Summer and Fall seasons of the 2023–24 PRA, AECS offered in the full
+         capacity of MTown CT Unit 1 (one of the three combustion turbine units operating at
+         Marshalltown). When those seasons came to pass, however, MTown CT Unit 1 was only
+         partially available due to derates caused by equipment failures.
+
+         8.     On December 12, 2023, Potomac e-mailed AECS indicating that Potomac was
+         conducting an “audit” of “outages associated” with MTown CT Unit 1 (the Audit Inquiry).
+         Specifically, Potomac sought information concerning a forced outage ticket for MTown CT
+         Unit 1 that was dated in December 2022. The Audit Inquiry indicated that Potomac was
+
+
+         2
+           Interstate and AECS are both wholly owned subsidiaries of Alliant Energy Corporation,
+         for which AECS is the centralized service company.
+         3
+           See MISO Tariff Sections 69A.4.1 (2022) (establishing criteria for the Seasonal
+         Accredited Capacity of Capacity Resources) and 69A.7.1 (2023) (discussing procedures
+         for the PRA, including those concerning the participation of Seasonal Accredited Capacity
+         resources); see also MISO Tariff Section 1.S (2022) (defining Seasonal Accredited
+         Capacity as “[t]he amount of Capacity, for a given Season”—defined as Winter, Spring,
+         Summer, and Fall, each with specific months delineated—“in MW, assigned to a Planning
+         Resource after accounting for its historic availability”).
+         4
+             MISO Tariff Section 69A.3.1.h(a) (2022).
+         5
+             Id.
+Document Accession #: 20260417-3061            Filed Date: 04/17/2026
+
+
+
+
+         looking for information concerning the underlying “equipment failure” and any “plans for
+         repair” to the unit.
+
+         9.    The Audit Inquiry further stated that Potomac was acting in its capacity as MISO’s
+         Independent Market Monitor and contained in the body of the email the text of Section
+         35.41(b) of the Commission’s regulations, which prohibits anyone authorized under the
+         Federal Power Act to make sales for resale of electric energy, capacity, or ancillary services
+         at market-based rates to make a false or misleading statement to, among others,
+         Commission approved market monitors, such as Potomac.
+
+         10.    After the Audit Inquiry was received, AECS employees began preparing a response.
+         Contemporaneous communications indicate that those employees were aware of the
+         relationship between Potomac’s inquiry into the prolonged derate at MTown CT Unit 1
+         and the possibility of CRNCC Charges.
+
+         11.    On December 20, 2023, AECS employees provided their response to the Audit
+         Inquiry (the Audit Response). In the Audit Response, AECS made specific factual
+         representations concerning MTown CT Unit 1 and the circumstances around its return to
+         service.
+
+         12.     AECS explained in the Audit Response how the December 2022 forced outage
+         ticket that was the subject of the Audit Inquiry was linked to an earlier forced outage at
+         MTown CT Unit 1 that occurred in August 2022.
+
+         13.    AECS also stated in the Audit Response that, between August 2022 and May 2023,
+         AECS had taken steps to identify a vendor to perform repairs on MTown CT Unit 1 and
+         during that period had vetted a vendor that could provide those services.
+
+         14.    AECS represented to Potomac that at some point between May 2023 and September
+         2023, a new forced outage occurred at MTown CT Unit 3 (another of the three combustion
+         turbine units operating at Marshalltown).
+
+         15.   AECS also explained in the Audit Response that AECS decided to prioritize repairs
+         to MTown CT Unit 3 using the vendor that had been vetted to repair MTown CT Unit 1,
+         which could only repair one turbine at a time.
+
+         16.    AECS went on to describe in the Audit Response how the decision to prioritize
+         repairs to MTown CT Unit 3, and other issues, delayed MTown CT Unit 1’s return to
+         service.
+
+         17.    On December 20, 2023, AECS sent the Audit Response to Potomac. The AECS
+         employee who prepared the Audit Response provided a copy of the response to a supervisor
+         but did not obtain supervisory review of its contents.
+Document Accession #: 20260417-3061           Filed Date: 04/17/2026
+
+
+
+
+         18.   On December 27, 2023, Potomac provided AECS a series of follow-up questions
+         concerning the Audit Response.
+
+         19.   On January 10, 2024, AECS provided Potomac with a new timeline and description
+         of events (the Revised Response), which both revealed and corrected several false
+         statements in the Audit Response.
+
+         20.   Although AECS’s Audit Response indicated MTown CT Unit 3 had suffered a new
+         outage in or later than May 2023, in the Revised Response AECS explained that in fact
+         MTown CT Unit 3 had been significantly derated since July 2022.
+
+         21.    In its Revised Response, AECS explained that it had sent damaged components for
+         MTown CT Unit 3 to a vendor for repairs in November 2022. In September 2023, the
+         vendor released MTown CT Unit 3 back to AECS and AECS placed it into service. That
+         same month AECS began the process of securing funding and attempted to vet an
+         alternative vendor for MTown CT Unit 1 but subsequently determined to replace MTown
+         CT Unit 1 in November 2023. AECS secured funding and purchased a new unit in
+         November 2023.
+
+         22.    The representations AECS made in the Audit Response were generally consistent
+         with a timeline that would reduce the likelihood of the imposition of CRNCC Charges
+         because they suggested a May 2023 (or later) outage at MTown CT Unit 3 contributed to
+         a delay in MTown CT Unit 1’s return to service. However, in light of AECS’s corrections
+         in the Revised Response, Potomac went on to recommend CRNCC Charges be assessed
+         against Interstate arising from the availability status of MTown CT Unit 1 during the
+         Summer 2023 and Fall 2023 seasons. Those charges subsequently were assessed against,
+         and paid by, Interstate.
+
+         23.     The AECS employee who prepared and submitted the Audit Response to Potomac
+         on behalf of Interstate failed to exercise sufficient care in preparing the Audit Response;
+         failed to make use of data sources available to them to confirm the accuracy of the Audit
+         Response; and failed to secure supervisory review to help support the accuracy of the Audit
+         Response. AECS asserts that this evidence establishes that the inaccurate statements
+         contained in the Audit Response were made inadvertently.
+
+         24.   AECS, on its own behalf and on behalf of Interstate, fully cooperated with
+         Enforcement during the Investigation.
+
+         III.   VIOLATIONS
+
+         25.    Enforcement made the following determinations.
+Document Accession #: 20260417-3061            Filed Date: 04/17/2026
+
+
+
+
+         26.   Enforcement concluded that Interstate, by submitting false information to Potomac
+         through AECS, violated 18 C.F.R. § 35.41(b)’s requirement that Sellers “must . . . not
+         submit false or misleading information . . . in any communication with . . . Commission
+         approved market monitors[.]”
+
+         27.    Section 35.36(a)(1) of the Commission’s regulations defines “Seller” as “any person
+         that has authorization to or seeks authorization to engage in sales for resale of electric
+         energy, capacity or ancillary services at market-based rates under section 205 of the Federal
+         Power Act.”6 Interstate possessed market-based rate authorization during the Relevant
+         Period.7
+
+         28. Section 35.41(b) of the Commission’s regulations provides that a “Seller must
+         provide accurate and factual information and not submit false or misleading information,
+         or omit material information, in any communication with the Commission, Commission-
+         approved market monitors, [or] Commission-approved regional transmission organizations
+         . . . unless Seller exercises due diligence to prevent such occurrences.”8
+
+         29.     Enforcement determined that the representations made by AECS on behalf of
+         Interstate in the Audit Response communication provided a false description of events
+         concerning MTown CT Unit 1, and those statements were relevant to the potential
+         assessment by MISO of CRNCC Charges against Interstate.
+
+         30.   Enforcement determined that Interstate, by submitting false information to Potomac
+         through AECS, violated 18 C.F.R. § 35.41(b)’s requirement that Sellers “must . . . not
+         submit false or misleading information . . . in any communication with . . . Commission-
+         approved market monitors[.]”
+
+         31.    Enforcement concluded that during the Relevant Period AECS on behalf of
+         Interstate did not exercise due diligence to prevent the misstatements to Potomac, as it did
+         not take sufficient steps to ensure accuracy of the statements contained in the Audit
+         Response, employ a process to ensure accuracy of the statements contained in the Audit
+         Response, or exercise reasonable care to ensure the accuracy of the Audit Response.
+
+
+
+
+         6
+             18 CFR § 35.36(a)(1) (2024).
+         7
+          See Franklin County Wind, LLC, et al., Docket Nos. ER12-1932-000, et al. (November
+         20, 2012) (delegated order).
+         8
+             18 CFR § 35.41(b).
+Document Accession #: 20260417-3061            Filed Date: 04/17/2026
+
+
+
+
+         IV.    REMEDIES AND SANCTIONS
+
+         32.    For purposes of settling any and all claims, civil and administrative disputes and
+         proceedings arising from or related to Interstate’s conduct evaluated in Enforcement’s
+         Investigation, Interstate agrees with the facts as stipulated in Section II of this
+         Agreement, but it neither admits nor denies the violations described in Section III of this
+         Agreement. Interstate further agrees to undertake the obligations set forth in the
+         following paragraphs.
+
+                A.     Civil Penalty
+
+         33.     Interstate agrees to pay a civil penalty of $70,000 to the United States Treasury, by
+         wire transfer, within ten days after the Effective Date of this Agreement, as defined
+         herein.
+
+                B.     Compliance
+
+         34.    Interstate shall make an annual compliance monitoring report to Enforcement for a
+         term of two years after the Effective Date of this Agreement. The first compliance
+         monitoring report shall be submitted no later than 30 days after the end of the one-year
+         reporting period that follows the Effective Date of this Agreement. The second compliance
+         monitoring report shall be due one year after the first compliance monitoring report was
+         submitted. After the receipt of that second compliance report, Enforcement may, at its sole
+         discretion, require Interstate to submit a compliance monitoring report for one additional
+         year.
+
+         35.    Each compliance monitoring report shall: (1) identify any known violations of
+         Commission regulations and/or Commission-approved tariff requirements that occurred
+         during the applicable period, including a description of the nature of the violation and what
+         steps were taken to rectify the situation; (2) describe all compliance measures and
+         procedures Interstate instituted or modified during the reporting period related to
+         compliance with Commission regulations and/or Commission-approved tariff
+         requirements, including but not limited to new or updated compliance measures and
+         procedures related to the facts and circumstances described in Section II; and (3) describe
+         all Commission-related compliance training(s) that Interstate administered during the
+         reporting period, including the dates such training(s) occurred, the topics covered, and the
+         procedures used to confirm which personnel attended.
+
+         36.    Each compliance monitoring report shall also include an affidavit executed by an
+         officer of Interstate stating that it is true and accurate to the best of his/her knowledge.
+
+         37.  Upon request by Enforcement, Interstate shall provide to Enforcement
+         documentation supporting the contents of its reports.
+Document Accession #: 20260417-3061            Filed Date: 04/17/2026
+
+
+
+
+         V.     TERMS
+
+         38.    The “Effective Date” of this Agreement shall be the date on which the Commission
+         issues an order approving this Agreement without material modification.
+
+         39.    When effective, this Agreement shall resolve the matters specifically addressed
+         herein that arose on or before the Effective Date as to Interstate, and any affiliated entity,
+         and their respective agents, officers, directors, or employees, both past and present.
+
+         40.     Commission approval of this Agreement without material modification shall release
+         Interstate and forever bar the Commission from holding Interstate, any affiliated entity,
+         any successor in interest, and their respective agents, officers, directors, or employees, both
+         past and present, liable for any and all administrative or civil claims arising out of the
+         conduct covered by the Investigation, including conduct addressed and stipulated to in this
+         Agreement, which occurred on or before the Agreement’s Effective Date.
+
+         41.    Failure by Interstate to make the civil penalty payment, or to comply with the
+         compliance obligations agreed to herein, or any other provision of this Agreement, shall be
+         deemed a violation of a final order of the Commission issued pursuant to the Federal Power
+         Act (FPA), 16 U.S.C. §792, et seq., and may subject Interstate to additional action under
+         the enforcement provisions of the FPA.
+
+         42.    If Interstate does not make the required civil penalty payment described above
+         within the time agreed by the parties, interest will be calculated pursuant to 18 C.F.R.
+         § 35.19a(a)(2)(iii)(A), (B) from the date that payment is due, in addition to the penalty
+         specified above and any other enforcement action and penalty that the Commission may
+         take or impose.
+
+         43.     This Agreement binds Interstate and its agents, successors, and assignees. This
+         Agreement does not create any additional or independent obligations on Interstate, or any
+         affiliated entity, its agents, officers, directors, or employees, other than the obligations
+         identified in this Agreement.
+
+         44.    The signatories to this Agreement agree that they enter into the Agreement
+         voluntarily and that, other than the recitations set forth herein, no tender, offer or promise
+         of any kind by any member, employee, officer, director, agent or representative of
+         Enforcement or Interstate has been made to induce the signatories or any other party to
+         enter into the Agreement.
+
+         45.    Unless the Commission issues an order approving this Agreement in its entirety and
+         without material modification, this Agreement shall be null and void and of no effect
+         whatsoever, and neither Enforcement nor Interstate shall be bound by any provision or term
+         of the Agreement, unless otherwise agreed to in writing by Enforcement and Interstate.
+Document Accession #: 20260417-3061            Filed Date: 04/17/2026
+
+
+
+
+         46.    In connection with the civil penalty provided for herein, Interstate agrees that the
+         Commission’s order approving this Agreement without material modification shall be a
+         final and unappealable order assessing a civil penalty under section 316A(b) of the FPA,
+         16 U.S.C. § 825o-1(b). Interstate waives findings of fact and conclusions of law, rehearing
+         of any Commission order approving this Agreement without material modification, and
+         judicial review by any court of any Commission order approving the Agreement without
+         material modification.
+
+         47.     This Agreement can be modified only if in writing and signed by Enforcement and
+         Interstate, and any modifications will not be effective unless approved by the Commission.
+
+         48.    Each of the undersigned warrants that he or she is an authorized representative of
+         the entity designated, is authorized to bind such entity, and accepts the Agreement on the
+         entity’s behalf.
+
+         49.    The undersigned representative of Interstate affirms that he or she has read the
+         Agreement, that all of the matters set forth in the Agreement are true and correct to the best
+         of his or her knowledge, information and belief, and that he or she understands that the
+         Agreement is entered into by Enforcement in express reliance on those representations.
+
+         50.    This Agreement is executed in duplicate, each of which so executed shall be deemed
+         to be an original.
+Document Accession #: 20260417-3061   Filed Date: 04/17/2026
+
+   Document Content(s)
+   IN25-6-000.docx...........................................................1
+
