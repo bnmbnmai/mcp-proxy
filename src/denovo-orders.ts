@@ -1,11 +1,11 @@
 /**
- * EPA FIFRA institution/company order / consent TEXT door.
- * Official per-order PDFs from yosemite.epa.gov EPA Administrative Enforcement Dockets only.
+ * FDA De Novo institution/company classification-order TEXT door.
+ * Official per-order classification-order PDFs from accessdata.fda.gov cdrh_docs only.
  * Does not invent order text. Press teasers / index pages are listing metadata.
  * Institution/company only. Not people. Not the press teaser.
  * Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders.
  * Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders.
- * Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not CFTC /cftc-orders.
+ * Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not CFTC /cftc-orders. Not FIFRA /fifra-orders.
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -14,20 +14,20 @@ import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
-export const FIFRA_ORDERS_PATH = "/fifra-orders";
-export const FIFRA_ORDERS_MANIFEST_PATH = "/fifra-orders/manifest.json";
-export const FIFRA_ORDERS_AMOUNT_ATOMIC = "50000";
-export const PRODUCT_ID = "fifra-institution-order-bodies";
-export const PRODUCT_NAME = "EPA FIFRA institution order / consent text";
+export const DENOVO_ORDERS_PATH = "/denovo-orders";
+export const DENOVO_ORDERS_MANIFEST_PATH = "/denovo-orders/manifest.json";
+export const DENOVO_ORDERS_AMOUNT_ATOMIC = "50000";
+export const PRODUCT_ID = "fda-denovo-classification-order-bodies";
+export const PRODUCT_NAME = "FDA De Novo classification-order text";
 
-export const LISTING_URL = "https://yosemite.epa.gov/oa/rhc/epaadmin.nsf";
-export const PDF_HOST = "yosemite.epa.gov";
-export const PDF_ORIGIN = "https://yosemite.epa.gov";
-export const DOCKET_LABEL_RE = /(?:Docket\s+No\.?\s*)?(FIFRA-\d{2}-\d{4}-\d{4})\b/i;
-export const DOCKET_BARE_RE = /^(FIFRA-\d{2}-\d{4}-\d{4})$/i;
-export const MEDIA_RE = /\/OA\/RHC\/EPAAdmin\.nsf\/Filings\/([A-Fa-f0-9]+)\/\$File\/([^?#]+\.pdf)/i;
+export const LISTING_URL = "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/denovo.cfm";
+export const PDF_HOST = "www.accessdata.fda.gov";
+export const PDF_ORIGIN = "https://www.accessdata.fda.gov";
+export const DOCKET_LABEL_RE = /(?:Re:\s*)?(DEN\d{6})\b/i;
+export const DOCKET_BARE_RE = /^(DEN\d{6})$/i;
+export const MEDIA_RE = /\/cdrh_docs\/pdf(\d{2})\/(DEN\d{6})\.pdf/i;
 export const LICENSE = "17 USC 105";
-export const ATTRIBUTION = "EPA";
+export const ATTRIBUTION = "FDA";
 
 export const CARD_FIELDS = [
   "id",
@@ -40,7 +40,7 @@ export const CARD_FIELDS = [
   "body",
 ] as const;
 
-export type FifraListingRow = {
+export type DenovoListingRow = {
   institution?: string;
   individual?: string;
   docket?: string;
@@ -51,7 +51,7 @@ export type FifraListingRow = {
   pdfId?: string;
 };
 
-export type FifraOrderListing = {
+export type DenovoOrderListing = {
   id: string;
   docket: string;
   institution: string;
@@ -61,7 +61,7 @@ export type FifraOrderListing = {
   pdfId: string;
 };
 
-export type FifraOrderCard = {
+export type DenovoOrderCard = {
   id: string;
   docket: string;
   pdfId: string;
@@ -72,7 +72,7 @@ export type FifraOrderCard = {
   body: string;
 };
 
-export type FifraOrdersSnapshot = {
+export type DenovoOrdersSnapshot = {
   ok: true;
   product: typeof PRODUCT_ID;
   status: "ok" | "empty" | "stale";
@@ -90,66 +90,66 @@ export type FifraOrdersSnapshot = {
     listing: string;
     pdfHost: string;
   };
-  cards: FifraOrderCard[];
+  cards: DenovoOrderCard[];
 };
 
-const HTTP_UA = "bnm-data-shop/1.0 (EPA FIFRA public institution orders; +https://yosemite.epa.gov/oa/rhc/epaadmin.nsf)";
+const HTTP_UA = "bnm-data-shop/1.0 (FDA De Novo public institution classification orders; +https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/denovo.cfm)";
 
-const OFFICIAL_HOSTS = new Set(["yosemite.epa.gov"]);
+const OFFICIAL_HOSTS = new Set(["www.accessdata.fda.gov", "accessdata.fda.gov"]);
 
 const ENTITY_RE =
   /\b(Inc\.?|LLC|L\.L\.C\.|L\.P\.|LP|Corp\.?|Corporation|Company|Co\.|Ltd\.?|Limited|S\.A\.|Banco|Bank|Holdings|Enterprises|Capital Markets|Markets|Securities|Services|Group|Partners|International|Industries|Solutions|Superstore|Chemical|Medical)\b/i;
 const PERSON_NAME_RE = /^[A-Z][a-z]+(?:\s+[A-Z]\.?)?(?:\s+[A-Z][a-z]+){1,3}$/;
 const ORDER_KIND_RE =
-  /consent agreement and final order|consent agreement|final order|\bCAFO\b|expedited settlement/i;
+  /de novo|classification order|classifies the/i;
 const COMPLAINT_RE = /\bcomplaint\b/i;
 
-/** Official EPA FIFRA institution/company order / consent PDFs on yosemite.epa.gov. */
-export const SEED_LISTINGS: FifraOrderListing[] = [
+/** Official FDA De Novo institution/company classification-order PDFs on accessdata.fda.gov. */
+export const SEED_LISTINGS: DenovoOrderListing[] = [
   {
-    id: "FIFRA-05-2026-0015",
-    docket: "FIFRA-05-2026-0015",
-    institution: "Travel Caddy, Inc. dba Travelon",
-    date: "2026-07-29",
-    title: "Consent Agreement and Final Order",
-    sourceUrl: "https://yosemite.epa.gov/OA/RHC/EPAAdmin.nsf/Filings/F4CB3764E5AB61EA85258E43006880DC/$File/FIFRA-05-2026-0015_CAFO_TravelCaddyIncdbaTravelon_FranklinParkIllinois_14PGS.pdf",
-    pdfId: "F4CB3764E5AB61EA85258E43006880DC",
+    id: "DEN250042",
+    docket: "DEN250042",
+    institution: "Caristo Diagnostics Ltd.",
+    date: "2026-07-28",
+    title: "De Novo classification order",
+    sourceUrl: "https://www.accessdata.fda.gov/cdrh_docs/pdf25/DEN250042.pdf",
+    pdfId: "DEN250042",
   },
   {
-    id: "FIFRA-05-2026-0001",
-    docket: "FIFRA-05-2026-0001",
-    institution: "Crown Chemical, Inc.",
-    date: "2025-10-10",
-    title: "Consent Agreement and Final Order",
-    sourceUrl: "https://yosemite.epa.gov/OA/RHC/EPAAdmin.nsf/Filings/89673C7E7F9F815185258D220041F413/$File/FIFRA-05-2026-0001_CAFO_CrownChemicalInc_CrestwoodIllinois_15PGS.pdf",
-    pdfId: "89673C7E7F9F815185258D220041F413",
+    id: "DEN250033",
+    docket: "DEN250033",
+    institution: "Hjarta Care, LLC",
+    date: "2026-04-17",
+    title: "De Novo classification order",
+    sourceUrl: "https://www.accessdata.fda.gov/cdrh_docs/pdf25/DEN250033.pdf",
+    pdfId: "DEN250033",
   },
   {
-    id: "FIFRA-05-2026-0003",
-    docket: "FIFRA-05-2026-0003",
-    institution: "Parasol Medical, LLC",
-    date: "2025-12-18",
-    title: "Consent Agreement and Final Order",
-    sourceUrl: "https://yosemite.epa.gov/OA/RHC/EPAAdmin.nsf/Filings/3540F23EA19BD66485258D64006DE491/$File/FIFRA-05-2026-0003_CAFO_ParasolMedicalLLC_BuffaloGroveIllinois_15PGS.pdf",
-    pdfId: "3540F23EA19BD66485258D64006DE491",
+    id: "DEN240071",
+    docket: "DEN240071",
+    institution: "Automated Imaging Diagnostics, LLC",
+    date: "2026-04-03",
+    title: "De Novo classification order",
+    sourceUrl: "https://www.accessdata.fda.gov/cdrh_docs/pdf24/DEN240071.pdf",
+    pdfId: "DEN240071",
   },
   {
-    id: "FIFRA-09-2026-0020",
-    docket: "FIFRA-09-2026-0020",
-    institution: "Garden Grove Superstore Inc.",
-    date: "2026-01-15",
-    title: "Consent Agreement and Final Order",
-    sourceUrl: "https://yosemite.epa.gov/OA/RHC/EPAAdmin.nsf/Filings/29411C7B446B74E085258D5D006DF909/$File/Garden%20Grove%20Superstore%20Inc.%20(FIFRA-09-2026-0020)%20-%20Filed%20CAFO.pdf",
-    pdfId: "29411C7B446B74E085258D5D006DF909",
+    id: "DEN250014",
+    docket: "DEN250014",
+    institution: "Tyto Care Ltd.",
+    date: "2026-03-17",
+    title: "De Novo classification order",
+    sourceUrl: "https://www.accessdata.fda.gov/cdrh_docs/pdf25/DEN250014.pdf",
+    pdfId: "DEN250014",
   },
   {
-    id: "FIFRA-10-2026-0080",
-    docket: "FIFRA-10-2026-0080",
-    institution: "Nutrien Ag Solutions, Inc.",
-    date: "2026-03-18",
-    title: "Consent Agreement and Final Order",
-    sourceUrl: "https://yosemite.epa.gov/oa/rhc/epaadmin.nsf/Filings/351B0FB7BF85CA3685258DBF006864F9/$File/Nutrien%20Ag%20Consent%20Agreement%20and%20Final%20Order.pdf",
-    pdfId: "351B0FB7BF85CA3685258DBF006864F9",
+    id: "DEN250012",
+    docket: "DEN250012",
+    institution: "LifeVac LLC",
+    date: "2026-03-04",
+    title: "De Novo classification order",
+    sourceUrl: "https://www.accessdata.fda.gov/cdrh_docs/pdf25/DEN250012.pdf",
+    pdfId: "DEN250012",
   },
 ];
 
@@ -157,20 +157,20 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export function fifraOrdersDir(): string {
-  if (env("FIFRA_ORDERS_DIR")) return resolve(env("FIFRA_ORDERS_DIR"));
-  return resolve(join(homedir(), "projects/mcp-proxy/data/fifra-orders"));
+export function denovoOrdersDir(): string {
+  if (env("DENOVO_ORDERS_DIR")) return resolve(env("DENOVO_ORDERS_DIR"));
+  return resolve(join(homedir(), "projects/mcp-proxy/data/denovo-orders"));
 }
 
 export function snapshotPath(): string {
-  return join(fifraOrdersDir(), "snapshot.json");
+  return join(denovoOrdersDir(), "snapshot.json");
 }
 
 export function bundledSeedPath(): string {
   const here = dirname(fileURLToPath(import.meta.url));
   const candidates = [
-    join(here, "../src/fixtures/fifra-orders/seed-snapshot.json"),
-    join(here, "fixtures/fifra-orders/seed-snapshot.json"),
+    join(here, "../src/fixtures/denovo-orders/seed-snapshot.json"),
+    join(here, "fixtures/denovo-orders/seed-snapshot.json"),
   ];
   return candidates.find((p) => existsSync(p)) ?? candidates[0];
 }
@@ -229,7 +229,7 @@ export function isoDate(raw: string | null | undefined): string | null {
   return null;
 }
 
-export function officialFifraPdfUrl(urlOrPath: string | null | undefined): string | null {
+export function officialDenovoPdfUrl(urlOrPath: string | null | undefined): string | null {
   if (!urlOrPath) return null;
   const trimmed = urlOrPath.trim();
   try {
@@ -241,21 +241,20 @@ export function officialFifraPdfUrl(urlOrPath: string | null | undefined): strin
     const path = decodeURIComponent(parsed.pathname);
     const media = path.match(MEDIA_RE) || parsed.pathname.match(MEDIA_RE);
     if (!media) return null;
-    const unid = media[1].toUpperCase();
-    const file = media[2].split("/").pop() || media[2];
-    if (COMPLAINT_RE.test(file) && !/CAFO|Consent/i.test(file)) return null;
-    return `${PDF_ORIGIN}/OA/RHC/EPAAdmin.nsf/Filings/${unid}/$File/${file}`;
+    const yy = media[1];
+    const den = media[2].toUpperCase();
+    return `${PDF_ORIGIN}/cdrh_docs/pdf${yy}/${den}.pdf`;
   } catch {
     return null;
   }
 }
 
 export function pdfIdFromUrl(url: string | null | undefined): string | null {
-  const official = officialFifraPdfUrl(url) || url || "";
+  const official = officialDenovoPdfUrl(url) || url || "";
   try {
     const parsed = new URL(official, PDF_ORIGIN);
     const media = parsed.pathname.match(MEDIA_RE);
-    return media?.[1] ?? null;
+    return media?.[2]?.toUpperCase() ?? null;
   } catch {
     return null;
   }
@@ -270,7 +269,7 @@ export function normalizeDocket(raw: string | null | undefined): string | null {
   return null;
 }
 
-export function isPeopleRow(row: FifraListingRow): boolean {
+export function isPeopleRow(row: DenovoListingRow): boolean {
   if ((row.individual ?? "").trim()) return true;
   const name = (row.institution ?? "").trim();
   if (!name) return true;
@@ -279,11 +278,11 @@ export function isPeopleRow(row: FifraListingRow): boolean {
   return PERSON_NAME_RE.test(cleaned);
 }
 
-export function isInstitutionOrderRow(row: FifraListingRow): boolean {
+export function isInstitutionOrderRow(row: DenovoListingRow): boolean {
   if (isPeopleRow(row)) return false;
   const institution = (row.institution ?? "").trim();
   if (!institution || !ENTITY_RE.test(institution)) return false;
-  const source = officialFifraPdfUrl(row.sourceUrl ?? "");
+  const source = officialDenovoPdfUrl(row.sourceUrl ?? "");
   if (!source) return false;
   const kind = `${row.title ?? ""} ${row.type ?? ""} ${row.sourceUrl ?? ""}`;
   if (COMPLAINT_RE.test(kind)) return false;
@@ -293,12 +292,12 @@ export function isInstitutionOrderRow(row: FifraListingRow): boolean {
   return true;
 }
 
-export function parseListingRows(rows: FifraListingRow[]): FifraOrderListing[] {
-  const found: FifraOrderListing[] = [];
+export function parseListingRows(rows: DenovoListingRow[]): DenovoOrderListing[] {
+  const found: DenovoOrderListing[] = [];
   const seen = new Set<string>();
   for (const row of rows) {
     if (!isInstitutionOrderRow(row)) continue;
-    const sourceUrl = officialFifraPdfUrl(row.sourceUrl ?? "");
+    const sourceUrl = officialDenovoPdfUrl(row.sourceUrl ?? "");
     const pdfId = (row.pdfId ?? "").trim() || pdfIdFromUrl(sourceUrl ?? "") || "";
     const docket = normalizeDocket(row.docket) || normalizeDocket(row.title ?? "") || pdfId;
     if (!docket || !sourceUrl || !pdfId) continue;
@@ -318,8 +317,8 @@ export function parseListingRows(rows: FifraListingRow[]): FifraOrderListing[] {
   return found;
 }
 
-export function parseListingHtml(html: string): FifraOrderListing[] {
-  const rows: FifraListingRow[] = [];
+export function parseListingHtml(html: string): DenovoOrderListing[] {
+  const rows: DenovoListingRow[] = [];
   const trs = html.match(/<tr\b[^>]*>[\s\S]*?<\/tr>/gi) ?? [];
   for (const row of trs) {
     const href = (row.match(/href="([^"]+)"/i) || [])[1] || "";
@@ -340,7 +339,7 @@ export function parseListingHtml(html: string): FifraOrderListing[] {
       pdfId: pdfIdFromUrl(sourceUrl) ?? "",
     });
   }
-  const loose = [...html.matchAll(/href="([^"]*EPAAdmin\.nsf\/Filings\/[^"]+\$File\/[^"]+\.pdf[^"]*)"[^>]*>([\s\S]*?)<\/a>/gi)];
+  const loose = [...html.matchAll(/href="([^"]*cdrh_docs\/pdf\d{2}\/DEN\d{6}\.pdf[^"]*)"[^>]*>([\s\S]*?)<\/a>/gi)];
   for (const m of loose) {
     const title = stripTags(m[2]);
     const institution = title.replace(/^(?:Administrative\s+)?(?:Consent\s+)?Order:\s*/i, "").trim();
@@ -357,6 +356,7 @@ export function parseListingHtml(html: string): FifraOrderListing[] {
 export function isIndexTeaserDump(text: string): boolean {
   if (/Index only — institution \/ docket \/ date \/ PDF URL/i.test(text)) return true;
   if (/EPA FIFRA press teaser/i.test(text)) return true;
+  if (/FDA De Novo press teaser/i.test(text)) return true;
   const compact = text.replace(/\s+/g, " ").trim();
   if (
     /announced an order filing and settling charges/i.test(text) &&
@@ -379,7 +379,7 @@ export function isPeopleDump(text: string): boolean {
   return false;
 }
 
-export function isRealFifraOrderBody(text: string): boolean {
+export function isRealDenovoOrderBody(text: string): boolean {
   if (isIndexTeaserDump(text) || isFederalRegisterDump(text) || isPeopleDump(text)) {
     return false;
   }
@@ -418,30 +418,25 @@ export function isRealFifraOrderBody(text: string): boolean {
   if (/COMMODITY FUTURES TRADING COMMISSION/i.test(text) && /CFTC Docket No/i.test(text)) {
     return false;
   }
-  if (/Center for Devices and Radiological Health/i.test(text) && /De Novo request/i.test(text) && /DEN\d{6}/i.test(text)) {
+  if (/ENVIRONMENTAL PROTECTION AGENCY/i.test(text) && /FIFRA-\d{2}-\d{4}-\d{4}/i.test(text)) {
     return false;
   }
-  const epa =
-    /UNITED STATES ENVIRONME?N?TAL PROTECTION AGENCY|ENVIRONMENTAL PROTECTION AGENCY|U\.S\.\s+Environmental Protection Agency|U\.S\.\s+EPA\s+REGION/i.test(
-      text,
-    );
-  const fifra = /Federal Insecticide,? Fungicide, and Rodenticide Act|\bFIFRA\b/i.test(text);
+  const fda = /Food and Drug Administration|\bFDA\b/i.test(text);
+  const cdrh = /Center for Devices and Radiological Health|\bCDRH\b/i.test(text);
   const kind =
-    /CONSENT AGREEMENT AND FINAL ORDER/i.test(text) ||
-    /\bCAFO\b/i.test(text) ||
-    (/CONSENT AGREEMENT/i.test(text) && /Final Order/i.test(text));
+    /De Novo request/i.test(text) ||
+    /This order, therefore, classifies/i.test(text) ||
+    /De Novo classification/i.test(text);
   const docket = DOCKET_LABEL_RE.test(text);
-  return epa && fifra && kind && docket;
+  return fda && cdrh && kind && docket;
 }
 
 export function parseOrderTitle(body: string): string {
-  if (/CONSENT AGREEMENT AND FINAL ORDER/i.test(body) || /\bCAFO\b/i.test(body)) return "Consent Agreement and Final Order";
-  if (/EXPEDITED SETTLEMENT/i.test(body)) return "Expedited Settlement Agreement";
-  if (/CONSENT AGREEMENT/i.test(body)) return "Consent Agreement";
-  return "Order";
+  if (/De Novo/i.test(body) || /classifies the/i.test(body)) return "De Novo classification order";
+  return "Classification order";
 }
 
-export function parseFifraOrderText(
+export function parseDenovoOrderText(
   text: string,
   meta: {
     sourceUrl: string;
@@ -452,9 +447,9 @@ export function parseFifraOrderText(
     id?: string;
     title?: string;
   },
-): FifraOrderCard {
+): DenovoOrderCard {
   const body = text.replace(/\f/g, "\n").trim();
-  const sourceUrl = officialFifraPdfUrl(meta.sourceUrl) || meta.sourceUrl;
+  const sourceUrl = officialDenovoPdfUrl(meta.sourceUrl) || meta.sourceUrl;
   const docket =
     normalizeDocket(meta.docket) ||
     normalizeDocket(body.match(DOCKET_LABEL_RE)?.[0] ?? "") ||
@@ -474,7 +469,7 @@ export function parseFifraOrderText(
   };
 }
 
-export function emptySnapshot(reason: string): FifraOrdersSnapshot {
+export function emptySnapshot(reason: string): DenovoOrdersSnapshot {
   return {
     ok: true,
     product: PRODUCT_ID,
@@ -489,13 +484,13 @@ export function emptySnapshot(reason: string): FifraOrdersSnapshot {
   };
 }
 
-function cardDateKey(card: Pick<FifraOrderCard, "date" | "docket">): string {
+function cardDateKey(card: Pick<DenovoOrderCard, "date" | "docket">): string {
   return `${card.date ?? ""}${card.docket}`;
 }
 
-export function assembleSnapshot(cards: FifraOrderCard[], fetchedAt = new Date().toISOString()): FifraOrdersSnapshot {
+export function assembleSnapshot(cards: DenovoOrderCard[], fetchedAt = new Date().toISOString()): DenovoOrdersSnapshot {
   const withBody = cards
-    .filter((c) => isRealFifraOrderBody(c.body))
+    .filter((c) => isRealDenovoOrderBody(c.body))
     .sort((a, b) => cardDateKey(b).localeCompare(cardDateKey(a)));
   const asOf =
     withBody
@@ -507,7 +502,7 @@ export function assembleSnapshot(cards: FifraOrderCard[], fetchedAt = new Date()
     ok: true,
     product: PRODUCT_ID,
     status: withBody.length > 0 ? "ok" : "empty",
-    reason: withBody.length > 0 ? null : "Official EPA FIFRA institution order / consent PDFs had no extractable order text.",
+    reason: withBody.length > 0 ? null : "Official FDA De Novo classification-order PDFs had no extractable order text.",
     fetchedAt,
     asOf,
     license: LICENSE,
@@ -517,14 +512,14 @@ export function assembleSnapshot(cards: FifraOrderCard[], fetchedAt = new Date()
   };
 }
 
-function parseSnapshotFile(raw: unknown): FifraOrdersSnapshot | null {
+function parseSnapshotFile(raw: unknown): DenovoOrdersSnapshot | null {
   if (!raw || typeof raw !== "object") return null;
-  const snap = raw as FifraOrdersSnapshot;
+  const snap = raw as DenovoOrdersSnapshot;
   if (snap.product !== PRODUCT_ID || !Array.isArray(snap.cards)) return null;
   return snap;
 }
 
-export function readSnapshot(): FifraOrdersSnapshot | null {
+export function readSnapshot(): DenovoOrdersSnapshot | null {
   const path = snapshotPath();
   if (existsSync(path)) {
     try {
@@ -534,7 +529,7 @@ export function readSnapshot(): FifraOrdersSnapshot | null {
       /* corrupt */
     }
   }
-  if (env("FIFRA_ORDERS_DIR")) return null;
+  if (env("DENOVO_ORDERS_DIR")) return null;
   const seed = bundledSeedPath();
   if (!existsSync(seed)) return null;
   try {
@@ -544,30 +539,30 @@ export function readSnapshot(): FifraOrdersSnapshot | null {
   }
 }
 
-export function writeSnapshot(snap: FifraOrdersSnapshot): void {
+export function writeSnapshot(snap: DenovoOrdersSnapshot): void {
   const path = snapshotPath();
   mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, JSON.stringify(snap, null, 2) + "\n");
 }
 
-export function hasCachedFifraOrderBody(): boolean {
+export function hasCachedDenovoOrderBody(): boolean {
   const snap = readSnapshot();
-  return Boolean(snap && snap.cards.some((c) => isRealFifraOrderBody(c.body)));
+  return Boolean(snap && snap.cards.some((c) => isRealDenovoOrderBody(c.body)));
 }
 
 function listingDir(): string {
-  return env("FIFRA_ORDERS_JSON_DIR") || env("FIFRA_ORDERS_LISTING_DIR");
+  return env("DENOVO_ORDERS_JSON_DIR") || env("DENOVO_ORDERS_LISTING_DIR");
 }
 
 function firstSliceLimit(): number {
-  const raw = env("FIFRA_ORDERS_LIMIT", "5");
+  const raw = env("DENOVO_ORDERS_LIMIT", "5");
   if (raw === "0") return 0;
   const n = Number(raw);
   return Number.isFinite(n) && n > 0 ? Math.floor(n) : 5;
 }
 
 function maxFetchLimit(): number {
-  const raw = env("FIFRA_ORDERS_MAX_FETCH", "8");
+  const raw = env("DENOVO_ORDERS_MAX_FETCH", "8");
   if (raw === "0") return 0;
   const n = Number(raw);
   return Number.isFinite(n) && n > 0 ? Math.floor(n) : 8;
@@ -582,8 +577,8 @@ function readNamedFile(dir: string, names: string[]): string | null {
   return null;
 }
 
-export async function fetchFifraBytes(url: string): Promise<Uint8Array> {
-  const official = officialFifraPdfUrl(url) || url;
+export async function fetchDenovoBytes(url: string): Promise<Uint8Array> {
+  const official = officialDenovoPdfUrl(url) || url;
   const res = await fetch(official, {
     headers: { "User-Agent": HTTP_UA, Accept: "application/pdf" },
   });
@@ -595,7 +590,7 @@ export async function fetchFifraBytes(url: string): Promise<Uint8Array> {
 }
 
 export function pdfToText(pdfPath: string): string {
-  const helper = env("FIFRA_ORDERS_PDFTOTEXT") || "pdftotext";
+  const helper = env("DENOVO_ORDERS_PDFTOTEXT") || "pdftotext";
   const result = spawnSync(helper, ["-layout", pdfPath, "-"], {
     encoding: "utf8",
     maxBuffer: 20 * 1024 * 1024,
@@ -612,11 +607,11 @@ function pause(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-async function loadOfficialListings(dir: string): Promise<{ listed: FifraOrderListing[]; listedCount: number }> {
+async function loadOfficialListings(dir: string): Promise<{ listed: DenovoOrderListing[]; listedCount: number }> {
   if (dir) {
     const json = readNamedFile(dir, ["listing-excerpt.json", "listing.json"]);
     if (json) {
-      const rows = JSON.parse(json) as FifraListingRow[];
+      const rows = JSON.parse(json) as DenovoListingRow[];
       const listed = Array.isArray(rows) ? parseListingRows(rows) : [];
       return { listed, listedCount: listed.length };
     }
@@ -627,26 +622,26 @@ async function loadOfficialListings(dir: string): Promise<{ listed: FifraOrderLi
   return { listed: [...SEED_LISTINGS], listedCount: SEED_LISTINGS.length };
 }
 
-function priorBodies(): Map<string, FifraOrderCard> {
-  const prior = new Map<string, FifraOrderCard>();
+function priorBodies(): Map<string, DenovoOrderCard> {
+  const prior = new Map<string, DenovoOrderCard>();
   for (const card of readSnapshot()?.cards ?? []) {
-    if (isRealFifraOrderBody(card.body)) prior.set(card.id, card);
+    if (isRealDenovoOrderBody(card.body)) prior.set(card.id, card);
   }
   return prior;
 }
 
-export async function collectFifraOrders(opts?: {
+export async function collectDenovoOrders(opts?: {
   pauseMs?: number;
   jsonDir?: string;
   limit?: number;
   maxFetch?: number;
-}): Promise<FifraOrdersSnapshot> {
+}): Promise<DenovoOrdersSnapshot> {
   const dir = opts?.jsonDir ?? listingDir();
   const pauseMs = opts?.pauseMs ?? (dir ? 0 : 400);
   const { listed: allListed, listedCount } = await loadOfficialListings(dir);
   const target = opts?.limit ?? firstSliceLimit();
   const fetchCap = opts?.maxFetch ?? (dir ? 0 : maxFetchLimit());
-  const cacheDir = fifraOrdersDir();
+  const cacheDir = denovoOrdersDir();
   mkdirSync(cacheDir, { recursive: true });
   const prior = priorBodies();
   if (allListed.length === 0) {
@@ -658,16 +653,16 @@ export async function collectFifraOrders(opts?: {
         skippedNoText: 0,
         reused: prior.size,
         addedThisRun: 0,
-        reason: "Official EPA FIFRA seed listing missed; kept cached institution order / consent bodies.",
+        reason: "Official FDA De Novo seed listing missed; kept cached institution classification-order bodies.",
       };
       writeSnapshot(snap);
       return snap;
     }
-    const snap = emptySnapshot("Official EPA FIFRA seed listing had no institution order / consent rows.");
+    const snap = emptySnapshot("Official FDA De Novo seed listing had no institution classification-order rows.");
     writeSnapshot(snap);
     return snap;
   }
-  const cards: FifraOrderCard[] = [];
+  const cards: DenovoOrderCard[] = [];
   const seen = new Set<string>();
   let fetchedPdfs = 0;
   let skippedNoText = 0;
@@ -695,12 +690,12 @@ export async function collectFifraOrders(opts?: {
         localText ??
         (await (async () => {
           if (!existsSync(pdfFile)) {
-            writeFileSync(pdfFile, await fetchFifraBytes(row.sourceUrl));
+            writeFileSync(pdfFile, await fetchDenovoBytes(row.sourceUrl));
             fetchedPdfs += 1;
           }
           return pdfToText(pdfFile);
         })());
-      const parsed = parseFifraOrderText(text, {
+      const parsed = parseDenovoOrderText(text, {
         sourceUrl: row.sourceUrl,
         institution: row.institution,
         date: row.date,
@@ -709,7 +704,7 @@ export async function collectFifraOrders(opts?: {
         id: row.id,
         title: row.title,
       });
-      if (!isRealFifraOrderBody(parsed.body)) {
+      if (!isRealDenovoOrderBody(parsed.body)) {
         skippedNoText += 1;
         continue;
       }
@@ -735,40 +730,40 @@ export async function collectFifraOrders(opts?: {
   return snap;
 }
 
-export async function loadFifraOrders(): Promise<FifraOrdersSnapshot> {
+export async function loadDenovoOrders(): Promise<DenovoOrdersSnapshot> {
   const cached = readSnapshot();
-  if (cached && cached.cards.some((c) => isRealFifraOrderBody(c.body))) {
+  if (cached && cached.cards.some((c) => isRealDenovoOrderBody(c.body))) {
     return cached;
   }
   try {
-    return await collectFifraOrders();
+    return await collectDenovoOrders();
   } catch (err) {
     if (cached) {
       return {
         ...cached,
-        status: cached.cards.some((c) => isRealFifraOrderBody(c.body)) ? "stale" : "empty",
-        reason: `Live EPA FIFRA institution order / consent fetch failed; showing last cache. ${err instanceof Error ? err.message : String(err)}`,
+        status: cached.cards.some((c) => isRealDenovoOrderBody(c.body)) ? "stale" : "empty",
+        reason: `Live FDA De Novo classification-order fetch failed; showing last cache. ${err instanceof Error ? err.message : String(err)}`,
       };
     }
     return emptySnapshot(
-      `EPA FIFRA institution order / consent PDFs are not on this host and live fetch failed. ${err instanceof Error ? err.message : String(err)}`,
+      `FDA De Novo classification-order PDFs are not on this host and live fetch failed. ${err instanceof Error ? err.message : String(err)}`,
     );
   }
 }
 
-export function buildFifraOrdersManifest(snap: FifraOrdersSnapshot | null): Record<string, unknown> {
-  const cards = (snap?.cards ?? []).filter((c) => isRealFifraOrderBody(c.body));
+export function buildDenovoOrdersManifest(snap: DenovoOrdersSnapshot | null): Record<string, unknown> {
+  const cards = (snap?.cards ?? []).filter((c) => isRealDenovoOrderBody(c.body));
   return {
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + institution + docket + date + official PDF URL only. Order body is the paid GET /fifra-orders payload. Not the press/teaser. Not people. Not Federal Register raw_text. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not CFTC /cftc-orders.",
+    note: "Count + institution + docket + date + official PDF URL only. Order body is the paid GET /denovo-orders payload. Not the press/teaser. Not people. Not Federal Register raw_text. Not FIFRA /fifra-orders. Not CFTC /cftc-orders. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl.",
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
     network: "base",
     asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
-    amountAtomic: FIFRA_ORDERS_AMOUNT_ATOMIC,
+    amountAtomic: DENOVO_ORDERS_AMOUNT_ATOMIC,
     priceUsdc: "0.05",
     fetchedAt: snap?.fetchedAt ?? null,
     asOf: snap?.asOf ?? null,
@@ -785,10 +780,10 @@ export function buildFifraOrdersManifest(snap: FifraOrdersSnapshot | null): Reco
   };
 }
 
-export async function loadFifraOrdersManifest(): Promise<Record<string, unknown>> {
+export async function loadDenovoOrdersManifest(): Promise<Record<string, unknown>> {
   const cached = readSnapshot();
-  if (cached) return buildFifraOrdersManifest(cached);
-  return buildFifraOrdersManifest(null);
+  if (cached) return buildDenovoOrdersManifest(cached);
+  return buildDenovoOrdersManifest(null);
 }
 
 function isMain(): boolean {
@@ -797,7 +792,7 @@ function isMain(): boolean {
 }
 
 if (isMain()) {
-  collectFifraOrders()
+  collectDenovoOrders()
     .then((snap) => {
       console.log(
         JSON.stringify(
@@ -805,7 +800,7 @@ if (isMain()) {
             status: snap.status,
             fetchedAt: snap.fetchedAt,
             asOf: snap.asOf,
-            cardCount: snap.cards.filter((c) => isRealFifraOrderBody(c.body)).length,
+            cardCount: snap.cards.filter((c) => isRealDenovoOrderBody(c.body)).length,
             listedCount: snap.listedCount ?? snap.cards.length,
             fetchedPdfs: snap.fetchedPdfs ?? 0,
             skippedNoText: snap.skippedNoText ?? 0,

@@ -431,6 +431,9 @@ export function isRealBisOrderBody(text: string): boolean {
   if (/ENVIRONMENTAL PROTECTION AGENCY/i.test(text) && /FIFRA-\d{2}-\d{4}-\d{4}/i.test(text)) {
     return false;
   }
+  if (/Center for Devices and Radiological Health/i.test(text) && /De Novo request/i.test(text) && /DEN\d{6}/i.test(text)) {
+    return false;
+  }
   const bis = /Bureau of Industry and Security/i.test(text);
   const kind =
     /PROPOSED CHARGING LETTER/i.test(text) ||

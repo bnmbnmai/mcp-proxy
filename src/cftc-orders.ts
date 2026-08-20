@@ -417,6 +417,9 @@ export function isRealCftcOrderBody(text: string): boolean {
   if (/ENVIRONMENTAL PROTECTION AGENCY/i.test(text) && /FIFRA-\d{2}-\d{4}-\d{4}/i.test(text)) {
     return false;
   }
+  if (/Center for Devices and Radiological Health/i.test(text) && /De Novo request/i.test(text) && /DEN\d{6}/i.test(text)) {
+    return false;
+  }
   const cftc = /COMMODITY FUTURES TRADING COMMISSION/i.test(text);
   const kind = /ORDER INSTITUTING PROCEEDINGS/i.test(text) || /CONSENT ORDER/i.test(text);
   const docket = DOCKET_LABEL_RE.test(text);
