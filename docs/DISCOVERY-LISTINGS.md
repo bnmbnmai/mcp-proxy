@@ -21,7 +21,7 @@ Live paid doors (all return HTTP 402 unpaid, official bodies when paid):
 | `GET https://ticks.bnm.farm/ftc-wl` | $0.05 | FTC BCP warning-letter PDF text |
 | `GET https://ticks.bnm.farm/cfpb-orders` | $0.05 | CFPB consent-order / administrative-order PDF text |
 | `GET https://ticks.bnm.farm/occ-cd` | $0.05 | OCC institution C&D / consent-order PDF text |
-
+| `GET https://ticks.bnm.farm/fdic-orders` | $0.05 | FDIC institution consent-order / C&D PDF text |
 CDP `POST /platform/v2/x402/validate` for each URL: `valid: true`, `simulation.outcome: accepted`.
 
 ## Listed
