@@ -68,6 +68,11 @@ import {
   FDIC_ORDERS_PATH,
 } from "./fdic-orders.js";
 import {
+  FRB_ORDERS_AMOUNT_ATOMIC,
+  FRB_ORDERS_MANIFEST_PATH,
+  FRB_ORDERS_PATH,
+} from "./frb-orders.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -190,7 +195,7 @@ async function main(): Promise<void> {
     assert.equal(wk.version, 1);
     assert.deepEqual(wk.ownershipProofs, [PAY_TO]);
     assert.ok((wk.instructions ?? "").includes(X402SCAN_SERVER_URL));
-    assert.equal(wk.resources.length, 15, "well-known lists the fifteen always-public doors");
+    assert.equal(wk.resources.length, 16, "well-known lists the sixteen always-public doors");
     assert.ok(wk.resources.some((r) => r.endsWith(TICKS_PATH) && r.startsWith("http")));
     assert.ok(wk.resources.some((r) => r.endsWith(IMPORT_ALERTS_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_PATH)));
@@ -206,12 +211,13 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.some((r) => r.endsWith(CFPB_ORDERS_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(OCC_CD_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(FDIC_ORDERS_PATH)));
+    assert.ok(wk.resources.some((r) => r.endsWith(FRB_ORDERS_PATH)));
     assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)), "do not list /form-483 without a cached body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_PATH)), "do not list /gmp without a cached observation body");
     assert.ok(wk.resources.every((r) => r.startsWith("http")), "well-known resources must be absolute URLs");
     assert.ok(wk.openapi?.endsWith(OPENAPI_PATH));
     assert.ok(wk.llmsTxt?.endsWith(LLMS_PATH));
-    assert.ok((wk.instructions ?? "").includes("fifteen paid"));
+    assert.ok((wk.instructions ?? "").includes("sixteen paid"));
     assert.ok(!wk.resources.some((r) => r.includes("/gain")));
     assert.equal(cdpEnvStatus(), "CDP env not set");
 
@@ -243,7 +249,7 @@ async function main(): Promise<void> {
     assert.deepEqual(spec["x-discovery"]?.ownershipProofs, [PAY_TO]);
     assert.deepEqual(spec["x-agentcash-provenance"]?.ownershipProofs, [PAY_TO]);
     assert.ok(spec["x-agentcash-guidance"]?.llmsTxtUrl?.endsWith(LLMS_PATH));
-    for (const paid of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH]) {
+    for (const paid of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH]) {
       const op = spec.paths[paid]?.get;
       assert.ok(op?.["x-payment-info"], `${paid} must declare x-payment-info`);
       assert.equal(op?.["x-auth"]?.mode, "x402");
@@ -267,6 +273,7 @@ async function main(): Promise<void> {
     assert.equal(spec.paths[CFPB_ORDERS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[OCC_CD_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[FDIC_ORDERS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
+    assert.equal(spec.paths[FRB_ORDERS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[CATALOG_PATH]?.get?.["x-auth"]?.mode, "none");
     assert.deepEqual(spec.paths[CATALOG_PATH]?.get?.security, []);
     assert.ok(spec.paths["/"]?.get);
@@ -289,6 +296,9 @@ async function main(): Promise<void> {
     assert.equal(spec.paths[OCC_CD_MANIFEST_PATH]?.get?.["x-auth"]?.mode, "none");
     assert.ok(spec.paths[FDIC_ORDERS_MANIFEST_PATH]?.get);
     assert.equal(spec.paths[FDIC_ORDERS_MANIFEST_PATH]?.get?.["x-auth"]?.mode, "none");
+    assert.ok(spec.paths[FRB_ORDERS_PATH]?.get);
+    assert.ok(spec.paths[FRB_ORDERS_MANIFEST_PATH]?.get);
+    assert.equal(spec.paths[FRB_ORDERS_MANIFEST_PATH]?.get?.["x-auth"]?.mode, "none");
     assert.equal(spec.paths[FORM_483_PATH], undefined, "no stub /form-483 in OpenAPI without a cached body");
     assert.equal(spec.paths[FORM_483_MANIFEST_PATH], undefined);
     assert.equal(spec.paths[GMP_PATH], undefined, "no stub /gmp in OpenAPI without a cached body");
@@ -296,8 +306,8 @@ async function main(): Promise<void> {
     assert.equal(spec.paths["/gain"], undefined);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
-      15,
-      "OpenAPI lists the fifteen always-public paid paths",
+      16,
+      "OpenAPI lists the sixteen always-public paid paths",
     );
 
     const llms = await fetch(`${base}${LLMS_PATH}`);
@@ -318,6 +328,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /cfpb-orders"));
     assert.ok(llmsBody.includes("GET /occ-cd"));
     assert.ok(llmsBody.includes("GET /fdic-orders"));
+    assert.ok(llmsBody.includes("GET /frb-orders"));
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.toLowerCase().includes("/gain"));
@@ -347,6 +358,7 @@ async function main(): Promise<void> {
       CFPB_ORDERS_PATH,
       OCC_CD_PATH,
       FDIC_ORDERS_PATH,
+      FRB_ORDERS_PATH,
     ]);
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_PATH));
@@ -802,7 +814,7 @@ async function main(): Promise<void> {
       assert.ok(shop.products.some((p) => p.path === CFPB_ORDERS_PATH && p.priceUsdc === "0.05"));
       assert.ok(shop.products.some((p) => p.path === OCC_CD_PATH && p.priceUsdc === "0.05"));
       assert.ok(shop.products.some((p) => p.path === FDIC_ORDERS_PATH && p.priceUsdc === "0.05"));
-      assert.equal(shop.products.length, 15);
+      assert.equal(shop.products.length, 16);
       assert.equal(shop.openapi, OPENAPI_PATH);
       assert.equal(shop.wellKnown, WELL_KNOWN_PATH);
 
@@ -1175,7 +1187,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === UNTITLED_LETTERS_PATH), true);
       assert.equal(shop.products.some((p) => p.path === AWA_PATH), true);
       assert.equal(shop.products.some((p) => p.path === SWISSPAR_PATH), true);
-      assert.equal(shop.products.length, 15);
+      assert.equal(shop.products.length, 16);
 
       const manifest = await fetch(`${base}${WARNING_LETTERS_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "warning-letters free manifest is free");
@@ -1275,7 +1287,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === WARNING_LETTERS_PATH), true);
       assert.equal(shop.products.some((p) => p.path === AWA_PATH), true);
       assert.equal(shop.products.some((p) => p.path === SWISSPAR_PATH), true);
-      assert.equal(shop.products.length, 15);
+      assert.equal(shop.products.length, 16);
 
       const manifest = await fetch(`${base}${UNTITLED_LETTERS_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "untitled-letters free manifest is free");
@@ -1383,7 +1395,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === UNTITLED_LETTERS_PATH), true);
       assert.equal(shop.products.some((p) => p.path === FORM_483_PATH), false);
       assert.equal(shop.products.some((p) => p.path === SWISSPAR_PATH), true);
-      assert.equal(shop.products.length, 15);
+      assert.equal(shop.products.length, 16);
 
       const manifest = await fetch(`${base}${AWA_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "awa free manifest is free");
@@ -1483,7 +1495,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === AWA_PATH), true);
       assert.equal(shop.products.some((p) => p.path === UNTITLED_LETTERS_PATH), true);
       assert.equal(shop.products.some((p) => p.path === FORM_483_PATH), false);
-      assert.equal(shop.products.length, 15);
+      assert.equal(shop.products.length, 16);
 
       const manifest = await fetch(`${base}${SWISSPAR_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "swisspar free manifest is free");
@@ -1588,7 +1600,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === PCAC_PATH), true);
       assert.equal(shop.products.some((p) => p.path === SWISSPAR_PATH), true);
       assert.equal(shop.products.some((p) => p.path === FORM_483_PATH), false);
-      assert.equal(shop.products.length, 15);
+      assert.equal(shop.products.length, 16);
 
       const manifest = await fetch(`${base}${PCAC_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "pcac free manifest is free");
@@ -1693,7 +1705,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === CFPB_ORDERS_PATH), true);
       assert.equal(shop.products.some((p) => p.path === PCAC_PATH), true);
       assert.equal(shop.products.some((p) => p.path === FORM_483_PATH), false);
-      assert.equal(shop.products.length, 15);
+      assert.equal(shop.products.length, 16);
 
       const manifest = await fetch(`${base}${FTC_WL_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "ftc-wl free manifest is free");
@@ -1810,7 +1822,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === CFPB_ORDERS_PATH), true);
       assert.equal(shop.products.some((p) => p.path === FTC_WL_PATH), true);
       assert.equal(shop.products.some((p) => p.path === FORM_483_PATH), false);
-      assert.equal(shop.products.length, 15);
+      assert.equal(shop.products.length, 16);
 
       const manifest = await fetch(`${base}${CFPB_ORDERS_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "cfpb-orders free manifest is free");
@@ -1931,7 +1943,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === CFPB_ORDERS_PATH), true);
       assert.equal(shop.products.some((p) => p.path === FTC_WL_PATH), true);
       assert.equal(shop.products.some((p) => p.path === FORM_483_PATH), false);
-      assert.equal(shop.products.length, 15);
+      assert.equal(shop.products.length, 16);
 
       const manifest = await fetch(`${base}${OCC_CD_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "occ-cd free manifest is free");
@@ -2047,11 +2059,12 @@ async function main(): Promise<void> {
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === FDIC_ORDERS_PATH), true);
+      assert.equal(shop.products.some((p) => p.path === FRB_ORDERS_PATH), true);
       assert.equal(shop.products.some((p) => p.path === OCC_CD_PATH), true);
       assert.equal(shop.products.some((p) => p.path === CFPB_ORDERS_PATH), true);
       assert.equal(shop.products.some((p) => p.path === FTC_WL_PATH), true);
       assert.equal(shop.products.some((p) => p.path === FORM_483_PATH), false);
-      assert.equal(shop.products.length, 15);
+      assert.equal(shop.products.length, 16);
 
       const manifest = await fetch(`${base}${FDIC_ORDERS_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "fdic-orders free manifest is free");
@@ -2086,6 +2099,129 @@ async function main(): Promise<void> {
       assert.equal(paidBody.cards[0]?.pdfId, "069SJ000013gUnXYAU");
       assert.ok(paidBody.cards[0]?.body.includes("June 9, 2025 Report of Examination"));
       assert.ok(paidBody.cards[0]?.body.includes("adversely classified “Substandard”"));
+    },
+  );
+
+  const frbOrdersDir = mkdtempSync(join(tmpdir(), "frb-orders-"));
+  writeFileSync(
+    join(frbOrdersDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "frb-institution-order-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: FRESH_FETCHED_AT,
+      asOf: "2026-04-14",
+      license: "17 USC 105",
+      attribution: "Federal Reserve Board",
+      sources: {
+        listing: "https://www.federalreserve.gov/supervisionreg/enforcementactions.htm",
+        csv: "https://www.federalreserve.gov/supervisionreg/files/enforcementactions.csv",
+        pdfHost: "https://www.federalreserve.gov/",
+      },
+      cards: [
+        {
+          id: "26-019-B-HC",
+          docket: "26-019-B-HC",
+          pdfId: "enf20260416a1",
+          institution: "Community Bankshares, Inc.",
+          location: "LaGrange, Georgia",
+          date: "2026-04-14",
+          title: "Cease and Desist Order",
+          sourceUrl: "https://www.federalreserve.gov/newsevents/pressreleases/files/enf20260416a1.pdf",
+          body: [
+            "BOARD OF GOVERNORS OF THE FEDERAL RESERVE SYSTEM",
+            "WASHINGTON, D.C.",
+            "In the Matter of",
+            "COMMUNITY BANKSHARES, INC.",
+            "LaGrange, Georgia",
+            "Docket No. 26-019-B-HC",
+            "Order to Cease and Desist Issued Upon Consent",
+            "WHEREAS, Community Bankshares, Inc. is a registered bank holding company",
+            "WHEREAS, the most recent inspection identified deficiencies",
+            "Capital Plan",
+            "significantly undercapitalized",
+            "NOW THEREFORE",
+            ...Array.from({ length: 40 }, (_, i) => `${i + 21}. Numbered article ${i + 21} from the official Community Bankshares C&D body used only to keep this door fixture above the real-order length floor.`),
+          ].join("\n"),
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      FRB_ORDERS_DIR: frbOrdersDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-frb-orders-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${FRB_ORDERS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /frb-orders must be 402");
+      const body402 = (await unpaid.json()) as {
+        payTo: string;
+        asset: string;
+        resource: string;
+        accepts: { maxAmountRequired?: string; extra?: { name?: string } }[];
+      };
+      assert.equal(body402.resource, FRB_ORDERS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, FRB_ORDERS_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
+      const frbPr = unpaid.headers.get("payment-required");
+      assert.ok(frbPr, "v2 PAYMENT-REQUIRED header");
+      const frbV2 = JSON.parse(Buffer.from(frbPr, "base64").toString("utf8")) as {
+        extensions?: { bazaar?: { info?: { input?: { method?: string } } } };
+      };
+      assert.equal(frbV2.extensions?.bazaar?.info?.input?.method, "GET");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("WHEREAS"));
+      assert.ok(!leak402.includes("significantly undercapitalized"));
+      assert.ok(!leak402.includes("Capital Plan"));
+      assert.ok(!leak402.includes("Numbered article"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === FRB_ORDERS_PATH), true);
+      assert.equal(shop.products.some((p) => p.path === FDIC_ORDERS_PATH), true);
+      assert.equal(shop.products.some((p) => p.path === OCC_CD_PATH), true);
+      assert.equal(shop.products.some((p) => p.path === CFPB_ORDERS_PATH), true);
+      assert.equal(shop.products.some((p) => p.path === FTC_WL_PATH), true);
+      assert.equal(shop.products.some((p) => p.path === FORM_483_PATH), false);
+      assert.equal(shop.products.length, 16);
+
+      const manifest = await fetch(`${base}${FRB_ORDERS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "frb-orders free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        cards?: { institution?: string; docket?: string; id?: string; body?: string }[];
+        openapi?: string;
+        wellKnown?: string;
+      };
+      assert.equal(man.cardCount, 1);
+      assert.ok(man.openapi?.endsWith(OPENAPI_PATH));
+      assert.ok(man.wellKnown?.endsWith(WELL_KNOWN_PATH));
+      assert.equal(man.cards?.[0]?.institution, "Community Bankshares, Inc.");
+      assert.equal(man.cards?.[0]?.docket, "26-019-B-HC");
+      assert.equal(man.cards?.[0]?.id, "26-019-B-HC");
+      const manBlob = JSON.stringify(man);
+      assert.ok(!manBlob.includes("WHEREAS"));
+      assert.ok(!manBlob.includes("significantly undercapitalized"));
+      assert.ok(!manBlob.includes("Capital Plan"));
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+
+      const paid = await fetch(`${base}${FRB_ORDERS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { institution: string; date: string; docket: string; pdfId: string; body: string }[];
+      };
+      assert.equal(paidBody.product, "frb-institution-order-bodies");
+      assert.equal(paidBody.cards[0]?.institution, "Community Bankshares, Inc.");
+      assert.equal(paidBody.cards[0]?.date, "2026-04-14");
+      assert.equal(paidBody.cards[0]?.docket, "26-019-B-HC");
+      assert.equal(paidBody.cards[0]?.pdfId, "enf20260416a1");
+      assert.ok(paidBody.cards[0]?.body.includes("WHEREAS"));
+      assert.ok(paidBody.cards[0]?.body.includes("Capital Plan"));
     },
   );
 
@@ -2156,20 +2292,20 @@ async function main(): Promise<void> {
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === FORM_483_PATH), true);
-      assert.equal(shop.products.length, 16);
+      assert.equal(shop.products.length, 17);
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
         resources: string[];
         instructions?: string;
       };
-      assert.equal(wk.resources.length, 16);
+      assert.equal(wk.resources.length, 17);
       assert.ok(wk.resources.some((r) => r.endsWith(FORM_483_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D11_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D7_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D8_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(UNTITLED_LETTERS_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(PCAC_PATH)));
-      assert.ok((wk.instructions ?? "").includes("sixteen paid"));
+      assert.ok((wk.instructions ?? "").includes("seventeen paid"));
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
         paths: Record<string, { get?: { "x-payment-info"?: { price?: { amount?: string } } } }>;
@@ -2178,7 +2314,7 @@ async function main(): Promise<void> {
       assert.ok(spec.paths[FORM_483_MANIFEST_PATH]?.get);
       assert.equal(
         Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
-        16,
+        17,
       );
 
       const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();
@@ -2287,13 +2423,13 @@ async function main(): Promise<void> {
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === GMP_PATH), true);
-      assert.equal(shop.products.length, 17, "seventeenth product is /gmp when a real observation body is cached");
+      assert.equal(shop.products.length, 18, "eighteenth product is /gmp when a real observation body is cached");
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
         resources: string[];
         instructions?: string;
       };
-      assert.equal(wk.resources.length, 17);
+      assert.equal(wk.resources.length, 18);
       assert.ok(wk.resources.some((r) => r.endsWith(GMP_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D8_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(UNTITLED_LETTERS_PATH)));
@@ -2304,7 +2440,8 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.endsWith(CFPB_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(OCC_CD_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(FDIC_ORDERS_PATH)));
-      assert.ok((wk.instructions ?? "").includes("seventeen paid"));
+      assert.ok(wk.resources.some((r) => r.endsWith(FRB_ORDERS_PATH)));
+      assert.ok((wk.instructions ?? "").includes("eighteen paid"));
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
         paths: Record<string, { get?: { "x-payment-info"?: { price?: { amount?: string } } } }>;
@@ -2313,7 +2450,7 @@ async function main(): Promise<void> {
       assert.ok(spec.paths[GMP_MANIFEST_PATH]?.get);
       assert.equal(
         Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
-        17,
+        18,
       );
 
       const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();
@@ -2371,7 +2508,7 @@ async function main(): Promise<void> {
     },
     async (base) => {
       assert.equal(cdpEnvStatus(), "CDP env not set");
-      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FORM_483_PATH, GMP_PATH]) {
+      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, FORM_483_PATH, GMP_PATH]) {
         const unpaid = await fetch(`${base}${path}`);
         assert.equal(unpaid.status, 402, `unpaid ${path} must stay 402`);
         const present = await fetch(`${base}${path}`, { headers: { "X-PAYMENT": "test" } });
@@ -2380,7 +2517,7 @@ async function main(): Promise<void> {
         assert.notEqual(body.error, "CDP env not set");
       }
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
-      assert.equal(wk.resources.length, 15);
+      assert.equal(wk.resources.length, 16);
       assert.ok(wk.resources.some((r) => r.includes(WARNING_LETTERS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(UNTITLED_LETTERS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(AWA_PATH)));
@@ -2390,6 +2527,7 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.includes(CFPB_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(OCC_CD_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(FDIC_ORDERS_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(FRB_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D11_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D7_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D8_PATH)));
@@ -2400,7 +2538,7 @@ async function main(): Promise<void> {
 
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -2410,6 +2548,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("cfpb-orders"), true);
   assert.equal(isPublicBazaarSku("occ-cd"), true);
   assert.equal(isPublicBazaarSku("fdic-orders"), true);
+  assert.equal(isPublicBazaarSku("frb-orders"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.deepEqual(publicBazaarSkus(), [...PUBLIC_BAZAAR_SKUS]);

@@ -1,0 +1,6 @@
+Effective Date,Termination Date,Individual,Individual Affiliation,Banking Organization,Action,URL,Name,Note
+2026-04-14,,,"","Community Bankshares, Inc., LaGrange, Georgia",Cease and Desist Order,https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260416a.htm,Press Release,
+2026-06-29,,,"","Small Business Bank, Lenexa, Kansas",Prompt Corrective Action,https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260702a.htm,Press Release,
+2026-07-06,,,"","TS Banking Group, Inc., Treynor, Iowa and TS Contrarian Bancshares, Inc., Treynor, Iowa",Written Agreement,https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260709a.htm,Press Release,
+2026-07-15,,,"","Iuka Bancshares, Inc., Salem, Illinois and The Iuka State Bank, Salem, Illinois",Written Agreement,https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260730b.htm,Press Release,
+2026-08-05,,Elazia Jones,"Regions Bank, Birmingham, Alabama",,Prohibition from Banking,https://www.federalreserve.gov/newsevents/pressreleases/enforcement20260813a.htm,Press Release,
