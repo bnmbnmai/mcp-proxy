@@ -1,0 +1,59 @@
+[
+  {
+    "institution": "UBS Financial Services Inc.",
+    "docket": "26-04",
+    "date": "2026-07-31",
+    "title": "Order Instituting Proceedings",
+    "sourceUrl": "https://www.cftc.gov/media/14456/ENF_UBSFinancial%20ServicesOrder073126/download",
+    "pdfId": "14456"
+  },
+  {
+    "institution": "Netrios LP Ltd. and Red Acre Ltd.",
+    "docket": "26-02",
+    "date": "2026-06-26",
+    "title": "Order Instituting Proceedings",
+    "sourceUrl": "https://www.cftc.gov/media/14291/ENF_Netrios_RedAcreOrder062626/download",
+    "pdfId": "14291"
+  },
+  {
+    "institution": "Citigroup Global Markets Inc.",
+    "docket": "25-02",
+    "date": "2025-09-04",
+    "title": "Order Instituting Proceedings",
+    "sourceUrl": "https://www.cftc.gov/media/12611/enfcitigrouporder090425/download",
+    "pdfId": "12611"
+  },
+  {
+    "institution": "SMBC Capital Markets, Inc.",
+    "docket": "25-03",
+    "date": "2025-09-04",
+    "title": "Order Instituting Proceedings",
+    "sourceUrl": "https://www.cftc.gov/media/12616/enfsmbcorder090425/download",
+    "pdfId": "12616"
+  },
+  {
+    "institution": "Banco Santander, S.A. and Santander US Capital Markets LLC",
+    "docket": "25-04",
+    "date": "2025-09-04",
+    "title": "Order Instituting Proceedings",
+    "sourceUrl": "https://www.cftc.gov/media/12621/enfsantanderorder090425/download",
+    "pdfId": "12621"
+  },
+  {
+    "institution": "George Anthony Devolder Santos",
+    "individual": "George Anthony Devolder Santos",
+    "docket": "26-99",
+    "date": "2026-07-31",
+    "title": "Order",
+    "sourceUrl": "https://www.cftc.gov/media/14451/ENF_SantosOrder073126/download",
+    "pdfId": "14451"
+  },
+  {
+    "institution": "Goliath Ventures Inc.",
+    "docket": "complaint",
+    "date": "2026-08-11",
+    "title": "Complaint",
+    "sourceUrl": "https://www.cftc.gov/media/14466/Enf_GoliathComplaint081126/download",
+    "pdfId": "14466"
+  }
+]
