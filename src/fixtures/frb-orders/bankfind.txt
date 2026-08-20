@@ -1,0 +1,4 @@
+BankFind Suite CERT STALP ACTIVE
+NAME: Community Bankshares, Inc.
+CERT: 000000
+This is the FDIC BankFind institution directory, not an FRB enforcement order.
