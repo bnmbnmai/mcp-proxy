@@ -23,6 +23,9 @@ Live paid doors (all return HTTP 402 unpaid, official bodies when paid):
 | `GET https://ticks.bnm.farm/occ-cd` | $0.05 | OCC institution C&D / consent-order PDF text |
 | `GET https://ticks.bnm.farm/fdic-orders` | $0.05 | FDIC institution consent-order / C&D PDF text |
 | `GET https://ticks.bnm.farm/frb-orders` | $0.05 | FRB institution C&D / written-agreement / PCA PDF text |
+| `GET https://ticks.bnm.farm/ncua-orders` | $0.05 | NCUA institution consent C&D HTML text |
+
+
 CDP `POST /platform/v2/x402/validate` for each URL: `valid: true`, `simulation.outcome: accepted`.
 
 ## Listed
