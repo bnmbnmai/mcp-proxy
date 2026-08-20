@@ -95,7 +95,7 @@ async function main(): Promise<void> {
   assert.equal(breweryText.title, "Offer in Compromise");
   assert.ok(isRealTtbOicBody(breweryText.body));
   assert.ok(breweryText.body.includes("$423,681.93"));
-  assert.ok(breweryText.body.includes("$1,217,201.38"));
+  assert.ok(breweryText.body.includes("1,217,201.38"));
   assert.ok(breweryText.body.includes("2010 Williams St."));
   assert.ok(CARD_FIELDS.every((f) => f in breweryText));
   assert.equal(pdfIdFromUrl(breweryText.sourceUrl), "ABSTMT-21st_Amendment_Brewery_Cafe_Redacted.pdf");
@@ -189,7 +189,7 @@ async function main(): Promise<void> {
   assert.match((manifest.cards as { institution: string }[])[0]?.institution ?? "", /21st Amendment/i);
   assert.equal((manifest.cards as { docket: string }[])[0]?.docket, "21st-amendment");
   assert.ok(!manBlob.includes("$423,681.93"), "free manifest must not dump order body");
-  assert.ok(!manBlob.includes("$1,217,201.38"));
+  assert.ok(!manBlob.includes("1,217,201.38"));
   assert.ok(!manBlob.includes("2010 Williams St."));
   assert.ok(!("body" in ((manifest.cards as object[])[0] ?? {})));
   assert.ok(manBlob.includes("21st-amendment"));

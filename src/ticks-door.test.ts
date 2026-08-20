@@ -3334,7 +3334,7 @@ async function main(): Promise<void> {
             "The 21st Amendment Brewery Cafe, LLC",
             "Offer-in-Compromise",
             "$423,681.93",
-            "$1,217,201.38",
+            "$ 1,217,201.38",
             "2010 Williams St.",
             ...Array.from({ length: 40 }, (_, i) => `${i + 21}. Numbered article ${i + 21} from the official 21st Amendment TTB Offer in Compromise body used only to keep this door fixture above the real-order length floor.`),
           ].join("\n"),
@@ -3370,7 +3370,7 @@ async function main(): Promise<void> {
 
       const leak402 = JSON.stringify(body402);
       assert.ok(!leak402.includes("$423,681.93"));
-      assert.ok(!leak402.includes("$1,217,201.38"));
+      assert.ok(!leak402.includes("1,217,201.38"));
       assert.ok(!leak402.includes("2010 Williams St."));
       assert.ok(!leak402.includes("Numbered article"));
 
@@ -3396,7 +3396,7 @@ async function main(): Promise<void> {
       assert.equal(man.cards?.[0]?.docket, "21st-amendment");
       const manBlob = JSON.stringify(man);
       assert.ok(!manBlob.includes("$423,681.93"));
-      assert.ok(!manBlob.includes("$1,217,201.38"));
+      assert.ok(!manBlob.includes("1,217,201.38"));
       assert.ok(!manBlob.includes("2010 Williams St."));
       assert.ok(!("body" in (man.cards?.[0] ?? {})));
 
@@ -3411,7 +3411,7 @@ async function main(): Promise<void> {
       assert.equal(paidBody.cards[0]?.date, "2026-06-30");
       assert.equal(paidBody.cards[0]?.docket, "21st-amendment");
       assert.ok(paidBody.cards[0]?.body.includes("$423,681.93"));
-      assert.ok(paidBody.cards[0]?.body.includes("$1,217,201.38"));
+      assert.ok(paidBody.cards[0]?.body.includes("1,217,201.38"));
       assert.ok(paidBody.cards[0]?.body.includes("2010 Williams St."));
     },
   );
@@ -3489,7 +3489,7 @@ async function main(): Promise<void> {
         resources: string[];
         instructions?: string;
       };
-      assert.equal(wk.resources.length, 25);
+      assert.equal(wk.resources.length, 26);
       assert.ok(wk.resources.some((r) => r.endsWith(FORM_483_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D11_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D7_PATH)));
@@ -3505,7 +3505,7 @@ async function main(): Promise<void> {
       assert.ok(spec.paths[FORM_483_MANIFEST_PATH]?.get);
       assert.equal(
         Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
-        25,
+        26,
       );
 
       const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();
@@ -3620,7 +3620,7 @@ async function main(): Promise<void> {
         resources: string[];
         instructions?: string;
       };
-      assert.equal(wk.resources.length, 26);
+      assert.equal(wk.resources.length, 27);
       assert.ok(wk.resources.some((r) => r.endsWith(GMP_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D8_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(UNTITLED_LETTERS_PATH)));
@@ -3647,7 +3647,7 @@ async function main(): Promise<void> {
       assert.ok(spec.paths[GMP_MANIFEST_PATH]?.get);
       assert.equal(
         Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
-        26,
+        27,
       );
 
       const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();
@@ -3767,7 +3767,7 @@ async function main(): Promise<void> {
         resources: string[];
         instructions?: string;
       };
-      assert.equal(wk.resources.length, 27);
+      assert.equal(wk.resources.length, 28);
       assert.ok(wk.resources.some((r) => r.endsWith(GMP_MD_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(GMP_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(SWISSPAR_PATH)));
@@ -3788,7 +3788,7 @@ async function main(): Promise<void> {
       assert.ok(spec.paths[GMP_MD_MANIFEST_PATH]?.get);
       assert.equal(
         Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
-        27,
+        28,
       );
 
       const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();

@@ -22,7 +22,7 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 - Required seed: The 21st Amendment Brewery Cafe, LLC — accepted 30 Jun 2026 — https://www.ttb.gov/system/files/2026-07/ABSTMT-21st_Amendment_Brewery_Cafe_Redacted.pdf
 - License: **17 USC 105**. Attribute TTB.
 
-Free manifest is institution / docket / date / sourceUrl only. Needles such as `$423,681.93`, `$1,217,201.38`, and `2010 Williams St.` stay out of unpaid responses.
+Free manifest is institution / docket / date / sourceUrl only. Needles such as `$423,681.93`, `1,217,201.38`, and `2010 Williams St.` stay out of unpaid responses.
 
 `data/ttb-oic/` is gitignored. Live-apply on apollo stays at the 5 official seeds.
 
