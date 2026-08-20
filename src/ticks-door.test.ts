@@ -2602,7 +2602,7 @@ async function main(): Promise<void> {
       assert.ok(spec.paths[GMP_MD_MANIFEST_PATH]?.get);
       assert.equal(
         Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
-        18,
+        19,
       );
 
       const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();
