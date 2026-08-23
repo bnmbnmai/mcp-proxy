@@ -168,6 +168,11 @@ import {
   FSIS_HMSA_PATH,
 } from "./fsis-hmsa.js";
 import {
+  ATSDR_HC_AMOUNT_ATOMIC,
+  ATSDR_HC_MANIFEST_PATH,
+  ATSDR_HC_PATH,
+} from "./atsdr-hc.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -334,6 +339,7 @@ async function main(): Promise<void> {
     assert.ok(!wk.resources.some((r) => r.includes(IPO_TM_PATH)), "do not list /ipo-tm");
     assert.ok(!wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "do not list /fmc-orders");
     assert.ok(!wk.resources.some((r) => r.includes(FSIS_HMSA_PATH)), "do not list /fsis-hmsa");
+    assert.ok(!wk.resources.some((r) => r.includes(ATSDR_HC_PATH)), "do not list /atsdr-hc");
     assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)), "do not list /form-483 without a cached body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_PATH)), "do not list /gmp without a cached observation body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_MD_PATH)), "do not list /gmp-md without a cached observation body");
@@ -484,6 +490,8 @@ async function main(): Promise<void> {
     assert.equal(spec.paths[FMC_ORDERS_MANIFEST_PATH], undefined, "OpenAPI must not list /fmc-orders/manifest.json");
     assert.equal(spec.paths[FSIS_HMSA_PATH], undefined, "OpenAPI must not list /fsis-hmsa");
     assert.equal(spec.paths[FSIS_HMSA_MANIFEST_PATH], undefined, "OpenAPI must not list /fsis-hmsa/manifest.json");
+    assert.equal(spec.paths[ATSDR_HC_PATH], undefined, "OpenAPI must not list /atsdr-hc");
+    assert.equal(spec.paths[ATSDR_HC_MANIFEST_PATH], undefined, "OpenAPI must not list /atsdr-hc/manifest.json");
     assert.equal(spec.paths[FORM_483_PATH], undefined, "no stub /form-483 in OpenAPI without a cached body");
     assert.equal(spec.paths[FORM_483_MANIFEST_PATH], undefined);
     assert.equal(spec.paths[GMP_PATH], undefined, "no stub /gmp in OpenAPI without a cached body");
@@ -535,6 +543,7 @@ async function main(): Promise<void> {
     assert.ok(!llmsBody.includes("GET /ipo-tm"), "do not list /ipo-tm");
     assert.ok(!llmsBody.includes("GET /fmc-orders"), "do not list /fmc-orders");
     assert.ok(!llmsBody.includes("GET /fsis-hmsa"), "do not list /fsis-hmsa");
+    assert.ok(!llmsBody.includes("GET /atsdr-hc"), "do not list /atsdr-hc");
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.includes("GET /gmp-md"));
@@ -586,6 +595,7 @@ async function main(): Promise<void> {
     assert.ok(!shop.products.some((p) => p.path === IPO_TM_PATH), "do not list /ipo-tm");
     assert.ok(!shop.products.some((p) => p.path === FMC_ORDERS_PATH), "do not list /fmc-orders");
     assert.ok(!shop.products.some((p) => p.path === FSIS_HMSA_PATH), "do not list /fsis-hmsa");
+    assert.ok(!shop.products.some((p) => p.path === ATSDR_HC_PATH), "do not list /atsdr-hc");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_MD_PATH));
@@ -3950,6 +3960,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === IPO_TM_PATH), false, "do not list /ipo-tm");
       assert.equal(shop.products.some((p) => p.path === FMC_ORDERS_PATH), false, "do not list /fmc-orders");
       assert.equal(shop.products.some((p) => p.path === FSIS_HMSA_PATH), false, "do not list /fsis-hmsa");
+      assert.equal(shop.products.some((p) => p.path === ATSDR_HC_PATH), false, "do not list /atsdr-hc");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
@@ -3961,6 +3972,7 @@ async function main(): Promise<void> {
       assert.ok(!wk.resources.some((r) => r.includes(IPO_TM_PATH)), "well-known must not list /ipo-tm");
       assert.ok(!wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "well-known must not list /fmc-orders");
       assert.ok(!wk.resources.some((r) => r.includes(FSIS_HMSA_PATH)), "well-known must not list /fsis-hmsa");
+      assert.ok(!wk.resources.some((r) => r.includes(ATSDR_HC_PATH)), "well-known must not list /atsdr-hc");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /phmsa-cop"), "llms.txt must not list /phmsa-cop yet");
@@ -3970,6 +3982,7 @@ async function main(): Promise<void> {
       assert.ok(!llms.includes("GET /ipo-tm"), "llms.txt must not list /ipo-tm");
       assert.ok(!llms.includes("GET /fmc-orders"), "llms.txt must not list /fmc-orders");
       assert.ok(!llms.includes("GET /fsis-hmsa"), "llms.txt must not list /fsis-hmsa");
+      assert.ok(!llms.includes("GET /atsdr-hc"), "llms.txt must not list /atsdr-hc");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[PHMSA_COP_PATH], undefined, "OpenAPI must not list /phmsa-cop yet");
@@ -3979,6 +3992,7 @@ async function main(): Promise<void> {
       assert.equal(spec.paths[IPO_TM_PATH], undefined, "OpenAPI must not list /ipo-tm");
       assert.equal(spec.paths[FMC_ORDERS_PATH], undefined, "OpenAPI must not list /fmc-orders");
       assert.equal(spec.paths[FSIS_HMSA_PATH], undefined, "OpenAPI must not list /fsis-hmsa");
+      assert.equal(spec.paths[ATSDR_HC_PATH], undefined, "OpenAPI must not list /atsdr-hc");
 
       const manifest = await fetch(`${base}${PHMSA_COP_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "phmsa-cop free manifest is free");
@@ -4100,6 +4114,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === IPO_TM_PATH), false, "do not list /ipo-tm");
       assert.equal(shop.products.some((p) => p.path === FMC_ORDERS_PATH), false, "do not list /fmc-orders");
       assert.equal(shop.products.some((p) => p.path === FSIS_HMSA_PATH), false, "do not list /fsis-hmsa");
+      assert.equal(shop.products.some((p) => p.path === ATSDR_HC_PATH), false, "do not list /atsdr-hc");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
@@ -4110,6 +4125,7 @@ async function main(): Promise<void> {
       assert.ok(!wk.resources.some((r) => r.includes(IPO_TM_PATH)), "well-known must not list /ipo-tm");
       assert.ok(!wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "well-known must not list /fmc-orders");
       assert.ok(!wk.resources.some((r) => r.includes(FSIS_HMSA_PATH)), "well-known must not list /fsis-hmsa");
+      assert.ok(!wk.resources.some((r) => r.includes(ATSDR_HC_PATH)), "well-known must not list /atsdr-hc");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /acm-besluiten"), "llms.txt must not list /acm-besluiten");
@@ -4118,6 +4134,7 @@ async function main(): Promise<void> {
       assert.ok(!llms.includes("GET /ipo-tm"), "llms.txt must not list /ipo-tm");
       assert.ok(!llms.includes("GET /fmc-orders"), "llms.txt must not list /fmc-orders");
       assert.ok(!llms.includes("GET /fsis-hmsa"), "llms.txt must not list /fsis-hmsa");
+      assert.ok(!llms.includes("GET /atsdr-hc"), "llms.txt must not list /atsdr-hc");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[ACM_BESLUITEN_PATH], undefined, "OpenAPI must not list /acm-besluiten");
@@ -4126,6 +4143,7 @@ async function main(): Promise<void> {
       assert.equal(spec.paths[IPO_TM_PATH], undefined, "OpenAPI must not list /ipo-tm");
       assert.equal(spec.paths[FMC_ORDERS_PATH], undefined, "OpenAPI must not list /fmc-orders");
       assert.equal(spec.paths[FSIS_HMSA_PATH], undefined, "OpenAPI must not list /fsis-hmsa");
+      assert.equal(spec.paths[ATSDR_HC_PATH], undefined, "OpenAPI must not list /atsdr-hc");
 
       const manifest = await fetch(`${base}${ACM_BESLUITEN_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "acm-besluiten free manifest is free");
@@ -4246,6 +4264,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === IPO_TM_PATH), false, "do not list /ipo-tm");
       assert.equal(shop.products.some((p) => p.path === FMC_ORDERS_PATH), false, "do not list /fmc-orders");
       assert.equal(shop.products.some((p) => p.path === FSIS_HMSA_PATH), false, "do not list /fsis-hmsa");
+      assert.equal(shop.products.some((p) => p.path === ATSDR_HC_PATH), false, "do not list /atsdr-hc");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
@@ -4255,6 +4274,7 @@ async function main(): Promise<void> {
       assert.ok(!wk.resources.some((r) => r.includes(IPO_TM_PATH)), "well-known must not list /ipo-tm");
       assert.ok(!wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "well-known must not list /fmc-orders");
       assert.ok(!wk.resources.some((r) => r.includes(FSIS_HMSA_PATH)), "well-known must not list /fsis-hmsa");
+      assert.ok(!wk.resources.some((r) => r.includes(ATSDR_HC_PATH)), "well-known must not list /atsdr-hc");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /ccpc-mergers"), "llms.txt must not list /ccpc-mergers");
@@ -4262,6 +4282,7 @@ async function main(): Promise<void> {
       assert.ok(!llms.includes("GET /ipo-tm"), "llms.txt must not list /ipo-tm");
       assert.ok(!llms.includes("GET /fmc-orders"), "llms.txt must not list /fmc-orders");
       assert.ok(!llms.includes("GET /fsis-hmsa"), "llms.txt must not list /fsis-hmsa");
+      assert.ok(!llms.includes("GET /atsdr-hc"), "llms.txt must not list /atsdr-hc");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[CCPC_MERGERS_PATH], undefined, "OpenAPI must not list /ccpc-mergers");
@@ -4269,6 +4290,7 @@ async function main(): Promise<void> {
       assert.equal(spec.paths[IPO_TM_PATH], undefined, "OpenAPI must not list /ipo-tm");
       assert.equal(spec.paths[FMC_ORDERS_PATH], undefined, "OpenAPI must not list /fmc-orders");
       assert.equal(spec.paths[FSIS_HMSA_PATH], undefined, "OpenAPI must not list /fsis-hmsa");
+      assert.equal(spec.paths[ATSDR_HC_PATH], undefined, "OpenAPI must not list /atsdr-hc");
 
       const manifest = await fetch(`${base}${CCPC_MERGERS_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "ccpc-mergers free manifest is free");
@@ -4387,6 +4409,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === IPO_TM_PATH), false, "do not list /ipo-tm");
       assert.equal(shop.products.some((p) => p.path === FMC_ORDERS_PATH), false, "do not list /fmc-orders");
       assert.equal(shop.products.some((p) => p.path === FSIS_HMSA_PATH), false, "do not list /fsis-hmsa");
+      assert.equal(shop.products.some((p) => p.path === ATSDR_HC_PATH), false, "do not list /atsdr-hc");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
@@ -4395,18 +4418,21 @@ async function main(): Promise<void> {
       assert.ok(!wk.resources.some((r) => r.includes(IPO_TM_PATH)), "well-known must not list /ipo-tm");
       assert.ok(!wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "well-known must not list /fmc-orders");
       assert.ok(!wk.resources.some((r) => r.includes(FSIS_HMSA_PATH)), "well-known must not list /fsis-hmsa");
+      assert.ok(!wk.resources.some((r) => r.includes(ATSDR_HC_PATH)), "well-known must not list /atsdr-hc");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /bkarta-entscheidungen"), "llms.txt must not list /bkarta-entscheidungen");
       assert.ok(!llms.includes("GET /ipo-tm"), "llms.txt must not list /ipo-tm");
       assert.ok(!llms.includes("GET /fmc-orders"), "llms.txt must not list /fmc-orders");
       assert.ok(!llms.includes("GET /fsis-hmsa"), "llms.txt must not list /fsis-hmsa");
+      assert.ok(!llms.includes("GET /atsdr-hc"), "llms.txt must not list /atsdr-hc");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[BKARTA_ENTSCHEIDUNGEN_PATH], undefined, "OpenAPI must not list /bkarta-entscheidungen");
       assert.equal(spec.paths[IPO_TM_PATH], undefined, "OpenAPI must not list /ipo-tm");
       assert.equal(spec.paths[FMC_ORDERS_PATH], undefined, "OpenAPI must not list /fmc-orders");
       assert.equal(spec.paths[FSIS_HMSA_PATH], undefined, "OpenAPI must not list /fsis-hmsa");
+      assert.equal(spec.paths[ATSDR_HC_PATH], undefined, "OpenAPI must not list /atsdr-hc");
 
       const manifest = await fetch(`${base}${BKARTA_ENTSCHEIDUNGEN_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "bkarta-entscheidungen free manifest is free");
@@ -4525,6 +4551,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === IPO_TM_PATH), false, "do not list /ipo-tm");
       assert.equal(shop.products.some((p) => p.path === FMC_ORDERS_PATH), false, "do not list /fmc-orders");
       assert.equal(shop.products.some((p) => p.path === FSIS_HMSA_PATH), false, "do not list /fsis-hmsa");
+      assert.equal(shop.products.some((p) => p.path === ATSDR_HC_PATH), false, "do not list /atsdr-hc");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
@@ -4532,16 +4559,19 @@ async function main(): Promise<void> {
       assert.ok(!wk.resources.some((r) => r.includes(IPO_TM_PATH)), "well-known must not list /ipo-tm");
       assert.ok(!wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "well-known must not list /fmc-orders");
       assert.ok(!wk.resources.some((r) => r.includes(FSIS_HMSA_PATH)), "well-known must not list /fsis-hmsa");
+      assert.ok(!wk.resources.some((r) => r.includes(ATSDR_HC_PATH)), "well-known must not list /atsdr-hc");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /ipo-tm"), "llms.txt must not list /ipo-tm");
       assert.ok(!llms.includes("GET /fmc-orders"), "llms.txt must not list /fmc-orders");
       assert.ok(!llms.includes("GET /fsis-hmsa"), "llms.txt must not list /fsis-hmsa");
+      assert.ok(!llms.includes("GET /atsdr-hc"), "llms.txt must not list /atsdr-hc");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[IPO_TM_PATH], undefined, "OpenAPI must not list /ipo-tm");
       assert.equal(spec.paths[FMC_ORDERS_PATH], undefined, "OpenAPI must not list /fmc-orders");
       assert.equal(spec.paths[FSIS_HMSA_PATH], undefined, "OpenAPI must not list /fsis-hmsa");
+      assert.equal(spec.paths[ATSDR_HC_PATH], undefined, "OpenAPI must not list /atsdr-hc");
 
       const manifest = await fetch(`${base}${IPO_TM_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "ipo-tm free manifest is free");
@@ -4658,20 +4688,24 @@ async function main(): Promise<void> {
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === FMC_ORDERS_PATH), false, "do not list /fmc-orders");
       assert.equal(shop.products.some((p) => p.path === FSIS_HMSA_PATH), false, "do not list /fsis-hmsa");
+      assert.equal(shop.products.some((p) => p.path === ATSDR_HC_PATH), false, "do not list /atsdr-hc");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
       assert.ok(!wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "well-known must not list /fmc-orders");
       assert.ok(!wk.resources.some((r) => r.includes(FSIS_HMSA_PATH)), "well-known must not list /fsis-hmsa");
+      assert.ok(!wk.resources.some((r) => r.includes(ATSDR_HC_PATH)), "well-known must not list /atsdr-hc");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /fmc-orders"), "llms.txt must not list /fmc-orders");
       assert.ok(!llms.includes("GET /fsis-hmsa"), "llms.txt must not list /fsis-hmsa");
+      assert.ok(!llms.includes("GET /atsdr-hc"), "llms.txt must not list /atsdr-hc");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[FMC_ORDERS_PATH], undefined, "OpenAPI must not list /fmc-orders");
       assert.equal(spec.paths[FSIS_HMSA_PATH], undefined, "OpenAPI must not list /fsis-hmsa");
+      assert.equal(spec.paths[ATSDR_HC_PATH], undefined, "OpenAPI must not list /atsdr-hc");
 
       const manifest = await fetch(`${base}${FMC_ORDERS_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "fmc-orders free manifest is free");
@@ -4782,17 +4816,21 @@ async function main(): Promise<void> {
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === FSIS_HMSA_PATH), false, "do not list /fsis-hmsa");
+      assert.equal(shop.products.some((p) => p.path === ATSDR_HC_PATH), false, "do not list /atsdr-hc");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
       assert.ok(!wk.resources.some((r) => r.includes(FSIS_HMSA_PATH)), "well-known must not list /fsis-hmsa");
+      assert.ok(!wk.resources.some((r) => r.includes(ATSDR_HC_PATH)), "well-known must not list /atsdr-hc");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /fsis-hmsa"), "llms.txt must not list /fsis-hmsa");
+      assert.ok(!llms.includes("GET /atsdr-hc"), "llms.txt must not list /atsdr-hc");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[FSIS_HMSA_PATH], undefined, "OpenAPI must not list /fsis-hmsa");
+      assert.equal(spec.paths[ATSDR_HC_PATH], undefined, "OpenAPI must not list /atsdr-hc");
 
       const manifest = await fetch(`${base}${FSIS_HMSA_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "fsis-hmsa free manifest is free");
@@ -4824,6 +4862,120 @@ async function main(): Promise<void> {
       assert.ok(paidBody.cards[0]?.body.includes("B-45131621"));
       assert.ok(paidBody.cards[0]?.body.includes("313.30(a)(4)"));
       assert.ok(paidBody.cards[0]?.body.includes("Consciousness on the Rail"));
+    },
+  );
+
+  const atsdrHcDir = mkdtempSync(join(tmpdir(), "atsdr-hc-"));
+  writeFileSync(
+    join(atsdrHcDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "atsdr-hc-consultation-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: FRESH_FETCHED_AT,
+      asOf: "2026-08-18",
+      license: "17 U.S.C. § 105",
+      attribution:
+        "Agency for Toxic Substances and Disease Registry (ATSDR), Centers for Disease Control and Prevention, U.S. Department of Health and Human Services. Work of the United States Government; 17 U.S.C. § 105.",
+      sources: {
+        listing: "https://wwwn.cdc.gov/TSP/PHA/PHAListing.aspx",
+        pdfHost: "https://www.atsdr.cdc.gov/HAC/pha/",
+      },
+      cards: [
+        {
+          id: "sterigenics-smyrna-eto",
+          pdfId: "SmyrnaEtO-508.pdf",
+          institution: "Sterigenics LLC",
+          date: "2026-08-18",
+          title: "Health Consultation",
+          sourceUrl: "https://www.atsdr.cdc.gov/HAC/pha/Sterigenics/SmyrnaEtO-508.pdf",
+          body: [
+            "Agency for Toxic Substances and Disease Registry",
+            "Health Consultation",
+            "Evaluation of Ethylene Oxide in Outdoor Air Near the Sterigenics Sterilization Facility",
+            "Cobb County, Georgia",
+            "USEPA Facility ID: 110000355963",
+            "Final Release August 18, 2026",
+            "The lifetime excess risk of cancer from breathing EtO for people who live, work, or attend school near Sterigenics is similar to background.",
+            "EtO concentrations measured at sampling locations near Sterigenics after Sterigenics reopened were not statistically greater than the background EtO concentrations.",
+            ...Array.from({ length: 20 }, (_, i) => `${i + 1}. Official ATSDR Health Consultation paragraph ${i + 1} used only to keep this door fixture above the real-consultation length floor.`),
+          ].join("\n"),
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      ATSDR_HC_DIR: atsdrHcDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-atsdr-hc-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${ATSDR_HC_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /atsdr-hc must be 402");
+      const body402 = (await unpaid.json()) as {
+        payTo: string;
+        asset: string;
+        resource: string;
+        accepts: { maxAmountRequired?: string; extra?: { name?: string } }[];
+      };
+      assert.equal(body402.resource, ATSDR_HC_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, ATSDR_HC_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
+      const atsdrPr = unpaid.headers.get("payment-required");
+      assert.ok(atsdrPr, "v2 PAYMENT-REQUIRED header");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("lifetime excess risk"));
+      assert.ok(!leak402.includes("not statistically greater"));
+      assert.ok(!leak402.includes("110000355963"));
+      assert.ok(!leak402.includes("Official ATSDR Health Consultation paragraph"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === ATSDR_HC_PATH), false, "do not list /atsdr-hc");
+      assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
+      assert.equal(shop.products.length, 28);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(!wk.resources.some((r) => r.includes(ATSDR_HC_PATH)), "well-known must not list /atsdr-hc");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(!llms.includes("GET /atsdr-hc"), "llms.txt must not list /atsdr-hc");
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.equal(spec.paths[ATSDR_HC_PATH], undefined, "OpenAPI must not list /atsdr-hc");
+
+      const manifest = await fetch(`${base}${ATSDR_HC_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "atsdr-hc free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        cards?: { institution?: string; date?: string; id?: string; body?: string }[];
+        openapi?: string;
+        wellKnown?: string;
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.cards?.[0]?.institution, "Sterigenics LLC");
+      assert.equal(man.cards?.[0]?.date, "2026-08-18");
+      const manBlob = JSON.stringify(man);
+      assert.ok(!manBlob.includes("lifetime excess risk"));
+      assert.ok(!manBlob.includes("not statistically greater"));
+      assert.ok(!manBlob.includes("110000355963"));
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+
+      const paid = await fetch(`${base}${ATSDR_HC_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { institution: string; date: string; body: string }[];
+      };
+      assert.equal(paidBody.product, "atsdr-hc-consultation-bodies");
+      assert.equal(paidBody.cards[0]?.institution, "Sterigenics LLC");
+      assert.equal(paidBody.cards[0]?.date, "2026-08-18");
+      assert.ok(paidBody.cards[0]?.body.includes("lifetime excess risk"));
+      assert.ok(paidBody.cards[0]?.body.includes("not statistically greater"));
+      assert.ok(paidBody.cards[0]?.body.includes("110000355963"));
     },
   );
 
@@ -5333,6 +5485,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("ipo-tm"), false, "do not list /ipo-tm");
   assert.equal(isPublicBazaarSku("fmc-orders"), false, "do not list /fmc-orders");
   assert.equal(isPublicBazaarSku("fsis-hmsa"), false, "do not list /fsis-hmsa");
+  assert.equal(isPublicBazaarSku("atsdr-hc"), false, "do not list /atsdr-hc");
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
@@ -5351,6 +5504,8 @@ async function main(): Promise<void> {
   assert.equal(hiddenFmcOrders.extensions, undefined, "/fmc-orders must not persist to Bazaar");
   const hiddenFsisHmsa = facilitatorPaymentRequirements("https://ticks.bnm.farm/fsis-hmsa", "fsis-hmsa");
   assert.equal(hiddenFsisHmsa.extensions, undefined, "/fsis-hmsa must not persist to Bazaar");
+  const hiddenAtsdrHc = facilitatorPaymentRequirements("https://ticks.bnm.farm/atsdr-hc", "atsdr-hc");
+  assert.equal(hiddenAtsdrHc.extensions, undefined, "/atsdr-hc must not persist to Bazaar");
   const hidden = facilitatorPaymentRequirements("https://ticks.bnm.farm/form-483", "form-483");
   assert.equal(hidden.extensions, undefined, "/form-483 must not persist to Bazaar until a real body is cached");
   const hiddenGmp = facilitatorPaymentRequirements("https://ticks.bnm.farm/gmp", "gmp");

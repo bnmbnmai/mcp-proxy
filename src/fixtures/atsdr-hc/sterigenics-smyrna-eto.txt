@@ -1,0 +1,151 @@
+ATSDR
+                 Health Consultation
+          Evaluation of Ethylene Oxide in Outdoor Air Near the
+                    Sterigenics Sterilization Facility
+
+                                   Cobb County, Georgia
+
+
+
+
+                              USEPA Facility ID: 110000355963
+
+
+                                       Final Release
+                                      August 18, 2026
+
+
+
+
+U.S. Department of
+Health and Human Services
+Agency for Toxic Substances
+and Disease Registry
+                   ATSDR
+          Health Consultation
+
+ Evaluation of Ethylene Oxide in Outdoor Air Near the
+Sterigenics Sterilization Facility in Cobb County, Georgia
+
+                  USEPA Facility ID: 110000355963
+
+
+
+                                Final
+
+
+
+
+                             Prepared By:
+            U.S. Department of Health and Human Services
+           Agency for Toxic Substances and Disease Registry
+           Office of Community Health Hazard Assessment
+                       Atlanta, Georgia, 30333
+          Health Consultation: A Note of Explanation
+
+A health consultation is written documentation of analysis and health conclusions from ATSDR
+about health risks related to a National Priorities List (NPL) or other specific site, a chemical
+release, or the presence of hazardous material. To prevent or mitigate exposures, a consultation
+may lead to specific actions, such as restricting use of or replacing water supplies; intensifying
+environmental sampling; restricting site access; or removing the contaminated material. In
+addition, consultations may recommend additional public health actions, such as conducting
+health surveillance activities to evaluate exposure or trends in adverse health outcomes;
+collection and analysis of additional environmental samples to better characterize exposures;
+conducting biological indicators of exposure studies to assess exposure; and providing health
+education for health care providers and community members. This concludes the health
+consultation process for this site, unless additional information is obtained by ATSDR which, in
+the Agency’s opinion, indicates a need to revise or append the conclusions previously issued.
+
+
+               You may contact ATSDR toll free at 1-800-CDC-INFO or 1-800-232-
+                                             4636
+                                                or
+                        visit our home page at: https://www.atsdr.cdc.gov
+
+
+
+
+       The Agency for Toxic Substances and Disease Registry (ATSDR) is a federal
+       public health agency of the U.S. Department of Health and Human Services (HHS).
+       ATSDR works with other agencies and tribal, state, and local governments to study
+       possible health risks in communities where people could come in contact with
+       dangerous chemicals. For more information about ATSDR, visit the ATSDR
+       website, ATSDR website.
+Contents
+1. Summary .....................................................................................................................................1
+2. Background .................................................................................................................................1
+     2.1. Statement of Issue and Purpose................................................................................................... 1
+     2.2. Site Description and Timeline ....................................................................................................... 2
+           2.2.1. Sterigenics Facility Overview .............................................................................................. 2
+           2.2.2. Background on Petitions to Conduct a Health Consultation at Sterigenics........................ 3
+           2.2.3. Sterigenics Emissions History.............................................................................................. 4
+           2.2.4. Air Modeling at Sterigenics Based on New Emissions Controls.......................................... 5
+3. Community Description and Concerns ..........................................................................................6
+4. Sampling Data .............................................................................................................................8
+5. EtO Sampling Challenges ............................................................................................................11
+     5.1. Controlling for Positive Bias and Seasonal Variation .................................................................. 11
+     5.2. Imprecision in Low Concentrations ............................................................................................ 12
+     5.3. Accounting for Background EtO Concentrations ........................................................................ 12
+     5.4. Other Sampling Challenges......................................................................................................... 13
+6. Scientific Evaluations .................................................................................................................13
+     6.1. Exposure Pathway Analysis ........................................................................................................ 13
+           6.1.1. Overview of Potential Exposure Pathways ....................................................................... 13
+           6.1.2. Analysis of Georgia EPD EtO Concentrations September 2019–October 2022 ................ 14
+     6.2. Screening Analysis ...................................................................................................................... 18
+     6.3. Health Evaluation ....................................................................................................................... 20
+           6.3.1. Noncancer Health Effects Evaluation ............................................................................... 20
+           6.3.2. Cancer Risk Evaluation ...................................................................................................... 21
+     6.4. Summary of Limitations and Uncertainties ................................................................................ 25
+     6.5. Medical Questions and Concerns ............................................................................................... 27
+7. Conclusions ...............................................................................................................................27
+     7.1. Conclusion Number One............................................................................................................. 27
+     7.2. Basis for Conclusion Number One .............................................................................................. 27
+     7.3. Conclusion Number Two ............................................................................................................ 28
+     7.4. Basis for Conclusion Number Two .............................................................................................. 28
+     7.5. For More Information ................................................................................................................. 28
+8. Recommendations and Public Health Action Plan .......................................................................29
+
+
+                                                                          i
+9. Authors, Site Team, and Contributors .........................................................................................29
+10. References.................................................................................................................................30
+      Appendices ........................................................................................................................................... 33
+            Appendix A: Community Questions and Public Comments ........................................................... 34
+            A.1 Pre-release Questions and Answers ........................................................................................ 34
+            A.2 Public Comment Questions and Answers................................................................................ 40
+            Appendix B: Descriptive Statistics of EtO Air Sampling Data in Georgia Reviewed by ATSDR ...... 44
+            Appendix C: Statistical Tests and Plots Supporting Exposure Pathway Analysis with Adjusted Data
+                  48
+            Appendix D: Statistical Tests and Plots of Exposure Pathway Analysis with Raw (Unadjusted)
+            Data 53
+            Appendix E: ATSDR Screening Values ............................................................................................ 57
+            Appendix F. Lifetime Excess Cancer Risk Calculations ................................................................... 58
+            Appendix G. Background Levels of EtO Throughout the U.S. ........................................................ 61
+            Appendix H: Bayesian Generalized Additive Model (GAM) ........................................................... 64
+            Appendix I: Explanation of a Boxplot ............................................................................................. 71
+
+The lifetime excess risk of cancer from breathing EtO for
+                           people who live, work, or attend school near Sterigenics is similar
+                           to lifetime excess cancer risk from breathing background EtO
+                           concentrations in Georgia and other areas of the country with no
+                           known source of EtO emissions. This finding was based on EtO
+                           concentrations measured from April 2020 to October 2022.
+
+
+
+                                                 2
+Basis for Conclusion      •   EtO concentrations measured in the outdoor air at
+                              sampling locations within about one mile of Sterigenics
+                              from April 2020 to October 2022 are similar to background
+                              EtO concentrations measured elsewhere in Georgia and in
+                              the U.S. with no known source of EtO emissions nearby.
+                          •   After adjusting for seasonal variation and positive bias,
+                              EtO concentrations measured at sampling locations near
+                              Sterigenics after Sterigenics reopened in April 2020 with
+                              new emissions controls were not statistically greater than
+                              the background EtO concentrations measured at the same
+                              locations from September 2019 to April 2020 when
+                              Sterigenics was closed.
+                          •   Adjusted EtO concentrations in outdoor air near
+                              Sterigenics from April 2020 to October 2022 were not
+                              statistically greater than outdoor EtO concentrations at

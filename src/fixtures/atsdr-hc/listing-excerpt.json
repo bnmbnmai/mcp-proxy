@@ -1,0 +1,111 @@
+[
+  {
+    "id": "sterigenics-smyrna-eto",
+    "institution": "Sterigenics LLC",
+    "date": "2026-08-18",
+    "title": "Health Consultation",
+    "type": "health-consultation",
+    "sourceUrl": "https://www.atsdr.cdc.gov/HAC/pha/Sterigenics/SmyrnaEtO-508.pdf",
+    "pdfId": "SmyrnaEtO-508.pdf"
+  },
+  {
+    "id": "nasa-wallops-pfas",
+    "institution": "NASA Wallops Flight Facility",
+    "date": "2026-04-29",
+    "title": "Health Consultation",
+    "type": "health-consultation",
+    "sourceUrl": "https://www.atsdr.cdc.gov/HAC/pha/Wallops/NASA-WFF-PC-508.pdf",
+    "pdfId": "NASA-WFF-PC-508.pdf"
+  },
+  {
+    "id": "former-fort-ord",
+    "institution": "Former Fort Ord Army Base",
+    "date": "2026-07-09",
+    "title": "Health Consultation",
+    "type": "health-consultation",
+    "sourceUrl": "https://www.atsdr.cdc.gov/HAC/pha/FormerFordOrd/FortOrd-HC-508.pdf",
+    "pdfId": "FortOrd-HC-508.pdf"
+  },
+  {
+    "id": "jard-company",
+    "institution": "Jard Company, Inc.",
+    "date": "2026-05-21",
+    "title": "Public Health Assessment",
+    "type": "pha",
+    "sourceUrl": "https://www.atsdr.cdc.gov/HAC/pha/Jard/Jard-PHA-508.pdf",
+    "pdfId": "Jard-PHA-508.pdf"
+  },
+  {
+    "id": "bristol-quarry-landfill",
+    "institution": "City of Bristol, Virginia",
+    "date": "2025-12-22",
+    "title": "Health Consultation",
+    "type": "health-consultation",
+    "sourceUrl": "https://www.atsdr.cdc.gov/HAC/pha/Bristol/Bristol-Quarry-Landfill-HC-508.pdf",
+    "pdfId": "Bristol-Quarry-Landfill-HC-508.pdf"
+  },
+  {
+    "id": "jane-smith-person",
+    "institution": "Jane Smith",
+    "individual": "Jane Smith",
+    "date": "2026-01-15",
+    "title": "People SKU",
+    "type": "people",
+    "sourceUrl": "https://www.atsdr.cdc.gov/HAC/pha/Example/Jane-Smith-508.pdf",
+    "pdfId": "Jane-Smith-508.pdf"
+  },
+  {
+    "id": "factsheet-teaser",
+    "institution": "Sterigenics LLC",
+    "date": "2026-08-18",
+    "title": "2-page factsheet",
+    "type": "factsheet",
+    "sourceUrl": "https://www.atsdr.cdc.gov/HAC/pha/Sterigenics/EvaluationOfEthyleneOxide-factsheet-508.pdf",
+    "pdfId": "EvaluationOfEthyleneOxide-factsheet-508.pdf"
+  },
+  {
+    "id": "state-listing",
+    "institution": "Sterigenics LLC",
+    "date": "2026-08-18",
+    "title": "State listing HTML",
+    "type": "listing",
+    "sourceUrl": "https://wwwn.cdc.gov/TSP/PHA/PHAListing.aspx?StateIndicator=GA",
+    "pdfId": ""
+  },
+  {
+    "id": "superfund-rods",
+    "institution": "Federated Metals Corp. Whiting Superfund Site",
+    "date": "2026-08-05",
+    "title": "EPA Superfund ROD",
+    "type": "rod",
+    "sourceUrl": "https://semspub.epa.gov/work/05/711427.pdf",
+    "pdfId": "711427.pdf"
+  },
+  {
+    "id": "fsis-hmsa",
+    "institution": "Collagen Solutions (US) LLC",
+    "date": "2026-07-30",
+    "title": "FSIS HMSA letter",
+    "type": "fsis",
+    "sourceUrl": "https://www.fsis.usda.gov/sites/default/files/media_file/documents/M40110-NOIE-07302026.pdf",
+    "pdfId": "M40110-NOIE-07302026.pdf"
+  },
+  {
+    "id": "charity-commission",
+    "institution": "Example Charity Ltd",
+    "date": "2026-01-01",
+    "title": "Charity Commission inquiry",
+    "type": "charity",
+    "sourceUrl": "https://www.gov.uk/government/publications/charity-commission-inquiry.pdf",
+    "pdfId": "charity-commission-inquiry.pdf"
+  },
+  {
+    "id": "ico-mpn",
+    "institution": "Reddit, Inc.",
+    "date": "2026-02-23",
+    "title": "ICO MPN",
+    "type": "ico",
+    "sourceUrl": "https://ico.org.uk/media2/hrlmvj14/reddit-mpn-20260223.pdf",
+    "pdfId": "reddit-mpn-20260223.pdf"
+  }
+]
