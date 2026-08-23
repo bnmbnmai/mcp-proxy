@@ -148,6 +148,11 @@ import {
   CCPC_MERGERS_PATH,
 } from "./ccpc-mergers.js";
 import {
+  BKARTA_ENTSCHEIDUNGEN_AMOUNT_ATOMIC,
+  BKARTA_ENTSCHEIDUNGEN_MANIFEST_PATH,
+  BKARTA_ENTSCHEIDUNGEN_PATH,
+} from "./bkarta-entscheidungen.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -310,6 +315,7 @@ async function main(): Promise<void> {
     assert.ok(!wk.resources.some((r) => r.includes(PHMSA_COP_PATH)), "do not list /phmsa-cop until /ico-mpn is live");
     assert.ok(!wk.resources.some((r) => r.includes(ACM_BESLUITEN_PATH)), "do not list /acm-besluiten");
     assert.ok(!wk.resources.some((r) => r.includes(CCPC_MERGERS_PATH)), "do not list /ccpc-mergers");
+    assert.ok(!wk.resources.some((r) => r.includes(BKARTA_ENTSCHEIDUNGEN_PATH)), "do not list /bkarta-entscheidungen");
     assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)), "do not list /form-483 without a cached body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_PATH)), "do not list /gmp without a cached observation body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_MD_PATH)), "do not list /gmp-md without a cached observation body");
@@ -452,6 +458,8 @@ async function main(): Promise<void> {
     assert.equal(spec.paths[ACM_BESLUITEN_MANIFEST_PATH], undefined, "OpenAPI must not list /acm-besluiten/manifest.json");
     assert.equal(spec.paths[CCPC_MERGERS_PATH], undefined, "OpenAPI must not list /ccpc-mergers");
     assert.equal(spec.paths[CCPC_MERGERS_MANIFEST_PATH], undefined, "OpenAPI must not list /ccpc-mergers/manifest.json");
+    assert.equal(spec.paths[BKARTA_ENTSCHEIDUNGEN_PATH], undefined, "OpenAPI must not list /bkarta-entscheidungen");
+    assert.equal(spec.paths[BKARTA_ENTSCHEIDUNGEN_MANIFEST_PATH], undefined, "OpenAPI must not list /bkarta-entscheidungen/manifest.json");
     assert.equal(spec.paths[FORM_483_PATH], undefined, "no stub /form-483 in OpenAPI without a cached body");
     assert.equal(spec.paths[FORM_483_MANIFEST_PATH], undefined);
     assert.equal(spec.paths[GMP_PATH], undefined, "no stub /gmp in OpenAPI without a cached body");
@@ -499,6 +507,7 @@ async function main(): Promise<void> {
     assert.ok(!llmsBody.includes("GET /phmsa-cop"), "do not list /phmsa-cop until /ico-mpn is live");
     assert.ok(!llmsBody.includes("GET /acm-besluiten"), "do not list /acm-besluiten");
     assert.ok(!llmsBody.includes("GET /ccpc-mergers"), "do not list /ccpc-mergers");
+    assert.ok(!llmsBody.includes("GET /bkarta-entscheidungen"), "do not list /bkarta-entscheidungen");
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.includes("GET /gmp-md"));
@@ -546,6 +555,7 @@ async function main(): Promise<void> {
     assert.ok(!shop.products.some((p) => p.path === PHMSA_COP_PATH), "do not list /phmsa-cop until /ico-mpn is live");
     assert.ok(!shop.products.some((p) => p.path === ACM_BESLUITEN_PATH), "do not list /acm-besluiten");
     assert.ok(!shop.products.some((p) => p.path === CCPC_MERGERS_PATH), "do not list /ccpc-mergers");
+    assert.ok(!shop.products.some((p) => p.path === BKARTA_ENTSCHEIDUNGEN_PATH), "do not list /bkarta-entscheidungen");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_MD_PATH));
@@ -3906,6 +3916,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === PHMSA_COP_PATH), false, "do not list /phmsa-cop until /ico-mpn is live");
       assert.equal(shop.products.some((p) => p.path === ACM_BESLUITEN_PATH), false, "do not list /acm-besluiten");
       assert.equal(shop.products.some((p) => p.path === CCPC_MERGERS_PATH), false, "do not list /ccpc-mergers");
+      assert.equal(shop.products.some((p) => p.path === BKARTA_ENTSCHEIDUNGEN_PATH), false, "do not list /bkarta-entscheidungen");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
@@ -3913,16 +3924,19 @@ async function main(): Promise<void> {
       assert.ok(!wk.resources.some((r) => r.includes(PHMSA_COP_PATH)), "well-known must not list /phmsa-cop yet");
       assert.ok(!wk.resources.some((r) => r.includes(ACM_BESLUITEN_PATH)), "well-known must not list /acm-besluiten");
       assert.ok(!wk.resources.some((r) => r.includes(CCPC_MERGERS_PATH)), "well-known must not list /ccpc-mergers");
+      assert.ok(!wk.resources.some((r) => r.includes(BKARTA_ENTSCHEIDUNGEN_PATH)), "well-known must not list /bkarta-entscheidungen");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /phmsa-cop"), "llms.txt must not list /phmsa-cop yet");
       assert.ok(!llms.includes("GET /acm-besluiten"), "llms.txt must not list /acm-besluiten");
       assert.ok(!llms.includes("GET /ccpc-mergers"), "llms.txt must not list /ccpc-mergers");
+      assert.ok(!llms.includes("GET /bkarta-entscheidungen"), "llms.txt must not list /bkarta-entscheidungen");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[PHMSA_COP_PATH], undefined, "OpenAPI must not list /phmsa-cop yet");
       assert.equal(spec.paths[ACM_BESLUITEN_PATH], undefined, "OpenAPI must not list /acm-besluiten");
       assert.equal(spec.paths[CCPC_MERGERS_PATH], undefined, "OpenAPI must not list /ccpc-mergers");
+      assert.equal(spec.paths[BKARTA_ENTSCHEIDUNGEN_PATH], undefined, "OpenAPI must not list /bkarta-entscheidungen");
 
       const manifest = await fetch(`${base}${PHMSA_COP_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "phmsa-cop free manifest is free");
@@ -4040,20 +4054,24 @@ async function main(): Promise<void> {
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === ACM_BESLUITEN_PATH), false, "do not list /acm-besluiten");
       assert.equal(shop.products.some((p) => p.path === CCPC_MERGERS_PATH), false, "do not list /ccpc-mergers");
+      assert.equal(shop.products.some((p) => p.path === BKARTA_ENTSCHEIDUNGEN_PATH), false, "do not list /bkarta-entscheidungen");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
       assert.ok(!wk.resources.some((r) => r.includes(ACM_BESLUITEN_PATH)), "well-known must not list /acm-besluiten");
       assert.ok(!wk.resources.some((r) => r.includes(CCPC_MERGERS_PATH)), "well-known must not list /ccpc-mergers");
+      assert.ok(!wk.resources.some((r) => r.includes(BKARTA_ENTSCHEIDUNGEN_PATH)), "well-known must not list /bkarta-entscheidungen");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /acm-besluiten"), "llms.txt must not list /acm-besluiten");
       assert.ok(!llms.includes("GET /ccpc-mergers"), "llms.txt must not list /ccpc-mergers");
+      assert.ok(!llms.includes("GET /bkarta-entscheidungen"), "llms.txt must not list /bkarta-entscheidungen");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[ACM_BESLUITEN_PATH], undefined, "OpenAPI must not list /acm-besluiten");
       assert.equal(spec.paths[CCPC_MERGERS_PATH], undefined, "OpenAPI must not list /ccpc-mergers");
+      assert.equal(spec.paths[BKARTA_ENTSCHEIDUNGEN_PATH], undefined, "OpenAPI must not list /bkarta-entscheidungen");
 
       const manifest = await fetch(`${base}${ACM_BESLUITEN_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "acm-besluiten free manifest is free");
@@ -4170,17 +4188,21 @@ async function main(): Promise<void> {
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === CCPC_MERGERS_PATH), false, "do not list /ccpc-mergers");
+      assert.equal(shop.products.some((p) => p.path === BKARTA_ENTSCHEIDUNGEN_PATH), false, "do not list /bkarta-entscheidungen");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
       assert.ok(!wk.resources.some((r) => r.includes(CCPC_MERGERS_PATH)), "well-known must not list /ccpc-mergers");
+      assert.ok(!wk.resources.some((r) => r.includes(BKARTA_ENTSCHEIDUNGEN_PATH)), "well-known must not list /bkarta-entscheidungen");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /ccpc-mergers"), "llms.txt must not list /ccpc-mergers");
+      assert.ok(!llms.includes("GET /bkarta-entscheidungen"), "llms.txt must not list /bkarta-entscheidungen");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[CCPC_MERGERS_PATH], undefined, "OpenAPI must not list /ccpc-mergers");
+      assert.equal(spec.paths[BKARTA_ENTSCHEIDUNGEN_PATH], undefined, "OpenAPI must not list /bkarta-entscheidungen");
 
       const manifest = await fetch(`${base}${CCPC_MERGERS_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "ccpc-mergers free manifest is free");
@@ -4216,6 +4238,131 @@ async function main(): Promise<void> {
       assert.ok(paidBody.cards[0]?.body.includes("Vertical Relationship"));
       assert.ok(paidBody.cards[0]?.body.includes("40km radius of Kehoe"));
       assert.ok(paidBody.cards[0]?.body.includes("Associated Hardware/National Hardware"));
+    },
+  );
+
+  const bkartaDir = mkdtempSync(join(tmpdir(), "bkarta-entscheidungen-"));
+  writeFileSync(
+    join(bkartaDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "bkarta-institution-entscheidung-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: FRESH_FETCHED_AT,
+      asOf: "2026-02-04",
+      license: "§ 5 Abs. 1 UrhG",
+      attribution:
+        "Bundeskartellamt (BKartA). Amtliche Entscheidungen have no copyright (§ 5 Abs. 1 UrhG). BKartA logo reserved — sold body is BKartA-authored TEXT only.",
+      sources: {
+        listing: "https://www.bundeskartellamt.de/DE/Entscheidungen/entscheidungen_node.html",
+        pdfHost: "https://www.bundeskartellamt.de/SharedDocs/Entscheidung/DE/Entscheidungen/",
+      },
+      cards: [
+        {
+          id: "amazon-b2-73-20",
+          docket: "amazon-b2-73-20",
+          az: "B2-73/20",
+          pdfId: "B2-73-20.pdf",
+          institution: "Amazon.com, Inc. / Amazon EU S.à r.l.",
+          date: "2026-02-04",
+          title: "Verfügung",
+          sourceUrl:
+            "https://www.bundeskartellamt.de/SharedDocs/Entscheidung/DE/Entscheidungen/Missbrauchsaufsicht/B2-73-20.pdf?__blob=publicationFile&v=3",
+          body: [
+            "2. Beschlussabteilung",
+            "B 2 - 73/20",
+            "Verfügung gemäß § 19a Abs. 2 S. 1 Nr. 2 GWB",
+            "In dem Verwaltungsverfahren",
+            "Amazon.com, Inc.",
+            "hat die 2. Beschlussabteilung am 04.02.2026 beschlossen:",
+            "Price Error Prevention",
+            "Atypical Pricing",
+            "AP-FOD",
+            "SC-FOD",
+            ...Array.from({ length: 40 }, (_, i) => `${i + 21}. Numbered article ${i + 21} from the official Amazon BKartA Verfügung body used only to keep this door fixture above the real-Entscheidung length floor.`),
+          ].join("\n"),
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      BKARTA_ENTSCHEIDUNGEN_DIR: bkartaDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-bkarta-entscheidungen-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${BKARTA_ENTSCHEIDUNGEN_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /bkarta-entscheidungen must be 402");
+      const body402 = (await unpaid.json()) as {
+        payTo: string;
+        asset: string;
+        resource: string;
+        accepts: { maxAmountRequired?: string; extra?: { name?: string } }[];
+      };
+      assert.equal(body402.resource, BKARTA_ENTSCHEIDUNGEN_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, BKARTA_ENTSCHEIDUNGEN_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
+      const bkartaPr = unpaid.headers.get("payment-required");
+      assert.ok(bkartaPr, "v2 PAYMENT-REQUIRED header");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("Price Error Prevention"));
+      assert.ok(!leak402.includes("Atypical Pricing"));
+      assert.ok(!leak402.includes("AP-FOD"));
+      assert.ok(!leak402.includes("SC-FOD"));
+      assert.ok(!/\bPEP\b/.test(leak402));
+      assert.ok(!leak402.includes("Numbered article"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === BKARTA_ENTSCHEIDUNGEN_PATH), false, "do not list /bkarta-entscheidungen");
+      assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
+      assert.equal(shop.products.length, 28);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(!wk.resources.some((r) => r.includes(BKARTA_ENTSCHEIDUNGEN_PATH)), "well-known must not list /bkarta-entscheidungen");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(!llms.includes("GET /bkarta-entscheidungen"), "llms.txt must not list /bkarta-entscheidungen");
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.equal(spec.paths[BKARTA_ENTSCHEIDUNGEN_PATH], undefined, "OpenAPI must not list /bkarta-entscheidungen");
+
+      const manifest = await fetch(`${base}${BKARTA_ENTSCHEIDUNGEN_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "bkarta-entscheidungen free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        cards?: { institution?: string; az?: string; id?: string; body?: string }[];
+        openapi?: string;
+        wellKnown?: string;
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.cards?.[0]?.institution, "Amazon.com, Inc. / Amazon EU S.à r.l.");
+      assert.equal(man.cards?.[0]?.az, "B2-73/20");
+      const manBlob = JSON.stringify(man);
+      assert.ok(!manBlob.includes("Price Error Prevention"));
+      assert.ok(!manBlob.includes("Atypical Pricing"));
+      assert.ok(!manBlob.includes("AP-FOD"));
+      assert.ok(!manBlob.includes("SC-FOD"));
+      assert.ok(!/\bPEP\b/.test(manBlob));
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+
+      const paid = await fetch(`${base}${BKARTA_ENTSCHEIDUNGEN_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { institution: string; date: string; az: string; body: string }[];
+      };
+      assert.equal(paidBody.product, "bkarta-institution-entscheidung-bodies");
+      assert.equal(paidBody.cards[0]?.institution, "Amazon.com, Inc. / Amazon EU S.à r.l.");
+      assert.equal(paidBody.cards[0]?.date, "2026-02-04");
+      assert.equal(paidBody.cards[0]?.az, "B2-73/20");
+      assert.ok(paidBody.cards[0]?.body.includes("Price Error Prevention"));
+      assert.ok(paidBody.cards[0]?.body.includes("Atypical Pricing"));
+      assert.ok(paidBody.cards[0]?.body.includes("AP-FOD"));
+      assert.ok(paidBody.cards[0]?.body.includes("SC-FOD"));
     },
   );
 
@@ -4721,6 +4868,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("phmsa-cop"), false, "do not list /phmsa-cop until /ico-mpn is live");
   assert.equal(isPublicBazaarSku("acm-besluiten"), false, "do not list /acm-besluiten");
   assert.equal(isPublicBazaarSku("ccpc-mergers"), false, "do not list /ccpc-mergers");
+  assert.equal(isPublicBazaarSku("bkarta-entscheidungen"), false, "do not list /bkarta-entscheidungen");
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
@@ -4731,6 +4879,8 @@ async function main(): Promise<void> {
   assert.equal(hiddenAcm.extensions, undefined, "/acm-besluiten must not persist to Bazaar");
   const hiddenCcpc = facilitatorPaymentRequirements("https://ticks.bnm.farm/ccpc-mergers", "ccpc-mergers");
   assert.equal(hiddenCcpc.extensions, undefined, "/ccpc-mergers must not persist to Bazaar");
+  const hiddenBkarta = facilitatorPaymentRequirements("https://ticks.bnm.farm/bkarta-entscheidungen", "bkarta-entscheidungen");
+  assert.equal(hiddenBkarta.extensions, undefined, "/bkarta-entscheidungen must not persist to Bazaar");
   const hidden = facilitatorPaymentRequirements("https://ticks.bnm.farm/form-483", "form-483");
   assert.equal(hidden.extensions, undefined, "/form-483 must not persist to Bazaar until a real body is cached");
   const hiddenGmp = facilitatorPaymentRequirements("https://ticks.bnm.farm/gmp", "gmp");

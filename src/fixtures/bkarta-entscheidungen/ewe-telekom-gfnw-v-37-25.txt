@@ -1,0 +1,330 @@
+                                            Beschlussabteilung V
+
+                                            V-37/25
+
+
+                                        KARTELLVERWALTUNGSVERFAHREN
+                                        VERFÜGUNG GEM. § 32B ABS. 1 GWB
+
+
+
+
+                                 Beschluss
+                            In dem Verwaltungsverfahren
+
+
+1. Telekom Deutschland GmbH
+  Landgrabenweg 151
+  53227 Bonn
+                                        – Beteiligte zu 1. oder Telekom –
+                                        Verfahrensbevollmächtigte:
+                                        Wilmer Cutler Pickering Hale and Dorr LLP
+                                        Dr. Stefan Ohlhoff, Dr. Oliver Fleischmann und
+                                        Tamara Rudinac
+                                        Friedrichstraße 95
+                                        10117 Berlin
+
+
+2. EWE Aktiengesellschaft
+  Tirpitzstraße 39
+  26122 Oldenburg
+                                        – Beteiligte zu 2. oder EWE –
+                                        Verfahrensbevollmächtigte:
+                                        Kapellmann und Partner Rechtsanwälte mbB
+                                        Dr. Ivo du Mont und Bianca Strobel
+                                        Viersener Straße 16
+                                        41061 Mönchengladbach
+
+
+3. 1&1 Versatel GmbH
+  Wanheimer Straße 90
+  40468 Düsseldorf
+                                        – Beigeladene zu 1. oder 1&1 –
+                                     -2-
+
+
+
+
+4. Deutsche Glasfaser Holding GmbH
+  Am Kuhm 31
+  46325 Borken
+                                     – Beigeladene zu 2. oder DGF –
+
+
+5. Telefónica Germany GmbH & Co. OHG
+  Georg-Brauchle-Ring 50
+  80992 München
+                                     – Beigeladene zu 3. oder Telefónica –
+
+
+6. Vodafone GmbH
+  Ferdinand-Braun-Platz 1
+  40549 Düsseldorf
+                                     – Beigeladene zu 4. oder Vodafone –
+                                     Verfahrensbevollmächtigte:
+                                     Blomstein Partnerschaft von Rechtsanwälten
+                                     mbB
+                                     Dr. Max Klasse, Philipp Trube und Kai Woeste
+                                     Oranienburger Straße 66
+                                     10117 Berlin
+
+
+7. vitroconnect GmbH
+  Hülsbrockstraße 21
+  33334 Gütersloh
+                                     – Beigeladene zu 5. oder vitroconnect –
+                                     Verfahrensbevollmächtigte:
+                                     Panienka Rechtsanwälte
+                                     Michael Panienka
+                                     Am Bach 20
+                                     33602 Bielefeld
+                                         -3-
+
+
+
+
+  8. OXG Glasfaser GmbH
+     Ferdinand-Braun-Platz 1
+     40549 Düsseldorf
+                                          – Beigeladene zu 6. oder OXG –
+
+
+
+
+zur Prüfung von sich unter dem Gesichtspunkt des Kartellverbotes gemäß §§ 1, 2 GWB
+ergebenden möglichen wettbewerblichen Bedenken gegen das Fortbestehen der Glasfaser
+Nordwest GmbH & Co. KG (GFNW) gemäß Ziffer 7 der durch Entscheidung vom
+04.12.2019 – berichtigt durch Beschluss vom 06.12.2019 – (Einstellungsverfügung 2019)
+für bindend erklärten Verpflichtungszusagen (B7-21/18) (Verpflichtungszusagen 2019)
+und in diesem Zusammenhang möglicher neuer Verpflichtungszusagen gemäß § 32b GWB
+hat die Beschlussabteilung V am 26.03.2026 beschlossen:
+
+   1. Die Einstellungsverfügung 2019 wird mit Wirkung für die Zukunft aufgehoben.
+
+   2. Die von den Beteiligten zu 1. und 2. mit Schriftsatz vom 20.05.2025 angebotenen
+      und im Anhang zu diesem Beschluss aufgeführten Verpflichtungszusagen (Neue
+      Verpflichtungszusagen) sind bindend.
+
+   3. Die GFNW ist nicht gemäß Ziffer B.7 der Verpflichtungszusagen 2019 unverzüglich
+      zu beenden und abzuwickeln.
+
+   4. Das Verfahren wird nach Maßgabe des § 32b Absatz 1 Satz 2 GWB eingestellt.
+
+   5. Diese Verfügung ist entsprechend Ziffer D.4.2 der Neuen Verpflichtungszusagen
+      befristet.
+
+   6. Die Gebühr für das Verfahren einschließlich dieser Entscheidung beträgt € 25.000,-
+      (in Worten: fünfundzwanzigtausend Euro) und wird den Beteiligten zu 1. und 2. als
+      Gesamtschuldnern auferlegt.
+                                                -4-
+
+
+
+
+                                             Gründe
+
+      A. Zusammenfassung / Überblick
+
+(1)   Telekom und EWE kooperieren seit Anfang 2020 im Nordwesten Deutschlands in Form
+      eines Gemeinschaftsunternehmens, der GFNW, beim Ausbau und Betrieb von Glasfaser-
+      netzen. Die GFNW ist selbst nicht im Endkundengeschäft tätig, sondern vermarktet den
+      Zugang zu ihren Glasfaseranschlüssen ausschließlich in Form von Vorleistungen an seine
+      Mütter und an dritte Telekommunikationsunternehmen. Telekom und EWE stehen auf dem
+      Endkundenmarkt weiterhin im Wettbewerb.
+
+(2)   Das Bundeskartellamt hat die Gründung der GFNW und die ihr zu Grunde liegende Koope-
+      ration sowohl in einem Kartellverbotsverfahren als auch in einem Fusionskontrollverfahren
+      eingehend geprüft. Ende 2019 stellte das Bundeskartellamt das Kartellverbotsverfahren ge-
+      gen Verpflichtungszusagen der Beteiligten befristet bis zum 31.03.2026 ein und gab die
+      Gründung der GFNW auf dieser Basis anschließend auch fusionskontrollrechtlich frei. Die
+      Freigabeentscheidung 2019 ist anders als die befristete Einstellungsverfügung 2019 noch
+      nicht rechtskräftig.
+
+(3)   Ausgelöst durch das Verfehlen bestimmter Vermarktungsziele, deren Erreichung die Betei-
+      ligten zugesagt hatten, und das bevorstehende Auslaufen der Befristung der Einstellungs-
+      verfügung 2019 war vom Bundeskartellamt erneut zu prüfen, ob unter dem Gesichtspunkt
+      des Kartellverbotes nach vorläufiger Beurteilung gegen das Fortbestehen der GFNW durch-
+      greifende wettbewerbliche Bedenken bestehen oder etwaige Bedenken durch die Vorlage
+      neuer Verpflichtungszusagen ausgeräumt werden.
+
+(4)   Die Überprüfung hat nach vorläufiger Beurteilung zunächst ergeben, dass sich der Sach-
+      verhalt in den letzten sechs Jahren entscheidend weiterentwickelt hat und sich hierdurch
+      die der Einstellungsverfügung 2019 noch zu Grunde liegenden wettbewerblichen Bedenken
+      weitgehend erledigt haben.
+
+(5)   Im Kooperationsgebiet hat sich deutlich früher, als nach der Einstellungsverfügung 2019 zu
+      erwarten war, eine große Ausbaudynamik und ein entsprechend hoher von außen auf die
+      Beteiligten einwirkender Ausbaudruck entwickelt. Nach vorläufiger Beurteilung hat die Ko-
+      operation der Beteiligten ganz maßgeblich dazu beigetragen, dass das Kooperationsgebiet
+      bei der Erschließung mit Glasfaser deutlich über dem Bundesdurchschnitt liegt. Nach den
+                                                -5-
+
+
+
+
+      Ermittlungen ist absehbar, dass der im Kooperationsgebiet eigenwirtschaftlich überhaupt
+      noch mögliche Glasfaserausbau in einigen Jahren ganz abgeschlossen sein wird.
+
+(6)   Unter anderem aufgrund der hinter den Erwartungen zurückbleibenden Entwicklung der
+      Endkundennachfrage nach Glasfaseranschlüssen hat die GFNW zwar die von den Betei-
+      ligten zugesagten Vermarktungsziele verfehlt, doch haben die Vermarktungsziele und
+      (nach ihrem Verfehlen) die drohende Auflösung der GFNW nach vorläufiger Beurteilung
+      gleichwohl ihr Ziel erreicht, die GFNW unter einen Verhandlungsdruck zu setzen, der die
+      nach der Einstellungsverfügung 2019 durch die Kooperation verringerten Vermarktungsan-
+      reize der GFNW mehr als ausgeglichen hat. Die Bundesnetzagentur hat das unter dem
+      Druck der Vermarktungsziele zustande gekommene Vorleistungsangebot der GFNW unter
+      dem Gesichtspunkt der wirtschaftlichen Nachbildbarkeit inzwischen ausdrücklich gebilligt.
+      Auch danach war die GFNW unter dem konkreten Druck ihrer Auflösung in Verhandlungen
+      mit potentiellen Vorleistungsnachfragern zu weiteren substantiellen Zugeständnisse bereit.
+      Neben einer Vielzahl kleinerer Vorleistungsnachfrager haben daher auch große bundesweit
+      tätige Anbieter wie 1&1 und jüngst auch Vodafone mit der GFNW einen Vorleistungsvertrag
+      mit einer Abnahmeverpflichtung (sog. Commitment) abgeschlossen. Ein Teil der Vorleis-
+      tungsnachfrager hat die von ihnen eingegangenen Abnahmeverpflichtungen zudem nach-
+      träglich bereits erhöht.
+
+(7)   Das Vorleistungsangebot der GFNW unterliegt inzwischen auch der Regulierung durch die
+      Bundesnetzagentur und wird von dieser auch im Hinblick auf die technische und wirtschaft-
+      liche Nachbildbarkeit des Endkundenangebotes der marktmächtigen Telekom entweder an-
+      lassbezogen oder anlässlich der turnusmäßig dieses Jahr anstehenden Überprüfung der
+      Regulierungsverpflichtungen fortlaufend überwacht. Die Regulierung durch die Bundes-
+      netzagentur stellt nach vorläufiger Beurteilung einen ganz maßgeblichen Unterschied zu
+      der Situation dar, wie sie der Einstellungsverfügung 2019 zu Grunde lag. Für die Zwecke
+      der Einstellungsverfügung 2019 hatte die Beschlussabteilung zu Lasten der Beteiligten
+      noch angenommen, dass die GFNW für die Dauer ihrer Befristung im Zweifel keiner Regu-
+      lierung unterliegen würde. Die Zugangszusage war zwar so konzipiert, dass sie hinter einer
+      damals zwar möglich erscheinenden, aber letztlich ungewissen Regulierung zurücktreten
+      sollte. Angesichts dieser Ungewissheit sollte sie ihre Wirkung ausdrücklich unabhängig da-
+      von entfalten, ob und in welchem Umfang die GFNW künftig reguliert werden würde. Diese
+      Ungewissheit ist inzwischen beseitigt.
+
+(8)   Soweit nach vorläufiger Beurteilung unter dem Gesichtspunkt des Kartellverbotes, insbe-
+      sondere mit Blick auf die Freistellungsfähigkeit der Kooperation gemäß § 2 GWB, noch
+                                                 -6-
+
+
+
+
+       gewisse wettbewerbliche Bedenken verblieben, werden diese nach vorläufiger Beurteilung
+       durch die Neuen Verpflichtungszusagen hinreichend ausgeräumt.
+
+(9)    Die Neuen Verpflichtungszusagen sehen eine unveränderte Verlängerung des auch nach
+       Ansicht von Markteilnehmern bewährten Shortlist-Mechanismus vor. Der Shortlist-Mecha-
+       nismus hindert die GFNW daran, kurzfristig auf Ausbauvorhaben von Wettbewerbern zu
+       reagieren. Die Vorgabe neuer Ausbauziele war angesichts der bereits hohen Abdeckung
+       des Kooperationsgebietes und der im Kooperationsgebiet zu beobachtenden Ausbaudyna-
+       mik nicht mehr erforderlich.
+
+(10)   Darüber hinaus sehen die Neuen Verpflichtungszusagen die Fortgeltung der bisherigen Zu-
+       gangszusage vor. Insbesondere über das Diskriminierungsverbot behält das Bundeskar-
+       tellamt damit einen an keine weiteren Voraussetzungen geknüpften unmittelbaren Zugriff
+       auf das Vorleistungsangebot der GFNW und entsprechende eigene Überwachungs- und
+       Eingriffsmöglichkeiten. In der Praxis dürften die sich aus der Zugangszusage ergebenden
+       Befugnisse und Verpflichtungen aber weitgehend hinter der vorrangig angesehenen Regu-
+       lierung zurücktreten.
+
+(11)   Schließlich sehen die Neuen Verpflichtungszusagen eine Verlängerung der Förderzusage
+       vor. Danach müssen sich die Beteiligten auch weiterhin unabhängig voneinander an För-
+       derverfahren beteiligen und dürfen diesbezüglich auch keine relevanten Informationen aus-
+       tauschen.
+
+(12)   Das Bundeskartellamt hat in Ausübung pflichtgemäßen Ermessens eine Gesamtbetrach-
+       tung der Umstände vorgenommen, die nach vorläufiger Beurteilung für und gegen eine Ein-
+       stellung des Verfahrens sprechen. Maßgeblich zu berücksichtigen war dafür, dass die Ver-
+       pflichtungszusagen die nach vorläufiger Beurteilung unter dem Gesichtspunkt des Kartell-
+       verbotes bestehenden wettbewerblichen Bedenken gegen das Fortbestehen der GFNW
+       und der ihr zu Grunde liegenden Kooperation in einem hinreichenden Maße ausräumen.
+       Vorzugswürdig erschien die Einstellung des Verfahrens auch im Vergleich zu der Situation,
+       die sich voraussichtlich im Fall der Beendigung und Auflösung der GFNW ergeben würde.
+       Hier war nach vorläufiger Beurteilung weder im Hinblick auf den Ausbauwettbewerb noch
+       auf die Zugangsbedingungen noch beim Ausschreibungswettbewerb eine entscheidende
+       Verbesserung der Wettbewerbssituation zu erwarten. Zu berücksichtigen war nicht zuletzt,
+       dass das Bundeskartellamt namentlich auf Basis des Diskriminierungsverbotes der Zu-
+       gangszusage weiter einzelne Aspekte der Zugangsgewährung aufgreifen kann.
+                                                   -7-
+
+
+
+
+(13)   Danach konnte das Bundeskartellamt die Einstellungsverfügung 2019 mit Wirkung für die
+       Zukunft aufheben, die von den Beteiligten angebotenen Neuen Verpflichtungszusagen für
+       bindend erklären und im Gegenzug dafür das Verfahren nach Maßgabe des § 32b Abs. 1
+       Satz 2 und Satz 3 GWB über die ursprüngliche Laufzeit der Verpflichtungszusagen 2019
+       hinaus befristet bis zum 31.12.2030 einstellen. Danach ist die GFNW auch nicht gemäß der
+       Verpflichtungszusagen 2019 unverzüglich zu beenden und abzuwickeln.
+
+
+       B. Sachverhalt
+
+       I. Beteiligte Unternehmen
+
+
+       1. Telekom
+
+(14)   Telekom ist eine 100%ige Tochter der Deutschen Telekom AG. Sie betreibt in Deutschland
+       auf Basis des alten Telefonnetzes ein flächendeckendes kupferbasiertes Telekommunika-
+       tionsnetz, über das sie nahezu alle hier relevanten Endkunden (Privatkunden und Ge-
+       schäftskunden mit privatkundenähnlichem Bedarf) erreichen kann. Auf Basis dieses Netzes
+       bietet sie ihren Endkunden Breitbandanschlüsse an. Darüber hinaus stellt sie dritten Tele-
+       kommunikationsunternehmen, die keine bzw. nur teilweise eigene Infrastruktur besitzen,
+       verschiedene Vorleistungen zur Verfügung, mit denen diese auf den Endkundenmärkten im
+       Wettbewerb zur Telekom ebenfalls Breitbandanschlüsse anbieten können. Als Unterneh-
+       men mit beträchtlicher Marktmacht unterliegen die Telekom und die mit ihr im Sinne von
+       § 3 Nr. 29 TKG zusammengeschlossenen Gemeinschaftsunternehmen dabei der Regulie-
+       rung durch die Bundesnetzagentur.
+
+(15)   Telekom investiert in Deutschland seit einigen Jahren in erheblichem Umfang in Glasfaser-
+       netze (FTTH). Anfang 2020 gründete sie in diesem Zusammenhang zusammen mit EWE
+       die verfahrensgegenständliche Glasfaser Nordwest GmbH & Co. KG (GFNW), die im Nord-
+       westen Deutschlands tätig ist.1 Anfang 2022 gründete sie zusammen mit dem von IFM In-
+       vestors verwalteten IFM Global Infrastructure Fund ein weiteres paritätisches Gemein-
+       schaftsunternehmen, die GlasfaserPlus GmbH (GF+), die Glasfasernetze insbesondere im
+       ländlichen Raum errichten und betreiben soll. Darüber hinaus mietet die Telekom im Rah-
+       men von Betreibermodellen von kommunalen und regionalen Kooperationspartnern ganze
+
+
+
+
+       1   Zur Gründung der GFNW siehe auch noch unter B.II.
+                                                     -8-
+
+
+
+
+       passive Glasfasernetzinfrastrukturen sehr langfristig an, um sie mit aktiver Technik zu ver-
+       sehen und selbst zu betreiben. Die Telekom hat beim Glasfaserausbau in Deutschland seit
+       einigen Jahren von allen Netzbetreibern die mit Abstand größte Ausbauleistung. Zusam-
+       men mit ihren Kooperationspartnern und den beiden Gemeinschaftsunternehmen GFNW
+       und GF+ erreicht sie mit ihrem Glasfasernetz inzwischen deutlich mehr Haushalte als alle
+       ihre Wettbewerber zusammengenommen.2 Die von der Telekom und den beiden Gemein-
+       schaftsunternehmen betriebenen Glasfaseranschlüsse unterliegen inzwischen auch der
+       Regulierung durch die Bundesnetzagentur.3
+
+
+       2. EWE
+
+(16)   EWE ist ein im Nordwesten Deutschlands tätiges Versorgungsunternehmen, das ganz
+       überwiegend im Eigentum dort liegender kommunaler Gebietskörperschaften steht. EWE
+       bietet in ihrem regionalen Versorgungsgebiet auch Telekommunikations-Dienstleistungen
+       an. In ihrem Tätigkeitsgebiet im Nordwesten Deutschlands ist EWE neben Vodafone der
+       wesentliche Wettbewerber der Telekom beim Angebot von Breitbandanschlüssen für End-
+       kunden. EWE verfügt in ihrem Versorgungsgebiet weitgehend über eigene Telekommuni-
+       kationsinfrastruktur. Allerdings ist EWE auf der sog. „letzten Meile“ zwischen Verteilerkas-
+       ten und Endkunden, teilweise schon ab dem Hauptverteiler auf die Nutzung der Infrastruktur
+       der Telekom angewiesen. Zu den von ihr auf diese Weise realisierten VDSL-Vectoring An-
+       schlüssen muss EWE als durch die Regulierung begünstigtes Unternehmen dritten Vorleis-
+       tungsnachfragern einschließlich der Telekom ihrerseits Zugang gewähren, wovon die we-
+       sentlichen Vorleistungsnachfrager einschließlich der Telekom auch Gebrauch machen.
+
+(17)   EWE verfügt in ihrem Tätigkeitsgebiet außerdem über mehrere hunderttausend eigene
+       Glasfaseranschlüsse, die bereits vor der Gründung der GFNW gebaut oder nachlaufend
+       dazu noch fertig gestellt wurden oder die sie im Rahmen des geförderten Ausbaus, der von
+       der Kooperation mit der Telekom ausgenommenen ist, außerhalb der GFNW errichtet hat.
+       Bezüglich dieser eigenen Glasfaseranschlüsse, die weder unmittelbar noch mittelbar der
+       Regulierung unterliegen, verfügt EWE bislang über keine Vorleistungsnachfrager.
+
+
+
+
+       2   Dialog Consult/VATM, 26. TK-Marktanalyse Deutschland 2025 vom 29.04.2025, S. 22.
+       3   Siehe dazu im Einzelnen unter anderem noch unter C.III.3.b)dd).
+

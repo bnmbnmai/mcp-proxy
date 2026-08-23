@@ -36,6 +36,7 @@ build/ico-mpn.*
 build/phmsa-cop.*
 build/acm-besluiten.*
 build/ccpc-mergers.*
+build/bkarta-entscheidungen.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
@@ -69,3 +70,4 @@ data/ico-mpn/
 data/phmsa-cop/
 data/acm-besluiten/
 data/ccpc-mergers/
+data/bkarta-entscheidungen/

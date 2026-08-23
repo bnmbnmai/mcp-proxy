@@ -1,0 +1,124 @@
+[
+  {
+    "id": "amazon-b2-73-20",
+    "docket": "amazon-b2-73-20",
+    "az": "B2-73/20",
+    "institution": "Amazon.com, Inc. / Amazon EU S.à r.l.",
+    "date": "2026-02-04",
+    "title": "Verfügung",
+    "type": "verfuegung",
+    "sourceUrl": "https://www.bundeskartellamt.de/SharedDocs/Entscheidung/DE/Entscheidungen/Missbrauchsaufsicht/B2-73-20.pdf?__blob=publicationFile&v=3",
+    "pdfId": "B2-73-20.pdf"
+  },
+  {
+    "id": "check24-b8-40-25",
+    "docket": "check24-b8-40-25",
+    "az": "B8-40/25",
+    "institution": "Check24 GmbH",
+    "date": "2026-02-18",
+    "title": "Verpflichtungszusagen",
+    "type": "verpflichtungszusagen",
+    "sourceUrl": "https://www.bundeskartellamt.de/SharedDocs/Entscheidung/DE/Entscheidungen/Missbrauchsaufsicht/2026/B8-40-25.pdf?__blob=publicationFile&v=2",
+    "pdfId": "B8-40-25.pdf"
+  },
+  {
+    "id": "strabag-stumpp-b1-112-25",
+    "docket": "strabag-stumpp-b1-112-25",
+    "az": "B1-112/25",
+    "institution": "STRABAG AG / Gebr. Stumpp GmbH & Co. KG",
+    "date": "2026-03-02",
+    "title": "Freigabe",
+    "type": "freigabe",
+    "sourceUrl": "https://www.bundeskartellamt.de/SharedDocs/Entscheidung/DE/Entscheidungen/Fusionskontrolle/2026/B1-112-25.pdf?__blob=publicationFile&v=2",
+    "pdfId": "B1-112-25.pdf"
+  },
+  {
+    "id": "toennies-vion-b4-100-24",
+    "docket": "toennies-vion-b4-100-24",
+    "az": "B4-100/24",
+    "institution": "Tönnies International Management GmbH / Vion GmbH / Vion Beef B.V.",
+    "date": "2025-06-11",
+    "title": "Untersagung",
+    "type": "untersagung",
+    "sourceUrl": "https://www.bundeskartellamt.de/SharedDocs/Entscheidung/DE/Entscheidungen/Fusionskontrolle/2026/B4-100-24.pdf?__blob=publicationFile&v=3",
+    "pdfId": "B4-100-24.pdf"
+  },
+  {
+    "id": "ewe-telekom-gfnw-v-37-25",
+    "docket": "ewe-telekom-gfnw-v-37-25",
+    "az": "V-37/25",
+    "institution": "Telekom Deutschland GmbH / EWE Aktiengesellschaft",
+    "date": "2026-03-26",
+    "title": "Einstellung",
+    "type": "einstellung",
+    "sourceUrl": "https://www.bundeskartellamt.de/SharedDocs/Entscheidung/DE/Entscheidungen/Kartellverbot/2026/V-37-25.pdf?__blob=publicationFile&v=4",
+    "pdfId": "V-37-25.pdf"
+  },
+  {
+    "id": "arne-stumpp-person",
+    "docket": "arne-stumpp-person",
+    "az": "B1-112/25",
+    "institution": "Arne Stumpp",
+    "individual": "Arne Stumpp",
+    "date": "2026-03-02",
+    "title": "People-fine SKU",
+    "type": "people",
+    "sourceUrl": "https://www.bundeskartellamt.de/SharedDocs/Entscheidung/DE/Entscheidungen/Fusionskontrolle/2026/B1-112-25.pdf?__blob=publicationFile&v=2",
+    "pdfId": "B1-112-25.pdf"
+  },
+  {
+    "id": "strabag-fallbericht",
+    "docket": "strabag-fallbericht",
+    "az": "B1-112/25",
+    "institution": "STRABAG AG / Gebr. Stumpp GmbH & Co. KG",
+    "date": "2026-04-21",
+    "title": "Fallbericht",
+    "type": "fallbericht",
+    "sourceUrl": "https://www.bundeskartellamt.de/SharedDocs/Entscheidung/DE/Fallberichte/Fusionskontrolle/2026/B1-112-25.pdf",
+    "pdfId": "B1-112-25.pdf"
+  },
+  {
+    "id": "amazon-press",
+    "docket": "amazon-press",
+    "az": "B2-73/20",
+    "institution": "Amazon.com, Inc. / Amazon EU S.à r.l.",
+    "date": "2026-02-05",
+    "title": "Pressemitteilung 59 Mio. / § 19a",
+    "type": "press",
+    "sourceUrl": "https://www.bundeskartellamt.de/SharedDocs/Meldung/DE/Pressemitteilungen/2026/05_02_2026_Amazon.html",
+    "pdfId": ""
+  },
+  {
+    "id": "amazon-card",
+    "docket": "amazon-card",
+    "az": "B2-73/20",
+    "institution": "Amazon.com, Inc. / Amazon EU S.à r.l.",
+    "date": "2026-02-04",
+    "title": "Entscheidungsdatenbank card",
+    "type": "card",
+    "sourceUrl": "https://www.bundeskartellamt.de/SharedDocs/Entscheidung/DE/Entscheidungen/Missbrauchsaufsicht/B2-73-20.html",
+    "pdfId": ""
+  },
+  {
+    "id": "govdata-csv",
+    "docket": "govdata-csv",
+    "az": "B2-73/20",
+    "institution": "Amazon.com, Inc.",
+    "date": "2026-02-04",
+    "title": "govdata.de stat CSV",
+    "type": "govdata",
+    "sourceUrl": "https://www.govdata.de/web/guest/daten/-/details/bkarta",
+    "pdfId": ""
+  },
+  {
+    "id": "gov-uk",
+    "docket": "gov-uk",
+    "az": "B2-73/20",
+    "institution": "Amazon.com, Inc.",
+    "date": "2026-02-04",
+    "title": "GOV.UK",
+    "type": "govuk",
+    "sourceUrl": "https://www.gov.uk/cma-cases/amazon",
+    "pdfId": ""
+  }
+]
