@@ -1,0 +1,5 @@
+CIWQS / data.ca.gov 32-col index dump
+https://ciwqs.waterboards.ca.gov/
+https://data.ca.gov/dataset/water-board-enforcement-actions
+Facility, WDID, Order, Date, Liability, Violation, Region, Program, ... (32 columns)
+Goleta West Sanitary District index row only. Not official ACL PDF TEXT.

@@ -1,0 +1,133 @@
+[
+  {
+    "id": "goleta-r3-2026-0023",
+    "institution": "Goleta West Sanitary District",
+    "orderNumber": "R3-2026-0023",
+    "date": "2026-02-27",
+    "title": "Settlement Agreement and Stipulation for Entry of Administrative Civil Liability Order",
+    "type": "stipulated-acl",
+    "sourceUrl": "https://www.waterboards.ca.gov/centralcoast/board_decisions/adopted_orders/2026/2026-0023-goleta-west-aclo.pdf",
+    "pdfId": "2026-0023-goleta-west-aclo.pdf"
+  },
+  {
+    "id": "watsonville-r3-2026-0033",
+    "institution": "City of Watsonville",
+    "orderNumber": "R3-2026-0033",
+    "date": "2026-05-26",
+    "title": "Administrative Civil Liability Order (MMP)",
+    "type": "mmp-acl",
+    "sourceUrl": "https://www.waterboards.ca.gov/centralcoast/board_decisions/adopted_orders/2026/2026-0033-watsonville-aclo.pdf",
+    "pdfId": "2026-0033-watsonville-aclo.pdf"
+  },
+  {
+    "id": "baldwin-r9-2026-0063",
+    "institution": "Baldwin & Sons, Inc. et al.",
+    "orderNumber": "R9-2026-0063",
+    "date": "2026-05-13",
+    "title": "Order Assessing Administrative Civil Liability",
+    "type": "hearing-acl",
+    "sourceUrl": "https://www.waterboards.ca.gov/sandiego/board_decisions/adopted_orders/2026/r9-2026-0063.pdf",
+    "pdfId": "r9-2026-0063.pdf"
+  },
+  {
+    "id": "granite-rock-r3-2025-0051",
+    "institution": "Granite Rock Company",
+    "orderNumber": "R3-2025-0051",
+    "date": "2025-09-04",
+    "title": "Administrative Civil Liability Order (MMP)",
+    "type": "mmp-acl",
+    "sourceUrl": "https://www.waterboards.ca.gov/centralcoast/board_decisions/adopted_orders/2025/2025-0051-granite-rock-aclo.pdf",
+    "pdfId": "2025-0051-granite-rock-aclo.pdf"
+  },
+  {
+    "id": "moss-landing-r3-2026-0037",
+    "institution": "Moss Landing Power Company, LLC",
+    "orderNumber": "R3-2026-0037",
+    "date": "2026-07-21",
+    "title": "Administrative Civil Liability Order (MMP)",
+    "type": "mmp-acl",
+    "sourceUrl": "https://www.waterboards.ca.gov/centralcoast/board_decisions/adopted_orders/2026/2026-0037-moss-landing-aclo.pdf",
+    "pdfId": "2026-0037-moss-landing-aclo.pdf"
+  },
+  {
+    "id": "jane-smith-person",
+    "institution": "Jane Smith",
+    "individual": "Jane Smith",
+    "orderNumber": "R3-2026-9999",
+    "date": "2026-01-15",
+    "title": "People SKU",
+    "type": "people",
+    "sourceUrl": "https://www.waterboards.ca.gov/centralcoast/board_decisions/adopted_orders/2026/2026-9999-jane-smith-aclo.pdf",
+    "pdfId": "2026-9999-jane-smith-aclo.pdf"
+  },
+  {
+    "id": "goleta-transmittal",
+    "institution": "Goleta West Sanitary District",
+    "orderNumber": "R3-2026-0023",
+    "date": "2026-03-05",
+    "title": "Transmittal letter",
+    "type": "transmittal",
+    "sourceUrl": "https://www.waterboards.ca.gov/centralcoast/board_decisions/adopted_orders/2026/2026-0023-goleta-west-letter.pdf",
+    "pdfId": "2026-0023-goleta-west-letter.pdf"
+  },
+  {
+    "id": "acl-table",
+    "institution": "Goleta West Sanitary District",
+    "orderNumber": "R3-2026-0023",
+    "date": "2026-02-27",
+    "title": "Discretionary ACL table",
+    "type": "table",
+    "sourceUrl": "https://www.waterboards.ca.gov/water_issues/programs/enforcement/orders_actions.html",
+    "pdfId": ""
+  },
+  {
+    "id": "ciwqs-index",
+    "institution": "Goleta West Sanitary District",
+    "orderNumber": "R3-2026-0023",
+    "date": "2026-02-27",
+    "title": "CIWQS 32-col index",
+    "type": "ciwqs",
+    "sourceUrl": "https://ciwqs.waterboards.ca.gov/ciwqs/readOnly/CiwqsReportServlet",
+    "pdfId": ""
+  },
+  {
+    "id": "echo-summary",
+    "institution": "Goleta West Sanitary District",
+    "orderNumber": "R3-2026-0023",
+    "date": "2026-02-27",
+    "title": "EPA ECHO summary",
+    "type": "echo",
+    "sourceUrl": "https://echo.epa.gov/detailed-facility-report",
+    "pdfId": ""
+  },
+  {
+    "id": "superfund-rods",
+    "institution": "Federated Metals Corp. Whiting Superfund Site",
+    "orderNumber": "ROD-2026",
+    "date": "2026-08-05",
+    "title": "EPA Superfund ROD",
+    "type": "rod",
+    "sourceUrl": "https://semspub.epa.gov/work/05/711427.pdf",
+    "pdfId": "711427.pdf"
+  },
+  {
+    "id": "atsdr-hc",
+    "institution": "Sterigenics LLC",
+    "orderNumber": "SmyrnaEtO",
+    "date": "2026-08-18",
+    "title": "ATSDR Health Consultation",
+    "type": "atsdr",
+    "sourceUrl": "https://www.atsdr.cdc.gov/HAC/pha/Sterigenics/SmyrnaEtO-508.pdf",
+    "pdfId": "SmyrnaEtO-508.pdf"
+  },
+  {
+    "id": "fcc-edocs",
+    "institution": "Example Broadcaster Inc.",
+    "orderNumber": "FCC-26-1",
+    "date": "2026-01-01",
+    "title": "FCC EDOCS",
+    "type": "fcc",
+    "sourceUrl": "https://docs.fcc.gov/public/attachments/FCC-26-1A1.pdf",
+    "pdfId": "FCC-26-1A1.pdf"
+  }
+]

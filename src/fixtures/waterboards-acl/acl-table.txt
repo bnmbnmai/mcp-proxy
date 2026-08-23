@@ -1,0 +1,6 @@
+California Water Boards discretionary ACL table (teaser)
+Entity, Order, Date, Liability
+Goleta West Sanitary District, R3-2026-0023, 2026-02-27, $1,551,145
+City of Watsonville, R3-2026-0033, 2026-05-26, $6,000
+This 32-column CIWQS / data.ca.gov index is NOT the sold body.
+https://data.ca.gov/dataset/water-boards-ciwqs

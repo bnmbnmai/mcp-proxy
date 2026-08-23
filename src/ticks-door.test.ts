@@ -173,6 +173,11 @@ import {
   ATSDR_HC_PATH,
 } from "./atsdr-hc.js";
 import {
+  WATERBOARDS_ACL_AMOUNT_ATOMIC,
+  WATERBOARDS_ACL_MANIFEST_PATH,
+  WATERBOARDS_ACL_PATH,
+} from "./waterboards-acl.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -340,6 +345,7 @@ async function main(): Promise<void> {
     assert.ok(!wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "do not list /fmc-orders");
     assert.ok(!wk.resources.some((r) => r.includes(FSIS_HMSA_PATH)), "do not list /fsis-hmsa");
     assert.ok(!wk.resources.some((r) => r.includes(ATSDR_HC_PATH)), "do not list /atsdr-hc");
+    assert.ok(!wk.resources.some((r) => r.includes(WATERBOARDS_ACL_PATH)), "do not list /waterboards-acl");
     assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)), "do not list /form-483 without a cached body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_PATH)), "do not list /gmp without a cached observation body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_MD_PATH)), "do not list /gmp-md without a cached observation body");
@@ -492,6 +498,8 @@ async function main(): Promise<void> {
     assert.equal(spec.paths[FSIS_HMSA_MANIFEST_PATH], undefined, "OpenAPI must not list /fsis-hmsa/manifest.json");
     assert.equal(spec.paths[ATSDR_HC_PATH], undefined, "OpenAPI must not list /atsdr-hc");
     assert.equal(spec.paths[ATSDR_HC_MANIFEST_PATH], undefined, "OpenAPI must not list /atsdr-hc/manifest.json");
+    assert.equal(spec.paths[WATERBOARDS_ACL_PATH], undefined, "OpenAPI must not list /waterboards-acl");
+    assert.equal(spec.paths[WATERBOARDS_ACL_MANIFEST_PATH], undefined, "OpenAPI must not list /waterboards-acl/manifest.json");
     assert.equal(spec.paths[FORM_483_PATH], undefined, "no stub /form-483 in OpenAPI without a cached body");
     assert.equal(spec.paths[FORM_483_MANIFEST_PATH], undefined);
     assert.equal(spec.paths[GMP_PATH], undefined, "no stub /gmp in OpenAPI without a cached body");
@@ -544,6 +552,7 @@ async function main(): Promise<void> {
     assert.ok(!llmsBody.includes("GET /fmc-orders"), "do not list /fmc-orders");
     assert.ok(!llmsBody.includes("GET /fsis-hmsa"), "do not list /fsis-hmsa");
     assert.ok(!llmsBody.includes("GET /atsdr-hc"), "do not list /atsdr-hc");
+    assert.ok(!llmsBody.includes("GET /waterboards-acl"), "do not list /waterboards-acl");
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.includes("GET /gmp-md"));
@@ -596,6 +605,7 @@ async function main(): Promise<void> {
     assert.ok(!shop.products.some((p) => p.path === FMC_ORDERS_PATH), "do not list /fmc-orders");
     assert.ok(!shop.products.some((p) => p.path === FSIS_HMSA_PATH), "do not list /fsis-hmsa");
     assert.ok(!shop.products.some((p) => p.path === ATSDR_HC_PATH), "do not list /atsdr-hc");
+    assert.ok(!shop.products.some((p) => p.path === WATERBOARDS_ACL_PATH), "do not list /waterboards-acl");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_MD_PATH));
@@ -3961,6 +3971,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === FMC_ORDERS_PATH), false, "do not list /fmc-orders");
       assert.equal(shop.products.some((p) => p.path === FSIS_HMSA_PATH), false, "do not list /fsis-hmsa");
       assert.equal(shop.products.some((p) => p.path === ATSDR_HC_PATH), false, "do not list /atsdr-hc");
+      assert.equal(shop.products.some((p) => p.path === WATERBOARDS_ACL_PATH), false, "do not list /waterboards-acl");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
@@ -3973,6 +3984,7 @@ async function main(): Promise<void> {
       assert.ok(!wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "well-known must not list /fmc-orders");
       assert.ok(!wk.resources.some((r) => r.includes(FSIS_HMSA_PATH)), "well-known must not list /fsis-hmsa");
       assert.ok(!wk.resources.some((r) => r.includes(ATSDR_HC_PATH)), "well-known must not list /atsdr-hc");
+      assert.ok(!wk.resources.some((r) => r.includes(WATERBOARDS_ACL_PATH)), "well-known must not list /waterboards-acl");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /phmsa-cop"), "llms.txt must not list /phmsa-cop yet");
@@ -3983,6 +3995,7 @@ async function main(): Promise<void> {
       assert.ok(!llms.includes("GET /fmc-orders"), "llms.txt must not list /fmc-orders");
       assert.ok(!llms.includes("GET /fsis-hmsa"), "llms.txt must not list /fsis-hmsa");
       assert.ok(!llms.includes("GET /atsdr-hc"), "llms.txt must not list /atsdr-hc");
+      assert.ok(!llms.includes("GET /waterboards-acl"), "llms.txt must not list /waterboards-acl");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[PHMSA_COP_PATH], undefined, "OpenAPI must not list /phmsa-cop yet");
@@ -3993,6 +4006,7 @@ async function main(): Promise<void> {
       assert.equal(spec.paths[FMC_ORDERS_PATH], undefined, "OpenAPI must not list /fmc-orders");
       assert.equal(spec.paths[FSIS_HMSA_PATH], undefined, "OpenAPI must not list /fsis-hmsa");
       assert.equal(spec.paths[ATSDR_HC_PATH], undefined, "OpenAPI must not list /atsdr-hc");
+      assert.equal(spec.paths[WATERBOARDS_ACL_PATH], undefined, "OpenAPI must not list /waterboards-acl");
 
       const manifest = await fetch(`${base}${PHMSA_COP_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "phmsa-cop free manifest is free");
@@ -4115,6 +4129,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === FMC_ORDERS_PATH), false, "do not list /fmc-orders");
       assert.equal(shop.products.some((p) => p.path === FSIS_HMSA_PATH), false, "do not list /fsis-hmsa");
       assert.equal(shop.products.some((p) => p.path === ATSDR_HC_PATH), false, "do not list /atsdr-hc");
+      assert.equal(shop.products.some((p) => p.path === WATERBOARDS_ACL_PATH), false, "do not list /waterboards-acl");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
@@ -4126,6 +4141,7 @@ async function main(): Promise<void> {
       assert.ok(!wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "well-known must not list /fmc-orders");
       assert.ok(!wk.resources.some((r) => r.includes(FSIS_HMSA_PATH)), "well-known must not list /fsis-hmsa");
       assert.ok(!wk.resources.some((r) => r.includes(ATSDR_HC_PATH)), "well-known must not list /atsdr-hc");
+      assert.ok(!wk.resources.some((r) => r.includes(WATERBOARDS_ACL_PATH)), "well-known must not list /waterboards-acl");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /acm-besluiten"), "llms.txt must not list /acm-besluiten");
@@ -4135,6 +4151,7 @@ async function main(): Promise<void> {
       assert.ok(!llms.includes("GET /fmc-orders"), "llms.txt must not list /fmc-orders");
       assert.ok(!llms.includes("GET /fsis-hmsa"), "llms.txt must not list /fsis-hmsa");
       assert.ok(!llms.includes("GET /atsdr-hc"), "llms.txt must not list /atsdr-hc");
+      assert.ok(!llms.includes("GET /waterboards-acl"), "llms.txt must not list /waterboards-acl");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[ACM_BESLUITEN_PATH], undefined, "OpenAPI must not list /acm-besluiten");
@@ -4144,6 +4161,7 @@ async function main(): Promise<void> {
       assert.equal(spec.paths[FMC_ORDERS_PATH], undefined, "OpenAPI must not list /fmc-orders");
       assert.equal(spec.paths[FSIS_HMSA_PATH], undefined, "OpenAPI must not list /fsis-hmsa");
       assert.equal(spec.paths[ATSDR_HC_PATH], undefined, "OpenAPI must not list /atsdr-hc");
+      assert.equal(spec.paths[WATERBOARDS_ACL_PATH], undefined, "OpenAPI must not list /waterboards-acl");
 
       const manifest = await fetch(`${base}${ACM_BESLUITEN_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "acm-besluiten free manifest is free");
@@ -4265,6 +4283,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === FMC_ORDERS_PATH), false, "do not list /fmc-orders");
       assert.equal(shop.products.some((p) => p.path === FSIS_HMSA_PATH), false, "do not list /fsis-hmsa");
       assert.equal(shop.products.some((p) => p.path === ATSDR_HC_PATH), false, "do not list /atsdr-hc");
+      assert.equal(shop.products.some((p) => p.path === WATERBOARDS_ACL_PATH), false, "do not list /waterboards-acl");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
@@ -4275,6 +4294,7 @@ async function main(): Promise<void> {
       assert.ok(!wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "well-known must not list /fmc-orders");
       assert.ok(!wk.resources.some((r) => r.includes(FSIS_HMSA_PATH)), "well-known must not list /fsis-hmsa");
       assert.ok(!wk.resources.some((r) => r.includes(ATSDR_HC_PATH)), "well-known must not list /atsdr-hc");
+      assert.ok(!wk.resources.some((r) => r.includes(WATERBOARDS_ACL_PATH)), "well-known must not list /waterboards-acl");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /ccpc-mergers"), "llms.txt must not list /ccpc-mergers");
@@ -4283,6 +4303,7 @@ async function main(): Promise<void> {
       assert.ok(!llms.includes("GET /fmc-orders"), "llms.txt must not list /fmc-orders");
       assert.ok(!llms.includes("GET /fsis-hmsa"), "llms.txt must not list /fsis-hmsa");
       assert.ok(!llms.includes("GET /atsdr-hc"), "llms.txt must not list /atsdr-hc");
+      assert.ok(!llms.includes("GET /waterboards-acl"), "llms.txt must not list /waterboards-acl");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[CCPC_MERGERS_PATH], undefined, "OpenAPI must not list /ccpc-mergers");
@@ -4291,6 +4312,7 @@ async function main(): Promise<void> {
       assert.equal(spec.paths[FMC_ORDERS_PATH], undefined, "OpenAPI must not list /fmc-orders");
       assert.equal(spec.paths[FSIS_HMSA_PATH], undefined, "OpenAPI must not list /fsis-hmsa");
       assert.equal(spec.paths[ATSDR_HC_PATH], undefined, "OpenAPI must not list /atsdr-hc");
+      assert.equal(spec.paths[WATERBOARDS_ACL_PATH], undefined, "OpenAPI must not list /waterboards-acl");
 
       const manifest = await fetch(`${base}${CCPC_MERGERS_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "ccpc-mergers free manifest is free");
@@ -4410,6 +4432,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === FMC_ORDERS_PATH), false, "do not list /fmc-orders");
       assert.equal(shop.products.some((p) => p.path === FSIS_HMSA_PATH), false, "do not list /fsis-hmsa");
       assert.equal(shop.products.some((p) => p.path === ATSDR_HC_PATH), false, "do not list /atsdr-hc");
+      assert.equal(shop.products.some((p) => p.path === WATERBOARDS_ACL_PATH), false, "do not list /waterboards-acl");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
@@ -4419,6 +4442,7 @@ async function main(): Promise<void> {
       assert.ok(!wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "well-known must not list /fmc-orders");
       assert.ok(!wk.resources.some((r) => r.includes(FSIS_HMSA_PATH)), "well-known must not list /fsis-hmsa");
       assert.ok(!wk.resources.some((r) => r.includes(ATSDR_HC_PATH)), "well-known must not list /atsdr-hc");
+      assert.ok(!wk.resources.some((r) => r.includes(WATERBOARDS_ACL_PATH)), "well-known must not list /waterboards-acl");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /bkarta-entscheidungen"), "llms.txt must not list /bkarta-entscheidungen");
@@ -4426,6 +4450,7 @@ async function main(): Promise<void> {
       assert.ok(!llms.includes("GET /fmc-orders"), "llms.txt must not list /fmc-orders");
       assert.ok(!llms.includes("GET /fsis-hmsa"), "llms.txt must not list /fsis-hmsa");
       assert.ok(!llms.includes("GET /atsdr-hc"), "llms.txt must not list /atsdr-hc");
+      assert.ok(!llms.includes("GET /waterboards-acl"), "llms.txt must not list /waterboards-acl");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[BKARTA_ENTSCHEIDUNGEN_PATH], undefined, "OpenAPI must not list /bkarta-entscheidungen");
@@ -4433,6 +4458,7 @@ async function main(): Promise<void> {
       assert.equal(spec.paths[FMC_ORDERS_PATH], undefined, "OpenAPI must not list /fmc-orders");
       assert.equal(spec.paths[FSIS_HMSA_PATH], undefined, "OpenAPI must not list /fsis-hmsa");
       assert.equal(spec.paths[ATSDR_HC_PATH], undefined, "OpenAPI must not list /atsdr-hc");
+      assert.equal(spec.paths[WATERBOARDS_ACL_PATH], undefined, "OpenAPI must not list /waterboards-acl");
 
       const manifest = await fetch(`${base}${BKARTA_ENTSCHEIDUNGEN_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "bkarta-entscheidungen free manifest is free");
@@ -4552,6 +4578,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === FMC_ORDERS_PATH), false, "do not list /fmc-orders");
       assert.equal(shop.products.some((p) => p.path === FSIS_HMSA_PATH), false, "do not list /fsis-hmsa");
       assert.equal(shop.products.some((p) => p.path === ATSDR_HC_PATH), false, "do not list /atsdr-hc");
+      assert.equal(shop.products.some((p) => p.path === WATERBOARDS_ACL_PATH), false, "do not list /waterboards-acl");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
@@ -4560,18 +4587,21 @@ async function main(): Promise<void> {
       assert.ok(!wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "well-known must not list /fmc-orders");
       assert.ok(!wk.resources.some((r) => r.includes(FSIS_HMSA_PATH)), "well-known must not list /fsis-hmsa");
       assert.ok(!wk.resources.some((r) => r.includes(ATSDR_HC_PATH)), "well-known must not list /atsdr-hc");
+      assert.ok(!wk.resources.some((r) => r.includes(WATERBOARDS_ACL_PATH)), "well-known must not list /waterboards-acl");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /ipo-tm"), "llms.txt must not list /ipo-tm");
       assert.ok(!llms.includes("GET /fmc-orders"), "llms.txt must not list /fmc-orders");
       assert.ok(!llms.includes("GET /fsis-hmsa"), "llms.txt must not list /fsis-hmsa");
       assert.ok(!llms.includes("GET /atsdr-hc"), "llms.txt must not list /atsdr-hc");
+      assert.ok(!llms.includes("GET /waterboards-acl"), "llms.txt must not list /waterboards-acl");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[IPO_TM_PATH], undefined, "OpenAPI must not list /ipo-tm");
       assert.equal(spec.paths[FMC_ORDERS_PATH], undefined, "OpenAPI must not list /fmc-orders");
       assert.equal(spec.paths[FSIS_HMSA_PATH], undefined, "OpenAPI must not list /fsis-hmsa");
       assert.equal(spec.paths[ATSDR_HC_PATH], undefined, "OpenAPI must not list /atsdr-hc");
+      assert.equal(spec.paths[WATERBOARDS_ACL_PATH], undefined, "OpenAPI must not list /waterboards-acl");
 
       const manifest = await fetch(`${base}${IPO_TM_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "ipo-tm free manifest is free");
@@ -4689,6 +4719,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === FMC_ORDERS_PATH), false, "do not list /fmc-orders");
       assert.equal(shop.products.some((p) => p.path === FSIS_HMSA_PATH), false, "do not list /fsis-hmsa");
       assert.equal(shop.products.some((p) => p.path === ATSDR_HC_PATH), false, "do not list /atsdr-hc");
+      assert.equal(shop.products.some((p) => p.path === WATERBOARDS_ACL_PATH), false, "do not list /waterboards-acl");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
@@ -4696,16 +4727,19 @@ async function main(): Promise<void> {
       assert.ok(!wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "well-known must not list /fmc-orders");
       assert.ok(!wk.resources.some((r) => r.includes(FSIS_HMSA_PATH)), "well-known must not list /fsis-hmsa");
       assert.ok(!wk.resources.some((r) => r.includes(ATSDR_HC_PATH)), "well-known must not list /atsdr-hc");
+      assert.ok(!wk.resources.some((r) => r.includes(WATERBOARDS_ACL_PATH)), "well-known must not list /waterboards-acl");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /fmc-orders"), "llms.txt must not list /fmc-orders");
       assert.ok(!llms.includes("GET /fsis-hmsa"), "llms.txt must not list /fsis-hmsa");
       assert.ok(!llms.includes("GET /atsdr-hc"), "llms.txt must not list /atsdr-hc");
+      assert.ok(!llms.includes("GET /waterboards-acl"), "llms.txt must not list /waterboards-acl");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[FMC_ORDERS_PATH], undefined, "OpenAPI must not list /fmc-orders");
       assert.equal(spec.paths[FSIS_HMSA_PATH], undefined, "OpenAPI must not list /fsis-hmsa");
       assert.equal(spec.paths[ATSDR_HC_PATH], undefined, "OpenAPI must not list /atsdr-hc");
+      assert.equal(spec.paths[WATERBOARDS_ACL_PATH], undefined, "OpenAPI must not list /waterboards-acl");
 
       const manifest = await fetch(`${base}${FMC_ORDERS_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "fmc-orders free manifest is free");
@@ -4817,20 +4851,24 @@ async function main(): Promise<void> {
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === FSIS_HMSA_PATH), false, "do not list /fsis-hmsa");
       assert.equal(shop.products.some((p) => p.path === ATSDR_HC_PATH), false, "do not list /atsdr-hc");
+      assert.equal(shop.products.some((p) => p.path === WATERBOARDS_ACL_PATH), false, "do not list /waterboards-acl");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
       assert.ok(!wk.resources.some((r) => r.includes(FSIS_HMSA_PATH)), "well-known must not list /fsis-hmsa");
       assert.ok(!wk.resources.some((r) => r.includes(ATSDR_HC_PATH)), "well-known must not list /atsdr-hc");
+      assert.ok(!wk.resources.some((r) => r.includes(WATERBOARDS_ACL_PATH)), "well-known must not list /waterboards-acl");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /fsis-hmsa"), "llms.txt must not list /fsis-hmsa");
       assert.ok(!llms.includes("GET /atsdr-hc"), "llms.txt must not list /atsdr-hc");
+      assert.ok(!llms.includes("GET /waterboards-acl"), "llms.txt must not list /waterboards-acl");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[FSIS_HMSA_PATH], undefined, "OpenAPI must not list /fsis-hmsa");
       assert.equal(spec.paths[ATSDR_HC_PATH], undefined, "OpenAPI must not list /atsdr-hc");
+      assert.equal(spec.paths[WATERBOARDS_ACL_PATH], undefined, "OpenAPI must not list /waterboards-acl");
 
       const manifest = await fetch(`${base}${FSIS_HMSA_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "fsis-hmsa free manifest is free");
@@ -4935,17 +4973,21 @@ async function main(): Promise<void> {
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === ATSDR_HC_PATH), false, "do not list /atsdr-hc");
+      assert.equal(shop.products.some((p) => p.path === WATERBOARDS_ACL_PATH), false, "do not list /waterboards-acl");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
       assert.ok(!wk.resources.some((r) => r.includes(ATSDR_HC_PATH)), "well-known must not list /atsdr-hc");
+      assert.ok(!wk.resources.some((r) => r.includes(WATERBOARDS_ACL_PATH)), "well-known must not list /waterboards-acl");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /atsdr-hc"), "llms.txt must not list /atsdr-hc");
+      assert.ok(!llms.includes("GET /waterboards-acl"), "llms.txt must not list /waterboards-acl");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[ATSDR_HC_PATH], undefined, "OpenAPI must not list /atsdr-hc");
+      assert.equal(spec.paths[WATERBOARDS_ACL_PATH], undefined, "OpenAPI must not list /waterboards-acl");
 
       const manifest = await fetch(`${base}${ATSDR_HC_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "atsdr-hc free manifest is free");
@@ -4976,6 +5018,128 @@ async function main(): Promise<void> {
       assert.ok(paidBody.cards[0]?.body.includes("lifetime excess risk"));
       assert.ok(paidBody.cards[0]?.body.includes("not statistically greater"));
       assert.ok(paidBody.cards[0]?.body.includes("110000355963"));
+    },
+  );
+
+  const waterboardsAclDir = mkdtempSync(join(tmpdir(), "waterboards-acl-"));
+  writeFileSync(
+    join(waterboardsAclDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "waterboards-acl-order-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: FRESH_FETCHED_AT,
+      asOf: "2026-02-27",
+      license: "Public domain (California Water Boards Conditions of Use)",
+      attribution:
+        "California State Water Resources Control Board / Regional Water Quality Control Boards. Information on waterboards.ca.gov is considered in the public domain and may be distributed or copied as permitted by law. Photo, unique branding, and official seal carve-out only. https://www.waterboards.ca.gov/conditions_of_use.html",
+      sources: {
+        listing: "https://www.waterboards.ca.gov/water_issues/programs/enforcement/orders_actions.html",
+        pdfHost: "https://www.waterboards.ca.gov/{region}/board_decisions/adopted_orders/",
+        conditions: "https://www.waterboards.ca.gov/conditions_of_use.html",
+      },
+      cards: [
+        {
+          id: "goleta-r3-2026-0023",
+          orderNumber: "R3-2026-0023",
+          pdfId: "2026-0023-goleta-west-aclo.pdf",
+          institution: "Goleta West Sanitary District",
+          date: "2026-02-27",
+          title: "Settlement Agreement and Stipulation for Entry of Administrative Civil Liability Order",
+          sourceUrl: "https://www.waterboards.ca.gov/centralcoast/board_decisions/adopted_orders/2026/2026-0023-goleta-west-aclo.pdf",
+          body: [
+            "CALIFORNIA REGIONAL WATER QUALITY CONTROL BOARD",
+            "CENTRAL COAST REGION",
+            "GOLETA WEST SANITARY DISTRICT",
+            "SETTLEMENT AGREEMENT AND STIPULATION FOR ENTRY OF ADMINISTRATIVE CIVIL LIABILITY ORDER",
+            "ORDER R3-2026-0023",
+            "$2/gallon x 1,070,696 gallons x 0.80 per gallon factor = $1,713,114",
+            "Total Base Liability amount for the violation is $1,549,002 as summarized below.",
+            "The maximum liability amount is $10,716,960 as calculated below.",
+            ...Array.from({ length: 20 }, (_, i) => `${i + 1}. Official Water Boards ACL order paragraph ${i + 1} used only to keep this door fixture above the real-order length floor.`),
+          ].join("\n"),
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      WATERBOARDS_ACL_DIR: waterboardsAclDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-waterboards-acl-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${WATERBOARDS_ACL_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /waterboards-acl must be 402");
+      const body402 = (await unpaid.json()) as {
+        payTo: string;
+        asset: string;
+        resource: string;
+        accepts: { maxAmountRequired?: string; extra?: { name?: string } }[];
+      };
+      assert.equal(body402.resource, WATERBOARDS_ACL_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, WATERBOARDS_ACL_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
+      const wbPr = unpaid.headers.get("payment-required");
+      assert.ok(wbPr, "v2 PAYMENT-REQUIRED header");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("$2/gallon"));
+      assert.ok(!leak402.includes("1,070,696"));
+      assert.ok(!leak402.includes("1,713,114"));
+      assert.ok(!leak402.includes("1,549,002"));
+      assert.ok(!leak402.includes("10,716,960"));
+      assert.ok(!leak402.includes("Official Water Boards ACL order paragraph"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === WATERBOARDS_ACL_PATH), false, "do not list /waterboards-acl");
+      assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
+      assert.equal(shop.products.length, 28);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(!wk.resources.some((r) => r.includes(WATERBOARDS_ACL_PATH)), "well-known must not list /waterboards-acl");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(!llms.includes("GET /waterboards-acl"), "llms.txt must not list /waterboards-acl");
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.equal(spec.paths[WATERBOARDS_ACL_PATH], undefined, "OpenAPI must not list /waterboards-acl");
+
+      const manifest = await fetch(`${base}${WATERBOARDS_ACL_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "waterboards-acl free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        cards?: { institution?: string; date?: string; id?: string; orderNumber?: string; body?: string }[];
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.cards?.[0]?.institution, "Goleta West Sanitary District");
+      assert.equal(man.cards?.[0]?.date, "2026-02-27");
+      assert.equal(man.cards?.[0]?.orderNumber, "R3-2026-0023");
+      const manBlob = JSON.stringify(man);
+      assert.ok(!manBlob.includes("$2/gallon"));
+      assert.ok(!manBlob.includes("1,070,696"));
+      assert.ok(!manBlob.includes("1,713,114"));
+      assert.ok(!manBlob.includes("1,549,002"));
+      assert.ok(!manBlob.includes("10,716,960"));
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+
+      const paid = await fetch(`${base}${WATERBOARDS_ACL_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { institution: string; date: string; orderNumber: string; body: string }[];
+      };
+      assert.equal(paidBody.product, "waterboards-acl-order-bodies");
+      assert.equal(paidBody.cards[0]?.institution, "Goleta West Sanitary District");
+      assert.equal(paidBody.cards[0]?.date, "2026-02-27");
+      assert.equal(paidBody.cards[0]?.orderNumber, "R3-2026-0023");
+      assert.ok(paidBody.cards[0]?.body.includes("$2/gallon"));
+      assert.ok(paidBody.cards[0]?.body.includes("1,070,696"));
+      assert.ok(paidBody.cards[0]?.body.includes("1,713,114"));
+      assert.ok(paidBody.cards[0]?.body.includes("1,549,002"));
+      assert.ok(paidBody.cards[0]?.body.includes("10,716,960"));
     },
   );
 
@@ -5486,6 +5650,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("fmc-orders"), false, "do not list /fmc-orders");
   assert.equal(isPublicBazaarSku("fsis-hmsa"), false, "do not list /fsis-hmsa");
   assert.equal(isPublicBazaarSku("atsdr-hc"), false, "do not list /atsdr-hc");
+  assert.equal(isPublicBazaarSku("waterboards-acl"), false, "do not list /waterboards-acl");
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
@@ -5506,6 +5671,8 @@ async function main(): Promise<void> {
   assert.equal(hiddenFsisHmsa.extensions, undefined, "/fsis-hmsa must not persist to Bazaar");
   const hiddenAtsdrHc = facilitatorPaymentRequirements("https://ticks.bnm.farm/atsdr-hc", "atsdr-hc");
   assert.equal(hiddenAtsdrHc.extensions, undefined, "/atsdr-hc must not persist to Bazaar");
+  const hiddenWaterboardsAcl = facilitatorPaymentRequirements("https://ticks.bnm.farm/waterboards-acl", "waterboards-acl");
+  assert.equal(hiddenWaterboardsAcl.extensions, undefined, "/waterboards-acl must not persist to Bazaar");
   const hidden = facilitatorPaymentRequirements("https://ticks.bnm.farm/form-483", "form-483");
   assert.equal(hidden.extensions, undefined, "/form-483 must not persist to Bazaar until a real body is cached");
   const hiddenGmp = facilitatorPaymentRequirements("https://ticks.bnm.farm/gmp", "gmp");
