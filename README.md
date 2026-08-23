@@ -254,6 +254,7 @@ Apollo is listed across the x402 ecosystem:
 - **x402scan Marketplace:** [x402scan listing](https://www.x402scan.com/server/3e61cb80-3b13-48cc-be79-db9dd85f57a4)
 - **npm:** [@apollo_ai/mcp-proxy](https://www.npmjs.com/package/@apollo_ai/mcp-proxy)
 - **GitHub:** [bnmbnmai/mcp-proxy](https://github.com/bnmbnmai/mcp-proxy)
+- **BNM Data Shop (separate host):** live 31-door official public-data catalog — [`docs/SHOP-INDEX.md`](docs/SHOP-INDEX.md) · [bnm.farm](https://bnm.farm/) · [discovery](https://ticks.bnm.farm/.well-known/x402) · [OpenAPI](https://ticks.bnm.farm/openapi.json) · [llms.txt](https://ticks.bnm.farm/llms.txt)
 
 ## API Reference
 
