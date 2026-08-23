@@ -34,6 +34,7 @@ build/ttb-oic.*
 build/air-letters.*
 build/superfund-rods.*
 build/ico-mpn.*
+build/cma-ca98.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
@@ -64,3 +65,4 @@ data/ttb-oic/
 data/air-letters/
 data/superfund-rods/
 data/ico-mpn/
+data/cma-ca98/

@@ -76,6 +76,7 @@ export TTB_OIC_DIR="${TTB_OIC_DIR:-$MCP/data/ttb-oic}"
 export AIR_LETTERS_DIR="${AIR_LETTERS_DIR:-$MCP/data/air-letters}"
 export SUPERFUND_RODS_DIR="${SUPERFUND_RODS_DIR:-$MCP/data/superfund-rods}"
 export ICO_MPN_DIR="${ICO_MPN_DIR:-$MCP/data/ico-mpn}"
+export CMA_CA98_DIR="${CMA_CA98_DIR:-$MCP/data/cma-ca98}"
 export FORM_483_DIR="${FORM_483_DIR:-$MCP/data/form-483}"
 export GMP_DIR="${GMP_DIR:-$MCP/data/gmp}"
 export AWA_DIR="${AWA_DIR:-$MCP/data/awa}"
@@ -85,6 +86,8 @@ export WARNING_LETTERS_DIR="${WARNING_LETTERS_DIR:-$MCP/data/warning-letters}"
 # Additional real bodies per first-slice grow. Cached cards do not consume LIMIT.
 export ICO_MPN_LIMIT="${ICO_MPN_LIMIT:-8}"
 export ICO_MPN_MAX_FETCH="${ICO_MPN_MAX_FETCH:-12}"
+export CMA_CA98_LIMIT="${CMA_CA98_LIMIT:-8}"
+export CMA_CA98_MAX_FETCH="${CMA_CA98_MAX_FETCH:-12}"
 export SWISSPAR_LIMIT="${SWISSPAR_LIMIT:-8}"
 export SWISSPAR_MAX_FETCH="${SWISSPAR_MAX_FETCH:-12}"
 export OFAC_ORDERS_LIMIT="${OFAC_ORDERS_LIMIT:-8}"
@@ -123,6 +126,7 @@ fi
 
 # Priority first-slice SKUs, then other live 5-card doors. form-483 is a typo/refresh pass.
 DOORS=(
+  cma-ca98
   ico-mpn
   swisspar
   ofac-orders
