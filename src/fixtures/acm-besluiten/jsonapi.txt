@@ -1,0 +1,2 @@
+{"jsonapi":{"version":"1.0"},"data":[],"errors":[{"status":"403","title":"Forbidden"}]}
+This is the ACM jsonapi dump. HTTP 403. Not a boetebesluit body.

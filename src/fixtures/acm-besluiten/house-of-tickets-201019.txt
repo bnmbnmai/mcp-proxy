@@ -1,0 +1,296 @@
+                                              Muzenstraat 41
+                                                                                                   Openbaar
+                                              2511 WB Den Haag
+                                              070 722 20 00
+                                              www.acm.nl
+
+
+
+
+Besluit
+Besluit van de Autoriteit Consument en Markt tot het opleggen van een boete aan House of Tickets
+B.V. wegens overtredingen van artikel 8.8 Wet handhaving consumentenbescherming.
+
+
+Ons kenmerk           : ACM/UIT/679013
+Zaaknummer            : ACM/26/201019
+Datum                 : 22 mei 2026
+
+
+
+Samenvatting
+De digitale markt is één van de focusgebieden van het toezicht van de Autoriteit Consument en Markt
+(hierna: ACM). De ACM houdt onder andere toezicht op het oneigenlijke gebruik van algoritmes door
+bedrijven. Daarbij vindt de ACM het belangrijk dat consumenten worden beschermd tegen online misleiding
+en zij treedt daar dan ook tegen op.
+
+Ticketveiling B.V. (hierna: Ticketveiling) en House of Tickets B.V. (hierna: HoT) schaadden het vertrouwen
+en de belangen van consumenten met hun online handelspraktijken. Zij hebben consumenten misleid door
+in hun online veilingen op Ticketveiling.nl gebruik te maken van een algoritme in de vorm van een ‘biedbot’,
+waarmee zij zich op bedrieglijke wijze voordeden als consument. Daarbij hebben zij consumenten misleid
+over (de totstandkoming van) de prijs van geveilde kavels.
+
+De ACM vindt misleiding via een speciaal daarvoor ontworpen algoritme ernstig en legt daarvoor een boete
+op van 270.000 euro. Ticketveiling en HoT hebben de ernstige overtredingen erkend en meegewerkt aan
+een vereenvoudigde afdoening van de procedure.
+
+
+1.     Aanleiding en verloop van de procedure
+1    In maart 2025 is de ACM naar aanleiding van interne rapportages1 en externe signalen2 een
+     onderzoek naar Ticketveiling gestart. Ticketveiling handelde onder de naam Ticketveiling.nl met een
+     online platform waar mensen op veilingen van uitjes, diensten en producten kunnen bieden.
+
+2    Het onderzoek heeft geleid tot een onderzoeksrapport.3 Daarin wordt vastgesteld dat Ticketveiling4 en
+     haar moedermaatschappij HoT5 consumenten op Ticketveiling.nl hebben misleid door zich op
+     bedrieglijke wijze voor te doen als consument en door consumenten onduidelijk te informeren over de
+     totstandkoming van de prijs van geveilde kavels.
+3    Begin maart 2026 hebben Ticketveiling en HoT de ACM verzocht deze zaak vereenvoudigd af te
+     doen.6 Op 3 maart 2026 en 17 april 2026 hebben Ticketveiling, HoT en de ACM hierover gesproken.7
+     Dit heeft geleid tot een schriftelijke verklaring van Ticketveiling en HoT waarin zij de vastgestelde
+     ernstige overtredingen erkennen en de daarvoor op te leggen boete accepteren.8
+
+1
+  ACM/INT/523570 (Inlichtingenrapport (IE) 31 oktober 2024) en ACM/INT/523571 (Aanvullend inlichtingenrapport (IE)
+19 december 2024).
+2
+  ACM/INT/540501 (Vastlegging website Kassa over Ticketveiling) en ACM/INT/538118 (Meldingen Ticketveiling december
+2023 t/m december 2024).
+3
+  ACM/UIT/652535 (Rapport Ticketveiling).
+4
+  ACM/INT/996419 (KvK uittreksel Ticketveiling B.V.).
+5
+  ACM/INT/996420 (KvK uittreksel House of Tickets B.V.).
+6
+  In overeenstemming met de Richtsnoeren vereenvoudigde afdoening van boetezaken ACM (Stcrt. 2018, 71890).
+7
+  ACM/UIT/671129 en ACM/INT/1003710.
+8
+  ACM/IN/1108892.
+
+
+
+                                                                                                    ACM/UIT/679013
+Autoriteit Consument en Markt                                                                                       Openbaar
+Zaaknr. ACM/26/201019 / Documentnr. ACM/UIT/679013
+
+
+
+     2.     Beoordeling
+     4     De ACM is op grond van artikel 2.2 van de Wet handhaving consumentenbescherming (hierna: Whc)
+           belast met het toezicht op de naleving van artikel 8.8 Whc. Artikel 8.8 Whc gebiedt handelaren om
+           (onder andere) artikel 6:193c en 6:193g van het Burgerlijk Wetboek (hierna: BW) na te leven. Als de
+           ACM een overtreding van artikel 8.8 Whc vaststelt die schade toebrengt of schade kan toebrengen
+           aan collectieve consumentenbelangen, dan kan zij daarvoor op grond van artikel 2.9 Whc een boete
+           opleggen.
+     5     In deze zaak zien we rechtspersoon Ticketveiling die handelt in de uitoefening van haar bedrijf op een
+           website met per definitie een groot bereik. Daarmee kunnen collectieve consumentenbelangen worden
+           geschaad.
+
+     2.1. Overtreding 1: op bedrieglijke wijze voordoen als consument
+     6     Op grond van artikel 6:193g, aanhef en onder v, BW is een handelspraktijk misleidend indien op
+           bedrieglijke wijze wordt beweerd of de indruk wordt gewekt dat de handelaar niet optreedt ten behoeve
+           van zijn handel, bedrijf, ambacht of beroep of zich op bedrieglijke wijze voordoet als consument.
+     7     De ACM stelt vast dat in de periode van 1 augustus 2024 tot en met 1 december 2024 op
+           Ticketveiling.nl 71.420 kavels9 zijn geveild waarbij Ticketveiling zogenaamde ‘biedbots’ inzette. Door
+           het gebruik van deze biedbots nam Ticketveiling feitelijk zelf deel aan haar veilingen en werden de
+           prijzen van de veilingen opgedreven. Ticketveiling maakte niet aan menselijke deelnemers aan de
+           veiling bekend dat zij opboden tegen een biedbot. Deelnemers aan de veiling dachten hierdoor dat zij
+           opboden tegen andere menselijke deelnemers, terwijl zij in werkelijkheid opboden tegen een door
+           Ticketveiling ingezette biedbot.
+     8     Biedbots behelzen algoritmes die automatische biedingen kunnen doen. De biedbots werden ingezet
+           om een vooraf ingestelde minimumprijzen te bereiken.10 De biedbots werden zo geprogrammeerd en
+           ingezet dat ze zich voordeden als deelnemers aan de online veiling. Ticketveiling maakte gebruik van
+           verschillende ‘plotters’11 waardoor deelnemers aan de bieding geen patroon konden herkennen in de
+           biedingen door biedbots. Er waren vijf verschillende plotters met verschillende biedstrategieën. Per
+           veiling konden er meerdere plotters worden ingezet.
+     9     De biedbots handelden onder door het systeem gegenereerde fictieve persoonsnamen, waardoor
+           deelnemers aan de bieding dachten dat zij opboden tegen andere menselijke deelnemers. De fictieve
+           persoonsnamen werden willekeurig ingezet. Ook werd vermeden dat dezelfde naam twee keer achter
+           elkaar werd weergegeven. De fictieve persoonsnamen zijn niet van ’echte’ namen te onderscheiden,
+           omdat de namen op dezelfde manier zijn gepresenteerd als de namen van andere deelnemers.12 Het
+           was voor deelnemers van de veiling onduidelijk dat de biedingen niet door een mens zijn gedaan,
+           maar door biedbots die zich voordoen als mens. Voor de deelnemers was daarom er geen reden om
+           te twijfelen aan de eerlijkheid van de veilingen. Over het gebruik van deze biedbots heeft Ticketveiling
+           de deelnemers aan de veiling niet geïnformeerd.
+
+     10    Met voorgaande handelspraktijk deed Ticketveiling zich op bedrieglijke wijze voor als consument. De
+           ACM concludeert dat sprake is van een misleidende handelspraktijk zoals bedoeld in artikel 6:193g,
+           aanhef en onder v, BW en daarmee van een overtreding van artikel 8.8 Whc.
+
+     2.2. Overtreding 2: Misleiding ten aanzien van de prijs
+     11    Uit artikel 6:193c, eerste lid, onder d, BW volgt dat een handelspraktijk misleidend is, indien informatie
+           wordt verstrekt die feitelijk onjuist is of die de gemiddelde consument misleidt of kan misleiden, al dan
+           niet door de algemene presentatie van de informatie, zoals ten aanzien van de prijs of de wijze waarop
+
+     9
+       Een kavel bestaat uit een veiling die meerdere keren wordt aangeboden (ACM/IN/1012263, antwoord 4).
+     10
+        ACM/IN/995183 (antwoord 10 en 47).
+     11
+        Een plotter is een algoritme dat de logica bevat voor het doen van de geautomatiseerde biedingen. Een plotter bepaalt hoe
+     vaak, wanneer en met welke biedstappen computerbiedingen worden gedaan.
+     12
+        ACM/IN/995146 (antwoord 56, bijlage 5).
+
+
+
+                                                                                                                                2/5
+Autoriteit Consument en Markt                                                                                   Openbaar
+Zaaknr. ACM/26/201019 / Documentnr. ACM/UIT/679013
+
+
+
+          de prijs wordt berekend. Met als gevolg dat de gemiddelde consument een besluit over een
+          overeenkomst neemt of kan nemen, dat hij anders niet had genomen.
+     12   De ACM stelt vast dat Ticketveiling in de periode van 1 augustus 2024 tot en met 1 december 2024 na
+          beëindiging van een veiling die door een biedbot was gewonnen aan 33.027 niet winnende
+          deelnemers een zogenaamd ‘lachende tweede aanbod’ deed per e-mail.13 In die e-mail stond dat de
+          deelnemers de geveilde kavel alsnog konden kopen voor dezelfde prijs als de winnaar van de
+          veiling.14 Ticketveiling vermeldde in de e-mail niet dat tijdens de veiling een biedbot was gebruikt om
+          de vooraf ingestelde minimumprijs te bereiken en dat een biedbot de veiling had gewonnen.15 Door in
+          het aanbod alleen te vermelden dat een niet winnende deelnemer de kavel alsnog kon kopen voor
+          dezelfde prijs als de winnaar werd de indruk gewerkt dat het ging om een andere menselijke winnaar
+          en niet een biedbot.16 Daarmee is door Ticketveiling misleidende informatie verstrekt over de wijze
+          waarop de prijs van een lachende tweede aanbod is berekend.
+     13   In meer dan duizend gevallen is de niet winnende deelnemer op het bovenstaande aanbod
+          ingegaan.17 Deze niet winnende deelnemers van de veiling hadden mogelijk een andere keuze
+          gemaakt als zij hadden geweten dat de ‘winnaar’ van een veiling in werkelijkheid een biedbot was die
+          als doel had de prijs van de veiling op te drijven. Niet winnende deelnemers hadden er bij juiste
+          informatie voor kunnen kiezen het product voor een eerlijke prijs rechtstreeks bij de aanbieder te
+          kopen in plaats van bij Ticketveiling. Ook hadden zij nader onderzoek kunnen doen naar aanbiedingen
+          bij andere aanbieders.
+     14   Nu Ticketveiling de deelnemers niet op de hoogte heeft gesteld van het gebruik van biedbots, de
+          invloed van de biedbots op de prijs en de wijze waarop de prijs van een lachende tweede aanbod
+          wordt berekend, concludeert de ACM dat sprake is van misleidende handelspraktijk op grond van
+          artikel 6:193c, eerste lid, onder d, BW en daarmee van een overtreding van artikel 8.8 Whc.
+
+     3.     Overtreders
+     15   Artikel 8.8 Whc verbiedt handelaren18 oneerlijke handelspraktijken te verrichten. Ticketveiling bood
+          producten en diensten aan op haar website Ticketveiling.nl in het kader van haar bedrijfsactiviteit
+          teneinde deze via online veilingen aan consumenten te verkopen. Hiermee is Ticketveiling aan te
+          merken als handelaar en als overtreder van de in paragraaf 2.1 en 2.2 vastgestelde overtredingen.
+     16   De ACM overweegt verder dat de overtredingen uit paragraaf 2.1 en 2.2 aan HoT kunnen worden
+          toegerekend.19 Daarvoor acht de ACM relevant dat Ticketveiling haar werkzaamheden (mede)
+          verrichtte ten behoeve van HoT en er een nauwe organisatorische en bestuurlijke verwevenheid
+          tussen HoT en Ticketveiling bestond. Beide rechtspersonen zijn op hetzelfde adres gehuisvest en HoT
+          is bestuurder en enig aandeelhouder van Ticketveiling. De natuurlijk personen en enig
+          aandeelhouders van de B.V.’s die bestuurder zijn bij HoT, zijn tevens de gevolmachtigden van
+          Ticketveiling en waren gedurende de inbreukperiode zelf actief en aanwezig op de werkvloer van
+          Ticketveiling. HoT had daarmee kennis van en feitelijk zeggenschap over de gedragingen van
+          Ticketveiling en had deze kunnen voorkomen of eerder kunnen beëindigen. Als enig aandeelhouder
+          had HoT bovendien belang bij de winstgevendheid van Ticketveiling. HoT heeft mede geprofiteerd van
+          de vastgestelde overtredingen. Alles overziend merkt de ACM HoT dan ook aan als functioneel pleger
+          en overtreder van de in paragraaf 2.1 en 2.2 vastgestelde overtredingen.
+
+
+
+
+     13
+        Deelnemers aan veilingen kunnen zelf aangeven of ze aanbiedingen voor een lachende tweede aanbod willen ontvangen
+     (ACM/IN/1017847, screenshot 1.1).
+     14
+        ACM/IN/1012263 (antwoord 18).
+     15
+        ACM/IN/1012263 (antwoord 22). Dit werd ook niet vermeld bij het aanmaken van een account, bij het aanvinken dat iemand
+     het lachende tweede aanbod wilde ontvangen of in de algemene voorwaarden.
+     16
+        ACM/IN/1017847 (bijlage screenshot 2).
+     17
+        ACM/IN/1012263 (antwoord 18). In deze gevallen is er in ieder geval een besluit over een overeenkomst genomen.
+     18
+        Zoals bedoeld in artikel 6:193a, eerste lid, onder b, BW.
+     19
+        Vgl. HR 21 oktober 2003, ECLI:NL:HR:2003:AF7938.
+
+
+
+                                                                                                                            3/5
+Autoriteit Consument en Markt                                                                                    Openbaar
+Zaaknr. ACM/26/201019 / Documentnr. ACM/UIT/679013
+
+
+
+     4.     Boete
+     17   Voor de in paragraaf 2 vastgestelde overtredingen acht de ACM het passend en evenredig om een
+          boete op te leggen. De ACM heeft de digitale markt aangemerkt als focusgebied en vindt het
+          belangrijk dat consumenten met vertrouwen online aankopen kunnen doen. Als dit vertrouwen wordt
+          aangetast door misleiding via een speciaal daarvoor ontworpen algoritme, acht de ACM het
+          noodzakelijk om op te treden. De ACM kiest ervoor om alleen aan HoT een boete op te leggen om te
+          voorkomen dat overtreders dubbel in hun vermogen worden geraakt. De ACM stelt de op te leggen
+          boete vast met inachtneming van titel 5.4 Awb en conform de Boetebeleidsregel ACM 201420 (hierna:
+          Boetebeleidsregel).
+     18   HoT heeft een eigen verantwoordelijkheid om de toepasselijke regelgeving na te leven. De twee
+          geconstateerde overtredingen zijn HoT volledig te verwijten.21 Bij de bepaling van de ernst van de
+          overtreding is in dit verband relevant dat de Whc en de bepalingen over oneerlijke handelspraktijken in
+          het BW een hoog niveau van consumentenbescherming beogen te bewerkstellingen en het
+          consumentenvertrouwen beogen te bevorderen. Het niet naleven van deze regels kan grote schade
+          toebrengen aan individuele consumenten, maar ook aan het consumentenvertrouwen in het
+          algemeen. HoT heeft welbewust zijn eigen commerciële belangen gesteld boven die van de
+          consument. Door de gehanteerde handelspraktijken van HoT zijn enkele duizenden consumenten
+          ingegaan op een misleidend aanbod waar zij mogelijk niet mee hadden ingestemd als zij volledig en
+          juist geïnformeerd waren. Alles overziend acht de ACM de overtredingen ernstig. De ACM constateert
+          daarbij dat de overtredingen relatief kort hebben geduurd en dat de overtredingen nog voor de start
+          van het onderzoek van de ACM uit eigen beweging door HoT zijn beëindigd.
+     19   Gelet op de aard en de samenhang tussen de overtredingen die beide nauw zijn verbonden met het
+          onrechtmatig gebruik van biedbots legt de ACM voor beide overtredingen gezamenlijk één boete op
+          aan HoT.22 De overtredingen zijn in de Boetebeleidsregel ingedeeld in boetecategorie III en IV.23 De
+          ACM gaat in dit geval uit van de hoogste boetecategorie. Gelet op de ernst van de gedragingen, de
+          mate van verwijtbaarheid van HoT en de omstandigheden waaronder de overtredingen zijn gepleegd,
+          acht de ACM een boete van 300.000 euro passend en evenredig voor het gehele handelingscomplex.
+     20   Omdat HoT de overtredingen heeft erkend en medewerking heeft verleend aan de vereenvoudigde
+          afdoening van deze zaak verlaagt de ACM de boete met 10%. Dit resulteert in een boete van 270.000
+          euro.
+
+
+
+
+     20
+        Beleidsregel van de Minister van Economische zaken van 4 juli 2014, nr. WJZ/14112617, met betrekking tot het opleggen van
+     bestuurlijke boetes door de Autoriteit Consument en Markt (Boetebeleidsregel ACM 2014), Stcrt.2014, 19776, gewijzigd bij
+     Beleidsregel van de Minister van Economische Zaken van 28 juni 2016, nr. WJZ/16056097, Stcrt. 2016 nr. 34630.
+     21
+        De ACM zijn geen omstandigheden gebleken die wijzen op verminderde verwijtbaarheid.
+     22
+        Vgl. artikel 2.1, eerste lid, Boetebeleidsregel.
+     23
+        Zie artikel 2.5, eerste lid, juncto bijlage, Boetebeleidsregel.
+
+
+
+                                                                                                                             4/5
+Autoriteit Consument en Markt                                                                                    Openbaar
+Zaaknr. ACM/26/201019 / Documentnr. ACM/UIT/679013
+
+
+
+     5.       Besluit
+     De Autoriteit Consument en Markt:
+
+          -    legt een boete op van 270.000 euro aan House of Tickets B.V., statutair gevestigd te Leiderdorp,
+               wegens overtreding van artikel 8.8 Whc juncto artikel 6:193c, eerste lid, onder d, BW en artikel
+               6:193g, aanhef en onder v, BW;
+          -    ziet af van het opleggen van een boete aan Ticketveiling B.V., statutair gevestigd te Oegstgeest.
+
+
+     Den Haag, 22 mei 2026
+
+
+
+     Autoriteit Consument en Markt,
+     namens deze,
+
+     w.g.
+     drs. M. Ridderbos
+     bestuurslid
+
+     Als u belanghebbende bent, kunt u bezwaar maken tegen dit besluit. Stuur uw gemotiveerde bezwaarschrift naar de Autoriteit
+     Consument en Markt, Directie Juridische Zaken, Postbus 16326, 2500 BH Den Haag of naar acm-post@acm.nl. Dit moet u
+     doen binnen zes weken na de dag waarop dit besluit bekend is gemaakt. In uw bezwaarschrift kunt u de Autoriteit Consument
+     en Markt verzoeken in te stemmen met rechtstreeks beroep bij de bestuursrechter.
+
+
+
+
+                                                                                                                            5/5
+

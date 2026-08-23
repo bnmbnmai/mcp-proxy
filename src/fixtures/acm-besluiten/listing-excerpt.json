@@ -1,0 +1,100 @@
+[
+  {
+    "id": "house-of-tickets-201019",
+    "docket": "house-of-tickets-201019",
+    "zaak": "ACM/26/201019",
+    "institution": "House of Tickets B.V. / Ticketveiling B.V.",
+    "date": "2026-05-22",
+    "title": "Boetebesluit",
+    "type": "boetebesluit",
+    "sourceUrl": "https://www.acm.nl/system/files/documents/boetebesluit-house-of-tickets.pdf",
+    "pdfId": "boetebesluit-house-of-tickets.pdf"
+  },
+  {
+    "id": "sk-jura-bol-198871",
+    "docket": "sk-jura-bol-198871",
+    "zaak": "ACM/25/198871",
+    "institution": "SK Company B.V. / Jura Nederland B.V. / bol.com B.V.",
+    "date": "2026-03-19",
+    "title": "Afwijzing handhavingsverzoek",
+    "type": "besluit",
+    "sourceUrl": "https://www.acm.nl/system/files/documents/openbare-versie-afwijzing-handhavingsverzoek-skcompany-acm.pdf",
+    "pdfId": "openbare-versie-afwijzing-handhavingsverzoek-skcompany-acm.pdf"
+  },
+  {
+    "id": "ommen-gww-196956",
+    "docket": "ommen-gww-196956",
+    "zaak": "ACM/25/196956",
+    "institution": "Bouwhuis Aannemingsmaatschappij “Bouwmij” B.V. / Timmerhuis Weg & Waterbouw B.V. / Aannemingsmaatschappij Van Gelder B.V.",
+    "date": "2026-05-28",
+    "title": "Boetebesluit",
+    "type": "boetebesluit",
+    "sourceUrl": "https://www.acm.nl/system/files/documents/boetebesluit-aanbesteding-gemeente-ommen.pdf",
+    "pdfId": "boetebesluit-aanbesteding-gemeente-ommen.pdf"
+  },
+  {
+    "id": "gt-ecom-193961",
+    "docket": "gt-ecom-193961",
+    "zaak": "ACM/25/193961",
+    "institution": "GT Ecom B.V.",
+    "date": "2025-05-02",
+    "title": "Boetebesluit",
+    "type": "boetebesluit",
+    "sourceUrl": "https://www.acm.nl/system/files/documents/boetebesluit-gt-ecom.pdf",
+    "pdfId": "boetebesluit-gt-ecom.pdf"
+  },
+  {
+    "id": "eetrip-191276",
+    "docket": "eetrip-191276",
+    "zaak": "ACM/24/191276",
+    "institution": "Energie Exploitatie De Trip B.V.",
+    "date": "2025-09-23",
+    "title": "Handhavingsbesluit",
+    "type": "handhavingsbesluit",
+    "sourceUrl": "https://www.acm.nl/system/files/documents/handhavingsbesluit-tegen-energie-exploitatie-detrip-acm.pdf",
+    "pdfId": "handhavingsbesluit-tegen-energie-exploitatie-detrip-acm.pdf"
+  },
+  {
+    "id": "de-heer-a",
+    "docket": "de-heer-a",
+    "individual": "de heer A",
+    "institution": "de heer A",
+    "date": "2025-07-04",
+    "title": "Boetebesluit",
+    "type": "boetebesluit",
+    "sourceUrl": "https://www.acm.nl/system/files/documents/boetebesluit-580034.pdf"
+  },
+  {
+    "id": "house-of-tickets-press",
+    "docket": "house-of-tickets-press",
+    "zaak": "ACM/26/201019",
+    "institution": "House of Tickets B.V.",
+    "date": "2026-05-22",
+    "title": "Boete House of Tickets voor misleiding bij online veilingen",
+    "type": "nieuws",
+    "sourceUrl": "https://www.acm.nl/nl/publicaties/boete-house-tickets-voor-misleiding-bij-online-veilingen"
+  },
+  {
+    "id": "jsonapi",
+    "docket": "jsonapi",
+    "institution": "House of Tickets B.V.",
+    "title": "jsonapi",
+    "sourceUrl": "https://www.acm.nl/jsonapi/node/publication"
+  },
+  {
+    "id": "overheid-dataset",
+    "docket": "overheid-dataset",
+    "institution": "Autoriteit Consument en Markt",
+    "title": "data.overheid.nl",
+    "sourceUrl": "https://data.overheid.nl/dataset/acm-besluiten"
+  },
+  {
+    "id": "zuivel-toezegging",
+    "docket": "zuivel-toezegging",
+    "institution": "ZuivelNL",
+    "date": "2025-04-10",
+    "title": "Toezeggingsbesluit / consultatie",
+    "type": "toezegging",
+    "sourceUrl": "https://www.acm.nl/system/files/documents/besluit-op-bezwaar-zuivelnl-definitieve-openbare-versie.pdf"
+  }
+]

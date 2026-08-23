@@ -1,0 +1,2459 @@
+                                               Muzenstraat 41
+                                                                                                      Openbaar
+                                               2511 WB Den Haag
+                                               070 722 20 00
+                                               www.acm.nl
+
+
+
+
+Besluit
+Handhavingsbesluit tegen Energie Exploitatie De Trip B.V.
+
+Ons kenmerk            : ACM/UIT/658846
+Zaaknummer             : ACM/24/191276
+Datum                  : 23 september 2025
+
+
+
+1.        Inleiding
+
+     1.    De Autoriteit Consument en Markt (hierna: de ACM) is op 7 augustus 2024 een onderzoek gestart
+           naar Energie Exploitatie De Trip B.V. (hierna: EETRIP). 1 De ACM is dit onderzoek gestart naar
+           aanleiding van signalen waaruit blijkt dat EETRIP mogelijk kwalificeert als leverancier in de zin van
+           de Warmtewet, maar zich mogelijk niet houdt aan de Warmtewet. Eerder heeft de ACM opgetreden
+           tegen andere bedrijven die (indirect) gelieerd zijn aan de aandeelhouder van EETRIP. 2 Specifiek
+           ten aanzien van EETRIP is er in de media meerdere malen bericht over problemen in de
+           warmtelevering bij de betreffende appartementencomplexen. 3 Uit deze berichten blijkt dat het voor
+           bewoners onduidelijk is wie zij kunnen aanspreken bij problemen met de warmtelevering. Verder
+           blijkt uit gesprekken die de ACM met bewoners van de betreffende appartementencomplexen heeft
+           gevoerd dat er onder andere sprake is van herhaaldelijke en langdurige storingen in de
+           warmtelevering van de appartementencomplexen en dat er slecht wordt gecommuniceerd als er
+           problemen met het warmtesysteem zijn.4
+
+     2.    De ACM stelt met dit besluit vast dat EETRIP kwalificeert als leverancier in de zin van artikel 1,
+           eerste lid van de Warmtewet (hierna: warmteleverancier) en zich niet aan de Warmtewet en het
+           Burgerlijk Wetboek (hierna: BW) houdt. Met dit besluit wil de ACM bewerkstelligen dat EETRIP als
+           warmteleverancier zijn wettelijke verplichtingen uit de Warmtewet (proactief en ten volle) naleeft,
+           nu en in de toekomst. Ook wil de ACM met dit besluit onduidelijkheid bij de bewoners wegnemen
+           ten aanzien van de rechten die zij hadden en hebben bij de warmtelevering door EETRIP.
+
+     3.    Het is belangrijk dat een warmteleverancier de wettelijke verplichtingen die op hem rusten proactief
+           en volledig naleeft. Dit heeft meerdere redenen. Ten eerste kunnen verbruikers van warmte niet
+           overstappen naar een andere warmteleverancier. Deze verbruikers hebben bovendien slechts
+           beperkte, of geen, mogelijkheden om voor een andere vorm van warmtevoorziening te kiezen.
+           Verbruikers zitten daardoor in een kwetsbare positie, omdat zij overgeleverd zijn aan één partij
+           waarvan zij verplicht zijn warmte af te nemen. Het gaat daarom om ‘gebonden’ verbruikers.
+           Verbruikers hebben daarbij weinig middelen om zelf te controleren of de warmteleverancier zich
+           wel of niet aan zijn wettelijke verplichtingen houdt. Een van de doelen van de Warmtewet is om
+           deze gebonden verbruikers te beschermen. Dat doet de Warmtewet onder andere door de
+1
+  ACM/UIT/626681.
+2
+  Besluit van de ACM van 26 september 2019, ACM/UIT/521478; Besluit van de ACM van 26 november 2021,
+ACM/UIT/566056; Besluit van de ACM van 2 mei 2023, ACM/UIT/596587.
+3
+  https://www.rtvutrecht.nl/video/5826455/geen-warm-water-of-verwarming-in-utrechtse-appartementencomplex-honderden-
+bewoners-de-dupe; https://www.rtvutrecht.nl/nieuws/3704895/utrechts-appartementencomplex-weer-zonder-warm-water-en-
+verwarming-lekkage-in-meterkast; https://www.ad.nl/utrecht/frustratie-bij-bewoners-appartementen-die-al-dagen-zonder-warm-
+water-zitten-iedereen-wijst-naar-elkaar~a32ded26/; https://www.ad.nl/utrecht/slechts-vier-dagen-konden-bewoners-
+appartementen-van-hete-douche-en-warm-huis-genieten-gaan-we-weer~ab1b60db/; https://www.duic.nl/algemeen/al-
+dagenlang-ijskoud-voor-huurders-op-nieuwbouwproject-de-trip/.
+4
+  ACM/INT/532878; ACM/INT/532943; ACM/INT/532951.
+
+
+
+                                                                                                       ACM/UIT/658846
+Autoriteit Consument en Markt                                                                                     Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+                 informatieachterstand die verbruikers hebben ten opzichte van de warmteleverancier te verkleinen.
+                 Zo moet een warmteleverancier transparant zijn over de hoeveelheid en de kwaliteit van warmte
+                 die hij levert en onder welke voorwaarden. Dit versterkt de positie van gebonden verbruikers van
+                 warmte en draagt bij aan het draagvlak voor de warmtetransitie.
+
+            4.   Ook is het belangrijk dat warmteleveranciers zich proactief melden bij de ACM, omdat dit de ACM
+                 in staat stelt haar toezichtstaken uit te voeren. Zo is een warmteleverancier op basis van de
+                 Warmtewet verplicht om zijn netten te melden bij de ACM en te voldoen aan de
+                 monitoringsverplichtingen van de ACM. Met die informatie houdt de ACM zicht op (het aantal)
+                 warmteleveranciers.
+
+            5.   De ACM treedt in deze zaak op tegen de warmteleverancier EETRIP. De ACM is van oordeel dat
+                 EETRIP ten onrechte ontkent dat zij een warmteleverancier is en zich (daarom) ten onrechte niet
+                 aan de Warmtewet houdt. De ACM wijst EETRIP in dit besluit op haar verplichtingen op basis van
+                 de Warmtewet. Daarmee stelt de ACM de gebonden verbruikers in staat op te kunnen komen voor
+                 de rechten die de Warmtewet aan hen toekent. Het is aan EETRIP om ook de andere
+                 verplichtingen die uit de Warmtewet volgen proactief en ten volle na te leven.
+
+            6.   Het besluit is als volgt ingedeeld. Hoofdstuk 2 beschrijft de betrokken onderneming en het
+                 warmtesysteem van EETRIP. In hoofdstuk 3 beoordeelt de ACM de gedragingen van EETRIP in
+                 het licht van de Warmtewet en het BW. Hoofdstuk 4 gaat in op de zienswijze van EETRIP op het
+                 conceptbesluit en de reactie van de ACM op deze zienswijze van EETRIP. Hoofdstuk 5 behelst de
+                 beslissing van de ACM (het dictum). Bijlage 1 bevat het wettelijk kader dat relevant is voor dit
+                 besluit. Bijlage 2 beschrijft het verloop van de procedure voorafgaand aan dit besluit.
+
+
+
+     2.          Betrokken onderneming en het warmtesysteem
+
+     2.1. Betrokken onderneming
+
+            7.   Energie Exploitatie De Trip B.V. (KVK-nummer 60412895) is een joint venture (50%/50%) tussen
+                 Calvin Holdco B.V. (KVK-nummer 80747108) (hierna: Calvin Holdco) en Giesbers Holding B.V.
+                 (KVK-nummer 24247383) (hierna: Giesbers). Calvin Holdco houdt tevens, en voor zover voor dit
+                 besluit relevant, indirect alle aandelen van de vennootschappen: Itho Daalderop B.V. (KVK-
+                 nummer: 11006307), Klimaatgarant B.V. (KVK-nummer 56703503) en Klimaatgarant Warmte B.V.
+                 (KVK-nummer 65878965). EETRIP heeft zelf geen operationele activiteiten. Deze activiteiten heeft
+                 zij uitbesteed aan [vertrouwelijk] (thans [vertrouwelijk]; hierna: [vertrouwelijk]).5
+
+
+     2.2. Warmtesysteem in gebouwen De Trip
+
+            8.   Stichting Studentenhuisvesting (hierna: SSH) is eigenaar van de drie gebouwen Branding, Briljant
+                 en Kade, met adressen Helling 22 t/m 466 (even nummers), Helling 9 t/m 89 (oneven nummers) en
+                 Tagrijnkade 1 t/m 3 te Utrecht (hierna: Gebouwen De Trip) met een parkeergarage en
+                 buitenruimte. De Gebouwen De Trip omvatten onder meer 253 starterswoningen (80% sociale huur
+                 en 20% vrije sector).6 SSH is, al dan niet via dochtervennootschap Jebber B.V., verhuurder van
+                 deze woningen. De woningen zijn voor ruimteverwarming en warm tapwater via een individuele
+                 aansluiting aangesloten op het warmtesysteem van EETRIP.
+
+
+
+
+     5
+         ACM/IN/999995, reactie op uw informatieverzoek van 4 juni 2025, Service Level Agreement KGS-EETRIP fiat Triodos.pdf.
+     6
+         https://www.jebber.nl/project/de-trip-rotsoord-utrecht/.
+
+
+
+                                                                                                                            2/37
+Autoriteit Consument en Markt                                                                                      Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+          9.   Op 14 april 2014 heeft onder meer EETRIP de vennootschap COM4Trip B.V. (hierna: COM4Trip)
+               opgericht.7 COM4Trip is opgericht met als doel het realiseren van de Gebouwen De Trip, de
+               realisatie van het warmtesysteem en de verplichtingen tot onderhoud en levering van warmte en
+               het uitvoeren van meerjarig onderhoud. 8 Hiertoe heeft COM4Trip met SSH en Jebber B.V. een
+               overeenkomst (hierna: Overeenkomst SSH-EETRIP) gesloten.9 De [vertrouwelijk] vormt een
+               onderdeel daarvan. EETRIP is de partij die dit onderdeel heeft uitgevoerd ([vertrouwelijk]) en
+               uitvoert ([vertrouwelijk]).10
+
+          10. Het warmtesysteem in de Gebouwen De Trip betreft een WKO-systeem en bestaat kort gezegd uit
+              de volgende elementen: een bronnensysteem (collectieve gesloten bodemlussen), twee collectieve
+              warmtepompen die zich bevinden in de centrale technische ruimte en de zich in iedere woning
+              bevindende individuele (booster)warmtepomp en boilervat voor warm tapwater (hierna: het
+              Systeem).11 Ook overige hulpmiddelen dienstbaar aan het transport van warmte kunnen tot het
+              Systeem behoren. De warmte uit het bronnensysteem wordt opgewaardeerd door de collectieve
+              warmtepompen waarna deze warmte wordt doorgeleid naar de individuele aansluitingen van de
+              woningen in de Gebouwen De Trip. In de woning wordt de warmte verder geleid naar de
+              vloerverwarming ten behoeve van ruimteverwarming en naar de zich in de woning bevindende
+              (booster)warmtepomp. Deze warmtepomp wordt gebruikt om het water in het boilervat te
+              verwarmen zodat het geschikt is voor warm tapwater.
+
+          11. In de overeenkomst die EETRIP met een bewoner, zijnde de huurder van de woning, sluit, is
+              vermeld dat EETRIP eigenaar is van de installaties behorende tot het Systeem en ten behoeve van
+              EETRIP een recht van opstal is of wordt gevestigd.12
+
+          12. EETRIP heeft aangegeven dat het Systeem wordt aangepast. In hoofdstuk 4 wordt nader ingegaan
+              op de zienswijze van EETRIP op het conceptbesluit waarbij ook deze – toekomstige – aanpassing
+              van het Systeem aan de orde komt. In hetzelfde hoofdstuk wordt ook ingegaan op de zienswijze
+              van EETRIP op de in het conceptbesluit gestelde overtredingen en de reactie van de ACM op deze
+              zienswijze van EETRIP.
+
+
+
+     3.        Beoordeling
+
+          13. In dit hoofdstuk bespreekt de ACM de kwalificatie van EETRIP als warmteleverancier (paragraaf
+              3.1) en beoordeelt de ACM de gedragingen van EETRIP in het licht van haar verplichtingen als
+              warmteleverancier in de zin van de Warmtewet (paragraaf 3.2-3.5).
+
+
+     3.1. Kwalificatie warmteleverancier
+
+          14. EETRIP stelt zich op het standpunt dat zij niet kan worden aangemerkt als leverancier van warmte
+              in de zin van de Warmtewet,13 omdat er volgens EETRIP geen warmte wordt geleverd in de zin van
+              de Warmtewet.14 EETRIP vindt dat daarom de wettelijke verplichtingen voor warmteleveranciers in
+              de Warmtewet niet op haar van toepassing zijn.
+
+
+     7
+       COM4Trip B.V. is inmiddels uitgeschreven uit het handelsregister.
+     8
+       ACM/IN/999995, reactie op uw informatieverzoek van 4 juni 2025, Bijlage 2 De Trip.pdf, p. 13.
+     9
+       ACM/IN/999995, reactie op uw informatieverzoek van 4 juni 2025, GEPC d.d. 12 december 2016.
+     10
+        ACM/IN/999995, reactie op uw informatieverzoek van 4 juni 2025, Bijlage 2 De Trip.pdf, p. 55.
+     11
+        ACM/IN/999995, reactie op uw informatieverzoek van 4 juni 2025, 201414 Principeschema Centrale TR 20240515-Model.
+     12
+        ACM/IN/999995, reactie op uw informatieverzoek van 4 juni 2025, k20 bnr huurovk [vertrouwelijk].pdf.
+     13
+        ACM/IN/904752, Reactie op informatieverzoek inz. [vertrouwelijk] e.a., 2024.08.27 reactie informatieverzoek Energie
+     Exploitatie De Trip(12379189.1).pdf; ACM/IN/1003660, Reactie op informatieverzoek Energie Exploitatie De Trip B.V. (deel 2),
+     Reactie Informatieverzoek 2025.06.24 (incl. Bijlagen) (5334605.1).pdf.
+     14
+        ACM/IN/1003660, Reactie op informatieverzoek Energie Exploitatie De Trip B.V. (deel 2), Reactie Informatieverzoek
+     2025.06.24 (incl. Bijlagen)(5334605.1).pdf.
+
+
+
+                                                                                                                             3/37
+Autoriteit Consument en Markt                                                                                  Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+          15. De ACM deelt dit standpunt niet. Op basis van de hierna vastgestelde feiten en omstandigheden
+              oordeelt de ACM dat er voor de Gebouwen De Trip sprake is van levering van warmte, zoals
+              bedoeld in artikel 1, eerste lid van de Warmtewet. Daarmee is de Warmtewet van toepassing.15 De
+              ACM oordeelt verder dat EETRIP kwalificeert als leverancier van warmte, zoals bedoeld in artikel
+              1, eerste lid van de Warmtewet. De ACM oordeelt daarom dat de Warmtewet van toepassing is op
+              de levering van warmte door EETRIP aan de gebonden verbruikers in de Gebouwen De Trip. Dit
+              betekent concreet dat de Warmtewet van toepassing is op de levering van warmte tot aan het
+              overdrachtspunt in de woningen in de Gebouwen De Trip, waar het collectieve systeem overgaat in
+              de binneninstallatie van een woning.
+
+          16. Volgens artikel 1, eerste lid van de Warmtewet is een:
+
+            -    Leverancier: “een persoon die zich bezighoudt met de levering van warmte”;
+            -    Levering van warmte: “de aflevering van warmte aan verbruikers”;
+            -    Verbruiker: “een persoon die warmte afneemt van een warmtenet of inpandig leidingstelsel en:
+                                i. een individuele aansluiting heeft van maximaal 100 kilowatt, of
+                                ii. een centrale aansluiting heeft, warmte levert aan een verbruiker als bedoeld
+                                onder i en tevens:
+                                1o optreedt als verhuurder voor een verbruiker als bedoeld onder i, of
+                                2o een vereniging van eigenaars of een daarmee vergelijkbare rechtsvorm is
+                                waarbij een verbruiker als bedoeld onder i is aangesloten;”
+            -    Warmte: “thermische energie die ten behoeve van ruimteverwarming of verwarming van
+                 tapwater wordt geleverd door middel van transport van water;”.
+
+          17. Bij het Systeem ten behoeve van de Gebouwen De Trip is sprake van levering van warmte als
+              bedoeld in de Warmtewet. Bij het Systeem wordt de warmte uit de bodem onder de Gebouwen De
+              Trip gehaald door middel van een bronsysteem, bestaande uit collectieve verticale bodemlussen.16
+              De onttrokken bodemwarmte wordt via leidingen geleid naar de twee collectieve warmtepompen
+              die de onttrokken bodemwarmte verder opwaarderen om vervolgens te worden afgeleverd in de
+              woningen ten behoeve van ruimteverwarming en het verwarmen van tapwater in elke woning.
+              Water is hierbij de energiedrager. De fysieke beschikbaarstelling van warmte vanuit het
+              bronsysteem, opgewaardeerd door de collectieve warmtepompen, heeft de verwarming van de
+              woningen en de verwarming van tapwater tot doel. De warmtelevering voor zowel
+              ruimteverwarming als de verwarming van tapwater wordt kortom mogelijk gemaakt door een
+              collectief systeem van bodemlussen en warmtepompen. Daarbij is irrelevant dat de warmte ten
+              behoeve van de verwarming van tapwater nog moet worden opgewaardeerd met een individuele
+              boosterwarmtepomp voordat het daadwerkelijk geschikt is voor verwarming van tapwater. 17
+
+          18. De vraag wie als leverancier in de zin van de Warmtewet moet worden aangemerkt, dient te
+              worden beantwoord aan de hand van alle relevante feiten en omstandigheden. Op basis van
+              eerdere besluiten van de ACM18 en rechterlijke uitspraken19 kunnen voor die vaststelling in ieder
+              geval de navolgende (niet cumulatieve) feiten en omstandigheden relevant zijn:
+
+            -    Bij wie het eigendom van het warmtesysteem en onderdelen van het warmtesysteem ligt;
+            -    Wie verantwoordelijk is voor herstel, onderhoud en vervanging van het systeem;
+            -    Het geheel van overeenkomsten met betrekking tot de (af)levering van warmte en/of warm
+                 tapwater, in samenhang met de eventueel daarop van toepassing zijnde voorwaarden;
+
+     15
+        Rb. Rotterdam, 22 mei 2024, ECLI:NL:RBROT:2024:4970, r.o. 11.
+     16
+        ACM/IN/999995, reactie op uw informatieverzoek van 4 juni 2025, Trip - Bijlage 9a Bewonersinformatie klimaat- en
+     energiesysteem.pdf.
+     17
+        Rb. Rotterdam, 29 september 2022, ECLI:NL:RBROT:2022:8021.
+     18
+        Zie o.a. besluit van de ACM van 29 september 2019, ACM/UIT/521478 – OV; besluit van de ACM van 17 januari 2020,
+     ACM/UIT/526057; besluit van de ACM van 2 mei 2023, ACM/UIT/596587.
+     19
+        Rb. Rotterdam, 29 september 2022, ECLI:NL:RBROT:2022:8021, r.o. 9 en 10, Rb. Rotterdam, 22 mei 2024,
+     ECLI:NL:RBROT:2024:4970, r.o. 10 – 12.
+
+
+
+                                                                                                                           4/37
+Autoriteit Consument en Markt                                                                                   Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+            -    Wie de kosten voor de levering van warmte aan wie factureert; en
+            -    Aan wie de verbruikers betalen voor de levering van warmte en of de verbruikers daarmee
+                 bevrijdend betalen.
+
+          19. Indien een onderneming geen expliciete contractuele afspraken heeft gemaakt over de levering
+              van warmte maar de onderneming zich wel gedraagt als leverancier, betekent dit dat de
+              onderneming zich ook aan de Warmtewet moet houden.20 Daarnaast volgt uit rechtspraak dat er
+              ook sprake is van levering van warmte in de zin van de Warmtenet bij het gebruik van een WKO-
+              systeem.21
+
+          20. De ACM is van oordeel dat uit de navolgende feiten blijkt dat EETRIP zich ten aanzien van de
+              woningen in de Gebouwen De Trip bezighoudt met de levering van warmte en zich gedraagt als
+              warmteleverancier:
+            -   De via het Systeem van EETRIP aan bewoners geleverde warmte is bestemd voor
+                ruimteverwarming en verwarming van tapwater;
+            -   EETRIP heeft met iedere bewoner afzonderlijk een overeenkomst ‘Huurovereenkomst
+                Warmtepomp, boiler, bron en PV systeem’ gesloten met betrekking tot het gebruik van het
+                Systeem (hierna: Overeenkomst EETRIP);
+            -   Op grond van de Overeenkomst EETRIP incasseert EETRIP maandelijks de vergoeding bij de
+                bewoner voor de huur van het Systeem dan wel factureert EETRIP maandelijks de vergoeding
+                voor de huur van het Systeem aan de bewoner;
+            -   In de Overeenkomst EETRIP is vermeld dat EETRIP eigenaar is van de installaties behorende
+                tot het Systeem (zie hiervoor ook randnummer 11);
+            -   Op grond van de Overeenkomst EETRIP is EETRIP onder meer verantwoordelijk voor het
+                monitoren en onderhouden van het Systeem;
+            -   EETRIP heeft met [vertrouwelijk] (inmiddels [vertrouwelijk]) een service level overeenkomst
+                gesloten.22 EETRIP en [vertrouwelijk] zijn overeengekomen dat [vertrouwelijk] diensten verleent
+                met betrekking tot het warmtesysteem, waarvoor EETRIP aan [vertrouwelijk] een vergoeding
+                betaalt.23
+
+          21. De Warmtewet heeft tot doel gebonden verbruikers te beschermen. 24 De ACM stelt vast dat de
+              bewoners in de Gebouwen De Trip voor hun warmtevoorziening gebonden zijn aan EETRIP. Dit
+              blijkt onder andere uit:
+              -     Het door EETRIP aangelegde en beheerde Systeem voor verwarmen, koelen en warm water
+                    vormt de enige warmtevoorziening voor de woningen. Een bewoner heeft daarom geen reële
+                    mogelijkheid om over te stappen op een andere vorm van warmtevoorziening en kan daarom
+                    niet kiezen voor een andere aanbieder van warmte.
+              -     Het Systeem van EETRIP is bij het betrekken van de woning al aanwezig. Een bewoner wordt
+                    via de huurovereenkomst met de SSH verplicht de overeenkomst met EETRIP af te sluiten en
+                    kan hier niet van afwijken.
+              -     De bewoners zijn gedurende een lange termijn (tot en met 2036) aan EETRIP gebonden en
+                    moeten gedurende deze termijn een door EETRIP vastgesteld maandelijks bedrag betalen. Dit
+                    bedrag is voor warmte, koeling, PV-panelen en ventilatie. Er is in de Overeenkomst EETRIP
+                    geen mogelijkheid tot tussentijdse opzegging door een bewoner van deze overeenkomst
+                    opgenomen.
+
+     20
+        Rb. Rotterdam 29 september 2022, ECLI:N:RBROT:2022:8021, r.o. 9 en besluit van de ACM van 17 januari 2020,
+     ACM/UIT/526057.
+     21
+        CBb, 22 februari 2016, ECLI:NL:CBB:2016:30; Rb. Rotterdam, 19 augustus 2022, ECLI:NL:RBROT:2022:6844, r.o. 21.4; Rb.
+     Rotterdam, 29 september 2022, ECLI:NL:RBROT:2022:8021, r.o. 9; Rb. Rotterdam, 5 juli 2023, ECLI:NL:RBROT:2023:7389,
+     r.o. 8 en 9; Rb. Rotterdam, 22 mei 2024, ECLI:NL:RBROT:2024:4970, r.o. 10 – 12.
+     22
+        ACM/IN/999995, reactie op uw informatieverzoek van 4 juni 2025, Service Level Agreement KGS-EETRIP fiat Triodos.pdf.
+     23
+        [vertrouwelijk] verzorgt de volgende diensten: (i) alle taken welke nodig zijn om de warmtepompen en PV-installaties
+     gedurende de toepasselijke instandhoudingsovereenkomsten in bedrijf te houden, en (ii) de ICT-diensten. Zie ACM/IN/999995,
+     reactie op uw informatieverzoek van 4 juni 2025, Service Level Agreement KGS-EETRIP fiat Triodos.pdf, bijlage 1 en 2.
+     24
+        Kamerstukken II 2002/03, 29048, nr. 3; Kamerstukken II, 2016/17, 34723, nr. 3, p. 3-4; CBb, 22 februari 2016,
+     ECLI:NL:CBB:2016:30, r.o. 3.4.
+
+
+
+                                                                                                                          5/37
+Autoriteit Consument en Markt                                                                               Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+                 -    Bewoners zijn voor het beheer, onderhoud, voorkomen en herstel van storingen, en de
+                      monitoring van het Systeem aangewezen op EETRIP. Bewoners mogen zelf geen
+                      aanpassingen doen aan het Systeem.
+
+            22. Gelet op het vorenstaande concludeert de ACM dat EETRIP ten aanzien van de warmtelevering
+                ten behoeve van de bewoners in de Gebouwen De Trip kwalificeert als leverancier als bedoeld in
+                artikel 1, eerste lid van de Warmtewet. Dat EETRIP de overeenkomst met bewoners een
+                “huurovereenkomst” noemt, doet niet af aan het feit dat er sprake is van levering van warmte in de
+                zin van de Warmtewet. Dit betekent dat de verplichtingen die de Warmtewet oplegt aan
+                leveranciers van warmte op EETRIP van toepassing zijn. De ACM stelt verder vast dat gelet op het
+                voorgaande de Overeenkomst EETRIP een overeenkomst tot levering van warmte is in de zin van
+                de Warmtewet. De ACM zal daarom in het navolgende deze overeenkomst aanduiden als ‘de
+                leveringsovereenkomst’ en zal de bewoners van Gebouwen De Trip aanduiden als ‘verbruikers’.
+
+            23. In haar zienswijze heeft EETRIP aangekondigd wijzigingen door te willen voeren aan het
+                Systeem.25 In Hoofstuk 4 stelt de ACM in reactie op de zienswijze vast dat deze voorgenomen
+                aanpassing aan het Systeem de conclusie van de ACM als vermeld onder randnummer 22 niet
+                anders maakt.
+
+            24. De ACM benadrukt dat partijen zelf verantwoordelijk zijn om te bepalen of zij kwalificeren als
+                leverancier in de zin van de Warmtewet. De Warmtewet dient ertoe om gebonden verbruikers te
+                beschermen. Daarom genieten verbruikers enerzijds een aantal rechten en kennen
+                warmteleveranciers anderzijds een aantal verplichtingen. De ACM acht het zeer onwenselijk als
+                een warmteleverancier er niet mee bekend is of ten onrechte niet erkent warmteleverancier te zijn.
+                Dit brengt de wettelijk beschermde positie van de gebonden verbruiker namelijk in gevaar.
+
+            25. De ACM vindt dat het, gelet op voorgaande, des te meer klemt dat uit de stukken die EETRIP aan
+                de ACM heeft verstrekt, blijkt dat ook EETRIP zelf al langere tijd bekend was met de
+                toepasselijkheid van de Warmtewet en haar kwalificatie als warmteleverancier. In het navolgende
+                bespreekt de ACM een aantal van deze stukken.
+
+            26. In 2014 is voor de realisatie van het warmtesysteem ten behoeve van de Gebouwen De Trip door
+                EETRIP onderzoek gedaan naar de geldende wet- en regelgeving met betrekking tot het ‘Warmte
+                leverantie systeem’. Dit blijkt uit de hierna aangehaalde tekst uit de bijlage (notitie) bij de brief van
+                [vertrouwelijk] van 24 maart 2014, luidende als volgt:26
+
+                           “3. Warmtewet
+                           De warmtewet stelt duidelijk dat de vergunningsplicht niet aan de orde is bij een totale
+                           warmteleverantie beneden de 10.000 GJ. In project de Trip zal de warmtelevering niet boven
+                           de [vertrouwelijk] GJ uitkomen en is de exploitatie vergunningsvrij. Dat wil overigens niet
+                           zeggen dat exploitatie niet hoeft te voldoen aan de inhoudelijke aspecten van de Warmtewet.
+                           [vertrouwelijk] zal hieromtrent een Legal Opinion geven. (….).” (onderstreping toegevoegd)
+
+            27. SSH en COM4Trip B.V. zijn in de Overeenkomst SSH-EETRIP overeengekomen dat COM4Trip
+                B.V. [vertrouwelijk]. Dit blijkt uit artikel 4.4 van de Overeenkomst SSH-EETRIP:
+
+                           “[vertrouwelijk]”                             (onderstreping                      toegevoegd)
+
+                           In de Overeenkomst SSH-EETRIP is COM4Trip B.V. als “[vertrouwelijk]” gedefinieerd en is
+                           SSH als “[vertrouwelijk]” gedefinieerd.
+
+
+
+     25
+          ACM/IN/1025712.
+     26
+          ACM/IN/999995, reactie op uw informatieverzoek van 4 juni 2025, Bijlage 2 De Trip, p. 212.
+
+
+
+                                                                                                                      6/37
+Autoriteit Consument en Markt                                                                                     Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+          28. Tot slot is in een brief van EETRIP van 6 december 2021 aan een bewoner van de Gebouwen De
+              Trip onder meer het volgende vermeld:27
+
+                        “Toelichting op de Warmtewet:
+                        De Warmtewet is van toepassing op de warmtelevering aan uw appartement. (…)”.
+
+          29. De ACM concludeert dat EETRIP kwalificeert als warmteleverancier en zich daarom aan de
+              Warmtewet moet houden. De ACM beoordeelt hierna of EETRIP ook daadwerkelijk in overtreding
+              is van de Warmtewet. De ACM heeft er daarbij voor gekozen om te beoordelen of EETRIP zich in
+              het bijzonder houdt aan de verplichtingen die zij heeft die de informatiepositie van verbruikers en
+              de ACM verstevigt, waaronder haar informatieverplichtingen ten aanzien van storingen, de
+              goederen en diensten die zij levert en tegen welke voorwaarden, de te voeren
+              geschilbeslechtingsprocedure en de warmtenetten die zij beheert. Deze informatie biedt
+              verbruikers meer mogelijkheden om hun recht te halen waar dat gepast is en beschermt deze
+              verbruikers zo tegen misbruik. Vanzelfsprekend is EETRIP als warmteleverancier zelf
+              verantwoordelijk voor de proactieve naleving van de gehele Warmtewet. 28
+
+
+     3.2. Storingsregistratie
+
+          30. Op grond van artikel 2, zevende lid van de Warmtewet moet EETRIP als warmteleverancier een
+              storingsregistratie betreffende de levering van warmte bijhouden en jaarlijks op geschikte wijze
+              publiceren. EETRIP heeft aangegeven dat zij geen storingsregistratie publiceert en geen
+              storingsregistratie bijhoudt, omdat zij niet kwalificeert als leverancier in de zin van de Warmtewet. 29
+
+          31. De ACM deelt het standpunt van EETRIP niet. In paragraaf 3.1 heeft de ACM geoordeeld dat
+              EETRIP kwalificeert als warmteleverancier als bedoeld in de Warmtewet en op de levering van
+              warmte door EETRIP de Warmtewet van toepassing is. Dit betekent dat de wettelijke verplichting
+              tot het bijhouden en publiceren van een storingsregistratie van toepassing is op EETRIP.
+
+          32. Het doel van het bijhouden en publiceren van een storingsregistratie is om te kunnen bepalen
+              wanneer een compensatie door de warmteleverancier aan de verbruiker moet worden verstrekt. 30
+              Ook kan de informatie mede gebruikt worden om te bepalen of er sprake is van betrouwbare
+              levering.31 Het bijhouden en publiceren van storingen bevordert transparantie en verstevigt
+              daarmee de positie van verbruikers. Om te kunnen bepalen of een compensatie moet worden
+              verstrekt, dient de leverancier vast te (kunnen) stellen wanneer een storing heeft plaatsgevonden,
+              hoe lang deze heeft geduurd en welke verbruikers hierdoor getroffen zijn. De warmteleverancier
+              moet in beginsel compensatie uitkeren bij storingen die langer dan 8 uur duren (zogenaamde
+              “ernstige storingen”). De leverancier moet daarom een storingsregistratie bijhouden en publiceren
+              die ten minste aan de volgende vereisten voldoet:32
+                 • Voor storingen langer dan 8 uur, per storing:
+                     o De datum van het tijdstip van de aanvang van de storing;
+                     o Hoe lang deze heeft geduurd;
+                     o Het warmtenet of project waar de storing plaatsvond; en
+
+     27
+        ACM/IN/999995, reactie op uw informatieverzoek van 4 juni 2025, Trip – brief compensatie periode november december 2020
+     de trip.pdf.
+     28
+        ACM Leidraad Warmtelevering: Verplichtingen voor de warmteleverancier, 11 maart 2025, ACM/UIT/642892.
+     29
+        ACM/IN/1003660, Reactie op informatieverzoek Energie Exploitatie De Trip B.V. (deel 2), Reactie Informatieverzoek
+     2025.06.24 (incl. Bijlagen) (5334605.1).pdf p. 1-3.
+     30
+        Op grond van artikel 3a van de Warmtewet keert een warmteleverancier namelijk een compensatie uit bij een ernstige storing
+     in de levering als bedoeld in artikel 3a van de Warmtewet. Zie ook Kamerstukken II 2010/11, 32839, nr 3, p. 14.
+     31
+        Kamerstukken II 2010/11, 32839, nr. 7, p. 17.
+     32
+        Kamerstukken II 2010/11, nr. 3, p. 14; nieuwsbericht van de ACM van 16 december 2021,
+     https://www.acm.nl/nl/publicaties/acm-treedt-op-tegen-warmteleveranciers-die-storingsregistratie-niet-niet-goed-publiceren;
+     Besluit van de ACM d.d. 26 november 2021, ACM/UIT/566056; Besluit van de ACM d.d. 26 november 2021, ACM/UIT/563744;
+     Besluit van de ACM d.d. 2 mei 2023, ACM/UIT/596587; Rb. Rotterdam, 5 juli 2023, ECLI:NL:RBROT:2023:7389; en Rb.
+     Rotterdam, 22 mei 2024, ECLI:NL:RBROT:2024:4970.
+
+
+
+                                                                                                                            7/37
+Autoriteit Consument en Markt                                                                             Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+                         o   Welke verbruikers getroffen zijn. Dit betekent dat het aantal verbruikers en het getroffen
+                             (onderdeel van het) warmtenet duidelijk moeten worden, op basis waarvan individuele
+                             verbruikers weten of zij recht hebben op compensatie.
+                    •    Voor storingen korter dan 8 uur: hoeveel van deze storingen er in totaal zijn geweest en wat
+                         de gemiddelde storingsduur was.
+
+            33. De storingsregistratie dient op geschikte wijze te worden gepubliceerd. Een geschikte wijze houdt
+                in: publicatie via een medium dat toegankelijk is voor alle verbruikers. Dit kan bijvoorbeeld een
+                openbaar toegankelijke website zijn of een app of portal die voor alle verbruikers toegankelijk is.
+                De storingsregistratie dient jaarlijks te worden gepubliceerd. Onder jaarlijks publiceren verstaat de
+                ACM dat een warmteleverancier zo snel mogelijk, maar in ieder geval in het eerste kwartaal na
+                afloop van het voorgaande jaar een storingsregistratie publiceert. De ACM vindt het belangrijk dat
+                de storingsregistratie in het eerste kwartaal wordt gepubliceerd, zodat de verbruikers op grond van
+                de storingsregistratie kunnen controleren of zij recht hebben op storingscompensatie en, zo ja, of
+                deze (tijdig) is uitbetaald.33 Een warmteleverancier moet ook een storingsregistratie publiceren als
+                er geen storingen zijn geweest. In dat geval dient de warmteleverancier aan te geven dat er over
+                het afgelopen jaar geen storingen hebben plaatsgevonden.
+
+            34. De ACM concludeert dat EETRIP artikel 2, zevende lid van de Warmtewet overtreedt doordat zij
+                geen storingsregistratie voor storingen in de warmtelevering heeft gepubliceerd over de jaren 2023
+                en 2024. De ACM ziet hierin aanleiding om op grond van artikel 18, eerste lid van de Warmtewet
+                aan EETRIP een last onder dwangsom op te leggen, strekkende tot het ongedaan maken dan wel
+                zo veel als redelijkerwijs mogelijk, op basis van de nog beschikbare gegevens, wegnemen of
+                beperken van de gevolgen van deze overtreding. De last onder dwangsom is geformuleerd in het
+                dictum.
+
+            35. De ACM concludeert ook dat een gevaar voor herhaling van de in het vorige randnummer
+                genoemde overtreding bij nieuwe verbruikers voor de hand ligt, omdat er sprake is van een grote
+                mate van continuïteit van de aan de orde zijnde overtreding. Het gaat immers om een overtreding
+                van hetzelfde voorschrift met dezelfde strekking, dezelfde betrokken rechtspersoon (EETRIP) en
+                dezelfde locatie (Gebouwen De Trip). Het tijdsverloop sinds de eerdere overtreding is gering. De
+                door EETRIP voorgenomen wijzigingen in het Systeem maken dit niet anders, zoals ook verder
+                toegelicht in reactie op de zienswijze in hoofdstuk 4 van dit besluit. De ACM ziet hierin aanleiding
+                om op grond van artikel 18, eerste lid van de Warmtewet aan EETRIP een last onder dwangsom
+                op te leggen, strekkende tot voorkoming van herhaling van deze overtreding. Ook deze last onder
+                dwangsom is geformuleerd in het dictum.
+
+
+     3.3. Storingscompensatie
+
+            36. Het doel van het bijhouden en publiceren van een storingsregistratie is, zoals in paragraaf 3.2
+                geconcludeerd, om te kunnen bepalen wanneer de warmteleverancier compensatie aan de
+                verbruiker moet uitkeren. Zo volgt uit artikel 3a van de Warmtewet dat de warmteleverancier
+                verplicht is om bij ernstige storingen in de levering van warmte een compensatie te betalen aan
+                verbruikers, wanneer de oorzaak van de ernstige storing is gelegen in het warmtenet van de
+                leverancier, de afleverset voor warmte (indien deze het eigendom is van de leverancier), de
+                aansluiting, of het inpandig leidingstelsel van de gebouweigenaar. Als warmteleverancier is
+                EETRIP ook gehouden aan deze verplichting.
+
+            37. Artikel 1 van de Warmteregeling beschrijft dat onder een storing wordt verstaan “iedere
+                onderbreking van de levering van warmte, met uitzondering van voorziene onderbrekingen als
+                bedoeld in artikel 4, tweede lid van de Warmtewet en contractueel overeengekomen
+                onderbrekingen van de levering van warmte”. Van een ‘ernstige storing’ zoals bedoeld in artikel 3a
+     33
+          Zie de besluiten van de ACM in de vorige voetnoot.
+
+
+
+                                                                                                                   8/37
+Autoriteit Consument en Markt                                                                                    Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+              van de Warmtewet en waarvoor in beginsel de compensatieverplichting bestaat, is volgens artikel 4
+              van de Warmteregeling sprake wanneer het om een storing gaat die langer dan 8 uur duurt.
+
+          38. Er bestaat een aantal uitzonderingen op de compensatieverplichting bij ernstige storingen. Zo is de
+              leverancier volgens artikel 3a, tweede lid van de Warmtewet niet verplicht tot het uitkeren van een
+              compensatie:
+                  • Indien de ernstige storing het gevolg is van een extreme situatie die niet aan de
+                      leverancier of netbeheerder kan worden toegerekend; 34 of
+                  • Indien de ernstige storing minder dan 24 uur duurt en in een periode van 12 maanden
+                      voorafgaand aan de storing zich geen storingen hebben voorgedaan in hetzelfde
+                      warmtenet, in hetzelfde onderdeel van het warmtesysteem of in hetzelfde inpandig
+                      leidingstelsel van de gebouweigenaar.
+
+          39. Artikel 4 van de Warmteregeling bepaalt de hoogte van de storingscompensatie. Het gaat om EUR
+              35,- bij een storing met een duur van 8 tot 12 uur, vermeerderd met EUR 20,- voor elke volgende
+              aaneengesloten periode van 4 uur. Voor het vaststellen van de hoogte van de compensatie moet
+              dus worden bepaald wat de begin- en eindtijd en de tijdsduur is van een storing, aan de hand
+              waarvan de leverancier de hoogte van de compensatie moet vaststellen. De compensatie moet
+              binnen zes maanden na het herstel van de onderbreking worden betaald.
+
+          40. Artikel 4, derde lid van de Warmtewet schrijft voor hoe de leverancier het tijdstip van aanvang en
+              einde van de storing dient vast te stellen. Een storing voor alle verbruikers die zijn aangesloten op
+              het door de storing getroffen primaire warmtenet:
+                   •    begint op “het tijdstip van ontvangst van de eerste melding van een storing of, indien
+                        melding niet plaatsvindt of dit eerder is, het tijdstip van vaststelling van de storing door de
+                        leverancier of de netbeheerder”,
+                   •    eindigt op “het tijdstip waarop, door middel van een controle door de leverancier of
+                        netbeheerder, is vastgesteld dat de storing is hersteld voor alle getroffen verbruikers.”
+
+          41. Op basis van signalen uit de media, ziet de ACM reden om te onderzoeken of EETRIP een
+              correcte storingscompensatieregeling hanteert.35 Ook uit gesprekken met enkele verbruikers blijkt
+              dat er diverse twistpunten bestaan tussen EETRIP en verbruikers over de uitbetaling en/of hoogte
+              van storingscompensatie.36 Daarom heeft de ACM EETRIP in een informatieverzoek verzocht om
+              in te gaan op het proces van registratie van storingen en om inzicht te geven in het proces van het
+              moment van ontvangst van een storingsmelding of vaststelling van een storing tot het eventueel
+              uitkeren van storingscompensatie bij de warmtesystemen voor de Gebouwen De Trip.37 Op basis
+              van de beantwoording van EETRIP op het informatieverzoek stelt de ACM vast dat er aanwijzingen
+              zijn dat EETRIP niet volledig in lijn handelt met de verplichtingen die zij heeft op basis van de
+              Warmtewet ten aanzien van de storingscompensatie. De ACM licht dit toe.
+
+          42. EETRIP stelt in haar reactie op het informatieverzoek dat zij verantwoordelijk is voor storingen aan
+              het Systeem.38 Verbruikers kunnen een melding doen van “afwijkingen in het systeem”. Het niet
+              behalen van de gevraagde binnentemperatuur (20 graden) en/of het niet dagelijks opwarmen van
+              de boiler wordt door EETRIP als “afwijking in het systeem” gekwalificeerd. Als een defect apparaat
+              dat onder het Systeem valt oorzaak is van de klacht van de verbruiker, dan wordt dat apparaat
+              onder verantwoordelijkheid van EETRIP gerepareerd en wordt dit geregistreerd. Het Systeem
+     34
+        Zie voor een verdere invulling artikel 4a van de Warmteregeling.
+     35
+        https://www.rtvutrecht.nl/video/5826455/geen-warm-water-of-verwarming-in-utrechtse-appartementencomplex-honderden-
+     bewoners-de-dupe; https://www.rtvutrecht.nl/nieuws/3704895/utrechts-appartementencomplex-weer-zonder-warm-water-en-
+     verwarming-lekkage-in-meterkast; https://www.ad.nl/utrecht/frustratie-bij-bewoners-appartementen-die-al-dagen-zonder-warm-
+     water-zitten-iedereen-wijst-naar-elkaar~a32ded26/; https://www.ad.nl/utrecht/slechts-vier-dagen-konden-bewoners-
+     appartementen-van-hete-douche-en-warm-huis-genieten-gaan-we-weer~ab1b60db/.
+     36
+        ACM/INT/532878; ACM/INT/532943; ACM/INT/532951.
+     37
+        ACM/UIT/647325.
+     38
+        ACM/IN/1003660, Reactie op informatieverzoek Energie Exploitatie De Trip B.V. (deel 2), Reactie Informatieverzoek
+     2025.06.24 (incl. Bijlagen)(5334605.1).pdf.
+
+
+
+                                                                                                                           9/37
+Autoriteit Consument en Markt                                                                         Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+              wordt volgens EETRIP periodiek gemonitord via de thermostaat en via een separate regelaar voor
+              de centrale delen, die live kan worden ingezien. EETRIP geeft aan dat er geen specifiek tijdstip van
+              begin en einde van storingen wordt geregistreerd.
+
+          43. Ten aanzien van het eventueel uitkeren van een storingscompensatie stelt EETRIP in haar reactie
+              dat zij bij verzoeken tot storingscompensatie beoordeelt of er sprake is geweest van een “afwijking
+              van de deugdelijke werking van het systeem”. EETRIP beoordeelt dit aan de hand van de
+              behaalde temperatuur in de woning, het (al dan niet) dagelijks opwarmen van de boilers en het
+              beschikbaar zijn van debiet in de gezamenlijke installatie in de periodes dat er voldoende vraag is.
+              Als er sprake is van een “ernstige onderbreking in het systeem” zegt EETRIP de Warmtewet te
+              volgen bij de wijze waarop de hoogte van de compensatievergoeding wordt vastgesteld, voor zover
+              het gaat om dienstverlening met betrekking tot verwarming en warm water. EETRIP past hier
+              artikel 4, zesde lid van de Warmteregeling volgens haarzelf “onverplicht” toe en stelt binnen zes
+              maanden na herstel van de onderbreking te compenseren. Bij verminderde kwaliteit van levering is
+              er een terugbetalingsregeling conform de Warmtewet volgens EETRIP.
+
+          44. Op basis van de antwoorden en ingediende stukken van EETRIP oordeelt de ACM als volgt. Zoals
+              in de vorige paragraaf is beschreven, houdt EETRIP geen storingsregistratie bij en publiceert
+              EETRIP ook geen storingsregistratie. Daardoor is het voor verbruikers en voor de ACM niet
+              inzichtelijk en controleerbaar of er sprake is geweest van storingen waarvoor EETRIP compensatie
+              moet betalen, hoe lang storingen hebben geduurd en op hoeveel compensatie verbruikers
+              eventueel recht hebben. Deze onduidelijkheid leidt ertoe dat verbruikers mogelijk niet of niet in alle
+              gevallen waarin zij recht hebben op een compensatie, compensatie krijgen. Bovendien heeft
+              EETRIP in de leveringsovereenkomsten niets opgenomen over de gehanteerde
+              compensatieregeling bij ernstige storingen, wat deze compensatieregeling inhoudt en hoe
+              verbruikers aanspraak kunnen maken op storingscompensatie. Voor verbruikers is het daarom
+              onduidelijk wat hun rechten zijn ten aanzien van compensatie bij ernstige storingen.
+
+          45. De ACM kan aan de hand van de reactie van EETRIP wel vaststellen dat EETRIP niet de definitie
+              van ‘storing’ en ‘ernstige storing’ hanteert zoals bedoeld in de Warmtewet. EETRIP gaat immers bij
+              de vaststelling of sprake is van een afwijking in het Systeem uit van de temperatuur in de woning,
+              het (al dan niet) dagelijks opwarmen van de boilers en het beschikbaar zijn van debiet in de
+              gezamenlijke installatie in de periodes dat er voldoende vraag is. Voor het vaststellen van een
+              ernstige storing in de zin van de Warmtewet is echter slechts relevant of er een onderbreking was
+              in de levering van warmte van meer dan 8 uur. 39 Het gaat er daarbij om vanaf welk moment de
+              verbruiker op het overdrachtspunt naar zijn woning geen warmte meer geleverd krijgt, en vanaf
+              wanneer weer wel.40
+
+          46. Uit het voorgaande volgt dat onduidelijk is of EETRIP op de juiste wijze ernstige storingen (h)erkent
+              waarvoor compensatie moet worden uitgekeerd en dat EETRIP geen begin- en eindtijden van
+              storingen vastlegt. Dit is relevant voor het bepalen van het exacte moment waarop een verbruiker
+              recht heeft op compensatie en hoe hoog die compensatie dan moet zijn. Hierdoor is ook
+              onduidelijk of EETRIP op de juiste wijze storingscompensatie uit heeft gekeerd en uitkeert. Dit acht
+              de ACM des te kwalijker nu EETRIP geen storingsregistratie bijhoudt en publiceert.
+
+          47. De storingscompensatieregeling uit de Warmtewet moet correct worden toegepast door
+              warmteleveranciers. De storingscompensatieregeling dient er immers voor om warmteleveranciers
+              een financiële prikkel te geven om het transport en levering van warmte op orde te houden. 41 De
+              ACM ziet in het voorgaande dan ook aanleiding om EETRIP een bindende gedragslijn op te
+              leggen, teneinde te verzekeren dat EETRIP compensatie uitkeert voor iedere onderbreking van de
+
+
+     39
+        Zie ook Besluit van de ACM van 2 mei 2023, ACM/UIT/596587, p. 8.
+     40
+        Rb. Rotterdam, 22 mei 2024, ECLI:NL:RBROT:2024:4970, r.o. 24-25.
+     41
+        Kamerstukken II 2016/17, 34723, p. 28.
+
+
+
+                                                                                                              10/37
+Autoriteit Consument en Markt                                                                                      Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+              levering van warmte die langer dan 8 uur duurt. 42 Op grond van artikel 17 van de Warmtewet kan
+              de ACM een bindende gedragslijn opleggen als dit nodig is voor het bevorderen van de naleving
+              van bepalingen uit de Warmtewet. Voor een bindende gedragslijn is niet vereist dat de ACM een
+              overtreding vaststelt. Een bindende gedragslijn betekent dat de ACM aan een leverancier een
+              zelfstandige last oplegt tot het verrichten van bepaalde handelingen. Met de bindende gedragslijn
+              kan de ACM gedragsvoorschriften opleggen waarmee de ACM de normen in de Warmtewet uitlegt.
+
+          48. Verder benadrukt de ACM met de bindende gedragslijn dat EETRIP op een juiste manier, en in lijn
+              met artikel 4 van de Warmteregeling, de begin- en eindtijd van een storing in de zin van de
+              Warmtewet vast moet stellen. EETRIP dient daarbij te bepalen of uit het monitoringsysteem volgt
+              dat een storing in de zin van de Warmtewet eerder is begonnen dan het tijdstip waarop EETRIP
+              een melding van een verbruiker ontvangt. EETRIP dient de aanvangstijd van storingen in de zin
+              van de Warmtewet vast te stellen op het tijdstip van ontvangst van de eerste melding van een
+              storing of, indien melding niet plaatsvindt of dit eerder is, het tijdstip van vaststelling van de storing
+              door de monitoringssystemen van EETRIP of onderaannemers van EETRIP. Voorts dient EETRIP
+              de eindtijd van storingen in de zin van de Warmtewet vast te stellen op het tijdstip waarop, door
+              middel van een controle door EETRIP of onderaannemers van EETRIP, is vastgesteld dat de
+              storing is hersteld voor alle getroffen verbruikers. Bepalend voor de begin- en eindtijd van de
+              storing is de periode gedurende welke de levering van warmte aan verbruikers was onderbroken,
+              en verbruiker dus geen warmte geleverd heeft gekregen. EETRIP dient de vraag of de levering van
+              warmte is onderbroken dus niet te beantwoorden op basis van de ruimtetemperatuur in een woning
+              of het wel of niet dagelijks opwarmen van de boiler, maar op basis van een onderbreking in de
+              feitelijke levering van het water dat zij ten behoeve van ruimteverwarming en verwarming van
+              tapwater aan de verbruiker levert.
+
+          49. De ACM legt EETRIP, op grond van artikel 17 van de Warmtewet, een bindende gedragslijn op,
+              strekkende tot naleving van de Warmtewet. De bindende gedragslijn is geformuleerd in het dictum.
+
+
+     3.4. Informatieverplichtingen
+
+          50. In de precontractuele fase, dat wil zeggen de periode vóór het sluiten van een
+              leveringsovereenkomst, rusten op warmteleveranciers diverse informatieverplichtingen tegenover
+              (toekomstige) verbruikers. Deze verplichtingen vloeien voort uit artikel 3 van de Warmtewet en uit
+              Boek 6 van het BW. Deze informatie moet verbruikers beschermen, doordat zij al vóór het aangaan
+              van de leveringsovereenkomst weten wat zij van hun warmteleverancier mogen verwachten en
+              waar zij als verbruiker recht op hebben. In het uiterste geval kan een verbruiker dan nog
+              voorkomen gebonden te zijn aan de leveringsovereenkomst, bijvoorbeeld door (bij de Gebouwen
+              De Trip) af te zien van de huurovereenkomst voor de woning. De informatieverplichtingen uit de
+              Warmtewet en Boek 6 van het BW zijn met name van belang omdat de verbruiker zich in een
+              zwakkere positie bevindt en beschikt over minder informatie dan de warmteleverancier. Door de
+              verbruiker te informeren over de verplichtingen van de warmteleverancier en zijn rechten als
+              verbruiker, wordt de verbruiker in de gelegenheid gesteld om de warmteleverancier aan te spreken
+              op zijn gedrag en zijn rechten uit te oefenen.43
+
+          51. Uit artikel 3, eerste lid van de Warmtewet volgt dat de warmteleverancier de volgende informatie
+              aan een verbruiker moet verstrekken voordat de verbruiker gebonden is aan de overeenkomst:
+                   • Een duidelijke en volledige omschrijving van de te leveren goederen en diensten en de
+                        kwaliteitsniveaus daarvan, waaronder in ieder geval:
+                             o De minimum- en maximumtemperatuur van de te leveren warmte;
+
+
+     42
+        Met uitzondering van voorziene onderbrekingen als bedoeld in artikel 4, tweede lid van de Warmtewet, contractueel
+     overeengekomen onderbrekingen van de levering van warmte en de situaties genoemd in artikel 3a, tweede lid van de
+     Warmtewet.
+     43
+        Hoge Raad, 12 november 2021, ECLI:NL:HR:2021:1677, r.o. 3.1.5-3.1.6.
+
+
+
+                                                                                                                            11/37
+Autoriteit Consument en Markt                                                                                     Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+                             o De prijzen en voorwaarden van de te leveren goederen en diensten;
+                   •    Een omschrijving van de terugbetalingsregeling als de geleverde goederen en diensten
+                        niet aan de overeengekomen kwaliteitsniveaus voldoen.
+
+          52. Artikel 3 van de Warmtewet verwijst ook naar de informatieverplichtingen uit artikel 6:230m, eerste
+              lid en artikel 6:230v van het BW. Artikel 6:230m, eerste lid van het BW stelt dat de
+              warmteleverancier – als handelaar in de zin van artikel 6:230g, eerste lid, onder b van het BW – de
+              consument voordat hij gebonden is aan de overeenkomst moet informeren over bepaalde
+              geldende voorwaarden, rechten en plichten, zoals de toepasselijke buitengerechtelijke klachten- en
+              geschilbeslechtingsprocedures.44
+
+          53. Artikel 6:230v van het BW bepaalt de wijze waarop de informatie aan de verbruiker moet worden
+              verstrekt. Zo bepaalt dit artikel dat de informatie “op een wijze die passend is voor de gebruikte
+              middelen voor communicatie op afstand en in duidelijke en begrijpelijke taal” moet worden
+              verstrekt. Als de informatie op een duurzame gegevensdrager wordt verstrekt, dan moet dat “in
+              leesbare vorm”.
+
+          54. De informatieverplichtingen uit artikel 6:230m, eerste lid van het BW en artikel 6:230v van het BW
+              zijn volgens artikel 3 van de Warmtewet van overeenkomstige toepassing op een overeenkomst tot
+              levering van warmte tussen een leverancier en een zakelijke verbruiker.
+
+          55. De warmteleverancier moet bovengenoemde informatie “voorafgaand aan het afsluiten van de
+              leveringsovereenkomst” en “op duidelijke en begrijpelijke wijze” verstrekken. De informatie hoeft
+              niet per se in de leveringsovereenkomst verstrekt te worden, maar kan bijvoorbeeld ook via andere
+              (digitale) communicatie aan de verbruiker, zoals in een welkomstpakket, worden opgenomen, als
+              het maar voorafgaand aan het sluiten van de overeenkomst wordt verstrekt.45 Daarbij moet kunnen
+              worden aangetoond dat de informatie inderdaad voorafgaand aan het sluiten van de overeenkomst
+              is verstrekt.46 De informatie moet op schrift zijn gedeeld, of op een “duurzame gegevensdrager”
+              staan die aan verbruiker is verstrekt.47
+
+          56. Hierna licht de ACM toe dat EETRIP in overtreding is van:
+
+                   •    Artikel 3, eerste lid, onder a van de Warmtewet, omdat EETRIP niet voorafgaand aan het
+                        sluiten van de leveringsovereenkomst, alle essentiële informatie ten aanzien van de te
+                        leveren goederen en diensten en de kwaliteitsniveaus daarvan aan verbruikers heeft
+                        verstrekt;
+                   •    Artikel 3, eerste lid, onder b van de Warmtewet, omdat EETRIP niet alle verbruikers heeft
+                        geïnformeerd over de gehanteerde terugbetalingsregeling; en
+                   •    Artikel 8.2a van de Wet handhaving consumentenbescherming, omdat EETRIP als zijnde
+                        handelaar overeenkomsten als bedoeld in artikel 6:230m van het BW aangaat, maar de
+                        verplichtingen uit artikel 6:230m van het BW niet in acht neemt. EETRIP is namelijk in
+                        overtreding van artikel 6:230m, eerste lid, onder t van het BW in samenhang bezien met
+                        artikel 3, eerste lid van de Warmtewet, omdat EETRIP verbruikers niet heeft geïnformeerd
+                        over dat zij aangesloten is bij de geschillencommissie Consumentenzaken en dat
+                        verbruikers geschillen die voortvloeien uit de leveringsovereenkomst kunnen voorleggen
+                        aan de geschillencommissie.
+
+
+
+
+     44
+        Rb. Rotterdam, 23 juli 2024, ECLI:NL:RBAMS:2024:7541; Rb. Zeeland-West-Brabant, 14 februari 2024,
+     ECLI:NL:RBZWB:2024:921.
+     45
+        Kamerstukken II, 2016/17, 34723, nr. 3, p. 49; Rb. Amsterdam, 23 juli 2024, ECLI:NL:RBAMS:2024:75421, r.o. 2.4.
+     46
+        Rb. Amsterdam, 6 december 2022, ECLI:NL:RBAMS:2022:6972, r.o. 6-7.
+     47
+        Rb. Amsterdam, 1 juli 2024, ECLI:NL:RBAMS:2024:4249, r.o. 6-9.
+
+
+
+                                                                                                                          12/37
+Autoriteit Consument en Markt                                                                                      Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+
+     3.4.1. Informatieverplichting: kwaliteitsniveaus
+
+          57. De ACM stelt vast dat EETRIP artikel 3, eerste lid van de Warmtewet overtreedt, doordat EETRIP
+              niet voordat de verbruiker gebonden is aan de overeenkomst alle essentiële informatie ten aanzien
+              van de te leveren goederen en diensten en de kwaliteitsniveaus daarvan aan verbruikers verstrekt.
+              De ACM licht dit hierna toe.
+
+          58. Bewoners van de Gebouwen De Trip sluiten een huurovereenkomst voor de woning af met de
+              verhuurder Jebber/SSH.48 In deze huurovereenkomst staat dat de bewoner verplicht is een
+              huurovereenkomst af te sluiten met EETRIP voor de huur van de apparatuur voor het klimaat en
+              energiesysteem, inclusief de levering van warmte, koude en stroom. De bewoner moet zich
+              daarvoor zelf aanmelden bij EETRIP.49
+
+          59. Nadat de bewoner het aanmeldingsformulier aan EETRIP heeft verstuurd, ontvangt de bewoner
+              van EETRIP de “Huurovereenkomst Warmtepomp, boiler, bron en PV systeem” (de
+              leveringsovereenkomst) met als bijlage de “Bewonersinformatie klimaat- en energiesysteem”.50 In
+              de leveringsovereenkomst en de bijlage staan over en weer de rechten en plichten van de bewoner
+              en EETRIP met betrekking tot het Systeem. Zo wordt uit de leveringsovereenkomst duidelijk dat
+              verbruiker verplicht is om het warmtepompsysteem, het koelsysteem, het PV systeem en de
+              installatie daartussen te huren van EETRIP, en wat de maandelijkse kosten zijn voor verwarmen,
+              koelen en warm tapwater. EETRIP garandeert het “deugdelijk functioneren van het Systeem”.
+              EETRIP garandeert bovendien dat de bewoner voor verwarmen, koelen en tapwater geen andere
+              kosten heeft dan de genoemde huur. Verder wordt uit de leveringsovereenkomst duidelijk dat de
+              boiler eenmaal per dag opwarmt tot een temperatuur van 58 graden en dat de thermostaat in de
+              periode van 1 oktober tot 1 mei wordt ingesteld op een gemiddelde binnentemperatuur van 20
+              graden. Als een bewoner de boiler extra wil opwarmen, wordt de huur met € 0,18 per keer
+              verhoogd. Als de bewoner de thermostaat hoger instelt, dan wordt per halve graad 100 kWh in
+              rekening gebracht bij bewoner. In de bijlage bij de leveringsovereenkomst staat meer informatie
+              over onder andere verwarming, koeling, warmte- en koude opslag en warm water uit de kraan,
+              waaruit onder meer blijkt dat de warmte en koude uit de bodem onder de Gebouwen De Trip wordt
+              gehaald en dit water verder wordt verwarmd of gekoeld ten behoeve van de verwarming en koeling
+              van de woningen.
+
+          60. Zoals uiteengezet in paragraaf 3.2, is de Warmtewet van toepassing op de levering van warmte tot
+              op het overdrachtspunt, dat wil zeggen het punt waarop het warmtenet overgaat in de
+              binneninstallatie.51 Dit volgt uit de definitie van ‘warmtenet’ in artikel 1, eerste lid van de
+              Warmtewet. Uitgangspunt is dat een warmtenet zich uitstrekt tot aan de deurdrempel van een
+              verbruiker. Onderdelen die zich 1) in het gebouw (de woning) van de verbruiker bevinden én 2) tot
+              toe- en afvoer van warmte ten behoeve van dat gebouw (de woning) dienen, worden tot de
+              binneninstallatie gerekend en zijn dus geen onderdeel van het warmtenet. Dat verbruikers ook ten
+              aanzien van (onderdelen van) de binneninstallatie (door verplichte huur) gebonden zijn aan
+              EETRIP maakt dit onder de huidige Warmtewet niet anders.52
+
+
+
+
+     48
+        ACM/INT/532951.
+     49
+        ACM/IN/1014312.
+     50
+        ACM/IN/1003660, Reactie op informatieverzoek Energie Exploitatie De Trip B.V. (deel 2), Reactie Informatieverzoek
+     2025.06.24 (incl. Bijlagen)(5334605.1).pdf; ACM/IN/999995, Reactie op uw informatieverzoek van 4 juni 2025, Trip - Bijlage 9a
+     Bewonersinformatie klimaat- en energiesysteem.pdf.
+     51
+        Rb. Rotterdam, 23 april 2020, ECLI:NL:RBROT:2020:3708.
+     52
+        Rb. Rotterdam, 23 april 2020, ECLI:NL:RBROT:2020:3708.
+
+
+
+                                                                                                                            13/37
+Autoriteit Consument en Markt                                                                                          Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+          61. Dit brengt met zich mee dat de wettelijke verplichtingen voor een warmteleverancier, en daarmee
+              de bescherming voor verbruikers op basis van de Warmtewet, strekt tot aan het overdrachtspunt. 53
+              Een duidelijke en volledige omschrijving van de te leveren goederen en diensten en de
+              kwaliteitsniveaus daarvan moeten daarom in ieder geval zien op de goederen en diensten die de
+              verbruiker geleverd krijgt (tot) op het overdrachtspunt. Zonder deze informatie kan een verbruiker
+              namelijk niet vaststellen of de warmteleverancier zijn verplichtingen op grond van de Warmtewet
+              naleeft en welke rechten de verbruiker dan heeft. Dit vraagt zodoende om een eenduidig
+              onderscheid in de leveringsovereenkomst tussen de (gereguleerde) warmtelevering en de
+              (ongereguleerde) verhuur van de binneninstallatie.
+
+          62. Artikel 3, eerste lid, onder a van de Warmtewet schrijft voor dat een warmteleverancier in ieder
+              geval de minimum- en maximumtemperatuur van de te leveren warmte en de prijzen en
+              voorwaarden van de te leveren goederen en diensten aan de verbruiker moet verstrekken. Uit de
+              toelichting bij de Warmtewet volgt dat “in de overeenkomst op eenduidige wijze moet worden
+              vastgelegd welke goederen en diensten door de leverancier aan de verbruiker worden geleverd.
+              Tevens dient voor de verbruiker inzichtelijk te zijn onder welke voorwaarden deze goederen en
+              diensten worden geleverd.”54 Het begrip ‘goederen en diensten’ moet ruim worden opgevat: “ook
+              met de energielevering verwante goederen en diensten, zoals de huur van warmtemeters en
+              warmtewisselaars en onderhoudscontracten, vallen onder de reikwijdte van dit begrip.” 55 Onder de
+              kwaliteitsniveaus moet in ieder geval verstaan worden “de temperatuur van de te leveren warmte,
+              de chemische samenstelling van het water waarmee warmte wordt geleverd en de druk waaronder
+              warm water wordt geleverd, en (op) het verhelpen van storingen. De minimum- en
+              maximumtemperatuur van de te leveren warmte moet in ieder geval onderwerp zijn van de tussen
+              leverancier en verbruiker overeen te komen kwaliteitsniveaus.”56
+
+          63. De ACM stelt vast dat in de leveringsovereenkomst van EETRIP informatie staat die betrekking
+              heeft op het boilervat (standaard opgewarmd tot minimaal 58°C en kosten) en de thermostaat
+              (kosten bij een hogere ruimtetemperatuur dan 20°C).57 Deze informatie ziet echter niet (ook) op de
+              te leveren warmte (op het overdrachtspunt): het boilervat en de thermostaat zijn onderdeel van de
+              binneninstallatie. Deze informatie ziet dus slechts op de met de warmtelevering verwante goederen
+              en diensten, die EETRIP ook verplicht is te verstrekken aan verbruikers, maar niet de
+              warmtelevering zelf.58 Ook de bijlage bij de leveringsovereenkomst die door EETRIP wordt
+              meegestuurd bevat niet de vereiste informatie. Daarmee voldoet EETRIP met de
+              leveringsovereenkomst en bijbehorende bijlage niet aan de informatieverplichtingen zoals bedoeld
+              in artikel 3, eerste lid, onder a van de Warmtewet. Volledigheidshalve stelt de ACM vast dat de
+              informatie ook niet via andere kanalen wordt verstrekt.
+
+          64. De ACM is van oordeel dat EETRIP artikel 3, eerste lid, onder a van de Warmtewet overtreedt
+              doordat EETRIP haar verbruikers, voordat zij gebonden zijn aan een overeenkomst, niet op een
+              duidelijke en begrijpelijke wijze een duidelijke en volledige omschrijving van de te leveren goederen
+              en diensten en de overeengekomen kwaliteitsniveaus daarvan verstrekt, welke in ieder geval
+              betrekking hebben op de minimum- en maximumtemperatuur van de te leveren warmte. De ACM
+              ziet hierin aanleiding om op grond van artikel 18, eerste lid van de Warmtewet aan EETRIP een
+              last onder dwangsom op te leggen, strekkende tot het ongedaan maken dan wel wegnemen of
+
+     53
+        De verbruikers kunnen, waar van toepassing, ten aanzien van de binneninstallatie beschermd worden door het algemene
+     consumentenrecht en/of het huurrecht. Dit betreft echter een andere vorm van bescherming en brengt over en weer andere
+     rechten en plichten mee voor de warmteleverancier, de verhuurder en de verbruiker.
+     54
+        Kamerstukken II 2005/06, 29048, nr. 15, p. 9.
+     55
+        Kamerstukken II 2005/06, 29048, nr. 15, p. 9.
+     56
+        Kamerstukken II 2005/06, 29048, nr. 15, p. 9.
+     57
+        ACM/IN/999995, Reactie op uw informatieverzoek van 4 juni 2025, 2014014_BR054 huurovk de Trip [vertrouwelijk].pdf
+     (geldig vanaf 14 juni 2022) , Artikel 6.3; 2014014_BR054 huurovk [vertrouwelijk].pdf (geldig vanaf 5 april 2025), Artikel 6.3;
+     201401_BR106 bnr huurovk [vertrouwelijk].pdf (geldig vanaf 1 januari 2025), Artikel 6.3; 2014014_H238 huurovk
+     [vertrouwelijk].pdf (geldig vanaf 29 oktober 2023), Artikel 6.3; 201401_H240 huurovk de trip [vertrouwelijk].pdf (geldig vanaf 16
+     augustus 2022), Artikel 6.3; en 2014014 K11 huurovk De Trip [vertrouwelijk].pdf (geldig vanaf 12 mei 2022), Artikel 6.3.
+     58
+        Kamerstukken II 2005/06, 29048, nr. 15, p. 9.
+
+
+
+                                                                                                                                 14/37
+Autoriteit Consument en Markt                                                                                    Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+              beperken van de gevolgen van de overtreding. De last onder dwangsom is geformuleerd in het
+              dictum. Deze last onder dwangsom ziet op zowel de in deze als in de volgende paragraaf
+              geconstateerde overtreding.
+
+          65. De ACM concludeert ook dat een gevaar voor herhaling van de in het vorige randnummer
+              genoemde overtreding bij nieuwe verbruikers voor de hand ligt, omdat er sprake is van een grote
+              mate van continuïteit van de aan de orde zijnde overtreding. Het gaat immers om een overtreding
+              van hetzelfde voorschrift met dezelfde strekking, dezelfde betrokken rechtspersoon (EETRIP) en
+              dezelfde locatie (Gebouwen De Trip). Het tijdsverloop sinds de eerdere overtreding is gering. De
+              door EETRIP voorgenomen wijzigingen in het Systeem maken dit niet anders, zoals ook verder
+              toegelicht in reactie op de zienswijze in hoofdstuk 4 van dit besluit. De ACM ziet hierin aanleiding
+              om op grond van artikel 18, eerste lid van de Warmtewet aan EETRIP een last onder dwangsom
+              op te leggen, strekkende tot voorkoming van herhaling van deze overtreding. Ook deze last onder
+              dwangsom is geformuleerd in het dictum. Deze last onder dwangsom ziet op zowel de in deze als
+              in de volgende paragraaf geconstateerde overtreding.
+
+
+     3.4.2. Informatieverplichting: terugbetalingsregeling
+
+          66. Zoals in de vorige paragraaf genoemd is het van groot belang dat warmteleveranciers hun
+              verbruikers goed informeren over de te leveren goederen en diensten en de kwaliteitsniveaus
+              daarvan. Een van de redenen daarvoor is dat verbruikers aanspraak maken op een
+              terugbetalingsregeling als de geleverde goederen en diensten niet aan de overeengekomen
+              kwaliteitsniveaus voldoen. Volgens artikel 3, eerste lid, onder b van de Warmtewet moet de
+              leverancier zijn verbruikers ook over die terugbetalingsregeling informeren, voordat de verbruikers
+              gebonden zijn aan de leveringsovereenkomst. Uit de toelichting bij de Warmtewet volgt: “Uit de
+              overeenkomst moet blijken in welke gevallen de verbruiker aanspraak heeft op een vergoeding dan
+              wel terugbetaling, alsmede onder welke voorwaarden, welke in ieder geval betrekking hebben op
+              de termijnen waarbinnen bedoelde uitkeringen door de leverancier aan de verbruiker zullen worden
+              gedaan.”59 De terugbetalingsregeling uit artikel 3, eerste lid, onder b van de Warmtewet is niet
+              hetzelfde als de compensatieregeling uit artikel 3a, eerste lid van de Warmtewet jo. artikel 4 van de
+              Warmteregeling.60
+
+          67. Uit de reactie van EETRIP op het informatieverzoek van de ACM en de verschillende
+              leveringsovereenkomsten die EETRIP aan de ACM heeft toegestuurd, blijkt dat EETRIP in
+              sommige gevallen wel en in andere gevallen geen terugbetalingsregeling heeft opgenomen. De
+              terugbetalingsregeling die in twee van de acht overgelegde overeenkomsten is terug te vinden,
+              luidt als volgt:61
+
+                        “EETRIP is aan de Gebruiker een direct opeisbare boete van EUR 5,-­ verschuldigd per dag
+                        dat het Systeem meer dan 4 uur van die dag niet voldoet aan het bepaalde in deze
+                        Overeenkomst. De Gebruiker heeft naast deze boete geen andere rechten op
+                        (schade)vergoedingen en mag haar verplichtingen niet opschorten. EETRIP zal eventuele
+                        boetes binnen zes maanden verrekenen met de maandelijkse betalingsverplichting van de
+                        Gebruiker.”
+
+          68. Deze terugbetalingsregeling komt echter niet in de andere zes door de ACM ontvangen en
+              onderzochte leveringsovereenkomsten voor.62 De ACM kan ook niet uit andere stukken opmaken
+
+     59
+        Kamerstukken II 2005/06, 29048, nr. 15, p. 9-10.
+     60
+        Rb. Amsterdam, 11 maart 2025, ECLI:NL:RBAMS:2025:2508.
+     61
+        ACM/IN/999995, Reactie op uw informatieverzoek van 4 juni 2025, 2014014_BR106 bnr huurovk [vertrouwelijk].pdf (geldig
+     vanaf 9 mei 2017) en K20 bnr huurovk [vertrouwelijk].pdf (geldig vanaf 1 maart 2021).
+     62
+        ACM/IN/999995, Reactie op uw informatieverzoek van 4 juni 2025, 2014014_BR054 huurovk de Trip [vertrouwelijk].pdf
+     (geldig vanaf 14 juni 2022), 2014014_BR054 huurovk [vertrouwelijk].pdf (geldig vanaf 5 april 2025), 201401_BR106 bnr huurovk
+     [vertrouwelijk].pdf (geldig vanaf 1 januari 2025), 2014014_H238 huurovk [vertrouwelijk].pdf (geldig vanaf 29 oktober 2023),
+
+
+
+                                                                                                                          15/37
+Autoriteit Consument en Markt                                                                                      Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+              dat de informatie over de terugbetalingsregeling op een andere manier, voorafgaand aan het
+              sluiten van de leveringsovereenkomst, met deze verbruikers is gedeeld. Deze verbruikers zijn door
+              EETRIP dus niet voldoende geïnformeerd over hun rechten in het geval van verminderde kwaliteit
+              van levering en weten niet dat, wanneer en hoe ze een beroep kunnen op een
+              terugbetalingsregeling. Dat EETRIP in haar reactie op het informatieverzoek van de ACM aangeeft
+              dat zij ter compensatie voor ongemak ten tijde van beperkte verminderde kwaliteit van levering
+              conform de Warmtewet een terugbetalingsregeling aanhoudt, doet hier niet aan af. 63 Met deze
+              reactie aan de ACM voldoet EETRIP immers niet aan haar verplichting om voorafgaand aan het
+              sluiten van de leveringsovereenkomst de verbruiker te informeren over het bestaan en de
+              voorwaarden van de terugbetalingsregeling.
+
+         69. Gelet op het bovenstaande concludeert de ACM dat EETRIP artikel 3, eerste lid, onder b van de
+             Warmtewet overtreedt door niet aan (alle) verbruikers informatie te verstrekken met betrekking tot
+             de terugbetalingsregeling als de geleverde goederen en diensten niet aan de overeengekomen
+             kwaliteitsniveaus voldoen. De ACM ziet hierin aanleiding om op grond van artikel 18, eerste lid van
+             de Warmtewet aan EETRIP een last onder dwangsom op te leggen, strekkende tot het ongedaan
+             maken dan wel wegnemen of beperken van de gevolgen van de overtreding. De last onder
+             dwangsom is geformuleerd in het dictum. Deze last onder dwangsom ziet op zowel de in deze als
+             in de vorige paragraaf geconstateerde overtreding.
+
+         70. De ACM concludeert ook dat een gevaar voor herhaling van de in het vorige randnummer
+             genoemde overtreding bij nieuwe verbruikers voor de hand ligt, omdat er sprake is van een grote
+             mate van continuïteit van de aan de orde zijnde overtreding. Het gaat immers om een overtreding
+             van hetzelfde voorschrift met dezelfde strekking, dezelfde betrokken rechtspersoon (EETRIP) en
+             dezelfde locatie (Gebouwen De Trip). Het tijdsverloop sinds de eerdere overtreding is gering. De
+             door EETRIP voorgenomen wijzigingen in het Systeem maken dit niet anders, zoals ook verder
+             toegelicht in reactie op de zienswijze in hoofdstuk 4 van dit besluit. De ACM ziet hierin aanleiding
+             om op grond van artikel 18, eerste lid van de Warmtewet aan EETRIP een last onder dwangsom
+             op te leggen, strekkende tot voorkoming van herhaling van deze overtreding. Ook deze last onder
+             dwangsom is geformuleerd in het dictum. Deze last onder dwangsom ziet op zowel de in deze als
+             in de vorige paragraaf geconstateerde overtreding.
+
+
+     3.4.3. Informatieverplichting: klachten- en geschilbeslechtingsprocedures
+
+         71. Een warmteleverancier dient op grond van artikel 6:230m, eerste lid, aanhef en onder t van het
+             BW, in samenhang bezien met artikel 3, eerste lid van de Warmtewet aan een verbruiker op
+             duidelijke en begrijpelijke wijze informatie te verstrekken over de mogelijkheid van toegang tot
+             buitengerechtelijke klachten- en geschilbeslechtingsprocedures waarbij de handelaar zich heeft
+             aangesloten, en de wijze waarop daar toegang toe is. Op grond van artikel 3b van de Warmtewet
+             kunnen verbruikers geschillen voorleggen aan een onafhankelijke geschillencommissie, om een
+             snelle, transparante, eenvoudige en goedkope manier te garanderen voor verbruikers om hun
+             klachten ten aanzien van hun warmteleverancier naar voren te kunnen brengen zonder daarvoor
+             direct naar de rechter te hoeven stappen.
+
+         72. De ACM stelt vast dat EETRIP zich heeft aangesloten bij de geschillencommissie
+             Consumentenzaken.64 De ACM stelt echter ook vast dat uit de informatie die EETRIP heeft
+             overgelegd niet blijkt dat EETRIP verbruikers heeft geïnformeerd over de mogelijkheid van toegang
+             tot buitengerechtelijke klachten- en geschilbeslechtingsprocedures via de geschillencommissie
+             Consumentenzaken. Volledigheidshalve stelt de ACM vast dat de in de leveringsovereenkomst
+
+     201401_H240 huurovk de trip [vertrouwelijk].pdf (geldig vanaf 16 augustus 2022) en 2014014 K11 huurovk De Trip
+     [vertrouwelijk].pdf (geldig vanaf 12 mei 2022).
+     63
+        ACM/IN/1003660, Reactie op informatieverzoek Energie Exploitatie De Trip B.V. (deel 2), Reactie Informatieverzoek
+     2025.06.24 (incl. Bijlagen)(5334605.1).pdf, p. 5.
+     64
+        https://www.degeschillencommissie.nl/over-ons/commissies/geschillencommissie-voor-consumentenzaken/.
+
+
+
+                                                                                                                            16/37
+Autoriteit Consument en Markt                                                                                   Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+              genoemde mogelijkheid om geschillen voor te leggen aan de bevoegde rechter niet kwalificeert als
+              een buitengerechtelijke klachten- en geschilbeslechtingsprocedure.65 Daarmee stelt de ACM vast
+              dat EETRIP in overtreding is van artikel 8.2a van de Whc, omdat EETRIP niet heeft voldaan aan
+              haar informatieverplichting op grond van artikel 6:230m, eerste lid, aanhef en onder t van het BW,
+              in samenhang bezien met artikel 3, eerste lid van de Warmtewet. De ACM ziet hierin aanleiding om
+              op grond van artikel 2.9 van de Whc aan EETRIP een last onder dwangsom op te leggen,
+              strekkende tot het ongedaan maken dan wel wegnemen of beperken van de gevolgen van de
+              overtreding. De last onder dwangsom is geformuleerd in het dictum.
+
+          73. De ACM concludeert ook dat een gevaar voor herhaling van de in het vorige randnummer
+              genoemde overtreding bij nieuwe verbruikers voor de hand ligt, omdat er sprake is van een grote
+              mate van continuïteit van de aan de orde zijnde overtreding. Het gaat immers om een overtreding
+              van hetzelfde voorschrift met dezelfde strekking, dezelfde betrokken rechtspersoon (EETRIP) en
+              dezelfde locatie (Gebouwen De Trip). Het tijdsverloop sinds de eerdere overtreding is gering. De
+              door EETRIP voorgenomen wijzigingen in het Systeem maken dit niet anders, zoals ook verder
+              toegelicht in reactie op de zienswijze in hoofdstuk 4 van dit besluit. De ACM ziet hierin aanleiding
+              om op grond van artikel 8.2a van de Whc aan EETRIP een last onder dwangsom op te leggen,
+              strekkende tot voorkoming van herhaling van deze overtreding. Ook deze last onder dwangsom is
+              geformuleerd in het dictum.
+
+
+     3.5. Melden warmtenet
+
+          74. Volgens artikel 40 van de Warmtenet is een warmteleverancier verplicht om aan de ACM zijn naam
+              en adres en een beschrijving van de door hem te exploiteren warmtenetten te melden. Bij de
+              beschrijving van de te exploiteren warmtenetten moet in ieder geval het aantal verbruikers en het
+              aantal aan verbruikers geleverde gigajoules worden vermeld. Deze meldingsplicht is in de wet
+              gekomen om uitvoeringsproblemen bij het toezicht op leveranciers vanwege het ontbreken van
+              zicht op (het aantal) warmteleveranciers te verhelpen.66
+
+          75. De ACM houdt een warmteregister bij waarin zij alle warmteleveranciers opneemt die zich bij de
+              ACM hebben gemeld en de warmtenetten die zij exploiteren. Na raadpleging van dit
+              warmteregister constateert de ACM dat er geen vermelding is van EETRIP als warmteleverancier
+              en EETRIP ook geen warmtenetten heeft gemeld bij de ACM. EETRIP heeft in haar beantwoording
+              op het informatieverzoek van de ACM ook aangegeven inderdaad geen melding te hebben gedaan
+              van het warmtesysteem in de Gebouwen De Trip, omdat zij zich op het standpunt stelt dat zij geen
+              warmte levert in de zin van de Warmtewet en daarom niet als warmteleverancier kan worden
+              aangemerkt.67
+
+          76. EETRIP kwalificeert wel als warmteleverancier, zoals uiteengezet in paragraaf 3.1 van onderhavig
+              besluit. Op die basis is EETRIP ook verplicht om zich met naam en adres te melden bij de ACM en
+              daarbij de ACM op de hoogte te stellen van de door haar geëxploiteerde warmtenetten. De ACM
+              concludeert op basis van haar onderzoek en de reactie van EETRIP dat EETRIP niet aan deze
+              verplichting heeft voldaan en daarmee artikel 40 van de Warmtenet overtreedt. De ACM ziet hierin
+              aanleiding om op grond van artikel 18, eerste lid van de Warmtewet aan EETRIP een last onder
+              dwangsom op te leggen, strekkende tot herstel van de overtreding. De last onder dwangsom is
+              geformuleerd in het dictum.
+
+
+
+
+     65
+        ACM/IN/999995, Reactie op uw informatieverzoek van 4 juni 2025, 2014014_BR054 huurovk de Trip [vertrouwelijk].pdf,
+     artikel 9.2.
+     66
+        Kamerstukken II 2010/11, 32839, nr. 3, p. 9.
+     67
+        ACM/IN/1003660, Reactie op informatieverzoek Energie Exploitatie De Trip B.V. (deel 2), Reactie Informatieverzoek
+     2025.06.24 (incl. Bijlagen)(5334605.1).pdf, p. 6.
+
+
+
+                                                                                                                         17/37
+Autoriteit Consument en Markt                                                                          Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+     4.       Zienswijze
+
+            77. De ACM heeft EETRIP op 8 augustus 2025 een conceptbesluit gestuurd en haar de gelegenheid
+                gegeven om daarop haar zienswijze te geven.68 EETRIP heeft op 2 september 2025 haar
+                zienswijze op het conceptbesluit ingediend.69 In het navolgende zal de ACM ingaan op deze
+                zienswijze.
+
+            EETRIP kwalificeert als warmteleverancier, ook na de voorgestelde systeemverandering
+            78. EETRIP herhaalt in haar zienswijze haar standpunt dat zij geen warmte levert en niet kwalificeert
+                als warmteleverancier. Zij stelt dat voor het Systeem dat zij hanteert voor de Gebouwen De Trip
+                geldt dat verbruikers alleen betalen voor het ontwikkelen, onderhouden en instandhouden en, in
+                voorkomende gevallen, het huren van het Systeem. Dit is volgens EETRIP vergelijkbaar met een
+                ‘operational lease’ structuur. EETRIP geeft aan dat de verbruikers alleen een vastrecht betalen,
+                wat volgens EETRIP lager is dan de kosten die verbruikers zouden maken bij ‘reguliere
+                warmtelevering’ die wel onder de Warmtewet valt.
+
+            79. EETRIP noemt verder dat zij momenteel werkt aan een aangepast Systeem voor de Gebouwen De
+                Trip, dat uiterlijk eind oktober 2025 gereed zou moeten zijn. Het aangepaste Systeem is, naar de
+                ACM begrijpt, als volgt vormgegeven. Het aangepaste Systeem betreft een WKO-systeem en
+                bestaat kort gezegd uit de volgende elementen: een bronnensysteem (collectieve gesloten
+                bodemlussen), distributiepompen, een circulatienet, twee collectieve lucht-water warmtepompen en
+                de zich in iedere woning bevindende individuele warmtepomp en boilervat voor warm tapwater. De
+                distributiepompen halen warmte met een temperatuur van maximaal 20 graden Celsius uit het
+                bronnensysteem. De collectieve lucht/waterpomp moet de piekbelasting opvangen en zorgen voor
+                energiebalans in de bodem. Op het afleverpunt in de woning zorgen de individuele warmtepompen
+                voor de verdere opwaardering van de warmte ten behoeve van ruimteverwarming en warm
+                tapwater en koeling. De elektriciteit voor de individuele warmtepompen zou door de individuele
+                bewoners worden betaald.
+
+            80. EETRIP stelt dat als de ACM de lasten en de gedragslijn oplegt volgens het besluit, zij daarmee
+                onrechtmatig handelt tegenover EETRIP. Ter onderbouwing van deze stelling noemt EETRIP dat
+                er geen sprake is van warmtelevering in de zin van de Warmtewet, zowel bij het huidige als bij het
+                aangepaste Systeem, waardoor de ACM niet kan handhaven op grond van de Warmtewet.
+                EETRIP onderbouwt deze stelling verder niet, omdat, zo stelt EETRIP, zij er vrijwillig voor kiest om
+                het nieuwe systeem te structureren als zeerlagetemperatuur warmtelevering (hierna: ZLT-
+                warmtelevering) waarmee zij zal voldoen aan de lasten uit het besluit.
+
+            81. In randnummer 10 heeft de ACM het Systeem in de Gebouwen De Trip beschreven. De ACM licht
+                in het kort toe wat de verschillen zijn tussen het (huidige) Systeem en het aangepaste Systeem. In
+                het aangepaste Systeem is er geen centrale brine warmtepomp meer. Verder is er nu in het
+                Systeem sprake van één lucht-water warmtepomp, waar dit in het aangepaste Systeem twee zou
+                zijn. Op het in de woning gelegen afleverpunt levert EETRIP momenteel een warmte met een
+                temperatuur van 30 graden. In het aangepaste Systeem zou dit 20 graden worden. In de woningen
+                staat momenteel een individuele (booster)warmtepomp. In het aangepaste Systeem blijft er sprake
+                van individuele warmtepompen. In het huidige Systeem draagt EETRIP de kosten van de
+                elektriciteit voor de individuele warmtepomp. In het aangepaste Systeem dragen bewoners deze
+                kosten.
+
+            82. EETRIP stelt in haar zienswijze dat, in verband met het aangepaste Systeem, EETRIP met de
+                bewoners van de Gebouwen De Trip nieuwe contracten zal afsluiten. In deze contracten wordt
+
+
+     68
+          ACM/UIT/655214, ACM/UIT/653715.
+     69
+          ACM/IN/1025712.
+
+
+
+                                                                                                               18/37
+Autoriteit Consument en Markt                                                                                   Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+                 opgenomen dat het gaat om ZLT-warmtelevering tot aan het afleverpunt in de individuele
+                 woningen. De nieuwe leveringscontracten zullen volgens EETRIP in overeenstemming met de
+                 Warmtewet informatie bevatten over de storingscompensatie en de klacht- en
+                 geschillenprocedures.
+
+            83. De ACM volgt EETRIP niet in het standpunt dat zij geen warmteleverancier is. In paragraaf 3.1
+                heeft de ACM toegelicht waarom zij van oordeel is dat EETRIP warmte levert in de zin van de
+                Warmtewet en kwalificeert als warmteleverancier. EETRIP is niet inhoudelijk ingegaan op dit
+                oordeel van de ACM. Dat EETRIP wel noemt dat zij haar warmtelevering zo heeft ingericht dat
+                verbruikers alleen een vastrecht betalen voor het gebruik van het warmtesysteem, is niet relevant
+                voor de beoordeling of de Warmtewet van toepassing is. Wat wel van belang is, is dat EETRIP,
+                zoals in paragraaf 3.1 ook toegelicht, warmte levert aan gebonden verbruikers. Dit is ook bij ZLT-
+                warmtelevering het geval. De temperatuur van het geleverde water ten behoeve van
+                ruimteverwarming en warm tapwater speelt namelijk geen rol bij de definitie van ‘warmte’ in de zin
+                van de Warmtewet.70 De verbruikers in de Gebouwen De Trip kunnen – anders dan bij operational
+                lease – niet zelf kiezen om wel of niet gebruik te maken van de warmtelevering van EETRIP.
+                Integendeel, zij zijn bij betrekking van een woning in de Gebouwen De Trip verplicht om tegen
+                betaling warmte af te nemen van EETRIP. De bescherming van de Warmtewet is juist bedoeld
+                voor dergelijke gebonden verbruikers. In tegenstelling tot wat EETRIP betoogt, zal de bescherming
+                van de Warmtewet dan ook juist in het voordeel zijn voor verbruikers. De Warmtewet geeft
+                verbruikers immers de handvatten om hun rechten te kennen en uit te oefenen.
+
+            84. De door EETRIP voorgenomen aanpassing aan het Systeem, maakt het oordeel van de ACM niet
+                anders. Uit de informatie die EETRIP geeft over het aangepaste Systeem, ziet de ACM geen reden
+                om te vermoeden dat er geen sprake meer zal zijn van levering van warmte in de zin van de
+                Warmtewet en/of dat EETRIP niet meer als warmteleverancier zou kwalificeren. EETRIP levert ook
+                geen argumenten aan waarom de redenen die in randnummer 22 zijn uitgewerkt en waarin de
+                ACM EETRIP als warmteleverancier kwalificeert, niet meer op zouden gaan bij het aangepaste
+                Systeem. Verbruikers blijven voor hun warmtevoorziening gebonden aan EETRIP. De ACM stelt
+                daarom vast dat er ook in het aangepaste Systeem, als dat Systeem gerealiseerd zou worden,
+                sprake zal zijn van levering van warmte in de zin van de Warmtewet en dat EETRIP dan
+                kwalificeert als warmteleverancier.
+
+            85. De ACM concludeert dat er in het Systeem in de Gebouwen De Trip sprake is van levering van
+                warmte door EETRIP. Ook in het aangepaste Systeem, als dit wordt gerealiseerd, zou sprake zijn
+                van de levering van warmte door EETRIP. Anders dan EETRIP betoogt, handelt de ACM dus niet
+                onrechtmatig tegenover EETRIP door het opleggen van de lasten en de gedragslijn wegens
+                overtredingen van de Warmtewet, omdat er geen sprake zou zijn van levering van warmte. De
+                zienswijze van EETRIP leidt op dit onderdeel dus niet tot een ander besluit.
+
+            Handhaving en de door EETRIP voorgenomen systeemverandering
+            86. EETRIP benoemt in haar zienswijze dat handhaving niet nodig is, omdat EETRIP met het nieuwe
+                systeem aan de Warmtewet zal gaan voldoen. Volgens EETRIP zal zij tegemoet komen aan de
+                lasten en de gedragslijn en daarmee zorgen voor duidelijkheid voor verbruikers en de
+                verantwoordelijkheid nemen die de ACM van haar verlangt. Daarbij benadrukt EETRIP dat dit niet
+                betekent dat zij erkent dat zij die verantwoordelijkheid behoort te dragen.
+
+            87. De ACM volgt EETRIP niet in haar standpunt dat handhaving niet nodig is omdat EETRIP werkt
+                aan een aangepast Systeem. De ACM moet als toezichthouder de verschillende belangen die
+                gemoeid zijn met handhaving tegen elkaar afwegen. De ACM kijkt daarbij bijvoorbeeld naar de
+                belangen van de gebonden verbruikers, de belangen voor het toezicht van de ACM, publieke
+                belangen zoals eerlijke concurrentie en de belangen van EETRIP als adressant van het besluit. Als
+
+     70
+          Kamerstukken II, 2016/17, 34723, nr. 3, p. 45; Rb. Rotterdam, 29 september 2022, ECLI:NL:RBROT:2022:8021.
+
+
+
+                                                                                                                      19/37
+Autoriteit Consument en Markt                                                                         Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+                die belangen tegen elkaar worden afgewogen, dan komt de ACM tot de conclusie dat de belangen
+                die pleiten voor handhaving hier veel zwaarder wegen en dat handhavend optreden daarom nog
+                altijd redelijk en noodzakelijk is. In de argumentatie van EETRIP ziet de ACM dan ook geen reden
+                om niet handhavend op te treden. De ACM licht dit verder toe.
+
+            88. De ACM stelt enerzijds vast dat handhavend optreden tegen EETRIP het algemeen belang dient
+                en in het bijzonder de belangen dient van de verbruikers van EETRIP. EETRIP treedt in het
+                bestaande Systeem namelijk op als warmteleverancier. Ook indien EETRIP het aangepaste
+                Systeem in de toekomst realiseert, kwalificeert zij nog steeds als warmteleverancier en dient haar
+                handelen in lijn te zijn met de Warmtewet. De ACM stelt in dat kader vast dat verbruikers in de
+                Gebouwen De Trip tot op heden nog niet bekend zijn met het feit dat en/of eenduidig vastgesteld is
+                dat de Warmtewet van toepassing is (in het verleden, het heden en de toekomst) en het feit dat zij
+                zich kunnen beroepen op de rechten die de Warmtewet hen tegenover EETRIP geeft. Handhavend
+                optreden leidt tot duidelijkheid voor verbruikers ten aanzien van hun bescherming onder de
+                Warmtewet en de (publiekrechtelijke) rechten en plichten die over en weer gelden en golden
+                tussen EETRIP en haar verbruikers. Bovendien vormt handhaving een stok achter de deur voor
+                EETRIP om daadwerkelijk tot gedragsverandering te komen. In dat kader vindt de ACM het
+                belangrijk om te benadrukken dat EETRIP (nog steeds) niet erkent warmteleverancier te zijn en dat
+                de aangekondigde aanpassingen nog onvoldoende concreet en bovendien niet onomkeerbaar zijn.
+                Als EETRIP niet erkent warmteleverancier te zijn, kan EETRIP naar eigen gelang kiezen welke
+                verplichtingen uit de Warmtewet zij wel en niet naleeft, waarbij niet valt uit te sluiten dat EETRIP
+                toch afziet van de aangekondigde aanpassingen. Niet handhavend optreden zou tot de
+                onwenselijke situatie leiden dat verbruikers hiervan de risico’s dragen. De ACM kan er dus niet
+                zonder meer van uitgaan dat EETRIP haar gedrag duurzaam in lijn brengt met de (volledige)
+                Warmtewet.
+
+            89. De ACM stelt anderzijds vast dat de belangen van EETRIP worden geschaad door handhavend
+                optreden. Dat is inherent aan handhavend optreden. De ACM stelt in dit besluit vast dat EETRIP
+                (langdurig en structureel) in overtreding is van de Warmtewet. EETRIP wist of behoorde te weten
+                dat de Warmtewet op haar van toepassing is. Nu de ACM met een conceptbesluit kenbaar heeft
+                gemaakt dat zij voornemens is om te handhaven, stelt EETRIP voor het eerst dat zij haar gedrag
+                wil aanpassen en aan de lasten en de gedragslijn zal gaan voldoen, althans zonder te erkennen
+                warmteleverancier te zijn. De ACM ziet hierin geen reden om er zonder meer van uit te gaan dat
+                EETRIP duurzaam haar gedrag zal aanpassen en de Warmtewet gaat en blijft naleven. De ACM
+                legt de lasten en een gedragslijn juist op om daadwerkelijke en duurzame naleving van alle
+                verplichtingen uit de Warmtewet te bewerkstelligen om zodoende de belangen van derden te
+                borgen. De grondslag voor en het belang van handhaving is kortom nog altijd sterk aanwezig.
+
+            90. De ACM concludeert dat, anders dan EETRIP betoogt, handhaving nodig is, ook nu EETRIP heeft
+                gesteld het Systeem aan te passen. De zienswijze van EETRIP leidt op dit onderdeel dus niet tot
+                een ander besluit.
+
+            De begunstigingstermijnen van de lasten
+            91. De ACM is van mening dat de begunstigingstermijnen zoals geformuleerd in het dictum redelijk zijn
+                en heeft waar nodig de begunstigingstermijnen afgestemd op de zienswijze van EETRIP.
+                Hieronder zal de ACM dit kort toelichten. Ten aanzien van Last I is in het conceptbesluit71 een
+                begunstigingstermijn van acht weken na datum van dit besluit opgenomen. Deze
+                begunstigingstermijn is door de ACM niet aangepast, ondanks dat EETRIP in haar zienswijze
+                onder randnummer 3672 aangeeft dat zij de storingsregistratie voor de jaren 2023 en 2024 eerder,
+                namelijk uiterlijk 30 oktober 2025, zal publiceren. Ten aanzien van Last II is de in het
+                conceptbesluit opgenomen begunstigingstermijn ongewijzigd. EETRIP heeft in haar zienswijze
+
+     71
+          ACM/UIT/655214, ACM/UIT/653715.
+     72
+          ACM/IN/1025712.
+
+
+
+                                                                                                              20/37
+Autoriteit Consument en Markt                                                                            Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+                 niets vermeld over het moment van publiceren van een storingsregistratie over de jaren 2025 en
+                 2026, dan wel toekomstige jaren. Ten aanzien van Lasten III tot en met VI is in het conceptbesluit
+                 bij deze lasten een begunstigingstermijn van vier weken opgenomen. Deze begunstigings-
+                 termijnen zijn door de ACM uitgebreid en vastgesteld op zes weken. In haar zienswijze heeft
+                 EETRIP onder randnummer 34 namelijk aangegeven dat zij er naar streeft uiterlijk eind oktober
+                 2025 met alle huidige en nieuwe bewoners van de Gebouwen De Trip nieuwe contracten te sluiten
+                 die worden gestructureerd als ZLT-warmtelevering, in overeenstemming met de verplichtingen uit
+                 de Warmtewet. EETRIP geeft in haar zienswijze onder randnummer 35 aan dat zij de huidige en
+                 nieuwe bewoners op voorhand zal informeren over de te leveren goederen en diensten en
+                 kwaliteitsniveaus daarvan, de terugbetalingsregelingen en de klachten- en
+                 geschilbeslechtingsprocedure. De begunstigingstermijnen komen zo overeen met hetgeen EETRIP
+                 zelf heeft genoemd als haalbare termijn. Ten aanzien van Last VII is in het conceptbesluit een
+                 begunstigingstermijn van vier weken opgenomen. EETRIP heeft in haar zienswijze aangegeven
+                 dat zij de gevraagde melding ex artikel 40 Warmtewet uiterlijk op 1 oktober 2025 zal doen. Om
+                 praktische redenen heeft de ACM de begunstigingstermijn van Last VII gelijk gesteld aan de
+                 begunstigingstermijnen van de Lasten III tot en met VI.
+
+            De rechtmatigheid van de lasten ter voorkoming van herhaling
+            92. EETRIP stelt dat Lasten II, IV en VI onrechtmatig zijn. Hiervoor geeft zijn drie redenen. Allereerst is
+                er volgens EETRIP sprake van preventieve lasten waarvoor een hogere bewijslast geldt waaraan
+                de ACM niet heeft voldaan. Ten tweede is gevaar voor herhaling van de overtredingen uiterst
+                onwaarschijnlijk nu EETRIP met de voorgenomen systeemverandering in overeenstemming zou
+                gaan handelen met de Warmtewet. Ten derde is de looptijd van twee jaar bij Lasten II, IV en VI in
+                ieder geval onrechtmatig volgens EETRIP. Door de veranderingen aan het Systeem is er volgens
+                EETRIP namelijk geen reden om te vermoeden dat EETRIP over een dergelijk lange periode de
+                overtredingen zou begaan. De ACM gaat hierna achtereenvolgens in op deze punten.
+
+            93. Ten eerste, stelt EETRIP dat herhaling van dezelfde overtreding in deze situatie niet aan de orde
+                is, omdat het gaat om een verplichting die elk jaar opnieuw geldt (last II) of het aangaan van
+                nieuwe contracten (Lasten IV en VI). De lasten zijn daarom eigenlijk preventieve lasten om nieuwe
+                overtredingen te voorkomen, en voor dergelijke lasten geldt een hogere bewijslast waaraan de
+                ACM niet heeft voldaan, aldus EETRIP.
+
+            94. De ACM kan zich niet vinden in het standpunt van EETRIP. De ACM heeft naast lasten voor het
+                beëindigen van de overtredingen en/of het wegnemen van de gevolgen daarvan, ook een aantal
+                lasten ter voorkoming van herhaling opgelegd. De ACM wil namelijk voorkomen dat EETRIP de
+                overtredingen van hetzelfde wettelijk voorschrift opnieuw begaat. Een last ter voorkoming van
+                herhaling ziet juist op een volgende zelfstandige overtreding, zodat geen sprake is van cumulatie
+                van herstelsancties voor dezelfde overtreding – wat volgens artikel 5:6 Awb niet is toegestaan. Een
+                preventieve last, zoals bedoeld in artikel 5:7 Awb, is bedoeld voor de situatie waarin er nog geen
+                (vergelijkbare) overtreding heeft plaatsgevonden, maar er gevaar dreigt dat die overtreding
+                klaarblijkelijk zal plaatsvinden.73 Ten aanzien van Lasten II, IV en VI geldt dat dit geen preventieve
+                lasten voor volkomen nieuwe overtredingen zijn, maar lasten ter voorkoming van herhaling van een
+                volgende zelfstandige overtreding met dezelfde aard en vorm als de eerder begaande
+                overtredingen. Het betoog van EETRIP berust dus op een onjuiste lezing van de wet.
+
+            95. Ten tweede, stelt EETRIP dat gevaar voor herhaling van de overtredingen uiterst onwaarschijnlijk
+                is nu EETRIP met de voorgenomen systeemverandering in overeenstemming zou gaan handelen
+                met de Warmtewet.
+
+
+
+
+     73
+          Zie bijvoorbeeld ABRvS 23 januari 2019, ECLI:NL:RVS:2019:150.
+
+
+
+                                                                                                                 21/37
+Autoriteit Consument en Markt                                                                               Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+            96. De ACM stelt vast dat een last ter voorkoming van herhaling opgelegd kan worden indien een
+                overtreding heeft plaatsgevonden en gevaar voor herhaling voor de hand ligt. 74 Volgens de ACM is
+                er sprake van een grote mate van continuïteit van de aan de orde zijnde overtredingen. Het gaat
+                immers om overtredingen van hetzelfde voorschrift met dezelfde strekking, dezelfde betrokken
+                rechtspersoon (EETRIP) en dezelfde locatie (Gebouwen De Trip). Ook is het tijdsverloop sinds de
+                eerdere overtreding zeer gering.
+
+            97. De vraag die in dit kader voorligt, is of de door EETRIP voorgenomen wijzigingen in het
+                warmtesysteem tot de conclusie moeten leiden dat er geen sprake (meer) is van een voldoende
+                mate van continuïteit van de overtredingen. Het antwoord op die vraag is volgens de ACM
+                ontkennend. EETRIP heeft overtredingen van de Warmtewet en de Wet handhaving
+                consumentenbescherming begaan. De aankondiging en voorbereidingshandelingen van EETRIP
+                om het warmtesysteem aan te passen, vormen onvoldoende basis om geen last ter voorkoming
+                van herhaling op te (kunnen) leggen. Deze voorbereidingshandelingen zijn bovendien nog beperkt
+                en niet onomkeerbaar. Herhaling van de overtreding is dus niet onmogelijk. Integendeel, in de
+                blijvende ontkenning van EETRIP dat zij kwalificeert als warmteleverancier en de belangen die zij
+                daarbij heeft en het feit dat EETRIP pas na het onderzoek van de ACM in beweging is gekomen,
+                ziet de ACM een te groot en ontoelaatbaar risico op herhaling. Zelfs al zou EETRIP nieuwe
+                contracten hebben opgesteld, sluit dit geenszins uit dat EETRIP de overtredingen in de toekomst
+                zou (kunnen) herhalen. Gelet op de in randnummers 3 en 88 genoemde belangen van verbruikers
+                ziet de ACM zich genoodzaakt om met handhaving de kans op herhaling van de overtredingen te
+                minimaliseren en een duurzame gedragsverandering te bewerkstelligen. Bovendien geldt nog
+                altijd, ook met een verandering van het Systeem, dat sprake is van overtredingen van hetzelfde
+                voorschrift met dezelfde strekking, dezelfde betrokken rechtspersoon en dezelfde locatie. De ACM
+                concludeert dat er ook met de voorgenomen systeemverandering sprake is van een voldoende
+                mate van continuïteit van de begane overtredingen en dat een risico op herhaling aannemelijk is.
+                De ACM heeft het besluit hierop in randnummers 35, 65, 70 en 73 aangevuld.
+
+            98. Ten derde, stelt EETRIP dat de looptijd van twee jaar voor de Lasten II, IV en VI in ieder geval
+                onrechtmatig zijn, omdat de voorgenomen systeemverandering op korte termijn gereed kan zijn.
+
+           99. Overeenkomstig artikel 12r van de Instellingswet ACM geldt voor een last onder dwangsom een
+               door de ACM te bepalen termijn van ten hoogste twee jaren. Een looptijd van twee jaren is dus op
+               zichzelf een rechtmatige termijn.
+
+           100. De ACM stelt evenwel vast dat een langere looptijd van de lasten ook tot hogere administratieve
+                lasten leiden voor EETRIP. EETRIP moet immers op meerdere ‘peilmomenten’ informatie
+                aanleveren waaruit blijkt dat zij (nog steeds) voldoet aan de lasten. De ACM kiest ervoor, ook gelet
+                op de aangekondigde aanpassingen aan het Systeem, om deze administratieve lasten mee te
+                wegen bij de keuze voor de looptijd van de lasten en overweegt in dat kader het navolgende.
+
+           101. Voor Last II dient EETRIP, kort gezegd, jaarlijks een storingsregistratie te publiceren. EETRIP dient
+                de ACM over de naleving van deze last per jaar te informeren gedurende een periode van twee
+                jaar. Gelet op een looptijd van twee jaar van Last II, betekent dit dat EETRIP twee keer (in 2026 en
+                2027) informatie aan de ACM dient aan te leveren over de naleving van de last. Ook de aan te
+                leveren hoeveelheid documenten is beperkt. De ACM vindt dit daarom geen onredelijk hoge
+                administratieve last voor EETRIP. Bovendien biedt een looptijd van twee jaar de ACM twee
+                peilmomenten om te controleren of EETRIP haar gedrag heeft aangepast. De ACM laat de looptijd
+                voor Last II daarom op twee jaar staan.
+
+           102. Voor Lasten IV en VI dient EETRIP, kort gezegd, nieuwe verbruikers voorafgaand aan een nieuwe
+                leveringsovereenkomst van bepaalde informatie te voorzien. EETRIP dient de ACM over de
+
+     74
+          Zie bijvoorbeeld CBb 27 oktober 2009, ECLI:NL:CBB:2009:BK1424 en ABRvS 28 oktober 2020, ECLI:NL:RVS:2020:2571.
+
+
+
+                                                                                                                     22/37
+Autoriteit Consument en Markt                                                                         Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+               naleving van deze lasten per halfjaar te informeren gedurende een periode van twee jaar. EETRIP
+               moet dit doen door, kort gezegd, voor alle nieuwe verbruikers inzichtelijk te maken welke informatie
+               wanneer aan welke nieuwe verbruikers is gestuurd. Dit betekent dat de administratieve lasten voor
+               deze lasten relatief hoog liggen. Indachtig deze administratieve lasten en de wijzigingen die
+               EETRIP zegt te willen doorvoeren in de informatievoorziening, kiest de ACM er in reactie op de
+               zienswijze van EETRIP voor de looptijd van Lasten IV en VI in te korten naar één jaar. De ACM
+               voegt evenwel een extra moment toe waarop EETRIP over de naleving van deze lasten informatie
+               moet aanleveren, zodat de ACM ook met de kortere looptijd voldoende peilmomenten heeft.
+
+          103. De ACM concludeert dat een looptijd van twee jaar voor de Lasten II, IV en VI rechtmatig is. Gelet
+               op de administratieve lasten en de voorgenomen wijzigingen, kiest de ACM er wel voor om de
+               looptijd van Lasten IV en VI in te korten naar één jaar.
+
+     De redelijkheid van de reactietermijn voor een zienswijze
+        104. EETRIP stelt dat de termijn van drieënhalve week die de ACM aan EETRIP in de vakantieperiode
+             heeft gegeven voor het indienen van een zienswijze onredelijk kort is en dat EETRIP daarom wordt
+             geschaad in haar verdediging.
+
+          105. De ACM heeft op 23 juni 2025 aangekondigd binnen enkele weken met een conceptbesluit te
+               zullen komen.75 Op 31 juli 2025 heeft de ACM bevestigd dat het conceptbesluit tegen EETRIP op
+               korte termijn zal worden gedeeld.76 Op 8 augustus 2025 heeft de ACM het conceptbesluit met
+               EETRIP gedeeld en daarbij de mogelijkheid geboden om tot en met 22 augustus 2025 een
+               zienswijze te geven.77 EETRIP heeft de ACM op 14 augustus 2025 verzocht om een reactietermijn
+               van 9,5 weken, tot en met 15 oktober 2025.78 Op 19 augustus 2025 heeft de ACM uitstel verleend
+               tot en met 2 september 2025.79 Op 25 augustus 2025 heeft de ACM aan EETRIP bevestigd geen
+               verder uitstel te verlenen.80
+
+          106. De ACM acht een reactietermijn van drieënhalve week redelijk, ook al valt dit binnen de
+               vakantieperiode. Van een professionele onderneming als EETRIP, die al haar werkzaamheden
+               heeft uitbesteed aan [vertrouwelijk], mag verwacht worden dat zij tijdig de benodigde capaciteit en
+               expertise kan organiseren. Dit is des te meer het geval nu EETRIP bekend was met het lopende
+               onderzoek en vooraf geïnformeerd is dat een conceptbesluit waarop een zienswijze gegeven kon
+               worden aankomende was.81 Dat EETRIP nog niet bekend was met de exacte inhoud van het
+               besluit, betekent niet dat EETRIP geen rekening kon of diende te houden met het aankomende
+               besluit. De ACM kan zich er dan ook niet in vinden dat de reactietermijn van drieënhalve week
+               EETRIP schaadt in haar verdediging. Gelet op de belangen die gemoeid zijn met handhaving,
+               heeft de ACM ertoe besloten om geen verdere verlenging te bieden.
+
+          107. Ten overvloede merkt de ACM op dat de ACM EETRIP ook gedurende het proces heeft
+               meegenomen in de bevindingen van het onderzoek en dat de ACM herhaaldelijk handvatten heeft
+               geboden aan EETRIP om haar gedrag bij te sturen. In augustus 2024 heeft de ACM haar
+               onderzoek aangekondigd aan EETRIP. In februari 2025 heeft de ACM haar voorlopige bevindingen
+               naar aanleiding van het onderzoek gedeeld met [vertrouwelijk], waaronder EETRIP. In deze
+               voorlopige bevindingen stelt de ACM vast dat bij het warmtesysteem van EETRIP sprake is van
+               levering van warmte in de zin van de Warmtewet. Deze bevindingen heeft de ACM in februari 2025
+               in een gesprek verder toegelicht teneinde een constructieve oplossing te vinden. Op verzoek van
+               EETRIP heeft de ACM deze voorlopige bevindingen in maart 2025 op onderdelen verder
+               aangevuld en wederom met EETRIP gedeeld. Dit besluit is in lijn met de voorlopige bevindingen.
+
+     75
+        ACM/INT/532556; ACM/IN/1003660.
+     76
+        ACM/UIT/654482.
+     77
+        ACM/UIT/655214, ACM/UIT/653715.
+     78
+        ACM/IN/1019945.
+     79
+        ACM/UIT/657372.
+     80
+        ACM/UIT/656333.
+     81
+        ACM/INT/532556; ACM/IN/1003660; ACM/UIT/654482.
+
+
+
+                                                                                                             23/37
+Autoriteit Consument en Markt                                                                              Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+                  Nadat een – in de ogen van de ACM – constructieve reactie uitbleef, heeft de ACM de mogelijkheid
+                  tot handhaving wederom op tafel gelegd en gecommuniceerd aan EETRIP. 82 Ook gelet hierop ziet
+                  de ACM dus geen aanknopingspunten voor de stelling van EETRIP dat zij is geschaad in haar
+                  verdediging.
+
+
+
+     5.           Dictum
+
+     De Autoriteit Consument en Markt:
+
+            I.        Legt, met verwijzing naar randnummer 34 van dit besluit, op grond van artikel 18, eerste lid
+                      van de Warmtewet aan EETRIP een last onder dwangsom op, omdat EETRIP niet heeft
+                      voldaan aan de verplichting in artikel 2, zevende lid van de Warmtewet om over de jaren 2023
+                      en 2024 op geschikte wijze een storingsregistratie te publiceren met betrekking tot de levering
+                      van warmte in de Gebouwen De Trip. De ACM gelast EETRIP om deze overtreding uiterlijk
+                      met ingang van 18 november 2025 te beëindigen en beëindigd te houden op straffe van de
+                      verbeurte van een dwangsom.
+                      A. EETRIP kan dit doen door alsnog op geschikte wijze, bijvoorbeeld via een openbaar
+                          toegankelijke website, een storingsregistratie te publiceren met betrekking tot de levering
+                          van warmte in de Gebouwen De Trip voor de jaren 2023 en 2024, op basis van de
+                          gegevens die zij heeft over storingen in deze jaren, en die, voor zover op basis van die
+                          gegevens mogelijk is, de navolgende elementen bevat. Per storing van langer dan acht
+                          uur, blijkt uit deze registratie ten minste i) wanneer een storing heeft plaatsgevonden; ii)
+                          hoe lang deze heeft geduurd en iii) welke verbruikers hierdoor getroffen zijn. Voorts bevat
+                          de storingsregistratie een samenvatting van storingen die korter hebben geduurd dan acht
+                          uur, waaruit blijkt: i) hoeveel van deze storingen er in totaal zijn geweest en ii) wat de
+                          gemiddelde storingsduur was.
+                      B. EETRIP verbeurt een dwangsom van EUR 5.000 per week indien EETRIP vanaf 18
+                          november 2025 niet voldoet aan deze last.
+                      C. De ACM stelt het bedrag waarboven geen dwangsommen als bedoeld onder B meer
+                          worden verbeurd vast op EUR 25.000.
+                      D. De ACM verbindt op grond van artikel 12r, eerste lid van de Instellingswet ACM aan deze
+                          last het voorschrift dat EETRIP uiterlijk op 20 november 2025, de ACM schriftelijk dient te
+                          informeren over de wijze waarop EETRIP aan de last voldoet, onder gelijktijdige
+                          overlegging aan de ACM van de aan EETRIP ter beschikking staande (kopieën van)
+                          documenten waaruit dat blijkt. EETRIP dient in ieder geval i) de vindplaats van de
+                          storingsregistraties betreffende storingen in de levering van warmte in de Gebouwen De
+                          Trip over de jaren 2023 en 2024 te delen; en ii) een afschrift van deze storingsregistraties
+                          te overleggen.
+                      E. De last onder dwangsom heeft een looptijd van één jaar.
+
+            II.       Legt, met verwijzing naar randnummer 35 van dit besluit, op grond van artikel 18, eerste lid
+                      van de Warmtewet aan EETRIP een last onder dwangsom op, omdat EETRIP niet voldoet aan
+                      de verplichting in artikel 2, zevende lid van de Warmtewet om een storingsregistratie
+                      betreffende de levering van warmte in de Gebouwen De Trip jaarlijks op geschikte wijze te
+                      publiceren. De ACM gelast EETRIP om herhaling van deze overtreding te voorkomen op
+                      straffe van de verbeurte van een dwangsom.
+                      A. EETRIP kan dit doen door alsnog een storingsregistratie bij te houden en jaarlijks, maar
+                           uiterlijk in het eerste kwartaal van het opvolgende jaar, op geschikte wijze, bijvoorbeeld via
+                           een openbaar toegankelijke website, te publiceren en waarbij de storingsregistratie de
+                           navolgende elementen bevat. Per storing van langer dan acht uur, blijkt uit deze registratie
+
+     82
+          ACM/UIT/643979.
+
+
+
+                                                                                                                   24/37
+Autoriteit Consument en Markt                                                                     Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+                    ten minste i) wanneer een storing heeft plaatsgevonden; ii) hoe lang deze heeft geduurd
+                    en iii) welke verbruikers hierdoor getroffen zijn. Voorts bevat de storingsregistratie een
+                    samenvatting van storingen die korter hebben geduurd dan acht uur, waaruit blijkt: i)
+                    hoeveel van deze storingen er in totaal zijn geweest en ii) wat de gemiddelde storingsduur
+                    was.
+               B.   EETRIP verbeurt een dwangsom van EUR 5.000 per week indien EETRIP per 1 april van
+                    het opvolgende jaar niet voldoet aan deze last. Dit betekent dat EETRIP de
+                    storingsregistratie over 2025 uiterlijk per 31 maart 2026 gepubliceerd moet hebben en de
+                    storingsregistratie over 2026 uiterlijk per 31 maart 2027 gepubliceerd moet hebben.
+               C.   De ACM stelt het bedrag waarboven geen dwangsommen als bedoeld onder B meer
+                    worden verbeurd vast op EUR 25.000.
+               D.   De ACM verbindt op grond van artikel 12r, eerste lid van de Instellingswet ACM aan deze
+                    last het voorschrift dat EETRIP de ACM schriftelijk dient te informeren over de wijze
+                    waarop EETRIP aan de last voldoet, onder gelijktijdige overlegging aan de ACM van de
+                    aan EETRIP ter beschikking staande (kopieën van) documenten waaruit dat blijkt. Dit
+                    betekent dat EETRIP in ieder geval:
+                         a. Uiterlijk op 2 april 2026 de ACM i) informeert over de vindplaats van de
+                              storingsregistratie betreffende storingen in de levering van warmte in de
+                              Gebouwen De Trip over het jaar 2025; en ii) een afschrift overlegt van deze
+                              storingsregistratie.
+                         b. Uiterlijk op 2 april 2027 de ACM i) informeert over de vindplaats van de
+                              storingsregistratie betreffende storingen in de levering van warmte in de
+                              Gebouwen De Trip over het jaar 2026; en ii) een afschrift overlegt van deze
+                              storingsregistratie.
+               E.   De last onder dwangsom heeft een looptijd van twee jaar.
+
+        III.   Legt, met verwijzing naar randnummers 64 en 69 van dit besluit, op grond van artikel 18,
+               eerste lid van de Warmtewet aan EETRIP een last onder dwangsom op wegens overtreding
+               van artikel 3, eerste lid van de Warmtewet, omdat EETRIP met betrekking tot de levering van
+               warmte in de Gebouwen De Trip niet voordat de verbruiker gebonden is aan de
+               leveringsovereenkomst de in artikel 3, eerste lid, onder a en b van de Warmtewet genoemde
+               informatie over kwaliteitscriteria en de terugbetalingsregeling heeft verstrekt. De ACM gelast
+               EETRIP tot het uiterlijk op 4 november 2025 ongedaan maken dan wel wegnemen of beperken
+               van de gevolgen van de overtreding voor de huidige verbruikers in de Gebouwen De Trip, op
+               straffe van de verbeurte van een dwangsom.
+               A. EETRIP kan dit doen door aan alle huidige verbruikers in de Gebouwen De Trip, zijnde de
+                    bewoners die per 22 september 2025 verbruikers zijn in de Gebouwen De Trip (hierna
+                    ‘Alle Huidige Verbruikers’) de informatie bedoeld in artikel 3, eerste lid, onder a en b van
+                    de Warmtewet met betrekking tot de warmtelevering in de Gebouwen De Trip alsnog te
+                    verstrekken, te weten:
+                         a. een duidelijke en volledige omschrijving van de te leveren goederen en diensten
+                             en de overeengekomen kwaliteitsniveaus daarvan, welke in ieder geval betrekking
+                             hebben op de minimum- en maximumtemperatuur van de te leveren warmte op
+                             het overdrachtspunt;
+                         b. een omschrijving van de terugbetalingsregeling als de geleverde goederen en
+                             diensten niet aan de overeengekomen kwaliteitsniveaus voldoen, waaruit in ieder
+                             geval blijkt in welke gevallen de verbruiker aanspraak heeft op een terugbetaling,
+                             alsmede onder welke voorwaarden, welke in ieder geval betrekking hebben op de
+                             termijnen waarbinnen bedoelde terugbetaling door de leverancier aan de
+                             verbruiker zal worden gedaan.
+               B. EETRIP verbeurt een dwangsom van EUR 5.000 per week dat deze informatie niet aan
+                    Alle Huidige Verbruikers is verstrekt indien EETRIP vanaf 4 november 2025 niet voldoet
+                    aan deze last.
+
+
+
+
+                                                                                                          25/37
+Autoriteit Consument en Markt                                                                    Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+               C. De ACM stelt het bedrag waarboven geen dwangsommen als bedoeld onder B meer
+                  worden verbeurd vast op EUR 25.000.
+               D. De ACM verbindt op grond van artikel 12r, eerste lid van de Instellingswet ACM aan deze
+                  last het voorschrift dat EETRIP uiterlijk op 6 november 2025, de ACM schriftelijk dient te
+                  informeren over de wijze waarop EETRIP aan de last voldoet, onder gelijktijdige
+                  overlegging aan de ACM van de aan EETRIP ter beschikking staande (kopieën van)
+                  documenten waaruit dat blijkt. EETRIP dient in ieder geval de volgende informatie aan te
+                  leveren: i) een lijst van Alle Huidige Verbruikers in de Gebouwen De Trip; ii) een afschrift
+                  van de correspondentie waarmee de betreffende verbruikers zijn geïnformeerd; en iii) een
+                  bewijs van verzending van deze correspondentie aan de betreffende verbruikers.
+               E. De last onder dwangsom heeft een looptijd van één jaar.
+
+        IV.    Legt, met verwijzing naar randnummers 65 en 70 van dit besluit, op grond van artikel 18,
+               eerste lid van de Warmtewet aan EETRIP een last onder dwangsom op wegens overtreding
+               van artikel 3, eerste lid van de Warmtewet, omdat EETRIP met betrekking tot de levering van
+               warmte in de Gebouwen De Trip niet voordat de verbruiker gebonden is aan de
+               leveringsovereenkomst de in artikel 3, eerste lid, onder a en b van de Warmtewet genoemde
+               informatie over kwaliteitscriteria en de terugbetalingsregeling aan de verbruiker verstrekt. De
+               ACM gelast EETRIP om uiterlijk per ingang van 4 november 2025 herhaling van deze
+               overtreding te voorkomen door elke nieuwe verbruiker, zijnde iedere bewoner die vanaf 23
+               september 2025 verbruiker is geworden in de Gebouwen De Trip (hierna ‘Nieuwe Verbruiker’)
+               voordat deze gebonden is aan een leveringsovereenkomst, te informeren conform artikel 3,
+               eerste lid, onder a en b van de Warmtewet, op straffe van de verbeurte van een dwangsom.
+               A. EETRIP kan dit doen door aan elke Nieuwe Verbruiker, voordat zij gebonden is aan de
+                    leveringsovereenkomst, in de Gebouwen De Trip de informatie bedoeld in artikel 3, eerste
+                    lid, onder a en b van de Warmtewet met betrekking tot de warmtelevering in de Gebouwen
+                    De Trip te verstrekken, te weten:
+                         a. een duidelijke en volledige omschrijving van de te leveren goederen en diensten
+                             en de overeengekomen kwaliteitsniveaus daarvan, welke in ieder geval betrekking
+                             hebben op de minimum- en maximumtemperatuur van de te leveren warmte op
+                             het overdrachtspunt;
+                         b. een omschrijving van de terugbetalingsregelingen als de geleverde goederen en
+                             diensten niet aan de overeengekomen kwaliteitsniveaus voldoen, waaruit in ieder
+                             geval blijkt in welke gevallen de verbruiker aanspraak heeft op een terugbetaling,
+                             alsmede onder welke voorwaarden, welke in ieder geval betrekking hebben op de
+                             termijnen waarbinnen bedoelde terugbetaling door de leverancier aan de
+                             verbruiker zal worden gedaan.
+               B. EETRIP verbeurt een dwangsom van EUR 2.500 per overtreding, zijnde een nieuwe
+                    verbruiker waaraan deze informatie niet of niet voorafgaand aan het afsluiten van de
+                    leveringsovereenkomst is verstrekt, indien EETRIP vanaf 4 november 2025 niet voldoet
+                    aan deze last.
+               C. De ACM stelt het bedrag waarboven geen dwangsommen als bedoeld onder B meer
+                    worden verbeurd vast op EUR 25.000.
+               D. De ACM verbindt op grond van artikel 12r, eerste lid van de Instellingswet ACM aan deze
+                    last het voorschrift dat EETRIP uiterlijk op 6 november 2025, 2 maart 2026 en 1 juli 2026 ,
+                    de ACM schriftelijk dient te informeren over de wijze waarop EETRIP aan de last voldoet,
+                    onder gelijktijdige overlegging aan de ACM van de aan EETRIP ter beschikking staande
+                    (kopieën van) documenten waaruit dat blijkt. EETRIP dient in ieder geval op 6 november
+                    2025, 2 maart 2026 en 1 juli 2026 de volgende informatie aan te leveren: i) een lijst van
+                    verbruikers, bestaande uit bewoners die in de betreffende periode Nieuwe Verbruiker in
+                    Gebouwen De Trip zijn geworden, derhalve op 6 november 2025 een lijst met verbruikers
+                    met betrekking tot de periode van 23 september 2025 tot 6 november 2025, op 2 maart
+                    2026 een lijst met verbruikers met betrekking tot de periode van 6 november 2025 tot 2
+                    maart 2026 en op 1 juli 2026 een lijst met verbruikers met betrekking tot de periode van 2
+
+
+                                                                                                         26/37
+Autoriteit Consument en Markt                                                                     Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+                  maart 2026 tot 1 juli 2026 een leveringsovereenkomst hebben afgesloten met EETRIP; ii)
+                  een afschrift van de correspondentie waarmee de betreffende verbruikers zijn
+                  geïnformeerd voorafgaand aan het aangaan van een leveringsovereenkomst met EETRIP;
+                  iii) een bewijs van verzending van deze correspondentie aan de betreffende verbruikers iv)
+                  een kopie van de tussen de betreffende verbruikers en EETRIP gesloten en getekende
+                  leveringsovereenkomsten.
+               E. De last onder dwangsom heeft een looptijd van één jaar.
+
+        V.     Legt, met verwijzing naar randnummer 72 van dit besluit, op grond van artikel 2.9 van de Wet
+               handhaving consumentenbescherming aan EETRIP een last onder dwangsom op wegens
+               overtreding van artikel 8.2a van de Wet handhaving consumentenbescherming, omdat
+               EETRIP niet heeft voldaan aan artikel 6:230m, eerste lid, aanhef en onder t van het Burgerlijk
+               Wetboek in samenhang bezien met artikel 3, eerste lid van de Warmtewet. EETRIP heeft
+               consumenten voordat zij gebonden zijn aan de leveringsovereenkomst niet op duidelijke en
+               begrijpelijke wijze geïnformeerd over de mogelijkheid van toegang tot de buitengerechtelijke
+               klachten- en geschilbeslechtingsprocedures, en de wijze waarop daar toegang toe is. De ACM
+               gelast EETRIP tot het uiterlijk op 4 november 2025 ongedaan maken dan wel wegnemen of
+               beperken van de gevolgen van de overtreding voor de huidige verbruikers in de Gebouwen De
+               Trip, op straffe van de verbeurte van een dwangsom.
+               A. EETRIP kan dit doen door aan alle huidige verbruikers in de Gebouwen De Trip zijnde de
+                    bewoners die per 22 september 2025 verbruikers zijn in de Gebouwen De Trip (hierna
+                    ‘Alle Huidige Verbruikers’), op duidelijke en begrijpelijke wijze de informatie bedoeld in
+                    artikel 6:230m, eerste lid, aanhef en onder t van het Burgerlijk Wetboek in samenhang
+                    bezien met artikel 3, eerste lid van de Warmtewet alsnog te verstrekken, te weten: de
+                    mogelijkheid om een klacht of geschil aanhangig te maken bij de geschillencommissie
+                    waarbij EETRIP is aangesloten en op welke wijze toegang tot de geschillencommissie te
+                    verkrijgen is.
+               B. EETRIP verbeurt een dwangsom van EUR 5.000 per week dat deze informatie niet aan
+                    Alle huidige verbruikers is verstrekt indien EETRIP vanaf 4 november 2025 niet voldoet
+                    aan deze last.
+               C. De ACM stelt het bedrag waarboven geen dwangsommen als bedoeld onder B meer
+                    worden verbeurd vast op EUR 25.000.
+               D. De ACM verbindt op grond van artikel 12r, eerste lid van de Instellingswet ACM aan deze
+                    last het voorschrift dat EETRIP uiterlijk op 6 november 2025, de ACM schriftelijk dient te
+                    informeren over de wijze waarop EETRIP aan de last voldoet, onder gelijktijdige
+                    overlegging aan de ACM van de aan EETRIP ter beschikking staande (kopieën van)
+                    documenten waaruit dat blijkt. EETRIP dient in ieder geval de volgende informatie aan te
+                    leveren: i) een lijst van Alle Huidige Verbruikers in de Gebouwen De Trip; ii) een afschrift
+                    van de correspondentie waarmee de betreffende verbruikers zijn geïnformeerd; en iii) een
+                    bewijs van verzending van deze correspondentie aan de betreffende verbruikers.
+               E. De last onder dwangsom heeft een looptijd van één jaar.
+
+        VI.    Legt, met verwijzing naar randnummer 73 van dit besluit, op grond van artikel 2.9 van de Wet
+               handhaving consumentenbescherming aan EETRIP een last onder dwangsom op wegens
+               overtreding van artikel 8.2a van de Wet handhaving consumentenbescherming, omdat
+               EETRIP niet voldoet aan artikel 6:230m, eerste lid, aanhef en onder t van het Burgerlijk
+               Wetboek in samenhang bezien met artikel 3, eerste lid van de Warmtewet. EETRIP informeert
+               verbruikers voordat zij gebonden zijn aan de leveringsovereenkomst niet op duidelijke en
+               begrijpelijke wijze over de mogelijkheid van toegang tot de buitengerechtelijke klachten- en
+               geschilbeslechtingsprocedures, en de wijze waarop daar toegang toe is. De ACM gelast
+               EETRIP om uiterlijk per ingang van 4 november 2025 voor elke nieuwe verbruiker in de
+               Gebouwen De Trip, zijnde iedere bewoner die vanaf 23 september 2025 verbruiker is
+               geworden in de Gebouwen De Trip (hierna ‘Nieuwe Verbruiker’) een herhaling van deze
+               overtreding te voorkomen, door elke Nieuwe Verbruiker, voordat deze gebonden is aan een
+
+
+                                                                                                          27/37
+Autoriteit Consument en Markt                                                                    Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+               leveringsovereenkomst, te informeren conform artikel 6:230m, eerste lid, aanhef en onder t
+               van het Burgerlijk Wetboek in samenhang bezien met artikel 3, eerste lid van de Warmtewet,
+               op straffe van de verbeurte van een dwangsom.
+
+               A. EETRIP kan dit doen door elke Nieuwe Verbruiker in de Gebouwen De Trip, voordat zij
+                  gebonden is aan de leveringsovereenkomst, op duidelijke en begrijpelijke wijze de
+                  informatie bedoeld in artikel 6:230m, eerste lid, aanhef en onder t van het Burgerlijk
+                  Wetboek in samenhang bezien met artikel 3, eerste lid van de Warmtewet, bijvoorbeeld in
+                  de leveringsovereenkomst, te verstrekken, te weten de mogelijkheid om een klacht of
+                  geschil aanhangig te maken bij de geschillencommissie waarbij EETRIP is aangesloten en
+                  op welke wijze toegang tot de geschillencommissie te verkrijgen is.
+               B. EETRIP verbeurt een dwangsom van EUR 2.500 per overtreding, zijnde een verbruiker
+                  waaraan deze informatie niet of niet voorafgaand aan het afsluiten van de
+                  leveringsovereenkomst is verstrekt, indien EETRIP vanaf 4 november 2025 niet voldoet
+                  aan deze last.
+               C. De ACM stelt het bedrag waarboven geen dwangsommen als bedoeld onder B meer
+                  worden verbeurd vast op EUR 25.000.
+               D. De ACM verbindt op grond van artikel 12r, eerste lid van de Instellingswet ACM aan deze
+                  last het voorschrift dat EETRIP uiterlijk op 6 november 2025, 2 maart 2026 en 1 juli 2026 ,
+                  de ACM schriftelijk dient te informeren over de wijze waarop EETRIP aan de last voldoet,
+                  onder gelijktijdige overlegging aan de ACM van de aan EETRIP ter beschikking staande
+                  (kopieën van) documenten waaruit dat blijkt. EETRIP dient in ieder geval op 6 november
+                  2025, 2 maart 2026 en 1 juli 2026 de volgende informatie aan te leveren: i) een lijst van
+                  verbruikers bestaande uit bewoners die in de betreffende periode Nieuwe Verbruiker in
+                  Gebouwen De Trip zijn geworden, derhalve op 6 november 2025 een lijst met verbruikers
+                  met betrekking tot de periode van 23 september 2025 tot 6 november 2025, op 2 maart
+                  2026 een lijst met verbruikers met betrekking tot de periode van 6 november 2025 tot 2
+                  maart 2026 en op 1 juli 2026 een lijst met verbruikers met betrekking tot de periode van 2
+                  maart 2026 tot 1 juli 2026 een leveringsovereenkomst hebben afgesloten met EETRIP; ii)
+                  een afschrift van de correspondentie waarmee de betreffende verbruikers zijn
+                  geïnformeerd; iii) een bewijs van verzending van deze correspondentie aan de betreffende
+                  verbruikers; iv) een kopie van de tussen de betreffende verbruikers en EETRIP gesloten
+                  en getekende leveringsovereenkomsten.
+               E. De last onder dwangsom heeft een looptijd van één jaar.
+
+        VII.   Legt, met verwijzing naar randnummer 76 van dit besluit, op grond van artikel 18, eerste lid
+               van de Warmtewet aan EETRIP een last onder dwangsom op wegens overtreding van artikel
+               40 van de Warmtewet, omdat EETRIP zich niet als warmteleverancier bij de ACM heeft
+               gemeld. De ACM gelast EETRIP om deze overtreding uiterlijk met ingang van 4 november
+               2025 te beëindigen en beëindigd te houden op straffe van de verbeurte van een dwangsom.
+               A. EETRIP kan dit doen door alsnog de melding te doen bij de ACM, waarin zij de ACM in
+                   ieder geval informeert over de naam en het adres van de warmteleverancier EETRIP en
+                   daarbij een beschrijving geeft van de door EETRIP geëxploiteerde warmtenetten. Deze
+                   melding kan bij de ACM ingediend worden via datamanagement@acm.nl.
+               B. EETRIP verbeurt een dwangsom van EUR 5.000 per week indien EETRIP vanaf 4
+                   november 2025 niet voldoet aan deze last.
+               C. De ACM stelt het bedrag waarboven geen dwangsommen als bedoeld onder B meer
+                   worden verbeurd vast op EUR 25.000.
+               D. De ACM verbindt op grond van artikel 12r, eerste lid van de Instellingswet ACM aan deze
+                   last het voorschrift dat EETRIP uiterlijk op 6 november 2025, de ACM schriftelijk dient te
+                   informeren over de wijze waarop EETRIP aan de last voldoet, onder gelijktijdige
+                   overlegging aan de ACM van de aan EETRIP ter beschikking staande (kopieën van)
+                   documenten waaruit dat blijkt.
+               E. De last onder dwangsom heeft een looptijd van één jaar.
+
+
+                                                                                                        28/37
+Autoriteit Consument en Markt                                                                       Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+
+     Bindende gedragslijn
+        VIII.  Legt, met verwijzing naar randnummer 49 van dit besluit, EETRIP op grond van artikel 17 van
+               de Warmtewet in verband met de naleving van de verplichting op grond van artikel 3a
+               Warmtewet in combinatie met artikel 4 van de Warmteregeling om (de juiste hoogte van)
+               compensatie te betalen bij ernstige storingen, de volgende bindende gedragslijn op:
+               A. EETRIP dient de aanvangstijd van storingen vast te stellen op het tijdstip van ontvangst
+                   van de eerste melding van een storing of, indien melding niet plaatsvindt of dit eerder is,
+                   het tijdstip waarop de storing volgens de gegevens die EETRIP verkrijgt of kan verkrijgen
+                   uit de monitoring van het systeem, is begonnen.
+               B. EETRIP dient de eindtijd van storingen vast te stellen op het tijdstip waarop, door middel
+                   van een controle door EETRIP of onderaannemers van EETRIP, is vastgesteld dat de
+                   storing is hersteld voor alle getroffen verbruikers.
+               C. EETRIP dient alle onderbrekingen in de feitelijke levering van warmte van langer dan 8
+                   aaneengesloten uren als ‘ernstige storing’ in de zin van artikel 4, eerste lid van de
+                   Warmteregeling aan te merken, met uitzondering van voorziene onderbrekingen als
+                   bedoeld in artikel 4, tweede lid van de Warmtewet, contractueel overeengekomen
+                   onderbrekingen van de levering van warmte en de situaties genoemd in artikel 3a, tweede
+                   lid van de Warmtewet.
+               D. EETRIP dient in de onder C genoemde gevallen compensatie uit te keren ter hoogte van
+                   de bedragen en volgens de berekeningswijze genoemd in artikel 4, tweede lid van de
+                   Warmteregeling, aan de verbruikers waarbij de ernstige storing is voorgekomen.
+
+     Den Haag,
+     Datum: 23 september 2025
+
+     Autoriteit Consument en Markt,
+     namens deze:
+
+
+
+
+     drs. M.R. Leijten
+     bestuurslid
+
+
+
+
+      Als u belanghebbende bent, kunt u schriftelijk bezwaar maken tegen dit besluit. Stuur uw gemotiveerde
+      bezwaarschrift naar de Autoriteit Consument en Markt, Juridische Zaken, postbus 16326, 2500 BH Den Haag.
+      Dit moet u doen binnen zes weken na de dag waarop dit besluit bekend is gemaakt. In uw bezwaarschrift kunt
+      u de Autoriteit Consument en Markt verzoeken in te stemmen met rechtstreeks beroep bij de bestuursrechter.
+
+
+
+
+                                                                                                            29/37
+Autoriteit Consument en Markt                                                                           Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+     Bijlage 1: Relevante wettelijk kader
+
+     Algemene wet bestuursrecht
+
+     Artikel 5:1
+     1. In deze wet wordt verstaan onder overtreding: een gedraging die in strijd is met het bepaalde bij of
+     krachtens enig wettelijk voorschrift.
+     2. Onder overtreder wordt verstaan: degene die de overtreding pleegt of medepleegt.
+     3. Overtredingen kunnen worden begaan door natuurlijke personen en rechtspersonen. Artikel 51, tweede
+     en derde lid, van het Wetboek van Strafrecht is van overeenkomstige toepassing.
+
+     Artikel 5:2
+     1. In deze wet wordt verstaan onder:
+              a. bestuurlijke sanctie: een door een bestuursorgaan wegens een overtreding opgelegde
+              verplichting of onthouden aanspraak;
+              b. herstelsanctie: een bestuurlijke sanctie die strekt tot het geheel of gedeeltelijk ongedaan maken
+              of beëindigen van een overtreding, tot het voorkomen van herhaling van een overtreding, dan wel
+              tot het wegnemen of beperken van de gevolgen van een overtreding;
+              c. bestraffende sanctie: een bestuurlijke sanctie voor zover deze beoogt de overtreder leed toe te
+              voegen.
+     2. Geen bestuurlijke sanctie is de enkele last tot het verrichten van bepaalde handelingen.
+
+     Artikel 5:31d
+     Onder last onder dwangsom wordt verstaan: de herstelsanctie, inhoudende:
+              a. een last tot geheel of gedeeltelijk herstel van de overtreding, en
+              b. de verplichting tot betaling van een geldsom indien de last niet of niet tijdig wordt uitgevoerd.
+
+     Artikel 5:32a
+     1. De last onder dwangsom omschrijft de te nemen herstelmaatregelen.
+     2. Bij een last onder dwangsom die strekt tot het ongedaan maken van een overtreding of het voorkomen
+     van verdere overtreding, wordt een termijn gesteld gedurende welke de overtreder de last kan uitvoeren
+     zonder dat een dwangsom wordt verbeurd.
+
+     Artikel 5:32b
+     1. Het bestuursorgaan stelt de dwangsom vast hetzij op een bedrag ineens, hetzij op een bedrag per
+     tijdseenheid waarin de last niet is uitgevoerd, dan wel per overtreding van de last.
+     2. Het bestuursorgaan stelt tevens een bedrag vast waarboven geen dwangsom meer wordt verbeurd.
+     3. De bedragen staan in redelijke verhouding tot de zwaarte van het geschonden belang en tot de beoogde
+     werking van de dwangsom.
+
+     Warmtewet
+
+     Artikel 1
+     1. In deze wet en de daarop berustende bepalingen wordt verstaan onder:
+     (…)
+     – bindende gedragslijn: een zelfstandige last die niet wegens een overtreding wordt opgelegd;
+     – binneninstallatie: leidingen, installaties en hulpmiddelen, niet zijnde de afleverset voor warmte of de
+     meetinrichting, die zijn gelegen in een onroerende zaak als bedoeld in artikel 16, onderdelen a en c tot en
+     met e, van de Wet waardering onroerende zaken van een verbruiker en bestemd voor toe- en afvoer van
+     warmte ten behoeve van die onroerende zaak, met uitzondering van leidingen, installaties en hulpmiddelen
+     die strekken tot doorlevering van warmte naar een andere onroerende zaak, waarbij de binneninstallatie
+     aan de zijde van het warmtenet of het inpandig leidingstelsel is afgegrensd door:
+
+
+
+
+                                                                                                                 30/37
+Autoriteit Consument en Markt                                                                        Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+             i. de hoofdafsluiters waar de individuele afleverset gekoppeld is aan het warmtenet of het inpandig
+             leidingstelsel, of
+             ii. indien er geen hoofdafsluiters aanwezig zijn, een in de warmteleveringsovereenkomst overeen te
+             komen fysiek aanwijsbaar punt;
+     (…)
+     – gebouweigenaar: de eigenaar van een gebouw of, in het geval van gedeeld eigendom, de eigenaars
+     verenigd in een vereniging van eigenaars of een daarmee vergelijkbare rechtsvorm;
+     (…)
+     – inpandig leidingstelsel: één of meer van een gebouw deel uitmakende leidingen en daarmee verbonden
+     hulpmiddelen ten behoeve van transport van warmte tussen een centrale aansluiting van een gebouw op
+     een warmtenet of een productie-installatie en de individuele aansluiting van een onroerende zaak als
+     bedoeld in artikel 16, onderdeel c, van de Wet waardering onroerende zaken;
+     (…)
+     – leverancier: een persoon die zich bezighoudt met de levering van warmte;
+     – levering van warmte: de aflevering van warmte aan verbruikers;
+     (…)
+     – verbruiker: een persoon die warmte afneemt van een warmtenet of een inpandig leidingstelsel en:
+               i.een individuele aansluiting heeft van maximaal 100 kilowatt, of
+               ii.een centrale aansluiting heeft, warmte levert aan een verbruiker als bedoeld onder i en tevens:
+               1°optreedt als verhuurder voor een verbruiker als bedoeld onder i, of
+               2°een vereniging van eigenaars of een daarmee vergelijkbare rechtsvorm is waarbij een verbruiker
+               als bedoeld onder i is aangesloten;
+     (…)
+     – verhuurder: een eigenaar van een voor verhuur bestemde woonruimte of bedrijfsruimte in Nederland, of
+     degene die door die eigenaar gevolmachtigd is namens hem op te treden;
+     – warmte: thermische energie die ten behoeve van ruimteverwarming of verwarming van tapwater wordt
+     geleverd door middel van transport van water;
+     – warmtenet: het geheel van tot elkaar behorende, met elkaar verbonden leidingen, bijbehorende
+     installaties en overige hulpmiddelen dienstbaar aan het transport van warmte, behoudens voor zover deze
+     leidingen, installaties en hulpmiddelen zijn gelegen in een inpandig leidingstelsel, een binneninstallatie of
+     een gebouw of werk van een producent en strekken tot toe- of afvoer van warmte ten behoeve van dat
+     inpandig leidingstelsel, die binneninstallatie of dat gebouw of werk van een producent;
+     – zelfstandige last: de enkele last tot het verrichten van bepaalde handelingen, bedoeld in artikel 5:2,
+     tweede lid, van de Algemene wet bestuursrecht, ter bevordering van de naleving van wettelijke
+     voorschriften.
+
+     Artikel 1a
+     1. Deze wet is van toepassing op levering van warmte aan verbruikers, met uitzondering van levering van
+     warmte door een leverancier die:
+     a. tevens optreedt als verhuurder voor de verbruiker aan wie hij warmte levert ten behoeve van de door
+     hem aan de verbruiker verhuurde woon- of bedrijfsruimte;
+     (…)
+
+     Artikel 2
+     (…)
+     7. Een leverancier houdt een storingsregistratie bij betreffende de levering van warmte en publiceert deze
+     jaarlijks op geschikte wijze.
+     (…)
+
+     Artikel 3
+     1. Een in Nederland gevestigde leverancier verstrekt een verbruiker, in aanvulling op de gegevens bedoeld
+     in artikel 230m, eerste lid, van Boek 6 van het Burgerlijk Wetboek, voordat de verbruiker gebonden is aan
+     een overeenkomst tot levering van warmte op duidelijke en begrijpelijke wijze de volgende informatie:
+
+
+
+
+                                                                                                             31/37
+Autoriteit Consument en Markt                                                                         Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+              a. een duidelijke en volledige omschrijving van de te leveren goederen en diensten en de
+              overeengekomen kwaliteitsniveaus daarvan, welke in ieder geval betrekking hebben op de
+              minimum- en maximumtemperatuur van de te leveren warmte, alsmede de prijzen en voorwaarden
+              waaronder deze goederen en diensten worden geleverd;
+              b. een omschrijving van de terugbetalingsregelingen als de geleverde goederen en diensten niet
+              aan de overeengekomen kwaliteitsniveaus voldoen, en
+              c. de eisen waar de binneninstallatie van een verbruiker aan moet voldoen om veilig gebruik te
+              kunnen maken van de door de leverancier geleverde warmte.
+     2. Artikel 230m, eerste lid, van boek 6 van het Burgerlijk Wetboek is van overeenkomstige toepassing op
+     een overeenkomst tot levering van warmte tussen een leverancier een verbruiker die handelt in de
+     uitoefening van een beroep of bedrijf.
+     3. Artikel 230v van Boek 6 van het Burgerlijk Wetboek is van overeenkomstige toepassing op de
+     informatieverplichtingen voor leveranciers bedoeld in het eerste en het tweede lid.
+
+     Artikel 3a
+     1. De leverancier keert aan een verbruiker een compensatie uit bij een ernstige storing in de levering van
+     warmte waarvan de oorzaak gelegen is in:
+              a. het warmtenet van de leverancier of de netbeheerder;
+              b. de afleverset voor warmte, indien deze het eigendom is van de leverancier;
+              c. de aansluiting, of
+              d. het inpandig leidingstelsel van de gebouweigenaar.
+     2. De leverancier is niet verplicht tot het uitkeren van een compensatie als bedoeld in het eerste lid, indien
+     de storing, bedoeld in dat lid:
+              a. het gevolg is van een extreme situatie die niet aan de leverancier of netbeheerder kan worden
+              toegerekend, of
+              b. minder dan 24 uur duurt en in een periode van 12 maanden voorafgaand aan de storing zich
+              geen storingen hebben voorgedaan in:
+              i. hetzelfde warmtenet van de leverancier of de netbeheerder,
+              ii. dezelfde afleverset voor warmte, indien deze het eigendom is van de leverancier;
+              iii. dezelfde aansluiting, of
+              iv. hetzelfde inpandig leidingstelsel van de gebouweigenaar.
+     3. Bij ministeriële regeling worden regels gesteld over:
+              a. het bestaan van een ernstige storing als bedoeld in het eerste lid;
+              b. de hoogte van de compensatie bij een ernstige storing in de levering van warmte als bedoeld in
+              het eerste lid, die voor storingen van verschillende tijdsduur verschillend kan worden vastgesteld;
+              c. het moment van aanvang en beëindiging van de verplichting tot het betalen van compensatie bij
+              een ernstige storing in de levering van warmte als bedoeld in het eerste lid, en
+              d. het bestaan van een extreme situatie die niet aan de leverancier of verbruiker kan worden
+              toegerekend als bedoeld in het tweede lid, onderdeel a.
+
+     Artikel 3b
+     1. Verbruikers kunnen geschillen die voortvloeien uit een overeenkomst tot levering van warmte,
+     onverminderd de bevoegdheid van de burgerlijke rechter, voorleggen aan een onafhankelijke
+     geschillencommissie.
+     2. De procedure bij de geschillencommissie, bedoeld in het eerste lid, dient snel, transparant, eenvoudig en
+     goedkoop te zijn.
+
+     Artikel 15
+     De Autoriteit Consument en Markt is belast met taken ter uitvoering van deze wet en het toezicht op de
+     naleving van deze wet, met uitzondering van artikel 3d, tweede lid, onderdeel b.
+
+     Artikel 17
+     De Autoriteit Consument en Markt kan een bindende gedragslijn opleggen in verband met de naleving van
+     deze wet.
+
+
+                                                                                                              32/37
+Autoriteit Consument en Markt                                                                            Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+
+     Artikel 18
+     1. De Autoriteit Consument en Markt kan in geval van overtreding van het bepaalde bij of krachtens deze
+     wet de overtreder een last onder dwangsom opleggen.
+     (…)
+
+     Artikel 40
+     Een leverancier meldt zo spoedig mogelijk na inwerkingtreding van deze wet aan de Autoriteit Consument
+     en Markt:
+              a. de naam en het adres van de leverancier, en
+              b. een beschrijving van de door leverancier te exploiteren warmtenetten waarbij in ieder geval het
+              aantal verbruikers en het aantal aan verbruikers geleverde gigajoules is opgenomen.
+
+     Warmteregeling
+
+     Artikel 1
+     In deze regeling wordt verstaan onder:
+     (…)
+     – storing: iedere onderbreking van de levering van warmte, met uitzondering van voorziene onderbrekingen
+     als bedoeld in artikel 4, tweede lid, van de wet en contractueel overeengekomen onderbrekingen van de
+     levering van warmte;
+     (…)
+
+     Artikel 4
+     1. Als ernstige storing als bedoeld in artikel 3a, eerste lid, van de wet wordt aangemerkt een storing die
+     langer duurt dan 8 uur.
+     2. De hoogte van de financiële compensatie per aansluiting van een verbruiker bedraagt EUR 35,– bij een
+     storing met een duur van 8 tot 12 uur, vermeerderd met EUR 20,– voor elke volgende aaneengesloten
+     periode van 4 uur.
+     3. Een storing:
+               a. in een primair warmtenet van een leverancier of netbeheerder vangt voor alle verbruikers die zijn
+               aangesloten op het door de storing getroffen primaire warmtenet aan op het tijdstip van ontvangst
+               van de eerste melding van een storing of, indien melding niet plaatsvindt of dit eerder is, het tijdstip
+               van vaststelling van de storing door de leverancier of de netbeheerder;
+               b. in een secundair warmtenet van een leverancier of netbeheerder vangt voor alle verbruikers die
+               zijn aangesloten op het door de storing getroffen secundaire warmtenet aan op het tijdstip van
+               ontvangst van de eerste melding van een storing of, indien melding niet plaatsvindt of dit eerder is,
+               het tijdstip van vaststelling van de storing door de leverancier of de netbeheerder;
+               c. in een inpandig leidingstelsel van een gebouweigenaar vangt voor alle verbruikers die zijn
+               aangesloten op het door de storing getroffen inpandig leidingstelsel aan op het tijdstip van
+               ontvangst van de eerste melding van een storing of, indien melding niet plaatsvindt of dit eerder is,
+               het tijdstip van vaststelling van de storing door de leverancier, de netbeheerder of de
+               gebouweigenaar, of
+               d. in een aansluiting of een afleverset die eigendom is van een leverancier of netbeheerder vangt
+               voor de getroffen verbruiker aan op het tijdstip van de eerste melding van de storing of, indien
+               melding niet plaatsvindt of dit eerder is, het tijdstip van vaststelling van de storing door de
+               leverancier of de netbeheerder.
+     4. De tijdsduur van de storing waarvoor compensatie moet worden uitgekeerd wordt voor de door de storing
+     getroffen verbruikers bepaald als de tijdsduur tussen:
+               a. het tijdstip van aanvang van de storing, en
+               b. het tijdstip waarop, door middel van een controle door de leverancier of netbeheerder, is
+               vastgesteld dat de storing is hersteld voor alle getroffen verbruikers.
+     5. Voor het bepalen van het tijdstip waarop de storing is hersteld voor alle getroffen verbruikers kan
+     onderscheid worden gemaakt tussen:
+
+
+                                                                                                                 33/37
+Autoriteit Consument en Markt                                                                         Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+
+              a. de verbruikers die zijn aangesloten op het door de storing getroffen primaire net;
+              b. de verbruikers die zijn aangesloten op het door de storing getroffen secundaire net;
+              c. de verbruikers die zijn aangesloten op het door de storing getroffen inpandig leidingstelsel van
+              de gebouweigenaar, of
+              d. de verbruiker van de door de storing getroffen aansluiting of afleverset.
+     6. De compensatie wordt door de leverancier binnen zes maanden na het herstel van de onderbreking
+     betaald.
+
+     Artikel 4a
+     Met een extreme situatie die niet aan de leverancier of netbeheerder kan worden toegerekend wordt
+     bedoeld een niet te voorziene gebeurtenis of situatie die:
+          a. redelijkerwijs buiten de controle van een netbeheerder of leverancier ligt en niet te wijten is aan
+              een fout van een netbeheerder of leverancier;
+          b. zo weinig voorkomt dat het oneconomisch zou zijn om daarmee rekening te houden in de
+              reguleringssystematiek, en
+          c. niet beïnvloed kan worden door de netbeheerder of leverancier.
+
+
+     Burgerlijk Wetboek Boek 6
+
+     Artikel 230g
+     1. In deze afdeling wordt verstaan onder:
+     a. consument: iedere natuurlijke persoon die handelt voor doeleinden die buiten zijn bedrijfs- of
+     beroepsactiviteit vallen;
+     b. handelaar: iedere natuurlijke of rechtspersoon die handelt in het kader van zijn handels-, bedrijfs-,
+     ambachts- of beroepsactiviteit, al dan niet mede via een andere persoon die namens hem of voor zijn
+     rekening optreedt;
+     (…)
+     d. overeenkomst tot het verrichten van diensten: iedere andere overeenkomst dan een consumentenkoop,
+     waarbij de handelaar zich jegens de consument verbindt een dienst, met inbegrip van een digitale dienst, te
+     verrichten;
+     e. overeenkomst op afstand: de overeenkomst die tussen de handelaar en de consument wordt gesloten in
+     het kader van een georganiseerd systeem voor verkoop of dienstverlening op afstand zonder gelijktijdige
+     persoonlijke aanwezigheid van handelaar en consument en waarbij, tot en met het moment van het sluiten
+     van de overeenkomst, uitsluitend gebruik wordt gemaakt van een of meer middelen voor communicatie op
+     afstand;
+     (…)
+     g. verkoopruimte:
+     1°.iedere onverplaatsbare ruimte voor detailhandel waar de handelaar op permanente basis zijn activiteiten
+     uitoefent, of
+     2°.iedere verplaatsbare ruimte voor detailhandel waar de handelaar gewoonlijk zijn activiteiten uitoefent;
+     h. duurzame gegevensdrager: ieder hulpmiddel dat de consument of de handelaar in staat stelt om
+     persoonlijk aan hem gerichte informatie op te slaan op een wijze die deze informatie toegankelijk maakt
+     voor toekomstig gebruik gedurende een periode die is aangepast aan het doel waarvoor de informatie is
+     bestemd, en die een ongewijzigde weergave van de opgeslagen informatie mogelijk maakt;
+
+     Artikel 230m
+     1. Voordat de consument gebonden is aan een overeenkomst op afstand of een overeenkomst buiten de
+     verkoopruimte, dan wel aan een daartoe strekkend aanbod, verstrekt de handelaar de consument op
+     duidelijke en begrijpelijke wijze de volgende informatie:
+     (…)
+
+
+
+
+                                                                                                              34/37
+Autoriteit Consument en Markt                                                                         Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+     t. voor zover van toepassing, de mogelijkheid van toegang tot buitengerechtelijke klachten- en
+     geschilbeslechtingsprocedures waarbij de handelaar zich heeft aangesloten, en de wijze waarop daar
+     toegang toe is;
+     (…)
+
+     Artikel 230n
+     (…)
+     4. Op de handelaar rust de bewijslast voor de juiste en tijdige verstrekking van de in deze paragraaf
+     genoemde informatie.
+
+     Artikel 230v
+     1. Bij een overeenkomst op afstand verstrekt de handelaar de in artikel 230m lid 1 genoemde informatie
+     aan de consument op een wijze die passend is voor de gebruikte middelen voor communicatie op afstand
+     en in een duidelijke en begrijpelijke taal. Verstrekt de handelaar deze informatie op een duurzame
+     gegevensdrager, dan is zij in leesbare vorm opgesteld.
+     (…)
+     7 De handelaar verstrekt de consument op een duurzame gegevensdrager binnen een redelijke termijn na
+     het sluiten van de overeenkomst op afstand doch in ieder geval bij de levering van de zaken of voordat de
+     dienst wordt uitgevoerd een bevestiging van de overeenkomst. Deze bevestiging omvat:
+              a. alle in artikel 230m lid 1 bedoelde informatie, voor zover de handelaar deze niet voor het sluiten
+              van de overeenkomst op een duurzame gegevensdrager heeft verstrekt; en
+              b. voor zover van toepassing, de bevestiging van de uitdrukkelijke voorafgaande toestemming en
+              de verklaring van de consument overeenkomstig artikel 230p onderdeel g.
+     (…)
+
+     Wet handhaving consumentenbescherming
+
+     Artikel 1.1
+     (…)
+     zelfstandige last: de enkele last tot het verrichten van bepaalde handelingen, bedoeld in artikel 5:2, tweede
+     lid, van de Algemene wet bestuursrecht, ter bevordering van de naleving van wettelijke voorschriften.
+
+     Artikel 2.2
+     De Autoriteit Consument en Markt is belast met het toezicht op de naleving van de wettelijke bepalingen,
+     bedoeld in onderdeel a van de bijlage bij deze wet. Zij is niet bevoegd indien de inbreuk of inbreuk binnen
+     de Unie betrekking heeft op een financiële dienst of activiteit.
+
+     Artikel 2.9
+     Indien de Autoriteit Consument en Markt van oordeel is dat een inbreuk of inbreuk binnen de Unie heeft
+     plaatsgevonden, kan zij de overtreder opleggen:
+              a. een last onder dwangsom;
+              b. een bestuurlijke boete.
+
+     Artikel 8.2a
+     1. Een handelaar als bedoeld in artikel 230g, eerste lid, onderdeel b, van Boek 6 van het Burgerlijk
+     Wetboek, die een overeenkomst aangaat waarop Afdeling 2B van Titel 5 van Boek 6 van het Burgerlijk
+     Wetboek van toepassing is, neemt de bepalingen van die afdeling in acht.
+     2. Indien een overeenkomst waarop Afdeling 2B van Titel 5 van Boek 6 van het Burgerlijk Wetboek van
+     toepassing is, tot stand komt via een andere persoon, handelend in het kader van zijn handels-, bedrijfs-,
+     ambachts- of beroepsactiviteit, die daarbij optreedt namens of voor rekening van een handelaar, neemt ook
+     die andere persoon de bepalingen van die afdeling in acht.
+     3. Het eerste en tweede lid zijn van overeenkomstige toepassing voordat de consument is gebonden aan
+     een overeenkomst, dan wel aan een daartoe strekkend aanbod.
+
+
+
+
+                                                                                                              35/37
+Autoriteit Consument en Markt                                                                      Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+     Bijlage 2: Verloop van de procedure
+
+
+          1.   Op 7 augustus 2024 heeft de Autoriteit Consument en Markt (hierna: de ACM) Energie Exploitatie
+               De Trip B.V. (hierna: EETRIP) per brief geïnformeerd over de start van het onderzoek. 83 De ACM
+               heeft EETRIP in dezelfde brief een informatieverzoek gestuurd.
+
+          2.   EETRIP heeft op 15 augustus 2024 verzocht om uitstel van de reactietermijn.84 Hierover is op 16
+               augustus 2024 telefonisch contact geweest met EETRIP.85 Ook is op 16 augustus 2024 een brief
+               uitgegaan waarin de ACM de reactietermijn heeft verlengd. 86
+
+          3.   Op 27 augustus 2024 heeft EETRIP gereageerd op het informatieverzoek. 87
+
+          4.   Op 30 januari 2025 heeft de ACM telefonisch contact opgenomen met EETRIP. 88 In dit gesprek
+               heeft de ACM EETRIP uitgenodigd voor een gesprek op het kantoor van de ACM.
+
+          5.   Op 11 februari 2025 heeft de ACM EETRIP per brief uitgenodigd voor een gesprek op het kantoor
+               van de ACM.89 In de bijlage bij deze brief heeft de ACM voorlopige bevindingen van het onderzoek
+               meegestuurd.
+
+          6.   Op 21 februari 2025 heeft er een gesprek plaatsgevonden tussen de ACM en EETRIP. 90 Tijdens dit
+               gesprek is afgesproken om een vervolgoverleg te plannen. Dit vervolgoverleg is gepland voor 18
+               maart 2025.91
+
+          7.   Op 28 februari 2025 heeft de ACM een uitgebreidere versie van de voorlopige bevindingen
+               gedeeld met EETRIP.92
+
+          8.   Op 14 maart 2025 heeft EETRIP gereageerd op de voorlopige bevindingen. 93
+
+          9.   Op 17 maart 2025 heeft er telefonisch contact plaatsgevonden tussen de ACM en EETRIP. 94 Op
+               dezelfde dag heeft EETRIP de ACM verzocht het geplande gesprek doorgang te laten vinden. 95
+
+          10. Op 18 maart 2025 heeft de ACM aan EETRIP laten weten het vervolgoverleg niet door te laten
+              gaan.96 Op 24 maart 2025 heeft de ACM aan EETRIP een brief verstuurd met daarin een
+              toelichting hierop.97 Hier heeft EETRIP op 8 april 2025 op gereageerd. 98
+
+          11. Op 4 juni 2025 heeft de ACM aan EETRIP een informatieverzoek gestuurd.99
+
+
+
+
+     83
+        ACM/UIT/626681.
+     84
+        ACM/IN/900688.
+     85
+        ACM/INT/508631.
+     86
+        ACM/UIT/627292.
+     87
+        ACM/IN/904752.
+     88
+        ACM/INT/524693.
+     89
+        ACM/UIT/638981.
+     90
+        ACM/INT/523215.
+     91
+        ACM/UIT/643069.
+     92
+        ACM/UIT/643075.
+     93
+        ACM/IN/970357.
+     94
+        ACM/INT/525369.
+     95
+        ACM/IN/970364.
+     96
+        ACM/UIT/644820.
+     97
+        ACM/UIT/643979.
+     98
+        ACM/IN/980830.
+     99
+        ACM/UIT/647325.
+
+
+
+                                                                                                          36/37
+Autoriteit Consument en Markt                                                                        Openbaar
+Zaaknr. ACM/24/191276 / Documentnr. ACM/UIT/658846
+
+
+
+           12. Op 6 juni 2025 heeft EETRIP verzocht om uitstel van de reactietermijn.100 Hierover is op 10 juni
+               2025 telefonisch contact geweest.101
+
+           13. Op 16 juni 2025 en 27 juni 2025 heeft de ACM telefonisch contact gehad met drie indieners van
+               signalen bij de ACM.102
+
+           14. Op 17 juni 2025 heeft EETRIP een eerste reactie gestuurd op het informatieverzoek van 4 juni
+               2025.103
+
+           15. Op 18 juni 2025 heeft EETRIP een brief gestuurd aan de ACM in het kader van het lopende
+               onderzoek.104 Op 23 juni 2025 heeft hierover telefonisch contact plaatsgevonden.105
+
+           16. Op 24 juni 2025 heeft EETRIP een tweede reactie gestuurd op het informatieverzoek van 4 juni
+               2025.106
+
+           17. Op 8 augustus 2025 heeft de ACM aan EETRIP het conceptbesluit ter zienswijze aan EETRIP
+               voorgelegd.107
+
+           18. Op 14 augustus 2025 heeft EETRIP de ACM per mail verzocht om uitstel van de reactietermijn. 108
+               Hierover heeft op dezelfde dag telefonisch overleg plaatsgevonden tussen EETRIP en de ACM. 109
+
+           19. Op 19 augustus 2025 heeft de ACM per mail de reactietermijn voor het indienen van een
+               zienswijze verlengd.110
+
+           20. Op 21 augustus 2025 heeft EETRIP per mail aan de ACM gereageerd op de verlengde
+               reactietermijn.111
+
+           21. Op 25 augustus 2025 heeft de ACM per mail aan EETRIP laten weten de reactietermijn niet verder
+               te verlengen.112
+
+           22. Op 2 september 2025 heeft EETRIP haar zienswijze op het conceptbesluit aan de ACM
+               gestuurd.113
+
+
+
+
+     100
+         ACM/IN/1000029.
+     101
+         ACM/UIT/651014.
+     102
+         ACM/INT/532878; ACM/INT/532943; ACM/INT/532951.
+     103
+         ACM/IN/999995.
+     104
+         ACM/IN/1000245.
+     105
+         ACM/INT/532556.
+     106
+         ACM/IN/1003660.
+     107
+         ACM/24/191276.
+     108
+         ACM/IN/1019945.
+     109
+         ACM/INT/536769.
+     110
+         ACM/UIT/657372.
+     111
+         ACM/IN/1026680.
+     112
+         ACM/UIT/656333.
+     113
+         ACM/IN/1025712.
+
+
+
+                                                                                                             37/37
+
