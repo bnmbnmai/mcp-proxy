@@ -44,6 +44,7 @@ build/atsdr-hc.*
 build/waterboards-acl.*
 build/doe-nov.*
 build/nop-ad.*
+build/nlrb-bd.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
@@ -85,3 +86,4 @@ data/atsdr-hc/
 data/waterboards-acl/
 data/doe-nov/
 data/nop-ad/
+data/nlrb-bd/

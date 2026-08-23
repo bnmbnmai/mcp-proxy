@@ -1,0 +1,159 @@
+[
+  {
+    "id": "starbucks-19-ca-295850",
+    "institution": "Starbucks Corporation",
+    "docket": "19-CA-295850",
+    "date": "2026-08-05",
+    "title": "Decision and Order",
+    "type": "board-decision",
+    "sourceUrl": "https://apps.nlrb.gov/link/document.aspx/09031d45843171e1",
+    "pdfId": "09031d45843171e1"
+  },
+  {
+    "id": "cvs-01-ca-365034",
+    "institution": "Rhode Island CVS Pharmacy LLC",
+    "docket": "01-CA-365034",
+    "date": "2026-08-05",
+    "title": "Decision and Order",
+    "type": "board-decision",
+    "sourceUrl": "https://apps.nlrb.gov/link/document.aspx/09031d458431f711",
+    "pdfId": "09031d458431f711"
+  },
+  {
+    "id": "osg-12-ca-386056",
+    "institution": "Overseas Shipholding Group, Inc.",
+    "docket": "12-CA-386056",
+    "date": "2026-08-04",
+    "title": "Decision and Order",
+    "type": "board-decision",
+    "sourceUrl": "https://apps.nlrb.gov/link/document.aspx/09031d45843204c3",
+    "pdfId": "09031d45843204c3"
+  },
+  {
+    "id": "ralphs-21-ca-073942",
+    "institution": "Ralphs Grocery Company",
+    "docket": "21-CA-073942",
+    "date": "2026-08-10",
+    "title": "Supplemental Decision and Order",
+    "type": "board-decision",
+    "sourceUrl": "https://apps.nlrb.gov/link/document.aspx/09031d45843209af",
+    "pdfId": "09031d45843209af"
+  },
+  {
+    "id": "x-factor-31-ca-323348",
+    "institution": "X Factor S2 LLC",
+    "docket": "31-CA-323348",
+    "date": "2026-08-05",
+    "title": "Decision and Order",
+    "type": "board-decision",
+    "sourceUrl": "https://apps.nlrb.gov/link/document.aspx/09031d45843209db",
+    "pdfId": "09031d45843209db"
+  },
+  {
+    "id": "jane-doe-person",
+    "institution": "Jane Doe",
+    "individual": "Jane Doe",
+    "docket": "19-CA-000001",
+    "date": "2026-01-01",
+    "title": "People SKU",
+    "type": "people",
+    "sourceUrl": "https://apps.nlrb.gov/link/document.aspx/09031d45843171e1",
+    "pdfId": "09031d45843171e1"
+  },
+  {
+    "id": "starbucks-listing-teaser",
+    "institution": "Starbucks Corporation",
+    "docket": "19-CA-295850",
+    "date": "2026-08-05",
+    "title": "Board Decisions listing",
+    "type": "listing",
+    "sourceUrl": "https://www.nlrb.gov/cases-decisions/decisions/board-decisions",
+    "pdfId": "listing.html"
+  },
+  {
+    "id": "starbucks-case-page",
+    "institution": "Starbucks Corporation",
+    "docket": "19-CA-295850",
+    "date": "2026-08-05",
+    "title": "Case-page docket / allegation teaser",
+    "type": "case-page",
+    "sourceUrl": "https://www.nlrb.gov/case/19-CA-295850",
+    "pdfId": "case.html"
+  },
+  {
+    "id": "citenet",
+    "institution": "Starbucks Corporation",
+    "docket": "19-CA-295850",
+    "date": "2026-08-05",
+    "title": "CiteNet research",
+    "type": "citenet",
+    "sourceUrl": "https://www.nlrb.gov/cases-decisions/cases/research",
+    "pdfId": "citenet.html"
+  },
+  {
+    "id": "case-search-csv",
+    "institution": "Starbucks Corporation",
+    "docket": "19-CA-295850",
+    "date": "2026-08-05",
+    "title": "Case Search export CSV",
+    "type": "case-search-csv",
+    "sourceUrl": "https://www.nlrb.gov/search/case",
+    "pdfId": "cases.csv"
+  },
+  {
+    "id": "alj-only",
+    "institution": "Starbucks Corporation",
+    "docket": "19-CA-295850",
+    "date": "2023-05-31",
+    "title": "Administrative Law Judges Decision",
+    "type": "alj",
+    "sourceUrl": "https://apps.nlrb.gov/link/document.aspx/09031d4583a8989f",
+    "pdfId": "09031d4583a8989f"
+  },
+  {
+    "id": "fr-notice",
+    "institution": "Example Corp",
+    "date": "2026-01-01",
+    "title": "Federal Register notice",
+    "type": "fr",
+    "sourceUrl": "https://www.federalregister.gov/documents/2026/01/01/example",
+    "pdfId": "example.html"
+  },
+  {
+    "id": "govinfo",
+    "institution": "Example Corp",
+    "date": "2026-01-01",
+    "title": "GovInfo package",
+    "type": "govinfo",
+    "sourceUrl": "https://www.govinfo.gov/content/pkg/example/pdf/example.pdf",
+    "pdfId": "example.pdf"
+  },
+  {
+    "id": "catalog-data-gov",
+    "institution": "Example Corp",
+    "date": "2026-01-01",
+    "title": "catalog.data.gov dataset",
+    "type": "catalog-data-gov",
+    "sourceUrl": "https://catalog.data.gov/dataset/nlrb",
+    "pdfId": "dataset.html"
+  },
+  {
+    "id": "govuk-corporate-report",
+    "institution": "Example Department",
+    "date": "2026-01-01",
+    "title": "GOV.UK corporate_report",
+    "type": "corporate_report",
+    "sourceUrl": "https://www.gov.uk/government/publications/example",
+    "pdfId": "corporate-report.html"
+  },
+  {
+    "id": "nop-ad",
+    "institution": "Example Organics, LLC",
+    "docket": "APL-000-24",
+    "date": "2026-01-01",
+    "title": "Administrator's Decision",
+    "type": "nop-ad",
+    "sourceUrl": "https://www.ams.usda.gov/sites/default/files/media/DecisionAPL-000-24_ExampleOrganics.pdf",
+    "pdfId": "DecisionAPL-000-24_ExampleOrganics.pdf"
+  }
+]
