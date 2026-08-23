@@ -322,6 +322,7 @@ export function isRealAirLetterBody(text: string): boolean {
   if (/Bureau of Industry and Security/i.test(text) && /PROPOSED CHARGING LETTER|ORDER RELATING TO/i.test(text)) return false;
   if (/ALCOHOL AND TOBACCO TAX AND TRADE BUREAU/i.test(text) && /ABSTRACT AND STATEMENT/i.test(text)) return false;
   if (/RECORD OF DECISION/i.test(text) && /DECLARATION/i.test(text) && /\b(CERCLA|Superfund)\b/i.test(text)) return false;
+  if (/(?:MONETARY )?PENALTY NOTICE/i.test(text) && /Information Commissioner/i.test(text) && /(?:Data Protection Act 2018|section 155)/i.test(text)) return false;
   const aphis = /Animal and\s+Plant Health\s+Inspection Service|Biotechnology\s+Regulatory\s+Services/i.test(text);
   const kind = /Confirmation of the regulatory status/i.test(text) && /7 CFR part 340/i.test(text);
   const docket = /\d{2}-\d{3}-01air/i.test(text);

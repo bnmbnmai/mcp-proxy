@@ -34,6 +34,7 @@ Live paid doors (all return HTTP 402 unpaid, official bodies when paid):
 | `GET https://ticks.bnm.farm/ttb-oic` | $0.05 | TTB institution/company Offer in Compromise PDF text |
 | `GET https://ticks.bnm.farm/air-letters` | $0.05 | USDA APHIS institution/company AIR confirmation-letter PDF text |
 | `GET https://ticks.bnm.farm/superfund-rods` | $0.05 | EPA Superfund institution/site Record of Decision PDF text |
+| `GET /ico-mpn` (this branch; not live-applied) | $0.05 | ICO institution/company Monetary Penalty Notice PDF text |
 
 CDP `POST /platform/v2/x402/validate` for each URL: `valid: true`, `simulation.outcome: accepted`.
 

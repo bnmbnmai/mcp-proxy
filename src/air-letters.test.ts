@@ -145,6 +145,12 @@ async function main(): Promise<void> {
   });
   assert.equal(isRealAirLetterBody(superfund.body), false, "Superfund /superfund-rods is not this SKU");
 
+  const ico = parseAirLetterText(readFx("ico-mpn.txt"), {
+    sourceUrl: "https://ico.org.uk/media2/hrlmvj14/reddit-mpn-20260223.pdf",
+    institution: "Reddit, Inc.",
+  });
+  assert.equal(isRealAirLetterBody(ico.body), false, "ICO /ico-mpn is not this SKU");
+
   const manifest = buildAirLettersManifest({
     ok: true,
     product: "aphis-air-confirmation-letter-bodies",
