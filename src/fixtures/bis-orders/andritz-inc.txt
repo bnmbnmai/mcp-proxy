@@ -1,0 +1,443 @@
+                    UNITED STATES DEPARTMENT OF COMMERCE
+                       BUREAU OF INDUSTRY AND SECURITY
+                             WASHINGTON, D.C. 20230
+
+In the Matter of:
+
+Andritz Inc.
+35 Sherman Street
+Muncy, PA 17756
+
+              Respondent
+
+                                     ORDER RELATING TO
+                                       ANDRITZ, INC.
+
+        The Bureau of Industry and Security, U.S. Department of Commerce (“BIS”), has
+
+notified Andritz Inc., of its intention to initiate an administrative proceeding against
+
+Andritz Inc. pursuant to Section 766.3 of the Export Administration Regulations (the
+
+“Regulations”), 1 through the issuance of a Proposed Charging Letter to Andritz Inc. that
+
+alleges that Andritz Inc. committed 36 violations of the Regulations. 2 Specifically:
+
+                                 STATEMENT OF CHARGES
+Charges 1 - 36            15 C.F.R. § 764.2(a) – Engaging in Prohibited Conduct
+    1. As described in the Schedule of Violations, between on or about May 25, 2023,
+       through on or about February 12, 2024, Andritz Inc. engaged in conduct
+       prohibited by the Regulations on 36 occasions when it exported refiner plates,
+       valued at $3,154,794.36, to Andritz Fiedler. Andritz Fiedler then reexported the
+       refiner plates to Russia. The sales to Russia were conducted without the requisite
+       license or other authorization from BIS.
+
+    2. The items reexported by Andritz Fiedler are classified EAR99. However, because
+       these items were classified by Harmonized Tariff Schedule (“HTS”) codes which
+       appeared on Supplement No. 4 to Part 746 of the EAR at the time of export, these
+       items required a license for export to Russia pursuant to § 746.8 of the EAR. 3 On
+
+1
+   The Regulations are issued under the authority of the Export Control Reform Act of 2018, 50 U.S.C. §§
+4801-4852 (“ECRA”).
+2
+   The Regulations are currently codified in the Code of Federal Regulations at 15 C.F.R. Parts 730-774
+(2025). The charged violations occurred in 2023–2024. The Regulations governing the violations at issue
+are found in the 2023–2024 versions of the Code of Federal Regulations (15 C.F.R. Parts 730-774 (2023-
+2024)). The 2025 Regulations set forth the procedures that apply to this matter.
+3
+  The EAR’s Harmonized Tariff Schedule-based license requirements for items destined to Russia have
+been continuously revised since first imposed in February 2022. The items in question here appear on
+         May 23, 2023, BIS added license requirements for the items to limit Russia’s
+         access to items that enable its military capabilities and to sources of revenue that
+         could support those capabilities. 88 Fed. Reg. 33422. Refiner plates are used in
+         the refining process of paper pulp making machines. Paper pulp is a basic
+         component of manufacturing paper. While there is no evidence that Andritz Inc.’s
+         refiner plates were designed for, used, or could be used, for military-related
+         purposes, wood and flax pulp could potentially have military application.
+
+    3. Supplement No. 4 to Part 746 of the Regulations identifies ‘industrial goods’
+       which require a BIS license for export, reexport, or transfer (in-country) to Russia
+       or Belarus. For the purposes of this license requirement, an ‘industrial good’ is
+       any item identified in Supplement No. 4 to Part 746 of the Regulations. The HTS
+       classifications of the items contained in each of Andritz Inc.’s 36 exports are
+       detailed in the Schedule of Violations below.
+
+    4. Upon learning of the transactions, Andritz Inc. took immediate steps to
+       investigate the matter, voluntarily disclosed the transactions in a timely fashion to
+       BIS, and retained outside counsel to investigate. According to information it
+       voluntarily disclosed to BIS, Andritz Inc. exported refiner plates to Andritz
+       Fiedler without the requisite license. Andritz Fielder then sold and shipped the
+       refiner plates to entities within Russia. 4
+
+    5. In total, from on or about May 25, 2023, through on or about February 12, 2024,
+       Andritz Inc. engaged in 36 transactions involving the reexport of refiner plates.
+       Each of these transactions involved items classified by an HTS code listed in
+       Supplement No. 4 to Part 746 of the EAR and required a license for export to
+       Russia pursuant to § 746.8(a)(5) of the EAR.
+
+    6. By engaging in 36 reexports to Russia without the requisite license or other
+       authorization from BIS, Andritz Inc. committed 36 violations of § 764.2(a) of the
+       Regulations.
+
+
+                                           Schedule of Violations
+Charge      Shipment Date               Item(s)        HTS/HS                  Violation          Value 5
+No.                                     Description Code                       Type
+  1         May 25, 2023                Refiner Plate 8439.91.00               § 764.2(a)         76,000
+  2         May 25, 2023                Refiner Plate 8439.91.00               § 764.2(a)         67,550
+  3         May 25, 2023                Refiner Plate 8439.91.00               § 764.2(a)         48,800
+  4         May 25, 2023                Refiner Plate 8439.91.00               § 764.2(a)         24,800
+
+Supplement no. 4 to Part 746 of the EAR. The license requirement for these items when destined to or
+within Russia now appears in § 746.8(a)(5) of the EAR.
+4
+  Andritz Inc.’s voluntary self-disclosure reported 41 violations. Here, BIS has chosen not to separately
+charge the 5 remaining violations because the items either did not originate from the United States or the
+item was not subject to a license requirement at the time of export.
+5
+  The transaction values are provided in Euro.
+   5     May 25, 2023                    Refiner Plate      8439.91.00         § 764.2(a)     53,900
+   6     May 26, 2023                    Refiner Plate      8439.91            § 764.2(a)     26,052
+   7     May 30, 2023                    Refiner Plate      8439.91            § 764.2(a)     92,500
+   8     June 29, 2023                   Refiner Plate      8439.91.10         § 764.2(a)     125,339.10
+   9     June 29, 2023                   Refiner Plate      8439.91.10         § 764.2(a)     136,842.20
+  10     July 13, 2023                   Refiner Plate      8439.91.10         § 764.2(a)     6,600
+  11     July 24, 2023                   Refiner Plate      8439.91.00         § 764.2(a)     26,600
+  12     August 1, 2023                  Refiner Plate      8439.91.00         § 764.2(a)     160,904
+  13     August 1, 2023                  Refiner Plate      8439.91.00         § 764.2(a)     205,750
+  14     August 3, 2023                  Refiner Plate      8439.91.00         § 764.2(a)     139,580
+  15     August 3, 2023                  Refiner Plate      8439.91.00         § 764.2(a)     237,432
+  16     September 4, 2023               Refiner Plate      8439.91.00         § 764.2(a)     39,400
+  17     October 6, 2023                 Refiner Plate      8439.91.00         § 764.2(a)     57,200
+  18     October 6, 2023                 Refiner Plate      8439.91.00         § 764.2(a)     35,200.80
+  19     November 2, 2023                Refiner Plate      8439.91.00         § 764.2(a)     114,600
+  20     November 6, 2023                Refiner Plate      8439.91.00         § 764.2(a)     17,400
+  21     November 6, 2023                Refiner Plate      8439.91.00         § 764.2(a)     62,682.40
+  22     November 6, 2023                Refiner Plate      8439.91.00         § 764.2(a)     85,000
+  23     November 6, 2023                Refiner Plate      8439.91.00         § 764.2(a)     81,800
+  24     November 6, 2023                Refiner Plate      8439.91.00         § 764.2(a)     112,000
+  25     November 15, 2023               Refiner Plate      8439.91.00         § 764.2(a)     112,000
+  26     November 15, 2023               Refiner Plate      8439.91.00         § 764.2(a)     9,900
+  27     December 13, 2023               Refiner Plate      8439.91.00         § 764.2(a)     292,280
+  28     December 13, 2023               Refiner Plate      8439.91.00         § 764.2(a)     89,312
+  29     December 14, 2023               Refiner Plate      8439.91.00         § 764.2(a)     59,810
+  30     December 19, 2023               Refiner Plate      8439.91.00         § 764.2(a)     128,750
+  31     December 19, 2023               Refiner Plate      8439.91.00         § 764.2(a)     64,240
+  32     January 25, 2024                Refiner Plate      8439.91.00         § 764.2(a)     56,000
+  33     January 25, 2024                Refiner Plate      8439.91.00         § 764.2(a)     6,100
+  34     January 25, 2024                Refiner Plate      8439.91.00         § 764.2(a)     50,000
+  35     January 30, 2024                Refiner Plate      8439.91.00         § 764.2(a)     17,180
+  36     February 12, 2024               Refiner Plate      8439.91.00         § 764.2(a)     110,960
+Total Value of Shipments:                                                    €3,029,864.5 or $3,154,794.36 6
+
+
+
+
+6
+    Based upon a conversion rate of 1 Euro to 1.04 dollars calculated on February 5, 2025.
+       WHEREAS, BIS and Andritz Inc. have entered into a Settlement Agreement
+
+pursuant to Section 766.18(a) of the Regulations, whereby they agreed to settle this
+
+matter in accordance with the terms and conditions set forth therein;
+
+       WHEREAS, Andritz Inc. admits committing the alleged conduct described in the
+
+Proposed Charging Letter; and
+
+       WHEREAS, I have approved of the terms of such Settlement Agreement;
+
+IT IS THEREFORE ORDERED:
+
+       FIRST, Andritz Inc. shall be assessed a civil penalty in the amount of
+
+$1,577,397.18, the payment of which shall be made to the U.S. Department of Commerce
+
+within 30 days of the date of this Order.
+
+       SECOND, that, pursuant to the Debt Collection Act of 1982, as amended
+
+(31 U.S.C. §§ 3701-3720E (2012)), the civil penalty owed under this Order accrues
+
+interest as more fully described in the attached Notice, and if payment is not made by the
+
+due date specified herein, Andritz Inc. will be assessed, in addition to the full amount of
+
+the civil penalty and interest, a penalty charge and an administrative charge, as more fully
+
+described in the attached Notice.
+
+       THIRD, that the full and timely payment of the civil penalty in accordance with
+
+the payment schedule set forth above is hereby made a condition to the granting,
+
+restoration, or continuing validity of any export license, license exception, permission, or
+
+privilege granted, or to be granted, to Andritz Inc. Accordingly, if Andritz Inc. should
+
+fail to pay the civil penalty in a full and timely manner, the undersigned may issue an
+
+order denying all of Andritz Inc.’s export privileges under the Regulations for a period of
+
+one year from the date of failure to make such payment.
+             Digitally signed by DAN
+             CLUTCH
+DAN CLUTCH   Date: 2025.07.29 11:05:04
+             -04'00'
+
+
+
+
+      
+                                   PROPOSED CHARGING LETTER
+
+Andritz Inc
+35 Sherman Street
+Muncy, PA, 17756
+
+Attention:           Gunjan Talati, Kilpatrick, Townsend & Stockton, LLP
+                     David Lim, White & Case, LLP
+
+Dear Mr. Talati and Mr. Lim,
+
+The Bureau of Industry and Security, U.S. Department of Commerce (“BIS”), has reason
+to believe that Andritz Inc. committed 36 violations of the Export Administration
+Regulations (the “Regulations” or “EAR”). 1 Specifically, BIS alleges and charges the
+following:
+
+                                      GENERAL ALLEGATIONS
+
+As described further below, between on or about May 25, 2023, through on or about
+February 12, 2024, Andritz Inc. violated the Regulations when it exported items subject to
+the EAR to Andritz Fiedler GmbH (“Andritz Fiedler”), who then reexported the items to
+Russia, without the requisite license or other authorization from BIS. Specifically, Andritz
+Inc. exported 36 shipments of refiner plates to Andritz Fiedler, all of which are designated
+EAR99 but which required a license for export to Russia under § 746.8(a)(5) of the
+Regulations. 2 Andritz Fiedler then sold and shipped the refiner plates to entities within
+Russia.
+
+Key Parties
+
+      A. Andritz Inc.
+
+Andritz Inc. is a wholly owned U.S. subsidiary of Andritz AG, a publicly traded company
+based in Austria. Andritz Inc. manufactures, among other things, refiner plates, which are
+used in the refining process of paper pulp-making machines. The EAR99 refiner plates are
+manufactured at Andritz Inc.’s facility in Muncy, Pennsylvania for export outside of the
+United States.
+
+
+
+
+1 The Regulations are currently codified in the Code of Federal Regulations at 15 C.F.R. Parts 730-774 (2025). The
+
+charged violations occurred in 2023 through 2024. The Regulations governing the violations at issue are found in the
+2023 through 2024 versions of the Code of Federal Regulations (15 C.F.R. Parts 730-774 (2022 - 2023)). The 2024
+Regulations set forth the procedures that apply to this matter.
+2 The EAR’s Harmonized Tariff Schedule-based license requirements for items destined to Russia have been continuously
+
+revised since first imposed in February 2022. The items in question here appear on Supplement no. 4 to Part 746 of the
+EAR. The license requirement for these items when destined to or within Russia now appears in § 746.8(a)(5) of the EAR.
+Andritz Inc.
+Proposed Charging Letter
+Page 2 of 6
+
+      B. Transaction Parties
+
+Andritz Fiedler GmbH (“Andritz Fiedler”) is a company located in Germany and is a
+member of the Andritz Group. Andritz Fiedler fulfils European companies’ orders for the
+refiner plates that Andritz Inc. manufactures in the United States.
+
+                                      STATEMENT OF CHARGES
+
+Charges 1-36             15 C.F.R. § 764.2(a) – Engaging in prohibited conduct
+
+1.    As described in the attached Schedule of Violations, between on or about May 25,
+      2023, through on or about February 12, 2024, Andritz Inc. engaged in conduct
+      prohibited by the Regulations on 36 occasions when it exported refiner plates, valued
+      at $3,154,794.36, to Andritz Fiedler. Andritz Fiedler then reexported the refiner plates
+      to Russia. The sales to Russia were conducted without the requisite license or other
+      authorization from BIS.
+
+2.    The items reexported by Andritz Fiedler are classified EAR99. However, because
+      these items were classified by Harmonized Tariff Schedule (“HTS”) codes which
+      appeared on Supplement No. 4 to Part 746 of the EAR at the time of export, these
+      items required a license for export to Russia pursuant to § 746.8 of the EAR. On May
+      23, 2023, BIS added license requirements for the items to limit Russia’s access to items
+      that enable its military capabilities and to sources of revenue that could support those
+      capabilities. 88 Fed. Reg. 33422. Refiner plates are used in the refining process of
+      paper pulp-making machines. Paper pulp is a basic component of manufacturing paper.
+      While there is no evidence that Andritz Inc.’s refiner plates were designed for, used,
+      or could be used, for military-related purposes, wood and flax pulp could potentially
+      have military application.
+
+3.    Supplement No. 4 to Part 746 of the Regulations identifies ‘industrial goods’ which
+      require a BIS license for export, reexport, or transfer (in-country) to Russia or Belarus.
+      For the purposes of this license requirement, an ‘industrial good’ is any item identified
+      in Supplement No. 4 to Part 746 of the Regulations. The HTS classifications of the
+      items contained in each of Andritz Inc.’s 36 exports are detailed in the Schedule of
+      Violations below.
+
+4.    Upon learning of the transactions, Andritz Inc. took immediate steps to investigate the
+      matter, voluntarily disclosed the transactions in a timely fashion to BIS, and retained
+      outside counsel to investigate. According to information it voluntarily disclosed to
+      BIS, Andritz Inc. exported refiner plates to Andritz Fiedler without the requisite
+      license. Andritz Fielder then sold and shipped the refiner plates to entities within
+      Russia. 3
+
+3 Andritz Inc.’s voluntary self-disclosure reported 41 violations. Here, BIS has chosen not to separately charge the
+
+5 remaining violations because the items either did not originate from the United States or the item was not subject to a
+license requirement at the time of export.
+Andritz Inc.
+Proposed Charging Letter
+Page 3 of 6
+
+5.    In total, from on or about May 25, 2023, through on or about February 12, 2024,
+      Andritz Inc. engaged in 36 transactions involving the reexport of refiner plates. Each
+      of these transactions involved items classified by an HTS code listed in Supplement
+      No. 4 to Part 746 of the EAR and required a license for export to Russia pursuant to §
+      746.8(a)(5) of the EAR.
+
+6.    By engaging in 36 reexports to Russia without the requisite license or other
+      authorization from BIS, Andritz Inc. committed 36 violations of § 764.2(a) of the
+      Regulations.
+
+                                       *         *         *         *         *
+
+Accordingly, Andritz is hereby notified that an administrative proceeding is instituted
+against it pursuant to Part 766 of the Regulations for the purpose of obtaining an order
+imposing administrative sanctions, including, but not limited to any or all of the following:
+
+•         The maximum civil penalty allowed by law of up to the greater of $374,474 per
+          violation, 4 or twice the value of the transaction that is the basis of the violation; 5
+
+•         Denial of export privileges;
+
+•         Exclusion from practice before BIS; and/or
+
+•         Any other liability, sanction, or penalty available under law.
+
+If Andritz Inc. fails to answer the charges contained in this letter within 30 days after being
+served with notice of issuance of this letter, that failure will be treated as a default. See 15
+C.F.R. §§ 766.6 and 766.7. If Andritz Inc. defaults, the Administrative Law Judge may find
+the charges alleged in this letter are true without a hearing or further notice to Andritz Inc.
+The Under Secretary of Commerce for Industry and Security may then impose up to the
+maximum penalty for the charges in this letter.
+
+Andritz Inc. is further notified that it is entitled to an agency hearing on the record if it files
+a written demand for one with its answer. See 15 C.F.R. § 766.6. Andritz Inc. is also entitled
+to be represented by counsel or other authorized representative who has power of attorney
+to represent them. See 15 C.F.R. §§ 766.3(a) and 766.4.
+
+The Regulations provide for settlement without a hearing. See 15 C.F.R. § 766.18. Should
+Andritz Inc. have a proposal to settle this case, Andritz Inc. should transmit it to the attorney
+representing BIS named below.
+
+
+4 See 15 C.F.R. § 6.3(c)(6). This amount is subject to annual increases pursuant to the Federal Civil Penalties Inflation
+
+Adjustment Act Improvements Act of 2015, Sec. 701 of Public Law 114-74, enacted on November 2, 2015. See 89 Fed.
+Reg. 106308 (Dec. 30, 2024) (adjusting for inflation the maximum civil monetary penalty under ECRA from $364,992
+to $374,474, effective January 15, 2025).
+5 See Export Control Reform Act of 2018, 50 U.S.C. § 4819(c)(1)(A) (2019).
+Andritz Inc.
+Proposed Charging Letter
+Page 4 of 6
+
+Andritz Inc. is further notified that under the Small Business Regulatory Enforcement
+Flexibility Act, Andritz Inc. may be eligible for assistance from the Office of the National
+Ombudsman of the Small Business Administration in this matter. To determine eligibility
+and get more information, please see: http://www.sba.gov/ombudsman/.
+
+The U.S. Coast Guard is providing administrative law judge services in connection with
+the matters set forth in this letter. Accordingly, Andritz Inc.’s answer must be filed in
+accordance with the instructions in Section 766.5(a) of the Regulations with:
+
+        U.S. Coast Guard ALJ Docketing Center
+        40 S. Gay Street
+        Baltimore, Maryland 21202-4022
+
+In addition, a copy of Andritz Inc.’s answer must be served on BIS at the following address:
+
+        Chief Counsel for Industry and Security
+        Attention: Tristan de Vega, Esq.
+        Room H-3839
+        14th Street and Constitution Avenue, N.W.
+        Washington, D.C. 20230
+
+Tristan de Vega is the attorney representing BIS in this case; any communications that
+Andritz Inc. may wish to have concerning this matter should occur through him. Mr. de
+Vega may be contacted by email at tdevega@doc.gov.
+
+Sincerely,
+
+
+Dan Clutch
+Acting Director
+Office of Export Enforcement
+Andritz Inc.
+Proposed Charging Letter
+Page 5 of 6
+
+                                            Schedule of Violations
+ Charge        Shipment Date             Item(s)        HTS/HS        Violation    Value 6
+ No.                                     Description    Code          Type
+     1         May 25, 2023              Refiner Plate 8439.91.00     § 764.2(a)   76.000
+     2         May 25, 2023              Refiner Plate 8439.91.00     § 764.2(a)   67,550
+     3         May 25, 2023              Refiner Plate 8439.91.00     § 764.2(a)   48,800
+     4         May 25, 2023              Refiner Plate 8439.91.00     § 764.2(a)   24,800
+     5         May 25, 2023              Refiner Plate 8439.91.00     § 764.2(a)   53,900
+     6         May 26, 2023              Refiner Plate 8439.91        § 764.2(a)   26,052
+     7         May 30, 2023              Refiner Plate 8439.91        § 764.2(a)   92,500
+     8         June 29, 2023             Refiner Plate 8439.91.10     § 764.2(a)   125,339.10
+     9         June 29, 2023             Refiner Plate 8439.91.10     § 764.2(a)   136,842.20
+   10          July 13, 2023             Refiner Plate 8439.91.10     § 764.2(a)   6,600
+   11          July 24, 2023             Refiner Plate 8439.91.00     § 764.2(a)   26,600
+   12          August 1, 2023            Refiner Plate 8439.91.00     § 764.2(a)   160,904
+   13          August 1, 2023            Refiner Plate 8439.91.00     § 764.2(a)   205,750
+   14          August 3, 2023            Refiner Plate 8439.91.00     § 764.2(a)   139,580
+   15          August 3, 2023            Refiner Plate 8439.91.00     § 764.2(a)   237,432
+   16          September 4, 2023         Refiner Plate 8439.91.00     § 764.2(a)   39,400
+   17          October 6, 2023           Refiner Plate 8439.91.00     § 764.2(a)   57,200
+   18          October 6, 2023           Refiner Plate 8439.91.00     § 764.2(a)   35,200.80
+   19          November 2, 2023          Refiner Plate 8439.91.00     § 764.2(a)   114,600
+   20          November 6, 2023          Refiner Plate 8439.91.00     § 764.2(a)   17,400
+   21          November 6, 2023          Refiner Plate 8439.91.00     § 764.2(a)   62,682.40
+   22          November 6, 2023          Refiner Plate 8439.91.00     § 764.2(a)   85,000
+   23          November 6, 2023          Refiner Plate 8439.91.00     § 764.2(a)   81,800
+   24          November 6, 2023          Refiner Plate 8439.91.00     § 764.2(a)   112.000
+   25          November 15,              Refiner Plate 8439.91.00     § 764.2(a)   112.000
+               2023
+     26        November 15,              Refiner Plate   8439.91.00   § 764.2(a)   9,900
+               2023
+     27        December 13,              Refiner Plate   8439.91.00   § 764.2(a)   292,280
+               2023
+     28        December 13,              Refiner Plate   8439.91.00   § 764.2(a)   89,312
+               2023
+     29        December 14,              Refiner Plate   8439.91.00   § 764.2(a)   59,810
+               2023
+     30        December 19,              Refiner Plate   8439.91.00   § 764.2(a)   128,750
+               2023
+
+
+6 The transaction values are provided in Euro.
+Andritz Inc.
+Proposed Charging
+Letter Page 6 of 6
+
+     31    December 19,                  Refiner Plate       8439.91.00          § 764.2(a)     64,240
+           2023
+   32      January 25, 2024              Refiner Plate       8439.91.00         § 764.2(a)      56,000
+   33      January 25, 2024              Refiner Plate       8439.91.00         § 764.2(a)      6,100
+   34      January 25, 2024              Refiner Plate       8439.91.00         § 764.2(a)      50,000
+   35      January 30, 2024              Refiner Plate       8439.91.00         § 764.2(a)      17,180
+   36      February 12, 2024             Refiner Plate       8439.91.00         § 764.2(a)      110,960
+ Total Value of Shipments:                                                     €3,029,864.5 or $3,154,794.36 7
+
+
+
+
+7 Based upon a conversion rate of 1 Euro to 1.04 dollars calculated on February 5, 2025.
+

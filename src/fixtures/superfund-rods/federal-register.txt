@@ -1,0 +1,4 @@
+{
+  "raw_text": "This Federal Register wrapper is not the official SEMS ROD PDF text.",
+  "full_text": "https://www.federalregister.gov/documents/2026/08/05/2026-99999/federated-metals"
+}

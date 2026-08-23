@@ -1,0 +1,2074 @@
+Date: 16 July 2026
+Swissmedic, Swiss Agency for Therapeutic Products
+
+
+
+
+Swiss Public Assessment Report
+
+Reblozyl
+
+
+
+
+International non-proprietary name: luspatercept
+Pharmaceutical form:                                      powder for solution for injection
+Dosage strength(s):                                       75 mg, 25 mg
+Route(s) of administration:                               subcutaneous injection
+Marketing authorisation holder:                           Bristol-Myers Squibb SA
+Marketing authorisation no.:                              69592
+Decision and decision date:                               approved on 21 May 2026
+
+
+
+
+Note:
+This assessment report is as adopted by Swissmedic with all information of a commercially
+confidential nature deleted.
+
+SwissPARs are final documents that provide information on submissions at a particular point in time.
+They are not updated after publication.
+
+
+
+
+    Swissmedic | Hallerstrasse 7 | 3012 Bern | www.swissmedic.ch | Tel. +41 58 462 02 11 | anfragen@swissmedic.ch
+Table of contents
+1            Terms, Definitions, Abbreviations ....................................................................................3
+2            Background information on the procedure .....................................................................5
+2.1          Applicant’s request(s) and information regarding procedure ................................................5
+2.2          Indication and dosage..........................................................................................................5
+2.2.1        Requested indication ...........................................................................................................5
+2.2.2        Approved indication .............................................................................................................5
+2.2.3        Requested dosage ..............................................................................................................5
+2.2.4        Approved dosage ................................................................................................................7
+2.3          Regulatory history (milestones) ...........................................................................................7
+3            Medical context..................................................................................................................8
+4            Quality aspects ..................................................................................................................8
+5            Nonclinical aspects ...........................................................................................................9
+6            Clinical aspects ...............................................................................................................10
+6.1          Clinical pharmacology........................................................................................................10
+6.2          Dose finding and dose recommendation ............................................................................10
+6.3          Efficacy ..............................................................................................................................10
+6.4          Safety ................................................................................................................................12
+6.5          Final clinical benefit-risk assessment .................................................................................13
+7            Risk management plan summary ...................................................................................14
+8            Appendix ..........................................................................................................................15
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                                                                   2 / 15
+1            Terms, Definitions, Abbreviations
+
+ADA               Anti-drug antibody
+ADME              Absorption, distribution, metabolism, elimination
+AE                Adverse event
+ALT               Alanine aminotransferase
+API               Active pharmaceutical ingredient
+AST               Aspartate aminotransferase
+ATC               Anatomical Therapeutic Chemical Classification System
+AUC               Area under the plasma concentration-time curve
+AUC0-24h          Area under the plasma concentration-time curve for the 24-hour dosing interval
+BSC               Best supportive care
+CI                Confidence interval
+Cmax              Maximum observed plasma/serum concentration of drug
+CYP               Cytochrome P450
+DDI               Drug-drug interaction
+EMA               European Medicines Agency
+EMH               Extramedullary haematopoiesis
+ERA               Environmental risk assessment
+ESA               Erythropoiesis-stimulating agents
+FDA               Food and Drug Administration (USA)
+GI                Gastrointestinal
+GLP               Good Laboratory Practice
+Hb                Haemoglobin
+Hbg               Haemoglobin
+HI-E              Haematologic improvement-erythroid
+HPLC              High-performance liquid chromatography
+IC/EC50           Half-maximal inhibitory/effective concentration
+ICH               International Council for Harmonisation
+Ig                Immunoglobulin
+IPSS-R            Revised International Prognostic Scoring System
+INN               International non-proprietary name
+ITT               Intention-to-treat
+LoQ               List of Questions
+MAH               Marketing authorisation holder
+Max               Maximum
+Min               Minimum
+MRHD              Maximum recommended human dose
+MDS               Myelodysplastic syndromes
+N/A               Not applicable
+NO(A)EL           No observed (adverse) effect level
+PBPK              Physiology-based pharmacokinetics
+PD                Pharmacodynamics
+PIP               Paediatric investigation plan (EMA)
+PK                Pharmacokinetics
+PopPK             Population pharmacokinetics
+PSP               Pediatric study plan (US FDA)
+RBC               Red blood cells
+RMP               Risk management plan
+RS                Ring sideroblast
+SAE               Serious adverse event
+SwissPAR          Swiss Public Assessment Report
+TEAE              Treatment-emergent adverse event
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                       3 / 15
+TEE               Thromboembolic event
+TD                Transfusion-dependent
+TI                Transfusion independence
+TPA               Federal Act of 15 December 2000 on Medicinal Products and Medical Devices (SR
+                  812.21)
+TPO               Ordinance of 21 September 2018 on Therapeutic Products (SR 812.212.21)
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                      4 / 15
+2            Background information on the procedure
+
+2.1          Applicant’s request(s) and information regarding procedure
+
+New active substance status
+The applicant requested new active substance status for luspatercept in the above-mentioned
+medicinal product.
+
+Orphan drug status
+The applicant requested orphan drug status in accordance with Article 4 paragraph 1 letter adecies no. 2
+TPA.
+Orphan drug status was granted on 13 June 2029 and 11 July 2019.
+
+Authorisation as human medicinal product in accordance with Article 13 TPA
+The applicant requested a reduced assessment procedure in accordance with Article 13 TPA.
+
+
+2.2          Indication and dosage
+
+2.2.1        Requested indication
+
+Reblozyl is indicated in adults for the treatment of transfusion-dependent anaemia due to very low-,
+low-, and intermediate-risk myelodysplastic syndromes (MDS).
+Reblozyl is indicated in adults for the treatment of anaemia associated with transfusion-dependent
+and non-transfusion-dependent beta thalassaemia.
+
+
+2.2.2        Approved indication
+
+Reblozyl is indicated as monotherapy in adults for the treatment of
+▪ Transfusion-dependent anaemia due to very low-risk to intermediate-risk myelodysplastic
+    syndromes (MDS) that has not previously been treated with erythropoiesis-stimulating agents
+    (ESA-naïve) (see “Properties and Effects”)
+▪ Anaemia that has not responded to an erythropoiesis-stimulating agent and requires transfusions
+    of 2 or more units of packed red blood cells (RC) units over an 8-week period in patients with very
+    low- to intermediate-risk myelodysplastic syndromes (MDS) and ring sideroblasts (see “Properties
+    and Effects”).
+Reblozyl is indicated as monotherapy for the treatment of anaemia in adult patients with β-
+thalassaemia who require regular red blood cell transfusions (see “Properties/Effects”).
+
+2.2.3        Requested dosage
+
+Summary of the requested standard dosage:
+
+Therapy introduction
+The recommended starting dose of luspatercept is 1.0 mg/kg once every 3 weeks.
+
+Myelodysplastic syndromes
+If a patient is not RBC transfusion-free or does not reach Hb concentration of ≥ 10 g/dL and an Hb
+increase < 1 g/dL after at least 2 consecutive doses at the 1.0 mg/kg starting dose level, the
+luspatercept dose level should be increased to 1.33 mg/kg. If a patient is not RBC transfusion-free or
+does not reach Hb concentration of ≥ 10 g/dL and an Hb increase < 1 g/dL after at least 2 consecutive
+doses at the 1.33 mg/kg dose level, the luspatercept dose level should be increased to 1.75 mg/kg.
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                       5 / 15
+The dose should not be increased more frequently than every 6 weeks (2 doses) or beyond the
+maximum dose level of 1.75 mg/kg every 3 weeks. If a patient loses response (i.e. transfusion
+independence), the dose should be increased by one dose level
+
+
+Transfusion-dependent beta thalassaemia
+If a patient does not achieve a response, defined as a reduction in RBC transfusion burden of at least
+a third after at least 2 consecutive doses (6 weeks) at the 1.0 mg/kg starting dose, increase the dose
+to 1.25 mg/kg. The dose should not be increased beyond the maximum dose of 1.25 mg/kg every 3
+weeks.
+If a patient loses response (if the RBC transfusion burden increases again after an initial response)
+the dose should be increased by one dose level.
+
+Non-transfusion-dependent beta thalassaemia
+If a patient does not achieve or maintain a response, defined as an increase from baseline in pre-
+dose Hb of ≥1 g/dL, after ≥ 2 consecutive doses (6 weeks) at the same dose level (in absence of
+transfusions, i.e. at least 3 weeks after the last transfusion), increase the dose by one dose level. The
+dose should not exceed the maximum dose of 1.25 mg/kg every 3 weeks.
+
+Increase to next level dose:
+Increase to next dose level for MDS
+           Current dose                                Increased dose
+             0.8 mg/kg                                     1 mg/kg
+              1 mg/kg                                    1.33 mg/kg
+            1.33 mg/kg                                   1.75 mg/kg
+
+Increase to next dose level for β-thalassaemia
+           Current dose                      Increased dose
+            0.6 mg/kg*                          0.8 mg/kg
+             0.8 mg/kg                           1 mg/kg
+              1 mg/kg                          1.25 mg/kg
+* Applicable only to non-transfusion-dependent β-thalassaemia.
+
+
+Dose reduction and dose delay
+In case of Hb increase > 2 g/dL within 3 weeks in absence of transfusion compared with the Hb value
+at previous dose, the dose should be reduced by one dose level.
+If the Hb is ≥ 12 g/dL in absence of transfusion for at least 3 weeks, the dose should be delayed until
+Hb ≤ 11.0 g/dL.
+If there is also a concomitant rapid increase in Hb from the Hb value at previous dose (> 2 g/dL within
+3 weeks in absence of transfusion), a dose reduction to one step down should be considered after the
+dose delay. Dose should not be reduced below 0.8 mg/kg (for MDS or transfusion-dependent -
+thalassaemia) and below 0.6 mg/kg (for non-transfusion-dependent -thalassaemia).
+
+Reduced dose for MDS
+         Current dose                                  Reduced dose
+          1.75 mg/kg                                    1.33 mg/kg
+          1.33 mg/kg                                      1 mg/kg
+            1 mg/kg                                      0.8 mg/kg
+
+Reduced dose for -thalassaemia
+         Current dose                                  Reduced dose
+          1.25 mg/kg                                      1 mg/kg
+            1 mg/kg                                      0.8 mg/kg
+          0.8 mg/kg                                     0.6 mg/kg*
+* Applicable only to non-transfusion-dependent β-thalassaemia.
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                         6 / 15
+In case of a missed or delayed scheduled treatment administration, administer Reblozyl as soon as
+possible and continue dosing as prescribed with at least 3 weeks between doses. If a loss of
+response is experienced, causative factors (e.g. a bleeding event) should be assessed. If typical
+causes for a loss of haematological response are excluded, dose increase should be considered as
+described above for the respective indication being treated.
+
+Reblozyl should be discontinued if patients do not experience a reduction in transfusion burden (for
+transfusion-dependent β-thalassaemia patients) or an increase from baseline Hb in the absence of
+transfusions (for non-transfusion-dependent β-thalassaemia patients), or a decrease in transfusion
+burden including no increase from baseline Hb (for MDS patients) after 9 weeks of treatment (3
+doses) at the maximum dose level, if no alternative explanations for response failure are found (e.g.
+bleeding, surgery, other concomitant illnesses) or if unacceptable toxicity occurs at any time.
+
+
+
+2.2.4          Approved dosage
+
+(see appendix)
+
+
+2.3            Regulatory history (milestones)
+
+ Application                                              16 April 2024
+ Formal objection                                         15 May 2024
+ Response to formal objection                             26 May 2024
+ Formal control completed                                 29 May 2024
+ List of Questions (LoQ)                                  6 August 2024
+ Response to LoQ                                          4 December 2024
+ 2nd LoQ                                                  20 March 2025
+ Response to 2nd LoQ                                      20 July 2025
+ Preliminary decision                                     17 October 2025
+ Response to preliminary decision                         6 January 2026
+ Labelling corrections and/or other aspects               12 March 2026
+ Response to labelling corrections and/or other aspects   26 April 2026
+ Final decision                                           21 May 2026
+ Decision                                                 approval
+
+
+
+Based on Art. 13 TPA Swissmedic has only assessed parts of the primary data submitted with this
+application. As regards the remaining data, Swissmedic relies for its decision on the assessment of
+the foreign reference authority, the EMA. This SwissPAR relates to the assessment reports for
+Reblozyl (Procedure No. EMEA/H/C/004444/0000, published 30 April 2020; Procedure No.
+EMEA/H/C/004444/II/0009, published 26 January 2023; and Procedure No. EMEA/H/C/00444/II/0021,
+published 22 February 2024) issued by the EMA.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                       7 / 15
+3            Medical context
+
+Myelodysplastic syndromes (MDS) are chronic clonal stem cell disorders, observed mainly in older
+adults, causing ineffective blood cell production, cytopenias, and a risk of progressing to acute
+myeloid leukaemia. In lower-risk cases, treatment focuses on managing symptoms like anaemia and
+improving quality of life through therapies such as erythropoiesis-stimulating agents (ESAs),
+transfusions, or lenalidomide. In these patients, transfusion dependence is a common complication
+and can lead to lower quality of life and to iron overload. Therefore, there is an urgent need for new
+therapeutic options for patients with MDS, including both treatment for the underlying disease and for
+amelioration of symptoms.
+
+Beta-thalassaemia is an inherited blood disorder caused by reduced or absent production of globin
+chains. This disease results in ineffective erythropoiesis leading to anaemia and to several
+subsequent pathophysiologic complications such as haemolysis, hypercoagulability, transfusional iron
+overload secondary to frequent RBC transfusions, heart disease, and hepatic cirrhosis. The
+transfusion-dependent form requires periodic and lifelong transfusions, iron chelation, and sometimes
+stem cell transplantation or gene therapy. In this disease, there is also an unmet medical need for
+effective treatment options in patients with beta thalassaemia who require regular transfusions.
+
+
+4            Quality aspects
+
+Swissmedic has not assessed the primary data relating to quality aspects submitted with this
+application and relies on the assessment of the foreign reference authority, the EMA (see section 2.3
+“Regulatory history (milestones)”).
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                      8 / 15
+5            Nonclinical aspects
+
+Swissmedic has not assessed the primary data relating to nonclinical aspects submitted with this
+application and relies on the assessment of the foreign reference authority, the EMA (see section 2.3
+“Regulatory history (milestones)”).
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                      9 / 15
+6            Clinical aspects
+
+6.1          Clinical pharmacology
+
+The evaluation of the clinical pharmacology data of this application has been carried out in reliance on
+previous regulatory decisions by the EMA and FDA. The available assessment reports and respective
+product information from these authorities were used as a basis for the clinical pharmacology
+evaluation.
+For details regarding clinical pharmacology, please refer to the attached Information for healthcare
+professionals.
+
+
+
+6.2          Dose finding and dose recommendation
+
+There was no dedicated dose-finding study submitted for this application; instead, the recommended
+doses, which were up to 1.75 mg/kg for MDS and up to 1.25 mg/kg for beta thalassaemia, were
+supported by Phase 2 studies (A536-03 and A536-04). These open-label studies demonstrated that
+luspatercept was well tolerated in patients with MDS and both transfusion-dependent and non-
+transfusion-dependent β-thalassaemia.
+
+
+
+6.3          Efficacy
+
+To support the proposed indication in MDS, the applicant has submitted 2 pivotal Phase 3 studies
+(Final analysis of MEDALIST and Primary analysis of COMMANDS).
+MEDALIST is a double-blind, randomised, placebo-controlled study, enrolling patients with anaemia
+due to very low-, low-, or intermediate-risk MDS with ring sideroblasts (RS). Patients required RBC
+transfusions and were refractory to, intolerant of, or ineligible for ESA treatment. For details regarding
+the included patient population, please refer to the attached Information for healthcare professionals.
+The primary endpoint of this study was transfusion independence (TI) for any 56-day (8-week) period
+during the first 24 weeks of treatment. The key secondary endpoint was red blood cell (RBC)-TI ≥ 12
+weeks (from Week 1 to 24 and from Week 1 to 48).
+A total of 229 patients were enrolled in the MEDIALIST trial; of these, 153 patients were treated with
+luspatercept for a median duration of 51 weeks and 76 patients with placebo for a median duration of
+24 weeks. The median age of these patients was 71.0 years (range: 26 to 95 years) and their
+baseline disease characteristics were reflective of a population that is refractory to, intolerant of, or
+ineligible for ESA treatment. Please refer to the attached Information for healthcare professionals for
+details regarding demographics and baseline characteristics.
+As per a data cutoff date of 2018 (date of the primary endpoint analysis), a total of 38% of patients
+with TD anaemia in the context of low-risk to intermediate-risk MDS were independent of RBC
+transfusion for an 8-week interval compared to 13% in the placebo arm. This difference was
+statistically significant and clinically meaningful. The key secondary endpoint of transfusion
+independence for more than 12 weeks also demonstrated statistically significant results. For detailed
+information on efficacy results, please refer to the attached Information for healthcare professionals
+COMMANDS is an ongoing open-label randomised study to compare luspatercept and epoetin alfa.
+Patients enrolled in the study have anaemia due to IPSS-R very low-, low-, or intermediate-risk MDS,
+are ESA naïve, and require transfusions. For details regarding the included patient population, please
+refer to the attached Information for healthcare professionals.
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                         10 / 15
+The primary endpoint of this study is RBC-TI for 12 weeks (84 days) with a concurrent mean
+haemoglobin (Hgb) increase of ≥ 1.5 g/dL compared with epoetin alfa. Key secondary endpoints
+included in the statistical testing hierarchy are the rate of patients who achieved haematologic
+improvement-erythroid response (HI-E), and RBC-TI for 24 weeks and for ≥ 12 weeks (84 days)
+during Week 1 to Week 24.
+As per the DCO of March 2023, a total of 361 patients (including 182 in the luspatercept arm and 179
+in the epoetin alfa arm) had been treated in this study. The median age of these patients was 74
+years and their baseline characteristics were balanced overall between the 2 treatment arms and
+reflective of a population that is ESA naïve. Please refer to the attached Information for healthcare
+professionals for details regarding demographics and baseline characteristics.
+This study met its primary efficacy endpoint of RBC transfusion-free for any 12-week period
+associated with a concurrent mean Hb increase of ≥ 1.5 g/dL compared to baseline during Week 1 to
+24 (58.5% vs. 31.2%). All the key secondary endpoints hierarchically tested have shown a statistically
+significant improvement in favour of the luspatercept arm. For detailed information on efficacy results,
+please refer to the attached Information for healthcare professionals
+To support the proposed indication in transfusion dependent beta thalassaemia, the applicant
+has submitted the final analysis of pivotal Phase 3 study BELIEVE.
+This study was a double-blind, randomised, placebo-controlled study to compare the efficacy and
+safety of luspatercept in addition to best supportive care (BSC) versus placebo in addition to BSC for
+the treatment of patients with β-thalassaemia who require regular RBC transfusions. For details
+regarding the included patient population, please refer to the attached Information for healthcare
+professionals
+The primary endpoint of this study was the percentage of “responders”, defined as subjects achieving
+an RBC transfusion reduction of ≥ 33% from baseline to Week 13-24 compared to the 3 months (12
+weeks) preceding the randomisation. The key secondary endpoints included in the hierarchy testing
+were the proportion of subjects with haematologic improvement, defined as a ≥ 33% reduction from
+baseline in RBC transfusion burden with a reduction of at least 2 units from Week 37 to Week 48; the
+proportion of subjects with haematologic improvement, defined as ≥ 50% reduction from baseline in
+RBC transfusion burden with a reduction of at least 2 units from Week 13 to Week 24; the proportion
+of subjects with haematologic improvement, defined as ≥ 50% reduction from baseline in RBC
+transfusion burden with a reduction of at least 2 units from Week 37 to Week 48; and the mean
+change in transfusion burden (RBC units/12 weeks) from Week 13 to Week 24.
+As per the DCO of 2021, a total of 224 patients were randomised to the luspatercept + BSC treatment
+group and 112 patients to the placebo + BSC treatment group. The median age of these patients was
+30.0 years. The demographic and baseline disease characteristics were generally well balanced
+between the 2 treatment groups and reflective of a population with transfusion-dependent beta
+thalassaemia. Please refer to the attached Information for healthcare professionals for details
+regarding demographics and baseline characteristics.
+Luspatercept significantly reduced RBC transfusion burden by ≥33% in 21.4% of patients with
+transfusion-dependent β-thalassaemia compared to 4.5% in the placebo arm. All key secondary
+endpoints were reached as well, and a continued reduction RBC transfusion burden was observed
+beyond Week 96. For detailed information on efficacy results, please refer to the attached Information
+for healthcare professionals.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                       11 / 15
+6.4          Safety
+
+The pooled safety data comprised data from 784 patients, including 335 MDS patients and 449 β-
+thalassaemia patients. These safety data are presented as per a DCO of May 2024.
+In the overall pool of MDS, a total of 96.4% of patients present at least 1 TEAE. The most frequently
+reported adverse reactions in MDS patients treated with luspatercept (in at least 15% of patients)
+were diarrhoea, fatigue, asthenia, peripheral oedema, nausea, back pain, dizziness, dyspnoea,
+cough, hypertension, and headache.
+Grade 3-4 (G3-4) TEAEs were reported in 61.5% of patients. The most frequently reported Grade 3-4
+adverse reactions (in at least 2% of patients) included hypertension (8%), syncope (4.8%), dyspnoea
+(2.7%), fatigue (2.7%), thrombocytopenia (2.4%), and urinary tract infection (2.1%).
+A total of 45.8% of patients presented SAEs. The most frequently reported serious adverse drug
+reactions (in at least 1% of patients) were urinary tract infection 2.4%, dyspnoea 1.8%, and back pain
+1.2%.
+Treatment discontinuation due to an adverse event occurred in 15.2% of patients treated with
+luspatercept. The most common reason for discontinuation in the luspatercept treatment arm was
+progression of the underlying MDS.
+In the overall pool of beta thalassaemia, a total of 99.2% of the patients presented at least 1 TEAE.
+The most frequently reported adverse reactions (in at least 15% of patients) treated with luspatercept
+were upper respiratory tract infections, back pain, headache, arthralgia, bone pain, cough, diarrhoea,
+hypertension, fatigue, dizziness, and influenza.
+Grade 3-4 (G3-4) TEAEs were reported in 44.2% of patients. The most frequently reported Grade 3-4
+adverse reactions (in at least 2% of patients) were bone pain (2.4%), hypertension (2.2%), and back
+pain (2.0%).
+The most frequently reported serious adverse reactions included thromboembolic events such as
+deep vein thrombosis 1.1%, thrombotic stroke 0.2%, portal vein thrombosis 0.2%, stroke 0.2%,
+superficial vein thrombosis 0.7%, and pulmonary embolism 0.9%.
+Treatment discontinuation due to an adverse reaction occurred in 11.4% of patients treated with
+luspatercept. The adverse reactions leading to discontinuation in the luspatercept treatment arm
+included thromboembolic events (TEE), arthralgia, cardiac disorders, and extramedullary
+haematopoiesis (EMH). The cases of EMH were observed in non-transfusion dependent β-
+thalassaemia patients.
+The risk of malignancy is particularly concerning given that animal toxicity studies have demonstrated
+increased haematologic malignancies and that TGFβ signalling along with GDF11, which are ligands
+trapped by luspatercept, play a well-established role in cancer. Malignancies have been reported in
+4.2% of patients treated with luspatercept, with 9.3% of the MDS and 0.4% of the β-thalassaemia
+patients reporting a malignancy. While the incidence of secondary malignancies was low in patients
+with β-thalassaemia treated with luspatercept, the risk cannot be excluded given the drug’s
+mechanism of action and the long-term exposure required for this treatment; the risk of malignancies
+therefore requires close monitoring.
+Cardiac disorder is an additional risk of concern that was observed in 22.2% of patients treated with
+luspatercept, with 26.9% of the MDS and 18.7% of the β-thalassaemia patients reporting a cardiac
+adverse event.
+For a detailed overview of the safety profile, please refer to the attached Information for healthcare
+professionals.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                        12 / 15
+6.5          Final clinical benefit-risk assessment
+
+Myelodysplastic syndromes represent a significant unmet medical need, requiring new therapeutic
+options that address both disease progression and symptom control. In this setting, luspatercept has
+demonstrated a significant and sustained reduction in red blood cell transfusion burden in both
+refractory and ESA-naïve MDS patients, with primary endpoint results supported by key secondary
+endpoints and maintenance of quality of life over time. Although its safety profile is generally
+manageable, several important adverse events have been identified, including secondary primary
+malignancies. The observed relevant risk of secondary primary malignancies is described in the
+Information for healthcare professionals.
+Transfusion-dependent β-thalassemia is associated with a high unmet need, and only limited
+treatment options are available. Luspatercept has shown a clinically meaningful reduction in
+transfusion burden, supported by statistically significant improvements across all key secondary
+endpoints. While the safety profile remains manageable, several important adverse events have been
+identified, including secondary primary malignancies. Given the drug’s mechanism of action and the
+need for long-term treatment, the potential malignancy risk remains a concern requiring careful long-
+term monitoring which is described in the Information for healthcare professionals.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                    13 / 15
+7            Risk management plan summary
+
+The RMP summaries contain information on the medicinal products′ safety profiles and explain the
+measures that are taken to further investigate and monitor the risks, as well as to prevent or minimise
+them.
+The RMP summaries are published separately on the Swissmedic website. It is the responsibility of
+the marketing authorisation holder to ensure that the content of the published RMP summaries is
+accurate and correct. As the RMPs are international documents, their summaries might differ from the
+content in the Information for healthcare professionals / product information approved and published
+in Switzerland, e.g. by mentioning risks that occur in populations or indications not included in the
+Swiss authorisations.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                      14 / 15
+8            Appendix
+
+Approved Information for healthcare professionals
+Please be aware that the following version of the Information for healthcare professionals for Reblozyl
+was approved with the submission described in the SwissPAR. This Information for healthcare
+professionals may have been updated since the SwissPAR was published.
+
+Please note that the valid and relevant reference document for the effective and safe use of medicinal
+products in Switzerland is the Information for healthcare professionals currently authorised by
+Swissmedic (see www.swissmedicinfo.ch).
+
+Note:
+The following Information for healthcare professionals has been translated by the MAH. It is the
+responsibility of the authorisation holder to ensure the translation is correct. The only binding and
+legally valid text is the Information for healthcare professionals approved in one of the official Swiss
+languages.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                         15 / 15
+                                                         Information for healthcare professionals
+
+
+   This medicinal product is subject to additional monitoring. This will allow quick identification of new
+safety information. Healthcare professionals are asked to report any suspected new or serious
+adverse reactions. See the "Undesirable effects" section for advice on the reporting of adverse
+reactions.
+
+
+
+Reblozyl®
+
+
+
+Composition
+
+Active substances
+
+Luspatercept (produced in Chinese Hamster Ovary (CHO) cells by recombinant DNA technology).
+
+
+Excipients
+
+Citric acid monohydrate, sodium citrate dihydrate, polysorbate 80, sucrose, hydrochloric acid, sodium
+hydroxide.
+Each vial contains maximum 0.5 mg (25 mg luspatercept per vial) or 1.1 mg (75 mg luspatercept per
+vial) sodium.
+
+
+Pharmaceutical form and active substance quantity per unit
+
+Powder for solution for injection containing 25 mg or 75 mg luspatercept per vial. After reconstitution,
+each mL of solution contains 50 mg luspatercept for subcutaneous (s.c.) injection.
+
+
+Indications/Uses
+
+
+
+
+Reblozyl is indicated as monotherapy in adults for the treatment of
+             -   Transfusion-dependent anemia due to very low-risk to intermediate-risk
+                 myelodysplastic syndromes (MDS) that has not previously been treated with
+                 erythropoiesis-stimulating agents (ESA-naive) (see “Properties and Effects”)
+             -   Anemia that has not responded to an erythropoiesis-stimulating agent and requires
+                 transfusions of 2 or more units of packed red blood cells (RC) units over an 8-week
+                 period in patients with very low- to intermediate-risk myelodysplastic syndromes (MDS)
+                 and ring sideroblasts (see “Properties and Effects”).
+Reblozyl is indicated as monotherapy for the treatment of anemia in adult patients with β- thalassemia
+who require regular red blood cell transfusions (see “Properties/Effects”).
+
+                                                                                                       1 / 32
+                                                       Information for healthcare professionals
+
+
+
+Dosage/Administration
+
+Treatment should be initiated by a physician experienced in treatment of haematological diseases.
+Reblozyl is not indicated for patients who require immediate correction of anemia with a red blood cell
+transfusion.
+To ensure traceability of biotechnological medicinal products, it is recommended that the trade name
+and batch number should be documented for each treatment.
+
+
+Posology
+
+Prior to each Reblozyl administration, the haemoglobin (Hb) level of patients should be assessed. In
+case of a red blood cell (RBC) transfusion occurring prior to dosing, the pre-transfusion Hb level must
+be considered for dosing purposes.
+
+
+The recommended starting dose of Reblozyl is 1 mg/kg administered once every 3 weeks.
+
+
+Myelodysplastic syndromes
+The recommended desired Hb concentration range is between 10 g/dL and 12 g/dL. Dose increase
+for insufficient response is provided below.
+
+
+Table 1: Dose increase for insufficient response
+ Dose at 1 mg/kg                                     Dose increase
+ If after at least 2 consecutive doses at 1 mg/kg,   • Dose should be increased to
+                                                       1.33 mg/kg
+ a patient:
+     • is not RBC transfusion-free, or
+     • does not reach Hb concentration of
+       ≥ 10 g/dL and the Hb increase is
+       < 1 g/dL
+ Dose at 1.33 mg/kg                                  Dose increase
+ If after at least 2 consecutive doses at            • Dose should be increased to
+                                                       1.75 mg/kg
+ 1.33 mg/kg, a patient:
+     •   is not RBC transfusion-free, or
+     •   does not reach Hb concentration of
+         ≥ 10 g/dL and the Hb increase is
+         < 1 g/dL
+
+The dose increase should not occur more frequently than every 6 weeks (2 administrations) and
+should not exceed the maximum dose of 1.75 mg/kg every 3 weeks. The dose should not be
+increased immediately after a dose delay.
+
+
+                                                                                                   2 / 32
+                                                          Information for healthcare professionals
+
+For patients with a pre-dose Hb level of > 9 g/dL and who have not yet achieved transfusion
+independence, a dose increase may be required at the physician’s discretion; the risk of Hb
+increasing above the target threshold with concomitant transfusion cannot be excluded.
+
+
+If a patient loses response (i.e. transfusion independence), the dose should be increased by one dose
+level (see Table 2).
+
+
+Transfusion-dependent β-thalassaemia (TDT)
+In patients who do not achieve a response, defined as a reduction in RBC transfusion burden of at
+least a third after ≥ 2 consecutive doses (6 weeks), at the 1 mg/kg starting dose, the dose should be
+increased to 1.25 mg/kg. The dose should not be increased beyond the maximum dose of 1.25 mg/kg
+every 3 weeks.
+If a patient loses response (if the RBC transfusion burden increases again after an initial response)
+the dose should be increased by one dose level (see Table 3).
+
+Increase to next dose level
+
+Increase to next dose level based on current dose is provided below.
+
+
+Table 2: Increase to next dose level for MDS
+         Current dose                    Increased dose
+          0.8 mg/kg                          1 mg/kg
+            1 mg/kg                        1.33 mg/kg
+          1.33 mg/kg                       1.75 mg/kg
+
+Table 3: Increase to next dose level for β-thalassaemia
+         Current dose                    Increased dose
+          0.6 mg/kg                         0.8 mg/kg
+          0.8 mg/kg                          1 mg/kg
+           1 mg/kg                         1.25 mg/kg
+
+
+Dose reduction and dose delay
+
+In case of Hb increase ≥ 2 g/dL within 3 weeks in absence of transfusion compared with the Hb value
+at previous dose, Reblozyl dose should be reduced by one dose level.
+
+
+If the Hb is 11.5 g/dL (12 g/dL for ESA naïve MDS patients) in the absence of transfusion for at least
+3 weeks, the dose should be delayed until the Hb is ≤ 11 g/dL. If there is also a concomitant rapid
+increase in Hb from the Hb value at previous dose (> 2 g/dL within 3 weeks in absence of
+transfusion), a dose reduction to one step down should be considered after the dose delay.
+
+
+Dose should not be reduced below 0.8 mg/kg (for MDS or transfusion-dependent -thalassaemia).
+
+
+                                                                                                      3 / 32
+                                                           Information for healthcare professionals
+
+
+
+Reduced dose during treatment with luspatercept are provided below.
+
+
+Table 4: Reduced dose for MDS
+          Current dose                      Reduced dose
+           1.75 mg/kg                        1.33 mg/kg
+           1.33 mg/kg                          1 mg/kg
+             1 mg/kg                          0.8 mg/kg
+
+Table 5: Reduced dose for β-thalassaemia
+          Current dose                      Reduced dose
+           1.25 mg/kg                          1 mg/kg
+             1 mg/kg                          0.8 mg/kg
+           0.8 mg/kg                          0.6 mg/kg
+
+
+Dose modification due to adverse reactions
+
+Instructions on dose interruptions or reductions for luspatercept treatment-related adverse reactions
+are outlined in Table 6.
+
+
+Table 6: Dose modification instructions
+ Treatment-related adverse reactions*               Dose instructions
+ Grade 2 adverse reactions (see                     • Interrupt treatment
+ ”Undesirable effects”), including Grade 2          • Restart at previous dose when adverse
+ hypertension (see ”Warnings and                    reaction has improved or returned to
+ precautions” and “Undesirable effects”)            baseline
+ Grade ≥ 3 hypertension (see ”Warnings and          • Interrupt treatment
+ precautions” and “Undesirable effects”)            • Restart at reduced dose once the blood
+                                                    pressure is controlled as per dose reduction
+                                                    guidance
+ Other persistent Grade ≥ 3 adverse                 • Interrupt treatment
+ reactions (see ”Undesirable effects”)              • Restart at previous dose or at reduced
+                                                    dose when adverse reaction has improved
+                                                    or returned to baseline as per dose
+                                                    reduction guidance
+ Extramedullary haemopoiesis (EMH)                  • Discontinue treatment
+ masses causing serious complications (see
+ ”Warnings and precautions” and
+ “Undesirable effects”)
+* Grade 1: mild; Grade 2: moderate; Grade 3: severe; and Grade 4: life-threatening.
+
+
+
+
+                                                                                                   4 / 32
+                                                          Information for healthcare professionals
+
+Missed doses
+
+In case of a missed or delayed scheduled treatment administration, the patient should be
+administered Reblozyl as soon as possible and dosing continued as prescribed with at least 3 weeks
+between doses.
+
+
+Patients experiencing a loss of response
+If patients experience a loss of response to Reblozyl, causative factors (e.g. a bleeding event) should
+be assessed. If typical causes for a loss of haematological response are excluded, dose increase
+should be considered as described above for the respective indication being treated (see Table 2 and
+Table 3).
+
+
+Discontinuation
+
+Reblozyl should be discontinued if patients do not experience a reduction of more than 33% in
+transfusion burden after 9 weeks at maximum tolerated dose (for transfusion-dependent β-
+thalassaemia patients), or a decrease in transfusion burden including no increase from baseline Hb
+(for MDS patients) after 9 weeks of treatment (3 doses) at the maximum dose level, if no alternative
+explanations for response failure are found (e.g. bleeding, surgery, other concomitant illnesses) or if
+unacceptable toxicity occurs at any time.
+
+
+Special populations
+
+Elderly
+No starting dose adjustment is required for Reblozyl (see “Pharmacokinetics”). Limited data are
+available in β-thalassaemia patients ≥ 60 years of age.
+
+
+Hepatic impairment
+No starting dose adjustment is required for patients with total bilirubin (BIL) > upper limit of normal
+(ULN) and/or alanine aminotransferase (ALT) or aspartate aminotransferase (AST) < 3 x ULN (see
+“Pharmacokinetics”).
+
+
+No specific dose recommendation can be made for patients with ALT or AST ≥ 3 x ULN or liver injury
+CTCAE Grade ≥ 3 due to lack of data (see “Pharmacokinetics”).
+
+
+Renal impairment
+No starting dose adjustment is required for patients with mild or moderate renal impairment (individual
+estimated glomerular filtration rate [eGFR] 30 to 89 mL/min).
+
+
+
+                                                                                                          5 / 32
+                                                          Information for healthcare professionals
+
+No specific dose recommendation can be made for patients with severe renal impairment (individual
+eGFR < 30 mL/min) due to lack of clinical data (see “Pharmacokinetics”). Patients with renal
+impairment at baseline have been observed to have higher exposure (see “Pharmacokinetics”).
+Consequently, these patients should be closely monitored for adverse reactions and dose adjustment
+should be managed accordingly (see Table 6).
+
+
+Paediatric population
+The safety and effectiveness of Reblozyl in children and adolescents under 18 years of age have not
+been established. There are no clinical data available. For non-clinical data, see the section entitled
+“Preclinical data”.
+
+
+Method of administration
+
+For subcutaneous use.
+
+
+After reconstitution, Reblozyl solution should be injected subcutaneously into the upper arm, thigh or
+abdomen. The exact total dosing volume of the reconstituted solution required for the patient should
+be calculated and slowly withdrawn from the single-dose vial(s) into a syringe.
+
+
+The recommended maximum volume of medicinal product per injection site is 1.2 mL. If more than
+1.2 mL is required, the total volume should be divided into separate similar volume injections and
+administered across separate sites using the same anatomical location but on opposite sides of the
+body.
+
+
+If multiple injections are required, a new syringe and needle must be used for each subcutaneous
+injection. No more than one dose from a vial should be administered.
+
+
+If the Reblozyl solution has been refrigerated after reconstitution, it should be removed from the
+refrigerator 15-30 minutes prior to injection to allow it to reach room temperature. This will allow for a
+more comfortable injection.
+
+
+For instructions on reconstitution of the medicinal product before administration, see section 6.6.
+
+
+Contraindications
+
+•       Hypersensitivity to the active substance or to any of the excipients listed in “Composition”.
+•       Pregnancy (see “Pregnancy, lactation”).
+
+
+
+                                                                                                        6 / 32
+                                                       Information for healthcare professionals
+
+•     Patients requiring treatment to control the growth of EMH masses (see “Warnings and
+      precautions”).
+
+
+Warnings and precautions
+
+
+Thromboembolic events
+Thromboembolic events (TEEs) were reported in 6.0% (47/784) of patients treated with luspatercept.
+In −thalassaemia patients treated with luspatercept, TEEs were reported in 6.0% (27/449). Reported
+TEEs included deep vein thrombosis (DVT), portal vein thrombosis, pulmonary emboli, thrombotic
+stroke and superficial vein thrombosis (see “Undesirable effects”). All patients with TEEs were
+splenectomised and had at least one other risk factor for developing TEE (e.g. history of
+thrombocytosis or concomitant use of hormone replacement therapy). The occurrence of TEE was not
+correlated with elevated Hb levels. The potential benefit of treatment with luspatercept should be
+weighed against the potential risk of TEEs in −thalassaemia patients with a splenectomy and other
+risk factors for developing TEE. Thromboprophylaxis according to current clinical guidelines should be
+considered in patients with −thalassaemia at higher risk.
+
+
+In MDS patients, TEEs were reported in 6.0% (20/335) of patients treated with luspatercept. Reported
+TEEs included cerebral ischemia in 0.6% (2/335) and cerebrovascular accident in 0.9% (3/335) of
+patients.
+
+
+Extramedullary haemopoiesis masses
+
+In −thalassaemia patients, extramedullary haemopoiesis (EMH) masses were observed in 7.8%
+(35/449), with 1.6% (7/449) reporting symptoms of spinal cord compression. Confirmatory diagnosis
+of spinal cord compression due to EMH was reported in 0.9% (4/449) of patients treated with
+luspatercept. EMH was more commonly observed in patients with non-transfusion dependent β-
+thalassemia (14.2% (19/134) compared to patients with transfusion dependent β-thalassemia (5.1%
+(16/315)).
+
+
+Patients with EMH masses may experience worsening of these masses and complications during
+treatment. Signs and symptoms may vary depending on anatomical location. Patients should be
+monitored at initiation and during treatment for symptoms and signs or complications resulting from
+the EMH masses and be treated according to clinical guidelines. Treatment with luspatercept must be
+discontinued in case of serious complications due to EMH masses.
+
+
+
+
+                                                                                                     7 / 32
+                                                        Information for healthcare professionals
+
+Increased blood pressure
+
+In MDS and −thalassaemia pivotal studies, patients treated with luspatercept had an average
+increase in systolic and diastolic blood pressure of up to 5 mmHg from baseline (see “Undesirable
+effects”). Hypertension of any grade was reported in 18.2% (143/784) of the patients treated with
+luspatercept. Grade 3/4 hypertension has been reported in 4.7% (37/784) of patients treated with
+luspatercept.
+An increased incidence of hypertension was observed in the first 12 months of treatment in non-
+transfusion-dependent- −-thalassaemia patients treated with luspatercept (see “Undesirable
+effects”).
+
+
+The treatment must be started only if the blood pressure is adequately controlled. Blood pressure
+should be monitored prior to each luspatercept administration. Luspatercept dose may require
+adjustment or may be delayed, and patients should be treated for hypertension as per current clinical
+guidelines (see Table 6 in “Dosage/Administration”). The potential benefit of treatment with Reblozyl
+should be re-evaluated in case of persistent hypertension or exacerbations of pre-existing
+hypertension.
+
+
+Traumatic fracture
+
+In −thalassaemia patients treated with luspatercept, traumatic fractures were observed in 1.3%
+(6/449).
+In transfusion-dependent β-thalassaemia patients, traumatic fractures were observed in 0.3% (1/315)
+of patients treated with luspatercept.
+
+
+In non-transfusion-dependent β-thalassaemia patients, traumatic fractures were observed in 3.7%
+(5/134) of patients treated with luspatercept. Patients should be informed of the risk of traumatic
+fracture.
+
+
+Malignancies
+
+Malignancies have been reported in 4.2% (33/784) of patients treated with luspatercept, with 9.3%
+(31/335) of the MDS and 0.4% (2/449) of the β-thalassemia patients reporting a malignancy.
+Malignancies reported in more than 1 MDS patient included progression to AML 1.8% (6/335), basal
+cell carcinoma 1.8% (6/335), squamous cell carcinoma 0.9% (3/335) and prostate cancer 0.6%
+(2/335). Malignancies were diagnosed at different time points, ranging from shortly after luspatercept
+initiation to after treatment had ended.
+
+
+
+
+                                                                                                      8 / 32
+                                                        Information for healthcare professionals
+
+Cardiac risks
+
+Cardiac disorders have been reported in 22.2% (174/784) of patients treated with luspatercept, with
+26.9% (90/335) of the MDS and 18.7% (84/449) of the −thalassaemia patients reporting a cardiac
+adverse event. Cardiac disorders reported in MDS and -thalassaemia pivotal studies included atrial
+fibrillation 2.7% (21/784), cardiac failure 1.0% (8/784) and tachycardia 4.6% (36/784).
+In luspatercept treated MDS-patients atrial fibrillation was observed in 4.8% (16/335) of the patients,
+cardiac failure in 2.4% (8/335) of the patients and tachycardia in 4.5% (15/335) of the patients.
+In luspatercept treated β-thalassaemia-patients atrial fibrillation was observed in 1.1% (5/449) of the
+patients and tachycardia in 4.7% (21/449) of the patients.
+Patients with a cardiac disorder history should be monitored for worsening of cardiac symptoms and
+dose modifications considered (See section “dosage/administration”).
+
+
+
+Excipients
+
+Sodium content
+
+This medicinal product contains less than 1 mmol sodium (23 mg) per dose, that is to say essentially
+‘sodium-free’.
+
+
+Polysorbate 80 content
+This medicinal product contains 0.1 mg of polysorbate 80 in each 25 mg vial or 0.3 mg of polysorbate
+80 in each 75 mg vial which is equivalent to 0.2 mg/mL. Polysorbates may cause allergic reactions.
+
+
+Interactions
+
+No formal clinical interaction studies have been performed. Concurrent use of iron-chelating agents
+had no effect on luspatercept pharmacokinetics.
+
+
+Pregnancy, lactation
+
+Women of childbearing potential / Contraception in females
+
+Women of childbearing potential have to use effective contraception during treatment with Reblozyl
+and for at least 3 months after the last dose. Prior to starting treatment with Reblozyl, a pregnancy
+test has to be performed for women of childbearing potential and the patient card has to be provided.
+
+
+
+
+                                                                                                     9 / 32
+                                                         Information for healthcare professionals
+
+Pregnancy
+
+Treatment with Reblozyl should not be started if the woman is pregnant (see “Contraindications”).
+There are no data from the use of Reblozyl in pregnant women. Studies in animals have shown
+reproductive toxicity (see “Preclinical data”). Reblozyl is contraindicated during pregnancy (see
+“Contraindications”). If a patient becomes pregnant, Reblozyl should be discontinued.
+
+
+Breast-feeding
+
+It is unknown whether luspatercept or its metabolites are excreted in human milk. Luspatercept was
+detected in the milk of lactating rats (see “Preclinical data”). Because of the unknown adverse effects
+of luspatercept in newborns/infants, a decision must be made whether to discontinue breast-feeding
+during therapy with Reblozyl and for 3 months after the last dose or to discontinue Reblozyl therapy,
+taking into account the benefit of breast-feeding for the child and the benefit of therapy for the woman.
+
+
+Fertility
+
+The effect of luspatercept on fertility in humans is unknown. Based on findings in animals,
+luspatercept may compromise female fertility (see “Preclinical data”).
+
+
+Effects on ability to drive and use machines
+
+Reblozyl has a minor influence on the ability to drive and use machines. The ability to react when
+performing these tasks may be impaired due to risks of fatigue, vertigo, dizziness or syncope (see
+“Undesirable effects”). Therefore, patients should be advised to exercise caution until they know of
+any impact on their ability to drive and use machines.
+
+
+Undesirable effects
+
+Summary of the safety profile
+
+Description patient pool
+The data presented in this section was collected from 784 patients (335 MDS and 449
+−thalassaemia patients, including 134 patients with non-transfusion-dependent β-thalassaemia and
+315 patients with transfusion-dependent β-thalassaemia) treated with luspatercept in the phase 3
+clinical studies as well as in the open-label, long-term study with an estimated follow-up of up to 5
+years.
+
+
+Myelodysplastic syndromes
+
+
+
+                                                                                                     10 / 32
+                                                       Information for healthcare professionals
+
+The most frequently reported adverse drug reactions in MDS patients receiving Reblozyl (at least
+15% of patients) were diarrhoea, fatigue, asthenia, oedema peripheral, nausea, back pain, dizziness,
+dyspnoea, cough, hypertension and headache. The most commonly reported Grade 3/4 adverse drug
+reactions (at least 2% of patients) included hypertension events (8%), syncope (4.8%), dyspnoea
+(2.7%), fatigue (2.7%), thrombocytopenia (2.4%), and urinary tract infection (2.1%). The most
+commonly reported serious adverse drug reactions (at least 1% of patients) were urinary tract
+infection 2.4% (8/335), dyspnoea 1.8% (6/335) and back pain 1.2% (4/335).
+Treatment discontinuation due to an adverse event occurred in 15.2% (51/335) of patients treated
+with luspatercept. The most common reason for discontinuation in the luspatercept treatment arm was
+progression of underlying MDS.
+
+
+Dose delays due to predose Hb ≥12 g/dL occurred in 25.3% of luspatercept treated ESA-naïve MDS
+patients.
+
+
+β-thalassaemia
+The most frequently reported adverse drug reactions in β-thalassaemia patients receiving Reblozyl (at
+least 15% of patients) were upper respiratory tract infections, back pain, headache, arthralgia, bone
+pain, cough, diarrhoea hypertension, fatigue, dizziness and influenza. The most commonly reported
+Grade 3/4 adverse drug reaction (at least 2% of patients) included bone pain (2.4%), hypertension
+(2.2%) and back pain (2.0%). The most relevant serious adverse reactions reported included
+thromboembolic events of deep vein thrombosis 1.1% (5/449), thrombotic stroke 0.2% (1/449) portal
+vein thrombosis 0.2% (1/449) cerebrovascular accident 0.2% (1/449), superficial vein thrombosis
+0.7% (3/449) and pulmonary embolism 0.9% (4/449) (see “Warnings and precautions”).
+The most commonly reported Grade 3/4 adverse reactions (at least 2% of patients) in patients with
+transfusion-dependent β-thalassaemia was bone pain 2.5% (8/315), back pain 2.5% (8/315) and
+syncope 2.2% (7/315). The most relevant serious adverse reactions included thromboembolic events
+of deep vein thrombosis in 1.6% (5/315) and pulmonary embolism in 1.3% (4/315) of the patients and
+spinal cord compression due to EMH in 1.0 % (3/315) of the patients.
+The most commonly reported Grade 3/4 adverse reactions (at least 2% of patients) in patients with
+non-transfusion-dependent β-thalassaemia was hypertension 3.7% (5/134) and bone pain 2.2%
+(3/134). The most relevant serious adverse reactions included traumatic fractures in 1.5% (2/134) and
+spinal cord compression due to EMH in 0.7% (1/134) of the patients.
+
+
+Treatment discontinuation due to an adverse reaction occurred in 11.4% (51/449) of patients treated
+with luspatercept. The adverse reactions leading to treatment discontinuation in the luspatercept
+treatment arm were TEE, arthralgia, cardiac disorders and EMH including spinal cord compression
+due to EMH in 2 β-thalassemia patients.
+
+
+                                                                                                    11 / 32
+                                                            Information for healthcare professionals
+
+
+
+Tabulated list of adverse reactions
+
+The frequency for each adverse reaction that was reported in a pool of MDS and −thalassaemia
+patients in the four pivotal studies as well as in the long-term follow up study (N=784) is shown in
+Table 7 below. The adverse reactions are listed below by body system organ class and preferred
+term. Frequencies are defined as: very common (≥ 1/10), common (≥ 1/100 to < 1/10), uncommon
+(≥ 1/1,000 to < 1/100), rare (≥ 1/10,000 to < 1/1,000), very rare (< 1/10,000) and not known
+(frequency cannot be estimated from the available data).
+
+
+Table 7. Adverse drug reactions (ADRs) in patients treated with Reblozyl for MDS and
+−thalassaemia
+
+
+ System organ class              Preferred term               Frequency (all grades) in
+                                                              Pivotal MDS (N=335) + β-
+                                                                Thalassaemia (N=449)
+                                                                        N=784
+ Infections and infestations     Bronchitis                  Common
+                                 Urinary tract infection Very Common (10.5%)
+                                 Respiratory tract           Common
+                                 infection
+                                 Upper respiratory           Very Common (27.4%)
+                                 tract infection
+                                 Influenza                   Very Common (11.5%)
+ Blood and lymphatic             Extramedullary              Common
+ system disorders                haemopoiesis a, VI VII
+                                 Thrombocytopenia            Common
+                                                    I, VI
+ Immune system disorders         Hypersensitivity            Common
+ Metabolism and nutrition        Hyperuricaemia              Common
+ disorders                       Dehydration                 Common
+                                 Decreased appetite          Common
+                                 Electrolyte imbalance Very common (11.5%)
+                                 IX
+
+
+ Psychiatric disorders           Insomnia                    Common
+                                 Anxiety                     Common
+                                 Irritability                Uncommon
+                                 Confusional stateb          Common
+
+
+                                                                                                       12 / 32
+                                                   Information for healthcare professionals
+
+System organ class           Preferred term          Frequency (all grades) in
+                                                     Pivotal MDS (N=335) + β-
+                                                       Thalassaemia (N=449)
+                                                               N=784
+Nervous system disorders     Dizziness              Very common (17.5%)
+                             Headache               Very common (28.1%)
+                             Migraine               Common
+                             Spinal cord            Uncommon
+                             compressionc, VI
+                             Syncope/presyncope Common
+Ear and labyrinth disorders Vertigo/vertigo         Common
+                             positional
+Cardiac disorders            Atrial fibrillation    Common
+                             Cardiac failureb       Common
+Vascular disorders           Prehypertensiona       Common
+                             HypertensionII, VI     Very common (18.2%)
+                             Tachycardia            Common
+                             Thromboembolic         Common
+                                      IV, VI
+                             events
+Respiratory, thoracic and    Cough                  Very common (21.0%)
+mediastinal disorders        Epistaxis              Common
+                             DyspnoeaVIII           Very common (10.8%)
+Gastrointestinal disorders   Abdominal pain         Very common (11.9%)
+                             Abdominal discomfort Common
+                             Diarrhoea              Very common (23.3%)
+                             Nausea                 Very common (16.6%)
+Skin and subcutaneous        Hyperhidrosis          Common
+tissue disorders
+Musculoskeletal and          Back pain              Very common (31.5%)
+connective tissue disorders ArthralgiaVI            Very common (23.6%)
+                             Bone painVI            Very common (18.2%)
+                             Myalgia                Very common 11.0%
+                             Muscular weakness      Common
+Renal and urinary disorders Proteinuria             Common
+                             Albuminuria a          Uncommon
+                             Kidney inuryx          Very common (10.3%)
+
+
+                                                                                      13 / 32
+                                                                  Information for healthcare professionals
+
+ System organ class                    Preferred term                 Frequency (all grades) in
+                                                                      Pivotal MDS (N=335) + β-
+                                                                        Thalassaemia (N=449)
+                                                                                   N=784
+ General disorders and                 Non-cardiac chest           Common
+ administration site                   pain
+ conditions                            Influenza-like illness      Common
+                                       Fatigue                     Very Common (21.9%)
+                                       Asthenia                    Very common (16.6%)
+                                       Injection site              Common
+                                       reactionsIII, VI
+                                       Oedema peripheral           Very common (13.0%)
+  Liver and gallbladder                Alanine                     Common
+ disorders                             aminotransferase
+                                       increased
+                                       Aspartate                   Common
+                                       aminotransferase
+                                       increased
+                                       Blood bilirubin             Common
+                                       increased
+                                       Gamma-                      Common
+                                       glutamyltransferase
+                                       increased
+ Injury, poisoning and                 Traumatic fracturea, VI Common
+ procedural complications
+
+
+I Hypersensitivity includes eyelid oedema, drug hypersensitivity, swelling face, periorbital oedema, face oedema,
+
+
+angioedema, lip swelling, drug eruption.
+II Hypertension includes essential hypertension, hypertension and hypertensive crisis.
+
+III Injection site reactions include injection site erythema, injection site pruritus, injection site swelling and
+
+
+injection site rash.
+IV TEEs include deep vein thrombosis, portal vein thrombosis, ischaemic stroke and pulmonary embolism.
+
+V Frequency is based on laboratory values of any grade.
+
+VI See “Undesirable effects” Description of selected adverse reactions.
+
+VII Reported only in post-marketing in MDS indication.
+
+VIII Dyspnoea includes dyspnoea exertional for ACE-536-MDS-002.
+
+
+
+
+                                                                                                                     14 / 32
+                                                           Information for healthcare professionals
+
+IX Electrolyte imbalance includes calcium deficiency, hypercalcaemia, hyperkalaemia, hypernatraemia,
+
+
+hypocalcaemia, hypokalaemia, hypomagnesaemia, hyponatraemia, hypophosphataemia and
+magnesium deficiency .
+X ADR includes similar/grouped terms.
+
+a ADRs only observed in β-thalassaemia studies.
+
+b ADRs only observed in MDS studies.
+
+c
+    Spinal cord compression due to EMH only observed in β-thalassaemia
+
+
+
+Description of selected adverse reactions
+
+Bone pain
+Bone pain was reported in 18.2% (143/784) of patients treated with luspatercept, occurring in 3.3%
+(11/335) of MDS and in 29.4% (132/449) of β-thalassaemia patients. In β-thalassaemia patients
+treated with luspatercept most events (121/132) were Grade 1/2, and Grade 3/4 events were reported
+in 2.4% (11/449) patients. Serious bone pain was reported in 0.4% (2/449) of patients.
+In the β-thalassaemia studies were 0.4% (2/449) patients with bone pain that led to treatment
+discontinuation.
+
+
+Arthralgia
+Arthralgia was reported in 23.6% (185/784) of patients treated with luspatercept, occurring in 10.7%
+(36/335) of MDS and in 33.2% (149/449) of β-thalassaemia patients.
+Arthralgia was reported mostly as Grade 1-2 in both indications, with Grade 3/4 events being reported
+in 0.9% (3/335) of MDS patients and 0.9% (4/449) of β-thalassaemia patients.
+During the clinical studies arthralgia led to treatment discontinuation in 0.7% (3/449) patients with β-
+thalassaemia.
+
+
+Hypertension
+MDS and β-thalassaemia patients treated with luspatercept had an average increase in systolic and
+diastolic blood pressure of up to 5 mmHg from baseline not observed in patients receiving placebo.
+Hypertension events were reported in 18.2% (143/784) of patients treated with luspatercept, occurring
+in 15.8% (53/335) of MDS and in 20% (90/449) of β-thalassemia patients.
+Most hypertension events were Grade 1/2, with Grade 3/4 hypertension events being reported in
+8.0% (27/335) of MDS and in 2.2% (10/449) of β-thalassaemia patients treated with luspatercept.
+During the clinical studies, hypertension did not lead to treatment discontinuation.
+
+
+Hypersensitivity
+Hypersensitivity-type reactions included eyelid oedema, drug hypersensitivity, swelling face,
+periorbital oedema, face oedema, angioedema, lip swelling, drug eruption.
+
+
+                                                                                                       15 / 32
+                                                           Information for healthcare professionals
+
+
+
+Hypersensitivity-type reactions were reported in 5.2% (41/784) of patients treated with luspatercept,
+occurring in 4.5% (15/335) of MDS and in 5.8% (26/449) of β-thalassaemia patients, with all events
+being Grade 1/2 in severity.
+Face oedema occurred in 0.9% (7/784) of luspatercept treated patients in both indications.
+
+
+During the clinical study, hypersensitivity led to treatment discontinuation in 0.2 % (1/449) of the
+patients with β-thalassaemia.
+
+
+Injection site reactions
+Injection site reactions included injection site erythema, injection site pruritus, injection site swelling
+and injection site rash.
+Injection site reactions were reported in 4.3% (34/784) of patients treated with luspatercept, occurring
+in 3.6% (12/335) of MDS and in 4.9% (22/449) of β-thalassaemia patients, with all events being
+Grade 1/2.
+During the clinical studies, injection site reactions did not lead to discontinuation.
+
+
+Thromboembolic events
+TEEs were reported in 6.0% (47/784) of patients treated with luspatercept. TEEs included deep vein
+Response to HA: The entire section was updated to reflect the entire treatment duration., portal vein
+thrombosis, ischaemic stroke and pulmonary embolism.
+TEEs were reported in 6.0% (20/335) of MDS patients. TEEs reported in MDS patients included
+cerebral ischemia in 0.6% (2/335) and cerebrovascular accident in 0.9% (3/335) of patients. TEEs did
+not lead to treatment discontinuations in MDS patients. All TEEs occurred in patients with significant
+risk factors (atrial fibrillation, stroke or heart failure and peripheral vascular disease) and were not
+correlated with elevated Hb, platelet levels or hypertension. See “Warnings and precautions”.
+TEEs occurred in 6.0% (27/449) of β-thalassaemia patients receiving luspatercept. TEEs led to
+treatment discontinuations in 2.2% (10/449) β-thalassaemia patients. All TEEs events were reported
+in patients who had undergone splenectomy and had at least one other risk factor. See “Warnings
+and precautions”.
+
+
+Extramedullary haemopoiesis masses
+EMH were reported in 7.8% (35/449) of -thalassaemia patients treated with luspatercept.
+The majority of the events (27/35) were Grade 1/2. Grade 3/4 EMH were reported in 1.0% (8/784) of
+patients.
+During the β-thalassaemia studies, 1.6% (7/449) patients discontinued due to EMH masses.
+EMH events were manageable with standard clinical practice.
+
+
+                                                                                                         16 / 32
+                                                         Information for healthcare professionals
+
+EMH masses may also occur after extended treatment with luspatercept (i.e. after 96 weeks). See
+“Warnings and precautions”
+
+
+Spinal cord compression
+Spinal cord compression or symptoms due to EMH masses occurred in 1.6% (7/449) of -
+thalassaemia patients treated with luspatercept with a confirmed spinal cord compression diagnosis
+reported in 0.9% (4/449) of patients. Five patients discontinued treatment due to Grade 3/4 symptoms
+of spinal cord compression, including 2 patients with a history of EMH who discontinued treatment
+due to Grade 4 spinal cord compression. See “Warnings and precautions”.
+
+
+Traumatic fracture
+Traumatic fractures were reported in 1.3% (6/449) of -thalassaemia patients treated with
+luspatercept, with the majority of events (5/6) being reported in non-transfusion-dependent -
+thalassaemia patients receiving luspatercept.
+Grade 3/4 events were reported in 0.7% (3/449) of -thalassaemia patients treated with luspatercept.
+During the clinical studies, traumatic fractures did not lead to treatment discontinuations.
+
+
+Cardiac disorders
+In the clinical studies for MDS and -thalassaemia atrial fibrillation was reported in 2.7% (21/784),
+cardiac failure in 1.0% (8/784), and tachycardia in 4.6% (36/784) of the patients. In the MDS studies,
+atrial fibrillation was observed in 4.8% (16/335), cardiac failure in 2.4% (8/335), tachycardia in 4.5%
+(15/335) of the patients treated with luspatercept. Cardiac disorders led to treatment discontinuations
+in 0.6% (2/335) MDS patients. In the clinical studies for β-thalassaemia, atrial fibrillation was observed
+in 1.1% (5/449), and tachycardia in 4.7% (21/449) of the patients. Cardiac disorders led to treatment
+discontinuations in 1.3% (6/449) β-thalassaemia patients.
+(See “Warnings and precautions”).
+
+
+Immunogenicity
+In clinical studies in MDS, an analysis of 395 MDS patients who were treated with luspatercept and
+who were evaluable for the presence of anti-luspatercept antibodies showed that 36 (9.1%) patients
+tested positive for treatment-emergent anti-luspatercept antibodies, including 18 (4.6%) patients who
+had neutralising antibodies against luspatercept.
+
+
+In clinical studies in transfusion dependent and non-transfusion dependent -thalassaemia, an
+analysis of 380 -thalassaemia patients who were treated with luspatercept and who were evaluable
+for the presence of anti-luspatercept antibodies showed that 7 (1.84%) patients tested positive for
+
+
+
+                                                                                                    17 / 32
+                                                        Information for healthcare professionals
+
+treatment emergent anti-luspatercept antibodies, including 5 (1.3%) patients who had neutralising
+antibodies against luspatercept.
+
+
+Luspatercept serum concentration tended to decrease in the presence of anti-luspatercept antibodies.
+There were no severe systemic hypersensitivity reactions reported for patients with anti-luspatercept
+antibodies. There was no association between hypersensitivity type reactions or injection site
+reactions and presence of anti-luspatercept antibodies. Patients with treatment-emergent anti-
+luspatercept antibodies were more likely to report a serious treatment-emergent adverse event
+(69.4% [25/36] for anti-luspatercept antibodies-positive patients vs. 45.7% [164/359] for anti-
+luspatercept antibodies-negative patients) or a Grade 3 or 4 treatment emergent adverse event
+(77.8% [28/36] for anti-luspatercept antibodies-positive patients vs. 56.8% [204/359] for anti-
+luspatercept antibodies-negative patients) compared to patients without anti-luspatercept antibodies
+in the TD MDS pool.
+
+
+Other special population
+
+MDS patients without ring sideroblast (RS-)
+RS- patients are more likely to experience serious adverse events, Grade 5 treatment emergent
+adverse events, adverse events leading to drug discontinuation or dose reduction compared to
+patients with ring sideroblasts (RS+). In ACE536-MDS-002 study, RS- patients showed higher
+incidence of some adverse reactions compared to RS+ patients in both treatment arms. When
+comparing RS subgroups in the luspatercept arm, asthenia, nausea, vomiting, dyspnoea, cough,
+thromboembolic events, alanine aminotransferase increased, aspartate aminotransferase increased,
+and thrombocytopenia occurred more frequently in the RS-subgroup.
+
+
+MDS patients with mutational status SF3B1 non-mutated
+Patients with mutational status SF3B1 non-mutated are more likely to experience Grade 3 or 4
+treatment emergent adverse events, serious adverse events, Grade 5 treatment emergent adverse
+events, adverse events leading to drug discontinuation, dose reduction as well as dose interruption
+compared to patients with mutational status SF3B1 mutated. Known luspatercept adverse reactions
+with a frequency ≥ 3% higher in the non-mutated SF3B1 luspatercept arm subgroup included
+vomiting, dyspnoea, and hypertension.
+
+
+Reporting suspected adverse reactions after authorisation of the medicinal product is very important.
+It allows continued monitoring of the benefit/risk balance of the medicinal product. Healthcare
+professionals are asked to report any suspected adverse reactions online via the ElViS portal
+(Electronic Vigilance System). You can obtain information about this at www.swissmedic.ch.
+
+
+
+                                                                                                  18 / 32
+                                                        Information for healthcare professionals
+
+Overdose
+
+Overdose with luspatercept may cause an increase of Hb values above the desired level. In the event
+of an overdose, treatment with luspatercept should be delayed until Hb is ≤ 11 g/dL.
+
+
+Properties/Effects
+
+ATC code
+
+B03XA06
+
+
+Mechanism of action
+
+Luspatercept, an erythroid maturation agent, is a recombinant fusion protein that binds selected
+transforming growth factor-β (TGF-β) superfamily ligands. By binding to specific endogenous ligands
+(e.g. GDF-11, activin B) luspatercept inhibits Smad2/3 signalling, resulting in erythroid maturation
+through expansion and differentiation of late-stage erythroid precursors (normoblasts) in the bone
+marrow, thereby restoring effective erythropoiesis. Smad2/3 signalling is abnormally high in disease
+models characterised by ineffective erythropoiesis, i.e. MDS and β-thalassaemia, and in the bone
+marrow of MDS patients.
+
+
+Somatic mutations in MDS patients
+
+Luspatercept demonstrated clinical benefit and favourability over epoetin alfa across multiple genomic
+mutations that are frequently observed in lower-risk MDS with the exception of CBL gene mutations.
+
+Pharmacodynamics
+
+Hb response
+
+In patients who received < 4 units of RBC transfusion within 8 weeks prior to the study, Hb increased
+within 7 days of treatment initiation, and the increase correlated with the time to reach luspatercept
+Cmax. The greatest mean Hb increase was observed after the first dose, with additional smaller
+increases observed after subsequent doses. Hb levels returned to baseline value approximately 6 to
+8 weeks from the last dose (0.6 to 1.75 mg/kg). Increasing luspatercept serum exposure (AUC) was
+associated with a greater Hb increase in patients with ESA-refractory or -intolerant MDS or β-
+thalassaemia.
+
+
+In non-transfusion-dependent β-thalassaemia patients who had a baseline transfusion burden of 0 to
+5 units within 24 weeks, increasing luspatercept serum exposure (time-averaged AUC) was
+associated with a greater probability of achieving a Hb increase (≥ 1 g/dL or ≥ 1.5 g/dL) and a longer
+
+
+
+                                                                                                    19 / 32
+                                                        Information for healthcare professionals
+
+duration of such Hb increases. The luspatercept serum concentration achieving 50% of the maximum
+stimulatory effect on Hb production was estimated to be 7.6 μg/mL.
+
+
+Clinical efficacy
+
+Myelodysplastic syndromes in ESA-naïve patients
+The efficacy and safety of luspatercept were evaluated in a Phase 3 multicentre, randomised, open-
+label, active-controlled study COMMANDS (ACE-536-MDS-002) comparing luspatercept versus
+epoetin alfa in patients with anaemia due to International Prognostic Scoring System-Revised
+(IPSS-R) very low-, low- or intermediate-risk MDS or with myelodysplastic/myeloproliferative
+neoplasm with ring sideroblasts and thrombocytosis (MDS/MPN RS-T) in ESA-naïve patients (with
+endogenous serum erythropoietin (sEPO) levels of < 500 U/L) who require red blood cell transfusions.
+For eligibility, patients were required to have had 2 to 6 RBC units/8 weeks confirmed for a minimum
+of 8 weeks immediately preceding randomization. Patients with deletion 5q (del5q) MDS were
+excluded from the study.
+
+
+Patients were treated for at least 24 weeks, unless the patient experienced unacceptable toxicities,
+withdrew the consent or met any other treatment discontinuation criteria. The treatment was
+continued beyond week 24 in case of clinical benefit (defined as a transfusion reduction of ≥ 2 pRBC
+units/8 weeks compared with baseline) and absence of disease progression. Based on the outcome
+of these assessments, patients either were discontinued from treatment and entered into the Post-
+Treatment Follow-up Period or continued open-label treatment (with luspatercept or epoetin alfa) as
+long as the above criteria continued to be met or until the patient experienced unacceptable toxicities,
+withdrew consent, or met any other discontinuation criteria.
+
+
+A total of 363 patients were randomized to receive subcutaneously luspatercept (N=182) or epoetin
+alfa (N=181) at 1 mg/kg every 3 weeks or at 450 U/kg every week, respectively. Randomization was
+stratified by RBC transfusion burden, RS status, and sEPO level at baseline. Two dose level
+increases were allowed for luspatercept (to 1.33 mg/kg and to 1.75 mg/kg). Doses were held and
+subsequently reduced for adverse reactions, reduced if the haemoglobin increased by ≥ 2 g/dL from
+the prior cycle, and held if the pre-dose haemoglobin was ≥ 12 g/dL. All patients received best
+supportive care, which included RBC transfusions, use of antibiotic, antiviral and antifungal therapy,
+and nutritional support as needed. BSC for this study excluded the use of ESAs outside of the study
+treatment.
+The mean age of the 363 study participants was 73.4 years (range: 31, 93 years). The trial population
+was 55.4% male and 44.6% female; 79.6% were White, 0.6% Black or African American, 12.1%
+Asian, and race was not reported in 7.7% of patients. Ethnicities were reported as 85.7% for Not
+
+
+
+                                                                                                   20 / 32
+                                                        Information for healthcare professionals
+
+Hispanic or Latino patients, 6.3% for Hispanic or Latino patients, 7.4% for patients with no ethnicity
+reported, and 0.6% were unknown.
+The median haemoglobin (Hb) levels were identical between the two groups with both showing a
+median of 7.80 g/dL. The range for the Luspatercept group was 4.7 to 9.2 g/dL, and the range in the
+epoetin alfa group was 4.5 to 10.2 g/dL. The median time since the original diagnosis of MDS was
+7.97 months for the luspatercept group and 5.13 months for the epoetin alfa group.
+In the luspatercept group 79.7% had a sEPO levels ≤200 U/L, and 20.3% had levels >200 U/L to
+<500 U/L, with a median sEPO of 77.245 U/L. In the Epoetin Alfa group 79.6% had sEPO levels ≤200
+U/L and 20.4% with >200 U/L to <500 U/L, with a median sEPO of 85.370 U/L. Serum ferritin had a
+median of 623.00 µg/L (range 12.4 to 3170.0 µg/L) in the Luspatercept group and 650.00 µg/L (range
+39.4 to 6960.5 µg/L) in the Epoetin Alfa group.
+The baseline transfusion burden over 8 weeks showed that 64.8% of patients in the Luspatercept
+group received less than 4 while 35.2% received 4 or more units of RBC transfusions. In the Epoetin
+Alfa group, 61.3% received less than 4 and 38.7% received 4 or more units of RBC transfusions.
+According to the WHO 2016 classification of MDS, in the Luspatercept group, 0.5% had MDS with
+single lineage dysplasia (MDS-SLD), 27.5% had MDS with multilineage dysplasia (MDS-MLD), 1.1%
+had MDS with ring sideroblasts with single lineage dysplasia (MDS-RS-SLD), 69.8% had MDS with
+ring sideroblasts with multilineage dysplasia (MDS-RS-MLD), and 1.1% had
+myelodysplastic/myeloproliferative neoplasms with ring sideroblasts and thrombocytosis (MDS/MPN-
+RS-T). There were no missing data in this group. For Epoetin Alfa, the distribution was 2.2% for MDS-
+SLD, 26.0% for MDS-MLD, 3.3% for MDS-RS-SLD, 65.2% for MDS-RS-MLD, 2.8% for MDS/MPN-
+RS-T, and for 0.6% data were missing.
+Based on the IPSS-R classification, 8.8% of the Luspatercept patients were classified as very low
+risk, 71.4% as low risk, 18.7% as intermediate risk, and 1.1% were categorized as other/missing. For
+the Epoetin Alfa patients, 9.4% were very low risk, 73.5% were low risk, 16.0% were intermediate risk,
+and 1.1% were categorized as other/missing.
+According to WHO criteria (2016), 73.1% of the patients in the luspatercept group were with ring
+sideroblasts (RS+), and 26.9% were without (RS-). There were no missing data in this group. In the
+Epoetin Alfa group, 71.8% were RS+, 27.6% were RS-, and for 0.6% data were missing.
+In the Luspatercept group 62.6% of the patients had mutated Splicing Factor 3B Subunit 1A (SF3B1)
+gene, 35.7% non-mutated, and 1.6% missing data. In the Epoetin Alfa group, 55.8% had the SF3B1
+mutation, 39.8% were non-mutated, and 4.4% were missing.
+
+
+The primary endpoint was achieving RBC transfusion independence (RBC-TI) for 12 weeks with a
+concurrent mean Hb increase of at least 1.5 g/dL (Weeks 1 - 24). The response rate was 60.4%
+(110/182) in patients receiving Luspatercept (95% CI of 52.9% to 67.6%) versus 34.8% (63/181) in
+patients receiving Epoetin alfa (95% CI of 27.9% to 42.2%). The common risk difference in response
+
+
+                                                                                                    21 / 32
+                                                         Information for healthcare professionals
+
+rate between the two groups was 25.4% in favor of Luspatercept (95% CI: 15.8% to 35.0%, p-value <
+0.0001, the odds ratio for this comparison was 3.1, with a 95% CI of 2.0 to 4.8).
+The treatment effect of luspatercept on RBC-TI ≥12 weeks and Hb increase of ≥1.5 g/dL was higher
+than epoetin alfa across all clinically relevant baseline demographic and most disease characteristic
+subgroups, except in patients without ring sideroblasts, where the treatment effect of luspatercept was
+comparable to epoetin alfa.
+
+
+For the secondary endpoints, the rate of hematological improvement – erythroid (HI-E) for at least 8
+weeks (Weeks 1 - 24) was 74.2% (135 /182) in patients treated with Luspatercept versus 53%
+(96/181) patients treated with Epoetin alfa. The common risk difference was 21.5% (95% CI: 12.2% to
+30.7%), p-value < 0.0001.
+Myelodysplastic syndromes in ESA-refractory or -intolerant patients
+The efficacy and safety of luspatercept were evaluated in a Phase 3 multicentre, randomised, double-
+blind, placebo-controlled study MEDALIST (ACE-536-MDS-001) in adult patients with anaemia
+requiring RBC transfusions (≥ 2 units/8 weeks) due MDS as defined by the WHO/FAB classification
+that meets IPSS-R classification of very low-, low-, or intermediate-risk disease who have ring
+sideroblasts (≥ 15%). All patients had less than 5% of blasts in the bone marrow. The MEDALIST trial
+excluded patients with deletion 5q (del 5q), white blood cell count > 13 Gi/L, neutrophils < 0.5 Gi/L,
+platelets < 50 Gi/L, or with prior use of a disease modifying agent for treatment of MDS. For eligibility,
+patients were required to have had an inadequate response to prior treatment with an erythropoiesis-
+stimulating agent (ESA), be intolerant of ESAs, or have a serum erythropoietin > 200 U/L.
+
+
+A total of 229 patients were randomised to receive luspatercept 1 mg/kg (N=153) or placebo (N=76)
+subcutaneously every 3 weeks. Randomization was stratified by baseline RBC transfusion burden
+and baseline IPSS-R. Treatment was started at 1 mg/kg subcutaneously every 3 weeks
+Dose titration up to 1.75 mg/kg was permitted. The dose could be delayed or reduced depending on
+the Hb level. All patients were eligible to receive best supportive care (BSC), which included RBC
+transfusions, iron-chelating agents, antibiotic, antiviral and antifungal therapy, and nutritional support,
+as needed.
+Patients in both arms were treated for 24 weeks, then continued treatment if they had demonstrated
+clinical benefit and absence of disease progression. The study was unblinded for analyses when all
+patients had at least received 48 weeks of treatment or discontinued treatment.
+A total of 128 (83.7%) and 68 (89.5%) patients receiving luspatercept and placebo respectively
+completed 24 weeks of treatment. A total of 78 (51%) and 12 (15.8%) patients receiving luspatercept
+and placebo respectively completed 48 weeks of treatment.
+
+
+
+
+                                                                                                      22 / 32
+                                                       Information for healthcare professionals
+
+The efficacy of REBLOZYL was established based upon the proportion of patients who were red
+blood cell transfusion independent (RBC-TI), defined as the absence of any RBC transfusion during
+any consecutive 8-week period occurring entirely within Weeks 1 through 24.
+
+
+The median age of the 229 study participants was 71 years (range: 26, 95 years). The trial population
+was 63% male and 69% White. At baseline, among the luspatercept patients 57.5% had sEPO levels
+below 200 U/L, 28.1% had levels between 200–500 U/L, 13.7% had levels greater than 500 U/L, and
+0.7% had missing values. Among placebo patients, 65.8% had sEPO levels below 200 U/L, 19.7%
+had levels between 200–500 U/L, and 14.5% had levels greater than 500 U/L, with no missing values.
+Median serum ferritin was 1089.2 µg/L (range 64–5968) in the luspatercept group and 1122.1 µg/L
+(range 165–5849) in the placebo group.
+The IPSS-R classification revealed that 11.8% of luspatercept patients were categorized as “Very Low
+Risk,” 71.2% as “Low Risk,” 16.3% as “Intermediate Risk,” and 0.7% as “Other.” For placebo patients,
+the respective proportions were 7.9%, 75.0%, 17.1% in “Intermediate Risk,” and none as “Other.”
+According to the WHO 2016 classification of MDS, 14 patients (9.2%) in the luspatercept group and 9
+patients (11.8%) in the placebo group were diagnosed with myelodysplastic/myeloproliferative
+neoplasms with ring sideroblasts and thrombocytosis (MDS/MPN-RS-T).
+
+
+Assessment of baseline RBC transfusion burden over an 8 week period (collected over 16 weeks
+prior to randomization) revealed that 43.1% of the luspatercept patients required 6 or more units and
+56.9% required less than 6 units. In the placebo group, 43.4% required 6 or more units and 56.6%
+required less than 6 units. Median Hb levels were 7.6 g/dL (range 6–10) in the luspatercept group and
+7.6 g/dL (range 5–9) in the placebo group.
+In the luspatercept group, 92.2% had the SF3B1 mutation, 7.8% were unmutated. Among placebo
+patients, 85.5% were mutated, 13.2% were unmutated.
+The primary endpoint of RBC-TI for 8 weeks or more (Weeks 1-24) response rate was 37.9%
+(58/153) in luspatercept treated patients versus 13.2% (10/76) in the placebo group. The common risk
+difference in response rate was 24.56% (95% CI of 14.48 to 34.64) and the p-value < 0.0001.
+Secondary endpoints included achieving RBC-TI for 12 weeks (Weeks 1-24). There were 43
+responders (28.1%) with luspatercept versus 6 responders (7.9%) with placebo, resulting in a
+common risk difference of 20% (95% CI: 10.92 to 29.08 with a p-value of 0.0002). RBC-TI of 12
+weeks (weeks 1-48) had 51 responders (33.3%) on luspatercept compared to 9 (11.8%) on placebo.
+The common risk difference was 21.37% ( 95% CI: 11.23 to 31.51 with the p-value at 0.0003).
+
+
+Only limited data are available for the group with transfusion burden of ≥ 8 units/8 weeks. Efficacy has
+not been established in patients with a transfusion burden of > 12 units/8 weeks.
+
+
+
+
+                                                                                                   23 / 32
+                                                        Information for healthcare professionals
+
+Transfusion dependent β-thalassaemia
+The efficacy and safety of luspatercept were evaluated in a Phase 3 multicentre, randomised,
+doubleblind, placebo-controlled study BELIEVE (ACE-536-BTHAL-001) in adult patients with
+transfusiondependent −thalassaemia–associated anaemia who require RBC transfusions (6-
+20 RBC units/24 weeks) with no transfusion-free period > 35 days during that period.
+
+
+Patients in both the luspatercept and placebo arms were treated for at least 48 and up to 96 weeks.
+After unblinding, placebo patients were able to cross-over to luspatercept.
+
+
+A total of 336 adult patients were randomised to receive luspatercept 1 mg/kg (N=224) or placebo
+(N=112) subcutaneously every 3 weeks. Dose titration to 1.25 mg/kg was allowed. Dose could be
+delayed or reduced depending upon Hb level. All patients were eligible to receive BSC, which
+included RBC transfusions, iron-chelating agents, use of antibiotic, antiviral and antifungal therapy,
+and nutritional support, as needed. The study excluded patients with Hb S/β-thalassaemia or alpha
+(α)-thalassaemia or who had major organ damage (liver disease, heart disease, lung disease, renal
+insufficiency). Patients with recent DVT or stroke or recent use of ESA, immunosuppressant or
+hydroxyurea therapy were also excluded.
+
+
+The median age was 30 years (range: 18-66). The trial was comprised of patients who were 42%
+male, 54.2% White, 34.8% Asian, and 0.3% Black or African American. The percent of patients
+reporting their race as “other” was 7.7%, and race was not collected or reported for 3% of patients.
+Disease characteristics included pretransfusion Hb thresholds during a 12-week run-in period, with
+median Hb values of 9.30 g/dL (range: 4.6-11.4) in the luspatercept cohort and 9.14 g/dL (range: 6.2-
+11.5) in the placebo cohort. The baseline transfusion burden over 12 weeks showed median values of
+6.12 units for the luspatercept group (range 3.0, 14.0) and 6.27 units for the placebo group (range
+3.0-12.0). In the luspatercept cohort 77.7% were diagnosed with β-thalassemia, 13.8% had HbE/β-
+thalassemia, 8% had β-thalassemia combined with α-thalassemia and for 0.4% diagnostic information
+was missing. In the placebo group 74.1% were diagnosed with β-thalassemia, 18.8% had HbE/β-
+thalassemia, and 7.1% had β-thalassemia combined with α-thalassemia.
+
+
+Regarding β-thalassemia gene mutation groupings in the luspatercept cohort, β0/β0 mutations were
+present in 30.4% of patients, non-β0/β0 mutations in 69.2%. In the placebo cohort, 31.3% had β0/β0
+mutations, 68.8% non-β0/β0 mutations.
+
+
+
+
+The efficacy of Reblozyl in adult patients with β-thalassemia was established based upon the
+proportion of patients achieving RBC transfusion burden reduction (≥33% reduction from baseline)
+
+
+                                                                                                    24 / 32
+                                                         Information for healthcare professionals
+
+with a reduction of at least 2 units from Week 13 to Week 24. In the luspatercept group, 21.0% (47 /
+224) of patients achieved this reduction, compared to 4.5% (5 / 112) in the placebo group. The
+difference in proportions was calculated as 16.5 (95% CI: 10.0 to 23.1) with a p-value of less than
+0.0001. A total of 77.2% of luspatercept treated patients achieved ≥ 33% reduction in RBC transfusion
+burden from baseline during any rolling 12-week interval, compared with 34.8% of subjects in the
+placebo treated group (nominal p < 0.0001).
+Furthermore, a total of 50.0% of luspatercept treated patients achieved ≥ 50% reduction in RBC
+transfusion burden from baseline during any rolling 12-week interval, compared with 8.0% of subjects
+in the placebo treated patients (nominal p < 0.0001).
+
+
+Paediatric population
+
+Myelodysplastic syndromes
+Swissmedic has waived the obligation to submit the results of studies with Reblozyl in all subsets of
+the paediatric population in myelodysplastic syndromes (see “Dosage/Administration” for information
+on paediatric use).
+
+
+β-thalassaemia
+Swissmedic has deferred the obligation to submit the results of studies with Reblozyl in one or more
+subsets of paediatric population older than 6 years of age in -thalassaemia (see
+“Dosage/Administration” for information on paediatric use).
+
+
+Pharmacokinetics
+
+Absorption
+
+In healthy volunteers and patients, luspatercept is slowly absorbed following subcutaneous
+administration, with the Cmax in serum often observed approximately 7 days post-dose across all dose
+levels. Population pharmacokinetic (PK) analysis suggests that the absorption of luspatercept into the
+circulation is linear over the range of studied doses, and the absorption is not significantly affected by
+the subcutaneous injection location (upper arm, thigh or abdomen). Interindividual variability in AUC
+was approximately 37% in both -thalassaemia and MDS patients.
+
+
+
+Distribution
+
+At the recommended doses, the geometric mean apparent volume of distribution was 9.56 L for MDS
+patients and 7.26 L for -thalassaemia patients. The small volume of distribution indicates that
+luspatercept is confined primarily in extracellular fluids, consistent with its large molecular mass.
+
+
+
+                                                                                                        25 / 32
+                                                         Information for healthcare professionals
+
+Metabolism
+
+Luspatercept is expected to be catabolised into amino acids by general protein degradation process.
+
+
+Elimination
+
+Luspatercept is not expected to be excreted into urine due to its large molecular mass that is above
+the glomerular filtration size exclusion threshold. At the recommended doses, the geometric mean
+apparent total clearance was 0.47 L/day for MDS patients and 0.44 L/day for β-thalassaemia. The
+geometric mean half-lives in serum were approximately 14.1 days for MDS patients and 11 days for
+-thalassaemia patients.
+
+
+
+Linearity/non-linearity
+
+The increase of luspatercept Cmax and AUC in serum is approximately proportional to increases in
+dose from 0.125 to 1.75 mg/kg. Luspatercept clearance was independent of dose or time.
+
+
+When administered every three weeks, luspatercept serum concentration reaches the steady state
+after 3 doses, with an accumulation ratio of approximately 1.5.
+
+
+
+
+Kinetics in specific patient groups
+
+Elderly
+Population PK analysis for luspatercept included patients with ages ranging from 27 to 95 and 18 to
+71 years, for MDS and −thalassaemia patients, respectively, with a median age of 72.5 years for
+MDS patients and of 33 years for -thalassaemia patients. No clinically significant difference in AUC
+or clearance was found across age groups in MDS patients (≤ 64, 65-74, and ≥ 75 years) or in
+−thalassaemia patients (18 to 71 years).
+
+
+Hepatic impairment
+Population PK analysis for luspatercept included patients with normal hepatic function (BIL, ALT, and
+AST ≤ ULN; N=62 for −thalassaemia patients and N=311 for MDS patients), mild hepatic impairment
+(BIL > 1 – 1.5 x ULN, and ALT or AST > ULN; N=89 for −thalassaemia patients and N=126 for MDS
+patients), moderate hepatic impairment (BIL > 1.5 – 3 x ULN, any ALT or AST; N= 157 for
+−thalassaemia patients and N=32 for MDS patients), or severe hepatic impairment (BIL > 3 x ULN,
+any ALT or AST; N=73 for −thalassaemia patients and N=1 for MDS patients) as defined by the
+National Cancer Institute criteria of hepatic dysfunction. Effects of hepatic function categories,
+elevated liver enzymes (ALT or AST, up to 3 x ULN) and elevated total BIL (4 – 246 mol/L) on
+
+                                                                                                     26 / 32
+                                                         Information for healthcare professionals
+
+luspatercept clearance were not observed. No clinically significant difference in mean steady state
+Cmax and AUC was found across hepatic function groups. PK data are insufficient for patients with
+liver enzymes (ALT or AST) ≥ 3 x ULN. No PK data are available for patients with liver cirrhosis
+(Child-Pugh Classes A, B and C) as no dedicated study was performed.
+
+
+Renal impairment
+Population PK analysis for luspatercept included patients with normal renal function (individual eGFR
+≥ 90 mL/min N=302 for −thalassaemia patients and N=169 for MDS patients), mild renal impairment
+(individual eGFR 60 to 89 mL/min; N= 74 −thalassaemia patients and N=204 for MDS patients), or
+moderate renal impairment (individual eGFR 30 to 59 mL/min; N=4 for −thalassaemia patients and
+N=88 for MDS patients) as defined by Modification of Diet in Renal Disease (MDRD) formula.
+Luspatercept steady-state serum exposure (AUC) was 24% to 41% higher in patients with mild to
+moderate renal impairment than in patients with normal renal function. PK data are insufficient for
+patients with severe renal impairment (individual eGFR < 30 mL/min) or end-stage kidney disease.
+
+
+Other intrinsic factors
+The following population characteristics have no clinically significant effect on luspatercept AUC or
+clearance: sex and race (Asian vs. White).
+
+
+The following baseline disease characteristics had no clinically significant effect on luspatercept
+clearance: Serum erythropoietin level (2.4 – 1680 U/L for −thalassaemia patients and 7.80-2920 U/L
+for MDS patients), RBC transfusion burden (0 – 43.4 units/24 weeks), MDS ring sideroblasts,
+β-thalassaemia genotype (β0/β0 vs. non-β0/β0) and splenectomy.
+
+
+The volume of distribution and clearance of luspatercept increased with increase of body weight (33 –
+124 kg), supporting the body weight-based dosing regimen.
+
+
+Preclinical data
+
+Single and repeat-dose toxicity
+
+Following repeated administration of luspatercept in rats, toxicities included: membranoproliferative
+glomerulonephritis; congestion, necrosis and/or mineralisation of the adrenal glands; hepatocellular
+vacuolation and necrosis; mineralisation of the glandular stomach; and decreased heart and lung
+weights with no associated histology findings. A clinical observation of swollen hindlimbs/feet was
+noted in several studies in rats and rabbits (including juvenile and reproductive toxicity studies). In
+one juvenile rat, this correlated histopathologically with new bone formation, fibrosis, and
+inflammation. Membranoproliferative glomerulonephritis was also seen in monkeys. Additional
+
+
+                                                                                                      27 / 32
+                                                          Information for healthcare professionals
+
+toxicities in monkeys included: vascular degeneration and inflammatory infiltrates in the choroid
+plexus.
+
+
+For the 6-month toxicity study, the longest duration study in monkeys, the no-observed-adverse-effect
+level (NOAEL) was 0.3 mg/kg (0.3-fold of clinical exposure at 1.75 mg/kg every 3 weeks). A NOAEL
+was not identified in rats and the lowest-observed-adverse-effect-level (LOAEL) in the rat 3-month
+study was 1 mg/kg (0.9-fold of clinical exposure at 1.75 mg/kg every 3 weeks).
+
+
+Carcinogenesis and mutagenesis
+
+Neither carcinogenicity nor mutagenicity studies with luspatercept have been conducted.
+Haematological malignancies were observed in 3 out of 44 rats examined in the highest dose group
+(10 mg/kg) in the definitive juvenile toxicity study. The occurrence of these tumours in young animals
+is unusual and the relationship to luspatercept therapy cannot be ruled out. At the 10 mg/kg dose, at
+which tumours were observed, the exposure represents an exposure multiple of approximately
+4 times the estimated exposure at a clinical dose of 1.75 mg/kg every three weeks.
+
+
+No other proliferative or pre-neoplastic lesions, attributable to luspatercept, have been observed in
+any species in other non-clinical safety studies conducted with luspatercept, including the 6-month
+study in monkeys.
+
+
+Fertility
+
+In a fertility study in rats, administration of luspatercept to females at doses higher than the currently
+recommended highest human dose reduced the average number of corpora lutea, implantations and
+viable embryos. No such effects were observed when exposure in animals was at 1.5 times the
+clinical exposure. Effects on fertility in female rats were reversible after a 14-week recovery period.
+
+
+Administration of luspatercept to male rats at doses higher than the currently recommended highest
+human dose had no adverse effect on male reproductive organs or on their ability to mate and
+produce viable embryos. The highest dose tested in male rats yielded an exposure approximately
+7 times the clinical exposure.
+
+
+Embryo-foetal development (EFD)
+
+Embryo-foetal developmental toxicology studies (range-finding and definitive studies) were conducted
+in pregnant rats and rabbits. In the definitive studies, doses of up to 30 mg/kg or 40 mg/kg every week
+were administered twice during the period of organogenesis. Luspatercept was a selective
+developmental toxicant (dam not affected; foetus affected) in the rat and a maternal and foetal
+                                                                                                      28 / 32
+                                                        Information for healthcare professionals
+
+developmental toxicant (doe and foetus affected) in the rabbit. Embryofoetal effects were seen in both
+species and included reductions in numbers of live foetuses and foetal body weights, increases in
+resorptions, post-implantation loss and skeletal variations and, in rabbit foetuses, malformations of the
+ribs and vertebrae. In both species, effects of luspatercept were observed in the EFD studies at the
+lowest dose tested, 5 mg/kg, which corresponds to an estimated exposure in rats and rabbits of
+approximately 2.7 and 5.5 times greater, respectively, than the estimated clinical exposure.
+
+
+Pre- and post-natal development
+
+In a pre- and post-natal development study, with dose levels of 3, 10, or 30 mg/kg administered once
+every 2 weeks from gestational day (GD) 6 through post-natal day (PND) 20, adverse findings at all
+doses consisted of lower F1 pup body weights in both sexes at birth, throughout lactation, and post
+weaning (PND 28); lower body weights during the early premating period (Weeks 1 and 2) in the F1
+females (adverse only at the 30 mg/kg/dose) and lower body weights in F1 males during the
+premating, pairing and post-mating periods; and microscopic kidney findings in F1 pups. Additionally,
+non-adverse findings included delayed male sexual maturation at the 10 and 30 mg/kg/dose. The
+delay in growth and the adverse kidney findings, in the F1 generation, precluded the determination of
+a NOAEL for F1 general and developmental toxicity. However, there was no effect on behavioural
+indices, fertility or reproductive parameters at any dose level in either sex, therefore the NOAEL for
+behavioural assessments, fertility and reproductive function in the F1 animals was considered to be
+the 30 mg/kg/dose. Luspatercept is transferred through the placenta of pregnant rats and rabbits and
+is excreted into the milk of lactating rats.
+
+
+Juvenile toxicity
+
+In a study in juvenile rats, luspatercept was administered from postnatal day (PND) 7 to PND 91 at 0,
+1, 3, or 10 mg/kg. Many of the findings seen in repeat-dose toxicity studies in adult rats were repeated
+in the juvenile rats. These findings included glomerulonephritis in the kidney,
+haemorrhage/congestion, necrosis and mineralization of the adrenal gland, mucosal mineralization in
+the stomach, lower heart weights, and swollen hindlimbs/feet. Luspatercept-related findings unique to
+juvenile rats included tubular atrophy/hypoplasia of the kidney inner medulla, delays in the mean age
+of sexual maturation in males, effects on reproductive performance (lower mating indices), and non-
+adverse decreases in bone mineral density in both male and female rats. The effects on reproductive
+performance were observed after a greater than 3-month recovery period, suggesting a permanent
+effect. Although reversibility of the tubular atrophy/hypoplasia was not examined, these effects are
+also considered to be irreversible. Adverse effects on the kidney and reproductive system were
+observed at clinically relevant exposure levels and seen at the lowest dose tested and, thus, a
+NOAEL was not established. In addition, haematological malignancies were observed in 3 out of 44
+
+
+                                                                                                    29 / 32
+                                                           Information for healthcare professionals
+
+rats examined in the highest dose group (10 mg/kg). These findings are all considered potential risks
+in paediatric patients.
+
+
+Other information
+
+Incompatibilities
+
+This medicinal product must not be mixed with other medicinal products except those mentioned in
+section 6.6.
+
+
+Shelf life
+
+Unopened vial:
+Do not use this medicine after the expiry date ("EXP") stated on the container.
+
+
+After reconstitution
+When stored in the original container, chemical and physical in-use stability of the reconstituted
+medicinal product has been demonstrated for up to 8 hours at room temperature (≤ 25°C) or for up to
+24 hours at 2°C -8°C.
+
+
+From a microbiological point of view, the medicinal product should be used immediately. If not used
+immediately, in-use storage times and conditions prior to use are the responsibility of the user and
+should not be longer than 24 hours at 2°C - 8°C.
+
+
+Do not freeze the reconstituted solution.
+
+
+Special precautions for storage
+
+Store in a refrigerator (2°C -8°C).
+Do not freeze.
+Store in the original carton in order to protect from light.
+For storage conditions after reconstitution of the medicinal product, see “Shelf life”.
+
+
+Instructions for handling
+
+Reblozyl must be reconstituted gently prior to administration. Aggressive shaking should be avoided.
+
+
+
+
+                                                                                                     30 / 32
+                                                          Information for healthcare professionals
+
+Reconstitution of the product
+
+Reblozyl is supplied as a lyophilised powder for reconstitution before use. Only water for injections
+(WFI) should be used when reconstituting Reblozyl.
+
+
+The appropriate number of Reblozyl vials should be reconstituted to achieve the desired dose. A
+syringe with appropriate graduations must be used for reconstitution to ensure accurate dose.
+
+
+The following steps should be followed for reconstitution:
+
+
+1.   Remove the coloured cap from the vial and wipe the top with an alcohol wipe.
+
+2.   Reblozyl 25 mg powder for solution for injection
+     Add 0.68 mL WFI into the vial by means of a syringe with appropriate graduations with a needle
+     directing the flow onto the lyophilised powder. Allow to stand for one minute. Each 25 mg single-
+     dose vial will deliver at least 0.5 mL of 50 mg/mL luspatercept.
+
+
+     Reblozyl 75 mg powder for solution for injection
+     Add 1.6 mL WFI into the vial by means of a syringe with appropriate graduations with a needle
+     directing the flow onto the lyophilised powder. Allow to stand for one minute. Each 75 mg single-
+     dose vial will deliver at least 1.5 mL of 50 mg/mL luspatercept.
+
+
+3.    Discard the needle and syringe used for reconstitution. Do not use them for subcutaneous
+      injection.
+4.    Gently swirl the vial in a circular motion for 30 seconds. Stop swirling and let the vial sit in an
+      upright position for 30 seconds.
+5.    Inspect the vial for undissolved powder in the solution. If undissolved powder is observed,
+      repeat step 4 until the powder is completely dissolved.
+6.    Invert the vial and gently swirl in an inverted position for 30 seconds. Bring the vial back to the
+      upright position and let it sit for 30 seconds.
+7.    Repeat step 6 seven more times to ensure complete reconstitution of material on the sides of
+      the vial.
+8.    Visually inspect the reconstituted solution prior to administration. When properly mixed,
+      Reblozyl reconstituted solution is a colourless to slightly yellow, clear to slightly opalescent
+      solution which is free of visible foreign particulate matter. Do not use if undissolved product or
+      foreign particulate matter is observed.
+9.    If the reconstituted solution is not used immediately, see “shelf life” for storage conditions.
+
+
+
+
+                                                                                                         31 / 32
+                                                        Information for healthcare professionals
+
+Any unused medicinal product or waste material should be disposed of in accordance with local
+requirements.
+
+
+Authorisation number
+
+69’592 (Swissmedic).
+
+
+Packs
+
+Reblozyl 25 mg powder for solution for injection: 1 vial (A)
+Reblozyl 75 mg powder for solution for injection: 1 vial (A)
+
+
+Marketing authorisation holder
+
+Bristol-Myers Squibb SA, Steinhausen
+
+
+Date of revision of the text
+
+October 2025
+
+
+
+
+                                                                                                32 / 32
+

@@ -1,0 +1,7 @@
+{
+  "title": "Consent Order — UBS Financial Services Inc.",
+  "citation": "91 FR 99999",
+  "html_url": "https://www.federalregister.gov/documents/2026/08/03/2026-99999/fincen-ubs",
+  "raw_text": "Federal Register raw_text dump of a FinCEN matter. This is not the official fincen.gov consent-order PDF TEXT. Number 2026-02 appears only as an index token.",
+  "full_text": "more FR unique phrases that are not the sold FinCEN order body"
+}

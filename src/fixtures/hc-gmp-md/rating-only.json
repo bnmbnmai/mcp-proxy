@@ -1,0 +1,17 @@
+{
+  "establishmentName": "Example Device Inc",
+  "insOutcomeList": [
+    "Inspection resulted in a Compliant rating."
+  ],
+  "insStartDate": "/Date(1776096000000-0400)/",
+  "insType": "Domestic - Regular - Onsite",
+  "insepctionNumber": 1,
+  "measureTakenList": [
+    "No further action required."
+  ],
+  "rating": "Compliant",
+  "ratingDesc": null,
+  "referenceNumber": "000000",
+  "reportCard": true,
+  "data": []
+}

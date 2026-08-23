@@ -1,0 +1,686 @@
+                             Docket No.             FILED:                          Regional Hearing Clerk, U.S. EPA Region
+
+
+
+
+                                                                        Dec 09, 2025
+Suzanne Andrews
+                                                                         12:45 pm
+Regional Counsel
+                                                                     U.S. EPA REGION IX
+                                                                      HEARING CLERK
+Catherine Schluter
+Assistant Regional Counsel (ORC-2-1)
+United States Environmental Protection Agency, Region IX
+75 Hawthorne Street
+San Francisco, CA 94105
+(415) 972-3911
+schluter.catherine@epa.gov
+
+                      UNITED STATES ENVIRONMENTAL PROTECTION AGENCY
+                                          REGION IX
+                                    75 HAWTHORNE STREET
+                               SAN FRANCISCO, CALIFORNIA 94105
+
+____________________________________
+                                    )
+In the Matter of:                   )
+                                    )                        Docket No. FIFRA-09-2026-0020
+Garden Grove Superstore Inc.        )
+                                    )                        CONSENT AGREEMENT AND
+                                    )                        FINAL ORDER PURSUANT TO
+                                    )                        40 C.F.R. §§ 22.13 AND 22.18
+      Respondent.                   )
+____________________________________)
+
+
+                                          l. CONSENT AGREEMENT
+
+
+       The United States Environmental Protection Agency, Region IX (“EPA”), and Garden
+
+Grove Superstore Inc. (“Respondent”) agree to settle this matter and consent to the entry of
+
+this Consent Agreement and Final Order (“CAFO”), which simultaneously commences and
+
+concludes this matter in accordance with 40 C.F.R. §§ 22.13 and 22.18.
+
+                                          A. AUTHORITY AND PARTIES
+
+1.     This proceeding is a civil administrative action brought pursuant to Section 14(a)(1) of
+
+the Federal Insecticide, Fungicide, and Rodenticide Act (“FIFRA” or “the Act”), 7 U.S.C. §
+                    In the Matter of Garden Grove Superstore Inc., FIFRA-09-2026-0020
+                                               Page 1 of 16
+136l(a)(1), for the assessment of a civil administrative penalty against Respondent for violations
+
+of Section 12 of the Act, 7 U.S.C. § 136j.
+
+2.     Complainant is the Manager of the Toxics Section of the Enforcement and Compliance
+
+Assurance Division, EPA Region IX, who has been duly delegated the authority to bring this
+
+action and to sign a consent agreement settling this action.
+
+3.     Respondent is a California corporation whose headquarters is located at 13861
+
+Brookhurst Street in Garden Grove, California 92843.
+
+                     B.   STATUTORY AND REGULATORY BACKGROUND
+
+4.     Section 2(s) of FIFRA, 7 U.S.C. § 136(s), provides that “person” means “any individual,
+
+partnership, association, corporation, or any organized group of persons whether incorporated
+
+or not.”
+
+5.     Section 2(t) of FIFRA, 7 U.S.C. § 136(t), provides that “pest” means “(1) any insect,
+
+rodent, nematode, fungus, weed, or (2) any other form of terrestrial or aquatic plant or animal
+
+life or virus, bacteria, or other micro-organism (except viruses, bacteria, or other living micro-
+
+organisms on or in living man or other living animals) which the Administrator declares to be a
+
+pest under section [25(c)(1) of FIFRA, 7 U.S.C. § 136w(c)(1)].”
+
+6.     Section 2(u) of FIFRA, 7 U.S.C. § 136(u), provides that “pesticide” means, in part, “any
+
+substance or mixture of substances intended for preventing, destroying, repelling, or mitigating
+
+any pest.”
+
+7.     40 C.F.R. § 152.15 provides, in part, that a “pesticide is any substance (or mixture of
+
+substances) intended for a pesticidal purpose” and that a “substance is considered to be
+
+intended for a pesticidal purpose, and thus to be a pesticide requiring registration, if: (a) The
+
+                 In the Matter of Garden Grove Superstore Inc., FIFRA-09-2026-0020
+                                            Page 2 of 16
+person who distributes or sells the substance claims, states, or implies (by labeling or
+
+otherwise): (1) That the substance (either by itself or in combination with any other substance)
+
+can or should be used as a pesticide…or (c) The person who distributes or sells the substance
+
+has actual or constructive knowledge that the substance will be used, or is intended to be used,
+
+for a pesticidal purpose.”
+
+8.      Section 2(mm)(1)(A)(i) of FIFRA, 7 U.S.C. § 136(mm)(1)(A)(i), provides that “antimicrobial
+
+pesticide” means, in part, “a pesticide that is intended to disinfect, sanitize, reduce or mitigate
+
+growth or development of microbial organisms.”
+
+9.      Section 2(p)(1) of FIFRA, 7 U.S.C. § 136(p)(1), provides that “label” means “the written,
+
+printed, or graphic matter on, or attached to, the pesticide or device or any of its containers or
+
+wrappers.”
+
+10.     Section 2(p)(2)(A) of FIFRA, 7 U.S.C. § 136(p)(2)(A), provides that “labeling” means, in
+
+part, “all labels and all other written, printed, or graphic matter…accompanying the pesticide or
+
+device at any time.”
+
+11.     Section 2(gg) of FIFRA, 7 U.S.C. § 136(gg), provides that “to distribute or sell” means “to
+
+distribute, sell, offer for sale, hold for distribution, hold for sale, hold for shipment, ship, deliver
+
+for shipment, release for shipment, or receive and (having so received) deliver or offer to
+
+deliver.”
+
+12.     Section 3(a) of FIFRA, 7 U.S.C. § 136a(a), provides that no person in any State may
+
+distribute or sell to any person any pesticide that is not registered under the Act.
+
+
+
+
+                  In the Matter of Garden Grove Superstore Inc., FIFRA-09-2026-0020
+                                             Page 3 of 16
+13.    Section 12(a)(1)(A) of FIFRA, 7 U.S.C. § 136j(a)(1)(A), provides that it shall be unlawful
+
+for any person to distribute or sell to any person a pesticide that is not registered with EPA
+
+under Section 3 of FIFRA, 7 U.S.C. § 136a.
+
+14.    The Administrator of EPA may assess a civil penalty of up to $24,885 against any
+
+registrant, commercial applicator, wholesaler, dealer, retailer, or other distributor who violates
+
+any provision of FIFRA for each offense that occurred after November 2, 2015, and is assessed
+
+on or after January 8, 2025. See Section 14(a)(1) of FIFRA, 7 U.S.C. § 136l(a)(1), as amended by
+
+the Civil Monetary Penalty Inflation Adjustment Rule at 40 C.F.R. Part 19 (90 Fed. Reg. 1375).
+
+                                    C. ALLEGED VIOLATIONS
+
+15.    At all times relevant to this CAFO, Respondent was a corporation and therefore a
+
+“person,” as that term is defined by Section 2(s) of FIFRA, 7 U.S.C. § 136(s).
+
+16.    At all times relevant to this CAFO, Respondent owned, operated or otherwise controlled
+
+a retail store located at 13861 Brookhurst Street in Garden Grove, California 92843 (“the Retail
+
+Store”).
+
+17.    As a retailer and by doing business in the United States, Respondent is subject to the
+
+requirements of FIFRA and its implementing regulations.
+
+Home Formation All Purpose Cleaner
+
+18.    On or about August 21, 2023, Respondent offered for sale the product, “Home
+
+Formation All Purpose Cleaner,” at the Retail Store.
+
+19.    In March 2023, June 2023, and August 2023, Respondent sold the product, “Home
+
+Formation All Purpose Cleaner,” at the Retail Store in at least three (3) transactions.
+
+
+
+                 In the Matter of Garden Grove Superstore Inc., FIFRA-09-2026-0020
+                                            Page 4 of 16
+20.      The label on the product, “Home Formation All Purpose Cleaner,” contained the
+
+following claim: “This product kills the following: Salmonella enterica, Escherichia coli,
+
+Staphyloccocus aureus, *Influenza A Virus, *Herpes Simplex Virus 2,” “to disinfect,” and “to
+
+deodorize and sanitize non-food contact surfaces.”
+
+21.      Based on the claim on its label, the product, “Home Formation All Purpose Cleaner,” is a
+
+“pesticide” pursuant to Section 2(u) of FIFRA, 7 U.S.C. § 136(u), and 40 C.F.R. § 152.15, and
+
+specifically an “antimicrobial pesticide” pursuant to section 2(mm)(1)(A)(i) of FIFRA, 7 U.S.C. §
+
+136(mm)(1)(A)(i).
+
+22.      Thus, from March 2023 to August 2023, Respondent “distributed or sold” the pesticide,
+
+“Home Formation All Purpose Cleaner,” at the Retail Store, as defined by Section 2(gg) of FIFRA,
+
+7 U.S.C. § 136(gg).
+
+23.      At all times relevant to this CAFO, the pesticide, “Home Formation All Purpose Cleaner,”
+
+was not registered with EPA under Section 3 of FIFRA, 7 U.S.C. § 136a.
+
+24.      Consequently, Respondent’s distributions or sales of the pesticide, “Home Formation All
+
+Purpose Cleaner,” from March 2023 to August 2023 constitute four (4) violations of Section
+
+12(a)(1)(A) of FIFRA, 7 U.S.C. § 136j(a)(1)(A), which provides that it is unlawful for any person to
+
+distribute or sell to any person a pesticide which is not registered with EPA under Section 3 of
+
+FIFRA.
+
+“Love My Carpet” Carpet & Fabric Deodorizer
+
+25.      On or about August 21, 2023, Respondent offered for sale the product, ““Love My
+
+Carpet” Carpet & Fabric Deodorizer,” at the Retail Store.
+
+
+
+                  In the Matter of Garden Grove Superstore Inc., FIFRA-09-2026-0020
+                                             Page 5 of 16
+26.    In December 2022, April 2023, and July 2023, Respondent sold the product, ““Love My
+
+Carpet” Carpet & Fabric Deodorizer,” at the Retail Store in at least three (3) transactions.
+
+27.    The labeling on the product, ““Love My Carpet” Carpet & Fabric Deodorizer,” contained
+
+the following claims: “Kills 99.9% of bacteria” and “Antibacterial.”
+
+28.    Based on the claims on its labeling, the product, ““Love My Carpet” Carpet & Fabric
+
+Deodorizer,” is a “pesticide” pursuant to Section 2(u) of FIFRA, 7 U.S.C. § 136(u), and 40 C.F.R. §
+
+152.15.
+
+29.    Thus, from December 2022 to on or about August 21, 2023, Respondent “distributed or
+
+sold” the pesticide, ““Love My Carpet” Carpet & Fabric Deodorizer,” at the Retail Store, as
+
+defined by Section 2(gg) of FIFRA, 7 U.S.C. § 136(gg).
+
+30.    At all times relevant to this CAFO, the pesticide, ““Love My Carpet” Carpet & Fabric
+
+Deodorizer,” was not registered with EPA under Section 3 of FIFRA, 7 U.S.C. § 136a.
+
+31.    Consequently, Respondent’s distributions or sales of the pesticide, ““Love My Carpet”
+
+Carpet & Fabric Deodorizer,” from December 2022 to on or about August 21, 2023 constitute
+
+four (4) violations of Section 12(a)(1)(A) of FIFRA, 7 U.S.C. § 136j(a)(1)(A), which provides that it
+
+is unlawful for any person to distribute or sell to any person a pesticide which is not registered
+
+with EPA under Section 3 of FIFRA.
+
+Cif All-Purpose Cleaner
+
+31.    On or about August 21, 2023, Respondent offered for sale the product, “Cif All-Purpose
+
+Cleaner,” at the Retail Store.
+
+32.    In April 2023, May 2023, and August 2023, Respondent sold the product, “Cif All-
+
+Purpose Cleaner,” at the Retail Store in at least three (3) transactions.
+
+                 In the Matter of Garden Grove Superstore Inc., FIFRA-09-2026-0020
+                                            Page 6 of 16
+33.    The label on the product, “Cif All-Purpose Cleaner,” contained the following claims:
+
+“Sanitizes surfaces with anti-bac action,” “For Anti-Bacterial Action,” and “Spray, leave for 30s
+
+& wipe for disinfection.”
+
+34.    Based on the claims on its label, the product, “Cif All-Purpose Cleaner,” is a “pesticide”
+
+pursuant to Section 2(u) of FIFRA, 7 U.S.C. § 136(u), and 40 C.F.R. § 152.15, and specifically an
+
+“antimicrobial pesticide” pursuant to section 2(mm)(1)(A)(i) of FIFRA, 7 U.S.C. §
+
+136(mm)(1)(A)(i).
+
+35.    Thus, from April 2023 to August 2023, Respondent “distributed or sold” the pesticide,
+
+“Cif All-Purpose Cleaner,” at the Retail Store, as defined by Section 2(gg) of FIFRA, 7 U.S.C. §
+
+136(gg).
+
+36.    At all times relevant to this CAFO, the pesticide, “Cif All-Purpose Cleaner” was not
+
+registered with EPA under Section 3 of FIFRA, 7 U.S.C. § 136a.
+
+37.    Consequently, Respondent’s distributions or sales of the pesticide, “Cif All-Purpose
+
+Cleaner” from April 2023 to August 2023 constitute four (4) violations of Section 12(a)(1)(A) of
+
+FIFRA, 7 U.S.C. § 136j(a)(1)(A), which provides that it is unlawful for any person to distribute or
+
+sell to any person a pesticide which is not registered with EPA under Section 3 of FIFRA.
+
+                                    D. RESPONDENT’S ADMISSIONS
+
+38.    In accordance with 40 C.F.R. § 22.18(b)(2) and for the purpose of this proceeding,
+
+Respondent (i) admits that EPA has jurisdiction over the subject matter of this CAFO and over
+
+Respondent; (ii) neither admits nor denies the specific factual allegations contained in Section
+
+I.C of the CAFO; (iii) consents to any and all conditions specified in this CAFO and to the
+
+assessment of the civil administrative penalty under Section I.E of the CAFO; (iv) waives any
+
+                 In the Matter of Garden Grove Superstore Inc., FIFRA-09-2026-0020
+                                            Page 7 of 16
+right to contest the allegations contained in Section I.C of the CAFO; and (v) waives the right to
+
+appeal the final order contained in the CAFO. By signing this consent agreement, Respondent
+
+waives any rights or defenses that Respondent has or may have for this matter to be resolved in
+
+federal court, including but not limited to any right to a jury trial, and waives any right to
+
+challenge the lawfulness of the final order accompanying this consent agreement.
+
+                                     E. CIVIL ADMINISTRATIVE PENALTY
+
+39.    Respondent agrees to pay a civil penalty in the amount of FIFTY-SEVEN THOUSAND FIVE
+
+HUNDRED DOLLARS ($57,500) (“Assessed Penalty”) as final settlement of the civil claims against
+
+Respondent arising under the Act as alleged in Section I.C. of the CAFO. Respondent shall pay
+
+the Assessed Penalty within thirty (30) days after the date of the final order ratifying this
+
+consent agreement is filed with the Regional Hearing Clerk (“Filing Date”).
+
+40.    Respondent shall pay the Assessed Penalty and any interest, fees, and other charges due
+
+using any method, or combination of appropriate methods, as provided on the EPA website:
+
+https://www.epa.gov/financial/makepayment. For additional instructions see:
+
+https://www.epa.gov/financial/additional-instructions-making-payments-epa.
+
+41.    When making a payment, Respondent shall:
+
+       a. Identify each payment with Respondent’s name and the docket number of this
+
+           Agreement, FIFRA-09-2026-0020,
+
+       b. Concurrent with each payment or within 24 hours of the payment, Respondent shall
+
+           provide proof of such payment to the following addressees:
+
+               Regional Hearing Clerk
+               U.S. Environmental Protection Agency, Region IX
+               R9HearingClerk@epa.gov
+
+                  In the Matter of Garden Grove Superstore Inc., FIFRA-09-2026-0020
+                                             Page 8 of 16
+               Emily Benayoun
+               Enforcement and Compliance Assurance Division (ENF-2-3)
+               U.S. Environmental Protection Agency, Region IX
+               benayoun.emily@epa.gov
+
+               and
+
+               Cincinnati Finance Division
+               U.S. Environmental Protection Agency
+               CINWD_AcctsReceivable@epa.gov
+
+
+               “Proof of payment” means, as applicable, confirmation of credit card or debit
+
+               card payment, or confirmation of wire or automated clearinghouse transfer, and
+
+               any other information required to demonstrate that payment has been made
+
+               according to EPA requirements, in the amount due, and identified with the
+
+               appropriate docket number and Respondent’s name.
+
+       c. If Respondent fails to pay the Assessed Penalty by the deadline specified in
+
+           Paragraph 39, then Respondent also shall pay to EPA a stipulated penalty of ONE
+
+           HUNDRED FIFTY DOLLARS ($150.00) per day for each day that payment is late, in
+
+           addition to the Assessed Penalty. Stipulated penalties shall accrue until the Assessed
+
+           Penalty and all accrued stipulated penalties are paid and shall become due and
+
+           payable upon EPA’s written request.
+
+42.    Interest Charges and Penalties on Late Payments. Pursuant to 31 U.S.C. § 3717, 31 C.F.R.
+
+§ 901.9, and 40 C.F.R. § 13.11, interest, penalties charges, and administrative costs will be
+
+assessed against the outstanding amount that Respondent owes to EPA for Respondent's
+
+failure to timely pay any portion of the Assessed Penalty pursuant to this CAFO. The entire
+
+
+
+                 In the Matter of Garden Grove Superstore Inc., FIFRA-09-2026-0020
+                                            Page 9 of 16
+unpaid balance of the Assessed Penalty and all accrued interest shall become immediately due
+
+and owing and EPA is authorized to recover the following amounts:
+
+       Interest. Interest begins to accrue from the Filing Date. If the Assessed Penalty is paid in
+
+       full within thirty (30) days, interest accrued is waived. If the Assessed Penalty is not paid
+
+       in full within thirty (30) days, interest will continue to accrue until any unpaid portion of
+
+       the Assessed Penalty as well as any interest, penalties, and other charges are paid in full.
+
+       Interest will be assessed at an annual rate that is equal to the rate of current value of
+
+       funds to the United States Treasury (i.e., the Treasury tax and loan account rate) as
+
+       prescribed and published by the Secretary of the Treasury in the Federal Register and
+
+       the Treasury Fiscal Requirements Manual Bulletins. 40 C.F.R. §13.11(a)(1).
+
+       Handling Charges. Respondent will be assessed monthly a charge to cover EPA’s costs of
+
+       processing and handling overdue debts. Administrative costs for handling and collecting
+
+       Respondent's overdue debt will be based on either actual or average cost incurred and
+
+       will include both direct and indirect costs. 40 C.F.R. §13.11(b).
+
+       Late Payment Penalty. A late payment penalty of six percent (6%) per annum, will be
+
+       assessed monthly on all debts, including any unpaid portion of the Assessed Penalty,
+
+       interest, penalties, and other charges, that remain delinquent more than ninety (90)
+
+       days.
+
+43.    Late Penalty Action. In addition to the amounts described in the prior Paragraph, if
+
+Respondent fails to timely pay any portion of the Assessed Penalty, interest, or other charges
+
+and penalties pursuant to this CAFO, EPA may take additional actions, which include, but are
+
+not limited to, the following:
+
+                 In the Matter of Garden Grove Superstore Inc., FIFRA-09-2026-0020
+                                           Page 10 of 16
+       a. Referral of the debt to a credit reporting agency or a collection agency. 40 C.F.R. §§
+
+           13.13 and 13.14.
+
+       b. Collection of the debt by administrative offset (i.e., the withholding of money
+
+           payable by the United States government to, or held by the United States
+
+           government for, a person to satisfy the debt the person owes the United States
+
+           government), which includes, but is not limited to, referral to the Internal Revenue
+
+           Service for offset against income tax refunds. 40 C.F.R. Part 13, Subparts C and H.
+
+       c. Suspension or revocation of Respondent’s licenses or other privileges or suspension
+
+           or disqualification of Respondent from doing business with EPA or engaging in
+
+           programs EPA sponsors or funds. 40 C.F.R. § 13.17.
+
+       d. Refer that the Attorney General bring a civil action in the appropriate district court
+
+           to recover the amount outstanding pursuant to 7 U.S.C.§ 136l(a)(5).
+
+44.    Allocation of Payments. Pursuant to 31 C.F.R. § 901.9(f) and 40 C.F.R. § 13.11(d), a
+
+partial payment of debt will be applied first to outstanding handling charges, second to late
+
+penalty charges, third to accrued interest, and last to the principal that is the outstanding
+
+Assessed Penalty amount.
+
+45.    Tax Treatment of Penalties. Penalties, interest, and other charges paid pursuant to this
+
+Agreement shall not be used by Respondent or any other person as a tax deduction from
+
+Respondent’s federal, state, or local taxes.
+
+                                       F. TAX REPORTING
+
+46.    Pursuant to 26 U.S.C. § 6050X and 26 C.F.R. § 1.6050X-1, EPA is required to annually
+
+send to the Internal Revenue Service (“IRS”) a completed IRS Form 1098-F (“Fines, Penalties,
+
+                 In the Matter of Garden Grove Superstore Inc., FIFRA-09-2026-0020
+                                           Page 11 of 16
+and Other Amounts”) with respect to any court order or settlement agreement (including
+
+administrative settlements) that require a payor to pay an aggregate amount that EPA
+
+reasonably believes will be equal to, or in excess of, $50,000 for the payor’s violation of any law
+
+or the investigation or inquiry into the payor’s potential violation of any law, including amounts
+
+paid for “restitution or remediation of property” or to come “into compliance with a law.” EPA
+
+is further required to furnish a written statement, which provides the same information
+
+provided to the IRS, to each payor (i.e., a copy of IRS Form 1098-F). Respondent’s failure to
+
+comply with providing IRS Form W-9 or Tax Identification Number (“TIN”), as described below,
+
+may subject Respondent to a penalty, per 26 U.S.C. § 6723, 26 U.S.C. § 6724(d)(3), and 26 C.F.R.
+
+§ 301.6723-1. To provide EPA with sufficient information to enable it to fulfill these obligations,
+
+Respondent shall complete the following actions as applicable.
+
+
+           a. Respondent shall complete an IRS Form W-9 (“Request for Taxpayer
+
+               Identification Number and Certification”), which is available at
+
+               https://www.irs.gov/pub/irs-pdf/fw9.pdf.
+
+           b. Respondent shall therein certify that its completed IRS Form W-9 includes
+
+               Respondent’s correct TIN or that Respondent has applied and is waiting for
+
+               issuance of a TIN.
+
+           c. Respondent shall email its completed Form W-9 to EPA’s Cincinnati Finance
+
+               Division at sherrer.dana@epa.gov, on or before the date that Respondent’s
+
+               penalty payment is due, pursuant to Paragraph 39, of the CAFO, or within 7 days
+
+               should the order become effective between December 15 and December 31 of
+
+
+
+                 In the Matter of Garden Grove Superstore Inc., FIFRA-09-2026-0020
+                                           Page 12 of 16
+                the calendar year. EPA recommends encrypting IRS Form W-9 email
+
+                correspondence.
+
+            d. In the event that Respondent has certified in its completed IRS Form W-9 that it
+
+                does not yet have a TIN but has applied for a TIN, Respondent shall provide EPA’s
+
+                Cincinnati Finance Division with Respondent’s TIN, via email, within five (5) days
+
+                of Respondent’s receipt of a TIN issued by the IRS.
+
+
+                                      G. CERTIFICATION OF COMPLIANCE
+
+47.     In executing this CAFO, Respondent certifies that, to the best of its knowledge, it is
+
+currently in compliance with any FIFRA requirements that may apply to its ongoing operations.
+
+                                      H. RETENTION OF RIGHTS
+
+48.     In accordance with 40 C.F.R. § 22.18(c), this CAFO only resolves Respondent's liability for
+
+federal civil penalties for the violations and facts specifically alleged in Section I.C of
+
+the CAFO. Nothing in this CAFO is intended to or shall be construed to resolve (i) any civil
+
+liability for violations of any provision of any federal, state, or local law, statute, regulation,
+
+rule, ordinance, or permit not specifically alleged in Section I.C of the CAFO; or (ii) any criminal
+
+liability. EPA specifically reserves any and all authorities, rights, and remedies available to it
+
+(including, but not limited to, injunctive or other equitable relief or criminal sanctions) to
+
+address any violation of this CAFO or any violation not specifically alleged in Section I.C of the
+
+CAFO.
+
+49.     This CAFO does not exempt, relieve, modify, or affect in any way Respondent's duty to
+
+comply with all applicable federal, state, and local laws, regulations, rules, ordinances, and
+
+permits.
+                  In the Matter of Garden Grove Superstore Inc., FIFRA-09-2026-0020
+                                            Page 13 of 16
+FOR COMPLAINANT, EPA REGION IX:
+
+
+__         __________             ____________________________________
+DATE                              Matt Salazar, PE
+                                  Manager, Toxics Section
+                                  Enforcement and Compliance Assurance Division
+                                  U.S. Environmental Protection Agency, Region IX
+
+
+
+
+              In the Matter of Garden Grove Superstore Inc., FIFRA-09-2026-0020
+                                        Page 15 of 16
+Consent Agreement and Final Order
+In the Matter of: Garden Grove Superstore Inc.
+Docket No. FIFRA-09-2026-0020
+
+                                       II. FINAL ORDER
+
+
+       Complainant and Respondent, Garden Grove Superstore Inc., having entered into the
+
+foregoing Consent Agreement,
+
+       It Is Hereby Ordered that this Consent Agreement and Final Order (EPA Docket No.
+
+FIFRA-09-2026-0020) be entered, and that Respondent shall pay a civil penalty in the amount of
+
+FIFTY-SEVEN THOUSAND FIVE HUNDRED DOLLARS ($57,500) and comply with the terms and
+
+conditions set forth in this Consent Agreement.
+
+                                                 Digitally signed by
+                                    Beatrice     Beatrice Wong
+                                                 Date: 2025.12.09
+                                    Wong
+                                    ______________________
+                                                 12:21:48 -08'00'
+
+
+                                    Beatrice Wong
+                                    Regional Judicial Officer
+                                    U.S. EPA, Region IX
+
+
+
+
+                In the Matter of Garden Grove Superstore Inc., FIFRA-09-2026-0020
+                                          Page 16 of 16
+                                   CERTIFICATE OF SERVICE
+
+I certify that the original of the fully executed Consent Agreement and Final Order in the matter
+of Garden Grove Superstore, Inc. (Docket No. FIFRA-09-2026-0020), (Docket No. FIFRA-09-2026-
+0020) was filed with Regional Hearing Clerk, U.S. EPA, Region IX, 75 Hawthorne Street, San
+Francisco, CA 94105, and that a true and correct copy of the same was served on the parties,
+via electronic mail, as indicated below:
+RESPONDENT:                  Kirk Downing
+                             9454 Wilshire Boulevard, Suite 600
+                             Beverly Hills, CA 90212
+                             Kirk@downinglaw.us
+
+COMPLAINANT:                 Catherine Schluter
+                             Assistant Regional Counsel
+                             U.S. EPA – Region IX
+                             Air & Toxics Section I (ORC-2-1)
+                             75 Hawthorne Street
+                             San Francisco, CA 94105
+                             Schluter.Catherine@epa.gov
+
+                                                            Digitally signed by
+
+                                            PONLY TU PONLY   TU
+                                                     Date: 2025.12.09
+                                                            12:46:55 -08'00'
+
+                                            Ponly Tu
+                                            Regional Hearing Clerk
+                                            U.S. EPA – Region IX
+

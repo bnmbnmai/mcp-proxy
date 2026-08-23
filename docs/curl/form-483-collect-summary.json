@@ -1,0 +1,318 @@
+{
+  "source": "https://www.fda.gov/about-fda/office-inspections-and-investigations/oii-foia-electronic-reading-room",
+  "listingJson": "https://www.fda.gov/datatables-json/ora-foia-reading.json?_format=json",
+  "liveManifest": "https://ticks.bnm.farm/form-483/manifest.json",
+  "fetchedAt": "2026-08-19T00:15:49.141Z",
+  "asOf": "2026-02-03",
+  "officialListed483Pdfs": 2120,
+  "liveBodiesBefore": 189,
+  "realBodiesThisCollect": 60,
+  "additionalVsLive": 60,
+  "fetchedPdfsThisPass": 207,
+  "skippedNoText": 147,
+  "skippedKnown": 189,
+  "reused": 0,
+  "note": "Bodies are gitignored (data/form-483/). This file is id/firm/dates only. Image-only / cover-only scans are skipped; text is official pdftotext, not invented. Live ticks.bnm.farm letterCount stays 189 until the media-box worker runs collect and restarts the door.",
+  "additionalBodies": [
+    {
+      "mediaId": "190899",
+      "firm": "US Specialty Formulations LLC",
+      "publishedOn": "2026-02-03"
+    },
+    {
+      "mediaId": "186008",
+      "firm": "Suzhou Suncadia Biopharmaceutical CO., Ltd.",
+      "publishedOn": "2025-03-28"
+    },
+    {
+      "mediaId": "185930",
+      "firm": "Eli Lilly and Company",
+      "publishedOn": "2025-03-24"
+    },
+    {
+      "mediaId": "185939",
+      "firm": "Eli Lilly and Company",
+      "publishedOn": "2025-03-24"
+    },
+    {
+      "mediaId": "185936",
+      "firm": "Bushu Pharmaceuticals Ltd.",
+      "publishedOn": "2025-03-24"
+    },
+    {
+      "mediaId": "185741",
+      "firm": "MedisourceRx",
+      "publishedOn": "2025-03-11"
+    },
+    {
+      "mediaId": "185578",
+      "firm": "Piramal, Piramal Pharma Limited",
+      "publishedOn": "2025-03-06"
+    },
+    {
+      "mediaId": "185699",
+      "firm": "Glenmark Pharmaceuticals Ltd.",
+      "publishedOn": "2025-03-06"
+    },
+    {
+      "mediaId": "185507",
+      "firm": "Zhejiang Huahai Pharmaceutical Co., Ltd.",
+      "publishedOn": "2025-03-06"
+    },
+    {
+      "mediaId": "185510",
+      "firm": "Janssen Vaccines Corporation",
+      "publishedOn": "2025-03-06"
+    },
+    {
+      "mediaId": "185524",
+      "firm": "Indoco Remedies Limited",
+      "publishedOn": "2025-03-06"
+    },
+    {
+      "mediaId": "185506",
+      "firm": "AstraZeneca Pharmaceuticals LP Frederick Manufacturing Center",
+      "publishedOn": "2025-03-06"
+    },
+    {
+      "mediaId": "185522",
+      "firm": "Daizo Corporation",
+      "publishedOn": "2025-03-06"
+    },
+    {
+      "mediaId": "185729",
+      "firm": "Dr. Reddy's Laboratories Ltd., Biologics",
+      "publishedOn": "2025-03-06"
+    },
+    {
+      "mediaId": "185521",
+      "firm": "Rovi Pharma Industrial Services S.A.",
+      "publishedOn": "2025-03-06"
+    },
+    {
+      "mediaId": "185519",
+      "firm": "Zhejiang Peptides Biotech Co, Ltd.",
+      "publishedOn": "2025-03-06"
+    },
+    {
+      "mediaId": "185549",
+      "firm": "Oishi Koseido Co., Ltd.",
+      "publishedOn": "2025-03-06"
+    },
+    {
+      "mediaId": "185523",
+      "firm": "Amman Pharmaceutical Industries",
+      "publishedOn": "2025-03-06"
+    },
+    {
+      "mediaId": "185505",
+      "firm": "Wuxi Biologics Co., Ltd.",
+      "publishedOn": "2025-03-06"
+    },
+    {
+      "mediaId": "185576",
+      "firm": "Fuji Yakuhin Co., Ltd.",
+      "publishedOn": "2025-03-06"
+    },
+    {
+      "mediaId": "185544",
+      "firm": "Chunghwa Chemical Synthesis & Biotech Co., Ltd.",
+      "publishedOn": "2025-03-06"
+    },
+    {
+      "mediaId": "185525",
+      "firm": "Meiji Seika Pharma Co., Ltd.",
+      "publishedOn": "2025-03-06"
+    },
+    {
+      "mediaId": "185520",
+      "firm": "Vetter Pharma-Fertigung GmbH & Co. KG",
+      "publishedOn": "2025-03-06"
+    },
+    {
+      "mediaId": "185527",
+      "firm": "Kyowa Hakko Bio Co., Ltd.",
+      "publishedOn": "2025-03-06"
+    },
+    {
+      "mediaId": "185518",
+      "firm": "Hanlim Pharm Co., Ltd.",
+      "publishedOn": "2025-03-06"
+    },
+    {
+      "mediaId": "185637",
+      "firm": "BPI Labs LLC",
+      "publishedOn": "2025-02-28"
+    },
+    {
+      "mediaId": "185650",
+      "firm": "Carolina Infusion",
+      "publishedOn": "2025-02-28"
+    },
+    {
+      "mediaId": "185620",
+      "firm": "Compounded Solutions in Pharmacy",
+      "publishedOn": "2025-02-27"
+    },
+    {
+      "mediaId": "185573",
+      "firm": "Japan Food Research Laboratories",
+      "publishedOn": "2025-02-24"
+    },
+    {
+      "mediaId": "185444",
+      "firm": "Triangle Compounding Pharmacy Inc",
+      "publishedOn": "2025-02-19"
+    },
+    {
+      "mediaId": "185494",
+      "firm": "CMC Enterprise Pharmacy",
+      "publishedOn": "2025-02-19"
+    },
+    {
+      "mediaId": "185443",
+      "firm": "Exela Pharma Sciences LLC",
+      "publishedOn": "2025-02-14"
+    },
+    {
+      "mediaId": "185420",
+      "firm": "Boothwyn Pharmacy LLC",
+      "publishedOn": "2025-02-12"
+    },
+    {
+      "mediaId": "185430",
+      "firm": "Pine Pharmaceuticals, LLC",
+      "publishedOn": "2025-02-12"
+    },
+    {
+      "mediaId": "185399",
+      "firm": "Turbare Manufacturing",
+      "publishedOn": "2025-02-07"
+    },
+    {
+      "mediaId": "185236",
+      "firm": "Overton Brooks VA Medical Center",
+      "publishedOn": "2025-02-07"
+    },
+    {
+      "mediaId": "185398",
+      "firm": "F.H. Investments Inc.",
+      "publishedOn": "2025-02-07"
+    },
+    {
+      "mediaId": "185397",
+      "firm": "Empower Clinic Services, LLC",
+      "publishedOn": "2025-02-07"
+    },
+    {
+      "mediaId": "185237",
+      "firm": "OurPharma LLC",
+      "publishedOn": "2025-02-07"
+    },
+    {
+      "mediaId": "185396",
+      "firm": "AnazaoHealth Corporation",
+      "publishedOn": "2025-02-07"
+    },
+    {
+      "mediaId": "185240",
+      "firm": "SCA Pharmaceuticals LLC",
+      "publishedOn": "2025-01-21"
+    },
+    {
+      "mediaId": "185187",
+      "firm": "QuVa Pharma Inc",
+      "publishedOn": "2025-01-16"
+    },
+    {
+      "mediaId": "185084",
+      "firm": "Taylor Farms Colorado, Inc.",
+      "publishedOn": "2025-01-14"
+    },
+    {
+      "mediaId": "185102",
+      "firm": "Zhejiang Tianyu Pharmaceutical Co. Ltd.",
+      "publishedOn": "2025-01-14"
+    },
+    {
+      "mediaId": "184987",
+      "firm": "Hubei Gedian Humanwell Pharmaceutical Co., Ltd.",
+      "publishedOn": "2025-01-10"
+    },
+    {
+      "mediaId": "184979",
+      "firm": "Hubei Gedian Humanwell Pharmaceutical Co., Ltd.",
+      "publishedOn": "2025-01-10"
+    },
+    {
+      "mediaId": "184861",
+      "firm": "Mylan Laboratories Ltd.",
+      "publishedOn": "2025-01-03"
+    },
+    {
+      "mediaId": "184381",
+      "firm": "RC Outsourcing LLC",
+      "publishedOn": "2024-12-12"
+    },
+    {
+      "mediaId": "184179",
+      "firm": "TAILSTORM HEALTH INC",
+      "publishedOn": "2024-12-10"
+    },
+    {
+      "mediaId": "184171",
+      "firm": "Fresenius Kabi Oncology Limited",
+      "publishedOn": "2024-12-05"
+    },
+    {
+      "mediaId": "183861",
+      "firm": "Apicore Pharmaceuticals Private Ltd.",
+      "publishedOn": "2024-11-26"
+    },
+    {
+      "mediaId": "183626",
+      "firm": "OSRX Inc.",
+      "publishedOn": "2024-11-21"
+    },
+    {
+      "mediaId": "183580",
+      "firm": "Takeda Pharmaceutical Company, Limited",
+      "publishedOn": "2024-11-15"
+    },
+    {
+      "mediaId": "183579",
+      "firm": "Astellas Pharma Inc.",
+      "publishedOn": "2024-11-15"
+    },
+    {
+      "mediaId": "183426",
+      "firm": "US Specialty Formulations",
+      "publishedOn": "2024-11-12"
+    },
+    {
+      "mediaId": "183428",
+      "firm": "IntegraDose Compounding Services",
+      "publishedOn": "2024-11-12"
+    },
+    {
+      "mediaId": "183393",
+      "firm": "Avenue Pharmacy Inc dba Pathway Pharmacy",
+      "publishedOn": "2024-11-06"
+    },
+    {
+      "mediaId": "183268",
+      "firm": "Staska Pharmaceuticals Inc",
+      "publishedOn": "2024-11-05"
+    },
+    {
+      "mediaId": "183269",
+      "firm": "Aarti Drugs Limited",
+      "publishedOn": "2024-11-01"
+    },
+    {
+      "mediaId": "183238",
+      "firm": "Nephron Sterile Compounding Center",
+      "publishedOn": "2024-10-31"
+    }
+  ]
+}

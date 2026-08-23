@@ -1,0 +1,702 @@
+                             UNITED STATES OF AMERICA
+                           DEPARTMENT OF THE TREASURY
+                   OFFICE OF THE COMPTROLLER OF THE CURRENCY
+
+
+                                                                 )
+    In the Matter of:
+                                                                 )
+                                                                 )       AA-ENF-2026-29
+    United Texas Bank, N.A.
+                                                                 )
+    Dallas, Texas                                                )
+
+                                         CONSENT ORDER
+
+       WHEREAS, effective June 12, 2026, the Office of the Comptroller of the Currency
+
+(“OCC”) has supervisory authority over United Texas Bank, Dallas, Texas (“Bank”);
+
+       WHEREAS, prior to June 12, 2026, the Bank was a Texas state-chartered bank,
+
+supervised by the Texas Department of Banking, and a member of the Federal Reserve System;
+
+       WHEREAS, on August 29, 2024, the Bank consented to the issuance of a cease and
+
+desist order under 12 U.S.C. § 1818 and the Texas Banking Act, as amended (Tex. Fine. Code
+
+§ 31 et seq.), with the Federal Reserve Bank of Dallas and the Texas Department of Banking
+
+(the “Agencies”) dated August 29, 2024 (Docket No. 24-021-B-SM, Department Order No.
+
+2024-025) (the “2024 Order”), relating to the Agencies’ findings of significant deficiencies with
+
+its foreign correspondent banking and virtual currency customers.
+
+       WHEREAS, the Bank’s significant deficiencies specifically relate to its risk
+
+management and compliance with applicable laws, rules, and regulations relating to anti-money
+
+laundering (“AML”), including the Bank Secrecy Act (the “BSA”) (31 U.S.C. § 5311 et seq.),
+
+the rules and regulations issued thereunder by the U.S. Department of the Treasury (31 C.F.R.
+
+Chapter X), and the AML requirements of Regulation H of the Board of Governors of the
+
+Federal Reserve System (12 C.F.R. §§ 208.62 and 208.63) (collectively, the “BSA/AML
+
+Requirements”), resulting in a deficient compliance program violation;
+
+
+                                                   1
+        WHEREAS, the 2024 Order required the Bank to improve the Bank’s oversight and
+
+compliance with BSA/AML Requirements and the rules and regulations of the Office of
+
+Foreign Assets Control (“OFAC”) (31 C.F.R. Chapter V) (the “OFAC Regulations”);
+
+        WHEREAS, on November 12, 2025, the Bank filed an application to convert to a
+
+national bank with the OCC;
+
+        WHEREAS, the OCC approved the Bank’s conversion application on May 15, 2026,
+
+subject to the condition that the Bank, upon consummation of the conversion to a national
+
+chartered institution, enter into a consent order incorporating corrective actions required in the
+
+2024 Order addressing the Bank’s BSA violations;
+
+        WHEREAS, the OCC and the Bank consummated the conversion of the Bank on June
+
+12, 2026;
+
+        WHEREAS, the Bank, by and through its duly elected and acting Board of Directors
+
+(“Board”), consents to the issuance of this Order, by the OCC through the duly authorized
+
+representative of the Comptroller of the Currency (“Comptroller”); and
+
+        NOW, THEREFORE, pursuant to the authority vested in the OCC by Section 8(b) of
+
+the Federal Deposit Insurance Act, as amended, 12 U.S.C. § 1818(b), the OCC hereby orders
+
+that:
+
+                                             Article I
+
+                                        JURISDICTION
+
+        (1)   The Bank is an “insured depository institution” as that term is defined in
+
+12 U.S.C. § 1813(c)(2).
+
+        (2)   The Bank is a national banking association within the meaning of 12 U.S.C.
+
+§ 1813(q)(1)(A), and is chartered and examined by the OCC. See 12 U.S.C. § 1 et seq.
+
+
+
+
+                                                     2
+       (3)     The OCC is the “appropriate Federal banking agency” as that term is defined in
+
+12 U.S.C. § 1813(q) and is therefore authorized to initiate and maintain this cease and desist
+
+action against the Bank pursuant to 12 U.S.C. § 1818(b).
+
+                                               Article II
+
+                                   COMPLIANCE REPORTING
+
+       (1)     Within thirty (30) days after the end of each calendar quarter, the Board shall
+
+submit to the Assistant Deputy Comptroller a written progress report setting forth in detail the
+
+specific corrective actions undertaken to comply with each Article of this Order and the status of
+
+the corrective actions.
+
+                                               Article III
+
+                                         BOARD OVERSIGHT
+
+       (1)     Effective as of the date of this Order, Bank management, subject to Board review
+
+and ongoing monitoring, shall continue to implement and thereafter ensure adherence to the plan
+
+approved under the 2024 Order to strengthen Board oversight of the Bank’s compliance with the
+
+BSA, as amended (31 U.S.C. § 5311 et seq.), and the regulations promulgated thereunder, the
+
+rules and regulations of the OCC, and OFAC Regulations, and that includes the following:
+
+               (a)        actions that the Board will take to maintain effective control over and
+
+                          oversight of Bank management’s compliance with the BSA and the OFAC
+
+                          Regulations;
+
+               (b)        measures to ensure noncompliance with the BSA and OFAC Regulations
+
+                          are appropriately tracked, escalated, and reviewed by the Bank’s senior
+
+                          management;
+
+
+
+
+                                                        3
+               (c)     measures to ensure that those at the Bank charged with overseeing the
+
+                       Bank’s compliance with BSA/AML Requirements and OFAC Regulations
+
+                       possess appropriate subject matter expertise, stature, and direct reporting
+
+                       access to the Board, or the relevant committee, to carry out such
+
+                       responsibilities; and
+
+               (d)     measures to ensure the Bank has adequate resources for the BSA/AML
+
+                       Requirements and OFAC Regulations, including sufficient staffing levels,
+
+                       and the performance of periodic re-evaluations of resource and staffing
+
+                       needs.
+
+       (2)     The Board shall review the effectiveness of the plan required by paragraph (1) of
+
+this Article at least annually, and more frequently if necessary or if required by the OCC in
+
+writing, and amend the plan as needed or directed by the OCC.
+
+                                               Article IV
+
+                           BSA/AML COMPLIANCE PROGRAM
+
+       (1)     Effective as of the date of this Order, Bank management, subject to Board review
+
+and ongoing monitoring, shall continue to implement and thereafter ensure adherence to the plan
+
+approved under the 2024 Order, for a revised BSA/AML compliance program to achieve
+
+compliance with the BSA, and that shall include the following:
+
+               (a)     measures to fully address the findings and recommendations in the
+
+                       Agencies’ report of examination that commenced on September 2, 2025;
+
+               (b)     a system of internal controls reasonably designed to ensure ongoing
+
+                       compliance with the BSA;
+
+
+
+
+                                                       4
+               (c)     a comprehensive risk assessment that appropriately identifies and
+
+                       considers all products and services of the Bank, customer types,
+
+                       geographic locations, and transaction volumes, as appropriate, in
+
+                       determining inherent and residual risks;
+
+               (d)     enhanced independent testing procedures to ensure that comprehensive
+
+                       reviews of the Bank’s BSA/AML compliance Program are performed on a
+
+                       regular basis by qualified parties who are independent of the Bank’s
+
+                       business lines and compliance function;
+
+               (e)     management of the Bank’s BSA/AML compliance Program by a qualified
+
+                       compliance officer, who is given full autonomy, independence, and
+
+                       responsibility for implementing and maintaining an effective BSA/AML
+
+                       compliance Program that is commensurate with the Bank’s size and risk
+
+                       profile, has meaningful decision-making authority, and is supported by
+
+                       adequate staffing levels and resources; and
+
+               (f)     enhanced policies and procedures to ensure effective training for all
+
+                       personnel, including targeted training for personnel with compliance-
+
+                       related responsibilities, in all aspects of the BSA.
+
+       (2)     The Board shall review the effectiveness of the program required by paragraph (1)
+
+of this Article at least annually, and more frequently if necessary or if required by the OCC in
+
+writing, and amend the program as needed or directed by the OCC.
+
+
+
+
+                                                      5
+                                              Article V
+
+                                 CUSTOMER DUE DILIGENCE
+
+       (1)    Effective as of the date of this Order, Bank management, subject to Board review
+
+and ongoing monitoring, shall continue to implement and thereafter ensure adherence to the
+
+revised customer due diligence (“CDD”) program approved under the 2024 Order that shall
+
+include the following:
+
+              (a)        policies, procedures, and controls to ensure that the Bank collects,
+
+                         analyzes, and retains complete and accurate customer information for all
+
+                         account holders, including, but not limited to:
+
+                         (i)    documentation necessary to verify the identity, source of wealth,
+
+                                and business activities of the customer; and
+
+                         (ii)   documentation necessary to understand the normal and expected
+
+                                transactions of the customer;
+
+              (b)        a plan, with intermediate timelines and milestones, to remediate deficient
+
+                         due diligence for existing customer accounts;
+
+              (c)        a methodology for assigning risk ratings to customers that considers
+
+                         factors such as type of customer, type of products and services, geographic
+
+                         location, and transaction type and volume;
+
+              (d)        a risk-focused assessment of the Bank's customer base to:
+
+                         (i)    identify the categories of customers whose transactions and
+
+                                banking activities are routine and usual;
+
+                         (ii)   identify the categories of customers that pose a heightened risk of
+
+                                conducting potentially illicit activities at or through the Bank;
+
+
+
+
+                                                       6
+                       (iii)   determine the appropriate level of additional due diligence
+
+                               necessary for those categories of customers that pose a heightened
+
+                               risk of conducting potentially illicit activities at or through the
+
+                               Bank, including the level needed to identify any nested financial
+
+                               institution or foreign shell banking activity; and
+
+                       (iv)    procedures to ensure that periodic reviews and evaluations of
+
+                               customer and account information are conducted and documented
+
+                               for all account holders.
+
+       (2)     The Board shall review the effectiveness of the program required by paragraph (1)
+
+of this Article at least annually, and more frequently if necessary or if required by the OCC in
+
+writing, and amend the program as needed or directed by the OCC.
+
+                                             Article VI
+
+               SUSPICIOUS ACTIVITY MONITORING AND REPORTING
+
+       (1)     Effective as of the date of this Order, Bank management, subject to Board review
+
+and ongoing monitoring, shall continue to implement and thereafter ensure adherence to the
+
+revised program approved under the 2024 Order, to reasonably ensure the identification and
+
+timely, accurate, and complete reporting by the Bank of all known or suspected violations of law
+
+or suspicious transactions to law enforcement and supervisory authorities, as required by
+
+applicable suspicious activity reporting laws and regulations, that shall include the following:
+
+               (a)     a well-documented methodology for establishing monitoring rules and
+
+                       processes that take into consideration the Bank’s risk profile, type of
+
+                       customer, type of product or service, geographic location, and banking
+
+                       activities;
+
+
+
+
+                                                       7
+(b)   policies and procedures that provide for periodic review of the monitoring
+
+      rules and thresholds;
+
+(c)   enhanced monitoring and investigation criteria and procedures to ensure
+
+      the timely detection, investigation, and reporting of all known or suspected
+
+      violations of law and suspicious transactions, including:
+
+      (i)     effective monitoring of customer accounts and transactions;
+
+      (ii)    appropriate allocation of resources to manage alert and case
+
+              inventory;
+
+      (iii)   adequate escalation of information about potentially suspicious
+
+              activity through appropriate levels of management; and
+
+      (iv)    maintenance of sufficient documentation with respect to the
+
+              investigation and analysis of potentially suspicious activity,
+
+              including the resolution and escalation of concerns;
+
+(d)   policies, procedures, and processes for identifying subjects of law
+
+      enforcement requests, monitoring the transaction activity of those subjects
+
+      when appropriate, identifying unusual or potentially suspicious activity
+
+      related to those subjects, and filing, as appropriate, suspicious activity
+
+      reports related to those subjects;
+
+(e)   measures to ensure that alert dispositions are supported with adequate
+
+      rationale and documentation; and
+
+(f)   controls to ensure that transaction monitoring systems and associated
+
+      processes are subject to periodic reviews and timely updates.
+
+
+
+
+                                     8
+       (2)     The Board shall review the effectiveness of the program required by paragraph (1)
+
+of this Article at least annually, and more frequently if necessary or if required by the OCC in
+
+writing, and amend the program as needed or directed by the OCC.
+
+                                           Article VII
+
+               OFFICE OF FOREIGN ASSETS CONTROL COMPLIANCE
+
+       (1)     Effective as of the date of this Order, Bank management, subject to Board review
+
+and ongoing monitoring, shall continue to implement and thereafter ensure adherence to the plan
+
+approved under the 2024 Order to enhance the Bank’s compliance with OFAC Regulations,
+
+including, but not limited to, enhanced OFAC screening procedures, an improved methodology
+
+for assessing OFAC risks, training related to compliance with OFAC Regulations appropriate to
+
+the employee’s job responsibilities that is provided on an ongoing, periodic basis, and enhanced
+
+policies and procedures to ensure compliance with OFAC Regulations.
+
+       (2)     The Board shall review the effectiveness of the program required by paragraph (1)
+
+of this Article at least annually, and more frequently if necessary or if required by the OCC in
+
+writing, and amend the program as needed or directed by the OCC.
+
+                                           Article VIII
+
+                          GENERAL BOARD RESPONSIBILITIES
+
+        (1)     The Board shall ensure that the Bank has timely adopted and implemented all
+
+corrective actions required by this Order, and shall verify that the Bank adheres to the corrective
+
+actions and they are effective in addressing the Bank’s deficiencies that resulted in this Order.
+
+The Board shall hold Bank management and personnel accountable for executing their duties
+
+and responsibilities pertaining to or resulting from this Order.
+
+
+
+
+                                                     9
+                                     Article IX
+
+                                     WAIVERS
+
+(1)   The Bank, by executing and consenting to this Order, waives:
+
+      (a)   any and all rights to the issuance of a Notice of Charges pursuant to
+
+            12 U.S.C. § 1818;
+
+      (b)   any and all procedural rights available in connection with the issuance of
+
+            this Order;
+
+      (c)   any and all rights to a hearing and a final agency decision pursuant to
+
+            12 U.S.C. § 1818 and 12 C.F.R. Part 19;
+
+      (d)   any and all rights to seek any type of administrative or judicial review of
+
+            this Order;
+
+      (e)   any and all claims for fees, costs, or expenses against the OCC, or any of
+
+            its officers, employees, or agents related in any way to this enforcement
+
+            matter or this Order, whether arising under common law or under the
+
+            terms of any statute, including, but not limited to, the Equal Access to
+
+            Justice Act, 5 U.S.C. § 504 and 28 U.S.C. § 2412;
+
+      (f)   any and all rights to assert these proceedings, the consent to and/or the
+
+            issuance of this Order, as the basis for a claim of double jeopardy in any
+
+            pending or future proceedings brought by the United States Department of
+
+            Justice or any other governmental entity; and
+
+      (g)   any and all rights to challenge or contest the validity of this Order.
+
+
+
+
+                                          10
+                                                 Article X
+
+                                                 CLOSING
+
+       (1)     This Order is a settlement of the cease and desist proceedings against the Bank
+
+contemplated by the OCC. The OCC releases and discharges the Bank from all potential liability
+
+for a cease and desist order that has been or might have been asserted by the OCC, to the extent
+
+known to the OCC as of the effective date of this Order. The OCC expressly reserves its right to
+
+assess civil money penalties or take other enforcement actions if the OCC determines that the
+
+Bank fails to correct the violations found in the 2024 Order or that the Bank otherwise is
+
+violating or has violated this Order.
+
+       (2)     Nothing in this Order shall prevent the OCC from:
+
+               (a)     instituting enforcement actions other than a cease and desist order against
+
+                       the Bank that is based on the violations found in the 2024 Order;
+
+               (b)     instituting enforcement actions against the Bank based on any other
+
+                       findings, including if the OCC determines that the Bank has continued, or
+
+                       failed to correct, the violations found in the 2024 Order or that the Bank
+
+                       otherwise is violating or has violated this Order;
+
+               (c)     instituting enforcement actions against institution-affiliated parties (as
+
+                       defined by 12 U.S.C. § 1813(u)) in consideration of the violations found in
+
+                       the 2024 Order or any other findings; or
+
+               (d)     utilizing the violations found in the 2024 Order in future enforcement
+
+                       actions against the Bank or its institution-affiliated parties to establish a
+
+                       pattern or the continuation of a pattern.
+
+
+
+
+                                                      11
+        (3)    Nothing in this Order is a release, discharge, compromise, settlement, dismissal,
+
+or resolution of any actions, or in any way affects any actions that may be or have been brought
+
+by any other representative of the United States or an agency thereof, including, without
+
+limitation, the United States Department of Justice.
+
+        (4)    This Order is:
+
+               (a)    a “cease-and-desist order issued upon consent” within the meaning of
+
+                      12 U.S.C. § 1818(b);
+
+               (b)    a “cease-and-desist order which has become final” within the meaning of
+
+                      12 U.S.C. § 1818(e);
+
+               (c)    an “order issued with the consent of the depository institution” within the
+
+                      meaning of 12 U.S.C. § 1818(h)(2);
+
+               (d)    an “effective and outstanding . . . order” within the meaning of 12 U.S.C.
+
+                      § 1818(i)(1); and
+
+               (e)    a “final order” within the meaning of 12 U.S.C. § 1818(i)(2) and (u).
+
+        (5)    This Order is effective upon its issuance by the OCC, through the Comptroller’s
+
+duly authorized representative. Except as otherwise expressly provided herein, all references to
+
+“days” in this Order shall mean calendar days and the computation of any period of time
+
+imposed by this Order shall not include the date of the act or event that commences the period of
+
+time.
+
+        (6)    The provisions of this Order shall remain effective except to the extent that, and
+
+until such time as, such provisions are amended, suspended, waived, or terminated in writing by
+
+the OCC, through the Comptroller’s duly authorized representative. If the Bank seeks an
+
+extension, amendment, suspension, waiver, or termination of any provision of this Order, the
+
+
+
+
+                                                       12
+Board or a Board-designee shall submit a written request to the Assistant Deputy Comptroller
+
+asking for the desired relief. Any request submitted pursuant to this paragraph shall include a
+
+statement setting forth in detail the circumstances that warrant the desired relief or prevent the
+
+Bank from complying with the relevant provision(s) of the Order, and shall be accompanied by
+
+relevant supporting documentation. The OCC’s decision concerning a request submitted
+
+pursuant to this paragraph, which will be communicated to the Board in writing, is final and not
+
+subject to further review.
+
+         (7)    The Bank will not be deemed to be in compliance with this Order until it has
+
+adopted, implemented, and adhered to all of the corrective actions set forth in each Article of this
+
+Order; the corrective actions are effective in addressing the Bank’s deficiencies; and the OCC
+
+has verified and validated the corrective actions. An assessment of the effectiveness of the
+
+corrective actions requires sufficient passage of time for the Bank to demonstrate the sustained
+
+effectiveness of the corrective actions.
+
+         (8)    This Order is not a contract binding on the United States, the United States
+
+Treasury Department, the OCC, or any officer, employee, or agent of the OCC and neither the
+
+Bank nor the OCC intends this Order to be a contract.
+
+         (9)    Each citation, issuance, or guidance referenced in this Order includes any
+
+subsequent citation, issuance, or guidance that replaces, supersedes, amends, or revises the
+
+referenced cited citation, issuance, or guidance.
+
+         (10)   No separate promise or inducement of any kind has been made by the OCC, or by
+
+its officers, employees, or agents, to cause or induce the Bank to consent to the issuance of this
+
+Order.
+
+
+
+
+                                                     13
+       (11)    All reports, plans, or programs submitted to the OCC pursuant to this Order shall
+
+be forwarded by email to Assistant Deputy Comptroller Kimberly Einspahr.
+
+       (12)    The terms of this Order, including this paragraph, are not subject to amendment or
+
+modification by any extraneous expression, prior agreements, or prior arrangements between the
+
+parties, whether oral or written.
+
+        IN TESTIMONY WHEREOF, the undersigned, authorized by the Comptroller as his
+
+duly authorized representative, has hereunto set her signature on behalf of the Comptroller.
+
+        //s// Digitally Signed, Dated: 2026.06.16
+ Kimberly Einspahr
+ Assistant Deputy Comptroller
+ Dallas/Ft. Worth Field Office
+
+
+
+
+                                                    14
+        IN TESTIMONY WHEREOF, the undersigned, as the duly elected and acting Board
+
+of Directors of United Texas Bank, N.A. have hereunto set their signatures on behalf of the
+
+Bank.
+
+//s// Digitally Signed                                            6/15/2026
+  Jarrod Beck                                                     Date
+
+
+ //s// Digitally Signed                                           6/15/2026
+ Scott Beck                                                       Date
+
+
+ //s// Digitally Signed                                           6/15/2026
+ James Huggins                                                    Date
+
+
+ //s// Digitally Signed                                           6/15/2026
+ Benjamin Max Green                                               Date
+
+
+ //s// Digitally Signed                                           6/15/2026
+ Steve Gundy                                                      Date
+
+
+ //s// Digitally Signed                                           6/15/2026
+ Alexander Holmes                                                 Date
+
+
+ //s// Digitally Signed                                           6/15/2026
+ Jordan Licht                                                     Date
+
+
+ //s// Digitally Signed                                           6/15/2026
+ David O’Hara                                                     Date
+
+
+ //s// Digitally Signed                                           6/15/2026
+ Michael Patterson                                                Date
+
+
+ //s// Digitally Signed                                           6/15/2026
+ Reubin Robin                                                     Date
+
+
+
+
+                                                  15
+

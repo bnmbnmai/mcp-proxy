@@ -1,0 +1,572 @@
+                    UNITED STATES DEPARTMENT OF COMMERCE
+                       BUREAU OF INDUSTRY AND SECURITY
+                             WASHINGTON, D.C. 20230
+
+
+In the Matter of:
+
+Alpha and Omega Semiconductor Incorporated
+475 Oakmead Pkwy
+Sunnyvale, CA 94085
+
+              Respondent
+
+
+                          ORDER RELATING TO
+             ALPHA AND OMEGA SEMICONDUCTOR INCORPORATED
+
+        The Bureau of Industry and Security, U.S. Department of Commerce (“BIS”), has
+
+notified Alpha and Omega Semiconductor Incorporated of Sunnyvale, California (“AOS”
+
+or the “Company”), of its intention to initiate an administrative proceeding against AOS
+
+pursuant to Section 766.3 of the Export Administration Regulations (the “Regulations”), 1
+
+through the issuance of a Proposed Charging Letter to AOS that alleges that AOS
+
+committed fifteen violations of the Regulations. Specifically:
+
+                                 STATEMENT OF CHARGES
+    1. AOS—located in Sunnyvale, California—designs, develops, and supplies power
+       semiconductors for a range of applications, including personal and portable
+       computers, graphics cards, flat panel TVs, home appliances, smart phones, battery
+       packs, quick chargers, servers, and telecommunications equipment. As described
+       in greater detail below and in the attached Schedule of Violations, between on or
+       about May 28, 2019 and on or about November 22, 2019, AOS engaged in
+       conduct prohibited by the Regulations on 15 occasions when it forwarded from
+       the United States without authorization from BIS approximately 1,650 power
+       controllers, smart power stages, and related accessories to Huawei Technology
+       Co. Ltd. (“Huawei”), a company listed on the BIS Entity List. 2 On eleven of
+
+1
+   The Regulations are currently codified in the Code of Federal Regulations at 15 C.F.R. Parts 730-774
+(2025). The charged violations occurred in 2019. The Regulations governing the violations at issue are
+found in the 2019 version of the Code of Federal Regulations (15 C.F.R. Parts 730-774 (2019)). The 2025
+Regulations set forth the procedures that apply to this matter.
+2
+  See 84 Fed. Reg. 22961 (May 21, 2019).
+Alpha and Omega Semiconductor Incorporated
+Order
+Page 2 of 6
+
+           these fifteen occasions, AOS knew—or had reason to know, including the
+           awareness of a high probability that an event may occur—that a violation of the
+           Regulations had occurred, was occurring, or was about to occur. 3
+
+      2. Huawei and certain of its non-U.S. affiliates were added to the Entity List on May
+         16, 2019. The Entity List designation was based on a determination made by
+         multiple U.S. government agencies “that there is reasonable cause to believe that
+         Huawei has been involved in activities contrary to the national security or foreign
+         policy interests of the United States.” 4 Specifically, the End-User Review
+         Committee, composed of representatives of the U.S. Departments of Commerce
+         (Chair), State, Defense, and Energy, determined that the listings were necessary to
+         protect U.S. national security or foreign policy. As a result of Huawei’s addition
+         to the Entity List, licensing requirements were imposed on exports, reexports, and
+         transfers (in-country) of all items subject to the EAR destined to or involving the
+         listed Huawei entities.
+
+      3. The items at issue in these charges were foreign-designed and foreign-produced,
+         and when subject to the EAR, they were designated as EAR99. 5 The items in the
+         transactions at issue were subject to the EAR because AOS exported them from
+         the United States. At all times relevant to these charges, BIS authorization was
+         required to export, reexport, or transfer (in-country) all items subject to the EAR
+         to Huawei pursuant to Section 744.11 and Supplement No. 4 to Part 744 of the
+         Regulations.
+
+Charges 1 - 4               15 C.F.R. § 764.2(a) – Engaging in Prohibited Conduct by
+                            Forwarding Items Subject to the EAR to a Company on the
+                            BIS Entity List Without Authorization
+
+      4. The Digital Power business unit of AOS was established in 2018 and conducted
+         its business activities primarily in Austin, Texas. 6 Since the inception of the
+         Digital Power business unit, AOS had been in discussions with potential
+         customers, including Huawei, to try to establish AOS’s Digital Power business
+         unit as a supplier of digital power products.      At all times relevant to these
+         charges, AOS operated an affiliated entity in Chongqing, China.
+
+      5. As of May 2019, Huawei had not yet qualified AOS’s Digital Power business as a
+         supplier to Huawei for digital power products. After Huawei’s inclusion to the
+
+3
+    See 15 C.F.R. § 772.1 (“Knowledge”).
+4
+    See 84 Fed. Reg. 22961 (May 21, 2019).
+5
+  EAR99 is a designation for items subject to the EAR but not listed on the Commerce Control List. See
+Section 734.3(c) of the EAR.
+6
+    The Digital Power business unit was eliminated in 2021 as it never generated any significant revenue.
+Alpha and Omega Semiconductor Incorporated
+Order
+Page 3 of 6
+
+       Entity List, AOS and other suppliers had initially halted shipments to Huawei
+       while they analyzed whether they would require authorization from BIS to
+       continue supplying products to Huawei.
+
+   6. To move forward with the supplier qualification process, AOS needed to provide
+      Huawei with sample products so that Huawei could test the items to determine
+      their suitability for Huawei’s planned uses. Even before Huawei’s addition to the
+      Entity List, AOS relied on outside counsel for advice on how to comply with U.S.
+      export control regulations when doing business with customers in China,
+      including Huawei. As early as May 15, 2019, and continuing through November
+      2019, AOS regularly communicated with outside counsel about whether it could
+      do business with Huawei due to Huawei’s inclusion on the Entity List. The
+      communications between AOS and outside counsel focused, at least in part, on
+      whether AOS could supply foreign-produced products to Huawei if AOS
+      manufactured, tested, and packaged the products in China. During these
+      communications, AOS did not provide its outside counsel with details specific to
+      the completed samples being exported from the United States in connection with
+      Huawei’s supplier qualification process.
+
+   7. On or around May 18, 2019, AOS’s outside counsel provided guidance to AOS
+      that BIS authorization would not be required for products assembled in China and
+      which did not contain more than a de minimis amount of controlled U.S.-origin
+      content, as such products would not be subject to the EAR. Outside counsel noted
+      in its guidance that it had not been provided with facts specific to the products
+      AOS intended to provide to Huawei and suggested that if AOS was unsure
+      whether the products at issue were subject to the EAR, AOS should immediately
+      halt supply of the items to Huawei pending further analysis of whether they were
+      subject to the EAR. Despite ongoing discussions between AOS and outside
+      counsel about other issues related to the relationship with Huawei throughout the
+      summer of 2019, AOS did not seek guidance from outside counsel regarding the
+      permissibility of exporting the sample products from the United States to Huawei
+      for testing and evaluation purposes.
+
+   8. On or around May 28, 2019, AOS senior executives traveled to China to meet
+      with Huawei to discuss AOS’s status as a possible supplier to Huawei. Later that
+      same day, an AOS employee based in Taiwan sent an email to AOS employees in
+      the United States referencing the AOS executives’ meeting with Huawei and
+      informing the AOS employees in the U.S. that AOS “can provide products to
+      Huawei even digital power.” The email from the AOS employee in Taiwan
+      requested that AOS employees in the United States export 200 smart power stage
+      samples to an AOS engineer in Shenzhen for evaluation by Huawei. AOS
+      employees in the United States exported the requested items the same day.
+Alpha and Omega Semiconductor Incorporated
+Order
+Page 4 of 6
+
+   9. Between May 28, 2019 and June 7, 2019, on four occasions AOS employees in
+      the United States exported to an AOS facility in China approximately 600 sample
+      smart power stages power controllers, and related accessories for use by Huawei.
+      AOS believes that AOS employees in China then transferred all of these items to
+      Huawei.
+
+   10. By exporting the items from the United States and then transferring (in-country)
+       to Huawei on four occasions items subject to the EAR without the required
+       authorization from BIS, AOS engaged in conduct prohibited by the Regulations
+       and committed four violations of Section 764.2(a) of the Regulations.
+
+Charges 5 -15        15 C.F.R. § 764.2(e) – Acting with Knowledge of a Violation by
+                     Forwarding Items Subject to the EAR to a Company on the BIS
+                     Entity List Without Authorization
+
+   11. On or around June 16, 2019, at AOS’s request, AOS outside counsel provided
+       AOS with guidance that explicitly defined activities involving Huawei that would
+       be permissible or prohibited without first obtaining a license from BIS. The draft
+       guidance from outside counsel stated that AOS employees “may not provide any
+       AOS products to Huawei or any of its affiliates” that “originate from the United
+       States, are being supplied or transferred from the United States, or otherwise have
+       transited or will transit through the United States.” This guidance further clarified
+       that “even an item [that was not otherwise subject to the EAR] could not be
+       provided to Huawei if it is being exported or reexported to Huawei from or
+       through the United States.” AOS did not distribute the guidance to its employees
+       or take steps to understand whether AOS employees were exporting items from
+       the United States for end use by Huawei.
+
+   12. Based on the above-referenced guidance from outside counsel, AOS knew or had
+       reason to know that—even though the smart power stages, controllers, and related
+       accessories were foreign-produced—authorization from BIS was required to
+       export the hardware from the United States to China for use by Huawei. Between
+       June 16, 2019, and November 22, 2019, on eleven occasions AOS exported to an
+       AOS facility in China approximately 1,056 smart power stages, power controllers,
+       and related accessories for use by Huawei. AOS believes that AOS employees in
+       China then transferred the items to Huawei. AOS did not apply for or obtain
+       licenses for these transactions.
+
+   13. By transferring (in-country) hardware subject to the EAR to a company on the
+       Entity List without the required license and with knowledge or a reason to know
+       that a violation of the Regulations had occurred, was occurring, or was about to
+       occur, AOS committed eleven violations of Section 764.2(e) of the Regulations.
+Alpha and Omega Semiconductor Incorporated
+Order
+Page 5 of 6
+
+       WHEREAS, BIS and AOS have entered into a Settlement Agreement pursuant to
+
+Section 766.18(a) of the Regulations, whereby they agreed to settle this matter in
+
+accordance with the terms and conditions set forth therein;
+
+       WHEREAS, AOS admits committing the alleged conduct described in the
+
+Proposed Charging Letter; and
+
+       WHEREAS, I have approved of the terms of such Settlement Agreement;
+
+IT IS THEREFORE ORDERED:
+
+       FIRST, AOS shall be assessed a civil penalty in the amount of $4,250,000, the
+
+payment of which shall be made to the U.S. Department of Commerce within 30 days of
+
+the date of this Order.
+
+       SECOND, that, pursuant to the Debt Collection Act of 1982, as amended
+
+(31 U.S.C. §§ 3701-3720E (2012)), the civil penalty owed under this Order accrues
+
+interest as more fully described in the attached Notice, and if payment is not made by the
+
+due date specified herein, AOS will be assessed, in addition to the full amount of the civil
+
+penalty and interest, a penalty charge and an administrative charge, as more fully
+
+described in the attached Notice.
+
+       THIRD, that the full and timely payment of the civil penalty in accordance with
+
+the payment schedule set forth above is hereby made a condition to the granting,
+
+restoration, or continuing validity of any export license, license exception, permission, or
+
+privilege granted, or to be granted, to AOS. Accordingly, if AOS should fail to pay the
+
+civil penalty in a full and timely manner, the undersigned may issue an order denying all
+
+of AOS’s export privileges under the Regulations for a period of one year from the date
+
+of failure to make such payment.
+  ( 2 %2  2  '#1-'*2$'*)'+ .2
+   --!%/2,"&02
+   22'2
+
+
+
+
+D:E0!%-E<?6H-                            )3$/0*#=+%0/GB17
+<F6'@IG=27C*.A0"                     &.0;16C
+0**8
+                      Digitally signed by DAN
+                      CLUTCH
+DAN CLUTCH            Date: 2025.06.24 22:11:28
+                      -04'00'
+
+JmfP^                                       <Uu^Uo ^Nr] 
+Q_m]`yUPtytWut~n[zQUjUm             ^aUXUP bU0YZPUygu^JJmT0jU]J
+                                                  <Uk_RtoSPt}'mPtyvt|JUS
+
+
+        
+JU                                JU 
+
+
+                                                  9UcUUTKsTKvv{tUTO
+
+
+
+                                                  ,UhdJ*Mrpdpt w 
+                                                  z_U*PtmmUhhx 
+                                                  (MlU4Uw 
+                                                  JeUy$tUiUy))5
+                                                  tVh\ygv^JMrT0kU]J>Uk_PtqSP t|
+                                                  'mPt~vtL UT
+
+
+                                                  LU  
+
+
+
+
+       
+                                    PROPOSED CHARGING LETTER
+
+
+Alpha and Omega Semiconductor Incorporated
+475 Oakmead Pkwy
+Sunnyvale, CA 94085
+
+Attention:         Stephen C. Chang, Chief Executive Officer
+
+Dear Mr. Chang,
+
+The Bureau of Industry and Security, U.S. Department of Commerce (“BIS”), has reason to believe
+that Alpha and Omega Semiconductor Incorporated (“AOS” or the “Company”) committed fifteen
+violations of the Export Administration Regulations (the “Regulations” or “EAR”). 1 Specifically,
+BIS charges the following violations:
+
+                                      STATEMENT OF CHARGES
+      1. AOS—located in Sunnyvale, California—designs, develops, and supplies power
+         semiconductors for a range of applications, including personal and portable computers,
+         graphics cards, flat panel TVs, home appliances, smart phones, battery packs, quick
+         chargers, servers, and telecommunications equipment. As described in greater detail below
+         and in the attached Schedule of Violations, between on or about May 28, 2019 and on or
+         about November 22, 2019, AOS engaged in conduct prohibited by the Regulations on 15
+         occasions when it forwarded from the United States without authorization from BIS
+         approximately 1,650 power controllers, smart power stages, and related accessories to
+         Huawei Technology Co. Ltd. (“Huawei”), a company listed on the BIS Entity List.2 On
+         eleven of these fifteen occasions, AOS knew—or had reason to know, including the
+         awareness of a high probability that an event may occur—that a violation of the
+         Regulations had occurred, was occurring, or was about to occur. 3
+
+      2. Huawei and certain of its non-U.S. affiliates were added to the Entity List on May 16, 2019.
+         The Entity List designation was based on a determination made by multiple U.S.
+         government agencies “that there is reasonable cause to believe that Huawei has been
+         involved in activities contrary to the national security or foreign policy interests of the
+         United States.” 4 Specifically, the End-User Review Committee, composed of
+         representatives of the U.S. Departments of Commerce (Chair), State, Defense, and Energy,
+
+1
+ The Regulations are currently codified in the Code of Federal Regulations at 15 C.F.R. Parts 730-774 (2025). The
+charged violations occurred in 2019. The Regulations governing the violations at issue are found in the 2019
+version of the Code of Federal Regulations (15 C.F.R. Parts 730-774 (2019)). The 2025 Regulations set forth the
+procedures that apply to this matter.
+2
+    See 84 Fed. Reg. 22961 (May 21, 2019).
+3
+    See 15 C.F.R. § 772.1 (“Knowledge”).
+4
+    See 84 Fed. Reg. 22961 (May 21, 2019).
+Alpha & Omega Semiconductor Incorporated
+Proposed Charging Letter
+Page 2
+
+          determined that the listings were necessary to protect U.S. national security or foreign
+          policy. As a result of Huawei’s addition to the Entity List, licensing requirements were
+          imposed on exports, reexports, and transfers (in-country) of all items subject to the EAR
+          destined to or involving the listed Huawei entities.
+
+      3. The items at issue in these charges were foreign-designed and foreign-produced, and when
+         subject to the EAR, they were designated as EAR99. 5 The items in the transactions at issue
+         were subject to the EAR because AOS exported them from the United States. At all times
+         relevant to these charges, BIS authorization was required to export, reexport, or transfer
+         (in-country) all items subject to the EAR to Huawei pursuant to Section 744.11 and
+         Supplement No. 4 to Part 744 of the Regulations.
+
+Charges 1 - 4               15 C.F.R. § 764.2(a) – Engaging in Prohibited Conduct by Forwarding
+                            Items Subject to the EAR to a Company on the BIS Entity List Without
+                            Authorization
+
+      4. The Digital Power business unit of AOS was established in 2018 and conducted its business
+         activities primarily in Austin, Texas. 6 Since the inception of the Digital Power business
+         unit, AOS had been in discussions with potential customers, including Huawei, to try to
+         establish AOS’s Digital Power business unit as a supplier of digital power products. At
+         all times relevant to these charges, AOS operated an affiliated entity in Chongqing, China.
+
+      5. As of May 2019, Huawei had not yet qualified AOS’s Digital Power business as a supplier
+         to Huawei for digital power products. After Huawei’s inclusion to the Entity List, AOS
+         and other suppliers had initially halted shipments to Huawei while they analyzed whether
+         they would require authorization from BIS to continue supplying products to Huawei.
+
+      6. To move forward with the supplier qualification process, AOS needed to provide Huawei
+         with sample products so that Huawei could test the items to determine their suitability for
+         Huawei’s planned uses. Even before Huawei’s addition to the Entity List, AOS relied on
+         outside counsel for advice on how to comply with U.S. export control regulations when
+         doing business with customers in China, including Huawei. As early as May 15, 2019, and
+         continuing through November 2019, AOS regularly communicated with outside counsel
+         about whether it could do business with Huawei due to Huawei’s inclusion on the Entity
+         List. The communications between AOS and outside counsel focused, at least in part, on
+         whether AOS could supply foreign-produced products to Huawei if AOS manufactured,
+         tested, and packaged the products in China. During these communications, AOS did not
+         provide its outside counsel with details specific to the completed samples being exported
+         from the United States in connection with Huawei’s supplier qualification process.
+
+
+5
+  EAR99 is a designation for items subject to the EAR but not listed on the Commerce Control List. See Section
+734.3(c) of the EAR.
+6
+    The Digital Power business unit was eliminated in 2021 as it never generated any significant revenue.
+Alpha & Omega Semiconductor Incorporated
+Proposed Charging Letter
+Page 3
+
+   7. On or around May 18, 2019, AOS’s outside counsel provided guidance to AOS that BIS
+      authorization would not be required for products assembled in China and which did not
+      contain more than a de minimis amount of controlled U.S.-origin content, as such products
+      would not be subject to the EAR. Outside counsel noted in its guidance that it had not been
+      provided with facts specific to the products AOS intended to provide to Huawei and
+      suggested that if AOS was unsure whether the products at issue were subject to the EAR,
+      AOS should immediately halt supply of the items to Huawei pending further analysis of
+      whether they were subject to the EAR. Despite ongoing discussions between AOS and
+      outside counsel about other issues related to the relationship with Huawei throughout the
+      summer of 2019, AOS did not seek guidance from outside counsel regarding the
+      permissibility of exporting the sample products from the United States to Huawei for
+      testing and evaluation purposes.
+
+   8. On or around May 28, 2019, AOS senior executives traveled to China to meet with Huawei
+      to discuss AOS’s status as a possible supplier to Huawei. Later that same day, an AOS
+      employee based in Taiwan sent an email to AOS employees in the United States
+      referencing the AOS executives’ meeting with Huawei and informing the AOS employees
+      in the U.S. that AOS “can provide products to Huawei even digital power.” The email
+      from the AOS employee in Taiwan requested that AOS employees in the United States
+      export 200 smart power stage samples to an AOS engineer in Shenzhen for evaluation by
+      Huawei. AOS employees in the United States exported the requested items the same day.
+
+   9. Between May 28, 2019 and June 7, 2019, on four occasions AOS employees in the United
+      States exported to an AOS facility in China approximately 600 sample smart power stages
+      power controllers, and related accessories for use by Huawei. AOS believes that AOS
+      employees in China then transferred all of these items to Huawei.
+
+   10. By exporting the items from the United States and then transferring (in-country) to
+       Huawei on four occasions items subject to the EAR without the required authorization
+       from BIS, AOS engaged in conduct prohibited by the Regulations and committed four
+       violations of Section 764.2(a) of the Regulations.
+
+Charges 5 -15       15 C.F.R. § 764.2(e) – Acting with Knowledge of a Violation by
+                    Forwarding Items Subject to the EAR to a Company on the BIS Entity
+                    List Without Authorization
+
+   11. On or around June 16, 2019, at AOS’s request, AOS outside counsel provided AOS with
+       guidance that explicitly defined activities involving Huawei that would be permissible or
+       prohibited without first obtaining a license from BIS. The draft guidance from outside
+       counsel stated that AOS employees “may not provide any AOS products to Huawei or
+       any of its affiliates” that “originate from the United States, are being supplied or
+       transferred from the United States, or otherwise have transited or will transit through the
+       United States.” This guidance further clarified that “even an item [that was not otherwise
+       subject to the EAR] could not be provided to Huawei if it is being exported or reexported
+Alpha & Omega Semiconductor Incorporated
+Proposed Charging Letter
+Page 4
+
+           to Huawei from or through the United States.” AOS did not distribute the guidance to its
+           employees or take steps to understand whether AOS employees were exporting items
+           from the United States for end use by Huawei.
+
+      12. Based on the above-referenced guidance from outside counsel, AOS knew or had reason
+          to know that—even though the smart power stages, controllers, and related accessories
+          were foreign-produced—authorization from BIS was required to export the hardware from
+          the United States to China for use by Huawei. Between June 16, 2019, and November 22,
+          2019, on eleven occasions AOS exported to an AOS facility in China approximately 1,056
+          smart power stages, power controllers, and related accessories for use by Huawei. AOS
+          believes that AOS employees in China then transferred the items to Huawei. AOS did not
+          apply for or obtain licenses for these transactions.
+
+      13. By transferring (in-country) hardware subject to the EAR to a company on the Entity List
+          without the required license and with knowledge or a reason to know that a violation of the
+          Regulations had occurred, was occurring, or was about to occur, AOS committed eleven
+          violations of Section 764.2(e) of the Regulations.
+
+                                        *       *        *       *        *
+       Accordingly, AOS is hereby notified that an administrative proceeding is instituted against
+it pursuant to Part 766 of the Regulations for the purpose of obtaining an order imposing
+administrative sanctions, including, but not limited to any or all of the following:
+•          The maximum civil penalty allowed by law of up to the greater of $374,474 per violation,7
+           or twice the value of the transaction that is the basis of the violation; 8
+
+•          Denial of export privileges;
+
+•          Exclusion from practice before BIS; and/or
+
+•          Any other liability, sanction, or penalty available under law.
+
+       If AOS fails to answer the charges contained in this letter within 30 days after being served
+with notice of issuance of this letter, that failure will be treated as a default. See 15 C.F.R. §§
+766.6(a) and 766.7(a). If AOS defaults, the Administrative Law Judge may find the charges
+alleged in this letter are true without a hearing or further notice to AOS. The Under Secretary of
+
+
+
+7
+ See 15 C.F.R. § 6.3(c)(6). This amount is subject to annual increases pursuant to the Federal Civil Penalties
+Inflation Adjustment Act Improvements Act of 2015, Sec. 701 of Public Law 114-74, enacted on November 2,
+2015. See 89 Fed. Reg. 106,308 (Dec. 30, 2024) (adjusting for inflation the maximum civil monetary penalty under
+ECRA from $364,992 to $374,474, effective January 15, 2025).
+8
+    See Export Control Reform Act of 2018, 50 U.S.C. § 4819(c)(1)(A) (2019).
+Alpha & Omega Semiconductor Incorporated
+Proposed Charging Letter
+Page 5
+
+Commerce for Industry and Security may then impose up to the maximum penalty for the charges
+in this letter. 15 C.F.R. § 766.7(a).
+       AOS is further notified that it is entitled to an agency hearing on the record if it files a
+written demand for one with their answer. See 15 C.F.R. § 766.6. AOS is also entitled to be
+represented by counsel or other authorized representative who has power of attorney to represent
+them. See 15 C.F.R. §§ 766.3(a) and 766.4.
+      The Regulations provide for settlement without a hearing. See 15 C.F.R. § 766.18. Should
+AOS have a proposal to settle this case, AOS should transmit it to the attorneys representing BIS
+named below.
+        AOS is further notified that under the Small Business Regulatory Enforcement Flexibility
+Act, AOS may be eligible for assistance from the Office of the National Ombudsman of the Small
+Business Administration in this matter. To determine eligibility and get more information, please
+see: http://www.sba.gov/ombudsman/.
+       The U.S. Coast Guard is providing administrative law judge services in connection with
+the matters set forth in this letter. Accordingly, the Company’s answer must be filed in accordance
+with the instructions in Section 766.5(a) of the Regulations with:
+       U.S. Coast Guard ALJ Docketing Center
+       40 S. Gay Street
+       Baltimore, Maryland 21202-4022
+
+       In addition, a copy of the Company’s answer must be served on BIS at the following
+address:
+       Chief Counsel for Industry and Security
+       Attention: Gregory Michelsen, Esq. & Jonathan Vukicevich, Esq.
+       Room H-3839
+       14th Street and Constitution Avenue, N.W.
+       Washington, D.C. 20230
+Alpha & Omega Semiconductor Incorporated
+Proposed Charging Letter
+Page 6
+
+        Gregory Michelsen and Jonathan Vukicevich are the attorneys representing BIS in this
+case; any communications that AOS may wish to have concerning this matter should occur through
+them. Mr. Michelsen and Mr. Vukicevich may be contacted via email at gmichelsen@doc.gov
+and jvukicevich@doc.gov, respectively.
+
+
+                                           Sincerely,
+
+
+
+
+                                           Dan Clutch
+                                           Acting Director
+                                           Office of Export Enforcement
+                                 Schedule of Violations
+
+Charge   Date of Export      Item      Classification          Destination       Violation
+  1          05/28/2019 AOZ5473,       EAR99          China; Huawei Technology   764.2(a)
+                         200 PCS                      Co. Ltd.
+  2          05/31/2029 AOZ96779       EAR99          China; Huawei Technology   764.2(a)
+                         DEMO                         Co. Ltd.
+                         Board, 1 PC
+  3          06/07/2019 AOZ5473,       EAR99         China; Huawei Technology    764.2(a)
+                         200 PCS                     Co. Ltd.
+  4          06/07/2019 AOZ96779,      EAR99         China; Huawei Technology    764.2(a)
+                         200 PCS                     Co. Ltd.
+  5          06/26/2019 AOZ5473,       EAR99         China; Huawei Technology    764.2(e)
+                         135 PCS                     Co. Ltd.
+  6          07/12/2019 AOZ96779,      EAR99         China; Huawei Technology    764.2(e)
+                         400 PCS                     Co. Ltd.
+  7          07/27/2019 AOZ96779,      EAR99         China; Huawei Technology    764.2(e)
+                         50 PCS                      Co. Ltd.
+  8          07/31/2019 AOZ96779       EAR99         China; Huawei Technology    764.2(e)
+                         DEMO and                    Co. Ltd.
+                         EVAL
+                         Board, 2
+                         PCS
+  9             8/5/2019   PMBUS       EAR99         China; Huawei Technology    764.2(e)
+                          DONGLES                    Co. Ltd.
+                            WITH
+                          CABLES,
+                            5 PCS
+  10            8/8/2019 PMBUS         EAR99         China; Huawei Technology    764.2(e)
+                         DONGLES                     Co. Ltd.
+                         WITH
+                         CABLES,
+                         5 PCS
+  11         08/23/2019 AOZ96779       EAR99         China; Huawei Technology    764.2(e)
+                         EVAL                        Co. Ltd.
+                         Board, 1 PC
+  12          9/12/2019 NVM            EAR99         China; Huawei Technology    764.2(e)
+                         Board, 1 PC                 Co. Ltd.
+  13         10/01/2019 AOZ96779,      EAR99         China; Huawei Technology    764.2(e)
+                         49 PCS                      Co. Ltd.
+  14         10/21/2019 AOZ96779,      EAR99         China; Huawei Technology    764.2(e)
+                         406 PCS                     Co. Ltd.
+  15         11/22/2019 AOZ96779       EAR99         China; Huawei Technology    764.2(e)
+                         DEMO                        Co. Ltd.
+                         Board, 1 PC
+

@@ -1,0 +1,11 @@
+{
+  "data": {
+    "NAME": "MutualOne Bank",
+    "CERT": "26639",
+    "CITY": "Framingham",
+    "STALP": "MA",
+    "ACTIVE": "1"
+  },
+  "meta": { "total": 1, "parameters": { "filters": "NAME:MutualOne Bank" } }
+}
+BankFind Suite has no enforcement / consent-order / C&D endpoint.

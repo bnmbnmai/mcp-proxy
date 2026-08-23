@@ -1,0 +1,65 @@
+8/12/26, 12:23 PM                                                                Maritime Safety Information Products | Navigation Center
+
+                               Local Notice to Mariners for Southwest District                                                                          08/12/2026
+
+                                                                   Alameda Naval Air Station Channel
+   Additional MSI Categories
+                   TITLE                   SUBCATEGORY                                                                 DESCRIPTION                                                              LOCATION
+ San Francisco Oakland Bay Bridge West     Miscellaneous   The U.S. Coast Guard is conducting a Waterways Analysis and Management System (WAMS) study of NAS Alameda. The study
+ Crossing - Alameda Naval Air Station                      focuses on the area’s aids to navigation system, waterborne commerce, marine casualty information, port/harbor resources,
+ Channel/General/Miscellaneous                             emergency response plans, routine and emergency communication capabilities, and future development projects. This study seeks
+                                                           to obtain data on the effectiveness of the system of Aids to Navigation, as well as other waterway safety concerns. Any interested
+                                                           company or individual wishing to provide comments or participate in a user survey may do so via link at:
+                                                           https://www.research.net/r/LTR8FBC or contact LTJG Robert Black at d11-smb-d11-lnm@uscg.mil or via phone at (571)-610-6866
+                                                           by August 18, 2026.
+
+
+
+                                                                                Americas Cup Harbor
+   Private Discrepancies
+                                                      NAME                                                                     LLNR                      STATUS                      AID TYPE
+ Shelter Island East Shoal Light                                                                                      1654                    LT IMCH                   PA
+ Americas Cup Harbor Daybeacon 4                                                                                      1670                    LT IMCH                   PA
+
+
+
+                                                                        Approaches To San Diego Bay
+   Additional MSI Categories
+                   TITLE                   SUBCATEGORY                                                                 DESCRIPTION                                                              LOCATION
+ Sector San Diego, Submerged Lands Act     Miscellaneous    Saronic Technologies will be conducting Autonomous Service Vehicle (AUV) operations from 1 June, 2026 until 31 December, 2026
+ (SLA) - Approaches To San Diego                            in the vicinity of Buoy 1 SD at coordinates: Area 1: 32.64657N -117.21516W, 32.64660N -117.17565W, 32.57351N -117.17418W,
+ Bay/General/Miscellaneous                                  32.57344N -117.21378W Area 2: 32.68592N -117.31755W, 32.61269N -117.31595W, 32.61325N -117.27634W, 32.68648N
+                                                            -117.27800W. Support vessel will be on scene and monitoring VHF-FM Chan. 16. Mariners are requested to transit the area with
+                                                            caution. For more details or comments, contact Oran Feiner at 512-784-4059
+
+
+
+                                                                                            Berkeley
+   Federal Discrepancies
+                                                     NAME                                                                   LLNR                        STATUS                       AID TYPE
+ Berkeley Marina Channel Light 2                                                                                    5430                    LT EXT                     FD
+ Berkeley Reef Light 1                                                                                              5475                    LT EXT                     FD
+
+
+
+                                                                                      Bodega Harbor
+   Federal Discrepancies
+                                               NAME                                                          LLNR                                    STATUS                              AID TYPE
+ Bodega Harbor Channel Light 6                                                                        7810                 STRUCT DMGD/TRLB                                     FD
+ Bodega Harbor Channel Daybeacon 7                                                                    7815                 STRUCT DEST/TRLB                                     FD
+ Bodega Harbor Channel Daybeacon 38                                                                   7975                 STRUCT DEST/TRLB                                     FD
+ Bodega Harbor Channel Daybeacon                                                                      8015                 STRUCT DEST/TRLB                                     FD
+
+
+
+                                                                                     Carquinez Strait
+   Federal Discrepancies
+                                              NAME                                                            LLNR                            STATUS                             AID TYPE
+ Carquinez Strait Light 23                                                                         6240                         LT EXT                            FD
+
+
+   Private Discrepancies
+                                               NAME                                                             LLNR                            STATUS                            AID TYPE
+ Amorco Wharf East Lights                                                                             6281                         LT EXT                         PA
+
+

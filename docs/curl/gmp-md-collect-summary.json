@@ -1,0 +1,17 @@
+{
+  "status": "ok",
+  "asOf": "2026-07-22",
+  "cardCount": 5,
+  "listedCount": 7,
+  "reportCardCount": 6,
+  "addedThisRun": 5,
+  "seed": true,
+  "product": "hc-md-inspection-cards",
+  "cards": [
+    { "id": "coloplast-canada-corporation-549", "inspectionNumber": "549", "firm": "COLOPLAST CANADA CORPORATION" },
+    { "id": "can-med-healthcare-501", "inspectionNumber": "501", "firm": "CAN-MED HEALTHCARE" },
+    { "id": "winsham-fabrik-canada-ltd-dba-winsham-353", "inspectionNumber": "353", "firm": "WINSHAM FABRIK CANADA LTD. DBA WINSHAM" },
+    { "id": "fernandas-beauty-and-spa-supplies-209", "inspectionNumber": "209", "firm": "FERNANDAS BEAUTY AND SPA SUPPLIES" },
+    { "id": "acmedent-corporation-315", "inspectionNumber": "315", "firm": "ACMEDENT CORPORATION" }
+  ]
+}

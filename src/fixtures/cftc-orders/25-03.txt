@@ -1,0 +1,413 @@
+                                                                                                               RECEIVED CFTC
+
+
+
+
+                                                                                                               Office of Proceedings
+                                                                                                                Proceedings Clerk
+                                                                                                              2:58 pm, Sep 04, 2025
+
+                             UNITED STATES OF AMERICA
+                                      Before the
+                        COMMODITY FUTURES TRADING COMMISSION
+
+
+
+                                                            )
+    In the Matter of:                                       )
+                                                            )
+           SMBC Capital Markets, Inc.,                      )
+                                                            )       CFTC Docket No. 25-03
+                                      Respondent.           )
+                                                            )
+                                                            )
+                                                            )
+
+
+               ORDER INSTITUTING PROCEEDINGS PURSUANT TO
+        SECTION 6(c) AND (d) OF THE COMMODITY EXCHANGE ACT, MAKING
+                FINDINGS, AND IMPOSING REMEDIAL SANCTIONS
+
+                                           I.       INTRODUCTION
+
+        The Commodity Futures Trading Commission (“Commission”) has reason to believe that
+from at least May 2019 to August 2023 (“Relevant Period”), SMBC Capital Markets, Inc.
+(“Respondent”) violated, as set forth below, Sections 4s(f)(1)(B), 4s(g)(1), and 4s(h)(1)(B) of the
+Commodity Exchange Act (“Act”), 7 U.S.C. §§ 6s(f)(1)(B), 6s(g)(1), 6s(h)(1)(B), and
+Commission Regulations (“Regulations”) 23.201(a)(1), 23.202(a)(1) and (b)(1), and 23.602(a),
+17 C.F.R. §§ 23.201(a)(1), 23.202(a)(1), (b)(1), 23.602(a) (2024). Therefore, the Commission
+deems it appropriate and in the public interest that public administrative proceedings be, and
+hereby are, instituted to determine whether Respondent engaged in the violations set forth herein
+and to determine whether any order should be issued imposing remedial sanctions.
+
+        In anticipation of the institution of an administrative proceeding, Respondent has
+submitted an Offer of Settlement (“Offer”), which the Commission has determined to accept.
+Without admitting or denying any of the findings or conclusions here, Respondent consents to
+the entry of this Order Instituting Proceedings Pursuant to Section 6(c) and (d) of the Commodity
+Exchange Act, Making Findings, and Imposing Remedial Sanctions (“Order”), and
+acknowledges service of this Order.1
+
+
+1
+  Respondent consents to the use of the findings of fact and conclusions of law in this Order in this proceeding and
+in any other proceeding brought by the Commission or to which the Commission is a party or claimant and agrees
+that they shall be taken as true and correct and given preclusive effect therein, without further proof. Respondent
+does not consent, however, to the use of this Order, or the findings or conclusions herein, as the sole basis for any
+other proceeding brought by the Commission or to which the Commission is a party or claimant, other than: a
+proceeding in bankruptcy or receivership; or a proceeding to enforce the terms of this Order. Respondent does not
+consent to the use of the Offer or this Order, or the findings or conclusions in this Order, by any other party in any
+other proceeding.
+                                      II.     FINDINGS
+
+The Commission finds the following:
+
+A.     Summary
+
+        During the Relevant Period, Respondent’s employees communicated using unapproved
+methods. These written communications were sent and received by Respondent’s employees
+and included messages related to Respondent’s business as a Commission registrant that were
+required to be maintained under Commission-mandated recordkeeping requirements. These
+written communications were not captured and preserved by Respondent. As a result,
+Respondent violated Sections 4s(f)(1)(B) and 4s(g)(1) of the Act, 7 U.S.C. §§ 6s(f)(1)(B),
+6s(g)(1), and Regulations 23.201(a)(1) and 23.202(a)(1) and (b)(1), 17 C.F.R. §§ 23.201(a)(1),
+23.202(a)(1), (b)(1) (2024). In addition, the use of unauthorized communication methods
+violated Respondent’s policies and procedures, which prohibited such communications.
+Respondent did not implement a diligent supervisory system to ensure compliance with
+Commission recordkeeping requirements and Respondent’s own policies and procedures, and
+therefore Respondent failed to diligently supervise matters related to Respondent’s business as a
+Commission registrant in violation of Section 4s(h)(1)(B) of the Act, 7 U.S.C. § 6s(h)(1)(B), and
+Regulation 23.602(a), 17 C.F.R. § 23.602(a) (2024).
+
+        In accepting Respondent’s Offer, the Commission recognizes Respondent’s exemplary
+cooperation. The Commission’s recognition is reflected in a reduced penalty, with Respondent
+receiving the maximum cooperation mitigation credit toward the full monetary penalty
+appropriate for these violations.
+
+B.     Respondent
+
+       SMBC Capital Markets, Inc. is a financial services company with its headquarters in
+New York, New York. Respondent has been registered with the Commission as a swap dealer
+since December 31, 2012.
+
+C.     Facts
+
+        Although Respondent’s policies and procedures prohibited the use of unapproved
+communication methods, during the Relevant Period, Respondent’s employees engaged in
+written communications related to Respondent’s Commission-regulated business that were not
+monitored, captured, or preserved. Further, although no customer or market harm is known to
+have occurred as a result, Commission recordkeeping requirements were not met, and
+Respondent failed to diligently supervise its employees to ensure compliance.
+
+       1.      Respondent’s Recordkeeping Failures
+
+       During the Relevant Period, Respondent’s policies and procedures prohibited employees
+from using unapproved communication methods, such as personal text messages and WhatsApp,
+to engage in business-related communications. Additionally, Respondent provided training to its
+employees and issued policy reminders regarding Respondent’s communications policies.
+
+
+
+                                                2
+        Messages sent through Respondent’s approved communications methods were
+monitored, subject to review, and when appropriate, archived. However, messages sent using
+unapproved communication methods, including over personal WhatsApp, email, and text
+messages, were not monitored, subject to review, or archived.
+
+        In connection with the Division of Enforcement’s (“Division’s”) investigation,
+Respondent conducted a review of its employees’ use of unapproved communications. This
+review resulted in a determination that Respondent’s employees had used unapproved
+communication methods to engage in firm business. A sampling analysis conducted by
+Respondent, which included the personal devices of approximately ten percent of its associated
+persons (“APs”) over at least a one-year period, revealed that approximately seventy percent of
+the sampled APs violated Respondent’s communications policies and procedures by using
+personal text messages or other unapproved methods to communicate with brokers, coworkers,
+and/or market participants. The analysis further revealed that the communications of some of
+these sampled APs involved Respondent’s Commission-regulated business. Respondent
+acknowledges that these results are likely representative of the issue more broadly.
+
+       2.      Exemplary Cooperation
+
+       Respondent cooperated with the Division throughout its investigation. Respondent
+voluntarily collected and reviewed messages retrieved from the personal devices of a sampling
+of Respondent’s APs and made presentations to Division staff regarding, among other things,
+Respondent’s Commission-regulated business and its electronic communications compliance
+program.
+
+        As part of its cooperation efforts, Respondent has completed remediation. Respondent
+represents that it has enhanced its policies and procedures, provided new training concerning the
+use of unapproved communication methods, approved new communication platforms to address
+employee needs while ensuring compliance, implemented technological improvements, and
+enhanced its disciplinary framework to mitigate the risk of employees communicating by
+unapproved methods. Respondent further represents it disciplined staff that it found to have
+violated its policies regarding unapproved communication methods.
+
+                                 III.    LEGAL DISCUSSION
+
+A.     Respondent Failed to Keep Required Records in Violation of Sections 4s(f)(1)(B)
+       and 4s(g)(1) of the Act and Regulations 23.201(a) and 23.202(a)(1) and (b)(1).
+
+        Section 4s(f)(1)(B) of the Act obligates a swap dealer to keep “books and records of all
+activities related to its business as a swap dealer . . . in such form and manner and for such period
+as may be prescribed by the Commission by rule or regulation.” 7 U.S.C. § 6s(f)(1)(B); see also
+Section 4s(g)(1) of the Act, 7 U.S.C. § 6s(g)(1) (requiring swap dealers to maintain daily trading
+records). Part 23 of the Regulations implement these recordkeeping requirements. 17 C.F.R. pt.
+23 (2024).
+
+        Pursuant to Regulation 23.201(a)(1), a swap dealer is required to “keep full, complete,
+and systematic records, together with all pertinent data and memoranda, of all its swaps
+activities,” including “[r]ecords of each transaction, including all documents on which
+
+
+                                                 3
+transaction information is originally recorded.” 17 C.F.R. § 23.201(a)(1) (2024). Further,
+Regulation 23.202(a)(1) and (b)(1) requires, among other things, that a swap dealer keep daily
+trading records of all swaps and related cash and forward transactions it executes, including,
+specifically, a record of all oral and written communications provided or received concerning
+quotes, solicitations, bids, offers, instructions, trading, and prices that led to the execution of a
+swap transaction or the conclusion of a related cash or forward transactions. 17 C.F.R. §
+23.202(a)(1), (b)(1).
+
+       During the Relevant Period, as a result of its employees’ use of unapproved
+communication methods, Respondent violated Sections 4s(f)(1)(B) and 4s(g)(1) of the Act and
+Regulations 23.201(a) and 23.202(a)(1) and (b)(1).
+
+B.      Respondent Failed to Diligently Supervise in Violation of Section 4s(h)(1)(B) of the
+        Act and Regulation 23.602(a).
+
+        Section 4s(h)(1)(B) requires “diligent supervision of the business of the registered swap
+dealer[.]” 7 U.S.C. § 6s(h)(1)(B). Implementing this requirement, Regulation 23.602(a) requires
+that each swap dealer “shall establish and maintain a system to supervise, and shall diligently
+supervise, all activities relating to its business performed by its partners, members, officers,
+employees, and agents (or persons occupying a similar status or performing a similar function).”
+17 C.F.R. § 23.602(a) (2024). The operative language of Regulation 23.602 is similar to the
+language of the Commission’s longstanding supervision regulation for futures and options,
+Regulation 166.3, 17 C.F.R. § 166.3 (2024).
+
+        Under Regulation 23.602(a), a violation is demonstrated by showing either that: (1) the
+registrant’s supervisory system was generally inadequate; or (2) the registrant failed to perform
+its supervisory duties diligently. See In re JPMorgan Chase Bank, N.A., CFTC No. 22-07, 2021
+WL 6098347, at *6 (Dec. 17, 2021) (consent order); see also In re Commerzbank AG, CFTC No.
+19-03, 2018 WL 5921385, at *10-11 (Nov. 8, 2018) (consent order) (noting textual similarities
+between Regulation 23.602 and Regulation 166.3, applying case law concerning Regulation
+166.3). Either showing “alone is sufficient to establish a violation of the supervision
+requirement.” Id., at *10 (interpreting Regulation 23.602 in light of Regulation 166.3
+precedents). No evidence of an underlying violation is necessary. In re Collins, CFTC No. 94-
+13, 1997 WL 761927, at *10 (Dec. 10, 1997) (consent order) (interpreting Regulation 166.3).
+Evidence of violations that “‘should be detected by a diligent system of supervision, either
+because of the nature of the violations or because the violations have occurred repeatedly,’ is
+probative of a failure to supervise.” See In re Bank of Nova Scotia, CFTC No. 20-26, 2020 WL
+4926053, at *10 (Aug. 19, 2020) (consent order) (quoting In re Société Générale Int’l Ltd.,
+CFTC No. 19-38, 2009 WL 4915485, at *7 (Sept. 30, 2019) (consent order)).
+
+       Respondent failed to supervise its swap dealer business activities diligently during the
+Relevant Period. Respondent failed to maintain an adequate supervisory system to ensure that its
+employees complied with Commission recordkeeping requirements and Respondent’s policies
+and procedures that prohibited business-related communications on unapproved communication
+methods. Respondent’s failure to diligently supervise is demonstrated by its failure to keep
+Commission-required records and to detect violations of its policies and procedures.
+
+
+
+                                                   4
+Accordingly, Respondent failed to supervise diligently its officers, employees, and agents, in
+violation of Section 4s(h)(1)(B) of the Act and Regulation 23.602(a).
+
+                            IV.     FINDINGS OF VIOLATIONS
+
+        Based on the foregoing, the Commission finds that, during the Relevant Period,
+Respondent violated Sections 4s(f)(1)(B), 4s(g)(1), and 4s(h)(1)(B) of the Act, 7 U.S.C. §§
+6s(f)(1)(B), 6s(g)(1), 6s(h)(1)(B), and Regulations 23.201(a)(1), 23.202(a)(1) and (b)(1), and
+23.602(a), 17 C.F.R. §§ 23.201(a)(1), 23.202(a)(1), (b)(1), 23.602(a) (2024).
+
+                              V.     OFFER OF SETTLEMENT
+
+       Respondent has submitted the Offer in which it:
+
+A.     Consents to the resolution of this matter in an administrative proceeding.
+
+B.     Acknowledges service of this Order;
+
+C.     Admits the jurisdiction of the Commission with respect to all matters set forth in this
+       Order and for any action or proceeding brought or authorized by the Commission based
+       on violation of or enforcement of this Order;
+
+D.     Waives:
+
+       1.      The filing and service of a complaint and notice of hearing;
+
+       2.      A hearing;
+
+       3.      All post-hearing procedures;
+
+       4.      Any and all rights or defenses that Respondent has or might have for the matter to
+               be adjudicated in a federal district court in the first instance, including any
+               associated right to a jury trial;
+
+       5.      Judicial review by any court;
+
+       6.      Any and all objections to the participation by any member of the Commission’s
+               staff in the Commission’s consideration of the Offer;
+
+       7.      Any and all claims that Respondent may possess under the Equal Access to
+               Justice Act, 5 U.S.C. § 504, and 28 U.S.C. § 2412, and/or the rules promulgated
+               by the Commission in conformity therewith, Part 148 of the Regulations, 17
+               C.F.R. pt. 148 (2024), relating to, or arising from, this proceeding;
+
+       8.      Any and all claims that Respondent may possess under the Small Business
+               Regulatory Enforcement Fairness Act of 1996, Pub. L. No. 104-121, tit. II, §§
+               201-253, 110 Stat. 847, 857-74 (codified as amended at 28 U.S.C. § 2412 and in
+               scattered sections of 5 U.S.C. and 15 U.S.C.), relating to, or arising from, this
+               proceeding; and
+
+
+                                                5
+     9.     Any claims of Double Jeopardy based on the institution of this proceeding or the
+            entry in this proceeding of any order imposing a civil monetary penalty or any
+            other relief, including this Order;
+
+E.   Agrees that Respondent is not the prevailing party in this action for purposes of the
+     waiver of any and all rights under the Equal Access to Justice Act specified in Paragraph
+     D.7 above.
+
+F.   Stipulates that the record basis on which this Order is entered shall consist solely of the
+     findings contained in this Order to which Respondent has consented in the Offer;
+
+G.   Consents, solely on the basis of the Offer, to the Commission’s entry of this Order that:
+
+     1.     Makes findings by the Commission that Respondent violated Sections 4s(f)(1)(B),
+            4s(g)(1), and 4s(h)(1)(B) of the Act, 7 U.S.C. §§ 6s(f)(1)(B), 6s(g)(1),
+            6s(h)(1)(B), and Regulations 23.201(a)(1), 23.202(a)(1) and (b)(1), and 23.602(a),
+            17 C.F.R. §§ 23.201(a)(1), 23.202(a)(1), (b)(1), 23.602(a) (2024);
+
+     2.     Orders Respondent to cease and desist from violating Sections 4s(f)(1)(B),
+            4s(g)(1), and 4s(h)(1)(B) of the Act, and Regulations 23.201(a)(1), 23.202(a)(1)
+            and (b)(1), and 23.602(a);
+
+     3.     Orders Respondent to pay a civil monetary penalty in the amount of five hundred
+            thousand dollars ($500,000), plus post-judgment interest within fourteen (14)
+            calendar days of the date of entry of this Order; and
+
+     4.     Orders Respondent and its successors and assigns to comply with the conditions
+            and undertakings consented to in the Offer and as set forth in Part VI of this
+            Order.
+
+H.   Represents that Respondent enhanced its policies and procedures, provided new training
+     concerning the use of unapproved communication methods, approved new
+     communication platforms to address employee needs while ensuring compliance,
+     implemented technological improvements, enhanced its disciplinary framework to
+     mitigate the risk of employees communicating by unapproved methods, and has
+     disciplined staff it found to have violated its policies regarding unapproved
+     communication methods.
+
+     Upon consideration, the Commission has determined to accept the Offer.
+
+                                       VI.     ORDER
+
+     Accordingly, IT IS HEREBY ORDERED THAT:
+
+A.   Respondent and its successors and assigns shall cease and desist from violating Sections
+     4s(f)(1)(B), 4s(g)(1), and 4s(h)(1)(B) of the Act, 7 U.S.C. §§ 6s(f)(1)(B), 6s(g)(1),
+     6s(h)(1)(B), and Regulations 23.201(a)(1), 23.202(a)(1) and (b)(1), and 23.602(a), 17
+     C.F.R. §§ 23.201(a)(1), 23.202(a)(1), (b)(1), 23.602(a) (2024).
+
+
+                                               6
+B.   Respondent shall pay a civil monetary penalty in the amount of five hundred thousand
+     dollars ($500,000) (“CMP Obligation”), within fourteen (14) calendar days of the date of
+     the entry of this Order. If the CMP Obligation is not paid in full within fourteen (14)
+     calendar days of the date of entry of this Order, then post-judgment interest shall accrue
+     on the CMP Obligation beginning on the date of entry of this Order and shall be
+     determined by using the Treasury Bill rate prevailing on the date of entry of this Order
+     pursuant to 28 U.S.C. § 1961.
+
+     Respondent shall pay the CMP Obligation and any post-judgment interest by electronic
+     funds transfer, U.S. postal money order, certified check, bank cashier’s check, or bank
+     money order. If payment is to be made other than by electronic funds transfer, then the
+     payment shall be made payable to the Commodity Futures Trading Commission and sent
+     to the address below:
+
+                     MMAC/ESC/AMK326
+                    Commodity Futures Trading Commission
+                    6500 S. MacArthur Blvd.
+                    HQ Room 266
+                    Oklahoma City, OK 73169
+                    9-AMC-AR-CFTC@faa.gov
+
+     If payment is to be made by electronic funds transfer, Respondent shall contact the
+     Federal Aviation Administration at the above email address to receive payment
+     instructions and shall fully comply with those instructions. Respondent shall accompany
+     payment of the CMP Obligation with a cover letter that identifies Respondent and the
+     name and docket number of this proceeding. Respondent shall simultaneously transmit
+     copies of the cover letter and the form of payment to the Chief Financial Officer,
+     Commodity Futures Trading Commission, Three Lafayette Centre, 1155 21st Street, NW,
+     Washington, D.C. 20581, or such other address or recipient as instructed in writing by the
+     Commission.
+
+C.   Respondent and its successors and assigns shall comply with the following conditions
+     and undertakings set forth in the Offer:
+
+     1.     Public Statements: Respondent agrees that neither it nor any of its successors and
+            assigns, agents or employees under its authority or control shall take any action or
+            make any public statement denying, directly or indirectly, any findings or
+            conclusions in this Order or creating, or tending to create, the impression that this
+            Order is without a factual basis; provided, however, that nothing in this provision
+            shall affect Respondent’s: (1) testimonial obligations; or (2) right to take legal
+            positions in other proceedings to which the Commission is not a party.
+            Respondent and its successors and assigns shall comply with this agreement and
+            shall undertake all steps necessary to ensure that all of its agents and/or
+            employees under its authority or control understand and comply with this
+            agreement.
+
+
+
+
+                                              7
+       2.     Partial Satisfaction: Respondent understands and agrees that any acceptance by
+              the Commission of any partial payment of the CMP Obligation shall not be
+              deemed a waiver of its obligation to make further payments pursuant to this
+              Order, or a waiver of the Commission's right to seek to compel payment of any
+              remaining balance.
+
+       3.     Change of Address/Phone: Until such time as Respondent satisfies in full the
+              CMP Obligation as set forth in this Order, Respondent shall provide written
+              notice to the Commission by certified mail of any change to its telephone
+              numbers and mailing addresses within ten (10) calendar days of the change.
+
+       4.     Notices to Creditors: Until such time as Respondent satisfies in full the CMP
+              Obligation, upon the commencement by or against Respondent of insolvency,
+              receivership, or bankruptcy proceedings or any other proceedings for the
+              settlement of Respondent's debts, all notices to creditors required to be furnished
+              to the Commission under Title 11 of the United States Code or other applicable
+              law with respect to such insolvency, receivership, bankruptcy, or other
+              proceedings, shall be sent to the address below, or such other address or recipient
+              as instructed in writing by the Commission:
+
+                      Secretary of the Commission
+                      Office of the General Counsel
+                      Commodity Futures Trading Commission
+                      Three Lafayette Centre
+                      1155 21st Street N.W.
+                      Washington, DC 20581
+
+The provisions of this Order shall be effective as of this date.
+
+
+
+By the Commission.
+
+
+
+ ~~?~-
+Christopher J. Kirkpatrick
+Secretary of the Commission
+Commodity Futures Trading Commission
+
+
+
+Dated: September 4, 2025
+
+
+
+
+                                               8
+

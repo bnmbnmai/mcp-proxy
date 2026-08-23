@@ -1,0 +1,2091 @@
+{
+  "source": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/warning-letters",
+  "listingAjax": "https://www.fda.gov/datatables/views/ajax",
+  "liveManifest": "https://ticks.bnm.farm/warning-letters/manifest.json",
+  "fetchedAt": "2026-08-19T15:20:36.317Z",
+  "asOf": "2026-08-13",
+  "officialListedLetters": 3662,
+  "liveBodiesBefore": 3,
+  "realBodiesThisCollect": 296,
+  "letterCount": 296,
+  "listedCount": 3662,
+  "fetchedPages": 4,
+  "skippedNoBody": 8,
+  "reused": 96,
+  "addedThisRun": 200,
+  "note": "Bodies are gitignored (data/warning-letters/). This file is id/firm/date/subject only. Text is official fda.gov HTML, not invented. Live GET https://ticks.bnm.farm/warning-letters/manifest.json after apollo collect + idaho-ticks-x402 restart: letterCount 296, asOf 2026-08-13, fetchedAt 2026-08-19T15:20:36.317Z.",
+  "letters": [
+    {
+      "id": "dejong-family-dairy-llc-729293-07302026",
+      "firm": "DeJong Family Dairy, LLC",
+      "cms": "729293",
+      "issuedOn": "2026-07-30",
+      "subject": "New Animal Drug/Adulterated"
+    },
+    {
+      "id": "waves-and-wine-inc-724861-07062026",
+      "firm": "Waves and Wine, Inc.",
+      "cms": "724861",
+      "issuedOn": "2026-07-06",
+      "subject": "CGMP/Hazard Analysis/Risk-Based Preventive Controls for Food for Animals (PCAF)/Adulterated"
+    },
+    {
+      "id": "giantniccom-735905-08072026",
+      "firm": "giantnic.com",
+      "cms": "735905",
+      "issuedOn": "2026-08-07",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "tianjin-kilo-pharmaceutical-sci-tech-co-ltd-731761-08062026",
+      "firm": "Tianjin Kilo Pharmaceutical Sci-tech Co., Ltd.",
+      "cms": "731761",
+      "issuedOn": "2026-08-06",
+      "subject": "CGMP/Active Pharmaceutical Ingredient (API)/Adulterated/Misbranded"
+    },
+    {
+      "id": "nipro-renal-solutions-usa-corporation-732874-07242026",
+      "firm": "Nipro Renal Solutions USA, Corporation",
+      "cms": "732874",
+      "issuedOn": "2026-07-24",
+      "subject": "CGMP/QSR/Medical Devices/Adulterated"
+    },
+    {
+      "id": "kc-pharmaceuticals-inc-729870-08122026",
+      "firm": "K.C. Pharmaceuticals, Inc.",
+      "cms": "729870",
+      "issuedOn": "2026-08-12",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "suretec-innovations-llc-730122-08132026",
+      "firm": "Suretec Innovations, LLC",
+      "cms": "730122",
+      "issuedOn": "2026-08-13",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated and Misbranded"
+    },
+    {
+      "id": "eugia-pharma-specialities-limited-730469-08132026",
+      "firm": "Eugia Pharma Specialities Limited",
+      "cms": "730469",
+      "issuedOn": "2026-08-13",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "auriga-research-pvt-ltd-730694-08122026",
+      "firm": "Auriga Research Pvt. Ltd.",
+      "cms": "730694",
+      "issuedOn": "2026-08-12",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "safrel-pharmaceuticals-llc-730520-08072026",
+      "firm": "Safrel Pharmaceuticals LLC",
+      "cms": "730520",
+      "issuedOn": "2026-08-07",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "mikuvapecom-735084-08072026",
+      "firm": "mikuvape.com",
+      "cms": "735084",
+      "issuedOn": "2026-08-07",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "dabur-india-limited-728828-07242026",
+      "firm": "Dabur India Limited",
+      "cms": "728828",
+      "issuedOn": "2026-07-24",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "maria-e-de-la-torre-silva-md-735690-07272026",
+      "firm": "Maria E. De La Torre Silva, M.D.",
+      "cms": "735690",
+      "issuedOn": "2026-07-27",
+      "subject": "Clinical Investigator"
+    },
+    {
+      "id": "abs-corporation-732115-07232026",
+      "firm": "ABS Corporation",
+      "cms": "732115",
+      "issuedOn": "2026-07-23",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "koven-technologies-inc-734643-07212026",
+      "firm": "Koven Technologies, Inc.",
+      "cms": "734643",
+      "issuedOn": "2026-07-21",
+      "subject": "CGMP/QSR/Medical Devices/Adulterated"
+    },
+    {
+      "id": "aal-trading-inc-732493-07152026",
+      "firm": "AAL Trading Inc.",
+      "cms": "732493",
+      "issuedOn": "2026-07-15",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "friends-stable-and-orchard-inc-728680-07142026",
+      "firm": "Friend\u2019s Stable and Orchard, Inc.",
+      "cms": "728680",
+      "issuedOn": "2026-07-14",
+      "subject": "Food/Prepared Packed or Held Under Insanitary Conditions/Adulterated"
+    },
+    {
+      "id": "woodbine-products-company-inc-729345-07272026",
+      "firm": "Woodbine Products Company Inc.",
+      "cms": "729345",
+      "issuedOn": "2026-07-27",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "thomas-brunner-hygiene-gmbh-729018-07242026",
+      "firm": "Thomas Brunner Hygiene GmbH",
+      "cms": "729018",
+      "issuedOn": "2026-07-24",
+      "subject": "CGMP/Finished Pharmaceuticals/Unapproved New Drug/Misbranded/Adulterated"
+    },
+    {
+      "id": "delight-distribution-inc-731390-06082026",
+      "firm": "Delight Distribution Inc.",
+      "cms": "731390",
+      "issuedOn": "2026-06-08",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "piquin-y-sabores-distributors-llc-733360-07022026",
+      "firm": "Piquin Y Sabores Distributors LLC",
+      "cms": "733360",
+      "issuedOn": "2026-07-02",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "san-jorge-produce-llc-734097-07162026",
+      "firm": "San Jorge Produce LLC",
+      "cms": "734097",
+      "issuedOn": "2026-07-16",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "prida-import-export-llc-726912-04102026",
+      "firm": "Prida Import & Export LLC",
+      "cms": "726912",
+      "issuedOn": "2026-04-10",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "ahc-products-inc-728604-06122026",
+      "firm": "AHC Products, Inc.",
+      "cms": "728604",
+      "issuedOn": "2026-06-12",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "vasocorp-inc-732724-07092026",
+      "firm": "VasoCorp, Inc.",
+      "cms": "732724",
+      "issuedOn": "2026-07-09",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "eherbs-imports-inc-732692-07232026",
+      "firm": "Eherbs Imports, Inc",
+      "cms": "732692",
+      "issuedOn": "2026-07-23",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "linemaster-switch-corporation-730215-05272026",
+      "firm": "Linemaster Switch Corporation",
+      "cms": "730215",
+      "issuedOn": "2026-05-27",
+      "subject": "CGMP/QSR/Drug/Medical Devices/Adulterated"
+    },
+    {
+      "id": "pratik-doshi-md-alembic-pharmaceuticals-ltd-731020-07102026",
+      "firm": "Pratik Doshi, M.D. / Alembic Pharmaceuticals Ltd.",
+      "cms": "731020",
+      "issuedOn": "2026-07-10",
+      "subject": "In Vivo Bioavailability-Bioequivalence Studies \u2013 Clinical"
+    },
+    {
+      "id": "fareva-amboise-723502-04102026",
+      "firm": "Fareva Amboise",
+      "cms": "723502",
+      "issuedOn": "2026-04-10",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "shimoga-chemicals-727904-07132026",
+      "firm": "Shimoga Chemicals",
+      "cms": "727904",
+      "issuedOn": "2026-07-13",
+      "subject": "CGMP/Active Pharmaceutical Ingredient (API)/Adulterated"
+    },
+    {
+      "id": "mineral-biosciences-llc-724745-06052026",
+      "firm": "Mineral BioSciences, LLC",
+      "cms": "724745",
+      "issuedOn": "2026-06-05",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "ejuicedemandcom-733740-07102026",
+      "firm": "ejuicedemand.com",
+      "cms": "733740",
+      "issuedOn": "2026-07-10",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "indejuicevapestorecouk-734052-07102026",
+      "firm": "indejuicevapestore.co.uk",
+      "cms": "734052",
+      "issuedOn": "2026-07-10",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "island-kinetics-inc-dba-covalence-laboratories-726379-07162026",
+      "firm": "Island Kinetics, Inc. d.b.a. CoValence Laboratories",
+      "cms": "726379",
+      "issuedOn": "2026-07-16",
+      "subject": "CGMP/Finished Pharmaceuticals/Unapproved New Drug/Misbranded/Adulterated"
+    },
+    {
+      "id": "biomylz-pvt-ltd-729483-07132026",
+      "firm": "BioMylz Pvt. Ltd.",
+      "cms": "729483",
+      "issuedOn": "2026-07-13",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated/Misbranded"
+    },
+    {
+      "id": "almon-healthcare-private-limited-729291-07132026",
+      "firm": "Almon Healthcare Private Limited",
+      "cms": "729291",
+      "issuedOn": "2026-07-13",
+      "subject": "CGMP/Active Pharmaceutical Ingredient (API)/Adulterated"
+    },
+    {
+      "id": "shang-hao-jia-inc-720238-03182026",
+      "firm": "Shang Hao Jia, Inc.",
+      "cms": "720238",
+      "issuedOn": "2026-03-18",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "balkanica-llc-732478-06292026",
+      "firm": "Balkanica LLC",
+      "cms": "732478",
+      "issuedOn": "2026-06-29",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "beauty-store-llc-732126-07082026",
+      "firm": "Beauty Store LLC",
+      "cms": "732126",
+      "issuedOn": "2026-07-08",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "ijaj-group-inc-dba-sanz-wholesale-foods-733468-07082026",
+      "firm": "IJAJ Group Inc DBA Sanz Wholesale Foods",
+      "cms": "733468",
+      "issuedOn": "2026-07-08",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "mkpodplugcouk-734448-07172026",
+      "firm": "mkpodplug.co.uk",
+      "cms": "734448",
+      "issuedOn": "2026-07-17",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "nihon-kohden-digital-health-solutions-llc-727803-06122026",
+      "firm": "Nihon Kohden Digital Health Solutions, LLC",
+      "cms": "727803",
+      "issuedOn": "2026-06-12",
+      "subject": "Medical Device/Adulterated/Misbranded/Lacks PMA and/or 510(k)"
+    },
+    {
+      "id": "af-import-wholesale-co-730187-05262026",
+      "firm": "AF Import & Wholesale Co",
+      "cms": "730187",
+      "issuedOn": "2026-05-26",
+      "subject": "Seafood HACCP/CGMP for Foods/Adulterated/Insanitary Conditions"
+    },
+    {
+      "id": "diamond-distributions-llc-731966-06162026",
+      "firm": "Diamond Distributions LLC",
+      "cms": "731966",
+      "issuedOn": "2026-06-16",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "ziip-inc-725870-05222026",
+      "firm": "ZIIP, Inc.",
+      "cms": "725870",
+      "issuedOn": "2026-05-22",
+      "subject": "CGMP/QSR/Medical Devices/Adulterated"
+    },
+    {
+      "id": "spa-de-soleil-inc-728508-07082026",
+      "firm": "Spa De Soleil, Inc.",
+      "cms": "728508",
+      "issuedOn": "2026-07-08",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "international-medication-systems-limited-727560-07022026",
+      "firm": "International Medication Systems Limited",
+      "cms": "727560",
+      "issuedOn": "2026-07-02",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "win-woo-trading-llc-hf-foods-group-732696-06242026",
+      "firm": "Win Woo Trading, LLC / HF Foods Group",
+      "cms": "732696",
+      "issuedOn": "2026-06-24",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "allandale-dairy-727610-06232026",
+      "firm": "Allandale Dairy",
+      "cms": "727610",
+      "issuedOn": "2026-06-23",
+      "subject": "New Animal Drug/Adulterated"
+    },
+    {
+      "id": "snusblastcouk-733425-07022026",
+      "firm": "snusblast.co.uk",
+      "cms": "733425",
+      "issuedOn": "2026-07-02",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "nutratech-llc-723021-06042026",
+      "firm": "Nutratech, LLC",
+      "cms": "723021",
+      "issuedOn": "2026-06-04",
+      "subject": "CGMP/Dietary Supplement/Adulterated/Misbranded"
+    },
+    {
+      "id": "eliquidflavourconcentratescouk-733423-07022026",
+      "firm": "eliquidflavourconcentrates.co.uk",
+      "cms": "733423",
+      "issuedOn": "2026-07-02",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "jb-food-consulting-720186-03272026",
+      "firm": "J&B Food Consulting",
+      "cms": "720186",
+      "issuedOn": "2026-03-27",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "full-fresh-produce-llc-726913-04102026",
+      "firm": "Full Fresh Produce LLC",
+      "cms": "726913",
+      "issuedOn": "2026-04-10",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "lyfeunit-wwwlyfeunitcom-725156-06232026",
+      "firm": "LyfeUnit / www.lyfeunit.com",
+      "cms": "725156",
+      "issuedOn": "2026-06-23",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "all-ketamine-hcl-wwwallketaminehclcom-725150-06232026",
+      "firm": "All Ketamine HCL / www.allketaminehcl.com",
+      "cms": "725150",
+      "issuedOn": "2026-06-23",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "med-shop-inc-wwwmedshopinccom-725157-06232026",
+      "firm": "Med Shop Inc / www.medshopinc.com",
+      "cms": "725157",
+      "issuedOn": "2026-06-23",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "ketamine-troche-store-wwwketaminetrochestorecom-722122-06232026",
+      "firm": "Ketamine Troche Store / www.ketaminetrochestore.com",
+      "cms": "722122",
+      "issuedOn": "2026-06-23",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "ketamine-store-wwwketaminestoreorg-725147-06232026",
+      "firm": "Ketamine Store / www.ketaminestore.org",
+      "cms": "725147",
+      "issuedOn": "2026-06-23",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "pure-arylcyclohexylamine-store-wwwarylcyclohexylaminecom-725151-06232026",
+      "firm": "Pure Arylcyclohexylamine Store / www.arylcyclohexylamine.com",
+      "cms": "725151",
+      "issuedOn": "2026-06-23",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "legit-ketamine-suppliers-wwwlegitketaminesupplierscom-725149-06232026",
+      "firm": "Legit Ketamine Suppliers / www.legitketaminesuppliers.com",
+      "cms": "725149",
+      "issuedOn": "2026-06-23",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "ketacyn-pharmaceuticals-wwwketacynpharmacom-725153-06232026",
+      "firm": "Ketacyn Pharmaceuticals / www.ketacynpharma.com",
+      "cms": "725153",
+      "issuedOn": "2026-06-23",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "keta-med-lab-wwwketamedlabcom-725154-06232026",
+      "firm": "Keta Med Lab / www.ketamedlab.com",
+      "cms": "725154",
+      "issuedOn": "2026-06-23",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "extra-medication-wwwextramedicationcom-725152-06232026",
+      "firm": "Extra Medication / www.extramedication.com",
+      "cms": "725152",
+      "issuedOn": "2026-06-23",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "ketdaxandrugs-wwwketdaxandrugsorg-725155-06232026",
+      "firm": "Ketdaxandrugs / www.ketdaxandrugs.org",
+      "cms": "725155",
+      "issuedOn": "2026-06-23",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "ket-plug-ketaminelaborg-and-buyketaminepowderonlinecom-728919-06232026",
+      "firm": "Ket Plug / ketaminelab.org and buyketaminepowderonline.com",
+      "cms": "728919",
+      "issuedOn": "2026-06-23",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "blephex-llc-725861-06032026",
+      "firm": "BlephEx, LLC",
+      "cms": "725861",
+      "issuedOn": "2026-06-03",
+      "subject": "Medical Device/Adulterated/Misbranded/Lacks PMA and/or 510(k)"
+    },
+    {
+      "id": "buy-keta-online-wwwbuyketaonlinecom-725145-06232026",
+      "firm": "Buy Keta Online / www.buyketaonline.com",
+      "cms": "725145",
+      "issuedOn": "2026-06-23",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "skytron-llc-723950-05192026",
+      "firm": "Skytron, LLC",
+      "cms": "723950",
+      "issuedOn": "2026-05-19",
+      "subject": "Medical Device/Adulterated/Misbranded/Lacks PMA and/or 510(k)"
+    },
+    {
+      "id": "ketaminetrochescom-725148-06232026",
+      "firm": "ketaminetroches.com",
+      "cms": "725148",
+      "issuedOn": "2026-06-23",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "bushman-organic-farms-inc-729451-05142026",
+      "firm": "Bushman Organic Farms, Inc.",
+      "cms": "729451",
+      "issuedOn": "2026-05-14",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "3b-medical-inc-dba-reach-health-inc-725108-05202026",
+      "firm": "3B Medical, Inc. dba Reach Health, Inc.",
+      "cms": "725108",
+      "issuedOn": "2026-05-20",
+      "subject": "CGMP/QSR/Medical Devices/Adulterated"
+    },
+    {
+      "id": "yangzhou-hongshengding-chemical-co-ltd-729710-06152026",
+      "firm": "Yangzhou Hongshengding Chemical Co., Ltd.",
+      "cms": "729710",
+      "issuedOn": "2026-06-15",
+      "subject": "Refusal to Provide Access to and Copying of Records"
+    },
+    {
+      "id": "wizcure-pharmaa-private-limited-726378-06242026",
+      "firm": "Wizcure Pharmaa Private Limited",
+      "cms": "726378",
+      "issuedOn": "2026-06-24",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "bmc-medical-co-ltd-725759-05202026",
+      "firm": "BMC Medical Co., Ltd.",
+      "cms": "725759",
+      "issuedOn": "2026-05-20",
+      "subject": "CGMP/QSR/Medical Devices/PMA/Adulterated/Misbranded"
+    },
+    {
+      "id": "genzyme-ireland-limited-728681-06222026",
+      "firm": "Genzyme Ireland Limited",
+      "cms": "728681",
+      "issuedOn": "2026-06-22",
+      "subject": "CGMP/Deviations/Biologics License Application (BLA)"
+    },
+    {
+      "id": "golden-dakota-farms-llc-725317-05202026",
+      "firm": "Golden Dakota Farms LLC",
+      "cms": "725317",
+      "issuedOn": "2026-05-20",
+      "subject": "New Animal Drug/Adulterated"
+    },
+    {
+      "id": "flax-more-corporation-722845-05122026",
+      "firm": "Flax & More Corporation",
+      "cms": "722845",
+      "issuedOn": "2026-05-12",
+      "subject": "CGMP/Dietary Supplement/Adulterated"
+    },
+    {
+      "id": "life-food-inc-731887-06152026",
+      "firm": "Life & Food Inc.",
+      "cms": "731887",
+      "issuedOn": "2026-06-15",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "huons-co-ltd-724650-06152026",
+      "firm": "Huons Co., Ltd.",
+      "cms": "724650",
+      "issuedOn": "2026-06-15",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "imu-tek-animal-health-incorporated-724610-06052026",
+      "firm": "Imu-Tek Animal Health, Incorporated",
+      "cms": "724610",
+      "issuedOn": "2026-06-05",
+      "subject": "Dietary Supplement/New Drug/Misbranded"
+    },
+    {
+      "id": "vivot-llc-731520-06082026",
+      "firm": "Vivot LLC",
+      "cms": "731520",
+      "issuedOn": "2026-06-08",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "jubilant-hollisterstier-general-partnership-723537-05282026",
+      "firm": "Jubilant HollisterStier General Partnership",
+      "cms": "723537",
+      "issuedOn": "2026-05-28",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "pamex-foods-incorporated-730351-05262026",
+      "firm": "Pamex Foods Incorporated",
+      "cms": "730351",
+      "issuedOn": "2026-05-26",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "global-imports-origins-728463-04232026",
+      "firm": "Global Imports Origins",
+      "cms": "728463",
+      "issuedOn": "2026-04-23",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "jjlbro-729873-06172026",
+      "firm": "JJLBRO",
+      "cms": "729873",
+      "issuedOn": "2026-06-17",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "great-india-overseas-pvt-ltd-dba-silkrute-729065-06172026",
+      "firm": "Great India Overseas Pvt. Ltd. dba Silkrute",
+      "cms": "729065",
+      "issuedOn": "2026-06-17",
+      "subject": "Unapproved New Drugs"
+    },
+    {
+      "id": "telos-trading-limited-dba-alwinshop-729062-06172026",
+      "firm": "Telos Trading Limited dba Alwinshop",
+      "cms": "729062",
+      "issuedOn": "2026-06-17",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "indiangoodsshop-729068-06172026",
+      "firm": "Indiangoods.shop",
+      "cms": "729068",
+      "issuedOn": "2026-06-17",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "wild-arabic-herbs-729192-06172026",
+      "firm": "Wild Arabic Herbs",
+      "cms": "729192",
+      "issuedOn": "2026-06-17",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "hadassah-healing-oils-ltd-729191-06172026",
+      "firm": "Hadassah Healing Oils Ltd",
+      "cms": "729191",
+      "issuedOn": "2026-06-17",
+      "subject": "Unapproved New Drugs"
+    },
+    {
+      "id": "wholesale-peptide-729447-06172026",
+      "firm": "Wholesale Peptide",
+      "cms": "729447",
+      "issuedOn": "2026-06-17",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "leading-edge-health-inc-729193-06172026",
+      "firm": "Leading Edge Health Inc.",
+      "cms": "729193",
+      "issuedOn": "2026-06-17",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "texinkart-inc-729046-06172026",
+      "firm": "Texinkart Inc.",
+      "cms": "729046",
+      "issuedOn": "2026-06-17",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "herbal-dermals-llc-fz-dba-gotucream-729043-06172026",
+      "firm": "Herbal Dermals LLC FZ dba Gotucream",
+      "cms": "729043",
+      "issuedOn": "2026-06-17",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "amazoncom-inc-728814-06172026",
+      "firm": "Amazon.com, Inc.",
+      "cms": "728814",
+      "issuedOn": "2026-06-17",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "nativemed-llc-dba-nativemed-728287-06082026",
+      "firm": "NativeMed LLC dba NativeMed",
+      "cms": "728287",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "zoll-medical-corporation-711320-04302026",
+      "firm": "ZOLL Medical Corporation",
+      "cms": "711320",
+      "issuedOn": "2026-04-30",
+      "subject": "CGMP/QSR/Medical Devices/Adulterated"
+    },
+    {
+      "id": "hydramed-iv-llc-dba-hydramed-728282-06082026",
+      "firm": "HydraMed IV LLC dba HydraMed",
+      "cms": "728282",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "nexus-health-solutions-llc-dba-harper-meds-728281-06082026",
+      "firm": "Nexus Health Solutions LLC dba Harper Meds",
+      "cms": "728281",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "fitrx-llc-dba-am-rx-728275-06082026",
+      "firm": "FitRX, LLC dba AM RX",
+      "cms": "728275",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "altru-telehealth-llc-dba-altru-telehealth-728274-06082026",
+      "firm": "Altru Telehealth, LLC dba Altru Telehealth",
+      "cms": "728274",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "eden-health-international-inc-dba-eden-728279-06082026",
+      "firm": "Eden Health International Inc. dba Eden",
+      "cms": "728279",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "trinity-healthcare-supply-llc-dba-altrx-728236-06082026",
+      "firm": "Trinity HealthCare Supply, LLC dba altRx",
+      "cms": "728236",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "ys-group-inc-731129-06082026",
+      "firm": "YS Group Inc.",
+      "cms": "731129",
+      "issuedOn": "2026-06-08",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "pharmathen-international-sa-723680-05272026",
+      "firm": "Pharmathen International S.A.",
+      "cms": "723680",
+      "issuedOn": "2026-05-27",
+      "subject": "CGMP/Active Pharmaceutical Ingredient (API)/Adulterated"
+    },
+    {
+      "id": "amie-health-inc-dba-amie-728276-06082026",
+      "firm": "Amie Health, Inc. dba Amie",
+      "cms": "728276",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "thrivelab-co-dba-thrivelab-728294-06082026",
+      "firm": "Thrivelab Co. dba Thrivelab",
+      "cms": "728294",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "viviomd-group-llc-dba-viviomd-728295-06082026",
+      "firm": "VivioMD Group LLC dba VivioMD",
+      "cms": "728295",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "glow-medispa-llc-dba-mint-med-730390-06082026",
+      "firm": "Glow Medispa, LLC dba Mint Med",
+      "cms": "730390",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "nexlife-inc-dba-nexlife-730096-06082026",
+      "firm": "Nexlife Inc. dba Nexlife",
+      "cms": "730096",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "public-health-solution-llc-dba-drmedhealth-728278-06082026",
+      "firm": "Public Health Solution LLC dba DrMedHealth",
+      "cms": "728278",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "sl-follen-company-730191-06022026",
+      "firm": "SL Follen Company",
+      "cms": "730191",
+      "issuedOn": "2026-06-02",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "invaderm-inc-713177-06032026",
+      "firm": "InvaDerm, Inc.",
+      "cms": "713177",
+      "issuedOn": "2026-06-03",
+      "subject": "Electronic Drug Registration and Listing System (eDRLS)/Violations"
+    },
+    {
+      "id": "dh-medical-services-728238-06082026",
+      "firm": "D&H Medical Services",
+      "cms": "728238",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "m-g-r-produce-llc-730040-06022026",
+      "firm": "M G R Produce LLC",
+      "cms": "730040",
+      "issuedOn": "2026-06-02",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "momentum-health-360-dba-momentum-health-728286-06082026",
+      "firm": "Momentum Health 360 dba Momentum Health",
+      "cms": "728286",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "medica-weight-loss-728284-06082026",
+      "firm": "Medica Weight Loss",
+      "cms": "728284",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "sante-manufacturing-inc-724931-06052026",
+      "firm": "Sante Manufacturing Inc.",
+      "cms": "724931",
+      "issuedOn": "2026-06-05",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "ezra-holdco-llc-dba-ezra-730995-06082026",
+      "firm": "Ezra Holdco LLC dba Ezra",
+      "cms": "730995",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "ready-med-730317-06082026",
+      "firm": "Ready Med",
+      "cms": "730317",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "fitish-728280-06082026",
+      "firm": "FITISH",
+      "cms": "728280",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "orderlymeds-llc-dba-orderlymeds-728291-06082026",
+      "firm": "OrderlyMeds LLC dba OrderlyMeds",
+      "cms": "728291",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "roen-health-inc-dba-roenrx-728293-06082026",
+      "firm": "Roen Health, Inc. dba RoenRx",
+      "cms": "728293",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "joi-and-blokes-dba-joi-blokes-728283-06082026",
+      "firm": "Joi and Blokes dba Joi + Blokes",
+      "cms": "728283",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "nova-vascular-llc-dba-novarx-728290-06082026",
+      "firm": "Nova Vascular LLC dba NOVARX",
+      "cms": "728290",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "clover-meds-llc-dba-clover-meds-728234-06082026",
+      "firm": "Clover Meds LLC dba Clover Meds",
+      "cms": "728234",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "maximus-health-inc-dba-maximus-730095-06082026",
+      "firm": "Maximus Health, Inc. dba Maximus",
+      "cms": "730095",
+      "issuedOn": "2026-06-08",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "happiest-baby-inc-718306-06152026",
+      "firm": "Happiest Baby, Inc.",
+      "cms": "718306",
+      "issuedOn": "2026-06-15",
+      "subject": "Investigational Device Exemptions (IDE)/Premarket Approval Application (PMA) Adulterated Device"
+    },
+    {
+      "id": "gopaldas-visram-co-ltd-721755-06022026",
+      "firm": "Gopaldas Visram & Co., Ltd.",
+      "cms": "721755",
+      "issuedOn": "2026-06-02",
+      "subject": "CGMP/OTC Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "laboratorios-dr-collado-sa-723285-06022026",
+      "firm": "Laboratorios Dr. Collado S.A.",
+      "cms": "723285",
+      "issuedOn": "2026-06-02",
+      "subject": "CGMP/OTC Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "revlon-group-holdings-llc-722596-06022026",
+      "firm": "Revlon Group Holdings, LLC",
+      "cms": "722596",
+      "issuedOn": "2026-06-02",
+      "subject": "CGMP/OTC Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "umendra-life-sciences-private-limited-721752-06022026",
+      "firm": "Umendra Life Sciences Private Limited",
+      "cms": "721752",
+      "issuedOn": "2026-06-02",
+      "subject": "CGMP/OTC Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "erkul-kozmetik-sanayi-ve-ticaret-721964-06022026",
+      "firm": "Erkul Kozmetik Sanayi ve Ticaret A.S.",
+      "cms": "721964",
+      "issuedOn": "2026-06-02",
+      "subject": "CGMP/OTC Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "plz-corp-721140-06022026",
+      "firm": "PLZ Corp",
+      "cms": "721140",
+      "issuedOn": "2026-06-02",
+      "subject": "CGMP/OTC Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "shantou-qiwei-industry-co-ltd-721753-06022026",
+      "firm": "Shantou Qiwei Industry Co., LTD",
+      "cms": "721753",
+      "issuedOn": "2026-06-02",
+      "subject": "CGMP/OTC Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "zydus-lifesciences-limited-722576-06022026",
+      "firm": "Zydus Lifesciences Limited",
+      "cms": "722576",
+      "issuedOn": "2026-06-02",
+      "subject": "Request for Records/CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "bharat-overseas-inc-729199-05142026",
+      "firm": "Bharat Overseas Inc.",
+      "cms": "729199",
+      "issuedOn": "2026-05-14",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "jose-m-carpio-md-730966-05282026",
+      "firm": "Jose M. Carpio, M.D.",
+      "cms": "730966",
+      "issuedOn": "2026-05-28",
+      "subject": "Clinical Investigator"
+    },
+    {
+      "id": "fagron-bv-724551-05122026",
+      "firm": "Fagron BV",
+      "cms": "724551",
+      "issuedOn": "2026-05-12",
+      "subject": "Compounding Pharmacy/Adulterated Drug Products"
+    },
+    {
+      "id": "hubei-gedian-humanwell-pharmaceutical-co-ltd-725591-06032026",
+      "firm": "Hubei Gedian Humanwell Pharmaceutical Co., Ltd.",
+      "cms": "725591",
+      "issuedOn": "2026-06-03",
+      "subject": "CGMP/Active Pharmaceutical Ingredient (API)/Adulterated"
+    },
+    {
+      "id": "macau-union-pharmaceutical-limited-724506-05292026",
+      "firm": "Macau-Union Pharmaceutical Limited",
+      "cms": "724506",
+      "issuedOn": "2026-05-29",
+      "subject": "Nonprescription/OTC"
+    },
+    {
+      "id": "stavis-seafoods-llc-727785-04152026",
+      "firm": "Stavis Seafoods, LLC",
+      "cms": "727785",
+      "issuedOn": "2026-04-15",
+      "subject": "Seafood HACCP/CGMP for Foods/Adulterated/Insanitary Conditions"
+    },
+    {
+      "id": "laboratorios-jaloma-sa-de-cv-725939-05222026",
+      "firm": "Laboratorios Jaloma S.A. de C.V.",
+      "cms": "725939",
+      "issuedOn": "2026-05-22",
+      "subject": "CGMP/OTC/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "medline-inc-724347-05282026",
+      "firm": "Medline Inc",
+      "cms": "724347",
+      "issuedOn": "2026-05-28",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "blue-horizon-international-llc-728085-05262026",
+      "firm": "Blue Horizon International, LLC",
+      "cms": "728085",
+      "issuedOn": "2026-05-26",
+      "subject": "Unapproved New Drugs/Unlicensed Biological Product Violations"
+    },
+    {
+      "id": "dough-go-inc-727845-05122026",
+      "firm": "Dough-To-Go, Inc.",
+      "cms": "727845",
+      "issuedOn": "2026-05-12",
+      "subject": "CGMP/Hazard Analysis/Risk-Based Preventive Controls for Food/Adulterated"
+    },
+    {
+      "id": "aversas-italian-bakery-722904-05202026",
+      "firm": "Aversa's Italian Bakery",
+      "cms": "722904",
+      "issuedOn": "2026-05-20",
+      "subject": "CGMP/Hazard Analysis/Risk-Based Preventive Controls for Food/Adulterated"
+    },
+    {
+      "id": "aeroflex-industria-de-aerosol-ltda-728186-05222026",
+      "firm": "Aeroflex Industria de Aerosol Ltda.",
+      "cms": "728186",
+      "issuedOn": "2026-05-22",
+      "subject": "Refusal to Provide Access to and Copying of Records"
+    },
+    {
+      "id": "meta-labs-pharmaceuticals-llc-725130-05152026",
+      "firm": "Meta Labs Pharmaceuticals, LLC",
+      "cms": "725130",
+      "issuedOn": "2026-05-15",
+      "subject": "Dietary Supplement/New Drug/Misbranded"
+    },
+    {
+      "id": "boba-factory-inc-728438-04222026",
+      "firm": "Boba Factory Inc",
+      "cms": "728438",
+      "issuedOn": "2026-04-22",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "healthpartners-neuroscience-center-research-and-innovation-725333-05192026",
+      "firm": "HealthPartners Neuroscience Center Research and Innovation",
+      "cms": "725333",
+      "issuedOn": "2026-05-19",
+      "subject": "Good Laboratory Practice (GLP) for Nonclinical Laboratory Studies"
+    },
+    {
+      "id": "city-market-inc-727003-05152026",
+      "firm": "City Market, Inc.",
+      "cms": "727003",
+      "issuedOn": "2026-05-15",
+      "subject": "Seafood HACCP/CGMP for Foods/Adulterated/Insanitary Conditions"
+    },
+    {
+      "id": "sato-pharmaceutical-co-ltd-723059-05182026",
+      "firm": "Sato Pharmaceutical Co., Ltd.",
+      "cms": "723059",
+      "issuedOn": "2026-05-18",
+      "subject": "CGMP/Drugs/Adulterated/OTC"
+    },
+    {
+      "id": "gc-america-inc-727602-05142026",
+      "firm": "GC America, Inc.",
+      "cms": "727602",
+      "issuedOn": "2026-05-14",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "adnan-dahdul-md-719607-03122026",
+      "firm": "Adnan Dahdul, MD",
+      "cms": "719607",
+      "issuedOn": "2026-03-12",
+      "subject": "Clinical Investigator/BIMO"
+    },
+    {
+      "id": "best-buy-bones-inc-719212-04302026",
+      "firm": "Best Buy Bones, Inc.",
+      "cms": "719212",
+      "issuedOn": "2026-04-30",
+      "subject": "CGMP/Hazard Analysis/Risk-Based Preventive Controls for Food for Animals (PCAF)/Adulterated"
+    },
+    {
+      "id": "alchymars-icm-sm-private-limited-724429-05212026",
+      "firm": "Alchymars ICM SM Private Limited",
+      "cms": "724429",
+      "issuedOn": "2026-05-21",
+      "subject": "CGMP/Active Pharmaceutical Ingredient (API)/Adulterated"
+    },
+    {
+      "id": "shineluck-foods-inc-720155-04292026",
+      "firm": "Shineluck Foods, Inc.",
+      "cms": "720155",
+      "issuedOn": "2026-04-29",
+      "subject": "CGMP/Food/Prepared, Packed or Held Under Insanitary Conditions/Adulterated/L. monocytogenes"
+    },
+    {
+      "id": "zap-expo-center-inc-726547-03312026",
+      "firm": "Zap Expo Center Inc.",
+      "cms": "726547",
+      "issuedOn": "2026-03-31",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "gsc-products-llc-729653-05182026",
+      "firm": "GSC Products, LLC",
+      "cms": "729653",
+      "issuedOn": "2026-05-18",
+      "subject": "Nonprescription/OTC"
+    },
+    {
+      "id": "aja-health-and-wellness-inc-729644-05182026",
+      "firm": "Aja Health and Wellness Inc.",
+      "cms": "729644",
+      "issuedOn": "2026-05-18",
+      "subject": "Nonprescription/OTC"
+    },
+    {
+      "id": "gethyppecom-730121-05192026",
+      "firm": "gethyppe.com",
+      "cms": "730121",
+      "issuedOn": "2026-05-19",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "pouchlinecom-730123-05192026",
+      "firm": "pouchline.com",
+      "cms": "730123",
+      "issuedOn": "2026-05-19",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "npouchescom-730125-05192026",
+      "firm": "npouches.com",
+      "cms": "730125",
+      "issuedOn": "2026-05-19",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "pouchewcom-730107-05192026",
+      "firm": "pouchew.com",
+      "cms": "730107",
+      "issuedOn": "2026-05-19",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "vapetrinitycom-730109-05192026",
+      "firm": "vapetrinity.com",
+      "cms": "730109",
+      "issuedOn": "2026-05-19",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "smoker-business-730104-05192026",
+      "firm": "Smoker Business",
+      "cms": "730104",
+      "issuedOn": "2026-05-19",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "snusguyscom-730124-05192026",
+      "firm": "snusguys.com",
+      "cms": "730124",
+      "issuedOn": "2026-05-19",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "vapenovacocom-730110-05192026",
+      "firm": "vapenovaco.com",
+      "cms": "730110",
+      "issuedOn": "2026-05-19",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "hangzhou-yiqi-biotechnology-co-ltd-720707-04152026",
+      "firm": "Hangzhou Yiqi Biotechnology Co., Ltd",
+      "cms": "720707",
+      "issuedOn": "2026-04-15",
+      "subject": "CGMP/Active Pharmaceutical Ingredient (API)/Adulterated"
+    },
+    {
+      "id": "lus-essentials-llc-728783-05142026",
+      "firm": "Lus Essentials LLC",
+      "cms": "728783",
+      "issuedOn": "2026-05-14",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "la-crema-de-rebeca-728782-05142026",
+      "firm": "La Crema De Rebeca",
+      "cms": "728782",
+      "issuedOn": "2026-05-14",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "sourav-k-mishra-md-all-india-institute-medical-sciences-724881-04292026",
+      "firm": "Sourav K. Mishra, M.D. / All India Institute of Medical Sciences",
+      "cms": "724881",
+      "issuedOn": "2026-04-29",
+      "subject": "In Vivo Bioavailability-Bioequivalence Studies \u2013 Clinical"
+    },
+    {
+      "id": "naseem-jaffrani-md-729750-05042026",
+      "firm": "Naseem A. Jaffrani, M.D.",
+      "cms": "729750",
+      "issuedOn": "2026-05-04",
+      "subject": "Clinical Investigator"
+    },
+    {
+      "id": "waterbedsnstuffcom-729435-05082026",
+      "firm": "waterbedsnstuff.com",
+      "cms": "729435",
+      "issuedOn": "2026-05-08",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "ct-riecigcom-729612-05082026",
+      "firm": "ct-riecig.com",
+      "cms": "729612",
+      "issuedOn": "2026-05-08",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "great-one-trading-inc-728716-04242026",
+      "firm": "Great One Trading Inc.",
+      "cms": "728716",
+      "issuedOn": "2026-04-24",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "sahara-enterprise-inc-728927-04292026",
+      "firm": "Sahara Enterprise Inc.",
+      "cms": "728927",
+      "issuedOn": "2026-04-29",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "vape4salecom-729728-05152026",
+      "firm": "vape4sale.com",
+      "cms": "729728",
+      "issuedOn": "2026-05-15",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "harbin-jixianglong-biotech-co-ltd-723330-05012026",
+      "firm": "Harbin Jixianglong Biotech Co., Ltd.",
+      "cms": "723330",
+      "issuedOn": "2026-05-01",
+      "subject": "CGMP/API/Adulterated and Misbranded Drugs"
+    },
+    {
+      "id": "jw-nutritional-llc-722096-04152026",
+      "firm": "JW Nutritional LLC",
+      "cms": "722096",
+      "issuedOn": "2026-04-15",
+      "subject": "CGMP/OTC Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "polleymed-llc-726018-05142026",
+      "firm": "PolleyMed, LLC",
+      "cms": "726018",
+      "issuedOn": "2026-05-14",
+      "subject": "Nonprescription/OTC"
+    },
+    {
+      "id": "ido-pharm-co-ltd-723449-05042026",
+      "firm": "IDO Pharm Co., Ltd.",
+      "cms": "723449",
+      "issuedOn": "2026-05-04",
+      "subject": "CGMP/OTC Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "ridley-usa-inc-720800-04032026",
+      "firm": "Ridley USA Inc.",
+      "cms": "720800",
+      "issuedOn": "2026-04-03",
+      "subject": "CGMP/Medicated Feeds/Adulterated"
+    },
+    {
+      "id": "baja-fresko-distributors-inc-725781-03272026",
+      "firm": "Baja Fresko Distributors Inc.",
+      "cms": "725781",
+      "issuedOn": "2026-03-27",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "minh-phung-inc-723409-04222026",
+      "firm": "Minh Phung, Inc.",
+      "cms": "723409",
+      "issuedOn": "2026-04-22",
+      "subject": "CGMP/Food/Prepared, Packed or Held Under Insanitary Conditions/Adulterated"
+    },
+    {
+      "id": "fish-aid-726862-04032026",
+      "firm": "The Fish Aid",
+      "cms": "726862",
+      "issuedOn": "2026-04-03",
+      "subject": "Unapproved New Animal Drug Products"
+    },
+    {
+      "id": "optihealth-products-inc-704899-04292026",
+      "firm": "OptiHealth Products, Inc.",
+      "cms": "704899",
+      "issuedOn": "2026-04-29",
+      "subject": "New Drug/Misbranded"
+    },
+    {
+      "id": "mukesh-b-chandre-md-mbbsashirwad-hospital-research-centre-724911-04292026",
+      "firm": "Mukesh B. Chandre, M.D., MBBS/Ashirwad Hospital & Research Centre",
+      "cms": "724911",
+      "issuedOn": "2026-04-29",
+      "subject": "In Vivo Bioavailability-Bioequivalence Studies \u2013 Clinical"
+    },
+    {
+      "id": "jmt-inter-llc-718661-02192026",
+      "firm": "JMT Inter LLC",
+      "cms": "718661",
+      "issuedOn": "2026-02-19",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "naveh-pharma-ltdbigdam-inc-724669-05042026",
+      "firm": "Naveh Pharma LTD/Bigdam Inc.",
+      "cms": "724669",
+      "issuedOn": "2026-05-04",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated/Unapproved New Drug"
+    },
+    {
+      "id": "prorx-llc-723704-04072026",
+      "firm": "ProRx LLC",
+      "cms": "723704",
+      "issuedOn": "2026-04-07",
+      "subject": "Compounding Pharmacy/Adulterated Drug Products"
+    },
+    {
+      "id": "estar-technologies-ltd-716831-04222026",
+      "firm": "Estar Technologies Ltd",
+      "cms": "716831",
+      "issuedOn": "2026-04-22",
+      "subject": "Investigational Device Exemptions (IDE)/Premarket Approval Application (PMA) Adulterated Device"
+    },
+    {
+      "id": "swisschlzcom-729060-05012026",
+      "firm": "swisschlz.com",
+      "cms": "729060",
+      "issuedOn": "2026-05-01",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "kadobarofficialcom-729131-05012026",
+      "firm": "kadobarofficial.com",
+      "cms": "729131",
+      "issuedOn": "2026-05-01",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "ava-inc-721180-04142026",
+      "firm": "Ava Inc.",
+      "cms": "721180",
+      "issuedOn": "2026-04-14",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "doco-aktiengesellschaftdoco-inc-717773-03302026",
+      "firm": "DO&CO Aktiengesellschaft/DO&CO, Inc.",
+      "cms": "717773",
+      "issuedOn": "2026-03-30",
+      "subject": "CGMP/Food/Prepared, Packed or Held Under Insanitary Conditions/Adulterated/L. monocytogenes"
+    },
+    {
+      "id": "active-cosmetics-manufacturing-inc-722408-04222026",
+      "firm": "Active Cosmetics Manufacturing Inc.",
+      "cms": "722408",
+      "issuedOn": "2026-04-22",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "unetixs-vascular-inc-724245-04152026",
+      "firm": "Unetixs Vascular, Inc.",
+      "cms": "724245",
+      "issuedOn": "2026-04-15",
+      "subject": "Premarket Approval/Adulterated"
+    },
+    {
+      "id": "naumes-inc-719653-01212026",
+      "firm": "Naumes, Inc.",
+      "cms": "719653",
+      "issuedOn": "2026-01-21",
+      "subject": "Food/Prepared Packed or Held Under Insanitary Conditions/Adulterated"
+    },
+    {
+      "id": "supersmart-usa-llc-706566-01212026",
+      "firm": "Supersmart USA, LLC",
+      "cms": "706566",
+      "issuedOn": "2026-01-21",
+      "subject": "New Drug/Misbranded"
+    },
+    {
+      "id": "vibepixicom-728476-04242026",
+      "firm": "vibepixi.com",
+      "cms": "728476",
+      "issuedOn": "2026-04-24",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "isa-produce-corporation-724687-03122026",
+      "firm": "ISA Produce Corporation",
+      "cms": "724687",
+      "issuedOn": "2026-03-12",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "greenworld-food-express-llc-728188-04242026",
+      "firm": "Greenworld Food Express LLC",
+      "cms": "728188",
+      "issuedOn": "2026-04-24",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "diamond-herpanacine-pa-inc-713854-01222026",
+      "firm": "Diamond-Herpanacine of PA, Inc.",
+      "cms": "713854",
+      "issuedOn": "2026-01-22",
+      "subject": "New Drug/Misbranded"
+    },
+    {
+      "id": "carefusion-213-llc-722729-04302026",
+      "firm": "CareFusion 213, LLC",
+      "cms": "722729",
+      "issuedOn": "2026-04-30",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "rsv-pita-inc-dba-pita-pan-bakery-719561-12182025",
+      "firm": "RSV Pita, Inc. DBA Pita Pan Bakery",
+      "cms": "719561",
+      "issuedOn": "2025-12-18",
+      "subject": "CGMP/Food/Prepared, Packed or Held Under Insanitary Conditions/Adulterated"
+    },
+    {
+      "id": "natures-elements-inc-719302-04072026",
+      "firm": "Nature\u2019s Elements, Inc.",
+      "cms": "719302",
+      "issuedOn": "2026-04-07",
+      "subject": "CGMP/Dietary Supplement/Adulterated/Misbranded"
+    },
+    {
+      "id": "rays-vitamins-726694-04242026",
+      "firm": "Ray\u2019s Vitamins",
+      "cms": "726694",
+      "issuedOn": "2026-04-24",
+      "subject": "Unapproved New Drug/Misbranded"
+    },
+    {
+      "id": "ibeautistorecom-726302-04242026",
+      "firm": "ibeautistore.com",
+      "cms": "726302",
+      "issuedOn": "2026-04-24",
+      "subject": "Unapproved New Drug/Misbranded"
+    },
+    {
+      "id": "jadepouchcom-728474-04232026",
+      "firm": "jadepouch.com",
+      "cms": "728474",
+      "issuedOn": "2026-04-23",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "respilon-production-sro-719705-04202026",
+      "firm": "Respilon Production S.R.O.",
+      "cms": "719705",
+      "issuedOn": "2026-04-20",
+      "subject": "CGMP/OTC/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "min-jiang-food-store-inc-dba-koi-koi-trading-718312-01142026",
+      "firm": "Min Jiang Food Store Inc dba Koi Koi Trading",
+      "cms": "718312",
+      "issuedOn": "2026-01-14",
+      "subject": "Seafood HACCP/CGMP for Foods/Adulterated/Insanitary Conditions"
+    },
+    {
+      "id": "south-bay-cold-storage-handling-inc-717080-01222026",
+      "firm": "South Bay Cold Storage & Handling, Inc.",
+      "cms": "717080",
+      "issuedOn": "2026-01-22",
+      "subject": "Seafood HACCP/CGMP for Foods/Adulterated/Insanitary Conditions"
+    },
+    {
+      "id": "intelligent-remedies-inc-681941-01232026",
+      "firm": "Intelligent Remedies, Inc.",
+      "cms": "681941",
+      "issuedOn": "2026-01-23",
+      "subject": "New Drug/Misbranded"
+    },
+    {
+      "id": "aaa-international-seafood-corp-718535-11202025",
+      "firm": "Aaa International Seafood Corp.",
+      "cms": "718535",
+      "issuedOn": "2025-11-20",
+      "subject": "Seafood HACCP/CGMP for Foods/Adulterated/Insanitary Conditions"
+    },
+    {
+      "id": "lexia-llc-722251-04072026",
+      "firm": "Lexia LLC",
+      "cms": "722251",
+      "issuedOn": "2026-04-07",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "intas-pharmaceuticals-limited-721151-03302026",
+      "firm": "Intas Pharmaceuticals Limited",
+      "cms": "721151",
+      "issuedOn": "2026-03-30",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "wilatta-group-inc-727025-04082026",
+      "firm": "The Wilatta Group Inc.",
+      "cms": "727025",
+      "issuedOn": "2026-04-08",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "nupack-inc-722113-03202026",
+      "firm": "Nupack Inc.",
+      "cms": "722113",
+      "issuedOn": "2026-03-20",
+      "subject": "CGMP/Dietary Supplement/Adulterated/Misbranded"
+    },
+    {
+      "id": "foshan-miwei-cosmetics-co-ltd-722272-04202026",
+      "firm": "Foshan Miwei Cosmetics Co., Ltd.",
+      "cms": "722272",
+      "issuedOn": "2026-04-20",
+      "subject": "Nonprescription/OTC"
+    },
+    {
+      "id": "daily-manufacturing-solutions-inc-728255-04212026",
+      "firm": "Daily Manufacturing Solutions Inc.",
+      "cms": "728255",
+      "issuedOn": "2026-04-21",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "par-health-usa-llc-endo-usa-inc-722121-04152026",
+      "firm": "Par Health USA, LLC & Endo USA, Inc.",
+      "cms": "722121",
+      "issuedOn": "2026-04-15",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "xiamen-kang-zhongyuan-biotechnology-co-ltd-719320-03232026",
+      "firm": "Xiamen Kang Zhongyuan Biotechnology Co., Ltd.",
+      "cms": "719320",
+      "issuedOn": "2026-03-23",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "vapepengoodcom-727250-04092026",
+      "firm": "vapepengood.com",
+      "cms": "727250",
+      "issuedOn": "2026-04-09",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "new-life-pharma-llc-725661-04142026",
+      "firm": "New Life Pharma LLC",
+      "cms": "725661",
+      "issuedOn": "2026-04-14",
+      "subject": "CGMP/Adulterated and Unapproved New Drug/Misbranded"
+    },
+    {
+      "id": "espifresh-inc-724452-03062026",
+      "firm": "Espifresh Inc.",
+      "cms": "724452",
+      "issuedOn": "2026-03-06",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "nicoprofcom-727982-04172026",
+      "firm": "nicoprof.com",
+      "cms": "727982",
+      "issuedOn": "2026-04-17",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "eaglelionton-intl-trading-co-inc-724560-03262026",
+      "firm": "Eaglelionton Int'l Trading Co Inc",
+      "cms": "724560",
+      "issuedOn": "2026-03-26",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "ucsf-radiopharmaceutical-facility-719568-04132026",
+      "firm": "UCSF Radiopharmaceutical Facility",
+      "cms": "719568",
+      "issuedOn": "2026-04-13",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "rc-outsourcing-llc-722877-03202026",
+      "firm": "RC Outsourcing, LLC",
+      "cms": "722877",
+      "issuedOn": "2026-03-20",
+      "subject": "Compounding Pharmacy/Adulterated Drug Products"
+    },
+    {
+      "id": "apollo-care-llc-715955-02022026",
+      "firm": "Apollo Care, LLC",
+      "cms": "715955",
+      "issuedOn": "2026-02-02",
+      "subject": "Compounding Pharmacy/Adulterated Drug Products"
+    },
+    {
+      "id": "shopcalismokescom-727256-04102026",
+      "firm": "shopcalismokes.com",
+      "cms": "727256",
+      "issuedOn": "2026-04-10",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "pro-numb-tattoo-numbing-spray-llc-722589-04142026",
+      "firm": "Pro Numb Tattoo Numbing Spray, LLC",
+      "cms": "722589",
+      "issuedOn": "2026-04-14",
+      "subject": "Nonprescription/OTC"
+    },
+    {
+      "id": "thrive-health-and-wellness-llc-dba-thrive-health-solutions-714891-02092026",
+      "firm": "Thrive Health and Wellness, LLC dba Thrive Health Solutions",
+      "cms": "714891",
+      "issuedOn": "2026-02-09",
+      "subject": "Compounding Pharmacy/Adulterated Drug Products"
+    },
+    {
+      "id": "smart-vending-services-llc-724469-04072026",
+      "firm": "Smart Vending Services, LLC",
+      "cms": "724469",
+      "issuedOn": "2026-04-07",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "schlechter-farms-inc-722153-03182026",
+      "firm": "Schlechter Farms Inc.",
+      "cms": "722153",
+      "issuedOn": "2026-03-18",
+      "subject": "CGMP/Food/Prepared, Packed or Held Under Insanitary Conditions/Adulterated"
+    },
+    {
+      "id": "barcelona-nut-company-inc-721619-03032026",
+      "firm": "Barcelona Nut Company Inc.",
+      "cms": "721619",
+      "issuedOn": "2026-03-03",
+      "subject": "CGMP/Food/Prepared, Packed or Held Under Insanitary Conditions/Adulterated"
+    },
+    {
+      "id": "half-hill-farm-inc-720213-03062026",
+      "firm": "Half Hill Farm Inc.",
+      "cms": "720213",
+      "issuedOn": "2026-03-06",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "purolea-cosmetics-lab-722591-04022026",
+      "firm": "Purolea Cosmetics Lab",
+      "cms": "722591",
+      "issuedOn": "2026-04-02",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated/Unapproved New Drug"
+    },
+    {
+      "id": "mohawksmokecom-726970-04032026",
+      "firm": "mohawksmoke.com",
+      "cms": "726970",
+      "issuedOn": "2026-04-03",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "dry-springs-pharmacy-723460-04012026",
+      "firm": "Dry Springs Pharmacy",
+      "cms": "723460",
+      "issuedOn": "2026-04-01",
+      "subject": "Notice of Unlawful Sale of Unapproved and Misbranded Drugs to United States Consumers Over the Internet"
+    },
+    {
+      "id": "online-rx-medz-723472-04012026",
+      "firm": "Online Rx Medz",
+      "cms": "723472",
+      "issuedOn": "2026-04-01",
+      "subject": "Notice of Unlawful Sale of Unapproved Drugs to United States Consumers Over the Internet"
+    },
+    {
+      "id": "rxgoodusa-723622-04012026",
+      "firm": "Rxgoodusa",
+      "cms": "723622",
+      "issuedOn": "2026-04-01",
+      "subject": "Notice of Unlawful Sale of Unapproved Drugs to United States Consumers Over the Internet"
+    },
+    {
+      "id": "beauty-aztlan-llc-723532-04022026",
+      "firm": "Beauty of Aztlan LLC",
+      "cms": "723532",
+      "issuedOn": "2026-04-02",
+      "subject": "Notice of Unlawful Sale of Unapproved Drugs to United States Consumers Over the Internet"
+    },
+    {
+      "id": "medical-products-laboratories-inc-721916-04092026",
+      "firm": "Medical Products Laboratories, Inc.",
+      "cms": "721916",
+      "issuedOn": "2026-04-09",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated/Unapproved New Drug"
+    },
+    {
+      "id": "chemco-corporation-721592-04072026",
+      "firm": "Chemco Corporation",
+      "cms": "721592",
+      "issuedOn": "2026-04-07",
+      "subject": "Nonprescription/OTC"
+    },
+    {
+      "id": "lovega-llc-dba-pink-pony-peptides-721088-03312026",
+      "firm": "Lovega LLC dba Pink Pony Peptides",
+      "cms": "721088",
+      "issuedOn": "2026-03-31",
+      "subject": "Unapproved New Drugs Sold Over the Internet"
+    },
+    {
+      "id": "guangzhou-huli-technology-co-ltd-dba-fantasy-face-722228-03312026",
+      "firm": "Guangzhou Huli Technology Co., Ltd. dba Fantasy Face",
+      "cms": "722228",
+      "issuedOn": "2026-03-31",
+      "subject": "Unapproved New Drugs Sold Over the Internet"
+    },
+    {
+      "id": "global-tobacco-llc-725103-03312026",
+      "firm": "Global Tobacco, LLC",
+      "cms": "725103",
+      "issuedOn": "2026-03-31",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "ehsan-sadri-md-726342-03272026",
+      "firm": "Ehsan Sadri, M.D.",
+      "cms": "726342",
+      "issuedOn": "2026-03-27",
+      "subject": "Clinical Investigator"
+    },
+    {
+      "id": "gram-peptides-721806-03312026",
+      "firm": "Gram Peptides",
+      "cms": "721806",
+      "issuedOn": "2026-03-31",
+      "subject": "Unapproved New Drugs Sold Over the Internet"
+    },
+    {
+      "id": "prime-sciences-721805-03312026",
+      "firm": "Prime Sciences",
+      "cms": "721805",
+      "issuedOn": "2026-03-31",
+      "subject": "Unapproved New Drugs Sold Over the Internet"
+    },
+    {
+      "id": "formpour-722215-03312026",
+      "firm": "FormPour",
+      "cms": "722215",
+      "issuedOn": "2026-03-31",
+      "subject": "Unapproved New Drugs Sold Over the Internet"
+    },
+    {
+      "id": "life-plus-style-gourmet-llc-724263-03052026",
+      "firm": "Life Plus Style Gourmet LLC",
+      "cms": "724263",
+      "issuedOn": "2026-03-05",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "medline-industries-lp-723866-03252026",
+      "firm": "Medline Industries, LP",
+      "cms": "723866",
+      "issuedOn": "2026-03-25",
+      "subject": "CGMP/QSR/Medical Devices/Adulterated"
+    },
+    {
+      "id": "mile-high-compounds-llc-721600-03312026",
+      "firm": "Mile High Compounds LLC",
+      "cms": "721600",
+      "issuedOn": "2026-03-31",
+      "subject": "Unapproved New Drugs Sold Over the Internet"
+    },
+    {
+      "id": "pekcura-labs-721709-03312026",
+      "firm": "PekCura Labs",
+      "cms": "721709",
+      "issuedOn": "2026-03-31",
+      "subject": "Unapproved New Drugs Sold Over the Internet"
+    },
+    {
+      "id": "physitemp-instruments-llc-717394-11122025",
+      "firm": "Physitemp Instruments, LLC",
+      "cms": "717394",
+      "issuedOn": "2025-11-12",
+      "subject": "CGMP/QSR/Medical Devices/Adulterated"
+    },
+    {
+      "id": "microbiological-testing-consulting-llc-720374-03162026",
+      "firm": "Microbiological Testing & Consulting, LLC",
+      "cms": "720374",
+      "issuedOn": "2026-03-16",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "henan-lvyuan-pharmaceutical-co-ltd-722497-03262026",
+      "firm": "Henan Lvyuan Pharmaceutical Co. Ltd.",
+      "cms": "722497",
+      "issuedOn": "2026-03-26",
+      "subject": "CGMP/API/Adulterated"
+    },
+    {
+      "id": "buydeltascom-726264-03272026",
+      "firm": "buydeltas.com",
+      "cms": "726264",
+      "issuedOn": "2026-03-27",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "yangzhou-hr-plastic-daily-chemical-co-ltd-722736-03182026",
+      "firm": "Yangzhou H&R Plastic Daily Chemical Co., Ltd.",
+      "cms": "722736",
+      "issuedOn": "2026-03-18",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "matesbrandcom-725802-03202026",
+      "firm": "matesbrand.com",
+      "cms": "725802",
+      "issuedOn": "2026-03-20",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "longhorn-vaccines-and-diagnostics-llc-721702-02262026",
+      "firm": "Longhorn Vaccines and Diagnostics LLC",
+      "cms": "721702",
+      "issuedOn": "2026-02-26",
+      "subject": "CGMP/QSR/Medical Devices/Adulterated"
+    },
+    {
+      "id": "4u-health-720527-03172026",
+      "firm": "4U Health",
+      "cms": "720527",
+      "issuedOn": "2026-03-17",
+      "subject": "Premarket Approval/Adulterated"
+    },
+    {
+      "id": "immunitybio-inc-725468-03132026",
+      "firm": "ImmunityBio, Inc.",
+      "cms": "725468",
+      "issuedOn": "2026-03-13",
+      "subject": "False & Misleading Claims/Misbranded"
+    },
+    {
+      "id": "prillacomus-718688-03062026",
+      "firm": "prilla.com/us",
+      "cms": "718688",
+      "issuedOn": "2026-03-06",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "trangs-group-usa-incorporated-723838-02242026",
+      "firm": "Trangs Group USA Incorporated",
+      "cms": "723838",
+      "issuedOn": "2026-02-24",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "citra100mg-722606-03042026",
+      "firm": "Citra100mg",
+      "cms": "722606",
+      "issuedOn": "2026-03-04",
+      "subject": "Unapproved New Drugs/Misbranded"
+    },
+    {
+      "id": "apothecary-pharma-llc-717972-12012025",
+      "firm": "Apothecary Pharma, LLC",
+      "cms": "717972",
+      "issuedOn": "2025-12-01",
+      "subject": "Compounding Pharmacy/Adulterated Drug Products"
+    },
+    {
+      "id": "oralabs-inc-720690-03112026",
+      "firm": "OraLabs, Inc.",
+      "cms": "720690",
+      "issuedOn": "2026-03-11",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "patcos-cosmetics-pvt-ltd-718220-03122026",
+      "firm": "Patcos Cosmetics Pvt. Ltd.",
+      "cms": "718220",
+      "issuedOn": "2026-03-12",
+      "subject": "Finished Drug Products/Adulterated"
+    },
+    {
+      "id": "feng-foods-trading-inc-720813-01162026",
+      "firm": "Feng Foods Trading Inc.",
+      "cms": "720813",
+      "issuedOn": "2026-01-16",
+      "subject": "Seafood HACCP/CGMP for Foods/Adulterated/Insanitary Conditions"
+    },
+    {
+      "id": "z-distributor-inc-722245-02102026",
+      "firm": "A TO Z Distributor Inc",
+      "cms": "722245",
+      "issuedOn": "2026-02-10",
+      "subject": "Foreign Supplier Verification Program (FSVP)"
+    },
+    {
+      "id": "flowchem-pharma-private-limited-720719-03112026",
+      "firm": "Flowchem Pharma Private Limited",
+      "cms": "720719",
+      "issuedOn": "2026-03-11",
+      "subject": "CGMP/Active Pharmaceutical Ingredient (API)/Adulterated"
+    },
+    {
+      "id": "avertix-medical-inc-711080-09032025",
+      "firm": "Avertix Medical, Inc.",
+      "cms": "711080",
+      "issuedOn": "2025-09-03",
+      "subject": "CGMP/QSR/Medical Devices/Adulterated"
+    },
+    {
+      "id": "vedic-lifesciences-pvt-ltd-722446-03092026",
+      "firm": "Vedic Lifesciences Pvt. Ltd.",
+      "cms": "722446",
+      "issuedOn": "2026-03-09",
+      "subject": "Good Laboratory Practice (GLP) for Nonclinical Laboratory Studies"
+    },
+    {
+      "id": "jz-wholesale-inc-724047-03092026",
+      "firm": "JZ Wholesale, Inc.",
+      "cms": "724047",
+      "issuedOn": "2026-03-09",
+      "subject": "CGMP/Food/Prepared, Packed or Held Under Insanitary Conditions/Adulterated"
+    },
+    {
+      "id": "thesnuslifecom-724354-02272026",
+      "firm": "thesnuslife.com",
+      "cms": "724354",
+      "issuedOn": "2026-02-27",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "snushavencom-724257-02272026",
+      "firm": "snushaven.com",
+      "cms": "724257",
+      "issuedOn": "2026-02-27",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "idripejuicecom-724255-02272026",
+      "firm": "idripejuice.com",
+      "cms": "724255",
+      "issuedOn": "2026-02-27",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "el-rey-usa-meats-seafood-inc-722157-02192026",
+      "firm": "El Rey USA Meats & Seafood Inc.",
+      "cms": "722157",
+      "issuedOn": "2026-02-19",
+      "subject": "Seafood HACCP/CGMP for Foods/Adulterated/Insanitary Conditions"
+    },
+    {
+      "id": "rio-verde-food-service-inc-719149-02272026",
+      "firm": "Rio Verde Food Service Inc.",
+      "cms": "719149",
+      "issuedOn": "2026-02-27",
+      "subject": "Seafood HACCP/CGMP for Foods/Adulterated/Insanitary Conditions"
+    },
+    {
+      "id": "simtra-biopharma-solutions-720436-03032026",
+      "firm": "Simtra BioPharma Solutions",
+      "cms": "720436",
+      "issuedOn": "2026-03-03",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "raw-bistro-inc-719038-02172026",
+      "firm": "Raw Bistro Inc.",
+      "cms": "719038",
+      "issuedOn": "2026-02-17",
+      "subject": "CGMP/Food for Animals/Prepared, Packed or Held Under Insanitary Conditions/Adulterated"
+    },
+    {
+      "id": "tentamus-india-private-limited-720463-03032026",
+      "firm": "Tentamus India Private Limited",
+      "cms": "720463",
+      "issuedOn": "2026-03-03",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "sss-austar-llc-724502-03052026",
+      "firm": "SSS AUSTAR LLC",
+      "cms": "724502",
+      "issuedOn": "2026-03-05",
+      "subject": "Family Smoking Prevention and Tobacco Control Act/Adulterated/Misbranded"
+    },
+    {
+      "id": "fareva-morton-grove-719408-03032026",
+      "firm": "Fareva Morton Grove",
+      "cms": "719408",
+      "issuedOn": "2026-03-03",
+      "subject": "CGMP/Finished Pharmaceuticals/Adulterated"
+    },
+    {
+      "id": "exactech-inc-dba-advita-ortho-720250-12192025",
+      "firm": "Exactech, Inc. dba Advita Ortho",
+      "cms": "720250",
+      "issuedOn": "2025-12-19",
+      "subject": "CGMP/QSR/Medical Devices/Adulterated"
+    },
+    {
+      "id": "novo-nordisk-inc-717576-03052026",
+      "firm": "Novo Nordisk Inc.",
+      "cms": "717576",
+      "issuedOn": "2026-03-05",
+      "subject": "Postmarketing Adverse Drug Experience Reporting Requirements"
+    },
+    {
+      "id": "nse-products-inc-dba-nu-skin-enterprises-inc-722667-03022026",
+      "firm": "NSE Products, Inc. DBA Nu Skin Enterprises, Inc.",
+      "cms": "722667",
+      "issuedOn": "2026-03-02",
+      "subject": "Electronic Drug Registration and Listing System (eDRLS)/Violations"
+    },
+    {
+      "id": "premium-health-management-inc-dba-premium-health-721474-02202026",
+      "firm": "Premium Health Management Inc. dba Premium Health",
+      "cms": "721474",
+      "issuedOn": "2026-02-20",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "bliv-wellness-llc-dba-bliv-721479-02202026",
+      "firm": "Bliv Wellness LLC dba Bliv",
+      "cms": "721479",
+      "issuedOn": "2026-02-20",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    },
+    {
+      "id": "bluefitmd-721446-02202026",
+      "firm": "BluefitMD",
+      "cms": "721446",
+      "issuedOn": "2026-02-20",
+      "subject": "False & Misleading Claims/Misbranded (Telehealth)"
+    }
+  ]
+}

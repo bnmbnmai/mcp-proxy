@@ -1,0 +1,24 @@
+8/19/26, 1:20 PM                                                                     Maritime Safety Information Products | Navigation Center
+
+                         Local Notice to Mariners for Heartland (Gulf) District                                                                                  08/19/2026
+
+                                                                               Acadiana Navigation Channel
+   Federal Discrepancies
+                                                    NAME                                                           LLNR                               STATUS                                     AID TYPE
+ Acadiana Navigation Channel Light 6                                                                       20305              STRUCT DEST/TRLB                                           FD
+
+
+   Private Discrepancies
+                                                      NAME                                                                 LLNR                             STATUS                                AID TYPE
+ Cypremort Point Danger Breakwater Light                                                                        20362.06                 STRUCT MISSING                                   PA
+
+
+
+                                                                                   Algiers Alternate Route
+   Additional MSI Categories
+                          TITLE                            SUBCATEGORY                                                             DESCRIPTION                                                            LOCATION
+ Via Mississippi River And Harvey Canal - Algiers        Marine Construction Algiers Canal – GIWW – Lock Precautions --- From: 2026-06-23 To: Until Further Notice --- Mariners are to avoid
+ Alternate Route/General/Marine Construction             (Excluding Bridges)   making contact with the canal end long guidewall at Algiers Lock, due to deteriorating timbers and wall instability.
+ (Excluding Bridges)/Facilities, Barriers, Manmade                             Tows are to navigate with extreme caution while entering and exiting the lock and at slow safe speeds to avoid the
+ Reefs, Riprap, Jetties/Dikes                                                  canal long guidewall area entirely. For up-to-date information, the Lockmaster at Algiers Lock can be reached at
+                                                                               (504) 354-1795 or the Lockwall can be contacted at (504) 354-1861.

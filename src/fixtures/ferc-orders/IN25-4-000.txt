@@ -1,0 +1,419 @@
+Document Accession #: 20260803-3037           Filed Date: 08/03/2026
+
+
+
+
+                                      196 FERC ¶ 61,100
+                                 UNITED STATES OF AMERICA
+                          FEDERAL ENERGY REGULATORY COMMISSION
+
+         Before Commissioners: Laura V. Swett, Chairman;
+                               David Rosner, Lindsay S. See,
+                               Judy W. Chang, and David LaCerte.
+
+         Digi Power X Inc. f/k/a Digihost Technology Inc.             Docket No. IN25-4-000
+
+                ORDER APPROVING STIPULATION AND CONSENT AGREEMENT
+
+                                          (Issued August 3, 2026)
+
+         1.     The Commission approves the attached Stipulation and Consent Agreement
+         (Agreement) between the Office of Enforcement and Regulatory Accounting
+         (Enforcement) and Digi Power X Inc. f/k/a Digihost Technology Inc. (Digihost). This
+         order is in the public interest because the Agreement resolves on fair and equitable terms
+         Enforcement’s investigation (Investigation) under Part 1b of the Commission’s
+         regulations, 18 C.F.R. Part 1b (2025), into whether Digihost violated the New York
+         Independent System Operator (NYISO) Open Access Transmission Tariff (Tariff)
+         Section 3.9.1 from February 17, 2022 to April 30, 2022 (Relevant Period) when Digihost
+         interconnected its cryptocurrency load to the Fortistar North Tonawanda LLC (FNT) co-
+         generation facility (Facility) without first submitting the required interconnection
+         proposal to NYISO.
+
+         2.     Digihost stipulates to the facts in Section II of the Agreement, but neither admits
+         nor denies the alleged violation in Section III of the Agreement. Digihost agrees to: (a)
+         pay a civil penalty of $45,000 to the United States Treasury; and (b) provide compliance
+         monitoring reports to Enforcement as provided in the Agreement.
+
+         I.     Facts
+
+         3.     FNT owned and operated a 55 MW co-generation facility located in North
+         Tonawanda, New York that is interconnected to the 115kV transmission system of
+         Niagara Mohawk Power Corporation d/b/a National Grid. In March 2021, Digihost
+         signed an agreement to purchase FNT from North Tonawanda Holdings, LLC (North
+         Tonawanda), a subsidiary of Fortistar LLC. In September 2021, Digihost and North
+         Tonawanda executed a Pre-Closing Improvements Work Authorization and Indemnity
+         Agreement permitting Digihost to make pre-closing improvements at the Facility,
+         including the construction of a datacenter to accommodate cryptocurrency mining. After
+Document Accession #: 20260803-3037           Filed Date: 08/03/2026
+
+         Docket No. IN25-4-000                                                                    -2-
+
+         certain regulatory approvals were obtained,1 in February 2023, Digihost consummated
+         the acquisition of FNT and thus the Facility.
+
+         4.    On February 17, 2022, prior to its acquisition of FNT, Digihost interconnected a
+         cryptocurrency load to the Facility that it constructed pursuant to the Pre-Closing
+         Improvements Work Authorization and Indemnity Agreement.
+
+         5.     Though Digihost had initiated discussions with NYISO regarding the power
+         source as of January 31, 2022, Digihost did not submit an interconnection proposal to
+         NYISO either before or during the Relevant Period in which Digihost interconnected its
+         cryptocurrency load to the Facility.
+
+         6.     On April 21, 2022, Digihost President Alec Amar received a letter from National
+         Grid stating that the increased demand at the Facility raised concerns with reliability,
+         noting that the demand was not preceded by adequate notice and appropriate analysis,
+         and advising Digihost to reduce its demand at the Facility or risk National Grid tripping
+         Digihost’s load. Digihost received a second warning letter from National Grid on April
+         29, 2022.
+
+         7.    Digihost’s on-site load at the Facility fluctuated during the Relevant Period and
+         peaked at approximately 30 MW before Digihost dropped its load entirely on April 30,
+         2022.
+
+         8.     In September 2022, Digihost submitted an interconnection request to NYISO for a
+         System Impact Study, which was necessary for approval of Digihost’s cryptocurrency
+         load at the Facility. The Facility has since been accepted as a behind meter resource by
+         NYISO. In December 2025, the NYISO Operating Committee approved the System
+         Impact Study Report for the cryptocurrency load without system modifications.
+
+         9.   Enforcement opened this investigation following a July 8, 2024 referral from
+         Potomac Economics, Ltd., NYISO’s Market Monitoring Unit.
+
+         II.    Violation
+
+         10.   Enforcement determined that Digihost violated NYISO Tariff Section 3.9.1.
+         During the Relevant Period, NYISO Tariff Section 3.9.1 stated:
+
+                Any Eligible Customer proposing to interconnect its Load or Large Facility
+                with the NYS Power System shall submit its interconnection proposal to
+
+                1 See, e.g., Fortistar North Tonawanda LLC, 181 FERC ¶ 61,224 (2022)
+         (declaratory ruling and approval of the transfer of ownership interests underlying the
+         section 203 transaction).
+Document Accession #: 20260803-3037            Filed Date: 08/03/2026
+
+         Docket No. IN25-4-000                                                                   -3-
+
+                the ISO. The ISO, in cooperation with the Transmission Owner with whose
+                system the Eligible Customer proposes to interconnect, shall perform
+                technical studies to determine whether the proposed interconnection may
+                degrade system reliability or adversely affect the operation of the NYS
+                Power System. The technical studies shall be conducted in accordance with
+                the procedures specified in Section 3.9.2. The proposed interconnection
+                shall not proceed if the ISO concludes in the study that the proposed
+                interconnection may degrade system reliability or adversely affect the
+                operation of the NYS Power System. If the proposal is rejected, the ISO
+                shall provide in writing the reasons why the proposal was rejected.
+
+         11.    Enforcement determined that Digihost violated this section during the Relevant
+         Period when it interconnected its cryptocurrency load to the Facility without submitting
+         an interconnection proposal to the ISO. Digihost did not submit an interconnection
+         proposal prior to or at any time during the Relevant Period.
+
+         III.   Stipulation and Consent Agreement
+
+         12.    Enforcement and Digihost have resolved the Investigation by means of the
+         attached Agreement.
+
+         13.   Digihost stipulates to the facts set forth in Section II of the Agreement, but neither
+         admits nor denies the violation described in Section III of the Agreement.
+
+         14.    Digihost agrees to pay a civil penalty of $45,000 to the United States Treasury.
+
+         15.    Digihost agrees to submit an annual compliance monitoring report to Enforcement
+         for two years with a third year at Enforcement’s discretion.
+
+         IV.    Determination of Appropriate Remedies and Sanctions
+
+         16.    In recommending the appropriate remedy, Enforcement considered the factors
+         described in the Revised Policy Statement on Penalty Guidelines,2 including the
+         involvement of high-level personnel in the violation.3
+
+
+                2Enforcement of Statutes, Orders, Rules, and Regulations, Revised Policy
+         Statement on Penalty Guidelines, 132 FERC ¶ 61,216 (2010).
+                3  The following is applicable to small entities including businesses with 1,500 or
+         fewer employees, independent schools / universities, trade associations, other non-profits,
+         cities, counties, towns, townships, villages, school districts, and other special districts -
+         The National Ombudsman resolves concerns of uneven or excessive federal regulatory
+         enforcement. Reviews are confidential and do not waive the right to pursue
+Document Accession #: 20260803-3037            Filed Date: 08/03/2026
+
+         Docket No. IN25-4-000                                                                    -4-
+
+         17.    The Commission concludes that the Agreement is a fair and equitable resolution of
+         the matters concerned and is in the public interest, as it reflects the nature and seriousness
+         of the conduct and recognizes the specific considerations stated above and in the
+         Agreement.
+
+         18.   The Commission also concludes that Digihost’s civil penalty is consistent with the
+         Revised Policy Statement on Penalty Guidelines.4
+
+         19.   The Commission directs Digihost to make the civil penalty payment as required by
+         the Agreement within ten days after the Effective Date of the Agreement.
+
+         The Commission orders:
+
+               The attached Stipulation and Consent Agreement is hereby approved without
+         modification.
+
+         By the Commission.
+
+         (SEAL)
+
+
+
+
+                                                          Carlos D. Clay,
+                                                         Deputy Secretary.
+
+
+
+
+         administrative appeals or any other legal action. 888-REG-FAIR /
+         Ombudsman@SBA.gov.
+                4 132 FERC ¶ 61,216.
+Document Accession #: 20260803-3037            Filed Date: 08/03/2026
+
+
+
+
+                                 UNITED STATES OF AMERICA
+                          FEDERAL ENERGY REGULATORY COMMISSION
+
+
+         Digihost Technology Inc.                                        Docket No. IN25-4-000
+         Digi Power X Inc.
+
+
+                            STIPULATION AND CONSENT AGREEMENT
+
+         I.     INTRODUCTION
+
+         1.     The Office of Enforcement and Regulatory Accounting (Enforcement) of the
+         Federal Energy Regulatory Commission (Commission) and Digi Power X Inc. f/k/a
+         Digihost Technology Inc. (Digihost) enter into this Stipulation and Consent Agreement
+         (Agreement) to resolve a nonpublic, formal investigation (the Investigation) conducted
+         by Enforcement pursuant to Part 1b of the Commission’s regulations, 18 C.F.R. Part 1b
+         (2025). The Investigation examined whether Digihost violated the New York
+         Independent Systems Operator (NYISO) Open Access Transmission Tariff (Tariff)
+         Section 3.9.1 from February 17, 2022 to April 30, 2022 (Relevant Period) when Digihost
+         interconnected its cryptocurrency load to the Fortistar North Tonawanda LLC (FNT) co-
+         generation facility (Facility) without first submitting the required interconnection
+         proposal to NYISO.
+
+         2.     Digihost stipulates to the facts in Section II, but neither admits nor denies the
+         alleged violation in Section III. Digihost agrees to: (a) pay a civil penalty of $45,000 to
+         the United States Treasury; and (b) be subject to compliance monitoring as provided
+         more fully below.
+
+         II.    STIPULATIONS
+
+         Enforcement and Digihost hereby stipulate and agree to the following facts.
+
+         3.     FNT owned and operated a 55 MW co-generation facility located in North
+         Tonawanda, New York that is interconnected to the 115kV transmission system of
+         Niagara Mohawk Power Corporation d/b/a National Grid. In March 2021, Digihost
+         signed an agreement to purchase FNT from North Tonawanda Holdings, LLC (North
+         Tonawanda), a subsidiary of Fortistar LLC. In September 2021, Digihost and North
+         Tonawanda executed a Pre-Closing Improvements Work Authorization and Indemnity
+         Agreement permitting Digihost to make pre-closing improvements at the Facility,
+         including the construction of a datacenter to accommodate cryptocurrency mining. After
+Document Accession #: 20260803-3037           Filed Date: 08/03/2026
+
+
+
+         certain regulatory approvals were obtained,1 in February 2023, Digihost consummated
+         the acquisition of FNT and thus the Facility.
+
+         4.    On February 17, 2022, prior to its acquisition of FNT, Digihost interconnected a
+         cryptocurrency load to the Facility that it constructed pursuant to the Pre-Closing
+         Improvements Work Authorization and Indemnity Agreement.
+
+         5.    Though Digihost had initiated discussions with NYISO regarding the power
+         source as of January 31, 2022, Digihost did not submit an interconnection proposal to
+         NYISO either before or during the Relevant Period in which Digihost interconnected its
+         cryptocurrency load to the Facility.
+
+         6.     On April 21, 2022, Digihost President Alec Amar received a letter from National
+         Grid stating that the increased demand at the Facility raised concerns with reliability,
+         noting that the demand was not preceded by adequate notice and appropriate analysis,
+         and advising Digihost to reduce its demand at the Facility or risk National Grid tripping
+         Digihost’s load. Digihost received a second warning letter from National Grid on April
+         29, 2022
+
+         7.    Digihost’s on-site load at the Facility fluctuated during the Relevant Period and
+         peaked at approximately 30 MW before Digihost dropped its load entirely on April 30,
+         2022.
+
+         8.     In September 2022, Digihost submitted an interconnection request to NYISO for a
+         System Impact Study, which was necessary for approval of Digihost’s cryptocurrency
+         load at the Facility. The Facility has since been accepted as a behind meter resource by
+         NYISO. In December 2025, the NYISO Operating Committee approved the System
+         Impact Study Report for the cryptocurrency load without system modifications.
+
+         9.   Enforcement opened this investigation following a July 8, 2024 referral from
+         Potomac Economics, Ltd., NYISO’s Market Monitoring Unit.
+
+         III.   VIOLATION
+
+         10.    During the Relevant Period, NYISO Tariff Section 3.9.1 stated:
+
+                       Any Eligible Customer proposing to interconnect its Load or Large Facility
+                       with the NYS Power System shall submit its interconnection proposal to
+                       the ISO. The ISO, in cooperation with the Transmission Owner with whose
+                       system the Eligible Customer proposes to interconnect, shall perform
+
+         1 See, e.g., Fortistar North Tonawanda LLC, 181 FERC ¶ 61,224 (2022) (declaratory
+
+         ruling and approval of the transfer of ownership interests underlying the section 203
+         transaction).
+
+                                                     2
+Document Accession #: 20260803-3037            Filed Date: 08/03/2026
+
+
+
+                       technical studies to determine whether the proposed interconnection may
+                       degrade system reliability or adversely affect the operation of the NYS
+                       Power System. The technical studies shall be conducted in accordance with
+                       the procedures specified in Section 3.9.2. The proposed interconnection
+                       shall not proceed if the ISO concludes in the study that the proposed
+                       interconnection may degrade system reliability or adversely affect the
+                       operation of the NYS Power System. If the proposal is rejected, the ISO
+                       shall provide in writing the reasons why the proposal was rejected.
+
+         11.    Enforcement determined that Digihost violated this section during the Relevant
+         Period when it interconnected its cryptocurrency load to the Facility without submitting
+         an interconnection proposal to the ISO. Digihost did not submit an interconnection
+         proposal prior to or at any time during the Relevant Period.
+
+         IV.    REMEDIES AND SANCTIONS
+
+         12.    For purposes of settling the claims released pursuant to Paragraph 19, Digihost
+         agrees with the facts as stipulated in Section II of this Agreement, but it neither admits
+         nor denies the violation described in Section III of this Agreement. Digihost further
+         agrees to undertake obligations set forth in the following paragraphs.
+
+                A.     Civil Penalty
+
+         13.     Digihost agrees to pay a civil penalty of $45,000 to the United States Treasury, by
+         wire transfer, within ten days after the Effective Date of this Agreement, as defined
+         herein.
+
+                B.     Compliance
+
+         14.    Digihost shall make annual compliance monitoring reports to Enforcement for two
+         years following the Effective Date of this Agreement. The first annual compliance
+         monitoring report shall be submitted no later than 30 days after the end of the one-year
+         reporting period that follows the Effective Date of this Agreement. The second annual
+         compliance monitoring report shall be submitted one year from the date of the first
+         report. After receipt of the second annual report, Enforcement may, at its sole discretion,
+         require Digihost to submit a report for one additional year.
+
+         15.     Each compliance monitoring report shall: (1) identify any known violations of
+         Commission regulations or the Tariff that occurred during the applicable period,
+         including a description of the nature of the violation and what steps were taken to rectify
+         the situation; (2) describe all compliance measures and procedures Digihost instituted or
+         modified during the reporting period related to compliance with Commission regulations
+         or the Tariff; and (3) describe all Tariff- or Commission-related compliance training(s)
+         that Digihost administered during the reporting period, including the dates such
+                                                       3
+Document Accession #: 20260803-3037            Filed Date: 08/03/2026
+
+
+
+         training(s) occurred, the topics covered, and the procedures used to confirm which
+         personnel attended.
+
+         16.    Each compliance monitoring report shall also include an affidavit executed by an
+         officer of Digihost stating that the report is true and accurate to the best of his/her
+         knowledge.
+
+         17.  Upon request by Enforcement, Digihost shall provide to Enforcement
+         documentation supporting the contents of its reports.
+
+         V.     TERMS
+
+         18. The “Effective Date” of this Agreement shall be the date on which the
+         Commission issues an order approving this Agreement without material modification.
+
+         19.     Commission approval of this Agreement without material modification shall
+         release Digihost and forever bar the Commission from holding Digihost, any affiliated
+         entity, any successor in interest, and their respective agents, officers, directors, or
+         employees, both past and present, liable for any and all administrative or civil claims
+         brought by the Commission arising out of Enforcement’s determination of the specific
+         violation addressed in this Agreement that arose during the Relevant Period.
+
+         20.    Failure by Digihost to make the civil penalty payment or to comply with the
+         compliance obligations agreed to herein, or any other provision of this Agreement, shall
+         be deemed a violation of a final order of the Commission issued pursuant to the Federal
+         Power Act (FPA), 16 U.S.C. §792, et seq., and may subject Digihost to additional action
+         under the enforcement provisions of the FPA.
+
+         21.    If Digihost does not make the required civil penalty payment described above
+         within the time agreed by the parties, interest will be calculated pursuant to 18 C.F.R. §
+         35.19a(a)(2)(iii) from the date that payment is due, in addition to the penalty specified
+         above and any other enforcement action and penalty that the Commission may take or
+         impose.
+
+         22.     This Agreement binds Digihost and its agents, successors, and assignees. This
+         Agreement does not create any additional or independent obligations on Digihost, or any
+         affiliated entity, its agents, officers, directors, or employees, other than the obligations
+         identified in this Agreement.
+
+         23.    The signatories to this Agreement agree that they enter into the Agreement
+         voluntarily and that, other than the recitations set forth herein, no tender, offer or promise
+         of any kind by any member, employee, officer, director, agent or representative of
+         Enforcement or Digihost has been made to induce the signatories or any other party to
+         enter into the Agreement.
+                                                       4
+Document Accession #: 20260803-3037           Filed Date: 08/03/2026
+
+
+
+
+         24.    Unless the Commission issues an order approving the Agreement in its entirety
+         and without material modification, the Agreement shall be null and void and of no effect
+         whatsoever, and neither Enforcement nor Digihost shall be bound by any provision or
+         term of the Agreement, unless otherwise agreed to in writing by Enforcement and
+         Digihost.
+
+         25.    In connection with the civil penalty provided for herein, Digihost agrees that the
+         Commission’s order approving the Agreement without material modification shall be a
+         final and unappealable order assessing a civil penalty under section 316A(b) of the FPA,
+         16 U.S.C. § 825o-1(b). Digihost waives findings of fact and conclusions of law,
+         rehearing of any Commission order approving the Agreement without material
+         modification, and judicial review by any court of any Commission order approving the
+         Agreement without material modification.
+
+         26.   This Agreement can be modified only if in writing and signed by Enforcement and
+         Digihost, and any modifications will not be effective unless approved by the
+         Commission.
+
+         27.    Each of the undersigned warrants that he or she is an authorized representative of
+         the entity designated, is authorized to bind such entity, and accepts the Agreement on the
+         entity’s behalf.
+
+         28.    The undersigned representative of Digihost affirms that he or she has read the
+         Agreement, that all of the matters set forth in the Agreement are true and correct to the
+         best of his or her knowledge, information and belief, and that he or she understands that
+         the Agreement is entered into by Enforcement in express reliance on those
+         representations.
+
+         29.  This Agreement is executed in duplicate, each of which so executed shall be
+         deemed to be an original.
+
+
+
+
+                                                     5
+Document Accession #: 20260803-3037   Filed Date: 08/03/2026
+
+
+
+
+   Document Content(s)
+   IN25-4-000.docx...........................................................1
+

@@ -1,0 +1,2101 @@
+711427
+
+
+
+
+                INTERIM RECORD OF DECISION
+
+
+         FEDERATED METALS CORP. WHITING SUPERFUND SITE
+
+                SOIL REMEDY FOR OPERABLE UNIT 1
+
+                     LAKE COUNTY, INDIANA
+
+
+
+
+            U.S. ENVIRONMENTAL PROTECTION AGENCY
+
+                           REGION 5
+
+                       CHICAGO, ILLINOIS
+
+                          August 2026
+                                                            TABLE OF CONTENTS
+
+PART I    DECLARATION ....................................................................................................................... 1
+PART II   DECISION SUMMARY ............................................................................................................ 4
+1 Site Name, Location, and Description .............................................................................................. 4
+2 Site History and Enforcement Activities ........................................................................................... 4
+    2.1 Site History ............................................................................................................................. 4
+3 Community Participation .................................................................................................................. 6
+4 Scope and Role of Operable Unit and Response Action................................................................... 6
+5 Site Characteristics............................................................................................................................ 6
+    5.1 Physical Characteristics .......................................................................................................... 6
+    5.2 Geology................................................................................................................................... 7
+    5.3 Nature and Extent of Contamination ..................................................................................... 8
+    5.4 Principal Threat Waste ......................................................................................................... 10
+6 Current and Potential Future Site and Resources Uses.................................................................. 11
+7 Summary of Site Risks ..................................................................................................................... 11
+    7.1 Human Health Risk Assessment (HHRA) .............................................................................. 11
+    7.2 Ecological Risk Assessment .................................................................................................. 12
+8 Remedial Action Objective ............................................................................................................. 13
+    8.1 Clean Up Level ...................................................................................................................... 13
+9 Description of Alternatives ............................................................................................................. 14
+    9.1 Alternative 1: No Action ....................................................................................................... 14
+    9.2 Alternative 2: Excavation of soil exceeding 200 ppm lead to a maximum 6-inch depth;
+          backfill and placement of up to an additional six-inches of soil; restoration; institutional
+          controls ............................................................................................................................... 14
+    9.3 Alternative 3: Excavation of soil exceeding 200 ppm lead to 12 inches; backfill and
+          restoration; institutional controls....................................................................................... 16
+10 Comparative Analysis of Alternatives ............................................................................................. 17
+    10.1 Overall Protection of Human Health and the Environment................................................. 18
+    10.2 Compliance with ARARs ....................................................................................................... 18
+    10.3 Long-term Effectiveness and Permanence .......................................................................... 18
+    10.4 Reduction of Toxicity, Mobility, or Volume through Treatment ......................................... 19
+    10.5 Short-term Effectiveness ...................................................................................................... 20
+    10.6 Implementability .................................................................................................................. 20
+    10.7 Cost ....................................................................................................................................... 20
+    10.8 State Acceptance .................................................................................................................. 21
+    10.9 Community Acceptance ....................................................................................................... 21
+11 Principal Threat Wastes .................................................................................................................. 21
+12 Selected Remedy ............................................................................................................................ 22
+    12.1 Summary of the Rationale for the Selected Remedy ........................................................... 22
+    12.2 Description of Remedial Components ................................................................................. 22
+    12.3 Summary of Estimated Remedial Costs ............................................................................... 22
+    12.4 Expected Outcomes of the Selected Remedy ...................................................................... 23
+13 Statutory Determinations ............................................................................................................... 23
+    13.1 Protection of Human Health and the Environment ............................................................. 24
+    13.2 Compliance with Applicable or Relevant and Appropriate Requirements .......................... 24
+                                                                           i
+    13.3 Cost-Effectiveness ................................................................................................................ 24
+    13.4 Utilization of Permanent Solutions and Treatment or Recovery to the Maximum Extent
+          Practicable .......................................................................................................................... 24
+    13.5 Preference for Treatment as a Principal Element ................................................................ 24
+    13.6 Five-Year Review Requirements........................................................................................... 25
+14 Documentation of Significant Changes .......................................................................................... 25
+PART III  RESPONSIVENESS SUMMARY ............................................................................................. 26
+
+
+                                                                        Figures
+
+Figure 1: Site and Former Facility Location ........................................................................................... 4
+Figure 2: Former Facility Layout ............................................................................................................ 7
+Figure 3: Residential Sample Locations, Excavated Areas, and General Area of Observed
+          Contamination above 100 ppm .............................................................................................. 9
+
+
+                                                                         Tables
+
+Table 1:        Bulk Soil Lead Concentrations in Composite Samples by Laboratory Analysis, 2016-2023 . 10
+Table 2:        Bulk Soil Lead Concentrations in Composite Samples by XRF, 2016-2017 .......................... 10
+Table 3:        Summary of the Remedial Alternatives ................................................................................ 14
+Table 4:        Comparison of Factors Considered in the Long-Term and Short-Term Protectiveness
+                Criteria .................................................................................................................................. 19
+Table 5:        Comparison of Present Value Estimated Total Costs ........................................................... 21
+Table 6:        Cost Elements of Preferred Remedy .................................................................................... 23
+
+                                                                    Attachments
+
+Attachment 1: Operable Unit 1 Interim Remedial Action ARARs Table
+Attachment 2: Administrative Record Index
+Attachment 3: State of Indiana Concurrence Letter
+
+
+
+
+                                                                             ii
+                                    List of Acronyms
+
+%          Percent
+ARAR       Applicable or Relevant and Appropriate Requirements
+BLL        Blood Lead Level
+CAMU       Corrective Action Management Unit
+CERCLA     Comprehensive Environmental Response, Compensation, and Liability Act
+COC        Chemical of concern
+COPEC      Chemical of potential ecological concern
+CSM        Conceptual site model
+CUL        Clean Up Level
+EPA        U.S. Environmental Protection Agency
+FMC        Federated Metals Corporation
+FMC Site   Federated Metals Corp Whiting Superfund Site
+ft         feet
+HQ         Hazard quotient
+IC         Institutional Controls
+in.        Inch
+kg         Kilogram
+NCP        National Oil and Hazardous Substances Pollution Control Plan
+NPL        National Priorities List
+O&M        Operation and maintenance
+OU         Operable Unit
+ppm        Parts per million
+RCRA       Resource Conservation and Recovery Act
+RI/FS      Remedial Investigation and Feasibility Study
+ROD        Record of Decision
+Site       Federated Metals Corp Whiting Superfund Site
+yd3        Cubic yards
+
+
+
+
+                                            iii
+                                        PART I DECLARATION
+
+This section summarizes the information presented in this Interim Record of Decision (IROD) and
+includes the authorizing signature of the U.S. Environmental Protection Agency (EPA) Region 5
+Superfund & Emergency Management Division Director.
+
+Site Name and Location
+
+Federated Metals Corp Whiting Superfund Site
+Hammond and Whiting, Indiana; Lake County
+
+Superfund Identification Number: IND005444104
+
+Statement of Basis and Purpose
+
+This IROD presents the selected interim remedial action for contaminated soil in portions of Operable
+Unit (OU) 1 of the Federated Metals Corp Whiting Superfund Site (“FMC Site” or “the Site”). OU1
+consists of residential properties, broadly defined as any area with high or unrestricted accessibility
+to sensitive populations (e.g., young children less than [<] 7 years old). This interim remedial action
+was chosen in accordance with the Comprehensive Environmental Response, Compensation, and
+Liability Act of 1980 (CERCLA), 42 USC §§ 9601 et seq., as amended by the Superfund Amendments,
+and the National Oil and Hazardous Substances Pollution Contingency Plan (NCP), 40 CFR Part 300, as
+amended. The Director of the Superfund & Emergency Management Division of Region 5 has been
+delegated the authority to approve this ROD.
+
+This decision is based on the Administrative Record (AR) file for the Site, which has been developed in
+accordance with Section 113(k) of CERCLA, and which is available for review at EPA Region 5 Records
+Center, 77 West Jackson Boulevard, Chicago, Illinois, and at the following informational repositories:
+
+       Whiting Public Library
+       1735 Oliver St.
+       Whiting, IN 46394
+       (219) 473-4700
+
+The Administrative Record Index (Attachment 2 to the IROD) identifies each of the items comprising
+the Administrative Record upon which the selection of the interim remedial action is based.
+
+Assessment of the Site
+
+The response action selected in this ROD is necessary to protect the public health or welfare or the
+environment from actual or threatened releases of hazardous substances into the environment.
+
+Description of the Selected Remedy
+
+The IROD sets forth the selected interim remedy for OU1 of the FMC Site. EPA is performing a
+remedial investigation and feasibility study to characterize OU1 and develop remedial alternatives for
+a final OU1 remedy.
+
+
+                                                   1
+The selected interim remedy in OU1 will address potential exposure to lead-contaminated soil in OU1
+by removing that soil from residential properties and disposing of the soil off-Site. The selected
+remedy includes the following components:
+
+   1. Excavation and off-Site disposal of soil with a lead concentration exceeding 200 parts per
+      million (ppm) to a maximum of 12 inches below the surface.
+
+   2. Placement of a visual barrier at the base of excavation if lead concentration in the soil below
+      12 inches exceeds 200 ppm.
+
+   3. Backfilling with clean soil and restoration of vegetation.
+
+   4. Placement and long-term stewardship of institutional controls (ICs) on those properties that
+      do not meet the 200 ppm clean up level (CUL) below the base of excavation.
+
+Statutory Determinations
+
+This interim action is protective of human health and the environment in the short term and will
+provide adequate protection for the properties addressed until a final ROD is signed; complies with
+(or waives) those federal and state requirements that are applicable or relevant and appropriate for
+this limited-scope action; and is cost-effective. This action is an interim solution only, and is not
+intended to utilize permanent solutions and alternative treatment (or resource recovery)
+technologies to the maximum extent practicable or fulfill the statutory preference for remedies that
+employ treatment that reduces toxicity, mobility, or volume as a principal element. Because this
+remedy will result in hazardous substances remaining on-site above health-based levels, a review will
+be conducted to ensure that the remedy continues to provide adequate protection of human health
+and the environment within five years after commencement of the remedial action. Subsequent
+remedial actions will fully address the threats posed by conditions at the Site.
+
+ROD Data Certification Checklist
+
+The following information is included in the Decision Summary section (Part II) of this ROD. Additional
+information can be found in the Administrative Record file for this Site.
+
+   •   Chemicals of concern (COCs) and their respective concentrations (Section 5.3);
+
+   •   Baseline risk represented by the COCs (Section 7);
+
+   •   Cleanup levels established for COCs and the basis for the levels (Section 8.1);
+
+   •   Assumptions (primarily related to soil exposures) in the IROD (Section 8);
+
+   •   Current and reasonably anticipated future land use assumptions used in the IROD (Section 6);
+
+   •   Estimated capital, operation and maintenance (O&M), and total present worth costs; discount
+       rate; and the number of years over which the remedy cost estimates are projected (Section
+       12.3); and
+
+
+                                                   2
+    •    Key factor(s) that led to selecting the remedy (Section 13).
+
+Support Agency Acceptance
+
+The Indiana Department of Environmental Management (IDEM) has reviewed the Administrative
+Record, EPA’s Proposed Plan, and the draft IROD. In a June 4, 2026, letter to EPA, IDEM indicated its
+concurrence with Alternative 3 (Attachment 3).
+
+Authorizing Signature
+
+                                    8/5/2026
+
+
+
+ X Michael D. Harris
+  Michael D. Harris, Director
+  Superfund & Emergency Management Division
+  Signed by: MICHAEL HARRIS
+
+
+
+
+                                                     3
+                                    PART II DECISION SUMMARY
+
+1      Site Name, Location, and Description
+
+The FMC Site (Superfund Identification Number: IND005444104) includes the approximately 36-acre
+footprint of the former FMC smelting facility, and the surrounding neighborhoods in Hammond and
+Whiting, Indiana impacted by FMC’s operations (Figure 1). During operations, the FMC facility
+generated lead-contaminated waste piles and air emissions that impacted soil on the residential and
+non-residential properties in the surrounding neighborhoods in both cities, as well soil on its own
+property and the sediments in adjacent George Lake. After FMC ceased operations, other businesses,
+including various metals fabricating and reclaiming businesses, have continued to operate at the
+former FMC facility.
+
+EPA is the lead agency for the Site, and IDEM serves as the support agency. The selected remedial
+action is expected to be funded through federal remedial action funding with associated state cost
+share.
+
+Figure 1: Site and Former Facility Location
+
+
+
+
+2      Site History and Enforcement Activities
+
+2.1    Site History
+
+The property on which the FMC facility was located was developed sometime prior to 1930 as a
+Federated Metals Corporation plant. In 1938, the facility expanded and was named the Federated
+
+                                                  4
+Metals Division of the American Smelting and Refining Company (ASARCO). From 1937 until 1983, the
+FMC facility operated as a smelting, refining, recovery, and recycling facility for non-ferrous metals
+including copper, zinc and lead. Operations at the former Federated Metals facility included office
+work, the storage of raw materials, reclamation of lead dross (impurities that floated on refined lead),
+foundry operations, white metal (alloying), a large baghouse (dust collector), oil storage, and a
+charcoal briquetting operation. The charcoal was used as a reducing agent for the smelting of certain
+ores. During smelting, a flux chemical cleaning agent was used to remove impurities that lead to the
+formation of a molten slag. The slag associated with the smelting of lead is high in iron and silica and
+once hardened can have a glasslike appearance. Federated Metals was disposing of various wastes
+generated during operations, such as the slag, by discharging to the land and/or nearby waterways, in
+particular George Lake.
+
+In 1992, FMC and its parent corporation, ASARCO, entered into a federal consent decree to settle an
+EPA lawsuit alleging violations of the Resource Conservation and Recovery Act (RCRA) and agreed to
+perform a corrective action on the 36-acre property. The RCRA closure and corrective action project,
+largely performed from 2001-2006, included demolishing an on-site baghouse; consolidating into the
+landfill debris, slag, and on-site hazardous wastes dredged from George Lake; and constructing a
+phyto-cap, a remedy that consists of growing plants and trees on a landfill cover to reduce migration
+of contaminants into groundwater.
+
+In 2005, before the RCRA corrective action was complete, ASARCO filed for bankruptcy. In 2009, the
+bankruptcy court authorized the establishment and funding of a Trust to finish the EPA-required work
+at the smelter. The Trust completed the landfill cover, installed groundwater monitoring wells, and
+conducted several rounds of groundwater sampling to confirm the landfill cap was preventing
+groundwater contamination. Maintenance and monitoring of the landfill cap and groundwater
+monitoring to evaluate the groundwater plume continues under EPA’s RCRA authority, but funds for
+monitoring may soon be exhausted.
+
+From December 2016 to November 2018, Region 5 Superfund Division conducted a removal site
+assessment to assess the impact of atmospheric deposition of lead and arsenic from the FMC facility
+and to determine if there was off-site migration of hazardous materials into groundwater. The soil
+results showed that some parcels had soil lead concentrations over 1,200 ppm, which was the
+threshold for EPA to undertake “time-critical” removal actions. EPA identified 33 properties with lead
+concentrations greater than 1,200 ppm that also had sensitive populations – pregnant women or
+children under the age of 7 – in residence and performed a time-critical removal action to address
+these properties from 2018 to 2019. The cleanup work involved excavating more than 10,000 tons of
+lead-contaminated soil, disposing of the soil at an off-site landfill, backfilling excavated areas with
+clean soil, and restoring yards to their original condition.
+
+Since August 2021, the city of Hammond has also removed and disposed of lead-contaminated soils
+on approximately 60 properties in Hammond with soil lead concentrations greater than 400 ppm,
+which was EPA’s threshold for remedial actions at the time. Parcels were generally divided into two
+decision units (DUs), one for the back yard and one for the front yard and parkway; some parcels had
+only one DU excavated. If the soil concentration of lead was 400 ppm or greater, the DU was
+excavated and if the soil concentration of lead was below 400 ppm, no action was taken.
+
+
+                                                   5
+In September 2023, EPA listed the Site on the National Priorities List (NPL).
+
+3      Community Participation
+
+EPA has kept the community and other interested parties apprised of Site activities through fact
+sheets, press releases, public meetings and community interviews after EPA listed the Site on the
+NPL. The Proposed Plan was made available to the public in March of 2026. EPA held a public meeting
+and hearing on March 26, 2026, at the Whiting High School to present and receive comments on the
+Proposed Plan. At this meeting the EPA representatives provided background, presented the
+remedial alternatives and answered questions. The transcripts and the written comments received on
+the Proposed Plan, with personally-identifiable information redacted, are included in the
+Administrative Record for this ROD. EPA’s responses to the comments received are included in Part III
+of this ROD, the Responsiveness Summary.
+
+4      Scope and Role of Operable Unit and Response Action
+
+The Site has been divided into two OUs. OU1 consists of residential properties, broadly defined as any
+area with high or unrestricted accessibility to sensitive populations (e.g., pregnant women or young
+children less than 7 years old), and includes, but is not limited to, properties containing single- and
+multi-family dwellings, apartment complexes, vacant lots in residential areas, schools, daycare
+centers, community centers, playgrounds, parks and other recreational areas, green ways, and any
+other areas where pregnant women or young children may be exposed to site-related contaminated
+media. All other Site areas, including the former FMC facility, industrial and commercial properties
+within the impacted neighborhoods, and George Lake, are designated as OU2.
+
+EPA’s strategy for cleaning up the Site is to first address unacceptable risks to human health and the
+environment posed by lead-contaminated soil on the approximately 160 residential properties with
+documented exceedances of the 200 ppm CUL, as an interim remedial action for OU1. After the
+remedial investigation for OU1, the final remedial action for OU1 will establish a final CUL and
+address soil on additional residential properties that have not yet been sampled. The final remedy
+will also address any other contaminants and media in OU1 that EPA finds pose an unacceptable risk
+to residents. Non-residential media (e.g., the former FMC facility footprint and sediments in George
+Lake) and exposure pathways will be addressed separately as OU2.
+
+This action for residential properties is conducted under EPA’s remedial authority and considered
+early and interim because it addresses the known threats to human health. EPA is performing a
+remedial investigation that will fully screen contaminants of potential concern (COPCs), define the
+extent and magnitude of contamination, and calculate threats to human health and the environment.
+The final remedy will be comprehensive and protective for all residential exposures in OU1.
+
+5      Site Characteristics
+
+5.1    Physical Characteristics
+
+The former FMC facility refers to two areas: an approximately 17-acre former smelter area and an
+adjacent 19-acre disposal area where the RCRA Corrective Action Management Unit is located (Figure
+2). The former facility is within an urbanized area with a mixture of industrial, commercial, and
+
+                                                    6
+residential properties as well as vacant lots, community centers, playgrounds, parks, churches and
+schools. North of the former facility, a bike path runs along former railroad tracks associated with
+FMC’s historic operations, while vacant land and Calumet College of St. Joseph are to the south. The
+residential area of concern is comprised of single family and multi-family homes, and other areas
+where sensitive populations may be exposed, located primarily north and east of the facility. To the
+west, the facility is adjacent to the shore of the 148-acre George Lake. Lake Michigan is approximately
+0.7 miles northeast of the Site.
+
+Figure 2: Former Facility Layout
+
+
+
+
+5.2    Geology
+
+The U.S. Department of Agriculture classifies surface soils as “Urban Land” throughout most of the
+Site. During the EPA sampling, soil collected from properties around the Site had varying
+compositions. The composition for most samples was dark organic, rich soil at the top, with sand,
+industrial fill, gravel, clay, or mixed soil below. Hydric marsh soils that frequently create ponds and
+drain very poorly are present south of the Site.
+
+The Site lies in the low-lying Calumet Lacustrine Plain within the Northern Moraine and Lake Region.
+Unconsolidated deposits are a result of glacial, glaciofluvial, shallow-water coastal and lake, wetland,
+and wind-blown sedimentation from the Wisconsinan-age glacial advance and subsequent retreat,
+which formed glacial Lake Chicago. Unconsolidated deposits in the Site area are about 50 feet thick
+and consist of peat, lake silt and clay, clay-rich till, sand and gravel outwash, and sand beaches and
+dunes.
+
+The underlying bedrock at the Site is comprised of more than 4,000 feet of sedimentary rock resting
+on a Precambrian granitic basement. The Devonian Antrim Shale lies at the top of the bedrock
+                                                    7
+sequence, and is underlain by successively older limestone, dolomite, sandstone, and shale units. The
+Site lies on the Kankakee Arch, in which consolidated units form a gentle saddle-shaped structure
+that dips to the northeast towards the Michigan Basin, and to the southwest to the Illinois Basin.
+
+5.3    Nature and Extent of Contamination
+
+From 2016-2023, EPA collected composite soil samples at 240 residential and non-residential
+properties (Figure 3). The main area of sampling was directly north of the former Federated Metals
+facility. Most properties were divided into two or more DUs with one or more composite samples
+collected from each DU. Of the 240 properties, approximately 215 parcels had concentrations
+exceeding 200 ppm, and of those, approximately 160 residential properties have not been
+remediated by either EPA or the City of Hammond. An estimated 3800 residential properties are in
+the broader area of potential concern (shown as light and dark pink in Figure 1), but these properties
+have not been sampled and will be addressed in a future final remedial action for OU1.
+
+Table 1 and Table 2 summarize lead concentrations by depth in soil samples from laboratory analysis
+and x-ray florescence (XRF) (a calibrated, field sampling instrument that can detect lead in soil)
+analysis, respectively. Very few samples below the 0 to 6 inch interval were analyzed in the
+laboratory, so estimates of the extent of contamination below 6 inches rely on the XRF data in Table
+2. Generally, exceedances of the 200 ppm screening level are more common in shallower intervals
+than deeper intervals, which is consistent with aerial deposition of contamination. The rate of
+exceedance of the 200 ppm screening level in the 0 to 6 inch and 6 to 12 inch intervals is 74% and
+78%, respectively. However, the exceedance rate drops in subsurface intervals to 56% in the 12 to 18
+inch interval, and 34% in the 18 to 24 inch interval. The threats to human health posed by these
+concentrations are described in Section 7.
+
+The highest subsurface concentration is associated with a parcel immediately north of the smelting
+facility known as “Former Outlot A” and currently owned by the City of Hammond. This parcel may
+have received fill or waste from the former facility and is not representative of most residential
+properties. The XRF data indicate that median concentrations decrease with depth, but subsurface
+soil lead concentrations still generally exceed the 200 ppm screening level. The ubiquity in northwest
+Indiana of “urban land”, in which non-native materials have frequently been used as fill, suggests that
+lead-contaminated fill may be a contributing source to subsurface concentrations on residential
+parcels in OU1 in addition to the aerial deposition pathway. Although fill may have come from
+multiple industrial sources in the area, EPA determined through forensic analysis of lead particles
+collected from both within the FMC facility and outside of the FMC facility that FMC is largely responsible
+for the soil contamination in OU1. EPA’s forensic evaluation of landfill samples and residential soil
+samples indicated that the landfill waste, which is known to have been deposited by FMC, and
+residential soil samples likely have the same or a similar source. This indicates that the historic FMC
+operations (over a period of about 46 years) were likely a substantial source of the lead released to
+the soils in the surrounding neighborhoods.
+
+
+
+
+                                                    8
+Figure 3: Residential Sample Locations, Excavated Areas, and General Area of Observed
+          Contamination above 100 ppm
+
+
+
+
+                                               9
+EPA’s removal site assessment also sampled groundwater and soil gas. EPA found no groundwater
+exceedances above EPA’s Removal Management Levels for tap water at the time, based on a target
+risk level of 10-4 for carcinogens and a hazard quotient of three (3) for non-carcinogens. Analytical
+results of 10 soil gas samples collected indicated that five samples had exceedances of at least one
+chemical above EPA’s Regional Screening Levels corresponding to an excess lifetime cancer risk of
+10-6 and a noncancer hazard quotient of 0.1 for residential air. While soil gas and groundwater are
+not addressed in this interim remedy, EPA is performing a remedial investigation and risk assessment
+for OU1 that will address all media and exposure pathways, and the final OU1 ROD will select a
+protective remedy for all Site-related contaminants and exposure pathways.
+
+Table 1:   Bulk Soil Lead Concentrations in Composite Samples by Laboratory Analysis, 2016-2023
+
+  Sampling        Total #     # Samples >200    % Samples >200         Lead Concentration (ppm)
+   Depth         Samples           ppm               ppm           Minimum     Median      Maximum
+     0-3”           1               1               100%            3,110       3,110        3,110
+     0-6”          432             380               88%              19         535         2,960
+    6-12”           7               4                57%             101         230         2,990
+   12-18”           7               3                43%              37         183         3,540
+   18-24”           7               3                43%              12         170         2,700
+
+
+Table 2:   Bulk Soil Lead Concentrations in Composite Samples by XRF, 2016-2017
+
+  Sampling        Total #    # Samples >200     % Samples >200         Lead Concentration (ppm)
+   Depth         Samples          ppm                ppm           Minimum     Median      Maximum
+     0-6”          103             76                74%              6.3        431         2,575
+    6-12”          101             79                78%              37         453         4,427
+   12-18”          102             57                56%              16         227         3,250
+   18-24”          102             35                34%              5.5        113        14,222
+
+
+5.4    Principal Threat Waste
+
+The NCP establishes an expectation that EPA will use treatment to address the principal threat posed
+by a site wherever practicable. Principal threat wastes are those source materials considered to be
+highly toxic or highly mobile, which generally cannot be contained in a reliable manner, or would
+present a significant risk to human health or the environment should exposure occur. The NCP (40
+CFR 300.430 (a)(1)(iii)(A)) indicates principal threats are most likely to include liquids, areas
+contaminated with high concentrations of toxic compounds, and highly mobile materials. Low-level
+threat wastes are those source materials that generally can be reliably contained and that would
+present only a low risk in the event of release. Low-level threat wastes include source materials that
+exhibit low toxicity, low mobility in the environment, or are near health-based levels.
+
+EPA has not identified any principal threat wastes at the Site. Instead, the contaminated soil and the
+process residue source materials are considered low-level threat waste materials that can be reliably
+contained.
+
+
+                                                  10
+6         Current and Potential Future Site and Resources Uses
+
+The Site is in a heavily urbanized area currently used for residential, recreational, commercial, and
+industrial activities. Based on existing use and the zoning ordinances of the cities of Hammond and
+Whiting, the current land uses are expected to continue in the future. The current and reasonably
+anticipated future land use of the former facility is industrial and commercial, with existing
+businesses operating in the former smelter area, and the CAMU located in the disposal area (Figure
+2).
+
+In the past several years, the City of Whiting has acquired several properties that are zoned
+commercial but that had been in residential use. Those properties are intended for commercial
+redevelopment, so while some were sampled as residential in the removal site assessment, their
+current and future use is now commercial, and they are not included in this interim remedial action.
+
+Lake Michigan is the source of drinking water for both Hammond and Whiting and all properties are
+connected to public water. EPA is not aware of any withdrawal or use of groundwater at the Site.
+
+7         Summary of Site Risks
+
+This early interim action is based on the unacceptable risk to human health from contaminated,
+residential soil. EPA will prepare a comprehensive risk assessment and develop final remedial
+objectives and CULs in a future final remedial action for OU1.
+
+7.1       Human Health Risk Assessment (HHRA)
+
+The lead contamination in residential soil at the FMC Site presents a threat to human health. Lead
+exposure can harm children's developing brains and nervous systems, potentially impacting learning,
+behavior, and overall growth. Lead primarily targets the nervous system, kidneys, and blood-forming
+(hematopoietic) systems. EPA is using a preliminary remediation goal (PRG) of 200 ppm, for lead in
+soil at residential properties in accordance with the October 16, 2025, EPA memorandum Residential
+Lead Directive for CERCLA Sites and RCRA Hazardous Waste Cleanup Program Facilities1 (2025 Lead
+Directive). As outlined in the 2025 Lead Directive, EPA’s national lead policy specifies the use of a
+regional screening level (RSL) of 200 ppm for lead in residential soil and a target children’s blood lead
+level (BLL) of 5 micrograms per deciliter (µg/dL) to develop PRGs.
+
+EPA uses the Integrated Exposure Uptake Biokinetic (IEUBK) Model for Lead in Children as a risk
+assessment tool to support environmental cleanup decisions at residential sites. The IEUBK Model
+considers exposure to lead from several sources and routes, and correlates BLLs in young children
+(birth to 7 years of age) to lead concentrations in environmental media. EPA used IEUBKv2 to
+calculate a new risk-based PRG for lead that relies on default values for the purposes of this interim
+remedy. The results indicate that the Site-specific interim risk-based residential soil PRG is 200 ppm.
+
+Consistent with the 2025 Lead Directive, the risk-based PRG may be adjusted based on ARARs or to
+account for uncertainty, technical limitations (i.e., detection and/or quantification limits),
+
+
+
+1
+    https://www.epa.gov/superfund/lead-superfund-sites-guidance#25directive
+
+                                                          11
+bioavailability and site-specific soil lead background. Considering the applicability of such factors, the
+resulting site-specific CUL for lead in residential soil at OU1 is 200 ppm.
+
+Residential exposure to contaminants in soil occurs through incidental ingestion, inhalation, and
+dermal contact (collectively, “direct contact”). According to the Agency for Toxic Substances and
+Disease Registry (ATSDR), the public is generally exposed to only the top few inches of soil on a
+regular basis. ATSDR defines surface soil as the top 0 to 3 inches.2 With respect to risk assessment,
+the top inch of soil best represents current direct contact exposure to contaminants. As shown in
+Table 1, at least 88% of the shallowest (0-3 inches and 0-6 inches) residential composite samples
+collected by EPA and analyzed by laboratory methods exceeded the screening level of 200 ppm for
+lead. The maximum lead concentration at these surficial depths was 3,110 ppm, which the IEUBK
+model correlates to a BLL of 14.5 μg/dL. This level indicates that the lead from the Site now in
+residential soils is a significant potential threat to the health of child residents. Lead serves as the sole
+basis for taking this interim remedial action to address residential soil at the Site. Lead is the only
+COPC for this interim action.
+
+While the top one to three inches of soil is the most significant source for current exposure to
+contaminants, exposure to contaminants in soil below the top inch may still occur over the long term.
+Soil as deep as 12 inches below grade can be frequently brought to the surface through typical
+residential activities such as gardening, landscaping, and digging by small children and pets. This is
+consistent with guidance from ATSDR that exposures from subsurface soil could occur from activities
+such as gardening, digging, and construction.3 As shown in Table 2, 78% of the properties sampled by
+XRF exceeded the 200 ppm screening level for lead in the 6 to 12-inch interval, which indicates
+significant lead contamination to this depth.
+
+XRF analyses of samples below 12 inches below grade showed exceedances of the 200 ppm screening
+level in 56% of the parcels at the 12 to 18-inch interval, and 34% of the parcels at the 18 to 24-inch
+interval (see Table 2). These analyses indicate decreasing but still widespread elevated lead
+concentrations in subsurface soil. At-grade vegetable gardening is a residential activity that could
+cause exposure to soil in the 12 to 24-inch interval. Other residential activities that disturb soil at this
+depth, such as the planting of shrubs and trees with very large root balls, excavating for an inground
+pool or underground utilities, and excavation of a basement for new construction, are infrequent.
+These types of activities are rarely performed by residents, and are not performed by children, who
+are the most vulnerable to health impacts from lead. Although these subsurface soil disturbances
+could result in mixing of subsurface soil with surface soil, the relatively infrequent nature and low
+volumes of subsurface soil brought to the surface supports the conclusion that there is a substantially
+lower residential exposure to subsurface soil than there is residential exposure to the 0 to 12-inch
+interval.
+
+7.2       Ecological Risk Assessment
+
+This interim remedial action does not address ecological receptors and, therefore, does not consider
+the presence of ecological risks. Ecological risks on urban residential properties are unlikely but will
+
+
+2
+    https://www.atsdr.cdc.gov/pha-guidance/toolbox/key_contamination_information.html
+3
+    https://www.atsdr.cdc.gov/pha-guidance/resources/Data-Needed-for-the-PHA-Process-508.pdf
+
+                                                         12
+be evaluated in the Remedial Investigation and Feasibility Study (RI/FS) for OU1 and addressed in the
+final OU1 ROD, if necessary. Ecological risks in George Lake and non-residential properties will be
+considered in OU2.
+
+8         Remedial Action Objective
+
+Because of the unacceptable potential risks to human health and the environment described in
+Section 7, the Remedial Action Objective (RAO) for this IROD is:
+
+      •   Reduce to acceptable levels the human health risk from exposure to lead in soil through
+          ingestion, direct contact, or inhalation exposure pathways, assuming residential land-use
+          scenarios.
+
+The properties to be addressed in this interim remedial action are generally either currently in
+residential use or are vacant but zoned residential and suitable for residential use in the future. EPA
+also applies residential exposure assumptions to other areas with high or unrestricted accessibility to
+sensitive populations, such as schools, daycare centers, community centers, playgrounds, parks, and
+other areas where young children may be exposed to contaminated soil.
+
+8.1       Clean Up Level
+
+CULs specify the chemical concentration for achieving the RAO. EPA is selecting a lead concentration
+of 200 ppm as the surface soil CUL for this interim action. As described in Section 7.1, EPA has
+identified a target BLL of 5 µg/dL as the appropriate protective BLL endpoint for remediation at the
+FMC Site. Using default inputs to the IEUBK model, this target BLL for lead corresponds to a soil lead
+concentration of 200 ppm. Selecting a CUL of 200 ppm for this interim remedy will allow EPA to
+quickly address residential properties with known high levels of lead.
+
+While the interim remedy is being performed, EPA will also be collecting information on background
+concentrations and bioavailability of lead, as described below, to calculate a final CUL. EPA will
+identify the final RAO and soil CUL in a final OU1 Record of Decision. However, the fundamental
+remedial approach of excavating lead-contaminated surface soil and using institutional controls (ICs)
+with ongoing outreach to notify future homeowners of contamination remaining in the subsurface, is
+not expected to change. Therefore, this interim remedy is consistent with the expected final remedy.
+
+The 200 ppm interim CUL is greater than the Site-specific background concentration of 110 ppm
+calculated by IDEM in its Expanded Site Inspection Report. To further refine the background
+concentration, EPA is collecting, as part of the remedial investigation for OU1, additional background
+samples and will refine the Site-specific background lead concentration before selecting a final CUL
+for lead. EPA does not expect the final background lead concentration to exceed 200 ppm.
+
+The 200 ppm interim CUL also assumes a default value of 60% for relative bioavailability. Relative
+bioavailability measures how much of the lead in the soil is available for absorption by the body. EPA
+has not completed the study of the bioavailability of lead in Site soils, and the actual Site-specific
+value may be less than or greater than the default value. However, the range of lead bioavailability
+seen previously in Region 5 soils suggests that the Site-specific value is likely to differ from the default
+value by less than 10%. A difference of less than 10% between the Site-specific value and the default
+
+                                                    13
+value is not likely to result in a significant change to the target lead concentration. Selection and
+application of a final surface soil CUL may incorporate the Site-specific bioavailability value
+determined during the remedial investigation.
+
+9           Description of Alternatives
+
+CERCLA and the NCP set forth the process and criteria by which remedial actions are evaluated and
+selected. EPA considered three alternatives, summarized in Table 3 below, for addressing lead-
+contaminated soil on residential properties with existing data in OU1. Each alternative was evaluated
+against EPA’s nine criteria as described in Section 10.
+
+Table 3:       Summary of the Remedial Alternatives
+
+         Estimated Costs, $M             Estimated          Estimated Soil
+                        Total             Time to             Excavation
+ Alt.                                                                           Description of Alternative
+      Capital O&M Present              Achieve RAOs,        Volume, cubic
+                        Worth              years                yards
+  1     $0      $0        $0                 0                    0                   No further action
+                                                                             Excavation of soil exceeding 200
+                                                                              ppm to a maximum depth of 6
+    2       $7.8    $0.15     $7.9           2                  3,889        inches, minimum of 12 inches of
+                                                                                clean soil cover, institutional
+                                                                                           controls
+                                                                             Excavation of soil exceeding 200
+                                                                              ppm to a maximum depth of 12
+    3       $9.4    $0.15     $9.5           2                  7,544
+                                                                               inches, backfill with clean soil,
+                                                                                    institutional controls
+
+
+9.1         Alternative 1: No Action
+
+In accordance with the NCP and EPA RI/FS Guidance, EPA evaluated a “No Action” Alternative to
+provide a baseline for comparison with other alternatives. Under this alternative, EPA would take no
+action to prevent residential exposure to contaminated soil, including no active remediation,
+monitoring or long-term stewardship.
+
+9.2         Alternative 2: Excavation of soil exceeding 200 ppm lead to a maximum 6-inch depth; backfill
+            and placement of up to an additional six-inches of soil; restoration; institutional controls
+
+Estimated Capital Cost: $7.8M
+Estimated O&M Present Worth Cost (30 years): $0.15M
+Estimated Present Worth Cost: $7.9M
+Estimated Construction Timeframe: 2 years
+Estimated Time to Achieve RAOs: 2 years
+
+Alternative 2 involves the following construction activities:
+
+        •   Excavation of soil exceeding the surface soil CUL up to a maximum depth of 6 inches;
+
+                                                       14
+   •   Disposal of the excavated soil at an off-site Subtitle D landfill;
+
+   •   Placement of a visual barrier, such as orange construction fencing or landscape fabric, if
+       contaminated soil is identified below the base of excavation;
+
+   •   Backfilling the excavated areas with clean fill soil, and placement of up to six additional inches
+       of topsoil, to achieve a minimum 12-inch depth of clean soil; and
+
+   •   Restoration of vegetation as close as possible to its pre-remedial condition.
+
+Due to the exposure potential described in Section 7.1, EPA generally recommends a minimum of 12
+inches of clean soil for protection of residential exposure through direct contact. Alternative 2
+provides a 12-inch interval of clean soil by excavating and replacing six inches of contaminated soil
+and adding 6 inches of supplemental clean soil cover. The backfill and additional soil cover would be
+composed of a minimum of six inches of topsoil at the surface placed on up to six inches of common
+fill. Because the soil cover would raise the grade of most yards by six inches, covered areas would be
+sloped to meet the current elevation at the edges of the covered areas and at existing structures.
+
+After placement of the clean soil cover, each yard would be restored as close as possible to its pre-
+remedial condition, and measures would be taken to maintain the vegetation until it is established.
+For the purpose of cost estimating, Alternative 2 assumes 30 days of watering, fertilizing, and cutting,
+but vegetation maintenance could take the form of a stipend to homeowners to offset their
+increased water bill for maintaining the vegetation. After an initial time period to establish the
+vegetation, property owners would be responsible for the maintenance of their own yards.
+
+Due to the lower residential exposure to subsurface soil below the base of excavation, Alternative 2
+calls for reducing exposure to contaminated subsurface soil through institutional controls (ICs) and
+soil management practices for utility or construction work that may disturb the subsurface. However,
+to ensure a protective remedy, if EPA determines that certain areas are likely to have frequent or
+significant soil disturbance below the 12-inch layer of clean soil, such as at-grade vegetable gardens,
+EPA may extend excavation to a depth below 6 inches in those areas.
+
+ICs, such as deed restrictions, would be implemented on those properties that do not meet the 200
+ppm CUL below the base of excavation in order to protect the integrity of the clean soil cover and to
+prevent exposure to contaminated soil at depth. The goals of the ICs are to promote awareness in the
+community of the presence of subsurface contamination, encourage practices that keep the clean soil
+cover intact, and promote soil management best practices for subsurface work (utility maintenance,
+foundation work, etc.) that minimize disturbance to the clean soil layer and appropriately manage
+contaminated soil if contaminated soil is disturbed. To accomplish this, the remedy will employ
+multiple IC types and robust long-term stewardship procedures in a layered approach. A site-specific
+Institutional Control Implementation and Assurance Plan (ICIAP), prepared during remedial action,
+will specify IC mechanisms and long-term stewardship procedures to ensure ongoing protectiveness.
+In addition to regular maintenance and monitoring of ICs, the ICIAP may include the following:
+
+   •   Recording notices of contamination filed on property deeds to document the existence of
+       contamination remaining at depth and inform future property owners.
+
+
+                                                    15
+      •   Registering properties and creating an environmental advisory area in the IDEM IC Registry
+          and IC ArcGIS mapping layer.4
+
+      •   Performance of ongoing community education and outreach efforts.
+
+      •   Enrolling property in the Indiana “call-before-you-dig” program.
+
+      •   Providing soil management best practices for future utility or construction work
+
+Based on the XRF data collected in EPA’s Removal Site Assessment, the EPA estimates that 96%5 of
+the 160 properties to be addressed are likely to exceed the lead cleanup level below the 6-inch base
+of excavation, and would need ICs and long-term stewardship during O&M.
+
+Because contaminated soil exceeding the CUL would remain below the base of excavation on some
+properties, EPA would perform five-year reviews of the remedy. This is in accordance with CERCLA
+requirements, since impacted soil would be left in place above levels that allow for unlimited use and
+unrestricted exposure.
+
+9.3       Alternative 3: Excavation of soil exceeding 200 ppm lead to 12 inches; backfill and restoration;
+          institutional controls
+
+Alternative 3 involves the following construction activities:
+
+      •   Excavation of soil exceeding the interim soil CUL up to a maximum depth of 12 inches;
+
+      •   Disposal of the excavated soil at an off-site Subtitle D landfill;
+
+      •   Placement of a visual barrier, such as orange construction fencing or landscape fabric, if
+          contaminated soil is identified below the base of excavation;
+
+      •   Backfilling of excavated areas with up to 12 inches of clean soil; and
+
+      •   Restoration of vegetation as close as possible to its pre-remedial condition.
+
+Alternative 3 involves excavation of soil that exceeds the CUL to a maximum depth of 12 inches below
+the surface. The final excavation depth may be less than 12 inches if sampling indicates that soil
+above the 12-inch depth meets the CUL. The backfill would be composed of a minimum of six inches
+of topsoil at the surface placed on up to six inches of common fill.
+
+After placement of the clean backfill, each yard would be restored as close as possible to its pre-
+remedial condition, and measures would be taken to maintain the vegetation until it is established.
+For the purpose of cost estimating, Alternative 3 assumes 30 days of watering, fertilizing, and cutting,
+but vegetation maintenance could take the form of a stipend to homeowners to offset their
+
+
+4
+  See: https://www.in.gov/idem/cleanups/investigation-and-cleanup-programs/institutional-controls/ and
+https://www.in.gov/idem/resources/whats-in-my-neighborhood/
+5
+  Of the 73 DUs for which XRF data showed an exceedance of 200 ppm in the 0-6” interval and deeper interval data were
+available to evaluate the need for ICs, 70, or 96%, exceeded 200 ppm below 6 inches below ground surface.
+
+                                                         16
+increased water bill for maintaining the vegetation. After an initial time period to establish the
+vegetation, property owners would be responsible for the maintenance of their own yards.
+
+Due to the lower residential exposure to subsurface soil below the base of excavation, Alternative 3
+calls for reducing exposure to contaminated subsurface soil through ICs and soil management
+practices for utility or construction work that may disturb the subsurface. However, to ensure a
+protective remedy, if EPA determines that certain areas are likely to have frequent or significant soil
+disturbance below the 12-inch layer of clean soil, such as at-grade vegetable gardens, EPA may
+extend excavation to a depth below 12 inches in those areas.
+
+ICs would be implemented on those properties that do not meet the 200 ppm CUL below the base of
+excavation, as described for Alternative 2. Based on the XRF data collected in the Removal Site
+Assessment and presented in Table 2, EPA estimates that 68%6 of the 160 properties to be addressed
+are likely to exceed the lead CUL below the 12-inch base of excavation and would need ICs.
+
+Because contaminated soil exceeding the surface soil CUL will remain below the base of excavation
+on some properties, EPA would perform five-year reviews of the remedy. This is in accordance with
+CERCLA requirements, since impacted soil would be left in place above levels that allow for unlimited
+use and unrestricted exposure.
+
+10       Comparative Analysis of Alternatives
+
+Section 121 of CERCLA establishes statutory requirements and preferences for remedy selection,
+including:
+
+     •   Overall protection of human health and the environment;
+
+     •   Compliance of the remedial action with all federal and more stringent state and tribal
+         environmental and facility siting standards, requirements, criteria, or limitations, unless a
+         waiver is invoked;
+
+     •   Cost-effectiveness;
+
+     •   Utilization of permanent solutions and alternative treatment technologies or resource
+         recovery technologies to the maximum extent practicable; and
+
+     •   A preference for remedies in which treatment that permanently and significantly reduces the
+         volume, toxicity, or mobility of the hazardous substances is a principal element, as opposed to
+         remedies not involving such treatment.
+
+Building upon these statutory mandates, the NCP articulates nine evaluation criteria for assessing and
+comparing the remedial alternatives. The nine criteria fall into three groups: threshold criteria,
+primary balancing criteria, and modifying criteria. Threshold criteria, including overall protection of
+human health and the environment and compliance with ARARs, must be met for a remedial
+
+
+6
+ Of the 73 DUs for which XRF data showed an exceedance of 200 ppm in the 0-6” interval, 50, or 68%, exceeded 200 ppm
+below 12 inches below ground surface.
+
+                                                        17
+alternative be eligible for selection. Primary balancing criteria are used to weigh major trade-offs
+among alternatives and include: long-term effectiveness and permanence; reduction of toxicity,
+mobility, or volume of contaminants through treatment; short-term effectiveness; implementability;
+and cost. Modifying criteria, including state/support agency acceptance and community acceptance,
+are fully considered only after public comment is received on the Proposed Plan.
+
+10.1   Overall Protection of Human Health and the Environment
+
+This criterion assesses how well the alternatives achieve and maintain protection of human health
+and the environment. It draws on the assessments conducted under other evaluation criteria,
+especially long-term effectiveness, short-term effectiveness, and permanence.
+
+Alternative 1 would provide no risk reduction and would not be protective of human health and the
+environment. Because it does not meet this threshold criterion, it is not eligible for selection and was
+not further considered with respect to the other selection criteria.
+
+Alternatives 2 and 3 provide overall protectiveness of human health and the environment by
+removing surface soil from residential properties and preventing exposure to contaminated soil
+below the depth of excavation. The long-term protectiveness of both alternatives relies on ICs and
+the integrity of the clean soil cover. Both alternatives have some risk of impacts to the local
+community from traffic and dust created during the remedial action, but these risks are manageable.
+
+10.2   Compliance with ARARs
+
+This criterion addresses whether the remedial alternatives comply with promulgated federal and
+state applicable or relevant and appropriate requirements (ARARs). Only state requirements that are
+more stringent than federal requirements are ARARs. There are three different categories of ARARs:
+chemical-specific, action-specific, and location-specific ARARs. “To Be Considered” (TBC)
+requirements are non-promulgated criteria, advisories, etc., that may be useful to determine what is
+protective or in developing Superfund remedies.
+
+The potential ARARs and TBCs are identified in Attachment 1. There are no chemical-specific ARARs;
+rather, the RAO and CUL for this action were developed with consideration of guidance in the 2025
+Lead Directive. The active remedial alternatives (2 and 3) would have action- and location-specific
+ARARs, such as requirements related to hazardous waste determination, management,
+transportation and disposal; air emissions and fugitive dust; surface water discharge from the work
+site; and institutional controls. Although interim remedies are not required by statute or regulation to
+comply with ARARs, both Alternatives 2 and 3 would comply with ARARs listed in Attachment 1.
+
+10.3   Long-term Effectiveness and Permanence
+
+The factors for this criterion include the magnitude of risk associated with residual contamination
+after the conclusion of remedial activities, and the adequacy and reliability of the remedy.
+Alternatives 2 and 3 would both reduce the risks from exposure to lead-contaminated soil by
+removing surface soil from the site and safely disposing of it, and by backfilling properties with clean
+soil.
+
+
+                                                   18
+Alternative 2 would require an additional six inches of soil on most properties to meet the 12-inch
+minimum depth of clean soil. However, areas that are near structures, trees, pavement, or other
+obstacles to excavation cannot be raised above a slope that can resist erosion and provide for proper
+drainage of stormwater away from structures. Because the yards in this dense urban area are
+relatively small (as narrow as 25 feet wide), a significant areal extent of each parcel would have less
+than 12 inches of clean soil in Alternative 2. In contrast, Alternative 3 would not raise the overall
+surface grade, so only areas immediately adjacent to tree roots or structures would have less than 12
+inches of clean soil.
+
+Both alternatives would leave soil that does not meet the CUL below the base of excavation on some
+properties. These properties will need ICs and ongoing monitoring and maintenance of the soil cover
+to prevent exposure. Alternative 2 will need ICs on an estimated 96% of properties addressed, while
+Alternative 3 would need ICs on only an estimated 68%. The monitoring of IC effectiveness is a
+routine component of many residential soil remedies and provides long-term effectiveness for those
+properties. As part of the long-term stewardship and O&M of the remedy, the State of Indiana will
+provide assurances that it will maintain and enforce the ICs, once they are identified and
+implemented, in accordance with an O&M Plan or ICIAP.
+
+Alternative 3 has greater long-term protectiveness than Alternative 2 because it would have 12
+inches of clean soil on a greater area of each parcel and be more resistant to erosion. Alternative 3
+fully meets the long-term protectiveness criterion, while Alternative 2 partially meets the long-term
+protectiveness criterion.
+
+Table 4:   Comparison of Factors Considered in the Long-Term and Short-Term Protectiveness
+           Criteria
+                                Alternative                                       2            3
+                    Maximum excavation depth, inches                              6            12
+               Estimated % properties that would need ICs                        96%           68%
+                 Estimated # properties with/without ICs                        153/7        110/50
+              Estimated soil excavation volume (cubic yards)                    3,889         7,544
+                    Estimated construction time (years)                           2             2
+                   Estimated time to meet RAOs (years)                            2             2
+
+
+10.4   Reduction of Toxicity, Mobility, or Volume through Treatment
+
+This criterion addresses the degree to which alternatives employ recycling or treatment that reduces
+toxicity, mobility, or volume. None of the alternatives reduce the toxicity, mobility, or volume of the
+soil contaminants through treatment. The large volume of relatively low-level lead-contaminated soil
+in OU1 does not lend itself to any cost-effective treatment. Instead, protectiveness is achieved by
+removing contamination, disposing of contamination in a permitted disposal facility, and maintaining
+a clean interval of soil from 0 to 12 inches below the surface.
+
+
+
+
+                                                  19
+10.5   Short-term Effectiveness
+
+This criterion focuses on the length of time needed to construct the remedy and achieve protection,
+and considers the potential adverse effects to the community, workers, and the environment during
+remedy implementation. EPA estimates a construction time of two years to excavate the properties
+addressed in this interim action (Table 4). Alternative 3 would excavate approximately 52% more soil
+than Alternative 2, which marginally increases the risk of impacts to workers and the community from
+fugitive dust and truck and heavy equipment traffic. However, measures to control these risks are
+routine in contaminated soil excavation projects and are expected to mitigate those risks such that
+both Alternatives 2 and 3 partially meet this criterion.
+
+10.6   Implementability
+
+This criterion considers the technical and administrative feasibility of a remedy. Assessing the ease or
+difficulty of implementing an alternative may include: (1) its technical feasibility or challenges
+associated with its construction and operation, the ease of undertaking additional actions, and the
+ability to monitor the remedy; (2) its administrative feasibility or non-technical challenges to
+implementation, such as the need for approvals or permits and the associated time and effort; (3) the
+availability of technical services and materials; and (4) the availability of necessary equipment or
+other resources.
+
+Both Alternative 2 and Alternative 3 utilize a routine and widely available technology – excavation
+and offsite disposal – and can be implemented. The larger volume of soil that would be excavated in
+Alternative 3 may slightly increase the difficulty of implementation compared with Alternative 2.
+However, a larger number of property owners who must agree to implement ICs on their properties
+in Alternative 2 may slightly increase the difficulty of fully implementing the remedy of Alternative 2.
+
+The implementability of Alternative 2 would be limited by the need to slope the ground surface on
+parcels with raised surface elevations. Raising the grade by six inches would impact stormwater
+drainage on the remediated properties as well as neighboring properties. At minimum, Alternative 2
+would require additional design considerations to ensure proper drainage of stormwater, and
+additional monitoring of erosion may be needed. However, small and fragmented areas that are
+targeted for remediation may not be able to have the grade raised enough to meet the 12-inch clean
+soil requirement. Therefore, Alternative 2 partially meets the implementability criterion, while
+Alternative 3 fully meets the implementability criterion.
+
+10.7   Cost
+
+This criterion considers the present value cost of the remedial alternatives, which is comprised of
+capital costs, or the initial expense of installing the remedy, and the subsequent costs for operations
+and maintenance (O&M) of the remedy. O&M costs refer to post-construction expenses, including
+the cost to operate, maintain, and monitor the remedy over an assumed 30-year period. The O&M
+costs for Alternatives 2 and 3 pertain to the long-term stewardship of ICs, including ongoing outreach
+and education, as well as occasional minor repairs to the clean soil cover. The present-day value of
+future O&M costs are calculated assuming a 7% discount rate. Table 5 summarizes the total
+estimated present value costs of Alternatives 2 and 3.
+
+
+                                                   20
+Table 5:       Comparison of Present Value Estimated Total Costs7
+                          Capital Cost              O&M Costs, Net Present Value                       Total Cost
+     Alternative
+                          ($ Millions)                     ($ Millions)                               ($ Millions)
+           2                 $7.8                              $0.15                                     $7.9
+           3                 $9.4                              $0.15                                     $9.5
+
+
+The estimated present-day cost of each alternative is closely related to the volume of soil to be
+excavated, transported and disposed. O&M costs of both alternatives are a small fraction of the
+capital costs. Alternative 3 would excavate a greater volume of soil than Alternative 2 and has a cost
+estimate of $9.5M compared to Alternative 2’s cost estimate of $7.9M. The present value cost of
+Alternative 3 is 20% greater than the present value cost of Alternative 2.
+
+10.8    State Acceptance
+
+This criterion considers the state’s position and key concerns about the preferred alternative and
+other alternatives identified in the Proposed Plan. On June 4, 2026, IDEM indicated its full
+concurrence with Alternative 3 in a letter to EPA. IDEM’s concurrence letter is found in Attachment 3.
+
+10.9    Community Acceptance
+
+This criterion addresses the public’s general response to the alternatives described in the Proposed
+Plan, and in particular to the public’s response to EPA’s Proposed Plan to select Alternative 3. Public
+comments on the Proposed Plan generally indicate concurrence with EPA’s determination that
+remedial action is necessary to address the threats to human health described in Section 7.1 of this
+IROD, and with the selection of Alternative 3 over the other alternatives. Some commenters
+identified perceived shortcomings of EPA’s remedial approach or questioned the dataset on which it
+relies, that they believe will impair its protectiveness. A summary of public comments received, and
+EPA’s responses, are found in Part III of this IROD.
+
+11      Principal Threat Wastes
+
+The NCP establishes an expectation that the EPA will use treatment to address the principal threat
+posed by a site wherever practicable. Principal threat wastes are those source materials considered
+to be highly toxic or highly mobile which generally cannot be contained in a reliable manner or would
+present a significant risk to human health or the environment should exposure occur. The NCP (40
+CFR 300.430 (a)(1)(iii)(A)) indicates principal threats are most likely to include liquids, areas
+contaminated with high concentrations of toxic compounds, and highly mobile materials. Low-level
+threat wastes are those source materials that generally can be reliably contained and that would
+present only a low risk in the event of release. Low-level threat wastes include source materials that
+exhibit low toxicity, low mobility in the environment, or are near health-based levels.
+
+
+
+
+7
+ Costs include a 20% contingency. Total costs may not equal the sum of capital and O&M costs shown in this table due to
+rounding.
+
+                                                          21
+EPA has not identified any principal threat wastes at the Site. Instead, EPA considers the
+contaminated soil and the process residue source materials low-level threat waste materials that can
+be reliably contained.
+
+12       Selected Remedy
+
+Based on the evaluation of alternatives described in Section 10, EPA has selected Alternative 3 as the
+interim remedial action for OU1. A detailed description of the Selected Remedy is provided in Section
+9.3.
+
+12.1     Summary of the Rationale for the Selected Remedy
+
+EPA selects Alternative 3 as the best balance of the nine evaluation criteria. Under Superfund law, the
+selected remedy must meet the threshold criteria of Overall Protection of Human Health and the
+Environment, and Compliance with ARARs. Alternative 3 meets these threshold criteria by excavating
+the top 12 inches of soil to the lead CUL of 200 ppm, which correlates to a BLL of 5 µg/dL and will be
+protective of sensitive populations. ICs and a visual barrier will prevent future exposure to
+contaminated soil below the base of excavation.
+
+12.2     Description of Remedial Components
+
+The following major components are included in the Selected Remedy:
+
+     •   Excavation of soil with lead concentrations exceeding the 200 ppm surface soil CUL to a
+         maximum depth of 12 inches;
+
+     •   Disposal of the excavated soil at an off-site Subtitle D landfill;
+
+     •   Placement of a visual barrier, such as orange construction fencing or landscape fabric, if
+         contaminated soil is identified below the base of excavation;
+
+     •   Backfill of excavated areas with clean soil and restoration to pre-excavation conditions as
+         much as possible;
+
+     •   Use of Institutional controls and long-term stewardship to prevent exposure to contaminated
+         soil on those properties that do not meet the 200 ppm CUL below the base of excavation.
+
+12.3     Summary of Estimated Remedial Costs
+
+The total estimated cost of the selected remedy is $9.5 million. Table 6 lists the capital and annual
+O&M cost elements for each component of the selected remedy. These costs are based on the best
+available information regarding the anticipated scope of the remedial alternative. Changes in the cost
+elements are likely to occur as a result of new information and data which may be obtained during
+the pre-design phase. This is an order-of-magnitude engineering cost estimate that is expected to be
+within +50% to -30% of the actual project cost.
+
+
+
+
+                                                      22
+Table 6:      Cost Elements of Selected Remedy
+                     Description                        Quantity           Unit         Unit Cost      Total
+          Access negotiation and follow up                 160          Properties          $ 500       $ 80,000
+     Topographic surveys (initial/excavation/final)        160          Properties          $ 300       $ 48,000
+            Pre/post-construction survey                   160          Properties          $ 200       $ 32,000
+                    Utility location                       160          Properties          $ 350       $ 56,000
+                  Grubbing/clearing                        160          Properties          $ 300       $ 48,000
+                 Fence/gate removal                        160          Properties          $ 600       $ 96,000
+                    Air monitoring                         160          Properties          $ 100       $ 16,000
+                Mechanical excavation                     6,790             CY              $ 190    $ 1,290,100
+                 Manual excavation                         754              CY              $ 380      $ 286,689
+             Transport soil to the landfill              10,185            Tons               $28      $ 285,180
+                    Disposal of soil                     10,185            Tons               $29      $ 295,365
+       Base of excavation assessment with XRF              160          Properties          $ 200       $ 32,000
+                   Place geotextile                      16,042        Square yard              $3       $48,125
+         Clean soil purchase and placement                7,544             CY              $ 210    $ 1,584,333
+                   Sod installation                      21,000             CY                $ 18     $ 378,000
+                 Replace landscaping                       160          Properties        $ 3,000      $ 480,000
+               Fence/gate replacement                      160          Properties        $ 1,200      $ 192,000
+               Vegetation maintenance                      160          Properties        $ 2,000      $ 320,000
+            Mobilization/ Demobilization                          8% of line item costs                $ 445,423
+      Contractor Oversight, Project Support and
+                                                                 28% of line item costs              $ 1,558,982
+             Construction Management
+                Institutional Controls                     110          Properties        $2,000        $ 220,000
+                     Contingency                                 20% of all other costs              $ 1,558,439
+                                                 Subtotal: Construction/Remedial Action Costs:       $9,350,637
+         Present day O&M Costs (30 Years)                                                             $154,080
+                                                           Alternative 3 Total Present Day Cost:     $9,504,717
+
+
+12.4      Expected Outcomes of the Selected Remedy
+
+EPA expects that the selected remedy, Alternative 3, will reduce the potential for residential exposure
+to contaminated soil in the excavated parcels to achieve a maximum modeled target BLL of no
+greater than 5 µg/dL. At the completion of this remedial action, the properties addressed in the
+interim remedial action will be protective of residential or any other use, although many properties
+will have restrictions on digging below 12 inches below the surface and will require soil management
+best practices for construction projects that excavate below this depth. EPA expects that the soil lead
+concentration in areas addressed in the interim remedial action will maintain soil concentrations at
+less than 200 ppm in the top 12 inches for the long-term and will not need additional remedial action
+as part of the final OU1 remedy.
+
+13        Statutory Determinations
+
+The selected remedy is protective of human health and the environment, complies with federal and
+state ARARs (unless justified with a waiver), is cost-effective, and utilizes permanent solutions and
+alternate treatment technologies or resource recovery technologies to the maximum extent
+
+                                                         23
+practicable. The remedy in this OU does not satisfy the statutory preference for treatment as a
+principal element of the remedy because of a lack of commercially available, proven technologies to
+treat large volumes of soil containing relatively low concentrations of lead.
+
+13.1   Protection of Human Health and the Environment
+
+The selected remedy will protect human health and the environment by reducing residential
+exposure to lead-contaminated soil. It will achieve this by removing contaminated soil to a depth of
+12 inches and disposing of contaminated soil in a permitted off-site landfill and using engineering
+controls and ICs to prevent exposure to contaminated subsurface soil. The selected remedy will result
+in a protective target children’s BLL of 5 μg/dL or less. The remedy will comply with ARARs and
+implementation will not pose any unacceptable short-term risks.
+
+13.2   Compliance with Applicable or Relevant and Appropriate Requirements
+
+The selected remedy will comply with all federal and more stringent state ARARs that pertain to the
+remedial action at the Site. The ARARs for the selected remedy are listed and discussed in detail in
+the tables in Attachment 1 to this ROD, and include requirements related to hazardous waste
+determination, management, transportation and disposal; air emissions and fugitive dust; water
+discharge; and institutional controls.
+
+13.3   Cost-Effectiveness
+
+EPA makes this determination by comparing the relative advantages and disadvantages of the
+alternatives with respect to long-term protectiveness, short-term protectiveness, reduction of
+toxicity, mobility, or volume through treatment, and cost. EPA finds a remedy to be cost-effective if
+its costs are proportional to its overall effectiveness. Alternative 3 has the best overall effectiveness
+of the alternatives because the 12-inch thickness of clean soil would be achieved over all accessible
+areas, permanently reducing exposure to lead-contaminated soil, while only marginally increasing the
+potential negative short-term impacts to the community. This greater overall effectiveness justifies
+the increased cost of Alternative 3 over Alternative 2, so Alternative 3 is a cost-effective remedy.
+
+13.4   Utilization of Permanent Solutions and Treatment or Recovery to the Maximum Extent
+       Practicable
+
+EPA has determined that Alternative 3 represents the maximum extent to which permanent solutions
+and treatment technologies can be utilized in a practicable manner at the Site. There are no
+demonstrated technologies to treat lead-contaminated soil for the purpose of reducing residential
+exposure on the scale needed for this remedy, but excavation, removal and disposal of soil in a
+permitted landfill will permanently eliminate residential exposure to the lead in the surface soil.
+
+13.5   Preference for Treatment as a Principal Element
+
+None of the soil addressed in this remedial action constitutes principal threat waste at the site, so the
+preference for treatment of principal threat waste does not apply.
+
+
+
+
+                                                   24
+13.6   Five-Year Review Requirements
+
+Because this remedy will result in hazardous substances remaining on-site above levels that allow for
+unlimited use and unrestricted exposure, a statutory review will be conducted within five years after
+initiation of the remedial action to ensure that the remedy is, or will be, protective of human health
+and the environment. The purpose of the five-year reviews is to evaluate the implementation and
+performance of the remedy in order to determine if the remedy is or will be protective of human
+health and the environment. The five-year review will document recommendations and follow-up
+actions as necessary to ensure long-term protectiveness of the remedy or bring about protectiveness
+of a remedy that is not protective.
+
+14     Documentation of Significant Changes
+
+EPA released the Proposed Plan for the FMC Site for public comment on March 16, 2026. The
+Proposed Plan identified Alternative 3 as the Preferred Alternative. EPA reviewed all written and
+verbal comments submitted during the public comment period. It was determined that no significant
+changes to the remedy, as originally identified in the Proposed Plan, were necessary or appropriate.
+
+
+
+
+                                                  25
+                              PART III       RESPONSIVENESS SUMMARY
+
+Comment 1: The cleanup should not cost the property owners anything. If it does, the EPA can
+           offer to purchase the property from the owners.
+EPA Response:
+
+EPA will not charge property owners to perform the cleanup on their property.
+
+Comment 2: It would be good to know which lots are particularly affected based on the property
+           ID or address. Under the Freedom of Information Act, EPA should make sampling
+           results for specific properties accessible to the public on the website.
+EPA Response:
+
+Due to privacy concerns and restrictions provided by the Privacy Act, EPA is not able to provide
+contaminant information for properties owned by individuals. EPA is working on an online dashboard
+that will aggregate data over several blocks and provide information on contaminant levels at that
+scale.
+
+Comment 3: Several commenters were supportive of Alternative 3 because the additional
+           protectiveness it provides is worth the additional cost.
+EPA Response:
+
+EPA agrees that the additional cost is justified by the greater degree of protection afforded by
+Alternative 3 and is selecting Alternative 3 in this IROD.
+
+Comment 4: Several commenters wanted their soil tested, had specific questions about soil that
+           had been tested on their property, had concerns about the status of their property, or
+           questioned whether every property in the area of interest would be sampled.
+EPA Response:
+
+Property owners in Whiting and the Robertsdale neighborhood of Hammond may give EPA
+permission to test their soil by filling out a consent for access form linked to the Site webpage:
+https://cumulis.epa.gov/supercpad/SiteProfiles/index.cfm?fuseaction=second.Cleanup&id=0501275#
+bkground. EPA is sampling a subset of properties in the area of interest as part of the remedial
+investigation, prior to selecting a final cleanup plan for the entire area. In addition, the 160 properties
+that are included in this interim remedy must be sampled as part of the remedy design process.
+
+EPA acknowledges the questions about specific properties that were provided as comments on the
+Proposed Plan and will communicate with those property owners about sampling their property.
+
+
+
+
+                                                    26
+Comment 5: The EPA did not take into account remediation measures for residents' homes
+           affected by the prevailing northerly wind direction. It should be a total cleanup and
+           not risk a repeat of the lead contamination in remediation area.
+EPA Response:
+
+EPA proposed this interim remedy based on data collected from 2016-2023 from properties largely to
+the north and northeast of the former facility. EPA is also performing a remedial investigation that
+includes collecting data on additional residential properties throughout Whiting and the Robertsdale
+neighborhood. The final remedy will address any additional properties determined to present
+unacceptable risk to residents. Both the interim and final remedies will reduce the overall levels of
+lead in the Whiting/Robertsdale area.
+
+Comment 6: Some commenters indicated that the Proposed Plan only considered lead
+           contamination in soil from the FMC site, while there are many more sources of
+           chemical contamination in the Whiting/Robertsdale region as well as issues with
+           safeguarding the water supply. They suggested that more should be done to
+           promote the total cleanup of the entire area and protect the residents and their
+           families from all hazards.
+EPA Response:
+
+The remedial investigation currently underway for OU1 is evaluating several types of chemicals in
+soil, soil gas, and groundwater, including volatile organic compounds, semivolatile organic
+compounds, metals other than lead, and others. The human health risk assessment for OU1 will
+evaluate the data on all these chemicals, but EPA’s remediation of the FMC Site is limited to
+properties impacted by releases from the FMC facility. At this time, lead in soil is the only known
+contaminant from the FMC facility causing unacceptable risk to human health.
+
+Comment 7: One commenter asked if other homes within the "General Area of Contamination
+           greater that 200ppm” will have soil excavation.
+EPA Response:
+
+EPA is performing a remedial investigation that includes collecting data on additional residential
+properties throughout Whiting and the Robertsdale neighborhood. This investigation will support a
+final remedy that will address any additional properties at which EPA has determined that lead
+concentrations in soil present an unacceptable risk to residents.
+
+Comment 8: When the EPA added the FMC smelter site on the Superfund National Priority List,
+           people thought the smelter buildings are a visible toxic landmark, would finally be
+           demolished as the priority. The EPA has not provided evidence that the smelter
+           buildings are safe for businesses to occupy or if left standing, will not further
+           contaminate the residential neighborhoods and the federally protected George Lake
+           and wildlife. However, the Proposed Plan is limited to residential cleanup of 160
+
+
+
+
+                                                  27
+                homes. A concurrent residential and FMC smelter cleanup plan should be done to
+                avoid continuing heavy metal contamination of the properties on site map.
+                EPA limited the literature to a discussion on only OU1 when the discussion should
+                have included a proposal on the two sections with time tables. Noting in the EPA
+                literature indicates that a OU2 cleanup may not be a cleanup, which is real from
+                remarks made by Leslie Patterson, EPA Remedial Project Manager, at various EPA
+                public meetings. As a result, because EPA is withholding that information, there is no
+                way for people to understand that the FMC smelter buildings will not be demolished
+                and that George Lake will not be cleaned up for probably another decade, if at all.
+EPA Response:
+
+While building demolition can be included as part of a cleanup under CERCLA, EPA must make a
+determination that the structure is either incompatible with the protectiveness of the remedy or is
+the preferred alternative for addressing an unacceptable threat to human health and the
+environment. EPA does not have information to support such a determination with respect to the
+buildings of the former FMC facility. These structures are privately owned and currently house the
+operations of East Lake Metals, LLC.
+
+EPA disagrees that a visual standard could adequately determine that the smelter buildings present a
+significant ongoing recontamination potential. The history of smelting operations and emissions at
+the FMC facility, taken together with the remediation and paving performed to date at the former
+smelter properties, supports the conclusion that the primary threat to the health of residents is the
+lead that was deposited over several decades during smelter operations. This supports EPA’s decision
+to prioritize residential cleanups to remove decades-old lead deposits. EPA will also conduct a
+thorough investigation of potential threats to human health and the environment posed by OU2.
+
+EPA acknowledges the desire for a timetable for cleanup of the OUs. Environmental remediation of
+legacy sites with hazardous materials inherently involves significant uncertainty. EPA has concluded it
+would raise false expectations to announce a timetable beyond the proposed interim remedy and the
+remedial investigation activities for OU1. EPA will work to inform the public as soon as possible when
+follow-up actions are planned. EPA is committed to addressing all unacceptable threats to human
+health and the environment related to the release of contaminants from the FMC facility, whether
+within OU1 or OU2.
+
+Comment 9: Some commenters raised a concern that the former FMC facility posed a
+           recontamination threat to residential properties that are remediated.
+EPA Response:
+
+EPA has determined that contamination of the residential properties occurred through a combination
+of decades of unabated stack and fugitive smelter emissions, and the import of industrial fill during
+residential development. East Lake Metals has operated at this location since 2021. At no time
+during its five years of operations has East Lake had any known stack or fugitive emissions of lead.
+East Lakes’ operations are limited to the customized cutting of steel and aluminum. Fill material is no
+longer being brought onto or generated from the Site. With these processes eliminated and, given
+that significant capping and paving of the former FMC facility eliminates direct contact with and
+
+
+                                                  28
+migration of contaminated soils beneath the capped and paved areas, EPA expects that clean soil
+imported for residential remediation will remain clean. After completion of the OU1 remedial action,
+EPA will continue to monitor the effectiveness of the remedy during statutorily mandated, five-year
+reviews of the remedy’s effectiveness.
+
+Comment 10: Recently I noticed changes to the FMC properties, now owned by Eastlake Metals,
+            LLC. Rooftop round metal vents were removed. The work likely released airborne
+            pollution. Did the EPA know of any activity? Is the EPA notified of current occupants’
+            activities on the EPA Superfund site? Is the Eastlake Metal under regular surveillance
+            to assure the public it does not release pollutants that will decontaminate [sic] the
+            cleaned soil projects?
+EPA Response:
+
+EPA notes that East Lake Metals owns only an approximately nine-acre portion of the former
+approximately 38-acre FMC facility.
+
+EPA does not have evidence that modifications to the former FMC buildings have released airborne
+or other pollution. EPA does not actively monitor the construction or business activities of the current
+occupants of the former FMC facility. But under CERCLA, current owners can be held liable if they fail
+to take reasonable steps to prevent a further release of contamination. EPA encourages persons who
+observe a possible violation of environmental laws or regulations to report their observations using
+the form at: https://echo.epa.gov/report-environmental-violations. Environmental emergencies that
+pose a sudden threat to public health should be reported to National Response Center at 1-800-424-
+8802.
+
+EPA has concluded that it is unlikely that the former smelter buildings (currently owned and operated
+by East Lake Metals) pose a significant threat to human health and the environment for the following
+reasons:
+
+   1. EPA officials observed the interior conditions of the buildings owned by East Lake Metals
+      during a Site visit in December 2025 and did not observe waste piles or visible sources of lead
+      contamination that might be the source of fugitive emissions.
+
+   2. East Lake Metals has no stack air emissions.
+
+   3. A May 26, 2006 Corrective Measures Completion Report details work that Federated Metals
+      Corporation performed under a 1992 Consent Decree, a decree entered by the federal district
+      court, which required RCRA Corrective Action. Prior to demolition of the baghouse and
+      associated structures, baghouse dust, metal debris, drums, PCB items, and residual particulate
+      matter were removed to minimize dust generation, and asbestos material was abated. High-
+      pressure power washing was performed on building interiors, including walls, ceilings, and
+      floors, to remove accumulated particulate residues before structure removal. All wash water
+      and sludges were collected, characterized, and disposed appropriately. After demolition,
+      exposed concrete slabs and foundations were again power washed to remove any remaining
+      dust before final site grading. Continuous air monitoring for lead, cadmium, arsenic, and total
+      suspended particulates was conducted before and during demolition activities. Most readings
+      for these contaminants were “nondetect” or detected below action levels. Dust suppression
+
+                                                  29
+       methods, including water application and controlled work sequencing, were applied as
+       needed when action levels were approached or exceeded.
+
+   4. With respect to soil, the migration of contaminated soil from East Lake Metals’ property is
+      limited by the terms of a 2014 Environmental Restrictive Covenant, which contains the
+      following requirements, among others:
+
+       •   The owner must conduct excavation and construction activities in such a manner that the
+           remaining contaminants of concern do not present a threat to human health or the
+           environment, as determined by IDEM’s current risk-based guidance.
+
+       •   Contaminated soils that are excavated must be managed and disposed of in accordance
+           with all applicable federal and state laws.
+
+       •   Notice must be provided to IDEM at least 14 days before the start of soil disturbance
+           activities.
+
+       •   Excavation of soil at depths below the surface material at the Real Estate is prohibited
+           unless these soil disturbance obligations are followed.
+
+       •   Engineered controls including surface coverings, buildings and fenced areas must be
+           maintained to prevent contact with underlying soil.
+
+East Lake Metals currently cuts steel and aluminum material and does not generate air emissions.
+Virtually the entire nine acres owned by East Lake is either covered by a building or paved surface.
+The buildings and paved areas prevent persons from having direct contact with any contaminated
+soils, prevent the inhalation of dust from contaminated soils, and prevent offsite migration of
+contaminated dust by eliminating even the possibility of dust formation because there is no exposed
+soil.
+
+Comment 11: Some commenters indicated that the use of data from bulk soil samples
+            underestimates the concentration and bioavailability of the most harmful lead in the
+            soil. The commenters indicated that EPA’s guidance recommends sieving soil samples
+            to <150 µm because the fine particles account for the majority of exposure and
+            contain disproportionately higher lead concentrations. They suggested that EPA
+            should use a conversion factor of two to estimate the lead levels in the finer fraction
+            based on the total soil sample. Similarly, they thought that use of a 100 ppm
+            threshold would account for the inconsistency with EPA’s guidance related to using
+            bulk soil data, facilitate achievement of the 2025 Lead Directive’s BLL goal, and
+            comport with the Directive’s recommended procedures.
+EPA Response:
+
+EPA guidance states that isolating the <150 µm fraction is generally recommended but acknowledges
+that it may be appropriate for Site-specific risk management decisions to consider various particle
+sizes. EPA is selecting a 200 ppm interim cleanup level based on existing data to support early action
+on properties with known lead exceedances while the remedial investigation continues to refine the
+nature and extent of contamination, including collecting data on background concentrations and Site-
+
+                                                  30
+specific bioavailability, and ultimately determining the final lead clean up level. Use of bulk soil data
+in the context of an interim remedy does not preclude future remedial action on additional
+properties and aligns with the Directive’s emphasis on timely risk‑management decisions.
+
+Comment 12: The Proposed Plan does not specify what the maximum concentration of lead will be
+            in the replacement soil.
+EPA Response:
+
+The chemical composition of the imported soil must support the remedy’s overall protection of
+human health and the interim RAO identified in this interim ROD. EPA will evaluate sources of backfill
+and develop testing, screening, and oversight procedures for imported soil during remedial design.
+These procedures will be documented in remedial action planning documents. Establishing a fixed
+numerical cap at this stage could be overly restrictive or inconsistent with the characterization of
+background concentrations currently ongoing as part of the remedial investigation.
+
+Comment 13: The Proposed Plan sets a target for children’s BLL that is inconsistent with the 3.5
+            μg/dL blood lead reference value (BLRV) established by the U.S. Centers for Disease
+            Control and Prevention (CDC), the Department of Housing and Urban Development
+            (HUD), Food and Drug Administration (FDA), Center for Medicaid and Medicare
+            Services (CMS), and other programs at EPA.
+EPA Response:
+
+EPA acknowledges the difference between the CDC BLRV of 3.5 µg/dL and the 5 µg/dL target
+BLL recommended in the 2025 Residential Lead Directive. According to the CDC, the BLRV is a
+population-based measurement indicating that 2.5% of U.S. children aged 1–5 years have BLLs at or
+above 3.5 μg/dL. It is a screening tool to identify children with higher levels of lead in their blood
+compared with levels in most children, it changes over time as the population’s BLL distribution
+changes, and it is not a health-based standard or a toxicity threshold.1 In contrast, EPA is selecting a
+cleanup under CERLCA to remediate potentially unacceptable threats to human health based on a
+predictive model, and without collecting causal evidence of elevated BLLs. Therefore, the use and
+purpose of the CDC BLRV differ from the use and purpose of BLL for CERCLA cleanup decision‑making.
+
+EPA is using the 2025 Directive’s nationally-established target BLL to derive PRGs and CULs under
+CERCLA. The 5 µg/dL target provides a consistent modeling endpoint for PRG development across
+EPA’s cleanup programs and supports timely decision making. EPA will continue to evaluate exposure
+scenarios, updated scientific information, and Site-specific conditions during the remedial
+investigation for OU1. The final ROD for OU1 may add or modify PRGs, as appropriate.
+
+Comment 14: EPA should communicate how this Proposed Plan fits together with the remedial
+            needs at the Federated Metals site, and OU2 more broadly.
+EPA Response:
+
+
+
+
+1
+    https://www.cdc.gov/lead-prevention/php/news-features/updates-blood-lead-reference-value.html
+
+                                                         31
+EPA acknowledges that when it takes an interim remedial action, there is uncertainty associated with
+the final remedy and with remedies for other portions of the Site. EPA cannot define the remedial
+needs of OU2, or of all of OU1, until it completes a remedial investigation and determines
+unacceptable threats to human health and the environment. EPA has concluded that the remedy
+selected in this IROD is necessary and appropriate to reduce threats to human health before it
+completes full investigations of other portions of the Site. Section 4 of the ROD, “Scope and Role of
+Operable Unit and Response Action”, explains that this interim remedy prioritizes residential
+properties with known levels of contamination, and that the ongoing remedial investigation for OU1
+will assess additional potential threats to the health of residents.
+
+Comment 15: Residents must receive clear notice about the remedial investigation and Proposed
+            Plan before they can mitigate their own risks or participate in the remediation.
+            Residents are confused by the Site map, and by which properties the interim remedy
+            encompasses.
+EPA Response:
+
+Due to privacy concerns, EPA cannot publish the specific addresses to be included in the interim
+remedy or a figure depicting the properties that exceed 200 ppm lead. EPA will continue to develop
+and improve maps and figures to provide releasable information to the public consistent with
+requirements that EPA protect personally identifiable information.
+
+Comment 16: EPA should work to notify the public, ideally in cooperation with the local parks
+            departments, of any parks identified with elevated lead levels, so that users can take
+            extra precautions until remediation occurs.
+EPA Response:
+
+EPA is developing web-based tools to provide the public with non-confidential data on soil lead
+concentrations.
+
+Comment 17: EPA has not described a process for contacting renters. EPA should contact current
+            residents every time EPA contacts property owners, and should go door-to-door if
+            necessary.
+EPA Response:
+
+The purpose of a Proposed Plan and ROD is to summarize the basis for authorizing remedial action
+under CERLCLA. It is not necessary or appropriate in this document to identify how EPA will perform
+each step in the cleanup process. EPA is communicating with renters and has gone door-to-door, and
+EPA will continue to seek access at both rental and owner-occupied properties.
+
+Comment 18: EPA must plan for properties that have passed from the owner who originally signed
+            the access agreement, reaching out to the new owner early to ensure properties
+            slated for remediation do not slip through the cracks.
+EPA Response:
+
+EPA is aware that some properties have new owners and expects that there will be some turnover in
+ownership throughout EPA’s cleanup of the FMC Site. EPA performs outreach through a variety of
+
+                                                 32
+approaches, including mailings to all households in the sampling area of interest, whether or not the
+property has changed ownership.
+
+Comment 19: EPA needs to provide information responsive to household-level concerns about lead
+            exposure, coordinating with other agencies as needed.
+EPA Response:
+
+Education and action of individuals, communities and government partners are an effective part of
+the Agency’s overall strategy for reducing blood-lead levels in children. The use of these layers of
+protection includes leveraging the expertise and resources of state and local partners for long-term
+protection that provides greater certainty to communities and other stakeholders. While the public
+meeting was focused on explaining and receiving feedback on the proposed interim remedial action,
+other public meetings have included the Agency for Toxic Substances and Disease Registry, Indiana
+Department of Health, and the Lake County Health Department. EPA has referenced the ATSDR fact
+sheet “Lead - ToxFAQs™” at public meetings and on our webpages, and EPA maintains information
+about lead at https://www.epa.gov/lead. EPA will continue to coordinate with federal, state and local
+health agencies to provide health-based information.
+
+Comment 20: EPA did not explain important site history including removal of the baghouse,
+            drawing down George Lake, taking out the hazardous slag and putting in the onsite
+            landfill. They should have taken down all the structures at that time. EPA is
+            deliberately leaving out years and years of neglect on that property and needs to
+            document the meeting that made the decision not to clean up the entire property,
+            but to rent it out to more polluters.
+EPA Response:
+
+EPA is aware of the removal of the baghouse and corrective actions performed under EPA’s RCRA
+authority. Historical information about the Site in the Proposed Plan functions as an introductory
+summary and as support for the basis for authorizing a remedial action under CERCLA on certain
+residential properties. EPA presented the information directly relevant to this action being
+considered, the issuance of the IROD. The IROD addresses OU1, the residential neighborhood to the
+north of the former FMC facility and includes historical information pertaining to OU1. The footprint
+of the former FMC facility and George Lake are located within OU2. EPA will include in any OU2
+decision document site history pertaining to those areas.
+
+Comment 21: EPA’s online history doesn’t mention the $1.79 billion that was made available from
+            the bankruptcy of ASARCO to clean up your homes to address this site. The State of
+            Indiana settled for a million dollars. A trustee for the bankruptcy said that a lot of
+            money was sent back to Mexico because it was a Mexican company that was going
+            to pay for it.
+EPA Response:
+
+EPA provides information on the ASARCO 2009 bankruptcy settlement at:
+https://www.epa.gov/enforcement/case-summary-asarco-2009-bankruptcy-settlement.
+
+
+
+                                                  33
+EPA was represented by attorneys from the U.S. Department of Justice in negotiations with ASARCO
+during the bankruptcy proceedings. The funds obtained through the bankruptcy proceedings enabled
+a Trust established through the bankruptcy proceedings to demolish former FMC structures and
+consolidate FMC waste materials in a capped corrective action management unit. These actions
+reduced the risks posed by contaminants to local residents.
+
+Comment 22: EPA should clean this site up far better than what you've proposed. You should get
+            all of the lead out of these people's properties. There’s no reason to stop the cleanup
+            at two feet. If you don’t clean up the properties completely, people will have trouble
+            selling their property. It's fair to invest in this community because multiple
+            generations of families intend to stay, and it’s not fair that we have to worry about
+            this.
+EPA Response:
+
+EPA described the basis for finding a 12-inch clean soil cover protective of human health, and
+conditions under which EPA may exercise discretion to excavate deeper than 12 inches, in Section
+7.1. EPA has observed successful remediation of residential properties using a combination of
+excavation and institutional controls. EPA has determined that this remedy will protect current
+residents and future generations. EPA will delete properties from the National Priority List when EPA
+determines that no further action in connection with a specific property is warranted, which removes
+the delisted properties from the Superfund designation.
+
+Comment 23: What are the immediate and long-term health impacts to the community and the
+            environment?
+EPA Response:
+
+EPA has identified exposure to lead as a potential threat to the neurological development of young
+children, as described in Section 7. EPA is performing a risk assessment for all residential exposure
+pathways that will identify if additional contaminants and media other than soil pose a potential
+unacceptable risk.
+
+Comment 24: What is the schedule for the cleanup, and who would receive soil remediation first?
+EPA Response:
+
+EPA anticipates that remedy implementation will begin in the fall of 2027. A number of factors will
+inform the schedule for excavating properties, such as whether consent to excavate has been
+granted, proximity to other properties to be excavated at the same time, and the presence of young
+children or other sensitive populations.
+
+Comment 25: Will this remedy have an impact on our property values?
+EPA Response:
+
+EPA does not advise on property values. Properties that are remediated such that no further work is
+needed will be deleted from the Superfund Site designation.
+
+
+
+                                                  34
+Comment 26: A few commenters brought up past health effects, or asked if there would be any
+            compensation for health consequences.
+EPA Response:
+
+EPA is authorized by federal law to remediate unacceptable threats to human health and the
+environment. EPA is not authorized to provide compensation to individuals for exposure to
+contaminants.
+
+Comment 27: Will the cleanup make the air temporarily more toxic? What is the plan for the
+            members of the community to decrease their health risks over the two-year period
+            that excavations are taking place?
+EPA Response:
+
+As described in Section 10.3, EPA will take measures during soil excavation to mitigate the risks of
+fugitive dust and surface water runoff, as well as other potential impacts to the community from
+truck traffic and heavy machinery. These measures are routinely incorporated into cleanups that
+involve excavation. EPA expects no significant increase in toxicity during remediation.
+Comment 28: How long will the cleanup take?
+EPA Response:
+
+As described in Section 10.3, EPA estimates that this interim remedy will take two years to complete,
+which assumes that EPA receives consent to remediate all 160 properties within that timeframe.
+Comment 29: What is the likelihood that there will actually be a cleanup?
+EPA Response:
+
+The likelihood that the interim remedy identified in this IROD will be performed is high. Upon
+issuance of this IROD, EPA will proceed with designing the remedy and securing funding for the
+project. EPA is authorized and required by law to take response actions on Superfund Sites that are
+listed on the National Priorities List, until no further actions to protect human health and the
+environment are necessary.
+Comment 30: Will excavation include removal of trees, or just soil?
+EPA Response:
+
+EPA anticipates leaving most trees in place and using hand tools to excavate around tree roots.
+
+Comment 31: Why are potential health risks not addressed if Cleanup Alternative 1: No Further
+            Action is chosen? Given that there has been research done, and detection of elevated
+            and dangerous amounts of lead in the soil discovered, why wouldn't health risks if no
+            excavation of soil is done be shared with the community?
+EPA Response:
+
+EPA is required to consider a no action alternative as a baseline for comparison. Alternative 1 would
+leave soil in place that causes a potential unacceptable threat to human health, so EPA is not
+
+
+                                                  35
+selecting it. As explained in Section 7.1, lead from the FMC Site in residential soils is a significant
+potential threat to the health of child residents.
+
+
+
+
+                                                     36
+                                             Attachment 1
+                         Operable Unit 1 Interim Remedial Action ARARs Table
+                           Federated Metals Corp. Whiting Superfund Site
+
+Chemical-specific ARARs
+    Media/Action              Requirement                      Prerequisite/ARAR Status            Citation
+                                                        None
+
+
+Location-specific ARARs/TBCs
+ Media/Action                  Requirement                          Prerequisite/ARAR Status       Citation
+                  Requires Federal agencies to take into
+                                                         Federal action that results in the
+                  consideration the effect that water-                                           16 U.S.C. §§
+                                                         control or structural modification of
+Fish and Wildlife related projects would have upon fish                                          661 et seq.
+                                                         a natural stream or body of water.
+Coordination      and wildlife and then take action to
+                                                           Potentially applicable, but
+Act               prevent loss or damage to these                                                33 C.F.R. §§
+                                                             action is unlikely to meet
+                  resources.                                                                     320-330
+                                                             prerequisite.
+
+                  Identify activities that may affect                                            16 U.S.C.
+                  listed species.                                                                §§ 1531 et
+                                                               Presence of species listed as
+                                                                                                 seq.
+                                                               endangered or threatened, or
+                  Actions must not threaten the
+Endangered                                                     critical habitat thereof.
+                  continued existence of a listed                                                50 C.F.R.
+Species Act                                                      Potentially applicable, but
+                  species.                                                                       §§ 402.01,
+                                                                    action is unlikely to meet
+                                                                                                 402.04, and
+                                                                    prerequisite.
+                  Actions must not destroy critical                                              402.10 to
+                  habitat                                                                        402.16
+                  Prohibits the take (including killing, Identification of protected
+                                                                                                 16 U.S.C.
+                  capturing, selling, trading, and       migratory birds in OU1 that may be
+                                                                                                 §§ 703-712
+Migratory Bird    transport) of protected migratory bird harmed by the remedial action.
+Treaty Act of     species without prior authorization by  Potentially applicable, but
+                                                                                                 50 C.F.R.
+1972              the Department of Interior U.S. Fish       action is unlikely to meet
+                                                                                                 § 10.13
+                  and Wildlife Service.                      prerequisite.
+
+
+
+
+                                               Attachment 1-1
+                                            Attachment 1
+                        Operable Unit 1 Interim Remedial Action ARARs Table
+                          Federated Metals Corp. Whiting Superfund Site
+
+ Media/Action                Requirement                        Prerequisite/ARAR Status               Citation
+                 Federal agencies undertaking a
+                 project affecting a listed or eligible
+                 property must provide the Advisory
+                 Council on Historic Preservation a        Federal construction project or a
+                 reasonable opportunity to comment.        federally licensed activity or
+                 Before approval of any Federal            program with the presence of a            54 U.S.C. §§
+National         undertaking which may directly and        property listed on the national           306107-
+Historic         adversely affect any National Historic    register of historic places, or where     306108
+Preservation     Landmark, the head of the                 scientific, historic, or archaeological
+Act, as          responsible Federal agency shall, to      artifacts are identified during           36 C.F.R.
+amended          the maximum extent possible,              implementation of the remedy.             Part 800
+                 undertake such planning and actions          Potentially applicable, but           Subpart B
+                 as may be necessary to minimize                 action is unlikely to meet
+                 harm to such landmark, and shall                prerequisite.
+                 afford the Advisory Council a
+                 reasonable opportunity to comment
+                 on the undertaking.
+
+Action-speciﬁc ARARs
+  Media/Action               Requirement                     Prerequisite/ARAR Status                Citation
+                  Solid waste is determined to be
+                  characteristically hazardous
+                  waste due to its characteristic of
+                  toxicity if the extract from a
+Definition of
+                  representative sample of the                                                  40 C.F.R.
+hazardous waste                                      Generation of solid waste
+                  waste contains any of the                                                     § 261.3 and
+by characteristic                                     Relevant and appropriate
+                  contaminants listed in Table 1 in                                             § 261.24
+of toxicity
+                  40 CFR § 261.24 at the
+                  concentration equal to or greater
+                  than the respective value given in
+                  that table.
+                  Requires that an accurate
+                  hazardous waste determination
+                  must be made on all generated
+Hazardous
+                  solid wastes at the point of            Generation of solid waste.            40 C.F.R.
+waste
+                  generation in order to ensure            Relevant and appropriate            § 262.11
+determination
+                  wastes are properly managed
+                  according to applicable RCRA
+                  regulations.
+
+
+
+
+                                             Attachment 1-2
+                                            Attachment 1
+                        Operable Unit 1 Interim Remedial Action ARARs Table
+                          Federated Metals Corp. Whiting Superfund Site
+
+ Media/Action                Requirement                  Prerequisite/ARAR Status             Citation
+                                                      Generator that transports, or
+                                                      offers for transport a hazardous
+                                                      waste for offsite treatment,
+                Requires preparation and use of       storage, or disposal; applies to 40 C.F.R.
+Hazardous waste
+                a manifest for transport of           small and large quantity         §§ 262.20-
+transportation
+                hazardous waste.                      generators.                      262.27
+                                                        Potentially Applicable, if
+                                                          hazardous waste is
+                                                          identified
+                                                      Handling and transport of
+                                                      hazardous waste; applies to
+Preparation of     All hazardous waste must be
+                                                      small and large quantity        40 C.F.R.
+hazardous waste    properly packaged, with labels,
+                                                      generators.                     §§ 262.30 -
+for                markings, and placards, prior to
+                                                        Relevant and appropriate, if 262.33
+transportation     transport.
+                                                         hazardous waste is
+                                                         identified
+                                                      Transportation of hazardous
+                   Transportation of hazardous        waste within the United States if
+Transport of
+                   materials on public roadways       the transportation requires a      40 C.F.R. P a r t
+hazardous
+                   must comply with the               manifest under 40 C.F.R. Part 262. 263
+materials
+                   requirements.                        Applicable, if hazardous
+                                                          waste is identified
+                                                      Use of staging piles or
+                                                      temporary units for
+Special            Standards for corrective action    characteristically hazardous
+                                                                                      40 C.F.R. Part
+provisions for     management units, temporary        waste.
+                                                                                      264 Subpart S
+cleanup            units, and staging piles.            Applicable, if off-Site
+                                                        Relevant and appropriate, if
+                                                         on-Site
+                                                      Storage of containers of
+Use and            Standards for use and              hazardous waste.
+                                                                                          40 C.F.R. Part
+management of      management of containers for         Applicable, if off-Site
+                                                        Relevant and appropriate,        265 Subpart I
+containers         hazardous waste.
+                                                          if on-Site
+                                                      Relevant for treatment of soils
+                                                      that are characteristic
+Resource           Hazardous waste cannot be
+                                                      hazardous wastes.
+Conservation       placed on the land until the
+                                                        Applicable, if off-Site, if
+and Recovery       waste meets specific treatment                                         40 C.F.R.
+                                                          hazardous waste is
+Act of 1976 Land   standards to reduce the mobility                                       § 268.34
+                                                          identified
+Disposal           or toxicity of its hazardous
+                                                        Relevant and appropriate, if
+Restrictions       constituents.
+                                                          on-Site, if hazardous waste
+                                                          is identified
+
+
+                                            Attachment 1-3
+                                            Attachment 1
+                        Operable Unit 1 Interim Remedial Action ARARs Table
+                          Federated Metals Corp. Whiting Superfund Site
+
+ Media/Action                Requirement                  Prerequisite/ARAR Status            Citation
+                   Requires all wastes undergo a
+Generator          waste determination by the         Remedies that involve off-site      329 Indiana
+Responsibilities   generator, and if found to be      disposal of materials typically     Administrative
+for Waste          nonhazardous, be disposed of in    involved with excavations.          Code (IAC) § 10-
+Information        a permitted solid waste disposal     Relevant and appropriate         7.2-1
+                   facility.
+                                                      This law applies to the
+                   Rule 4 establishes that visible
+                                                      regulation of air emissions, for
+                   fugitive dust must not escape
+                                                      activities such as excavation,
+Rule 4. Fugitive   beyond the property line or                                          326 IAC § 6-4-
+                                                      that have the potential to create
+Dust Emission      boundaries of the property, right-                                   2[4]
+                                                      dust and sets emissions limits
+                   of-way, or easement on which
+                                                      for particulates.
+                   the source is located.
+                                                        Relevant and appropriate
+                                                      This law applies to the
+                                                      regulation of air emissions, for
+                   No vehicle driven on any public
+Motor vehicle                                         activities such as excavation,
+                   right of way may allow its
+fugitive dust                                         that have the potential to create 326 IAC § 6-4-4
+                   contents to escape and form
+sources                                               dust and sets emissions limits
+                   fugitive dust.
+                                                      for particulates.
+                                                        Relevant and appropriate
+                                                      Discharge of storm water from
+                                                      construction activities of one
+                                                      acre or more. Discharge is
+                   Sets requirements for managing
+                                                      defined in 327 IAC § 5-1.5-11 as
+                   storm water during construction
+Storm Water                                           additions of pollutants into
+                   activities, including sediment and
+Run-off                                               waters of the state from (1)
+                   erosion control, including                                             327 IAC § 15-1
+Associated with                                       Surface run-off collected or
+                   submittal of a Notice of Intent                                        et seq.
+Construction                                          channeled by man; or (2)
+                   and a Construction/Stormwater
+Activity                                              Discharges through pipes,
+                   Pollution Prevention Plan to
+                                                      sewers, or other conveyances
+                   IDEM.
+                                                      that do not lead to treatment
+                                                      works.
+                                                        Relevant and appropriate
+                                                      Discharge of pollutants into
+                                                                                          33 U.S.C.
+                                                      waters of the United States
+                                                                                          §§ 1251-1387
+                                                      from a disturbance of one acre
+National           Requires use of best available
+                                                      or more of total land area. 40
+Pollutant          technology economically                                                40 C.F.R. Part
+                                                      C.F.R. Part 401.15 defines lead
+Discharge          achievable to control discharges                                       122
+                                                      and compounds as toxic
+Elimination        of toxic pollutants to navigable
+                                                      pollutants designated pursuant
+System Program     waters from point sources.                                             40 C.F.R. §
+                                                      to section 307(a)(1) of the Clean
+                                                                                          122.26(b)(14)(x)
+                                                      Water Act.
+                                                                                          and (15)
+                                                        Relevant and appropriate
+
+
+                                            Attachment 1-4
+                                          Attachment 1
+                      Operable Unit 1 Interim Remedial Action ARARs Table
+                        Federated Metals Corp. Whiting Superfund Site
+
+ Media/Action              Requirement                  Prerequisite/ARAR Status           Citation
+                 An institutional control that
+                 limits the use of the land or       Applies if the remedial action
+                 activities to be performed on the   results in leaving contamination
+Environmental                                                                         Indiana Code
+                 property or requires the            in place such that unrestricted
+Restrictive                                                                           (IC) § 13-11-2-
+                 maintenance of engineering          use and unlimited exposure is
+Covenant (ERC)                                                                        193.5
+                 controls on the land designed to    not permitted.
+                 protect human health or the           Relevant and appropriate
+                 environment.
+
+
+
+
+                                          Attachment 1-5
+                                           Attachment 2
+                                        Administrative Record
+
+NO. SEMS ID   DATE       AUTHOR            RECIPIENT             TITLE/DESCRIPTION               PAGES
+
+                                                            Report - Regarding: Draft Site
+                                                            Assessment Report Revision 0
+                                          Maguire, A.,
+ 1   987190 2/20/20 Tetra Tech, Inc.                     Federated Metals - RS Whiting, Lake      965
+                                           U.S. EPA
+                                                         County, Indiana Document Tracking
+                                                              Number: 2269 (Redacted)
+
+                       Patterson, L.,                    Cost Estimate - Alternative 3: 0-12"
+ 2   705558 2/1/25                            File                                                 3
+                         U.S. EPA                              Excavation to 200ppm
+
+                       Patterson, L.,                     Cost Estimate - Alternative 2: 0-6"
+ 3   705559 2/1/25                            File                                                 3
+                         U.S. EPA                        Excavation to 200 ppm, 6" Soil Cover
+
+                                                           Memorandum: Evaluation of Soil
+                       Patterson, L.,                    Lead Data Collected in the Removal
+ 4   2007209 3/21/25                          File                                                23
+                         U.S. EPA                         Site Assessment Federated Metals
+                                                             Corp. Whiting Superfund Site
+
+                                                          Proposed Plan for Interim Remedy
+                                                          for Residential Soil in a Portion of
+ 5   706954 3/16/26      U.S. EPA             File                                                25
+                                                         OU1, Federated Metals Corp Whiting
+                                                                   Superfund Site
+
+                                                         US Environmental Protection Agency
+                                                           (EPA) Public Meeting on Cleanup
+ 6   709513 3/26/26      U.S. EPA             File       Plan for Federated Metals Superfund      105
+                                                         Site Hammond and Whiting, Indiana
+                                                            Transcript of EPA Public Hearing
+
+                                                         Letter - Regarding: Comments on
+                        Neltner, T.,      Palomeque,
+ 7   709797 4/6/26                                     EPA's Proposed Interim Cleanup Plan         6
+                       Unleaded Kids      A., U.S. EPA
+                                                          for Federated Metals in Indiana
+
+                                                         Public Comments Sheets: Comments
+ 8   709883 4/10/26       Public            U.S. EPA      on Proposed Interim Proposed Plan       19
+                                                          from Whiting Residents (Redacted)
+
+                                                            Meeting Documentation: EPA
+ 9   709895 4/13/26      U.S. EPA            Public                                               12
+                                                              Public Hearing Excerpt
+
+                                                       Letter - Regarding: Public Comments
+                       Schwartz, R.,                   on Proposed Plan for Interim Remedy
+                                          Palomeque,
+10   709796 4/15/26    Conservation                       for Residential Soil in Portion of       6
+                                          A., U.S. EPA
+                        Law Center                         Federated Metals Corporation
+                                                                 Superfund Site OU1
+
+                                           Attachment 2-1
+                                  Attachment 2
+                               Administrative Record
+
+NO. SEMS ID   DATE    AUTHOR      RECIPIENT            TITLE/DESCRIPTION           PAGES
+
+                                               Submission Webforms: Comments
+11   709884 4/15/26   Public       U.S. EPA    on Proposed Interim Proposed Plan    16
+                                               from Whiting Residents (Redacted)
+
+
+
+
+                                  Attachment 2-2
+            Attachment 3
+State of Indiana Concurrence Letter
+
+
+
+
+         Attachment 3-1
+            Attachment 3
+State of Indiana Concurrence Letter
+
+
+
+
+         Attachment 3-2
+
