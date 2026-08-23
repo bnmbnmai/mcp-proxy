@@ -613,6 +613,14 @@ export async function fetchBisBytes(url: string): Promise<Uint8Array> {
   return bytes;
 }
 
+export async function fetchBisText(url: string): Promise<string> {
+  const res = await fetch(url, {
+    headers: { "User-Agent": HTTP_UA, Accept: "text/html,application/xhtml+xml" },
+  });
+  if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
+  return await res.text();
+}
+
 export function pdfToText(pdfPath: string): string {
   const helper = env("BIS_ORDERS_PDFTOTEXT") || "pdftotext";
   const result = spawnSync(helper, ["-layout", pdfPath, "-"], {
@@ -642,6 +650,12 @@ async function loadOfficialListings(dir: string): Promise<{ listed: BisOrderList
     const html = readNamedFile(dir, ["listing-excerpt.html", "listing.html"]);
     const listed = html ? parseListingHtml(html) : [];
     return { listed, listedCount: listed.length };
+  }
+  try {
+    const listed = parseListingHtml(await fetchBisText(LISTING_URL));
+    if (listed.length > 0) return { listed, listedCount: listed.length };
+  } catch {
+    /* official listing missed; keep first-slice seeds */
   }
   return { listed: [...SEED_LISTINGS], listedCount: SEED_LISTINGS.length };
 }

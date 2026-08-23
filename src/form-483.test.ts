@@ -9,8 +9,10 @@ import {
   LISTING_URL,
   LIVE_MANIFEST_URL,
   RECORD_TYPE_483,
+  assembleSnapshot,
   buildForm483Manifest,
   collectForm483,
+  isPlausibleAsOf,
   isReal483Body,
   parse483Text,
   parseKnownMediaIds,
@@ -84,6 +86,18 @@ async function main(): Promise<void> {
     [...LETTER_FIELDS].sort(),
   );
   assert.ok(!/redica|we are not inventing/i.test(JSON.stringify(cascade)));
+  assert.equal(isPlausibleAsOf("2825-01-21"), false, "year-2825 OCR typo is not an official asOf");
+  assert.equal(isPlausibleAsOf("2026-07-31"), true);
+  const poisoned = assembleSnapshot([{ ...cascade, issuedOn: "2825-01-21" }]);
+  assert.equal(poisoned.asOf, "2026-07-31");
+  assert.notEqual(poisoned.asOf, "2825-01-21");
+  const issuedTypo = parse483Text("DATE ISSUED 1/21/2825\nThis document lists observations made by FDA.\nOBSERVATION 1\n" + "x".repeat(220), {
+    sourceUrl: "https://www.fda.gov/media/191183/download",
+    firm: "Lupin Limited",
+    recordDate: "2025-01-21",
+    publishedOn: "2025-02-01",
+  });
+  assert.equal(issuedTypo.issuedOn, "2025-01-21", "impossible DATE ISSUED year falls back to recordDate");
 
   const annovex = parse483Text(readFx("193728-annovex-excerpt.txt"), {
     sourceUrl: "https://www.fda.gov/media/193728/download",

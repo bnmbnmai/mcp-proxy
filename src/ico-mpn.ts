@@ -466,6 +466,12 @@ export async function fetchIcoMpnBytes(url: string): Promise<Uint8Array> {
   return bytes;
 }
 
+export async function fetchIcoMpnText(url: string): Promise<string> {
+  const res = await fetch(url, { headers: { "User-Agent": HTTP_UA, Accept: "text/html,application/xhtml+xml" } });
+  if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
+  return await res.text();
+}
+
 function digitalPdfText(pdfPath: string): string {
   const helper = env("ICO_MPN_PDFTOTEXT") || "pdftotext";
   const result = spawnSync(helper, ["-layout", pdfPath, "-"], { encoding: "utf8", maxBuffer: 20 * 1024 * 1024 });
@@ -510,6 +516,12 @@ async function loadOfficialListings(dir: string): Promise<{ listed: IcoMpnListin
     }
     const html = readNamedFile(dir, ["listing-excerpt.html", "listing.html"]);
     return { listed: html ? parseListingHtml(html) : [], listedCount: html ? parseListingHtml(html).length : 0 };
+  }
+  try {
+    const listed = parseListingHtml(await fetchIcoMpnText(LISTING_URL));
+    if (listed.length > 0) return { listed, listedCount: listed.length };
+  } catch {
+    /* official listing missed; keep first-slice seeds */
   }
   return { listed: [...SEED_LISTINGS], listedCount: SEED_LISTINGS.length };
 }

@@ -167,13 +167,24 @@ export function letterId(firm: string, mediaId: string): string {
   return slug ? `${slug}-${mediaId}` : mediaId;
 }
 
+/** Reject OCR / ASP.NET-style year-2825 asOf values. Same window as gmp aspNetDate. */
+export function isPlausibleAsOf(raw: string | null | undefined): raw is string {
+  if (!raw) return false;
+  const y = Number(raw.slice(0, 4));
+  return /^\d{4}-\d{2}-\d{2}/.test(raw) && Number.isFinite(y) && y >= 1990 && y <= 2100;
+}
+
 function isoDate(raw: string | null | undefined): string | null {
   if (!raw) return null;
   const iso = raw.match(/(\d{4})-(\d{2})-(\d{2})/);
-  if (iso) return `${iso[1]}-${iso[2]}-${iso[3]}`;
+  if (iso) {
+    const value = `${iso[1]}-${iso[2]}-${iso[3]}`;
+    return isPlausibleAsOf(value) ? value : null;
+  }
   const us = raw.match(/\b(\d{1,2})\/(\d{1,2})\/(\d{4})\b/);
   if (us) {
-    return `${us[3]}-${us[1].padStart(2, "0")}-${us[2].padStart(2, "0")}`;
+    const value = `${us[3]}-${us[1].padStart(2, "0")}-${us[2].padStart(2, "0")}`;
+    return isPlausibleAsOf(value) ? value : null;
   }
   return null;
 }
@@ -358,7 +369,7 @@ export function assembleSnapshot(
   const asOf =
     withBody
       .flatMap((l) => [l.publishedOn, l.recordDate, l.issuedOn])
-      .filter((d): d is string => Boolean(d))
+      .filter(isPlausibleAsOf)
       .sort()
       .at(-1) ?? null;
   return {
