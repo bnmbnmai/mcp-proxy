@@ -33,6 +33,10 @@ export const FDIC_ORDER_TYPE = "fdic-order";
 export const NCUA_ORDER_TYPE = "ncua-order";
 export const GMP_TYPE = "gmp";
 export const GMP_MD_TYPE = "gmp-md";
+export const MARINERS_TYPE = "mariners";
+export const MARINERS_D11_TYPE = "mariners-d11";
+export const MARINERS_D7_TYPE = "mariners-d7";
+export const MARINERS_D8_TYPE = "mariners-d8";
 
 export const CMA_CA98_SOURCE =
   "https://www.gov.uk/cma-cases/financial-services-sector-suspected-anti-competitive-practices";
@@ -64,6 +68,14 @@ export const FDIC_ORDER_SOURCE = "https://orders.fdic.gov/s/";
 export const NCUA_ORDER_SOURCE = "https://ncua.gov/news/enforcement-actions/administrative-orders";
 export const GMP_SOURCE = "https://www.drug-inspections.canada.ca/gmp/index-en.html";
 export const GMP_MD_SOURCE = "https://www.drug-inspections.canada.ca/md/index-en.html";
+export const MARINERS_SOURCE =
+  "https://www.navcen.uscg.gov/local-notices-to-mariners?district=13+0&subdistrict=n";
+export const MARINERS_D11_SOURCE =
+  "https://www.navcen.uscg.gov/local-notices-to-mariners?district=11+0&subdistrict=n";
+export const MARINERS_D7_SOURCE =
+  "https://www.navcen.uscg.gov/local-notices-to-mariners?district=7+0&subdistrict=n";
+export const MARINERS_D8_SOURCE =
+  "https://www.navcen.uscg.gov/local-notices-to-mariners?district=8+0&subdistrict=g";
 
 export type PaidRecord = {
   id: string;
@@ -476,6 +488,91 @@ export function paidGmpMdBody<
   T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
 >(payload: T): T & PaidEnvelope {
   return paidCardBody(payload, GMP_MD_TYPE, GMP_MD_SOURCE);
+}
+
+/** Official Light List Number already copied into notice text by the LNM walker. */
+export function officialLlnr(text: string): string {
+  return text.match(/\bLLNR\s+(\d{4,5}(?:\.\d+)?)\b/)?.[1] ?? "";
+}
+
+/** Aid name before LLNR, or the MSI title lead. Official text only. */
+export function officialNoticeTitle(text: string): string {
+  const aid = text.split(/\s+LLNR\s+/)[0]?.trim() ?? "";
+  if (aid && aid !== text.trim()) return aid;
+  const lead = text.split(/\s{2,}|\s+-\s+/)[0]?.trim() ?? "";
+  return lead.slice(0, 80);
+}
+
+/**
+ * LNM notices[] is week / section / waterway / text / sourceUrl — not cards[].
+ * id is composed from official columns (week + section + LLNR or waterway),
+ * same idea as import-alerts. firm is the official waterway/chart/title, never a company.
+ * Empty-text notices stay in notices[] and are not sold as records[].
+ */
+export function normalizeMarinersRecords(
+  payload: { notices?: unknown[]; asOf?: unknown },
+  type: string,
+): PaidRecord[] {
+  const editionDate = firstPlausibleDate(payload.asOf);
+  const out: PaidRecord[] = [];
+  for (const row of asList(payload.notices)) {
+    const text = str(row.text);
+    if (!text) continue;
+    const week = str(row.week);
+    const section = str(row.section);
+    const waterway = str(row.waterway);
+    const llnr = officialLlnr(text);
+    const title = officialNoticeTitle(text);
+    const id = [week, section, llnr || waterway || title].filter(Boolean).join(":");
+    if (!id) continue;
+    const dateInText = text.match(/\b(?:19|20)\d{2}-\d{2}-\d{2}\b/)?.[0];
+    out.push({
+      id,
+      date: firstPlausibleDate(dateInText, editionDate),
+      firm: waterway || title || section || id,
+      url: str(row.sourceUrl),
+      type,
+    });
+  }
+  return sortRecords(dedupeById(out));
+}
+
+function paidNoticeBody<
+  T extends { notices?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T, type: string, fallbackSource: string): T & PaidEnvelope {
+  const records = normalizeMarinersRecords(payload, type);
+  return {
+    ...payload,
+    asOf: firstPlausibleDate(payload.asOf) ?? latestRecordDate(records),
+    fetchedAt: honestFetchedAt(payload.fetchedAt),
+    source: listingSource(payload, fallbackSource),
+    records,
+    recordCount: records.length,
+  };
+}
+
+export function paidMarinersBody<
+  T extends { notices?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidNoticeBody(payload, MARINERS_TYPE, MARINERS_SOURCE);
+}
+
+export function paidMarinersD11Body<
+  T extends { notices?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidNoticeBody(payload, MARINERS_D11_TYPE, MARINERS_D11_SOURCE);
+}
+
+export function paidMarinersD7Body<
+  T extends { notices?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidNoticeBody(payload, MARINERS_D7_TYPE, MARINERS_D7_SOURCE);
+}
+
+export function paidMarinersD8Body<
+  T extends { notices?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidNoticeBody(payload, MARINERS_D8_TYPE, MARINERS_D8_SOURCE);
 }
 
 export function paidImportAlertsBody<

@@ -1017,11 +1017,19 @@ async function main(): Promise<void> {
       assert.equal(paid.status, 200);
       const paidBody = (await paid.json()) as {
         product: string;
-        notices: { text: string; section: string }[];
+        notices: { text: string; section: string; waterway?: string }[];
+        records?: { id: string; date: string | null; firm: string; url: string; type: string }[];
+        recordCount?: number;
       };
       assert.equal(paidBody.product, "uscg-d13-lnm");
       assert.equal(paidBody.notices[0]?.section, "Federal Discrepancies");
       assert.ok(paidBody.notices[0]?.text.includes("Anacortes Channel Light 4"));
+      assert.equal(paidBody.notices[0]?.waterway, "Anacortes Harbor", "official notices[] stay");
+      assert.ok((paidBody.recordCount ?? 0) > 0, "empty records[] is a fail");
+      assert.equal(paidBody.records?.[0]?.id, "32-2026:Federal Discrepancies:19055");
+      assert.equal(paidBody.records?.[0]?.type, "mariners");
+      assert.equal(paidBody.records?.[0]?.firm, "Anacortes Harbor");
+      assert.equal(paidBody.records?.[0]?.date, "2026-08-12");
     },
   );
 
@@ -1109,12 +1117,20 @@ async function main(): Promise<void> {
       const paidBody = (await paid.json()) as {
         product: string;
         district?: string;
-        notices: { text: string; section: string }[];
+        notices: { text: string; section: string; waterway?: string }[];
+        records?: { id: string; date: string | null; firm: string; url: string; type: string }[];
+        recordCount?: number;
       };
       assert.equal(paidBody.product, "uscg-d11-lnm");
       assert.equal(paidBody.district, "11");
       assert.equal(paidBody.notices[0]?.section, "Federal Discrepancies");
       assert.ok(paidBody.notices[0]?.text.includes("Berkeley Marina Channel Light 2"));
+      assert.equal(paidBody.notices[0]?.waterway, "Berkeley", "official notices[] stay");
+      assert.ok((paidBody.recordCount ?? 0) > 0, "empty records[] is a fail");
+      assert.equal(paidBody.records?.[0]?.id, "32-2026:Federal Discrepancies:5430");
+      assert.equal(paidBody.records?.[0]?.type, "mariners-d11");
+      assert.equal(paidBody.records?.[0]?.firm, "Berkeley");
+      assert.equal(paidBody.records?.[0]?.date, "2026-08-12");
     },
   );
 

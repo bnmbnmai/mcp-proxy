@@ -21,6 +21,8 @@ import {
   GMP_TYPE,
   ICO_MPN_TYPE,
   IMPORT_ALERT_TYPE,
+  MARINERS_D11_TYPE,
+  MARINERS_TYPE,
   NCUA_ORDER_TYPE,
   OCC_CD_TYPE,
   OFAC_ORDER_TYPE,
@@ -38,6 +40,7 @@ import {
   normalizeCardRecords,
   normalizeForm483Records,
   normalizeImportAlertRecords,
+  normalizeMarinersRecords,
   normalizeTicksRecords,
   normalizeWarningLetterRecords,
   paidAirLettersBody,
@@ -58,6 +61,8 @@ import {
   paidGmpMdBody,
   paidIcoMpnBody,
   paidImportAlertsBody,
+  paidMarinersBody,
+  paidMarinersD11Body,
   paidNcuaOrdersBody,
   paidOccCdBody,
   paidOfacOrdersBody,
@@ -921,6 +926,102 @@ async function main(): Promise<void> {
   // date-desc, then id-asc: 26-040-WA/RB-HC before 26-040-WA/RB-SM on 2026-07-15
   assert.equal(frbFromFx.records[0]?.firm, "Iuka Bancshares, Inc.");
   assert.equal(frbFromFx.cards[0]?.institution, "The Iuka State Bank");
+
+  const marinersSnap = {
+    ok: true as const,
+    product: "uscg-d13-lnm" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-18T00:00:00.000Z",
+    asOf: "2026-08-12",
+    week: "32-2026",
+    sources: {
+      listing: "https://www.navcen.uscg.gov/local-notices-to-mariners?district=13+0&subdistrict=n",
+    },
+    notices: [
+      {
+        week: "32-2026",
+        section: "Federal Discrepancies",
+        waterway: "Anacortes Harbor",
+        text: "Anacortes Channel Light 4 LLNR 19055 TRLB/STRUCT MISSING/STRUCT DEST FD",
+        sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf",
+      },
+      {
+        week: "32-2026",
+        section: "Temporary Changes",
+        waterway: "Anacortes Harbor",
+        text: "Anacortes Channel Light 4 LLNR 19055 TRLB FD",
+        sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf",
+      },
+      {
+        week: "32-2026",
+        section: "Additional MSI Categories",
+        waterway: "Astoria",
+        text: "Tansy Point - Astoria/General/Marine Construction The M/V ESSAYONS will be conducting dredging.",
+        sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf",
+      },
+      {
+        week: "32-2026",
+        section: "Federal Discrepancies Corrected",
+        waterway: "Bonneville Pool",
+        text: "Wind Mountain Lower Range Rear Light LLNR 11845 WATCHING PROPERLY FD 2026-08-01",
+        sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf",
+      },
+      {
+        week: "32-2026",
+        section: "Federal Discrepancies",
+        waterway: "Empty Harbor",
+        text: "",
+        sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf",
+      },
+    ],
+  };
+  const marinersA = paidMarinersBody(marinersSnap);
+  const marinersB = paidMarinersBody(structuredClone(marinersSnap));
+  assert.deepEqual(marinersA.records, marinersB.records, "mariners normalize is deterministic");
+  assert.deepEqual(marinersA.records, normalizeMarinersRecords(marinersSnap, MARINERS_TYPE));
+  assert.equal(marinersA.notices.length, 5, "raw notices[] stay, including empty-text rows");
+  assert.equal(marinersA.notices[0]?.waterway, "Anacortes Harbor");
+  assert.ok(marinersA.recordCount > 0, "empty records[] is a fail");
+  assert.equal(marinersA.recordCount, 4);
+  assert.equal(marinersA.asOf, "2026-08-12");
+  assert.equal(marinersA.records.find((r) => r.id === "32-2026:Federal Discrepancies:19055")?.firm, "Anacortes Harbor");
+  assert.equal(marinersA.records.find((r) => r.id === "32-2026:Temporary Changes:19055")?.firm, "Anacortes Harbor");
+  assert.equal(
+    marinersA.records.find((r) => r.id === "32-2026:Additional MSI Categories:Astoria")?.firm,
+    "Astoria",
+    "MSI firm is official waterway, not a company",
+  );
+  assert.equal(
+    marinersA.records.find((r) => r.id === "32-2026:Federal Discrepancies Corrected:11845")?.date,
+    "2026-08-01",
+    "official correction date in text maps onto date",
+  );
+  assert.ok(marinersA.records.every((r) => r.type === MARINERS_TYPE));
+  assert.ok(!marinersA.records.some((r) => r.firm === "Empty Harbor"));
+  assert.deepEqual(Object.keys(marinersA.records[0] ?? {}).sort(), [...RECORD_FIELDS].sort());
+  assert.equal(marinersA.source.includes("district=13"), true);
+
+  const d13Fx = JSON.parse(readFileSync(join(fixturesRoot, "lnm-d13/seed-snapshot.json"), "utf-8")) as {
+    notices: { waterway?: string; text?: string }[];
+  };
+  const d13FromFx = paidMarinersBody(d13Fx);
+  assert.ok(d13FromFx.recordCount > 0, "/mariners fixture records[] is a fail if empty");
+  assert.equal(d13FromFx.notices.length, d13Fx.notices.length, "fixture notices[] stay");
+  assert.equal(d13FromFx.records[0]?.type, MARINERS_TYPE);
+  assert.ok(d13FromFx.records.some((r) => r.firm === "Anacortes Harbor" && r.id.includes("19055")));
+  assert.ok(d13FromFx.notices.some((n) => n.waterway === "Anacortes Harbor" && n.text?.includes("19055")));
+  assert.ok(d13FromFx.records.every((r) => r.firm && r.id && r.url.includes("navcen.uscg.gov")));
+
+  const d11Fx = JSON.parse(readFileSync(join(fixturesRoot, "lnm-d11/seed-snapshot.json"), "utf-8")) as {
+    notices: { waterway?: string; text?: string }[];
+  };
+  const d11FromFx = paidMarinersD11Body(d11Fx);
+  assert.ok(d11FromFx.recordCount > 0, "/mariners-d11 fixture records[] is a fail if empty");
+  assert.equal(d11FromFx.notices.length, d11Fx.notices.length);
+  assert.equal(d11FromFx.records[0]?.type, MARINERS_D11_TYPE);
+  assert.ok(d11FromFx.records.some((r) => r.firm === "Berkeley" && r.id.includes("5430")));
+  assert.ok(d11FromFx.notices.some((n) => n.waterway === "Berkeley" && n.text?.includes("5430")));
+  assert.ok(d11FromFx.records.every((r) => r.firm && r.id));
 
   console.log("paid-records normalize tests ok");
 }
