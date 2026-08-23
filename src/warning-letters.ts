@@ -144,10 +144,19 @@ function slugCms(id: string): string | null {
   return m ? m[1] : null;
 }
 
+/** Reject OCR / ASP.NET-style year-2825 asOf values. */
+export function isPlausibleAsOf(raw: string | null | undefined): raw is string {
+  if (!raw) return false;
+  const y = Number(raw.slice(0, 4));
+  return /^\d{4}-\d{2}-\d{2}/.test(raw) && Number.isFinite(y) && y >= 1990 && y <= 2100;
+}
+
 function isoDate(raw: string | null | undefined): string | null {
   if (!raw) return null;
   const m = raw.match(/(\d{4})-(\d{2})-(\d{2})/);
-  return m ? `${m[1]}-${m[2]}-${m[3]}` : null;
+  if (!m) return null;
+  const value = `${m[1]}-${m[2]}-${m[3]}`;
+  return isPlausibleAsOf(value) ? value : null;
 }
 
 export function parseListingHtml(html: string): WarningLetterListing[] {
@@ -303,7 +312,7 @@ export function assembleSnapshot(
   const withBody = letters.filter((l) => l.body.length > 0);
   const asOf = withBody
     .map((l) => l.issuedOn)
-    .filter((d): d is string => Boolean(d))
+    .filter(isPlausibleAsOf)
     .sort()
     .at(-1) ?? null;
   return {

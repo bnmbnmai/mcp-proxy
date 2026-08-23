@@ -10,6 +10,7 @@ import {
   LISTING_URL,
   buildWarningLettersManifest,
   collectWarningLetters,
+  isPlausibleAsOf,
   listingHasMore,
   parseLetterHtml,
   parseListingDatatables,
@@ -72,6 +73,8 @@ async function main(): Promise<void> {
   assert.ok(citra.body.length > 400, "official letter excerpt includes the letter body");
   assert.deepEqual(Object.keys(citra).sort(), [...LETTER_FIELDS].sort());
   assert.ok(!/redica|thompson|apify/i.test(JSON.stringify(citra)));
+  assert.equal(isPlausibleAsOf("2825-01-21"), false);
+  assert.equal(isPlausibleAsOf("2026-03-04"), true);
 
   const wrapped = parseLetterHtml(
     `<html><head><title>Thomas Brunner Hygiene GmbH - 729018 - 07/24/2026 | FDA</title>

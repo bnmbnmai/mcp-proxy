@@ -2,6 +2,7 @@
 # Daily apollo ticks collect (user cron, America/Boise).
 # Hay/cattle first, then grow LIVE first-slice doors (cardCount=5) and refresh
 # when official asOf moved or fetchedAt is older than 36h.
+# First-pass products: /warning-letters and /form-483 grow past the old 5-card stub.
 # Imagine-safe: skip 02:00-04:00 Boise and skip if Imagine/rmbg is active.
 # flock so two collects cannot overlap. No secrets in this file or its log.
 set -euo pipefail
@@ -108,7 +109,10 @@ export CFPB_ORDERS_LIMIT="${CFPB_ORDERS_LIMIT:-8}"
 export CFPB_ORDERS_MAX_FETCH="${CFPB_ORDERS_MAX_FETCH:-12}"
 export OCC_CD_LIMIT="${OCC_CD_LIMIT:-8}"
 export OCC_CD_MAX_FETCH="${OCC_CD_MAX_FETCH:-12}"
-export FORM_483_LIMIT="${FORM_483_LIMIT:-1}"
+export FORM_483_LIMIT="${FORM_483_LIMIT:-25}"
+export FORM_483_MAX_FETCH="${FORM_483_MAX_FETCH:-200}"
+export WARNING_LETTERS_LIMIT="${WARNING_LETTERS_LIMIT:-50}"
+export WARNING_LETTERS_MAX_FETCH="${WARNING_LETTERS_MAX_FETCH:-200}"
 
 log "collect start"
 
@@ -124,8 +128,11 @@ if imagine_busy; then
   exit 0
 fi
 
-# Priority first-slice SKUs, then other live 5-card doors. form-483 is a typo/refresh pass.
+# Priority first-slice SKUs, then other live 5-card doors.
+# /ticks hay/cattle is above. First-pass products warning-letters + form-483 grow here.
 DOORS=(
+  warning-letters
+  form-483
   cma-ca98
   ico-mpn
   swisspar
@@ -148,7 +155,6 @@ DOORS=(
   ncua-orders
   fincen-orders
   ferc-orders
-  form-483
 )
 
 door_action() {
