@@ -23,7 +23,9 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 - Example: Emideltide / DSIP `https://www.fda.gov/media/193344/download` (Wayback `id_` if Akamai 401s)
 - License: **17 USC 105**. Attribute FDA.
 
-Paid body fields: `id`, `substance`, `date`, `meeting`, `mediaId`, `sourceUrl`, `body`. `body` is the official `pdftotext` FDA evaluation narrative with appended nominator packages omitted. `sourceUrl` is always the fda.gov URL, not archive.org.
+Paid body keeps the existing `cards[]` fields: `id`, `substance`, `date`, `meeting`, `mediaId`, `sourceUrl`, `body`. `body` is the official `pdftotext` FDA evaluation narrative with appended nominator packages omitted. `sourceUrl` is always the fda.gov URL, not archive.org.
+
+Alongside those keys the paid JSON adds `records[]` (`id`, `date`, `firm` from official `substance`, `url`, `type=pcac`), `recordCount`, honest `asOf` / `fetchedAt`, and `source` (the official PCAC meeting page). A repeat buyer diffs `asOf` + record ids.
 
 `data/pcac/` is gitignored. Evaluation bodies get lost on a dead VM — do not harvest the whole docket here. Full fill waits for apollo.
 

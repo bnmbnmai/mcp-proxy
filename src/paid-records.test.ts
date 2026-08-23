@@ -1,15 +1,23 @@
 import assert from "node:assert/strict";
 import {
   AIR_LETTER_TYPE,
+  AWA_TYPE,
+  CFPB_ORDER_TYPE,
   CFTC_ORDER_TYPE,
   CMA_CA98_TYPE,
+  DENOVO_ORDER_TYPE,
   FIFRA_ORDER_TYPE,
   FORM_483_TYPE,
   FTC_WL_TYPE,
   ICO_MPN_TYPE,
   IMPORT_ALERT_TYPE,
+  OFAC_ORDER_TYPE,
+  PCAC_TYPE,
   RECORD_FIELDS,
+  SUPERFUND_ROD_TYPE,
+  SWISSPAR_TYPE,
   TICKS_CACHE_SOURCE,
+  TTB_OIC_TYPE,
   UNTITLED_LETTER_TYPE,
   WARNING_LETTER_TYPE,
   honestFetchedAt,
@@ -21,14 +29,22 @@ import {
   normalizeTicksRecords,
   normalizeWarningLetterRecords,
   paidAirLettersBody,
+  paidAwaBody,
+  paidCfpbOrdersBody,
   paidCftcOrdersBody,
   paidCmaCa98Body,
+  paidDenovoOrdersBody,
   paidFifraOrdersBody,
   paidForm483Body,
   paidFtcWlBody,
   paidIcoMpnBody,
   paidImportAlertsBody,
+  paidOfacOrdersBody,
+  paidPcacBody,
+  paidSuperfundRodsBody,
+  paidSwissparBody,
   paidTicksBody,
+  paidTtbOicBody,
   paidUntitledLettersBody,
   paidWarningLettersBody,
 } from "./paid-records.js";
@@ -418,6 +434,208 @@ async function main(): Promise<void> {
   assert.equal(iaA.records[1]?.id, "16-81:red:Clover Valley Meat Co.:Alligator & Crocodile, Other Aquatic Species — Crocodile");
   assert.equal(iaA.records[1]?.date, "2012-06-08", "cms_ia MM/DD/YYYY is mapped, not invented");
   assert.equal(iaA.source.includes("cms_ia/ialist.html"), true);
+
+  const denovoA = paidDenovoOrdersBody({
+    ok: true as const,
+    product: "fda-denovo-classification-order-bodies" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-07-28",
+    sources: { listing: "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/denovo.cfm" },
+    cards: [
+      {
+        id: "DEN250042",
+        institution: "Caristo Diagnostics Ltd.",
+        docket: "DEN250042",
+        date: "2026-07-28",
+        sourceUrl: "https://www.accessdata.fda.gov/cdrh_docs/pdf25/DEN250042.pdf",
+        body: "De Novo classification order\nDEN250042\nCaRi-Heart",
+      },
+      {
+        id: "empty-denovo",
+        institution: "No Text Devices Ltd",
+        date: "2026-07-01",
+        sourceUrl: "https://www.accessdata.fda.gov/cdrh_docs/pdf25/empty.pdf",
+        body: "",
+      },
+    ],
+  });
+  assert.deepEqual(denovoA.records, normalizeCardRecords(denovoA, DENOVO_ORDER_TYPE));
+  assert.equal(denovoA.cards.length, 2, "raw cards[] stay, including empty-body rows");
+  assert.ok(denovoA.recordCount > 0, "empty records[] is a fail");
+  assert.equal(denovoA.recordCount, 1);
+  assert.equal(denovoA.records[0]?.id, "DEN250042");
+  assert.equal(denovoA.records[0]?.firm, "Caristo Diagnostics Ltd.");
+  assert.equal(denovoA.records[0]?.type, DENOVO_ORDER_TYPE);
+  assert.deepEqual(Object.keys(denovoA.records[0] ?? {}).sort(), [...RECORD_FIELDS].sort());
+  assert.ok(!denovoA.records.some((r) => r.id === "empty-denovo"));
+
+  const ttbA = paidTtbOicBody({
+    ok: true as const,
+    product: "ttb-institution-oic-bodies" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-06-30",
+    sources: { listing: "https://www.ttb.gov/business-central/fo/administrative-cases" },
+    cards: [
+      {
+        id: "21st-amendment",
+        institution: "The 21st Amendment Brewery Cafe, LLC",
+        docket: "21st-amendment",
+        date: "2026-06-30",
+        sourceUrl: "https://www.ttb.gov/system/files/2026-07/ABSTMT-21st_Amendment_Brewery_Cafe_Redacted.pdf",
+        body: "ABSTRACT AND STATEMENT\nThe 21st Amendment Brewery Cafe, LLC\nOffer-in-Compromise",
+      },
+    ],
+  });
+  assert.equal(ttbA.records[0]?.type, TTB_OIC_TYPE);
+  assert.equal(ttbA.records[0]?.id, "21st-amendment");
+  assert.equal(ttbA.records[0]?.firm, "The 21st Amendment Brewery Cafe, LLC");
+  assert.ok(ttbA.recordCount > 0);
+
+  const rodA = paidSuperfundRodsBody({
+    ok: true as const,
+    product: "epa-superfund-rod-bodies" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-08-05",
+    sources: {
+      listing: "https://cumulis.epa.gov/supercpad/SiteProfiles/index.cfm?fuseaction=second.Cleanup&id=0501275",
+    },
+    cards: [
+      {
+        id: "05-711427",
+        institution: "Federated Metals Corp. Whiting Superfund Site",
+        docket: "05-711427",
+        date: "2026-08-05",
+        sourceUrl: "https://semspub.epa.gov/work/05/711427.pdf",
+        body: "INTERIM RECORD OF DECISION\nFederated Metals Corp. Whiting Superfund Site",
+      },
+    ],
+  });
+  assert.equal(rodA.records[0]?.type, SUPERFUND_ROD_TYPE);
+  assert.equal(rodA.records[0]?.id, "05-711427");
+  assert.ok(rodA.recordCount > 0);
+
+  const pcacA = paidPcacBody({
+    ok: true as const,
+    product: "fda-pcac-503a-memos" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-07-24",
+    sources: {
+      meeting:
+        "https://www.fda.gov/advisory-committees/advisory-committee-calendar/july-23-24-2026-meeting-pharmacy-compounding-advisory-committee-07232026",
+    },
+    cards: [
+      {
+        id: "emideltide-193344",
+        substance: "Emideltide",
+        date: "2026-05-11",
+        mediaId: "193344",
+        sourceUrl: "https://www.fda.gov/media/193344/download",
+        body: "FDA Evaluation of Emideltide-Related Bulk Drug Substances",
+      },
+    ],
+  });
+  assert.equal(pcacA.records[0]?.type, PCAC_TYPE);
+  assert.equal(pcacA.records[0]?.firm, "Emideltide", "PCAC substance is the official subject");
+  assert.equal(pcacA.source.includes("pharmacy-compounding-advisory-committee"), true);
+  assert.ok(pcacA.recordCount > 0);
+
+  const awaA = paidAwaBody({
+    ok: true as const,
+    product: "aphis-awa-inspection-observation-text" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-07-07",
+    sources: { hub: "https://www.aphis.usda.gov/awa/public-search" },
+    cards: [
+      {
+        id: "utah-state-university-068SJ00001KXrsj",
+        firm: "Utah State University",
+        date: "2026-07-07",
+        sourceUrl:
+          "https://aphis.file.force.com/sfc/dist/version/download/?oid=00Dt0000000GyZH&ids=068SJ00001KXrsj&asPdf=false",
+        body: "Inspection Report\nUtah State University\n2.31(c)(7) Critical",
+      },
+    ],
+  });
+  assert.equal(awaA.records[0]?.type, AWA_TYPE);
+  assert.equal(awaA.records[0]?.firm, "Utah State University");
+  assert.equal(awaA.source.includes("awa/public-search"), true);
+  assert.ok(awaA.recordCount > 0);
+
+  const swissA = paidSwissparBody({
+    ok: true as const,
+    product: "swisspar-first-auth" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-08-18",
+    sources: {
+      index: "https://www.swissmedic.ch/swissmedic/en/home/humanarzneimittel/authorisations/swisspar.html",
+    },
+    cards: [
+      {
+        id: "rhapsido-70227",
+        name: "Rhapsido",
+        holder: "Novartis Pharma Schweiz AG",
+        date: "2026-08-18",
+        sourceUrl:
+          "https://www.swissmedic.ch/dam/swissmedic/en/dokumente/zulassung/swisspar/70227-rhapsido-01-swisspar-20280818.pdf.download.pdf/SwissPAR_inkl.%20FI_Rhapsido.pdf",
+        body: "Swiss Public Assessment Report\nRhapsido\nMarketing authorisation no.: 70227",
+      },
+    ],
+  });
+  assert.equal(swissA.records[0]?.type, SWISSPAR_TYPE);
+  assert.equal(swissA.records[0]?.firm, "Novartis Pharma Schweiz AG", "SwissPAR holder is the official firm");
+  assert.equal(swissA.source.includes("swisspar.html"), true);
+  assert.ok(swissA.recordCount > 0);
+
+  const cfpbA = paidCfpbOrdersBody({
+    ok: true as const,
+    product: "cfpb-consent-order-bodies" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2025-01-17",
+    sources: { listing: "https://www.consumerfinance.gov/enforcement/actions/" },
+    cards: [
+      {
+        id: "american-honda-finance-corporation-2025",
+        firm: "American Honda Finance Corporation",
+        date: "2025-01-17",
+        sourceUrl:
+          "https://files.consumerfinance.gov/f/documents/cfpb_american-honda-finance-corp-consent-order_2025-01.pdf",
+        body: "CONSENT ORDER\nAmerican Honda Finance Corp.",
+      },
+    ],
+  });
+  assert.equal(cfpbA.records[0]?.type, CFPB_ORDER_TYPE);
+  assert.equal(cfpbA.records[0]?.firm, "American Honda Finance Corporation");
+  assert.ok(cfpbA.recordCount > 0);
+
+  const ofacA = paidOfacOrdersBody({
+    ok: true as const,
+    product: "ofac-institution-order-bodies" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-08-12",
+    sources: { listing: "https://ofac.treasury.gov/civil-penalties-and-enforcement-information" },
+    cards: [
+      {
+        id: "936706",
+        institution: "Rice Lake Weighing Systems, Inc.",
+        docket: "936706",
+        date: "2026-08-12",
+        sourceUrl: "https://ofac.treasury.gov/media/936706/download",
+        body: "Enforcement Release\nRice Lake Weighing Systems Settles with OFAC",
+      },
+    ],
+  });
+  assert.equal(ofacA.records[0]?.type, OFAC_ORDER_TYPE);
+  assert.equal(ofacA.records[0]?.id, "936706");
+  assert.equal(ofacA.records[0]?.firm, "Rice Lake Weighing Systems, Inc.");
+  assert.ok(ofacA.recordCount > 0);
 
   console.log("paid-records normalize tests ok");
 }

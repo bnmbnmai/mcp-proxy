@@ -21,7 +21,9 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 - Hub: https://www.aphis.usda.gov/awa/public-search
 - License: **17 USC 105** (US federal public domain)
 
-Paid body fields: `id`, `firm`, `date`, `certificate`, `customerNumber`, `inspectionId`, `sourceUrl`, `body`, `observations[]`. `body` and `observations[].text` are official `pdftotext` extracts.
+Paid body keeps the existing `cards[]` fields: `id`, `firm`, `date`, `certificate`, `customerNumber`, `inspectionId`, `sourceUrl`, `body`, `observations[]`. `body` and `observations[].text` are official `pdftotext` extracts.
+
+Alongside those keys the paid JSON adds `records[]` (`id`, `date`, `firm`, `url`, `type=awa`), `recordCount`, honest `asOf` / `fetchedAt`, and `source` (the official APHIS AWA hub). A repeat buyer diffs `asOf` + record ids.
 
 `data/awa/` is gitignored. Observation bodies get lost on a dead VM — do not harvest the archive here. Full fill waits for apollo.
 

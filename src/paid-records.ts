@@ -16,6 +16,14 @@ export const AIR_LETTER_TYPE = "air-letter";
 export const IMPORT_ALERT_TYPE = "import-alert";
 export const CFTC_ORDER_TYPE = "cftc-order";
 export const FIFRA_ORDER_TYPE = "fifra-order";
+export const DENOVO_ORDER_TYPE = "denovo-order";
+export const TTB_OIC_TYPE = "ttb-oic";
+export const SUPERFUND_ROD_TYPE = "superfund-rod";
+export const PCAC_TYPE = "pcac";
+export const AWA_TYPE = "awa";
+export const SWISSPAR_TYPE = "swisspar";
+export const CFPB_ORDER_TYPE = "cfpb-order";
+export const OFAC_ORDER_TYPE = "ofac-order";
 
 export const CMA_CA98_SOURCE =
   "https://www.gov.uk/cma-cases/financial-services-sector-suspected-anti-competitive-practices";
@@ -27,6 +35,17 @@ export const AIR_LETTER_SOURCE = "https://www.aphis.usda.gov/confirmation-letter
 export const IMPORT_ALERT_SOURCE = "https://www.accessdata.fda.gov/cms_ia/ialist.html";
 export const CFTC_ORDER_SOURCE = "https://www.cftc.gov/LawRegulation/Enforcement/EnforcementActions/index.htm";
 export const FIFRA_ORDER_SOURCE = "https://yosemite.epa.gov/oa/rhc/epaadmin.nsf";
+export const DENOVO_ORDER_SOURCE = "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/denovo.cfm";
+export const TTB_OIC_SOURCE = "https://www.ttb.gov/business-central/fo/administrative-cases";
+export const SUPERFUND_ROD_SOURCE =
+  "https://cumulis.epa.gov/supercpad/SiteProfiles/index.cfm?fuseaction=second.Cleanup&id=0501275";
+export const PCAC_SOURCE =
+  "https://www.fda.gov/advisory-committees/advisory-committee-calendar/july-23-24-2026-meeting-pharmacy-compounding-advisory-committee-07232026";
+export const AWA_SOURCE = "https://www.aphis.usda.gov/awa/public-search";
+export const SWISSPAR_SOURCE =
+  "https://www.swissmedic.ch/swissmedic/en/home/humanarzneimittel/authorisations/swisspar.html";
+export const CFPB_ORDER_SOURCE = "https://www.consumerfinance.gov/enforcement/actions/";
+export const OFAC_ORDER_SOURCE = "https://ofac.treasury.gov/civil-penalties-and-enforcement-information";
 
 export type PaidRecord = {
   id: string;
@@ -170,7 +189,12 @@ export function normalizeWarningLetterRecords(payload: { letters?: unknown[] }):
 function listingSource(payload: { sources?: unknown }, fallback: string): string {
   const sources = asObject(payload.sources);
   const listing =
-    str(sources?.listing) || str(sources?.hub) || str(sources?.cder) || str(sources?.catalog);
+    str(sources?.listing) ||
+    str(sources?.hub) ||
+    str(sources?.cder) ||
+    str(sources?.catalog) ||
+    str(sources?.index) ||
+    str(sources?.meeting);
   return listing || fallback;
 }
 
@@ -190,7 +214,13 @@ export function normalizeCardRecords(
     out.push({
       id,
       date: firstPlausibleDate(row.date, row.issuedOn, row.publishedOn),
-      firm: str(row.firm) || str(row.institution) || id,
+      firm:
+        str(row.firm) ||
+        str(row.institution) ||
+        str(row.holder) ||
+        str(row.substance) ||
+        str(row.name) ||
+        id,
       url: str(row.sourceUrl),
       type,
     });
@@ -322,6 +352,54 @@ export function paidFifraOrdersBody<
   T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
 >(payload: T): T & PaidEnvelope {
   return paidCardBody(payload, FIFRA_ORDER_TYPE, FIFRA_ORDER_SOURCE);
+}
+
+export function paidDenovoOrdersBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, DENOVO_ORDER_TYPE, DENOVO_ORDER_SOURCE);
+}
+
+export function paidTtbOicBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, TTB_OIC_TYPE, TTB_OIC_SOURCE);
+}
+
+export function paidSuperfundRodsBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, SUPERFUND_ROD_TYPE, SUPERFUND_ROD_SOURCE);
+}
+
+export function paidPcacBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, PCAC_TYPE, PCAC_SOURCE);
+}
+
+export function paidAwaBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, AWA_TYPE, AWA_SOURCE);
+}
+
+export function paidSwissparBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, SWISSPAR_TYPE, SWISSPAR_SOURCE);
+}
+
+export function paidCfpbOrdersBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, CFPB_ORDER_TYPE, CFPB_ORDER_SOURCE);
+}
+
+export function paidOfacOrdersBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, OFAC_ORDER_TYPE, OFAC_ORDER_SOURCE);
 }
 
 export function paidImportAlertsBody<

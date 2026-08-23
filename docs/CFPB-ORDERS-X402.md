@@ -23,7 +23,9 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 - Example: American Honda Finance Corporation 2025 `https://files.consumerfinance.gov/f/documents/cfpb_american-honda-finance-corp-consent-order_2025-01.pdf`
 - License: **17 USC 105**. Attribute CFPB.
 
-Paid body fields: `id`, `fileNo`, `pdfId`, `firm`, `date`, `title`, `sourceUrl`, `actionUrl`, `body`. `body` is official `pdftotext` of the CFPB-authored PDF. `sourceUrl` is always the files.consumerfinance.gov order PDF, not archive.org, not Apify, not the complaint dump.
+Paid body keeps the existing `cards[]` fields: `id`, `fileNo`, `pdfId`, `firm`, `date`, `title`, `sourceUrl`, `actionUrl`, `body`. `body` is official `pdftotext` of the CFPB-authored PDF. `sourceUrl` is always the files.consumerfinance.gov order PDF, not archive.org, not Apify, not the complaint dump.
+
+Alongside those keys the paid JSON adds `records[]` (`id`, `date`, `firm`, `url`, `type=cfpb-order`), `recordCount`, honest `asOf` / `fetchedAt`, and `source` (the official CFPB enforcement listing). A repeat buyer diffs `asOf` + record ids.
 
 `data/cfpb-orders/` is gitignored. Order bodies get lost on a dead VM — do not harvest the whole index here. Full fill waits for apollo.
 
