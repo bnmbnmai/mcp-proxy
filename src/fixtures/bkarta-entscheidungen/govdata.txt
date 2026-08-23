@@ -1,0 +1,4 @@
+govdata.de stat CSV
+dataset,value
+bkarta-entscheidungen,123
+Not a Bundeskartellamt Entscheidung PDF.

@@ -1,0 +1,243 @@
+                                                2. Beschlussabteilung
+
+                                                B 2 - 73/20
+
+
+                                     Verfügung gemäß § 19a Abs. 2 S. 1 Nr. 2 GWB
+                                         sowie § 19 Abs. 1, Abs. 2 Nr. 1 GWB,
+                                                    Art. 102 AEUV
+
+                                               – Fassung für die Öffentlichkeit –
+
+
+
+                                   Beschluss
+                              In dem Verwaltungsverfahren
+
+
+1. Amazon.com, Inc.
+  410 Terry Avenue North
+  Seattle, Washington 98109
+  Vereinigte Staaten von Amerika
+                                      – Beteiligte zu 1. –
+
+
+
+
+2. Amazon EU S.à r.l.
+  38 avenue John F. Kennedy
+  L-1855 Luxemburg
+                                      – Beteiligte zu 2. –
+
+
+                                      Verfahrensbevollmächtigte der Beteiligten zu 1. und
+                                      zu 2.:
+                                      Hengeler Mueller Partnerschaft von Rechtsanwälten
+                                      mbB
+                                      Benrather Straße 18 - 20
+                                      40213 Düsseldorf
+                                                 -2-
+
+
+
+
+        wegen der Prüfung nach §§ 19a Abs. 2 S. 1 Nr. 2, S. 2, 19 Abs. 1, Abs. 2 Nr. 1 des
+        Gesetzes gegen Wettbewerbsbeschränkungen1 (GWB), Art. 102 AEUV hat die 2. Be-
+        schlussabteilung am 04.02.2026 beschlossen:
+
+        1. Den Beteiligten zu 1. und 2. einschließlich der gemäß § 36 Abs. 2 GWB mit ihnen
+            verbundenen Unternehmen wird untersagt,
+
+                a. Angebote von auf amazon.de tätigen Dritthändlern2, deren Preise die
+                    Schwellenwerte, die mit dem Preiskontrollmechanismus „Price Error Pre-
+                    vention“ (PEP) durch das Modell […] errechnet werden, überschreiten, zu
+                    deaktivieren mit der Folge, dass diese Angebote auf amazon.de für End-
+                    kundinnen und Endkunden nicht mehr sichtbar sind;
+
+                b. Angebote von auf amazon.de tätigen Dritthändlern, deren Preise die
+                    Schwellenwerte, die mit dem Preiskontrollmechanismus „Atypical Pricing
+                    Featured Offer Disqualification“ (AP-FOD) durch das Modell […] errechnet
+                    werden, überschreiten, von der Auswahl zum Hervorgehobenen Angebot
+                    zu disqualifizieren, einschließlich aller damit verbundenen Folgen für die
+                    Sichtbarkeit dieser Angebote und der betroffenen ASINs;
+
+                c. Angebote von auf amazon.de tätigen Dritthändlern, deren Preise die
+                    Schwellenwerte, die mit dem Preiskontrollmechanismus „Select Competitor
+                    Featured Offer Disqualification“ (SC-FOD) aus den Preisen von bestimmten
+                    externen Wettbewerbern festgelegt werden, überschreiten, von der Aus-
+                    wahl zum Hervorgehobenen Angebot zu disqualifizieren, einschließlich aller
+                    damit verbundenen Folgen für die Sichtbarkeit dieser Angebote und der be-
+                    troffenen ASINs;
+
+                d. Angebote von auf amazon.de tätigen Dritthändlern, deren Preise die
+                    Schwellenwerte überschreiten, die auf der Grundlage eines Preiskontroll-
+                    mechanismus festgelegt werden, der mit PEP, AP-FOD oder SC-FOD ver-
+                    gleichbar ist und den unter Ziff. 4.a. gemachten Vorgaben nicht entspricht,
+
+
+1 Gesetz gegen Wettbewerbsbeschränkungen in der Fassung der Bekanntmachung vom 26.06.2013
+
+(BGBl. I S. 1750, 3245), das zuletzt durch Artikel 6 des Gesetzes vom 05.12.2024 (BGBl. I Nr. 400)
+geändert worden ist.
+2 Bei Begriffen, mit denen in erster Linie Unternehmen oder sonstige Organisationen und nicht natürliche
+
+Personen bezeichnet werden, sowie bei gesetzlich definierten Begriffen (bspw. Dritthändler, gewerbli-
+che Nutzer, aber auch „Verbraucher“ im Sinne des Kartellrechts oder anderer Gesetze) wird in diesem
+Text auf die geschlechtergerechte Verwendung einer neutralen Ersatzform wie dem Partizip bzw. auf
+eine Doppelnennung verzichtet.
+                                     -3-
+
+
+
+
+          zu deaktivieren mit der Folge, dass diese Angebote auf amazon.de für End-
+          kundinnen und Endkunden nicht mehr sichtbar sind oder zu disqualifizieren,
+          so dass die betroffenen Angebote an einem Auswahlprozess für das Her-
+          vorgehobene Angebot oder eine vergleichbare Rankingposition nicht teil-
+          nehmen können sowie vergleichbare Einschränkungen der Sichtbarkeit der
+          betroffenen Angebote oder ASINs eintreten.
+
+2. Den Beteiligten zu 1. und 2. einschließlich der gemäß § 36 Abs. 2 GWB mit ihnen
+   verbundenen Unternehmen wird ferner untersagt,
+
+       a. die Amazon Marketplace-Richtlinie zur angemessenen Preisgestaltung in
+          der ab 15. Februar 2025 geltenden Fassung oder vergleichbare vertragliche
+          Regelungsformen einschließlich von Konkretisierungen wie z.B. in Erläute-
+          rungsartikeln, zu verwenden, soweit sie die Verwendung der in Ziff. 1a. bis
+          d. untersagten Preiskontrollmechanismen vorsehen und den Anforderun-
+          gen, wie sie in Ziff. 4.c. beschrieben sind, nicht entsprechen;
+
+       b. Dritthändler über Deaktivierungen aufgrund von PEP wegen eines „mögli-
+          chen Preisfehlers“ oder Disqualifizierungen aufgrund von AP-FOD wegen
+          eines „zu hohen Preises“ oder aufgrund auf SC-FOD wegen eines „nicht
+          wettbewerbsfähigen Preises“ in der gegenwärtig praktizierten oder in einer
+          vergleichbaren Form zu benachrichtigen, die den Anforderungen, wie sie in
+          Ziff. 4.d. beschrieben sind, nicht entspricht, und dabei bestimmte Referenz-
+          preise einschließlich eines „wettbewerbsfähigen externen Preises“ zu nen-
+          nen und Dritthändler aufzufordern, ihre Preise hieran anzupassen.
+
+3. Die Beteiligten zu 1. und 2. einschließlich der gemäß § 36 Abs. 2 GWB mit ihnen
+   verbundenen Unternehmen werden verpflichtet, das nach Ziff. 1. und 2. untersagte
+   Verhalten innerhalb einer Frist von neun Monaten nach Zustellung dieser Verfü-
+   gung insgesamt einzustellen oder einzelne Preiskontrollmechanismen einschließ-
+   lich der zugrunde liegenden allgemeinen Geschäftsbedingungen und der Benach-
+   richtigungspraxis gegenüber den Dritthändlern nach den Maßgaben aus Ziff. 4. an-
+   zupassen.
+
+4. Soweit die Beteiligten zu 1. und 2. weiterhin Preiskontrollmechanismen auf ama-
+   zon.de verwenden, sind diese einschließlich der vertraglichen Regelungen und der
+   Benachrichtigungspraxis nach den folgenden Maßgaben zu gestalten:
+                             -4-
+
+
+
+
+a. Sofern Preiskontrollmechanismen weiterhin verwendet werden, sind diese
+   in ihren Parametern so zu gestalten, dass sie ausschließlich solche Ange-
+   bote erfassen, die bezüglich ihrer Preisgestaltung mit geltendem Recht
+   nicht vereinbar sind oder ein besonders grobes Missverhältnis zwischen
+   Leistung und Gegenleistung aufweisen, insbesondere den von der höchst-
+   richterlichen Rechtsprechung entwickelten Maßstab für ein wucherähnli-
+   ches Geschäft erfüllen.
+
+b. Die weitere Verwendung von Preiskontrollmechanismen muss Eingang in
+   die zwischen den Beteiligten zu 1. und 2. einschließlich der gem. § 36 Abs. 2
+   GWB mit ihnen verbundenen Unternehmen einerseits und den Dritthändlern
+   andererseits vereinbarten allgemeinen Geschäftsbedingungen finden.
+
+c. Die zwischen den Beteiligten zu 1. und 2. einschließlich der gem. § 36
+   Abs. 2 GWB mit ihnen verbundenen Unternehmen einerseits und den Dritt-
+   händlern andererseits vereinbarten allgemeinen Geschäftsbedingungen
+   müssen die grundlegende Funktionsweise der Mechanismen, die Anpas-
+   sungsfrequenz von Schwellenwerten sowie die jeweiligen genauen Sankti-
+   onsfolgen in einer zusammenhängenden Form darstellen. Soweit maschi-
+   nelles Lernen verwendet wird, muss diese Tatsache offengelegt und das
+   verwendete Modell in groben Zügen beschrieben werden. Soweit Schwel-
+   lenwerte auf Grundlage eines Ausgangswertes und eines Sicherheitszu-
+   schlags gebildet werden, ist letzterer seiner Dimension nach anzugeben.
+
+d. Im Fall einer Deaktivierung oder Disqualifizierung von Angeboten von dem
+   Hervorgehobenen Angebot oder einer vergleichbaren Sichtbarkeitssanktion
+   müssen die Dritthändler Benachrichtigungen nach den folgenden Vorgaben
+   erhalten:
+
+       i. Die Benachrichtigung hat in einer Form zu erfolgen, die die Dritt-
+          händler dazu anhält, die Informationen auf einem dauerhaften Me-
+          dium zu speichern, von dem sie diese jederzeit unverändert wieder
+          abrufen können, etwa durch eine E-Mail.
+
+       ii. In der Benachrichtigung sind die in den zwischen den Beteiligten zu
+          1. und 2. einschließlich der gemäß § 36 Abs. 2 GWB mit ihnen ver-
+          bundenen Unternehmen einerseits und den Dritthändlern anderer-
+          seits     vereinbarten      allgemeinen       Geschäftsbedingungen
+                                      -5-
+
+
+
+
+                   niedergelegten Gründe für die jeweilige Sichtbarkeitssanktion ein-
+                   zelfallbezogen anzugeben; dabei sind die konkret betroffene ASIN,
+                   der Zeitpunkt der jeweiligen Sichtbarkeitssanktion, der Preis des
+                   Dritthändlers, der zu der Sanktion geführt hat, sowie der zugrunde
+                   liegende Schwellenwert seiner Dimension nach zu benennen.
+
+5. Zur Umsetzung von Ziff. 1. bis 4. werden die Beteiligten zu 1. und 2. einschließlich
+   der gemäß § 36 Abs. 2 GWB mit ihnen verbundenen Unternehmen ferner verpflich-
+   tet, innerhalb einer Frist von drei Monaten nach Zustellung dieser Verfügung einen
+   Umsetzungsplan vorzulegen, der im Einzelnen darstellt,
+
+       a. ob das nach Ziff. 1. und 2. untersagte Verhalten aufgegeben wird oder
+
+       b. inwieweit und in welcher Form das nach Ziff. 1. und 2. untersagte Verhalten
+           angepasst werden soll; in diesem Fall hat der Umsetzungsplan im Einzel-
+           nen zu erläutern, welche Maßnahmen die Beteiligten für die unter Ziff. 3.
+           und 4. aufgegebene Abstellung beabsichtigen zu ergreifen und in welchen
+           Schritten und zu welchen Zeitpunkten diese Maßnahmen umgesetzt wer-
+           den.
+
+6. Die in Ziff. 3. und 5. ausgesprochenen Umsetzungsfristen werden gehemmt und
+   verlängern sich einmalig um zwei Monate, sofern binnen einer Frist von zwei Mo-
+   naten nach Zustellung der Verfügung ein Antrag auf Anordnung der aufschieben-
+   den Wirkung der Beschwerde nach § 67 Abs. 3 Satz 3 GWB gestellt wird. Die Hem-
+   mung beginnt mit dem Eingang des Antrags beim Beschwerdegericht und endet
+   mit der Beendigung des erstinstanzlichen Eilverfahrens über diesen Antrag.
+
+7. Der vollständige oder teilweise Widerruf von Ziff. 1. bis 6. der Verfügung bleibt vor-
+   behalten.
+                                    -6-
+
+
+
+
+8. Den Beteiligten zu 1. und 2. einschließlich der gemäß § 36 Abs. 2 GWB mit ihnen
+   verbundenen Unternehmen als Gesamtschuldnerinnen wird im Rahmen der Ab-
+   schöpfung des wirtschaftlichen Vorteils für den Teil-Abschöpfungszeitraum vom
+   7. November 2023 bis zum 31. Dezember 2024 die Zahlung eines Geldbetrags in
+   Höhe von
+
+                           [rund 58,8 Mio Euro]
+
+
+                             (in Worten: […])
+
+
+   auferlegt.
+
+9. Die Gebühren für diese Entscheidung werden auf insgesamt
+
+                                    […]
+
+
+                                    […]
+
+
+   festgesetzt und den Beteiligten zu 1. und 2. als Gesamtschuldnerinnen auferlegt.
+
+10. Auslagen werden gesondert erhoben.
+
+nen Preisgestaltung wegen eines sog. Preisfehlers und den hierzu eingesetz-
+ten Algorithmus zur Deaktivierung des Angebots („Price Error Prevention“, im Folgenden:
+PEP).
+
+Endkundinnen und Endkunden, die auf einer Handelsplattform wie amazon.de die Angebote
+eines bestimmten Produktes auffinden und di

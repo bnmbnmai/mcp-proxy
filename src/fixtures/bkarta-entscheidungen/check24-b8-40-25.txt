@@ -1,0 +1,183 @@
+                                                                   8. Beschlussabteilung
+                                                                             Az.: B8-40/25
+
+
+
+
+                                    Beschluss
+                               In dem Verwaltungsverfahren
+
+
+Check24 GmbH
+Erika-Mann-Straße 62-66
+80636 München
+                                                                         – Beteiligte –
+
+
+Verfahrensbevollmächtigte
+Gleiss Lutz Hootz Hirsch PartmbB Rechtsanwälte, Steuerberater
+Lautenschlagerstraße 21
+70713 Stuttgart
+
+
+wegen der Verwendung von Paritätsverpflichtungen im Rahmen der Vermittlung von Energie-
+lieferverträgen hat die 8. Beschlussabteilung des Bundeskartellamts am 18.02.2026 beschlos-
+sen:
+1. Die von der Beteiligten mit Schriftsatz vom 05.12.2025 angebotenen und im Anhang dieses
+Beschlusses wiedergegebenen Verpflichtungszusagen sind für die Beteiligte nach § 32b Ab-
+satz 1 Satz 1 GWB bindend.
+2. Das Bundeskartellamt wird vorbehaltlich des § 32b Absatz 2 GWB von seinen Befugnissen
+nach den § 30 Absatz 3, § 31b Absatz 3, §§ 32 und 32a GWB keinen Gebrauch machen. Das
+Verfahren wird entsprechend der Maßgabe des § 32b Absatz 1 Satz 2 und Absatz 2 GWB
+eingestellt.
+3. Die Gebühr für das Verfahren einschließlich dieser Entscheidung beträgt 15.000 Euro und
+wird der Beteiligten auferlegt.
+                                                 -2-
+
+
+
+
+                                              Gründe
+
+
+    A. Sachverhalt
+    I. Die Beteiligte
+(1) Die Check24 GmbH und die mit ihr verbundenen Unternehmen (zusammen „Check24“) be-
+    treiben Vergleichsportale für die Vermittlung von Verträgen, vor allem in den Sparten Strom,
+    Gas, Versicherungen, DSL, Handy & Tarife, Konto & Kredit, Reise und Shopping. Check24 ist
+    fast ausschließlich in Deutschland tätig, aber betreibt inzwischen auch Vergleichsportale in
+    Österreich und Spanien. Der weltweite Umsatz von Check24 entfiel im Jahr 2024 zu über […]
+    auf Deutschland. Der Energievergleich erfolgt durch die Tochtergesellschaft Check24 Ver-
+    gleichsportal Energie Betriebs GmbH & Co. KG. Das Online-Angebot der Beteiligten auf der
+    Webseite „Check24.de“ und auf der gleichnamigen App ermöglicht es Endverbrauchern, Gas-
+    und Stromtarife verschiedener Energieversorgungsunternehmen („EVU“) zu vergleichen und
+    ggf. dem präferierten EVU vermittelt über die Beteiligte ein Angebot zum Abschluss eines
+    Energielieferungsvertrages zu machen. Der Vertrag wird unmittelbar zwischen dem Endver-
+    braucher und dem EVU abgeschlossen, auch wenn der Verbraucher die Eingaben für den
+    Vertragsabschluss allein über die Plattform von Check24 tätigt. Die Nutzung des Online-An-
+    gebots der Beteiligten ist für die Endverbraucher kostenlos, während die EVU als sogenannte
+    Vertriebspartner der Beteiligten im Falle der Vertragsvermittlung eine Provision an diese ent-
+    richten. Das Geschäftsmodell der Beteiligten lässt sich graphisch so darstellen:
+
+
+
+
+(2) Der Beteiligten ist es nach eigenen Angaben gelungen, nahezu alle online verfügbaren Strom-
+    und Gastarife in ihr Vergleichs- und Vermittlungsangebot aufzunehmen: „Im CHECK24 Strom-
+    vergleich finden Sie rund 95 Prozent der online verfügbaren Stromtarife – also bis zu 12.700
+    Tarife von über 1.000 Anbietern. Der CHECK24 Gasvergleich bietet Ihnen ebenfalls rund 95
+    Prozent der online verfügbaren Gastarife – also bis zu 8.500 Tarife von über 850 Anbietern.“1
+    Nur mit einem Teil dieser EVU besteht auch eine sog. Vertriebsvereinbarung. Nach den
+
+
+    1 https://www.check24.de/unternehmen/ueber-uns/?product=7; Abruf am 05.02.2026.
+                                                 -3-
+
+
+    Vertriebsvereinbarungen vermittelt Check24 Kunden an das jeweilige EVU gegen Provision.
+    Die vom EVU an Check24 zu entrichtende Provision bemisst sich insbesondere nach […]. Die
+    durchschnittliche Provisionshöhe betrug im Jahr 2024 […] pro Stromvertragsvermittlung und
+    […] pro Gasvertragsvermittlung. Für die Endkunden ist ein Vertragsabschluss direkt über die
+    Check24-Plattform nur mit denjenigen EVU möglich, die eine Vertriebsvereinbarung mit
+    Check24 haben. Check24 hatte zum Stichtag 30. Juni 2025 Vertriebsverträge mit […] EVU.
+    Check24 erzielte im Jahr 2024 mit der Vermittlung von Strom- und Gaslieferverträgen in
+    Deutschland einen Provisions-Umsatz i.H.v. […]. Dies entspricht […] des Gesamt-Umsatzes
+    der Check24-Gruppe.
+
+
+
+    II. Verwendung von Paritätsverpflichtungen durch die Beteiligte
+(3) In vielen Vertriebsvereinbarungen der Check24 mit ihren Vertriebspartnern im Energiebereich
+    waren am 31.12.2024 Klauseln enthalten, die die EVU verpflichteten, ihren günstigsten Tarif
+    über die Webseite bzw. App der Beteiligten zu vertreiben und/oder Produkte, die über die Be-
+    teiligte angeboten werden, über keinen anderen Vertriebskanal günstiger anzubieten (künftig
+    „Paritätsverpflichtungen“). Diese Klauseln waren zum Stichtag 31.12.2024 in unterschiedli-
+    chen Varianten in den Vertriebsverträgen zu finden; am häufigsten fanden folgende Formulie-
+    rungen Anwendung:
+
+        •   „Der ENERGIEVERSORGER verpflichtet sich, seine Produkte, die über CHECK24 an-
+            geboten werden, über keinen anderen Vertriebskanal günstiger anzubieten.“
+
+        •   „Der ENERGIEVERSORGER verpflichtet sich, seinen günstigsten Tarif über
+            CHECK24 zu vertreiben.“
+(4) Derartige Paritätsverpflichtungen waren in vielen, aber nicht in allen Vertriebsverträgen mit
+    EVU enthalten. Gemessen an der Anzahl der Vertriebsverträge mit EVU enthielten die meisten
+    Verträge eine Paritätsverpflichtung. Die Klausel, dass das EVU seine Produkte über keinen
+    anderen Vertriebskanal günstiger anbieten darf, wurde von Check24 am häufigsten verwen-
+    det. Sie war am 31.12.2024 in über […] der Vertriebsverträge mit EVU enthalten. Gemessen
+    am Check24-Umsatz bzw. an der Anzahl der vermittelten Verträge war der Anteil jedoch ge-
+    ringer. Im Jahr 2024 entfiel weniger als […] des Check24-Umsatzes mit EVU auf Verträge, die
+    diese Klausel enthielten. Im Laufe des Jahres 2025 ist dieser Anteil deutlich gesunken. Zum
+    Stichtag 30.09.2025 lag der entsprechende Umsatzanteil bei unter […]. Die Beteiligte hat Pa-
+    ritätsverpflichtungen mit EVU bereits seit vielen Jahren verwendet; gemäß einem von der Be-
+    teiligten im Verfahren vorgelegten Vertriebsvertrag mindestens seit 2012. Im Verfahren wurde
+    nicht ermittelt, in welchem Umfang Check24 Paritätsverpflichtungen mit EVU vor dem Jahr
+    2024 verwendet hat.
+
+
+
+    III. Relevanz der Beteiligten und anderer Vergleichsportale für die EVU
+(5) Die Studie „Vertriebskanäle Energie Privatkunden“ vom Juli 2025 der Kreutzer Consulting
+    GmbH und Nordlight research GmbH enthält Aussagen über die relativen Anteile der Neuab-
+    schlüsse von Strom- und Gaslieferverträgen in Deutschland nach verschiedenen Vertriebska-
+    nälen und Vergleichsportalen. Die Studie wird seit 2013 jährlich durchgeführt und basiert auf
+    der Befragung von rund 7.000 Strom- und Gaskunden (5.000 Bestandskunden, 1.500 Wechs-
+    ler, 200 aktuelle Kündiger) zu ihrem Wechselverhalten. Ausweislich der Studie wurden 2025
+    in Deutschland rund 82% der Neuabschlüsse von Strom- und Gaslieferverträgen online getä-
+    tigt, und zwar 25% direkt beim Versorger und 57% über Online-Vermittler. Telefonisch wurden
+    7%, per Brief oder Fax 2%, an der Haustür 5% und in einem Geschäft bzw. einer Filiale 4%
+    der Vertragsabschlüsse getätigt (S. 22, 25, 99 ff. der Studie). Der Anteil der Online bzw. über
+                                                 -4-
+
+
+    Vergleichsportale getätigten Vertragsabschlüsse ist dabei über die Jahre gewachsen, während
+    die anderen Vertriebskanäle an Bedeutung verloren haben (S. 102 ff).
+(6) Unter den Online-Vermittlern nimmt die Beteiligte ausweislich der Studie eine besonders
+    wichtige Rolle ein. Die Studie weist für das Jahr 2025 folgende Anteile der einzelnen Online-
+    Vermittler an den vermittelten Verträgen aus (S. 118):
+
+     Unternehmen                       Anteil an vermittelten         Anteil an vermittelten
+                                         Strom-Verträgen                 Gas-Verträgen
+     Check24                                    62%                            69%
+     Verivox                                    22%                            24%
+     remind.me                                  4%                             2%
+     SwitchUp.de                                4%                             1%
+     Wechselpilot                               2%                             1%
+     andere Anbieter                            6%                             4%
+
+
+    IV. Verfahrensgang
+(7) Auslöser des Verfahrens waren zwei Beschwerden, die 2024 bzw. 2025 beim Bundeskartell-
+    amt eingegangen sind, und die sich insbesondere gegen die Verwendung und Durchsetzung
+    von Paritätsverpflichtungen im Energiebereich richteten. In der ersten Beschwerde hat das
+    eingebende Unternehmen seine Identität zwar gegenüber dem Bundeskartellamt offenbart, es
+    hat aber zur Vermeidung von wirtschaftlichen Nachteilen um Schutz seiner Identität gegenüber
+    der Beteiligten ersucht. Die zweite Beschwerde ging über das Hinweisgeberportal des Bun-
+    deskartellamtes ein, sodass dem Bundeskartellamt die Identität des Eingebers nicht bekannt
+    ist. Die nicht-anonyme Beschwerde wurde im Rahmen eines Gesprächs und durch die Vorlage
+    entsprechender Unterlagen hinreichend substantiiert, so dass die 8. Beschlussabteilung ein
+    Kartellverwaltungsverfahren gemäß §§ 54 ff. GWB wegen des Verdachts des Verstoßes ge-
+    gen Art. 101, 102 AEUV, §§ 1, 19, 20 GWB gegen die Beteiligte eröffnet hat. Gegenstand des
+    vorliegenden Verwaltungsverfahrens ist und war allein die Verwendung von Paritätsverpflich-
+    tungen im Rahmen der Vermittlung von Energielieferverträgen.
+(8) Zur Aufklärung des Sachverhalts hat die Beschlussabteilung zunächst am 10.07.2025 einen
+    an die Beteiligte gerichteten Auskunftsbeschluss erlassen, der ihr am 15.07.2025 zugestellt
+    wurde. Die Beteiligte legte am 15.08.2025 Beschwerde gegen den Auskunftsbeschluss ein
+    und stellte am 29.09.2025 Anträge auf Anordnung der aufschiebenden Wirkung der Be-
+    schwerde und den Erlass eines sogenannten Hängebeschlusses im Hinblick auf vier von 16
+    Fragen des Auskunftsbeschlusses. Das OLG Düsseldorf wies mit Beschluss vom 29.10.2025
+    (Az. VI-Kart 13/25 (V)) den Eilrechtsantrag der Beteiligten zurück; diese nahm am 17.11.2025
+    die Beschwerde zurück.
+(9) Zwischenzeitlich reichte die Beteiligte Antworten zu den nicht streitbefangenen zwölf weiteren
+    Fragen des Auskunftsbeschlusses mit Schreiben vom 30.09.2025 ein. Nach entsprechenden
+    Hinweisen der Abteilung am 16.10.2025 vervollständigte sie diese Auskünfte und machte An-
+    gaben zu den noch offenen vier Fragen mit Schreiben vom 22. und 30.10.2025 sowie vom 03.
+    und 04.11.2025. Die Beschlussabteilung fragte die Studie „Vertriebskanäle Energie Privatkun-
+    den“ am 03.12.2025 bei den Studienautoren an und erhielt sie am selben Tag.
+(10) Die Beteiligte bekundete im November 2025 ihr Interesse an einer einvernehmlichen Verfah-
+     rensbeendigung; sie bot die vorliegenden Verpflichtungszusagen am 05.12.2025 formell ge-
+     mäß § 32b GWB an.
+(11) Der Beteiligten wurde mit Schreiben vom 18.12.2025 nach § 56 Abs. 1 GWB Gelegenheit zur
+     Stellungnahme zu dem Entscheidungsentwurf gegeben. Am 26.01.2026 hat die Beteiligte zu
+     dem Entscheidungsentwurf Stellung genommen (s. Rn. 15 ff.).
+
