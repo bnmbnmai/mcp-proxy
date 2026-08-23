@@ -1,0 +1,449 @@
+U.S. Department                                                          1200 New Jersey Avenue, SE
+of Transportation                                                        Washington, DC 20590
+Pipeline and Hazardous
+Materials Safety
+Administration
+
+                                      February 17, 2026
+
+VIA ELECTRONIC MAIL TO: gbacon@eprod.com
+
+Graham Bacon
+Executive Vice President, Chief Operating Officer
+Enterprise Products Operating, LLC
+1100 Louisiana Street
+Houston, TX 77002
+
+Re: CPF No. 4-2026-005-CAO
+
+Dear Mr. Bacon,
+
+Enclosed please find a Corrective Action Order (Order) issued by the Pipeline and Hazardous
+Materials Safety Administration, Office of Pipeline Safety. It requires Enterprise Products
+Operating, LLC, to take certain corrective actions with respect to a pipeline failure that occurred
+on the East Leg Loop pipeline in Washington County, Iowa, on February 14, 2026.
+
+Service by electronic mail is effective upon the date of transmission and acknowledgment of
+receipt as provided under 49 CFR § 190.5. The terms and conditions of this Order are effective
+upon completion of service.
+
+                                              Sincerely,
+                                                              Digitally signed by LINDA
+                                              LINDA GAIL GAIL DAUGHERTY
+                                              DAUGHERTY Date:  2026.02.17
+                                                         16:49:44 -05'00'
+
+
+                                              Linda Daugherty
+                                              Acting Associate Administrator
+                                                for Pipeline Safety
+
+Enclosure: Corrective Action Order
+
+cc:    Mr. Bryan Lethcoe, Director, Southwest Region, Office of Pipeline Safety, PHMSA
+       Suzie Davis, Senior Manager, Compliance, Enterprise Products Operating, LLC,
+       smdavis@eprod.com
+
+CONFIRMATION OF RECEIPT REQUESTED
+                  U.S. DEPARTMENT OF TRANSPORTATION
+       PIPELINE AND HAZARDOUS MATERIALS SAFETY ADMINISTRATION
+                        OFFICE OF PIPELINE SAFETY
+                          WASHINGTON, D.C. 20590
+
+
+____________________________________
+                                    )
+In the Matter of                     )
+                                    )
+Enterprise Products Operating, LLC, )                                        CPF No. 4-2026-005-CAO
+                                    )
+Respondent.                          )
+                                     )
+____________________________________)
+
+
+                                  CORRECTIVE ACTION ORDER
+
+Purpose and Background
+
+Pursuant to the authority provided in 49 U.S.C. § 60112, the Pipeline and Hazardous Materials
+Safety Administration (PHMSA), Office of Pipeline Safety (OPS), is issuing this Corrective
+Action Order (CAO or Order) to Enterprise Products Operating, LLC (Enterprise or Respondent).
+The Order requires Enterprise to take certain necessary corrective actions to protect the public,
+property, and the environment from potential hazards associated with a failure that occurred on the
+East Leg Loop pipeline (East Leg Loop or Pipeline) 1 near Brighton, Washington County, Iowa,
+on February 14, 2026 (Failure). The East Leg Loop is a hazardous liquid pipeline facility subject
+to PHMSA’s jurisdiction pursuant to the Pipeline Safety Act, 49 U.S.C. § 60101 et seq., and
+Pipeline Safety Regulations, 49 CFR Parts 190 to 199.
+
+The East Leg Loop Pipeline is part of Enterprise’s 8,000-mile MAPCO pipeline system. The
+MAPCO system includes two parallel pipelines (the 8” East Leg Mainline and the 10” East Leg
+Loop) that transport liquified petroleum gas (LPG) from Conway, Kansas, to Janesville,
+Wisconsin. The Failure occurred on a portion of the East Leg Loop that traverses a rural,
+agricultural area, and resulted in an explosion and sustained fire that required two road closures
+and responses from four local fire departments. Enterprise isolated the affected portion of the
+Pipeline after the Failure and sent the failed section of pipe to a third-party expert for inspection
+and metallurgical analysis. Enterprise has not yet returned the East Loop Pipeline to service.
+
+Pursuant to 49 U.S.C. § 60117, PHMSA has initiated an investigation of the Failure. The
+preliminary findings of that ongoing investigation are as follows:
+
+1
+  Enterprise Products Operating, LLC's East Leg Loop Pipeline is part of the MAPCO pipeline system present in 13
+states. The MAPCO pipeline system is a Liquified Petroleum Gas (LPG) pipeline system consisting of four primary
+segments, totaling approximately 8,074 miles in length. The 2,113-mile Conway North pipelines (East Red and Blue
+lines) link the NGL hub at Conway, Kansas, to refineries, petrochemical plans and propane markets in the upper-
+Midwest.
+Preliminary Findings
+
+
+x   The East Leg Loop Pipeline is a 10-inch diameter pipeline that transports LPG from Conway,
+    Kansas, to Janesville, Wisconsin. This portion of the East Leg Loop Pipeline includes 5 pump
+    stations and two navigable water crossings.
+
+x   At approximately 10:50 AM on February 14, 2026, Enterprise observed a pressure drop on the
+    East Leg Loop. The pressure drop resulted from the Failure, which occurred at the top of a
+    slope several hundred yards south of the Skunk River in a rural, agricultural area near Brighton,
+    Iowa.
+
+x   After detecting the Failure, Enterprise shut in a portion of the East Leg Loop Pipeline, closing
+    valves at milepost (MP) 21.6 and MP 23.3. Enterprise also received a public report of a large
+    fire near Brighton, Iowa
+
+x   Enterprise notified the National Response Center (NRC) of the Failure at 1:04 PM Eastern
+    Time on February 14, 2026. Enterprise provided a second NRC notification at 4:29 PM
+    Eastern Time on February 14, 2026. Enterprise provided a third NRC notification at 3:12 AM
+    Eastern Time on February 16, 2026. In its third NRC notification, Enterprise reported an
+    estimated spill volume of 2000 barrels.
+
+x   At the point of Failure, investigators observed a four-foot section of ejected pipe with visible
+    external corrosion. The failed pipe appears to be a location previously excavated and
+    inspected. The two sections of pipeline that remained in place in the crater showed visible
+    signs of misalignment.
+
+x   Enterprise has cut out the failed section of the East Leg Pipeline and is transporting the pipe to
+    Acuren in Magnolia, Texas, for inspection and metallurgical analysis.
+
+x   The portion of the East Leg Loop that experienced the Failure was originally constructed in
+    1972. The pipe at the location of the Failure is 0.188 inches thick, API 5L grade X-52,
+    manufactured by American Steel with high frequency electric resistance welding (HF-ERW)
+    seams. The Pipeline has plastic tape coating and cathodic protection. The maximum operating
+    pressure (MOP) of the Pipeline is 1310 psig. The operating pressure of the time of the Failure
+    was between 1265 and 1172 psig.
+
+x   The release of LPG poses a risk to public safety, property, and the environment. The Failure
+    resulted in an explosion and sustained fire that required response from four local fire
+    departments and two road closures.
+
+x   Previously, on November 29, 2016, a failure occurred on a section of the East Leg Loop
+    Pipeline in Platte County, Missouri, resulting in the release of approximately 5,000 barrels of
+    ethane-propane mixture. The released product ignited and caused a fire. The cause of the
+    failure was determined to be external near-neutral stress corrosion cracking along and adjacent
+    to an HF-ERW seam.
+x   The failed segment of the East Leg Loop Pipeline is currently shut-in and not operating.
+
+x   The investigation of the Failure is on-going, and information could change. These preliminary
+    findings may be amended based on further findings during the investigation.
+
+
+Determination of Necessity for Corrective Action Order and Right to Hearing
+
+Section 60112 of title 49, United States Code, authorizes PHMSA to determine that a pipeline
+facility is or would be hazardous to life, property, or the environment and if there is a likelihood
+of serious harm, to expeditiously order the operator of the facility to take necessary corrective
+action, including suspended or restricted use of the facility, physical inspection, testing, repair,
+replacement, or other appropriate action. An order issued expeditiously must provide an
+opportunity for a hearing as soon as practicable after the order is issued.
+
+In deciding whether to issue an order, PHMSA must consider the following, if relevant: (1) the
+characteristics of the pipe and other equipment used in the pipeline facility, including the age,
+manufacture, physical properties, and method of manufacturing, constructing, or assembling the
+equipment; (2) the nature of the material the pipeline facility transports, the corrosive and
+deteriorative qualities of the material, the sequence in which the material is transported, and the
+pressure required for transporting the material; (3) the aspects of the area in which the pipeline
+facility is located, including climatic and geologic conditions and soil characteristics; (4) the
+proximity of the area in which the hazardous liquid pipeline facility is located to environmentally
+sensitive areas; (5) the population density and population and growth patterns of the area in which
+the pipeline facility is located; (6) any recommendation of the National Transportation Safety
+Board made under another law; and (7) any other factors PHMSA may consider as appropriate.
+
+After evaluating the foregoing preliminary findings of fact, and having considered the
+circumstances surrounding the Failure, the hazardous nature of the product being transported, the
+pressure required for transporting the material, the method of manufacture, the prior failure on the
+pipeline system, the uncertainties as to the cause of the Failure, the ongoing investigations to
+determine the cause of the Failure, and the possibility that the same condition(s) that may have
+caused the Failure remain present in the pipeline and could lead to additional failures, it appears
+that the continued operation of the pipeline without corrective measures would pose a pipeline
+integrity risk to public safety, property, or the environment. Accordingly, corrective measures are
+necessary to mitigate the pipeline integrity risk of the pipeline system to protect public safety,
+property, and the environment.
+
+Accordingly, this Order mandating immediate corrective action is issued expeditiously without
+prior notice and opportunity for a hearing. The terms and conditions of this Order are effective
+upon receipt.
+
+Within 10 days of receipt of this Order, Respondent may request a hearing, to be held as soon as
+practicable, by notifying the Associate Administrator for Pipeline Safety in writing, with a copy
+to the Director, PHMSA, OPS Southwest Region. If a hearing is requested, it will be held in
+accordance with 49 CFR § 190.211.
+After receiving and analyzing additional data in the course of this investigation, PHMSA may
+identify other corrective measures that need to be taken. Respondent will be notified of any
+additional measures required and, if appropriate, PHMSA will consider amending this Order. To
+the extent consistent with safety, Respondent will be afforded notice and an opportunity for a
+hearing prior to the imposition of any additional corrective measures.
+
+
+Required Corrective Actions
+
+Definitions:
+
+Affected Segment – “Affected Segment” means the segment of Respondent's 10-inch East Leg
+Loop Pipeline running from Kearney, Missouri to Iowa City, Iowa.
+
+Isolated Segment – “Isolated Segment” means the segment of Respondent's 10-inch East Leg Loop
+Pipeline running from MP 21.6 to MP 23.3.
+
+Failure Site – “Failure Site” means the pipeline section on the Affected Segment where the failure
+occurred on February 14, 2026.
+
+Director – “Director” means the Director, PHMSA, Office of Pipeline Safety, Southwest Region.
+The Director’s address is 8701 South Gessner Road, Suite 630, Houston, TX 77074.
+
+Pursuant to 49 U.S.C. 60112, Enterprise is ordered to immediately take the following corrective
+actions:
+
+    1. Shutdown of the Isolated Segment. The 10" Enterprise East Leg Loop Pipeline from
+       MP 21.6 and MP 23.3 is currently out of service. This Isolated Segment must remain
+       shut down until the Director has provided written approval to Enterprise to resume
+       operations. The Affected Segment is subject to the pressure restriction set forth in Item 2
+       below.
+    2. Operating Pressure Restriction. Enterprise must reduce and maintain a twenty percent
+       (20%) pressure reduction in the operating pressure on the Affected Segment, such that
+       the operating pressure does not exceed eighty percent (80%) of the actual operating
+       pressure in effect immediately prior to the Failure on February 14, 2026.
+          a. This pressure restriction is to remain in effect until written approval to increase
+             the pressure or return the pipeline to its pre-Failure operating pressure is
+             obtained from the Director.
+          b. Prior to resuming operation, Enterprise must provide the Director the actual
+              operating pressures of each pump station and each main line pressure regulating
+              station on the Affected Segment at the time of the Failure and the reduced pressure
+              restriction set-points at these same locations. As portions of the Affected Segment
+              may be capable of bi-directional operation, the reduced pressure pump station
+              set-points should be specified for both directions of flow where applicable.
+          c. This pressure restriction requires any relevant remote or local alarm limits,
+             software programming set-points or control points, and mechanical over-pressure
+         devices to be adjusted accordingly.
+      d. When determining the pressure restriction set-points, Enterprise must take into
+          account any in-line inspection (ILI) features or anomalies present in the Affected
+          Segment to provide for continued safe operation while further corrective actions
+          are completed. A description of how any ILI features or anomalies were
+          accounted for in the determination of pressure restriction set-points shall be
+          provided with the information.
+      e. Enterprise must review the pressure restriction monthly by analyzing the
+         operating pressure data, taking into account any ILI features or anomalies present
+         in the Affected Segment. Enterprise must immediately reduce the operating
+         pressure to maintain the safe operations of the Affected Segment, if warranted by
+         the monthly review. Enterprise must submit the results of the monthly review to
+         the Director including, at a minimum, the current discharge set-points (including
+         any additional pressure reductions), and any pressure exceedance at discharge set-
+         points.
+
+3. Restart Plan. Prior to resuming operation of the Isolated Segment, Enterprise must
+   develop and submit a written Restart Plan to the Director for prior approval.
+      a. The Director may approve the Restart Plan incrementally without approving the
+         entire plan, but the Isolated Segment cannot resume operation until the Restart Plan
+         is approved in its entirety.
+      b. Once approved by the Director, the Restart Plan will be incorporated by reference
+         into this Order.
+      c. The Restart Plan must provide for adequate patrolling of the Isolated Segment
+         during the restart process and must include incremental pressure increases during
+         start up, with each increment to be held for at least two (2) hours.
+      d. The Restart Plan must include sufficient surveillance of the pipeline during each
+         pressure increment to ensure that no leaks are present when operation of the line
+         resumes.
+      e. The Restart Plan must specify a daylight restart and include advance
+         communications with local emergency response officials.
+      f. The Restart Plan must also include documentation of the completion of all
+         mandated actions, and a management of change plan to ensure that all procedural
+         modifications are incorporated into Enterprise’s operations and maintenance
+         (O&M) procedures manual.
+
+4. Return to Service. After the Director approves the Restart Plan, Enterprise may return
+   the Isolated Segment to service, but the operating pressure must not exceed eighty percent
+   (80%) of the actual operating pressure in effect immediately prior to the Failure on
+   February 14, 2026 in accordance with Item 2 above.
+
+5. Removal of Pressure Restriction. The Director may allow the removal or modification
+   of the pressure restriction upon a written request from Enterprise demonstrating that
+   restoring the pipeline to its pre-Failure operating pressure is justified based on a reliable
+   engineering analysis showing that the pressure increase is safe considering all known
+   defects, anomalies, and operating parameters of the pipeline.
+
+6. Mechanical and Metallurgical Testing. Within 45 days after this Order is issued,
+   Enterprise must complete mechanical and metallurgical testing and failure analysis of the
+   failed pipe, including an analysis of soil samples and any foreign materials. Mechanical
+   and metallurgical testing must be conducted by an independent third-party acceptable to
+   the Director and must document the decision-making process and all factors contributing
+   to the failure. Respondent must complete the testing and analysis as follows:
+      a. Document the chain-of-custody when handling and transporting the failed pipe
+         section and other evidence from the Failure site.
+      b. Within 10 days of receipt of this Order, develop and submit the testing protocol
+         and the proposed testing laboratory to the Director for prior approval.
+      c. Prior to beginning the mechanical and metallurgical testing, provide the Director
+         with the scheduled date, time, and location of the testing to allow for an OPS
+         representative to witness the testing.
+      d. Ensure the testing laboratory distributes all reports whether draft or final in their
+         entirety to the Director at the same time they are made available to Respondent.
+
+7. Remedial Work Plan (RWP).
+      a. Within 90 days after this Order is issued, Enterprise must submit a Remedial Work
+         Plan (RWP) to the Director for prior approval.
+      b. The Director may approve the RWP incrementally without approving the entire
+         RWP.
+      c. Upon approval by the Director, the RWP becomes incorporated by reference into
+         this Order.
+      d. The RWP must specify the tests, inspections, assessments, evaluations, and
+         remedial measures Respondent will use to verify the integrity of the Affected
+         Segment. It must address all known or suspected factors and causes of the Failure.
+         Enterprise must consider the risks and consequences of another failure to develop
+         a prioritized schedule for RWP-related work along the Affected Segment.
+      e. The RWP must include a procedure or process to:
+                i. Identify pipe in the Affected Segment with characteristics similar to
+                   the contributing factors identified for the Failure.
+               ii. Gather all data necessary to review the failure history (in service
+                   and pressure test failures) of the Affected Segment and to prepare a
+                   written report containing all the available information such as the
+                   locations, dates, and causes of leaks and failures.
+               iii. Integrate the results of the metallurgical testing, root cause failure
+                    analysis, and other corrective actions required by this Order with all
+                    relevant pre-existing operational and assessment data for the Affected
+                    Segment. Pre-existing operational data includes, but is not limited to,
+                    design, construction, operations, maintenance, testing, repairs, prior
+                    metallurgical analyses, and any third-party consultation information.
+                    Pre-existing assessment data includes, but is not limited to, ILI tool
+                    runs, hydrostatic pressure testing, direct assessments, close interval
+                    surveys, and DCVG/ACVG surveys.
+        iv. Determine if conditions similar to those contributing to the Failure
+            are likely to exist elsewhere on the Affected Segment.
+         v. Conduct additional field tests, inspections, assessments, and
+            evaluations to determine whether, and to what extent, the conditions
+            associated with the Failure and other failures from the failure history
+            (see (e)(ii) above) or any other integrity threats are present elsewhere
+            on the Affected Segment. At a minimum, this process must consider
+            all failure causes and specify the use of one or more of the following:
+                 1) ILI tools that are technically appropriate for assessing the
+                    pipeline system based on the cause of Failure and that can
+                    reliably detect and identify anomalies,
+                 2) Hydrostatic pressure testing,
+                 3) Close-interval surveys,
+                 4) Cathodic protection surveys, to include interference surveys
+                    in coordination with other utilities (e.g., underground
+                    utilities, overhead power lines, etc.) in the area,
+                 5) Coating surveys,
+                 6) Stress corrosion cracking surveys,
+                 7) Selective seam corrosion surveys; and
+                 8) Other tests, inspections, assessments, and evaluations
+                    appropriate for the failure causes.
+  Note: Enterprise may use the results of previous tests, inspections,
+  assessments, and evaluations if approved by the Director, provided the results
+  of the tests, inspections, assessments, and evaluations are analyzed with regard
+  to the factors known or suspected to have caused the Failure.
+        vi. Describe the inspection and repair criteria Enterprise will use to
+            prioritize, excavate, evaluate, and repair anomalies, imperfections,
+            and other identified integrity threats. Include a description of how any
+            defects will be graded and a schedule for repairs or replacement.
+        vii. Based on the known history and condition of the Affected Segment,
+             describe the methods Enterprise will use to repair, replace, or take
+             other corrective measures to remediate the conditions associated with
+             the Failure, and to address other known integrity threats along the
+             Affected Segment. The repair, replacement, or other corrective
+             measures must meet the criteria specified in (e)(vi) above.
+        viii. Implement continuing long-term periodic testing and integrity
+              verification measures to ensure the ongoing safe operation of the
+              Affected Segment considering the results of the analyses, inspections,
+              evaluations, and corrective measures undertaken pursuant to the
+              Order.
+f. Enterprise must include a proposed schedule for completion of the RWP.
+g. Enterprise must revise the RWP as necessary to incorporate new information
+   obtained during the failure investigation and remedial activities, to incorporate
+                the results of actions undertaken pursuant to this Order, and/or to incorporate
+                modifications required by the Director.
+                       i. Enterprise must submit any plan revisions to the Director for prior
+                          approval.
+                      ii. The Director may approve plan revisions incrementally.
+
+            h. Enterprise must implement the RWP as it is approved by the Director,
+               including any revisions to the plan.
+
+    8. Root Cause Failure Analysis. Within 90 days after this Order is issued, Enterprise must
+       complete a root cause failure analysis (RCFA) and submit a final report of this RCFA to
+       the Director. The RCFA must be facilitated by an independent third-party approved by
+       the Director. Enterprise must ensure that all reports, whether draft or final, are made
+       available in their entirety to the Director at the same time they are made available to
+       Enterprise. The final report must include findings and any lessons learned and whether
+       the findings and lessons learned are applicable to other locations within Enterprise’s
+       pipeline system.
+
+    Other Requirements:
+
+    9. Approvals. With respect to each submission under this Order that requires the approval
+       of the Director, the Director may: (a) approve, in whole or part, the submission; (b)
+       approve the submission on specified conditions; (c) modify the submission to cure any
+       deficiencies; (d) disapprove in whole or in part, the submission, directing that Respondent
+       modify the submission, or (e) any combination of the above. In the event of approval,
+       approval upon conditions, or modification by the Director, Respondent shall proceed to
+       take all action required by the submission as approved or modified by the Director. If the
+       Director disapproves all or any portion of the submission, Respondent must correct all
+       deficiencies within the time specified by the Director and resubmit it for approval.
+
+    10. Extensions of Time. The Director may grant an extension of time for compliance with
+        any of the terms of this Order upon a written request timely submitted demonstrating good
+        cause for an extension.
+
+    11. Reporting. Submit quarterly reports to the Director that: (1) include all available data
+        and results of the testing and evaluations required by this Order; and (2) describe the
+        progress of the repairs or other remedial actions being undertaken. The first quarterly
+        report is due on March 1, 2026. The Director may change the interval for the submission
+        of these reports.
+
+    12. Documentation of the Costs. It is requested that Respondent maintain documentation of
+        the costs associated with implementation of this Order. Include in each monthly report
+        submitted, the to-date total costs associated with: (1) preparation and revision of
+        procedures, studies and analyses; (2) physical changes to pipeline infrastructure, including
+        repairs, replacements and other modifications; and (3) environmental remediation.
+
+Be advised that all material you submit in response to this enforcement action is subject to being
+made publicly available. If you believe that any portion of your responsive material qualifies for
+confidential treatment under 5 U.S.C. § 552(b), along with the complete original document you
+must provide a second copy of the document with the portions you believe qualify for confidential
+treatment redacted and an explanation of why you believe the redacted information qualifies for
+confidential treatment under 5 U.S.C. § 552(b).
+
+In your correspondence on this matter, please refer to “CPF No. 4-2026-005-CAO” and for each
+document you submit, please provide a copy in electronic format whenever possible. The actions
+required by this Order are in addition to and do not waive any requirements that apply to
+Respondent’s pipeline system under 49 CFR Parts 190 through 199, under any other order issued
+to Respondent under authority of 49 U.S.C. Chapter 601, or under any other provision of federal
+or state law.
+
+Respondent may appeal any decision of the Director to the Associate Administrator for Pipeline
+Safety. Decisions of the Associate Administrator shall be final.
+
+Failure to comply with this Order may result in the assessment of civil penalties and in referral
+to the Attorney General for appropriate relief in United States District Court pursuant to
+49 U.S.C. § 60120.
+
+The terms and conditions of this Order are effective upon service in accordance with 49 CFR §
+190.5.
+
+                 Digitally signed by LINDA
+ LINDA GAIL GAIL DAUGHERTY
+ DAUGHERTY Date:  2026.02.17
+                                                              February 17, 2026
+_____________________________
+            16:50:29 -05'00'
+                                                             __________________________
+Linda Daugherty                                                     Date Issued
+Acting Associate Administrator
+ for Pipeline Safety
+

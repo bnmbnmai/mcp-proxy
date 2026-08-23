@@ -1,0 +1,454 @@
+U.S. Department of Transportation                                       1200 New Jersey Avenue, S.E.
+Pipeline and Hazardous Materials                                        Washington, D.C. 20590
+Safety Administration
+
+
+                                    April 21, 2026
+VIA EMAIL TO: justin.trettel@eqt.com
+
+Justin Trettel
+Vice President
+EQT Production Company
+2200 Energy Drive
+Canonsburg, Pennsylvania 15317
+
+
+CPF No.      1-2025-033-NOPV
+
+Dear Mr. Trettel:
+
+Enclosed please find a Consent Order incorporating the terms of the Consent Agreement between
+the Pipeline and Hazardous Materials Safety Administration (PHMSA) and EQT Production
+Company, which was executed on April 14, 2026. Service of the Consent Order and Consent
+Agreement by electronic mail is deemed effective upon the date of transmission and
+acknowledgement of receipt, or as otherwise provided under 49 CFR § 190.5.
+
+Thank you for your cooperation in this matter.
+
+                                              Sincerely,
+                                                             Digitally signed by LINDA
+                                              LINDA GAIL GAIL DAUGHERTY
+                                              DAUGHERTY Date:  2026.04.20
+                                                         17:39:23 -04'00'
+
+                                              Linda Daugherty
+                                              Acting Associate Administrator
+                                               for Pipeline Safety
+
+Enclosure: Consent Order and Consent Agreement
+
+cc:    Robert Burrough, Region Director, Eastern Region, Office of Pipeline Safety, PHMSA
+       Brianne Kurdock, Counsel for EQT, Babst Calland, bkurdock@babstcalland.com
+
+
+CONFIRMATION OF RECEIPT REQUESTED
+                   U.S. DEPARTMENT OF TRANSPORTATION
+       PIPELINE AND HAZARDOUS MATERIALS SAFETY ADMINISTRATION
+                         OFFICE OF PIPELINE SAFETY
+                           WASHINGTON, D.C. 20590
+____________________________________
+                                     )
+In the Matter of                     )
+                                     )
+EQT Production Company,              )        CPF No. 1-2025-033-NOPV
+                                     )
+Respondent.                          )
+____________________________________)
+
+
+                                           CONSENT ORDER
+
+By letter dated October 17, 2025, pursuant to 49 CFR § 190.207, the Pipeline and Hazardous
+Materials Safety Administration (PHMSA), Office of Pipeline Safety (OPS), Eastern Region,
+issued a Notice of Probable Violation and Proposed Civil Penalty (Notice) to EQT Production
+Company (EQT or Respondent).
+
+EQT responded to the Notice by letter dated November 17, 2025 (Response). Respondent
+contested the alleged violations and the proposed civil penalties, and requested a hearing. EQT
+also requested to meet informally with PHMSA to discuss the matters raised in the Response.
+Respondent and PHMSA (the Parties) subsequently met on December 16, 2025, and on several
+occasions thereafter. As a result of those discussions, the Parties have agreed to a Consent
+Agreement by which PHMSA makes two findings of violations. Respondent will pay a reduced
+civil penalty in the amount of $466,550, and Respondent will complete certain compliance
+actions.
+
+Accordingly, the Consent Agreement is hereby approved and incorporated by reference into this
+Consent Order issued pursuant to 49 CFR § 190.219. EQT is hereby ordered to comply with the
+terms of the Consent Agreement pursuant to its terms. Pursuant to 49 U.S.C. § 60101, et seq.,
+failure to comply with this Consent Order may result in the assessment of civil penalties as set
+forth in 49 U.S.C. § 60122 and 49 CFR § 190.223, or in referral to the Attorney General for
+appropriate relief in a district court of the United States.
+
+The terms and conditions of this Consent Order are effective upon service in accordance with
+49 CFR § 190.5.
+               Digitally signed by LINDA
+LINDA GAIL GAIL DAUGHERTY
+DAUGHERTY   Date: 2026.04.20
+______________________
+            17:39:52 -04'00'                               ______________________
+                                                           April 21, 2026
+
+Linda Daugherty                                            Date Issued
+Acting Associate Administrator
+ for Pipeline Safety
+             
+
+
+                                                                                          CPF No. 1-2025-033-NOPV
+                                                                                                             Page 1
+
+
+                                U.S. DEPARTMENT OF TRANSPORTATION
+                     PIPELINE AND HAZARDOUS MATERIALS SAFETY ADMINISTRATION
+                                      OFFICE OF PIPELINE SAFETY
+                                        WASHINGTON, D.C. 20590
+
+
+             ____________________________________
+                                                 )
+             In the Matter of                     )
+                                                 )
+             EQT Production Company,             )                       CPF No.       1-2025-033-NOPV
+                                                 )
+             Respondent.                          )
+             ____________________________________)
+
+
+                                                      CONSENT AGREEMENT
+
+             From November 9, 2022, through March 3, 2025, representatives of the Pipeline and Hazardous
+             Materials Safety Administration (PHMSA), Office of Pipeline Safety (OPS), pursuant to Chapter
+             601 of Title 49, United States Code (U.S.C.), investigated a substantial release of natural gas at
+             the Rager Mountain Underground Natural Gas Storage Field (Rager Mt. UNGSF), operated by
+             EQT Production Company (EQT) 1 in Jackson Township, Cambria County, Pennsylvania. The
+             Rager Mt. UNGSF includes ten operating storage wells and two observation wells and is
+             connected via pipeline segments to interstate gas transmission pipelines.
+
+             As a result of the investigation, the Director, Eastern Region, OPS (Director), issued to
+             Respondent, by letter dated October 17, 2025, a Notice of Probable Violation and Proposed Civil
+             Penalty (Notice), which also included a warning item pursuant to 49 CFR § 190.205. In
+             accordance with 49 CFR § 190.207, the Notice proposed finding that EQT committed two
+             violations of 49 CFR Part 192 and proposed a civil penalty of $939,900.
+
+             EQT responded to the Notice by letter dated November 17, 2025 (Response). Respondent
+             contested the alleged violations and the proposed civil penalty, and requested a hearing. EQT
+             also requested to meet informally with PHMSA to discuss the matters raised in its Response.
+
+             PHMSA and Respondent (the Parties) subsequently met to discuss the issues raised in the
+             Responses. As a result of those discussions and as explained in more detail below, the Parties
+             have agreed to a Consent Agreement (Agreement) by which PHMSA makes two findings of
+             violations. Respondent will pay a reduced civil penalty in the amount of $466,550, and
+             Respondent will complete certain compliance actions.
+
+
+             1
+               At the time of the incident, Equitrans Midstream Corporation (OPID 31604) operated the Rager Mt. UNGSF. The
+             facility is now operated by EQT Production Company (OPID 39491).
+             
+
+
+                                                                                    CPF No. 1-2025-033-NOPV
+                                                                                                       Page 2
+
+             Having agreed that settlement of this proceeding will avoid further administrative proceedings or
+             litigation and will serve the public interest by promoting safety and protection of the
+             environment, pursuant to 49 U.S.C. § 60101, et seq. and 49 CFR Part 190, and upon consent and
+             agreement, the Parties hereby agree as follows:
+
+             I.       General Provisions:
+
+                     1.     Respondent acknowledges that as the operator of the pipeline facilities subject to
+             the Notice, Respondent and its referenced pipeline facilities are subject to the jurisdiction of the
+             Federal pipeline safety laws, 49 U.S.C. § 60101, et seq., and the regulations and administrative
+             orders issued thereunder. For purposes of this Agreement, Respondent acknowledges that it
+             received proper notice of PHMSA’s action in these proceedings and that the Notice states a
+             claim upon which relief may be granted pursuant to 49 U.S.C. § 60101, et seq., and the
+             regulations and orders issued thereunder.
+
+                     2.      After Respondent returns this signed Agreement to PHMSA, the Agency’s
+             representative will present it to the Associate Administrator for Pipeline Safety, recommending
+             that the Associate Administrator adopt the terms of this Agreement by issuing an administrative
+             order (Consent Order) incorporating the terms of this Agreement. The terms of this Agreement
+             constitute an offer of settlement until accepted by the Associate Administrator. Once accepted, the
+             Associate Administrator will issue a Consent Order incorporating the terms of this Agreement.
+
+                     3.      Respondent consents to the issuance of the Consent Order, and hereby waives any
+             further procedural requirements with respect to its issuance. Respondent waives all rights to
+             contest the adequacy of the Notice, or the validity of the Consent Order or this Agreement,
+             including all rights to administrative or judicial hearings or appeals, except for the Dispute
+             Resolution provisions set forth herein. Respondent agrees to withdraw its request for an
+             administrative hearing regarding the Notice upon receipt of the Consent Order.
+
+                     4.      This Agreement shall apply to and be binding upon PHMSA and Respondent, its
+             officers, directors, and employees, and their successors, assigns, or other entities or persons
+             otherwise bound by law. Respondent agrees to provide a copy of this Agreement and any
+             incorporated work plans and schedules to all of Respondent’s officers, employees, and agents
+             whose duties might reasonably include compliance with this Agreement.
+
+                      5.    This Agreement constitutes the final, complete and exclusive agreement and
+             understanding between the Parties with respect to the settlement embodied in this Agreement.
+             The Parties acknowledge that there are no representations, agreements or understandings relating
+             to settlement other than those expressly contained in this Agreement, except that the terms of this
+             Agreement may be construed by reference to the Notice.
+
+                      6.     Nothing in this Agreement affects or relieves Respondent of its responsibility to
+             comply with all applicable requirements of the Federal pipeline safety laws, 49 U.S.C. § 60101,
+             et seq., and the regulations and orders issued thereunder. Nothing in this Agreement alters
+             PHMSA’s right of access, entry, inspection, and information gathering or PHMSA’s authority to
+             
+
+
+                                                                                         CPF No. 1-2025-033-NOPV
+                                                                                                            Page 3
+
+             bring enforcement actions against Respondent pursuant to the Federal pipeline safety laws, the
+             regulations and orders issued thereunder, or any other provision of Federal or State law.
+
+                     7.      For all transfers of ownership or operating responsibility of Respondent’s pipeline
+             system referenced herein, Respondent will provide a copy of this Agreement to the prospective
+             transferee at least 30 days prior to such transfer. Respondent will provide written notice of the
+             transfer to the Director no later than 60 days after the transfer occurs.
+
+                     8.      This Agreement does not waive or modify any Federal, State, or local laws or
+             regulations that are applicable to Respondent’s pipeline systems. This Agreement is not a permit,
+             or a modification of any permit, under any Federal, State, or local laws or regulations.
+             Respondent remains responsible for achieving and maintaining compliance with all applicable
+             Federal, State, and local laws, regulations and permits.
+
+                     9.     This Agreement does not create rights in, or grant any cause of action to, any third
+             party not party to this Agreement. The U.S. Department of Transportation is not liable for any
+             injuries or damages to persons or property arising from acts or omissions of Respondent or its
+             officers, employees, or agents carrying out the work required by this Agreement. Respondent
+             agrees to hold harmless the U.S. Department of Transportation, its officers, employees, agents,
+             and representatives from any and all causes of action arising from any acts or omissions of
+             Respondent or its contractors in carrying out any work required by this Agreement.
+
+                     10.     Except as set forth herein, this Agreement does not constitute a finding of
+             violation of any other federal law or regulation and may not be used in any civil proceeding of
+             any kind as evidence or proof of any fact, fault or liability, or as evidence of a violation of any
+             law, rule, regulation, or requirement, except in a proceeding to enforce the provisions of this
+             Agreement or in future PHMSA enforcement actions.
+
+             II.      Findings of Violation:
+
+                     11.     Item 1 - 49 CFR § 192.12(b)(2): The Notice alleged that EQT failed to follow
+             section 8, Risk Management for Gas Storage Operations, in American Petroleum Institute
+             Recommended Practice 1171 (2015) (API RP 1171) (incorporated by reference, see section
+             192.7). 2 Specifically, the Notice alleged that 1) EQT failed to use available information
+             regarding operational characteristics, such as individual well deliverability, and previous
+             integrity issues with top joint casing corrosion at the Rager Mt. UNGSF, including at Well 2244,
+             to determine susceptibility to threat and hazard-related events and to assess threat and hazard
+             interaction in accordance with section 8.3.2 in API RP 1171 and 2) EQT failed to evaluate the
+             potential threat and hazard of top joint casing corrosion impacting Rager Mt.
+
+                      i.        EQT asserted in its Response that it did not receive any indication that an integrity
+                                issue with top joint casing corrosion existed at Well 2244 prior to the incident.
+
+
+             2
+              Section 192.7(b)(11) has since been updated to incorporate a new version of API RP 1171: API Recommended
+             Practice 1171, Functional Integrity of Natural Gas Storage in Depleted Hydrocarbon Reservoirs and Aquifer
+             Reservoirs, 2nd edition, November 2022, including Errata 1, September 2023 (API RP 1171).
+             
+                                                                                      CPF No. 1-2025-033-NOPV
+                                                                                                         Page 4
+
+                                During the informal meeting, EQT provided information that prior to the incident
+                                it had submitted numerous requests to the previous operator seeking additional
+                                data on the Rager Mt. wells and when it did not receive the requested information
+                                from the previous operator, it accelerated its risk ranking on the Rager Mt. wells.
+                                EQT logged the wells at the Rager Mt. facility prior to the incident and the data
+                                provided by the vendor did not indicate a top joint casing corrosion issue.
+
+                      ii.       For purposes of settlement, EQT does not contest this allegation of violation. As
+                                such, PHMSA finds a violation of 49 CFR § 192.12(b)(2).
+
+                     12.    Item 2 - 49 CFR § 192.12(c): The Notice alleged that EQT failed to follow its
+             manual of written procedures for emergency preparedness and response activities. Specifically,
+             the Notice alleged that EQT failed to follow its Storage Well Emergency Response Plan, Rev-2
+             (Jan. 24, 2022) by failing to design and implement a dynamic kill or other special kill procedures
+             to overbalance and gain control of the well no later than seven days after the incident, or by
+             November 12, 2022. For purposes of settlement, EQT does not contest this allegation of
+             violation. As such, PHMSA finds a violation of 49 CFR § 192.12(c).
+
+                     13. Each Item in Section II will be considered by PHMSA as a prior offense in any
+             future PHMSA enforcement action taken against Respondent.
+
+             III.     Warning Item:
+
+                    14.     Item 3 - 49 CFR § 192.12(c): The Notice alleged that EQT failed to maintain
+             records necessary to administer its procedures in accordance with section 192.12(c). Specifically,
+             the Notice alleged that EQT failed to maintain records required by its Storage Well Emergency
+             Response Plan, Rev-2 (Jan. 24, 2022), such as well control incident data sheets, and records from
+             meetings during the November 2022 reportable incident with attendance and action items. This
+             Item was brought as a warning and does not constitute a finding of violation. EQT accepts the
+             warning as alleged.
+
+             IV.      Civil Penalty:
+
+                      15.    Item 1: The Notice proposed assessing a civil penalty in the amount of $483,800
+             for Item 1. EQT requested that the proposed civil penalty be reduced or withdrawn to reflect the
+             efforts EQT took prior to the incident, including accelerating the risk ranking. PHMSA agrees
+             that a reduction to the proposed civil penalty is appropriate after considering other matters that
+             justice may require. Accordingly, PHMSA reduces the civil penalty to $120,950.
+
+                     16.     Item 2: The Notice proposed assessing a civil penalty in the amount of $456,100
+             for Item 2. EQT requested that the proposed civil penalty be reduced to reflect, among other things,
+             that there was only one instance of a violation and its duration was shorter than alleged. PHMSA
+             agrees that a reduction to the proposed civil penalty is appropriate after adjusting for the duration
+             and instances of violation. Accordingly, PHMSA reduces the civil penalty to $345,600.
+             
+
+
+                                                                                      CPF No. 1-2025-033-NOPV
+                                                                                                         Page 5
+
+                    17.     Respondent will pay a total reduced civil penalty in the amount of $466,550,
+             pursuant to the payment instructions at 49 CFR § 190.227(a), to be paid in full no later than 20
+             days from the Effective Date of this Agreement.
+
+             V.       Compliance Terms:
+
+                     18.    Item 1: The Notice did not include a proposed compliance order, but as a result
+             of informal discussions, and in order to resolve any ongoing concerns at the Rager Mt. UNGSF,
+             EQT agrees to complete the following actions:
+
+                      i.         Update the risk procedure to include top joint threat interaction including casing
+                                 thinning and Class 4 feature interaction within the top 30 feet;
+                      ii.        Revise the emergency response procedures to include all lessons learned from the
+                                 2022 incident;
+                      iii.       Create a well gel evaluation and gelling criteria procedure;
+                      iv.        Develop a surveillance logging evaluation and criteria procedure;
+                      v.         Add vent systems to all annuli with an inert gas blanket at Rager;
+                      vi.        Add pressure transmitters to all annuli at Rager Mt. UNGSF for remote
+                                 monitoring;
+                      vii.       Conduct a downhole assessment at Rager Mt. UNGSF during calendar year 2027
+                                 and provide the results to the Director;
+                      viii.      Use additional logging technology at EQT’s storage facilities when logging
+                                 assessments are conducted in 2027; and
+                      ix.        Conduct a lessons learned presentation before the American Gas Association’s
+                                 Underground Natural Gas Storage Committee no later than spring 2027 and
+                                 provide a copy of the presentation to the Director.
+                      x.         EQT has completed Corrective Measures (i)-(vi) in advance of the execution of
+                                 this Consent Agreement, and documentation has been reviewed by the Director.
+                                 EQT agrees to complete Corrective Measures (vii)-(ix) and provide
+                                 documentation of completion to the Director by December 31, 2027.
+
+             VI.      Enforcement:
+
+                     19.      This Agreement is subject to all enforcement authorities available to PHMSA
+             under 49 U.S.C. § 60101, et seq., and 49 CFR Part 190, including administrative civil penalties
+             under 49 U.S.C. § 60122, of up to $272,926 per violation for each day the violation continues and
+             referral of the case to the Attorney General for judicial enforcement, if PHMSA determines that
+             Respondent is not complying with the terms of this Agreement in accordance with the
+             determinations made by the Director, or in accordance with decisions of the Associate
+             Administrator if resolved pursuant to the Dispute Resolution process herein. The maximum civil
+             penalty amounts are adjusted annually for inflation. See 49 CFR § 190.223. All work plans and
+             associated schedules set forth or referenced in Section V (Compliance Terms) are automatically
+             incorporated into this Agreement and are enforceable in the same manner.
+
+             VII.     Review and Approval Process:
+             
+
+
+                                                                                  CPF No. 1-2025-033-NOPV
+                                                                                                     Page 6
+
+                      20.    With respect to any submission under Section V (Compliance Terms) of this
+             Agreement that requires the approval of the Director, the Director may: (a) approve, in whole or
+             in part, the submission; (b) approve the submission on specified, reasonable conditions; (c)
+             disapprove, in whole or in part, the submission; or (d) any combination of the foregoing. If the
+             Director approves, approves in part, or approves with conditions, Respondent will take all
+             actions as approved by the Director, subject to Respondent’s right to invoke the dispute
+             resolution procedures with respect to any conditions the Director identifies. If the Director
+             disapproves all or any portion of the submission, the Director will provide Respondent a written
+             notice of the deficiencies. Respondent will correct all deficiencies within the time specified by
+             the Director and resubmit it for approval.
+
+             VIII. Dispute Resolution:
+
+                     21.     The Director and Respondent will informally attempt to resolve any disputes
+             arising under this Agreement, including any decision of the Director under the terms of Sections
+             V (Compliance Terms) and VII (Review and Approval Process). If Respondent and the Director
+             are unable to informally resolve the dispute within 15 calendar days after the dispute is first
+             raised, in writing, to the Director, Respondent may submit a written request for a determination
+             resolving the dispute from the Associate Administrator. Such request must be made in writing
+             and provided to the Director, counsel for the Eastern Region, and to the Associate Administrator,
+             no later than 10 calendar days from the 15-day deadline for informal resolution referenced in this
+             paragraph. Along with its request, Respondent must provide the Associate Administrator with all
+             information Respondent believes is relevant to the dispute. Decisions of the Associate
+             Administrator under this paragraph will constitute final agency action. The existence of a dispute
+             and PHMSA’s consideration of matters placed in dispute will not excuse, toll, or suspend any
+             term or timeframe for completion of any work to be performed under this Agreement during the
+             pendency of the dispute resolution process.
+
+             IX.      Effective Date:
+
+                     22.     The term “Effective Date,” as used herein, is the date on which the Consent Order
+             is issued by the Associate Administrator incorporating the terms of this Agreement.
+
+             X.       Recordkeeping and Information Disclosure:
+
+                      23.     Unless otherwise required in this Agreement, Respondent agrees to maintain
+             records demonstrating compliance with all requirements of this Agreement for a period of
+             at least five (5) years following completion of all work to be performed, unless a longer
+             period of time is required pursuant to 49 CFR Parts 190-199. For any reports, plans, or other
+             deliverables required to be submitted to PHMSA pursuant to this Agreement, Respondent
+             may assert a claim of business confidentiality or other protections applicable to the
+             release of information by PHMSA, covering part or all of the information required to be
+             submitted to PHMSA pursuant to this Agreement in accordance with 49 CFR Part 7.
+             Respondent must mark the claim of confidentiality in writing on each page, and include a
+             statement specifying the grounds for each claim of confidentiality. PHMSA determines release
+             
+
+                                                                                      CPF No. 1-2025-033-NOPV
+                                                                                                         Page 7
+
+             of any information submitted pursuant to this Agreement in accordance with 49 CFR Part 7, the
+             Freedom of Information Act, 5 U.S.C. § 552, DOT and PHMSA policies, and other applicable
+             regulations and Executive Orders.
+             XI.      Modification:
+
+                   24.     The terms of this Agreement may be modified by mutual agreement of the Parties.
+             Such modifications must be in writing and signed by both parties.
+
+             XII.     Termination:
+
+                      25.    This Agreement will remain in effect until the Civil Penalty in Section IV is paid
+             in full and the Compliance Terms in Section V are satisfied, as determined by the Director. The
+             Agreement shall not terminate until the Director confirms, in writing, that the Agreement is
+             terminated in accordance with this paragraph. Nothing in this Agreement prevents Respondent
+             from completing any of the obligations earlier than the deadlines provided for in this Agreement.
+
+             XIII. Ratification:
+
+                      26.    The Parties’ undersigned representatives certify that they are fully authorized to
+             enter into the terms and conditions of this Agreement and to execute and legally bind such party
+             to this document.
+
+                      27.       The Parties hereby agree to all findings, conditions, and terms of this Agreement.
+
+
+
+             For EQT Production Company:
+
+
+             ___________________________________
+             Justin Trettel, Vice President
+
+               
+             ________________________
+             Date
+
+
+
+             For PHMSA:
+             ROBERT THOMAS Digitally     signed by ROBERT
+                                 THOMAS BURROUGH
+             BURROUGH            Date: 2026.04.14 15:07:19 -04'00'
+             ________________________________________
+             Director, Eastern Region, Office of Pipeline Safety
+
+             ________________________
+             Date
+

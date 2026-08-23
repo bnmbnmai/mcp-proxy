@@ -1,0 +1,5 @@
+PHMSA Pipeline Enforcement Raw Data.txt
+This is the index/codes dump, not a Consent Order / Final Order / CAO / Safety Order body.
+CPF,Operator,Region,Case Type,Status
+12025033NOPV,EQT PRODUCTION COMPANY,Eastern,Notice of Probable Violation,OPEN
+42025024NOPV1,DENBURY GULF COAST PIPELINES LLC,Southwest,Notice of Probable Violation,OPEN
