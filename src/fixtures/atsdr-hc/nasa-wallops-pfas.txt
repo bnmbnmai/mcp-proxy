@@ -1,0 +1,137 @@
+ATSDR
+Health Consultation
+  Evaluation of Per- and Polyfluoroalkyl
+Substances (PFAS) in public drinking water
+
+      NASA Wallops Flight Facility
+
+    Wallops Island, Accomack County
+
+                 Virginia
+
+    EPA/CERCLA ID: VA8800010763
+
+
+
+
+         Public Comment Release
+              April 29, 2026
+
+        Public Comment Period Ends
+              June 12, 2026
+                Health Consultation: A Note of Explanation
+
+A health consultation is written documentation of analysis and health conclusions from ATSDR about health risks
+related to a National Priorities List (NPL) or other specific site, a chemical release, or the presence of hazardous
+material. To prevent or mitigate exposures, a consultation may lead to specific actions, such as restricting use of
+or replacing water supplies; intensifying environmental sampling; restricting site access; or removing the
+contaminated material. In addition, consultations may recommend additional public health actions, such as
+conducting health surveillance activities to evaluate exposure or trends in adverse health outcomes; collection
+and analysis of additional environmental samples to better characterize exposures; conducting biological
+indicators of exposure studies to assess exposure; and providing health education for health care providers and
+community members. This health consultation is released for a 45-day public comment period. ATSDR will address
+all public comments and revise or append the document as appropriate. The health consultation will then be
+reissued as a final document. The final document will conclude the public health assessment process for this site,
+unless additional information is obtained by ATSDR which, in the Agency’s opinion, indicates a need to revise or
+append the conclusions previously issued.
+
+
+
+
+                            You may contact ATSDR toll free at 1-800-CDC-INFO
+                                                     or
+                             visit our home page at: https://www.atsdr.cdc.gov
+
+
+
+
+       About ATSDR
+       The Agency for Toxic Substances and Disease Registry (ATSDR) is a federal public health
+       agency of the U.S. Department of Health and Human Services (HHS). ATSDR works with other
+       agencies and tribal, state, and local governments to study possible health risks in communities
+       where people could come in contact with dangerous chemicals. For more information about
+       ATSDR, visit the ATSDR website.
+              Health Consultation
+
+
+
+     Evaluation of Per- and Polyfluoroalkyl
+     Substances (PFAS) in Public Drinking
+                     water
+
+         NASA Wallops Flight Facility
+
+       Wallops Island, Accomack County
+
+                    Virginia
+
+       EPA/CERCLA ID: VA8800010763
+
+                Cost Recovery:
+
+
+                  Prepared by:
+
+ U.S. Department of Health and Human Services
+Agency for Toxic Substances and Disease Registry
+Office of Community Health Hazard Assessment
+
+               Atlanta, GA 30333
+
+
+
+
+                   ii
+Contents
+Contents ...............................................................................................................................................ii
+Abbreviations and Acronyms used in this report ................................................................... ............iv
+  1. Summary ............................................................................................................................... 1
+   2. Background............................................................................................................................ 6
+       2.1 Statement of Issue and Purpose ...................................................................................... 6
+       2.2 Site Description and Timeline .......................................................................................... 7
+   3. Community Description and Concerns................................................................................... 9
+       3.1 Community Demographics .............................................................................................. 9
+       3.2 Community Concerns .................................................................................................... 10
+   4. Sampling Data...................................................................................................................... 10
+   5. Scientific Evaluations ........................................................................................................... 11
+       5.1 Exposure Pathway Analysis ............................................................................................ 11
+       5.2 Evaluation of Drinking Water ......................................................................................... 13
+       5.2.1 Screening Analysis ...................................................................................................... 13
+       5.2.2 Health Evaluation for ToC Drinking Water .................................................................. 17
+       5.2.2.1 Exposure Assessment .............................................................................................. 17
+       5.2.2.2 Noncancer health effects from exposure to PFAS .................................................... 17
+       5.2.2.3 Intermediate Exposures to Individual PFAS ............................................................. 19
+       5.2.2.4 Intermediate Exposures to PFAS Mixtures ............................................................... 21
+       5.2.2.5 Chronic Exposures to Individual Compounds ........................................................... 23
+       5.2.2.6 Chronic Exposure to PFAS Mixture .......................................................................... 25
+       5.2.2.7 Cancer effects .......................................................................................................... 26
+       5.3 Evaluation of Surface Water, Sediment, and Biota ........................................................ 26
+       5.3.1 Screening Analysis ...................................................................................................... 26
+       5.4 Biomonitoring ................................................................................................................ 28
+       5.5 Contributions from Other Sources ................................................................................. 28
+       5.6 Susceptible Populations: Persons with Pre-existing Health Conditions and Early
+       Development ....................................................................................................................... 28
+       5.7 Addressing Community Concerns .................................................................................. 29
+       5.7.1 Evaluation of Risks to Visitors ..................................................................................... 29
+       5.7.2 Biological PFAS Sampling Questions ........................................................................... 30
+
+
+                                                                        iii
+      5.8 Summary of Limitations and Uncertainties .................................................................... 31
+      5.8.1 Multiple Exposure Sources ......................................................................................... 31
+      5.8.2 Uncertainty Regarding Exposure to Breastfed Newborns ........................................... 31
+      5.8.3 Lack of Historical Exposure Data ................................................................................. 31
+      5.8.4 Other General Limitations .......................................................................................... 32
+      5.8.5 Incomplete information on the type of AFFF used at NASA/WFF and specific PFAS
+      formulations. ....................................................................................................................... 32
+   6. Conclusions.......................................................................................................................... 32
+   7. Recommendations and Public Health Action Plan ............................................................... 36
+      7.1 Public Health Action Plan ............................................................................................... 37
+   Contact for Report................................................................................................................... 38
+   References............................................................................................................................... 39
+   Appendix A: Brief Summary of ATSDR’s Public Health Assessment (PHA) Process.................A-1
+   Appendix B – Additional Figures, Tables, and Equations......................................................... B-1
+
+
+List of Figures
+Figure 1. Timeline of contamination and mitigation events for the Site. ....................................... 7

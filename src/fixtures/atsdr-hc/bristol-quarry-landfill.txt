@@ -1,0 +1,127 @@
+ATSDR
+Health Consultation
+
+
+ Analysis of Ambient Air concentrations
+
+        Bristol Quarry Landfill
+
+            Bristol, Virginia
+
+           EPA/CERCLA ID:
+
+      Cost Recovery: CR20220126
+
+
+
+
+               Final Version
+               December 22,
+                   2025
+            Health Consultation: A Note of Explanation
+
+
+A health consultation is written documentation of analysis and health conclusions from ATSDR or
+ATSDR’s Cooperative Agreement Partners to a specific request for information about health risks
+related to a specific site, a chemical release, or the presence of hazardous material. To prevent or
+mitigate exposures, a consultation may lead to specific actions, such as restricting use of or replacing
+water supplies; intensifying environmental sampling; restricting site access; or removing the
+contaminated material.
+In addition, consultations may recommend additional public health actions, such as conducting health
+surveillance activities to evaluate exposure or trends in adverse health outcomes; collection and analysis
+of additional environmental samples to better characterize exposures; conducting biological indicators of
+exposure studies to assess exposure; and providing health education for health care providers and
+community members. This concludes the health consultation process for this site, unless additional
+information is obtained by ATSDR or ATSDR’s Cooperative Agreement Partners which, in the
+Agency’s opinion, indicates a need to revise or append the conclusions previously issued.
+
+
+               You may contact ATSDR toll free at 1-800-CDC-INFO or 1-800-232-4636
+                                                   or
+                          visit our home page at: https://www.atsdr.cdc.gov
+                                      Health Consultation
+
+                            Analysis of Ambient Air Concentrations
+
+                                    Bristol Quarry Landfill
+
+                                        Bristol, Virginia
+
+
+
+                                     EPA FACITLITY ID:
+
+
+
+                        U.S. Department of Health and Human Services
+                   Agency for Toxic Substances and Disease Registry (ATSDR)
+                        Office of Community Health Hazard Assessment
+
+
+                                       Atlanta, GA 30341
+
+
+
+
+This information is distributed solely for the purpose of pre-dissemination public comment under
+applicable information quality guidelines. It has not been formally disseminated by the Agency
+for Toxic Substances and Disease Registry. It does not represent and should not be construed to
+represent any agency determination or policy.
+
+
+
+                             About ATSDR
+                             The Agency for Toxic Substances and Disease Registry (ATSDR)
+                             is a federal public health agency of the U.S. Department of Health
+                             and Human Services (HHS). ATSDR works with other agencies
+                             and tribal, state, and local governments to study possible health
+                             risks in communities where people could come in contact with
+                             dangerous chemicals. For more information about ATSDR, visit
+                             the ATSDR website at www.atsdr.cdc.gov/.
+Bristol Quarry Landfill, TN/VA
+
+
+Contents
+Acronyms and Abbreviations .............................................................................................................. iv
+1. Summary ....................................................................................................................................... 1
+2. Background ..................................................................................................................................... 9
+     2.1      Statement of Issues and Purpose ................................................................................................. 9
+     2.2      Site Description and Timeline ....................................................................................................... 9
+3. Community Description and Concerns ............................................................................................ 12
+     3.1      Community Demographics ......................................................................................................... 12
+     3.2      Community Concerns .................................................................................................................. 13
+4. Sampling Data ............................................................................................................................... 14
+     4.1      Continuous Air Monitoring ......................................................................................................... 14
+     4.2      Air Sampling ................................................................................................................................ 15
+     4.3      Assessment of Data Quality and Representativeness ................................................................ 16
+5. Scientific Evaluations ..................................................................................................................... 18
+     5.1 Exposure Pathway Analysis............................................................................................................. 18
+           5.1.1. Overview for identifying contaminants of concern and evaluating risk .............................. 20
+           5.1.2. Defining Comparison Values (CV) and Screening Values ..................................................... 21
+     5.2. Outdoor Air Analysis ...................................................................................................................... 22
+           5.2.1. Screening Analysis ................................................................................................................ 23
+           5.2.2. Evaluation of Breathing Air .................................................................................................. 24
+              5.2.2.1. Background Air Concentrations and Cancer Risk Estimates............................................ 24
+              5.2.2.2 Exposure Point Concentrations and Exposure Calculations ............................................. 26
+              5.2.2.4 Health Evaluations from TO-15 Sampling ........................................................................ 28
+              5.2.2.5 Benzene Evaluation ......................................................................................................... 28
+              5.2.2.6 Chloroform Evaluation ....................................................................................................... 37
+              5.2.2.7 Hexachlorobutadiene Evaluation ...................................................................................... 38
+              5.2.2.8 1,2-Dibromoethane (EDB) Evaluation ............................................................................... 39
+              5.2.2.9 1,3-Butadiene Evaluation .................................................................................................. 39
+              5.2.2.10 1,4-Dioxane Evaluation.................................................................................................... 40
+              5.2.2.11 Carbon Tetrachloride Evaluation ..................................................................................... 41
+              5.2.2.12 Trichloroethylene (TCE) Evaluation ................................................................................. 41
+              5.2.2.13 1,2-Dichloroethane (1,2-DCA) Evaluation ....................................................................... 42
+              5.2.2.14 Ammonia Evaluation ....................................................................................................... 43
+              5.2.2.15 Hydrogen Sulfide (H2S)..................................................................................................... 44
+
+                                                                              ii
+Bristol Quarry Landfill, TN/VA
+
+               5.2.2.16 Methyl Mercaptan ........................................................................................................... 45
+               5.2.2.17 Sulfur Dioxide (SO2) .......................................................................................................... 46
+               5.2.2.18 Cancer Risk Assessment from Combined Chemical Exposures........................................ 48
+      5.3 Addressing Community Concerns ................................................................................................... 49
+            5.3.1 Chemicals with ambient concentrations ............................................................................... 51
+            5.3.2 TICs ................

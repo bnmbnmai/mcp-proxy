@@ -40,6 +40,7 @@ build/bkarta-entscheidungen.*
 build/ipo-tm.*
 build/fmc-orders.*
 build/fsis-hmsa.*
+build/atsdr-hc.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
@@ -77,3 +78,4 @@ data/bkarta-entscheidungen/
 data/ipo-tm/
 data/fmc-orders/
 data/fsis-hmsa/
+data/atsdr-hc/

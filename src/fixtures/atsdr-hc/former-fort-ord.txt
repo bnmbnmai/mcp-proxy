@@ -1,0 +1,145 @@
+ATSDR
+    Health Consultation
+
+
+        Health Evaluation of drinking water
+    Former Fort Ord Army Base From 1985 to 1994
+
+         Monterey County, California 93944
+
+         USEPA Facility ID: CA7210020676
+
+
+
+
+        Public Comment Release Date
+                July 9, 2026
+
+        Public Comment Period End Date
+               August 22, 2026
+
+
+
+
+1
+              Health Consultation: A Note of Explanation
+    A health consultation is written documentation of analysis and health conclusions from ATSDR
+    about health risks related to a National Priorities List (NPL) or other specific site, a chemical
+    release, or the presence of hazardous material. To prevent or mitigate exposures, a consultation
+    may lead to specific actions, such as restricting use of or replacing water supplies; intensifying
+    environmental sampling; restricting site access; or removing the contaminated material. In
+    addition, consultations may recommend additional public health actions, such as conducting
+    health surveillance activities to evaluate exposure or trends in adverse health outcomes;
+    collection and analysis of additional environmental samples to better characterize exposures;
+    conducting biological indicators of exposure studies to assess exposure; and providing health
+    education for health care providers and community members. This health consultation is
+    released for a 45-day public comment period. ATSDR will address all public comments and
+    revise or append the document as appropriate. The health consultation will then be reissued as a
+    final document. The final document will conclude the public health assessment process for this
+    site, unless additional information is obtained by ATSDR which, in the Agency’s opinion,
+    indicates a need to revise or append the conclusions previously issued.
+
+                  Please address comments regarding this report to:
+
+                  Agency for Toxic Substances and Disease Registry
+                               Attn: Records Center
+                     4770 Buford Highway NE, MS S106-5
+                            Atlanta, Georgia 30341
+
+                         Please email comments regarding this report to:
+                                 OCHHAPublicComment@cdc.gov
+
+
+
+
+2
+                  Health Consultation
+
+
+         Health Evaluation of drinking water
+      Former Fort Ord Army Base From 1985 to
+                        1994
+          Monterey County, California 93944
+
+
+
+          USEPA Facility ID: CA7210020676
+
+
+     U.S. Department of Health and Human Services
+    Agency for Toxic Substances and Disease Registry
+    Office of Community Health Hazard Assessment
+                Atlanta, Georgia, 30333
+
+
+
+
+          About ATSDR
+          The Agency for Toxic Substances and Disease Registry (ATSDR)
+          is a federal public health agency of the U.S. Department of Health
+          and Human Services (HHS). ATSDR works with other agencies
+          and tribal, state, and local governments to study possible health
+          risks in communities where people could come in contact with
+          dangerous chemicals. For more information about ATSDR, visit
+          the ATSDR website at www.atsdr.cdc.gov/.
+
+
+
+
+3
+Contents
+1. Summary ......................................................................................................................... 7
+2. Background ...................................................................................................................... 8
+     2.1. Statement of Issue and Purpose ...................................................................................... 8
+     2.2. Site Description and Timeline........................................................................................... 9
+     2.3. Site History ..................................................................................................................... 10
+     2.4. Groundwater Characteristics.......................................................................................... 11
+     2.5. Fort Ord and City of Marina Drinking Water Systems.................................................... 12
+3. Community Description and Concerns ............................................................................ 16
+     3.1. Community Demographics ............................................................................................. 16
+     3.2. Community Concerns ..................................................................................................... 20
+4. Scientific Evaluations ...................................................................................................... 20
+     4.1. Exposure Pathway Analysis ............................................................................................ 21
+     4.2. Exposure Analysis Limitations ........................................................................................ 21
+     4.3. ATSDR SHOWER Model .................................................................................................. 22
+     4.4. Household Water Evaluation ......................................................................................... 23
+          4.4.1. Sampling Data........................................................................................................ 23
+          4.4.2. Screening Analysis ................................................................................................. 26
+          4.4.3. Exposure Point Concentrations ............................................................................. 28
+          4.4.4. Exposure Dose Calculations and Exposure Factors ............................................... 29
+     4.5. Health Effects Evaluations .............................................................................................. 31
+          4.5.1. Hazard Quotients for Noncancerous Health Effects ............................................. 31
+          4.5.2. Lifetime Cancer Risk Estimates.............................................................................. 32
+          4.5.3. Residential Scenario Evaluation of Noncancer Health Risk and Cancer Risk ........ 33
+          4.5.4. Residential Scenario: Comparing Estimated Site-Specific Doses to Health
+          Study Doses………………………………………………………………………………………………………………… 47
+          4.5.5. Soldier-in-Training Scenario Evaluation of Noncancerous Health Risk and
+          Cancer Risk…………………………………………………………………………………………………………………. 51
+          4.5.6. Soldier-in-Training Scenario: Comparing Estimated Site-Specific Doses to Health
+          Study Doses ....................................................................................................................... 59
+     4.6. Key Findings Evaluating Noncancer Health Effects and Cancer Risks............................ 61
+
+
+
+                                                                      i
+     4.7. Addressing Community Concerns .................................................................................. 64
+     4.8. Summary of Limitations and Uncertainties .................................................................... 66
+           4.8.1. Sampling Data Limitations ..................................................................................... 66
+           4.8.2. Exposure Assumptions .......................................................................................... 67
+5. Conclusions .................................................................................................................... 68
+6. Recommendations and Public Health Action Plan ........................................................... 70
+7. Authors, Site Team, and Contributors ............................................................................. 70
+8. References ..................................................................................................................... 71
+     Appendices .............................................................................................................................. 76
+           Appendix A: Brief Summary of ATSDR’s Public Health Assessment (PHA) Process .......... 76
+           Appendix B: Exposure Dose Equations and Exposure Scenario Assumptions for Water
+           Ingestion, Inhalation, and Dermal Pathways .................................................................... 78
+           Appendix C: Residential Scenario PHAST Output Tables................................................... 84
+           Appendix D: Soldier-In-Training Scenario PHAST Output Tables .................................... 114
+           Appendix E: Fort Ord Contaminants Detected Below Comparison Values ..................... 140
+
+
+
+List of Tables
+Table 1. Drinking Water Well Operation and Sampling History for Wells in Operation before
+1994.....................................................................................................
