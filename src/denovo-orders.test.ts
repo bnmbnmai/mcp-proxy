@@ -132,6 +132,12 @@ async function main(): Promise<void> {
   });
   assert.equal(isRealDenovoOrderBody(ttb.body), false, "TTB /ttb-oic is not this SKU");
 
+  const ico = parseDenovoOrderText(readFx("ico-mpn.txt"), {
+    sourceUrl: "https://ico.org.uk/media2/hrlmvj14/reddit-mpn-20260223.pdf",
+    institution: "Reddit, Inc.",
+  });
+  assert.equal(isRealDenovoOrderBody(ico.body), false, "ICO /ico-mpn is not this SKU");
+
   const manifest = buildDenovoOrdersManifest({
     ok: true,
     product: "fda-denovo-classification-order-bodies",

@@ -430,6 +430,9 @@ export function isRealFifraOrderBody(text: string): boolean {
   if (/RECORD OF DECISION/i.test(text) && /DECLARATION/i.test(text) && /\b(CERCLA|Superfund)\b/i.test(text)) {
     return false;
   }
+  if (/(?:MONETARY )?PENALTY NOTICE/i.test(text) && /Information Commissioner/i.test(text) && /(?:Data Protection Act 2018|section 155)/i.test(text)) {
+    return false;
+  }
   const epa =
     /UNITED STATES ENVIRONME?N?TAL PROTECTION AGENCY|ENVIRONMENTAL PROTECTION AGENCY|U\.S\.\s+Environmental Protection Agency|U\.S\.\s+EPA\s+REGION/i.test(
       text,

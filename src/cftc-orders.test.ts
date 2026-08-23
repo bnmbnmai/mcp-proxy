@@ -201,6 +201,12 @@ async function main(): Promise<void> {
   });
   assert.equal(isRealCftcOrderBody(ncua.body), false, "NCUA /ncua-orders is not this SKU");
 
+  const ico = parseCftcOrderText(readFx("ico-mpn.txt"), {
+    sourceUrl: "https://ico.org.uk/media2/hrlmvj14/reddit-mpn-20260223.pdf",
+    institution: "Reddit, Inc.",
+  });
+  assert.equal(isRealCftcOrderBody(ico.body), false, "ICO /ico-mpn is not this SKU");
+
   const manifest = buildCftcOrdersManifest({
     ok: true,
     product: "cftc-institution-order-bodies",
