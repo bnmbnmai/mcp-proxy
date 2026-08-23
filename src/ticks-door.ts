@@ -1179,7 +1179,7 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         date: "2025-02-21",
         sourceUrl:
           "https://assets.publishing.service.gov.uk/media/6876390d352c290d20dcae7c/Citi-Deutsche_Bank__Non-confidential_decision.pdf",
-        body: "Decision of the Competition and Markets Authority\nCompetition Act 1998\nUK government bonds: Citi-Deutsche Bank Infringement\nCase Number: 50601\nChapter I prohibition",
+        body: "Decision of the Competition and Markets Authority\nCompetition Act 1998\nNon-confidential infringement decision\nCrown copyright / Open Government Licence",
       },
     ],
   },
