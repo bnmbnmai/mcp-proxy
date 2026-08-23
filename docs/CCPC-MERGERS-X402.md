@@ -23,7 +23,7 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 - Required seed: United Hardware — 6 Mar 2026 — https://assets.ccpc.ie/data/docs/default-source/merger-attachments/m-2026/united-hardware-dermot-kehoe-supply---diy/m-26-006-determination.pdf
 - License: **CC-BY 4.0** (Ireland PSI / Open Data Directive). Logos/images/third-party reserved — sold body is CCPC-authored TEXT only.
 
-Free manifest is institution / M-number / date / sourceUrl only. Needles such as `18(1A)`, `Share Purchase Agreement`, `Vertical Relationship`, `40km radius of Kehoe`, and `Associated Hardware/National Hardware` stay out of unpaid responses.
+Free manifest is institution / M-number / date / sourceUrl only. Needles such as `18(1A)`, `Share Purchase` / `Share Purchase Agreement` (wrapped in the official PDF), `Vertical Relationship`, `40km radius of Kehoe`, and `Associated Hardware/National Hardware` stay out of unpaid responses.
 
 `data/ccpc-mergers/` is gitignored. Live-apply on apollo is out of scope for this branch.
 

@@ -116,8 +116,9 @@ async function main(): Promise<void> {
   assert.equal(uhText.mNumber, "M/26/006");
   assert.equal(uhText.title, "Section 21 determination");
   assert.ok(isRealCcpcMergerBody(uhText.body));
+  const uhCompact = uhText.body.replace(/\s+/g, " ");
   assert.ok(uhText.body.includes("18(1A)"));
-  assert.ok(uhText.body.includes("Share Purchase Agreement"));
+  assert.ok(uhCompact.includes("Share Purchase Agreement"));
   assert.ok(uhText.body.includes("Vertical Relationship"));
   assert.ok(uhText.body.includes("40km radius of Kehoe"));
   assert.ok(uhText.body.includes("Associated Hardware/National Hardware"));
@@ -159,7 +160,7 @@ async function main(): Promise<void> {
   });
   assert.equal(isRealCcpcMergerBody(teaserBody.body), false, "case-card teaser is not the determination body");
   assert.ok(!teaserBody.body.includes("18(1A)"));
-  assert.ok(!teaserBody.body.includes("Share Purchase Agreement"));
+  assert.ok(!teaserBody.body.replace(/\s+/g, " ").includes("Share Purchase Agreement"));
   assert.ok(!teaserBody.body.includes("Vertical Relationship"));
   assert.ok(!teaserBody.body.includes("40km radius of Kehoe"));
   assert.ok(!teaserBody.body.includes("Associated Hardware/National Hardware"));
@@ -250,7 +251,7 @@ async function main(): Promise<void> {
   assert.match((manifest.cards as { institution: string }[])[0]?.institution ?? "", /United Hardware/i);
   assert.equal((manifest.cards as { mNumber: string }[])[0]?.mNumber, "M/26/006");
   assert.ok(!manBlob.includes("18(1A)"), "free manifest must not dump determination body");
-  assert.ok(!manBlob.includes("Share Purchase Agreement"));
+  assert.ok(!manBlob.includes("Share Purchase"));
   assert.ok(!manBlob.includes("Vertical Relationship"));
   assert.ok(!manBlob.includes("40km radius of Kehoe"));
   assert.ok(!manBlob.includes("Associated Hardware/National Hardware"));

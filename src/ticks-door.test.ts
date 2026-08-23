@@ -4162,7 +4162,7 @@ async function main(): Promise<void> {
 
       const leak402 = JSON.stringify(body402);
       assert.ok(!leak402.includes("18(1A)"));
-      assert.ok(!leak402.includes("Share Purchase Agreement"));
+      assert.ok(!leak402.includes("Share Purchase"));
       assert.ok(!leak402.includes("Vertical Relationship"));
       assert.ok(!leak402.includes("40km radius of Kehoe"));
       assert.ok(!leak402.includes("Associated Hardware/National Hardware"));
@@ -4195,7 +4195,7 @@ async function main(): Promise<void> {
       assert.equal(man.cards?.[0]?.mNumber, "M/26/006");
       const manBlob = JSON.stringify(man);
       assert.ok(!manBlob.includes("18(1A)"));
-      assert.ok(!manBlob.includes("Share Purchase Agreement"));
+      assert.ok(!manBlob.includes("Share Purchase"));
       assert.ok(!manBlob.includes("Vertical Relationship"));
       assert.ok(!manBlob.includes("40km radius of Kehoe"));
       assert.ok(!manBlob.includes("Associated Hardware/National Hardware"));
