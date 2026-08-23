@@ -22,6 +22,8 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 - Required seed: Federated Metals Corp. Whiting Superfund Site — OU1 IROD — signed 5 Aug 2026 — https://semspub.epa.gov/work/05/711427.pdf
 - License: **17 USC 105**. Attribute U.S. EPA.
 
+Paid body keeps the existing `cards[]` fields. Alongside those keys the paid JSON adds `records[]` (`id`, `date`, `firm`, `url`, `type=superfund-rod`), `recordCount`, honest `asOf` / `fetchedAt`, and `source` (the official Superfund site profile). A repeat buyer diffs `asOf` + record ids.
+
 Free manifest is institution / docket / date / sourceUrl only. Needles such as `1,200 ppm`, `lead dross`, and `x-ray florescence` stay out of unpaid responses.
 
 `data/superfund-rods/` is gitignored. Live-apply on apollo stays at the 5 official seeds.
