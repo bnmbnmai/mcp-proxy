@@ -1,0 +1,602 @@
+                                                   Muzenstraat 41
+                                                                                                       Openbaar
+                                                   2511 WB Den Haag
+                                                   070 722 20 00
+                                                   www.acm.nl
+
+
+
+
+     Besluit
+     Afwijzing handhavingsverzoek SK Company B.V.
+
+     Ons kenmerk           : ACM/UIT/674111
+     Zaaknummer            : ACM/25/198871
+     Datum                 : 19 maart 2026
+
+
+
+     1. Inleiding
+
+1.   Op 5 november 2025 heeft de Autoriteit Consument en Markt (hierna: ACM) een handhavingsverzoek
+     ontvangen van SK Company B.V. (hierna: SK). SK heeft de ACM daarin gevraagd om handhavend op te
+     treden tegen Jura Nederland B.V. (hierna: Jura NL) en bol.com B.V. (hierna: bol) vanwege vermeende
+     overtredingen van de Mededingingswet (hierna: Mw) en het Verdrag betreffende de werking van de
+     Europese Unie (hierna: VwEU).
+
+2.   Na een initieel inventariserend onderzoek concludeert de ACM dat er op dit moment onvoldoende
+     aanwijzingen zijn voor een overtreding van de Mw en het VWEU en dat, als er al schade aan de
+     mededinging zou zijn, deze eventuele schade beperkt lijkt. Gelet hierop besluit de ACM om geen voorrang
+     te geven aan dit onderzoek en wijst zij het verzoek om handhavend op te treden af.
+
+
+     2. Procedure
+
+3.   SK stuurde op 30 september 2025 een e-mail naar de ACM met verschillende klachten over het gedrag van
+     Jura NL en bol.1 Na overleg met de ACM verzocht SK de ACM op 5 november 2025 om haar klachten als
+     handhavingsverzoek te beschouwen.2 Op 20 november 2025 stelde de ACM schriftelijke vragen aan SK.3
+     Deze zijn op 244 en 26 november 20255 door SK beantwoord.
+
+4.   Op 4 december 2025 stuurde de ACM een brief aan Jura NL.6 Hierin heeft de ACM Jura NL de gelegenheid
+     gegeven om te reageren op het handhavingsverzoek van SK en ook enkele vragen gesteld. Op 16
+     december 2025 heeft Jura NL gereageerd op het handhavingsverzoek en de vragen van de ACM
+     beantwoord.7 Op 19 december 2025 stuurde de ACM een tweede vragenbrief aan Jura NL.8 Op 14 januari
+     2026 ontving de ACM, na verlenging van de retourtermijn, de antwoorden van Jura NL op de vragen.9
+
+
+
+
+     1
+       E-mail van SK van 30 september 2025, ACM/IN/1035477.
+     2
+       Ontvangstbevestiging ACM van het handhavingsverzoek van 6 november 2025, ACM/UIT/661646.
+     3
+       Vragenbrief ACM aan SK van 20 november 2025, ACM/UIT/662571.
+     4
+       Reactie van SK op vragenbrief ACM van 24 november 2025, ACM/IN/1053781.
+     5
+       Reactie van SK op vragenbrief ACM van 26 november 2025, ACM/IN/1055326.
+     6
+       Eerste vragenbrief ACM aan Jura NL van 4 december 2025, ACM/UIT/663403.
+     7
+       Reactie Jura NL op eerste vragenbrief ACM van 16 december 2025, ACM/IN/1062540.
+     8
+       Tweede vragenbrief ACM aan Jura NL van 19 december 2025, ACM/UIT/665196.
+     9
+       Reactie Jura NL op tweede vragenbrief ACM van 14 januari 2026, ACM/IN/1074321 en bijlagen ACM/IN/1074326.
+
+
+
+                                                                                                        ACM/UIT/674111
+Autoriteit Consument en Markt                                                                                         Openbaar
+Zaaknr. ACM/25/198871 / Documentnr. ACM/UIT/674111
+
+
+5.    Op 8 december 2025 informeerde de ACM bol telefonisch over het door SK ingediende
+      handhavingsverzoek.10
+
+6.    Op 19 december 2025 verlengde de ACM de behandeltermijn tot 1 april 2026.11
+
+7.    De ACM vroeg SK op 23 februari 2026 om een zienswijze op het voorgenomen (concept)besluit.12 Op 4
+      maart 2026 stuurde SK haar zienswijze aan de ACM.13
+
+
+      3. Het handhavingsverzoek
+
+           3.1. Achtergrond
+
+8.    SK is sinds 2022 actief op het gebied van de verkoop van Jura koffiemachines. SK heeft aangegeven dat zij
+      de Jura koffiemachines inkocht bij een Duitse erkende distributeur van Jura koffiemachines14 en verkocht
+      via haar eigen webshop en tot 30 september 2025 op het platform van bol.15 Op 30 december 2025 heeft
+      SK activa, waaronder haar webshop, aan Oude Kiesel B.V. verkocht.16
+
+9.    Jura NL is de Nederlandse leverancier van koffiemachines van het merk Jura. Jura NL hanteert sinds 2015
+      een selectief distributiestelsel (hierna: SDS) voor Jura koffiemachines.17 In een SDS verkoopt de
+      leverancier zijn producten alleen aan distributeurs die op grond van specifieke criteria zijn geselecteerd.
+      Deze geselecteerde distributeurs mogen de producten vervolgens niet doorverkopen aan niet-erkende
+      distributeurs binnen het gebied dat de leverancier voor het SDS heeft aangewezen.18 Een zuiver kwalitatief
+      SDS is in ieder geval verenigbaar met de mededingingsregels indien het voldoet aan de drie criteria die het
+      Europese Hof van Justitie heeft geformuleerd in het Metro-arrest (hierna: de Metro-criteria): (i) de
+      leverancier selecteert zijn distributeurs aan de hand van objectieve kwalitatieve criteria die op uniforme
+      wijze zijn vastgesteld voor alle potentiële distributeurs; (ii) de leverancier past deze criteria zonder
+      discriminatie toe; (iii) de vastgestelde criteria gaan niet verder gaan dan noodzakelijk.19
+
+10.   Om onderdeel van het SDS van Jura NL te kunnen worden, moeten distributeurs voldoen aan de door Jura
+      NL gestelde kwaliteitscriteria.20 Ook online verkoop, via een webshop of platform, is toegestaan, mits
+      distributeurs voldoen aan de e-commerce-criteria van Jura NL.21 Het contractgebied van het SDS van het
+      Jura-concern omvat de lidstaten van de EU en van de Europese Vrijhandelsorganisatie. Het Jura-concern
+      hanteert Europees dezelfde selectieve distributievoorwaarden.22
+
+11.   SK is geen onderdeel van het SDS van Jura NL of een andere entiteit binnen het Jura-concern. Tussen SK
+      en Jura NL is in 2024 en 2025 contact geweest over de toetreding van SK tot het SDS van Jura NL.23 Dit
+      heeft niet geleid tot de toetreding van SK tot dit SDS. Volgens SK is zij geweigerd als selectieve distributeur
+
+
+
+      10
+         Notitie van telefoongesprek van ACM met bol van 8 december 2025, ACM/INT/546344.
+      11
+         Brief ACM aan SK inzake verlenging behandeltermijn van 19 december 2025, ACM/UIT/665333.
+      12
+         Brief ACM aan SK inzake gelegenheid tot zienswijze van 23 februari 2026, ACM/UIT/670063
+      13
+         Zienswijze SK van 4 maart 2026, ACM/IN/1089463.
+      14
+         Verslag van het gesprek tussen de ACM en SK van 14 oktober 2025, ACM/UIT/662856, p. 2.
+      15
+         E-mail van SK van 30 september 2025, ACM/IN/1035477, p.1.
+      16
+         Koopovereenkomst tussen SK en Oude Kiesel B.V. van 30 december 2025, ACM/IN/1076225.
+      17
+         Reactie Jura NL op tweede vragenbrief van 14 januari 2026, ACM/IN/1074321, p. 3.
+      18
+         Artikel 1 lid 1, punt g, van Verordening (EU) 2022/720 van de Commissie van 10 mei 2022 betreffende de toepassing van
+      artikel 101 lid 3 van het Verdrag betreffende de werking van de Europese Unie op groepen verticale overeenkomsten en
+      onderling afgestemde feitelijke gedragingen (hierna: Groepsvrijstelling Verticalen).
+      19
+         HvJEU, 25 oktober 1977, C-26/76 (Metro/Commissie), r.o. 20 - 21.
+      20
+         Reactie Jura NL op eerste vragenbrief ACM van 16 december 2025, ACM/IN/1062540, p. 2.
+      21
+         Reactie Jura NL op eerste vragenbrief ACM van 16 december 2025, ACM/IN/1062540, p. 2 en Reactie Jura NL op tweede
+      vragenbrief ACM van 14 januari 2026, ACM/IN/1074321, p. 3.
+      22
+         Reactie Jura NL op tweede vragenbrief ACM van 14 januari 2026, ACM/IN/1074321, p. 3.
+      23
+         E-mail van SK van 30 september 2025, ACM/IN/1035477, p.1, en bijlage met titel “RE: Verzoek tot toelating tot het selectieve
+      distributienetwerk van Jura”, reactie Jura NL van 16 december 2025 op eerste vragenbrief ACM, ACM/IN/1062540, p. 1.
+
+
+
+                                                                                                                                  2/9
+Autoriteit Consument en Markt                                                                                  Openbaar
+Zaaknr. ACM/25/198871 / Documentnr. ACM/UIT/674111
+
+
+      vanwege een juridisch conflict tussen haar en Jura NL.24 Volgens Jura NL voldoet SK niet aan de door haar
+      gestelde selectiecriteria.25 Ook beroept Jura NL zich op haar contractsvrijheid.26
+
+12.   Bol biedt een online platform aan waar zakelijke verkopers hun producten kunnen aanbieden aan
+      consumenten. Bol verkoopt op haar platform ook zelf producten aan consumenten waaronder Jura
+      koffiemachines. Sinds 1 november 2025 is bol erkende distributeur van Jura koffiemachines.27
+
+13.   Medio 2025 is SK door bol geïnformeerd dat alleen door Jura NL erkende distributeurs Jura koffiemachines
+      op haar platform mogen verkopen. Omdat SK geen erkende distributeur is, heeft zij per 30 september 2025
+      geen Jura koffiemachines meer op het platform van bol kunnen verkopen. SK is het hier niet mee eens. 28
+
+14.   In gesprekken met de ACM heeft SK aangegeven geen onderdeel meer te willen worden van het SDS van
+      Jura NL en met het ingediende handhavingsverzoek voornamelijk te willen bereiken dat zij weer Jura-
+      koffiemachines op het platform van bol kan verkopen.29
+
+
+           3.2. Verzoek
+
+15.   SK verzoekt de ACM om handhavend op te treden tegen Jura NL en bol. Volgens SK is sprake van
+      overtreding van de mededingingsregels door Jura NL en door bol, afzonderlijk en gezamenlijk.
+
+16.   De ACM begrijpt het verzoek van SK zo dat SK een besluit vraagt op grond van artikel 56 Mw. Dit
+      wetsartikel geeft de ACM de bevoegdheid bij overtreding van artikel 6, eerste lid, of van artikel 24, eerste
+      lid, Mw op te treden met een vaststellingsbesluit, een bestuurlijke boete of een last onder dwangsom.
+
+
+      4. Juridisch kader
+
+           4.1. Belanghebbende
+
+17.   SK is belanghebbende in de zin van artikel 1:2 Algemene wet bestuursrecht (hierna: Awb).
+
+
+           4.2. Prioriteringsbeleid
+
+18.   De ACM ontvangt meer verzoeken om handhaving en signalen over mogelijke overtredingen dan zij gelet
+      op haar onderzoekscapaciteit in onderzoek kan nemen. Daarom moet de ACM prioriteiten stellen. Dit doet
+      de ACM in het licht van haar missie op basis van de Beleidsregel Prioritering van handhavingsonderzoeken
+      door de Autoriteit Consument en Markt 2023 (hierna: het Prioriteringsbeleid).30
+
+19.   Om te bepalen of de ACM prioriteit wil geven aan een bepaald onderzoek voert zij een initieel
+      inventariserend onderzoek uit. Met dit initieel inventariserend onderzoek vormt de ACM zich een beeld van
+      een klacht zodat zij, gezien de inhoud van een handhavingsverzoek en één of meerdere
+      prioriteringscriteria, kan beoordelen of zij in een specifiek geval nader onderzoek zal verrichten.
+
+
+
+
+      24
+         E-mail van SK van 30 september 2025, ACM/IN/1035477, p. 1.
+      25
+         Reactie Jura NL op eerste vragenbrief ACM van 16 december 2025, ACM/IN/1062540, p. 1.
+      26
+         Reactie Jura NL op tweede vragenbrief ACM van 14 januari 2026, ACM/IN/1074321, p. 4.
+      27
+         Reactie Jura NL op eerste vragenbrief ACM van 16 december 2025, ACM/IN/1062540, p. 2.
+      28
+         E-mail van SK van 30 september 2025, ACM/IN/1035477, p. 2.
+      29
+         Verslag van het gesprek tussen de ACM en SK van 14 oktober 2025 ACM/UIT/662856, p.2, en verslag van het gesprek
+      tussen de ACM en SK van 23 oktober 2025, ACM/UIT/660822, p. 1.
+      30
+        Het Prioriteringsbeleid is gepubliceerd op acm.nl (Beleidsregel prioritering van handhavingsonderzoeken 2023 | ACM)
+      en in Staatscourant nr. 15184 van 25 mei 2023.
+
+
+
+                                                                                                                           3/9
+Autoriteit Consument en Markt                                                                                Openbaar
+Zaaknr. ACM/25/198871 / Documentnr. ACM/UIT/674111
+
+
+20.   In haar prioriteringsbeleid hanteert de ACM drie algemene criteria op basis waarvan zij verzoeken om
+      handhaving beoordeelt:
+
+      •      schadelijkheid: hoe schadelijk is het gedrag waarop het verzoek ziet voor het goed werken van
+             markten en het vertrouwen daarin van mensen en bedrijven?
+
+      •      maatschappelijk belang: hoe groot is het maatschappelijk belang bij het optreden van de ACM?
+
+      •      optreden: in hoeverre is de ACM in staat doeltreffend en doelmatig op te treden?
+
+21.   De ACM beziet en weegt de scores op deze criteria in samenhang. Aan de hand van de drie criteria bepaalt
+      de ACM aan welke verzoeken om handhaving zij prioriteit geeft. Het prioriteringsbeleid is geen optelsom.
+      De ACM kan al op basis van een lage(re) score bij één criterium concluderen dat een volledig
+      handhavingsonderzoek (op dit moment) niet aangewezen is. Om te kunnen beoordelen of een dergelijk
+      onderzoek (op dit moment) aangewezen is, voert de ACM een initieel inventariserend onderzoek uit.
+      Daarbij betrekt de ACM ook de belangen van de indiener van het handhavingsverzoek.
+
+
+      5. Beoordeling
+
+           5.1. Inleiding
+
+22.   In dit hoofdstuk licht de ACM toe dat zij gelet op het handhavingsverzoek, het initieel inventariserend
+      onderzoek en het prioriteringsbeleid afziet van nader onderzoek. In paragraaf 5.2. bespreekt de ACM de
+      klachten van SK en concludeert zij dat er na haar initieel inventariserend onderzoek onvoldoende
+      aanwijzingen zijn voor een overtreding van de mededingingsregels. Vervolgens past de ACM in paragraaf
+      5.3. haar Prioriteringsbeleid toe.
+
+
+           5.2. Klachten SK en initiële beoordeling klachten SK
+
+      Klacht 1
+
+23.   Allereerst stelt SK dat het SDS van Jura NL in strijd is met het kartelverbod, omdat Jura NL haar weigert als
+      selectieve distributeur vanwege een voorafgaand juridisch conflict tussen Jura NL en SK. Dit zou een
+      subjectieve aanname zijn en daarom in strijd met de Metro-criteria.31 Ook wijst SK erop dat Jura NL niet
+      transparant is jegens haar over de criteria die zij hanteert om te bepalen of een distributeur lid kan worden
+      van haar SDS.32 Ook dat, zo begrijpt de ACM, zou volgens SK in strijd zijn met het kartelverbod.
+
+24.   Zoals hiervoor uiteengezet, maakt Jura NL gebruik van een SDS. Een leverancier kan hiermee een
+      gesloten stelsel van kwalitatief hoogwaardige distributeurs samenstellen. Als een leverancier hierbij voldoet
+      aan de Metro-criteria is er geen sprake van een overtreding van het kartelverbod. 33
+
+25.   Volgens SK voldoet het SDS van Jura NL niet aan de Metro-criteria en is daarmee sprake van een
+      overtreding van het kartelverbod. Deze gevolgtrekking gaat niet op. Als een SDS niet aan de Metro-criteria
+      voldoet, kan een SDS nog steeds in aanmerking komen voor een vrijstelling van het kartelverbod. De ACM
+      wijst hierbij op de Europese groepsvrijstellingsverordening verticalen en de richtsnoeren verticalen van de
+      Europese Commissie.34 Of in het specifieke geval van het SDS van Jura NL sprake is van strijd met het
+
+
+      31
+         E-mail van SK van 30 september 2025, ACM/IN/1035477, p. 2.
+      32
+         Verslag van het gesprek tussen de ACM en SK van 14 oktober 2025 ACM/UIT/662856, p. 2, en ontvangstbevestiging ACM
+      van handhavingsverzoek van 6 november 2025, ACM/UIT/661646.
+      33
+         Mededeling van de Commissie BEKENDMAKING VAN DE COMMISSIE Richtsnoeren inzake verticale beperkingen 2022/C
+      248/01 C/2022/4238 (hierna: Richtsnoeren Verticalen), randnr. 148.
+      34
+         Artikel 2 lid 1 Groepsvrijstelling Verticalen en Richtsnoeren Verticalen, randnr. 151.
+
+
+
+                                                                                                                        4/9
+Autoriteit Consument en Markt                                                                                      Openbaar
+Zaaknr. ACM/25/198871 / Documentnr. ACM/UIT/674111
+
+
+      kartelverbod vraagt verder onderzoek. Indien het marktaandeel van zowel de leverancier als de afnemer elk
+      niet meer dan 30% bedraagt en het SDS geen zogenoemde hardcore-beperkingen bevat, zou het SDS
+      onder de Europese groepsvrijstelling kunnen vallen. Jura NL lijkt op een Nederlandse markt voor (luxe)
+      koffiemachines een bescheiden speler met naar schatting een marktaandeel van ruim onder de 30%.35 Ook
+      lijkt van hardcore-beperkingen geen sprake. De ACM heeft daarom op dit moment onvoldoende
+      aanwijzingen dat Jura NL met haar distributeurs het kartelverbod overtreedt.
+
+26.   Evenmin is Jura NL verplicht haar selectiecriteria bekend te maken. Het SDS van Jura NL kan dan nog
+      steeds in aanmerking komen voor een vrijstelling.36 Ook ziet de ACM geen aanwijzingen dat aan het niet-
+      publiceren afstemming tussen Jura NL en haar distributeurs ten grondslag zou liggen.
+
+27.   Voor zover SK ook stelt dat Jura NL haar machtspositie zou misbruiken met het selectieve distributiestelsel,
+      merkt de ACM op dat, alleen al gezien de marktpositie van Jura NL, zij geen aanwijzingen ziet dat Jura NL
+      zou beschikken over een machtspositie.
+
+      Klacht 2
+
+28.   Ten tweede zou Jura NL volgens SK de mededingingsregels overtreden door zich te beroepen op
+      auteursrechtelijk beschermd beeldmateriaal en door het opwerpen van inkoopblokkades.37 Volgens SK
+      probeert Jura NL op deze wijze actief de doorverkoop van rechtmatig ingevoerde producten uit andere EU-
+      lidstaten te blokkeren of te frustreren.38
+
+29.   Dat Jura NL zich beroept op auteursrechtelijk beschermd materiaal is een eenzijdige actie van Jura NL en
+      kan alleen al daarom geen overtreding van het kartelverbod vormen. Voor zover SK hierbij ook zou doelen
+      op een mogelijke overtreding van het verbod op het maken van misbruik van een economische
+      machtspositie ziet de ACM, zoals hierboven al aangegeven, geen aanwijzingen dat de positie van Jura NL
+      dusdanig is dat dit aan de orde zou kunnen zijn.
+
+30.   Voorts stelt SK dat Jura NL door inkoopblokkades de mededingingsregels overtreedt. Volgens SK zijn de
+      Jura-koffiemachines met toestemming van de merkhouder binnen de EER op de markt gebracht en kan de
+      merkhouder parallelimport dan niet verbieden. SK baseert zich hierbij op het merkenrecht.39 Alhoewel de
+      bevoegdheid van de ACM zich niet uitstrekt tot het merkenrecht merkt de ACM hieromtrent op dat SK naar
+      eigen zeggen nog “gewoon” in Duitsland kan inkopen.40 Van een inkoopblokkade lijkt dus geen sprake. De
+      ACM ziet daarom geen aanleiding voor een beoordeling op grond van de mededingingsregels.
+
+      Klacht 3
+
+31.   Ten slotte stelt SK dat Jura NL en bol het kartelverbod en het verbod op misbruik van een economische
+      machtspositie overtreden doordat op het platform van bol alleen door Jura NL geselecteerde distributeurs
+      Jura-koffiemachines mogen verkopen.41 Volgens SK hebben Jura NL en bol afgesproken op het platform
+      van bol alleen verkoop door Jura NL erkende distributeurs toe te staan. Dit zou kunnen duiden op verticale
+      prijsbinding of territoriale beperking, aldus SK. Ook zou volgens SK, gezien de sterke marktpositie van
+      zowel Jura NL als bol op het product- respectievelijk distributieniveau, sprake kunnen zijn van misbruik van
+      een economische machtspositie. Het zouden hier overtredingen van artikel 6 Mw/101 VwEU respectievelijk
+
+
+
+      35
+         Volgens Jura NL ligt haar marktaandeel ruim onder de 30%, zie reactie Jura NL op tweede vragenbrief van 14 januari 2026,
+      ACM/IN/1074321, p.2, en ACM/IN/1074326, bijlage 10. Ook SK geeft aan: “Jura is zeker niet marktleider, dan kom je eerder uit
+      bij Deloni, Philips of Siemens.”, zie verslag van het gesprek tussen de ACM en SK van 14 oktober 2025, ACM/UIT/662856, p. 2.
+      36
+         Richtsnoeren Verticalen, randnr. 151.
+      37
+         E-mail van SK van 30 september 2025, ACM/IN/1035477, p. 1.
+      38
+         E-mail van SK van 30 september 2025, ACM/IN/1035477, p. 2.
+      39
+         E-mail van SK van 30 september 2025, ACM/IN/1035477, p. 1 en 2.
+      40
+         Verslag van het gesprek tussen de ACM en SK van 23 oktober 2025, ACM/UIT/660822, p. 2.
+      41
+         E-mail van SK van 30 september 2025, ACM/IN/1035477, p. 2.
+
+
+
+                                                                                                                              5/9
+Autoriteit Consument en Markt                                                                                   Openbaar
+Zaaknr. ACM/25/198871 / Documentnr. ACM/UIT/674111
+
+
+      artikel 24 Mw/102 VwEU betreffen. Ook verkoopt bol de Jura-machines volgens SK voor een hogere prijs
+      dan SK dat voorheen deed op het platform van bol.42
+
+
+32.   Een afspraak tussen Jura NL en bol om alleen distributeurs die deel uitmaken van het SDS van Jura NL toe
+      te staan op het platform van bol om de Jura-koffiemachines te verkopen kan noodzakelijk zijn om te
+      verzekeren dat distributeurs die Jura-koffiemachines verkopen, voldoen aan de door Jura NL gewenste
+      kwaliteitseisen. Enerzijds vermindert dit de concurrentie binnen het merk Jura, anderzijds versterkt dit de
+      concurrentie tussen merken.43
+
+33.   De ACM beschikt niet over aanwijzingen dat sprake zou zijn van een overtreding van de Mw. Zoals hiervoor
+      beschreven, lijkt Jura NL een bescheiden marktpositie in te nemen. Voor zover bol op haar platform zelf als
+      selectief distributeur de Jura-koffiemachines verkoopt, treedt zij als verkoper in concurrentie met andere
+      aanbieders van (luxe) koffiemachines, al dan niet van het merk Jura. Deze concurrentie vindt niet alleen
+      plaats op het platform van bol, maar ook via andere kanalen.44 Dit wijst niet op een machtspositie van bol
+      als verkoper. Evenmin biedt het door bol op een specifiek moment aanbieden van één bepaalde Jura-
+      koffiemachine voor een hogere prijs dan waarvoor SK deze op dat moment aanbood45 een voldoende
+      aanwijzing voor misbruik.
+
+
+           5.3. Toepassing prioriteringsbeleid
+
+34.   Op basis van voorgaande concludeert de ACM dat er op dit moment onvoldoende aanwijzingen zijn voor
+      een overtreding. Om deze reden rust op de ACM geen beginselplicht tot handhaving.46 De ACM heeft op
+      basis van haar prioriteringsbeleid ruimte om af te wegen of zij nader onderzoek zal doen.
+
+35.   Op basis van deze prioriteitsafweging concludeert de ACM dat zij geen voorrang geeft aan dit onderzoek.
+      Bij deze afweging is leidend de prioriteringscriteria met betrekking tot doeltreffendheid en doelmatigheid en
+      schadelijkheid:
+
+      Doeltreffendheid en doelmatigheid
+
+36.   Bij de vraag of de ACM doeltreffend kan optreden, gaat het om de inschatting of met de inzet van een
+      geschikt handhavingsinstrument binnen een gewenste termijn een gewenste situatie kan worden bereikt of
+      in voldoende mate kan worden benaderd. Bij doelmatigheid gaat het om een kosten-batenanalyse: of de
+      uitvoering van het handhavingsverzoek mogelijk is met de beschikbare capaciteit en middelen, afgezet
+      tegen huidige of andere voorgenomen werkzaamheden van de ACM die ook een beslag leggen op
+      menskracht en middelen.
+
+37.   Volgens de ACM is nader onderzoek niet doelmatig noch doeltreffend. Enerzijds omdat er op basis van het
+      initieel inventariserend onderzoek van de ACM onvoldoende aanwijzingen voor een overtreding zijn.
+      Anderzijds zou nader onderzoek naar de klacht van SK beslag leggen op capaciteit en middelen van de
+      ACM met slechts een geringe kans dat als resultaat hiervan de ACM toch een overtreding van de
+      mededingingsregels constateert. Hierbij neemt de ACM ook in ogenschouw dat SK niet (meer) tot het SDS
+      van Jura NL wil toetreden.
+
+      Schadelijkheid
+
+
+
+      42
+         Verslag van het gesprek tussen de ACM en SK van 23 oktober 2025, ACM/UIT/660822, p. 2 en reactie van SK op vragenbrief
+      ACM van 24 november 2025, ACM/IN/1053781, p. 3.
+      43
+         Vergelijk Richtsnoeren Verticalen, randnrs. 148 en 149.
+      44
+         Reactie Jura NL van 16 december 2025 op eerste vragenbrief ACM, ACM/IN/1062540, p. 3.
+      45
+         Reactie van SK op vragenbrief ACM van 24 november 2025, ACM/IN/1053781, p.3 en bijlage “Bol-com E6PB-JPG”.
+      46
+         Rechtbank Rotterdam, 31 oktober 2023 (ECLI:NL:RBROT:2023:10069), r.o. 5.1.1. t/m 5.1.3.
+
+
+
+                                                                                                                           6/9
+Autoriteit Consument en Markt                                                                               Openbaar
+Zaaknr. ACM/25/198871 / Documentnr. ACM/UIT/674111
+
+
+38.   Bij de vraag of er schade is of kan ontstaan aan de goede werking van markten vraagt de ACM zich af of,
+      en zo ja in welke mate, de mogelijke overtreding schadelijk is voor de goede werking van markten op korte
+      en langere termijn. Daarbij is het van belang dat het proces van marktwerking en het vertrouwen daarin niet
+      wordt geschaad. Ook is het van belang of ingrijpen door de ACM de eventuele schade kan voorkomen of
+      beperken.
+
+39.   Als er al sprake zou zijn van een overtreding van mededingingsregels, lijkt de schadelijkheid van het gedrag
+      voor het goed werken van markten voor mensen en bedrijven beperkt. De ACM merkt hierbij op dat SK en
+      mogelijk enkele andere niet-erkende distributeurs van Jura-koffiemachines hinder van het gedrag van Jura
+      NL en bol (zouden) kunnen ondervinden, maar dat geen sprake lijkt te zijn van schade aan de
+      mededinging. In reactie op de vragenbrieven van de ACM heeft Jura NL aangegeven dat er in Nederland
+      meer dan 400 erkende Jura-distributeurs zijn.47 Een deel van deze distributeurs voldoet bovendien aan de
+      e-commerce-voorwaarden van Jura NL en kan derhalve ook op het platform van bol en/of via andere
+      online-kanalen Jura koffiemachines verkopen.48 Er lijkt dan ook sprake van voldoende concurrentie tussen
+      Jura-dealers, zowel offline als online. De consument heeft gelet hierop dan ook voldoende keuze tussen
+      aanbieders voor de aankoop van Jura-koffiemachines. Daarnaast bestaat er concurrentie tussen Jura NL
+      en andere aanbieders van (luxe) koffiemachines. De consument heeft in dit opzicht ook
+      keuzemogelijkheden.
+
+      Maatschappelijk belang
+
+40.   Bij de vraag hoe groot het bij een mogelijke overtreding betrokken maatschappelijk belang is, gaat de ACM
+      na welke publieke belangen hierbij betrokken zijn. Naast het door de wetgever bepaalde publieke belang
+      van goed werkende markten kan het bijvoorbeeld gaan om het belang van duurzaamheid, economische
+      weerbaarheid, kwaliteit van zorg, privacy of veiligheid. Ook bekijkt de ACM of een mogelijke overtreding
+      binnen één van de strategische doelstellingen op basis van de ACM-Agenda valt.49
+
+41.   Hoewel het handhavingsverzoek mogelijk raakt aan de strategische doelstelling van de ACM met
+      betrekking tot het bijdragen aan een veilige en eerlijke digitale economie maakt dit niet dat de
+      prioriteitsafweging door de ACM anders uitvalt nu de ACM optreden noch doeltreffend noch doelmatig acht
+      en van schade aan de mededinging geen sprake lijkt.
+
+
+      6. Zienswijze SK
+
+42.   De ACM heeft voorgaande beoordeling in de vorm van een concept-besluit voorgelegd aan SK. SK heeft
+      hier een zienswijze op gegeven.50 Hierna zal de ACM ingaan op een aantal onderdelen van deze
+      zienswijze. Punten uit de zienswijze die volgens de ACM al voldoende in paragraaf 1 tot en met 5 hiervoor
+      zijn meegenomen of opmerkingen van feitelijke aard die volgens de ACM geen invloed op de beoordeling
+      van het handhavingsverzoek hebben, zal de ACM niet verder behandelen.
+
+43.   Allereerst stelt SK op verschillende plekken in haar zienswijze dat Jura NL verplicht zou zijn haar
+      selectiecriteria voor toetreding tot haar SDS te publiceren wanneer daarom wordt gevraagd.51 Het
+      achterhouden van de selectiecriteria verhindert volgens SK dat zij kan inschatten of zij aan de voorwaarden
+      kan voldoen en belemmert daarmee haar deelname aan het SDS.52 SK baseert zich hierbij op niet nader
+
+
+      47
+           Reactie Jura NL op eerste vragenbrief ACM van 16 december 2025, ACM/IN/1062540, p. 2.
+      48
+           Reactie Jura NL op tweede vragenbrief ACM van 14 januari 2026, ACM/IN/1074321, p. 3.
+      49
+        De ACM Agenda 2026 is gepubliceerd op acm.nl (Agenda | ACM) (link). Strategische doelstellingen zijn nu: bijdragen
+      aan een veilige en eerlijke digitale economie, versnellen van de energietransitie en verduurzaming en stimuleren van
+      innovatie en weerbaarheid.
+      50
+         Zienswijze SK van 4 maart 2026, ACM/IN/1089463.
+      51
+         Zienswijze SK van 4 maart 2026, ACM/IN/1089463, p. 1, 4 en 5.
+      52
+         Zienswijze SK van 4 maart 2026, ACM/IN/1089463, p. 4.
+
+
+
+                                                                                                                       7/9
+Autoriteit Consument en Markt                                                                                    Openbaar
+Zaaknr. ACM/25/198871 / Documentnr. ACM/UIT/674111
+
+
+      aangeduide wetgeving en het Coty-arrest53 van het Europese Hof van Justitie.54 Bovendien zou volgens SK
+      het niet verstrekken van de selectiecriteria al een belangrijke aanwijzing zijn dat het SDS van Jura NL in
+      strijd is met de mededingingsregels.55 Zoals de ACM in haar beoordeling in de punten 23 tot en met 26
+      uiteen heeft gezet, zou het SDS van Jura NL, gezien het lage marktaandeel van Jura, vrijgesteld kunnen
+      zijn van het kartelverbod. Indien een SDS is vrijgesteld, is de leverancier niet verplicht selectiecriteria
+      bekend te maken.56 Een dergelijke verplichting leest de ACM ook niet in het Coty-arrest. De ACM ziet
+      daarom geen aanleiding voor nader onderzoek.
+
+44.   Ten tweede, zo begrijpt de ACM, stelt SK dat indien een SDS aan de vereisten van de Europese
+      groepsvrijstelling verticalen voldoet dat nog niet betekent dat een SDS is vrijgesteld van het kartelverbod
+      omdat ook naar de feitelijke toepassing van het SDS moet worden gekeken.57 Het feit dat SK geen inzage
+      in de selectiecriteria heeft, niet langer op bol kan verkopen en de selectiecriteria volgens SK niet op
+      objectieve en uniforme worden toegepast, zou maken dat het SDS van Jura NL niet vrijgesteld kan zijn. Dit
+      is onjuist. De Europese groepsvrijstelling verticalen stelt verticale overeenkomsten vrij van het kartverbod,
+      mits de marktaandeeldrempel van 30% niet wordt overschreden en er geen sprake is van hardcore
+      beperkingen.58 Hierbij merkt de ACM nog op dat SK niet heeft gesteld of onderbouwd dat de vrijstelling niet
+      van toepassing zou zijn, bijvoorbeeld omdat er wel sprake is van hardcore beperkingen. De ACM verwijst
+      bovendien naar haar beoordeling in de punten 23 tot en met 26 en 32 tot en met 33 waarin zij heeft
+      geconcludeerd dat er onvoldoende aanwijzingen zijn voor een overtreding van de mededingingsregels.
+
+45.   Ten derde geeft SK aan dat het beroep van Jura NL op contractsvrijheid niet als doorslaggevend kan
+      worden aangemerkt en de ACM ondanks dit beroep zou moeten toetsen of Jura NL in strijd handelt met de
+      mededingingsregels.59 De ACM heeft in haar initiële beoordeling de klachten van SK getoetst en vervolgens
+      uiteengezet waarom er onvoldoende aanwijzingen zijn voor een overtreding van de mededingingsregels.
+      Hierbij is het beroep van Jura NL op contractsvrijheid niet leidend geweest.
+
+46.   Ten slotte geeft SK aan dat de weergave van de ACM in punt 14 hiervoor onjuist is. Volgens SK klopt het
+      niet dat zij geen onderdeel meer wil worden van het SDS van Jura NL. Veeleer heeft SK de voorkeur haar
+      huidige werkwijze voort te zetten, maar sluit zij deelname aan het SDS niet uit indien dit praktisch of
+      juridisch noodzakelijk blijkt.60 In punt 14 heeft de ACM naar verslagen van gesprekken met SK verwezen
+      die door SK zijn goedgekeurd. In deze verslagen staat dat SK geen onderdeel wenst te worden van het
+      SDS van Jura NL.61 Hoe het ook zij, deze verduidelijking namens SK brengt de ACM niet tot een andere
+      prioriteitsafweging dan zij in paragraaf 5.3 uiteen heeft gezet.
+
+47.   Gezien het voorgaande concludeert de ACM dat de zienswijze van SK op het concept-besluit niet leidt tot
+      een ander oordeel.
+
+
+
+
+      53
+         De ACM begrijpt dat SK zich beroept op HvJEU, 6 december 2017, C-230/16 (Coty Germany GmbH/Parfumerie Akzente).
+      54
+         Zienswijze SK van 4 maart 2026, ACM/IN/1089463, p. 4.
+      55
+         Zienswijze SK van 4 maart 2026, ACM/IN/1089463, p. 4.
+      56
+         Richtsnoeren Verticalen, randnr. 151, HvJEU, 14 juni 2012, C-158/11 (Auto 24 SARL/Jaguar Land Rover France SAS), r.o.
+      31.
+      57
+         Zienswijze SK van 4 maart 2026, ACM/IN/1089463, p. 3 en 4.
+      58
+         Artikel 2 lid 1 jo. artikel 3 en 4 Groepsvrijstelling Verticalen en Richtsnoeren Verticalen, randnr. 48.
+      59
+         Zienswijze SK van 4 maart 2026, ACM/IN/1089463, p. 2.
+      60
+         Zienswijze SK van 4 maart 2026, ACM/IN/1089463, p. 3.
+      61
+         Verslag van het gesprek tussen de ACM en SK van 14 oktober 2025 ACM/UIT/662856, p. 2, en verslag van het gesprek
+      tussen de ACM en SK van 23 oktober 2025, ACM/UIT/660822, p. 1.
+
+
+
+                                                                                                                             8/9
+Autoriteit Consument en Markt                                                                   Openbaar
+Zaaknr. ACM/25/198871 / Documentnr. ACM/UIT/674111
+
+
+
+
+      7. Besluit
+
+48.   De ACM wijst het verzoek van SK tot handhavend optreden af en stelt geen nader volledig
+      handhavingsonderzoek in.
+
+      Hoogachtend,
+
+
+
+      Autoriteit Consument en Markt,
+      namens deze
+
+      w.g.
+
+      M.A.M.L. van de Sanden
+      Teammanager Directie Mededinging
+
+      Als u belanghebbende bent, kunt u schriftelijk bezwaar maken tegen dit besluit. Stuur uw gemotiveerde
+      bezwaarschrift naar de Autoriteit Consument en Markt, Juridische Zaken, postbus 16326, 2500 BH Den
+      Haag. Dit moet u doen binnen zes weken na de dag waarop dit besluit bekend is gemaakt. In uw
+      bezwaarschrift kunt u de Autoriteit Consument en Markt verzoeken in te stemmen met rechtstreeks beroep
+      bij de bestuursrechter.
+
+
+
+
+                                                                                                          9/9
+

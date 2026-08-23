@@ -59,6 +59,8 @@
  * GET /ico-mpn/manifest.json — free count + institution/docket/date/sourceUrl (no MPN body)
  * GET /phmsa-cop — PHMSA OPS consent / final / CAO / safety-order PDF text ($0.05) (prep; unlisted until /ico-mpn is live)
  * GET /phmsa-cop/manifest.json — free count + operator/CPF/date/sourceUrl (no order body)
+ * GET /acm-besluiten — ACM boetebesluit / besluit PDF text ($0.05) (prep; unlisted)
+ * GET /acm-besluiten/manifest.json — free count + institution/zaak/date/sourceUrl (no besluit body)
  * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
  * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.05). Listed only when a real body is cached.
@@ -267,6 +269,13 @@ import {
   loadPhmsaCopManifest,
 } from "./phmsa-cop.js";
 import {
+  ACM_BESLUITEN_AMOUNT_ATOMIC,
+  ACM_BESLUITEN_MANIFEST_PATH,
+  ACM_BESLUITEN_PATH,
+  loadAcmBesluiten,
+  loadAcmBesluitenManifest,
+} from "./acm-besluiten.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -371,7 +380,7 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "phmsa-cop" | "form-483" | "gmp" | "gmp-md";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "phmsa-cop" | "acm-besluiten" | "form-483" | "gmp" | "gmp-md";
 /** Always-public SKUs. /form-483, /gmp, and /gmp-md join only when a real observation body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "ticks",
@@ -583,6 +592,10 @@ function amountAtomicFor(sku: DoorSku): string {
     const raw = env("PHMSA_COP_USDC_ATOMIC");
     return raw.length > 0 ? raw : PHMSA_COP_AMOUNT_ATOMIC;
   }
+  if (sku === "acm-besluiten") {
+    const raw = env("ACM_BESLUITEN_USDC_ATOMIC");
+    return raw.length > 0 ? raw : ACM_BESLUITEN_AMOUNT_ATOMIC;
+  }
   if (sku === "form-483") {
     const raw = env("FORM_483_USDC_ATOMIC");
     return raw.length > 0 ? raw : FORM_483_AMOUNT_ATOMIC;
@@ -744,6 +757,11 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
     description:
       "Call GET /phmsa-cop when you need official PHMSA Office of Pipeline Safety institution/company Consent Order / Consent Agreement / Final Order / Corrective Action Order / Safety Order text extracted from primis.phmsa.dot.gov/enforcement-documents/ PDFs. Not people. Not the case-card teaser. Not PHMSA 27nc-rsge incident NARRATIVE. Not Raw Data.txt / page-data.json. Not ICO /ico-mpn. 17 U.S.C. § 105. Prep only — do not list until /ico-mpn is live.",
     resourcePath: PHMSA_COP_PATH,
+  },
+  "acm-besluiten": {
+    description:
+      "Call GET /acm-besluiten when you need official Netherlands ACM institution/company boetebesluit / besluit TEXT extracted with pdftotext from acm.nl/system/files/documents/ PDFs. Not people. Not the publication-page press teaser. Not jsonapi. Not data.overheid.nl. Not ICO /ico-mpn. Not PHMSA /phmsa-cop. Dutch government publication. Prep only — do not list.",
+    resourcePath: ACM_BESLUITEN_PATH,
   },
   "form-483": {
     description:
@@ -1216,6 +1234,21 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         sourceUrl:
           "https://primis.phmsa.dot.gov/enforcement-documents/12025033NOPV/12025033NOPV_Consent%20Agreement%20and%20Order_04212026_(22-259271).pdf",
         body: "Pipeline and Hazardous Materials Safety Administration\nCONSENT ORDER\nEQT Production Company\nCPF 1-2025-033-NOPV",
+      },
+    ],
+  },
+  "acm-besluiten": {
+    ok: true,
+    product: "acm-institution-besluit-bodies",
+    status: "ok",
+    cards: [
+      {
+        id: "house-of-tickets-201019",
+        institution: "House of Tickets B.V. / Ticketveiling B.V.",
+        zaak: "ACM/26/201019",
+        date: "2026-05-22",
+        sourceUrl: "https://www.acm.nl/system/files/documents/boetebesluit-house-of-tickets.pdf",
+        body: "Autoriteit Consument en Markt\nBesluit\nHouse of Tickets B.V.\nZaaknummer ACM/26/201019",
       },
     ],
   },
@@ -3817,6 +3850,16 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === ACM_BESLUITEN_MANIFEST_PATH) {
+    sendJson(res, 200, withShopDiscovery(await loadAcmBesluitenManifest(), req, port));
+    return;
+  }
+
+  if (path === ACM_BESLUITEN_PATH) {
+    await servePaid(req, res, port, "acm-besluiten", () => loadAcmBesluiten());
+    return;
+  }
+
   if (path === FORM_483_MANIFEST_PATH) {
     sendJson(res, 200, withShopDiscovery(await loadForm483Manifest(), req, port));
     return;
@@ -3852,7 +3895,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, PHMSA_COP_PATH, PHMSA_COP_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, PHMSA_COP_PATH, PHMSA_COP_MANIFEST_PATH, ACM_BESLUITEN_PATH, ACM_BESLUITEN_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
 }
 
 export function bindHost(): string {
@@ -3909,6 +3952,7 @@ if (isMain()) {
     console.error(`${SUPERFUND_RODS_PATH} $${Number(amountAtomicFor("superfund-rods")) / 1e6} USDC`);
     console.error(`${ICO_MPN_PATH} $${Number(amountAtomicFor("ico-mpn")) / 1e6} USDC`);
     console.error(`${PHMSA_COP_PATH} $${Number(amountAtomicFor("phmsa-cop")) / 1e6} USDC (unlisted until /ico-mpn is live)`);
+    console.error(`${ACM_BESLUITEN_PATH} $${Number(amountAtomicFor("acm-besluiten")) / 1e6} USDC (unlisted)`);
     console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
     console.error(`${GMP_PATH} $${Number(amountAtomicFor("gmp")) / 1e6} USDC${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
     console.error(`${GMP_MD_PATH} $${Number(amountAtomicFor("gmp-md")) / 1e6} USDC${gmpMdIsPublic() ? "" : " (unlisted until a real MD observation body is cached)"}`);

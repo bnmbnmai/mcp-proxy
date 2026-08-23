@@ -1,0 +1,6 @@
+Toezeggingsbesluit / consultatie
+ZuivelNL heeft een toezegging gedaan.
+Dit is geen boetebesluit-body en geen openbare besluit-body van een handhavingszaak.
+Consultatie van concept-richtsnoeren.
+INSTRUCTIONS
+Skip commitments/consultaties that are not a besluit body.

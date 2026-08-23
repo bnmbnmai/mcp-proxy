@@ -138,6 +138,11 @@ import {
   PHMSA_COP_PATH,
 } from "./phmsa-cop.js";
 import {
+  ACM_BESLUITEN_AMOUNT_ATOMIC,
+  ACM_BESLUITEN_MANIFEST_PATH,
+  ACM_BESLUITEN_PATH,
+} from "./acm-besluiten.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -298,6 +303,7 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.some((r) => r.endsWith(SUPERFUND_RODS_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(ICO_MPN_PATH)));
     assert.ok(!wk.resources.some((r) => r.includes(PHMSA_COP_PATH)), "do not list /phmsa-cop until /ico-mpn is live");
+    assert.ok(!wk.resources.some((r) => r.includes(ACM_BESLUITEN_PATH)), "do not list /acm-besluiten");
     assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)), "do not list /form-483 without a cached body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_PATH)), "do not list /gmp without a cached observation body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_MD_PATH)), "do not list /gmp-md without a cached observation body");
@@ -436,6 +442,8 @@ async function main(): Promise<void> {
     assert.equal(spec.paths[ICO_MPN_MANIFEST_PATH]?.get?.["x-auth"]?.mode, "none");
     assert.equal(spec.paths[PHMSA_COP_PATH], undefined, "OpenAPI must not list /phmsa-cop yet");
     assert.equal(spec.paths[PHMSA_COP_MANIFEST_PATH], undefined, "OpenAPI must not list /phmsa-cop/manifest.json yet");
+    assert.equal(spec.paths[ACM_BESLUITEN_PATH], undefined, "OpenAPI must not list /acm-besluiten");
+    assert.equal(spec.paths[ACM_BESLUITEN_MANIFEST_PATH], undefined, "OpenAPI must not list /acm-besluiten/manifest.json");
     assert.equal(spec.paths[FORM_483_PATH], undefined, "no stub /form-483 in OpenAPI without a cached body");
     assert.equal(spec.paths[FORM_483_MANIFEST_PATH], undefined);
     assert.equal(spec.paths[GMP_PATH], undefined, "no stub /gmp in OpenAPI without a cached body");
@@ -481,6 +489,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /superfund-rods"));
     assert.ok(llmsBody.includes("GET /ico-mpn"));
     assert.ok(!llmsBody.includes("GET /phmsa-cop"), "do not list /phmsa-cop until /ico-mpn is live");
+    assert.ok(!llmsBody.includes("GET /acm-besluiten"), "do not list /acm-besluiten");
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.includes("GET /gmp-md"));
@@ -526,6 +535,7 @@ async function main(): Promise<void> {
       ICO_MPN_PATH,
     ]);
     assert.ok(!shop.products.some((p) => p.path === PHMSA_COP_PATH), "do not list /phmsa-cop until /ico-mpn is live");
+    assert.ok(!shop.products.some((p) => p.path === ACM_BESLUITEN_PATH), "do not list /acm-besluiten");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_MD_PATH));
@@ -3884,17 +3894,21 @@ async function main(): Promise<void> {
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === PHMSA_COP_PATH), false, "do not list /phmsa-cop until /ico-mpn is live");
+      assert.equal(shop.products.some((p) => p.path === ACM_BESLUITEN_PATH), false, "do not list /acm-besluiten");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
       assert.ok(!wk.resources.some((r) => r.includes(PHMSA_COP_PATH)), "well-known must not list /phmsa-cop yet");
+      assert.ok(!wk.resources.some((r) => r.includes(ACM_BESLUITEN_PATH)), "well-known must not list /acm-besluiten");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /phmsa-cop"), "llms.txt must not list /phmsa-cop yet");
+      assert.ok(!llms.includes("GET /acm-besluiten"), "llms.txt must not list /acm-besluiten");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[PHMSA_COP_PATH], undefined, "OpenAPI must not list /phmsa-cop yet");
+      assert.equal(spec.paths[ACM_BESLUITEN_PATH], undefined, "OpenAPI must not list /acm-besluiten");
 
       const manifest = await fetch(`${base}${PHMSA_COP_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "phmsa-cop free manifest is free");
@@ -3930,6 +3944,135 @@ async function main(): Promise<void> {
       assert.ok(paidBody.cards[0]?.body.includes("Well 2244"));
       assert.ok(paidBody.cards[0]?.body.includes("top joint casing corrosion"));
       assert.ok(paidBody.cards[0]?.body.includes("466,550"));
+    },
+  );
+
+  const acmBesluitenDir = mkdtempSync(join(tmpdir(), "acm-besluiten-"));
+  writeFileSync(
+    join(acmBesluitenDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "acm-institution-besluit-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: FRESH_FETCHED_AT,
+      asOf: "2026-05-22",
+      license: "Dutch government publication",
+      attribution:
+        "Autoriteit Consument en Markt (ACM). Dutch government publication: copy and publish unless a work explicitly reserves copyright. ACM logo reserved — sold body is ACM-authored TEXT only.",
+      sources: {
+        listing: "https://www.acm.nl/nl/publicaties?type=besluit",
+        pdfHost: "https://www.acm.nl/system/files/documents/",
+      },
+      cards: [
+        {
+          id: "house-of-tickets-201019",
+          docket: "house-of-tickets-201019",
+          zaak: "ACM/26/201019",
+          pdfId: "boetebesluit-house-of-tickets.pdf",
+          institution: "House of Tickets B.V. / Ticketveiling B.V.",
+          date: "2026-05-22",
+          title: "Boetebesluit",
+          sourceUrl: "https://www.acm.nl/system/files/documents/boetebesluit-house-of-tickets.pdf",
+          body: [
+            "Autoriteit Consument en Markt",
+            "Besluit",
+            "House of Tickets B.V.",
+            "Zaaknummer ACM/26/201019",
+            "Wet handhaving consumentenbescherming",
+            "71.420",
+            "33.027",
+            "plotters",
+            "lachende tweede",
+            "Leiderdorp",
+            "ACM/UIT/679013",
+            ...Array.from({ length: 40 }, (_, i) => `${i + 21}. Numbered article ${i + 21} from the official House of Tickets ACM boetebesluit body used only to keep this door fixture above the real-besluit length floor.`),
+          ].join("\n"),
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      ACM_BESLUITEN_DIR: acmBesluitenDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-acm-besluiten-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${ACM_BESLUITEN_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /acm-besluiten must be 402");
+      const body402 = (await unpaid.json()) as {
+        payTo: string;
+        asset: string;
+        resource: string;
+        accepts: { maxAmountRequired?: string; extra?: { name?: string } }[];
+      };
+      assert.equal(body402.resource, ACM_BESLUITEN_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, ACM_BESLUITEN_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
+      const acmPr = unpaid.headers.get("payment-required");
+      assert.ok(acmPr, "v2 PAYMENT-REQUIRED header");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("71.420"));
+      assert.ok(!leak402.includes("33.027"));
+      assert.ok(!leak402.includes("plotters"));
+      assert.ok(!leak402.includes("lachende tweede"));
+      assert.ok(!leak402.includes("Leiderdorp"));
+      assert.ok(!leak402.includes("ACM/UIT/679013"));
+      assert.ok(!leak402.includes("Numbered article"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === ACM_BESLUITEN_PATH), false, "do not list /acm-besluiten");
+      assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
+      assert.equal(shop.products.length, 28);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(!wk.resources.some((r) => r.includes(ACM_BESLUITEN_PATH)), "well-known must not list /acm-besluiten");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(!llms.includes("GET /acm-besluiten"), "llms.txt must not list /acm-besluiten");
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.equal(spec.paths[ACM_BESLUITEN_PATH], undefined, "OpenAPI must not list /acm-besluiten");
+
+      const manifest = await fetch(`${base}${ACM_BESLUITEN_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "acm-besluiten free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        cards?: { institution?: string; zaak?: string; id?: string; body?: string }[];
+        openapi?: string;
+        wellKnown?: string;
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.cards?.[0]?.institution, "House of Tickets B.V. / Ticketveiling B.V.");
+      assert.equal(man.cards?.[0]?.zaak, "ACM/26/201019");
+      const manBlob = JSON.stringify(man);
+      assert.ok(!manBlob.includes("71.420"));
+      assert.ok(!manBlob.includes("33.027"));
+      assert.ok(!manBlob.includes("plotters"));
+      assert.ok(!manBlob.includes("lachende tweede"));
+      assert.ok(!manBlob.includes("Leiderdorp"));
+      assert.ok(!manBlob.includes("ACM/UIT/679013"));
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+
+      const paid = await fetch(`${base}${ACM_BESLUITEN_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { institution: string; date: string; zaak: string; body: string }[];
+      };
+      assert.equal(paidBody.product, "acm-institution-besluit-bodies");
+      assert.equal(paidBody.cards[0]?.institution, "House of Tickets B.V. / Ticketveiling B.V.");
+      assert.equal(paidBody.cards[0]?.date, "2026-05-22");
+      assert.equal(paidBody.cards[0]?.zaak, "ACM/26/201019");
+      assert.ok(paidBody.cards[0]?.body.includes("71.420"));
+      assert.ok(paidBody.cards[0]?.body.includes("33.027"));
+      assert.ok(paidBody.cards[0]?.body.includes("plotters"));
+      assert.ok(paidBody.cards[0]?.body.includes("lachende tweede"));
+      assert.ok(paidBody.cards[0]?.body.includes("Leiderdorp"));
+      assert.ok(paidBody.cards[0]?.body.includes("ACM/UIT/679013"));
     },
   );
 
@@ -4433,12 +4576,15 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("superfund-rods"), true);
   assert.equal(isPublicBazaarSku("ico-mpn"), true);
   assert.equal(isPublicBazaarSku("phmsa-cop"), false, "do not list /phmsa-cop until /ico-mpn is live");
+  assert.equal(isPublicBazaarSku("acm-besluiten"), false, "do not list /acm-besluiten");
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
   assert.deepEqual(publicBazaarSkus(), [...PUBLIC_BAZAAR_SKUS]);
   const hiddenPhmsa = facilitatorPaymentRequirements("https://ticks.bnm.farm/phmsa-cop", "phmsa-cop");
   assert.equal(hiddenPhmsa.extensions, undefined, "/phmsa-cop must not persist to Bazaar until /ico-mpn is live");
+  const hiddenAcm = facilitatorPaymentRequirements("https://ticks.bnm.farm/acm-besluiten", "acm-besluiten");
+  assert.equal(hiddenAcm.extensions, undefined, "/acm-besluiten must not persist to Bazaar");
   const hidden = facilitatorPaymentRequirements("https://ticks.bnm.farm/form-483", "form-483");
   assert.equal(hidden.extensions, undefined, "/form-483 must not persist to Bazaar until a real body is cached");
   const hiddenGmp = facilitatorPaymentRequirements("https://ticks.bnm.farm/gmp", "gmp");
