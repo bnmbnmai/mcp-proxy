@@ -24,6 +24,15 @@ export const AWA_TYPE = "awa";
 export const SWISSPAR_TYPE = "swisspar";
 export const CFPB_ORDER_TYPE = "cfpb-order";
 export const OFAC_ORDER_TYPE = "ofac-order";
+export const FRB_ORDER_TYPE = "frb-order";
+export const FINCEN_ORDER_TYPE = "fincen-order";
+export const FERC_ORDER_TYPE = "ferc-order";
+export const BIS_ORDER_TYPE = "bis-order";
+export const OCC_CD_TYPE = "occ-cd";
+export const FDIC_ORDER_TYPE = "fdic-order";
+export const NCUA_ORDER_TYPE = "ncua-order";
+export const GMP_TYPE = "gmp";
+export const GMP_MD_TYPE = "gmp-md";
 
 export const CMA_CA98_SOURCE =
   "https://www.gov.uk/cma-cases/financial-services-sector-suspected-anti-competitive-practices";
@@ -46,6 +55,15 @@ export const SWISSPAR_SOURCE =
   "https://www.swissmedic.ch/swissmedic/en/home/humanarzneimittel/authorisations/swisspar.html";
 export const CFPB_ORDER_SOURCE = "https://www.consumerfinance.gov/enforcement/actions/";
 export const OFAC_ORDER_SOURCE = "https://ofac.treasury.gov/civil-penalties-and-enforcement-information";
+export const FRB_ORDER_SOURCE = "https://www.federalreserve.gov/supervisionreg/enforcementactions.htm";
+export const FINCEN_ORDER_SOURCE = "https://www.fincen.gov/news/enforcement-actions";
+export const FERC_ORDER_SOURCE = "https://www.ferc.gov/civil-penalties/all-civil-penalty-actions-2026";
+export const BIS_ORDER_SOURCE = "https://www.bis.gov/enforcement/charging-letters";
+export const OCC_CD_SOURCE = "https://apps.occ.gov/EASearch";
+export const FDIC_ORDER_SOURCE = "https://orders.fdic.gov/s/";
+export const NCUA_ORDER_SOURCE = "https://ncua.gov/news/enforcement-actions/administrative-orders";
+export const GMP_SOURCE = "https://www.drug-inspections.canada.ca/gmp/index-en.html";
+export const GMP_MD_SOURCE = "https://www.drug-inspections.canada.ca/md/index-en.html";
 
 export type PaidRecord = {
   id: string;
@@ -199,7 +217,9 @@ function listingSource(payload: { sources?: unknown }, fallback: string): string
 }
 
 /**
- * First-slice card doors share id / date / institution|firm / sourceUrl / body.
+ * First-slice card doors share id / date / institution|firm|bank|creditUnion / sourceUrl / body.
+ * Occupied subject keys (bank, creditUnion, holder, substance) map onto firm.
+ * Health Canada report cards use inspectedOn instead of date.
  * Empty-body cards stay in the official cache and are not sold as records[].
  */
 export function normalizeCardRecords(
@@ -209,14 +229,16 @@ export function normalizeCardRecords(
   const out: PaidRecord[] = [];
   for (const row of asList(payload.cards)) {
     if (!str(row.body)) continue;
-    const id = str(row.id) || str(row.docket) || str(row.mediaId);
+    const id = str(row.id) || str(row.docket) || str(row.mediaId) || str(row.inspectionNumber);
     if (!id) continue;
     out.push({
       id,
-      date: firstPlausibleDate(row.date, row.issuedOn, row.publishedOn),
+      date: firstPlausibleDate(row.date, row.issuedOn, row.publishedOn, row.inspectedOn),
       firm:
         str(row.firm) ||
         str(row.institution) ||
+        str(row.bank) ||
+        str(row.creditUnion) ||
         str(row.holder) ||
         str(row.substance) ||
         str(row.name) ||
@@ -400,6 +422,60 @@ export function paidOfacOrdersBody<
   T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
 >(payload: T): T & PaidEnvelope {
   return paidCardBody(payload, OFAC_ORDER_TYPE, OFAC_ORDER_SOURCE);
+}
+
+export function paidFrbOrdersBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, FRB_ORDER_TYPE, FRB_ORDER_SOURCE);
+}
+
+export function paidFincenOrdersBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, FINCEN_ORDER_TYPE, FINCEN_ORDER_SOURCE);
+}
+
+export function paidFercOrdersBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, FERC_ORDER_TYPE, FERC_ORDER_SOURCE);
+}
+
+export function paidBisOrdersBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, BIS_ORDER_TYPE, BIS_ORDER_SOURCE);
+}
+
+export function paidOccCdBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, OCC_CD_TYPE, OCC_CD_SOURCE);
+}
+
+export function paidFdicOrdersBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, FDIC_ORDER_TYPE, FDIC_ORDER_SOURCE);
+}
+
+export function paidNcuaOrdersBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, NCUA_ORDER_TYPE, NCUA_ORDER_SOURCE);
+}
+
+export function paidGmpBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, GMP_TYPE, GMP_SOURCE);
+}
+
+export function paidGmpMdBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, GMP_MD_TYPE, GMP_MD_SOURCE);
 }
 
 export function paidImportAlertsBody<

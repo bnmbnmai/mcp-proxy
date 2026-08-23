@@ -23,6 +23,7 @@ import {
   pdfIdFromUrl,
   type FrbListingRow,
 } from "./frb-orders.js";
+import { FRB_ORDER_TYPE, paidFrbOrdersBody } from "./paid-records.js";
 
 const fixtures = join(dirname(fileURLToPath(import.meta.url)), "../src/fixtures/frb-orders");
 
@@ -269,6 +270,19 @@ async function main(): Promise<void> {
     if (prevDir === undefined) delete process.env.FRB_ORDERS_DIR;
     else process.env.FRB_ORDERS_DIR = prevDir;
   }
+
+  const seed = JSON.parse(readFx("seed-snapshot.json")) as {
+    cards: { id?: string; institution?: string; body?: string }[];
+  };
+  const paid = paidFrbOrdersBody(seed);
+  assert.ok(paid.recordCount > 0, "empty records[] is a fail");
+  assert.equal(paid.cards.length, seed.cards.length, "official cards[] stay");
+  assert.equal(paid.records[0]?.type, FRB_ORDER_TYPE);
+  // date-desc, then id-asc: 26-040-WA/RB-HC before 26-040-WA/RB-SM on 2026-07-15
+  assert.equal(paid.records[0]?.firm, "Iuka Bancshares, Inc.");
+  assert.equal(paid.cards[0]?.institution, "The Iuka State Bank");
+  assert.deepEqual(Object.keys(paid.records[0] ?? {}).sort(), ["date", "firm", "id", "type", "url"]);
+  assert.ok(paid.records.every((r) => r.firm && r.id && r.url));
 
   console.log("frb-orders parser tests ok");
 }

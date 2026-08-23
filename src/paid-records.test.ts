@@ -1,16 +1,28 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import {
   AIR_LETTER_TYPE,
   AWA_TYPE,
+  BIS_ORDER_TYPE,
   CFPB_ORDER_TYPE,
   CFTC_ORDER_TYPE,
   CMA_CA98_TYPE,
   DENOVO_ORDER_TYPE,
+  FDIC_ORDER_TYPE,
+  FERC_ORDER_TYPE,
   FIFRA_ORDER_TYPE,
+  FINCEN_ORDER_TYPE,
   FORM_483_TYPE,
+  FRB_ORDER_TYPE,
   FTC_WL_TYPE,
+  GMP_MD_TYPE,
+  GMP_TYPE,
   ICO_MPN_TYPE,
   IMPORT_ALERT_TYPE,
+  NCUA_ORDER_TYPE,
+  OCC_CD_TYPE,
   OFAC_ORDER_TYPE,
   PCAC_TYPE,
   RECORD_FIELDS,
@@ -30,15 +42,24 @@ import {
   normalizeWarningLetterRecords,
   paidAirLettersBody,
   paidAwaBody,
+  paidBisOrdersBody,
   paidCfpbOrdersBody,
   paidCftcOrdersBody,
   paidCmaCa98Body,
   paidDenovoOrdersBody,
+  paidFdicOrdersBody,
+  paidFercOrdersBody,
   paidFifraOrdersBody,
+  paidFincenOrdersBody,
   paidForm483Body,
+  paidFrbOrdersBody,
   paidFtcWlBody,
+  paidGmpBody,
+  paidGmpMdBody,
   paidIcoMpnBody,
   paidImportAlertsBody,
+  paidNcuaOrdersBody,
+  paidOccCdBody,
   paidOfacOrdersBody,
   paidPcacBody,
   paidSuperfundRodsBody,
@@ -48,6 +69,8 @@ import {
   paidUntitledLettersBody,
   paidWarningLettersBody,
 } from "./paid-records.js";
+
+const fixturesRoot = join(dirname(fileURLToPath(import.meta.url)), "../src/fixtures");
 
 function letter(n: number, date: string, extra: Record<string, unknown> = {}) {
   return {
@@ -636,6 +659,268 @@ async function main(): Promise<void> {
   assert.equal(ofacA.records[0]?.id, "936706");
   assert.equal(ofacA.records[0]?.firm, "Rice Lake Weighing Systems, Inc.");
   assert.ok(ofacA.recordCount > 0);
+
+  const frbA = paidFrbOrdersBody({
+    ok: true as const,
+    product: "frb-institution-order-bodies" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-04-14",
+    sources: { listing: "https://www.federalreserve.gov/supervisionreg/enforcementactions.htm" },
+    cards: [
+      {
+        id: "26-019-B-HC",
+        institution: "Community Bankshares, Inc.",
+        docket: "26-019-B-HC",
+        date: "2026-04-14",
+        sourceUrl: "https://www.federalreserve.gov/newsevents/pressreleases/files/enf20260416a1.pdf",
+        body: "BOARD OF GOVERNORS OF THE FEDERAL RESERVE SYSTEM\nDocket No. 26-019-B-HC",
+      },
+      {
+        id: "empty-frb",
+        institution: "No Text Bank",
+        date: "2026-04-01",
+        sourceUrl: "https://www.federalreserve.gov/newsevents/pressreleases/files/empty.pdf",
+        body: "",
+      },
+    ],
+  });
+  assert.equal(frbA.cards.length, 2, "raw cards[] stay, including empty-body rows");
+  assert.equal(frbA.cards[0]?.institution, "Community Bankshares, Inc.");
+  assert.ok(frbA.recordCount > 0, "empty records[] is a fail");
+  assert.equal(frbA.recordCount, 1);
+  assert.equal(frbA.records[0]?.type, FRB_ORDER_TYPE);
+  assert.equal(frbA.records[0]?.id, "26-019-B-HC");
+  assert.equal(frbA.records[0]?.firm, "Community Bankshares, Inc.");
+  assert.ok(!frbA.records.some((r) => r.id === "empty-frb"));
+
+  const fincenA = paidFincenOrdersBody({
+    ok: true as const,
+    product: "fincen-institution-order-bodies" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-08-03",
+    sources: { listing: "https://www.fincen.gov/news/enforcement-actions" },
+    cards: [
+      {
+        id: "2026-02",
+        institution: "UBS Financial Services Inc.",
+        docket: "2026-02",
+        date: "2026-08-03",
+        sourceUrl: "https://www.fincen.gov/system/files/2026-07/UBS-Consent-Order.pdf",
+        body: "FINANCIAL CRIMES ENFORCEMENT NETWORK\nNumber 2026-02\nCONSENT ORDER",
+      },
+    ],
+  });
+  assert.equal(fincenA.records[0]?.type, FINCEN_ORDER_TYPE);
+  assert.equal(fincenA.records[0]?.id, "2026-02");
+  assert.equal(fincenA.records[0]?.firm, "UBS Financial Services Inc.");
+  assert.ok(fincenA.recordCount > 0);
+
+  const fercA = paidFercOrdersBody({
+    ok: true as const,
+    product: "ferc-institution-order-bodies" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-04-17",
+    sources: { listing: "https://www.ferc.gov/civil-penalties/all-civil-penalty-actions-2026" },
+    cards: [
+      {
+        id: "IN25-6-000",
+        institution: "Interstate Power and Light Company",
+        docket: "IN25-6-000",
+        date: "2026-04-17",
+        sourceUrl:
+          "https://cms.ferc.gov/sites/default/files/2026-04/20260417-195FERC61048-IN25-6-000-Interstate%20Power%20and%20Light%20Co-Settlement%20Agreement.pdf",
+        body: "FEDERAL ENERGY REGULATORY COMMISSION\nDocket No. IN25-6-000",
+      },
+    ],
+  });
+  assert.equal(fercA.records[0]?.type, FERC_ORDER_TYPE);
+  assert.equal(fercA.records[0]?.id, "IN25-6-000");
+  assert.ok(fercA.recordCount > 0);
+
+  const bisA = paidBisOrdersBody({
+    ok: true as const,
+    product: "bis-institution-order-bodies" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-04-13",
+    sources: { listing: "https://www.bis.gov/enforcement/charging-letters" },
+    cards: [
+      {
+        id: "E3050",
+        institution: "Coastal PVA Technology, Inc.",
+        docket: "E3050",
+        date: "2026-04-13",
+        sourceUrl: "https://www.bis.gov/media/documents/coastal-pva-technology-inc-4-13-2026-rev.pdf",
+        body: "Bureau of Industry and Security\nPROPOSED CHARGING LETTER",
+      },
+    ],
+  });
+  assert.equal(bisA.records[0]?.type, BIS_ORDER_TYPE);
+  assert.equal(bisA.records[0]?.id, "E3050");
+  assert.ok(bisA.recordCount > 0);
+
+  const occA = paidOccCdBody({
+    ok: true as const,
+    product: "occ-institution-cd-bodies" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-06-16",
+    sources: { listing: "https://apps.occ.gov/EASearch" },
+    cards: [
+      {
+        id: "AA-ENF-2026-29",
+        bank: "United Texas Bank, National Association",
+        docket: "AA-ENF-2026-29",
+        date: "2026-06-16",
+        sourceUrl: "https://www.occ.gov/static/enforcement-actions/eaAA-ENF-2026-29.pdf",
+        body: "OFFICE OF THE COMPTROLLER OF THE CURRENCY\nAA-ENF-2026-29\nCONSENT ORDER",
+      },
+      {
+        id: "empty-occ",
+        bank: "No Text National Bank",
+        date: "2026-06-01",
+        sourceUrl: "https://www.occ.gov/static/enforcement-actions/empty.pdf",
+        body: "",
+      },
+    ],
+  });
+  assert.deepEqual(occA.records, normalizeCardRecords(occA, OCC_CD_TYPE));
+  assert.equal(occA.cards.length, 2, "raw cards[] stay, including empty-body rows");
+  assert.equal(occA.cards[0]?.bank, "United Texas Bank, National Association");
+  assert.ok(occA.recordCount > 0, "empty records[] is a fail");
+  assert.equal(occA.recordCount, 1);
+  assert.equal(occA.records[0]?.id, "AA-ENF-2026-29");
+  assert.equal(occA.records[0]?.firm, "United Texas Bank, National Association", "OCC bank maps onto firm");
+  assert.equal(occA.records[0]?.type, OCC_CD_TYPE);
+  assert.deepEqual(Object.keys(occA.records[0] ?? {}).sort(), [...RECORD_FIELDS].sort());
+  assert.ok(!occA.records.some((r) => r.id === "empty-occ"));
+
+  const fdicA = paidFdicOrdersBody({
+    ok: true as const,
+    product: "fdic-institution-order-bodies" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-01-13",
+    sources: { listing: "https://orders.fdic.gov/s/" },
+    cards: [
+      {
+        id: "FDIC-26-0001b",
+        bank: "MutualOne Bank",
+        docket: "FDIC-26-0001b",
+        date: "2026-01-13",
+        sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ000013gUnXYAU?operationContext=S1",
+        body: "FEDERAL DEPOSIT INSURANCE CORPORATION\nCONSENT ORDER FDIC-26-0001b",
+      },
+    ],
+  });
+  assert.equal(fdicA.records[0]?.type, FDIC_ORDER_TYPE);
+  assert.equal(fdicA.records[0]?.firm, "MutualOne Bank", "FDIC bank maps onto firm");
+  assert.equal(fdicA.cards[0]?.bank, "MutualOne Bank", "official bank key stays");
+  assert.ok(fdicA.recordCount > 0);
+
+  const ncuaA = paidNcuaOrdersBody({
+    ok: true as const,
+    product: "ncua-institution-order-bodies" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2021-02-22",
+    sources: { listing: "https://ncua.gov/news/enforcement-actions/administrative-orders" },
+    cards: [
+      {
+        id: "21-0105-ER",
+        creditUnion: "Live Life Federal Credit Union",
+        docket: "21-0105-ER",
+        date: "2021-02-22",
+        sourceUrl:
+          "https://ncua.gov/news/enforcement-actions/administrative-orders/2021/administrative-order-matter-live-life-federal-credit-union",
+        body: "NATIONAL CREDIT UNION ADMINISTRATION\nDocket No. 21-0105-ER",
+      },
+    ],
+  });
+  assert.equal(ncuaA.records[0]?.type, NCUA_ORDER_TYPE);
+  assert.equal(ncuaA.records[0]?.firm, "Live Life Federal Credit Union", "NCUA creditUnion maps onto firm");
+  assert.equal(ncuaA.cards[0]?.creditUnion, "Live Life Federal Credit Union", "official creditUnion key stays");
+  assert.ok(ncuaA.recordCount > 0);
+
+  const gmpA = paidGmpBody({
+    ok: true as const,
+    product: "hc-gmp-report-cards" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-04-13",
+    sources: { listing: "https://www.drug-inspections.canada.ca/gmp/index-en.html" },
+    cards: [
+      {
+        id: "apotex-inc-88796",
+        inspectionNumber: "88796",
+        firm: "Apotex Inc",
+        inspectedOn: "2026-04-13",
+        sourceUrl: "https://www.drug-inspections.canada.ca/gmp/fullReportCard-en.html?insNumber=88796&lang=en",
+        body: "Summary of observations\n1. C.02.011 - Manufacturing control",
+      },
+      {
+        inspectionNumber: "80413",
+        firm: "Apotex Inc older",
+        inspectedOn: "2023-02-14",
+        sourceUrl: "https://www.drug-inspections.canada.ca/gmp/fullReportCard-en.html?insNumber=80413&lang=en",
+        body: "Summary of observations\n1. C.02.007",
+      },
+    ],
+  });
+  assert.equal(gmpA.records[0]?.type, GMP_TYPE);
+  assert.equal(gmpA.records[0]?.id, "apotex-inc-88796");
+  assert.equal(gmpA.records[0]?.date, "2026-04-13", "GMP inspectedOn maps onto date");
+  assert.equal(gmpA.records[0]?.firm, "Apotex Inc");
+  assert.equal(gmpA.records[1]?.id, "80413", "inspectionNumber is a stable fallback when id is absent");
+  assert.ok(gmpA.recordCount > 0);
+
+  const gmpMdA = paidGmpMdBody({
+    ok: true as const,
+    product: "hc-md-inspection-cards" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-05-25",
+    sources: { listing: "https://www.drug-inspections.canada.ca/md/index-en.html" },
+    cards: [
+      {
+        id: "can-med-healthcare-501",
+        inspectionNumber: "501",
+        firm: "CAN-MED HEALTHCARE",
+        inspectedOn: "2026-05-25",
+        sourceUrl: "https://www.drug-inspections.canada.ca/md/fullReportCard-en.html?insNumber=501&lang=en",
+        body: "Summary of observations\n1. MDR s.58 (b) Recall procedure",
+      },
+    ],
+  });
+  assert.equal(gmpMdA.records[0]?.type, GMP_MD_TYPE);
+  assert.equal(gmpMdA.records[0]?.date, "2026-05-25");
+  assert.equal(gmpMdA.records[0]?.firm, "CAN-MED HEALTHCARE");
+  assert.ok(gmpMdA.recordCount > 0);
+
+  const occSnap = JSON.parse(readFileSync(join(fixturesRoot, "occ-cd/seed-snapshot.json"), "utf-8")) as {
+    cards: { bank?: string; body?: string }[];
+  };
+  const occFromFx = paidOccCdBody(occSnap);
+  assert.ok(occFromFx.recordCount > 0, "occ-cd fixture records[] is a fail if empty");
+  assert.equal(occFromFx.cards.length, occSnap.cards.length, "fixture cards[] stay");
+  assert.equal(occFromFx.records[0]?.type, OCC_CD_TYPE);
+  assert.equal(occFromFx.records[0]?.firm, "United Texas Bank, National Association");
+  assert.equal(occFromFx.cards[0]?.bank, "United Texas Bank, National Association");
+  assert.ok(occFromFx.records.every((r) => r.firm && r.id));
+
+  const frbSnap = JSON.parse(readFileSync(join(fixturesRoot, "frb-orders/seed-snapshot.json"), "utf-8")) as {
+    cards: { institution?: string }[];
+  };
+  const frbFromFx = paidFrbOrdersBody(frbSnap);
+  assert.ok(frbFromFx.recordCount > 0, "frb-orders fixture records[] is a fail if empty");
+  assert.equal(frbFromFx.cards.length, frbSnap.cards.length);
+  assert.equal(frbFromFx.records[0]?.type, FRB_ORDER_TYPE);
+  // date-desc, then id-asc: 26-040-WA/RB-HC before 26-040-WA/RB-SM on 2026-07-15
+  assert.equal(frbFromFx.records[0]?.firm, "Iuka Bancshares, Inc.");
+  assert.equal(frbFromFx.cards[0]?.institution, "The Iuka State Bank");
 
   console.log("paid-records normalize tests ok");
 }
