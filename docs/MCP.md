@@ -16,4 +16,4 @@ Stdio on this lineage: `TICKS_BASE=https://ticks.bnm.farm node build/ticks-mcp.j
 
 One tool per live paid path from `/.well-known/x402` (enriched from `/openapi.json` when present). Each tool GETs that URL. Unpaid still HTTP 402. After `X-PAYMENT`, the same URL returns JSON.
 
-Does not wrap openFDA, OFAC SDN, FRED, or WASDE. `/cma-ca98` is not listed on well-known in this deploy, so it is not an MCP tool yet — it will appear automatically when that URL is added to well-known. Not Bazaar-indexed.
+Does not wrap openFDA, OFAC SDN, FRED, or WASDE. `/cma-ca98` is listed on well-known in this deploy, so `/mcp` exposes a `cma-ca98` tool. Later SKUs still appear from well-known without an MCP rewrite. Not Bazaar-indexed.
