@@ -41,6 +41,7 @@ build/ipo-tm.*
 build/fmc-orders.*
 build/fsis-hmsa.*
 build/atsdr-hc.*
+build/waterboards-acl.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
@@ -79,3 +80,4 @@ data/ipo-tm/
 data/fmc-orders/
 data/fsis-hmsa/
 data/atsdr-hc/
+data/waterboards-acl/
