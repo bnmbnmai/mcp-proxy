@@ -75,6 +75,8 @@
  * GET /atsdr-hc/manifest.json — free count + site/company/date/sourceUrl (no consultation body)
  * GET /waterboards-acl — California Water Boards ACL order PDF text ($0.05) (prep; unlisted)
  * GET /waterboards-acl/manifest.json — free count + entity/order number/date/sourceUrl (no order body)
+ * GET /doe-nov — DOE Office of Enforcement FNOV / PNOV / enforcement-letter PDF text ($0.05) (prep; unlisted)
+ * GET /doe-nov/manifest.json — free count + contractor/docket/date/sourceUrl (no body)
  * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
  * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.05). Listed only when a real body is cached.
@@ -339,6 +341,13 @@ import {
   loadWaterboardsAclManifest,
 } from "./waterboards-acl.js";
 import {
+  DOE_NOV_AMOUNT_ATOMIC,
+  DOE_NOV_MANIFEST_PATH,
+  DOE_NOV_PATH,
+  loadDoeNov,
+  loadDoeNovManifest,
+} from "./doe-nov.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -443,7 +452,7 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "phmsa-cop" | "acm-besluiten" | "ccpc-mergers" | "bkarta-entscheidungen" | "ipo-tm" | "fmc-orders" | "fsis-hmsa" | "atsdr-hc" | "waterboards-acl" | "form-483" | "gmp" | "gmp-md";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "phmsa-cop" | "acm-besluiten" | "ccpc-mergers" | "bkarta-entscheidungen" | "ipo-tm" | "fmc-orders" | "fsis-hmsa" | "atsdr-hc" | "waterboards-acl" | "doe-nov" | "form-483" | "gmp" | "gmp-md";
 /** Always-public SKUs. /form-483, /gmp, and /gmp-md join only when a real observation body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "ticks",
@@ -687,6 +696,10 @@ function amountAtomicFor(sku: DoorSku): string {
     const raw = env("WATERBOARDS_ACL_USDC_ATOMIC");
     return raw.length > 0 ? raw : WATERBOARDS_ACL_AMOUNT_ATOMIC;
   }
+  if (sku === "doe-nov") {
+    const raw = env("DOE_NOV_USDC_ATOMIC");
+    return raw.length > 0 ? raw : DOE_NOV_AMOUNT_ATOMIC;
+  }
   if (sku === "form-483") {
     const raw = env("FORM_483_USDC_ATOMIC");
     return raw.length > 0 ? raw : FORM_483_AMOUNT_ATOMIC;
@@ -888,6 +901,11 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
     description:
       "Call GET /waterboards-acl when you need official California Water Boards ACL order TEXT (stipulated / hearing / MMP-as-ACL) extracted with pdftotext from waterboards.ca.gov/{region}/board_decisions/adopted_orders/{year}/ PDFs. Company/institution only. Not people. Not the discretionary-ACL table + transmittal. Not CIWQS / data.ca.gov. Not ECHO. Not /superfund-rods. Not /atsdr-hc. Public domain (conditions_of_use.html). Prep only — do not list.",
     resourcePath: WATERBOARDS_ACL_PATH,
+  },
+  "doe-nov": {
+    description:
+      "Call GET /doe-nov when you need official DOE Office of Enforcement FNOV / PNOV / enforcement-letter TEXT extracted with pdftotext from energy.gov/sites/default/files/{yyyy-mm}/ PDFs. Company/institution contractors only. Not people. Not listing + article teasers. Not NRC. Not /csb-reports. Not /waterboards-acl. Not /atsdr-hc. Not /fsis-hmsa. 17 U.S.C. § 105 + energy.gov public-domain notice. Prep only — do not list.",
+    resourcePath: DOE_NOV_PATH,
   },
   "form-483": {
     description:
@@ -1481,6 +1499,21 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         date: "2026-01-01",
         sourceUrl: "https://www.waterboards.ca.gov/centralcoast/board_decisions/adopted_orders/2026/2026-0000-example-aclo.pdf",
         body: "CALIFORNIA REGIONAL WATER QUALITY CONTROL BOARD\nSettlement Agreement and Stipulation for Entry of Administrative Civil Liability Order\nExample Sanitary District",
+      },
+    ],
+  },
+  "doe-nov": {
+    ok: true,
+    product: "doe-nov-enforcement-bodies",
+    status: "ok",
+    cards: [
+      {
+        id: "sample-fnov",
+        institution: "Example Conversion Services, LLC",
+        docket: "NEA-2026-00",
+        date: "2026-01-01",
+        sourceUrl: "https://www.energy.gov/sites/default/files/2026-01/Final%20Notice%20of%20Violation%2C%20Example%20Conversion%20Services%2C%20LLC.pdf",
+        body: "U.S. Department of Energy\nOffice of Enforcement\nFinal Notice of Violation\nExample Conversion Services, LLC\nNEA-2026-00",
       },
     ],
   },
@@ -4162,6 +4195,16 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === DOE_NOV_MANIFEST_PATH) {
+    sendJson(res, 200, withShopDiscovery(await loadDoeNovManifest(), req, port));
+    return;
+  }
+
+  if (path === DOE_NOV_PATH) {
+    await servePaid(req, res, port, "doe-nov", () => loadDoeNov());
+    return;
+  }
+
   if (path === FORM_483_MANIFEST_PATH) {
     sendJson(res, 200, withShopDiscovery(await loadForm483Manifest(), req, port));
     return;
@@ -4197,7 +4240,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, PHMSA_COP_PATH, PHMSA_COP_MANIFEST_PATH, ACM_BESLUITEN_PATH, ACM_BESLUITEN_MANIFEST_PATH, CCPC_MERGERS_PATH, CCPC_MERGERS_MANIFEST_PATH, BKARTA_ENTSCHEIDUNGEN_PATH, BKARTA_ENTSCHEIDUNGEN_MANIFEST_PATH, IPO_TM_PATH, IPO_TM_MANIFEST_PATH, FMC_ORDERS_PATH, FMC_ORDERS_MANIFEST_PATH, ATSDR_HC_PATH, ATSDR_HC_MANIFEST_PATH, WATERBOARDS_ACL_PATH, WATERBOARDS_ACL_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, PHMSA_COP_PATH, PHMSA_COP_MANIFEST_PATH, ACM_BESLUITEN_PATH, ACM_BESLUITEN_MANIFEST_PATH, CCPC_MERGERS_PATH, CCPC_MERGERS_MANIFEST_PATH, BKARTA_ENTSCHEIDUNGEN_PATH, BKARTA_ENTSCHEIDUNGEN_MANIFEST_PATH, IPO_TM_PATH, IPO_TM_MANIFEST_PATH, FMC_ORDERS_PATH, FMC_ORDERS_MANIFEST_PATH, ATSDR_HC_PATH, ATSDR_HC_MANIFEST_PATH, WATERBOARDS_ACL_PATH, WATERBOARDS_ACL_MANIFEST_PATH, DOE_NOV_PATH, DOE_NOV_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH] });
 }
 
 export function bindHost(): string {
@@ -4262,6 +4305,7 @@ if (isMain()) {
     console.error(`${FSIS_HMSA_PATH} $${Number(amountAtomicFor("fsis-hmsa")) / 1e6} USDC (unlisted)`);
     console.error(`${ATSDR_HC_PATH} $${Number(amountAtomicFor("atsdr-hc")) / 1e6} USDC (unlisted)`);
     console.error(`${WATERBOARDS_ACL_PATH} $${Number(amountAtomicFor("waterboards-acl")) / 1e6} USDC (unlisted)`);
+    console.error(`${DOE_NOV_PATH} $${Number(amountAtomicFor("doe-nov")) / 1e6} USDC (unlisted)`);
     console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
     console.error(`${GMP_PATH} $${Number(amountAtomicFor("gmp")) / 1e6} USDC${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
     console.error(`${GMP_MD_PATH} $${Number(amountAtomicFor("gmp-md")) / 1e6} USDC${gmpMdIsPublic() ? "" : " (unlisted until a real MD observation body is cached)"}`);

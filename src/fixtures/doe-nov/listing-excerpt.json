@@ -1,0 +1,140 @@
+[
+  {
+    "id": "nea-2026-01-mcs",
+    "institution": "Mid-America Conversion Services, LLC",
+    "docket": "NEA-2026-01",
+    "date": "2026-01-15",
+    "title": "Final Notice of Violation",
+    "type": "fnov",
+    "sourceUrl": "https://www.energy.gov/sites/default/files/2026-01/Final%20Notice%20of%20Violation%2C%20Mid-America%20Conversion%20Services%2C%20LLC.pdf",
+    "pdfId": "Final Notice of Violation, Mid-America Conversion Services, LLC.pdf"
+  },
+  {
+    "id": "wea-2024-04-harris",
+    "institution": "Harris Rebar Placing, LLC",
+    "docket": "WEA-2024-04",
+    "date": "2025-10-29",
+    "title": "Final Notice of Violation",
+    "type": "fnov",
+    "sourceUrl": "https://www.energy.gov/sites/default/files/2025-10/Final%20Notice%20of%20Violation%2C%20Harris%20Rebar%20Replacing%2C%20LLC.pdf",
+    "pdfId": "Final Notice of Violation, Harris Rebar Replacing, LLC.pdf"
+  },
+  {
+    "id": "wea-2025-01-mcs",
+    "institution": "Mid-America Conversion Services, LLC",
+    "docket": "WEA-2025-01",
+    "date": "2025-12-03",
+    "title": "Final Notice of Violation",
+    "type": "fnov",
+    "sourceUrl": "https://www.energy.gov/sites/default/files/2025-12/Final%20Notice%20of%20Violation%2C%20Mid-America%20Conversion%20Services%2C%20LLC.pdf",
+    "pdfId": "Final Notice of Violation, Mid-America Conversion Services, LLC.pdf"
+  },
+  {
+    "id": "wel-2026-01-triad",
+    "institution": "Triad National Security, LLC",
+    "docket": "WEL-2026-01",
+    "date": "2026-07-27",
+    "title": "Enforcement Letter",
+    "type": "enforcement-letter",
+    "sourceUrl": "https://www.energy.gov/sites/default/files/2026-07/Enforcement%20Letter%2C%20Triad%20National%20Security%2C%20LLC.pdf",
+    "pdfId": "Enforcement Letter, Triad National Security, LLC.pdf"
+  },
+  {
+    "id": "wea-2025-03-engert",
+    "institution": "Engert, LLC",
+    "docket": "WEA-2025-03",
+    "date": "2025-07-29",
+    "title": "Preliminary Notice of Violation",
+    "type": "pnov",
+    "sourceUrl": "https://www.energy.gov/sites/default/files/2025-08/Preliminary%20Notice%20of%20Violation%2C%20BESCO-Engert%2C%20LLC.pdf",
+    "pdfId": "Preliminary Notice of Violation, BESCO-Engert, LLC.pdf"
+  },
+  {
+    "id": "jane-smith-person",
+    "institution": "Jane Smith",
+    "individual": "Jane Smith",
+    "docket": "WEA-2026-99",
+    "date": "2026-01-15",
+    "title": "People SKU",
+    "type": "people",
+    "sourceUrl": "https://www.energy.gov/sites/default/files/2026-01/Final%20Notice%20of%20Violation%2C%20Jane%20Smith.pdf",
+    "pdfId": "Final Notice of Violation, Jane Smith.pdf"
+  },
+  {
+    "id": "mcs-press",
+    "institution": "Mid-America Conversion Services, LLC",
+    "docket": "NEA-2026-01",
+    "date": "2026-01-20",
+    "title": "DOE Cites Mid-America Conversion Services",
+    "type": "press",
+    "sourceUrl": "https://www.energy.gov/sites/default/files/2026-01/DOE%20Cites%20Mid-America%20Conversion%20Services.pdf",
+    "pdfId": "DOE Cites Mid-America Conversion Services.pdf"
+  },
+  {
+    "id": "mcs-article",
+    "institution": "Mid-America Conversion Services, LLC",
+    "docket": "NEA-2026-01",
+    "date": "2026-01-20",
+    "title": "Article teaser",
+    "type": "article",
+    "sourceUrl": "https://www.energy.gov/ea/articles/final-notice-violation-mid-america-conversion-services-llc-january-2026",
+    "pdfId": "article.html"
+  },
+  {
+    "id": "nrc-ea",
+    "institution": "Example Nuclear Operator, LLC",
+    "docket": "EA-26-001",
+    "date": "2026-01-01",
+    "title": "NRC enforcement",
+    "type": "nrc",
+    "sourceUrl": "https://www.nrc.gov/docs/ML2601/ML260110001.pdf",
+    "pdfId": "ML260110001.pdf"
+  },
+  {
+    "id": "csb-reports",
+    "institution": "Example Chemical Plant, LLC",
+    "docket": "CSB-2026-01",
+    "date": "2026-01-01",
+    "title": "CSB investigation",
+    "type": "csb",
+    "sourceUrl": "https://www.csb.gov/assets/1/6/example.pdf",
+    "pdfId": "example.pdf"
+  },
+  {
+    "id": "waterboards-acl",
+    "institution": "Goleta West Sanitary District",
+    "docket": "R3-2026-0023",
+    "date": "2026-02-27",
+    "title": "Administrative Civil Liability",
+    "type": "waterboards",
+    "sourceUrl": "https://www.waterboards.ca.gov/centralcoast/board_decisions/adopted_orders/2026/2026-0023-goleta-west-aclo.pdf",
+    "pdfId": "2026-0023-goleta-west-aclo.pdf"
+  },
+  {
+    "id": "atsdr-hc",
+    "institution": "Sterigenics LLC",
+    "date": "2026-08-18",
+    "title": "Health Consultation",
+    "type": "atsdr",
+    "sourceUrl": "https://www.atsdr.cdc.gov/HAC/pha/Sterigenics/SmyrnaEtO-508.pdf",
+    "pdfId": "SmyrnaEtO-508.pdf"
+  },
+  {
+    "id": "fsis-hmsa",
+    "institution": "Example Packing LLC",
+    "date": "2026-01-01",
+    "title": "Notice of Intended Enforcement",
+    "type": "fsis",
+    "sourceUrl": "https://www.fsis.usda.gov/sites/default/files/media_file/documents/M1-NOIE-01012026.pdf",
+    "pdfId": "M1-NOIE-01012026.pdf"
+  },
+  {
+    "id": "health-canada",
+    "institution": "Example Pharma Inc.",
+    "date": "2026-01-01",
+    "title": "Health Canada Summary Reports API",
+    "type": "gmp",
+    "sourceUrl": "https://health-products.canada.ca/gmp/fullReportCard.ashx?id=1",
+    "pdfId": "fullReportCard.ashx"
+  }
+]

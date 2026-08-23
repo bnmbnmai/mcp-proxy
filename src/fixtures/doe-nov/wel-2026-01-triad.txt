@@ -1,0 +1,105 @@
+                                       July 27, 2026
+
+Dr. Thomas E. Mason
+Laboratory Director
+Triad National Security, LLC
+Los Alamos National Laboratory
+Post Office Box 1663
+Los Alamos, New Mexico, 87545
+
+WEL-2026-01
+
+Dear Dr. Mason:
+
+The Office of Enforcement has completed an evaluation into an August 15, 2025, event at
+Los Alamos National Laboratory in which a worker was injured during a material
+handling operation involving the removal of bagged gravel waste from a roof using a
+telehandler and hopper attachment. Based on this evaluation, the Office of Enforcement
+identified concerns that warrant management attention by Triad National Security, LLC
+(Triad).
+
+On the day of the event, four workers used a telehandler and fork-mounted hopper to
+remove bagged gravel waste from a roof and transfer the waste to trash bins. The hopper,
+a Vestil D-Series, is a self-dumping design. Its manufacturer’s operating instructions
+require confirmation that the hopper chute is securely latched to the base frame,
+preventing its release and rotation before filling the chute with refuse. Prior to the
+incident that caused the injury, an unintended release of the hopper occurred when
+workers reloaded it with double-bagged waste and attempted to raise it, which
+dumped the load onto the ground. Despite this first unintended release, workers resumed
+operations without securing the attachment. Triad’s Integrated Work Documents (IWDs)
+did not require verification that the hopper tilt release mechanism was secured.
+
+During the second lift, workers raised the unsecured loaded hopper. It tilted forward, fell,
+and struck one of the workers on their foot, causing a fracture. Subsequent discussion
+with the Office of Enforcement and the Los Alamos Field Office determined that workers
+used the Vestil D-Series hopper with the telehandler, even though the hopper
+manufacturer's specifications state the hopper is designed for use only with high lift fork
+trucks and must not be used with telehandlers.
+
+Based on this evaluation, the Office of Enforcement identified concerns with Triad’s
+implementation of 10 Code of Federal Regulations Part 851, Worker Safety and Health
+Program requirements. The specific concerns that warrant management attention include
+the following:
+                                                                                          2
+
+
+   •   Triad did not effectively manage the work planning process to ensure it developed
+       an adequate Integrated Work Document (IWD) for the material handling activity.
+       Specifically, the work was performed under two Integrated Work Documents
+       (IWDs), IWD – 46-0025-Roof Insulator Support TSR Leaking Roof and IWD-46-
+       0025-Roof Roofers Support TSR Leaking Roof. These IWDs did not identify the
+       incompatibility between the Vestil D-Series hopper and the telehandler and
+       subsequently did not identify, or address hazards associated with telehandler
+       operations and attachment use. These IWDs did not address attachment
+       compatibility, spotter responsibilities, or verification of proper attachment
+       engagement prior to use. The absence of these critical elements in work planning
+       directly contributed to the initial unintended hopper release and led to the
+       subsequent injury.
+
+   •   Triad did not provide adequate training to workers on the safe operation of the
+       telehandler with the hopper, specifically regarding the critical importance of
+       verifying equipment compatibility and adhering to manufacturer instructions for
+       approved equipment. Furthermore, Triad did not ensure workers maintained a
+       safe distance from the telehandler during operations, which allowed workers to be
+       too close to the telehandler while in use. This inadequate training likely
+       contributed to workers' inability to fully recognize the hazards associated with the
+       equipment's incompatibility and to respond appropriately after the initial hopper
+       release, ultimately increasing the risk of injury.
+
+The Office of Enforcement acknowledges that Triad made timely notifications, paused
+work following the event, and conducted a fact finding. The fact finding identified
+concerns related to work planning and control, specifically in the development and
+execution of IWDs and in equipment selection and training associated with material
+handling activities. The Office of Enforcement recommends that Triad ensure IWDs
+identify potential equipment incompatibilities, identify all potential hazards, and define
+controls for equipment use. Training should emphasize adherence to manufacturer
+instructions, including use of equipment in accordance with user manuals, verification of
+attachment compatibility and capacity, and verification that attachments are secured in
+accordance with the manufacturer’s instructions prior to operation.
+
+The Office of Enforcement has elected to issue this Enforcement Letter to convey
+concerns with Triad’s implementation of worker safety and health requirements.
+Issuance of this Enforcement Letter reflects DOE’s decision to not pursue further
+enforcement activity against Triad at this time. In coordination with the DOE’s National
+Nuclear Security Administration, the Office of Enforcement will continue to monitor
+Triad’s efforts to maintain a safe workplace.
+
+This letter imposes no requirements on Triad, and no response is required. If you have
+any questions, please contact me at (301) 903-7707, or your staff may contact Dr.
+Shannon Holman, Director, Office of Worker Safety and Health Enforcement, at (301)
+903-0100.
+                                                                         3
+
+
+                                      Sincerely,
+
+
+
+                                      Robin M. Keeler
+                                      Acting Director
+                                      Office of Enforcement
+                                      Office of Enterprise Assessments
+
+cc: Theodore Wyka, NA-LA
+    Tamara Greenwood, Triad National Security, LLC
+

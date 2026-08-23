@@ -1,0 +1,175 @@
+                                      January 15, 2026
+
+
+
+Mr. Dutch Conrad
+President and Project Manager
+Mid-America Conversion Services, LLC
+1020 Monarch St., Suite 300
+Lexington, Kentucky 40513
+
+NEA-2026-01 (Final Notice of Violation)
+
+Dear Mr. Conrad:
+
+Pursuant to Section 234A of the Atomic Energy Act of 1954, as amended, 42 United
+States Code § 2282a, and the U.S. Department of Energy (DOE) regulations in 10 Code
+of Federal Regulations (C.F.R) Part 820, Procedural Rules for DOE Nuclear Facilities,
+DOE is issuing this Final Notice of Violation (FNOV) to Mid-America Conversion
+Services, LLC (MCS) for violations of DOE’s nuclear safety requirements. The FNOV
+is based on the DOE Office of Enforcement’s investigation summary dated August 31,
+2023, as well as a thorough review of all evidence submitted by MCS, including their
+April 22, 2024, reply to the Preliminary Notice of Violation (PNOV), that was issued by
+DOE on February 20, 2024.
+
+nuclear safety deficiencies [and that] they have not conducted a causal analysis or taken
+appropriate corrective actions to prevent recurrence” remains accurate.
+
+Therefore, as MCS did not identify (or report) these violations, reducing the base civil
+penalty for prompt reporting of a violation is not appropriate in this case. Similarly, no
+mitigation for corrective action is warranted because MCS failed to address these
+noncompliances through its corrective action system in a timely manner.
+
+                                                                                      Enclosure 2
+
+                                    Final Notice of Violation
+
+
+Mid-America Conversion Services, LLC
+Portsmouth Depleted Uranium Hexafluoride Conversion Facility
+
+NEA-2026-01
+
+A U.S. Department of Energy (DOE) investigation into the facts and circumstances associated
+with allegations of nuclear safety deficiencies at the Portsmouth Depleted Uranium Hexafluoride
+Conversion (DUF6) facility that occurred between 2019 and 2022 revealed multiple violations of
+DOE nuclear safety requirements by Mid-America Conversion Services, LLC (MCS). MCS
+manages and operates the Portsmouth DUF6 facility for the DOE Office of Environmental
+Management’s Portsmouth Paducah Project Office (PPPO). The allegations concerned
+inadequate hazards analyses, inadequate causal analyses of events, inadequate processes for
+planning and scheduling work, and the performance of work by unqualified workers. These
+deficiencies did not pose a risk to the public or to workers outside the immediate vicinity of the
+Portsmouth DUF6.
+
+DOE provided MCS with an investigation summary dated August 31, 2023, and convened an
+enforcement conference with MCS’s representatives on November 2, 2023, to discuss the
+investigation summary’s findings and MCS’s response. DOE issued a Preliminary Notice of
+Violation (PNOV), NEA-2024-01, on February 20, 2024.
+
+MCS replied to the PNOV on April 22, 2024, and contested all three Severity Level II violations,
+including the characterizations, classifications, and proposed civil penalty amounts. MCS
+asserted that the PNOV was based on a misunderstanding of the underlying facts, MCS’s
+procedures, and corrective actions. MCS requested that DOE either withdraw each violation or
+reclassify each violation with a significant penalty reduction, referencing the corrective actions
+MCS had already implemented and plans to implement. DOE has thoroughly evaluated MCS’s
+response and has provided the analysis in Enclosure 1.
+
+Pursuant to Section 234A of the Atomic Energy Act of 1954, as amended, and DOE regulations
+set forth in 10 Code of Federal Regulations (C.F.R.) Part 820 (Part 820), Procedural Rules for
+DOE Nuclear Activities, DOE hereby issues this Final Notice of Violation (FNOV) to MCS.
+The violations included deficiencies in: (1) management processes, (2) training and
+qualification, and (3) quality improvement. DOE has grouped and categorized the violations as
+three Severity Level II violations.
+
+Severity Levels are explained in Part 820, Appendix A, General Statement of Enforcement
+Policy. Paragraph VI(b) states that “Severity Level II violations represent a significant lack of
+attention or carelessness toward responsibilities of DOE contractors for the protection of public
+or worker safety which could, if uncorrected, potentially lead to an adverse impact on public or
+worker safety at DOE facilities.”
+
+                                                                                                     2
+
+
+ In consideration of the lack of mitigation as detailed in Enclosure 1, DOE imposes a total civil
+ penalty of $393,000.
+
+ As required by 10 C.F.R. § 820.25(a) and consistent with Part 820, appendix A, this FNOV
+ concisely states the determined violations, designated penalties, and further actions necessary by
+ or available to the respondent. Citations specifically referencing the quality assurance criteria of
+ 10 C.F.R. § 830.122 also constitute violations of § 830.121(a), which requires compliance with
+ those quality assurance criteria.
+
+I. VIOLATIONS
+
+ A. Management Processes
+
+    Title 10 C.F.R. § 830.121, Quality Assurance Program (QAP), subsection (b), states that
+    "[t]he contractor responsible for a DOE nuclear facility must:… (4) [c]onduct work in
+    accordance with the QAP."
+
+    Title 10 C.F.R. § 830.122, subsection (a), Criterion 1—Management/Program, requires
+    contractors to “(1) [e]stablish an organizational structure, functional responsibilities, levels of
+    authority, and interfaces for those managing, performing, and assessing the work.
+    (2) Establish management processes, including planning, scheduling, and providing resources
+    for the work.”
+
+    DUF6-PLN-003, Project Quality Assurance Plan, Revision 3, December 23, 2020, section 2,
+    Quality Assurance Program, states that DUF6 management is responsible for “establishing
+    effective interfaces and communication processes with both the internal and external
+    organizations…assessing the adequacy and effectiveness of training programs for their areas
+    of responsibility.” It also states that “DUF6 management regularly assesses the adequacy
+    and effective implementation of the [quality assurance] program” and that management’s
+    “participation is essential to the success of the quality improvement process because they are
+    in a position to both evaluate the organization as a total system and to effect needed change.”
+
+    DUF6-U-CON-0001, Conduct of Operations Manual, Revision 3, July 8, 2020, section
+    1.3.4.i, Requirements, states that “[m]anagement systems are designed to minimize the
+    effects of human performance failures.”
+
+    Title 10 C.F.R. § 830.122, subsection (h), Criterion 8—Performance/Inspection and
+    Acceptance Testing, requires contractors to “(1) [i]nspect and test specified items, services,
+    and processes using established acceptance and performance criteria.”
+
+    DUF6-PLN-003, Project Quality Assurance Plan, Revision 3, December 23, 2020, section
+    10, Inspections, states that “inspections required to verify conformance of an item or activity
+    to specified requirements or continued acceptability of items in service shall be planned and
+    executed.”
+
+                                                                                                  3
+
+
+   DUF6-X-OPS-0507, Cylinder Movement Operations, Revision 2, September 16, 2019,
+   section 8.1, Cylinder Handling Crane Operations, states that “[e]quipment that is past due
+   for inspection shall not be operated [emphasis in original].”
+
+   Contrary to these requirements, MCS management processes (e.g., work planning,
+   procedures, conduct of operations, training, stop work) failed to prevent the operation of
+   crane X-0-CHS-CN-002 beyond its required inspection due date and minimize the effects of
+   human performance failures. Specific examples include:
+
+   1. MCS scheduled required monthly and annual inspections of the crane to take place on the
+      morning of Wednesday, September 22, 2021. However, in an effort to complete several
+      work orders (i.e., 2101927, 2101932, 2101933, 2101953, and 2102209) earlier than
+      scheduled, MCS directed these work orders be moved from the Wednesday night shift to
+      the Monday (September 20, 2021) night shift by approving the DUF6 Conversion Project
+      Daily (Shift) Orders, dated September 20, 2021. DUF6-U-CON-0001, section 15.3,
+      Requirements, states that “Timely Orders [which includes Daily (Shift) Orders] specify
+      appropriate orders such as direction/authorization to…perform specific maintenance
+      actions [and] Timely Orders shall not be used to replace of circumvent approved
+      technical procedures.” However, contrary to this requirement, MCS’s issuance of these
+      Daily (Shift) Orders was both inappropriate and inconsistent with technical procedures,
+      as the required inspections were not scheduled to be complete at the time workers were
+      directed and authorized by these orders to perform the work.
+
+   2. The conflicting direction created by the issuance of the Daily (Shift) Order, dated
+      September 20, 2021, did not result in a “time-out” prior to the operation of the crane as
+      required by DUF6-U-CON-0001, section 16, Responsibilities, subsection 16.2.3,
+      Personnel, which requires that workers “stop the work or request a time-out" if a
+      procedure, as written, “will produce unsafe or unsatisfactory results.”
+
+   3. MCS management failed to ensure the effectiveness of worker training identified in
+      BWCS-U-OJT-OPS-0507, Crane Operator OJT [on the job training], Revision 0, to
+      prevent the operation of a crane beyond its required inspection due date.
+
+   4. MCS management failed to ensure the effective implementation of two checklists, DUF6
+      Form 3746, Overhead Crane, Monorail and Hoist Checklist, and DUF6 Form 3749,
+      Lifting Fixture Checklist, to prevent the operation of a crane beyond its required
+      inspection due date.
+
+   5. MCS management failed to establish effective interfaces and communication processes
+      and provide adequate management oversight to ensure effective implementation of the
+      QAP as evidenced by the examples above.
+
+Collectively, these noncompliances constitute a Severity Level II violation.
+Base Civil Penalty – $131,000.
+Imposed Civil Penalty – $131,000.
