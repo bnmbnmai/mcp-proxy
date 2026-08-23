@@ -22,6 +22,8 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 - Required seed: Citi–Deutsche Bank — Case 50601 — 21 Feb 2025 — https://assets.publishing.service.gov.uk/media/6876390d352c290d20dcae7c/Citi-Deutsche_Bank__Non-confidential_decision.pdf
 - License: **Crown copyright / Open Government Licence v3.0** (commercial reuse allowed). Departmental logos / Royal Arms reserved. Attribute UK CMA.
 
+Paid body keeps the existing `cards[]` fields. Alongside those keys the paid JSON adds `records[]` (`id`, `date`, `firm`, `url`, `type=cma-ca98`), `recordCount`, honest `asOf` / `fetchedAt`, and `source` (the official CMA listing). A repeat buyer diffs `asOf` + record ids.
+
 Free manifest is institution / docket / date / sourceUrl only. Needles such as `Citi-DB Relevant Period`, `gilt auctions`, and `commercially sensitive information` stay out of unpaid responses.
 
 `data/cma-ca98/` is gitignored.

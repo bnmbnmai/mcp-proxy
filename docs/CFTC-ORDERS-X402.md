@@ -23,7 +23,9 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 - Required seed: UBS Financial Services Inc. — Docket 26-04 — dated 31 Jul 2026 — https://www.cftc.gov/media/14456/ENF_UBSFinancial%20ServicesOrder073126/download
 - License: **17 USC 105**. Attribute CFTC.
 
-Paid body fields: `id`, `docket`, `pdfId`, `institution`, `date`, `title`, `sourceUrl`, `body`. `body` is official `pdftotext` of the CFTC-authored PDF. `sourceUrl` is always the `www.cftc.gov` `/media/{id}/{slug}/download` PDF.
+Paid body keeps the existing `cards[]` fields: `id`, `docket`, `pdfId`, `institution`, `date`, `title`, `sourceUrl`, `body`. `body` is official `pdftotext` of the CFTC-authored PDF. `sourceUrl` is always the `www.cftc.gov` `/media/{id}/{slug}/download` PDF.
+
+Alongside those keys the paid JSON adds `records[]` (`id`, `date`, `firm`, `url`, `type=cftc-order`), `recordCount`, honest `asOf` / `fetchedAt`, and `source` (the official CFTC listing). A repeat buyer diffs `asOf` + record ids.
 
 Leak-tests already passed on the live CFTC hosts: the UBS FSI press page (`9277-26`) is an ORDER link only; unique order phrases (`$8.9 billion`, `01:44 pm, Jul 31 2026`, `third-party consultant`) stay in the PDF. Do not re-litigate unless you find a dump of the order TEXT.
 

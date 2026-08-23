@@ -22,6 +22,8 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 - Required seed: KAGOME Co., LTD. — 26-173-01air — received 22 Jun 2026 — https://direct.aphis.usda.gov/sites/default/files/26-173-01air-response.pdf
 - License: **17 USC 105**. Attribute USDA APHIS.
 
+Paid body keeps the existing `cards[]` fields. Alongside those keys the paid JSON adds `records[]` (`id`, `date`, `firm`, `url`, `type=air-letter`), `recordCount`, honest `asOf` / `fetchedAt`, and `source` (the official APHIS listing). A repeat buyer diffs `asOf` + record ids.
+
 Free manifest is institution / docket / date / sourceUrl only. Needles such as `enhanced abiotic stress tolerance`, `2026.08.14 09:05:45`, and `reynolds.alan@epa.gov` stay out of unpaid responses.
 
 `data/air-letters/` is gitignored. Live-apply on apollo stays at the 5 official seeds.
