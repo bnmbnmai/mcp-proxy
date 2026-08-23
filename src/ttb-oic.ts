@@ -319,6 +319,7 @@ export function isRealTtbOicBody(text: string): boolean {
   if (/Bureau of Industry and Security/i.test(text) && /PROPOSED CHARGING LETTER|ORDER RELATING TO/i.test(text)) return false;
   if (/\d{2}-\d{3}-01air/i.test(text) && /Confirmation of the regulatory status/i.test(text)) return false;
   if (/RECORD OF DECISION/i.test(text) && /DECLARATION/i.test(text) && /\b(CERCLA|Superfund)\b/i.test(text)) return false;
+  if (/(?:MONETARY )?PENALTY NOTICE/i.test(text) && /Information Commissioner/i.test(text) && /(?:Data Protection Act 2018|section 155)/i.test(text)) return false;
   const ttb = /ALCOHOL AND TOBACCO TAX AND TRADE BUREAU/i.test(text);
   const kind = /ABSTRACT AND STATEMENT/i.test(text) && /Offer-in-Compromise|Offer in Compromise|\bOIC\b/i.test(text);
   return ttb && kind;

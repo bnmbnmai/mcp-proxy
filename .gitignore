@@ -32,6 +32,7 @@ build/denovo-orders.*
 build/ttb-oic.*
 build/air-letters.*
 build/superfund-rods.*
+build/ico-mpn.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
@@ -61,3 +62,4 @@ data/denovo-orders/
 data/ttb-oic/
 data/air-letters/
 data/superfund-rods/
+data/ico-mpn/

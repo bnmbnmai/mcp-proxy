@@ -156,6 +156,12 @@ async function main(): Promise<void> {
   });
   assert.equal(isRealSuperfundRodBody(cftc.body), false, "CFTC /cftc-orders is not this SKU");
 
+  const ico = parseSuperfundRodText(readFx("ico-mpn.txt"), {
+    sourceUrl: "https://ico.org.uk/media2/hrlmvj14/reddit-mpn-20260223.pdf",
+    institution: "Reddit, Inc.",
+  });
+  assert.equal(isRealSuperfundRodBody(ico.body), false, "ICO /ico-mpn is not this SKU");
+
   const manifest = buildSuperfundRodsManifest({
     ok: true,
     product: "epa-superfund-rod-bodies",
