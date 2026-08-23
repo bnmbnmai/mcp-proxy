@@ -786,7 +786,7 @@ async function main(): Promise<void> {
       product: "fda-import-alerts",
       status: "ok",
       reason: null,
-      fetchedAt: "2026-08-17T00:00:00.000Z",
+      fetchedAt: FRESH_FETCHED_AT,
       asOf: "2026-08-17",
       sources: {
         catalog: "https://www.accessdata.fda.gov/cms_ia/ialist.html",
