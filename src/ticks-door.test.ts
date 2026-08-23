@@ -3865,20 +3865,20 @@ async function main(): Promise<void> {
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === FORM_483_PATH), true);
-      assert.equal(shop.products.length, 28);
+      assert.equal(shop.products.length, 29);
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
         resources: string[];
         instructions?: string;
       };
-      assert.equal(wk.resources.length, 28);
+      assert.equal(wk.resources.length, 29);
       assert.ok(wk.resources.some((r) => r.endsWith(FORM_483_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D11_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D7_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D8_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(UNTITLED_LETTERS_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(PCAC_PATH)));
-      assert.ok((wk.instructions ?? "").includes("twenty-eight paid"));
+      assert.ok((wk.instructions ?? "").includes("twenty-nine paid"));
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
         paths: Record<string, { get?: { "x-payment-info"?: { price?: { amount?: string } } } }>;
@@ -3887,7 +3887,7 @@ async function main(): Promise<void> {
       assert.ok(spec.paths[FORM_483_MANIFEST_PATH]?.get);
       assert.equal(
         Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
-        28,
+        29,
       );
 
       const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();
@@ -3996,13 +3996,13 @@ async function main(): Promise<void> {
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === GMP_PATH), true);
-      assert.equal(shop.products.length, 29, "twenty-ninth product is /gmp when a real observation body is cached");
+      assert.equal(shop.products.length, 30, "thirtieth product is /gmp when a real observation body is cached");
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
         resources: string[];
         instructions?: string;
       };
-      assert.equal(wk.resources.length, 29);
+      assert.equal(wk.resources.length, 30);
       assert.ok(wk.resources.some((r) => r.endsWith(GMP_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D8_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(UNTITLED_LETTERS_PATH)));
@@ -4020,7 +4020,7 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.endsWith(OFAC_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(BIS_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(CFTC_ORDERS_PATH)));
-      assert.ok((wk.instructions ?? "").includes("twenty-nine paid"));
+      assert.ok((wk.instructions ?? "").includes("thirty paid"));
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
         paths: Record<string, { get?: { "x-payment-info"?: { price?: { amount?: string } } } }>;
@@ -4029,7 +4029,7 @@ async function main(): Promise<void> {
       assert.ok(spec.paths[GMP_MANIFEST_PATH]?.get);
       assert.equal(
         Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
-        29,
+        30,
       );
 
       const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();
@@ -4143,13 +4143,13 @@ async function main(): Promise<void> {
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === GMP_MD_PATH), true);
       assert.equal(shop.products.some((p) => p.path === GMP_PATH), true, "/gmp stays its own door");
-      assert.equal(shop.products.length, 30, "thirtieth product is /gmp-md when a real MD body is cached");
+      assert.equal(shop.products.length, 31, "thirty-first product is /gmp-md when a real MD body is cached");
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
         resources: string[];
         instructions?: string;
       };
-      assert.equal(wk.resources.length, 30);
+      assert.equal(wk.resources.length, 31);
       assert.ok(wk.resources.some((r) => r.endsWith(GMP_MD_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(GMP_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(SWISSPAR_PATH)));
@@ -4161,7 +4161,7 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.endsWith(OFAC_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(BIS_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(CFTC_ORDERS_PATH)));
-      assert.ok((wk.instructions ?? "").includes("thirty paid"));
+      assert.ok((wk.instructions ?? "").includes("thirty-one paid"));
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
         paths: Record<string, { get?: { "x-payment-info"?: { price?: { amount?: string } } } }>;
@@ -4170,7 +4170,7 @@ async function main(): Promise<void> {
       assert.ok(spec.paths[GMP_MD_MANIFEST_PATH]?.get);
       assert.equal(
         Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
-        30,
+        31,
       );
 
       const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();

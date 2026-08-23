@@ -419,7 +419,7 @@ export function isPublicBazaarSku(sku: DoorSku): boolean {
   return publicBazaarSkus().includes(sku);
 }
 
-const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six", "twenty-seven", "twenty-eight", "twenty-nine", "thirty"] as const;
+const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six", "twenty-seven", "twenty-eight", "twenty-nine", "thirty", "thirty-one"] as const;
 const NEXT_SKU_WORDS = [
   "first",
   "second",
@@ -451,6 +451,8 @@ const NEXT_SKU_WORDS = [
   "twenty-eighth",
   "twenty-ninth",
   "thirtieth",
+  "thirty-first",
+  "thirty-second",
 ] as const;
 
 function paidCountWord(): string {
@@ -1179,7 +1181,7 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         docket: "reddit-mpn-20260223",
         date: "2026-02-23",
         sourceUrl: "https://ico.org.uk/media2/hrlmvj14/reddit-mpn-20260223.pdf",
-        body: "PENALTY NOTICE\nREDDIT, INC.\nDATA PROTECTION ACT 2018 (PART 6, SECTION 155)\nENFORCEMENT POWERS OF THE INFORMATION COMMISSIONER\n548 Market Street",
+        body: "PENALTY NOTICE\nREDDIT, INC.\nDATA PROTECTION ACT 2018 (PART 6, SECTION 155)\nENFORCEMENT POWERS OF THE INFORMATION COMMISSIONER",
       },
     ],
   },
