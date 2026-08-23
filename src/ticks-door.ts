@@ -295,6 +295,10 @@ import {
   paidGmpMdBody,
   paidIcoMpnBody,
   paidImportAlertsBody,
+  paidMarinersBody,
+  paidMarinersD11Body,
+  paidMarinersD7Body,
+  paidMarinersD8Body,
   paidNcuaOrdersBody,
   paidOccCdBody,
   paidOfacOrdersBody,
@@ -648,22 +652,22 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
   },
   mariners: {
     description:
-      "Call GET /mariners when you need the latest USCG District 13 / Northwest Local Notice to Mariners as structured JSON from the official weekly PDF. Returns week, section, text, and source URL. Does not invent notices.",
+      "Call GET /mariners when you need the latest USCG District 13 / Northwest Local Notice to Mariners as structured JSON from the official weekly PDF. Returns week, section, text, and source URL. Does not invent notices. Paid JSON keeps notices[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: MARINERS_PATH,
   },
   "mariners-d11": {
     description:
-      "Call GET /mariners-d11 when you need the latest USCG District 11 / Southwest (northern) Local Notice to Mariners as structured JSON from the official weekly PDF. Same NavCEN walker as /mariners. Returns week, section, text, and source URL. Does not invent notices.",
+      "Call GET /mariners-d11 when you need the latest USCG District 11 / Southwest (northern) Local Notice to Mariners as structured JSON from the official weekly PDF. Same NavCEN walker as /mariners. Returns week, section, text, and source URL. Does not invent notices. Paid JSON keeps notices[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: MARINERS_D11_PATH,
   },
   "mariners-d7": {
     description:
-      "Call GET /mariners-d7 when you need the latest USCG District 7 / Southeast Local Notice to Mariners as structured JSON from the official weekly PDF. Same NavCEN walker as /mariners. Returns week, section, text, and source URL. Does not invent notices.",
+      "Call GET /mariners-d7 when you need the latest USCG District 7 / Southeast Local Notice to Mariners as structured JSON from the official weekly PDF. Same NavCEN walker as /mariners. Returns week, section, text, and source URL. Does not invent notices. Paid JSON keeps notices[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: MARINERS_D7_PATH,
   },
   "mariners-d8": {
     description:
-      "Call GET /mariners-d8 when you need the latest USCG District 8 / Gulf (New Orleans) Local Notice to Mariners as structured JSON from the official weekly PDF. Same NavCEN walker as /mariners. Returns week, section, text, and source URL. Does not invent notices.",
+      "Call GET /mariners-d8 when you need the latest USCG District 8 / Gulf (New Orleans) Local Notice to Mariners as structured JSON from the official weekly PDF. Same NavCEN walker as /mariners. Returns week, section, text, and source URL. Does not invent notices. Paid JSON keeps notices[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: MARINERS_D8_PATH,
   },
   "warning-letters": {
@@ -866,6 +870,17 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
     status: "ok",
     week: "32-2026",
     asOf: "2026-08-12",
+    source: "https://www.navcen.uscg.gov/local-notices-to-mariners?district=13+0&subdistrict=n",
+    recordCount: 1,
+    records: [
+      {
+        id: "32-2026:Federal Discrepancies:19055",
+        date: "2026-08-12",
+        firm: "Anacortes Harbor",
+        url: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf",
+        type: "mariners",
+      },
+    ],
     notices: [
       {
         week: "32-2026",
@@ -882,6 +897,17 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
     status: "ok",
     week: "32-2026",
     asOf: "2026-08-12",
+    source: "https://www.navcen.uscg.gov/local-notices-to-mariners?district=11+0&subdistrict=n",
+    recordCount: 1,
+    records: [
+      {
+        id: "32-2026:Federal Discrepancies:5430",
+        date: "2026-08-12",
+        firm: "Berkeley",
+        url: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11322026.pdf",
+        type: "mariners-d11",
+      },
+    ],
     notices: [
       {
         week: "32-2026",
@@ -898,6 +924,17 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
     status: "ok",
     week: "32-2026",
     asOf: "2026-08-12",
+    source: "https://www.navcen.uscg.gov/local-notices-to-mariners?district=7+0&subdistrict=n",
+    recordCount: 1,
+    records: [
+      {
+        id: "32-2026:Federal Discrepancies:36887",
+        date: "2026-08-12",
+        firm: "Altamaha Sound",
+        url: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm07322026.pdf",
+        type: "mariners-d7",
+      },
+    ],
     notices: [
       {
         week: "32-2026",
@@ -914,6 +951,17 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
     status: "ok",
     week: "33-2026",
     asOf: "2026-08-19",
+    source: "https://www.navcen.uscg.gov/local-notices-to-mariners?district=8+0&subdistrict=g",
+    recordCount: 1,
+    records: [
+      {
+        id: "33-2026:Federal Discrepancies:20305",
+        date: "2026-08-19",
+        firm: "Acadiana Navigation Channel",
+        url: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm0833g2026.pdf",
+        type: "mariners-d8",
+      },
+    ],
     notices: [
       {
         week: "33-2026",
@@ -3035,6 +3083,10 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
               ok: { type: "boolean" },
               product: { type: "string" },
               week: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
               notices: { type: "array", items: { type: "object" } },
             },
           },
@@ -3054,6 +3106,10 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
               ok: { type: "boolean" },
               product: { type: "string" },
               week: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
               notices: { type: "array", items: { type: "object" } },
             },
           },
@@ -3073,6 +3129,10 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
               ok: { type: "boolean" },
               product: { type: "string" },
               week: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
               notices: { type: "array", items: { type: "object" } },
             },
           },
@@ -3092,6 +3152,10 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
               ok: { type: "boolean" },
               product: { type: "string" },
               week: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
               notices: { type: "array", items: { type: "object" } },
             },
           },
@@ -4345,22 +4409,22 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === MARINERS_PATH) {
-    await servePaid(req, res, port, "mariners", () => loadMariners());
+    await servePaid(req, res, port, "mariners", async () => paidMarinersBody(await loadMariners()));
     return;
   }
 
   if (path === MARINERS_D11_PATH) {
-    await servePaid(req, res, port, "mariners-d11", () => loadMarinersD11());
+    await servePaid(req, res, port, "mariners-d11", async () => paidMarinersD11Body(await loadMarinersD11()));
     return;
   }
 
   if (path === MARINERS_D7_PATH) {
-    await servePaid(req, res, port, "mariners-d7", () => loadMarinersD7());
+    await servePaid(req, res, port, "mariners-d7", async () => paidMarinersD7Body(await loadMarinersD7()));
     return;
   }
 
   if (path === MARINERS_D8_PATH) {
-    await servePaid(req, res, port, "mariners-d8", () => loadMarinersD8());
+    await servePaid(req, res, port, "mariners-d8", async () => paidMarinersD8Body(await loadMarinersD8()));
     return;
   }
 
