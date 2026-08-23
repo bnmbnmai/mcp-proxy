@@ -1,0 +1,120 @@
+                     FEDERAL MARITIME COMMISSION
+                                Office of Administrative Law Judges
+
+
+TZ SSE BUYER, LLC, Complainant
+
+v.                                                                  DOCKET NO. 24-10
+
+YANG MING MARINE TRANSPORT CORP., Respondent.
+
+
+                                   Served: March 24, 2025
+
+ORDER OF: Richard AMBROW, Administrative Law Judge.
+
+                                      INITIAL DECISION 1
+
+I.     INTRODUCTION
+
+       A.     Overview
+
+       Complainant TZ SSE Buyer, LLC (“Complainant”) 2 filed an amended complaint alleging
+that Respondent Yang Ming Marine Transport Corp. (“Respondent”) violated the Shipping Act
+of 1984, as amended, by charging Complainant unjust and unreasonable detention and
+demurrage in violation of 46 U.S.C. § 41102(c) and refusing to deal or negotiate detention and
+demurrage charges in violation of 46 U.S.C. § 41104(a)(10). In short, Complainant argues that
+Respondent imposed a combined total of 705 unjust and unreasonable demurrage, detention, per
+diem and yard storage fees, spread across 626 container shipments (some container shipments
+had multiple different types of charges) from 2021 through 2022. The aggregate total of
+allegedly unjust and unreasonable demurrage, detention, per diem and yard storage fees is
+$1,304,526.
+
+         Impact Products, LLC and Safety Zone, LLC (collectively, “Supply Source”) filed an
+initial Verified Complaint that was served by the Commission on February 14, 2024. Supply
+Source eventually filed for bankruptcy, and Complainant bought Supply Source’s assets. By
+means of the Verified Amended Complaint, TZ SSE Buyer, LLC was substituted as
+
+       1
+         This initial decision will become the decision of the Commission in the absence of
+review by the Commission. Any party may file exceptions to this decision within twenty-two
+days of the date of service. (46 C.F.R. § 502.227).
+       2
+        As explained in the main text, TZ SSE Buyer, LLC purchased the original
+Complainants’ assets out of bankruptcy. The original Complaint was amended to make TZ SSE
+Buyer, LLC, the Complainant. Therefore, the caption is appropriately amended to reflect that TZ
+SSE Buyer, LLC is the Complainant.
+
+Complainant. Respondent answered and generally denied all of the allegations in both the
+Verified Complaint and Verified Amended Complaint.
+
+        As discussed below, I find that the Commission lacks jurisdiction over claims related to
+381 of the 626 container shipments because the record lacks evidence that the containers were
+shipped overseas from a foreign port to a port in the United States. Accordingly, the claims
+related to those 381 container shipments are dismissed. The container shipments related to the
+dismissed claims are identified in Appendix A, lines 247 to 627. 3
+
+        As for claims associated with the remaining 245 container shipments, Complainant
+presents insufficient evidence to meet its burden of proving that Respondent violated either 46
+U.S.C. § 41102(c) or 46 U.S.C. § 41104(a)(10). The only exceptions are that Complainant
+carries its burden of demonstrating that the demurrage charges related to container no.
+TCNU2329916 from January 7, 2021, through January 12, 2021, and container no.
+SEGU6841518 for June 23, 2022, unjustly and unreasonably violated § 41102(c). Otherwise,
+Complainant’s remaining claims are denied. As for the demurrage charges related to container
+nos. TCNU2329916 and SEGU6841518, Complainant is entitled to $517.50 in reparations.
+
+       B.      Procedural History
+
+        The original Complainants, Impact Products, LLC and Safety Zone, LLC (“Supply
+Source”) filed a Complaint dated February 6, 2024, naming Yang Ming Marine Transport Corp.,
+as a respondent. (See Complaint).
+
+        On February 14, 2024, the Secretary issued a Notice of Filing of Complaint and
+Assignment (“Notice of Filing”), which, among other things, indicated that the Initial Decision
+of the presiding judge was to be issued by February 14, 2025. (Notice of Filing, at 2).
+
+         The matter was assigned to Chief Administrative Law Judge Erin M. Wirth, who entered
+the Initial Order on February 29, 2024.
+
+       Respondent filed its Answer to Complaint with Affirmative Defenses on March 7, 2024.
+
+      On March 22, 2024, the parties filed a Joint Status Report and Proposed Discovery
+Schedule (“JSR”). In the JSR, the parties proposed a case schedule, including discovery cutoff of
+August 12, 2024, and completion of briefing by November 9, 2024.
+
+        On March 25, 2024, Chief Judge Wirth issued a Scheduling Order that largely adopted
+the parties’ proposed case schedule, with some adjustments.
+
+
+
+3
+ Appendix A was compiled by the undersigned by combining the “Invoices Spreadsheet”
+(CX_000033-CX_000051), with the sea waybills (CX_000203-CX_000205, CX_000345-
+CX_001073), invoices from Respondent to Laufer Group International (“LGI”) (CX_000264-
+CX_000279; CX_001074-CX_001185), and invoices from LGI to Supply Source (CX_000052-
+CX_000055; CX_000058; CX_000112-CX_000125; CX_000127-CX_000134; CX_000149-
+CX_000150; CX_000160-CX_000168).
+
+
+                                                    2
+
+       On August 9, 2024, the parties filed a Joint Motion to Extend Discovery and Briefing
+Deadlines. In it, the parties requested that discovery cut-off be extended, as well as the briefing
+schedule. The parties noted that Supply Source’s bankruptcy filing delayed the proceeding. In
+addition, the parties were working to resolve alleged discovery deficiencies. The proposed
+schedule amendments included extending discovery cut-off until October 22, 2024, and
+extending the completion of briefing until December 18, 2024.
+
+       On August 19, 2024, Chief Judge Wirth issued a Revised Scheduling Order that adopted
+the proposed schedule amendments.
+
+        On September 27, 2024, Supply Source filed an Unopposed Motion for Leave to File
+Amended Complaint (“Motion for Leave to Amend”). The Motion for Leave to Amend indicates
+that the proposed amended complaint will change the complainants from Impact Products, LLC
+and Safety Zone, LLC to TZ SSE Buyer, LLC. Supply Source filed for bankruptcy protection
+after the Complaint was filed. TZ SSE Buyer, LLC purchased Supply Source’s assets, including
+the claims at issue in this litigation. In addition, the Motion for Leave to Amend indicates that
+the proposed amended complaint adds details, but did not add new allegations or charges.
+Among other things, the Motion for Leave to Amend included a copy of the Asset Purchase
+Agreement Between TZ SSE Buyer, LLC, Supply Source Enterprises, Inc., Impact Products
+LLC, and The Safety Zone, LLC (“Purchase Agreement”). (Motion for Leave to Amend, Ex. 2,

@@ -158,6 +158,11 @@ import {
   IPO_TM_PATH,
 } from "./ipo-tm.js";
 import {
+  FMC_ORDERS_AMOUNT_ATOMIC,
+  FMC_ORDERS_MANIFEST_PATH,
+  FMC_ORDERS_PATH,
+} from "./fmc-orders.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -322,6 +327,7 @@ async function main(): Promise<void> {
     assert.ok(!wk.resources.some((r) => r.includes(CCPC_MERGERS_PATH)), "do not list /ccpc-mergers");
     assert.ok(!wk.resources.some((r) => r.includes(BKARTA_ENTSCHEIDUNGEN_PATH)), "do not list /bkarta-entscheidungen");
     assert.ok(!wk.resources.some((r) => r.includes(IPO_TM_PATH)), "do not list /ipo-tm");
+    assert.ok(!wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "do not list /fmc-orders");
     assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)), "do not list /form-483 without a cached body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_PATH)), "do not list /gmp without a cached observation body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_MD_PATH)), "do not list /gmp-md without a cached observation body");
@@ -468,6 +474,8 @@ async function main(): Promise<void> {
     assert.equal(spec.paths[BKARTA_ENTSCHEIDUNGEN_MANIFEST_PATH], undefined, "OpenAPI must not list /bkarta-entscheidungen/manifest.json");
     assert.equal(spec.paths[IPO_TM_PATH], undefined, "OpenAPI must not list /ipo-tm");
     assert.equal(spec.paths[IPO_TM_MANIFEST_PATH], undefined, "OpenAPI must not list /ipo-tm/manifest.json");
+    assert.equal(spec.paths[FMC_ORDERS_PATH], undefined, "OpenAPI must not list /fmc-orders");
+    assert.equal(spec.paths[FMC_ORDERS_MANIFEST_PATH], undefined, "OpenAPI must not list /fmc-orders/manifest.json");
     assert.equal(spec.paths[FORM_483_PATH], undefined, "no stub /form-483 in OpenAPI without a cached body");
     assert.equal(spec.paths[FORM_483_MANIFEST_PATH], undefined);
     assert.equal(spec.paths[GMP_PATH], undefined, "no stub /gmp in OpenAPI without a cached body");
@@ -517,6 +525,7 @@ async function main(): Promise<void> {
     assert.ok(!llmsBody.includes("GET /ccpc-mergers"), "do not list /ccpc-mergers");
     assert.ok(!llmsBody.includes("GET /bkarta-entscheidungen"), "do not list /bkarta-entscheidungen");
     assert.ok(!llmsBody.includes("GET /ipo-tm"), "do not list /ipo-tm");
+    assert.ok(!llmsBody.includes("GET /fmc-orders"), "do not list /fmc-orders");
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.includes("GET /gmp-md"));
@@ -566,6 +575,7 @@ async function main(): Promise<void> {
     assert.ok(!shop.products.some((p) => p.path === CCPC_MERGERS_PATH), "do not list /ccpc-mergers");
     assert.ok(!shop.products.some((p) => p.path === BKARTA_ENTSCHEIDUNGEN_PATH), "do not list /bkarta-entscheidungen");
     assert.ok(!shop.products.some((p) => p.path === IPO_TM_PATH), "do not list /ipo-tm");
+    assert.ok(!shop.products.some((p) => p.path === FMC_ORDERS_PATH), "do not list /fmc-orders");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_MD_PATH));
@@ -3928,6 +3938,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === CCPC_MERGERS_PATH), false, "do not list /ccpc-mergers");
       assert.equal(shop.products.some((p) => p.path === BKARTA_ENTSCHEIDUNGEN_PATH), false, "do not list /bkarta-entscheidungen");
       assert.equal(shop.products.some((p) => p.path === IPO_TM_PATH), false, "do not list /ipo-tm");
+      assert.equal(shop.products.some((p) => p.path === FMC_ORDERS_PATH), false, "do not list /fmc-orders");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
@@ -3937,6 +3948,7 @@ async function main(): Promise<void> {
       assert.ok(!wk.resources.some((r) => r.includes(CCPC_MERGERS_PATH)), "well-known must not list /ccpc-mergers");
       assert.ok(!wk.resources.some((r) => r.includes(BKARTA_ENTSCHEIDUNGEN_PATH)), "well-known must not list /bkarta-entscheidungen");
       assert.ok(!wk.resources.some((r) => r.includes(IPO_TM_PATH)), "well-known must not list /ipo-tm");
+      assert.ok(!wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "well-known must not list /fmc-orders");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /phmsa-cop"), "llms.txt must not list /phmsa-cop yet");
@@ -3944,6 +3956,7 @@ async function main(): Promise<void> {
       assert.ok(!llms.includes("GET /ccpc-mergers"), "llms.txt must not list /ccpc-mergers");
       assert.ok(!llms.includes("GET /bkarta-entscheidungen"), "llms.txt must not list /bkarta-entscheidungen");
       assert.ok(!llms.includes("GET /ipo-tm"), "llms.txt must not list /ipo-tm");
+      assert.ok(!llms.includes("GET /fmc-orders"), "llms.txt must not list /fmc-orders");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[PHMSA_COP_PATH], undefined, "OpenAPI must not list /phmsa-cop yet");
@@ -3951,6 +3964,7 @@ async function main(): Promise<void> {
       assert.equal(spec.paths[CCPC_MERGERS_PATH], undefined, "OpenAPI must not list /ccpc-mergers");
       assert.equal(spec.paths[BKARTA_ENTSCHEIDUNGEN_PATH], undefined, "OpenAPI must not list /bkarta-entscheidungen");
       assert.equal(spec.paths[IPO_TM_PATH], undefined, "OpenAPI must not list /ipo-tm");
+      assert.equal(spec.paths[FMC_ORDERS_PATH], undefined, "OpenAPI must not list /fmc-orders");
 
       const manifest = await fetch(`${base}${PHMSA_COP_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "phmsa-cop free manifest is free");
@@ -4070,6 +4084,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === CCPC_MERGERS_PATH), false, "do not list /ccpc-mergers");
       assert.equal(shop.products.some((p) => p.path === BKARTA_ENTSCHEIDUNGEN_PATH), false, "do not list /bkarta-entscheidungen");
       assert.equal(shop.products.some((p) => p.path === IPO_TM_PATH), false, "do not list /ipo-tm");
+      assert.equal(shop.products.some((p) => p.path === FMC_ORDERS_PATH), false, "do not list /fmc-orders");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
@@ -4078,18 +4093,21 @@ async function main(): Promise<void> {
       assert.ok(!wk.resources.some((r) => r.includes(CCPC_MERGERS_PATH)), "well-known must not list /ccpc-mergers");
       assert.ok(!wk.resources.some((r) => r.includes(BKARTA_ENTSCHEIDUNGEN_PATH)), "well-known must not list /bkarta-entscheidungen");
       assert.ok(!wk.resources.some((r) => r.includes(IPO_TM_PATH)), "well-known must not list /ipo-tm");
+      assert.ok(!wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "well-known must not list /fmc-orders");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /acm-besluiten"), "llms.txt must not list /acm-besluiten");
       assert.ok(!llms.includes("GET /ccpc-mergers"), "llms.txt must not list /ccpc-mergers");
       assert.ok(!llms.includes("GET /bkarta-entscheidungen"), "llms.txt must not list /bkarta-entscheidungen");
       assert.ok(!llms.includes("GET /ipo-tm"), "llms.txt must not list /ipo-tm");
+      assert.ok(!llms.includes("GET /fmc-orders"), "llms.txt must not list /fmc-orders");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[ACM_BESLUITEN_PATH], undefined, "OpenAPI must not list /acm-besluiten");
       assert.equal(spec.paths[CCPC_MERGERS_PATH], undefined, "OpenAPI must not list /ccpc-mergers");
       assert.equal(spec.paths[BKARTA_ENTSCHEIDUNGEN_PATH], undefined, "OpenAPI must not list /bkarta-entscheidungen");
       assert.equal(spec.paths[IPO_TM_PATH], undefined, "OpenAPI must not list /ipo-tm");
+      assert.equal(spec.paths[FMC_ORDERS_PATH], undefined, "OpenAPI must not list /fmc-orders");
 
       const manifest = await fetch(`${base}${ACM_BESLUITEN_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "acm-besluiten free manifest is free");
@@ -4208,6 +4226,7 @@ async function main(): Promise<void> {
       assert.equal(shop.products.some((p) => p.path === CCPC_MERGERS_PATH), false, "do not list /ccpc-mergers");
       assert.equal(shop.products.some((p) => p.path === BKARTA_ENTSCHEIDUNGEN_PATH), false, "do not list /bkarta-entscheidungen");
       assert.equal(shop.products.some((p) => p.path === IPO_TM_PATH), false, "do not list /ipo-tm");
+      assert.equal(shop.products.some((p) => p.path === FMC_ORDERS_PATH), false, "do not list /fmc-orders");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
@@ -4215,16 +4234,19 @@ async function main(): Promise<void> {
       assert.ok(!wk.resources.some((r) => r.includes(CCPC_MERGERS_PATH)), "well-known must not list /ccpc-mergers");
       assert.ok(!wk.resources.some((r) => r.includes(BKARTA_ENTSCHEIDUNGEN_PATH)), "well-known must not list /bkarta-entscheidungen");
       assert.ok(!wk.resources.some((r) => r.includes(IPO_TM_PATH)), "well-known must not list /ipo-tm");
+      assert.ok(!wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "well-known must not list /fmc-orders");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /ccpc-mergers"), "llms.txt must not list /ccpc-mergers");
       assert.ok(!llms.includes("GET /bkarta-entscheidungen"), "llms.txt must not list /bkarta-entscheidungen");
       assert.ok(!llms.includes("GET /ipo-tm"), "llms.txt must not list /ipo-tm");
+      assert.ok(!llms.includes("GET /fmc-orders"), "llms.txt must not list /fmc-orders");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[CCPC_MERGERS_PATH], undefined, "OpenAPI must not list /ccpc-mergers");
       assert.equal(spec.paths[BKARTA_ENTSCHEIDUNGEN_PATH], undefined, "OpenAPI must not list /bkarta-entscheidungen");
       assert.equal(spec.paths[IPO_TM_PATH], undefined, "OpenAPI must not list /ipo-tm");
+      assert.equal(spec.paths[FMC_ORDERS_PATH], undefined, "OpenAPI must not list /fmc-orders");
 
       const manifest = await fetch(`${base}${CCPC_MERGERS_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "ccpc-mergers free manifest is free");
@@ -4341,20 +4363,24 @@ async function main(): Promise<void> {
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === BKARTA_ENTSCHEIDUNGEN_PATH), false, "do not list /bkarta-entscheidungen");
       assert.equal(shop.products.some((p) => p.path === IPO_TM_PATH), false, "do not list /ipo-tm");
+      assert.equal(shop.products.some((p) => p.path === FMC_ORDERS_PATH), false, "do not list /fmc-orders");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
       assert.ok(!wk.resources.some((r) => r.includes(BKARTA_ENTSCHEIDUNGEN_PATH)), "well-known must not list /bkarta-entscheidungen");
       assert.ok(!wk.resources.some((r) => r.includes(IPO_TM_PATH)), "well-known must not list /ipo-tm");
+      assert.ok(!wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "well-known must not list /fmc-orders");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /bkarta-entscheidungen"), "llms.txt must not list /bkarta-entscheidungen");
       assert.ok(!llms.includes("GET /ipo-tm"), "llms.txt must not list /ipo-tm");
+      assert.ok(!llms.includes("GET /fmc-orders"), "llms.txt must not list /fmc-orders");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[BKARTA_ENTSCHEIDUNGEN_PATH], undefined, "OpenAPI must not list /bkarta-entscheidungen");
       assert.equal(spec.paths[IPO_TM_PATH], undefined, "OpenAPI must not list /ipo-tm");
+      assert.equal(spec.paths[FMC_ORDERS_PATH], undefined, "OpenAPI must not list /fmc-orders");
 
       const manifest = await fetch(`${base}${BKARTA_ENTSCHEIDUNGEN_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "bkarta-entscheidungen free manifest is free");
@@ -4471,17 +4497,21 @@ async function main(): Promise<void> {
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === IPO_TM_PATH), false, "do not list /ipo-tm");
+      assert.equal(shop.products.some((p) => p.path === FMC_ORDERS_PATH), false, "do not list /fmc-orders");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
       assert.ok(!wk.resources.some((r) => r.includes(IPO_TM_PATH)), "well-known must not list /ipo-tm");
+      assert.ok(!wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "well-known must not list /fmc-orders");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /ipo-tm"), "llms.txt must not list /ipo-tm");
+      assert.ok(!llms.includes("GET /fmc-orders"), "llms.txt must not list /fmc-orders");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[IPO_TM_PATH], undefined, "OpenAPI must not list /ipo-tm");
+      assert.equal(spec.paths[FMC_ORDERS_PATH], undefined, "OpenAPI must not list /fmc-orders");
 
       const manifest = await fetch(`${base}${IPO_TM_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "ipo-tm free manifest is free");
@@ -4517,6 +4547,130 @@ async function main(): Promise<void> {
       assert.ok(paidBody.cards[0]?.body.includes("3914395"));
       assert.ok(paidBody.cards[0]?.body.includes("£2800"));
       assert.ok(paidBody.cards[0]?.body.includes("section 5(2)(b)"));
+    },
+  );
+
+  const fmcOrdersDir = mkdtempSync(join(tmpdir(), "fmc-orders-"));
+  writeFileSync(
+    join(fmcOrdersDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "fmc-institution-order-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: FRESH_FETCHED_AT,
+      asOf: "2026-01-06",
+      license: "17 U.S.C. § 105",
+      attribution:
+        "Federal Maritime Commission (FMC). Work of the United States Government; 17 U.S.C. § 105.",
+      sources: {
+        listing: "https://www2.fmc.gov/readingroom/",
+        pdfHost: "https://www2.fmc.gov/readingroom/",
+      },
+      cards: [
+        {
+          id: "msc-23-08",
+          docket: "msc-23-08",
+          proceeding: "23-08",
+          pdfId: "(32) 23-08 Order on Initial Decision (public).pdf",
+          institution: "MSC Mediterranean Shipping Company S.A.",
+          date: "2026-01-06",
+          title: "Order on Initial Decision",
+          sourceUrl:
+            "https://www2.fmc.gov/readingroom/docs/23-08/(32)%2023-08%20Order%20on%20Initial%20Decision%20(public).pdf/",
+          body: [
+            "FEDERAL MARITIME COMMISSION",
+            "MSC MEDITERRANEAN SHIPPING COMPANY S.A.",
+            "Docket No. 23-08",
+            "Order on Initial Decision",
+            "BY THE COMMISSION",
+            "46 U.S.C. Shipping Act",
+            "overcharges appeared to have occurred 2,629 times",
+            "Securities and Exchange Commission v. Jarkesy, 603 U.S. 109",
+            "Descartes database, which includes all rates and rules",
+            "civil penalties against MSC in the total amount of $22,670,000.",
+            "Administrative Law Judge",
+            ...Array.from({ length: 40 }, (_, i) => `${i + 21}. Numbered paragraph ${i + 21} from the official MSC FMC order body used only to keep this door fixture above the real-order length floor.`),
+          ].join("\n"),
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      FMC_ORDERS_DIR: fmcOrdersDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-fmc-orders-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${FMC_ORDERS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /fmc-orders must be 402");
+      const body402 = (await unpaid.json()) as {
+        payTo: string;
+        asset: string;
+        resource: string;
+        accepts: { maxAmountRequired?: string; extra?: { name?: string } }[];
+      };
+      assert.equal(body402.resource, FMC_ORDERS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, FMC_ORDERS_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
+      const fmcPr = unpaid.headers.get("payment-required");
+      assert.ok(fmcPr, "v2 PAYMENT-REQUIRED header");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("2,629"));
+      assert.ok(!leak402.includes("Jarkesy"));
+      assert.ok(!leak402.includes("Descartes"));
+      assert.ok(!leak402.includes("22,670,000"));
+      assert.ok(!leak402.includes("Numbered paragraph"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === FMC_ORDERS_PATH), false, "do not list /fmc-orders");
+      assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
+      assert.equal(shop.products.length, 28);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(!wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "well-known must not list /fmc-orders");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(!llms.includes("GET /fmc-orders"), "llms.txt must not list /fmc-orders");
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.equal(spec.paths[FMC_ORDERS_PATH], undefined, "OpenAPI must not list /fmc-orders");
+
+      const manifest = await fetch(`${base}${FMC_ORDERS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "fmc-orders free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        cards?: { institution?: string; docket?: string; id?: string; body?: string }[];
+        openapi?: string;
+        wellKnown?: string;
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.cards?.[0]?.institution, "MSC Mediterranean Shipping Company S.A.");
+      assert.equal(man.cards?.[0]?.docket, "msc-23-08");
+      const manBlob = JSON.stringify(man);
+      assert.ok(!manBlob.includes("2,629"));
+      assert.ok(!manBlob.includes("Jarkesy"));
+      assert.ok(!manBlob.includes("Descartes"));
+      assert.ok(!manBlob.includes("22,670,000"));
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+
+      const paid = await fetch(`${base}${FMC_ORDERS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { institution: string; date: string; docket: string; body: string }[];
+      };
+      assert.equal(paidBody.product, "fmc-institution-order-bodies");
+      assert.equal(paidBody.cards[0]?.institution, "MSC Mediterranean Shipping Company S.A.");
+      assert.equal(paidBody.cards[0]?.date, "2026-01-06");
+      assert.equal(paidBody.cards[0]?.docket, "msc-23-08");
+      assert.ok(paidBody.cards[0]?.body.includes("2,629"));
+      assert.ok(paidBody.cards[0]?.body.includes("Jarkesy"));
+      assert.ok(paidBody.cards[0]?.body.includes("Descartes"));
+      assert.ok(paidBody.cards[0]?.body.includes("22,670,000"));
     },
   );
 
@@ -5024,6 +5178,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("ccpc-mergers"), false, "do not list /ccpc-mergers");
   assert.equal(isPublicBazaarSku("bkarta-entscheidungen"), false, "do not list /bkarta-entscheidungen");
   assert.equal(isPublicBazaarSku("ipo-tm"), false, "do not list /ipo-tm");
+  assert.equal(isPublicBazaarSku("fmc-orders"), false, "do not list /fmc-orders");
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
@@ -5038,6 +5193,8 @@ async function main(): Promise<void> {
   assert.equal(hiddenBkarta.extensions, undefined, "/bkarta-entscheidungen must not persist to Bazaar");
   const hiddenIpoTm = facilitatorPaymentRequirements("https://ticks.bnm.farm/ipo-tm", "ipo-tm");
   assert.equal(hiddenIpoTm.extensions, undefined, "/ipo-tm must not persist to Bazaar");
+  const hiddenFmcOrders = facilitatorPaymentRequirements("https://ticks.bnm.farm/fmc-orders", "fmc-orders");
+  assert.equal(hiddenFmcOrders.extensions, undefined, "/fmc-orders must not persist to Bazaar");
   const hidden = facilitatorPaymentRequirements("https://ticks.bnm.farm/form-483", "form-483");
   assert.equal(hidden.extensions, undefined, "/form-483 must not persist to Bazaar until a real body is cached");
   const hiddenGmp = facilitatorPaymentRequirements("https://ticks.bnm.farm/gmp", "gmp");
