@@ -22,7 +22,9 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 - Required seed: Travel Caddy, Inc. dba Travelon — Docket FIFRA-05-2026-0015 — filed 2026-07-29 — https://yosemite.epa.gov/OA/RHC/EPAAdmin.nsf/Filings/F4CB3764E5AB61EA85258E43006880DC/$File/FIFRA-05-2026-0015_CAFO_TravelCaddyIncdbaTravelon_FranklinParkIllinois_14PGS.pdf
 - License: **17 USC 105**. Attribute EPA.
 
-Paid body fields: `id`, `docket`, `pdfId`, `institution`, `date`, `title`, `sourceUrl`, `body`. `body` is official `pdftotext` of the EPA-authored PDF. `sourceUrl` is always the `yosemite.epa.gov` `/OA/RHC/EPAAdmin.nsf/Filings/{UNID}/$File/{file}.pdf` PDF.
+Paid body keeps the existing `cards[]` fields: `id`, `docket`, `pdfId`, `institution`, `date`, `title`, `sourceUrl`, `body`. `body` is official `pdftotext` of the EPA-authored PDF. `sourceUrl` is always the `yosemite.epa.gov` `/OA/RHC/EPAAdmin.nsf/Filings/{UNID}/$File/{file}.pdf` PDF.
+
+Alongside those keys the paid JSON adds `records[]` (`id`, `date`, `firm`, `url`, `type=fifra-order`), `recordCount`, honest `asOf` / `fetchedAt`, and `source` (the official EPA listing). A repeat buyer diffs `asOf` + record ids.
 
 Free `GET /fifra-orders/manifest.json` is institution / docket / date / sourceUrl only. Needles such as `11333 Addison Avenue`, `Style Numbers 23537, 43541`, and `Travel Caddy, Inc. doing business as Travelon` stay out of unpaid responses.
 

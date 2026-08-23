@@ -23,7 +23,9 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 - Example: Vtron Inc. d/b/a Vtron Lasers `https://www.ftc.gov/system/files/ftc_gov/pdf/vtron-lasers-musa-warningletter.pdf`
 - License: **17 USC 105**. Attribute FTC.
 
-Paid body fields: `id`, `nodeId`, `pdfId`, `firm`, `date`, `subject`, `sourceUrl`, `nodeUrl`, `body`. `body` is official `pdftotext` of the FTC-authored PDF. `sourceUrl` is always the www.ftc.gov PDF, not archive.org.
+Paid body keeps the existing `cards[]` fields: `id`, `nodeId`, `pdfId`, `firm`, `date`, `subject`, `sourceUrl`, `nodeUrl`, `body`. `body` is official `pdftotext` of the FTC-authored PDF. `sourceUrl` is always the www.ftc.gov PDF, not archive.org.
+
+Alongside those keys the paid JSON adds `records[]` (`id`, `date`, `firm`, `url`, `type=ftc-wl`), `recordCount`, honest `asOf` / `fetchedAt`, and `source` (the official FTC listing). A repeat buyer diffs `asOf` + record ids.
 
 `data/ftc-wl/` is gitignored. Letter bodies get lost on a dead VM — do not harvest the whole index here. Full fill waits for apollo.
 

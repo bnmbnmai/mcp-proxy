@@ -38,7 +38,9 @@ First-slice firm pages (red/green rows; honest-empty if a page has no firm block
 | 263 | 99-19 Salmonella foods |
 | 266 | 99-23 produce pathogens |
 
-Paid body fields only: `alertNumber`, `type`, `name`, `list` (`red`\|`green`), `firm`, `country`, `product`, `datePublished`, `sourceUrl`, `asOf`. No phone numbers, emails, or lead-file shape.
+Paid body keeps the existing `ticks[]` fields: `alertNumber`, `type`, `name`, `list` (`red`\|`green`), `firm`, `country`, `product`, `datePublished`, `sourceUrl`, `asOf`. No phone numbers, emails, or lead-file shape.
+
+Alongside those keys the paid JSON adds `records[]` (`id` from alertNumber/list/firm/product, `date` from `datePublished` or `asOf`, `firm`, `url`, `type=import-alert`), `recordCount`, honest `asOf` / `fetchedAt`, and `source` (the official cms_ia catalog). A repeat buyer diffs `asOf` + record ids.
 
 ## Env (apollo / media-box)
 
