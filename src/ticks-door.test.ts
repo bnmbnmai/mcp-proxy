@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, X402SCAN_SERVER_URL, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus } from "./ticks-door.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
   IMPORT_ALERTS_MANIFEST_PATH,
@@ -4090,8 +4090,12 @@ async function main(): Promise<void> {
       const persistReqs = facilitatorPaymentRequirements("https://ticks.bnm.farm/form-483", "form-483");
       assert.equal(persistReqs.resource, "https://ticks.bnm.farm/form-483");
       const persist = facilitatorBody("not-json", persistReqs);
-      const persistPayload = persist.paymentPayload as { resource?: string; extensions?: { bazaar?: unknown } };
-      assert.equal(persistPayload.resource, "https://ticks.bnm.farm/form-483");
+      const persistPayload = persist.paymentPayload as {
+        resource?: { url?: string; mimeType?: string };
+        extensions?: { bazaar?: unknown };
+      };
+      assert.equal(persistPayload.resource?.url, "https://ticks.bnm.farm/form-483");
+      assert.equal(persistPayload.resource?.mimeType, "application/json");
       assert.deepEqual(persistPayload.extensions?.bazaar, bazaarExtension("form-483"));
     },
   );
@@ -4235,8 +4239,11 @@ async function main(): Promise<void> {
       assert.equal(persistReqs.resource, "https://ticks.bnm.farm/gmp");
       assert.equal((persistReqs.extra as { name?: string }).name, "USD Coin");
       const persist = facilitatorBody("not-json", persistReqs);
-      const persistPayload = persist.paymentPayload as { resource?: string; extensions?: { bazaar?: unknown } };
-      assert.equal(persistPayload.resource, "https://ticks.bnm.farm/gmp");
+      const persistPayload = persist.paymentPayload as {
+        resource?: { url?: string };
+        extensions?: { bazaar?: unknown };
+      };
+      assert.equal(persistPayload.resource?.url, "https://ticks.bnm.farm/gmp");
       assert.deepEqual(persistPayload.extensions?.bazaar, bazaarExtension("gmp"));
     },
   );
@@ -4378,8 +4385,11 @@ async function main(): Promise<void> {
       assert.equal(persistReqs.resource, "https://ticks.bnm.farm/gmp-md");
       assert.equal((persistReqs.extra as { name?: string }).name, "USD Coin");
       const persist = facilitatorBody("not-json", persistReqs);
-      const persistPayload = persist.paymentPayload as { resource?: string; extensions?: { bazaar?: unknown } };
-      assert.equal(persistPayload.resource, "https://ticks.bnm.farm/gmp-md");
+      const persistPayload = persist.paymentPayload as {
+        resource?: { url?: string };
+        extensions?: { bazaar?: unknown };
+      };
+      assert.equal(persistPayload.resource?.url, "https://ticks.bnm.farm/gmp-md");
       assert.deepEqual(persistPayload.extensions?.bazaar, bazaarExtension("gmp-md"));
     },
   );
@@ -4492,14 +4502,159 @@ async function main(): Promise<void> {
     );
 
     const persist = facilitatorBody("not-json", reqs);
-    const payload = persist.paymentPayload as { resource?: string; extensions?: { bazaar?: unknown } };
-    assert.equal(payload.resource, resource, "CDP persist needs paymentPayload.resource");
+    const payload = persist.paymentPayload as {
+      x402Version?: number;
+      accepted?: { network?: string; amount?: string };
+      resource?: { url?: string; description?: string; mimeType?: string };
+      extensions?: { bazaar?: unknown };
+    };
+    assert.equal(persist.x402Version, 2);
+    assert.equal(persist.paymentHeader, undefined, "paymentHeader is not a CDP field and 400s verify");
+    assert.equal(payload.x402Version, 2);
+    assert.equal(payload.resource?.url, resource, "CDP v2 persist needs paymentPayload.resource.url");
+    assert.equal(payload.resource?.mimeType, "application/json");
+    assert.ok((payload.resource?.description ?? "").length > 0);
+    assert.ok((payload.resource?.description ?? "").length <= 500);
     assert.deepEqual(payload.extensions?.bazaar, bazaarExtension(sku));
-    assert.deepEqual(
-      (persist.paymentRequirements as { extensions?: { bazaar?: unknown } }).extensions?.bazaar,
-      bazaarExtension(sku),
-    );
+    assert.equal(payload.accepted?.network, NETWORK_V2);
+    assert.equal(typeof payload.accepted?.amount, "string");
+    const sentReqs = persist.paymentRequirements as {
+      network?: string;
+      amount?: string;
+      maxAmountRequired?: string;
+      resource?: unknown;
+      extensions?: unknown;
+    };
+    assert.equal(sentReqs.network, NETWORK_V2);
+    assert.equal(typeof sentReqs.amount, "string");
+    assert.equal(sentReqs.maxAmountRequired, undefined);
+    assert.equal(sentReqs.resource, undefined, "v2 paymentRequirements must not carry resource");
+    assert.equal(sentReqs.extensions, undefined, "v2 paymentRequirements must not carry extensions.bazaar");
   }
+
+  const ticksReqs = facilitatorPaymentRequirements("https://ticks.bnm.farm/ticks", "ticks");
+  const v1Exact = {
+    x402Version: 1,
+    scheme: "exact",
+    network: NETWORK_V1,
+    payload: {
+      signature: `0x${"ab".repeat(65)}`,
+      authorization: {
+        from: "0x1111111111111111111111111111111111111111",
+        to: PAY_TO,
+        value: TICKS_AMOUNT_ATOMIC,
+        validAfter: "0",
+        validBefore: "9999999999",
+        nonce: `0x${"22".repeat(32)}`,
+      },
+    },
+  };
+  const wellFormed = facilitatorBody(JSON.stringify(v1Exact), ticksReqs);
+  assert.deepEqual(
+    cdpFacilitatorBodyProblems(wellFormed),
+    [],
+    "later $0.02 CDP settle body must match facilitator OpenAPI",
+  );
+  assert.equal(wellFormed.x402Version, 2);
+  const wellPayload = wellFormed.paymentPayload as {
+    resource?: { url?: string };
+    extensions?: { bazaar?: unknown };
+    accepted?: { amount?: string; network?: string; extra?: { name?: string } };
+    payload?: { authorization?: { value?: string } };
+  };
+  assert.equal(wellPayload.resource?.url, "https://ticks.bnm.farm/ticks");
+  assert.deepEqual(wellPayload.extensions?.bazaar, bazaarExtension("ticks"));
+  assert.equal(wellPayload.accepted?.amount, TICKS_AMOUNT_ATOMIC);
+  assert.equal(wellPayload.accepted?.network, NETWORK_V2);
+  assert.equal(wellPayload.accepted?.extra?.name, "USD Coin");
+  assert.equal(wellPayload.payload?.authorization?.value, TICKS_AMOUNT_ATOMIC);
+  const wellReqs = wellFormed.paymentRequirements as { amount?: string; extra?: { name?: string } };
+  assert.equal(wellReqs.amount, TICKS_AMOUNT_ATOMIC);
+  assert.equal(wellReqs.extra?.name, "USD Coin", "do not change the $0.02 /ticks price or EIP-712 name");
+
+  const hybrid400 = {
+    x402Version: 1,
+    paymentPayload: {
+      ...v1Exact,
+      resource: "https://ticks.bnm.farm/ticks",
+      extensions: { bazaar: bazaarExtension("ticks") },
+    },
+    paymentRequirements: ticksReqs,
+    paymentHeader: JSON.stringify(v1Exact),
+  };
+  const hybridProblems = cdpFacilitatorBodyProblems(hybrid400);
+  assert.ok(hybridProblems.some((p) => p.includes("paymentHeader")), hybridProblems.join("; "));
+  assert.ok(
+    hybridProblems.some((p) => p.includes("resource") || p.includes("extensions") || p.includes("CAIP-2")),
+    hybridProblems.join("; "),
+  );
+
+  const captured: { path: string; status: number; problems: string[] }[] = [];
+  const mockFacilitator = createServer((req, res) => {
+    const chunks: Buffer[] = [];
+    req.on("data", (c) => chunks.push(Buffer.isBuffer(c) ? c : Buffer.from(c)));
+    req.on("end", () => {
+      let parsed: unknown = {};
+      try {
+        parsed = JSON.parse(Buffer.concat(chunks).toString("utf8"));
+      } catch {
+        parsed = {};
+      }
+      const problems = cdpFacilitatorBodyProblems(parsed);
+      const path = req.url || "";
+      const status = problems.length ? 400 : 200;
+      captured.push({ path, status, problems });
+      res.writeHead(status, { "Content-Type": "application/json" });
+      if (status === 400) {
+        res.end(JSON.stringify({ errorType: "invalid_request", errorMessage: problems[0] }));
+        return;
+      }
+      if (path.endsWith("/verify")) {
+        res.end(JSON.stringify({ isValid: true }));
+        return;
+      }
+      res.end(JSON.stringify({ success: true, transaction: `0x${"cd".repeat(32)}` }));
+    });
+  });
+  await new Promise<void>((resolve) => mockFacilitator.listen(0, "127.0.0.1", resolve));
+  const mockPort = (mockFacilitator.address() as AddressInfo).port;
+  const mockBase = `http://127.0.0.1:${mockPort}`;
+  const hybridRes = await fetch(`${mockBase}/verify`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(hybrid400),
+  });
+  assert.equal(hybridRes.status, 400, "old persist hybrid is the live CDP 400");
+  const wellRes = await fetch(`${mockBase}/verify`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(wellFormed),
+  });
+  assert.equal(wellRes.status, 200, "well-formed v2 verify body is accepted");
+
+  await withServer(
+    {
+      X402_FACILITATOR_URL: mockBase,
+      X402_SKIP_SETTLE: undefined,
+      TICKS_DIR: "",
+      TICKS_PATH: "",
+      CDP_API_KEY_ID: undefined,
+      CDP_API_KEY_SECRET: undefined,
+    },
+    async (base) => {
+      captured.length = 0;
+      const paid = await fetch(`${base}${TICKS_PATH}`, {
+        headers: { "X-PAYMENT": JSON.stringify(v1Exact) },
+      });
+      assert.equal(paid.status, 200, "door posts the well-formed body and serves after mock settle");
+      assert.ok(captured.some((c) => c.path === "/verify" && c.status === 200));
+      assert.ok(captured.some((c) => c.path === "/settle" && c.status === 200));
+      assert.equal(captured.every((c) => c.problems.length === 0), true);
+    },
+  );
+  await new Promise<void>((resolve, reject) =>
+    mockFacilitator.close((err) => (err ? reject(err) : resolve())),
+  );
 
   console.log("ticks-door tests ok");
 }
