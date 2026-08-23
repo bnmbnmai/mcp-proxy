@@ -1,0 +1,67 @@
+[
+  {
+    "institution": "Citigroup Global Markets Limited / Deutsche Bank Aktiengesellschaft",
+    "docket": "50601-citi-db",
+    "date": "2025-02-21",
+    "title": "CA98 infringement decision",
+    "sourceUrl": "https://assets.publishing.service.gov.uk/media/6876390d352c290d20dcae7c/Citi-Deutsche_Bank__Non-confidential_decision.pdf",
+    "pdfId": "Citi-Deutsche_Bank__Non-confidential_decision.pdf"
+  },
+  {
+    "institution": "Roland (U.K.) Limited / Roland Corporation",
+    "docket": "50565-5",
+    "date": "2020-06-29",
+    "title": "CA98 infringement decision",
+    "sourceUrl": "https://assets.publishing.service.gov.uk/media/5f171ab43a6f40727ebfb440/Non-confidential_infringement_decision.pdf",
+    "pdfId": "Non-confidential_infringement_decision.pdf"
+  },
+  {
+    "institution": "Dar Lighting Limited / Castlegate 624 Limited",
+    "docket": "50952",
+    "date": "2022-03-23",
+    "title": "CA98 infringement decision",
+    "sourceUrl": "https://assets.publishing.service.gov.uk/media/62aca145d3bf7f0af821ef5e/Case_50952_-_Non-Confi_Decision_for_Publication_21.6.22.pdf",
+    "pdfId": "Case_50952_-_Non-Confi_Decision_for_Publication_21.6.22.pdf"
+  },
+  {
+    "institution": "ITW Limited",
+    "docket": "CE-9856-14",
+    "date": "2016-05-24",
+    "title": "CA98 infringement decision",
+    "sourceUrl": "https://assets.publishing.service.gov.uk/media/575a8f5eed915d3d24000003/commercial-catering-equipment-non-confidential-decision.pdf",
+    "pdfId": "commercial-catering-equipment-non-confidential-decision.pdf"
+  },
+  {
+    "institution": "Fender Musical Instruments Europe Limited",
+    "docket": "50565-3",
+    "date": "2020-03-20",
+    "title": "CA98 infringement decision",
+    "sourceUrl": "https://assets.publishing.service.gov.uk/media/5e79d8aed3bf7f52efedfcad/20200320_50565-3_-_DECISION.pdf",
+    "pdfId": "20200320_50565-3_-_DECISION.pdf"
+  },
+  {
+    "institution": "Jane Q Public",
+    "individual": "Jane Q Public",
+    "docket": "50601-people",
+    "date": "2025-02-21",
+    "title": "CA98 infringement decision",
+    "sourceUrl": "https://assets.publishing.service.gov.uk/media/6876390d352c290d20dcae7c/Citi-Deutsche_Bank__Non-confidential_decision.pdf",
+    "pdfId": "people.pdf"
+  },
+  {
+    "institution": "Citigroup Global Markets Limited",
+    "docket": "50601-press",
+    "date": "2025-02-21",
+    "title": "CMA press teaser — settlement announced",
+    "type": "press",
+    "sourceUrl": "https://www.gov.uk/government/news/cma-reaches-settlement-with-banks-in-competition-case"
+  },
+  {
+    "institution": "Clearview AI Inc.",
+    "docket": "ico-mpn-clearview",
+    "date": "2022-05-18",
+    "title": "ICO MPN Monetary Penalty Notice",
+    "sourceUrl": "https://ico.org.uk/media/action-weve-taken/mpns/4020436/clearview-ai-inc-mpn.pdf",
+    "pdfId": "clearview-ai-inc-mpn.pdf"
+  }
+]
