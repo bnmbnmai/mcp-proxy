@@ -1,0 +1,120 @@
+[
+  {
+    "id": "mapeks-apl-014-25",
+    "institution": "Mapeks USA, LLC dba Mac Global",
+    "docket": "APL-014-25",
+    "date": "2026-07-30",
+    "title": "Administrator's Decision",
+    "type": "administrator-decision",
+    "sourceUrl": "https://www.ams.usda.gov/sites/default/files/media/Decision_APL-014-25%20and%20049-25%20Mapeks%20USA_Redacted.pdf",
+    "pdfId": "Decision_APL-014-25 and 049-25 Mapeks USA_Redacted.pdf"
+  },
+  {
+    "id": "fruticola-olmos-apl-040-24",
+    "institution": "Fruticola Olmos E.I.R.L.",
+    "docket": "APL-040-24",
+    "date": "2026-01-15",
+    "title": "Administrator's Decision",
+    "type": "administrator-decision",
+    "sourceUrl": "https://www.ams.usda.gov/sites/default/files/media/DecisionAPL-040-24_FruticolaOlmos_508.pdf",
+    "pdfId": "DecisionAPL-040-24_FruticolaOlmos_508.pdf"
+  },
+  {
+    "id": "la-bonita-apl-047-24",
+    "institution": "Invernaderos Hidroponicos La Bonita SAPI de CV",
+    "docket": "APL-047-24",
+    "date": "2025-05-02",
+    "title": "Administrator's Decision",
+    "type": "administrator-decision",
+    "sourceUrl": "https://www.ams.usda.gov/sites/default/files/media/DecisionLaBonitaAPL-047-245-2-25_Redacted_508.pdf",
+    "pdfId": "DecisionLaBonitaAPL-047-245-2-25_Redacted_508.pdf"
+  },
+  {
+    "id": "buck-n-bird-apl-066-24",
+    "institution": "Buck N Bird Farm",
+    "docket": "APL-066-24",
+    "date": "2026-03-05",
+    "title": "Administrator's Decision",
+    "type": "administrator-decision",
+    "sourceUrl": "https://www.ams.usda.gov/sites/default/files/media/DecisionAPL-066-24_BuckNBird_508.pdf",
+    "pdfId": "DecisionAPL-066-24_BuckNBird_508.pdf"
+  },
+  {
+    "id": "sunshine-farms-apl-090-24",
+    "institution": "Sunshine Farms of Martin County LLC",
+    "docket": "APL-090-24",
+    "date": "2025-03-20",
+    "title": "Administrator's Decision",
+    "type": "administrator-decision",
+    "sourceUrl": "https://www.ams.usda.gov/sites/default/files/media/NOPADSunshine32025_Redacted_508.pdf",
+    "pdfId": "NOPADSunshine32025_Redacted_508.pdf"
+  },
+  {
+    "id": "teresa-payne-person",
+    "institution": "Teresa Payne",
+    "individual": "Teresa Payne",
+    "docket": "APL-086-24",
+    "date": "2025-02-03",
+    "title": "People SKU",
+    "type": "people",
+    "sourceUrl": "https://www.ams.usda.gov/sites/default/files/media/Decision%20APL-086-24%20Payne%202-3-25_Redacted_508.pdf",
+    "pdfId": "Decision APL-086-24 Payne 2-3-25_Redacted_508.pdf"
+  },
+  {
+    "id": "mapeks-settlement-html",
+    "institution": "Mapeks USA, LLC",
+    "docket": "APL-014-25",
+    "date": "2026-07-30",
+    "title": "Settlement agreement HTML",
+    "type": "settlement-html",
+    "sourceUrl": "https://www.ams.usda.gov/services/enforcement/organic/settlements/mapeks",
+    "pdfId": "settlement.html"
+  },
+  {
+    "id": "oid-directory",
+    "institution": "Mapeks USA, LLC",
+    "docket": "APL-014-25",
+    "date": "2026-07-30",
+    "title": "OID status directory",
+    "type": "oid",
+    "sourceUrl": "https://organic.ams.usda.gov/integrity/Home",
+    "pdfId": "integrity.html"
+  },
+  {
+    "id": "awa-inspection",
+    "institution": "Example Exhibitor LLC",
+    "date": "2026-01-01",
+    "title": "AWA inspection",
+    "type": "awa",
+    "sourceUrl": "https://www.aphis.usda.gov/animal_welfare/downloads/awa/example.pdf",
+    "pdfId": "example.pdf"
+  },
+  {
+    "id": "fsis-hmsa",
+    "institution": "Example Packing LLC",
+    "date": "2026-01-01",
+    "title": "Notice of Intended Enforcement",
+    "type": "fsis",
+    "sourceUrl": "https://www.fsis.usda.gov/sites/default/files/media_file/documents/M1-NOIE-01012026.pdf",
+    "pdfId": "M1-NOIE-01012026.pdf"
+  },
+  {
+    "id": "doe-nov",
+    "institution": "Mid-America Conversion Services, LLC",
+    "docket": "NEA-2026-01",
+    "date": "2026-01-15",
+    "title": "Final Notice of Violation",
+    "type": "doe",
+    "sourceUrl": "https://www.energy.gov/sites/default/files/2026-01/Final%20Notice%20of%20Violation%2C%20Mid-America%20Conversion%20Services%2C%20LLC.pdf",
+    "pdfId": "Final Notice of Violation, Mid-America Conversion Services, LLC.pdf"
+  },
+  {
+    "id": "govuk-ssr",
+    "institution": "Example Department",
+    "date": "2026-01-01",
+    "title": "GOV.UK service standard report",
+    "type": "service_standard_report",
+    "sourceUrl": "https://www.gov.uk/service-standard-reports/example",
+    "pdfId": "service-standard-report.html"
+  }
+]
