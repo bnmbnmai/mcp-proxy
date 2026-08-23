@@ -46,6 +46,7 @@ CDP `POST /platform/v2/x402/validate` for each URL: `valid: true`, `simulation.o
 | OpenAPI | https://ticks.bnm.farm/openapi.json | Nine paid paths + `x-payment-info` |
 | llms.txt | https://ticks.bnm.farm/llms.txt | Nine paid GETs; free manifests called out as not the body |
 | Shop JSON | https://ticks.bnm.farm/ | Nine products |
+| MCP | https://ticks.bnm.farm/mcp | Same live paid GETs as well-known. Connect: `npx -y mcp-remote https://ticks.bnm.farm/mcp`. Not a new SKU. Not Bazaar-indexed. |
 | x402scan origin | https://www.x402scan.com/server/c6f584c5-e494-41d1-aa02-2efb07ac3546 | Registered earlier: `/ticks`, `/import-alerts`, `/mariners`, `/warning-letters`, `/form-483`. `/mariners-d11`, `/mariners-d7`, and `/mariners-d8` are live on the shop well-known. |
 | x402scan register | https://www.x402scan.com/resources/register | Public add form (REST register is SIWX-gated) |
 | CDP validate | `POST https://api.cdp.coinbase.com/platform/v2/x402/validate` | All five accepted |
