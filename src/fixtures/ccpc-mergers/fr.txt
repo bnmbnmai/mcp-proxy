@@ -1,0 +1,3 @@
+{"raw_text":"federalregister.gov full_text dump","full_text":"not a CCPC determination"}
+federalregister.gov
+This is a Federal Register dump and is not CCPC-authored section 21 determination TEXT.

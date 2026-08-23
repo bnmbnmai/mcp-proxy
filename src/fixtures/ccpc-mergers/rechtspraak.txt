@@ -1,0 +1,5 @@
+Rechtspraak
+https://uitspraken.rechtspraak.nl/
+ECLI:NL:RBAMS:2026:1
+This is a Dutch Rechtspraak judgment and is not a CCPC section 21 determination.
+Do not wrap Rechtspraak.
