@@ -1,0 +1,644 @@
+      NOTICE: This opinion is subject to formal revision before publication in the    action in a federal, state or local court or agency under
+         bound volumes of NLRB decisions. Readers are requested to notify the
+         Executive Secretary, National Labor Relations Board, Washington, D.C.        applicable federal, state or local laws. . . .” (Par. 2, em-
+         20570, of any typographical or other formal errors so that corrections can   phasis omitted.) Paragraph 6 of the agreement, however,
+         be included in the bound volumes.
+                                                                                      contains a savings clause that states:
+Ralphs Grocery Company and Terri Brown. Case
+                                                                                           Notwithstanding any other provision of this Arbitration
+    21–CA–073942
+                                                                                           Policy, all Employees retain the right under the National
+                August 10, 2026                                                            Labor Relations Act (“NLRA”) to file charges with the
+             SUPPLEMENTAL DECISION AND ORDER                                               National Labor Relations Board (“NLRB”), and to file
+                                                                                           charges with the United States Equal Employment Op-
+       BY CHAIRMAN MURPHY AND MEMBERS PROUTY                                               portunity Commission (“EEOC”) under federal equal
+                           AND MAYER                                                       employment opportunity laws within the EEOC's ad-
+    In this case, before the National Labor Relations Board                                ministrative jurisdiction.
+on remand from the United States Court of Appeals for the                             Regarding confidentiality, the Policy states in Paragraph 11:
+Ninth Circuit, we address the legality of the Respondent’s
+                                                                                           Except and only to the extent it may be required by ap-
+mandatory arbitration policy under Section 8(a)(1) of the
+                                                                                           plicable law, the parties and the Qualified Arbitrator
+National Labor Relations Act (NLRA), considered in light
+                                                                                           shall maintain the existence, content, and outcome of
+of the Federal Arbitration Act (FAA). Only two aspects
+                                                                                           any arbitration proceeding held pursuant to this Arbitra-
+of the policy are at issue: (1) whether the confidentiality
+                                                                                           tion Policy in the strictest confidence and shall not dis-
+provision of the policy is lawful; and (2) whether the
+                                                                                           close the same without the prior written consent of all
+policy unlawfully interferes with employees’ statutory
+                                                                                           the parties.
+right of access to the Board and its processes. For the
+reasons that follow, we conclude that the Respondent’s                                Pursuant to the Arbitration Policy, the Respondent filed a
+arbitration policy does not unlawfully interfere with em-                             petition in state court to compel arbitration and dismiss the
+ployees’ statutory right of access to the Board and its pro-                          proceeding. The Charging Party then filed an unfair labor
+cesses and that the confidentiality provision violates Sec-                           practice charge with the Board in 2012, alleging that the Ar-
+tion 8(a)(1), but only insofar as it requires employees to                            bitration Policy was unlawful under the NLRA. In 2016, the
+“maintain the existence. . . of any arbitration proceeding .                          Board issued a decision in Ralphs Grocery I, finding that the
+. . in the strictest confidence.” The portion of the confiden-                        Respondent violated Section 8(a)(1) of the Act by maintain-
+tiality provision requiring employees to keep confidential                            ing and enforcing a mandatory individual arbitration policy
+the content and outcome of the arbitration, however, is                               that (1) required employees to waive their right to pursue
+lawful.                                                                               class or collective actions; (2) interfered with employees'
+                                                                                      ability to file unfair labor practice charges with the Board;
+              I. FACTS AND PROCEDURAL HISTORY
+                                                                                      and (3) required employees to maintain the confidentiality of
+    The original decision in this case, Ralphs Grocery I,                             the existence, content, and outcome of any arbitration pro-
+included a full accounting of the record facts, which we                              ceedings.
+summarize here briefly.1 In 2009, Charging Party Terri                                   The Respondent filed a petition for review with the
+Brown, a security guard for the Respondent, filed a class                             United States Court of Appeals for the Ninth Circuit.
+action and Private Attorney General Act lawsuit in Cali-                              While the case was pending before the Ninth Circuit,
+fornia state court against the Respondent, alleging that it                           however, the Supreme Court decided Epic Systems Corp.
+failed to pay wages for missed lunch and rest breaks in                               v. Lewis, 584 U.S. 497 (2017).2 Rejecting the view of the
+violation of the California Labor Code. At all relevant                               Board, as set forth in NLRB v. Murphy Oil and reflected in
+times, the Respondent, applicants and employees, includ-                              Ralphs Grocery I, the Court held that employer-imposed
+ing the Charging Party, have been parties to a mandatory                              arbitration policies prohibiting class or collective actions
+Mediation and Binding Arbitration Policy (the Arbitration                             in any forum were lawful.
+Policy).                                                                                 As a result of the Court’s holding, the Ninth Circuit va-
+    The Arbitration Policy requires that the parties resolve                          cated the portion of the Board’s order governed by Epic
+through arbitration “any and all . . . employment-related                             Systems and (at the Board’s request) remanded the re-
+disputes that exist or arise between Employees and Ralphs                             mainder of the case. As a result, there are two issues cur-
+. . . that would constitute cognizable claims or causes of                            rently before us: whether the Respondent unlawfully
+
+  1                                                                                      2
+      Ralphs Grocery Co., 363 NLRB 1166 (2016) (Ralphs Grocery I).                         Epic Systems was consolidated before the Supreme Court with
+                                                                                      NLRB v. Murphy Oil, USA, Inc., 361 NLRB 774 (2014), enf. denied in
+                                                                                      relevant part 808 F.3d 1013 (5th Cir. 2015).
+
+
+375 NLRB No. 25
+2                                        DECISIONS OF THE NATIONAL LABOR RELATIONS BOARD
+
+
+maintained the Arbitration Policy’s confidentiality provi-                 Leland Stanford Junior University, 489 U.S. 468, 479
+sion and whether the Arbitration Policy unlawfully re-                     (1989)).
+stricts access to the Board.3                                                 To begin, we note that the confidentiality provision
+                        II. ANALYSIS                                       here, by its terms, requires confidentiality “only to the
+                                                                           extent it may be required by applicable law . . . .” As a
+              A. The Confidentiality Provision                             matter of law, then, the provision does not independently
+   In California Commerce Club, 369 NLRB No. 106                           impose any confidentiality restriction on the parties. In-
+(2020), the Board held that “provisions in an arbitration                  stead, it only operates to inform employees that the
+agreement requiring that arbitration be conducted on a                     agreement requires confidentiality to the extent that some
+confidential basis, including provisions precluding the                    other law independently requires it. Nevertheless, the
+disclosure of evidence, award, and/or decision beyond the                  Board has held that “. . . [an overbroad] rule is not valid-
+arbitration proceeding, do not violate the Act and must be                 ated by the qualification, ‘except as provided by law,’ as
+enforced according to their terms pursuant to the FAA.”                    an employer is not entitled to place upon its employees the
+Slip op. at 6. The arbitration agreement at issue in Cali-                 burden of determining their legal rights in this manner.”
+fornia Commerce Club provided, among other things, that                    Trailmobile, 221 NLRB 1088, 1089 (1975) (citing Fasco
+“[t]he arbitration shall be conducted on a confidential                    Industries, Inc., 173 NLRB 522 (1968), enfd. 412 F.2d
+basis and there shall be no disclosure of evidence or                      589 (4th Cir. 1969).4 We therefore consider whether this
+award/decision beyond the arbitration proceeding.” Id.,                    provision is overbroad.
+slip op. at 1.                                                                We find that the portions of the confidentiality provi-
+   The Board recognized that an employee’s interest in                     sion restricting the disclosure of the content and outcome
+discussing terms and conditions of employment with                         of the arbitration are limited to the rules under which the
+coworkers “lies at the heart of protected Section 7 activ-                 arbitration will be conducted and are therefore lawful un-
+ity” and would likely outweigh an employer’s interest in                   der California Commerce Club and subsequent cases in
+maintaining the confidentiality of arbitral proceedings if                 which we applied that precedent.5 The provision prohibit-
+maintained as an employer work rule. Id., slip op. at 3–4.                 ing disclosure of the content of the arbitration is function-
+However, because the disputed provision was contained                      ally equivalent to the provision that “all arbitration pro-
+within an arbitration agreement, the Board reasoned that it                ceedings . . . shall be confidential” at issue in Dish Net-
+would nevertheless be lawful if shielded by the FAA. Id.,                  work. Similarly, the provision’s requirement to maintain
+slip op. at 4–5. The Board concluded that the FAA re-                      the confidentiality of “the outcome” of the arbitration is
+quires that such provisions be enforced as written so long                 lawful because it is consistent with the finding in Califor-
+as they specify “the rules under which [the] arbitration                   nia Commerce Club that parties may lawfully agree that
+will be conducted,” but the FAA would not shield a provi-                  there shall be no disclosure of the “award/decision beyond
+sion that imposed confidentiality requirements beyond the                  the arbitration proceeding.” 369 NLRB No. 106, slip op.
+scope of the arbitration proceeding and the rules under                    at 6; see also Covenant Care California, LLC, 369 NLRB
+which it will be conducted. Id., slip op. at 5–6 (quoting                  No. 112, slip op. at 2.6
+Volt Information Sciences, Inc. v. Board of Trustees of
+
+    3
+      On January 18, 2022, the Board issued a Notice and Invitation to     where specifically prohibited by law” unlawfully interfered with NLRB
+File Briefs inquiring whether the Board should find that the Arbitration   charge filing).
+                                                                               5
+Policy unlawfully interfered with Board access and whether the confid-           See also Dish Network, LLC, 370 NLRB No. 97, slip op. at 3–4
+entiality provision also violated Sec. 8(a)(1) of the Act. The Board re-   (2021) (finding lawful provision stating that “all arbitration proceedings,
+ceived a brief and a responsive brief from the General Counsel and a       including but not limited to hearings, discovery, settlements, and awards
+brief from the Respondent. The Board also received briefs from the         shall be confidential. . .”); Century Fast Foods, Inc., 370 NLRB No. 4,
+following amici: American Federation of Labor and Congress of Indus-       slip op. at 7 (2020) (finding valid arbitration clause requiring “confiden-
+trial Organizations (AFL–CIO); Coalition for a Democratic Workplace,       tial binding arbitration”); Covenant Care California, LLC, 369 NLRB
+Restaurant Law Center, National Association of Manufacturers, National     No. 112, slip op. at 1, 2 (2020) (finding lawful provision requiring con-
+Retail Federation, and HR Policy Association (CDW); Secretary of the       fidentiality of “proceedings before the arbitrator and any award or rem-
+United States Department of Labor (DOL); Public Justice and National       edy”).
+Employment Lawyers Association (PJ-NELA); Service Employees                    We note that our dissenting colleague cites certain phrases, taken out
+International Union, National Women’s Law Center, and National Em-         of context, in California Commerce as supporting his position that the
+ployment Law Project (SEIU); Weinberg, Roger & Rosenfeld (WRR);            confidentiality provision is unlawful. We do not agree that either the
+and Workplace Policy Institute (WPI). After careful consideration, we      facts, analysis, or holding of that case supports his position.
+                                                                               6
+have decided not to overrule extant precedent in this case.                      Notwithstanding the existence of a confidentiality agreement pro-
+    4
+      See also Everglades College, Inc. d/b/a Keiser University, 368       tected by the FAA, an employer violates Sec. 8(a)(1) if it discharges or
+NLRB No. 123, slip op. at 3 (2019) (holding that provision making arbit-   otherwise disciplines an employee for discussing terms and conditions of
+ration the exclusive forum for resolving workplace disputes “except        employment where the discussion is protected by Sec. 7. Covenant Care
+                                                              RALPHS GROCERY CO.                                                                    3
+
+   We reach a different result, however, with respect to the                    In Anderson Enterprises, 369 NLRB No. 70 (2020), the
+portion of the confidentiality provision that prohibits dis-                 Board considered whether a mandatory arbitration agree-
+closure of the existence of the arbitration. As the Board                    ment violated Section 8(a)(1) of the Act by potentially
+has held, “confidentiality requirements beyond the scope                     interfering with employees’ right to file Board charges and
+of the arbitration proceeding and ‘the rules under which                     participate in Board proceedings. The arbitration agree-
+the arbitration will be conducted’ receive no protection                     ment at issue contained the following savings clause:
+from the FAA.” California Commerce Club, 369 NLRB                                  Claims may be brought before an administrative agency
+No. 106, slip op. at 1 (emphasis added). Applying this                             but only to the extent applicable law permits access to
+principle, the Board found that a provision requiring that                         such an agency notwithstanding the existence of an
+settlements be kept confidential was not shielded by the                           agreement to arbitrate. Such administrative claims in-
+FAA in Dish Network, 370 NLRB No 97, slip op. at 3–4.                              clude without limitation claims or charges brought be-
+We reach the same result here with respect to the prohibi-                         fore . . . the National Labor Relations Board.
+tion on disclosing the existence of the arbitration. Prohib-
+                                                                             Id., slip op. at 3.
+iting the disclosure of the fact that the arbitration ever
+                                                                                In analyzing the legality of the arbitration agreement,
+happened long after it ended is a perpetual gag order
+                                                                             the Board first discussed Prime Healthcare Paradise Val-
+against disclosing, outside the arbitral forum, that the ar-
+                                                                             ley, LLC, 368 NLRB No. 10 (2019), and Briad Wenco,
+bitration ever occurred. It has nothing to do with the rules
+                                                                             LLC d/b/a Wendy’s Restaurant, 368 NLRB No. 72 (2019),
+under which the arbitration will be conducted.7
+                                                                             setting forth the relevant background law guiding its de-
+   Having found that the portion of the confidentiality pro-
+                                                                             cision. Importantly, the Board noted that in Briad Wenco,
+vision prohibiting disclosing that the arbitration existed is
+                                                                             the Board concluded that because “the savings clause ex-
+not shielded by the FAA, we next determine whether the
+                                                                             plicitly informed employees that they retained the right to
+maintenance of this provision violates the Act. We find
+                                                                             file charges with the Board and access its processes . . .
+that it does. By its terms, the Arbitration Policy covers
+                                                                             employees could not reasonably interpret the agreement[ ]
+“any and all . . . employment-related disputes that exist or
+                                                                             to prohibit them from filing Board charges or participating
+arise between Employees and Ralphs . . . that would con-
+                                                                             in Board proceedings.” Id., slip op. at 3.
+stitute cognizable claims or causes of action in a federal,
+                                                                                Turning to the savings clause at issue in Anderson E-
+state or local court or agency under applicable federal,
+                                                                             terprises, set forth above, the Board concluded that, in
+state or local laws. . . .” It therefore encompasses, among
+                                                                             light of the fact that the savings clause was “sufficiently
+other things, disputes arising under the Act. Moreover,
+                                                                             prominent” and “specifically and affirmatively state[d]
+the events giving rise to all claims covered by the Arbitra-
+                                                                             that the employees may bring claims and charges before
+tion Policy would concern wages, hours, or other terms or
+                                                                             the National Labor Relations Board,” the arbitration
+conditions of employment; employees’ conversations
+                                                                             agreement was lawful under the Board’s test for reviewing
+with one another concerning those events do implicate the
+                                                                             employer rules set forth in Boeing Co., 365 NLRB 1494
+Act; and nothing in the Agreement’s settlement-confiden-
+                                                                             (2017). The Board specifically found that the rule was
+tiality provision limits its scope. See, e.g., St. Margaret
+                                                                             lawful “because, when reasonably interpreted, [it] would
+Mercy Healthcare Centers, 350 NLRB 203, 205 (2007)
+                                                                             have no tendency to interfere with section 7 rights.” Slip
+(“It is axiomatic that discussing terms and conditions of
+                                                                             op. at 4. In so holding, the Board overruled Ralphs Gro-
+employment with coworkers lies at the heart of protected
+                                                                             cery I and similar cases holding otherwise.8
+Section 7 activity.”), enfd. 519 F.3d 373 (7th Cir. 2008).
+                                                                                In Stericycle, Inc., 372 NLRB No. 113 (2023), the
+B. The Arbitration Policy Does Not Unlawfully Interfere                      Board overruled Boeing and adopted a new standard for
+        With Employees’ Access to Board Processes                            determining whether facially neutral workplace rules and
+   The second issue presented in this case is whether the                    policies violate the Act. Under Stericycle, the Board ana-
+Arbitration Policy violates Section 8(a)(1) of the NLRA                      lyzes the Policy under the “reasonably could” standard.
+by interfering with employees’ ability to access and use                     That is, the agreement would be presumptively lawful if
+the Board’s processes. As explained below, we find that                      employees could not reasonably interpret it to interfere
+it does not.                                                                 with their right to file charges with the Board. Consistent
+                                                                             with Anderson Enterprises, where the Board applied the
+
+California, supra, slip op. at 2, fn. 4 (citing California Commerce Club,    vision that only prohibited such disclosures while the arbitration was in
+slip op. at 6). No such conduct is at issue in this case.                    progress would similarly fall outside the protection of the FAA.
+   7                                                                            8
+      A prohibition on disclosing the existence of an arbitration after it        Any suggestion that the Board could not properly have overruled
+has ended plainly has nothing to do with the rules under which an arbitra-   Ralphs Grocery I in Anderson Enterprises necessarily fails. See Boeing
+tion will be conducted. We find it unnecessary to decide whether a pro-      Co., 366 NLRB No. 128 (2018) (rejecting argument).
+4                                         DECISIONS OF THE NATIONAL LABOR RELATIONS BOARD
+
+
+Boeing standard for analyzing employee work rules to the                      related disputes to the Board. Anderson Enterprises also
+arbitration agreement at issue, we apply this current                         establishes that the savings clause at issue in this case is
+standard.9                                                                    sufficiently prominent and clear. Applying that clear hold-
+   We find that the arbitration agreement meets the stand-                    ing here, we find that no reasonable employee could un-
+ard set forth in Stericycle. The Arbitration Policy, a three-                 derstand the Arbitration Policy as interfering with their
+page document, includes a prominent stand-alone para-                         ability to access the Board and its procedures, and we find
+graph addressing employees’ ability to pursue administrat-                    that the Policy does not violate Section 8(a)(1) of the Act.
+ive remedies.10 That paragraph expressly states, “Not-                                                  REMEDY
+withstanding any other provision of this Arbitration
+                                                                                 The Respondent contends that the case is moot because
+Policy, all Employees retain the right under the National
+                                                                              it rescinded the Arbitration Policy in 2012 and replaced it
+Labor Relations Act (‘NLRA’) to file charges with the
+                                                                              with a new arbitration agreement that assertedly does not
+National Labor Relations Board (‘NLRB’) . . . .” Under
+                                                                              violate the Act and that it is Respondent’s policy not to
+Stericyle, the provision is presumptively unlawful only if
+                                                                              enforce the Arbitration Policy against any employee who
+“an employee could reasonably interpret” it to restrict or
+                                                                              signed it. We reject this contention because there is no
+prohibit Section 7 activity. As the Board held in Anderson
+                                                                              record evidence that the Respondent ever notified em-
+Enterprises, with respect to the provision at issue in this
+                                                                              ployees of the rescission. See Prime Healthcare Paradise
+case, “objectively reasonable employees would under-
+                                                                              Valley, LLC, 368 NLRB No. 10, slip op. at 7–8 (2019)
+stand that the inclusion of such language in a legal docu-
+                                                                              (rejecting argument).14
+ment is intended to, and does, describe their legal rights in
+                                                                                 Even though the case is not moot, the General Counsel
+precisely the manner that the text explicitly states: em-
+                                                                              does not dispute the Respondent’s assertion that the Arbit-
+ployees have the right to file charges with the Board.”
+                                                                              ration Policy has already been revised and the offending
+Consistent with this holding, a reasonable employee could
+                                                                              provisions removed. Accordingly, we shall not include an
+not interpret the Arbitration Policy to restrict their right to
+                                                                              affirmative rescission requirement. In addition, rather
+file charges with the Board.
+                                                                              than requiring that the Respondent distribute inserts in-
+   Further, we find that, as in Anderson Enterprises, the
+                                                                              forming the employees that the unlawful provisions have
+Policy does not give employees the impression that filing
+                                                                              been eliminated, we shall modify the notice to inform em-
+charges would be futile,11 does not require employees to
+                                                                              ployees of the background circumstances.15 Nothing in
+file an arbitral claim either before or at the same time as
+                                                                              our order precludes the Respondent from promulgating a
+they file a charge with the Board,12 and does not “’neces-
+                                                                              lawful arbitration agreement as a condition of employ-
+sarily’ interfere with employees’ statutory right to the
+                                                                              ment.
+Board” by requiring individual employees to arbitrate
+their employment-related disputes.13                                                                    ORDER
+   The holding in Anderson Enterprises is clear. Where an                        The Respondent, Ralph’s Grocery Company, Compton,
+arbitration agreement contains prominent language in a                        California, its officers, agents, successors, and assigns,
+savings clause expressly stating that employees retain                        shall
+their ability to file charges with the Board, that specific                      1. Cease and desist from
+language is deemed to resolve any ambiguity created by                           (a) Maintaining an Arbitration Policy that employees
+the more generalized language in the agreement. As a                          reasonably would believe prohibits them from disclosing
+result, no reasonable employee could understand the                           the existence of an arbitration under the Policy.
+agreement to prevent them bringing their employment-
+
+   9
+      Chairman Murphy and Member Mayer did not participate in Steri-          because, of course, the existence of a private arbitration agreement does
+cycle and express no view on whether it was correctly decided. They           not and cannot prevent the Board from processing charges. And we do
+apply it here for institutional reasons.                                      not believe that a reasonable employee could read the express language
+   10
+      See Briad Wenco, slip op. at 3 (finding savings clause in paragraph     of the Policy allowing for the filing of Board charges and conclude that
+11 of the arbitration agreement sufficiently prominent, in part because it    filing such charges would be futile.
+                                                                                  12
+was contained in same document as, and was separated by only one page                Slip op. at 5.
+                                                                                  13
+of text from, the language alleged to be unlawful).                                  Slip op. at 5 (quoting Ralphs I, 363 NLRB 1166, 1168).
+   11                                                                             14
+      Slip op. at 4–5. Our dissenting colleague takes a contrary view,               The Respondent’s position statement after the court’s remand as-
+reasoning that because the Policy indicates that arbitration is the exclus-   serts that it entered into a Compliance Stipulation that provided for the
+ive means of resolving employment disputes, including Federal statutory       circulation of a notice in a newspaper of general circulation that the Ar-
+claims before administrative agencies, “it reasonably follows that filing     bitration Policy had been rescinded but there is no record evidence of this
+Board charges, while permitted, could not result in the Board’s own           stipulation nor is there any evidence that the Respondent has complied
+independent resolution of the dispute but would instead be just a prelim-     with it.
+                                                                                  15
+inary step to arbitration.” We disagree. It does not reasonably follow               See, e.g., Lily Transportation Corp., 362 NLRB 406, 407 (2015).
+                                                   RALPHS GROCERY CO.                                                         5
+
+   (b) In any like or related manner interfering with, re-      tion proceeding confidential imposes confidentiality re-
+straining, or coercing employees in the exercise of the         quirements that go beyond the scope of the arbitration
+rights guaranteed them by Section 7 of the Act.                 proceeding and the rules under which arbitration will be
+   2. Take the following affirmative action necessary to        conducted and therefore is unlawful under the National
+effectuate the policies of the Act.                             Labor Relations Act (NLRA or Act). The second is
+   (a) Within 14 days after service by the Region, post at      whether a mandatory arbitration agreement that could
+all facilities where the Arbitration Policy applied copies of   reasonably be interpreted to cover claims under the Act,
+the attached notice marked “Appendix.” Copies of the            and therefore would be unlawful under the Act, can be
+notice, on forms provided by the Regional Director for          “saved” by language stating that employees remain free to
+Region 21, after being signed by the Respondent’s author-       file unfair labor practice charges with the National Labor
+ized representative, shall be posted by the Respondent and      Relations Board.
+maintained for 60 consecutive days in conspicuous places,          At all relevant times, the Respondent maintained a Me-
+including all places where notices to employees are cus-        diation and Binding Arbitration Policy (Arbitration Poli-
+tomarily posted. In addition to physical posting of paper       cy), which states in its introduction that it “is the exclusive
+notices, notices shall be distributed electronically, such as   mechanism for formal resolution of disputes and awards
+by email, posting on an intranet or an internet site, and/or    of relief that otherwise would be available to Employees
+other electronic means, if the Respondent customarily           or the Company in a court of law or equity or in an admin-
+communicates with its employees by such means. Reas-            istrative agency.” Paragraph 2 of the Arbitration Policy
+onable steps shall be taken by the Respondent to ensure         states that except for disputes arising out of the terms and
+that the notices are not altered, defaced, or covered by any    conditions of a collective-bargaining agreement, “this
+other material. If the Respondent has gone out of business      Arbitration Policy applies to any and all other employ-
+or closed the facility involved in these proceedings, the       ment-related disputes that exist or arise between Employ-
+Respondent shall duplicate and mail, at its own expense, a      ees and Ralphs (or any of them) that would constitute
+copy of the notice marked “Appendix” to all current em-         cognizable claims or causes of action in a federal, state
+ployees and former employees employed by the Respond-           or local court or agency under applicable federal, state
+ent at any time since August 7, 2011.                           or local laws (referred to in this Arbitration Policy as
+   (b) Within 21 days after service by the Region, file with    ‘Covered Disputes’)” (emphasis in original). Paragraph 4
+the Regional Director for Region 21 a sworn certification       of the Arbitration Policy designates arbitration as “the sole
+of a responsible official on a form provided by the Region      and exclusive remedy for any and all Covered Disputes
+attesting to the steps that the Respondent has taken to         that exist or may arise” and describes “Covered Disputes”
+comply.                                                         as including “all Employees’ individual statutory claims
+   IT IS FURTHER ORDERED that the complaint is dismissed        or disputes under federal, state and local laws including,
+insofar as it alleges violations of the Act not specifically    for example and without limitation, any claims or disputes
+found.                                                          arising under” a list of specific Federal and State laws,
+   Dated, Washington, D.C. August 10, 2026                      which does not include the NLRA. Paragraph 6 of the
+                                                                Arbitration Policy, which includes in its final sentence
+                                                                purported “savings” language, states, in full, as follows:
+         ______________________________________                      The Arbitration Policy does not prevent or excuse any
+         James R. Murphy,              Chairman                      Employee or Ralphs (or any of them) from satisfying
+                                                                     any applicable statutory conditions precedent or jurisdic-
+                                                                     tional prerequisites to pursuing their Covered Disputes
+         ________________________________________                    by, for example, filing administrative charges with or
+         Scott A. Mayer,                Member                       obtaining right to sue notices or letters from federal,
+                                                                     state, or local agencies. However, final and binding ar-
+                                                                     bitration as described in this Arbitration Policy is the
+(SEAL)         NATIONAL LABOR RELATIONS BOARD                        sole and exclusive remedy or formal method of resolv-
+                                                                     ing the Covered Disputes. If there is no applicable stat-
+MEMBER PROUTY, dissenting in part.                                   utory condition precedent or jurisdictional prerequisite
+   This case raises two important questions about unilater-          to pursuing a Covered Dispute, all parties must proceed
+ally imposed employer arbitration agreements. The first              directly to arbitration under and pursuant to this Arbitra-
+is whether broad language in an arbitration agreement                tion Policy. Notwithstanding any other provision of this
+requiring employees to keep the “content” of an arbitra-             Arbitration Policy, all Employees retain the right under
+6                                    DECISIONS OF THE NATIONAL LABOR RELATIONS BOARD
+
+
+      the National Labor Relations Act (“NLRA”) to file             to keep the “existence . . . of any arbitration proceedings”
+      charges with the National Labor Relations Board (“N-          confidential is unlawful, even applying California Com-
+      LRB”), and to file charges with the United States Equal       merce Club. However, for the reasons discussed below, I
+      Employment Opportunity Commission (“EEOC”) un-                do not agree with my colleagues that the portion of the
+      der federal equal employment opportunity laws within          confidentiality provision requiring employees to keep the
+      the EEOC’s administrative jurisdiction.                       “content . . . of any arbitration proceedings” confidential
+Paragraph 11 of the Arbitration Policy includes a confidenti-       is lawful.
+ality provision that states that “[e]xcept and only to the extent      The requirement that employees keep the “content . . .
+it may be required by applicable law, the parties and the Qual-     of any arbitration proceedings” confidential does not
+ified Arbitrator shall maintain the existence, content and out-     merely specify the rules under which arbitration will be
+come of any arbitration proceedings held pursuant to this           conducted. Rather, the “content” of an arbitration pro-
+Arbitration Policy in the strictest confidence and shall not        ceeding would reasonably be understood by employees to
+disclose the same without the prior written consent of all the      sweep so broadly as to encompass any information raised
+parties.”                                                           during that proceeding—including an employee’s “claims
+   For the reasons discussed below, unlike my colleagues,           against the employer, the legal issues involved, [and] the
+I would not find that the portion of the confidentiality pro-       events, facts, and circumstances that gave rise to the arbit-
+vision requiring employees to keep the “content . . . of any        ration proceeding,” California Commerce Club, 369
+arbitration proceedings” confidential is lawful or that the         NLRB No. 106, slip op. at 4—regardless of whether an
+Arbitration Policy contains a sufficiently prominent “sav-          employee acquired that information independent of the
+ings” clause in Paragraph 6 that renders the policy lawful          arbitration proceeding. As the Board explained in Cali-
+even though employees could otherwise reasonably inter-             fornia Commerce Club, “[c]ommunicating with each oth-
+pret it to restrict their access to the Board and its processes.    er about events, facts, and circumstances they either know
+                                                                    about firsthand or have heard about from their colleagues
+             I. THE CONFIDENTIALITY PROVISION
+                                                                    is something employees ‘just do,’” and “[a] confidentiality
+   In California Commerce Club, Inc., 369 NLRB No. 106              provision that [] sweep[s] that broadly [to restrict such
+(2020), the Board held that the Federal Arbitration Act             communications] would exceed the scope of an arbitral
+(FAA) shields confidentiality provisions in arbitration             dispute-resolution procedure.” Id., slip op. at 6. Thus, the
+agreements to the extent that they specify the rules under          portion of the confidentiality provision requiring employ-
+which arbitration will be conducted and that the Board is           ees to keep the “content . . . of any arbitration proceeding-
+therefore precluded from finding that arbitral confidential-        s” confidential is not shielded by the FAA and “must be
+ity provisions violate the NLRA so long as they do not              assessed under the same standards that apply to confiden-
+impose confidentiality requirements that go beyond the              tiality rules generally” to determine if its maintenance is
+scope of the arbitration proceeding and the rules under             lawful under the NLRA. Id., slip op. at 1.
+which it will be conducted. Id., slip op. at 1, 6–7. For the           In Stericycle, Inc., 372 NLRB No. 113 (2023), the
+reasons discussed in my concurrence in Pfizer, Inc., 374            Board overruled Boeing Co., 365 NLRB 1494 (2017), and
+NLRB No. 55 (2026), I continue to believe that the                  set forth the following standard for analyzing allegedly
+Board’s decision in California Commerce Club “failed to             overbroad work rules:
+give sufficient weight to fundamental employee rights
+                                                                          As under Lutheran Heritage, our standard requires the
+under the NLRA and incorrectly concluded that the
+                                                                          General Counsel to prove that a challenged rule has a
+[FAA] must displace the NLRA when an employer im-
+                                                                          reasonable tendency to chill employees from exercising
+poses confidentiality requirements that would be unlawful
+                                                                          their Section 7 rights. We clarify that the Board will
+in any other context as part of an arbitration agreement.”
+                                                                          interpret the rule from the perspective of an employee
+Pfizer, 374 NLRB No. 55, slip op. at 3–4 (Member Prouty,
+                                                                          who is subject to the rule and economically dependent
+concurring) (internal footnotes omitted). However, I ap-
+                                                                          on the employer, and who also contemplates engaging
+ply California Commerce Club as extant precedent in this
+                                                                          in protected concerted activity. Consistent with this
+case in the absence of a three-member majority to overrule
+                                                                          perspective, the employer’s intent in maintaining a rule
+it. For the reasons discussed by my colleagues, I agree
+                                                                          is immaterial. Rather, if an employee could reasonably
+that the portion of the confidentiality provision requiring
+                                                                          interpret the rule to have a coercive meaning, the Gener-
+employees to keep the “outcome of any arbitration pro-
+                                                                          al Counsel will carry her burden, even if a contrary, non-
+ceedings” confidential is lawful under California Com-
+                                                                          coercive interpretation of the rule is also reasonable. If
+merce Club and its progeny, and I also agree that the por-
+                                                                          the General Counsel carries her burden, the rule is pre-
+tion of the confidentiality provision requiring employees
+                                                                          sumptively unlawful, but the employer may rebut that
+                                                            RALPHS GROCERY CO.                                                                  7
+
+       presumption by proving that the rule advances a legitim-            731, 740 (1983)). In Prime Healthcare, the Board held,
+       ate and substantial business interest and that the employ-          consistent with the clear Congressional command in Sec-
+       er is unable to advance that interest with a more narrowly          tion 10(a) of the Act,2 that the Federal Arbitration Act
+       tailored rule. If the employer proves its defense, then the         (FAA) does not authorize the maintenance or enforcement
+       work rule will be found lawful to maintain.                         of arbitration agreements that restrict employees’ access
+Stericycle, 372 NLRB No. 113, slip op. at 2. As discussed in               to the Board or its processes. Prime Healthcare, 368
+detail below, employees certainly could read the Arbitration               NLRB No. 10, slip op. at 5. “[A]n arbitration agreement
+Policy to cover disputes under the NLRA. Further, as my                    that explicitly prohibits the filing of claims with the Board
+colleagues acknowledge, the events giving rise to all claims               or, more generally, with administrative agencies . . . con-
+and disputes covered by the Arbitration Policy would con-                  stitutes an explicit prohibition on the exercise of employee
+cern wages, hours, and other terms and conditions of em-                   rights under the Act” and therefore violates Section
+ployment. Thus, the portion of the confidentiality agreement               8(a)(1) of the Act. Ibid. As my colleagues recognize,
+requiring employees to keep the “content . . . of any arbitra-             where an arbitration agreement does not contain such an
+tion proceedings” confidential undoubtedly has a reasonable                explicit prohibition and is therefore facially neutral, the
+tendency to interfere with employees’ interest in discussing               Board will apply the governing standard used to evaluate
+their terms and conditions of employment with their cowork-                employer work rules to determine if the agreement unlaw-
+ers, which “lies at the heart of protected Section 7 activity.”            fully restricts employees’ access to the Board or its pro-
+St. Margaret Mercy Healthcare Centers, 350 NLRB 203,                       cesses. See Prime Healthcare, 368 NLRB No. 10, slip op.
+205 (2007), enfd. 519 F.3d 373 (7th Cir. 2008). The Re-                    at 5 (applying the work-rule standard established in
+spondent has not put forward any legitimate and substantial                Boeing to an arbitration agreement); U-Haul Co. of Cal-
+business interest for interfering with this fundamental Section            fornia, 347 NLRB 375, 377 (2006) (applying the work-
+7 right that could not be advanced by a more narrowly                      rule standard established in Lutheran Heritage Village-
+tailored confidentiality provision. The portion of the confid-             Livonia, 343 NLRB 646 (2004), which was subsequently
+entiality provision requiring employees to keep the “content .             overruled in Boeing, to an arbitration agreement), enfd.
+. . of any arbitration proceedings” confidential therefore does            mem. 255 F. App’x 527 (D.C. Cir. 2007). This case
+not pass muster under Stericycle.                                          presents the first opportunity for the Board to apply the
+    In sum, the requirement that employees keep the “con-                  Stericycle work-rule standard to an arbitration agreement
+tent . . . of any arbitration proceedings” confidential does               that allegedly restricts employees’ access to the Board or
+not “fall[] on the side of the line governed by the FAA,”                  its processes. In doing so, I agree with, and would reaf-
+but instead falls on the side of the line in which the NLRA                firm, the Board’s finding in Prime Healthcare that, “as a
+prevails because it “interfere[s] with what employees ‘just                matter of law, there is not and cannot be any legitimate
+do for themselves in the course of exercising their right to               justification for provisions, in an arbitration agreement or
+free association in the workplace’—i.e., discuss work-                     otherwise, that restrict employees’ access to the Board or
+place matters of mutual concern, whether or not they are                   its processes.” 368 NLRB No. 10, slip op. at 6. Thus, the
+also the subject of an arbitral proceeding.” California                    question before the Board in this case is whether employ-
+Commerce Club, 369 NLRB No. 106, slip op. at 6–7                           ees could reasonably interpret the Respondent’s Arbitra-
+(quoting Epic Systems Corp. v. Lewis, 584 U.S. 497, 512                    tion Policy to restrict their access to the Board or its pro-
+(2018)). Accordingly, I would find that the Respondent                     cesses.
+violated Section 8(a)(1) of the Act by maintaining that                       My colleagues acknowledge that the scope of the Arbit-
+portion of the confidentiality provision.1                                 ration Policy encompasses disputes arising under the Act.
+                                                                           However, applying Anderson Enterprises, Inc. d/b/a Roy-
+     II. RESTRICTION ON ACCESS TO THE BOARD AND ITS
+                                                                           al Motor Sales, 369 NLRB No. 70 (2020)—which my
+                             PROCESSES
+                                                                           colleagues describe as holding that “[w]here an arbitration
+   “Section 7 of the Act protects the right of employees to                agreement contains prominent language in a savings
+utilize the Board’s processes, including the right to file                 clause expressly stating that employees retain their ability
+unfair labor practice charges.” Prime Healthcare Para-                     to file charges with the Board, that specific language is
+dise Valley, LLC, 368 NLRB No. 10, slip op. at 4 (2019)                    deemed to resolve any ambiguity created by the more gen-
+(citing Bill Johnson’s Restaurants, Inc. v. NLRB, 461 U.S.                 eralized language in the agreement”—my colleagues find
+
+    1                                                                         2
+      My colleagues claim that in reaching this conclusion, I have taken        Sec. 10(a) provides that the Board’s power to prevent unfair labor
+“certain phrases” from California Commerce Club out of context. This       practices “shall not be affected by any other means of adjustment or
+is untrue, as any review of my dissent and of California Commerce Club     prevention that has been or may be established by agreement, law, or
+demonstrates.                                                              otherwise.” 29 U.S.C. § 160(a).
+8                                        DECISIONS OF THE NATIONAL LABOR RELATIONS BOARD
+
+
+that the Arbitration Policy does not violate Section 8(a)(1)                  Further, I disagree that the language in Paragraph 6 of
+of the Act because “no reasonable employee could under-                    the Arbitration Policy stating that “[n]otwithstanding any
+stand the Arbitration Policy as interfering with their ability             other provision of this Arbitration Policy, all Employees
+to access the Board and its procedures” in light of the pur-               retain the right . . . to file charges with the . . . Board” trans-
+ported “savings” clause in Paragraph 6.3 For the reasons                   forms the three-page Arbitration Policy into one that no
+discussed below, I disagree with my colleagues and would                   reasonable employee could interpret as restricting their
+reaffirm the Board’s finding in its earlier decision in this               right to access the Board and its processes.
+proceeding that the Arbitration Policy restricts employees’                   As an initial matter, I conclude that employees would be
+access to the Board and its processes in violation of Sec-                 unlikely to focus on the purported “savings” clause in
+tion 8(a)(1) of the Act. See Ralphs Grocery Co., 363                       Paragraph 6 given its lack of prominence in the Arbitration
+NLRB 1166, 1166–1168 (2016) (Ralphs I).                                    Agreement—as it is buried in the middle of the Arbitration
+   To begin, as mentioned above, my colleagues do not                      Policy and at the end of a paragraph riddled with confus-
+dispute that employees could reasonably interpret the Ar-                  ing legalese—especially compared to the language em-
+bitration Policy to cover disputes arising under the NLRA.                 phasizing that the Arbitration Policy makes arbitration the
+Indeed, the Arbitration Policy lays the foundation for that                exclusive means of resolving all employment disputes,
+reasonable interpretation before employees even reach its                  including claims based on Federal statutes and pursued
+formal terms, as its introduction states that it “is the ex-               administratively—which is bolded and underlined in
+clusive mechanism for formal resolution of disputes and                    Paragraph 2 and repeated throughout the Arbitration
+awards of relief that otherwise would be available . . . in                Policy and was acknowledged by employees when they
+an administrative agency.” With regard to the actual terms                 filled out the Respondent’s employment application.
+of the Arbitration Policy, employees certainly could inter-                Even when the Board applied the less-protective Boeing
+pret the statement in Paragraph 2 that the Arbitration                     work-rule standard, it considered the prominence of lan-
+Policy applies to employment-related disputes “that would                  guage in an arbitration agreement that arguably preserved
+constitute cognizable claims or causes of action in a feder-               employees’ right of access to the Board, notwithstanding
+al . . . agency under applicable federal . . . laws” (emphasis             other language in the agreement. See, e.g., Briad Wenco,
+omitted) to encompass claims under the NLRA. In turn,                      LLC d/b/a Wendy’s Restaurant, 368 NLRB No. 72, slip
+Paragraph 4 of the Arbitration Policy could reasonably be                  op. at 2 (2019) (finding arbitration agreements lawful
+interpreted the same way, as it recites that “Covered Dis-                 based on “savings” language that was “sufficiently prom-
+putes subject to this Arbitration Policy include all Em-                   inent within the agreements”). I agree that, as implied in
+ployees’ individual statutory claims or disputes under fed-                such cases, the Board should consider the prominence of
+eral . . . laws.” To be sure, the NLRA is not listed in Para-              language that purportedly renders lawful an arbitration
+graph 4, but Paragraph 4 specifically states that the laws                 agreement that otherwise could be reasonably interpreted
+listed therein are “for example and without limitation.”                   to restrict employees’ access to the Board or its processes.
+Failure to mention the NLRA, then, cannot signal that a                    The lack of prominence of the purported “savings” clause
+claim under the Act is excluded from the coverage of the                   in the Arbitration Policy fatally undermines my col-
+Arbitration Policy. Reading Paragraphs 2 and 4 of the                      leagues’ claim that it renders the Arbitration Policy lawful
+Arbitration Policy in conjunction with the introduction, a                 here.
+reasonable employee could easily conclude that any claim                      But in addition to, and independent of, its lack of prom-
+that they make under the NLRA would necessarily be re-                     inence, Paragraph 6 is substantively inadequate to “save”
+solved through arbitration, not through the Board’s                        this Arbitration Policy, as the purported “savings” clause
+processes.4                                                                in Paragraph 6 does not clearly assure employees that,
+
+   3
+      In Anderson Enterprises, the Board applied the Boeing work-rule      employees to fill out, which required employees to initial next to a state-
+standard in determining whether the relevant arbitration agreement un-     ment incorporating the Arbitration Policy into the application to indicate
+lawfully restricted employees’ access to the Board or its processes. See   their understanding of, and agreement to, that statement. That statement
+Anderson Enterprises, 369 NLRB No. 70, slip op. at 3. In light of the      reiterates that the Arbitration Policy “applies to any employment-related
+Board’s overruling of Boeing in Stericycle, cases involving arbitration    disputes that exist or arise between the Employees and the Company”
+agreements or policies are no longer viable precedent to the extent that   including “statutory claims or disputes” and tells employees that they
+they applied the Boeing work-rule standard. See Stericycle, 372 NLRB       “waive any right that [they] have or may have to have any formal dispute
+No. 113, slip op. at 2 (stating that the Board overruled Boeing, LA Spe-   resolution proceedings concerning any Covered Disputes take place in a
+cialty Produce Co., 368 NLRB No. 93 (2019), and the cases relying on       . . . federal . . . agency and to have such proceedings heard or presided
+those decisions).                                                          over by an . . . administrative officer.” The employment application does
+   4
+      Employees’ reasonable understanding that the Arbitration Policy      not mention employees’ right to file unfair labor practice charges with
+requires arbitration of disputes arising under the NLRA would have been    the Board.
+reinforced by the employment application that the Respondent required
+                                                               RALPHS GROCERY CO.                                                                  9
+
+despite the language in the Arbitration Policy indicating                     even an employee who reads Paragraph 6 in isolation
+that claims under the NLRA are covered by the Arbitra-                        could still reasonably view the prospect of filing Board
+tion Policy, they retain full access to the Board and its pro-                charges as an exercise in futility.
+cesses. Employees’ Section 7 right to access the Board                           My colleagues cite Anderson Enterprises to support
+includes more than the right to file unfair labor practice                    their claim that the Arbitration Policy “does not give em-
+charges. In fact, the Board has emphasized, with judicial                     ployees the impression that filing charges would be fu-
+approval, that “Congress intended employees to be com-                        tile.” In Anderson Enterprises, the Board rejected the pos-
+pletely free to file charges with the Board, to participate in                ition of the Ralphs I Board that employees would view the
+Board investigations, and to testify at Board hearings.”                      exercise of their right to file charges with the Board as
+Prime Healthcare, 368 NLRB No. 10, slip op. at 5 (citing                      futile if they would understand the arbitration agreement
+NLRB v. Scrivener, 405 U.S. 117, 121‒122 (1972)). Thus,                       to require that any disputes under the NLRA must non-
+employees must be able to utilize the Board’s processes as                    etheless be resolved in arbitration—which led the Ander-
+a whole from start to finish. As the Board explained in                       son Enterprises Board to overrule Ralphs I. See Anderson
+Ralphs I, “[t]o be meaningful, the right to file charges with                 Enterprises, 369 NLRB No. 70, slip op. at 4–5. The An-
+the Board must entail the right to have the Board exercise                    derson Enterprises Board found that this position “un-
+its statutory powers under Section 10 of the Act: i.e., to                    reasonably attributes to employees the inclination to
+investigate the charge, to determine its merits, and to pur-                  simply disregard the savings clause as though it were
+sue appropriate relief through the Act’s procedures.” 363                     meaningless surplusage.” Id., slip op. at 5. As discussed
+NLRB at 1167–1168. While the Arbitration Policy ex-                           above, in Anderson Enterprises, the Board applied the
+pressly permits employees to file charges with the Board,                     Boeing work-rule standard, which was subsequently dis-
+it also expressly provides that arbitration is the exclusive                  carded in Stericycle because, among other things, it was
+means of resolving all employment-related disputes, in-                       insufficiently protective of employees’ Section 7 rights
+cluding Federal statutory claims before administrative                        and failed to account for employees’ economic depend-
+agencies. It reasonably follows that filing Board charges,                    ence on their employers. See 373 NLRB No. 113, slip op.
+while permitted, could not result in the Board’s own inde-                    at 1. Under Stericycle, the Board’s task is not to construe
+pendent resolution of the dispute but would instead be just                   a mandatory arbitration policy as if it were deciding a dis-
+a preliminary step to arbitration. Accordingly, employees                     pute about the correct meaning of a contract, using canons
+could reasonably view the prospect of filing charges with                     of construction and other traditional interpretive tools.
+the Board as an exercise in futility, chilling employees                      Rather, the Board must determine whether the arbitration
+from exercising their right to access the Board.5                             policy—imposed on employees by their employer just as
+   Even if employees were to focus narrowly on only                           work rules are—has a reasonable tendency to chill em-
+Paragraph 6 of the Arbitration Agreement, they could still                    ployees from accessing the Board or utilizing its pro-
+reasonably conclude that while they “retain the right . . .                   cesses. To make this determination, the Board puts itself
+to file charges with the . . . Board,” their claims under the                 in the place of a reasonable employee, who is economic-
+NLRA would still be subject to “final and binding arbitra-                    ally dependent on the employer and who reads the policy
+tion” as “the sole and exclusive remedy or formal method                      as a layperson, not a lawyer. See id., slip op. at 8–9. As I
+of resolving the Covered Disputes.” Indeed, they could                        have explained, reasonable employees could easily draw
+reasonably read Paragraph 6 to say that filing Board                          the impression from the Respondent’s Arbitration Policy
+charges is an example of the “administrative charges” that                    as a whole that accessing the Board and utilizing its pro-
+constitute “statutory conditions precedent or jurisdictional                  cesses would be futile because their dispute with the Re-
+prerequisites” to pursuing a dispute covered by the Arbit-                    spondent would ultimately be resolved in arbitration, even
+ration Policy. What Paragraph 6 does not clearly say is                       if the Arbitration Policy permits them to file unfair labor
+that a claim under the NLRA is entirely excluded from the                     practice charges with the Board.6
+Arbitration Policy, i.e., is not a “Covered Dispute.” Thus,
+
+   5
+      This interpretation of the Arbitration Policy is a reasonable one for   Disputes”—which employees would reasonably understand to include
+an employee to make, even if not the only reasonable one. No more is          claims under the NLRA—the Arbitration Policy will not function as
+required for the General Counsel to carry her burden under Stericycle.        written when it comes to unfair labor practice charges filed with the
+   6
+     Although I agree with my colleagues that “the existence of a private     Board. As the Board has previously explained, “[r]ank-and-file employ-
+arbitration agreement does not and cannot prevent the Board from pro-         ees do not generally carry lawbooks to work or apply legal analysis to
+cessing charges,” I disagree with them that the unassailability of this       company rules as do lawyers, and cannot be expected to have the expert-
+legal conclusion means that employees can reasonably be expected to           ise to examine company rules from a legal standpoint.” Ingram Book
+understand that despite the Arbitration Policy’s repeated declarations        Co., 315 NLRB 515, 516 fn. 2 (1994).
+that arbitration is the sole and exclusive method for resolving “Covered
+10                                DECISIONS OF THE NATIONAL LABOR RELATIONS BOARD
+
+
+   As a general matter, I do not think that purported “sav-       FEDERAL LAW GIVES YOU THE RIGHT TO
+ings” language like that found in Paragraph 6 of the Arbit-           Form, join, or assist a union
+ration Policy can ever suffice to render lawful an arbitra-           Choose representatives to bargain with us on your
+tion agreement that otherwise could be reasonably inter-          behalf
+preted to restrict employees’ access to the Board or its              Act together with other employees for your benefit
+processes. In order for an employer to save such an arbit-        and protection
+ration agreement from illegality, it should include in the            Choose not to engage in any of these protected
+agreement unconditional and sufficiently prominent lan-           activities.
+guage that provides that employees retain the right to file
+unfair labor practice charges with the Board and uncondi-     In June 2012, we distributed to you a new arbitration policy.
+tional and sufficiently prominent language that excludes      That new policy revised the prior policy and eliminated as-
+or carves out claims under the NLRA from the scope of         pects that were alleged to violate Federal labor law. The Na-
+the arbitration agreement. I believe that a combination of    tional Labor Relations Board has now found that the prior
+such a “savings” clause and such an “exclusion” clause        policy was unlawful in one aspect.
+would clearly assure employees that they retain full access      WE WILL NOT maintain a mandatory arbitration policy
+to the Board and its processes. Here, the Respondent’s        that requires employees to maintain the confidentiality of
+Arbitration Policy contains neither sufficiently prominent    the existence of all arbitration proceedings.
+“savings” language nor any “exclusion” language. As a            WE WILL NOT in any like or related manner interfere
+result, I would find that the Respondent violated Section     with, restrain, or coerce you in the exercise of the rights
+8(a)(1) by maintaining the Arbitration Policy, which re-      listed above.
+stricts employees’ access to the Board and its processes.        WE HAVE rescinded the foregoing policy and removed
+   Accordingly, I respectfully dissent.                       those aspects from the arbitration policy distributed in
+   Dated, Washington, D.C. August 10, 2026                    June 2012.
+                                                                          RALPHS GROCERY COMPANY
+      ______________________________________                     The Board’s decision can be found at ht-
+      David M. Prouty,               Member                   tps://www.nlrb.gov/case/ 21-CA-073942 or by using the
+                                                              QR code below. Alternatively, you can obtain a copy of
+                                                              the decision from the Executive Secretary, National Labor
+           NATIONAL LABOR RELATIONS BOARD                     Relations Board, 1015 Half Street, S.E., Washington, D.C.
+                                                              20570, or by calling (202) 273-1940
+                       APPENDIX
+                NOTICE TO EMPLOYEES
+               POSTED BY ORDER OF THE
+          NATIONAL LABOR RELATIONS BOARD
+        An Agency of the United States Government
+The National Labor Relations Board has found that we
+violated Federal labor law and has ordered us to post and
+obey this notice.
+

@@ -1,0 +1,682 @@
+     NOTICE: This opinion is subject to formal revision before publication in the    ployee-driven process, and store managers may not reject
+        bound volumes of NLRB decisions. Readers are requested to notify the
+        Executive Secretary, National Labor Relations Board, Washington, D.C.        or deny a borrowed partner in their store except due to
+        20570, of any typographical or other formal errors so that corrections can   local scheduling laws. There are a variety of means by
+        be included in the bound volumes.
+                                                                                     which employees can learn that specific shifts are avail-
+Starbucks Corporation and Workers United Labor                                       able to be borrowed. They include managerial solicita-
+     Union International, Affiliated with Service Em-                                tion, word-of-mouth, email, or a Starbucks Facebook page
+     ployees    International      Union.         Case                               where borrowable shifts are posted. Additionally, in
+     19–CA–295850                                                                    January 2022, the Respondent created “Shift Market-
+                   August 5, 2026                                                    place,” a platform enabling employees to borrow shifts
+                                                                                     online. During the rollout of Shift Marketplace in early
+                    DECISION AND ORDER1
+                                                                                     February 2022, the Respondent trained its employees on
+     BY CHAIRMAN MURPHY AND MEMBERS PROUTY                                           how to use the online platform and provided them with a
+                         AND MAYER                                                   Quick Reference Guide. Neither that Quick Reference
+   On May 31, 2023, Administrative Law Judge Amita                                   Guide nor a Launch Guide given to managers contained
+Baman Tracy issued the attached decision. The Respond-                               any limitation on borrowing based on the unionized status
+ent filed exceptions and a supporting brief, and the Gener-                          of an employee’s home store. No such restriction appears
+al Counsel and the Charging Party Union each filed an                                anywhere in the Respondent’s guidance documents.
+answering brief.                                                                        Employee Alejandra Toscano worked as a barista at
+   The National Labor Relations Board has considered the                             multiple Starbucks locations in Seattle from April 2019 to
+decision and the record in light of the exceptions and                               December 2022. Between February 2021 and July 17,
+briefs and has decided to affirm the judge’s rulings,                                2022, Toscano’s home store was located at 9999 Holman
+findings,2 and conclusions only to the extent consistent                             Road NW (the Holman store). Toscano, like most of the
+with this Decision and Order.                                                        Respondent’s baristas, was typically not scheduled full-
+   The complaint in this case alleges that the Respondent                            time at her home store, and she borrowed extra shifts at
+interfered with, restrained, and coerced employees in viol-                          other Starbucks locations to supplement her income. By
+ation of Section 8(a)(1) by communicating to them that, if                           April 2022,3 Toscano was working only between 12 and
+they worked at a store where the Union was certified as                              18 hours per week at the Holman store. She then began
+their collective-bargaining representative, they would not                           borrowing shifts at 7100 E. Green Lake Drive North (the
+be permitted to pick up shifts at other of the Respondent’s                          Green Lake store). She would usually work one or two
+stores where the Union was not the employees’ certified                              shifts per week at the Green Lake store, and at a certain
+representative, and vice versa. The judge found that the                             point she spent more time there than at the Holman store.
+General Counsel satisfied her burden of proving that the                                On February 24, the Union filed a petition for an elec-
+Respondent unlawfully coerced its employees. For the                                 tion to represent employees at the Holman store. On April
+reasons that follow, we find that the General Counsel did                            29, workers at that location voted in favor of unionization
+not satisfy her burden, and we dismiss the complaint.                                and a certification of representation was issued on May 9.
+                                                                                     The Green Lake store, where Toscano had been borrowing
+                      I. BACKGROUND
+                                                                                     shifts, was not unionized.
+   The Respondent operates a large number of cafes                                      On or about May 15, Toscano borrowed a shift at the
+around the country, including in the Seattle, Washington                             Green Lake store and had a conversation there with sever-
+area. The Respondent’s employees each have a desig-                                  al coworkers. No supervisors or managers were present.
+nated “home store.” Because the Respondent’s employees                               The coworkers told Toscano that they were sad that she
+are typically scheduled for fewer than 40 hours per week                             would no longer be able to borrow hours at the Green Lake
+at their home store, the Respondent has permitted them to                            store. When Toscano asked them what they meant, they
+“borrow” (i.e., pick up) shifts at other of its stores to aug-                       replied that because her home store was unionized, she
+ment their hours and income. Borrowing hours is an em-                               would not be able to keep borrowing shifts at a nonunion-
+
+   1                                                                                    2
+      The Respondent asserts that Member Prouty should recuse himself                       The Respondent has excepted to some of the judge’s credibility
+claiming that his “past, present, and perceived relationships with the               findings. The Board’s established policy is not to overrule an adminis-
+Service Employees International Union (SEIU) . . . SEIU Local Unions,                trative law judge’s credibility resolutions unless the clear preponderance
+and their affiliates, including Workers United” create a conflict of in-             of all the relevant evidence convinces us that they are incorrect. Stand-
+terest. Member Prouty has determined, in consultation with the Board’s               ard Dry Wall Products, 91 NLRB 544 (1950), enfd. 188 F.2d 362 (3d
+Designated Agency Ethics Official, that there is no basis to recuse him-             Cir. 1951). We have carefully examined the record and find no basis for
+self from the adjudication of this case.                                             reversing the findings.
+                                                                                        3
+                                                                                           All subsequent dates are in 2022, unless otherwise specified.
+
+
+375 NLRB No. 28
+2                                   DECISIONS OF THE NATIONAL LABOR RELATIONS BOARD
+
+
+ized location. Toscano immediately told them their asser-          nonunion Green Lake store asking for help filling shifts at
+tion “was incorrect.”                                              the unionized Holman store. At no point did the Respond-
+   Later that day, after finishing her shift, Toscano initi-       ent update any guidance document to restrict unionized
+ated a conversation with Green Lake Manager Chelsea                employees from borrowing shifts at unrepresented stores
+Zapata in the back room of the store. Toscano asked Za-            or to restrict unrepresented employees from borrowing
+pata “what was up with the claims” of her coworkers about          shifts at unionized stores.
+limitations on borrowing shifts? Zapata responded that                On July 17, Toscano permanently transferred to the
+“she had recently gone to a meeting with other managers            Green Lake store because that location had consistently
+in the area and Starbucks lawyers[,] and they told her that        offered her more hours. Toscano remained employed at
+. . . unionized stores could not borrow at nonunionized            the Green Lake store until she resigned in December.
+stores, and vice versa.” In reply, Toscano told Manager               The judge found that the Respondent had violated Sec-
+Zapata that this was incorrect. Manager Zapata said that           tion 8(a)(1) because “a reasonable employee would under-
+she (Zapata) “didn’t know exactly what was true” given             stand Zapata’s unrefuted comments to Toscano about lim-
+that Toscano had continued to borrow shifts at Green Lake          itations on borrowing partners based on union status as a
+after that meeting. Toscano again insisted that any such           threat to lose an existing benefit.”
+limitation was “not true.” Toscano testified that “I was                                     II. ANALYSIS
+very upset and I was swearing and I was—I said that
+                                                                      Section 8(a)(1) of the Act makes it unlawful for an em-
+sounds like some bullshit union busting, is what I told
+                                                                   ployer “to interfere with, restrain, or coerce employees in
+her.” Manager Zapata concluded the conversation by
+                                                                   the exercise of the rights guaranteed in [S]ection 7.” As
+telling Toscano that she “didn’t see any problem with such
+                                                                   we recently explained:
+borrowing” and assured Toscano that she could continue
+borrowing at the Green Lake store until Zapata found out                The Board has long held that the standard to be used in
+more information.                                                       analyzing statements alleged to violate Section 8(a)(1) is
+   Several days later, Toscano sent Zapata a text message               whether they have a reasonable tendency to coerce em-
+about their earlier conversation. The entirety of their text            ployees in the exercise of their Section 7 rights. Intent is
+correspondence is as follows:                                           immaterial. The Board considers the totality of circum-
+                                                                        stances in assessing the reasonable tendency of an am-
+      [Toscano:] I just wanted to confirm that you told me I
+                                                                        biguous statement or a veiled threat to coerce. Whether
+      can no longer cover shifts at Green Lake because Hol-
+                                                                        or not the employee changed their behavior in response
+      man Road is unionized when we spoke on Wednesday.
+                                                                        is not dispositive, nor is the employee’s subjective inter-
+      I think that under federal labor law I am able to continue
+                                                                        pretation of the statement. The Board therefore con-
+      borrowing shifts and I would like to be able to continue
+                                                                        siders the total context of the alleged unlawful conduct
+      borrowing shifts at Green Lake.
+                                                                        from the viewpoint of its impact on employees’ free
+    [Zapata:] I said that’s what I heard/read at a union sem-           exercise of their rights under the Act.
+    inar but that doesn’t mean I truly know.                       Lush Cosmetics, LLC, 372 NLRB No. 54, slip op. at 3 (2023)
+    [Zapata:] I only brought it up because you commented           (quotation marks and citations omitted).
+    on possibly wanting to work at both stores and I wanted           Applying these principles, we find, contrary to the
+    to prepare you in case that was true.                          judge, that Manager Zapata did not threaten to eliminate
+                                                                   an existing benefit based on employees’ union activities
+    [Zapata:] You are always welcome at Green Lake.                and that Zapata’s comments did not have a reasonable
+    [Toscano:] Okay cool lol.                                      tendency to coerce employees in the exercise of Section 7
+                                                                   rights. To begin, Zapata’s remarks to Toscano must be
+     [Toscano:] Sorry to text you on your day off btw.             considered in context. Pertinently, the record here does not
+   Consistent with Manager Zapata’s assurances in the              indicate any effort by the Respondent to restrict employ-
+initial conversation and with her text message that To-            ees from borrowing shifts. Indeed, the Respondent cre-
+scano was “always welcome at Green Lake,” Toscano                  ated “Shift Marketplace” as a tool to assist employees in
+continued freely borrowing shifts at the nonunion Green            borrowing shifts at other stores and provided employees
+Lake store while her home store, Holman, was unionized.            and managers with training and guidance materials on the
+The record also establishes that employees from nonunion           tool. Those training materials do not limit shift borrowing
+home stores continued to borrow shifts at unionized home           based on the unionized status of an employee’s home
+stores. Consistent with the practice of free borrowing,            store. Rather, as the record here amply demonstrates, the
+around May 26, Toscano observed a flyer posted at the              Respondent permitted shift borrowing between the Hol-
+                                                                 STARBUCKS CORP.                                                                         3
+
+man and Green Lake stores both before and after the Hol-                      Green Lake, and the Respondent subsequently approved
+man store unionized.                                                          Toscano’s transfer from Holman to Green Lake notwith-
+   Zapata’s allegedly unlawful remarks occurred shortly                       standing her assertion that any restriction on shift borrow-
+after the Holman Store unionized. Initially, Toscano was                      ing would have been “bullshit union busting.”
+told by other employees at the Green Lake store that she                         An employee could not reasonably interpret Zapata’s
+would no longer be able to borrow shifts at Green Lake                        equivocal comment, followed as it was by an assurance of
+because the Holman store had unionized. Presented with                        continued borrowing, as an unlawful threat to eliminate an
+this rumor, Toscano sought out Zapata to ask about her                        existing benefit. This is especially true in a context where
+coworkers’ claims. In response, Zapata did not announce                       employees had earlier in the year received training on
+the implementation (or impending implementation) of a                         Shift Marketplace without any reference to such a restric-
+new prohibition on unionized employees borrowing shifts                       tion, no corporate update had been given, and Zapata, a
+at nonunion stores or vice versa. Rather, Zapata equivoc-                     low-level manager, did not affirmatively issue a restriction
+ally described a statement that she had heard at a manager-                   on shift borrowing, but rather equivocally and hesitantly
+s’ meeting that “unionized stores could not borrow at                         responded to an employee inquiry on the topic. Consider-
+nonunionized stores, and vice versa,” but immediately                         ing all of the circumstances, including Zapata’s repeated
+acknowledged that “she didn’t know exactly what was                           assurances that Toscano could continue borrowing shifts
+true,” pointed out that Toscano had in fact continued to                      at the Green Lake store and was “always welcome” there,
+borrow shifts at a nonunion store, stated that she “didn’t                    we find that her comments lacked a reasonable tendency
+see any problem with such borrowing,” and affirmatively                       to interfere with protected activity. See The Singer Co.,
+asserted that Toscano could continue doing so. Employee                       199 NLRB 1195, 1209 (1972) (dismissing the allegation
+Toscano had just completed a shift she had borrowed at a                      of a plant-closure threat based on the manager’s equivocal
+nonunion store when this conversation occurred, thereby                       statement), enfd. 480 F.2d 269 (10th Cir. 1973).4
+undermining the veracity of the rumor being discussed                                                   ORDER
+between Zapata and Toscano. In a subsequent text ex-
+                                                                                 The complaint is dismissed.
+change also initiated by Toscano, Zapata reiterated that
+she did not “truly know” if any shift borrowing restrictions
+were in place and assured Toscano about her ability to
+borrow shifts at the Green Lake store. That assurance was
+                                                                                 Dated, Washington, D.C. August 5, 2026
+reinforced when Toscano continued to pick up shifts at
+
+    4
+      Our dissenting colleague relies upon distinguishable cases in sup-      slip op. at 3 (2024) (finding that employer unlawfully threatened an
+port of his position that, under all the circumstances, Manager Zapata’s      employee during an organizing drive by stating, unprompted, that
+equivocal comments and continued commitment to permit borrowing               “unionization would mean that nonunion stores would no longer be able
+were unlawfully coercive. None of the precedents cited by the dissent         to ‘borrow’ employees from union stores, and vice versa” because it was
+involved an employee-initiated conversation outside the context of an         not phrased as a possible outcome of bargaining, but rather as an “inevit-
+organizing drive or a manager’s equivocal statement about what she had        ability”); Starbucks Corp., 373 NLRB No. 45, slip op. at 1 fn. 2, 8, 11
+heard coupled with a commitment to continue the status quo. See Daiki-        (2024) (finding that employer unlawfully threatened employee during an
+chi Sushi, 335 NLRB 622, 623–624 (2001) (finding employer, during             organizing drive by stating, unprompted, that unionization might affect
+union campaign, unlawfully predicted that it might close its operation if     their ability to take shifts from other stores); Starbucks Corp., 373 NLRB
+employees were to unionize because the union’s demands would in-              No. 44, slip op. at 8–9 (2024) (finding that employer unlawfully
+crease production costs), enfd. 56 Fed. Appx. 516 (D.C. Cir. 2003); Holy      threatened employees during organizing drive by initiating a conversa-
+Cross Health d/b/a Holy Cross Hospital, 370 NLRB No. 16, slip op. at 1        tion and stating that “if they chose to vote yes on a union that their insur-
+fn. 3 (2020) (finding that an employer unlawfully threatened an employ-       ance would probably get worse, they would likely not be able to accrue
+ee during an organizing drive by telling her that, if employees were to       any more paid time off, it would be unlikely they would be able to pick
+unionize, the employer’s leave policies might become less generous and        up shifts at other locations and it would be unlikely that store managers
+its shift scheduling less flexible without explaining that any changes        would be allowed to help them on the floor in times that they were short
+would have to be collectively bargained); Metro One Loss Prevention           staffed”). None of these precedents involved an employee-initiated
+Services Group, 356 NLRB 89, 89–90 (2010) (finding that employer              conversation outside the context of an organizing drive or a manager’s
+unlawfully threatened employees during an organizing drive by stating         equivocal statement about what she thought she had heard coupled with
+that they need to be grateful for their tenure and pay and “[i]t could be     a commitment to continue the status quo.
+worse; it could get much worse in the event the [u]nion comes in”).               Further, our dissenting colleague states that “the failure to carry out
+    We are also unpersuaded by our dissenting colleague’s reliance on         [a] threat does not detract from the reasonable likelihood of [a] naked
+other cases where the Board found that the Respondent made unlawful           threat to coerce. A threat is independently unlawful regardless of wheth-
+remarks at other locations around the country regarding the borrowing         er it is actually carried out.” We do not hold otherwise. Rather, we find
+process. There is no evidence that employee Toscano was aware of those        that the equivocal statement made by Manager Zapata, accompanied by
+unlawful remarks made at other locations, and hence the record lacks a        her expressed uncertainty about the policy and her expressed commit-
+basis to rely on that context. Additionally, we find the facts presented in   ment to continue borrowing, did not constitute a threat to adversely
+those cases are distinguishable. See Starbucks Corp., 373 NLRB No. 90,        change the borrowing policy.
+4                                           DECISIONS OF THE NATIONAL LABOR RELATIONS BOARD
+
+
+                                                                    borrowing at the Green Lake store, stating “I just wanted
+                                                                    to confirm that you told me I can no longer cover shifts at
+           ______________________________________                   [Green Lake] because Holman Road is unionized. . .I
+           James R. Murphy,              Chairman                   would like to be able to continue borrowing shifts at
+                                                                    [Green Lake].” Zapata replied that, “I said that’s what I
+                                                                    heard/read at a union seminar but that doesn’t mean I truly
+           ________________________________________                 know,” and that she “only brought it up because you
+           Scott A. Mayer,               Member                     commented on possibly wanting to work at both stores and
+                                                                    I wanted to prepare you in case that was true.” Zapata
+                                                                    added, “[y]ou are always welcome at [Green Lake].” The
+(SEAL)              NATIONAL LABOR RELATIONS BOARD                  General Counsel alleged and, as noted above, the judge
+                                                                    found that Zapata impliedly threatened employees by
+MEMBER PROUTY, dissenting.                                          telling them that employees whose home store is union-
+   Contrary to my colleagues, I would affirm the judge’s            ized could not borrow from a nonunionized store and vice
+finding that the Respondent violated Section 8(a)(1) of the         versa.
+Act by threatening employees when Chelsea Zapata, a                    As my colleagues note, the Board recently explained,
+manager at one of the Respondent’s nonunionized stores                   The Board has long held that the standard to be used in
+(the Green Lake store), told Alejandro Toscano, an em-                   analyzing statements alleged to violate Section 8(a)(1) is
+ployee at one of the Respondent’s newly unionized stores                 whether they have a reasonable tendency to coerce em-
+(the Holman Store), that Zapata had been informed at a                   ployees in the exercise of their Section 7 rights. Intent is
+recent meeting with the Respondent’s lawyers that em-                    immaterial. The Board considers the totality of circum-
+ployees from unionized stores would not be able to “bor-                 stances in assessing the reasonable tendency of an am-
+row” shifts (i.e., pick up extra shifts) at nonunionized                 biguous statement or a veiled threat to coerce. Whether
+stores and vice versa.                                                   or not the employee changed their behavior in response
+   Toscano, like most of the Respondent’s baristas, was                  is not dispositive, nor is the employee’s subjective inter-
+typically not scheduled full-time at the Holman store and                pretation of the statement. The Board therefore con-
+needed to borrow shifts at other Starbucks locations to                  siders the total context of the alleged unlawful conduct
+supplement her income. In April 2022,1 Toscano’s hours                   from the viewpoint of its impact on employees’ free
+at the Holman store were reduced to between approxim-                    exercise of their rights under the Act.
+ately 12 and 18 hours per week. As a result of the reduc-
+                                                                    Lush Cosmetics, LLC, 372 NLRB No. 54, slip op. at 3 (2023)
+tion in hours, Toscano began borrowing shifts at the Green
+                                                                    (quotation marks and citations omitted). Additionally, in
+Lake store. She would usually work one or two shifts per
+                                                                    considering the totality of the circumstances, the “threats in
+week at the Green Lake store, and at times she spent more
+                                                                    question need not be explicit if the language used by the em-
+time there than at the Holman store. The union election at
+                                                                    ployer or his representative can reasonably be construed as
+the Holman store took place on April 29 and a certification
+                                                                    threatening.” NLRB v. Ayer Lar Sanitarium, 436 F.2d 45, 49
+of representative was issued on May 9.
+                                                                    (9th Cir. 1970). Tentative language about adverse con-
+   In mid-May, after hearing rumors that employees at
+                                                                    sequences can be coercive, particularly where the employer’s
+unionized stores would not be permitted to continue bor-
+                                                                    prediction is not based on objective facts or the nature of the
+rowing from nonunionized stores, Toscano asked Zapata
+                                                                    collective bargaining process. Daikichi Sushi, 335 NLRB
+about the rumors. Zapata advised Toscano that she re-
+                                                                    622, 622–624 (2001) (holding that it was not a defense that
+cently attended a union seminar with other store managers
+                                                                    an employer phrased its prediction that the plant could close
+and the Respondent’s lawyers where the managers were
+                                                                    if employees unionized “as a possibility rather than a cer-
+told that “unionized and nonunionized stores could not
+                                                                    tainty”), enfd. 56 Fed.Appx. 516 (D.C. Cir. 2003); see also
+borrow from one another.” When challenged by Toscano,
+                                                                    Holy Cross Hospital, 370 NLRB No. 16, slip op. at 1 fn. 3
+Zapata responded that she did not know what was true
+                                                                    (2020) (finding that an employer unlawfully threatened that
+since borrowing currently existed. Zapata added that she
+                                                                    if employees unionized, the employer’s policies might be-
+did not see any problem with borrowing and that Toscano
+                                                                    come less generous and its shift scheduling less flexible);
+could continue to borrow from the Green Lake store “until
+                                                                    Metro One Loss Prevention Services Group, 356 NLRB 89
+[Zapata] found out more information.” A few days later,
+                                                                    (2010) (finding that an employer unlawfully threatened that
+Toscano reached out to Zapata for confirmation about
+                                                                    an employee’s pay rate “could” get worse if the union came
+
+    1
+        All subsequent dates are in 2022.
+                                                                 STARBUCKS CORP.                                                                      5
+
+in, without making any reference to the collective bargaining                 that the allegedly threatening statement was made—an
+process).2 Lastly, to determine whether an unlawful threat                    issue not in dispute here—the failure to carry out the threat
+has been made, the Board considers “whether the words                         does not detract from the reasonable likelihood of the na-
+could reasonably be construed as coercive, whether or not                     ked threat to coerce. A threat is independently unlawful
+that is the only reasonable construction.” Double D. Con-                     regardless of whether it is actually carried out.4
+struction Group, Inc., 339 NLRB 303, 303–304 (2003).                             My colleagues also point to Zapata’s uncertainty about
+   Considering the totality of the circumstances, I would                     what actions the Respondent was taking in regard to bor-
+find that the Respondent violated Section 8(a)(1) when                        rowing and to the fact that Zapata told Toscano that she
+Zapata informed Toscano that she had been told at a recent                    could continue borrowing at the Green Lake store. In my
+meeting of the Respondent’s lawyers and managers that                         opinion, the judge correctly found that the coerciveness of
+employees from unionized stores would not be able to                          Zapata’s statement was not eliminated when she indicated
+borrow shifts between nonunionized stores and vice versa.                     that she was unsure of the policy and was willing to allow
+Such a policy, if implemented, would prevent employees                        Toscano to keep borrowing hours at the Green Lake store
+from borrowing between the Holman store and the Green                         “until she found out more.” An employee in Toscano’s
+Lake store, contrary to an existing practice.3 As the judge                   shoes would still reasonably fear that the restriction on
+correctly found, based on the totality of the circumstances,                  borrowing could be implemented at any moment as there
+a reasonable employee would interpret Zapata’s statement                      was never any further explanation from Zapata to Toscan-
+as a threat to eliminate an existing term or condition of                     o, much less a retraction of the prospect that borrowing
+employment. The fact that Zapata’s comment occurred                           could be eliminated. In this regard, even though, in the
+only six days after the Holman store unionized heightens                      text exchange initiated by Toscano a few days after their
+the coercive impact on employees. A reasonable employ-                        conversation, Zapata stated that Toscano was “always
+ee in Toscano’s shoes who heard that statement would be                       welcome at Green Lake,” in that same exchange Zapata
+chilled from freely choosing to engage in union organizing                    stated that she wanted to “prepare” Toscano “in case [it]
+activities at their home store and stores where they borrow                   was true” that borrowing between unionized and
+shifts.                                                                       nonunionized stores would no longer be permitted.6
+   My colleagues begin their analysis by noting that, “Za-                    Moreover, while Zapata “didn’t know exactly what was
+pata’s remarks to Toscano must be considered in context,”                     true,” she advised Toscano about information she learned
+and that, “[p]ertinently, the record here does not indicate                   at a managers’ meeting with the Respondent’s attorneys
+any effort by the Respondent to restrict employees from                       —individuals with, assumedly, more authority than Za-
+borrowing shifts,” a point they return to throughout their                    pata and the other managers—who felt assured enough
+decision. However, the fact that the threat was not carried                   about this information to permit it to be relayed to the
+out is not pertinent, it is irrelevant. While evidence that an                managers in attendance. Accordingly, I do not assign Za-
+alleged threat was carried out certainly would corroborate                    pata’s lack of certainty and her assurances about borrow-
+
+   2
+      My colleagues’ attempt to distinguish these cases on their facts does   possibility would inhibit their willingness to engage in protected concer-
+not vitiate the principle for which I cite them: an employer’s tentative or   ted activity at the Green Lake store (or elsewhere).
+                                                                                  4
+equivocal language about adverse consequences can be coercive, particu-             My colleagues highlight the Respondent’s development of a tool to
+larly where the employer’s prediction is not based on objective facts or      assist employees with borrowing and related training on the tool for
+the nature of the collective-bargaining process. Additionally, my col-        employees and managers that does not limit borrowing. In determining
+leagues emphasize that these cases I cite do not involve “an employee-        whether an employee would reasonably perceive a statement about re-
+initiated conversation outside the context of an organizing drive or a        strictions on borrowing to be coercive, I do not find it compelling that
+manager’s equivocal statement about what she had heard coupled with a         the Respondent created a tool to assist with borrowing and provided
+commitment to continue the status quo.” In my opinion, Zapata’s state-        training with no limitations on who can borrow as, if the threat were
+ments can hardly be classified as a “commitment to the status quo” where      carried out, borrowing would still occur, and thus the tool would still be
+the status quo would only last until she could “find out more informa-        used, it would just be limited in use, contrary to past practice.
+                                                                                  6
+tion,” indicating it was ultimately not up to her (a fact she recognized by          Additionally, Zapata’s “assurances” only extended to the Green
+explaining that she was seeking to “prepare” Toscano “in case [it] was        Lake store and, significantly, Toscano borrowed shifts at more than one
+true”).                                                                       store.
+   3
+      The facts illustrate how significant borrowing was to employees and         I note that in arguing that Zapata assured Toscano that she could con-
+how concerned they were at the prospect of abruptly losing this vital         tinue borrowing at the Green Lake store, my colleagues claim that “[t]hat
+benefit. As noted above, Toscano, like most of the Respondent’s baristas      assurance was reinforced when the Respondent subsequently approved
+in most of its stores, was not scheduled to work full-time at her home        Toscano’s transfer from Holman to Green Lake” on July 17. The connec-
+store; during the time period at issue here, she was working only 12 to       tion between the threat of loss of borrowing opportunities and a sub-
+18 hours per week there and relied on borrowing shifts to supplement her      sequent transfer sometime later is unclear to me at best, and I do not
+income. Under the circumstances, as discussed below, employees would          believe that Toscano’s transfer should carry any weight in assessing
+reasonably fear that a contemplated restriction on borrowing would            whether an unlawful threat to discontinue borrowing was made two
+significantly impact their livelihood, and Zapata’s statement about that      months earlier.
+6                                        DECISIONS OF THE NATIONAL LABOR RELATIONS BOARD
+
+
+ing at the Green Lake store the same weight that my col-
+leagues do.7
+   Finally, despite my colleagues’ professed desire to con-                         ______________________________________
+sider Zapata’s remarks to Toscano in context, I must note                           David M. Prouty,              Member
+one element of context with which they fail to reckon: the
+rumors that Toscano heard that employees at unionized
+stores would not be permitted to continue borrowing shift-                                NATIONAL LABOR RELATIONS BOARD
+s. The Board has already found that the Respondent viol-
+ated the Act on multiple occasions, at multiple locations                   Alice J. Garfield, Esq., for the General Counsel.
+during this very same time period, by threatening to limit                  Ryan P. Hammond, Esq. and Nina Stroescu, Esq. (Littler
+employee borrowing opportunities. See Starbucks, 373                            Mendelson, PC), for the Respondent.
+NLRB No. 90, slip op. at 3 (2024) (finding that the Re-                     Ben Berger, Esq. (Barnard, Iglitzin & Lavitt LLP), for the Char-
+                                                                                ging Party.
+spondent violated Section 8(a)(1) in a Minneapolis store
+by, among other things, telling an employee on April 14,                                           STATEMENT OF THE CASE
+2022, that unionization would mean that nonunionized                           AMITA BAMAN TRACY, Administrative Law Judge. A hearing
+stores would no longer be able to borrow employees from                     was held in this matter in Seattle, Washington, on March 21,
+unionized stores and vice versa); Starbucks, 373 NLRB                       2023. Workers United Labor Union International, affiliated with
+No. 45 (2024) (finding that the Respondent violated Sec-                    Service Employees International Union (Union or Charging
+tion 8(a)(1) in a Mililani, Hawaii store on April 6, 2022,                  Party) filed the charge and amended charge on May 13 and June
+                                                                            3, 2022.1 The General Counsel, through the Regional Director
+by, among other things, threatening employees with loss                     for Region 19 of the National Labor Relations Board (the Board),
+of benefits, including borrowing, if employees voted for                    issued a complaint and notice of hearing on December 9. Star-
+the Union); Starbucks, 373 NLRB No. 44, fn. 3 (2024)                        bucks Corporation (Respondent or Starbucks) filed a timely
+(finding that, during a mid-March 2022 meeting, the Re-                     answer to the complaint. The General Counsel amended the
+spondent unlawfully threatened employees at several                         complaint, without objection, at the hearing.
+Michigan stores with reduced benefits and hours, includ-                       The amended complaint alleges that Respondent violated
+ing borrowing, if they voted to unionize). Thus, at or                      Section 8(a)(1) of the National Labor Relations Act (the Act)
+around the same time that Zapata issued the threat (in re-                  when on or about May 15, Respondent by Store Manager
+sponse to a rumor Toscano heard from colleagues), the                       Chelsea Zapata (Zapata):
+Respondent’s managers were violating the Act by, among                           (1) impliedly threatened employees by telling them that, if they
+other things, making those same threats at locations across                      worked at a store where the Union was certified as their collect-
+the country. The rumors Toscano heard provide context                            ive-bargaining representative, they would not
+that adds to the coercive nature of the threat that the Re-                      (2) be permitted to work shifts at Respondent’s stores where
+spondent appears to have repeatedly made in the Spring of                        the Union was not the employees’ certified collective-bargain-
+2022.                                                                            ing representative; and
+   Accordingly, I would affirm the judge’s finding that the                      (3) impliedly threatened employees by telling them that, if they
+Respondent violated Section 8(a)(1) of the Act by threat-                        worked at a store where the Union was not the employees’
+ening employees with the loss of an existing benefit.                            certified collective-bargaining representative, they would not
+                                                                                 be able to work shifts at Respondent’s stores where the Union
+                                                                                 was certified as the employees’ collective-bargaining
+                                                                                 representative.
+
+                                                                               On the entire record,2 including my observation of the de-
+                                                                            meanor of witnesses,3 and after considering the briefs filed by
+    Dated, Washington, D.C. August 5, 2026                                  the General Counsel, Respondent, and the Charging Party4 I
+
+    7
+      I find The Singer Co., 199 NLRB 1195, 1209 (1972), cited by my        neys, while the manager in The Singer Co., stated that he did not know
+colleagues, distinguishable. There, in a conversation with an employee      and did not mention statements from management about relocation.
+                                                                                1
+who had asked if the employer would move the plant if the union came              All dates hereinafter are in 2022 unless otherwise noted.
+                                                                                2
+in, a manager replied that he had no way of knowing and added that hav-           On April 17, 2023, the General Counsel filed an unopposed motion
+ing $5 million invested in a plant location was not enough to keep a com-   to correct the official transcript in this proceeding. I grant the General
+pany of that wealth tied to a specific plant. The Board found the man-      Counsel’s motion, and the official transcript will be corrected as set forth
+ager’s remarks “too equivocal” to warrant a finding of threat of plant      in the General Counsel’s unopposed motion.
+                                                                                3
+closure. That is very different from the statement we have here—Zapata            Although I have included several citations to the evidentiary record
+did not know exactly what would happen but was relaying to Toscana          in this decision to highlight testimony or exhibits, I emphasize that my
+what she had been advised in her meeting with the Respondent’s attor-       findings and conclusions are not based solely on those citations, but
+                                                                 STARBUCKS CORP.                                                                     7
+
+make the following                                                            “borrow hours” by working at other stores thereby increasing
+                          FINDINGS OF FACT                                    their weekly hours worked, their pay, and providing coverage to
+                            I. JURISDICTION
+                                                                              the location that needs shifts covered (Tr. 20, 85). Borrowing
+                                                                              hours is a partner-driven process, and store managers may not
+   Respondent, a corporation with headquarters in Seattle, Wash-              reject or deny a borrowed partner in their store except due to
+ington, is engaged in the operation of over 17,000 restaurants                local scheduling laws (Tr. 85–86; R. Exh. 4). The partners learn
+selling food and beverages throughout the United States, includ-              about available shifts at other locations by managerial solicita-
+ing a store located at 7100 E. Green Lake Drive N., Seattle,                  tion, word of mouth, email, or a Facebook page (Tr. 21, 100,
+Washington (the Green Lake store). During the past 12–month                   117). If a partner is interested in covering a shift at another loca-
+period, Respondent, in conducting its operation of restaurants,               tion, the partner informs their store manager who reaches out to
+derived gross revenues in excess of $500,000, and sold and                    the other location’s store manager (Tr. 25–26, 101). Partners
+shipped from the State of Washington goods valued in excess of                may also be contacted by shift supervisors from other locations
+$50,000 directly to points outside the State of Washington. Ac-               who need shifts covered, and partners could inform shift super-
+cordingly, I find, and Respondent admits, that it is an employer              visors of their availability and work those shifts (Tr. 26–27, 101).
+engaged in commerce within the meaning of Section 2(2), (6),                  Furthermore, partners could also directly respond to Facebook
+and (7) of the Act. In addition, Respondent admits, and I find,               posts requesting shift coverage (Tr. 27).
+that the Charging Party has been a labor organization within the                 In January, Respondent created a program for borrowing part-
+meaning of Section 2(5) of the Act.                                           ners, known as “Shift Marketplace,” where partners may see
+   Based on the foregoing, I find this dispute affects commerce               online if there is a need for shift coverage at other locations and
+and that the Board has jurisdiction of this case, pursuant to Sec-            volunteer to cover the shifts (Tr. 44; R. Exh. 1 and 5). The part-
+tion 10(a) of the Act.                                                        ner guide and shift marketplace quick reference guide do not
+               II. ALLEGED UNFAIR LABOR PRACTICES                             differentiate the ability to borrow hours based on whether the
+                                                                              partner’s home store is unionized or nonunionized (Tr. 100; R.
+                    A. Unionization at Starbucks                              Exh. 1 and 5). Since January, partners have not been limited to
+   On February 24, the Union filed a petition with the Board to               using Respondent’s program when borrowing hours at other
+represent all full-time and regular part-time baristas, shift super-          store locations.
+visors, and assistant store managers at Respondent’s location at              C. The Green Lake Store Manager’s May Conversation with a
+9999 Holman Road, NW, Seattle, Washington 98117 (Holman                                         Holman Road Barista
+Road store or store 3346) (Jt. Exh. 1). On March 14, and
+                                                                                 Alejandra Toscano (Toscano), who worked for Respondent as
+amended on March 16, Respondent and the Union entered into a
+                                                                              a barista from April 4, 2019, to December 17, testified on behalf
+stipulated election agreement with a mail ballot election where
+                                                                              of the General Counsel. Toscano’s home store was the Holman
+the eligible voters were full-time and regular part-time baristas
+                                                                              Road store from February 2021 to July 17 (Tr. 17–19). Toscano
+and shift supervisors employed at the Holman Road store (Jt.
+                                                                              then transferred home stores to the Green Lake store until she
+Exh. 2 and 3). On May 9, the Regional Director of Region 19
+                                                                              resigned in December (Tr. 34). At the Holman Road store, To-
+certified the Union as the exclusive representative of the full-
+                                                                              scano worked on average 22 to 26 or 28 hours per week between
+time and regular part-time baristas and shift supervisors em-
+                                                                              January and March, but in mid-April, her work hours were re-
+ployed at the Holman Road store (Jt. Exh. 4). In mid-September,
+                                                                              duced to 12 to 18 hours per week. Thus, in mid-April Toscano
+the Holman Road store closed (Tr. 34–35).
+                                                                              began borrowing hours at other locations, including the Green
+                    B. Borrowed Partners/Hours                                Lake store (store 389) (Tr. 22–23, 43, 50). Toscano continued to
+   Typically, Respondent’s employees, who are known as part-                  borrow hours at the Green Lake store until she transferred to that
+ners, are not scheduled for 40-hours per work week at their home              store on July 17 (Tr. 50). Until mid-September or October, the
+store (the store in which they are hired). Thus, partners may                 Green Lake store and Holman Road store were in one district
+                                                                              which was overseen by District Manager Amber Molen (Molen)
+
+rather are based on my review of the entire record for this case. Further-    testimony was not contested. As a result, I credit Toscano’s testimony
+more, in evaluating witness’ testimonies, I have considered the demeanor      in its entirety. As for Amber Molen (Molen), Respondent’s only witness,
+of the witnesses; the apparent interests of the witnesses; the inherent       I find that she testified credibly and consistently with the documentary
+probabilities; corroboration or lack thereof; consistencies or inconsisten-   evidence. However, as discussed further, when she was asked fact ques-
+cies within the testimony of the witnesses and between the witnesses          tions about the union seminar management officials attended with attor-
+when testifying about the same event. See, e.g., NLRB v. Walton Mfg.          neys, she did not testify credibly as to when the meeting occurred and
+Co., 369 U.S. 404, 408 (1962). Any testimony in contradiction to my           whether a specific topic was discussed. This lack of credibility on that
+findings has been considered but rejected. Additionally, it is well estab-    topic does not undermine my belief in the remainder of her uncontested
+lished that the trier of fact may believe some, but not all, of a witness’s   testimony. Finally, Zapata did not testify as she no longer works for
+testimony. NLRB v. Universal Camera Corp., 179 F.2d 749 (2d Cir.              Respondent but her subsequent text messaging with Toscano corrobor-
+1950).                                                                        ates Toscano’s testimony as to their conversation.
+                                                                                  4
+   Overall, there is little controversy in the witnesses’ testimonies.              Abbreviations used in this decision are as follows: “Tr.” for tran-
+Based on my observations and review of the record, I find that Alexandra      script; “GC Exh.” for General Counsel’s exhibit; “R. Exh.” for Respond-
+Toscano (Toscano), the General Counsels’ only witness, testified cred-        ent’s exhibit; “GC Br.” for the General Counsel’s Brief; “CP Br.” for
+ibly as she was consistent with the documentary evidence. Toscano’s           Charging Party’s brief; and “R. Br.” for Respondent’s Brief.
+8                                         DECISIONS OF THE NATIONAL LABOR RELATIONS BOARD
+
+
+(Tr. 84).5                                                                   ample, on May 26, Cynthia Robinson (Robinson), who was the
+   In mid-May, while working at the nonunionized Green Lake                  Holman Road store manager,9 sent a district-wide email to the
+store on borrowed hours and after the May 9 unionization of the              store managers asking for help to fill upcoming shifts at the
+Holman Road store, some Green Lake store baristas expressed                  Holman Road store. Robinson’s email was printed out by Zapata
+feelings of sadness to Toscano because she would no longer be                and placed in the bathroom of the Green Lake store (GC Exh. 2;
+able to borrow hours at the Green Lake store due to unionization             Tr. 21–22). Toscano saw this email when she was borrowing a
+of her home store (Tr. 30).6 Later that day, Toscano spoke to                shift at the Green Lake store (Tr. 58). Toscano testified that part-
+Green Lake Store Manager Zapata to learn “what was up with                   ners from the unionized Holman Road store, including herself,
+the claims” (Tr. 31).7 Toscano testified that Zapata told her that           never stopped borrowing shifts at nonunionized stores (Tr. 59,
+she had recently been to a meeting with other store managers and             62–63).
+Respondent’s lawyers. Zapata said that during that meeting the                                          LEGAL ANALYSIS
+store managers were told that unionized and nonunionized stores
+could not borrow from one another (Tr. 32–33). Toscano told                     Section 7 of the Act provides that, “employees shall have the
+Zapata that this information was incorrect (Tr. 32). Zapata re-              right to self–organization, to form, join, or assist labor organiza-
+sponded that she did not know what was “true” since Toscano                  tions, to bargain collectively through representatives of their own
+continued to borrow at the nonunionized Green Lake store (Tr.                choosing, and to engage in other concerted activities for the pur-
+32). Zapata told Toscano that she could continue to borrow at                pose of collective bargaining or other mutual aid or protection.”
+the Green Lake store as Zapata did not have any problem with                 Section 8(a)(1) provides that it is an unfair labor practice to inter-
+her borrowing hours.                                                         fere with, restrain, or coerce employees in the exercise of the
+   A few days later, Toscano sent a text message to Zapata re-               rights guaranteed by Section 7. The Board has set forth an ob-
+garding their conversation. Toscano wrote,                                   jective test to determine if “the employer engaged in conduct
+                                                                             which would reasonably have a tendency to interfere with the
+     I just wanted to confirm that you told me I can no longer cover         free exercise of employee rights under the Act.” Santa Barbara
+     shifts at Greenlake because Holman Road is unionized when               News–Press, 357 NLRB 452, 476 (2011); Multi–Ad Services,
+     we spoke on Wednesday. I think that under federal labor law I           331 NLRB 1226, 1227–1228 (2000). The test “does not turn on
+     am able to continue borrowing shifts and I would like to be able        the employer’s motive or on whether the coercion succeeded or
+     to continue borrowing shifts at Greenlake.                              failed.” American Tissue Corp., 336 NLRB 435, 441 (2001),
+                                                                             citing NLRB v. Illinois Tool Works, 153 F.2d 811, 814 (7th Cir.
+Zapata responded in three messages,                                          1946).
+                                                                                The Board’s standard to determine whether an unlawful threat
+     I said that’s what I heard/read at a union seminar but that does-       has been made is “whether the words could reasonably be con-
+     n’t mean I truly know.8                                                 strued as coercive, whether or not that is the only reasonable
+                                                                             construction.” Double D. Construction Group, Inc., 339 NLRB
+     I only brought it up because you commented on possibly want-            303, 303–304 (2003); KSM Industries, 331 NLRB 133 (2001);
+     ing to work at both stores and I wanted to prepare you in case          Mediplex of Danbury, 314 NLRB 470, 471 (1994). Furthermore,
+     that was true.                                                          “the test is not the actual intent of the speaker or the actual effect
+                                                                             on the listener.” See Smithers Tire, 308 NLRB 72, 72 (1992).
+     You are always welcome at Greenlake.                                    Thus, “the context in which the alleged threat was communicated
+                                                                             is critical to determine how a reasonable employee could inter-
+Toscano responded, “Okay cool lol [laugh out loud]” (CP Exh.                 pret the particular words spoken.” Cintas Corp. No. 2, 372
+1).                                                                          NLRB No. 34, slip op. at 4 (2022).
+   Even after this exchange between Zapata and Toscano about                    The General Counsel alleges that on or about May 15, Zapata
+borrowing partners, the Holman Road store continued to seek out              impliedly threatened partners by telling them that partners whose
+assistance to cover shifts from nonunionized stores. For ex-                 home store is a unionized store could not borrow hours from a
+                                                                             nonunionized store, and partners whose home store is a
+
+    5
+      Respondent admits, and I find, that since May 16, Molen is a super-    Molen’s testimony as to when the seminar occurred and that borrowing
+visor and/or agent under Sec. 2(11) and 2(13) of the Act.                    partners was not discussed. While it may be true that a union seminar
+    6
+      Toscano’s testimony as to what the other baristas said to her is       was held in early 2022, the context of the conversation between Zapata
+hearsay, and thus, I do not accept the testimony for its truthfulness. In-   and Toscano indicates that the union seminar occurred closer in time to
+stead, I accept this testimony only as Toscano’s reason for speaking to      their mid-May conversation. Furthermore, Zapata, in her text message,
+the store manager thereafter which prompted the discussion about bor-        does not mention that the union seminar occurred almost 5 months prior
+rowing hours between unionized and nonunionized stores. See Hebert           but writes as though she only recently learned this information. Instead,
+Industrial Insulation Corp., 312 NLRB 602, 608 (1993).                       it is much more likely that Zapata attended a union seminar closer in time
+    7
+      Respondent admits, and I find, that since May 16, Zapata is a super-   to mid-May when the representation election was held. Regardless of
+visor and/or agent under Sec. 2(11) and 2(13) of the Act. Since October      Molen’s testimony, Zapata’s text message corroborates Toscano’s testi-
+or November, Zapata no longer works for Respondent (Tr. 108, 118).           mony that Zapata learned at a union seminar that borrowing hours
+    8
+      Molen testified that the union seminar Zapata mentioned referred to    between unionized and nonunionized stores may not be permitted.
+                                                                                 9
+a training between store managers and attorneys in early 2022, and that            Respondent admits, and I find, that since May 16, Robinson is a
+borrowing partners was not discussed (Tr. 120–121). I do not credit          supervisor and/or agent under Sec. 2(11) and 2(13) of the Act.
+                                                           STARBUCKS CORP.                                                                 9
+
+nonunionized store could not borrow from a unionized store.            consider Zapata’s statement as a change that could occur at any
+The General Counsel and Charging Party argues that Respondent          time as a direct result of the decision to unionize. Without voting
+impliedly threatened partners with the loss of a benefit because       in favor for representation, a reasonable employee would know
+of their organizing (GC Br. at 8–9; CP Br. at 4–6). Respondent         that borrowing partners would remain the same, but with repres-
+argues that objectively under the totality of the circumstances,       entation, Respondent had changed or would be changing an eco-
+Zapata did not threaten the partners with a loss of a benefit, and     nomic benefit relied upon by partners. Even tentative language
+that Toscano only discussed possible limitations which did not         about adverse consequences can be coercive, especially where
+occur (R. Br. at 6–9).                                                 the employer’s prediction is not based on objective fact or the
+   Here, considering the totality of the circumstances, a reason-      nature of the collective-bargaining process. Daikichi Sushi, 335
+able employee would understand Zapata’s unrefuted statements           NLRB at 623–624 (holding that it was not a defense that the
+to Toscano about limitations on borrowing partners based on            employer phrased its prediction that the plant could close if em-
+union status as a threat to lose an existing benefit. Rather than      ployees unionized “as a possibility rather than a certainty”), enfd.
+deny the rumor, Zapata, instead confirmed that she had learned         56 Fed. Appx. 516 (D.C. Cir. 2003). Thus, Respondent violated
+that borrowing would not take place between unionized and              Section 8(a)(1) as alleged.
+nonunionized store locations. This response came only a few                                  CONCLUSIONS OF LAW
+days after the Holman Road store unionized. Zapata then said
+she was not sure what was true or happening but that she would            1. Respondent, Starbucks Corporation, has been an employer
+continue to allow Toscano to borrow. Zapata implied that she           engaged in commerce within the meaning of Section 2(2), (6),
+would continue the status quo but that upper management and            and (7) of the Act.
+legal counsel may change the borrowing hours process based on             2. The Charging Party, Workers United Labor Union Interna-
+union status. Even in her subsequent text message, Zapata              tional, affiliated with Service Employees International Union has
+sought to prepare Toscano to lose the benefit of borrowing hours       been a labor organization within the meaning of Section 2(5) of
+from nonunionized stores. Zapata’s comments were not based             the Act.
+on objective facts or the process of labor contract negotiations.         3. Respondent committed unfair labor practices in violation
+See Holy Cross Hospital, 370 NLRB No. 16, slip op. at 1 fn. 3          of Section 8(a)(1) of the Act by on or about May 15:
+(2020) (employer unlawfully threatened that if employees union-
+ized, the employer’s leave policies might become less generous              (a) impliedly threatened employees by telling them that, if they
+and its shift scheduling less flexible); Metro One Loss Preven-             worked at a store where the Union was certified as their collect-
+tion Services Group, 356 NLRB 89 (2010) (employer unlawfully                ive-bargaining representative, they would not be permitted to
+threatened that an employee’s pay rate could get worse if the               work shifts at Respondent’s stores where the Union was not the
+union came in); compare Jefferson Smurfit Corp., 325 NLRB                   employees’ certified collective-bargaining representative; and
+280, fn. 3 (1998) (employer’s statement that benefits “could go             (b) impliedly threatened employees by telling them that, if they
+either way as a result of collective bargaining” was lawful).               worked at a store where the Union was not the employees’
+   I disagree with Respondent’s claim that because Toscano                  certified collective-bargaining representative, they would not
+approached Zapata with the rumor that the conversation could                be able to work shifts at Respondent’s stores where the Union
+not be considered a threat under the Act. On the contrary. Zapata           was certified as the employees’ collective-bargaining
+could have denied the rumor, but instead repeated twice that she            representative.
+had been informed that the process of borrowing partners could
+change based on unionization status. In fact, Zapata wanted to            4. The unfair labor practices found affect commerce within
+“warn” Toscano in case she was prevented from borrowing hours          the meaning of Section 2(6) and (7) of the Act.
+in the future. The Board has held that a supervisor’s threats -                                     REMEDY
+about union activity violate Section 8(a)(1) even if the speaker
+                                                                          Having found that Respondent has engaged in certain unfair
+only intended to give the employee a “friendly warning.” For
+                                                                       labor practices, I shall order it to cease and desist therefrom and
+example, in Long Island College Hospital, 327 NLRB 944, 945
+                                                                       to take certain affirmative action designed to effectuate the
+(1999), the Board held “‘friendly warnings’ from supervisors to
+                                                                       policies of the Act.
+employees to ‘watch your back,’ ‘keep a low profile’ and similar
+                                                                          I will order that the employer post a notice at the facility in the
+advice to be unlawful.” See also Tecmec, 306 NLRB 499, 504
+                                                                       usual manner, including electronically to the extent mandated in
+(1992) (“[A] remark, made by a supervisor, about the reaction of
+                                                                       J. Picini Flooring, 356 NLRB 11, 15–16 (2010), and Durham
+a higher level supervisor, constitutes a coercive threat that inter-
+                                                                       School Services, 360 NLRB 694 (2014). In accordance with J.
+feres with employee Section 7 rights even if it is given in a
+                                                                       Picini Flooring, the question as to whether an electronic notice
+‘friendly’ manner.”), enfd. 992 F.2d 1217 (6th Cir. 1993).
+                                                                       is appropriate should be resolved at the compliance phase. Id.
+   I also disagree with Respondent’s argument that Zapata could
+                                                                       supra at 13.
+not have threatened Toscano regarding borrowing partner since
+Toscano continued to be permitted to borrow hours at the
+nonunionized stores, and no store manager at Respondent’s loca-
+tions denied borrowed partners based on representation status.
+                                                                         On these findings of fact and conclusions of law and on the
+Respondent’s argument misses the point. A reasonable employ-
+ee, who uses Respondent’s borrowed partner program, would
+10                                        DECISIONS OF THE NATIONAL LABOR RELATIONS BOARD
+
+
+entire record, I issue the following recommended10                                                        APPENDIX
+                               ORDER                                                               NOTICE TO EMPLOYEES
+   Respondent, Starbucks, Corporation, Seattle, Washington, its                                   POSTED BY ORDER OF THE
+officers, agents, successors, and assigns, shall                                             NATIONAL LABOR RELATIONS BOARD
+   1. Cease and desist from                                                               An Agency of the United States Government
+   (a) impliedly threatening employees by telling them that, if
+they worked at a store where the Union was certified as their               The National Labor Relations Board has found that we violated
+collective-bargaining representative, they would not be permit-             Federal labor law and has ordered us to post and obey this notice.
+ted to work shifts at Respondent’s stores where the Union was                       FEDERAL LAW GIVES YOU THE RIGHT TO
+not the employees’ certified collective-bargaining representat-                      Form, join, or assist a union
+ive; and                                                                             Choose representatives to bargain with us on your
+   (b) impliedly threatening employees by telling them that, if                  behalf
+they worked at a store where the Union was not the employees’                        Act together with other employees for your benefit and
+certified collective-bargaining representative, they would not be                protection
+able to work shifts at Respondent’s stores where the Union was                       Choose not to engage in any of these protected
+certified as the employees’ collective-bargaining representative.                activities.
+   (c) In any like or related manner interfering with, restraining,
+or coercing employees in the exercise of the rights guaranteed
+                                                                               WE WILL NOT threaten you with loss of existing benefits of
+them by Section 7 of the Act.
+                                                                            borrowing hours from store locations not represented by the
+   2. Take the following affirmative action necessary to effectu-
+                                                                            Union if you chose to be represented by the Union.
+ate the policies of the Act.
+                                                                               WE WILL NOT threaten you with loss of existing benefits of
+   (a) Post at its store in Seattle, Washington, copies of the at-
+                                                                            borrowing hours from store locations represented by the Union
+tached notice marked “Appendix.”11 Copies of the notice, on
+                                                                            if you work at store not represented by the Union.
+forms provided by the Regional Director for Region 19, after
+                                                                               WE WILL NOT in any like or related manner interfere with,
+being signed by Respondent’s authorized representative, shall be
+                                                                            restrain, or coerce you in the exercise of the rights listed above.
+posted by Respondent and maintained for 60 consecutive days in
+conspicuous places including all places where notices to em-                              STARBUCKS CORP. LLC
+ployees are customarily posted. In addition to physical posting                The Administrative Law Judge’s decision can be found
+of paper notices, the notices shall be distributed electronically,          at https://www.nlrb.gov/case/ 19-CA-295850 or by using
+such as by email, posting on an intranet or an internet site, and/or        the QR code below. Alternatively, you can obtain a copy
+other electronic means, if Respondent customarily communic-
+                                                                            of the decision from the Executive Secretary, National
+ates with its employees by such means. Reasonable steps shall
+be taken by Respondent to ensure that the notices are not altered,          Labor Relations Board, 1015 Half Street, S.E., Washing-
+defaced, or covered by any other material. If, during the pen-              ton, D.C. 20570, or by calling (202) 273-1940
+dency of these proceedings, Respondent has gone out of business
+or closed the store involved in these proceedings, Respondent
+shall duplicate and mail, at its own expense, a copy of the notice
+to all current employees and former employees employed by the
+Respondent at any time since May 15, 2022.
+   (b) Within 21 days after service by the Region, file with the
+Regional Director for Region 19 a sworn certification of a re-
+sponsible official on a form provided by the Region attesting to
+the steps that Respondent has taken to comply.
+   Dated, Washington, D.C. May 31, 2023
+
+
+
+
+   10
+       If no exceptions are filed as provided by Sec. 102.46 of the         complement of employees have returned to work. Any delay in the phys-
+Board’s Rules and Regulations, the findings, conclusions, and               ical posting of paper notices also applies to the electronic distribution of
+recommended Order shall, as provided in Sec. 102.48 of the Rules, be        the notice if Respondent customarily communicates with its employees
+adopted by the Board and all objections to them shall be deemed waived      by electronic means. Danbury Ambulance Service, Inc., 369 NLRB No.
+for all purposes.                                                           68, slip op. 4 (2020).
+   11
+       If the facility is open and staffed by a substantial complement of      If this Order is enforced by a judgment of a United States court of
+employees, the notices must be posted within 14 days after service by the   appeals, the words in the notice reading “Posted by Order of the National
+Region. If the facility is closed due to the Coronavirus Disease 2019       Labor Relations Board” shall read “Posted Pursuant to a Judgment of the
+(COVID-19) pandemic, the notices must be posted within 14 days after        United States Court of Appeals Enforcing an Order of the National Labor
+the facility reopens and a substantial complement of employees have         Relations Board.”
+returned to work, and the notices may not be posted until a substantial
+

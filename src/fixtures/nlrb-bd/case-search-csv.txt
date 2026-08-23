@@ -1,0 +1,3 @@
+Case Search export CSV
+case-search CSV rows: case number, employer, date, status
+This CSV is not an official apps.nlrb.gov/link/document.aspx slip-opinion.

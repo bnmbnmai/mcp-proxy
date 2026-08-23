@@ -1,0 +1,4 @@
+GOV.UK corporate_report
+https://www.gov.uk/government/publications/example
+This GOV.UK corporate_report is a KILL.
+Example Department

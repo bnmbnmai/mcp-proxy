@@ -188,6 +188,11 @@ import {
   NOP_AD_PATH,
 } from "./nop-ad.js";
 import {
+  NLRB_BD_AMOUNT_ATOMIC,
+  NLRB_BD_MANIFEST_PATH,
+  NLRB_BD_PATH,
+} from "./nlrb-bd.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -358,6 +363,7 @@ async function main(): Promise<void> {
     assert.ok(!wk.resources.some((r) => r.includes(WATERBOARDS_ACL_PATH)), "do not list /waterboards-acl");
     assert.ok(!wk.resources.some((r) => r.includes(DOE_NOV_PATH)), "do not list /doe-nov");
     assert.ok(!wk.resources.some((r) => r.includes(NOP_AD_PATH)), "do not list /nop-ad");
+    assert.ok(!wk.resources.some((r) => r.includes(NLRB_BD_PATH)), "do not list /nlrb-bd");
     assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)), "do not list /form-483 without a cached body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_PATH)), "do not list /gmp without a cached observation body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_MD_PATH)), "do not list /gmp-md without a cached observation body");
@@ -516,6 +522,8 @@ async function main(): Promise<void> {
     assert.equal(spec.paths[DOE_NOV_MANIFEST_PATH], undefined, "OpenAPI must not list /doe-nov/manifest.json");
     assert.equal(spec.paths[NOP_AD_PATH], undefined, "OpenAPI must not list /nop-ad");
     assert.equal(spec.paths[NOP_AD_MANIFEST_PATH], undefined, "OpenAPI must not list /nop-ad/manifest.json");
+    assert.equal(spec.paths[NLRB_BD_PATH], undefined, "OpenAPI must not list /nlrb-bd");
+    assert.equal(spec.paths[NLRB_BD_MANIFEST_PATH], undefined, "OpenAPI must not list /nlrb-bd/manifest.json");
     assert.equal(spec.paths[FORM_483_PATH], undefined, "no stub /form-483 in OpenAPI without a cached body");
     assert.equal(spec.paths[FORM_483_MANIFEST_PATH], undefined);
     assert.equal(spec.paths[GMP_PATH], undefined, "no stub /gmp in OpenAPI without a cached body");
@@ -571,6 +579,7 @@ async function main(): Promise<void> {
     assert.ok(!llmsBody.includes("GET /waterboards-acl"), "do not list /waterboards-acl");
     assert.ok(!llmsBody.includes("GET /doe-nov"), "do not list /doe-nov");
     assert.ok(!llmsBody.includes("GET /nop-ad"), "do not list /nop-ad");
+    assert.ok(!llmsBody.includes("GET /nlrb-bd"), "do not list /nlrb-bd");
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.includes("GET /gmp-md"));
@@ -626,6 +635,7 @@ async function main(): Promise<void> {
     assert.ok(!shop.products.some((p) => p.path === WATERBOARDS_ACL_PATH), "do not list /waterboards-acl");
     assert.ok(!shop.products.some((p) => p.path === DOE_NOV_PATH), "do not list /doe-nov");
     assert.ok(!shop.products.some((p) => p.path === NOP_AD_PATH), "do not list /nop-ad");
+    assert.ok(!shop.products.some((p) => p.path === NLRB_BD_PATH), "do not list /nlrb-bd");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_MD_PATH));
@@ -5476,6 +5486,124 @@ async function main(): Promise<void> {
     },
   );
 
+  const nlrbBdDir = mkdtempSync(join(tmpdir(), "nlrb-bd-"));
+  writeFileSync(
+    join(nlrbBdDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "nlrb-bd-decision-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: FRESH_FETCHED_AT,
+      asOf: "2026-08-05",
+      license: "17 U.S.C. § 105",
+      attribution:
+        "National Labor Relations Board. Work of the United States Government; 17 U.S.C. § 105. Official .gov host. Face: “An Agency of the United States Government.”",
+      sources: {
+        listing: "https://www.nlrb.gov/cases-decisions/decisions/board-decisions",
+        pdfHost: "https://apps.nlrb.gov/link/document.aspx/",
+        about: "https://www.nlrb.gov/about-nlrb",
+      },
+      cards: [
+        {
+          id: "starbucks-19-ca-295850",
+          docket: "19-CA-295850",
+          pdfId: "09031d45843171e1",
+          institution: "Starbucks Corporation",
+          date: "2026-08-05",
+          title: "Decision and Order",
+          sourceUrl: "https://apps.nlrb.gov/link/document.aspx/09031d45843171e1",
+          body: [
+            "NOTICE: This opinion is subject to formal revision before publication in the bound volumes of NLRB decisions.",
+            "Starbucks Corporation",
+            "Case 19–CA–295850",
+            "DECISION AND ORDER",
+            "The National Labor Relations Board",
+            "not satisfy her burden, and we dismiss the complaint.",
+            "the Respondent created “Shift Marketplace,” a platform enabling employees to borrow shifts",
+            "375 NLRB No. 28",
+            "An Agency of the United States Government",
+            ...Array.from({ length: 20 }, (_, i) => `${i + 1}. Official NLRB Board Decision paragraph ${i + 1} used only to keep this door fixture above the real-letter length floor.`),
+          ].join("\n"),
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      NLRB_BD_DIR: nlrbBdDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-nlrb-bd-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${NLRB_BD_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /nlrb-bd must be 402");
+      const body402 = (await unpaid.json()) as {
+        payTo: string;
+        asset: string;
+        resource: string;
+        accepts: { maxAmountRequired?: string; extra?: { name?: string } }[];
+      };
+      assert.equal(body402.resource, NLRB_BD_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, NLRB_BD_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
+      const nlrbPr = unpaid.headers.get("payment-required");
+      assert.ok(nlrbPr, "v2 PAYMENT-REQUIRED header");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("Shift Marketplace"));
+      assert.ok(!leak402.includes("we dismiss the complaint"));
+      assert.ok(!leak402.includes("375 NLRB No. 28"));
+      assert.ok(!leak402.includes("Official NLRB Board Decision paragraph"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === NLRB_BD_PATH), false, "do not list /nlrb-bd");
+      assert.equal(shop.products.some((p) => p.path === NOP_AD_PATH), false, "do not list /nop-ad");
+      assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
+      assert.equal(shop.products.length, 28);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(!wk.resources.some((r) => r.includes(NLRB_BD_PATH)), "well-known must not list /nlrb-bd");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(!llms.includes("GET /nlrb-bd"), "llms.txt must not list /nlrb-bd");
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.equal(spec.paths[NLRB_BD_PATH], undefined, "OpenAPI must not list /nlrb-bd");
+
+      const manifest = await fetch(`${base}${NLRB_BD_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "nlrb-bd free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        cards?: { institution?: string; date?: string; id?: string; docket?: string; body?: string }[];
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.cards?.[0]?.institution, "Starbucks Corporation");
+      assert.equal(man.cards?.[0]?.date, "2026-08-05");
+      assert.equal(man.cards?.[0]?.docket, "19-CA-295850");
+      const manBlob = JSON.stringify(man);
+      assert.ok(!manBlob.includes("Shift Marketplace"));
+      assert.ok(!manBlob.includes("we dismiss the complaint"));
+      assert.ok(!manBlob.includes("375 NLRB No. 28"));
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+
+      const paid = await fetch(`${base}${NLRB_BD_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { institution: string; date: string; docket: string; body: string }[];
+      };
+      assert.equal(paidBody.product, "nlrb-bd-decision-bodies");
+      assert.equal(paidBody.cards[0]?.institution, "Starbucks Corporation");
+      assert.equal(paidBody.cards[0]?.date, "2026-08-05");
+      assert.equal(paidBody.cards[0]?.docket, "19-CA-295850");
+      assert.ok(paidBody.cards[0]?.body.includes("Shift Marketplace"));
+      assert.ok(paidBody.cards[0]?.body.includes("we dismiss the complaint"));
+      assert.ok(paidBody.cards[0]?.body.includes("375 NLRB No. 28"));
+    },
+  );
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -5986,6 +6114,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("waterboards-acl"), false, "do not list /waterboards-acl");
   assert.equal(isPublicBazaarSku("doe-nov"), false, "do not list /doe-nov");
   assert.equal(isPublicBazaarSku("nop-ad"), false, "do not list /nop-ad");
+  assert.equal(isPublicBazaarSku("nlrb-bd"), false, "do not list /nlrb-bd");
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
@@ -6012,6 +6141,8 @@ async function main(): Promise<void> {
   assert.equal(hiddenDoeNov.extensions, undefined, "/doe-nov must not persist to Bazaar");
   const hiddenNopAd = facilitatorPaymentRequirements("https://ticks.bnm.farm/nop-ad", "nop-ad");
   assert.equal(hiddenNopAd.extensions, undefined, "/nop-ad must not persist to Bazaar");
+  const hiddenNlrbBd = facilitatorPaymentRequirements("https://ticks.bnm.farm/nlrb-bd", "nlrb-bd");
+  assert.equal(hiddenNlrbBd.extensions, undefined, "/nlrb-bd must not persist to Bazaar");
   const hidden = facilitatorPaymentRequirements("https://ticks.bnm.farm/form-483", "form-483");
   assert.equal(hidden.extensions, undefined, "/form-483 must not persist to Bazaar until a real body is cached");
   const hiddenGmp = facilitatorPaymentRequirements("https://ticks.bnm.farm/gmp", "gmp");
