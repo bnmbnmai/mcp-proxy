@@ -274,6 +274,7 @@ import {
   loadForm483,
   loadForm483Manifest,
 } from "./form-483.js";
+import { paidForm483Body, paidTicksBody, paidWarningLettersBody } from "./paid-records.js";
 import {
   GMP_AMOUNT_ATOMIC,
   GMP_MANIFEST_PATH,
@@ -606,7 +607,7 @@ function amountAtomicFor(sku: DoorSku): string {
 const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> = {
   ticks: {
     description:
-      "Call GET /ticks when you need the current official Idaho + PNW market snapshot (USDA AMS hay, cattle, produce, pulses; IBC grain; WD1 $/AF). JSON ticks plus stored history points; days between reports are not filled in.",
+      "Call GET /ticks when you need the current official Idaho + PNW market snapshot (USDA AMS hay, cattle, produce, pulses; IBC grain; WD1 $/AF). JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: TICKS_PATH,
   },
   "import-alerts": {
@@ -636,7 +637,7 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
   },
   "warning-letters": {
     description:
-      "Call GET /warning-letters when you need official FDA warning-letter bodies (firm, date, subject, full letter text) parsed from fda.gov HTML. Not the import-alerts IA feed. Does not invent letter text.",
+      "Call GET /warning-letters when you need official FDA warning-letter bodies (firm, date, subject, full letter text) parsed from fda.gov HTML. Not the import-alerts IA feed. Does not invent letter text. Paid JSON keeps letters[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: WARNING_LETTERS_PATH,
   },
   "untitled-letters": {
@@ -751,7 +752,7 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
   },
   "form-483": {
     description:
-      "Call GET /form-483 when you need official FDA Form 483 inspectional observation bodies parsed from posted OII FOIA Electronic Reading Room PDFs. Not warning letters. Not CMS 2567. Does not invent observation text.",
+      "Call GET /form-483 when you need official FDA Form 483 inspectional observation bodies parsed from posted OII FOIA Electronic Reading Room PDFs. Not warning letters. Not CMS 2567. Does not invent observation text. Paid JSON keeps letters[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: FORM_483_PATH,
   },
   gmp: {
@@ -772,6 +773,18 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
     product: "idaho-hay-feeder-ticks",
     status: "ok",
     fetchedAt: "2026-08-17T21:22:50Z",
+    asOf: "2026-08-12",
+    source: "idaho-hay-feeder-ticks cache",
+    recordCount: 1,
+    records: [
+      {
+        id: "cattle-tf-feeder-steer",
+        date: "2026-08-12",
+        firm: "Twin Falls Livestock Commission (Wednesday auction)",
+        url: "",
+        type: "cattle",
+      },
+    ],
     ticks: [
       {
         id: "cattle-tf-feeder-steer",
@@ -873,6 +886,20 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
     ok: true,
     product: "fda-warning-letter-bodies",
     status: "ok",
+    fetchedAt: "2026-08-19T15:20:36.317Z",
+    asOf: "2026-08-13",
+    source:
+      "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/warning-letters",
+    recordCount: 1,
+    records: [
+      {
+        id: "citra100mg-722606-03042026",
+        date: "2026-03-04",
+        firm: "Citra100mg",
+        url: "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/citra100mg-722606-03042026",
+        type: "warning-letter",
+      },
+    ],
     letters: [
       {
         firm: "Citra100mg",
@@ -1227,6 +1254,19 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
     ok: true,
     product: "fda-form-483-bodies",
     status: "ok",
+    fetchedAt: "2026-08-23T10:30:48.442Z",
+    asOf: "2026-08-12",
+    source: "https://www.fda.gov/about-fda/office-inspections-and-investigations/oii-foia-electronic-reading-room",
+    recordCount: 1,
+    records: [
+      {
+        id: "cascade-specialty-pharmacy-llc-193964",
+        date: "2026-07-31",
+        firm: "Cascade Specialty Pharmacy LLC",
+        url: "https://www.fda.gov/media/193964/download",
+        type: "form-483",
+      },
+    ],
     letters: [
       {
         firm: "Cascade Specialty Pharmacy LLC",
@@ -1714,6 +1754,8 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
           emptyReports: "id + status only when an official print has no row",
         },
         fetchedAt: "ISO timestamp of the last official collect",
+        asOf: "YYYY-MM-DD — newest plausible tick date in this cache",
+        records: "id / date / firm / url / type — same snapshot, for agent diffs. Does not replace ticks[]",
       },
     },
     groups,
@@ -2064,13 +2106,13 @@ export function llmsTxt(): string {
   const listedGmp = gmpIsPublic();
   const listedGmpMd = gmpMdIsPublic();
   const paid = [
-    "- GET /ticks — $0.02 — Idaho + PNW market ticks (USDA AMS, Idaho grain, WD1 $/AF)",
+    "- GET /ticks — $0.02 — Idaho + PNW market ticks (USDA AMS, Idaho grain, WD1 $/AF). Paid JSON keeps ticks[] and adds records[] + asOf.",
     "- GET /import-alerts — $0.05 — FDA Import Alerts / DWPE firm-product snapshot",
     "- GET /mariners — $0.05 — USCG D13 / Northwest Local Notice to Mariners",
     "- GET /mariners-d11 — $0.05 — USCG D11 / Southwest Local Notice to Mariners",
     "- GET /mariners-d7 — $0.05 — USCG D7 / Southeast Local Notice to Mariners",
     "- GET /mariners-d8 — $0.05 — USCG D8 / Gulf Local Notice to Mariners",
-    "- GET /warning-letters — $0.05 — FDA warning-letter bodies (firm, date, subject, full letter text)",
+    "- GET /warning-letters — $0.05 — FDA warning-letter bodies (firm, date, subject, full letter text). Paid JSON keeps letters[] and adds records[] + asOf.",
     "- GET /untitled-letters — $0.05 — FDA Untitled Letter text (CDER OPDP + CBER promo PDFs)",
     "- GET /awa — $0.05 — USDA APHIS AWA inspection-report observation text (official per-report PDFs)",
     "- GET /swisspar — $0.05 — Swissmedic first-authorisation SwissPAR evaluation text (official per-product PDFs)",
@@ -2095,7 +2137,7 @@ export function llmsTxt(): string {
     "- GET /cma-ca98 — $0.05 — UK CMA CA98 infringement-decision text (official assets.publishing.service.gov.uk PDFs)",
   ];
   if (listed483) {
-    paid.push("- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs)");
+    paid.push("- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs). Paid JSON keeps letters[] and adds records[] + asOf.");
   }
   if (listedGmp) {
     paid.push("- GET /gmp — $0.05 — Health Canada Drug GMP report-card observation text + C.02 cites");
@@ -2419,6 +2461,10 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
               product: { type: "string" },
               status: { type: "string" },
               fetchedAt: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
               ticks: { type: "array", items: { type: "object" } },
             },
           },
@@ -2533,6 +2579,11 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
               ok: { type: "boolean" },
               product: { type: "string" },
               status: { type: "string" },
+              fetchedAt: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
               letters: { type: "array", items: { type: "object" } },
             },
           },
@@ -2972,6 +3023,11 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
                     ok: { type: "boolean" },
                     product: { type: "string" },
                     status: { type: "string" },
+                    fetchedAt: { type: "string" },
+                    asOf: { type: "string" },
+                    source: { type: "string" },
+                    recordCount: { type: "integer" },
+                    records: { type: "array", items: { type: "object" } },
                     letters: { type: "array", items: { type: "object" } },
                   },
                 },
@@ -3662,7 +3718,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === WARNING_LETTERS_PATH) {
-    await servePaid(req, res, port, "warning-letters", () => loadWarningLetters());
+    await servePaid(req, res, port, "warning-letters", async () => paidWarningLettersBody(await loadWarningLetters()));
     return;
   }
 
@@ -3892,7 +3948,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === FORM_483_PATH) {
-    await servePaid(req, res, port, "form-483", () => loadForm483());
+    await servePaid(req, res, port, "form-483", async () => paidForm483Body(await loadForm483()));
     return;
   }
 
@@ -3917,7 +3973,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === TICKS_PATH) {
-    await servePaid(req, res, port, "ticks", () => loadTicks());
+    await servePaid(req, res, port, "ticks", () => paidTicksBody(loadTicks()));
     return;
   }
 

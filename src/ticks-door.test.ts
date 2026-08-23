@@ -558,6 +558,8 @@ async function main(): Promise<void> {
       assert.equal(body.status, "stale");
       assert.ok(body.reason);
       assert.deepEqual(body.ticks, []);
+      assert.deepEqual((body as { records?: unknown[] }).records, []);
+      assert.equal((body as { recordCount?: number }).recordCount, 0);
     },
   );
 
@@ -656,6 +658,16 @@ async function main(): Promise<void> {
       assert.equal(byId["cattle-bf-cull-cow"]?.price, 167.36);
       assert.equal(byId["cattle-bf-bull"]?.price, 203.5);
       assert.ok(!body.ticks.some((row) => /organic/i.test(JSON.stringify(row))));
+      const histPaid = body as typeof body & {
+        asOf?: string | null;
+        records?: { id: string; date: string | null; type: string }[];
+        recordCount?: number;
+      };
+      assert.equal(histPaid.asOf, "2026-08-14");
+      assert.equal(histPaid.recordCount, 5);
+      assert.equal(histPaid.records?.[0]?.id, "cattle-bf-bull");
+      assert.equal(histPaid.records?.[0]?.type, "cattle");
+      assert.ok(!histPaid.records?.some((row) => /organic/i.test(row.id)));
     },
   );
 
@@ -1389,6 +1401,14 @@ async function main(): Promise<void> {
       assert.match(paidBody.letters[0]?.subject ?? "", /Unapproved New Drugs/);
       assert.ok(paidBody.letters[0]?.body.includes("WARNING LETTER"));
       assert.ok(paidBody.letters[0]?.body.includes("reviewed your website"));
+      const wlPaid = paidBody as typeof paidBody & {
+        asOf?: string;
+        records?: { id: string; date: string | null; firm: string; url: string; type: string }[];
+      };
+      assert.equal(wlPaid.asOf, "2026-03-04");
+      assert.equal(wlPaid.records?.[0]?.id, "citra100mg-722606-03042026");
+      assert.equal(wlPaid.records?.[0]?.type, "warning-letter");
+      assert.equal(wlPaid.records?.[0]?.firm, "Citra100mg");
     },
   );
 
@@ -4058,6 +4078,14 @@ async function main(): Promise<void> {
       assert.equal(paidBody.letters[0]?.recordDate, "2026-07-17");
       assert.ok(paidBody.letters[0]?.body.includes("This document lists observations"));
       assert.ok(paidBody.letters[0]?.body.includes("Gabapentin 100 mg/mL"));
+      const f483Paid = paidBody as typeof paidBody & {
+        asOf?: string;
+        records?: { id: string; date: string | null; firm: string; url: string; type: string }[];
+      };
+      assert.equal(f483Paid.asOf, "2026-07-31");
+      assert.equal(f483Paid.records?.[0]?.id, "cascade-specialty-pharmacy-llc-193964");
+      assert.equal(f483Paid.records?.[0]?.type, "form-483");
+      assert.equal(f483Paid.records?.[0]?.date, "2026-07-31");
       assert.equal(isPublicBazaarSku("form-483"), true);
       const persistReqs = facilitatorPaymentRequirements("https://ticks.bnm.farm/form-483", "form-483");
       assert.equal(persistReqs.resource, "https://ticks.bnm.farm/form-483");

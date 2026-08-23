@@ -19,7 +19,9 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 - Official DataTables AJAX for that same listing: https://www.fda.gov/datatables/views/ajax (`view_name=warning_letter_solr_index`)
 - Letter pages: `https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/{slug}`
 
-Paid body fields: `id`, `firm`, `cms`, `issuedOn`, `subject`, `issuingOffice`, `sourceUrl`, `body`. `body` is the official `WARNING LETTER` HTML block, tags stripped.
+Paid body keeps the existing `letters[]` fields: `id`, `firm`, `cms`, `issuedOn`, `subject`, `issuingOffice`, `sourceUrl`, `body`. `body` is the official `WARNING LETTER` HTML block, tags stripped.
+
+Alongside those keys the paid JSON adds `records[]` (`id`, `date`, `firm`, `url`, `type=warning-letter`), `recordCount`, honest `asOf` / `fetchedAt`, and `source` (the official fda.gov listing). A repeat buyer diffs `asOf` + record ids. Collect walks the official DataTables listing; it does not stop at a 5-card first slice.
 
 `data/warning-letters/` is gitignored. Letter bodies do not belong in git. The live cache lives on the media-box worker.
 

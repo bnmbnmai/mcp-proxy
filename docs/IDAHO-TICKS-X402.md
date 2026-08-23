@@ -81,6 +81,8 @@ curl -i http://192.168.1.243:4020/ticks
 curl -s http://192.168.1.243:4020/ticks -H 'X-PAYMENT: test' | head
 ```
 
+Paid JSON keeps the existing keys (`ok`, `product`, `sources`, `status`, `reason`, `fetchedAt`, `ticks`, `failed`, `history`). Alongside those it adds `records[]` (`id`, `date`, `firm`, `url`, `type` from group), `recordCount`, and top-level `asOf` (newest plausible tick date). A repeat buyer diffs `asOf` + record ids. Year-2825 / empty dates are not sold as current.
+
 Paid JSON includes Twin Falls, Blackfoot, AMS_3056 hay, and AMS_3059 NW Direct **when those series are in the cache**. A source that 403s on this host is listed under `failed` (honest), not filled in.
 
 ## Out of scope
