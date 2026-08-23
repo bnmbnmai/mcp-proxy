@@ -24,7 +24,7 @@ export const LISTING_URL = "https://www.bundeskartellamt.de/DE/Entscheidungen/en
 export const PDF_HOST = "www.bundeskartellamt.de";
 export const PDF_ORIGIN = "https://www.bundeskartellamt.de";
 export const MEDIA_RE =
-  /\/SharedDocs\/Entscheidung\/DE\/Entscheidungen\/(Missbrauchsaufsicht|Fusionskontrolle|Kartellverbot)\/(?:\d{4}\/)?([A-Za-z]+\d+(?:-\d+)*\.pdf)/i;
+  /\/SharedDocs\/Entscheidung\/DE\/Entscheidungen\/(Missbrauchsaufsicht|Fusionskontrolle|Kartellverbot)\/(?:\d{4}\/)?([A-Za-z]+-?\d+(?:-\d+)*\.pdf)/i;
 export const DOCKET_BARE_RE = /^([a-z0-9][a-z0-9._-]{2,80})$/;
 export const LICENSE = "§ 5 Abs. 1 UrhG";
 export const ATTRIBUTION =
@@ -200,7 +200,7 @@ export function snapshotPath(): string {
 }
 
 export function compactForMatch(text: string): string {
-  return text.replace(/-\s+/g, "").replace(/\s+/g, " ").trim();
+  return text.replace(/-\n\s*/g, "").replace(/\s+/g, " ").trim();
 }
 
 export function decodeEntities(raw: string): string {
