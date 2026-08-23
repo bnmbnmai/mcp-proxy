@@ -279,15 +279,24 @@ import {
 import {
   paidAirLettersBody,
   paidAwaBody,
+  paidBisOrdersBody,
   paidCfpbOrdersBody,
   paidCftcOrdersBody,
   paidCmaCa98Body,
   paidDenovoOrdersBody,
+  paidFdicOrdersBody,
+  paidFercOrdersBody,
   paidFifraOrdersBody,
+  paidFincenOrdersBody,
   paidForm483Body,
+  paidFrbOrdersBody,
   paidFtcWlBody,
+  paidGmpBody,
+  paidGmpMdBody,
   paidIcoMpnBody,
   paidImportAlertsBody,
+  paidNcuaOrdersBody,
+  paidOccCdBody,
   paidOfacOrdersBody,
   paidPcacBody,
   paidSuperfundRodsBody,
@@ -694,32 +703,32 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
   },
   "occ-cd": {
     description:
-      "Call GET /occ-cd when you need official OCC institution Cease-and-Desist / Consent Order text extracted from per-order PDFs on occ.gov/static/enforcement-actions. Not EASearch ExportToJSON metadata. Not IAP / people / prohibition / CMP-against-person. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not SEC EDGAR complete-submission .txt.",
+      "Call GET /occ-cd when you need official OCC institution Cease-and-Desist / Consent Order text extracted from per-order PDFs on occ.gov/static/enforcement-actions. Not EASearch ExportToJSON metadata. Not IAP / people / prohibition / CMP-against-person. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not SEC EDGAR complete-submission .txt. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: OCC_CD_PATH,
   },
   "fdic-orders": {
     description:
-      "Call GET /fdic-orders when you need official FDIC institution consent-order / Cease-and-Desist text extracted from per-order PDFs on orders.fdic.gov. Not the EDOS Salesforce index. Not BankFind. Not monthly NR counts. Not IAP / 1829 / Section 19 people files. Not EDGAR 8-K. Not Federal Register raw_text. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl.",
+      "Call GET /fdic-orders when you need official FDIC institution consent-order / Cease-and-Desist text extracted from per-order PDFs on orders.fdic.gov. Not the EDOS Salesforce index. Not BankFind. Not monthly NR counts. Not IAP / 1829 / Section 19 people files. Not EDGAR 8-K. Not Federal Register raw_text. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: FDIC_ORDERS_PATH,
   },
   "frb-orders": {
     description:
-      "Call GET /frb-orders when you need official FRB institution Cease-and-Desist / written-agreement / PCA text extracted from per-order PDFs on federalreserve.gov. Not the official enforcement CSV. Not ea-old.json / ea-cms-recent.json / ne-press.json teasers. Not BankFind. Not IAP / prohibition-of-employee people files. Not EDGAR 8-K. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl.",
+      "Call GET /frb-orders when you need official FRB institution Cease-and-Desist / written-agreement / PCA text extracted from per-order PDFs on federalreserve.gov. Not the official enforcement CSV. Not ea-old.json / ea-cms-recent.json / ne-press.json teasers. Not BankFind. Not IAP / prohibition-of-employee people files. Not EDGAR 8-K. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: FRB_ORDERS_PATH,
   },
   "ncua-orders": {
     description:
-      "Call GET /ncua-orders when you need official NCUA institution consent Cease-and-Desist text extracted from per-order HTML on ncua.gov. Not the official CSV. Not Drupal ?_format=json. Not 2026 people/IAP. Not late-filer CMP. Not LUAs. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl.",
+      "Call GET /ncua-orders when you need official NCUA institution consent Cease-and-Desist text extracted from per-order HTML on ncua.gov. Not the official CSV. Not Drupal ?_format=json. Not 2026 people/IAP. Not late-filer CMP. Not LUAs. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: NCUA_ORDERS_PATH,
   },
   "fincen-orders": {
     description:
-      "Call GET /fincen-orders when you need official FinCEN institution consent-order text extracted from per-order PDFs on fincen.gov. Not the enforcement-actions index teaser. Not people-only CMP. Not a news-release wrap. Not Federal Register raw_text. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl.",
+      "Call GET /fincen-orders when you need official FinCEN institution consent-order text extracted from per-order PDFs on fincen.gov. Not the enforcement-actions index teaser. Not people-only CMP. Not a news-release wrap. Not Federal Register raw_text. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: FINCEN_ORDERS_PATH,
   },
   "ferc-orders": {
     description:
-      "Call GET /ferc-orders when you need official FERC institution stipulation-and-consent / show-cause / civil-penalty text extracted from per-order PDFs on cms.ferc.gov. Not the civil-penalty index teaser. Not eLibrary metadata. Not Federal Register raw_text. Not people files. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl.",
+      "Call GET /ferc-orders when you need official FERC institution stipulation-and-consent / show-cause / civil-penalty text extracted from per-order PDFs on cms.ferc.gov. Not the civil-penalty index teaser. Not eLibrary metadata. Not Federal Register raw_text. Not people files. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: FERC_ORDERS_PATH,
   },
   "ofac-orders": {
@@ -729,7 +738,7 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
   },
   "bis-orders": {
     description:
-      "Call GET /bis-orders when you need official BIS institution/company charging-letter / order / settlement text extracted from per-order PDFs on bis.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not CFTC /cftc-orders. Not FIFRA /fifra-orders.",
+      "Call GET /bis-orders when you need official BIS institution/company charging-letter / order / settlement text extracted from per-order PDFs on bis.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not CFTC /cftc-orders. Not FIFRA /fifra-orders. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: BIS_ORDERS_PATH,
   },
   "cftc-orders": {
@@ -779,12 +788,12 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
   },
   gmp: {
     description:
-      "Call GET /gmp when you need official Health Canada Drug GMP inspection report-card observation text plus C.02 cites from fullReportCard.ashx. Not the 21k-row public search index. Does not invent observations.",
+      "Call GET /gmp when you need official Health Canada Drug GMP inspection report-card observation text plus C.02 cites from fullReportCard.ashx. Not the 21k-row public search index. Does not invent observations. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: GMP_PATH,
   },
   "gmp-md": {
     description:
-      "Call GET /gmp-md when you need official Health Canada medical-device inspection report-card observation text plus MDR cites from md/handler/fullReportCard.ashx. Not the ratings-only search index. Not /gmp Drug GMP. Does not invent observations.",
+      "Call GET /gmp-md when you need official Health Canada medical-device inspection report-card observation text plus MDR cites from md/handler/fullReportCard.ashx. Not the ratings-only search index. Not /gmp Drug GMP. Does not invent observations. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: GMP_MD_PATH,
   },
 };
@@ -1129,6 +1138,19 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
     ok: true,
     product: "occ-institution-cd-bodies",
     status: "ok",
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-06-16",
+    source: "https://apps.occ.gov/EASearch",
+    recordCount: 1,
+    records: [
+      {
+        id: "AA-ENF-2026-29",
+        date: "2026-06-16",
+        firm: "United Texas Bank, National Association",
+        url: "https://www.occ.gov/static/enforcement-actions/eaAA-ENF-2026-29.pdf",
+        type: "occ-cd",
+      },
+    ],
     cards: [
       {
         id: "AA-ENF-2026-29",
@@ -1144,6 +1166,19 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
     ok: true,
     product: "fdic-institution-order-bodies",
     status: "ok",
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-01-13",
+    source: "https://orders.fdic.gov/s/",
+    recordCount: 1,
+    records: [
+      {
+        id: "FDIC-26-0001b",
+        date: "2026-01-13",
+        firm: "MutualOne Bank",
+        url: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ000013gUnXYAU?operationContext=S1",
+        type: "fdic-order",
+      },
+    ],
     cards: [
       {
         id: "FDIC-26-0001b",
@@ -1159,6 +1194,19 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
     ok: true,
     product: "frb-institution-order-bodies",
     status: "ok",
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-04-14",
+    source: "https://www.federalreserve.gov/supervisionreg/enforcementactions.htm",
+    recordCount: 1,
+    records: [
+      {
+        id: "26-019-B-HC",
+        date: "2026-04-14",
+        firm: "Community Bankshares, Inc.",
+        url: "https://www.federalreserve.gov/newsevents/pressreleases/files/enf20260416a1.pdf",
+        type: "frb-order",
+      },
+    ],
     cards: [
       {
         id: "26-019-B-HC",
@@ -1174,6 +1222,19 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
     ok: true,
     product: "ncua-institution-order-bodies",
     status: "ok",
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2021-02-22",
+    source: "https://ncua.gov/news/enforcement-actions/administrative-orders",
+    recordCount: 1,
+    records: [
+      {
+        id: "21-0105-ER",
+        date: "2021-02-22",
+        firm: "Live Life Federal Credit Union",
+        url: "https://ncua.gov/news/enforcement-actions/administrative-orders/2021/administrative-order-matter-live-life-federal-credit-union",
+        type: "ncua-order",
+      },
+    ],
     cards: [
       {
         id: "21-0105-ER",
@@ -1190,6 +1251,19 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
     ok: true,
     product: "fincen-institution-order-bodies",
     status: "ok",
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-08-03",
+    source: "https://www.fincen.gov/news/enforcement-actions",
+    recordCount: 1,
+    records: [
+      {
+        id: "2026-02",
+        date: "2026-08-03",
+        firm: "UBS Financial Services Inc.",
+        url: "https://www.fincen.gov/system/files/2026-07/UBS-Consent-Order.pdf",
+        type: "fincen-order",
+      },
+    ],
     cards: [
       {
         id: "2026-02",
@@ -1205,6 +1279,19 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
     ok: true,
     product: "ferc-institution-order-bodies",
     status: "ok",
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-04-17",
+    source: "https://www.ferc.gov/civil-penalties/all-civil-penalty-actions-2026",
+    recordCount: 1,
+    records: [
+      {
+        id: "IN25-6-000",
+        date: "2026-04-17",
+        firm: "Interstate Power and Light Company",
+        url: "https://cms.ferc.gov/sites/default/files/2026-04/20260417-195FERC61048-IN25-6-000-Interstate%20Power%20and%20Light%20Co-Settlement%20Agreement.pdf",
+        type: "ferc-order",
+      },
+    ],
     cards: [
       {
         id: "IN25-6-000",
@@ -1249,6 +1336,19 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
     ok: true,
     product: "bis-institution-order-bodies",
     status: "ok",
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-04-13",
+    source: "https://www.bis.gov/enforcement/charging-letters",
+    recordCount: 1,
+    records: [
+      {
+        id: "E3050",
+        date: "2026-04-13",
+        firm: "Coastal PVA Technology, Inc.",
+        url: "https://www.bis.gov/media/documents/coastal-pva-technology-inc-4-13-2026-rev.pdf",
+        type: "bis-order",
+      },
+    ],
     cards: [
       {
         id: "E3050",
@@ -1516,8 +1616,22 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
     ok: true,
     product: "hc-gmp-report-cards",
     status: "ok",
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-04-13",
+    source: "https://www.drug-inspections.canada.ca/gmp/index-en.html",
+    recordCount: 1,
+    records: [
+      {
+        id: "apotex-inc-88796",
+        date: "2026-04-13",
+        firm: "Apotex Inc",
+        url: "https://www.drug-inspections.canada.ca/gmp/fullReportCard-en.html?insNumber=88796&lang=en",
+        type: "gmp",
+      },
+    ],
     cards: [
       {
+        id: "apotex-inc-88796",
         firm: "Apotex Inc",
         inspectionNumber: "88796",
         referenceNumber: "501259",
@@ -1531,8 +1645,22 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
     ok: true,
     product: "hc-md-inspection-cards",
     status: "ok",
+    fetchedAt: "2026-08-23T12:00:00.000Z",
+    asOf: "2026-05-25",
+    source: "https://www.drug-inspections.canada.ca/md/index-en.html",
+    recordCount: 1,
+    records: [
+      {
+        id: "can-med-healthcare-501",
+        date: "2026-05-25",
+        firm: "CAN-MED HEALTHCARE",
+        url: "https://www.drug-inspections.canada.ca/md/fullReportCard-en.html?insNumber=501&lang=en",
+        type: "gmp-md",
+      },
+    ],
     cards: [
       {
+        id: "can-med-healthcare-501",
         firm: "CAN-MED HEALTHCARE",
         inspectionNumber: "501",
         referenceNumber: "111868",
@@ -2518,14 +2646,14 @@ export function llmsTxt(): string {
     "- GET /pcac — $0.05 — FDA PCAC 503A briefing-memo evaluation text (official per-substance PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
     "- GET /ftc-wl — $0.05 — FTC BCP warning-letter text (official per-letter PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
     "- GET /cfpb-orders — $0.05 — CFPB consent-order / administrative-order text (official per-order PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /occ-cd — $0.05 — OCC institution C&D / consent-order text (official per-order PDFs)",
-    "- GET /fdic-orders — $0.05 — FDIC institution consent-order / C&D text (official per-order PDFs)",
-    "- GET /frb-orders — $0.05 — FRB institution C&D / written-agreement / PCA text (official per-order PDFs)",
-    "- GET /ncua-orders — $0.05 — NCUA institution consent C&D text (official per-order HTML)",
-    "- GET /fincen-orders — $0.05 — FinCEN institution consent-order text (official per-order PDFs)",
-    "- GET /ferc-orders — $0.05 — FERC institution stipulation-and-consent text (official cms.ferc.gov PDFs)",
+    "- GET /occ-cd — $0.05 — OCC institution C&D / consent-order text (official per-order PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
+    "- GET /fdic-orders — $0.05 — FDIC institution consent-order / C&D text (official per-order PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
+    "- GET /frb-orders — $0.05 — FRB institution C&D / written-agreement / PCA text (official per-order PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
+    "- GET /ncua-orders — $0.05 — NCUA institution consent C&D text (official per-order HTML). Paid JSON keeps cards[] and adds records[] + asOf.",
+    "- GET /fincen-orders — $0.05 — FinCEN institution consent-order text (official per-order PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
+    "- GET /ferc-orders — $0.05 — FERC institution stipulation-and-consent text (official cms.ferc.gov PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
     "- GET /ofac-orders — $0.05 — OFAC institution enforcement-release text (official ofac.treasury.gov PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /bis-orders — $0.05 — BIS institution charging-letter / order text (official bis.gov PDFs)",
+    "- GET /bis-orders — $0.05 — BIS institution charging-letter / order text (official bis.gov PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
     "- GET /cftc-orders — $0.05 — CFTC institution enforcement-order / settlement text (official cftc.gov PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
     "- GET /fifra-orders — $0.05 — EPA FIFRA institution order / consent text (official yosemite.epa.gov PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
     "- GET /denovo-orders — $0.05 — FDA De Novo classification-order text (official accessdata.fda.gov PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
@@ -2539,10 +2667,10 @@ export function llmsTxt(): string {
     paid.push("- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs). Paid JSON keeps letters[] and adds records[] + asOf.");
   }
   if (listedGmp) {
-    paid.push("- GET /gmp — $0.05 — Health Canada Drug GMP report-card observation text + C.02 cites");
+    paid.push("- GET /gmp — $0.05 — Health Canada Drug GMP report-card observation text + C.02 cites. Paid JSON keeps cards[] and adds records[] + asOf.");
   }
   if (listedGmpMd) {
-    paid.push("- GET /gmp-md — $0.05 — Health Canada medical-device report-card observation text + MDR cites");
+    paid.push("- GET /gmp-md — $0.05 — Health Canada medical-device report-card observation text + MDR cites. Paid JSON keeps cards[] and adds records[] + asOf.");
   }
   const free = [
     `- GET /openapi.json — OpenAPI 3.1 with x-payment-info for the ${paidCountWord()} paid doors`,
@@ -3151,6 +3279,11 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
               ok: { type: "boolean" },
               product: { type: "string" },
               status: { type: "string" },
+              fetchedAt: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
               cards: { type: "array", items: { type: "object" } },
             },
           },
@@ -3170,6 +3303,11 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
               ok: { type: "boolean" },
               product: { type: "string" },
               status: { type: "string" },
+              fetchedAt: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
               cards: { type: "array", items: { type: "object" } },
             },
           },
@@ -3189,6 +3327,11 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
               ok: { type: "boolean" },
               product: { type: "string" },
               status: { type: "string" },
+              fetchedAt: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
               cards: { type: "array", items: { type: "object" } },
             },
           },
@@ -3208,6 +3351,11 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
               ok: { type: "boolean" },
               product: { type: "string" },
               status: { type: "string" },
+              fetchedAt: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
               cards: { type: "array", items: { type: "object" } },
             },
           },
@@ -3227,6 +3375,11 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
               ok: { type: "boolean" },
               product: { type: "string" },
               status: { type: "string" },
+              fetchedAt: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
               cards: { type: "array", items: { type: "object" } },
             },
           },
@@ -3246,6 +3399,11 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
               ok: { type: "boolean" },
               product: { type: "string" },
               status: { type: "string" },
+              fetchedAt: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
               cards: { type: "array", items: { type: "object" } },
             },
           },
@@ -3289,6 +3447,11 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
               ok: { type: "boolean" },
               product: { type: "string" },
               status: { type: "string" },
+              fetchedAt: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
               cards: { type: "array", items: { type: "object" } },
             },
           },
@@ -3530,6 +3693,11 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
                     ok: { type: "boolean" },
                     product: { type: "string" },
                     status: { type: "string" },
+                    fetchedAt: { type: "string" },
+                    asOf: { type: "string" },
+                    source: { type: "string" },
+                    recordCount: { type: "integer" },
+                    records: { type: "array", items: { type: "object" } },
                     cards: { type: "array", items: { type: "object" } },
                   },
                 },
@@ -3553,6 +3721,11 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
                     ok: { type: "boolean" },
                     product: { type: "string" },
                     status: { type: "string" },
+                    fetchedAt: { type: "string" },
+                    asOf: { type: "string" },
+                    source: { type: "string" },
+                    recordCount: { type: "integer" },
+                    records: { type: "array", items: { type: "object" } },
                     cards: { type: "array", items: { type: "object" } },
                   },
                 },
@@ -4267,7 +4440,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === OCC_CD_PATH) {
-    await servePaid(req, res, port, "occ-cd", () => loadOccCd());
+    await servePaid(req, res, port, "occ-cd", async () => paidOccCdBody(await loadOccCd()));
     return;
   }
 
@@ -4277,7 +4450,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === FDIC_ORDERS_PATH) {
-    await servePaid(req, res, port, "fdic-orders", () => loadFdicOrders());
+    await servePaid(req, res, port, "fdic-orders", async () => paidFdicOrdersBody(await loadFdicOrders()));
     return;
   }
 
@@ -4287,7 +4460,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === FRB_ORDERS_PATH) {
-    await servePaid(req, res, port, "frb-orders", () => loadFrbOrders());
+    await servePaid(req, res, port, "frb-orders", async () => paidFrbOrdersBody(await loadFrbOrders()));
     return;
   }
 
@@ -4297,7 +4470,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === NCUA_ORDERS_PATH) {
-    await servePaid(req, res, port, "ncua-orders", () => loadNcuaOrders());
+    await servePaid(req, res, port, "ncua-orders", async () => paidNcuaOrdersBody(await loadNcuaOrders()));
     return;
   }
 
@@ -4307,7 +4480,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === FINCEN_ORDERS_PATH) {
-    await servePaid(req, res, port, "fincen-orders", () => loadFincenOrders());
+    await servePaid(req, res, port, "fincen-orders", async () => paidFincenOrdersBody(await loadFincenOrders()));
     return;
   }
 
@@ -4317,7 +4490,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === FERC_ORDERS_PATH) {
-    await servePaid(req, res, port, "ferc-orders", () => loadFercOrders());
+    await servePaid(req, res, port, "ferc-orders", async () => paidFercOrdersBody(await loadFercOrders()));
     return;
   }
 
@@ -4337,7 +4510,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === BIS_ORDERS_PATH) {
-    await servePaid(req, res, port, "bis-orders", () => loadBisOrders());
+    await servePaid(req, res, port, "bis-orders", async () => paidBisOrdersBody(await loadBisOrders()));
     return;
   }
 
@@ -4437,7 +4610,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === GMP_PATH) {
-    await servePaid(req, res, port, "gmp", () => loadGmp());
+    await servePaid(req, res, port, "gmp", async () => paidGmpBody(await loadGmp()));
     return;
   }
 
@@ -4447,7 +4620,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === GMP_MD_PATH) {
-    await servePaid(req, res, port, "gmp-md", () => loadGmpMd());
+    await servePaid(req, res, port, "gmp-md", async () => paidGmpMdBody(await loadGmpMd()));
     return;
   }
 

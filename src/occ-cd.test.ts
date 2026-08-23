@@ -4,6 +4,7 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { readFileSync as readFs } from "node:fs";
+import { OCC_CD_TYPE, paidOccCdBody } from "./paid-records.js";
 import {
   ATTRIBUTION,
   CARD_FIELDS,
@@ -216,6 +217,19 @@ async function main(): Promise<void> {
     if (prevDir === undefined) delete process.env.OCC_CD_DIR;
     else process.env.OCC_CD_DIR = prevDir;
   }
+
+  const seed = JSON.parse(readFx("seed-snapshot.json")) as {
+    cards: { id?: string; bank?: string; body?: string }[];
+  };
+  const paid = paidOccCdBody(seed);
+  assert.ok(paid.recordCount > 0, "empty records[] is a fail");
+  assert.equal(paid.cards.length, seed.cards.length, "official cards[] stay");
+  assert.equal(paid.records[0]?.type, OCC_CD_TYPE);
+  assert.equal(paid.records[0]?.id, "AA-ENF-2026-29");
+  assert.equal(paid.records[0]?.firm, "United Texas Bank, National Association");
+  assert.equal(paid.cards[0]?.bank, "United Texas Bank, National Association");
+  assert.deepEqual(Object.keys(paid.records[0] ?? {}).sort(), ["date", "firm", "id", "type", "url"]);
+  assert.ok(paid.records.every((r) => r.firm && r.id && r.url));
 
   console.log("occ-cd parser tests ok");
 }
