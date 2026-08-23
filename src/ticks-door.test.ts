@@ -133,6 +133,11 @@ import {
   ICO_MPN_PATH,
 } from "./ico-mpn.js";
 import {
+  CMA_CA98_AMOUNT_ATOMIC,
+  CMA_CA98_MANIFEST_PATH,
+  CMA_CA98_PATH,
+} from "./cma-ca98.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -292,6 +297,7 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.some((r) => r.endsWith(AIR_LETTERS_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(SUPERFUND_RODS_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(ICO_MPN_PATH)));
+    assert.ok(!wk.resources.some((r) => r.includes(CMA_CA98_PATH)), "do not list /cma-ca98 until live-applied");
     assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)), "do not list /form-483 without a cached body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_PATH)), "do not list /gmp without a cached observation body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_MD_PATH)), "do not list /gmp-md without a cached observation body");
@@ -428,6 +434,8 @@ async function main(): Promise<void> {
     assert.ok(spec.paths[ICO_MPN_PATH]?.get);
     assert.ok(spec.paths[ICO_MPN_MANIFEST_PATH]?.get);
     assert.equal(spec.paths[ICO_MPN_MANIFEST_PATH]?.get?.["x-auth"]?.mode, "none");
+    assert.equal(spec.paths[CMA_CA98_PATH], undefined, "do not list /cma-ca98 in OpenAPI until live-applied");
+    assert.equal(spec.paths[CMA_CA98_MANIFEST_PATH], undefined);
     assert.equal(spec.paths[FORM_483_PATH], undefined, "no stub /form-483 in OpenAPI without a cached body");
     assert.equal(spec.paths[FORM_483_MANIFEST_PATH], undefined);
     assert.equal(spec.paths[GMP_PATH], undefined, "no stub /gmp in OpenAPI without a cached body");
@@ -472,6 +480,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /air-letters"));
     assert.ok(llmsBody.includes("GET /superfund-rods"));
     assert.ok(llmsBody.includes("GET /ico-mpn"));
+    assert.ok(!llmsBody.includes("GET /cma-ca98"), "do not list /cma-ca98 until live-applied");
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.includes("GET /gmp-md"));
@@ -3798,6 +3807,126 @@ async function main(): Promise<void> {
     },
   );
 
+  const cmaCa98Dir = mkdtempSync(join(tmpdir(), "cma-ca98-"));
+  writeFileSync(
+    join(cmaCa98Dir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "cma-ca98-infringement-decision-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: FRESH_FETCHED_AT,
+      asOf: "2025-02-21",
+      license: "Crown copyright / Open Government Licence v3.0",
+      attribution:
+        "UK Competition and Markets Authority. Contains public sector information licensed under the Open Government Licence v3.0.",
+      sources: {
+        listing: "https://www.gov.uk/cma-cases/financial-services-sector-suspected-anti-competitive-practices",
+        pdfHost: "https://assets.publishing.service.gov.uk/",
+      },
+      cards: [
+        {
+          id: "50601-citi-db",
+          docket: "50601-citi-db",
+          pdfId: "Citi-Deutsche_Bank__Non-confidential_decision.pdf",
+          institution: "Citigroup Global Markets Limited / Deutsche Bank Aktiengesellschaft",
+          date: "2025-02-21",
+          title: "CA98 infringement decision",
+          sourceUrl:
+            "https://assets.publishing.service.gov.uk/media/6876390d352c290d20dcae7c/Citi-Deutsche_Bank__Non-confidential_decision.pdf",
+          body: [
+            "Decision of the Competition and Markets Authority",
+            "Competition Act 1998",
+            "UK government bonds: Citi-Deutsche Bank Infringement",
+            "Case Number: 50601",
+            "Chapter I prohibition",
+            "Crown copyright 2025",
+            "Open Government Licence",
+            "Citi-DB Relevant Period",
+            "gilt auctions",
+            "commercially sensitive information",
+            ...Array.from({ length: 40 }, (_, i) => `${i + 21}. Numbered article ${i + 21} from the official Citi-DB CA98 decision body used only to keep this door fixture above the real-decision length floor.`),
+          ].join("\n"),
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      CMA_CA98_DIR: cmaCa98Dir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-cma-ca98-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${CMA_CA98_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /cma-ca98 must be 402");
+      const body402 = (await unpaid.json()) as {
+        payTo: string;
+        asset: string;
+        resource: string;
+        accepts: { maxAmountRequired?: string; extra?: { name?: string } }[];
+      };
+      assert.equal(body402.resource, CMA_CA98_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, CMA_CA98_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
+      const cmaPr = unpaid.headers.get("payment-required");
+      assert.ok(cmaPr, "v2 PAYMENT-REQUIRED header");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("Citi-DB Relevant Period"));
+      assert.ok(!leak402.includes("gilt auctions"));
+      assert.ok(!leak402.includes("commercially sensitive information"));
+      assert.ok(!leak402.includes("Numbered article"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === CMA_CA98_PATH), false, "do not list /cma-ca98 until live-applied");
+      assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
+      assert.equal(shop.products.some((p) => p.path === SUPERFUND_RODS_PATH), true);
+      assert.equal(shop.products.length, 28);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(!wk.resources.some((r) => r.includes(CMA_CA98_PATH)), "well-known must not list /cma-ca98 yet");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(!llms.includes("GET /cma-ca98"), "llms.txt must not list /cma-ca98 yet");
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.equal(spec.paths[CMA_CA98_PATH], undefined, "OpenAPI must not list /cma-ca98 yet");
+
+      const manifest = await fetch(`${base}${CMA_CA98_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "cma-ca98 free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        cards?: { institution?: string; docket?: string; id?: string; body?: string }[];
+        openapi?: string;
+        wellKnown?: string;
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.cards?.[0]?.institution, "Citigroup Global Markets Limited / Deutsche Bank Aktiengesellschaft");
+      assert.equal(man.cards?.[0]?.docket, "50601-citi-db");
+      const manBlob = JSON.stringify(man);
+      assert.ok(!manBlob.includes("Citi-DB Relevant Period"));
+      assert.ok(!manBlob.includes("gilt auctions"));
+      assert.ok(!manBlob.includes("commercially sensitive information"));
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+
+      const paid = await fetch(`${base}${CMA_CA98_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { institution: string; date: string; docket: string; body: string }[];
+      };
+      assert.equal(paidBody.product, "cma-ca98-infringement-decision-bodies");
+      assert.equal(paidBody.cards[0]?.institution, "Citigroup Global Markets Limited / Deutsche Bank Aktiengesellschaft");
+      assert.equal(paidBody.cards[0]?.date, "2025-02-21");
+      assert.equal(paidBody.cards[0]?.docket, "50601-citi-db");
+      assert.ok(paidBody.cards[0]?.body.includes("Citi-DB Relevant Period"));
+      assert.ok(paidBody.cards[0]?.body.includes("gilt auctions"));
+      assert.ok(paidBody.cards[0]?.body.includes("commercially sensitive information"));
+    },
+  );
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -4297,10 +4426,13 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("air-letters"), true);
   assert.equal(isPublicBazaarSku("superfund-rods"), true);
   assert.equal(isPublicBazaarSku("ico-mpn"), true);
+  assert.equal(isPublicBazaarSku("cma-ca98"), false, "do not list /cma-ca98 until live-applied");
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
   assert.deepEqual(publicBazaarSkus(), [...PUBLIC_BAZAAR_SKUS]);
+  const hiddenCma = facilitatorPaymentRequirements("https://ticks.bnm.farm/cma-ca98", "cma-ca98");
+  assert.equal(hiddenCma.extensions, undefined, "/cma-ca98 must not persist to Bazaar until live-applied");
   const hidden = facilitatorPaymentRequirements("https://ticks.bnm.farm/form-483", "form-483");
   assert.equal(hidden.extensions, undefined, "/form-483 must not persist to Bazaar until a real body is cached");
   const hiddenGmp = facilitatorPaymentRequirements("https://ticks.bnm.farm/gmp", "gmp");
