@@ -96,5 +96,7 @@ echo "free ico-mpn: curl -s http://<lan-ip>:$PORT/ico-mpn/manifest.json"
 echo "free form-483: curl -s http://<lan-ip>:$PORT/form-483/manifest.json"
 echo "free gmp: curl -s http://<lan-ip>:$PORT/gmp/manifest.json"
 echo "free gmp-md: curl -s http://<lan-ip>:$PORT/gmp-md/manifest.json"
+echo "mcp: curl -s http://<lan-ip>:$PORT/mcp"
+echo "mcp connect: npx -y mcp-remote http://<lan-ip>:$PORT/mcp"
 echo "paid smoke: X402_SKIP_SETTLE=1 … then curl -s http://<lan-ip>:$PORT/ticks -H 'X-PAYMENT: test'"
 exec node build/ticks-door.js

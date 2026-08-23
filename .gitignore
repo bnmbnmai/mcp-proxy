@@ -6,6 +6,7 @@ dist/
 build/*.test.*
 # Shop door compile output — tsc locally, do not commit
 build/ticks-door.*
+build/ticks-mcp.*
 build/import-alerts.*
 build/mariners.*
 build/warning-letters.*
