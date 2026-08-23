@@ -38,6 +38,7 @@ build/acm-besluiten.*
 build/ccpc-mergers.*
 build/bkarta-entscheidungen.*
 build/ipo-tm.*
+build/fmc-orders.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
@@ -73,3 +74,4 @@ data/acm-besluiten/
 data/ccpc-mergers/
 data/bkarta-entscheidungen/
 data/ipo-tm/
+data/fmc-orders/

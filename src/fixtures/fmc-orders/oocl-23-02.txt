@@ -1,0 +1,119 @@
+                                                                                      Public Version
+
+
+
+                   FEDERAL MARITIME COMMISSION
+                              Office of Administrative Law Judges
+
+
+20230930-DK-BUTTERFLY-1, INC. F/K/A BED BATH &
+BEYOND INC., Complainant
+                                                                       DOCKET NO. 23-02
+v.
+
+ORIENT OVERSEAS CONTAINER LINE LIMITED AND
+OOCL (EUROPE) LIMITED, Respondents.
+
+
+                                      Served: April 24, 2026
+
+ORDER OF: Erin M. WIRTH, Chief Administrative Law Judge.
+
+                                        INITIAL DECISION 1
+
+I.       INTRODUCTION
+
+         A.     Overview
+
+        This proceeding began on April 27, 2023, when the Federal Maritime Commission
+(“Commission” or “FMC”) issued a notice of filing of complaint and assignment, indicating that
+Bed Bath & Beyond Inc. (“BBBY” or “BBB”), currently known as 20230930-DK-Butterfly-1, 2
+had filed a complaint against Respondents Orient Overseas Container Line Limited and OOCL
+(Europe) Limited (collectively “OOCL”).
+
+         BBBY’s amended complaint alleges five violations:
+     •   Count I: 46 U.S.C. § 41102(c), unreasonable practices for failing to meet service
+         commitments (space allocation and premium pricing overcharges);
+     •   Count II: 46 U.S.C. § 41102(c) and 46 C.F.R. § 545.5, unreasonable practices for
+         detention and demurrage;
+     •   Count III: 46 U.S.C. § 41104(a)(2), service not in accordance with service contract;
+     •   Count IV: 46 U.S.C. § 41104(a)(3) (now § 41102(d)), retaliation; and
+     •   Count V: 46 U.S.C. § 41104(a)(10), refusal to deal.
+
+
+1
+  This initial decision will become the decision of the Commission in the absence of review by
+the Commission. Any party may file exceptions to this decision within twenty-two days of the
+date of service. 46 C.F.R. § 502.227.
+2
+ Bed Bath and Beyond Inc. filed a change of name certificate with the New York State
+Division of Corporations, State Records on September 21, 2023, changing its corporate name to
+20230930-DK-Butterfly-1, Inc. Amended Complaint at 1 n.1.
+
+                                                                                     Public Version
+
+
+        OOCL contends that BBBY’s amended complaint consists of two general categories:
+complaints about service and prices under its service contracts, and complaints about the
+charges it incurred for demurrage and detention. OOCL argues that none of the claims have
+“any legal merit, because the Commission has no authority to adjudicate these claims; nor do
+any of the claims have factual merit, because OOCL neither breached its contractual obligations
+to BBBY nor acted unreasonably.” Opposition at 1.
+
+        BBBY was one of the largest home furnishing store chains in the United States before
+declaring bankruptcy in 2023. OOCL is one of the largest ocean common carriers. BBBY and
+OOCL entered into a series of service contracts agreeing to minimum quantity commitments
+(“MQC”) and prices. A service contract is a reciprocal commitment between shipper and carrier
+that ensures the carrier receives a certain volume of cargo and the shipper receives
+commitments to certain space or rates. 46 U.S.C. § 40102(21). This provides stability to the
+market. In contrast, spot market rates can fluctuate significantly. When the spot rates rose
+during the COVID pandemic, BBBY alleges that OOCL failed to meet its space and price
+commitments and instead provided space to the highest bidder, what BBBY describes as price
+gouging. 3 Moreover, BBBY alleges it was charged excessive detention and demurrage fees, that
+OOCL refused to deal, and that OOCL retaliated against it.
+
+        “A carrier must establish a reasonable plan in order to cope with periods of congestion
+and must fill its capacity in a reasonable and just manner when such periods occur.” Levantino
+& Sons v. Prudential-Grace Lines, 18 F.M.C. 89, 104 (ALJ Aug. 17, 1973) (admin. final Dec.
+16, 1974). 4 This initial decision relies on long-standing Commission precedent, which holds that
+where the demand for space exceeds the supply, a common carrier must equitably apportion its
+available space among shippers. Boston Wool Trade Assoc. v. Merchants Miners Transp. Co.,
+Docket No. 11, 1 U.S.S.B. 32, 34 (USSB Dec. 13, 1921) (“apportioned as equitably as
+possible,” not just to increase revenue); Grace Line Inc. v. FMB, 280 F.2d 790, 793 (2d Cir.
+1960) (“if a shipper qualified, he may not be denied space at the pleasure, and for the profit, of
+the carrier”); California Shipping Line, Inc. v. Yangming Marine Transp. Corp., Docket No. 88-
+15, 1990 WL 427466, at *32 (FMC Oct. 19, 1990) (“carriers lacking sufficient space must pro-
+rate their available space among contract shippers”). Moreover, an efficient and economic
+transportation system “‘is one in which all parties adhere to agreed-upon responsibilities.’”
+Bakerly, LLC v. Seafrigo USA, Inc., Docket No. 22-17, 2026 WL 254020, at *18 (FMC Jan. 22,
+2026) (attorney fees order) (quoting Edaf Antillas, Inc. v. Crowley Caribbean Logistics, Docket
+No. 14-04, 2016 WL 5110081, *13 (FMC Sept. 14, 2016)).
+
+        As explained below, the evidence shows that OOCL violated section 41102(c) with
+regard to its service commitments as alleged in Count I and violated the filed rate doctrine,
+section 41104(a)(2), as alleged in Count III. Moreover, the evidence shows that OOCL refused
+to deal as alleged in Count V and retaliated against BBBY as alleged in Count IV. However, the
+
+
+
+3
+ See Kimberly Winbush, Litigation of Prohibitions Against Price Gouging, 161 Am. Jur. Trials
+551 at § 2 (2019) (noting that there are no federal price gouging laws).
+4
+    Historical F.M.C. cases and recent F.M.C.2d cases are available at www.fmc.gov/proceedings.
+
+
+                                                    2
+
+                                                                                     Public Version
+
+
+evidence does not support a finding that OOCL violated section 41102(c) or 46 C.F.R. § 545.5
+with regard to detention and demurrage charges as alleged in Count II.
+
+         BBBY seeks damages of $165,355,872.69. OOCL objects to BBBY’s damages
+calculations and some of OOCL’s concerns are well-founded. Reparations are awarded for
+failure to meet the initial space and price commitments. No additional reparations are awarded
+for service not in accordance with service contracts or refusal to deal. However, additional
+reparations are awarded due to the finding of retaliation. The total amount of reparations
+awarded is $45,600,599.25.

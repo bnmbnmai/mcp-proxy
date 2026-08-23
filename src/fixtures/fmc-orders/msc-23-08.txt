@@ -1,0 +1,162 @@
+FEDERAL MARITIME COMMISSION
+
+
+ MSC MEDITERRANEAN SHIPPING
+ COMPANY S.A. – POSSIBLE
+ VIOLATIONS OF THE SHIPPING ACT,            Docket No. 23-08
+ 46 U.S.C. §§ 41102(C), 40501, AND
+ 41104(A)(2)(A)
+
+
+
+                     Served: January 6, 2026
+
+
+BY     THE  COMMISSION:   Rebecca  F.    DYE,
+Daniel B. MAFFEI, Max M. VEKICH, Commissioners.
+
+                    Order on Initial Decision
+
+        In this enforcement matter, the Federal Maritime
+Commission (Commission or FMC) reviews the Initial Decision
+(Decision) of an Administrative Law Judge (ALJ) finding that the
+ocean carrier MSC Mediterranean Shipping Company S.A. (MSC)
+violated 46 U.S.C. §§ 40501 and 41102(c) in connection with
+demurrage and detention charges (late fees). The ALJ determined
+that MSC violated 46 U.S.C. § 41102(c) by billing customs agents
+as “notify parties” for such fees through the “merchant clause” in
+MSC’s bills of lading during the period 2018-2020, even though
+such parties had nothing to do with moving cargo. The ALJ also
+found that MSC knowingly and willfully violated 46 U.S.C. § 40501
+by failing to include in its published tariff from 2021-2023 a
+statement of what such fees were for non-operating reefers (NORs),
+containers that can carry refrigerated cargo but are not being used
+for that purpose. However, the ALJ denied the claim by the FMC’s
+Office of Enforcement (OE) that MSC violated 46 U.S.C.
+MSC - Possible Shipping Act Violations                                 2
+
+§ 41102(c) by charging such fees for NORs at the higher rate
+applicable to operating reefers, rather than as dry containers. The
+ALJ concluded that even though such overcharges had occurred
+more than 2,600 times in 2021, they were simply errors and so did
+not constitute a prohibited “practice” of MSC under the statute.
+MSC and OE each filed exceptions to some of these determinations.
+As discussed below, we affirm the ALJ’s Decision in some respects,
+while reversing or modifying it in others.
+
+        First, the ALJ determined that OE proved MSC had violated
+section 41102(c) 13 times by billing notify parties for demurrage
+and detention through the merchant clause during 2018-2020. The
+ALJ imposed civil penalties of $5,000 for each violation, or $65,000
+total, and ordered MSC to cease and desist from such conduct.
+Neither side objects to the determination of those violations, and
+neither objects to the cease-and-desist order. OE argues that the
+record supports a finding that the violations were knowing and
+willful, calling for a higher penalty. But in light of the general nature
+of regulation regarding such billing at the relevant time, we affirm
+the finding of a non-knowing and willful violation and the remedies
+imposed by the ALJ.
+
+         The ALJ also found that MSC had violated 46 U.S.C.
+§ 40501 by failing to include in its published tariff a statement of
+what its demurrage and detention charges were for NORs.
+Specifically, from the beginning of 2021 until March 2023, MSC’s
+tariff had no clear statement of its rate or related rules for such late
+fees, even though MSC maintains that its policy was to bill such
+charges at the lower dry container rates. That failure continued even
+after MSC’s September 2021 correction of an internal billing system
+that it said had led to the related overcharges, and even after MSC
+stated in March 2022 that it would revise its tariff to state what the
+NOR charges were, in response to FMC concerns. Since that is a
+continuing violation, each day it occurred was a separate violation
+under 46 U.S.C. § 41107(a). The ALJ also found that the violations
+were knowing and willful, given the unexplained delay in correcting
+the tariff. The ALJ imposed a penalty of $20,000 per violation, for
+MSC - Possible Shipping Act Violations                            3
+
+a total of $15,960,000. We affirm the ALJ’s finding of violations,
+the determination that they were knowing and willful from the time
+of MSC’s March 2022 statement onwards, and the daily penalty
+imposed for the period March 2022 to March 2023. But we find
+there is insufficient evidence to support a determination that the
+violations were knowing and willful prior to MSC’s March 2022
+statement, reducing the daily penalty for that earlier period to
+$5,000. These penalty numbers reflect consideration of the nature of
+the violations, as well as mitigating and aggravating factors, under
+46 U.S.C. § 41109(b)(1). The total penalty for these violations is
+$9,460,000.
+
+        The ALJ found that MSC did not violate section 41102(c) by
+charging demurrage and detention for NORs at the higher rate for
+operating reefers during 2021 because those overcharges did not
+constitute a “practice” under the statute. The ALJ concluded that,
+even though such overcharges appeared to have occurred 2,629
+times, constituting only about 23% of MSC’s total U.S. demurrage
+and detention invoices for NORs in the relevant period, the
+company’s policy was to bill NORs as dry containers, and the
+overcharges were errors caused by the internal billing issue noted
+above. OE argues persuasively that so many violations in such a
+limited time must be considered a practice, and prior FMC cases
+finding no violation because of the infrequency of the activity at
+issue have involved far more isolated incidents. Indeed, MSC has
+identified no prior FMC case determining that this high an absolute
+number or percentage of occurrences did not constitute a practice
+under the statute. On balance, the Commission finds that these
+overcharges did violate section 41102(c). Even if mainly an
+unintentional result of a billing system error, the thousands of
+overcharges were too numerous and frequent to be considered
+anything but a practice—they averaged about 10 overcharges per
+day, every day, for more than eight months—and they were
+unreasonable charges for NORs, which do not require the enhanced
+care operating reefers do. However, the record lacks evidence
+sufficient to support a finding that the violations were knowing and
+willful. Considering both the seriousness of the violations and the
+MSC - Possible Shipping Act Violations                              4
+
+burdens they placed on MSC’s customers, as well as mitigating
+factors including MSC’s voluntary refunds and correction of the
+billing system error, we assess a penalty of $5,000 per violation, or
+$13,145,000.
+
+        Finally, in its exceptions, MSC also raises two constitutional
+objections to the imposition of civil penalties here, but neither is
+persuasive. First, MSC argues that the section 40501 penalty could
+only be imposed by an Article III court, in accord with the Seventh
+Amendment’s jury trial guarantee, citing the recent decision in
+Securities and Exchange Commission v. Jarkesy, 603 U.S. 109
+(2024). Second, MSC argues that the ALJ here lacked authority to
+impose any penalty because Commission ALJs enjoy protection
+from removal by the President that is inconsistent with the Take
+Care clause of Article II. As both MSC and the ALJ indicated, such
+constitutional claims cannot be resolved by administrative agencies,
+but we still provide an explanation of why they are insufficient
+grounds for MSC to obtain any relief here. A section 40501 penalty
+is properly assessed by a Commission ALJ because an action to
+enforce that statutory tariff-publication requirement is not in the
+nature of a common law claim and, in any event, the claim falls
+within the public rights exception to the rule recognized in Jarkesy.
+In addition, MSC’s Article II claim regarding the protection from
+removal that applies to Commission ALJs cannot justify any relief
+here, regardless of whether such protection is constitutionally
+permissible, because MSC has failed to meet the well-established
+requirement that it show it was harmed by that protection.
+
+       In sum, we assess civil penalties against MSC for the three
+types of violations described above in the total amount of
+$22,670,000.
+
+interested persons can “[a]ccess MSC’s public tariff via the
+Descartes database, which includes all rates and rules that may apply
+to shipments to or from the United States, in accordance with FMC
+requirements.”        MSC         Applicable         Rates      Tool,
+https://www.msc.com/en/local-information/america/united-
+states#ApplicableRatesTool (last visited Dec. 1, 2025); see Decision
+at 5. Descartes Systems Group states that it has “the industry’s most
+complete offering of cloud-based logistics and supply-chain
+management solutions,” including “import duty and tariff data
+covering 175+ countries, with [Harmonized Tariff Schedule] codes,
+duty rates, tariffs, rulings, [Free Trade Agreements], and
+regulations.” Descartes, https://www.descartes.com/home; Duty
+and        Tariff      Data        Solutions,        available     at
+https://www.descartes.com/solutions/global-trade-
+intellig
