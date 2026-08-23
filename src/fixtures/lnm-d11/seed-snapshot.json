@@ -1,0 +1,127 @@
+{
+  "ok": true,
+  "product": "uscg-d11-lnm",
+  "status": "ok",
+  "reason": null,
+  "fetchedAt": "2026-08-18T00:00:00.000Z",
+  "asOf": "2026-08-12",
+  "week": "32-2026",
+  "year": 2026,
+  "edition": "32-2026",
+  "district": "11",
+  "districtName": "Southwest",
+  "sources": {
+    "listing": "https://www.navcen.uscg.gov/local-notices-to-mariners?district=11+0&subdistrict=n",
+    "pdfPattern": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11{WW}{YYYY}.pdf",
+    "pdfUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11322026.pdf"
+  },
+  "editions": [
+    {
+      "week": 26,
+      "year": 2026,
+      "edition": "26-2026",
+      "href": "/sites/default/files/pdf/lnms/lnm11262026.pdf",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11262026.pdf"
+    },
+    {
+      "week": 31,
+      "year": 2026,
+      "edition": "31-2026",
+      "href": "/sites/default/files/pdf/lnms/lnm11312026.pdf",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11312026.pdf"
+    },
+    {
+      "week": 32,
+      "year": 2026,
+      "edition": "32-2026",
+      "href": "/sites/default/files/pdf/lnms/lnm11322026.pdf",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11322026.pdf"
+    }
+  ],
+  "notices": [
+    {
+      "week": "32-2026",
+      "section": "Additional MSI Categories",
+      "waterway": "Alameda Naval Air Station Channel",
+      "text": "San Francisco Oakland Bay Bridge West Miscellaneous The U.S. Coast Guard is conducting a Waterways Analysis and Management System (WAMS) study of NAS Alameda. The study Crossing - Alameda Naval Air Station focuses on the area’s aids to navigation system, waterborne commerce, marine casualty information, port/harbor resources, Channel/General/Miscellaneous emergency response plans, routine and emergency communication capabilities, and future development projects. This study seeks to obtain data on the effectiveness of the system of Aids to Navigation, as well as other waterway safety concerns. Any interested company or individual wishing to provide comments or participate in a user survey may do so via link at: https://www.research.net/r/LTR8FBC or contact LTJG Robert Black at d11-smb-d11-lnm@uscg.mil or via phone at (571)-610-6866 by August 18, 2026.",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11322026.pdf"
+    },
+    {
+      "week": "32-2026",
+      "section": "Private Discrepancies",
+      "waterway": "Americas Cup Harbor",
+      "text": "Shelter Island East Shoal Light LLNR 1654 LT IMCH PA",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11322026.pdf"
+    },
+    {
+      "week": "32-2026",
+      "section": "Private Discrepancies",
+      "waterway": "Americas Cup Harbor",
+      "text": "Americas Cup Harbor Daybeacon 4 LLNR 1670 LT IMCH PA",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11322026.pdf"
+    },
+    {
+      "week": "32-2026",
+      "section": "Additional MSI Categories",
+      "waterway": "Approaches To San Diego Bay",
+      "text": "Sector San Diego, Submerged Lands Act Miscellaneous Saronic Technologies will be conducting Autonomous Service Vehicle (AUV) operations from 1 June, 2026 until 31 December, 2026 (SLA) - Approaches To San Diego in the vicinity of Buoy 1 SD at coordinates: Area 1: 32.64657N -117.21516W, 32.64660N -117.17565W, 32.57351N -117.17418W, Bay/General/Miscellaneous 32.57344N -117.21378W Area 2: 32.68592N -117.31755W, 32.61269N -117.31595W, 32.61325N -117.27634W, 32.68648N -117.27800W. Support vessel will be on scene and monitoring VHF-FM Chan. 16. Mariners are requested to transit the area with caution. For more details or comments, contact Oran Feiner at 512-784-4059",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11322026.pdf"
+    },
+    {
+      "week": "32-2026",
+      "section": "Federal Discrepancies",
+      "waterway": "Berkeley",
+      "text": "Berkeley Marina Channel Light 2 LLNR 5430 LT EXT FD",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11322026.pdf"
+    },
+    {
+      "week": "32-2026",
+      "section": "Federal Discrepancies",
+      "waterway": "Berkeley",
+      "text": "Berkeley Reef Light 1 LLNR 5475 LT EXT FD",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11322026.pdf"
+    },
+    {
+      "week": "32-2026",
+      "section": "Federal Discrepancies",
+      "waterway": "Bodega Harbor",
+      "text": "Bodega Harbor Channel Light 6 LLNR 7810 STRUCT DMGD/TRLB FD",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11322026.pdf"
+    },
+    {
+      "week": "32-2026",
+      "section": "Federal Discrepancies",
+      "waterway": "Bodega Harbor",
+      "text": "Bodega Harbor Channel Daybeacon 7 LLNR 7815 STRUCT DEST/TRLB FD",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11322026.pdf"
+    },
+    {
+      "week": "32-2026",
+      "section": "Federal Discrepancies",
+      "waterway": "Bodega Harbor",
+      "text": "Bodega Harbor Channel Daybeacon 38 LLNR 7975 STRUCT DEST/TRLB FD",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11322026.pdf"
+    },
+    {
+      "week": "32-2026",
+      "section": "Federal Discrepancies",
+      "waterway": "Bodega Harbor",
+      "text": "Bodega Harbor Channel Daybeacon LLNR 8015 STRUCT DEST/TRLB FD",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11322026.pdf"
+    },
+    {
+      "week": "32-2026",
+      "section": "Federal Discrepancies",
+      "waterway": "Carquinez Strait",
+      "text": "Carquinez Strait Light 23 LLNR 6240 LT EXT FD",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11322026.pdf"
+    },
+    {
+      "week": "32-2026",
+      "section": "Private Discrepancies",
+      "waterway": "Carquinez Strait",
+      "text": "Amorco Wharf East Lights LLNR 6281 LT EXT PA",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11322026.pdf"
+    }
+  ]
+}
