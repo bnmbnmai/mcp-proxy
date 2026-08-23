@@ -673,7 +673,7 @@ function readNamedFile(dir: string, names: string[]): string | null {
 
 function safePdfName(pdfId: string, id: string): string {
   const name = pdfId.endsWith(".pdf") ? pdfId : `${id}.pdf`;
-  return name.replace(/[^\w.\-]+/g, "_");
+  return `${id}__${name.replace(/[^\w.\-]+/g, "_")}`;
 }
 
 async function loadOfficialListings(dir: string): Promise<{ listed: DoeNovListing[]; listedCount: number }> {
