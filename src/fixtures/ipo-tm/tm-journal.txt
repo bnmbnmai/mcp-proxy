@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<tm-journal>
+  <notice>Trade Marks Journal XML is not this SKU.</notice>
+</tm-journal>
