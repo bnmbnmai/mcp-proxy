@@ -43,6 +43,7 @@ build/fsis-hmsa.*
 build/atsdr-hc.*
 build/waterboards-acl.*
 build/doe-nov.*
+build/nop-ad.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
@@ -83,3 +84,4 @@ data/fsis-hmsa/
 data/atsdr-hc/
 data/waterboards-acl/
 data/doe-nov/
+data/nop-ad/
