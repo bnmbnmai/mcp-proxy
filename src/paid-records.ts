@@ -1,12 +1,32 @@
 /**
- * Deterministic paid-body normalize for /ticks, /form-483, /warning-letters.
+ * Deterministic paid-body normalize for live official doors.
  * Reads OUR cache only. Does not call official APIs or an LLM.
  * Existing paid keys stay; records[] is added alongside for agent diffs.
+ * Shape is always {id, date, firm, url, type} — same as the first-pass /ticks /form-483 /warning-letters product.
  */
 
 export const TICKS_CACHE_SOURCE = "idaho-hay-feeder-ticks cache";
 export const FORM_483_TYPE = "form-483";
 export const WARNING_LETTER_TYPE = "warning-letter";
+export const CMA_CA98_TYPE = "cma-ca98";
+export const ICO_MPN_TYPE = "ico-mpn";
+export const FTC_WL_TYPE = "ftc-wl";
+export const UNTITLED_LETTER_TYPE = "untitled-letter";
+export const AIR_LETTER_TYPE = "air-letter";
+export const IMPORT_ALERT_TYPE = "import-alert";
+export const CFTC_ORDER_TYPE = "cftc-order";
+export const FIFRA_ORDER_TYPE = "fifra-order";
+
+export const CMA_CA98_SOURCE =
+  "https://www.gov.uk/cma-cases/financial-services-sector-suspected-anti-competitive-practices";
+export const ICO_MPN_SOURCE = "https://ico.org.uk/action-weve-taken/enforcement/?type=monetary-penalties";
+export const FTC_WL_SOURCE = "https://www.ftc.gov/legal-library/browse/warning-letters";
+export const UNTITLED_LETTER_SOURCE =
+  "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/issuance-untitled-letters";
+export const AIR_LETTER_SOURCE = "https://www.aphis.usda.gov/confirmation-letters";
+export const IMPORT_ALERT_SOURCE = "https://www.accessdata.fda.gov/cms_ia/ialist.html";
+export const CFTC_ORDER_SOURCE = "https://www.cftc.gov/LawRegulation/Enforcement/EnforcementActions/index.htm";
+export const FIFRA_ORDER_SOURCE = "https://yosemite.epa.gov/oa/rhc/epaadmin.nsf";
 
 export type PaidRecord = {
   id: string;
@@ -61,6 +81,16 @@ function firstPlausibleDate(...values: unknown[]): string | null {
     if (isPlausibleDate(day)) return day;
   }
   return null;
+}
+
+/** cms_ia datePublished is MM/DD/YYYY. Map that; do not invent a date. */
+export function isoFromOfficialDate(raw: unknown): string | null {
+  const iso = firstPlausibleDate(raw);
+  if (iso) return iso;
+  const mdy = str(raw).match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/);
+  if (!mdy) return null;
+  const day = `${mdy[3]}-${mdy[1].padStart(2, "0")}-${mdy[2].padStart(2, "0")}`;
+  return isPlausibleDate(day) ? day : null;
 }
 
 export function sortRecords(rows: PaidRecord[]): PaidRecord[] {
@@ -139,8 +169,69 @@ export function normalizeWarningLetterRecords(payload: { letters?: unknown[] }):
 
 function listingSource(payload: { sources?: unknown }, fallback: string): string {
   const sources = asObject(payload.sources);
-  const listing = str(sources?.listing);
+  const listing =
+    str(sources?.listing) || str(sources?.hub) || str(sources?.cder) || str(sources?.catalog);
   return listing || fallback;
+}
+
+/**
+ * First-slice card doors share id / date / institution|firm / sourceUrl / body.
+ * Empty-body cards stay in the official cache and are not sold as records[].
+ */
+export function normalizeCardRecords(
+  payload: { cards?: unknown[] },
+  type: string,
+): PaidRecord[] {
+  const out: PaidRecord[] = [];
+  for (const row of asList(payload.cards)) {
+    if (!str(row.body)) continue;
+    const id = str(row.id) || str(row.docket) || str(row.mediaId);
+    if (!id) continue;
+    out.push({
+      id,
+      date: firstPlausibleDate(row.date, row.issuedOn, row.publishedOn),
+      firm: str(row.firm) || str(row.institution) || id,
+      url: str(row.sourceUrl),
+      type,
+    });
+  }
+  return sortRecords(dedupeById(out));
+}
+
+export function normalizeImportAlertRecords(payload: { ticks?: unknown[] }): PaidRecord[] {
+  const out: PaidRecord[] = [];
+  for (const row of asList(payload.ticks)) {
+    const alertNumber = str(row.alertNumber);
+    const firm = str(row.firm);
+    if (!alertNumber || !firm) continue;
+    const list = str(row.list);
+    const product = str(row.product);
+    const id = [alertNumber, list, firm, product].filter(Boolean).join(":");
+    out.push({
+      id,
+      date: isoFromOfficialDate(row.datePublished) ?? firstPlausibleDate(row.asOf),
+      firm,
+      url: str(row.sourceUrl),
+      type: IMPORT_ALERT_TYPE,
+    });
+  }
+  return sortRecords(dedupeById(out));
+}
+
+function paidCardBody<T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown }>(
+  payload: T,
+  type: string,
+  fallbackSource: string,
+): T & PaidEnvelope {
+  const records = normalizeCardRecords(payload, type);
+  return {
+    ...payload,
+    asOf: firstPlausibleDate(payload.asOf) ?? latestRecordDate(records),
+    fetchedAt: honestFetchedAt(payload.fetchedAt),
+    source: listingSource(payload, fallbackSource),
+    records,
+    recordCount: records.length,
+  };
 }
 
 export function paidTicksBody<T extends { ticks?: unknown[]; fetchedAt?: unknown; sources?: unknown }>(
@@ -186,6 +277,62 @@ export function paidWarningLettersBody<
       payload,
       "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/warning-letters",
     ),
+    records,
+    recordCount: records.length,
+  };
+}
+
+export function paidCmaCa98Body<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, CMA_CA98_TYPE, CMA_CA98_SOURCE);
+}
+
+export function paidIcoMpnBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, ICO_MPN_TYPE, ICO_MPN_SOURCE);
+}
+
+export function paidFtcWlBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, FTC_WL_TYPE, FTC_WL_SOURCE);
+}
+
+export function paidUntitledLettersBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, UNTITLED_LETTER_TYPE, UNTITLED_LETTER_SOURCE);
+}
+
+export function paidAirLettersBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, AIR_LETTER_TYPE, AIR_LETTER_SOURCE);
+}
+
+export function paidCftcOrdersBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, CFTC_ORDER_TYPE, CFTC_ORDER_SOURCE);
+}
+
+export function paidFifraOrdersBody<
+  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidCardBody(payload, FIFRA_ORDER_TYPE, FIFRA_ORDER_SOURCE);
+}
+
+export function paidImportAlertsBody<
+  T extends { ticks?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  const records = normalizeImportAlertRecords(payload);
+  return {
+    ...payload,
+    asOf: firstPlausibleDate(payload.asOf) ?? latestRecordDate(records),
+    fetchedAt: honestFetchedAt(payload.fetchedAt),
+    source: listingSource(payload, IMPORT_ALERT_SOURCE),
     records,
     recordCount: records.length,
   };

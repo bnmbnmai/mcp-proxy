@@ -874,10 +874,18 @@ async function main(): Promise<void> {
       const paidBody = (await paid.json()) as {
         product: string;
         ticks: { firm: string; list: string }[];
+        records?: { id: string; date: string | null; firm: string; url: string; type: string }[];
+        recordCount?: number;
+        asOf?: string;
       };
       assert.equal(paidBody.product, "fda-import-alerts");
       assert.equal(paidBody.ticks[0]?.firm, "Clover Valley Meat Co.");
       assert.equal(paidBody.ticks[0]?.list, "red");
+      assert.ok((paidBody.recordCount ?? 0) > 0, "empty records[] is a fail");
+      assert.equal(paidBody.asOf, "2026-08-17");
+      assert.equal(paidBody.records?.[0]?.firm, "Clover Valley Meat Co.");
+      assert.equal(paidBody.records?.[0]?.type, "import-alert");
+      assert.equal(paidBody.records?.[0]?.date, "2012-06-08");
     },
   );
 
@@ -1502,6 +1510,8 @@ async function main(): Promise<void> {
       const paidBody = (await paid.json()) as {
         product: string;
         cards: { firm: string; date: string; product: string; body: string; cites: string[]; said: string }[];
+        records?: { id: string; date: string | null; firm: string; url: string; type: string }[];
+        recordCount?: number;
       };
       assert.equal(paidBody.product, "fda-untitled-letter-bodies");
       assert.equal(paidBody.cards[0]?.firm, "Bayer HealthCare Pharmaceuticals, Inc.");
@@ -1510,6 +1520,10 @@ async function main(): Promise<void> {
       assert.ok(paidBody.cards[0]?.body.includes("Office of Prescription Drug Promotion"));
       assert.ok(paidBody.cards[0]?.said.includes("false or misleading"));
       assert.ok(paidBody.cards[0]?.cites.includes("FD&C Act"));
+      assert.ok((paidBody.recordCount ?? 0) > 0, "empty records[] is a fail");
+      assert.equal(paidBody.records?.[0]?.id, "bayer-healthcare-pharmaceuticals-inc-192241");
+      assert.equal(paidBody.records?.[0]?.type, "untitled-letter");
+      assert.equal(paidBody.records?.[0]?.firm, "Bayer HealthCare Pharmaceuticals, Inc.");
     },
   );
 
@@ -3945,6 +3959,9 @@ async function main(): Promise<void> {
       const paidBody = (await paid.json()) as {
         product: string;
         cards: { institution: string; date: string; docket: string; body: string }[];
+        records?: { id: string; date: string | null; firm: string; url: string; type: string }[];
+        recordCount?: number;
+        asOf?: string;
       };
       assert.equal(paidBody.product, "cma-ca98-infringement-decision-bodies");
       assert.equal(paidBody.cards[0]?.institution, "Citigroup Global Markets Limited / Deutsche Bank Aktiengesellschaft");
@@ -3953,6 +3970,11 @@ async function main(): Promise<void> {
       assert.ok(paidBody.cards[0]?.body.includes("Citi-DB Relevant Period"));
       assert.ok(paidBody.cards[0]?.body.includes("gilt auctions"));
       assert.ok(paidBody.cards[0]?.body.includes("commercially sensitive information"));
+      assert.ok((paidBody.recordCount ?? 0) > 0, "empty records[] is a fail");
+      assert.equal(paidBody.asOf, "2025-02-21");
+      assert.equal(paidBody.records?.[0]?.id, "50601-citi-db");
+      assert.equal(paidBody.records?.[0]?.type, "cma-ca98");
+      assert.equal(paidBody.records?.[0]?.firm, "Citigroup Global Markets Limited / Deutsche Bank Aktiengesellschaft");
     },
   );
 

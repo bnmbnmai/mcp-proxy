@@ -22,6 +22,8 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 - Required seed: Reddit, Inc. — 23 Feb 2026 — https://ico.org.uk/media2/hrlmvj14/reddit-mpn-20260223.pdf
 - License: **OGL v3.0** (ICO website text). Commercial reuse allowed with attribution: Information Commissioner's Office, licensed under the Open Government Licence. Images/logos are not licensed.
 
+Paid body keeps the existing `cards[]` fields. Alongside those keys the paid JSON adds `records[]` (`id`, `date`, `firm`, `url`, `type=ico-mpn`), `recordCount`, honest `asOf` / `fetchedAt`, and `source` (the official ICO listing). A repeat buyer diffs `asOf` + record ids.
+
 Free manifest is institution / docket / date / sourceUrl only. Needles such as `548 Market Street`, `17,573,750`, and `26 September 2025` stay out of unpaid responses.
 
 `data/ico-mpn/` is gitignored. Live-apply on apollo is out of scope for this branch.

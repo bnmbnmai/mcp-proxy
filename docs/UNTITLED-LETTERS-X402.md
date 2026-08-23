@@ -20,7 +20,9 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 - Hub: https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/issuance-untitled-letters
 - Sold unit: `https://www.fda.gov/media/{id}/download` — per-letter Untitled Letter PDF only
 
-Paid body fields: `id`, `mediaId`, `firm`, `date`, `product`, `office`, `center`, `sourceUrl`, `body`, `cites`, `said`. `body` is official `pdftotext` letter text. `cites` are 21 U.S.C. / 21 CFR / FD&C Act. Promotional-material, close-out, and warning-letter HTML are skipped.
+Paid body keeps the existing `cards[]` fields: `id`, `mediaId`, `firm`, `date`, `product`, `office`, `center`, `sourceUrl`, `body`, `cites`, `said`. `body` is official `pdftotext` letter text. `cites` are 21 U.S.C. / 21 CFR / FD&C Act. Promotional-material, close-out, and warning-letter HTML are skipped.
+
+Alongside those keys the paid JSON adds `records[]` (`id`, `date`, `firm`, `url`, `type=untitled-letter`), `recordCount`, honest `asOf` / `fetchedAt`, and `source` (the official untitled-letter hub). A repeat buyer diffs `asOf` + record ids.
 
 `data/untitled-letters/` is gitignored. Letter bodies do not belong in git. The live cache lives on the media-box worker.
 
