@@ -22,7 +22,9 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 - License: **CopA Art. 5 para. 1 let. c** (official reports; Swissmedic FAQ + ZL000_00_030e). Attribute Swissmedic.
 - Not a drug advertisement (TPA Art. 31 stays off copy).
 
-Paid body fields: `id`, `name`, `inn`, `ma`, `date`, `holder`, `sourceUrl`, `body`. `body` is the official `pdftotext` evaluation narrative with the appended Information for healthcare professionals omitted.
+Paid body keeps the existing `cards[]` fields: `id`, `name`, `inn`, `ma`, `date`, `holder`, `sourceUrl`, `body`. `body` is the official `pdftotext` evaluation narrative with the appended Information for healthcare professionals omitted.
+
+Alongside those keys the paid JSON adds `records[]` (`id`, `date`, `firm` from official `holder`, `url`, `type=swisspar`), `recordCount`, honest `asOf` / `fetchedAt`, and `source` (the official SwissPAR index). A repeat buyer diffs `asOf` + record ids.
 
 `data/swisspar/` is gitignored. Evaluation bodies get lost on a dead VM — do not harvest the whole A–Z index here. Full fill waits for apollo.
 

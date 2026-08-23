@@ -1624,12 +1624,18 @@ async function main(): Promise<void> {
       const paidBody = (await paid.json()) as {
         product: string;
         cards: { firm: string; date: string; body: string; observations: { cite: string }[] }[];
+        records?: { id: string; date: string | null; firm: string; url: string; type: string }[];
+        recordCount?: number;
       };
       assert.equal(paidBody.product, "aphis-awa-inspection-observation-text");
       assert.equal(paidBody.cards[0]?.firm, "Utah State University");
       assert.equal(paidBody.cards[0]?.date, "2026-07-07");
       assert.ok(paidBody.cards[0]?.body.includes("naked mole rats"));
       assert.ok(paidBody.cards[0]?.observations.some((o) => o.cite === "2.31(c)(7)"));
+      assert.ok((paidBody.recordCount ?? 0) > 0, "empty records[] is a fail");
+      assert.equal(paidBody.records?.[0]?.id, "utah-state-university-068SJ00001KXrsj");
+      assert.equal(paidBody.records?.[0]?.type, "awa");
+      assert.equal(paidBody.records?.[0]?.firm, "Utah State University");
     },
   );
 
@@ -1728,7 +1734,9 @@ async function main(): Promise<void> {
       assert.equal(paid.status, 200);
       const paidBody = (await paid.json()) as {
         product: string;
-        cards: { name: string; date: string; ma: string; body: string }[];
+        cards: { name: string; date: string; ma: string; body: string; holder?: string }[];
+        records?: { id: string; date: string | null; firm: string; url: string; type: string }[];
+        recordCount?: number;
       };
       assert.equal(paidBody.product, "swisspar-first-auth");
       assert.equal(paidBody.cards[0]?.name, "Rhapsido");
@@ -1736,6 +1744,10 @@ async function main(): Promise<void> {
       assert.equal(paidBody.cards[0]?.ma, "70227");
       assert.ok(paidBody.cards[0]?.body.includes("benefit/risk ratio for remibrutinib"));
       assert.ok(paidBody.cards[0]?.body.includes("REMIX-1"));
+      assert.ok((paidBody.recordCount ?? 0) > 0, "empty records[] is a fail");
+      assert.equal(paidBody.records?.[0]?.id, "rhapsido-70227");
+      assert.equal(paidBody.records?.[0]?.type, "swisspar");
+      assert.equal(paidBody.records?.[0]?.firm, "Novartis Pharma Schweiz AG");
     },
   );
 
@@ -1833,6 +1845,8 @@ async function main(): Promise<void> {
       const paidBody = (await paid.json()) as {
         product: string;
         cards: { substance: string; date: string; mediaId: string; body: string }[];
+        records?: { id: string; date: string | null; firm: string; url: string; type: string }[];
+        recordCount?: number;
       };
       assert.equal(paidBody.product, "fda-pcac-503a-memos");
       assert.equal(paidBody.cards[0]?.substance, "Emideltide");
@@ -1840,6 +1854,10 @@ async function main(): Promise<void> {
       assert.equal(paidBody.cards[0]?.mediaId, "193344");
       assert.ok(paidBody.cards[0]?.body.includes("weighs against emideltide"));
       assert.ok(paidBody.cards[0]?.body.includes("we propose not adding"));
+      assert.ok((paidBody.recordCount ?? 0) > 0, "empty records[] is a fail");
+      assert.equal(paidBody.records?.[0]?.id, "emideltide-193344");
+      assert.equal(paidBody.records?.[0]?.type, "pcac");
+      assert.equal(paidBody.records?.[0]?.firm, "Emideltide");
     },
   );
 
@@ -2056,12 +2074,18 @@ async function main(): Promise<void> {
       const paidBody = (await paid.json()) as {
         product: string;
         cards: { firm: string; date: string; pdfId: string; fileNo: string; body: string }[];
+        records?: { id: string; date: string | null; firm: string; url: string; type: string }[];
+        recordCount?: number;
       };
       assert.equal(paidBody.product, "cfpb-consent-order-bodies");
       assert.equal(paidBody.cards[0]?.firm, "American Honda Finance Corporation");
       assert.equal(paidBody.cards[0]?.date, "2025-01-17");
       assert.equal(paidBody.cards[0]?.pdfId, "cfpb_american-honda-finance-corp-consent-order_2025-01");
       assert.equal(paidBody.cards[0]?.fileNo, "2025-CFPB-0003");
+      assert.ok((paidBody.recordCount ?? 0) > 0, "empty records[] is a fail");
+      assert.equal(paidBody.records?.[0]?.id, "american-honda-finance-corporation-2025");
+      assert.equal(paidBody.records?.[0]?.type, "cfpb-order");
+      assert.equal(paidBody.records?.[0]?.firm, "American Honda Finance Corporation");
       assert.ok(paidBody.cards[0]?.body.includes("nearly 35,000"));
       assert.ok(paidBody.cards[0]?.body.includes("Appendix E"));
       assert.ok(paidBody.cards[0]?.body.includes("Furnisher Rule"));
@@ -2904,6 +2928,8 @@ async function main(): Promise<void> {
       const paidBody = (await paid.json()) as {
         product: string;
         cards: { institution: string; date: string; docket: string; pdfId: string; body: string }[];
+        records?: { id: string; date: string | null; firm: string; url: string; type: string }[];
+        recordCount?: number;
       };
       assert.equal(paidBody.product, "ofac-institution-order-bodies");
       assert.equal(paidBody.cards[0]?.institution, "Rice Lake Weighing Systems, Inc.");
@@ -2912,6 +2938,10 @@ async function main(): Promise<void> {
       assert.ok(paidBody.cards[0]?.body.includes("Dini Argeo S.r.l."));
       assert.ok(paidBody.cards[0]?.body.includes("Pand Weighing Control"));
       assert.ok(paidBody.cards[0]?.body.includes("Import Export Coordinator"));
+      assert.ok((paidBody.recordCount ?? 0) > 0, "empty records[] is a fail");
+      assert.equal(paidBody.records?.[0]?.id, "936706");
+      assert.equal(paidBody.records?.[0]?.type, "ofac-order");
+      assert.equal(paidBody.records?.[0]?.firm, "Rice Lake Weighing Systems, Inc.");
     },
   );
 
@@ -3371,6 +3401,9 @@ async function main(): Promise<void> {
       const paidBody = (await paid.json()) as {
         product: string;
         cards: { institution: string; date: string; docket: string; body: string }[];
+        records?: { id: string; date: string | null; firm: string; url: string; type: string }[];
+        recordCount?: number;
+        asOf?: string;
       };
       assert.equal(paidBody.product, "fda-denovo-classification-order-bodies");
       assert.equal(paidBody.cards[0]?.institution, "Caristo Diagnostics Ltd.");
@@ -3379,6 +3412,11 @@ async function main(): Promise<void> {
       assert.ok(paidBody.cards[0]?.body.includes("21 CFR 870.2215"));
       assert.ok(paidBody.cards[0]?.body.includes("Doc ID# 04017.08.05"));
       assert.ok(paidBody.cards[0]?.body.includes("adults from 30 to 80 years old"));
+      assert.ok((paidBody.recordCount ?? 0) > 0, "empty records[] is a fail");
+      assert.equal(paidBody.asOf, "2026-07-28");
+      assert.equal(paidBody.records?.[0]?.id, "DEN250042");
+      assert.equal(paidBody.records?.[0]?.type, "denovo-order");
+      assert.equal(paidBody.records?.[0]?.firm, "Caristo Diagnostics Ltd.");
     },
   );
 
@@ -3486,6 +3524,9 @@ async function main(): Promise<void> {
       const paidBody = (await paid.json()) as {
         product: string;
         cards: { institution: string; date: string; docket: string; body: string }[];
+        records?: { id: string; date: string | null; firm: string; url: string; type: string }[];
+        recordCount?: number;
+        asOf?: string;
       };
       assert.equal(paidBody.product, "ttb-institution-oic-bodies");
       assert.equal(paidBody.cards[0]?.institution, "The 21st Amendment Brewery Cafe, LLC");
@@ -3494,6 +3535,11 @@ async function main(): Promise<void> {
       assert.ok(paidBody.cards[0]?.body.includes("$423,681.93"));
       assert.ok(paidBody.cards[0]?.body.includes("1,217,201.38"));
       assert.ok(paidBody.cards[0]?.body.includes("2010 Williams St."));
+      assert.ok((paidBody.recordCount ?? 0) > 0, "empty records[] is a fail");
+      assert.equal(paidBody.asOf, "2026-06-30");
+      assert.equal(paidBody.records?.[0]?.id, "21st-amendment");
+      assert.equal(paidBody.records?.[0]?.type, "ttb-oic");
+      assert.equal(paidBody.records?.[0]?.firm, "The 21st Amendment Brewery Cafe, LLC");
     },
   );
 
@@ -3717,6 +3763,9 @@ async function main(): Promise<void> {
       const paidBody = (await paid.json()) as {
         product: string;
         cards: { institution: string; date: string; docket: string; body: string }[];
+        records?: { id: string; date: string | null; firm: string; url: string; type: string }[];
+        recordCount?: number;
+        asOf?: string;
       };
       assert.equal(paidBody.product, "epa-superfund-rod-bodies");
       assert.equal(paidBody.cards[0]?.institution, "Federated Metals Corp. Whiting Superfund Site");
@@ -3725,6 +3774,11 @@ async function main(): Promise<void> {
       assert.ok(paidBody.cards[0]?.body.includes("1,200 ppm"));
       assert.ok(paidBody.cards[0]?.body.includes("lead dross"));
       assert.ok(paidBody.cards[0]?.body.includes("x-ray florescence"));
+      assert.ok((paidBody.recordCount ?? 0) > 0, "empty records[] is a fail");
+      assert.equal(paidBody.asOf, "2026-08-05");
+      assert.equal(paidBody.records?.[0]?.id, "05-711427");
+      assert.equal(paidBody.records?.[0]?.type, "superfund-rod");
+      assert.equal(paidBody.records?.[0]?.firm, "Federated Metals Corp. Whiting Superfund Site");
     },
   );
 

@@ -22,6 +22,8 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 - Required seed: Caristo Diagnostics Ltd. — DEN250042 — dated 28 Jul 2026 — https://www.accessdata.fda.gov/cdrh_docs/pdf25/DEN250042.pdf
 - License: **17 USC 105**. Attribute FDA.
 
+Paid body keeps the existing `cards[]` fields. Alongside those keys the paid JSON adds `records[]` (`id`, `date`, `firm`, `url`, `type=denovo-order`), `recordCount`, honest `asOf` / `fetchedAt`, and `source` (the official FDA De Novo listing). A repeat buyer diffs `asOf` + record ids.
+
 Free manifest is institution / docket / date / sourceUrl only. Needles such as `21 CFR 870.2215`, `Doc ID# 04017.08.05`, and `adults from 30 to 80 years old` stay out of unpaid responses.
 
 `data/denovo-orders/` is gitignored. Live-apply on apollo stays at the 5 official seeds.
