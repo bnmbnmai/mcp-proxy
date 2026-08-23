@@ -143,6 +143,11 @@ import {
   ACM_BESLUITEN_PATH,
 } from "./acm-besluiten.js";
 import {
+  CCPC_MERGERS_AMOUNT_ATOMIC,
+  CCPC_MERGERS_MANIFEST_PATH,
+  CCPC_MERGERS_PATH,
+} from "./ccpc-mergers.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -304,6 +309,7 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.some((r) => r.endsWith(ICO_MPN_PATH)));
     assert.ok(!wk.resources.some((r) => r.includes(PHMSA_COP_PATH)), "do not list /phmsa-cop until /ico-mpn is live");
     assert.ok(!wk.resources.some((r) => r.includes(ACM_BESLUITEN_PATH)), "do not list /acm-besluiten");
+    assert.ok(!wk.resources.some((r) => r.includes(CCPC_MERGERS_PATH)), "do not list /ccpc-mergers");
     assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)), "do not list /form-483 without a cached body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_PATH)), "do not list /gmp without a cached observation body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_MD_PATH)), "do not list /gmp-md without a cached observation body");
@@ -444,6 +450,8 @@ async function main(): Promise<void> {
     assert.equal(spec.paths[PHMSA_COP_MANIFEST_PATH], undefined, "OpenAPI must not list /phmsa-cop/manifest.json yet");
     assert.equal(spec.paths[ACM_BESLUITEN_PATH], undefined, "OpenAPI must not list /acm-besluiten");
     assert.equal(spec.paths[ACM_BESLUITEN_MANIFEST_PATH], undefined, "OpenAPI must not list /acm-besluiten/manifest.json");
+    assert.equal(spec.paths[CCPC_MERGERS_PATH], undefined, "OpenAPI must not list /ccpc-mergers");
+    assert.equal(spec.paths[CCPC_MERGERS_MANIFEST_PATH], undefined, "OpenAPI must not list /ccpc-mergers/manifest.json");
     assert.equal(spec.paths[FORM_483_PATH], undefined, "no stub /form-483 in OpenAPI without a cached body");
     assert.equal(spec.paths[FORM_483_MANIFEST_PATH], undefined);
     assert.equal(spec.paths[GMP_PATH], undefined, "no stub /gmp in OpenAPI without a cached body");
@@ -490,6 +498,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /ico-mpn"));
     assert.ok(!llmsBody.includes("GET /phmsa-cop"), "do not list /phmsa-cop until /ico-mpn is live");
     assert.ok(!llmsBody.includes("GET /acm-besluiten"), "do not list /acm-besluiten");
+    assert.ok(!llmsBody.includes("GET /ccpc-mergers"), "do not list /ccpc-mergers");
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.includes("GET /gmp-md"));
@@ -536,6 +545,7 @@ async function main(): Promise<void> {
     ]);
     assert.ok(!shop.products.some((p) => p.path === PHMSA_COP_PATH), "do not list /phmsa-cop until /ico-mpn is live");
     assert.ok(!shop.products.some((p) => p.path === ACM_BESLUITEN_PATH), "do not list /acm-besluiten");
+    assert.ok(!shop.products.some((p) => p.path === CCPC_MERGERS_PATH), "do not list /ccpc-mergers");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_MD_PATH));
@@ -3895,20 +3905,24 @@ async function main(): Promise<void> {
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === PHMSA_COP_PATH), false, "do not list /phmsa-cop until /ico-mpn is live");
       assert.equal(shop.products.some((p) => p.path === ACM_BESLUITEN_PATH), false, "do not list /acm-besluiten");
+      assert.equal(shop.products.some((p) => p.path === CCPC_MERGERS_PATH), false, "do not list /ccpc-mergers");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
       assert.ok(!wk.resources.some((r) => r.includes(PHMSA_COP_PATH)), "well-known must not list /phmsa-cop yet");
       assert.ok(!wk.resources.some((r) => r.includes(ACM_BESLUITEN_PATH)), "well-known must not list /acm-besluiten");
+      assert.ok(!wk.resources.some((r) => r.includes(CCPC_MERGERS_PATH)), "well-known must not list /ccpc-mergers");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /phmsa-cop"), "llms.txt must not list /phmsa-cop yet");
       assert.ok(!llms.includes("GET /acm-besluiten"), "llms.txt must not list /acm-besluiten");
+      assert.ok(!llms.includes("GET /ccpc-mergers"), "llms.txt must not list /ccpc-mergers");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[PHMSA_COP_PATH], undefined, "OpenAPI must not list /phmsa-cop yet");
       assert.equal(spec.paths[ACM_BESLUITEN_PATH], undefined, "OpenAPI must not list /acm-besluiten");
+      assert.equal(spec.paths[CCPC_MERGERS_PATH], undefined, "OpenAPI must not list /ccpc-mergers");
 
       const manifest = await fetch(`${base}${PHMSA_COP_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "phmsa-cop free manifest is free");
@@ -4025,17 +4039,21 @@ async function main(): Promise<void> {
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === ACM_BESLUITEN_PATH), false, "do not list /acm-besluiten");
+      assert.equal(shop.products.some((p) => p.path === CCPC_MERGERS_PATH), false, "do not list /ccpc-mergers");
       assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
       assert.equal(shop.products.length, 28);
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
       assert.ok(!wk.resources.some((r) => r.includes(ACM_BESLUITEN_PATH)), "well-known must not list /acm-besluiten");
+      assert.ok(!wk.resources.some((r) => r.includes(CCPC_MERGERS_PATH)), "well-known must not list /ccpc-mergers");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(!llms.includes("GET /acm-besluiten"), "llms.txt must not list /acm-besluiten");
+      assert.ok(!llms.includes("GET /ccpc-mergers"), "llms.txt must not list /ccpc-mergers");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
       assert.equal(spec.paths[ACM_BESLUITEN_PATH], undefined, "OpenAPI must not list /acm-besluiten");
+      assert.equal(spec.paths[CCPC_MERGERS_PATH], undefined, "OpenAPI must not list /ccpc-mergers");
 
       const manifest = await fetch(`${base}${ACM_BESLUITEN_MANIFEST_PATH}`);
       assert.equal(manifest.status, 200, "acm-besluiten free manifest is free");
@@ -4073,6 +4091,131 @@ async function main(): Promise<void> {
       assert.ok(paidBody.cards[0]?.body.includes("lachende tweede"));
       assert.ok(paidBody.cards[0]?.body.includes("Leiderdorp"));
       assert.ok(paidBody.cards[0]?.body.includes("ACM/UIT/679013"));
+    },
+  );
+
+  const ccpcMergersDir = mkdtempSync(join(tmpdir(), "ccpc-mergers-"));
+  writeFileSync(
+    join(ccpcMergersDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "ccpc-institution-merger-determination-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: FRESH_FETCHED_AT,
+      asOf: "2026-03-06",
+      license: "CC-BY 4.0",
+      attribution:
+        "Competition and Consumer Protection Commission (CCPC). Licensed under CC-BY 4.0 (Ireland PSI / Open Data Directive). CCPC logos/images and third-party material reserved — sold body is CCPC-authored TEXT only.",
+      sources: {
+        listing: "https://www.ccpc.ie/enforcement-and-regulation/mergers/find-a-merger-case",
+        pdfHost: "https://assets.ccpc.ie/data/docs/default-source/merger-attachments/",
+      },
+      cards: [
+        {
+          id: "united-hardware-m26006",
+          docket: "united-hardware-m26006",
+          mNumber: "M/26/006",
+          pdfId: "m-26-006-determination.pdf",
+          institution: "United Hardware DAC / Ardentia / Kehoe’s Homevalue t/a Dermot Kehoe Supply & DIY",
+          date: "2026-03-06",
+          title: "Section 21 determination",
+          sourceUrl:
+            "https://assets.ccpc.ie/data/docs/default-source/merger-attachments/m-2026/united-hardware-dermot-kehoe-supply---diy/m-26-006-determination.pdf",
+          body: [
+            "Competition and Consumer Protection Commission",
+            "DETERMINATION OF MERGER NOTIFICATION M/26/006",
+            "Section 21 of the Competition Act 2002",
+            "section 21(2)(a)",
+            "18(1A)",
+            "Share Purchase Agreement",
+            "Vertical Relationship",
+            "40km radius of Kehoe",
+            "Associated Hardware/National Hardware",
+            ...Array.from({ length: 40 }, (_, i) => `${i + 21}. Numbered article ${i + 21} from the official United Hardware CCPC determination body used only to keep this door fixture above the real-determination length floor.`),
+          ].join("\n"),
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      CCPC_MERGERS_DIR: ccpcMergersDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-ccpc-mergers-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${CCPC_MERGERS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /ccpc-mergers must be 402");
+      const body402 = (await unpaid.json()) as {
+        payTo: string;
+        asset: string;
+        resource: string;
+        accepts: { maxAmountRequired?: string; extra?: { name?: string } }[];
+      };
+      assert.equal(body402.resource, CCPC_MERGERS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, CCPC_MERGERS_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
+      const ccpcPr = unpaid.headers.get("payment-required");
+      assert.ok(ccpcPr, "v2 PAYMENT-REQUIRED header");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("18(1A)"));
+      assert.ok(!leak402.includes("Share Purchase"));
+      assert.ok(!leak402.includes("Vertical Relationship"));
+      assert.ok(!leak402.includes("40km radius of Kehoe"));
+      assert.ok(!leak402.includes("Associated Hardware/National Hardware"));
+      assert.ok(!leak402.includes("Numbered article"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === CCPC_MERGERS_PATH), false, "do not list /ccpc-mergers");
+      assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
+      assert.equal(shop.products.length, 28);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(!wk.resources.some((r) => r.includes(CCPC_MERGERS_PATH)), "well-known must not list /ccpc-mergers");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(!llms.includes("GET /ccpc-mergers"), "llms.txt must not list /ccpc-mergers");
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.equal(spec.paths[CCPC_MERGERS_PATH], undefined, "OpenAPI must not list /ccpc-mergers");
+
+      const manifest = await fetch(`${base}${CCPC_MERGERS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "ccpc-mergers free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        cards?: { institution?: string; mNumber?: string; id?: string; body?: string }[];
+        openapi?: string;
+        wellKnown?: string;
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.cards?.[0]?.institution, "United Hardware DAC / Ardentia / Kehoe’s Homevalue t/a Dermot Kehoe Supply & DIY");
+      assert.equal(man.cards?.[0]?.mNumber, "M/26/006");
+      const manBlob = JSON.stringify(man);
+      assert.ok(!manBlob.includes("18(1A)"));
+      assert.ok(!manBlob.includes("Share Purchase"));
+      assert.ok(!manBlob.includes("Vertical Relationship"));
+      assert.ok(!manBlob.includes("40km radius of Kehoe"));
+      assert.ok(!manBlob.includes("Associated Hardware/National Hardware"));
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+
+      const paid = await fetch(`${base}${CCPC_MERGERS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { institution: string; date: string; mNumber: string; body: string }[];
+      };
+      assert.equal(paidBody.product, "ccpc-institution-merger-determination-bodies");
+      assert.equal(paidBody.cards[0]?.institution, "United Hardware DAC / Ardentia / Kehoe’s Homevalue t/a Dermot Kehoe Supply & DIY");
+      assert.equal(paidBody.cards[0]?.date, "2026-03-06");
+      assert.equal(paidBody.cards[0]?.mNumber, "M/26/006");
+      assert.ok(paidBody.cards[0]?.body.includes("18(1A)"));
+      assert.ok(paidBody.cards[0]?.body.includes("Share Purchase Agreement"));
+      assert.ok(paidBody.cards[0]?.body.includes("Vertical Relationship"));
+      assert.ok(paidBody.cards[0]?.body.includes("40km radius of Kehoe"));
+      assert.ok(paidBody.cards[0]?.body.includes("Associated Hardware/National Hardware"));
     },
   );
 
@@ -4577,6 +4720,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("ico-mpn"), true);
   assert.equal(isPublicBazaarSku("phmsa-cop"), false, "do not list /phmsa-cop until /ico-mpn is live");
   assert.equal(isPublicBazaarSku("acm-besluiten"), false, "do not list /acm-besluiten");
+  assert.equal(isPublicBazaarSku("ccpc-mergers"), false, "do not list /ccpc-mergers");
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
@@ -4585,6 +4729,8 @@ async function main(): Promise<void> {
   assert.equal(hiddenPhmsa.extensions, undefined, "/phmsa-cop must not persist to Bazaar until /ico-mpn is live");
   const hiddenAcm = facilitatorPaymentRequirements("https://ticks.bnm.farm/acm-besluiten", "acm-besluiten");
   assert.equal(hiddenAcm.extensions, undefined, "/acm-besluiten must not persist to Bazaar");
+  const hiddenCcpc = facilitatorPaymentRequirements("https://ticks.bnm.farm/ccpc-mergers", "ccpc-mergers");
+  assert.equal(hiddenCcpc.extensions, undefined, "/ccpc-mergers must not persist to Bazaar");
   const hidden = facilitatorPaymentRequirements("https://ticks.bnm.farm/form-483", "form-483");
   assert.equal(hidden.extensions, undefined, "/form-483 must not persist to Bazaar until a real body is cached");
   const hiddenGmp = facilitatorPaymentRequirements("https://ticks.bnm.farm/gmp", "gmp");

@@ -1,0 +1,4 @@
+data.gov.ie
+https://data.gov.ie/dataset/ccpc-mergers
+This is an open-data catalog page and is not CCPC-authored section 21 determination TEXT.
+Do not wrap data.gov.ie.
