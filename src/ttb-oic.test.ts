@@ -172,6 +172,12 @@ async function main(): Promise<void> {
   });
   assert.equal(isRealTtbOicBody(bis.body), false, "BIS /bis-orders is not this SKU");
 
+  const ico = parseTtbOicText(readFx("ico-mpn.txt"), {
+    sourceUrl: "https://ico.org.uk/media2/hrlmvj14/reddit-mpn-20260223.pdf",
+    institution: "Reddit, Inc.",
+  });
+  assert.equal(isRealTtbOicBody(ico.body), false, "ICO /ico-mpn is not this SKU");
+
   const manifest = buildTtbOicManifest({
     ok: true,
     product: "ttb-institution-oic-bodies",

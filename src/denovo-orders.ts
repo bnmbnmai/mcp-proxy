@@ -430,6 +430,9 @@ export function isRealDenovoOrderBody(text: string): boolean {
   if (/RECORD OF DECISION/i.test(text) && /DECLARATION/i.test(text) && /\b(CERCLA|Superfund)\b/i.test(text)) {
     return false;
   }
+  if (/(?:MONETARY )?PENALTY NOTICE/i.test(text) && /Information Commissioner/i.test(text) && /(?:Data Protection Act 2018|section 155)/i.test(text)) {
+    return false;
+  }
   const fda = /Food and Drug Administration|\bFDA\b/i.test(text);
   const cdrh = /Center for Devices and Radiological Health|\bCDRH\b/i.test(text);
   const kind =

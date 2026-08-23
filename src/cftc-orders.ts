@@ -429,6 +429,9 @@ export function isRealCftcOrderBody(text: string): boolean {
   if (/RECORD OF DECISION/i.test(text) && /DECLARATION/i.test(text) && /\b(CERCLA|Superfund)\b/i.test(text)) {
     return false;
   }
+  if (/(?:MONETARY )?PENALTY NOTICE/i.test(text) && /Information Commissioner/i.test(text) && /(?:Data Protection Act 2018|section 155)/i.test(text)) {
+    return false;
+  }
   const cftc = /COMMODITY FUTURES TRADING COMMISSION/i.test(text);
   const kind = /ORDER INSTITUTING PROCEEDINGS/i.test(text) || /CONSENT ORDER/i.test(text);
   const docket = DOCKET_LABEL_RE.test(text);
