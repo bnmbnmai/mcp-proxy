@@ -1,0 +1,4 @@
+{
+  "raw_text": "This Federal Register wrapper is not the official PHMSA enforcement-documents PDF text.",
+  "full_text": "https://www.federalregister.gov/documents/2026/04/21/2026-99999/eqt-production"
+}

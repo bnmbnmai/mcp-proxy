@@ -1,0 +1,425 @@
+U.S. Department                                                        1200 New Jersey Avenue, S.E.
+of Transportation                                                       Washington, D.C. 20590
+Pipeline and Hazardous
+Materials Safety
+Administration
+                                         May 22, 2026
+
+VIA ELECTRONIC MAIL TO: saul.flota@exxonmobil.com
+
+Saul Flota
+Vice President & North America Operations Manager
+ExxonMobil Pipeline Company LLC
+22777 Springwoods Village Parkway
+Spring, Texas, 77389
+
+CPF No. 4-2025-024-NOPV-1
+
+Dear Mr. Flota:
+
+Enclosed please find a Consent Order incorporating the terms of the Consent Agreement between
+the Pipeline and Hazardous Materials Safety Administration (PHMSA) and Denbury Gulf Coast
+Pipelines LLC which was executed on May 8, 2026. Service of the Consent Order and Consent
+Agreement by electronic mail is deemed effective upon the date of transmission and
+acknowledgement of receipt, or as otherwise provided under 49 CFR § 190.5.
+
+Thank you for your cooperation in this matter.
+
+                                            Sincerely,
+
+
+                                            Linda Daugherty
+                                            Acting Associate Administrator
+                                             for Pipeline Safety
+
+Enclosure: Consent Order and Consent Agreement
+
+cc:    Rod Seeley, Acting Deputy Associate Administrator, Office of Pipeline Safety, PHMSA
+       Rodney Barnwell, ExxonMobil, rodney.b.barnwell@exxonmobil.com
+       Angela Offerman, ExxonMobil, angela.offerman@exxonmobil.com
+       Rebekah Bennett, ExxonMobil, rebekah.r.beneett@exxonmobil.com
+       Haley O’Neill, counsel for Denbury Gulf Coast Pipelines LLC,
+        haley.oneill@pipelinelegal.com
+     Jerry Cox, Counsel for Republic Testing Laboratories, L.L.C.,
+       jcox@potomacstrategyassociates.com
+
+CONFIRMATION OF RECEIPT REQUESTED
+                    U.S. DEPARTMENT OF TRANSPORTATION
+       PIPELINE AND HAZARDOUS MATERIALS SAFETY ADMINISTRATION
+                           OFFICE OF PIPELINE SAFETY
+                              WASHINGTON, D.C. 20590
+____________________________________
+                                     )
+In the Matter of                     )
+                                     )
+Denbury Gulf Coast Pipelines LLC,    )    CPF No. 4-2025-024-NOPV-1
+and                                  )
+Republic Testing Laboratories, LLC   )
+                                     )
+                                     )
+Respondents.                         )
+____________________________________)
+
+
+                                      CONSENT ORDER
+
+By letter dated January 17, 2025, the Pipeline and Hazardous Materials Safety Administration
+(PHMSA), Office of Pipeline Safety (OPS), issued a Notice of Probable Violation and Proposed
+Civil Penalty (Notice) to Denbury Gulf Coast Pipelines LLC (Denbury) and Republic Testing
+Laboratories, LLC (Republic).
+
+In response to the Notice, Denbury contested the alleged violation and the accompanying proposed
+civil penalty and requested a hearing. (Republic responded separately.) Denbury and PHMSA
+subsequently engaged in good-faith settlement discussions in order to settle the allegations in the
+Notice as applied to Denbury. As a result of those discussions, Denbury and PHMSA have agreed
+to a Consent Agreement by which PHMSA withdraws the allegation of violation in the Notice as
+applied to Denbury, and Denbury will complete certain compliance actions.
+
+Accordingly, the Consent Agreement is hereby approved and incorporated by reference into this
+Consent Order issued pursuant to 49 CFR § 190.219. Denbury is hereby ordered to comply with
+the terms of the Consent Agreement pursuant to its terms. Pursuant to 49 U.S.C. § 60101, et seq.,
+failure to comply with this Consent Order may result in the assessment of civil penalties as set
+forth in 49 U.S.C. § 60122 and 49 CFR § 190.223, or in referral to the Attorney General for
+appropriate relief in a district court of the United States.
+
+For recordkeeping purposes and future correspondence, this Consent Agreement and Consent
+Order will be referred to as CPF No. 4-2025-024-NOPV-1.
+
+Neither the Consent Agreement nor this Consent Order withdraw, satisfy, merge, extinguish, or
+otherwise affect the alleged violation and proposed civil penalty asserted against Republic in the
+same Notice. Denbury’s performance of its obligations under the Consent Agreement satisfy its
+individual obligations, but such performance does not release Republic from its potential liability
+for the same underlying facts or alleged violations. The enforcement proceeding against Republic
+remains active and is unaffected by this Order.
+The terms and conditions of this Consent Order are effective upon service in accordance with
+49 CFR § 190.5.
+
+
+_____________________ __________________________
+Linda Daugherty                                  Date Issued
+Acting Associate Administrator
+ for Pipeline Safety
+                        U.S. DEPARTMENT OF TRANSPORTATION
+             PIPELINE AND HAZARDOUS MATERIALS SAFETY ADMINISTRATION
+                              OFFICE OF PIPELINE SAFETY
+                                WASHINGTON, D.C. 20590
+
+
+                                                          §
+In the Matter of:                                         §
+                                                          §
+Denbury Gulf Coast Pipelines, LLC,                        §       CPF No. 4-2025-024-NOPV
+                                                          §
+Respondent                                                §
+                                                          §
+                                                          §
+
+
+                                       CONSENT AGREEMENT
+
+On September 6, 7, 8, and 11, 2023, pursuant to Chapter 601 of Title 49, United States Code,
+representatives of the Pipeline and Hazardous Materials Safety Administration (PHMSA), Office
+of Pipeline Safety (OPS) performed an inspection of activities related to Denbury Gulf Coast
+Pipelines, LLC’s (Denbury) horizontal directional drilling pipeline installation. As part of the
+project, Denbury hired Republic Testing Laboratories, LLC (Republic) as a welding contractor.
+The inspection included visual observation of welding procedure qualifications and welder
+qualifications at Republic’s facility in La Porte, Texas.
+
+On November 2, 2023, Exxon Mobil Corporation (ExxonMobil) acquired Denbury in an all-
+stock transaction.
+
+By letter dated January 17, 2025, the Director, Southwest Region, OPS (Director), issued to
+Denbury and Republic a Notice of Probable Violation and Proposed Civil Penalty (Notice). In
+accordance with 49 CFR § 190.207, the Notice alleged both Denbury and Republic violated 49
+U.S.C. § 60118(e)(2)(B)(i) and 49 C.F.R. § 190.203(e) and proposed a civil penalty of
+$2,366,900.
+
+On June 4, 2025, Denbury responded to the Notice by submitting a Request for Hearing and
+Statement of Issues disputing and objecting to the allegations.
+
+PHMSA and Denbury subsequently met to discuss the issues raised in the Notice. As a result of
+those discussions and as explained in more detail below, PHMSA and Denbury agree that
+settlement of this proceeding by entry into this Consent Agreement (Agreement) is the most
+appropriate means of resolving the issues raised in the Notice, will avoid further administrative
+proceedings or litigation, and is in the public interest. Therefore, pursuant to 49 CFR §
+190.219(a), without adjudication of any issue of law or fact, and upon consent and agreement,
+PHMSA and Denbury agree to the following terms and conditions:
+                                                                        CPF No. 4-2025-024-NOPV
+                                                                                       Page 2 of 7
+
+I.      General Provisions
+
+         1.      Denbury acknowledges that as the operator of certain pipeline facilities, Denbury
+     is subject to the jurisdiction of the Federal pipeline safety laws, 49 U.S.C. § 60101, et seq.,
+     and the regulations and administrative orders issued thereunder. For purposes of this
+     Agreement, Denbury acknowledges that it received proper notice of PHMSA’s action in this
+     proceeding.
+
+        2.      Denbury agrees to complete the actions specified in Section II of this Agreement
+     (Corrective Measures), and for any items indicated as having already been completed,
+     Denbury affirms that it has completed those actions and will provide documentation to
+     PHMSA confirming completion.
+
+         3.      After Denbury returns this signed Agreement to PHMSA, PHMSA’s
+     representative will present it to the Associate Administrator for Pipeline Safety,
+     recommending that the Associate Administrator adopt the terms of this Agreement by issuing
+     a Consent Order incorporating the terms of this Agreement. The terms of this Agreement
+     constitute an offer of settlement until accepted by the Associate Administrator. Once
+     accepted, the Associate Administrator will issue a Consent Order incorporating the terms of
+     this Agreement.
+
+         4.      Denbury consents to the issuance of the Consent Order, and hereby waives any
+     further procedural requirements with respect to its issuance. Denbury waives all rights to
+     contest the adequacy of notice, or the validity of the Consent Order or this Agreement,
+     including all rights to administrative or judicial hearings or appeals, except for the dispute
+     resolution provisions set forth herein. Denbury agrees to withdraw its request for an
+     administrative hearing regarding the Notice.
+
+         5.       This Agreement shall apply to and be binding upon PHMSA and Denbury, its
+     officers, directors, and employees, and its successors, assigns, and other entities or persons
+     otherwise bound by law. Denbury agrees to provide a copy of this Agreement to all of
+     Denbury’s officers, employees, and agents whose duties might reasonably include
+     compliance with this Agreement.
+
+         6.     This Agreement constitutes the final, complete, and exclusive agreement and
+     understanding between PHSMA and Denbury with respect to the settlement embodied in this
+     Agreement. PHSMA and Denbury acknowledge that there are no representations,
+     agreements, or understandings relating to settlement other than those expressly contained in
+     this Agreement, except that the terms of this Agreement may be construed by reference to the
+     Notice.
+
+         7.      Nothing in this Agreement affects or relieves Denbury of its responsibility to
+     comply with all applicable requirements of the Federal pipeline safety laws, 49 U.S.C. §
+     60101, et seq., and the regulations and orders issued thereunder. Nothing in this Agreement
+     alters PHMSA's right of access, entry, inspection, and information gathering or PHMSA's
+     authority to bring enforcement actions against Denbury pursuant to the Federal pipeline
+                                                                         CPF No. 4-2025-024-NOPV
+                                                                                        Page 3 of 7
+
+      safety laws, the regulations and orders issued thereunder, or any other provision of Federal or
+      State law except for any enforcement action(s) related to the inspection that took place at
+      Republic’s facility that was the subject of the Notice.
+
+          8.      For all transfers of ownership or operating responsibility of Denbury’s pipeline
+      system referenced in the Notice, Denbury will provide a copy of this Agreement to the
+      prospective transferee at least 30 days prior to such transfer. Denbury will provide written
+      notice of the transfer to the Director no later than 60 days after the transfer occurs.
+
+         9.      This Agreement does not waive or modify any Federal, State, or local laws or
+      regulations that are applicable to Denbury’s pipeline systems. This Agreement is not a
+      permit, or modification of any permit, under any Federal, State, or local laws or regulations.
+      Denbury remains responsible for achieving and maintaining compliance with all applicable
+      Federal, State, and local laws, regulations, and permits.
+
+          10.      This Agreement does not create rights in, or grant any cause of action to, any third
+      party not party to this Agreement. The U.S. Department of Transportation is not liable for
+      any injuries or damages to persons or property arising from acts or omissions of Respondent
+      or its officers, employees, or agents carrying out the work required by this Agreement. The
+      U.S. Department of Transportation, its officers, employees, agents, and representatives shall
+      not be liable for any cause of action arising from any acts or omissions of Denbury or its
+      contractors in carrying out any work required by this Agreement.
+
+          11.     This Agreement does not constitute a finding of violation of any Federal law or
+      regulation and may not be used in any civil or administrative proceeding of any kind as
+      evidence or proof of any fact, fault, or liability, or as evidence of the violation of any law,
+      rule, regulation, or requirement, except in a proceeding to enforce the provisions of this
+      Agreement. Denbury and PHMSA acknowledge and agree that this Agreement is entered into
+      solely for the purpose of resolving this enforcement action, and nothing contained herein
+      shall be construed as an admission of liability, fault, wrongdoing, or violation, and this
+      Agreement shall not be construed as a violation for purposes of Denbury’s enforcement
+      history.
+
+II.      Corrective Measures
+
+          12.   Upon issuance of the Consent Order, Denbury agrees to perform, or has already
+      performed if so indicated, the Corrective Measures set forth below.
+
+        13.     Following the termination of the inspection at Republic’s facility, Denbury
+terminated Republic. Denbury’s completed horizontal directional drilling pipeline installation
+did not ultimately include welds originating from the welding procedure or the welders it
+attempted to qualify at the Republic facility. Following its acquisition by ExxonMobil, Denbury
+later qualified a welding procedure and welders at a different welding facility.
+
+         14.    Resulting from the acquisition of Denbury by ExxonMobil, Denbury adopted new
+      procedures related to pipeline construction and pipeline operations relevant to the underlying
+                                                                  CPF No. 4-2025-024-NOPV
+                                                                                 Page 4 of 7
+
+work performed at the inspection and the allegations in the Notice. These procedures
+include:
+
+
+      ExxonMobil Pipeline Company            Version Number/Date       Date of Transition
+      Standard/Procedure                                               from Denbury
+                                                                       Standard/Procedure
+      Pipeline Welding Manual                Version 8.0, January      02/28–04/03/2025
+                                             2025
+      SWP-008 Hazardous Energy Control       Version 2.0, March 2024   07/01/2025
+      SWP-010 Work Permitting Standard       Version 2.2, May 2025     07/01/2025
+      SWP-012 Personal Protective            Version 2.1, April 2024   07/01/2025
+      Equipment
+      SWP-014 Hot Work/Low Energy            Version 2.2, September    07/01/2025
+      Standard                               2021
+      SWP-015 Welding Safety                 Version 2.0, March 2023   09/05/2025
+      SWP-017 Contractor Safety              Version 6.0, April 2025   04/03/2025
+      Contractor Safety and Administration   Version 6.0, April 2025   04/03/2025
+      Manual
+      OIMS 8.1 Third Party Services          June 2022 version        04/03/2025
+                                             adopted by Denbury on
+                                             04/03/2025; revised June
+                                             2025
+
+
+   15.    Further resulting from the acquisition of Denbury by ExxonMobil, Denbury
+implemented the following:
+
+       a. Regulatory compliance personnel receive on-the-job training and experience prior
+          to leading an agency inspection by observing an inspection led by an experienced
+          ExxonMobil regulatory compliance employee. Following the observation, the
+          new regulatory compliance employee is prepared to lead an inspection. The
+          regulatory compliance supervisor provides support and feedback as needed.
+
+       b. Regulatory Compliance Training is presented to the regulatory compliance
+          personnel in-person by a regulatory compliance team member. The training
+          provides an overview of regulatory compliance requirements, sharing of
+          examples, and encourages questions and discussion among participants. The
+          training is developed internally by ExxonMobil Pipeline Company LLC and lasts
+          at least an hour. Time is allotted for questions, discussion, and feedback, and
+          feedback after the training is also encouraged. The regulatory compliance team
+                                                                         CPF No. 4-2025-024-NOPV
+                                                                                        Page 5 of 7
+
+                  also provides continuous communications and training as new items
+                  arise. Examples that may prompt the additional communications and training
+                  include, but are not limited to, post-inspection reviews, new or revised regulatory
+                  requirements, and newly published PHMSA interpretations or advisory bulletins.
+
+              c. The regulatory compliance personnel receive training on the ExxonMobil
+                 Standards of Business Conduct that includes, among other things, the
+                 ExxonMobil policies on ethics, harassment, and environmental health and safety.
+                 These employees complete an annual compliance statement at the end of each
+                 year, which requires each employee to confirm he/she is familiar with/has read the
+                 Standards of Business Conduct within the last 12 months. Additionally, there is
+                 online Business Practices Review training for new employees and every two years
+                 for existing employees, which covers the Standards of Business Conduct. This
+                 training takes approximately one hour to complete and was last updated on June
+                 23, 2025. The training is developed internally. An evaluation is provided after the
+                 training allowing employees to provide feedback.
+
+            16.   Within sixty (60) days of the entry of the Consent Order, PHMSA and Denbury
+       will conduct a meeting, in-person or virtually, to discuss the events that took place at
+       Republic’s facility on September 6, 7, 8, and 11, 2023. Attendees at the meeting will include
+       the PHMSA inspectors who were present at the inspection at Republic’s facility, and the
+       Denbury employees who were present at the inspection at Republic’s facility, to the extent
+       still employed by PHMSA and Denbury, respectively. The deadline may be extended,
+       pursuant to the requirements contained in Paragraph 19 below, to accommodate schedules.
+
+III.      Dispute Resolution
+
+           17.     The Director and Denbury will informally attempt to resolve any disputes arising
+       under this Agreement, including any decision of the Director under the terms of Section II
+       (Corrective Measures). If Denbury and the Director are unable to informally resolve the
+       dispute within 15 calendar days after the dispute is first raised, in writing, to the Director,
+       Denbury may submit a written request for a determination resolving the dispute from the
+       Associate Administrator for Pipeline Safety. Such request must be made in writing and
+       provided to the Director, counsel for the Southwest Region, and to the Associate
+       Administrator no later than 10 calendar days from the 15-day deadline for informal
+       resolution referenced in this paragraph. Along with its request, Denbury must provide the
+       Associate Administrator with all information Denbury believes is relevant to the dispute.
+       Decisions of the Associate Administrator under this paragraph will constitute final agency
+       action. The existence of a dispute and PHMSA’s consideration of matters placed in dispute
+       will not excuse, toll, or suspend any term or timeframe for completion of any work to be
+       performed under this Agreement during the pendency of the dispute resolution process.
+
+IV.       Enforcement
+
+          18.    This Agreement is subject to all enforcement authorities available to PHMSA
+       under 49 U.S.C. § 60101, et seq., and 49 CFR Part 190, including administrative civil
+                                                                       CPF No. 4-2025-024-NOPV
+                                                                                      Page 6 of 7
+
+      penalties under 49 U.S.C. § 60122 of up to $272,926 per violation for each day the violation
+      continues and referral of the case to the Attorney General for judicial enforcement, if
+      PHMSA determines that Denbury is not complying with the terms of this Agreement in
+      accordance with the determinations made by the Director, or in accordance with decisions of
+      the Associate Administrator if resolved pursuant to the Dispute Resolution process herein.
+      The maximum civil penalty amounts are adjusted annually for inflation. See 49 C.F.R. §
+      190.223. All work plans and associated schedules set forth or referenced in Section II are
+      automatically incorporated into this Agreement and are enforceable in the same manner.
+
+V.       Effective Date
+
+           19.    The term “Effective Date,” as used herein, is the date on which the Consent Order
+      is issued by the Associate Administrator incorporating the terms of this Agreement.
+
+VI.      Recordkeeping and Information Disclosure
+
+          20.      Unless otherwise required in this Agreement, and to the extent records are
+      required by Section II (Corrective Measures) of this Agreement, Denbury agrees to maintain
+      records demonstrating compliance with all requirements of this Agreement for a period of at
+      least five (5) years following completion of all work to be performed, unless a longer period
+      of time is required pursuant to 49 CFR Parts 190-199. For any reports, plans, or other
+      deliverables required to be submitted to PHMSA pursuant to this Agreement, Denbury may
+      assert a claim of business confidentiality or other protections applicable to the release of
+      information by PHMSA, covering part or all of the information required to be submitted to
+      PHMSA pursuant to this Agreement in accordance with 49 CFR Part 7. Denbury must mark
+      the claim of confidentiality in writing on each page, and include a statement specifying the
+      grounds for each claim of confidentiality. PHMSA determines release of any information
+      submitted pursuant to this Agreement in accordance with 49 CFR Part 7, the Freedom of
+      Information Act, 5 U.S.C. § 552, DOT and PHMSA policies, and other applicable regulations
+      and Executive Orders.
+
+VII.     Modification
+
+         21.    The terms of this Agreement may be modified by mutual agreement of the Parties.
+      Such modifications must be in writing and signed by both parties.
+
+VIII.    Termination
+
+          22.     This Agreement will remain in effect until the Corrective Measures in Section II
+      are satisfied, as determined by the Director. The Agreement shall not terminate until the
+      Director confirms, in writing, that the Agreement is terminated in accordance with this
+      paragraph, which the Director shall confirm no more than fifteen (15) days following a
+      meeting that satisfies the requirements of Paragraph 14 of this Agreement. Nothing in this
+      Agreement prevents Denbury from completing any of the obligations earlier than the
+      deadlines provided for in this Agreement.
+                                                                       CPF No. 4-2025-024-NOPV
+                                                                                      Page 7 of 7
+
+IX.      Ratification
+
+          23.    The undersigned representatives of PHMSA and Denbury certify that they are
+      fully authorized to enter into the terms and conditions of this Agreement and to execute and
+      legally bind such party to this document.
+
+         24.     PHSMA and Denbury hereby agree to all terms and conditions of this Agreement.
+
+
+
+
+For Denbury Gulf Coast Pipelines, LLC:
+
+
+
+
+Saul Flota, Vice President
+
+
+
+Date
+
+
+
+
+For PHMSA:
+
+
+
+
+Director, Southwest Region
+Office of Pipeline Safety
+
+
+
+Date
+

@@ -1,0 +1,454 @@
+U.S. Department                                                  1200 New Jersey Avenue, SE
+of Transportation                                                Washington, DC 20590
+Pipeline and Hazardous
+Materials Safety
+Administration
+                                     January 28, 2026
+
+VIA ELECTRONIC MAIL TO: paul.ruppert@bhegts.com
+
+Paul Ruppert
+President
+BHE GT&S, LLC
+6603 West Broad Street
+Richmond, VA 23200
+
+CPF No. 4-2025-010-NOPSO
+
+Dear Mr. Ruppert:
+
+Enclosed please find a Consent Order incorporating the terms of the Consent Agreement between
+the Pipeline and Hazardous Materials Safety Administration (PHMSA) and Cove Point LNG, LP,
+which was executed on January 26, 2026. Service of the Consent Order and Consent Agreement
+by electronic mail is deemed effective upon the date of transmission and acknowledgement of
+receipt, or as otherwise provided under 49 CFR § 190.5.
+
+Thank you for your cooperation in this matter.
+
+                                            Sincerely,
+
+
+                                            Linda Daugherty
+                                            Acting Associate Administrator
+                                             for Pipeline Safety
+
+Enclosure: Consent Order and Consent Agreement
+
+cc:    Bryan Lethcoe, Director, Southwest Region, Office of Pipeline Safety, PHMSA
+       Eric Taylor, Director of Engineering Services Pipeline Integrity, BHE GT&S,
+        Eric.Taylor@bhegts.com
+       Tate Era, LNG Production Coordinator, Cove Point LNG, Tate.Era@bhegts.com
+       Brianne Kurdock, Counsel for Cove Point LNG, Kurdock, BKurdock@babstcalland.com
+       Melanie Lampton, Counsel for Cove Point LNG, MLampton@babstcalland.com
+       Andrew Kohout, Director, Division of LNG Facility Reviews and Inspections, FERC,
+        andrew.kohout@ferc.gov
+
+CONFIRMATION OF RECEIPT REQUESTED
+                    U.S. DEPARTMENT OF TRANSPORTATION
+       PIPELINE AND HAZARDOUS MATERIALS SAFETY ADMINISTRATION
+                          OFFICE OF PIPELINE SAFETY
+                            WASHINGTON, D.C. 20590
+____________________________________
+                                     )
+In the Matter of                     )
+                                     )
+Cove Point LNG, LP,                  )   CPF No. 4-2025-010-NOPSO
+                                     )
+                                     )
+Respondent.                          )
+____________________________________)
+
+
+                                      CONSENT ORDER
+
+By letter dated October 14, 2025 the Pipeline and Hazardous Materials Safety Administration
+(PHMSA), Office of Pipeline Safety (OPS), issued a Notice of Proposed Safety Order (Notice) to
+Cove Point LNG, LP (Cove Point or Respondent).
+
+In accordance with 49 CFR § 190.239, the Notice alleged that conditions exist at Cove Point’s
+liquefied natural gas (LNG) facility in Lusby, Maryland that pose an integrity risk to public
+safety, property, or the environment. The Notice also proposed that Respondent take certain
+corrective measures to remedy the alleged conditions and ensure that the public, property, and
+the environment are protected from the potential risk.
+
+In response to the Notice, Respondent requested an informal consultation, whereupon the parties
+engaged in good-faith settlement discussions that have resulted in the Consent Agreement
+attached to this Consent Order that settles all of the allegations in the Notice.
+
+Accordingly, the Consent Agreement is hereby approved and incorporated by reference into this
+Consent Order. Cove Point is hereby ordered to comply with the terms of the Consent
+Agreement pursuant to its terms.
+
+Pursuant to 49 U.S.C. § 60101, et seq., failure to comply with this Consent Order may result in
+the assessment of civil penalties as set forth in 49 U.S.C. § 60122 and 49 CFR § 190.223, or in
+referral to the Attorney General for appropriate relief in a district court of the United States.
+
+The terms and conditions of this Consent Order are effective upon service in accordance with
+49 CFR § 190.5.
+
+
+______________________                                       ______________________
+Linda Daugherty                                              Date Issued
+Acting Associate Administrator
+ for Pipeline Safety
+                   U.S. DEPARTMENT OF TRANSPORTATION
+        PIPELINE AND HAZARDOUS MATERIALS SAFETY ADMINISTRATION
+                         OFFICE OF PIPELINE SAFETY
+                           WASHINGTON, D.C. 20590
+
+
+                                                    )
+In the Matter of                                    )
+                                                    )
+Cove Point LNG, LP,                                 )                 CPF No. 4-2025-010-NOPSO
+                                                    )
+Respondent.                                         )
+                                                    )
+
+
+                                        CONSENT AGREEMENT
+
+On September 24, 2025, the Pipeline and Hazardous Materials Safety Administration (PHMSA),
+Office of Pipeline Safety (OPS), pursuant to 49 U.S.C. § 60101 et seq., initiated an investigation of
+the safety of the 5V534A and 5V534B ethane tanks (the Ethane Tanks) operated at Cove Point LNG,
+LP’s (Cove Point or Respondent) liquefied natural gas (LNG) facility in Lusby, Maryland (the
+Facility).
+
+As a result of the investigation, the Director, Southwest Region, OPS (Director), issued to Cove Point,
+by letter dated October 14, 2025, a Notice of Proposed Safety Order (Notice). In accordance with 49
+U.S.C. § 60117(m) and 49 CFR § 190.239, the Notice alleged that conditions may exist at the Facility
+that pose a pipeline integrity risk to public safety, property, or the environment. Specifically, the Notice
+alleged that the 5V534A ethane tank is experiencing frost heave which is placing stress on associated
+piping and appurtenances. OPS alleged that the frost heave has become an integrity risk to both the
+5V534A and 5V534B ethane tanks. OPS also alleged in its preliminary findings that there were leaks
+in the area surrounding the Ethane Tanks. 1
+
+On October 16, 2025, Cove Point responded to the Notice by timely submitting a written response and
+a request for an informal consultation under 49 CFR § 190.239(b)(2), or, alternatively, a hearing. Two
+informal consultations were held on October 17 and October 27, 2025. PHMSA and Cove Point
+(collectively, the Parties) have jointly determined that settlement of this proceeding will avoid further
+administrative proceedings or litigation, and is in the public interest, and that entering into this Consent
+Agreement (Agreement) is the most appropriate means of resolving the issues raised in the Notice.
+Therefore, pursuant to 49 CFR §§ 190.219 and 190.239(b)(2), without adjudication of any issue of
+fact or law, and upon consent and agreement of the Parties, Cove Point and PHMSA agree to the terms
+and conditions set forth in this Agreement.
+
+1
+  Based on information submitted by Cove Point, PHMSA has confirmed that there are no current leaks on the Ethane
+Tanks. Cove Point has an existing 24-7 leak detection monitoring system in the Ethane Tank area, including nine
+permanent leak detection sensors and seven open path leak detection sensors. None of these sensors have alarmed as a
+result of any leaks in the tank storage area.
+                                                          1
+I.     General Provisions
+
+1.       Respondent acknowledges that as the operator of the Facility, Respondent and the Facility
+are subject to the jurisdiction of the Federal pipeline safety laws, 49 U.S.C. § 60101, et seq., and
+the regulations and administrative orders issued thereunder. For purposes of this Agreement,
+Respondent acknowledges that it received proper notice of PHMSA’s action in this proceeding
+and that the Notice states claims upon which relief may be granted pursuant to 49 U.S.C. § 60101,
+et seq., and the regulations and orders issued thereunder.
+
+2.      Respondent agrees, for purposes of the Agreement, to complete the actions specified in
+Section II of the Agreement (Corrective Measures) and to abide by the terms of this Agreement.
+This Agreement does not constitute a finding of violation of any Federal law or regulation and
+may not be used in any civil or administrative proceeding of any kind as evidence or proof of any
+fact, fault, or liability, or as evidence of the violation of any law, rule, regulation, or requirement,
+except in a proceeding to enforce the provisions of this Agreement.
+
+3.     After Respondent returns this signed Agreement, a PHMSA representative will present it to
+the Associate Administrator for Pipeline Safety recommending that the Associate Administrator
+adopt the terms of this Agreement by issuing an administrative order (Consent Order)
+incorporating the terms of this Agreement. The terms of this Agreement constitute an offer of
+settlement until accepted by the Associate Administrator. Once accepted, the Associate
+Administrator will issue a Consent Order incorporating the terms of the Agreement.
+
+4.     Respondent consents to the issuance of the Consent Order, and hereby waives any further
+procedural requirements with respect to its issuance. Respondent waives all rights to contest the
+adequacy of notice, or the validity of the Consent Order or this Agreement, including all rights to
+administrative or judicial hearings or appeals, except for the dispute resolution procedures in
+Section IV.
+
+5.      This Agreement shall apply to and be binding upon PHMSA, and upon Cove Point, its
+officers, directors, and employees, and its successors, assigns, or other entities or persons
+otherwise bound by law. Respondent agrees to provide a copy of this Agreement and any
+incorporated work plans and schedules to all of Cove Point’s officers, employees, and agents whose
+duties might reasonably include compliance with this Agreement.
+
+6.     For all transfers of ownership or operating responsibility of the Facility, Respondent will
+provide a copy of this Agreement to the prospective transferee at least 30 days prior to such transfer
+and simultaneously provide written notice of the prospective transfer to the Director.
+
+7.    This Agreement constitutes the final, complete and exclusive agreement and understanding
+between the Parties with respect to the allegations in the Notice and settlement embodied in this
+Agreement. The Parties acknowledge that there are no representations, agreements or
+
+
+
+
+                                                     2
+understandings relating to settlement other than those expressly contained in this Agreement,
+except that the terms of this Agreement may be construed by reference to the Notice.
+
+8.      Nothing in this Agreement affects or relieves Respondent of its responsibility to comply
+with all applicable requirements of the Federal pipeline safety laws, 49 U.S.C. § 60101, et seq.,
+and the regulations and orders issued thereunder. Nothing in this Agreement alters PHMSA's right
+of access, entry, inspection, and information gathering or PHMSA's authority to bring enforcement
+actions against Cove Point pursuant to the Federal pipeline safety laws, the regulations and orders
+issued thereunder, or any other provision of Federal or State law.
+
+9.      This Agreement does not waive or modify any Federal, State, or local laws or regulations
+that are applicable to the Facility. This Agreement is not a permit, or a modification of any permit,
+under any Federal, State, or local laws or regulations. Cove Point remains responsible for achieving
+and maintaining compliance with all applicable Federal, State, and local laws, regulations and
+permits.
+
+10.      This Agreement does not create rights in, or grant any cause of action to, any third party
+not party to this Agreement. The U.S. Department of Transportation is not liable for any injuries
+or damages to persons or property arising from acts or omissions of Respondent or its officers,
+employees, or agents carrying out the work required by this Agreement. Cove Point agrees to hold
+harmless the U.S. Department of Transportation, its officers, employees, agents, and
+representatives from any and all causes of action arising from any acts or omissions of Respondent
+or its contractors in carrying out any work required by this Agreement.
+
+11.   Upon issuance of the Consent Order, Cove Point agrees to perform the Corrective
+Measures set forth below in Section II.
+
+
+
+II.    Corrective Measures
+
+12.     Operational Status of Ethane Tanks. Cove Point may keep the Ethane Tanks in service
+subject to the continuous monitoring requirements in paragraph 13 and the results of the root cause
+failure analysis (see paragraph 16). Cove Point must remove the Ethane Tanks from service if any
+of the following occurs:
+
+               a.      Loss of containment capability of the Ethane Tanks or attached
+                       appurtenances which cannot be isolated and/or repaired.
+               b.      Detection of material loss exceeding acceptable limits per applicable design
+                       code, including internal or external corrosion impacting tank shell.
+               c.      Failure or loss of functionality in instrumentation, pressure relief devices,
+                       level indicators, temperature sensors, or emergency shutdown systems that
+                       cannot be repaired. If one of the listed devices loses functionality, Cove
+                       Point must repair or replace as soon as practicable.
+               d.      Identification by Cove Point’s third-party consultant of a condition which
+                       could lead to an imminent failure.
+
+                                                 3
+13.     Monitoring Tank Storage Area Conditions. Cove Point must conduct certain monitoring
+activities to continuously evaluate the integrity of the Ethane Tanks.
+
+              a.      Ethane Gas Monitoring.
+                i. Cove Point must install a total of four gas detection sensors: one at each of the
+                   existing two vents that are part of the ethane tank leak detection collecting
+                   system and one sensor at each of the two manway areas above the Ethane
+                   Tanks. The additional gas detection will be installed and maintained consistent
+                   with the existing point detectors, will be connected to the existing Distributed
+                   Control System, and will alarm in the control room. This additional gas
+                   detection will be added to the existing Tank Area Detector Maintenance Plan.
+
+                ii. Cove Point will conduct walkdowns of the Ethane Tank area with a flame
+                    ionization detector (FID) or photoionization detector (PID) gas monitor at each
+                    12-hour shift until Cove Point has completed the installation listed in
+                    paragraph 13(a)(i).
+
+                iii. Cove Point will conduct monthly scans of the Ethane Tank area using an
+                     optical gas imaging camera.
+
+                iv. Cove Point must continue to use its existing leak detection alarm system in the
+                    tank storage area.
+
+              b.      Monitoring of Elevation Changes.
+
+                i. Cove Point must compare the data from its existing tank elevation monitoring
+                   system to determine if a change in elevation has occurred since the system was
+                   commissioned. Cove Point will document any elevation changes that have
+                   occurred in the monthly reports required by Paragraph 18.
+
+               ii. A physical survey for tank elevation will be conducted every two months and
+                   this data will be submitted to PHMSA for review. The first survey will be due
+                   two months from the Effective Date and must be conducted every two (2)
+                   months thereafter. After the submission of the Root Cause Failure Analysis in
+                   accordance with Paragraph 16, Cove Point may then complete the surveys
+                   every six months.
+
+               iii. Cove Point must conduct an above-ground pipe assessment at a frequency not
+                    to exceed six (6) months and repair any areas requiring remediation. Cove
+                    Point must perform a Fitness-for-Service evaluation for any pipe where
+                    findings cannot be repaired.
+
+
+14.    Notification. If a leak is identified through the gas detection equipment referenced in
+       paragraph 13(a)(i), Cove Point must notify the Director within 24 hours detected by the
+       equipment referenced in 13(a)(i), unless an earlier notification is required by 49 CFR Part
+       191. Cove Point must remediate the leak as soon as possible.
+                                                  4
+15.    Planned Excavation. Within 15 days of the Effective Date, Cove Point must submit its
+excavation plan to the Director for approval. Within 45 days of the Director’s approval, Cove
+Point must begin investigation of 5V534A via limited hydro excavation and shoring to determine
+subsurface conditions.
+
+16.     Root Cause Failure Analysis (RCFA). Within 160 days of the Effective Date, Cove Point
+must submit an RCFA to the Director. The RCFA must be supplemented or facilitated by an
+independent third-party approved by the Director and must document the decision-making process
+and all factors contributing to any discovered damage to the vessel. Respondent must ensure that
+all reports, whether draft or final, are made available in their entirety to the Director at the same
+time they are made available to Respondent. The final report must include findings and any lessons
+learned and whether the findings and lessons learned are applicable to other locations within the
+Facility.
+
+17.     Remediation Plan. Within 90 days of completion of the RCFA identified in Paragraph 16,
+Cove Point must submit a comprehensive remediation plan to the Director for approval that
+addresses the assessment, remediation, and, if necessary, replacement of underground tanks
+affected by foundation movement. Cove Point must specify the assessments, evaluations, and
+remedial measures Respondent will use.
+
+    a. Cove Point must include a proposed schedule for completion of each submitted section of the
+       Remediation Plan.
+
+    b. Once approved by the Director, the Remediation Plan will be incorporated by reference into
+       the Consent Order.
+
+    c. Cove Point must revise the Remediation Plan as necessary to incorporate new information
+       obtained, and submit any plan revisions to the Director for prior approval. The Director
+       may approve plan revisions incrementally.
+
+    d. Cove Point must implement the Remediation Plan, as approved by the Director, including
+       any revisions to the plan.
+
+18.    Monthly Reports. Cove Point will provide an update on actions that have occurred within
+30 days of the Effective Date. Going forward, every 30 days, Cove Point will submit reports to
+the Director that: (1) include analysis of all available data and results of the testing and evaluations
+required by this Agreement and (2) describe the progress of the repairs and other remedial actions
+being undertaken, including any repairs made in accordance with paragraph 12.
+
+19.     Extensions of Time. The Director may grant an extension of time for compliance with any
+of the terms of the Agreement upon a written request timely submitted demonstrating good cause
+for the extension. The Director shall respond in writing to any such request.
+
+
+
+
+                                                     5
+III.   Review and Approval Process
+
+20.     With respect to any submission under Section II (Corrective Measures) of this Agreement
+that requires the approval of the Director, the Director may: (a) approve, in whole or in part, the
+submission, (b) approve the submission on specified, reasonable conditions, (c) disapprove, in
+whole or in part, the submission, or (d) any combination of the foregoing. If the Director approves,
+approves in part, or approves with conditions, Cove Point will take all actions as approved by the
+Director, subject to Respondent's right to invoke the dispute resolution procedures in Section IV
+with respect to any conditions the Director identifies. If the Director disapproves all or any portion
+of the submission, the Director will provide Cove Point with a written notice of the deficiencies.
+Respondent will correct all deficiencies within the time specified by the Director and resubmit it
+for approval.
+
+IV.    Dispute Resolution
+
+21.     The Director and Cove Point will informally attempt to resolve any disputes arising under
+this Agreement. If Respondent and the Director are unable to informally resolve the dispute within
+15 calendar days of submittal of Respondent's invoking dispute resolution in writing, Cove Point
+may, within 10 calendar days thereafter and in writing, request a written determination resolving
+the dispute from the Associate Administrator for Pipeline Safety. Such request must be made in
+writing and provided to the Director, counsel for the Southwest Region, and to the Associate
+Administrator, no later than 10 calendar days from the 15-day deadline for informal resolution
+referenced in this paragraph, providing all information that Respondent believes is relevant to the
+dispute. If the request is submitted as provided herein, the Associate Administrator will issue
+a final determination in writing. Decisions of the Associate Administrator will constitute final
+agency action. The existence of a dispute and PHMSA's consideration of matters placed in dispute
+will not excuse, toll, or suspend any term or timeframe for completion of any work to be performed
+under this Agreement during the pendency of the dispute resolution process except as agreed by
+the Director or the Associate Administrator in writing.
+
+
+
+V.     Enforcement
+
+22.     This Agreement, as adopted by the Consent Order, is subject to all the enforcement
+authorities available to PHMSA under 49 U.S.C. § 60101, et seq., and 49 CFR Part 190, including
+administrative civil penalties under 49 U.S.C. § 60122 and referral of the case to the Attorney
+General for judicial enforcement, if PHMSA determines that Respondent is not complying with
+the terms of this Agreement in accordance with the determinations made by the Director, or in
+accordance with decisions of the Associate Administrator if resolved pursuant to the Dispute
+Resolution process herein. The maximum civil penalty amounts are adjusted annually for
+inflation. See 49 CFR § 190.223. All procedures, work plans, and schedules set forth or referenced
+in Section II will be automatically incorporated into this Agreement and are enforceable in the
+same manner.
+
+                                                    6
+VI.    Recordkeeping and Information Disclosure
+
+23.     Unless otherwise required in this Agreement, Cove Point agrees to maintain records
+demonstrating compliance with all requirements of this Agreement for a period of at least five
+years following completion of all work to be performed, unless a longer period of time is required
+pursuant to 49 CFR Parts 190-199. For any reports, plans, or other deliverables required to be
+submitted to PHMSA pursuant to this Agreement, Cove Point may assert a claim of business
+confidentiality or other protections applicable to the release of information by PHMSA, covering
+part or all of the information required to be submitted to PHMSA pursuant to this Agreement in
+accordance with 49 CFR Part 7. Cove Point must mark the claim of confidentiality in writing on
+each page, and include a statement specifying the grounds for each claim of confidentially. PHMSA
+determines release of any information submitted pursuant to this Agreement in accordance with
+49 CFR Part 7, the Freedom of Information Act, 5 U.S.C. § 552, DOT and PHMSA policies, and
+other applicable regulations and Executive Orders.
+
+VII.   Effective Date
+
+24.     The term “Effective Date” as used herein, is the date on which the Consent Order is issued
+by the Associate Administrator incorporating the terms of this Agreement. Unless specified to the
+contrary, all deadlines for actions required by this Agreement run from the Effective Date. The
+Director shall consider the actions that Respondent performed prior to and after the Effective Date
+in determining whether Respondent has satisfied the terms and conditions in Section II (Corrective
+Measures) of this Agreement.
+
+VIII. Modification
+
+25.    The terms of this Agreement may be modified by mutual agreement of the Parties. Such
+modifications must be in writing and signed by both parties.
+
+IX.      Termination
+26.      This Agreement shall remain in effect until the Corrective Measures set forth in Section II
+are satisfied, as determined by the Director. Cove Point may request termination of this Agreement
+when appropriate. The Agreement shall not terminate until the Director confirms, in writing, that
+the Agreement is terminated in accordance with this paragraph. Nothing in this Agreement
+prevents Cove Point from completing any of the obligations earlier than the deadlines provided
+for in this Agreement.
+
+X.     Ratification
+
+27.    The Parties' undersigned representatives certify that they are fully authorized to enter into
+the terms and conditions of this Agreement and to execute and legally bind such party to this
+document.
+
+28.    The Parties hereby agree to all conditions and terms of this Agreement.
+
+                                 [Signature Lines on Following Page]
+
+                                                   7
+For Respondent:
+
+
+
+
+Daniel Woods
+Vice President, LNG Operations
+
+
+Date
+
+
+For PHMSA:
+
+
+
+
+Bryan Lethcoe
+Director, Southwest Region, Office of Pipeline Safety
+
+
+
+Date
+
+
+
+
+                                                 8
+

@@ -133,6 +133,11 @@ import {
   ICO_MPN_PATH,
 } from "./ico-mpn.js";
 import {
+  PHMSA_COP_AMOUNT_ATOMIC,
+  PHMSA_COP_MANIFEST_PATH,
+  PHMSA_COP_PATH,
+} from "./phmsa-cop.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -292,6 +297,7 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.some((r) => r.endsWith(AIR_LETTERS_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(SUPERFUND_RODS_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(ICO_MPN_PATH)));
+    assert.ok(!wk.resources.some((r) => r.includes(PHMSA_COP_PATH)), "do not list /phmsa-cop until /ico-mpn is live");
     assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)), "do not list /form-483 without a cached body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_PATH)), "do not list /gmp without a cached observation body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_MD_PATH)), "do not list /gmp-md without a cached observation body");
@@ -428,6 +434,8 @@ async function main(): Promise<void> {
     assert.ok(spec.paths[ICO_MPN_PATH]?.get);
     assert.ok(spec.paths[ICO_MPN_MANIFEST_PATH]?.get);
     assert.equal(spec.paths[ICO_MPN_MANIFEST_PATH]?.get?.["x-auth"]?.mode, "none");
+    assert.equal(spec.paths[PHMSA_COP_PATH], undefined, "OpenAPI must not list /phmsa-cop yet");
+    assert.equal(spec.paths[PHMSA_COP_MANIFEST_PATH], undefined, "OpenAPI must not list /phmsa-cop/manifest.json yet");
     assert.equal(spec.paths[FORM_483_PATH], undefined, "no stub /form-483 in OpenAPI without a cached body");
     assert.equal(spec.paths[FORM_483_MANIFEST_PATH], undefined);
     assert.equal(spec.paths[GMP_PATH], undefined, "no stub /gmp in OpenAPI without a cached body");
@@ -472,6 +480,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /air-letters"));
     assert.ok(llmsBody.includes("GET /superfund-rods"));
     assert.ok(llmsBody.includes("GET /ico-mpn"));
+    assert.ok(!llmsBody.includes("GET /phmsa-cop"), "do not list /phmsa-cop until /ico-mpn is live");
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.includes("GET /gmp-md"));
@@ -516,6 +525,7 @@ async function main(): Promise<void> {
       SUPERFUND_RODS_PATH,
       ICO_MPN_PATH,
     ]);
+    assert.ok(!shop.products.some((p) => p.path === PHMSA_COP_PATH), "do not list /phmsa-cop until /ico-mpn is live");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_MD_PATH));
@@ -3798,6 +3808,131 @@ async function main(): Promise<void> {
     },
   );
 
+  const phmsaCopDir = mkdtempSync(join(tmpdir(), "phmsa-cop-"));
+  writeFileSync(
+    join(phmsaCopDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "phmsa-ops-consent-order-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: FRESH_FETCHED_AT,
+      asOf: "2026-04-21",
+      license: "17 U.S.C. § 105",
+      attribution:
+        "Pipeline and Hazardous Materials Safety Administration (PHMSA), U.S. Department of Transportation. Work of the United States Government; 17 U.S.C. § 105.",
+      sources: {
+        listing: "https://primis.phmsa.dot.gov/enforcement-documents/",
+        pdfHost: "https://primis.phmsa.dot.gov/enforcement-documents/",
+      },
+      cards: [
+        {
+          id: "eqt-1-2025-033-nopv",
+          docket: "eqt-1-2025-033-nopv",
+          pdfId: "12025033NOPV_Consent Agreement and Order_04212026_(22-259271).pdf",
+          institution: "EQT Production Company",
+          date: "2026-04-21",
+          title: "Consent Agreement and Order",
+          sourceUrl:
+            "https://primis.phmsa.dot.gov/enforcement-documents/12025033NOPV/12025033NOPV_Consent%20Agreement%20and%20Order_04212026_(22-259271).pdf",
+          body: [
+            "Pipeline and Hazardous Materials Safety Administration",
+            "CONSENT ORDER",
+            "EQT Production Company",
+            "CPF 1-2025-033-NOPV",
+            "Rager Mountain",
+            "Well 2244",
+            "1.037 billion cubic feet",
+            "top joint casing corrosion",
+            "$466,550",
+            ...Array.from({ length: 40 }, (_, i) => `${i + 21}. Numbered article ${i + 21} from the official EQT PHMSA Consent Order body used only to keep this door fixture above the real-order length floor.`),
+          ].join("\n"),
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      PHMSA_COP_DIR: phmsaCopDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-phmsa-cop-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${PHMSA_COP_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /phmsa-cop must be 402");
+      const body402 = (await unpaid.json()) as {
+        payTo: string;
+        asset: string;
+        resource: string;
+        accepts: { maxAmountRequired?: string; extra?: { name?: string } }[];
+      };
+      assert.equal(body402.resource, PHMSA_COP_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, PHMSA_COP_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
+      const phmsaPr = unpaid.headers.get("payment-required");
+      assert.ok(phmsaPr, "v2 PAYMENT-REQUIRED header");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("Rager Mountain"));
+      assert.ok(!leak402.includes("Well 2244"));
+      assert.ok(!leak402.includes("Well #2244"));
+      assert.ok(!leak402.includes("1.037 billion cubic feet"));
+      assert.ok(!leak402.includes("top joint casing corrosion"));
+      assert.ok(!leak402.includes("466,550"));
+      assert.ok(!leak402.includes("Numbered article"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === PHMSA_COP_PATH), false, "do not list /phmsa-cop until /ico-mpn is live");
+      assert.equal(shop.products.some((p) => p.path === ICO_MPN_PATH), true);
+      assert.equal(shop.products.length, 28);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(!wk.resources.some((r) => r.includes(PHMSA_COP_PATH)), "well-known must not list /phmsa-cop yet");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(!llms.includes("GET /phmsa-cop"), "llms.txt must not list /phmsa-cop yet");
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.equal(spec.paths[PHMSA_COP_PATH], undefined, "OpenAPI must not list /phmsa-cop yet");
+
+      const manifest = await fetch(`${base}${PHMSA_COP_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "phmsa-cop free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        cards?: { institution?: string; docket?: string; id?: string; body?: string }[];
+        openapi?: string;
+        wellKnown?: string;
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.cards?.[0]?.institution, "EQT Production Company");
+      assert.equal(man.cards?.[0]?.docket, "eqt-1-2025-033-nopv");
+      const manBlob = JSON.stringify(man);
+      assert.ok(!manBlob.includes("Rager Mountain"));
+      assert.ok(!manBlob.includes("Well 2244"));
+      assert.ok(!manBlob.includes("Well #2244"));
+      assert.ok(!manBlob.includes("1.037 billion cubic feet"));
+      assert.ok(!manBlob.includes("top joint casing corrosion"));
+      assert.ok(!manBlob.includes("466,550"));
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+
+      const paid = await fetch(`${base}${PHMSA_COP_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { institution: string; date: string; docket: string; body: string }[];
+      };
+      assert.equal(paidBody.product, "phmsa-ops-consent-order-bodies");
+      assert.equal(paidBody.cards[0]?.institution, "EQT Production Company");
+      assert.equal(paidBody.cards[0]?.date, "2026-04-21");
+      assert.equal(paidBody.cards[0]?.docket, "eqt-1-2025-033-nopv");
+      assert.ok(paidBody.cards[0]?.body.includes("Rager Mountain"));
+      assert.ok(paidBody.cards[0]?.body.includes("Well 2244"));
+      assert.ok(paidBody.cards[0]?.body.includes("top joint casing corrosion"));
+      assert.ok(paidBody.cards[0]?.body.includes("466,550"));
+    },
+  );
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -4297,10 +4432,13 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("air-letters"), true);
   assert.equal(isPublicBazaarSku("superfund-rods"), true);
   assert.equal(isPublicBazaarSku("ico-mpn"), true);
+  assert.equal(isPublicBazaarSku("phmsa-cop"), false, "do not list /phmsa-cop until /ico-mpn is live");
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
   assert.deepEqual(publicBazaarSkus(), [...PUBLIC_BAZAAR_SKUS]);
+  const hiddenPhmsa = facilitatorPaymentRequirements("https://ticks.bnm.farm/phmsa-cop", "phmsa-cop");
+  assert.equal(hiddenPhmsa.extensions, undefined, "/phmsa-cop must not persist to Bazaar until /ico-mpn is live");
   const hidden = facilitatorPaymentRequirements("https://ticks.bnm.farm/form-483", "form-483");
   assert.equal(hidden.extensions, undefined, "/form-483 must not persist to Bazaar until a real body is cached");
   const hiddenGmp = facilitatorPaymentRequirements("https://ticks.bnm.farm/gmp", "gmp");
