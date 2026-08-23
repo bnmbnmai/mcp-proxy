@@ -37,6 +37,7 @@ build/phmsa-cop.*
 build/acm-besluiten.*
 build/ccpc-mergers.*
 build/bkarta-entscheidungen.*
+build/ipo-tm.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
@@ -71,3 +72,4 @@ data/phmsa-cop/
 data/acm-besluiten/
 data/ccpc-mergers/
 data/bkarta-entscheidungen/
+data/ipo-tm/

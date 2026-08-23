@@ -1,0 +1,124 @@
+[
+  {
+    "id": "o071326-roadget-dsquared",
+    "docket": "o071326-roadget-dsquared",
+    "bl": "O/0713/26",
+    "institution": "Roadget Business Pte. Ltd / Dsquared2 Trademarks Limited",
+    "date": "2026-08-10",
+    "title": "Opposition",
+    "type": "opposition",
+    "sourceUrl": "https://www.ipo.gov.uk/t-challenge-decision-results/o071326.pdf",
+    "pdfId": "o071326.pdf"
+  },
+  {
+    "id": "o072126-savant",
+    "docket": "o072126-savant",
+    "bl": "O/0721/26",
+    "institution": "Savant Systems, Inc. / Savant Group Limited",
+    "date": "2026-08-11",
+    "title": "Invalidity",
+    "type": "invalidity",
+    "sourceUrl": "https://www.ipo.gov.uk/t-challenge-decision-results/o072126.pdf",
+    "pdfId": "o072126.pdf"
+  },
+  {
+    "id": "o068626-supermac-mcdonalds",
+    "docket": "o068626-supermac-mcdonalds",
+    "bl": "O/0686/26",
+    "institution": "Supermac’s (Holdings) Ltd / McDonald’s International Property Company, Ltd.",
+    "date": "2026-07-31",
+    "title": "Opposition",
+    "type": "opposition",
+    "sourceUrl": "https://www.ipo.gov.uk/t-challenge-decision-results/o068626.pdf",
+    "pdfId": "o068626.pdf"
+  },
+  {
+    "id": "o122125-food-brut-jolene",
+    "docket": "o122125-food-brut-jolene",
+    "bl": "O/1221/25",
+    "institution": "Food Brut Limited / Jolene, LLC",
+    "date": "2025-12-30",
+    "title": "Opposition",
+    "type": "opposition",
+    "sourceUrl": "https://www.ipo.gov.uk/t-challenge-decision-results/o122125.pdf",
+    "pdfId": "o122125.pdf"
+  },
+  {
+    "id": "o012125-ronix-delonghi",
+    "docket": "o012125-ronix-delonghi",
+    "bl": "O/0121/25",
+    "institution": "Ronix (UK) Limited / De Longhi Benelux S.A.",
+    "date": "2025-02-11",
+    "title": "Appeal",
+    "type": "appeal",
+    "sourceUrl": "https://www.ipo.gov.uk/t-challenge-decision-results/o012125.pdf",
+    "pdfId": "o012125.pdf"
+  },
+  {
+    "id": "jane-smith-person",
+    "docket": "jane-smith-person",
+    "bl": "O/0001/26",
+    "institution": "Jane Smith",
+    "individual": "Jane Smith",
+    "date": "2026-01-15",
+    "title": "People-applicant SKU",
+    "type": "people",
+    "sourceUrl": "https://www.ipo.gov.uk/t-challenge-decision-results/o000126.pdf",
+    "pdfId": "o000126.pdf"
+  },
+  {
+    "id": "year-grid-card",
+    "docket": "year-grid-card",
+    "bl": "O/0713/26",
+    "institution": "Roadget Business Pte. Ltd / Dsquared2 Trademarks Limited",
+    "date": "2026-08-10",
+    "title": "Year-grid listing card",
+    "type": "year-grid",
+    "sourceUrl": "https://www.ipo.gov.uk/t-challenge-decision-results/t-challenge-decision-results-bl26.htm",
+    "pdfId": ""
+  },
+  {
+    "id": "tm-journal-xml",
+    "docket": "tm-journal-xml",
+    "bl": "O/0713/26",
+    "institution": "Roadget Business Pte. Ltd",
+    "date": "2026-08-10",
+    "title": "TM Journal XML",
+    "type": "tm-journal",
+    "sourceUrl": "https://www.ipo.gov.uk/t-tmj/tmj.xml",
+    "pdfId": ""
+  },
+  {
+    "id": "design-decision",
+    "docket": "design-decision",
+    "bl": "O/0100/26",
+    "institution": "Acme Designs Limited",
+    "date": "2026-03-01",
+    "title": "Registered design decision",
+    "type": "design_decision",
+    "sourceUrl": "https://www.ipo.gov.uk/d-challenge-decision-results/o010026.pdf",
+    "pdfId": "o010026.pdf"
+  },
+  {
+    "id": "govuk-trademark-decision",
+    "docket": "govuk-trademark-decision",
+    "bl": "O/0713/26",
+    "institution": "Roadget Business Pte. Ltd",
+    "date": "2026-08-10",
+    "title": "GOV.UK trademark_decision",
+    "type": "govuk",
+    "sourceUrl": "https://www.gov.uk/search-trade-mark-decisions",
+    "pdfId": ""
+  },
+  {
+    "id": "find-case-law",
+    "docket": "find-case-law",
+    "bl": "O/0713/26",
+    "institution": "Roadget Business Pte. Ltd",
+    "date": "2026-08-10",
+    "title": "Find Case Law",
+    "type": "caselaw",
+    "sourceUrl": "https://caselaw.nationalarchives.gov.uk/ukipo/o-0713-26",
+    "pdfId": ""
+  }
+]
