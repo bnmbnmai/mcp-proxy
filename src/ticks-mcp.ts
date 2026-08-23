@@ -2,9 +2,9 @@
 /**
  * Thin MCP for the live BNM Data Shop paid GETs.
  *
- * One tool per live paid URL on https://ticks.bnm.farm. Tools GET that same
- * URL: unpaid still HTTP 402, paid returns the JSON body. Not a 32nd door.
- * Does not wrap openFDA, OFAC SDN, FRED, WASDE, or other free official JSON.
+ * Tools are generated from GET /.well-known/x402 (optionally enriched from
+ * /openapi.json). When a new SKU is listed there, /mcp picks it up without
+ * rewriting this file. Not a new SKU itself. Unpaid still HTTP 402.
  */
 
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
@@ -15,50 +15,28 @@ import { z } from "zod";
 
 export const LIVE_ORIGIN = "https://ticks.bnm.farm";
 export const MCP_PATH = "/mcp";
+export const WELL_KNOWN_PATH = "/.well-known/x402";
+export const OPENAPI_PATH = "/openapi.json";
 export const PAY_TO = "0xf59621FC406D266e18f314Ae18eF0a33b8401004";
 export const MCP_CONNECT = `npx -y mcp-remote ${LIVE_ORIGIN}${MCP_PATH}`;
 
-/** Live paid GETs from https://ticks.bnm.farm/.well-known/x402 (2026-08-23). */
-export const LIVE_PAID_SKUS = [
-  { path: "/ticks", name: "ticks", priceUsdc: "0.02", summary: "Idaho + PNW market ticks (USDA AMS, Idaho grain, WD1 $/AF)" },
-  { path: "/import-alerts", name: "import-alerts", priceUsdc: "0.05", summary: "FDA Import Alerts / DWPE firm-product snapshot" },
-  { path: "/mariners", name: "mariners", priceUsdc: "0.05", summary: "USCG D13 / Northwest Local Notice to Mariners" },
-  { path: "/mariners-d11", name: "mariners-d11", priceUsdc: "0.05", summary: "USCG D11 / Southwest Local Notice to Mariners" },
-  { path: "/mariners-d7", name: "mariners-d7", priceUsdc: "0.05", summary: "USCG D7 / Southeast Local Notice to Mariners" },
-  { path: "/mariners-d8", name: "mariners-d8", priceUsdc: "0.05", summary: "USCG D8 / Gulf Local Notice to Mariners" },
-  { path: "/warning-letters", name: "warning-letters", priceUsdc: "0.05", summary: "FDA warning-letter bodies (firm, date, subject, full letter text)" },
-  { path: "/untitled-letters", name: "untitled-letters", priceUsdc: "0.05", summary: "FDA Untitled Letter text (CDER OPDP + CBER promo PDFs)" },
-  { path: "/awa", name: "awa", priceUsdc: "0.05", summary: "USDA APHIS AWA inspection-report observation text (official per-report PDFs)" },
-  { path: "/swisspar", name: "swisspar", priceUsdc: "0.05", summary: "Swissmedic first-authorisation SwissPAR evaluation text (official per-product PDFs)" },
-  { path: "/pcac", name: "pcac", priceUsdc: "0.05", summary: "FDA PCAC 503A briefing-memo evaluation text (official per-substance PDFs)" },
-  { path: "/ftc-wl", name: "ftc-wl", priceUsdc: "0.05", summary: "FTC BCP warning-letter text (official per-letter PDFs)" },
-  { path: "/cfpb-orders", name: "cfpb-orders", priceUsdc: "0.05", summary: "CFPB consent-order / administrative-order text (official per-order PDFs)" },
-  { path: "/occ-cd", name: "occ-cd", priceUsdc: "0.05", summary: "OCC institution C&D / consent-order text (official per-order PDFs)" },
-  { path: "/fdic-orders", name: "fdic-orders", priceUsdc: "0.05", summary: "FDIC institution consent-order / C&D text (official per-order PDFs)" },
-  { path: "/frb-orders", name: "frb-orders", priceUsdc: "0.05", summary: "FRB institution C&D / written-agreement / PCA text (official per-order PDFs)" },
-  { path: "/ncua-orders", name: "ncua-orders", priceUsdc: "0.05", summary: "NCUA institution consent C&D text (official per-order HTML)" },
-  { path: "/fincen-orders", name: "fincen-orders", priceUsdc: "0.05", summary: "FinCEN institution consent-order text (official per-order PDFs)" },
-  { path: "/ferc-orders", name: "ferc-orders", priceUsdc: "0.05", summary: "FERC institution stipulation-and-consent text (official cms.ferc.gov PDFs)" },
-  { path: "/ofac-orders", name: "ofac-orders", priceUsdc: "0.05", summary: "OFAC institution enforcement-release text (official ofac.treasury.gov PDFs)" },
-  { path: "/bis-orders", name: "bis-orders", priceUsdc: "0.05", summary: "BIS institution charging-letter / order text (official bis.gov PDFs)" },
-  { path: "/cftc-orders", name: "cftc-orders", priceUsdc: "0.05", summary: "CFTC institution enforcement-order / settlement text (official cftc.gov PDFs)" },
-  { path: "/fifra-orders", name: "fifra-orders", priceUsdc: "0.05", summary: "EPA FIFRA institution order / consent text (official yosemite.epa.gov PDFs)" },
-  { path: "/denovo-orders", name: "denovo-orders", priceUsdc: "0.05", summary: "FDA De Novo classification-order text (official accessdata.fda.gov PDFs)" },
-  { path: "/ttb-oic", name: "ttb-oic", priceUsdc: "0.05", summary: "TTB Offer in Compromise text (official ttb.gov PDFs)" },
-  { path: "/air-letters", name: "air-letters", priceUsdc: "0.05", summary: "USDA APHIS AIR confirmation-letter text (official direct.aphis.usda.gov PDFs)" },
-  { path: "/superfund-rods", name: "superfund-rods", priceUsdc: "0.05", summary: "EPA Superfund Record of Decision text (official semspub.epa.gov PDFs)" },
-  { path: "/ico-mpn", name: "ico-mpn", priceUsdc: "0.05", summary: "ICO Monetary Penalty Notice text (official ico.org.uk PDFs)" },
-  { path: "/form-483", name: "form-483", priceUsdc: "0.05", summary: "FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs)" },
-  { path: "/gmp", name: "gmp", priceUsdc: "0.05", summary: "Health Canada Drug GMP report-card observation text + C.02 cites" },
-  { path: "/gmp-md", name: "gmp-md", priceUsdc: "0.05", summary: "Health Canada medical-device report-card observation text + MDR cites" },
-] as const;
+export type LivePaidSku = {
+  path: string;
+  name: string;
+  priceUsdc: string;
+  summary: string;
+};
 
-export type LivePaidSku = (typeof LIVE_PAID_SKUS)[number];
-export type LivePaidName = LivePaidSku["name"];
+export type WellKnownDoc = {
+  resources?: unknown;
+  [key: string]: unknown;
+};
 
-const FORBIDDEN_EXTRAS = [
-  "/cma-ca98",
-  "cma-ca98",
+export type OpenApiDoc = {
+  paths?: Record<string, { get?: Record<string, unknown> }>;
+};
+
+const FORBIDDEN_NON_SHOP = [
   "openfda",
   "ofac-sdn",
   "ofac_sdn",
@@ -69,51 +47,147 @@ const FORBIDDEN_EXTRAS = [
   "/api/",
 ] as const;
 
-export function livePaidPaths(): string[] {
-  return LIVE_PAID_SKUS.map((sku) => sku.path);
+export function ticksOrigin(override?: string): string {
+  const raw = (override ?? process.env.TICKS_BASE ?? process.env.TICKS_MCP_ORIGIN ?? LIVE_ORIGIN).trim();
+  return raw.replace(/\/+$/, "") || LIVE_ORIGIN;
 }
 
-export function livePaidNames(): string[] {
-  return LIVE_PAID_SKUS.map((sku) => sku.name);
+function resourcePath(raw: string): string | null {
+  const value = raw.trim();
+  if (!value) return null;
+  try {
+    const path = value.startsWith("/") ? value : new URL(value).pathname;
+    return path.replace(/\/+$/, "") || "/";
+  } catch {
+    return null;
+  }
 }
 
-export function findLiveSku(nameOrPath: string): LivePaidSku | undefined {
+function defaultPriceUsdc(name: string): string {
+  return name === "ticks" ? "0.02" : "0.05";
+}
+
+function priceFromOpenApi(op: Record<string, unknown> | undefined): string | undefined {
+  const info = op?.["x-payment-info"] as { price?: { amount?: unknown } } | undefined;
+  const amount = info?.price?.amount;
+  if (typeof amount === "string" && amount.trim()) return amount.trim();
+  if (typeof amount === "number" && Number.isFinite(amount)) return String(amount);
+  return undefined;
+}
+
+export function skusFromWellKnown(
+  wellKnown: WellKnownDoc,
+  openApi?: OpenApiDoc,
+): LivePaidSku[] {
+  const resources = Array.isArray(wellKnown.resources) ? wellKnown.resources : [];
+  const seen = new Set<string>();
+  const skus: LivePaidSku[] = [];
+  for (const raw of resources) {
+    const path = resourcePath(String(raw ?? ""));
+    if (!path || path === "/" || path === MCP_PATH) continue;
+    if (seen.has(path)) continue;
+    seen.add(path);
+    const name = path.replace(/^\//, "");
+    if (!name) continue;
+    const op = openApi?.paths?.[path]?.get;
+    const summary =
+      (typeof op?.summary === "string" && op.summary.trim()) ||
+      (typeof op?.description === "string" && op.description.trim()) ||
+      `Paid GET ${path}`;
+    skus.push({
+      path,
+      name,
+      priceUsdc: priceFromOpenApi(op) ?? defaultPriceUsdc(name),
+      summary,
+    });
+  }
+  return skus;
+}
+
+export function livePaidPaths(catalog: LivePaidSku[]): string[] {
+  return catalog.map((sku) => sku.path);
+}
+
+export function livePaidNames(catalog: LivePaidSku[]): string[] {
+  return catalog.map((sku) => sku.name);
+}
+
+export function findLiveSku(nameOrPath: string, catalog: LivePaidSku[]): LivePaidSku | undefined {
   const raw = nameOrPath.trim();
   const path = raw.startsWith("/") ? raw : `/${raw}`;
-  return LIVE_PAID_SKUS.find((sku) => sku.path === path || sku.name === raw);
+  return catalog.find((sku) => sku.path === path || sku.name === raw);
 }
 
 export function assertNoForbiddenExtras(names: string[]): void {
   const joined = names.join(" ").toLowerCase();
-  for (const extra of FORBIDDEN_EXTRAS) {
+  for (const extra of FORBIDDEN_NON_SHOP) {
     if (joined.includes(extra.toLowerCase())) {
       throw new Error(`MCP catalog must not include ${extra}`);
     }
   }
 }
 
-export function ticksOrigin(override?: string): string {
-  const raw = (override ?? process.env.TICKS_BASE ?? process.env.TICKS_MCP_ORIGIN ?? LIVE_ORIGIN).trim();
-  return raw.replace(/\/+$/, "") || LIVE_ORIGIN;
+async function fetchJson(url: string): Promise<unknown> {
+  const response = await fetch(url, {
+    method: "GET",
+    headers: { Accept: "application/json", "User-Agent": "bnm-data-shop-mcp/1.0" },
+  });
+  if (!response.ok) {
+    throw new Error(`GET ${url} HTTP ${response.status}`);
+  }
+  return response.json();
 }
 
-export function mcpDiscovery(origin = LIVE_ORIGIN): Record<string, unknown> {
+export async function fetchWellKnown(origin = ticksOrigin()): Promise<WellKnownDoc> {
+  const base = origin.replace(/\/+$/, "") || LIVE_ORIGIN;
+  return (await fetchJson(`${base}${WELL_KNOWN_PATH}`)) as WellKnownDoc;
+}
+
+export async function fetchOpenApi(origin = ticksOrigin()): Promise<OpenApiDoc> {
+  const base = origin.replace(/\/+$/, "") || LIVE_ORIGIN;
+  return (await fetchJson(`${base}${OPENAPI_PATH}`)) as OpenApiDoc;
+}
+
+export async function resolveMcpCatalog(opts: {
+  origin?: string;
+  wellKnown?: WellKnownDoc;
+  openApi?: OpenApiDoc;
+} = {}): Promise<LivePaidSku[]> {
+  const origin = ticksOrigin(opts.origin);
+  const wellKnown = opts.wellKnown ?? (await fetchWellKnown(origin));
+  let openApi = opts.openApi;
+  if (!openApi && opts.wellKnown === undefined) {
+    try {
+      openApi = await fetchOpenApi(origin);
+    } catch {
+      openApi = undefined;
+    }
+  }
+  return skusFromWellKnown(wellKnown, openApi);
+}
+
+export function mcpDiscovery(origin = LIVE_ORIGIN, catalog: LivePaidSku[]): Record<string, unknown> {
   const base = origin.replace(/\/+$/, "") || LIVE_ORIGIN;
   return {
     mcp: true,
     url: `${base}${MCP_PATH}`,
     transport: "streamable-http",
     protocolVersion: "2025-03-26",
-    tools: LIVE_PAID_SKUS.length,
-    paidGets: livePaidPaths(),
+    tools: catalog.length,
+    paidGets: livePaidPaths(catalog),
     payTo: PAY_TO,
     network: "eip155:8453",
     connect: `npx -y mcp-remote ${base}${MCP_PATH}`,
-    note: "Same thirty-one paid GETs as /.well-known/x402. Not a new SKU. Unpaid tool calls still HTTP 402 on the paid URL. Not Bazaar-indexed.",
+    source: WELL_KNOWN_PATH,
+    note:
+      `Same ${catalog.length} paid GETs as ${WELL_KNOWN_PATH}. Tools are generated from that document so later SKUs appear without an MCP rewrite. Not a new SKU. Unpaid tool calls still HTTP 402 on the paid URL. Not Bazaar-indexed.`,
   };
 }
 
-export function mcpToolDescriptors(origin = LIVE_ORIGIN): Array<{
+export function mcpToolDescriptors(
+  origin = LIVE_ORIGIN,
+  catalog: LivePaidSku[],
+): Array<{
   name: string;
   description: string;
   inputSchema: {
@@ -123,7 +197,7 @@ export function mcpToolDescriptors(origin = LIVE_ORIGIN): Array<{
   };
 }> {
   const base = origin.replace(/\/+$/, "") || LIVE_ORIGIN;
-  return LIVE_PAID_SKUS.map((sku) => ({
+  return catalog.map((sku) => ({
     name: sku.name,
     description:
       `GET ${base}${sku.path} — $${sku.priceUsdc} USDC on Base to ${PAY_TO}. ${sku.summary} ` +
@@ -150,9 +224,10 @@ export type PaidGetResult = {
 
 export async function getPaidSku(
   path: string,
-  opts: { origin?: string; xPayment?: string } = {},
+  opts: { origin?: string; xPayment?: string; catalog?: LivePaidSku[] } = {},
 ): Promise<PaidGetResult> {
-  const sku = findLiveSku(path);
+  const catalog = opts.catalog ?? (await resolveMcpCatalog({ origin: opts.origin }));
+  const sku = findLiveSku(path, catalog);
   if (!sku) {
     throw new Error(`not a live paid GET: ${path}`);
   }
@@ -192,7 +267,13 @@ type JsonRpcRequest = {
 
 export async function handleMcpJsonRpc(
   message: JsonRpcRequest,
-  opts: { origin?: string; xPayment?: string } = {},
+  opts: {
+    origin?: string;
+    xPayment?: string;
+    wellKnown?: WellKnownDoc;
+    openApi?: OpenApiDoc;
+    catalog?: LivePaidSku[];
+  } = {},
 ): Promise<Record<string, unknown> | null> {
   const id = message.id ?? null;
   const method = message.method ?? "";
@@ -207,13 +288,21 @@ export async function handleMcpJsonRpc(
     error: { code, message: errorMessage },
   });
 
+  const catalog =
+    opts.catalog ??
+    (await resolveMcpCatalog({
+      origin: opts.origin,
+      wellKnown: opts.wellKnown,
+      openApi: opts.openApi,
+    }));
+
   if (method === "initialize") {
     return ok({
       protocolVersion: "2025-03-26",
       capabilities: { tools: { listChanged: false } },
       serverInfo: { name: "bnm-data-shop", version: "1.0.0" },
       instructions:
-        "Thirty-one tools, one per live paid GET on ticks.bnm.farm. Each tool GETs that URL. Unpaid is HTTP 402. Paid returns JSON. USDC on Base. Not Bazaar-indexed.",
+        `${catalog.length} tools, one per live paid GET from ${WELL_KNOWN_PATH}. Each tool GETs that URL. Unpaid is HTTP 402. Paid returns JSON. USDC on Base. Not Bazaar-indexed.`,
     });
   }
 
@@ -222,18 +311,18 @@ export async function handleMcpJsonRpc(
   }
 
   if (method === "tools/list") {
-    return ok({ tools: mcpToolDescriptors(opts.origin) });
+    return ok({ tools: mcpToolDescriptors(opts.origin ?? LIVE_ORIGIN, catalog) });
   }
 
   if (method === "tools/call") {
     const name = String(message.params?.name ?? "");
     const args = (message.params?.arguments ?? {}) as { x_payment?: string };
-    const sku = findLiveSku(name);
+    const sku = findLiveSku(name, catalog);
     if (!sku) {
-      return err(-32602, `Unknown tool ${name}. Tools are the thirty-one live paid GETs only.`);
+      return err(-32602, `Unknown tool ${name}. Tools are the live paid GETs from ${WELL_KNOWN_PATH}.`);
     }
     const xPayment = args.x_payment || opts.xPayment;
-    const result = await getPaidSku(sku.path, { origin: opts.origin, xPayment });
+    const result = await getPaidSku(sku.path, { origin: opts.origin, xPayment, catalog });
     return ok({
       content: [{ type: "text", text: formatPaidToolText(result) }],
       isError: result.status >= 500,
@@ -275,7 +364,14 @@ export async function handleMcpHttp(
   req: IncomingMessage,
   res: ServerResponse,
   origin: string,
+  discovery: { wellKnown?: WellKnownDoc; openApi?: OpenApiDoc } = {},
 ): Promise<void> {
+  const catalog = await resolveMcpCatalog({
+    origin,
+    wellKnown: discovery.wellKnown,
+    openApi: discovery.openApi,
+  });
+
   if (req.method === "OPTIONS") {
     res.writeHead(204, {
       "Access-Control-Allow-Origin": "*",
@@ -296,7 +392,7 @@ export async function handleMcpHttp(
   }
 
   if (req.method === "GET") {
-    sendMcpJson(res, 200, mcpDiscovery(origin));
+    sendMcpJson(res, 200, mcpDiscovery(origin, catalog));
     return;
   }
 
@@ -319,6 +415,7 @@ export async function handleMcpHttp(
     const reply = await handleMcpJsonRpc((message ?? {}) as JsonRpcRequest, {
       origin,
       xPayment: headerPayment(req),
+      catalog,
     });
     if (reply) replies.push(reply);
   }
@@ -335,13 +432,14 @@ export async function handleMcpHttp(
   sendMcpJson(res, 200, Array.isArray(parsed) ? replies : replies[0]);
 }
 
-export function createTicksMcpServer(origin = ticksOrigin()): McpServer {
+export async function createTicksMcpServer(origin = ticksOrigin()): Promise<McpServer> {
+  const catalog = await resolveMcpCatalog({ origin });
   const server = new McpServer({
     name: "bnm-data-shop",
     version: "1.0.0",
   });
-  for (const sku of LIVE_PAID_SKUS) {
-    const tool = mcpToolDescriptors(origin).find((item) => item.name === sku.name)!;
+  for (const sku of catalog) {
+    const tool = mcpToolDescriptors(origin, catalog).find((item) => item.name === sku.name)!;
     server.registerTool(
       sku.name,
       {
@@ -353,7 +451,7 @@ export function createTicksMcpServer(origin = ticksOrigin()): McpServer {
         },
       },
       async ({ x_payment }) => {
-        const result = await getPaidSku(sku.path, { origin, xPayment: x_payment });
+        const result = await getPaidSku(sku.path, { origin, xPayment: x_payment, catalog });
         return {
           content: [{ type: "text" as const, text: formatPaidToolText(result) }],
           isError: result.status >= 500,
@@ -370,15 +468,13 @@ function isMain(): boolean {
 }
 
 if (isMain()) {
-  assertNoForbiddenExtras(livePaidNames());
-  if (LIVE_PAID_SKUS.length !== 31) {
-    throw new Error(`MCP tools must be the live 31, got ${LIVE_PAID_SKUS.length}`);
-  }
   const origin = ticksOrigin();
-  const server = createTicksMcpServer(origin);
+  const catalog = await resolveMcpCatalog({ origin });
+  assertNoForbiddenExtras(livePaidNames(catalog));
+  const server = await createTicksMcpServer(origin);
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error(`BNM Data Shop MCP — ${LIVE_PAID_SKUS.length} tools`);
+  console.error(`BNM Data Shop MCP — ${catalog.length} tools from ${WELL_KNOWN_PATH}`);
   console.error(`  Paid host: ${origin}`);
   console.error(`  Connect URL: ${origin}${MCP_PATH}`);
   console.error(`  Connect cmd: npx -y mcp-remote ${origin}${MCP_PATH}`);

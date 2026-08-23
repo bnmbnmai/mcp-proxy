@@ -2130,7 +2130,7 @@ export function llmsTxt(): string {
     "",
     `- URL — https://ticks.bnm.farm${MCP_PATH}`,
     "- Connect — `npx -y mcp-remote https://ticks.bnm.farm/mcp`",
-    `- One tool per live paid GET. Same ${paidCountWord()} URLs. Unpaid tool calls still HTTP 402. Paid returns the JSON body. Not Bazaar-indexed.`,
+    `- One tool per live paid GET from /.well-known/x402 (generated at request time; later SKUs appear without an MCP rewrite). Same ${paidCountWord()} URLs today. Unpaid tool calls still HTTP 402. Paid returns the JSON body. Not Bazaar-indexed.`,
     "",
     "## Agent catalogs",
     "",
@@ -3245,7 +3245,11 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   const path = url.pathname.replace(/\/+$/, "") || "/";
 
   if (path === MCP_PATH) {
-    await handleMcpHttp(req, res, discoveryOrigin(req, port));
+    const origin = discoveryOrigin(req, port);
+    await handleMcpHttp(req, res, origin, {
+      wellKnown: wellKnownX402(req, port),
+      openApi: buildOpenApi(req, port),
+    });
     return;
   }
 
@@ -3893,7 +3897,7 @@ if (isMain()) {
     console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
     console.error(`${GMP_PATH} $${Number(amountAtomicFor("gmp")) / 1e6} USDC${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
     console.error(`${GMP_MD_PATH} $${Number(amountAtomicFor("gmp-md")) / 1e6} USDC${gmpMdIsPublic() ? "" : " (unlisted until a real MD observation body is cached)"}`);
-    console.error(`mcp ${MCP_PATH} — ${paidDiscoveryPaths().length} tools, same paid GETs`);
+    console.error(`mcp ${MCP_PATH} — ${paidDiscoveryPaths().length} tools from ${WELL_KNOWN_PATH}`);
     console.error(`payTo ${PAY_TO} USDC ${USDC_BASE} on Base`);
     console.error(`ticksDir ${ticksDir() || "(unset)"}`);
     console.error(`board ${board && existsSync(board) ? board : "missing — paid /ticks body will be empty/stale"}`);

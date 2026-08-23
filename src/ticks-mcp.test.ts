@@ -16,12 +16,13 @@ import {
   findLiveSku,
   handleMcpJsonRpc,
   LIVE_ORIGIN,
-  LIVE_PAID_SKUS,
   livePaidNames,
   livePaidPaths,
   MCP_CONNECT,
   mcpDiscovery,
   mcpToolDescriptors,
+  resolveMcpCatalog,
+  skusFromWellKnown,
 } from "./ticks-mcp.js";
 
 const LIVE_WELL_KNOWN_PATHS = [
@@ -93,43 +94,62 @@ async function withServer(
 }
 
 async function main(): Promise<void> {
-  assert.equal(LIVE_PAID_SKUS.length, 31, "tools === live 31");
-  assert.deepEqual(livePaidPaths(), LIVE_WELL_KNOWN_PATHS);
-  assert.equal(new Set(livePaidNames()).size, 31);
-  assert.equal(findLiveSku("cma-ca98"), undefined);
-  assert.equal(findLiveSku("/cma-ca98"), undefined);
-  assert.equal(findLiveSku("economic_indicators"), undefined);
-  assertNoForbiddenExtras(livePaidNames());
-  assertNoForbiddenExtras(livePaidPaths());
-  assert.ok(!livePaidPaths().some((p) => p.includes("cma-ca98")));
-  assert.ok(!livePaidPaths().some((p) => p.includes("openfda")));
-  assert.ok(!livePaidNames().includes("fred"));
-  assert.ok(!livePaidNames().includes("wasde"));
-  assert.equal(LIVE_PAID_SKUS[0]?.priceUsdc, "0.02");
-  assert.ok(LIVE_PAID_SKUS.slice(1).every((sku) => sku.priceUsdc === "0.05"));
-  assert.equal(mcpToolDescriptors().length, 31);
-  assert.equal(MCP_CONNECT, `npx -y mcp-remote ${LIVE_ORIGIN}${MCP_PATH}`);
-
-  const listed = await handleMcpJsonRpc({ jsonrpc: "2.0", id: 1, method: "tools/list" });
-  const tools = (listed as { result: { tools: { name: string }[] } }).result.tools;
-  assert.equal(tools.length, 31);
-  assert.deepEqual(tools.map((t) => `/${t.name}`), LIVE_WELL_KNOWN_PATHS);
-  assert.ok(!tools.some((t) => t.name === "cma-ca98"));
-
-  const unknown = await handleMcpJsonRpc({
-    jsonrpc: "2.0",
-    id: 2,
-    method: "tools/call",
-    params: { name: "cma-ca98", arguments: {} },
-  });
-  assert.ok((unknown as { error?: { message?: string } }).error?.message?.includes("Unknown tool"));
-
-  const liveWk = await fetch(`${LIVE_ORIGIN}/.well-known/x402`);
+  const liveWk = await fetch(`${LIVE_ORIGIN}${WELL_KNOWN_PATH}`);
   assert.equal(liveWk.status, 200, "live well-known must be reachable");
   const wk = (await liveWk.json()) as { resources: string[] };
   const livePaths = wk.resources.map((url) => new URL(url).pathname);
-  assert.equal(livePaths.length, 31, "live well-known is 31 paid GETs");
-  assert.deepEqual(livePaidPaths(), livePaths, "MCP tools === live well-known resources");
+  assert.equal(livePaths.length, 31, "this deploy well-known is still 31 paid GETs");
+  assert.deepEqual(livePaths, LIVE_WELL_KNOWN_PATHS);
+  assert.ok(!livePaths.includes("/cma-ca98"), "this pass does not list /cma-ca98");
+
+  const fromLive = skusFromWellKnown(wk);
+  assert.deepEqual(livePaidPaths(fromLive), livePaths, "MCP tools === well-known resources");
+  assert.equal(findLiveSku("cma-ca98", fromLive), undefined);
+  assert.equal(findLiveSku("/cma-ca98", fromLive), undefined);
+  assert.equal(findLiveSku("economic_indicators", fromLive), undefined);
+  assertNoForbiddenExtras(livePaidNames(fromLive));
+  assertNoForbiddenExtras(livePaidPaths(fromLive));
+  assert.ok(!livePaidNames(fromLive).includes("fred"));
+  assert.ok(!livePaidNames(fromLive).includes("wasde"));
+  assert.equal(fromLive[0]?.priceUsdc, "0.02");
+  assert.ok(fromLive.slice(1).every((sku) => sku.priceUsdc === "0.05"));
+  assert.equal(mcpToolDescriptors(LIVE_ORIGIN, fromLive).length, 31);
+  assert.equal(MCP_CONNECT, `npx -y mcp-remote ${LIVE_ORIGIN}${MCP_PATH}`);
+
+  const listed = await handleMcpJsonRpc(
+    { jsonrpc: "2.0", id: 1, method: "tools/list" },
+    { wellKnown: wk },
+  );
+  const tools = (listed as { result: { tools: { name: string }[] } }).result.tools;
+  assert.equal(tools.length, 31);
+  assert.deepEqual(tools.map((t) => `/${t.name}`), livePaths);
+  assert.ok(!tools.some((t) => t.name === "cma-ca98"));
+
+  const unknown = await handleMcpJsonRpc(
+    {
+      jsonrpc: "2.0",
+      id: 2,
+      method: "tools/call",
+      params: { name: "cma-ca98", arguments: {} },
+    },
+    { wellKnown: wk },
+  );
+  assert.ok((unknown as { error?: { message?: string } }).error?.message?.includes("Unknown tool"));
+
+  const futureWk = {
+    resources: [...wk.resources, `${LIVE_ORIGIN}/future-door`, `${LIVE_ORIGIN}/cma-ca98`],
+  };
+  const future = skusFromWellKnown(futureWk);
+  assert.ok(future.some((sku) => sku.name === "future-door"), "new well-known SKU becomes a tool");
+  assert.ok(future.some((sku) => sku.name === "cma-ca98"), "CMA appears when well-known lists it");
+  const futureList = await handleMcpJsonRpc(
+    { jsonrpc: "2.0", id: 5, method: "tools/list" },
+    { wellKnown: futureWk },
+  );
+  const futureTools = (futureList as { result: { tools: { name: string }[] } }).result.tools;
+  assert.ok(futureTools.some((t) => t.name === "future-door"));
+  assert.ok(futureTools.some((t) => t.name === "cma-ca98"));
+  assert.ok(!livePaths.includes("/future-door"));
   assert.ok(!livePaths.includes("/cma-ca98"));
 
   await withServer(
@@ -141,6 +161,7 @@ async function main(): Promise<void> {
       };
       assert.equal(shop.mcp, MCP_PATH);
       assert.ok(!shop.products.some((p) => p.path === MCP_PATH), "/mcp is not a paid SKU");
+      assert.ok(!shop.products.some((p) => p.path === "/cma-ca98"));
 
       const wellKnown = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
         mcp?: string;
@@ -150,10 +171,13 @@ async function main(): Promise<void> {
       assert.ok(wellKnown.mcp?.endsWith(MCP_PATH));
       assert.ok(!wellKnown.resources.some((r) => r.includes(MCP_PATH)));
       assert.ok((wellKnown.instructions ?? "").includes("/mcp"));
+      const localPaths = wellKnown.resources.map((url) => new URL(url).pathname);
+      assert.ok(!localPaths.includes("/cma-ca98"));
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(llms.includes("GET/POST /mcp"));
       assert.ok(llms.includes("npx -y mcp-remote https://ticks.bnm.farm/mcp"));
+      assert.ok(llms.includes("generated at request time"));
       assert.ok(llms.includes("Not Bazaar-indexed"));
       assert.ok(!llms.includes("WASDE"));
       assert.ok(!llms.toLowerCase().includes("openfda"));
@@ -173,12 +197,16 @@ async function main(): Promise<void> {
         tools?: number;
         connect?: string;
         paidGets?: string[];
+        source?: string;
       };
-      assert.equal(card.tools, 31);
-      assert.deepEqual(card.paidGets, LIVE_WELL_KNOWN_PATHS);
+      assert.equal(card.source, WELL_KNOWN_PATH);
+      assert.deepEqual(card.paidGets, localPaths);
+      assert.equal(card.tools, localPaths.length);
       assert.ok(card.connect?.includes("mcp-remote"));
       assert.ok(card.url?.endsWith(MCP_PATH));
-      assert.equal(mcpDiscovery(base).tools, 31);
+      const fromLocal = await resolveMcpCatalog({ origin: base, wellKnown });
+      assert.deepEqual(livePaidPaths(fromLocal), localPaths);
+      assert.equal(mcpDiscovery(base, fromLocal).tools, localPaths.length);
 
       const init = await fetch(`${base}${MCP_PATH}`, {
         method: "POST",
@@ -186,8 +214,9 @@ async function main(): Promise<void> {
         body: JSON.stringify({ jsonrpc: "2.0", id: 1, method: "initialize", params: {} }),
       });
       assert.equal(init.status, 200);
-      const initBody = (await init.json()) as { result?: { serverInfo?: { name?: string } } };
+      const initBody = (await init.json()) as { result?: { serverInfo?: { name?: string }; instructions?: string } };
       assert.equal(initBody.result?.serverInfo?.name, "bnm-data-shop");
+      assert.ok(initBody.result?.instructions?.includes(WELL_KNOWN_PATH));
 
       const list = await fetch(`${base}${MCP_PATH}`, {
         method: "POST",
@@ -195,8 +224,8 @@ async function main(): Promise<void> {
         body: JSON.stringify({ jsonrpc: "2.0", id: 2, method: "tools/list" }),
       });
       const listBody = (await list.json()) as { result: { tools: { name: string }[] } };
-      assert.equal(listBody.result.tools.length, 31);
-      assert.deepEqual(listBody.result.tools.map((t) => t.name), livePaidNames());
+      assert.deepEqual(listBody.result.tools.map((t) => t.name), livePaidNames(fromLocal));
+      assert.ok(!listBody.result.tools.some((t) => t.name === "cma-ca98"));
 
       const unpaid = await fetch(`${base}${MCP_PATH}`, {
         method: "POST",
