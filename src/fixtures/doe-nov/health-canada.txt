@@ -1,0 +1,5 @@
+Health Canada Summary Reports API
+fullReportCard.ashx
+/gmp
+Example Pharma Inc.
+This is not DOE Office of Enforcement.

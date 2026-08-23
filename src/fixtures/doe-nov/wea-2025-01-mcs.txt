@@ -1,0 +1,90 @@
+                                    December 3, 2025
+
+Mr. Dutch Conrad
+President and Project Manager
+Mid-America Conversion Services, LLC
+1020 Monarch Street
+Suite 300
+Lexington, Kentucky 40513
+
+WEA-2025-01 (Final Notice of Violation)
+
+Dear Mr. Conrad:
+
+Pursuant to Section 234C of the Atomic Energy Act, as amended, 42 United States Code
+(U.S.C.) § 2282c, and Department of Energy (DOE) regulations in 10 Code of Federal
+Regulations (C.F.R.) Part 851, Worker Safety and Health Program, DOE is issuing this
+Final Notice of Violation (FNOV) to Mid-America Conversion Services, LLC (MCS) for
+violations of DOE’s worker safety and health requirements. The FNOV is based upon
+the DOE Office of Enforcement’s May 24, 2024, investigation summary and a thorough
+review of all evidence presented to DOE by MCS, including MCS’s original
+investigation, corrective actions, and reply to the Preliminary Notice of Violation
+(PNOV) issued on July 30, 2025.
+
+DOE received MCS’s reply to the PNOV on August 26, 2025. In its reply, MCS
+accepted the PNOV but contested the following points and requested that DOE consider
+amending them:
+
+       (1) The entrant’s condition when the attendant ordered them to exit the tank (i.e.,
+           transmittal letter page one paragraph three and Enclosure 1 paragraph two).
+           MCS contends that the entrant was observed to be “unsteady” but was never
+           unresponsive and did not lose consciousness.
+
+       (2) The effects of overexposure to toluene via inhalation (i.e., transmittal letter
+           page one paragraph two and Enclosure 1 paragraph two). MCS notes that the
+           Safety Data Sheet (SDS) states “Effects [o]f Overexposure – Inhalation: [m]ay
+           cause central nervous system depression characterized by the following
+           progressive steps: headache, dizziness, staggering, gait, confusion,
+           unconsciousness or coma.” MCS requested that statements regarding
+           overexposure to toluene be consistent with the SDS.
+
+       (3) The overall event characterization (i.e., transmittal letter, page one paragraph
+           two). MCS requested that the characterization of the event be changed from
+           “a near miss to a fatality” to “a near miss to a serious injury.”
+
+                                                                                                2
+
+
+DOE has evaluated MCS’s reply and agrees to revise the paragraphs regarding the
+entrant’s condition, changing the description from “unresponsive” to “unsteady,” as well
+as the statement discussing the effects of toluene overexposure to align with the SDS.
+Lastly, regarding the characterization of the event in the transmittal letter from “a near
+miss to a fatality” to “a near miss to a serious injury,” DOE notes that while the SDS for
+toluene does not explicitly list “fatality” as an effect of overexposure, the listed
+progressive outcomes to overexposure, including “unconsciousness or coma” represent
+conditions that, if severe or prolonged, are capable of leading to fatality, especially in an
+uncontrolled confined space environment. Therefore, the inherent potential for severe
+harm, inclusive of fatality, warrants the characterization as a “near miss to a fatality.”
+
+Pursuant to 10 C.F.R. § 851.44, MCS may petition DOE’s Office of Hearings and
+Appeals for review of the enclosed FNOV. MCS’s petition must adhere to the procedural
+requirements established in Subpart G of 10 C.F.R. Part 1003, Office of Hearings and
+Appeals Procedural Regulations. If MCS does not petition the Office of Hearings and
+Appeals within 30 calendar days of receipt of this FNOV, MCS relinquishes any right to
+appeal any matter raised therein, and the FNOV will become a final order as provided by
+10 C.F.R. § 851.43(c).
+
+                                                  Sincerely,
+
+
+
+
+                                                  Robin M. Keeler
+                                                  Acting Director
+                                                  Office of Enforcement
+                                                  Office of Enterprise Assessments
+
+Enclosure: Final Notice of Violation (WEA-2025-01)
+
+cc: Reinhard Knerr, PPPO
+    Carisa Kremin, Mid-America Conversion Services, LLC
+
+                                                                                      Enclosure
+
+                                   Final Notice of Violation
+
+
+Mid-America Conversion Services, LLC
+Paducah DUF6 Conversion Facility
+
+WEA-2025-01
