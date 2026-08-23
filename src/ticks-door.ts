@@ -1908,7 +1908,7 @@ function resourceInfo(
     (typeof requirements.mimeType === "string" && requirements.mimeType) ||
     "application/json";
   const info: Record<string, unknown> = { url, mimeType };
-  if (description) info.description = description;
+  if (description) info.description = description.length <= 500 ? description : description.slice(0, 500);
   return info;
 }
 
@@ -2028,6 +2028,13 @@ export function cdpFacilitatorBodyProblems(body: unknown): string[] {
     }
     if (isPlainObject(payload.resource) && typeof payload.resource.url !== "string") {
       problems.push("v2 paymentPayload.resource.url is required");
+    }
+    if (
+      isPlainObject(payload.resource) &&
+      typeof payload.resource.description === "string" &&
+      payload.resource.description.length > 500
+    ) {
+      problems.push("v2 paymentPayload.resource.description exceeds CDP 500-char limit");
     }
     for (const [label, obj] of [
       ["paymentPayload.accepted", payload.accepted],
