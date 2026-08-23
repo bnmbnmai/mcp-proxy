@@ -39,6 +39,7 @@ build/ccpc-mergers.*
 build/bkarta-entscheidungen.*
 build/ipo-tm.*
 build/fmc-orders.*
+build/fsis-hmsa.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
@@ -75,3 +76,4 @@ data/ccpc-mergers/
 data/bkarta-entscheidungen/
 data/ipo-tm/
 data/fmc-orders/
+data/fsis-hmsa/

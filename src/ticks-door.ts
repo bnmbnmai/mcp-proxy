@@ -69,6 +69,8 @@
  * GET /ipo-tm/manifest.json — free count + institution/BL/date/sourceUrl (no hearing body)
  * GET /fmc-orders — FMC Commission / ALJ Shipping Act order PDF text ($0.05) (prep; unlisted)
  * GET /fmc-orders/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
+ * GET /fsis-hmsa — FSIS HMSA humane-handling enforcement letter PDF text ($0.05) (prep; unlisted)
+ * GET /fsis-hmsa/manifest.json — free count + establishment/letterType/date/sourceUrl (no letter body)
  * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
  * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.05). Listed only when a real body is cached.
@@ -312,6 +314,13 @@ import {
   loadFmcOrdersManifest,
 } from "./fmc-orders.js";
 import {
+  FSIS_HMSA_AMOUNT_ATOMIC,
+  FSIS_HMSA_MANIFEST_PATH,
+  FSIS_HMSA_PATH,
+  loadFsisHmsa,
+  loadFsisHmsaManifest,
+} from "./fsis-hmsa.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -416,7 +425,7 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "phmsa-cop" | "acm-besluiten" | "ccpc-mergers" | "bkarta-entscheidungen" | "ipo-tm" | "fmc-orders" | "form-483" | "gmp" | "gmp-md";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "phmsa-cop" | "acm-besluiten" | "ccpc-mergers" | "bkarta-entscheidungen" | "ipo-tm" | "fmc-orders" | "fsis-hmsa" | "form-483" | "gmp" | "gmp-md";
 /** Always-public SKUs. /form-483, /gmp, and /gmp-md join only when a real observation body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "ticks",
@@ -648,6 +657,10 @@ function amountAtomicFor(sku: DoorSku): string {
     const raw = env("FMC_ORDERS_USDC_ATOMIC");
     return raw.length > 0 ? raw : FMC_ORDERS_AMOUNT_ATOMIC;
   }
+  if (sku === "fsis-hmsa") {
+    const raw = env("FSIS_HMSA_USDC_ATOMIC");
+    return raw.length > 0 ? raw : FSIS_HMSA_AMOUNT_ATOMIC;
+  }
   if (sku === "form-483") {
     const raw = env("FORM_483_USDC_ATOMIC");
     return raw.length > 0 ? raw : FORM_483_AMOUNT_ATOMIC;
@@ -834,6 +847,11 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
     description:
       "Call GET /fmc-orders when you need official US FMC institution/company Commission or ALJ Shipping Act order TEXT extracted with pdftotext from www2.fmc.gov/readingroom/ PDFs. Not people. Not press HTML. Not F.M.C.2d compilations. Not the 2023 FR OIH notice. Not /mariners LNM. Not PHMSA /phmsa-cop. Not FR. Not catalog.data.gov. Not ICO /ico-mpn. Not IPO /ipo-tm. 17 U.S.C. § 105. Prep only — do not list.",
     resourcePath: FMC_ORDERS_PATH,
+  },
+  "fsis-hmsa": {
+    description:
+      "Call GET /fsis-hmsa when you need official USDA FSIS establishment/company humane-handling enforcement letter TEXT (NOIE / NOS / LOD / NOSHA) extracted with pdftotext/OCR from fsis.usda.gov/sites/default/files/media_file/documents/ PDFs. Not people. Not the table/index. Not /awa. Not DILA CNIL. Not ICO /ico-mpn. Not PHMSA /phmsa-cop. Not FMC /fmc-orders. 17 U.S.C. § 105. Prep only — do not list.",
+    resourcePath: FSIS_HMSA_PATH,
   },
   "form-483": {
     description:
@@ -1383,6 +1401,21 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         date: "2026-01-01",
         sourceUrl: "https://www2.fmc.gov/readingroom/docs/26-00/sample.pdf/",
         body: "FEDERAL MARITIME COMMISSION\nOrder on Initial Decision\n46 U.S.C. Shipping Act",
+      },
+    ],
+  },
+  "fsis-hmsa": {
+    ok: true,
+    product: "fsis-hmsa-letter-bodies",
+    status: "ok",
+    cards: [
+      {
+        id: "sample-letter",
+        institution: "Example Packing LLC",
+        letterType: "NOIE",
+        date: "2026-01-01",
+        sourceUrl: "https://www.fsis.usda.gov/sites/default/files/media_file/documents/M1-NOIE-01012026.pdf",
+        body: "U.S. DEPARTMENT OF AGRICULTURE\nFood Safety and Inspection Service\nNOTICE OF INTENDED ENFORCEMENT\nHumane Methods of Slaughter Act\n9 CFR Part 313",
       },
     ],
   },
@@ -4034,6 +4067,16 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === FSIS_HMSA_MANIFEST_PATH) {
+    sendJson(res, 200, withShopDiscovery(await loadFsisHmsaManifest(), req, port));
+    return;
+  }
+
+  if (path === FSIS_HMSA_PATH) {
+    await servePaid(req, res, port, "fsis-hmsa", () => loadFsisHmsa());
+    return;
+  }
+
   if (path === FORM_483_MANIFEST_PATH) {
     sendJson(res, 200, withShopDiscovery(await loadForm483Manifest(), req, port));
     return;
@@ -4131,6 +4174,7 @@ if (isMain()) {
     console.error(`${BKARTA_ENTSCHEIDUNGEN_PATH} $${Number(amountAtomicFor("bkarta-entscheidungen")) / 1e6} USDC (unlisted)`);
     console.error(`${IPO_TM_PATH} $${Number(amountAtomicFor("ipo-tm")) / 1e6} USDC (unlisted)`);
     console.error(`${FMC_ORDERS_PATH} $${Number(amountAtomicFor("fmc-orders")) / 1e6} USDC (unlisted)`);
+    console.error(`${FSIS_HMSA_PATH} $${Number(amountAtomicFor("fsis-hmsa")) / 1e6} USDC (unlisted)`);
     console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
     console.error(`${GMP_PATH} $${Number(amountAtomicFor("gmp")) / 1e6} USDC${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
     console.error(`${GMP_MD_PATH} $${Number(amountAtomicFor("gmp-md")) / 1e6} USDC${gmpMdIsPublic() ? "" : " (unlisted until a real MD observation body is cached)"}`);
