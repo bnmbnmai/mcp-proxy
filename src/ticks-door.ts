@@ -66,8 +66,10 @@
  * GET /gmp-md — Health Canada medical-device report-card observation bodies ($0.05). Listed only when a real body is cached.
  * GET /gmp-md/manifest.json — free id / firm / date / rating (no report-card body text)
  *
- * Unpaid paid paths → HTTP 402. Public doors echo extensions.bazaar +
- * paymentPayload.resource on facilitator persist. No keys in the repo.
+ * Unpaid paid paths → HTTP 402. Public doors persist via a CDP v2
+ * verify/settle body: paymentPayload.resource is {url,description,mimeType}
+ * and extensions.bazaar lives on the payload (not on paymentRequirements).
+ * No keys in the repo.
  */
 
 import { createServer as createHttpServer, type IncomingMessage, type ServerResponse } from "node:http";
@@ -1861,9 +1863,83 @@ function paymentPayload(payment: string): Record<string, unknown> | null {
   return decoded;
 }
 
+function isPlainObject(value: unknown): value is Record<string, unknown> {
+  return !!value && typeof value === "object" && !Array.isArray(value);
+}
+
+function innerPaymentPayload(raw: Record<string, unknown> | null): Record<string, unknown> | null {
+  if (!raw) return null;
+  if (isPlainObject(raw.payload)) return raw.payload;
+  if (typeof raw.signature === "string" && isPlainObject(raw.authorization)) {
+    return { signature: raw.signature, authorization: raw.authorization };
+  }
+  if (typeof raw.transaction === "string") return { transaction: raw.transaction };
+  return null;
+}
+
+function caip2Network(network: unknown): string {
+  if (typeof network === "string" && network.startsWith("eip155:")) return network;
+  if (network === "base-sepolia") return "eip155:84532";
+  return NETWORK_V2;
+}
+
+function resourceUrlOf(value: unknown): string | undefined {
+  if (typeof value === "string" && value) return value;
+  if (isPlainObject(value) && typeof value.url === "string" && value.url) return value.url;
+  return undefined;
+}
+
+function resourceInfo(
+  raw: Record<string, unknown> | null,
+  requirements: Record<string, unknown>,
+): Record<string, unknown> | undefined {
+  const fromPayload = raw?.resource;
+  const url =
+    resourceUrlOf(fromPayload) ??
+    resourceUrlOf(requirements.resource);
+  if (!url) return undefined;
+  const fromObj = isPlainObject(fromPayload) ? fromPayload : {};
+  const description =
+    (typeof fromObj.description === "string" && fromObj.description) ||
+    (typeof requirements.description === "string" && requirements.description) ||
+    undefined;
+  const mimeType =
+    (typeof fromObj.mimeType === "string" && fromObj.mimeType) ||
+    (typeof requirements.mimeType === "string" && requirements.mimeType) ||
+    "application/json";
+  const info: Record<string, unknown> = { url, mimeType };
+  if (description) info.description = description;
+  return info;
+}
+
+function v2PaymentRequirements(requirements: Record<string, unknown>): Record<string, unknown> {
+  const amount = String(requirements.amount ?? requirements.maxAmountRequired ?? "");
+  const out: Record<string, unknown> = {
+    scheme: requirements.scheme ?? "exact",
+    network: caip2Network(requirements.network),
+    asset: requirements.asset,
+    amount,
+    payTo: requirements.payTo,
+    maxTimeoutSeconds: typeof requirements.maxTimeoutSeconds === "number"
+      ? requirements.maxTimeoutSeconds
+      : 60,
+  };
+  if (isPlainObject(requirements.extra)) out.extra = requirements.extra;
+  return out;
+}
+
+function payloadExtensions(
+  raw: Record<string, unknown> | null,
+  requirements: Record<string, unknown>,
+): Record<string, unknown> | undefined {
+  if (isPlainObject(raw?.extensions)) return raw.extensions;
+  if (isPlainObject(requirements.extensions)) return requirements.extensions;
+  return undefined;
+}
+
 /**
- * PaymentRequirements sent to CDP verify/settle.
- * Public doors attach extensions.bazaar so the facilitator can catalog them.
+ * Door-side accept + persist hints. `extensions.bazaar` is copied onto
+ * paymentPayload (v2) by facilitatorBody; it is not sent on paymentRequirements.
  */
 export function facilitatorPaymentRequirements(
   resourceUrl: string,
@@ -1879,35 +1955,118 @@ export function facilitatorPaymentRequirements(
 }
 
 /**
- * Shop persist body for CDP verify/settle.
- * CDP catalogs on settle only when paymentPayload.resource is set and bazaar
- * is present (v2: payload.extensions; v1 clients do not copy it, so we echo it).
+ * CDP POST /v2/x402/verify and /settle body (current facilitator OpenAPI).
+ *
+ * Live 400 cause: the old persist hybrid sent paymentHeader, a string
+ * paymentPayload.resource, extensions.bazaar on paymentRequirements, and
+ * v1 requirements (network "base", maxAmountRequired) next to a v2 payload.
+ * CDP v2 oneOf accepts either a clean v1 pair or a clean v2 pair — not a mix.
+ *
+ * A later $0.02 /ticks CDP settle should POST only:
+ *   { x402Version: 2, paymentPayload, paymentRequirements }
+ * where paymentPayload.resource is {url, description, mimeType},
+ * paymentPayload.extensions.bazaar is the 402 bazaar block (public SKUs),
+ * paymentPayload.accepted matches paymentRequirements, and
+ * paymentRequirements is v2 (eip155:8453, amount, no resource / extensions).
  */
 export function facilitatorBody(
   payment: string,
   requirements: Record<string, unknown>,
 ): Record<string, unknown> {
   const raw = paymentPayload(payment);
-  const resource = typeof requirements.resource === "string" ? requirements.resource : undefined;
-  const reqExt = requirements.extensions;
-  const payload: Record<string, unknown> = raw ? { ...raw } : { paymentHeader: payment };
-  if (resource && payload.resource == null) {
-    payload.resource = resource;
-  }
-  if (
-    reqExt &&
-    typeof reqExt === "object" &&
-    !Array.isArray(reqExt) &&
-    payload.extensions == null
-  ) {
-    payload.extensions = reqExt;
-  }
-  return {
-    x402Version: payload.x402Version ?? 1,
-    paymentPayload: payload,
-    paymentRequirements: requirements,
-    paymentHeader: payment,
+  const inner = innerPaymentPayload(raw);
+  const accepted = isPlainObject(raw?.accepted) ? raw.accepted : v2PaymentRequirements(requirements);
+  const reqs = v2PaymentRequirements(requirements);
+  const payload: Record<string, unknown> = {
+    x402Version: 2,
+    accepted,
   };
+  if (inner) payload.payload = inner;
+  const resource = resourceInfo(raw, requirements);
+  if (resource) payload.resource = resource;
+  const extensions = payloadExtensions(raw, requirements);
+  if (extensions) payload.extensions = extensions;
+  return {
+    x402Version: 2,
+    paymentPayload: payload,
+    paymentRequirements: reqs,
+  };
+}
+
+/** Schema problems that make CDP v2 /verify return HTTP 400 (not 401). */
+export function cdpFacilitatorBodyProblems(body: unknown): string[] {
+  const problems: string[] = [];
+  if (!isPlainObject(body)) return ["body is not an object"];
+  if (body.paymentHeader != null) problems.push("paymentHeader is not a CDP verify/settle field");
+  const extraKeys = Object.keys(body).filter(
+    (k) => k !== "x402Version" && k !== "paymentPayload" && k !== "paymentRequirements",
+  );
+  if (extraKeys.length) problems.push(`unexpected top-level keys: ${extraKeys.join(",")}`);
+  if (body.x402Version !== 1 && body.x402Version !== 2) {
+    problems.push("x402Version must be 1 or 2");
+  }
+  if (!isPlainObject(body.paymentPayload)) problems.push("paymentPayload must be an object");
+  if (!isPlainObject(body.paymentRequirements)) problems.push("paymentRequirements must be an object");
+  if (!isPlainObject(body.paymentPayload) || !isPlainObject(body.paymentRequirements)) return problems;
+
+  const payload = body.paymentPayload;
+  const reqs = body.paymentRequirements;
+  const version = body.x402Version === 2 || payload.x402Version === 2 || isPlainObject(payload.accepted)
+    ? 2
+    : 1;
+
+  if (version === 2) {
+    if (body.x402Version !== 2) problems.push("v2 body needs top-level x402Version 2");
+    if (payload.x402Version !== 2) problems.push("v2 paymentPayload.x402Version must be 2");
+    if (payload.scheme != null || payload.network != null) {
+      problems.push("v2 paymentPayload must not have top-level scheme/network (they live on accepted)");
+    }
+    if (!isPlainObject(payload.accepted)) problems.push("v2 paymentPayload.accepted is required");
+    if (!isPlainObject(payload.payload)) problems.push("v2 paymentPayload.payload is required");
+    if (payload.resource != null && !isPlainObject(payload.resource)) {
+      problems.push("v2 paymentPayload.resource must be {url, description?, mimeType?} not a string");
+    }
+    if (isPlainObject(payload.resource) && typeof payload.resource.url !== "string") {
+      problems.push("v2 paymentPayload.resource.url is required");
+    }
+    for (const [label, obj] of [
+      ["paymentPayload.accepted", payload.accepted],
+      ["paymentRequirements", reqs],
+    ] as const) {
+      if (!isPlainObject(obj)) continue;
+      for (const key of ["scheme", "network", "asset", "amount", "payTo", "maxTimeoutSeconds"] as const) {
+        if (obj[key] == null) problems.push(`v2 ${label}.${key} is required`);
+      }
+      if (typeof obj.network === "string" && !obj.network.startsWith("eip155:") && !obj.network.startsWith("solana:")) {
+        problems.push(`v2 ${label}.network must be CAIP-2 (eip155:8453), not "${obj.network}"`);
+      }
+      if (obj.maxAmountRequired != null) problems.push(`v2 ${label} uses amount, not maxAmountRequired`);
+      if (obj.resource != null) problems.push(`v2 ${label} must not carry resource (that is paymentPayload.resource)`);
+      if (obj.extensions != null) problems.push(`v2 ${label} must not carry extensions (that is paymentPayload.extensions)`);
+      if (obj.description != null || obj.mimeType != null) {
+        problems.push(`v2 ${label} must not carry resource metadata`);
+      }
+    }
+    return problems;
+  }
+
+  if (payload.resource != null) problems.push("v1 paymentPayload must not include resource");
+  if (payload.extensions != null) problems.push("v1 paymentPayload must not include extensions");
+  if (payload.accepted != null) problems.push("v1 paymentPayload must not include accepted");
+  for (const key of ["scheme", "network", "payload"] as const) {
+    if (payload[key] == null) problems.push(`v1 paymentPayload.${key} is required`);
+  }
+  for (const key of ["scheme", "network", "maxAmountRequired", "resource", "description", "mimeType", "payTo", "asset", "maxTimeoutSeconds"] as const) {
+    if (reqs[key] == null) problems.push(`v1 paymentRequirements.${key} is required`);
+  }
+  if (reqs.resource != null && typeof reqs.resource !== "string") {
+    problems.push("v1 paymentRequirements.resource must be a URL string");
+  }
+  if (reqs.extensions != null) problems.push("v1 paymentRequirements must not include extensions");
+  if (Object.prototype.hasOwnProperty.call(reqs, "outputSchema") && reqs.outputSchema == null) {
+    problems.push("outputSchema: null 400s CDP v1 verify");
+  }
+  return problems;
 }
 
 export function cdpEnvStatus(): "set" | "CDP env not set" {
