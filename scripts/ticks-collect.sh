@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 # Daily apollo ticks collect (user cron, America/Boise).
-# Hay/cattle first, then grow LIVE first-slice doors (cardCount=5) and refresh
-# when official asOf moved or fetchedAt is older than 36h.
-# First-pass products: /warning-letters and /form-483 grow past the old 5-card stub.
+# Hay/cattle first, then deepen LIVE official first-slice caches past cardCount=5
+# toward dozens. Refresh when official asOf moved (year-2825) or fetchedAt > 36h.
+# One pass grows thin listed official doors; it does not only refresh hay.
 # Imagine-safe: skip 02:00-04:00 Boise and skip if Imagine/rmbg is active.
 # flock so two collects cannot overlap. No secrets in this file or its log.
+# No new SKUs. Code path only — CoS applies on apollo after Imagine.
 set -euo pipefail
 export TZ="${TZ:-America/Boise}"
 
@@ -13,10 +14,16 @@ LOCK="${TICKS_COLLECT_LOCK:-$HOME/logs/ticks-collect.lock}"
 MCP="${MCP_PROXY_DIR:-$HOME/projects/mcp-proxy}"
 FARM="${FARM_PLAN_DIR:-$HOME/projects/farm-plan}"
 STALE_HOURS="${TICKS_COLLECT_STALE_HOURS:-36}"
+# Grow while cache n is below this. Cached ids do not consume LIMIT.
+GROW_UNTIL="${TICKS_COLLECT_GROW_UNTIL:-24}"
+GROW_LIMIT="${TICKS_COLLECT_GROW_LIMIT:-24}"
+GROW_FETCH="${TICKS_COLLECT_GROW_FETCH:-36}"
+PLAN="${TICKS_COLLECT_PLAN:-$MCP/scripts/ticks-collect-plan.py}"
 NODE_BIN="${NODE_BIN:-$HOME/.nvm/versions/node/v24.13.0/bin/node}"
 if [[ ! -x "$NODE_BIN" ]]; then
   NODE_BIN="$(command -v node)"
 fi
+DRY_RUN="${TICKS_COLLECT_DRY_RUN:-}"
 
 mkdir -p "$(dirname "$LOG")" "$(dirname "$LOCK")"
 
@@ -26,12 +33,15 @@ log() {
 
 # 02:00–03:59 America/Boise is reserved for Imagine.
 hour="$(date +%H)"
-if (( 10#$hour >= 2 && 10#$hour < 4 )); then
-  log "skip Imagine window (02:00-04:00 America/Boise)"
-  exit 0
+if [[ "${TICKS_COLLECT_SKIP_IMAGINE:-}" != "1" && "${DRY_RUN}" != "1" ]]; then
+  if (( 10#$hour >= 2 && 10#$hour < 4 )); then
+    log "skip Imagine window (02:00-04:00 America/Boise)"
+    exit 0
+  fi
 fi
 
 imagine_busy() {
+  [[ "${TICKS_COLLECT_SKIP_IMAGINE:-}" == "1" || "${DRY_RUN}" == "1" ]] && return 1
   local hits
   hits="$(ps -eo args --no-headers 2>/dev/null | awk '
     BEGIN { IGNORECASE = 1 }
@@ -48,15 +58,22 @@ if imagine_busy; then
   exit 0
 fi
 
-exec 9>"$LOCK"
-if ! flock -n 9; then
-  log "skip flock: another collect holds $LOCK"
-  exit 0
+if [[ "${DRY_RUN}" != "1" ]]; then
+  exec 9>"$LOCK"
+  if ! flock -n 9; then
+    log "skip flock: another collect holds $LOCK"
+    exit 0
+  fi
 fi
 
 # Snapshot dirs only. Do not source idaho-ticks-x402.env (settle key).
 export TICKS_DIR="${TICKS_DIR:-$FARM/data/prices}"
 export FARM_DATA_DIR="${FARM_DATA_DIR:-$FARM/data}"
+export IMPORT_ALERTS_DIR="${IMPORT_ALERTS_DIR:-$MCP/data/import-alerts}"
+export MARINERS_DIR="${MARINERS_DIR:-$MCP/data/mariners}"
+export MARINERS_D11_DIR="${MARINERS_D11_DIR:-$MCP/data/mariners-d11}"
+export MARINERS_D7_DIR="${MARINERS_D7_DIR:-$MCP/data/mariners-d7}"
+export MARINERS_D8_DIR="${MARINERS_D8_DIR:-$MCP/data/mariners-d8}"
 export GMP_MD_DIR="${GMP_MD_DIR:-$MCP/data/gmp-md}"
 export SWISSPAR_DIR="${SWISSPAR_DIR:-$MCP/data/swisspar}"
 export PCAC_DIR="${PCAC_DIR:-$MCP/data/pcac}"
@@ -84,41 +101,42 @@ export AWA_DIR="${AWA_DIR:-$MCP/data/awa}"
 export UNTITLED_LETTERS_DIR="${UNTITLED_LETTERS_DIR:-$MCP/data/untitled-letters}"
 export WARNING_LETTERS_DIR="${WARNING_LETTERS_DIR:-$MCP/data/warning-letters}"
 
-# Additional real bodies per first-slice grow. Cached cards do not consume LIMIT.
-export ICO_MPN_LIMIT="${ICO_MPN_LIMIT:-8}"
-export ICO_MPN_MAX_FETCH="${ICO_MPN_MAX_FETCH:-12}"
-export CMA_CA98_LIMIT="${CMA_CA98_LIMIT:-8}"
-export CMA_CA98_MAX_FETCH="${CMA_CA98_MAX_FETCH:-12}"
-export SWISSPAR_LIMIT="${SWISSPAR_LIMIT:-8}"
-export SWISSPAR_MAX_FETCH="${SWISSPAR_MAX_FETCH:-12}"
-export OFAC_ORDERS_LIMIT="${OFAC_ORDERS_LIMIT:-8}"
-export OFAC_ORDERS_MAX_FETCH="${OFAC_ORDERS_MAX_FETCH:-12}"
-export BIS_ORDERS_LIMIT="${BIS_ORDERS_LIMIT:-8}"
-export BIS_ORDERS_MAX_FETCH="${BIS_ORDERS_MAX_FETCH:-12}"
-export CFTC_ORDERS_LIMIT="${CFTC_ORDERS_LIMIT:-8}"
-export CFTC_ORDERS_MAX_FETCH="${CFTC_ORDERS_MAX_FETCH:-12}"
-export GMP_MD_LIMIT="${GMP_MD_LIMIT:-8}"
-export GMP_MD_MAX_FETCH="${GMP_MD_MAX_FETCH:-12}"
-export AWA_LIMIT="${AWA_LIMIT:-8}"
-export AWA_MAX_FETCH="${AWA_MAX_FETCH:-12}"
-export PCAC_LIMIT="${PCAC_LIMIT:-8}"
-export PCAC_MAX_FETCH="${PCAC_MAX_FETCH:-12}"
-export FTC_WL_LIMIT="${FTC_WL_LIMIT:-8}"
-export FTC_WL_MAX_FETCH="${FTC_WL_MAX_FETCH:-12}"
-export CFPB_ORDERS_LIMIT="${CFPB_ORDERS_LIMIT:-8}"
-export CFPB_ORDERS_MAX_FETCH="${CFPB_ORDERS_MAX_FETCH:-12}"
-export OCC_CD_LIMIT="${OCC_CD_LIMIT:-8}"
-export OCC_CD_MAX_FETCH="${OCC_CD_MAX_FETCH:-12}"
+# Additional real bodies per grow. Cached cards do not consume LIMIT.
+# First-slice official doors default to dozens, not 5.
+set_grow() {
+  local prefix="$1"
+  local limit_var="${prefix}_LIMIT"
+  local fetch_var="${prefix}_MAX_FETCH"
+  printf -v "${limit_var}" '%s' "${!limit_var:-$GROW_LIMIT}"
+  printf -v "${fetch_var}" '%s' "${!fetch_var:-$GROW_FETCH}"
+  export "${limit_var}" "${fetch_var}"
+}
+
+for prefix in \
+  ICO_MPN CMA_CA98 SWISSPAR OFAC_ORDERS BIS_ORDERS CFTC_ORDERS GMP_MD AWA \
+  PCAC FTC_WL CFPB_ORDERS OCC_CD FIFRA_ORDERS DENOVO_ORDERS TTB_OIC \
+  AIR_LETTERS SUPERFUND_RODS FDIC_ORDERS FRB_ORDERS NCUA_ORDERS \
+  FINCEN_ORDERS FERC_ORDERS
+do
+  set_grow "$prefix"
+done
+
 export FORM_483_LIMIT="${FORM_483_LIMIT:-25}"
 export FORM_483_MAX_FETCH="${FORM_483_MAX_FETCH:-200}"
 export WARNING_LETTERS_LIMIT="${WARNING_LETTERS_LIMIT:-50}"
 export WARNING_LETTERS_MAX_FETCH="${WARNING_LETTERS_MAX_FETCH:-200}"
+export UNTITLED_LETTERS_LIMIT="${UNTITLED_LETTERS_LIMIT:-30}"
+export UNTITLED_LETTERS_MAX_FETCH="${UNTITLED_LETTERS_MAX_FETCH:-40}"
+export GMP_LIMIT="${GMP_LIMIT:-50}"
+export GMP_MAX_FETCH="${GMP_MAX_FETCH:-400}"
 
-log "collect start"
+log "collect start growUntil=${GROW_UNTIL} limit=${GROW_LIMIT} dryRun=${DRY_RUN:-0}"
 
-if [[ "${SKIP_HAY:-}" != "1" ]]; then
+if [[ "${SKIP_HAY:-}" != "1" && "${DRY_RUN}" != "1" ]]; then
   log "hay/cattle collect"
   /usr/bin/python3 "$FARM/scripts/collect-prices.py" >>"$LOG" 2>&1 || log "hay/cattle collect failed (exit $?)"
+elif [[ "${DRY_RUN}" == "1" ]]; then
+  log "dry-run skip hay (hay is a separate cache; this pass plans official doors)"
 else
   log "skip hay (SKIP_HAY=1)"
 fi
@@ -128,18 +146,24 @@ if imagine_busy; then
   exit 0
 fi
 
-# Priority first-slice SKUs, then other live 5-card doors.
-# /ticks hay/cattle is above. First-pass products warning-letters + form-483 grow here.
+# Every listed official door except /ticks (hay/cattle above). No new SKUs.
 DOORS=(
   warning-letters
   form-483
+  untitled-letters
+  gmp
+  gmp-md
+  import-alerts
+  mariners
+  mariners-d11
+  mariners-d7
+  mariners-d8
   cma-ca98
   ico-mpn
   swisspar
   ofac-orders
   bis-orders
   cftc-orders
-  gmp-md
   awa
   pcac
   ftc-wl
@@ -160,56 +184,53 @@ DOORS=(
 door_action() {
   local sku="$1"
   local snap="$MCP/data/$sku/snapshot.json"
-  python3 - "$snap" "$STALE_HOURS" <<'PY'
-import json, sys
-from datetime import datetime, timezone, timedelta
-path, stale_h = sys.argv[1], int(sys.argv[2])
-try:
-    d = json.load(open(path))
-except Exception:
-    print("grow")
-    raise SystemExit(0)
-n = len(d.get("cards") or d.get("letters") or d.get("alerts") or [])
-as_of = str(d.get("asOf") or "")
-fetched = str(d.get("fetchedAt") or "")
-if as_of.startswith("2825"):
-    print("refresh")
-    raise SystemExit(0)
-if n <= 5:
-    print("grow")
-    raise SystemExit(0)
-if not fetched:
-    print("refresh")
-    raise SystemExit(0)
-try:
-    ts = datetime.fromisoformat(fetched.replace("Z", "+00:00"))
-except Exception:
-    print("refresh")
-    raise SystemExit(0)
-age = datetime.now(timezone.utc) - ts.astimezone(timezone.utc)
-print("refresh" if age > timedelta(hours=stale_h) else "skip")
-PY
+  python3 "$PLAN" "$snap" "$STALE_HOURS" "$GROW_UNTIL"
+}
+
+door_argv() {
+  local sku="$1"
+  case "$sku" in
+    mariners-d11) printf '%s\n' --district=11 ;;
+    mariners-d7) printf '%s\n' --district=7 ;;
+    mariners-d8) printf '%s\n' --district=8 ;;
+  esac
+}
+
+door_js() {
+  local sku="$1"
+  case "$sku" in
+    mariners-d11|mariners-d7|mariners-d8) printf '%s\n' "$MCP/build/mariners.js" ;;
+    *) printf '%s\n' "$MCP/build/${sku}.js" ;;
+  esac
 }
 
 run_door() {
   local sku="$1"
-  local js="$MCP/build/${sku}.js"
-  if [[ ! -f "$js" ]]; then
+  local js
+  js="$(door_js "$sku")"
+  if [[ ! -f "$js" && "${DRY_RUN}" != "1" ]]; then
     log "$sku missing $js"
     return 0
   fi
-  local action
-  action="$(door_action "$sku")"
+  local planned action n
+  planned="$(door_action "$sku")"
+  action="${planned%% *}"
+  n="${planned#* }"
   if [[ "$action" == "skip" ]]; then
-    log "$sku skip (grown and fetchedAt within ${STALE_HOURS}h)"
+    log "$sku skip (n=${n} grown past ${GROW_UNTIL} and fetchedAt within ${STALE_HOURS}h)"
     return 0
   fi
   if imagine_busy; then
     log "stop doors: Imagine/rmbg became active"
     return 1
   fi
-  log "$sku $action"
-  if ! "$NODE_BIN" "$js" >>"$LOG" 2>&1; then
+  log "$sku $action n=${n} growUntil=${GROW_UNTIL} limit=${GROW_LIMIT}"
+  if [[ "${DRY_RUN}" == "1" ]]; then
+    return 0
+  fi
+  local extra
+  extra="$(door_argv "$sku")"
+  if ! "$NODE_BIN" "$js" ${extra:+$extra} >>"$LOG" 2>&1; then
     log "$sku collect failed"
   fi
   return 0

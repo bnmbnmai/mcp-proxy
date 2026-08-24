@@ -626,6 +626,17 @@ function pause(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
 }
 
+function mergeOfficialListings(listed: NcuaOrderListing[], seeds: NcuaOrderListing[]): NcuaOrderListing[] {
+  const seen = new Set<string>();
+  const out: NcuaOrderListing[] = [];
+  for (const row of [...listed, ...seeds]) {
+    if (!row.id || seen.has(row.id)) continue;
+    seen.add(row.id);
+    out.push(row);
+  }
+  return out;
+}
+
 async function loadOfficialListings(dir: string): Promise<{ listed: NcuaOrderListing[]; listedCount: number }> {
   if (dir) {
     const json = readNamedFile(dir, ["listing-excerpt.json", "listing.json"]);
@@ -637,6 +648,13 @@ async function loadOfficialListings(dir: string): Promise<{ listed: NcuaOrderLis
     const html = readNamedFile(dir, ["listing-excerpt.html", "listing.html"]);
     const listed = html ? parseListingHtml(html) : [];
     return { listed, listedCount: listed.length };
+  }
+  try {
+    const listed = parseListingHtml(await fetchNcuaHtml(LISTING_URL));
+    const merged = mergeOfficialListings(listed, SEED_LISTINGS);
+    if (merged.length > 0) return { listed: merged, listedCount: merged.length };
+  } catch {
+    /* official listing missed; keep first-slice seeds */
   }
   return { listed: [...SEED_LISTINGS], listedCount: SEED_LISTINGS.length };
 }
