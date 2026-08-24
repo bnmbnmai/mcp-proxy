@@ -418,6 +418,12 @@ export async function fetchTtbOicBytes(url: string): Promise<Uint8Array> {
   return bytes;
 }
 
+export async function fetchTtbOicText(url: string): Promise<string> {
+  const res = await fetch(url, { headers: { "User-Agent": HTTP_UA, Accept: "text/html,application/xhtml+xml" } });
+  if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
+  return await res.text();
+}
+
 function digitalPdfText(pdfPath: string): string {
   const helper = env("TTB_OIC_PDFTOTEXT") || "pdftotext";
   const result = spawnSync(helper, ["-layout", pdfPath, "-"], { encoding: "utf8", maxBuffer: 20 * 1024 * 1024 });
@@ -474,6 +480,17 @@ function readNamedFile(dir: string, names: string[]): string | null {
   return null;
 }
 
+function mergeOfficialListings(listed: TtbOicListing[], seeds: TtbOicListing[]): TtbOicListing[] {
+  const seen = new Set<string>();
+  const out: TtbOicListing[] = [];
+  for (const row of [...listed, ...seeds]) {
+    if (!row.id || seen.has(row.id)) continue;
+    seen.add(row.id);
+    out.push(row);
+  }
+  return out;
+}
+
 async function loadOfficialListings(dir: string): Promise<{ listed: TtbOicListing[]; listedCount: number }> {
   if (dir) {
     const json = readNamedFile(dir, ["listing-excerpt.json", "listing.json"]);
@@ -484,6 +501,13 @@ async function loadOfficialListings(dir: string): Promise<{ listed: TtbOicListin
     }
     const html = readNamedFile(dir, ["listing-excerpt.html", "listing.html"]);
     return { listed: html ? parseListingHtml(html) : [], listedCount: html ? parseListingHtml(html).length : 0 };
+  }
+  try {
+    const listed = parseListingHtml(await fetchTtbOicText(LISTING_URL));
+    const merged = mergeOfficialListings(listed, SEED_LISTINGS);
+    if (merged.length > 0) return { listed: merged, listedCount: merged.length };
+  } catch {
+    /* official listing missed; keep first-slice seeds */
   }
   return { listed: [...SEED_LISTINGS], listedCount: SEED_LISTINGS.length };
 }

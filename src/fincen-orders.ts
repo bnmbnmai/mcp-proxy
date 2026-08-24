@@ -594,6 +594,14 @@ export async function fetchFincenBytes(url: string): Promise<Uint8Array> {
   return bytes;
 }
 
+export async function fetchFincenText(url: string): Promise<string> {
+  const res = await fetch(url, {
+    headers: { "User-Agent": HTTP_UA, Accept: "text/html,application/xhtml+xml" },
+  });
+  if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
+  return await res.text();
+}
+
 export function pdfToText(pdfPath: string): string {
   const helper = env("FINCEN_ORDERS_PDFTOTEXT") || "pdftotext";
   const result = spawnSync(helper, ["-layout", pdfPath, "-"], {
@@ -612,6 +620,17 @@ function pause(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
 }
 
+function mergeOfficialListings(listed: FincenOrderListing[], seeds: FincenOrderListing[]): FincenOrderListing[] {
+  const seen = new Set<string>();
+  const out: FincenOrderListing[] = [];
+  for (const row of [...listed, ...seeds]) {
+    if (!row.id || seen.has(row.id)) continue;
+    seen.add(row.id);
+    out.push(row);
+  }
+  return out;
+}
+
 async function loadOfficialListings(dir: string): Promise<{ listed: FincenOrderListing[]; listedCount: number }> {
   if (dir) {
     const json = readNamedFile(dir, ["listing-excerpt.json", "listing.json"]);
@@ -623,6 +642,13 @@ async function loadOfficialListings(dir: string): Promise<{ listed: FincenOrderL
     const html = readNamedFile(dir, ["listing-excerpt.html", "listing.html"]);
     const listed = html ? parseListingHtml(html) : [];
     return { listed, listedCount: listed.length };
+  }
+  try {
+    const listed = parseListingHtml(await fetchFincenText(LISTING_URL));
+    const merged = mergeOfficialListings(listed, SEED_LISTINGS);
+    if (merged.length > 0) return { listed: merged, listedCount: merged.length };
+  } catch {
+    /* official listing missed; keep first-slice seeds */
   }
   return { listed: [...SEED_LISTINGS], listedCount: SEED_LISTINGS.length };
 }

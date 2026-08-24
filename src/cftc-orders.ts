@@ -637,11 +637,23 @@ async function loadOfficialListings(dir: string): Promise<{ listed: CftcOrderLis
   }
   try {
     const listed = parseListingHtml(await fetchCftcText(LISTING_URL));
-    if (listed.length > 0) return { listed, listedCount: listed.length };
+    const merged = mergeOfficialListings(listed, SEED_LISTINGS);
+    if (merged.length > 0) return { listed: merged, listedCount: merged.length };
   } catch {
     /* official listing missed; keep first-slice seeds */
   }
   return { listed: [...SEED_LISTINGS], listedCount: SEED_LISTINGS.length };
+}
+
+function mergeOfficialListings(listed: CftcOrderListing[], seeds: CftcOrderListing[]): CftcOrderListing[] {
+  const seen = new Set<string>();
+  const out: CftcOrderListing[] = [];
+  for (const row of [...listed, ...seeds]) {
+    if (!row.id || seen.has(row.id)) continue;
+    seen.add(row.id);
+    out.push(row);
+  }
+  return out;
 }
 
 function priorBodies(): Map<string, CftcOrderCard> {
