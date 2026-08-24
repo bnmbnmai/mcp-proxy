@@ -171,14 +171,24 @@ export function parseMoney(raw: string): { lo: number; hi: number; mid: number }
   return { lo, hi, mid: (lo + hi) / 2 };
 }
 
-export function latestEsmisPdfUrl(html: string, slug: string): string | null {
+export function esmisPdfUrls(html: string, slug: string): string[] {
   const re = new RegExp(
     `href="(/sites/default/release-files/[^"]+/AMS_${slug}\\.PDF)"`,
     "gi",
   );
-  const hrefs = [...html.matchAll(re)].map((m) => m[1]);
-  if (hrefs.length === 0) return null;
-  return hrefs[0].startsWith("http") ? hrefs[0] : `${ESMIS_HOST}${hrefs[0]}`;
+  const out: string[] = [];
+  const seen = new Set<string>();
+  for (const match of html.matchAll(re)) {
+    const url = match[1].startsWith("http") ? match[1] : `${ESMIS_HOST}${match[1]}`;
+    if (seen.has(url)) continue;
+    seen.add(url);
+    out.push(url);
+  }
+  return out;
+}
+
+export function latestEsmisPdfUrl(html: string, slug: string): string | null {
+  return esmisPdfUrls(html, slug)[0] ?? null;
 }
 
 export function esmisPublicationUrl(report: AmsReport): string {
@@ -197,6 +207,24 @@ function hayRegion(line: string): string | null {
   return m[2] ? `${name} (${m[2]})` : name;
 }
 
+function hayPlaceLine(line: string): string | null {
+  if (line.length < 3 || line.length > 48) return null;
+  if (/\d|\$/.test(line)) return null;
+  if (
+    /alfalfa|bermuda|orchard|qty|price|source:|compared|direct hay|email us|usda |volume|please note|freight|crop age/i.test(
+      line,
+    )
+  ) {
+    return null;
+  }
+  return line;
+}
+
+function hayKindLine(line: string): string | null {
+  const m = line.match(/^Hay\s*\((Conventional|Organic)\)\s*$/i);
+  return m ? m[1] : null;
+}
+
 function hayClass(line: string): { commodity: string; grade: string; unit: string } | null {
   const m = line.match(
     /^([A-Za-z][A-Za-z0-9 /]+?)\s+-\s+([A-Za-z][A-Za-z/ ]+?)\s+\((?:Ask|Trade|Contract \(Trade\))\/Per\s+(Ton|Bale)\)/i,
@@ -211,6 +239,7 @@ export function parseHayReport(text: string, report: AmsReport, sourceUrl: strin
   const source = `USDA AMS ${report.title} Report (AMS_${report.slug})`;
   const out: AmsTick[] = [];
   let region = report.region;
+  let pendingPlace = "";
   let cls: { commodity: string; grade: string; unit: string } | null = null;
   for (const raw of text.split(/\r?\n/)) {
     const line = raw.replace(/\s+/g, " ").trim();
@@ -218,9 +247,19 @@ export function parseHayReport(text: string, report: AmsReport, sourceUrl: strin
     const nextRegion = hayRegion(line);
     if (nextRegion) {
       region = nextRegion;
+      pendingPlace = "";
       cls = null;
       continue;
     }
+    const kind = hayKindLine(line);
+    if (kind && pendingPlace) {
+      region = `${pendingPlace} (${kind})`;
+      pendingPlace = "";
+      cls = null;
+      continue;
+    }
+    const place = hayPlaceLine(line);
+    if (place) pendingPlace = place;
     const nextCls = hayClass(line);
     if (nextCls) {
       cls = nextCls;
@@ -478,15 +517,19 @@ function pause(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-export async function resolveOfficialPdfUrl(report: AmsReport): Promise<string> {
+export async function officialPdfCandidates(report: AmsReport): Promise<string[]> {
+  const urls = [MNREPORTS_PDF(report.slug)];
   try {
     const html = await fetchText(esmisPublicationUrl(report));
-    const latest = latestEsmisPdfUrl(html, report.slug);
-    if (latest) return latest;
+    urls.unshift(...esmisPdfUrls(html, report.slug));
   } catch {
-    /* fall through to mnreports */
+    /* mnreports still tried */
   }
-  return MNREPORTS_PDF(report.slug);
+  return [...new Set(urls)];
+}
+
+export async function resolveOfficialPdfUrl(report: AmsReport): Promise<string> {
+  return (await officialPdfCandidates(report))[0] ?? MNREPORTS_PDF(report.slug);
 }
 
 export function readAmsSnapshot(dir = amsNationalDir()): AmsSnapshot | null {
@@ -566,39 +609,37 @@ export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number
 
   for (const report of AMS_NATIONAL_REPORTS) {
     const label = `AMS_${report.slug} ${report.title}`;
-    try {
-      const pdfUrl = await resolveOfficialPdfUrl(report);
-      const fetched = await fetchBytes(pdfUrl);
-      if (!isPdf(fetched.bytes)) {
-        failed.push({
-          id: `ams_${report.slug}`,
-          source: label,
-          sourceUrl: pdfUrl,
-          reason: `official host did not return a PDF (content-type ${fetched.contentType || "unknown"})`,
-        });
-      } else {
+    const candidates = await officialPdfCandidates(report);
+    let parsed: AmsTick[] = [];
+    let usedUrl = candidates[0] ?? MNREPORTS_PDF(report.slug);
+    let lastErr = "";
+    for (const pdfUrl of candidates) {
+      try {
+        const fetched = await fetchBytes(pdfUrl);
+        if (!isPdf(fetched.bytes)) {
+          lastErr = `official host did not return a PDF (content-type ${fetched.contentType || "unknown"})`;
+          continue;
+        }
         const pdfPath = join(tmpDir, `AMS_${report.slug}.pdf`);
         writeFileSync(pdfPath, fetched.bytes);
         const text = pdfToText(pdfPath);
-        const parsed = parseAmsReportText(text, report, pdfUrl);
-        if (parsed.length === 0) {
-          failed.push({
-            id: `ams_${report.slug}`,
-            source: label,
-            sourceUrl: pdfUrl,
-            reason: "official PDF had no parseable hay/cattle/grain print",
-          });
-        } else {
-          rows.push(...parsed);
-          sources.push(label);
-        }
+        parsed = parseAmsReportText(text, report, pdfUrl);
+        usedUrl = pdfUrl;
+        if (parsed.length > 0) break;
+        lastErr = "official PDF had no parseable hay/cattle/grain print";
+      } catch (err) {
+        lastErr = err instanceof Error ? err.message : String(err);
       }
-    } catch (err) {
+    }
+    if (parsed.length > 0) {
+      rows.push(...parsed);
+      sources.push(label);
+    } else {
       failed.push({
         id: `ams_${report.slug}`,
         source: label,
-        sourceUrl: MNREPORTS_PDF(report.slug),
-        reason: err instanceof Error ? err.message : String(err),
+        sourceUrl: usedUrl,
+        reason: lastErr || "no official PDF body",
       });
     }
     if (pauseMs > 0) await pause(pauseMs);
