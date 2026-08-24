@@ -164,6 +164,9 @@ async function withServer(
   if (!Object.prototype.hasOwnProperty.call(envPatch, "GMP_MD_DIR")) {
     envPatch = { ...envPatch, GMP_MD_DIR: join(tmpdir(), "gmp-md-absent-withserver-") };
   }
+  if (!Object.prototype.hasOwnProperty.call(envPatch, "TICKS_AMS_DIR")) {
+    envPatch = { ...envPatch, TICKS_AMS_DIR: join(tmpdir(), "ticks-ams-absent-withserver-") };
+  }
   for (const [k, v] of Object.entries(envPatch)) {
     prev[k] = process.env[k];
     if (v === undefined) delete process.env[k];
