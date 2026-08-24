@@ -506,6 +506,17 @@ function readNamedFile(dir: string, names: string[]): string | null {
   return null;
 }
 
+function mergeOfficialListings(listed: IcoMpnListing[], seeds: IcoMpnListing[]): IcoMpnListing[] {
+  const seen = new Set<string>();
+  const out: IcoMpnListing[] = [];
+  for (const row of [...listed, ...seeds]) {
+    if (!row.id || seen.has(row.id)) continue;
+    seen.add(row.id);
+    out.push(row);
+  }
+  return out;
+}
+
 async function loadOfficialListings(dir: string): Promise<{ listed: IcoMpnListing[]; listedCount: number }> {
   if (dir) {
     const json = readNamedFile(dir, ["listing-excerpt.json", "listing.json"]);
@@ -519,7 +530,8 @@ async function loadOfficialListings(dir: string): Promise<{ listed: IcoMpnListin
   }
   try {
     const listed = parseListingHtml(await fetchIcoMpnText(LISTING_URL));
-    if (listed.length > 0) return { listed, listedCount: listed.length };
+    const merged = mergeOfficialListings(listed, SEED_LISTINGS);
+    if (merged.length > 0) return { listed: merged, listedCount: merged.length };
   } catch {
     /* official listing missed; keep first-slice seeds */
   }

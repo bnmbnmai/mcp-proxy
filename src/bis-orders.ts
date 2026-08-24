@@ -653,11 +653,23 @@ async function loadOfficialListings(dir: string): Promise<{ listed: BisOrderList
   }
   try {
     const listed = parseListingHtml(await fetchBisText(LISTING_URL));
-    if (listed.length > 0) return { listed, listedCount: listed.length };
+    const merged = mergeOfficialListings(listed, SEED_LISTINGS);
+    if (merged.length > 0) return { listed, listedCount: merged.length };
   } catch {
     /* official listing missed; keep first-slice seeds */
   }
   return { listed: [...SEED_LISTINGS], listedCount: SEED_LISTINGS.length };
+}
+
+function mergeOfficialListings(listed: BisOrderListing[], seeds: BisOrderListing[]): BisOrderListing[] {
+  const seen = new Set<string>();
+  const out: BisOrderListing[] = [];
+  for (const row of [...listed, ...seeds]) {
+    if (!row.id || seen.has(row.id)) continue;
+    seen.add(row.id);
+    out.push(row);
+  }
+  return out;
 }
 
 function priorBodies(): Map<string, BisOrderCard> {
