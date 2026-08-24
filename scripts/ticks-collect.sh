@@ -135,8 +135,15 @@ log "collect start growUntil=${GROW_UNTIL} limit=${GROW_LIMIT} dryRun=${DRY_RUN:
 if [[ "${SKIP_HAY:-}" != "1" && "${DRY_RUN}" != "1" ]]; then
   log "hay/cattle collect"
   /usr/bin/python3 "$FARM/scripts/collect-prices.py" >>"$LOG" 2>&1 || log "hay/cattle collect failed (exit $?)"
+  log "nationwide AMS hay/cattle/grain collect"
+  if [[ -f "$MCP/build/ticks-ams.js" ]]; then
+    "$NODE_BIN" "$MCP/build/ticks-ams.js" >>"$LOG" 2>&1 || log "nationwide AMS collect failed (exit $?)"
+  else
+    log "nationwide AMS collect skipped (missing $MCP/build/ticks-ams.js)"
+  fi
 elif [[ "${DRY_RUN}" == "1" ]]; then
   log "dry-run skip hay (hay is a separate cache; this pass plans official doors)"
+  log "dry-run plan nationwide AMS hay/cattle/grain (same /ticks door)"
 else
   log "skip hay (SKIP_HAY=1)"
 fi
