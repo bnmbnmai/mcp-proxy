@@ -114,7 +114,8 @@ async function main(): Promise<void> {
   assert.ok(!livePaidNames(fromLive).includes("wasde"));
   assert.equal(fromLive[0]?.priceUsdc, "0.05");
   assert.ok(fromLive.every((sku) => sku.priceUsdc === "0.05"));
-  assert.equal(mcpToolDescriptors(LIVE_ORIGIN, fromLive).length, 32);
+  assert.equal(mcpToolDescriptors(LIVE_ORIGIN, fromLive).length, 33);
+  assert.equal(mcpToolDescriptors(LIVE_ORIGIN, fromLive)[0]?.name, "search");
   assert.equal(MCP_CONNECT, `npx -y mcp-remote ${LIVE_ORIGIN}${MCP_PATH}`);
 
   const listed = await handleMcpJsonRpc(
@@ -122,8 +123,9 @@ async function main(): Promise<void> {
     { wellKnown: wk },
   );
   const tools = (listed as { result: { tools: { name: string }[] } }).result.tools;
-  assert.equal(tools.length, 32);
-  assert.deepEqual(tools.map((t) => `/${t.name}`), livePaths);
+  assert.equal(tools.length, 33);
+  assert.equal(tools[0]?.name, "search");
+  assert.deepEqual(tools.filter((t) => t.name !== "search").map((t) => `/${t.name}`), livePaths);
   assert.ok(tools.some((t) => t.name === "cma-ca98"));
 
   const unknown = await handleMcpJsonRpc(
@@ -199,15 +201,24 @@ async function main(): Promise<void> {
         connect?: string;
         paidGets?: string[];
         source?: string;
+        note?: string;
       };
       assert.equal(card.source, WELL_KNOWN_PATH);
+      assert.ok((card.note ?? "").includes("entire current table"));
+      assert.ok((card.note ?? "").includes("newest 10 official texts"));
+      assert.ok((card.note ?? "").includes("q="));
+      assert.ok((card.note ?? "").includes("id to buy"));
+      assert.ok((card.note ?? "").includes("$0.02"));
+      assert.ok((card.note ?? "").includes("$0.05"));
+      assert.ok((card.note ?? "").includes("whole current set"));
+      assert.ok(!(card.note ?? "").includes("entire current cache"));
       assert.deepEqual(card.paidGets, localPaths);
-      assert.equal(card.tools, localPaths.length);
+      assert.equal(card.tools, localPaths.length + 1);
       assert.ok(card.connect?.includes("mcp-remote"));
       assert.ok(card.url?.endsWith(MCP_PATH));
       const fromLocal = await resolveMcpCatalog({ origin: base, wellKnown });
       assert.deepEqual(livePaidPaths(fromLocal), localPaths);
-      assert.equal(mcpDiscovery(base, fromLocal).tools, localPaths.length);
+      assert.equal(mcpDiscovery(base, fromLocal).tools, localPaths.length + 1);
 
       const init = await fetch(`${base}${MCP_PATH}`, {
         method: "POST",
@@ -218,20 +229,55 @@ async function main(): Promise<void> {
       const initBody = (await init.json()) as { result?: { serverInfo?: { name?: string }; instructions?: string } };
       assert.equal(initBody.result?.serverInfo?.name, "bnm-data-shop");
       assert.ok(initBody.result?.instructions?.includes(WELL_KNOWN_PATH));
+      assert.ok(initBody.result?.instructions?.includes("Free search tool"));
+      assert.ok(initBody.result?.instructions?.includes("entire current table"));
+      assert.ok(initBody.result?.instructions?.includes("newest 10 official texts"));
+      assert.ok(initBody.result?.instructions?.includes("id to buy"));
+      assert.ok(initBody.result?.instructions?.includes("$0.02"));
+      assert.ok(initBody.result?.instructions?.includes("whole current set"));
+      assert.ok(!(initBody.result?.instructions ?? "").includes("entire current cache"));
 
       const list = await fetch(`${base}${MCP_PATH}`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ jsonrpc: "2.0", id: 2, method: "tools/list" }),
       });
-      const listBody = (await list.json()) as { result: { tools: { name: string; description?: string }[] } };
-      assert.deepEqual(listBody.result.tools.map((t) => t.name), livePaidNames(fromLocal));
+      const listBody = (await list.json()) as { result: { tools: { name: string; title?: string; description?: string }[] } };
+      assert.deepEqual(listBody.result.tools.map((t) => t.name), ["search", ...livePaidNames(fromLocal)]);
       assert.ok(listBody.result.tools.some((t) => t.name === "cma-ca98"));
       const ticksTool = listBody.result.tools.find((t) => t.name === "ticks");
       const lettersTool = listBody.result.tools.find((t) => t.name === "warning-letters");
       const cardsTool = listBody.result.tools.find((t) => t.name === "cma-ca98");
+      assert.equal(ticksTool?.name, "ticks");
+      assert.equal(ticksTool?.title, "US hay, cattle, and grain ticks");
+      assert.ok((ticksTool?.description ?? "").includes("US hay, cattle, and grain ticks"));
+      assert.ok(!(ticksTool?.title ?? "").startsWith("Idaho"));
+      assert.ok(!(ticksTool?.title ?? "").startsWith("PNW"));
+      assert.ok(!(ticksTool?.description ?? "").includes("Idaho +"));
+      assert.ok(!(ticksTool?.description ?? "").includes("PNW barns"));
       assert.ok((ticksTool?.description ?? "").includes("ticks[] + history"));
-      assert.ok((ticksTool?.description ?? "").includes("Entire cache on one GET"));
+      assert.ok((ticksTool?.description ?? "").includes("entire current table"));
+      assert.equal((ticksTool?.description ?? "").split("Paid JSON is").length - 1, 1);
+      assert.equal((ticksTool?.description ?? "").split("One $0.05 GET returns the entire current table").length - 1, 1);
+      assert.ok(!(ticksTool?.description ?? "").includes("entire current cache"));
+      assert.ok(!(ticksTool?.description ?? "").includes("Entire current cache"));
+      const icoTool = listBody.result.tools.find((t) => t.name === "ico-mpn");
+      assert.ok((icoTool?.description ?? "").includes("newest 10 official texts"));
+      assert.ok((icoTool?.description ?? "").includes("?q="));
+      assert.ok((icoTool?.description ?? "").includes("id to buy"));
+      assert.ok((icoTool?.description ?? "").includes("?id="));
+      assert.ok((icoTool?.description ?? "").includes("$0.02"));
+      assert.ok((icoTool?.description ?? "").includes("$0.05"));
+      assert.ok((icoTool?.description ?? "").includes("whole current set"));
+      assert.equal((icoTool?.description ?? "").split("GET ?id= is one official text for $0.02").length - 1, 1);
+      assert.ok(!(icoTool?.description ?? "").includes("entire current cache"));
+      const searchTool = listBody.result.tools.find((t) => t.name === "search");
+      assert.ok((searchTool?.description ?? "").includes("?q="));
+      assert.ok((searchTool?.description ?? "").includes("id to buy"));
+      assert.ok((searchTool?.description ?? "").includes("$0.02"));
+      assert.ok((searchTool?.description ?? "").includes("entire current table"));
+      assert.ok(!(ticksTool?.description ?? "").includes("Not people"));
+      assert.ok(!(ticksTool?.description ?? "").includes("Not a new SKU"));
       assert.ok((lettersTool?.description ?? "").includes("letters[].body"));
       assert.ok((cardsTool?.description ?? "").includes("cards[].body"));
       assert.ok(!listBody.result.tools.some((t) => (t.description ?? "").includes("31 paid")));
@@ -263,6 +309,21 @@ async function main(): Promise<void> {
       const paidBody = (await paid.json()) as { result: { content: { text: string }[] } };
       assert.ok(paidBody.result.content[0]?.text.includes("HTTP 200"));
       assert.ok(paidBody.result.content[0]?.text.includes("idaho-hay-feeder-ticks"));
+
+      const search = await fetch(`${base}${MCP_PATH}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          jsonrpc: "2.0",
+          id: 5,
+          method: "tools/call",
+          params: { name: "search", arguments: { path: "/ico-mpn", q: "Monetary" } },
+        }),
+      });
+      const searchBody = (await search.json()) as { result: { content: { text: string }[] } };
+      assert.ok(searchBody.result.content[0]?.text.includes("HTTP 200"));
+      assert.ok(searchBody.result.content[0]?.text.includes("manifest.json"));
+      assert.ok(searchBody.result.content[0]?.text.includes("?q="));
     },
   );
 

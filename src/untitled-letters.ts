@@ -675,7 +675,7 @@ export function buildUntitledLettersManifest(snap: UntitledLettersSnapshot | nul
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + id + firm + date + product + official source only. Letter text / Cites / what OPDP or CBER said is the paid GET /untitled-letters payload. Not /warning-letters.",
+    note: "Count + id + firm + date + product + official source only. Letter text / Cites / what OPDP or CBER said is the paid GET /untitled-letters payload. This free manifest lists the full catalog. GET ?id= is one official text for $0.02. Default GET is the newest 10 official texts for $0.05. If the catalog has fewer than 10, that $0.05 GET is the whole current set. Older pages are another $0.05 on the same URL (page/before).",
     license: LICENSE,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
     network: "base",

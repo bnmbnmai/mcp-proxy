@@ -586,7 +586,7 @@ export function buildSwissparManifest(snap: SwissparSnapshot | null): Record<str
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + name + date + MA + official source only. Evaluation / benefit-risk / study-result text is the paid GET /swisspar payload. Not the A–Z HTML index. Not EMA EPARs. Not FDA CDER reviews. Not the HCP/FI appendix.",
+    note: "Count + name + date + MA + official source only. Evaluation / benefit-risk / study-result text is the paid GET /swisspar payload. This free manifest lists the full catalog. GET ?id= is one official text for $0.02. Default GET is the newest 10 official texts for $0.05. If the catalog has fewer than 10, that $0.05 GET is the whole current set. Older pages are another $0.05 on the same URL (page/before).",
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

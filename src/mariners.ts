@@ -11,6 +11,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
+import { marinersNoticeId } from "./paid-records.js";
 
 export const MARINERS_PATH = "/mariners";
 export const MARINERS_MANIFEST_PATH = "/mariners/manifest.json";
@@ -558,7 +559,7 @@ export function buildMarinersManifest(
     product: spec.productId,
     name: spec.productName,
     free: true,
-    note: `Count + official source + schema only. Notice text is the paid GET ${spec.path} body.`,
+    note: `Count + official source + schema only. This free manifest lists the full catalog. GET ?id= is one official text for $0.02. Default GET is the newest 10 official texts for $0.05. If the catalog has fewer than 10, that $0.05 GET is the whole current set. Older pages are another $0.05 on the same URL (page/before).`,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
     network: "base",
     asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
@@ -572,6 +573,16 @@ export function buildMarinersManifest(
     asOf: snap?.asOf ?? null,
     fetchedAt: snap?.fetchedAt ?? null,
     noticeCount: notices.length,
+    notices: notices.map((n) => {
+      const row = n as unknown as Record<string, unknown>;
+      return {
+        id: marinersNoticeId(row),
+        week: n.week,
+        section: n.section,
+        waterway: n.waterway,
+        sourceUrl: n.sourceUrl,
+      };
+    }),
     sections: sectionCounts(notices),
     sources: snap?.sources ?? {
       listing: spec.listingUrl,

@@ -6,7 +6,7 @@ Live paid doors (all return HTTP 402 unpaid, official bodies when paid):
 
 | Door | Price | Live proof |
 |---|---|---|
-| `GET https://ticks.bnm.farm/ticks` | $0.05 | Idaho + PNW ticks |
+| `GET https://ticks.bnm.farm/ticks` | $0.05 | US hay, cattle, and grain ticks |
 | `GET https://ticks.bnm.farm/import-alerts` | $0.05 | FDA Import Alert / DWPE |
 | `GET https://ticks.bnm.farm/mariners` | $0.05 | USCG D13 LNM |
 | `GET https://ticks.bnm.farm/mariners-d11` | $0.05 | USCG D11 / Southwest LNM |
