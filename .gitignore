@@ -36,6 +36,7 @@ build/superfund-rods.*
 build/ico-mpn.*
 build/cma-ca98.*
 build/ema-referrals.*
+build/cder-reviews.*
 build/ticks-ams.*
 build/paid-records.*
 data/import-alerts/
@@ -70,4 +71,5 @@ data/superfund-rods/
 data/ico-mpn/
 data/cma-ca98/
 data/ema-referrals/
+data/cder-reviews/
 data/ticks-ams/

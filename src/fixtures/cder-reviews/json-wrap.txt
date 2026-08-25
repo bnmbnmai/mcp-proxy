@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "disclaimer": "openFDA"
+  },
+  "results": [
+    {
+      "application_number": "NDA217785",
+      "application_docs": [
+        {
+          "type": "Review",
+          "doc_url": "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2024/217785Orig1s000TOC.html"
+        }
+      ],
+      "openfda": {
+        "brand_name": [
+          "REZDIFFRA"
+        ]
+      }
+    }
+  ]
+}

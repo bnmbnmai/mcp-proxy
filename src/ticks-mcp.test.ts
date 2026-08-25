@@ -56,6 +56,7 @@ const LIVE_WELL_KNOWN_PATHS = [
   "/ico-mpn",
   "/cma-ca98",
   "/ema-referrals",
+  "/cder-reviews",
   "/form-483",
   "/gmp",
   "/gmp-md",
@@ -100,9 +101,10 @@ async function main(): Promise<void> {
   assert.equal(liveWk.status, 200, "live well-known must be reachable");
   const wk = (await liveWk.json()) as { resources: string[] };
   const livePaths = wk.resources.map((url) => new URL(url).pathname);
-  assert.equal(livePaths.length, 33, "this deploy well-known is 33 paid GETs after /ema-referrals");
+  assert.equal(livePaths.length, 34, "this deploy well-known is 34 paid GETs after /cder-reviews");
   assert.deepEqual(livePaths, LIVE_WELL_KNOWN_PATHS);
   assert.ok(livePaths.includes("/cma-ca98"), "live well-known lists /cma-ca98");
+  assert.ok(livePaths.includes("/cder-reviews"), "live well-known lists /cder-reviews");
 
   const fromLive = skusFromWellKnown(wk);
   assert.deepEqual(livePaidPaths(fromLive), livePaths, "MCP tools === well-known resources");
@@ -115,7 +117,7 @@ async function main(): Promise<void> {
   assert.ok(!livePaidNames(fromLive).includes("wasde"));
   assert.equal(fromLive[0]?.priceUsdc, "0.05");
   assert.ok(fromLive.every((sku) => sku.priceUsdc === "0.05"));
-  assert.equal(mcpToolDescriptors(LIVE_ORIGIN, fromLive).length, 36);
+  assert.equal(mcpToolDescriptors(LIVE_ORIGIN, fromLive).length, 37);
   assert.equal(MCP_CONNECT, `npx -y mcp-remote ${LIVE_ORIGIN}${MCP_PATH}`);
 
   const listed = await handleMcpJsonRpc(
@@ -124,8 +126,9 @@ async function main(): Promise<void> {
   );
   const tools = (listed as { result: { tools: { name: string }[] } }).result.tools;
   const paidTools = tools.filter((t) => t.name !== "search" && t.name !== "get-page" && t.name !== "get-one");
-    assert.equal(paidTools.length, 33);
+    assert.equal(paidTools.length, 34);
     assert.ok(tools.some((t) => t.name === "ema-referrals"));
+    assert.ok(tools.some((t) => t.name === "cder-reviews"));
   assert.deepEqual(paidTools.map((t) => `/${t.name}`), livePaths);
   assert.ok(tools.some((t) => t.name === "search"));
   assert.ok(tools.some((t) => t.name === "get-page"));
@@ -170,6 +173,7 @@ async function main(): Promise<void> {
       assert.ok(!shop.products.some((p) => p.path === MCP_PATH), "/mcp is not a paid SKU");
       assert.ok(shop.products.some((p) => p.path === "/cma-ca98"));
       assert.ok(shop.products.some((p) => p.path === "/ema-referrals"));
+      assert.ok(shop.products.some((p) => p.path === "/cder-reviews"));
 
       const wellKnown = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
         mcp?: string;
@@ -182,6 +186,7 @@ async function main(): Promise<void> {
       const localPaths = wellKnown.resources.map((url) => new URL(url).pathname);
       assert.ok(localPaths.includes("/cma-ca98"));
       assert.ok(localPaths.includes("/ema-referrals"), "local well-known lists /ema-referrals");
+      assert.ok(localPaths.includes("/cder-reviews"), "local well-known lists /cder-reviews");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(llms.includes("GET/POST /mcp"));
@@ -242,6 +247,7 @@ async function main(): Promise<void> {
       assert.ok(listBody.result.tools.some((t) => t.name === "get-one"));
       assert.ok(listBody.result.tools.some((t) => t.name === "cma-ca98"));
       assert.ok(listBody.result.tools.some((t) => t.name === "ema-referrals"), "MCP tools come from local well-known");
+      assert.ok(listBody.result.tools.some((t) => t.name === "cder-reviews"), "MCP tools come from local well-known");
 
       const unpaid = await fetch(`${base}${MCP_PATH}`, {
         method: "POST",
