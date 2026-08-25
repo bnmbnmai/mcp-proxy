@@ -1,0 +1,90 @@
+{
+  "success": true,
+  "meta": { "total_data": 7, "timestamp": "08-22-2026 08:15" },
+  "data": [
+    {
+      "date": "08/05/2026",
+      "epaId": "IND047030226",
+      "collections": "25504 | 35222 | 70110 ",
+      "siteName": "FEDERATED METALS CORP WHITING",
+      "description": "",
+      "documentId": "711427",
+      "state": "IN",
+      "region": "05",
+      "title": "<a href='https://semspub.epa.gov/src/document/05/711427' target=_blank>INTERIM RECORD OF DECISION (ROD)(SIGNED) - SOIL REMEDY FOR OPERABLE UNIT 1</a><span class=fileinfo>(88 pp, 2.65 MB)</span>",
+      "publicationNumber": ""
+    },
+    {
+      "date": "07/01/2026",
+      "epaId": "NJD980529713",
+      "collections": "25504 | 41742 ",
+      "siteName": "PIERSON'S CREEK",
+      "description": "",
+      "documentId": "762775",
+      "state": "NJ",
+      "region": "02",
+      "title": "<a href='https://semspub.epa.gov/src/document/02/762775' target=_blank>RECORD OF DECISION FOR OU1 FOR THE PIERSON'S CREEK SITE</a><span class=fileinfo>(120 pp, 8 MB)</span>",
+      "publicationNumber": ""
+    },
+    {
+      "date": "09/27/2024",
+      "epaId": "NYN000206476",
+      "collections": "25504 | 41742 | 43210 ",
+      "siteName": "MEEKER AVENUE PLUME",
+      "description": "",
+      "documentId": "744534",
+      "state": "NY",
+      "region": "02",
+      "title": "<a href='https://semspub.epa.gov/src/document/02/744534' target=_blank>RECORD OF DECISION FOR OU2 FOR THE MEEKER AVENUE PLUME SITE</a><span class=fileinfo>(200 pp, 11 MB)</span>",
+      "publicationNumber": ""
+    },
+    {
+      "date": "05/21/2026",
+      "epaId": "FLD984169248",
+      "collections": "25504 ",
+      "siteName": "FLASH CLEANERS",
+      "description": "",
+      "documentId": "11238616",
+      "state": "FL",
+      "region": "04",
+      "title": "<a href='https://semspub.epa.gov/src/document/04/11238616' target=_blank>EXPLANATION OF SIGNIFCANT DIFFERENCES FOR THE RECORD OF DECISION, FLASH CLEANERS</a><span class=fileinfo>(12 pp, 1 MB)</span>",
+      "publicationNumber": ""
+    },
+    {
+      "date": "12/31/2012",
+      "epaId": "KSD007241246",
+      "collections": "25504 | 62391 ",
+      "siteName": "10TH STREET SITE",
+      "description": "",
+      "documentId": "30284035",
+      "state": "KS",
+      "region": "07",
+      "title": "<a href='https://semspub.epa.gov/src/document/07/30284035' target=_blank>Amendment to the Record of Decision (ROD)</a><span class=fileinfo>(108 pp, 34 MB)</span>",
+      "publicationNumber": ""
+    },
+    {
+      "date": "03/26/2026",
+      "epaId": "NJ2210022273",
+      "collections": "25504 ",
+      "siteName": "PICATINNY ARSENAL (USARMY)",
+      "description": "",
+      "documentId": "774375",
+      "state": "NJ",
+      "region": "02",
+      "title": "<a href='https://semspub.epa.gov/src/document/02/774375' target=_blank>US EPA APPROVAL OF THE RECORD OF DECISION FOR OU30 - SITE 53 PICA-057</a><span class=fileinfo>(3 pp, 200 KB)</span>",
+      "publicationNumber": ""
+    },
+    {
+      "date": "03/26/2026",
+      "epaId": "IND047030226",
+      "collections": "1 | 31748 ",
+      "siteName": "FEDERATED METALS CORP WHITING",
+      "description": "",
+      "documentId": "709513",
+      "state": "IN",
+      "region": "05",
+      "title": "<a href='https://semspub.epa.gov/src/document/05/709513' target=_blank>Proposed Plan</a><span class=fileinfo>(20 pp, 1 MB)</span>",
+      "publicationNumber": ""
+    }
+  ]
+}

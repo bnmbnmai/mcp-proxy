@@ -9,7 +9,10 @@ import {
   CARD_FIELDS,
   LICENSE,
   LISTING_URL,
+  MASTER_COLLECTION_URL,
+  ROD_COLLECTION_ID,
   SEED_LISTINGS,
+  SITE_PROFILE_URL,
   buildSuperfundRodsManifest,
   collectSuperfundRods,
   isInstitutionOrderRow,
@@ -18,6 +21,7 @@ import {
   officialSuperfundRodPdfUrl,
   parseListingHtml,
   parseListingRows,
+  parseMasterCollectionJson,
   parseSuperfundRodText,
   pdfIdFromUrl,
   type SuperfundRodListingRow,
@@ -47,12 +51,42 @@ async function main(): Promise<void> {
   assert.ok(!listed.some((r) => r.id === "05-709513"), "skip Proposed Plan");
   assert.ok(listed.every((r) => officialSuperfundRodPdfUrl(r.sourceUrl)));
   assert.equal(officialSuperfundRodPdfUrl(FEDERATED), FEDERATED);
+  assert.equal(
+    officialSuperfundRodPdfUrl("https://semspub.epa.gov/src/document/05/711427"),
+    FEDERATED,
+    "SEMS document pages rewrite to official work PDFs",
+  );
+  assert.equal(officialSuperfundRodPdfUrl(SITE_PROFILE_URL), null, "CUMULIS site-profile HTML is not an official ROD PDF");
+  assert.equal(officialSuperfundRodPdfUrl("https://www3.epa.gov/semsjson/HQ_MasterCollection_11.json"), null);
   assert.equal(officialSuperfundRodPdfUrl("https://direct.aphis.usda.gov/sites/default/files/26-173-01air-response.pdf"), null);
   assert.equal(officialSuperfundRodPdfUrl("https://www.ttb.gov/system/files/2026-07/ABSTMT-21st_Amendment_Brewery_Cafe_Redacted.pdf"), null);
   assert.equal(officialSuperfundRodPdfUrl("https://www.accessdata.fda.gov/cdrh_docs/pdf25/DEN250042.pdf"), null);
-  assert.ok(LISTING_URL.includes("epa.gov"));
+  assert.ok(LISTING_URL.includes("search-superfund-decision-documents"), "live collect walks the official ROD table");
+  assert.ok(MASTER_COLLECTION_URL.includes("HQ_MasterCollection_11.json"));
+  assert.equal(ROD_COLLECTION_ID, "25504");
+  assert.ok(SITE_PROFILE_URL.includes("fuseaction=second.Cleanup"), "site profile stays the first-slice teaser");
   assert.equal(SEED_LISTINGS.length, 5);
   assert.ok(SEED_LISTINGS.some((r) => r.docket === "05-711427"));
+
+  const officialListed = parseMasterCollectionJson(readFx("master-collection-excerpt.json"));
+  assert.ok(officialListed.some((r) => r.id === "05-711427" && r.sourceUrl === FEDERATED));
+  assert.ok(officialListed.some((r) => r.id === "02-762775"), "Pierson's Creek is an official site ROD");
+  assert.ok(officialListed.some((r) => r.id === "02-744534"));
+  assert.ok(!officialListed.some((r) => r.id === "04-11238616"), "skip ESD even with SIGNIFCANT typo");
+  assert.ok(!officialListed.some((r) => r.id === "07-30284035"), "skip ROD amendment");
+  assert.ok(!officialListed.some((r) => r.id === "02-774375"), "skip EPA approval-of-ROD memo");
+  assert.ok(!officialListed.some((r) => r.id === "05-709513"), "skip Proposed Plan outside collection 25504");
+  assert.ok(officialListed.every((r) => officialSuperfundRodPdfUrl(r.sourceUrl)));
+
+  const creek = {
+    institution: "PIERSON'S CREEK",
+    docket: "02-762775",
+    date: "2026-07-01",
+    title: "RECORD OF DECISION FOR OU1 FOR THE PIERSON'S CREEK SITE",
+    sourceUrl: "https://semspub.epa.gov/src/document/02/762775",
+  };
+  assert.equal(isPeopleRow(creek), false, "all-caps Superfund site names are not people");
+  assert.equal(isInstitutionOrderRow(creek), true);
 
   const htmlListed = parseListingHtml(readFx("listing-excerpt.html"));
   assert.ok(htmlListed.some((r) => r.id === "05-711427"));
@@ -119,6 +153,12 @@ async function main(): Promise<void> {
     institution: "Jane Q Public",
   });
   assert.equal(isRealSuperfundRodBody(peopleBody.body), false, "people file is not this SKU");
+
+  const wrapJson = parseSuperfundRodText(readFx("master-collection-excerpt.json"), {
+    sourceUrl: FEDERATED,
+    institution: "FEDERATED METALS CORP WHITING",
+  });
+  assert.equal(isRealSuperfundRodBody(wrapJson.body), false, "do not wrap the free SEMS listing JSON");
 
   const fr = parseSuperfundRodText(readFx("federal-register.txt"), {
     sourceUrl: "https://www.federalregister.gov/documents/2026/08/05/2026-99999/federated-metals",
