@@ -21,6 +21,7 @@ import {
   officialNcuaOrderUrl,
   parseListingHtml,
   parseListingRows,
+  parseNcuaCsv,
   parseNcuaOrderHtml,
   type NcuaListingRow,
 } from "./ncua-orders.js";
@@ -76,6 +77,16 @@ async function main(): Promise<void> {
   const htmlListed = parseListingHtml(readFx("listing-excerpt.html"));
   assert.ok(htmlListed.some((r) => r.id === "21-0105-ER"));
   assert.ok(!htmlListed.some((r) => r.id === "26-0031-WR"), "HTML listing skips people/IAP");
+
+  const csvListed = parseNcuaCsv(readFx("csv-metadata.csv"));
+  assert.ok(csvListed.length >= 5, "official CSV walks institution C&D HTML URLs");
+  assert.ok(csvListed.some((r) => r.id === "21-0105-ER"));
+  assert.ok(csvListed.some((r) => r.id === "19-1061-ER"));
+  assert.ok(csvListed.some((r) => r.id === "19-0187-ER"));
+  assert.ok(csvListed.some((r) => r.id === "22-0112-ER"));
+  assert.ok(csvListed.some((r) => r.id === "22-0122-ER"));
+  assert.ok(!csvListed.some((r) => r.id === "26-0041-WR"), "CSV walk skips people");
+  assert.ok(csvListed.every((r) => officialNcuaOrderUrl(r.sourceUrl)));
 
   const people = rows.find((r) => (r.docket ?? "") === "26-0031-WR");
   assert.ok(people);
