@@ -21,6 +21,9 @@ export const PRODUCT_ID = "fda-denovo-classification-order-bodies";
 export const PRODUCT_NAME = "FDA De Novo classification-order text";
 
 export const LISTING_URL = "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/denovo.cfm";
+/** Official result list. The bare LISTING_URL is a search form with no DEN rows. */
+export const SEARCH_URL = `${LISTING_URL}?start_search=1`;
+export const SEARCH_PAGE_STARTS = [1, 11, 21, 31] as const;
 export const PDF_HOST = "www.accessdata.fda.gov";
 export const PDF_ORIGIN = "https://www.accessdata.fda.gov";
 export const DOCKET_LABEL_RE = /(?:Re:\s*)?(DEN\d{6})\b/i;
@@ -229,6 +232,19 @@ export function isoDate(raw: string | null | undefined): string | null {
   return null;
 }
 
+export function searchPageUrl(start: number): string {
+  return `${LISTING_URL}?start_search=${start}`;
+}
+
+/** cdrh_docs path is /pdfYY/DENyyNNNN.pdf from the DEN year digits. */
+export function pdfUrlFromDocket(docket: string | null | undefined): string | null {
+  const den = normalizeDocket(docket);
+  if (!den) return null;
+  const yy = den.slice(3, 5);
+  if (!/^\d{2}$/.test(yy)) return null;
+  return officialDenovoPdfUrl(`${PDF_ORIGIN}/cdrh_docs/pdf${yy}/${den}.pdf`);
+}
+
 export function officialDenovoPdfUrl(urlOrPath: string | null | undefined): string | null {
   if (!urlOrPath) return null;
   const trimmed = urlOrPath.trim();
@@ -327,16 +343,22 @@ export function parseListingHtml(html: string): DenovoOrderListing[] {
     const date = cells.find((c) => isoDate(c)) ?? cells[0] ?? "";
     const institution =
       cells.find((c) => ENTITY_RE.test(c) || PERSON_NAME_RE.test(c)) ?? cells[1] ?? "";
-    const sourceUrl = href.startsWith("http") ? href : href ? `${PDF_ORIGIN}${href}` : "";
-    const docket = normalizeDocket(cells.find((c) => normalizeDocket(c)) ?? "") ?? "";
+    const docket =
+      normalizeDocket(cells.find((c) => normalizeDocket(c)) ?? "") ??
+      normalizeDocket(href) ??
+      "";
+    const rawHref = href.startsWith("http") ? href : href ? `${PDF_ORIGIN}/${href.replace(/^\.\.\//, "")}` : "";
+    const sourceUrl = officialDenovoPdfUrl(rawHref) ?? pdfUrlFromDocket(docket) ?? rawHref;
     rows.push({
       institution,
       docket,
       date,
-      title: cells.find((c) => ORDER_KIND_RE.test(c) || COMPLAINT_RE.test(c)) ?? "Order",
+      title:
+        cells.find((c) => ORDER_KIND_RE.test(c) || COMPLAINT_RE.test(c)) ??
+        (docket ? "De Novo classification order" : "Order"),
       type: cells[2] ?? "",
       sourceUrl,
-      pdfId: pdfIdFromUrl(sourceUrl) ?? "",
+      pdfId: pdfIdFromUrl(sourceUrl) ?? docket,
     });
   }
   const loose = [...html.matchAll(/href="([^"]*cdrh_docs\/pdf\d{2}\/DEN\d{6}\.pdf[^"]*)"[^>]*>([\s\S]*?)<\/a>/gi)];
@@ -651,7 +673,11 @@ async function loadOfficialListings(dir: string): Promise<{ listed: DenovoOrderL
     return { listed, listedCount: listed.length };
   }
   try {
-    const listed = parseListingHtml(await fetchDenovoText(LISTING_URL));
+    const listed: DenovoOrderListing[] = [];
+    for (const start of SEARCH_PAGE_STARTS) {
+      const html = await fetchDenovoText(searchPageUrl(start));
+      listed.push(...parseListingHtml(html));
+    }
     const merged = mergeOfficialListings(listed, SEED_LISTINGS);
     if (merged.length > 0) return { listed: merged, listedCount: merged.length };
   } catch {
