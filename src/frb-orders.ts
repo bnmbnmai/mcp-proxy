@@ -640,10 +640,14 @@ function readNamedFile(dir: string, names: string[]): string | null {
 
 export async function fetchFrbText(url: string): Promise<string> {
   const res = await fetch(url, {
-    headers: { "User-Agent": HTTP_UA, Accept: "text/csv,text/plain" },
+    headers: { "User-Agent": HTTP_UA, Accept: "*/*" },
   });
   if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
-  return await res.text();
+  const text = await res.text();
+  if (!/Effective Date,Termination Date,Individual/i.test(text.slice(0, 200))) {
+    throw new Error(`${url} did not return the official enforcement CSV`);
+  }
+  return text;
 }
 
 export async function fetchFrbBytes(url: string): Promise<Uint8Array> {
