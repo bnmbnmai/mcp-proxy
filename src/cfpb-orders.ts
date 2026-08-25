@@ -684,7 +684,7 @@ export function buildCfpbOrdersManifest(snap: CfpbOrderSnapshot | null): Record<
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + firm + date + title + fileNo + official PDF URL only. Order body is the paid GET /cfpb-orders payload. This free manifest lists the full catalog. One $0.05 GET returns the newest 100 official texts; older pages are another $0.05 on the same URL (page/before).",
+    note: "Count + firm + date + title + fileNo + official PDF URL only. Order body is the paid GET /cfpb-orders payload. This free manifest lists the full catalog. GET ?id= is one official text for $0.02. Default GET / page of up to 100 official texts is $0.05 (newest 100 official texts, not the entire archive). Older pages are another $0.05 on the same URL (page/before).",
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

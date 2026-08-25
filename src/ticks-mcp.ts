@@ -242,20 +242,20 @@ export function mcpDiscovery(origin = LIVE_ORIGIN, catalog: LivePaidSku[]): Reco
     connect: `npx -y mcp-remote ${base}${MCP_PATH}`,
     source: WELL_KNOWN_PATH,
     note:
-      `Free search tool plus ${catalog.length} paid page GETs from ${WELL_KNOWN_PATH}. Find a record on the free index (q=); each hit names the page/before to pay. Table doors return the entire current table. Extracted-body paid GET is the newest 100 official texts, not the entire archive. Older pages are another $0.05 on the same URL. Unpaid tool calls still HTTP 402 on the paid URL. Not Bazaar-indexed.`,
+      `Free search tool plus ${catalog.length} paid GETs from ${WELL_KNOWN_PATH}. Find a record on the free index (q=); each hit names the id to buy. GET ?id= is one official text for $0.02. Default GET / page of up to 100 official texts is $0.05 (newest 100 official texts, not the entire archive). Older pages are another $0.05 on the same URL. Table doors return the entire current table. Unpaid tool calls still HTTP 402 on the paid URL. Not Bazaar-indexed.`,
   };
 }
 
 function mcpToolDescription(base: string, sku: LivePaidSku): string {
   const lead = `GET ${base}${sku.path} — $${sku.priceUsdc} USDC on Base to ${PAY_TO}. ${sku.summary}`.trim();
   const closer = "Unpaid returns HTTP 402. After a valid X-PAYMENT, the same URL returns JSON.";
-  if (sku.summary.includes("Paid JSON is") && sku.summary.includes("One $0.05 GET returns")) {
+  if (sku.summary.includes("Paid JSON is") && (sku.summary.includes("One $0.05 GET returns") || sku.summary.includes("GET ?id="))) {
     return `${lead} ${closer}`;
   }
   const paid = `Paid JSON is ${sku.paidJson ?? paidJsonForPath(sku.path)}${countLabel(sku) ? ` (${countLabel(sku)} in catalog)` : ""}.`;
   const bag = isTablePath(sku.path)
     ? "One $0.05 GET returns the entire current table."
-    : "Find the page on the free index (?q=). One $0.05 GET returns the newest 100 official texts, not the entire archive. Older pages are another $0.05 on the same URL (page/before).";
+    : "Find the id on the free index (?q=). GET ?id= is one official text for $0.02. Default GET / page of up to 100 official texts is $0.05 (newest 100 official texts, not the entire archive). Older pages are another $0.05 on the same URL (page/before).";
   return `${lead} ${paid} ${bag} ${closer}`;
 }
 
@@ -277,7 +277,7 @@ export function mcpToolDescriptors(
     name: "search",
     title: "Free index search",
     description:
-      `GET {manifest}?q= on an extracted-body door. Find a specific record on the free index. Each hit names the page/before to pay. Then call that door's paid page GET. Does not return official bodies. Table doors (/ticks, /import-alerts) have no page — one paid GET is the entire current table. Manifests live at ${base}/{path}/manifest.json (ticks: ${base}/manifest.json).`,
+      `GET {manifest}?q= on an extracted-body door. Find a specific record on the free index. Each hit names the id to buy. Then pay GET ?id= ($0.02, one official text) or the default/page bag ($0.05, up to 100). Does not return official bodies. Table doors (/ticks, /import-alerts) have no page — one paid GET is the entire current table. Manifests live at ${base}/{path}/manifest.json (ticks: ${base}/manifest.json).`,
     inputSchema: {
       type: "object" as const,
       properties: {
@@ -309,13 +309,17 @@ export function mcpToolDescriptors(
         ...(isTablePath(sku.path)
           ? {}
           : {
+              id: {
+                type: "string",
+                description: "Optional record id. GET ?id= is one official text for $0.02. Find the id on the free index (?q=).",
+              },
               page: {
                 type: "string",
-                description: "Optional page of official texts. Default 1 is the newest 100, not the entire archive. Same URL, another $0.05. Find the page on the free index (?q=).",
+                description: "Optional page of official texts. Default 1 is up to 100 newest official texts for $0.05, not the entire archive. Same URL, another $0.05.",
               },
               before: {
                 type: "string",
-                description: "Optional cursor (item id) for the next older page. Same URL, another $0.05.",
+                description: "Optional cursor (item id) for the next older $0.05 page. Same URL, another $0.05.",
               },
             }),
       },
@@ -356,7 +360,7 @@ export async function getFreeIndex(
 
 export async function getPaidSku(
   path: string,
-  opts: { origin?: string; xPayment?: string; catalog?: LivePaidSku[]; page?: string; before?: string } = {},
+  opts: { origin?: string; xPayment?: string; catalog?: LivePaidSku[]; id?: string; page?: string; before?: string } = {},
 ): Promise<PaidGetResult> {
   const catalog = opts.catalog ?? (await resolveMcpCatalog({ origin: opts.origin }));
   const sku = findLiveSku(path, catalog);
@@ -364,6 +368,7 @@ export async function getPaidSku(
     throw new Error(`not a live paid GET: ${path}`);
   }
   const qs = new URLSearchParams();
+  if (opts.id?.trim()) qs.set("id", opts.id.trim());
   if (opts.page?.trim()) qs.set("page", opts.page.trim());
   if (opts.before?.trim()) qs.set("before", opts.before.trim());
   const query = qs.toString();
@@ -438,7 +443,7 @@ export async function handleMcpJsonRpc(
       capabilities: { tools: { listChanged: false } },
       serverInfo: { name: "bnm-data-shop", version: "1.0.0" },
       instructions:
-        `Free search tool plus ${catalog.length} paid page GET tools from ${WELL_KNOWN_PATH}. Find a record on the free index (q=); each hit names the page/before to pay. Table doors return the entire current table. Extracted-body paid GET is the newest 100 official texts, not the entire archive. Older pages are another $0.05 on the same URL. Unpaid is HTTP 402. USDC on Base. Not Bazaar-indexed.`,
+        `Free search tool plus ${catalog.length} paid GET tools from ${WELL_KNOWN_PATH}. Find a record on the free index (q=); each hit names the id to buy. GET ?id= is one official text for $0.02. Default GET / page of up to 100 official texts is $0.05 (newest 100 official texts, not the entire archive). Older pages are another $0.05 on the same URL. Table doors return the entire current table. Unpaid is HTTP 402. USDC on Base. Not Bazaar-indexed.`,
     });
   }
 
@@ -454,6 +459,7 @@ export async function handleMcpJsonRpc(
     const name = String(message.params?.name ?? "");
     const args = (message.params?.arguments ?? {}) as {
       x_payment?: string;
+      id?: string;
       page?: string;
       before?: string;
       path?: string;
@@ -479,6 +485,7 @@ export async function handleMcpJsonRpc(
       origin: opts.origin,
       xPayment,
       catalog,
+      id: args.id,
       page: args.page,
       before: args.before,
     });
@@ -602,7 +609,7 @@ export async function createTicksMcpServer(origin = ticksOrigin()): Promise<McpS
     {
       title: "Free index search",
       description:
-        "GET {manifest}?q= on an extracted-body door. Each hit names the page/before to pay. Then call that door's paid page GET. Does not return official bodies. Table doors have no page — one paid GET is the entire current table.",
+        "GET {manifest}?q= on an extracted-body door. Each hit names the id to buy. Then pay GET ?id= ($0.02) or the default/page bag ($0.05). Does not return official bodies. Table doors have no page — one paid GET is the entire current table.",
       inputSchema: {
         path: z.string().describe("Paid path to search, e.g. /ico-mpn or ico-mpn."),
         q: z.string().optional().describe("Free index search string. GET {manifest}?q=."),
@@ -630,17 +637,20 @@ export async function createTicksMcpServer(origin = ticksOrigin()): Promise<McpS
           ...(isTablePath(sku.path)
             ? {}
             : {
+                id: z.string().optional().describe(
+                  "Optional record id. GET ?id= is one official text for $0.02. Find the id on the free index (?q=).",
+                ),
                 page: z.string().optional().describe(
-                  "Optional page of official texts. Default 1 is the newest 100, not the entire archive. Same URL, another $0.05.",
+                  "Optional page of official texts. Default 1 is up to 100 newest official texts for $0.05, not the entire archive. Same URL, another $0.05.",
                 ),
                 before: z.string().optional().describe(
-                  "Optional cursor (item id) for the next older page. Same URL, another $0.05.",
+                  "Optional cursor (item id) for the next older $0.05 page. Same URL, another $0.05.",
                 ),
               }),
         },
       },
-      async ({ x_payment, page, before }: { x_payment?: string; page?: string; before?: string }) => {
-        const result = await getPaidSku(sku.path, { origin, xPayment: x_payment, catalog, page, before });
+      async ({ x_payment, id, page, before }: { x_payment?: string; id?: string; page?: string; before?: string }) => {
+        const result = await getPaidSku(sku.path, { origin, xPayment: x_payment, catalog, id, page, before });
         return {
           content: [{ type: "text" as const, text: formatPaidToolText(result) }],
           isError: result.status >= 500,
@@ -663,7 +673,7 @@ if (isMain()) {
   const server = await createTicksMcpServer(origin);
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  console.error(`BNM Data Shop MCP — search + ${catalog.length} paid page GET tools from ${WELL_KNOWN_PATH}`);
+  console.error(`BNM Data Shop MCP — search + ${catalog.length} paid GET tools from ${WELL_KNOWN_PATH}`);
   console.error(`  Paid host: ${origin}`);
   console.error(`  Connect URL: ${origin}${MCP_PATH}`);
   console.error(`  Connect cmd: npx -y mcp-remote ${origin}${MCP_PATH}`);

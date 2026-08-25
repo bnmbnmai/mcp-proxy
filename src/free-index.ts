@@ -1,12 +1,13 @@
 /**
  * Free extracted-body index. Agents find a record with ?q=. Each hit names
- * the page/before to pay. Does not return official bodies. Does not change collect.
+ * the id to buy (?id= = $0.02). Default / page of up to 100 is $0.05.
+ * Does not return official bodies. Does not change collect.
  */
 
 import { EXTRACTED_PAGE_SIZE, rowId, sortNewest } from "./paid-page.js";
 
 export const FREE_INDEX_NOTE =
-  "Find a record with ?q=. Each index row names the page/before to pay. One $0.05 GET returns the newest 100 official texts, not the entire archive. Older pages are another $0.05 on the same URL.";
+  "Find a record with ?q=. Each index row names the id to buy. GET ?id= is one official text for $0.02. Default GET / page of up to 100 official texts is $0.05 (newest 100 official texts, not the entire archive). Older pages are another $0.05 on the same URL (page/before).";
 
 const SKIP_SEARCH = new Set(["body", "text", "page", "before", "note"]);
 
@@ -41,10 +42,12 @@ export function annotateIndexRows(rows: Record<string, unknown>[]): Record<strin
   const sorted = sortNewest(rows);
   return sorted.map((row, offset) => {
     const cursor = paidCursorForOffset(sorted, offset);
+    const id = rowId(row);
     return {
       ...row,
       page: cursor.page,
       before: cursor.before,
+      ...(id ? { buy: `?id=${id}` } : {}),
     };
   });
 }

@@ -5,7 +5,7 @@ import { join } from "node:path";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
 import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus } from "./ticks-door.js";
-import { EXTRACTED_PAGE_SIZE, pageExtractedPaidBody } from "./paid-page.js";
+import { EXTRACTED_ID_AMOUNT_ATOMIC, EXTRACTED_PAGE_SIZE, pageExtractedPaidBody } from "./paid-page.js";
 import { annotateIndexRows, applyFreeIndex, filterIndexRows } from "./free-index.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
@@ -239,6 +239,19 @@ async function main(): Promise<void> {
   assert.equal(searched.cards?.[0]?.id, "card-101");
   assert.equal(searched.cards?.[0]?.page, indexed.find((row) => row.id === "card-101")?.page);
   assert.ok((searched.note ?? "").includes("?q="));
+  assert.ok((searched.note ?? "").includes("id to buy"));
+  assert.ok((searched.note ?? "").includes("$0.02"));
+  assert.ok((searched.note ?? "").includes("$0.05"));
+  const one = pageExtractedPaidBody(pageFx, { page: 1, before: null, id: "card-101" }) as typeof pageFx & {
+    returnedCount: number;
+    pageSize: number;
+    id?: string;
+  };
+  assert.equal(one.returnedCount, 1);
+  assert.equal(one.pageSize, 1);
+  assert.equal(one.cards.length, 1);
+  assert.equal(one.cards[0]?.id, "card-101");
+  assert.equal(one.id, "card-101");
 
   await withServer({
     TICKS_PATH: "",
@@ -369,8 +382,14 @@ async function main(): Promise<void> {
     assert.ok((wk.instructions ?? "").includes("entire current table"));
     assert.ok((wk.instructions ?? "").includes("newest 100 official texts"));
     assert.ok((wk.instructions ?? "").includes("?q="));
+    assert.ok((wk.instructions ?? "").includes("id to buy"));
+    assert.ok((wk.instructions ?? "").includes("$0.02"));
+    assert.ok((wk.instructions ?? "").includes("$0.05"));
+    assert.ok((wk.instructions ?? "").includes("?id="));
     assert.ok((wk.instructions ?? "").includes("not the entire archive"));
     assert.ok(!(wk.instructions ?? "").includes("entire current cache"));
+    assert.ok(!(wk.instructions ?? "").includes("3,550"));
+    assert.ok(!(wk.instructions ?? "").includes("3550 SKU"));
     assert.ok(!wk.resources.some((r) => r.includes("/gain")));
     assert.equal(cdpEnvStatus(), "CDP env not set");
 
@@ -425,12 +444,24 @@ async function main(): Promise<void> {
     assert.ok(!(ticksOp?.description ?? "").includes("PNW barns"));
     assert.ok(!(ticksOp?.description ?? "").includes("Not people"));
     assert.ok((ticksOp?.responses?.["402"]?.description ?? "").includes("entire current table"));
-    const icoOp = spec.paths[ICO_MPN_PATH]?.get as { description?: string } | undefined;
+    const icoOp = spec.paths[ICO_MPN_PATH]?.get as {
+      description?: string;
+      summary?: string;
+      "x-payment-info"?: { price?: { amount?: string }; idPrice?: { amount?: string }; idAmountAtomic?: string };
+    } | undefined;
     assert.ok((icoOp?.description ?? "").includes("Official UK ICO Monetary Penalty Notice"));
     assert.ok((icoOp?.description ?? "").includes("newest 100 official texts"));
+    assert.ok((icoOp?.description ?? "").includes("id to buy"));
+    assert.ok((icoOp?.description ?? "").includes("?id="));
+    assert.ok((icoOp?.description ?? "").includes("$0.02"));
     assert.ok(!(icoOp?.description ?? "").includes("entire current cache"));
     assert.ok((icoOp?.description ?? "").includes("cards[].body"));
     assert.ok((icoOp?.description ?? "").includes("$0.05"));
+    assert.ok((icoOp?.summary ?? "").includes("$0.02"));
+    assert.ok((icoOp?.summary ?? "").includes("$0.05"));
+    assert.equal(icoOp?.["x-payment-info"]?.price?.amount, "0.05");
+    assert.equal(icoOp?.["x-payment-info"]?.idPrice?.amount, "0.02");
+    assert.equal(icoOp?.["x-payment-info"]?.idAmountAtomic, EXTRACTED_ID_AMOUNT_ATOMIC);
     assert.ok(!(icoOp?.description ?? "").includes("Not people"));
     assert.ok(!(icoOp?.description ?? "").includes("/ftc-wl"));
     assert.ok(!(icoOp?.description ?? "").includes("/cma-ca98"));
@@ -585,8 +616,11 @@ async function main(): Promise<void> {
     assert.ok(!llmsBody.includes("TCPA"));
     assert.ok(llmsBody.includes("GET /ticks — $0.05"));
     assert.ok(!llmsBody.includes("GET /ticks — $0.02"));
+    assert.ok(llmsBody.includes("GET /ico-mpn — $0.02 / $0.05"));
     assert.ok(llmsBody.includes("entire current table"));
     assert.ok(llmsBody.includes("newest 100 official texts"));
+    assert.ok(llmsBody.includes("id to buy"));
+    assert.ok(llmsBody.includes("?id="));
     assert.ok(llmsBody.includes("?q="));
     assert.ok(llmsBody.includes("not the entire archive"));
     assert.ok(!llmsBody.includes("entire current cache"));
@@ -597,13 +631,17 @@ async function main(): Promise<void> {
 
     const shop = (await (await fetch(`${base}/`)).json()) as {
       search?: string;
-      products: { path: string; product?: string; name?: string; priceUsdc?: string; description?: string; count?: number; firms?: number; search?: string }[];
+      products: { path: string; product?: string; name?: string; priceUsdc?: string; idPriceUsdc?: string; idAmountAtomic?: string; description?: string; count?: number; firms?: number; search?: string }[];
       openapi?: string;
       wellKnown?: string;
       llmsTxt?: string;
     };
     assert.ok((shop.search ?? "").includes("?q="));
+    assert.ok((shop.search ?? "").includes("id to buy"));
+    assert.ok((shop.search ?? "").includes("$0.02"));
+    assert.ok((shop.search ?? "").includes("$0.05"));
     assert.ok((shop.search ?? "").includes("entire current table"));
+    assert.equal(shop.products.length, 29, "shop lists doors, not one SKU per catalog record");
     assert.deepEqual(shop.products.map((p) => p.path), [
       TICKS_PATH,
       IMPORT_ALERTS_PATH,
@@ -654,12 +692,18 @@ async function main(): Promise<void> {
         assert.ok(product.description?.includes("entire current table"), `${product.path} shop description must name the table bag`);
         assert.ok(!product.description?.includes("newest 100"), `${product.path} is a table door`);
         assert.equal(product.search, undefined, `${product.path} table door has no page search`);
+        assert.equal(product.idPriceUsdc, undefined, `${product.path} table door has one bag`);
       } else {
         assert.ok(product.description?.includes("newest 100 official texts"), `${product.path} shop description must name the extracted bag`);
         assert.ok(product.description?.includes("?q="), `${product.path} shop description must name free index search`);
+        assert.ok(product.description?.includes("id to buy"), `${product.path} shop description must name the id to buy`);
+        assert.ok(product.description?.includes("?id="), `${product.path} shop description must name the $0.02 id bag`);
+        assert.ok(product.description?.includes("$0.02"), `${product.path} shop description must name the id price`);
         assert.ok(product.description?.includes("not the entire archive"), `${product.path} must not sell the default GET as the archive`);
         assert.ok(product.description?.includes("page/before"), `${product.path} shop description must name the cursor`);
         assert.ok((product.search ?? "").includes("?q="), `${product.path} shop card must name free search`);
+        assert.equal(product.idPriceUsdc, "0.02", `${product.path} shop card must show the $0.02 id bag`);
+        assert.equal(product.idAmountAtomic, EXTRACTED_ID_AMOUNT_ATOMIC, `${product.path} shop card must show 20000 atomic`);
       }
       assert.ok(!product.description?.includes("entire current cache"), `${product.path} must not claim shop-wide entire cache`);
       assert.ok(product.description?.includes("$0.05"), `${product.path} shop description must name the price`);
@@ -688,8 +732,13 @@ async function main(): Promise<void> {
       assert.ok(!ticksRow?.includes("Newest 100"), `${shopIndexPath} /ticks row must not claim newest 100`);
       assert.ok(iaRow?.includes("entire current table"), `${shopIndexPath} /import-alerts row is a table door`);
       assert.ok(!iaRow?.includes("Newest 100"), `${shopIndexPath} /import-alerts row must not claim newest 100`);
-      assert.ok(icoRow?.includes("Newest 100 official texts"), `${shopIndexPath} /ico-mpn row is extracted-body`);
+      assert.ok(icoRow?.includes("newest 100 official texts"), `${shopIndexPath} /ico-mpn row is extracted-body`);
       assert.ok(icoRow?.includes("?q="), `${shopIndexPath} /ico-mpn row must name free index search`);
+      assert.ok(icoRow?.includes("id to buy"), `${shopIndexPath} /ico-mpn row must name the id to buy`);
+      assert.ok(icoRow?.includes("$0.02"), `${shopIndexPath} /ico-mpn row must name the id price`);
+      assert.ok(icoRow?.includes("$0.05"), `${shopIndexPath} /ico-mpn row must name the page price`);
+      assert.ok(!shopIndex.includes("3550 SKU"), `${shopIndexPath} must not advertise catalog counts as SKUs`);
+      assert.ok(!shopIndex.includes("3,550 SKU"), `${shopIndexPath} must not advertise catalog counts as SKUs`);
     }
   });
 
@@ -1143,6 +1192,8 @@ async function main(): Promise<void> {
       assert.ok(((man as { note?: string }).note ?? "").includes("newest 100 official texts"));
       assert.ok(((man as { note?: string }).note ?? "").includes("page/before"));
       assert.ok(((man as { note?: string }).note ?? "").includes("?q="));
+      assert.ok(((man as { note?: string }).note ?? "").includes("id to buy"));
+      assert.ok(((man as { note?: string }).note ?? "").includes("$0.02"));
       assert.ok(!((man as { note?: string }).note ?? "").includes("entire current cache"));
       assert.ok(Array.isArray((man as { notices?: unknown[] }).notices));
       assert.ok(!JSON.stringify((man as { notices?: unknown[] }).notices).includes("Anacortes Channel Light 4"));
@@ -4074,10 +4125,20 @@ async function main(): Promise<void> {
       assert.ok(ico402.includes("Official UK ICO Monetary Penalty Notice"));
       assert.ok(ico402.includes("newest 100 official texts"));
       assert.ok(ico402.includes("?q="));
+      assert.ok(ico402.includes("id to buy"));
+      assert.ok(ico402.includes("?id="));
       assert.ok(ico402.includes("not the entire archive"));
       assert.ok(!ico402.includes("entire current cache"));
       assert.ok(ico402.includes("cards[].body"));
       assert.ok(ico402.includes("$0.05"));
+      assert.ok(ico402.includes("$0.02"));
+      const unpaidId = await fetch(`${base}${ICO_MPN_PATH}?id=reddit-mpn-20260223`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /ico-mpn?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, EXTRACTED_ID_AMOUNT_ATOMIC, "id bag is $0.02");
+      const unpaidTicksId = await fetch(`${base}${TICKS_PATH}?id=cattle-tf-feeder-steer`);
+      const ticksId402 = (await unpaidTicksId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(ticksId402.accepts[0]?.maxAmountRequired, TICKS_AMOUNT_ATOMIC, "tables ignore ?id= and stay $0.05");
       assert.ok(!/Not people/i.test(ico402), "402 description is buyer copy, not leak-test");
       assert.ok(!/press\/teaser/i.test(ico402));
       assert.ok(!ico402.includes("TCPA"));
@@ -4111,6 +4172,8 @@ async function main(): Promise<void> {
       assert.ok(icoOpen.includes("Official UK ICO Monetary Penalty Notice"));
       assert.ok(icoOpen.includes("newest 100 official texts"));
       assert.ok(icoOpen.includes("?q="));
+      assert.ok(icoOpen.includes("id to buy"));
+      assert.ok(icoOpen.includes("$0.02"));
       assert.ok(icoOpen.includes("not the entire archive"));
       assert.ok(!icoOpen.includes("entire current cache"));
       assert.ok(icoOpen.includes("cards[].body"));
@@ -4148,6 +4211,10 @@ async function main(): Promise<void> {
       assert.ok((man.note ?? "").includes("newest 100 official texts"));
       assert.ok((man.note ?? "").includes("page/before"));
       assert.ok((man.note ?? "").includes("?q="));
+      assert.ok((man.note ?? "").includes("id to buy"));
+      assert.ok((man.note ?? "").includes("$0.02"));
+      assert.ok((man.note ?? "").includes("$0.05"));
+      assert.equal((man.cards?.[0] as { buy?: string } | undefined)?.buy, "?id=reddit-mpn-20260223");
       assert.ok(!(man.note ?? "").includes("entire current cache"));
       assert.equal((man.cards?.[0] as { page?: number } | undefined)?.page, 1);
       const searched = (await (await fetch(`${base}${ICO_MPN_MANIFEST_PATH}?q=Reddit`)).json()) as {
@@ -4176,6 +4243,7 @@ async function main(): Promise<void> {
       const paidBody = (await paid.json()) as {
         product: string;
         cards: { institution: string; date: string; docket: string; body: string }[];
+        returnedCount?: number;
       };
       assert.equal(paidBody.product, "ico-institution-mpn-bodies");
       assert.equal(paidBody.cards[0]?.institution, "Reddit, Inc.");
@@ -4184,6 +4252,18 @@ async function main(): Promise<void> {
       assert.ok(paidBody.cards[0]?.body.includes("548 Market Street"));
       assert.ok(paidBody.cards[0]?.body.includes("17,573,750"));
       assert.ok(paidBody.cards[0]?.body.includes("26 September 2025"));
+      const paidId = await fetch(`${base}${ICO_MPN_PATH}?id=reddit-mpn-20260223`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paidId.status, 200);
+      const paidIdBody = (await paidId.json()) as {
+        cards: { id?: string; body: string }[];
+        returnedCount?: number;
+        pageSize?: number;
+      };
+      assert.equal(paidIdBody.returnedCount, 1);
+      assert.equal(paidIdBody.pageSize, 1);
+      assert.equal(paidIdBody.cards.length, 1);
+      assert.equal(paidIdBody.cards[0]?.id, "reddit-mpn-20260223");
+      assert.ok(paidIdBody.cards[0]?.body.includes("548 Market Street"));
     },
   );
 
@@ -4710,6 +4790,9 @@ async function main(): Promise<void> {
     assert.ok((wk.instructions ?? "").includes("entire current table"));
     assert.ok((wk.instructions ?? "").includes("newest 100 official texts"));
     assert.ok((wk.instructions ?? "").includes("?q="));
+    assert.ok((wk.instructions ?? "").includes("id to buy"));
+    assert.ok((wk.instructions ?? "").includes("$0.02"));
+    assert.ok((wk.instructions ?? "").includes("?id="));
     assert.ok((wk.instructions ?? "").includes("not the entire archive"));
     assert.ok(!(wk.instructions ?? "").includes("entire current cache"));
 

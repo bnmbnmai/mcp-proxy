@@ -5,65 +5,65 @@
  * GET /ticks — US hay, cattle, and grain ticks ($0.05 USDC on Base)
  * GET /import-alerts — FDA Import Alert / DWPE firm ticks ($0.05)
  * GET /import-alerts/manifest.json — free catalog + schema + sample rows
- * GET /mariners — USCG D13 / Northwest Local Notice to Mariners ($0.05)
+ * GET /mariners — USCG D13 / Northwest Local Notice to Mariners ($0.02 id / $0.05 page)
  * GET /mariners/manifest.json — free count + official source (no notice body)
- * GET /mariners-d11 — USCG D11 / Southwest Local Notice to Mariners ($0.05)
+ * GET /mariners-d11 — USCG D11 / Southwest Local Notice to Mariners ($0.02 id / $0.05 page)
  * GET /mariners-d11/manifest.json — free count + official source (no notice body)
- * GET /mariners-d7 — USCG D7 / Southeast Local Notice to Mariners ($0.05)
+ * GET /mariners-d7 — USCG D7 / Southeast Local Notice to Mariners ($0.02 id / $0.05 page)
  * GET /mariners-d7/manifest.json — free count + official source (no notice body)
- * GET /mariners-d8 — USCG D8 / Gulf Local Notice to Mariners ($0.05)
+ * GET /mariners-d8 — USCG D8 / Gulf Local Notice to Mariners ($0.02 id / $0.05 page)
  * GET /mariners-d8/manifest.json — free count + official source (no notice body)
- * GET /warning-letters — FDA warning-letter bodies ($0.05)
+ * GET /warning-letters — FDA warning-letter bodies ($0.02 id / $0.05 page)
  * GET /warning-letters/manifest.json — free count + source (no letter body)
- * GET /untitled-letters — FDA Untitled Letter bodies, CDER OPDP + CBER promo ($0.05)
+ * GET /untitled-letters — FDA Untitled Letter bodies, CDER OPDP + CBER promo ($0.02 id / $0.05 page)
  * GET /untitled-letters/manifest.json — free count + id/firm/date/product (no letter text)
- * GET /awa — USDA APHIS AWA inspection-report observation text ($0.05)
+ * GET /awa — USDA APHIS AWA inspection-report observation text ($0.02 id / $0.05 page)
  * GET /awa/manifest.json — free count + id/firm/date/sourceUrl (no observation text)
- * GET /swisspar — Swissmedic first-authorisation SwissPAR evaluation text ($0.05)
+ * GET /swisspar — Swissmedic first-authorisation SwissPAR evaluation text ($0.02 id / $0.05 page)
  * GET /swisspar/manifest.json — free count + name/date/MA/sourceUrl (no evaluation text)
- * GET /pcac — FDA PCAC 503A briefing-memo evaluation text ($0.05)
+ * GET /pcac — FDA PCAC 503A briefing-memo evaluation text ($0.02 id / $0.05 page)
  * GET /pcac/manifest.json — free count + substance/date/meeting/mediaId/sourceUrl (no evaluation text)
- * GET /ftc-wl — FTC BCP warning-letter PDF text ($0.05)
+ * GET /ftc-wl — FTC BCP warning-letter PDF text ($0.02 id / $0.05 page)
  * GET /ftc-wl/manifest.json — free count + firm/date/subject/sourceUrl (no letter body)
- * GET /cfpb-orders — CFPB consent-order / administrative-order PDF text ($0.05)
+ * GET /cfpb-orders — CFPB consent-order / administrative-order PDF text ($0.02 id / $0.05 page)
  * GET /cfpb-orders/manifest.json — free count + firm/date/title/fileNo/sourceUrl (no order body)
- * GET /occ-cd — OCC institution C&D / consent-order PDF text ($0.05)
+ * GET /occ-cd — OCC institution C&D / consent-order PDF text ($0.02 id / $0.05 page)
  * GET /occ-cd/manifest.json — free count + bank/docket/date/sourceUrl (no order body)
- * GET /fdic-orders — FDIC institution consent-order / C&D PDF text ($0.05)
+ * GET /fdic-orders — FDIC institution consent-order / C&D PDF text ($0.02 id / $0.05 page)
  * GET /fdic-orders/manifest.json — free count + bank/docket/date/sourceUrl (no order body)
- * GET /frb-orders — FRB institution C&D / written-agreement / PCA PDF text ($0.05)
+ * GET /frb-orders — FRB institution C&D / written-agreement / PCA PDF text ($0.02 id / $0.05 page)
  * GET /frb-orders/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
- * GET /ncua-orders — NCUA institution consent C&D HTML text ($0.05)
+ * GET /ncua-orders — NCUA institution consent C&D HTML text ($0.02 id / $0.05 page)
  * GET /ncua-orders/manifest.json — free count + credit union/docket/date/sourceUrl (no order body)
- * GET /fincen-orders — FinCEN institution consent-order PDF text ($0.05)
+ * GET /fincen-orders — FinCEN institution consent-order PDF text ($0.02 id / $0.05 page)
  * GET /fincen-orders/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
- * GET /ferc-orders — FERC institution stipulation-and-consent / show-cause / civil-penalty PDF text ($0.05)
+ * GET /ferc-orders — FERC institution stipulation-and-consent / show-cause / civil-penalty PDF text ($0.02 id / $0.05 page)
  * GET /ferc-orders/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
- * GET /ofac-orders — OFAC institution/company enforcement-release PDF text ($0.05)
+ * GET /ofac-orders — OFAC institution/company enforcement-release PDF text ($0.02 id / $0.05 page)
  * GET /ofac-orders/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
- * GET /bis-orders — BIS institution charging-letter / order / settlement PDF text ($0.05)
+ * GET /bis-orders — BIS institution charging-letter / order / settlement PDF text ($0.02 id / $0.05 page)
  * GET /bis-orders/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
- * GET /cftc-orders — CFTC institution enforcement-order / settlement PDF text ($0.05)
+ * GET /cftc-orders — CFTC institution enforcement-order / settlement PDF text ($0.02 id / $0.05 page)
  * GET /cftc-orders/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
- * GET /fifra-orders — EPA FIFRA institution order / consent PDF text ($0.05)
+ * GET /fifra-orders — EPA FIFRA institution order / consent PDF text ($0.02 id / $0.05 page)
  * GET /fifra-orders/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
- * GET /denovo-orders — FDA De Novo classification-order PDF text ($0.05)
+ * GET /denovo-orders — FDA De Novo classification-order PDF text ($0.02 id / $0.05 page)
  * GET /denovo-orders/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
- * GET /ttb-oic — TTB institution Offer in Compromise PDF text ($0.05)
+ * GET /ttb-oic — TTB institution Offer in Compromise PDF text ($0.02 id / $0.05 page)
  * GET /ttb-oic/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
- * GET /air-letters — USDA APHIS AIR confirmation-letter PDF text ($0.05)
+ * GET /air-letters — USDA APHIS AIR confirmation-letter PDF text ($0.02 id / $0.05 page)
  * GET /air-letters/manifest.json — free count + institution/docket/date/sourceUrl (no letter body)
- * GET /superfund-rods — EPA Superfund Record of Decision PDF text ($0.05)
+ * GET /superfund-rods — EPA Superfund Record of Decision PDF text ($0.02 id / $0.05 page)
  * GET /superfund-rods/manifest.json — free count + institution/docket/date/sourceUrl (no ROD body)
- * GET /ico-mpn — ICO Monetary Penalty Notice PDF text ($0.05)
+ * GET /ico-mpn — ICO Monetary Penalty Notice PDF text ($0.02 id / $0.05 page)
  * GET /ico-mpn/manifest.json — free count + institution/docket/date/sourceUrl (no MPN body)
- * GET /cma-ca98 — UK CMA CA98 institution infringement-decision PDF text ($0.05)
+ * GET /cma-ca98 — UK CMA CA98 institution infringement-decision PDF text ($0.02 id / $0.05 page)
  * GET /cma-ca98/manifest.json — free count + institution/docket/date/sourceUrl (no decision body)
- * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
+ * GET /form-483 — FDA Form 483 observation bodies ($0.02 id / $0.05 page). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
- * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.05). Listed only when a real body is cached.
+ * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.02 id / $0.05 page). Listed only when a real body is cached.
  * GET /gmp/manifest.json — free id / firm / date / rating (no observation text)
- * GET /gmp-md — Health Canada medical-device report-card observation bodies ($0.05). Listed only when a real body is cached.
+ * GET /gmp-md — Health Canada medical-device report-card observation bodies ($0.02 id / $0.05 page). Listed only when a real body is cached.
  * GET /gmp-md/manifest.json — free id / firm / date / rating (no report-card body text)
  *
  * Unpaid paid paths → HTTP 402. Public doors persist via a CDP v2
@@ -315,7 +315,15 @@ import {
   paidUntitledLettersBody,
   paidWarningLettersBody,
 } from "./paid-records.js";
-import { EXTRACTED_PAGE_SIZE, isTableSku, pageExtractedPaidBody, parseExtractedPageQuery } from "./paid-page.js";
+import {
+  EXTRACTED_ID_AMOUNT_ATOMIC,
+  EXTRACTED_PAGE_SIZE,
+  isExtractedIdQuery,
+  isTableSku,
+  pageExtractedPaidBody,
+  parseExtractedPageQuery,
+  type ExtractedPageQuery,
+} from "./paid-page.js";
 import { applyFreeIndex } from "./free-index.js";
 import { mergeAmsNationalTicks } from "./ticks-ams.js";
 import {
@@ -721,7 +729,11 @@ function noNextSkuWord(): string {
   return `Only the listed ${paidCountWord()} paid GETs are live.`;
 }
 
-function amountAtomicFor(sku: DoorSku): string {
+function amountAtomicFor(sku: DoorSku, query?: Pick<ExtractedPageQuery, "id">): string {
+  if (!isTableSku(sku) && isExtractedIdQuery(query)) {
+    const raw = env("EXTRACTED_ID_USDC_ATOMIC");
+    return raw.length > 0 ? raw : EXTRACTED_ID_AMOUNT_ATOMIC;
+  }
   if (sku === "import-alerts") {
     const raw = env("IMPORT_ALERTS_USDC_ATOMIC");
     return raw.length > 0 ? raw : IMPORT_ALERTS_AMOUNT_ATOMIC;
@@ -1235,6 +1247,10 @@ export function peekSkuBag(sku: DoorSku): SkuBag | undefined {
   return skuBagsMemo?.bags.get(sku);
 }
 
+function extractedBuyerBag(): string {
+  return "Find a record on the free index (?q=). Each index row names the id to buy. GET ?id= is one official text for $0.02. Default GET / page of up to 100 official texts is $0.05 (newest 100 official texts, not the entire archive). Older pages are another $0.05 on the same URL (page/before).";
+}
+
 export function skuBuyerDescription(sku: DoorSku, bag?: SkuBag): string {
   const product = SKU_COPY[sku].description.trim();
   const resolved = bag ?? peekSkuBag(sku);
@@ -1244,14 +1260,14 @@ export function skuBuyerDescription(sku: DoorSku, bag?: SkuBag): string {
   if (isTableSku(sku)) {
     return `${ended} One $0.05 GET returns the entire current table (${count}). Paid JSON is ${paid}.`;
   }
-  return `${ended} Find a record on the free index (?q=). Each index row names the page/before to pay. One $0.05 GET returns the newest 100 official texts, not the entire archive. Older pages are another $0.05 on the same URL. Free index lists the full catalog (${count}). Paid JSON is ${paid}.`;
+  return `${ended} ${extractedBuyerBag()} Free index lists the full catalog (${count}). Paid JSON is ${paid}.`;
 }
 
 export function skuOpenApiSummary(sku: DoorSku, bag: SkuBag): string {
   if (isTableSku(sku)) {
     return `${bag.oneLine} — entire current table on one GET (${bag.countLabel})`;
   }
-  return `${bag.oneLine} — newest 100 official texts per $0.05 GET; find on free index (?q=) (${bag.countLabel} in catalog)`;
+  return `${bag.oneLine} — ?id= one official text $0.02; default/page of up to 100 $0.05 (${bag.countLabel} in catalog)`;
 }
 
 export function skuOpenApiDescription(sku: DoorSku, bag: SkuBag): string {
@@ -1269,7 +1285,14 @@ function shopProductCard(sku: DoorSku, bag: SkuBag): Record<string, unknown> {
     manifest: SHOP_MANIFEST_PATH[sku],
     description: skuBuyerDescription(sku, bag),
     count: bag.count,
-    ...(isTableSku(sku) ? {} : { pageSize: EXTRACTED_PAGE_SIZE, search: `${SHOP_MANIFEST_PATH[sku]}?q=` }),
+    ...(isTableSku(sku)
+      ? {}
+      : {
+          pageSize: EXTRACTED_PAGE_SIZE,
+          search: `${SHOP_MANIFEST_PATH[sku]}?q=`,
+          idPriceUsdc: usdcPriceString(EXTRACTED_ID_AMOUNT_ATOMIC),
+          idAmountAtomic: EXTRACTED_ID_AMOUNT_ATOMIC,
+        }),
     ...(bag.firms !== undefined ? { firms: bag.firms } : {}),
   };
 }
@@ -2200,7 +2223,7 @@ export function bazaarExtension(sku: DoorSku): Record<string, unknown> {
       input: {
         type: "http",
         method: "GET",
-        queryParams: isTableSku(sku) ? {} : { page: "1" },
+        queryParams: isTableSku(sku) ? {} : { id: "record-id", page: "1" },
       },
       output: {
         type: "json",
@@ -2631,8 +2654,12 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
   };
 }
 
-export function paymentRequiredBody(resourceUrl: string, sku: DoorSku = "ticks"): Record<string, unknown> {
-  const amount = amountAtomicFor(sku);
+export function paymentRequiredBody(
+  resourceUrl: string,
+  sku: DoorSku = "ticks",
+  query?: Pick<ExtractedPageQuery, "id">,
+): Record<string, unknown> {
+  const amount = amountAtomicFor(sku, query);
   const copy = SKU_COPY[sku];
   const buyer = skuBuyerDescription(sku);
   const acceptV1: Record<string, unknown> = {
@@ -2661,8 +2688,12 @@ export function paymentRequiredBody(resourceUrl: string, sku: DoorSku = "ticks")
   };
 }
 
-export function paymentRequiredV2(resourceUrl: string, sku: DoorSku = "ticks"): Record<string, unknown> {
-  const amount = amountAtomicFor(sku);
+export function paymentRequiredV2(
+  resourceUrl: string,
+  sku: DoorSku = "ticks",
+  query?: Pick<ExtractedPageQuery, "id">,
+): Record<string, unknown> {
+  const amount = amountAtomicFor(sku, query);
   const copy = SKU_COPY[sku];
   const buyer = skuBuyerDescription(sku);
   const accept: Record<string, unknown> = {
@@ -2809,9 +2840,10 @@ function payloadExtensions(
 export function facilitatorPaymentRequirements(
   resourceUrl: string,
   sku: DoorSku,
+  query?: Pick<ExtractedPageQuery, "id">,
 ): Record<string, unknown> {
   const accept = {
-    ...((paymentRequiredBody(resourceUrl, sku).accepts as Record<string, unknown>[])[0]),
+    ...((paymentRequiredBody(resourceUrl, sku, query).accepts as Record<string, unknown>[])[0]),
   };
   if (isPublicBazaarSku(sku)) {
     accept.extensions = { bazaar: bazaarExtension(sku) };
@@ -3149,7 +3181,9 @@ export async function llmsTxt(): Promise<string> {
   const bags = await loadSkuBags();
   const paid = publicBazaarSkus().map((sku) => {
     const bag = bags.get(sku) ?? bagFromManifest(sku, {});
-    const price = usdcDisplayFromAtomic(amountAtomicFor(sku)) ?? "$0.05";
+    const price = isTableSku(sku)
+      ? (usdcDisplayFromAtomic(amountAtomicFor(sku)) ?? "$0.05")
+      : "$0.02 / $0.05";
     return `- GET ${SKU_COPY[sku].resourcePath} — ${price} — ${skuBuyerDescription(sku, bag)}`;
   });
   const free = [
@@ -3205,19 +3239,19 @@ export async function llmsTxt(): Promise<string> {
     "",
     ...paid,
     "",
-    "Unpaid GET returns HTTP 402 with PAYMENT-REQUIRED and extensions.bazaar. After a valid X-PAYMENT, the same URL returns JSON. Table doors (/ticks, /import-alerts): one $0.05 GET is the entire current table. Extracted-body doors: find a record on the free index (?q=); each row names the page/before to pay. One $0.05 GET is the newest 100 official texts, not the entire archive. Older pages are another $0.05 on the same URL. No API key. No request body.",
+    "Unpaid GET returns HTTP 402 with PAYMENT-REQUIRED and extensions.bazaar. After a valid X-PAYMENT, the same URL returns JSON. Table doors (/ticks, /import-alerts): one $0.05 GET is the entire current table. Extracted-body doors: find a record on the free index (?q=); each row names the id to buy. GET ?id= is one official text for $0.02. Default GET / page of up to 100 official texts is $0.05 (newest 100 official texts, not the entire archive). Older pages are another $0.05 on the same URL. No API key. No request body.",
     "",
     "## Free discovery",
     "",
     ...free,
     "",
-    `${noNextSkuWord()} Free manifests are not the paid body. Extracted-body indexes accept ?q=; each hit names the page/before to pay.`,
+    `${noNextSkuWord()} Free manifests are not the paid body. Extracted-body indexes accept ?q=; each hit names the id to buy.`,
     "",
     "## MCP",
     "",
     `- URL — https://ticks.bnm.farm${MCP_PATH}`,
     "- Connect — `npx -y mcp-remote https://ticks.bnm.farm/mcp`",
-    `- Free search tool \`search\` — GET {manifest}?q= on an extracted-body door. Each hit names the page/before to pay. Then call that door's paid page GET. Table doors have no page: one paid GET is the entire current table. Tools are generated at request time from /.well-known/x402; later SKUs appear without an MCP rewrite. Same ${paidCountWord()} paid URLs today. Unpaid tool calls still HTTP 402. Not Bazaar-indexed.`,
+    `- Free search tool \`search\` — GET {manifest}?q= on an extracted-body door. Each hit names the id to buy. Then pay GET ?id= ($0.02) or the default/page bag ($0.05). Table doors have no page: one paid GET is the entire current table. Tools are generated at request time from /.well-known/x402; later SKUs appear without an MCP rewrite. Same ${paidCountWord()} paid URLs today. Unpaid tool calls still HTTP 402. Not Bazaar-indexed.`,
     "",
     "## Agent catalogs",
     "",
@@ -3258,7 +3292,7 @@ export async function wellKnownX402(req: IncomingMessage, port: number): Promise
     ownershipProofs: [PAY_TO],
     ...shopDiscoveryPointers(req, port),
     instructions:
-      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Table doors (/ticks, /import-alerts): one $0.05 GET is the entire current table. Extracted-body doors: find a record on the free index (?q=); each row names the page/before to pay. One $0.05 GET is the newest 100 official texts, not the entire archive. Older pages are another $0.05 on the same URL. Pay USDC on Base. Free OpenAPI is at /openapi.json. MCP is at /mcp (free search tool plus the ${paidCountWord()} paid page GETs). Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
+      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Table doors (/ticks, /import-alerts): one $0.05 GET is the entire current table. Extracted-body doors: find a record on the free index (?q=); each row names the id to buy. GET ?id= is one official text for $0.02. Default GET / page of up to 100 official texts is $0.05 (newest 100 official texts, not the entire archive). Older pages are another $0.05 on the same URL. Pay USDC on Base. Free OpenAPI is at /openapi.json. MCP is at /mcp (free search tool plus the ${paidCountWord()} paid GETs). Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
   };
 }
 
@@ -3284,18 +3318,25 @@ function paidOpenApiOp(opts: {
       ? []
       : [
           {
+            name: "id",
+            in: "query",
+            required: false,
+            schema: { type: "string" },
+            description: "One official text for $0.02 on this same URL. Find the id on the free index (?q=).",
+          },
+          {
             name: "page",
             in: "query",
             required: false,
             schema: { type: "integer", minimum: 1, default: 1 },
-            description: "Page of official texts. Default 1 is the newest 100, not the entire archive. Each page is another $0.05 on this same URL. Find the page on the free index (?q=).",
+            description: "Page of official texts. Default 1 is up to 100 newest official texts for $0.05, not the entire archive. Each page is another $0.05 on this same URL.",
           },
           {
             name: "before",
             in: "query",
             required: false,
             schema: { type: "string" },
-            description: "Cursor (item id) for the next older page. Same URL, another $0.05.",
+            description: "Cursor (item id) for the next older $0.05 page. Same URL, another $0.05.",
           },
         ],
     "x-auth": { mode: "x402" },
@@ -3312,6 +3353,12 @@ function paidOpenApiOp(opts: {
         },
       ],
       price: { mode: "fixed", currency: "USD", amount: opts.priceUsdc },
+      ...(isTableSku(opts.sku)
+        ? {}
+        : {
+            idPrice: { mode: "fixed", currency: "USD", amount: usdcPriceString(EXTRACTED_ID_AMOUNT_ATOMIC) },
+            idAmountAtomic: EXTRACTED_ID_AMOUNT_ATOMIC,
+          }),
       network: NETWORK_V2,
       asset: USDC_BASE,
       payTo: PAY_TO,
@@ -3329,7 +3376,7 @@ function paidOpenApiOp(opts: {
       "402": {
         description: isTableSku(opts.sku)
           ? `Payment Required — entire current table on one GET (${bag.countLabel}). x402 challenge in PAYMENT-REQUIRED and JSON body`
-          : `Payment Required — newest 100 official texts per GET, not the entire archive (${bag.countLabel} in catalog). Find the page on the free index (?q=). Older pages are another $0.05 on this same URL (page/before). x402 challenge in PAYMENT-REQUIRED and JSON body`,
+          : `Payment Required — two bags on this URL. GET ?id= is one official text for $0.02. Default GET / page of up to 100 is $0.05 (newest 100 official texts, not the entire archive). Find the id on the free index (?q=). Older pages are another $0.05 on this same URL (page/before). Catalog: ${bag.countLabel}. x402 challenge in PAYMENT-REQUIRED and JSON body`,
       },
     },
   };
@@ -3339,7 +3386,7 @@ function freeOpenApiOp(summary: string, description: string, extractedIndex = fa
   return {
     summary,
     description: extractedIndex
-      ? `${description} Find a record with ?q=. Each row names the page/before to pay. Does not return official bodies.`
+      ? `${description} Find a record with ?q=. Each row names the id to buy. GET ?id= is $0.02; default/page of up to 100 is $0.05. Does not return official bodies.`
       : description,
     tags: ["free"],
     security: [],
@@ -3352,7 +3399,7 @@ function freeOpenApiOp(summary: string, description: string, extractedIndex = fa
               in: "query",
               required: false,
               schema: { type: "string" },
-              description: "Free index search. Hits name the page/before to pay. Does not return official bodies.",
+              description: "Free index search. Hits name the id to buy (?id= = $0.02). Does not return official bodies.",
             },
           ],
         }
@@ -3360,7 +3407,7 @@ function freeOpenApiOp(summary: string, description: string, extractedIndex = fa
     responses: {
       "200": {
         description: extractedIndex
-          ? "Free JSON index. ?q= filters rows. Each row names the page/before to pay."
+          ? "Free JSON index. ?q= filters rows. Each row names the id to buy (?id= = $0.02; page of up to 100 = $0.05)."
           : "Free JSON catalog / discovery document",
         content: { "application/json": { schema: { type: "object" } } },
       },
@@ -3441,37 +3488,37 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
   const paidBits = [
     `/ticks ($${ticksPrice})`,
     "/import-alerts ($0.05)",
-    "/mariners ($0.05)",
-    "/mariners-d11 ($0.05)",
-    "/mariners-d7 ($0.05)",
-    "/mariners-d8 ($0.05)",
-    "/warning-letters ($0.05)",
-    "/untitled-letters ($0.05)",
-    "/awa ($0.05)",
-    "/swisspar ($0.05)",
-    "/pcac ($0.05)",
-    "/ftc-wl ($0.05)",
-    "/cfpb-orders ($0.05)",
-    "/occ-cd ($0.05)",
-    "/fdic-orders ($0.05)",
-    "/frb-orders ($0.05)",
-    "/ncua-orders ($0.05)",
-    "/fincen-orders ($0.05)",
-    "/ferc-orders ($0.05)",
-    "/ofac-orders ($0.05)",
-    "/bis-orders ($0.05)",
-    "/cftc-orders ($0.05)",
-    "/fifra-orders ($0.05)",
-    "/denovo-orders ($0.05)",
-    "/ttb-oic ($0.05)",
-    "/air-letters ($0.05)",
-    "/superfund-rods ($0.05)",
-    "/ico-mpn ($0.05)",
-    "/cma-ca98 ($0.05)",
+    "/mariners ($0.02 / $0.05)",
+    "/mariners-d11 ($0.02 / $0.05)",
+    "/mariners-d7 ($0.02 / $0.05)",
+    "/mariners-d8 ($0.02 / $0.05)",
+    "/warning-letters ($0.02 / $0.05)",
+    "/untitled-letters ($0.02 / $0.05)",
+    "/awa ($0.02 / $0.05)",
+    "/swisspar ($0.02 / $0.05)",
+    "/pcac ($0.02 / $0.05)",
+    "/ftc-wl ($0.02 / $0.05)",
+    "/cfpb-orders ($0.02 / $0.05)",
+    "/occ-cd ($0.02 / $0.05)",
+    "/fdic-orders ($0.02 / $0.05)",
+    "/frb-orders ($0.02 / $0.05)",
+    "/ncua-orders ($0.02 / $0.05)",
+    "/fincen-orders ($0.02 / $0.05)",
+    "/ferc-orders ($0.02 / $0.05)",
+    "/ofac-orders ($0.02 / $0.05)",
+    "/bis-orders ($0.02 / $0.05)",
+    "/cftc-orders ($0.02 / $0.05)",
+    "/fifra-orders ($0.02 / $0.05)",
+    "/denovo-orders ($0.02 / $0.05)",
+    "/ttb-oic ($0.02 / $0.05)",
+    "/air-letters ($0.02 / $0.05)",
+    "/superfund-rods ($0.02 / $0.05)",
+    "/ico-mpn ($0.02 / $0.05)",
+    "/cma-ca98 ($0.02 / $0.05)",
   ];
-  if (listed483) paidBits.push("/form-483 ($0.05)");
-  if (listedGmp) paidBits.push("/gmp ($0.05)");
-  if (listedGmpMd) paidBits.push("/gmp-md ($0.05)");
+  if (listed483) paidBits.push("/form-483 ($0.02 / $0.05)");
+  if (listedGmp) paidBits.push("/gmp ($0.02 / $0.05)");
+  if (listedGmpMd) paidBits.push("/gmp-md ($0.02 / $0.05)");
   const paidList = paidBits.join(", ");
   return {
     openapi: "3.1.0",
@@ -3481,7 +3528,7 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       description: "Official public data as JSON. Unpaid paid routes return HTTP 402.",
       contact: { name: "BNM Data Shop", url: "https://bnm.farm/" },
       "x-guidance":
-        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. Table doors (/ticks, /import-alerts): one $0.05 GET is the entire current table. Extracted-body doors: find a record on the free index (?q=); each row names the page/before to pay. One $0.05 GET is the newest 100 official texts, not the entire archive. Older pages are another $0.05 on the same URL. Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. MCP at GET/POST /mcp has a free search tool plus one paid page GET per door. No request body. ${noNextSkuWord()}`,
+        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. Table doors (/ticks, /import-alerts): one $0.05 GET is the entire current table. Extracted-body doors: find a record on the free index (?q=); each row names the id to buy. GET ?id= is one official text for $0.02. Default GET / page of up to 100 official texts is $0.05 (newest 100 official texts, not the entire archive). Older pages are another $0.05 on the same URL. Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. MCP at GET/POST /mcp has a free search tool plus one paid GET per door. No request body. ${noNextSkuWord()}`,
     },
     "x-discovery": {
       ownershipProofs: [PAY_TO],
@@ -4475,13 +4522,13 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
         ),
         post: freeOpenApiOp(
           "MCP JSON-RPC",
-          `initialize / tools/list / tools/call. Free search tool finds a record on the index (?q=). Paid tools GET the named page. Table doors return the entire current table. Unpaid paid tools still HTTP 402.`,
+          `initialize / tools/list / tools/call. Free search tool finds a record on the index (?q=) and names the id to buy. Paid tools GET ?id= ($0.02) or the default/page bag ($0.05). Table doors return the entire current table. Unpaid paid tools still HTTP 402.`,
         ),
       },
       "/": {
         get: freeOpenApiOp(
           "Shop discovery JSON",
-          `payTo, network, and the ${paidCountWord()} public products. Each product has a one-line description plus catalog count. Table doors return the entire current table. Extracted-body doors: find on free index (?q=), then pay the named page (newest 100, not the entire archive).`,
+          `payTo, network, and the ${paidCountWord()} public products. Each product has a one-line description plus catalog count. Table doors return the entire current table. Extracted-body doors: find on free index (?q=), then buy ?id= for $0.02 or the default/page of up to 100 for $0.05.`,
         ),
       },
     },
@@ -4509,10 +4556,10 @@ async function servePaid(
   await loadSkuBags([sku]);
   const payment = paymentHeader(req);
   const resource = resourceUrl(req, port, copy.resourcePath);
-  const body402 = paymentRequiredBody(resource, sku);
-  const v2 = paymentRequiredV2(resource, sku);
-  const paymentRequiredHeader = Buffer.from(JSON.stringify(v2), "utf-8").toString("base64");
   const pageQuery = parseExtractedPageQuery(new URL(req.url || copy.resourcePath, resource));
+  const body402 = paymentRequiredBody(resource, sku, pageQuery);
+  const v2 = paymentRequiredV2(resource, sku, pageQuery);
+  const paymentRequiredHeader = Buffer.from(JSON.stringify(v2), "utf-8").toString("base64");
 
   if (!payment) {
     sendJson(res, 402, body402, { "PAYMENT-REQUIRED": paymentRequiredHeader });
@@ -4532,7 +4579,7 @@ async function servePaid(
     return;
   }
 
-  const accept = facilitatorPaymentRequirements(resource, sku);
+  const accept = facilitatorPaymentRequirements(resource, sku, pageQuery);
   const verified = await facilitatorVerify(payment, accept);
   if (verified && (await facilitatorSettle(payment, accept))) {
     await serve();
@@ -4592,7 +4639,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
       wellKnown: WELL_KNOWN_PATH,
       llmsTxt: LLMS_PATH,
       mcp: MCP_PATH,
-      search: "Extracted-body doors: GET {manifest}?q=. Each hit names page/before to pay. Then pay that page. Table doors have no page — one paid GET is the entire current table.",
+      search: "Extracted-body doors: GET {manifest}?q=. Each hit names the id to buy. GET ?id= is one official text for $0.02. Default GET / page of up to 100 is $0.05. Table doors have no page — one paid GET is the entire current table.",
       products: publicBazaarSkus().map((sku) => shopProductCard(sku, bags.get(sku) ?? bagFromManifest(sku, {}))),
     });
     return;
@@ -4961,38 +5008,39 @@ if (isMain()) {
   server.listen(port, host, () => {
     const board = boardPath();
     console.error(`bnm data shop x402 door on ${host}:${port}`);
+    const extractedBoot = "$0.02 id / $0.05 page USDC";
     console.error(`${TICKS_PATH} $${Number(amountAtomicFor("ticks")) / 1e6} USDC`);
     console.error(`${IMPORT_ALERTS_PATH} $${Number(amountAtomicFor("import-alerts")) / 1e6} USDC`);
-    console.error(`${MARINERS_PATH} $${Number(amountAtomicFor("mariners")) / 1e6} USDC`);
-    console.error(`${MARINERS_D11_PATH} $${Number(amountAtomicFor("mariners-d11")) / 1e6} USDC`);
-    console.error(`${MARINERS_D7_PATH} $${Number(amountAtomicFor("mariners-d7")) / 1e6} USDC`);
-    console.error(`${MARINERS_D8_PATH} $${Number(amountAtomicFor("mariners-d8")) / 1e6} USDC`);
-    console.error(`${WARNING_LETTERS_PATH} $${Number(amountAtomicFor("warning-letters")) / 1e6} USDC`);
-    console.error(`${UNTITLED_LETTERS_PATH} $${Number(amountAtomicFor("untitled-letters")) / 1e6} USDC`);
-    console.error(`${AWA_PATH} $${Number(amountAtomicFor("awa")) / 1e6} USDC`);
-    console.error(`${SWISSPAR_PATH} $${Number(amountAtomicFor("swisspar")) / 1e6} USDC`);
-    console.error(`${PCAC_PATH} $${Number(amountAtomicFor("pcac")) / 1e6} USDC`);
-    console.error(`${FTC_WL_PATH} $${Number(amountAtomicFor("ftc-wl")) / 1e6} USDC`);
-    console.error(`${CFPB_ORDERS_PATH} $${Number(amountAtomicFor("cfpb-orders")) / 1e6} USDC`);
-    console.error(`${OCC_CD_PATH} $${Number(amountAtomicFor("occ-cd")) / 1e6} USDC`);
-    console.error(`${FDIC_ORDERS_PATH} $${Number(amountAtomicFor("fdic-orders")) / 1e6} USDC`);
-    console.error(`${FRB_ORDERS_PATH} $${Number(amountAtomicFor("frb-orders")) / 1e6} USDC`);
-    console.error(`${NCUA_ORDERS_PATH} $${Number(amountAtomicFor("ncua-orders")) / 1e6} USDC`);
-    console.error(`${FINCEN_ORDERS_PATH} $${Number(amountAtomicFor("fincen-orders")) / 1e6} USDC`);
-    console.error(`${FERC_ORDERS_PATH} $${Number(amountAtomicFor("ferc-orders")) / 1e6} USDC`);
-    console.error(`${OFAC_ORDERS_PATH} $${Number(amountAtomicFor("ofac-orders")) / 1e6} USDC`);
-    console.error(`${BIS_ORDERS_PATH} $${Number(amountAtomicFor("bis-orders")) / 1e6} USDC`);
-    console.error(`${CFTC_ORDERS_PATH} $${Number(amountAtomicFor("cftc-orders")) / 1e6} USDC`);
-    console.error(`${FIFRA_ORDERS_PATH} $${Number(amountAtomicFor("fifra-orders")) / 1e6} USDC`);
-    console.error(`${DENOVO_ORDERS_PATH} $${Number(amountAtomicFor("denovo-orders")) / 1e6} USDC`);
-    console.error(`${TTB_OIC_PATH} $${Number(amountAtomicFor("ttb-oic")) / 1e6} USDC`);
-    console.error(`${AIR_LETTERS_PATH} $${Number(amountAtomicFor("air-letters")) / 1e6} USDC`);
-    console.error(`${SUPERFUND_RODS_PATH} $${Number(amountAtomicFor("superfund-rods")) / 1e6} USDC`);
-    console.error(`${ICO_MPN_PATH} $${Number(amountAtomicFor("ico-mpn")) / 1e6} USDC`);
-    console.error(`${CMA_CA98_PATH} $${Number(amountAtomicFor("cma-ca98")) / 1e6} USDC`);
-    console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
-    console.error(`${GMP_PATH} $${Number(amountAtomicFor("gmp")) / 1e6} USDC${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
-    console.error(`${GMP_MD_PATH} $${Number(amountAtomicFor("gmp-md")) / 1e6} USDC${gmpMdIsPublic() ? "" : " (unlisted until a real MD observation body is cached)"}`);
+    console.error(`${MARINERS_PATH} ${extractedBoot}`);
+    console.error(`${MARINERS_D11_PATH} ${extractedBoot}`);
+    console.error(`${MARINERS_D7_PATH} ${extractedBoot}`);
+    console.error(`${MARINERS_D8_PATH} ${extractedBoot}`);
+    console.error(`${WARNING_LETTERS_PATH} ${extractedBoot}`);
+    console.error(`${UNTITLED_LETTERS_PATH} ${extractedBoot}`);
+    console.error(`${AWA_PATH} ${extractedBoot}`);
+    console.error(`${SWISSPAR_PATH} ${extractedBoot}`);
+    console.error(`${PCAC_PATH} ${extractedBoot}`);
+    console.error(`${FTC_WL_PATH} ${extractedBoot}`);
+    console.error(`${CFPB_ORDERS_PATH} ${extractedBoot}`);
+    console.error(`${OCC_CD_PATH} ${extractedBoot}`);
+    console.error(`${FDIC_ORDERS_PATH} ${extractedBoot}`);
+    console.error(`${FRB_ORDERS_PATH} ${extractedBoot}`);
+    console.error(`${NCUA_ORDERS_PATH} ${extractedBoot}`);
+    console.error(`${FINCEN_ORDERS_PATH} ${extractedBoot}`);
+    console.error(`${FERC_ORDERS_PATH} ${extractedBoot}`);
+    console.error(`${OFAC_ORDERS_PATH} ${extractedBoot}`);
+    console.error(`${BIS_ORDERS_PATH} ${extractedBoot}`);
+    console.error(`${CFTC_ORDERS_PATH} ${extractedBoot}`);
+    console.error(`${FIFRA_ORDERS_PATH} ${extractedBoot}`);
+    console.error(`${DENOVO_ORDERS_PATH} ${extractedBoot}`);
+    console.error(`${TTB_OIC_PATH} ${extractedBoot}`);
+    console.error(`${AIR_LETTERS_PATH} ${extractedBoot}`);
+    console.error(`${SUPERFUND_RODS_PATH} ${extractedBoot}`);
+    console.error(`${ICO_MPN_PATH} ${extractedBoot}`);
+    console.error(`${CMA_CA98_PATH} ${extractedBoot}`);
+    console.error(`${FORM_483_PATH} ${extractedBoot}${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
+    console.error(`${GMP_PATH} ${extractedBoot}${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
+    console.error(`${GMP_MD_PATH} ${extractedBoot}${gmpMdIsPublic() ? "" : " (unlisted until a real MD observation body is cached)"}`);
     console.error(`mcp ${MCP_PATH} — ${paidDiscoveryPaths().length} tools from ${WELL_KNOWN_PATH}`);
     console.error(`payTo ${PAY_TO} USDC ${USDC_BASE} on Base`);
     console.error(`ticksDir ${ticksDir() || "(unset)"}`);

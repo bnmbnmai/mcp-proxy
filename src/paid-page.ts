@@ -1,16 +1,19 @@
 /**
  * Paid bag sizes. Table doors return the whole table. Extracted-body doors
- * return the newest 100 official texts; older pages are another $0.05 on the
- * same URL via page/before. Does not change collect.
+ * have two bags on the same URL: ?id= one official text ($0.02) or default /
+ * page of up to 100 ($0.05). Older pages are another $0.05 via page/before.
+ * Does not change collect.
  */
 
 export const EXTRACTED_PAGE_SIZE = 100;
+export const EXTRACTED_ID_AMOUNT_ATOMIC = "20000";
 
 export type TableSku = "ticks" | "import-alerts";
 
 export type ExtractedPageQuery = {
   page: number;
   before: string | null;
+  id?: string | null;
 };
 
 export type ExtractedNextPage = {
@@ -36,7 +39,12 @@ export function parseExtractedPageQuery(url: URL): ExtractedPageQuery {
   const raw = Number(url.searchParams.get("page") ?? "1");
   const page = Number.isFinite(raw) && raw >= 1 ? Math.floor(raw) : 1;
   const before = str(url.searchParams.get("before")) || null;
-  return { page, before };
+  const id = str(url.searchParams.get("id")) || null;
+  return { page, before, id };
+}
+
+export function isExtractedIdQuery(query: Pick<ExtractedPageQuery, "id"> | undefined): boolean {
+  return Boolean(query?.id);
 }
 
 export function rowId(row: Record<string, unknown>): string {
@@ -77,6 +85,30 @@ export function pageExtractedPaidBody<T>(body: T, query: ExtractedPageQuery): T 
   if (!key) return body;
   const rows = (obj[key] as unknown[]).filter((row): row is Record<string, unknown> => Boolean(asObject(row)));
   const sorted = sortNewest(rows);
+  const recordRows = Array.isArray(obj.records)
+    ? (obj.records as unknown[]).filter((row): row is Record<string, unknown> => Boolean(asObject(row)))
+    : [];
+  const sortedRecords = sortNewest(recordRows);
+
+  if (query.id) {
+    const match = sorted.filter((row) => rowId(row) === query.id);
+    const matchIds = new Set(match.map((row) => rowId(row)).filter(Boolean));
+    const records = Array.isArray(obj.records)
+      ? sortedRecords.filter((row) => matchIds.has(rowId(row)))
+      : obj.records;
+    return {
+      ...obj,
+      [key]: match,
+      ...(Array.isArray(obj.records) ? { records, recordCount: Array.isArray(records) ? records.length : match.length } : {}),
+      id: query.id,
+      page: 1,
+      pageSize: 1,
+      returnedCount: match.length,
+      catalogCount: sorted.length,
+      next: null,
+    } as T;
+  }
+
   let start = (query.page - 1) * EXTRACTED_PAGE_SIZE;
   if (query.before) {
     const idx = sorted.findIndex((row) => rowId(row) === query.before);
@@ -92,10 +124,6 @@ export function pageExtractedPaidBody<T>(body: T, query: ExtractedPageQuery): T 
       }
     : null;
   const sliceIds = new Set(slice.map((row) => rowId(row)).filter(Boolean));
-  const recordRows = Array.isArray(obj.records)
-    ? (obj.records as unknown[]).filter((row): row is Record<string, unknown> => Boolean(asObject(row)))
-    : [];
-  const sortedRecords = sortNewest(recordRows);
   const records = Array.isArray(obj.records)
     ? (sliceIds.size > 0
       ? sortedRecords.filter((row) => sliceIds.has(rowId(row)))
