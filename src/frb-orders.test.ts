@@ -295,7 +295,7 @@ async function main(): Promise<void> {
   assert.equal(paid.records[0]?.type, FRB_ORDER_TYPE);
   // date-desc, then id-asc: 26-040-WA/RB-HC before 26-040-WA/RB-SM on 2026-07-15
   assert.equal(paid.records[0]?.firm, "Iuka Bancshares, Inc.");
-  assert.equal(paid.cards[0]?.institution, "The Iuka State Bank");
+  assert.equal(paid.cards[0]?.institution, "Iuka Bancshares, Inc.", "paid cards[] are newest-first to match records[]");
   assert.deepEqual(Object.keys(paid.records[0] ?? {}).sort(), ["date", "firm", "id", "type", "url"]);
   assert.ok(paid.records.every((r) => r.firm && r.id && r.url));
 

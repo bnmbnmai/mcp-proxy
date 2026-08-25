@@ -3,7 +3,73 @@
  * Reads OUR cache only. Does not call official APIs or an LLM.
  * Existing paid keys stay; records[] is added alongside for agent diffs.
  * Shape is always {id, date, firm, url, type} — same as the first-pass /ticks /form-483 /warning-letters product.
+ *
+ * Extracted-body doors sell the newest N official texts on one GET (default 100).
+ * Free /{door}/manifest.json stays the full catalog. /ticks, /import-alerts, and
+ * Mariners weekly editions are not windowed.
  */
+
+export const DEFAULT_PAID_BODY_WINDOW = 100;
+export const PAID_BODY_WINDOW_ENV = "PAID_BODY_WINDOW";
+
+/** Live extracted-body doors. One GET, newest N official texts. Not /ticks, /import-alerts, or Mariners. */
+export const EXTRACTED_BODY_SKUS = [
+  "warning-letters",
+  "untitled-letters",
+  "form-483",
+  "gmp",
+  "gmp-md",
+  "awa",
+  "swisspar",
+  "pcac",
+  "ftc-wl",
+  "cfpb-orders",
+  "occ-cd",
+  "fdic-orders",
+  "frb-orders",
+  "ncua-orders",
+  "fincen-orders",
+  "ferc-orders",
+  "ofac-orders",
+  "bis-orders",
+  "cftc-orders",
+  "fifra-orders",
+  "denovo-orders",
+  "ttb-oic",
+  "air-letters",
+  "superfund-rods",
+  "ico-mpn",
+  "cma-ca98",
+] as const;
+
+export type ExtractedBodySku = (typeof EXTRACTED_BODY_SKUS)[number];
+
+export type PaidBodyOpts = {
+  /** Override the live N. Default is PAID_BODY_WINDOW or 100. */
+  window?: number;
+};
+
+export function paidBodyWindow(explicit?: number, env: NodeJS.ProcessEnv = process.env): number {
+  if (typeof explicit === "number" && Number.isFinite(explicit) && explicit >= 1) {
+    return Math.floor(explicit);
+  }
+  const raw = env[PAID_BODY_WINDOW_ENV];
+  if (raw == null || String(raw).trim() === "") return DEFAULT_PAID_BODY_WINDOW;
+  const n = Number(raw);
+  if (!Number.isFinite(n) || n < 1) return DEFAULT_PAID_BODY_WINDOW;
+  return Math.floor(n);
+}
+
+export function newestOfficialTextsCopy(n = paidBodyWindow()): string {
+  return `newest ${n} official texts`;
+}
+
+/** Free-manifest note: full catalog stays; paid GET is the newest-N window. */
+export function paidBodyCatalogNote(paidPath: string, catalogLead: string): string {
+  const n = paidBodyWindow();
+  const lead = catalogLead.trim().replace(/\.?$/, ".");
+  return `${lead} Paid GET ${paidPath} returns the ${newestOfficialTextsCopy(n)} plus records[] / asOf for those ${n}.`;
+}
 
 export const TICKS_CACHE_SOURCE = "idaho-hay-feeder-ticks cache";
 export const FORM_483_TYPE = "form-483";
@@ -93,6 +159,11 @@ export type PaidEnvelope = {
   source: string;
 };
 
+export type PaidBodyWindowEnvelope = PaidEnvelope & {
+  paidWindow: number;
+  catalogCount: number;
+};
+
 /** Reject OCR / ASP.NET-style year-2825 and empty dates. */
 export function isPlausibleDate(raw: string | null | undefined): raw is string {
   if (!raw) return false;
@@ -163,6 +234,25 @@ function dedupeById(rows: PaidRecord[]): PaidRecord[] {
 
 export function latestRecordDate(records: PaidRecord[]): string | null {
   return sortRecords(records).find((row) => row.date)?.date ?? null;
+}
+
+function windowRecords(records: PaidRecord[], limit: number): PaidRecord[] {
+  return records.slice(0, limit);
+}
+
+function officialItemId(row: Record<string, unknown>): string {
+  return str(row.id) || str(row.docket) || str(row.mediaId) || str(row.inspectionNumber);
+}
+
+/** Keep only the windowed official bodies, newest-first to match records[]. */
+function windowOfficialItems(
+  items: Record<string, unknown>[],
+  records: PaidRecord[],
+): Record<string, unknown>[] {
+  const order = new Map(records.map((row, i) => [row.id, i]));
+  return items
+    .filter((row) => order.has(officialItemId(row)))
+    .sort((a, b) => (order.get(officialItemId(a)) ?? 0) - (order.get(officialItemId(b)) ?? 0));
 }
 
 export function normalizeTicksRecords(payload: { ticks?: unknown[] }): PaidRecord[] {
@@ -286,15 +376,21 @@ function paidCardBody<T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?:
   payload: T,
   type: string,
   fallbackSource: string,
-): T & PaidEnvelope {
-  const records = normalizeCardRecords(payload, type);
+  opts?: PaidBodyOpts,
+): T & PaidBodyWindowEnvelope {
+  const catalog = normalizeCardRecords(payload, type);
+  const limit = paidBodyWindow(opts?.window);
+  const records = windowRecords(catalog, limit);
   return {
     ...payload,
-    asOf: firstPlausibleDate(payload.asOf) ?? latestRecordDate(records),
+    cards: windowOfficialItems(asList(payload.cards), records),
+    asOf: latestRecordDate(records),
     fetchedAt: honestFetchedAt(payload.fetchedAt),
     source: listingSource(payload, fallbackSource),
     records,
     recordCount: records.length,
+    paidWindow: limit,
+    catalogCount: catalog.length,
   };
 }
 
@@ -314,11 +410,15 @@ export function paidTicksBody<T extends { ticks?: unknown[]; fetchedAt?: unknown
 
 export function paidForm483Body<T extends { letters?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown }>(
   payload: T,
-): T & PaidEnvelope {
-  const records = normalizeForm483Records(payload);
+  opts?: PaidBodyOpts,
+): T & PaidBodyWindowEnvelope {
+  const catalog = normalizeForm483Records(payload);
+  const limit = paidBodyWindow(opts?.window);
+  const records = windowRecords(catalog, limit);
   return {
     ...payload,
-    asOf: firstPlausibleDate(payload.asOf) ?? latestRecordDate(records),
+    letters: windowOfficialItems(asList(payload.letters), records),
+    asOf: latestRecordDate(records),
     fetchedAt: honestFetchedAt(payload.fetchedAt),
     source: listingSource(
       payload,
@@ -326,16 +426,21 @@ export function paidForm483Body<T extends { letters?: unknown[]; fetchedAt?: unk
     ),
     records,
     recordCount: records.length,
+    paidWindow: limit,
+    catalogCount: catalog.length,
   };
 }
 
 export function paidWarningLettersBody<
   T extends { letters?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  const records = normalizeWarningLetterRecords(payload);
+>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  const catalog = normalizeWarningLetterRecords(payload);
+  const limit = paidBodyWindow(opts?.window);
+  const records = windowRecords(catalog, limit);
   return {
     ...payload,
-    asOf: firstPlausibleDate(payload.asOf) ?? latestRecordDate(records),
+    letters: windowOfficialItems(asList(payload.letters), records),
+    asOf: latestRecordDate(records),
     fetchedAt: honestFetchedAt(payload.fetchedAt),
     source: listingSource(
       payload,
@@ -343,151 +448,119 @@ export function paidWarningLettersBody<
     ),
     records,
     recordCount: records.length,
+    paidWindow: limit,
+    catalogCount: catalog.length,
   };
 }
 
-export function paidCmaCa98Body<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, CMA_CA98_TYPE, CMA_CA98_SOURCE);
+type CardPayload = { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown };
+
+export function paidCmaCa98Body<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, CMA_CA98_TYPE, CMA_CA98_SOURCE, opts);
 }
 
-export function paidIcoMpnBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, ICO_MPN_TYPE, ICO_MPN_SOURCE);
+export function paidIcoMpnBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, ICO_MPN_TYPE, ICO_MPN_SOURCE, opts);
 }
 
-export function paidFtcWlBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, FTC_WL_TYPE, FTC_WL_SOURCE);
+export function paidFtcWlBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, FTC_WL_TYPE, FTC_WL_SOURCE, opts);
 }
 
-export function paidUntitledLettersBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, UNTITLED_LETTER_TYPE, UNTITLED_LETTER_SOURCE);
+export function paidUntitledLettersBody<T extends CardPayload>(
+  payload: T,
+  opts?: PaidBodyOpts,
+): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, UNTITLED_LETTER_TYPE, UNTITLED_LETTER_SOURCE, opts);
 }
 
-export function paidAirLettersBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, AIR_LETTER_TYPE, AIR_LETTER_SOURCE);
+export function paidAirLettersBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, AIR_LETTER_TYPE, AIR_LETTER_SOURCE, opts);
 }
 
-export function paidCftcOrdersBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, CFTC_ORDER_TYPE, CFTC_ORDER_SOURCE);
+export function paidCftcOrdersBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, CFTC_ORDER_TYPE, CFTC_ORDER_SOURCE, opts);
 }
 
-export function paidFifraOrdersBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, FIFRA_ORDER_TYPE, FIFRA_ORDER_SOURCE);
+export function paidFifraOrdersBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, FIFRA_ORDER_TYPE, FIFRA_ORDER_SOURCE, opts);
 }
 
-export function paidDenovoOrdersBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, DENOVO_ORDER_TYPE, DENOVO_ORDER_SOURCE);
+export function paidDenovoOrdersBody<T extends CardPayload>(
+  payload: T,
+  opts?: PaidBodyOpts,
+): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, DENOVO_ORDER_TYPE, DENOVO_ORDER_SOURCE, opts);
 }
 
-export function paidTtbOicBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, TTB_OIC_TYPE, TTB_OIC_SOURCE);
+export function paidTtbOicBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, TTB_OIC_TYPE, TTB_OIC_SOURCE, opts);
 }
 
-export function paidSuperfundRodsBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, SUPERFUND_ROD_TYPE, SUPERFUND_ROD_SOURCE);
+export function paidSuperfundRodsBody<T extends CardPayload>(
+  payload: T,
+  opts?: PaidBodyOpts,
+): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, SUPERFUND_ROD_TYPE, SUPERFUND_ROD_SOURCE, opts);
 }
 
-export function paidPcacBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, PCAC_TYPE, PCAC_SOURCE);
+export function paidPcacBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, PCAC_TYPE, PCAC_SOURCE, opts);
 }
 
-export function paidAwaBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, AWA_TYPE, AWA_SOURCE);
+export function paidAwaBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, AWA_TYPE, AWA_SOURCE, opts);
 }
 
-export function paidSwissparBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, SWISSPAR_TYPE, SWISSPAR_SOURCE);
+export function paidSwissparBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, SWISSPAR_TYPE, SWISSPAR_SOURCE, opts);
 }
 
-export function paidCfpbOrdersBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, CFPB_ORDER_TYPE, CFPB_ORDER_SOURCE);
+export function paidCfpbOrdersBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, CFPB_ORDER_TYPE, CFPB_ORDER_SOURCE, opts);
 }
 
-export function paidOfacOrdersBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, OFAC_ORDER_TYPE, OFAC_ORDER_SOURCE);
+export function paidOfacOrdersBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, OFAC_ORDER_TYPE, OFAC_ORDER_SOURCE, opts);
 }
 
-export function paidFrbOrdersBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, FRB_ORDER_TYPE, FRB_ORDER_SOURCE);
+export function paidFrbOrdersBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, FRB_ORDER_TYPE, FRB_ORDER_SOURCE, opts);
 }
 
-export function paidFincenOrdersBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, FINCEN_ORDER_TYPE, FINCEN_ORDER_SOURCE);
+export function paidFincenOrdersBody<T extends CardPayload>(
+  payload: T,
+  opts?: PaidBodyOpts,
+): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, FINCEN_ORDER_TYPE, FINCEN_ORDER_SOURCE, opts);
 }
 
-export function paidFercOrdersBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, FERC_ORDER_TYPE, FERC_ORDER_SOURCE);
+export function paidFercOrdersBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, FERC_ORDER_TYPE, FERC_ORDER_SOURCE, opts);
 }
 
-export function paidBisOrdersBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, BIS_ORDER_TYPE, BIS_ORDER_SOURCE);
+export function paidBisOrdersBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, BIS_ORDER_TYPE, BIS_ORDER_SOURCE, opts);
 }
 
-export function paidOccCdBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, OCC_CD_TYPE, OCC_CD_SOURCE);
+export function paidOccCdBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, OCC_CD_TYPE, OCC_CD_SOURCE, opts);
 }
 
-export function paidFdicOrdersBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, FDIC_ORDER_TYPE, FDIC_ORDER_SOURCE);
+export function paidFdicOrdersBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, FDIC_ORDER_TYPE, FDIC_ORDER_SOURCE, opts);
 }
 
-export function paidNcuaOrdersBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, NCUA_ORDER_TYPE, NCUA_ORDER_SOURCE);
+export function paidNcuaOrdersBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, NCUA_ORDER_TYPE, NCUA_ORDER_SOURCE, opts);
 }
 
-export function paidGmpBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, GMP_TYPE, GMP_SOURCE);
+export function paidGmpBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, GMP_TYPE, GMP_SOURCE, opts);
 }
 
-export function paidGmpMdBody<
-  T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
->(payload: T): T & PaidEnvelope {
-  return paidCardBody(payload, GMP_MD_TYPE, GMP_MD_SOURCE);
+export function paidGmpMdBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, GMP_MD_TYPE, GMP_MD_SOURCE, opts);
 }
 
 /** Official Light List Number already copied into notice text by the LNM walker. */

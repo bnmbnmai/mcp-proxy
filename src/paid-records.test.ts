@@ -27,6 +27,8 @@ import {
   OCC_CD_TYPE,
   OFAC_ORDER_TYPE,
   PCAC_TYPE,
+  DEFAULT_PAID_BODY_WINDOW,
+  EXTRACTED_BODY_SKUS,
   RECORD_FIELDS,
   SUPERFUND_ROD_TYPE,
   SWISSPAR_TYPE,
@@ -37,6 +39,9 @@ import {
   honestFetchedAt,
   isoFromOfficialDate,
   isPlausibleDate,
+  newestOfficialTextsCopy,
+  paidBodyCatalogNote,
+  paidBodyWindow,
   normalizeCardRecords,
   normalizeForm483Records,
   normalizeImportAlertRecords,
@@ -184,16 +189,19 @@ async function main(): Promise<void> {
   const f483A = paidForm483Body(f483Snap);
   const f483B = paidForm483Body(structuredClone(f483Snap));
   assert.deepEqual(f483A.records, f483B.records, "483 normalize is deterministic");
-  assert.equal(JSON.stringify(f483A.records), JSON.stringify(normalizeForm483Records(f483Snap)));
-  assert.equal(f483A.letters.length, 8, "raw letters[] stay, including empty-body rows");
-  assert.equal(f483A.letters[0]?.firm, "Firm 1");
+  assert.deepEqual(f483A.records, normalizeForm483Records(f483Snap), "catalog under the default window stays complete");
+  assert.equal(f483A.letters.length, 7, "paid letters[] are official extracted bodies only");
+  assert.equal(f483A.letters[0]?.firm, "Firm 4", "paid letters[] are newest-first");
   assert.ok(f483A.recordCount > 5, "paid records grow past the old first-slice 5");
   assert.equal(f483A.recordCount, 7);
+  assert.equal(f483A.catalogCount, 7);
+  assert.equal(f483A.paidWindow, DEFAULT_PAID_BODY_WINDOW);
   assert.equal(f483A.asOf, "2026-08-12", "year-2825 snapshot asOf is replaced by latest plausible record date");
   assert.equal(f483A.records[0]?.id, "firm-4-20260812");
   assert.equal(f483A.records[0]?.type, FORM_483_TYPE);
   assert.equal(f483A.records.find((r) => r.id === "firm-7-28250121")?.date, "2026-02-03");
   assert.ok(!f483A.records.some((r) => r.id === "empty-body"));
+  assert.ok(!f483A.letters.some((row) => row.id === "empty-body"));
   assert.equal(f483A.source.includes("oii-foia-electronic-reading-room"), true);
 
   const wlLetters = letters.map((row, i) => ({
@@ -219,9 +227,11 @@ async function main(): Promise<void> {
   const wlB = paidWarningLettersBody(structuredClone(wlSnap));
   assert.deepEqual(wlA.records, wlB.records, "warning-letter normalize is deterministic");
   assert.deepEqual(wlA.records, normalizeWarningLetterRecords(wlSnap));
-  assert.equal(wlA.letters[0]?.cms, "700000");
+  assert.equal(wlA.letters[0]?.cms, "700003", "paid letters[] are newest-first (firm-4)");
   assert.ok(wlA.recordCount > 5);
   assert.equal(wlA.recordCount, 7);
+  assert.equal(wlA.catalogCount, 7);
+  assert.equal(wlA.paidWindow, DEFAULT_PAID_BODY_WINDOW);
   assert.equal(wlA.asOf, "2026-08-12");
   assert.equal(wlA.records[0]?.type, WARNING_LETTER_TYPE);
   assert.equal(wlA.records.find((r) => r.id.startsWith("firm-7-"))?.date, null, "WL issuedOn 2825 is dropped");
@@ -279,10 +289,12 @@ async function main(): Promise<void> {
   const cmaB = paidCmaCa98Body(structuredClone(cmaSnap));
   assert.deepEqual(cmaA.records, cmaB.records, "cma-ca98 normalize is deterministic");
   assert.deepEqual(cmaA.records, normalizeCardRecords(cmaSnap, CMA_CA98_TYPE));
-  assert.equal(cmaA.cards.length, 7, "raw cards[] stay, including empty-body rows");
-  assert.equal(cmaA.cards[0]?.institution, "Institution 1");
+  assert.equal(cmaA.cards.length, 6, "paid cards[] are official extracted bodies only");
+  assert.equal(cmaA.cards[0]?.institution, "Institution 4", "paid cards[] are newest-first");
   assert.ok(cmaA.recordCount > 0, "empty records[] is a fail");
   assert.equal(cmaA.recordCount, 6);
+  assert.equal(cmaA.catalogCount, 6);
+  assert.equal(cmaA.paidWindow, DEFAULT_PAID_BODY_WINDOW);
   assert.equal(cmaA.asOf, "2026-08-12");
   assert.equal(cmaA.records[0]?.id, "card-4");
   assert.equal(cmaA.records[0]?.firm, "Institution 4");
@@ -294,7 +306,8 @@ async function main(): Promise<void> {
   const icoA = paidIcoMpnBody({ ...cmaSnap, product: "ico-institution-mpn-bodies" as const });
   assert.equal(icoA.records[0]?.type, ICO_MPN_TYPE);
   assert.equal(icoA.recordCount, 6);
-  assert.deepEqual(icoA.cards, cmaSnap.cards);
+  assert.equal(icoA.cards.length, 6);
+  assert.ok(!icoA.cards.some((row) => row.id === "empty-card"));
 
   const ftcCards = cards.map((row, i) => ({
     ...row,
@@ -489,7 +502,7 @@ async function main(): Promise<void> {
     ],
   });
   assert.deepEqual(denovoA.records, normalizeCardRecords(denovoA, DENOVO_ORDER_TYPE));
-  assert.equal(denovoA.cards.length, 2, "raw cards[] stay, including empty-body rows");
+  assert.equal(denovoA.cards.length, 1, "paid cards[] drop empty-body rows");
   assert.ok(denovoA.recordCount > 0, "empty records[] is a fail");
   assert.equal(denovoA.recordCount, 1);
   assert.equal(denovoA.records[0]?.id, "DEN250042");
@@ -690,7 +703,7 @@ async function main(): Promise<void> {
       },
     ],
   });
-  assert.equal(frbA.cards.length, 2, "raw cards[] stay, including empty-body rows");
+  assert.equal(frbA.cards.length, 1, "paid cards[] drop empty-body rows");
   assert.equal(frbA.cards[0]?.institution, "Community Bankshares, Inc.");
   assert.ok(frbA.recordCount > 0, "empty records[] is a fail");
   assert.equal(frbA.recordCount, 1);
@@ -793,7 +806,7 @@ async function main(): Promise<void> {
     ],
   });
   assert.deepEqual(occA.records, normalizeCardRecords(occA, OCC_CD_TYPE));
-  assert.equal(occA.cards.length, 2, "raw cards[] stay, including empty-body rows");
+  assert.equal(occA.cards.length, 1, "paid cards[] drop empty-body rows");
   assert.equal(occA.cards[0]?.bank, "United Texas Bank, National Association");
   assert.ok(occA.recordCount > 0, "empty records[] is a fail");
   assert.equal(occA.recordCount, 1);
@@ -910,7 +923,7 @@ async function main(): Promise<void> {
   };
   const occFromFx = paidOccCdBody(occSnap);
   assert.ok(occFromFx.recordCount > 0, "occ-cd fixture records[] is a fail if empty");
-  assert.equal(occFromFx.cards.length, occSnap.cards.length, "fixture cards[] stay");
+  assert.equal(occFromFx.cards.length, occFromFx.recordCount, "paid cards[] match the sold window");
   assert.equal(occFromFx.records[0]?.type, OCC_CD_TYPE);
   assert.equal(occFromFx.records[0]?.firm, "United Texas Bank, National Association");
   assert.equal(occFromFx.cards[0]?.bank, "United Texas Bank, National Association");
@@ -921,11 +934,11 @@ async function main(): Promise<void> {
   };
   const frbFromFx = paidFrbOrdersBody(frbSnap);
   assert.ok(frbFromFx.recordCount > 0, "frb-orders fixture records[] is a fail if empty");
-  assert.equal(frbFromFx.cards.length, frbSnap.cards.length);
+  assert.equal(frbFromFx.cards.length, frbFromFx.recordCount);
   assert.equal(frbFromFx.records[0]?.type, FRB_ORDER_TYPE);
   // date-desc, then id-asc: 26-040-WA/RB-HC before 26-040-WA/RB-SM on 2026-07-15
   assert.equal(frbFromFx.records[0]?.firm, "Iuka Bancshares, Inc.");
-  assert.equal(frbFromFx.cards[0]?.institution, "The Iuka State Bank");
+  assert.equal(frbFromFx.cards[0]?.institution, "Iuka Bancshares, Inc.");
 
   const marinersSnap = {
     ok: true as const,
@@ -1022,6 +1035,116 @@ async function main(): Promise<void> {
   assert.ok(d11FromFx.records.some((r) => r.firm === "Berkeley" && r.id.includes("5430")));
   assert.ok(d11FromFx.notices.some((n) => n.waterway === "Berkeley" && n.text?.includes("5430")));
   assert.ok(d11FromFx.records.every((r) => r.firm && r.id));
+
+  assert.equal(paidBodyWindow(), DEFAULT_PAID_BODY_WINDOW);
+  assert.equal(paidBodyWindow(undefined, { PAID_BODY_WINDOW: "0" }), DEFAULT_PAID_BODY_WINDOW);
+  assert.equal(paidBodyWindow(undefined, { PAID_BODY_WINDOW: "25" }), 25);
+  assert.equal(paidBodyWindow(3), 3);
+  assert.equal(newestOfficialTextsCopy(100), "newest 100 official texts");
+  assert.equal(
+    paidBodyCatalogNote("/gmp", "Full catalog: count + id + firm + date + url"),
+    "Full catalog: count + id + firm + date + url. Paid GET /gmp returns the newest 100 official texts plus records[] / asOf for those 100.",
+  );
+  assert.equal(EXTRACTED_BODY_SKUS.includes("gmp"), true);
+  assert.equal((EXTRACTED_BODY_SKUS as readonly string[]).includes("ticks"), false);
+
+  const fatGmpCards = Array.from({ length: 120 }, (_, i) => {
+    const n = i + 1;
+    const day = String((n % 28) + 1).padStart(2, "0");
+    const month = String((Math.floor(n / 28) % 12) + 1).padStart(2, "0");
+    return {
+      id: `gmp-${String(n).padStart(4, "0")}`,
+      inspectionNumber: String(80000 + n),
+      firm: `Firm ${n}`,
+      inspectedOn: `2024-${month}-${day}`,
+      sourceUrl: `https://www.drug-inspections.canada.ca/gmp/fullReportCard-en.html?insNumber=${80000 + n}&lang=en`,
+      body: `Summary of observations\n1. C.02.011 card ${n}`,
+    };
+  });
+  fatGmpCards.push({
+    id: "gmp-empty",
+    inspectionNumber: "79999",
+    firm: "Empty Ltd",
+    inspectedOn: "2026-08-11",
+    sourceUrl: "https://www.drug-inspections.canada.ca/gmp/fullReportCard-en.html?insNumber=79999&lang=en",
+    body: "",
+  });
+  const fatGmp = paidGmpBody({
+    ok: true as const,
+    product: "hc-gmp-report-cards" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-25T12:00:00.000Z",
+    asOf: "2026-08-11",
+    sources: { listing: "https://www.drug-inspections.canada.ca/gmp/index-en.html" },
+    cards: fatGmpCards,
+  });
+  assert.equal(fatGmp.catalogCount, 120, "empty-body rows are not official extracted bodies");
+  assert.equal(fatGmp.paidWindow, 100);
+  assert.equal(fatGmp.recordCount, 100);
+  assert.equal(fatGmp.cards.length, 100);
+  assert.equal(fatGmp.records.length, 100);
+  assert.ok(fatGmp.cards.every((row) => String(row.body ?? "").length > 0));
+  assert.equal(fatGmp.records[0]?.id, fatGmp.cards[0]?.id);
+  const windowedIds = new Set(fatGmp.records.map((r) => r.id));
+  assert.equal(windowedIds.has("gmp-empty"), false);
+  const sliced = paidGmpBody(
+    {
+      ok: true as const,
+      product: "hc-gmp-report-cards" as const,
+      cards: fatGmpCards,
+    },
+    { window: 3 },
+  );
+  assert.equal(sliced.paidWindow, 3);
+  assert.equal(sliced.recordCount, 3);
+  assert.equal(sliced.cards.length, 3);
+  assert.equal(sliced.catalogCount, 120);
+  assert.equal(sliced.asOf, sliced.records[0]?.date);
+
+  const fatTicks = {
+    ticks: Array.from({ length: 120 }, (_, i) => ({
+      id: `tick-${i}`,
+      group: "hay",
+      market: `Market ${i}`,
+      asOf: "2026-08-01",
+      sourceUrl: "https://www.ams.usda.gov/mnreports/ams_3056.pdf",
+    })),
+    fetchedAt: "2026-08-25T12:00:00.000Z",
+  };
+  const uncappedTicks = paidTicksBody(fatTicks);
+  assert.equal(uncappedTicks.recordCount, 120, "/ticks is not windowed");
+  assert.equal(uncappedTicks.ticks.length, 120);
+  assert.equal("paidWindow" in uncappedTicks, false);
+
+  const fatIa = paidImportAlertsBody({
+    ticks: Array.from({ length: 120 }, (_, i) => ({
+      alertNumber: "16-81",
+      list: "red",
+      firm: `Firm ${i}`,
+      product: "Lettuce",
+      datePublished: "08/17/2026",
+      sourceUrl: "https://www.accessdata.fda.gov/cms_ia/importalert_49.html",
+    })),
+    fetchedAt: "2026-08-25T12:00:00.000Z",
+    asOf: "2026-08-17",
+  });
+  assert.equal(fatIa.recordCount, 120, "/import-alerts is not windowed");
+  assert.equal(fatIa.ticks.length, 120);
+
+  const fatNotices = paidMarinersBody({
+    asOf: "2026-08-12",
+    week: "32-2026",
+    fetchedAt: "2026-08-18T00:00:00.000Z",
+    notices: Array.from({ length: 120 }, (_, i) => ({
+      week: "32-2026",
+      section: "Federal Discrepancies",
+      waterway: `Harbor ${i}`,
+      text: `Harbor ${i} Light ${i} LLNR ${10000 + i} TRLB FD`,
+      sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf",
+    })),
+  });
+  assert.equal(fatNotices.recordCount, 120, "Mariners weekly edition is not a 100-notice slice");
+  assert.equal(fatNotices.notices.length, 120);
 
   console.log("paid-records normalize tests ok");
 }
