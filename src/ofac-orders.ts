@@ -13,6 +13,7 @@ import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { paidBodyCatalogNote } from "./paid-records.js";
 
 export const OFAC_ORDERS_PATH = "/ofac-orders";
 export const OFAC_ORDERS_MANIFEST_PATH = "/ofac-orders/manifest.json";
@@ -764,7 +765,7 @@ export function buildOfacOrdersManifest(snap: OfacOrdersSnapshot | null): Record
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + institution + docket + date + official PDF URL only. Order body is the paid GET /ofac-orders payload. Not the civil-penalties chart/teaser/RSS. Not people. Not Federal Register raw_text. Not FinCEN /fincen-orders. Not FERC /ferc-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl.",
+    note: paidBodyCatalogNote("/ofac-orders", 'Full catalog: count + institution + docket + date + official URL. Not the civil-penalties chart/teaser/RSS'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

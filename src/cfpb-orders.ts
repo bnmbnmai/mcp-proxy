@@ -11,6 +11,7 @@ import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { paidBodyCatalogNote } from "./paid-records.js";
 
 export const CFPB_ORDERS_PATH = "/cfpb-orders";
 export const CFPB_ORDERS_MANIFEST_PATH = "/cfpb-orders/manifest.json";
@@ -684,7 +685,7 @@ export function buildCfpbOrdersManifest(snap: CfpbOrderSnapshot | null): Record<
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + firm + date + title + fileNo + official PDF URL only. Order body is the paid GET /cfpb-orders payload. Not the enforcement index. Not the action-page teaser. Not the Consumer Complaint Database. Not FTC /ftc-wl.",
+    note: paidBodyCatalogNote("/cfpb-orders", 'Full catalog: count + firm + date + title + fileNo + official URL. Not the enforcement index'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

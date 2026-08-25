@@ -9,6 +9,7 @@
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
+import { paidBodyCatalogNote } from "./paid-records.js";
 
 export const GMP_PATH = "/gmp";
 export const GMP_MANIFEST_PATH = "/gmp/manifest.json";
@@ -717,7 +718,7 @@ export function buildGmpManifest(snap: GmpSnapshot | null): Record<string, unkno
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + id + firm + dates + rating only. Observation text / C.02 cites are the paid GET /gmp payload. Not the 21k-row search index.",
+    note: paidBodyCatalogNote("/gmp", 'Full catalog: count + id + firm + dates + rating + official URL. Not the 21k-row search index'),
     license: OGL_NOTE,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
     network: "base",

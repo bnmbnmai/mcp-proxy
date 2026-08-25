@@ -10,6 +10,7 @@ import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { paidBodyCatalogNote } from "./paid-records.js";
 
 export const OCC_CD_PATH = "/occ-cd";
 export const OCC_CD_MANIFEST_PATH = "/occ-cd/manifest.json";
@@ -606,7 +607,7 @@ export function buildOccCdManifest(snap: OccCdSnapshot | null): Record<string, u
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + bank + docket + date + official PDF URL only. Order body is the paid GET /occ-cd payload. Not ExportToJSON metadata. Not IAP / people / prohibition / CMP-against-person. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not SEC EDGAR complete-submission .txt.",
+    note: paidBodyCatalogNote("/occ-cd", 'Full catalog: count + bank + docket + date + official URL. Not ExportToJSON metadata'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

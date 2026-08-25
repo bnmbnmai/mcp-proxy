@@ -13,6 +13,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { paidBodyCatalogNote } from "./paid-records.js";
 
 export const NCUA_ORDERS_PATH = "/ncua-orders";
 export const NCUA_ORDERS_MANIFEST_PATH = "/ncua-orders/manifest.json";
@@ -799,7 +800,7 @@ export function buildNcuaOrdersManifest(snap: NcuaOrdersSnapshot | null): Record
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + credit union + docket + date + official HTML URL only. Order body is the paid GET /ncua-orders payload. Not the official CSV. Not Drupal ?_format=json. Not 2026 people/IAP. Not late-filer CMP. Not LUAs. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl.",
+    note: paidBodyCatalogNote("/ncua-orders", 'Full catalog: count + credit union + docket + date + official URL. Not the official CSV'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

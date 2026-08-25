@@ -2,7 +2,7 @@
 /**
  * Thin x402 pay-per-pull door for the BNM Data Shop.
  *
- * GET /ticks — Idaho hay + feeder ticks ($0.05 USDC on Base)
+ * GET /ticks — US hay, cattle, and grain ($0.05 USDC on Base)
  * GET /import-alerts — FDA Import Alert / DWPE firm ticks ($0.05)
  * GET /import-alerts/manifest.json — free catalog + schema + sample rows
  * GET /mariners — USCG D13 / Northwest Local Notice to Mariners ($0.05)
@@ -309,6 +309,8 @@ import {
   paidTtbOicBody,
   paidUntitledLettersBody,
   paidWarningLettersBody,
+  newestOfficialTextsCopy,
+  paidBodyWindow,
 } from "./paid-records.js";
 import { mergeAmsNationalTicks } from "./ticks-ams.js";
 import {
@@ -344,7 +346,7 @@ export { MCP_PATH } from "./ticks-mcp.js";
 export const X402SCAN_SERVER_URL =
   "https://www.x402scan.com/server/c6f584c5-e494-41d1-aa02-2efb07ac3546";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
-export const PRODUCT_NAME = "Idaho + nationwide USDA AMS hay/cattle/grain";
+export const PRODUCT_NAME = "US hay, cattle, and grain";
 export const PRODUCT_VERSION = "1.4.0";
 const COLLECT_MEMO_RE =
   /we are not inventing|this report has no organic row|not reusing an older organic|usda printed no organic/i;
@@ -888,10 +890,13 @@ function usdcDisplayFromAtomic(atomic: string | null | undefined): string | null
   return `$${usdcPriceString(atomic)}`;
 }
 
+const PAID_BODY_N = paidBodyWindow();
+const PAID_WINDOW_COPY = `Paid GET returns the ${newestOfficialTextsCopy(PAID_BODY_N)} plus records[] / asOf for those ${PAID_BODY_N}.`;
+
 const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> = {
   ticks: {
     description:
-      "Call GET /ticks when you need the current official Idaho + nationwide USDA AMS hay/cattle/grain snapshot (PNW barns + AMS Direct reports; IBC grain; WD1 $/AF). JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /ticks when you need the current official US hay, cattle, and grain snapshot (USDA AMS nationwide plus PNW barns; IBC grain; WD1 $/AF). JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: TICKS_PATH,
   },
   "import-alerts": {
@@ -921,132 +926,132 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
   },
   "warning-letters": {
     description:
-      "Call GET /warning-letters when you need official FDA warning-letter bodies (firm, date, subject, full letter text) parsed from fda.gov HTML. Not the import-alerts IA feed. Does not invent letter text. Paid JSON keeps letters[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /warning-letters when you need official FDA warning-letter bodies (firm, date, subject, full letter text) parsed from fda.gov HTML. Not the import-alerts IA feed. Does not invent letter text. " + PAID_WINDOW_COPY,
     resourcePath: WARNING_LETTERS_PATH,
   },
   "untitled-letters": {
     description:
-      "Call GET /untitled-letters when you need official FDA Untitled Letter text (CDER OPDP + CBER APLB promo) extracted from per-letter PDFs at /media/{id}/download. Not /warning-letters HTML. Not the HTML index. Does not invent letter text. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /untitled-letters when you need official FDA Untitled Letter text (CDER OPDP + CBER APLB promo) extracted from per-letter PDFs at /media/{id}/download. Not /warning-letters HTML. Not the HTML index. Does not invent letter text. " + PAID_WINDOW_COPY,
     resourcePath: UNTITLED_LETTERS_PATH,
   },
   awa: {
     description:
-      "Call GET /awa when you need official USDA APHIS Animal Welfare Act inspection-report observation/narrative text extracted from per-report PDFs on the Public Search Tool. Not the Salesforce metadata index. Not Data Liberation. Not /form-483. Not CMS 2567. Not CQC. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /awa when you need official USDA APHIS Animal Welfare Act inspection-report observation/narrative text extracted from per-report PDFs on the Public Search Tool. Not the Salesforce metadata index. Not Data Liberation. Not /form-483. Not CMS 2567. Not CQC. " + PAID_WINDOW_COPY,
     resourcePath: AWA_PATH,
   },
   swisspar: {
     description:
-      "Call GET /swisspar when you need official Swissmedic first-authorisation SwissPAR evaluation text extracted from per-product PDFs. Not the A–Z HTML index. Not EMA EPARs/referrals. Not FDA CDER reviews. Not the HCP/FI appendix. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /swisspar when you need official Swissmedic first-authorisation SwissPAR evaluation text extracted from per-product PDFs. Not the A–Z HTML index. Not EMA EPARs/referrals. Not FDA CDER reviews. Not the HCP/FI appendix. " + PAID_WINDOW_COPY,
     resourcePath: SWISSPAR_PATH,
   },
   pcac: {
     description:
-      "Call GET /pcac when you need official FDA-authored PCAC 503A briefing-memo evaluation text extracted from per-substance PDFs. Not the FR notice or docket 0001. Not CDER multidisciplinary reviews. Not combined sponsor/AdComm packs. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /pcac when you need official FDA-authored PCAC 503A briefing-memo evaluation text extracted from per-substance PDFs. Not the FR notice or docket 0001. Not CDER multidisciplinary reviews. Not combined sponsor/AdComm packs. " + PAID_WINDOW_COPY,
     resourcePath: PCAC_PATH,
   },
   "ftc-wl": {
     description:
-      "Call GET /ftc-wl when you need official FTC Bureau of Consumer Protection warning-letter text extracted from per-letter PDFs on ftc.gov. Not the legal-library index. Not the Drupal node. Not FDA /warning-letters. Not official templates. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /ftc-wl when you need official FTC Bureau of Consumer Protection warning-letter text extracted from per-letter PDFs on ftc.gov. Not the legal-library index. Not the Drupal node. Not FDA /warning-letters. Not official templates. " + PAID_WINDOW_COPY,
     resourcePath: FTC_WL_PATH,
   },
   "cfpb-orders": {
     description:
-      "Call GET /cfpb-orders when you need official CFPB-authored consent-order / administrative-order text extracted from per-order PDFs on files.consumerfinance.gov. Not the enforcement index. Not the action-page teaser. Not the Consumer Complaint Database. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /cfpb-orders when you need official CFPB-authored consent-order / administrative-order text extracted from per-order PDFs on files.consumerfinance.gov. Not the enforcement index. Not the action-page teaser. Not the Consumer Complaint Database. Not FTC /ftc-wl. " + PAID_WINDOW_COPY,
     resourcePath: CFPB_ORDERS_PATH,
   },
   "occ-cd": {
     description:
-      "Call GET /occ-cd when you need official OCC institution Cease-and-Desist / Consent Order text extracted from per-order PDFs on occ.gov/static/enforcement-actions. Not EASearch ExportToJSON metadata. Not IAP / people / prohibition / CMP-against-person. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not SEC EDGAR complete-submission .txt. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /occ-cd when you need official OCC institution Cease-and-Desist / Consent Order text extracted from per-order PDFs on occ.gov/static/enforcement-actions. Not EASearch ExportToJSON metadata. Not CFPB /cfpb-orders. Not FTC /ftc-wl. " + PAID_WINDOW_COPY,
     resourcePath: OCC_CD_PATH,
   },
   "fdic-orders": {
     description:
-      "Call GET /fdic-orders when you need official FDIC institution consent-order / Cease-and-Desist text extracted from per-order PDFs on orders.fdic.gov. Not the EDOS Salesforce index. Not BankFind. Not monthly NR counts. Not IAP / 1829 / Section 19 people files. Not EDGAR 8-K. Not Federal Register raw_text. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /fdic-orders when you need official FDIC institution consent-order / Cease-and-Desist text extracted from per-order PDFs on orders.fdic.gov. Not the EDOS Salesforce index. Not BankFind. Not monthly NR counts. Not EDGAR 8-K. Not Federal Register raw_text. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. " + PAID_WINDOW_COPY,
     resourcePath: FDIC_ORDERS_PATH,
   },
   "frb-orders": {
     description:
-      "Call GET /frb-orders when you need official FRB institution Cease-and-Desist / written-agreement / PCA text extracted from per-order PDFs on federalreserve.gov. Not the official enforcement CSV. Not ea-old.json / ea-cms-recent.json / ne-press.json teasers. Not BankFind. Not IAP / prohibition-of-employee people files. Not EDGAR 8-K. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /frb-orders when you need official FRB institution Cease-and-Desist / written-agreement / PCA text extracted from per-order PDFs on federalreserve.gov. Not the official enforcement CSV. Not ea-old.json / ea-cms-recent.json / ne-press.json teasers. Not BankFind. Not EDGAR 8-K. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. " + PAID_WINDOW_COPY,
     resourcePath: FRB_ORDERS_PATH,
   },
   "ncua-orders": {
     description:
-      "Call GET /ncua-orders when you need official NCUA institution consent Cease-and-Desist text extracted from per-order HTML on ncua.gov. Not the official CSV. Not Drupal ?_format=json. Not 2026 people/IAP. Not late-filer CMP. Not LUAs. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /ncua-orders when you need official NCUA institution consent Cease-and-Desist text extracted from per-order HTML on ncua.gov. Not the official CSV. Not late-filer CMP. Not LUAs. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. " + PAID_WINDOW_COPY,
     resourcePath: NCUA_ORDERS_PATH,
   },
   "fincen-orders": {
     description:
-      "Call GET /fincen-orders when you need official FinCEN institution consent-order text extracted from per-order PDFs on fincen.gov. Not the enforcement-actions index teaser. Not people-only CMP. Not a news-release wrap. Not Federal Register raw_text. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /fincen-orders when you need official FinCEN institution consent-order text extracted from per-order PDFs on fincen.gov. Not the enforcement-actions index teaser. Not a news-release wrap. " + PAID_WINDOW_COPY,
     resourcePath: FINCEN_ORDERS_PATH,
   },
   "ferc-orders": {
     description:
-      "Call GET /ferc-orders when you need official FERC institution stipulation-and-consent / show-cause / civil-penalty text extracted from per-order PDFs on cms.ferc.gov. Not the civil-penalty index teaser. Not eLibrary metadata. Not Federal Register raw_text. Not people files. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /ferc-orders when you need official FERC institution stipulation-and-consent / show-cause / civil-penalty text extracted from per-order PDFs on cms.ferc.gov. Not the civil-penalty index teaser. Not eLibrary metadata. " + PAID_WINDOW_COPY,
     resourcePath: FERC_ORDERS_PATH,
   },
   "ofac-orders": {
     description:
-      "Call GET /ofac-orders when you need official OFAC institution/company enforcement-release text extracted from per-release PDFs on ofac.treasury.gov. Not the civil-penalties chart/teaser/RSS. Not people. Not Federal Register raw_text. Not FinCEN /fincen-orders. Not FERC /ferc-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not BIS /bis-orders. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /ofac-orders when you need official OFAC institution/company enforcement-release text extracted from per-release PDFs on ofac.treasury.gov. Not the civil-penalties chart/teaser/RSS. " + PAID_WINDOW_COPY,
     resourcePath: OFAC_ORDERS_PATH,
   },
   "bis-orders": {
     description:
-      "Call GET /bis-orders when you need official BIS institution/company charging-letter / order / settlement text extracted from per-order PDFs on bis.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not CFTC /cftc-orders. Not FIFRA /fifra-orders. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /bis-orders when you need official BIS institution/company charging-letter / order / settlement text extracted from per-order PDFs on bis.gov. Does not invent order text. " + PAID_WINDOW_COPY,
     resourcePath: BIS_ORDERS_PATH,
   },
   "cftc-orders": {
     description:
-      "Call GET /cftc-orders when you need official CFTC institution/company enforcement-order / settlement text extracted from per-order PDFs on cftc.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not FIFRA /fifra-orders. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /cftc-orders when you need official CFTC institution/company enforcement-order / settlement text extracted from per-order PDFs on cftc.gov. Does not invent order text. " + PAID_WINDOW_COPY,
     resourcePath: CFTC_ORDERS_PATH,
   },
   "fifra-orders": {
     description:
-      "Call GET /fifra-orders when you need official EPA FIFRA institution/company order / consent text extracted from per-order PDFs on yosemite.epa.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not CFTC /cftc-orders. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not De Novo /denovo-orders. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /fifra-orders when you need official EPA FIFRA institution/company order / consent text extracted from per-order PDFs on yosemite.epa.gov. Does not invent order text. " + PAID_WINDOW_COPY,
     resourcePath: FIFRA_ORDERS_PATH,
   },
   "denovo-orders": {
     description:
-      "Call GET /denovo-orders when you need official FDA De Novo institution/company classification-order text extracted from per-order PDFs on accessdata.fda.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not FIFRA /fifra-orders. Not CFTC /cftc-orders. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not TTB /ttb-oic. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /denovo-orders when you need official FDA De Novo classification-order text extracted from per-order PDFs on accessdata.fda.gov. Does not invent order text. " + PAID_WINDOW_COPY,
     resourcePath: DENOVO_ORDERS_PATH,
   },
   "ttb-oic": {
     description:
-      "Call GET /ttb-oic when you need official TTB institution/company Offer in Compromise text extracted from Abstract and Statement PDFs on ttb.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not AIR /air-letters. Not ICO /ico-mpn. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /ttb-oic when you need official TTB Offer in Compromise text extracted from Abstract and Statement PDFs on ttb.gov. Does not invent order text. " + PAID_WINDOW_COPY,
     resourcePath: TTB_OIC_PATH,
   },
   "air-letters": {
     description:
-      "Call GET /air-letters when you need official USDA APHIS institution/company Am I Regulated (AIR) confirmation-letter text extracted from per-letter PDFs on direct.aphis.usda.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not TTB /ttb-oic. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not Superfund /superfund-rods. Not ICO /ico-mpn. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /air-letters when you need official USDA APHIS Am I Regulated (AIR) confirmation-letter text extracted from per-letter PDFs on direct.aphis.usda.gov. Does not invent letter text. " + PAID_WINDOW_COPY,
     resourcePath: AIR_LETTERS_PATH,
   },
   "superfund-rods": {
     description:
-      "Call GET /superfund-rods when you need official EPA Superfund institution/site Record of Decision text extracted from SEMS PDFs on semspub.epa.gov. Not a Proposed Plan or fact sheet. Not people. Not Federal Register raw_text. Not AIR /air-letters. Not TTB /ttb-oic. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders. Not BIS /bis-orders. Not ICO /ico-mpn. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /superfund-rods when you need official EPA Superfund Record of Decision text extracted from SEMS PDFs on semspub.epa.gov. Not a Proposed Plan or fact sheet. " + PAID_WINDOW_COPY,
     resourcePath: SUPERFUND_RODS_PATH,
   },
   "ico-mpn": {
     description:
-      "Call GET /ico-mpn when you need official UK ICO institution/company Monetary Penalty Notice text extracted from per-notice PDFs on ico.org.uk. Not the press/teaser. Not people. Not Federal Register raw_text. Not Superfund /superfund-rods. Not AIR /air-letters. Not TTB /ttb-oic. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders. Not CMA /cma-ca98. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /ico-mpn when you need official UK ICO Monetary Penalty Notice text extracted from per-notice PDFs on ico.org.uk. Does not invent notice text. " + PAID_WINDOW_COPY,
     resourcePath: ICO_MPN_PATH,
   },
   "cma-ca98": {
     description:
-      "Call GET /cma-ca98 when you need official UK CMA institution/company CA98 infringement-decision text extracted from assets.publishing.service.gov.uk PDFs. Not the press teaser. Not people. Not ICO /ico-mpn. Not Superfund /superfund-rods. Crown/OGL v3.0; logo reserved. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /cma-ca98 when you need official UK CMA CA98 infringement-decision text extracted from assets.publishing.service.gov.uk PDFs. Crown/OGL v3.0; logo reserved. " + PAID_WINDOW_COPY,
     resourcePath: CMA_CA98_PATH,
   },
   "form-483": {
     description:
-      "Call GET /form-483 when you need official FDA Form 483 inspectional observation bodies parsed from posted OII FOIA Electronic Reading Room PDFs. Not warning letters. Not CMS 2567. Does not invent observation text. Paid JSON keeps letters[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /form-483 when you need official FDA Form 483 inspectional observation bodies parsed from posted OII FOIA Electronic Reading Room PDFs. Not warning letters. Not CMS 2567. Does not invent observation text. " + PAID_WINDOW_COPY,
     resourcePath: FORM_483_PATH,
   },
   gmp: {
     description:
-      "Call GET /gmp when you need official Health Canada Drug GMP inspection report-card observation text plus C.02 cites from fullReportCard.ashx. Not the 21k-row public search index. Does not invent observations. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /gmp when you need official Health Canada Drug GMP inspection report-card observation text plus C.02 cites from fullReportCard.ashx. Not the 21k-row public search index. Does not invent observations. " + PAID_WINDOW_COPY,
     resourcePath: GMP_PATH,
   },
   "gmp-md": {
     description:
-      "Call GET /gmp-md when you need official Health Canada medical-device inspection report-card observation text plus MDR cites from md/handler/fullReportCard.ashx. Not the ratings-only search index. Not /gmp Drug GMP. Does not invent observations. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /gmp-md when you need official Health Canada medical-device inspection report-card observation text plus MDR cites from md/handler/fullReportCard.ashx. Not the ratings-only search index. Not /gmp Drug GMP. Does not invent observations. " + PAID_WINDOW_COPY,
     resourcePath: GMP_MD_PATH,
   },
 };
@@ -2910,51 +2915,51 @@ export function llmsTxt(): string {
   const listedGmpMd = gmpMdIsPublic();
   const ticksPrice = usdcDisplayFromAtomic(amountAtomicFor("ticks")) ?? "$0.05";
   const paid = [
-    `- GET /ticks — ${ticksPrice} — Idaho + nationwide USDA AMS hay/cattle/grain ticks (PNW barns, IBC grain, WD1 $/AF). Paid JSON keeps ticks[] and adds records[] + asOf.`,
+    `- GET /ticks — ${ticksPrice} — US hay, cattle, and grain (USDA AMS nationwide, PNW barns, IBC grain, WD1 $/AF). Paid JSON keeps ticks[] and adds records[] + asOf.`,
     "- GET /import-alerts — $0.05 — FDA Import Alerts / DWPE firm-product snapshot. Paid JSON keeps ticks[] and adds records[] + asOf.",
     "- GET /mariners — $0.05 — USCG D13 / Northwest Local Notice to Mariners",
     "- GET /mariners-d11 — $0.05 — USCG D11 / Southwest Local Notice to Mariners",
     "- GET /mariners-d7 — $0.05 — USCG D7 / Southeast Local Notice to Mariners",
     "- GET /mariners-d8 — $0.05 — USCG D8 / Gulf Local Notice to Mariners",
-    "- GET /warning-letters — $0.05 — FDA warning-letter bodies (firm, date, subject, full letter text). Paid JSON keeps letters[] and adds records[] + asOf.",
-    "- GET /untitled-letters — $0.05 — FDA Untitled Letter text (CDER OPDP + CBER promo PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /awa — $0.05 — USDA APHIS AWA inspection-report observation text (official per-report PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /swisspar — $0.05 — Swissmedic first-authorisation SwissPAR evaluation text (official per-product PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /pcac — $0.05 — FDA PCAC 503A briefing-memo evaluation text (official per-substance PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /ftc-wl — $0.05 — FTC BCP warning-letter text (official per-letter PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /cfpb-orders — $0.05 — CFPB consent-order / administrative-order text (official per-order PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /occ-cd — $0.05 — OCC institution C&D / consent-order text (official per-order PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /fdic-orders — $0.05 — FDIC institution consent-order / C&D text (official per-order PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /frb-orders — $0.05 — FRB institution C&D / written-agreement / PCA text (official per-order PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /ncua-orders — $0.05 — NCUA institution consent C&D text (official per-order HTML). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /fincen-orders — $0.05 — FinCEN institution consent-order text (official per-order PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /ferc-orders — $0.05 — FERC institution stipulation-and-consent text (official cms.ferc.gov PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /ofac-orders — $0.05 — OFAC institution enforcement-release text (official ofac.treasury.gov PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /bis-orders — $0.05 — BIS institution charging-letter / order text (official bis.gov PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /cftc-orders — $0.05 — CFTC institution enforcement-order / settlement text (official cftc.gov PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /fifra-orders — $0.05 — EPA FIFRA institution order / consent text (official yosemite.epa.gov PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /denovo-orders — $0.05 — FDA De Novo classification-order text (official accessdata.fda.gov PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /ttb-oic — $0.05 — TTB Offer in Compromise text (official ttb.gov PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /air-letters — $0.05 — USDA APHIS AIR confirmation-letter text (official direct.aphis.usda.gov PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /superfund-rods — $0.05 — EPA Superfund Record of Decision text (official semspub.epa.gov PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /ico-mpn — $0.05 — ICO Monetary Penalty Notice text (official ico.org.uk PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
-    "- GET /cma-ca98 — $0.05 — UK CMA CA98 infringement-decision text (official assets.publishing.service.gov.uk PDFs). Paid JSON keeps cards[] and adds records[] + asOf.",
+    `- GET /warning-letters — $0.05 — FDA warning-letter bodies (firm, date, subject, full letter text). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /untitled-letters — $0.05 — FDA Untitled Letter text (CDER OPDP + CBER promo PDFs). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /awa — $0.05 — USDA APHIS AWA inspection-report observation text (official per-report PDFs). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /swisspar — $0.05 — Swissmedic first-authorisation SwissPAR evaluation text (official per-product PDFs). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /pcac — $0.05 — FDA PCAC 503A briefing-memo evaluation text (official per-substance PDFs). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /ftc-wl — $0.05 — FTC BCP warning-letter text (official per-letter PDFs). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /cfpb-orders — $0.05 — CFPB consent-order / administrative-order text (official per-order PDFs). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /occ-cd — $0.05 — OCC institution C&D / consent-order text (official per-order PDFs). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /fdic-orders — $0.05 — FDIC institution consent-order / C&D text (official per-order PDFs). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /frb-orders — $0.05 — FRB institution C&D / written-agreement / PCA text (official per-order PDFs). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /ncua-orders — $0.05 — NCUA institution consent C&D text (official per-order HTML). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /fincen-orders — $0.05 — FinCEN institution consent-order text (official per-order PDFs). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /ferc-orders — $0.05 — FERC institution stipulation-and-consent text (official cms.ferc.gov PDFs). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /ofac-orders — $0.05 — OFAC institution enforcement-release text (official ofac.treasury.gov PDFs). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /bis-orders — $0.05 — BIS institution charging-letter / order text (official bis.gov PDFs). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /cftc-orders — $0.05 — CFTC institution enforcement-order / settlement text (official cftc.gov PDFs). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /fifra-orders — $0.05 — EPA FIFRA institution order / consent text (official yosemite.epa.gov PDFs). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /denovo-orders — $0.05 — FDA De Novo classification-order text (official accessdata.fda.gov PDFs). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /ttb-oic — $0.05 — TTB Offer in Compromise text (official ttb.gov PDFs). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /air-letters — $0.05 — USDA APHIS AIR confirmation-letter text (official direct.aphis.usda.gov PDFs). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /superfund-rods — $0.05 — EPA Superfund Record of Decision text (official semspub.epa.gov PDFs). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /ico-mpn — $0.05 — ICO Monetary Penalty Notice text (official ico.org.uk PDFs). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /cma-ca98 — $0.05 — UK CMA CA98 infringement-decision text (official assets.publishing.service.gov.uk PDFs). Newest ${PAID_BODY_N} official texts.`,
   ];
   if (listed483) {
-    paid.push("- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs). Paid JSON keeps letters[] and adds records[] + asOf.");
+    paid.push(`- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs). Newest ${PAID_BODY_N} official texts.`);
   }
   if (listedGmp) {
-    paid.push("- GET /gmp — $0.05 — Health Canada Drug GMP report-card observation text + C.02 cites. Paid JSON keeps cards[] and adds records[] + asOf.");
+    paid.push(`- GET /gmp — $0.05 — Health Canada Drug GMP report-card observation text + C.02 cites. Newest ${PAID_BODY_N} official texts.`);
   }
   if (listedGmpMd) {
-    paid.push("- GET /gmp-md — $0.05 — Health Canada medical-device report-card observation text + MDR cites. Paid JSON keeps cards[] and adds records[] + asOf.");
+    paid.push(`- GET /gmp-md — $0.05 — Health Canada medical-device report-card observation text + MDR cites. Newest ${PAID_BODY_N} official texts.`);
   }
   const free = [
     `- GET /openapi.json — OpenAPI 3.1 with x-payment-info for the ${paidCountWord()} paid doors`,
     `- GET /.well-known/x402 — absolute URLs of the ${paidCountWord()} paid routes only`,
     `- GET / — shop JSON (payTo + the ${paidCountWord()} products)`,
     `- GET/POST /mcp — Streamable HTTP MCP for the same ${paidCountWord()} paid GETs. Not a new SKU.`,
-    "- GET /manifest.json — Idaho ticks count + schema",
+    "- GET /manifest.json — US hay, cattle, and grain count + schema",
     "- GET /import-alerts/manifest.json — FDA count + schema (not the firm dump)",
     "- GET /mariners/manifest.json — D13 LNM count + official PDF (not the notice body)",
     "- GET /mariners-d11/manifest.json — D11 LNM count + official PDF (not the notice body)",
@@ -3253,7 +3258,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       [TICKS_PATH]: {
         get: paidOpenApiOp({
           operationId: "getTicks",
-          summary: "Idaho + nationwide AMS hay/cattle/grain ticks",
+          summary: "US hay, cattle, and grain ticks",
           description: SKU_COPY.ticks.description,
           priceUsdc: ticksPrice,
           amountAtomic: ticksAtomic,
@@ -4027,10 +4032,10 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           }
         : {}),
       [MANIFEST_PATH]: {
-        get: freeOpenApiOp("Idaho ticks free manifest", "Count, schema, and samples. Not the paid snapshot."),
+        get: freeOpenApiOp("US hay, cattle, and grain free manifest", "Count, schema, and samples. Not the paid snapshot."),
       },
       [CATALOG_PATH]: {
-        get: freeOpenApiOp("Idaho ticks free catalog alias", "Same JSON as /manifest.json."),
+        get: freeOpenApiOp("US hay, cattle, and grain free catalog alias", "Same JSON as /manifest.json."),
       },
       [IMPORT_ALERTS_MANIFEST_PATH]: {
         get: freeOpenApiOp("FDA import-alerts free manifest", "Count, catalog, and schema. Not the paid firm list."),

@@ -494,6 +494,9 @@ async function main(): Promise<void> {
     assert.ok(!llmsBody.includes("TCPA"));
     assert.ok(llmsBody.includes("GET /ticks — $0.05"));
     assert.ok(!llmsBody.includes("GET /ticks — $0.02"));
+    assert.ok(llmsBody.includes("US hay, cattle, and grain"));
+    assert.ok(!llmsBody.includes("Idaho ticks"));
+    assert.ok(llmsBody.includes("Newest 100 official texts"));
 
     const shop = (await (await fetch(`${base}/`)).json()) as {
       products: { path: string; priceUsdc?: string }[];
@@ -4298,11 +4301,12 @@ async function main(): Promise<void> {
         payTo: string;
         asset: string;
         resource: string;
-        accepts: { maxAmountRequired?: string; extra?: { name?: string } }[];
+        accepts: { maxAmountRequired?: string; extra?: { name?: string }; description?: string }[];
       };
       assert.equal(body402.resource, GMP_PATH);
-      assert.equal(body402.accepts[0]?.maxAmountRequired, GMP_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, GMP_AMOUNT_ATOMIC, "unpaid /gmp stays $0.05 (50000 atomic)");
       assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
+      assert.ok((body402.accepts[0]?.description ?? "").includes("newest 100 official texts"));
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === GMP_PATH), true);
@@ -4344,6 +4348,7 @@ async function main(): Promise<void> {
 
       const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(llmsBody.includes("GET /gmp"));
+      assert.ok(llmsBody.includes("Newest 100 official texts"));
       assert.ok(!llmsBody.includes("WASDE"));
       assert.ok(!llmsBody.includes("TCPA"));
 
@@ -4381,6 +4386,8 @@ async function main(): Promise<void> {
       assert.equal(paidBody.records?.[0]?.type, "gmp");
       assert.equal(paidBody.records?.[0]?.firm, "Apotex Inc");
       assert.equal(paidBody.records?.[0]?.date, "2026-04-13");
+      assert.equal((paidBody as { paidWindow?: number }).paidWindow, 100);
+      assert.equal((paidBody as { catalogCount?: number }).catalogCount, 1);
       assert.equal(isPublicBazaarSku("gmp"), true);
       const persistReqs = facilitatorPaymentRequirements("https://ticks.bnm.farm/gmp", "gmp");
       assert.equal(persistReqs.resource, "https://ticks.bnm.farm/gmp");
@@ -4392,6 +4399,86 @@ async function main(): Promise<void> {
       };
       assert.equal(persistPayload.resource?.url, "https://ticks.bnm.farm/gmp");
       assert.deepEqual(persistPayload.extensions?.bazaar, bazaarExtension("gmp"));
+    },
+  );
+
+  const fatGmpDir = mkdtempSync(join(tmpdir(), "gmp-fat-"));
+  writeFileSync(
+    join(fatGmpDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "hc-gmp-report-cards",
+      status: "ok",
+      reason: null,
+      fetchedAt: FRESH_FETCHED_AT,
+      asOf: "2026-08-11",
+      license: "Contains information licensed under the Open Government Licence – Canada.",
+      sources: {
+        listing: "https://www.drug-inspections.canada.ca/gmp/index-en.html",
+      },
+      cards: Array.from({ length: 120 }, (_, i) => {
+        const n = i + 1;
+        const day = String((n % 28) + 1).padStart(2, "0");
+        const month = String((Math.floor(n / 28) % 12) + 1).padStart(2, "0");
+        return {
+          id: `gmp-${String(n).padStart(4, "0")}`,
+          inspectionNumber: String(80000 + n),
+          firm: `Firm ${n}`,
+          inspectedOn: `2024-${month}-${day}`,
+          rating: "C",
+          sourceUrl: `https://www.drug-inspections.canada.ca/gmp/fullReportCard-en.html?insNumber=${80000 + n}&lang=en`,
+          body:
+            `Health Canada Drug GMP inspection report card\nEstablishment: Firm ${n}\nInspection: ${80000 + n}\n` +
+            `Inspected: 2024-${month}-${day}\nRating: Compliant\n\nSummary of observations\n\n` +
+            `1. C.02.011 - Manufacturing control\nInvestigations into deviations, reports, and/or follow-up actions were inadequate for card ${n}.`,
+          observations: [
+            {
+              n: 1,
+              regulation: "C.02.011 - Manufacturing control",
+              cite: "C.02.011",
+              text: "Investigations into deviations, reports, and/or follow-up actions were inadequate.",
+            },
+          ],
+        };
+      }),
+    }),
+  );
+  await withServer(
+    {
+      FORM_483_DIR: f483Dir,
+      GMP_DIR: fatGmpDir,
+      X402_SKIP_SETTLE: "1",
+    },
+    async (base) => {
+      const manifest = await (await fetch(`${base}${GMP_MANIFEST_PATH}`)).json() as {
+        cardCount?: number;
+        note?: string;
+      };
+      assert.equal(manifest.cardCount, 120, "free /gmp/manifest.json stays the full catalog");
+      assert.ok((manifest.note ?? "").includes("newest 100 official texts"));
+
+      const unpaid = await fetch(`${base}${GMP_PATH}`);
+      assert.equal(unpaid.status, 402);
+      const body402 = (await unpaid.json()) as {
+        accepts: { maxAmountRequired?: string }[];
+      };
+      assert.equal(body402.accepts[0]?.maxAmountRequired, GMP_AMOUNT_ATOMIC);
+
+      const paid = await fetch(`${base}${GMP_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        cards: { body?: string }[];
+        records: unknown[];
+        recordCount?: number;
+        paidWindow?: number;
+        catalogCount?: number;
+      };
+      assert.equal(paidBody.paidWindow, 100);
+      assert.equal(paidBody.catalogCount, 120);
+      assert.equal(paidBody.recordCount, 100);
+      assert.equal(paidBody.cards.length, 100);
+      assert.equal(paidBody.records.length, 100);
+      assert.ok(paidBody.cards.every((row) => String(row.body ?? "").length > 0));
     },
   );
 

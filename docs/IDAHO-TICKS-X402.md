@@ -1,4 +1,4 @@
-# Idaho hay + feeder ticks — x402 door
+# US hay, cattle, and grain — x402 door
 
 Thin pay-per-pull HTTP door. Not the Apollo Intelligence catalog. Not listed on x402scan / Bazaar. Public go-live is later.
 

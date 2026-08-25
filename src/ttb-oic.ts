@@ -11,6 +11,7 @@ import { spawnSync } from "node:child_process";
 import { homedir, tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { paidBodyCatalogNote } from "./paid-records.js";
 
 export const TTB_OIC_PATH = "/ttb-oic";
 export const TTB_OIC_MANIFEST_PATH = "/ttb-oic/manifest.json";
@@ -599,7 +600,7 @@ export function buildTtbOicManifest(snap: TtbOicSnapshot | null): Record<string,
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + institution + docket + date + official PDF URL only. Order body is the paid GET /ttb-oic payload. Not people. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders.",
+    note: paidBodyCatalogNote("/ttb-oic", 'Full catalog: count + institution + docket + date + official URL. Not the press/teaser'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

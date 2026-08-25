@@ -11,6 +11,7 @@ import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { paidBodyCatalogNote } from "./paid-records.js";
 
 export const UNTITLED_LETTERS_PATH = "/untitled-letters";
 export const UNTITLED_LETTERS_MANIFEST_PATH = "/untitled-letters/manifest.json";
@@ -675,7 +676,7 @@ export function buildUntitledLettersManifest(snap: UntitledLettersSnapshot | nul
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + id + firm + date + product + official source only. Letter text / Cites / what OPDP or CBER said is the paid GET /untitled-letters payload. Not /warning-letters.",
+    note: paidBodyCatalogNote("/untitled-letters", 'Full catalog: count + id + firm + date + product + official URL. Not /warning-letters'),
     license: LICENSE,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
     network: "base",
