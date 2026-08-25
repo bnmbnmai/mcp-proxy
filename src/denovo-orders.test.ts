@@ -16,8 +16,10 @@ import {
   isPeopleRow,
   isRealDenovoOrderBody,
   officialDenovoPdfUrl,
+  pdfUrlFromDocket,
   parseDenovoOrderText,
   parseListingHtml,
+  SEARCH_URL,
   parseListingRows,
   pdfIdFromUrl,
   type DenovoListingRow,
@@ -50,6 +52,9 @@ async function main(): Promise<void> {
   assert.equal(officialDenovoPdfUrl("https://www.cftc.gov/media/14456/ENF_UBSFinancial%20ServicesOrder073126/download"), null);
   assert.equal(officialDenovoPdfUrl("https://www.federalregister.gov/documents/2026/07/29/2026-99999/cari-heart"), null);
   assert.ok(LISTING_URL.includes("accessdata.fda.gov"));
+  assert.ok(SEARCH_URL.includes("start_search=1"), "live collect must walk the official result list, not the empty form");
+  assert.equal(pdfUrlFromDocket("DEN250042"), CARI);
+  assert.equal(pdfUrlFromDocket("DEN240071"), "https://www.accessdata.fda.gov/cdrh_docs/pdf24/DEN240071.pdf");
   assert.equal(SEED_LISTINGS.length, 5);
   assert.ok(SEED_LISTINGS.some((r) => r.docket === "DEN250042"));
 
@@ -57,6 +62,16 @@ async function main(): Promise<void> {
   assert.ok(htmlListed.some((r) => r.id === "DEN250042"));
   assert.ok(htmlListed.some((r) => r.id === "DEN250033"));
   assert.ok(!htmlListed.some((r) => r.id === "DEN259999"));
+
+  const searchListed = parseListingHtml(readFx("search-results-excerpt.html"));
+  assert.ok(searchListed.some((r) => r.id === "DEN250042" && r.sourceUrl === CARI));
+  assert.ok(searchListed.some((r) => r.id === "DEN250068" && /Auris Health/i.test(r.institution)));
+  assert.equal(
+    searchListed.find((r) => r.id === "DEN250068")?.sourceUrl,
+    "https://www.accessdata.fda.gov/cdrh_docs/pdf25/DEN250068.pdf",
+  );
+  assert.ok(!searchListed.some((r) => r.id === "DEN259999"), "search-result people row stays out");
+  assert.ok(!searchListed.some((r) => r.id === "DEN250040"), "Stryker Endoscopy has no entity suffix");
 
   const people = rows.find((r) => (r.docket ?? "") === "DEN259999");
   assert.ok(people);
