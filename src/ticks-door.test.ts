@@ -520,7 +520,7 @@ async function main(): Promise<void> {
     assert.ok(!llmsBody.includes("TCPA"));
     assert.ok(llmsBody.includes("GET /ticks — $0.05"));
     assert.ok(!llmsBody.includes("GET /ticks — $0.02"));
-    assert.ok(llmsBody.includes("entire current cache on one GET"));
+    assert.ok(llmsBody.includes("Entire current cache on one GET"));
     assert.ok(llmsBody.includes("Paid JSON is ticks[] + history"));
     assert.ok(llmsBody.includes("Paid JSON is letters[].body"));
     assert.ok(llmsBody.includes("Paid JSON is cards[].body"));
