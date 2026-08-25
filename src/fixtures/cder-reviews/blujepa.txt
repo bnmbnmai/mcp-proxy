@@ -1,0 +1,77 @@
+CENTER FOR DRUG EVALUATION AND
+           RESEARCH
+
+
+     APPLICATION NUMBER:
+
+        218230Orig1s000
+
+    INTEGRATED REVIEW
+
+               NDA 218230
+               Blujepa (gepotidacin)
+
+                                                               Integrated Review
+
+               Table 1. Application Information
+                Application type                              NDA
+                Application number                            218230
+                Priority or standard                          PRIORITY
+                Submit date                                   7/26/2024
+                Received date                                 7/26/2024
+                PDUFA goal date                               3/26/2025
+                Division/office                               Division of Anti-Infectives (DAI)
+                Review completion date                        3/17/2025
+                Established/proper name                       Gepotidacin
+                (Proposed) proprietary name                   Blujepa
+                Pharmacologic class                           Triazaacenaphthylene bacterial type II topoisomerase inhibitor
+                Other product name(s)                         GSK 2140944
+                Applicant                                     GLAXOSMITHKLINE LLC
+                Dosage form(s)/formulation(s)                 Tablet
+                Dosing regimen                                1500 mg orally, twice daily for 5 days
+                Applicant-proposed indication(s)/             For treatment of uncomplicated urinary tract infections (uUTI)
+                population(s)                                 in female adults and adolescents from 12 years of age, both
+                                                              weighing at least 40 kilograms (kg).
+                   SNOMED CT code for proposed                68226007 | Acute cystitis (disorder)
+                   indication disease term(s)1
+                   Regulatory action                          Approval
+                   Approved dosage (if applicable)            1500 mg orally, twice daily for 5 days
+                   Approved indication(s)/ population(s)      For the treatment of female adult and pediatric patients 12
+                   (if applicable)                            years of age and older weighing at least 40 kilograms (kg) with
+                                                              uncomplicated urinary tract infections (uUTIs) caused by the
+                                                              following susceptible microorganisms: Escherichia coli,
+                                                              Klebsiella pneumoniae, Citrobacter freundii complex,
+                                                              Staphylococcus saprophyticus, and Enterococcus faecalis.
+                   SNOMED CT code for approved                68226007 | Acute cystitis (disorder)
+                   indication disease term(s)1
+               1
+                For internal tracking purposes only.
+               Abbreviations: PDUFA, Prescription Drug User Fee Act; SNOMED CT, Systematized Nomenclature of Medicine Clinical Terms
+
+
+
+
+                                                                           i
+               Integrated Review Template, version 4.0 (11/1/23)
+
+
+Reference ID: 5555642
+
+               NDA 218230
+               Blujepa (gepotidacin)
+                                                                          Table of Contents
+
+                  2. Benefit-Risk Assessment........................................................................................6
+               Blujepa (gepotidacin)
+                Established/proper name                       Gepotidacin
+               Blujepa (gepotidacin)
+                           6.1.1. Support for Proposed Dosage of Gepotidacin .........................................20
+               Blujepa (gepotidacin)
+               Blujepa (gepotidacin)
+               Blujepa (gepotidacin)
+               Blujepa (gepotidacin)
+               Blujepa (gepotidacin)
+               Blujepa (gepotidacin)
+                  Determinations1 for Gepotidacin .................................................................................12
+               Table 6. Post-Hoc Steady State Plasma Gepotidacin PK Parameters in Females With
+               Table 7. Effect of Moderate fat Meal on Plasma PK Parameters of G
