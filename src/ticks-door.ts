@@ -2,7 +2,7 @@
 /**
  * Thin x402 pay-per-pull door for the BNM Data Shop.
  *
- * GET /ticks — Idaho hay + feeder ticks ($0.02 USDC on Base)
+ * GET /ticks — Idaho hay + feeder ticks ($0.05 USDC on Base)
  * GET /import-alerts — FDA Import Alert / DWPE firm ticks ($0.05)
  * GET /import-alerts/manifest.json — free catalog + schema + sample rows
  * GET /mariners — USCG D13 / Northwest Local Notice to Mariners ($0.05)
@@ -873,6 +873,19 @@ function amountAtomicFor(sku: DoorSku): string {
   }
   const raw = env("X402_USDC_ATOMIC");
   return raw.length > 0 ? raw : TICKS_AMOUNT_ATOMIC;
+}
+
+function usdcPriceString(atomic: string): string {
+  const n = Number(atomic);
+  if (!Number.isFinite(n)) return atomic;
+  return (n / 1e6).toFixed(2);
+}
+
+function usdcDisplayFromAtomic(atomic: string | null | undefined): string | null {
+  if (!atomic) return null;
+  const n = Number(atomic);
+  if (!Number.isFinite(n)) return `${atomic} atomic USDC`;
+  return `$${usdcPriceString(atomic)}`;
 }
 
 const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> = {
@@ -2343,7 +2356,7 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
     wellKnown: `${origin}${WELL_KNOWN_PATH}`,
     llmsTxt: `${origin}${LLMS_PATH}`,
     priceAtomic: amount,
-    priceDisplay: amount === "20000" ? "$0.02" : amount ? `${amount} atomic USDC` : null,
+    priceDisplay: usdcDisplayFromAtomic(amount),
     network: NETWORK_V2,
     networkName: "Base",
     asset: USDC_BASE,
@@ -2586,7 +2599,7 @@ export function facilitatorPaymentRequirements(
  * v1 requirements (network "base", maxAmountRequired) next to a v2 payload.
  * CDP v2 oneOf accepts either a clean v1 pair or a clean v2 pair — not a mix.
  *
- * A later $0.02 /ticks CDP settle should POST only:
+ * A later /ticks CDP settle should POST only:
  *   { x402Version: 2, paymentPayload, paymentRequirements }
  * where paymentPayload.resource is {url, description, mimeType},
  * paymentPayload.extensions.bazaar is the 402 bazaar block (public SKUs),
@@ -2895,8 +2908,9 @@ export function llmsTxt(): string {
   const listed483 = form483IsPublic();
   const listedGmp = gmpIsPublic();
   const listedGmpMd = gmpMdIsPublic();
+  const ticksPrice = usdcDisplayFromAtomic(amountAtomicFor("ticks")) ?? "$0.05";
   const paid = [
-    "- GET /ticks — $0.02 — Idaho + nationwide USDA AMS hay/cattle/grain ticks (PNW barns, IBC grain, WD1 $/AF). Paid JSON keeps ticks[] and adds records[] + asOf.",
+    `- GET /ticks — ${ticksPrice} — Idaho + nationwide USDA AMS hay/cattle/grain ticks (PNW barns, IBC grain, WD1 $/AF). Paid JSON keeps ticks[] and adds records[] + asOf.`,
     "- GET /import-alerts — $0.05 — FDA Import Alerts / DWPE firm-product snapshot. Paid JSON keeps ticks[] and adds records[] + asOf.",
     "- GET /mariners — $0.05 — USCG D13 / Northwest Local Notice to Mariners",
     "- GET /mariners-d11 — $0.05 — USCG D11 / Southwest Local Notice to Mariners",
@@ -3181,7 +3195,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const listedGmp = gmpIsPublic();
   const listedGmpMd = gmpMdIsPublic();
   const paidBits = [
-    "/ticks ($0.02)",
+    `/ticks ($${ticksPrice})`,
     "/import-alerts ($0.05)",
     "/mariners ($0.05)",
     "/mariners-d11 ($0.05)",
@@ -4335,7 +4349,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
         {
           path: TICKS_PATH,
           product: "idaho-hay-feeder-ticks",
-          priceUsdc: "0.02",
+          priceUsdc: usdcPriceString(amountAtomicFor("ticks")),
           amountAtomic: amountAtomicFor("ticks"),
           manifest: MANIFEST_PATH,
         },

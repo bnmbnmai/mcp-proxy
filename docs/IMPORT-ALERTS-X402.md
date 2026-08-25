@@ -8,7 +8,7 @@ Separate SKU from Idaho hay + feeder ticks. Official public FDA `cms_ia` HTML on
 |---|---|---|
 | `GET /import-alerts` | unpaid → **HTTP 402** | **$0.05** USDC on Base (`50000` atomic) |
 | `GET /import-alerts/manifest.json` | free | HTTP 200 catalog + schema + sample rows marked `sample` (not the full red list) |
-| `GET /ticks` | unpaid → **HTTP 402** | **$0.02** USDC on Base (`20000` atomic) — unchanged Idaho door |
+| `GET /ticks` | unpaid → **HTTP 402** | **$0.05** USDC on Base (`50000` atomic) — same list price as the other shop doors |
 
 Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 
@@ -50,7 +50,7 @@ Alongside those keys the paid JSON adds `records[]` (`id` from alertNumber/list/
 | `IMPORT_ALERTS_HTML_DIR` | unset | Optional directory of already-fetched `ialist.html` + `ia_{id}.html` |
 | `IMPORT_ALERTS_TTL_MS` | 6 hours | Re-collect from FDA HTML when the snapshot is older |
 | `IMPORT_ALERTS_USDC_ATOMIC` | `50000` | Override the $0.05 import-alerts price |
-| `X402_USDC_ATOMIC` | `20000` | Override the $0.02 Idaho `/ticks` price |
+| `X402_USDC_ATOMIC` | `50000` | Override the $0.05 Idaho `/ticks` price |
 | `BIND_HOST` | `0.0.0.0` | LAN bind is OK |
 | `PORT` | `4020` | Listen port |
 | `X402_SKIP_SETTLE` | unset | `1` = local/test path: any `X-PAYMENT` header serves the body (not for public) |
@@ -86,7 +86,7 @@ curl -i http://127.0.0.1:4020/import-alerts
 # free catalog + samples
 curl -s http://127.0.0.1:4020/import-alerts/manifest.json | head
 
-# Idaho door unchanged ($0.02)
+# Idaho door ($0.05)
 curl -i http://127.0.0.1:4020/ticks
 ```
 

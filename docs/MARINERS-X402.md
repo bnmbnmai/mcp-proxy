@@ -8,7 +8,7 @@ Separate SKU from Idaho ticks, FDA import alerts, and USCG D11 (`/mariners-d11`)
 |---|---|---|
 | `GET /mariners` | unpaid → **HTTP 402** | **$0.05** USDC on Base (`50000` atomic) |
 | `GET /mariners/manifest.json` | free | HTTP 200 count + official source + schema (no notice body) |
-| `GET /ticks` | unpaid → **HTTP 402** | **$0.02** — unchanged |
+| `GET /ticks` | unpaid → **HTTP 402** | **$0.05** — same list price as the other shop doors |
 | `GET /import-alerts` | unpaid → **HTTP 402** | **$0.05** — unchanged |
 
 Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.

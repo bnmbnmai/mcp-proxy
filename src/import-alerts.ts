@@ -24,7 +24,7 @@ export const FIRST_SLICE: { pageId: string; alertNumber: string }[] = [
 export const IMPORT_ALERTS_PATH = "/import-alerts";
 export const IMPORT_ALERTS_MANIFEST_PATH = "/import-alerts/manifest.json";
 export const IMPORT_ALERTS_AMOUNT_ATOMIC = "50000";
-export const TICKS_AMOUNT_ATOMIC = "20000";
+export const TICKS_AMOUNT_ATOMIC = "50000";
 
 export const ROW_FIELDS = [
   "alertNumber",
