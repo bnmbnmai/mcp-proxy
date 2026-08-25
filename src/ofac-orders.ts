@@ -21,6 +21,11 @@ export const PRODUCT_ID = "ofac-institution-order-bodies";
 export const PRODUCT_NAME = "OFAC institution enforcement-release text";
 
 export const LISTING_URL = "https://ofac.treasury.gov/civil-penalties-and-enforcement-information";
+/** Official year tables with per-release PDFs. The live 2026 chart is first-slice 5. */
+export const YEAR_LISTING_URLS = [
+  "https://ofac.treasury.gov/civil-penalties-and-enforcement-information/2025-enforcement-information",
+  "https://ofac.treasury.gov/civil-penalties-and-enforcement-information/2024-enforcement-information",
+] as const;
 export const PDF_HOST = "ofac.treasury.gov";
 export const PDF_ORIGIN = "https://ofac.treasury.gov";
 export const MEDIA_RE = /\/media\/(\d+)(?:\/download)?\/?(?:$|[?#])/i;
@@ -94,7 +99,7 @@ export type OfacOrdersSnapshot = {
 const HTTP_UA = "bnm-data-shop/1.0 (OFAC public enforcement releases; +https://ofac.treasury.gov/)";
 
 const ENTITY_RE =
-  /\b(Inc\.?|LLC|L\.L\.C\.|L\.P\.|LP|Corp\.?|Corporation|Company|Co\.|Ltd\.?|Limited|Holdings|Enterprises|Consulting|Securities|Academy|Systems|Services|Bank|N\.A\.|National Association|Trust|Group|Partners|International|Industries)\b/i;
+  /\b(Inc\.?|LLC|L\.L\.C\.|L\.P\.|LP|Corp\.?|Corporation|Company|Co\.|Ltd\.?|Limited|Holdings|Enterprises|Consulting|Securities|Academy|Systems|Services|Bank|N\.A\.|National Association|Trust|Group|Partners|International|Industries|AG|GmbH|S\.p\.A\.?)\b/i;
 const PERSON_NAME_RE = /^[A-Z][a-z]+(?:\s+[A-Z]\.?)?(?:\s+[A-Z][a-z]+){1,2}$/;
 const AN_INDIVIDUAL_RE = /^an individual$/i;
 const RELEASE_KIND_RE = /enforcement release|settles with ofac|apparent violations|civil penalt/i;
@@ -597,7 +602,14 @@ async function loadOfficialListings(dir: string): Promise<{ listed: OfacOrderLis
     return { listed, listedCount: listed.length };
   }
   try {
-    const listed = parseListingHtml(await fetchOfacText(LISTING_URL));
+    const listed: OfacOrderListing[] = [];
+    for (const url of [LISTING_URL, ...YEAR_LISTING_URLS]) {
+      try {
+        listed.push(...parseListingHtml(await fetchOfacText(url)));
+      } catch {
+        /* one official year table missed; keep the others */
+      }
+    }
     const merged = mergeOfficialListings(listed, SEED_LISTINGS);
     if (merged.length > 0) return { listed: merged, listedCount: merged.length };
   } catch {
