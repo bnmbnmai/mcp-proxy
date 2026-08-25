@@ -22,10 +22,13 @@ export const PRODUCT_ID = "fifra-institution-order-bodies";
 export const PRODUCT_NAME = "EPA FIFRA institution order / consent text";
 
 export const LISTING_URL = "https://yosemite.epa.gov/oa/rhc/epaadmin.nsf";
+/** Official FIFRA rows on Dockets by Statute. Homepage LISTING_URL has no PDF table. */
+export const FIFRA_DOCKET_TABLE_URL =
+  "https://yosemite.epa.gov/oa/rhc/epaadmin.nsf/Dockets+by+Statute?OpenView&RestrictToCategory=FIFRA";
 export const PDF_HOST = "yosemite.epa.gov";
 export const PDF_ORIGIN = "https://yosemite.epa.gov";
-export const DOCKET_LABEL_RE = /(?:Docket\s+No\.?\s*)?(FIFRA-\d{2}-\d{4}-\d{4})\b/i;
-export const DOCKET_BARE_RE = /^(FIFRA-\d{2}-\d{4}-\d{4})$/i;
+export const DOCKET_LABEL_RE = /(?:Docket\s+(?:Number|No)\.?\s*)?(FIFRA-\d{2}-\d{4}-\d{4}(?:\([a-z]\))?)/i;
+export const DOCKET_BARE_RE = /^(FIFRA-\d{2}-\d{4}-\d{4}(?:\([a-z]\))?)$/i;
 export const MEDIA_RE = /\/OA\/RHC\/EPAAdmin\.nsf\/Filings\/([A-Fa-f0-9]+)\/\$File\/([^?#]+\.pdf)/i;
 export const LICENSE = "17 USC 105";
 export const ATTRIBUTION = "EPA";
@@ -102,8 +105,11 @@ const ENTITY_RE =
   /\b(Inc\.?|LLC|L\.L\.C\.|L\.P\.|LP|Corp\.?|Corporation|Company|Co\.|Ltd\.?|Limited|S\.A\.|Banco|Bank|Holdings|Enterprises|Capital Markets|Markets|Securities|Services|Group|Partners|International|Industries|Solutions|Superstore|Chemical|Medical)\b/i;
 const PERSON_NAME_RE = /^[A-Z][a-z]+(?:\s+[A-Z]\.?)?(?:\s+[A-Z][a-z]+){1,3}$/;
 const ORDER_KIND_RE =
-  /consent agreement and final order|consent agreement|final order|\bCAFO\b|expedited settlement/i;
+  /consent agreement and final order|consent agreement|final order|\bCAFO\b|expedited settlement|\bESA\b/i;
 const COMPLAINT_RE = /\bcomplaint\b/i;
+const REFUSAL_RE = /Notice of Refusal of Admission/i;
+const DOCKET_DOC_RE = /\/oa\/rhc\/epaadmin\.nsf\/[0-9a-f]+\/[0-9a-f]+!OpenDocument/i;
+const FILING_DOC_RE = /\/oa\/rhc\/epaadmin\.nsf\/Filings\/([A-Fa-f0-9]+)\?OpenDocument/i;
 
 /** Official EPA FIFRA institution/company order / consent PDFs on yosemite.epa.gov. */
 export const SEED_LISTINGS: FifraOrderListing[] = [
@@ -355,6 +361,95 @@ export function parseListingHtml(html: string): FifraOrderListing[] {
   return parseListingRows(rows);
 }
 
+export type FifraDocketTableRow = {
+  href: string;
+  date: string | null;
+};
+
+export function officialFifraHtmlUrl(urlOrPath: string | null | undefined): string | null {
+  if (!urlOrPath) return null;
+  try {
+    const parsed = new URL(urlOrPath.trim(), PDF_ORIGIN);
+    if (!OFFICIAL_HOSTS.has(parsed.hostname.toLowerCase())) return null;
+    return parsed.href;
+  } catch {
+    return null;
+  }
+}
+
+export function parseFifraDocketTableHtml(html: string): {
+  rows: FifraDocketTableRow[];
+  nextUrl: string | null;
+} {
+  const rows: FifraDocketTableRow[] = [];
+  const seen = new Set<string>();
+  for (const row of html.match(/<tr\b[^>]*>[\s\S]*?<\/tr>/gi) ?? []) {
+    const hrefRaw = (row.match(/href="([^"]+!OpenDocument[^"]*)"/i) || [])[1] || "";
+    const href = officialFifraHtmlUrl(hrefRaw.replace(/&amp;/g, "&"));
+    if (!href || !DOCKET_DOC_RE.test(href)) continue;
+    if (seen.has(href)) continue;
+    seen.add(href);
+    const cells = [...row.matchAll(/<t[dh]\b[^>]*>([\s\S]*?)<\/t[dh]>/gi)].map((m) => stripTags(m[1]));
+    if (!cells.some((c) => /^FIFRA$/i.test(c))) continue;
+    rows.push({ href, date: isoDate(cells.find((c) => isoDate(c)) ?? "") });
+  }
+  const nextRaw =
+    (html.match(/href="([^"]*Dockets[^"]*OpenView[^"]*Start=\d+[^"]*RestrictToCategory=FIFRA[^"]*)"/i) ||
+      html.match(/href="([^"]*RestrictToCategory=FIFRA[^"]*Start=\d+[^"]*)"/i) ||
+      [])[1] || "";
+  const nextUrl = officialFifraHtmlUrl(nextRaw.replace(/&amp;/g, "&"));
+  return { rows, nextUrl: nextUrl && nextUrl !== FIFRA_DOCKET_TABLE_URL ? nextUrl : null };
+}
+
+export function parseFifraDocketPageHtml(html: string): {
+  institution: string;
+  docket: string | null;
+  date: string | null;
+  filingHref: string | null;
+  title: string;
+} {
+  const text = stripTags(html);
+  const docket = normalizeDocket(text);
+  const caseType = (html.match(/Case Type:\s*<\/strong>\s*([^<]+)/i) || [])[1]?.trim() ?? "";
+  const afterCrumbs = (text.split(/EPA Administrative Enforcement Dockets/i).pop() || text).trim();
+  const beforeDocket = afterCrumbs.split(/Docket Number:/i)[0]?.trim() ?? "";
+  const institution = beforeDocket.replace(/\s+/g, " ").replace(/^(.*)\s+\1$/i, "$1").trim();
+  let filingHref: string | null = null;
+  let title = parseOrderTitle(`${caseType} ${text}`);
+  const filingLinks = [
+    ...html.matchAll(/<a\b[^>]*href="([^"]+Filings\/[^"]+)"[^>]*>([\s\S]*?)<\/a>/gi),
+  ];
+  for (const m of filingLinks) {
+    const label = stripTags(m[2]);
+    const href = officialFifraHtmlUrl(m[1].replace(/&amp;/g, "&"));
+    if (!href || !FILING_DOC_RE.test(href)) continue;
+    if (REFUSAL_RE.test(label) || REFUSAL_RE.test(caseType)) continue;
+    if (COMPLAINT_RE.test(label) && !ORDER_KIND_RE.test(label)) continue;
+    if (ORDER_KIND_RE.test(label) || ORDER_KIND_RE.test(caseType)) {
+      filingHref = href;
+      title = parseOrderTitle(label);
+      break;
+    }
+  }
+  if (REFUSAL_RE.test(caseType) || REFUSAL_RE.test(text.slice(0, 800))) {
+    filingHref = null;
+  }
+  const date =
+    isoDate((html.match(/Closed Date:\s*<\/strong>\s*([^<]+)/i) || [])[1]) ||
+    isoDate((html.match(/\((\d{2}\/\d{2}\/\d{4})\)\s*#\d+\s*(?:Consent|CAFO|Expedited)/i) || [])[1]) ||
+    isoDate(text);
+  return { institution, docket, date, filingHref, title };
+}
+
+export function parseFifraFilingPageHtml(html: string): string | null {
+  const hrefs = [...html.matchAll(/href="([^"]+\$File\/[^"]+\.pdf[^"]*)"/gi)].map((m) => m[1]);
+  for (const href of hrefs) {
+    const official = officialFifraPdfUrl(href.replace(/&amp;/g, "&"));
+    if (official) return official;
+  }
+  return null;
+}
+
 export function isIndexTeaserDump(text: string): boolean {
   if (/Index only — institution \/ docket \/ date \/ PDF URL/i.test(text)) return true;
   if (/EPA FIFRA press teaser/i.test(text)) return true;
@@ -586,6 +681,18 @@ function maxFetchLimit(): number {
   return Number.isFinite(n) && n > 0 ? Math.floor(n) : 8;
 }
 
+function maxDocketPages(): number {
+  const raw = env("FIFRA_ORDERS_MAX_TABLE_PAGES", "3");
+  const n = Number(raw);
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 3;
+}
+
+function maxDocketDocs(): number {
+  const raw = env("FIFRA_ORDERS_MAX_DOCKETS", "48");
+  const n = Number(raw);
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 48;
+}
+
 function readNamedFile(dir: string, names: string[]): string | null {
   if (!dir) return null;
   for (const name of names) {
@@ -644,6 +751,66 @@ function mergeOfficialListings(listed: FifraOrderListing[], seeds: FifraOrderLis
   return out;
 }
 
+export async function walkOfficialFifraDockets(opts?: {
+  pauseMs?: number;
+  maxTablePages?: number;
+  maxDockets?: number;
+  fetchText?: (url: string) => Promise<string>;
+}): Promise<{ listed: FifraOrderListing[]; listedCount: number }> {
+  const pauseMs = opts?.pauseMs ?? 250;
+  const pageCap = opts?.maxTablePages ?? maxDocketPages();
+  const docketCap = opts?.maxDockets ?? maxDocketDocs();
+  const fetchText = opts?.fetchText ?? fetchFifraText;
+  const listed: FifraOrderListing[] = [];
+  const seen = new Set<string>();
+  let listedCount = 0;
+  let tableUrl: string | null = FIFRA_DOCKET_TABLE_URL;
+  let pages = 0;
+  let dockets = 0;
+  while (tableUrl && pages < pageCap) {
+    pages += 1;
+    const table = parseFifraDocketTableHtml(await fetchText(tableUrl));
+    listedCount += table.rows.length;
+    for (const row of table.rows) {
+      if (dockets >= docketCap) break;
+      dockets += 1;
+      if (pauseMs) await pause(pauseMs);
+      let page;
+      try {
+        page = parseFifraDocketPageHtml(await fetchText(row.href));
+      } catch {
+        continue;
+      }
+      if (!page.filingHref || !page.docket) continue;
+      if (pauseMs) await pause(pauseMs);
+      let sourceUrl: string | null = null;
+      try {
+        sourceUrl = parseFifraFilingPageHtml(await fetchText(page.filingHref));
+      } catch {
+        continue;
+      }
+      const candidate: FifraListingRow = {
+        institution: page.institution,
+        docket: page.docket,
+        date: page.date ?? row.date ?? "",
+        title: page.title,
+        type: page.title,
+        sourceUrl: sourceUrl ?? "",
+        pdfId: pdfIdFromUrl(sourceUrl ?? "") ?? "",
+      };
+      const parsed = parseListingRows([candidate]);
+      for (const item of parsed) {
+        if (seen.has(item.id)) continue;
+        seen.add(item.id);
+        listed.push(item);
+      }
+    }
+    tableUrl = table.nextUrl;
+    if (dockets >= docketCap) break;
+  }
+  return { listed, listedCount };
+}
+
 async function loadOfficialListings(dir: string): Promise<{ listed: FifraOrderListing[]; listedCount: number }> {
   if (dir) {
     const json = readNamedFile(dir, ["listing-excerpt.json", "listing.json"]);
@@ -657,11 +824,13 @@ async function loadOfficialListings(dir: string): Promise<{ listed: FifraOrderLi
     return { listed, listedCount: listed.length };
   }
   try {
-    const listed = parseListingHtml(await fetchFifraText(LISTING_URL));
-    const merged = mergeOfficialListings(listed, SEED_LISTINGS);
-    if (merged.length > 0) return { listed: merged, listedCount: merged.length };
+    const walked = await walkOfficialFifraDockets();
+    const merged = mergeOfficialListings(walked.listed, SEED_LISTINGS);
+    if (merged.length > 0) {
+      return { listed: merged, listedCount: Math.max(walked.listedCount, merged.length) };
+    }
   } catch {
-    /* official listing missed; keep first-slice seeds */
+    /* official docket table missed; keep first-slice seeds */
   }
   return { listed: [...SEED_LISTINGS], listedCount: SEED_LISTINGS.length };
 }
