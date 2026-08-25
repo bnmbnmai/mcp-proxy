@@ -10,11 +10,13 @@ import {
   LICENSE,
   LISTING_URL,
   SEED_LISTINGS,
+  YEAR_LISTING_URLS,
   buildFercOrdersManifest,
   collectFercOrders,
   isInstitutionOrderRow,
   isPeopleRow,
   isRealFercOrderBody,
+  mediaSlugToOfficialPdfUrl,
   officialFercPdfUrl,
   parseFercOrderText,
   parseListingHtml,
@@ -70,6 +72,8 @@ async function main(): Promise<void> {
   );
   assert.equal(officialFercPdfUrl("https://www.occ.gov/static/enforcement-actions/eaAA-ENF-2026-29.pdf"), null);
   assert.ok(LISTING_URL.includes("ferc.gov"));
+  assert.ok(YEAR_LISTING_URLS.some((u) => u.includes("all-civil-penalty-actions-2025")));
+  assert.ok(YEAR_LISTING_URLS.some((u) => u.includes("all-civil-penalty-actions-2024")));
   assert.equal(SEED_LISTINGS.length, 5);
   assert.ok(SEED_LISTINGS.some((r) => r.docket === "IN25-6-000"));
 
@@ -77,6 +81,21 @@ async function main(): Promise<void> {
   assert.ok(htmlListed.some((r) => r.id === "IN25-6-000"));
   assert.ok(htmlListed.some((r) => r.id === "IN25-4-000"));
   assert.ok(!htmlListed.some((r) => r.id === "IN12-17-000"));
+
+  const cordovaPdf =
+    "https://cms.ferc.gov/sites/default/files/2025-09/20250903-192FERC61205-IN25-8-000-Cordova%20Energy%20Company%20LLC-Settlement%20Agreement.pdf";
+  assert.equal(
+    mediaSlugToOfficialPdfUrl(
+      "https://cms.ferc.gov/media/20250903-192ferc61205-in25-8-000-cordova-energy-company-llc-settlement-agreement",
+    ),
+    officialFercPdfUrl(cordovaPdf),
+  );
+  assert.equal(officialFercPdfUrl(cordovaPdf), cordovaPdf);
+  const yearListed = parseListingHtml(readFx("2025-year-excerpt.html"));
+  assert.ok(yearListed.some((r) => r.id === "IN25-8-000" && /Cordova/i.test(r.institution)));
+  assert.ok(yearListed.some((r) => r.id === "IN25-9-000" && /Skye/i.test(r.institution)));
+  assert.ok(yearListed.every((r) => officialFercPdfUrl(r.sourceUrl)));
+  assert.ok(!yearListed.some((r) => r.id === "IN12-17-000"), "year table skips people + terminating hearing");
 
   const people = rows.find((r) => (r.docket ?? "") === "IN12-17-000");
   assert.ok(people);

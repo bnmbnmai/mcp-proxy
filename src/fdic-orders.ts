@@ -152,6 +152,120 @@ export const SEED_LISTINGS: FdicOrderListing[] = [
   },
 ];
 
+/** Extra official institution consent-order PDFs. EDOS index is JS teaser; do not wrap Salesforce JSON. */
+export const OFFICIAL_WALK_LISTINGS: FdicOrderListing[] = [
+  {
+    id: "FDIC-24-0112b",
+    docket: "FDIC-24-0112b",
+    bank: "FFB Bank",
+    location: "Fresno, California",
+    date: "2025-01-07",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ00000OKpi6YAD?operationContext=S1",
+    pdfId: "069SJ00000OKpi6YAD",
+  },
+  {
+    id: "FDIC-25-0022b",
+    docket: "FDIC-25-0022b",
+    bank: "Compass Savings Bank",
+    location: "Wilmerding, Pennsylvania",
+    date: "2025-03-20",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ00000UFfzHYAT?operationContext=S1",
+    pdfId: "069SJ00000UFfzHYAT",
+  },
+  {
+    id: "FDIC-24-0075b",
+    docket: "FDIC-24-0075b",
+    bank: "Southeast Bank",
+    location: "Farragut, Tennessee",
+    date: "2024-11-25",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ00000HyRIIYA3?operationContext=S1",
+    pdfId: "069SJ00000HyRIIYA3",
+  },
+  {
+    id: "FDIC-24-0062b",
+    docket: "FDIC-24-0062b",
+    bank: "Hatch Bank",
+    location: "San Marcos, California",
+    date: "2025-04-02",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ00000Z17jGYAR?operationContext=S1",
+    pdfId: "069SJ00000Z17jGYAR",
+  },
+  {
+    id: "FDIC-24-0094b",
+    docket: "FDIC-24-0094b",
+    bank: "Bank of Vici",
+    location: "Vici, Oklahoma",
+    date: "2024-12-17",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ00000LvDmGYAV?operationContext=S1",
+    pdfId: "069SJ00000LvDmGYAV",
+  },
+  {
+    id: "FDIC-25-0142b",
+    docket: "FDIC-25-0142b",
+    bank: "Farmers and Mechanics Federal Savings Bank",
+    location: "Bloomfield, Indiana",
+    date: "2026-04-15",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ00001DypuEYAR?operationContext=S1",
+    pdfId: "069SJ00001DypuEYAR",
+  },
+  {
+    id: "FDIC-24-0086b",
+    docket: "FDIC-24-0086b",
+    bank: "Crescent Bank",
+    location: "New Orleans, Louisiana",
+    date: "2025-01-21",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ00000OKJWzYAP?operationContext=S1",
+    pdfId: "069SJ00000OKJWzYAP",
+  },
+  {
+    id: "FDIC-24-0119b",
+    docket: "FDIC-24-0119b",
+    bank: "Quaint Oak Bank",
+    location: "Southampton, Pennsylvania",
+    date: "2025-05-15",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ00000c7fBqYAI?operationContext=S1",
+    pdfId: "069SJ00000c7fBqYAI",
+  },
+  {
+    id: "FDIC-24-0117b",
+    docket: "FDIC-24-0117b",
+    bank: "Independence Bank",
+    location: "East Greenwich, Rhode Island",
+    date: "2025-01-14",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ00000OJmxiYAD?operationContext=S1",
+    pdfId: "069SJ00000OJmxiYAD",
+  },
+  {
+    id: "FDIC-25-0134b",
+    docket: "FDIC-25-0134b",
+    bank: "SouthPoint Bank",
+    location: "Birmingham, Alabama",
+    date: "2025-11-04",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ00000w0Iy3YAE?operationContext=S1",
+    pdfId: "069SJ00000w0Iy3YAE",
+  },
+  {
+    id: "FDIC-25-0048b",
+    docket: "FDIC-25-0048b",
+    bank: "Cheyenne State Bank",
+    location: "Cheyenne, Wyoming",
+    date: "2025-04-25",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ00000Z7BSVYA3?operationContext=S1",
+    pdfId: "069SJ00000Z7BSVYA3",
+  },
+];
+
 function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
@@ -549,6 +663,17 @@ function pause(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
 }
 
+function mergeOfficialListings(listed: FdicOrderListing[], seeds: FdicOrderListing[]): FdicOrderListing[] {
+  const seen = new Set<string>();
+  const out: FdicOrderListing[] = [];
+  for (const row of [...seeds, ...listed]) {
+    if (!row.id || seen.has(row.id)) continue;
+    seen.add(row.id);
+    out.push(row);
+  }
+  return out;
+}
+
 async function loadOfficialListings(dir: string): Promise<{ listed: FdicOrderListing[]; listedCount: number }> {
   if (dir) {
     const raw = readNamedFile(dir, ["listing-excerpt.json", "listing.json"]);
@@ -556,7 +681,8 @@ async function loadOfficialListings(dir: string): Promise<{ listed: FdicOrderLis
     const listed = Array.isArray(rows) ? parseListingRows(rows) : [];
     return { listed, listedCount: listed.length };
   }
-  return { listed: [...SEED_LISTINGS], listedCount: SEED_LISTINGS.length };
+  const listed = mergeOfficialListings(OFFICIAL_WALK_LISTINGS, SEED_LISTINGS);
+  return { listed, listedCount: listed.length };
 }
 
 function priorBodies(): Map<string, FdicOrderCard> {

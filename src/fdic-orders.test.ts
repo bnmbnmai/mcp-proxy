@@ -9,6 +9,7 @@ import {
   CARD_FIELDS,
   LICENSE,
   LISTING_URL,
+  OFFICIAL_WALK_LISTINGS,
   PDF_DOWNLOAD,
   SEED_LISTINGS,
   buildFdicOrdersManifest,
@@ -69,6 +70,13 @@ async function main(): Promise<void> {
   assert.ok(LISTING_URL.includes("orders.fdic.gov"));
   assert.equal(SEED_LISTINGS.length, 5);
   assert.ok(SEED_LISTINGS.some((r) => r.docket === "FDIC-26-0001b"));
+  assert.ok(OFFICIAL_WALK_LISTINGS.length >= 10, "EDOS index is a JS teaser; collect walks official shepherd PDFs");
+  assert.ok(OFFICIAL_WALK_LISTINGS.some((r) => r.docket === "FDIC-24-0112b" && /FFB Bank/i.test(r.bank)));
+  assert.ok(OFFICIAL_WALK_LISTINGS.some((r) => r.docket === "FDIC-25-0022b"));
+  assert.ok(OFFICIAL_WALK_LISTINGS.some((r) => r.docket === "FDIC-25-0134b"));
+  assert.ok(OFFICIAL_WALK_LISTINGS.every((r) => officialFdicPdfUrl(r.sourceUrl)));
+  assert.ok(OFFICIAL_WALK_LISTINGS.every((r) => /b$/.test(r.docket)), "walk is institution consent orders only");
+  assert.ok(!OFFICIAL_WALK_LISTINGS.some((r) => /e$|k$/.test(r.docket)), "walk skips people/CMP");
 
   const people = rows.find((r) => (r.docket ?? "") === "FDIC-26-0002e");
   assert.ok(people);
