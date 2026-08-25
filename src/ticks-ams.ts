@@ -1,8 +1,9 @@
 /**
- * Nationwide USDA AMS hay / cattle / grain report bodies for the existing GET /ticks door.
+ * Nationwide USDA AMS hay / cattle / grain / wool report bodies for the existing GET /ticks door.
  * Official PDFs (and NAL/esmis archive copies). Same product: idaho-hay-feeder-ticks.
  * Does not open a new SKU. Does not wrap marsapi (403 without a key), LMR datamart JSON,
  * NASS Quick Stats, WASDE/PSD/ESR, the National Feeder dashboard, or SJ_LS850.txt.
+ * AMS_2911 National Wool Review is public-domain 17 USC 105; parse the official PDF only.
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -19,7 +20,7 @@ export const VIEW_REPORT = (slug: string) =>
 
 const HTTP_UA = "bnm-data-shop/1.0 (USDA AMS public market-report PDFs; +https://www.ams.usda.gov/market-news/hay-reports)";
 
-export type AmsGroup = "hay" | "cattle" | "grain";
+export type AmsGroup = "hay" | "cattle" | "grain" | "wool";
 
 export type AmsReport = {
   slug: string;
@@ -97,6 +98,7 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "3167", group: "grain", region: "virginia", title: "Virginia Daily Grain Bids", esmisPublication: "virginia-daily-grain-bids" },
   { slug: "3239", group: "grain", region: "wyoming", title: "Wyoming Daily Grain Bids", esmisPublication: "wyoming-daily-grain-bids" },
   { slug: "2887", group: "grain", region: "national", title: "National Daily Sunflower Canola Millet Flaxseed", esmisPublication: "national-daily-sunflower-canola-millet-and-flaxseed-report" },
+  { slug: "2911", group: "wool", region: "national", title: "National Wool Review", esmisPublication: "national-wool-review-fri" },
 ];
 
 export const SKIPPED_SOURCES = [
@@ -113,6 +115,7 @@ export const SKIPPED_SOURCES = [
   { id: "ams_3045_minneapolis_basis", why: "AMS_3045 Minneapolis Daily Basis is a MIAX floor-basis sheet, not a POS bid table" },
   { id: "cattle-auction-summaries", why: "state cattle-auction summary PDFs are local-barn dumps; this pass is leftover Grain POS" },
   { id: "lmr-slaughter-pdfs", why: "national/regional Direct Slaughter PDFs are LMR fed-cattle tables, not the feeder/POS parser this door already sells" },
+  { id: "ams_2911_marsapi", why: "marsapi /services/v1.2/reports/2911 returns HTTP 403 without a key — parse the official mnreports PDF only" },
 ] as const;
 
 export type AmsTick = {
@@ -213,6 +216,8 @@ export function parseReportDate(text: string): string | null {
   if (ending) return parseMdY(ending[1]);
   const grain = text.match(/Grain Report for\s+(\d{1,2}\/\d{1,2}\/\d{4})/i);
   if (grain) return parseMdY(grain[1]);
+  const woolThru = text.match(/Report For:\s*\d{1,2}\/\d{1,2}\/\d{4}\s+thru\s+(\d{1,2}\/\d{1,2}\/\d{4})/i);
+  if (woolThru) return parseMdY(woolThru[1]);
   const named = text.match(
     /\b(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)?\s*(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*\s+(\d{1,2}),\s+(\d{4})\b/i,
   );
@@ -548,9 +553,81 @@ export function parseGrainReport(text: string, report: AmsReport, sourceUrl: str
   return dedupeTicks(out);
 }
 
+const WOOL_MICRON_RE =
+  /^(\d{2})\s+\(US\s+([^)]+?)\)\s+(\d+\.\d{2})\s+(?:\([^)]+\)|[0-9.]+)\s+(\d+\.\d{2})\s*-\s*(\d+\.\d{2})\s*$/i;
+const WOOL_MERINO_RE =
+  /^Merino Clippings\s+(\d+\.\d{2})\s+(?:\([^)]+\)|[0-9.]+)\s+(\d+\.\d{2})\s*-\s*(\d+\.\d{2})\s*$/i;
+
+export function parseWoolReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const asOf = parseReportDate(text);
+  if (!asOf) return [];
+  const source = `USDA AMS ${report.title} Report (AMS_${report.slug})`;
+  const out: AmsTick[] = [];
+  const market = "Australia AWEX / Charleston, SC";
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.replace(/\s+/g, " ").trim();
+    if (!line) continue;
+    if (/exch rate|passed in|awex emi|bales offered|^greasy\b|^volume \(lbs\)/i.test(line)) continue;
+    const micron = line.match(WOOL_MICRON_RE);
+    if (micron) {
+      const us$ = Number(micron[3]);
+      const lo = Number(micron[4]);
+      const hi = Number(micron[5]);
+      if (!Number.isFinite(us$) || us$ < 0.5 || us$ > 20) continue;
+      const grade = micron[2].replace(/\s+/g, " ").trim();
+      const id = ["wool", `ams_${report.slug}`, "awex", `${micron[1]}_micron`].join(".");
+      out.push({
+        id,
+        group: "wool",
+        commodity: `AWEX ${micron[1]} micron`,
+        label: `AWEX ${micron[1]} micron ${grade} (U.S.$ delivered Charleston)`,
+        market,
+        classGrade: `US ${grade}, clean, delivered Charleston`,
+        unit: "$/lb",
+        price: roundMoney(us$),
+        lo,
+        hi,
+        asOf,
+        source,
+        sourceUrl,
+        reportDate: asOf,
+        series: id,
+      });
+      continue;
+    }
+    const merino = line.match(WOOL_MERINO_RE);
+    if (merino) {
+      const us$ = Number(merino[1]);
+      const lo = Number(merino[2]);
+      const hi = Number(merino[3]);
+      if (!Number.isFinite(us$) || us$ < 0.5 || us$ > 20) continue;
+      const id = ["wool", `ams_${report.slug}`, "australia", "merino_clippings"].join(".");
+      out.push({
+        id,
+        group: "wool",
+        commodity: "Merino clippings",
+        label: "AWEX Merino Clippings (U.S.$ delivered Charleston)",
+        market,
+        classGrade: "Merino clippings, clean, delivered Charleston",
+        unit: "$/lb",
+        price: roundMoney(us$),
+        lo,
+        hi,
+        asOf,
+        source,
+        sourceUrl,
+        reportDate: asOf,
+        series: id,
+      });
+    }
+  }
+  return dedupeTicks(out);
+}
+
 export function parseAmsReportText(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
   if (report.group === "hay") return parseHayReport(text, report, sourceUrl);
   if (report.group === "cattle") return parseCattleReport(text, report, sourceUrl);
+  if (report.group === "wool") return parseWoolReport(text, report, sourceUrl);
   return parseGrainReport(text, report, sourceUrl);
 }
 
@@ -736,7 +813,7 @@ export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number
         parsed = parseAmsReportText(text, report, pdfUrl);
         usedUrl = pdfUrl;
         if (parsed.length > 0) break;
-        lastErr = "official PDF had no parseable hay/cattle/grain print";
+        lastErr = "official PDF had no parseable hay/cattle/grain/wool print";
       } catch (err) {
         lastErr = err instanceof Error ? err.message : String(err);
       }
