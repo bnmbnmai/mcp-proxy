@@ -704,7 +704,9 @@ function pause(ms: number): Promise<void> {
 function mergeOfficialListings(listed: NcuaOrderListing[], seeds: NcuaOrderListing[]): NcuaOrderListing[] {
   const seen = new Set<string>();
   const out: NcuaOrderListing[] = [];
-  for (const row of [...listed, ...seeds]) {
+  const preferCd = (row: NcuaOrderListing) => /cease-and-desist|cease and desist/i.test(row.sourceUrl + " " + row.title);
+  const ranked = [...listed].sort((a, b) => Number(preferCd(b)) - Number(preferCd(a)));
+  for (const row of [...seeds, ...ranked]) {
     if (!row.id || seen.has(row.id)) continue;
     seen.add(row.id);
     out.push(row);

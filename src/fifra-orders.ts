@@ -380,7 +380,11 @@ export function parseCafosViewHtml(html: string): FifraCafosCandidate[] {
     const href = decodeEntities(m[1]);
     const label = stripTags(m[2]);
     const docket = normalizeDocket(label);
-    const unid = (href.match(UNID_RE) || [])[1]?.toUpperCase();
+    const unid = (
+      href.match(/\/([A-Fa-f0-9]{32})(?:!|\?)OpenDocument/i) ||
+      href.match(/([A-Fa-f0-9]{32})(?!.*[A-Fa-f0-9]{32})/i) ||
+      []
+    )[1]?.toUpperCase();
     if (!docket || !unid) continue;
     if (COMPLAINT_RE.test(label)) continue;
     const instMatch = label.match(/\(([^()]+)\)\s*$/);
@@ -417,9 +421,17 @@ export function filingOpenUrl(unid: string): string {
   return `${FILINGS_OPEN}/${unid.toUpperCase()}?OpenDocument`;
 }
 
-export async function resolveFifraOfficialPdf(unid: string): Promise<string | null> {
-  const fromFiling = officialPdfFromFilingHtml(await fetchFifraText(filingOpenUrl(unid)));
-  if (fromFiling) return fromFiling;
+export async function resolveFifraOfficialPdf(unid: string, viewUrl?: string): Promise<string | null> {
+  const urls = [filingOpenUrl(unid)];
+  if (viewUrl) urls.push(viewUrl);
+  for (const url of urls) {
+    try {
+      const pdf = officialPdfFromFilingHtml(await fetchFifraText(url));
+      if (pdf) return pdf;
+    } catch {
+      /* try the next official hop */
+    }
+  }
   return null;
 }
 
@@ -770,7 +782,7 @@ async function loadOfficialListings(dir: string): Promise<{ listed: FifraOrderLi
         for (const row of candidates) {
           if (resolved.has(row.unid)) continue;
           try {
-            const pdf = await resolveFifraOfficialPdf(row.unid);
+            const pdf = await resolveFifraOfficialPdf(row.unid, row.viewUrl);
             if (pdf) resolved.set(row.unid, pdf);
           } catch {
             /* one Filings hop missed; keep the others */

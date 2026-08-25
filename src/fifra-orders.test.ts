@@ -66,7 +66,9 @@ async function main(): Promise<void> {
   assert.ok(!htmlListed.some((r) => r.id === "FIFRA-05-2026-0099"));
 
   const cafos = parseCafosViewHtml(readFx("cafos-view-excerpt.html"));
-  assert.ok(cafos.some((r) => r.docket === "FIFRA-05-2026-0015" && /Travelon/i.test(r.institution)));
+  const travelonView = cafos.find((r) => r.docket === "FIFRA-05-2026-0015");
+  assert.ok(travelonView && /Travelon/i.test(travelonView.institution));
+  assert.equal(travelonView?.unid, "F4CB3764E5AB61EA85258E43006880DC", "Filings UNID is the document id, not the view id");
   assert.ok(cafos.some((r) => r.docket === "FIFRA-05-2026-0019" && /All Glass Aquarium/i.test(r.institution)));
   assert.ok(cafos.some((r) => r.docket === "FIFRA-02-2026-5061" && /Mirtech/i.test(r.institution)));
   assert.ok(!cafos.some((r) => r.docket === "FIFRA-05-2026-0099"), "CAFOs view skips people");
