@@ -124,7 +124,8 @@ async function main(): Promise<void> {
   );
   const tools = (listed as { result: { tools: { name: string }[] } }).result.tools;
   const paidTools = tools.filter((t) => t.name !== "search" && t.name !== "get-page" && t.name !== "get-one");
-  assert.equal(paidTools.length, 32);
+    assert.equal(paidTools.length, 33);
+    assert.ok(tools.some((t) => t.name === "ema-referrals"));
   assert.deepEqual(paidTools.map((t) => `/${t.name}`), livePaths);
   assert.ok(tools.some((t) => t.name === "search"));
   assert.ok(tools.some((t) => t.name === "get-page"));
