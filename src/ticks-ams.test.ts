@@ -13,7 +13,7 @@ import {
   readAmsSnapshot,
   writeAmsSnapshot,
 } from "./ticks-ams.js";
-import { loadTicks } from "./ticks-door.js";
+import { loadTicks, PRODUCT_ID, PRODUCT_NAME } from "./ticks-door.js";
 import { paidTicksBody } from "./paid-records.js";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -76,6 +76,56 @@ assert.equal(steer750.price, 378.74);
 const headlineSteer = cattle.find((row) => row.id === "cattle.ams_2710.texas.feeder-steers-ml1");
 assert.ok(headlineSteer, "headline Current FOB ML1 steers");
 assert.ok(headlineSteer.price > 300 && headlineSteer.price < 400);
+
+const hayCo = parseAmsReportText(
+  fx("hay-colorado-2905.txt"),
+  report("2905"),
+  "https://www.ams.usda.gov/mnreports/ams_2905.pdf",
+);
+assert.equal(parseReportDate(fx("hay-colorado-2905.txt")), "2026-08-14");
+assert.ok(hayCo.length >= 2, `expected CO hay prints, got ${hayCo.length}`);
+assert.ok(hayCo.every((row) => row.id.startsWith("hay.ams_2905.")));
+const coGrass = hayCo.find((row) => /grass/i.test(row.commodity) && /medium_square/.test(row.id));
+assert.ok(coGrass, "CO Mountains/Northwest grass medium square");
+assert.equal(coGrass.price, 300);
+assert.equal(coGrass.unit, "$/ton");
+
+const cattleSe = parseAmsReportText(
+  fx("cattle-southeast-2709.txt"),
+  report("2709"),
+  "https://www.ams.usda.gov/mnreports/ams_2709.pdf",
+);
+assert.equal(parseReportDate(fx("cattle-southeast-2709.txt")), "2026-08-21");
+assert.ok(cattleSe.length >= 4, `expected SE cattle prints including continuation rows, got ${cattleSe.length}`);
+assert.ok(cattleSe.every((row) => row.group === "cattle" && row.unit === "$/cwt"));
+assert.ok(!cattleSe.some((row) => /sep fob/i.test(row.classGrade)), "forward Sep FOB is not the current cash print");
+const seSteer747 = cattleSe.find((row) => row.id.includes("feeder-steer.ml12.747lb"));
+assert.ok(seSteer747, "SE continuation Current FOB steer 747 lb");
+assert.equal(seSteer747.price, 333.36);
+
+const cattleSw = parseAmsReportText(
+  fx("cattle-southwest-2940.txt"),
+  report("2940"),
+  "https://www.ams.usda.gov/mnreports/ams_2940.pdf",
+);
+assert.ok(cattleSw.length >= 2, `expected SW Beef/Dairy Current FOB prints, got ${cattleSw.length}`);
+assert.ok(!cattleSw.some((row) => /dec del|dairy/i.test(row.classGrade)), "forward Dec DEL dairy is not the current cash print");
+const swSteer = cattleSw.find((row) => row.id.includes("feeder-steer.ml23.550lb"));
+assert.ok(swSteer, "SW Beef/Dairy steer ML 2-3 Current FOB");
+assert.equal(swSteer.price, 362);
+
+const grainIl = parseAmsReportText(
+  fx("grain-illinois-3192.txt"),
+  report("3192"),
+  "https://www.ams.usda.gov/mnreports/ams_3192.pdf",
+);
+assert.equal(parseReportDate(fx("grain-illinois-3192.txt")), "2026-08-24");
+assert.ok(grainIl.length >= 2, `expected IL grain bids, got ${grainIl.length}`);
+assert.ok(grainIl.every((row) => row.group === "grain" && row.unit === "$/bu"));
+const ilCorn = grainIl.find((row) => /yellow_corn/i.test(row.id));
+assert.ok(ilCorn, "Illinois yellow corn Current bid");
+assert.ok(ilCorn.price >= 4.6 && ilCorn.price <= 5.2);
+assert.ok(!grainIl.some((row) => row.id.includes("oct")), "forward Oct-Nov grain is not the current bid");
 
 const grain = parseAmsReportText(
   fx("grain-portland-3148.txt"),
@@ -145,6 +195,7 @@ assert.ok(merged.sources.includes("Twin Falls"));
 assert.ok(merged.sources.includes("AMS_3056 hay"));
 assert.ok(merged.sources.includes("AMS_2707 Texas Direct Hay"));
 assert.equal(merged.status, "ok");
+assert.equal(merged.fetchedAt, "2026-08-24T16:00:00Z");
 assert.ok(merged.ticks.length > idaho.ticks.length);
 
 const emptyMerged = mergeAmsNationalTicks(
@@ -154,12 +205,28 @@ const emptyMerged = mergeAmsNationalTicks(
 assert.equal(emptyMerged.status, "ok");
 assert.equal(emptyMerged.reason, null);
 
-assert.equal(AMS_NATIONAL_REPORTS.length, 10);
-assert.ok(AMS_NATIONAL_REPORTS.every((r) => !["3056", "3058", "3059", "2914"].includes(r.slug)));
+const slugs = AMS_NATIONAL_REPORTS.map((r) => r.slug);
+assert.equal(new Set(slugs).size, slugs.length);
+assert.ok(slugs.length > 10, `expected leftover nationwide slice, got ${slugs.length}`);
+assert.ok(
+  ["2904", "2707", "2885", "2935", "2710", "3097", "3098", "3148", "3046", "3223"].every((s) => slugs.includes(s)),
+  "keep first nationwide slice",
+);
+assert.ok(
+  ["2905", "2769", "3236", "3183", "2807", "2929", "3905", "2906", "2709", "2912", "3192", "3225", "2932"].every((s) =>
+    slugs.includes(s),
+  ),
+  "leftover Direct Hay / Direct Cattle / Grain POS slugs",
+);
+assert.ok(AMS_NATIONAL_REPORTS.every((r) => !["3056", "3057", "3058", "3059", "2914"].includes(r.slug)));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "marsapi"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "nass-quick-stats"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "wasde-psd-esr"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "SJ_LS850"));
+assert.ok(SKIPPED_SOURCES.some((s) => s.id === "hay-auction-barns"));
+assert.ok(SKIPPED_SOURCES.some((s) => s.id === "no-il-ga-direct-hay"));
+assert.equal(PRODUCT_ID, "idaho-hay-feeder-ticks");
+assert.equal(PRODUCT_NAME, "Idaho + nationwide USDA AMS hay/cattle/grain");
 
 mkdirSync(join(dir, "empty"), { recursive: true });
 assert.equal(mergeAmsNationalTicks(idaho, null).ticks.length, 1);
@@ -206,8 +273,11 @@ console.log(
   JSON.stringify({
     hayCalifornia: hayCa.length,
     hayTexas: hayTx.length,
+    hayColorado: hayCo.length,
     cattleTexas: cattle.length,
+    cattleSoutheast: cattleSe.length,
     grainPortland: grain.length,
+    grainIllinois: grainIl.length,
     mergedTickCount: merged.ticks.length,
     keptTwinFalls: true,
   }),
