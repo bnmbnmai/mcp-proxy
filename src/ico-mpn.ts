@@ -631,7 +631,9 @@ export async function fetchIcoMpnBytes(url: string): Promise<Uint8Array> {
 }
 
 export async function fetchIcoMpnText(url: string): Promise<string> {
-  const res = await fetch(url, { headers: { "User-Agent": HTTP_UA, Accept: "text/html,application/xhtml+xml" } });
+  const res = await fetch(url, {
+    headers: { "User-Agent": HTTP_UA, Accept: "text/html,application/xhtml+xml,application/xml,text/xml,text/csv;q=0.8" },
+  });
   if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
   return await res.text();
 }
@@ -698,6 +700,10 @@ function recoverFinesPageUrls(html: string): string[] {
   return urls;
 }
 
+function pause(ms: number): Promise<void> {
+  return new Promise((r) => setTimeout(r, ms));
+}
+
 async function walkOfficialNoticePages(pageUrls: string[]): Promise<IcoMpnListing[]> {
   const listed: IcoMpnListing[] = [];
   const seen = new Set<string>();
@@ -705,6 +711,7 @@ async function walkOfficialNoticePages(pageUrls: string[]): Promise<IcoMpnListin
   let fetched = 0;
   for (const pageUrl of pageUrls) {
     if (fetched >= cap) break;
+    if (fetched > 0) await pause(150);
     try {
       const pageListed = parseNoticePageHtml(await fetchIcoMpnText(pageUrl), pageUrl);
       fetched += 1;
