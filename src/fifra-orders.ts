@@ -537,7 +537,8 @@ export function isRealFifraOrderBody(text: string): boolean {
   const kind =
     /CONSENT AGREEMENT AND FINAL ORDER/i.test(text) ||
     /\bCAFO\b/i.test(text) ||
-    (/CONSENT AGREEMENT/i.test(text) && /Final Order/i.test(text));
+    (/CONSENT AGREEMENT/i.test(text) && /Final Order/i.test(text)) ||
+    /EXPEDITED SETTLEMENT AGREEMENT/i.test(text);
   const docket = DOCKET_LABEL_RE.test(text);
   return epa && fifra && kind && docket;
 }
@@ -688,9 +689,9 @@ function maxDocketPages(): number {
 }
 
 function maxDocketDocs(): number {
-  const raw = env("FIFRA_ORDERS_MAX_DOCKETS", "48");
+  const raw = env("FIFRA_ORDERS_MAX_DOCKETS", "100");
   const n = Number(raw);
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 48;
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 100;
 }
 
 function readNamedFile(dir: string, names: string[]): string | null {

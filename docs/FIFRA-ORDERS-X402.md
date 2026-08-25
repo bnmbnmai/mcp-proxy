@@ -41,7 +41,7 @@ Free `GET /fifra-orders/manifest.json` is institution / docket / date / sourceUr
 | `FIFRA_ORDERS_LIMIT` | `5` | Target **additional** real extractable bodies this run. Cached bodies are reused and do **not** count. `0` = keep walking |
 | `FIFRA_ORDERS_MAX_FETCH` | `8` | Max official PDF downloads per run. Already-on-disk PDFs do not count. `0` = no cap |
 | `FIFRA_ORDERS_MAX_TABLE_PAGES` | `3` | Official FIFRA docket-table pages to walk (~100 rows each) |
-| `FIFRA_ORDERS_MAX_DOCKETS` | `48` | Max docket HTML pages to open for CAFO/ESA `$File` links |
+| `FIFRA_ORDERS_MAX_DOCKETS` | `100` | Max docket HTML pages to open for CAFO/ESA `$File` links |
 | `FIFRA_ORDERS_JSON_DIR` / `FIFRA_ORDERS_LISTING_DIR` | unset | Optional already-fetched `listing-excerpt.json` / `listing-excerpt.html` + `{docket}.txt` |
 | `FIFRA_ORDERS_PDFTOTEXT` | `pdftotext` | Poppler extractor |
 
@@ -54,7 +54,7 @@ sudo apt-get install -y poppler-utils
 cd ~/projects/mcp-proxy
 npm run build
 export FIFRA_ORDERS_DIR=$HOME/projects/mcp-proxy/data/fifra-orders
-FIFRA_ORDERS_LIMIT=20 FIFRA_ORDERS_MAX_FETCH=28 FIFRA_ORDERS_MAX_DOCKETS=48 npm run collect:fifra-orders
+FIFRA_ORDERS_LIMIT=20 FIFRA_ORDERS_MAX_FETCH=28 FIFRA_ORDERS_MAX_DOCKETS=100 npm run collect:fifra-orders
 ```
 
 Yosemite is slow. Prefer fixture/local PDFs when a later collect would run into the 2:00am Imagine window.
