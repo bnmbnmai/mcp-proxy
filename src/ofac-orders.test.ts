@@ -9,6 +9,7 @@ import {
   CARD_FIELDS,
   LICENSE,
   LISTING_URL,
+  YEAR_LISTING_URLS,
   SEED_LISTINGS,
   buildOfacOrdersManifest,
   collectOfacOrders,
@@ -70,6 +71,11 @@ async function main(): Promise<void> {
   );
   assert.equal(officialOfacPdfUrl("https://www.federalregister.gov/documents/2026/08/12/2026-99999/rice-lake"), null);
   assert.ok(LISTING_URL.includes("ofac.treasury.gov"));
+  assert.ok(
+    YEAR_LISTING_URLS.some((u) => u.includes("2025-enforcement-information")),
+    "live collect must walk official year enforcement tables, not only the 2026 chart",
+  );
+  assert.ok(YEAR_LISTING_URLS.some((u) => u.includes("2024-enforcement-information")));
   assert.equal(SEED_LISTINGS.length, 5);
   assert.ok(SEED_LISTINGS.some((r) => r.docket === "936706"));
 
@@ -77,6 +83,24 @@ async function main(): Promise<void> {
   assert.ok(htmlListed.some((r) => r.id === "936706"));
   assert.ok(htmlListed.some((r) => r.id === "935006"));
   assert.ok(!htmlListed.some((r) => r.id === "935041"));
+
+  const year2025 = parseListingHtml(readFx("2025-enforcement-excerpt.html"));
+  assert.ok(year2025.some((r) => r.id === "934831" && /Exodus Movement/i.test(r.institution)));
+  assert.equal(
+    year2025.find((r) => r.id === "934831")?.sourceUrl,
+    "https://ofac.treasury.gov/media/934831/download",
+  );
+  assert.ok(year2025.some((r) => r.id === "934641" && /ShapeShift AG/i.test(r.institution)));
+  assert.ok(year2025.some((r) => r.id === "933956" && /Haas Automation/i.test(r.institution)));
+  assert.ok(year2025.some((r) => r.id === "933941" && /Family International Realty/i.test(r.institution)));
+  assert.ok(!year2025.some((r) => r.id === "934806"), "An Individual people stay out");
+  assert.ok(!year2025.some((r) => r.id === "7566"), "enforcement guidelines stay out");
+
+  const year2024 = parseListingHtml(readFx("2024-enforcement-excerpt.html"));
+  assert.ok(year2024.some((r) => r.id === "933866" && /SkyGeek/i.test(r.institution)));
+  assert.ok(year2024.some((r) => r.id === "933661" && /Aiotec GmbH/i.test(r.institution)));
+  assert.ok(year2024.some((r) => r.id === "932766" && /EFG International/i.test(r.institution)));
+  assert.ok(!year2024.some((r) => r.id === "933701"), "2024 people stay out");
 
   const people = rows.find((r) => (r.docket ?? "") === "935041");
   assert.ok(people);
