@@ -5,6 +5,7 @@ import { join } from "node:path";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
 import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus } from "./ticks-door.js";
+import { EXTRACTED_PAGE_SIZE, pageExtractedPaidBody } from "./paid-page.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
   IMPORT_ALERTS_MANIFEST_PATH,
@@ -193,6 +194,34 @@ async function withServer(
 const FRESH_FETCHED_AT = new Date(Date.now() - 60_000).toISOString();
 
 async function main(): Promise<void> {
+  const pageFx = {
+    cards: Array.from({ length: 105 }, (_, i) => ({
+      id: `card-${String(i + 1).padStart(3, "0")}`,
+      date: `2026-01-${String((i % 28) + 1).padStart(2, "0")}`,
+      body: `official text ${i + 1}`,
+    })),
+    records: Array.from({ length: 105 }, (_, i) => ({
+      id: `card-${String(i + 1).padStart(3, "0")}`,
+      date: `2026-01-${String((i % 28) + 1).padStart(2, "0")}`,
+    })),
+  };
+  const first = pageExtractedPaidBody(pageFx, { page: 1, before: null }) as typeof pageFx & {
+    returnedCount: number;
+    catalogCount: number;
+    next: { before: string } | null;
+  };
+  assert.equal(first.returnedCount, EXTRACTED_PAGE_SIZE);
+  assert.equal(first.catalogCount, 105);
+  assert.equal(first.cards.length, 100);
+  assert.equal(first.records.length, 100);
+  assert.ok(first.next?.before);
+  const older = pageExtractedPaidBody(pageFx, { page: 2, before: first.next!.before }) as typeof pageFx & {
+    returnedCount: number;
+    next: { before: string } | null;
+  };
+  assert.equal(older.returnedCount, 5);
+  assert.equal(older.next, null);
+
   await withServer({
     TICKS_PATH: "",
     TICKS_DIR: "",
@@ -248,7 +277,7 @@ async function main(): Promise<void> {
     assert.ok(!(v2.resource?.description ?? "").startsWith("Idaho"));
     assert.ok(!(v2.resource?.description ?? "").startsWith("PNW"));
     assert.ok(!(v2.resource?.description ?? "").includes("PNW barns"));
-    assert.ok((v2.resource?.description ?? "").includes("entire current cache") || (v2.resource?.description ?? "").includes("Entire current cache"));
+    assert.ok((v2.resource?.description ?? "").includes("entire current table"));
     assert.ok((v2.resource?.description ?? "").includes("ticks[]"));
     assert.ok(!(v2.resource?.description ?? "").includes("Not people"));
     assert.ok((v2.resource?.description ?? "").length <= 500);
@@ -258,7 +287,7 @@ async function main(): Promise<void> {
       }
     ).accepts;
     assert.ok((v2Accepts?.[0]?.description ?? "").includes("US hay, cattle, and grain ticks"));
-    assert.ok((v2Accepts?.[0]?.description ?? "").includes("Entire current cache"));
+    assert.ok((v2Accepts?.[0]?.description ?? "").includes("entire current table"));
     assert.ok((v2Accepts?.[0]?.description ?? "").includes("ticks[]"));
     assert.ok(!(v2Accepts?.[0]?.description ?? "").startsWith("Idaho"));
     assert.ok(!(v2Accepts?.[0]?.description ?? "").includes("PNW barns"));
@@ -319,7 +348,9 @@ async function main(): Promise<void> {
     assert.ok(wk.openapi?.endsWith(OPENAPI_PATH));
     assert.ok(wk.llmsTxt?.endsWith(LLMS_PATH));
     assert.ok((wk.instructions ?? "").includes("twenty-nine paid"));
-    assert.ok((wk.instructions ?? "").includes("entire current cache"));
+    assert.ok((wk.instructions ?? "").includes("entire current table"));
+    assert.ok((wk.instructions ?? "").includes("newest 100 official texts"));
+    assert.ok(!(wk.instructions ?? "").includes("entire current cache"));
     assert.ok(!wk.resources.some((r) => r.includes("/gain")));
     assert.equal(cdpEnvStatus(), "CDP env not set");
 
@@ -363,20 +394,21 @@ async function main(): Promise<void> {
     const ticksOp = spec.paths[TICKS_PATH]?.get as { summary?: string; description?: string; responses?: Record<string, { description?: string }> } | undefined;
     assert.ok((ticksOp?.summary ?? "").startsWith("US hay, cattle, and grain ticks"));
     assert.ok((ticksOp?.summary ?? "").includes("USDA AMS official prints"));
-    assert.ok((ticksOp?.summary ?? "").includes("entire current cache on one GET"));
+    assert.ok((ticksOp?.summary ?? "").includes("entire current table on one GET"));
     assert.ok(!(ticksOp?.summary ?? "").startsWith("Idaho"));
     assert.ok(!(ticksOp?.summary ?? "").startsWith("PNW"));
-    assert.ok((ticksOp?.description ?? "").includes("Entire current cache"));
+    assert.ok((ticksOp?.description ?? "").includes("entire current table"));
     assert.ok((ticksOp?.description ?? "").includes("ticks[] + history"));
     assert.ok((ticksOp?.description ?? "").includes("US hay, cattle, and grain ticks"));
     assert.ok((ticksOp?.description ?? "").includes("produce, wool, and WD1 water"));
     assert.ok(!(ticksOp?.description ?? "").startsWith("Idaho"));
     assert.ok(!(ticksOp?.description ?? "").includes("PNW barns"));
     assert.ok(!(ticksOp?.description ?? "").includes("Not people"));
-    assert.ok((ticksOp?.responses?.["402"]?.description ?? "").includes("entire current cache"));
+    assert.ok((ticksOp?.responses?.["402"]?.description ?? "").includes("entire current table"));
     const icoOp = spec.paths[ICO_MPN_PATH]?.get as { description?: string } | undefined;
     assert.ok((icoOp?.description ?? "").includes("Official UK ICO Monetary Penalty Notice"));
-    assert.ok((icoOp?.description ?? "").includes("Entire current cache"));
+    assert.ok((icoOp?.description ?? "").includes("newest 100 official texts"));
+    assert.ok(!(icoOp?.description ?? "").includes("entire current cache"));
     assert.ok((icoOp?.description ?? "").includes("cards[].body"));
     assert.ok((icoOp?.description ?? "").includes("$0.05"));
     assert.ok(!(icoOp?.description ?? "").includes("Not people"));
@@ -533,7 +565,10 @@ async function main(): Promise<void> {
     assert.ok(!llmsBody.includes("TCPA"));
     assert.ok(llmsBody.includes("GET /ticks — $0.05"));
     assert.ok(!llmsBody.includes("GET /ticks — $0.02"));
-    assert.ok(llmsBody.includes("Entire current cache on one GET"));
+    assert.ok(llmsBody.includes("entire current table"));
+    assert.ok(llmsBody.includes("newest 100 official texts"));
+    assert.ok(!llmsBody.includes("entire current cache"));
+    assert.ok(!llmsBody.includes("Entire current cache"));
     assert.ok(llmsBody.includes("Paid JSON is ticks[] + history"));
     assert.ok(llmsBody.includes("Paid JSON is letters[].body"));
     assert.ok(llmsBody.includes("Paid JSON is cards[].body"));
@@ -589,7 +624,15 @@ async function main(): Promise<void> {
     assert.ok(!ticksLlms?.includes("Idaho +"));
     assert.ok(!ticksLlms?.includes("PNW barns"));
     for (const product of shop.products) {
-      assert.ok(product.description?.includes("Entire current cache on one GET"), `${product.path} shop description must name the bag`);
+      const table = product.path === TICKS_PATH || product.path === IMPORT_ALERTS_PATH;
+      if (table) {
+        assert.ok(product.description?.includes("entire current table"), `${product.path} shop description must name the table bag`);
+        assert.ok(!product.description?.includes("newest 100"), `${product.path} is a table door`);
+      } else {
+        assert.ok(product.description?.includes("newest 100 official texts"), `${product.path} shop description must name the extracted bag`);
+        assert.ok(product.description?.includes("page/before"), `${product.path} shop description must name the cursor`);
+      }
+      assert.ok(!product.description?.includes("entire current cache"), `${product.path} must not claim shop-wide entire cache`);
       assert.ok(product.description?.includes("$0.05"), `${product.path} shop description must name the price`);
       assert.ok(!/Not people/i.test(product.description ?? ""), `${product.path} shop description is buyer copy`);
       assert.ok(!/press\/teaser/i.test(product.description ?? ""), `${product.path} shop description is buyer copy`);
@@ -633,7 +676,7 @@ async function main(): Promise<void> {
         products: { path: string; count?: number; description?: string }[];
       };
       assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.count, 0);
-      assert.ok(shop.products.find((p) => p.path === TICKS_PATH)?.description?.includes("Entire current cache on one GET"));
+      assert.ok(shop.products.find((p) => p.path === TICKS_PATH)?.description?.includes("entire current table"));
     },
   );
 
@@ -3975,7 +4018,8 @@ async function main(): Promise<void> {
       assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
       const ico402 = body402.accepts[0]?.description ?? "";
       assert.ok(ico402.includes("Official UK ICO Monetary Penalty Notice"));
-      assert.ok(ico402.includes("Entire current cache"));
+      assert.ok(ico402.includes("newest 100 official texts"));
+      assert.ok(!ico402.includes("entire current cache"));
       assert.ok(ico402.includes("cards[].body"));
       assert.ok(ico402.includes("$0.05"));
       assert.ok(!/Not people/i.test(ico402), "402 description is buyer copy, not leak-test");
@@ -4009,7 +4053,8 @@ async function main(): Promise<void> {
       };
       const icoOpen = icoSpec.paths[ICO_MPN_PATH]?.get?.description ?? "";
       assert.ok(icoOpen.includes("Official UK ICO Monetary Penalty Notice"));
-      assert.ok(icoOpen.includes("Entire current cache"));
+      assert.ok(icoOpen.includes("newest 100 official texts"));
+      assert.ok(!icoOpen.includes("entire current cache"));
       assert.ok(icoOpen.includes("cards[].body"));
       assert.ok(!/Not people/i.test(icoOpen), "openapi /ico-mpn is the product only");
       assert.ok(!icoOpen.includes("/ftc-wl"));
@@ -4587,7 +4632,9 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.endsWith(BIS_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(CFTC_ORDERS_PATH)));
       assert.ok((wk.instructions ?? "").includes("thirty-two paid"));
-      assert.ok((wk.instructions ?? "").includes("entire current cache"));
+      assert.ok((wk.instructions ?? "").includes("entire current table"));
+      assert.ok((wk.instructions ?? "").includes("newest 100 official texts"));
+      assert.ok(!(wk.instructions ?? "").includes("entire current cache"));
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
         paths: Record<string, { get?: { "x-payment-info"?: { price?: { amount?: string } } } }>;

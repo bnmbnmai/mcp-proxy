@@ -755,7 +755,7 @@ export function buildForm483Manifest(snap: Form483Snapshot | null): Record<strin
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + id + firm + dates only. Observation / letter body is the paid GET /form-483 payload.",
+    note: "Count + id + firm + dates only. Observation / letter body is the paid GET /form-483 payload. This free manifest lists the full catalog. One $0.05 GET returns the newest 100 official texts; older pages are another $0.05 on the same URL (page/before).",
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
     network: "base",
     asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",

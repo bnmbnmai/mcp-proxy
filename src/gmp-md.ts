@@ -815,7 +815,7 @@ export function buildGmpMdManifest(snap: GmpMdSnapshot | null): Record<string, u
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + id + firm + dates + rating only. Observation text / MDR cites are the paid GET /gmp-md payload.",
+    note: "Count + id + firm + dates + rating only. Observation text / MDR cites are the paid GET /gmp-md payload. This free manifest lists the full catalog. One $0.05 GET returns the newest 100 official texts; older pages are another $0.05 on the same URL (page/before).",
     license: OGL_NOTE,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
     network: "base",

@@ -78,6 +78,10 @@ export function paidJsonForPath(path: string): string {
   return "cards[].body";
 }
 
+export function isTablePath(path: string): boolean {
+  return path === "/ticks" || path === "/import-alerts";
+}
+
 function countLabel(sku: LivePaidSku): string | undefined {
   if (typeof sku.count !== "number") return undefined;
   if (sku.path === "/import-alerts") {
@@ -258,7 +262,10 @@ export function mcpToolDescriptors(
     description:
       `GET ${base}${sku.path} — $${sku.priceUsdc} USDC on Base to ${PAY_TO}. ${sku.summary} ` +
       `Paid JSON is ${sku.paidJson ?? paidJsonForPath(sku.path)}` +
-      `${countLabel(sku) ? ` (${countLabel(sku)})` : ""}. Entire current cache on one GET. ` +
+      `${countLabel(sku) ? ` (${countLabel(sku)} in catalog)` : ""}. ` +
+      (isTablePath(sku.path)
+        ? "One $0.05 GET returns the entire current table. "
+        : "One $0.05 GET returns the newest 100 official texts. Older pages are another $0.05 on the same URL (page/before). ") +
       "Unpaid returns HTTP 402. After a valid X-PAYMENT, the same URL returns JSON.",
     inputSchema: {
       type: "object",
@@ -267,6 +274,18 @@ export function mcpToolDescriptors(
           type: "string",
           description: "Optional x402 X-PAYMENT value forwarded to the paid GET as the X-PAYMENT header.",
         },
+        ...(isTablePath(sku.path)
+          ? {}
+          : {
+              page: {
+                type: "string",
+                description: "Optional page of official texts. Default 1 is the newest 100. Same URL, another $0.05.",
+              },
+              before: {
+                type: "string",
+                description: "Optional cursor (item id) for the next older page. Same URL, another $0.05.",
+              },
+            }),
       },
       additionalProperties: false,
     },
@@ -282,14 +301,18 @@ export type PaidGetResult = {
 
 export async function getPaidSku(
   path: string,
-  opts: { origin?: string; xPayment?: string; catalog?: LivePaidSku[] } = {},
+  opts: { origin?: string; xPayment?: string; catalog?: LivePaidSku[]; page?: string; before?: string } = {},
 ): Promise<PaidGetResult> {
   const catalog = opts.catalog ?? (await resolveMcpCatalog({ origin: opts.origin }));
   const sku = findLiveSku(path, catalog);
   if (!sku) {
     throw new Error(`not a live paid GET: ${path}`);
   }
-  const url = `${ticksOrigin(opts.origin)}${sku.path}`;
+  const qs = new URLSearchParams();
+  if (opts.page?.trim()) qs.set("page", opts.page.trim());
+  if (opts.before?.trim()) qs.set("before", opts.before.trim());
+  const query = qs.toString();
+  const url = `${ticksOrigin(opts.origin)}${sku.path}${query ? `?${query}` : ""}`;
   const headers: Record<string, string> = { Accept: "application/json" };
   if (opts.xPayment?.trim()) headers["X-PAYMENT"] = opts.xPayment.trim();
   const response = await fetch(url, { method: "GET", headers });
@@ -360,7 +383,7 @@ export async function handleMcpJsonRpc(
       capabilities: { tools: { listChanged: false } },
       serverInfo: { name: "bnm-data-shop", version: "1.0.0" },
       instructions:
-        `${catalog.length} tools, one per live paid GET from ${WELL_KNOWN_PATH}. Each tool GETs that URL and returns the entire current cache (ticks[]+history or cards[].body / letters[].body, plus the live count). Unpaid is HTTP 402. Paid returns JSON. USDC on Base. Not Bazaar-indexed.`,
+        `${catalog.length} tools, one per live paid GET from ${WELL_KNOWN_PATH}. Table doors return the entire current table. Extracted-body doors return the newest 100 official texts; older pages are another $0.05 on the same URL (page/before). Unpaid is HTTP 402. Paid returns JSON. USDC on Base. Not Bazaar-indexed.`,
     });
   }
 
@@ -374,13 +397,19 @@ export async function handleMcpJsonRpc(
 
   if (method === "tools/call") {
     const name = String(message.params?.name ?? "");
-    const args = (message.params?.arguments ?? {}) as { x_payment?: string };
+    const args = (message.params?.arguments ?? {}) as { x_payment?: string; page?: string; before?: string };
     const sku = findLiveSku(name, catalog);
     if (!sku) {
       return err(-32602, `Unknown tool ${name}. Tools are the live paid GETs from ${WELL_KNOWN_PATH}.`);
     }
     const xPayment = args.x_payment || opts.xPayment;
-    const result = await getPaidSku(sku.path, { origin: opts.origin, xPayment, catalog });
+    const result = await getPaidSku(sku.path, {
+      origin: opts.origin,
+      xPayment,
+      catalog,
+      page: args.page,
+      before: args.before,
+    });
     return ok({
       content: [{ type: "text", text: formatPaidToolText(result) }],
       isError: result.status >= 500,
@@ -507,10 +536,20 @@ export async function createTicksMcpServer(origin = ticksOrigin()): Promise<McpS
           x_payment: z.string().optional().describe(
             "Optional x402 X-PAYMENT value forwarded to the paid GET as the X-PAYMENT header.",
           ),
+          ...(isTablePath(sku.path)
+            ? {}
+            : {
+                page: z.string().optional().describe(
+                  "Optional page of official texts. Default 1 is the newest 100. Same URL, another $0.05.",
+                ),
+                before: z.string().optional().describe(
+                  "Optional cursor (item id) for the next older page. Same URL, another $0.05.",
+                ),
+              }),
         },
       },
-      async ({ x_payment }) => {
-        const result = await getPaidSku(sku.path, { origin, xPayment: x_payment, catalog });
+      async ({ x_payment, page, before }: { x_payment?: string; page?: string; before?: string }) => {
+        const result = await getPaidSku(sku.path, { origin, xPayment: x_payment, catalog, page, before });
         return {
           content: [{ type: "text" as const, text: formatPaidToolText(result) }],
           isError: result.status >= 500,

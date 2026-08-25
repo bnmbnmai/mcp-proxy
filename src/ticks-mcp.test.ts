@@ -238,7 +238,12 @@ async function main(): Promise<void> {
       assert.ok(!(ticksTool?.description ?? "").includes("Idaho +"));
       assert.ok(!(ticksTool?.description ?? "").includes("PNW barns"));
       assert.ok((ticksTool?.description ?? "").includes("ticks[] + history"));
-      assert.ok((ticksTool?.description ?? "").includes("Entire current cache on one GET"));
+      assert.ok((ticksTool?.description ?? "").includes("entire current table"));
+      assert.ok(!(ticksTool?.description ?? "").includes("entire current cache"));
+      assert.ok(!(ticksTool?.description ?? "").includes("Entire current cache"));
+      const icoTool = listBody.result.tools.find((t) => t.name === "ico-mpn");
+      assert.ok((icoTool?.description ?? "").includes("newest 100 official texts"));
+      assert.ok(!(icoTool?.description ?? "").includes("entire current cache"));
       assert.ok(!(ticksTool?.description ?? "").includes("Not people"));
       assert.ok(!(ticksTool?.description ?? "").includes("Not a new SKU"));
       assert.ok((lettersTool?.description ?? "").includes("letters[].body"));

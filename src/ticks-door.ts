@@ -315,6 +315,7 @@ import {
   paidUntitledLettersBody,
   paidWarningLettersBody,
 } from "./paid-records.js";
+import { EXTRACTED_PAGE_SIZE, isTableSku, pageExtractedPaidBody, parseExtractedPageQuery } from "./paid-page.js";
 import { mergeAmsNationalTicks } from "./ticks-ams.js";
 import {
   GMP_AMOUNT_ATOMIC,
@@ -1239,11 +1240,17 @@ export function skuBuyerDescription(sku: DoorSku, bag?: SkuBag): string {
   const count = resolved?.countLabel ?? "live count on GET /";
   const paid = resolved?.paidJson ?? skuPaidJson(sku);
   const ended = product.endsWith(".") ? product : `${product}.`;
-  return `${ended} Entire current cache on one GET (${count}). Paid JSON is ${paid}. $0.05.`;
+  if (isTableSku(sku)) {
+    return `${ended} One $0.05 GET returns the entire current table (${count}). Paid JSON is ${paid}.`;
+  }
+  return `${ended} One $0.05 GET returns the newest 100 official texts. Older pages are another $0.05 on the same URL (page/before). Free manifest lists the full catalog (${count}). Paid JSON is ${paid}.`;
 }
 
 export function skuOpenApiSummary(sku: DoorSku, bag: SkuBag): string {
-  return `${bag.oneLine} — entire current cache on one GET (${bag.countLabel})`;
+  if (isTableSku(sku)) {
+    return `${bag.oneLine} — entire current table on one GET (${bag.countLabel})`;
+  }
+  return `${bag.oneLine} — newest 100 official texts per $0.05 GET (${bag.countLabel} in catalog)`;
 }
 
 export function skuOpenApiDescription(sku: DoorSku, bag: SkuBag): string {
@@ -1261,6 +1268,7 @@ function shopProductCard(sku: DoorSku, bag: SkuBag): Record<string, unknown> {
     manifest: SHOP_MANIFEST_PATH[sku],
     description: skuBuyerDescription(sku, bag),
     count: bag.count,
+    ...(isTableSku(sku) ? {} : { pageSize: EXTRACTED_PAGE_SIZE }),
     ...(bag.firms !== undefined ? { firms: bag.firms } : {}),
   };
 }
@@ -2191,7 +2199,7 @@ export function bazaarExtension(sku: DoorSku): Record<string, unknown> {
       input: {
         type: "http",
         method: "GET",
-        queryParams: {},
+        queryParams: isTableSku(sku) ? {} : { page: "1" },
       },
       output: {
         type: "json",
@@ -3130,9 +3138,7 @@ export async function llmsTxt(): Promise<string> {
   const paid = publicBazaarSkus().map((sku) => {
     const bag = bags.get(sku) ?? bagFromManifest(sku, {});
     const price = usdcDisplayFromAtomic(amountAtomicFor(sku)) ?? "$0.05";
-    const product = SKU_COPY[sku].description.trim();
-    const ended = product.endsWith(".") ? product : `${product}.`;
-    return `- GET ${SKU_COPY[sku].resourcePath} — ${price} — ${ended} Entire current cache on one GET (${bag.countLabel}). Paid JSON is ${bag.paidJson}.`;
+    return `- GET ${SKU_COPY[sku].resourcePath} — ${price} — ${skuBuyerDescription(sku, bag)}`;
   });
   const free = [
     `- GET /openapi.json — OpenAPI 3.1 with x-payment-info for the ${paidCountWord()} paid doors`,
@@ -3187,7 +3193,7 @@ export async function llmsTxt(): Promise<string> {
     "",
     ...paid,
     "",
-    "Unpaid GET returns HTTP 402 with PAYMENT-REQUIRED and extensions.bazaar. After a valid X-PAYMENT, the same URL returns JSON. No API key. No request body.",
+    "Unpaid GET returns HTTP 402 with PAYMENT-REQUIRED and extensions.bazaar. After a valid X-PAYMENT, the same URL returns JSON. Table doors (/ticks, /import-alerts): one $0.05 GET is the entire current table. Extracted-body doors: one $0.05 GET is the newest 100 official texts; older pages are another $0.05 on the same URL (page/before). No API key. No request body.",
     "",
     "## Free discovery",
     "",
@@ -3240,7 +3246,7 @@ export async function wellKnownX402(req: IncomingMessage, port: number): Promise
     ownershipProofs: [PAY_TO],
     ...shopDiscoveryPointers(req, port),
     instructions:
-      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Each paid GET returns the entire current cache (bag size + count on GET /). Pay USDC on Base. Free OpenAPI is at /openapi.json. MCP is at /mcp (same ${paidCountWord()} paid GETs). Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
+      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Table doors (/ticks, /import-alerts): one $0.05 GET is the entire current table. Extracted-body doors: one $0.05 GET is the newest 100 official texts; older pages are another $0.05 on the same URL (page/before). Free manifests list the full catalog. Pay USDC on Base. Free OpenAPI is at /openapi.json. MCP is at /mcp (same ${paidCountWord()} paid GETs). Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
   };
 }
 
@@ -3262,7 +3268,24 @@ function paidOpenApiOp(opts: {
     description: opts.description ?? skuOpenApiDescription(opts.sku, bag),
     tags: ["paid"],
     security: [{ x402: [] }],
-    parameters: [],
+    parameters: isTableSku(opts.sku)
+      ? []
+      : [
+          {
+            name: "page",
+            in: "query",
+            required: false,
+            schema: { type: "integer", minimum: 1, default: 1 },
+            description: "Page of official texts. Default 1 is the newest 100. Each page is another $0.05 on this same URL.",
+          },
+          {
+            name: "before",
+            in: "query",
+            required: false,
+            schema: { type: "string" },
+            description: "Cursor (item id) for the next older page. Same URL, another $0.05.",
+          },
+        ],
     "x-auth": { mode: "x402" },
     "x-payment-info": {
       protocols: [
@@ -3292,7 +3315,9 @@ function paidOpenApiOp(opts: {
         },
       },
       "402": {
-        description: `Payment Required — entire current cache on one GET (${bag.countLabel}). x402 challenge in PAYMENT-REQUIRED and JSON body`,
+        description: isTableSku(opts.sku)
+          ? `Payment Required — entire current table on one GET (${bag.countLabel}). x402 challenge in PAYMENT-REQUIRED and JSON body`
+          : `Payment Required — newest 100 official texts per GET (${bag.countLabel} in catalog). Older pages are another $0.05 on this same URL (page/before). x402 challenge in PAYMENT-REQUIRED and JSON body`,
       },
     },
   };
@@ -3427,7 +3452,7 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       description: "Official public data as JSON. Unpaid paid routes return HTTP 402.",
       contact: { name: "BNM Data Shop", url: "https://bnm.farm/" },
       "x-guidance":
-        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. Each paid GET returns the entire current cache (bag size on GET /). Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. MCP at GET/POST /mcp lists one tool per paid GET. Free manifests do not include the paid body. No request body. ${noNextSkuWord()}`,
+        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. Table doors (/ticks, /import-alerts): one $0.05 GET is the entire current table. Extracted-body doors: one $0.05 GET is the newest 100 official texts; older pages are another $0.05 on the same URL (page/before). Free manifests list the full catalog. Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. MCP at GET/POST /mcp lists one tool per paid GET. No request body. ${noNextSkuWord()}`,
     },
     "x-discovery": {
       ownershipProofs: [PAY_TO],
@@ -4401,7 +4426,7 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       "/": {
         get: freeOpenApiOp(
           "Shop discovery JSON",
-          `payTo, network, and the ${paidCountWord()} public products. Each product has a one-line description plus count (live bag size).`,
+          `payTo, network, and the ${paidCountWord()} public products. Each product has a one-line description plus catalog count. Table doors return the entire current table. Extracted-body doors return the newest 100 official texts per GET.`,
         ),
       },
     },
@@ -4432,13 +4457,20 @@ async function servePaid(
   const body402 = paymentRequiredBody(resource, sku);
   const v2 = paymentRequiredV2(resource, sku);
   const paymentRequiredHeader = Buffer.from(JSON.stringify(v2), "utf-8").toString("base64");
+  const pageQuery = parseExtractedPageQuery(new URL(req.url || copy.resourcePath, resource));
 
   if (!payment) {
     sendJson(res, 402, body402, { "PAYMENT-REQUIRED": paymentRequiredHeader });
     return;
   }
 
-  const serve = async () => sendJson(res, 200, await load());
+  const serve = async () => {
+    const raw = await load();
+    const body = !isTableSku(sku) && raw && typeof raw === "object"
+      ? pageExtractedPaidBody(raw as Record<string, unknown>, pageQuery)
+      : raw;
+    sendJson(res, 200, body);
+  };
 
   if (skipSettle()) {
     await serve();

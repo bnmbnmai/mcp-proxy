@@ -558,7 +558,7 @@ export function buildMarinersManifest(
     product: spec.productId,
     name: spec.productName,
     free: true,
-    note: `Count + official source + schema only. Notice text is the paid GET ${spec.path} body.`,
+    note: `Count + official source + schema only. This free manifest lists the full catalog. One $0.05 GET returns the newest 100 official texts; older pages are another $0.05 on the same URL (page/before).`,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
     network: "base",
     asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",

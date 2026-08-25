@@ -799,7 +799,7 @@ export function buildNcuaOrdersManifest(snap: NcuaOrdersSnapshot | null): Record
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + credit union + docket + date + official HTML URL only. Order body is the paid GET /ncua-orders payload.",
+    note: "Count + credit union + docket + date + official HTML URL only. Order body is the paid GET /ncua-orders payload. This free manifest lists the full catalog. One $0.05 GET returns the newest 100 official texts; older pages are another $0.05 on the same URL (page/before).",
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

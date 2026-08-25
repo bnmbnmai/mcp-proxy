@@ -37,6 +37,7 @@ build/ico-mpn.*
 build/cma-ca98.*
 build/ticks-ams.*
 build/paid-records.*
+build/paid-page.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
