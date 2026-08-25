@@ -89,7 +89,7 @@ const HTTP_UA =
 
 const OFFICIAL_HOSTS = new Set(["www.accessdata.fda.gov", "accessdata.fda.gov"]);
 const PEOPLE_ONLY =
-  /\b(curriculum vitae|cv of|date of birth|home address|passport number|social security|private email)\b/i;
+  /\b(curriculum vitae|cv(?: of)?|date of birth|home address|passport number|social security|private email)\b/i;
 const MIN_BODY_CHARS = 800;
 
 /** Official Drugs@FDA Integrated Review PDFs (TOC `integratedR: 1`). Newest first. */
