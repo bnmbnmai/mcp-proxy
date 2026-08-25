@@ -212,21 +212,22 @@ async function main(): Promise<void> {
     next: { before: string } | null;
   };
   assert.equal(first.returnedCount, EXTRACTED_PAGE_SIZE);
+  assert.equal(EXTRACTED_PAGE_SIZE, 10);
   assert.equal(first.catalogCount, 105);
-  assert.equal(first.cards.length, 100);
-  assert.equal(first.records.length, 100);
+  assert.equal(first.cards.length, 10);
+  assert.equal(first.records.length, 10);
   assert.ok(first.next?.before);
   const older = pageExtractedPaidBody(pageFx, { page: 2, before: first.next!.before }) as typeof pageFx & {
     returnedCount: number;
     next: { before: string } | null;
   };
-  assert.equal(older.returnedCount, 5);
-  assert.equal(older.next, null);
+  assert.equal(older.returnedCount, 10);
+  assert.ok(older.next?.before);
   const indexed = annotateIndexRows(pageFx.cards);
   assert.equal(indexed[0]?.page, 1);
   assert.equal(indexed[0]?.before, null);
-  assert.equal(indexed[100]?.page, 2);
-  assert.equal(indexed[100]?.before, indexed[99]?.id);
+  assert.equal(indexed[10]?.page, 2);
+  assert.equal(indexed[10]?.before, indexed[9]?.id);
   const hits = filterIndexRows(indexed, "card-105");
   assert.equal(hits.length, 1);
   assert.equal(hits[0]?.page, indexed.find((row) => row.id === "card-105")?.page);
@@ -380,14 +381,16 @@ async function main(): Promise<void> {
     assert.ok(wk.llmsTxt?.endsWith(LLMS_PATH));
     assert.ok((wk.instructions ?? "").includes("twenty-nine paid"));
     assert.ok((wk.instructions ?? "").includes("entire current table"));
-    assert.ok((wk.instructions ?? "").includes("newest 100 official texts"));
+    assert.ok((wk.instructions ?? "").includes("newest 10 official texts"));
+    assert.ok((wk.instructions ?? "").includes("whole current set"));
     assert.ok((wk.instructions ?? "").includes("?q="));
     assert.ok((wk.instructions ?? "").includes("id to buy"));
     assert.ok((wk.instructions ?? "").includes("$0.02"));
     assert.ok((wk.instructions ?? "").includes("$0.05"));
     assert.ok((wk.instructions ?? "").includes("?id="));
-    assert.ok((wk.instructions ?? "").includes("not the entire archive"));
     assert.ok(!(wk.instructions ?? "").includes("entire current cache"));
+    assert.ok(!(wk.instructions ?? "").includes("newest 100"));
+    assert.ok(!(wk.instructions ?? "").includes("page of 100"));
     assert.ok(!(wk.instructions ?? "").includes("3,550"));
     assert.ok(!(wk.instructions ?? "").includes("3550 SKU"));
     assert.ok(!wk.resources.some((r) => r.includes("/gain")));
@@ -450,7 +453,7 @@ async function main(): Promise<void> {
       "x-payment-info"?: { price?: { amount?: string }; idPrice?: { amount?: string }; idAmountAtomic?: string };
     } | undefined;
     assert.ok((icoOp?.description ?? "").includes("Official UK ICO Monetary Penalty Notice"));
-    assert.ok((icoOp?.description ?? "").includes("newest 100 official texts"));
+    assert.ok((icoOp?.description ?? "").includes("newest 10 official texts"));
     assert.ok((icoOp?.description ?? "").includes("id to buy"));
     assert.ok((icoOp?.description ?? "").includes("?id="));
     assert.ok((icoOp?.description ?? "").includes("$0.02"));
@@ -618,11 +621,11 @@ async function main(): Promise<void> {
     assert.ok(!llmsBody.includes("GET /ticks — $0.02"));
     assert.ok(llmsBody.includes("GET /ico-mpn — $0.02 / $0.05"));
     assert.ok(llmsBody.includes("entire current table"));
-    assert.ok(llmsBody.includes("newest 100 official texts"));
+    assert.ok(llmsBody.includes("newest 10 official texts"));
+    assert.ok(llmsBody.includes("whole current set"));
     assert.ok(llmsBody.includes("id to buy"));
     assert.ok(llmsBody.includes("?id="));
     assert.ok(llmsBody.includes("?q="));
-    assert.ok(llmsBody.includes("not the entire archive"));
     assert.ok(!llmsBody.includes("entire current cache"));
     assert.ok(!llmsBody.includes("Entire current cache"));
     assert.ok(llmsBody.includes("Paid JSON is ticks[] + history"));
@@ -690,16 +693,16 @@ async function main(): Promise<void> {
       const table = product.path === TICKS_PATH || product.path === IMPORT_ALERTS_PATH;
       if (table) {
         assert.ok(product.description?.includes("entire current table"), `${product.path} shop description must name the table bag`);
-        assert.ok(!product.description?.includes("newest 100"), `${product.path} is a table door`);
+        assert.ok(!product.description?.includes("newest 10"), `${product.path} is a table door`);
         assert.equal(product.search, undefined, `${product.path} table door has no page search`);
         assert.equal(product.idPriceUsdc, undefined, `${product.path} table door has one bag`);
       } else {
-        assert.ok(product.description?.includes("newest 100 official texts"), `${product.path} shop description must name the extracted bag`);
+        assert.ok(product.description?.includes("newest 10 official texts"), `${product.path} shop description must name the extracted bag`);
+        assert.ok(product.description?.includes("whole current set"), `${product.path} shop description must name the thin-door bag`);
         assert.ok(product.description?.includes("?q="), `${product.path} shop description must name free index search`);
         assert.ok(product.description?.includes("id to buy"), `${product.path} shop description must name the id to buy`);
         assert.ok(product.description?.includes("?id="), `${product.path} shop description must name the $0.02 id bag`);
         assert.ok(product.description?.includes("$0.02"), `${product.path} shop description must name the id price`);
-        assert.ok(product.description?.includes("not the entire archive"), `${product.path} must not sell the default GET as the archive`);
         assert.ok(product.description?.includes("page/before"), `${product.path} shop description must name the cursor`);
         assert.ok((product.search ?? "").includes("?q="), `${product.path} shop card must name free search`);
         assert.equal(product.idPriceUsdc, "0.02", `${product.path} shop card must show the $0.02 id bag`);
@@ -720,7 +723,7 @@ async function main(): Promise<void> {
     assert.equal(shop.llmsTxt, LLMS_PATH);
     const ticksMan = (await (await fetch(`${base}${MANIFEST_PATH}`)).json()) as { note?: string };
     assert.ok((ticksMan.note ?? "").includes("entire current table"), "ticks manifest note must name the table bag");
-    assert.ok(!(ticksMan.note ?? "").includes("newest 100"), "ticks is a table door");
+    assert.ok(!(ticksMan.note ?? "").includes("newest 10"), "ticks is a table door");
     assert.ok(!(ticksMan.note ?? "").includes("entire current cache"));
     for (const shopIndexPath of ["SHOP-INDEX.md", "docs/SHOP-INDEX.md"]) {
       const shopIndex = readFileSync(join(process.cwd(), shopIndexPath), "utf8");
@@ -729,10 +732,10 @@ async function main(): Promise<void> {
       const iaRow = shopIndex.split("\n").find((line) => line.startsWith("| `/import-alerts` |"));
       const icoRow = shopIndex.split("\n").find((line) => line.startsWith("| `/ico-mpn` |"));
       assert.ok(ticksRow?.includes("entire current table"), `${shopIndexPath} /ticks row is a table door`);
-      assert.ok(!ticksRow?.includes("Newest 100"), `${shopIndexPath} /ticks row must not claim newest 100`);
+      assert.ok(!ticksRow?.includes("Newest 10"), `${shopIndexPath} /ticks row must not claim newest 10`);
       assert.ok(iaRow?.includes("entire current table"), `${shopIndexPath} /import-alerts row is a table door`);
-      assert.ok(!iaRow?.includes("Newest 100"), `${shopIndexPath} /import-alerts row must not claim newest 100`);
-      assert.ok(icoRow?.includes("newest 100 official texts"), `${shopIndexPath} /ico-mpn row is extracted-body`);
+      assert.ok(!iaRow?.includes("Newest 10"), `${shopIndexPath} /import-alerts row must not claim newest 10`);
+      assert.ok(icoRow?.includes("newest 10"), `${shopIndexPath} /ico-mpn row is extracted-body`);
       assert.ok(icoRow?.includes("?q="), `${shopIndexPath} /ico-mpn row must name free index search`);
       assert.ok(icoRow?.includes("id to buy"), `${shopIndexPath} /ico-mpn row must name the id to buy`);
       assert.ok(icoRow?.includes("$0.02"), `${shopIndexPath} /ico-mpn row must name the id price`);
@@ -1076,7 +1079,7 @@ async function main(): Promise<void> {
       };
       assert.equal(man.free, true);
       assert.ok(((man as { note?: string }).note ?? "").includes("entire current table"));
-      assert.ok(!((man as { note?: string }).note ?? "").includes("newest 100"));
+      assert.ok(!((man as { note?: string }).note ?? "").includes("newest 10"));
       assert.ok(man.catalog.length >= 1);
       assert.ok(man.samples.every((s) => s.sample === true));
       assert.ok(man.samples.length <= 2);
@@ -1189,7 +1192,7 @@ async function main(): Promise<void> {
         sources?: { pdfUrl?: string };
       };
       assert.equal(man.free, true);
-      assert.ok(((man as { note?: string }).note ?? "").includes("newest 100 official texts"));
+      assert.ok(((man as { note?: string }).note ?? "").includes("newest 10 official texts"));
       assert.ok(((man as { note?: string }).note ?? "").includes("page/before"));
       assert.ok(((man as { note?: string }).note ?? "").includes("?q="));
       assert.ok(((man as { note?: string }).note ?? "").includes("id to buy"));
@@ -4123,11 +4126,12 @@ async function main(): Promise<void> {
       assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
       const ico402 = body402.accepts[0]?.description ?? "";
       assert.ok(ico402.includes("Official UK ICO Monetary Penalty Notice"));
-      assert.ok(ico402.includes("newest 100 official texts"));
+      assert.ok(ico402.includes("newest 10 official texts"));
       assert.ok(ico402.includes("?q="));
       assert.ok(ico402.includes("id to buy"));
       assert.ok(ico402.includes("?id="));
-      assert.ok(ico402.includes("not the entire archive"));
+      assert.ok(ico402.includes("newest 10 official texts"));
+      assert.ok(ico402.includes("whole current set"));
       assert.ok(!ico402.includes("entire current cache"));
       assert.ok(ico402.includes("cards[].body"));
       assert.ok(ico402.includes("$0.05"));
@@ -4170,11 +4174,12 @@ async function main(): Promise<void> {
       };
       const icoOpen = icoSpec.paths[ICO_MPN_PATH]?.get?.description ?? "";
       assert.ok(icoOpen.includes("Official UK ICO Monetary Penalty Notice"));
-      assert.ok(icoOpen.includes("newest 100 official texts"));
+      assert.ok(icoOpen.includes("newest 10 official texts"));
       assert.ok(icoOpen.includes("?q="));
       assert.ok(icoOpen.includes("id to buy"));
       assert.ok(icoOpen.includes("$0.02"));
-      assert.ok(icoOpen.includes("not the entire archive"));
+      assert.ok(icoOpen.includes("newest 10 official texts"));
+      assert.ok(icoOpen.includes("whole current set"));
       assert.ok(!icoOpen.includes("entire current cache"));
       assert.ok(icoOpen.includes("cards[].body"));
       assert.ok(!/Not people/i.test(icoOpen), "openapi /ico-mpn is the product only");
@@ -4208,7 +4213,7 @@ async function main(): Promise<void> {
         note?: string;
       };
       assert.equal(man.cardCount, 1);
-      assert.ok((man.note ?? "").includes("newest 100 official texts"));
+      assert.ok((man.note ?? "").includes("newest 10 official texts"));
       assert.ok((man.note ?? "").includes("page/before"));
       assert.ok((man.note ?? "").includes("?q="));
       assert.ok((man.note ?? "").includes("id to buy"));
@@ -4788,13 +4793,15 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.endsWith(CFTC_ORDERS_PATH)));
       assert.ok((wk.instructions ?? "").includes("thirty-two paid"));
     assert.ok((wk.instructions ?? "").includes("entire current table"));
-    assert.ok((wk.instructions ?? "").includes("newest 100 official texts"));
+    assert.ok((wk.instructions ?? "").includes("newest 10 official texts"));
     assert.ok((wk.instructions ?? "").includes("?q="));
     assert.ok((wk.instructions ?? "").includes("id to buy"));
     assert.ok((wk.instructions ?? "").includes("$0.02"));
     assert.ok((wk.instructions ?? "").includes("?id="));
-    assert.ok((wk.instructions ?? "").includes("not the entire archive"));
+    assert.ok((wk.instructions ?? "").includes("newest 10 official texts"));
+    assert.ok((wk.instructions ?? "").includes("whole current set"));
     assert.ok(!(wk.instructions ?? "").includes("entire current cache"));
+    assert.ok(!(wk.instructions ?? "").includes("newest 100"));
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
         paths: Record<string, { get?: { "x-payment-info"?: { price?: { amount?: string } } } }>;

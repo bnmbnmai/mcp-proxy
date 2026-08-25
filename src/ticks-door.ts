@@ -1248,7 +1248,7 @@ export function peekSkuBag(sku: DoorSku): SkuBag | undefined {
 }
 
 function extractedBuyerBag(): string {
-  return "Find a record on the free index (?q=). Each index row names the id to buy. GET ?id= is one official text for $0.02. Default GET / page of up to 100 official texts is $0.05 (newest 100 official texts, not the entire archive). Older pages are another $0.05 on the same URL (page/before).";
+  return "Find a record on the free index (?q=). Each index row names the id to buy. GET ?id= is one official text for $0.02. Default GET is the newest 10 official texts for $0.05. If the catalog has fewer than 10, that $0.05 GET is the whole current set. Older pages are another $0.05 on the same URL (page/before).";
 }
 
 export function skuBuyerDescription(sku: DoorSku, bag?: SkuBag): string {
@@ -1267,7 +1267,7 @@ export function skuOpenApiSummary(sku: DoorSku, bag: SkuBag): string {
   if (isTableSku(sku)) {
     return `${bag.oneLine} — entire current table on one GET (${bag.countLabel})`;
   }
-  return `${bag.oneLine} — ?id= one official text $0.02; default/page of up to 100 $0.05 (${bag.countLabel} in catalog)`;
+  return `${bag.oneLine} — ?id= one official text $0.02; default/newest 10 $0.05 (whole current set if n<10) (${bag.countLabel} in catalog)`;
 }
 
 export function skuOpenApiDescription(sku: DoorSku, bag: SkuBag): string {
@@ -3239,7 +3239,7 @@ export async function llmsTxt(): Promise<string> {
     "",
     ...paid,
     "",
-    "Unpaid GET returns HTTP 402 with PAYMENT-REQUIRED and extensions.bazaar. After a valid X-PAYMENT, the same URL returns JSON. Table doors (/ticks, /import-alerts): one $0.05 GET is the entire current table. Extracted-body doors: find a record on the free index (?q=); each row names the id to buy. GET ?id= is one official text for $0.02. Default GET / page of up to 100 official texts is $0.05 (newest 100 official texts, not the entire archive). Older pages are another $0.05 on the same URL. No API key. No request body.",
+    "Unpaid GET returns HTTP 402 with PAYMENT-REQUIRED and extensions.bazaar. After a valid X-PAYMENT, the same URL returns JSON. Table doors (/ticks, /import-alerts): one $0.05 GET is the entire current table. Extracted-body doors: find a record on the free index (?q=); each row names the id to buy. GET ?id= is one official text for $0.02. Default GET is the newest 10 official texts for $0.05. If the catalog has fewer than 10, that $0.05 GET is the whole current set. Older pages are another $0.05 on the same URL. No API key. No request body.",
     "",
     "## Free discovery",
     "",
@@ -3251,7 +3251,7 @@ export async function llmsTxt(): Promise<string> {
     "",
     `- URL — https://ticks.bnm.farm${MCP_PATH}`,
     "- Connect — `npx -y mcp-remote https://ticks.bnm.farm/mcp`",
-    `- Free search tool \`search\` — GET {manifest}?q= on an extracted-body door. Each hit names the id to buy. Then pay GET ?id= ($0.02) or the default/page bag ($0.05). Table doors have no page: one paid GET is the entire current table. Tools are generated at request time from /.well-known/x402; later SKUs appear without an MCP rewrite. Same ${paidCountWord()} paid URLs today. Unpaid tool calls still HTTP 402. Not Bazaar-indexed.`,
+    `- Free search tool \`search\` — GET {manifest}?q= on an extracted-body door. Each hit names the id to buy. Then pay GET ?id= ($0.02) or the default/newest-10 bag ($0.05; whole current set if n<10). Table doors have no page: one paid GET is the entire current table. Tools are generated at request time from /.well-known/x402; later SKUs appear without an MCP rewrite. Same ${paidCountWord()} paid URLs today. Unpaid tool calls still HTTP 402. Not Bazaar-indexed.`,
     "",
     "## Agent catalogs",
     "",
@@ -3292,7 +3292,7 @@ export async function wellKnownX402(req: IncomingMessage, port: number): Promise
     ownershipProofs: [PAY_TO],
     ...shopDiscoveryPointers(req, port),
     instructions:
-      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Table doors (/ticks, /import-alerts): one $0.05 GET is the entire current table. Extracted-body doors: find a record on the free index (?q=); each row names the id to buy. GET ?id= is one official text for $0.02. Default GET / page of up to 100 official texts is $0.05 (newest 100 official texts, not the entire archive). Older pages are another $0.05 on the same URL. Pay USDC on Base. Free OpenAPI is at /openapi.json. MCP is at /mcp (free search tool plus the ${paidCountWord()} paid GETs). Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
+      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Table doors (/ticks, /import-alerts): one $0.05 GET is the entire current table. Extracted-body doors: find a record on the free index (?q=); each row names the id to buy. GET ?id= is one official text for $0.02. Default GET is the newest 10 official texts for $0.05. If the catalog has fewer than 10, that $0.05 GET is the whole current set. Older pages are another $0.05 on the same URL. Pay USDC on Base. Free OpenAPI is at /openapi.json. MCP is at /mcp (free search tool plus the ${paidCountWord()} paid GETs). Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
   };
 }
 
@@ -3329,7 +3329,7 @@ function paidOpenApiOp(opts: {
             in: "query",
             required: false,
             schema: { type: "integer", minimum: 1, default: 1 },
-            description: "Page of official texts. Default 1 is up to 100 newest official texts for $0.05, not the entire archive. Each page is another $0.05 on this same URL.",
+            description: "Page of official texts. Default 1 is the newest 10 official texts for $0.05. If the catalog has fewer than 10, that $0.05 GET is the whole current set. Each page is another $0.05 on this same URL.",
           },
           {
             name: "before",
@@ -3376,7 +3376,7 @@ function paidOpenApiOp(opts: {
       "402": {
         description: isTableSku(opts.sku)
           ? `Payment Required — entire current table on one GET (${bag.countLabel}). x402 challenge in PAYMENT-REQUIRED and JSON body`
-          : `Payment Required — two bags on this URL. GET ?id= is one official text for $0.02. Default GET / page of up to 100 is $0.05 (newest 100 official texts, not the entire archive). Find the id on the free index (?q=). Older pages are another $0.05 on this same URL (page/before). Catalog: ${bag.countLabel}. x402 challenge in PAYMENT-REQUIRED and JSON body`,
+          : `Payment Required — two bags on this URL. GET ?id= is one official text for $0.02. Default GET is the newest 10 official texts for $0.05 (whole current set if n<10). Find the id on the free index (?q=). Older pages are another $0.05 on this same URL (page/before). Catalog: ${bag.countLabel}. x402 challenge in PAYMENT-REQUIRED and JSON body`,
       },
     },
   };
@@ -3386,7 +3386,7 @@ function freeOpenApiOp(summary: string, description: string, extractedIndex = fa
   return {
     summary,
     description: extractedIndex
-      ? `${description} Find a record with ?q=. Each row names the id to buy. GET ?id= is $0.02; default/page of up to 100 is $0.05. Does not return official bodies.`
+      ? `${description} Find a record with ?q=. Each row names the id to buy. GET ?id= is $0.02; default GET is the newest 10 for $0.05 (whole current set if n<10). Does not return official bodies.`
       : description,
     tags: ["free"],
     security: [],
@@ -3407,7 +3407,7 @@ function freeOpenApiOp(summary: string, description: string, extractedIndex = fa
     responses: {
       "200": {
         description: extractedIndex
-          ? "Free JSON index. ?q= filters rows. Each row names the id to buy (?id= = $0.02; page of up to 100 = $0.05)."
+          ? "Free JSON index. ?q= filters rows. Each row names the id to buy (?id= = $0.02; newest 10 = $0.05, or the whole current set if n<10)."
           : "Free JSON catalog / discovery document",
         content: { "application/json": { schema: { type: "object" } } },
       },
@@ -3528,7 +3528,7 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       description: "Official public data as JSON. Unpaid paid routes return HTTP 402.",
       contact: { name: "BNM Data Shop", url: "https://bnm.farm/" },
       "x-guidance":
-        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. Table doors (/ticks, /import-alerts): one $0.05 GET is the entire current table. Extracted-body doors: find a record on the free index (?q=); each row names the id to buy. GET ?id= is one official text for $0.02. Default GET / page of up to 100 official texts is $0.05 (newest 100 official texts, not the entire archive). Older pages are another $0.05 on the same URL. Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. MCP at GET/POST /mcp has a free search tool plus one paid GET per door. No request body. ${noNextSkuWord()}`,
+        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. Table doors (/ticks, /import-alerts): one $0.05 GET is the entire current table. Extracted-body doors: find a record on the free index (?q=); each row names the id to buy. GET ?id= is one official text for $0.02. Default GET is the newest 10 official texts for $0.05. If the catalog has fewer than 10, that $0.05 GET is the whole current set. Older pages are another $0.05 on the same URL. Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. MCP at GET/POST /mcp has a free search tool plus one paid GET per door. No request body. ${noNextSkuWord()}`,
     },
     "x-discovery": {
       ownershipProofs: [PAY_TO],
@@ -4522,13 +4522,13 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
         ),
         post: freeOpenApiOp(
           "MCP JSON-RPC",
-          `initialize / tools/list / tools/call. Free search tool finds a record on the index (?q=) and names the id to buy. Paid tools GET ?id= ($0.02) or the default/page bag ($0.05). Table doors return the entire current table. Unpaid paid tools still HTTP 402.`,
+          `initialize / tools/list / tools/call. Free search tool finds a record on the index (?q=) and names the id to buy. Paid tools GET ?id= ($0.02) or the default/newest-10 bag ($0.05; whole current set if n<10). Table doors return the entire current table. Unpaid paid tools still HTTP 402.`,
         ),
       },
       "/": {
         get: freeOpenApiOp(
           "Shop discovery JSON",
-          `payTo, network, and the ${paidCountWord()} public products. Each product has a one-line description plus catalog count. Table doors return the entire current table. Extracted-body doors: find on free index (?q=), then buy ?id= for $0.02 or the default/page of up to 100 for $0.05.`,
+          `payTo, network, and the ${paidCountWord()} public products. Each product has a one-line description plus catalog count. Table doors return the entire current table. Extracted-body doors: find on free index (?q=), then buy ?id= for $0.02 or the default/newest 10 for $0.05 (whole current set if n<10).`,
         ),
       },
     },
@@ -4639,7 +4639,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
       wellKnown: WELL_KNOWN_PATH,
       llmsTxt: LLMS_PATH,
       mcp: MCP_PATH,
-      search: "Extracted-body doors: GET {manifest}?q=. Each hit names the id to buy. GET ?id= is one official text for $0.02. Default GET / page of up to 100 is $0.05. Table doors have no page — one paid GET is the entire current table.",
+      search: "Extracted-body doors: GET {manifest}?q=. Each hit names the id to buy. GET ?id= is one official text for $0.02. Default GET is the newest 10 official texts for $0.05 (whole current set if n<10). Table doors have no page — one paid GET is the entire current table.",
       products: publicBazaarSkus().map((sku) => shopProductCard(sku, bags.get(sku) ?? bagFromManifest(sku, {}))),
     });
     return;

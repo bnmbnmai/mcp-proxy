@@ -1,13 +1,13 @@
 /**
  * Free extracted-body index. Agents find a record with ?q=. Each hit names
- * the id to buy (?id= = $0.02). Default / page of up to 100 is $0.05.
+ * the id to buy (?id= = $0.02). Default GET is the newest 10 official texts for $0.05.
  * Does not return official bodies. Does not change collect.
  */
 
 import { EXTRACTED_PAGE_SIZE, rowId, sortNewest } from "./paid-page.js";
 
 export const FREE_INDEX_NOTE =
-  "Find a record with ?q=. Each index row names the id to buy. GET ?id= is one official text for $0.02. Default GET / page of up to 100 official texts is $0.05 (newest 100 official texts, not the entire archive). Older pages are another $0.05 on the same URL (page/before).";
+  "Find a record with ?q=. Each index row names the id to buy. GET ?id= is one official text for $0.02. Default GET is the newest 10 official texts for $0.05. If the catalog has fewer than 10, that $0.05 GET is the whole current set. Older pages are another $0.05 on the same URL (page/before).";
 
 const SKIP_SEARCH = new Set(["body", "text", "page", "before", "note"]);
 

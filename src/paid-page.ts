@@ -1,11 +1,11 @@
 /**
  * Paid bag sizes. Table doors return the whole table. Extracted-body doors
  * have two bags on the same URL: ?id= one official text ($0.02) or default /
- * page of up to 100 ($0.05). Older pages are another $0.05 via page/before.
+ * newest 10 ($0.05; whole current set if n<10). Older pages are another $0.05 via page/before.
  * Does not change collect.
  */
 
-export const EXTRACTED_PAGE_SIZE = 100;
+export const EXTRACTED_PAGE_SIZE = 10;
 export const EXTRACTED_ID_AMOUNT_ATOMIC = "20000";
 
 export type TableSku = "ticks" | "import-alerts";

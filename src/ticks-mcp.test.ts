@@ -205,12 +205,12 @@ async function main(): Promise<void> {
       };
       assert.equal(card.source, WELL_KNOWN_PATH);
       assert.ok((card.note ?? "").includes("entire current table"));
-      assert.ok((card.note ?? "").includes("newest 100 official texts"));
+      assert.ok((card.note ?? "").includes("newest 10 official texts"));
       assert.ok((card.note ?? "").includes("q="));
       assert.ok((card.note ?? "").includes("id to buy"));
       assert.ok((card.note ?? "").includes("$0.02"));
       assert.ok((card.note ?? "").includes("$0.05"));
-      assert.ok((card.note ?? "").includes("not the entire archive"));
+      assert.ok((card.note ?? "").includes("whole current set"));
       assert.ok(!(card.note ?? "").includes("entire current cache"));
       assert.deepEqual(card.paidGets, localPaths);
       assert.equal(card.tools, localPaths.length + 1);
@@ -231,10 +231,10 @@ async function main(): Promise<void> {
       assert.ok(initBody.result?.instructions?.includes(WELL_KNOWN_PATH));
       assert.ok(initBody.result?.instructions?.includes("Free search tool"));
       assert.ok(initBody.result?.instructions?.includes("entire current table"));
-      assert.ok(initBody.result?.instructions?.includes("newest 100 official texts"));
+      assert.ok(initBody.result?.instructions?.includes("newest 10 official texts"));
       assert.ok(initBody.result?.instructions?.includes("id to buy"));
       assert.ok(initBody.result?.instructions?.includes("$0.02"));
-      assert.ok(initBody.result?.instructions?.includes("not the entire archive"));
+      assert.ok(initBody.result?.instructions?.includes("whole current set"));
       assert.ok(!(initBody.result?.instructions ?? "").includes("entire current cache"));
 
       const list = await fetch(`${base}${MCP_PATH}`, {
@@ -262,13 +262,13 @@ async function main(): Promise<void> {
       assert.ok(!(ticksTool?.description ?? "").includes("entire current cache"));
       assert.ok(!(ticksTool?.description ?? "").includes("Entire current cache"));
       const icoTool = listBody.result.tools.find((t) => t.name === "ico-mpn");
-      assert.ok((icoTool?.description ?? "").includes("newest 100 official texts"));
+      assert.ok((icoTool?.description ?? "").includes("newest 10 official texts"));
       assert.ok((icoTool?.description ?? "").includes("?q="));
       assert.ok((icoTool?.description ?? "").includes("id to buy"));
       assert.ok((icoTool?.description ?? "").includes("?id="));
       assert.ok((icoTool?.description ?? "").includes("$0.02"));
       assert.ok((icoTool?.description ?? "").includes("$0.05"));
-      assert.ok((icoTool?.description ?? "").includes("not the entire archive"));
+      assert.ok((icoTool?.description ?? "").includes("whole current set"));
       assert.equal((icoTool?.description ?? "").split("GET ?id= is one official text for $0.02").length - 1, 1);
       assert.ok(!(icoTool?.description ?? "").includes("entire current cache"));
       const searchTool = listBody.result.tools.find((t) => t.name === "search");
