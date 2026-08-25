@@ -224,12 +224,19 @@ async function main(): Promise<void> {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ jsonrpc: "2.0", id: 2, method: "tools/list" }),
       });
-      const listBody = (await list.json()) as { result: { tools: { name: string; description?: string }[] } };
+      const listBody = (await list.json()) as { result: { tools: { name: string; title?: string; description?: string }[] } };
       assert.deepEqual(listBody.result.tools.map((t) => t.name), livePaidNames(fromLocal));
       assert.ok(listBody.result.tools.some((t) => t.name === "cma-ca98"));
       const ticksTool = listBody.result.tools.find((t) => t.name === "ticks");
       const lettersTool = listBody.result.tools.find((t) => t.name === "warning-letters");
       const cardsTool = listBody.result.tools.find((t) => t.name === "cma-ca98");
+      assert.equal(ticksTool?.name, "ticks");
+      assert.equal(ticksTool?.title, "US hay, cattle, and grain ticks");
+      assert.ok((ticksTool?.description ?? "").includes("US hay, cattle, and grain ticks"));
+      assert.ok(!(ticksTool?.title ?? "").startsWith("Idaho"));
+      assert.ok(!(ticksTool?.title ?? "").startsWith("PNW"));
+      assert.ok(!(ticksTool?.description ?? "").includes("Idaho +"));
+      assert.ok(!(ticksTool?.description ?? "").includes("PNW barns"));
       assert.ok((ticksTool?.description ?? "").includes("ticks[] + history"));
       assert.ok((ticksTool?.description ?? "").includes("Entire current cache on one GET"));
       assert.ok(!(ticksTool?.description ?? "").includes("Not people"));

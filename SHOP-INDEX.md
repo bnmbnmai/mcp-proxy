@@ -24,7 +24,7 @@ Rows match the live well-known resource list. One-line copy plus bag size is wha
 
 | Path | What you get | Paid JSON | Bag | Price | Free manifest |
 | --- | --- | --- | ---: | --- | --- |
-| `/ticks` | Idaho + nationwide USDA AMS hay/cattle/grain ticks (PNW barns, IBC grain, WD1 $/AF). Entire cache on one GET | `ticks[] + history` | 611 ticks | $0.05 | [manifest.json](https://ticks.bnm.farm/manifest.json) |
+| `/ticks` | US hay, cattle, and grain ticks (USDA AMS official prints). Cache also has produce, wool, and WD1 water where those series exist. Entire cache on one GET | `ticks[] + history` | 611 ticks | $0.05 | [manifest.json](https://ticks.bnm.farm/manifest.json) |
 | `/import-alerts` | FDA Import Alerts / DWPE firm-product snapshot. Entire cache on one GET | `ticks[]` | 18904 rows / 6709 firms | $0.05 | [import-alerts/manifest.json](https://ticks.bnm.farm/import-alerts/manifest.json) |
 | `/mariners` | USCG D13 / Northwest Local Notice to Mariners. Entire cache on one GET | `notices[]` | 124 notices | $0.05 | [mariners/manifest.json](https://ticks.bnm.farm/mariners/manifest.json) |
 | `/mariners-d11` | USCG D11 / Southwest Local Notice to Mariners. Entire cache on one GET | `notices[]` | 198 notices | $0.05 | [mariners-d11/manifest.json](https://ticks.bnm.farm/mariners-d11/manifest.json) |

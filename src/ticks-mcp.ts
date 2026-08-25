@@ -243,6 +243,7 @@ export function mcpToolDescriptors(
   catalog: LivePaidSku[],
 ): Array<{
   name: string;
+  title: string;
   description: string;
   inputSchema: {
     type: "object";
@@ -253,6 +254,7 @@ export function mcpToolDescriptors(
   const base = origin.replace(/\/+$/, "") || LIVE_ORIGIN;
   return catalog.map((sku) => ({
     name: sku.name,
+    title: sku.path === "/ticks" ? "US hay, cattle, and grain ticks" : sku.name,
     description:
       `GET ${base}${sku.path} — $${sku.priceUsdc} USDC on Base to ${PAY_TO}. ${sku.summary} ` +
       `Paid JSON is ${sku.paidJson ?? paidJsonForPath(sku.path)}` +
@@ -499,6 +501,7 @@ export async function createTicksMcpServer(origin = ticksOrigin()): Promise<McpS
     server.registerTool(
       sku.name,
       {
+        title: tool.title,
         description: tool.description,
         inputSchema: {
           x_payment: z.string().optional().describe(

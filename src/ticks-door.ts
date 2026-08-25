@@ -2,7 +2,7 @@
 /**
  * Thin x402 pay-per-pull door for the BNM Data Shop.
  *
- * GET /ticks — Idaho hay + feeder ticks ($0.05 USDC on Base)
+ * GET /ticks — US hay, cattle, and grain ticks ($0.05 USDC on Base)
  * GET /import-alerts — FDA Import Alert / DWPE firm ticks ($0.05)
  * GET /import-alerts/manifest.json — free catalog + schema + sample rows
  * GET /mariners — USCG D13 / Northwest Local Notice to Mariners ($0.05)
@@ -349,7 +349,7 @@ export { MCP_PATH } from "./ticks-mcp.js";
 export const X402SCAN_SERVER_URL =
   "https://www.x402scan.com/server/c6f584c5-e494-41d1-aa02-2efb07ac3546";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
-export const PRODUCT_NAME = "Idaho + nationwide USDA AMS hay/cattle/grain";
+export const PRODUCT_NAME = "US hay, cattle, and grain ticks";
 export const PRODUCT_VERSION = "1.4.0";
 const COLLECT_MEMO_RE =
   /we are not inventing|this report has no organic row|not reusing an older organic|usda printed no organic/i;
@@ -859,7 +859,7 @@ function usdcDisplayFromAtomic(atomic: string | null | undefined): string | null
 const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> = {
   ticks: {
     description:
-      "Official USDA AMS Idaho + nationwide hay/cattle/grain ticks (PNW barns, IBC grain, WD1 $/AF). Days between reports are not filled in.",
+      "US hay, cattle, and grain ticks from official USDA AMS prints. The cache also has produce, wool, and WD1 water where those series exist. Days between reports are not filled in.",
     resourcePath: TICKS_PATH,
   },
   "import-alerts": {
@@ -997,7 +997,7 @@ export type SkuBag = {
 };
 
 const SKU_ONE_LINE: Record<DoorSku, string> = {
-  ticks: "Idaho + nationwide USDA AMS hay/cattle/grain ticks (PNW barns, IBC grain, WD1 $/AF)",
+  ticks: "US hay, cattle, and grain ticks (USDA AMS official prints)",
   "import-alerts": "FDA Import Alerts / DWPE firm-product snapshot",
   mariners: "USCG D13 / Northwest Local Notice to Mariners",
   "mariners-d11": "USCG D11 / Southwest Local Notice to Mariners",
@@ -1255,6 +1255,7 @@ function shopProductCard(sku: DoorSku, bag: SkuBag): Record<string, unknown> {
   return {
     path: SKU_COPY[sku].resourcePath,
     product: SHOP_PRODUCT_ID[sku],
+    name: sku === "ticks" ? PRODUCT_NAME : SKU_ONE_LINE[sku],
     priceUsdc: usdcPriceString(amount),
     amountAtomic: amount,
     manifest: SHOP_MANIFEST_PATH[sku],
@@ -3138,7 +3139,7 @@ export async function llmsTxt(): Promise<string> {
     `- GET /.well-known/x402 — absolute URLs of the ${paidCountWord()} paid routes only`,
     `- GET / — shop JSON (payTo + the ${paidCountWord()} products)`,
     `- GET/POST /mcp — Streamable HTTP MCP for the same ${paidCountWord()} paid GETs.`,
-    "- GET /manifest.json — Idaho ticks count + schema",
+    "- GET /manifest.json — US hay, cattle, and grain ticks count + schema",
     "- GET /import-alerts/manifest.json — FDA count + schema (not the firm dump)",
     "- GET /mariners/manifest.json — D13 LNM count + official PDF (not the notice body)",
     "- GET /mariners-d11/manifest.json — D11 LNM count + official PDF (not the notice body)",
@@ -4184,10 +4185,10 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
           }
         : {}),
       [MANIFEST_PATH]: {
-        get: freeOpenApiOp("Idaho ticks free manifest", "Count, schema, and samples. Not the paid snapshot."),
+        get: freeOpenApiOp("US hay, cattle, and grain ticks free manifest", "Count, schema, and samples. Not the paid snapshot."),
       },
       [CATALOG_PATH]: {
-        get: freeOpenApiOp("Idaho ticks free catalog alias", "Same JSON as /manifest.json."),
+        get: freeOpenApiOp("US hay, cattle, and grain ticks free catalog alias", "Same JSON as /manifest.json."),
       },
       [IMPORT_ALERTS_MANIFEST_PATH]: {
         get: freeOpenApiOp("FDA import-alerts free manifest", "Count, catalog, and schema. Not the paid firm list."),

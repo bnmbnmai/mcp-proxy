@@ -243,7 +243,11 @@ async function main(): Promise<void> {
     };
     assert.equal(v2.extensions?.bazaar?.info?.input?.type, "http");
     assert.equal(v2.extensions?.bazaar?.info?.input?.method, "GET");
-    assert.ok((v2.resource?.description ?? "").includes("Official USDA AMS"));
+    assert.ok((v2.resource?.description ?? "").includes("US hay, cattle, and grain ticks"));
+    assert.ok((v2.resource?.description ?? "").includes("USDA AMS"));
+    assert.ok(!(v2.resource?.description ?? "").startsWith("Idaho"));
+    assert.ok(!(v2.resource?.description ?? "").startsWith("PNW"));
+    assert.ok(!(v2.resource?.description ?? "").includes("PNW barns"));
     assert.ok((v2.resource?.description ?? "").includes("entire current cache") || (v2.resource?.description ?? "").includes("Entire current cache"));
     assert.ok((v2.resource?.description ?? "").includes("ticks[]"));
     assert.ok(!(v2.resource?.description ?? "").includes("Not people"));
@@ -253,9 +257,11 @@ async function main(): Promise<void> {
         accepts?: { description?: string }[];
       }
     ).accepts;
-    assert.ok((v2Accepts?.[0]?.description ?? "").includes("Official USDA AMS"));
+    assert.ok((v2Accepts?.[0]?.description ?? "").includes("US hay, cattle, and grain ticks"));
     assert.ok((v2Accepts?.[0]?.description ?? "").includes("Entire current cache"));
     assert.ok((v2Accepts?.[0]?.description ?? "").includes("ticks[]"));
+    assert.ok(!(v2Accepts?.[0]?.description ?? "").startsWith("Idaho"));
+    assert.ok(!(v2Accepts?.[0]?.description ?? "").includes("PNW barns"));
     assert.ok((v2Accepts?.[0]?.description ?? "").length <= 500);
     const declared = bazaarExtension("ticks");
     assert.deepEqual(
@@ -355,10 +361,17 @@ async function main(): Promise<void> {
       assert.equal(op?.["x-payment-info"]?.protocols?.[0]?.x402?.asset, USDC_BASE);
     }
     const ticksOp = spec.paths[TICKS_PATH]?.get as { summary?: string; description?: string; responses?: Record<string, { description?: string }> } | undefined;
+    assert.ok((ticksOp?.summary ?? "").startsWith("US hay, cattle, and grain ticks"));
+    assert.ok((ticksOp?.summary ?? "").includes("USDA AMS official prints"));
     assert.ok((ticksOp?.summary ?? "").includes("entire current cache on one GET"));
+    assert.ok(!(ticksOp?.summary ?? "").startsWith("Idaho"));
+    assert.ok(!(ticksOp?.summary ?? "").startsWith("PNW"));
     assert.ok((ticksOp?.description ?? "").includes("Entire current cache"));
     assert.ok((ticksOp?.description ?? "").includes("ticks[] + history"));
-    assert.ok((ticksOp?.description ?? "").includes("Official USDA AMS"));
+    assert.ok((ticksOp?.description ?? "").includes("US hay, cattle, and grain ticks"));
+    assert.ok((ticksOp?.description ?? "").includes("produce, wool, and WD1 water"));
+    assert.ok(!(ticksOp?.description ?? "").startsWith("Idaho"));
+    assert.ok(!(ticksOp?.description ?? "").includes("PNW barns"));
     assert.ok(!(ticksOp?.description ?? "").includes("Not people"));
     assert.ok((ticksOp?.responses?.["402"]?.description ?? "").includes("entire current cache"));
     const icoOp = spec.paths[ICO_MPN_PATH]?.get as { description?: string } | undefined;
@@ -526,7 +539,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("Paid JSON is cards[].body"));
 
     const shop = (await (await fetch(`${base}/`)).json()) as {
-      products: { path: string; priceUsdc?: string; description?: string; count?: number; firms?: number }[];
+      products: { path: string; product?: string; name?: string; priceUsdc?: string; description?: string; count?: number; firms?: number }[];
       openapi?: string;
       wellKnown?: string;
       llmsTxt?: string;
@@ -563,6 +576,18 @@ async function main(): Promise<void> {
       CMA_CA98_PATH,
     ]);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.priceUsdc, "0.05");
+    const ticksShop = shop.products.find((p) => p.path === TICKS_PATH);
+    assert.equal(ticksShop?.product, "idaho-hay-feeder-ticks");
+    assert.equal(ticksShop?.name, "US hay, cattle, and grain ticks");
+    assert.ok((ticksShop?.description ?? "").startsWith("US hay, cattle, and grain ticks"));
+    assert.ok((ticksShop?.description ?? "").includes("produce, wool, and WD1 water"));
+    assert.ok(!(ticksShop?.description ?? "").startsWith("Idaho"));
+    assert.ok(!(ticksShop?.description ?? "").includes("PNW barns"));
+    assert.ok(llmsBody.includes("US hay, cattle, and grain ticks"));
+    const ticksLlms = llmsBody.split("\n").find((line) => line.includes("GET /ticks —"));
+    assert.ok(ticksLlms?.includes("US hay, cattle, and grain ticks"));
+    assert.ok(!ticksLlms?.includes("Idaho +"));
+    assert.ok(!ticksLlms?.includes("PNW barns"));
     for (const product of shop.products) {
       assert.ok(product.description?.includes("Entire current cache on one GET"), `${product.path} shop description must name the bag`);
       assert.ok(product.description?.includes("$0.05"), `${product.path} shop description must name the price`);
