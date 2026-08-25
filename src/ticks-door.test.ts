@@ -4,7 +4,8 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2 } from "./ticks-door.js";
+import { SINGLE_DOC_AMOUNT_ATOMIC } from "./paid-records.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
   IMPORT_ALERTS_MANIFEST_PATH,
@@ -252,6 +253,13 @@ async function main(): Promise<void> {
     ).accepts;
     assert.ok((v2Accepts?.[0]?.description ?? "").includes("Call GET /ticks"));
     assert.ok((v2Accepts?.[0]?.description ?? "").length <= 500);
+    const frb402 = paymentRequiredBody("http://127.0.0.1/frb-orders", "frb-orders");
+    const frbDesc = String((frb402.accepts as { description?: string }[])[0]?.description ?? "");
+    assert.ok(frbDesc.includes("$0.02"));
+    assert.ok(frbDesc.includes("$0.05"));
+    assert.ok(frbDesc.length <= 500, `frb-orders 402 description is ${frbDesc.length}`);
+    const oneV2 = paymentRequiredV2("http://127.0.0.1/gmp?id=gmp-0001", "gmp", SINGLE_DOC_AMOUNT_ATOMIC);
+    assert.equal((oneV2.accepts as { amount?: string }[])[0]?.amount, SINGLE_DOC_AMOUNT_ATOMIC);
     const declared = bazaarExtension("ticks");
     assert.deepEqual(
       v2.extensions?.bazaar?.info?.input,
@@ -499,12 +507,15 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("Newest 100 official texts"));
     assert.ok(llmsBody.includes("older pages on the same URL"));
     assert.ok(llmsBody.toLowerCase().includes("free index/search"));
-    assert.ok(llmsBody.includes("pay the page"));
+    assert.ok(llmsBody.includes("$0.02"));
+    assert.ok(llmsBody.includes("$0.05"));
     assert.ok(!llmsBody.toLowerCase().includes("entire current cache"));
     assert.ok((wk.instructions ?? "").includes("newest 100 official texts"));
     assert.ok((wk.instructions ?? "").includes("older pages on the same URL"));
     assert.ok((wk.instructions ?? "").toLowerCase().includes("free index/search"));
-    assert.ok((wk.instructions ?? "").includes("pay the page"));
+    assert.ok((wk.instructions ?? "").includes("$0.02"));
+    assert.ok((wk.instructions ?? "").includes("$0.05"));
+    assert.ok((wk.resources ?? []).every((url) => !url.includes("?id=")));
     assert.ok(!(wk.instructions ?? "").toLowerCase().includes("entire current cache"));
     const specGuidance = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
       info?: { "x-guidance"?: string };
@@ -513,8 +524,10 @@ async function main(): Promise<void> {
     assert.ok((specGuidance.info?.["x-guidance"] ?? "").includes("newest 100 official texts"));
     assert.ok((specGuidance.info?.["x-guidance"] ?? "").includes("whole current table"));
     assert.ok((specGuidance.info?.["x-guidance"] ?? "").toLowerCase().includes("free index/search"));
-    assert.ok((specGuidance.info?.["x-guidance"] ?? "").includes("pay the page"));
+    assert.ok((specGuidance.info?.["x-guidance"] ?? "").includes("$0.02"));
+    assert.ok((specGuidance.info?.["x-guidance"] ?? "").includes("$0.05"));
     assert.ok(!(specGuidance.info?.["x-guidance"] ?? "").toLowerCase().includes("entire current cache"));
+    assert.ok((specGuidance.paths?.[WARNING_LETTERS_PATH]?.get?.description ?? "").includes("GET ?id= one official text"));
     assert.ok((specGuidance.paths?.[WARNING_LETTERS_PATH]?.get?.description ?? "").includes("Newest chunk on a plain GET"));
     assert.ok(!(specGuidance.paths?.[WARNING_LETTERS_PATH]?.get?.description ?? "").toLowerCase().includes("entire current cache"));
     assert.ok((specGuidance.paths?.[TICKS_PATH]?.get?.description ?? "").includes("current official US hay"));
@@ -526,7 +539,8 @@ async function main(): Promise<void> {
       })
     ).json()) as { result?: { instructions?: string } };
     assert.ok((mcpInit.result?.instructions ?? "").includes("newest 100 official texts"));
-    assert.ok((mcpInit.result?.instructions ?? "").includes("pay the page"));
+    assert.ok((mcpInit.result?.instructions ?? "").includes("$0.02"));
+    assert.ok((mcpInit.result?.instructions ?? "").includes("$0.05"));
     assert.ok(!(mcpInit.result?.instructions ?? "").toLowerCase().includes("entire current cache"));
 
     const shop = (await (await fetch(`${base}/`)).json()) as {
@@ -538,7 +552,8 @@ async function main(): Promise<void> {
     };
     assert.ok((shop.note ?? "").includes("newest 100 official texts"));
     assert.ok((shop.note ?? "").toLowerCase().includes("free index/search"));
-    assert.ok((shop.note ?? "").includes("pay the page"));
+    assert.ok((shop.note ?? "").includes("$0.02"));
+    assert.ok((shop.note ?? "").includes("$0.05"));
     assert.ok(!(shop.note ?? "").toLowerCase().includes("entire current cache"));
     assert.deepEqual(shop.products.map((p) => p.path), [
       TICKS_PATH,
@@ -4493,7 +4508,8 @@ async function main(): Promise<void> {
       assert.equal(manifest.cardCount, 120, "free /gmp/manifest.json stays the full catalog");
       assert.ok((manifest.note ?? "").includes("newest 100 official texts"));
       assert.ok((manifest.note ?? "").toLowerCase().includes("free index/search"));
-      assert.ok((manifest.note ?? "").includes("page cursor to pay"));
+      assert.ok((manifest.note ?? "").includes("?id= URL ($0.02)"));
+      assert.ok((manifest.note ?? "").includes("$0.05"));
 
       const unpaid = await fetch(`${base}${GMP_PATH}`);
       assert.equal(unpaid.status, 402);
@@ -4528,11 +4544,12 @@ async function main(): Promise<void> {
       assert.ok(paidBody.nextBefore);
 
       const manRows = (await (await fetch(`${base}${GMP_MANIFEST_PATH}`)).json()) as {
-        cards?: { id?: string; page?: number; before?: string | null; firm?: string }[];
+        cards?: { id?: string; page?: number; before?: string | null; firm?: string; paidUrl?: string }[];
       };
       assert.ok((manRows.cards ?? []).some((row) => row.page === 2 && row.before));
       const page2Row = (manRows.cards ?? []).find((row) => row.page === 2);
       assert.ok(page2Row?.before);
+      assert.ok((manRows.cards ?? []).every((row) => row.paidUrl === `/gmp?id=${row.id}`));
 
       const found = (await (await fetch(`${base}${GMP_MANIFEST_PATH}?q=Firm%201`)).json()) as {
         matchCount?: number;
@@ -4622,6 +4639,53 @@ async function main(): Promise<void> {
       ).json()) as { result?: { content?: { text?: string }[] } };
       assert.ok(mcpPage.result?.content?.[0]?.text?.includes("HTTP 200"));
       assert.ok(/"page":\s*2/.test(mcpPage.result?.content?.[0]?.text ?? ""));
+
+      const oneId = paidBody.ids?.[0] ?? paidBody.records[0]?.id ?? "";
+      assert.ok(oneId);
+      const unpaidOne = await fetch(`${base}${GMP_PATH}?id=${encodeURIComponent(oneId)}`);
+      assert.equal(unpaidOne.status, 402, "unpaid ?id= is 402");
+      const one402 = (await unpaidOne.json()) as { accepts: { maxAmountRequired?: string }[]; resource?: string };
+      assert.equal(one402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "unpaid ?id= asks 20000");
+      assert.ok(String(one402.accepts[0] && (unpaidOne.headers.get("payment-required") ?? "")).length > 0);
+      const onePr = JSON.parse(Buffer.from(unpaidOne.headers.get("payment-required") ?? "", "base64").toString("utf8")) as {
+        accepts?: { amount?: string }[];
+        resource?: { url?: string };
+      };
+      assert.equal(onePr.accepts?.[0]?.amount, SINGLE_DOC_AMOUNT_ATOMIC);
+      assert.ok(String(onePr.resource?.url ?? "").includes(`id=${encodeURIComponent(oneId)}`) || String(onePr.resource?.url ?? "").includes(`id=${oneId}`));
+
+      const paidOne = await fetch(`${base}${GMP_PATH}?id=${encodeURIComponent(oneId)}`, {
+        headers: { "X-PAYMENT": "test" },
+      });
+      assert.equal(paidOne.status, 200);
+      const oneBody = (await paidOne.json()) as {
+        cards: { id?: string; body?: string }[];
+        ids?: string[];
+        id?: string;
+        recordCount?: number;
+        paidWindow?: number;
+      };
+      assert.equal(oneBody.paidWindow, 1);
+      assert.equal(oneBody.recordCount, 1);
+      assert.deepEqual(oneBody.ids, [oneId]);
+      assert.equal(oneBody.id, oneId);
+      assert.equal(oneBody.cards.length, 1);
+      assert.ok(String(oneBody.cards[0]?.body ?? "").length > 0);
+
+      const mcpOne = (await (
+        await fetch(`${base}${MCP_PATH}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            jsonrpc: "2.0",
+            id: 22,
+            method: "tools/call",
+            params: { name: "get-one", arguments: { door: "gmp", id: oneId, x_payment: "test" } },
+          }),
+        })
+      ).json()) as { result?: { content?: { text?: string }[] } };
+      assert.ok(mcpOne.result?.content?.[0]?.text?.includes("HTTP 200"));
+      assert.ok(mcpOne.result?.content?.[0]?.text?.includes(oneId));
     },
   );
 

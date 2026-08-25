@@ -44,7 +44,9 @@ import {
   olderChunkCopy,
   paidBodyCatalogNote,
   paidBodyOptsFromSearch,
+  paidBodyQueryPath,
   paidBodyWindow,
+  SINGLE_DOC_AMOUNT_ATOMIC,
   normalizeCardRecords,
   normalizeForm483Records,
   normalizeImportAlertRecords,
@@ -1047,10 +1049,13 @@ async function main(): Promise<void> {
   assert.ok(olderChunkCopy(100).includes("?before="));
   assert.equal(
     paidBodyCatalogNote("/gmp", "Full catalog: count + id + firm + date + url"),
-    "Full catalog: count + id + firm + date + url. Free index/search (?q=, optional before/date) stays free and includes the page cursor to pay. Plain paid GET /gmp is the newest 100 official texts; older chunk if they ask (?before=<id or date>, another $0.05).",
+    "Full catalog: count + id + firm + date + url. Free index/search (?q=, optional before/date) stays free and includes id, the ?id= URL ($0.02), and the page cursor ($0.05). GET /gmp?id= is one official text GET ?id= ($0.02). Plain paid GET /gmp is the newest 100 official texts; older chunk if they ask (?before=<id or date>, another $0.05).",
   );
   assert.deepEqual(paidBodyOptsFromSearch("before=gmp-0100"), { before: "gmp-0100" });
   assert.deepEqual(paidBodyOptsFromSearch("page=2"), { page: 2 });
+  assert.deepEqual(paidBodyOptsFromSearch("id=gmp-0001"), { id: "gmp-0001" });
+  assert.equal(paidBodyQueryPath("/gmp", { id: "gmp-0001" }), "/gmp?id=gmp-0001");
+  assert.equal(SINGLE_DOC_AMOUNT_ATOMIC, "20000");
   assert.equal(EXTRACTED_BODY_SKUS.includes("gmp"), true);
   assert.equal((EXTRACTED_BODY_SKUS as readonly string[]).includes("ticks"), false);
 
@@ -1167,10 +1172,26 @@ async function main(): Promise<void> {
   assert.ok((byDate.cards as { date?: string }[]).every((row) => String(row.date ?? "").startsWith(String(byDate.date))));
   const byCursor = decorateExtractedBodyManifest(
     { cards: fatGmpCards.map((c) => ({ id: c.id, firm: c.firm, inspectedOn: c.inspectedOn })) },
-    { before: page2Index?.before },
+    { before: page2Index?.before, paidPath: "/gmp" },
   );
   assert.ok((byCursor.cards as { page?: number }[]).every((row) => row.page === 2));
   assert.equal(byCursor.before, page2Index?.before);
+  assert.ok((byCursor.cards as { paidUrl?: string; id?: string }[]).every((row) => row.paidUrl === `/gmp?id=${row.id}`));
+  const oneGmp = paidGmpBody(
+    {
+      ok: true as const,
+      product: "hc-gmp-report-cards" as const,
+      cards: fatGmpCards,
+    },
+    { id: "gmp-0001" },
+  );
+  assert.equal(oneGmp.paidWindow, 1);
+  assert.equal(oneGmp.recordCount, 1);
+  assert.deepEqual(oneGmp.ids, ["gmp-0001"]);
+  assert.equal(oneGmp.id, "gmp-0001");
+  assert.equal(oneGmp.cards.length, 1);
+  assert.equal(oneGmp.cards[0]?.id, "gmp-0001");
+  assert.ok(String(oneGmp.cards[0]?.body ?? "").length > 0);
 
   const fatTicks = {
     ticks: Array.from({ length: 120 }, (_, i) => ({
