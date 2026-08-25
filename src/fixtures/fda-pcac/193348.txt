@@ -1,0 +1,2470 @@
+FDA Briefing Document
+
+      Pharmacy Compounding Advisory Committee (PCAC)
+                         Meeting
+
+                                    July 23 - 24, 2026
+
+
+
+
+The attached package contains background information prepared by the Food and Drug
+Administration (FDA or Agency) for the panel members of the Pharmacy Compounding Advisory
+Committee (advisory committee). We are bringing certain compounding issues to this advisory
+committee to obtain the advisory committee’s advice. The background package may not include all
+issues relevant to the final committee recommendation and instead is intended to focus on issues
+identified by the Agency for discussion by the advisory committee. The FDA will not issue a final
+determination on the issues at hand until input from the advisory committee process has been
+considered and all reviews have been finalized. The final determination may be affected by issues
+not discussed at the advisory committee meeting.
+
+
+
+
+                                                                                                    1
+Semax – Related Bulk
+  Drug Substances
+ (Semax (free base)
+ and Semax acetate)
+
+
+
+
+                       2
+                                         Table of Contents
+ 1. FDA Evaluation of Semax-related bulk drug substances...…..……......................................4
+     I.      Introduction….……………………………………………..…………......................7
+     II.     Evaluation Criteria…….…….………………………..……………..........................8
+             A. Is the substance well characterized, physically and chemically?.........................8
+             B. Has the substance been used historically in compounding?...............................20
+             C. Available evidence of effectiveness or lack of effectiveness of drug products
+                 compounded with the substance…….…………………………………………23
+             D. Are there concerns about the safety of the substance for use in
+                 compounding?....................................................................................................29
+     III.    Conclusion and Recommendation…..…………………..………..………………..41
+     IV.     References……………..……….………………..…...………...…………………..45
+     V.      Appendices………………………………………………………………………...52
+2. Semax-related bulk drug substances Nominations…......……..……………...………..….....56
+     I.      LDT Health Solutions Inc…………………………………....………..…………...57
+     II.     Wells Pharmacy Network……………………………………………………….....63
+
+
+
+
+                                                                                                                                  3
+FDA Evaluation of Semax–Related
+Bulk Drug Substances (Semax (free
+     base) and Semax acetate)
+
+
+
+
+                                4
+DATE:           5/11/2026
+FROM:           Jamiele Mattocks, PharmD, BCACP
+                Consumer Safety Officer (CSO), Office of Compounding Quality and
+                Compliance (OCQC), Office of Compliance (OC)
+                Tracy Rupp, PharmD, MPH, BCPS
+                Lead Consumer Safety Officer, OCQC, OC
+                Jing Li, PhD
+                Office of Product Quality Assessment II (OPQAII), Office of Pharmaceutical
+                Quality (OPQ)
+                Edna Albuquerque, PhD
+                Senior Pharmacology/Toxicology Reviewer, Division of
+                Pharmacology/Toxicology for Rare Diseases, Pediatrics, Urologic, and
+                Reproductive Medicine/Specialty Medicine (DPT-RPURM/SM), Office of New
+                Drugs (OND)
+                Andrea Benedict, PhD
+                Nonclinical Supervisor, DPT-RPURM/SM, OND
+                Marianne San Antonio, DO
+                Physician, Pharmacy Compounding Review Team (PCRT), Office of Specialty
+                Medicine (OSM), OND
+                Suhail Kasim, M.D. MPH
+                Lead Physician, PCRT, OSM, OND
+THROUGH: Russell Wesdyk, B.S., MBA
+         ADRA, OPQA2, OPQ
+                Alex Gorovets, M.D.
+                Deputy Director, OSM, OND
+                Matt Lash, JD
+                Acting Director, OCQC, OC
+                Deputy Director, OC
+
+TO:             Pharmacy Compounding Advisory Committee
+SUBJECT:    Evaluation of Semax-related Bulk Drug Substances for Inclusion on the 503A
+            Bulk Drug Substances List
+______________________________________________________________________________
+U.S. Food & Drug Administration
+10903 New Hampshire Avenue
+Silver Spring, MD 20993
+www.fda.gov
+
+
+
+
+                                                                                             5
+List of Abbreviations
+
+ Abbreviation           Term
+ AE                     adverse event
+ ACTH                   adrenocorticotropic hormone
+ ADHD                   attention deficit hyperactivity disorder
+ ALS                    amyotrophic lateral sclerosis
+ API                    active pharmaceutical ingredient
+ BDS                    bulk drug substance
+ BET                    bacterial endotoxins test
+ CAS                    Chemical Abstracts Service
+ CoA                    Certificate of Analysis
+ CQA                    critical quality attributes
+ FAERS                  FDA Adverse Event Reporting System
+ FD&C Act               Federal Food, Drug, and Cosmetic Act
+ FDA                    Food and Drug Administration
+ IN                     intranasal
+ INN                    International Nonproprietary Names
+ IUPAC                  International Union of Pure and Applied
+                        Chemistry
+ IP                     intraperitoneal
+ IV                     intravenous
+ MF                     Molecular formula
+ MW                     Molecular weight
+ MPST                   modified pain sensitivity test
+ NF                     National Formulary
+ OTC                    over-the-counter
+ REG                    rhoencephalogram
+ ROA                    route of administration
+ SC                     subcutaneous
+ TSEP                   trigeminal somatosensory evoked potentials
+ UNII                   Unique Ingredient Identifier
+ USAN                   United States Adopted Name
+ USP                    United States Pharmacopeia
+
+
+
+
+                                                                     6
+I.   INTRODUCTION
+The Food and Drug Administration (FDA, the Agency, or we) received nominations for semax-
+related bulk drug substances for inclusion on the list of bulk drug substances (BDS) that can be
+used in compounding under section 503A of the Federal Food, Drug, and Cosmetic Act (FD&C
+Act). 1 The nominators provided inconsistent information in the nomination packages regarding
+the specific BDS proposed. Specifically, it is unclear in both packages whether the nomination
+was for semax acetate or semax (free base). Semax acetate and semax (free base) are different
+active pharmaceutical ingredients and hence are considered different BDSs. Please see additional
+information in section II.A. The nominations were withdrawn 2 and FDA is evaluating the
+substances at its discretion.
+
+Although it is unclear whether the nominators intended to nominate semax acetate or semax (free
+base), FDA has decided to evaluate both on its own initiative.
+
+Semax acetate and semax (free base) were evaluated for the following use(s): cerebral ischemia,
+migraine and trigeminal neuralgia3,4. The semax-related drug products proposed in the
+nominations are intranasal spray or subcutaneous injection in 7,500 µg/mL or 1,000 µg/mL
+dosage strengths.
+
+
+
+
+1
+  The nomination from Wells Pharmacy Network (Document ID: FDA-2015-N-3534-0284) can be
+accessed at: https://www.regulations.gov/document/FDA-2015-N-3534-0284. The nomination from LDT
+Health Solutions (Document ID: FDA-2018-N-2973-0002 attachment 1) can be accessed at:
+https://www.regulations.gov/document/FDA-2018-N-2973-0002. These nominations were withdrawn, but
+because FDA is evaluating semax acetate and semax (free base) on its own initiative, FDA considered
+information submitted in these nominations as part of this evaluation.
+2
+  Document IDs: FDA-2015-N-3534-0484 and FDA-2015-N-3534-0485.
+3
+  Semax-related BDSs were nominated for “analgesia”, but because the reference submitted by the
+nominator that discussed analgesia was in subjects with migraine and trigeminal neuralgia, we evaluated
+the Semax-related BDSs for these uses. Semax was also nominated for “ADHD” and “nootropic”. ADHD
+was not evaluated because supporting literature for this use was not found. “Nootropic” does not have an
+ICD-10 code and no professional society treatment guidelines could be found for this use. Dorland
+Medical Dictionary 29th Edition defines it as “having positive effects on organically impaired cognition or
+nervous system function.” Therefore, this use will be considered as part of the evaluation for cerebral
+ischemia.
+4
+  We have explained that it is necessary to evaluate a nominated bulk drug substance in the context of the
+uses proposed for compounded drug products that include the substance, though we acknowledge that
+inclusion of a substance on the 503A Bulks List may not be limited to a specific use. See 84 FR 4696,
+4701.
+
+
+                                                                                                         7
+There is no applicable United States Pharmacopeia (USP) or National Formulary (NF) drug
+substance monograph for semax (free base) or semax acetate, and neither is a component of an
+FDA-approved drug.
+
+We have evaluated publicly available data on the physicochemical characteristics, historical use,
+effectiveness, and safety in compounding of this substance. For the reasons discussed below, we
+believe the evaluation criteria weigh against placing both semax (free base) and semax acetate
+on the list of bulk drug substances that can be used to compound drug products in accordance
+with section 503A of the FD&C Act (503A Bulks List).
+
+II. EVALUATION CRITERIA
+
+     A. Is the Substance Well-Characterized, Physically and Chemically? 5
+Semax is a common name and not a United States Adopted Name (USAN) 6. FDA has
+encountered multiple salts, and derivatives, including different active moieties, sold
+commercially under the same common name for similarly situated products. Inconsistent naming
+conventions that do not follow established chemical nomenclature standards (e.g., INN 7,
+IUPAC 8, USAN) represent a safety risk for patients as they may be dosed with a different BDS
+than the physician ordered. From a chemical analysis standpoint, inconsistent naming
+conventions for semax-related BDSs also introduce risks because of the inability to determine
+which BDS a particular reference standard is referencing.
+
+
+
+
+5
+  Among the conditions that must be met for a drug compounded using bulk drug substances to be eligible
+for the exemptions in section 503A of the FD&C Act is that the bulk drug substances are manufactured
+by an establishment that is registered under section 510 of the FD&C Act and that each bulk drug
+substance is accompanied by a valid Certificate of Analysis. Sections 503A(b)(1)(A)(ii) and (iii). A bulk
+drug substance is deemed to be adulterated if the methods used in, or the facilities or controls used for, its
+manufacture, processing, packing, or holding do not conform to or are not operated or administered in
+conformity with current good manufacturing practice. Section 501(a)(2)(B).
+6
+  United States Adopted Name (USAN) is a unique, nonproprietary name for a drug sold in the United
+States. The USAN Council, which is sponsored by several organizations, assigns USANs.
+7
+  International Nonproprietary Names (INN) facilitate the identification of pharmaceutical substances or
+active pharmaceutical ingredients. Each INN is a unique name that is globally recognized and is public
+property. A nonproprietary name is also known as a generic name.
+8
+  The International Union of Pure and Applied Chemistry (IUPAC) is an international federation of
+National Adhering Organizations working for the advancement of the chemical sciences, especially by
+developing nomenclature and terminology.
+
+
+                                                                                                            8
+A BDS or active pharmaceutical ingredient (API) 9 used in a drug product may be a free base
+(i.e., the native molecule) or a salt or an ester of the free base, all of which share the same active
+moiety. 10 Different active moieties are not interchangeable because they can have different safety
+and efficacy profiles. A free base or the various salts or ester forms of an active moiety are
+distinct APIs, each with a different chemical structure and unique physical/chemical, or
+pharmacokinetic/pharmacodynamic characteristics. As a result, each may offer distinct
+properties (e.g., different solubilities, permeability, melting points, stability, or flow
+characteristics) and may also have different safety and/or efficacy profiles. All distinct active
+moieties, as well as free bases, salts, or esters of any given active moiety, are distinct BDSs for
+these reasons.
+
+This evaluation pertains to semax acetate and semax (free base).
+
+Table 1 below summarizes available identifying information obtained from public domain for
+each BDS.
+
+
+
+
+9
+  The terms BDS and API are used interchangeably in the compounding context. See 21 CFR 207.3
+(“Bulk drug substance, as referenced in sections 503A(b)(1)(A) and 503B(a)(2) of the Federal Food,
+Drug, and Cosmetic Act, previously defined in § 207.3(a)(4), means the same as "active pharmaceutical
+ingredient" as defined in § 207.1.”). An API is defined in FDA regulations at 21 CFR 207.1, which states
+“Active pharmaceutical ingredient means any substance that is intended for incorporation into a finished
+drug product and is intended to furnish pharmacological activity or other direct effect in the diagnosis,
+cure, mitigation, treatment, or prevention of disease, or to affect the structure or any function of the body.
+Active pharmaceutical ingredient does not include intermediates used in the synthesis of the substance.”
+10
+   “Active moiety is the molecule or ion, excluding those appended portions of the molecule that cause the
+drug to be an ester, salt (including a salt with hydrogen or coordination bonds), or other noncovalent
+derivative (such as a complex, chelate, or clathrate) of the molecule, responsible for the physiological or
+pharmacological action of the drug substance.”21 CFR 314.3.
+
+
+                                                                                                            9
+Table 1. Summary of Basic Information on Semax (Free Base) and Semax Acetate.
+ Characteristic        Semax (Free Base)                              Semax Acetate
+ UNII 11 Code          I5FAL2585H                                     Not available
+                                                                      2828433-33-4 or use the CAS number
+ CAS No.*              80714-61-0
+                                                                      same as free base
+ MF/MW
+                       C37H51N9O10S/813.93                            C39H55N9O12S/874.0
+ (g/mol)
+ Peptide                                                              H-Met-Glu-His-Phe-Pro-Gly-Pro-
+                       H-Met-Glu-His-Phe-Pro-Gly-Pro-OH
+ sequence                                                             OH.CH3CO2H
+ Supplier 12           Yes                                            Yes
+ Active moiety         Semax (free base)                              Semax (free base)
+* CAS: Chemical Abstracts Service; MF/MW: molecular formula/molecular weight; UNII: Unique Ingredient
+Identifier
+
+Two nominations were submitted, which, as discussed above, were later withdrawn. They
+provided inconsistent information about the different semax-related BDSs in their nominations.
+Due to inconsistencies in the nomination packages, the nominated BDS is unclear from both
+nominators of semax-related BDSs. For example, the Certificate of Analysis (CoA) submitted
+with the nomination refers to one BDS by name in the title and a different BDS by the CAS
+number and molecular formula. All chemistry-related information about the BDSs provided by
+both nominators is summarized in Table 2.
+
+Table 2. Summary of Information Submitted in Two Withdrawn Nominations.
+Nominator         1                                    2
+Nominated BDS     Semax                                Semax
+BDS per UNII code I5FAL2585H (matches semax free base) I5FAL2585H (matches semax free base)
+CoA               CoA provided for Semax Acetate       CoA provided for Semax Acetate
+CAS No.           80714-61-0 (matches semax free base) 80714-61-0 (matches semax free base)
+                  C37H51N9O10S (provided in the
+                                                       C37H51N9O10S (provided in the CoA,
+MF                nomination and CoA, matches semax
+                                                       matches semax free base)
+                  free base)
+                  813.93 (provided in the CoA, matches 813.93 (provided in the CoA, matches
+MW
+                  semax free base)                     semax free base)
+                  H-Met-Glu-His-Phe-Pro-Gly-Pro-OH     H-Met-Glu-His-Phe-Pro-Gly-Pro-OH
+Chemical name     (provided in the CoA, matches semax  (provided in the CoA, matches semax free
+                  free base)                           base)
+Italics in the table above represents the information identified by FDA.
+
+
+
+
+11
+   The Unique Ingredient Identifier (UNII) is an alphanumeric identifier linked to a substance's molecular
+structure or descriptive information and is generated by the Global Substance Registration System
+(GSRS) of the Food and Drug Administration (FDA).
+12
+   The existence of a supplier of BDS may be relevant to FDA’s characterization analysis because it
+indicates that consistent production of the BDS according to a standard may be possible. BDSs with
+suppliers are also frequently accompanied by COAs associated with their production, which can help
+FDA to identify and characterize BDSs.
+
+
+                                                                                                           10
+FDA chose to concurrently evaluate both BDSs (semax free base and semax acetate) in this
+section under two different sub-sections of this evaluation (II.A.1 and II.A.2) and will provide a
+separate conclusion for each of the two BDSs.
+
+The nominators proposed to compound the BDSs into the following dosage forms:
+
+•   Injection/subcutaneous injection
+
+    − For an injection product, in general, critical quality attributes (CQAs) including sterility,
+      bacterial endotoxins test (BET), and foreign particulates are critical safety factors. For
+      this reason, microbial bioburden load (i.e., microbial enumeration test) and BET are
+      critical for the BDSs to be used in compounding injections. Evaluation of the solubility of
+      the BDS is also critical to ensure that no BDS precipitates are formed in the compounded
+      drug product.
+
+•   Nasal spray solution
+
+    − The container closer system including container, closer, and pump are considered critical
+      components of metered-dose nasal spray solution products. The CQAs for nasal spray
+      device include pump delivery, spray content uniformity, spray pattern and plume
+      geometry, and droplet size distribution. However, there is a lack of information about
+      what type of device (e.g., metered-dose nasal spray container closer system) would be
+      used to deliver semax, nor any information for a control strategy to assure the product
+      CQAs which are critical for the safety and effectiveness of the compounded product.
+      Other CQAs for solution-based nasal spray products include microbial quality, foreign
+      particulates, and leachables. As such, the microbial quality of the BDSs to be used in
+      compounding the nasal spray solution formulation, and suitability/compatibility of the
+      device components with the formulation are critical quality considerations. Evaluation of
+      the solubility of the BDS is also considered to ensure complete dissolution upon
+      formulation.
+
+There is no USP drug substance monograph for semax (free base) or its acetate salt. We
+reviewed physical and chemical characterization-related information provided by the nominator
+and performed a literature search for additional information on semax (free base) and its acetate
+salt. Databases searched for information on semax (free base) and its acetate salt in preparation
+of this section included SciFinder, Analytical Profiles of Drug Substances, PubMed, the
+European Pharmacopoeia, and the USP-NF.
+
+        1. Semax (Free Base)
+Semax (free base) is reported to be a heptapeptide and synthetic analogue of adrenocorticotropic
+hormone (ACTH) 4-10 fragment with the following amino acid sequence: Met-Glu-His-Phe-Pro-
+Gly-Pro (Deigin et al., 2022). The molecular formula of semax (free base) is C37H51N9O10S and
+its molecular weight is 813.93 g/mol. Its chemical structure and peptide sequence are shown in
+Figure 1.
+
+
+
+
+                                                                                                 11
+Figure 1. The Chemical Structure of Semax (Free Base). 13
+
+
+
+
+            a. Stability of the Active Pharmaceutical Ingredient and Likely Dosage Forms
+It is reported that lyophilized semax (free base) is stable for 4 years when stored at -20°C in a
+tightly closed container. 14 Upon reconstitution, keep solution at +4°C for up to 2-7 days. 15
+
+FDA notes that peptides can be extremely sensitive to product formulation, process, and
+environmental conditions (e.g., pH, heat (temperature), concentration, in-process related
+impurities, excipients), which may lead to the aggregation and degradation of peptides. This
+could result in loss of their biological activity (Zapadka et al. 2017). Multiple analytical methods
+may be needed to detect various aggregates, including size exclusion chromatography or field
+flow fractionation. Hence, peptides may require more and/or specific analytical in-process and
+finished product testing for impurities than what is required for small molecules. Uncontrolled
+manufacturing processes as well as impurities may increase the risk of product aggregation,
+especially for semax (free base) with 7 amino acids. Significant amounts of aggregates can form
+in formulated products, especially during storage or when exposed to stress conditions.
+Therefore, product formulation is critical to the quality and stability of peptide drug products, as
+it is necessary to maintain the peptide molecules in their native state (in the formulation) to the
+extent possible.
+
+
+
+
+13
+   Semax | C37H51N9O10S | CID 9811102 - PubChem (nih.gov). Accessed 12/12/24.
+14
+   https://cdn.caymanchem.com/cdn/insert/27719.pdf. Accessed 12/12/24.
+15
+   https://www.prospecbio.com/semax. Accessed 12/12/24.
+
+
+                                                                                                    12
+             b. Probable Routes of API Synthesis
+Semax (free base) was reported to be synthesized via the steps described below by sequentially
+producing the compounds from I to VII to obtain the final substance, semax (free base)
+(Ponomareva-Stepnaya et al., 1984).
+
+1.   Boc-Pro-Gly-ProOBzl (I)
+2.   Boc-His-Phe-OBzl (II)
+3.   Boc-His-Phe (Ill)
+4.   Boc-His-Phe-Pro-Gly-Pro-OBzl (IV)
+5.   Boc-y-Bzl-Glu-His-Phe-Pro-Gly-Pro-OBzl (V)
+6.   Boc-Met-y-Bzl-Glu-His-Phe-Pro-Gly-Pro-OBzl (VI)
+7.   Boc-Met-Glu-His-Phe-Pro-Gly-Pro (VII)
+8.   H-Met-Glu-His-Phe-Pro-Gly-Pro (VIII)
+
+However, we do not know what synthetic method was used to manufacture the nominated semax
+(free base).
+
+             c. Likely Impurities 16
+Generally speaking, peptide-related impurities and peptide synthesis process-related impurities
+contribute to and are considered in understanding the impurity profile for all peptides, including
+semax (free base). For most synthetic peptides, solid-phase peptide synthesis method has been
+widely used by industry for peptide synthesis. The solid phase synthesis of peptides may lead to
+potential peptide-related impurities due to incomplete coupling reactions, truncations, or side
+reactions. These peptide-related impurities are typically similar in structure to the target peptide
+and may be difficult to identify and quantify without sophisticated analytical methods.
+Additional potential common impurities may be derived from impurities in the protected amino
+acid starting materials (e.g., isomeric impurities, free amino acids) and other species that may
+carry over into the drug substance. In addition, residual solvents, coupling reagents, activators,
+catalysts, and scavengers may exist as solid phase peptide synthesis process related impurities.
+Drug substance and its proposed product-related impurities may also include peptide-related
+aggregates, especially for a peptide like semax (free base) with 7 amino acids that may have an
+inherent tendency to aggregate.
+
+There is no CoA for semax (free base) in the nomination. We conducted literature searches and
+found a CoA for semax (free base) that only contains ID, amino acid analysis, and purity testing
+results shown below as an example (Figure 2). 17 However, there is no information on the
+
+
+16
+   This evaluation contains a non-exhaustive list of potential impurities in the bulk drug substance and
+does not address fully the potential safety concerns associated with those impurities. The compounder
+should use the information about the impurities identified in the certificate of analysis accompanying the
+bulk drug substance to evaluate any potential safety and quality issues associated with impurities in a drug
+product compounded using that bulk drug substance taking into account the amount of the impurity, dose,
+route of administration, and chronicity of dosing. Available nonclinical toxicity data for likely impurities
+of concern (e.g., nitrosamines, potential mutagenic substances, and potential teratogenic substances) in
+the nominated bulk drug substance are discussed in the Nonclinical Assessment at Section C.I. as part of
+the safety assessment of the substance.
+17
+   https://documents.tocris.com/pdfs/tocris_coa/7712_1_coa.pdf?1715792499. Accessed 12/12/24.
+
+
+                                                                                                         13
+impurity limits/testing results as key attribute control in the CoA to demonstrate quality control
+of impurity profile of semax (free base).
+
+Because there is lack of information regarding potential impurities that can be present in semax
+(free base) and the lack of information on the potential of peptide aggregation, we cannot rule
+out the potential for immunogenicity associated with these impurities and peptide related
+aggregates.
+
+Figure 2. Example of a CoA for Semax.
+
+
+
+
+               d. Physicochemical Characteristics Pertinent to Product Performance, Such as
+                  Particle Size and Polymorphism
+Semax (free base) is white lyophilized powder. Based on reports in most publicly available
+literature semax (free base) is soluble in water up to 2 mg/mL 18 and approximately 10 mg/mL in
+phosphate-buffered saline. 19
+
+
+
+18
+     https://documents.tocris.com/pdfs/tocris_coa/7712_1_coa.pdf?1715792499. Accessed 12/12/24.
+19
+     https://cdn.caymanchem.com/cdn/insert/27719.pdf. Accessed 12/12/24.
+
+
+                                                                                                     14
+Because the BDS is soluble in water and would be solubilized prior to administration, particle
+size and polymorphism are not considered critical quality attributes that affect performance for
+the proposed injectable dosage forms with the concentration of 1,000 µg/mL.
+
+However, due to lack of information on the formulation for the proposed dosage forms (injection
+and intranasal spray) with the concentration of 7,500 µg/mL, we cannot evaluate how the
+physicochemical characteristics of semax (free base) will impact the performance of the
+proposed final products (7,500 µg/mL).
+
+            e. Any Other Information About the Substance That May Be Relevant, Such as
+               Whether the API Is Poorly Characterized or Difficult to Characterize
+Because there is lack of CoA for semax (free base), we do not know if microbial bioburden
+and/or bacterial endotoxin tests are in place to control the BDS proposed for compounding
+injectable dosage form. Endotoxin test is considered a critical quality control attribute for an
+injection product. However, endotoxin testing was not identified from publicly available
+scientific literature, either.
+
+As mentioned at the beginning of Section IIA, for a metered dose nasal spray solution product,
+the information about the container closer system (including container, closer, and pump) is
+relevant to the CQAs (pump delivery, spray content uniformity, spray pattern and plume
+geometry, and droplet size distribution) for the proposed product and would affect how the BDS
+is delivered. However, no such information is available either in the nomination or the publicly
+available scientific literature.
+
+Conclusions: Semax (free base) is reported to be a heptapeptide. As reported in the literature,
+semax (free base) is expected to be stable under reported storage conditions (below -20°C).
+
+Semax (free base) is considered to be not well-characterized from the physical and chemical
+characterization perspective because (1) inconsistent naming conventions that do not follow
+established chemical nomenclature standards (e.g., INN, IUPAC, USAN), and (2) BDS-specific
+quality control attributes, including impurities, aggregates, bacterial endotoxins, and microbial
+bioburden testing, were not found in the publicly available scientific literature and lack of CoA
+in the nomination which are offered as evidence to establishing identity, purity, and impurity
+profiles of the substance of semax (free base) delivered via the subcutaneous (SC) and intranasal
+spray routes of administration (ROAs). The limited information related to critical
+characterization data is particularly important for immunogenicity. As discussed in
+Section II.D.2.d., FDA is concerned about the potential for immunogenicity of semax (free base)
+when formulated in an injectable or intranasal spray dosage forms due to the potential for
+aggregation as well as potential peptide-related impurities, as discussed in the Section II.A.1.c.
+We also note that the stability, pharmacological activity, and immunogenic properties of peptides
+are highly sensitive to the manufacturing process and quality attributes of the
+compounded/finished drug product.
+
+In addition, FDA would have strong concerns about the use of this BDS in the proposed
+compounded nasal spray solution product due to lack of information about the container closer
+system, including container, closer, and pump – all of which are relevant to the CQAs for the
+proposed product and would affect how the BDS is delivered via this product.
+
+
+
+                                                                                                   15
+          2. Semax Acetate
+Semax acetate is reported to be an acetate salt form of semax (free base). The molecular formula
+of semax acetate is C39H55N9O12S and its chemical structure is shown in Figure 3. One of the
+withdrawn nominators provided an example of a CoA for semax acetate with the quality control
+attribute testing results, including identification, amino acid composition, peptide purity, related
+substances, water content, acetate content and residual solvents (Figure 4A). There are no testing
+results for the quality control attribute on aggregates, microbial bioburden and bacterial
+endotoxin levels.
+
+The CoAs provided by the nominators include the quality control attribute testing results for
+identification, amino acid composition, peptide purity, single impurity or total impurities, water
+content, and acetate content (Figure 4B). There are no testing results for the quality control
+attribute on aggregates, and microbial levels.
+
+Figure 3. The Structure of Semax Acetate. 20
+
+
+
+
+20
+     https://pubchem.ncbi.nlm.nih.gov/compound/Semax-acetate. Accessed 12/12/24.
+
+
+
+                                                                                                  16
+Figure 4. Nominator-Provided Examples of CoAs for Semax Acetate.
+
+
+
+
+     A. Provided by withdrawn nominator 1                  B. Provided by withdrawn nominator 2
+
+               a. Stability of the Active Pharmaceutical Ingredient and Likely Dosage Forms
+Based on the CoA provided by withdrawn nominator 1, long-term storage conditions for semax
+acetate are “in a sealed container at 2°C to 8°C.” Additionally, semax acetate is reported to be
+stable at -80°C for 2 years and at -20°C for 1 year under sealed storage away from moisture and
+light. The aliquot solution of semax acetate is stable at -80°C for 6 months and at -20°C for
+1 month. 21
+
+FDA notes that peptides can be extremely sensitive to product formulation, process, and
+environmental conditions (e.g., pH, heat (temperature), concentration, in-process related
+impurities, excipients), which may lead to the aggregation and degradation of peptides. This
+could result in loss of their biological activity (Zapadka et al. 2017). Multiple analytical methods
+may be needed to detect various aggregates, including size exclusion chromatography or field
+flow fractionation. Hence, peptides may require more and/or specific analytical in-process and
+finished product testing for impurities than what is required for small molecules. Uncontrolled
+manufacturing processes as well as impurities may increase the risk of product aggregation,
+especially for semax acetate containing 7 amino acids that may have an inherent tendency to
+aggregate. Significant amounts of aggregates can form in formulated products, especially during
+storage or when exposed to stress conditions. Therefore, product formulation is critical to the
+
+
+
+
+21
+  https://www.medchemexpress.com/semax-
+acetate.html?srsltid=AfmBOoqS1WDZwkh3sDswlqWGV8EP_jXzC1mhO5DSf0TDJRz0kq4gq-oj.
+Accessed 12/12/24.
+
+
+                                                                                                  17
+quality and stability of peptide drug products, as it is necessary to maintain the peptide molecules
+in their native state (in the formulation) to the extent possible.
+
+             b. Probable Routes of API Synthesis
+Semax (free base) can be synthesized using the method mentioned in A.1.b. Then, the semax
+(free base) can be converted into its acetate salt.
+
+             c. Likely Impurities 22
+Generally speaking, peptide-related impurities and peptide synthesis process-related impurities
+contribute to and are considered in understanding the impurity profile for all peptides, including
+semax acetate. For most synthetic peptides, the solid-phase peptide synthesis method has been
+widely used by industry for peptide synthesis. The solid-phase synthesis of peptides may lead to
+potential peptide-related impurities due to incomplete coupling reactions, truncations, or side
+reactions. These peptide-related impurities are typically similar in structure to the target peptide
+and may be difficult to identify and quantify without sophisticated analytical methods.
+Additional potential common impurities may be derived from impurities in the protected amino
+acid starting materials (e.g., isomeric impurities, free amino acids) and other species that may
+carry over into the drug substance. In addition, residual solvents, coupling reagents, activators,
+catalysts, and scavengers may exist as solid phase peptide synthesis process related impurities.
+Drug substance and its proposed product-related impurities may also include peptide-related
+aggregates, especially for a peptide like semax acetate with 7 amino acids that may have an
+inherent tendency to aggregate.
+
+In the CoAs the withdrawn nominators provided there is no information regarding the nature of
+individual impurities that can be present at up to 1.0% (withdrawn nominator 1) or 2.0%
+(withdrawn nominator 2) level. Such information also cannot be found from publicly available
+scientific literature.
+
+Because there is lack of information regarding the nature of potential impurities that can be
+present in semax acetate and the lack of information on the potential of peptide aggregation, we
+cannot rule out the potential for immunogenicity associated with these impurities and peptide
+related aggregates.
+
+             d. Physicochemical Characteristics Pertinent to Product Performance, Such as
+                Particle Size and Polymorphism
+Semax acetate is a white powder. It is soluble in water based on the CoA provided by withdrawn
+nominator 1. However, there are no water solubility data available in both withdrawn
+
+22
+  This evaluation contains a non-exhaustive list of potential impurities in the bulk drug substance and
+does not address fully the potential safety concerns associated with those impurities. The compounder
+should use the information about the impurities identified in the certificate of analysis accompanying the
+bulk drug substance to evaluate any potential safety and quality issues associated with impurities in a drug
+product compounded using that bulk drug substance taking into account the amount of the impurity, dose,
+route of administration, and chronicity of dosing. Available nonclinical toxicity data for likely impurities
+of concern (e.g., nitrosamines, potential mutagenic substances, and potential teratogenic substances) in
+the nominated bulk drug substance are discussed in the Nonclinical Assessment (Section C.I.) as part of
+the safety assessment of the substance.
+
+
+                                                                                                         18
+nominations and publicly available scientific literature. The only solubility data we can find is
+that semax acetate is soluble in DMSO with 100 mg/mL. 23 However, the data is not helpful for
+our evaluation of the proposed dosage forms.
+
+Because the nominator did not provide any information on how to compound proposed injectable
+and intranasal spray products with the strengths proposed, we cannot evaluate how the
+physicochemical characteristics of semax acetate, especially the water solubility of semax
+acetate, will impact the performance of the proposed injectable and intranasal spray products due
+to lack of the water solubility data for semax acetate.
+
+               e. Any Other Information About the Substance That May Be Relevant, Such as
+                  Whether the API Is Poorly Characterized or Difficult to Characterize
+In the CoA provided by withdrawn nominator 1, there is no testing result for microbial bioburden
+and/or bacterial endotoxin levels. Bacterial endotoxin test is considered a critical quality control
+attribute for an injection product. However, endotoxin testing was not identified from publicly
+available scientific literature, either.
+
+As mentioned at the beginning of Section IIA, for a metered dose nasal spray solution product,
+the information about the container closer system (including container, closer, and pump) is
+relevant to the CQAs (pump delivery, spray content uniformity, spray pattern and plume
+geometry, and droplet size distribution) for the proposed product and would affect how the BDS
+is delivered. However, no such information is available either in the nominations or the publicly
+available scientific literature.
+
+Conclusions: Semax acetate is reported to be an acetate salt of semax (free base). As reported in
+the literature, semax acetate is expected to be stable under reported storage conditions.
+
+Semax acetate is considered not well-characterized from the physical and chemical
+characterization perspective because (1) inconsistent naming conventions that do not follow
+established chemical nomenclature standards (e.g., INN, IUPAC, USAN), and (2) certain critical
+characterization data specific to semax acetate (including impurities, aggregates, microbial
+bioburden and/or bacterial endotoxin) were not found in the publicly available scientific
+literature, and the CoAs provided, which were offered as evidence to establishing identity,
+purity, and impurity profiles of the substance, lacked specific tests (including impurities,
+aggregates, microbial and bacterial endotoxins). The limited information related to critical
+characterization data is particularly important for immunogenicity. As discussed in
+Section II.D.2.d., FDA is concerned about the potential for immunogenicity of semax acetate
+when formulated in an injectable dosage form for SC administration as well as in intranasal
+spray dosage form due to the potential for aggregation as well as potential peptide-related
+impurities, as discussed in Section II.A.2.c. The nominations did not include, and FDA has not
+identified, information about semax acetate to suggest that this substance does not present these
+risks. Therefore, we cannot rule out potential immunogenicity issues associated with peptide and
+peptide-related impurities aggregates. In addition, it is difficult to evaluate how the
+physicochemical characteristics of semax acetate, especially the water solubility of semax
+acetate, will impact on the performance of the proposed injectable and intranasal spray products
+
+
+23
+     https://www.abmole.com/products/semax-acetate.html. Accessed 12/12/24.
+
+
+                                                                                                    19
+due to lack of water solubility data for semax acetate. We also note that the stability,
+pharmacological activity, and immunogenic properties of peptides are highly sensitive to the
+manufacturing process and quality attributes of the compounded/finished drug product.
+
+In addition, FDA would have strong concerns about the use of this BDS in the proposed
+compounded nasal spray solution product due to lack of information about container closer
+system, including container, closer, and pump – all of which are relevant to the CQAs for the
+proposed product and would affect how the BDS is delivered via this product.
+
+     B. Has the Substance Been Used Historically in Compounding?
+This evaluation focuses on semax (free base) and semax acetate for intranasal and subcutaneous
+administration and their use in cerebral ischemia and analgesia for migraine and trigeminal
+neuralgia; however, FDA searched generally on the historical use of semax-related BDSs in
+compounding. Information about use may not specify specific attributes of the product, such as
+route of administration. Databases searched for this evaluation included PubMed, EMBASE,
+Registration of Medicines in Russia 24, European Pharmacopoeia (11.8 Edition) 25, Japanese
+Pharmacopoeia (18th Edition) 26, International Pharmacopoeia (12th Edition) 27, NatMed Pro
+database 28, GlobalEdge 29, USP-NF 30, FDA Adverse Event Reporting System (FAERS) public
+dashboard 31, Compounding Today 32, Google/Google Scholar, and the Outsourcing Facility
+Product Reporting Database 33. It is often unclear which form of semax is being discussed in
+information from these sources. Therefore, FDA will consider the information discussed in this
+section in its evaluation of all forms of semax as appropriate.
+
+        1.   Length of Time the Substance Has Been Used in Compounding
+The nominator states that semax has been used to compound drug products but did not provide
+any additional information regarding the historical use of semax in compounding. The
+nominators submitted 38 articles but none of the articles discussed the use of a compounded
+formulation of semax.
+
+The extent to which semax has been used in compounding is unclear. A Google search did not
+identify any pharmacies that market drug products containing any form of semax. Based on a
+press release from the office of the U.S. Attorney for the Eastern District of Kentucky, a
+
+
+24
+   Available at https://grls.rosminzdrav.ru/default.aspx (available in Russian; translation required).
+Accessed 12/4/25.
+25
+   Available at https://pheur.edqm.eu/home (subscription required). Accessed 12/4/25.
+26
+   Available at https://www.pmda.go.jp/english/rs-sb-std/standards-development/jp/0029.html. Accessed
+12/4/25.
+27
+   Available at https://digicollections.net/phint/2025/index.html#d/b.1. Accessed 12/4/25.
+28
+   Available at https://naturalmedicines.therapeuticresearch.com/ (subscription required). Accessed
+12/4/25.
+29
+   Available at https://globaledge.msu.edu/industries/healthcare/regulatory-agencies.
+30
+   Available at https://www.uspnf.com/ (subscription required). Accessed 12/4/25.
+31
+   Available at https://fis.fda.gov/sense/app/95239e26-e0be-42d9-a960-9a5f7f1c25ee/sheet/7a47a261-
+d58b-4203-a8aa-6d3021737452/state/analysis. Accessed 12/4/25.
+32
+   Available at https://compoundingtoday.com (subscription required). Accessed 12/4/25.
+33
+   Available at https://www.accessdata.fda.gov/scripts/cder/outsourcingfacility/. Accessed 12/4/25.
+
+
+                                                                                                     20
+pharmacy compounded and distributed products containing semax from 10/25/18 to 4/1/20, but it
+is unclear which form of semax was being used to compound the products. 34 No studies were
+found in which semax was used as a compounded drug product.
+
+         2.   The Medical Condition(s) It Has Been Used to Treat
+A literature search revealed that semax has been studied as a therapy for peptic ulcer, chronic
+ischemic brain disease, migraine, and trigeminal neuralgia. One article discusses the use of
+intranasal semax (1%, 2-4 drops 3 times a day for 10 days) in addition to basic therapy
+(omeprazole 20 mg twice a day, “denol” 120 mg 2 times a day, and “solcoseril” 2.0
+intramuscularly) versus basic therapy without semax for peptic ulcer. The study authors note that
+the semax used in this study was synthesized at the Laboratory of Regulatory Peptides, Institute
+of Molecular Genetics, Russian Academy of Sciences (Ivanikov et al. 2002). Semax has also
+been studied as a therapy for chronic ischemic brain disease (Cherkasova et al. 2002) and for
+migraine and trigeminal neuralgia (Koroleva et al. 1996).
+
+One article hypothesizes that a possible use for semax, based on animal models and studies in
+healthy adults, might be attention deficit hyperactivity disorder (ADHD) and Rett syndrome
+(Tsai 2006).
+
+Semax is marketed online for a variety of conditions: anxiety, depression, attention/memory
+improvement, ischemic events/stroke, nerve regeneration, diabetic neuropathy, ADHD, opioid
+withdrawal, amyotrophic lateral sclerosis (ALS), Parkinson’s disease, Alzheimer’s disease, dys-
+circulatory encephalopathy, optic nerve atrophy, pain, and gastric protection. 35
+
+         3. How Widespread Its Use Has Been
+No outsourcing facility has reported compounding drug products containing semax since 2019. 36
+An online search identified websites of health/wellness clinics, medical concierge services,
+functional and regenerative medicine clinics, and online retailers in the United States that are
+
+
+
+
+34
+   See https://www.justice.gov/usao-edky/pr/nicholasville-compounding-pharmacy-and-its-owner-
+sentenced-unlawful-distribution. Accessed 12/4/25.
+35
+   See https://rwacenter.com/product/semax/, https://www.eternityhealthpartners.com/semax-selank/,
+https://neuronmedical.com/peptide-therapy-selank-semax-thousand-oaks/, https://stemedix.com/peptides/,
+https://www.transformyou.com/semax-peptide, https://www.biltmorerestorativemedicine.com/health-
+wellness/peptide-therapy-in-asheville-nc/, https://www.limitlesslifenootropics.com/product/semax-10ml-
+nasal-spray-30mg/. Accessed 12/4/25.
+36
+   Drug Quality and Security Act, signed into law on November 27, 2013, created a new section 503B in
+the Federal Food, Drug, and Cosmetic Act. Under section 503B, a compounder can become an
+outsourcing facility. Outsourcing facilities are required to provide FDA with a list of drugs they
+compounded during the previous 6-month period upon initial registration and in June and December each
+year. This retrospective information does not identify drugs that outsourcing facilities intend to produce in
+the future. The outsourcing facility product report is available at:
+https://www.accessdata.fda.gov/scripts/cder/outsourcingfacility. Accessed 12/4/25.
+
+
+                                                                                                          21
+marketing semax injection and intranasal products. 37 Many of the websites do not describe or
+clearly state whether the semax products marketed are compounded.
+
+Semax products are marketed as single ingredient formulations and in combination with selank.
+One website offers a semax single ingredient 2.5 mg/mL injectable product and a 1.25 mg/mL
+nasal spray; the website also offers a “50:50” combination of semax and selank as a 2.5 mg/mL
+injectable product and 1.25 mg/mL nasal spray. 38 One online retail website offers a semax 30 mg
+nasal spray product. 39 Another online retail website offers semax 30 mg “for research purposes
+only” and lists nasal spray and subcutaneous injection as common methods of administration. 40
+
+None of the websites searched indicate whether their marketed products contain the base or a salt
+or ester of semax.
+
+        4. Recognition of the Substance in Other Countries or Foreign Pharmacopeias
+There is no monograph for semax in the European Pharmacopoeia (11th Edition, 11.8), the
+Japanese Pharmacopoeia (18th Edition), or the International Pharmacopoeia (12th Edition).
+Semax is a registered drug in Russia and is available as 0.1% and 1% nasal drops. 41
+
+Conclusions: It is often unclear whether the semax discussed in the sources considered for this
+section is the salt formulation or the free base. Semax injection and intranasal products are
+widely marketed in the United States through health/wellness clinics, medical concierge services,
+functional and regenerative medicine clinics, and online retailers for anxiety, depression,
+attention/memory improvement, ischemic events/stroke, nerve regeneration, diabetic neuropathy,
+ADHD, opioid withdrawal, ALS, Parkinson’s disease, Alzheimer’s disease, dys-circulatory
+encephalopathy, optic nerve atrophy, pain, and gastric protection. The extent to which semax has
+been used in compounding is unclear. Semax is a registered drug in Russia and is available as
+0.1% and 1% nasal drops.
+
+
+
+
+37
+   See https://rwacenter.com/product/semax/, https://www.eternityhealthpartners.com/semax-selank/,
+https://neuronmedical.com/peptide-therapy-selank-semax-thousand-oaks/ https://stemedix.com/peptides/,
+https://www.transformyou.com/semax-peptide, https://www.biltmorerestorativemedicine.com/health-
+wellness/peptide-therapy-in-asheville-nc/, https://pharmagradepeptides.is/product/semax-30mg-2/ ,
+https://pinnacleintegrative.com/peptides/, https://www.limitlesslifenootropics.com/product/semax-10ml-
+nasal-spray-30mg/. Accessed 12/4/25.
+38
+   See https://rwacenter.com/product/semax/, https://rwacenter.com/product/semax-selank/. Accessed
+12/4/25.
+39
+   See https://www.limitlesslifenootropics.com/product/semax-10ml-nasal-spray-30mg/. Accessed
+12/4/25.
+40
+   See https://pharmagradepeptides.is/product/semax-30mg-2/. Accessed 12/4/25.
+41
+   See
+https://grls.rosminzdrav.ru/GRLS.aspx?RegNumber=&MnnR=&lf=&TradeNmR=%d1%81%d0%b5%d0
+%bc%d0%b0%d0%ba%d1%81&OwnerName=&MnfOrg=&MnfOrgCountry=&isfs=0&regtype=1%2c6
+&pageSize=10&order=Registered&orderType=desc&pageNum=1 (available in Russian; translation
+required). Accessed 12/4/25.
+
+
+                                                                                                    22
+     C. Available Evidence of Effectiveness or Lack of Effectiveness of Drug Products
+        Compounded With the Substance
+In addition to the references submitted by the nominator, the following databases were consulted
+in the preparation of this section: PubMed, Embase, Cochrane Database of Systematic Reviews,
+ClinicalTrials.gov, professional healthcare organization websites, and various online clinical
+references and websites. In addition to a comprehensive review of pertinent information from
+these databases, this section provides a brief overview of cerebral ischemia, migraine, and
+trigeminal neuralgia and a discussion of the proposed use(s) of semax-related BDSs.
+
+We evaluated semax-related BDSs for cerebral ischemia, migraine and trigeminal neuralgia 42
+and considered available data to support effectiveness. The clinical references discuss an active
+moiety the authors call semax, but these references do not specify whether the substance used
+was a free base or a salt. Therefore, when discussing these references, the substance will be
+referred to as semax (the term that was used by the authors).
+
+         1. Cerebral Ischemia
+Cerebral ischemia is a common mechanism of acute brain injury that results from impaired blood
+flow to the brain. Cerebral ischemia can be global or focal. The most common cause of global
+brain ischemia is systemic hypotension. Focal brain ischemia most commonly arises from
+obstruction of arterial blood flow to the brain, often as a result of thrombosis, embolism or
+vascular stenosis. The management of this condition is targeted at correcting the underlying
+cause and minimizing risk factors, such as diabetes mellitus, hypertension, and hyperlipidemia,
+to decrease the risk of recurrence (DeSai and Shapshack 2023).
+
+Studies for the acute treatment of cerebral ischemia generally evaluate endpoints such as
+neurological improvement based on clinical outcomes that measure clinical disability at three
+months after stroke based on the modified Rankin Scale score. 43 Studies for the prevention of
+cerebral ischemia have evaluated endpoints such as reduction in the occurrence of stroke,
+reduction in risk of stroke, time to first occurrence of new ischemic stroke, and reduction in
+blood pressure.
+
+Professional society guidelines for the treatment and prevention of cerebral ischemia do not
+discuss semax-related BDSs (Powers et al. 2019; Johnston et al. 2006; Kleindorfer et al. 2021).
+
+
+
+
+42
+   Semax-related BDSs were nominated for “analgesia”, but because the reference submitted by the
+nominator that discussed analgesia was in subjects with migraine and trigeminal neuralgia, we evaluated
+the Semax-related BDSs for these uses. Semax was also nominated for “ADHD” and “nootropic”. ADHD
+was not evaluated because supporting literature for this use was not found. “Nootropic” does not have an
+ICD-10 code and no professional society treatment guidelines could be found for this use. Dorland
+Medical Dictionary 29th Edition defines it as “having positive effects on organically impaired cognition
+or nervous system function”. Therefore, this use will be considered as part of the evaluation for cerebral
+ischemia.
+43
+   Modified Rankin Score (Broderick et al. 2017).
+https://pmc.ncbi.nlm.nih.gov/articles/PMC5552200/pdf/nihms875857.pdf Accessed 12/5/25.
+
+
+                                                                                                        23
+             a. Reports of Trials, Clinical Evidence, and Anecdotal Reports of Effectiveness, or
+                Lack of Effectiveness, of the Bulk Drug Substance
+•    Cherkasova et al. 2002 (meeting abstract)
+
+        This reference was submitted by the nominators and is an abstract from a professional
+        society meeting. No full published article could be located for this reference. The abstract
+        describes a study in which semax was given to both rats and humans. An unknown
+        number of human subjects with chronic ischemic brain disease received intranasal semax
+        600 mg daily for 10 days. The authors discuss lab values that were measured but do not
+        specify if these labs were done in the animal or human subjects. The authors do not
+        discuss how long the human subjects had ischemia or if they had received other
+        medications for the prevention or treatment of this condition. Although the authors
+        measured labs related to blood clotting (such as plasmin, antithrombin III, and protein C),
+        the authors do not provide full results for these lab values, nor do they discuss clinical
+        function before and after receiving semax.
+
+References regarding the use of semax-related BDSs for cerebral ischemia found by FDA were
+articles published in Russian 44, some of which had English abstracts. Because the full references
+were not available in English, these references were not considered as part of this evaluation 45.
+Although several review articles hypothesize that semax might be used in the treatment of
+cerebral ischemia, the information referenced in these review articles is based on data from
+studies completed in animals 46, and do not provide additional references in humans with cerebral
+ischemia. One review 47 provided some human references, but the references regarding cerebral
+ischemia are written in Russian 48 and those studies regarding neuroprotective and nootropic
+effects are in healthy adults 49 or are written in Russian 50.
+
+             b. Whether the Product Compounded With This Bulk Drug Substance Is Intended
+                To Be Used in a Serious or Life-Threatening Disease
+Cerebral ischemia is a serious disease that, if untreated, can result in death or permanent
+disability (DeSai and Shapshak 2023).
+
+
+
+
+44
+   Miasoedova et al. 1999, Gusev et al. 1997, Gusev et al. 2005, Gusev et al. 2018.
+45
+   See 21 CFR 10.20(c)(2) (“If a part of the material submitted is in a foreign language, it must be
+accompanied by an English translation verified to be complete and accurate, together with the name,
+address, and a brief statement of the qualifications of the person making the translation. A translation of
+literature or other material in a foreign language is to be accompanied by copies of the original
+publication.”)
+46
+   Deigin et al. 2022; Tarasov et al. 2017.
+47
+   Kolomin et al. 2013.
+48
+   Shmyrev et al. 1998; Gusev et al. 1997; Gusev et al. 1996; Gusev et al. 2005.
+49
+   Kaplan et al. 1996.
+50
+   Kaplan et al. 1992; Alekseeva et al. 1999.
+
+
+                                                                                                              24
+             c. Therapies That Have Been Used for the Condition(s) Under Consideration
+There are many FDA-approved drug products that prevent and treat the same medical condition
+as that proposed for the semax-related compounded drug product(s). 51 These drug products are
+listed in Table A located in Appendix 1. 52
+
+             d. Conclusion for Cerebral Ischemia
+There is insufficient evidence of effectiveness to support use of semax (free base) or semax
+acetate for cerebral ischemia. The only available information was in the form of a meeting
+abstract that lacked information about relevant clinical endpoints. Professional society guidelines
+on the treatment of cerebral ischemia do not discuss semax-related BDSs. Cerebral ischemia is a
+serious condition and there are FDA-approved drug products for the prevention and treatment of
+this condition.
+
+         2. Migraine
+Migraine is a chronic neurologic disease characterized by attacks of throbbing, often unilateral
+headache that are exacerbated by physical activity and associated with photophobia,
+phonophobia, nausea, vomiting, and, frequently, cutaneous allodynia (Ailani et al. 2021).
+
+Studies for the acute treatment of migraine generally evaluate endpoints such as reduction to no
+pain within 2 hours of receiving a treatment, freedom from most bothersome symptoms such as
+nausea, phonophobia, or photophobia following treatment, and the use of rating scales to assess
+changes in daily functioning following treatment. Studies for the preventive treatment of
+migraine have evaluated endpoints such as change from baseline in the mean monthly migraine
+days, change from baseline in the need for acute migraine treatments, and the use of rating scales
+to assess changes in daily functioning following treatment.
+
+Professional society guidelines for the treatment of migraine do not discuss semax-related BDSs
+(Ailani et al. 2021).
+
+             a. Reports of Trials, Clinical Evidence, and Anecdotal Reports of Effectiveness, or
+                Lack of Effectiveness, of the Bulk Drug Substance
+•    Koroleva et al. 1996
+
+        This reference was submitted by the nominator. This study evaluated adults with
+        migraine, trigeminal neuralgia, or dental plexalgia. The data for the study populations
+        related to trigeminal neuralgia are discussed below in Section II.C.3.a. In the migraine
+        group, 12 subjects (10 women and 2 men aged 19-56 years) received one dose
+        (0.5 mg/kg) of intranasal semax. Pain severity was measured using the modified pain
+        sensitivity test (MPST) rating scales. The authors did not describe this rating scale and
+
+
+51
+   FDA considers the existence of FDA-approved or OTC monograph drug products to treat the same
+condition as that proposed for the nomination relevant to FDA’s consideration of the effectiveness
+criterion, to the extent there may be alternative therapies that have been demonstrated to be effective for
+certain conditions. See 84 FR 4696.
+52
+   Labels for the drug products listed in this table can be found at https://nctr-
+crs.fda.gov/fdalabel/ui/search. Accessed 8/4/25.
+
+
+                                                                                                          25
+        there was no information referenced about the scale and we did not identify additional
+        information about the MPST rating scale. Rhoencephalogram (REG) was recorded before
+        and 5, 15, and 30 minutes after administration of semax. The article provided insufficient
+        information on REG recordings and its relevance to clinical outcomes in subjects
+        experiencing migraine headaches; changes in REG recordings appeared to have been
+        used as a measure of vasodilatory effect and vascular tone to identify two types of
+        responders to semax administration.
+        The authors reported that total MPST score decreased from 78% before semax to 32%
+        after semax administration. Four subjects out of twelve (33%) reported cessation of
+        headache pain 90-120 minutes after semax administration, whereas in 8 subjects the
+        authors reported that “the effect of semax was weaker; “pain was not eliminated but
+        became less severe.” There was no information about migraine headache characteristics
+        at baseline such as headache intensity or severity, presence or absence of associated
+        symptoms, unilaterality or bilaterality of the headache, etc. Additional limitations of this
+        study include the small sample size, no blinding, no control group, the absence of
+        reporting of the actual scores or standard deviations for the scores of the rating scales,
+        and there were insufficient details provided on the design and the conduct of this study. A
+        minority of the subjects had resolution of their pain and it is unclear from the rating
+        scales used how much the pain interfered with daily functioning and how semax may
+        have affected that.
+
+FDA was unable to find additional references regarding the use of semax-related BDSs for
+migraine.
+
+             b. Whether the Product Compounded With This Bulk Drug Substance Is Intended
+                To Be Used in a Serious or Life-Threatening Disease
+Migraine can be a serious condition and can significantly impair functional ability and may
+increase the risk for other serious medical conditions, such as depression and epilepsy (Ailani et
+al. 2021).
+
+             c. Therapies That Have Been Used for the Condition(s) Under Consideration
+There are many FDA-approved drug products and over-the-counter (OTC) drug products that
+treat the same medical condition as that proposed for the semax-related compounded drug
+product(s). 53 These drug products are listed in Tables B and C in Appendix 2. 54
+
+             d. Conclusion for Migraine
+There is insufficient evidence of effectiveness to support use of semax (free base) or semax
+acetate for headache pain (analgesia) in subjects with migraine headache. The results from only
+one small, uncontrolled, open label study showed that semax was not effective in resolving
+
+
+53
+   FDA considers the existence of FDA-approved or OTC monograph drug products to treat the same
+condition as that proposed for the nomination relevant to FDA’s consideration of the effectiveness
+criterion, to the extent there may be alternative therapies that have been demonstrated to be effective for
+certain conditions. See 84 FR 4696.
+54
+   Labels for the drug products listed in this table can be found at https://nctr-
+crs.fda.gov/fdalabel/ui/search. Accessed 8/4/25.
+
+
+                                                                                                          26
+headache pain for the majority of subjects with migraine. Professional society guidelines on the
+treatment of migraine do not discuss semax-related BDSs. Migraine is a serious condition and
+there are FDA-approved drug products for the prevention and treatment of this condition.
+
+        3. Trigeminal Neuralgia
+Trigeminal neuralgia is a condition causing severe, unilateral, episodic facial pain. Patients
+typically report brief, lancinating attacks triggered by eating, drinking, talking, or touching the
+face. There is a distinction between typical trigeminal neuralgia paroxysms where there is no
+pain between episodic attacks and trigeminal neuralgia with concomitant pain where there is
+background pain between attacks. Chong et al. (2023) discusses three etiologic classifications for
+trigeminal neuralgia:
+
+•   Classic—vascular contact on the trigeminal nerve.
+•   Secondary—possible underlying pathology such as schwannoma or multiple sclerosis.
+•   Idiopathic—no apparent structural cause.
+
+Professional society guidelines for treatment and prevention of trigeminal neuralgia do not
+discuss semax-related BDSs (Chong et al. 2023).
+
+            a. Reports of Trials, Clinical Evidence, and Anecdotal Reports of Effectiveness, or
+               Lack of Effectiveness, of the Bulk Drug Substance
+•   Koroleva et al. 1996
+
+       This reference was submitted by the nominator. This study evaluated adults with
+       migraine, trigeminal neuralgia, or dental plexalgia. The data for study populations related
+       to migraine was described above in Section II.C.2.a. The authors defined dental plexalgia
+       as a subtype of trigeminal neuralgia. There was a total of 25 adult subjects with
+       trigeminal neuralgia in the study. The typical trigeminal neuralgia group consisted of 16
+       subjects (12 women and 4 men aged 45-65 years) and the dental plexalgia group
+       consisted of 9 subjects (3 women and 6 men aged 15-52 years). Subjects in both groups
+       received one dose (0.5 mg/kg) of intranasal semax. Pain severity and frequency were
+       measured using the modified pain sensitivity test (MPST) rating scales. The authors did
+       not describe this rating scale and there was no information referenced about the scale and
+       we did not identify additional information about the MPST rating scale. Thresholds of
+       sensation and pain in response to electrostimulation of the skin in symmetrical areas of
+       the face on healthy and affected sides as well as trigeminal somatosensory evoked
+       potentials (TSEP) before and 5, 15, and 30 minutes after semax administration were
+       recorded.
+
+       The authors report that in the subjects with typical trigeminal neuralgia, there were no
+       changes in the characteristics of pain in the MPST nor changes in sensation or pain
+       thresholds and TSEP after administration of semax. In subjects with dental plexalgia,
+       pain resolved in 6 subjects and 3 subjects reported a decrease in pain severity, with
+       change in their perception of pain. However, MPST results showed that overall, there was
+       no reduction in frequency of pain attacks, duration of pain attacks, and differences in
+       sensory characteristics of pain. Although there were some differences in patient reports of
+       pain severity pre- and post- semax, the authors do not provide quantitative changes in
+
+
+                                                                                                 27
+        TSEP after semax administration, and its clinical relevance is unclear. Authors concluded
+        that “no significant changes in TSEP were observed after a single intranasal
+        administration of semax. This observation indicates that semax does not exhibit analgesic
+        activity by itself. Additionally, limitations of this study include the small sample size, no
+        blinding, no control, the absence of reporting of the actual scores or standard deviations
+        for the scores of the MPST rating scales or TSEP. There was insufficient information for
+        the MPST rating scales or TSEP that were used to inform the study endpoints in a
+        population with trigeminal neuralgia. Furthermore, it appears that the authors assigned
+        arbitrary units when they discussed their findings.
+
+FDA was unable to find other references that discuss the use of semax-related BDSs for
+trigeminal neuralgia.
+
+             b. Whether the Product Compounded With This Bulk Drug Substance Is Intended
+                To Be Used in a Serious or Life-Threatening Disease
+Trigeminal neuralgia is a serious condition that causes pain that is severe and distressing and that
+interferes with daily activity. It was reported that patients with trigeminal neuralgia experienced
+an increased risk of anxiety and depression (Chong et al. 2023).
+
+             c. Therapies That Have Been Used for the Condition(s) Under Consideration
+There are FDA-approved drug products that treat the same medical condition as that proposed
+for the semax-related compounded drug product(s). 55
+
+Carbamazepine (Equetro), oral (NDA 021710) is indicated for the treatment of the pain
+associated with trigeminal neuralgia. (https://nctr-crs.fda.gov/fdalabel/ui/spl-
+summaries/criteria/579097). There are several oral carbamazepine dosage formulations, and the
+above product and reference is an example of one of these formulations.
+
+Professional society treatment guidelines also recommend the off-label use of FDA-approved
+drug products, such as oxcarbazepine, lamotrigine, baclofen, gabapentin, and pregabalin for the
+treatment of trigeminal neuralgia if carbamazepine is not effective. For patients who are
+hospitalized with acute relapses, lidocaine nerve block, botulinum toxin, sumatriptan, phenytoin
+or fosphenytoin might also be used (Chong et al. 2023).
+
+             d. Conclusion for Trigeminal Neuralgia
+There is insufficient evidence of effectiveness to support use of semax (free base) or semax
+acetate for analgesia in patients with trigeminal neuralgia pain that is severe and distressing. The
+results from only one small, uncontrolled, open-label study showed that semax was not effective
+in resolving pain for the majority of subjects with trigeminal neuralgia in the study. Professional
+society guidelines on the treatment of trigeminal neuralgia do not discuss semax-related BDSs.
+
+
+
+55
+  FDA considers the existence of FDA-approved or OTC monograph drug products to treat the same
+condition as that proposed for the nomination relevant to FDA’s consideration of the effectiveness
+criterion, to the extent there may be alternative therapies that have been demonstrated to be effective for
+certain conditions. See 84 FR 4696.
+
+
+                                                                                                          28
+Trigeminal neuralgia is a serious condition and there are FDA-approved drug products for the
+treatment of this condition.
+
+Overall Conclusions on Effectiveness: There is insufficient evidence to support the
+effectiveness for semax (free base) or semax acetate for cerebral ischemia, migraine, or
+trigeminal neuralgia. Only two available references were available with insufficient details on
+the design and conduct of the studies, and the available references demonstrated lack of
+effectiveness and were limited by small sample size and lack of information about some relevant
+clinical endpoints. Cerebral ischemia, migraine and trigeminal neuralgia are all serious
+conditions and FDA-approved therapies for the acute treatment and prevention of these
+conditions exist.
+
+     D. Are There Concerns About the Safety of the Substance for Use in Compounding?
+
+         1.   Nonclinical Assessment
+The nominations included nonclinical information. Specifically, the nominations included a list
+of 35 articles published in English describing pharmacological studies of semax. 56 In addition,
+the nominations included an article describing some of the pharmacokinetic properties of semax
+delivered via the intranasal ROA to rats (Shevchenko et al. 2006a). Although the article is
+written in a foreign language, FDA identified in the publisher site (https://link.springer.com/) the
+English version of the same article, which is also indexed in the Google Scholar database
+(Shevchenko et al. 2006b). The nominations included an article describing the analgesic effects
+of a different peptide, selank (Meshavkin et al. 2006), which is out of the scope of this evaluation
+and is, therefore, not further discussed.
+
+The following databases were consulted in preparation of this section: Drugs@FDA, Embase,
+European Chemicals Agency, FDA’s Generally Recognized as Safe (GRAS) Notice Inventory,
+Google, Google Scholar, National Institutes of Health’s dietary supplement label database,
+National Toxicology Program website, Pharmapendium, PubMed, Society of Toxicology, USP,
+and Web of Science.
+
+              a. General Pharmacology of the Drug Substance
+Semax is a synthetic heptapeptide analog of the ACTH 4-10 fragment (ACTH4-10), which is
+devoid of the hormonal corticotropic and melanotropic properties but retains the neurobehavioral
+properties of the full-length ACTH protein (Kolomin et al. 2013). The amino acid sequences of
+ACTH4-10 and semax differ with respect to the three amino acids in the C-terminal domain
+
+
+
+
+56
+   Agapova et al. 2007a; Agapova et al. 2007b; Bakaeva et al. 2009; Bakhmet and Koplik 2012;
+Boyarshinova et al. 2008; Cherkasova et al. 2002; Eremin et al. 2004; Eremin et al. 2005; Glazova et al.
+2005; Grigorjeva and Lyapina 2010; Inozemtsev et al. 2013; Inozemtsev et al. 2016; Ivanova et al. 2003;
+Ivanova et al. 2004; Ivanova et al. 2005; Ivanova et al. 2007; Kolik et al. 2014; Kopylova et al. 2003;
+Koroleva et al. 1996; Lebedeva et al. 2018; Levitskaya et al. 2010; Lyapina et al. 2006; Malyshev et al.
+2013; Manchenko et al. 2012; Medvedeva et al. 2014; Orlov et al. 1999; Romanova et al. 2006; Safarova
+et al. 2002; Shevchenko et al. 2013; Slominsky et al. 2017; Solov’ev et al. 2016; Stavchansky et al. 2011;
+Vlasova et al. 2009.
+
+
+                                                                                                        29
+(Figure 5). The C-terminal sequence Pro-Gly-Pro in semax is thought to increase the
+heptapeptide stability to hydrolysis catalyzed by peptidases (Potaman et al. 1991a).
+
+Figure 5. Amino Acid Sequences of Semax and ACTH4-10.
+
+
+
+
+According to nonclinical studies, semax, like ACTH4-10, has multiple pharmacological properties.
+In addition to acting as an analgesic, a neuroprotectant, and a neurotrophic agent, semax also
+induces antidepressant- and anxiolytic-like effects in rodents (Bashkatova et al. 2001; Dolotov et
+al. 2006; Severyanova et al. 2020; Silachev et al. 2009; Volodina et al. 2012). The paragraphs
+that follow focus on the pharmacological properties of semax that are most closely associated
+with the nominated clinical indications of cerebral ischemia and analgesia.
+
+Semax and Cerebral Ischemia in Animal Models
+In a study conducted in a rat model of focal cerebral ischemia, semax reduced the ischemic
+damage and prevented the development of cognitive deficits (Romanova et al. 2006).
+Specifically, in this study, focal photothrombotic ischemia was induced in anesthetized rats that
+received an intravenous (IV) injection of the photosensitizing dye Bengal rose and had their
+surgically exposed cranial surface exposed to a cold light beam for 15 minutes. At 15 minutes
+and 1 hour after the photostimulation, half of the rats were treated with semax (250 μg/kg,
+intranasal [IN]) and the other half with vehicle (water; 7 μL, IN). The treatments were repeated
+once a day for 6 more days. The control group consisted of untreated sham-operated rats. Eight
+days after the photothrombosis, the infarcted brain areas were approximately 20% smaller in
+semax-treated rats than vehicle-treated rats. Although semax-treated rats and vehicle-treated rats
+had significantly reduced locomotor activity compared to control rats, semax-treated rats did not
+present memory retention deficit in a passive avoidance task whereas water-treated rats did
+(Romanova et al. 2006).
+
+In a different study conducted in adult male rats with global cerebral ischemia induced by
+bilateral carotid artery occlusion, semax also reduced the ischemic damage (Stavchansky et al.
+2011). In this study, rats were treated via the intraperitoneal (IP) route with semax (100 μg/kg) or
+saline 15 minutes, 1, 4, and 8 hours after the carotid occlusion. Half of the animals were
+euthanized at 30 minutes and the other half at 24 hours post-occlusion. Histological assessment
+revealed that vehicle-treated rats presented marked ischemic damage in the frontoparietal cortex
+at 30 minutes post-occlusion and in the cerebral cortex, thalamus, mesencephalon, hippocampus,
+cerebellum, and pons at 24 hours post-occlusion. Ischemic damage was characterized by large
+numbers of neurons with nuclear condensation and shrinking of the cytoplasm. In addition to
+reducing the ischemic damage, the treatment with semax increased the number of cells
+expressing proliferating cell nuclear antigen, a DNA repair protein that is generally associated
+with cell division, in the fourth ventricle and other brain regions (Stavchansky et al. 2011). These
+findings led the authors to conclude that semax may be neuroprotective and may promote stem
+cell neurodifferentiation (Stavchansky et al. 2011).
+
+
+                                                                                                  30
+Stavchansky and colleagues further reported that the capillaries in the cerebral cortex of semax
+(100 μg/kg, IP)-treated ischemic rats appeared moderately dilated and filled by erythrocytes but
+did not have the signs of stasis seen in the cerebral cortical blood vessels of saline-treated rats
+30 minutes and 24 hours post-occlusion (Stavchansky et al. 2011). Considering these findings,
+the authors proposed that the antithrombotic properties of semax might contribute to its
+effectiveness in suppressing cerebral ischemic damage. However, the authors did not provide
+direct evidence for semax-induced antithrombotic effects in ischemic rats. Direct evidence that
+semax has anticoagulant and antithrombotic properties has been provided by studies conducted
+in non-ischemic rats (Cherkasova et al. 2002; Cherkasova et al. 2001; Grigorjeva and Lyapina
+2010; Lyapina et al. 2006).
+
+Cherkasova and colleagues reported that intranasal administration of semax (1 mg/kg/day)
+compared to saline to adult male rats for 5 days increased the anticoagulant and fibrinolytic
+activities of the plasma (Cherkasova et al. 2002; Cherkasova et al. 2001). The increased levels of
+total fibrinolytic activity, plasmin, and plasminogen were pharmacologically relevant as semax-
+treated rats compared to saline-treated rats developed smaller thrombi in response to 1.5-hour
+clamping of the jugular vein (Cherkasova et al. 2002; Cherkasova et al. 2001).
+
+Grigorjeva and colleagues assessed the effects of semax on coagulation endpoints in rats exposed
+to acute or chronic stress (Grigorjeva and Lyapina 2010). In this study, adult male rats treated
+with saline (0.05 mL/day, 0.85% NaCl solution, IP) for 4 days and subjected to acute or chronic
+immobilization stress presented a hypercoagulating phenotype characterized by shorter activated
+partial thromboplastin time, shorter fibrinolytic activity, lower activity of plasminogen tissue
+activator, and lower platelet aggregation compared to non-stressed rats. By contrast, adult male
+rats treated with semax (1 mg/kg/day, IP) for 4 days and subjected to acute or chronic
+immobilization stress presented a hypocoagulating phenotype characterized by longer partial
+thromboplastin time, higher fibrinolytic activity, higher activity of plasminogen tissue activator,
+and lower platelet aggregation compared to non-stressed rats (Grigorjeva and Lyapina 2010).
+
+Considering the results of their study, Grigorjeva and Lyapina concluded that semax protected
+the rats from the hypercoagulating effects of acute and repeated stress (Grigorjeva and Lyapina
+2010). However, we note that semax-treated rats presented a hypocoagulating phenotype when
+compared to control (non-stressed) rats. Because the study did not evaluate the dose-response
+relationship for the effects of semax, it is unclear whether it would be possible to titrate semax
+doses to reverse a hypercoagulating condition without creating a condition that could favor the
+development of a bleeding event.
+
+In a separate study, Lyapina and collaborators reported that, in vitro, semax was devoid of
+anticoagulant effects (Lyapina et al. 2006). However, in line with previous findings, the authors
+reported that in-vivo treatment of rats with semax (1 mg/kg, IN or IV) significantly increased
+fibrin depolymerizing activity and tissue plasminogen activator and reduced (by ~35%) platelet
+aggregation (Lyapina et al. 2006). In the same study, the shorter peptide segment Pro-Gly-Pro,
+which is recognized as a semax metabolite (see the Pharmacokinetics section), was shown to
+have anticoagulant properties both in vivo and vitro. It is possible that, in vivo, the anticoagulant
+and antithrombotic effects of semax are due to its metabolites. The molecular mechanisms
+accounting for the anticoagulant effects of semax and its metabolites remain unknown.
+
+
+
+
+                                                                                                     31
+It has been proposed that the effectiveness of semax in suppressing ischemic cerebral damage
+could also be related to its antioxidant properties (Vlasova et al. 2009) and its ability to rapidly
+modulate gene expression (Agapova et al. 2007a; Agapova et al. 2007b; Medvedeva et al. 2014).
+In adult male rats treated with semax (50 μg/kg, IN), expression of nerve growth factor and
+brain-derived neurotrophic factor increased significantly in different brain regions, including the
+hippocampus, as early as 60 minutes after the treatment (Agapova et al. 2007a). The expression
+of genes encoding growth factors was also found to be upregulated in the hippocampus at 3 and
+24 hours after the induction of ischemia by middle carotid artery occlusion in rats treated with
+semax (100 µg/kg, IP injection at 15 minutes, 1, 4, and 8 hours after the occlusion) compared to
+saline (Medvedeva et al. 2014). Upregulation of brain-derived neurotrophic factor and nerve
+growth factor could be beneficial in the context of cerebral ischemia because both factors are
+known for their antiapopotic and anti-inflammatory properties and for their ability to induce
+neurogenesis and promote synaptic plasticity (Sims et al. 2022). The molecular mechanisms by
+which semax regulates gene expression are unknown.
+
+We note that nonclinical studies assessing the pharmacological effects of semax in cerebral
+ischemia are limited in that they are generally restricted to a fixed dose of semax (100 μg/kg, IP,
+in some studies or 250 μg/kg, IN, in others). As such, dose-response relationships for semax
+delivered via different ROAs have not been established. Those studies also lacked an assessment
+of the systemic exposure to semax needed to reduce cerebral ischemia. In addition, studies
+assessing the antithrombotic effects of semax in vivo have been conducted with a fixed IN dose
+of semax (1 mg/kg) that is 4 times higher than the IN dose shown to suppress ischemic brain
+damage. In the absence of direct evidence that coagulation endpoints are reduced by semax in
+animal models of ischemia, it is difficult to establish the relevance of the antithrombotic
+properties of semax to the suppression of cerebral ischemia.
+
+Semax and Pain
+In rodents, semax administered via some ROAs has been shown to induce analgesia. For
+instance, in one study, treatment of adult male rats with semax (1.5, 15, 50, or 500 μg/kg, IP)
+dose dependently increased the pain threshold of the animals (measured as the pressure the
+animals tolerated in their leg prior to withdrawing it). As the IP semax dose increased from 1.5 to
+500 μg/kg, the magnitude and duration of the semax-induced analgesic effect increased and the
+time for onset of the effect decreased (Manchenko et al. 2012). In the same study, the same
+semax doses delivered intranasally were unable to induce analgesia (Manchenko et al. 2012).
+
+In separate studies, the same research group assessed the analgesic effects of semax (50 μg/kg or
+500 μg/kg, IP) in rats subjected to each of the following tests: (i) tail flick test, (ii) hind leg
+compression, (iii) hot plate test, and (iv) paw-withdrawal test (Ivanova et al. 2003; Ivanova et al.
+2007; Ivanova et al. 2004; Ivanova et al. 2005). In all studies, control groups consisted of rats
+treated with an equivalent volume of vehicle. In all tests, rats treated with the highest IP dose of
+
+
+
+
+                                                                                                  32
+semax (500 μg/kg) consistently presented higher pain thresholds than saline-treated rats. 57 In the
+four tests, the analgesic effects of semax were evident starting at approximately 15 minutes and
+lasted for at least 60 minutes after the treatment.
+
+In the study published in 2003, Ivanova and colleagues also assessed the analgesic effect of
+semax in the acetic acid-induced writhing test in mice. In this test, mice were treated with semax
+(50 μg/kg or 500 μg/kg, IP) or vehicle before receiving an IP injection of acetic acid (0.6%;
+0.1 mL/10 g). Number of acetic acid-induced contractions of the abdominal wall (writhing), a
+measure of pain, was significantly lower at 40-50 minutes after the semax treatment compared to
+vehicle treatment (Ivanova et al. 2003). No dose-response relationship was noted in this test, as
+the magnitude of the analgesic effect induced by the IP semax doses of 50 μg/kg and 500 μg/kg
+was comparable (Ivanova et al. 2003).
+
+The molecular mechanisms underlying the analgesic effects of semax are poorly understood. In
+vitro, semax has been shown to inhibit the activity of enkephalinases, enzymes that catalyze the
+hydrolysis of the endogenous opioids enkephalins, with an apparent potency of 10 μM (Kost et
+al. 2001). Since enkephalinases are membrane-bound enzymes, they could represent the
+molecular targets to which radiolabeled semax delivered intranasally to rats was shown to bind
+with a dissociation constant (Kd) of approximately ~ 2.4 nM (Dolotov et al. 2006).
+Enkephalinase inhibition leading to an increase in the concentrations of endogenous opioids
+could contribute to the analgesic effect of semax. However, Ivanova and colleagues reported that
+the opioid receptor antagonist naloxone (1 mg/kg, IP) did not prevent the analgesic effect of
+semax, as assessed in the paw-withdrawal test in rats (Ivanova et al. 2005). Instead, the authors
+provided evidence that the analgesic effect semax (50 or 500 μg/kg, IP) could not be detected in
+rats that were pretreated with cyproheptadine (1 mg/kg, IP, 15 minutes before semax).
+Considering that cyproheptadine acts as an antagonist at the serotonin 5-HT1a and 5-HT2a
+receptors, the authors proposed that semax-induced analgesia is mediated, at least in part, via an
+increase of serotoninergic signaling in the brain (Ivanova et al. 2005).
+
+The proposal that semax-induced analgesia may be mediated by semax-induced increase of
+serotoninergic signaling in the brain is supported by the finding that semax (0.15 or 0.6 mg/kg,
+IP) administered to adult male C57/BL6 mice dose dependently increased extracellular striatal
+levels of the serotonin metabolite 5-hydroxyindoleacetic acid (Eremin et al. 2004; Eremin et al.
+2005). However, semax does not appear to act selectively on the serotoninergic system because
+treatment of mice with semax also potentiated amphetamine-induced dopamine release in the
+striatum and amphetamine-induced locomotor activity (Eremin et al. 2005). This finding is
+concerning because increased dopaminergic tone in the striatum is a response typically induced
+by drugs of abuse such as cocaine (Volkow et al. 2006). At the time of this evaluation, the
+
+
+
+
+57
+  In the tail flick test, 4 cm of the end tail of the rats was submersed in hot water at 56°C, and the time it
+took for animals to flick their tail was taken as a measure of pain threshold. In the hindleg compression
+and the paw-withdrawal tests, pressure of defined force was applied to the leg or paw of the rats, and the
+pressure force at which the rats withdrew their limb or paw was taken as a measure of pain threshold. In
+the hot plate test, rats were placed on a hot plate warmed to 53°C, and the time for the animals to lick one
+of their hind legs for the first time was taken as a measure of pain threshold.
+
+
+                                                                                                            33
+nominator did not submit, and FDA did not identify nonclinical studies to demonstrate whether
+semax has reinforcing and addictive properties to inform its abuse potential.
+
+            b. Pharmacokinetics/Toxicokinetics
+An in-vivo study assessed the blood and brain concentrations of semax in adult male Wistar rats
+treated with radioactively labeled semax ([3H]-semax; 50 μg/kg, IV) (Potaman et al. 1991b). The
+highest concentrations of semax measured in the brain represented approximately 0.005% of the
+administered dose. The highest ratio of brain-to-blood semax concentrations was 0.24 and was
+measured 10 minutes after the IV injection of [3H]-semax (Potaman et al. 1991b). The authors
+hypothesized that an active transport mechanism and/or passive transmembrane diffusion
+through the vascular epithelium, particularly in the circumventricular organs where the
+endothelial is leaky, could contribute to the entry of semax in the brain (Potaman et al. 1991b).
+
+A separate in-vivo study assessed the blood and brain concentrations of semax in rats
+(unidentified sex, age, and strain) treated with [3H]-semax (50 μg/kg, IN) (Shevchenko et al.
+2006b). The highest concentrations of semax in the brain were measured at 2 minutes after the
+treatment (the first time point of blood collection and brain harvesting) and represented
+approximately 0.072% of the administered dose [3H]-semax. The highest ratio of brain-to-blood
+semax concentrations in rats treated intranasally with [3H]-semax was approximately 0.67
+(Shevchenko et al. 2006b).
+
+Both the percentage of the semax dose that reached the rat brain and the ratio of brain-to-blood
+semax concentrations were considerably higher in rats treated intranasally than in rats treated
+intravenously with [3H]-semax (Potaman et al. 1991b; Shevchenko et al. 2006b). The brain
+delivery of peptides administered intranasally is thought to be facilitated, at least in part, by their
+axonal transport through the direct pathway established by the olfactory receptor cells that are in
+contact with both the nasal cavity and the olfactory bulb, the main olfactory relay center in the
+brain (Lin et al. 2016; Spetter and Hallschmid 2015).
+
+In-vitro studies reported that semax is quickly hydrolyzed in rat blood and brain tissue (Potaman
+et al. 1991a; Shevchenko et al. 2013). In-vivo studies reported that the metabolites identified in
+the blood of [3H]-semax-treated rats were generated by the sequential proteolytic removal of
+amino acids from the N-terminal domain of semax (Potaman et al. 1991a; Shevchenko et al.
+2006b). Figure 6 shows the amino acid sequences of semax metabolites identified in the brain
+and serum of [3H]-semax-treated rats (Shevchenko et al. 2006b). The tripeptide proline-glycine-
+proline was the main metabolite identified in the blood and brain taken from [3H]-semax-treated
+rats (Shevchenko et al. 2006b). In rat serum, aminopeptidases and angiotensin-converting
+enzyme are the main enzymes that catalyze the proteolytic degradation of semax (Potaman et al.
+1993).
+
+
+
+
+                                                                                                     34
+Figure 6. Amino Acid Sequences of Semax and Its Metabolites [Adapted From Shevchenko
+et al. 2006].
+
+
+
+
+At the time of this evaluation, the nominator did not submit, and FDA did not identify studies
+assessing the pharmacokinetic profile of semax delivered via the SC ROA.
+
+             c. Acute Toxicity 58
+At the time of this evaluation, the nominator did not submit, and FDA did not identify acute
+toxicity studies of semax.
+
+             d. Repeat-Dose Toxicity 59
+At the time of this evaluation, the nominator did not submit, and FDA did not identify repeat-
+dose toxicity studies of semax.
+
+             e. Genotoxicity 60
+At the time of this evaluation, FDA did not identify additional studies assessing the genotoxic
+potential of semax.
+
+
+
+
+58
+   Acute toxicity refers to adverse effects observed following administration of a single dose of a
+substance, or multiple doses given within a short period (approximately 24 hours). For more information
+on general approaches for acute toxicity studies, please refer to FDA’s guidance for industry M3(R2)
+Nonclinical Safety Studies for the Conduct of Human Clinical Trials and Marketing Authorization for
+Pharmaceuticals (January 2010), available at https://www.fda.gov/media/71542/download.
+59
+   Repeat-dose toxicity studies consist of in-vivo animal studies that seek to evaluate the toxicity of the
+test substance when it is repetitively administered daily for an extended period. For more information on
+general approaches for repeat-dose toxicity studies, please refer to FDA’s guidance for industry M3(R2)
+Nonclinical Safety Studies for the Conduct of Human Clinical Trials and Marketing Authorization for
+Pharmaceuticals (January 2010), available at https://www.fda.gov/media/71542/download.
+60
+   The genotoxicity assessment battery usually consists of a gene mutagenicity assay (for single dose
+trials) and a variety of clastogenicity/genotoxicity assays. To support multiple dose administration in
+humans, additional genotoxicity testing assessment is usually conducted to detect chromosomal damage
+in mammalian systems. For more information on general approaches for genotoxicity studies, please refer
+to FDA’s guidance for industry S2(R1) Genotoxicity Testing and Data Interpretation for Pharmaceuticals
+Intended for Human Use (June 2012), available at https://www.fda.gov/media/71980/download.
+
+
+                                                                                                        35
+             f. Developmental and Reproductive Toxicity 61
+At the time of this evaluation, the nominator did not submit, and FDA did not identify
+nonclinical developmental and reproductive studies of semax.
+
+             g. Carcinogenicity 62
+The effects of long-term treatment with semax on the frequency and size of spontaneous
+mammary tumors have been assessed in female SHK mice (Meshavkin et al. 2013). SHK mice
+are reported to develop a high frequency of mammary tumors and have a considerably shorter
+mean lifespan (~12.5 months) than other mouse strains, including CBA and C3HA (~21 months)
+(Emanuel et al. 1976).
+
+In the study by Meshavkin and collaborators, SHK female mice already had pronounced
+mammary gland tumors when they were assigned to treatment with vehicle (saline, 0.2 mL/day,
+IP; n=27) or semax (3 mg/kg/day, IP; n=16) 5 days/week until the end of their natural life. The
+authors did not provide the age of the mice at start of treatment. However, it is likely that mice
+were ~11 months old when their treatments started because: (i) the mean lifespan of saline-
+treated mice in the study by Meshavkin and colleagues was ~44 days (Meshavkin et al. 2013),
+and (ii) the mean lifespan of SHK mice is reported to be ~12.5 months (Emanuel et al. 1976).
+
+The late-life treatment of SHK mice with semax significantly reduced the size of their mammary
+gland tumors. Specifically, at end of life, the sizes of mammary gland tumors were 7.4±1.6 cm3
+in semax-treated mice and 15.0±2.0 cm3 in saline-treated mice. The semax treatment also
+prolonged the mean lifespan of SHK mice by ~68%. Although the authors concluded that semax
+may have anticarcinogenic properties (Meshavkin et al. 2013), the data should be interpreted
+with caution because: (i) the study tested a fixed dose of semax, and, as such, did not provide an
+assessment of dose-response relationships, (ii) the study assessed the effects of semax only in
+female (not male) mice, and (iii) the semax treatment was short lived with respect to the lifespan
+of the animals.
+
+
+
+
+61
+   Developmental and reproductive toxicity studies are usually designed to assess the potential adverse
+effects of a substance within a complete reproductive cycle, from conception to reproductive capacity in
+subsequent generations, and to identify the potential effects of a substance on pre-, peri-, and postnatal
+development. Developmental toxicity or teratogenicity refers to adverse effects (can include embryo-fetal
+mortality, structural abnormalities, functional impairment, or alterations to growth) and can occur in pups
+either as a result of the exposure of their parents to the substance, prior to the pups’ birth, or by direct
+exposure of the pups to the substance after birth. For more information on general approaches for
+reproductive and developmental toxicity studies, please refer to FDA’s guidance for industry S5(R3)
+Detection of Reproductive and Developmental Toxicity for Human Pharmaceuticals (May 2021),
+available at https://www.fda.gov/media/148475/download.
+62
+   Studies that assess cancer risk in animals are used as predictive tools to evaluate the potential for drugs
+to cause tumors when used by humans on a chronic basis. Carcinogenicity studies are conducted if the
+clinical use is expected to be continuous for a minimum of 6 months of life, or if intermittent clinical use
+is expected to total 6 months or more of life. For more information on general approaches for
+carcinogenicity studies, please refer to FDA’s guidance for industry S1B Testing for Carcinogenicity of
+Pharmaceuticals (July 1997), available at https://www.fda.gov/media/71935/download.
+
+
+                                                                                                            36
+The study by Meshavink and colleagues is not adequately designed to assess the carcinogenic
+potential of semax. In a typical nonclinical carcinogenic study, male and female rodents are
+treated daily with the test article for a minimum of 2 years. As discussed by Haseman and
+colleagues, rodent carcinogenicity studies in which treatments only last 12 to 18 months (instead
+of ≥24 months) would be equivalent to evaluating human cancer in 30- to 50-year-old subjects
+and would, therefore, result in markedly reduced sensitivity to detect the carcinogenic potential
+of an exposure (Haseman et al. 2001). Considering the finding that female SHK mice with
+growing mammary tumors lived for 73.7±10.5 days following the start of the semax treatment,
+the mean duration of the treatment was shorter than 3 months.
+
+In November 2022, FDA published the guidance entitled S1B(R1) Addendum to S1B Testing for
+Carcinogenicity of Pharmaceuticals, which discusses the use of a weight-of-evidence analysis to
+assess the human carcinogenic potential of pharmaceuticals. 63 This analysis, which takes into
+account the primary and off-target mechanisms of action as well the potential genetic, hormonal,
+and immunomodulatory effects of the test article in addition to its metabolic profile, may be used
+in lieu of nonclinical carcinogenicity studies to inform the carcinogenic potential of the article.
+
+At the time of this evaluation, the nominator did not submit, and FDA did not identify weight-of-
+evidence analyses or nonclinical 2-year carcinogenicity studies to inform the carcinogenic
+potential for semax.
+
+Conclusions: From the nonclinical pharmacological perspective, semax is a substance that
+exhibits pleiotropism. Acting through poorly understood mechanisms of action, semax in
+rodents: (i) has neuroprotective and neurotrophic properties, (ii) acts as an anticoagulant and
+antithrombotic, (iii) has analgesic properties, and (iv) induces antidepressant- and anxiolytic-like
+effects. The nonclinical finding that the serotoninergic antagonist cyproheptadine inhibited
+semax-induced analgesia in mice led to the proposal that the analgesic effect of semax depends,
+at least in part, on semax-induced activation of the serotoninergic system. It is concerning,
+however, that, in mice, semax also potentiated amphetamine-induced dopamine release in the
+striatum because increased dopaminergic tone in the striatum is a response typically induced by
+drugs of abuse such as cocaine. At the time of this evaluation, the nominator did not submit, and
+FDA did not identify published nonclinical toxicity studies to assess the pharmacokinetic profile
+of semax via the nominated SC ROA and to inform the abuse potential and other safety
+considerations for possible clinical uses of semax.
+
+        2.   Human Safety
+In addition to the references submitted by the nominator, the following databases were consulted
+in the preparation of this section: PubMed, Embase, Cochrane Database of Systematic Reviews,
+FAERS, ClinicalTrials.gov, professional healthcare organization websites, and various online
+clinical references and websites. The clinical references discuss an active moiety the authors call
+semax but these references do not specify whether the substance used was a free base or a salt.
+
+
+
+
+63
+  S1B(R1) Addendum to S1B Testing for Carcinogenicity of Pharmaceuticals: Guidance for Industry
+(November 2022), available at https://www.fda.gov/regulatory-information/search-fda-guidance-
+documents/s1br1-addendum-s1b-testing-carcinogenicity-pharmaceuticals.
+
+
+                                                                                                  37
+Therefore, when discussing these references, the substance will be referred to as semax (the term
+that was used by the authors).
+
+             a. Pharmacokinetic Data
+We were not able to find pharmacokinetic studies in humans following exposure to semax (free
+base) or semax acetate via any ROA.
+
+             b. Reported Adverse Reactions (FAERS, Case Reports and Anecdotal Cases
+                Assessing Safety)
+The Office of Surveillance and Epidemiology conducted a search of the FAERS database for
+reports of adverse events (AEs) for semax-related BDSs, through December 3, 2025 64. The
+search retrieved one FAERS report (#25343150). This was a direct report from a consumer. The
+consumer reported that in May 2024 she experienced ocular pain and eye burning after using
+Semax 0.1% nasal drops purchased online from a company called CosmicNootropic. The
+consumer reported hospitalization following the exposure and that the eye pain had not resolved
+as of the time of the report in May 2025. OSE also conducted two literature searches of PubMed
+through February 27, 2024, and from February 27, 2024 through December 3, 2025, and did not
+identify literature case reports of AEs in humans.
+
+             c. Clinical Studies Assessing Safety
+We were unable to find literature that discussed administration via subcutaneous injection ROA.
+The only ROA discussed in the literature was intranasal. Therefore, assessment of safety for
+semax was limited to the intranasal ROA. Based on two references submitted by the nominator
+and six references found by FDA, semax has been administered to 33-47 healthy adults 65, 69
+adults with medical conditions (including chronic ischemic brain disease, pain due to migraine
+and trigeminal neuralgia, and peptic ulcer), and 451 children with either depression or
+tics/Tourette Syndrome. The references do not discuss the type of device that was used to
+administer the substance via this ROA. Additional information regarding critical attributes of the
+device to assess product safety and effectiveness are discussed in Section II.A.1.e and
+Section I.A.2.e. Doses were 0.5 mg/kg once, 1 mg daily for 2 days, 600 mg daily for 10 days, or
+2-4 drops per nostril three times a day for 10 days. Three of the references were professional
+society meeting abstracts and details of the full studies conducted in all the pediatric subjects and
+in adults with chronic ischemic brain disease were not available. In one reference the authors
+report that no AEs were observed 66 and in the other references AEs were not discussed. 67 One
+reference (Cherkasova et al. 2002) discussed possible anti-thrombotic properties of semax and
+this raises concern about the risk of bleeding, particularly in certain populations at risk for
+
+
+64
+   Compounders under section 503A of the FD&C Act generally do not report adverse events to FDA.
+FDA encourages compounders, health care professionals, and consumers to report adverse events and
+product quality concerns associated with compounded drugs to FDA’s MedWatch Adverse Event
+Reporting program. Unless an adverse event report is submitted to FDA, the Agency may not be aware of
+adverse events associated with a product compounded under section 503A.
+65
+   It is unclear if the same subjects were used in Lebedeva et al. 2018 and Panikratova et al. 2020.
+66
+   Koroleva et al. 1996.
+67
+   Cherkasova et al. 2002, Kaplan et al. 1996, Ivanikov et al. 2002, Proskurina et al. 2018, Aminova et al.
+2016, Lebedeva et al. 2018, Panikratova et al. 2020.
+
+
+                                                                                                         38
+bleeding or if combined with other medications that increase bleeding risk. In several of the
+references, semax was administered concomitantly with other medications or therapies 68, making
+it difficult to determine the contribution of semax to any effects seen. Details of the individual
+studies can be found in Table 3 below.
+
+Table 3. Summary of References With Safety Information.
+    Reference            Population                         Intervention                               AE
+    Cherkasova et al.    Subjects with chronic              IN semax 600 mg daily for 10 days          AEs not
+    2002a, b             ischemic brain diseased                                                       discussed
+    Koroleva et al.      37 adults with pain                IN semax 0.5 mg/kg given once              Authors
+    1996b                (trigeminal neuralgia, dental                                                 reported
+                         plexalgia, and migraine)                                                      no AEs
+    Kaplan et al.1996    19 healthy adult males             IN semax 1 mg (16 mcg/kg) daily            AEs not
+                                                            for 2 days or IN semax 0.25 mg             discussed
+                                                            given once
+    Ivanikov et al.      32 adults with peptic ulcer        Semax 1% solution, 2-4 drops per           AEs not
+    2002                                                    nostril TID for 10 days + basic            discussed
+                                                            therapy (omeprazole 20 mg BID +
+                                                            denol 20 mg TID + socolseril 2 IM)
+                                                            vs. basic therapy only
+    Proskurina et al.    120 children ages 12-14 years      Semax 0.1% + cognitive behavioral          AEs not
+    2018a                with depression                    therapy + low-power physiotherapy          discussed
+                                                            (electromagnetic radiation of
+                                                            millimeter range)
+    Aminova et al.       331 children with tics and         Encephabol + semax + neuroleptics          AEs not
+    2016a                Tourette Syndrome                                                             discussed
+    Lebedeva et al.      14 healthy adults                  IN semax (1.2 mg)                          AEs not
+    2018                                                                                               discussed
+    Panikratova et al.   14 healthy adults                  IN semax (1.2 mg)                          AEs not
+    2020c                                                                                              discussed
+a
+  These references were meeting abstracts and full information about the studies were not available.
+b
+  These references were submitted by the nominators.
+c
+  The subjects who received semax treatment in this study appear to be very similar to those subjects who received
+semax in Lebedeva et al. 2018. It is unclear if the same subjects were used in both studies.
+d
+  The authors did not specify the number of subjects in this abstract.
+
+                d. Other Safety Information (e.g., Relevant Safety Information From Other
+                   Regulatory Agencies as Appropriate)
+No additional safety information from other regulatory agencies was found.
+
+Immunogenicity and Aggregation Concerns
+FDA has issued guidance regarding immunogenicity assessment for therapeutic protein
+products. 69 The guidance describes immunogenicity as the propensity of a therapeutic protein
+product to generate immune responses to itself and to related proteins including endogenous
+
+
+68
+  Ivanikov et al. 2002, Proskurina et al. 2018, Aminova et al. 2016.
+69
+  See FDA’s guidance for industry Immunogenicity Assessment for Therapeutic Protein Products
+(August 2014) at https://www.fda.gov/media/85017/download.
+
+
+                                                                                                                   39
+proteins or peptides, or to induce immunologically related adverse clinical events. Although this
+guidance addresses therapeutic protein products, the concerns about immunogenicity are also
+relevant to peptides (such as semax (free base) and semax acetate), which can similarly elicit an
+immunogenic response; this immunogenic response may be enhanced when peptides are given
+via the SC or nasal spray ROA.
+
+The consequences of triggering an immune response may range from antibody responses with no
+apparent clinical manifestations to life-threatening and catastrophic reactions. Such outcomes are
+often unpredictable in patients administered therapeutic protein or peptide products. One possible
+consequence of the development of an immune response is the development of neutralizing
+antibody activity that may lead to loss of efficacy or even result in the neutralization of the
+activity of the endogenous peptide counterpart.
+
+In addition, compared to small molecule APIs, peptides are distinct because they may have an
+inherent tendency to aggregate. Aggregation refers to the processes through which peptides
+associate into larger species consisting of multiple peptide chains. Aggregates can be highly
+ordered or amorphous and the formation can be reversible or irreversible (Zapadka et al. 2017).
+Peptides with as few as two amino acids have been shown to aggregate (Frederix et al. 2011).
+Aggregates can impact the pharmacology of the peptide. In addition, aggregation is a risk factor
+in immunogenicity and for decreased pharmacotherapeutic effect of the drug product due to
+effects on bioavailability, formation of precipitates, or anti-drug antibody production (Ratanji et
+al. 2014).
+
+The nominators did not provide, and FDA did not identify clinical studies assessing
+immunogenicity or aggregation of semax (free base) or semax acetate. Although semax (free
+base) and semax acetate consist of seven amino acids, FDA is concerned about their potential
+for immunogenicity when administered by an injection ROA as proposed due to the potential for
+aggregation as well as potential peptide-related impurities. Based on available information there
+are insufficient data to conclude that semax (free base) or semax acetate does not present these
+risks.
+
+             e. Therapies That Have Been Used for the Condition(s) Under Consideration
+There are FDA-approved drug products and/or OTC monograph drug products that treat the
+same medical condition as that proposed for the semax-related compounded drug product(s) 70.
+See the lists of FDA-approved products for each proposed use in Sections II.C.1.c, II.C.2.c, and
+II.C.3.c.
+
+Conclusions: There is insufficient clinical information to characterize the safety profile of semax
+(free base) or semax acetate. We were not able to find pharmacokinetic studies in humans
+following exposure to semax (free base) or semax acetate via any ROA. There are no safety data
+for semax (free base) and semax acetate administered by the proposed SC ROA. The only ROA
+discussed in the literature was intranasal. It is not clear which BDS was used in the clinical
+
+
+70
+  FDA considers the existence of FDA-approved or OTC monograph drug products to treat the same
+condition as that proposed for the nomination relevant to FDA’s consideration of the safety criterion, to
+the extent there may be therapies that have been demonstrated to be safe under the conditions of use set
+forth in the approved labeling. See 84 FR 4696.
+
+
+                                                                                                            40
+studies as the references do not specify whether the semax used was a free base or a salt form
+(such as semax acetate).
+
+Based on available clinical information for semax (free base) and semax acetate, the use of
+semax-related bulk drug substances in compounding may raise safety concerns. Most of the
+references did not discuss safety. One reference (Cherkasova et al. 2002) discussed possible anti-
+thrombotic properties of semax and this raises concern about the risk of bleeding, particularly in
+certain populations at risk for bleeding or if combined with other medications that increase
+bleeding risk. Compounded drugs do not include labeling that would adequately warn physicians
+and patients of such risks.
+
+The nominators did not provide, and FDA did not identify clinical studies assessing
+immunogenicity or aggregation of semax (free base) or semax acetate. Although semax (free
+base) and semax acetate consists of seven amino acids, FDA is concerned about their potential
+for immunogenicity when administered by an injection ROA as proposed due to the potential for
+aggregation as well as potential peptide-related impurities.Based on available information there
+are insufficient data to conclude that semax (free base) or semax acetate does not present these
+risks.
+
+There are currently available FDA-approved drugs for treatment and prevention of cerebral
+ischemia, migraine, and trigeminal neuralgia.
+
+III. CONCLUSION AND RECOMMENDATION
+We have balanced the criteria described in section II above to evaluate semax (free base) and
+semax acetate for the 503A Bulks List. After considering the information currently available, a
+balancing of the criteria weighs against semax (free base) or semax acetate being placed on
+that list based on the following:
+
+1. Conclusions on the physical and chemical characterization for each semax-related BDS,
+   semax (free base) and semax acetate, are included in subsections 1.1 and 1.2.
+
+   1.1.
+   Semax (free base) is reported to be a heptapeptide. As reported in the literature, semax (free
+   base) is expected to be stable under reported storage conditions (below -20°C)
+
+   Semax (free base) is considered to be not well-characterized from the physical and chemical
+   characterization perspective because (1) inconsistent naming conventions that do not follow
+   established chemical nomenclature standards (e.g., INN, IUPAC, USAN), and (2) BDS
+   specific quality control attributes, including impurities, aggregates, bacterial endotoxins and
+   microbial bioburden testing, were not found in the publicly available scientific literature and
+   lack of CoA in the nominations which are offered as evidence to establishing identity, purity,
+   and impurity profiles of the substance of semax (free base) delivered via the SC and
+   intranasal spray ROAs. The limited information related to critical characterization data is
+   particularly important for immunogenicity. As discussed in Section II.D.2.d., FDA is
+   concerned about the potential for immunogenicity of semax (free base) when formulated in
+   an injectable or intranasal spray dosage forms due to the potential for aggregation as well as
+   potential peptide-related impurities, as discussed in Section II.A.1.c. We also note that the
+
+
+                                                                                                  41
+   stability, pharmacological activity, and immunogenic properties of peptides are highly
+   sensitive to the manufacturing process and quality attributes of the compounded/finished
+   drug product.
+
+   In addition, FDA would have strong concerns about the use of this BDS in the proposed
+   compounded nasal spray solution product due to lack of information about container closer
+   system, including container, closer, and pump – all of which are relevant to the CQAs for the
+   proposed product and would affect how the BDS is delivered via this product.
+
+   1.2.
+   Semax acetate is reported to be an acetate salt of semax (free base). As reported in the
+   literature, semax acetate is expected to be stable under reported storage conditions.
+
+   Semax acetate is not well-characterized from the physical and chemical characterization
+   perspective because (1) inconsistent naming conventions that do not follow established
+   chemical nomenclature standards (e.g., INN, IUPAC, USAN), and (2) certain critical
+   characterization data specific to semax acetate (including impurities, aggregates, microbial
+   bioburden and/or bacterial endotoxin) were not found in the publicly available scientific
+   literature, and the CoAs provided, which were offered as evidence to establishing identity,
+   purity, and impurity profiles of the substance, lacked specific tests (including impurities,
+   aggregates, microbial and bacterial endotoxins). The limited information related to critical
+   characterization data is particularly important for immunogenicity. As discussed in
+   Section II.D.2.d., FDA is concerned about the potential for immunogenicity of semax acetate
+   when formulated in an injectable dosage form for SC administration as well as in intranasal
+   spray dosage form due to the potential for aggregation as well as potential peptide-related
+   impurities, as discussed in Section II.A.2.c. The nominations did not include, and FDA has
+   not identified, information about semax acetate to suggest that this substance does not present
+   these risks. Therefore, we cannot rule out potential immunogenicity issues associated with
+   peptide and peptide-related impurities aggregates. In addition, it is difficult to evaluate how
+   the physicochemical characteristics of semax acetate, especially the water solubility of semax
+   acetate, will impact on the performance of the proposed injectable and intranasal spray
+   products due to lack of water solubility data for semax acetate. We also note that the stability,
+   pharmacological activity, and immunogenic properties of peptides are highly sensitive to the
+   manufacturing process and quality attributes of the compounded/finished drug product.
+
+   In addition, FDA would have strong concerns about the use of this BDS in the proposed
+   compounded nasal spray solution product due to lack of information about container closer
+   system, including container, closer, and pump – all of which are relevant to the CQAs for the
+   proposed product and would affect how the BDS is delivered via this product.
+
+2. It is often unclear whether the semax discussed in the sources considered for an
+   understanding of historical use in compounding is the salt form or the free base. Semax
+   injection and intranasal products are widely marketed in the US through health/wellness
+   clinics, medical concierge services, functional and regenerative medicine clinics, and online
+   retailers for anxiety, depression, attention/memory improvement, ischemic events/stroke,
+   nerve regeneration, diabetic neuropathy, ADHD, opioid withdrawal, ALS, Parkinson’s
+   disease, Alzheimer’s disease, dys-circulatory encephalopathy, optic nerve atrophy, pain, and
+
+
+
+                                                                                                 42
+   gastric protection. The extent to which semax has been used in compounding is unclear.
+   Semax is a registered drug in Russia and is available as 0.1% and 1% nasal drops.
+
+3. From the nonclinical pharmacological perspective, semax is a substance that exhibits
+   pleiotropism. Acting through poorly understood mechanisms of action, semax in rodents: (i)
+   has neuroprotective and neurotrophic properties, (ii) acts as an anticoagulant and
+   antithrombotic, (iii) has analgesic properties, and (iv) induces antidepressant- and anxiolytic-
+   like effects. The nonclinical finding that the serotoninergic antagonist cyproheptadine
+   inhibited semax-induced analgesia in mice led to the proposal that the analgesic effect of
+   semax depends, at least in part, on semax-induced activation of the serotoninergic system. It
+   is concerning, however, that, in mice, semax also potentiated amphetamine-induced
+   dopamine release in the striatum because increased dopaminergic tone in the striatum is a
+   response typically induced by drugs of abuse such as cocaine. At the time of this evaluation,
+   the nominator did not submit, and FDA did not identify published nonclinical toxicity studies
+   to assess the pharmacokinetic profile of semax via the nominated SC ROA and to inform the
+   abuse potential and other safety considerations for possible clinical uses of semax.
+
+   There is insufficient clinical information to characterize the clinical safety profile of semax
+   (free base) or semax acetate. We were not able to find pharmacokinetic studies in humans
+   following exposure to semax (free base) or semax acetate via any ROA. There are no safety
+   data for semax (free base) and semax acetate administered by the proposed SC ROA. The
+   only ROA discussed in the literature was intranasal. It is not clear which BDS was used in
+   the clinical studies as the references do not specify whether the semax used was a free base
+   or a salt form (such as semax acetate).
+
+   Based on available clinical information for semax (free base) and semax acetate, the use of
+   semax-related bulk drug substances in compounding may raise safety concerns. Most of the
+   references did not discuss safety. One reference (Cherkasova et al. 2002) discussed possible
+   anti-thrombotic properties of semax and this raises concern about the risk of bleeding,
+   particularly in certain populations at risk for bleeding or if combined with other medications
+   that increase bleeding risk. Compounded drugs do not include labeling that would adequately
+   warn physicians and patients of such risks.
+
+   The nominators did not provide, and FDA did not identify clinical studies assessing
+   immunogenicity or aggregation of semax (free base) or semax acetate. Although semax (free
+   base) and semax acetate consists of seven amino acids, FDA is concerned about their
+   potential for immunogenicity when administered by an injection ROA as proposed due to the
+   potential for aggregation as well as potential peptide-related impurities. Based on available
+   information there are insufficient data to conclude that semax (free base) or semax acetate
+   does not present these risks.
+
+   There are currently available FDA-approved drugs for treatment and prevention of cerebral
+   ischemia, migraine, and trigeminal neuralgia.
+
+4. There is insufficient evidence to support the effectiveness for semax (free base) or semax
+   acetate for cerebral ischemia, migraine, or trigeminal neuralgia. Only two available
+   references with insufficient details on the design and conduct of the studies were available,
+
+
+
+                                                                                                   43
+   and the available references demonstrated lack of effectiveness and were limited by small
+   sample size, and lack of information about some relevant clinical endpoints. Cerebral
+   ischemia, migraine and trigeminal neuralgia are all serious conditions and FDA-approved
+   therapies for the acute treatment and prevention of these conditions exist.
+
+On balance, the physicochemical characterization, information on historical use, lack of evidence
+of effectiveness, and safety information identified for both semax (free base) and semax acetate
+weigh against them being added to the 503A Bulks List. In particular, FDA’s proposal is based
+on the fact that semax (free base) and semax acetate are not well characterized from a
+physiochemical perspective due to lack of certain critical characterization data specific to semax
+forms regarding lack of endotoxin data for injectable routes of administration and information to
+indicate how an appropriate container and pump for an intranasal spray product would be
+selected and qualified. There is a lack of information on the safety profile for semax (free base)
+and semax acetate where the use of semax-related bulk drug substances in compounding may
+raise safety concerns as discussed above. In addition, FDA also did not identify information that
+addresses additional concerns related to potential immunogenicity risk. We have insufficient
+evidence of effectiveness to support the use of semax-related BDSs as a treatment for cerebral
+ischemia, migraine and trigeminal neuralgia. The lack of evidence of effectiveness discussed
+above and the existence of FDA-approved drugs to treat most of these conditions weighs against
+semax-related BDSs being added to the 503A Bulks List. Accordingly, we propose not adding
+semax (free base) or semax acetate to the 503A Bulks List.
+
+
+
+
+                                                                                                44
+IV. REFERENCES
+Agapova, TY, YV Agniullin, M Shadrina, S Shram, P Slominsky, S Lymborska and N
+Myasoedov, 2007a, Neurotrophin Gene Expression in Rat Brain under the Action of Semax, an
+Analogue of ACTH4-10, Neurosci Lett, 417(2):201-205.
+
+Agapova TY, YV Agniullin, D Silachev, M Shadrina, P Slominsky, S Shram, S Limborskaya
+and N Myasoedov, 2007b, Expression Changes Caused by the Peptide Semax in the Intracellular
+Signal Pathway Genes in Rat Hippocampus, Dokl Biochem Biophys, 417(1):334-336.
+
+Ailani, J, R Burch and M Robbins, 2021, The American Headache Society Consensus Statement:
+Update on integrating new migraine treatments into clinical practice, Headache, 61(7):1021-
+1039.
+
+Aminova, D, 2016, Cognitive Impairments in Children with Tic Disorders and Tourette
+Syndrome, Mov Dis, 31, Supp 2, Abstract # 966:S1-S697
+
+Bakaeva, Z, K Baglikova, P Klimova, L Andreeva and G Samonina, 2009, The Comparison of
+Gastroprotective Properties of Semax and Its Metabolites, Mosc Univ Biol Sci Bull, 64:137-140.
+
+Bakhmet, A and E Koplik, 2012, Antistress Effect of Semax in the Course of Recovery of Spleen
+Lymphoid Structures after the Stress in Rats with Different Behavioral Activity, Bull Exp Biol
+Med (USSR) (Engl Transl), 153:661-663.
+
+Bashkatova, VG, VB Koshelev, OE Fadyukova, AA Alexeev, AF Vanin, KS Rayevsky, IP
+Ashmarin and DM Armstrong, 2001, Novel Synthetic Analogue of ACTH 4-10 (Semax) but Not
+Glycine Prevents the Enhanced Nitric Oxide Generation in Cerebral Cortex of Rats with
+Incomplete Global Ischemia, Brain Res, 894(1):145-149.
+
+Boyarshinova, O, O Perepelkina, N Markina and I Poletaeva, 2008, Audiogenic Epilepsy in
+Young Mice of Different Strains after Neonatal Semax Treatment, Bull Exp Biol Med (USSR)
+(Engl Transl), 146(1):86.
+
+Broderick, J, O Adeoye, J Elm, 2017, The Evolution of the Modified Rankin Scale and Its Use in
+Future Stroke Trials, Stroke, 48(7):2007-2012.
+
+Cherkasova, K, I Ashmarin, A Kubatiev and V Skvortsova, 2002, Neuropeptide Semax –
+Effective Antithrombotic Drug, Eur Neuropsychopharmacol, 12(Supp 3):406-407.
+
+Cherkasova, K, L Lyapina and I Ashmarin, 2001, Comparative Study of Modulatory Effects of
+Semax and Primary Proline-Containing Peptides on Hemostatic Reactions, Bull Exp Biol Med
+(USSR) (Engl Transl), 132:625-626.
+
+Chong M, A Bahra and J Zakrzewsja, 2023, Guidelines for the Management of Trigeminal
+Neuralgia, Cleveland Clin J Med, 90(6):355-362.
+
+
+
+
+                                                                                            45
+Deigin, VI, EA Poluektova, AG Beniashvili, SA Kozin and YM Poluektov, 2022, Development
+of Peptide Biopharmaceuticals in Russia, Pharmaceutics, 14(4): 716.
+
+DeSai, C and A Shapshack, 2023, Cerebral Ischemia, StatPearls, NCBI Bookshelf, National
+Library of Medicine, National Institute of Health: 1-12.
+
+Dolotov, OV, EA Karpenko, LS Inozemtseva, TS Seredenina, NG Levitskaya, J Rozyczka, EV
+Dubynina, EV Novosadova, LA Andreeva and LY Alfeeva, 2006, Semax, an Analog of ACTH
+(4-10) with Cognitive Effects, Regulates BDNF and TRKb Expression in the Rat Hippocampus,
+Brain Res, 1117(1):54-60.
+
+Emanuel, N, L Obukhova, T Bunto and V D'yakova, 1976, Kinetics of Survival and
+Experimental Determination of the Aging Rate, Biol Bull Acad Sci USSR, 3(4-6):653-657.
+
+Eremin, K, V Kudrin, I Grivennikov, N Miasoedov and K Rayevsky, 2004, Effects of Semax on
+Dopaminergic and Serotoninergic Systems of the Brain, Dokl Biol Sci, 394(1):1-3.
+
+Eremin, KO, VS Kudrin, P Saransaari, SS Oja, IA Grivennikov, NF Myasoedov and KS
+Rayevsky, 2005, Semax, an ACTH (4-10) Analogue with Nootropic Properties, Activates
+Dopaminergic and Serotoninergic Brain Systems in Rodents, Neurochem Res, 30(12):1493-
+1500.
+
+Frederix, PW, RV Ulijn, NT Hunt and T Tuttle, 2011, Virtual Screening for Dipeptide
+Aggregation: Toward Predictive Tools for Peptide Self-Assembly, J Phys Chem Lett,
+2(19):2380-2384.
+
+Glazova, NY, N Levitskaya and L Andreeva, 2005, P. 5.013 Study of Neurotropic Effects
+Ofsemax Analogues Depending on Their Structure, Eur Neuropsychopharmacol, (15):S207.
+
+Grigorjeva, M and L Lyapina, 2010, Anticoagulation and Antiplatelet Effects of Semax under
+Conditions of Acute and Chronic Immobilization Stress, Bull Exp Biol Med (USSR) (Engl
+Transl), 149(1):44-47.
+
+Gusev, E, M Martynov, E Kostenko, L Petrova and S Bobyreva, 2018, The Efficacy of Semax in
+the Treatment of Patients at Different Stages of Ischemic Stroke, Zh Nevrol Psikhiatr Im S S
+Korsakova, 118 (3. Vyp.2): 61.
+
+Gusev, E, V Skvortsova and E Chukanova, 2005, Semax in Prevention of Disease Progress and
+Development of Exacerbations in Patients with Cerebrovascular Insufficiency, Zh Nevrol
+Psikhiatr Im S S Korsakova, 105(2):35-40.
+
+Gusev, E, V Skvortsova, N Miasoedov, V Nezavibat’ko, E Zhuravleva and A Vanichkin, 1997,
+Effectiveness of Semax in Acute Period of Hemispheric Ischemic Stroke (A Clinical and
+Electrophysiological Study) Zh Nevrol Psikhiatr Im S S Korsakova / Ministerstvo
+zdravookhraneniia i meditsinskoĭ promyshlennosti Rossiĭskoĭ Federatsii, Vserossiĭskoe
+obshchestvo nevrologov [i] Vserossiĭskoe obshchestvo psikhiatrov. 15:26–34.
+
+
+
+
+                                                                                             46
+Inozemtsev, A, A Agapitova, S Bokieva, N Levitskaya, A Kamenskii and N Myasoedov, 2013,
+Semax Prevents Functional Impairments of Avoidance Response in Rats, Dokl Biol Sci,
+448(1):1.
+
+Inozemtsev, A, S Bokieva, O Karpukhina, K Gumargalieva, A Kamensky and N Myasoedov,
+2016, Semax Prevents Learning and Memory Inhibition by Heavy Metals, Dokl Biol Sci,
+468:112-114.
+
+Ivanikov I, M Brekhova, G Samonina, N Myasoedov and I Ashmarin, 2002, Therapy of Peptic
+Ulcer with Semax Peptide, Bull Exp Biol Med, 134 (1): 73-74.
+
+Ivanova, D, N Levitskaya, L Andreeva, LY Alfeeva, A Kamenskii and N Myasoedov, 2003, The
+Effect of Semax on Animal Pain Sensitivity in Various Experimental Models, Dokl Biol Sci,
+388:5-8.
+
+Ivanova, D, N Levitskaya, L Andreeva, A Kamenskii and N Myasoedov, 2007, Comparative
+Study of Analgesic Potency of ACTH 4-10 Fragment and Its Analog Semax, Bull Exp Biol Med
+(USSR) (Engl Transl), 143:5-8.
+
+Ivanova, D, D Vilensky, N Levitskaya, L Andreeva and A Kamensky, 2004, P. 2.16 ACTH (4-
+10) Analogue Semax Attenuates Opioid-Induced Analgesia, Eur Neuropsychopharmacol,
+(14):S32-S33.
+
+Ivanova, D, D Vilensky, N Levitskaya, L Andreeva and A Kamensky, 2005, P. 4.037 Study of
+Mechanisms of the ACTH (4-10) Analogue Semax Analgesic Activity, Eur
+Neuropsychopharmacol, (15):S192-S193.
+
+Johnston, S, M Nguyen-Huynh, M Schwarz, K Fuller, C Williams and S Josephson, 2006,
+National Stroke Association Guidelines for the Management of Transient Ischemic Attacks, Ann
+Neurol, 60:301-313.
+
+Kaplan, A, A Kochetovaa, V Nezavibathko, T Rjasina and I Ashmarin, 1996, Synthetic ACTH
+Analogue Semax Displays Nootropic-Like Activity in Humans, Neurosci Res Comm, 19(2):
+115-123.
+
+Kleindorfer, D, A Towfighi, S Chaturvedi, K Cockroft, J Gutierrez, D Lombardi-Hill, H Kamel,
+W. Kernan, S Kittner, E Leira, O Lennon, J Meschia, T Nguyen, P Pollak and P Santangeli,
+2021, 2021 Guideline for the Prevention of Stroke in Patients With Stroke and Transient
+Ischemic Attack, Stroke, 52(7):e364-467.
+
+Kolik, L, A Nadorova and M Kozlovskaya, 2014, Efficacy of Peptide Anxiolytic Selank During
+Modeling of Withdrawal Syndrome in Rats with Stable Alcoholic Motivation, Bull Exp Biol
+Med (USSR) (Engl Transl), 157:52-55.
+
+Kolomin, T, M Shadrina, P Slominsky, S Limborska and N Myasoedov, 2013, A New
+Generation of Drugs: Synthetic Peptides Based on Natural Regulatory Peptides, Neurosci Med,
+4(04):223.
+
+
+
+
+                                                                                              47
+Kopylova, G, E Smirnova, LT Sanzhieva, B Umarova, T Lelekova and G Samonina, 2003,
+Glyprolines and Semax Prevent Stress-Induced Microcirculatory Disturbances in the Mesentery,
+Bull Exp Biol Med (USSR) (Engl Transl), 136:441-443.
+
+Koroleva, M, E Meizerov, V Nezavibat'ko, A Kamenskii, V Dubynin and YB Yakovlev, 1996,
+Analgesic Action of the New Drug Semax, Bull Exp Biol Med (USSR) (Engl Transl), 122:1107-
+1109.
+
+Kost, N, OY Sokolov, M Gabaeva, I Grivennikov, L Andreeva, N Myasoedov and A Zozulya,
+2001, Semax and Selank Inhibit the Enkephalin-Degrading Enzymes of Human Serum, Russian J
+Bioorg Chem, 27(3):156-159.
+
+Lebedeva, I, YR Panikratova, OY Sokolov, D Kupriyanov, A Rumshiskaya, N Kost and N
+Myasoedov, 2018, Effects of Semax on the Default Mode Network of the Brain, Bull Exp Biol
+Med (USSR) (Engl Transl), 165(5):653-656.
+
+Levitskaya, N, D Vilenskii, E Sebentsova, L Andreeva, A Kamensky and N Myasoedov, 2010,
+Influence of Semax on the Emotional State of White Rats in the Norm and against the
+Background of Cholecystokinin-Tetrapeptide Action, Biol Bull, 37:186-192.
+
+Lin, T, E Liu, H He, MC Shin, C Moon, VC Yang and Y Huang, 2016, Nose-to-Brain Delivery
+of Macromolecules Mediated by Cell-Penetrating Peptides, Acta Pharm Sin B, 6(4):352-358.
+
+Lyapina, L, V Pastorova, TY Obergan, G Samonina, I Ashmarin and N Myasoedov, 2006,
+Comparison of Anticoagulant Effects of Regulatory Proline-Containing Oligopeptides.
+Specificity of Glyprolines, Semax, and Selank and Potential for Their Practical Application, Biol
+Bull, 33:153-161.
+
+Malyshev, A, E Razumkina, V Dubynin and N Myasoedov, 2013, Semax Corrects Brain
+Dysfunction Caused by Prenatal Introduction of Valproic Acid, Dokl Biochem Sci, 450(1):126.
+
+Manchenko, D, NY Glazova, N Levitskaya, L Andreeva, A Kamenskii and N Myasoedov, 2012,
+The Nootropic and Analgesic Effects of Semax Given Via Different Routes, Neurosci Behav
+Physiol, 42:264-270.
+
+Medvedeva, EV, VG Dmitrieva, OV Povarova, SA Limborska, VI Skvortsova, NF Myasoedov
+and LV Dergunova, 2014, The Peptide Semax Affects the Expression of Genes Related to the
+Immune and Vascular Systems in Rat Brain Focal Ischemia: Genome-Wide Transcriptional
+Analysis, BMC Genomics, 15:1-12.
+
+Meshavkin, V, N Kost, OY Sokolov, YA Zolotarev, N Myasoedov and A Zozulya, 2006,
+Naloxone-Blocked Depriming Effect of Anxiolytic Selank on Apomorphine-Induced Behavioral
+Manifestations of Hyperfunction of Dopamine System, Bull Exp Biol Med (USSR) (Engl
+Transl), 142:598-600.
+
+Meshavkin, VK, NV Kost, OY Sokolov, LA Andreeva and NF Myasoedov, 2013, The Influence
+of Oligopeptides on Spontaneous Carcinogenesis in Mice, Dokl Biol Sci, 449:79-81.
+
+
+
+
+                                                                                               48
+Miasoedova, N, V Skvortsova, E Nasonov, E Zhuravleva, I Grivennikov, E Arsen’eva and I
+Sukhanov, 1999, Investigation of Mechanisms of Neuroprotective Effect of Semax in Acute
+Period of Ischemic Stroke, Zhurnal nevrologii i psikhiatrii imeni SS Korsakova / Ministerstvo
+zdravookhraneniia i meditsinskoĭ promyshlennosti Rossiĭskoĭ Federatsii, Vserossiĭskoe
+obshchestvo nevrologov [i] Vserossiĭskoe obshchestvo psikhiatrov, 15:15-19.
+
+Orlov, A, A Khomutov, I Mukhina, YB Zimin, S Parin and D Kozin, 1999, Effect of Semax and
+Semax-Heparin Mixture on Isolated Heart Activity after Total Ischemia in Rats, Bull Exp Biol
+Med (USSR) (Engl Transl), 128:1084-1086.
+
+Panikratova, YR, IS Lebedeva, OY Sokolov, AD Rumshiskaya, DA Kupriyanov, NV Kost and
+NF Myasoedov, 2020, Functional Connectomic Approach to Studying Selank and Semax
+Effects, Dok Biol Sci: Proc Acad Sci USSR, Biol Sci Sec, 490(1): 9-11.
+
+Ponomareva-Stepnaya, MA, VN Nezavibat'ko, LV Antonova, LA Andreeva, LY Alfeeva, VN
+Potaman, AA Kamenskii and IP Ashmarin, 1984, An Analog of ACTH4-10 – A Long-Action
+Stimulator of Learning, Pharm Chem J, 18: 445-450.
+
+Potaman, V, L Alfeeva, A Kamensky, N Levitzkaya and V Nezavibatko, 1991a, N-Terminal
+Degradation of ACTH (4–10) and Its Synthetic Analog Semax by the Rat Blood Enzymes, Bioch
+Biophys Res Comm, 176(2):741-746.
+
+Potaman, VN, LY Alfeeva, AA Kamensky and VN Nezavibatko, 1993, Degradation of
+ACTH/MSH(4-10) and Its Synthetic Analog Semax by Rat Serum Enzymes: An Inhibitor Study,
+Peptides, 14(3):491-495.
+
+Potaman, V, L Antonova, V Dubynin, D Zaitzev, A Kamensky, N Myasoedov and V
+Nezavibatko, 1991b, Entry of the Synthetic ACTH (4-10) Analogue into the Rat Brain Following
+Intravenous Injection, Neurosci Lett, 127(1):133-136.
+
+Powers W, A Rabinstein, T Ackerson, O Adeoye, N Bambakidis, K Becker, J Biller, M Brown,
+B Demaerschalk, B Hoh, E Jauch, C Kidwell, T Leslie-Mazwi, B Ovboagele, P Scott, K Sheth,
+A Southerland, D Summers and D Tirschwell, 2019, Guidelines for the Early Management of
+Patients With Acute Ischemic Stroke: 2019 Update to the 2018 Guidelines for the Early
+Management of Acute Ischemic Stroke A Guideline for Healthcare Professionals From the
+American Heart Association/American Stroke Association, Stroke, 50 (12): e344-e418.
+
+Proskurina, T, E Mykhailova and T Matkovska, 2018, Some Questions of Therapy of Vegetative
+Disorders in Children and Adolescents with Depression, 26th European Congress of Psychiatry,
+E-Poster, 48S:S359–S566.
+
+Ratanji, KD, JP Derrick, RJ Dearman and I Kimber, 2014, Immunogenicity of Therapeutic
+Proteins: Influence of Aggregation, J Immunotoxicol, 11(2):99-109.
+
+Romanova, G, D Silachev, F Shakova, YN Kvashennikova, I Viktorov, S Shram and N
+Myasoedov, 2006, Neuroprotective and Antiamnesic Effects of Semax During Experimental
+Ischemic Infarction of the Cerebral Cortex, Bull Exp Biol Med (USSR) (Engl Transl), 142:663-
+666.
+
+
+
+                                                                                                49
+Safarova, E, S Shram, I Grivennikov and N Myasoedov, 2002, Trophic Effects of Nootropic
+Peptide Preparations Cerebrolysin and Semax on Cultured Rat Pheochromocytoma, Bull Exp
+Biol Med (USSR) (Engl Transl), 133:401-403.
+
+Severyanova, L, A Kryukov, D Plotnikov and M Dolgintsev, 2020, Peptide ACTH4-7-Pgp:
+Effects on Various Types of Pain and Pain-Induced Behavior in Rats after Systemic and Central
+Administration, Bull Exp Biol Med (USSR) (Engl Transl), 170(2):185-190.
+
+Shevchenko, KV, I Nagaev, L Alfeeva, LA Andreeva, AA Kamenskiĭ, NG Levitskaia, VP
+Shevchenko, IA Grivennikov and NF Miasoedov, 2006a, [Kinetics of Semax Penetration into the
+Brain and Blood of Rats after Its Intranasal Administration], Bioorg Khim, 32(1):64-70.
+
+Shevchenko, K, IY Nagaev, LY Alfeeva, L Andreeva, A Kamenskii, N Levitskaya, V
+Shevchenko, I Grivennikova and N Myasoedov, 2006b, Kinetics of Semax Penetration into the
+Brain and Blood of Rats after Its Intranasal Administration, Russ J Bioorg Chem, 32:57-62.
+
+Shevchenko, K, IY Nagaev, L Andreeva, V Shevchenko and N Myasoedov, 2013, Stability of
+Semax Acetyl to Proteolysis in Various Biological Media, Dokl Biol Sci, 449(1):110.
+
+Silachev, D, S Shram, F Shakova, G Romanova and N Myasoedov, 2009, Formation of Spatial
+Memory in Rats with Ischemic Lesions to the Prefrontal Cortex; Effects of a Synthetic Analog of
+ACTH (4-7), Neurosci Behav Physiol, 39(8):749-756.
+
+Sims, SK, B Wilken-Resman, CJ Smith, A Mitchell, L McGonegal and C Sims-Robinson, 2022,
+Brain-Derived Neurotrophic Factor and Nerve Growth Factor Therapeutics for Brain Injury: The
+Current Translational Challenges in Preclinical and Clinical Research, Neural Plast,
+2022:3889300.
+
+Slominsky, P, M Shadrina, T Kolomin, A Stavrovskaya, E Filatova, L Andreeva, S Illarioshkin
+and N Myasoedov, 2017, Peptides Semax and Selank Affect the Behavior of Rats with 6-OHDA
+Induced PD-Like Parkinsonism, Dokl Biol Sci, 474:106-109.
+
+Solov’ev, V, M Gengin, A Stolyarov, O Solov’eva, M Begutov and O Lyubchenko, 2016, The
+Activities of Basic Carboxypeptidases in the Nervous System of Rats During Exercise Stress and
+in Response to Semax and Selank, Neurochem J, 10:59-63.
+
+Spetter, MS and M Hallschmid, 2015, Intranasal Neuropeptide Administration to Target the
+Human Brain in Health and Disease, Mol Pharm, 12(8):2767-2780.
+
+Stavchansky, VV, VV Yuzhakov, AY Botsina, VI Skvortsova, LN Bondurko, MG Tsyganova,
+SA Limborska, NF Myasoedov and LV Dergunova, 2011, The Effect of Semax and Its C-End
+Peptide PGP on the Morphology and Proliferative Activity of Rat Brain Cells During
+Experimental Ischemia: A Pilot Study, J Mol Neurosci, 45:177-185.
+
+Tarasov VV, NV Kudryashov, VN Chubarev, TS Kalinina, GE Barreto, GM Ashraf, G Aliev,
+2018, Pharmacological Aspects of Neuro-Immune Interactions, Curr Pharmac Des, 24(1):15-21.
+
+
+
+
+                                                                                             50
+Tsai SJ, 2007, Semax, An Analogue of Adrenocorticotropin (4-10), is a Potential Agent for the
+Treatment of Attention-deficit Hyperactivity Disorder and Rett Syndrome, Med Hyp, 68(5):
+1144-1146.
+
+Vlasova, I, D Buravtcov and A Saletsky, 2009, Luminescence Analysis of Blood Components in
+Studies of the Neuroprotective Properties of the Drug “Semax” in Cerebral Ischemia, J Appl
+Spec, 76:121-126.
+
+Volkow, ND, G-J Wang, F Telang, JS Fowler, J Logan, A-R Childress, M Jayne, Y Ma and C
+Wong, 2006, Cocaine Cues and Dopamine in Dorsal Striatum: Mechanism of Craving in
+Cocaine Addiction, J Neurosci, 26(24):6583-6588.
+
+Volodina, M, E Sebentsova, NY Glazova, N Levitskaya, L Andreeva, D Manchenko, A
+Kamensky and N Myasoedov, 2012, Semax Attenuates the Infl Uence of Neonatal Maternal
+Deprivation on the Behavior of Adolescent White Rats, Bull Exp Biol Med (USSR) (Engl
+Transl), 152(5):560-563.
+
+Zapadka, KL, Becher FJ, Gomes Dos Santos AL and Jackson SE, 2017, Factors Affecting the
+Physical Stability (Aggregation) of Peptide Therapeutics, Interface Focus, 7(6).
+
+
+
+
+                                                                                                51
+V. APPENDICES
+
+APPENDIX 1: TREATMENTS FOR STROKE
+
+Table A. FDA-Approved Drug Products for Stroke.
+ Treatment
+              Class                                     Name of Product               ROA
+ Type
+ Acute        Tissue plasminogen activator (tPA)        Alteplase                     IV
+ Prevention   Aldosterone antagonist                    Spironolactone                Oral
+ Prevention   Aldosterone antagonist                    Carospir                      Oral
+ Prevention   Aldosterone antagonist                    Eplerenone                    Oral
+ Prevention   Alpha-adrenergic blocker                  Doxazosin mesylate            Oral
+ Prevention   Alpha-adrenergic blocker                  Doxazosin                     Oral
+ Prevention   Angiotensin 2 receptor blocker            Azilsartan kamedoxomil        Oral
+ Prevention   Angiotensin 2 receptor blocker            Candesartan                   Oral
+ Prevention   Angiotensin 2 receptor blocker            Cadesartan Cilexetil          Oral
+ Prevention   Angiotensin 2 receptor blocker            Irbesartan                    Oral
+ Prevention   Angiotensin 2 receptor blocker            Losartan                      Oral
+ Prevention   Angiotensin 2 receptor blocker            Losartan potassium            Oral
+ Prevention   Angiotensin 2 receptor blocker            Olmesartan medoxomil          Oral
+ Prevention   Angiotensin 2 receptor blocker            Prexxartan                    Oral
+ Prevention   Angiotensin 2 receptor blocker            Telmisartan                   Oral
+ Prevention   Angiotensin 2 receptor blocker            Valsartan                     Oral
+ Prevention   Angiotensin-converting enzyme inhibitor   Benazepril hydrochloride      Oral
+ Prevention   Angiotensin-converting enzyme inhibitor   Enalapril                     Oral
+ Prevention   Angiotensin-converting enzyme inhibitor   Enalapril maleate             Oral
+ Prevention   Angiotensin-converting enzyme inhibitor   Lisinopril                    Oral
+ Prevention   Angiotensin-converting enzyme inhibitor   Ramipril                      Oral
+ Prevention   Beta-adrenergic blocker                   Metoprolol                    Oral
+ Prevention   Beta-adrenergic blocker                   Metoprolol succinate          Oral
+ Prevention   Beta-adrenergic blocker                   Metoprolol tartrate           Oral
+ Prevention   Beta-adrenergic blocker                   Nebibolol                     Oral
+ Prevention   Beta-adrenergic blocker                   Nebivolol                     Oral
+ Prevention   Beta-adrenergic blocker                   Nebivolol hydrochloride       Oral
+ Prevention   Beta-adrenergic blocker                   Propranolol hydrochloride     Oral
+ Prevention   Biguanide; sodium-glucose cotransporter   Canagliflozin and metformin   Oral
+              2 inhibitor                               hydrochloride
+ Prevention   Calcium channel blocker                   Diltiazem hydrochloride       Oral
+ Prevention   Calcium channel blocker                   Verapamil hydrochloride       Oral
+ Prevention   Calcium channel blocker                   Amlodipine                    Oral
+ Prevention   Dihydropyridine calcium channel blocker   Amlodipine besylate           Oral
+ Prevention   Direct thrombin inhibitor                 Dabigatran etexilate          Oral
+ Prevention   Direct thrombin inhibitor                 Dabigatran etexilate          Oral
+                                                        mesylate
+ Prevention   Factor Xa inhibitor                       Apixaban                      Oral
+ Prevention   Factor Xa inhibitor                       Edoxaban tosylate             Oral
+ Prevention   Factor Xa inhibitor                       Rivaroxaban                   Oral
+ Prevention   GLP-1 receptor agonist                    Dulaglutide                   SC
+ Prevention   GLP-1 receptor agonist                    Liraglutide                   SC
+ Prevention   GLP-1 receptor agonist                    Semaglutide                   SC
+
+
+                                                                                             52
+Treatment
+             Class                                      Name of Product            ROA
+Type
+Prevention   HMG-CoA reductase inhibitor                Atorvaliq                  Oral
+Prevention   HMG-CoA reductase inhibitor                Atorvastatin calcium       Oral
+Prevention   HMG-CoA reductase inhibitor                Pravastatin sodium         Oral
+Prevention   HMG-CoA reductase inhibitor                Rosuvastatin               Oral
+Prevention   HMG-CoA reductase inhibitor                Rosuvastatin calcium       Oral
+Prevention   HMG-CoA reductase inhibitor                Simvastatin                Oral
+Prevention   Loop diuretic                              Torsemide                  Oral
+Prevention   NSAID; platelet aggregation inhibitor      Acetylsalicylic acid       Oral
+Prevention   NSAID; platelet aggregation inhibitor      Aspirin and dipyridamole   Oral
+Prevention   P2Y12 platelet inhibitor                   Clopidogrel                Oral
+Prevention   P2Y12 platelet inhibitor                   Clopidogrel Bisulfate      Oral
+Prevention   P2Y12 platelet inhibitor                   Prasugrel                  Oral
+Prevention   P2Y12 platelet inhibitor                   Prasugrel hydrochloride    Oral
+Prevention   P2Y12 platelet inhibitor                   Ticagrelor                 Oral
+Prevention   PCSK9 inhibitor                            Alirocumab                 SC
+Prevention   PCSK9 inhibitor                            Evolocumab                 SC
+Prevention   Protease-activated receptor antagonist     Vorapaxar                  Oral
+Prevention   Renin inhibitor                            Aliskirin                  Oral
+Prevention   Renin inhibitor                            Aliskirin hemifumarate     Oral
+Prevention   Sodium-glucose cotransporter 2 inhibitor   Canagliflozin              Oral
+Prevention   Vitamin K antagonist                       Warfarin                   Oral
+Prevention   Vitamin K antagonist                       Warfarin sodium            Oral
+
+
+
+
+                                                                                          53
+APPENDIX 2: TREATMENTS FOR MIGRAINE
+
+Table B. FDA-Approved Prescription Drug Products for Migraine.
+ Treatment
+                Class                                  Name of Product           ROA
+ Type
+ Acute          Nonsteroidal anti-inflammatory drug    Celecoxib                 Oral
+ Acute          Nonsteroidal anti-inflammatory drug    Diclofenac potassium      Oral
+ Acute          Opioid agonist                         Fentanyl                  Buccal, sublingual
+ Acute          Opioid agonist                         Fentanyl Citrate          Oral, buccal,
+                                                                                 sublingual,
+                                                                                 transmucosal, nasal
+ Acute          Serotonin 1b and 1d receptor           Almotriptan               Oral
+                agonists
+ Acute          Serotonin 1b and 1d receptor           Almotriptan malate        Oral
+                agonists
+ Acute          Serotonin 1b and 1d receptor           Almotriptan malate        Oral
+                agonists
+ Acute          Serotonin 1b and 1d receptor           Eletriptan hydrobromide   Oral
+                agonists
+ Acute          Serotonin 1b and 1d receptor           Frovatriptan succinate    Oral
+                agonists
+ Acute          Serotonin 1b and 1d receptor           Naratriptan               Oral
+                agonists
+ Acute          Serotonin 1b and 1d receptor           Rizatriptan               Oral
+                agonists
+ Acute          Serotonin 1b and 1d receptor           Rizatriptan benzoate      Oral
+                agonists
+ Acute          Serotonin 1b and 1d receptor           Sumatriptan               Oral, SC, nasal
+                agonists
+ Acute          Serotonin 1b and 1d receptor           Sumatriptan succinate     Oral, SC
+                agonists
+ Acute          Serotonin 1b and 1d receptor           Zolmitriptan              Oral, nasal
+                agonists
+ Acute          Ergotamine derivative                  Dihydroergotamine         Nasal
+                                                       mesylate
+ Acute          Calcitonin gene-related peptide        Atogepant                 Oral
+                receptor antagonist
+ Acute          Calcitonin gene-related peptide        Rimegepant sulfate        Oral
+                receptor antagonist
+ Acute          Calcitonin gene-related peptide        Ubrogepant                Oral
+                receptor antagonist
+ Acute          Calcitonin gene-related peptide        Zavegepant                Nasal
+                receptor antagonist
+ Acute          Serotonin (5-HT) 1F receptor agonist   Lasmiditan                Oral
+ Preventative   Anti-epileptic                         Divalproex sodium         Oral
+ Preventative   Anti-epileptic                         Topiramate                Oral
+ Preventative   Anti-epileptic                         Valproate sodium          IV
+ Preventative   Anti-epileptic                         Valproic acid             Oral
+ Preventative   Beta blocker                           Propranolol               Oral
+                                                       hydrochloride
+
+
+
+                                                                                                   54
+ Treatment
+                Class                                 Name of Product           ROA
+ Type
+ Preventative   Calcitonin gene-related peptide       Eptinezumab-JJMR          IV
+ Preventative   antagonist                            Erenumab-AOOE             SC
+ Preventative   Calcitonin gene-related peptide       Fremanezumab-VFRM         SC
+                antagonist
+ Preventative   Calcitonin gene-related peptide       Galcanezumab-GNLM         SC
+                antagonist
+ Preventative   Acetylcholine release inhibitor;      Onabotulinumtoxina        Intradermal, IM
+                neuromuscular blocker
+
+Table C. Non-Prescription Drugs for Migraine.
+ Product Type              Name of Product                                                ROA
+ Single API                Ibuprofen (e.g., Advil Migraine, Motrin IB migraine)           Oral
+ Combination of APIs       Acetaminophen + Aspirin + Caffeine (e.g., Excedrin migraine)   Oral
+
+
+
+
+                                                                                                  55
+  Semax – Related Bulk Drug
+ Substances (Semax (free base)

@@ -1,0 +1,412 @@
+{
+  "ok": true,
+  "product": "idaho-hay-feeder-ticks",
+  "sources": [
+    "Twin Falls",
+    "Blackfoot",
+    "AMS_3056 hay",
+    "AMS_3059 NW Direct"
+  ],
+  "status": "ok",
+  "reason": null,
+  "fetchedAt": "2026-08-17T18:48:46Z",
+  "ticks": [
+    {
+      "id": "cattle-tf-feeder-steer",
+      "group": "cattle",
+      "commodity": "Feeder steers",
+      "market": "Twin Falls Livestock Commission (Wednesday auction)",
+      "classGrade": "Auction cash, 310\u20131035 lb, 41 head",
+      "unit": "$/cwt",
+      "price": 400.2,
+      "priorPrice": 400.72,
+      "asOf": "2026-08-12",
+      "source": "Twin Falls Livestock Commission market report",
+      "sourceUrl": "http://www.twinfallslivestock.com/uploads/6/9/8/7/69873929/wed_._august_12th_2026.pdf",
+      "note": "From lots on this week's barn sheet. Not a USDA regional average, not a Mackay quote, and not futures. Holstein/dairy and fat lots over 1,050 lb skipped.",
+      "role": "card"
+    },
+    {
+      "id": "cattle-tf-feeder-heifer",
+      "group": "cattle",
+      "commodity": "Feeder heifers",
+      "market": "Twin Falls Livestock Commission (Wednesday auction)",
+      "classGrade": "Auction cash, 358\u2013953 lb, 51 head",
+      "unit": "$/cwt",
+      "price": 385.24,
+      "priorPrice": 373.76,
+      "asOf": "2026-08-12",
+      "source": "Twin Falls Livestock Commission market report",
+      "sourceUrl": "http://www.twinfallslivestock.com/uploads/6/9/8/7/69873929/wed_._august_12th_2026.pdf",
+      "note": "From lots on this week's barn sheet. Not a USDA regional average, not a Mackay quote, and not futures. Holstein/dairy and fat lots over 1,050 lb skipped.",
+      "role": "card"
+    },
+    {
+      "id": "cattle-tf-yearling-heifer",
+      "group": "cattle",
+      "commodity": "Yearling heifers (heiferettes)",
+      "market": "Twin Falls Livestock Commission (Wednesday auction)",
+      "classGrade": "Auction cash, 950\u20131020 lb, 6 head",
+      "unit": "$/cwt",
+      "price": 278.25,
+      "priorPrice": 229.67,
+      "asOf": "2026-08-12",
+      "source": "Twin Falls Livestock Commission market report",
+      "sourceUrl": "http://www.twinfallslivestock.com/uploads/6/9/8/7/69873929/wed_._august_12th_2026.pdf",
+      "note": "From lots on this week's barn sheet. Not a USDA regional average, not a Mackay quote, and not futures. Holstein/dairy and fat lots over 1,050 lb skipped.",
+      "role": "card"
+    },
+    {
+      "id": "cattle-tf-cull-cow",
+      "group": "cattle",
+      "commodity": "Cull cows",
+      "market": "Twin Falls Livestock Commission (Wednesday auction)",
+      "classGrade": "Auction cash, 1335\u20132040 lb, 29 head",
+      "unit": "$/cwt",
+      "price": 184.55,
+      "priorPrice": 184.07,
+      "asOf": "2026-08-12",
+      "source": "Twin Falls Livestock Commission market report",
+      "sourceUrl": "http://www.twinfallslivestock.com/uploads/6/9/8/7/69873929/wed_._august_12th_2026.pdf",
+      "note": "From lots on this week's barn sheet. Not a USDA regional average, not a Mackay quote, and not futures. Holstein/dairy and fat lots over 1,050 lb skipped.",
+      "role": "card"
+    },
+    {
+      "id": "cattle-tf-bull",
+      "group": "cattle",
+      "commodity": "Bulls",
+      "market": "Twin Falls Livestock Commission (Wednesday auction)",
+      "classGrade": "Auction cash, 1595\u20132260 lb, 19 head",
+      "unit": "$/cwt",
+      "price": 214,
+      "priorPrice": 220.79,
+      "asOf": "2026-08-12",
+      "source": "Twin Falls Livestock Commission market report",
+      "sourceUrl": "http://www.twinfallslivestock.com/uploads/6/9/8/7/69873929/wed_._august_12th_2026.pdf",
+      "note": "From lots on this week's barn sheet. Not a USDA regional average, not a Mackay quote, and not futures. Holstein/dairy and fat lots over 1,050 lb skipped.",
+      "role": "card"
+    },
+    {
+      "id": "cattle-tf-pairs",
+      "group": "cattle",
+      "commodity": "Cow-calf pairs",
+      "market": "Twin Falls Livestock Commission (Wednesday auction)",
+      "classGrade": "Auction cash, 3 pairs",
+      "unit": "$/pair",
+      "price": 4033.33,
+      "priorPrice": 4033.33,
+      "asOf": "2026-08-12",
+      "source": "Twin Falls Livestock Commission market report",
+      "sourceUrl": "http://www.twinfallslivestock.com/uploads/6/9/8/7/69873929/wed_._august_12th_2026.pdf",
+      "note": "Per pair, not per hundredweight.",
+      "role": "card"
+    },
+    {
+      "id": "cattle-bf-feeder-steer",
+      "group": "cattle",
+      "commodity": "Feeder steers",
+      "market": "Blackfoot Livestock Auction",
+      "classGrade": "Auction cash, 380\u2013935 lb, 27 head",
+      "unit": "$/cwt",
+      "price": 419.59,
+      "priorPrice": 365.3,
+      "asOf": "2026-08-07",
+      "source": "Blackfoot Livestock Auction representative sales",
+      "sourceUrl": "https://blackfootlivestockauction.com/representative-sales/",
+      "note": "From lots on this week's barn sheet. Not a USDA regional average, not a Mackay quote, and not futures. Holstein lots and fat steers over 1,050 lb skipped.",
+      "role": "card"
+    },
+    {
+      "id": "cattle-bf-feeder-heifer",
+      "group": "cattle",
+      "commodity": "Feeder heifers",
+      "market": "Blackfoot Livestock Auction",
+      "classGrade": "Auction cash, 550\u2013680 lb, 6 head",
+      "unit": "$/cwt",
+      "price": 393.83,
+      "priorPrice": 390.27,
+      "asOf": "2026-08-07",
+      "source": "Blackfoot Livestock Auction representative sales",
+      "sourceUrl": "https://blackfootlivestockauction.com/representative-sales/",
+      "note": "From lots on this week's barn sheet. Not a USDA regional average, not a Mackay quote, and not futures. Holstein lots and fat steers over 1,050 lb skipped.",
+      "role": "card"
+    },
+    {
+      "id": "cattle-bf-yearling-heifer",
+      "group": "cattle",
+      "commodity": "Yearling heifers",
+      "market": "Blackfoot Livestock Auction",
+      "classGrade": "Auction cash, 765\u2013913 lb, 10 head",
+      "unit": "$/cwt",
+      "price": 312.4,
+      "priorPrice": 349.62,
+      "asOf": "2026-08-07",
+      "source": "Blackfoot Livestock Auction representative sales",
+      "sourceUrl": "https://blackfootlivestockauction.com/representative-sales/",
+      "note": "From lots on this week's barn sheet. Not a USDA regional average, not a Mackay quote, and not futures. Holstein lots and fat steers over 1,050 lb skipped.",
+      "role": "card"
+    },
+    {
+      "id": "cattle-bf-cull-cow",
+      "group": "cattle",
+      "commodity": "Cull cows",
+      "market": "Blackfoot Livestock Auction",
+      "classGrade": "Auction cash, 1060\u20131910 lb, 14 head",
+      "unit": "$/cwt",
+      "price": 170.79,
+      "priorPrice": 170.86,
+      "asOf": "2026-08-07",
+      "source": "Blackfoot Livestock Auction representative sales",
+      "sourceUrl": "https://blackfootlivestockauction.com/representative-sales/",
+      "note": "From lots on this week's barn sheet. Not a USDA regional average, not a Mackay quote, and not futures. Holstein lots and fat steers over 1,050 lb skipped.",
+      "role": "card"
+    },
+    {
+      "id": "cattle-bf-bull",
+      "group": "cattle",
+      "commodity": "Bulls",
+      "market": "Blackfoot Livestock Auction",
+      "classGrade": "Auction cash, 1408\u20132230 lb, 8 head",
+      "unit": "$/cwt",
+      "price": 211.5,
+      "priorPrice": 205.83,
+      "asOf": "2026-08-07",
+      "source": "Blackfoot Livestock Auction representative sales",
+      "sourceUrl": "https://blackfootlivestockauction.com/representative-sales/",
+      "note": "From lots on this week's barn sheet. Not a USDA regional average, not a Mackay quote, and not futures. Holstein lots and fat steers over 1,050 lb skipped.",
+      "role": "card"
+    },
+    {
+      "id": "cattle-nw-feeder-steers-ml1",
+      "group": "cattle",
+      "commodity": "Feeder steers",
+      "market": "Northwest Direct (WA / OR / ID / UT)",
+      "classGrade": "USDA Medium and Large 1, 825\u2013950 lb, 407 head. Regional reference \u2014 not a Twin Falls or Blackfoot average.",
+      "unit": "$/cwt",
+      "price": 326.34,
+      "priorPrice": null,
+      "asOf": "2026-08-14",
+      "source": "USDA AMS Northwest Direct Cattle Report (AMS_3059)",
+      "sourceUrl": "https://www.ams.usda.gov/mnreports/ams_3059.pdf",
+      "note": "USDA Northwest Direct FOB trades (WA/OR/ID/UT). Regional reference \u2014 not a Twin Falls or Blackfoot barn average, and not CME.",
+      "role": "card"
+    },
+    {
+      "id": "cattle-nw-feeder-heifers-ml1",
+      "group": "cattle",
+      "commodity": "Feeder heifers",
+      "market": "Northwest Direct (WA / OR / ID / UT)",
+      "classGrade": "USDA Medium and Large 1, 840 lb, 75 head. Regional reference \u2014 not a Twin Falls or Blackfoot average.",
+      "unit": "$/cwt",
+      "price": 310,
+      "priorPrice": null,
+      "asOf": "2026-08-14",
+      "source": "USDA AMS Northwest Direct Cattle Report (AMS_3059)",
+      "sourceUrl": "https://www.ams.usda.gov/mnreports/ams_3059.pdf",
+      "note": "USDA Northwest Direct FOB trades (WA/OR/ID/UT). Regional reference \u2014 not a Twin Falls or Blackfoot barn average, and not CME.",
+      "role": "card"
+    }
+  ],
+  "failed": [
+    {
+      "id": "idaho-hay",
+      "group": "hay",
+      "label": "Idaho hay",
+      "reason": "No report. HTTP Error 403: Forbidden",
+      "sourceUrl": "https://mymarketnews.ams.usda.gov/viewReport/3056"
+    }
+  ],
+  "history": {
+    "points": [
+      {
+        "reportDate": "2025-02-13",
+        "source": "USDA AMS Idaho Direct Hay Report (AMS_3056)",
+        "sourceUrl": "https://esmis.nal.usda.gov/sites/default/release-files/x346d418q/cf95m677v/4m90gr86v/AMS_3056.PDF",
+        "series": "hay-id-conventional-alfalfa",
+        "group": "hay",
+        "kind": "conventional",
+        "commodity": "Alfalfa",
+        "market": "Idaho Direct Hay",
+        "classGrade": "Statewide alfalfa, 2880 tons confirmed",
+        "unit": "$/ton",
+        "price": 136.23
+      },
+      {
+        "reportDate": "2025-02-13",
+        "source": "USDA AMS Idaho Direct Hay Report (AMS_3056)",
+        "sourceUrl": "https://esmis.nal.usda.gov/sites/default/release-files/x346d418q/cf95m677v/4m90gr86v/AMS_3056.PDF",
+        "series": "hay-id-east-conventional-alfalfa",
+        "group": "hay",
+        "kind": "conventional",
+        "commodity": "Alfalfa",
+        "market": "Idaho East",
+        "classGrade": "East alfalfa, 1380 tons confirmed",
+        "unit": "$/ton",
+        "price": 124.89
+      },
+      {
+        "reportDate": "2025-02-13",
+        "source": "USDA AMS Idaho Direct Hay Report (AMS_3056)",
+        "sourceUrl": "https://esmis.nal.usda.gov/sites/default/release-files/x346d418q/cf95m677v/4m90gr86v/AMS_3056.PDF",
+        "series": "hay-id-east-feeder-large-square",
+        "group": "hay",
+        "kind": "conventional",
+        "commodity": "Alfalfa",
+        "market": "Idaho East",
+        "classGrade": "Fair / Good, mixed packages, 1380 tons confirmed",
+        "unit": "$/ton",
+        "price": 124.89
+      },
+      {
+        "reportDate": "2025-02-13",
+        "source": "USDA AMS Idaho Direct Hay Report (AMS_3056)",
+        "sourceUrl": "https://esmis.nal.usda.gov/sites/default/release-files/x346d418q/cf95m677v/4m90gr86v/AMS_3056.PDF",
+        "series": "hay-id-south-conventional-alfalfa",
+        "group": "hay",
+        "kind": "conventional",
+        "commodity": "Alfalfa",
+        "market": "Idaho South",
+        "classGrade": "South alfalfa, 1500 tons confirmed",
+        "unit": "$/ton",
+        "price": 146.67
+      },
+      {
+        "reportDate": "2025-02-13",
+        "source": "USDA AMS Idaho Direct Hay Report (AMS_3056)",
+        "sourceUrl": "https://esmis.nal.usda.gov/sites/default/release-files/x346d418q/cf95m677v/4m90gr86v/AMS_3056.PDF",
+        "series": "hay-id-south-feeder-large-square",
+        "group": "hay",
+        "kind": "conventional",
+        "commodity": "Alfalfa",
+        "market": "Idaho South",
+        "classGrade": "Good, Large Square 3x4, 1000 tons confirmed",
+        "unit": "$/ton",
+        "price": 150
+      },
+      {
+        "reportDate": "2025-02-13",
+        "source": "USDA AMS Idaho Direct Hay Report (AMS_3056)",
+        "sourceUrl": "https://esmis.nal.usda.gov/sites/default/release-files/x346d418q/cf95m677v/4m90gr86v/AMS_3056.PDF",
+        "series": "hay-id-south-premium-large-square",
+        "group": "hay",
+        "kind": "conventional",
+        "commodity": "Alfalfa",
+        "market": "Idaho South",
+        "classGrade": "Premium, Large Square 3x4, 500 tons confirmed",
+        "unit": "$/ton",
+        "price": 140
+      },
+      {
+        "reportDate": "2025-02-20",
+        "source": "USDA AMS Idaho Direct Hay Report (AMS_3056)",
+        "sourceUrl": "https://esmis.nal.usda.gov/sites/default/release-files/x346d418q/3b593573m/g158db57f/AMS_3056.PDF",
+        "series": "hay-id-conventional-alfalfa",
+        "group": "hay",
+        "kind": "conventional",
+        "commodity": "Alfalfa",
+        "market": "Idaho Direct Hay",
+        "classGrade": "Statewide alfalfa, 1650 tons confirmed",
+        "unit": "$/ton",
+        "price": 131.97
+      },
+      {
+        "reportDate": "2025-02-20",
+        "source": "USDA AMS Idaho Direct Hay Report (AMS_3056)",
+        "sourceUrl": "https://esmis.nal.usda.gov/sites/default/release-files/x346d418q/3b593573m/g158db57f/AMS_3056.PDF",
+        "series": "hay-id-east-conventional-alfalfa",
+        "group": "hay",
+        "kind": "conventional",
+        "commodity": "Alfalfa",
+        "market": "Idaho East",
+        "classGrade": "East alfalfa, 1150 tons confirmed",
+        "unit": "$/ton",
+        "price": 128.48
+      }
+    ],
+    "emptyReports": [
+      {
+        "reportDate": "2025-02-13",
+        "source": "USDA AMS Idaho Direct Hay Report (AMS_3056)",
+        "sourceUrl": "https://esmis.nal.usda.gov/sites/default/release-files/x346d418q/cf95m677v/4m90gr86v/AMS_3056.PDF",
+        "series": "hay-id-organic-alfalfa",
+        "reason": "No report. This report has no organic row. USDA printed no organic hay trade. We are not inventing a number and not reusing an older organic price as current."
+      },
+      {
+        "reportDate": "2025-02-20",
+        "source": "USDA AMS Idaho Direct Hay Report (AMS_3056)",
+        "sourceUrl": "https://esmis.nal.usda.gov/sites/default/release-files/x346d418q/3b593573m/g158db57f/AMS_3056.PDF",
+        "series": "hay-id-organic-alfalfa",
+        "reason": "No report. This report has no organic row. USDA printed no organic hay trade. We are not inventing a number and not reusing an older organic price as current."
+      },
+      {
+        "reportDate": "2025-02-26",
+        "source": "USDA AMS Idaho Direct Hay Report (AMS_3056)",
+        "sourceUrl": "https://esmis.nal.usda.gov/sites/default/release-files/x346d418q/s1786j24m/1c18gb71f/AMS_3056.PDF",
+        "series": "hay-id-organic-alfalfa",
+        "reason": "No report. This report has no organic row. USDA printed no organic hay trade. We are not inventing a number and not reusing an older organic price as current."
+      },
+      {
+        "reportDate": "2025-03-06",
+        "source": "USDA AMS Idaho Direct Hay Report (AMS_3056)",
+        "sourceUrl": "https://esmis.nal.usda.gov/sites/default/release-files/x346d418q/41689d95h/fq979r104/AMS_3056.PDF",
+        "series": "hay-id-organic-alfalfa",
+        "reason": "No report. This report has no organic row. USDA printed no organic hay trade. We are not inventing a number and not reusing an older organic price as current."
+      }
+    ],
+    "series": [
+      {
+        "id": "cattle-tf-feeder-steer",
+        "label": "Twin Falls feeder steers",
+        "unit": "$/cwt",
+        "group": "cattle",
+        "compareDefault": true
+      },
+      {
+        "id": "cattle-tf-feeder-heifer",
+        "label": "Twin Falls feeder heifers",
+        "unit": "$/cwt",
+        "group": "cattle",
+        "compareDefault": true
+      },
+      {
+        "id": "cattle-tf-yearling-heifer",
+        "label": "Twin Falls yearling heifers",
+        "unit": "$/cwt",
+        "group": "cattle"
+      },
+      {
+        "id": "cattle-tf-cull-cow",
+        "label": "Twin Falls cull cows",
+        "unit": "$/cwt",
+        "group": "cattle"
+      },
+      {
+        "id": "cattle-tf-pairs",
+        "label": "Twin Falls cow-calf pairs",
+        "unit": "$/pair",
+        "group": "cattle",
+        "compareDefault": true
+      },
+      {
+        "id": "cattle-tf-bull",
+        "label": "Twin Falls bulls",
+        "unit": "$/cwt",
+        "group": "cattle"
+      },
+      {
+        "id": "cattle-bf-feeder-steer",
+        "label": "Blackfoot feeder steers",
+        "unit": "$/cwt",
+        "group": "cattle",
+        "compareDefault": true
+      },
+      {
+        "id": "cattle-bf-feeder-heifer",
+        "label": "Blackfoot feeder heifers",
+        "unit": "$/cwt",
+        "group": "cattle",
+        "compareDefault": true
+      }
+    ]
+  }
+}

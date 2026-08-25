@@ -1,0 +1,217 @@
+       DEPARTMENT OF HEALTH & HUMAN SERVICES                                       Public Health Service
+
+
+
+                                                                                   Food and Drug Administration
+                                                                                   Silver Spring, MD 20993
+
+
+March 9, 2026
+
+Juno Therapeutics Inc., a Bristol-Myers Squibb Company
+Attention: Nicole Van De Vaarst/Amanda Pisciotta
+3401 Princeton Pike
+Lawrence Township, NJ 08648
+
+RE:       BREYANZI (lisocabtagene maraleucel)
+          BLA 125714/733, 735
+
+Dear Ms. Van De Vaarst and Ms. Pisciotta:
+
+The Advertising and Promotional Labeling Branch (APLB) of the U.S. Food and Drug
+Administration (FDA) has reviewed various promotional materials for BREYANZI®
+(lisocabtagene maraleucel) suspension, for intravenous infusion, from Juno Therapeutics
+Inc., a Bristol-Myers Squibb Company (BMS) that include exploratory analyses, such as
+Progression-Free Survival (PFS) data and Overall Survival (OS) data, in conjunction with
+representations or suggestions that BREYANZI is effective for these types of clinical benefits.
+See, for example:
+
+      •   BREYANZI HCP Website Campaign Update 1 -CLL (2009-US-2500225)
+      •   Promotional Labeling, Breyanzi HCP CTAM LBCL CVA - dPDF Q3 2025 Update
+          (2009-US-2500682)
+
+The promotional materials make false or misleading claims and representations about the
+benefits of BREYANZI. Thus, the promotional materials misbrand BREYANZI within the
+meaning of the Federal Food, Drug, and Cosmetic Act (FD&C Act) and make its distribution
+violative. 21 U.S.C. 321(n); 331(a); 352(a), (n). See 21 CFR 202.1(e)(5). These violations are
+particularly concerning from a public health perspective because the promotional materials
+make misleading representations about BREYANZI being more effective or having greater
+clinical benefit than has been demonstrated. This may cause doctors and patients to
+inaccurately weigh the risks versus benefits of treatment with BREYANZI, which can be fatal
+or life-threatening.
+
+
+
+
+1
+    The website is available at: https://www.BREYANZIhcp.com/ (last accessed March 2026).
+Van De Vaarst and Pisciotta                                                Page 2
+Juno Therapeutics Inc., a Bristol-Myers Squibb Company
+BREYANZI (lisocabtagene maraleucel) - BLA 125714/733, 735
+
+Background
+
+According to the FDA-approved prescribing information (PI) for BREYANZI:
+
+BREYANZI is a CD19-directed genetically modified autologous T cell immunotherapy
+indicated for the treatment of:
+
+   •   adult patients with large B-cell lymphoma (LBCL), including diffuse large B-cell
+       lymphoma (DLBCL) not otherwise specified (including DLBCL arising from indolent
+       lymphoma), high-grade B-cell lymphoma, primary mediastinal large B-cell
+       lymphoma, and follicular lymphoma grade 3B, who have:
+       o refractory disease to first-line chemoimmunotherapy or relapse within 12
+          months of first-line chemoimmunotherapy; or
+       o refractory disease to first-line chemoimmunotherapy or relapse after first-line
+          chemoimmunotherapy and are not eligible for hematopoietic stem cell
+          transplantation (HSCT) due to comorbidities or age; or
+       o relapsed or refractory disease after 2 or more lines of systemic therapy.
+       o Limitations of Use: BREYANZI is not indicated for the treatment of patients with
+          primary central nervous system lymphoma.
+   •   adult patients with relapsed or refractory chronic lymphocytic leukemia (CLL) or
+       small lymphocytic lymphoma (SLL) who have received at least 2 prior lines of
+       therapy, including a Bruton tyrosine kinase (BTK) inhibitor and a B-cell lymphoma
+       2 (BCL-2) inhibitor. This indication is approved under accelerated approval based
+       on response rate and duration of response. Continued approval for this indication
+       may be contingent upon verification and description of clinical benefit in
+       confirmatory trial(s).
+   •   adult patients with relapsed or refractory follicular lymphoma (FL) who have
+       received 2 or more prior lines of systemic therapy. This indication is approved
+       under accelerated approval based on response rate and duration of response.
+       Continued approval for this indication may be contingent upon verification and
+       description of clinical benefit in confirmatory trial(s).
+   •   adult patients with relapsed or refractory mantle cell lymphoma (MCL) who have
+       received at least 2 prior lines of systemic therapy, including a Bruton tyrosine
+       kinase (BTK) inhibitor.
+   •   adult patients with relapsed or refractory marginal zone lymphoma (MZL) who
+       have received at least 2 prior lines of systemic therapy.
+
+The PI for BREYANZI also includes a BOXED WARNING and WARNINGS AND
+PRECAUTIONS including, but not limited to, fatal or life-threatening reactions of Cytokine
+Release Syndrome, fatal or life-threatening neurological toxicities, secondary
+malignancies, fatal or life-threatening severe infections, prolonged cytopenia,
+hypogammaglobulinemia, and fatal or life-threatening Immune Effector Cell-Associated
+Hemophagocytic Lymphohistiocytosis-Like Syndrome.
+
+BREYANZI’s CLL, SLL, and FL indications were approved under the accelerated
+approval pathway. This pathway can allow for earlier approval of drugs intended to treat
+serious conditions and fill an unmet medical need. Accelerated approval is based on an
+effect on a surrogate or intermediate clinical endpoint that is thought to be reasonably
+Van De Vaarst and Pisciotta                                                            Page 3
+Juno Therapeutics Inc., a Bristol-Myers Squibb Company
+BREYANZI (lisocabtagene maraleucel) - BLA 125714/733, 735
+
+likely to predict clinical benefit, rather than on a direct measurement of clinical benefit.
+FDA has required sponsors of drugs approved under the accelerated approval pathway,
+including BREYANZI, to conduct a confirmatory trial to verify and describe the clinical
+benefit of the drug. 2
+
+False or Misleading Benefit Presentation
+
+Prescription drug advertisements and labeling (promotional communications) misbrand a
+drug if they are false or misleading with respect to efficacy. The determination of whether
+a promotional communication is misleading includes, among other things, not only
+representations made or suggested in the promotional communication, but also the
+extent to which the promotional communication fails to reveal facts material in light of the
+representations made or with respect to consequences that may result from the use of
+the drug as recommended or suggested in the promotional communication. See section
+201(n) of the FD&C Act, 21 U.S.C. 321(n).
+
+You include representations in BREYANZI’s promotional materials suggesting that it is
+effective in providing PFS and OS benefits for CLL, SLL, and FL indications. For
+example, BREYANZI’s healthcare professional website includes headlines such as, “74%
+of patients survived with no signs of disease progression at 18 months [PFS in the
+TRANSCEND FL trial],” “Median PFS of 12 months was observed in TRANSCEND
+CLL 004,” and “Median OS of 33.6 months was observed in TRANSCEND CLL 004.”
+Your presentations include data for time-to-event endpoints from this single-arm trial,
+such as PFS and OS, that have statistical limitations rendering such endpoints
+uninterpretable. Specifically, TRANSCEND was designed as a single-arm trial (i.e., with
+no comparator arm), and the CLL, SLL, and FL indications were approved based on
+response rate (overall response (OR), complete response (CR), and partial response
+(PR)) and the duration of response (DOR). In the absence of an appropriate comparator
+for BREYANZI, it is not possible to determine if the observed effect you represented is
+attributable to BREYANZI or to other factor(s), such as the natural history of the disease.
+Consequently, your promotional advertising and labeling that represents or suggests
+BREYANZI is effective in providing PFS or OS is misleading.
+
+We acknowledge that your presentations include, but are not limited to, the following
+statements (in smaller less prominent font) next to the PFS and OS presentations (in
+pertinent part; footnotes omitted):
+
+   •   PFS data are not in the Prescribing Information and should be interpreted with
+       caution
+   •   PFS was a secondary endpoint in TRANSCEND CLL 004 and was not statistically
+       tested in the setting of a single-arm trial. It is not possible to determine if the
+       observed effect is attributable to BREYANZI or to the natural history of the disease
+   •   The statistical significance of PFS is not known
+
+2 We note that a post-marketing, multicenter, prospective, observational study to assess the long-term safety
+
+and the risk of secondary malignancies occurring after treatment with lisocabtagene maraleucel is currently
+ongoing; however, this study has not been completed (See:
+https://www.clinicaltrials.gov/study/NCT06794268?term=AREA%5BBasicSearch%5D(Lisocabtagene%20marale
+ucel)&rank=4)
+Van De Vaarst and Pisciotta                                                   Page 4
+Juno Therapeutics Inc., a Bristol-Myers Squibb Company
+BREYANZI (lisocabtagene maraleucel) - BLA 125714/733, 735
+
+   •   PFS was a secondary endpoint in TRANSCEND FL and was not statistically tested
+       in the setting of a single-arm trial. It is not possible to determine if the observed
+       effect is attributable to Breyanzi or to the natural history of the disease
+   •   OS data are not in the Prescribing Information and should be interpreted with
+       caution
+   •   OS was a secondary endpoint in TRANSCEND CLL 004 and was not statistically
+       tested in the setting of a single-arm trial. It is not possible to determine if the
+       observed effect is attributable to Breyanzi or to the natural history of the disease
+   •   The statistical significance of OS is not known
+
+In further support of these representations, you cite a few references, including the
+BREYANZI PI, Data on File with BMS, and abstracts presented at the American Society
+of Hematology 2024 Annual Meeting.
+
+However, these statements and references do not sufficiently mitigate the overall
+misleading message conveyed by these materials.
+
+Conclusion and Requested Action
+
+For the reasons discussed above, your promotional materials misbrand BREYANZI within
+the meaning of the FD&C Act and make its distribution violative. See 21 U.S.C. 321(n),
+331(a), and 352(a), (n); 21 CFR 202.1(e)(5).
+
+This letter notifies you of our concerns and provides you with an opportunity to address them.
+APLB requests that you cease any violations of the FD&C Act. Within 15 working days of
+receipt, please submit a written response to this letter addressing the concerns described,
+listing all advertising and promotional labeling materials (including the
+dissemination/publication date and Material ID Code) for BREYANZI that contain the same or
+similar representations or suggestions, and explaining your plans for discontinuation of such.
+
+If you believe that your product is not in violation of the FD&C Act, please include in your
+submission to us your reasoning and any supporting information for our consideration
+within 15 working days from the date of receipt of this letter.
+
+The concerns discussed in this letter do not constitute an exhaustive list of potential
+violations. It is your responsibility to ensure compliance with all applicable requirements of the
+FD&C Act and its implementing regulations.
+
+Please submit your response to your eCTD under the heading 1.15.1.6 and email a copy of
+your response to CBERAPLB@fda.hhs.gov. We remind you that only written communications
+are considered official responses. All correspondence should include a subject line that
+clearly identifies the submission as a Response to Untitled Letter and refer to the BLA/STN
+numbers.
+Van De Vaarst and Pisciotta                                                 Page 5
+Juno Therapeutics Inc., a Bristol-Myers Squibb Company
+BREYANZI (lisocabtagene maraleucel) - BLA 125714/733, 735
+
+Questions related to the submission of your response letter should be emailed to
+CBERAPLB@fda.hhs.gov.
+
+
+                                            Sincerely,
+
+
+
+                                            Melissa Mendoza, J.D.
+                                            Office Director
+                                            Office of Compliance and Biologics Quality
+                                            Center for Biologics Evaluation and Research
+

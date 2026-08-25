@@ -1,0 +1,262 @@
+  
+      
+  
+
+
+  #  #LL#!" &L L! # "&L                    %L L
+ #!L ""LL  L
+                        Digitally signed by STEVEN
+STEVEN FISHER FISHER
+              Date: 2026.08.14 07:21:46 -04'00'
+
+
+
+ !E.H/=L7C5.BL                                      *BH.KL$L$7447=CL
+   ,E7=4L7B.,E>BL>0LJ@>BEL=3?B,.<.=FL              57.0LJ.,GF7H.L129,/BL
+
+
+
+)E.L ''''''''''''L'L
+
+
+
+
+                                                                       
+                                                      .H7.I/-L)=-L)@@B>H.-L+K L
+                                                        
+                                                     >6LL.CE/BLCAL
+                                                     ;7H.BLLB7D,58:LDAL
+                                                     7,5)/;LL!<7F5LCAL
+
+                                                     L*IL L
+
+                                                     )E.L G4GCFLL
+                                                     UNITED STATES DEPARTMENT OF COMMERCE
+                                                     Bureau of Industry and Security
+                                                     Office of Export Enforcement
+                                                     1401 Constitution Avenue, Suite 4508
+                                                     Washington, DC 20230
+
+
+
+                                    PROPOSED CHARGING LETTER
+
+
+
+Plexon, Inc.
+ATTN: Harvey W. Wiggins, CEO
+6500 Greenville Ave.
+Suite 730
+Dallas, TX 75206
+
+
+Dear Mr. Wiggins,
+
+        The Bureau of Industry and Security, U.S. Department of Commerce (“BIS”), has reason
+to believe that Plexon, Inc. (“Plexon” or “Respondent”) has committed eight violations of the
+Export Administration Regulations (the “EAR” or “Regulations”). 1 Specifically, BIS alleges the
+following:
+
+                                       GENERAL ALLEGATIONS
+
+    1. As described further below and in the attached Schedule of Violations, on or about February
+       10, 2022, through August 30, 2023, Plexon violated the Regulations when it exported items
+       subject to the EAR to parties in China listed on the BIS Entity List, without the required
+       license or authorization from BIS. Specifically, Plexon exported eight Neural Recording
+       Data Acquisition Systems (“Omniplex systems”) and accessories to the Academy of
+       Military Medical Sciences (AMMS), a party on the BIS Entity List. At all relevant times,
+       pursuant to § 744.11 of the Regulations, a license was required for the export, reexport or
+       transfer (in-country) of items subject to the EAR to this end user.
+
+    2. Plexon, Inc. is a small U.S. neuroscience technology company headquartered in Dallas,
+       Texas. Although the company’s sole U.S. facility is in Dallas, Texas, the company has
+       authorized distributors in China, Russia, South Korea, and Japan. Plexon’s Asian
+       distributor acts as its sales branch in Asia (except Japan) and has offices in Hong Kong,
+       Beijing, Shanghai, Nanjing, and Guangzhou.
+
+    3. The OminiPlex system, manufactured at Plexon’s U.S. facility in Dallas, Texas, is a
+       machine that uses electrodes placed in the brains of animals to acquire data and to identify
+       and categorize spikes made by individual neurons in the brain. The OmniPlex system is a
+
+1
+  The Regulations are currently codified in the Code of Federal Regulations at 15 C.F.R. Parts 730-774 (2025). The
+charged violations occurred in 2022. The Regulations governing the violations at issue are found in the 2022 through
+2023 versions of the Code of Federal Regulations (15 C.F.R. Parts 730-774 (2022 - 2023)). The 2025 Regulations set
+forth the procedures that apply to this matter.
+Page 2 of 5
+
+         combination of the OmniPlex chassis, OmniPlex Software, and a Digital Headstage
+         Processor (DHP) acquisition subsystem.
+
+    4. Section 1758 of the Export Control Reform Act of 2018 authorizes Commerce to establish
+       appropriate controls on the export, reexport, or transfer (in-country) of emerging
+       technologies essential to the national security of the United States. In an Advance Notice
+       of Proposed Rulemaking (ANPRM) in 2018, BIS identified brain-computer interfaces
+       (BCI), artificial intelligence for brain modelling, and other items as potential emerging
+       technologies that could be determined to be essential to the national security of the United
+       States. 2 Subsequently, BIS requested comments from the public on the imposition of export
+       controls on certain BCI in 2021, and held a February 2023 conference intended to further
+       both BIS’s and the public’s understanding of advancements in BCI technology and
+       anticipated future developments in research and applications. 3
+
+
+                                       STATEMENT OF CHARGES
+
+Charges 1-8 15 C.F.R. § 764.2(a) – Engaging in Prohibited Conduct
+
+    5. Between on or about February 10, 2022 and August 30, 2023, Plexon engaged in conduct
+       prohibited by the EAR on 8 occasions when it exported Neural Recording Data Acquisition
+       Systems (“Omniplex systems”) and accessories, valued at approximately $178,721 and
+       classified under Export Control Classification Number (ECCN) 4A994.k, to AMMS, a
+       party on the BIS Entity List, without the required license or other authorization from BIS.
+
+    6. Pursuant to an existing sales relationship, AMMS ordered the Omniplex systems through
+       Plexon Inc’s Asia distributor. Plexon Inc. then manufactured the systems at its plant in
+       Dallas, Texas and shipped them through its Asian distributor to AMMS.
+
+    7. AMMS and eleven of its research institutes were added to the BIS Entity List effective
+       December 17, 2021, due to its “use [of] biotechnology processes to support Chinese
+       military end uses and end users, to include purported brain-control weaponry.” 4 At all times
+       relevant to this conduct, exports to AMMS required a BIS license pursuant to Section
+       744.11 and Supplement No. 4 to Part 744 of the EAR. Plexon did not seek or obtain BIS
+       authorization for these transactions.
+
+
+
+
+2
+  Review of Controls for Certain Emerging Technologies, 83 Fed. Reg. 58201 (Nov. 19, 2018).
+3
+  See Request for Comments Concerning the Imposition of Export Controls on Certain Brain-Computer Interface
+(BCI) Emerging Technology, 86 Fed. Reg. 59070 (Oct. 26, 2021); Imposition of Export Controls on Certain Brain-
+Computer Interface Emerging Technology, available at https://www.regulations.gov/document/BIS-2021-0032-
+0001; Meetings: Brain Computer Interface; Conference, available at https://www.regulations.gov/document/BIS-
+2021-0032-0020.
+4
+  See Addition of Certain Entities to the Entity List and Revision of an Entry on the Entity List, 86 Fed. Reg. 71558
+(2021).
+Page 3 of 5
+
+
+                                  *      *       *        *       *
+        Accordingly, Plexon is hereby notified that an administrative proceeding is instituted
+against it pursuant to Part 766 of the Regulations for the purpose of obtaining an order imposing
+administrative sanctions, including, but not limited to, any or all of the following:
+
+x       The maximum civil penalty of an amount not to exceed the greater of $374,474 per
+        violation or an amount that is twice the amount of the transaction that is the basis of the
+        violation with respect to which the penalty is imposed; 5
+
+x       Denial of export privileges;
+
+
+x       Exclusion from practice before BIS; and/or
+
+
+x       Any other liability, sanction, or penalty available under law.
+
+
+         If Plexon fails to answer the charges contained in this letter within 30 days after being
+served with notice of issuance of this letter, that failure will be treated as a default. See 15 C.F.R.
+§§ 766.6 and 766.7. If Plexon defaults, the Administrative Law Judge may find the charges alleged
+in this letter are true without a hearing or further notice to Plexon. The Under Secretary of
+Commerce for Industry and Security may then impose up to the maximum penalty for the charges
+in this letter.
+
+         Plexon is further notified that it is entitled to an agency hearing on the record if it files a
+written demand for one with any answer. See 15 C.F.R. § 766.6. Plexon is also entitled to be
+represented by counsel or other authorized representative who has power of attorney to represent
+it. See 15 C.F.R. §§ 766.3(a) and 766.4.
+
+       The Regulations provide for settlement without a hearing. See 15 C.F.R. § 766.18. Should
+Plexon have a proposal to settle this case, it should transmit it to the attorney representing BIS
+named below.
+
+        Respondents are further notified that under the Small Business Regulatory Enforcement
+Flexibility Act, Respondents may be eligible for assistance from the Office of the National
+Ombudsman of the Small Business Administration in this matter. To determine eligibility and get
+more information, please see: http://www.sba.gov/ombudsman/.
+
+        The U.S. Coast Guard is providing administrative law judge services in connection with
+the matters set forth in this letter. Accordingly, Plexon’s answer must be filed in accordance with
+the instructions in § 766.5(a) of the Regulations with:
+
+5
+  See 50 U.S.C. § 4819 (prescribing civil monetary penalty amount for ECRA violation); 15 C.F.R. §§ 6.3(c)(6), 6.4
+(adjusting civil monetary penalty amount for inflation).
+Page 4 of 5
+
+
+       U.S. Coast Guard ALJ Docketing Center
+       40 S. Gay Street
+       Baltimore, Maryland 21202-4022
+
+In addition, a copy of Plexon’s answer must be served on BIS at the following address:
+
+       Chief Counsel for Industry and Security
+       Attention: B. Kathryn Debrason
+       Room H-3839
+       14th Street and Constitution Avenue, N.W.
+       Washington, D.C. 20230
+
+        B. Kathryn Debrason is the attorney representing BIS in this case; any communications
+that Plexon may wish to have concerning this matter should occur through her. Ms. Debrason may
+be contacted at Kdebrason1@doc.gov or 240-805-7018.
+
+
+Sincerely,                     Digitally signed by STEVEN
+              STEVEN           FISHER
+                               Date: 2026.05.04 16:10:24
+Steven Fisher FISHER           -04'00'
+
+Acting Director
+Office of Export Enforcement
+Page 5 of 5
+
+                                  Schedule of Violations
+
+ Charge       Export        Item            Item
+                                                           End User   Value Per Item
+  No.          Date      Description    Classification
+                          Omniplex
+              February
+    1                     System &        4A994.k          AMMS          $35,286
+              10, 2022
+                         accessories
+                          Omniplex
+               March
+    2                     System &        4A994.k          AMMS           $4,167
+              25, 2022
+                         accessories
+                          Omniplex
+              May 9,
+    3                     System &        4A994.k          AMMS          $11,666
+              2022
+                         accessories
+                          Omniplex
+               August
+    4                     System &        4A994.k          AMMS           $6,765
+              28, 2022
+                         accessories
+                          Omniplex
+              October
+    5                     System &        4A994.k          AMMS           $7,127
+              5, 2022
+                         accessories
+                          Omniplex
+              October
+    6                     System &        4A994.k          AMMS           $3,563
+              5, 2022
+                         accessories
+                          Omniplex
+               August
+    7                     System &        4A994.k          AMMS           $945
+              28, 2022
+                         accessories
+                          Omniplex
+               August
+    8                     System &        4A994.k          AMMS         $109,202
+              30, 2023
+                         accessories
+ Total Value of Shipments:                                              $178,721
+

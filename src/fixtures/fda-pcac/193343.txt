@@ -1,0 +1,2241 @@
+FDA Briefing Document
+
+       Pharmacy Compounding Advisory Committee (PCAC)
+                          Meeting
+
+                                    July 23 - 24, 2026
+
+
+
+
+The attached package contains background information prepared by the Food and Drug
+Administration (FDA or Agency) for the panel members of the Pharmacy Compounding Advisory
+Committee (advisory committee). We are bringing certain compounding issues to this advisory
+committee to obtain the advisory committee’s advice. The background package may not include all
+issues relevant to the final committee recommendation and instead is intended to focus on issues
+identified by the Agency for discussion by the advisory committee. The FDA will not issue a final
+determination on the issues at hand until input from the advisory committee process has been
+considered and all reviews have been finalized. The final determination may be affected by issues
+not discussed at the advisory committee meeting.
+
+
+
+
+                                                                                                    1
+BPC-157 – Related Bulk
+Drug Substances (BPC-
+  157 (free base) and
+   BPC-157 acetate)
+
+
+
+
+                     2
+                                        Table of Contents
+ 1. FDA Evaluation of BPC-157-Related bulk drug substances...…..……..................................4
+    I.      Introduction….……………………………………………..…………......................8
+    II.     Evaluation Criteria…….…….………………………..……………..........................9
+            A. Is the substance well characterized, physically and chemically?.........................9
+            B. Has the substance been used historically in compounding?...............................22
+            C. Available evidence of effectiveness or lack of effectiveness of drug products
+                compounded with the substance……………………………………………….25
+            D. Are there concerns about the safety of the substance for use in
+                compounding?....................................................................................................29
+    III.    Conclusion and Recommendation…..…………………..………..………………..44
+    IV.     References……………..……….………………..…...………...…………………..48
+    V.      Appendix…………………………………………………………………………...54
+2. BPC-157-related bulk drug substance Nominations…......……..……………...………….....56
+    I.      LDT Health Solutions Inc…………………………………....………..…………...57
+    II.     Wells Pharmacy Network……………………………………………………….....63
+
+
+
+
+                                                                                                                                 3
+FDA Evaluation of BPC-157 –
+Related Bulk Drug Substances
+  (BPC-157 (free base) and
+      BPC-157 acetate)
+
+
+
+
+                               4
+DATE:           5/11/2026
+FROM:           Mai Tu, Ph.D.
+                Senior Pharmaceutical Scientist, Office of Product Quality Assessment II
+                (OPQAII), Office of Pharmaceutical Quality (OPQ)
+                Olubukola Adeyemi, Pharm.D., BCPS
+                Consumer Safety Officer, Office of Compounding Quality and Compliance
+                (OCQC), CDER Office of Compliance (OC)
+                Tracy Rupp, Pharm.D., MPH, BCPS, RD
+                Lead Consumer Safety Officer, OCQC, OC
+                Edna Albuquerque, Ph.D.
+                Senior Pharmacology/Toxicology Reviewer, Division of
+                Pharmacology/Toxicology for Rare Diseases, Pediatrics, Urologic, and
+                Reproductive Medicine/Specialty Medicine (DPT-RPURM/SM), Office of New
+                Drugs (OND)
+                Andrea Benedict, Ph.D.
+                Nonclinical Team Leader, DPT-RPURM/SM, OND
+                Elizabeth Hankla, Pharm.D.
+                Clinical Analyst, Pharmacy Compounding Review Team (PCRT)
+                Office of Specialty Medicine (OSM), OND
+                Suhail Kasim, M.D., MPH
+                Lead Physician, PCRT, OSM, OND
+THROUGH: Russell Wesdyk, B.S., MBA
+         ADRA, OPQA2, OPQ
+                Alex Gorovets, M.D.
+                Deputy Director, OSM, OND
+                Matt Lash, J.D.
+                Acting Director, OCQC, OC
+                Deputy Director, OC
+
+TO:             Pharmacy Compounding Advisory Committee
+SUBJECT:        Evaluation of BPC-157-Related Bulk Drug Substances (BPC-157 (Free Base) and
+                BPC-157 Acetate) for Inclusion on the 503A Bulk Drug Substances List
+____________________________________________________________________________
+U.S. Food & Drug Administration
+10903 New Hampshire Avenue
+Silver Spring, MD 20993
+www.fda.gov
+
+
+
+
+                                                                                           5
+List of Abbreviations
+
+ Abbreviation           Term
+ AE                     adverse event
+ ALT                    alanine transaminase
+ API                    active pharmaceutical ingredient
+ aPTT                   activated partial thromboplastin time
+ AUC                    area under the curve
+ BPC                    Body Protection Compound
+ BDS                    bulk drug substance
+ BET                    bacterial endotoxins test
+ CAS                    Chemical Abstracts Service
+ CI                     confidence interval
+ CoA                    Certificate of Analysis
+ CQA                    critical quality attributes
+ DAI                    Disease Activity Index
+ FAERS                  FDA Adverse Events Reporting System
+ FD&C Act               Federal Food, Drug, and Cosmetic Act
+ FDA                    Food and Drug Administration
+ GI                     gastrointestinal
+ HFCS                   Human Foods Complaint System
+ IBD                    inflammatory bowel disease
+ IM                     intramuscular
+ INN                    International Non-proprietary Name
+ IP                     intraperitoneal
+                        International Union of Pure and Applied
+ IUPAC                  Chemistry
+ MF/MW                  Molecular Formula/ Molecular Weight
+ NF                     National Formulary
+ NOAEL                  no-observed-adverse-event-level
+ NSAID                  nonsteroidal anti-inflammatory drug
+ ROA                    route of administration
+ SC                     subcutaneous
+ TG                     triglyceride
+ UC                     ulcerative colitis
+ USAN                   United States Adopted Name
+
+
+
+                                                                  6
+USP    United States Pharmacopeia
+UNII   Unique Ingredient Identifier
+
+
+
+
+                                      7
+I.       INTRODUCTION
+
+The Food and Drug Administration (FDA, the Agency, or we) received nominations for Body
+Protection Compound (BPC-157)-related bulk drug substances for inclusion on the list of bulk
+drug substances (BDSs) that can be used in compounding under section 503A of the Federal
+Food, Drug, and Cosmetic Act (FD&C Act).1 BPC-157 is also known as Bepecin or PL-14736,
+which is a peptide that is reported to be comprised of 15 amino acids. Each nominator provided
+inconsistent information in the nomination package regarding the specific BDS proposed.
+Specifically, it is unclear in both packages whether the nomination was for BPC-157 acetate or
+BPC-157 (free base). BPC-157 acetate and BPC-157 (free base) are different active
+pharmaceutical ingredients and hence are considered different BDSs. Please see additional
+information in section II.A. The nominations were withdrawn2 and FDA is evaluating the
+substances at its discretion.
+
+Although it is unclear whether the nominators intended to nominate BPC-157 acetate or
+BPC-157 (free base), FDA has decided to evaluate both on its own initiative.
+
+FDA evaluated BPC-157 (free base) and BPC-157 acetate for the treatment of ulcerative colitis
+(UC).3,4
+
+The following BPC-157-related drug products were proposed in the nominations:
+     •   Capsule: 250 μg, 500 μg, and 1 mg, oral
+     •   Injection: 2,000 μg/mL, subcutaneous (SC)
+
+
+
+
+1
+  There were two nominators of BPC-157-related BDSs: Wells Pharmacy Network and LDT Health
+Solutions. The nomination of “BPC-157” from Wells Pharmacy Network (Document ID: FDA-2015-N-
+3534-0279) can be accessed at: https://www.regulations.gov/document/FDA-2015-N-3534-0279. The
+nomination of “BPC-157” from International Peptide Society (LDT Health Solutions) (Document ID:
+FDA-2018-N-2973-0002) can be accessed at: https://www.regulations.gov/document/FDA-2018-N-2973-
+0002. These nominations were withdrawn, but because FDA is evaluating BPC-157 (free base) and BPC-
+157 acetate on its own initiative, FDA considered information submitted in these nominations as part of
+this evaluation.
+2
+  Document IDs: FDA-2015-N-3534-0484 and FDA-2015-N-3534-0485.
+3
+  We have explained that it is necessary to evaluate a nominated bulk drug substance in the context of the
+uses proposed for compounded drug products that include the substance, though we acknowledge that
+inclusion of a substance on the 503A Bulks List may not be limited to a specific use. See 84 FR 4696,
+4701.
+4
+  BPC-157 was nominated for use in UC, Crohn’s disease, Celiac disease, and tendonitis. However, FDA
+did not evaluate the proposed uses of Crohn’s disease, Celiac disease, and tendonitis because the
+nomination did not include sufficient information for the Agency to evaluate whether the substance is
+appropriate for these uses in compounded drug products. In addition, FDA did not identify clinical studies
+using BPC-157 in these populations. See 80 FR 65765 for information necessary to fully evaluate a
+substance.
+
+
+
+                                                                                                         8
+    •   Nasal spray solution: 50 μg/spray (500 μg/mL), nasal
+    •   Suppository: 1 mg, rectal
+    •   Transdermal cream
+
+There is no applicable United States Pharmacopeia (USP) or National Formulary (NF) drug
+substance monograph for BPC-157 (free base) or its acetate form, and neither is a component of
+an FDA-approved drug. BPC-157 is marketed in the United States as an ingredient in dietary
+supplement products formulated as oral capsules and tablets. There is no USP dietary supplement
+monograph for BPC-157 (free base) or its acetate form.
+
+We have evaluated publicly available data on the physicochemical characteristics, historical use,
+effectiveness, and safety in compounding of these substances. For the reasons discussed below,
+we believe the evaluation criteria weigh against placing both BPC-157 (free base) and BPC-157
+acetate on the list of bulk drug substances that can be used to compound drug products in
+accordance with section 503A of the FD&C Act (503A Bulks List).
+
+II. EVALUATION CRITERIA
+
+     A. Is the Substance Well-Characterized, Physically and Chemically? 5
+
+BPC-157 is a common name and not a United States Adopted Name (USAN). 6 FDA has
+encountered multiple salts, and derivatives, including different active moieties, sold
+commercially under the same common name. Inconsistent naming conventions that do not
+follow established chemical nomenclature standards (e.g., INN 7, IUPAC 8, USAN) represent a
+safety risk for patients as they may be dosed with a different bulk drug substance than the
+physician ordered. From a chemical analysis standpoint, inconsistent naming conventions for
+
+
+
+
+5
+  Among the conditions that must be met for a drug compounded using bulk drug substances to be eligible
+for the exemptions in section 503A of the FD&C Act is that the bulk drug substances are manufactured
+by an establishment that is registered under section 510 of the FD&C Act and that each bulk drug
+substance is accompanied by a valid certificate of analysis. Sections 503A(b)(1)(A)(ii) and (iii). A bulk
+drug substance is deemed to be adulterated if the methods used in, or the facilities or controls used for, its
+manufacture, processing, packing, or holding do not conform to or are not operated or administered in
+conformity with current good manufacturing practice. Section 501(a)(2)(B).
+6
+   United States Adopted Name (USAN) is a unique, nonproprietary name for a drug sold in the United
+States. The USAN Council, which is sponsored by several organizations, assigns USANs. This program
+and naming convention are intended to help physicians, pharmaceutical manufacturers of active
+ingredients and finished dosage forms, and pharmacists ensure that the patient is provided with the drug
+the physician intended.
+7
+  International Nonproprietary Names (INN) facilitate the identification of pharmaceutical substances or
+active pharmaceutical ingredients. Each INN is a unique name that is globally recognized and is public
+property. A nonproprietary name is also known as a generic name.
+8
+  The International Union of Pure and Applied Chemistry (IUPAC) is an international federation of
+National Adhering Organizations working for the advancement of the chemical sciences, especially by
+developing nomenclature and terminology.
+
+
+
+                                                                                                            9
+BPC-157-related bulk drug substances also introduce risks because of the inability to determine
+which bulk drug substance a particular reference standard is referencing.
+
+A BDS or active pharmaceutical ingredient (API) 9 used in a drug product may be a free base
+(i.e., the native molecule) or a salt or an ester of the free base, all of which share the same active
+moiety. 10 Different active moieties are not interchangeable because they can have different safety
+and efficacy profiles. A free base or the various salts or ester forms of an active moiety are
+distinct APIs, each with a different chemical structure and unique physical/chemical, or
+pharmacokinetic/pharmacodynamic characteristics. As a result, each may offer distinct
+properties (e.g., different solubilities, permeability, melting points, stability, or flow
+characteristics) and may also have different safety and/or efficacy profiles. All distinct active
+moieties, as well as free bases, salts, or esters of any given active moiety, are distinct BDSs for
+these reasons.
+
+Table 1 below summarizes available identifying information obtained from the public domain for
+each BDS.
+
+
+
+
+9
+  The terms BDS and API are used interchangeably in the compounding context. See 21 CFR 207.3
+(“Bulk drug substance, as referenced in sections 503A(b)(1)(A) and 503B(a)(2) of the Federal Food,
+Drug, and Cosmetic Act, previously defined in § 207.3(a)(4), means the same as "active pharmaceutical
+ingredient" as defined in § 207.1.”). An API is defined in FDA regulations at 21 CFR 207.1, which states
+“Active pharmaceutical ingredient means any substance that is intended for incorporation into a finished
+drug product and is intended to furnish pharmacological activity or other direct effect in the diagnosis,
+cure, mitigation, treatment, or prevention of disease, or to affect the structure or any function of the body.
+Active pharmaceutical ingredient does not include intermediates used in the synthesis of the substance.”
+10
+   “Active moiety is the molecule or ion, excluding those appended portions of the molecule that cause the
+drug to be an ester, salt (including a salt with hydrogen or coordination bonds), or other noncovalent
+derivative (such as a complex, chelate, or clathrate) of the molecule, responsible for the physiological or
+pharmacological action of the drug substance.” 21 CFR 314.3.
+
+
+
+                                                                                                            10
+Table 1. Summary of Basic Information on BPC-157 (Free Base) and BPC-157 Acetate.
+ Characteristic                     BPC-157 (free base)                  BPC-157 Acetate
+ UNII Code                            8ED8NXK95P                           PAR2FC72XP
+ CAS No*                               137525-51-0                          216441-37-1
+ MF/MW (g/mol)                      C62H98N16O22/1419.5          C62H98N16O22. X(C2H4O2)/NA
+                          H-Gly-Glu-Pro-Pro-Pro-Gly-Lys-           H-Gly-Glu-Pro-Pro-Pro-Gly-
+ Chemical
+                          Pro-Ala-Asp-Asp-Ala-Gly-Leu-            Lys-Pro-Ala-Asp-Asp-Ala-Gly-
+ Structure
+                                     Val-OH                         Leu-Val-OH.XCH3CO2H
+     Supplier 11                           Yes                                   Yes
+
+ Active Moiety                      BPC-157 (free base)                 BPC-157 (free base)
+*CAS = Chemical Abstracts Service
+
+Two nominations were submitted, which, as discussed above, were later withdrawn. Due to
+inconsistencies in the nomination packages, the nominated BDS is unclear from both nominators
+of BPC-157-related BDSs. For example, the nominated BDS is not consistent with what is listed
+in the Certificate of Analysis (CoA). All chemistry related information about the BDSs provided
+by both nominators is summarized in Table 2.
+
+Table 2. Summary of Information Submitted in Two Withdrawn Nominations.
+ Nominator                                 1                                       2
+ Nominated BDS         BPC-157                                  BPC-157
+ BDS per UNII          8ED8NXK95P (matches BPC-157              8ED8NXK95P (matches BPC-157
+ code                  free base)                               free base)
+ CoA                   CoA provided for BPC-157 Acetate         CoA provided for BPC-157 Acetate
+                       137525-51-0 (matches BPC-157 free 137525-51-0 (matches BPC-157 free
+ CAS No.
+                       base)                             base)
+                       C62H98N16O22 (provided in the CoA,       C62H98N16O22 (provided in the CoA,
+ MF
+                       matches BPC-157 free base)               matches BPC-157 free base)
+                       1,419.54 (provided in the CoA,           1,419.54 (provided in the CoA,
+ MW
+                       matches BPC-157 free base)               matches BPC-157 free base)
+
+
+
+
+11
+  The existence of a supplier of BDS may be relevant to FDA’s characterization analysis because it
+indicates that consistent production of the BDS according to a standard may be possible. BDSs with
+suppliers are also frequently accompanied by COAs associated with their production, which can help
+FDA to identify and characterize BDSs.
+
+
+
+                                                                                                     11
+                          H-Gly-Glu-Pro-Pro-Pro-Gly- Lys-                 Gly-Glu-Pro-Pro-Pro-Gly- Lys-Pro-
+                          Pro-Ala-Asp-Asp-Ala-Gly-Leu-Val-                Ala-Asp-Asp-Ala-Gly-Leu-Val
+ Chemical Name            OH (provided in the CoA,                        (provided in the CoA,
+                          matches BPC-157 free base)                      matches BPC-157 free base)
+                          Oral capsules 250 µg, 500 µg, 1 mg
+                          SC Injection 2,000 µg/mL                        Oral capsules 500 mcg/capsule
+ Proposed
+                          Nasal Spray Solution 50 µg/spray                SC Injectable 2,000 mcg/mL
+ Products
+                          (500 µg/mL)                                     Transdermal Cream
+                          Rectal Suppository 1 mg/each
+Italics in the table above represents the information identified by the FDA.
+
+FDA is choosing to concurrently evaluate both BDSs (BPC-157 (free base) and BPC-157
+acetate) in this section under two different sub-sections (II.A.1 and II.A.2) and will provide a
+separate conclusion for each of the two BDSs.
+
+The nominators proposed to compound this BDS into the following dosage forms:
+
+    •    Injection/SC injection
+
+         For an injection product, in general, critical quality attributes (CQAs) include sterility,
+         bacterial endotoxins test (BET), and foreign particulates are considered safety factors.
+         For this reason, bioburden load (i.e., microbial enumeration test) and BET are critical
+         quality considerations given the proposed use of the BDS in compounded injectable
+         products. Evaluation of the solubility of the BDS is considered to ensure that no
+         precipitates are formed in the compounded drug product.
+
+    •    Oral capsule
+
+         For an oral dosage form such as capsule, in general, CQAs include dissolution and
+         microbial quality. For this reason, microbial test and particle size distribution are critical
+         quality considerations given the proposed use of the BDS in compounded oral capsules.
+
+    •    Transdermal cream
+
+         For transdermal cream product, in general, CQAs include rheological properties,
+         emulsion globule size, particle size (for suspended solid BDS) or crystal formation (for
+         dissolved BDS), content uniformity, and microbial quality of the BDS. For this reason,
+         particle size (for suspended solid BDS) and microbial limit are critical quality
+         considerations given the proposed use of the BDS in compounded transdermal cream.
+
+    •    Nasal spray solution
+
+         The container closure system including container, closure, and pump are considered
+         critical components of metered-dose nasal spray solution products. The CQAs for nasal
+         spray device include pump delivery, spray content uniformity, spray pattern and plume
+
+
+
+                                                                                                          12
+         geometry, and droplet size distribution. However, there is a lack of information about
+         what type of device (e.g., metered-dose nasal spray container closure system) would be
+         used to deliver BPC-157, nor any information for a control strategy to assure the product
+         CQAs which are critical for the safety and effectiveness of the compounded product.
+         Other CQAs for solution-based nasal spray products include microbial quality, foreign
+         particulates, and leachables. As such, the microbial quality of the BDSs to be used in
+         compounding the nasal spray solution formulation, and suitability/compatibility of the
+         device components with the formulation are critical quality considerations. Evaluation of
+         the solubility of the BDS is also considered to ensure complete dissolution upon
+         formulation.
+
+     •   Rectal suppository
+
+         For rectal suppository product, in general, CQAs include drug release rate (for suspended
+         solid BDS), content uniformity, softening time of lipophilic suppositories, and microbial
+         quality. For this reason, particle size (for suspended solid BDS) and microbial limit are
+         critical quality considerations given the proposed use of the BDS in compounded rectal
+         suppository.
+
+There is no USP drug substance monograph for BPC-157 free base or its acetate salt form. We
+reviewed physical and chemical characterization-related information provided by the nominators
+and performed a literature search. Databases searched for information on BPC-157 (free base)
+and its acetate form in preparation of this section include SciFinder, Analytical Profiles of Drug
+Substances, PubMed, the European Pharmacopoeia, and the USP-NF.
+
+         1. BPC-157 (Free Base)
+BPC-157 (free base) is reported to be a pentadecapeptide fragment of BPC (H-Gly-Glu-Pro-Pro-
+Pro-Gly-Lys-Pro-Ala-Asp-Asp-Ala-Gly-Leu-Val-OH) that has been found in gastric juice as
+shown in Figure 1. The melting point of BPC-157 is >232°C. 12 The molecular formula of BPC-
+157 (free base) is C62H98N16O22, and its molecular weight is 1419.5 g/mol. CoAs for BPC-157
+(free base) were not included in either nomination package.
+
+
+
+
+12
+  https://www.chemicalbook.com/ProductChemicalPropertiesCB81343566_EN.htm. Accessed June 26,
+2024.
+
+
+
+                                                                                                13
+Figure 1. The Structure of BPC-157 (Free Base). 13
+
+
+
+
+            a. Stability of the API and Likely Dosage Forms
+It is reported that lyophilized BPC-157 (free base) is stable at room temperature for 3 weeks.
+However, it is recommended to be stored desiccated below -18°C because exposure to moisture
+will greatly decrease long-term stability of lyophilized peptides. 14 Upon reconstitution, BPC-157
+(free base) in solution is stable for 2-3 weeks stored at 4°C and for 3-4 months at -20°C. 15
+
+FDA notes that peptides such as BPC-157 (free base) can be extremely sensitive to product
+formulation, process, and environmental conditions (e.g., pH, heat (temperature), concentration,
+in-process related impurities, excipients etc.), which may lead to the aggregation and degradation
+of peptides. This could result in loss of their biological activity (Zapadka et al. 2017). Multiple
+analytical methods may be needed to detect various aggregates, including size exclusion
+chromatography or field flow fractionation. Hence, peptides, such as BPC-157 (free base), may
+require more and/or specific analytical in-process and finished product testing for impurities than
+what is required for small molecules. Uncontrolled manufacturing processes as well as impurities
+may increase the risk of product aggregation. Therefore, product formulation is critical to the
+quality and stability of peptide drug products, as it is necessary to maintain the peptide molecules
+in their native state (in the formulation) to the extent possible. Significant amounts of aggregates
+can form in formulated products, especially during storage or when exposed to stress conditions.
+
+            b. Probable Routes of API Synthesis
+BPC-157 (free base) was first synthesized by researchers at University of Zegreb, Republic of
+Croatia, in the early 1990s. In 1993, BPC-157 (free base) was described to be synthesized by
+stepwise condensation of fluorenylmethoxycarbonyl (Fmoc) protected amino acids bonded to a
+polymeric carrier (benzhydrilaminoresin) using diisopropylcarbodiimide as the coupling reagent
+
+
+13
+   https://gsrs.ncats.nih.gov/ginas/app/ui/substances/4e592d61-f6dd-428c-96e9-5e56148614e4. Accessed
+June 26, 2024.
+14
+   https://www.prospecbio.com/bpc-157. Accessed June 26, 2024.
+15
+   https://particlepeptides.com/en/buy-peptides/1-bpc-157-5mg.html. Accessed June 26, 2024.
+
+
+
+                                                                                                   14
+(Sikirić et al. 1993). In each step, the Fmoc protective group was removed with piperidine, then
+all further amino acids were introduced using the same method until synthesis was completed.
+The cleavage of the peptide was done using a mixture of trifluoroacetic
+acid/trifluoromethanesulphonic acid/anisole (2:17:52). The raw peptide mixture was purified by
+high-performance liquid chromatography to a purity of >95%.
+
+             c. Likely Impurities 16
+Generally speaking, peptide-related impurities and peptide synthesis process-related impurities
+contribute to and are considered in the evaluation of the impurity profile for all peptides,
+including BPC-157 (free base). For most synthetic peptides, solid-phase synthesis methods are
+widely used by industry for peptide synthesis. The solid phase synthesis of peptides may lead to
+potential peptide-related impurities due to incomplete coupling reactions, truncations, or side
+reactions. These peptide-related impurities are typically similar in structure to the target peptide
+and may be difficult to identify and quantify without sophisticated analytical methods.
+Additional potential common impurities may be derived from impurities in the protected amino
+acid starting materials (e.g., isomeric impurities, free amino acids) and other species that may
+carry over into the drug substance. In addition, residual solvents, coupling reagents, activators,
+catalysts, and scavengers may exist as solid phase peptide synthesis process related impurities.
+The drug substance and its proposed product-related impurities may also include peptide-related
+aggregates.
+
+There is no CoA for BPC-157 (free base) in either of the nomination packages. We conducted
+literature searches and found that most CoAs for BPC-157 (free base) only contain purity testing
+results, an example of which is shown below (Figure 2). 17 There is no information about the
+impurity limits/testing results in the CoA to demonstrate control of the impurity profile of BPC-
+157 (free base).
+
+Because there is lack of information regarding potential impurities that can be present in BPC-
+157 (free base) and the lack of information on the potential of peptide aggregation, we cannot
+rule out the potential for immunogenicity associated with these impurities and peptide-related
+aggregates.
+
+
+
+
+16
+   This evaluation contains a non-exhaustive list of potential impurities in the bulk drug substance and
+does not address fully the potential safety concerns associated with those impurities. The compounder
+should use the information about the impurities identified in the certificate of analysis accompanying the
+bulk drug substance to evaluate any potential safety and quality issues associated with impurities in a drug
+product compounded using that bulk drug substance taking into account the amount of the impurity, dose,
+route of administration, and chronicity of dosing. Available nonclinical toxicity data for likely impurities
+of concern (e.g., nitrosamines, potential mutagenic substances, and potential teratogenic substances) in
+the nominated bulk drug substance are discussed in the Nonclinical Assessment at Section II.D.1. as part
+of the safety assessment of the substance.
+17
+   https://www.peptidesciences.com/bpc-157?size=5mg. Accessed June 26, 2024.
+
+
+
+                                                                                                         15
+Figure 2. Example of a CoA for BPC-157.
+
+
+
+
+               d. Physicochemical Characteristics Pertinent to Product Performance, Such as
+                  Particle Size and Polymorphism
+BPC-157 (free base) is white to off-white lyophilized powder. Information on particle size was
+not provided in the nomination packages which maybe pertinent for process/product
+performance of the proposed capsule (25 µg, 500 µg, and 1 mg), suppository (1 mg/each), and
+transdermal cream. BPC-157 (free base) is soluble in water at 5 mg/mL. 18 Because the BDS is
+soluble in water and would be solubilized prior to administration, particle size is not considered a
+CQA that affect performance for the proposed injection dosage form (2 mg/mL) and the
+proposed nasal spray solution (0.5 mg/mL).
+
+               e. Any Other Information About the Substance That May Be Relevant, Such as
+                  Whether the Bulk Drug Substance Is Poorly Characterized or Difficult to
+                  Characterize
+Because no CoA was provided in the nomination for BPC-157 (free base), it is unclear whether a
+bioburden load (microbial enumeration test) and/or BET is in place to control the
+microbiological quality of the BDS, proposed for compounding an injectable dosage form.
+
+
+18
+     https://www.peptidesciences.com/bpc-157?size=5mg. Accessed June 26, 2024.
+
+
+
+                                                                                                  16
+Endotoxin test is considered a critical quality attribute to control microbiological quality of a
+BDS intended for an injection product. In addition, there is no information about residual solvent
+testing. No such relevant information about BPC-157 (free base) was identified from the public
+domain.
+
+As mentioned at the beginning of Section II.A, for a metered-dose nasal spray solution product,
+the information about the container closure system (including container, closure, pump) is
+relevant to the CQAs (pump delivery, spray content uniformity, spray pattern and plume
+geometry, and droplet size distribution) for the proposed product and would affect how the BDS
+is delivered. However, no such information is available either in the nominations or the publicly
+available scientific literature.
+
+Conclusions: BPC-157 (free base) is reported to be a pentadecapeptide fragment of BPC. As
+reported in the literature, BPC-157 is expected to be stable under storage conditions below -
+18°C.
+
+BPC-157 (free base) is considered not well-characterized from the physical and chemical
+characterization perspective based on (1) inconsistent naming conventions that do not follow
+established chemical nomenclature standards (e.g., USAN, INN, IUPAC), and (2)
+data/information relevant to certain CQAs for establishing its identity, purity, and quality for its
+intended use in the proposed dosage forms were either lacking or deemed to be inadequate in the
+nomination packages or not found in the publicly available scientific literature. For example,
+some of this data/information include but are not limited to testing for CQAs relevant to
+characterizing peptide-related impurities and aggregates, microbial quality (bioburden, bacterial
+endotoxins), particle size, or other CQAs as dictated by dosage form (e.g., injection, metered-
+dose spray solution, capsule, topical cream, suppository) and route of administration (ROA) (SC
+injection, transdermal, nasal, oral, rectal). Additionally, FDA would have strong concerns about
+the use of this BDS in the proposed compounded nasal spray solution product due to lack of
+information about the container closure system (including container, closure, pump) – all of
+which are relevant to the CQAs for the proposed product and would affect how the BDS is
+delivered via this product.
+
+Further, FDA is concerned about the potential for immunogenicity of BPC-157 (free base) when
+formulated in an injectable dosage form due to the potential for aggregation as well as potential
+peptide-related impurities, as discussed in the Likely Impurities section II.A.1.c. We also note
+that the stability, pharmacological activity, and immunogenic properties of peptides are highly
+sensitive to the manufacturing process and quality attributes of the compounded/finished drug
+product.
+
+        2. BPC-157 Acetate
+BPC-157 acetate is reported to be a salt of BPC-157 (free base) peptide of fifteen amino acids.
+The molecular formula of BPC-157 acetate is C62H98N16O22. X(C2H4O2), and its structure is
+shown in Figure 3. Both nomination packages included COAs for BPC-157 acetate with the
+testing attribute results, including appearance, identification, purity, solubility, related substances
+(unspecified impurity), and acetic acid content. There were no testing results for the quality
+control attributes on specified impurities, aggregates, bioburden load (microbial enumeration
+test) and/or bacterial endotoxin levels.
+
+
+
+                                                                                                     17
+             b. Probable Routes of API Synthesis
+BPC-157 (free base) was synthesized as mentioned in II.A.1.b. Then, BPC-157 (free base) can
+be converted into BPC-157 acetate.
+
+             c. Likely Impurities 21
+Generally speaking, peptide-related impurities and peptide synthesis process-related impurities
+contribute to and are considered in understanding the impurity profile for all peptides, including
+BPC-157 acetate. For most synthetic peptides, solid-phase synthesis methods are widely used by
+industry for peptide synthesis. The solid-phase synthesis of peptides may lead to potential
+peptide-related impurities due to incomplete coupling reactions, truncations, or side reactions.
+These peptide-related impurities are typically similar in structure to the target peptide and may
+be difficult to identify and quantify without sophisticated analytical methods. Additional
+potential common impurities may be derived from impurities in the protected amino acid starting
+materials (e.g., isomeric impurities, free amino acids) and other species that may carry over into
+the drug substance. In addition, residual solvents, coupling reagents, activators, catalysts, and
+scavengers may exist as solid-phase peptide synthesis process related impurities. The drug
+substance and its proposed product-related impurities may also include peptide-related
+aggregates.
+
+In the CoA provided by nominator 1, a purity test limit of ≥95% with the testing result of 97.8%,
+is listed for BPC-157 acetate, and Related Substance test limit for maximum individual impurity
+and total impurities of ≤3.0% and ≤5.0%, respectively, with the testing results of 1.1% and 2.2%,
+respectively. However, the impurity profiles are unclear because the impurities were not
+identified or specified.
+
+In the CoA provided by nominator 2, there is only a purity test with the testing result of 98.34%.
+There is no impurity attribute control to demonstrate the impurity profiles.
+
+Therefore, we conducted literature searches and found that most of CoAs for BPC-157 acetate
+only contain purity testing as shown in Figure 4, the CoA from Biotech Peptides. 22
+
+
+
+
+21
+   This evaluation contains a non-exhaustive list of potential impurities in the bulk drug substance and
+does not address fully the potential safety concerns associated with those impurities. The compounder
+should use the information about the impurities identified in the certificate of analysis accompanying the
+bulk drug substance to evaluate any potential safety and quality issues associated with impurities in a drug
+product compounded using that bulk drug substance taking into account the amount of the impurity, dose,
+route of administration, and chronicity of dosing. Available nonclinical toxicity data for likely impurities
+of concern (e.g., nitrosamines, potential mutagenic substances, and potential teratogenic substances) in
+the nominated bulk drug substance are discussed in the Nonclinical Assessment at Section II.D.1. as part
+of the safety assessment of the substance.
+22
+   https://biotechpeptides.com/product/bpc-157/. Accessed June 26, 2024.
+
+
+
+                                                                                                         19
+Figure 4. Example of a CoA for BPC-157 Acetate.
+
+
+
+
+Because there is a lack of information regarding potential impurities that can be present in
+BPC-157 acetate and the potential of peptide aggregation, we cannot rule out the potential for
+immunogenicity associated with these impurities and peptide-related aggregates.
+
+               d. Physicochemical Characteristics Pertinent to Product Performance, Such as
+                  Particle Size and Polymorphism
+BPC-157 acetate is a white to off-white solid powder. Information on particle size was not
+provided in the nomination packages but may be pertinent for process/product performance of
+the proposed capsule (25 µg, 500 µg, and 1 mg), suppository (1 mg/each), and transdermal
+cream. It is soluble in water at 5 mg/mL. 23 Because the BDS is soluble in water and would be
+solubilized prior to administration, particle size is not considered a CQA that affect performance
+
+
+
+
+23
+     https://biotechpeptides.com/product/bpc-157/. Accessed June 26, 2024.
+
+
+
+                                                                                                 20
+for the proposed injection dosage form (2 mg/mL) and the proposed nasal spray solution (0.5
+mg/mL).
+
+            e. Any Other Information About the Substance That May Be Relevant, Such as
+               Whether the Bulk Drug Substance Is Poorly Characterized or Difficult to
+               Characterize
+No bioburden/endotoxin test is mentioned in the CoA provided by the nominator. Endotoxin test
+is considered a critical quality attribute to control microbiological quality of a BDS intended for
+an injection product. In addition, there is no information about residual solvent testing. No such
+relevant information for BPC-157 acetate was identified in the public domain.
+
+As mentioned at the beginning of Section II.A, for a metered-dose nasal spray solution product,
+the information about the container closure system (including container, closure, pump) is
+relevant to the CQAs (pump delivery, spray content uniformity, spray pattern and plume
+geometry, and droplet size distribution) for the proposed product and would affect how the BDS
+is delivered. However, no such information is available either in the nominations or the publicly
+available scientific literature.
+
+Conclusions: BPC-157 acetate is reported to be a salt of BPC-157 (free base) peptide of fifteen
+amino acids. As reported in the literature, BPC-157 acetate is expected to be stable under
+reported storage conditions below -20°C.
+
+BPC-157 acetate is considered not well-characterized from the physical and chemical
+characterization perspective based on (1) inconsistent naming conventions that do not follow
+established chemical nomenclature standards (e.g., USAN, INN, IUPAC), and (2)
+data/information relevant to certain CQAs for establishing its identity, purity, and quality for its
+intended use in the proposed dosage forms were either lacking or deemed to be inadequate in the
+nomination packages or not found in the publicly available scientific literature. For example,
+some of this data/information include but are not limited to testing for CQAs relevant to
+characterizing peptide-related impurities and aggregates, microbial quality (bioburden, bacterial
+endotoxins), particle size, or other CQAs as dictated by dosage form (e.g., injection, metered-
+dose spray solution, capsule, topical cream, suppository) and ROA (SC injection, transdermal,
+nasal, oral, rectal). Additionally, FDA would have strong concerns about the use of this BDS in
+the proposed compounded nasal spray solution product due to lack of information about the
+container closure system (including container, closure, pump) – all of which are relevant to the
+CQAs for the proposed product and would affect how the BDS is delivered via this product.
+
+Further, FDA is concerned about the potential for immunogenicity of BPC-157 acetate when
+formulated in an injectable dosage form due to the potential for aggregation as well as potential
+peptide-related impurities, as discussed in the Likely Impurities section II.A.1.c. We also note
+that the stability, pharmacological activity, and immunogenic properties of peptides are highly
+sensitive to the manufacturing process and quality attributes of the compounded/finished drug
+product.
+
+
+
+
+                                                                                                  21
+     B. Has the Substance Been Used Historically in Compounding?
+This evaluation focuses on BPC-157 (free base) and BPC-157 acetate for oral, SC, nasal, rectal,
+and transdermal administration and its use in UC; however, FDA searched generally for
+information on the historical use of BPC-157 (free base) and BPC-157 acetate in compounding.
+Information about use may not specify specific attributes of the product, such as ROA. Databases
+searched for information on BPC-157-related BDSs for this evaluation included PubMed, 24
+Embase, 25 Natural Medicines, 26 Compounding Today, 27 The International Journal of
+Pharmaceutical Compounding, 28 United States Pharmacopeia-National Formulary, 29 European
+Pharmacopoeia, 30 Japanese Pharmacopoeia, 31 International Pharmacopeia, 32 globalEDGE, 33
+Google and Outsourcing Facility Product Reporting Database. 34 It is often unclear whether the
+BPC-157 discussed in this section is the salt formulation or the free base and whether it was
+compounded or not. FDA will consider the information discussed in this section for both the free
+base and salt form.
+
+        1. Length of Time the Substance Has Been Used in Compounding
+The withdrawn nominations did not provide historical use data. Literature shows that BPC-157
+was first described in 1993. In a 1993 article, the authors referred to BPC-157 as a “possible
+endogenous free radical scavenger and organoprotection mediator” (Sikirić et al. 1993). An
+article from 2021 discusses the use of a compounded formulation of BPC-157 (Lee and Padgett
+2021). Although BPC-157 has been studied since at least 1993, there is insufficient information
+available to determine how long BPC-157-related BDSs have been used specifically in pharmacy
+compounding.
+
+        2. The Medical Condition(s) It Has Been Used to Treat
+According to the published studies found in the literature, interstitial cystitis, knee pain and UC
+are the uses of BPC-157-related BDSs examined (Lee and Padgett 2021; Ruenzi et al. 2005; Lee
+et al. 2024). One of the studies mentioned that a compounded combination of thymosin-beta-4
+(TB4) and BPC-157 was used in patients with knee pain (Lee and Padgett 2021). Another study
+mentioned that two patients received compounded BPC-157 infusions at doses of 10 mg and 20
+
+
+24
+   Available at https://pubmed.ncbi.nlm.nih.gov/. Accessed December 4, 2025.
+25
+   Available at https://www.embase.com/search/quick?phase=continueToApp. Accessed December 4,
+2025.
+26
+   Available at https://naturalmedicines.therapeuticresearch.com/ (subscription required). Accessed
+December 4, 2025.
+27
+   Available at https://compoundingtoday.com (subscription required). Accessed December 4, 2025.
+28
+   Available at https://ijpc.com/ (subscription required). Accessed December 4, 2025.
+29
+   Available at https://www.uspnf.com/ (subscription required). Accessed December 4, 2025.
+30
+   Available at https://pheur.edqm.eu/home (subscription required). Accessed December 4, 2025.
+31
+   Available at https://www.pmda.go.jp/english/rs-sb-std/standards-development/jp/0029.html. Accessed
+December 4, 2025.
+32
+   Available at https://digicollections.net/phint/2025/index.html#p/home. Accessed December 4, 2025.
+33
+   Available at https://globaledge.msu.edu/industries/pharmaceuticals/regulatory-agencies. Accessed
+December 4, 2025.
+34
+   Available at https://www.accessdata.fda.gov/scripts/cder/outsourcingfacility/. Accessed December 4,
+2025.
+
+
+
+                                                                                                     22
+mg (Lee and Burgess 2025). Another study mentioned that patients received compounded
+“intravesical injections of 1 mg BPC-157, placed in 10 spots (total of 10 mg) in the
+uroepithelium of the bladder wall” (Lee et al. 2024). However, it is unclear if the product used in
+patients with UC was compounded (Ruenzi et al. 2005). A clinic mentioned on their website that
+BPC-157 “has been called ‘wolverine compound’ by many due to its intense healing
+properties.” 35 An FDA Adverse Events Reporting System (FAERS) case report described the use
+of a compounded BPC-157 acetate 15 mg per vial injection product for inflammation and injury.
+Another case report described a compounded BPC-157 injection product that was provided by a
+compounding pharmacy for which the reason for use was not stated. A third case report
+described a patient who received a BPC-157 and TB-500 (5mg/5mg) injection product labeled
+for “research purposes only” and subsequently developed significant adverse reactions while
+following a joint and wound healing peptide protocol. (See Section II.D.2.b for additional
+details).
+
+         3. How Widespread Its Use Has Been
+According to the FDA’s outsourcing facility product reporting data from January 2017 to June
+2025, there were no reported compounded drug products containing BPC-157 (free base) or
+BPC-157 acetate. 36 An article noted that “In June 2024, the ‘BPC-157’ Google search volume
+index, which measures the popularity of a search query, was at an all-time high. Concurrently,
+there are over 50 million ‘BPC-157’ tagged video views on both YouTube and TikTok, with
+over 100,000 members in peptide-related Reddit communities” (Vasireddi et al. 2025). A Google
+search for BPC-157 generally identified websites of compounding pharmacies as well as several
+med spas and clinics in the United States that mentioned BPC-157 for a variety of uses,
+including:
+
+     •   “to support: muscle, joint health, digestion and the normal function of the gut-brain
+         axis”; 37
+     •   “decrease inflammation of the stomach and intestines, which can improve irritable bowel
+         syndrome, stomach ulcers, chron’s [sic] disease, and ulcerative colitis”; 38
+     •   “prevent ulcers of the stomach”; 39
+     •   “to support gastrointestinal system balance, cellular wellness, and internal resilience”; 40
+
+
+35
+   Anderson Longevity Clinic, https://andersonlongevityclinic.com/bpc157. Accessed December 4, 2025.
+36
+   The Drug Quality and Security Act, signed into law on November 27, 2013, created a new section 503B
+in the Federal Food, Drug, and Cosmetic Act. Under section 503B, a compounder can become an
+outsourcing facility. Outsourcing facilities are required to provide FDA with a list of drugs they
+compounded during the previous six-month period upon initial registration and in June and December
+each year. This retrospective information does not identify drugs that outsourcing facilities intend to
+produce in the future. The outsourcing facility product report is available
+at:https://www.accessdata.fda.gov/scripts/cder/outsourcingfacility/.
+37
+   Palm Harbor Pharmacy, https://palmharborpharmacy.com/product/bpc-157-rapid-250mcg-60c/.
+Accessed December 4, 2025.
+38
+   Groov Wellness, https://groovhealthwellness.com/peptide-therapy/. Accessed December 4, 2025.
+39
+   Stemedix, https://stemedix.com/peptides/. Accessed December 4, 2025.
+40
+   Compounding Pharmacy of America, https://compoundingrxusa.com/product/bpc-157-pure/. Accessed
+December 4, 2025 .
+
+
+
+                                                                                                    23
+     •   “mental, gastrointestinal, cardiac, and autoimmune health”; 41 and
+     •   “accelerate the healing of injuries and wounds, including gastric ulcers, tendons,
+         ligaments and bones.” 42
+
+BPC-157 drug products are marketed as capsule, injection, oral spray, and nasal spray
+formulations. For example, one compounder markets BPC-157 on their website as a 500 μg
+capsule product with directions for patients to “take one capsule twice daily or as directed by
+your healthcare provider.” 43 Another compounder markets a 500 μg oral spray. 44 A concierge
+service markets BPC-157 as a 10mg/5mL injection kit. This kit is designed for patients to self-
+administer at home with an optional telehealth consult. 45 One website markets lyophilized BPC-
+157 and BPC-157 acetate 6 mg and 10 mg single-API nasal spray products, BPC-157 and
+Thymosin Beta 4 Fragment 17-23 multiple-API nasal spray products (10 mg/25 mg and 10
+mg/50 mg), BPC-157 250 μg oral capsules, lyophilized BPC-157 acetate 10 mg injection
+product, and lyophilized BPC-157 6 and 10 mg injection products. 46 Another website markets
+BPC-157 and Thymosin-beta-4 (TB 500) 10 mg multiple-API injectable product as well as a
+BPC-157 5 mg and 10 mg product. 47 In addition, a website mentions a BPC-157 and TB 500
+multiple-API product.” 48 Furthermore, a website mentions BPC-157and TB 500 multiple-API
+products for research purposes only and not for human or veterinary use.” 49 BPC-157 is listed on
+the World Anti-Doping Agency’s prohibited list under the non-approved substances (S0)
+section. 50
+
+         4. Recognition of the Substance in Other Countries or Foreign Pharamcopeias
+There is no monograph for BPC-157 (free base) or BPC-157 acetate in the European
+Pharmacopoeia (11th Edition, 11.8), Japanese Pharmacopoeia (18th Edition) or the International
+Pharmacopeia (12th Edition). A search in globalEDGE did not yield BPC-157 (free base) or
+BPC-157 acetate as a component of an approved product in any country. In addition, there are no
+approved products or pending applications for medicines containing BPC-157 (free base) or
+BPC-157 acetate in New Zealand, but the New Zealand Medicines Classification Committee
+
+
+
+
+41
+   Innovative Directions in Health, https://idinhealth.com/product/bpc-157-pure-60ct/. Accessed
+December 4, 2025.
+42
+   MedClub by Dr. Jenn Concierge Aesthetics, https://drjennpb.com/product/bpc-157-injury-repair-
+peptide-10mg-5ml/. Accessed December 4, 2025.
+43
+   See footnote 39.
+44
+   Fallon Wellness Pharmacy, https://fallonwellnesspharmacy.com/product/integrative-peptides-bpc-157-
+pure-oral-spray/. Accessed December 4, 2025.
+45
+   See footnote 41.
+46
+   Limitless Biotech, https://limitlesslifenootropics.com/search.php?search_query=bp c-157. Accessed
+December 4, 2025.
+47
+   Biotech Peptides, https://biotechpeptides.com/product/bpc-157-tb-500-10mg-blend-2/. Accessed
+December 4, 2025.
+48
+   Peptide.org, https://www.peptides.org/bpc-157-tb-500-capsules/. Accessed December 4, 2025.
+49
+   Pure Health Peptides, https://purehealthpeptides.com/product/bpc-157-tb. Accessed December 4, 2025.
+50
+   World Anti-Doping Agency (WADA), https://www.wada-ama.org/en/prohibited-list?item-id=5027.
+Accessed December 4, 2025.
+
+
+
+                                                                                                    24
+meeting held in May 2023 proposed that BPC-157 should be classified as a prescription
+medicine. 51
+
+Conclusions: As previously mentioned, it is often unclear whether the BPC-157 discussed in the
+sources considered for this section is the salt formulation or the free base. Therefore, FDA
+considered the information discussed for both the free base and salt form. BPC-157 was first
+described in the literature in 1993 and was referred to as a possible endogenous free radical
+scavenger and organoprotection mediator. Interstitial cystitis, knee pain and UC are the uses of
+BPC-157-related BDSs examined in the literature. Gastrointestinal (GI) uses are the most
+commonly mentioned uses listed on websites. BPC-157-related BDSs are marketed as an oral
+capsule, oral spray, nasal spray, and injectable product. However, it is unclear whether some of
+these products are compounded or if pharmacies are currently compounding products containing
+BPC-157-related BDSs. There is no approved product containing BPC-157-related BDSs in any
+country at this time, nor is BPC-157 (free base) or BPC-157 acetate found in the European,
+Japanese, or the International Pharmacopeias. Currently available data and published literature is
+too limited for FDA to understand the historical use of BPC-157 (free base) and BPC-157 acetate
+in compounded drug products.
+
+     C. Available Evidence of Effectiveness or Lack of Effectiveness of Drug Products
+        Compounded With the Substance
+
+The following databases were consulted in the preparation of this section: PubMed, Embase,
+Cochrane Database of Systematic Reviews, ClinicalTrials.gov, professional healthcare
+organization websites, and various online clinical references and websites. The clinical articles
+submitted by the nominators and those identified by FDA do not always clearly identify BPC-
+157 as a free base or salt. Therefore, in this section, the substance will be generally referred to as
+BPC-157, unless the article under discussion clearly specifies the use of the free base or the
+acetate salt in a study. We evaluated BPC-157 (free base) and BPC-157 acetate for the treatment
+of UC and considered available data to support effectiveness.
+
+         1. Ulcerative Colitis
+UC is a form of inflammatory bowel disease (IBD). IBD includes a group of chronic, relapsing,
+immune-mediated inflammatory conditions of the GI tract. UC and Crohn’s disease are two
+major forms of IBD. 52 Both UC and Crohn’s disease are characterized by complex pathogeneses
+involving host genetics, gut microbiome, gut epithelial barrier, immune system, and
+
+
+
+
+51
+   “There are currently no approved products or pending applications for medicines containing BPC-157 in
+New Zealand.” MEDSAFE New Zealand Medicines and Medical Devices Safety Authority,
+https://www.medsafe.govt.nz/profs/class/Minutes/2021-2025/mccMin25May2023.htm. Accessed
+December 4, 2025.
+52
+    As described in Section I of this evaluation, FDA did not evaluate the proposed use of Crohn’s disease
+because the nomination did not include sufficient information for the Agency to evaluate whether the
+substance is appropriate for this use in compounded drug products. In addition, FDA did not identify
+clinical studies using BPC-157 in subjects with Crohn’s disease.
+
+
+
+                                                                                                       25
+environmental factors, but may differ in their clinical manifestations, and characteristic
+endoscopic and histologic findings.
+
+UC involves inflammation of the rectum and may extend in a continuous fashion to more
+proximal portions of the colon. Endoscopic findings may range from mild edema/erythema, to
+frank ulcerations, friable mucosa/bleeding, and the presence of exudates. Histology is
+characterized by a chronic active inflammation, presence of cryptitis or crypt abscesses, and lack
+of granuloma formation. The annual incidence rates in North America range from 8.8 to 23.14
+cases per 100,000 person-years, and the prevalence ranges from 139.8 to 286.3 cases per 100,000
+persons (Ng et al. 2017). Onset of disease most commonly occurs between the second and fourth
+decades of life, and the clinical course is characterized by periods of remission and exacerbations
+(Le Berre et al. 2023). Patients with UC most commonly present with bloody diarrhea, rectal
+bleeding, tenesmus, urgency, and abdominal pain. Disease of moderate to severe activity may be
+associated with systemic signs and symptoms, including fatigue, fever, anorexia, nausea, weight
+loss, and dehydration. UC can also be associated with several extraintestinal manifestations
+affecting a wide variety of organ systems, most commonly joints, skin, eyes, kidneys, and
+hepatobiliary tract. Longstanding UC is associated with a risk of dysplasia and colorectal cancer.
+
+The diagnosis of UC is based on a combination of signs and symptoms, biochemical markers,
+endoscopic and histologic findings. The severity of UC is generally classified as mild-to-
+moderate or moderate-to-severe. Several disease activity indices for UC have been developed to
+quantify and standardize the evaluation of clinical disease activity.
+
+The overall goal in the treatment and management of UC is to reduce signs and symptoms of
+active disease, decrease the underlying mucosal inflammation, and prevent short-term (e.g.,
+severe bleeding, bowel perforation) and long-term complications (e.g., colon cancer). The choice
+of therapy is guided by the disease severity, extent of disease, and presence of other
+manifestations (e.g., extraintestinal complications, malabsorption). Conventional therapeutic
+options for treatment include medications and surgery. Medication therapy includes 5-
+aminosalicylate (ASA) products (e.g., mesalamine), corticosteroids, antibiotics,
+immunomodulators (e.g., azathioprine [AZA], 6-mercaptopurine [6-MP], methotrexate [MTX]),
+biologic therapies (e.g., tumor necrosis factor alpha [TNFα] blockers, anti-integrin receptor
+blockers, anti-interleukin [IL] 12/23 agents), and small molecule therapies including
+sphingosine-1-phosphate [S1P] receptor modulators, and Janus kinase [JAK] inhibitors (Singh et
+al. 2024). Local therapy (i.e., rectal therapies) may be used before systemic therapy (e.g., oral
+therapies, injection therapies) as clinically indicated. Corticosteroids are not recommended for
+long-term use given the toxicities associated with chronic steroid use. Surgical therapy may be
+required in cases of UC refractory to medical management or in cases of acute severe
+complications from UC (e.g., toxic megacolon, colonic perforation, severe hemorrhage) (Rubin
+et al. 2025).
+
+UC is a serious chronic disease, and patients with moderate to severe disease activity may
+experience increased morbidity and mortality when inadequately treated. Guidelines on the
+management of UC have been published by the American College of Gastroenterology (Rubin et
+al. 2025) and American Gastroenterological Association (Feuerstein et al. 2020; Ko et al. 2019).
+Neither of these guidelines mention BPC-157 in their recommendations for the management of
+UC.
+
+
+
+                                                                                                26
+             a. Considerations on Establishing Effectiveness of Therapy
+Studies for products intended to treat patients with UC have traditionally used clinical remission
+as the primary endpoint. Currently, clinical remission as measured by the 3-component modified
+Mayo score is used as the primary endpoint in clinical trials used to support the indication of UC.
+The modified Mayo Score is a multi-component endpoint consisting of rectal bleeding, stool
+frequency, and endoscopy sub-scores adapted from the originally published Mayo Score. 53 Of
+note, for drugs intended to be administered chronically, a total controlled treatment period of at
+least one year in duration is recommended to adequately assess both early efficacy and durability
+of response over time and to adequately characterize the safety profile. 54
+
+             b. Reports of Trials, Clinical Evidence, and Anecdotal Reports of Effectiveness, or
+                Lack of Effectiveness, of the Bulk Drug Substance
+We identified a single meeting abstract reporting on the results of a multicenter, randomized,
+double blind, placebo-controlled study in subjects with UC (Ruenzi et al., 2005). A total of 53
+subjects with mild to moderate (definition/inclusion criteria unclear) UC (definition and
+inclusion criteria unknown) were randomized in a 1:1 ratio to receive BPC-157 (PL 14736)
+enema 80 mg or placebo once daily for two weeks. The primary endpoint was a change in the
+Disease Activity Index (DAI) over the treatment period, with DAI defined by the authors as “a
+composite score of clinical, laboratory, endoscopic, and pathohistological findings” that was not
+clearly defined in the abstract. Forty-six subjects completed the study. Three subjects in the
+BPC-157 group and two subjects in the placebo group were withdrawn due to an adverse event;
+per the authors, withdrawals were “mainly progression of UC”. One subject from each group was
+lost to follow-up. According to the authors, the mean change of the DAI was -3.2 points (95%
+confidence interval [CI] -5.58, -0.82) in the BPC-157 group and -1.6 (95% CI -3.86, 0.67) in the
+placebo group with an estimated difference of 1.6 points (95% CI -4.84, 1.62) between groups.
+
+As the study was presented as a meeting abstract, several details of the trial are lacking,
+including but not limited to information regarding the primary endpoint (e.g., DAI),
+inclusion/exclusion criteria, statistical methods, and post-treatment follow-up. The data presented
+for this study are therefore inadequate to support the efficacy and safety of BPC-157 given as an
+enema for two weeks for the treatment of UC. Of note, the nominator proposed to make a rectal
+suppository (not a rectal enema), which would likely only reach the rectum. 55
+
+We did not identify any studies that administered BPC-157 via the oral, SC, nasal, or transdermal
+ROA in subjects with UC. Review of the literature did not reveal any additional reports of
+
+53
+   The modified Mayo Score is a composite endpoint consisting of rectal bleeding, stool frequency, and
+endoscopy sub-scores, adapted from the originally published Mayo Score. The previously used physician
+global assessment component is excluded to reduce subjectivity and focus the evaluation on the subject’s
+directly reported symptoms and directly observable endoscopic findings.
+54
+   See FDA’s draft guidance for industry Ulcerative Colitis: Developing Drugs for Treatment. Available
+at https://www.fda.gov/media/158016/download.
+55
+   Methods of rectal administration may include suppositories, liquid enemas, and foams (Loew and
+Siegel, 2012). The distribution of drug in rectal therapies varies by dosage form and generally can be
+
+
+
+
+                                                                                                      27
+clinical trials, clinical evidence, or anecdotal reports of effectiveness, or lack of effectiveness, of
+BPC-157 for the treatment of UC. Based on the available data, there is a lack of evidence to
+make a conclusion on the effectiveness of BPC-157 for treating UC.
+
+             c. Whether the Product Compounded With This Bulk Drug Substance Is Intended
+                To Be Used in a Serious or Life-Threatening Disease
+UC is a serious chronic disease associated with increased morbidity and mortality, including life-
+threatening complications such as toxic megacolon, perforation, hemorrhage, venous
+thromboembolism and secondary infections.
+
+             d. Therapies That Have Been Used for the Condition(s) Under Consideration
+There are FDA-approved drug products that treat the same medical condition as that proposed
+for the BPC-157 compounded drug product(s). 56 Table 3 and Table 4 list currently available
+FDA-approved drug products indicated for UC.
+
+Table 3. Currently Approved Medications for the Treatment of Mild to Moderate UC.
+ Drug class                           Drug                                   Route of administration
+ 5-Aminosalicylates (5-ASA)           Mesalamine                             Oral (delayed release and
+                                                                             extended release), rectal
+                                                                             (enema and suppository)
+ 5-ASA                                Olsalazine sodium                      Oral
+ 5-ASA                                Balsalazide disodium                   Oral
+ 5-ASA                                Sulfasalazine                          Oral
+
+Table 4. Currently Approved Medications for the Treatment of Moderate to Severe UC.
+ Drug class                           Drug                                   Route of administration
+ Tumor necrosis factor (TNF)          Adalimumab                             SC
+ blocker
+ TNF blocker                          Golimumab                              SC and intravenous (IV)
+ TNF blocker                          Infliximab                             SC and IV
+ Integrin receptor antagonist         Vedolizumab                            SC and IV
+ Janus kinase (JAK) inhibitor         Tofacitinib citrate                    Oral
+
+
+characterized as follows: suppositories have dispersion limited to the rectum, foam enemas extend to the
+sigmoid and descending colon, and liquid enemas may reach the splenic flexure (Cohen and Dalal 2015;
+Loew and Siegel 2012).
+56
+   FDA considers the existence of FDA-approved or over-the-counter (OTC) monograph drug products to
+treat the same condition as that proposed for the nomination relevant to FDA’s consideration of the
+effectiveness criterion, to the extent there may be alternative therapies that have been demonstrated to be
+effective for certain conditions. See 84 FR 4696.
+
+
+
+                                                                                                         28
+ JAK inhibitor                     Upadacitinib                       Oral
+ Human interleukin (IL 12 and      Ustekinumab                        SC and IV
+ 23) antagonist
+ Interleukin-23 antagonist         Guselkumab                         SC and IV
+ Interleukin-23 antagonist         Mirikizumab-mrkz                   SC and IV
+ Interleukin-23 antagonist         Risankizumab-rzaa                  SC and IV
+ Sphingosine 1-phosphate           Ozanimod hydrochloride             Oral
+ (S1P) receptor modulator
+ S1P receptor modulator            Etrasimod arginine                 Oral
+There are multiple FDA-approved corticosteroids approved for the treatment of UC. The specific
+indication and treatment course varies; note that in general corticosteroids are not recommended
+for chronic use in UC due to toxicity. Examples include (not an exhaustive list):
+
+   •   Budesonide oral and rectal
+   •   Hydrocortisone oral and rectal
+   •   Hydrocortisone acetate rectal
+   •   Methylprednisolone oral
+   •   Prednisone oral
+
+There are several additional FDA-approved drugs that have been used off-label to treat UC such
+as immunosuppressants, including thiopurines (e.g., azathioprine) and calcineurin inhibitors
+(e.g., cyclosporine) (Rubin et al. 2025).
+
+Conclusion: There is a lack of evidence to support the effectiveness of BPC-157 (free base) and
+BPC-157 acetate as a treatment for UC. There has been a single, small trial evaluating BPC-157
+in the treatment of UC, however, interpretation of the results is limited by the lack of details
+provided in the meeting abstract and the exploratory nature of the study. We did not identify any
+studies that administered BPC-157 via the oral, SC, nasal, or transdermal ROA in subjects with
+UC. At the time of this evaluation, the data available do not support the use of BPC-157 for the
+treatment of UC. There are multiple FDA-approved drug products indicated to treat UC, a
+serious chronic disease that may cause life-threatening complications.
+
+    D. Are There Concerns About the Safety of the Substance for Use in Compounding?
+
+        1. Nonclinical Assessment
+The nominators submitted a list of 25 articles reporting the findings of nonclinical studies.
+Twenty four articles describe pharmacological effects of BPC-157 in different in-vivo and in-
+
+
+
+
+                                                                                                29
+vitro nonclinical models, 57 and one article describes the in-vitro cytoprotective effects of
+analogues of BPC-157 (Bodis et al. 1997).
+
+The following databases were consulted in preparation of this section: Drugs@FDA, Embase,
+European Chemicals Agency, FDA’s Generally Recognized as Safe (GRAS) Notice Inventory,
+Google, Google Scholar, National Institutes of Health’s dietary supplement label database,
+National Toxicology Program website, Pharmapendium, PubMed, Society of Toxicology, USP,
+and Web of Science.
+
+Most studies discussed in this section do not clearly identify the specific form of BPC-157 (free
+base or acetate) used in the different experiments. Therefore, throughout this section, we refer to
+BPC-157 as it is referred to in the cited studies.
+
+             a. General Pharmacology of the Drug Substance
+BPC-157, the active moiety of BPC-157 (free base) and BPC-157 acetate, is a pentadecapeptide
+fragment of the BPC protein originally isolated from human gastric juice (Sikirić et al. 1993a).
+Figure 5 illustrates the amino acid sequence of BPC-157.
+
+Figure 5. Amino Acid Sequence of BPC-157.
+
+
+
+
+Since its discovery in the early 1990’s, BPC-157 has been the subject of numerous publications
+describing its pleiotropic pharmacological effects. In short, pharmacological studies have
+suggested that BPC-157: (i) prevents lesions induced by different challenges in the GI and
+cardiovascular systems of rodents, (ii) has nephroprotective properties, (iii) promotes healing of
+transected tendons in rodents, and (iv) has neuroprotective properties in rodent models of stroke,
+encephalopathy, and spinal cord injury (Cerovecki et al. 2010; Chang et al. 2011; Gaginella
+1994; Seiwerth et al. 2021; Sikiric 1999; Sikiric et al. 2011; Sikiric et al. 2012; Sikiric et al.
+2016; Staresinic et al. 2003; Vukojević et al. 2022).
+
+The paragraphs that follow focus on studies that report the pharmacological effects of BPC-157
+in nonclinical models of colonic fistulas, hepatic lesions, and GI lesions as findings from these
+studies could be relevant to the proposed clinical application of BPC-157 in UC assessed in this
+evaluation.
+
+The effects of BPC-157 on colonic fistulas have been examined in a pharmacological study
+conducted in adult male Wistar rats with 5-mm fistulas generated surgically at 5 cm from the
+anus (Klicek et al. 2008). In this study, rats were treated intraperitoneally or orally (via drinking
+
+57
+   Balenovic et al. 2009; Baric et al. 2016; Bilic et al. 2005; Blagaic et al. 2004; Chang et al. 2011; Chang
+et al. 2014; Crvenkovic et al. 2015; Gaginella 1994; Gjurasin et al. 2010; Gwyer et al. 2019; Huang et al.
+2015; Ilic et al. 2010; Jelovac et al. 1998; Masnec et al. 2015; Mikus et al. 2001; Sebecić et al. 1999;
+Seiwerth et al. 1997; Sikiric et al. 1997a; Sikirić et al. 1997b; Sikiric 1999; Sikiric et al. 2016; Tohyama
+et al. 2004; Tudor et al. 2010; Turkovic et al. 2003.
+
+
+
+                                                                                                           30
+water) with vehicle or BPC-157 (10.0 ng/kg/day or 10.0 μg/kg/day) for up to 28 days starting 30
+minutes post-surgical modification. Rats were, then, euthanized on post-surgical days 1, 3, 5, 7,
+14, 21, and 28, and had their colon removed at the level of the surgical fistula for a macroscopic
+assessment of the sizes of the fistulas. On and after post-surgical day 3, fistulas (from the skin
+and the colon sides) in BPC-157-treated rats were approximately 40% smaller than those in
+vehicle-treated rats. In addition, on post-surgical day 28, fistulas in vehicle-treated rats had
+reduced by <10% in size on the skin side and <25% on the colon side, whereas fistulas in BPC-
+157-treated rats appeared to have resolved macroscopically (Klicek et al. 2008). A dose-response
+relationship could not be established because the magnitude to which the two BPC-157 doses
+decreased the lesion sizes was comparable. The results suggest that intraperitoneal (IP) or oral
+treatment of rats with BPC-157 (≥10 ng/kg) improves healing of surgically generated colonic
+fistulas (Klicek et al. 2008). However, the data should be interpreted with caution because the
+authors did not provide data on the histopathological integrity of the tissue. In addition, it
+remains to be determined whether the BPC-157 treatment would remain effective if initiated
+longer after the fistulas had been generated.
+
+Treatment of Wistar male and female rats with BPC-157 (10 ng/kg or 10 μg/kg, IP) has also been
+shown to prevent stomach and small intestine lesions induced by a high dose of a nonsteroidal
+anti-inflammatory drug (NSAID), including aspirin, indomethacin, or diclofenac (Sikiric et al.
+1997a). Specifically, stomach and small intestine lesions were noted in rats: (i) 2 and 4 hours
+after they received a high dose of aspirin (400 mg/kg, oral gavage); and (ii) 24 hours after they
+received a high dose of diclofenac (125 mg/kg, IP) or indomethacin (30 mg/kg, SC).
+Macroscopically, the sizes of the NSAID-induced lesions were reduced by >75% in rats that
+were co-treated or pre-treated with BPC-157. No microscopic analysis of the tissue is included in
+the study, and a dose-response relationship could not be established because the two BPC-157
+doses reduced the sizes of the NSAID-induced lesions to the same extent (Sikiric et al. 1997a).
+
+The hepatoprotective effects of BPC-157 have been reported in different rat models of
+hepatotoxicity. For instance, hepatoprotection has been observed in adult male and female Wistar
+rats treated with BPC (10 ng/kg or 10 μg/kg) via oral gavage or intraperitoneally 1 hour before
+they were subjected to one of the following hepatotoxic challenges: (i) 24-hour bile duct and
+hepatic artery ligation, (ii) 48 hour-restraint stress, or (iii) tetrachloromethane treatment [1
+mL/kg, IP]. BPC-157 prevented the development of liver necrosis (assessed histopathologically)
+and the increases in liver-associated enzymes (assessed in serum biochemistry panel) induced by
+each hepatotoxic challenge. A dose-response relationship was not established because the degree
+of hepatoprotection was comparable between the two test doses of BPC-157 (Sikiric et al.
+1993b). In addition, it remains unknown whether BPC-157, used as a post-treatment after
+hepatotoxicity has developed, would effectively reduce the severity of the condition.
+
+The hepatoprotective effect of BPC-157 was confirmed in a separate study in which liver
+damage was induced by repeated challenge of rats with the nonsteroidal anti-inflammatory drug
+diclofenac (12.5 mg/kg/day, IP, 3 days). In this study, BPC-157 was also shown to prevent the
+development of diclofenac-induced gastric lesions (Ilic et al. 2010; Ilic et al. 2011). Rats were
+treated with BPC-157 (10 ng/kg or 10 µg/kg) or vehicle (saline) delivered: (i) intraperitoneally
+immediately after each diclofenac injection or (ii) orally in drinking water during the days the
+rats received the diclofenac injections. The authors describe that, 3 hours after the last diclofenac
+injection, vehicle-treated rats presented with: (i) severe gastric, intestinal, and liver lesions; (ii)
+
+
+
+                                                                                                     31
+increased serum bilirubin, aspartate transaminase (AST), and alanine transaminase (ALT); (iii)
+increased liver weight; (iv) brain edema; and (v) damaged neurons in different brain regions.
+They also report that vehicle-treated rats presented prolonged sedation/unconsciousness after the
+diclofenac challenges. Both the oral and the IP treatments with BPC-157 prevented the
+diclofenac-induced hepatic and GI lesions as well as the brain lesions and the
+sedation/unconsciousness (that were thought to be secondary to the hepatic damage). A dose-
+response relationship was not established because the protective effects of BPC-157 had the
+same magnitude regardless of the dose tested (Ilic et al. 2011). In addition, it remains unknown
+whether BPC-157 would effectively promote tissue healing if it had been used as a post-
+treatment after hepatic or gastric lesions induced by the different challenges were fully
+established.
+
+The mechanisms of action underlying the ability of BPC-157 to prevent gastric and hepatic
+lesions induced by different challenges and to accelerate healing of colonic fistulas remain
+unknown. It is unlikely that the ability of BPC-157 to prevent the development of gastric lesions
+is related to modulation of gastric acid secretion or GI motility because BPC-157 has been
+reported to affect neither parameter (Sikiric 1999). Researchers have hypothesized that the
+apparent wound-healing properties of BPC-157 in different tissues could be related to its ability
+to up-regulate the expression of growth factors and their receptors (Chang et al. 2014; Hsieh et
+al. 2017), suppress release and/or expression of inflammatory factors, induce angiogenesis (Brcic
+et al. 2009; Huang et al. 2015; Seiwerth et al. 1997), and stimulate nitric oxide synthesis (Duzel
+et al. 2017; Klicek et al. 2008; Sikirić et al. 1997b).
+
+Findings from the studies discussed above should be interpreted with caution because dose-
+response relationships for BPC-157 to suppress GI and hepatic injuries have not been
+established. In addition, the molecular targets for BPC-157 have not been identified and its
+mechanisms of action remain poorly understood, making it difficult to assess the biological
+plausibility of the pharmacological effects reported in the studies.
+
+            b. Pharmacokinetics/Toxicokinetics
+A pharmacokinetic study conducted in male and female Beagle dogs and Sprague Dawley rats
+treated with a single IV dose of BPC-157 (free base; dogs: 6 μg/kg; rats: 20 μg/kg) revealed that
+the half-life (t1/2) of BPC-157 ranges from 5.3 minutes in dogs to 15.2 minutes in rats (He et al.
+2022). Since BPC-157 was reported to be resistant to hydrolysis in gastric juice in vitro (Veljaca
+et al. 1995), its short in-vivo t1/2 is likely due to its hydrolysis catalyzed by blood- and/or tissue-
+specific peptidases.
+
+In Sprague Dawley rats and Beagle dogs treated intramuscularly with BPC-157 (free base), the
+area under the curve (AUC0-∞) of the plots of plasma concentration vs time and the maximal
+plasma concentrations (Cmax) of BPC-157 increased proportionally with increasing intramuscular
+(IM) doses (Table 5 and Table 6). This finding suggests that the pharmacokinetics of BPC-157
+follows a first-order process.
+
+
+
+
+                                                                                                     32
+             c. Acute Toxicity 58
+In an acute toxicity study, male and female Sprague Dawley rats and Beagle dogs treated with a
+single IM dose of BPC-157 (free base; 20 mg/kg and 10 mg/kg, respectively) presented with no
+signs of acute toxicity in addition to no histopathological alteration in various organs 14 days
+after the treatment. The doses of 20 mg/kg and 10 mg/kg were considered the IM no-observed-
+adverse-event-levels (NOAELs) in rats and dogs, respectively (Xu et al. 2020).
+
+At the time of this evaluation, the nominator did not submit, and FDA did not identify
+nonclinical acute toxicity studies of BPC-157 (free base) or BPC-157 acetate, delivered via the
+nominated ROAs (oral, rectal, SC, and nasal). In addition, since studies were not identified to
+establish the absolute bioavailability of BPC-157 delivered via IM and the nominated ROAs to
+rats and dogs, it is not possible to use the IM NOAELs to estimate the NOAELs for the
+nominated ROAs. As described in the FDA’s guidance for industry M3(R2) Nonclinical Safety
+Studies for the Conduct of Human Clinical Trials and Marketing Authorization for
+Pharmaceuticals,44 NOAELs are used to predict safety margins of doses in clinical settings.
+
+             d. Repeat-Dose Toxicity 59
+Repeat-dose toxicity studies were conducted in rats and dogs treated intramuscularly for 28 days
+with different doses of BPC-157 (free base). Specifically, adult male and female Sprague
+Dawley rats and Beagle dogs were treated once daily with the BPC-157 (free base; rats: 0.2, 1.0,
+or 4.0 mg/kg, dogs: 0.1, 0.5, or 2.0 mg/kg). In each study, control animals were treated
+intramuscularly with vehicle (saline). The 28-day treatments were followed by a 14-day recovery
+period (Xu et al. 2020).
+
+Findings From the Repeat-Dose Toxicity Study in Rats
+
+According to the authors, BPC-157 (0.2, 1.0, or 4.0 mg/kg/day, IM, 28 days) had no significant
+effects on body weights, general behavior, survival, or gross morphology and histopathology of
+major organs, including heart, liver, kidney, spleen, lung, brain, thymus, prostate, and ovary, in
+rats (Xu et al. 2020). We note that histopathological data are not included in the manuscript.
+
+Hematological assessments of blood drawn from the rats on post-treatment day 28 and on
+recovery day 14 revealed statistically significant alterations of mean corpuscular hemoglobin
+concentration, mean platelet volume index, platelet distribution width, and red blood cell
+distribution width in BPC-157-treated rats (Table 7). The findings were considered incidental
+
+
+58
+   Acute toxicity refers to adverse effects observed following administration of a single dose of a
+substance, or multiple doses given within a short period (approximately 24 hours). For more information
+on general approaches for acute toxicity studies, please refer to FDA’s guidance for industry M3(R2)
+Nonclinical Safety Studies for the Conduct of Human Clinical Trials and Marketing Authorization for
+Pharmaceuticals (January 2010), available at https://www.fda.gov/media/71542/download.
+59
+   Repeat-dose toxicity studies consist of in-vivo animal studies that seek to evaluate the toxicity of the
+test substance when it is repetitively administered daily for an extended period. For more information on
+general approaches for repeat-dose toxicity studies, please refer to FDA’s guidance for industry M3(R2)
+Nonclinical Safety Studies for the Conduct of Human Clinical Trials and Marketing Authorization for
+Pharmaceuticals (January 2010), available at https://www.fda.gov/media/71542/download.
+
+
+
+                                                                                                          34
+treated with all tested doses of BPC-157 (rats: ≥0.2 mg/kg; dogs: ≥0.1 mg/kg) than in vehicle-
+treated sex-matched animals, and (iii) serum creatinine levels were significantly lower in female
+dogs treated with 2 mg/kg BPC-157 and male dogs treated with ≥0.5 mg/kg than in sex-matched,
+vehicle-treated animals.
+
+At the time of this evaluation, the nominator did not submit, and FDA did not identify
+nonclinical repeat-dose toxicity studies of BPC-157 (free base) or BPC-157 acetate, delivered via
+the nominated ROAs (oral, rectal, SC, and nasal).
+
+             e. Genotoxicity 60
+The genotoxic potential of BPC-157 (free base) has been assessed in the following tests: (i)
+bacterial reverse mutation tests (AMES assay) conducted with five Salmonella typhimurium
+mutant strains (TA97, TA98, TA100, TA102, and TA1535) in the presence and absence of
+metabolic activation with rat S9 microsomal fraction; (ii) chromosome aberration tests in
+cultured Chinese hamster lung (CHL) cells in the presence and absence of S9; and (iii) a
+micronuclei assay conducted with bone marrow harvested from ICR (Institute of Cancer
+Research) mice that were treated with BPC-157 (25, 50, and 100 mg/kg, IM). For the
+micronuclei assay, bone marrow was harvested from mice euthanized 24 hours after their
+treatment and was processed for counting of polychromatic erythrocytes (PCE) micronuclei (Xu
+et al. 2020).
+
+In the AMES assays, BPC-157 (5 to 2000 µg/plate) did not increase the number of revertant
+bacterial colonies. In CHL cells, BPC-157 (100 to 400 µg/mL) did not increase the percentage of
+chromosome aberrations. Finally, BPC-157 (25 to 100 mg/kg, IM) did not increase the
+percentage of PCE micronuclei in the bone marrow of ICR mice. These findings demonstrate
+that BPC-157 is not a mutagen (Xu et al. 2020).
+
+             f. Developmental and Reproductive Toxicity 61
+The teratogenic potential of BPC-157 has been assessed in pregnant rats treated intramuscularly
+with vehicle (saline) or BPC-157 (free base; 0.2, 1.0, or 4.0 mg/kg) once a day between gestation
+
+60
+   The genotoxicity assessment battery usually consists of a gene mutagenicity assay (for single dose
+trials) and a variety of clastogenicity/genotoxicity assays. To support multiple dose administration in
+humans, additional genotoxicity testing assessment is usually conducted to detect chromosomal damage
+in mammalian systems. For more information on general approaches for genotoxicity studies, please refer
+to FDA’s guidance for industry S2(R1) Genotoxicity Testing and Data Interpretation for Pharmaceuticals
+Intended for Human Use (June 2012), available at https://www.fda.gov/media/71980/download.
+61
+   Developmental and reproductive toxicity studies are usually designed to assess the potential adverse
+effects of a substance within a complete reproductive cycle, from conception to reproductive capacity in
+subsequent generations, and to identify the potential effects of a substance on pre-, peri-, and postnatal
+development. Developmental toxicity or teratogenicity refers to adverse effects (can include embryo-fetal
+mortality, structural abnormalities, functional impairment, or alterations to growth) and can occur in pups
+either as a result of the exposure of their parents to the substance, prior to the pups’ birth, or by direct
+exposure of the pups to the substance after birth. For more information on general approaches for
+reproductive and developmental toxicity studies, please refer to FDA’s guidance for industry S5(R3)
+Detection of Reproductive and Developmental Toxicity for Human Pharmaceuticals (May 2021),
+available at https://www.fda.gov/media/148475/download.
+
+
+
+                                                                                                         38
+days 6 and 15 (Xu et al. 2020). On gestation day 20, all rats were euthanized, and all fetuses
+were counted and examined. BPC-157 had no effect on: (i) body weight of the pregnant rats and
+their fetuses; (ii) numbers of live fetuses, dead fetuses, absorptions, implantations, and corpus
+luteum; or (iii) total uterine weight or placental weight. In addition, the gestational BPC-157
+treatment had no effect on the incidence of fetal malformations. Considering these findings, the
+IM NOAEL for BPC-157 in pregnant rats is 4.0 mg/kg (Xu et al. 2020).
+
+The article by Xu and colleagues does not describe studies to assess the potential effects of BPC-
+157 within a complete reproductive cycle, from conception to reproductive capacity in
+subsequent generations, and to identify the potential effects of BPC-157 on peri- and postnatal
+development.
+
+At the time of this evaluation, the nominator did not submit, and FDA did not identify
+developmental and reproductive toxicity studies of BPC-157 (free base) or BPC-157 acetate,
+delivered via the nominated ROAs (oral, rectal, SC, and nasal). Since the absolute bioavailability
+of BPC-157 delivered via these routes to rats or dogs is unknown, it is not possible to use the IM
+NOAEL derived from the teratogenicity study to estimate NOAELs for the nominated ROAs.
+
+             g. Carcinogenicity 62
+At the time of this evaluation, the nominator did not submit, and FDA did not identify
+carcinogenicity studies of BPC-157 (free base) or BPC-157 acetate.
+
+Conclusions: At the time of this evaluation, the nominator submitted, and FDA identified
+nonclinical pharmacological studies reporting that, in rats, BPC-157-related substances could
+prevent colonic fistulas, hepatic lesions, and GI lesions induced by different challenges.
+Researchers have hypothesized that the apparent wound-healing properties of BPC-157-related
+substances could be related to its ability to up-regulate the expression of growth factors and their
+receptors, suppress release and/or expression of inflammatory factors, induce angiogenesis, and
+stimulate nitric oxide synthesis. However, dose-response relationships for BPC-157-related
+substances to suppress GI and hepatic injuries have not been established, the molecular targets
+for BPC-157-related substances have not been identified, and the mechanisms of action of BPC-
+157-related substances remain poorly understood, making it difficult to assess the biological
+plausibility of the pharmacological effects of BPC-157-related substances.
+
+At the time of this evaluation, FDA identified a published article reporting the results of different
+nonclinical toxicological studies of BPC-157 (free base). According to the article, BPC-157 (free
+base) is not a mutagen, and, when delivered via the IM ROA to pregnant rats between gestation
+days 6 and 15, BPC-157 (free base) does not appear to induce teratogenicity. The article did not
+include studies assessing potential effects of BPC-157 (free base) within a complete reproductive
+
+
+62
+   Studies that assess cancer risk in animals are used as predictive tools to evaluate the potential for drugs
+to cause tumors when used by humans on a chronic basis. Carcinogenicity studies are conducted if the
+clinical use is expected to be continuous for a minimum of 6 months of life, or if intermittent clinical use
+is expected to total 6 months or more of life. For more information on general approaches for
+carcinogenicity studies, please refer to FDA’s guidance for industry S1B Testing for Carcinogenicity of
+Pharmaceuticals (July 1997), available at https://www.fda.gov/media/71935/download.
+
+
+
+                                                                                                            39
+cycle or on pre-, peri-, and postnatal development. Findings from repeat-dose toxicity studies
+suggested that 28-day treatment of rats and dogs with BPC-157 (free base) via the IM ROA
+appeared to be associated with clinically relevant safety signals, including: (i) aPTT shortening
+and aPTT prolongation (suggestive of altered clotting properties) in rats and dogs, respectively,
+and (ii) liver-associated signals (increased serum ALT, glucose, and TG levels). Longer lasting
+repeat-dose toxicity studies were unavailable to demonstrate the reproducibility of the findings
+and to determine whether additional safety signals emerge with longer treatments. Studies were
+also unavailable to determine the carcinogenic potential of BPC-157 (free base) or BPC-157
+acetate. In addition, the nominator did not submit, and FDA did not identify nonclinical
+pharmacokinetic and toxicological studies of BPC-157 (free base) or BPC-157 acetate delivered
+via the nominated ROAs (oral, rectal, transdermal, SC, and nasal). At the time of this evaluation,
+nonclinical toxicological studies were limited in scope and duration to inform safety
+considerations for potential clinical uses of BPC-157 (free base) or BPC-157 acetate via the
+nominated ROAs.
+
+          2. Human Safety
+The following databases were consulted in the preparation of this section: PubMed, Embase,
+Cochrane Database of Systematic Reviews, FAERS, Human Foods Program 63 Human Foods
+Complaint System (HFCS), 64 ClinicalTrials.gov professional healthcare organization websites,
+and various online clinical references and websites. The clinical articles submitted by the
+nominators and those identified by FDA do not clearly identify BPC-157 as a free base or salt.
+Therefore, in this section, the substance will be generally referred to as BPC-157, unless the
+article under discussion clearly specifies the use of the free base or the acetate salt in a study.
+
+              a. Pharmacokinetic Data
+Our search of the public medical literature in PubMed and Embase yielded five clinical studies
+that utilized BPC-157. For the list of references and details of the studies refer to Appendix 1. In
+two of these studies, authors measured plasma levels of BPC-157 after administration of rectal
+enemas of BPC-157 (Ruenzi et al. 2005; Veljaca et al. 2002; Veljaca et al. 2003). In both studies,
+authors report that BPC-157 was not detected in plasma samples. In one abstract (Veljaca et al.
+2003), authors state that “most” plasma concentrations of BPC-157 were below the lower limit
+of quantification of the HPLC-MS/MS (high-performance liquid chromatography coupled with
+tandem mass spectrometry) assay; but no further details are provided.
+
+We found no human pharmacokinetic data for BPC-157 after oral, SC, nasal, or transdermal
+administration. We note here that we identified two articles reporting on the in vitro plasma
+metabolism of BPC-157 for purposes of anti-doping screening (Cox et al. 2017; Tian et al.
+2023); however, BPC-157 was not administered to human subjects in these studies.
+
+
+
+
+63
+     Formerly Center for Food Safety and Nutrition (CFSAN)
+64
+     Formerly CFSAN Adverse Event Reporting System (CAERS)
+
+
+
+                                                                                                      40
+             b. Reported Adverse Reactions (Case Reports and Anecdotal Cases Assessing
+                Safety)
+The Office of Surveillance and Epidemiology conducted a search of the FAERS database for
+reports of adverse events (AEs) for BPC-157 through December 4, 2025. 65, 66 The search
+retrieved three reports. 67 All reports were associated with injectable BPC-157. The reports are
+summarized below:
+
+     •   FAERS ID 194222121: A 55-year-old woman reported use of BPC-157 injection
+         compounded by Promise Pharmacy. She reported 9 days of redness and swelling around
+         the injection site; however, she was also using injectable compounded thymosin.
+         Interpretation of the role of BPC-157 in this case is limited by concomitant thymosin
+         injections.
+     •   FAERS ID 23130696: A 28-year-old male reported use of BPC-157 acetate SC injection
+         for “injury/inflammation” compounded by Revive Rx Pharmacy. The patient developed
+         shortness of breath, which resulted in an emergency room visit. No further information
+         was provided (i.e. duration of use, concomitant medications, or temporal relationship to
+         product) which limits interpretation of this AE report.
+     •   FAERS ID 26053573: A 40-year-old female reported using a product containing BPC-
+         157 and TB500 SC twice daily for “joint healing and wound healing support.” The
+         product was labeled for “research purposes only” from Cellular Peptide LLC. The patient
+         developed diffuse hyperpigmentation and gingival darkening following initial use of the
+         product containing BPC-157 and TB500 for one week. After two weeks, upon
+         rechallenge with the product, the patient developed identical reproducible reactions. The
+         patient discontinued peptides completely and had no further reactions. The AEs were
+         likely due to the drug product considering that the AEs occurred upon rechallenge;
+         however, because the product contained two peptides it is not possible to assess a
+         potential relationship between BPC-157 and the reported AEs.
+
+Human Foods Program collects reports of AEs and product complaint reports submitted to FDA
+for food, dietary supplements, and cosmetics in the HFCS. A search of HFCS was conducted for
+AEs associated with BPC-157 through December 3, 2025, and retrieved three cases. The
+assessment of all cases was complicated by use of BPC-157 as part of a multi-ingredient dietary
+
+
+
+65
+   The FAERS search did not differentiate between BPC-157 (free base) and BPC-157 acetate.
+66
+   Compounders under section 503A of the FD&C Act generally do not report adverse events to FDA.
+FDA encourages compounders, health care professionals, and consumers to report adverse events and
+product quality concerns associated with compounded drugs to FDA’s MedWatch Adverse Event
+Reporting program. Unless an adverse event report is submitted to FDA, the Agency may not be aware of
+adverse events associated with a product compounded under section 503A.
+67
+   It is important to note that FAERS data have limitations. First, there is no certainty that the reported
+adverse event was due to the suspect product. FDA does not require that a causal relationship between a
+product and event be proven, and the report may not always contain enough detail to properly evaluate an
+event. Further, FDA does not receive all adverse event reports that may potentially occur with a product,
+especially for compounded products. Considering these limitations, FDA cannot make definitive
+conclusions regarding the safety of BPC-157 based on FAERS data alone.
+
+
+
+                                                                                                         41
+supplement, concurrent medication use, and a lack of details in the report (i.e. duration of use,
+temporal relationship to product).
+
+We did not identify any case reports associated with BPC-157 published in the literature.
+
+             c. Clinical Studies Assessing Safety
+Our search of the public medical literature in PubMed and Embase yielded five clinical studies
+that utilized BPC-157. For the list of references and details of the studies refer to Appendix 1.
+Based on these studies, BPC-157 has been administered as follows:
+
+     •   Up to 2 mg/kg rectal enema once daily x 8 days (n=24 healthy subjects)
+     •   80 mg rectal enema once daily x 2 weeks (approximately 26 subjects with UC) 68
+     •   2-4 mg intra-articular injection x 1-2 doses (n=17 subjects with knee pain)
+     •   10 mg intravesical injection in a single procedure (n=12 subjects with interstitial cystitis)
+     •   10 mg IV infusion on day 1 and 20 mg IV infusion on day 2 (n=2 healthy subjects)
+
+No serious adverse events appear to have been reported with these studies. However, these
+studies were of short duration, had small sample sizes, evaluated doses that were likely
+exploratory in nature, and the authors provided limited information on safety data. Of note,
+safety monitoring for most of the studies is unclear. 69 Per the meeting abstracts from Veljaca et
+al. (2002) and Veljaca et al. (2003), the most frequently reported adverse events after BPC-157
+administration as an enema to healthy subjects were headache and flatulence.
+
+A search of Clinicaltrials.gov retrieved a single phase 1 study in healthy subjects in Mexico
+(NCT02637284). 70 Subjects were to receive: 1) Phase 1a- single dose of BPC-157 (1 mg, 3 mg,
+or 6 mg) or placebo oral tablet by mouth and 2) Phase 1b- BPC-157 3 mg or placebo oral tablet
+by mouth every 8 hours for two weeks. The estimated enrollment was 42 subjects. There are no
+results posted, and we were unable to find an associated published study.
+
+             d. Other Safety Information (e.g., Relevant Safety Information From Other
+                Regulatory Agencies as Appropriate)
+Immunogenicity and Aggregation Concerns
+
+FDA has issued guidance regarding therapeutic protein products. 71 That guidance describes
+immunogenicity as the propensity of a therapeutic protein product to generate immune responses
+to itself and to related proteins including endogenous proteins or peptides, or to induce
+immunologically related adverse clinical events. Although this guidance addresses therapeutic
+
+
+68
+   Fifty-three subjects were randomized to receive BPC-157 or placebo enema in a 1:1 fashion. The
+number of subjects randomized to the BPC-157 group is not provided in the abstract.
+69
+   Lee and Burgess (2025) provide some details of safety monitoring in their study in two healthy
+subjects.
+70
+   We searched https://clinicaltrials.gov/ on 12/3/2025 using the search terms “BPC-157” and “Bepecin”.
+71
+   See FDA’s guidance for industry. Immunogenicity Assessment for Therapeutic Protein Products
+(August 2014) available at https://www.fda.gov/media/85017/download.
+
+
+
+                                                                                                      42
+protein products, the concerns about immunogenicity are also relevant to peptides (such as BPC-
+157), which can similarly elicit an immunogenic response; this immunogenic response may be
+enhanced when peptides are given via SC or nasal ROA. In general, SC and nasal ROA is
+associated with increased immunogenicity compared to oral or rectal ROA.
+
+The consequences of triggering an immune response may range from antibody responses with no
+apparent clinical manifestations to life-threatening and catastrophic reactions. Such outcomes are
+often unpredictable in patients administered therapeutic protein or peptide products. One possible
+consequence of the development of an immune response is the development of neutralizing
+antibody activity that may lead to loss of efficacy or even result in the neutralization of the
+activity of the endogenous peptide counterpart.
+
+In addition, compared to small molecule APIs, peptides are distinct because they may have an
+inherent tendency to aggregate. Aggregation refers to the processes through which peptides
+associate into larger species consisting of multiple peptide chains. Aggregates can be highly
+ordered or amorphous and the formation can be reversible or irreversible (Zapadka et al. 2017).
+Peptides with as few as two amino acids have been shown to aggregate (Frederix et al. 2011).
+Aggregates can impact the pharmacology of the peptide. In addition, aggregation is a risk factor
+in immunogenicity and for decreased pharmacotherapeutic effect of the drug product due to
+effects on bioavailability, formation of precipitates, or anti-drug antibody production (Ratanji et
+al. 2014).
+
+The nominators did not provide, and we did not identify any studies that formally investigated
+the immunogenicity of BPC-157 products. As a peptide with 15 amino acids that is administered
+through a parenteral or nasal ROA, BPC-157 may pose a significant risk for immunogenicity,
+potentially amplified by aggregation as well as potential peptide-related impurities, as discussed
+above. In addition, peptides administered through the rectal or transdermal ROA may have the
+potential for immunogenicity depending on the administration environment. Lastly, although
+inherent immunogenic risk for BPC-157 administered orally is likely to be low, FDA is
+concerned about the other risks related to peptides described above, such as the potential for
+peptide-related impurities which may impact the safety of the product in other ways. The
+nomination did not include, and FDA is not aware of, information about BPC-157 to suggest that
+this substance does not present these risks.
+
+             e. Therapies That Have Been Used for the Condition(s) Under Consideration
+There are FDA-approved drug products that treat the same medical conditions as that proposed
+for the BPC-157 compounded drug product(s). 72 Please see Section II.C.c for more information
+about alternative approved therapies.
+
+Conclusions: There is insufficient clinical safety information to characterize the safety profile of
+BPC-157 (free base) and BPC-157 acetate. We found no studies that administered BPC-157 to
+
+
+72
+  FDA considers the existence of FDA-approved or OTC monograph drug products to treat the same
+condition as that proposed for the nomination relevant to FDA’s consideration of the safety criterion, to
+the extent there may be therapies that have been demonstrated to be safe under the conditions of use set
+forth in the approved labeling. See 84 FR 4696.
+
+
+
+                                                                                                            43
+humans via the proposed oral, SC, nasal, or transdermal ROA. We identified two studies that
+administered BPC-157 as a rectal enema to either healthy subjects or subjects with UC for a
+maximum of two weeks. No serious adverse events were reported in these studies; however, the
+authors provided limited information on safety and associated safety monitoring. UC is a chronic
+condition which may need long-term repeated treatment. There is insufficient information to
+support patient safety for the long-term use of BPC-157 in patients with UC. There is no
+information to assess the pharmacokinetics of BPC-157 in humans; however, it does not appear
+that BPC-157 is absorbed systemically when given as a rectal enema.
+
+Adverse events in the FAERS database for BPC-157 included the following: injection site
+reaction, shortness of breath, and diffuse hyperpigmentation and gingival darkening. However, it
+is unclear whether these AEs were attributable to BPC-157. FDA’s ability to interpret FAERS
+reports is limited by lack of information in the reports and confounding factors such as the use of
+concomitant medications.
+
+The safety profile of compounded drug products containing BPC-157 can be negatively impacted
+by various factors that include but are not limited to the product formulation, peptide
+concentration, and conditions of storage favoring the generation of product-related impurities
+and/or peptide aggregates capable of inducing untoward immunogenic responses. As a peptide
+with 15 amino acids that is administered through a parenteral or nasal ROA, BPC-157 may pose
+a significant risk for immunogenicity, potentially amplified by aggregation as well as potential
+peptide-related impurities. In addition, peptides administered through the rectal or transdermal
+ROA may have the potential for immunogenicity depending on the administration environment.
+The nomination did not include, and FDA is not aware of, information about BPC-157 to suggest
+that this substance does not present these risks. At the time of this evaluation, there are several
+FDA-approved drug products indicated to treat UC.
+
+III. CONCLUSION AND RECOMMENDATION
+
+We have balanced the criteria described in section II above to evaluate BPC-157 (free base)
+and BPC-157 acetate for the 503A Bulks List. After considering the information currently
+available, a balancing of the criteria weighs against BPC-157 (free base) and BPC-157 acetate
+being placed on that list based on the following:
+
+1. Conclusions on the physical and chemical characterization for each BPC-157-related BDS,
+   BPC-157 (free base) and BPC-157 acetate, are included in subsections 1.1 and 1.2,
+   respectively.
+
+   1.1.
+
+   BPC-157 (free base) is reported to be a pentadecapeptide fragment of BPC. As reported in
+   the literature, BPC-157 is expected to be stable under storage conditions below -18°C.
+
+   BPC-157 (free base) is considered not well-characterized from the physical and chemical
+   characterization perspective based on (1) inconsistent naming conventions that do not follow
+   established chemical nomenclature standards (e.g., USAN, INN, IUPAC), and (2)
+   data/information relevant to certain CQAs for establishing its identity, purity, and quality for
+   its intended use in the proposed dosage forms were either lacking or deemed to be inadequate
+
+
+                                                                                                 44
+in the nomination packages or not found in the publicly available scientific literature. For
+example, some of this data/information include but are not limited to testing for CQAs
+relevant to characterizing peptide-related impurities and aggregates, microbial quality
+(bioburden, bacterial endotoxins), particle size, or other CQAs as dictated by dosage form
+(e.g., injection, metered-dose spray solution, capsule, topical cream, suppository) and ROA
+(SC injection, transdermal, nasal, oral, rectal). Additionally, FDA would have strong
+concerns about the use of this BDS in the proposed compounded nasal spray solution product
+due to lack of information about the container closure system (including container, closure,
+pump) – all of which are relevant to the CQAs for the proposed product and would affect
+how the BDS is delivered via this product.
+
+Further, FDA is concerned about the potential for immunogenicity of BPC-157 (free base)
+when formulated in an injectable dosage form due to the potential for aggregation as well as
+potential peptide-related impurities, as discussed in the Likely Impurities section II.A.1.c. We
+also note that the stability, pharmacological activity, and immunogenic properties of peptides
+are highly sensitive to the manufacturing process and quality attributes of the
+compounded/finished drug product.
+
+1.2.
+
+BPC-157 acetate is reported to be a salt of BPC-157 (free base) peptide of fifteen amino
+acids. As reported in the literature, BPC-157 acetate is expected to be stable under reported
+storage conditions below -20°C.
+
+BPC-157 acetate is considered not well-characterized from the physical and chemical
+characterization perspective based on (1) inconsistent naming conventions that do not follow
+established chemical nomenclature standards (e.g., USAN, INN, IUPAC), and (2)
+data/information relevant to certain CQAs for establishing its identity, purity, and quality for
+its intended use in the proposed dosage forms were either lacking or deemed to be inadequate
+in the nomination packages or not found in the publicly available scientific literature. For
+example, some of this data/information include but are not limited to testing for CQAs
+relevant to characterizing peptide-related impurities and aggregates, microbial quality
+(bioburden, bacterial endotoxins), particle size, or other CQAs as dictated by dosage form
+(e.g., injection, metered-dose spray solution, capsule, topical cream, suppository) and ROA
+(SC injection, transdermal, nasal, oral, rectal). Additionally, FDA would have strong
+concerns about the use of this BDS in the proposed compounded nasal spray solution product
+due to lack of information about the container closure system (including container, closure,
+pump)– all of which are relevant to the CQAs for the proposed product and would affect how
+the BDS is delivered via this product.
+
+Further, FDA is concerned about the potential for immunogenicity of BPC-157 acetate when
+formulated in an injectable dosage form due to the potential for aggregation as well as
+potential peptide-related impurities, as discussed in the Likely Impurities section II.A.1.c. We
+also note that the stability, pharmacological activity, and immunogenic properties of peptides
+are highly sensitive to the manufacturing process and quality attributes of the
+compounded/finished drug product.
+
+
+
+
+                                                                                                45
+2. As previously mentioned, it is often unclear whether the BPC-157 discussed in the sources
+   considered for this section is the salt formulation or the free base. Therefore, FDA considered
+   the information discussed for both the free base and salt form. BPC-157 was first described
+   in the literature in 1993 and was referred to as a possible endogenous free radical scavenger
+   and organoprotection mediator. Interstitial cystitis, knee pain, and UC are the uses of BPC-
+   157-related BDSs examined in the literature. GI uses are the most commonly mentioned uses
+   listed on websites. BPC-157-related BDSs are marketed as an oral capsule, oral spray, nasal
+   spray, and injectable product. However, it is unclear whether some of these products are
+   compounded or if pharmacies are currently compounding products containing BPC-157-
+   related BDSs. There is no approved product containing BPC-157-related BDSs in any
+   country at this time, nor is BPC-157 (free base) or BPC-157 acetate found in the European,
+   Japanese, or the International Pharmacopeias. Currently available data and published
+   literature is too limited for FDA to understand the historical use of BPC-157 (free base) and
+   BPC-157 acetate in compounded drug products.
+
+3. There is a lack of evidence to support the effectiveness of BPC-157 (free base) and BPC-157
+   acetate as a treatment for UC. There has been a single, small trial evaluating BPC-157 in the
+   treatment of UC, however, interpretation of the results is limited by the lack of details
+   provided in the meeting abstract and the exploratory nature of the study. We did not identify
+   any studies that administered BPC-157 via the oral, SC, nasal, or transdermal ROA in
+   subjects with UC. At the time of this evaluation, the data available do not support the use of
+   BPC-157 for the treatment of UC. There are multiple FDA-approved drug products indicated
+   to treat UC, a serious chronic disease that may cause life-threatening complications.
+
+4. Nonclinical pharmacological studies have reported that BPC-157-related substances could
+   prevent colonic fistulas, hepatic lesions, and GI lesions induced by different challenges in
+   rats. However, it is difficult to assess the biological plausibility of these pharmacological
+   effects because dose-response relationships for BPC-157 (free base) and BPC-157 acetate to
+   suppress GI and hepatic injuries have not been established, the molecular targets for BPC-
+   157-related substances have not been identified, and the mechanisms of action of BPC-157-
+   related substances remain poorly understood. At the time of this evaluation, nonclinical
+   toxicological studies were also too limited in scope and duration to inform safety
+   considerations for potential clinical uses of BPC-157 (free base) or BPC-157 acetate via the
+   nominated oral, rectal, transdermal, SC, and nasal ROAs.
+
+   There is insufficient clinical safety information to characterize the safety profile of BPC-157
+   (free base) and BPC-157 acetate. We found no studies that administered BPC-157 to humans
+   via the proposed oral, SC, nasal, or transdermal ROA. We identified two studies that
+   administered BPC-157 as a rectal enema to either healthy subjects or subjects with UC for a
+   maximum of two weeks. No serious adverse events were reported in these studies; however,
+   the authors provided limited information on safety and associated safety monitoring. UC is a
+   chronic condition which may need long-term repeated treatment. There is insufficient
+   information to support patient safety for the long-term use of BPC-157 in patients with UC.
+   There is no information to assess the pharmacokinetics of BPC-157 in humans; however, it
+   does not appear that BPC-157 is absorbed systemically when given as a rectal enema.
+
+
+
+
+                                                                                                46
+   Adverse events in the FAERS database for BPC-157 included the following: injection site
+   reaction, shortness of breath, and diffuse hyperpigmentation and gingival darkening.
+   However, it is unclear whether these AEs were attributable to BPC-157. FDA’s ability to
+   interpret FAERS reports is limited by lack of information in the reports and confounding
+   factors such as the use of concomitant medications.
+
+   The safety profile of compounded drug products containing BPC-157 can be negatively
+   impacted by various factors that include, but are not limited to the product formulation,
+   peptide concentration, and conditions of storage favoring the generation of product-related
+   impurities and/or peptide aggregates capable of inducing untoward immunogenic responses.
+   As a peptide with 15 amino acids that is administered through a parenteral or nasal ROA,
+   BPC-157 may pose a significant risk for immunogenicity, potentially amplified by
+   aggregation as well as potential peptide-related impurities. In addition, peptides administered
+   through the rectal or transdermal ROA may have the potential for immunogenicity depending
+   on the administration environment. The nomination did not include, and FDA is not aware
+   of, information about BPC-157 to suggest that this substance does not present these risks. At
+   the time of this evaluation, there are several FDA-approved drug products indicated to treat
+   UC.
+
+On balance, the physicochemical characterization, information on historical use, lack of evidence
+of effectiveness, and safety information identified for both BPC-157 (free base) and BPC-157
+acetate weigh against them being added to the 503A Bulks List. In particular, FDA’s proposal is
+based on the fact that BPC-157 (free base) and BPC-157 acetate are not well characterized from
+a physiochemical perspective, there is a lack of information on the safety profile and
+immunogenicity risks of BPC-157-related BDSs, there is insufficient evidence to make a
+conclusion on the effectiveness of BPC-157-related BDSs as a treatment for UC, and there are
+FDA-approved drug products that are indicated to treat UC, a serious chronic disease that may
+cause life-threatening complications. Accordingly, we propose not adding BPC-157 (free base)
+or BPC-157 acetate to the 503A Bulks List.
+
+
+
+
+                                                                                                47
+IV. REFERENCES
+
+Balenovic, D, ML Bencic, M Udovicic, K Simonji, JS Hanzevacki, I Barisic, S Kranjcevic, I
+Prkacin, V Coric, L Brcic, M Coric, I Brcic, S Borovic, B Radic, D Drmic, H Vrcic, S Seiwerth
+and P Sikiric, 2009, Inhibition of Methyldigoxin-Induced Arrhythmias by Pentadecapeptide BPC
+157: A Relation with No-System, Regul Pept, 156(1-3):83-89.
+
+Baric, M, AZ Sever, LB Vuletic, Z Rasic, M Sever, D Drmic, T Pavelic-Turudic, M Sucic, H
+Vrcic, S Seiwerth and P Sikiric, 2016, Stable Gastric Pentadecapeptide BPC 157 Heals
+Rectovaginal Fistula in Rats, Life Sci, 148:63-70.
+
+Bilic, M, Z Bumber, AB Blagaic, L Batelja, S Seiwerth and P Sikiric, 2005, The Stable Gastric
+Pentadecapeptide BPC 157, Given Locally, Improves CO2 Laser Healing in Mice, Burns,
+31(3):310-315.
+
+Blagaic, AB, V Blagaic, Z Romic and P Sikiric, 2004, The Influence of Gastric Pentadecapeptide
+BPC 157 on Acute and Chronic Ethanol Administration in Mice, Eur J Pharmacol, 499(3):285-
+290.
+
+Bodis, B, O Karadi, P Nemeth, C Dohoczky, M Kolega and G Mozsik, 1997, Evidence for
+Direct Cellular Protective Effect of PL-10 Substances (Synthesized Parts of Body Protection
+Compound, BPC) and Their Specificity to Gastric Mucosal Cells, Life Sci, 61(16):Pl243-Pl248.
+
+Brcic, L, I Brcic, M Staresinic, T Novinscak, P Sikiric and S Seiwerth, 2009, Modulatory Effect
+of Gastric Pentadecapeptide BPC 157 on Angiogenesis in Muscle and Tendon Healing, J Physiol
+Pharmacol, 60 Suppl 7:191-196.
+
+Cerovecki, T, I Bojanic, L Brcic, B Radic, I Vukoja, S Seiwerth and P Sikiric, 2010,
+Pentadecapeptide BPC 157 (PL 14736) Improves Ligament Healing in the Rat, J Orthop Res,
+28(9):1155-1161.
+
+Chang, CH, WC Tsai, YH Hsu and JH Pang, 2014, Pentadecapeptide BPC 157 Enhances the
+Growth Hormone Receptor Expression in Tendon Fibroblasts, Molecules, 19(11):19066-19077.
+
+Chang, CH, WC Tsai, MS Lin, YH Hsu and JH Pang, 2011, The Promoting Effect of
+Pentadecapeptide BPC 157 on Tendon Healing Involves Tendon Outgrowth, Cell Survival, and
+Cell Migration, J Appl Physiol, 110(3):774-780.
+
+Cohen, RD and SR Dalal, 2015, Systematic Review: Rectal Therapies for the Treatment of
+Distal Forms of Ulcerative Colitis, Inflamm Bowel Dis, 21(7):1719-1736.
+
+Cox, HD, GD Miller and D Eichner, 2017, Detection and in Vitro Metabolism of the Confiscated
+Peptides BPC 157 and MGF R23H, Drug Test Anal, 9(10):1490-1498.
+
+Crvenkovic, D, M Sever, AZ Sever, D Drmic, I Petrovic, Z Romic, S Seiwerth and P Sikiric,
+2015, Tu2028 Pentadecapeptide BPC 157 after 70% Liver Resection in Rats, Gastroenterology,
+148(4):S-964.
+
+
+
+
+                                                                                                48
+Duzel, A, J Vlainic, M Antunovic, D Malekinusic, B Vrdoljak, M Samara, S Gojkovic, I Krezic,
+T Vidovic, Z Bilic, M Knezevic, M Sever, N Lojo, A Kokot, M Kolovrat, D Drmic, J Vukojevic,
+T Kralj, K Kasnik, M Siroglavic, S Seiwerth and P Sikiric, 2017, Stable Gastric
+Pentadecapeptide BPC 157 in the Treatment of Colitis and Ischemia and Reperfusion in Rats:
+New Insights, World J Gastroenterol, 23(48):8465-8488.
+
+Feuerstein, JD, KL Isaacs, Y Schneider, SM Siddique, Y Falck-Ytter, S Singh and AGAICG
+Committee, 2020, AGA Clinical Practice Guidelines on the Management of Moderate to Severe
+Ulcerative Colitis, Gastroenterology, 158(5):1450-1461.
+
+Frederix, PW, RV Ulijn, NT Hunt and T Tuttle, 2011, Virtual Screening for Dipeptide
+Aggregation: Toward Predictive Tools for Peptide Self-Assembly, J Phys Chem Lett,
+2(19):2380-2384.
+
+Gaginella, TS, 1994, Clinical Relevance of Basic Research in Peptic Ulcer Disease, J
+Gastroenterol Hepatol, 9 Suppl 1:S99-103.
+
+Gjurasin, M, P Miklic, B Zupancic, D Perovic, K Zarkovic, L Brcic, D Kolenc, B Radic, S
+Seiwerth and P Sikiric, 2010, Peptide Therapy with Pentadecapeptide BPC 157 in Traumatic
+Nerve Injury, Regul Pept, 160(1-3):33-41.
+
+Gwyer, D, NM Wragg and SL Wilson, 2019, Gastric Pentadecapeptide Body Protection
+Compound BPC 157 and Its Role in Accelerating Musculoskeletal Soft Tissue Healing, Cell
+Tissue Res, 377(2):153-159.
+
+He, L, D Feng, H Guo, Y Zhou, Z Li, K Zhang, W Zhang, S Wang, Z Wang and Q Hao, 2022,
+Pharmacokinetics, Distribution, Metabolism, and Excretion of Body-Protective Compound 157,
+a Potential Drug for Treating Various Wounds, in Rats and Dogs, Front Pharmacol, 13:1026182.
+
+Hsieh, M-J, H-T Liu, C-N Wang, H-Y Huang, Y Lin, Y-S Ko, J-S Wang, VH-S Chang and J-HS
+Pang, 2017, Therapeutic Potential of Pro-Angiogenic BPC157 Is Associated with VEGFR2
+Activation and Up-Regulation, J Mol Med, 95(3):323-333.
+
+Huang, T, K Zhang, L Sun, X Xue, C Zhang, Z Shu, N Mu, J Gu, W Zhang, Y Wang, Y Zhang
+and W Zhang, 2015, Body Protective Compound-157 Enhances Alkali-Burn Wound Healing in
+Vivo and Promotes Proliferation, Migration, and Angiogenesis in Vitro, Drug Des Devel Ther,
+9:2485-2499.
+
+Ilic, S, D Drmic, S Franjic, D Kolenc, M Coric, L Brcic, R Klicek, B Radic, M Sever, V Djuzel,
+M Filipovic, Z Djakovic, V Stambolija, AB Blagaic, I Zoricic, M Gjurasin, M Stupnisek, Z
+Romic, K Zarkovic, S Dzidic, S Seiwerth and P Sikiric, 2011, Pentadecapeptide BPC 157 and Its
+Effects on a NSAID Toxicity Model: Diclofenac-Induced Gastrointestinal, Liver, and
+Encephalopathy Lesions, Life Sci, 88(11-12):535-542.
+
+Ilic, S, D Drmic, D Kolenc, M Coric, L Brcic, R Klicek, B Radic, M Sever, V Duzel, M
+Filipovic, M Ivica, AB Blagaic, T Ani, I Zoricic, M Gjurasin, Z Romic, S Dzidic, S Seiwerth and
+P Sikiric, 2010, Diclofenac Encephalopathy, Liver and Gastrointestinal Lesions in Rat and Stable
+Gastric Pentadecapeptide BPC 157, Gastroenterology, 138(5):S369-S369.
+
+
+
+                                                                                              49
+Jelovac, N, P Sikiric, R Rucman, M Petek, D Perovic, P Konjevoda, A Marovic, S Seiwerth, Z
+Grabarevic, J Sumajstorcic, G Dodig and J Peric, 1998, A Novel Pentadecapeptide, BPC 157,
+Blocks the Stereotypy Produced Acutely by Amphetamine and the Development of Haloperidol-
+Induced Supersensitivity to Amphetamine, Biol Psychiatry, 43(7):511-519.
+
+Kayal, M and S Shah, 2020, Ulcerative Colitis: Current and Emerging Treatment Strategies, J
+Clin Med, 9(1):94.
+
+Klicek, R, M Sever, B Radic, D Drmic, I Kocman, I Zoricic, T Vuksic, M Ivica, I Barisic, S Ilic,
+L Berkopic, H Vrcic, L Brcic, AB Blagaic, M Coric, I Brcic, DS Rokotov, T Anic, S Seiwerth
+and P Sikiric, 2008, Pentadecapeptide BPC157, in Clinical Trials as a Therapy for Inflammatory
+Bowel Disease (Pl14736), Is Effective in the Healing of Colocutaneous Fistulas in Rats: Role of
+the Nitric Oxide-System, J Pharmacol Sci, 108(1):7-17.
+
+Ko, CW, S Singh, JD Feuerstein, C Falck-Ytter, Y Falck-Ytter, RK Cross and C American
+Gastroenterological Association Institute Clinical Guidelines, 2019, AGA Clinical Practice
+Guidelines on the Management of Mild-to-Moderate Ulcerative Colitis, Gastroenterology,
+156(3):748-764.
+
+Le Berre, C, S Honap and L Peyrin-Biroulet, 2023, Ulcerative Colitis, Lancet, 402(10401):571-
+584.
+
+Lee, E and K Burgess, 2025, Safety of Intravenous Infusion of BPC157 in Humans: A Pilot
+Study, Altern Ther Health Med, 31(5):20-24.
+
+Lee, E and B Padgett, 2021, Intra-Articular Injection of BPC 157 for Multiple Types of Knee
+Pain, Altern Ther Health Med, 27(4):8-13.
+
+Lee, E, C Walker and B Ayadi, 2024, Effect of BPC-157 on Symptoms in Patients with
+Interstitial Cystitis: A Pilot Study, Altern Ther Health Med, 30(10):12-17.
+
+Loew, BJ and CA Siegel, 2012, Foam Preparations for the Treatment of Ulcerative Colitis, Curr
+Drug Deliv, 9(4):338-344.
+
+Masnec, S, A Kokot, M Zlatar, M Kalauz, K Kunjko, B Radic, R Klicek, D Drmic, R Lazic, L
+Brcic, R Radic, R Ivekovic, S Seiwerth and P Sikiric, 2015, Perforating Corneal Injury in Rat
+and Pentadecapeptide BPC 157, Exp Eye Res, 136:9-15.
+
+Mikus, D, P Sikiric, S Seiwerth, A Petricevic, G Aralica, N Druzijancic, R Rucman, M Petek, B
+Pigac, D Perovic, M Kolombo, N Kokic, S Mikus, B Duplancic, I Fattorini, B Turkovic, I
+Rotkvic, S Mise, I Prkacin, P Konjevoda, N Stambuk and T Anic, 2001, Pentadecapeptide BPC
+157 Cream Improves Burn-Wound Healing and Attenuates Burn-Gastric Lesions in Mice, Burns,
+27(8):817-827.
+
+Ng, SC, HY Shi, N Hamidi, FE Underwood, W Tang, EI Benchimol, R Panaccione, S Ghosh,
+JCY Wu, FKL Chan, JJY Sung and GG Kaplan, 2017, Worldwide Incidence and Prevalence of
+Inflammatory Bowel Disease in the 21st Century: A Systematic Review of Population-Based
+Studies, Lancet, 390(10114):2769-2778.
+
+
+
+                                                                                                50
+Novinscak, T, L Brcic, M Staresinic, I Jukic, B Radic, D Pevec, S Mise, S Tomasovic, I Brcic
+and T Banic, 2008, Gastric Pentadecapeptide BPC157 as an Effective Therapy for Muscle Crush
+Injury in the Rat, Surg Today, 38:716-725.
+
+Ratanji, KD, JP Derrick, RJ Dearman and I Kimber, 2014, Immunogenicity of Therapeutic
+Proteins: Influence of Aggregation, J Immunotoxicol, 11(2):99-109.
+
+Rubin, DT, AN Ananthakrishnan, CA Siegel, EL Barnes, and MD Long, 2025, Acg Clinical
+Guideline Update: Ulcerative Colitis in Adults, Am J Gastroenterol, 120(6):1187-1224.
+
+Ruenzi, M, M Stolte, M Veljaca, K Oreskovic, J Peterson and UCS Group, 2005, A Multicenter,
+Randomized, Double Blind, Placebo-Controlled Phase Ii Study of Pl 14736 Enema in the
+Treatment of Mild-to-Moderate Ulcerative Colitis, Gastroenterology 128:A584.
+
+Santoro, RC, AC Molinari, M Leotta and T Martini, 2023, Isolated Prolongation of Activated
+Partial Thromboplastin Time: Not Just Bleeding Risk!, Medicina, 59(6):1169.
+
+Sebecić, B, V Nikolić, P Sikirić, S Seiwerth, T Sosa, L Patrlj, Z Grabarević, R Rucman, M
+Petek, P Konjevoda, S Jadrijević, D Perović and M Slaj, 1999, Osteogenic Effect of a Gastric
+Pentadecapeptide, BPC-157, on the Healing of Segmental Bone Defect in Rabbits: A
+Comparison with Bone Marrow and Autologous Cortical Bone Implantation, Bone, 24(3):195-
+202.
+
+Seiwerth, S, M Milavic, J Vukojevic, S Gojkovic, I Krezic, LB Vuletic, KH Pavlov, A Petrovic,
+S Sikiric and H Vranes, 2021, Stable Gastric Pentadecapeptide BPC 157 and Wound Healing,
+Front Pharmacol, 12:627533.
+
+Seiwerth, S, P Sikiric, Z Grabarevic, I Zoricic, M Hanzevacki, D Ljubanovic, V Coric, P
+Konjevoda, M Petek, R Rucman, B Turkovic, D Perovic, D Mikus, S Jandrijevic, M
+Medvidovic, T Tadic, B Romac, J Kos, J Peric and Z Kolega, 1997, BPC 157's Effect on
+Healing, J Physiol Paris, 91(3-5):173-178.
+
+Sikiric, P, 1999, The Pharmacological Properties of the Novel Peptide BPC 157 (PL-10),
+Inflammopharmacol, 7(1):1-14.
+
+Sikirić, P, M Petek, R Ručman, S Seiwerth, Z Grabarević, I Rotkvić, B Turković, V Jagić, B
+Mildner and M Duvnjak, 1993a, A New Gastric Juice Peptide, BPC. An Overview of the
+Stomach-Stress-Organoprotection Hypothesis and Beneficial Effects of BPC, J Physiol-Paris,
+87(5):313-327.
+
+Sikiric, P, S Seiwerth, Z Grabarevic, R Rucman, M Petek, V Jagic, B Turkovic, I Rotkvic, S
+Mise and I Zoricic, 1997a, Pentadecapeptide BPC 157 Positively Affects Both Non-Steroidal
+Anti-Inflammatory Agent-Induced Gastrointestinal Lesions and Adjuvant Arthritis in Rats, J
+Physiol-Paris, 91(3-5):113-122.
+
+Sikirić, P, S Seiwerth, Z Grabarević, R Rucman, M Petek, V Jagić, B Turković, I Rotkvić, S
+Mise, I Zoricić, P Konjevoda, D Perović, L Jurina, J Separović, M Hanzevacki, B Artuković, M
+Bratulić, M Tisljar, M Gjurasin, P Miklić, D Stancić-Rokotov, Z Slobodnjak, N Jelovac and A
+
+
+
+                                                                                               51
+Marović, 1997b, The Influence of a Novel Pentadecapeptide, BPC 157, on N(G)-Nitro-L-
+Arginine Methylester and L-Arginine Effects on Stomach Mucosa Integrity and Blood Pressure,
+Eur J Pharmacol, 332(1):23-33.
+
+Sikiric, P, S Seiwerth, Z Grabarevic, R Rucman, M Petek, I Rotkvic, B Turkovic, V Jagic, B
+Mildner and M Duvnjak, 1993b, Hepatoprotective Effect of BPC 157, a 15-Aminoacid Peptide,
+on Liver Lesions Induced by Either Restraint Stress or Bile Duct and Hepatic Artery Ligation or
+CCl4 Administration. A Comparative Study with Dopamine Agonists and Somatostatin, Life Sci,
+53(18):PL291-PL296.
+
+Sikiric, P, S Seiwerth, R Rucman, B Turkovic, D S Rokotov, L Brcic, M Sever, R Klicek, B
+Radic and D Drmic, 2012, Focus on Ulcerative Colitis: Stable Gastric Pentadecapeptide BPC
+157, Curr Med Chem, 19(1):126-132.
+
+Sikiric, P, S Seiwerth, R Rucman, B Turkovic, D Stancic Rokotov, L Brcic, M Sever, R Klicek,
+B Radic and D Drmic, 2011, Stable Gastric Pentadecapeptide BPC 157: Novel Therapy in
+Gastrointestinal Tract, Curr Pharmac Des, 17(16):1612-1632.
+
+Sikiric, P, S Seiwerth, R Rucman, D Kolenc, LB Vuletic, D Drmic, T Grgic, S Strbe, G
+Zukanovic, D Crvenkovic, G Madzarac, I Rukavina, M Sucic, M Baric, N Starcevic, Z
+Krstonijevic, ML Bencic, I Filipcic, DS Rokotov and J Vlainic, 2016, Brain-Gut Axis and
+Pentadecapeptide BPC 157: Theoretical and Practical Implications, Curr Neuropharmacol,
+14(8):857-865.
+
+Singh, S, EV Loftus, Jr., BN Limketkai, JP Haydek, M Agrawal, FI Scott, AN Ananthakrishnan,
+and AGACGCEa clinicalpractice@gastro.org, 2024, Aga Living Clinical Practice Guideline on
+Pharmacological Management of Moderate-to-Severe Ulcerative Colitis, Gastroenterology,
+167(7):1307-1343.
+
+Staresinic, M, B Sebecic, L Patrlj, S Jadrijevic, S Suknaic, D Perovic, G Aralica, N Zarkovic, S
+Borovic and M Srdjak, 2003, Gastric Pentadecapeptide BPC 157 Accelerates Healing of
+Transected Rat Achilles Tendon and in Vitro Stimulates Tendocytes Growth, J Orthop Res,
+21(6):976-983.
+
+Tian, T, J Jing, Y Li, Y Wang, X Deng and Y Shan, 2023, Stable Isotope Labeling-Based
+Nontargeted Strategy for Characterization of the in Vitro Metabolic Profile of a Novel Doping
+BPC-157 in Doping Control by UHPLC-HRMS, Molecules, 28(21).
+
+Tohyama, Y, P Sikiric and M Diksic, 2004, Effects of Pentadecapeptide BPC157 on Regional
+Serotonin Synthesis in the Rat Brain: α-Methyl-L-Tryptophan Autoradiographic Measurements,
+Life Sci, 76(3):345-357.
+
+Tripodi, A, V Chantarangkul, I Martinelli, P Bucciarelli and PM Mannucci, 2004, A Shortened
+Activated Partial Thromboplastin Time Is Associated with the Risk of Venous
+Thromboembolism, Blood, 104(12):3631-3634.
+
+
+
+
+                                                                                                52
+Tudor, M, I Jandric, A Marovic, M Gjurasin, D Perovic, B Radic, AB Blagaic, D Kolenc, L
+Brcic, K Zarkovic, S Seiwerth and P Sikiric, 2010, Traumatic Brain Injury in Mice and
+Pentadecapeptide BPC 157 Effect, Regul Pept, 160(1-3):26-32.
+
+Turkovic, B, P Sikiric, S Seiwerth, R Rucman, M Petek and T Anic, 2003, Gastric
+Pentadecapeptide BPC157, a New Stable Peptide in Clinical Phase II for Inflammatory Bowel
+Disease (Pliva, PL-14736) as Therapy for HSV-1 and HSV-2 Infection, Gastroenterology,
+4(124):A560.
+
+Vasireddi, N, H Hahamyan, MJ Salata, M Karns, JG Calcei, JE Voos and JM Apostolakos, 2025,
+Emerging Use of BPC-157 in Orthopaedic Sports Medicine: A Systematic Review, HSS J,
+21(4):485-495.
+
+Veljaca, M, K Chan and A Guglietta, 1995, Digestion of H-EGF, H-TGF α, and BPC-15 in
+Human Gastric Juice, Pharmacol Res, (31):70.
+
+Veljaca, M, Z Krnic, K Brajsa, B Mildner, D Pavic-Saladojev, D Seveljevic-Jaran, M Kolega, D
+Erceg and Z Krznaric, 2002, The Development of Pl 14736 for Treatment of Inflammatory
+Bowel Disease, IUPHAR-GI Section Symposium, Honolulu, Hawaii, 13–15 July, 2002 O–32.
+
+Veljaca, M, D Pavic Sladoljev, B Mildner, K Brajsa, M Bubenik, S Stipanicic, M Tabak-Slosic,
+L Brnic, M Khan, Z Krznaric, A Bischoff, A Schroeder, W Van Dongen and F Van Schaik,
+2003, Safety, Tolerability and Pharmacokinetics of Pl 14736, a Novel Agent for Treatment of
+Ulcerative Colitis, in Healthy Male Volunteers, Gut 2003;51:A309.
+
+Vukojević, J, M Milavić, D Perović, S Ilić, AZ Čilić, N Đuran, S Štrbe, Z Zoričić, I Filipčić and
+P Brečić, 2022, Pentadecapeptide BPC 157 and the Central Nervous System, Neural Regen Res,
+17(3):482.
+
+Xu, C, L Sun, F Ren, P Huang, Z Tian, J Cui, W Zhang, S Wang, K Zhang and L He, 2020,
+Preclinical Safety Evaluation of Body Protective Compound-157, a Potential Drug for Treating
+Various Wounds, Regul Toxicol Pharmacol, 114:104665.
+
+Zapadka, KL, FJ Becher, AL Gomes Dos Santos and SE Jackson, 2017, Factors Affecting the
+Physical Stability (Aggregation) of Peptide Therapeutics, Interface Focus, 7(6):20170030.
+
+
+
+
+                                                                                                53
+V. APPENDIX
+
+APPENDIX 1:           PREVIOUS HUMAN EXPERIENCE WITH BPC-157.
+
+Reference    Study type                      Subjects (N)                  BPC-157 treatment                   Safety findings
+
+Veljaca et   Placebo-controlled phase 1      Healthy subjects (N=32        BPC-157 0.25, 0.5, 1, and 2         "Physical examination,
+al. 2002;    tolerability and PK study       randomized; N=24 received     mg/kg or placebo enema. Each        observation of clinical signs as
+Veljaca                                      BPC-157)                      dose group consisted of 6           well as laboratory testing have
+2003         (meeting abstracts)                                           subjects treated with BPC-157       revealed no significant adverse
+                                                                           and 2 subjects treated with         events that could be attributed
+                                                                           placebo. Each subject received a    to single and repeated seven-
+                                                                           single dose followed by a one-      day treatment with PL 14736."
+                                                                           week washout period and an
+                                                                           additional seven doses, once        “The most frequently reported
+                                                                           daily for seven days.               adverse events, headache and
+                                                                                                               flatulence, occurred with no
+                                                                                                               obvious difference in
+                                                                                                               frequency or severity after PL
+                                                                                                               14736 and placebo dosing.”
+
+Ruenzi et    Multicenter, randomized,        Subjects with mild to         Randomized in a 1:1 ratio to        "PL 14736 was very well
+al. 2005     double-blind, placebo-          moderate UC (N=53             receive BPC-157 enema 80 mg         tolerated and safe. There was
+             controlled study                randomized; 46 completed      or placebo once daily x 2 weeks.    no difference in the frequency
+                                             study)                                                            or type of adverse events in
+             (meeting abstract)                                                                                comparison with placebo."
+
+Lee and      Retrospective chart review at   Subjects with knee pain       Intra-articular injection of BPC-   “This peptide was well
+Padgett      the Institute for Hormonal      (N=17 identified; 16          157* alone or combined with         tolerated with no adverse
+2021         Balance in Orlando, FL          contacted by investigators)   thymosin-beta-4 (TB4). Dose of      events noted.”
+                                                                           BPC-157 ranged from 2-4 mg
+                                                                           (1-2 doses).
+
+
+
+
+                                                                                                                                             54
+ Reference     Study type                       Subjects (N)                     BPC-157 treatment                    Safety findings
+
+ Lee et al.    Single arm study at UroGyn       Subjects with moderate to        Intravesical injections of 1 mg      “No one dropped out of the
+ 2024          Specialists of Florida clinic    severe interstitial cystitis     BPC-157** placed in 10 spots         study, and no adverse events
+                                                (N=12 women)                     (total of 10 mg) in the              were reported”
+                                                                                 uroepithelium of the bladder
+                                                                                 wall.                                “None of the participants
+                                                                                                                      experienced symptoms of
+                                                                                                                      fever, skin rash, nausea or
+                                                                                                                      vomiting, irritative urinary
+                                                                                                                      symptoms (urgency or
+                                                                                                                      frequency), or dyspareunia.
+                                                                                                                      No postprocedural
+                                                                                                                      complications of hematuria or
+                                                                                                                      acute cystitis were reported.”
+
+ Lee and       Single arm study at the          “Healthy” subjects (N=2)         Day 1: BPC-157** 10 mg IV            No AEs reported (subjects
+ Burgess       Institute for Hormonal                                            infused over 1 hour.                 asked about AEs at visits/day
+ 2025          Balance in Florida                                                                                     1, 2, and 3).
+                                                                                 Day 2: BPC-157** 20 mg IV
+                                                                                 infused over 1 hour.                 Authors did not report any
+                                                                                                                      clinically significant changes
+                                                                                                                      in vital signs (BP or HR) or
+                                                                                                                      laboratory values (CMP, CBC,
+                                                                                                                      CPK with isozymes, BNP,
+                                                                                                                      TSH, RBC magnesium, CRP).
+
+*BPC-157 was compounded by Tailor Made Compounding in Nicholasville, KY.
+**BPC-157 was compounded by 503A compounding pharmacy in the United States that did not wish to disclose its name.
+Abbreviations: BNP = B-type natriuretic peptide; BP = blood pressure; CBC = complete blood count; CMP = comprehensive metabolic panel; CPK (creatinine
+phosphokinase); CRP = C-reactive protein; HR = heart rate; PK = pharmacokinetic; RBC = red blood cell; TSH = thyroid stimulating hormone.
+
+
+
+
+                                                                                                                                                         55
+ BPC-157 – Related Bulk
+Drug Substances (BPC-157
+ (free base) and BPC-157

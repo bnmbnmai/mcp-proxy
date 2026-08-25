@@ -1,0 +1,427 @@
+                                                                                                                     RECEIVED CFTC
+
+
+
+
+                                                                                                                     Office of Proceedings
+                                                                                                                       Proceedings Clerk
+                                                                                                                    2:58 pm, Sep 04, 2025
+
+
+
+                             UNITED STATES OF AMERICA
+                                      Before the
+                        COMMODITY FUTURES TRADING COMMISSION
+
+
+
+                                                       )
+    In the Matter of:                                  )
+                                                       )
+        Citigroup Global Markets Inc.,                 )
+                                                       )     CFTC Docket No. 25-02
+                              Respondent.              )
+                                                       )
+                                                       )
+
+               ORDER INSTITUTING PROCEEDINGS PURSUANT TO
+        SECTION 6(c) AND (d) OF THE COMMODITY EXCHANGE ACT, MAKING
+                FINDINGS, AND IMPOSING REMEDIAL SANCTIONS
+
+                                           I.       INTRODUCTION
+
+        The Commodity Futures Trading Commission (“Commission”) has reason to believe that
+from at least 2015 through 2023 (“Relevant Period”), Citigroup Global Markets Inc. (“Citi” or
+“Respondent”) violated Section 4g(a) of the Commodity Exchange Act (the “Act”), 7 U.S.C. §
+6g(a), and Commission Regulations (“Regulations”) 1.31(c), 17.00(a)(1), and 166.3, 17 C.F.R.
+§§ 1.31(c), 17.00(a)(1), 166.3. Therefore, the Commission deems it appropriate and in the public
+interest that public administrative proceedings be, and hereby are, instituted to determine
+whether Respondent engaged in the violations set forth herein and to determine whether any
+order should be issued imposing remedial sanctions.
+
+        In anticipation of the institution of an administrative proceeding, Respondent has
+submitted an Offer of Settlement (“Offer”) that the Commission has determined to accept.
+Without admitting or denying any of the findings or conclusions herein, Respondent consents to
+the entry of this Order Instituting Proceedings Pursuant to Section 6(c) and (d) of the Commodity
+Exchange Act (“Act”), Making Findings, and Imposing Remedial Sanctions (“Order”), and
+acknowledges service of this Order. 1
+
+
+
+
+1
+  Respondent consents to the use of the findings of fact and conclusions of law in this Order in this proceeding and
+in any other proceeding brought by the Commission or to which the Commission is a party or claimant and agrees
+that they shall be taken as true and correct and given preclusive effect therein, without further proof. Respondent
+does not consent, however, to the use of this Order, or the findings or conclusions herein, as the sole basis for any
+other proceeding brought by the Commission or to which the Commission is a party or claimant, other than: a
+proceeding in bankruptcy or receivership; or a proceeding to enforce the terms of this Order. Respondent does not
+consent to the use of the Offer or this Order, or the findings or conclusions in this Order, by any other party in any
+other proceeding.
+                                             II.     FINDINGS
+
+The Commission finds the following:
+
+A.        SUMMARY
+
+        From at least 2015 to May 2023, certain Citi actions violated the Act and the Regulations.
+Specifically, Citi failed to file accurate large trader reports, in violation of Section 4g(a) of the
+Act, 7 U.S.C. § 6g(a), and Regulation 17.00(a)(1), 17 C.F.R. § 17.00(a)(1), during almost this
+entire period. Citi also failed to maintain reliable regulatory records regarding a ten-week period
+in 2023, in violation of Regulation 1.31(c), 17 C.F.R. § 1.31(c). Based on these failures, as well
+as 2022 supervision-related issues concerning Citi’s daily excess net capital reporting, Citi did
+not sufficiently supervise its business as a Commission registrant, in violation of Regulation
+166.3, 17 C.F.R. § 166.3.
+
+        In accepting Citi’s Offer, the Commission recognizes Citi’s exemplary self-reports and
+exemplary cooperation. The Commission’s recognition is reflected in a reduced penalty, with
+Citi receiving the maximum mitigation credit toward the full monetary penalty appropriate for
+these violations.
+
+B.        RESPONDENT
+
+      Citigroup Global Markets Inc. is a company with its principal place of business in New
+York City. Citigroup Global Markets Inc. is registered with the Commission as a Futures
+Commission Merchant (“FCM”) and as a swap dealer.
+
+C.        FACTS
+
+     1.   Due to a System Design Error, Citi Filed Inaccurate Large Trader Reports.
+
+       FCMs are required to submit large trader reports for each business day with respect to
+accounts with reportable trading positions. The report must show “each futures position,
+separately for each reporting market and each future.” 17 C.F.R. § 17.00(a)(1). Regulation
+§ 17.00(b), 17 C.F.R. § 17.00(b), establishes rules for reporting with respect to multiple accounts
+under common control or ownership. Regulation § 17.00(d), 17 C.F.R. § 17.00(d), requires
+FCMs to report net long or short position in each futures contract, except in certain enumerated
+cases.
+
+        From at least 2015 to the fall of 2022, the system Citi used to generate its large trader
+reports was affected by a programming logic error that caused netting issues with regard to
+accounts under common control or ownership. Citi did not identify this issue until September
+2022, and, as a result, on over 1000 business days, Citi submitted inaccurate large trader reports
+to the Commission until Citi completed remediation of the issue in November 2022. 2
+
+
+
+2
+ Citi paid a total of approximately $2.6 million in combined penalties to CME, ICE Futures US, and ICE Europe in
+connection with this programming logic issue.
+
+                                                       2
+       2.   Due to Systems Failure, Citi Failed to Maintain Reliable Regulatory Records.
+
+         On March 13, 2023, the system that Citi used to record certain futures transactions, which
+Citi licensed from a third-party vendor, reached its maximum capacity largely as a result of an
+excessive volume of orders submitted by one client. The system’s auto-expander feature, which
+was designed and tested to facilitate excessive volume, failed to deploy. When the issue was
+resolved later that day, Citi learned that certain data had been corrupted. As a result, for a period
+of approximately ten weeks, Citi failed to maintain reliable regulatory records as required under
+Regulation § 1.31(c), 17 C.F.R. § 1.31(c). 3 Additionally, as a result of this systems failure, Citi
+failed to submit accurate large trader reports for approximately 50 business days. Citi
+maintained adequate regulatory net capital and residual interest in its segregated accounts
+throughout this period.
+
+       3.   Citi Failed to Establish and Maintain an Adequate Supervisory System.
+
+        In aggregate, Citi failed to maintain an adequate supervisory system, including by failing
+to have controls or processes to identify and prevent a programming logic error that led to
+incorrect large trader reporting, and, with regard to the March 13 incident, by failing to have a
+data corruption recovery process and the ability to rebuild transaction files expediently. In
+addition to these failures, in November 2022, three former Citi employees became aware that
+Citi’s daily excess net capital had decreased to a level that required Citi to make a regulatory
+notification to the Commission, notwithstanding that Citi remained adequately capitalized at all
+times. 4 Rather than make the notification, these employees took steps to conceal the fact that the
+notification was required and, as a result, Citi failed to notify the Commission as required.
+Although these employees took steps to conceal their conduct from Citi, Citi’s lack of adequate
+supervisory controls was a contributing factor to the lack of notification to the Commission.
+
+       4.   Citi’s Exemplary Self-Reporting and Cooperation.
+
+         Citi notified the Commission of the potential violations, provided all material information
+reasonably related to the potential violations known to it at the time of the self-reports, and
+provided additional information that assisted the Division of Enforcement with conserving
+resources in its investigation. Specifically, with respect to the programming logic error that
+impacted it large trader reporting, in September 2022, very shortly after it learned of the issue’s
+existence, Citi self-reported the violation to the Division of Clearing and Risk and provided
+updated information as it discovered additional facts. With respect to the March 13, 2023 data
+corruption incident, Citi notified the Market Participants Division shortly after discovering that
+its customer-trade-booking data was corrupted. With respect to certain employees’ concealment
+of the regulatory reporting event described above, Citi provided a thorough accounting of the
+incident to Division of Enforcement staff after completing an internal investigation into the issue.
+With regard to these issues, Citi’s self-reporting provided material information that assisted the
+staff’s investigation.
+
+
+
+3
+    Citi paid a $280,000 fine to CME in connection with this issue.
+4
+    Excess net capital is the amount of capital in excess of the regulatory required amount.
+
+                                                             3
+        With regard to all the issues referenced above, Citi has significantly completed its
+remediation. Citi promptly corrected the programing logic error that affected its large trader
+reports. With respect to the data corruption incident, Citi devoted substantial resources to a data
+corruption recovery process, including systems recovery as well as manual actions to resolve
+position and cash breaks. Citi also increased the storage capacity of its product processor for
+futures transactions, enhanced the daily monitoring of that system, formalized a data corruption
+recovery process, and devoted significant resources to a pre-existing project to replace its current
+system with an upgraded product processor. Citi remediated the regulatory-reporting notification
+issue by taking appropriate disciplinary actions, including by terminating the one employee that
+was still active at the time the internal investigation concluded, and is further enhancing relevant
+supervisory controls. Furthermore, Citi provided substantial assistance to the Division of
+Enforcement throughout its investigation of these issues, including by providing numerous
+substantive presentations to Division staff, saving significant Division resources.
+
+                                 III.    LEGAL DISCUSSION
+
+A.     Respondent Violated Section 4g(a) of the Act and Regulation 17.00(a)(1) by
+       Submitting Inaccurate Large Trader Reports.
+
+       Section 4g(a) of the Act requires FCMs to provide large trader reports to the Commission
+and provides, in pertinent part:
+
+       Every person registered ... as a futures commission merchant ... shall make such
+       reports as are required by the Commission regarding the transactions and positions
+       of such person, and the transactions and positions of the customer thereof, in
+       commodities for future delivery on any board of trade in the United States or
+       elsewhere, and in any significant price discovery contract traded or executed on an
+       electronic trading facility or any agreement, contract, or transaction that is treated
+       by a derivatives clearing organization, whether registered or not registered, as
+       fungible with a significant price discovery contract. ...
+
+7 U.S.C. § 6g(a). Reports made to the Commission pursuant to Section 4g(a) must be accurate.
+See In re Bielfeldt, CFTC No. 96-1, 1999 WL 68636, at *8 (Feb. 12, 1999).
+
+        Promulgated under the authority conferred by Section 4g(a) of the Act, Regulation
+17.00(a)(1) requires each FCM to submit a daily report to the Commission for all “special
+accounts” carried by the FCM. 17 C.F.R. § 17.00(a)(l). In doing so, Regulation 17.00(d) requires
+FCMs, except in certain enumerated cases, to report a client’s “net” long or short position in each
+futures contract. 17 C.F.R. § 17.00(d).
+
+        Due to a programming logic issue that affected Citi’s ability to properly net its
+customers’ positions, Citi reported inaccurate large trader reports to the Commission for a period
+of years. Additionally, due to failure of a system Citi licensed from a third-party vendor, Citi
+submitted inaccurate large trader reports for a period of ten weeks in 2023. Thus, Citi violated
+Section 4g(a) of the Act and Regulation 17.00(a)(1).
+
+
+
+
+                                                 4
+B.     Respondent Failed to Maintain Reliable Regulatory Records in Violation of
+       Regulation 1.31(c).
+
+        Regulation 1.31(c), 17 C.F.R. § 1.31(c), requires that registrants keep all books and
+records that are required to be maintained under the Act and Regulations in such manner as to
+ensure their authenticity and reliability. As a result of a data corruption issue resulting from the
+failure of a system that Citi licensed from a third-party vendor, Citi was unable to maintain
+reliable books and records with regard to certain customer transactions for a period of
+approximately ten weeks in 2023. Thus, Citi violated Regulation 1.31(c).
+
+C.     Respondent Failed to Create an Adequate Supervisory System in Violation of
+       Regulation 166.3.
+
+         Regulation 166.3, 17 C.F.R. § 166.3 (2023), imposes on every Commission registrant
+(except associated persons who have no supervisory duties) an affirmative duty to “diligently
+supervise the handling by its partners, officers, employees and agents [. . .] of all commodity
+interest accounts carried, operated, advised or introduced by the registrant and all other activities
+of its partners, officers, employees and agents [. . .] relating to its business as a Commission
+registrant.”
+
+        For a registrant to fulfill its duties under Regulation 166.3, it must both design an
+adequate program of supervision and ensure that the program is followed. See In re GNP
+Commodities, Inc., CFTC No. 89-1 1992 WL 201158, at *17-19 (Aug. 11, 1992) (providing that,
+even if an adequate supervisory system is in place, Regulation 166.3 can still be violated if the
+supervisory system is not diligently administered). As a result, a violation of Regulation 166.3
+“is demonstrated by showing either that: (1) the registrant’s supervisory system was generally
+inadequate; or (2) the registrant failed to perform its supervisory duties diligently.” In re
+FCStone, LLC, CFTC No. 15-21, 2015 WL 2066891, at *3 (May 1, 2015) (consent order) (citing
+In re Murlas Commodities, Inc., CFTC No. 85-29, 1995 WL 523563, at *9 (Sept. 1, 1995)).
+
+       As set forth above, Respondent violated Rule 166.3 by failing to have adequate
+supervisory controls to detect and prevent the regulatory reporting and recordkeeping issues
+described above.
+
+                             IV.     FINDINGS OF VIOLATIONS
+
+       Based on the foregoing, the Commission finds that, during the Relevant Period,
+Respondent violated Section 4g(a) of the Act, 7 U.S.C. § 6g(a), and Regulations 1.31(c),
+17.00(a)(1), and 166.3, 17 C.F.R. §§ 1.31(c), 17.00(a)(1), 166.3.
+
+                               V.     OFFER OF SETTLEMENT
+
+       Respondent has submitted the Offer in which it knowingly and voluntarily, without
+admitting or denying the findings and conclusions herein:
+
+A.     Consents to the resolution of this matter in an administrative proceeding;
+
+B.     Acknowledges service of this Order;
+
+                                                  5
+C.   Admits the jurisdiction of the Commission with respect to all matters set forth in this
+     Order and for any action or proceeding brought or authorized by the Commission based
+     on violation of or enforcement of this Order;
+
+D.   Waives:
+
+     1.     The filing and service of a complaint and notice of hearing;
+
+     2.     A hearing;
+
+     3.     All post-hearing procedures;
+
+     4.     Any and all rights or defenses Respondent has or might have for the matter to be
+            adjudicated in a federal district court in the first instance, including any associated
+            right to a jury trial;
+
+     5.     Judicial review by any court;
+
+     6.     Any and all objections to the participation by any member of the Commission’s
+            staff in the Commission’s consideration of the Offer;
+
+     7.     Any and all claims that Respondent may possess under the Equal Access to
+            Justice Act, 5 U.S.C. § 504, and 28 U.S.C. § 2412, and/or the rules promulgated
+            by the Commission in conformity therewith, Part 148 of the Regulations, 17
+            C.F.R. pt. 148 (2025), relating to, or arising from, this proceeding;
+
+     8.     Any and all claims that Respondent may possess under the Small Business
+            Regulatory Enforcement Fairness Act of 1996, Pub. L. No. 104-121, tit. II, §§
+            201–253, 110 Stat. 847, 857–74 (codified as amended at 28 U.S.C. § 2412 and in
+            scattered sections of 5 U.S.C. and 15 U.S.C.), relating to, or arising from, this
+            proceeding; and
+
+     9.     Any claims of Double Jeopardy based on the institution of this proceeding or the
+            entry in this proceeding of any order imposing a civil monetary penalty or any
+            other relief, including this Order;
+
+E.   Agrees that Respondent is not the prevailing party in this action for purposes of the
+     waiver of any and all rights under the Equal Access to Justice Act specified in Paragraph
+     D.7. above;
+
+F.   Stipulates that the record basis on which this Order is entered shall consist solely of the
+     findings contained in this Order to which Respondent has consented in the Offer; and
+
+G.   Consents, solely on the basis of the Offer, to the Commission’s entry of this Order that:
+
+     1.     Makes findings by the Commission that Respondent violated Regulations 1.31(c),
+            17.00(a)(1), and 166.3, 17 C.F.R. §§ 1.31(c), 17.00(a)(1), 166.3;
+
+
+                                               6
+     2.     Orders Respondent to cease and desist from violating Regulations 1.31(c),
+            17.00(a)(1), and 166.3, 17 C.F.R. §§ 1.31(c), 17.00(a)(1), 166.3;
+
+     3.     Orders Respondent to pay a civil monetary penalty in the amount of one million
+            five hundred thousand dollars ($1,500,000), plus post-judgment interest; and
+
+     4.     Orders Respondent and its successors and assigns to comply with the conditions
+            and undertakings consented to in the Offer and as set forth in Part VI of this
+            Order.
+
+     Upon consideration, the Commission has determined to accept the Offer.
+
+                                      VI.     ORDER
+
+Accordingly, IT IS HEREBY ORDERED THAT:
+
+A.   Respondent and its successors and assigns shall cease and desist from violating Section
+     4g(a) of the Act, 7 U.S.C. § 6g(a), and Regulations 1.31(c), 17.00(a)(1), and 166.3, 17
+     C.F.R. §§ 1.31(c), 17.00(a)(1), 166.3.
+
+B.   Respondent shall pay a civil monetary penalty in the amount of one million five hundred
+     thousand dollars ($1,500,000) (“CMP Obligation”), within fourteen (14) days of the date
+     of the entry of this Order. If the CMP Obligation is not paid in full within fourteen (14)
+     days of the date of entry of this Order, then post-judgment interest shall accrue on the
+     unpaid portion of the CMP Obligation beginning on the date of entry of this Order and
+     shall be determined by using the Treasury Bill rate prevailing on the date of entry of this
+     Order pursuant to 28 U.S.C. § 1961.
+
+     Respondent shall pay the CMP Obligation and any post-judgment interest by electronic
+     funds transfer, U.S. postal money order, certified check, bank cashier’s check, or bank
+     money order. If payment is to be made other than by electronic funds transfer, then the
+     payment shall be made payable to the Commodity Futures Trading Commission and sent
+     to the address below:
+
+            MMAC/ESC/AMK326
+            Commodity Futures Trading Commission
+            6500 S. MacArthur Blvd.
+            HQ Room 266
+            Oklahoma City, OK 73169
+            9-amz-ar-cftc@faa.gov
+
+     If payment is to be made by electronic funds transfer, Respondent shall contact the
+     Federal Aviation Administration at the above email address to receive payment
+     instructions and shall fully comply with those instructions. Respondent shall accompany
+     payment of the CMP Obligation with a cover letter that identifies the paying Respondent
+     and the name and docket number of this proceeding. The paying Respondent shall
+     simultaneously transmit copies of the cover letter and the form of payment to the Chief
+
+
+                                              7
+     Financial Officer, Commodity Futures Trading Commission, Three Lafayette Centre,
+     1155 21st Street, NW, Washington, D.C. 20581.
+
+C.   Respondent and its successors and assigns shall comply with the following conditions
+     and undertakings set forth in the Offer:
+
+     1.     Public Statements: Respondent agrees that neither it nor any of its successors and
+            assigns, agents or employees under its authority or control shall take any action or
+            make any public statement denying, directly or indirectly, any findings or
+            conclusions in this Order or creating or tending to create the impression that this
+            Order is without a factual basis; provided, however, that nothing in this provision
+            shall affect Respondent’s: (i) testimonial obligations, or (ii) right to take legal
+            positions in other proceedings to which the Commission is not a party.
+            Respondent and its successors and assigns shall comply with this agreement, and
+            shall undertake all steps necessary to ensure that all of its agents and/or
+            employees under its authority or control understand and comply with this
+            agreement.
+
+     2.     Partial Satisfaction: Respondent understands and agrees that any acceptance by
+            the Commission of any partial payment of Respondent’s CMP Obligation shall
+            not be deemed a waiver of its obligation to make further payments pursuant to the
+            Order, or a waiver of the Commission’s right to seek to compel payment of any
+            remaining balance.
+
+     3.     Change of Address/Phone: Until such time as Respondent satisfies in full its CMP
+            Obligation as set forth in this Order, Respondent shall provide written notice to
+            the Commission by certified mail of any change to its telephone number and
+            mailing address within ten calendar days of the change.
+
+     4.     Notice to Creditors: Until such time as Respondent satisfies in full its CMP
+            Obligation, upon the commencement by or against Respondent of insolvency,
+            receivership or bankruptcy proceedings or any other proceedings for the
+            settlement of Respondent’s debts, all notices to creditors required to be furnished
+            to the Commission under Title 11 of the United States Code or other applicable
+            law with respect to such insolvency, receivership bankruptcy or other
+            proceedings, shall be sent to the address below:
+
+                   Secretary of the Commission
+                   Office of the General Counsels
+                   Commodity Futures Trading Commission
+                   Three Lafayette Centre 1155 21st Street N.W.
+                   Washington, D.C. 20581
+
+
+
+
+                                             8
+The provisions of this Order shall be effective as of this date.
+
+By the Commission.
+
+
+
+_________________________________
+Robert N. Sidman
+Deputy Secretary of the Commission
+Commodity Futures Trading Commission
+
+Dated: September 4, 2025
+
+
+
+
+                                               9
+

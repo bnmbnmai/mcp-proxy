@@ -1,0 +1,1041 @@
+Date: 18 August 2026
+Swissmedic, Swiss Agency for Therapeutic Products
+
+
+
+
+Swiss Public Assessment Report
+
+mNEXSPIKE
+
+
+
+International non-proprietary name: SARS-CoV-2 XBB.1.5 mRNA
+Pharmaceutical form:                                      dispersion for injection
+Dosage strength(s):                                       1 dose (0.2 mL) contains 10
+                                                          micrograms of SARS-CoV-2 mRNA
+Route(s) of administration:                               intramuscular injection
+Marketing authorisation holder:                           Moderna Switzerland GmbH
+Marketing authorisation no.:                              70272
+Decision and decision date:                               approved on 03.08.2026
+
+
+
+
+Note:
+This assessment report is as adopted by Swissmedic with all information of a commercially
+confidential nature deleted.
+
+SwissPARs are final documents that provide information on submissions at a particular point in time.
+They are not updated after publication.
+
+
+
+
+    Swissmedic | Hallerstrasse 7 | 3012 Bern | www.swissmedic.ch | Tel. +41 58 462 02 11 | anfragen@swissmedic.ch
+Table of contents
+1            Terms, Definitions, Abbreviations ..................................................................................... 3
+2            Background information on the procedure ...................................................................... 4
+2.1          Applicant’s request(s) and information regarding procedure................................................. 4
+2.2          Indication and dosage ........................................................................................................... 4
+2.2.1        Requested indication ............................................................................................................. 4
+2.2.2        Approved indication ............................................................................................................... 4
+2.2.3        Requested dosage ................................................................................................................ 4
+2.2.4        Approved dosage .................................................................................................................. 4
+2.3          Regulatory history (milestones) ............................................................................................. 4
+3            Quality aspects .................................................................................................................... 6
+4            Nonclinical aspects ............................................................................................................. 6
+5            Clinical aspects ................................................................................................................... 6
+6            Risk management plan summary ...................................................................................... 7
+7            Appendix .............................................................................................................................. 8
+
+
+
+
+ZL000_10_033_VL - Vorlage | 9.0 | 15.07.2026                                                                                                     2/8
+1            Terms, Definitions, Abbreviations
+
+ADA               Anti-drug antibody
+ADME              Absorption, distribution, metabolism, elimination
+AE                Adverse event
+ALT               Alanine aminotransferase
+API               Active pharmaceutical ingredient
+AST               Aspartate aminotransferase
+ATC               Anatomical Therapeutic Chemical Classification System
+AUC               Area under the plasma concentration-time curve
+AUC0-24h          Area under the plasma concentration-time curve for the 24-hour dosing interval
+CI                Confidence interval
+Cmax              Maximum observed plasma/serum concentration of drug
+CYP               Cytochrome P450
+DDI               Drug-drug interaction
+EMA               European Medicines Agency
+ERA               Environmental risk assessment
+FDA               Food and Drug Administration (USA)
+GI                Gastrointestinal
+GLP               Good Laboratory Practice
+HPLC              High-performance liquid chromatography
+IC/EC50           Half-maximal inhibitory/effective concentration
+ICH               International Council for Harmonisation
+Ig                Immunoglobulin
+INN               International non-proprietary name
+ITT               Intention-to-treat
+LoQ               List of Questions
+MAH               Marketing authorisation holder
+Max               Maximum
+Min               Minimum
+MRHD              Maximum recommended human dose
+N/A               Not applicable
+NO(A)EL           No observed (adverse) effect level
+PBPK              Physiology-based pharmacokinetics
+PD                Pharmacodynamics
+PIP               Paediatric investigation plan (EMA)
+PK                Pharmacokinetics
+PopPK             Population pharmacokinetics
+PSP               Pediatric study plan (US FDA)
+RMP               Risk management plan
+SAE               Serious adverse event
+SwissPAR          Swiss Public Assessment Report
+TEAE              Treatment-emergent adverse event
+TPA               Federal Act of 15 December 2000 on Medicinal Products and Medical Devices (SR
+                  812.21)
+TPO               Ordinance of 21 September 2018 on Therapeutic Products (SR 812.212.21)
+
+
+
+
+ZL000_10_033_VL - Vorlage | 9.0 | 15.07.2026                                                       3/8
+2              Background information on the procedure
+
+2.1            Applicant’s request(s) and information regarding procedure
+
+New active substance status
+The applicant requested new active substance status for SARS-CoV-2 XBB.1.5 mRNA in the above-
+mentioned medicinal product.
+
+Authorisation as human medicinal product in accordance with Article 13 TPA
+The applicant requested a reduced assessment procedure in accordance with Article 13 TPA.
+
+
+2.2            Indication and dosage
+
+2.2.1          Requested indication
+
+mNEXSPIKE is indicated for active immunisation to prevent COVID-19 caused by SARS-CoV-2 in
+individuals 12 years of age and older.
+The use of this vaccine should be in accordance with official recommendations.
+
+
+2.2.2          Approved indication
+
+mNEXSPIKE is indicated for active immunisation to prevent COVID-19 caused by SARS-CoV-2 in
+individuals 12 years of age and older.
+The use of this vaccine should be in accordance with official recommendations.
+
+
+2.2.3          Requested dosage
+
+Summary of the requested standard dosage:
+The recommended dose of mNEXSPIKE is one single dose of 0.2 mL of the vaccine (10 µg SARS-
+CoV-2 mRNA).
+
+
+2.2.4          Approved dosage
+
+(see appendix)
+
+
+2.3            Regulatory history (milestones)
+
+ Application                                     25 February 2026
+ Formal control completed                        25 February 2026
+ List of Questions (LoQ)                         5 June 2026
+ Response to LoQ                                 9 June 2026
+ Preliminary decision                            25 June 2026
+ Response to preliminary decision                2 July 2026
+ Final decision                                  3 August 2026
+ Decision                                        approval
+
+
+ZL000_10_033_VL - Vorlage | 9.0 | 15.07.2026                                                 4/8
+Based on Art. 13 TPA Swissmedic has not assessed the primary data (e.g. study reports) submitted
+with this application and relies for its decision on the assessment of the foreign reference authority,
+the EMA. This SwissPAR relates to the assessment report mNEXSPIKE, EMEA/H/C/006428
+(EMA/6890/2026, 04.03.2026) issued by the EMA.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 9.0 | 15.07.2026                                                          5/8
+3            Quality aspects
+
+Swissmedic has not assessed the primary data relating to quality aspects submitted with this
+application and relies on the assessment of the foreign reference authority, the EMA (mNEXSPIKE,
+EMEA/H/C/006428 (EMA/6890/2026, 04.03.2026) issued by the EMA) (see section 2.3 Regulatory
+history (milestones)).
+
+
+4            Nonclinical aspects
+
+Swissmedic has not assessed the primary data relating to nonclinical aspects submitted with this
+application and relies on the assessment of the foreign reference authority, the EMA (mNEXSPIKE,
+EMEA/H/C/006428 (EMA/6890/2026, 04.03.2026) issued by the EMA) (see section 2.3 Regulatory
+history (milestones)).
+
+
+5            Clinical aspects
+
+Swissmedic has not assessed the primary data relating to clinical (pharmacology) aspects submitted
+with this application and relies on the assessment of the foreign reference authority, the EMA
+(mNEXSPIKE, EMEA/H/C/006428 (EMA/6890/2026, 04.03.2026) issued by the EMA) (see section
+2.3 Regulatory history (milestones)).
+
+For further information regarding clinical and clinical pharmacology aspects, please refer to the
+attached Information for healthcare professionals.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 9.0 | 15.07.2026                                                        6/8
+6            Risk management plan summary
+
+The RMP summaries contain information on the medicinal products′ safety profiles and explain the
+measures that are taken to further investigate and monitor the risks, as well as to prevent or minimise
+them.
+The RMP summaries are published separately on the Swissmedic website. It is the responsibility of
+the marketing authorisation holder to ensure that the content of the published RMP summaries is
+accurate and correct. As the RMPs are international documents, their summaries might differ from the
+content in the Information for healthcare professionals / product information approved and published
+in Switzerland, e.g. by mentioning risks that occur in populations or indications not included in the
+Swiss authorisations.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 9.0 | 15.07.2026                                                        7/8
+7            Appendix
+
+Approved Information for healthcare professionals
+Please be aware that the following version of the Information for healthcare professionals for
+mNEXSPIKE was approved with the submission described in the SwissPAR. This Information for
+healthcare professionals may have been updated since the SwissPAR was published.
+
+Please note that the valid and relevant reference document for the effective and safe use of medicinal
+products in Switzerland is the Information for healthcare professionals currently authorised by
+Swissmedic (see www.swissmedicinfo-pro.ch).
+
+Note:
+The following Information for healthcare professionals has been translated by the MAH. It is the
+responsibility of the authorisation holder to ensure the translation is correct. The only binding and
+legally valid text is the Information for healthcare professionals approved in one of the official Swiss
+languages.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 9.0 | 15.07.2026                                                           8/8
+mNEXSPIKE
+Information for Professionals
+
+
+
+
+    This medicinal product is subject to additional monitoring. This will allow quick identification of new
+safety information. Healthcare professionals are asked to report any suspected new or serious
+adverse reactions. See the "Undesirable effects" section for advice on the reporting of adverse
+reactions. The following product information will be regularly updated as soon as new data and safety
+reports are available.
+
+mNEXSPIKE dispersion for injection in pre-filled syringe
+COVID-19 mRNA Vaccine
+
+Composition
+
+Active substances
+
+SARS-CoV-2 mRNA is a single-stranded, 5’-capped messenger RNA (mRNA) produced using a cell-
+free in vitro transcription from the corresponding DNA template, encoding the N-terminal domain and
+receptor-binding domain of the viral spike (S) protein of SARS-CoV-2 (XBB.1.5). The mRNA is
+embedded in lipid nanoparticles.
+Excipients
+
+Heptadecan-9-yl 8-{(2-hydroxyethyl)[6-oxo-6-(undecyloxy)hexyl]amino}octanoate (SM-102),
+cholesterol, 1,2-distearoyl-sn-glycero-3-phosphocholine (DSPC), 1,2-dimyristoyl-rac-glycero-3-
+methoxypolyethylene glycol-2000 (PEG2000-DMG), trometamol, trometamol hydrochloride, sucrose,
+water for injections.
+Pharmaceutical form and active substance quantity per unit
+
+Dispersion for injection in pre-filled syringe
+White to off white dispersion (pH: 7.1 – 7.8).
+
+Each single-dose pre-filled syringe contains 0.2 mL.
+
+One dose (0.2 mL) contains 10 µg of SARS-CoV-2 mRNA.
+
+Indications/Uses
+
+mNEXSPIKE is indicated for active immunisation to prevent COVID-19 caused by SARS-CoV-2 in
+individuals 12 years of age and older.
+
+The use of this vaccine should be in accordance with official recommendations.
+Dosage/Administration
+
+This medicinal product should be administered by a trained healthcare professional using aseptic
+techniques to ensure sterility.
+
+Posology
+
+The recommended dose of mNEXSPIKE is one single dose of 0.2 mL of the vaccine (10 µg SARS-
+CoV-2 mRNA).
+
+If previously vaccinated with a COVID-19 vaccine, mNEXSPIKE should be administered at the
+earliest 3 months after the most recent dose of a COVID-19 vaccine (see sections “Warnings and
+precautions” and “Properties/Effects”).
+
+
+                                                                                                      1 / 13
+mNEXSPIKE
+Information for Professionals
+
+
+
+
+Elderly
+No dose adjustment is required in elderly individuals ≥65 years of age.
+
+Paediatric population
+The safety and efficacy of mNEXSPIKE in children less than 12 years of age have not yet been
+established. No data are available.
+
+Method of administration
+
+For intramuscular injection only. The preferred site is the deltoid muscle of the upper arm.
+
+Do not administer this vaccine intravascularly, subcutaneously or intradermally.
+
+The vaccine should not be mixed in the same syringe with any other vaccines or medicinal products.
+
+For instructions on preparation of the medicinal product before administration see section “Other
+information”.
+
+For precautions to be taken before administering the vaccine, see section “Warnings and
+precautions”.
+
+Traceability
+To ensure traceability of biotechnological medicinal products, it is recommended that the trade name
+and batch number should be documented for each treatment.
+Contraindications
+
+Hypersensitivity to the active substance or to any of the excipients listed in section “Composition”.
+
+Warnings and precautions
+
+Hypersensitivity and anaphylaxis
+
+Appropriate medical treatment and supervision must be available to manage possible anaphylactic
+reactions following administration of the vaccine.
+
+Close observation for at least 15 minutes is recommended following vaccination. No further dose of
+the vaccine should be given to those who have experienced anaphylaxis after a prior dose of the
+vaccine.
+
+Myocarditis and pericarditis
+
+An increased risk of myocarditis and pericarditis has been observed following vaccination with some
+other COVID-19 vaccines. These conditions can develop within a few days and primarily occur within
+14 days. They have been observed more often in younger males. Healthcare professionals should be
+alert to the signs and symptoms of myocarditis and pericarditis. Vaccine recipients (including parents
+or caregivers) should be instructed to seek immediate medical attention if they develop symptoms
+indicative of myocarditis or pericarditis.
+
+Anxiety-related reactions
+
+Anxiety-related reactions, including vasovagal reactions (syncope), hyperventilation or stress-related
+reactions may occur in association with vaccination as a psychogenic response to the needle
+injection. It is important that precautions are in place to avoid injury from fainting.
+
+Concurrent illness
+
+                                                                                                        2 / 13
+mNEXSPIKE
+Information for Professionals
+
+
+
+
+Vaccination should be postponed in individuals suffering from acute severe febrile illness or acute
+infection. The presence of a minor infection and/or low-grade fever should not delay vaccination.
+
+Thrombocytopenia and coagulation disorders
+
+As with other intramuscular injections, the vaccine should be given with caution in individuals
+receiving anticoagulant therapy or those with thrombocytopenia or any coagulation disorder (such as
+haemophilia) because bleeding or bruising may occur following an intramuscular administration in
+these individuals.
+
+Immunocompromised individuals
+
+Safety and immunogenicity data on mNEXSPIKE are not available for immunocompromised
+individuals. Individuals receiving immunosuppressant therapy or patients with immunodeficiency may
+have a diminished immune response to this vaccine.
+
+Limitations of vaccine effectiveness
+
+As with all vaccines, vaccination with mNEXSPIKE may not protect all vaccine recipients.
+
+Duration of protection
+
+The duration of protection afforded by the vaccine is unknown as it is still being determined by
+ongoing clinical trials.
+Interactions
+
+No interaction studies have been performed.
+Concomitant administration of mNEXSPIKE with other vaccines has not been studied.
+
+Pregnancy, lactation
+
+Pregnancy
+
+There are no or limited amount of data (less than 300 pregnancy outcomes) from the use of
+mNEXSPIKE in pregnant women.
+Animal studies do not indicate direct or indirect harmful effects with respect to reproductive toxicity
+(see section “Preclinical data”). As a precautionary measure, it is preferable to avoid the use of
+mNEXSPIKE during pregnancy.
+
+
+Lactation
+
+No effects on the breastfed newborn/infant are anticipated since the systemic exposure of the breast-
+feeding woman to mNEXSPIKE active substance is negligible. Observational data from women who
+were breastfeeding after vaccination with elasomeran and its variants have not shown a risk for
+adverse effects in breastfed newborns/infants.
+
+mNEXSPIKE can be used during breast-feeding.
+
+Fertility
+
+No human data on the effect of mNEXSPIKE on fertility are available.
+
+
+
+                                                                                                      3 / 13
+mNEXSPIKE
+Information for Professionals
+
+
+
+
+Animal studies do not indicate direct or indirect harmful effects with respect to female reproductive
+toxicity. Animal studies conducted with mNEXSPIKE are insufficient to assess functional effects on
+male reproductive toxicity (see section “Preclinical data”).
+
+Effects on ability to drive and use machines
+
+mNEXSPIKE has no or negligible influence on the ability to drive and use machines.
+
+However, some of the effects mentioned under section “Undesirable effects” (e.g., fatigue) may
+temporarily affect the ability to drive or use machines.
+Undesirable effects
+
+Summary of the safety profile
+
+The most commonly reported adverse reactions are injection site pain (68.5%), fatigue (50.4%),
+headache (44.2%), myalgia (38.2%), arthralgia (29.7%), chills (22.7%), axillary swelling or tenderness
+(19.7 %) and nausea/vomiting (12.1%).
+
+The following adverse reactions were more common in participants below 18 years of age: pain at the
+injection site (68.8%), headache (54.5%), myalgia (39.2%), axillary swelling/tenderness (34.6%), chills
+(31.6%) and nausea/vomiting (16.1%).
+
+
+Tabulated list of adverse reactions
+
+The safety of mNEXSPIKE was evaluated in a Phase 3 clinical study. Study mRNA-1283-P301 (Study
+1) included 11’417 participants 12 years of age and older. The median duration of follow-up for safety
+was 8.8 months.
+
+The safety profile and the frequencies of adverse reactions presented below are based on data of
+5‘706 individuals ≥12 years of age. Age-stratified analysis indicates a trend of decreasing
+reactogenicity with increasing age.
+
+Adverse reactions reported are listed according to the following frequency convention:
+
+Very common (≥1/10)
+Common (≥1/100 to <1/10)
+Uncommon (≥1/1 000 to <1/100)
+Rare (≥1/10 000 to <1/1 000)
+Very rare (<1/10 000)
+Not known (cannot be estimated from the available data)
+
+Within each frequency grouping, adverse reactions are presented in order of decreasing seriousness
+(Table 1).
+
+
+
+
+                                                                                                    4 / 13
+mNEXSPIKE
+Information for Professionals
+
+
+
+
+Table 1. Adverse reactions
+
+MedDRA system organ class            Frequency             Adverse reactions
+Blood and lymphatic system           Very common           Lymphadenopathy (ipsilateral
+disorders                                                  axillary swelling or tenderness)
+                                     Rare                  Lymphadenopathy (e.g.
+                                                           supraclavicular)
+Nervous system disorders             Very common           Headache
+                                     Rare                  Hypoaesthesia
+Immune system disorders              Uncommon              Hypersensitivity reactions (e.g.
+                                                           urticaria, chronic urticaria, rash,
+                                                           pruritus)
+                                     Not known             Anaphylactic reaction
+Gastrointestinal disorders           Very common           Nausea/vomiting
+                                     Rare                  Diarrhoea
+Skin and subcutaneous tissue         Very rare             Rash
+disorders
+Musculoskeletal and connective Very common                 Myalgia
+tissue disorders                                           Arthralgia
+General disorders              Very common                 Injection site pain
+and administration                                         Fatigue
+site conditions                                            Chills
+                               Common                      Pyrexia
+                                                           Injection site swelling
+                                                           Injection site erythema
+                                     Rare                  Injection site pruritus
+                                                           Injection site bruising
+
+Paediatric population
+
+Safety data for mNEXSPIKE in adolescents were collected in a Phase 3 randomised, observer-blind,
+active-controlled clinical trial that evaluated the relative vaccine efficacy, safety and immunogenicity of
+mNEXSPIKE in participants 12 years of age and older in the United States, United Kingdom, and
+Canada. In this study, 8.7% (N=992/11’417) of participants were 12 years through 17 years.
+
+The incidence of solicited systemic adverse reactions was similar for the mNEXSPIKE group for the
+population overall and across all age subgroups. In Study mRNA-1283-P301 (Study 1), assessment
+of unsolicited adverse events did not reveal any safety concerns for the adolescent population, and no
+differences of clinical concern were noted between the two vaccine groups or when compared to the
+adult population.
+
+Reporting of suspected adverse reactions
+
+Reporting suspected adverse reactions after authorisation of the medicinal product is very important.
+It allows continued monitoring of the benefit/risk balance of the medicinal product. Healthcare
+professionals are asked to report any suspected adverse reactions online via the ElViS portal
+(Electronic Vigilance System). You can obtain information about this at www.swissmedic.ch.
+Overdose
+
+No cases of overdose have been reported.
+
+In the event of overdose, monitoring of vital functions and possible symptomatic treatment is
+recommended.
+
+
+
+                                                                                                      5 / 13
+mNEXSPIKE
+Information for Professionals
+
+
+
+
+Properties/Effects
+
+ATC code
+
+J07BN01
+
+Mechanism of action
+
+mNEXSPIKE is a nucleoside-modified mRNA-based vaccine, formulated in lipid particles, which
+encodes the membrane-bound, linked N-terminal domain (NTD) and receptor-binding domain (RBD)
+of the spike (S) glycoprotein from SARS-CoV-2 strains. The vaccine elicits an immune response to
+the NTD and RBD of the S antigen, to generate neutralising antibodies, which contributes to
+protection against COVID-19.
+Clinical efficacy
+
+Study mRNA-1283-P301 (Study 1)
+
+Study mRNA-1283-P301 was a Phase 3 randomised, observer-blind, active-controlled clinical trial
+that evaluated the relative vaccine efficacy, safety and immunogenicity of mNEXSPIKE in participants
+12 years of age and older in the United States, United Kingdom, and Canada. Randomisation was
+stratified by age: 12 to 17 years, 18 to 64 years, and 65 years of age and older. The study allowed for
+the inclusion of participants with stable pre-existing medical conditions, defined as disease not
+requiring significant change in therapy or hospitalisation for worsening disease during the 2 months
+before enrolment, as well as participants with stable human immunodeficiency virus (HIV) infection. A
+total of 11’454 participants were randomised in a 1:1 ratio to receive mNEXSPIKE (10 µg SARS-CoV-
+2 mRNA; n=5’728), or elasomeran/davesomeran, the comparator vaccine (50 µg mRNA; n=5‘726). All
+participants except one in the mNEXSPIKE group had previously received at least one dose of a
+COVID-19 vaccine prior to the study with a median time of 9.8 months since the last dose.
+Participants were followed for efficacy and safety for one year.
+
+In Study mRNA-1283-P301, the median age of the safety population was 56 years (range 12-96
+years); 8.7% of participants were 12 years through 17 years, 62.6% were 18 years through 64 years,
+28.7% were 65 years and older and 5.2% were over 75 years old.. Overall, 45.7% of the participants
+were male, 54.3% were female, 13.2% were Hispanic or Latino, 82.2% were White, 11.2% were Black
+or African American, 3.6% were Asian, and 2.4% reported “Other”. Demographic characteristics were
+similar between participants who received mNEXSPIKE and those who received
+elasomeran/davesomeran.
+
+The primary efficacy analysis population (referred to as the Per-Protocol Set for Efficacy)
+demographics were similar to those in the safety population and included 11’366 participants who
+received either mNEXSPIKE (SARS-CoV-2 mRNA) (n=5’679) or elasomeran/davesomeran (n=5’687).
+There were no notable differences in demographics between participants who received mNEXSPIKE
+and those who received elasomeran/davesomeran.
+
+The population for the relative vaccine efficacy analysis included participants 12 years of age and
+older who were enrolled from 28 March 2023, and followed for the development of COVID-19 through
+31 January 2024. The median length of follow-up was 8 months.
+The primary efficacy objective in this study was to demonstrate the non-inferior vaccine efficacy
+against COVID-19 starting 14 days after vaccination compared to that of elasomeran/davesomeran.
+The statistical criterion to demonstrate non-inferiority required that the lower bound of the 99.4% CI be
+>-10% for relative vaccine efficacy. This pre-specified primary objective was successfully met (see
+Table 2). During this period, the effectiveness of elasomeran/davesomeran against COVID-19
+medical encounters and hospitalisations was seen in observational studies.
+
+
+
+
+                                                                                                    6 / 13
+mNEXSPIKE
+Information for Professionals
+
+
+
+
+Table 2. Relative vaccine efficacy against COVID-19* in participants 12 years of age and older
+starting 14 days after a single dose of mNEXSPIKE or elasomeran/davesomeran – Per-Protocol
+Set for efficacy
+
+                              mNEXSPIKEa                            elasomeran/davesomeran b
+                                                Incidence                              Incidence                   %
+                                                  rate of                                rate of               Relative
+     Age                          COVID-19                                  COVID-19                           vaccine
+                 Participants                   COVID-19       Participants            COVID-19
+                                   cases                                      cases                            efficacy
+                      (N)                        per 100            (N)                 per 100
+                                    (n)                                         (n)                          (99.4% CI)c
+                                                 person-                                person-
+                                                 months                                 months
+
+ All                                                                                                              9.3
+                     5’679           560            1.4            5’687            617            1.5
+ participants                                                                                                 (-6.6, 22.8)
+* Presence of at least one symptom from a list of COVID-19 symptoms and a positive NP swab for SARS-CoV-2 by RT-
+PCR. Listed symptoms were fever (temperature >38°C / ≥100.4°F), or chills, cough, shortness of breath or difficulty
+breathing, fatigue, muscle aches, or body aches, headache, new loss of taste or smell, sore throat, congestion or runny
+nose, nausea, or vomiting or diarrhoea.
+a Dosing was a single dose (10 µg SARS-CoV-2 mRNA).
+b Dosing was a single dose (50 µg mRNA).
+c Relative Vaccine Efficacy (rVE) = 1-hazard ratio (mNEXSPIKE vs. elasomeran/davesomeran). Hazard ratio and CI are
+
+  estimated using a stratified Cox proportional hazard model (stratified by age group per randomisation) with Efron's method
+  of tie handling and with the treatment group as a fixed effect. Alpha-adjusted 2-sided (99.4%) CI for Centers for Dieseas
+  Control and Prevention (CDC)-defined COVID-19 is calculated using Lan-DeMets O’Brien Fleming approximation
+  spending function (nominal one-sided alpha = 0.0028).
+
+The primary immunogenicity analysis population included 621 participants who received mNEXSPIKE
+and 568 participants who received elasomeran/davesomeran. The baseline characteristics were
+similar to the safety population/ Per-Protocol Set for Efficacy, as described further above.
+
+A comparison of neutralising antibody concentrations against a pseudovirus expressing SARS-CoV-2
+Spike proteins from the original and Omicron BA.4/BA.5 strains was conducted. In the primary
+immunogenicity analyses of the geometric mean concentration (GMC) ratio following mNEXSPIKE
+compared to after elasomeran/davesomeran, mNEXSPIKE met the pre-specified non-inferiority
+criterion of the lower bound of the 95% CI >0.667. Analyses of the difference in seroresponse rates
+(SSR) also met the pre-specified non-inferiority criterion with the lower bound of the 95% CI of the
+SRR-difference >-10%. These analyses are summarised in Table 3.
+
+
+
+
+                                                                                                                       7 / 13
+mNEXSPIKE
+Information for Professionals
+
+
+
+
+Table 3. Comparison of GMC and SRR 28 days after a single dose of mNEXSPIKE versus
+28 days after a single dose of elasomeran/davesomeran – Per-Protocol immunogenicity
+subset*
+
+                                                               elasomeran/                    GMC ratio
+                            mNEXSPIKEa
+                                                              davesomeranc                  (mNEXSPIKE /
+                               GMC
+     Assay                                                         GMC                  elasomeran/davesomer
+                               N=621
+                                                                   N=568                         an)
+                             (95% CI)b
+                                                                 (95% CI)b                    (95% CI)b
+
+ Omicron                       2340.9                            1753.8                             1.3
+ BA.4/BA.5                 (2167.0, 2528.8)                  (1618.2, 1900.7)                    (1.2, 1.5)
+ Original
+                              10’631.9                           8576.5                             1.2
+ SARS-CoV-2
+                          (9960.2, 11348.9)                  (8012.5, 9180.1)                    (1.1, 1.4)
+ (D614G)
+                                                                                             Difference in
+                                                         elasomeran/davesome
+                             mNEXSPIKEa                                                           SRR
+                                                                   ran
+                            seroresponsec                                                   (mNEXSPIKE –
+                                                             seroresponsed
+                                 N=621                                                  elasomeran/davesomer
+                                                                  N=568
+                                   %                                                              an)
+                                                                    %
+                               (95% CI)e                                                           %
+                                                                (95% CI)e
+                                                                                               (95% CI)f
+
+ Omicron                         79.9                              65.5                            14.4
+ BA.4/BA.5                    (76.5, 83.0)                      (61.4, 69.4)                    (9.3, 19.4)
+ Original
+                                 83.6                              72.9                             10.7
+ SARS-CoV-2
+                              (80.4, 86.4)                      (69.0, 76.5)                    (6.0, 15.4)
+ (D614G)
+N=Number of participants with non-missing data at the corresponding timepoint(s).
+* Per-Protocol Immunogenicity Subset included a randomly selected subset of subjects who received study vaccine and did
+  not have a major protocol deviation that impacted immune response and had both pre-dose and post-dose immunogenicity
+  assessment at timepoint of primary interest (28 days post-dose).
+a Dosing was a single dose (10 µg of SARS-CoV-2 mRNA).
+b The log-transformed antibody levels are analysed using an analysis of covariance (ANCOVA) model with the group
+
+  variable (mNEXSPIKE vs. elasomeran/davesomeran) as fixed effect, adjusted by SARS-CoV-2 status at baseline,
+  randomisation age group, number of prior COVID-19 boosters (0, 1, 2, ≥3), and type of last prior COVID-19 vaccine.
+  Coefficients for Least Square (LS) Means use margins by level. The resulted LS means, difference of LS means, and 95%
+  CI are back transformed to the original scale for presentation.
+c Elasomeran/davesomeran dosing was a single dose (50 micrograms mRNA).
+d Seroresponse is defined as an antibody value change from baseline below the LLOQ to ≥4 × LLOQ, or at least a 4-fold rise
+
+  if baseline is ≥ LLOQ and <4 × LLOQ, or at least a 2-fold rise if baseline is ≥4 × LLOQ, where baseline refers to pre-dose.
+e 95% CI is calculated using the Clopper-Pearson method.
+f 95% CI is calculated using the Miettinen-Nurminen (score) confidence limits.
+
+Note: Antibody values < the lower limit of quantitation (LLOQ) are replaced by 0.5 × LLOQ. Values > the upper limit of
+quantitation (ULOQ) are replaced by the ULOQ if actual values are not available.
+
+Study P301-Japan (Study 2)
+
+Study P301-Japan was a Phase 3 randomised, observer-blind, active-controlled clinical trial that
+evaluated the immunogenicity and safety of mNEXSPIKE in participants 12 years of age and older in
+Japan. Randomisation was stratified by age: 12 to 17 years, 18 to 64 years, and 65 years of age and
+older. The study allowed for the inclusion of participants with stable pre-existing medical conditions,
+defined as disease not requiring significant change in therapy or hospitalisation for worsening disease
+during the two months before enrolment, as well as participants with stable human immunodeficiency
+virus (HIV) infection. A total of 692 participants were randomised in a 1:1 ratio to receive mNEXSPIKE
+(10 µg SARS-CoV-2 mRNA; n=344), or andusomeran [targeting Omicron XBB.1.5 strain (50 µgmRNA;
+n=348)]. All participants had previously received at least one dose of a COVID-19 vaccine prior to the
+study with a median time of 16.7 months since the last dose.
+
+The primary immunogenicity analysis population included 334 participants who received mNEXSPIKE
+and 334 participants who received andusomeran. Among participants assessed for immunogenicity,
+
+                                                                                                                        8 / 13
+mNEXSPIKE
+Information for Professionals
+
+
+
+
+65.0% were male, 35.0% were female, and all participants were Asian. The median age of
+participants was 52 years (range: 12 to 83 years) and 20.7% of participants were 65 years of age and
+older.
+
+A comparison of neutralising antibody concentrations against a pseudovirus expressing Omicron
+XBB.1.5 was conducted. In the primary immunogenicity analyses of the GMC ratio following
+mNEXSPIKE compared to after andusomeran, mNEXSPIKE met the pre-specified non-inferiority
+criterion of the lower bound of the 95% CI >0.667. Analyses of the difference in seroresponse rates
+are summarized (Table 4).
+
+Table 4. Comparison of GMC and SRR 28 days after a single dose of mNEXSPIKE versus 28
+days after a single dose of andusomeran – Per-Protocol immunogenicity set*
+
+                                                                                                 GMC ratio
+                             mNEXSPIKEa                        andusomeranc
+                                                                                               (mNEXSPIKE/
+     Assay                      GMC                                GMC
+                                                                                               andusomeran)
+                              (95% CI)b                          (95% CI)b
+                                                                                                 (95% CI)b
+                                N=334                              N=334
+                                1757.2                            1470.4                             1.20
+                            (1580.1, 1954.3)                  (1322.4, 1635.0)                   (1.03, 1.39)
+                                                                                                Difference in
+                             mNEXSPIKEa                        andusomeranc                          SRR
+                            seroresponsed                      seroresponsed                   (mNEXSPIKE-
+ Omicron                           %                                  %                        andusomeran)
+ XBB.1.5                       (95% CI)e                          (95% CI)e                           %
+                                 N=334                              N=334                         (95% CI)f
+
+                                 92.2                               86.8
+                                                                                                      5.4
+                              (88.8, 94.9)                       (82.7, 90.3)
+                                                                                                  (0.8, 10.2)
+N=Number of participants with non-missing data at baseline and the corresponding timepoint(s).
+* Per-Protocol immunogenicity set included subjects who received study vaccine, did not have a major protocol deviation
+   that impacted immune response, and had both pre-dose and post-dose immunogenicity assessment at timepoint of
+   primary interest (28 days post-dose).
+a mNEXSPIKE dosing was a single dose (10 micrograms of SARS-CoV-2 mRNA).
+b The log-transformed antibody levels are analysed using an analysis of covariance (ANCOVA) model with the group
+
+   variable (mNEXSPIKE vs. andusomeran) as fixed effect, adjusted by SARS-CoV-2 status at baseline, randomisation age
+   group, number of prior boosters (0, 1, 2, ≥3), and type of last prior COVID-19 vaccine. LS means are based on observed
+   margin. The resulted LS means, difference of LS means, and 95% CI are back transformed to the original scale for
+   presentation.
+c single dose.
+d Seroresponse is defined as an antibody value change from baseline below the LLOQ to ≥4 × LLOQ, or at least a 4-fold rise
+
+    if baseline is ≥ LLOQ and <4 × LLOQ, or at least a 2-fold rise if baseline is ≥4 × LLOQ, where baseline refers to pre-dose.
+e 95% CI is calculated using the Clopper-Pearson method.
+f 95% CI is calculated using the Miettinen-Nurminen (score) confidence limits.
+
+Note: Antibody values < the lower limit of quantitation (LLOQ) are replaced by 0.5 × LLOQ. Values > the upper
+limit of quantitation (ULOQ) are replaced by the ULOQ if actual values are not available.
+
+
+Pharmacokinetics
+
+Absorption
+
+Not applicable.
+
+Distribution
+
+Not applicable.
+
+
+
+
+                                                                                                                          9 / 13
+mNEXSPIKE
+Information for Professionals
+
+
+
+
+Metabolism
+
+Not applicable.
+
+Elimination
+
+Not applicable.
+
+Kinetics in specific patient groups
+
+Renal impairment
+
+No clinical studies have been conducted to investigate the effect of renal impairment.
+
+Hepatic impairment
+
+No clinical studies have been conducted to investigate the effect of hepatic impairment.
+
+Preclinical data
+
+
+Non-clinical data reveal no special hazard for humans based on conventional studies of safety
+pharmacology, repeated dose toxicity, genotoxicity, carcinogenicity and reproductive toxicity.
+
+Genotoxicity/Carcinogenicity
+
+Carcinogenicity studies were not performed. The components of the vaccine (lipids and mRNA) are
+not expected to have genotoxic potential.
+
+Developmental and reproductive toxicity
+
+Animal studies conducted with mNEXSPIKE are insufficient to assess functional effects on male
+reproductive toxicity.
+
+Reproductive and developmental studies in rats with mNEXSPIKE vaccine did not reveal vaccine-
+related effects on female fertility, pregnancy, or embryo-foetal or offspring development.
+
+Other information
+
+Incompatibilities
+
+In the absence of compatibility studies, this vaccine must not be mixed with other medicinal products.
+Shelf life
+
+Do not use this medicine after the expiry date (“EXP”) stated on the pack.
+
+Special precautions for storage
+
+Store in a freezer at -40ºC to -15ºC.
+Once thawed, store in a refrigerator (2 °C to 8 °C) and do not refreeze.
+Keep the pre-filled syringes in the original carton in order to protect from light.
+Keep out of the reach of children.
+
+
+
+
+                                                                                                 10 / 13
+mNEXSPIKE
+Information for Professionals
+
+
+
+
+Storage conditions after thawing
+
+Within the shelf life of 1 year, the vaccine is stable for 30 days when stored at 2 °C to 8 °C and
+protected from light. At the end of 30 days, the vaccine should be used immediately or discarded (see
+section “Special precautions for storage”).
+
+Once thawed, the vaccine should not be refrozen.
+
+Upon moving the vaccine to 2 °C to 8 °C storage, the outer carton should be marked with the new
+expiry date at 2 °C to 8 °C.
+
+If the vaccine is received at 2 °C to 8 °C, it should then be stored at 2 °C to 8 °C. The use by date
+corresponding to these storage conditions would be marked on a label on the carton. Please note in
+that case the expiration date (“EXP”) printed on the outer carton and on the pre-filled syringe for
+storage between -40°C to -15°C is not pasted over.
+
+Pre-filled syringes may be stored at 8 °C to 25 °C for up to 24 hours after removal from refrigerated
+conditions. Within this period of time, pre-filled syringes may be handled in ambient light conditions.
+Do not refrigerate after being stored at 8 °C to 25 °C. Discard the syringe if not used within this time.
+
+
+Transportation of pre-filled syringe in liquid state at 2°C to 8°C
+
+If transport at -40°C to -15°C is not feasible, available data support transportation of one or more
+thawed pre-filled syringes in liquid state at 2°C to 8°C (within the 30 day shelf life).
+Once thawed and transported in liquid state at 2°C to 8°C, pre-filled syringes should not be refrozen
+and should be stored at 2°C to 8°C until use.
+
+Instructions for handling
+The vaccine should be administered by a trained healthcare professional using aseptic techniques to
+ensure sterility of the dispersion.
+
+Handling instructions before use
+
+The vaccine is ready to use once thawed.
+
+Do not dilute the product.
+
+Do not shake the pre-filled syringe before use.
+
+The pre-filled syringe is for single-use only.
+
+Do not use if the pre-filled syringe has been dropped or damaged or the security seal on the carton
+has been broken.
+
+One (1) dose of 0.2 mL can be administered from each pre-filled syringe.
+
+mNEXSPIKE is shipped and supplied either as a frozen or thawed pre-filled syringe (see section
+“Special precautions for storage”). If the vaccine is frozen, it must be completely thawed before use.
+Thaw each pre-filled syringe before use, either in the refrigerator or at room temperature, following the
+instructions in Table 5.
+
+Prior to immediate use, single syringes may be removed from a carton of 1or 10 pre-filled syringes
+and thawed either in the refrigerator or at room temperature. The remaining syringes must continue to
+be stored in their original carton in the freezer or refrigerator.
+
+
+                                                                                                     11 / 13
+mNEXSPIKE
+Information for Professionals
+
+
+
+
+If the vaccine has been thawed at room temperature (15°C to 25°C), the pre-filled syringe is ready to
+administer. Syringes should not be returned to the refrigerator after being thawed at room
+temperature.
+The pre-filled syringes may be stored at 8°C to 25°C for a total of 24 hours after removal from
+refrigerated conditions. Within this period of time, pre-filled syringes may be handled in ambient light
+conditions. Discard the syringe if not used within this time.
+
+Thaw each pre-filled syringe before use following the instructions below. Pre-filled syringes may be
+thawed outside the carton or in the carton itself, either in the refrigerator or at room temperature
+(Table 5).
+
+Table 5. Thawing instructions for mNEXSPIKE pre-filled syringes and cartons before use
+
+                                                Thaw instructions and duration
+                                    Thaw                           Thaw
+                                temperature        Thaw        temperature
+ Configuration                                                                 Thaw duration
+                                     (in a        duration       (at room
+                                                                                 (minutes)
+                                refrigerator)    (minutes)    temperature)
+                                     (°C)                           (°C)
+ 1 pre-filled syringe
+ (removed from carton)
+                                    2–8             100            15 – 25                40
+ or a carton of 1 pre-filled
+ syringes
+ 10 pre-filled syringes in
+                                    2–8             160            15 – 25                80
+ carton
+
+Administration
+- Do not shake
+- Pre-filled syringe should be inspected visually for particulate matter and discolouration prior to
+  administration.
+- Do not administer if vaccine is discoloured or containsparticulate matter or has not yet completely
+  defrosted.
+- Needles are not included in the pre-filled syringe cartons.
+- Use a sterile needle of the appropriate size for intramuscular injection (21-gauge or thinner
+  needles).
+- With tip cap upright, remove tip cap by twisting counter-clockwise until tip cap releases. Remove
+  tip cap in a slow, steady motion. Avoid pulling tip cap while twisting.
+- Attach the needle by twisting in a clockwise direction until the needle fits securely on the syringe.
+- Uncap the needle when ready for administration.
+- The vaccine should be administered immediately after uncapping.
+- Administer the entire dose intramuscularly.
+- Discard the pre-filled syringe after single use.
+
+Disposal
+
+Any unused medicinal product or waste material should be disposed of in accordance with local
+requirements.
+
+
+Authorisation number
+
+70272 (Swissmedic) mNEXSPIKE dispersion for injection in pre-filled syringe
+
+
+
+
+                                                                                                    12 / 13
+mNEXSPIKE
+Information for Professionals
+
+
+
+
+Packs
+
+Pack-sizes:
+
+1 pre-filled syringe per carton. The pre-filled syringe contains one dose of 0.2 mL [B].
+
+10 pre-filled syringes per carton. Each pre-filled syringe contains one dose of 0.2 mL [B].
+
+mNEXSPIKE is supplied in a pre-filled syringe (polymeric barrel) with plunger stopper and a rubber tip
+cap (without needle).
+
+Marketing authorisation holder
+
+Moderna Switzerland GmbH, Basel
+
+Date of revision of the text
+
+August 2026
+
+
+
+
+                                                                                                 13 / 13
+

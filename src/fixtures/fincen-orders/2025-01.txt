@@ -1,0 +1,1946 @@
+UNITED STATES OF AMERICA
+FINANCIAL CRIMES ENFORCEMENT NETWORK
+DEPARTMENT OF THE TREASURY
+
+
+IN THE MATTER OF:                                                        )
+                                                                         )                 Number 2025-01
+Brink’s Global Services USA, Inc.                                        )
+
+
+                     CONSENT ORDER IMPOSING CIVIL MONEY PENALTY
+
+         The Financial Crimes Enforcement Network (FinCEN) has conducted a civil enforcement
+
+investigation and determined that grounds exist to impose a Civil Money Penalty on Brink’s Global
+
+Services USA, Inc. (Brink’s)1 for violations of the Bank Secrecy Act (BSA) and its implementing
+
+regulations.2 Brink’s admits only to the facts admitted in the January 31, 2025 non-prosecution
+
+agreement between Brink’s and the U.S. Department of Justice (DOJ) and neither admits nor denies
+
+the remainder of the facts set forth herein, consents to the issuance of this Consent Order, agrees to
+
+pay the civil money penalty imposed in this Consent Order, and agrees to comply with the
+
+Undertaking and other provisions of this Consent Order.
+
+
+
+
+1
+  Brink’s operates as a subsidiary of Brink’s Inc., which is a subsidiary of the publicly traded entity The Brink’s Company
+(BCO). Brink’s Inc. is responsible for the majority of BCO’s U.S. operations, and provides domestic transportation of
+currency to and from ATMs or from retail or other business customers to their financial institutions for deposit to their
+accounts. Brink’s Inc. operates by ground fleet only within a city or certain limited geographic radius but is also the
+parent company of subsidiaries (like Brink’s) engaged in higher-risk shipments over longer distances and internationally,
+including those detailed in the Statement of Facts that resulted in violations of the BSA. Specifically, Brink’s performs
+cross-border and interstate transport of currency and other valuables that requires secure transportation on behalf of
+clients. Along with using a ground fleet of vehicles, Brink’s also transports items by secure air and sea transportation.
+Servicio Pan Americano de Protección S.A. de C.V. (SPA), another Brink’s Inc. subsidiary, specializes in secure currency
+transportation in Mexico. For many currency shipments described in this Consent Order, SPA fulfilled currency
+transportation from Mexico to the United States and Brink’s fulfilled currency transportation within the United States.
+2
+  The BSA is codified at 12 U.S.C. §§ 1829b, 1951-1960, 31 U.S.C. §§ 5311-5314, 5316-5336 and includes other
+authorities reflected in notes thereto. Regulations implementing the BSA appear at 31 C.F.R. Chapter X.
+       I.        JURISDICTION
+
+            Overall authority for enforcement and compliance with the BSA lies with the Director of
+
+FinCEN, and the Director may impose civil penalties for violations of the BSA and its implementing
+
+regulations.3
+
+            At all times relevant to this Consent Order, Brink’s was a “domestic financial institution,”
+
+specifically a “money services business” (MSB) as defined by the BSA and its implementing
+
+regulations.4 As such, Brink’s was required to comply with applicable BSA regulations.
+
+            A.      Definitions of “Money Service Business,” “Money Transmission Services,” and
+                    Related Terms
+
+            The term “money services business” is defined in 31 C.F.R. § 1010.100(ff) as a person doing
+
+business in any of the following categories: (1) dealers in foreign exchange; (2) check cashers; (3)
+
+issuers or sellers of traveler’s checks or money orders; (4) providers of prepaid access; (5) money
+
+transmitters; (6) U.S. Postal Service; or (7) sellers of prepaid access.5 The regulations define the term
+
+“money transmitter” as a person that either “provides money transmission services” or who is
+
+otherwise “engaged in the transfer of funds.”6 “Money transmission services” are defined in
+
+FinCEN’s regulations as “the acceptance of currency, funds, or other value that substitutes for
+
+currency from one person and the transmission of currency, funds, or other value that substitutes for
+
+currency to another location or person by any means.”7 Brink’s activity, as described in this Consent
+
+Order, meets the definition of a money transmitter, a type of MSB.
+
+
+
+
+3
+    31 U.S.C. § 5321(a); 31 C.F.R. §§ 1010.810(a), (d); Treasury Order 180-01 (July 1, 2014, reaff’d January 14, 2020).
+4
+    31 C.F.R. § 1010.100(ff) (defining “money services business”).
+5
+    31 C.F.R. § 1010.100(ff).
+6
+    31 C.F.R. § 1010.100(ff)(5)(i).
+7
+    31 C.F.R. § 1010.100(ff)(5)(i)(A).
+
+
+
+                                                             2
+           The term “common carrier” is defined in FinCEN’s regulations as “[a]ny person engaged in
+
+the business of transporting individuals or goods for a fee who holds [itself] out as ready to engage in
+
+such transportation for hire and who undertakes to do so indiscriminately for all persons who are
+
+prepared to pay the fee for the particular service offered.”8 Common carriers of currency are a
+
+subgroup of common carriers that engage as a business in the transportation of currency, other
+
+monetary instruments, or commercial papers.9 An armored car service is within this subgroup of
+
+common carriers. Armored car services and common carriers of currency are generally required to
+
+file reports with FinCEN of the physical transportation of currency or other monetary instruments
+
+across the U.S. border that exceed $10,000.10 Brink’s operates an armored car service and is a
+
+common carrier of currency, also referred to as a “currency transporter.”11 In addition to having
+
+obligations to report relevant cross-border shipments of currency, an armored car company may also
+
+be a money transmitter.
+
+           B.       Potential Exemption from “Money Transmitter” Definition for Armored Car
+                    Services
+
+           However, an armored car company can, under specific facts and circumstances, be exempted
+
+from the “money transmitter” definition, and therefore from the BSA requirements affecting money
+
+transmitters.12 Specifically, FinCEN’s regulations provide that the term “money transmitter” does
+
+not include someone who physically transports currency as a person primarily engaged in such a
+
+
+
+8
+    31 C.F.R. § 1010.100(k).
+9
+ FinCEN, FIN-2014-G002, CMIR Guidance for Common Carriers of Currency, Including Armored Car Services (Aug.
+1, 2014), n 1.
+10
+     31 C.F.R. § 1010.340.
+11
+  FinCEN, FIN-2014-R010, Administrative Ruling on the Application of FinCEN Regulations to Currency Transporters,
+Including Armored Car Services, and Exceptive Relief (Sep. 24, 2014). The term “currency transporter” means any person
+that physically transports currency, other monetary instruments, other commercial paper, or other value that substitutes
+for currency, as a person primarily engaged in such business, such as armored car services and some types of cash couriers.
+12
+     31 C.F.R. § 1010.100(ff)(5)(ii)(D).
+
+
+
+                                                            3
+business either, (i) from one person to the same person at another location, or (ii) from one person to
+
+an account belonging to the same person at a financial institution, provided that the person engaged
+
+in the physical transportation has no more than a custodial interest in the currency.13
+
+           In 2014 FinCEN issued an administrative ruling14 interpreting the currency transporter
+
+exemption and granting conditional exceptive relief15 to currency transporters for a narrow subset of
+
+activity. That ruling reiterated that a currency transporter is only exempt if it meets the requirements
+
+articulated in 31 CFR § 1010.100(ff)(5)(ii)(D). However, the ruling granted conditional exceptive
+
+relief from requirements that would otherwise apply to a currency transporter in a narrow set of
+
+circumstances. The exception applies only when (a) the shipment is wholly domestic; (b) the currency
+
+transporter never takes more than a custodial interest in the currency; and (c) the shipper (i.e., the
+
+person who has engaged the armored car carrier for a fee) is acting on behalf of a currency originator
+
+(i.e., a person other than the shipper providing instructions) and the currency transporter either
+
+(d) picks up the shipment from a financial institution and the same currency transporter physically
+
+transports it to the currency originator; or (e) the currency transporter picks up the shipment from the
+
+currency originator and the same currency transporter physically transports it to a financial institution
+
+for final credit to the currency originator’s account with that financial institution. Importantly, the
+
+2014 Administrative Ruling also expressly provides that the exception does not apply when the
+
+consignee (i.e., the person appointed by the shipper to receive the currency or monetary instruments)
+
+
+
+13
+     Id.
+14
+   See FinCEN, FIN-2014-R010, Administrative Ruling on the Application of FinCEN Regulations to Currency
+Transporters, Including Armored Car Services, and Exceptive Relief (Sep. 24, 2014). In conformance with the procedures
+outlined at 31 CFR Subpart G, FinCEN issues administrative rulings interpreting regulations contained in Chapter X
+either unilaterally or in response to specific requests made and submitted to FinCEN consistent with the procedures
+outlined at 31 CFR § 1010.711.
+15
+  The Secretary of the Treasury, delegated to the Director, FinCEN, may prescribe an appropriate exception to or grant
+exemptions from a requirement under the BSA or FinCEN’s regulations. 31 U.S.C. § 5318(a)(7) and 31 C.F.R. §
+1010.970.
+
+
+
+                                                          4
+is a third party. It also conditions exceptive relief on the currency transporter taking reasonable steps
+
+to obtain information from the shipper about the specific transportation of currency, including the
+
+identity of the currency originator and whether the shipment is wholly domestic.
+
+           The 2014 Administrative Ruling further makes clear that “[w]hen operating outside of the
+
+strict scope of the common carrier exemption from money transmission, currency transporters may
+
+also be a money transmitter under FinCEN’s regulations.”16 Currency transporters who engage in
+
+activity not covered by described exemptions have the same regulatory obligations as other money
+
+transmitters.
+
+           C.       Obligations of MSBs
+
+           Registration: The BSA and its implementing regulations require an MSB to register with
+
+FinCEN within 180 days of beginning operations and to renew that registration every two years. 17
+
+           AML Program: The BSA and its implementing regulations require an MSB to develop,
+
+implement, and maintain an effective Anti-Money Laundering (AML) program that is reasonably
+
+designed to prevent the MSB from being used to facilitate money laundering and the financing of
+
+terrorist activities.18 During the Relevant Time Period, Brink’s was required to develop, implement,
+
+and maintain an effective, written AML program that, at a minimum: (1) incorporated policies,
+
+procedures, and internal controls reasonably designed to assure ongoing compliance with the BSA
+
+and its implementing regulations; (2) designated an individual responsible to assure day-to-day
+
+compliance with the MSB’s AML program and all BSA regulations; (3) provided education and/or
+
+
+
+
+16
+   FinCEN, FIN-2014-G002, CMIR Guidance for Common Carriers of Currency, Including Armored Car Services (Aug.
+1, 2014).
+17
+     31 U.S.C. § 5330; 31 C.F.R. §§ 1022.380(b)(2) and (3).
+18
+     31 U.S.C. § 5318(h); 31 C.F.R. § 1022.210(a).
+
+
+
+                                                              5
+training for appropriate personnel, including training in the detection of suspicious transactions; and
+
+(4) provided for independent review to monitor and maintain an adequate program.19
+
+           Suspicious Activity Reporting: The BSA and its implementing regulations require an MSB
+
+to identify and report suspicious transactions relevant to a possible violation of law or regulation in
+
+Suspicious Activity Reports (SARs) filed with FinCEN. Specifically, the BSA and its implementing
+
+regulations require MSBs to report transactions that involve or aggregate to at least $2,000, are
+
+conducted by, at, or through the MSB, and that the MSB “knows, suspects, or has reason to suspect”
+
+are suspicious.20 A transaction is “suspicious” if an MSB “knows, suspects, or has reason to suspect”
+
+the transaction: (a) involves funds derived from illegal activities, or is conducted to disguise funds
+
+derived from illegal activities; (b) is designed to evade the reporting or recordkeeping requirements
+
+of the BSA or regulations implementing it; or (c) has no business or apparent lawful purpose or is not
+
+the sort in which the customer normally would be expected to engage, and the MSB knows of no
+
+reasonable explanation for the transaction after examining the available facts, including background
+
+and possible purpose of the transaction.21 An MSB is generally required to file a SAR no later than
+
+30 calendar days after the initial detection by the MSB of the facts that may constitute a basis for
+
+filing a SAR.22
+
+
+
+
+19
+  31 U.S.C. § 5318(h)(1); 31 C.F.R. § 1022.210(d) and (e) (“A [MSB] must develop and implement an [AML] program
+that complies with the requirements of this section on or before . . . the end of the 90-day period beginning on the day
+following the date the business is established.”).
+20
+     31 U.S.C. § 5318(g); 31 C.F.R. § 1022.320.
+21
+     31 C.F.R. § 1022.320(a)(2)(i)-(iii).
+22
+     31 C.F.R. § 1022.320(b)(3).
+
+
+
+                                                           6
+       II.      STATEMENT OF FACTS
+
+             The conduct described below took place from on or about October 7, 2018 through October
+
+22, 2020 (the Relevant Time Period), unless otherwise indicated.
+
+             A. FinCEN
+
+             FinCEN is a bureau within the U.S. Department of the Treasury and is the federal authority
+
+that enforces the BSA by investigating and imposing civil money penalties on financial institutions
+
+and individuals for willful violations of the BSA.23 As delegated by the Secretary of the Treasury,
+
+FinCEN has “authority for the imposition of civil penalties” and “[o]verall authority for enforcement
+
+and compliance” with the BSA and its implementing regulations.24
+
+             B. Brink’s
+
+             Brink’s is a subsidiary of Brink’s Inc., which is a subsidiary of BCO. BCO is publicly traded
+
+and listed on the New York Stock Exchange under the ticker symbol “BCO.” BCO’s most recent
+
+annual financial disclosure, for the year ending on December 31, 2023, reported net income of
+
+approximately $88 million and its total assets at approximately $6.6 billion. BCO, through Brink’s
+
+Inc., Brink’s and other subsidiaries and affiliates, is a global provider of cash and valuables
+
+management, digital retail solutions, and ATM managed services. BCO’s business includes domestic
+
+and international transportation and storage of currency, precious metals, diamonds and jewelry, and
+
+other valuables. BCO provides cash-in-transit services, secure local transport of cash and securities,
+
+as well as money processing and vault services for bank customers. BCO’s customers include
+
+
+
+23
+   31 U.S.C. § 5321(a). In civil enforcement of the BSA under 31 U.S.C. § 5321(a)(1), to establish that a financial
+institution or individual acted willfully, the government need only show that the financial institution or individual acted
+with either reckless disregard or willful blindness. The government need not show that the entity or individual had
+knowledge that the conduct violated the BSA, or that the entity or individual otherwise acted with an improper motive or
+bad purpose. With respect to FinCEN’s Consent Order, Brink’s admits to “willfulness” only as the term is used in civil
+enforcement of the BSA under 31 U.S.C. § 5321(a)(1).
+24
+     31 C.F.R. § 1010.810(a), (d).
+
+
+
+                                                            7
+financial institutions, retailers, government agencies, mints, jewelers, and other commercial
+
+operations.
+
+         C. Brink’s Did Business as an Unregistered MSB
+
+         Throughout the Relevant Time Period, Brink’s operated as a money transmitter within the
+
+United States without registering with FinCEN.25 Brink’s was aware that its business required
+
+registration with FinCEN and compliance with BSA regulations, but failed to comply or modify its
+
+business model to cease engaging in the money transmission activities giving rise to Brink’s
+
+obligation to register with FinCEN as an MSB.
+
+         Brink’s conducted activities outside the scope of the common carrier of currency exemption
+
+throughout the Relevant Time Period. Such activities outside the scope of the exemption included
+
+Brink’s transporting bulk shipments of currency across the U.S. border between parties, which were
+
+neither the same person (currency originator and consignee) nor to accounts owned by the person
+
+(currency originator) providing Brink’s the currency for shipment.26 Given the above definitions and
+
+the activities of Brink’s within the United States, Brink’s was a “domestic financial institution” and
+
+a “money services business,” specifically a “money transmitter,” operating in the United States.27 As
+
+a result, Brink’s was required to comply with FinCEN’s regulations applicable to MSBs during the
+
+Relevant Time Period.
+
+
+
+
+25
+   A Brink’s affiliate, Brink’s Capital LLC (Brink’s Capital), registered on February 1, 2022 with FinCEN as a money
+transmitter. Brink’s Capital purportedly offers credit services to U.S. customers, including commercial lending products.
+The activity of Brink’s Capital is not at issue in this Consent Order.
+26
+   FinCEN, FIN-2014-R010, Section 3. The common carrier of currency exception “applies only when the same currency
+transporter physically transports currency or other value that substitutes for currency from one location to another location
+of the shipper or to the account of the shipper at a BSA-regulated financial institution acting as consignee. The currency
+transporter must obtain information from the shipper confirming that the final beneficiary is not someone other than the
+shipper in order to determine whether the exemption applies. Mere lack of knowledge about the transaction will not
+excuse the currency transporter from the obligations associated with being a money transmitter.”
+27
+   See 31 U.S.C. § 5312(b)(1) (defining domestic financial institution); 31 C.F.R. §§ 1010.100(ff) (defining “money
+services business”) and 1010.100(ff)(5) (defining “money transmitter”).
+
+
+                                                             8
+         As detailed below, during the Relevant Time Period, Brink’s shipped U.S. dollars (USD) and
+
+other currencies domestically and across the U.S. border, both to and from foreign jurisdictions as an
+
+unlicensed MSB. Brink’s currency shipments exceeded the limited common carrier of currency
+
+exemption from the money services business registration requirement. Brink’s failure to register as
+
+an MSB was not just willful; on multiple occasions prior to the Relevant Time Period, U.S. law
+
+enforcement informed Brink’s parent, Brink’s Inc., that Brink’s activity likely required them to
+
+register as an MSB with FinCEN.                  Nevertheless, Brink’s continued these shipments without
+
+registering with FinCEN. Throughout the Relevant Time Period, Brink’s facilitated the shipment of
+
+approximately $800 million of bulk currency transactions as an unregistered MSB (i) enabling cross-
+
+border currency shipments involving Mexico, Spain, and the United States, and (ii) facilitating
+
+domestic currency shipments.28
+
+                  1.       Brink’s Ignored its Obligation to Register as an MSB
+
+         Brink’s was aware of its obligation to comply with the BSA’s armored car exemption. From
+
+June 2011 through October 2017, U.S. law enforcement conducted outreach with armored car
+
+carriers, including with Brink’s, related to Mexican criminal organizations exploiting the armored car
+
+industry to facilitate money laundering following Mexican restrictions on U.S. dollar deposits in
+
+Mexico. U.S. law enforcement conducted no less than seven engagements with Brink’s (and its
+
+affiliates) and other members of the industry. For example, in October 2017, Brink’s Inc. represented
+
+to law enforcement that the company was not registered with FinCEN as none of its transactions met
+
+the requirement to register as an MSB. The U.S. law enforcement officer shared that they disagreed,
+
+and advised the company to review its business activity as it pertains to FinCEN Rulings on
+
+registering as an MSB.
+
+
+
+28
+   As described below, because Brink’s regularly failed to ascertain the true source of funds or final beneficiary of a
+transaction, it could not ascertain whether certain services were outside of the limited armored car services exception.
+
+                                                            9
+       FinCEN also separately conducted outreach with the armored car industry to discuss its BSA
+
+obligations, including presenting to industry groups regarding the 2014 Administrative Ruling and
+
+surveying the U.S. armored car industry regarding its business practices. In a 2015 response to
+
+FinCEN, Brink’s Inc., after describing the primary business operations of Brink’s Inc. and Brink’s,
+
+stated that it did not need to register with FinCEN as an MSB because it maintained “a comprehensive
+
+compliance program in place to monitor the discharge of its obligations under relevant laws and
+
+regulations” in a conscious effort to “[limit] its services to performing the type of functions that would
+
+not require registration.” As such, Brink’s Inc. represented to FinCEN that it was aware of FinCEN’s
+
+registration requirement, but that “Brink’s was very careful to conform its services” to only those that
+
+would not trigger registration obligations. Brink’s continued to engage in money transmitting
+
+business without registration during the Relevant Time Period.
+
+               2.      Brink’s Exceeded Common Carrier of Currency Exemptions
+
+       Brink’s participation in cross-border currency shipments exceeded the limited armored car
+
+services exception to the money transmitter registration rule requiring Brink’s to register with
+
+FinCEN. As explained in more detail below, Brink’s currency shipments were not picked up from
+
+one person and delivered to the same person or to their account at a financial institution. Nor did
+
+Brink’s take any steps to confirm the funds’ sources to determine if the exception applied—including
+
+with respect to cross-border shipments, which, even if going to the same account, would be ineligible
+
+for the exemption if instructions were being provided by the currency originator instead of the
+
+shipper.
+
+               a. MSB 1
+
+       MSB 1 is registered with FinCEN as an MSB offering foreign exchange (FX) services. From
+
+at least early 2015 through the end of the Relevant Time Period, Brink’s conducted more than 1,300
+
+transactions totaling more than $700 million in which MSB 1 acted as the shipper or consignee. MSB
+
+
+                                                   10
+1 directed Brink’s transportation of bulk U.S. currency from currency originators in Mexico and the
+
+United States as well as other currency transporters to either: (i) MSB 1’s Miami, FL office, or (ii) to
+
+a foreign bank for deposit into an account on behalf of MSB 1. For certain shipments, Brink’s knew
+
+that MSB 1 was the shipper, not the currency originator, and that MSB 1 was the consignee of the
+
+transported currency. Specifically, in those instances MSB 1 acted as the shipper for currency
+
+shipments involving currency originator Grupo Empresarial S.A. de C.V. (GPOMCT)29 in Tijuana,
+
+Mexico, in addition to United States currency originators who were not the shipper and did not deliver
+
+the same value to either the currency originator at another location, or to an account of the currency
+
+originator at a BSA regulated financial institution. Furthermore, Brink’s knew MSB 1 was never the
+
+currency originator for any of the shipments because SPA and Brink’s, respectively, picked up the
+
+currency from GPOMCT and completed the deliveries of the relevant shipments to third parties,
+
+which were further reflected in its internal transaction logs.                   In each instance, the facts and
+
+circumstances related to Brink’s activities exceeded limited exemptions and exceptive relief granted
+
+to currency transporters. Currency shipments from GPOMCT to MSB 1 occurred in the two scenarios
+
+shown below.
+
+
+
+
+29
+     See infra Section II.E.a. GPOMCT is a Mexican entity that later pled guilty to operating as an unlicensed MSB.
+
+                                                            11
+                                              Scenario 1
+
+
+
+
+                                          Scenario 2
+
+
+
+
+              b. MSB 2 and MSB 3
+
+       MSB 2, located in San Diego, CA, is registered with FinCEN as a provider of FX services.
+
+MSB 3, located in Woodbridge, NJ, is registered with FinCEN as a money transmitter. Brink’s
+
+conducted several wholly domestic currency shipments totaling approximately $52 million from
+
+MSB 2 or MSB 3 to MSB 1 during the Relevant Time Period. These included shipments in which
+
+Brink’s picked up currency from currency originator MSB 2 or MSB 3, and then transported it to
+
+                                              12
+Miami, FL and delivered it to the shipper, MSB 1. With respect to transactions involving MSB 2,
+
+Brink’s shipping documents identified MSB 1 as the shipper, MSB 2 as the currency originator and
+
+consignee, and Brink’s as the currency transporter. With respect to transactions involving MSB 3,
+
+Brink’s documentation reflected only that the transactions were domestic.                   However, Brink’s
+
+delivered the currency to MSB 1. MSB 1 did not maintain accounts for MSB 2 or MSB 3, and
+
+therefore MSB 1 was the actual consignee. Thus, these shipments did not involve the shipment of
+
+currency to the currency originator’s account at another financial institution and were therefore
+
+ineligible for the relevant MSB registration exemption.30
+
+                 c. Armored Car Service (ACS 1)
+
+        ACS 1 is a Mexican armored car company conducting currency transportation within Mexico
+
+and the United States. With Brink’s assistance, ACS 1 imported Mexican Pesos into the United States
+
+for delivery to third parties. On multiple occasions, ACS 1 picked up currency from its vault in
+
+Tijuana, MX and transported it more than 1,500 miles to Mexico City, MX, where it was flown to
+
+Los Angeles, California. Brink’s picked up the currency from LAX and delivered it to Brink’s branch
+
+in Los Angeles. Subsequently, ACS 1 picked up the currency from Brink’s branch in Los Angeles
+
+and delivered it to third parties MSB 4 and MSB 5 in San Ysidro, CA. Brink’s facilitation of these
+
+shipments, which Brink’s knew were being delivered to third parties, exceeded the relevant MSB
+
+exemption given that the currency was delivered to third parties and not to ACS 1 at another location
+
+or to a financial institution for deposit into an ACS 1 account.
+
+
+
+
+30
+  In each of the transactions from MSB 2 to MSB 1, the money was subsequently routed to a third party, GPOMCT, via
+wires to Mexico noting “[MSB 2] Brinks.”
+
+                                                       13
+           D. Failure to Develop, Implement, and Maintain an Effective AML Program
+
+           In addition to willfully failing to register as an MSB during the Relevant Time Period, Brink’s
+
+also willfully failed to develop, implement, and maintain an effective anti-money laundering program
+
+reasonably designed to prevent it from being used to facilitate money laundering and the financing of
+
+terrorist activities. As discussed above, Brink’s was a money transmitter conducting domestic and
+
+international currency shipments outside the limited exemptions for armored car services without any
+
+AML controls in place.31 Throughout the Relevant Time Period, Brink’s failure to establish an AML
+
+program resulted in thousands of currency shipments involving unknown sources of funds to enter
+
+and depart the United States. These shipments made the U.S. financial system vulnerable to various
+
+money laundering risks.
+
+           The failures, described in the subsections below, spanned all required pillars of a BSA
+
+program, as Brink’s failed to establish a written AML program, incorporate reasonably designed
+
+policies and procedures, designate a compliance officer, provide adequate training and education, and
+
+
+
+
+31
+     See supra Section II.C.
+
+
+
+                                                     14
+conduct independent testing. Furthermore, the limited polices that Brink’s had in place during the
+
+Relevant Time Period, such as Know Your Customer (KYC)32 requirements, and procedures related
+
+to reporting suspicious activity, failed to adequately address the company’s risk and assure its
+
+compliance with the BSA.
+
+                  1.       Brink’s Lacked Policies, Procedures, and Internal Controls to Comply
+                           with the BSA, Including a KYC Policy that Failed to Include All
+                           Transaction Parties
+
+         Brink’s Code of Ethics33 mandated compliance with all anti-money laundering laws and
+
+regulations and KYC obligations. However, during the Relevant Time Period, Brink’s failed to
+
+implement policies, procedures, and internal controls to ensure AML compliance related to its money
+
+transmittal activities. Similarly, although the Code of Ethics provided that Brink’s did “business only
+
+with reputable companies and individuals who are engaged in legitimate business activities and whose
+
+funds are derived from legitimate sources” and purportedly conducted KYC to “assess the integrity
+
+and reputation” of its customers, in practice it failed to perform sufficient KYC that was appropriate
+
+for its business.
+
+         BCO represented to FinCEN that Brink’s (along with Brink’s Inc. and other affiliates)
+
+“verifie[d] drop-off and pick up locations and the relevant account information when the shipper is
+
+neither a federally regulated financial institution nor another currency transporter,” and that Brink’s
+
+(along with Brink’s Inc. and other affiliates) adhered to this practice by “exclusively taking direction
+
+from the customer for whom [Brink’s performed] KYC diligence.” However, Brink’s repeatedly
+
+failed to follow this policy by not performing any due diligence on non-customers that provided
+
+shipment instructions.
+
+
+
+
+32
+   KYC, or Know Your Customer, refers to the information that financial institutions collect from their customers to
+document and understand basic information about the customer and its intended relationship with the financial institution.
+33
+   The Code of Ethics was issued by BCO and applied to all of BCO’s subsidiaries and affiliates, including Brink’s.
+
+                                                           15
+        For instance, the senior manager covering California did not perform any due diligence on
+
+the non-bank customer shipping millions of dollars each year in bulk currency from Mexico to MSB
+
+1 in the United States via Brink’s, even after other Brink’s senior managers expressed concerns to
+
+them about this activity.
+
+       In June 2019, a Brink’s Senior Account Executive emailed Brink’s senior managers and others
+
+requesting guidance related to Brink’s transporting tens of millions of dollars in bulk currency from
+
+GPOMCT to MSB 1 in the United States, without KYC on the currency originator or knowledge
+
+regarding the origin of the funds. Specifically, the Senior Account Executive was concerned about a
+
+representation that the relevant shipments flown from Mexico into San Diego arrived on “Flight #
+
+BGS 352.. clearly not a real flight” (emphasis in original). The Senior Account Executive also raised
+
+concerns regarding whether “KYC on-boarding should be performed [on the currency originator,
+
+GPOMCT,] . . . , [h]ow well [does] Brink’s know what [GPOMCT’s] AML policy is, . . . [w]here/who
+
+is the source of funds, . . .” and who should “be reviewing it,” especially given that the shipments
+
+involved “a lot of cash from Mexico coming from a non-banking entity and going to another non-
+
+banking entity.”
+
+       Brink’s leadership responded with little information and made no changes to its business
+
+practices. As provided above, Brink’s had some KYC policies and procedures for its customers (i.e.,
+
+the shipper), but, during the Relevant Time Period, Brink’s was not considering the risks associated
+
+with the currency originator.
+
+
+
+
+                                                 16
+                 2.       Brink’s Lacked Policies and Procedures to Identify and Report
+                          Suspicious Activity
+
+        In addition to Brink’s inadequate KYC, Brink’s “Global Anti-Money Laundering Policy” did
+
+not address Brink’s specific risks or provide procedures to ensure BSA compliance.34 While the
+
+policy addressed escalating suspicious activity to managers, the company did not have any procedures
+
+for monitoring, detecting, and escalating potential suspicious activity or actually filing SARs with
+
+FinCEN. Furthermore, during the Relevant Time Period, Brink’s failed to address readily apparent
+
+red flags that it was not complying with its obligations. As explained below, this included Brink’s
+
+processing—without any reporting to FinCEN—transactions that were clearly suspicious and that
+
+Brink’s own employees found concerning.
+
+        On several occasions during the Relevant Time Period, Brink’s personnel identified
+
+potentially suspicious activity that may have been indicative of money laundering. However, Brink’s
+
+lacked the necessary policies and procedures to ensure SARs would be filed with FinCEN, and
+
+Brink’s managers and senior-level staff were not adequately trained to identify, assess, and when
+
+necessary, report suspicious activity. As a result, Brink’s transported hundreds of millions of dollars
+
+in currency during the Relevant Time Period into the United States from unknown sources in Mexico
+
+without proper investigation of potential red flags or filing of SARs with FinCEN.
+
+        For example, in August 2019, shipments of bulk cash arrived at Brink’s San Diego location
+
+accompanied by a call from a representative of MSB 1 requesting that Brink’s fly the currency out of
+
+San Diego to MSB 1 in Miami. A Brink’s senior manager in Los Angeles expressed confusion over
+
+the origin of these funds, which had been transported over the U.S.-Mexico border and dropped off
+
+by Armored Car Service 2 (ACS 2) at the Brink’s location in San Diego without accompanying
+
+
+
+34
+  The policy, which was issued by BCO and applied to all of BCO’s subsidiaries and affiliates, including Brink’s, does
+not mention the BSA or provide a mechanism for reporting suspicious activity.
+
+
+
+                                                          17
+instructions or explanation of the purpose of the transaction.35 Despite not knowing the origin of the
+
+funds, the manager shipped them to MSB 1 in Miami and afterwards sought instructions internally
+
+on whether Currency or Monetary Instruments Reports (CMIRs) should be filed regarding the
+
+unexpected shipments delivered from Tijuana, MX to San Diego, CA by ACS 2.
+
+           No CMIRs were filed with FinCEN, and no response was provided by senior management in
+
+response to the Brink’s manager who raised concerns. A Senior Account Executive acknowledged
+
+that no one at Brink’s knew the source of the funds because MSB 1 used ACS 2 to deliver the bulk
+
+currency from Mexico to Brink’s. FinCEN’s investigation did not reveal any changes to Brink’s
+
+policies and procedures broadly or changes to its AML or due diligence with respect to MSB 1,
+
+although Brink’s represented to FinCEN that, at the end of the Relevant Time Period, it ceased
+
+engaging in this pattern of activity.
+
+           In another example during the Relevant Time Period, a Brink’s employee went so far as to
+
+ask an individual delivering currency if he was bringing money for El Chapo. Again, Brink’s never
+
+refused shipments or asked about the original source of the bulk U.S. currency being delivered.
+
+           E. Failure to File Suspicious Activity Reports
+
+           During the Relevant Time Period, Brink’s did not file any SARs. Furthermore, Brink’s
+
+repeatedly transported bulk currency shipments from Mexican entities for which Brink’s made no
+
+effort to identify the source of funds. In addition to the source of the funds, the pick-up location in
+
+Mexico was sometimes completely obscured through clients of Brink’s using “secondary” ACS’s to
+
+deliver the funds across the U.S.-Mexico border to Brink’s.36 At various points during the Relevant
+
+
+
+35
+     See infra Section II.E.c. The senior manager was not Brink’s main contact for that customer.
+36
+   Since 2015, the U.S. Department of the Treasury’s National Money Laundering Risk Assessment has identified the
+Southwest border as an area of significant risk for bulk cash smuggling and money laundering operations conducted by
+Transnational Criminal Organizations and Drug Trafficking Organizations. Brink’s failure to establish an AML program
+resulted in a substantial volume of suspicious transactions—in number and overall value—associated with Brink’s
+currency shipments, none of which were reported to FinCEN as required.
+
+
+                                                            18
+Time Period, as further detailed in the subsections below, suspicious activity such as fake flight
+
+numbers and unknown sources of funds were discussed and escalated by Brink’s personnel, yet
+
+Brink’s senior management demonstrated a lack of concern and made no effort to rectify related
+
+recordkeeping and reporting errors associated with these shipments. FinCEN identified hundreds of
+
+suspicious transactions that Brink’s failed to report to FinCEN, although Brink’s failure to implement
+
+an AML program made it difficult to determine the full extent of the SARs that Brink’s failed to file.
+
+                a. GPOMCT
+
+        Of the missed and improperly reported suspicious transactions during the Relevant Time
+
+Period identified by FinCEN, Brink’s processed transactions for GPOMCT with an aggregate value
+
+of roughly $400 million. GPOMCT was an unlicensed money transmitting business in Tijuana,
+
+Mexico during the Relevant Time Period. On August 13, 2020, law enforcement seized $1.5 million
+
+dollars from a GPOMCT currency shipment aboard a Brink’s truck destined for final delivery to MSB
+
+1 in Miami, FL. Subsequently, in 2021, GPOMCT pled guilty to operating as an unregistered MSB
+
+and using the U.S. financial system to process large amounts of currency that were at high risk for
+
+including criminal proceeds and forfeited $1.1 million.37
+
+        During the Relevant Time Period, Brink’s frequently imported U.S. currency from GPOMCT,
+
+into the United States for delivery to third parties as described above in Scenario 1. As summarized
+
+above, internal communication between Brink’s senior managers clearly articulates the suspicious
+
+nature of these shipments: (i) a Senior Account Executive raised to senior managers that such
+
+shipments represented “a lot of cash from Mexico coming from a non-banking entity and going to
+
+another non-banking entity;” (ii) the same individual was concerned that shipping documents
+
+
+
+
+37
+  United States v. GPOMCT Grupo Empresarial S.A. de C.V., 21-cr-2120. As a result of this action, Brink’s stopped
+providing currency shipment services from Mexico into the United States for certain casa de cambios and currency
+wholesalers.
+
+
+                                                       19
+accompanying these shipments included the use of clearly fake flight numbers; and (iii) questions
+
+were also raised as to “how well do we know what [GPOMCT’s] AML policy is,” “where/who is the
+
+source of funds,” and should Brink’s “be reviewing it?”
+
+         Rather than reporting these suspicious transactions or changing Brink’s policies or monitoring
+
+with respect to GPOMCT, the Brink’s Senior Account Executive was “most concerned with the
+
+revenue leak” as Brink’s had flown a significant amount of currency “with no means of recouping the
+
+expense.”
+
+                  b. ACS 1
+
+         ACS 1 picked up shipments destined for MSB 4 and MSB 5 in Tijuana, MX and drove them
+
+more than 1,500 miles south to Mexico City, MX where they were flown to Los Angeles, CA. Brink’s
+
+picked up the currency from LAX and transported it to its Los Angeles branch. ACS 1 then picked
+
+up the currency from Brink’s branch in Los Angeles at a later date and drove it approximately 135
+
+miles to MSB 4 and MSB 5. ACS 1 is located in Tijuana, MX and could have transported the currency
+
+through the San Ysidro, CA port of entry directly to MSB 4 and MSB 5. The distance from Tijuana,
+
+MX to MSB 4 and MSB 5 entering the San Ysidro, CA port of entry is approximately five miles.
+
+Brink’s did not appear to question the lack of an apparent business purpose for these shipments.
+
+         On several occasions, Brink’s presented CMIRs38 to U.S. law enforcement at LAX that were
+
+filled out inaccurately by identifying MSB 6, not MSB 4 and 5, as the consignee. These shipments
+
+of Mexican pesos were inconsistent with MSB 6’s business model, as MSB 6 did not accept peso
+
+shipments. After U.S. law enforcement confronted Brink’s about the accuracy of these filings in
+
+December 2019, Brink’s provided CMIRs indicating there were two consignees—MSB 4 and MSB
+
+
+
+38
+  See 31 C.F.R. § 1010.340. The BSA and its implementing regulations stipulate a CMIR must be used to report the
+physical transportation of currency or other monetary instruments in an aggregate amount exceeding $10,000 at one
+time from the United States to any place outside the United States, or into the United States from any place outside the
+United States.
+
+                                                           20
+5—neither of which were identified on the original CMIRs. Despite Brink’s awareness of CMIR
+
+filings failing to identify the true participants of the bulk currency shipments, it failed to report the
+
+suspicious activity to FinCEN.
+
+                 c. ACS 2
+
+        For over forty years, ACS 2 has provided armored transportation services to customers in
+
+retail, banking, and private industries throughout Southern California. On several occasions, ACS 2
+
+picked up bulk currency from unknown sources in Tijuana, MX and delivered it to Brink’s vault in
+
+San Diego, CA. MSB 1 instructed Brink’s to transport the currency delivered by ACS 2 to MSB 1’s
+
+location in Miami, FL.
+
+        Internal communications between Brink’s senior managers revealed no one knew the source
+
+of funds or who the shipper or consignee were because neither ACS 2 nor MSB 1 provided that
+
+information. Although a Brink’s Senior Account Executive “attempted to raise an alarm regarding
+
+this because it seemed a bit fishy,” Brink’s continued to fail to identify the source of currency in
+
+Tijuana, MX and ACS 2’s participation in the transshipping process, such as by properly documenting
+
+the true origin of funds on domestic house air waybills.39 Brink’s never filed any SARs on this
+
+activity.
+
+
+
+
+39
+  A house airway bill (HAWB) is a document that serves as a receipt and contract of carriage for goods being shipped by
+air. It is issued by a freight forwarder to a shipper after the shipper provides a shipment receipt. The HAWB contains
+detailed information about the shipment, including the origin and destination, type of goods being transported, shipper
+and consignee's details, weight and size dimensions, and the terms and conditions, such as liability and insurance.
+
+
+                                                          21
+III.       VIOLATIONS
+
+           FinCEN has determined that Brink’s willfully violated the BSA and its implementing
+
+regulations during the Relevant Time Period with regard to its obligation to register as an MSB,
+
+maintain an effective AML program, and report suspicious transactions. Brink’s was required to
+
+register as an MSB with FinCEN and willfully failed to do so throughout the Relevant Time Period.40
+
+FinCEN has also determined that, as of no later than October 7, 2018, Brink’s was required to develop,
+
+implement, and maintain an effective AML program that was reasonably designed to prevent it from
+
+being used to facilitate money laundering and the financing of terrorist activities, and willfully failed
+
+to do so.41 Additionally, Brink’s was required to accurately, and timely, report suspicious transactions
+
+to FinCEN, and willfully failed to do so.42
+
+           As explained in detail above: (1) Brink’s personnel knew that the company was engaged in
+
+bulk currency shipments without knowing the source of funds; (2) Brink’s personnel identified and
+
+communicated that some of the shipments were suspicious in nature; and (3) Brink’s failed to file any
+
+
+
+
+40
+     31 U.S.C. § 5330 and 31 C.F.R. § 1022.380.
+41
+     31 U.S.C. § 5318(h)(1) and 31 C.F.R. § 1022.210.
+42
+     31 C.F.R. § 1022.3240.
+
+
+                                                        22
+SARs with FinCEN despite transporting roughly the equivalent of $800 million from sources in
+
+Mexico to third parties in the United States and Spain.
+
+IV.        ENFORCEMENT FACTORS
+
+           As summarized below, FinCEN considered all factors outlined in the Statement on
+
+Enforcement of the Bank Secrecy Act issued August 18, 2020, when deciding whether to impose a
+
+civil money penalty in this matter.43
+
+      Nature and seriousness of the violations, including the extent of possible harm to the public:
+
+       Brink’s violations presented significant risk of serious harm to the U.S. financial system. Brink’s
+
+       willful failure to register as an MSB persisted over an extended period, during which time Brink’s
+
+       facilitated hundreds of millions in bulk currency shipments from unknown sources in Mexico to
+
+       third parties in the United States—a service that FinCEN has highlighted as posing elevated risk.
+
+       Further, Brink’s operated for multiple years with no AML program, and only established an AML
+
+       program for services unrelated to the violations identified.              Brink’s personnel identified,
+
+       discussed, and elevated suspicious currency shipments; however, Brink’s took no substantive
+
+       steps to address the activity until after the Relevant Time period, prompted by DOJ opening an
+
+       investigation into its activity and activities of its customers. Further, when red flags about this
+
+       activity were escalated within Brink’s, personnel demonstrated a total lack of concern and, in
+
+       certain instances, referenced currency with an unknown source belonging to El Chapo. Brink’s
+
+       willful failure to report hundreds of suspicious transactions inhibited law enforcement’s ability to
+
+       identify and disrupt potential illicit actors.
+
+
+
+
+43
+     FinCEN, Statement on Enforcement of the Bank Secrecy Act (Aug. 18, 2020).
+
+
+                                                         23
+   Impact or harm of the violations on FinCEN’s mission to safeguard the financial system
+
+    from illicit use, combat money laundering, and promote national security:
+
+    SAR reporting represents some of the most important tools to FinCEN and law enforcement in
+
+    fighting financial crime, both in proactively identifying potential illicit activity and in
+
+    understanding the scope and scale of that illicit activity. Brink’s facilitation of bulk currency
+
+    shipments from unknown Mexican sources further harmed FinCEN’s mission to safeguard the
+
+    U.S. financial system by obfuscating the true source of bulk currency entering the United States,
+
+    obscuring transactions potentially tied to, among other things, narcotics trafficking and other illicit
+
+    activity identified by FinCEN in the AML/CFT National Priorities. Brink’s failure to implement
+
+    an effective AML program potentially allowed illicit actors to effect suspicious transactions
+
+    through Brink’s, which Brink’s failed to report to FinCEN. Brink’s facilitation of hundreds of
+
+    millions bulk currency shipments had a significant effect on our financial system by exposing the
+
+    U.S. financial system to a significant volume of potentially illicit activity. FinCEN identified
+
+    hundreds of potentially suspicious transactions during the Relevant Time Period, yet Brink’s
+
+    failed to file a single SAR with FinCEN.
+
+   Pervasiveness of wrongdoing within an entity, including management’s complicity in,
+
+    condoning or enabling of, or knowledge of the conduct underlying the violations:
+
+    Employees at multiple levels were aware of the suspicious nature of the bulk currency shipments
+
+    Brink’s facilitated during the Relevant Time Period. Despite management’s knowledge of the
+
+    issues, Brink’s was “most concerned with the revenue leak,” as it had no way of recouping the
+
+    expenses associated with the cost for the shipments. Further, Brink’s representatives were told
+
+    on multiple occasions that the relevant activity required them to register as an MSB. Moreover,
+
+    FinCEN’s investigation identified instances where Brink’s employees specifically raised concerns
+
+    regarding the need to register as an MSB, conduct KYC on unknown Mexican participants, and
+
+
+                                                    24
+    file reports for shipments to and from “non-banking entities.” Despite these red flags and
+
+    escalation within the company, Brink’s failed to stop shipments found to be in violation of the
+
+    BSA until law enforcement prosecuted one of Brink’s customers for operating as an unlicensed
+
+    MSB. As of the date of this order, Brink’s has never filed a SAR with FinCEN.
+
+   History of similar violations, or misconduct in general, including prior criminal, civil, and
+
+    regulatory enforcement actions:
+
+    No known criminal, civil, or regulatory actions have been taken in the past for violations outlined
+
+    in this Consent Order. As highlighted above, Brink’s conducted transactions starting as early as
+
+    2015 and throughout the Relevant Time Period requiring them to register as an MSB.
+
+   Financial gain or other benefit resulting from, or attributable to, the violations:
+
+    During the Relevant Time Period, Brink’s operated profitably and maintained relatively flat
+
+    operating expenses, partly as a result of the services detailed above and by avoiding compliance
+
+    expenditures.
+
+   Presence or absence of prompt, effective action to terminate the violations upon discovery,
+
+    including self-initiated remedial measures:
+
+    During the Relevant Time Period, Brink’s was out of compliance with the BSA and took no action
+
+    to address violations. Brink’s stopped transshipping bulk currency for GPOMCT only after it
+
+    received notification of DOJ’s investigation. Additionally, Brink’s provided FinCEN a written
+
+    response stating it stopped providing currency shipment services from Mexico into the United
+
+    States for casas de cambio and currency wholesalers that were the focus of DOJ and FinCEN’s
+
+    investigations. However, in addition to cross-border shipments, FinCEN’s investigation also
+
+    identified violations associated with wholly domestic shipments during the Relevant Time Period.
+
+
+
+
+                                                  25
+   Timely and voluntary disclosure of the violations to FinCEN:
+
+    Brink’s did not voluntarily disclose any of the issues described above, and FinCEN’s investigation
+
+    was the result of disclosures made by law enforcement.
+
+   Quality and extent of cooperation with FinCEN and other relevant agencies, including as
+
+    to potential wrongdoing by its directors, officers, employees, agents, and counterparties:
+
+    Brink’s cooperation with FinCEN’s investigation was generally of high quality. Brink’s promptly
+
+    and consistently communicated with FinCEN while providing additional information when
+
+    requested. Additionally, Brink’s expressed its desire to work with FinCEN moving forward to
+
+    address potential areas of interest related to the ACS industry. Brink’s also signed an agreement
+
+    tolling the applicable statutes of limitations.
+
+   Systemic Nature of the Violations. Considerations include, but are not limited to, the
+
+    number and extent of violations, failure rates (e.g., the number of violations out of total
+
+    number of transactions), and duration of violations:
+
+    As explained above, the violations that FinCEN identified were numerous, substantial in
+
+    aggregate value of the currency shipped, and occurred over an extended period. Brink’s failed to
+
+    register as an MSB despite conducting business as a money transmitter, and furthermore failed to
+
+    implement an AML program, conduct an appropriate risk assessment of its products lines, and to
+
+    comply with the recordkeeping and reporting requirements under the BSA for approximately a
+
+    two-year period, leaving the US financial system vulnerable to illicit actors.
+
+
+
+
+                                                      26
+      Whether another agency took enforcement action for related activity. FinCEN will
+
+       consider the amount of any fine, penalty, forfeiture, and/or remedial action ordered:
+
+       Following a separate but parallel investigation, Brink’s has agreed to pay $50 million to the United
+
+       States Attorney’s Office for the Southern District of California, a portion of which is suspended
+
+       pending compliance with the terms of its non-prosecution agreement.
+
+V.         CIVIL PENALTY
+
+       A. Legal Background
+
+           FinCEN may impose a Civil Money Penalty of $10,556 per day for willful violations of the
+
+requirement to register as an MSB.44
+
+           FinCEN may impose a Civil Money Penalty of $71,545 per day for willful violations of the
+
+requirement to implement and maintain an effective AML program.45
+
+           For each willful violation of a SAR reporting requirement, FinCEN may impose a Civil
+
+Money Penalty not to exceed the greater of the amount involved in the transaction (capped at
+
+$286,184) or $71,545.46
+
+       B. Civil Penalty Determination
+
+           After considering all the facts and circumstances in this case, as well as the enforcement
+
+factors discussed above, FinCEN has determined to impose a Civil Money Penalty of $37 million in
+
+this matter. FinCEN has agreed to credit against the $37 million Civil Penalty payment of $20 million
+
+to DOJ. Accordingly, Brink’s shall make a payment for the Civil Money Penalty of $17 million to
+
+the U.S. Department of the Treasury pursuant to the payment instructions that will be transmitted to
+
+Brink’s upon execution of this Consent Order.
+
+
+
+44
+     See 31 U.S.C. § 5330(e) and 31 C.F.R. § 1010.821.
+45
+     31 U.S.C. § 5321(a)(1); 31 C.F.R. § 1010.821.
+46
+     31 U.S.C. § 5321(a)(1); 31 C.F.R. § 1010.821.
+
+
+                                                         27
+   VI.        UNDERTAKINGS
+
+         By execution of this Consent Order, Brink’s agrees to the following Undertaking:
+
+   A. AML PROGRAM UNDERTAKING
+
+         1.      Within 60 days of signing the Consent Order, Brink’s will propose a qualified
+
+independent consultant (AML Program Consultant) to hire, at its own expense, to conduct a review
+
+of Brink’s current products and services to determine whether its activities constitute money
+
+transmission and, if necessary, the effectiveness of Brink’s AML program though an AML Program
+
+Review. FinCEN has the right to veto the engagement of an AML Program Consultant deemed
+
+unsuitable to complete the AML Program Review. The AML Program Review will determine
+
+whether Brink’s complies with the BSA.
+
+         2.      Within 90 days from the date of Brink’s retention of the AML Program Consultant,
+
+the AML Program Consultant will provide FinCEN with a report summarizing the proposed scope
+
+and methodology of the review of Brink’s AML program (AML Program Scope Report). The AML
+
+Program Scope Report must include proposed analyses to cover at least the following aspects of
+
+Brink’s AML Program:
+
+     i.       High-level Commitment to Compliance: the extent to which Brink’s senior management
+
+              and, if applicable, directors provide sufficiently strong, explicit, and visible support and
+
+              commitment to Brink’s AML program, including the rigor of adherence demonstrated
+
+              through example, as well as reinforcement by all levels of management within Brink’s to
+
+              create and foster a culture of ethics and compliance throughout the organization. Brink’s
+
+              representatives escalated suspicious activity yet senior management failed to ensure
+
+              appropriate procedures were in place to address Brink’s risk and provide a clear
+
+              understanding of Brink’s guidance to address the activity.
+
+
+
+
+                                                    28
+ii.    Periodic Risk Assessments: the extent to which Brink’s AML program includes regular,
+
+       periodic assessments of Brink’s money laundering, terrorist financing, and other illicit
+
+       financial activity risks based on Brink’s business activities, including products, services,
+
+       distribution channels, customers, intermediaries, and geographic locations to include the
+
+       Southwest border.
+
+iii.   Policies, Procedures, and Internal Controls: the extent to which Brink’s currently
+
+       maintains and enforces clearly articulated and visible corporate AML policies that are
+
+       consistent with the BSA and applicable to all officers and employees, and, where
+
+       necessary and appropriate, Brink’s agents; such policies and related procedures and
+
+       internal controls shall address, at a minimum:
+
+                a. governance structures and processes that identify, and, where appropriate,
+
+                    escalate, money transmission activities (both for existing products and
+
+                    services and the launch of new products and services) requiring registration
+
+                    with FinCEN and compliance with other BSA obligations;
+
+                b. verifying customer identification and KYC, including the consistent
+
+                    application of proof of origin of funds, KYC, and other data housed by
+
+                    Brink’s to identify users residing in high-risk jurisdictions;
+
+                c. if required for Brink’s compliance with the BSA, identifying suspicious
+
+                    activity and filing reports of such activity with FinCEN, especially related to
+
+                    the Southwest border and other non-bank financial intuitions, including the
+
+                    sufficiency of required resources to identify and report such activity, as well
+
+                    as controls specifically tailored to the risk of employee involvement in such
+
+                    activity;
+
+
+
+
+                                             29
+           d. if required for Brink’s compliance with the BSA, reporting currency
+
+               transactions, including coverage of all methods by which Brink’s customers
+
+               can effect such transactions as well as controls to ensure that all beneficiaries
+
+               and originators of a given transaction are properly identified;
+
+           e. governance structures and processes related to the involvement and stature
+
+               of AML compliance personnel in decisions related to the launch of new
+
+               products, services, or channels, as well as material changes that Brink’s
+
+               makes to its products, services, or channels;
+
+           f. responding to requests for information from law enforcement and regulators;
+
+           g. creating and retaining other records and filing other reports, including
+
+               identifying mechanisms to inform the board of directors or a committee
+
+               thereof, and senior management of BSA compliance initiatives, identified
+
+               compliance deficiencies and corrective actions taken, and, if required for
+
+               Brink’s compliance with the BSA, to notify the board of directors of SARs
+
+               filed.
+
+iv.   Independence, Resourcing, and Empowerment of Compliance: if required for Brink’s
+
+      compliance with the BSA, whether Brink’s has assigned responsibility to an individual
+
+      for assurance of its day-to-day AML program, and the extent of autonomy that
+
+      individual has from management—as demonstrated by Brink’s governance structures,
+
+      the sufficiency of resources, and authority, including with respect to incurring costs to
+
+      assure compliance with the BSA—to maintain such autonomy.
+
+v.    Guidance and Training: the extent to which Brink’s maintains mechanisms to provide
+
+      periodic training for all Brink’s personnel—including training tailored to Brink’s
+
+      money laundering and terrorist financing risks and the recipients’ roles,
+
+
+                                         30
+        responsibilities, and geographic location within Brink’s, as well as training that
+
+        incorporates, as permissible under applicable law, Brink’s prior compliance failures—
+
+        and records of successful completion of such training.
+
+ vi.    Internal Reporting and Related Investigations: the extent to which Brink’s maintains
+
+        an effective system for internal, and, where possible, confidential reporting by, as well
+
+        as protection of, employees, officers, and where appropriate, agents, concerning
+
+        violations of AML laws, including through the implementation of mechanisms
+
+        designed to ensure that the system for such reporting is effectively communicated to
+
+        all potential reporters and that Brink’s maintains an effective and reliable process with
+
+        sufficient resources to respond to, investigate, and document the investigation of any
+
+        such reports.
+
+vii.    Enforcement, Discipline, and Employee Compensation: the extent to which Brink’s
+
+        maintains mechanisms designed to effectively enforce its AML program, including to
+
+        identify both specific instances of and patterns or trends in employee involvement in
+
+        suspicious transactions effected by customers, as well as to discipline violations and
+
+        incentivize compliance by implementing policies, procedures, and internal controls to
+
+        take reasonable steps to remedy harm stemming from misconduct (which may include
+
+        updates to the AML program’s policies, procedures, and internal controls) and
+
+        implementing evaluation criteria in its personnel review process to account for actions
+
+        taken by personnel to ensure compliance with the AML program.
+
+viii.   Independent Testing: whether Brink’s conducts periodic reviews and tests of its AML
+
+        program designed to evaluate and improve its effectiveness in preventing and
+
+        detecting money laundering, terrorist financing, and other illicit finance activity,
+
+        including by taking into account ongoing or recently completed enhancements to
+
+
+                                           31
+               AML-related programs. Brink’s should test its policies and procedures to ensure they
+
+               are being adhered to and comply with its BSA requirements.
+
+       3.      FinCEN may amend the scope of the review of Brink’s AML program through a
+
+notification to Brink’s within 30 days of FinCEN’s receipt of the report summarizing the proposed
+
+scope and methodology. Following submission of the AML Program Scope Report to FinCEN,
+
+Brink’s will deliver quarterly progress reports to FinCEN documenting the status of the AML
+
+Program Review.
+
+       4.      Within 60 days from the end of its review, but no later than one year from the date of
+
+its engagement, the AML Program Consultant will submit to FinCEN a written report: (i) addressing
+
+the adequacy of Brink’s AML program, including, but not limited to, the areas set forth in the AML
+
+Program Scope Report; (ii) describing the review performed; and (iii) describing any recommended
+
+modifications or enhancements to Brink’s AML program. Brink’s will make, and will cause the AML
+
+Program Consultant to make, interim reports, drafts, workpapers, or other supporting materials related
+
+to the AML Program Review available to FinCEN upon request.
+
+       5.      Brink’s will develop a plan to implement any recommendations made in connection
+
+with the AML Program Review (Implementation Plan) or, within 90 days after issuance of a report,
+
+propose alternatives. The AML Program Consultant will provide a written response to any proposed
+
+alternatives within 60 days. Within 180 days after finalization of the Implementation Plan, Brink’s
+
+will provide FinCEN with a written report detailing the extent to which it has adopted and
+
+implemented the Implementation Plan.
+
+   VII.     CONSENT AND ADMISSIONS
+
+       To resolve this matter and only for that purpose, Brink’s admits to the Statement of Facts and
+
+Violations set forth in this Consent Order to the extent described above and admits that it willfully
+
+violated the BSA and its implementing regulations. Brink’s consents to the use of the Statement of
+
+
+                                                 32
+Facts, and any other findings, determinations, and conclusions of law set forth in this Consent Order
+
+in any other proceeding brought by or on behalf of FinCEN, or to which FinCEN is a party or
+
+claimant, and agrees it shall be taken as true and correct and be given preclusive effect without any
+
+further proof. Brink’s understands and agrees that in any administrative or judicial proceeding
+
+brought by or on behalf of FinCEN against it, including any proceeding to enforce the Civil Money
+
+Penalty imposed by this Consent Order or for any equitable remedies under the BSA, Brink’s shall
+
+be precluded from disputing any fact or contesting any determinations set forth in this Consent Order.
+
+           To resolve this matter, Brink’s agrees to and consents to the issuance of this Consent Order
+
+and all terms herein and agrees to make a payment of $17 million pursuant to the payment instructions
+
+that will be transmitted to Brink’s upon execution of this Consent Order. If timely payment is not
+
+made, Brink’s agrees that interest, penalties, and administrative costs will accrue.47
+
+           Brink’s understands and agrees that it must treat the Civil Money Penalty paid under this
+
+Consent Order as a penalty paid to the government and may not claim, assert, or apply for a tax
+
+deduction, tax credit, or any other tax benefit for any payments made to satisfy the Civil Money
+
+Penalty. Brink’s understands and agrees that any acceptance by or on behalf of FinCEN of any partial
+
+payment of the Civil Money Penalty obligation will not be deemed a waiver of Brink’s obligation to
+
+make further payments pursuant to this Consent Order, or a waiver of FinCEN’s right to seek to
+
+compel payment of any amount assessed under the terms of this Consent Order, including any
+
+applicable interest, penalties, or other administrative costs.
+
+           Brink’s affirms that it agrees to and approves this Consent Order and all terms herein freely
+
+and voluntarily and that no offers, promises, or inducements of any nature whatsoever have been
+
+
+
+
+47
+     31 U.S.C. § 3717; 31 C.F.R. § 901.9.
+
+
+
+
+                                                    33
+made by FinCEN or any employee, agent, or representative of FinCEN to induce Brink’s to agree to
+
+or approve this Consent Order, except as specified in this Consent Order.
+
+        Brink’s understands and agrees that this Consent Order implements and embodies the entire
+
+agreement between Brink’s and FinCEN, and its terms relate only to this enforcement matter and any
+
+related proceeding and the facts and determinations contained herein. Brink’s further understands
+
+and agrees that there are no express or implied promises, representations, or agreements between
+
+Brink’s and FinCEN other than those expressly set forth or referred to in this Consent Order and that
+
+nothing in this Consent Order is binding on any other law enforcement or regulatory agency or any
+
+other governmental authority, whether foreign, Federal, State, or local.
+
+        Brink’s understands and agrees that nothing in this Consent Order may be construed as
+
+allowing Brink’s, its subsidiaries, affiliates, Board, officers, employees, or agents to violate any law,
+
+rule, or regulation.
+
+        Brink’s consents to the continued jurisdiction of the courts of the United States over it and
+
+waives any defense based on lack of personal jurisdiction or improper venue in any action to enforce
+
+the terms and conditions of this Consent Order or for any other purpose relevant to this enforcement
+
+action. Solely in connection with an action filed by or on behalf of FinCEN to enforce this Consent
+
+Order or for any other purpose relevant to this action, Brink’s authorizes and agrees to accept all
+
+service of process and filings through the Notification procedures below and to waive formal service
+
+of process.
+
+    VIII. COOPERATION
+
+        Brink’s shall fully cooperate with FinCEN in any and all matters within the scope of or related
+
+to the Statement of Facts, including any investigation of its current or former directors, officers,
+
+employees, agents, consultants, or any other party. Brink’s understands that its cooperation pursuant
+
+to this paragraph shall include, but is not limited to, truthfully disclosing all factual information with
+
+
+                                                   34
+respect to its activities, and those of its present and former directors, officers, employees, agents, and
+
+consultants. This obligation includes providing to FinCEN, upon request, any document, record or
+
+other tangible evidence about which FinCEN may inquire of Brink’s. Brink’s cooperation pursuant
+
+to this paragraph is subject to applicable laws and regulations, as well as valid and properly
+
+documented claims of attorney-client privilege or the attorney work product doctrine.
+
+   IX.      RELEASE
+
+         Execution of this Consent Order and compliance with all of the terms of this Consent Order,
+
+settles all claims that FinCEN may have against Brink’s for the conduct described in this Consent
+
+Order during the Relevant Time Period. Execution of this Consent Order, and compliance with the
+
+terms of this Consent Order, does not release any claim that FinCEN may have for conduct Brink’s
+
+other than the conduct described in this Consent Order during the Relevant Time Period, or any claim
+
+that FinCEN may have against any current or former director, officer, owner, or employee of Brink’s
+
+or any other individual or entity other than those named in this Consent Order. In addition, this
+
+Consent Order does not release any claim or provide any other protection in any investigation,
+
+enforcement action, penalty assessment, or injunction relating to any conduct that occurs after the
+
+Relevant Time Period as described in this Consent Order.
+
+   X.       WAIVERS
+
+         Nothing in this Consent Order shall preclude any proceedings brought by, or on behalf of,
+
+FinCEN to enforce the terms of this Consent Order, nor shall it constitute a waiver of any right, power,
+
+or authority of any other representative of the United States or agencies thereof, including but not
+
+limited to the Department of Justice.
+
+         In consenting to and approving this Consent Order, Brink’s stipulates to the terms of this
+
+Consent Order and waives:
+
+
+
+
+                                                   35
+         A. Any and all defenses to this Consent Order, the Civil Money Penalty imposed by this
+
+            Consent Order, and any action taken by or on behalf of FinCEN that can be waived,
+
+            including any statute of limitations or other defense based on the passage of time;
+
+         B. Any and all claims that FinCEN lacks jurisdiction over all matters set forth in this Consent
+
+            Order, lacks the authority to issue this Consent Order or to impose the Civil Money
+
+            Penalty, or lacks authority for any other action or proceeding related to the matters set
+
+            forth in this Consent Order;
+
+         C. Any and all claims that this Consent Order, any term of this Consent Order, the Civil
+
+            Money Penalty, or compliance with this Consent Order, or the Civil Money Penalty, is in
+
+            any way unlawful or violates the Constitution of the United States of America or any
+
+            provision thereof;
+
+         D. Any and all rights to judicial review, appeal or reconsideration, or to seek in any way to
+
+            contest the validity of this Consent Order, any term of this Consent Order, or the Civil
+
+            Money Penalty arising from this Consent Order;
+
+         E. Any and all claims that this Consent Order does not have full force and effect, or cannot
+
+            be enforced in any proceeding, due to changed circumstances, including any change in
+
+            law;
+
+         F. Any and all claims for fees, costs, or expenses related in any way to this enforcement
+
+            matter, Consent Order, or any related administative action, whether arising under common
+
+            law or under the terms of any statute, including, but not limited to, under the Equal Access
+
+            to Justice Act. Brink’s agrees to bear its own costs and attorneys’ fees.
+
+   XI.      VIOLATIONS OF THIS CONSENT ORDER
+
+         Determination of whether Brink’s has failed to comply with this Consent Order, or any portion
+
+thereof (including, but not limited to, compliance with the AML Program Review), and whether to
+
+
+                                                   36
+pursue any further action or relief against Brink’s shall be in FinCEN’s sole discretion. If FinCEN
+
+determines, in its sole discretion, that a failure to comply with this Consent Order, or any portion
+
+thereof, has occurred, or that Brink’s has made any misrepresentations to FinCEN or any other
+
+government agency related to the underlying enforcement matter, FinCEN may void any and all
+
+releases or waivers contained in this Consent Order; reinstitute administrative proceedings; take any
+
+additional action that it deems appropriate; and pursue any and all violations, maximum penalties,
+
+injunctive relief, or other relief that FinCEN deems appropriate. FinCEN may take any such action
+
+even if it did not take such action against Brink’s in this Consent Order and notwithstanding the
+
+releases and waivers herein. In the event FinCEN takes such action under this paragraph, Brink’s
+
+specifically agrees to toll any applicable statute of limitations and to waive any defenses based on a
+
+statute of limitations or the passage of time that may be applicable to the Statement of Facts in this
+
+Consent Order, until a date 180 days following Brink’s receipt of notice of FinCEN’s determination
+
+that a misrepresentation or breach of this agreement has occurred, except as to claims already time
+
+barred as of the Effective Date of this Consent Order.
+
+       In the event that FinCEN determines that Brink’s has made a misrepresentation or failed to
+
+comply with this Consent Order, or any portion thereof, all statements made by or on behalf of Brink’s
+
+to FinCEN, including the Statement of Facts, whether prior or subsequent to this Consent Order, will
+
+be admissible in evidence in any and all proceedings brought by or on behalf of FinCEN. Brink’s
+
+agrees that it will not assert any claim under the Constitution of the United States of America, Rule
+
+408 of the Federal Rules of Evidence, or any other law or federal rule that any such statements should
+
+be suppressed or are otherwise inadmissible. Such statements shall be treated as binding admissions,
+
+and Brink’s agrees that it shall be precluded from disputing or contesting any such statements.
+
+FinCEN shall have sole discretion over the decision to impute conduct or statements of any director,
+
+
+
+
+                                                 37
+officer, employee, agent, or any person or entity acting on behalf of, or at the direction of Brink’s in
+
+determining whether Brink’s has violated any provision of this Consent Order.
+
+   XII.    PUBLIC STATEMENTS
+
+       Brink’s agrees that it shall not, nor shall its attorneys, agents, partners, directors, officers,
+
+employees, affiliates, or any other person authorized to speak on its behalf or within its authority or
+
+control, take any action or make any public statement, directly or indirectly, contradicting its
+
+admissions and acceptance of responsibility or any terms of this Consent Order, including any fact
+
+finding, determination, or conclusion of law in this Consent Order.
+
+       FinCEN shall have sole discretion to determine whether any action or statement made by
+
+Brink’s, or by any person under the authority, control, or speaking on behalf of Brink’s contradicts
+
+this Consent Order, and whether Brink’s has repudiated such statement.
+
+   XIII. RECORD RETENTION
+
+       In addition to any other record retention required under applicable law, Brink’s agrees to retain
+
+all documents and records required to be prepared or recorded under this Consent Order or otherwise
+
+necessary to demonstrate full compliance with each provision of this Consent Order, including
+
+supporting data and documentation. Brink’s agrees to retain these records for a period of 6 years after
+
+creation of the record, unless required to retain them for a longer period of time under applicable law.
+
+   XIV. SEVERABILITY
+
+       Brink’s agrees that if a court of competent jurisdiction considers any of the provisions of this
+
+Consent Order unenforceable, such unenforceability does not render the entire Consent Order
+
+unenforceable. Rather, the entire Consent Order will be construed as if not containing the particular
+
+
+
+
+                                                  38
+unenforceable provision(s), and the rights and obligations of FinCEN and Brink’s shall be construed
+
+and enforced accordingly.
+
+   XV.     SUCCESSORS AND ASSIGNS
+
+       Brink’s agrees that the provisions of this Consent Order are binding on its owners, officers,
+
+employees, agents, representatives, affiliates, successors, assigns, and transferees to whom Brink’s
+
+agrees to provide a copy of the executed Consent Order. Should Brink’s seek to sell, merge, transfer,
+
+or assign its operations, or any portion thereof, that are the subject of this Consent Order, Brink’s
+
+must, as a condition of sale, merger, transfer, or assignment obtain the written agreement of the buyer,
+
+merging entity, transferee, or assignee to comply with this Consent Order.
+
+   XVI. MODIFICATIONS AND HEADINGS
+
+       This Consent Order can only be modified with the express written consent of FinCEN and
+
+Brink’s. The headings in this Consent Order are inserted for convenience only and are not intended
+
+to affect the meaning or interpretation of this Consent Order or its individual terms.
+
+   XVII. AUTHORIZED REPRESENTATIVE
+
+       Brink’s representative, by consenting to and approving this Consent Order, hereby represents
+
+and warrants that the representative has full power and authority to consent to and approve this
+
+Consent Order for and on behalf of Brink’s, and further represents and warrants that Brink’s agrees
+
+to be bound by the terms and conditions of this Consent Order.
+
+
+
+
+                                                  39
+   XVIII. NOTIFICATION
+
+       Unless otherwise specified herein, whenever notifications, submissions, or communications
+
+are required by this Consent Order, it shall be made in writing and sent via first-class mail and
+
+simultaneous email, addressed as follows:
+
+       To FinCEN:       Associate Director, Enforcement and Compliance Division
+                        Financial Crimes Enforcement Network
+                        P.O. Box 39, Vienna, Virginia 22183
+
+       To Brink’s:     General Counsel
+                       Brink’s Global Services USA
+                       400 Madison Avenue, 7th Floor
+                       New York, NY 10017
+
+                       Brink’s Global Services USA
+                       c/o John Adams and Elissa Baur
+                       McGuireWoods LLP
+                       800 East Canal Street
+                       Richmond, VA 23219
+
+       Notices submitted pursuant to this paragraph will be deemed effective upon receipt unless
+
+otherwise provided in this Consent Order or approved by FinCEN in writing.
+
+   XIX. COUNTERPARTS
+
+       This Consent Order may be signed in counterpart and electronically. Each counterpart, when
+
+executed and delivered, shall be an original, and all of the counterparts together shall constitute one
+
+and the same fully executed instrument.
+
+
+
+
+                                                  40
+   XX.     EFFECTIVE DATE AND CALCULATION OF TIME
+
+       This Consent Order shall be effective upon the date signed by FinCEN. Calculation of
+
+deadlines and other time limitations set forth herein shall run from the effective date (excluding the
+
+effective date in the calculation) and be based on calendar days, unless otherwise noted, including
+
+intermediate Saturdays, Sundays, and legal holidays.
+
+       By Order of the Director of the Financial Crimes Enforcement Network.
+
+
+
+        /s/
+        ________________________________________
+        Andrea Gacki                  Date:
+        Director
+
+
+
+
+       Consented to and Approved By:
+
+
+
+       /s/
+       ________________________________________
+       Jamal Powell                      Date:
+       Brink’s Global Services USA, Inc.
+
+
+
+
+                                                 41
+

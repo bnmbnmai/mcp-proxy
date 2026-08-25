@@ -1,0 +1,1428 @@
+            2024-CFPB-0016    Document 1    Filed 12/09/2024   Page 1 of 32
+
+
+
+                   UNITED STATES OF AMERICA
+             CONSUMER FINANCIAL PROTECTION BUREAU
+
+ADMINISTRATIVE PROCEEDING
+File No. 2024-CFPB-0016
+
+
+In the Matter of:
+
+                                              CONSENT ORDER
+
+
+
+Performant Recovery, Inc.
+
+
+
+
+      The Consumer Financial Protection Bureau (Bureau) has reviewed the debt-
+
+collection activities of Performant Recovery, Inc. (Respondent, as defined below)
+
+and has identified the following violations of law: From 2015 to 2020, when
+
+borrowers called Respondent seeking to get their student loans out of default,
+
+Respondent delayed many borrowers’ loan rehabilitations so that collection costs
+
+would be added to their loans. Through these practices, Respondent generated fees
+
+for itself while causing individual borrowers to incur thousands of dollars in
+
+additional costs added to their loan obligations. Respondent thereby engaged in
+
+unfair and abusive acts and practices in violation of the Consumer Financial
+
+Protection Act, 12 U.S.C. §§ 5531(c) & (d), 5536(a)(1)(B), and used unfair and
+
+unconscionable means to collect or attempt to collect debts in violation of the Fair
+           2024-CFPB-0016    Document 1         Filed 12/09/2024   Page 2 of 32
+
+
+
+Debt Collection Practices Act (FDCPA), 15 U.S.C. § 1692f.
+
+      Under §§ 1053 and 1055 of the Consumer Financial Protection Act of 2010
+
+(CFPA), 12 U.S.C. §§ 5563, 5565, the Bureau issues this Consent Order (Consent
+
+Order).
+
+                                          I.
+
+                                   Jurisdiction
+
+1.    The Bureau has jurisdiction over this matter under §§ 1053 and 1055 of the
+
+      CFPA, 12 U.S.C. §§ 5563 and 5565; and § 808 of the FDCPA, 15 U.S.C.
+
+      § 1692l(b)(6).
+
+                                          II.
+
+                                   Stipulation
+
+2.    Respondent has executed a “Stipulation and Consent to the Issuance of a
+
+      Consent Order,” dated December 5, 2024 (Stipulation), which is
+
+      incorporated by reference and is accepted by the Bureau. By this Stipulation,
+
+      Respondent has consented to the issuance of this Consent Order by the
+
+      Bureau under §§ 1053 and 1055 of the CFPA, 12 U.S.C. §§ 5563, 5565,
+
+      without admitting or denying any of the findings of fact or conclusions of
+
+      law, except that Respondent admits the facts necessary to establish the
+
+      Bureau’s jurisdiction over Respondent and the subject matter of this action.
+
+
+                                          2
+            2024-CFPB-0016        Document 1        Filed 12/09/2024   Page 3 of 32
+
+
+
+                                               III.
+
+                                        Definitions
+
+3.   The following definitions apply to this Consent Order:
+
+     a.          “Affected Consumers” means consumers who:
+
+            i.      defaulted on a Federal Family Education Loan Program (FFELP)
+
+                    Loan between July 1, 2015, and March 13, 2020;
+
+           ii.      called Respondent within 65 days following default;
+
+          iii.      entered into a rehabilitation agreement for that loan between 66
+
+                    and 95 days following default;
+
+          iv.       completed rehabilitation; and
+
+           v.       incurred collection costs on that rehabilitated loan.
+
+     b.          “Assisting Others” includes, but is not limited to:
+
+            i.      consulting in any form whatsoever;
+
+           ii.      providing administrative support services;
+
+          iii.      performing customer-service functions;
+
+          iv.       performing billing, or payment services of any kind; and
+
+           v.       acting or serving as an owner, officer, director, manager, or
+
+                    principal of any entity.
+
+     c.          “Effective Date” means the date on which the Consent Order is
+
+                 entered on the administrative docket.
+                                                3
+     2024-CFPB-0016   Document 1         Filed 12/09/2024   Page 4 of 32
+
+
+
+d.   “Enforcement Director” means the Enforcement Director of the
+
+     Division of Enforcement for the Consumer Financial Protection
+
+     Bureau, or their delegate.
+
+e.   “FFELP Loans” means commercially-held federal student loans made
+
+     through the Federal Family Education Loan Program.
+
+f.   “Officers” means the individuals holding the titles Chief Executive
+
+     Officer and Chief Financial Officer for Respondent.
+
+g.   “Related Consumer Action” means a private action by or on behalf of
+
+     one or more consumers or an enforcement action by another
+
+     governmental agency brought against Respondent based on
+
+     substantially the same facts as described in Section IV of this Consent
+
+     Order.
+
+h.   “Relevant Period” includes from July 1, 2015, to March 13, 2020.
+
+i.   “Respondent” means Performant Recovery, Inc., formerly known as
+
+     Diversified Collection Services, Inc., and its successors and assigns.
+
+j.   “Student-Loan Debt” means and includes any obligation or alleged
+
+     obligation of a consumer to pay money relating to any Federal student
+
+     loan or private student loan.
+
+k.   “Student-Loan Holder” means any entity or person who holds or owns
+
+     a student-loan debt or to which a student-loan debt has been assigned
+
+
+                                     4
+           2024-CFPB-0016     Document 1       Filed 12/09/2024   Page 5 of 32
+
+
+
+            or transferred, including without limitation any creditor, guaranty
+
+            agency, or debt buyer.
+
+                                        IV.
+
+                        Bureau Findings and Conclusions
+
+The Bureau finds the following:
+
+4.    Respondent is a California corporation headquartered in Plantation, Florida.
+
+      At all relevant times, Respondent regularly collected on student-loan debt.
+
+      Accordingly, Respondent offered or provided a consumer-financial product
+
+      or service and is a “covered person” under the CFPA, 12 U.S.C. §§ 5481(5),
+
+      (6)(A), (15)(A)(i) & (x).
+
+5.    At all relevant times, Respondent was a “debt collector” under the FDCPA.
+
+      15 U.S.C. § 1692a(6).
+
+                    Rehabilitation of Defaulted FFELP Loans
+
+6.    Borrowers who have defaulted on FFELP Loans have a one-time right to
+
+      rehabilitate their loans. 20 U.S.C. § 1078-6(a)(5). By entering into a
+
+      rehabilitation agreement and making a series of “reasonable and affordable”
+
+      payments, borrowers can get their loans back into good standing. 20 U.S.C.
+
+      § 1078-6(a)(1).
+
+7.    Once rehabilitated, the loan’s defaulted status is removed from the
+
+      borrower’s credit history. The borrower regains eligibility for federal student
+
+                                           5
+           2024-CFPB-0016     Document 1       Filed 12/09/2024   Page 6 of 32
+
+
+
+      aid and other benefits such as deferment, income-based repayments, and
+
+      loan forgiveness. And if the borrower’s income-tax refunds were being
+
+      offset to pay the defaulted loan, these offsets cease upon rehabilitation
+
+      because the loan is no longer in default.
+
+8.    Borrowers who have defaulted on FFELP Loans are generally required to
+
+      pay “reasonable collection costs,” 20 U.S.C. § 1091a(b)(1), including when
+
+      they rehabilitate a loan. See 20 U.S.C. § 1079-6(a)(1)(D)(i)(II). But if a
+
+      borrower enters into a loan-rehabilitation agreement within 65 days of
+
+      defaulting on the loan, the borrower can avoid these significant costs.
+
+      Generally, debt-collection agencies have not earned fees for loan
+
+      rehabilitations without added collection costs.
+
+                Respondent’s Delay of Borrowers’ Rehabilitations
+
+9.    So, to earn fees on accounts where borrowers called Respondent within 65
+
+      days of default (pre-65 borrowers), Respondent used its control over the
+
+      rehabilitation process to delay these borrowers’ entry into loan-rehabilitation
+
+      agreements until after the 65th day—so that collection costs would be
+
+      imposed, and Respondent would earn fees. Respondent’s delay practices
+
+      occurred at multiple stages.
+
+10.   Respondent routed pre-65 borrowers’ calls to specialized agents who were
+
+      instructed to forestall any rehabilitation agreement until after the 65th day.
+
+
+                                           6
+           2024-CFPB-0016     Document 1       Filed 12/09/2024   Page 7 of 32
+
+
+
+      As a manager explained in an internal email:
+
+                   We have a special process on dealing with
+                   [defaulted borrower] accounts that have not had
+                   collection costs added to their accounts yet. . . .
+                   The objective is to delay getting these accounts
+                   into billing prior to day 65 . . . . Again the
+                   objective is to delay as much as possible without
+                   getting Performant in trouble. If we put the
+                   borrower into billing prior to day 65 Performant
+                   will not get paid on the rehab.
+
+      (“Into billing” meant entry into a rehabilitation agreement.)
+
+11.   The same manager said in emails to one of the specialized agents assigned to
+
+      handle calls from pre-65 borrowers: “Remember we are trying to
+
+      delay 놴
+            놳 we don’t want them in billing yet,” and “. . . [W]e really want to
+            놷
+            놶
+            놵
+            놲
+
+      delay as much as possible.”
+
+12.   Instead of filling out rehabilitation forms electronically over the phone (as
+
+      Respondent did with other borrowers), Respondent told pre-65 borrowers
+
+      that they would need to wait to receive blank forms in the mail—which
+
+      sometimes never arrived. Respondent instructed these pre-65 borrowers to
+
+      fill out the forms on their own and return them by mail.
+
+13.   Respondent typically did not use email, facsimile, or other electronic means
+
+      to send pre-65 borrowers these documents, even refusing to do so when
+
+      borrowers asked. As a manager explained to the specialized agents, “I do not
+
+      want any of you to offer them our fax number . . . . [W]e want them to mail
+
+                                           7
+           2024-CFPB-0016     Document 1        Filed 12/09/2024   Page 8 of 32
+
+
+
+      all documents. Remember the whole objective is to DELAY, DELAY,
+
+      DELAY.”
+
+14.   If pre-65 borrowers called in stating that they had waited a week, as
+
+      instructed, and still had received no forms, agents responded that the form
+
+      would need to be mailed again and instructed borrowers to wait another
+
+      week before calling back. In contrast, Respondent used email, facsimile, and
+
+      other electronic means to convey documents for borrowers seeking
+
+      rehabilitations after the 65th day.
+
+15.   Agents told pre-65 borrowers that after mailing back the completed form,
+
+      they should wait a week and then call in to make sure their forms had been
+
+      received. These borrowers could not advance their rehabilitation applications
+
+      without reaching one of the specialized agents, confirming receipt of mailed
+
+      paperwork, and receiving additional instructions on next steps.
+
+16.   But in a number of instances, pre-65 borrowers who called Respondent after
+
+      mailing their completed forms could not get through to a specialized agent.
+
+      Phones were sometimes unanswered, voicemail was sometimes full or
+
+      inoperative, and agents didn’t always respond to voicemails. When
+
+      specialized agents did respond to voicemails, it was frequently days later,
+
+      and agents would typically attempt only one call back.
+
+17.   For a substantial period, specialized agents did not instruct pre-65 borrowers
+
+
+                                            8
+           2024-CFPB-0016     Document 1       Filed 12/09/2024   Page 9 of 32
+
+
+
+      to include required supporting documentation—such as income tax
+
+      returns—when initially returning their completed forms. Only after these
+
+      borrowers had mailed the completed forms and followed up by phone did
+
+      specialized agents tell the borrowers that they also needed to mail the
+
+      supporting documentation.
+
+18.   If there were any errors or omissions in the forms submitted by a pre-65
+
+      borrower, or if any of the documentation was missing, specialized agents
+
+      sometimes took no action on the rehabilitations unless the borrower called
+
+      in, asked what corrections, additional information, or documentation was
+
+      needed, and subsequently mailed it all in. Specialized agents sometimes
+
+      provided little or no assistance to borrowers in gathering the required
+
+      supporting documentation or explaining what forms were needed— for
+
+      example, if borrowers didn’t have tax returns as proof of income.
+
+19.   A further impediment for borrowers was the manner in which Respondent
+
+      offered rehabilitation payment amounts. Respondent sometimes wouldn’t
+
+      offer these borrowers the lowest payment amounts until after the 65th day.
+
+      Under Department of Education regulations, borrowers are entitled to make
+
+      income-driven, “reasonable and affordable” rehabilitation payments. But if a
+
+      borrower objects to a payment option based on discretionary income (known
+
+      as “Option 1”), 34 C.F.R. § 682.405(b)(1)(iii), the borrower is entitled to pay
+
+
+                                           9
+           2024-CFPB-0016    Document 1    Filed 12/09/2024   Page 10 of 32
+
+
+
+      an amount that takes into account certain monthly expenses (known as
+
+      “Option 2”), see 34 C.F.R. § 682.405(b)(1)(vii). The Option 2 amount is
+
+      almost always lower than the Option 1 amount. However, Respondent
+
+      sometimes offered pre-65 borrowers only the Option 1 amount, waiting until
+
+      after the 65th day to offer a lower Option 2 amount.
+
+20.   Some pre-65 borrowers’ rehabilitations were also delayed at the audit stage.
+
+      After these borrowers had sent in the required documentation, Respondent
+
+      would not automatically forward these documents to the audit department,
+
+      but instead waited for borrowers to call back, reach an agent, and confirm
+
+      receipt. Specialized agents would instruct these borrowers to call back
+
+      (again) in a few days to obtain the approved payment amount following the
+
+      audit.
+
+21.   And even after a pre-65 borrower had completed all required forms and
+
+      supplied all required documentation and the borrower’s payment-amount
+
+      had passed the audit, Respondent would sometimes still hold up the loan
+
+      with the auditor if it was close to the 65th day. For example, a manager
+
+      instructed an auditor to sit on account at day 58: “[T]his is a Pre 65 day
+
+      account please don’t put the borrower into payment until day 65 has past
+
+      [sic].”
+
+22.   In contrast to this drawn-out process for pre-65 borrowers, after an account
+
+
+                                          10
+           2024-CFPB-0016    Document 1    Filed 12/09/2024   Page 11 of 32
+
+
+
+      had passed the 65th day and was subject to collection costs, Respondent
+
+      assigned a dedicated collection agent to each account who then contacted
+
+      and promptly assisted the borrower in entering a rehabilitation agreement if
+
+      eligible. These agents could complete the rehabilitation paperwork over the
+
+      phone with the borrower in one or two phone calls—including filling out
+
+      forms electronically, helping the borrower track down and email required
+
+      supporting documentation, and having the borrower sign forms
+
+      electronically.
+
+ Impacts of Respondent’s Delay Practices on Borrowers Seeking Rehabilitations
+
+23.   As a result of Respondent’s delay practices, a significant number of
+
+      borrowers who called Performant within 65 days of default were unable to
+
+      enter into rehabilitation agreements until more than 65 days following
+
+      default. Respondent’s unlawful acts and practices thereby harmed these
+
+      Affected Consumers by causing them to incur collection costs—amounting
+
+      to 16% of the loans’ outstanding principal and interest at the time of
+
+      rehabilitation—which were added to their loan balances. See 20 U.S.C.
+
+      §§ 1078-6(a)(1)(D)(i)(II)(aa), (a)(1)(E)(i).
+
+24.   As a result of this 16% increase to Affected Consumers’ loan balances, they
+
+      also incurred additional interest charges.
+
+25.   Respondent’s practices further injured Affected Consumers by postponing
+
+
+                                          11
+           2024-CFPB-0016     Document 1     Filed 12/09/2024   Page 12 of 32
+
+
+
+      the benefits of loan rehabilitation, including the restoration of federal-
+
+      student-aid eligibility, the cessation of federal withholdings of tax refunds
+
+      and benefits, and the updating of credit-reporting information to reflect that
+
+      the loans were no longer in default.
+
+26.   Affected Consumers could not avoid Respondent’s practices. They were not
+
+      able to switch to a different debt-collection agency, could not typically enter
+
+      into a rehabilitation agreement directly with the loan holder, and could not
+
+      otherwise rehabilitate their loans on their own.
+
+            Respondent’s Violation of the CFPA’s Prohibition against
+
+                      Unfair and Abusive Acts and Practices
+
+27.   Section 1036(a)(1)(B) of the CFPA prohibits “unfair, deceptive, or abusive
+
+      acts or practices.” 12 U.S.C. § 5536(a)(1)(B). An act or practice is unfair if it
+
+      causes or is likely to cause consumers substantial injury that is not
+
+      reasonably avoidable and if the substantial injury is not outweighed by
+
+      countervailing benefits to consumers or to competition. 12 U.S.C. § 5531(c).
+
+28.   As described in Paragraphs 4 through 26, in connection with the collection
+
+      of defaulted student loans, in numerous instances, when Affected Consumers
+
+      called Respondent within 65 days of default to resolve their loans,
+
+      Respondent delayed these consumers to prevent them from entering
+
+      rehabilitation agreements until after the 65th day so that collection costs
+
+
+                                           12
+           2024-CFPB-0016    Document 1    Filed 12/09/2024   Page 13 of 32
+
+
+
+      would be imposed. Respondent’s practices thereby caused or were likely to
+
+      cause Affected Consumers the substantial injuries detailed above in
+
+      Paragraphs 23 through 25.
+
+29.   These substantial injuries were not reasonably avoidable. When Affected
+
+      Consumers called Respondent within 65 days of default seeking a resolution
+
+      of their defaults, Respondent delayed their entry into rehabilitation
+
+      agreements until after the 65th day so that collection costs would be added.
+
+      Affected Consumers had to rely on Respondent to enter into rehabilitation
+
+      agreements covering their defaulted loans. Affected Consumers were not
+
+      able to choose a different debt-collection agency, were typically unable to
+
+      enter into a rehabilitation agreement directly with the loan holder, and could
+
+      not otherwise rehabilitate their loans on their own.
+
+30.   The injuries to Affected Consumers were not outweighed by countervailing
+
+      benefits to consumers or competition. The practices did not benefit Affected
+
+      Consumers, whose rehabilitations were delayed until their loans became
+
+      subject to collection costs. Nor did Respondent’s practices benefit
+
+      competition in the market.
+
+31.   Thus, Respondent engaged in unfair acts and practices in violation of
+
+      §§ 1036(a)(1)(B) and 1031(c)(1) of the CFPA. 12 U.S.C. §§ 5536(a)(1)(B),
+
+      5531(c)(l).
+
+
+                                          13
+           2024-CFPB-0016     Document 1    Filed 12/09/2024   Page 14 of 32
+
+
+
+32.   An act or practice is abusive under of the CFPA if it takes unreasonable
+
+      advantage of consumers’ inability to protect their interests in using a
+
+      financial product or service. 12 U.S.C. § 5531(d)(2)(B).
+
+33.   As described in Paragraphs 4 through 26, Affected Consumers relied on
+
+      Respondent to enter into rehabilitation agreements covering their defaulted
+
+      student loans.
+
+34.   As further described in Paragraphs 4 through 26, in connection with the
+
+      servicing and collection of defaulted student loans, Respondent used this
+
+      control over the rehabilitation process to delay Affected Consumers’ entry
+
+      into rehabilitation agreements until after the 65th day—so that collection
+
+      costs would be added and Respondent would earn fees.
+
+35.   Respondent thereby took unreasonable advantage of Affected Consumers’
+
+      inability to protect their interests when seeking to resolve their defaulted
+
+      student loans and thus engaged in abusive acts and practices in violation of
+
+      §§ 1036(a)(1)(B) and 1031(d)(2)(B) of the CFPA. 12 U.S.C.
+
+      §§ 5536(a)(1)(B), 5531(d)(2)(B).
+
+           Respondent’s Violation of the FDCPA’s Prohibition against
+
+            Using Unfair or Unconscionable Means to Collect a Debt
+
+36.   Section 808 of the FDCPA prohibits debt collectors, such as Respondent,
+
+      from using any unfair or unconscionable means to collect or attempt to
+
+
+                                           14
+          2024-CFPB-0016     Document 1    Filed 12/09/2024   Page 15 of 32
+
+
+
+      collect any debt. 15 U.S.C. § 1692f. A debt collector engages in unfair or
+
+      unconscionable means if it uses practices that give it an unfair advantage
+
+      over the debtor or are inherently abusive, unscrupulous, or unethical.
+
+37.   As described in Paragraphs 4 through 26, Affected Consumers relied on
+
+      Respondent to enter into a rehabilitation agreement covering their defaulted
+
+      student loans.
+
+38.   And as further described Paragraphs 4 through 26, in connection with the
+
+      servicing and collection of defaulted student loans, Respondent used this
+
+      control over Affected Consumers’ access to loan rehabilitations to delay
+
+      many borrowers who called in within 65 days of default from entering into
+
+      rehabilitation agreements until after the 65th day—so that collection costs
+
+      would be added and Respondent would earn fees.
+
+39.   Thus, Respondent used unfair or unconscionable means to collect or attempt
+
+      to collect debts in violation of § 808 of the FDCPA. 15 U.S.C. § 1692f.
+
+                                          V.
+
+                               Conduct Provisions
+
+      Ban on Servicing, Collecting, Selling, or Buying Student-Loan Debt
+
+IT IS ORDERED, under §§ 1053 and 1055 of the CFPA, that:
+
+40.   Respondent, whether acting directly or indirectly, is restrained from:
+
+      a. Servicing or collecting on Student-Loan Debt;
+                                          15
+           2024-CFPB-0016      Document 1    Filed 12/09/2024   Page 16 of 32
+
+
+
+      b. Performing any of the following functions in connection with the
+
+         servicing or collection of Student-Loan Debt: consulting, providing
+
+         administrative support services, performing customer-service functions,
+
+         or performing billing or payment services for any borrower, debt-
+
+         collection agency, servicer, or Student-Loan Holder;
+
+      c. Holding a controlling interest in another company that services or
+
+         collects Student-Loan Debt;
+
+      d. Receiving any remuneration or other consideration in exchange for the
+
+         servicing or collection of Student-Loan Debt, provided that Respondent
+
+         may receive remuneration or other consideration from another entity
+
+         whose business includes the servicing or collection of Student-Loan Debt
+
+         if:
+
+               i. Respondent does not own or control that entity; and
+
+               ii. the remuneration or other consideration received by Respondent is
+
+                  not directly from the servicing or collection of Student-Loan Debt;
+
+                  or
+
+      e. Participating in or Assisting Others in advertising, marketing, promoting,
+
+         offering for sale, selling, or buying any Student-Loan Debt or any
+
+         information regarding a consumer relating to a Student-Loan Debt.
+
+Nothing in this Consent Order shall be read as an exception to this Paragraph.
+
+
+                                            16
+           2024-CFPB-0016    Document 1     Filed 12/09/2024   Page 17 of 32
+
+
+
+                               Prohibited Conduct
+
+IT IS ORDERED, under §§ 1053 and 1055 of the CFPA, that:
+
+41.   Respondent and its officers, agents, servants, employees, and attorneys, and
+
+      all other persons in active concert or participation with them who receive
+
+      actual notice of this Consent Order, whether acting directly or indirectly, in
+
+      connection with the servicing or collecting of debt, may not violate sections
+
+      1031 and 1036 of the CFPA, 12 U.S.C. §§ 5531 and 5536, or section 808 of
+
+      the FDCPA, 15 U.S.C. § 1692f, and are prohibited from:
+
+      a.    Attempting to service or collect on any Student-Loan Debt that is the
+
+            subject of the Consent Order, including but not limited to making any
+
+            request for payment or initiating or maintaining any collection action;
+
+            or
+
+      b.    Selling or transferring for remuneration any Student-Loan Debt that is
+
+            the subject of the Consent Order.
+
+                                          VI.
+
+                              Customer Information
+
+IT IS FURTHER ORDERED that:
+
+42.   Respondent, and its officers, agents, servants, employees, and attorneys, and
+
+      all other persons in active concert or participation with them who receive
+
+      actual notice of this Consent Order, whether acting directly or indirectly,
+                                          17
+           2024-CFPB-0016    Document 1    Filed 12/09/2024   Page 18 of 32
+
+
+
+      may not disclose, use, or benefit from customer information, including the
+
+      name, address, telephone number, email address, social security number,
+
+      other identifying information, or any data that enables access to a customer’s
+
+      account (including a credit card, bank account, or other financial account),
+
+      that Respondent obtained before the Effective Date in connection with
+
+      servicing or collecting on Student-Loan Debt; or attempt to collect, sell,
+
+      assign, or otherwise transfer any right to collect payment from any consumer
+
+      who had Student-Loan Debt serviced or collected on by Respondent.
+
+      However, customer information may be disclosed if requested by a
+
+      government agency or required by law, regulation, or court order.
+
+                                        VII.
+
+                                 Role of Officers
+
+IT IS FURTHER ORDERED that:
+
+43.   Respondent’s Officers have the ultimate responsibility for ensuring that
+
+      Respondent complies with this Consent Order.
+
+44.   Respondent’s Officers must review all plans and reports required by this
+
+      Consent Order, and any submissions to the Bureau prior to such submission.
+
+45.   One year after the Effective Date, Respondent must submit to the
+
+      Enforcement Director an accurate written compliance progress report
+
+      (Compliance Report) that has been approved by Respondent’s Officers, the
+
+                                          18
+           2024-CFPB-0016   Document 1    Filed 12/09/2024   Page 19 of 32
+
+
+
+      accuracy of which is sworn to under penalty of perjury, and which, at a
+
+      minimum:
+
+      a.    Describes the steps that Respondent’s Officers have taken to
+
+            reasonably assess whether Respondent is complying with each
+
+            applicable paragraph and subparagraph of the Order;
+
+      b.    Describes in detail whether and how Respondent has complied with
+
+            each applicable paragraph and subparagraph of the Order, including
+
+            the manner of verification of such compliance and any corrective
+
+            actions taken to remedy potential non-compliance with the applicable
+
+            requirement, paragraph, or subparagraph; and
+
+      c.    Attaches a copy of each order acknowledgment obtained under
+
+            Section X, unless previously submitted to the Bureau.
+
+46.   Respondent’s Officers must:
+
+      a.    Authorize whatever actions are necessary for Respondent to assess
+
+            whether Respondent is complying with each applicable paragraph and
+
+            subparagraph of the Order;
+
+      b.    Authorize whatever actions, including corrective actions, are
+
+            necessary for Respondent to fully comply with each applicable
+
+            paragraph and subparagraph of the Order; and
+
+      c.    Require timely reporting by management to Respondent’s Officers on
+
+
+                                         19
+           2024-CFPB-0016    Document 1    Filed 12/09/2024   Page 20 of 32
+
+
+
+            the status of compliance obligations.
+
+                          MONETARY PROVISIONS
+
+                                       VIII.
+
+                       Order to Pay Civil Money Penalty
+
+IT IS FURTHER ORDERED that:
+
+47.   Under section 1055(c) of the CFPA, 12 U.S.C. § 5565(c), by reason of the
+
+      violations of law described in Section IV of this Consent Order, Respondent
+
+      must pay a civil money penalty of $700,000 to the Bureau.
+
+48.   Within 10 days of the Effective Date, Respondent must pay the civil money
+
+      penalty by wire transfer to the Bureau or to the Bureau’s agent in
+
+      compliance with the Bureau’s wiring instructions.
+
+49.   The civil money penalty paid under this Consent Order will be deposited in
+
+      the Civil Penalty Fund of the Bureau as required by § 1017(d) of the CFPA,
+
+      12 U.S.C. § 5497(d).
+
+50.   Respondent, for all purposes, must treat the civil money penalty paid under
+
+      this Consent Order as a penalty paid to the government. Regardless of how
+
+      the Bureau ultimately uses those funds, Respondent may not:
+
+      a.    Claim, assert, or apply for a tax deduction, tax credit, or any other tax
+
+            benefit for any civil money penalty paid under this Consent Order; or
+
+      b.    Seek or accept, directly or indirectly, reimbursement or
+                                          20
+           2024-CFPB-0016    Document 1    Filed 12/09/2024   Page 21 of 32
+
+
+
+            indemnification from any source, including but not limited to payment
+
+            made under any insurance policy, with regard to any civil money
+
+            penalty paid under this Consent Order.
+
+51.   To preserve the deterrent effect of the civil money penalty in any Related
+
+      Consumer Action, Respondent may not argue that Respondent is entitled to,
+
+      nor may Respondent benefit by, any offset or reduction of any compensatory
+
+      monetary remedies imposed in the Related Consumer Action because of the
+
+      civil money penalty paid in this action or because of any payment that the
+
+      Bureau makes from the Civil Penalty Fund. If the court in any Related
+
+      Consumer Action offsets or otherwise reduces the amount of compensatory
+
+      monetary remedies imposed against Respondent based on the civil money
+
+      penalty paid in this action or based on any payment that the Bureau makes
+
+      from the Civil Penalty Fund, Respondent must, within 30 days after entry of
+
+      a final order granting such offset or reduction, notify the Bureau, and pay the
+
+      amount of the offset or reduction to the U.S. Treasury. Such a payment will
+
+      not be considered an additional civil money penalty and will not change the
+
+      amount of the civil money penalty imposed in this action.
+
+52.   In the event of any default on Respondent’s obligations to make payment
+
+      under this Consent Order, interest, computed under 28 U.S.C. § 1961, as
+
+      amended, will accrue on any outstanding amounts not paid from the
+
+
+                                          21
+           2024-CFPB-0016    Document 1    Filed 12/09/2024   Page 22 of 32
+
+
+
+      Effective Date to the date of payment, and will immediately become due and
+
+      payable.
+
+53.   Respondent must relinquish all dominion, control, and title to the funds paid
+
+      to the fullest extent permitted by law and no part of the funds may be
+
+      returned to Respondent.
+
+54.   Respondent acknowledges that its Taxpayer Identification Number (Social
+
+      Security Number or Employer Identification Number), which Respondent
+
+      previously submitted to the Bureau, may be used for collecting and reporting
+
+      on any delinquent amount arising out of this Order, in accordance with 31
+
+      U.S.C. § 7701.
+
+55.   Within 30 days of the entry of a final judgment, consent order, or settlement
+
+      in a Related Consumer Action, Respondent must notify the Enforcement
+
+      Director of the final judgment, consent order, or settlement in writing. That
+
+      notification must indicate the amount of redress, if any, that Respondent paid
+
+      or is required to pay to consumers and describe the consumers or classes of
+
+      consumers to whom that redress has been or will be paid.
+
+
+
+
+                                          22
+           2024-CFPB-0016     Document 1     Filed 12/09/2024   Page 23 of 32
+
+
+
+                         COMPLIANCE PROVISIONS
+
+                                           IX.
+
+                             Reporting Requirements
+
+IT IS FURTHER ORDERED that:
+
+56.   Respondent must notify the Bureau of any development that may affect
+
+      compliance obligations arising under this Consent Order, including but not
+
+      limited to a dissolution, assignment, sale, merger, or other action that would
+
+      result in the emergence of a successor company; the creation or dissolution
+
+      of a subsidiary, parent, or affiliate that engages in any acts or practices
+
+      subject to this Consent Order; the filing of any bankruptcy or insolvency
+
+      proceeding by or against Respondent; or a change in Respondent’s name or
+
+      address. Respondent must provide this notice, if practicable, at least 30 days
+
+      before the development, but in any case no later than 14 days after the
+
+      development.
+
+57.   Within 7 days of the Effective Date, Respondent must:
+
+      a.    Designate at least one telephone number and email, physical, and
+
+            postal addresses as points of contact that the Bureau may use to
+
+            communicate with Respondent;
+
+      b.    Identify all businesses for which Respondent is the majority owner, or
+
+            that Respondent directly or indirectly controls, by all of their names,
+
+                                           23
+           2024-CFPB-0016    Document 1    Filed 12/09/2024   Page 24 of 32
+
+
+
+            telephone numbers, and physical, postal, email, and Internet
+
+            addresses; and
+
+      c.    Describe the activities of each such business, including the products
+
+            and services offered, and the means of advertising, marketing, and
+
+            sales.
+
+58.   Respondent must report any change in the information required to be
+
+      submitted under Paragraph 57 at least 30 days before the change or as soon
+
+      as practicable after the learning about the change, whichever is sooner.
+
+                                          X.
+
+                     Order Distribution and Acknowledgment
+
+IT IS FURTHER ORDERED that:
+
+59.   Within 7 days of the Effective Date, Respondent must submit to the
+
+      Enforcement Director an acknowledgment of receipt of this Consent Order,
+
+      sworn under penalty of perjury.
+
+60.   Within 30 days of the Effective Date, Respondent must deliver a copy of this
+
+      Consent Order to each of its executive officers, as well as to any managers,
+
+      employees, service providers, or other agents and representatives who have
+
+      responsibilities related to the subject matter of the Consent Order.
+
+61.   For 5 years from the Effective Date, Respondent must deliver a copy of this
+
+      Consent Order to any business entity resulting from any change in structure
+
+                                          24
+           2024-CFPB-0016    Document 1     Filed 12/09/2024   Page 25 of 32
+
+
+
+      referred to in Section IX, any future board members and executive officers,
+
+      as well as to any managers, employees, service providers, or other agents
+
+      and representatives who will have responsibilities related to the subject
+
+      matter of the Consent Order before they assume their responsibilities.
+
+62.   Respondent must secure a signed and dated statement acknowledging receipt
+
+      of a copy of this Consent Order, within 30 days of delivery, from all persons
+
+      receiving a copy of this Consent Order under this Section.
+
+63.   Ninety days from the Effective Date, Respondent must submit to the Bureau
+
+      a list of all persons and their titles to whom this Consent Order has been
+
+      delivered under the Section of this Order titled “Order Distribution and
+
+      Acknowledgment” and a copy of all signed and dated statements
+
+      acknowledging receipt of this Consent Order under Paragraph 62.
+
+                                          XI.
+
+                                  Recordkeeping
+
+IT IS FURTHER ORDERED that:
+
+64.   Respondent must create and retain the following business records:
+
+      a.    All documents and records necessary to demonstrate full compliance
+
+            with each provision of this Consent Order, and including all
+
+            submissions to the Bureau; and
+
+      b.    All consumer complaints related to the subject matter of the Consent
+
+                                          25
+           2024-CFPB-0016     Document 1    Filed 12/09/2024   Page 26 of 32
+
+
+
+            Order (whether received directly or indirectly, such as through a third
+
+            party), and any responses to those complaints or requests.
+
+65.   All documents and records must be maintained in their original electronic
+
+      format. Data should be maintained in such a way that access, retrieval,
+
+      auditing, and production are not hindered.
+
+66.   Respondent must make the documents identified in Paragraph 65 available
+
+      to the Bureau upon the Bureau’s request.
+
+                                        XII.
+
+                                       Notices
+
+IT IS FURTHER ORDERED that:
+
+67.   Unless otherwise directed in writing by the Bureau, Respondent must
+
+      provide all submissions, requests, communications, or other documents
+
+      relating to this Consent Order in writing, with the subject line, “In re
+
+      Performant Recovery, Inc., File No. 2024-CFPB-0016,” and send them to the
+
+      following email: Enforcement_Compliance@cfpb.gov addressed as follows:
+
+            ATTN: Enforcement Director
+            Consumer Financial Protection Bureau
+            Division of Enforcement
+
+
+
+
+                                           26
+           2024-CFPB-0016    Document 1    Filed 12/09/2024   Page 27 of 32
+
+
+
+                                        XIII.
+
+                          Cooperation with the Bureau
+
+IT IS FURTHER ORDERED that:
+
+68.   Respondent must cooperate fully to help the Bureau determine the identity
+
+      and location of, and the amount of injury sustained by, each Affected
+
+      Consumer. Respondent must provide such information in its or its agents’
+
+      possession or control within 14 days of receiving a written request from the
+
+      Bureau, including account-level and borrower-level data meeting
+
+      characteristics specified by the Bureau.
+
+69.   Respondent must cooperate fully with the Bureau in this matter and in any
+
+      investigation related to or associated with the servicing or collection of
+
+      FFELP Loans. Respondent must provide truthful and complete information,
+
+      evidence, and testimony. Respondent must cause Respondent’s current
+
+      officers, employees, representatives, or agents to appear for interviews,
+
+      discovery, hearings, trials, and any other proceedings that the Bureau may
+
+      reasonably request upon 10 days written notice, or other reasonable notice,
+
+      at such places and times as the Bureau may designate, without the service of
+
+      compulsory process.
+
+70.   Respondent must remain registered for the Bureau’s Company Portal and in
+
+      connection with responding to consumer complaints and inquiries on the
+
+                                          27
+           2024-CFPB-0016    Document 1    Filed 12/09/2024   Page 28 of 32
+
+
+
+      Company Portal, must comply with the timely response requirements set
+
+      forth in §1034(b)(1)-(3) of the CFPA, 12 U.S.C. § 5534(b).
+
+                                        XIV.
+
+                             Compliance Monitoring
+
+IT IS FURTHER ORDERED that:
+
+71.   Within 14 days of receipt of a written request from the Bureau, Respondent
+
+      must submit additional Compliance Reports or other requested information,
+
+      which must be made under penalty of perjury; provide sworn testimony; or
+
+      produce documents.
+
+72.   Respondent must permit Bureau representatives to interview any employee
+
+      or other person affiliated with Respondent who has agreed to such an
+
+      interview regarding: (a) this matter; (b) anything related to or associated
+
+      with the conduct described in Section IV; or (c) compliance with the
+
+      Consent Order. The person interviewed may have counsel present.
+
+73.   Nothing in this Consent Order will limit the Bureau’s lawful use of civil
+
+      investigative demands under 12 C.F.R. § 1080.6 or other compulsory
+
+      process.
+
+
+
+
+                                          28
+           2024-CFPB-0016     Document 1    Filed 12/09/2024   Page 29 of 32
+
+
+
+                                       XV.
+
+                    Modifications to Non-Material Requirements
+
+IT IS FURTHER ORDERED that:
+
+74.   Respondent may seek a modification to non-material requirements of this
+
+      Consent Order (e.g., reasonable extensions of time and changes to reporting
+
+      requirements) by submitting a written request to the Enforcement Director.
+
+75.   The Enforcement Director may, in their discretion, modify any non-material
+
+      requirements of this Consent Order (e.g., reasonable extensions of time and
+
+      changes to reporting requirements) if they determine good cause justifies the
+
+      modification. Any such modification by the Enforcement Director must be
+
+      in writing.
+
+                                       XVI.
+
+                        ADMINISTRATIVE PROVISIONS
+
+IT IS FURTHER ORDERED that:
+
+76.   The provisions of this Consent Order do not bar, estop, or otherwise prevent
+
+      the Bureau from taking any other action against Respondent, except as
+
+      described in Paragraph 77. Further, for the avoidance of doubt, the
+
+      provisions of this Consent Order do not bar, estop, or otherwise prevent any
+
+      other person or governmental agency from taking any action against
+
+      Respondent.
+                                           29
+           2024-CFPB-0016     Document 1    Filed 12/09/2024   Page 30 of 32
+
+
+
+77.   The Bureau releases and discharges Respondent from all potential liability
+
+      for law violations that the Bureau has or might have asserted based on the
+
+      practices described in Section IV of this Consent Order, to the extent such
+
+      practices occurred before the Effective Date and the Bureau knows about
+
+      them as of the Effective Date. The Bureau may use the practices described in
+
+      this Consent Order in future enforcement actions against Respondent and its
+
+      affiliates, including, without limitation, to establish a pattern or practice of
+
+      violations or the continuation of a pattern or practice of violations or to
+
+      calculate the amount of any penalty. This release does not preclude or affect
+
+      any right of the Bureau to determine and ensure compliance with the
+
+      Consent Order, or to seek penalties for any violations of the Consent Order.
+
+78.   This Consent Order is intended to be, and will be construed as, a final
+
+      Consent Order issued under § 1053 of the CFPA, 12 U.S.C. § 5563, and
+
+      expressly does not form, and may not be construed to form, a contract
+
+      binding the Bureau or the United States.
+
+79.   This Consent Order will terminate on the later of 5 years from the Effective
+
+      Date or 5 years from the most recent date that the Bureau initiates an action
+
+      alleging any violation of the Consent Order by Respondent if such action is
+
+      initiated within 5 years of the Effective Date. If such action is dismissed or
+
+      the relevant adjudicative body rules that Respondent did not violate any
+
+
+                                           30
+           2024-CFPB-0016    Document 1    Filed 12/09/2024   Page 31 of 32
+
+
+
+      provision of the Consent Order, and the dismissal or ruling is either not
+
+      appealed or upheld on appeal, then the Consent Order will terminate as
+
+      though the action had never been filed. The Consent Order will remain
+
+      effective and enforceable until such time, except to the extent that any
+
+      provisions of this Consent Order have been amended, suspended, waived, or
+
+      terminated in writing by the Bureau or its designated agent.
+
+80.   Calculation of time limitations will run from the Effective Date and be based
+
+      on calendar days, unless otherwise noted.
+
+81.   Should Respondent seek to transfer or assign all or part of its operations that
+
+      are subject to this Consent Order, Respondent must, as a condition of sale,
+
+      obtain the written agreement of the transferee or assignee to comply with all
+
+      applicable provisions of this Consent Order.
+
+82.   The provisions of this Consent Order will be enforceable by the Bureau. For
+
+      any violation of this Consent Order, the Bureau may impose the maximum
+
+      amount of civil money penalties allowed under §1055(c) of the CFPA, 12
+
+      U.S.C. § 5565(c). In connection with any attempt by the Bureau to enforce
+
+      this Consent Order in federal district court, the Bureau may serve
+
+      Respondent wherever Respondent may be found and Respondent may not
+
+      contest that court’s personal jurisdiction over Respondent.
+
+83.   This Consent Order and the accompanying Stipulation contain the complete
+
+
+                                          31
+           2024-CFPB-0016     Document 1      Filed 12/09/2024   Page 32 of 32
+
+
+
+      agreement between the parties. The parties have made no promises,
+
+      representations, or warranties other than what is contained in this Consent
+
+      Order and the accompanying Stipulation. This Consent Order and the
+
+      accompanying Stipulation supersede any prior oral or written
+
+      communications, discussions, or understandings.
+
+84.   Nothing in this Consent Order or the accompanying Stipulation may be
+
+      construed as allowing Respondent, its executives, officers, or employees to
+
+      violate any law, rule, or regulation.
+
+IT IS SO ORDERED, this 9th day of December, 2024.
+                                        t
+                                                  f
+                                       ____________________________
+                                       Rohit Chopra
+                                       Director
+                                       Consumer Financial Protection Bureau
+
+
+
+
+                                           32
+

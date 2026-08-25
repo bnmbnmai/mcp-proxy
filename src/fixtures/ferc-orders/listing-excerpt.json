@@ -1,0 +1,51 @@
+[
+  {
+    "institution": "Digi Power X Inc. f/k/a Digihost Technology Inc.",
+    "docket": "IN25-4-000",
+    "date": "2026-08-03",
+    "title": "Order Approving Stipulation and Consent Agreement",
+    "type": "Stipulation and Consent",
+    "sourceUrl": "https://cms.ferc.gov/sites/default/files/2026-08/20260803-196FERC61100-IN25-4-000-Digihost-Settlement%20Agreement.pdf"
+  },
+  {
+    "institution": "Interstate Power and Light Company",
+    "docket": "IN25-6-000",
+    "date": "2026-04-17",
+    "title": "Order Approving Stipulation and Consent Agreement",
+    "type": "Stipulation and Consent",
+    "sourceUrl": "https://cms.ferc.gov/sites/default/files/2026-04/20260417-195FERC61048-IN25-6-000-Interstate%20Power%20and%20Light%20Co-Settlement%20Agreement.pdf"
+  },
+  {
+    "institution": "MPH Rockaway Peakers, LLC and Bayswater Peaking Facility, LLC",
+    "docket": "IN25-10-000",
+    "date": "2026-04-08",
+    "title": "Order Approving Stipulation and Consent Agreement",
+    "type": "Stipulation and Consent",
+    "sourceUrl": "https://cms.ferc.gov/sites/default/files/2026-04/20260408-195FERC61019-IN25-10-000-MPH%20Rockaway%20Peakers%2C%20LLC%20and%20Bayswater-Settlement%20Agreement.pdf"
+  },
+  {
+    "institution": "Terra-Gen, LLC",
+    "docket": "IN26-2-000",
+    "date": "2026-04-07",
+    "title": "Order Approving Stipulation and Consent Agreement",
+    "type": "Stipulation and Consent",
+    "sourceUrl": "https://cms.ferc.gov/sites/default/files/2026-04/20260407-195FERC61016-IN26-2-000-Terra-Gen%2C%20LLC-Settlement%20Agreement.pdf"
+  },
+  {
+    "institution": "Tenaska Power Services Co.",
+    "docket": "IN25-13-000",
+    "date": "2026-01-12",
+    "title": "Order Approving Stipulation and Consent Agreement",
+    "type": "Stipulation and Consent",
+    "sourceUrl": "https://cms.ferc.gov/sites/default/files/2026-01/20260112-194FERC61029-IN25-13-000-Tenaska%20Power%20Services%20Co-Settlement%20Agreement.pdf"
+  },
+  {
+    "institution": "Aaron Hall",
+    "individual": "Aaron Hall",
+    "docket": "IN12-17-000",
+    "date": "2025-01-10",
+    "title": "Order Approving Stipulation and Consent Agreement",
+    "type": "People",
+    "sourceUrl": "https://cms.ferc.gov/sites/default/files/2025-01/20250110-190ferc61014-in12-17-000-total-et-al-settlement-agreement.pdf"
+  }
+]

@@ -1,0 +1,113 @@
+{
+  "ok": true,
+  "product": "uscg-d13-lnm",
+  "status": "ok",
+  "reason": null,
+  "fetchedAt": "2026-08-18T00:00:00.000Z",
+  "asOf": "2026-08-12",
+  "week": "32-2026",
+  "year": 2026,
+  "edition": "32-2026",
+  "district": "13",
+  "districtName": "Northwest",
+  "sources": {
+    "listing": "https://www.navcen.uscg.gov/local-notices-to-mariners?district=13+0&subdistrict=n",
+    "pdfPattern": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13{WW}{YYYY}.pdf",
+    "pdfUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf"
+  },
+  "editions": [
+    {
+      "week": 31,
+      "year": 2026,
+      "edition": "31-2026",
+      "href": "/sites/default/files/pdf/lnms/lnm13312026.pdf",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13312026.pdf"
+    },
+    {
+      "week": 32,
+      "year": 2026,
+      "edition": "32-2026",
+      "href": "/sites/default/files/pdf/lnms/lnm13322026.pdf",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf"
+    }
+  ],
+  "notices": [
+    {
+      "week": "32-2026",
+      "section": "Federal Discrepancies",
+      "waterway": "Anacortes Harbor",
+      "text": "Anacortes Channel Light 4 LLNR 19055 TRLB/STRUCT MISSING/STRUCT DEST FD",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf"
+    },
+    {
+      "week": "32-2026",
+      "section": "Temporary Changes",
+      "waterway": "Anacortes Harbor",
+      "text": "Anacortes Channel Light 4 LLNR 19055 TRLB FD",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf"
+    },
+    {
+      "week": "32-2026",
+      "section": "Federal Discrepancies",
+      "waterway": "Astoria",
+      "text": "Tansy Point Range Buoy 35B LLNR 10090 SINKING FD",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf"
+    },
+    {
+      "week": "32-2026",
+      "section": "Additional MSI Categories",
+      "waterway": "Astoria",
+      "text": "Tansy Point - Marine Construction The M/V ESSAYONS will be conducting dredging activities near Puget Island, (RM 19+40 to RM 21+05), between 31 Jul – 04 Aug Lat: Astoria/General/Marine (Excluding Bridges) 2026. Disposal sites with be located at RM 8 (WA side). USACE requests mariners transit at their slowest safe speed to minimize wake 46° 13' 23\" Construction (Excluding when in the vicinity of a dredge and proceed with caution after passing arrangements have been made on VHF-FM channel 13. Lon: Bridges)/Dredging Vessel(s) and/or equipment may encroach into the channel. Mariners are advised that the start and ending dates for dredging -123° 44' activities may vary due to unforeseen on-site conditions, such as gill net fishing, weather and other factors. 54\"",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf"
+    },
+    {
+      "week": "32-2026",
+      "section": "Federal Discrepancies",
+      "waterway": "Baker Bay West Channel",
+      "text": "Baker Bay West Channel Entrance Jetty Light 1 LLNR 14415 DAYMK MISSING FD",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf"
+    },
+    {
+      "week": "32-2026",
+      "section": "Additional MSI Categories",
+      "waterway": "Bay Center Channel",
+      "text": "South Willapa Bay - Bay Center Marine Willapa Bay Maintenance Dredging will be conducting dredging and disposal operations on the Palix River near Bay Center, WA from Channel/General/Marine Construction 23 Jul – 30 Aug 2026. Dredging and disposal operations will be 24 hours per day, 7 days per week. The Derrick \"Ellis Island\" will Construction (Excluding (Excluding Bridges) perform all dredging. The tug \"James T\" will perform all towing operations. Both the Derrick \"Ellis Island\" and Tug “James T\" will Bridges)/Dredging monitor VHF channel 16 and use VHF channel 72 for operations. Disposal sites will occur at the South Channel Placement Site located in Willapa Bay. Dredging. Mariners are requested to transit at their slowest safe speed to minimize wake and proceed with caution after passing arrangements have been made. For additional information, contact Darrell Jamieson at (360) 984-9178 or email",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf"
+    },
+    {
+      "week": "32-2026",
+      "section": "Additional MSI Categories",
+      "waterway": "Bellingham Bay",
+      "text": "Hale Passage - Bellingham Bay/General/Marine Marine Events 29 AUG 2026, 1200-1300. Aquatic leg of multisport relay race held in Bellingham Bay. Leg begins at Waypoint Park and Events/Regatta (Race) ends at Marine Park. 50+ paddle craft expected to participate. Hale Passage - Bellingham Bay/General/Marine Marine Events 02 APR - 24 SEP 2026, 1800-2100. Weekly sailing regatta on Thursday evenings in Bellingham Bay. Events/Regatta (Race)",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf"
+    },
+    {
+      "week": "32-2026",
+      "section": "Federal Discrepancies",
+      "waterway": "Bonneville Pool",
+      "text": "Bonneville Pool Lighted Buoy 4 LLNR 11768 SINKING FD",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf"
+    },
+    {
+      "week": "32-2026",
+      "section": "Federal Discrepancies",
+      "waterway": "Bonneville Pool",
+      "text": "Wind Mountain Lower Range Front Light 17 LLNR 11840 LT EXT FD",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf"
+    },
+    {
+      "week": "32-2026",
+      "section": "Federal Discrepancies",
+      "waterway": "Bonneville Pool",
+      "text": "Bonneville Pool Light 22 LLNR 11855 LT EXT FD",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf"
+    },
+    {
+      "week": "32-2026",
+      "section": "Federal Discrepancies Corrected",
+      "waterway": "Bonneville Pool",
+      "text": "Wind Mountain Lower Range Rear Light LLNR 11845 WATCHING PROPERLY FD 2026-08-01",
+      "sourceUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf"
+    }
+  ]
+}
