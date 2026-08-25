@@ -246,10 +246,13 @@ async function main(): Promise<void> {
       assert.ok(!(ticksTool?.description ?? "").includes("PNW barns"));
       assert.ok((ticksTool?.description ?? "").includes("ticks[] + history"));
       assert.ok((ticksTool?.description ?? "").includes("entire current table"));
+      assert.equal((ticksTool?.description ?? "").split("Paid JSON is").length - 1, 1);
+      assert.equal((ticksTool?.description ?? "").split("One $0.05 GET returns the entire current table").length - 1, 1);
       assert.ok(!(ticksTool?.description ?? "").includes("entire current cache"));
       assert.ok(!(ticksTool?.description ?? "").includes("Entire current cache"));
       const icoTool = listBody.result.tools.find((t) => t.name === "ico-mpn");
       assert.ok((icoTool?.description ?? "").includes("newest 100 official texts"));
+      assert.equal((icoTool?.description ?? "").split("One $0.05 GET returns the newest 100 official texts").length - 1, 1);
       assert.ok(!(icoTool?.description ?? "").includes("entire current cache"));
       assert.ok(!(ticksTool?.description ?? "").includes("Not people"));
       assert.ok(!(ticksTool?.description ?? "").includes("Not a new SKU"));

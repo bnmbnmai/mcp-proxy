@@ -242,6 +242,19 @@ export function mcpDiscovery(origin = LIVE_ORIGIN, catalog: LivePaidSku[]): Reco
   };
 }
 
+function mcpToolDescription(base: string, sku: LivePaidSku): string {
+  const lead = `GET ${base}${sku.path} — $${sku.priceUsdc} USDC on Base to ${PAY_TO}. ${sku.summary}`.trim();
+  const closer = "Unpaid returns HTTP 402. After a valid X-PAYMENT, the same URL returns JSON.";
+  if (sku.summary.includes("Paid JSON is") && sku.summary.includes("One $0.05 GET returns")) {
+    return `${lead} ${closer}`;
+  }
+  const paid = `Paid JSON is ${sku.paidJson ?? paidJsonForPath(sku.path)}${countLabel(sku) ? ` (${countLabel(sku)} in catalog)` : ""}.`;
+  const bag = isTablePath(sku.path)
+    ? "One $0.05 GET returns the entire current table."
+    : "One $0.05 GET returns the newest 100 official texts. Older pages are another $0.05 on the same URL (page/before).";
+  return `${lead} ${paid} ${bag} ${closer}`;
+}
+
 export function mcpToolDescriptors(
   origin = LIVE_ORIGIN,
   catalog: LivePaidSku[],
@@ -259,14 +272,7 @@ export function mcpToolDescriptors(
   return catalog.map((sku) => ({
     name: sku.name,
     title: sku.path === "/ticks" ? "US hay, cattle, and grain ticks" : sku.name,
-    description:
-      `GET ${base}${sku.path} — $${sku.priceUsdc} USDC on Base to ${PAY_TO}. ${sku.summary} ` +
-      `Paid JSON is ${sku.paidJson ?? paidJsonForPath(sku.path)}` +
-      `${countLabel(sku) ? ` (${countLabel(sku)} in catalog)` : ""}. ` +
-      (isTablePath(sku.path)
-        ? "One $0.05 GET returns the entire current table. "
-        : "One $0.05 GET returns the newest 100 official texts. Older pages are another $0.05 on the same URL (page/before). ") +
-      "Unpaid returns HTTP 402. After a valid X-PAYMENT, the same URL returns JSON.",
+    description: mcpToolDescription(base, sku),
     inputSchema: {
       type: "object",
       properties: {
