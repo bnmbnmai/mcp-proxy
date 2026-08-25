@@ -426,7 +426,10 @@ function noticePagePdfRows(html: string, pageUrl?: string): IcoMpnListingRow[] {
     .replace(/\s*\|\s*ICO\s*$/i, "")
     .trim();
   const h1 = stripTags((html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i) || [])[1] || "").trim();
-  const institution = (h1 || title).replace(/\s+Monetary Penalty Notice.*$/i, "").trim();
+  const institution = (h1 || title)
+    .replace(/\s+Monetary Penalty Notice.*$/i, "")
+    .replace(/\s+MPN\s*$/i, "")
+    .trim();
   const date = noticePageDate(html, pageUrl);
   const hrefs = [
     ...html.matchAll(/<(?:a|further-Reading)\b[^>]+(?:href|x-href)="([^"]+)"[^>]*>/gi),
@@ -436,13 +439,15 @@ function noticePagePdfRows(html: string, pageUrl?: string): IcoMpnListingRow[] {
     const href = absolutizeIcoHref(raw);
     if (!officialIcoMpnPdfUrl(href)) continue;
     if (!isMpnPdfFilename(href)) continue;
+    const pdfId = pdfIdFromUrl(href) ?? "";
+    const docket = FILENAME_DOCKET[pdfId] || (pageSlug && DOCKET_BARE_RE.test(pageSlug) ? pageSlug : slugFromUrl(href));
     rows.push({
       institution,
       date: date || undefined,
       title: "Monetary Penalty Notice",
       sourceUrl: href,
-      pdfId: pdfIdFromUrl(href) ?? "",
-      docket: pageSlug && DOCKET_BARE_RE.test(pageSlug) ? pageSlug : slugFromUrl(href),
+      pdfId,
+      docket,
     });
   }
   return rows;
@@ -678,13 +683,18 @@ function readNamedFile(dir: string, names: string[]): string | null {
 }
 
 function mergeOfficialListings(listed: IcoMpnListing[], seeds: IcoMpnListing[]): IcoMpnListing[] {
-  const seen = new Set<string>();
+  const seenId = new Set<string>();
+  const seenPdf = new Set<string>();
   const out: IcoMpnListing[] = [];
-  for (const row of [...listed, ...seeds]) {
-    if (!row.id || seen.has(row.id)) continue;
-    seen.add(row.id);
+  for (const row of [...seeds, ...listed]) {
+    const pdfKey = (row.sourceUrl || row.pdfId || "").toLowerCase();
+    if (!row.id || seenId.has(row.id)) continue;
+    if (pdfKey && seenPdf.has(pdfKey)) continue;
+    seenId.add(row.id);
+    if (pdfKey) seenPdf.add(pdfKey);
     out.push(row);
   }
+  out.sort((a, b) => `${b.date ?? ""}${b.docket}`.localeCompare(`${a.date ?? ""}${a.docket}`));
   return out;
 }
 

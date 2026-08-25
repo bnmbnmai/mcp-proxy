@@ -140,6 +140,13 @@ async function main(): Promise<void> {
   assert.equal(kraNotice[0]?.docket, "kra-consultancy-ltd-mpn");
   assert.ok(officialIcoMpnPdfUrl(kraNotice[0]?.sourceUrl ?? ""));
 
+  const redditNotice = parseNoticePageHtml(
+    readFx("reddit-notice-page-excerpt.html"),
+    "https://ico.org.uk/action-weve-taken/enforcement/2026/02/reddit-inc/",
+  );
+  assert.equal(redditNotice[0]?.docket, "reddit-mpn-20260223", "seed PDF keeps the seed docket, not the page slug");
+  assert.equal(redditNotice[0]?.sourceUrl, REDDIT);
+
   const enNotice = parseNoticePageHtml(
     readFx("en-notice-page-excerpt.html"),
     "https://ico.org.uk/action-weve-taken/enforcement/2026/05/kra-consultancy-ltd-en/",
