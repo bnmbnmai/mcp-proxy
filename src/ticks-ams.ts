@@ -642,6 +642,7 @@ export function mergeAmsNationalTicks<T extends {
   sources?: string[];
   status?: string;
   reason?: string | null;
+  fetchedAt?: string | null;
 }>(payload: T, snap: AmsSnapshot | null = readAmsSnapshot()): T {
   if (!snap || snap.rows.length === 0) return payload;
   const ticks = Array.isArray(payload.ticks) ? [...payload.ticks] : [];
@@ -671,6 +672,10 @@ export function mergeAmsNationalTicks<T extends {
     if (!sources.includes(name)) sources.push(name);
   }
   const hasTicks = ticks.length > 0;
+  const fetchedAt =
+    snap.fetchedAt && (!payload.fetchedAt || snap.fetchedAt > payload.fetchedAt)
+      ? snap.fetchedAt
+      : payload.fetchedAt;
   return {
     ...payload,
     ticks,
@@ -678,6 +683,7 @@ export function mergeAmsNationalTicks<T extends {
     sources,
     status: hasTicks ? "ok" : payload.status,
     reason: hasTicks ? null : payload.reason,
+    fetchedAt,
   };
 }
 

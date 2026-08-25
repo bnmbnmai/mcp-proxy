@@ -195,6 +195,7 @@ assert.ok(merged.sources.includes("Twin Falls"));
 assert.ok(merged.sources.includes("AMS_3056 hay"));
 assert.ok(merged.sources.includes("AMS_2707 Texas Direct Hay"));
 assert.equal(merged.status, "ok");
+assert.equal(merged.fetchedAt, "2026-08-24T16:00:00Z");
 assert.ok(merged.ticks.length > idaho.ticks.length);
 
 const emptyMerged = mergeAmsNationalTicks(
