@@ -312,10 +312,11 @@ import {
   decorateExtractedBodyManifest,
   isExtractedBodySku,
   newestOfficialTextsCopy,
-  olderChunkCopy,
+  oneOfficialTextCopy,
   paidBodyOptsFromSearch,
   paidBodyQueryPath,
   paidBodyWindow,
+  SINGLE_DOC_AMOUNT_ATOMIC,
   type PaidBodyOpts,
 } from "./paid-records.js";
 import { mergeAmsNationalTicks } from "./ticks-ams.js";
@@ -897,10 +898,10 @@ function usdcDisplayFromAtomic(atomic: string | null | undefined): string | null
 }
 
 const PAID_BODY_N = paidBodyWindow();
-const PAID_WINDOW_COPY = `Newest chunk on a plain GET (${newestOfficialTextsCopy(PAID_BODY_N)}); ${olderChunkCopy(PAID_BODY_N)}.`;
-/** Shop-wide discovery. Free index/search, then pay the page. Never “entire current cache”. */
+const PAID_WINDOW_COPY = `GET ?id= one official text ($0.02). Newest chunk on a plain GET (${newestOfficialTextsCopy(PAID_BODY_N)}, $0.05); older page ?before= another $0.05.`;
+/** Shop-wide discovery. Free index/search, then pay one text or the page. Never “entire current cache”. */
 const BODY_PAGE_DISCOVERY =
-  `Extracted-body doors: free index/search on /{door}/manifest.json or /{door}/index (?q=, optional before/date), then pay the page. ${newestOfficialTextsCopy(PAID_BODY_N)} on a plain GET ($0.05); older pages on the same URL (?before, another $0.05). Table doors (/ticks, /import-alerts) stay the whole current table.`;
+  `Extracted-body doors: free index/search on /{door}/manifest.json or /{door}/index (?q=, optional before/date), then pay ${oneOfficialTextCopy()} or the page ($0.05). ${newestOfficialTextsCopy(PAID_BODY_N)} on a plain GET ($0.05); older pages on the same URL (?before, another $0.05). Table doors (/ticks, /import-alerts) stay the whole current table.`;
 
 const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> = {
   ticks: {
@@ -1990,7 +1991,7 @@ export function bazaarExtension(sku: DoorSku): Record<string, unknown> {
       input: {
         type: "http",
         method: "GET",
-        queryParams: isExtractedBodySku(sku) ? { before: "", page: "" } : {},
+        queryParams: isExtractedBodySku(sku) ? { id: "", before: "", page: "" } : {},
       },
       output: {
         type: "json",
@@ -2419,8 +2420,12 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
   };
 }
 
-export function paymentRequiredBody(resourceUrl: string, sku: DoorSku = "ticks"): Record<string, unknown> {
-  const amount = amountAtomicFor(sku);
+export function paymentRequiredBody(
+  resourceUrl: string,
+  sku: DoorSku = "ticks",
+  amountAtomic = amountAtomicFor(sku),
+): Record<string, unknown> {
+  const amount = amountAtomic;
   const copy = SKU_COPY[sku];
   const acceptV1: Record<string, unknown> = {
     scheme: "exact",
@@ -2448,8 +2453,12 @@ export function paymentRequiredBody(resourceUrl: string, sku: DoorSku = "ticks")
   };
 }
 
-export function paymentRequiredV2(resourceUrl: string, sku: DoorSku = "ticks"): Record<string, unknown> {
-  const amount = amountAtomicFor(sku);
+export function paymentRequiredV2(
+  resourceUrl: string,
+  sku: DoorSku = "ticks",
+  amountAtomic = amountAtomicFor(sku),
+): Record<string, unknown> {
+  const amount = amountAtomic;
   const copy = SKU_COPY[sku];
   const accept: Record<string, unknown> = {
     scheme: "exact",
@@ -2595,9 +2604,10 @@ function payloadExtensions(
 export function facilitatorPaymentRequirements(
   resourceUrl: string,
   sku: DoorSku,
+  amountAtomic = amountAtomicFor(sku),
 ): Record<string, unknown> {
   const accept = {
-    ...((paymentRequiredBody(resourceUrl, sku).accepts as Record<string, unknown>[])[0]),
+    ...((paymentRequiredBody(resourceUrl, sku, amountAtomic).accepts as Record<string, unknown>[])[0]),
   };
   if (isPublicBazaarSku(sku)) {
     accept.extensions = { bazaar: bazaarExtension(sku) };
@@ -2933,6 +2943,10 @@ function sendExtractedManifest(
         q: url.searchParams.get("q"),
         before: url.searchParams.get("before"),
         date: url.searchParams.get("date"),
+        paidPath: extractedCatalogPath(url.pathname.replace(/\/+$/, "") || "/").replace(
+          /\/manifest\.json$/,
+          "",
+        ),
       }),
       req,
       port,
@@ -3131,6 +3145,14 @@ function paidOpenApiOp(opts: {
     parameters: olderPages
       ? [
           {
+            name: "id",
+            in: "query",
+            required: false,
+            schema: { type: "string" },
+            description:
+              "Official catalog id from the free index. That one official text. $0.02 (20000 atomic). Same door, not a new SKU. Wins over before/page.",
+          },
+          {
             name: "before",
             in: "query",
             required: false,
@@ -3183,7 +3205,7 @@ function paidOpenApiOp(opts: {
 }
 
 const EXTRACTED_MANIFEST_OPENAPI =
-  " Free index/search (?q=, optional before/date) returns matching rows plus the page cursor to pay. Plain paid GET is the newest 100 official texts, not the entire cache. Same URL ?before is the next older page ($0.05).";
+  " Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 100 official texts ($0.05), not the entire cache. Same URL ?before is the next older page ($0.05).";
 
 function freeOpenApiOp(summary: string, description: string): Record<string, unknown> {
   const extractedCatalog =
@@ -3349,7 +3371,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       description: "Official public data as JSON. Unpaid paid routes return HTTP 402.",
       contact: { name: "BNM Data Shop", url: "https://bnm.farm/" },
       "x-guidance":
-        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. ${BODY_PAGE_DISCOVERY} Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. MCP at GET/POST /mcp lists one tool per paid GET plus free search and paid get-page. Free manifests do not include the paid body. No request body. ${noNextSkuWord()}`,
+        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. ${BODY_PAGE_DISCOVERY} Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. MCP at GET/POST /mcp lists one tool per paid GET plus free search, paid get-one ($0.02), and paid get-page ($0.05). Free manifests do not include the paid body. No request body. ${noNextSkuWord()}`,
     },
     "x-discovery": {
       ownershipProofs: [PAY_TO],
@@ -4376,7 +4398,12 @@ function paidOptsFromReq(req: IncomingMessage, sku: DoorSku): PaidBodyOpts | und
   if (!isExtractedBodySku(sku)) return undefined;
   const url = new URL(req.url || "/", "http://127.0.0.1");
   const opts = paidBodyOptsFromSearch(url.searchParams);
-  return opts.before || opts.page ? opts : {};
+  return opts.id || opts.before || opts.page ? opts : {};
+}
+
+function amountAtomicForRequest(sku: DoorSku, opts?: PaidBodyOpts): string {
+  if (isExtractedBodySku(sku) && opts?.id) return SINGLE_DOC_AMOUNT_ATOMIC;
+  return amountAtomicFor(sku);
 }
 
 async function servePaid(
@@ -4389,9 +4416,10 @@ async function servePaid(
   const copy = SKU_COPY[sku];
   const payment = paymentHeader(req);
   const opts = paidOptsFromReq(req, sku);
+  const amount = amountAtomicForRequest(sku, opts);
   const resource = resourceUrl(req, port, paidBodyQueryPath(copy.resourcePath, opts));
-  const body402 = paymentRequiredBody(resource, sku);
-  const v2 = paymentRequiredV2(resource, sku);
+  const body402 = paymentRequiredBody(resource, sku, amount);
+  const v2 = paymentRequiredV2(resource, sku, amount);
   const paymentRequiredHeader = Buffer.from(JSON.stringify(v2), "utf-8").toString("base64");
 
   if (!payment) {
@@ -4406,7 +4434,7 @@ async function servePaid(
     return;
   }
 
-  const accept = facilitatorPaymentRequirements(resource, sku);
+  const accept = facilitatorPaymentRequirements(resource, sku, amount);
   const verified = await facilitatorVerify(payment, accept);
   if (verified && (await facilitatorSettle(payment, accept))) {
     await serve();

@@ -114,7 +114,7 @@ async function main(): Promise<void> {
   assert.ok(!livePaidNames(fromLive).includes("wasde"));
   assert.equal(fromLive[0]?.priceUsdc, "0.05");
   assert.ok(fromLive.every((sku) => sku.priceUsdc === "0.05"));
-  assert.equal(mcpToolDescriptors(LIVE_ORIGIN, fromLive).length, 34);
+  assert.equal(mcpToolDescriptors(LIVE_ORIGIN, fromLive).length, 35);
   assert.equal(MCP_CONNECT, `npx -y mcp-remote ${LIVE_ORIGIN}${MCP_PATH}`);
 
   const listed = await handleMcpJsonRpc(
@@ -122,11 +122,12 @@ async function main(): Promise<void> {
     { wellKnown: wk },
   );
   const tools = (listed as { result: { tools: { name: string }[] } }).result.tools;
-  const paidTools = tools.filter((t) => t.name !== "search" && t.name !== "get-page");
+  const paidTools = tools.filter((t) => t.name !== "search" && t.name !== "get-page" && t.name !== "get-one");
   assert.equal(paidTools.length, 32);
   assert.deepEqual(paidTools.map((t) => `/${t.name}`), livePaths);
   assert.ok(tools.some((t) => t.name === "search"));
   assert.ok(tools.some((t) => t.name === "get-page"));
+  assert.ok(tools.some((t) => t.name === "get-one"));
   assert.ok(tools.some((t) => t.name === "cma-ca98"));
 
   const unknown = await handleMcpJsonRpc(
@@ -229,11 +230,12 @@ async function main(): Promise<void> {
       });
       const listBody = (await list.json()) as { result: { tools: { name: string }[] } };
       assert.deepEqual(
-        listBody.result.tools.filter((t) => t.name !== "search" && t.name !== "get-page").map((t) => t.name),
+        listBody.result.tools.filter((t) => t.name !== "search" && t.name !== "get-page" && t.name !== "get-one").map((t) => t.name),
         livePaidNames(fromLocal),
       );
       assert.ok(listBody.result.tools.some((t) => t.name === "search"));
       assert.ok(listBody.result.tools.some((t) => t.name === "get-page"));
+      assert.ok(listBody.result.tools.some((t) => t.name === "get-one"));
       assert.ok(listBody.result.tools.some((t) => t.name === "cma-ca98"));
 
       const unpaid = await fetch(`${base}${MCP_PATH}`, {

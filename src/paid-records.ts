@@ -12,6 +12,11 @@
 
 export const DEFAULT_PAID_BODY_WINDOW = 100;
 export const PAID_BODY_WINDOW_ENV = "PAID_BODY_WINDOW";
+/** Same-door GET ?id= one official text. Not a new Bazaar SKU. */
+export const SINGLE_DOC_AMOUNT_ATOMIC = "20000";
+export const SINGLE_DOC_PRICE_USDC = "0.02";
+export const PAGE_AMOUNT_ATOMIC = "50000";
+export const PAGE_PRICE_USDC = "0.05";
 
 /** Live extracted-body doors. One GET, newest N official texts. Not /ticks, /import-alerts, or Mariners. */
 export const EXTRACTED_BODY_SKUS = [
@@ -52,6 +57,8 @@ export type PaidBodyOpts = {
   before?: string;
   /** 1-based page. Page 1 is the newest chunk. Ignored when before is set. */
   page?: number;
+  /** Official catalog id. That one official text ($0.02). Wins over before/page. */
+  id?: string;
 };
 
 export function isExtractedBodySku(sku: string): sku is ExtractedBodySku {
@@ -77,11 +84,15 @@ export function olderChunkCopy(n = paidBodyWindow()): string {
   return `older chunk if they ask (?before=<id or date>, another $0.05)`;
 }
 
-/** Free-manifest note: free index/search, then pay the page. */
+export function oneOfficialTextCopy(): string {
+  return `one official text GET ?id= ($0.02)`;
+}
+
+/** Free-manifest note: free index/search, then pay one text or the page. */
 export function paidBodyCatalogNote(paidPath: string, catalogLead: string): string {
   const n = paidBodyWindow();
   const lead = catalogLead.trim().replace(/\.?$/, ".");
-  return `${lead} Free index/search (?q=, optional before/date) stays free and includes the page cursor to pay. Plain paid GET ${paidPath} is the ${newestOfficialTextsCopy(n)}; ${olderChunkCopy(n)}.`;
+  return `${lead} Free index/search (?q=, optional before/date) stays free and includes id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ${paidPath}?id= is ${oneOfficialTextCopy()}. Plain paid GET ${paidPath} is the ${newestOfficialTextsCopy(n)}; ${olderChunkCopy(n)}.`;
 }
 
 export const TICKS_CACHE_SOURCE = "idaho-hay-feeder-ticks cache";
@@ -176,6 +187,7 @@ export type PaidBodyWindowEnvelope = PaidEnvelope & {
   paidWindow: number;
   catalogCount: number;
   ids: string[];
+  id: string | null;
   before: string | null;
   nextBefore: string | null;
   prevBefore: string | null;
@@ -257,6 +269,7 @@ export function latestRecordDate(records: PaidRecord[]): string | null {
 
 export type PaidCatalogSlice = {
   records: PaidRecord[];
+  id: string | null;
   before: string | null;
   nextBefore: string | null;
   prevBefore: string | null;
@@ -268,13 +281,28 @@ function isDateCursor(raw: string): boolean {
   return raw.length === 10 && isPlausibleDate(raw);
 }
 
-/** Newest-first catalog. before=<id> starts after that id; before=<YYYY-MM-DD> starts at the first older date. */
+/** Newest-first catalog. id= is that one text; before=<id> starts after that id; before=<YYYY-MM-DD> starts at the first older date. */
 export function slicePaidCatalog(
   catalog: PaidRecord[],
   limit: number,
   opts?: PaidBodyOpts,
 ): PaidCatalogSlice {
   const pageCount = Math.max(1, Math.ceil(catalog.length / limit) || 1);
+  const rawId = str(opts?.id);
+  if (rawId) {
+    const idx = catalog.findIndex((row) => row.id === rawId);
+    const records = idx >= 0 ? [catalog[idx]] : [];
+    const page = idx >= 0 ? Math.floor(idx / limit) + 1 : 1;
+    return {
+      records,
+      id: rawId,
+      before: null,
+      nextBefore: null,
+      prevBefore: null,
+      page,
+      pageCount,
+    };
+  }
   let start = 0;
   let before: string | null = null;
   const rawBefore = str(opts?.before);
@@ -298,7 +326,7 @@ export function slicePaidCatalog(
     start + records.length < catalog.length ? (records[records.length - 1]?.id ?? null) : null;
   const prevStart = Math.max(0, start - limit);
   const prevBefore = start <= 0 ? null : prevStart <= 0 ? null : (catalog[prevStart - 1]?.id ?? null);
-  return { records, before, nextBefore, prevBefore, page, pageCount };
+  return { records, id: null, before, nextBefore, prevBefore, page, pageCount };
 }
 
 export function attachPaidPageCursors(
@@ -336,6 +364,7 @@ export type CatalogSearchQuery = {
   q?: string | null;
   before?: string | null;
   date?: string | null;
+  paidPath?: string | null;
 };
 
 function catalogRowDate(row: Record<string, unknown>): string {
@@ -396,10 +425,12 @@ export function paidBodyOptsFromSearch(search: string | URLSearchParams): PaidBo
     typeof search === "string"
       ? new URLSearchParams(search.startsWith("?") || search.includes("=") ? search.replace(/^\?/, "") : "")
       : search;
+  const id = str(params.get("id"));
   const before = str(params.get("before"));
   const pageRaw = str(params.get("page"));
   const page = Number(pageRaw);
   const out: PaidBodyOpts = {};
+  if (id) out.id = id;
   if (before) out.before = before;
   if (Number.isFinite(page) && page >= 1) out.page = Math.floor(page);
   return out;
@@ -407,10 +438,15 @@ export function paidBodyOptsFromSearch(search: string | URLSearchParams): PaidBo
 
 export function paidBodyQueryPath(path: string, opts?: PaidBodyOpts): string {
   const q = new URLSearchParams();
-  if (opts?.before) q.set("before", opts.before);
+  if (opts?.id) q.set("id", opts.id);
+  else if (opts?.before) q.set("before", opts.before);
   else if (opts?.page && opts.page > 1) q.set("page", String(opts.page));
   const qs = q.toString();
   return qs ? `${path}?${qs}` : path;
+}
+
+export function paidOneUrl(paidPath: string, id: string): string {
+  return `${paidPath}?id=${encodeURIComponent(id)}`;
 }
 
 export function decorateExtractedBodyManifest(
@@ -419,7 +455,11 @@ export function decorateExtractedBodyManifest(
 ): Record<string, unknown> {
   const listKey = Array.isArray(manifest.cards) ? "cards" : Array.isArray(manifest.letters) ? "letters" : null;
   if (!listKey) return manifest;
-  const rows = filterCatalogRows(attachPaidPageCursors(asList(manifest[listKey])), query);
+  const paidPath = str(query.paidPath);
+  const rows = filterCatalogRows(attachPaidPageCursors(asList(manifest[listKey])), query).map((row) => {
+    const id = officialItemId(row);
+    return paidPath && id ? { ...row, paidUrl: paidOneUrl(paidPath, id) } : row;
+  });
   const q = str(query.q);
   const before = str(query.before);
   const date = str(query.date);
@@ -576,6 +616,7 @@ function paidCardBody<T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?:
   const limit = paidBodyWindow(opts?.window);
   const sliced = slicePaidCatalog(catalog, limit, opts);
   const records = sliced.records;
+  const one = Boolean(sliced.id);
   return {
     ...payload,
     cards: windowOfficialItems(asList(payload.cards), records),
@@ -585,8 +626,9 @@ function paidCardBody<T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?:
     records,
     recordCount: records.length,
     ids: records.map((row) => row.id),
-    paidWindow: limit,
+    paidWindow: one ? 1 : limit,
     catalogCount: catalog.length,
+    id: sliced.id,
     before: sliced.before,
     nextBefore: sliced.nextBefore,
     prevBefore: sliced.prevBefore,
@@ -617,6 +659,7 @@ export function paidForm483Body<T extends { letters?: unknown[]; fetchedAt?: unk
   const limit = paidBodyWindow(opts?.window);
   const sliced = slicePaidCatalog(catalog, limit, opts);
   const records = sliced.records;
+  const one = Boolean(sliced.id);
   return {
     ...payload,
     letters: windowOfficialItems(asList(payload.letters), records),
@@ -629,8 +672,9 @@ export function paidForm483Body<T extends { letters?: unknown[]; fetchedAt?: unk
     records,
     recordCount: records.length,
     ids: records.map((row) => row.id),
-    paidWindow: limit,
+    paidWindow: one ? 1 : limit,
     catalogCount: catalog.length,
+    id: sliced.id,
     before: sliced.before,
     nextBefore: sliced.nextBefore,
     prevBefore: sliced.prevBefore,
@@ -646,6 +690,7 @@ export function paidWarningLettersBody<
   const limit = paidBodyWindow(opts?.window);
   const sliced = slicePaidCatalog(catalog, limit, opts);
   const records = sliced.records;
+  const one = Boolean(sliced.id);
   return {
     ...payload,
     letters: windowOfficialItems(asList(payload.letters), records),
@@ -658,8 +703,9 @@ export function paidWarningLettersBody<
     records,
     recordCount: records.length,
     ids: records.map((row) => row.id),
-    paidWindow: limit,
+    paidWindow: one ? 1 : limit,
     catalogCount: catalog.length,
+    id: sliced.id,
     before: sliced.before,
     nextBefore: sliced.nextBefore,
     prevBefore: sliced.prevBefore,

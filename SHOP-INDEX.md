@@ -18,7 +18,7 @@ Official public data caches (PDF/HTML sources), returned as JSON after x402. Not
 
 **32 paid GETs.** `$0.05` (`50000` atomic) for every live paid GET, including `/ticks`. One GET is one cache. No per-record SKU. No alerts/delta door.
 
-Extracted-body doors: **free index/search** on `/{door}/manifest.json` or `/{door}/index` (`?q=`, optional `before`/`date`) returns one row per collected record (id, date, title/firm/subject, page cursor). Then pay the page. A plain GET sells the **newest 100 official texts** plus `records[]` / `ids[]` / `asOf` / next/prev cursor. The same URL with `?before=<id or date>` sells the **next older 100 for another $0.05**. `/ticks` and `/import-alerts` stay the full current table. Mariners doors stay **this week's LNM** (one weekly edition), not a 100-notice slice.
+Extracted-body doors: **free index/search** on `/{door}/manifest.json` or `/{door}/index` (`?q=`, optional `before`/`date`) returns one row per collected record (id, date, title/firm/subject, `?id=` URL, page cursor). Then pay **one official text** `GET ?id=` at **$0.02** (`20000` atomic) or the page at **$0.05**. A plain GET sells the **newest 100 official texts**. The same URL with `?before=` sells the next older page for another $0.05. Same door. No per-record Bazaar SKU. `/ticks` and `/import-alerts` stay the full current table. Mariners doors stay **this week's LNM**.
 
 ## Live paid GETs
 
@@ -65,16 +65,16 @@ Free manifests carry the full catalog (count, ids, official source URLs). They a
 - `GET /.well-known/x402` — absolute URLs of the thirty-two paid routes only (not a SKU per page)
 - `GET /openapi.json` — OpenAPI 3.1 with `x-payment-info`. Body doors: free index/search, then pay the page. Not the entire cache.
 - `GET /llms.txt` — short agent guidance (free index/search, then pay the page)
-- `GET /mcp` — Streamable HTTP MCP: one tool per paid GET plus free `search` and paid `get-page` (not a new SKU)
-- `GET /manifest.json` and `GET /{path}/manifest.json` (or `/{path}/index`) — free per-SKU catalogs + page cursor; `?q=` / `before` / `date` stay free
+- `GET /mcp` — Streamable HTTP MCP: one tool per paid GET plus free `search`, paid `get-one` ($0.02), and paid `get-page` ($0.05)
+- `GET /manifest.json` and `GET /{path}/manifest.json` (or `/{path}/index`) — free per-SKU catalogs + `?id=` URL + page cursor; `?q=` / `before` / `date` stay free
 
 ## How to buy
 
-Unpaid GET returns HTTP 402 with `PAYMENT-REQUIRED` (`50000` atomic = $0.05). After a valid `X-PAYMENT` (USDC on Base to the payTo above), the same URL returns JSON: newest 100 official texts on a plain extracted-body GET, the next older 100 when they ask with `?before`, the full current table on `/ticks` and `/import-alerts`, or this week's LNM on Mariners.
+Unpaid GET returns HTTP 402 with `PAYMENT-REQUIRED`. Extracted-body `?id=` asks `20000` atomic ($0.02). Page / default body GETs ask `50000` atomic ($0.05). After a valid `X-PAYMENT` (USDC on Base to the payTo above), the same URL returns that one official text, the newest 100, the older page, the full current table on `/ticks` and `/import-alerts`, or this week's LNM on Mariners.
 
 ## Notes
 
 - Re-read live well-known / OpenAPI / manifests before assuming a new door or a new catalog size.
-- No thirty-third public SKU. No alerts/delta door. No per-record price.
+- No thirty-third public SKU. No alerts/delta door. No per-record Bazaar SKU. Same-door `?id=` is $0.02.
 - Farm is no-spray, not organic-certified.
 - This index does not claim Bazaar listing, CDP settlement, or sales volume.
