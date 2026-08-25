@@ -14,7 +14,7 @@ Public, agent-facing list of **live** paid GETs only. Re-read live manifests on 
 
 payTo `0xf59621FC406D266e18f314Ae18eF0a33b8401004` · Base (`eip155:8453`) · USDC `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
 
-Official public data caches (PDF/HTML sources), returned as JSON after x402. Not free-JSON wraps. Unpaid GET on a paid path returns HTTP 402. No API key. No request body.
+Official public data caches (PDF/HTML sources), returned as JSON after x402. Unpaid GET on a paid path returns HTTP 402. No API key. No request body.
 
 **32 paid GETs.** `$0.05` (`50000` atomic) for every live paid GET, including `/ticks`. Each paid GET returns the **entire current cache** on one GET. Bag sizes below are live manifest counts (re-read before shipping).
 
@@ -65,7 +65,7 @@ Free manifests carry count, ids, and official source URLs. They are not the paid
 - `GET /.well-known/x402` — absolute URLs of the thirty-two paid routes only
 - `GET /openapi.json` — OpenAPI 3.1 with `x-payment-info` and entire-snapshot copy
 - `GET /llms.txt` — short agent guidance (count + entire cache on one GET)
-- `GET /mcp` — Streamable HTTP MCP for the same thirty-two paid GETs (not a new SKU)
+- `GET /mcp` — Streamable HTTP MCP for the same thirty-two paid GETs
 - `GET /manifest.json` and `GET /{path}/manifest.json` — free per-SKU manifests
 
 ## How to buy
@@ -75,6 +75,6 @@ Unpaid GET returns HTTP 402 with `PAYMENT-REQUIRED`. After a valid `X-PAYMENT` (
 ## Notes
 
 - Re-read live well-known / OpenAPI / manifests before assuming a new door or a new bag size.
-- No thirty-third public SKU. No alerts/delta door.
+- Live list is the well-known resources only.
 - Farm is no-spray, not organic-certified.
 - This index does not claim Bazaar listing, CDP settlement, or sales volume.

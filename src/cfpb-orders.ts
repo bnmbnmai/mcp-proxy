@@ -684,7 +684,7 @@ export function buildCfpbOrdersManifest(snap: CfpbOrderSnapshot | null): Record<
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + firm + date + title + fileNo + official PDF URL only. Order body is the paid GET /cfpb-orders payload. Not the enforcement index. Not the action-page teaser. Not the Consumer Complaint Database. Not FTC /ftc-wl.",
+    note: "Count + firm + date + title + fileNo + official PDF URL only. Order body is the paid GET /cfpb-orders payload.",
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

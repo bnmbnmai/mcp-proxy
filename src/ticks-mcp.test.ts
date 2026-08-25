@@ -231,7 +231,9 @@ async function main(): Promise<void> {
       const lettersTool = listBody.result.tools.find((t) => t.name === "warning-letters");
       const cardsTool = listBody.result.tools.find((t) => t.name === "cma-ca98");
       assert.ok((ticksTool?.description ?? "").includes("ticks[] + history"));
-      assert.ok((ticksTool?.description ?? "").includes("Entire cache on one GET"));
+      assert.ok((ticksTool?.description ?? "").includes("Entire current cache on one GET"));
+      assert.ok(!(ticksTool?.description ?? "").includes("Not people"));
+      assert.ok(!(ticksTool?.description ?? "").includes("Not a new SKU"));
       assert.ok((lettersTool?.description ?? "").includes("letters[].body"));
       assert.ok((cardsTool?.description ?? "").includes("cards[].body"));
       assert.ok(!listBody.result.tools.some((t) => (t.description ?? "").includes("31 paid")));

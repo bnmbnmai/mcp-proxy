@@ -821,7 +821,7 @@ export function buildDenovoOrdersManifest(snap: DenovoOrdersSnapshot | null): Re
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + institution + docket + date + official PDF URL only. Order body is the paid GET /denovo-orders payload. Not the press/teaser. Not people. Not Federal Register raw_text. Not FIFRA /fifra-orders. Not CFTC /cftc-orders. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl.",
+    note: "Count + institution + docket + date + official PDF URL only. Order body is the paid GET /denovo-orders payload.",
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

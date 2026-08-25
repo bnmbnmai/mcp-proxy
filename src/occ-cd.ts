@@ -606,7 +606,7 @@ export function buildOccCdManifest(snap: OccCdSnapshot | null): Record<string, u
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + bank + docket + date + official PDF URL only. Order body is the paid GET /occ-cd payload. Not ExportToJSON metadata. Not IAP / people / prohibition / CMP-against-person. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not SEC EDGAR complete-submission .txt.",
+    note: "Count + bank + docket + date + official PDF URL only. Order body is the paid GET /occ-cd payload.",
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

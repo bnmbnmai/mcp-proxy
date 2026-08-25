@@ -815,7 +815,7 @@ export function buildGmpMdManifest(snap: GmpMdSnapshot | null): Record<string, u
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + id + firm + dates + rating only. Observation text / MDR cites are the paid GET /gmp-md payload. Not the ratings-only search index. Not /gmp.",
+    note: "Count + id + firm + dates + rating only. Observation text / MDR cites are the paid GET /gmp-md payload.",
     license: OGL_NOTE,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
     network: "base",

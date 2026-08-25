@@ -638,7 +638,7 @@ export function buildPcacManifest(snap: PcacSnapshot | null): Record<string, unk
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + substance + date + meeting + mediaId + official source only. Evaluation / weighs-against / we-propose-not-adding text is the paid GET /pcac payload. Not the FR notice. Not docket 0001. Not CDER multidisciplinary reviews. Not combined sponsor/AdComm packs.",
+    note: "Count + substance + date + meeting + mediaId + official source only. Evaluation / weighs-against / we-propose-not-adding text is the paid GET /pcac payload.",
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

@@ -234,7 +234,7 @@ export function mcpDiscovery(origin = LIVE_ORIGIN, catalog: LivePaidSku[]): Reco
     connect: `npx -y mcp-remote ${base}${MCP_PATH}`,
     source: WELL_KNOWN_PATH,
     note:
-      `Same ${catalog.length} paid GETs as ${WELL_KNOWN_PATH}. Tools are generated from that document so later SKUs appear without an MCP rewrite. Not a new SKU. Unpaid tool calls still HTTP 402 on the paid URL. Not Bazaar-indexed.`,
+      `Same ${catalog.length} paid GETs as ${WELL_KNOWN_PATH}. Tools are generated from that document so later SKUs appear without an MCP rewrite. Unpaid tool calls still HTTP 402 on the paid URL. Not Bazaar-indexed.`,
   };
 }
 
@@ -256,8 +256,8 @@ export function mcpToolDescriptors(
     description:
       `GET ${base}${sku.path} — $${sku.priceUsdc} USDC on Base to ${PAY_TO}. ${sku.summary} ` +
       `Paid JSON is ${sku.paidJson ?? paidJsonForPath(sku.path)}` +
-      `${countLabel(sku) ? ` (${countLabel(sku)})` : ""}. Entire cache on one GET. ` +
-      "Unpaid returns HTTP 402. After a valid X-PAYMENT, the same URL returns JSON. Not a new SKU.",
+      `${countLabel(sku) ? ` (${countLabel(sku)})` : ""}. Entire current cache on one GET. ` +
+      "Unpaid returns HTTP 402. After a valid X-PAYMENT, the same URL returns JSON.",
     inputSchema: {
       type: "object",
       properties: {

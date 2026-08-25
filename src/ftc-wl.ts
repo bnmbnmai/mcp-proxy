@@ -626,7 +626,7 @@ export function buildFtcWlManifest(snap: FtcWlSnapshot | null): Record<string, u
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + firm + date + subject + official PDF URL only. Letter body is the paid GET /ftc-wl payload. Not the legal-library index. Not the Drupal node. Not FDA /warning-letters.",
+    note: "Count + firm + date + subject + official PDF URL only. Letter body is the paid GET /ftc-wl payload.",
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

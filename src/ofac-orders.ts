@@ -764,7 +764,7 @@ export function buildOfacOrdersManifest(snap: OfacOrdersSnapshot | null): Record
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + institution + docket + date + official PDF URL only. Order body is the paid GET /ofac-orders payload. Not the civil-penalties chart/teaser/RSS. Not people. Not Federal Register raw_text. Not FinCEN /fincen-orders. Not FERC /ferc-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl.",
+    note: "Count + institution + docket + date + official PDF URL only. Order body is the paid GET /ofac-orders payload.",
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

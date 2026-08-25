@@ -675,7 +675,7 @@ export function buildUntitledLettersManifest(snap: UntitledLettersSnapshot | nul
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + id + firm + date + product + official source only. Letter text / Cites / what OPDP or CBER said is the paid GET /untitled-letters payload. Not /warning-letters.",
+    note: "Count + id + firm + date + product + official source only. Letter text / Cites / what OPDP or CBER said is the paid GET /untitled-letters payload.",
     license: LICENSE,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
     network: "base",

@@ -345,7 +345,7 @@ export const WELL_KNOWN_PATH = "/.well-known/x402";
 export const OPENAPI_PATH = "/openapi.json";
 export const LLMS_PATH = "/llms.txt";
 export { MCP_PATH } from "./ticks-mcp.js";
-/** x402scan origin page for the live paid doors. /cma-ca98 is a live public SKU. */
+/** x402scan origin page for the live paid doors. */
 export const X402SCAN_SERVER_URL =
   "https://www.x402scan.com/server/c6f584c5-e494-41d1-aa02-2efb07ac3546";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
@@ -709,41 +709,6 @@ export function isPublicBazaarSku(sku: DoorSku): boolean {
 }
 
 const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six", "twenty-seven", "twenty-eight", "twenty-nine", "thirty", "thirty-one", "thirty-two"] as const;
-const NEXT_SKU_WORDS = [
-  "first",
-  "second",
-  "third",
-  "fourth",
-  "fifth",
-  "sixth",
-  "seventh",
-  "eighth",
-  "ninth",
-  "tenth",
-  "eleventh",
-  "twelfth",
-  "thirteenth",
-  "fourteenth",
-  "fifteenth",
-  "sixteenth",
-  "seventeenth",
-  "eighteenth",
-  "nineteenth",
-  "twentieth",
-  "twenty-first",
-  "twenty-second",
-  "twenty-third",
-  "twenty-fourth",
-  "twenty-fifth",
-  "twenty-sixth",
-  "twenty-seventh",
-  "twenty-eighth",
-  "twenty-ninth",
-  "thirtieth",
-  "thirty-first",
-  "thirty-second",
-  "thirty-third",
-] as const;
 
 function paidCountWord(): string {
   const n = publicBazaarSkus().length;
@@ -751,9 +716,7 @@ function paidCountWord(): string {
 }
 
 function noNextSkuWord(): string {
-  const n = publicBazaarSkus().length;
-  const next = NEXT_SKU_WORDS[n] ?? `${n + 1}th`;
-  return `/cma-ca98 is a live public SKU on purpose. No ${next} public SKU.`;
+  return `Only the listed ${paidCountWord()} paid GETs are live.`;
 }
 
 function amountAtomicFor(sku: DoorSku): string {
@@ -896,162 +859,131 @@ function usdcDisplayFromAtomic(atomic: string | null | undefined): string | null
 const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> = {
   ticks: {
     description:
-      "Call GET /ticks when you need the current official Idaho + nationwide USDA AMS hay/cattle/grain snapshot (PNW barns + AMS Direct reports; IBC grain; WD1 $/AF). JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Official USDA AMS Idaho + nationwide hay/cattle/grain ticks (PNW barns, IBC grain, WD1 $/AF). Days between reports are not filled in.",
     resourcePath: TICKS_PATH,
   },
   "import-alerts": {
-    description:
-      "Call GET /import-alerts when you need the current FDA Import Alert / DWPE red and green firm-product snapshot from official cms_ia HTML. First-slice alert pages only. Does not wrap openFDA. Paid JSON keeps ticks[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official FDA Import Alert / DWPE firm-product snapshot.",
     resourcePath: IMPORT_ALERTS_PATH,
   },
   mariners: {
-    description:
-      "Call GET /mariners when you need the latest USCG District 13 / Northwest Local Notice to Mariners as structured JSON from the official weekly PDF. Returns week, section, text, and source URL. Does not invent notices. Paid JSON keeps notices[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official USCG District 13 / Northwest Local Notice to Mariners.",
     resourcePath: MARINERS_PATH,
   },
   "mariners-d11": {
-    description:
-      "Call GET /mariners-d11 when you need the latest USCG District 11 / Southwest (northern) Local Notice to Mariners as structured JSON from the official weekly PDF. Same NavCEN walker as /mariners. Returns week, section, text, and source URL. Does not invent notices. Paid JSON keeps notices[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official USCG District 11 / Southwest Local Notice to Mariners.",
     resourcePath: MARINERS_D11_PATH,
   },
   "mariners-d7": {
-    description:
-      "Call GET /mariners-d7 when you need the latest USCG District 7 / Southeast Local Notice to Mariners as structured JSON from the official weekly PDF. Same NavCEN walker as /mariners. Returns week, section, text, and source URL. Does not invent notices. Paid JSON keeps notices[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official USCG District 7 / Southeast Local Notice to Mariners.",
     resourcePath: MARINERS_D7_PATH,
   },
   "mariners-d8": {
-    description:
-      "Call GET /mariners-d8 when you need the latest USCG District 8 / Gulf (New Orleans) Local Notice to Mariners as structured JSON from the official weekly PDF. Same NavCEN walker as /mariners. Returns week, section, text, and source URL. Does not invent notices. Paid JSON keeps notices[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official USCG District 8 / Gulf Local Notice to Mariners.",
     resourcePath: MARINERS_D8_PATH,
   },
   "warning-letters": {
-    description:
-      "Call GET /warning-letters when you need official FDA warning-letter bodies (firm, date, subject, full letter text) parsed from fda.gov HTML. Not the import-alerts IA feed. Does not invent letter text. Paid JSON keeps letters[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official FDA warning-letter bodies (firm, date, subject, full letter text).",
     resourcePath: WARNING_LETTERS_PATH,
   },
   "untitled-letters": {
-    description:
-      "Call GET /untitled-letters when you need official FDA Untitled Letter text (CDER OPDP + CBER APLB promo) extracted from per-letter PDFs at /media/{id}/download. Not /warning-letters HTML. Not the HTML index. Does not invent letter text. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official FDA Untitled Letter text (CDER OPDP + CBER promo).",
     resourcePath: UNTITLED_LETTERS_PATH,
   },
   awa: {
-    description:
-      "Call GET /awa when you need official USDA APHIS Animal Welfare Act inspection-report observation/narrative text extracted from per-report PDFs on the Public Search Tool. Not the Salesforce metadata index. Not Data Liberation. Not /form-483. Not CMS 2567. Not CQC. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official USDA APHIS Animal Welfare Act inspection-report observation text.",
     resourcePath: AWA_PATH,
   },
   swisspar: {
-    description:
-      "Call GET /swisspar when you need official Swissmedic first-authorisation SwissPAR evaluation text extracted from per-product PDFs. Not the A–Z HTML index. Not EMA EPARs/referrals. Not FDA CDER reviews. Not the HCP/FI appendix. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official Swissmedic first-authorisation SwissPAR evaluation text.",
     resourcePath: SWISSPAR_PATH,
   },
   pcac: {
-    description:
-      "Call GET /pcac when you need official FDA-authored PCAC 503A briefing-memo evaluation text extracted from per-substance PDFs. Not the FR notice or docket 0001. Not CDER multidisciplinary reviews. Not combined sponsor/AdComm packs. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official FDA PCAC 503A briefing-memo evaluation text.",
     resourcePath: PCAC_PATH,
   },
   "ftc-wl": {
-    description:
-      "Call GET /ftc-wl when you need official FTC Bureau of Consumer Protection warning-letter text extracted from per-letter PDFs on ftc.gov. Not the legal-library index. Not the Drupal node. Not FDA /warning-letters. Not official templates. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official FTC Bureau of Consumer Protection warning-letter text.",
     resourcePath: FTC_WL_PATH,
   },
   "cfpb-orders": {
-    description:
-      "Call GET /cfpb-orders when you need official CFPB-authored consent-order / administrative-order text extracted from per-order PDFs on files.consumerfinance.gov. Not the enforcement index. Not the action-page teaser. Not the Consumer Complaint Database. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official CFPB consent-order / administrative-order text.",
     resourcePath: CFPB_ORDERS_PATH,
   },
   "occ-cd": {
-    description:
-      "Call GET /occ-cd when you need official OCC institution Cease-and-Desist / Consent Order text extracted from per-order PDFs on occ.gov/static/enforcement-actions. Not EASearch ExportToJSON metadata. Not IAP / people / prohibition / CMP-against-person. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not SEC EDGAR complete-submission .txt. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official OCC institution Cease-and-Desist / Consent Order text.",
     resourcePath: OCC_CD_PATH,
   },
   "fdic-orders": {
-    description:
-      "Call GET /fdic-orders when you need official FDIC institution consent-order / Cease-and-Desist text extracted from per-order PDFs on orders.fdic.gov. Not the EDOS Salesforce index. Not BankFind. Not monthly NR counts. Not IAP / 1829 / Section 19 people files. Not EDGAR 8-K. Not Federal Register raw_text. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official FDIC institution consent-order / Cease-and-Desist text.",
     resourcePath: FDIC_ORDERS_PATH,
   },
   "frb-orders": {
-    description:
-      "Call GET /frb-orders when you need official FRB institution Cease-and-Desist / written-agreement / PCA text extracted from per-order PDFs on federalreserve.gov. Not the official enforcement CSV. Not ea-old.json / ea-cms-recent.json / ne-press.json teasers. Not BankFind. Not IAP / prohibition-of-employee people files. Not EDGAR 8-K. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official FRB institution Cease-and-Desist / written-agreement / PCA text.",
     resourcePath: FRB_ORDERS_PATH,
   },
   "ncua-orders": {
-    description:
-      "Call GET /ncua-orders when you need official NCUA institution consent Cease-and-Desist text extracted from per-order HTML on ncua.gov. Not the official CSV. Not Drupal ?_format=json. Not 2026 people/IAP. Not late-filer CMP. Not LUAs. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official NCUA institution consent Cease-and-Desist text.",
     resourcePath: NCUA_ORDERS_PATH,
   },
   "fincen-orders": {
-    description:
-      "Call GET /fincen-orders when you need official FinCEN institution consent-order text extracted from per-order PDFs on fincen.gov. Not the enforcement-actions index teaser. Not people-only CMP. Not a news-release wrap. Not Federal Register raw_text. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official FinCEN institution consent-order text.",
     resourcePath: FINCEN_ORDERS_PATH,
   },
   "ferc-orders": {
-    description:
-      "Call GET /ferc-orders when you need official FERC institution stipulation-and-consent / show-cause / civil-penalty text extracted from per-order PDFs on cms.ferc.gov. Not the civil-penalty index teaser. Not eLibrary metadata. Not Federal Register raw_text. Not people files. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official FERC institution stipulation-and-consent text.",
     resourcePath: FERC_ORDERS_PATH,
   },
   "ofac-orders": {
-    description:
-      "Call GET /ofac-orders when you need official OFAC institution/company enforcement-release text extracted from per-release PDFs on ofac.treasury.gov. Not the civil-penalties chart/teaser/RSS. Not people. Not Federal Register raw_text. Not FinCEN /fincen-orders. Not FERC /ferc-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not BIS /bis-orders. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official OFAC institution enforcement-release text.",
     resourcePath: OFAC_ORDERS_PATH,
   },
   "bis-orders": {
-    description:
-      "Call GET /bis-orders when you need official BIS institution/company charging-letter / order / settlement text extracted from per-order PDFs on bis.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not CFTC /cftc-orders. Not FIFRA /fifra-orders. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official BIS institution charging-letter / order text.",
     resourcePath: BIS_ORDERS_PATH,
   },
   "cftc-orders": {
-    description:
-      "Call GET /cftc-orders when you need official CFTC institution/company enforcement-order / settlement text extracted from per-order PDFs on cftc.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not FIFRA /fifra-orders. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official CFTC institution enforcement-order / settlement text.",
     resourcePath: CFTC_ORDERS_PATH,
   },
   "fifra-orders": {
-    description:
-      "Call GET /fifra-orders when you need official EPA FIFRA institution/company order / consent text extracted from per-order PDFs on yosemite.epa.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not CFTC /cftc-orders. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not De Novo /denovo-orders. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official EPA FIFRA institution order / consent text.",
     resourcePath: FIFRA_ORDERS_PATH,
   },
   "denovo-orders": {
-    description:
-      "Call GET /denovo-orders when you need official FDA De Novo institution/company classification-order text extracted from per-order PDFs on accessdata.fda.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not FIFRA /fifra-orders. Not CFTC /cftc-orders. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not TTB /ttb-oic. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official FDA De Novo classification-order text.",
     resourcePath: DENOVO_ORDERS_PATH,
   },
   "ttb-oic": {
-    description:
-      "Call GET /ttb-oic when you need official TTB institution/company Offer in Compromise text extracted from Abstract and Statement PDFs on ttb.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not AIR /air-letters. Not ICO /ico-mpn. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official TTB Offer in Compromise text.",
     resourcePath: TTB_OIC_PATH,
   },
   "air-letters": {
-    description:
-      "Call GET /air-letters when you need official USDA APHIS institution/company Am I Regulated (AIR) confirmation-letter text extracted from per-letter PDFs on direct.aphis.usda.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not TTB /ttb-oic. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not Superfund /superfund-rods. Not ICO /ico-mpn. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official USDA APHIS Am I Regulated (AIR) confirmation-letter text.",
     resourcePath: AIR_LETTERS_PATH,
   },
   "superfund-rods": {
-    description:
-      "Call GET /superfund-rods when you need official EPA Superfund institution/site Record of Decision text extracted from SEMS PDFs on semspub.epa.gov. Not a Proposed Plan or fact sheet. Not people. Not Federal Register raw_text. Not AIR /air-letters. Not TTB /ttb-oic. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders. Not BIS /bis-orders. Not ICO /ico-mpn. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official EPA Superfund Record of Decision text.",
     resourcePath: SUPERFUND_RODS_PATH,
   },
   "ico-mpn": {
-    description:
-      "Call GET /ico-mpn when you need official UK ICO institution/company Monetary Penalty Notice text extracted from per-notice PDFs on ico.org.uk. Not the press/teaser. Not people. Not Federal Register raw_text. Not Superfund /superfund-rods. Not AIR /air-letters. Not TTB /ttb-oic. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders. Not CMA /cma-ca98. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official UK ICO Monetary Penalty Notice text.",
     resourcePath: ICO_MPN_PATH,
   },
   "cma-ca98": {
-    description:
-      "Call GET /cma-ca98 when you need official UK CMA institution/company CA98 infringement-decision text extracted from assets.publishing.service.gov.uk PDFs. Not the press teaser. Not people. Not ICO /ico-mpn. Not Superfund /superfund-rods. Crown/OGL v3.0; logo reserved. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official UK CMA CA98 infringement-decision text.",
     resourcePath: CMA_CA98_PATH,
   },
   "form-483": {
-    description:
-      "Call GET /form-483 when you need official FDA Form 483 inspectional observation bodies parsed from posted OII FOIA Electronic Reading Room PDFs. Not warning letters. Not CMS 2567. Does not invent observation text. Paid JSON keeps letters[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official FDA Form 483 inspectional observation bodies.",
     resourcePath: FORM_483_PATH,
   },
   gmp: {
-    description:
-      "Call GET /gmp when you need official Health Canada Drug GMP inspection report-card observation text plus C.02 cites from fullReportCard.ashx. Not the 21k-row public search index. Does not invent observations. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official Health Canada Drug GMP report-card observation text + C.02 cites.",
     resourcePath: GMP_PATH,
   },
   "gmp-md": {
-    description:
-      "Call GET /gmp-md when you need official Health Canada medical-device inspection report-card observation text plus MDR cites from md/handler/fullReportCard.ashx. Not the ratings-only search index. Not /gmp Drug GMP. Does not invent observations. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    description: "Official Health Canada medical-device report-card observation text + MDR cites.",
     resourcePath: GMP_MD_PATH,
   },
 };
@@ -1301,12 +1233,21 @@ export function peekSkuBag(sku: DoorSku): SkuBag | undefined {
   return skuBagsMemo?.bags.get(sku);
 }
 
+export function skuBuyerDescription(sku: DoorSku, bag?: SkuBag): string {
+  const product = SKU_COPY[sku].description.trim();
+  const resolved = bag ?? peekSkuBag(sku);
+  const count = resolved?.countLabel ?? "live count on GET /";
+  const paid = resolved?.paidJson ?? skuPaidJson(sku);
+  const ended = product.endsWith(".") ? product : `${product}.`;
+  return `${ended} Entire current cache on one GET (${count}). Paid JSON is ${paid}. $0.05.`;
+}
+
 export function skuOpenApiSummary(sku: DoorSku, bag: SkuBag): string {
-  return `${bag.oneLine} — entire cache on one GET (${bag.countLabel})`;
+  return `${bag.oneLine} — entire current cache on one GET (${bag.countLabel})`;
 }
 
 export function skuOpenApiDescription(sku: DoorSku, bag: SkuBag): string {
-  return `${SKU_COPY[sku].description} Entire current snapshot on one GET (${bag.countLabel}). Paid JSON is ${bag.paidJson}.`;
+  return skuBuyerDescription(sku, bag);
 }
 
 function shopProductCard(sku: DoorSku, bag: SkuBag): Record<string, unknown> {
@@ -1317,7 +1258,7 @@ function shopProductCard(sku: DoorSku, bag: SkuBag): Record<string, unknown> {
     priceUsdc: usdcPriceString(amount),
     amountAtomic: amount,
     manifest: SHOP_MANIFEST_PATH[sku],
-    description: `${bag.oneLine}. Entire cache on one GET.`,
+    description: skuBuyerDescription(sku, bag),
     count: bag.count,
     ...(bag.firms !== undefined ? { firms: bag.firms } : {}),
   };
@@ -2244,9 +2185,6 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
 /** x402 Bazaar discovery block (v2 PAYMENT-REQUIRED extensions.bazaar). */
 export function bazaarExtension(sku: DoorSku): Record<string, unknown> {
   const bag = peekSkuBag(sku);
-  const bagNote = bag
-    ? `Entire current snapshot on one GET (${bag.countLabel}). Paid JSON is ${bag.paidJson}.`
-    : `Entire current snapshot on one GET. Paid JSON is ${skuPaidJson(sku)}.`;
   return {
     info: {
       input: {
@@ -2256,7 +2194,7 @@ export function bazaarExtension(sku: DoorSku): Record<string, unknown> {
       },
       output: {
         type: "json",
-        description: bagNote,
+        description: skuBuyerDescription(sku, bag),
         example: BAZAAR_OUTPUT_EXAMPLE[sku],
       },
     },
@@ -2685,13 +2623,14 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
 export function paymentRequiredBody(resourceUrl: string, sku: DoorSku = "ticks"): Record<string, unknown> {
   const amount = amountAtomicFor(sku);
   const copy = SKU_COPY[sku];
+  const buyer = skuBuyerDescription(sku);
   const acceptV1: Record<string, unknown> = {
     scheme: "exact",
     network: NETWORK_V1,
     asset: USDC_BASE,
     payTo: PAY_TO,
     resource: resourceUrl,
-    description: copy.description,
+    description: buyer,
     mimeType: "application/json",
     maxTimeoutSeconds: 60,
     extra: { name: "USD Coin", version: "2" },
@@ -2714,6 +2653,7 @@ export function paymentRequiredBody(resourceUrl: string, sku: DoorSku = "ticks")
 export function paymentRequiredV2(resourceUrl: string, sku: DoorSku = "ticks"): Record<string, unknown> {
   const amount = amountAtomicFor(sku);
   const copy = SKU_COPY[sku];
+  const buyer = skuBuyerDescription(sku);
   const accept: Record<string, unknown> = {
     scheme: "exact",
     network: NETWORK_V2,
@@ -2722,14 +2662,14 @@ export function paymentRequiredV2(resourceUrl: string, sku: DoorSku = "ticks"): 
     maxTimeoutSeconds: 60,
     extra: { name: "USD Coin", version: "2" },
     amount,
-    description: copy.description,
+    description: buyer,
   };
   return {
     x402Version: 2,
     error: "PAYMENT-SIGNATURE header is required",
     resource: {
       url: resourceUrl,
-      description: copy.description,
+      description: buyer,
       mimeType: "application/json",
     },
     accepts: [accept],
@@ -3189,13 +3129,15 @@ export async function llmsTxt(): Promise<string> {
   const paid = publicBazaarSkus().map((sku) => {
     const bag = bags.get(sku) ?? bagFromManifest(sku, {});
     const price = usdcDisplayFromAtomic(amountAtomicFor(sku)) ?? "$0.05";
-    return `- GET ${SKU_COPY[sku].resourcePath} — ${price} — ${bag.countLabel} — entire cache on one GET — ${bag.oneLine}. Paid JSON is ${bag.paidJson}.`;
+    const product = SKU_COPY[sku].description.trim();
+    const ended = product.endsWith(".") ? product : `${product}.`;
+    return `- GET ${SKU_COPY[sku].resourcePath} — ${price} — ${ended} Entire current cache on one GET (${bag.countLabel}). Paid JSON is ${bag.paidJson}.`;
   });
   const free = [
     `- GET /openapi.json — OpenAPI 3.1 with x-payment-info for the ${paidCountWord()} paid doors`,
     `- GET /.well-known/x402 — absolute URLs of the ${paidCountWord()} paid routes only`,
     `- GET / — shop JSON (payTo + the ${paidCountWord()} products)`,
-    `- GET/POST /mcp — Streamable HTTP MCP for the same ${paidCountWord()} paid GETs. Not a new SKU.`,
+    `- GET/POST /mcp — Streamable HTTP MCP for the same ${paidCountWord()} paid GETs.`,
     "- GET /manifest.json — Idaho ticks count + schema",
     "- GET /import-alerts/manifest.json — FDA count + schema (not the firm dump)",
     "- GET /mariners/manifest.json — D13 LNM count + official PDF (not the notice body)",
@@ -3297,7 +3239,7 @@ export async function wellKnownX402(req: IncomingMessage, port: number): Promise
     ownershipProofs: [PAY_TO],
     ...shopDiscoveryPointers(req, port),
     instructions:
-      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Each paid GET returns the entire current cache (bag size + count on GET /). Pay USDC on Base. Free OpenAPI is at /openapi.json. MCP is at /mcp (same ${paidCountWord()} paid GETs, not a new SKU). Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
+      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Each paid GET returns the entire current cache (bag size + count on GET /). Pay USDC on Base. Free OpenAPI is at /openapi.json. MCP is at /mcp (same ${paidCountWord()} paid GETs). Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
   };
 }
 
@@ -3349,7 +3291,7 @@ function paidOpenApiOp(opts: {
         },
       },
       "402": {
-        description: `Payment Required — entire current snapshot on one GET (${bag.countLabel}). x402 challenge in PAYMENT-REQUIRED and JSON body`,
+        description: `Payment Required — entire current cache on one GET (${bag.countLabel}). x402 challenge in PAYMENT-REQUIRED and JSON body`,
       },
     },
   };
