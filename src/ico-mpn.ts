@@ -18,10 +18,15 @@ export const PRODUCT_ID = "ico-institution-mpn-bodies";
 export const PRODUCT_NAME = "ICO Monetary Penalty Notice text";
 
 export const LISTING_URL = "https://ico.org.uk/action-weve-taken/enforcement/?type=monetary-penalties";
+/** JS filter page is the press/teaser. Official per-notice pages + sitemap have the PDFs. */
+export const SITEMAP_URL = "https://ico.org.uk/sitemap.xml";
+export const RECOVER_FINES_URL = "https://ico.org.uk/action-weve-taken/the-icos-work-to-recover-fines/";
+export const ENFORCEMENT_PAGE_RE = /\/action-weve-taken\/enforcement\/(\d{4})\/(\d{2})\/([a-z0-9][a-z0-9._-]{2,120})\/?/i;
 export const PDF_HOST = "ico.org.uk";
 export const PDF_ORIGIN = "https://ico.org.uk";
 export const DOCKET_BARE_RE = /^([a-z0-9][a-z0-9._-]{2,80})$/;
 export const MEDIA_RE = /\/media2\/([a-z0-9]+)\/([^/?#]+\.pdf)/i;
+export const MPN_PDF_RE = /(?:monetary[- ]?penalty(?:[- ]notice)?|penalty[- ]notice|\bmpn\b)/i;
 export const LICENSE = "OGL v3.0";
 export const ATTRIBUTION =
   "Information Commissioner's Office, licensed under the Open Government Licence v3.0";
@@ -87,7 +92,8 @@ export type IcoMpnSnapshot = {
   cards: IcoMpnCard[];
 };
 
-const HTTP_UA = "bnm-data-shop/1.0 (ICO MPN texts; +https://ico.org.uk/)";
+const HTTP_UA =
+  "bnm-data-shop/1.0 (ICO MPN texts; +https://ico.org.uk/action-weve-taken/the-icos-work-to-recover-fines/)";
 const OFFICIAL_HOSTS = new Set(["ico.org.uk", "www.ico.org.uk"]);
 const ENTITY_RE =
   /\b(Inc\.?|LLC|L\.L\.C\.|L\.L\.P\.|LLP|L\.P\.|LP|Corp\.?|Corporation|Company|Co\.|Ltd\.?|Limited|PLC|Plc|plc|AI)\b/;
@@ -180,32 +186,48 @@ export function stripTags(raw: string): string {
   return decodeEntities(raw.replace(/<[^>]+>/g, " "));
 }
 
+const MONTHS: Record<string, string> = {
+  january: "01",
+  february: "02",
+  march: "03",
+  april: "04",
+  may: "05",
+  june: "06",
+  july: "07",
+  august: "08",
+  september: "09",
+  october: "10",
+  november: "11",
+  december: "12",
+};
+
 export function isoDate(raw: string | null | undefined): string | null {
   if (!raw) return null;
   const iso = raw.match(/(\d{4})-(\d{2})-(\d{2})/);
   if (iso) return `${iso[1]}-${iso[2]}-${iso[3]}`;
-  const us = raw.match(/\b(\d{1,2})\/(\d{1,2})\/(\d{4})\b/);
-  if (us) return `${us[3]}-${us[1].padStart(2, "0")}-${us[2].padStart(2, "0")}`;
+  const ukNamed = raw.match(
+    /\b(\d{1,2})\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{4})\b/i,
+  );
+  if (ukNamed) {
+    const mm = MONTHS[ukNamed[2].toLowerCase()];
+    return mm ? `${ukNamed[3]}-${mm}-${ukNamed[1].padStart(2, "0")}` : null;
+  }
   const named = raw.match(
     /\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),?\s+(\d{4})\b/i,
   );
   if (named) {
-    const months: Record<string, string> = {
-      january: "01",
-      february: "02",
-      march: "03",
-      april: "04",
-      may: "05",
-      june: "06",
-      july: "07",
-      august: "08",
-      september: "09",
-      october: "10",
-      november: "11",
-      december: "12",
-    };
-    const mm = months[named[1].toLowerCase()];
+    const mm = MONTHS[named[1].toLowerCase()];
     return mm ? `${named[3]}-${mm}-${named[2].padStart(2, "0")}` : null;
+  }
+  const slash = raw.match(/\b(\d{1,2})\/(\d{1,2})\/(\d{4})\b/);
+  if (slash) {
+    const a = Number(slash[1]);
+    const b = Number(slash[2]);
+    const y = slash[3];
+    if (!Number.isFinite(a) || !Number.isFinite(b) || a < 1 || b < 1) return null;
+    if (a > 12 && b <= 12) return `${y}-${String(b).padStart(2, "0")}-${String(a).padStart(2, "0")}`;
+    if (b > 12 && a <= 12) return `${y}-${String(a).padStart(2, "0")}-${String(b).padStart(2, "0")}`;
+    return `${y}-${String(b).padStart(2, "0")}-${String(a).padStart(2, "0")}`;
   }
   return null;
 }
@@ -321,7 +343,149 @@ export function parseListingHtml(html: string): IcoMpnListing[] {
       docket: slugFromUrl(href),
     });
   }
+  rows.push(...noticePagePdfRows(html));
   return parseListingRows(rows);
+}
+
+export function officialEnforcementPageUrl(urlOrPath: string | null | undefined): string | null {
+  if (!urlOrPath) return null;
+  try {
+    const parsed = new URL(urlOrPath.trim(), PDF_ORIGIN);
+    const host = parsed.hostname.toLowerCase();
+    if (!OFFICIAL_HOSTS.has(host)) return null;
+    if (/\/about-the-ico\/media-centre\//i.test(parsed.pathname)) return null;
+    const m = parsed.pathname.match(ENFORCEMENT_PAGE_RE);
+    if (!m) return null;
+    return `${PDF_ORIGIN}/action-weve-taken/enforcement/${m[1]}/${m[2]}/${m[3].toLowerCase()}/`;
+  } catch {
+    return null;
+  }
+}
+
+export function enforcementPageSlug(urlOrPath: string | null | undefined): string | null {
+  const official = officialEnforcementPageUrl(urlOrPath);
+  if (!official) return null;
+  const m = official.match(ENFORCEMENT_PAGE_RE);
+  return m ? m[3].toLowerCase() : null;
+}
+
+export function isMpnPdfFilename(urlOrName: string | null | undefined): boolean {
+  const name = (urlOrName ?? "").split("/").pop() ?? "";
+  if (!/\.pdf$/i.test(name)) return false;
+  if (/enforcement[- ]notice|reprimand|prosecution|proceeds[- ]of[- ]crime/i.test(name)) return false;
+  return MPN_PDF_RE.test(name);
+}
+
+export function isNonMpnEnforcementSlug(slug: string | null | undefined): boolean {
+  const s = (slug ?? "").toLowerCase();
+  if (!s) return true;
+  if (/-(?:en|enforcement-notice|reprimand)(?:-\d+)?$/.test(s)) return true;
+  if (/proceeds-of-crime|prosecution/.test(s)) return true;
+  return false;
+}
+
+export function isPeopleSlug(slug: string | null | undefined): boolean {
+  const s = (slug ?? "").toLowerCase();
+  if (!s) return true;
+  if (/(?:ltd|limited|plc|inc|llc|llp|corp|company|consultancy|services|group|university|council|authority|bank|trust)\b/.test(s)) {
+    return false;
+  }
+  if (/-mpn$|-monetary-penalty-notice$/.test(s)) return false;
+  return /^[a-z]+(?:-[a-z]+){1,3}$/.test(s) && !/trading-as/.test(s);
+}
+
+export function isCandidateEnforcementPage(url: string | null | undefined): boolean {
+  const official = officialEnforcementPageUrl(url);
+  if (!official) return false;
+  const slug = enforcementPageSlug(official);
+  if (!slug || isNonMpnEnforcementSlug(slug)) return false;
+  if (isPeopleSlug(slug) && !/-mpn$|-monetary-penalty-notice$/.test(slug)) return false;
+  return true;
+}
+
+function absolutizeIcoHref(href: string): string {
+  return href.startsWith("http") ? href : `${PDF_ORIGIN}${href.startsWith("/") ? "" : "/"}${href}`;
+}
+
+function noticePageDate(html: string, pageUrl?: string): string | null {
+  const labeled = html.match(
+    /Date of final notice[\s\S]{0,160}?(\d{1,2}\/\d{1,2}\/\d{4}|\d{1,2}\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{4})/i,
+  );
+  if (labeled) return isoDate(labeled[1]);
+  const uk = html.match(
+    /\b(\d{1,2}\s+(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+20\d{2})\b/i,
+  );
+  if (uk) return isoDate(uk[1]);
+  const pageDate = (pageUrl ?? "").match(ENFORCEMENT_PAGE_RE);
+  return pageDate ? `${pageDate[1]}-${pageDate[2]}-01` : null;
+}
+
+function noticePagePdfRows(html: string, pageUrl?: string): IcoMpnListingRow[] {
+  const rows: IcoMpnListingRow[] = [];
+  const title = stripTags((html.match(/<title[^>]*>([\s\S]*?)<\/title>/i) || [])[1] || "")
+    .replace(/\s*\|\s*ICO\s*$/i, "")
+    .trim();
+  const h1 = stripTags((html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i) || [])[1] || "").trim();
+  const institution = (h1 || title).replace(/\s+Monetary Penalty Notice.*$/i, "").trim();
+  const date = noticePageDate(html, pageUrl);
+  const hrefs = [
+    ...html.matchAll(/<(?:a|further-Reading)\b[^>]+(?:href|x-href)="([^"]+)"[^>]*>/gi),
+  ].map((m) => m[1]);
+  const pageSlug = enforcementPageSlug(pageUrl);
+  for (const raw of hrefs) {
+    const href = absolutizeIcoHref(raw);
+    if (!officialIcoMpnPdfUrl(href)) continue;
+    if (!isMpnPdfFilename(href)) continue;
+    rows.push({
+      institution,
+      date: date || undefined,
+      title: "Monetary Penalty Notice",
+      sourceUrl: href,
+      pdfId: pdfIdFromUrl(href) ?? "",
+      docket: pageSlug && DOCKET_BARE_RE.test(pageSlug) ? pageSlug : slugFromUrl(href),
+    });
+  }
+  return rows;
+}
+
+export function parseNoticePageHtml(html: string, pageUrl?: string): IcoMpnListing[] {
+  const slug = enforcementPageSlug(pageUrl);
+  if (slug && isNonMpnEnforcementSlug(slug)) return [];
+  return parseListingRows(noticePagePdfRows(html, pageUrl));
+}
+
+export function parseSitemapXml(xml: string): string[] {
+  const found: string[] = [];
+  const seen = new Set<string>();
+  for (const loc of xml.matchAll(/<loc>\s*([^<\s]+)\s*<\/loc>/gi)) {
+    const official = officialEnforcementPageUrl(loc[1]);
+    if (!official || !isCandidateEnforcementPage(official) || seen.has(official)) continue;
+    seen.add(official);
+    found.push(official);
+  }
+  found.sort((a, b) => b.localeCompare(a));
+  return found;
+}
+
+export function parseRecoverFinesHtml(html: string): IcoMpnListingRow[] {
+  const rows: IcoMpnListingRow[] = [];
+  const trs = html.match(/<tr\b[^>]*>[\s\S]*?<\/tr>/gi) ?? [];
+  for (const row of trs) {
+    const href = (row.match(/href="([^"]+)"/i) || [])[1] || "";
+    const pageUrl = officialEnforcementPageUrl(absolutizeIcoHref(href));
+    if (!pageUrl || !isCandidateEnforcementPage(pageUrl)) continue;
+    const cells = [...row.matchAll(/<t[dh]\b[^>]*>([\s\S]*?)<\/t[dh]>/gi)].map((m) => stripTags(m[1]));
+    if (cells.length < 2) continue;
+    rows.push({
+      institution: cells[0],
+      date: cells[1],
+      title: "Monetary Penalty Notice",
+      type: cells[2] || "Monetary Penalty Notice",
+      sourceUrl: pageUrl,
+      docket: enforcementPageSlug(pageUrl) ?? undefined,
+    });
+  }
+  return rows;
 }
 
 export function isIndexTeaserDump(text: string): boolean {
@@ -497,6 +661,11 @@ function maxFetchLimit(): number {
   return Number.isFinite(n) && n > 0 ? Math.floor(n) : 8;
 }
 
+function pageFetchLimit(): number {
+  const n = Number(env("ICO_MPN_PAGE_FETCH", "48"));
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 48;
+}
+
 function readNamedFile(dir: string, names: string[]): string | null {
   if (!dir) return null;
   for (const name of names) {
@@ -517,6 +686,40 @@ function mergeOfficialListings(listed: IcoMpnListing[], seeds: IcoMpnListing[]):
   return out;
 }
 
+function recoverFinesPageUrls(html: string): string[] {
+  const urls: string[] = [];
+  const seen = new Set<string>();
+  for (const row of parseRecoverFinesHtml(html)) {
+    const official = officialEnforcementPageUrl(row.sourceUrl);
+    if (!official || seen.has(official)) continue;
+    seen.add(official);
+    urls.push(official);
+  }
+  return urls;
+}
+
+async function walkOfficialNoticePages(pageUrls: string[]): Promise<IcoMpnListing[]> {
+  const listed: IcoMpnListing[] = [];
+  const seen = new Set<string>();
+  const cap = pageFetchLimit();
+  let fetched = 0;
+  for (const pageUrl of pageUrls) {
+    if (fetched >= cap) break;
+    try {
+      const pageListed = parseNoticePageHtml(await fetchIcoMpnText(pageUrl), pageUrl);
+      fetched += 1;
+      for (const row of pageListed) {
+        if (!row.id || seen.has(row.id)) continue;
+        seen.add(row.id);
+        listed.push(row);
+      }
+    } catch {
+      fetched += 1;
+    }
+  }
+  return listed;
+}
+
 async function loadOfficialListings(dir: string): Promise<{ listed: IcoMpnListing[]; listedCount: number }> {
   if (dir) {
     const json = readNamedFile(dir, ["listing-excerpt.json", "listing.json"]);
@@ -529,7 +732,28 @@ async function loadOfficialListings(dir: string): Promise<{ listed: IcoMpnListin
     return { listed: html ? parseListingHtml(html) : [], listedCount: html ? parseListingHtml(html).length : 0 };
   }
   try {
-    const listed = parseListingHtml(await fetchIcoMpnText(LISTING_URL));
+    const pageUrls: string[] = [];
+    const seenPages = new Set<string>();
+    const addPages = (urls: string[]) => {
+      for (const url of urls) {
+        const official = officialEnforcementPageUrl(url);
+        if (!official || !isCandidateEnforcementPage(official) || seenPages.has(official)) continue;
+        seenPages.add(official);
+        pageUrls.push(official);
+      }
+    };
+    try {
+      addPages(parseSitemapXml(await fetchIcoMpnText(SITEMAP_URL)));
+    } catch {
+      /* sitemap missed; recover-fines table still walks official pages */
+    }
+    try {
+      addPages(recoverFinesPageUrls(await fetchIcoMpnText(RECOVER_FINES_URL)));
+    } catch {
+      /* recover-fines missed; sitemap pages still walk */
+    }
+    pageUrls.sort((a, b) => b.localeCompare(a));
+    const listed = await walkOfficialNoticePages(pageUrls);
     const merged = mergeOfficialListings(listed, SEED_LISTINGS);
     if (merged.length > 0) return { listed: merged, listedCount: merged.length };
   } catch {

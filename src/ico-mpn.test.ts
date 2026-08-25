@@ -9,15 +9,25 @@ import {
   CARD_FIELDS,
   LICENSE,
   LISTING_URL,
+  RECOVER_FINES_URL,
   SEED_LISTINGS,
+  SITEMAP_URL,
   buildIcoMpnManifest,
   collectIcoMpn,
+  isCandidateEnforcementPage,
   isInstitutionOrderRow,
+  isMpnPdfFilename,
+  isNonMpnEnforcementSlug,
   isPeopleRow,
+  isPeopleSlug,
   isRealIcoMpnBody,
+  officialEnforcementPageUrl,
   officialIcoMpnPdfUrl,
   parseListingHtml,
   parseListingRows,
+  parseNoticePageHtml,
+  parseRecoverFinesHtml,
+  parseSitemapXml,
   parseIcoMpnText,
   pdfIdFromUrl,
   type IcoMpnListingRow,
@@ -60,8 +70,38 @@ async function main(): Promise<void> {
     null,
   );
   assert.ok(LISTING_URL.includes("ico.org.uk"));
+  assert.ok(SITEMAP_URL.includes("sitemap.xml"), "live collect must walk the official ICO sitemap");
+  assert.ok(RECOVER_FINES_URL.includes("the-icos-work-to-recover-fines"), "live collect must walk recover-fines");
   assert.equal(SEED_LISTINGS.length, 5);
   assert.ok(SEED_LISTINGS.some((r) => r.docket === "reddit-mpn-20260223"));
+  assert.equal(
+    officialEnforcementPageUrl("https://ico.org.uk/action-weve-taken/enforcement/2026/05/kra-consultancy-ltd-mpn/"),
+    "https://ico.org.uk/action-weve-taken/enforcement/2026/05/kra-consultancy-ltd-mpn/",
+  );
+  assert.equal(
+    officialEnforcementPageUrl(
+      "https://ico.org.uk/about-the-ico/media-centre/news-and-blogs/2026/02/reddit-issued-with-1447m-fine-for-children-s-privacy-failures/",
+    ),
+    null,
+    "press/teaser pages stay out",
+  );
+  assert.equal(isMpnPdfFilename("monetary-penalty-notice-kra-consultancy-ltd.pdf"), true);
+  assert.equal(isMpnPdfFilename("kra-consultancy-ltd-enforcement-notice.pdf"), false, "EN PDFs stay out");
+  assert.equal(isNonMpnEnforcementSlug("kra-consultancy-ltd-en"), true);
+  assert.equal(isNonMpnEnforcementSlug("kra-consultancy-ltd-mpn"), false);
+  assert.equal(isPeopleSlug("geoffrey-smith"), true);
+  assert.equal(isPeopleSlug("reddit-inc"), false);
+  assert.equal(isCandidateEnforcementPage("https://ico.org.uk/action-weve-taken/enforcement/2026/02/reddit-inc/"), true);
+  assert.equal(
+    isCandidateEnforcementPage("https://ico.org.uk/action-weve-taken/enforcement/2026/07/geoffrey-smith/"),
+    false,
+    "people pages stay out",
+  );
+  assert.equal(
+    isCandidateEnforcementPage("https://ico.org.uk/action-weve-taken/enforcement/2026/05/kra-consultancy-ltd-en/"),
+    false,
+    "enforcement-notice pages stay out",
+  );
 
   const htmlListed = parseListingHtml(readFx("listing-excerpt.html"));
   assert.ok(htmlListed.some((r) => r.id === "reddit-mpn-20260223"));
@@ -69,6 +109,48 @@ async function main(): Promise<void> {
   assert.ok(htmlListed.some((r) => /LastPass/i.test(r.institution)));
   assert.ok(!htmlListed.some((r) => /Jane Q Public/i.test(r.institution)));
   assert.ok(!htmlListed.some((r) => /children’s privacy failures/i.test(r.title)));
+
+  const sitemapPages = parseSitemapXml(readFx("sitemap-excerpt.xml"));
+  assert.ok(sitemapPages.some((u) => /kra-consultancy-ltd-mpn/.test(u)));
+  assert.ok(sitemapPages.some((u) => /thermotech-wall-and-loft-surveys-ltd-mpn/.test(u)));
+  assert.ok(sitemapPages.some((u) => /reddit-inc/.test(u)));
+  assert.ok(!sitemapPages.some((u) => /kra-consultancy-ltd-en/.test(u)), "EN slugs stay out of the sitemap walk");
+  assert.ok(!sitemapPages.some((u) => /geoffrey-smith/.test(u)), "people slugs stay out of the sitemap walk");
+  assert.ok(!sitemapPages.some((u) => /reprimand/.test(u)));
+  assert.ok(!sitemapPages.some((u) => /media-centre/.test(u)), "press/teaser sitemap rows stay out");
+
+  const recoverRows = parseRecoverFinesHtml(readFx("recover-fines-excerpt.html"));
+  assert.ok(recoverRows.some((r) => /South Staffordshire/i.test(r.institution ?? "") && r.date === "07/05/2026"));
+  assert.ok(recoverRows.some((r) => /KRA Consultancy/i.test(r.institution ?? "")));
+  assert.ok(recoverRows.some((r) => /Thermotech/i.test(r.institution ?? "")));
+  assert.ok(!recoverRows.some((r) => /Geoffrey Smith/i.test(r.institution ?? "")), "people stay out of recover-fines");
+  assert.ok(!recoverRows.some((r) => /kra-consultancy-ltd-en/.test(r.sourceUrl ?? "")), "EN rows stay out");
+
+  const kraNotice = parseNoticePageHtml(
+    readFx("notice-page-excerpt.html"),
+    "https://ico.org.uk/action-weve-taken/enforcement/2026/05/kra-consultancy-ltd-mpn/",
+  );
+  assert.equal(kraNotice.length, 1);
+  assert.match(kraNotice[0]?.institution ?? "", /KRA Consultancy/i);
+  assert.equal(kraNotice[0]?.date, "2026-05-20");
+  assert.equal(
+    kraNotice[0]?.sourceUrl,
+    "https://ico.org.uk/media2/vkalw544/monetary-penalty-notice-kra-consultancy-ltd.pdf",
+  );
+  assert.equal(kraNotice[0]?.docket, "kra-consultancy-ltd-mpn");
+  assert.ok(officialIcoMpnPdfUrl(kraNotice[0]?.sourceUrl ?? ""));
+
+  const enNotice = parseNoticePageHtml(
+    readFx("en-notice-page-excerpt.html"),
+    "https://ico.org.uk/action-weve-taken/enforcement/2026/05/kra-consultancy-ltd-en/",
+  );
+  assert.equal(enNotice.length, 0, "enforcement-notice pages stay out");
+
+  const peopleNotice = parseNoticePageHtml(
+    readFx("people-notice-page-excerpt.html"),
+    "https://ico.org.uk/action-weve-taken/enforcement/2026/07/geoffrey-smith/",
+  );
+  assert.equal(peopleNotice.length, 0, "people notice pages stay out");
 
   const people = rows.find((r) => (r.docket ?? "") === "jane-q-public");
   assert.ok(people);
