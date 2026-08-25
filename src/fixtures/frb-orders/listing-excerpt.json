@@ -1,0 +1,67 @@
+[
+  {
+    "institution": "Community Bankshares, Inc.",
+    "location": "LaGrange, Georgia",
+    "docket": "26-019-B-HC",
+    "date": "2026-04-14",
+    "title": "Cease and Desist Order",
+    "sourceUrl": "https://www.federalreserve.gov/newsevents/pressreleases/files/enf20260416a1.pdf",
+    "pdfId": "enf20260416a1"
+  },
+  {
+    "institution": "Small Business Bank",
+    "location": "Lenexa, Kansas",
+    "docket": "26-039-PCA-SM",
+    "date": "2026-06-29",
+    "title": "Prompt Corrective Action Directive",
+    "sourceUrl": "https://www.federalreserve.gov/newsevents/pressreleases/files/enf20260702a1.pdf",
+    "pdfId": "enf20260702a1"
+  },
+  {
+    "institution": "TS Banking Group, Inc. and TS Contrarian Bancshares, Inc.",
+    "location": "Treynor, Iowa",
+    "docket": "26-016-WA/RB-HC",
+    "date": "2026-07-06",
+    "title": "Written Agreement",
+    "sourceUrl": "https://www.federalreserve.gov/newsevents/pressreleases/files/enf20260709a1.pdf",
+    "pdfId": "enf20260709a1"
+  },
+  {
+    "institution": "Iuka Bancshares, Inc.",
+    "location": "Salem, Illinois",
+    "docket": "26-040-WA/RB-HC",
+    "date": "2026-07-15",
+    "title": "Written Agreement",
+    "sourceUrl": "https://www.federalreserve.gov/newsevents/pressreleases/files/enf20260730b1.pdf",
+    "pdfId": "enf20260730b1"
+  },
+  {
+    "institution": "The Iuka State Bank",
+    "location": "Salem, Illinois",
+    "docket": "26-040-WA/RB-SM",
+    "date": "2026-07-15",
+    "title": "Written Agreement",
+    "sourceUrl": "https://www.federalreserve.gov/newsevents/pressreleases/files/enf20260730b1.pdf",
+    "pdfId": "enf20260730b1"
+  },
+  {
+    "institution": "Regions Bank",
+    "individual": "Elazia Jones",
+    "location": "Birmingham, Alabama",
+    "docket": "26-041-E-I",
+    "date": "2026-08-05",
+    "title": "Prohibition from Banking",
+    "sourceUrl": "https://www.federalreserve.gov/newsevents/pressreleases/files/enf20260813a1.pdf",
+    "pdfId": "enf20260813a1"
+  },
+  {
+    "institution": "Bank of Eufaula",
+    "individual": "Jason Burns",
+    "location": "Eufaula, Oklahoma",
+    "docket": "26-033-B-I",
+    "date": "2026-06-17",
+    "title": "Consent cease-and-desist order against institution-affiliated party",
+    "sourceUrl": "https://www.federalreserve.gov/newsevents/pressreleases/files/enf20260625b1.pdf",
+    "pdfId": "enf20260625b1"
+  }
+]

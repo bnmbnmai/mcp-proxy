@@ -1,0 +1,51 @@
+[
+  {
+    "institution": "Caristo Diagnostics Ltd.",
+    "docket": "DEN250042",
+    "date": "2026-07-28",
+    "title": "De Novo classification order",
+    "sourceUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf25/DEN250042.pdf",
+    "pdfId": "DEN250042"
+  },
+  {
+    "institution": "Hjarta Care, LLC",
+    "docket": "DEN250033",
+    "date": "2026-04-17",
+    "title": "De Novo classification order",
+    "sourceUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf25/DEN250033.pdf",
+    "pdfId": "DEN250033"
+  },
+  {
+    "institution": "Automated Imaging Diagnostics, LLC",
+    "docket": "DEN240071",
+    "date": "2026-04-03",
+    "title": "De Novo classification order",
+    "sourceUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf24/DEN240071.pdf",
+    "pdfId": "DEN240071"
+  },
+  {
+    "institution": "Tyto Care Ltd.",
+    "docket": "DEN250014",
+    "date": "2026-03-17",
+    "title": "De Novo classification order",
+    "sourceUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf25/DEN250014.pdf",
+    "pdfId": "DEN250014"
+  },
+  {
+    "institution": "LifeVac LLC",
+    "docket": "DEN250012",
+    "date": "2026-03-04",
+    "title": "De Novo classification order",
+    "sourceUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf25/DEN250012.pdf",
+    "pdfId": "DEN250012"
+  },
+  {
+    "institution": "Jane Q Public",
+    "individual": "Jane Q Public",
+    "docket": "DEN259999",
+    "date": "2026-01-01",
+    "title": "De Novo classification order",
+    "sourceUrl": "https://www.accessdata.fda.gov/cdrh_docs/pdf25/DEN259999.pdf",
+    "pdfId": "DEN259999"
+  }
+]

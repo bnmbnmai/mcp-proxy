@@ -1,0 +1,75 @@
+[
+  {
+    "bank": "MutualOne Bank",
+    "location": "Framingham, Massachusetts",
+    "docket": "FDIC-26-0001b",
+    "date": "2026-01-13",
+    "title": "Consent Order",
+    "sourceUrl": "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ000013gUnXYAU?operationContext=S1",
+    "pdfId": "069SJ000013gUnXYAU"
+  },
+  {
+    "bank": "Community Bank and Trust – West Georgia",
+    "location": "LaGrange, Georgia",
+    "docket": "FDIC-25-0127b",
+    "date": "2026-01-12",
+    "title": "Consent Order",
+    "sourceUrl": "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ000013EZOfYAO?operationContext=S1",
+    "pdfId": "069SJ000013EZOfYAO"
+  },
+  {
+    "bank": "Union County Savings Bank",
+    "location": "Elizabeth, New Jersey",
+    "docket": "FDIC-22-0042b",
+    "date": "2026-02-17",
+    "title": "Amended and Restated Consent Order",
+    "sourceUrl": "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ000016cJFgYAM?operationContext=S1",
+    "pdfId": "069SJ000016cJFgYAM"
+  },
+  {
+    "bank": "Covington County Bank",
+    "location": "Collins, Mississippi",
+    "docket": "FDIC-26-0011b",
+    "date": "2026-03-26",
+    "title": "Consent Order",
+    "sourceUrl": "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ000019kAxyYAE?operationContext=S1",
+    "pdfId": "069SJ000019kAxyYAE"
+  },
+  {
+    "bank": "Connect Community Bank",
+    "location": "Raymond, Washington",
+    "docket": "FDIC-25-0148b",
+    "date": "2026-05-13",
+    "title": "Consent Order",
+    "sourceUrl": "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ00001GluRdYAJ?operationContext=S1",
+    "pdfId": "069SJ00001GluRdYAJ"
+  },
+  {
+    "bank": "JPMorgan Chase Bank",
+    "individual": "Jane Q. Public",
+    "location": "Columbus, Ohio",
+    "docket": "FDIC-26-0002e",
+    "date": "2026-01-20",
+    "title": "Order of Prohibition from Further Participation",
+    "sourceUrl": "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ00001PEOPLEFILE?operationContext=S1",
+    "pdfId": "069SJ00001PEOPLEFILE"
+  },
+  {
+    "bank": "Main Street Bank Corp.",
+    "location": "Wooster, Ohio",
+    "docket": "FDIC-26-0006k",
+    "date": "2026-02-23",
+    "title": "Order to Pay Civil Money Penalty",
+    "sourceUrl": "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ000019jBYFYA2?operationContext=S1",
+    "pdfId": "069SJ000019jBYFYA2"
+  },
+  {
+    "bank": "Independence Bank",
+    "location": "East Greenwich, Rhode Island",
+    "docket": "FDIC-22-0001b",
+    "date": "2026-01-15",
+    "title": "Order Terminating Consent Order",
+    "sourceUrl": "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ00001TERMINATE1?operationContext=S1",
+    "pdfId": "069SJ00001TERMINATE1"
+  }
+]

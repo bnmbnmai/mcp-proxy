@@ -1,0 +1,78 @@
+United States
+Department of
+                  Fayaz Khazi, Ph.D.
+Agriculture       The Traits Company
+Animal and
+                  104 T.W. Alexander Drive, Bldg. 1,
+Plant Health      Research Triangle Park, NC 27713
+Inspection
+Service
+                  Re: Confirmation of the regulatory status of genome-edited soybean lines with improved
+Biotechnology
+Regulatory
+                  yield
+Services
+
+4700 River Road
+                  Dear Dr. Khazi:
+Riverdale, MD
+20737             Thank you for your letter dated July 29, 2025 (25-226-01air), inquiring whether the
+                  soybean (Glycine max) product described in your letter is a regulated article under 7 CFR
+                  part 340. Your letter describes the use of CRISPR/Cas genome editing, which will result
+                  in the described phenotype(s) to improve soybean yield.
+
+                  The Plant Protection Act of 2000 (PPA) provides USDA with broad authority to protect
+                  U.S. agriculture, the environment, and the economy by, among other things, regulating
+                  the introduction of plants and articles to prevent the dissemination or establishment of a
+                  plant pest within the United States. As such, USDA, through the Animal and Plant Health
+                  Inspection Service, regulates the “Introduction of Organisms and Products Altered or
+                  Produced Through Genetic Engineering Which are Plant Pests or Which There is Reason
+                  to Believe Are Plant Pests,” as described in 7 CFR part 340. These regulations only apply
+                  to organisms that USDA deems regulated articles under § 340.1.
+
+                  In your letter, you describe your use of CRISPR/Cas to induce indels in 600 targeted
+                  soybean gene sequences related to yield improvement but claimed as confidential
+                  business information (CBI). Your method will create gene edits via targeted DNA breaks
+                  in CBI genes using one or multiple guide RNAs, followed by natural cellular repair in the
+                  absence of an exogenous repair template. You state that foreign DNA, including plant
+                  pest DNA, will be absent in the final products, and that this will be confirmed by methods
+                  claimed as CBI.
+
+                  Based on the representations you made in your letter, including your description of your
+                  confirmation methods, your soybean lines are not themselves plant pests and no plant
+                  pest sequences will remain integrated in the genome of soybean. Consistent with previous
+                  responses to similar letters of inquiry, USDA would not consider your modified soybean
+                  lines to be regulated pursuant to 7 CFR part 340.
+
+                  Although your modified soybean would not be regulated under 7 CFR part 340, it may be
+                  subject to other USDA regulations or other regulatory authorities. For example,
+                  importation of your soybean or its seeds may be subject to Plant Protection and
+                  Quarantine (PPQ) permit and/or quarantine requirements. For further information, you
+                  may contact the PPQ general number for such inquiries at (877) 770-5990. To inquire
+                  about the regulatory status of your plant with the Environmental Protection Agency,
+                  please contact Alan Reynolds at reynolds.alan@epa.gov or (703) 605-0515. To inquire
+                                                                   The Traits Company
+                                                                                Page 2
+
+
+about the regulatory status of your plant with the Food and Drug Administration (FDA),
+please contact FDA at PlantBiotech@fda.hhs.gov.
+
+Should you become aware at any time of any issues that may affect USDA’s conclusion
+regarding this inquiry, you should immediately notify us in writing of the nature of the
+issue.
+
+Sincerely,
+
+                       Digitally signed by DONNA
+
+DONNA LALLI            LALLI
+                       Date: 2025.09.19 16:53:18
+                       -04'00'
+
+Donna A. Lalli, Ph.D.
+APHIS Deputy Administrator
+Biotechnology Regulatory Services
+Animal and Plant Health Inspection Service
+U.S. Department of Agriculture
+

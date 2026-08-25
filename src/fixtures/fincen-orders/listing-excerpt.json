@@ -1,0 +1,74 @@
+[
+  {
+    "institution": "UBS Financial Services Inc.",
+    "docket": "2026-02",
+    "date": "2026-08-03",
+    "title": "Consent Order Imposing Civil Money Penalty",
+    "type": "Securities and Futures",
+    "sourceUrl": "https://www.fincen.gov/system/files/2026-07/UBS-Consent-Order.pdf",
+    "pdfId": "UBS-Consent-Order"
+  },
+  {
+    "institution": "Canaccord Genuity LLC",
+    "docket": "2026-01",
+    "date": "2026-03-06",
+    "title": "Consent Order Imposing Civil Money Penalty",
+    "type": "Securities and Futures",
+    "sourceUrl": "https://www.fincen.gov/system/files/2026-03/Canaccord-Consent-Order-No-2026-01.pdf",
+    "pdfId": "Canaccord-Consent-Order-No-2026-01"
+  },
+  {
+    "institution": "Paxful, Inc. and Paxful USA, Inc.",
+    "docket": "2025-02",
+    "date": "2025-12-09",
+    "title": "Consent Order Imposing Civil Money Penalty",
+    "type": "Money Services Businesses",
+    "sourceUrl": "https://www.fincen.gov/system/files/2025-12/PaxfulConsentOrder.pdf",
+    "pdfId": "PaxfulConsentOrder"
+  },
+  {
+    "institution": "Brink’s Global Services USA, Inc.",
+    "docket": "2025-01",
+    "date": "2025-01-31",
+    "title": "Consent Order Imposing Civil Money Penalty",
+    "type": "Money Services Businesses",
+    "sourceUrl": "https://www.fincen.gov/system/files/enforcement_action/2025-02-06/FinCEN-Brinks-FINALv508.pdf",
+    "pdfId": "FinCEN-Brinks-FINALv508"
+  },
+  {
+    "institution": "Sahara Dunes Casino, LP d/b/a Lake Elsinore Hotel and Casino",
+    "docket": "2024-03",
+    "date": "2024-10-22",
+    "title": "Consent Order Imposing Civil Money Penalty",
+    "type": "Casinos",
+    "sourceUrl": "https://www.fincen.gov/system/files/enforcement_action/2024-10-23/FinCEN-Consent-Order-Lake-Elsinore-508.pdf",
+    "pdfId": "FinCEN-Consent-Order-Lake-Elsinore-508"
+  },
+  {
+    "institution": "TD Bank, N.A. and TD Bank USA, N.A.",
+    "docket": "2024-02",
+    "date": "2024-10-10",
+    "title": "Consent Order Imposing Civil Money Penalty",
+    "type": "Depository Institutions",
+    "sourceUrl": "https://www.fincen.gov/system/files/enforcement_action/2024-10-10/FinCEN-TD-Bank-Consent-Order-508FINAL.pdf",
+    "pdfId": "FinCEN-TD-Bank-Consent-Order-508FINAL"
+  },
+  {
+    "institution": "Gyanendra Kumar Asre",
+    "individual": "Gyanendra Kumar Asre",
+    "docket": "2024-01",
+    "date": "2024-01-31",
+    "title": "Consent Order Imposing Civil Money Penalty",
+    "type": "Depository Institutions, Money Services Businesses",
+    "sourceUrl": "https://www.fincen.gov/system/files/enforcement_action/2024-01-31/FinCEN_Consent_Order_2024-01_FINAL508.pdf",
+    "pdfId": "FinCEN_Consent_Order_2024-01_FINAL508"
+  },
+  {
+    "institution": "UBS Financial Services Inc.",
+    "docket": "2026-02",
+    "date": "2026-08-03",
+    "title": "FinCEN Assesses Historic $125 Million Penalty Against UBS Financial Services Inc.",
+    "type": "Securities and Futures",
+    "sourceUrl": "https://www.fincen.gov/news/news-releases/fincen-assesses-historic-125-million-penalty-against-ubs-financial-services-inc"
+  }
+]

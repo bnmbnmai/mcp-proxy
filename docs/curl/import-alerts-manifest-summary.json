@@ -1,0 +1,144 @@
+{
+  "product": "fda-import-alerts",
+  "free": true,
+  "note": "Catalog + schema + sample rows only. Full red/green firm lists are the paid GET /import-alerts body. Samples are marked sample and are not the full list.",
+  "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+  "network": "base",
+  "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+  "amountAtomic": "50000",
+  "priceUsdc": "0.05",
+  "sources": {
+    "catalog": "https://www.accessdata.fda.gov/cms_ia/ialist.html",
+    "byDate": "https://www.accessdata.fda.gov/cms_ia/iapublishdate.html",
+    "pattern": "https://www.accessdata.fda.gov/cms_ia/importalert_{id}.html"
+  },
+  "schema": {
+    "fields": [
+      "alertNumber",
+      "type",
+      "name",
+      "list",
+      "firm",
+      "country",
+      "product",
+      "datePublished",
+      "sourceUrl",
+      "asOf"
+    ],
+    "list": [
+      "red",
+      "green"
+    ]
+  },
+  "firstSlice": [
+    {
+      "pageId": "49",
+      "alertNumber": "16-81"
+    },
+    {
+      "pageId": "189",
+      "alertNumber": "66-40"
+    },
+    {
+      "pageId": "258",
+      "alertNumber": "99-05"
+    },
+    {
+      "pageId": "259",
+      "alertNumber": "99-08"
+    },
+    {
+      "pageId": "263",
+      "alertNumber": "99-19"
+    },
+    {
+      "pageId": "266",
+      "alertNumber": "99-23"
+    }
+  ],
+  "samples": [
+    {
+      "alertNumber": "16-81",
+      "type": "DWPE",
+      "name": "Detention Without Physical Examination of Seafood Products Due to the Presence of Salmonella",
+      "list": "red",
+      "firm": "Clover Valley Meat Co.",
+      "country": "AUSTRALIA",
+      "product": "Alligator & Crocodile, Other Aquatic Species \u2014 Crocodile",
+      "datePublished": "06/08/2012",
+      "sourceUrl": "https://www.accessdata.fda.gov/cms_ia/importalert_49.html",
+      "asOf": "2026-08-17",
+      "sample": true
+    },
+    {
+      "alertNumber": "16-81",
+      "type": "DWPE",
+      "name": "Detention Without Physical Examination of Seafood Products Due to the Presence of Salmonella",
+      "list": "red",
+      "firm": "Clover Valley Meat Co.",
+      "country": "AUSTRALIA",
+      "product": "Bushmeat or Bush Meat or Wild Meats (Smoked, Roasted, Dried, Boiled, Broiled) \u2014 Crocodile",
+      "datePublished": "06/08/2012",
+      "sourceUrl": "https://www.accessdata.fda.gov/cms_ia/importalert_49.html",
+      "asOf": "2026-08-17",
+      "sample": true
+    }
+  ],
+  "catalogCount": 153,
+  "catalogFirstSlice": [
+    {
+      "alertNumber": "16-81",
+      "type": "DWPE",
+      "name": "Detention Without Physical Examination of Seafood Products Due to the Presence of Salmonella",
+      "datePublished": "08/17/2026",
+      "sourceUrl": "https://www.accessdata.fda.gov/cms_ia/importalert_49.html",
+      "pageId": "49",
+      "firstSlice": true
+    },
+    {
+      "alertNumber": "66-40",
+      "type": "DWPE",
+      "name": "Detention Without Physical Examination of Drugs From Firms Which Have Not Met Drug GMPs",
+      "datePublished": "08/17/2026",
+      "sourceUrl": "https://www.accessdata.fda.gov/cms_ia/importalert_189.html",
+      "pageId": "189",
+      "firstSlice": true
+    },
+    {
+      "alertNumber": "99-05",
+      "type": "DWPE",
+      "name": "Detention Without Physical Examination Of Raw Agricultural Products for Pesticides",
+      "datePublished": "08/14/2026",
+      "sourceUrl": "https://www.accessdata.fda.gov/cms_ia/importalert_258.html",
+      "pageId": "258",
+      "firstSlice": true
+    },
+    {
+      "alertNumber": "99-08",
+      "type": "DWPE",
+      "name": "Detention without Physical Examination of Processed Human and Animal Foods for Pesticides",
+      "datePublished": "08/17/2026",
+      "sourceUrl": "https://www.accessdata.fda.gov/cms_ia/importalert_259.html",
+      "pageId": "259",
+      "firstSlice": true
+    },
+    {
+      "alertNumber": "99-19",
+      "type": "DWPE",
+      "name": "Detention Without Physical Examination of Food Products Due to the Presence of Salmonella",
+      "datePublished": "08/17/2026",
+      "sourceUrl": "https://www.accessdata.fda.gov/cms_ia/importalert_263.html",
+      "pageId": "263",
+      "firstSlice": true
+    },
+    {
+      "alertNumber": "99-23",
+      "type": "DWPE",
+      "name": "Detention Without Physical Examination of Produce Due to Contamination With Human Pathogens",
+      "datePublished": "07/06/2026",
+      "sourceUrl": "https://www.accessdata.fda.gov/cms_ia/importalert_266.html",
+      "pageId": "266",
+      "firstSlice": true
+    }
+  ]
+}

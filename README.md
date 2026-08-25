@@ -1,5 +1,7 @@
 # Apollo Intelligence MCP Server 🏛️
 
+**BNM Data Shop (thin x402 door):** `GET /ticks` US hay, cattle, and grain — unpaid HTTP 402, **$0.05** USDC on Base. `GET /import-alerts` FDA Import Alert / DWPE ticks — unpaid HTTP 402, **$0.05**; free catalog at `GET /import-alerts/manifest.json`. `GET /fdic-orders` FDIC institution consent-order / C&D TEXT — unpaid HTTP 402, **$0.05**; free bank/docket/date/PDF URL at `GET /fdic-orders/manifest.json`. Receive at `0xf59621FC406D266e18f314Ae18eF0a33b8401004`. See [`docs/IDAHO-TICKS-X402.md`](./docs/IDAHO-TICKS-X402.md), [`docs/IMPORT-ALERTS-X402.md`](./docs/IMPORT-ALERTS-X402.md), and [`docs/FDIC-ORDERS-X402.md`](./docs/FDIC-ORDERS-X402.md). Official FDA `cms_ia` HTML and official `orders.fdic.gov` PDFs only. Not a listing and not the old 40-tool catalog.
+
 **40 tools for AI agents: intelligence feeds, economic data, DeFi, real-time search, crypto, OSINT, weather, ML/NLP, proxy infrastructure — all via x402 micropayments.**
 
 Give your AI agent access to curated market intelligence, web scraping through 190+ country residential proxies, real-time X/Twitter search, crypto prices, GitHub trending data, and more.

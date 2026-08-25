@@ -1,0 +1,449 @@
+                    FEDERAL DEPOSIT INSURANCE CORPORATION
+                               WASHINGTON, D.C.
+                                            AND
+         MISSISSIPPI DEPARTMENT OF BANKING AND CONSUMER FINANCE
+                            JACKSON, MISSISSIPPI
+
+
+                                              )
+ In the Matter of
+                                              )
+                                              )               CONSENT ORDER
+ COVINGTON COUNTY BANK
+                                              )
+ COLLINS, MISSISSIPPI
+                                              )                 FDIC-26-0011b
+                                              )
+                                              )
+ (Insured State Nonmember Bank)
+                                              )
+                                              )
+                                              )
+
+
+
+        The Federal Deposit Insurance Corporation (FDIC) is the appropriate Federal banking
+
+agency for COVINGTON COUNTY BANK, COLLINS, MISSISSIPPI (Bank), under Section
+
+3(q) of the Federal Deposit Insurance Act (FDI Act), 12 U.S.C. § 1813(q). The Mississippi
+
+Department of Banking and Consumer Finance (DBCF) is the appropriate state banking agency
+
+for the Bank under section 81-1-59, Mississippi Code of 1972, Annotated.
+
+        The Bank, by and through its duly elected and acting Board of Directors (Board), has
+
+executed a STIPULATION TO THE ISSUANCE OF A CONSENT ORDER (CONSENT
+
+AGREEMENT), dated March 25, 2026, that is accepted by the FDIC and the DBCF. With the
+
+CONSENT AGREEMENT, the Bank has consented, without admitting or denying any charges of
+
+violating the Bank Secrecy Act, 31 U.S.C. § 5311 et. seq., 12 U.S.C. § 1829b, and 12 U.S.C. §§
+
+1951-60, 31 C.F.R. Chapter X, and 12 U.S.C. § 1818(s) and the FDIC’s implementing regulations,
+
+12 C.F.R. Part 326, Subpart B, (collectively, the Bank Secrecy Act or BSA) and 12 C.F.R. § 353
+
+to the issuance of this CONSENT ORDER (ORDER) by the FDIC and the DBCF. Having
+
+determined that the requirements for issuance of an ORDER under Section 8(b) of the FDI Act,
+12 U.S.C. § 1818(b), and Section 81-1-125, Mississippi Code of 1972, Annotated have been
+
+satisfied, the FDIC and the DBCF hereby order that:
+
+                                          ACTION PLAN
+
+       1.      Within forty-five (45) days of the effective date of this ORDER, the Bank shall
+
+develop and implement a written action plan (Plan) that details the actions, including the relevant
+
+timelines, that the Board and management will take to correct the Bank’s Anti-Money
+
+Laundering/Countering the Financing of Terrorism (AML/CFT) Program deficiencies and
+
+violations cited in the DBCF Concurrent September 8, 2025 Report of Examination and the FDIC
+
+Concurrent September 8, 2025 Report of Examination (collectively, the 2025 ROE), and to comply
+
+with this ORDER. The Plan and its implementation must be acceptable to the Regional Director
+
+of the FDIC's Dallas Regional Office (Regional Director) and Commissioner of the Mississippi
+
+Department of Banking and Consumer Finance (Commissioner) as determined at subsequent
+
+examinations and/or visitations. After the Regional Director and the Commissioner comment on
+
+the Plan, the Board shall adopt and implement the Plan as amended or modified, if applicable.
+
+                                      BOARD OVERSIGHT
+
+       2.      Within thirty (30) days of the effective date of this ORDER, the Board shall
+
+increase its oversight of the Bank's compliance with the BSA, including preparing and reviewing
+
+monthly reports detailing the Bank’s actions with respect to compliance with this ORDER. A copy
+
+of the report and any discussion related to the report or the ORDER shall be included in the minutes
+
+of the Bank’s Board meeting.
+
+                                      AML/CFT PROGRAM
+
+       3.      Within ninety (90) days of the effective date of this ORDER, the Bank shall
+
+revise its written AML/CFT Program to ensure compliance with the BSA. At a minimum, the
+
+AML/CFT Program shall: (i) be commensurate with the Bank’s money laundering (ML),
+
+terrorist financing (TF) and other illicit financial activities risk profile (collectively, ML/TF Risk
+
+                                                  2
+Profile); (ii) address the deficiencies and weaknesses identified in the 2025 ROE; (iii) comply
+
+with the requirements of this ORDER; (iv) include procedures for monitoring the performance of
+
+and the Bank’s adherence to the AML/CFT Program; and (v) include procedures for periodically
+
+reviewing and revising the AML/CFT Program. The AML/CFT Program must ensure that clear
+
+and comprehensive compliance reports are provided to the Board monthly. The Bank’s
+
+AML/CFT Program and its implementation shall be in a manner acceptable to the Regional
+
+Director and the Commissioner as determined at subsequent examinations and/or visitations of
+
+the Bank.
+
+                               ML/TF RISK ASSESSMENT
+
+       4.      Within ninety (90) days of the effective date of this ORDER, and at least annually
+
+thereafter, the Bank shall perform a ML/TF Risk Assessment (RA). The RA shall address all
+
+pertinent risk factors that affect the overall ML/TF risk profile of the Bank, including but not
+
+limited to, all products, services, types of customers, business lines, staffing levels, mitigating
+
+controls, and any identified BSA issues/concerns in the 2025 ROE. Further, the Bank shall ensure
+
+that such information contained within the RA is current, complete, and accurate. The RA shall be
+
+reviewed and approved by the Board, with risk mitigation strategies adopted and implemented as
+
+appropriate.
+
+                               AML/CFT INTERNAL CONTROLS
+
+       5.      Within ninety (90) days from the effective date of this ORDER, the Board must
+
+ensure that the Bank has a system of internal controls in place that considers the Bank’s risk,
+
+size, complexity, organizational structure, and the deficiencies and weaknesses identified in the
+
+2025 ROE in order to assure ongoing compliance with the BSA. At a minimum, the system of
+
+internal controls must include satisfactory written policies, procedures, and processes that reflect
+
+the Bank’s actual practices.
+
+
+
+                                                 3
+       6.      Customer Due Diligence
+
+               Within sixty (60) days of the effective date of this ORDER, the Bank shall
+
+develop, adopt, and implement a written Customer Due Diligence (CDD) Program, which includes
+
+appropriate risk-based policies, procedures and processes for conducting ongoing CDD for new
+
+and existing customers and which reflects the Bank’s practices. The Bank’s CDD Program shall
+
+operate in conjunction with its Customer Identification Program and suspicious activity monitoring
+
+to enable the Bank to develop and maintain customer risk profiles and implement appropriate risk-
+
+based due diligence processes. At a minimum, such controls shall address the weaknesses and
+
+deficiencies identified in the 2025 ROE pertaining to CDD and ensure the Bank can accurately
+
+identify those customers that pose a heightened ML/TF risk to apply appropriate risk-based
+
+monitoring and due diligence.
+
+       7.      Suspicious Activity Reporting
+
+               Within ninety (90) days of the effective date of this ORDER, the Bank shall develop
+
+and implement effective processes, across all business lines, for identifying and monitoring
+
+unusual or unexpected activity in order to detect, investigate, and report suspicious activity, as
+
+appropriate. The Bank shall ensure that such processes are in place and operate effectively. The
+
+following actions shall be implemented to ensure an effective process:
+
+               (a)    The Bank must ensure appropriate tools/systems and documentation
+
+processes are in place to allow the Bank to review and file SARs timely. The Bank’s processes
+
+should also incorporate a quality control component and validation process to ensure the
+
+procedures are effective.
+
+               (b)    The Bank shall ensure that policies and processes provide for timely and
+
+comprehensive review, trend analysis, and reporting of identified suspicious activity, including
+
+any automated system alerts. The review and analysis shall include consideration of the customer’s
+
+entire relationship with the Bank.
+
+                                                4
+                 (c)   The Bank shall ensure that all required information is included in each SAR.
+
+                 (d)   The Bank shall ensure all bank staff receive training related to detecting and
+
+monitoring for suspicious activity, including training on any automated software that is utilized to
+
+monitor for suspicious activity.
+
+                 (e)   The SAR program shall also be tested immediately for accuracy and
+
+completeness through independent testing, which shall be conducted in compliance with the
+
+relevant section below, and thereafter at least annually. Documentation of the testing shall be
+
+provided to the Board and should be recorded in the shall be included in the minutes of the Bank’s
+
+Board meeting. Such documentation shall also be available to FDIC and DBCF examiners upon
+
+request.
+
+                 (f)   Within sixty (60) days of the effective date of this ORDER, the Bank shall
+
+establish and implement policies and procedures to report SARs to the Board in a timely manner.
+
+        8.       Currency Transaction Reporting
+
+                 (a)   Within thirty (30) days from the effective date of this ORDER, the Bank shall
+
+update its policies and procedures to ensure timely, complete and accurate reporting for all other
+
+BSA reporting requirements, including Currency Transaction Reports (CTRs).
+
+                 (b)   The Bank must ensure appropriate tools/systems and documentation
+
+processes are in place to allow the Bank to file CTRs timely and accurately. The Bank’s processes
+
+should also incorporate a quality control component and validation process to ensure the procedures
+
+are effective.
+
+                 (c)   The Bank shall implement internal controls for the reporting of currency
+
+transactions to ensure ongoing compliance with CTR requirements and be commensurate with the
+
+Bank's ML/TF risk profile, complexity and organizational structure.
+
+                 (d)   Within thirty (30) days from the effective date of this ORDER, the Bank
+
+shall improve policies, procedures, and processes related to the designation of transactions of
+
+                                                  5
+exempt persons to include an annual review and confirmation of the eligibility of an exempt person
+
+that is a listed public company, a listed public company subsidiary, a non-listed business, or a
+
+payroll customer.
+
+                                   INDEPENDENT TESTING
+
+       9.      (a)     Within forty-five (45) days from the effective date of this ORDER, the Bank
+
+shall identify a qualified party with the requisite ability to perform independent testing of the
+
+AML/CFT program. The qualified party may be an outside party or Bank personnel independent
+
+of the AML/CFT Program and BSA department with the knowledge to conduct this function. The
+
+Bank shall notify the Regional Director and the Commissioner regarding the chosen party to
+
+conduct the independent testing.
+
+               (b)     Within seventy-five (75) days of the effective date of the ORDER, the Bank
+
+must submit a written plan for independent testing to the FDIC for review, comment, and non-
+
+objection. The Bank shall ensure that the scope of future AML/CFT independent testing is
+
+comprehensive and includes a review of compliance with all BSA rules and regulations and Bank
+
+policies and procedures as they relate to the Bank’s business activities; the ML/TF Risk
+
+Assessment; efforts to address regulatory recommendations and actions; and other corrective
+
+efforts. Additionally, the Board shall ensure that future AML/CFT independent testing, whether
+
+conducted by internal or external parties, is appropriately staffed with respect to both resources
+
+and expertise to adequately perform a comprehensive review, reach a sound conclusion, and
+
+provide appropriate support for the assessment.
+
+               (c)     Further, the Bank shall obtain such independent testing within one hundred
+
+twenty (120) days from the effective date of this ORDER, and at least annually thereafter, and the
+
+results of such testing shall be reported to, and the remediation of findings monitored by, the Board
+
+and provided to the FDIC and the DBCF in the subsequent Progress Report as required below.
+
+Additionally, the Board must ensure that appropriate updates to the Bank’s ML/TF Risk
+
+                                                  6
+Assessment and the AML/CFT Program are implemented pursuant to any such findings during
+
+independent testing.
+
+                     AML/CFT OFFICER, STAFFING, AND RESOURCES
+
+       10.     Within sixty (60) days from the effective date of this ORDER, the Board shall
+
+designate a qualified individual or individuals to serve as the AML/CFT Officer. The AML/CFT
+
+Officer shall have appropriate knowledge, training, and experience commensurate with the Bank’s
+
+ML/TF risk, size, and complexity; sufficient delegated authority; and suitable resources, including
+
+staffing and systems, to effectively coordinate and monitor day-to-day compliance and administer
+
+all aspects of the AML/CFT Program, including the Bank’s compliance with BSA regulatory
+
+requirements pursuant to Section 326.8 of the FDIC’s Rules and Regulations, 12 C.F.R. § 326.8.
+
+                                     AML/CFT TRAINING
+
+       11.     (a)     Within ninety (90) days from the effective date of this ORDER, the Bank
+
+shall develop an effective AML/CFT Training Program for the AML/CFT Officer and all staff,
+
+including newly hired employees, members of the Board, and management, on all relevant aspects
+
+of laws, regulations, and Bank policies and procedures relating to the Bank’s AML/CFT Program.
+
+The AML/CFT Training Program also shall reflect the particular money laundering, terrorist
+
+financing and illicit finance risks of the Bank based on its products, services, business lines,
+
+customer types, geographic reach and any other risks reflected in the RA. This training shall be
+
+conducted at least annually and shall be updated, as appropriate, to include changes to the Bank’s
+
+RA, which shall also be reviewed annually.
+
+               (b)     The Bank shall ensure that all personnel are aware of and can comply with
+
+internal procedures and the requirements of the BSA and its implementing rules and regulations
+
+applicable to the individual’s specific responsibilities. The AML/CFT Training Program shall be
+
+designed to ensure that training is tailored to address the specific compliance responsibilities of
+
+the group or individual for which the training is being provided and ensure that those being trained
+
+                                                 7
+are aware of and can comply with the requirements of the BSA on an ongoing basis and, at a
+
+minimum, include:
+
+               1)      An overview of the BSA for new Bank personnel and specific training
+
+                       designed for their particular duties and responsibilities upon hiring;
+
+               2)      Training for the appropriate personnel on SAR and CTR processes and
+
+                       procedures to ensure accurate and timely filing;
+
+               3)      Training on CDD policies and procedures with regard to due diligence and
+
+                       monitoring of high-risk customers; and
+
+A requirement that the Bank fully document the AML/CFT Training Program, including training
+
+materials, dates of the training sessions, attendance, and knowledge check results. The Bank shall
+
+ensure that all employees attend assigned AML/CFT Training appropriate for their position at least
+
+annually.
+
+                       VIOLATIONS OF LAW AND REGULATIONS
+
+       12.     Within ninety (90) days of the effective date of this ORDER, the Bank shall correct
+
+all BSA violations of law, as more fully set forth in the 2025 ROE. In addition, the Bank shall take
+
+all necessary steps to ensure future compliance with all applicable BSA laws and regulations.
+
+                                    PROGRESS REPORTS
+
+       13.     Within thirty (30) days after the end of the first calendar quarter following the
+
+effective date of this ORDER, and within thirty (30) days after the end of each successive calendar
+
+quarter, the Bank shall furnish written progress reports to the Regional Director and Commissioner
+
+detailing the form and manner of any actions taken to secure compliance with this ORDER and
+
+the results thereof. Such reports may be discontinued when the corrections required by the ORDER
+
+have been accomplished and the Regional Director and Commissioner have released the Bank in
+
+writing from making additional reports.
+
+
+
+                                                 8
+                                      BINDING EFFECT
+
+       14.     (a)     The provisions of this ORDER shall not bar, estop, or otherwise prevent the
+
+FDIC, the DBCF, or any other federal or state agency or department from taking any other action
+
+against the Bank or any of the Bank’s current or former institution-affiliated parties, as that term
+
+is defined in Section 3(u) of the FDI Act, 12 U.S.C. § 1813(u).
+
+               (b)     This ORDER shall be effective on the date of issuance. The provisions of
+
+this ORDER shall be binding upon the Bank, its institution-affiliated parties, and any successors
+
+and assigns thereof.
+
+               (c)     The provisions of this ORDER shall remain effective and enforceable
+
+except to the extent that and until such time as any provision has been modified, terminated,
+
+suspended, or set aside by the FDIC and the DBCF.
+
+
+
+Issued pursuant to delegated authority this 26th       day of March   , 2026.
+
+
+
+
+/s/                                                    /s/
+J. Mark Love                                           Rhoshunda Kelly
+Deputy Regional Director                               Commissioner
+Dallas Regional Office                                 Department of Banking and Consumer Finance
+Division of Risk Management Supervision
+Federal Deposit Insurance Corporation
+
+
+
+
+                                                   9
+

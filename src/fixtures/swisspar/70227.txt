@@ -1,0 +1,1587 @@
+Date: 18 August 2026
+Swissmedic, Swiss Agency for Therapeutic Products
+
+
+
+
+Swiss Public Assessment Report
+
+
+Rhapsido
+
+
+
+International non-proprietary name: remibrutinib
+Pharmaceutical form:                                      film-coated tablets
+Dosage strength(s):                                       25 mg
+Route(s) of administration:                               oral
+Marketing authorisation holder:                           Novartis Pharma Schweiz AG
+Marketing authorisation no.:                              70227
+Decision and decision date:                               approved on 19.06.2026
+
+
+
+
+Note:
+This assessment report is as adopted by Swissmedic with all information of a commercially
+confidential nature deleted.
+
+SwissPARs are final documents that provide information on submissions at a particular point in time.
+They are not updated after publication.
+
+
+
+
+    Swissmedic | Hallerstrasse 7 | 3012 Bern | www.swissmedic.ch | Tel. +41 58 462 02 11 | anfragen@swissmedic.ch
+Table of contents
+1            Terms, Definitions, Abbreviations ....................................................................................3
+2            Background information on the procedure .....................................................................4
+2.1          Applicant’s request(s) and information regarding procedure ................................................4
+2.2          Indication and dosage..........................................................................................................4
+2.2.1        Requested indication ...........................................................................................................4
+2.2.2        Approved indication .............................................................................................................4
+2.2.3        Requested dosage ..............................................................................................................4
+2.2.4        Approved dosage ................................................................................................................4
+2.3          Regulatory history (milestones) ...........................................................................................5
+3            Medical context..................................................................................................................6
+4            Quality aspects ..................................................................................................................7
+4.1          Drug substance ...................................................................................................................7
+4.2          Drug product........................................................................................................................7
+4.3          Quality conclusions ..............................................................................................................7
+5            Nonclinical aspects ...........................................................................................................8
+5.1          Pharmacology .....................................................................................................................8
+5.2          Pharmacokinetics ................................................................................................................8
+5.3          Toxicology ...........................................................................................................................9
+5.4          Nonclinical conclusions......................................................................................................10
+6            Clinical aspects ...............................................................................................................11
+6.1          Clinical pharmacology........................................................................................................11
+6.2          Dose finding and dose recommendation ............................................................................11
+6.3          Efficacy ..............................................................................................................................11
+6.4          Safety ................................................................................................................................13
+6.5          Final clinical benefit-risk assessment .................................................................................14
+7            Risk management plan summary ...................................................................................15
+8            Appendix ..........................................................................................................................16
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                                                                   2 / 16
+1            Terms, Definitions, Abbreviations
+
+ADA               Anti-drug antibody
+ADME              Absorption, distribution, metabolism, elimination
+ADR               Adverse drug reaction
+AE                Adverse event
+AESI              Adverse event of special interest
+AH                Antihistamines
+ALT               Alanine aminotransferase
+API               Active pharmaceutical ingredient
+AST               Aspartate aminotransferase
+ATC               Anatomical Therapeutic Chemical Classification System
+AUC               Area under the plasma concentration-time curve
+AUC0-24h          Area under the plasma concentration-time curve for the 24-hour dosing interval
+BTK               Bruton’s tyrosine kinase
+CI                Confidence interval
+Cmax              Maximum observed plasma/serum concentration of drug
+CSU               Chronic spontaneous urticaria
+CYP               Cytochrome P450
+DDI               Drug-drug interaction
+EMA               European Medicines Agency
+ERA               Environmental risk assessment
+FDA               Food and Drug Administration (USA)
+GI                Gastrointestinal
+GLP               Good Laboratory Practice
+HCP               Healthcare professional
+HPLC              High-performance liquid chromatography
+IC/EC50           Half-maximal inhibitory/effective concentration
+ICH               International Council for Harmonisation
+Ig                Immunoglobulin
+INN               International non-proprietary name
+ITT               Intention-to-treat
+LoQ               List of Questions
+MAH               Marketing authorisation holder
+Max               Maximum
+Min               Minimum
+MRHD              Maximum recommended human dose
+N/A               Not applicable
+NO(A)EL           No observed (adverse) effect level
+PBPK              Physiology-based pharmacokinetics
+PD                Pharmacodynamics
+PIP               Paediatric investigation plan (EMA)
+PK                Pharmacokinetics
+PopPK             Population pharmacokinetics
+PSP               Pediatric study plan (US FDA)
+RMP               Risk management plan
+SAE               Serious adverse event
+SwissPAR          Swiss Public Assessment Report
+TEAE              Treatment-emergent adverse event
+TPA               Federal Act of 15 December 2000 on Medicinal Products and Medical Devices (SR
+                  812.21)
+TPO               Ordinance of 21 September 2018 on Therapeutic Products (SR 812.212.21)
+VSS               Volume of distribution at steady state
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                       3 / 16
+2            Background information on the procedure
+
+2.1          Applicant’s request(s) and information regarding procedure
+
+New active substance status
+The applicant requested new active substance status for remibrutinib in the above-mentioned
+medicinal product.
+
+
+2.2          Indication and dosage
+
+2.2.1        Requested indication
+
+Rhapsido is indicated for the treatment of chronic spontaneous urticaria (CSU) in adult patients who
+remain symptomatic despite H1 antihistamine treatment.
+
+2.2.2        Approved indication
+
+Rhapsido is indicated as an add-on therapy for the treatment of chronic spontaneous urticaria (CSU)
+in adult patients who remain symptomatic despite H1 antihistamine treatment.
+
+2.2.3        Requested dosage
+
+Summary of the requested standard dosage:
+
+- Usual dosage: 25 mg orally b.i.d.
+- Interruption of treatment: Depending on the type of procedure and the risk of bleeding, discontinue
+  use 3 to 7 days before and 3 to 7 days after surgery.
+- Patients with renal impairment: No dose adjustment necessary.
+- Patients with hepatic impairment: No dose adjustment necessary.
+- Paediatric patients (under 18 years of age): Safety and efficacy have not been established.
+- Elderly patients (65 years or older): No relevant pharmacokinetic differences observed compared
+  to the total population. Therefore no dose adjustment necessary.
+- Route of administration: Taken orally. Can be taken with or without food. To be swallowed with
+  water.
+
+
+2.2.4        Approved dosage
+
+(see appendix)
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                      4 / 16
+2.3            Regulatory history (milestones)
+
+ Application                                     14 May 2025
+ Formal control completed                        20 May 2025
+ List of Questions (LoQ)                         28 August 2025
+ Response to LoQ                                 20 November 2025
+ Preliminary decision                            18 February 2026
+ Response to preliminary decision                19 April 2026
+ Final decision                                  19 June 2026
+ Decision                                        approval
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                        5 / 16
+3            Medical context
+
+Chronic spontaneous urticaria (CSU) is an unpredictable disease of the skin characterised by the
+spontaneous and recurrent appearance of itchy weals (hives), angioedema, or both. The weals are
+intensely pruritic, resolve in < 24 hours and tend to recur on a daily basis [Yosipovitch et al 2023]. CSU
+lasts for at least 6 weeks [Zuberbier et al 2022] but often takes several years to resolve and may even
+persist over decades [Maurer & Grabbe 2008, Maurer et al 2011]. Spontaneous remission is seen in 30–50%
+of cases [Saini S: CSU: Clinical manifestations, diagnosis, pathogenesis, and natural history. In: UpToDate, Connor RF
+(Ed), Wolters Kluwer. Accessed on 14.08.2026]. The prevalence of diagnosed CSU in 5 European countries
+(France, Germany, Italy, Spain, and the UK) is 0.92% (95% CI: 0.92%–0.92%) [Balp et. Al. 2025]. The
+disease burden is substantial for CSU patients as it is extremely stressful due to the unpredictable
+nature of exacerbations. Available data indicate that urticaria markedly affects both objective
+functioning and subjective well-being. O'Donnell et al. showed that health status scores in CSU
+patients are comparable to those reported by patients with coronary artery disease. Furthermore, both
+health status and subjective satisfaction in patients with CSU are lower than in patients with
+respiratory allergy. [International EAACI/GA²LEN/EuroGuiDerm/APAAACI guideline for the definition, classification,
+diagnosis, and management of urticaria. Zuberbier et al, 2022; Baiardini et al, 2003].
+
+The recommended first-line treatment for patients with CSU is second-generation H1-antihistamines
+(H1-AHs) including up-titration to up to 4-fold the approved dose (i.e. off-label). A meta-analysis of
+studies showed that approx. 60% of patients with CSU treated with second-generation H1-AHs
+remained uncontrolled [Guillén-Aguinaga et al 2016]. Omalizumab, a licensed anti-IgE monoclonal antibody
+for the SC treatment of CSU in patients who remain symptomatic despite H1-AH treatment, is
+recommended as a second-line add-on treatment. Patient response varies, with many patients on
+omalizumab 300 mg failing to achieve complete response [Saini, Kaplan 2018] and some patients requiring
+higher than approved doses of omalizumab. In non-responders to these therapies, off-label use of
+ciclosporin or glucocorticoids is recommended. [International EAACI/GA²LEN/EuroGuiDerm/APAAACI guideline for
+the definition, classification, diagnosis, and management of urticaria. Zuberbier et al, 2022 ]
+
+Given the substantial impact of CSU on patients’ quality of life and the limitations of the current
+therapies, there is a high unmet medical need for alternative second-line oral treatments for patients
+who remain symptomatic despite H1-AH treatment.
+
+Remibrutinib is a new selective oral BTK (Bruton’s tyrosine kinase) inhibitor.
+Other BTK inhibitors are approved for oncological indications.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                                     6 / 16
+4            Quality aspects
+
+4.1          Drug substance
+
+INN:                 remibrutinib
+Chemical name:       N-(3-{6-Amino-5-[2-(N-methylprop-2-enamido)ethoxy]pyrimidin-4-yl}-5-fluoro-2-
+                     methylphenyl)-4-cyclopropyl-2-fluorobenzamide
+Molecular formula: C27H27F2N5O3
+Molecular mass:      507.54
+Molecular structure:
+
+
+
+
+Physicochemical properties: Remibrutinib is a white to pale yellow powder. Remibrutinib is not chiral.
+
+Synthesis: The drug substance is manufactured by multiple step chemical synthesis. The synthesis of
+the drug substance and the necessary in-process controls are described in detail.
+
+Specification: In order to ensure consistent quality of the drug substance, the specifications include all
+relevant test parameters as recommended by the relevant ICH guidelines.
+
+Stability: Appropriate stability data have been generated, resulting in a suitable retest period.
+
+
+4.2          Drug product
+
+Description and composition: Remibrutinib 25 mg tablets are immediate-release film-coated tablets for
+oral administration. They are round, curved without score, light yellow, debossed with ‘LV’ on one side
+and the ‘Novartis’ symbol on the other side.
+
+Manufacture: Remibrutinib film-coated tablets are manufactured by a non-standard process consisting
+of wet media milling, spray granulation, blending, compression into tablets, and film coating. Adequate
+process parameters and in-process controls are defined in order to ensure consistent quality of the
+tablets.
+
+Specification: Adequate tests and criteria at release and during shelf-life are established for the
+control of the finished product. The test methods applied are adequately validated according to the
+recommendations of the current scientific guidelines.
+
+Stability: Appropriate stability data have been generated in the packaging material intended for
+commercial use and according to the relevant international guidelines.
+
+
+4.3          Quality conclusions
+
+Satisfactory and consistent quality of the drug substance and drug product has been demonstrated.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                          7 / 16
+5            Nonclinical aspects
+
+5.1          Pharmacology
+
+Remibrutinib is a covalent Bruton’s tyrosine kinase (BTK) inhibitor. In enzymatic assays, remibrutinib
+potently inhibited BTK with IC50 values in the low nanomolar range. Selectivity was demonstrated in
+comparison to related kinases, showing at least 17-fold higher IC50 values (TEC protein tyrosine
+kinase: 124 nM) compared to unbound plasma Cmax at the recommended clinical dose. In cell-based
+systems, remibrutinib inhibited functional readouts of BTK-dependent signalling pathways.
+Remibrutinib inhibited FcεRI-mediated degranulation in primary human mast cells derived from skin
+(IC50 of 17.2 nM) and primary human blood basophils (IC50 of 71.8 nM). The effect on FcγR-signalling
+was investigated in the human monocytic cell line THP1. Remibrutinib inhibited IL8 secretion with an
+IC50 of 2.5 nM. Cellular B cell antigen receptor (BCR) inhibition was shown in the human Ramos
+lymphoma cell line (IC50 of 11 nM) and primary B cells from humans (IC50 values of 7-18.3 nM) and
+rodents (IC50 values of 1.2-1.8 nM). T cell antigen receptor signalling in activated T cells was not
+inhibited.
+The rate of BTK recovery was characterised in rats after single oral doses. BTK turnover is much
+longer in rat blood (approximate half-life: 87 hours) than in the spleen (approximate half-life: 5 hours).
+The applicant demonstrated efficacy in disease rodent models. Remibrutinib significantly inhibited
+skin swelling in the acute reverse passive Arthus (RPA) model in mice at ≥ 30 mg/kg. In the mouse
+model of passive cutaneous anaphylaxis (PCA), remibrutinib inhibited the skin anaphylaxis reaction in
+the low dose IgE setting at ≥ 3 mg/kg. Proof of concept was also demonstrated in an SRBC-specific
+haemolytic plaque formation assay in rats, which is a model for the inhibition of B cell-dependent
+antibody formation. Remibrutinib decreased the number of anti-SRBC secreting cells significantly at
+≥ 0.3 mg/kg. In conclusion, the mode of action of remibrutinib as a BTK inhibitor has been sufficiently
+characterised in pharmacology studies.
+Remibrutinib did not show any off-target activity in a secondary pharmacology screen except for 89%
+binding inhibition of the human cannabinoid CB2 receptor (1370-fold the unbound Cmax at the
+recommended clinical dose). In a functional follow up, no agonism or antagonism towards the human
+CB2 receptor were shown. Remibrutinib inhibited VMAT-2 in vitro with an IC50 value of 13 µM (1780-
+fold the unbound Cmax at therapeutic dose). Another in vitro study on secondary pharmacology
+showed inhibition of platelet function in platelet-rich plasma prepared from fresh human blood.
+The applicant conducted safety pharmacology studies to investigate potential effects on the
+cardiovascular, respiratory, and central nervous systems. Remibrutinib inhibited hERG potassium
+channel current at an IC50 of 1.4 µM, corresponding to 192-fold the unbound plasma Cmax at the
+recommended clinical dose. There were no ECG changes or effects on heart rate in dogs in a GLP
+single-dose study up to 450 mg/kg. In a 3-day non-GLP study, cardiovascular investigations were
+performed in dogs at 400 mg/kg/day and showed a slight and reversible QTc increase (46-fold the
+unbound plasma Cmax at the recommended clinical dose). No cardiovascular effects were observed in
+chronic toxicity studies. No relevant effects were observed in the central nervous or respiratory
+system.
+
+
+
+5.2          Pharmacokinetics
+
+The PK profile of remibrutinib was characterised after single intravenous and oral administration in
+mice, rats, and dogs as well as repeated oral administration in rats and dogs.
+Absorption of remibrutinib after oral administration was generally rapid in animals, with Tmax within
+0.25-2 hours, which is comparable to human absorption (Tmax: approximately 1 hour). The extent of
+absorption was lower in animals (37-78% in rats and dogs) than in humans (75%). Oral bioavailability
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                          8 / 16
+of remibrutinib in PK studies was low in mice, rats, and dogs, indicating a significant first pass effect in
+animals. Mean Vss was moderate.
+In quantitative whole-body autoradiography studies with 14C- or 3H-labelled remibrutinib in rats,
+radioactivity was quickly and widely distributed throughout the body. High concentrations of
+radioactivity were found in the gastrointestinal tract, liver, and kidney. No radioactivity was detected in
+the brain, spinal cord, white fat, and lens of the eye. Remibrutinib distributed into melanin-containing
+structures of the eye and skin. Binding was at least partially reversible. No ophthalmologic or skin
+effects were observed in the toxicity studies in rats and dogs.
+Some covalent binding of remibrutinib to proteins was shown in blood. In plasma, covalent binding
+was 60-70% in rat and dog and less than 10% in human. Remibrutinib bound covalently to proteins in
+HLM and human hepatocytes. Plasma protein binding was high in rats, dogs and humans, with
+unbound fractions of 10% in rats, 7% in dogs, and 5% in humans. Blood-to-plasma ratios indicated a
+preferential location in plasma in all species. Some placental transfer was shown in pregnant rabbits
+after oral dosing, and the potential for fetal exposure cannot be excluded.
+Metabolism of remibrutinib was investigated in vitro in human liver microsomes and in mouse, rat,
+dog, and human hepatocytes. N-demethylation, O-dealkylation, and modification of the double bond
+in the N-methylacrylamide moiety were identified as major pathways. The major metabolite M24 in
+human hepatocytes was also represented in dog and mouse hepatocytes. All human identified
+metabolites were detected in rat and/or dog blood. The diastereomers M68a and M68b are prominent
+human metabolites that together represented 11.2% of the blood [14C]-AUC0-24h in a clinical study.
+They are not expected to undergo chiral conversion. The major route of excretion in nonclinical
+species and human was faecal, with minor renal excretion.
+
+
+
+5.3          Toxicology
+
+The nonclinical safety profile of remibrutinib was characterised in rats (up to 26 weeks) and dogs (up
+to 39 weeks). Rats and dogs were pharmacologically relevant species. The oral route of
+administration as well as the duration of the studies in rodents and non-rodents support the clinical
+use.
+Generally, remibrutinib was well tolerated up to and including the highest dose tested. Target organs
+of toxicity were the lymphoid organs, liver, and haematopoietic and immune system in both species,
+and the pancreas in rats. Findings in the lymphoid organs consisted mainly of decreased
+development of germinal centres in mandibular and mesenteric lymph nodes, as well as gut-
+associated lymphoid tissues. They were considered pharmacology related and not adverse.
+Remibrutinib inhibited platelet aggregation and prolonged bleeding time in animals at
+pharmacologically relevant exposure. The effect was not considered adverse in dogs in the context of
+a mucosal bleeding assessment but was related to mortality in rats after vascular injury in the context
+of a tail bleeding assessment. Serious bleeding events are considered an important potential risk in
+the RMP. A NOAEL was not identified in the 26-week rat study due to pancreas findings that were
+considered rat specific. At the dose level of 300 mg/kg/day, considered relevant for human risk
+assessment, exposure margins were 15 to 79-fold human AUC at therapeutic dose (in males and
+females). At the NOAEL in the 39-week study in dogs, exposure was 77 to 146-fold (in males and
+females) above human AUC at therapeutic dose.
+Remibrutinib was not genotoxic or carcinogenic in rats and mice.
+Remibrutinib did not impair male or female fertility in a fertility and early embryonic development study
+conducted in male and female rats with oral administration at doses up to 1000 mg/kg/day. In an
+embryo-fetal development study in rats with oral administration of doses up to 1000 mg/kg/day
+remibrutinib, no effects on pregnancy or embryo-fetal development were observed. In rabbits, a dose
+level of 450 mg/kg/day induced mortality in the pivotal study. At 300 mg/kg/day, external fetal
+malformations were noted. At NOAEL, AUC0-24h corresponded to 23-fold the human exposure.
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                           9 / 16
+Remibrutinib showed no phototoxicity potential in vitro. There were no concerns related to excipients
+or impurities. All nonclinical data that are relevant for safety are included in the nonclinical part of the
+safety specification of the RMP. Based on the ERA, use of remibrutinib is not expected to pose a risk
+to the environment.
+
+
+5.4          Nonclinical conclusions
+
+In conclusion, the pharmaco-toxicological profile of remibrutinib was well characterised. The
+application is approvable from the nonclinical perspective. The relevant information has been included
+in the Information for healthcare professionals.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                            10 / 16
+6            Clinical aspects
+
+6.1          Clinical pharmacology
+
+The proposed posology for treatment of chronic spontaneous urticaria (CSU) is 25 mg remibrutinib
+b.i.d. p.o. with or without food, given as a film-coated tablet.
+The clinical pharmacology of remibrutinib is well-characterised and the available data, both PK/PD
+and exposure/response, support the selection of 25 mg b.i.d. The upper and lower bound of the
+therapeutic window have not been clearly defined, despite higher exposures being tolerated such as
+100 mg b.i.d. up to 68 weeks, corresponding to a steady-state AUC ratio of 4.18, compared to 25 mg
+b.i.d. and a Cmax ratio of 3.27. In consequence, considering the bleeding risk and other class effects of
+BTKi, use in patients with severe hepatic impairment is not recommended. Similarly, coadministration
+with strong CYP3A4 inhibitors as well as strong and moderate CYP3A4 inducers is not
+recommended.
+
+
+6.2          Dose finding and dose recommendation
+
+A dedicated Phase 2b dose-finding study (A2201) was conducted as multi-centre, randomised,
+double-blind, placebo-controlled trial to investigate the efficacy, safety, and tolerability of remibrutinib
+in adult CSU patients inadequately controlled by H1-antihistamines.
+Six verum dose regimens were compared to placebo: 10 mg q.d. (n = 44), 35 mg q.d. (n = 44),
+100 mg q.d. (n = 47), 10 mg b.i.d. (n = 44), 25 mg b.i.d. (n = 44), 100 mg b.i.d. (n = 45) vs. placebo (n
+= 43).
+Maximum efficacy in terms of the UAS7 score (reduction from baseline, UAS7=0, and UAS<6) was
+achieved with the remibrutinib 25 mg b.i.d. dosing.
+The higher dosing regimen (100 mg b.i.d.) did not further increase the maximum efficacy, and neither
+the lower remibrutinib b.i.d. dose (10 mg b.i.d.) nor the q.d. dosing achieved maximum efficacy.
+Based on the safety results, there was no dose-dependent safety signal which would prevent the
+selection of a remibrutinib dose or further clinical development of the drug.
+Hence, the 25 mg b.i.d. dose regimen was chosen for the Phase 3 studies, which seems acceptable.
+
+
+6.3          Efficacy
+
+Two identically designed pivotal Phase 3 studies, REMIX-1 (A2301) and REMIX-2 (A2302), were
+submitted. Both were multicentre, randomised (2:1), double-blind, placebo-controlled studies of
+remibrutinib to investigate efficacy, safety, and tolerability in adult patients with moderate to severe
+CSU, inadequately controlled by H1-antihistamines.
+The primary endpoint was to be assessed at Week 12; the double-blind period lasted until Week 24,
+followed by open-label remibrutinib treatment for a further 28 weeks until Week 52.
+
+The study participants had to meet the following key inclusion criteria: a diagnosis of CSU with a
+disease duration of ≥ 6 months prior to screening, inadequately controlled defined as the presence of
+itch and hives for ≥ 6 consecutive weeks prior to screening despite the use of second-generation H1-
+AHs during this period. Patients had to have urticaria of at least moderate activity and mild disease
+severity in terms of itch and hives (see Appendix). Suffering from angioedema (AAS) was not required
+for study participation.
+
+All patients were randomised 2:1 to either remibrutinib 25 mg b.i.d. treatment or placebo (REMIX-1:
+n=313 versus n=157; REMIX-2: n=300 versus n=155). At Week 24, the patients in the placebo arm
+were switched to open-label remibrutinib 25 mg b.i.d.
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                           11 / 16
+Remibrutinib was an add-on treatment to a stable, locally standard approved dose of a second-
+generation H1-antihistamine (H1-AH) “background therapy” throughout the entire study.
+
+The primary objective was to demonstrate that remibrutinib (25 mg b.i.d.) is superior to placebo in
+patients with CSU, with the primary endpoint being defined as absolute change from baseline in the
+Weekly Urticaria Activity Score UAS7 at Week 12. The most important key secondary endpoints were
+achievement of disease control at Week 12 and achievement of complete absence of itch and hives
+at Week 12.
+
+The baseline demographic and disease characteristics are described in the Information for healthcare
+professionals.
+
+Week 12 efficacy results
+The primary as well as all (key) secondary endpoints were met. Both studies demonstrated superiority
+of remibrutinib over placebo at Week 12.
+Regarding the primary endpoint, a higher reduction of urticaria activity (UAS7) was seen after 12
+weeks of treatment with remibrutinib compared to placebo; the treatment difference versus placebo
+was of borderline clinical relevance (<10), but statistically significant and consistent across both the
+REMIX-1 and -2 studies (REMIX-1: -6.22 (95% CI: -8.45, -4.00), REMIX-2: -7.68 (95% CI: -9.91, -
+5.46;). Predefined sensitivity analyses supported the results of the primary endpoint analysis.
+Post-hoc analyses showed that clinically relevant higher proportions of patients treated with
+remibrutinib compared to placebo reached at least the minimal important difference (MID, as defined
+by Mathias et al. 2012 and 2015) for the urticaria activity, itch severity and hive severity score
+changes from baseline at Week 12 in both pivotal studies, REMIX-1 and REMIX-2.
+The most ambitious key secondary endpoint, absence of itch and hives (UAS7 = 0) at Week 12, was
+achieved by 31.1% and 27.9% of REMIX-1 and -2 patients, respectively, with a treatment difference
+versus placebo of 20.55% and 21.60%, respectively, which is clinically relevant.
+Another important key secondary endpoint, disease activity control (UAS7 ≤ 6) at Week 12, was
+achieved by 49.8% and 46.8% of REMIX-1 and -2 patients, respectively, with a treatment difference
+versus placebo of 25.44% and 27.61%, respectively, which is also clinically relevant.
+
+Week 52 efficacy results
+For patients in the remibrutinib arm, the treatment response (UAS7) at Week 12 was sustained up to
+Week 52. For patients in the placebo arm, there was an improvement in the treatment response
+(UAS7) after transitioning to remibrutinib in Week 24 until Week 52, similarly to patients initially
+randomised to remibrutinib.
+
+In summary, both pivotal studies showed a small but consistent statistically significant treatment effect
+across all primary and the (key) secondary endpoints, and consequently support the requested
+indication and posology in terms of efficacy.
+
+Two clinical studies in CSU patients with remibrutinib 25 mg b.i.d. are ongoing:
+   - Study A2303B, a Phase 3 extension study, is an ongoing multicentre, double-blind, placebo-
+       controlled, randomised withdrawal and open-label extension study followed by long-term
+       open-label treatment cycles to assess the efficacy, safety, and tolerability of remibrutinib in
+       adult CSU patients who completed 1 of the pivotal Phase 3 studies, REMIX 1 or 2. Study
+       treatment consists – depending on study phase – of blinded or open-label remibrutinib 25 mg
+       b.i.d..
+   - Study A2304 is an ongoing global, multicentre, randomised, double-blind, double-dummy,
+       active-controlled, parallel group, Phase 3b study to assess the efficacy, safety, and tolerability
+       of remibrutinib 25 mg b.i.d. in comparison to omalizumab 300 mg every 4 weeks (the only
+       other approved second-line treatment) over 52 weeks in adult patients with CSU inadequately
+       controlled by second generation H1-antihistamines. An open-label 52-week optional extension
+       follows to assess long term efficacy, safety, and tolerability of remibrutinib 25 mg b.i.d.
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                        12 / 16
+      As a post-approval requirement, the final CSRs of these studies must be submitted as soon as
+      available.
+
+
+6.4          Safety
+
+Safety data for remibrutinib were evaluated in 2 safety pools:
+   - Pool 1 included all safety data from the 2 pivotal Phase 3 studies, REMIX-1 (A2301) and
+       REMIX-2 (A2302). The main purpose of Pool 1 was to examine the dose-specific effects of
+       remibrutinib 25 mg b.i.d. vs. placebo in the 24-week placebo-controlled period. In addition,
+       analyses based on the entire study period of Pool 1 provided safety data until Week 52 as well
+       as safety data after placebo patients had switched to remibrutinib 25 mg b.i.d. at Week 24.
+   - Pool 2 included all safety data from the 2 pivotal Phase 3 studies, REMIX-1 (A2301) and
+       REMIX-2 (A2302), plus the supportive Phase 2b dose ranging study A2201 and its extension
+       A2201E1, plus a supportive Phase 3 study A1301 in Japanese patients. The main purpose of
+       Pool 2 was to estimate the dose average (dose pooled) AE frequency in all remibrutinib-
+       treated patients, regardless of dose (Remibrutinib-Any-Dose-Group) and AE frequency in
+       patients treated with remibrutinib 25 mg b.i.d. with maximum precision based on all available
+       data, and to maximise the sample size and the cumulative exposure time for remibrutinib
+       overall or remibrutinib 25 mg b.i.d. for the assessment of rare events.
+
+The largest body of evidence for exposure duration comes from Pool 2 (comprising the 5 Phase 2 and
+3 clinical studies in patients with CSU: A2301, A2302, A2201, A2201E1, and A1301): The safety data
+from these 5 studies come from 1234 adult patients with CSU, treated with remibrutinib at doses
+ranging from 10 mg q.d. to 100 mg b.i.d., including 1172 patients treated with remibrutinib at 25 mg
+b.i.d. or 100 mg b.i.d.
+For the Any-Remibrutinib-25.mg b.i.d.-Group in Pool 2, the mean duration of exposure was 39.93
+weeks and the median duration of exposure was 52.00 weeks (range 0.1 to 60.6 weeks), with a
+cumulative exposure of 751.47 patient years. For the Remibrutinib-Any-Dose-Group in Pool 2, the
+mean duration of exposure was 41.10 weeks and the median duration of exposure was 52.00 weeks
+(range 0.1 to 69.9 weeks), with a cumulative exposure of 971.94 patient-years.
+
+No deaths were reported in clinical studies.
+
+All SAEs by PT from the pooled pivotal REMIX-1 and -2 studies (Pool 1) were single cases and
+considered not related to remibrutinib. No pattern was recognised, nor was an increase observed in
+the exposure-adjusted incidence rate (EAIR) for patients with SAEs during the entire 52-week study
+period compared with the 24-week placebo-controlled period in Pool 1.
+Similarly, most SAEs in the Remibrutinib-Any-Dose-Group and in the Any-Remibrutinib-25.mg b.i.d.-
+Group (Pool 2) were single cases and no pattern was recognised.
+Notably, in the Phase 2b study A2201E1, under treatment with 4-fold the approved dose of
+remibrutinib (100 mg b.i.d.), 1 notable bleeding SAE of moderate melaena occurred due to bariatric
+surgery but was considered not related to study treatment.
+
+The most common AEs, which occurred more frequently in the remibrutinib versus the placebo
+treatment group of the pooled pivotal REMIX-1 and -2 studies (Pool 1), were petechiae (3.8% vs
+0.3%) and nasopharyngitis (6.6% versus 4.6%) during the 24-week placebo-controlled period. During
+the total 52-week study period of Pool 1, the most frequently reported AEs in ≥ 3% of patients treated
+with remibrutinib since the start of the study were mainly infections, headache, bleeding events, CSU
+exacerbation, and GI events: COVID-19 (15.5%), nasopharyngitis (9.1%), headache (7.8%), upper
+respiratory tract infection (5.6%), petechiae (4.0%), urinary tract infection (4.6%), urticaria (3.3%),
+cough (3.1%), nausea (3.1%), and influenza (3.0%).
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                      13 / 16
+Those AEs which were identified by the applicant as related to remibrutinib are listed as ADRs in the
+Information for healthcare professionals. During clinical assessment, further ADRs (herpes virus
+infection, headache, haematuria, nausea, abdominal pain, back pain, and pyrexia) were identified and
+also included in the list of ADRs in the Information for healthcare professionals.
+
+Bleeding, infections, cytopenia, cardiac arrythmias, and hypertension were defined as AESIs; these
+were derived from clinical trials with other BTK inhibitors which are approved for oncological
+indications. In addition, liver toxicity, and malignant diseases are also known ADRs of other BTK
+inhibitors approved for oncological indications.
+In the clinical studies with remibrutinib in CSU patients, these AESIs have generally manifested with
+lower intensity, lower frequency, or not at all, or in some cases a causal relationship with remibrutinib
+could not be established (e.g. for malignancies). A detailed description of the findings from the clinical
+studies with remibrutinib regarding these AESIs can be found in the Information for healthcare
+professionals. Furthermore, a warning about the bleeding risk was included in the Information for
+healthcare professionals.
+Notably, potential risk populations for these AESIs were excluded from the clinical studies with
+remibrutinib; accordingly, the risk of these AESIs in these patients can not adequately be assessed.
+and remibrutinib should be administered only with caution.
+
+Any (potential) risks will be further followed up in the 2 above-mentioned ongoing clinical studies in
+CSU patients with remibrutinib 25 mg b.i.d. that will be submitted as a post-approval requirement.
+
+
+6.5          Final clinical benefit-risk assessment
+
+CSU is an unpredictable disease of the skin characterised by the spontaneous and recurrent
+appearance of itchy weals (hives), angioedema, or both. The weals are intensely pruritic. CSU often
+takes several years to resolve and may even persist over decades.
+
+The disease burden is substantial for CSU patients as it is extremely stressful due to the
+unpredictable nature of exacerbations.
+
+Given the substantial impact of CSU on patients’ quality of life and the limitations of the current
+therapies, there is a high unmet medical need for alternative second-line oral treatments for patients
+who remain symptomatic despite H1-AH treatment.
+
+Based on the totality of the available efficacy data from the clinical studies in adult patients with CSU
+who were inadequately controlled by second-generation H1-antihistamines, remibrutinib 25 mg b.i.d.
+shows a modest treatment effect which is consistent across the Phase 2 and 3 studies, across all
+primary and key secondary and other secondary efficacy endpoints, as well as post-hoc responder
+analyses. The safety of remibrutinib 25 mg b.i.d. was acceptable with the inclusion of several risk
+mitigation measures in the Information for healthcare professionals.
+
+Overall, the benefit/risk ratio for remibrutinib was assessed as positive for adult patients with CSU
+who are inadequately controlled by second-generation H1-antihistamines.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                         14 / 16
+7            Risk management plan summary
+
+The RMP summaries contain information on the medicinal products′ safety profiles and explain the
+measures that are taken to further investigate and monitor the risks, as well as to prevent or minimise
+them.
+The RMP summaries are published separately on the Swissmedic website. It is the responsibility of
+the marketing authorisation holder to ensure that the content of the published RMP summaries is
+accurate and correct. As the RMPs are international documents, their summaries might differ from the
+content in the Information for healthcare professionals / product information approved and published
+in Switzerland, e.g. by mentioning risks that occur in populations or indications not included in the
+Swiss authorisations.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                      15 / 16
+8            Appendix
+
+Approved Information for healthcare professionals
+Please be aware that the following version of the Information for healthcare professionals for
+Rhapsido was approved with the submission described in the SwissPAR. This Information for
+healthcare professionals may have been updated since the SwissPAR was published.
+
+Please note that the valid and relevant reference document for the effective and safe use of medicinal
+products in Switzerland is the Information for healthcare professionals currently authorised by
+Swissmedic (see www.swissmedicinfo.ch).
+
+Note:
+The following Information for healthcare professionals has been translated by the MAH. It is the
+responsibility of the authorisation holder to ensure the translation is correct. The only binding and
+legally valid text is the Information for healthcare professionals approved in one of the official Swiss
+languages.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                         16 / 16
+                                                  Prescribing information for human medicines
+
+
+▼This medicinal product is subject to additional monitoring. This will allow quick identification of
+new safety information. Healthcare professionals are asked to report any suspected new or serious
+adverse reactions. See “Adverse effects” for information on reporting adverse effects.
+
+
+
+Rhapsido
+
+Composition
+
+Active substances
+
+Remibrutinib.
+
+Excipients
+
+Tablet core: Mannitol, microcrystalline cellulose, copovidone, croscarmellose sodium, sodium stearyl
+fumarate, sodium lauryl sulfate.
+Tablet coating: Polyvinyl alcohol, macrogol 4000, talc, titanium dioxide (E171), yellow iron oxide
+(E172), red iron oxide (E172).
+One film-coated tablet contains a maximum of 0.84 mg sodium.
+
+
+
+Pharmaceutical form and quantity of active substance per unit
+
+Each film-coated tablet contains 25 mg remibrutinib.
+Light yellow, round, curved film-coated tablet with a diameter of 7 mm, debossed with “LV” on one
+side and the “Novartis” logo on the other side.
+
+
+
+Indications/Potential uses
+
+Chronic spontaneous urticaria (CSU)
+Rhapsido is indicated as an add-on therapy for the treatment of chronic spontaneous urticaria (CSU)
+in adult patients who remain symptomatic despite H1 antihistamine treatment.
+
+
+
+Dosage/Administration
+
+Usual dosage
+The recommended dosage of Rhapsido is 25 mg orally twice daily
+If a patient misses a dose or doses of Rhapsido, the patient should be instructed to take the next dose
+at the regularly scheduled time. Extra doses of Rhapsido should not be taken to make up for the
+missed dose or doses.
+
+Interruption of treatment
+
+
+                                                                                                       1 / 19
+                                                  Prescribing information for human medicines
+
+Consideration should be given to interrupting Rhapsido for 3 to 7 days before surgery and for
+3 to 7 days after surgery, depending upon the type of surgery and the risk of bleeding (see “Adverse
+effects” and “Interactions”).
+
+Patients with renal impairment
+No dose adjustment of Rhapsido is required in patients with renal impairment. There are very limited
+data available in patients with severe renal impairment (see “Pharmacokinetics”).
+
+Patients with hepatic impairment
+Rhapsido is not recommended for use in patients with severe hepatic impairment. No dose
+adjustment is necessary in patients with mild or moderate hepatic impairment (see
+“Pharmacokinetics”).
+
+Paediatric patients (aged under 18 years)
+The safety and efficacy of Rhapsido in paediatric patients have not been established.
+
+Elderly patients (aged 65 years or over)
+No relevant pharmacokinetic differences have been observed in elderly patients (aged ≥65 years)
+compared to the overall population. Therefore, no dose adjustment is required in patients aged
+65 years and over (see “Properties/Actions”).
+
+Method of administration
+Rhapsido is administered orally. Rhapsido can be taken with or without food. Patients are to be
+instructed to swallow the tablet whole with water. Rhapsido must not be split, crushed or chewed.
+
+
+Contraindications
+
+Hypersensitivity to the active substance or any of the excipients listed under “Composition”.
+
+
+
+Warnings and precautions
+
+Risk of bleeding
+Mild to moderate mucocutaneous bleeding events have occurred in patients treated with remibrutinib.
+The most frequently reported events were bruising-related, such as petechiae and contusion (see
+“Adverse reactions”).
+Patients taking antithrombotic agents with remibrutinib may be at an increased risk of bleeding. The
+risks and benefits of co-administration of antithrombotic agents with remibrutinib must be considered
+(see “Interactions”).
+Patients should be instructed to seek medical advice if signs and symptoms suggestive of significant
+bleeding occur. If significant bleeding is suspected, treatment with remibrutinib should be interrupted.
+Upon resolution of the bleeding, treatment may be resumed if the benefit is expected to outweigh the
+risk.
+
+                                                                                                     2 / 19
+                                                    Prescribing information for human medicines
+
+Withholding remibrutinib treatment should be considered for 3 to 7 days before surgery and for 3 to 7
+days after surgery, depending upon the type of surgery and risk of bleeding (see
+“Dosage/Administration”).
+
+Live vaccines
+The safety of Rhapsido with live or live-attenuated vaccines has not been studied. Vaccination with
+live or live-attenuated vaccines is therefore not recommended during treatment with Rhapsido (see
+“Interactions”).
+Interactions
+Remibrutinib is a substrate of cytochrome P450 enzyme 3A4 (CYP3A4), therefore there is a potential
+for interaction with other concomitantly administered medicinal products that are metabolised by or
+modulate the activity of CYP3A4 (see “Interactions”).
+Concomitant use with strong CYP3A4 inhibitors increases remibrutinib exposure and consequently
+may increase the risk for adverse reactions with remibrutinib. Concomitant use with strong CYP3A4
+inhibitors must be avoided (see “Interactions”).
+Concomitant use with moderate or strong CYP3A4 inducers decreases remibrutinib exposure and
+consequently may decrease the efficacy of remibrutinib. Concomitant use with moderate or strong
+CYP3A4 inducers must be avoided (see “Interactions”).
+Populations not studied
+Potential at-risk populations were excluded from the clinical trials with remibrutinib and therefore
+should be treated with caution, as adverse pharmacologic effects known from other Bruton’s tyrosine
+kinase (BTK) inhibitors used in oncological diseases cannot be excluded (see “Description of selected
+adverse drug reactions”):
+
+    •   Patients with a significant risk of bleeding or coagulation disorders, with a history of
+        gastrointestinal bleeding or an INR >1.5, with antiplatelet therapy (except acetylsalicylic acid up
+        to 100 mg/day or clopidogrel up to 75 mg/day), with dual antiplatelet therapy (e.g. acetylsalicylic
+        acid + clopidogrel), or with anticoagulant medication (e.g. warfarin or other vitamin K antagonists
+        as well as new oral anticoagulants).
+    •   Patients with clinically significant cardiovascular diseases (e.g. status post myocardial infarction,
+        unstable angina pectoris, NYHA Class III/IV left ventricular failure, arrhythmias and uncontrolled
+        hypertension).
+    •   Patients with the following haematological parameters (cytopenias): Haemoglobin: <10 g/dl,
+        Platelets: <100,000/mm3, Leukocytes: <3,000/mm3, Neutrophils: <1,500/mm3.
+    •   Patients with immunodeficiency
+    •   Patients with a history of or current liver disease, including but not limited to acute or chronic
+        hepatitis, liver cirrhosis or liver failure, or aspartate aminotransferase (AST)/alanine
+
+
+
+
+                                                                                                        3 / 19
+                                                    Prescribing information for human medicines
+
+       aminotransferase (ALT) levels greater than 1.5 times the upper limit of normal (ULN) or an
+       International Normalised Ratio (INR) greater than 1.5.
+   •   Patients with a history of renal disease, a creatinine >1.5 times ULN or estimated Glomerular
+       Filtration Rate (eGFR) <45 ml/min (using the Cockcroft-Gault equation) at screening
+   •   Patients with malignant diseases (other than localised basal cell carcinoma of the skin or in situ
+       cervical cancer) within the last 5 years.
+
+Sodium
+This medicinal product contains less than 1 mmol (23 mg) of sodium per tablet, making it practically
+“sodium-free”.
+
+
+
+Interactions
+
+Effect of other medicinal products on remibrutinib
+
+CYP3A4 inhibitors
+The concomitant use of remibrutinib with strong CYP3A4 inhibitors is not recommended (see “Warnings
+and precautions”). Concomitant use of ritonavir, a potent CYP3A4/P-gp inhibitor, led to a 4.27‑fold
+increase in the area under the curve (AUC) and a 3.32-fold increase in the Cmax of remibrutinib
+No clinically relevant effect is expected with co-administration of mild CYP3A4 inhibitors during
+remibrutinib treatment. Grapefruit juice, a moderate to strong inhibitor of intestinal CYP3A4, led to a
+1.29‑fold increase in the AUC and a 1.24‑fold increase in the Cmax of remibrutinib.
+
+CYP3A4 inducers
+Co-administration of remibrutinib with strong or moderate CYP3A4 inducers must be avoided (see
+“Warnings and precautions”). Co-administration of carbamazepine (strong to moderate CYP3A4
+inducer) decreased remibrutinib blood exposure by 0.26-fold for Cmax and by 0.23-fold in the AUC.
+
+In vitro evaluation of the drug interaction potential
+In vitro data showed that remibrutinib is a P-gp substrate. The in vitro CYP metabolism is
+predominantly driven by CYP3A4. Remibrutinib is not a substrate of OATP1B1 and 1B3, or BCRP.
+
+Effects of remibrutinib on other medicinal products
+
+P‑gp or BCRP substrates
+Caution is required when using remibrutinib with P‑gp substrates with a narrow therapeutic index such
+as digoxin, as this led to a 1.45‑fold increase in the AUC and a 2.08‑fold increase in the Cmax of
+digoxin.
+Caution is required when using remibrutinib with breast cancer resistance protein (BCRP) substrates
+with a narrow therapeutic index. Co-administration of rosuvastatin (a BCRP substrate without a
+
+
+
+
+                                                                                                      4 / 19
+                                                    Prescribing information for human medicines
+
+narrow therapeutic index) and remibrutinib led to a 1.65‑fold increase in the AUC and a 1.56‑fold
+increase in the Cmax of rosuvastatin.
+
+CYP3A4 substrates
+Concomitant administration of the CYP3A4 substrate midazolam with remibrutinib 100 mg twice daily
+increased the Cmax and AUC of midazolam by 1.27-fold and 1.43-fold, respectively. At a remibrutinib
+dose of 25 mg twice daily, the increase in Cmax and AUC of midazolam is expected to be smaller and
+there is no risk of drug interaction for CYP3A4 substrates.
+
+Oral contraceptives
+Co-administration of remibrutinib is not expected to have an adverse impact on the efficacy of oral
+contraceptives containing ethinylestradiol and levonorgestrel (CYP3A4 substrates) as their exposure
+was not decreased in the presence of remibrutinib (1.28-fold and 1.36‑fold increase in Cmax and 1.16-
+fold and 1.39‑fold increase in the AUC, respectively).
+
+Immune response to vaccines
+No data are available on the effects of live or live-attenuated vaccines in patients receiving
+remibrutinib and these vaccines should not be co-administered with remibrutinib.
+The vaccination immune response of non-live vaccines can be reduced with concomitant remibrutinib
+treatment. Therefore, the use of non-live vaccines with remibrutinib should be considered on a case-
+by-case basis.
+
+Antithrombotic agents
+No data are available on co-administration of remibrutinib with anticoagulants. Co-administration of
+remibrutinib with anticoagulants was not allowed in clinical studies. Individual use of the antiplatelet
+agents such as acetylsalicylic acid (up to 100 mg daily) or clopidogrel (up to 75 mg daily) was allowed
+in the remibrutinib clinical studies, however dual antiplatelet therapy (acetylsalicylic acid and
+clopidogrel) was prohibited. The risks and benefits of co-administration of antithrombotic agents with
+remibrutinib must be considered (see “Dosage/Administration” and “Adverse effects”).
+
+In vitro evaluation of drug interaction potential
+In vitro, at physiologically relevant concentrations such as those achieved with 25 mg remibrutinib
+twice daily (BID), remibrutinib showed no inhibition of CYP1A2, CYP2B6, CYP2C8, CYP2C9,
+CYP2C19, and CYP2D6, and no induction of CYP1A2, CYP2B6, and CYP2C9. In addition,
+remibrutinib showed no inhibition of BSEP, OATP1B1, OATP1B3, OAT1, OAT3, OCT1, OCT2,
+MATE1, and MATE2-K.
+
+
+
+Pregnancy/Breast-feeding
+
+Treatment of women of childbearing potential/contraception
+
+
+
+                                                                                                      5 / 19
+                                                  Prescribing information for human medicines
+
+Women of childbearing potential should consider using an effective contraception method during
+Rhapsido treatment and for at least 1 week after the last dose.
+
+Pregnancy
+There are limited data from the use of Rhapsido in pregnant women. Animal studies have shown
+embryo-foetal development toxicity at high exposures (see “Preclinical Data”). Rhapsido is not
+recommended during pregnancy and in women of childbearing potential not using contraception.
+The patient should be advised that remibrutinib may potentially cause foetal harm when Rhapsido
+is administered during pregnancy or if the patient becomes pregnant while taking Rhapsido.
+
+Breast-feeding
+It is unknown whether Rhapsido or its metabolites are transferred into human milk. There are no data
+on the effects of remibrutinib or its metabolites on the breast-fed child or on milk production. Because
+of the potential for adverse drug reactions in breast-fed children, women are to be advised not to
+breast-feed during treatment with Rhapsido and for 1 week after the last dose.
+
+Fertility
+There are no data on the effect of Rhapsido on human fertility. Animal studies have shown no
+impairment of male or female fertility.
+
+
+Effects on ability to drive and use machines
+
+No relevant studies have been performed.
+
+
+Adverse effects
+
+Summary of the safety profile
+The safety profile of Rhapsido is based on the pooled data set (N=912) of two phase III studies,
+REMIX‑1 (NCT05030311) and REMIX‑2 (NCT05032157) in adult patients with CSU. Patients
+were treated with 25 mg Rhapsido twice daily (N=606) or placebo (N=306) for 24 weeks during the
+double-blind treatment period and continued in a 28-week open-label treatment period in which all
+patients received 25 mg Rhapsido twice daily.
+During the double-blind, placebo-controlled period of the phase III studies in adult patients with CSU,
+the most frequently reported adverse drug reaction (ADR) with Rhapsido use (frequency ≥5%) was
+upper respiratory tract infections (14.7%) and bleeding (7.8%). All adverse drug reactions were mild to
+moderate. No severe adverse drug reactions were reported.
+
+Tabulated summary of adverse drug reactions from clinical studies
+Adverse drug reactions from clinical studies (Table 1) are listed by MedDRA system organ class.
+Within each system organ class, the adverse drug reactions are listed by frequency, with the most
+frequent adverse drug reactions first. In addition, the corresponding frequency category for each
+
+                                                                                                     6 / 19
+                                                                        Prescribing information for human medicines
+
+adverse drug reaction is based on the following convention (CIOMS III): very common (≥1/10),
+common (≥1/100 to <1/10), uncommon (≥1/1,000 to <1/100), rare (≥1/10,000 to <1/1,000), very rare
+(<1/10,000).
+
+
+Table 1              Adverse drug reactions in patients with CSU at week 24 (N=912) in pooled REMIX‑1
+and REMIX‑2 clinical studies
+                                          Rhapsido
+                                                                               Placebo
+  Adverse drug                             N=606
+                                                                                N=306                    Frequency category
+  reactions                                 n (%)
+                                                                                n (%)
+                                      25 mg twice daily
+  Infections and infestations
+  Upper respiratory tract
+                                           89 (14.7%)                        36 (11.8%)                       Very common
+  infection1
+  Herpes virus infections2                   6 (1.0%)                          1 (0.3%)                          Common
+  Nervous system disorders
+  Headache                                  41 (6.8 %)                        19 (6.2%)                          Common
+  Skin and subcutaneous tissue disorders
+  Petechiae                                  23 (3.8%)                         1 (0.3%)                          Common
+  Contusion3                                 14 (2.3%)                         2 (0.7%)                          Common
+  Ecchymosis                                 9 (1.5%)                          1 (0.3%)                          Common
+  Purpura                                    5 (0.8%)                          0 (0.0%)                        Uncommon
+  Vascular disorders
+  Haematuria                                 6 (1.0%)                          1 (0.3%)                          Common
+  Epistaxis                                  5 (0.8%)                          1 (0.3%)                        Uncommon
+  Conjunctival bleeding                      2 (0.3%)                          0 (0.0%)                        Uncommon
+  Gingival bleeding                          1 (0.2%)                          0 (0.0%)                        Uncommon
+  Gastrointestinal disorders
+  Nausea                                     18 (3.0%)                         5 (1.6%)                          Common
+  Abdominal pain                             6 (1.0%)                          3 (1.0%)                          Common
+  Musculoskeletal and connective tissue disorders
+  Back pain                                  13 (2.1%)                         2 (0.7%)                          Common
+  General disorders and administration site complaints
+  Pyrexia                                    12 (2.0%)                         4 (1.3%)                          Common
+  1
+    Includes upper respiratory tract infection, acute sinusitis, bacterial tonsillitis, bacterial upper respiratory tract infection,
+  chronic sinusitis, H1N1 influenza, influenza, laryngitis, nasopharyngitis, pharyngitis, streptococcal pharyngitis,
+  pharyngotonsillitis, rhinitis, sinusitis, tonsillitis, viral upper respiratory tract infection.
+  2
+    Includes herpes simplex, herpes zoster, oral herpes
+  3
+    Includes contusion, haematoma, increased tendency to bruise
+
+
+
+The safety profile of Rhapsido in patients treated for up to 52 weeks was consistent with that
+observed up to 24 weeks in the pooled REMIX‑1 and REMIX‑2 studies.
+Experience with remibrutinib treatment in CSU patients longer than 1 year is very limited.
+
+Description of selected adverse drug reactions
+
+Mucocutaneous bleeding events
+In the 24‑week, placebo-controlled, double-blind treatment period of the pooled REMIX‑1 and
+REMIX‑2 phase III studies, mucocutaneous bleeding events (listed in Table 1 under “Skin and
+subcutaneous tissue disorders” and “Vascular disorders”) occurred in 7.8% of patients treated with
+                                                                                                                                       7 / 19
+                                                   Prescribing information for human medicines
+
+Rhapsido (exposure-adjusted incidence rate [EAIR] 18.8 per 100 patient‑years) compared to 1.6%
+(EAIR 3.8 per 100 patient‑years) in the placebo group. In patients treated with Rhapsido, 92.0% of
+these events were mild and 8.0% were moderate in severity, compared to 80.0% and 20.0% in the
+placebo group, respectively; none were severe. No association between mucocutaneous bleeding
+events and low platelet counts was observed. In patients treated with Rhapsido, 0.5% (3/606)
+experienced mucocutaneous bleeding events that led to Rhapsido discontinuation and 1% (6/606)
+experienced events that required treatment interruption. None of these events occurred in the placebo
+group (see “Dosage/Administration” and “Interactions”).
+During the entire study period of up to 52 weeks, mucocutaneous bleeding events occurred in 8.3% of
+patients treated with Rhapsido (EAIR 9.7 per 100 patient‑years). The mucocutaneous bleeding events
+up to 52 weeks were mild to moderate; none were severe. No additional treatment interruptions and
+only one treatment discontinuation were reported during Rhapsido use.
+Patients with an increased risk of bleeding were excluded from the clinical trials with remibrutinib in
+CSU. The “Warnings and precautions/bleeding” and “Populations not studied” should also be noted.
+
+
+The following side effects, some severe or serious including fatal, have been observed with other BTK
+inhibitors in the treatment of oncological diseases. Patients who had an increased risk of these side
+effects due to a pre-existing condition were excluded from the clinical trials (see “Warnings and
+precautions” and “Populations not studied”):
+   •   Infections as well as reactivation of the hepatitis B virus and opportunistic infections.
+       In clinical trials with remibrutinib in CSU, infections were observed in patients treated with
+       remibrutinib that were mostly mild to moderate. No cases of hepatitis B virus reactivation or
+       opportunistic infections were observed.
+   •   Cytopenias including neutropenias, anaemias or thrombocytopenias of severity grade 3 and 4.
+       In clinical trials with remibrutinib in CSU, slightly more patients treated with remibrutinib had
+       cytopenias compared to placebo (3.6% versus 2.0%, up to week 24). This difference was
+       mainly driven by more leukopenias including neutropenias and reduced neutrophil counts with
+       remibrutinib. In thrombocytopenia, the difference was 0.5% versus 0.3%.
+   •   Arterial hypertension.
+       In a single-arm Phase III study (A2305) with 24-hour blood pressure monitoring, treatment with
+       remibrutinib 25 mg BID for CSU showed no clinically relevant effect on blood pressure at week
+       4 (steady state) (see “Pharmacodynamics”). In clinical trials with remibrutinib in CSU, slightly
+       more patients treated with remibrutinib than with placebo (up to week 24: 1.5% versus 0.7%,
+       and up to week 52 an additional 7 versus 1 patients) had mild to moderate transient blood
+       pressure elevations.
+   •   Cardiac arrhythmias (such as atrial fibrillation or ventricular tachyarrhythmias) and heart failure.
+
+
+
+                                                                                                        8 / 19
+                                                  Prescribing information for human medicines
+
+       Remibrutinib is a human Ether-à-go-go-Related Gene (hERG) inhibitor. Based on the 192-fold
+       safety margin, QTc prolongation is considered unlikely to occur at pharmacological exposure.
+       In clinical trials with remibrutinib in CSU, no cardiac arrhythmias or heart failure were reported,
+       nor did ECG evaluations or a QTc study reveal significant safety concerns (e.g. regarding QTc
+       prolongation).
+   •   Malignant diseases, especially second malignancies, including non-melanoma skin cancer,
+       but also melanoma and solid tumours.
+       In clinical trials with remibrutinib in CSU, isolated cases of various malignant and benign
+       neoplasms occurred in patients treated with remibrutinib. A causal link cannot be proven.
+   •   Hepatotoxicity, including drug-induced liver injury (DILI).
+       No cases of drug-induced liver injury (DILI) were reported in the clinical trials with remibrutinib
+       in CSU. Newly occurring alanine transaminase (ALT) elevations >5 x ULN were rare overall,
+       but occurred in slightly more patients receiving remibrutinib than placebo (n=2 versus 0, 0.3%
+       versus 0%). Remibrutinib binds covalently to proteins in the liver and therefore represents a
+       theoretical risk of DILI.
+
+
+Reporting suspected adverse effects after authorisation of the medicinal product is very important. It
+allows continued monitoring of the risk-benefit ratio of the medicinal product. Healthcare professionals
+are asked to report any suspected new or serious adverse effects via the online portal
+ElViS (Electronic Vigilance System). You can find further information at www.swissmedic.ch.
+
+
+
+Overdose
+
+There was no experience with overdose in the pivotal phase III clinical studies with Rhapsido.
+Dosages up to 600 mg per day were well tolerated in the phase I clinical studies with no evidence of
+dose-limiting adverse events.
+In the event of an overdose, the patient should be treated symptomatically, and supportive measures
+are to be instituted as required.
+
+
+
+Properties/Actions
+
+ATC code
+
+L04AA60
+Pharmacotherapeutic group: Bruton’s tyrosine kinase inhibitors.
+
+
+
+
+                                                                                                      9 / 19
+                                                   Prescribing information for human medicines
+
+Mechanism of action
+
+Bruton’s tyrosine kinase (BTK) is an intracellular protein selectively expressed in mast cells,
+basophils, B cells, macrophages and thrombocytes. BTK plays a key role in the intracellular signalling
+via Fc epsilon receptor 1 (FcεRI), Fc gamma receptors (FcγR) and the B cell antigen receptor (BCR).
+Remibrutinib is an oral, highly selective BTK inhibitor that forms a covalent bond with a cysteine
+residue in the BTK active site, leading to durable inactivation of BTK. It inhibits mast cells and
+basophil degranulation mediated by pathogenic IgE or IgG directed against the FcεRI or IgE. It
+blocks IgE- and IgG-mediated FcεRI activation of mast cells and basophils. In patients with CSU,
+remibrutinib prevents the release of histamine and other proinflammatory mediators that cause itch,
+hives or angioedema.
+
+Pharmacodynamics
+
+Inhibition of mast cells and basophils by remibrutinib results in reduced secretion of mast cell
+mediators such as histamine as well as a reduction of blood basophil surface markers CD63 and
+CD203c which are involved in degranulation. In addition, remibrutinib inhibits activation of
+autoreactive B cells via BCR and reduces antigen presentation markers such as CD69 and CD86.
+Based on clinical pharmacokinetic and pharmacodynamic (PK/PD) data, BTK occupancy is estimated
+to be ≥96% in blood, maintained throughout the entire day with remibrutinib 25 mg twice daily. An
+exploratory translational PK/PD model showed that 25 mg remibrutinib twice daily is estimated to
+achieve a trough BTK occupancy ≥80% in peripheral target tissues.
+
+Immunoglobulins
+In the 24-week, double-blind, placebo-controlled treatment period of the pooled REMIX‑1 and
+REMIX‑2 phase III studies, the mean change from baseline to minimum post-baseline value for IgG
+levels was –0.80 for remibrutinib and –0.59 for placebo; the mean change from baseline to minimum
+post-baseline value for IgM levels was –0.22 for remibrutinib and 0.08 for placebo during the
+controlled period. The mean values of both IgG and IgM remained within the normal reference range
+throughout the 52 weeks in both arms.
+
+Cardiac electrophysiology
+The effects of remibrutinib on QTc interval prolongation were predicted using concentration-QTc
+analysis. The upper limit of the 90% confidence interval for the predicted mean change in the QTcF
+interval was below 10 msec at the expected Cmax at supratherapeutic exposures. Therefore, no
+clinically significant prolongation of the QTcF interval is expected with therapeutic dosing of
+remibrutinib.
+
+Effect on blood pressure
+The effect of remibrutinib treatment on blood pressure was assessed in CSU patients using a 24‑hour
+blood pressure measurement by ambulatory blood pressure monitoring (ABPM) at steady state
+(week 4) compared to baseline in a multicentre, open-label, phase III study (A2305). The phase III
+                                                                                                     10 / 19
+                                                    Prescribing information for human medicines
+
+study enrolled 144 patients with CSU inadequately controlled by a second-generation
+H1 antihistamine, who received 25 mg remibrutinib BID. The upper limit of the 95% CI was –0.3
+mmHg, which was less than the prespecified upper limit of an increase of 3 mmHg. No clinically
+relevant effect was noted at week 4 compared to baseline in 24‑hour systolic blood pressure
+(estimated mean change –1.3 mmHg (95% CI: –2.3, –0.3)) or diastolic blood pressure (estimated
+mean change –0.1 (95% CI: –0.8, 0.6)). In addition, there was no clinically relevant effect on heart
+rate. In the interpretation, the study design (lack of a control group, number of exposed patients
+(N=143), and relatively short observation period (up to week 4) should be taken into account in view
+of the relatively long mean disease and anticipated treatment duration for CSU.
+
+Clinical efficacy
+
+The efficacy and safety of Rhapsido were evaluated in two identical, multicentre, randomised, double-
+blind, placebo-controlled, phase III studies (REMIX‑1 and REMIX‑2) in adult patients with CSU who
+remained symptomatic despite treatment with second-generation H1 antihistamines.
+In REMIX‑1 and REMIX‑2, patients were randomised in a 2:1 ratio to receive either 25 mg Rhapsido
+or placebo twice daily via the oral route for 24 weeks during the double-blind treatment period. This
+was followed by a 28‑week, open-label treatment period, during which all patients received 25 mg
+Rhapsido twice daily.
+REMIX‑1 (NCT05030311) and REMIX‑2 (NCT05032157) enrolled a total of 925 adult patients with
+CSU that was inadequately controlled despite treatment with second-generation H1 antihistamines
+(defined by the presence of itch and hives for ≥6 consecutive weeks). All patients were required to
+have a weekly urticaria activity score (UAS7) ≥16 (range 0 to 42), a weekly itch severity score (ISS7)
+≥6 (range 0 to 21) and a weekly hives severity score (number of wheals) (HSS7) ≥6 (range 0 to 21)
+for 7 days prior to randomisation.
+The UAS7 weekly score is the sum of the HSS7 and ISS7 weekly scores (see below). It has a range
+of 0-42, with higher values indicating higher disease activity. According to Stull et al. 2017, the
+following 5 UAS7 weekly score categories are distinguished: 0 (Urticaria-free); 1-6 (Well-controlled
+urticaria activity), 7-15 (Mild urticaria activity), 16-27 (Moderate urticaria activity), and 28-42 (Severe
+urticaria activity).
+The HSS7 weekly score was determined by recording the severity of wheals twice daily in an
+electronic diary and finally adding up the average daily values over 7 days. It has a range of 0 to 21,
+with higher values indicating a higher number of wheals. The following four HSS7 weekly score
+categories have been defined: 0 (no wheals), 1 (1-6 wheals/12 hours), 2 (7-12 wheals/12 hours), 3
+(>12 wheals/12 hours).
+The ISS7 weekly score was determined by recording the severity of itching twice daily in an electronic
+diary and finally adding up the average daily values over 7 days. It has a range of 0 to 21, with higher
+values indicating more severe itching. The following four ISS7 weekly score categories have been
+
+
+                                                                                                        11 / 19
+                                                        Prescribing information for human medicines
+
+defined: 0 (itch-free), 1 (mild itching, minimally perceived, easily tolerated), 2 (moderate itching,
+definitely perceived, bothersome but tolerable), 3 (severe itching, difficult to tolerate).
+Demographics and baseline characteristics were generally well balanced across all groups (see
+Table 2). In REMIX‑1 and REMIX‑2, patients had a mean UAS7 of 30.28 and 29.99, a mean ISS7 of
+14.59 and 14.15 and a mean HSS7 of 15.69 and 15.84, respectively. At baseline, 63.4% and 59.1%
+of the patients had severe disease (UAS7 ≥28) and 35.1% and 38.7% had moderate disease
+(UAS7 16 and <28), respectively. 51.7% and 46.6% of patients in REMIX‑1 and REMIX‑2,
+respectively, had previous experience of angioedema. 68.1% and 69.2% of patients in REMIX‑1 and
+REMIX‑2, respectively, were anti-IgE biologic naive.
+The mean duration of CSU at enrolment across treatment groups was 6.6 and 5.2 years in REMIX‑1
+and REMIX‑2, respectively, with 39.4% and 29.5% of patients having had a duration of CSU >5 years.
+
+
+Table 2             Baseline demographics and disease characteristics in REMIX‑1 and REMIX‑2
+ Parameters                             REMIX‑1                                REMIX‑2
+                           Rhapsido     Placebo       Overall     Rhapsido     Placebo       Overall
+                            (N=313)     (N=157)       (N=470)      (N=300)     (N=155)       (N=455)
+ Age (years) n (%)
+ 18‑65 years               282 (90.1)   143 (91.1)   425 (90.4)   276 (92.0)   144 (92.9)   420 (92.3)
+ >65 years                  31 (9.9)     14 (8.9)     45 (9.6)     24 (8.0)     11 (7.1)     35 (7.7)
+ Gender n (%)
+ Female n (%)              212 (67.7)   109 (69.4)   321 (68.3)   197 (65.7)   100 (64.5)   297 (65.3)
+ Ethnicity n (%)
+ White                     188 (60.1)   89 (56.7)    277 (58.9)   159 (53.0)   79 (51.0)    238 (52.3)
+ Black or African           12 (3.8)     3 (1.9)      15 (3.2)     7 (2.3)      3 (1.9)      10 (2.2)
+ American
+ Asian                     94 (30.0)    46 (29.3)    140 (29.8)   130 (43.3)   72 (46.5)    202 (44.4)
+ Hispanic/Latin            76 (24.3)    44 (28.0)    120 (25.5)    16 (5.3)     5 (3.2)      21 (4.6)
+ American
+ Non-Hispanic/Latin        237 (75.7)   113 (72.0)   350 (74.5)   284 (94.7)   149 (96.1)   433 (95.2)
+ American
+ Disease characteristics
+ Moderate activity:        104 (33.2)   61 (38.9)    165 (35.1)   112 (37.3)   64 (41.3)    176 (38.7)
+ UAS7 16-<28 n (%)
+ High activity: UAS7       205 (65.5)   93 (59.2)    298 (63.4)   181 (60.3)   88 (56.8)    269 (59.1)
+ 28-42 n (%)
+ Mean UAS7 score             30.63        29.58        30.28        30.23        29.52        29.99
+ Mean HSS7 score             15.89        15.29        15.69        15.93        15.67        15.84
+ Mean ISS7 score             14.74        14.29        14.59        14.31        13.85        14.15
+ Mean DLQI score             14.21        13.52        13.98        14.00        13.58        13.86
+ Previous experience       173 (55.3)   70 (44.6)    243 (51.7)   143 (47.7)   69 (44.5)    212 (46.6)
+ of angioedema n (%)
+ Previous exposure to      98 (31.3)    52 (33.1)    150 (31.9)   90 (30.0)    50 (32.3)    140 (30.8)
+ anti-IgE biologics (%)
+ Duration of CSU (years) n (%)
+ Mean duration of            6.907        6.128        6.647        5.511        4.638        5.214
+ CSU (years)
+ ≤5 years                   191 (61)    94 (59.9)    285 (60.6)   209 (69.7)   112 (72.3)   321 (70.5)
+ >5 years                  122 (39.0)   63 (40.1)    185 (39.4)   91 (30.3)    43 (27.7)    134 (29.5)
+
+
+                                                                                                         12 / 19
+                                                                   Prescribing information for human medicines
+
+ Parameters                                    REMIX‑1                                           REMIX‑2
+                               Rhapsido         Placebo         Overall         Rhapsido          Placebo        Overall
+                                (N=313)         (N=157)         (N=470)          (N=300)          (N=155)        (N=455)
+ CU index n (%)*
+ Positive (≥10)                90 (28.8)        37 (23.6)      127 (27.0)        77 (25.7)       48 (31.0)     125 (27.5)
+ Negative (<10)                215 (68.7)      114 (72.6)      329 (70.0)       166 (55.3)       76 (49.0)     242 (53.2)
+ Total IgE level n (%)
+ Normal/high                   225 (71.9)      110 (70.1)      335 (71.3)       224 (74.7)       107 (69.0)    331 (72.7)
+ (>43 IU/ml)
+ Low (≤43 IU/ml)               81 (25.9)        43 (27.4)      124 (26.4)        71 (23.7)       45 (29.0)     116 (25.5)
+ CSU: chronic spontaneous urticaria, UAS7: weekly urticaria activity score, HSS7: weekly hive severity score, ISS7:
+ weekly itch severity score, DLQI: dermatology life quality index, CU index: chronic urticaria index, IgE: Immunoglobulin E.
+ * Values for the missing category are not presented.
+
+
+
+The primary endpoint for the pivotal studies was:
+    •      absolute change from baseline in UAS7 at week 12.
+The secondary endpoints for the pivotal studies were:
+    •      absolute change from baseline in ISS7 and HSS7 at week 12.
+    •      proportion of patients with well-controlled disease (UAS7 ≤6) at weeks 2 and 12
+    •      proportion of patients with complete absence of itch and hives (UAS7 = 0) at week 12
+    •      proportion of patients with Dermatology Life Quality Index (DLQI) score of 0‑1 (yes/no) at
+           week 12
+    •      number of weeks with sustained disease activity control (UAS7 ≤6) up to week 12
+    •      number of angioedema-free weeks (weekly angioedema activity score [AAS7] = 0) up to
+           week 12.
+
+Clinical response
+In both REMIX‑1 and REMIX‑2, the primary and all secondary endpoints were met and showed a
+statistically significant improvement in itch and hives symptoms in patients treated with remibrutinib
+compared to patients who received placebo. Results are presented in Table 3.
+
+
+Table 3             Efficacy results in REMIX‑1 and REMIX‑2 at week 12a, b
+                                                             REMIX‑1                                     REMIX‑2
+                                                 Rhapsido               Placebo                Rhapsido             Placebo
+                                                 (N=309)c               (N=153)c               (N=297)c             (N=153)c
+ Change from baseline in UAS7 at week 12
+ LS mean (SE) CFB                             –20.02 (0.716)         –13.79 (0.980)          –19.41 (0.702)      –11.73 (0.948)
+ Difference in LS mean (SE) vs                            –6.22 (1.136)                               –7.68 (1.136)
+ placebo
+ 95% CI for difference
+                                                            –8.45, –4.00                               –9.91, –5.46
+ p‑value
+                                                              <0.001                                      <0.001
+ Change from baseline in ISS7 at week 12
+ LS mean (SE) CFB                              –9.52 (0.343)         –6.89 (0.470)           –8.95 (0.335)       –5.72 (0.454)
+ Difference in LS mean (SE) vs                            –2.63 (0.544)                               –3.23 (0.545)
+ placebo
+
+
+                                                                                                                                  13 / 19
+                                                               Prescribing information for human medicines
+
+                                                           REMIX‑1                                  REMIX‑2
+                                              Rhapsido                Placebo            Rhapsido                Placebo
+                                              (N=309)c                (N=153)c           (N=297)c                (N=153)c
+95% CI for difference                                   –3.70, –1.56                              –4.29, –2.16
+p‑value                                                     <0.001                                    <0.001
+Change from baseline in HSS7 at week 12
+LS mean (SE) CFB                            –10.47 (0.401)          –6.86 (0.548)      –10.47 (0.394)          –6.00 (0.531)
+Difference in LS mean (SE) vs                          –3.61 (0.635)                             –4.47 (0.634)
+placebo
+95% CI for difference                                   –4.85, –2.36                              –5.71, –3.23
+p‑value                                                     <0.001                                    <0.001
+Proportion of patients with UAS7 ≤6 at week 2
+n (%)                                         104 (33.7)               5 (3.3)            89 (30.0)               9 (5.9)
+Difference between treatment
+groups                                                      30.20                                      24.55
+(95% CI)                                                24.30, 36.10                              18.31, 30.80
+p‑value                                                     <0.001                                    <0.001
+Proportion of patients with UAS7 ≤6 at week 12
+n (%)                                         154 (49.8)              38 (24.8)          139 (46.8)              30 (19.6)
+Difference between treatment
+groups                                                      25.44                                      27.61
+(95% CI)                                                16.48, 34.39                              19.14, 36.08
+p‑value                                                     <0.001                                    <0.001
+Proportion of patients with UAS7 = 0 at week 12
+n (%)                                          96 (31.1)              16 (10.5)           83 (27.9)              10 (6.5)
+Difference between treatment
+groups                                                      20.55                                      21.60
+(95% CI)                                                13.35, 27.75                              15.10, 28.10
+p‑value                                                     <0.001                                    <0.001
+Proportion of patients with DLQI = 0‑1 response at week 12
+n (%)                                         120 (39.0)              34 (22.2)          106 (35.7)              28 (18.3)
+Difference between treatment
+groups                                                      17.65                                      18.21
+(95% CI)                                                9.14, 26.16                                9.96, 26.45
+p‑value                                                     <0.001                                    <0.001
+Cumulative number of weeks with AAS7 = 0 between baseline and week 12
+LS mean (SE)                                 8.43 (0.274)            6.72 (0.330)       8.81 (0.308)           6.68 (0.343)
+Rate ratio                                                   1.25                                      1.32
+(95% CI)                                                (1.12, 1.41)                              (1.17, 1.49)
+p‑value                                                     <0.001                                    <0.001
+Cumulative number of weeks with UAS7 ≤6 between baseline and week 12
+LS mean (SE)                                 5.17 (0.414)            1.92 (0.241)       4.50 (0.464)           1.38 (0.216)
+Rate ratio                                                   2.69                                      3.26
+(95% CI)                                                (2.01, 3.61)                              (2.26, 4.71)
+p‑value                                                     <0.001                                    <0.001
+LS mean: least squares mean, SE: standard error, CFB: change from baseline, CI: confidence interval, p-value: one-sided p-
+value, UAS7: weekly urticaria activity score, ISS7: weekly itch severity score, HSS7: weekly hive severity score, DLQI:
+dermatology life quality index, AAS7: Weekly angioedema activity score.
+a
+  All endpoints with nominal one-sided p <0.001
+b
+  One endpoint from week 2 (all other endpoints relate to week 12)
+c
+  Multiple imputation techniques were implemented for missing data.
+
+
+
+
+                                                                                                                               14 / 19
+                                                                                                                                                Prescribing information for human medicines
+
+Table 3 shows statistically significant and clinically meaningful improvements in mean change from
+baseline in UAS7 score in REMIX‑2 at week 12 in patients treated with Rhapsido versus placebo.
+Figure 1 shows treatment effect was observed as early as week 1 and improvement was sustained
+throughout the 52 weeks. The results were similar in REMIX‑1.
+
+
+Figure 1                                                                            Mean change from baseline in weekly urticaria activity score (UAS7) over time, up to
+week 52 in REMIX‑2 (observed data)a,b
+ Veränderung gegenüber dem Ausgangswert im
+                                             UAS7 (Mittelwert mit Standardfehler)
+
+
+
+
+                                                                                                                              Wochen nach Baseline
+
+                                                                                                   Remibrutinib 25 mg zweimal täglich (N=297)      Placebo → Remibrutinib 25 mg zweimal täglich (N=153)
+
+
+
+a In REMIX‑2 at baseline, 297 patients were included in the remibrutinib arm and 153 in the placebo arm.
+
+b Placebo patients were switched over to receive open-label remibrutinib treatment from week 24.
+
+
+
+
+Table 3 shows statistically significant and clinically meaningful improvements in mean change from
+baseline in UAS7 score in REMIX‑1 at week 12 in patients treated with Rhapsido versus placebo.
+Figure 2 shows treatment effect was observed as early as week 1 and improvement was sustained
+throughout the 52 weeks.
+
+
+Figure 2                                                                            Mean change from baseline in weekly urticaria activity score (UAS7) over time, up to
+week 52 in REMIX-1 (observed data)a,b
+
+
+
+
+                                                                                                                                                                                                          15 / 19
+                                                                                                                                 Prescribing information for human medicines
+
+ Veränderung gegenüber dem Ausgangswert im
+                                             UAS7 (Mittelwert mit Standardfehler)
+
+
+
+
+                                                                                                              Wochen nach Baseline
+
+                                                                                    Remibrutinib 25 mg zweimal täglich (N=309)     Placebo → Remibrutinib 25 mg zweimal täglich (N=153)
+
+
+
+a In REMIX‑1 at baseline, 309 patients were included in the remibrutinib arm and 153 in the placebo arm.
+
+b Placebo patients were switched over to receive open-label remibrutinib treatment from week 24.
+
+
+
+
+Subgroup analyses demonstrated a consistent treatment benefit with Rhapsido over placebo across
+subgroups (including CSU duration, previous history of angioedema, CU index, prior exposure to
+anti-IgE biologics and total IgE level).
+
+
+
+Pharmacokinetics
+
+Absorption
+
+Remibrutinib is rapidly absorbed and reaches Cmax in the blood around 1 hour post dose across all
+doses studied (0.5 mg to 600 mg). The absolute oral bioavailability is 33.8% (50 mg once daily). At
+25 mg twice daily, accumulation is negligible.
+
+Food effect
+Remibrutinib AUC increased by 33% and Cmax decreased by 5%, respectively, compared to the fasted
+state following administration of remibrutinib (25 mg twice daily) with a high-fat meal.
+
+Distribution
+
+Remibrutinib is rapidly distributed to blood cells with a blood-to-plasma ratio of 0.813. Plasma protein
+binding amounts to 95.4% with no concentration dependence. Based on pooled data from population
+pharmacokinetic analyses, the volume of distribution at steady state was 58 litres (central
+compartment) and 1,180 litres (peripheral compartment).
+
+
+
+
+                                                                                                                                                                                          16 / 19
+                                                  Prescribing information for human medicines
+
+Metabolism
+
+Remibrutinib is metabolised primarily by CYP3A4, leading to the formation of 18 inactive metabolites,
+all present in low amounts in the blood circulation. Remibrutinib was the most abundant substance in
+blood (16.7%).
+
+Elimination
+
+The mean effective elimination half-life of remibrutinib was between 1 and 2 hours at steady state.
+Following intravenous administration of 100 mg [14C]‑remibrutinib, excretion of radioactivity
+(remibrutinib and metabolites) was approximately 70% of the administered dose in faeces and 30% in
+urine. Renal excretion of unchanged remibrutinib after oral administration was below 1% of the dose.
+
+Linearity/non-linearity
+The PK of remibrutinib at steady state was approximately linear in the total daily dose range of
+10 to 200 mg.
+
+Pharmacokinetics in special populations
+
+A population PK (pop-PK) analysis was conducted on remibrutinib data from 1,152 patients. The
+analysis showed that age (18 to 80 years), sex (63.5% females and 36.5% males), ethnicity (59.3%
+non-Asian, 8.8% mainland Chinese, 12.2% Japanese and 19.7% other Asian) and body weight
+(39 to 162 kg) had no clinically relevant effect on the pharmacokinetics (PK) of remibrutinib.
+
+Patients with renal impairment
+The effects of renal impairment on remibrutinib pharmacokinetics have not been evaluated in a
+dedicated clinical study. In a PopPK analysis, no clinically meaningful relationship was observed
+between renal function tests and remibrutinib clearance in patients with mild (n=222), moderate
+(n=25) and severe renal impairment (n=1) compared to normal renal function (n=904).
+
+Patients with hepatic impairment
+The Cmax and AUC of remibrutinib at steady state increased 1.85‑fold and 2.15‑fold in patients with
+mild hepatic impairment (Child‑Pugh class A; n=8), 1.65‑fold and 2.07‑fold in patients with moderate
+hepatic impairment (Child‑Pugh class B; n=7) and 1.99‑fold and 3.12‑fold in patients with severe
+hepatic impairment (Child‑Pugh class C; n=7), respectively, compared to patients with normal hepatic
+function (n=15) following an oral dose of 25 mg remibrutinib twice daily. There was no change in
+protein binding of remibrutinib in patients with hepatic impairment compared to patients with normal
+hepatic function (see “Dosage/Administration”).
+
+Preclinical data
+
+Preclinical data revealed no special hazard for humans based on conventional studies of safety
+pharmacology concerning respiratory or central nervous system function, repeated-dose toxicity,
+genotoxicity, carcinogenicity, fertility and phototoxicity. However, preclinical safety data demonstrated
+
+
+                                                                                                    17 / 19
+                                                   Prescribing information for human medicines
+
+effects on immune cells (inhibition of primary antibody responses) and haemostasis (inhibition of
+specific platelet functions).
+
+Safety pharmacology and repeated-dose toxicity
+An in vitro assessment of cardiovascular safety pharmacology showed inhibition of hERG with an IC50
+of 1.4 µM (this concentration is 192 times higher than the Cmax of the unbound substance in plasma at
+an MRHD of 25 mg twice daily). Furthermore, remibrutinib induced small prolongations in QTc interval
+at high exposure (Cmax-based exposure 24‑fold [total blood] or 46‑fold [unbound plasma] compared to
+the MRHD of 25 mg twice daily) in a non-GLP cardiovascular study in dogs but not in any pivotal dog
+study.
+Remibrutinib inhibited primary antibody responses in rodent pharmacology studies and increased rat
+tail bleeding time in haemostasis assessments. These observations were attributed to effects of
+remibrutinib on specific B cell and platelet functions, respectively.
+
+Carcinogenicity and genotoxicity
+Remibrutinib did not show evidence of carcinogenic potential in mouse and rat carcinogenicity studies
+at oral doses up to 1500 mg/kg/day (approximately 58-fold (males) and 144-fold (females) of the
+MRHD of 25 mg twice daily based on AUC) and 300 mg/kg/day (approximately 8-fold (males) and 98-
+fold (females) of the MRHD of 25 mg twice daily based on AUC), respectively.
+Remibrutinib did not show any genotoxic potential in a standard battery of assays.
+
+Reproductive toxicity
+In embryo-foetal development (EFD) studies in pregnant animals, remibrutinib was administered
+orally to rats at doses up to 1,000 mg/kg/day and to rabbits at doses of 100, 300 and 450 mg/kg/day
+during the period of organogenesis. In rats and rabbits, both maternal and embryo-foetal NOAELs
+were 1,000 mg/kg/day and 100 mg/kg/day, respectively, which are equivalent to 126 and 23 times the
+MRHD of 25 mg twice daily (based on AUC). Increased foetal external malformations (e.g.
+open/opaque eyes, small jaws, hyperflexion of forelimbs) and maternal toxicity (temporarily reduced
+food consumption and adverse clinical signs) occurred in rabbits at 300 mg/kg/day (141 times the
+MRHD based on AUC). It is unlikely that the foetal findings can be attributed to maternal toxicity. The
+dose of 450 mg/kg/day was not tolerated by pregnant rabbits.
+In the pre- and postnatal development (PPND) study, remibrutinib was administered orally to pregnant
+rats at doses up to 1,000 mg/kg/day from gestation day 6 to lactation day (LD) 21. Remibrutinib
+induced adverse effects at 1,000 mg/kg/day that affected both maternal animals (moribundity and
+clinical signs of toxicity, slightly longer gestation lengths) and offspring up to LD1 (slightly higher mean
+number of stillborn, dead or missing pups, and smaller mean litter size). No adverse effects at
+dosages up to 1,000 mg/kg/day were noted in the surviving offspring developing into adulthood.
+NOAEL for pregnant animals and offspring was established based on AUC at 300 mg/kg/day, which is
+equivalent to 67 times the MRHD of 25 mg twice daily.
+
+
+                                                                                                      18 / 19
+                                                Prescribing information for human medicines
+
+Other information
+
+Incompatibilities
+
+Not applicable.
+
+Shelf life
+
+Do not use after the expiry date (= EXP) printed on the pack.
+
+Special precautions for storage
+
+Do not store above 30°C.
+Keep out of the reach of children.
+Store in the original container.
+
+
+
+Authorisation number
+
+70227 (Swissmedic)
+
+
+
+Pack sizes
+
+25 mg Rhapsido: Packs of 60 film-coated tablets [B]
+
+
+
+Marketing authorisation holder
+
+Novartis Pharma Schweiz AG, Risch, Switzerland; domicile: 6343 Rotkreuz, Switzerland
+
+
+
+Information last revised
+
+February 2026
+
+
+
+
+                                                                                       19 / 19
+

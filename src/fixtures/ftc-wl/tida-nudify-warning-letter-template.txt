@@ -1,0 +1,113 @@
+                                            UNITED STATES OF AMERICA
+                                         Federal Trade Commission
+                                              WASHINGTON, D.C. 20580
+
+
+    Office of the Director
+Bureau of Consumer Protection
+
+
+                                                 May 20, 2026
+
+Via [Email]
+
+[Recipient name]
+[Recipient contact information, such as email address]
+
+          Re: TAKE IT DOWN Act
+
+Dear [Insert recipient name]:
+
+        The Federal Trade Commission (“FTC” or “Commission”) is a federal agency whose
+mission is to protect Americans from unfair, deceptive, and anticompetitive business practices,
+without unduly burdening legitimate business activity. As part of that mission, we work to
+educate businesses about their rights and responsibilities, and where necessary, initiate
+investigations and enforcement actions.
+
+       I write to you regarding the Tools to Address Known Exploitation by Immobilizing
+Technological Deepfakes on Websites and Networks Act (“TAKE IT DOWN Act” or “TIDA”). 1                      0F
+
+
+
+
+The FTC has authority under Section 5 of the FTC Act, 15 U.S.C. § 45(a), to investigate unfair
+or deceptive acts or practices in or affecting commerce. The FTC enforces Section 3 of the
+TAKE IT DOWN Act and treats violations of TIDA as violations of a rule defining an unfair or
+deceptive act or practice under Section 18(a)(1)(B) of the FTC Act, 15 U.S.C. § 57a(a)(1)(B).
+
+          Section 3 of the TAKE IT DOWN Act applies to covered platforms, which are defined as
+websites, online services, online applications, or mobile applications (i) that serve the public; and
+(ii) (I) that primarily provide a forum for user-generated content, including messages, videos,
+images, games, and audio files; or (II) for which it is in the regular course of trade or business of
+the website, online service, online application, or mobile application to publish, curate, host, or
+make available content of nonconsensual intimate visual depictions. 2 Section 3 of TIDA
+                                                                                 1F
+
+
+
+
+mandates that covered platforms have a process for individuals to request the removal of
+nonconsensual intimate visual depictions. Covered platforms that receive a valid removal request
+are required by the law to remove that content and known identical copies within 48 hours.
+Under TIDA, covered platforms were required to comply with these requirements by May 19,
+2026.
+
+        Based on information Commission staff has reviewed, it has reason to believe that
+[platform name] is a “covered platform” under the TAKE IT DOWN Act and has failed to come
+into compliance with TIDA’s requirements. Staff has identified potential violations on [platform
+
+
+1
+  Pub. L. No. 119-12, available at https://www.ftc.gov/legal-library/browse/statutes/tools-address-known-
+exploitation-immobilizing-technological-deepfakes-websites-networks-act-take-it.
+2
+  Section 4(3)(A), definition of “covered platform.”
+name], including the failure to provide individuals with a process through which they can request
+the removal of nonconsensual intimate visual depictions appearing on the platform.
+
+        While this letter does not reflect a formal determination that you have violated TIDA,
+you are advised to immediately come into compliance with the TAKE IT DOWN Act. Staff is
+monitoring the marketplace for potentially violative acts or practices relating to TIDA and will
+take additional action as warranted. Deceptive or unfair acts or practices that violate the FTC Act
+may be subject to legal action and court injunctions. In addition, covered platforms that violate
+TIDA may be subject to an FTC enforcement action and civil penalties of up to $53,088 per
+violation pursuant to Section 5(m)(1)(A) of the FTC Act.
+
+        This letter is not intended to be a comprehensive statement of concerns that may exist in
+connection with your platform under TIDA or other laws and rules enforced by the
+Commission. 3 As always, it is your company’s responsibility to comply with all requirements of
+               2F
+
+
+
+
+federal law, including Section 5 of the FTC Act, TIDA, and other laws and rules enforced by the
+Commission. You should immediately review your practices and cease and desist any conduct
+that could violate these legal requirements.
+
+       Within 48 hours, please contact [redacted] to discuss [platform name]’s plan to come into
+compliance with the TAKE IT DOWN Act. Please include the subject of this letter in your
+email’s subject line. You may also direct any inquiries concerning this letter to [redacted].
+
+                                           Respectfully,
+
+
+
+
+                                           Christopher G. Mufarrige
+                                           Director, Bureau of Consumer Protection
+
+
+Enclosure: Tools to Address Known Exploitation by Immobilizing Technological Deepfakes on
+Websites and Networks Act
+
+
+
+
+3
+  For example, the Commission in 2018 alleged that it was a violation of the FTC Act to disclose intimate images
+and personal information of individuals without their consent. FTC v. Emp Media Inc., Case No. 2:18-cv-00035 (D.
+Nev. 2018). Note that the nonconsensual distribution of intimate images can include sharing an intimate image or
+video of someone that was created with artificial intelligence. Federal Trade Commission, Image-Based Abuse:
+What To Know and Do, available at https://consumer.ftc.gov/articles/image-based-abuse-what-know-and-do.
+

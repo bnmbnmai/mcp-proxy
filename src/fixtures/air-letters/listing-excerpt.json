@@ -1,0 +1,51 @@
+[
+  {
+    "institution": "KAGOME Co., LTD.",
+    "docket": "26-173-01air",
+    "date": "2026-06-22",
+    "title": "AIR confirmation letter",
+    "sourceUrl": "https://direct.aphis.usda.gov/sites/default/files/26-173-01air-response.pdf",
+    "pdfId": "26-173-01air-response.pdf"
+  },
+  {
+    "institution": "KAGOME Co., LTD.",
+    "docket": "26-009-01air",
+    "date": "2026-01-08",
+    "title": "AIR confirmation letter",
+    "sourceUrl": "https://direct.aphis.usda.gov/sites/default/files/26-009-01air-response.pdf",
+    "pdfId": "26-009-01air-response.pdf"
+  },
+  {
+    "institution": "LaSemilla. Co. Ltd",
+    "docket": "25-364-01air",
+    "date": "2026-01-05",
+    "title": "AIR confirmation letter",
+    "sourceUrl": "https://direct.aphis.usda.gov/sites/default/files/25-364-01air-response.pdf",
+    "pdfId": "25-364-01air-response.pdf"
+  },
+  {
+    "institution": "Inari Agriculture, Inc.",
+    "docket": "25-317-01air",
+    "date": "2025-11-13",
+    "title": "AIR confirmation letter",
+    "sourceUrl": "https://direct.aphis.usda.gov/sites/default/files/25-317-01air-response.pdf",
+    "pdfId": "25-317-01air-response.pdf"
+  },
+  {
+    "institution": "The Traits Company",
+    "docket": "25-226-01air",
+    "date": "2025-07-29",
+    "title": "AIR confirmation letter",
+    "sourceUrl": "https://direct.aphis.usda.gov/sites/default/files/25-226-01air-response.pdf",
+    "pdfId": "25-226-01air-response.pdf"
+  },
+  {
+    "institution": "Jane Q Public",
+    "individual": "Jane Q Public",
+    "docket": "26-999-01air",
+    "date": "2026-01-01",
+    "title": "AIR confirmation letter",
+    "sourceUrl": "https://direct.aphis.usda.gov/sites/default/files/26-999-01air-response.pdf",
+    "pdfId": "26-999-01air-response.pdf"
+  }
+]
