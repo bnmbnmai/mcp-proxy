@@ -1990,7 +1990,7 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         name: "Rezdiffra",
         date: "2024-03-14",
         sourceUrl: "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2024/217785Orig1s000IntegratedR.pdf",
-        body: "CENTER FOR DRUG EVALUATION AND RESEARCH\nINTEGRATED REVIEW\nNDA 217785\nREZDIFFRA (resmetirom)\nBenefit-Risk Assessment",
+        body: "CENTER FOR DRUG EVALUATION AND RESEARCH\nINTEGRATED REVIEW\nNDA 217785\nREZDIFFRA\nBenefit-Risk Assessment",
       },
     ],
   },
