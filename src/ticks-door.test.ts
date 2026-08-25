@@ -4472,6 +4472,8 @@ async function main(): Promise<void> {
         recordCount?: number;
         paidWindow?: number;
         catalogCount?: number;
+        page?: number;
+        nextBefore?: string | null;
       };
       assert.equal(paidBody.paidWindow, 100);
       assert.equal(paidBody.catalogCount, 120);
@@ -4479,6 +4481,46 @@ async function main(): Promise<void> {
       assert.equal(paidBody.cards.length, 100);
       assert.equal(paidBody.records.length, 100);
       assert.ok(paidBody.cards.every((row) => String(row.body ?? "").length > 0));
+      assert.equal(paidBody.page, 1);
+      assert.ok(paidBody.nextBefore);
+
+      const manRows = (await (await fetch(`${base}${GMP_MANIFEST_PATH}`)).json()) as {
+        cards?: { id?: string; page?: number; before?: string | null; firm?: string }[];
+      };
+      assert.ok((manRows.cards ?? []).some((row) => row.page === 2 && row.before));
+      const page2Row = (manRows.cards ?? []).find((row) => row.page === 2);
+      assert.ok(page2Row?.before);
+
+      const found = (await (await fetch(`${base}${GMP_MANIFEST_PATH}?q=Firm%201`)).json()) as {
+        matchCount?: number;
+        cards?: { firm?: string; page?: number; before?: string | null }[];
+      };
+      const firm1 = (found.cards ?? []).find((row) => row.firm === "Firm 1");
+      assert.ok(firm1, "free ?q= finds Firm 1");
+      assert.equal(firm1?.page, 2);
+
+      const olderUnpaid = await fetch(`${base}${GMP_PATH}?before=${encodeURIComponent(paidBody.nextBefore ?? "")}`);
+      assert.equal(olderUnpaid.status, 402, "older page is the same door, another $0.05");
+      const older402 = (await olderUnpaid.json()) as { accepts: { maxAmountRequired?: string }[]; resource?: string };
+      assert.equal(older402.accepts[0]?.maxAmountRequired, GMP_AMOUNT_ATOMIC);
+      assert.ok(String(older402.accepts[0] && (olderUnpaid.headers.get("payment-required") ?? "")).length > 0);
+
+      const olderPaid = await fetch(`${base}${GMP_PATH}?before=${encodeURIComponent(paidBody.nextBefore ?? "")}`, {
+        headers: { "X-PAYMENT": "test" },
+      });
+      assert.equal(olderPaid.status, 200);
+      const olderBody = (await olderPaid.json()) as {
+        cards: { id?: string }[];
+        recordCount?: number;
+        page?: number;
+        catalogCount?: number;
+        nextBefore?: string | null;
+      };
+      assert.equal(olderBody.page, 2);
+      assert.equal(olderBody.catalogCount, 120);
+      assert.equal(olderBody.recordCount, 20);
+      assert.equal(olderBody.cards.length, 20);
+      assert.equal(olderBody.nextBefore, null);
     },
   );
 

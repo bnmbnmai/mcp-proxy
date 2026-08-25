@@ -18,7 +18,7 @@ Official public data caches (PDF/HTML sources), returned as JSON after x402. Not
 
 **32 paid GETs.** `$0.05` (`50000` atomic) for every live paid GET, including `/ticks`. One GET is one cache. No per-record SKU. No alerts/delta door.
 
-Extracted-body doors sell the **newest 100 official texts** (or the live `PAID_BODY_WINDOW`) plus `records[]` / `asOf` for those N. Free `/{door}/manifest.json` stays the **full catalog** (count + id/firm/date/url). `/ticks` and `/import-alerts` stay the full current table. Mariners doors stay **this week's LNM** (one weekly edition), not a 100-notice slice.
+Extracted-body doors: a plain GET sells the **newest 100 official texts** (or the live `PAID_BODY_WINDOW`) plus `records[]` / `asOf` for those N. The same URL with `?before=<id or date>` (from the free manifest) sells the **next older 100 for another $0.05**. New official texts show up on the default GET; older pages are the back catalog. Free `/{door}/manifest.json` stays the **full catalog** (count + id/firm/date/url + page cursor). Free `?q=` search stays free. `/ticks` and `/import-alerts` stay the full current table. Mariners doors stay **this week's LNM** (one weekly edition), not a 100-notice slice.
 
 ## Live paid GETs
 
@@ -70,7 +70,7 @@ Free manifests carry the full catalog (count, ids, official source URLs). They a
 
 ## How to buy
 
-Unpaid GET returns HTTP 402 with `PAYMENT-REQUIRED` (`50000` atomic = $0.05). After a valid `X-PAYMENT` (USDC on Base to the payTo above), the same URL returns JSON: newest 100 official texts on extracted-body doors, the full current table on `/ticks` and `/import-alerts`, or this week's LNM on Mariners.
+Unpaid GET returns HTTP 402 with `PAYMENT-REQUIRED` (`50000` atomic = $0.05). After a valid `X-PAYMENT` (USDC on Base to the payTo above), the same URL returns JSON: newest 100 official texts on a plain extracted-body GET, the next older 100 when they ask with `?before`, the full current table on `/ticks` and `/import-alerts`, or this week's LNM on Mariners.
 
 ## Notes
 
