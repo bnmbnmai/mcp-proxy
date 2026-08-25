@@ -2177,6 +2177,7 @@ const GROUP_LABELS: { id: string; name: string }[] = [
   { id: "grain", name: "Grain" },
   { id: "water", name: "Water" },
   { id: "pulses", name: "Pulses" },
+  { id: "wool", name: "Wool" },
 ];
 
 const SAMPLE_SERIES_IDS = [
