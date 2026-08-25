@@ -2624,6 +2624,7 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
     groups,
     empty,
     samples,
+    note: "Catalog + schema + sample rows only. One $0.05 GET returns the entire current table. Samples are marked sample:true.",
     sampleNote:
       "samples are marked sample:true and are a few real official rows for identification. The paid GET /ticks body has the full current snapshot. This manifest does not list every current price.",
   };

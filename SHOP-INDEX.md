@@ -24,8 +24,8 @@ Rows match the live well-known resource list. One-line copy plus catalog count i
 
 | Path | What you get | Paid JSON | Bag | Price | Free manifest |
 | --- | --- | --- | ---: | --- | --- |
-| `/ticks` | US hay, cattle, and grain ticks (USDA AMS official prints). Cache also has produce, wool, and WD1 water where those series exist. Newest 100 official texts per GET; older pages another $0.05 on the same URL (page/before) | `ticks[] + history` | 611 ticks | $0.05 | [manifest.json](https://ticks.bnm.farm/manifest.json) |
-| `/import-alerts` | FDA Import Alerts / DWPE firm-product snapshot. Newest 100 official texts per GET; older pages another $0.05 on the same URL (page/before) | `ticks[]` | 18904 rows / 6709 firms | $0.05 | [import-alerts/manifest.json](https://ticks.bnm.farm/import-alerts/manifest.json) |
+| `/ticks` | US hay, cattle, and grain ticks (USDA AMS official prints). Cache also has produce, wool, and WD1 water where those series exist. One $0.05 GET returns the entire current table | `ticks[] + history` | 611 ticks | $0.05 | [manifest.json](https://ticks.bnm.farm/manifest.json) |
+| `/import-alerts` | FDA Import Alerts / DWPE firm-product snapshot. One $0.05 GET returns the entire current table | `ticks[]` | 18904 rows / 6709 firms | $0.05 | [import-alerts/manifest.json](https://ticks.bnm.farm/import-alerts/manifest.json) |
 | `/mariners` | USCG D13 / Northwest Local Notice to Mariners. Newest 100 official texts per GET; older pages another $0.05 on the same URL (page/before) | `notices[]` | 124 notices | $0.05 | [mariners/manifest.json](https://ticks.bnm.farm/mariners/manifest.json) |
 | `/mariners-d11` | USCG D11 / Southwest Local Notice to Mariners. Newest 100 official texts per GET; older pages another $0.05 on the same URL (page/before) | `notices[]` | 198 notices | $0.05 | [mariners-d11/manifest.json](https://ticks.bnm.farm/mariners-d11/manifest.json) |
 | `/mariners-d7` | USCG D7 / Southeast Local Notice to Mariners. Newest 100 official texts per GET; older pages another $0.05 on the same URL (page/before) | `notices[]` | 1825 notices | $0.05 | [mariners-d7/manifest.json](https://ticks.bnm.farm/mariners-d7/manifest.json) |

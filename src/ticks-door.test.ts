@@ -1,5 +1,5 @@
 import { createServer } from "node:http";
-import { existsSync, mkdtempSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { AddressInfo } from "node:net";
@@ -645,6 +645,22 @@ async function main(): Promise<void> {
     assert.equal(shop.openapi, OPENAPI_PATH);
     assert.equal(shop.wellKnown, WELL_KNOWN_PATH);
     assert.equal(shop.llmsTxt, LLMS_PATH);
+    const ticksMan = (await (await fetch(`${base}${MANIFEST_PATH}`)).json()) as { note?: string };
+    assert.ok((ticksMan.note ?? "").includes("entire current table"), "ticks manifest note must name the table bag");
+    assert.ok(!(ticksMan.note ?? "").includes("newest 100"), "ticks is a table door");
+    assert.ok(!(ticksMan.note ?? "").includes("entire current cache"));
+    for (const shopIndexPath of ["SHOP-INDEX.md", "docs/SHOP-INDEX.md"]) {
+      const shopIndex = readFileSync(join(process.cwd(), shopIndexPath), "utf8");
+      assert.ok(!shopIndex.includes("entire current cache"), `${shopIndexPath} must not claim shop-wide entire cache`);
+      const ticksRow = shopIndex.split("\n").find((line) => line.startsWith("| `/ticks` |"));
+      const iaRow = shopIndex.split("\n").find((line) => line.startsWith("| `/import-alerts` |"));
+      const icoRow = shopIndex.split("\n").find((line) => line.startsWith("| `/ico-mpn` |"));
+      assert.ok(ticksRow?.includes("entire current table"), `${shopIndexPath} /ticks row is a table door`);
+      assert.ok(!ticksRow?.includes("Newest 100"), `${shopIndexPath} /ticks row must not claim newest 100`);
+      assert.ok(iaRow?.includes("entire current table"), `${shopIndexPath} /import-alerts row is a table door`);
+      assert.ok(!iaRow?.includes("Newest 100"), `${shopIndexPath} /import-alerts row must not claim newest 100`);
+      assert.ok(icoRow?.includes("Newest 100 official texts"), `${shopIndexPath} /ico-mpn row is extracted-body`);
+    }
   });
 
   const dir = mkdtempSync(join(tmpdir(), "idaho-ticks-"));
@@ -980,6 +996,8 @@ async function main(): Promise<void> {
         schema: { fields: string[] };
       };
       assert.equal(man.free, true);
+      assert.ok(((man as { note?: string }).note ?? "").includes("entire current table"));
+      assert.ok(!((man as { note?: string }).note ?? "").includes("newest 100"));
       assert.ok(man.catalog.length >= 1);
       assert.ok(man.samples.every((s) => s.sample === true));
       assert.ok(man.samples.length <= 2);
@@ -1092,6 +1110,9 @@ async function main(): Promise<void> {
         sources?: { pdfUrl?: string };
       };
       assert.equal(man.free, true);
+      assert.ok(((man as { note?: string }).note ?? "").includes("newest 100 official texts"));
+      assert.ok(((man as { note?: string }).note ?? "").includes("page/before"));
+      assert.ok(!((man as { note?: string }).note ?? "").includes("entire current cache"));
       assert.equal(man.noticeCount, 1);
       assert.equal(man.week, "32-2026");
       assert.ok(man.sources?.pdfUrl?.includes("lnm13322026.pdf"));
@@ -4084,8 +4105,12 @@ async function main(): Promise<void> {
         cards?: { institution?: string; docket?: string; id?: string; body?: string }[];
         openapi?: string;
         wellKnown?: string;
+        note?: string;
       };
       assert.equal(man.cardCount, 1);
+      assert.ok((man.note ?? "").includes("newest 100 official texts"));
+      assert.ok((man.note ?? "").includes("page/before"));
+      assert.ok(!(man.note ?? "").includes("entire current cache"));
       assert.ok(man.openapi?.endsWith(OPENAPI_PATH));
       assert.ok(man.wellKnown?.endsWith(WELL_KNOWN_PATH));
       assert.equal(man.cards?.[0]?.institution, "Reddit, Inc.");

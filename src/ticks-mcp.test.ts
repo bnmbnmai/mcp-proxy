@@ -199,8 +199,12 @@ async function main(): Promise<void> {
         connect?: string;
         paidGets?: string[];
         source?: string;
+        note?: string;
       };
       assert.equal(card.source, WELL_KNOWN_PATH);
+      assert.ok((card.note ?? "").includes("entire current table"));
+      assert.ok((card.note ?? "").includes("newest 100 official texts"));
+      assert.ok(!(card.note ?? "").includes("entire current cache"));
       assert.deepEqual(card.paidGets, localPaths);
       assert.equal(card.tools, localPaths.length);
       assert.ok(card.connect?.includes("mcp-remote"));
@@ -218,6 +222,9 @@ async function main(): Promise<void> {
       const initBody = (await init.json()) as { result?: { serverInfo?: { name?: string }; instructions?: string } };
       assert.equal(initBody.result?.serverInfo?.name, "bnm-data-shop");
       assert.ok(initBody.result?.instructions?.includes(WELL_KNOWN_PATH));
+      assert.ok(initBody.result?.instructions?.includes("entire current table"));
+      assert.ok(initBody.result?.instructions?.includes("newest 100 official texts"));
+      assert.ok(!(initBody.result?.instructions ?? "").includes("entire current cache"));
 
       const list = await fetch(`${base}${MCP_PATH}`, {
         method: "POST",

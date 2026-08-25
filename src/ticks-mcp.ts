@@ -238,7 +238,7 @@ export function mcpDiscovery(origin = LIVE_ORIGIN, catalog: LivePaidSku[]): Reco
     connect: `npx -y mcp-remote ${base}${MCP_PATH}`,
     source: WELL_KNOWN_PATH,
     note:
-      `Same ${catalog.length} paid GETs as ${WELL_KNOWN_PATH}. Tools are generated from that document so later SKUs appear without an MCP rewrite. Unpaid tool calls still HTTP 402 on the paid URL. Not Bazaar-indexed.`,
+      `Same ${catalog.length} paid GETs as ${WELL_KNOWN_PATH}. Table doors return the entire current table. Extracted-body doors return the newest 100 official texts; older pages are another $0.05 on the same URL (page/before). Tools are generated from that document so later SKUs appear without an MCP rewrite. Unpaid tool calls still HTTP 402 on the paid URL. Not Bazaar-indexed.`,
   };
 }
 
