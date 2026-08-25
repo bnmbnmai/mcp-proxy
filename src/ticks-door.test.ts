@@ -504,13 +504,15 @@ async function main(): Promise<void> {
     assert.ok(!llmsBody.includes("GET /ticks — $0.02"));
     assert.ok(llmsBody.includes("US hay, cattle, and grain"));
     assert.ok(!llmsBody.includes("Idaho ticks"));
-    assert.ok(llmsBody.includes("Newest 100 official texts"));
+    assert.ok(llmsBody.includes("Newest 10 official texts"));
+    assert.ok(!llmsBody.includes("Newest 100 official texts"));
     assert.ok(llmsBody.includes("older pages on the same URL"));
     assert.ok(llmsBody.toLowerCase().includes("free index/search"));
     assert.ok(llmsBody.includes("$0.02"));
     assert.ok(llmsBody.includes("$0.05"));
     assert.ok(!llmsBody.toLowerCase().includes("entire current cache"));
-    assert.ok((wk.instructions ?? "").includes("newest 100 official texts"));
+    assert.ok((wk.instructions ?? "").includes("newest 10 official texts"));
+    assert.ok(!(wk.instructions ?? "").includes("newest 100 official texts"));
     assert.ok((wk.instructions ?? "").includes("older pages on the same URL"));
     assert.ok((wk.instructions ?? "").toLowerCase().includes("free index/search"));
     assert.ok((wk.instructions ?? "").includes("$0.02"));
@@ -521,7 +523,8 @@ async function main(): Promise<void> {
       info?: { "x-guidance"?: string };
       paths?: Record<string, { get?: { description?: string } }>;
     };
-    assert.ok((specGuidance.info?.["x-guidance"] ?? "").includes("newest 100 official texts"));
+    assert.ok((specGuidance.info?.["x-guidance"] ?? "").includes("newest 10 official texts"));
+    assert.ok(!(specGuidance.info?.["x-guidance"] ?? "").includes("newest 100 official texts"));
     assert.ok((specGuidance.info?.["x-guidance"] ?? "").includes("whole current table"));
     assert.ok((specGuidance.info?.["x-guidance"] ?? "").toLowerCase().includes("free index/search"));
     assert.ok((specGuidance.info?.["x-guidance"] ?? "").includes("$0.02"));
@@ -538,7 +541,8 @@ async function main(): Promise<void> {
         body: JSON.stringify({ jsonrpc: "2.0", id: 1, method: "initialize", params: {} }),
       })
     ).json()) as { result?: { instructions?: string } };
-    assert.ok((mcpInit.result?.instructions ?? "").includes("newest 100 official texts"));
+    assert.ok((mcpInit.result?.instructions ?? "").includes("newest 10 official texts"));
+    assert.ok(!(mcpInit.result?.instructions ?? "").includes("newest 100 official texts"));
     assert.ok((mcpInit.result?.instructions ?? "").includes("$0.02"));
     assert.ok((mcpInit.result?.instructions ?? "").includes("$0.05"));
     assert.ok(!(mcpInit.result?.instructions ?? "").toLowerCase().includes("entire current cache"));
@@ -550,7 +554,8 @@ async function main(): Promise<void> {
       llmsTxt?: string;
       note?: string;
     };
-    assert.ok((shop.note ?? "").includes("newest 100 official texts"));
+    assert.ok((shop.note ?? "").includes("newest 10 official texts"));
+    assert.ok(!(shop.note ?? "").includes("newest 100 official texts"));
     assert.ok((shop.note ?? "").toLowerCase().includes("free index/search"));
     assert.ok((shop.note ?? "").includes("$0.02"));
     assert.ok((shop.note ?? "").includes("$0.05"));
@@ -4357,7 +4362,8 @@ async function main(): Promise<void> {
       assert.equal(body402.resource, GMP_PATH);
       assert.equal(body402.accepts[0]?.maxAmountRequired, GMP_AMOUNT_ATOMIC, "unpaid /gmp stays $0.05 (50000 atomic)");
       assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
-      assert.ok((body402.accepts[0]?.description ?? "").includes("newest 100 official texts"));
+      assert.ok((body402.accepts[0]?.description ?? "").includes("newest 10 official texts"));
+      assert.ok(!(body402.accepts[0]?.description ?? "").includes("newest 100 official texts"));
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === GMP_PATH), true);
@@ -4399,7 +4405,8 @@ async function main(): Promise<void> {
 
       const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(llmsBody.includes("GET /gmp"));
-      assert.ok(llmsBody.includes("Newest 100 official texts"));
+      assert.ok(llmsBody.includes("Newest 10 official texts"));
+      assert.ok(!llmsBody.includes("Newest 100 official texts"));
       assert.ok(!llmsBody.includes("WASDE"));
       assert.ok(!llmsBody.includes("TCPA"));
 
@@ -4437,7 +4444,7 @@ async function main(): Promise<void> {
       assert.equal(paidBody.records?.[0]?.type, "gmp");
       assert.equal(paidBody.records?.[0]?.firm, "Apotex Inc");
       assert.equal(paidBody.records?.[0]?.date, "2026-04-13");
-      assert.equal((paidBody as { paidWindow?: number }).paidWindow, 100);
+      assert.equal((paidBody as { paidWindow?: number }).paidWindow, 10);
       assert.equal((paidBody as { catalogCount?: number }).catalogCount, 1);
       assert.equal(isPublicBazaarSku("gmp"), true);
       const persistReqs = facilitatorPaymentRequirements("https://ticks.bnm.farm/gmp", "gmp");
@@ -4506,7 +4513,8 @@ async function main(): Promise<void> {
         note?: string;
       };
       assert.equal(manifest.cardCount, 120, "free /gmp/manifest.json stays the full catalog");
-      assert.ok((manifest.note ?? "").includes("newest 100 official texts"));
+      assert.ok((manifest.note ?? "").includes("newest 10 official texts"));
+      assert.ok(!(manifest.note ?? "").includes("newest 100 official texts"));
       assert.ok((manifest.note ?? "").toLowerCase().includes("free index/search"));
       assert.ok((manifest.note ?? "").includes("?id= URL ($0.02)"));
       assert.ok((manifest.note ?? "").includes("$0.05"));
@@ -4531,13 +4539,13 @@ async function main(): Promise<void> {
         nextBefore?: string | null;
         prevBefore?: string | null;
       };
-      assert.equal(paidBody.paidWindow, 100);
+      assert.equal(paidBody.paidWindow, 10);
       assert.equal(paidBody.catalogCount, 120);
-      assert.equal(paidBody.recordCount, 100);
-      assert.equal(paidBody.cards.length, 100);
-      assert.equal(paidBody.records.length, 100);
+      assert.equal(paidBody.recordCount, 10);
+      assert.equal(paidBody.cards.length, 10);
+      assert.equal(paidBody.records.length, 10);
       assert.deepEqual(paidBody.ids, paidBody.records.map((r) => r.id));
-      assert.equal(paidBody.ids?.length, 100);
+      assert.equal(paidBody.ids?.length, 10);
       assert.equal(paidBody.prevBefore, null);
       assert.ok(paidBody.cards.every((row) => String(row.body ?? "").length > 0));
       assert.equal(paidBody.page, 1);
@@ -4557,7 +4565,7 @@ async function main(): Promise<void> {
       };
       const firm1 = (found.cards ?? []).find((row) => row.firm === "Firm 1");
       assert.ok(firm1, "free ?q= finds Firm 1");
-      assert.equal(firm1?.page, 2);
+      assert.equal(firm1?.page, 12);
 
       const olderUnpaid = await fetch(`${base}${GMP_PATH}?before=${encodeURIComponent(paidBody.nextBefore ?? "")}`);
       assert.equal(olderUnpaid.status, 402, "older page is the same door, another $0.05");
@@ -4581,9 +4589,9 @@ async function main(): Promise<void> {
       };
       assert.equal(olderBody.page, 2);
       assert.equal(olderBody.catalogCount, 120);
-      assert.equal(olderBody.recordCount, 20);
-      assert.equal(olderBody.cards.length, 20);
-      assert.equal(olderBody.nextBefore, null);
+      assert.equal(olderBody.recordCount, 10);
+      assert.equal(olderBody.cards.length, 10);
+      assert.ok(olderBody.nextBefore);
       assert.deepEqual(olderBody.ids, (olderBody.records ?? []).map((r) => r.id));
       assert.ok(olderBody.prevBefore === null || typeof olderBody.prevBefore === "string");
 

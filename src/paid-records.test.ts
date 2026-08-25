@@ -1045,12 +1045,14 @@ async function main(): Promise<void> {
   assert.equal(paidBodyWindow(undefined, { PAID_BODY_WINDOW: "0" }), DEFAULT_PAID_BODY_WINDOW);
   assert.equal(paidBodyWindow(undefined, { PAID_BODY_WINDOW: "25" }), 25);
   assert.equal(paidBodyWindow(3), 3);
+  assert.equal(newestOfficialTextsCopy(), "newest 10 official texts");
   assert.equal(newestOfficialTextsCopy(100), "newest 100 official texts");
-  assert.ok(olderChunkCopy(100).includes("?before="));
+  assert.ok(olderChunkCopy(10).includes("?before="));
   assert.equal(
     paidBodyCatalogNote("/gmp", "Full catalog: count + id + firm + date + url"),
-    "Full catalog: count + id + firm + date + url. Free index/search (?q=, optional before/date) stays free and includes id, the ?id= URL ($0.02), and the page cursor ($0.05). GET /gmp?id= is one official text GET ?id= ($0.02). Plain paid GET /gmp is the newest 100 official texts; older chunk if they ask (?before=<id or date>, another $0.05).",
+    "Full catalog: count + id + firm + date + url. Free index/search (?q=, optional before/date) stays free and includes id, the ?id= URL ($0.02), and the page cursor ($0.05). GET /gmp?id= is one official text GET ?id= ($0.02). Plain paid GET /gmp is the newest 10 official texts; older chunk if they ask (?before=<id or date>, another $0.05).",
   );
+  assert.equal(DEFAULT_PAID_BODY_WINDOW, 10);
   assert.deepEqual(paidBodyOptsFromSearch("before=gmp-0100"), { before: "gmp-0100" });
   assert.deepEqual(paidBodyOptsFromSearch("page=2"), { page: 2 });
   assert.deepEqual(paidBodyOptsFromSearch("id=gmp-0001"), { id: "gmp-0001" });
@@ -1090,12 +1092,12 @@ async function main(): Promise<void> {
     cards: fatGmpCards,
   });
   assert.equal(fatGmp.catalogCount, 120, "empty-body rows are not official extracted bodies");
-  assert.equal(fatGmp.paidWindow, 100);
-  assert.equal(fatGmp.recordCount, 100);
-  assert.equal(fatGmp.cards.length, 100);
-  assert.equal(fatGmp.records.length, 100);
+  assert.equal(fatGmp.paidWindow, 10);
+  assert.equal(fatGmp.recordCount, 10);
+  assert.equal(fatGmp.cards.length, 10);
+  assert.equal(fatGmp.records.length, 10);
   assert.deepEqual(fatGmp.ids, fatGmp.records.map((r) => r.id));
-  assert.equal(fatGmp.ids.length, 100);
+  assert.equal(fatGmp.ids.length, 10);
   assert.ok(fatGmp.cards.every((row) => String(row.body ?? "").length > 0));
   assert.equal(fatGmp.records[0]?.id, fatGmp.cards[0]?.id);
   const windowedIds = new Set(fatGmp.records.map((r) => r.id));
@@ -1114,7 +1116,7 @@ async function main(): Promise<void> {
   assert.equal(sliced.catalogCount, 120);
   assert.equal(sliced.asOf, sliced.records[0]?.date);
   assert.equal(fatGmp.page, 1);
-  assert.equal(fatGmp.pageCount, 2);
+  assert.equal(fatGmp.pageCount, 12);
   assert.equal(fatGmp.before, null);
   assert.ok(fatGmp.nextBefore);
   const olderGmp = paidGmpBody(
@@ -1126,10 +1128,10 @@ async function main(): Promise<void> {
     { before: fatGmp.nextBefore ?? undefined },
   );
   assert.equal(olderGmp.page, 2);
-  assert.equal(olderGmp.recordCount, 20);
-  assert.equal(olderGmp.cards.length, 20);
+  assert.equal(olderGmp.recordCount, 10);
+  assert.equal(olderGmp.cards.length, 10);
   assert.equal(olderGmp.catalogCount, 120);
-  assert.equal(olderGmp.nextBefore, null);
+  assert.ok(olderGmp.nextBefore);
   const newestIds = new Set(fatGmp.records.map((r) => r.id));
   assert.ok(olderGmp.records.every((r) => !newestIds.has(r.id)), "older page does not repeat the newest chunk");
   const page2 = paidGmpBody(
@@ -1163,7 +1165,7 @@ async function main(): Promise<void> {
   const firm1 = (foundFirm.cards as { firm?: string; page?: number }[]).find((row) => row.firm === "Firm 1");
   assert.equal(foundFirm.matchCount, (foundFirm.cards as unknown[]).length);
   assert.ok(firm1);
-  assert.equal(firm1?.page, 2);
+  assert.equal(firm1?.page, 13);
   const byDate = decorateExtractedBodyManifest(
     { cards: fatGmpCards.map((c) => ({ id: c.id, firm: c.firm, inspectedOn: c.inspectedOn })) },
     { date: page2Index?.date?.slice(0, 7) ?? "2024-01" },
@@ -1192,6 +1194,17 @@ async function main(): Promise<void> {
   assert.equal(oneGmp.cards.length, 1);
   assert.equal(oneGmp.cards[0]?.id, "gmp-0001");
   assert.ok(String(oneGmp.cards[0]?.body ?? "").length > 0);
+  const smallGmp = paidGmpBody({
+    ok: true as const,
+    product: "hc-gmp-report-cards" as const,
+    cards: fatGmpCards.slice(0, 5),
+  });
+  assert.equal(smallGmp.catalogCount, 5);
+  assert.equal(smallGmp.recordCount, 5, "fewer than 10 collected records sells the whole current set");
+  assert.equal(smallGmp.paidWindow, 10);
+  assert.equal(smallGmp.pageCount, 1);
+  assert.equal(smallGmp.nextBefore, null);
+  assert.equal(smallGmp.cards.length, 5);
 
   const fatTicks = {
     ticks: Array.from({ length: 120 }, (_, i) => ({
@@ -1235,7 +1248,7 @@ async function main(): Promise<void> {
       sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13322026.pdf",
     })),
   });
-  assert.equal(fatNotices.recordCount, 120, "Mariners weekly edition is not a 100-notice slice");
+  assert.equal(fatNotices.recordCount, 120, "Mariners weekly edition is not a 10-notice slice");
   assert.equal(fatNotices.notices.length, 120);
 
   console.log("paid-records normalize tests ok");
