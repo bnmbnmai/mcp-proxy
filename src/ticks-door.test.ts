@@ -308,6 +308,7 @@ async function main(): Promise<void> {
     assert.ok(wk.openapi?.endsWith(OPENAPI_PATH));
     assert.ok(wk.llmsTxt?.endsWith(LLMS_PATH));
     assert.ok((wk.instructions ?? "").includes("twenty-nine paid"));
+    assert.ok((wk.instructions ?? "").includes("entire current cache"));
     assert.ok(!wk.resources.some((r) => r.includes("/gain")));
     assert.equal(cdpEnvStatus(), "CDP env not set");
 
@@ -348,6 +349,11 @@ async function main(): Promise<void> {
       assert.equal(op?.["x-payment-info"]?.protocols?.[0]?.x402?.network, NETWORK_V2);
       assert.equal(op?.["x-payment-info"]?.protocols?.[0]?.x402?.asset, USDC_BASE);
     }
+    const ticksOp = spec.paths[TICKS_PATH]?.get as { summary?: string; description?: string; responses?: Record<string, { description?: string }> } | undefined;
+    assert.ok((ticksOp?.summary ?? "").includes("entire cache on one GET"));
+    assert.ok((ticksOp?.description ?? "").includes("Entire current snapshot"));
+    assert.ok((ticksOp?.description ?? "").includes("ticks[] + history"));
+    assert.ok((ticksOp?.responses?.["402"]?.description ?? "").includes("entire current snapshot"));
     assert.equal(spec.paths[TICKS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[IMPORT_ALERTS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[MARINERS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
@@ -494,9 +500,13 @@ async function main(): Promise<void> {
     assert.ok(!llmsBody.includes("TCPA"));
     assert.ok(llmsBody.includes("GET /ticks — $0.05"));
     assert.ok(!llmsBody.includes("GET /ticks — $0.02"));
+    assert.ok(llmsBody.includes("entire cache on one GET"));
+    assert.ok(llmsBody.includes("Paid JSON is ticks[] + history"));
+    assert.ok(llmsBody.includes("Paid JSON is letters[].body"));
+    assert.ok(llmsBody.includes("Paid JSON is cards[].body"));
 
     const shop = (await (await fetch(`${base}/`)).json()) as {
-      products: { path: string; priceUsdc?: string }[];
+      products: { path: string; priceUsdc?: string; description?: string; count?: number; firms?: number }[];
       openapi?: string;
       wellKnown?: string;
       llmsTxt?: string;
@@ -533,6 +543,10 @@ async function main(): Promise<void> {
       CMA_CA98_PATH,
     ]);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.priceUsdc, "0.05");
+    for (const product of shop.products) {
+      assert.ok(product.description?.includes("Entire cache on one GET"), `${product.path} shop description must name the bag`);
+      assert.equal(typeof product.count, "number", `${product.path} shop card must include live count`);
+    }
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_MD_PATH));
@@ -566,6 +580,11 @@ async function main(): Promise<void> {
       assert.deepEqual(body.ticks, []);
       assert.deepEqual((body as { records?: unknown[] }).records, []);
       assert.equal((body as { recordCount?: number }).recordCount, 0);
+      const shop = (await (await fetch(`${base}/`)).json()) as {
+        products: { path: string; count?: number; description?: string }[];
+      };
+      assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.count, 0);
+      assert.ok(shop.products.find((p) => p.path === TICKS_PATH)?.description?.includes("Entire cache on one GET"));
     },
   );
 
@@ -4482,6 +4501,7 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.endsWith(BIS_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(CFTC_ORDERS_PATH)));
       assert.ok((wk.instructions ?? "").includes("thirty-two paid"));
+      assert.ok((wk.instructions ?? "").includes("entire current cache"));
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
         paths: Record<string, { get?: { "x-payment-info"?: { price?: { amount?: string } } } }>;
