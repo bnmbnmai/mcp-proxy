@@ -63,8 +63,8 @@ function resourcePath(raw: string): string | null {
   }
 }
 
-function defaultPriceUsdc(name: string): string {
-  return name === "ticks" ? "0.02" : "0.05";
+function defaultPriceUsdc(_name: string): string {
+  return "0.05";
 }
 
 function priceFromOpenApi(op: Record<string, unknown> | undefined): string | undefined {

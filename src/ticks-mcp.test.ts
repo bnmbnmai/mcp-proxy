@@ -112,8 +112,8 @@ async function main(): Promise<void> {
   assertNoForbiddenExtras(livePaidPaths(fromLive));
   assert.ok(!livePaidNames(fromLive).includes("fred"));
   assert.ok(!livePaidNames(fromLive).includes("wasde"));
-  assert.equal(fromLive[0]?.priceUsdc, "0.02");
-  assert.ok(fromLive.slice(1).every((sku) => sku.priceUsdc === "0.05"));
+  assert.equal(fromLive[0]?.priceUsdc, "0.05");
+  assert.ok(fromLive.every((sku) => sku.priceUsdc === "0.05"));
   assert.equal(mcpToolDescriptors(LIVE_ORIGIN, fromLive).length, 32);
   assert.equal(MCP_CONNECT, `npx -y mcp-remote ${LIVE_ORIGIN}${MCP_PATH}`);
 

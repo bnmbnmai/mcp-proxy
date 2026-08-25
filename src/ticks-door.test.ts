@@ -217,7 +217,7 @@ async function main(): Promise<void> {
     assert.equal(
       (body.accepts[0] as { maxAmountRequired?: string }).maxAmountRequired,
       TICKS_AMOUNT_ATOMIC,
-      "Idaho /ticks list price is $0.02 (20000 atomic)",
+      "Idaho /ticks list price is $0.05 (50000 atomic)",
     );
     assert.equal(
       (body.accepts[0] as { extra?: { name?: string } }).extra?.name,
@@ -348,7 +348,7 @@ async function main(): Promise<void> {
       assert.equal(op?.["x-payment-info"]?.protocols?.[0]?.x402?.network, NETWORK_V2);
       assert.equal(op?.["x-payment-info"]?.protocols?.[0]?.x402?.asset, USDC_BASE);
     }
-    assert.equal(spec.paths[TICKS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.02");
+    assert.equal(spec.paths[TICKS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[IMPORT_ALERTS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[MARINERS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[MARINERS_D11_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
@@ -492,9 +492,11 @@ async function main(): Promise<void> {
     assert.ok(!llmsBody.includes("WASDE"));
     assert.ok(llmsBody.includes(X402SCAN_SERVER_URL));
     assert.ok(!llmsBody.includes("TCPA"));
+    assert.ok(llmsBody.includes("GET /ticks — $0.05"));
+    assert.ok(!llmsBody.includes("GET /ticks — $0.02"));
 
     const shop = (await (await fetch(`${base}/`)).json()) as {
-      products: { path: string }[];
+      products: { path: string; priceUsdc?: string }[];
       openapi?: string;
       wellKnown?: string;
       llmsTxt?: string;
@@ -530,6 +532,7 @@ async function main(): Promise<void> {
       ICO_MPN_PATH,
       CMA_CA98_PATH,
     ]);
+    assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.priceUsdc, "0.05");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_PATH));
     assert.ok(!shop.products.some((p) => p.path === GMP_MD_PATH));
@@ -4703,7 +4706,7 @@ async function main(): Promise<void> {
   assert.deepEqual(
     cdpFacilitatorBodyProblems(wellFormed),
     [],
-    "later $0.02 CDP settle body must match facilitator OpenAPI",
+    "later /ticks CDP settle body must match facilitator OpenAPI",
   );
   assert.equal(wellFormed.x402Version, 2);
   const wellPayload = wellFormed.paymentPayload as {
@@ -4720,7 +4723,7 @@ async function main(): Promise<void> {
   assert.equal(wellPayload.payload?.authorization?.value, TICKS_AMOUNT_ATOMIC);
   const wellReqs = wellFormed.paymentRequirements as { amount?: string; extra?: { name?: string } };
   assert.equal(wellReqs.amount, TICKS_AMOUNT_ATOMIC);
-  assert.equal(wellReqs.extra?.name, "USD Coin", "do not change the $0.02 /ticks price or EIP-712 name");
+  assert.equal(wellReqs.extra?.name, "USD Coin", "do not change the /ticks EIP-712 name");
 
   const hybrid400 = {
     x402Version: 1,

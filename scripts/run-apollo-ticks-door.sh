@@ -36,7 +36,7 @@ echo "SUPERFUND_RODS_DIR=${SUPERFUND_RODS_DIR:-$HOME/projects/mcp-proxy/data/sup
 echo "ICO_MPN_DIR=${ICO_MPN_DIR:-$HOME/projects/mcp-proxy/data/ico-mpn}"
 echo "CMA_CA98_DIR=${CMA_CA98_DIR:-$HOME/projects/mcp-proxy/data/cma-ca98}"
 echo "BIND_HOST=$BIND_HOST PORT=$PORT"
-echo "unpaid /ticks (\$0.02): curl -i http://<lan-ip>:$PORT/ticks"
+echo "unpaid /ticks (\$0.05): curl -i http://<lan-ip>:$PORT/ticks"
 echo "unpaid /import-alerts (\$0.05): curl -i http://<lan-ip>:$PORT/import-alerts"
 echo "unpaid /mariners (\$0.05): curl -i http://<lan-ip>:$PORT/mariners"
 echo "unpaid /mariners-d11 (\$0.05): curl -i http://<lan-ip>:$PORT/mariners-d11"
