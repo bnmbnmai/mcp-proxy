@@ -8,6 +8,7 @@ import {
   ATTRIBUTION,
   CARD_FIELDS,
   LICENSE,
+  FIFRA_DOCKET_TABLE_URL,
   LISTING_URL,
   SEED_LISTINGS,
   buildFifraOrdersManifest,
@@ -16,10 +17,14 @@ import {
   isPeopleRow,
   isRealFifraOrderBody,
   officialFifraPdfUrl,
+  parseFifraDocketPageHtml,
+  parseFifraDocketTableHtml,
+  parseFifraFilingPageHtml,
   parseFifraOrderText,
   parseListingHtml,
   parseListingRows,
   pdfIdFromUrl,
+  walkOfficialFifraDockets,
   type FifraListingRow,
 } from "./fifra-orders.js";
 
@@ -59,6 +64,45 @@ async function main(): Promise<void> {
   assert.ok(htmlListed.some((r) => r.id === "FIFRA-05-2026-0015"));
   assert.ok(htmlListed.some((r) => r.id === "FIFRA-09-2026-0020"));
   assert.ok(!htmlListed.some((r) => r.id === "FIFRA-05-2026-0099"));
+
+  assert.ok(FIFRA_DOCKET_TABLE_URL.includes("RestrictToCategory=FIFRA"));
+  const table = parseFifraDocketTableHtml(readFx("docket-table-excerpt.html"));
+  assert.ok(table.rows.length >= 3, "official FIFRA statute table lists docket pages");
+  assert.ok(table.rows.every((r) => r.href.includes("yosemite.epa.gov")));
+  assert.ok(table.nextUrl?.includes("Start=100"));
+  const kazPage = parseFifraDocketPageHtml(readFx("docket-kaz-excerpt.html"));
+  assert.equal(kazPage.docket, "FIFRA-04-2026-3007(b)");
+  assert.match(kazPage.institution, /Kaz USA/i);
+  assert.ok(kazPage.filingHref?.includes("7197164645C18DD285258E5E006861A8"));
+  assert.match(kazPage.title, /Consent Agreement/i);
+  const kazPdf = parseFifraFilingPageHtml(readFx("filing-kaz-excerpt.html"));
+  assert.ok(kazPdf);
+  assert.ok(officialFifraPdfUrl(kazPdf));
+  assert.match(kazPdf ?? "", /7197164645C18DD285258E5E006861A8/);
+  const refusal = parseFifraDocketPageHtml(readFx("docket-refusal-excerpt.html"));
+  assert.equal(refusal.filingHref, null, "Notice of Refusal is not an order/consent PDF");
+  const peoplePage = parseFifraDocketPageHtml(readFx("docket-people-excerpt.html"));
+  assert.equal(isPeopleRow({ institution: peoplePage.institution, docket: peoplePage.docket ?? "" }), true);
+
+  const walked = await walkOfficialFifraDockets({
+    pauseMs: 0,
+    maxTablePages: 1,
+    maxDockets: 3,
+    fetchText: async (url: string) => {
+      if (url.includes("RestrictToCategory=FIFRA") && !url.includes("OpenDocument")) {
+        return readFx("docket-table-excerpt.html");
+      }
+      if (url.includes("6a419feb42364d1785258e5e006861dd")) return readFx("docket-kaz-excerpt.html");
+      if (url.includes("7197164645C18DD285258E5E006861A8?OpenDocument")) return readFx("filing-kaz-excerpt.html");
+      if (url.includes("84f1f40153d54d5685258e50003c781a")) return readFx("docket-kaz-excerpt.html");
+      if (url.includes("1c9a6e12eeb10bd085258e4f0068811e")) return readFx("docket-refusal-excerpt.html");
+      if (url.includes("$File")) return readFx("filing-kaz-excerpt.html");
+      return readFx("docket-refusal-excerpt.html");
+    },
+  });
+  assert.ok(walked.listed.some((r) => r.id === "FIFRA-04-2026-3007(b)"));
+  assert.ok(walked.listed.every((r) => officialFifraPdfUrl(r.sourceUrl)));
+  assert.ok(walked.listedCount >= 3);
 
   const people = rows.find((r) => (r.docket ?? "") === "FIFRA-05-2026-0099");
   assert.ok(people);

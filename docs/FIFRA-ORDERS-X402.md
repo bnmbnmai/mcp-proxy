@@ -6,6 +6,8 @@ Always listed on well-known / OpenAPI / llms.txt / shop catalog. Unpaid `GET /fi
 
 v1 seeds **5** official institution Consent Agreement and Final Order PDFs. Required seed is Travel Caddy, Inc. dba Travelon (`FIFRA-05-2026-0015`). Family: Crown Chemical, Inc. (`FIFRA-05-2026-0001`), Parasol Medical, LLC (`FIFRA-05-2026-0003`), Garden Grove Superstore Inc. (`FIFRA-09-2026-0020`), Nutrien Ag Solutions, Inc. (`FIFRA-10-2026-0080`). Skip people.
 
+Leftover grow walks official **Dockets by Statute → FIFRA** HTML, then each docket page, then the CAFO/ESA filing page, for `yosemite.epa.gov` `$File` PDFs. Does not wrap a free JSON index. Does not sell docket HTML. Notice of Refusal stays out. Same bag: free index + `?q=`, `?id=` $0.02, newest 10 $0.05.
+
 ## Paths
 
 | Path | Auth | Price |
@@ -18,6 +20,7 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 ## Source of truth
 
 - Listing / search (index only, not the product): https://yosemite.epa.gov/oa/rhc/epaadmin.nsf
+- Official FIFRA docket table: https://yosemite.epa.gov/oa/rhc/epaadmin.nsf/Dockets+by+Statute?OpenView&RestrictToCategory=FIFRA
 - Official PDFs: `https://yosemite.epa.gov/OA/RHC/EPAAdmin.nsf/Filings/{UNID}/$File/{file}.pdf`
 - Required seed: Travel Caddy, Inc. dba Travelon — Docket FIFRA-05-2026-0015 — filed 2026-07-29 — https://yosemite.epa.gov/OA/RHC/EPAAdmin.nsf/Filings/F4CB3764E5AB61EA85258E43006880DC/$File/FIFRA-05-2026-0015_CAFO_TravelCaddyIncdbaTravelon_FranklinParkIllinois_14PGS.pdf
 - License: **17 USC 105**. Attribute EPA.
@@ -28,7 +31,7 @@ Alongside those keys the paid JSON adds `records[]` (`id`, `date`, `firm`, `url`
 
 Free `GET /fifra-orders/manifest.json` is institution / docket / date / sourceUrl only. Needles such as `11333 Addison Avenue`, `Style Numbers 23537, 43541`, and `Travel Caddy, Inc. doing business as Travelon` stay out of unpaid responses.
 
-`data/fifra-orders/` is gitignored. Order bodies get lost on a dead VM — do not harvest the whole catalog here. Live-apply on apollo stays at the 5 official seeds.
+`data/fifra-orders/` is gitignored. Order bodies get lost on a dead VM — do not harvest the whole catalog here. Live leftover apply walks the official FIFRA docket table past the 5 seeds.
 
 ## Env
 
@@ -37,19 +40,21 @@ Free `GET /fifra-orders/manifest.json` is institution / docket / date / sourceUr
 | `FIFRA_ORDERS_DIR` | `$HOME/projects/mcp-proxy/data/fifra-orders` | Snapshot cache (`snapshot.json` + downloaded PDFs) |
 | `FIFRA_ORDERS_LIMIT` | `5` | Target **additional** real extractable bodies this run. Cached bodies are reused and do **not** count. `0` = keep walking |
 | `FIFRA_ORDERS_MAX_FETCH` | `8` | Max official PDF downloads per run. Already-on-disk PDFs do not count. `0` = no cap |
+| `FIFRA_ORDERS_MAX_TABLE_PAGES` | `3` | Official FIFRA docket-table pages to walk (~100 rows each) |
+| `FIFRA_ORDERS_MAX_DOCKETS` | `100` | Max docket HTML pages to open for CAFO/ESA `$File` links |
 | `FIFRA_ORDERS_JSON_DIR` / `FIFRA_ORDERS_LISTING_DIR` | unset | Optional already-fetched `listing-excerpt.json` / `listing-excerpt.html` + `{docket}.txt` |
 | `FIFRA_ORDERS_PDFTOTEXT` | `pdftotext` | Poppler extractor |
 
 Do not set `X402_SKIP_SETTLE` on the standing public unit. Family / basic-auth stay off `ticks.bnm.farm`.
 
-## Apollo collect (5-seed only)
+## Apollo leftover collect
 
 ```bash
 sudo apt-get install -y poppler-utils
 cd ~/projects/mcp-proxy
 npm run build
 export FIFRA_ORDERS_DIR=$HOME/projects/mcp-proxy/data/fifra-orders
-FIFRA_ORDERS_LIMIT=5 FIFRA_ORDERS_MAX_FETCH=8 npm run collect:fifra-orders
+FIFRA_ORDERS_LIMIT=20 FIFRA_ORDERS_MAX_FETCH=28 FIFRA_ORDERS_MAX_DOCKETS=100 npm run collect:fifra-orders
 ```
 
 Yosemite is slow. Prefer fixture/local PDFs when a later collect would run into the 2:00am Imagine window.
