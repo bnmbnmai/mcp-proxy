@@ -113,6 +113,7 @@ export const SUPERFUND_ROD_TYPE = "superfund-rod";
 export const PCAC_TYPE = "pcac";
 export const AWA_TYPE = "awa";
 export const SWISSPAR_TYPE = "swisspar";
+export const EMA_REFERRALS_TYPE = "ema-referrals";
 export const CFPB_ORDER_TYPE = "cfpb-order";
 export const OFAC_ORDER_TYPE = "ofac-order";
 export const FRB_ORDER_TYPE = "frb-order";
@@ -148,6 +149,8 @@ export const PCAC_SOURCE =
 export const AWA_SOURCE = "https://www.aphis.usda.gov/awa/public-search";
 export const SWISSPAR_SOURCE =
   "https://www.swissmedic.ch/swissmedic/en/home/humanarzneimittel/authorisations/swisspar.html";
+export const EMA_REFERRALS_SOURCE =
+  "https://www.ema.europa.eu/en/documents/report/referrals-output-json-report_en.json";
 export const CFPB_ORDER_SOURCE = "https://www.consumerfinance.gov/enforcement/actions/";
 export const OFAC_ORDER_SOURCE = "https://ofac.treasury.gov/civil-penalties-and-enforcement-information";
 export const FRB_ORDER_SOURCE = "https://www.federalreserve.gov/supervisionreg/enforcementactions.htm";
@@ -719,6 +722,10 @@ type CardPayload = { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sou
 
 export function paidCmaCa98Body<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
   return paidCardBody(payload, CMA_CA98_TYPE, CMA_CA98_SOURCE, opts);
+}
+
+export function paidEmaReferralsBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, EMA_REFERRALS_TYPE, EMA_REFERRALS_SOURCE, opts);
 }
 
 export function paidIcoMpnBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
