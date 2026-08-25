@@ -224,9 +224,17 @@ async function main(): Promise<void> {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ jsonrpc: "2.0", id: 2, method: "tools/list" }),
       });
-      const listBody = (await list.json()) as { result: { tools: { name: string }[] } };
+      const listBody = (await list.json()) as { result: { tools: { name: string; description?: string }[] } };
       assert.deepEqual(listBody.result.tools.map((t) => t.name), livePaidNames(fromLocal));
       assert.ok(listBody.result.tools.some((t) => t.name === "cma-ca98"));
+      const ticksTool = listBody.result.tools.find((t) => t.name === "ticks");
+      const lettersTool = listBody.result.tools.find((t) => t.name === "warning-letters");
+      const cardsTool = listBody.result.tools.find((t) => t.name === "cma-ca98");
+      assert.ok((ticksTool?.description ?? "").includes("ticks[] + history"));
+      assert.ok((ticksTool?.description ?? "").includes("Entire cache on one GET"));
+      assert.ok((lettersTool?.description ?? "").includes("letters[].body"));
+      assert.ok((cardsTool?.description ?? "").includes("cards[].body"));
+      assert.ok(!listBody.result.tools.some((t) => (t.description ?? "").includes("31 paid")));
 
       const unpaid = await fetch(`${base}${MCP_PATH}`, {
         method: "POST",
