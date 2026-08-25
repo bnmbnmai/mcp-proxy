@@ -21,6 +21,8 @@ export const PRODUCT_ID = "bis-institution-order-bodies";
 export const PRODUCT_NAME = "BIS institution charging-letter / order text";
 
 export const LISTING_URL = "https://www.bis.gov/enforcement/charging-letters";
+/** Official case table with per-order PDFs. /charging-letters is a press teaser. */
+export const EXPORT_VIOLATIONS_URL = "https://www.bis.gov/enforcement/export-violations";
 export const PDF_HOST = "www.bis.gov";
 export const PDF_ORIGIN = "https://www.bis.gov";
 export const DOCKET_RE = /\b(E\d{4})\b/i;
@@ -289,6 +291,8 @@ export function normalizeDocket(raw: string | null | undefined): string | null {
 
 export function isPeopleRow(row: BisListingRow): boolean {
   if ((row.individual ?? "").trim()) return true;
+  const blob = `${row.institution ?? ""} ${row.title ?? ""} ${row.type ?? ""} ${row.sourceUrl ?? ""}`;
+  if (/11\s*\(?h\)?|11-h/i.test(blob)) return true;
   const name = (row.institution ?? "").trim();
   if (!name) return true;
   if (ENTITY_RE.test(name)) return false;
@@ -303,6 +307,7 @@ export function isInstitutionOrderRow(row: BisListingRow): boolean {
   const source = officialBisPdfUrl(row.sourceUrl ?? row.pdfId ?? "");
   if (!source) return false;
   const kind = `${row.title ?? ""} ${row.type ?? ""} ${row.sourceUrl ?? ""}`;
+  if (/\btdo\b|temporary denial|year-review|qualityguidelines|bis-sorn/i.test(kind)) return false;
   if (kind.trim() && !ORDER_KIND_RE.test(kind) && !PDF_PATH_RE.test(kind) && !DOCKET_RE.test(kind)) {
     return false;
   }
@@ -652,9 +657,9 @@ async function loadOfficialListings(dir: string): Promise<{ listed: BisOrderList
     return { listed, listedCount: listed.length };
   }
   try {
-    const listed = parseListingHtml(await fetchBisText(LISTING_URL));
+    const listed = parseListingHtml(await fetchBisText(EXPORT_VIOLATIONS_URL));
     const merged = mergeOfficialListings(listed, SEED_LISTINGS);
-    if (merged.length > 0) return { listed, listedCount: merged.length };
+    if (merged.length > 0) return { listed: merged, listedCount: merged.length };
   } catch {
     /* official listing missed; keep first-slice seeds */
   }

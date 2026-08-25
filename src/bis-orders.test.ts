@@ -9,6 +9,7 @@ import {
   CARD_FIELDS,
   LICENSE,
   LISTING_URL,
+  EXPORT_VIOLATIONS_URL,
   SEED_LISTINGS,
   buildBisOrdersManifest,
   collectBisOrders,
@@ -70,6 +71,7 @@ async function main(): Promise<void> {
   assert.equal(officialBisPdfUrl("https://www.fincen.gov/system/files/2026-07/UBS-Consent-Order.pdf"), null);
   assert.equal(officialBisPdfUrl("https://www.federalregister.gov/documents/2026/04/14/2026-99999/coastal-pva"), null);
   assert.ok(LISTING_URL.includes("bis.gov"));
+  assert.ok(EXPORT_VIOLATIONS_URL.includes("export-violations"), "live collect must walk the official case table");
   assert.equal(SEED_LISTINGS.length, 5);
   assert.ok(SEED_LISTINGS.some((r) => r.docket === "E3050"));
 
@@ -77,6 +79,16 @@ async function main(): Promise<void> {
   assert.ok(htmlListed.some((r) => r.id === "E3050"));
   assert.ok(htmlListed.some((r) => r.id === "E2994"));
   assert.ok(!htmlListed.some((r) => r.id === "E2946"));
+
+  const exportListed = parseListingHtml(readFx("export-violations-excerpt.html"));
+  assert.ok(exportListed.some((r) => r.id === "E3050"));
+  assert.ok(exportListed.some((r) => r.id === "E3054" && /Container Manufacturing/i.test(r.institution)));
+  assert.equal(
+    exportListed.find((r) => r.id === "E3054")?.sourceUrl,
+    "https://www.bis.gov/media/documents/container-manufacturing-ltd-8-24-2026.pdf",
+  );
+  assert.ok(!exportListed.some((r) => r.id === "E2947"), "11(h) people stay out");
+  assert.ok(!exportListed.some((r) => /aviastar/i.test(r.sourceUrl)), "TDO renewals stay out");
 
   const people = rows.find((r) => (r.docket ?? "") === "E2946");
   assert.ok(people);
