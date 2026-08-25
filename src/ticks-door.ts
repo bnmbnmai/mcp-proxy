@@ -309,8 +309,14 @@ import {
   paidTtbOicBody,
   paidUntitledLettersBody,
   paidWarningLettersBody,
+  decorateExtractedBodyManifest,
+  isExtractedBodySku,
   newestOfficialTextsCopy,
+  olderChunkCopy,
+  paidBodyOptsFromSearch,
+  paidBodyQueryPath,
   paidBodyWindow,
+  type PaidBodyOpts,
 } from "./paid-records.js";
 import { mergeAmsNationalTicks } from "./ticks-ams.js";
 import {
@@ -891,7 +897,7 @@ function usdcDisplayFromAtomic(atomic: string | null | undefined): string | null
 }
 
 const PAID_BODY_N = paidBodyWindow();
-const PAID_WINDOW_COPY = `Paid GET returns the ${newestOfficialTextsCopy(PAID_BODY_N)} plus records[] / asOf for those ${PAID_BODY_N}.`;
+const PAID_WINDOW_COPY = `Newest chunk on a plain GET (${newestOfficialTextsCopy(PAID_BODY_N)}); ${olderChunkCopy(PAID_BODY_N)}.`;
 
 const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> = {
   ticks: {
@@ -1981,7 +1987,7 @@ export function bazaarExtension(sku: DoorSku): Record<string, unknown> {
       input: {
         type: "http",
         method: "GET",
-        queryParams: {},
+        queryParams: isExtractedBodySku(sku) ? { before: "", page: "" } : {},
       },
       output: {
         type: "json",
@@ -2909,6 +2915,20 @@ function withShopDiscovery(
   return { ...body, ...shopDiscoveryPointers(req, port) };
 }
 
+function sendExtractedManifest(
+  req: IncomingMessage,
+  res: ServerResponse,
+  port: number,
+  url: URL,
+  body: Record<string, unknown>,
+): void {
+  sendJson(
+    res,
+    200,
+    withShopDiscovery(decorateExtractedBodyManifest(body, { q: url.searchParams.get("q") }), req, port),
+  );
+}
+
 export function llmsTxt(): string {
   const listed483 = form483IsPublic();
   const listedGmp = gmpIsPublic();
@@ -2921,38 +2941,38 @@ export function llmsTxt(): string {
     "- GET /mariners-d11 — $0.05 — USCG D11 / Southwest Local Notice to Mariners",
     "- GET /mariners-d7 — $0.05 — USCG D7 / Southeast Local Notice to Mariners",
     "- GET /mariners-d8 — $0.05 — USCG D8 / Gulf Local Notice to Mariners",
-    `- GET /warning-letters — $0.05 — FDA warning-letter bodies (firm, date, subject, full letter text). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /untitled-letters — $0.05 — FDA Untitled Letter text (CDER OPDP + CBER promo PDFs). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /awa — $0.05 — USDA APHIS AWA inspection-report observation text (official per-report PDFs). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /swisspar — $0.05 — Swissmedic first-authorisation SwissPAR evaluation text (official per-product PDFs). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /pcac — $0.05 — FDA PCAC 503A briefing-memo evaluation text (official per-substance PDFs). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /ftc-wl — $0.05 — FTC BCP warning-letter text (official per-letter PDFs). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /cfpb-orders — $0.05 — CFPB consent-order / administrative-order text (official per-order PDFs). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /occ-cd — $0.05 — OCC institution C&D / consent-order text (official per-order PDFs). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /fdic-orders — $0.05 — FDIC institution consent-order / C&D text (official per-order PDFs). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /frb-orders — $0.05 — FRB institution C&D / written-agreement / PCA text (official per-order PDFs). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /ncua-orders — $0.05 — NCUA institution consent C&D text (official per-order HTML). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /fincen-orders — $0.05 — FinCEN institution consent-order text (official per-order PDFs). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /ferc-orders — $0.05 — FERC institution stipulation-and-consent text (official cms.ferc.gov PDFs). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /ofac-orders — $0.05 — OFAC institution enforcement-release text (official ofac.treasury.gov PDFs). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /bis-orders — $0.05 — BIS institution charging-letter / order text (official bis.gov PDFs). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /cftc-orders — $0.05 — CFTC institution enforcement-order / settlement text (official cftc.gov PDFs). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /fifra-orders — $0.05 — EPA FIFRA institution order / consent text (official yosemite.epa.gov PDFs). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /denovo-orders — $0.05 — FDA De Novo classification-order text (official accessdata.fda.gov PDFs). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /ttb-oic — $0.05 — TTB Offer in Compromise text (official ttb.gov PDFs). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /air-letters — $0.05 — USDA APHIS AIR confirmation-letter text (official direct.aphis.usda.gov PDFs). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /superfund-rods — $0.05 — EPA Superfund Record of Decision text (official semspub.epa.gov PDFs). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /ico-mpn — $0.05 — ICO Monetary Penalty Notice text (official ico.org.uk PDFs). Newest ${PAID_BODY_N} official texts.`,
-    `- GET /cma-ca98 — $0.05 — UK CMA CA98 infringement-decision text (official assets.publishing.service.gov.uk PDFs). Newest ${PAID_BODY_N} official texts.`,
+    `- GET /warning-letters — $0.05 — FDA warning-letter bodies (firm, date, subject, full letter text). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /untitled-letters — $0.05 — FDA Untitled Letter text (CDER OPDP + CBER promo PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /awa — $0.05 — USDA APHIS AWA inspection-report observation text (official per-report PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /swisspar — $0.05 — Swissmedic first-authorisation SwissPAR evaluation text (official per-product PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /pcac — $0.05 — FDA PCAC 503A briefing-memo evaluation text (official per-substance PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /ftc-wl — $0.05 — FTC BCP warning-letter text (official per-letter PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /cfpb-orders — $0.05 — CFPB consent-order / administrative-order text (official per-order PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /occ-cd — $0.05 — OCC institution C&D / consent-order text (official per-order PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /fdic-orders — $0.05 — FDIC institution consent-order / C&D text (official per-order PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /frb-orders — $0.05 — FRB institution C&D / written-agreement / PCA text (official per-order PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /ncua-orders — $0.05 — NCUA institution consent C&D text (official per-order HTML). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /fincen-orders — $0.05 — FinCEN institution consent-order text (official per-order PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /ferc-orders — $0.05 — FERC institution stipulation-and-consent text (official cms.ferc.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /ofac-orders — $0.05 — OFAC institution enforcement-release text (official ofac.treasury.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /bis-orders — $0.05 — BIS institution charging-letter / order text (official bis.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /cftc-orders — $0.05 — CFTC institution enforcement-order / settlement text (official cftc.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /fifra-orders — $0.05 — EPA FIFRA institution order / consent text (official yosemite.epa.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /denovo-orders — $0.05 — FDA De Novo classification-order text (official accessdata.fda.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /ttb-oic — $0.05 — TTB Offer in Compromise text (official ttb.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /air-letters — $0.05 — USDA APHIS AIR confirmation-letter text (official direct.aphis.usda.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /superfund-rods — $0.05 — EPA Superfund Record of Decision text (official semspub.epa.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /ico-mpn — $0.05 — ICO Monetary Penalty Notice text (official ico.org.uk PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /cma-ca98 — $0.05 — UK CMA CA98 infringement-decision text (official assets.publishing.service.gov.uk PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
   ];
   if (listed483) {
-    paid.push(`- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs). Newest ${PAID_BODY_N} official texts.`);
+    paid.push(`- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`);
   }
   if (listedGmp) {
-    paid.push(`- GET /gmp — $0.05 — Health Canada Drug GMP report-card observation text + C.02 cites. Newest ${PAID_BODY_N} official texts.`);
+    paid.push(`- GET /gmp — $0.05 — Health Canada Drug GMP report-card observation text + C.02 cites. Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`);
   }
   if (listedGmpMd) {
-    paid.push(`- GET /gmp-md — $0.05 — Health Canada medical-device report-card observation text + MDR cites. Newest ${PAID_BODY_N} official texts.`);
+    paid.push(`- GET /gmp-md — $0.05 — Health Canada medical-device report-card observation text + MDR cites. Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`);
   }
   const free = [
     `- GET /openapi.json — OpenAPI 3.1 with x-payment-info for the ${paidCountWord()} paid doors`,
@@ -2965,38 +2985,38 @@ export function llmsTxt(): string {
     "- GET /mariners-d11/manifest.json — D11 LNM count + official PDF (not the notice body)",
     "- GET /mariners-d7/manifest.json — D7 LNM count + official PDF (not the notice body)",
     "- GET /mariners-d8/manifest.json — D8 LNM count + official PDF (not the notice body)",
-    "- GET /warning-letters/manifest.json — FDA letter count + firm/date/subject (not the letter body)",
-    "- GET /untitled-letters/manifest.json — FDA untitled count + id/firm/date/product (not the letter text)",
-    "- GET /awa/manifest.json — APHIS AWA count + id/firm/date/sourceUrl (not the observation text)",
-    "- GET /swisspar/manifest.json — SwissPAR count + name/date/MA/sourceUrl (not the evaluation text)",
-    "- GET /pcac/manifest.json — FDA PCAC count + substance/date/meeting/mediaId/sourceUrl (not the evaluation text)",
-    "- GET /ftc-wl/manifest.json — FTC BCP count + firm/date/subject/sourceUrl (not the letter body)",
-    "- GET /cfpb-orders/manifest.json — CFPB order count + firm/date/title/fileNo/sourceUrl (not the order body)",
-    "- GET /occ-cd/manifest.json — OCC C&D count + bank/docket/date/sourceUrl (not the order body)",
-    "- GET /fdic-orders/manifest.json — FDIC order count + bank/docket/date/sourceUrl (not the order body)",
-    "- GET /frb-orders/manifest.json — FRB order count + institution/docket/date/sourceUrl (not the order body)",
-    "- GET /ncua-orders/manifest.json — NCUA order count + credit union/docket/date/sourceUrl (not the order body)",
-    "- GET /fincen-orders/manifest.json — FinCEN order count + institution/docket/date/sourceUrl (not the order body)",
-    "- GET /ferc-orders/manifest.json — FERC order count + institution/docket/date/sourceUrl (not the order body)",
-    "- GET /ofac-orders/manifest.json — OFAC order count + institution/docket/date/sourceUrl (not the order body)",
-    "- GET /bis-orders/manifest.json — BIS order count + institution/docket/date/sourceUrl (not the order body)",
-    "- GET /cftc-orders/manifest.json — CFTC order count + institution/docket/date/sourceUrl (not the order body)",
-    "- GET /fifra-orders/manifest.json — EPA FIFRA order count + institution/docket/date/sourceUrl (not the order body)",
-    "- GET /denovo-orders/manifest.json — FDA De Novo order count + institution/docket/date/sourceUrl (not the order body)",
-    "- GET /ttb-oic/manifest.json — TTB OIC count + institution/docket/date/sourceUrl (not the order body)",
-    "- GET /air-letters/manifest.json — APHIS AIR letter count + institution/docket/date/sourceUrl (not the letter body)",
-    "- GET /superfund-rods/manifest.json — EPA Superfund ROD count + institution/docket/date/sourceUrl (not the ROD body)",
-    "- GET /ico-mpn/manifest.json — ICO MPN count + institution/docket/date/sourceUrl (not the MPN body)",
-    "- GET /cma-ca98/manifest.json — CMA CA98 count + institution/docket/date/sourceUrl (not the decision body)",
+    "- GET /warning-letters/manifest.json — FDA letter count + firm/date/subject (full catalog + page cursor; ?q= is free search; not the letter body)",
+    "- GET /untitled-letters/manifest.json — FDA untitled count + id/firm/date/product (full catalog + page cursor; ?q= is free search; not the letter text)",
+    "- GET /awa/manifest.json — APHIS AWA count + id/firm/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the observation text)",
+    "- GET /swisspar/manifest.json — SwissPAR count + name/date/MA/sourceUrl (full catalog + page cursor; ?q= is free search; not the evaluation text)",
+    "- GET /pcac/manifest.json — FDA PCAC count + substance/date/meeting/mediaId/sourceUrl (full catalog + page cursor; ?q= is free search; not the evaluation text)",
+    "- GET /ftc-wl/manifest.json — FTC BCP count + firm/date/subject/sourceUrl (full catalog + page cursor; ?q= is free search; not the letter body)",
+    "- GET /cfpb-orders/manifest.json — CFPB order count + firm/date/title/fileNo/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /occ-cd/manifest.json — OCC C&D count + bank/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /fdic-orders/manifest.json — FDIC order count + bank/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /frb-orders/manifest.json — FRB order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /ncua-orders/manifest.json — NCUA order count + credit union/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /fincen-orders/manifest.json — FinCEN order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /ferc-orders/manifest.json — FERC order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /ofac-orders/manifest.json — OFAC order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /bis-orders/manifest.json — BIS order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /cftc-orders/manifest.json — CFTC order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /fifra-orders/manifest.json — EPA FIFRA order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /denovo-orders/manifest.json — FDA De Novo order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /ttb-oic/manifest.json — TTB OIC count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /air-letters/manifest.json — APHIS AIR letter count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the letter body)",
+    "- GET /superfund-rods/manifest.json — EPA Superfund ROD count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the ROD body)",
+    "- GET /ico-mpn/manifest.json — ICO MPN count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the MPN body)",
+    "- GET /cma-ca98/manifest.json — CMA CA98 count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the decision body)",
   ];
   if (listed483) {
-    free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (not the observation body)");
+    free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (full catalog + page cursor; ?q= is free search; not the observation body)");
   }
   if (listedGmp) {
-    free.push("- GET /gmp/manifest.json — Health Canada GMP count + id/firm/date/rating (not the observation text)");
+    free.push("- GET /gmp/manifest.json — Health Canada GMP count + id/firm/date/rating (full catalog + page cursor; ?q= is free search; not the observation text)");
   }
   if (listedGmpMd) {
-    free.push("- GET /gmp-md/manifest.json — Health Canada MD count + id/firm/date/rating (not the report-card body text)");
+    free.push("- GET /gmp-md/manifest.json — Health Canada MD count + id/firm/date/rating (full catalog + page cursor; ?q= is free search; not the report-card body text)");
   }
   return [
     "# BNM Data Shop",
@@ -3072,13 +3092,32 @@ function paidOpenApiOp(opts: {
   example: Record<string, unknown>;
   outputSchema: Record<string, unknown>;
 }): Record<string, unknown> {
+  const olderPages = opts.description.includes("Newest chunk on a plain GET");
   return {
     operationId: opts.operationId,
     summary: opts.summary,
     description: opts.description,
     tags: ["paid"],
     security: [{ x402: [] }],
-    parameters: [],
+    parameters: olderPages
+      ? [
+          {
+            name: "before",
+            in: "query",
+            required: false,
+            schema: { type: "string" },
+            description:
+              "Official catalog id or YYYY-MM-DD from the free manifest. Next older chunk. Another $0.05. Omit for the newest chunk.",
+          },
+          {
+            name: "page",
+            in: "query",
+            required: false,
+            schema: { type: "integer", minimum: 1 },
+            description: "1-based page. Page 1 is the newest chunk. Ignored when before is set.",
+          },
+        ]
+      : [],
     "x-auth": { mode: "x402" },
     "x-payment-info": {
       protocols: [
@@ -4265,16 +4304,24 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   };
 }
 
+function paidOptsFromReq(req: IncomingMessage, sku: DoorSku): PaidBodyOpts | undefined {
+  if (!isExtractedBodySku(sku)) return undefined;
+  const url = new URL(req.url || "/", "http://127.0.0.1");
+  const opts = paidBodyOptsFromSearch(url.searchParams);
+  return opts.before || opts.page ? opts : {};
+}
+
 async function servePaid(
   req: IncomingMessage,
   res: ServerResponse,
   port: number,
   sku: DoorSku,
-  load: () => unknown | Promise<unknown>,
+  load: (opts?: PaidBodyOpts) => unknown | Promise<unknown>,
 ): Promise<void> {
   const copy = SKU_COPY[sku];
   const payment = paymentHeader(req);
-  const resource = resourceUrl(req, port, copy.resourcePath);
+  const opts = paidOptsFromReq(req, sku);
+  const resource = resourceUrl(req, port, paidBodyQueryPath(copy.resourcePath, opts));
   const body402 = paymentRequiredBody(resource, sku);
   const v2 = paymentRequiredV2(resource, sku);
   const paymentRequiredHeader = Buffer.from(JSON.stringify(v2), "utf-8").toString("base64");
@@ -4284,7 +4331,7 @@ async function servePaid(
     return;
   }
 
-  const serve = async () => sendJson(res, 200, await load());
+  const serve = async () => sendJson(res, 200, await load(opts));
 
   if (skipSettle()) {
     await serve();
@@ -4663,262 +4710,262 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === WARNING_LETTERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadWarningLettersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadWarningLettersManifest());
     return;
   }
 
   if (path === WARNING_LETTERS_PATH) {
-    await servePaid(req, res, port, "warning-letters", async () => paidWarningLettersBody(await loadWarningLetters()));
+    await servePaid(req, res, port, "warning-letters", async (opts) => paidWarningLettersBody(await loadWarningLetters(), opts));
     return;
   }
 
   if (path === UNTITLED_LETTERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadUntitledLettersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadUntitledLettersManifest());
     return;
   }
 
   if (path === UNTITLED_LETTERS_PATH) {
-    await servePaid(req, res, port, "untitled-letters", async () => paidUntitledLettersBody(await loadUntitledLetters()));
+    await servePaid(req, res, port, "untitled-letters", async (opts) => paidUntitledLettersBody(await loadUntitledLetters(), opts));
     return;
   }
 
   if (path === AWA_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadAwaManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadAwaManifest());
     return;
   }
 
   if (path === AWA_PATH) {
-    await servePaid(req, res, port, "awa", async () => paidAwaBody(await loadAwa()));
+    await servePaid(req, res, port, "awa", async (opts) => paidAwaBody(await loadAwa(), opts));
     return;
   }
 
   if (path === SWISSPAR_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadSwissparManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadSwissparManifest());
     return;
   }
 
   if (path === SWISSPAR_PATH) {
-    await servePaid(req, res, port, "swisspar", async () => paidSwissparBody(await loadSwisspar()));
+    await servePaid(req, res, port, "swisspar", async (opts) => paidSwissparBody(await loadSwisspar(), opts));
     return;
   }
 
   if (path === PCAC_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadPcacManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadPcacManifest());
     return;
   }
 
   if (path === PCAC_PATH) {
-    await servePaid(req, res, port, "pcac", async () => paidPcacBody(await loadPcac()));
+    await servePaid(req, res, port, "pcac", async (opts) => paidPcacBody(await loadPcac(), opts));
     return;
   }
 
   if (path === FTC_WL_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadFtcWlManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadFtcWlManifest());
     return;
   }
 
   if (path === FTC_WL_PATH) {
-    await servePaid(req, res, port, "ftc-wl", async () => paidFtcWlBody(await loadFtcWl()));
+    await servePaid(req, res, port, "ftc-wl", async (opts) => paidFtcWlBody(await loadFtcWl(), opts));
     return;
   }
 
   if (path === CFPB_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadCfpbOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadCfpbOrdersManifest());
     return;
   }
 
   if (path === CFPB_ORDERS_PATH) {
-    await servePaid(req, res, port, "cfpb-orders", async () => paidCfpbOrdersBody(await loadCfpbOrders()));
+    await servePaid(req, res, port, "cfpb-orders", async (opts) => paidCfpbOrdersBody(await loadCfpbOrders(), opts));
     return;
   }
 
   if (path === OCC_CD_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadOccCdManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadOccCdManifest());
     return;
   }
 
   if (path === OCC_CD_PATH) {
-    await servePaid(req, res, port, "occ-cd", async () => paidOccCdBody(await loadOccCd()));
+    await servePaid(req, res, port, "occ-cd", async (opts) => paidOccCdBody(await loadOccCd(), opts));
     return;
   }
 
   if (path === FDIC_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadFdicOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadFdicOrdersManifest());
     return;
   }
 
   if (path === FDIC_ORDERS_PATH) {
-    await servePaid(req, res, port, "fdic-orders", async () => paidFdicOrdersBody(await loadFdicOrders()));
+    await servePaid(req, res, port, "fdic-orders", async (opts) => paidFdicOrdersBody(await loadFdicOrders(), opts));
     return;
   }
 
   if (path === FRB_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadFrbOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadFrbOrdersManifest());
     return;
   }
 
   if (path === FRB_ORDERS_PATH) {
-    await servePaid(req, res, port, "frb-orders", async () => paidFrbOrdersBody(await loadFrbOrders()));
+    await servePaid(req, res, port, "frb-orders", async (opts) => paidFrbOrdersBody(await loadFrbOrders(), opts));
     return;
   }
 
   if (path === NCUA_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadNcuaOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadNcuaOrdersManifest());
     return;
   }
 
   if (path === NCUA_ORDERS_PATH) {
-    await servePaid(req, res, port, "ncua-orders", async () => paidNcuaOrdersBody(await loadNcuaOrders()));
+    await servePaid(req, res, port, "ncua-orders", async (opts) => paidNcuaOrdersBody(await loadNcuaOrders(), opts));
     return;
   }
 
   if (path === FINCEN_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadFincenOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadFincenOrdersManifest());
     return;
   }
 
   if (path === FINCEN_ORDERS_PATH) {
-    await servePaid(req, res, port, "fincen-orders", async () => paidFincenOrdersBody(await loadFincenOrders()));
+    await servePaid(req, res, port, "fincen-orders", async (opts) => paidFincenOrdersBody(await loadFincenOrders(), opts));
     return;
   }
 
   if (path === FERC_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadFercOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadFercOrdersManifest());
     return;
   }
 
   if (path === FERC_ORDERS_PATH) {
-    await servePaid(req, res, port, "ferc-orders", async () => paidFercOrdersBody(await loadFercOrders()));
+    await servePaid(req, res, port, "ferc-orders", async (opts) => paidFercOrdersBody(await loadFercOrders(), opts));
     return;
   }
 
   if (path === OFAC_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadOfacOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadOfacOrdersManifest());
     return;
   }
 
   if (path === OFAC_ORDERS_PATH) {
-    await servePaid(req, res, port, "ofac-orders", async () => paidOfacOrdersBody(await loadOfacOrders()));
+    await servePaid(req, res, port, "ofac-orders", async (opts) => paidOfacOrdersBody(await loadOfacOrders(), opts));
     return;
   }
 
   if (path === BIS_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadBisOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadBisOrdersManifest());
     return;
   }
 
   if (path === BIS_ORDERS_PATH) {
-    await servePaid(req, res, port, "bis-orders", async () => paidBisOrdersBody(await loadBisOrders()));
+    await servePaid(req, res, port, "bis-orders", async (opts) => paidBisOrdersBody(await loadBisOrders(), opts));
     return;
   }
 
   if (path === CFTC_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadCftcOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadCftcOrdersManifest());
     return;
   }
 
   if (path === CFTC_ORDERS_PATH) {
-    await servePaid(req, res, port, "cftc-orders", async () => paidCftcOrdersBody(await loadCftcOrders()));
+    await servePaid(req, res, port, "cftc-orders", async (opts) => paidCftcOrdersBody(await loadCftcOrders(), opts));
     return;
   }
 
   if (path === FIFRA_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadFifraOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadFifraOrdersManifest());
     return;
   }
 
   if (path === FIFRA_ORDERS_PATH) {
-    await servePaid(req, res, port, "fifra-orders", async () => paidFifraOrdersBody(await loadFifraOrders()));
+    await servePaid(req, res, port, "fifra-orders", async (opts) => paidFifraOrdersBody(await loadFifraOrders(), opts));
     return;
   }
 
   if (path === DENOVO_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadDenovoOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadDenovoOrdersManifest());
     return;
   }
 
   if (path === DENOVO_ORDERS_PATH) {
-    await servePaid(req, res, port, "denovo-orders", async () => paidDenovoOrdersBody(await loadDenovoOrders()));
+    await servePaid(req, res, port, "denovo-orders", async (opts) => paidDenovoOrdersBody(await loadDenovoOrders(), opts));
     return;
   }
 
   if (path === TTB_OIC_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadTtbOicManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadTtbOicManifest());
     return;
   }
 
   if (path === TTB_OIC_PATH) {
-    await servePaid(req, res, port, "ttb-oic", async () => paidTtbOicBody(await loadTtbOic()));
+    await servePaid(req, res, port, "ttb-oic", async (opts) => paidTtbOicBody(await loadTtbOic(), opts));
     return;
   }
 
   if (path === AIR_LETTERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadAirLettersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadAirLettersManifest());
     return;
   }
 
   if (path === AIR_LETTERS_PATH) {
-    await servePaid(req, res, port, "air-letters", async () => paidAirLettersBody(await loadAirLetters()));
+    await servePaid(req, res, port, "air-letters", async (opts) => paidAirLettersBody(await loadAirLetters(), opts));
     return;
   }
 
   if (path === SUPERFUND_RODS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadSuperfundRodsManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadSuperfundRodsManifest());
     return;
   }
 
   if (path === SUPERFUND_RODS_PATH) {
-    await servePaid(req, res, port, "superfund-rods", async () => paidSuperfundRodsBody(await loadSuperfundRods()));
+    await servePaid(req, res, port, "superfund-rods", async (opts) => paidSuperfundRodsBody(await loadSuperfundRods(), opts));
     return;
   }
 
   if (path === ICO_MPN_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadIcoMpnManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadIcoMpnManifest());
     return;
   }
 
   if (path === ICO_MPN_PATH) {
-    await servePaid(req, res, port, "ico-mpn", async () => paidIcoMpnBody(await loadIcoMpn()));
+    await servePaid(req, res, port, "ico-mpn", async (opts) => paidIcoMpnBody(await loadIcoMpn(), opts));
     return;
   }
 
   if (path === CMA_CA98_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadCmaCa98Manifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadCmaCa98Manifest());
     return;
   }
 
   if (path === CMA_CA98_PATH) {
-    await servePaid(req, res, port, "cma-ca98", async () => paidCmaCa98Body(await loadCmaCa98()));
+    await servePaid(req, res, port, "cma-ca98", async (opts) => paidCmaCa98Body(await loadCmaCa98(), opts));
     return;
   }
 
   if (path === FORM_483_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadForm483Manifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadForm483Manifest());
     return;
   }
 
   if (path === FORM_483_PATH) {
-    await servePaid(req, res, port, "form-483", async () => paidForm483Body(await loadForm483()));
+    await servePaid(req, res, port, "form-483", async (opts) => paidForm483Body(await loadForm483(), opts));
     return;
   }
 
   if (path === GMP_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadGmpManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadGmpManifest());
     return;
   }
 
   if (path === GMP_PATH) {
-    await servePaid(req, res, port, "gmp", async () => paidGmpBody(await loadGmp()));
+    await servePaid(req, res, port, "gmp", async (opts) => paidGmpBody(await loadGmp(), opts));
     return;
   }
 
   if (path === GMP_MD_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadGmpMdManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadGmpMdManifest());
     return;
   }
 
   if (path === GMP_MD_PATH) {
-    await servePaid(req, res, port, "gmp-md", async () => paidGmpMdBody(await loadGmpMd()));
+    await servePaid(req, res, port, "gmp-md", async (opts) => paidGmpMdBody(await loadGmpMd(), opts));
     return;
   }
 

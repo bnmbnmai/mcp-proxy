@@ -40,7 +40,9 @@ import {
   isoFromOfficialDate,
   isPlausibleDate,
   newestOfficialTextsCopy,
+  olderChunkCopy,
   paidBodyCatalogNote,
+  paidBodyOptsFromSearch,
   paidBodyWindow,
   normalizeCardRecords,
   normalizeForm483Records,
@@ -1041,10 +1043,13 @@ async function main(): Promise<void> {
   assert.equal(paidBodyWindow(undefined, { PAID_BODY_WINDOW: "25" }), 25);
   assert.equal(paidBodyWindow(3), 3);
   assert.equal(newestOfficialTextsCopy(100), "newest 100 official texts");
+  assert.ok(olderChunkCopy(100).includes("?before="));
   assert.equal(
     paidBodyCatalogNote("/gmp", "Full catalog: count + id + firm + date + url"),
-    "Full catalog: count + id + firm + date + url. Paid GET /gmp returns the newest 100 official texts plus records[] / asOf for those 100.",
+    "Full catalog: count + id + firm + date + url. Plain paid GET /gmp is the newest 100 official texts; older chunk if they ask (?before=<id or date>, another $0.05). Free ?q= search stays free.",
   );
+  assert.deepEqual(paidBodyOptsFromSearch("before=gmp-0100"), { before: "gmp-0100" });
+  assert.deepEqual(paidBodyOptsFromSearch("page=2"), { page: 2 });
   assert.equal(EXTRACTED_BODY_SKUS.includes("gmp"), true);
   assert.equal((EXTRACTED_BODY_SKUS as readonly string[]).includes("ticks"), false);
 
@@ -1100,6 +1105,34 @@ async function main(): Promise<void> {
   assert.equal(sliced.cards.length, 3);
   assert.equal(sliced.catalogCount, 120);
   assert.equal(sliced.asOf, sliced.records[0]?.date);
+  assert.equal(fatGmp.page, 1);
+  assert.equal(fatGmp.pageCount, 2);
+  assert.equal(fatGmp.before, null);
+  assert.ok(fatGmp.nextBefore);
+  const olderGmp = paidGmpBody(
+    {
+      ok: true as const,
+      product: "hc-gmp-report-cards" as const,
+      cards: fatGmpCards,
+    },
+    { before: fatGmp.nextBefore ?? undefined },
+  );
+  assert.equal(olderGmp.page, 2);
+  assert.equal(olderGmp.recordCount, 20);
+  assert.equal(olderGmp.cards.length, 20);
+  assert.equal(olderGmp.catalogCount, 120);
+  assert.equal(olderGmp.nextBefore, null);
+  const newestIds = new Set(fatGmp.records.map((r) => r.id));
+  assert.ok(olderGmp.records.every((r) => !newestIds.has(r.id)), "older page does not repeat the newest chunk");
+  const page2 = paidGmpBody(
+    {
+      ok: true as const,
+      product: "hc-gmp-report-cards" as const,
+      cards: fatGmpCards,
+    },
+    { page: 2 },
+  );
+  assert.deepEqual(page2.records.map((r) => r.id), olderGmp.records.map((r) => r.id));
 
   const fatTicks = {
     ticks: Array.from({ length: 120 }, (_, i) => ({
