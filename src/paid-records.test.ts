@@ -9,6 +9,7 @@ import {
   CFPB_ORDER_TYPE,
   CFTC_ORDER_TYPE,
   CMA_CA98_TYPE,
+  EMA_REFERRALS_TYPE,
   DENOVO_ORDER_TYPE,
   FDIC_ORDER_TYPE,
   FERC_ORDER_TYPE,
@@ -49,6 +50,7 @@ import {
   paidCfpbOrdersBody,
   paidCftcOrdersBody,
   paidCmaCa98Body,
+  paidEmaReferralsBody,
   paidDenovoOrdersBody,
   paidFdicOrdersBody,
   paidFercOrdersBody,
@@ -619,6 +621,31 @@ async function main(): Promise<void> {
   assert.equal(swissA.records[0]?.firm, "Novartis Pharma Schweiz AG", "SwissPAR holder is the official firm");
   assert.equal(swissA.source.includes("swisspar.html"), true);
   assert.ok(swissA.recordCount > 0);
+
+  const emaA = paidEmaReferralsBody({
+    ok: true as const,
+    product: "ema-referral-procedure-bodies" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-25T12:00:00.000Z",
+    asOf: "2026-08-13",
+    sources: {
+      index: "https://www.ema.europa.eu/en/documents/report/referrals-output-json-report_en.json",
+    },
+    cards: [
+      {
+        id: "tavneos",
+        name: "Tavneos",
+        date: "2026-08-13",
+        sourceUrl:
+          "https://www.ema.europa.eu/en/documents/referral/tavneos-article-20-procedure-assessment-report_en.pdf",
+        body: "European Medicines Agency\nArticle 20 referral\nCHMP assessment report\nTavneos",
+      },
+    ],
+  });
+  assert.equal(emaA.records[0]?.type, EMA_REFERRALS_TYPE);
+  assert.equal(emaA.records[0]?.firm, "Tavneos");
+  assert.equal(emaA.source.includes("referrals-output-json-report_en.json"), true);
+  assert.ok(emaA.recordCount > 0);
 
   const cfpbA = paidCfpbOrdersBody({
     ok: true as const,

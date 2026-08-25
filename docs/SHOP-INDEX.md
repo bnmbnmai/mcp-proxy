@@ -16,7 +16,7 @@ payTo `0xf59621FC406D266e18f314Ae18eF0a33b8401004` · Base (`eip155:8453`) · US
 
 Official public data caches (PDF/HTML sources), returned as JSON after x402. Unpaid GET on a paid path returns HTTP 402. No API key. No request body.
 
-**32 paid GETs.** Table doors (`/ticks`, `/import-alerts`): one `$0.05` (`50000` atomic) GET is the **entire current table**. Extracted-body doors have **two bags on the same URL**: `?id=` one official text is `$0.02` (`20000` atomic); default GET is the newest 10 for `$0.05` (whole current set if n<10) (`50000` atomic). Free index (`?q=`) names the **id to buy**. Catalog counts are records, not SKUs. Bag sizes below are live catalog counts.
+**33 paid GETs.** Table doors (`/ticks`, `/import-alerts`): one `$0.05` (`50000` atomic) GET is the **entire current table**. Extracted-body doors have **two bags on the same URL**: `?id=` one official text is `$0.02` (`20000` atomic); default GET is the newest 10 for `$0.05` (whole current set if n<10) (`50000` atomic). Free index (`?q=`) names the **id to buy**. Catalog counts are records, not SKUs. Bag sizes below are catalog counts after `/ema-referrals` is applied.
 
 ## Live paid GETs
 
@@ -53,6 +53,7 @@ Rows match the live well-known resource list. One-line copy plus catalog count i
 | `/superfund-rods` | EPA Superfund Record of Decision text. Find on free index (?q=); each row names the id to buy. GET ?id= one official text $0.02. Default GET is the newest 10 for $0.05 (whole current set if n<10); older pages another $0.05 on the same URL | `cards[].body` | 5 cards | $0.02 / $0.05 | [superfund-rods/manifest.json](https://ticks.bnm.farm/superfund-rods/manifest.json) |
 | `/ico-mpn` | ICO Monetary Penalty Notice text. Find on free index (?q=); each row names the id to buy. GET ?id= one official text $0.02. Default GET is the newest 10 for $0.05 (whole current set if n<10); older pages another $0.05 on the same URL | `cards[].body` | 20 cards | $0.02 / $0.05 | [ico-mpn/manifest.json](https://ticks.bnm.farm/ico-mpn/manifest.json) |
 | `/cma-ca98` | UK CMA CA98 infringement-decision text. Find on free index (?q=); each row names the id to buy. GET ?id= one official text $0.02. Default GET is the newest 10 for $0.05 (whole current set if n<10); older pages another $0.05 on the same URL | `cards[].body` | 9 cards | $0.02 / $0.05 | [cma-ca98/manifest.json](https://ticks.bnm.farm/cma-ca98/manifest.json) |
+| `/ema-referrals` | EMA human-medicine referral procedure text. Find on free index (?q=); each row names the id to buy. GET ?id= one official text $0.02. Default GET is the newest 10 for $0.05 (whole current set if n<10); older pages another $0.05 on the same URL | `cards[].body` | 14 cards | $0.02 / $0.05 | [ema-referrals/manifest.json](https://ticks.bnm.farm/ema-referrals/manifest.json) |
 | `/form-483` | FDA Form 483 inspectional observation bodies. Find on free index (?q=); each row names the id to buy. GET ?id= one official text $0.02. Default GET is the newest 10 for $0.05 (whole current set if n<10); older pages another $0.05 on the same URL | `letters[].body` | 314 letters | $0.02 / $0.05 | [form-483/manifest.json](https://ticks.bnm.farm/form-483/manifest.json) |
 | `/gmp` | Health Canada Drug GMP report-card observation text + C.02 cites. Find on free index (?q=); each row names the id to buy. GET ?id= one official text $0.02. Default GET is the newest 10 for $0.05 (whole current set if n<10); older pages another $0.05 on the same URL | `cards[].body` | 3550 cards | $0.02 / $0.05 | [gmp/manifest.json](https://ticks.bnm.farm/gmp/manifest.json) |
 | `/gmp-md` | Health Canada medical-device report-card observation text + MDR cites. Find on free index (?q=); each row names the id to buy. GET ?id= one official text $0.02. Default GET is the newest 10 for $0.05 (whole current set if n<10); older pages another $0.05 on the same URL | `cards[].body` | 33 cards | $0.02 / $0.05 | [gmp-md/manifest.json](https://ticks.bnm.farm/gmp-md/manifest.json) |
@@ -61,11 +62,11 @@ Free manifests carry count, ids, and official source URLs. They are not the paid
 
 ## Free discovery (not paid)
 
-- `GET /` — shop JSON (payTo + the thirty-two products, each with `description` + `count`)
-- `GET /.well-known/x402` — absolute URLs of the thirty-two paid routes only
+- `GET /` — shop JSON (payTo + the thirty-three products, each with `description` + `count`)
+- `GET /.well-known/x402` — absolute URLs of the thirty-three paid routes only
 - `GET /openapi.json` — OpenAPI 3.1 with `x-payment-info` and truthful bag-size copy
 - `GET /llms.txt` — short agent guidance (table vs `$0.02` id / `$0.05` page)
-- `GET /mcp` — Streamable HTTP MCP for the same thirty-two paid GETs
+- `GET /mcp` — Streamable HTTP MCP for the same thirty-three paid GETs
 - `GET /manifest.json` and `GET /{path}/manifest.json` — free per-SKU manifests
 
 ## How to buy

@@ -165,6 +165,7 @@ async function main(): Promise<void> {
       assert.equal(shop.mcp, MCP_PATH);
       assert.ok(!shop.products.some((p) => p.path === MCP_PATH), "/mcp is not a paid SKU");
       assert.ok(shop.products.some((p) => p.path === "/cma-ca98"));
+      assert.ok(shop.products.some((p) => p.path === "/ema-referrals"));
 
       const wellKnown = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
         mcp?: string;
@@ -176,6 +177,7 @@ async function main(): Promise<void> {
       assert.ok((wellKnown.instructions ?? "").includes("/mcp"));
       const localPaths = wellKnown.resources.map((url) => new URL(url).pathname);
       assert.ok(localPaths.includes("/cma-ca98"));
+      assert.ok(localPaths.includes("/ema-referrals"), "local well-known lists /ema-referrals");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(llms.includes("GET/POST /mcp"));
@@ -245,6 +247,7 @@ async function main(): Promise<void> {
       const listBody = (await list.json()) as { result: { tools: { name: string; title?: string; description?: string }[] } };
       assert.deepEqual(listBody.result.tools.map((t) => t.name), ["search", ...livePaidNames(fromLocal)]);
       assert.ok(listBody.result.tools.some((t) => t.name === "cma-ca98"));
+      assert.ok(listBody.result.tools.some((t) => t.name === "ema-referrals"), "MCP tools come from local well-known");
       const ticksTool = listBody.result.tools.find((t) => t.name === "ticks");
       const lettersTool = listBody.result.tools.find((t) => t.name === "warning-letters");
       const cardsTool = listBody.result.tools.find((t) => t.name === "cma-ca98");

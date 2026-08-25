@@ -59,6 +59,8 @@
  * GET /ico-mpn/manifest.json — free count + institution/docket/date/sourceUrl (no MPN body)
  * GET /cma-ca98 — UK CMA CA98 institution infringement-decision PDF text ($0.02 id / $0.05 page)
  * GET /cma-ca98/manifest.json — free count + institution/docket/date/sourceUrl (no decision body)
+ * GET /ema-referrals — EMA human-medicine referral procedure PDF text ($0.02 id / $0.05 page)
+ * GET /ema-referrals/manifest.json — free count + name/date/status/sourceUrl (no procedure body)
  * GET /form-483 — FDA Form 483 observation bodies ($0.02 id / $0.05 page). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
  * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.02 id / $0.05 page). Listed only when a real body is cached.
@@ -274,6 +276,13 @@ import {
   loadCmaCa98Manifest,
 } from "./cma-ca98.js";
 import {
+  EMA_REFERRALS_AMOUNT_ATOMIC,
+  EMA_REFERRALS_MANIFEST_PATH,
+  EMA_REFERRALS_PATH,
+  loadEmaReferrals,
+  loadEmaReferralsManifest,
+} from "./ema-referrals.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -288,6 +297,7 @@ import {
   paidCfpbOrdersBody,
   paidCftcOrdersBody,
   paidCmaCa98Body,
+  paidEmaReferralsBody,
   paidDenovoOrdersBody,
   paidFdicOrdersBody,
   paidFercOrdersBody,
@@ -660,7 +670,7 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "form-483" | "gmp" | "gmp-md";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "ema-referrals" | "form-483" | "gmp" | "gmp-md";
 /** Always-public SKUs. /form-483, /gmp, and /gmp-md join only when a real observation body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "ticks",
@@ -692,6 +702,7 @@ export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "superfund-rods",
   "ico-mpn",
   "cma-ca98",
+  "ema-referrals",
 ];
 
 export function form483IsPublic(): boolean {
@@ -718,7 +729,7 @@ export function isPublicBazaarSku(sku: DoorSku): boolean {
   return publicBazaarSkus().includes(sku);
 }
 
-const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six", "twenty-seven", "twenty-eight", "twenty-nine", "thirty", "thirty-one", "thirty-two"] as const;
+const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six", "twenty-seven", "twenty-eight", "twenty-nine", "thirty", "thirty-one", "thirty-two", "thirty-three"] as const;
 
 function paidCountWord(): string {
   const n = publicBazaarSkus().length;
@@ -840,6 +851,10 @@ function amountAtomicFor(sku: DoorSku, query?: Pick<ExtractedPageQuery, "id">): 
   if (sku === "cma-ca98") {
     const raw = env("CMA_CA98_USDC_ATOMIC");
     return raw.length > 0 ? raw : CMA_CA98_AMOUNT_ATOMIC;
+  }
+  if (sku === "ema-referrals") {
+    const raw = env("EMA_REFERRALS_USDC_ATOMIC");
+    return raw.length > 0 ? raw : EMA_REFERRALS_AMOUNT_ATOMIC;
   }
   if (sku === "form-483") {
     const raw = env("FORM_483_USDC_ATOMIC");
@@ -988,6 +1003,10 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
     description: "Official UK CMA CA98 infringement-decision text.",
     resourcePath: CMA_CA98_PATH,
   },
+  "ema-referrals": {
+    description: "Official EMA human-medicine referral procedure text.",
+    resourcePath: EMA_REFERRALS_PATH,
+  },
   "form-483": {
     description: "Official FDA Form 483 inspectional observation bodies.",
     resourcePath: FORM_483_PATH,
@@ -1040,6 +1059,7 @@ const SKU_ONE_LINE: Record<DoorSku, string> = {
   "superfund-rods": "EPA Superfund Record of Decision text (official semspub.epa.gov PDFs)",
   "ico-mpn": "ICO Monetary Penalty Notice text (official ico.org.uk PDFs)",
   "cma-ca98": "UK CMA CA98 infringement-decision text (official assets.publishing.service.gov.uk PDFs)",
+  "ema-referrals": "EMA human-medicine referral procedure text (official ema.europa.eu English PDFs)",
   "form-483": "FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs)",
   gmp: "Health Canada Drug GMP report-card observation text + C.02 cites",
   "gmp-md": "Health Canada medical-device report-card observation text + MDR cites",
@@ -1075,6 +1095,7 @@ const SHOP_PRODUCT_ID: Record<DoorSku, string> = {
   "superfund-rods": "epa-superfund-rod-bodies",
   "ico-mpn": "ico-institution-mpn-bodies",
   "cma-ca98": "cma-ca98-infringement-decision-bodies",
+  "ema-referrals": "ema-referral-procedure-bodies",
   "form-483": "fda-form-483-bodies",
   gmp: "hc-gmp-report-cards",
   "gmp-md": "hc-md-inspection-cards",
@@ -1110,6 +1131,7 @@ const SHOP_MANIFEST_PATH: Record<DoorSku, string> = {
   "superfund-rods": SUPERFUND_RODS_MANIFEST_PATH,
   "ico-mpn": ICO_MPN_MANIFEST_PATH,
   "cma-ca98": CMA_CA98_MANIFEST_PATH,
+  "ema-referrals": EMA_REFERRALS_MANIFEST_PATH,
   "form-483": FORM_483_MANIFEST_PATH,
   gmp: GMP_MANIFEST_PATH,
   "gmp-md": GMP_MD_MANIFEST_PATH,
@@ -1210,6 +1232,8 @@ async function loadSkuManifest(sku: DoorSku): Promise<Record<string, unknown>> {
       return loadIcoMpnManifest();
     case "cma-ca98":
       return loadCmaCa98Manifest();
+    case "ema-referrals":
+      return loadEmaReferralsManifest();
     case "form-483":
       return loadForm483Manifest();
     case "gmp":
@@ -2125,6 +2149,33 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         sourceUrl:
           "https://assets.publishing.service.gov.uk/media/6876390d352c290d20dcae7c/Citi-Deutsche_Bank__Non-confidential_decision.pdf",
         body: "Decision of the Competition and Markets Authority\nCompetition Act 1998\nNon-confidential infringement decision\nCrown copyright / Open Government Licence",
+      },
+    ],
+  },
+  "ema-referrals": {
+    ok: true,
+    product: "ema-referral-procedure-bodies",
+    status: "ok",
+    fetchedAt: "2026-08-25T12:00:00.000Z",
+    asOf: "2026-08-04",
+    source: "https://www.ema.europa.eu/en/documents/report/referrals-output-json-report_en.json",
+    recordCount: 1,
+    records: [
+      {
+        id: "tavneos",
+        date: "2026-08-13",
+        firm: "Tavneos",
+        url: "https://www.ema.europa.eu/en/documents/referral/tavneos-article-20-procedure-assessment-report_en.pdf",
+        type: "ema-referrals",
+      },
+    ],
+    cards: [
+      {
+        id: "tavneos",
+        name: "Tavneos",
+        date: "2026-08-13",
+        sourceUrl: "https://www.ema.europa.eu/en/documents/referral/tavneos-article-20-procedure-assessment-report_en.pdf",
+        body: "European Medicines Agency\nArticle 20 referral\nCHMP assessment report\nTavneos (avacopan)\nbenefit-risk of the marketing authorisation",
       },
     ],
   },
@@ -3220,6 +3271,7 @@ export async function llmsTxt(): Promise<string> {
     "- GET /superfund-rods/manifest.json — EPA Superfund ROD count + institution/docket/date/sourceUrl (not the ROD body)",
     "- GET /ico-mpn/manifest.json — ICO MPN count + institution/docket/date/sourceUrl (not the MPN body)",
     "- GET /cma-ca98/manifest.json — CMA CA98 count + institution/docket/date/sourceUrl (not the decision body)",
+    "- GET /ema-referrals/manifest.json — EMA referral count + name/date/status/sourceUrl (not the procedure body)",
   ];
   if (listed483) {
     free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (not the observation body)");
@@ -3273,7 +3325,7 @@ function discoveryOrigin(req: IncomingMessage, port: number): string {
 }
 
 function paidDiscoveryPaths(): string[] {
-  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH];
+  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH];
   if (form483IsPublic()) paths.push(FORM_483_PATH);
   if (gmpIsPublic()) paths.push(GMP_PATH);
   if (gmpMdIsPublic()) paths.push(GMP_MD_PATH);
@@ -3446,6 +3498,7 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
   const superfundRodsAtomic = amountAtomicFor("superfund-rods");
   const icoMpnAtomic = amountAtomicFor("ico-mpn");
   const cmaCa98Atomic = amountAtomicFor("cma-ca98");
+  const emaReferralsAtomic = amountAtomicFor("ema-referrals");
   const f483Atomic = amountAtomicFor("form-483");
   const gmpAtomic = amountAtomicFor("gmp");
   const gmpMdAtomic = amountAtomicFor("gmp-md");
@@ -3478,6 +3531,7 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
   const superfundRodsPrice = (Number(superfundRodsAtomic) / 1e6).toFixed(2);
   const icoMpnPrice = (Number(icoMpnAtomic) / 1e6).toFixed(2);
   const cmaCa98Price = (Number(cmaCa98Atomic) / 1e6).toFixed(2);
+  const emaReferralsPrice = (Number(emaReferralsAtomic) / 1e6).toFixed(2);
   const f483Price = (Number(f483Atomic) / 1e6).toFixed(2);
   const gmpPrice = (Number(gmpAtomic) / 1e6).toFixed(2);
   const gmpMdPrice = (Number(gmpMdAtomic) / 1e6).toFixed(2);
@@ -3515,6 +3569,7 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
     "/superfund-rods ($0.02 / $0.05)",
     "/ico-mpn ($0.02 / $0.05)",
     "/cma-ca98 ($0.02 / $0.05)",
+    "/ema-referrals ($0.02 / $0.05)",
   ];
   if (listed483) paidBits.push("/form-483 ($0.02 / $0.05)");
   if (listedGmp) paidBits.push("/gmp ($0.02 / $0.05)");
@@ -4204,6 +4259,29 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
           },
         }),
       },
+      [EMA_REFERRALS_PATH]: {
+        get: paidOpenApiOp({
+          sku: "ema-referrals",
+          operationId: "getEmaReferrals",
+          priceUsdc: emaReferralsPrice,
+          amountAtomic: emaReferralsAtomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["ema-referrals"],
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              status: { type: "string" },
+              fetchedAt: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
+              cards: { type: "array", items: { type: "object" } },
+            },
+          },
+        }),
+      },
       ...(listed483
         ? {
             [FORM_483_PATH]: {
@@ -4464,6 +4542,13 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
         get: freeOpenApiOp(
           "UK CMA CA98 infringement decisions free manifest",
           "Count, institution, docket, date, and official PDF URL. Not the decision body.",
+          true,
+        ),
+      },
+      [EMA_REFERRALS_MANIFEST_PATH]: {
+        get: freeOpenApiOp(
+          "EMA human-medicine referral procedures free manifest",
+          "Count, name, date, status, and official PDF URL. Not the procedure body.",
           true,
         ),
       },
@@ -4945,6 +5030,16 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === EMA_REFERRALS_MANIFEST_PATH) {
+    sendExtractedManifest(res, await loadEmaReferralsManifest(), req, port, url.searchParams.get("q"));
+    return;
+  }
+
+  if (path === EMA_REFERRALS_PATH) {
+    await servePaid(req, res, port, "ema-referrals", async () => paidEmaReferralsBody(await loadEmaReferrals()));
+    return;
+  }
+
   if (path === FORM_483_MANIFEST_PATH) {
     sendExtractedManifest(res, await loadForm483Manifest(), req, port, url.searchParams.get("q"));
     return;
@@ -4980,7 +5075,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
 }
 
 export function bindHost(): string {
@@ -5038,6 +5133,7 @@ if (isMain()) {
     console.error(`${SUPERFUND_RODS_PATH} ${extractedBoot}`);
     console.error(`${ICO_MPN_PATH} ${extractedBoot}`);
     console.error(`${CMA_CA98_PATH} ${extractedBoot}`);
+    console.error(`${EMA_REFERRALS_PATH} ${extractedBoot}`);
     console.error(`${FORM_483_PATH} ${extractedBoot}${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
     console.error(`${GMP_PATH} ${extractedBoot}${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
     console.error(`${GMP_MD_PATH} ${extractedBoot}${gmpMdIsPublic() ? "" : " (unlisted until a real MD observation body is cached)"}`);
