@@ -1,0 +1,22 @@
+Southwest Direct Cattle Report (AZ/CA/NV)
+Agricultural Marketing Service Fri Aug 21, 2026
+Livestock, Poultry, and Grain Market News
+
+Direct Livestock Weighted Average Report for week ending 8/21/2026
+
+FEEDER CATTLE
+DIRECT TRADES
+Dairy Steers - Large 3 (Per Cwt)
+Delivery/Freight         Head        Wt Range           Avg Wt         Price Range       Avg Price
+    Dec DEL              900            300              300                535.00        535.00
+
+Beef/Dairy Steers - Medium and Large 2-3 (Per Cwt)
+Delivery/Freight         Head        Wt Range           Avg Wt         Price Range       Avg Price
+  Current FOB             90            550              550                362.00        362.00
+
+Beef/Dairy Heifers - Medium and Large 2-3 (Per Cwt)
+Delivery/Freight         Head        Wt Range           Avg Wt         Price Range       Avg Price
+  Current FOB             90            550              550                332.00        332.00
+
+Source: USDA AMS Livestock, Poultry & Grain Market News
+https://mymarketnews.ams.usda.gov/viewReport/2940

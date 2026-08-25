@@ -308,6 +308,7 @@ import {
   paidUntitledLettersBody,
   paidWarningLettersBody,
 } from "./paid-records.js";
+import { mergeAmsNationalTicks } from "./ticks-ams.js";
 import {
   GMP_AMOUNT_ATOMIC,
   GMP_MANIFEST_PATH,
@@ -341,8 +342,8 @@ export { MCP_PATH } from "./ticks-mcp.js";
 export const X402SCAN_SERVER_URL =
   "https://www.x402scan.com/server/c6f584c5-e494-41d1-aa02-2efb07ac3546";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
-export const PRODUCT_NAME = "Idaho + PNW Market Ticks";
-export const PRODUCT_VERSION = "1.2.0";
+export const PRODUCT_NAME = "Idaho + nationwide USDA AMS hay/cattle/grain";
+export const PRODUCT_VERSION = "1.3.0";
 const COLLECT_MEMO_RE =
   /we are not inventing|this report has no organic row|not reusing an older organic|usda printed no organic/i;
 
@@ -372,6 +373,107 @@ const PUBLIC_SOURCE_MARKERS = [
   "columbia basin",
   "columbia_umatilla",
   "umatilla",
+  "ams_2904",
+  "ams-2904",
+  "ams_2707",
+  "ams-2707",
+  "ams_2885",
+  "ams-2885",
+  "ams_2935",
+  "ams-2935",
+  "ams_2710",
+  "ams-2710",
+  "ams_3097",
+  "ams-3097",
+  "ams_3098",
+  "ams-3098",
+  "ams_3148",
+  "ams-3148",
+  "ams_3046",
+  "ams-3046",
+  "ams_3223",
+  "ams-3223",
+  "california direct hay",
+  "texas direct hay",
+  "kansas direct hay",
+  "nebraska direct hay",
+  "texas direct cattle",
+  "kansas direct feeder",
+  "oklahoma direct feeder",
+  "portland daily grain",
+  "minneapolis daily grain",
+  "kansas city daily grain",
+  "ams_2905",
+  "ams-2905",
+  "ams_2769",
+  "ams-2769",
+  "ams_3236",
+  "ams-3236",
+  "ams_3183",
+  "ams-3183",
+  "ams_2807",
+  "ams-2807",
+  "ams_2929",
+  "ams-2929",
+  "ams_3905",
+  "ams-3905",
+  "ams_3095",
+  "ams-3095",
+  "ams_2939",
+  "ams-2939",
+  "ams_3731",
+  "ams-3731",
+  "ams_3784",
+  "ams-3784",
+  "ams_3050",
+  "ams-3050",
+  "ams_3793",
+  "ams-3793",
+  "ams_3926",
+  "ams-3926",
+  "ams_2906",
+  "ams-2906",
+  "ams_3096",
+  "ams-3096",
+  "ams_3455",
+  "ams-3455",
+  "ams_2808",
+  "ams-2808",
+  "ams_2770",
+  "ams-2770",
+  "ams_2708",
+  "ams-2708",
+  "ams_3184",
+  "ams-3184",
+  "ams_2709",
+  "ams-2709",
+  "ams_2940",
+  "ams-2940",
+  "ams_3237",
+  "ams-3237",
+  "ams_2912",
+  "ams-2912",
+  "ams_3192",
+  "ams-3192",
+  "ams_3225",
+  "ams-3225",
+  "ams_2932",
+  "ams-2932",
+  "ams_2850",
+  "ams-2850",
+  "colorado direct hay",
+  "montana direct hay",
+  "wyoming direct hay",
+  "south dakota direct hay",
+  "iowa direct hay",
+  "missouri direct hay",
+  "kentucky direct hay",
+  "oklahoma direct hay",
+  "illinois daily grain",
+  "nebraska daily grain",
+  "missouri daily grain",
+  "colorado daily grain",
+  "iowa daily grain",
 ];
 
 const PUBLIC_SERIES_PREFIXES = [
@@ -379,11 +481,65 @@ const PUBLIC_SERIES_PREFIXES = [
   "cattle-bf-",
   "cattle-nw-",
   "hay-id-",
-  "hay.ams_3058.",
+  "hay.ams_",
+  "cattle.ams_",
+  "grain.ams_",
   "ibc.id.grain.",
   "wd1.",
   "ams.2914.",
 ];
+
+export const TICKS_SOURCE_NAMES = [
+  "Twin Falls",
+  "Blackfoot",
+  "AMS_3056 hay",
+  "AMS_3059 NW Direct",
+  "IF_FV130 onions/potatoes",
+  "IBC Idaho elevator grain",
+  "WD1 rental-pool $/AF",
+  "AMS_3058 Columbia Basin hay",
+  "IF_FV130 WA-OR produce",
+  "AMS_2914 PNW pulses",
+  "AMS_2904 California hay",
+  "AMS_2707 Texas hay",
+  "AMS_2885 Kansas hay",
+  "AMS_2935 Nebraska hay",
+  "AMS_2710 Texas cattle",
+  "AMS_3097 Kansas cattle",
+  "AMS_3098 Oklahoma cattle",
+  "AMS_3148 Portland grain",
+  "AMS_3046 Minneapolis grain",
+  "AMS_3223 Kansas City grain",
+  "AMS_2905 Colorado hay",
+  "AMS_2769 Montana hay",
+  "AMS_3236 Wyoming hay",
+  "AMS_3183 South Dakota hay",
+  "AMS_2807 Iowa hay",
+  "AMS_2929 Missouri hay",
+  "AMS_3905 Kentucky hay",
+  "AMS_3095 Oklahoma hay",
+  "AMS_2939 New Mexico hay",
+  "AMS_3731 Utah hay",
+  "AMS_3784 Arizona hay",
+  "AMS_3050 Alabama hay",
+  "AMS_3793 Tennessee hay",
+  "AMS_3926 Nevada hay",
+  "AMS_2906 Colorado cattle",
+  "AMS_3096 Eastern Cornbelt cattle",
+  "AMS_3455 Iowa cattle",
+  "AMS_2808 Missouri cattle",
+  "AMS_2770 Montana cattle",
+  "AMS_2708 New Mexico cattle",
+  "AMS_3184 South Dakota cattle",
+  "AMS_2709 Southeast cattle",
+  "AMS_2940 Southwest cattle",
+  "AMS_3237 Wyoming-Nebraska cattle",
+  "AMS_2912 Colorado grain",
+  "AMS_3192 Illinois grain",
+  "AMS_3225 Nebraska grain",
+  "AMS_2932 Missouri grain",
+  "AMS_2850 Iowa grain",
+] as const;
 
 export type TickStatus = "ok" | "empty" | "stale";
 
@@ -640,7 +796,7 @@ function amountAtomicFor(sku: DoorSku): string {
 const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> = {
   ticks: {
     description:
-      "Call GET /ticks when you need the current official Idaho + PNW market snapshot (USDA AMS hay, cattle, produce, pulses; IBC grain; WD1 $/AF). JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /ticks when you need the current official Idaho + nationwide USDA AMS hay/cattle/grain snapshot (PNW barns + AMS Direct reports; IBC grain; WD1 $/AF). JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: TICKS_PATH,
   },
   "import-alerts": {
@@ -1902,21 +2058,10 @@ export function loadTicks(): TicksPayload {
         }, null);
 
   if (!board && !historyFile) {
-    return {
+    return mergeAmsNationalTicks({
       ok: true,
       product: "idaho-hay-feeder-ticks",
-      sources: [
-        "Twin Falls",
-        "Blackfoot",
-        "AMS_3056 hay",
-        "AMS_3059 NW Direct",
-        "IF_FV130 onions/potatoes",
-        "IBC Idaho elevator grain",
-        "WD1 rental-pool $/AF",
-        "AMS_3058 Columbia Basin hay",
-        "IF_FV130 WA-OR produce",
-        "AMS_2914 PNW pulses",
-      ],
+      sources: [...TICKS_SOURCE_NAMES],
       status: "empty",
       reason:
         `Ticks are not on this host. Default cache is ${DEFAULT_TICKS_DIR} (board.json / history.json). Set TICKS_DIR or TICKS_PATH.`,
@@ -1924,34 +2069,23 @@ export function loadTicks(): TicksPayload {
       ticks: [],
       failed: [],
       history: { points: [], emptyReports: [], series: [] },
-    };
+    });
   }
 
   const hasTicks = ticks.length + points.length > 0;
-  return {
+  return mergeAmsNationalTicks({
     ok: true,
     product: "idaho-hay-feeder-ticks",
-    sources: [
-      "Twin Falls",
-      "Blackfoot",
-      "AMS_3056 hay",
-      "AMS_3059 NW Direct",
-      "IF_FV130 onions/potatoes",
-      "IBC Idaho elevator grain",
-      "WD1 rental-pool $/AF",
-      "AMS_3058 Columbia Basin hay",
-      "IF_FV130 WA-OR produce",
-      "AMS_2914 PNW pulses",
-    ],
+    sources: [...TICKS_SOURCE_NAMES],
     status: hasTicks ? "ok" : "stale",
     reason: hasTicks
       ? null
-      : "Price cache is present but has no official hay / feeder / IF_FV130 / IBC / WD1 / 3058 / 2914 ticks.",
+      : "Price cache is present but has no official hay / feeder / IF_FV130 / IBC / WD1 / 3058 / 2914 / nationwide AMS ticks.",
     fetchedAt,
     ticks,
     failed,
     history: { points, emptyReports, series },
-  };
+  });
 }
 
 const GROUP_LABELS: { id: string; name: string }[] = [
@@ -2515,7 +2649,7 @@ export function llmsTxt(): string {
   const listedGmp = gmpIsPublic();
   const listedGmpMd = gmpMdIsPublic();
   const paid = [
-    "- GET /ticks — $0.02 — Idaho + PNW market ticks (USDA AMS, Idaho grain, WD1 $/AF). Paid JSON keeps ticks[] and adds records[] + asOf.",
+    "- GET /ticks — $0.02 — Idaho + nationwide USDA AMS hay/cattle/grain ticks (PNW barns, IBC grain, WD1 $/AF). Paid JSON keeps ticks[] and adds records[] + asOf.",
     "- GET /import-alerts — $0.05 — FDA Import Alerts / DWPE firm-product snapshot. Paid JSON keeps ticks[] and adds records[] + asOf.",
     "- GET /mariners — $0.05 — USCG D13 / Northwest Local Notice to Mariners",
     "- GET /mariners-d11 — $0.05 — USCG D11 / Southwest Local Notice to Mariners",
@@ -2858,7 +2992,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       [TICKS_PATH]: {
         get: paidOpenApiOp({
           operationId: "getTicks",
-          summary: "Idaho + PNW market ticks",
+          summary: "Idaho + nationwide AMS hay/cattle/grain ticks",
           description: SKU_COPY.ticks.description,
           priceUsdc: ticksPrice,
           amountAtomic: ticksAtomic,

@@ -122,8 +122,15 @@ async function main(): Promise<void> {
   assert.match(script, /AIR_LETTERS/);
   assert.match(script, /untitled-letters/);
   assert.match(script, /mariners-d8/);
+  assert.match(script, /ticks-ams\.js/);
+  assert.match(script, /nationwide AMS hay\/cattle\/grain/);
+  const hayBlock = script.slice(script.indexOf("hay/cattle collect"), script.indexOf("DOORS=("));
+  assert.match(hayBlock, /collect-prices\.py/);
+  assert.match(hayBlock, /ticks-ams\.js/);
+  assert.ok(hayBlock.indexOf("collect-prices.py") < hayBlock.indexOf("ticks-ams.js"), "Idaho hay stays first");
   const doorsBlock = script.slice(script.indexOf("DOORS=("), script.indexOf("door_action"));
   assert.doesNotMatch(doorsBlock, /npdes/i);
+  assert.doesNotMatch(doorsBlock, /ticks-ams/);
 
   const dry = runDryCollect({
     sku: "cfpb-orders",
@@ -143,6 +150,7 @@ async function main(): Promise<void> {
   });
   assert.match(dry, /cfpb-orders grow n=5 growUntil=24 limit=24/);
   assert.match(dry, /collect start growUntil=24 limit=24/);
+  assert.match(dry, /dry-run plan nationwide AMS hay\/cattle\/grain \(same \/ticks door\)/);
   assert.doesNotMatch(dry, /cfpb-orders skip/);
   assert.ok(
     listed !== null && listed > 5,
