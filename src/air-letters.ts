@@ -18,10 +18,14 @@ export const PRODUCT_ID = "aphis-air-confirmation-letter-bodies";
 export const PRODUCT_NAME = "APHIS AIR confirmation-letter text";
 
 export const LISTING_URL = "https://www.aphis.usda.gov/confirmation-letters";
+/** Official AIR letters-of-inquiry table. /confirmation-letters is the 01cr teaser/CSV. */
+export const INQUIRY_TABLE_URL = "https://www.aphis.usda.gov/biotechnology/regulated-article-inquiry";
+export const INQUIRY_CSV_URL = "https://www.aphis.usda.gov/sites/default/files/reg-article-letters-inquiry-data-table.csv";
 export const PDF_HOST = "direct.aphis.usda.gov";
 export const PDF_ORIGIN = "https://direct.aphis.usda.gov";
 export const DOCKET_BARE_RE = /^(\d{2}-\d{3}-01air)$/i;
-export const MEDIA_RE = /\/sites\/default\/files\/(\d{2}-\d{3}-01air)(?:-response)?\.pdf/i;
+/** Response PDFs only. Incoming `NN-NNN-01air.pdf` / `-cbidel.pdf` stay out. */
+export const MEDIA_RE = /\/sites\/default\/files\/((\d{2}-\d{3}-01air)-response(?:-cbidel(?:-[a-z0-9]+)?)?)\.pdf/i;
 export const LICENSE = "17 USC 105";
 export const ATTRIBUTION = "USDA APHIS";
 
@@ -86,10 +90,10 @@ export type AirLetterSnapshot = {
   cards: AirLetterCard[];
 };
 
-const HTTP_UA = "bnm-data-shop/1.0 (APHIS public institution AIR letters; +https://www.aphis.usda.gov/confirmation-letters)";
+const HTTP_UA = "bnm-data-shop/1.0 (APHIS public institution AIR letters; +https://www.aphis.usda.gov/biotechnology/regulated-article-inquiry)";
 const OFFICIAL_HOSTS = new Set(["direct.aphis.usda.gov", "www.aphis.usda.gov", "aphis.usda.gov"]);
 const ENTITY_RE =
-  /\b(Inc\.?|LLC|L\.L\.C\.|L\.P\.|LP|Corp\.?|Corporation|Company|Co\.|Ltd\.?|Limited|University|Institute|College)\b/i;
+  /\b(Inc\.?|LLC|L\.L\.C\.|L\.P\.|LP|Corp\.?|Corporation|Company|Co\.|Ltd\.?|Limited|University|Institute|College|PBC|SAS|Seeds|Science|ARS)\b/i;
 const PERSON_NAME_RE = /^[A-Z][a-z]+(?:\s+[A-Z]\.?)?(?:\s+[A-Z][a-z]+){1,3}$/;
 
 export const SEED_LISTINGS: AirLetterListing[] = [
@@ -198,7 +202,7 @@ export function officialAirLetterPdfUrl(urlOrPath: string | null | undefined): s
     if (!OFFICIAL_HOSTS.has(host)) return null;
     const media = decodeURIComponent(parsed.pathname).match(MEDIA_RE) || parsed.pathname.match(MEDIA_RE);
     if (!media) return null;
-    return `${PDF_ORIGIN}/sites/default/files/${media[1]}-response.pdf`;
+    return `${PDF_ORIGIN}/sites/default/files/${media[1]}.pdf`;
   } catch {
     return null;
   }
@@ -209,7 +213,7 @@ export function pdfIdFromUrl(url: string | null | undefined): string | null {
   try {
     const parsed = new URL(official, PDF_ORIGIN);
     const media = parsed.pathname.match(MEDIA_RE);
-    return media?.[1] ? `${media[1]}-response.pdf` : null;
+    return media?.[1] ? `${media[1]}.pdf` : null;
   } catch {
     return null;
   }
@@ -218,7 +222,7 @@ export function pdfIdFromUrl(url: string | null | undefined): string | null {
 export function slugFromUrl(url: string): string {
   const official = officialAirLetterPdfUrl(url) || url || "";
   const media = official.match(MEDIA_RE);
-  return media?.[1]?.toLowerCase() || "unknown";
+  return media?.[2]?.toLowerCase() || "unknown";
 }
 
 export function normalizeDocket(raw: string | null | undefined): string | null {
@@ -288,6 +292,86 @@ export function parseListingHtml(html: string): AirLetterListing[] {
       sourceUrl: href,
       pdfId: pdfIdFromUrl(href) ?? "",
       docket,
+    });
+  }
+  return parseListingRows(rows);
+}
+
+function parseCsvRecords(text: string): Record<string, string>[] {
+  const src = text.replace(/^\uFEFF/, "").replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+  const lines: string[][] = [];
+  let row: string[] = [];
+  let field = "";
+  let inQuotes = false;
+  for (let i = 0; i < src.length; i++) {
+    const ch = src[i]!;
+    if (inQuotes) {
+      if (ch === '"') {
+        if (src[i + 1] === '"') {
+          field += '"';
+          i += 1;
+        } else {
+          inQuotes = false;
+        }
+      } else {
+        field += ch;
+      }
+      continue;
+    }
+    if (ch === '"') {
+      inQuotes = true;
+      continue;
+    }
+    if (ch === ",") {
+      row.push(field);
+      field = "";
+      continue;
+    }
+    if (ch === "\n") {
+      row.push(field);
+      if (row.some((c) => c.trim())) lines.push(row);
+      row = [];
+      field = "";
+      continue;
+    }
+    field += ch;
+  }
+  if (field || row.length) {
+    row.push(field);
+    if (row.some((c) => c.trim())) lines.push(row);
+  }
+  if (!lines.length) return [];
+  const headers = lines[0]!.map((h) => h.trim());
+  return lines.slice(1).map((cols) => {
+    const rec: Record<string, string> = {};
+    headers.forEach((h, idx) => {
+      rec[h] = (cols[idx] ?? "").trim();
+    });
+    return rec;
+  });
+}
+
+export function parseListingCsv(csv: string): AirLetterListing[] {
+  const rows: AirLetterListingRow[] = [];
+  for (const rec of parseCsvRecords(csv)) {
+    const docket = (rec["AIR Number"] || rec.docket || "").trim();
+    const institution = (rec.Institution || rec.institution || "").trim();
+    const date = rec["Response Date"] || rec.date;
+    const docs = rec.Documents || rec.documents || "";
+    const response = docs.match(/href="([^"]+)"[^>]*>\s*Response/i);
+    if (!response) continue;
+    const href = response[1]!;
+    if (!docket || !DOCKET_BARE_RE.test(docket)) continue;
+    if (!href.toLowerCase().includes(docket.toLowerCase())) continue;
+    const sourceUrl = href.startsWith("http") ? href : `${PDF_ORIGIN}${href.startsWith("/") ? "" : "/"}${href}`;
+    if (!officialAirLetterPdfUrl(sourceUrl)) continue;
+    rows.push({
+      institution,
+      date,
+      title: "AIR confirmation letter",
+      sourceUrl,
+      docket,
+      pdfId: pdfIdFromUrl(sourceUrl) ?? "",
     });
   }
   return parseListingRows(rows);
@@ -507,7 +591,7 @@ async function loadOfficialListings(dir: string): Promise<{ listed: AirLetterLis
     return { listed: html ? parseListingHtml(html) : [], listedCount: html ? parseListingHtml(html).length : 0 };
   }
   try {
-    const listed = parseListingHtml(await fetchAirLetterText(LISTING_URL));
+    const listed = parseListingCsv(await fetchAirLetterText(INQUIRY_CSV_URL));
     const merged = mergeOfficialListings(listed, SEED_LISTINGS);
     if (merged.length > 0) return { listed: merged, listedCount: merged.length };
   } catch {
