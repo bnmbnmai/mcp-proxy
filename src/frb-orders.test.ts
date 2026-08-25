@@ -18,9 +18,11 @@ import {
   isProhibitionRow,
   isRealFrbOrderBody,
   officialFrbPdfUrl,
+  parseFrbCsv,
   parseFrbOrderText,
   parseListingRows,
   pdfIdFromUrl,
+  pdfUrlFromPressUrl,
   type FrbListingRow,
 } from "./frb-orders.js";
 import { FRB_ORDER_TYPE, paidFrbOrdersBody } from "./paid-records.js";
@@ -67,6 +69,19 @@ async function main(): Promise<void> {
   assert.ok(LISTING_URL.includes("federalreserve.gov"));
   assert.equal(SEED_LISTINGS.length, 5);
   assert.ok(SEED_LISTINGS.some((r) => r.docket === "26-019-B-HC"));
+
+  const csvListed = parseFrbCsv(readFx("listing-excerpt.csv"));
+  assert.ok(csvListed.some((r) => /SouthPoint/i.test(r.institution)), "official CSV lists later institution WA");
+  assert.equal(
+    csvListed.find((r) => /SouthPoint/i.test(r.institution))?.sourceUrl,
+    `${PDF_BASE}enf20260820b1.pdf`,
+  );
+  assert.ok(csvListed.every((r) => officialFrbPdfUrl(r.sourceUrl)));
+  assert.ok(!csvListed.some((r) => /Kilbert|Gonzalez/i.test(r.institution)), "CSV people rows stay out");
+  assert.equal(
+    pdfUrlFromPressUrl("/newsevents/pressreleases/enforcement20260820b.htm"),
+    `${PDF_BASE}enf20260820b1.pdf`,
+  );
 
   const people = rows.find((r) => (r.docket ?? "") === "26-041-E-I");
   assert.ok(people);
