@@ -127,6 +127,19 @@ assert.ok(ilCorn, "Illinois yellow corn Current bid");
 assert.ok(ilCorn.price >= 4.6 && ilCorn.price <= 5.2);
 assert.ok(!grainIl.some((row) => row.id.includes("oct")), "forward Oct-Nov grain is not the current bid");
 
+const grainKs = parseAmsReportText(
+  fx("grain-kansas-2886.txt"),
+  report("2886"),
+  "https://www.ams.usda.gov/mnreports/ams_2886.pdf",
+);
+assert.equal(parseReportDate(fx("grain-kansas-2886.txt")), "2026-08-24");
+assert.ok(grainKs.length >= 2, `expected KS grain bids, got ${grainKs.length}`);
+assert.ok(grainKs.every((row) => row.group === "grain" && row.id.startsWith("grain.ams_2886.")));
+const ksCorn = grainKs.find((row) => /yellow_corn/i.test(row.id));
+assert.ok(ksCorn, "Kansas yellow corn Current bid");
+assert.ok(ksCorn.price >= 4.5 && ksCorn.price <= 5.0);
+assert.ok(!grainKs.some((row) => /oct/i.test(row.id)), "forward Oct-Nov KS grain is not the current bid");
+
 const grain = parseAmsReportText(
   fx("grain-portland-3148.txt"),
   report("3148"),
@@ -218,6 +231,11 @@ assert.ok(
   ),
   "leftover Direct Hay / Direct Cattle / Grain POS slugs",
 );
+assert.ok(
+  ["2960", "2886", "2711", "2851", "3147", "3878", "2771", "2887"].every((s) => slugs.includes(s)),
+  "leftover official Grain POS slugs from AMS state-grain listing",
+);
+assert.ok(!slugs.includes("3045"), "Minneapolis Daily Basis is not POS");
 assert.ok(AMS_NATIONAL_REPORTS.every((r) => !["3056", "3057", "3058", "3059", "2914"].includes(r.slug)));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "marsapi"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "nass-quick-stats"));
@@ -225,6 +243,8 @@ assert.ok(SKIPPED_SOURCES.some((s) => s.id === "wasde-psd-esr"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "SJ_LS850"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "hay-auction-barns"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "no-il-ga-direct-hay"));
+assert.ok(SKIPPED_SOURCES.some((s) => s.id === "ams_3045_minneapolis_basis"));
+assert.ok(SKIPPED_SOURCES.some((s) => s.id === "cattle-auction-summaries"));
 assert.equal(PRODUCT_ID, "idaho-hay-feeder-ticks");
 assert.equal(PRODUCT_NAME, "Idaho + nationwide USDA AMS hay/cattle/grain");
 
@@ -278,6 +298,7 @@ console.log(
     cattleSoutheast: cattleSe.length,
     grainPortland: grain.length,
     grainIllinois: grainIl.length,
+    grainKansas: grainKs.length,
     mergedTickCount: merged.ticks.length,
     keptTwinFalls: true,
   }),

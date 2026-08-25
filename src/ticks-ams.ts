@@ -74,6 +74,29 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "3225", group: "grain", region: "nebraska", title: "Nebraska Daily Grain Bids", esmisPublication: "nebraska-daily-grain-bids" },
   { slug: "2932", group: "grain", region: "missouri", title: "Missouri Daily Grain Bids", esmisPublication: "missouri-daily-grain-bids" },
   { slug: "2850", group: "grain", region: "iowa", title: "Iowa Daily Grain Bids", esmisPublication: "iowa-daily-grain-bids" },
+  { slug: "2960", group: "grain", region: "arkansas", title: "Arkansas Daily Grain Bids", esmisPublication: "arkansas-daily-grain-bids" },
+  { slug: "3146", group: "grain", region: "california", title: "California Weekly Grain Bids", esmisPublication: "" },
+  { slug: "3463", group: "grain", region: "indiana", title: "Indiana Weekly Grain Bids", esmisPublication: "indiana-grain-bids" },
+  { slug: "3043", group: "grain", region: "iowa_minnesota_barge", title: "Iowa-Southern Minnesota Barge Grain Bids", esmisPublication: "iowa-southern-minnesota-barge-terminal-grain-bids" },
+  { slug: "2886", group: "grain", region: "kansas", title: "Kansas Daily Grain Bids", esmisPublication: "kansas-daily-grain-bids" },
+  { slug: "2892", group: "grain", region: "kentucky", title: "Kentucky Daily Grain Bids", esmisPublication: "kentucky-daily-grain-bids" },
+  { slug: "3147", group: "grain", region: "gulf", title: "Louisiana and Texas Gulf Export Bids", esmisPublication: "" },
+  { slug: "2714", group: "grain", region: "maryland", title: "Maryland Weekly Grain Bids", esmisPublication: "maryland-grain-bids" },
+  { slug: "3049", group: "grain", region: "southern_minnesota", title: "Southern Minnesota Daily Grain Bids", esmisPublication: "southern-minnesota-daily-grain-bids" },
+  { slug: "2928", group: "grain", region: "mississippi", title: "Mississippi Daily Grain Bids", esmisPublication: "mississippi-daily-grain-bids" },
+  { slug: "2771", group: "grain", region: "montana", title: "Montana Daily Elevator Grain Bids", esmisPublication: "montana-daily-grain-bids" },
+  { slug: "3156", group: "grain", region: "north_carolina", title: "North Carolina Daily Grain Bids", esmisPublication: "" },
+  { slug: "3878", group: "grain", region: "north_dakota", title: "North Dakota Daily Grain Bids", esmisPublication: "north-dakota-daily-grain-bids" },
+  { slug: "2851", group: "grain", region: "ohio", title: "Ohio Daily Grain Bids", esmisPublication: "ohio-daily-grain-bids" },
+  { slug: "3100", group: "grain", region: "oklahoma", title: "Oklahoma Daily Grain Bids", esmisPublication: "oklahoma-daily-grain-bids" },
+  { slug: "3091", group: "grain", region: "pennsylvania", title: "Pennsylvania Weekly Grain Bids", esmisPublication: "pennsylvania-grain-bids" },
+  { slug: "2787", group: "grain", region: "south_carolina", title: "South Carolina Daily Grain Bids", esmisPublication: "south-carolina-daily-grain-bids" },
+  { slug: "3186", group: "grain", region: "south_dakota", title: "South Dakota Daily Grain Bids", esmisPublication: "south-dakota-daily-grain-bids" },
+  { slug: "3088", group: "grain", region: "tennessee", title: "Tennessee Daily Grain Bids", esmisPublication: "tennessee-daily-grain-bids" },
+  { slug: "2711", group: "grain", region: "texas", title: "Texas Daily Grain Bids", esmisPublication: "texas-daily-grain-bids" },
+  { slug: "3167", group: "grain", region: "virginia", title: "Virginia Daily Grain Bids", esmisPublication: "virginia-daily-grain-bids" },
+  { slug: "3239", group: "grain", region: "wyoming", title: "Wyoming Daily Grain Bids", esmisPublication: "wyoming-daily-grain-bids" },
+  { slug: "2887", group: "grain", region: "national", title: "National Daily Sunflower Canola Millet Flaxseed", esmisPublication: "national-daily-sunflower-canola-millet-and-flaxseed-report" },
 ];
 
 export const SKIPPED_SOURCES = [
@@ -87,6 +110,9 @@ export const SKIPPED_SOURCES = [
   { id: "ams_3056_3057_3058_3059_2914", why: "already collected on /ticks (Idaho/Oregon/Columbia Basin hay, NW Direct cattle, PNW pulses)" },
   { id: "no-il-ga-direct-hay", why: "AMS hay listing has no Illinois or Georgia Direct Hay — only local hay-auction barn PDFs, which we skip" },
   { id: "retired-city-grain-txt", why: "sj_gr851 / gx_gr110 / wh_gr110 / jc_gr111 are retired or already plaintext city grain .txt — skip wrapping" },
+  { id: "ams_3045_minneapolis_basis", why: "AMS_3045 Minneapolis Daily Basis is a MIAX floor-basis sheet, not a POS bid table" },
+  { id: "cattle-auction-summaries", why: "state cattle-auction summary PDFs are local-barn dumps; this pass is leftover Grain POS" },
+  { id: "lmr-slaughter-pdfs", why: "national/regional Direct Slaughter PDFs are LMR fed-cattle tables, not the feeder/POS parser this door already sells" },
 ] as const;
 
 export type AmsTick = {
