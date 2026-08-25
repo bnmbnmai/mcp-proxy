@@ -13,6 +13,7 @@ import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { paidBodyCatalogNote } from "./paid-records.js";
 
 export const FIFRA_ORDERS_PATH = "/fifra-orders";
 export const FIFRA_ORDERS_MANIFEST_PATH = "/fifra-orders/manifest.json";
@@ -800,7 +801,7 @@ export function buildFifraOrdersManifest(snap: FifraOrdersSnapshot | null): Reco
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + institution + docket + date + official PDF URL only. Order body is the paid GET /fifra-orders payload. Not the press/teaser. Not people. Not Federal Register raw_text. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not CFTC /cftc-orders.",
+    note: paidBodyCatalogNote("/fifra-orders", 'Full catalog: count + institution + docket + date + official URL. Not the press/teaser'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

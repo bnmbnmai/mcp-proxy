@@ -9,6 +9,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
+import { paidBodyCatalogNote } from "./paid-records.js";
 
 export const FORM_483_PATH = "/form-483";
 export const FORM_483_MANIFEST_PATH = "/form-483/manifest.json";
@@ -755,7 +756,7 @@ export function buildForm483Manifest(snap: Form483Snapshot | null): Record<strin
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + id + firm + dates only. Observation / letter body is the paid GET /form-483 payload.",
+    note: paidBodyCatalogNote("/form-483", 'Full catalog: count + id + firm + dates + official URL'),
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
     network: "base",
     asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",

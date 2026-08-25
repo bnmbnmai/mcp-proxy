@@ -11,6 +11,7 @@ import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { paidBodyCatalogNote } from "./paid-records.js";
 
 export const SWISSPAR_PATH = "/swisspar";
 export const SWISSPAR_MANIFEST_PATH = "/swisspar/manifest.json";
@@ -586,7 +587,7 @@ export function buildSwissparManifest(snap: SwissparSnapshot | null): Record<str
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + name + date + MA + official source only. Evaluation / benefit-risk / study-result text is the paid GET /swisspar payload. Not the A–Z HTML index. Not EMA EPARs. Not FDA CDER reviews. Not the HCP/FI appendix.",
+    note: paidBodyCatalogNote("/swisspar", 'Full catalog: count + name + date + MA + official URL. Not the A–Z HTML index'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

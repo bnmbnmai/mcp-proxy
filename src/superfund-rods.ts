@@ -9,6 +9,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
+import { paidBodyCatalogNote } from "./paid-records.js";
 
 export const SUPERFUND_RODS_PATH = "/superfund-rods";
 export const SUPERFUND_RODS_MANIFEST_PATH = "/superfund-rods/manifest.json";
@@ -736,7 +737,7 @@ export function buildSuperfundRodsManifest(snap: SuperfundRodSnapshot | null): R
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + institution + docket + date + official PDF URL only. ROD body is the paid GET /superfund-rods payload. Not people. Not a Proposed Plan. Not AIR /air-letters. Not TTB /ttb-oic. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders.",
+    note: paidBodyCatalogNote("/superfund-rods", 'Full catalog: count + institution + docket + date + official URL. Not a Proposed Plan or fact sheet'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

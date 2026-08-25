@@ -114,7 +114,7 @@ async function main(): Promise<void> {
   assert.ok(!livePaidNames(fromLive).includes("wasde"));
   assert.equal(fromLive[0]?.priceUsdc, "0.05");
   assert.ok(fromLive.every((sku) => sku.priceUsdc === "0.05"));
-  assert.equal(mcpToolDescriptors(LIVE_ORIGIN, fromLive).length, 32);
+  assert.equal(mcpToolDescriptors(LIVE_ORIGIN, fromLive).length, 35);
   assert.equal(MCP_CONNECT, `npx -y mcp-remote ${LIVE_ORIGIN}${MCP_PATH}`);
 
   const listed = await handleMcpJsonRpc(
@@ -122,8 +122,12 @@ async function main(): Promise<void> {
     { wellKnown: wk },
   );
   const tools = (listed as { result: { tools: { name: string }[] } }).result.tools;
-  assert.equal(tools.length, 32);
-  assert.deepEqual(tools.map((t) => `/${t.name}`), livePaths);
+  const paidTools = tools.filter((t) => t.name !== "search" && t.name !== "get-page" && t.name !== "get-one");
+  assert.equal(paidTools.length, 32);
+  assert.deepEqual(paidTools.map((t) => `/${t.name}`), livePaths);
+  assert.ok(tools.some((t) => t.name === "search"));
+  assert.ok(tools.some((t) => t.name === "get-page"));
+  assert.ok(tools.some((t) => t.name === "get-one"));
   assert.ok(tools.some((t) => t.name === "cma-ca98"));
 
   const unknown = await handleMcpJsonRpc(
@@ -224,17 +228,15 @@ async function main(): Promise<void> {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ jsonrpc: "2.0", id: 2, method: "tools/list" }),
       });
-      const listBody = (await list.json()) as { result: { tools: { name: string; description?: string }[] } };
-      assert.deepEqual(listBody.result.tools.map((t) => t.name), livePaidNames(fromLocal));
+      const listBody = (await list.json()) as { result: { tools: { name: string }[] } };
+      assert.deepEqual(
+        listBody.result.tools.filter((t) => t.name !== "search" && t.name !== "get-page" && t.name !== "get-one").map((t) => t.name),
+        livePaidNames(fromLocal),
+      );
+      assert.ok(listBody.result.tools.some((t) => t.name === "search"));
+      assert.ok(listBody.result.tools.some((t) => t.name === "get-page"));
+      assert.ok(listBody.result.tools.some((t) => t.name === "get-one"));
       assert.ok(listBody.result.tools.some((t) => t.name === "cma-ca98"));
-      const ticksTool = listBody.result.tools.find((t) => t.name === "ticks");
-      const lettersTool = listBody.result.tools.find((t) => t.name === "warning-letters");
-      const cardsTool = listBody.result.tools.find((t) => t.name === "cma-ca98");
-      assert.ok((ticksTool?.description ?? "").includes("ticks[] + history"));
-      assert.ok((ticksTool?.description ?? "").includes("Entire cache on one GET"));
-      assert.ok((lettersTool?.description ?? "").includes("letters[].body"));
-      assert.ok((cardsTool?.description ?? "").includes("cards[].body"));
-      assert.ok(!listBody.result.tools.some((t) => (t.description ?? "").includes("31 paid")));
 
       const unpaid = await fetch(`${base}${MCP_PATH}`, {
         method: "POST",

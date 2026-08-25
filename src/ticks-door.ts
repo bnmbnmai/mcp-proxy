@@ -2,7 +2,7 @@
 /**
  * Thin x402 pay-per-pull door for the BNM Data Shop.
  *
- * GET /ticks — Idaho hay + feeder ticks ($0.05 USDC on Base)
+ * GET /ticks — US hay, cattle, and grain ($0.05 USDC on Base)
  * GET /import-alerts — FDA Import Alert / DWPE firm ticks ($0.05)
  * GET /import-alerts/manifest.json — free catalog + schema + sample rows
  * GET /mariners — USCG D13 / Northwest Local Notice to Mariners ($0.05)
@@ -84,14 +84,11 @@ import {
   TICKS_AMOUNT_ATOMIC,
   loadImportAlerts,
   loadManifest,
-  manifestFromSnapshot,
-  readSnapshot as readImportAlertsSnapshot,
 } from "./import-alerts.js";
 import {
   D7_SPEC,
   D8_SPEC,
   D11_SPEC,
-  D13_SPEC,
   MARINERS_AMOUNT_ATOMIC,
   MARINERS_D7_MANIFEST_PATH,
   MARINERS_D7_PATH,
@@ -101,7 +98,6 @@ import {
   MARINERS_D11_PATH,
   MARINERS_MANIFEST_PATH,
   MARINERS_PATH,
-  buildMarinersManifest,
   loadMariners,
   loadMarinersD7,
   loadMarinersD7Manifest,
@@ -110,7 +106,6 @@ import {
   loadMarinersD11,
   loadMarinersD11Manifest,
   loadMarinersManifest,
-  readSnapshot as readMarinersSnapshot,
 } from "./mariners.js";
 import {
   WARNING_LETTERS_AMOUNT_ATOMIC,
@@ -314,6 +309,15 @@ import {
   paidTtbOicBody,
   paidUntitledLettersBody,
   paidWarningLettersBody,
+  decorateExtractedBodyManifest,
+  isExtractedBodySku,
+  newestOfficialTextsCopy,
+  oneOfficialTextCopy,
+  paidBodyOptsFromSearch,
+  paidBodyQueryPath,
+  paidBodyWindow,
+  SINGLE_DOC_AMOUNT_ATOMIC,
+  type PaidBodyOpts,
 } from "./paid-records.js";
 import { mergeAmsNationalTicks } from "./ticks-ams.js";
 import {
@@ -349,7 +353,7 @@ export { MCP_PATH } from "./ticks-mcp.js";
 export const X402SCAN_SERVER_URL =
   "https://www.x402scan.com/server/c6f584c5-e494-41d1-aa02-2efb07ac3546";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
-export const PRODUCT_NAME = "Idaho + nationwide USDA AMS hay/cattle/grain";
+export const PRODUCT_NAME = "US hay, cattle, and grain";
 export const PRODUCT_VERSION = "1.4.0";
 const COLLECT_MEMO_RE =
   /we are not inventing|this report has no organic row|not reusing an older organic|usda printed no organic/i;
@@ -893,10 +897,16 @@ function usdcDisplayFromAtomic(atomic: string | null | undefined): string | null
   return `$${usdcPriceString(atomic)}`;
 }
 
+const PAID_BODY_N = paidBodyWindow();
+const PAID_WINDOW_COPY = `GET ?id= one official text ($0.02). Newest chunk on a plain GET (${newestOfficialTextsCopy(PAID_BODY_N)}, $0.05); older page ?before= another $0.05.`;
+/** Shop-wide discovery. Free index/search, then pay one text or the page. Never “entire current cache”. */
+const BODY_PAGE_DISCOVERY =
+  `Extracted-body doors: free index/search on /{door}/manifest.json or /{door}/index (?q=, optional before/date), then pay ${oneOfficialTextCopy()} or the page ($0.05). ${newestOfficialTextsCopy(PAID_BODY_N)} on a plain GET ($0.05), or the whole current set if fewer; older pages on the same URL (?before, another $0.05). Table doors (/ticks, /import-alerts) stay the whole current table.`;
+
 const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> = {
   ticks: {
     description:
-      "Call GET /ticks when you need the current official Idaho + nationwide USDA AMS hay/cattle/grain snapshot (PNW barns + AMS Direct reports; IBC grain; WD1 $/AF). JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /ticks when you need the current official US hay, cattle, and grain snapshot (USDA AMS nationwide plus PNW barns; IBC grain; WD1 $/AF). JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: TICKS_PATH,
   },
   "import-alerts": {
@@ -926,402 +936,135 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
   },
   "warning-letters": {
     description:
-      "Call GET /warning-letters when you need official FDA warning-letter bodies (firm, date, subject, full letter text) parsed from fda.gov HTML. Not the import-alerts IA feed. Does not invent letter text. Paid JSON keeps letters[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /warning-letters when you need official FDA warning-letter bodies (firm, date, subject, full letter text) parsed from fda.gov HTML. Not the import-alerts IA feed. Does not invent letter text. " + PAID_WINDOW_COPY,
     resourcePath: WARNING_LETTERS_PATH,
   },
   "untitled-letters": {
     description:
-      "Call GET /untitled-letters when you need official FDA Untitled Letter text (CDER OPDP + CBER APLB promo) extracted from per-letter PDFs at /media/{id}/download. Not /warning-letters HTML. Not the HTML index. Does not invent letter text. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /untitled-letters when you need official FDA Untitled Letter text (CDER OPDP + CBER APLB promo) extracted from per-letter PDFs at /media/{id}/download. Not /warning-letters HTML. Not the HTML index. Does not invent letter text. " + PAID_WINDOW_COPY,
     resourcePath: UNTITLED_LETTERS_PATH,
   },
   awa: {
     description:
-      "Call GET /awa when you need official USDA APHIS Animal Welfare Act inspection-report observation/narrative text extracted from per-report PDFs on the Public Search Tool. Not the Salesforce metadata index. Not Data Liberation. Not /form-483. Not CMS 2567. Not CQC. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /awa when you need official USDA APHIS Animal Welfare Act inspection-report observation/narrative text extracted from per-report PDFs on the Public Search Tool. Not the Salesforce metadata index. Not Data Liberation. Not /form-483. Not CMS 2567. Not CQC. " + PAID_WINDOW_COPY,
     resourcePath: AWA_PATH,
   },
   swisspar: {
     description:
-      "Call GET /swisspar when you need official Swissmedic first-authorisation SwissPAR evaluation text extracted from per-product PDFs. Not the A–Z HTML index. Not EMA EPARs/referrals. Not FDA CDER reviews. Not the HCP/FI appendix. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /swisspar when you need official Swissmedic first-authorisation SwissPAR evaluation text extracted from per-product PDFs. Not the A–Z HTML index. Not EMA EPARs/referrals. Not FDA CDER reviews. Not the HCP/FI appendix. " + PAID_WINDOW_COPY,
     resourcePath: SWISSPAR_PATH,
   },
   pcac: {
     description:
-      "Call GET /pcac when you need official FDA-authored PCAC 503A briefing-memo evaluation text extracted from per-substance PDFs. Not the FR notice or docket 0001. Not CDER multidisciplinary reviews. Not combined sponsor/AdComm packs. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /pcac when you need official FDA-authored PCAC 503A briefing-memo evaluation text extracted from per-substance PDFs. Not the FR notice or docket 0001. Not CDER multidisciplinary reviews. Not combined sponsor/AdComm packs. " + PAID_WINDOW_COPY,
     resourcePath: PCAC_PATH,
   },
   "ftc-wl": {
     description:
-      "Call GET /ftc-wl when you need official FTC Bureau of Consumer Protection warning-letter text extracted from per-letter PDFs on ftc.gov. Not the legal-library index. Not the Drupal node. Not FDA /warning-letters. Not official templates. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /ftc-wl when you need official FTC Bureau of Consumer Protection warning-letter text extracted from per-letter PDFs on ftc.gov. Not the legal-library index. Not the Drupal node. Not FDA /warning-letters. Not official templates. " + PAID_WINDOW_COPY,
     resourcePath: FTC_WL_PATH,
   },
   "cfpb-orders": {
     description:
-      "Call GET /cfpb-orders when you need official CFPB-authored consent-order / administrative-order text extracted from per-order PDFs on files.consumerfinance.gov. Not the enforcement index. Not the action-page teaser. Not the Consumer Complaint Database. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /cfpb-orders when you need official CFPB-authored consent-order / administrative-order text extracted from per-order PDFs on files.consumerfinance.gov. Not the enforcement index. Not the action-page teaser. Not the Consumer Complaint Database. Not FTC /ftc-wl. " + PAID_WINDOW_COPY,
     resourcePath: CFPB_ORDERS_PATH,
   },
   "occ-cd": {
     description:
-      "Call GET /occ-cd when you need official OCC institution Cease-and-Desist / Consent Order text extracted from per-order PDFs on occ.gov/static/enforcement-actions. Not EASearch ExportToJSON metadata. Not IAP / people / prohibition / CMP-against-person. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not SEC EDGAR complete-submission .txt. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /occ-cd when you need official OCC institution Cease-and-Desist / Consent Order text extracted from per-order PDFs on occ.gov/static/enforcement-actions. Not EASearch ExportToJSON metadata. Not CFPB /cfpb-orders. Not FTC /ftc-wl. " + PAID_WINDOW_COPY,
     resourcePath: OCC_CD_PATH,
   },
   "fdic-orders": {
     description:
-      "Call GET /fdic-orders when you need official FDIC institution consent-order / Cease-and-Desist text extracted from per-order PDFs on orders.fdic.gov. Not the EDOS Salesforce index. Not BankFind. Not monthly NR counts. Not IAP / 1829 / Section 19 people files. Not EDGAR 8-K. Not Federal Register raw_text. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /fdic-orders when you need official FDIC institution consent-order / Cease-and-Desist text extracted from per-order PDFs on orders.fdic.gov. Not the EDOS Salesforce index. Not BankFind. Not monthly NR counts. Not EDGAR 8-K. Not Federal Register raw_text. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. " + PAID_WINDOW_COPY,
     resourcePath: FDIC_ORDERS_PATH,
   },
   "frb-orders": {
     description:
-      "Call GET /frb-orders when you need official FRB institution Cease-and-Desist / written-agreement / PCA text extracted from per-order PDFs on federalreserve.gov. Not the official enforcement CSV. Not ea-old.json / ea-cms-recent.json / ne-press.json teasers. Not BankFind. Not IAP / prohibition-of-employee people files. Not EDGAR 8-K. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /frb-orders when you need official FRB institution Cease-and-Desist / written-agreement / PCA text extracted from per-order PDFs on federalreserve.gov. Not the official enforcement CSV. Not ea-old.json / ea-cms-recent.json / ne-press.json teasers. Not BankFind. Not EDGAR 8-K. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. " + PAID_WINDOW_COPY,
     resourcePath: FRB_ORDERS_PATH,
   },
   "ncua-orders": {
     description:
-      "Call GET /ncua-orders when you need official NCUA institution consent Cease-and-Desist text extracted from per-order HTML on ncua.gov. Not the official CSV. Not Drupal ?_format=json. Not 2026 people/IAP. Not late-filer CMP. Not LUAs. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /ncua-orders when you need official NCUA institution consent Cease-and-Desist text extracted from per-order HTML on ncua.gov. Not the official CSV. Not late-filer CMP. Not LUAs. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. " + PAID_WINDOW_COPY,
     resourcePath: NCUA_ORDERS_PATH,
   },
   "fincen-orders": {
     description:
-      "Call GET /fincen-orders when you need official FinCEN institution consent-order text extracted from per-order PDFs on fincen.gov. Not the enforcement-actions index teaser. Not people-only CMP. Not a news-release wrap. Not Federal Register raw_text. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /fincen-orders when you need official FinCEN institution consent-order text extracted from per-order PDFs on fincen.gov. Not the enforcement-actions index teaser. Not a news-release wrap. " + PAID_WINDOW_COPY,
     resourcePath: FINCEN_ORDERS_PATH,
   },
   "ferc-orders": {
     description:
-      "Call GET /ferc-orders when you need official FERC institution stipulation-and-consent / show-cause / civil-penalty text extracted from per-order PDFs on cms.ferc.gov. Not the civil-penalty index teaser. Not eLibrary metadata. Not Federal Register raw_text. Not people files. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /ferc-orders when you need official FERC institution stipulation-and-consent / show-cause / civil-penalty text extracted from per-order PDFs on cms.ferc.gov. Not the civil-penalty index teaser. Not eLibrary metadata. " + PAID_WINDOW_COPY,
     resourcePath: FERC_ORDERS_PATH,
   },
   "ofac-orders": {
     description:
-      "Call GET /ofac-orders when you need official OFAC institution/company enforcement-release text extracted from per-release PDFs on ofac.treasury.gov. Not the civil-penalties chart/teaser/RSS. Not people. Not Federal Register raw_text. Not FinCEN /fincen-orders. Not FERC /ferc-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not BIS /bis-orders. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /ofac-orders when you need official OFAC institution/company enforcement-release text extracted from per-release PDFs on ofac.treasury.gov. Not the civil-penalties chart/teaser/RSS. " + PAID_WINDOW_COPY,
     resourcePath: OFAC_ORDERS_PATH,
   },
   "bis-orders": {
     description:
-      "Call GET /bis-orders when you need official BIS institution/company charging-letter / order / settlement text extracted from per-order PDFs on bis.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not CFTC /cftc-orders. Not FIFRA /fifra-orders. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /bis-orders when you need official BIS institution/company charging-letter / order / settlement text extracted from per-order PDFs on bis.gov. Does not invent order text. " + PAID_WINDOW_COPY,
     resourcePath: BIS_ORDERS_PATH,
   },
   "cftc-orders": {
     description:
-      "Call GET /cftc-orders when you need official CFTC institution/company enforcement-order / settlement text extracted from per-order PDFs on cftc.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not FIFRA /fifra-orders. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /cftc-orders when you need official CFTC institution/company enforcement-order / settlement text extracted from per-order PDFs on cftc.gov. Does not invent order text. " + PAID_WINDOW_COPY,
     resourcePath: CFTC_ORDERS_PATH,
   },
   "fifra-orders": {
     description:
-      "Call GET /fifra-orders when you need official EPA FIFRA institution/company order / consent text extracted from per-order PDFs on yosemite.epa.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not CFTC /cftc-orders. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not De Novo /denovo-orders. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /fifra-orders when you need official EPA FIFRA institution/company order / consent text extracted from per-order PDFs on yosemite.epa.gov. Does not invent order text. " + PAID_WINDOW_COPY,
     resourcePath: FIFRA_ORDERS_PATH,
   },
   "denovo-orders": {
     description:
-      "Call GET /denovo-orders when you need official FDA De Novo institution/company classification-order text extracted from per-order PDFs on accessdata.fda.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not FIFRA /fifra-orders. Not CFTC /cftc-orders. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not TTB /ttb-oic. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /denovo-orders when you need official FDA De Novo classification-order text extracted from per-order PDFs on accessdata.fda.gov. Does not invent order text. " + PAID_WINDOW_COPY,
     resourcePath: DENOVO_ORDERS_PATH,
   },
   "ttb-oic": {
     description:
-      "Call GET /ttb-oic when you need official TTB institution/company Offer in Compromise text extracted from Abstract and Statement PDFs on ttb.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not AIR /air-letters. Not ICO /ico-mpn. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /ttb-oic when you need official TTB Offer in Compromise text extracted from Abstract and Statement PDFs on ttb.gov. Does not invent order text. " + PAID_WINDOW_COPY,
     resourcePath: TTB_OIC_PATH,
   },
   "air-letters": {
     description:
-      "Call GET /air-letters when you need official USDA APHIS institution/company Am I Regulated (AIR) confirmation-letter text extracted from per-letter PDFs on direct.aphis.usda.gov. Not the press/teaser. Not people. Not Federal Register raw_text. Not TTB /ttb-oic. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders. Not BIS /bis-orders. Not OFAC /ofac-orders. Not FERC /ferc-orders. Not FinCEN /fincen-orders. Not NCUA /ncua-orders. Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl. Not Superfund /superfund-rods. Not ICO /ico-mpn. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /air-letters when you need official USDA APHIS Am I Regulated (AIR) confirmation-letter text extracted from per-letter PDFs on direct.aphis.usda.gov. Does not invent letter text. " + PAID_WINDOW_COPY,
     resourcePath: AIR_LETTERS_PATH,
   },
   "superfund-rods": {
     description:
-      "Call GET /superfund-rods when you need official EPA Superfund institution/site Record of Decision text extracted from SEMS PDFs on semspub.epa.gov. Not a Proposed Plan or fact sheet. Not people. Not Federal Register raw_text. Not AIR /air-letters. Not TTB /ttb-oic. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders. Not BIS /bis-orders. Not ICO /ico-mpn. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /superfund-rods when you need official EPA Superfund Record of Decision text extracted from SEMS PDFs on semspub.epa.gov. Not a Proposed Plan or fact sheet. " + PAID_WINDOW_COPY,
     resourcePath: SUPERFUND_RODS_PATH,
   },
   "ico-mpn": {
     description:
-      "Call GET /ico-mpn when you need official UK ICO institution/company Monetary Penalty Notice text extracted from per-notice PDFs on ico.org.uk. Not the press/teaser. Not people. Not Federal Register raw_text. Not Superfund /superfund-rods. Not AIR /air-letters. Not TTB /ttb-oic. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders. Not CMA /cma-ca98. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /ico-mpn when you need official UK ICO Monetary Penalty Notice text extracted from per-notice PDFs on ico.org.uk. Does not invent notice text. " + PAID_WINDOW_COPY,
     resourcePath: ICO_MPN_PATH,
   },
   "cma-ca98": {
     description:
-      "Call GET /cma-ca98 when you need official UK CMA institution/company CA98 infringement-decision text extracted from assets.publishing.service.gov.uk PDFs. Not the press teaser. Not people. Not ICO /ico-mpn. Not Superfund /superfund-rods. Crown/OGL v3.0; logo reserved. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /cma-ca98 when you need official UK CMA CA98 infringement-decision text extracted from assets.publishing.service.gov.uk PDFs. Crown/OGL v3.0; logo reserved. " + PAID_WINDOW_COPY,
     resourcePath: CMA_CA98_PATH,
   },
   "form-483": {
     description:
-      "Call GET /form-483 when you need official FDA Form 483 inspectional observation bodies parsed from posted OII FOIA Electronic Reading Room PDFs. Not warning letters. Not CMS 2567. Does not invent observation text. Paid JSON keeps letters[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /form-483 when you need official FDA Form 483 inspectional observation bodies parsed from posted OII FOIA Electronic Reading Room PDFs. Not warning letters. Not CMS 2567. Does not invent observation text. " + PAID_WINDOW_COPY,
     resourcePath: FORM_483_PATH,
   },
   gmp: {
     description:
-      "Call GET /gmp when you need official Health Canada Drug GMP inspection report-card observation text plus C.02 cites from fullReportCard.ashx. Not the 21k-row public search index. Does not invent observations. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /gmp when you need official Health Canada Drug GMP inspection report-card observation text plus C.02 cites from fullReportCard.ashx. Not the 21k-row public search index. Does not invent observations. " + PAID_WINDOW_COPY,
     resourcePath: GMP_PATH,
   },
   "gmp-md": {
     description:
-      "Call GET /gmp-md when you need official Health Canada medical-device inspection report-card observation text plus MDR cites from md/handler/fullReportCard.ashx. Not the ratings-only search index. Not /gmp Drug GMP. Does not invent observations. Paid JSON keeps cards[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /gmp-md when you need official Health Canada medical-device inspection report-card observation text plus MDR cites from md/handler/fullReportCard.ashx. Not the ratings-only search index. Not /gmp Drug GMP. Does not invent observations. " + PAID_WINDOW_COPY,
     resourcePath: GMP_MD_PATH,
   },
 };
-
-export type SkuBag = {
-  count: number;
-  firms?: number;
-  countLabel: string;
-  paidJson: string;
-  oneLine: string;
-};
-
-const SKU_ONE_LINE: Record<DoorSku, string> = {
-  ticks: "Idaho + nationwide USDA AMS hay/cattle/grain ticks (PNW barns, IBC grain, WD1 $/AF)",
-  "import-alerts": "FDA Import Alerts / DWPE firm-product snapshot",
-  mariners: "USCG D13 / Northwest Local Notice to Mariners",
-  "mariners-d11": "USCG D11 / Southwest Local Notice to Mariners",
-  "mariners-d7": "USCG D7 / Southeast Local Notice to Mariners",
-  "mariners-d8": "USCG D8 / Gulf Local Notice to Mariners",
-  "warning-letters": "FDA warning-letter bodies (firm, date, subject, full letter text)",
-  "untitled-letters": "FDA Untitled Letter text (CDER OPDP + CBER promo PDFs)",
-  awa: "USDA APHIS AWA inspection-report observation text (official per-report PDFs)",
-  swisspar: "Swissmedic first-authorisation SwissPAR evaluation text (official per-product PDFs)",
-  pcac: "FDA PCAC 503A briefing-memo evaluation text (official per-substance PDFs)",
-  "ftc-wl": "FTC BCP warning-letter text (official per-letter PDFs)",
-  "cfpb-orders": "CFPB consent-order / administrative-order text (official per-order PDFs)",
-  "occ-cd": "OCC institution C&D / consent-order text (official per-order PDFs)",
-  "fdic-orders": "FDIC institution consent-order / C&D text (official per-order PDFs)",
-  "frb-orders": "FRB institution C&D / written-agreement / PCA text (official per-order PDFs)",
-  "ncua-orders": "NCUA institution consent C&D text (official per-order HTML)",
-  "fincen-orders": "FinCEN institution consent-order text (official per-order PDFs)",
-  "ferc-orders": "FERC institution stipulation-and-consent text (official cms.ferc.gov PDFs)",
-  "ofac-orders": "OFAC institution enforcement-release text (official ofac.treasury.gov PDFs)",
-  "bis-orders": "BIS institution charging-letter / order text (official bis.gov PDFs)",
-  "cftc-orders": "CFTC institution enforcement-order / settlement text (official cftc.gov PDFs)",
-  "fifra-orders": "EPA FIFRA institution order / consent text (official yosemite.epa.gov PDFs)",
-  "denovo-orders": "FDA De Novo classification-order text (official accessdata.fda.gov PDFs)",
-  "ttb-oic": "TTB Offer in Compromise text (official ttb.gov PDFs)",
-  "air-letters": "USDA APHIS AIR confirmation-letter text (official direct.aphis.usda.gov PDFs)",
-  "superfund-rods": "EPA Superfund Record of Decision text (official semspub.epa.gov PDFs)",
-  "ico-mpn": "ICO Monetary Penalty Notice text (official ico.org.uk PDFs)",
-  "cma-ca98": "UK CMA CA98 infringement-decision text (official assets.publishing.service.gov.uk PDFs)",
-  "form-483": "FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs)",
-  gmp: "Health Canada Drug GMP report-card observation text + C.02 cites",
-  "gmp-md": "Health Canada medical-device report-card observation text + MDR cites",
-};
-
-const SHOP_PRODUCT_ID: Record<DoorSku, string> = {
-  ticks: "idaho-hay-feeder-ticks",
-  "import-alerts": "fda-import-alerts",
-  mariners: "uscg-d13-lnm",
-  "mariners-d11": D11_SPEC.productId,
-  "mariners-d7": D7_SPEC.productId,
-  "mariners-d8": D8_SPEC.productId,
-  "warning-letters": "fda-warning-letter-bodies",
-  "untitled-letters": "fda-untitled-letter-bodies",
-  awa: "aphis-awa-inspection-observation-text",
-  swisspar: "swisspar-first-auth",
-  pcac: "fda-pcac-503a-memos",
-  "ftc-wl": "ftc-bcp-warning-letter-bodies",
-  "cfpb-orders": "cfpb-consent-order-bodies",
-  "occ-cd": "occ-institution-cd-bodies",
-  "fdic-orders": "fdic-institution-order-bodies",
-  "frb-orders": "frb-institution-order-bodies",
-  "ncua-orders": "ncua-institution-order-bodies",
-  "fincen-orders": "fincen-institution-order-bodies",
-  "ferc-orders": "ferc-institution-order-bodies",
-  "ofac-orders": "ofac-institution-order-bodies",
-  "bis-orders": "bis-institution-order-bodies",
-  "cftc-orders": "cftc-institution-order-bodies",
-  "fifra-orders": "fifra-institution-order-bodies",
-  "denovo-orders": "fda-denovo-classification-order-bodies",
-  "ttb-oic": "ttb-institution-oic-bodies",
-  "air-letters": "aphis-air-confirmation-letter-bodies",
-  "superfund-rods": "epa-superfund-rod-bodies",
-  "ico-mpn": "ico-institution-mpn-bodies",
-  "cma-ca98": "cma-ca98-infringement-decision-bodies",
-  "form-483": "fda-form-483-bodies",
-  gmp: "hc-gmp-report-cards",
-  "gmp-md": "hc-md-inspection-cards",
-};
-
-const SHOP_MANIFEST_PATH: Record<DoorSku, string> = {
-  ticks: MANIFEST_PATH,
-  "import-alerts": IMPORT_ALERTS_MANIFEST_PATH,
-  mariners: MARINERS_MANIFEST_PATH,
-  "mariners-d11": MARINERS_D11_MANIFEST_PATH,
-  "mariners-d7": MARINERS_D7_MANIFEST_PATH,
-  "mariners-d8": MARINERS_D8_MANIFEST_PATH,
-  "warning-letters": WARNING_LETTERS_MANIFEST_PATH,
-  "untitled-letters": UNTITLED_LETTERS_MANIFEST_PATH,
-  awa: AWA_MANIFEST_PATH,
-  swisspar: SWISSPAR_MANIFEST_PATH,
-  pcac: PCAC_MANIFEST_PATH,
-  "ftc-wl": FTC_WL_MANIFEST_PATH,
-  "cfpb-orders": CFPB_ORDERS_MANIFEST_PATH,
-  "occ-cd": OCC_CD_MANIFEST_PATH,
-  "fdic-orders": FDIC_ORDERS_MANIFEST_PATH,
-  "frb-orders": FRB_ORDERS_MANIFEST_PATH,
-  "ncua-orders": NCUA_ORDERS_MANIFEST_PATH,
-  "fincen-orders": FINCEN_ORDERS_MANIFEST_PATH,
-  "ferc-orders": FERC_ORDERS_MANIFEST_PATH,
-  "ofac-orders": OFAC_ORDERS_MANIFEST_PATH,
-  "bis-orders": BIS_ORDERS_MANIFEST_PATH,
-  "cftc-orders": CFTC_ORDERS_MANIFEST_PATH,
-  "fifra-orders": FIFRA_ORDERS_MANIFEST_PATH,
-  "denovo-orders": DENOVO_ORDERS_MANIFEST_PATH,
-  "ttb-oic": TTB_OIC_MANIFEST_PATH,
-  "air-letters": AIR_LETTERS_MANIFEST_PATH,
-  "superfund-rods": SUPERFUND_RODS_MANIFEST_PATH,
-  "ico-mpn": ICO_MPN_MANIFEST_PATH,
-  "cma-ca98": CMA_CA98_MANIFEST_PATH,
-  "form-483": FORM_483_MANIFEST_PATH,
-  gmp: GMP_MANIFEST_PATH,
-  "gmp-md": GMP_MD_MANIFEST_PATH,
-};
-
-export function skuPaidJson(sku: DoorSku): string {
-  if (sku === "ticks") return "ticks[] + history";
-  if (sku === "import-alerts") return "ticks[]";
-  if (sku === "mariners" || sku === "mariners-d11" || sku === "mariners-d7" || sku === "mariners-d8") {
-    return "notices[]";
-  }
-  if (sku === "warning-letters" || sku === "form-483") return "letters[].body";
-  return "cards[].body";
-}
-
-function skuCountUnit(sku: DoorSku): string {
-  if (sku === "ticks") return "ticks";
-  if (sku === "import-alerts") return "rows";
-  if (sku === "mariners" || sku === "mariners-d11" || sku === "mariners-d7" || sku === "mariners-d8") {
-    return "notices";
-  }
-  if (sku === "warning-letters" || sku === "form-483") return "letters";
-  return "cards";
-}
-
-export function bagFromManifest(sku: DoorSku, man: Record<string, unknown>): SkuBag {
-  const count = Number(man.tickCount ?? man.letterCount ?? man.cardCount ?? man.noticeCount ?? 0) || 0;
-  const firms = typeof man.firmCount === "number" ? man.firmCount : undefined;
-  const countLabel = sku === "import-alerts"
-    ? `${count} rows / ${firms ?? 0} firms`
-    : `${count} ${skuCountUnit(sku)}`;
-  return {
-    count,
-    firms,
-    countLabel,
-    paidJson: skuPaidJson(sku),
-    oneLine: SKU_ONE_LINE[sku],
-  };
-}
-
-async function loadSkuManifest(sku: DoorSku): Promise<Record<string, unknown>> {
-  switch (sku) {
-    case "ticks":
-      return buildTicksManifest("https://ticks.bnm.farm/ticks");
-    case "import-alerts":
-      return manifestFromSnapshot(readImportAlertsSnapshot());
-    case "mariners":
-      return buildMarinersManifest(readMarinersSnapshot(), D13_SPEC);
-    case "mariners-d11":
-      return buildMarinersManifest(readMarinersSnapshot(D11_SPEC), D11_SPEC);
-    case "mariners-d7":
-      return buildMarinersManifest(readMarinersSnapshot(D7_SPEC), D7_SPEC);
-    case "mariners-d8":
-      return buildMarinersManifest(readMarinersSnapshot(D8_SPEC), D8_SPEC);
-    case "warning-letters":
-      return loadWarningLettersManifest();
-    case "untitled-letters":
-      return loadUntitledLettersManifest();
-    case "awa":
-      return loadAwaManifest();
-    case "swisspar":
-      return loadSwissparManifest();
-    case "pcac":
-      return loadPcacManifest();
-    case "ftc-wl":
-      return loadFtcWlManifest();
-    case "cfpb-orders":
-      return loadCfpbOrdersManifest();
-    case "occ-cd":
-      return loadOccCdManifest();
-    case "fdic-orders":
-      return loadFdicOrdersManifest();
-    case "frb-orders":
-      return loadFrbOrdersManifest();
-    case "ncua-orders":
-      return loadNcuaOrdersManifest();
-    case "fincen-orders":
-      return loadFincenOrdersManifest();
-    case "ferc-orders":
-      return loadFercOrdersManifest();
-    case "ofac-orders":
-      return loadOfacOrdersManifest();
-    case "bis-orders":
-      return loadBisOrdersManifest();
-    case "cftc-orders":
-      return loadCftcOrdersManifest();
-    case "fifra-orders":
-      return loadFifraOrdersManifest();
-    case "denovo-orders":
-      return loadDenovoOrdersManifest();
-    case "ttb-oic":
-      return loadTtbOicManifest();
-    case "air-letters":
-      return loadAirLettersManifest();
-    case "superfund-rods":
-      return loadSuperfundRodsManifest();
-    case "ico-mpn":
-      return loadIcoMpnManifest();
-    case "cma-ca98":
-      return loadCmaCa98Manifest();
-    case "form-483":
-      return loadForm483Manifest();
-    case "gmp":
-      return loadGmpManifest();
-    case "gmp-md":
-      return loadGmpMdManifest();
-  }
-}
-
-let skuBagsMemo: { at: number; bags: Map<DoorSku, SkuBag> } | null = null;
-const SKU_BAGS_TTL_MS = 10_000;
-
-export async function loadSkuBags(skus: DoorSku[] = publicBazaarSkus()): Promise<Map<DoorSku, SkuBag>> {
-  const now = Date.now();
-  if (
-    skuBagsMemo
-    && now - skuBagsMemo.at < SKU_BAGS_TTL_MS
-    && skus.every((sku) => skuBagsMemo!.bags.has(sku))
-  ) {
-    return skuBagsMemo.bags;
-  }
-  const bags = new Map<DoorSku, SkuBag>(skuBagsMemo?.bags ?? []);
-  await Promise.all(skus.map(async (sku) => {
-    try {
-      bags.set(sku, bagFromManifest(sku, await loadSkuManifest(sku)));
-    } catch {
-      bags.set(sku, bagFromManifest(sku, {}));
-    }
-  }));
-  skuBagsMemo = { at: now, bags };
-  return bags;
-}
-
-export function peekSkuBag(sku: DoorSku): SkuBag | undefined {
-  return skuBagsMemo?.bags.get(sku);
-}
-
-export function skuOpenApiSummary(sku: DoorSku, bag: SkuBag): string {
-  return `${bag.oneLine} — entire cache on one GET (${bag.countLabel})`;
-}
-
-export function skuOpenApiDescription(sku: DoorSku, bag: SkuBag): string {
-  return `${SKU_COPY[sku].description} Entire current snapshot on one GET (${bag.countLabel}). Paid JSON is ${bag.paidJson}.`;
-}
-
-function shopProductCard(sku: DoorSku, bag: SkuBag): Record<string, unknown> {
-  const amount = amountAtomicFor(sku);
-  return {
-    path: SKU_COPY[sku].resourcePath,
-    product: SHOP_PRODUCT_ID[sku],
-    priceUsdc: usdcPriceString(amount),
-    amountAtomic: amount,
-    manifest: SHOP_MANIFEST_PATH[sku],
-    description: `${bag.oneLine}. Entire cache on one GET.`,
-    count: bag.count,
-    ...(bag.firms !== undefined ? { firms: bag.firms } : {}),
-  };
-}
 
 const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
   ticks: {
@@ -2243,20 +1986,15 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
 
 /** x402 Bazaar discovery block (v2 PAYMENT-REQUIRED extensions.bazaar). */
 export function bazaarExtension(sku: DoorSku): Record<string, unknown> {
-  const bag = peekSkuBag(sku);
-  const bagNote = bag
-    ? `Entire current snapshot on one GET (${bag.countLabel}). Paid JSON is ${bag.paidJson}.`
-    : `Entire current snapshot on one GET. Paid JSON is ${skuPaidJson(sku)}.`;
   return {
     info: {
       input: {
         type: "http",
         method: "GET",
-        queryParams: {},
+        queryParams: isExtractedBodySku(sku) ? { id: "", before: "", page: "" } : {},
       },
       output: {
         type: "json",
-        description: bagNote,
         example: BAZAAR_OUTPUT_EXAMPLE[sku],
       },
     },
@@ -2682,8 +2420,12 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
   };
 }
 
-export function paymentRequiredBody(resourceUrl: string, sku: DoorSku = "ticks"): Record<string, unknown> {
-  const amount = amountAtomicFor(sku);
+export function paymentRequiredBody(
+  resourceUrl: string,
+  sku: DoorSku = "ticks",
+  amountAtomic = amountAtomicFor(sku),
+): Record<string, unknown> {
+  const amount = amountAtomic;
   const copy = SKU_COPY[sku];
   const acceptV1: Record<string, unknown> = {
     scheme: "exact",
@@ -2711,8 +2453,12 @@ export function paymentRequiredBody(resourceUrl: string, sku: DoorSku = "ticks")
   };
 }
 
-export function paymentRequiredV2(resourceUrl: string, sku: DoorSku = "ticks"): Record<string, unknown> {
-  const amount = amountAtomicFor(sku);
+export function paymentRequiredV2(
+  resourceUrl: string,
+  sku: DoorSku = "ticks",
+  amountAtomic = amountAtomicFor(sku),
+): Record<string, unknown> {
+  const amount = amountAtomic;
   const copy = SKU_COPY[sku];
   const accept: Record<string, unknown> = {
     scheme: "exact",
@@ -2858,9 +2604,10 @@ function payloadExtensions(
 export function facilitatorPaymentRequirements(
   resourceUrl: string,
   sku: DoorSku,
+  amountAtomic = amountAtomicFor(sku),
 ): Record<string, unknown> {
   const accept = {
-    ...((paymentRequiredBody(resourceUrl, sku).accepts as Record<string, unknown>[])[0]),
+    ...((paymentRequiredBody(resourceUrl, sku, amountAtomic).accepts as Record<string, unknown>[])[0]),
   };
   if (isPublicBazaarSku(sku)) {
     accept.extensions = { bazaar: bazaarExtension(sku) };
@@ -3181,70 +2928,138 @@ function withShopDiscovery(
   return { ...body, ...shopDiscoveryPointers(req, port) };
 }
 
-export async function llmsTxt(): Promise<string> {
+function sendExtractedManifest(
+  req: IncomingMessage,
+  res: ServerResponse,
+  port: number,
+  url: URL,
+  body: Record<string, unknown>,
+): void {
+  sendJson(
+    res,
+    200,
+    withShopDiscovery(
+      decorateExtractedBodyManifest(body, {
+        q: url.searchParams.get("q"),
+        before: url.searchParams.get("before"),
+        date: url.searchParams.get("date"),
+        paidPath: extractedCatalogPath(url.pathname.replace(/\/+$/, "") || "/").replace(
+          /\/manifest\.json$/,
+          "",
+        ),
+      }),
+      req,
+      port,
+    ),
+  );
+}
+
+/** `/{door}/index` and `/{door}/index.json` are the free catalog on extracted-body doors. */
+function extractedCatalogPath(path: string): string {
+  const match = path.match(/^\/([^/]+)\/index(?:\.json)?$/);
+  if (!match) return path;
+  return isExtractedBodySku(match[1]) ? `/${match[1]}/manifest.json` : path;
+}
+
+export function llmsTxt(): string {
   const listed483 = form483IsPublic();
   const listedGmp = gmpIsPublic();
   const listedGmpMd = gmpMdIsPublic();
-  const bags = await loadSkuBags();
-  const paid = publicBazaarSkus().map((sku) => {
-    const bag = bags.get(sku) ?? bagFromManifest(sku, {});
-    const price = usdcDisplayFromAtomic(amountAtomicFor(sku)) ?? "$0.05";
-    return `- GET ${SKU_COPY[sku].resourcePath} — ${price} — ${bag.countLabel} — entire cache on one GET — ${bag.oneLine}. Paid JSON is ${bag.paidJson}.`;
-  });
+  const ticksPrice = usdcDisplayFromAtomic(amountAtomicFor("ticks")) ?? "$0.05";
+  const paid = [
+    `- GET /ticks — ${ticksPrice} — US hay, cattle, and grain (USDA AMS nationwide, PNW barns, IBC grain, WD1 $/AF). Paid JSON keeps ticks[] and adds records[] + asOf.`,
+    "- GET /import-alerts — $0.05 — FDA Import Alerts / DWPE firm-product snapshot. Paid JSON keeps ticks[] and adds records[] + asOf.",
+    "- GET /mariners — $0.05 — USCG D13 / Northwest Local Notice to Mariners",
+    "- GET /mariners-d11 — $0.05 — USCG D11 / Southwest Local Notice to Mariners",
+    "- GET /mariners-d7 — $0.05 — USCG D7 / Southeast Local Notice to Mariners",
+    "- GET /mariners-d8 — $0.05 — USCG D8 / Gulf Local Notice to Mariners",
+    `- GET /warning-letters — $0.05 — FDA warning-letter bodies (firm, date, subject, full letter text). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /untitled-letters — $0.05 — FDA Untitled Letter text (CDER OPDP + CBER promo PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /awa — $0.05 — USDA APHIS AWA inspection-report observation text (official per-report PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /swisspar — $0.05 — Swissmedic first-authorisation SwissPAR evaluation text (official per-product PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /pcac — $0.05 — FDA PCAC 503A briefing-memo evaluation text (official per-substance PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /ftc-wl — $0.05 — FTC BCP warning-letter text (official per-letter PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /cfpb-orders — $0.05 — CFPB consent-order / administrative-order text (official per-order PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /occ-cd — $0.05 — OCC institution C&D / consent-order text (official per-order PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /fdic-orders — $0.05 — FDIC institution consent-order / C&D text (official per-order PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /frb-orders — $0.05 — FRB institution C&D / written-agreement / PCA text (official per-order PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /ncua-orders — $0.05 — NCUA institution consent C&D text (official per-order HTML). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /fincen-orders — $0.05 — FinCEN institution consent-order text (official per-order PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /ferc-orders — $0.05 — FERC institution stipulation-and-consent text (official cms.ferc.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /ofac-orders — $0.05 — OFAC institution enforcement-release text (official ofac.treasury.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /bis-orders — $0.05 — BIS institution charging-letter / order text (official bis.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /cftc-orders — $0.05 — CFTC institution enforcement-order / settlement text (official cftc.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /fifra-orders — $0.05 — EPA FIFRA institution order / consent text (official yosemite.epa.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /denovo-orders — $0.05 — FDA De Novo classification-order text (official accessdata.fda.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /ttb-oic — $0.05 — TTB Offer in Compromise text (official ttb.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /air-letters — $0.05 — USDA APHIS AIR confirmation-letter text (official direct.aphis.usda.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /superfund-rods — $0.05 — EPA Superfund Record of Decision text (official semspub.epa.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /ico-mpn — $0.05 — ICO Monetary Penalty Notice text (official ico.org.uk PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /cma-ca98 — $0.05 — UK CMA CA98 infringement-decision text (official assets.publishing.service.gov.uk PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+  ];
+  if (listed483) {
+    paid.push(`- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`);
+  }
+  if (listedGmp) {
+    paid.push(`- GET /gmp — $0.05 — Health Canada Drug GMP report-card observation text + C.02 cites. Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`);
+  }
+  if (listedGmpMd) {
+    paid.push(`- GET /gmp-md — $0.05 — Health Canada medical-device report-card observation text + MDR cites. Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`);
+  }
   const free = [
     `- GET /openapi.json — OpenAPI 3.1 with x-payment-info for the ${paidCountWord()} paid doors`,
     `- GET /.well-known/x402 — absolute URLs of the ${paidCountWord()} paid routes only`,
     `- GET / — shop JSON (payTo + the ${paidCountWord()} products)`,
     `- GET/POST /mcp — Streamable HTTP MCP for the same ${paidCountWord()} paid GETs. Not a new SKU.`,
-    "- GET /manifest.json — Idaho ticks count + schema",
+    "- GET /manifest.json — US hay, cattle, and grain count + schema",
     "- GET /import-alerts/manifest.json — FDA count + schema (not the firm dump)",
     "- GET /mariners/manifest.json — D13 LNM count + official PDF (not the notice body)",
     "- GET /mariners-d11/manifest.json — D11 LNM count + official PDF (not the notice body)",
     "- GET /mariners-d7/manifest.json — D7 LNM count + official PDF (not the notice body)",
     "- GET /mariners-d8/manifest.json — D8 LNM count + official PDF (not the notice body)",
-    "- GET /warning-letters/manifest.json — FDA letter count + firm/date/subject (not the letter body)",
-    "- GET /untitled-letters/manifest.json — FDA untitled count + id/firm/date/product (not the letter text)",
-    "- GET /awa/manifest.json — APHIS AWA count + id/firm/date/sourceUrl (not the observation text)",
-    "- GET /swisspar/manifest.json — SwissPAR count + name/date/MA/sourceUrl (not the evaluation text)",
-    "- GET /pcac/manifest.json — FDA PCAC count + substance/date/meeting/mediaId/sourceUrl (not the evaluation text)",
-    "- GET /ftc-wl/manifest.json — FTC BCP count + firm/date/subject/sourceUrl (not the letter body)",
-    "- GET /cfpb-orders/manifest.json — CFPB order count + firm/date/title/fileNo/sourceUrl (not the order body)",
-    "- GET /occ-cd/manifest.json — OCC C&D count + bank/docket/date/sourceUrl (not the order body)",
-    "- GET /fdic-orders/manifest.json — FDIC order count + bank/docket/date/sourceUrl (not the order body)",
-    "- GET /frb-orders/manifest.json — FRB order count + institution/docket/date/sourceUrl (not the order body)",
-    "- GET /ncua-orders/manifest.json — NCUA order count + credit union/docket/date/sourceUrl (not the order body)",
-    "- GET /fincen-orders/manifest.json — FinCEN order count + institution/docket/date/sourceUrl (not the order body)",
-    "- GET /ferc-orders/manifest.json — FERC order count + institution/docket/date/sourceUrl (not the order body)",
-    "- GET /ofac-orders/manifest.json — OFAC order count + institution/docket/date/sourceUrl (not the order body)",
-    "- GET /bis-orders/manifest.json — BIS order count + institution/docket/date/sourceUrl (not the order body)",
-    "- GET /cftc-orders/manifest.json — CFTC order count + institution/docket/date/sourceUrl (not the order body)",
-    "- GET /fifra-orders/manifest.json — EPA FIFRA order count + institution/docket/date/sourceUrl (not the order body)",
-    "- GET /denovo-orders/manifest.json — FDA De Novo order count + institution/docket/date/sourceUrl (not the order body)",
-    "- GET /ttb-oic/manifest.json — TTB OIC count + institution/docket/date/sourceUrl (not the order body)",
-    "- GET /air-letters/manifest.json — APHIS AIR letter count + institution/docket/date/sourceUrl (not the letter body)",
-    "- GET /superfund-rods/manifest.json — EPA Superfund ROD count + institution/docket/date/sourceUrl (not the ROD body)",
-    "- GET /ico-mpn/manifest.json — ICO MPN count + institution/docket/date/sourceUrl (not the MPN body)",
-    "- GET /cma-ca98/manifest.json — CMA CA98 count + institution/docket/date/sourceUrl (not the decision body)",
+    "- GET /warning-letters/manifest.json — FDA letter count + firm/date/subject (full catalog + page cursor; ?q= is free search; not the letter body)",
+    "- GET /untitled-letters/manifest.json — FDA untitled count + id/firm/date/product (full catalog + page cursor; ?q= is free search; not the letter text)",
+    "- GET /awa/manifest.json — APHIS AWA count + id/firm/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the observation text)",
+    "- GET /swisspar/manifest.json — SwissPAR count + name/date/MA/sourceUrl (full catalog + page cursor; ?q= is free search; not the evaluation text)",
+    "- GET /pcac/manifest.json — FDA PCAC count + substance/date/meeting/mediaId/sourceUrl (full catalog + page cursor; ?q= is free search; not the evaluation text)",
+    "- GET /ftc-wl/manifest.json — FTC BCP count + firm/date/subject/sourceUrl (full catalog + page cursor; ?q= is free search; not the letter body)",
+    "- GET /cfpb-orders/manifest.json — CFPB order count + firm/date/title/fileNo/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /occ-cd/manifest.json — OCC C&D count + bank/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /fdic-orders/manifest.json — FDIC order count + bank/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /frb-orders/manifest.json — FRB order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /ncua-orders/manifest.json — NCUA order count + credit union/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /fincen-orders/manifest.json — FinCEN order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /ferc-orders/manifest.json — FERC order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /ofac-orders/manifest.json — OFAC order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /bis-orders/manifest.json — BIS order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /cftc-orders/manifest.json — CFTC order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /fifra-orders/manifest.json — EPA FIFRA order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /denovo-orders/manifest.json — FDA De Novo order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /ttb-oic/manifest.json — TTB OIC count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /air-letters/manifest.json — APHIS AIR letter count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the letter body)",
+    "- GET /superfund-rods/manifest.json — EPA Superfund ROD count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the ROD body)",
+    "- GET /ico-mpn/manifest.json — ICO MPN count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the MPN body)",
+    "- GET /cma-ca98/manifest.json — CMA CA98 count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the decision body)",
   ];
   if (listed483) {
-    free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (not the observation body)");
+    free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (full catalog + page cursor; ?q= is free search; not the observation body)");
   }
   if (listedGmp) {
-    free.push("- GET /gmp/manifest.json — Health Canada GMP count + id/firm/date/rating (not the observation text)");
+    free.push("- GET /gmp/manifest.json — Health Canada GMP count + id/firm/date/rating (full catalog + page cursor; ?q= is free search; not the observation text)");
   }
   if (listedGmpMd) {
-    free.push("- GET /gmp-md/manifest.json — Health Canada MD count + id/firm/date/rating (not the report-card body text)");
+    free.push("- GET /gmp-md/manifest.json — Health Canada MD count + id/firm/date/rating (full catalog + page cursor; ?q= is free search; not the report-card body text)");
   }
   return [
     "# BNM Data Shop",
     "",
-    `Official public data as JSON at https://ticks.bnm.farm. ${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs. USDC on Base (eip155:8453). payTo 0xf59621FC406D266e18f314Ae18eF0a33b8401004.`,
+    `Official public data as JSON at https://ticks.bnm.farm. ${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs. USDC on Base (eip155:8453). payTo 0xf59621FC406D266e18f314Ae18eF0a33b8401004. ${BODY_PAGE_DISCOVERY}`,
     "",
     "## Paid",
     "",
     ...paid,
     "",
-    "Unpaid GET returns HTTP 402 with PAYMENT-REQUIRED and extensions.bazaar. After a valid X-PAYMENT, the same URL returns JSON. No API key. No request body.",
+    "Unpaid GET returns HTTP 402 with PAYMENT-REQUIRED and extensions.bazaar. After a valid X-PAYMENT, the same URL returns JSON: newest chunk on extracted-body doors, older chunk if they ask, whole current table on /ticks and /import-alerts. No API key. No request body.",
     "",
     "## Free discovery",
     "",
@@ -3256,7 +3071,7 @@ export async function llmsTxt(): Promise<string> {
     "",
     `- URL — https://ticks.bnm.farm${MCP_PATH}`,
     "- Connect — `npx -y mcp-remote https://ticks.bnm.farm/mcp`",
-    `- One tool per live paid GET from /.well-known/x402 (generated at request time; later SKUs appear without an MCP rewrite). Same ${paidCountWord()} URLs today. Unpaid tool calls still HTTP 402. Paid returns the JSON body. Not Bazaar-indexed.`,
+    `- One tool per live paid GET from /.well-known/x402 (generated at request time; later SKUs appear without an MCP rewrite). Same ${paidCountWord()} URLs today. Free search + paid get-page. ${BODY_PAGE_DISCOVERY} Unpaid tool calls still HTTP 402. Not Bazaar-indexed.`,
     "",
     "## Agent catalogs",
     "",
@@ -3289,37 +3104,71 @@ function paidDiscoveryUrls(req: IncomingMessage, port: number): string[] {
   return paidDiscoveryPaths().map((path) => resourceUrl(req, port, path));
 }
 
-export async function wellKnownX402(req: IncomingMessage, port: number): Promise<Record<string, unknown>> {
-  await loadSkuBags();
+export function wellKnownX402(req: IncomingMessage, port: number): Record<string, unknown> {
   return {
     version: 1,
     resources: paidDiscoveryUrls(req, port),
     ownershipProofs: [PAY_TO],
     ...shopDiscoveryPointers(req, port),
     instructions:
-      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Each paid GET returns the entire current cache (bag size + count on GET /). Pay USDC on Base. Free OpenAPI is at /openapi.json. MCP is at /mcp (same ${paidCountWord()} paid GETs, not a new SKU). Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
+      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Pay USDC on Base. ${BODY_PAGE_DISCOVERY} Free OpenAPI is at /openapi.json. MCP is at /mcp (same ${paidCountWord()} paid GETs, not a new SKU). Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
   };
 }
 
 function paidOpenApiOp(opts: {
-  sku: DoorSku;
   operationId: string;
-  summary?: string;
-  description?: string;
+  summary: string;
+  description: string;
   priceUsdc: string;
   amountAtomic: string;
   example: Record<string, unknown>;
   outputSchema: Record<string, unknown>;
-  bag?: SkuBag;
 }): Record<string, unknown> {
-  const bag = opts.bag ?? peekSkuBag(opts.sku) ?? bagFromManifest(opts.sku, {});
+  const olderPages = opts.description.includes("Newest chunk on a plain GET");
+  const outputSchema = olderPages
+    ? {
+        ...opts.outputSchema,
+        properties: {
+          ...((opts.outputSchema.properties as Record<string, unknown> | undefined) ?? {}),
+          ids: { type: "array", items: { type: "string" }, description: "Official catalog ids on this paid page" },
+          nextBefore: { type: "string", nullable: true },
+          prevBefore: { type: "string", nullable: true },
+        },
+      }
+    : opts.outputSchema;
   return {
     operationId: opts.operationId,
-    summary: opts.summary ?? skuOpenApiSummary(opts.sku, bag),
-    description: opts.description ?? skuOpenApiDescription(opts.sku, bag),
+    summary: opts.summary,
+    description: opts.description,
     tags: ["paid"],
     security: [{ x402: [] }],
-    parameters: [],
+    parameters: olderPages
+      ? [
+          {
+            name: "id",
+            in: "query",
+            required: false,
+            schema: { type: "string" },
+            description:
+              "Official catalog id from the free index. That one official text. $0.02 (20000 atomic). Same door, not a new SKU. Wins over before/page.",
+          },
+          {
+            name: "before",
+            in: "query",
+            required: false,
+            schema: { type: "string" },
+            description:
+              "Official catalog id or YYYY-MM-DD from the free manifest. Next older chunk. Another $0.05. Omit for the newest chunk.",
+          },
+          {
+            name: "page",
+            in: "query",
+            required: false,
+            schema: { type: "integer", minimum: 1 },
+            description: "1-based page. Page 1 is the newest chunk. Ignored when before is set.",
+          },
+        ]
+      : [],
     "x-auth": { mode: "x402" },
     "x-payment-info": {
       protocols: [
@@ -3343,25 +3192,64 @@ function paidOpenApiOp(opts: {
         description: "Paid JSON body after a valid x402 settlement",
         content: {
           "application/json": {
-            schema: opts.outputSchema,
+            schema: outputSchema,
             example: opts.example,
           },
         },
       },
       "402": {
-        description: `Payment Required — entire current snapshot on one GET (${bag.countLabel}). x402 challenge in PAYMENT-REQUIRED and JSON body`,
+        description: "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body",
       },
     },
   };
 }
 
+const EXTRACTED_MANIFEST_OPENAPI =
+  " Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).";
+
 function freeOpenApiOp(summary: string, description: string): Record<string, unknown> {
+  const extractedCatalog =
+    /Not the (letter body|letter text|observation text|evaluation text|order body|ROD body|MPN body|decision body|observation body|report-card body text)\.?$/.test(
+      description,
+    );
+  const desc =
+    extractedCatalog && !description.includes("not the entire cache")
+      ? `${description.replace(/\.?$/, ".")}${EXTRACTED_MANIFEST_OPENAPI}`
+      : description;
   return {
     summary,
-    description,
+    description: desc,
     tags: ["free"],
     security: [],
     "x-auth": { mode: "none" },
+    ...(extractedCatalog
+      ? {
+          parameters: [
+            {
+              name: "q",
+              in: "query",
+              required: false,
+              schema: { type: "string" },
+              description: "Free-text match against id, firm, date, subject. Not charged.",
+            },
+            {
+              name: "before",
+              in: "query",
+              required: false,
+              schema: { type: "string" },
+              description:
+                "Free filter: page cursor (id) returns that page's rows; YYYY-MM-DD returns older dates. Not charged.",
+            },
+            {
+              name: "date",
+              in: "query",
+              required: false,
+              schema: { type: "string" },
+              description: "Free date prefix filter (YYYY, YYYY-MM, or YYYY-MM-DD). Not charged.",
+            },
+          ],
+        }
+      : {}),
     responses: {
       "200": {
         description: "Free JSON catalog / discovery document",
@@ -3371,7 +3259,7 @@ function freeOpenApiOp(summary: string, description: string): Record<string, unk
   };
 }
 
-export async function buildOpenApi(req: IncomingMessage, port: number): Promise<Record<string, unknown>> {
+export function buildOpenApi(req: IncomingMessage, port: number): Record<string, unknown> {
   const origin = discoveryOrigin(req, port);
   const ticksAtomic = amountAtomicFor("ticks");
   const iaAtomic = amountAtomicFor("import-alerts");
@@ -3440,7 +3328,6 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
   const listed483 = form483IsPublic();
   const listedGmp = gmpIsPublic();
   const listedGmpMd = gmpMdIsPublic();
-  const bags = await loadSkuBags();
   const paidBits = [
     `/ticks ($${ticksPrice})`,
     "/import-alerts ($0.05)",
@@ -3484,7 +3371,7 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       description: "Official public data as JSON. Unpaid paid routes return HTTP 402.",
       contact: { name: "BNM Data Shop", url: "https://bnm.farm/" },
       "x-guidance":
-        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. Each paid GET returns the entire current cache (bag size on GET /). Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. MCP at GET/POST /mcp lists one tool per paid GET. Free manifests do not include the paid body. No request body. ${noNextSkuWord()}`,
+        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. ${BODY_PAGE_DISCOVERY} Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. MCP at GET/POST /mcp lists one tool per paid GET plus free search, paid get-one ($0.02), and paid get-page ($0.05). Free manifests do not include the paid body. No request body. ${noNextSkuWord()}`,
     },
     "x-discovery": {
       ownershipProofs: [PAY_TO],
@@ -3499,8 +3386,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
     paths: {
       [TICKS_PATH]: {
         get: paidOpenApiOp({
-          sku: "ticks",
           operationId: "getTicks",
+          summary: "US hay, cattle, and grain ticks",
+          description: SKU_COPY.ticks.description,
           priceUsdc: ticksPrice,
           amountAtomic: ticksAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE.ticks,
@@ -3522,8 +3410,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [IMPORT_ALERTS_PATH]: {
         get: paidOpenApiOp({
-          sku: "import-alerts",
           operationId: "getImportAlerts",
+          summary: "FDA Import Alerts / DWPE",
+          description: SKU_COPY["import-alerts"].description,
           priceUsdc: iaPrice,
           amountAtomic: iaAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["import-alerts"],
@@ -3545,8 +3434,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [MARINERS_PATH]: {
         get: paidOpenApiOp({
-          sku: "mariners",
           operationId: "getMariners",
+          summary: "USCG D13 / Northwest LNM",
+          description: SKU_COPY.mariners.description,
           priceUsdc: lnmPrice,
           amountAtomic: lnmAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE.mariners,
@@ -3567,8 +3457,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [MARINERS_D11_PATH]: {
         get: paidOpenApiOp({
-          sku: "mariners-d11",
           operationId: "getMarinersD11",
+          summary: "USCG D11 / Southwest LNM",
+          description: SKU_COPY["mariners-d11"].description,
           priceUsdc: lnmD11Price,
           amountAtomic: lnmD11Atomic,
           example: BAZAAR_OUTPUT_EXAMPLE["mariners-d11"],
@@ -3589,8 +3480,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [MARINERS_D7_PATH]: {
         get: paidOpenApiOp({
-          sku: "mariners-d7",
           operationId: "getMarinersD7",
+          summary: "USCG D7 / Southeast LNM",
+          description: SKU_COPY["mariners-d7"].description,
           priceUsdc: lnmD7Price,
           amountAtomic: lnmD7Atomic,
           example: BAZAAR_OUTPUT_EXAMPLE["mariners-d7"],
@@ -3611,8 +3503,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [MARINERS_D8_PATH]: {
         get: paidOpenApiOp({
-          sku: "mariners-d8",
           operationId: "getMarinersD8",
+          summary: "USCG D8 / Gulf LNM",
+          description: SKU_COPY["mariners-d8"].description,
           priceUsdc: lnmD8Price,
           amountAtomic: lnmD8Atomic,
           example: BAZAAR_OUTPUT_EXAMPLE["mariners-d8"],
@@ -3633,8 +3526,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [WARNING_LETTERS_PATH]: {
         get: paidOpenApiOp({
-          sku: "warning-letters",
           operationId: "getWarningLetters",
+          summary: "FDA warning-letter bodies",
+          description: SKU_COPY["warning-letters"].description,
           priceUsdc: wlPrice,
           amountAtomic: wlAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["warning-letters"],
@@ -3656,8 +3550,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [UNTITLED_LETTERS_PATH]: {
         get: paidOpenApiOp({
-          sku: "untitled-letters",
           operationId: "getUntitledLetters",
+          summary: "FDA Untitled Letter bodies (CDER OPDP + CBER promo)",
+          description: SKU_COPY["untitled-letters"].description,
           priceUsdc: ulPrice,
           amountAtomic: ulAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["untitled-letters"],
@@ -3679,8 +3574,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [AWA_PATH]: {
         get: paidOpenApiOp({
-          sku: "awa",
           operationId: "getAwa",
+          summary: "USDA APHIS AWA inspection-report observation text",
+          description: SKU_COPY.awa.description,
           priceUsdc: awaPrice,
           amountAtomic: awaAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE.awa,
@@ -3702,8 +3598,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [SWISSPAR_PATH]: {
         get: paidOpenApiOp({
-          sku: "swisspar",
           operationId: "getSwisspar",
+          summary: "Swissmedic first-authorisation SwissPAR evaluation text",
+          description: SKU_COPY.swisspar.description,
           priceUsdc: swissparPrice,
           amountAtomic: swissparAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE.swisspar,
@@ -3725,8 +3622,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [PCAC_PATH]: {
         get: paidOpenApiOp({
-          sku: "pcac",
           operationId: "getPcac",
+          summary: "FDA PCAC 503A briefing-memo evaluation text",
+          description: SKU_COPY.pcac.description,
           priceUsdc: pcacPrice,
           amountAtomic: pcacAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE.pcac,
@@ -3748,8 +3646,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [FTC_WL_PATH]: {
         get: paidOpenApiOp({
-          sku: "ftc-wl",
           operationId: "getFtcWl",
+          summary: "FTC BCP warning-letter text",
+          description: SKU_COPY["ftc-wl"].description,
           priceUsdc: ftcWlPrice,
           amountAtomic: ftcWlAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["ftc-wl"],
@@ -3771,8 +3670,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [CFPB_ORDERS_PATH]: {
         get: paidOpenApiOp({
-          sku: "cfpb-orders",
           operationId: "getCfpbOrders",
+          summary: "CFPB consent-order / administrative-order text",
+          description: SKU_COPY["cfpb-orders"].description,
           priceUsdc: cfpbOrdersPrice,
           amountAtomic: cfpbOrdersAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["cfpb-orders"],
@@ -3794,8 +3694,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [OCC_CD_PATH]: {
         get: paidOpenApiOp({
-          sku: "occ-cd",
           operationId: "getOccCd",
+          summary: "OCC institution C&D / consent-order text",
+          description: SKU_COPY["occ-cd"].description,
           priceUsdc: occCdPrice,
           amountAtomic: occCdAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["occ-cd"],
@@ -3817,8 +3718,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [FDIC_ORDERS_PATH]: {
         get: paidOpenApiOp({
-          sku: "fdic-orders",
           operationId: "getFdicOrders",
+          summary: "FDIC institution consent-order / C&D text",
+          description: SKU_COPY["fdic-orders"].description,
           priceUsdc: fdicOrdersPrice,
           amountAtomic: fdicOrdersAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["fdic-orders"],
@@ -3840,8 +3742,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [FRB_ORDERS_PATH]: {
         get: paidOpenApiOp({
-          sku: "frb-orders",
           operationId: "getFrbOrders",
+          summary: "FRB institution C&D / written-agreement / PCA text",
+          description: SKU_COPY["frb-orders"].description,
           priceUsdc: frbOrdersPrice,
           amountAtomic: frbOrdersAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["frb-orders"],
@@ -3863,8 +3766,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [NCUA_ORDERS_PATH]: {
         get: paidOpenApiOp({
-          sku: "ncua-orders",
           operationId: "getNcuaOrders",
+          summary: "NCUA institution consent C&D text",
+          description: SKU_COPY["ncua-orders"].description,
           priceUsdc: ncuaOrdersPrice,
           amountAtomic: ncuaOrdersAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["ncua-orders"],
@@ -3886,8 +3790,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [FINCEN_ORDERS_PATH]: {
         get: paidOpenApiOp({
-          sku: "fincen-orders",
           operationId: "getFincenOrders",
+          summary: "FinCEN institution consent-order text",
+          description: SKU_COPY["fincen-orders"].description,
           priceUsdc: fincenOrdersPrice,
           amountAtomic: fincenOrdersAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["fincen-orders"],
@@ -3909,8 +3814,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [FERC_ORDERS_PATH]: {
         get: paidOpenApiOp({
-          sku: "ferc-orders",
           operationId: "getFercOrders",
+          summary: "FERC institution stipulation-and-consent text",
+          description: SKU_COPY["ferc-orders"].description,
           priceUsdc: fercOrdersPrice,
           amountAtomic: fercOrdersAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["ferc-orders"],
@@ -3932,8 +3838,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [OFAC_ORDERS_PATH]: {
         get: paidOpenApiOp({
-          sku: "ofac-orders",
           operationId: "getOfacOrders",
+          summary: "OFAC institution enforcement-release text",
+          description: SKU_COPY["ofac-orders"].description,
           priceUsdc: ofacOrdersPrice,
           amountAtomic: ofacOrdersAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["ofac-orders"],
@@ -3955,8 +3862,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [BIS_ORDERS_PATH]: {
         get: paidOpenApiOp({
-          sku: "bis-orders",
           operationId: "getBisOrders",
+          summary: "BIS institution charging-letter / order text",
+          description: SKU_COPY["bis-orders"].description,
           priceUsdc: bisOrdersPrice,
           amountAtomic: bisOrdersAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["bis-orders"],
@@ -3978,8 +3886,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [CFTC_ORDERS_PATH]: {
         get: paidOpenApiOp({
-          sku: "cftc-orders",
           operationId: "getCftcOrders",
+          summary: "CFTC institution enforcement-order / settlement text",
+          description: SKU_COPY["cftc-orders"].description,
           priceUsdc: cftcOrdersPrice,
           amountAtomic: cftcOrdersAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["cftc-orders"],
@@ -4001,8 +3910,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [FIFRA_ORDERS_PATH]: {
         get: paidOpenApiOp({
-          sku: "fifra-orders",
           operationId: "getFifraOrders",
+          summary: "EPA FIFRA institution order / consent text",
+          description: SKU_COPY["fifra-orders"].description,
           priceUsdc: fifraOrdersPrice,
           amountAtomic: fifraOrdersAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["fifra-orders"],
@@ -4024,8 +3934,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [DENOVO_ORDERS_PATH]: {
         get: paidOpenApiOp({
-          sku: "denovo-orders",
           operationId: "getDenovoOrders",
+          summary: "FDA De Novo classification-order text",
+          description: SKU_COPY["denovo-orders"].description,
           priceUsdc: denovoOrdersPrice,
           amountAtomic: denovoOrdersAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["denovo-orders"],
@@ -4047,8 +3958,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [TTB_OIC_PATH]: {
         get: paidOpenApiOp({
-          sku: "ttb-oic",
           operationId: "getTtbOic",
+          summary: "TTB institution Offer in Compromise text",
+          description: SKU_COPY["ttb-oic"].description,
           priceUsdc: ttbOicPrice,
           amountAtomic: ttbOicAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["ttb-oic"],
@@ -4070,8 +3982,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [AIR_LETTERS_PATH]: {
         get: paidOpenApiOp({
-          sku: "air-letters",
           operationId: "getAirLetters",
+          summary: "USDA APHIS AIR confirmation-letter text",
+          description: SKU_COPY["air-letters"].description,
           priceUsdc: airLettersPrice,
           amountAtomic: airLettersAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["air-letters"],
@@ -4093,8 +4006,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [SUPERFUND_RODS_PATH]: {
         get: paidOpenApiOp({
-          sku: "superfund-rods",
           operationId: "getSuperfundRods",
+          summary: "EPA Superfund Record of Decision text",
+          description: SKU_COPY["superfund-rods"].description,
           priceUsdc: superfundRodsPrice,
           amountAtomic: superfundRodsAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["superfund-rods"],
@@ -4116,8 +4030,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [ICO_MPN_PATH]: {
         get: paidOpenApiOp({
-          sku: "ico-mpn",
           operationId: "getIcoMpn",
+          summary: "ICO Monetary Penalty Notice text",
+          description: SKU_COPY["ico-mpn"].description,
           priceUsdc: icoMpnPrice,
           amountAtomic: icoMpnAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["ico-mpn"],
@@ -4139,8 +4054,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       },
       [CMA_CA98_PATH]: {
         get: paidOpenApiOp({
-          sku: "cma-ca98",
           operationId: "getCmaCa98",
+          summary: "UK CMA CA98 infringement-decision text",
+          description: SKU_COPY["cma-ca98"].description,
           priceUsdc: cmaCa98Price,
           amountAtomic: cmaCa98Atomic,
           example: BAZAAR_OUTPUT_EXAMPLE["cma-ca98"],
@@ -4164,8 +4080,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
         ? {
             [FORM_483_PATH]: {
               get: paidOpenApiOp({
-          sku: "form-483",
                 operationId: "getForm483",
+                summary: "FDA Form 483 observation bodies",
+                description: SKU_COPY["form-483"].description,
                 priceUsdc: f483Price,
                 amountAtomic: f483Atomic,
                 example: BAZAAR_OUTPUT_EXAMPLE["form-483"],
@@ -4191,8 +4108,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
         ? {
             [GMP_PATH]: {
               get: paidOpenApiOp({
-          sku: "gmp",
                 operationId: "getGmp",
+                summary: "Health Canada Drug GMP report-card observation bodies",
+                description: SKU_COPY.gmp.description,
                 priceUsdc: gmpPrice,
                 amountAtomic: gmpAtomic,
                 example: BAZAAR_OUTPUT_EXAMPLE.gmp,
@@ -4218,8 +4136,9 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
         ? {
             [GMP_MD_PATH]: {
               get: paidOpenApiOp({
-          sku: "gmp-md",
                 operationId: "getGmpMd",
+                summary: "Health Canada medical-device report-card observation bodies",
+                description: SKU_COPY["gmp-md"].description,
                 priceUsdc: gmpMdPrice,
                 amountAtomic: gmpMdAtomic,
                 example: BAZAAR_OUTPUT_EXAMPLE["gmp-md"],
@@ -4242,10 +4161,10 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
           }
         : {}),
       [MANIFEST_PATH]: {
-        get: freeOpenApiOp("Idaho ticks free manifest", "Count, schema, and samples. Not the paid snapshot."),
+        get: freeOpenApiOp("US hay, cattle, and grain free manifest", "Count, schema, and samples. Not the paid snapshot."),
       },
       [CATALOG_PATH]: {
-        get: freeOpenApiOp("Idaho ticks free catalog alias", "Same JSON as /manifest.json."),
+        get: freeOpenApiOp("US hay, cattle, and grain free catalog alias", "Same JSON as /manifest.json."),
       },
       [IMPORT_ALERTS_MANIFEST_PATH]: {
         get: freeOpenApiOp("FDA import-alerts free manifest", "Count, catalog, and schema. Not the paid firm list."),
@@ -4458,7 +4377,7 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       "/": {
         get: freeOpenApiOp(
           "Shop discovery JSON",
-          `payTo, network, and the ${paidCountWord()} public products. Each product has a one-line description plus count (live bag size).`,
+          `payTo, network, and the ${paidCountWord()} public products.`,
         ),
       },
     },
@@ -4475,19 +4394,32 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
   };
 }
 
+function paidOptsFromReq(req: IncomingMessage, sku: DoorSku): PaidBodyOpts | undefined {
+  if (!isExtractedBodySku(sku)) return undefined;
+  const url = new URL(req.url || "/", "http://127.0.0.1");
+  const opts = paidBodyOptsFromSearch(url.searchParams);
+  return opts.id || opts.before || opts.page ? opts : {};
+}
+
+function amountAtomicForRequest(sku: DoorSku, opts?: PaidBodyOpts): string {
+  if (isExtractedBodySku(sku) && opts?.id) return SINGLE_DOC_AMOUNT_ATOMIC;
+  return amountAtomicFor(sku);
+}
+
 async function servePaid(
   req: IncomingMessage,
   res: ServerResponse,
   port: number,
   sku: DoorSku,
-  load: () => unknown | Promise<unknown>,
+  load: (opts?: PaidBodyOpts) => unknown | Promise<unknown>,
 ): Promise<void> {
   const copy = SKU_COPY[sku];
-  await loadSkuBags([sku]);
   const payment = paymentHeader(req);
-  const resource = resourceUrl(req, port, copy.resourcePath);
-  const body402 = paymentRequiredBody(resource, sku);
-  const v2 = paymentRequiredV2(resource, sku);
+  const opts = paidOptsFromReq(req, sku);
+  const amount = amountAtomicForRequest(sku, opts);
+  const resource = resourceUrl(req, port, paidBodyQueryPath(copy.resourcePath, opts));
+  const body402 = paymentRequiredBody(resource, sku, amount);
+  const v2 = paymentRequiredV2(resource, sku, amount);
   const paymentRequiredHeader = Buffer.from(JSON.stringify(v2), "utf-8").toString("base64");
 
   if (!payment) {
@@ -4495,14 +4427,14 @@ async function servePaid(
     return;
   }
 
-  const serve = async () => sendJson(res, 200, await load());
+  const serve = async () => sendJson(res, 200, await load(opts));
 
   if (skipSettle()) {
     await serve();
     return;
   }
 
-  const accept = facilitatorPaymentRequirements(resource, sku);
+  const accept = facilitatorPaymentRequirements(resource, sku, amount);
   const verified = await facilitatorVerify(payment, accept);
   if (verified && (await facilitatorSettle(payment, accept))) {
     await serve();
@@ -4525,13 +4457,13 @@ async function servePaid(
 
 export async function handleRequest(req: IncomingMessage, res: ServerResponse, port: number): Promise<void> {
   const url = new URL(req.url || "/", `http://${req.headers.host || "127.0.0.1"}`);
-  const path = url.pathname.replace(/\/+$/, "") || "/";
+  const path = extractedCatalogPath(url.pathname.replace(/\/+$/, "") || "/");
 
   if (path === MCP_PATH) {
     const origin = discoveryOrigin(req, port);
     await handleMcpHttp(req, res, origin, {
-      wellKnown: await wellKnownX402(req, port),
-      openApi: await buildOpenApi(req, port),
+      wellKnown: wellKnownX402(req, port),
+      openApi: buildOpenApi(req, port),
     });
     return;
   }
@@ -4552,9 +4484,9 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === "/") {
-    const bags = await loadSkuBags();
     sendJson(res, 200, {
       shop: "bnm-data-shop",
+      note: BODY_PAGE_DISCOVERY,
       payTo: PAY_TO,
       network: NETWORK_V1,
       asset: USDC_BASE,
@@ -4562,23 +4494,260 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
       wellKnown: WELL_KNOWN_PATH,
       llmsTxt: LLMS_PATH,
       mcp: MCP_PATH,
-      products: publicBazaarSkus().map((sku) => shopProductCard(sku, bags.get(sku) ?? bagFromManifest(sku, {}))),
+      products: [
+        {
+          path: TICKS_PATH,
+          product: "idaho-hay-feeder-ticks",
+          priceUsdc: usdcPriceString(amountAtomicFor("ticks")),
+          amountAtomic: amountAtomicFor("ticks"),
+          manifest: MANIFEST_PATH,
+        },
+        {
+          path: IMPORT_ALERTS_PATH,
+          product: "fda-import-alerts",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("import-alerts"),
+          manifest: IMPORT_ALERTS_MANIFEST_PATH,
+        },
+        {
+          path: MARINERS_PATH,
+          product: "uscg-d13-lnm",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("mariners"),
+          manifest: MARINERS_MANIFEST_PATH,
+        },
+        {
+          path: MARINERS_D11_PATH,
+          product: D11_SPEC.productId,
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("mariners-d11"),
+          manifest: MARINERS_D11_MANIFEST_PATH,
+        },
+        {
+          path: MARINERS_D7_PATH,
+          product: D7_SPEC.productId,
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("mariners-d7"),
+          manifest: MARINERS_D7_MANIFEST_PATH,
+        },
+        {
+          path: MARINERS_D8_PATH,
+          product: D8_SPEC.productId,
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("mariners-d8"),
+          manifest: MARINERS_D8_MANIFEST_PATH,
+        },
+        {
+          path: WARNING_LETTERS_PATH,
+          product: "fda-warning-letter-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("warning-letters"),
+          manifest: WARNING_LETTERS_MANIFEST_PATH,
+        },
+        {
+          path: UNTITLED_LETTERS_PATH,
+          product: "fda-untitled-letter-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("untitled-letters"),
+          manifest: UNTITLED_LETTERS_MANIFEST_PATH,
+        },
+        {
+          path: AWA_PATH,
+          product: "aphis-awa-inspection-observation-text",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("awa"),
+          manifest: AWA_MANIFEST_PATH,
+        },
+        {
+          path: SWISSPAR_PATH,
+          product: "swisspar-first-auth",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("swisspar"),
+          manifest: SWISSPAR_MANIFEST_PATH,
+        },
+        {
+          path: PCAC_PATH,
+          product: "fda-pcac-503a-memos",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("pcac"),
+          manifest: PCAC_MANIFEST_PATH,
+        },
+        {
+          path: FTC_WL_PATH,
+          product: "ftc-bcp-warning-letter-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("ftc-wl"),
+          manifest: FTC_WL_MANIFEST_PATH,
+        },
+        {
+          path: CFPB_ORDERS_PATH,
+          product: "cfpb-consent-order-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("cfpb-orders"),
+          manifest: CFPB_ORDERS_MANIFEST_PATH,
+        },
+        {
+          path: OCC_CD_PATH,
+          product: "occ-institution-cd-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("occ-cd"),
+          manifest: OCC_CD_MANIFEST_PATH,
+        },
+        {
+          path: FDIC_ORDERS_PATH,
+          product: "fdic-institution-order-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("fdic-orders"),
+          manifest: FDIC_ORDERS_MANIFEST_PATH,
+        },
+        {
+          path: FRB_ORDERS_PATH,
+          product: "frb-institution-order-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("frb-orders"),
+          manifest: FRB_ORDERS_MANIFEST_PATH,
+        },
+        {
+          path: NCUA_ORDERS_PATH,
+          product: "ncua-institution-order-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("ncua-orders"),
+          manifest: NCUA_ORDERS_MANIFEST_PATH,
+        },
+        {
+          path: FINCEN_ORDERS_PATH,
+          product: "fincen-institution-order-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("fincen-orders"),
+          manifest: FINCEN_ORDERS_MANIFEST_PATH,
+        },
+        {
+          path: FERC_ORDERS_PATH,
+          product: "ferc-institution-order-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("ferc-orders"),
+          manifest: FERC_ORDERS_MANIFEST_PATH,
+        },
+        {
+          path: OFAC_ORDERS_PATH,
+          product: "ofac-institution-order-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("ofac-orders"),
+          manifest: OFAC_ORDERS_MANIFEST_PATH,
+        },
+        {
+          path: BIS_ORDERS_PATH,
+          product: "bis-institution-order-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("bis-orders"),
+          manifest: BIS_ORDERS_MANIFEST_PATH,
+        },
+        {
+          path: CFTC_ORDERS_PATH,
+          product: "cftc-institution-order-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("cftc-orders"),
+          manifest: CFTC_ORDERS_MANIFEST_PATH,
+        },
+        {
+          path: FIFRA_ORDERS_PATH,
+          product: "fifra-institution-order-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("fifra-orders"),
+          manifest: FIFRA_ORDERS_MANIFEST_PATH,
+        },
+        {
+          path: DENOVO_ORDERS_PATH,
+          product: "fda-denovo-classification-order-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("denovo-orders"),
+          manifest: DENOVO_ORDERS_MANIFEST_PATH,
+        },
+        {
+          path: TTB_OIC_PATH,
+          product: "ttb-institution-oic-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("ttb-oic"),
+          manifest: TTB_OIC_MANIFEST_PATH,
+        },
+        {
+          path: AIR_LETTERS_PATH,
+          product: "aphis-air-confirmation-letter-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("air-letters"),
+          manifest: AIR_LETTERS_MANIFEST_PATH,
+        },
+        {
+          path: SUPERFUND_RODS_PATH,
+          product: "epa-superfund-rod-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("superfund-rods"),
+          manifest: SUPERFUND_RODS_MANIFEST_PATH,
+        },
+        {
+          path: ICO_MPN_PATH,
+          product: "ico-institution-mpn-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("ico-mpn"),
+          manifest: ICO_MPN_MANIFEST_PATH,
+        },
+        {
+          path: CMA_CA98_PATH,
+          product: "cma-ca98-infringement-decision-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("cma-ca98"),
+          manifest: CMA_CA98_MANIFEST_PATH,
+        },
+        ...(form483IsPublic()
+          ? [
+              {
+                path: FORM_483_PATH,
+                product: "fda-form-483-bodies",
+                priceUsdc: "0.05",
+                amountAtomic: amountAtomicFor("form-483"),
+                manifest: FORM_483_MANIFEST_PATH,
+              },
+            ]
+          : []),
+        ...(gmpIsPublic()
+          ? [
+              {
+                path: GMP_PATH,
+                product: "hc-gmp-report-cards",
+                priceUsdc: "0.05",
+                amountAtomic: amountAtomicFor("gmp"),
+                manifest: GMP_MANIFEST_PATH,
+              },
+            ]
+          : []),
+        ...(gmpMdIsPublic()
+          ? [
+              {
+                path: GMP_MD_PATH,
+                product: "hc-md-inspection-cards",
+                priceUsdc: "0.05",
+                amountAtomic: amountAtomicFor("gmp-md"),
+                manifest: GMP_MD_MANIFEST_PATH,
+              },
+            ]
+          : []),
+      ],
     });
     return;
   }
 
   if (path === WELL_KNOWN_PATH || path === "/.well-known/x402.json") {
-    sendJson(res, 200, await wellKnownX402(req, port));
+    sendJson(res, 200, wellKnownX402(req, port));
     return;
   }
 
   if (path === OPENAPI_PATH) {
-    sendJson(res, 200, await buildOpenApi(req, port));
+    sendJson(res, 200, buildOpenApi(req, port));
     return;
   }
 
   if (path === LLMS_PATH) {
-    sendText(res, 200, await llmsTxt(), "text/markdown; charset=utf-8");
+    sendText(res, 200, llmsTxt(), "text/markdown; charset=utf-8");
     return;
   }
 
@@ -4638,262 +4807,262 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === WARNING_LETTERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadWarningLettersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadWarningLettersManifest());
     return;
   }
 
   if (path === WARNING_LETTERS_PATH) {
-    await servePaid(req, res, port, "warning-letters", async () => paidWarningLettersBody(await loadWarningLetters()));
+    await servePaid(req, res, port, "warning-letters", async (opts) => paidWarningLettersBody(await loadWarningLetters(), opts));
     return;
   }
 
   if (path === UNTITLED_LETTERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadUntitledLettersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadUntitledLettersManifest());
     return;
   }
 
   if (path === UNTITLED_LETTERS_PATH) {
-    await servePaid(req, res, port, "untitled-letters", async () => paidUntitledLettersBody(await loadUntitledLetters()));
+    await servePaid(req, res, port, "untitled-letters", async (opts) => paidUntitledLettersBody(await loadUntitledLetters(), opts));
     return;
   }
 
   if (path === AWA_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadAwaManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadAwaManifest());
     return;
   }
 
   if (path === AWA_PATH) {
-    await servePaid(req, res, port, "awa", async () => paidAwaBody(await loadAwa()));
+    await servePaid(req, res, port, "awa", async (opts) => paidAwaBody(await loadAwa(), opts));
     return;
   }
 
   if (path === SWISSPAR_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadSwissparManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadSwissparManifest());
     return;
   }
 
   if (path === SWISSPAR_PATH) {
-    await servePaid(req, res, port, "swisspar", async () => paidSwissparBody(await loadSwisspar()));
+    await servePaid(req, res, port, "swisspar", async (opts) => paidSwissparBody(await loadSwisspar(), opts));
     return;
   }
 
   if (path === PCAC_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadPcacManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadPcacManifest());
     return;
   }
 
   if (path === PCAC_PATH) {
-    await servePaid(req, res, port, "pcac", async () => paidPcacBody(await loadPcac()));
+    await servePaid(req, res, port, "pcac", async (opts) => paidPcacBody(await loadPcac(), opts));
     return;
   }
 
   if (path === FTC_WL_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadFtcWlManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadFtcWlManifest());
     return;
   }
 
   if (path === FTC_WL_PATH) {
-    await servePaid(req, res, port, "ftc-wl", async () => paidFtcWlBody(await loadFtcWl()));
+    await servePaid(req, res, port, "ftc-wl", async (opts) => paidFtcWlBody(await loadFtcWl(), opts));
     return;
   }
 
   if (path === CFPB_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadCfpbOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadCfpbOrdersManifest());
     return;
   }
 
   if (path === CFPB_ORDERS_PATH) {
-    await servePaid(req, res, port, "cfpb-orders", async () => paidCfpbOrdersBody(await loadCfpbOrders()));
+    await servePaid(req, res, port, "cfpb-orders", async (opts) => paidCfpbOrdersBody(await loadCfpbOrders(), opts));
     return;
   }
 
   if (path === OCC_CD_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadOccCdManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadOccCdManifest());
     return;
   }
 
   if (path === OCC_CD_PATH) {
-    await servePaid(req, res, port, "occ-cd", async () => paidOccCdBody(await loadOccCd()));
+    await servePaid(req, res, port, "occ-cd", async (opts) => paidOccCdBody(await loadOccCd(), opts));
     return;
   }
 
   if (path === FDIC_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadFdicOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadFdicOrdersManifest());
     return;
   }
 
   if (path === FDIC_ORDERS_PATH) {
-    await servePaid(req, res, port, "fdic-orders", async () => paidFdicOrdersBody(await loadFdicOrders()));
+    await servePaid(req, res, port, "fdic-orders", async (opts) => paidFdicOrdersBody(await loadFdicOrders(), opts));
     return;
   }
 
   if (path === FRB_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadFrbOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadFrbOrdersManifest());
     return;
   }
 
   if (path === FRB_ORDERS_PATH) {
-    await servePaid(req, res, port, "frb-orders", async () => paidFrbOrdersBody(await loadFrbOrders()));
+    await servePaid(req, res, port, "frb-orders", async (opts) => paidFrbOrdersBody(await loadFrbOrders(), opts));
     return;
   }
 
   if (path === NCUA_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadNcuaOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadNcuaOrdersManifest());
     return;
   }
 
   if (path === NCUA_ORDERS_PATH) {
-    await servePaid(req, res, port, "ncua-orders", async () => paidNcuaOrdersBody(await loadNcuaOrders()));
+    await servePaid(req, res, port, "ncua-orders", async (opts) => paidNcuaOrdersBody(await loadNcuaOrders(), opts));
     return;
   }
 
   if (path === FINCEN_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadFincenOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadFincenOrdersManifest());
     return;
   }
 
   if (path === FINCEN_ORDERS_PATH) {
-    await servePaid(req, res, port, "fincen-orders", async () => paidFincenOrdersBody(await loadFincenOrders()));
+    await servePaid(req, res, port, "fincen-orders", async (opts) => paidFincenOrdersBody(await loadFincenOrders(), opts));
     return;
   }
 
   if (path === FERC_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadFercOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadFercOrdersManifest());
     return;
   }
 
   if (path === FERC_ORDERS_PATH) {
-    await servePaid(req, res, port, "ferc-orders", async () => paidFercOrdersBody(await loadFercOrders()));
+    await servePaid(req, res, port, "ferc-orders", async (opts) => paidFercOrdersBody(await loadFercOrders(), opts));
     return;
   }
 
   if (path === OFAC_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadOfacOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadOfacOrdersManifest());
     return;
   }
 
   if (path === OFAC_ORDERS_PATH) {
-    await servePaid(req, res, port, "ofac-orders", async () => paidOfacOrdersBody(await loadOfacOrders()));
+    await servePaid(req, res, port, "ofac-orders", async (opts) => paidOfacOrdersBody(await loadOfacOrders(), opts));
     return;
   }
 
   if (path === BIS_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadBisOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadBisOrdersManifest());
     return;
   }
 
   if (path === BIS_ORDERS_PATH) {
-    await servePaid(req, res, port, "bis-orders", async () => paidBisOrdersBody(await loadBisOrders()));
+    await servePaid(req, res, port, "bis-orders", async (opts) => paidBisOrdersBody(await loadBisOrders(), opts));
     return;
   }
 
   if (path === CFTC_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadCftcOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadCftcOrdersManifest());
     return;
   }
 
   if (path === CFTC_ORDERS_PATH) {
-    await servePaid(req, res, port, "cftc-orders", async () => paidCftcOrdersBody(await loadCftcOrders()));
+    await servePaid(req, res, port, "cftc-orders", async (opts) => paidCftcOrdersBody(await loadCftcOrders(), opts));
     return;
   }
 
   if (path === FIFRA_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadFifraOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadFifraOrdersManifest());
     return;
   }
 
   if (path === FIFRA_ORDERS_PATH) {
-    await servePaid(req, res, port, "fifra-orders", async () => paidFifraOrdersBody(await loadFifraOrders()));
+    await servePaid(req, res, port, "fifra-orders", async (opts) => paidFifraOrdersBody(await loadFifraOrders(), opts));
     return;
   }
 
   if (path === DENOVO_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadDenovoOrdersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadDenovoOrdersManifest());
     return;
   }
 
   if (path === DENOVO_ORDERS_PATH) {
-    await servePaid(req, res, port, "denovo-orders", async () => paidDenovoOrdersBody(await loadDenovoOrders()));
+    await servePaid(req, res, port, "denovo-orders", async (opts) => paidDenovoOrdersBody(await loadDenovoOrders(), opts));
     return;
   }
 
   if (path === TTB_OIC_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadTtbOicManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadTtbOicManifest());
     return;
   }
 
   if (path === TTB_OIC_PATH) {
-    await servePaid(req, res, port, "ttb-oic", async () => paidTtbOicBody(await loadTtbOic()));
+    await servePaid(req, res, port, "ttb-oic", async (opts) => paidTtbOicBody(await loadTtbOic(), opts));
     return;
   }
 
   if (path === AIR_LETTERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadAirLettersManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadAirLettersManifest());
     return;
   }
 
   if (path === AIR_LETTERS_PATH) {
-    await servePaid(req, res, port, "air-letters", async () => paidAirLettersBody(await loadAirLetters()));
+    await servePaid(req, res, port, "air-letters", async (opts) => paidAirLettersBody(await loadAirLetters(), opts));
     return;
   }
 
   if (path === SUPERFUND_RODS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadSuperfundRodsManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadSuperfundRodsManifest());
     return;
   }
 
   if (path === SUPERFUND_RODS_PATH) {
-    await servePaid(req, res, port, "superfund-rods", async () => paidSuperfundRodsBody(await loadSuperfundRods()));
+    await servePaid(req, res, port, "superfund-rods", async (opts) => paidSuperfundRodsBody(await loadSuperfundRods(), opts));
     return;
   }
 
   if (path === ICO_MPN_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadIcoMpnManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadIcoMpnManifest());
     return;
   }
 
   if (path === ICO_MPN_PATH) {
-    await servePaid(req, res, port, "ico-mpn", async () => paidIcoMpnBody(await loadIcoMpn()));
+    await servePaid(req, res, port, "ico-mpn", async (opts) => paidIcoMpnBody(await loadIcoMpn(), opts));
     return;
   }
 
   if (path === CMA_CA98_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadCmaCa98Manifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadCmaCa98Manifest());
     return;
   }
 
   if (path === CMA_CA98_PATH) {
-    await servePaid(req, res, port, "cma-ca98", async () => paidCmaCa98Body(await loadCmaCa98()));
+    await servePaid(req, res, port, "cma-ca98", async (opts) => paidCmaCa98Body(await loadCmaCa98(), opts));
     return;
   }
 
   if (path === FORM_483_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadForm483Manifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadForm483Manifest());
     return;
   }
 
   if (path === FORM_483_PATH) {
-    await servePaid(req, res, port, "form-483", async () => paidForm483Body(await loadForm483()));
+    await servePaid(req, res, port, "form-483", async (opts) => paidForm483Body(await loadForm483(), opts));
     return;
   }
 
   if (path === GMP_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadGmpManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadGmpManifest());
     return;
   }
 
   if (path === GMP_PATH) {
-    await servePaid(req, res, port, "gmp", async () => paidGmpBody(await loadGmp()));
+    await servePaid(req, res, port, "gmp", async (opts) => paidGmpBody(await loadGmp(), opts));
     return;
   }
 
   if (path === GMP_MD_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadGmpMdManifest(), req, port));
+    sendExtractedManifest(req, res, port, url, await loadGmpMdManifest());
     return;
   }
 
   if (path === GMP_MD_PATH) {
-    await servePaid(req, res, port, "gmp-md", async () => paidGmpMdBody(await loadGmpMd()));
+    await servePaid(req, res, port, "gmp-md", async (opts) => paidGmpMdBody(await loadGmpMd(), opts));
     return;
   }
 

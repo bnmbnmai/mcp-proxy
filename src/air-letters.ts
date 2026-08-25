@@ -10,6 +10,7 @@ import { spawnSync } from "node:child_process";
 import { homedir, tmpdir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { paidBodyCatalogNote } from "./paid-records.js";
 
 export const AIR_LETTERS_PATH = "/air-letters";
 export const AIR_LETTERS_MANIFEST_PATH = "/air-letters/manifest.json";
@@ -687,7 +688,7 @@ export function buildAirLettersManifest(snap: AirLetterSnapshot | null): Record<
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + institution + docket + date + official PDF URL only. Letter body is the paid GET /air-letters payload. Not people. Not TTB /ttb-oic. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders.",
+    note: paidBodyCatalogNote("/air-letters", 'Full catalog: count + institution + docket + date + official URL. Not the press/teaser'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

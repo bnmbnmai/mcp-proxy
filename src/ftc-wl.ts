@@ -10,6 +10,7 @@ import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { paidBodyCatalogNote } from "./paid-records.js";
 
 export const FTC_WL_PATH = "/ftc-wl";
 export const FTC_WL_MANIFEST_PATH = "/ftc-wl/manifest.json";
@@ -626,7 +627,7 @@ export function buildFtcWlManifest(snap: FtcWlSnapshot | null): Record<string, u
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + firm + date + subject + official PDF URL only. Letter body is the paid GET /ftc-wl payload. Not the legal-library index. Not the Drupal node. Not FDA /warning-letters.",
+    note: paidBodyCatalogNote("/ftc-wl", 'Full catalog: count + firm + date + subject + official URL. Not the legal-library index. Not FDA /warning-letters'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

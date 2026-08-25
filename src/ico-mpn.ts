@@ -10,6 +10,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
+import { paidBodyCatalogNote } from "./paid-records.js";
 
 export const ICO_MPN_PATH = "/ico-mpn";
 export const ICO_MPN_MANIFEST_PATH = "/ico-mpn/manifest.json";
@@ -877,7 +878,7 @@ export function buildIcoMpnManifest(snap: IcoMpnSnapshot | null): Record<string,
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Count + institution + docket + date + official PDF URL only. MPN body is the paid GET /ico-mpn payload. Not people. Not the press/teaser. Not Superfund /superfund-rods. Not AIR /air-letters. Not TTB /ttb-oic. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders.",
+    note: paidBodyCatalogNote("/ico-mpn", 'Full catalog: count + institution + docket + date + official URL. Not the press/teaser'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
