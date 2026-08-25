@@ -21,6 +21,9 @@ export const PRODUCT_ID = "fifra-institution-order-bodies";
 export const PRODUCT_NAME = "EPA FIFRA institution order / consent text";
 
 export const LISTING_URL = "https://yosemite.epa.gov/oa/rhc/epaadmin.nsf";
+/** Official CAFOs + ESAs view. The NSF home is a teaser with 0 PDFs. */
+export const CAFOS_VIEW_URL = "https://yosemite.epa.gov/OA/RHC/EPAAdmin.nsf/CAFOs+and+ESAs?OpenView";
+export const FILINGS_OPEN = "https://yosemite.epa.gov/OA/RHC/EPAAdmin.nsf/Filings";
 export const PDF_HOST = "yosemite.epa.gov";
 export const PDF_ORIGIN = "https://yosemite.epa.gov";
 export const DOCKET_LABEL_RE = /(?:Docket\s+No\.?\s*)?(FIFRA-\d{2}-\d{4}-\d{4})\b/i;
@@ -101,7 +104,17 @@ const ENTITY_RE =
   /\b(Inc\.?|LLC|L\.L\.C\.|L\.P\.|LP|Corp\.?|Corporation|Company|Co\.|Ltd\.?|Limited|S\.A\.|Banco|Bank|Holdings|Enterprises|Capital Markets|Markets|Securities|Services|Group|Partners|International|Industries|Solutions|Superstore|Chemical|Medical)\b/i;
 const PERSON_NAME_RE = /^[A-Z][a-z]+(?:\s+[A-Z]\.?)?(?:\s+[A-Z][a-z]+){1,3}$/;
 const ORDER_KIND_RE =
-  /consent agreement and final order|consent agreement|final order|\bCAFO\b|expedited settlement/i;
+  /consent agreement and final order|consent agreement|final order|\bCAFO\b|expedited settlement|expediated settlement/i;
+const UNID_RE = /\b([A-Fa-f0-9]{32})\b/;
+
+export type FifraCafosCandidate = {
+  docket: string;
+  institution: string;
+  date: string | null;
+  title: string;
+  unid: string;
+  viewUrl: string;
+};
 const COMPLAINT_RE = /\bcomplaint\b/i;
 
 /** Official EPA FIFRA institution/company order / consent PDFs on yosemite.epa.gov. */
@@ -352,6 +365,62 @@ export function parseListingHtml(html: string): FifraOrderListing[] {
     });
   }
   return parseListingRows(rows);
+}
+
+/** Domino CAFOs+ESAs view rows: docket + CAFO/ESA title + date + institution + UNID. */
+export function parseCafosViewHtml(html: string): FifraCafosCandidate[] {
+  const found: FifraCafosCandidate[] = [];
+  const seen = new Set<string>();
+  const links = [
+    ...html.matchAll(
+      /href="([^"]+)"[^>]*>\s*((?:FIFRA-\d{2}-\d{4}-\d{4})[\s\S]*?)<\/a>/gi,
+    ),
+  ];
+  for (const m of links) {
+    const href = decodeEntities(m[1]);
+    const label = stripTags(m[2]);
+    const docket = normalizeDocket(label);
+    const unid = (href.match(UNID_RE) || [])[1]?.toUpperCase();
+    if (!docket || !unid) continue;
+    if (COMPLAINT_RE.test(label)) continue;
+    const instMatch = label.match(/\(([^()]+)\)\s*$/);
+    const institution = (instMatch?.[1] ?? "").trim();
+    if (!institution) continue;
+    const cleanedInst = institution.replace(/\s+d\/?b\/?a\s+.+$/i, "").trim();
+    if (PERSON_NAME_RE.test(cleanedInst) && !ENTITY_RE.test(institution)) continue;
+    if (seen.has(docket)) continue;
+    seen.add(docket);
+    const viewUrl = href.startsWith("http") ? href : `${PDF_ORIGIN}${href.replace(/!OpenDocument/i, "?OpenDocument")}`;
+    found.push({
+      docket,
+      institution,
+      date: isoDate(label) ?? isoDate(stripTags(m[0])),
+      title: ORDER_KIND_RE.test(label) ? parseOrderTitle(label) : "Consent Agreement and Final Order",
+      unid,
+      viewUrl,
+    });
+  }
+  return found;
+}
+
+export function officialPdfFromFilingHtml(html: string): string | null {
+  const hrefs = [...html.matchAll(/href="([^"]+\$File\/[^"]+\.pdf[^"]*)"/gi)].map((m) => m[1]);
+  for (const href of hrefs) {
+    const abs = href.startsWith("http") ? href : `${PDF_ORIGIN}${href}`;
+    const official = officialFifraPdfUrl(abs);
+    if (official) return official;
+  }
+  return null;
+}
+
+export function filingOpenUrl(unid: string): string {
+  return `${FILINGS_OPEN}/${unid.toUpperCase()}?OpenDocument`;
+}
+
+export async function resolveFifraOfficialPdf(unid: string): Promise<string | null> {
+  const fromFiling = officialPdfFromFilingHtml(await fetchFifraText(filingOpenUrl(unid)));
+  if (fromFiling) return fromFiling;
+  return null;
 }
 
 export function isIndexTeaserDump(text: string): boolean {
@@ -643,6 +712,30 @@ function mergeOfficialListings(listed: FifraOrderListing[], seeds: FifraOrderLis
   return out;
 }
 
+function listingsFromCafosCandidates(
+  candidates: FifraCafosCandidate[],
+  resolved: Map<string, string>,
+): FifraOrderListing[] {
+  const listed: FifraOrderListing[] = [];
+  const seen = new Set<string>();
+  for (const row of candidates) {
+    const sourceUrl = resolved.get(row.unid) || officialFifraPdfUrl(row.viewUrl);
+    if (!sourceUrl || !officialFifraPdfUrl(sourceUrl)) continue;
+    if (seen.has(row.docket)) continue;
+    seen.add(row.docket);
+    listed.push({
+      id: row.docket,
+      docket: row.docket,
+      institution: row.institution,
+      date: row.date,
+      title: row.title,
+      sourceUrl,
+      pdfId: row.unid,
+    });
+  }
+  return listed;
+}
+
 async function loadOfficialListings(dir: string): Promise<{ listed: FifraOrderListing[]; listedCount: number }> {
   if (dir) {
     const json = readNamedFile(dir, ["listing-excerpt.json", "listing.json"]);
@@ -651,12 +744,43 @@ async function loadOfficialListings(dir: string): Promise<{ listed: FifraOrderLi
       const listed = Array.isArray(rows) ? parseListingRows(rows) : [];
       return { listed, listedCount: listed.length };
     }
+    const cafos = readNamedFile(dir, ["cafos-view-excerpt.html", "cafos-view.html"]);
+    if (cafos) {
+      const candidates = parseCafosViewHtml(cafos);
+      const filing = readNamedFile(dir, ["filing-excerpt.html", "fifra-filing.html"]);
+      const resolved = new Map<string, string>();
+      const fromFiling = filing ? officialPdfFromFilingHtml(filing) : null;
+      for (const row of candidates) {
+        if (fromFiling && pdfIdFromUrl(fromFiling) === row.unid) resolved.set(row.unid, fromFiling);
+      }
+      const listed = listingsFromCafosCandidates(candidates, resolved);
+      return { listed, listedCount: listed.length || candidates.length };
+    }
     const html = readNamedFile(dir, ["listing-excerpt.html", "listing.html"]);
     const listed = html ? parseListingHtml(html) : [];
     return { listed, listedCount: listed.length };
   }
   try {
-    const listed = parseListingHtml(await fetchFifraText(LISTING_URL));
+    const listed: FifraOrderListing[] = [];
+    const resolved = new Map<string, string>();
+    for (const start of [0, 100]) {
+      const url = start ? `${CAFOS_VIEW_URL}&Start=${start}` : CAFOS_VIEW_URL;
+      try {
+        const candidates = parseCafosViewHtml(await fetchFifraText(url));
+        for (const row of candidates) {
+          if (resolved.has(row.unid)) continue;
+          try {
+            const pdf = await resolveFifraOfficialPdf(row.unid);
+            if (pdf) resolved.set(row.unid, pdf);
+          } catch {
+            /* one Filings hop missed; keep the others */
+          }
+        }
+        listed.push(...listingsFromCafosCandidates(candidates, resolved));
+      } catch {
+        /* one CAFOs page missed; keep the others */
+      }
+    }
     const merged = mergeOfficialListings(listed, SEED_LISTINGS);
     if (merged.length > 0) return { listed: merged, listedCount: merged.length };
   } catch {

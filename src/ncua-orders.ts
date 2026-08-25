@@ -334,6 +334,81 @@ export function parseListingRows(rows: NcuaListingRow[]): NcuaOrderListing[] {
   return found;
 }
 
+function splitCsvLine(line: string): string[] {
+  const out: string[] = [];
+  let cur = "";
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i += 1) {
+    const ch = line[i];
+    if (ch === '"') {
+      if (inQuotes && line[i + 1] === '"') {
+        cur += '"';
+        i += 1;
+      } else {
+        inQuotes = !inQuotes;
+      }
+      continue;
+    }
+    if (ch === "," && !inQuotes) {
+      out.push(cur);
+      cur = "";
+      continue;
+    }
+    cur += ch;
+  }
+  out.push(cur);
+  return out;
+}
+
+/** Official administrative-orders CSV is listing metadata. Do not sell the CSV. */
+export function parseNcuaCsv(text: string): NcuaOrderListing[] {
+  const lines = text.replace(/^\uFEFF/, "").replace(/\r/g, "").split("\n").filter((line) => line.trim());
+  if (lines.length < 2) return [];
+  const headers = splitCsvLine(lines[0]).map((h) => h.replace(/^\uFEFF/, "").trim().toLowerCase());
+  const idx = (name: string) => headers.indexOf(name);
+  const iDocket = idx("docket number");
+  const iYear = idx("year");
+  const iFirst = idx("first name");
+  const iLast = idx("last name");
+  const iInst = idx("institution");
+  const iRel = idx("relationship");
+  const iCity = idx("city");
+  const iState = idx("state");
+  const iUrl = idx("url");
+  if (iDocket < 0 || iUrl < 0) return [];
+  const rows: NcuaListingRow[] = [];
+  for (const line of lines.slice(1)) {
+    const cells = splitCsvLine(line);
+    const last = (cells[iLast] ?? "").trim();
+    const first = (cells[iFirst] ?? "").trim();
+    const institution = (cells[iInst] ?? "").trim() || first;
+    const url = (cells[iUrl] ?? "").trim();
+    const relationship = (cells[iRel] ?? "").trim();
+    const people = last && !/^n\/a$/i.test(last);
+    const kind = `${url} ${relationship}`;
+    if (/prohibition|civil-money|civil money|late[\s-]?filer|terminat|letter-of-understanding|\blua\b/i.test(kind)) {
+      continue;
+    }
+    const title =
+      /cease-and-desist|cease and desist/i.test(url) || (!people && /credit union/i.test(institution))
+        ? "Stipulation and Consent to Cease and Desist Order"
+        : "";
+    rows.push({
+      creditUnion: institution,
+      institution,
+      individual: people ? `${first} ${last}`.trim() : "",
+      relationship,
+      city: cells[iCity] ?? "",
+      state: cells[iState] ?? "",
+      docket: cells[iDocket] ?? "",
+      year: cells[iYear] ?? "",
+      title,
+      sourceUrl: url,
+    });
+  }
+  return parseListingRows(rows);
+}
+
 export function parseListingHtml(html: string): NcuaOrderListing[] {
   const found: NcuaOrderListing[] = [];
   const seen = new Set<string>();
@@ -645,9 +720,21 @@ async function loadOfficialListings(dir: string): Promise<{ listed: NcuaOrderLis
       const listed = Array.isArray(rows) ? parseListingRows(rows) : [];
       return { listed, listedCount: listed.length };
     }
+    const csv = readNamedFile(dir, ["csv-metadata.csv", "administrative-orders.csv"]);
+    if (csv) {
+      const listed = parseNcuaCsv(csv);
+      return { listed, listedCount: listed.length };
+    }
     const html = readNamedFile(dir, ["listing-excerpt.html", "listing.html"]);
     const listed = html ? parseListingHtml(html) : [];
     return { listed, listedCount: listed.length };
+  }
+  try {
+    const listed = parseNcuaCsv(await fetchNcuaHtml(CSV_URL));
+    const merged = mergeOfficialListings(listed, SEED_LISTINGS);
+    if (merged.length > 0) return { listed: merged, listedCount: merged.length };
+  } catch {
+    /* official CSV missed; try Drupal listing HTML */
   }
   try {
     const listed = parseListingHtml(await fetchNcuaHtml(LISTING_URL));

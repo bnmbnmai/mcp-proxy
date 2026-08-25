@@ -6,6 +6,8 @@ Always listed on well-known / OpenAPI / llms.txt / shop catalog. Unpaid `GET /fe
 
 v1 seeds **5** official institution stipulation-and-consent PDFs. Required seed is Interstate Power and Light Company (`IN25-6-000`). Family: Digi Power X Inc. f/k/a Digihost Technology Inc. (`IN25-4-000`), MPH Rockaway Peakers / Bayswater (`IN25-10-000`), Terra-Gen, LLC (`IN26-2-000`), Tenaska Power Services Co. (`IN25-13-000`). Skip people.
 
+Collect walks official **year civil-penalty tables** (2025/2024), resolves `/media/` slugs to `cms.ferc.gov` `/sites/default/files` PDFs, and falls back to Wayback when www.ferc.gov is 403. Do not wrap eLibrary JSON. Skip people and order-terminating-hearing PDFs. The 7:45 cron grows past the first-slice 5 when the door is still thin.
+
 ## Paths
 
 | Path | Auth | Price |
@@ -17,9 +19,10 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 
 ## Source of truth
 
-- Listing / search (index only, not the product): https://www.ferc.gov/civil-penalties/all-civil-penalty-actions-2026
+- Listing teaser (2026 first-slice): https://www.ferc.gov/civil-penalties/all-civil-penalty-actions-2026
+- Official year walks: `/civil-penalties/all-civil-penalty-actions-2025` and `/all-civil-penalty-actions-2024`
 - Official PDFs: `https://cms.ferc.gov/sites/default/files/{YYYY-MM}/{name}.pdf`
-- Media landing pages (`/media/...`) are HTML, not the product
+- Media landing pages (`/media/...`) are HTML, not the product; collect resolves the official PDF
 - Required seed: Interstate Power and Light Company — Docket IN25-6-000 — dated 17 Apr 2026 — https://cms.ferc.gov/sites/default/files/2026-04/20260417-195FERC61048-IN25-6-000-Interstate%20Power%20and%20Light%20Co-Settlement%20Agreement.pdf
 - License: **17 USC 105**. Attribute FERC.
 

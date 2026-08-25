@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # Daily apollo ticks collect (user cron, America/Boise).
-# Hay/cattle first, then deepen LIVE official first-slice caches past cardCount=5
-# toward dozens. Refresh when official asOf moved (year-2825) or fetchedAt > 36h.
-# One pass grows thin listed official doors; it does not only refresh hay.
+# Hay/cattle FIRST every morning, then deepen LIVE official first-slice caches
+# past cardCount=5 toward ~20–24 using official walkers. Skip fresh fat doors
+# (n >= 20 and fetchedAt within 36h). Refresh when official asOf moved
+# (year-2825) or fetchedAt > 36h. One pass. No second cron.
 # Imagine-safe: skip 02:00-04:00 Boise and skip if Imagine/rmbg is active.
 # flock so two collects cannot overlap. No secrets in this file or its log.
 # No new SKUs. Code path only — CoS applies on apollo after Imagine.
@@ -15,7 +16,7 @@ MCP="${MCP_PROXY_DIR:-$HOME/projects/mcp-proxy}"
 FARM="${FARM_PLAN_DIR:-$HOME/projects/farm-plan}"
 STALE_HOURS="${TICKS_COLLECT_STALE_HOURS:-36}"
 # Grow while cache n is below this. Cached ids do not consume LIMIT.
-GROW_UNTIL="${TICKS_COLLECT_GROW_UNTIL:-24}"
+GROW_UNTIL="${TICKS_COLLECT_GROW_UNTIL:-20}"
 GROW_LIMIT="${TICKS_COLLECT_GROW_LIMIT:-24}"
 GROW_FETCH="${TICKS_COLLECT_GROW_FETCH:-36}"
 PLAN="${TICKS_COLLECT_PLAN:-$MCP/scripts/ticks-collect-plan.py}"
@@ -132,7 +133,48 @@ export GMP_MAX_FETCH="${GMP_MAX_FETCH:-400}"
 
 log "collect start growUntil=${GROW_UNTIL} limit=${GROW_LIMIT} dryRun=${DRY_RUN:-0}"
 
-if [[ "${SKIP_HAY:-}" != "1" && "${DRY_RUN}" != "1" ]]; then
+ticks_snapshot() {
+  local p
+  for p in \
+    "${TICKS_DIR}/snapshot.json" \
+    "${TICKS_DIR}/manifest.json" \
+    "${MCP}/data/ticks-ams/snapshot.json" \
+    "${MCP}/data/ticks-ams/manifest.json"
+  do
+    if [[ -f "$p" ]]; then
+      printf '%s\n' "$p"
+      return 0
+    fi
+  done
+  printf '%s\n' "${TICKS_DIR}/snapshot.json"
+}
+
+plan_fields() {
+  local snap="$1"
+  local out
+  out="$(python3 "$PLAN" "$snap" "$STALE_HOURS" "$GROW_UNTIL")"
+  _action="${out%% *}"
+  local rest="${out#* }"
+  _n="${rest%% *}"
+  _reason="${rest#* }"
+  _reason="${_reason%% *}"
+}
+
+# Always consider /ticks first. Skip a full AMS recrawl when tickCount is
+# healthy and fetchedAt is fresher than 36h so the live hay cache is not wiped.
+_ticks_snap="$(ticks_snapshot)"
+plan_fields "$_ticks_snap"
+_ticks_before="${_n}"
+_ticks_action="${_action}"
+_ticks_reason="${_reason}"
+if [[ "${_ticks_action}" == "skip" || "${SKIP_HAY:-}" == "1" || "${DRY_RUN}" == "1" ]]; then
+  if [[ "${DRY_RUN}" == "1" ]]; then
+    log "dry-run plan nationwide AMS hay/cattle/grain (same /ticks door)"
+  elif [[ "${SKIP_HAY:-}" == "1" ]]; then
+    log "skip hay (SKIP_HAY=1)"
+  fi
+  log "/ticks, ${_ticks_before}, ${_ticks_before}, ${_ticks_reason}"
+else
   log "hay/cattle collect"
   /usr/bin/python3 "$FARM/scripts/collect-prices.py" >>"$LOG" 2>&1 || log "hay/cattle collect failed (exit $?)"
   log "nationwide AMS hay/cattle/grain collect"
@@ -141,11 +183,8 @@ if [[ "${SKIP_HAY:-}" != "1" && "${DRY_RUN}" != "1" ]]; then
   else
     log "nationwide AMS collect skipped (missing $MCP/build/ticks-ams.js)"
   fi
-elif [[ "${DRY_RUN}" == "1" ]]; then
-  log "dry-run skip hay (hay is a separate cache; this pass plans official doors)"
-  log "dry-run plan nationwide AMS hay/cattle/grain (same /ticks door)"
-else
-  log "skip hay (SKIP_HAY=1)"
+  plan_fields "$(ticks_snapshot)"
+  log "/ticks, ${_ticks_before}, ${_n}, $([[ "${_ticks_action}" == "grow" ]] && echo grew || echo refreshed)"
 fi
 
 if imagine_busy; then
@@ -188,10 +227,9 @@ DOORS=(
   ferc-orders
 )
 
-door_action() {
+door_snap() {
   local sku="$1"
-  local snap="$MCP/data/$sku/snapshot.json"
-  python3 "$PLAN" "$snap" "$STALE_HOURS" "$GROW_UNTIL"
+  printf '%s\n' "$MCP/data/$sku/snapshot.json"
 }
 
 door_argv() {
@@ -213,26 +251,28 @@ door_js() {
 
 run_door() {
   local sku="$1"
-  local js
+  local js snap
   js="$(door_js "$sku")"
+  snap="$(door_snap "$sku")"
   if [[ ! -f "$js" && "${DRY_RUN}" != "1" ]]; then
     log "$sku missing $js"
     return 0
   fi
-  local planned action n
-  planned="$(door_action "$sku")"
-  action="${planned%% *}"
-  n="${planned#* }"
+  plan_fields "$snap"
+  local before="${_n}"
+  local action="${_action}"
+  local reason="${_reason}"
   if [[ "$action" == "skip" ]]; then
-    log "$sku skip (n=${n} grown past ${GROW_UNTIL} and fetchedAt within ${STALE_HOURS}h)"
+    log "/${sku}, ${before}, ${before}, ${reason}"
     return 0
   fi
   if imagine_busy; then
     log "stop doors: Imagine/rmbg became active"
     return 1
   fi
-  log "$sku $action n=${n} growUntil=${GROW_UNTIL} limit=${GROW_LIMIT}"
+  log "$sku $action n=${before} growUntil=${GROW_UNTIL} limit=${GROW_LIMIT}"
   if [[ "${DRY_RUN}" == "1" ]]; then
+    log "/${sku}, ${before}, ${before}, ${reason}"
     return 0
   fi
   local extra
@@ -240,6 +280,17 @@ run_door() {
   if ! "$NODE_BIN" "$js" ${extra:+$extra} >>"$LOG" 2>&1; then
     log "$sku collect failed"
   fi
+  plan_fields "$snap"
+  local after="${_n}"
+  local done="$reason"
+  if [[ "$action" == "grow" && "$after" -le 5 ]]; then
+    done="teaser-blocked"
+  elif [[ "$action" == "grow" ]]; then
+    done="grew"
+  elif [[ "$action" == "refresh" ]]; then
+    done="refreshed"
+  fi
+  log "/${sku}, ${before}, ${after}, ${done}"
   return 0
 }
 

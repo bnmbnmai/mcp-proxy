@@ -6,6 +6,8 @@ Always listed on well-known / OpenAPI / llms.txt / shop catalog. Unpaid `GET /fi
 
 v1 seeds **5** official institution Consent Agreement and Final Order PDFs. Required seed is Travel Caddy, Inc. dba Travelon (`FIFRA-05-2026-0015`). Family: Crown Chemical, Inc. (`FIFRA-05-2026-0001`), Parasol Medical, LLC (`FIFRA-05-2026-0003`), Garden Grove Superstore Inc. (`FIFRA-09-2026-0020`), Nutrien Ag Solutions, Inc. (`FIFRA-10-2026-0080`). Skip people.
 
+Collect walks the official **CAFOs + ESAs** view (not the NSF home teaser) and hops each UNID to the Filings `$File/*.pdf` body. The 7:45 cron grows past the first-slice 5 when the door is still thin.
+
 ## Paths
 
 | Path | Auth | Price |
@@ -17,7 +19,8 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 
 ## Source of truth
 
-- Listing / search (index only, not the product): https://yosemite.epa.gov/oa/rhc/epaadmin.nsf
+- Listing teaser (not the walk): https://yosemite.epa.gov/oa/rhc/epaadmin.nsf
+- Official CAFO/ESA walk: https://yosemite.epa.gov/OA/RHC/EPAAdmin.nsf/CAFOs+and+ESAs?OpenView
 - Official PDFs: `https://yosemite.epa.gov/OA/RHC/EPAAdmin.nsf/Filings/{UNID}/$File/{file}.pdf`
 - Required seed: Travel Caddy, Inc. dba Travelon — Docket FIFRA-05-2026-0015 — filed 2026-07-29 — https://yosemite.epa.gov/OA/RHC/EPAAdmin.nsf/Filings/F4CB3764E5AB61EA85258E43006880DC/$File/FIFRA-05-2026-0015_CAFO_TravelCaddyIncdbaTravelon_FranklinParkIllinois_14PGS.pdf
 - License: **17 USC 105**. Attribute EPA.
@@ -28,7 +31,7 @@ Alongside those keys the paid JSON adds `records[]` (`id`, `date`, `firm`, `url`
 
 Free `GET /fifra-orders/manifest.json` is institution / docket / date / sourceUrl only. Needles such as `11333 Addison Avenue`, `Style Numbers 23537, 43541`, and `Travel Caddy, Inc. doing business as Travelon` stay out of unpaid responses.
 
-`data/fifra-orders/` is gitignored. Order bodies get lost on a dead VM — do not harvest the whole catalog here. Live-apply on apollo stays at the 5 official seeds.
+`data/fifra-orders/` is gitignored. Order bodies get lost on a dead VM — do not harvest the whole catalog here. The existing 7:45 collect grows this leftover when cardCount is still under ~20.
 
 ## Env
 

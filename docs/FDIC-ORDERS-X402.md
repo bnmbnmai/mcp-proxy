@@ -6,6 +6,8 @@ Always listed on well-known / OpenAPI / llms.txt / shop catalog. Unpaid `GET /fd
 
 v1 seeds **5** 2026-dated institution consent-order PDFs from https://orders.fdic.gov. Required seed is MutualOne Bank (`FDIC-26-0001b`, privately held co-op; no 8-K of this order). Do not harvest the EDOS backlog here.
 
+EDOS `/s/` is a Salesforce JS teaser (0 PDFs). Collect walks official `orders.fdic.gov` shepherd PDFs (institution `b` consent orders only). Do not wrap EDOS Salesforce JSON or monthly press teasers. Skip people/IAP (`e`), CMP (`k`), terminations, and Section 19. The 7:45 cron grows past the first-slice 5 when the door is still thin.
+
 ## Paths
 
 | Path | Auth | Price |

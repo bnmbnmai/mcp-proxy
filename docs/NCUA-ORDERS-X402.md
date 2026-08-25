@@ -6,6 +6,8 @@ Always listed on well-known / OpenAPI / llms.txt / shop catalog. Unpaid `GET /nc
 
 v1 seeds **5** official institution C&D body pages. Required seed is Live Life Federal Credit Union (`21-0105-ER`, 2021). Family: Phi Beta Sigma `19-1061-ER`, Defense Logistics `19-0187-ER`. Recent institution cards are often CMP/termination — harvest stays on C&D body pages.
 
+Collect walks the official administrative-orders **CSV as listing metadata only**, then fetches institution C&D HTML bodies. Do not sell the CSV. Skip people / CMP / LUA / terminations. The 7:45 cron grows past the first-slice 5 when the door is still thin.
+
 ## Paths
 
 | Path | Auth | Price |
@@ -17,8 +19,8 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 
 ## Source of truth
 
-- Listing / search (index only, not the product): https://ncua.gov/news/enforcement-actions/administrative-orders
-- Official CSV (metadata only): https://ncua.gov/sites/default/files/list_csv/administrative-orders.csv
+- Listing teaser (Drupal HTML, not the walk): https://ncua.gov/news/enforcement-actions/administrative-orders
+- Official CSV walk (metadata only — finds HTML bodies): https://ncua.gov/sites/default/files/list_csv/administrative-orders.csv
 - Official C&D HTML: `https://ncua.gov/news/enforcement-actions/administrative-orders/{year}/{slug}`
 - Required seed: Live Life Federal Credit Union, Fraser — `21-0105-ER` — dated 22 Feb 2021 — https://ncua.gov/news/enforcement-actions/administrative-orders/2021/administrative-order-matter-live-life-federal-credit-union
 - License: **17 USC 105**. Attribute NCUA.
