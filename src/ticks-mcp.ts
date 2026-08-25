@@ -12,7 +12,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { resolve } from "node:path";
 import { z } from "zod";
-import { catalogSearchQueryString, EXTRACTED_BODY_SKUS, isExtractedBodySku } from "./paid-records.js";
+import { catalogSearchQueryString, EXTRACTED_BODY_SKUS, isExtractedBodySku, newestOfficialTextsCopy } from "./paid-records.js";
 
 export const LIVE_ORIGIN = "https://ticks.bnm.farm";
 export const MCP_PATH = "/mcp";
@@ -184,7 +184,7 @@ export function mcpDiscovery(origin = LIVE_ORIGIN, catalog: LivePaidSku[]): Reco
     connect: `npx -y mcp-remote ${base}${MCP_PATH}`,
     source: WELL_KNOWN_PATH,
     note:
-      `Same ${catalog.length} paid GETs as ${WELL_KNOWN_PATH}. Free ${SEARCH_TOOL_NAME} finds id, the ?id= URL ($0.02), and the page cursor; paid ${GET_ONE_TOOL_NAME} is one official text ($0.02); paid ${GET_PAGE_TOOL_NAME} is the page ($0.05). Extracted-body doors: newest 100 official texts on a plain GET; older pages on the same URL (?before). Table doors stay the whole current table. Free ${SEARCH_TOOL_NAME} is not a paid SKU. Unpaid tool calls still HTTP 402 on the paid URL. Not Bazaar-indexed.`,
+      `Same ${catalog.length} paid GETs as ${WELL_KNOWN_PATH}. Free ${SEARCH_TOOL_NAME} finds id, the ?id= URL ($0.02), and the page cursor; paid ${GET_ONE_TOOL_NAME} is one official text ($0.02); paid ${GET_PAGE_TOOL_NAME} is the page ($0.05). Extracted-body doors: ${newestOfficialTextsCopy()} on a plain GET; older pages on the same URL (?before). Table doors stay the whole current table. Free ${SEARCH_TOOL_NAME} is not a paid SKU. Unpaid tool calls still HTTP 402 on the paid URL. Not Bazaar-indexed.`,
     freeTools: [SEARCH_TOOL_NAME],
   };
 }
@@ -271,7 +271,7 @@ export function mcpToolDescriptors(
     {
       name: GET_PAGE_TOOL_NAME,
       description:
-        "Paid get-page on an extracted-body door. Same URL as the door GET ($0.05). Omit before/page for the newest 100; pass the free-index cursor for an older page. Not a new SKU. Unpaid returns HTTP 402.",
+        `Paid get-page on an extracted-body door. Same URL as the door GET ($0.05). Omit before/page for the ${newestOfficialTextsCopy()}; pass the free-index cursor for an older page. Not a new SKU. Unpaid returns HTTP 402.`,
       inputSchema: {
         type: "object" as const,
         properties: {
@@ -420,7 +420,7 @@ export async function handleMcpJsonRpc(
       capabilities: { tools: { listChanged: false } },
       serverInfo: { name: "bnm-data-shop", version: "1.0.0" },
       instructions:
-        `${catalog.length} paid GETs from ${WELL_KNOWN_PATH}, plus free ${SEARCH_TOOL_NAME}, paid ${GET_ONE_TOOL_NAME} ($0.02), and paid ${GET_PAGE_TOOL_NAME} ($0.05). Free index/search finds id and the ?id= URL; then pay one text or the page. Extracted-body doors: newest 100 official texts on a plain GET; older pages on the same URL (?before). Table doors stay the whole current table. Unpaid is HTTP 402. USDC on Base. Not Bazaar-indexed.`,
+        `${catalog.length} paid GETs from ${WELL_KNOWN_PATH}, plus free ${SEARCH_TOOL_NAME}, paid ${GET_ONE_TOOL_NAME} ($0.02), and paid ${GET_PAGE_TOOL_NAME} ($0.05). Free index/search finds id and the ?id= URL; then pay one text or the page. Extracted-body doors: ${newestOfficialTextsCopy()} on a plain GET; older pages on the same URL (?before). Table doors stay the whole current table. Unpaid is HTTP 402. USDC on Base. Not Bazaar-indexed.`,
     });
   }
 
@@ -697,7 +697,7 @@ export async function createTicksMcpServer(origin = ticksOrigin()): Promise<McpS
     GET_PAGE_TOOL_NAME,
     {
       description:
-        "Paid get-page on an extracted-body door. Same URL as the door GET ($0.05). Omit before/page for the newest 100. Not a new SKU.",
+        `Paid get-page on an extracted-body door. Same URL as the door GET ($0.05). Omit before/page for the ${newestOfficialTextsCopy()}. Not a new SKU.`,
       inputSchema: {
         door: z.string().describe("Extracted-body door name, e.g. gmp"),
         before: z.string().optional().describe("Official catalog id or YYYY-MM-DD from free search."),

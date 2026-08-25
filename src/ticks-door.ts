@@ -901,7 +901,7 @@ const PAID_BODY_N = paidBodyWindow();
 const PAID_WINDOW_COPY = `GET ?id= one official text ($0.02). Newest chunk on a plain GET (${newestOfficialTextsCopy(PAID_BODY_N)}, $0.05); older page ?before= another $0.05.`;
 /** Shop-wide discovery. Free index/search, then pay one text or the page. Never “entire current cache”. */
 const BODY_PAGE_DISCOVERY =
-  `Extracted-body doors: free index/search on /{door}/manifest.json or /{door}/index (?q=, optional before/date), then pay ${oneOfficialTextCopy()} or the page ($0.05). ${newestOfficialTextsCopy(PAID_BODY_N)} on a plain GET ($0.05); older pages on the same URL (?before, another $0.05). Table doors (/ticks, /import-alerts) stay the whole current table.`;
+  `Extracted-body doors: free index/search on /{door}/manifest.json or /{door}/index (?q=, optional before/date), then pay ${oneOfficialTextCopy()} or the page ($0.05). ${newestOfficialTextsCopy(PAID_BODY_N)} on a plain GET ($0.05), or the whole current set if fewer; older pages on the same URL (?before, another $0.05). Table doors (/ticks, /import-alerts) stay the whole current table.`;
 
 const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> = {
   ticks: {
@@ -3205,7 +3205,7 @@ function paidOpenApiOp(opts: {
 }
 
 const EXTRACTED_MANIFEST_OPENAPI =
-  " Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 100 official texts ($0.05), not the entire cache. Same URL ?before is the next older page ($0.05).";
+  " Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).";
 
 function freeOpenApiOp(summary: string, description: string): Record<string, unknown> {
   const extractedCatalog =

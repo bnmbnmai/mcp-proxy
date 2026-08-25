@@ -4,13 +4,14 @@
  * Existing paid keys stay; records[] is added alongside for agent diffs.
  * Shape is always {id, date, firm, url, type} — same as the first-pass /ticks /form-483 /warning-letters product.
  *
- * Extracted-body doors sell the newest N official texts on a plain GET (default 100).
+ * Extracted-body doors sell the newest N official texts on a plain GET (default 10).
  * Same URL ?before=<id or date> (from the free manifest) is the next older N for
- * another $0.05. Free /{door}/manifest.json stays the full catalog. /ticks,
- * /import-alerts, and Mariners weekly editions are not windowed.
+ * another $0.05. If the door has fewer than N collected records, the $0.05 page
+ * is the whole current set. Free /{door}/manifest.json stays the full catalog.
+ * /ticks, /import-alerts, and Mariners weekly editions are not windowed.
  */
 
-export const DEFAULT_PAID_BODY_WINDOW = 100;
+export const DEFAULT_PAID_BODY_WINDOW = 10;
 export const PAID_BODY_WINDOW_ENV = "PAID_BODY_WINDOW";
 /** Same-door GET ?id= one official text. Not a new Bazaar SKU. */
 export const SINGLE_DOC_AMOUNT_ATOMIC = "20000";
@@ -51,7 +52,7 @@ export const EXTRACTED_BODY_SKUS = [
 export type ExtractedBodySku = (typeof EXTRACTED_BODY_SKUS)[number];
 
 export type PaidBodyOpts = {
-  /** Override the live N. Default is PAID_BODY_WINDOW or 100. */
+  /** Override the live N. Default is PAID_BODY_WINDOW or 10. */
   window?: number;
   /** Official catalog id, or YYYY-MM-DD. Next older page after that cursor. */
   before?: string;
