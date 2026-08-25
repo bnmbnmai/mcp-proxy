@@ -2175,7 +2175,7 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         name: "Tavneos",
         date: "2026-08-13",
         sourceUrl: "https://www.ema.europa.eu/en/documents/referral/tavneos-article-20-procedure-assessment-report_en.pdf",
-        body: "European Medicines Agency\nArticle 20 referral\nCHMP assessment report\nTavneos (avacopan)\nbenefit-risk of the marketing authorisation",
+        body: "European Medicines Agency\nArticle 20 referral\nCHMP assessment report\nbenefit-risk of the marketing authorisation",
       },
     ],
   },
