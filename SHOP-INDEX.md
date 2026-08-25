@@ -16,7 +16,7 @@ payTo `0xf59621FC406D266e18f314Ae18eF0a33b8401004` · Base (`eip155:8453`) · US
 
 Official public data caches (PDF/HTML sources), returned as JSON after x402. Not free-JSON wraps. Unpaid GET on a paid path returns HTTP 402. No API key. No request body.
 
-**32 paid GETs.** `$0.05` (`50000` atomic) for every live paid GET, including `/ticks`. One GET is one cache. No per-record SKU. No alerts/delta door.
+Paid GETs are listed on live well-known (do not hardcode a door count). `$0.05` (`50000` atomic) for table / page GETs. Extracted-body `?id=` is `$0.02` (`20000` atomic). No per-record SKU. No alerts/delta door.
 
 Extracted-body doors: **free index/search** on `/{door}/manifest.json` or `/{door}/index` (`?q=`, optional `before`/`date`) returns one row per collected record (id, date, title/firm/subject, `?id=` URL, page cursor). Then pay **one official text** `GET ?id=` at **$0.02** (`20000` atomic) or the page at **$0.05**. A plain GET sells the **newest 10 official texts** (or the whole current set if fewer). The same URL with `?before=` sells the next older page of up to 10 for another $0.05. Same door. No per-record Bazaar SKU. `/ticks` and `/import-alerts` stay the full current table. Mariners doors stay **this week's LNM**.
 
@@ -53,6 +53,8 @@ Extracted-body doors: **free index/search** on `/{door}/manifest.json` or `/{doo
 | `/superfund-rods` | EPA Superfund Record of Decision text. Newest 10 official texts | `cards[].body` | 5 cards | $0.05 | [superfund-rods/manifest.json](https://ticks.bnm.farm/superfund-rods/manifest.json) |
 | `/ico-mpn` | ICO Monetary Penalty Notice text. Newest 10 official texts | `cards[].body` | 20 cards | $0.05 | [ico-mpn/manifest.json](https://ticks.bnm.farm/ico-mpn/manifest.json) |
 | `/cma-ca98` | UK CMA CA98 infringement-decision text. Newest 10 official texts | `cards[].body` | 9 cards | $0.05 | [cma-ca98/manifest.json](https://ticks.bnm.farm/cma-ca98/manifest.json) |
+| `/ema-referrals` | EMA human-medicine referral procedure text. Find on free index (?q=); each row names the id to buy. GET ?id= one official text $0.02. Default GET is the newest 10 for $0.05 (whole current set if n<10); older pages another $0.05 on the same URL | `cards[].body` | 14 cards | $0.02 / $0.05 | [ema-referrals/manifest.json](https://ticks.bnm.farm/ema-referrals/manifest.json) |
+| `/cder-reviews` | FDA CDER Integrated Review text (official accessdata.fda.gov Drugs@FDA PDFs). Find on free index (?q=); each row names the id to buy. GET ?id= one official text $0.02. Default GET is the newest 10 for $0.05 (whole current set if n<10); older pages another $0.05 on the same URL | `cards[].body` | 16 cards | $0.02 / $0.05 | [cder-reviews/manifest.json](https://ticks.bnm.farm/cder-reviews/manifest.json) |
 | `/form-483` | FDA Form 483 inspectional observation bodies. Newest 10 official texts | `letters[].body` | 314 letters | $0.05 | [form-483/manifest.json](https://ticks.bnm.farm/form-483/manifest.json) |
 | `/gmp` | Health Canada Drug GMP report-card observation text + C.02 cites. Newest 10 official texts | `cards[].body` | 3550 cards | $0.05 | [gmp/manifest.json](https://ticks.bnm.farm/gmp/manifest.json) |
 | `/gmp-md` | Health Canada medical-device report-card observation text + MDR cites. Newest 10 official texts | `cards[].body` | 33 cards | $0.05 | [gmp-md/manifest.json](https://ticks.bnm.farm/gmp-md/manifest.json) |
@@ -61,8 +63,8 @@ Free manifests carry the full catalog (count, ids, official source URLs). They a
 
 ## Free discovery (not paid)
 
-- `GET /` — shop JSON (payTo + the thirty-two products). Note says free index/search, then pay the page.
-- `GET /.well-known/x402` — absolute URLs of the thirty-two paid routes only (not a SKU per page)
+- `GET /` — shop JSON (payTo + live products). Note says free index/search, then pay the page.
+- `GET /.well-known/x402` — absolute URLs of the live paid routes only (not a SKU per page)
 - `GET /openapi.json` — OpenAPI 3.1 with `x-payment-info`. Body doors: free index/search, then pay the page. Not the entire cache.
 - `GET /llms.txt` — short agent guidance (free index/search, then pay the page)
 - `GET /mcp` — Streamable HTTP MCP: one tool per paid GET plus free `search`, paid `get-one` ($0.02), and paid `get-page` ($0.05)
@@ -75,6 +77,6 @@ Unpaid GET returns HTTP 402 with `PAYMENT-REQUIRED`. Extracted-body `?id=` asks 
 ## Notes
 
 - Re-read live well-known / OpenAPI / manifests before assuming a new door or a new catalog size.
-- No thirty-third public SKU. No alerts/delta door. No per-record Bazaar SKU. Same-door `?id=` is $0.02.
+- No next public SKU beyond live well-known. No alerts/delta door. No per-record Bazaar SKU. Same-door `?id=` is $0.02.
 - Farm is no-spray, not organic-certified.
 - This index does not claim Bazaar listing, CDP settlement, or sales volume.

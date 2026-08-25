@@ -1,0 +1,72 @@
+CENTER FOR DRUG EVALUATION AND
+           RESEARCH
+
+
+     APPLICATION NUMBER:
+
+        217785Orig1s000
+
+    INTEGRATED REVIEW
+
+               NDA 217785
+               REZDIFFRA (resmetirom)
+
+                                                               Integrated Review
+
+               Table 1. Application Information
+               Application type                              NDA
+               Application number(s)                         217785
+               Priority or standard                          Priority
+               Submit date(s)                                7/14/2023
+               Received date(s)                              7/14/2023
+               PDUFA goal date                               3/14/2024
+               Division/office                               Division of Hepatology and Nutrition (DHN)
+               Review completion date                        3/14/2024
+               Established/proper name                       resmetirom
+               (Proposed) proprietary name                   REZDIFFRA
+               Pharmacologic class                           Thyroid hormone receptor-beta (THR-β) agonist
+               Other product name(s)                         N/A
+               Applicant                                     Madrigal Pharmaceuticals, Inc.
+               Dosage form(s)/formulation(s)                 Tablet
+                                                                                                                                       (b) (4)
+               Applicant-proposed dosing
+               regimen
+
+
+
+
+                Applicant-proposed indication(s)/            REZDIFFRA is a thyroid hormone receptor beta (THR- β)
+                population(s)                                selective agonist indicated for the treatment of adults with
+                                                             nonalcoholic steatohepatitis (NASH) with liver fibrosis
+                SNOMED CT code for proposed                  Nonalcoholic steatohepatitis (442685003)
+                indication disease term(s)1
+                Regulatory action                            Accelerated approval
+                Approved dosage (if applicable)              The recommended dosage is based on actual body weight.
+                                                             For patients weighing:
+                                                             <100 kg, the recommended dosage is 80 mg orally once daily.
+                                                             ≥100 kg, the recommended dosage is 100 mg orally once daily.
+
+                                                             Administer REZDIFFRA with or without food.
+                Approved indication(s)/                      REZDIFFRA is a thyroid hormone receptor beta (THR-β)
+                population(s) (if applicable)                agonist indicated in conjunction with diet and exercise for the
+                                                             treatment of adults with noncirrhotic nonalcoholic steatohepatitis
+                                                             (NASH) with moderate to advanced liver fibrosis (consistent
+                                                             with stages F2 to F3 fibrosis).
+                SNOMED CT code for approved                  See above proposed SNOMED indication
+                indication disease term(s)1
+               1For internal tracking purposes only.
+
+                  2. Benefit-Risk Assessment........................................................................................8
+               REZDIFFRA (resmetirom)
+               Established/proper name                       resmetirom
+               REZDIFFRA (resmetirom)
+               REZDIFFRA (resmetirom)
+               REZDIFFRA (resmetirom)
+               REZDIFFRA (resmetirom)
+                           8.2.2. Effect of Resmetirom on Other Drugs ..................................................171
+               REZDIFFRA (resmetirom)
+                           8.2.3. Effect of Other Drugs on Resmetirom ..................................................175
+               REZDIFFRA (resmetirom)
+               REZDIFFRA (resmetirom)
+                           14.1.1. In Vitro Absorption of Resmetirom, Study 09989..............................271
+                           14.1.2. Plasma Protein Binding of 
