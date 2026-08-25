@@ -522,6 +522,9 @@ const PUBLIC_SOURCE_MARKERS = [
   "ams-3239",
   "ams_2887",
   "ams-2887",
+  "ams_2911",
+  "ams-2911",
+  "national wool",
   "arkansas daily grain",
   "kansas daily grain",
   "texas daily grain",
@@ -537,6 +540,8 @@ const PUBLIC_SERIES_PREFIXES = [
   "hay.ams_",
   "cattle.ams_",
   "grain.ams_",
+  "wool.ams_",
+  "fiber.ams_",
   "ibc.id.grain.",
   "wd1.",
   "ams.2914.",
@@ -615,6 +620,7 @@ export const TICKS_SOURCE_NAMES = [
   "AMS_3167 Virginia grain",
   "AMS_3239 Wyoming grain",
   "AMS_2887 National sunflower/flax",
+  "AMS_2911 National Wool",
 ] as const;
 
 export type TickStatus = "ok" | "empty" | "stale";
@@ -2349,12 +2355,12 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
     schema: {
       tickFields: {
         id: "string — deterministic series id",
-        group: "hay | cattle | produce | grain | water | pulses",
+        group: "hay | cattle | produce | grain | water | pulses | wool",
         commodity: "string",
         label: "string",
         market: "string — geography / barn / shipping point",
         classGrade: "string",
-        unit: "$/ton | $/cwt | $/pair | $/50 lb | $/25 lb | $/bu | $/AF",
+        unit: "$/ton | $/cwt | $/pair | $/50 lb | $/25 lb | $/bu | $/AF | $/lb",
         price: "number | null — official print only",
         lo: "number | optional",
         hi: "number | optional",

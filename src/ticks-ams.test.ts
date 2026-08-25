@@ -155,6 +155,35 @@ const hrw = grain.find((row) => /hard_red_winter/i.test(row.id) && /ordinary/i.t
 assert.ok(hrw);
 assert.ok(hrw.price >= 5.35 && hrw.price <= 5.45);
 
+const wool = parseAmsReportText(
+  fx("wool-national-2911.txt"),
+  report("2911"),
+  "https://www.ams.usda.gov/mnreports/ams_2911.pdf",
+);
+assert.equal(parseReportDate(fx("wool-national-2911.txt")), "2026-08-21");
+assert.equal(wool.length, 12, `expected 11 micron prints + merino, got ${wool.length}`);
+assert.ok(wool.every((row) => row.group === "wool" && row.unit === "$/lb"));
+assert.ok(wool.every((row) => row.id.startsWith("wool.ams_2911.")));
+assert.ok(wool.every((row) => row.asOf === "2026-08-21"));
+assert.ok(wool.every((row) => row.sourceUrl.includes("ams_2911")));
+const micron17 = wool.find((row) => row.id === "wool.ams_2911.awex.17_micron");
+assert.ok(micron17, "AWEX 17 micron");
+assert.equal(micron17.price, 8.09);
+assert.equal(micron17.lo, 6.07);
+assert.equal(micron17.hi, 6.88);
+assert.match(micron17.label, /17 micron/i);
+assert.match(micron17.market, /Charleston/i);
+const micron23 = wool.find((row) => row.id.includes("23_micron"));
+assert.equal(micron23, undefined, "empty 23 micron has no U.S.$ print");
+assert.ok(!wool.some((row) => row.id.includes("24_micron")), "empty 24 micron has no U.S.$ print");
+const merino = wool.find((row) => row.id === "wool.ams_2911.australia.merino_clippings");
+assert.ok(merino, "Merino clippings");
+assert.equal(merino.price, 3.71);
+assert.equal(merino.lo, 2.78);
+assert.equal(merino.hi, 3.15);
+assert.ok(!wool.some((row) => /emi|exch|bales|greasy/i.test(row.id + row.label)));
+assert.ok(!wool.some((row) => /domestic/i.test(row.id)), "no invented domestic wool when AMS printed no trades");
+
 const listing = latestEsmisPdfUrl(fx("esmis-california-listing.html"), "2904");
 assert.equal(
   listing,
@@ -236,6 +265,8 @@ assert.ok(
   "leftover official Grain POS slugs from AMS state-grain listing",
 );
 assert.ok(!slugs.includes("3045"), "Minneapolis Daily Basis is not POS");
+assert.ok(slugs.includes("2911"), "National Wool Review leftover");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2911")?.group, "wool");
 assert.ok(AMS_NATIONAL_REPORTS.every((r) => !["3056", "3057", "3058", "3059", "2914"].includes(r.slug)));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "marsapi"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "nass-quick-stats"));
@@ -245,6 +276,7 @@ assert.ok(SKIPPED_SOURCES.some((s) => s.id === "hay-auction-barns"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "no-il-ga-direct-hay"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "ams_3045_minneapolis_basis"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "cattle-auction-summaries"));
+assert.ok(SKIPPED_SOURCES.some((s) => s.id === "ams_2911_marsapi"));
 assert.equal(PRODUCT_ID, "idaho-hay-feeder-ticks");
 assert.equal(PRODUCT_NAME, "Idaho + nationwide USDA AMS hay/cattle/grain");
 
@@ -280,6 +312,28 @@ try {
   assert.ok(paid.records.some((row) => row.id === "cattle-tf-feeder-steer"));
   assert.ok(paid.records.some((row) => row.id.startsWith("hay.ams_2707.")));
   assert.equal(paid.records.find((row) => row.id.startsWith("hay.ams_2707."))?.type, "hay");
+  const woolSnap = writeAmsSnapshot(
+    {
+      ok: true,
+      product: "idaho-hay-feeder-ticks",
+      fetchedAt: "2026-08-25T16:00:00Z",
+      asOf: "2026-08-21",
+      tickCount: hayTx.length + wool.length,
+      rows: [...hayTx, ...wool],
+      failed: [],
+      sources: ["AMS_2707 Texas Direct Hay", "AMS_2911 National Wool Review"],
+    },
+    dir,
+  );
+  assert.ok(woolSnap.endsWith("snapshot.json"));
+  process.env.TICKS_AMS_DIR = dir;
+  const loadedWool = loadTicks();
+  const paidWool = paidTicksBody(loadedWool);
+  assert.ok(paidWool.records.some((row) => row.id.startsWith("hay.ams_2707.")));
+  assert.equal(paidWool.records.find((row) => row.id.startsWith("hay.ams_2707."))?.type, "hay");
+  const woolRec = paidWool.records.find((row) => row.id === "wool.ams_2911.awex.17_micron");
+  assert.ok(woolRec, "paid records include AMS_2911 wool");
+  assert.equal(woolRec.type, "wool");
   assert.ok(paid.asOf);
 } finally {
   for (const [k, v] of Object.entries(prevEnv)) {
@@ -299,6 +353,7 @@ console.log(
     grainPortland: grain.length,
     grainIllinois: grainIl.length,
     grainKansas: grainKs.length,
+    woolNational: wool.length,
     mergedTickCount: merged.ticks.length,
     keptTwinFalls: true,
   }),
