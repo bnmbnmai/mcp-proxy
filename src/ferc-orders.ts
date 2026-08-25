@@ -20,6 +20,14 @@ export const PRODUCT_ID = "ferc-institution-order-bodies";
 export const PRODUCT_NAME = "FERC institution stipulation-and-consent text";
 
 export const LISTING_URL = "https://www.ferc.gov/civil-penalties/all-civil-penalty-actions-2026";
+/** Official year tables. The live 2026 page is first-slice 5; www.ferc.gov HTML is often 403. */
+export const YEAR_LISTING_URLS = [
+  "https://www.ferc.gov/civil-penalties/all-civil-penalty-actions-2025",
+  "https://www.ferc.gov/all-civil-penalty-actions-2024",
+] as const;
+export const WAYBACK_CAPTURE: Record<string, string> = {
+  "https://www.ferc.gov/civil-penalties/all-civil-penalty-actions-2025": "20251014062747",
+};
 export const PDF_HOST = "cms.ferc.gov";
 export const PDF_ORIGIN = "https://cms.ferc.gov";
 export const DOCKET_RE = /\b(IN\d{2}-\d{1,4}-000)\b/i;
@@ -244,7 +252,7 @@ export function pdfIdFromUrl(url: string | null | undefined): string | null {
 
 export function officialFercPdfUrl(urlOrPath: string | null | undefined): string | null {
   if (!urlOrPath) return null;
-  const trimmed = urlOrPath.trim();
+  const trimmed = unwrapFercUrl(urlOrPath.trim());
   try {
     const parsed = new URL(trimmed, PDF_ORIGIN);
     const host = parsed.hostname.toLowerCase();
@@ -260,10 +268,66 @@ export function officialFercPdfUrl(urlOrPath: string | null | undefined): string
   }
 }
 
+export function unwrapFercUrl(url: string): string {
+  const wb = url.match(/https?:\/\/web\.archive\.org\/web\/\d+\/(https?:\/\/(?:cms\.)?ferc\.gov\/[^\s"'<>]+)/i);
+  return wb ? wb[1] : url;
+}
+
+export function waybackUrl(url: string): string {
+  const id = WAYBACK_CAPTURE[url] ?? "2026";
+  return `https://web.archive.org/web/${id}/${url}`;
+}
+
+function titleCaseSlug(raw: string): string {
+  return raw
+    .split("-")
+    .filter(Boolean)
+    .map((word) => {
+      const lower = word.toLowerCase();
+      if (lower === "llc") return "LLC";
+      if (lower === "inc") return "Inc";
+      if (lower === "co") return "Co";
+      if (lower === "dba") return "dba";
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    })
+    .join(" ");
+}
+
+/** Media landing slug → official cms.ferc.gov /sites/default/files PDF. */
+export function mediaSlugToOfficialPdfUrl(slugOrUrl: string): string | null {
+  const raw = unwrapFercUrl(slugOrUrl);
+  const slug = raw.replace(/^https?:\/\/(?:cms\.)?ferc\.gov\/media\//i, "").replace(/\/+$/, "");
+  const m = slug.match(/^(\d{8})-(\d+ferc\d+)-(in\d{2}-\d+-\d+)-(.+)$/i);
+  if (!m) return null;
+  const ymd = m[1];
+  const folder = `${ymd.slice(0, 4)}-${ymd.slice(4, 6)}`;
+  const cite = m[2].replace(/ferc/gi, "FERC");
+  const docket = m[3].toUpperCase();
+  let rest = m[4];
+  if (/settlement-agreement$/i.test(rest)) rest = rest.replace(/-?settlement-agreement$/i, "");
+  else if (/settlement$/i.test(rest)) rest = rest.replace(/-?settlement$/i, "");
+  const name = titleCaseSlug(rest);
+  const file = `${ymd}-${cite}-${docket}-${name}-Settlement Agreement.pdf`;
+  return officialFercPdfUrl(`${PDF_ORIGIN}/sites/default/files/${folder}/${file}`);
+}
+
+const PERSON_PART_RE = /^[A-Z][a-z]+(?:\s+[A-Z]\.?)?\s+[A-Z][a-z]+$/;
+
+function hasTrailingPerson(name: string): boolean {
+  const m = name.match(/(?:,|\band)\s+([A-Za-z. /'-]+)$/);
+  if (!m) return false;
+  const tail = m[1].replace(/\s+f\/k\/a\s+.+$/i, "").trim();
+  return tail.split(/\s+and\s+/).every((part) => {
+    const cleaned = part.trim();
+    return PERSON_PART_RE.test(cleaned) && !ENTITY_RE.test(cleaned);
+  });
+}
+
 export function isPeopleRow(row: FercListingRow): boolean {
   if ((row.individual ?? "").trim()) return true;
   const name = (row.institution ?? "").trim();
   if (!name) return true;
+  if (hasTrailingPerson(name)) return true;
   if (ENTITY_RE.test(name)) return false;
   const cleaned = name.replace(/^In the Matter of\s+/i, "").replace(/\s+d\/b\/a\s+.+$/i, "").trim();
   return PERSON_NAME_RE.test(cleaned);
@@ -307,30 +371,48 @@ export function parseListingRows(rows: FercListingRow[]): FercOrderListing[] {
   return found;
 }
 
+function listingHrefToPdf(href: string): string {
+  const raw = unwrapFercUrl(href.startsWith("http") ? href : href ? `${PDF_ORIGIN}${href}` : "");
+  return officialFercPdfUrl(raw) || mediaSlugToOfficialPdfUrl(raw) || raw;
+}
+
 export function parseListingHtml(html: string): FercOrderListing[] {
   const rows: FercListingRow[] = [];
-  const trs = html.match(/<tr\b[^>]*>[\s\S]*?<\/tr>/gi) ?? [];
-  for (const row of trs) {
-    const href = (row.match(/href="([^"]+)"/i) || [])[1] || "";
-    const cells = [...row.matchAll(/<t[dh]\b[^>]*>([\s\S]*?)<\/t[dh]>/gi)].map((m) => stripTags(m[1]));
-    if (cells.length < 2) continue;
-    const subject = cells[0] ?? "";
-    const docket = normalizeDocket(subject) || normalizeDocket(cells[1]) || normalizeDocket(href);
+  const seenHref = new Set<string>();
+  const pushFrom = (subject: string, href: string, extra = "") => {
+    const sourceUrl = listingHrefToPdf(href);
+    if (!sourceUrl || seenHref.has(sourceUrl)) return;
+    seenHref.add(sourceUrl);
+    const docket = normalizeDocket(subject) || normalizeDocket(href) || normalizeDocket(sourceUrl);
     const institution =
       subject
         .replace(/,?\s*Docket No\..+$/i, "")
         .replace(/^In the Matter of\s+/i, "")
         .trim() || subject;
-    const date = cells.find((c) => isoDate(c)) ?? subject;
-    const sourceUrl = href.startsWith("http") ? href : href ? `${PDF_ORIGIN}${href}` : "";
     rows.push({
       institution,
       docket: docket ?? "",
-      date,
-      title: subject,
-      type: cells[2] ?? "",
+      date: isoDate(subject) ?? isoDate(extra) ?? undefined,
+      title: /terminat/i.test(subject) ? "Order Terminating" : subject,
+      type: extra,
       sourceUrl,
     });
+  };
+  const trs = html.match(/<tr\b[^>]*>[\s\S]*?<\/tr>/gi) ?? [];
+  for (const row of trs) {
+    const href = (row.match(/href="([^"]+)"/i) || [])[1] || "";
+    const cells = [...row.matchAll(/<t[dh]\b[^>]*>([\s\S]*?)<\/t[dh]>/gi)].map((m) => stripTags(m[1]));
+    if (cells.length < 2 && !href) continue;
+    pushFrom(cells[0] ?? stripTags(row), href, cells[2] ?? "");
+  }
+  const loose = [...html.matchAll(/href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi)];
+  for (const m of loose) {
+    const href = m[1];
+    if (!/cms\.ferc\.gov\/(?:media|sites\/default\/files)/i.test(unwrapFercUrl(href)) && !/\/media\//i.test(href)) {
+      continue;
+    }
+    const around = stripTags((html.slice(Math.max(0, m.index! - 400), (m.index ?? 0) + m[0].length + 80)));
+    pushFrom(around, href);
   }
   return parseListingRows(rows);
 }
@@ -569,8 +651,15 @@ export async function fetchFercText(url: string): Promise<string> {
   const res = await fetch(url, {
     headers: { "User-Agent": HTTP_UA, Accept: "text/html,application/xhtml+xml" },
   });
-  if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
-  return await res.text();
+  if (res.ok) return await res.text();
+  if (res.status === 403 || res.status === 406 || res.status === 503) {
+    const wb = await fetch(waybackUrl(url), {
+      headers: { "User-Agent": HTTP_UA, Accept: "text/html,application/xhtml+xml" },
+    });
+    if (wb.ok) return await wb.text();
+    throw new Error(`${url} HTTP ${res.status}; wayback ${wb.status}`);
+  }
+  throw new Error(`${url} HTTP ${res.status}`);
 }
 
 export function pdfToText(pdfPath: string): string {
@@ -610,12 +699,24 @@ async function loadOfficialListings(dir: string): Promise<{ listed: FercOrderLis
       const listed = Array.isArray(rows) ? parseListingRows(rows) : [];
       return { listed, listedCount: listed.length };
     }
+    const year = readNamedFile(dir, ["2025-year-excerpt.html", "year-excerpt.html"]);
+    if (year) {
+      const listed = parseListingHtml(year);
+      return { listed, listedCount: listed.length };
+    }
     const html = readNamedFile(dir, ["listing-excerpt.html", "listing.html"]);
     const listed = html ? parseListingHtml(html) : [];
     return { listed, listedCount: listed.length };
   }
   try {
-    const listed = parseListingHtml(await fetchFercText(LISTING_URL));
+    const listed: FercOrderListing[] = [];
+    for (const url of [LISTING_URL, ...YEAR_LISTING_URLS]) {
+      try {
+        listed.push(...parseListingHtml(await fetchFercText(url)));
+      } catch {
+        /* one official year table missed; keep the others */
+      }
+    }
     const merged = mergeOfficialListings(listed, SEED_LISTINGS);
     if (merged.length > 0) return { listed: merged, listedCount: merged.length };
   } catch {

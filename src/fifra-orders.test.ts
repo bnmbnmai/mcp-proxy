@@ -8,6 +8,7 @@ import {
   ATTRIBUTION,
   CARD_FIELDS,
   LICENSE,
+  CAFOS_VIEW_URL,
   LISTING_URL,
   SEED_LISTINGS,
   buildFifraOrdersManifest,
@@ -16,6 +17,8 @@ import {
   isPeopleRow,
   isRealFifraOrderBody,
   officialFifraPdfUrl,
+  officialPdfFromFilingHtml,
+  parseCafosViewHtml,
   parseFifraOrderText,
   parseListingHtml,
   parseListingRows,
@@ -52,6 +55,8 @@ async function main(): Promise<void> {
   assert.equal(officialFifraPdfUrl("https://ofac.treasury.gov/media/936706/download"), null);
   assert.equal(officialFifraPdfUrl("https://www.federalregister.gov/documents/2026/08/03/2026-99999/travelon"), null);
   assert.ok(LISTING_URL.includes("yosemite.epa.gov"));
+  assert.ok(CAFOS_VIEW_URL.includes("CAFOs+and+ESAs"), "live walk is the CAFOs+ESAs view, not the NSF home teaser");
+  assert.doesNotMatch(LISTING_URL, /CAFOs/, "NSF home stays the teaser listing URL");
   assert.equal(SEED_LISTINGS.length, 5);
   assert.ok(SEED_LISTINGS.some((r) => r.docket === "FIFRA-05-2026-0015"));
 
@@ -59,6 +64,18 @@ async function main(): Promise<void> {
   assert.ok(htmlListed.some((r) => r.id === "FIFRA-05-2026-0015"));
   assert.ok(htmlListed.some((r) => r.id === "FIFRA-09-2026-0020"));
   assert.ok(!htmlListed.some((r) => r.id === "FIFRA-05-2026-0099"));
+
+  const cafos = parseCafosViewHtml(readFx("cafos-view-excerpt.html"));
+  const travelonView = cafos.find((r) => r.docket === "FIFRA-05-2026-0015");
+  assert.ok(travelonView && /Travelon/i.test(travelonView.institution));
+  assert.equal(travelonView?.unid, "F4CB3764E5AB61EA85258E43006880DC", "Filings UNID is the document id, not the view id");
+  assert.ok(cafos.some((r) => r.docket === "FIFRA-05-2026-0019" && /All Glass Aquarium/i.test(r.institution)));
+  assert.ok(cafos.some((r) => r.docket === "FIFRA-02-2026-5061" && /Mirtech/i.test(r.institution)));
+  assert.ok(!cafos.some((r) => r.docket === "FIFRA-05-2026-0099"), "CAFOs view skips people");
+  assert.ok(!cafos.some((r) => r.docket === "FIFRA-05-2026-0100"), "CAFOs view skips complaints");
+  const travelonPdf = officialPdfFromFilingHtml(readFx("filing-excerpt.html"));
+  assert.equal(travelonPdf, TRAVELON);
+  assert.equal(officialFifraPdfUrl(LISTING_URL), null, "NSF home is not an official PDF body");
 
   const people = rows.find((r) => (r.docket ?? "") === "FIFRA-05-2026-0099");
   assert.ok(people);
