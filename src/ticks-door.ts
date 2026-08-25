@@ -898,9 +898,9 @@ function usdcDisplayFromAtomic(atomic: string | null | undefined): string | null
 
 const PAID_BODY_N = paidBodyWindow();
 const PAID_WINDOW_COPY = `Newest chunk on a plain GET (${newestOfficialTextsCopy(PAID_BODY_N)}); ${olderChunkCopy(PAID_BODY_N)}.`;
-/** Shop-wide discovery. Never “entire current cache” as a body-door line. */
+/** Shop-wide discovery. Free index/search, then pay the page. Never “entire current cache”. */
 const BODY_PAGE_DISCOVERY =
-  `Extracted-body doors: ${newestOfficialTextsCopy(PAID_BODY_N)} on a plain GET ($0.05); older pages on the same URL (?before, another $0.05). Table doors (/ticks, /import-alerts) stay the whole current table.`;
+  `Extracted-body doors: free index/search on /{door}/manifest.json or /{door}/index (?q=, optional before/date), then pay the page. ${newestOfficialTextsCopy(PAID_BODY_N)} on a plain GET ($0.05); older pages on the same URL (?before, another $0.05). Table doors (/ticks, /import-alerts) stay the whole current table.`;
 
 const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> = {
   ticks: {
@@ -2928,8 +2928,23 @@ function sendExtractedManifest(
   sendJson(
     res,
     200,
-    withShopDiscovery(decorateExtractedBodyManifest(body, { q: url.searchParams.get("q") }), req, port),
+    withShopDiscovery(
+      decorateExtractedBodyManifest(body, {
+        q: url.searchParams.get("q"),
+        before: url.searchParams.get("before"),
+        date: url.searchParams.get("date"),
+      }),
+      req,
+      port,
+    ),
   );
+}
+
+/** `/{door}/index` and `/{door}/index.json` are the free catalog on extracted-body doors. */
+function extractedCatalogPath(path: string): string {
+  const match = path.match(/^\/([^/]+)\/index(?:\.json)?$/);
+  if (!match) return path;
+  return isExtractedBodySku(match[1]) ? `/${match[1]}/manifest.json` : path;
 }
 
 export function llmsTxt(): string {
@@ -3042,7 +3057,7 @@ export function llmsTxt(): string {
     "",
     `- URL — https://ticks.bnm.farm${MCP_PATH}`,
     "- Connect — `npx -y mcp-remote https://ticks.bnm.farm/mcp`",
-    `- One tool per live paid GET from /.well-known/x402 (generated at request time; later SKUs appear without an MCP rewrite). Same ${paidCountWord()} URLs today. ${BODY_PAGE_DISCOVERY} Unpaid tool calls still HTTP 402. Not Bazaar-indexed.`,
+    `- One tool per live paid GET from /.well-known/x402 (generated at request time; later SKUs appear without an MCP rewrite). Same ${paidCountWord()} URLs today. Free search + paid get-page. ${BODY_PAGE_DISCOVERY} Unpaid tool calls still HTTP 402. Not Bazaar-indexed.`,
     "",
     "## Agent catalogs",
     "",
@@ -3096,6 +3111,17 @@ function paidOpenApiOp(opts: {
   outputSchema: Record<string, unknown>;
 }): Record<string, unknown> {
   const olderPages = opts.description.includes("Newest chunk on a plain GET");
+  const outputSchema = olderPages
+    ? {
+        ...opts.outputSchema,
+        properties: {
+          ...((opts.outputSchema.properties as Record<string, unknown> | undefined) ?? {}),
+          ids: { type: "array", items: { type: "string" }, description: "Official catalog ids on this paid page" },
+          nextBefore: { type: "string", nullable: true },
+          prevBefore: { type: "string", nullable: true },
+        },
+      }
+    : opts.outputSchema;
   return {
     operationId: opts.operationId,
     summary: opts.summary,
@@ -3144,7 +3170,7 @@ function paidOpenApiOp(opts: {
         description: "Paid JSON body after a valid x402 settlement",
         content: {
           "application/json": {
-            schema: opts.outputSchema,
+            schema: outputSchema,
             example: opts.example,
           },
         },
@@ -3157,7 +3183,7 @@ function paidOpenApiOp(opts: {
 }
 
 const EXTRACTED_MANIFEST_OPENAPI =
-  " Full catalog + page cursor; ?q= is free. Plain paid GET is the newest 100 official texts, not the entire cache. Same URL ?before is the next older page ($0.05).";
+  " Free index/search (?q=, optional before/date) returns matching rows plus the page cursor to pay. Plain paid GET is the newest 100 official texts, not the entire cache. Same URL ?before is the next older page ($0.05).";
 
 function freeOpenApiOp(summary: string, description: string): Record<string, unknown> {
   const extractedCatalog =
@@ -3174,6 +3200,34 @@ function freeOpenApiOp(summary: string, description: string): Record<string, unk
     tags: ["free"],
     security: [],
     "x-auth": { mode: "none" },
+    ...(extractedCatalog
+      ? {
+          parameters: [
+            {
+              name: "q",
+              in: "query",
+              required: false,
+              schema: { type: "string" },
+              description: "Free-text match against id, firm, date, subject. Not charged.",
+            },
+            {
+              name: "before",
+              in: "query",
+              required: false,
+              schema: { type: "string" },
+              description:
+                "Free filter: page cursor (id) returns that page's rows; YYYY-MM-DD returns older dates. Not charged.",
+            },
+            {
+              name: "date",
+              in: "query",
+              required: false,
+              schema: { type: "string" },
+              description: "Free date prefix filter (YYYY, YYYY-MM, or YYYY-MM-DD). Not charged.",
+            },
+          ],
+        }
+      : {}),
     responses: {
       "200": {
         description: "Free JSON catalog / discovery document",
@@ -3295,7 +3349,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       description: "Official public data as JSON. Unpaid paid routes return HTTP 402.",
       contact: { name: "BNM Data Shop", url: "https://bnm.farm/" },
       "x-guidance":
-        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. ${BODY_PAGE_DISCOVERY} Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. MCP at GET/POST /mcp lists one tool per paid GET. Free manifests do not include the paid body. No request body. ${noNextSkuWord()}`,
+        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. ${BODY_PAGE_DISCOVERY} Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. MCP at GET/POST /mcp lists one tool per paid GET plus free search and paid get-page. Free manifests do not include the paid body. No request body. ${noNextSkuWord()}`,
     },
     "x-discovery": {
       ownershipProofs: [PAY_TO],
@@ -4375,7 +4429,7 @@ async function servePaid(
 
 export async function handleRequest(req: IncomingMessage, res: ServerResponse, port: number): Promise<void> {
   const url = new URL(req.url || "/", `http://${req.headers.host || "127.0.0.1"}`);
-  const path = url.pathname.replace(/\/+$/, "") || "/";
+  const path = extractedCatalogPath(url.pathname.replace(/\/+$/, "") || "/");
 
   if (path === MCP_PATH) {
     const origin = discoveryOrigin(req, port);

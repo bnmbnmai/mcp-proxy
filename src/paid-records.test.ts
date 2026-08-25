@@ -39,6 +39,7 @@ import {
   honestFetchedAt,
   isoFromOfficialDate,
   isPlausibleDate,
+  decorateExtractedBodyManifest,
   newestOfficialTextsCopy,
   olderChunkCopy,
   paidBodyCatalogNote,
@@ -1046,7 +1047,7 @@ async function main(): Promise<void> {
   assert.ok(olderChunkCopy(100).includes("?before="));
   assert.equal(
     paidBodyCatalogNote("/gmp", "Full catalog: count + id + firm + date + url"),
-    "Full catalog: count + id + firm + date + url. Plain paid GET /gmp is the newest 100 official texts; older chunk if they ask (?before=<id or date>, another $0.05). Free ?q= search stays free.",
+    "Full catalog: count + id + firm + date + url. Free index/search (?q=, optional before/date) stays free and includes the page cursor to pay. Plain paid GET /gmp is the newest 100 official texts; older chunk if they ask (?before=<id or date>, another $0.05).",
   );
   assert.deepEqual(paidBodyOptsFromSearch("before=gmp-0100"), { before: "gmp-0100" });
   assert.deepEqual(paidBodyOptsFromSearch("page=2"), { page: 2 });
@@ -1088,6 +1089,8 @@ async function main(): Promise<void> {
   assert.equal(fatGmp.recordCount, 100);
   assert.equal(fatGmp.cards.length, 100);
   assert.equal(fatGmp.records.length, 100);
+  assert.deepEqual(fatGmp.ids, fatGmp.records.map((r) => r.id));
+  assert.equal(fatGmp.ids.length, 100);
   assert.ok(fatGmp.cards.every((row) => String(row.body ?? "").length > 0));
   assert.equal(fatGmp.records[0]?.id, fatGmp.cards[0]?.id);
   const windowedIds = new Set(fatGmp.records.map((r) => r.id));
@@ -1133,6 +1136,41 @@ async function main(): Promise<void> {
     { page: 2 },
   );
   assert.deepEqual(page2.records.map((r) => r.id), olderGmp.records.map((r) => r.id));
+  assert.deepEqual(olderGmp.ids, olderGmp.records.map((r) => r.id));
+
+  const fatIndex = decorateExtractedBodyManifest({
+    cards: fatGmpCards.map((c) => ({
+      id: c.id,
+      firm: c.firm,
+      inspectedOn: c.inspectedOn,
+      sourceUrl: c.sourceUrl,
+    })),
+  });
+  const indexCards = fatIndex.cards as { id?: string; date?: string; page?: number; before?: string | null; firm?: string }[];
+  assert.equal(indexCards.length, 121);
+  assert.ok(indexCards.every((row) => row.id && row.page && "before" in row && row.date));
+  const page2Index = indexCards.find((row) => row.page === 2);
+  assert.ok(page2Index?.before);
+  const foundFirm = decorateExtractedBodyManifest(
+    { cards: fatGmpCards.map((c) => ({ id: c.id, firm: c.firm, inspectedOn: c.inspectedOn })) },
+    { q: "Firm 1" },
+  );
+  const firm1 = (foundFirm.cards as { firm?: string; page?: number }[]).find((row) => row.firm === "Firm 1");
+  assert.equal(foundFirm.matchCount, (foundFirm.cards as unknown[]).length);
+  assert.ok(firm1);
+  assert.equal(firm1?.page, 2);
+  const byDate = decorateExtractedBodyManifest(
+    { cards: fatGmpCards.map((c) => ({ id: c.id, firm: c.firm, inspectedOn: c.inspectedOn })) },
+    { date: page2Index?.date?.slice(0, 7) ?? "2024-01" },
+  );
+  assert.ok((byDate.matchCount as number) >= 1);
+  assert.ok((byDate.cards as { date?: string }[]).every((row) => String(row.date ?? "").startsWith(String(byDate.date))));
+  const byCursor = decorateExtractedBodyManifest(
+    { cards: fatGmpCards.map((c) => ({ id: c.id, firm: c.firm, inspectedOn: c.inspectedOn })) },
+    { before: page2Index?.before },
+  );
+  assert.ok((byCursor.cards as { page?: number }[]).every((row) => row.page === 2));
+  assert.equal(byCursor.before, page2Index?.before);
 
   const fatTicks = {
     ticks: Array.from({ length: 120 }, (_, i) => ({

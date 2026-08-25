@@ -12,7 +12,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { resolve } from "node:path";
 import { z } from "zod";
-import { EXTRACTED_BODY_SKUS, isExtractedBodySku } from "./paid-records.js";
+import { catalogSearchQueryString, EXTRACTED_BODY_SKUS, isExtractedBodySku } from "./paid-records.js";
 
 export const LIVE_ORIGIN = "https://ticks.bnm.farm";
 export const MCP_PATH = "/mcp";
@@ -21,6 +21,7 @@ export const OPENAPI_PATH = "/openapi.json";
 export const PAY_TO = "0xf59621FC406D266e18f314Ae18eF0a33b8401004";
 export const MCP_CONNECT = `npx -y mcp-remote ${LIVE_ORIGIN}${MCP_PATH}`;
 export const SEARCH_TOOL_NAME = "search";
+export const GET_PAGE_TOOL_NAME = "get-page";
 
 export type LivePaidSku = {
   path: string;
@@ -182,7 +183,7 @@ export function mcpDiscovery(origin = LIVE_ORIGIN, catalog: LivePaidSku[]): Reco
     connect: `npx -y mcp-remote ${base}${MCP_PATH}`,
     source: WELL_KNOWN_PATH,
     note:
-      `Same ${catalog.length} paid GETs as ${WELL_KNOWN_PATH}. Extracted-body doors: newest 100 official texts on a plain GET ($0.05); older pages on the same URL (?before, another $0.05). Table doors stay the whole current table. Free ${SEARCH_TOOL_NAME} is not a paid SKU. Unpaid tool calls still HTTP 402 on the paid URL. Not Bazaar-indexed.`,
+      `Same ${catalog.length} paid GETs as ${WELL_KNOWN_PATH}. Free ${SEARCH_TOOL_NAME} finds the row and page cursor; paid ${GET_PAGE_TOOL_NAME} buys that page ($0.05). Extracted-body doors: newest 100 official texts on a plain GET; older pages on the same URL (?before). Table doors stay the whole current table. Free ${SEARCH_TOOL_NAME} is not a paid SKU. Unpaid tool calls still HTTP 402 on the paid URL. Not Bazaar-indexed.`,
     freeTools: [SEARCH_TOOL_NAME],
   };
 }
@@ -238,7 +239,7 @@ export function mcpToolDescriptors(
     {
       name: SEARCH_TOOL_NAME,
       description:
-        "Free catalog search on an extracted-body door. Returns matching rows plus the page cursor to pay. Not a paid SKU. Does not return official bodies.",
+        "Free catalog search on an extracted-body door. Returns matching rows plus the page cursor to pay. Optional before/date filters. Not a paid SKU. Does not return official bodies.",
       inputSchema: {
         type: "object" as const,
         properties: {
@@ -249,6 +250,41 @@ export function mcpToolDescriptors(
           q: {
             type: "string",
             description: "Free-text match against the free manifest (id, firm, date, subject).",
+          },
+          before: {
+            type: "string",
+            description: "Free filter: page cursor (id) or YYYY-MM-DD older-than date.",
+          },
+          date: {
+            type: "string",
+            description: "Free date prefix (YYYY, YYYY-MM, or YYYY-MM-DD).",
+          },
+        },
+        additionalProperties: false as const,
+      },
+    },
+    {
+      name: GET_PAGE_TOOL_NAME,
+      description:
+        "Paid get-page on an extracted-body door. Same URL as the door GET ($0.05). Omit before/page for the newest 100; pass the free-index cursor for an older page. Not a new SKU. Unpaid returns HTTP 402.",
+      inputSchema: {
+        type: "object" as const,
+        properties: {
+          door: {
+            type: "string",
+            description: `Extracted-body door name, e.g. gmp. One of: ${EXTRACTED_BODY_SKUS.join(", ")}`,
+          },
+          before: {
+            type: "string",
+            description: "Official catalog id or YYYY-MM-DD from free search. Next older page, another $0.05.",
+          },
+          page: {
+            type: "string",
+            description: "1-based page. Page 1 is the newest chunk. Ignored when before is set.",
+          },
+          x_payment: {
+            type: "string",
+            description: "Optional x402 X-PAYMENT value forwarded to the paid GET as the X-PAYMENT header.",
           },
         },
         additionalProperties: false as const,
@@ -348,7 +384,7 @@ export async function handleMcpJsonRpc(
       capabilities: { tools: { listChanged: false } },
       serverInfo: { name: "bnm-data-shop", version: "1.0.0" },
       instructions:
-        `${catalog.length} paid GETs from ${WELL_KNOWN_PATH}, plus free ${SEARCH_TOOL_NAME}. Extracted-body doors: newest 100 official texts on a plain GET ($0.05); older pages on the same URL (?before, another $0.05). Table doors stay the whole current table. Unpaid is HTTP 402. USDC on Base. Not Bazaar-indexed.`,
+        `${catalog.length} paid GETs from ${WELL_KNOWN_PATH}, plus free ${SEARCH_TOOL_NAME} and paid ${GET_PAGE_TOOL_NAME}. Free index/search finds the row and page cursor; then pay the page ($0.05). Extracted-body doors: newest 100 official texts on a plain GET; older pages on the same URL (?before). Table doors stay the whole current table. Unpaid is HTTP 402. USDC on Base. Not Bazaar-indexed.`,
     });
   }
 
@@ -368,6 +404,7 @@ export async function handleMcpJsonRpc(
       page?: string | number;
       door?: string;
       q?: string;
+      date?: string;
     };
     if (name === SEARCH_TOOL_NAME) {
       const door = String(args.door ?? "").replace(/^\//, "");
@@ -375,8 +412,8 @@ export async function handleMcpJsonRpc(
         return err(-32602, `search is free catalog search on extracted-body doors only.`);
       }
       const origin = (opts.origin ?? LIVE_ORIGIN).replace(/\/+$/, "");
-      const q = String(args.q ?? "").trim();
-      const url = `${origin}/${door}/manifest.json${q ? `?q=${encodeURIComponent(q)}` : ""}`;
+      const qs = catalogSearchQueryString({ q: args.q, before: args.before, date: args.date });
+      const url = `${origin}/${door}/manifest.json${qs}`;
       const response = await fetch(url, {
         method: "GET",
         headers: { Accept: "application/json", "User-Agent": "bnm-data-shop-mcp/1.0" },
@@ -392,9 +429,28 @@ export async function handleMcpJsonRpc(
         isError: response.status >= 500,
       });
     }
+    if (name === GET_PAGE_TOOL_NAME) {
+      const door = String(args.door ?? "").replace(/^\//, "");
+      const sku = findLiveSku(door, catalog);
+      if (!sku || !isExtractedBodySku(sku.name)) {
+        return err(-32602, `get-page is the paid page GET on extracted-body doors only.`);
+      }
+      const xPayment = args.x_payment || opts.xPayment;
+      const result = await getPaidSku(sku.path, {
+        origin: opts.origin,
+        xPayment,
+        catalog,
+        before: args.before,
+        page: args.page,
+      });
+      return ok({
+        content: [{ type: "text", text: formatPaidToolText(result) }],
+        isError: result.status >= 500,
+      });
+    }
     const sku = findLiveSku(name, catalog);
     if (!sku) {
-      return err(-32602, `Unknown tool ${name}. Tools are the live paid GETs from ${WELL_KNOWN_PATH}, plus free ${SEARCH_TOOL_NAME}.`);
+      return err(-32602, `Unknown tool ${name}. Tools are the live paid GETs from ${WELL_KNOWN_PATH}, plus free ${SEARCH_TOOL_NAME} and paid ${GET_PAGE_TOOL_NAME}.`);
     }
     const xPayment = args.x_payment || opts.xPayment;
     const result = await getPaidSku(sku.path, {
@@ -553,19 +609,21 @@ export async function createTicksMcpServer(origin = ticksOrigin()): Promise<McpS
     SEARCH_TOOL_NAME,
     {
       description:
-        "Free catalog search on an extracted-body door. Returns matching rows plus the page cursor to pay. Not a paid SKU.",
+        "Free catalog search on an extracted-body door. Returns matching rows plus the page cursor to pay. Optional before/date filters. Not a paid SKU.",
       inputSchema: {
         door: z.string().describe("Extracted-body door name, e.g. gmp"),
         q: z.string().optional().describe("Free-text match against the free manifest."),
+        before: z.string().optional().describe("Free filter: page cursor (id) or YYYY-MM-DD older-than date."),
+        date: z.string().optional().describe("Free date prefix (YYYY, YYYY-MM, or YYYY-MM-DD)."),
       },
     },
-    async ({ door, q }) => {
+    async ({ door, q, before, date }) => {
       const name = String(door ?? "").replace(/^\//, "");
       if (!isExtractedBodySku(name)) {
         return { content: [{ type: "text" as const, text: "search is for extracted-body doors only." }], isError: true };
       }
-      const query = String(q ?? "").trim();
-      const url = `${origin.replace(/\/+$/, "")}/${name}/manifest.json${query ? `?q=${encodeURIComponent(query)}` : ""}`;
+      const qs = catalogSearchQueryString({ q, before, date });
+      const url = `${origin.replace(/\/+$/, "")}/${name}/manifest.json${qs}`;
       const response = await fetch(url, {
         method: "GET",
         headers: { Accept: "application/json", "User-Agent": "bnm-data-shop-mcp/1.0" },
@@ -574,6 +632,30 @@ export async function createTicksMcpServer(origin = ticksOrigin()): Promise<McpS
       return {
         content: [{ type: "text" as const, text: [`GET ${url}`, `HTTP ${response.status}`, "", body].join("\n") }],
         isError: response.status >= 500,
+      };
+    },
+  );
+  server.registerTool(
+    GET_PAGE_TOOL_NAME,
+    {
+      description:
+        "Paid get-page on an extracted-body door. Same URL as the door GET ($0.05). Omit before/page for the newest 100. Not a new SKU.",
+      inputSchema: {
+        door: z.string().describe("Extracted-body door name, e.g. gmp"),
+        before: z.string().optional().describe("Official catalog id or YYYY-MM-DD from free search."),
+        page: z.string().optional().describe("1-based page. Page 1 is the newest chunk."),
+        x_payment: z.string().optional().describe("Optional x402 X-PAYMENT value."),
+      },
+    },
+    async ({ door, before, page, x_payment }) => {
+      const sku = findLiveSku(String(door ?? ""), catalog);
+      if (!sku || !isExtractedBodySku(sku.name)) {
+        return { content: [{ type: "text" as const, text: "get-page is for extracted-body doors only." }], isError: true };
+      }
+      const result = await getPaidSku(sku.path, { origin, xPayment: x_payment, catalog, before, page });
+      return {
+        content: [{ type: "text" as const, text: formatPaidToolText(result) }],
+        isError: result.status >= 500,
       };
     },
   );

@@ -498,9 +498,13 @@ async function main(): Promise<void> {
     assert.ok(!llmsBody.includes("Idaho ticks"));
     assert.ok(llmsBody.includes("Newest 100 official texts"));
     assert.ok(llmsBody.includes("older pages on the same URL"));
+    assert.ok(llmsBody.toLowerCase().includes("free index/search"));
+    assert.ok(llmsBody.includes("pay the page"));
     assert.ok(!llmsBody.toLowerCase().includes("entire current cache"));
     assert.ok((wk.instructions ?? "").includes("newest 100 official texts"));
     assert.ok((wk.instructions ?? "").includes("older pages on the same URL"));
+    assert.ok((wk.instructions ?? "").toLowerCase().includes("free index/search"));
+    assert.ok((wk.instructions ?? "").includes("pay the page"));
     assert.ok(!(wk.instructions ?? "").toLowerCase().includes("entire current cache"));
     const specGuidance = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
       info?: { "x-guidance"?: string };
@@ -508,6 +512,8 @@ async function main(): Promise<void> {
     };
     assert.ok((specGuidance.info?.["x-guidance"] ?? "").includes("newest 100 official texts"));
     assert.ok((specGuidance.info?.["x-guidance"] ?? "").includes("whole current table"));
+    assert.ok((specGuidance.info?.["x-guidance"] ?? "").toLowerCase().includes("free index/search"));
+    assert.ok((specGuidance.info?.["x-guidance"] ?? "").includes("pay the page"));
     assert.ok(!(specGuidance.info?.["x-guidance"] ?? "").toLowerCase().includes("entire current cache"));
     assert.ok((specGuidance.paths?.[WARNING_LETTERS_PATH]?.get?.description ?? "").includes("Newest chunk on a plain GET"));
     assert.ok(!(specGuidance.paths?.[WARNING_LETTERS_PATH]?.get?.description ?? "").toLowerCase().includes("entire current cache"));
@@ -520,6 +526,7 @@ async function main(): Promise<void> {
       })
     ).json()) as { result?: { instructions?: string } };
     assert.ok((mcpInit.result?.instructions ?? "").includes("newest 100 official texts"));
+    assert.ok((mcpInit.result?.instructions ?? "").includes("pay the page"));
     assert.ok(!(mcpInit.result?.instructions ?? "").toLowerCase().includes("entire current cache"));
 
     const shop = (await (await fetch(`${base}/`)).json()) as {
@@ -530,6 +537,8 @@ async function main(): Promise<void> {
       note?: string;
     };
     assert.ok((shop.note ?? "").includes("newest 100 official texts"));
+    assert.ok((shop.note ?? "").toLowerCase().includes("free index/search"));
+    assert.ok((shop.note ?? "").includes("pay the page"));
     assert.ok(!(shop.note ?? "").toLowerCase().includes("entire current cache"));
     assert.deepEqual(shop.products.map((p) => p.path), [
       TICKS_PATH,
@@ -4483,6 +4492,8 @@ async function main(): Promise<void> {
       };
       assert.equal(manifest.cardCount, 120, "free /gmp/manifest.json stays the full catalog");
       assert.ok((manifest.note ?? "").includes("newest 100 official texts"));
+      assert.ok((manifest.note ?? "").toLowerCase().includes("free index/search"));
+      assert.ok((manifest.note ?? "").includes("page cursor to pay"));
 
       const unpaid = await fetch(`${base}${GMP_PATH}`);
       assert.equal(unpaid.status, 402);
@@ -4494,19 +4505,24 @@ async function main(): Promise<void> {
       const paid = await fetch(`${base}${GMP_PATH}`, { headers: { "X-PAYMENT": "test" } });
       assert.equal(paid.status, 200);
       const paidBody = (await paid.json()) as {
-        cards: { body?: string }[];
-        records: unknown[];
+        cards: { body?: string; id?: string }[];
+        records: { id?: string }[];
+        ids?: string[];
         recordCount?: number;
         paidWindow?: number;
         catalogCount?: number;
         page?: number;
         nextBefore?: string | null;
+        prevBefore?: string | null;
       };
       assert.equal(paidBody.paidWindow, 100);
       assert.equal(paidBody.catalogCount, 120);
       assert.equal(paidBody.recordCount, 100);
       assert.equal(paidBody.cards.length, 100);
       assert.equal(paidBody.records.length, 100);
+      assert.deepEqual(paidBody.ids, paidBody.records.map((r) => r.id));
+      assert.equal(paidBody.ids?.length, 100);
+      assert.equal(paidBody.prevBefore, null);
       assert.ok(paidBody.cards.every((row) => String(row.body ?? "").length > 0));
       assert.equal(paidBody.page, 1);
       assert.ok(paidBody.nextBefore);
@@ -4538,16 +4554,74 @@ async function main(): Promise<void> {
       assert.equal(olderPaid.status, 200);
       const olderBody = (await olderPaid.json()) as {
         cards: { id?: string }[];
+        records?: { id?: string }[];
+        ids?: string[];
         recordCount?: number;
         page?: number;
         catalogCount?: number;
         nextBefore?: string | null;
+        prevBefore?: string | null;
       };
       assert.equal(olderBody.page, 2);
       assert.equal(olderBody.catalogCount, 120);
       assert.equal(olderBody.recordCount, 20);
       assert.equal(olderBody.cards.length, 20);
       assert.equal(olderBody.nextBefore, null);
+      assert.deepEqual(olderBody.ids, (olderBody.records ?? []).map((r) => r.id));
+      assert.ok(olderBody.prevBefore === null || typeof olderBody.prevBefore === "string");
+
+      const indexAlias = (await (await fetch(`${base}/gmp/index`)).json()) as {
+        cardCount?: number;
+        cards?: { id?: string; page?: number; before?: string | null; date?: string }[];
+      };
+      assert.equal(indexAlias.cardCount, 120);
+      assert.equal(indexAlias.cards?.length, 120);
+      assert.ok((indexAlias.cards ?? []).every((row) => row.id && row.date && row.page));
+
+      const dated = (await (await fetch(`${base}${GMP_MANIFEST_PATH}?date=2024-01`)).json()) as {
+        matchCount?: number;
+        date?: string;
+        cards?: { date?: string }[];
+      };
+      assert.equal(dated.date, "2024-01");
+      assert.ok((dated.matchCount ?? 0) >= 1);
+      assert.ok((dated.cards ?? []).every((row) => String(row.date ?? "").startsWith("2024-01")));
+
+      const byCursor = (await (await fetch(`${base}${GMP_MANIFEST_PATH}?before=${encodeURIComponent(page2Row?.before ?? "")}`)).json()) as {
+        matchCount?: number;
+        cards?: { page?: number }[];
+      };
+      assert.ok((byCursor.cards ?? []).every((row) => row.page === 2));
+
+      const mcpSearch = (await (
+        await fetch(`${base}${MCP_PATH}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            jsonrpc: "2.0",
+            id: 20,
+            method: "tools/call",
+            params: { name: "search", arguments: { door: "gmp", q: "Firm 1" } },
+          }),
+        })
+      ).json()) as { result?: { content?: { text?: string }[] } };
+      assert.ok(mcpSearch.result?.content?.[0]?.text?.includes("Firm 1"));
+      assert.ok(mcpSearch.result?.content?.[0]?.text?.includes("\"page\""));
+
+      const mcpPage = (await (
+        await fetch(`${base}${MCP_PATH}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            jsonrpc: "2.0",
+            id: 21,
+            method: "tools/call",
+            params: { name: "get-page", arguments: { door: "gmp", before: paidBody.nextBefore, x_payment: "test" } },
+          }),
+        })
+      ).json()) as { result?: { content?: { text?: string }[] } };
+      assert.ok(mcpPage.result?.content?.[0]?.text?.includes("HTTP 200"));
+      assert.ok(/"page":\s*2/.test(mcpPage.result?.content?.[0]?.text ?? ""));
     },
   );
 
