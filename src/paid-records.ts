@@ -47,6 +47,7 @@ export const EXTRACTED_BODY_SKUS = [
   "superfund-rods",
   "ico-mpn",
   "cma-ca98",
+  "ema-referrals",
 ] as const;
 
 export type ExtractedBodySku = (typeof EXTRACTED_BODY_SKUS)[number];

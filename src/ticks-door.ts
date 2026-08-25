@@ -4131,8 +4131,9 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       },
       [EMA_REFERRALS_PATH]: {
         get: paidOpenApiOp({
-          sku: "ema-referrals",
           operationId: "getEmaReferrals",
+          summary: "EMA human-medicine referral procedure text",
+          description: SKU_COPY["ema-referrals"].description,
           priceUsdc: emaReferralsPrice,
           amountAtomic: emaReferralsAtomic,
           example: BAZAAR_OUTPUT_EXAMPLE["ema-referrals"],
@@ -4399,7 +4400,6 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
         get: freeOpenApiOp(
           "EMA human-medicine referral procedures free manifest",
           "Count, name, date, status, and official PDF URL. Not the procedure body.",
-          true,
         ),
       },
       ...(listed483
@@ -5127,7 +5127,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === EMA_REFERRALS_MANIFEST_PATH) {
-    sendExtractedManifest(res, await loadEmaReferralsManifest(), req, port, url.searchParams.get("q"));
+    sendExtractedManifest(req, res, port, url, await loadEmaReferralsManifest());
     return;
   }
 

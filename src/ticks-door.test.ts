@@ -322,14 +322,12 @@ async function main(): Promise<void> {
     assert.ok(wk.openapi?.endsWith(OPENAPI_PATH));
     assert.ok(wk.llmsTxt?.endsWith(LLMS_PATH));
     assert.ok((wk.instructions ?? "").includes("thirty paid"));
-    assert.ok((wk.instructions ?? "").includes("entire current table"));
+    assert.ok((wk.instructions ?? "").includes("whole current table"));
     assert.ok((wk.instructions ?? "").includes("newest 10 official texts"));
     assert.ok((wk.instructions ?? "").includes("whole current set"));
     assert.ok((wk.instructions ?? "").includes("?q="));
-    assert.ok((wk.instructions ?? "").includes("id to buy"));
     assert.ok((wk.instructions ?? "").includes("$0.02"));
     assert.ok((wk.instructions ?? "").includes("$0.05"));
-    assert.ok((wk.instructions ?? "").includes("?id="));
     assert.ok(!(wk.instructions ?? "").includes("entire current cache"));
     assert.ok(!(wk.instructions ?? "").includes("newest 100"));
     assert.ok(!(wk.instructions ?? "").includes("page of 100"));
@@ -4246,7 +4244,7 @@ async function main(): Promise<void> {
       const unpaidId = await fetch(`${base}${EMA_REFERRALS_PATH}?id=tavneos`);
       assert.equal(unpaidId.status, 402, "unpaid GET /ema-referrals?id= must be 402");
       const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
-      assert.equal(id402.accepts[0]?.maxAmountRequired, EXTRACTED_ID_AMOUNT_ATOMIC, "id bag is $0.02");
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
 
       const leak402 = JSON.stringify(body402);
       assert.ok(!leak402.includes("CHMP recommended revocation"));
@@ -4273,12 +4271,12 @@ async function main(): Promise<void> {
       assert.equal(manifest.status, 200, "ema-referrals free manifest is free");
       const man = (await manifest.json()) as {
         cardCount?: number;
-        cards?: { name?: string; id?: string; body?: string; buy?: string }[];
+        cards?: { name?: string; id?: string; body?: string; paidUrl?: string }[];
       };
       assert.equal(man.cardCount, 1);
       assert.equal(man.cards?.[0]?.name, "Tavneos");
       assert.equal(man.cards?.[0]?.id, "tavneos");
-      assert.equal(man.cards?.[0]?.buy, "?id=tavneos");
+      assert.equal(man.cards?.[0]?.paidUrl, `${EMA_REFERRALS_PATH}?id=tavneos`);
       const manBlob = JSON.stringify(man);
       assert.ok(!manBlob.includes("CHMP recommended revocation"));
       assert.ok(!manBlob.includes("ANCA-associated vasculitis"));
@@ -4286,9 +4284,9 @@ async function main(): Promise<void> {
 
       const q = await fetch(`${base}${EMA_REFERRALS_MANIFEST_PATH}?q=tavneos`);
       assert.equal(q.status, 200);
-      const qMan = (await q.json()) as { cards?: { id?: string; buy?: string }[] };
+      const qMan = (await q.json()) as { cards?: { id?: string; paidUrl?: string }[] };
       assert.equal(qMan.cards?.[0]?.id, "tavneos");
-      assert.equal(qMan.cards?.[0]?.buy, "?id=tavneos");
+      assert.equal(qMan.cards?.[0]?.paidUrl, `${EMA_REFERRALS_PATH}?id=tavneos`);
 
       const paid = await fetch(`${base}${EMA_REFERRALS_PATH}`, { headers: { "X-PAYMENT": "test" } });
       assert.equal(paid.status, 200);
@@ -4313,9 +4311,10 @@ async function main(): Promise<void> {
 
       const paidId = await fetch(`${base}${EMA_REFERRALS_PATH}?id=tavneos`, { headers: { "X-PAYMENT": "test" } });
       assert.equal(paidId.status, 200);
-      const paidIdBody = (await paidId.json()) as { cards: { id: string; body: string }[]; returnedCount?: number };
+      const paidIdBody = (await paidId.json()) as { cards: { id: string; body: string }[]; recordCount?: number };
       assert.equal(paidIdBody.cards[0]?.id, "tavneos");
-      assert.equal(paidIdBody.returnedCount, 1);
+      assert.equal(paidIdBody.cards.length, 1);
+      assert.equal(paidIdBody.recordCount, 1);
       assert.ok(paidIdBody.cards[0]?.body.includes("CHMP recommended revocation"));
     },
   );
@@ -4949,12 +4948,10 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.endsWith(BIS_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(CFTC_ORDERS_PATH)));
       assert.ok((wk.instructions ?? "").includes("thirty-three paid"));
-      assert.ok((wk.instructions ?? "").includes("entire current table"));
+      assert.ok((wk.instructions ?? "").includes("whole current table"));
       assert.ok((wk.instructions ?? "").includes("newest 10 official texts"));
       assert.ok((wk.instructions ?? "").includes("?q="));
-      assert.ok((wk.instructions ?? "").includes("id to buy"));
       assert.ok((wk.instructions ?? "").includes("$0.02"));
-      assert.ok((wk.instructions ?? "").includes("?id="));
       assert.ok((wk.instructions ?? "").includes("whole current set"));
       assert.ok(!(wk.instructions ?? "").includes("entire current cache"));
       assert.ok(!(wk.instructions ?? "").includes("newest 100"));
