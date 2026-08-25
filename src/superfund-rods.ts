@@ -16,12 +16,19 @@ export const SUPERFUND_RODS_AMOUNT_ATOMIC = "50000";
 export const PRODUCT_ID = "epa-superfund-rod-bodies";
 export const PRODUCT_NAME = "EPA Superfund ROD text";
 
-export const LISTING_URL =
+/** Official EPA Superfund decision-document table. Collection 25504 is RODs / amendments / ESDs. */
+export const LISTING_URL = "https://www.epa.gov/superfund/search-superfund-decision-documents";
+/** First-slice teaser: one CUMULIS site-profile cleanup page, not the ROD table. */
+export const SITE_PROFILE_URL =
   "https://cumulis.epa.gov/supercpad/SiteProfiles/index.cfm?fuseaction=second.Cleanup&id=0501275";
+/** Same listing feed the official decision-document DataTable loads. Used only to find official SEMS PDF URLs. */
+export const MASTER_COLLECTION_URL = "https://www3.epa.gov/semsjson/HQ_MasterCollection_11.json";
+export const ROD_COLLECTION_ID = "25504";
 export const PDF_HOST = "semspub.epa.gov";
 export const PDF_ORIGIN = "https://semspub.epa.gov";
 export const DOCKET_BARE_RE = /^(\d{2}-\d+)$/;
 export const MEDIA_RE = /\/work\/(\d{2})\/(\d+)\.pdf/i;
+export const DOCUMENT_RE = /\/src\/document\/(\d{2})\/(\d+)(?:\.pdf)?/i;
 export const LICENSE = "17 USC 105";
 export const ATTRIBUTION = "U.S. EPA";
 
@@ -200,6 +207,12 @@ export function isoDate(raw: string | null | undefined): string | null {
   return null;
 }
 
+function semsDocumentParts(pathname: string): { region: string; docId: string } | null {
+  const decoded = decodeURIComponent(pathname);
+  const media = decoded.match(MEDIA_RE) || decoded.match(DOCUMENT_RE);
+  return media ? { region: media[1], docId: media[2] } : null;
+}
+
 export function officialSuperfundRodPdfUrl(urlOrPath: string | null | undefined): string | null {
   if (!urlOrPath) return null;
   try {
@@ -208,10 +221,11 @@ export function officialSuperfundRodPdfUrl(urlOrPath: string | null | undefined)
     if (host === "web.archive.org" || host === "federalregister.gov" || host === "www.federalregister.gov") {
       return null;
     }
+    if (host === "cumulis.epa.gov" || host === "www.epa.gov" || host === "www3.epa.gov") return null;
     if (!OFFICIAL_HOSTS.has(host)) return null;
-    const media = decodeURIComponent(parsed.pathname).match(MEDIA_RE) || parsed.pathname.match(MEDIA_RE);
+    const media = semsDocumentParts(parsed.pathname);
     if (!media) return null;
-    return `${PDF_ORIGIN}/work/${media[1]}/${media[2]}.pdf`;
+    return `${PDF_ORIGIN}/work/${media.region}/${media.docId}.pdf`;
   } catch {
     return null;
   }
@@ -241,9 +255,16 @@ export function normalizeDocket(raw: string | null | undefined): string | null {
   return null;
 }
 
+function siteNameForPeopleCheck(name: string): string {
+  return name
+    .replace(/\s+(Interim\s+)?Record of Decision.*$/i, "")
+    .replace(/\s+Proposed Plan.*$/i, "")
+    .trim();
+}
+
 export function isPeopleRow(row: SuperfundRodListingRow): boolean {
   if ((row.individual ?? "").trim()) return true;
-  const name = (row.institution ?? "").trim();
+  const name = siteNameForPeopleCheck((row.institution ?? "").trim());
   if (!name) return true;
   if (ENTITY_RE.test(name)) return false;
   return PERSON_NAME_RE.test(name);
@@ -251,17 +272,31 @@ export function isPeopleRow(row: SuperfundRodListingRow): boolean {
 
 export function isProposedPlanRow(row: SuperfundRodListingRow): boolean {
   const kind = `${row.title ?? ""} ${row.type ?? ""} ${row.sourceUrl ?? ""}`;
-  if (!/Proposed Plan|Fact Sheet|Community Update/i.test(kind)) return false;
-  return !/Record of Decision|\bIROD\b|\bROD\b/i.test(kind);
+  return /Proposed Plan|Fact Sheet|Community Update/i.test(kind);
+}
+
+export function isNonRodDecisionRow(row: SuperfundRodListingRow): boolean {
+  const kind = `${row.title ?? ""} ${row.type ?? ""}`;
+  if (/Proposed Plan|Fact Sheet|Community Update|Five[- ]Year Review/i.test(kind)) return true;
+  if (/Explanation of Signif[i]?cant Differences|\bESD\b/i.test(kind)) return true;
+  if (/\bAmendment\b/i.test(kind)) return true;
+  if (/Approval of the Record of Decision|US EPA Approval/i.test(kind)) return true;
+  if (/Supplement to .*Record of Decision|Record of Accomplishment/i.test(kind)) return true;
+  return false;
+}
+
+export function isRodTitle(title: string | null | undefined): boolean {
+  const kind = title ?? "";
+  if (isNonRodDecisionRow({ title: kind })) return false;
+  return /Record of Decision|\bIROD\b|\bROD\b/i.test(kind);
 }
 
 export function isInstitutionOrderRow(row: SuperfundRodListingRow): boolean {
   if (isPeopleRow(row)) return false;
-  if (!ENTITY_RE.test((row.institution ?? "").trim())) return false;
-  if (isProposedPlanRow(row)) return false;
+  if (isNonRodDecisionRow(row) || isProposedPlanRow(row)) return false;
   if (!officialSuperfundRodPdfUrl(row.sourceUrl ?? "")) return false;
-  const kind = `${row.title ?? ""} ${row.type ?? ""} ${row.sourceUrl ?? ""}`;
-  if (!/Record of Decision|\bIROD\b|\bROD\b|Superfund/i.test(kind) && !MEDIA_RE.test(kind)) return false;
+  const kind = `${row.title ?? ""} ${row.type ?? ""}`;
+  if (!isRodTitle(kind)) return false;
   return true;
 }
 
@@ -295,7 +330,7 @@ export function parseListingHtml(html: string): SuperfundRodListing[] {
   const rows: SuperfundRodListingRow[] = [];
   const links = [
     ...html.matchAll(
-      /(?:(\d{2}\/\d{2}\/\d{4}|\d{4}-\d{2}-\d{2})[\s\S]{0,240}?)?<a[^>]+href="([^"]+\.pdf[^"]*)"[^>]*>([\s\S]*?)<\/a>/gi,
+      /(?:(\d{1,2}\/\d{1,2}\/\d{4}|\d{4}-\d{2}-\d{2})[\s\S]{0,240}?)?<a[^>]+href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi,
     ),
   ];
   for (const m of links) {
@@ -304,9 +339,13 @@ export function parseListingHtml(html: string): SuperfundRodListing[] {
     const title = stripTags(m[3]);
     const docket = slugFromUrl(href);
     rows.push({
-      institution: title,
+      institution: siteNameForPeopleCheck(title) || title,
       date: m[1] || undefined,
-      title: /interim/i.test(title) ? "Interim Record of Decision" : "Record of Decision",
+      title: /proposed plan/i.test(title)
+        ? "Proposed Plan"
+        : /interim/i.test(title)
+          ? "Interim Record of Decision"
+          : "Record of Decision",
       sourceUrl: href,
       pdfId: pdfIdFromUrl(href) ?? "",
       docket,
@@ -315,9 +354,67 @@ export function parseListingHtml(html: string): SuperfundRodListing[] {
   return parseListingRows(rows);
 }
 
+export type MasterCollectionRow = {
+  date?: string;
+  siteName?: string;
+  title?: string;
+  documentId?: string | number;
+  region?: string;
+  collections?: string;
+  epaId?: string;
+};
+
+function masterCollectionRows(raw: unknown): MasterCollectionRow[] {
+  if (Array.isArray(raw)) return raw as MasterCollectionRow[];
+  if (raw && typeof raw === "object" && Array.isArray((raw as { data?: unknown }).data)) {
+    return (raw as { data: MasterCollectionRow[] }).data;
+  }
+  return [];
+}
+
+export function hasRodCollection(collections: string | null | undefined): boolean {
+  return (collections ?? "")
+    .split("|")
+    .map((part) => part.trim())
+    .includes(ROD_COLLECTION_ID);
+}
+
+export function parseMasterCollectionJson(raw: string | unknown): SuperfundRodListing[] {
+  let parsed: unknown = raw;
+  if (typeof raw === "string") {
+    try {
+      parsed = JSON.parse(raw);
+    } catch {
+      return [];
+    }
+  }
+  const rows: SuperfundRodListingRow[] = [];
+  for (const item of masterCollectionRows(parsed)) {
+    if (!hasRodCollection(item.collections)) continue;
+    const titleHtml = item.title ?? "";
+    const href =
+      (titleHtml.match(/href=['"]([^'"]+)['"]/i) || [])[1] ||
+      (item.region && item.documentId ? `${PDF_ORIGIN}/src/document/${item.region}/${item.documentId}` : "");
+    const title = stripTags(titleHtml).replace(/\(\s*\d+\s*pp[\s\S]*$/i, "").trim();
+    rows.push({
+      institution: (item.siteName ?? "").trim(),
+      date: item.date,
+      title,
+      sourceUrl: href,
+      pdfId: pdfIdFromUrl(href) ?? "",
+      docket: slugFromUrl(href),
+    });
+  }
+  return parseListingRows(rows);
+}
+
 export function isIndexTeaserDump(text: string): boolean {
   if (/Index only — institution \/ docket \/ date \/ PDF URL/i.test(text)) return true;
   if (/FDA De Novo press teaser|EPA FIFRA press teaser|Proposed Plan teaser/i.test(text)) return true;
+  if (/"success"\s*:\s*true/.test(text) && /"documentId"/.test(text) && /"collections"/.test(text)) {
+    return true;
+  }
+  if (/fuseaction=second\.Cleanup/i.test(text) && !/RECORD OF DECISION/i.test(text)) return true;
   if (/INSTRUCTIONS/i.test(text) && !/RECORD OF DECISION/i.test(text) && !/DECLARATION/i.test(text)) {
     return true;
   }
@@ -460,7 +557,12 @@ export async function fetchSuperfundRodBytes(url: string): Promise<Uint8Array> {
 }
 
 export async function fetchSuperfundRodText(url: string): Promise<string> {
-  const res = await fetch(url, { headers: { "User-Agent": HTTP_UA, Accept: "text/html,application/xhtml+xml" } });
+  const res = await fetch(url, {
+    headers: {
+      "User-Agent": HTTP_UA,
+      Accept: "application/json,text/html,application/xhtml+xml,application/xml,text/xml;q=0.8,*/*;q=0.5",
+    },
+  });
   if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
   return await res.text();
 }
@@ -500,14 +602,23 @@ function readNamedFile(dir: string, names: string[]): string | null {
 }
 
 function mergeOfficialListings(listed: SuperfundRodListing[], seeds: SuperfundRodListing[]): SuperfundRodListing[] {
-  const seen = new Set<string>();
+  const seenId = new Set<string>();
+  const seenPdf = new Set<string>();
   const out: SuperfundRodListing[] = [];
-  for (const row of [...listed, ...seeds]) {
-    if (!row.id || seen.has(row.id)) continue;
-    seen.add(row.id);
+  for (const row of [...seeds, ...listed]) {
+    const pdfKey = (row.sourceUrl || row.pdfId || "").toLowerCase();
+    if (!row.id || seenId.has(row.id)) continue;
+    if (pdfKey && seenPdf.has(pdfKey)) continue;
+    seenId.add(row.id);
+    if (pdfKey) seenPdf.add(pdfKey);
     out.push(row);
   }
+  out.sort((a, b) => `${b.date ?? ""}${b.docket}`.localeCompare(`${a.date ?? ""}${a.docket}`));
   return out;
+}
+
+function pause(ms: number): Promise<void> {
+  return new Promise((r) => setTimeout(r, ms));
 }
 
 async function loadOfficialListings(dir: string): Promise<{ listed: SuperfundRodListing[]; listedCount: number }> {
@@ -522,11 +633,11 @@ async function loadOfficialListings(dir: string): Promise<{ listed: SuperfundRod
     return { listed: html ? parseListingHtml(html) : [], listedCount: html ? parseListingHtml(html).length : 0 };
   }
   try {
-    const listed = parseListingHtml(await fetchSuperfundRodText(LISTING_URL));
+    const listed = parseMasterCollectionJson(await fetchSuperfundRodText(MASTER_COLLECTION_URL));
     const merged = mergeOfficialListings(listed, SEED_LISTINGS);
-    if (merged.length > 0) return { listed: merged, listedCount: merged.length };
+    if (merged.length > 0) return { listed: merged, listedCount: listed.length };
   } catch {
-    /* official listing missed; keep first-slice seeds */
+    /* official ROD table missed; keep first-slice seeds */
   }
   return { listed: [...SEED_LISTINGS], listedCount: SEED_LISTINGS.length };
 }
@@ -574,6 +685,7 @@ export async function collectSuperfundRods(opts?: {
         localText ??
         (await (async () => {
           if (!existsSync(pdfFile)) {
+            if (!dir) await pause(opts?.pauseMs ?? 200);
             writeFileSync(pdfFile, await fetchSuperfundRodBytes(row.sourceUrl));
             fetchedPdfs += 1;
           }
