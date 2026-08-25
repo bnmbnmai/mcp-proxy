@@ -29,18 +29,51 @@ export type AmsReport = {
   esmisPublication: string;
 };
 
-/** Already on /ticks: 3056 Idaho hay, 3058 Columbia Basin hay, 3059 NW cattle. Not listed again. */
+/**
+ * Already on /ticks via farm-plan / hay.ams_ prefix: 3056 Idaho hay, 3057 Oregon hay,
+ * 3058 Columbia Basin hay, 3059 NW cattle, 2914 PNW pulses. Not listed again.
+ * No Illinois or Georgia Direct Hay on the official AMS hay listing (auction barns only).
+ */
 export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "2904", group: "hay", region: "california", title: "California Direct Hay", esmisPublication: "california-direct-hay-report" },
   { slug: "2707", group: "hay", region: "texas", title: "Texas Direct Hay", esmisPublication: "texas-direct-hay-report" },
   { slug: "2885", group: "hay", region: "kansas", title: "Kansas Direct Hay", esmisPublication: "kansas-direct-hay-report" },
   { slug: "2935", group: "hay", region: "nebraska", title: "Nebraska Direct Hay", esmisPublication: "nebraska-direct-hay-report" },
+  { slug: "2905", group: "hay", region: "colorado", title: "Colorado Direct Hay", esmisPublication: "colorado-direct-hay-report" },
+  { slug: "2769", group: "hay", region: "montana", title: "Montana Direct Hay", esmisPublication: "montana-direct-hay-report" },
+  { slug: "3236", group: "hay", region: "wyoming", title: "Wyoming Direct Hay", esmisPublication: "wyoming-direct-hay-report" },
+  { slug: "3183", group: "hay", region: "south_dakota", title: "South Dakota Direct Hay", esmisPublication: "south-dakota-direct-hay-report" },
+  { slug: "2807", group: "hay", region: "iowa", title: "Iowa Direct Hay", esmisPublication: "iowa-direct-hay-report" },
+  { slug: "2929", group: "hay", region: "missouri", title: "Missouri Direct Hay", esmisPublication: "missouri-direct-hay-report" },
+  { slug: "3905", group: "hay", region: "kentucky", title: "Kentucky Direct Hay", esmisPublication: "" },
+  { slug: "3095", group: "hay", region: "oklahoma", title: "Oklahoma Direct Hay", esmisPublication: "oklahoma-direct-hay-report" },
+  { slug: "2939", group: "hay", region: "new_mexico", title: "New Mexico Direct Hay", esmisPublication: "new-mexico-direct-hay-report" },
+  { slug: "3731", group: "hay", region: "utah", title: "Utah Direct Hay", esmisPublication: "utah-direct-hay-report" },
+  { slug: "3784", group: "hay", region: "arizona", title: "Arizona Direct Hay", esmisPublication: "arizona-direct-hay-report" },
+  { slug: "3050", group: "hay", region: "alabama", title: "Alabama Direct Hay", esmisPublication: "alabama-direct-hay-report" },
+  { slug: "3793", group: "hay", region: "tennessee", title: "Tennessee Direct Hay", esmisPublication: "tennessee-direct-hay-report" },
+  { slug: "3926", group: "hay", region: "nevada", title: "Nevada Direct Hay", esmisPublication: "" },
   { slug: "2710", group: "cattle", region: "texas", title: "Texas Direct Cattle", esmisPublication: "texas-direct-cattle-report" },
   { slug: "3097", group: "cattle", region: "kansas", title: "Kansas Direct Feeder Cattle", esmisPublication: "kansas-direct-cattle-report" },
   { slug: "3098", group: "cattle", region: "oklahoma", title: "Oklahoma Direct Feeder Cattle", esmisPublication: "oklahoma-direct-cattle-report" },
+  { slug: "2906", group: "cattle", region: "colorado", title: "Colorado Direct Cattle", esmisPublication: "colorado-direct-cattle-report" },
+  { slug: "3096", group: "cattle", region: "eastern_cornbelt", title: "Eastern Cornbelt Direct Feeder Cattle", esmisPublication: "" },
+  { slug: "3455", group: "cattle", region: "iowa", title: "Iowa Direct Feeder Cattle", esmisPublication: "iowa-direct-cattle-report" },
+  { slug: "2808", group: "cattle", region: "missouri", title: "Missouri Direct Feeder Cattle", esmisPublication: "" },
+  { slug: "2770", group: "cattle", region: "montana", title: "Montana Direct Feeder Cattle", esmisPublication: "montana-direct-cattle-report" },
+  { slug: "2708", group: "cattle", region: "new_mexico", title: "New Mexico Direct Feeder Cattle", esmisPublication: "new-mexico-direct-cattle-report" },
+  { slug: "3184", group: "cattle", region: "south_dakota", title: "South Dakota Direct Feeder Cattle", esmisPublication: "south-dakota-direct-cattle-report" },
+  { slug: "2709", group: "cattle", region: "southeast", title: "Southeast Direct Feeder Cattle", esmisPublication: "" },
+  { slug: "2940", group: "cattle", region: "southwest", title: "Southwest Direct Feeder Cattle", esmisPublication: "" },
+  { slug: "3237", group: "cattle", region: "wyoming_nebraska", title: "Wyoming-Nebraska Direct Feeder Cattle", esmisPublication: "wyoming-nebraska-direct-cattle-report" },
   { slug: "3148", group: "grain", region: "portland", title: "Portland Daily Grain Bids", esmisPublication: "portland-daily-grain-bids" },
   { slug: "3046", group: "grain", region: "minneapolis", title: "Minneapolis Daily Grain", esmisPublication: "minneapolis-daily-grain-report" },
   { slug: "3223", group: "grain", region: "kansas_city", title: "Kansas City Daily Grain Bids", esmisPublication: "kansas-city-daily-grain-bids" },
+  { slug: "2912", group: "grain", region: "colorado", title: "Colorado Daily Grain Bids", esmisPublication: "colorado-daily-grain-bids" },
+  { slug: "3192", group: "grain", region: "illinois", title: "Illinois Daily Grain Bids", esmisPublication: "illinois-grain-bids" },
+  { slug: "3225", group: "grain", region: "nebraska", title: "Nebraska Daily Grain Bids", esmisPublication: "nebraska-daily-grain-bids" },
+  { slug: "2932", group: "grain", region: "missouri", title: "Missouri Daily Grain Bids", esmisPublication: "missouri-daily-grain-bids" },
+  { slug: "2850", group: "grain", region: "iowa", title: "Iowa Daily Grain Bids", esmisPublication: "iowa-daily-grain-bids" },
 ];
 
 export const SKIPPED_SOURCES = [
@@ -51,7 +84,9 @@ export const SKIPPED_SOURCES = [
   { id: "nass-quick-stats", why: "documented no-auth JSON API — KILL" },
   { id: "wasde-psd-esr", why: "documented no-auth USDA JSON/CSV — KILL" },
   { id: "hay-auction-barns", why: "local AMS hay-auction PDFs would be 50-state doors; this pass is regional Direct reports" },
-  { id: "ams_3056_3058_3059", why: "already collected on /ticks (Idaho hay, Columbia Basin hay, NW Direct cattle)" },
+  { id: "ams_3056_3057_3058_3059_2914", why: "already collected on /ticks (Idaho/Oregon/Columbia Basin hay, NW Direct cattle, PNW pulses)" },
+  { id: "no-il-ga-direct-hay", why: "AMS hay listing has no Illinois or Georgia Direct Hay — only local hay-auction barn PDFs, which we skip" },
+  { id: "retired-city-grain-txt", why: "sj_gr851 / gx_gr110 / wh_gr110 / jc_gr111 are retired or already plaintext city grain .txt — skip wrapping" },
 ] as const;
 
 export type AmsTick = {
@@ -195,8 +230,15 @@ export function esmisPublicationUrl(report: AmsReport): string {
   return `${ESMIS_HOST}/publication/${report.esmisPublication}`;
 }
 
+export function mnreportsPdfUrls(slug: string): string[] {
+  return [
+    `https://www.ams.usda.gov/mnreports/ams_${slug}.pdf`,
+    MNREPORTS_PDF(slug),
+  ];
+}
+
 const PACKAGE_RE =
-  /\b(Large Square(?:\s+3x4)?|Small Square(?:\s+3 Tie)?|Large Round|Standing)\b/i;
+  /\b(Large Square(?:\s+[34]x4)?|Medium Square(?:\s+3x3)?|Small Square(?:\s+3 Tie)?|Large Round|Standing)\b/i;
 
 function hayRegion(line: string): string | null {
   const m = line.match(/^(.+?)\s+Hay\s*(?:\((Conventional|Organic)\))?\s*$/i);
@@ -227,10 +269,14 @@ function hayKindLine(line: string): string | null {
 
 function hayClass(line: string): { commodity: string; grade: string; unit: string } | null {
   const m = line.match(
-    /^([A-Za-z][A-Za-z0-9 /]+?)\s+-\s+([A-Za-z][A-Za-z/ ]+?)\s+\((?:Ask|Trade|Contract \(Trade\))\/Per\s+(Ton|Bale)\)/i,
+    /^([A-Za-z][A-Za-z0-9 /]+?)\s+-\s+(?:([A-Za-z][A-Za-z/ ]+?)\s+)?\((?:Ask|Trade|Contract \(Trade\))\/Per\s+(Ton|Bale)\)/i,
   );
   if (!m) return null;
-  return { commodity: m[1].trim(), grade: m[2].trim(), unit: m[3].toLowerCase() === "ton" ? "$/ton" : "$/bale" };
+  return {
+    commodity: m[1].trim(),
+    grade: (m[2] || "quoted").trim(),
+    unit: m[3].toLowerCase() === "ton" ? "$/ton" : "$/bale",
+  };
 }
 
 export function parseHayReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
@@ -326,6 +372,9 @@ function parseHayRow(
   });
 }
 
+const CATTLE_ROW_RE =
+  /^(?:Current FOB\s+)?(\d+)\s+(\d+)(?:\s*-\s*(\d+))?\s+(\d+)\s+(\d+(?:\.\d+)?)(?:\s*-\s*(\d+(?:\.\d+)?))?\s+(\d+(?:\.\d+)?)/i;
+
 export function parseCattleReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
   const asOf = parseReportDate(text);
   if (!asOf) return [];
@@ -333,6 +382,7 @@ export function parseCattleReport(text: string, report: AmsReport, sourceUrl: st
   const out: AmsTick[] = [];
   let sex = "";
   let grade = "";
+  let inCurrentFob = false;
   for (const raw of text.split(/\r?\n/)) {
     const line = raw.replace(/\s+/g, " ").trim();
     if (!line) continue;
@@ -340,12 +390,16 @@ export function parseCattleReport(text: string, report: AmsReport, sourceUrl: st
     if (hdr) {
       sex = hdr[1];
       grade = hdr[2];
+      inCurrentFob = false;
       continue;
     }
-    if (!sex || !/^Current FOB\b/i.test(line)) continue;
-    const row = line.match(
-      /^Current FOB\s+(\d+)\s+(\d+)(?:\s*-\s*(\d+))?\s+(\d+)\s+(\d+(?:\.\d+)?)(?:\s*-\s*(\d+(?:\.\d+)?))?\s+(\d+(?:\.\d+)?)/i,
-    );
+    if (/^(?:Current\s+)?(?:DEL|Sep|Oct|Nov|Dec|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug)\s+(?:FOB|DEL)\b/i.test(line) || /^Current DEL\b/i.test(line)) {
+      inCurrentFob = false;
+      continue;
+    }
+    if (/^Current FOB\b/i.test(line)) inCurrentFob = true;
+    if (!sex || !inCurrentFob) continue;
+    const row = line.match(CATTLE_ROW_RE);
     if (!row) continue;
     const head = Number(row[1]);
     const wt = Number(row[4]);
@@ -518,12 +572,14 @@ function pause(ms: number): Promise<void> {
 }
 
 export async function officialPdfCandidates(report: AmsReport): Promise<string[]> {
-  const urls = [MNREPORTS_PDF(report.slug)];
-  try {
-    const html = await fetchText(esmisPublicationUrl(report));
-    urls.unshift(...esmisPdfUrls(html, report.slug));
-  } catch {
-    /* mnreports still tried */
+  const urls = mnreportsPdfUrls(report.slug);
+  if (report.esmisPublication) {
+    try {
+      const html = await fetchText(esmisPublicationUrl(report));
+      urls.unshift(...esmisPdfUrls(html, report.slug));
+    } catch {
+      /* mnreports still tried */
+    }
   }
   return [...new Set(urls)];
 }
