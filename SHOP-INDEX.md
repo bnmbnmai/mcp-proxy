@@ -61,12 +61,12 @@ Free manifests carry the full catalog (count, ids, official source URLs). They a
 
 ## Free discovery (not paid)
 
-- `GET /` — shop JSON (payTo + the thirty-two products)
-- `GET /.well-known/x402` — absolute URLs of the thirty-two paid routes only
-- `GET /openapi.json` — OpenAPI 3.1 with `x-payment-info`
-- `GET /llms.txt` — short agent guidance (extracted-body doors say newest 100 official texts)
-- `GET /mcp` — Streamable HTTP MCP for the same thirty-two paid GETs (not a new SKU)
-- `GET /manifest.json` and `GET /{path}/manifest.json` — free per-SKU catalogs
+- `GET /` — shop JSON (payTo + the thirty-two products). Note says newest 100 on a plain body GET; older pages on the same URL.
+- `GET /.well-known/x402` — absolute URLs of the thirty-two paid routes only (not a SKU per page)
+- `GET /openapi.json` — OpenAPI 3.1 with `x-payment-info`. Body doors are newest chunk / older pages, not the entire cache.
+- `GET /llms.txt` — short agent guidance (extracted-body doors say newest 100 official texts; older pages on the same URL)
+- `GET /mcp` — Streamable HTTP MCP for the same thirty-two paid GETs plus free search (not a new SKU)
+- `GET /manifest.json` and `GET /{path}/manifest.json` — free per-SKU catalogs + page cursor; `?q=` stays free
 
 ## How to buy
 

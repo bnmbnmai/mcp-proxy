@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus } from "./ticks-door.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
   IMPORT_ALERTS_MANIFEST_PATH,
@@ -497,13 +497,40 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("US hay, cattle, and grain"));
     assert.ok(!llmsBody.includes("Idaho ticks"));
     assert.ok(llmsBody.includes("Newest 100 official texts"));
+    assert.ok(llmsBody.includes("older pages on the same URL"));
+    assert.ok(!llmsBody.toLowerCase().includes("entire current cache"));
+    assert.ok((wk.instructions ?? "").includes("newest 100 official texts"));
+    assert.ok((wk.instructions ?? "").includes("older pages on the same URL"));
+    assert.ok(!(wk.instructions ?? "").toLowerCase().includes("entire current cache"));
+    const specGuidance = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
+      info?: { "x-guidance"?: string };
+      paths?: Record<string, { get?: { description?: string } }>;
+    };
+    assert.ok((specGuidance.info?.["x-guidance"] ?? "").includes("newest 100 official texts"));
+    assert.ok((specGuidance.info?.["x-guidance"] ?? "").includes("whole current table"));
+    assert.ok(!(specGuidance.info?.["x-guidance"] ?? "").toLowerCase().includes("entire current cache"));
+    assert.ok((specGuidance.paths?.[WARNING_LETTERS_PATH]?.get?.description ?? "").includes("Newest chunk on a plain GET"));
+    assert.ok(!(specGuidance.paths?.[WARNING_LETTERS_PATH]?.get?.description ?? "").toLowerCase().includes("entire current cache"));
+    assert.ok((specGuidance.paths?.[TICKS_PATH]?.get?.description ?? "").includes("current official US hay"));
+    const mcpInit = (await (
+      await fetch(`${base}${MCP_PATH}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ jsonrpc: "2.0", id: 1, method: "initialize", params: {} }),
+      })
+    ).json()) as { result?: { instructions?: string } };
+    assert.ok((mcpInit.result?.instructions ?? "").includes("newest 100 official texts"));
+    assert.ok(!(mcpInit.result?.instructions ?? "").toLowerCase().includes("entire current cache"));
 
     const shop = (await (await fetch(`${base}/`)).json()) as {
       products: { path: string; priceUsdc?: string }[];
       openapi?: string;
       wellKnown?: string;
       llmsTxt?: string;
+      note?: string;
     };
+    assert.ok((shop.note ?? "").includes("newest 100 official texts"));
+    assert.ok(!(shop.note ?? "").toLowerCase().includes("entire current cache"));
     assert.deepEqual(shop.products.map((p) => p.path), [
       TICKS_PATH,
       IMPORT_ALERTS_PATH,
