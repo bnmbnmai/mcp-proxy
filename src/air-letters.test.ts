@@ -7,6 +7,8 @@ import { readFileSync as readFs } from "node:fs";
 import {
   ATTRIBUTION,
   CARD_FIELDS,
+  INQUIRY_CSV_URL,
+  INQUIRY_TABLE_URL,
   LICENSE,
   LISTING_URL,
   SEED_LISTINGS,
@@ -17,6 +19,7 @@ import {
   isRealAirLetterBody,
   officialAirLetterPdfUrl,
   parseAirLetterText,
+  parseListingCsv,
   parseListingHtml,
   parseListingRows,
   pdfIdFromUrl,
@@ -50,14 +53,40 @@ async function main(): Promise<void> {
   assert.equal(officialAirLetterPdfUrl("https://www.accessdata.fda.gov/cdrh_docs/pdf25/DEN250042.pdf"), null);
   assert.equal(officialAirLetterPdfUrl("https://www.cftc.gov/media/14456/ENF_UBSFinancial%20ServicesOrder073126/download"), null);
   assert.ok(LISTING_URL.includes("aphis.usda.gov"));
+  assert.ok(INQUIRY_TABLE_URL.includes("regulated-article-inquiry"), "live collect must walk the official AIR inquiry table");
+  assert.ok(INQUIRY_CSV_URL.includes("reg-article-letters-inquiry-data-table.csv"));
   assert.equal(SEED_LISTINGS.length, 5);
   assert.ok(SEED_LISTINGS.some((r) => r.docket === "26-173-01air"));
+  assert.equal(
+    officialAirLetterPdfUrl("https://direct.aphis.usda.gov/sites/default/files/26-197-01air.pdf"),
+    null,
+    "incoming inquiry PDFs stay out",
+  );
+  assert.equal(
+    officialAirLetterPdfUrl("https://direct.aphis.usda.gov/sites/default/files/26-212-01air-response-cbidel.pdf"),
+    "https://direct.aphis.usda.gov/sites/default/files/26-212-01air-response-cbidel.pdf",
+  );
 
   const htmlListed = parseListingHtml(readFx("listing-excerpt.html"));
   assert.ok(htmlListed.some((r) => r.id === "26-173-01air"));
   assert.ok(htmlListed.some((r) => /KAGOME/i.test(r.institution)));
   assert.ok(htmlListed.some((r) => /Inari/i.test(r.institution)));
   assert.ok(!htmlListed.some((r) => /Jane Q Public/i.test(r.institution)));
+
+  const inquiryListed = parseListingCsv(readFx("inquiry-table-excerpt.csv"));
+  assert.ok(inquiryListed.some((r) => r.id === "26-173-01air" && /KAGOME/i.test(r.institution)));
+  assert.ok(inquiryListed.some((r) => r.id === "26-180-01air" && /Living Carbon/i.test(r.institution)));
+  assert.ok(inquiryListed.some((r) => r.id === "26-124-01air" && /University of Missouri/i.test(r.institution)));
+  assert.equal(
+    inquiryListed.find((r) => r.id === "26-212-01air")?.sourceUrl,
+    "https://direct.aphis.usda.gov/sites/default/files/26-212-01air-response-cbidel.pdf",
+  );
+  assert.ok(inquiryListed.some((r) => r.id === "25-178-01air" && /Bayer Crop Science/i.test(r.institution)), "Crop Science is an institution");
+  assert.ok(!inquiryListed.some((r) => r.id === "26-999-01air"), "people stay out");
+  assert.ok(!inquiryListed.some((r) => r.id === "26-197-01air"), "incoming-only stays out");
+  assert.ok(!inquiryListed.some((r) => r.id === "26-159-03air"), "03air is not this 01air SKU");
+  assert.ok(!inquiryListed.some((r) => r.id === "26-098-01air"), "mismatched response PDF stays out");
+  assert.ok(!inquiryListed.some((r) => /01cr/i.test(r.id) || /Phytoform/i.test(r.institution)), "confirmation-letters 01cr teaser stays out");
 
   const people = rows.find((r) => (r.docket ?? "") === "26-999-01air");
   assert.ok(people);
