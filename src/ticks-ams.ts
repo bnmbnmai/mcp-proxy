@@ -386,7 +386,9 @@ export function parseCattleReport(text: string, report: AmsReport, sourceUrl: st
   for (const raw of text.split(/\r?\n/)) {
     const line = raw.replace(/\s+/g, " ").trim();
     if (!line) continue;
-    const hdr = line.match(/^(Steers|Heifers)\s+-\s+(Medium and Large [12](?:-2)?)\s+\(Per Cwt\)/i);
+    const hdr = line.match(
+      /^(?:(?:Beef\/Dairy|Dairy)\s+)?(Steers|Heifers)\s+-\s+(Medium and Large [12](?:-[23])?|Large [123])\s+\(Per Cwt\)/i,
+    );
     if (hdr) {
       sex = hdr[1];
       grade = hdr[2];
@@ -408,7 +410,15 @@ export function parseCattleReport(text: string, report: AmsReport, sourceUrl: st
     const avg = Number(row[7]);
     if (!Number.isFinite(avg) || avg < 20 || avg > 900) continue;
     const sexTok = /heifer/i.test(sex) ? "feeder-heifer" : "feeder-steer";
-    const gradeTok = /1-2/.test(grade) ? "ml12" : /large 2/i.test(grade) ? "ml2" : "ml1";
+    const gradeTok = /2-3/.test(grade)
+      ? "ml23"
+      : /1-2/.test(grade)
+        ? "ml12"
+        : /large 3/i.test(grade)
+          ? "l3"
+          : /large 2/i.test(grade)
+            ? "ml2"
+            : "ml1";
     const id = ["cattle", `ams_${report.slug}`, token(report.region), sexTok, gradeTok, `${wt}lb`].join(".");
     out.push({
       id,
@@ -552,13 +562,31 @@ function isPdf(bytes: Uint8Array): boolean {
 }
 
 async function fetchBytes(url: string): Promise<{ url: string; bytes: Uint8Array; contentType: string }> {
-  const res = await fetch(url, {
-    headers: { "User-Agent": HTTP_UA, Accept: "application/pdf,application/octet-stream,*/*" },
-    redirect: "follow",
-  });
-  if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
-  const bytes = new Uint8Array(await res.arrayBuffer());
-  return { url: res.url || url, bytes, contentType: res.headers.get("content-type") ?? "" };
+  let lastErr = "";
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      const res = await fetch(url, {
+        headers: { "User-Agent": HTTP_UA, Accept: "application/pdf,application/octet-stream,*/*" },
+        redirect: "follow",
+      });
+      if (res.status === 403 && attempt < 2) {
+        lastErr = `${url} HTTP 403`;
+        await pause(1500 * (attempt + 1));
+        continue;
+      }
+      if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
+      const bytes = new Uint8Array(await res.arrayBuffer());
+      return { url: res.url || url, bytes, contentType: res.headers.get("content-type") ?? "" };
+    } catch (err) {
+      lastErr = err instanceof Error ? err.message : String(err);
+      if (attempt < 2 && /HTTP 403/.test(lastErr)) {
+        await pause(1500 * (attempt + 1));
+        continue;
+      }
+      throw err instanceof Error ? err : new Error(lastErr);
+    }
+  }
+  throw new Error(lastErr || `${url} HTTP 403`);
 }
 
 async function fetchText(url: string): Promise<string> {
