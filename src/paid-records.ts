@@ -77,11 +77,11 @@ export function olderChunkCopy(n = paidBodyWindow()): string {
   return `older chunk if they ask (?before=<id or date>, another $0.05)`;
 }
 
-/** Free-manifest note: full catalog stays; plain paid GET is the newest chunk. */
+/** Free-manifest note: free index/search, then pay the page. */
 export function paidBodyCatalogNote(paidPath: string, catalogLead: string): string {
   const n = paidBodyWindow();
   const lead = catalogLead.trim().replace(/\.?$/, ".");
-  return `${lead} Plain paid GET ${paidPath} is the ${newestOfficialTextsCopy(n)}; ${olderChunkCopy(n)}. Free ?q= search stays free.`;
+  return `${lead} Free index/search (?q=, optional before/date) stays free and includes the page cursor to pay. Plain paid GET ${paidPath} is the ${newestOfficialTextsCopy(n)}; ${olderChunkCopy(n)}.`;
 }
 
 export const TICKS_CACHE_SOURCE = "idaho-hay-feeder-ticks cache";
@@ -175,6 +175,7 @@ export type PaidEnvelope = {
 export type PaidBodyWindowEnvelope = PaidEnvelope & {
   paidWindow: number;
   catalogCount: number;
+  ids: string[];
   before: string | null;
   nextBefore: string | null;
   prevBefore: string | null;
@@ -324,8 +325,24 @@ export function attachPaidPageCursors(
   return rows.map((row) => {
     const id = officialItemId(row);
     const cursor = byId.get(id) ?? { page: 1, before: null };
-    return { ...row, page: cursor.page, before: cursor.before };
+    const date =
+      firstPlausibleDate(row.date, row.issuedOn, row.publishedOn, row.inspectedOn, row.recordDate) ??
+      (str(row.date) || null);
+    return { ...row, date, page: cursor.page, before: cursor.before };
   });
+}
+
+export type CatalogSearchQuery = {
+  q?: string | null;
+  before?: string | null;
+  date?: string | null;
+};
+
+function catalogRowDate(row: Record<string, unknown>): string {
+  return (
+    firstPlausibleDate(row.date, row.issuedOn, row.publishedOn, row.inspectedOn, row.recordDate) ??
+    str(row.date)
+  );
 }
 
 export function searchCatalogRows(rows: Record<string, unknown>[], q: string): Record<string, unknown>[] {
@@ -337,6 +354,41 @@ export function searchCatalogRows(rows: Record<string, unknown>[], q: string): R
       .join(" ");
     return hay.includes(needle);
   });
+}
+
+/** Free index filters. before=<id> is that page; before=<YYYY-MM-DD> is older dates. date= is a prefix. */
+export function filterCatalogRows(
+  rows: Record<string, unknown>[],
+  query: CatalogSearchQuery = {},
+): Record<string, unknown>[] {
+  let out = rows;
+  const q = str(query.q);
+  if (q) out = searchCatalogRows(out, q);
+  const date = str(query.date);
+  if (date) {
+    out = out.filter((row) => catalogRowDate(row).startsWith(date));
+  }
+  const before = str(query.before);
+  if (before) {
+    if (isDateCursor(before)) {
+      out = out.filter((row) => (catalogRowDate(row) || "") < before);
+    } else {
+      out = out.filter((row) => str(row.before) === before);
+    }
+  }
+  return out;
+}
+
+export function catalogSearchQueryString(query: CatalogSearchQuery = {}): string {
+  const q = new URLSearchParams();
+  const text = str(query.q);
+  const before = str(query.before);
+  const date = str(query.date);
+  if (text) q.set("q", text);
+  if (before) q.set("before", before);
+  if (date) q.set("date", date);
+  const qs = q.toString();
+  return qs ? `?${qs}` : "";
 }
 
 export function paidBodyOptsFromSearch(search: string | URLSearchParams): PaidBodyOpts {
@@ -363,18 +415,22 @@ export function paidBodyQueryPath(path: string, opts?: PaidBodyOpts): string {
 
 export function decorateExtractedBodyManifest(
   manifest: Record<string, unknown>,
-  query: { q?: string | null } = {},
+  query: CatalogSearchQuery = {},
 ): Record<string, unknown> {
   const listKey = Array.isArray(manifest.cards) ? "cards" : Array.isArray(manifest.letters) ? "letters" : null;
   if (!listKey) return manifest;
-  let rows = attachPaidPageCursors(asList(manifest[listKey]));
+  const rows = filterCatalogRows(attachPaidPageCursors(asList(manifest[listKey])), query);
   const q = str(query.q);
-  if (q) rows = searchCatalogRows(rows, q);
+  const before = str(query.before);
+  const date = str(query.date);
+  const searching = Boolean(q || before || date);
   return {
     ...manifest,
     [listKey]: rows,
     search: q || null,
-    ...(q ? { matchCount: rows.length } : {}),
+    before: before || null,
+    date: date || null,
+    ...(searching ? { matchCount: rows.length } : {}),
   };
 }
 
@@ -528,6 +584,7 @@ function paidCardBody<T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?:
     source: listingSource(payload, fallbackSource),
     records,
     recordCount: records.length,
+    ids: records.map((row) => row.id),
     paidWindow: limit,
     catalogCount: catalog.length,
     before: sliced.before,
@@ -571,6 +628,7 @@ export function paidForm483Body<T extends { letters?: unknown[]; fetchedAt?: unk
     ),
     records,
     recordCount: records.length,
+    ids: records.map((row) => row.id),
     paidWindow: limit,
     catalogCount: catalog.length,
     before: sliced.before,
@@ -599,6 +657,7 @@ export function paidWarningLettersBody<
     ),
     records,
     recordCount: records.length,
+    ids: records.map((row) => row.id),
     paidWindow: limit,
     catalogCount: catalog.length,
     before: sliced.before,

@@ -18,7 +18,7 @@ Official public data caches (PDF/HTML sources), returned as JSON after x402. Not
 
 **32 paid GETs.** `$0.05` (`50000` atomic) for every live paid GET, including `/ticks`. One GET is one cache. No per-record SKU. No alerts/delta door.
 
-Extracted-body doors: a plain GET sells the **newest 100 official texts** (or the live `PAID_BODY_WINDOW`) plus `records[]` / `asOf` for those N. The same URL with `?before=<id or date>` (from the free manifest) sells the **next older 100 for another $0.05**. New official texts show up on the default GET; older pages are the back catalog. Free `/{door}/manifest.json` stays the **full catalog** (count + id/firm/date/url + page cursor). Free `?q=` search stays free. `/ticks` and `/import-alerts` stay the full current table. Mariners doors stay **this week's LNM** (one weekly edition), not a 100-notice slice.
+Extracted-body doors: **free index/search** on `/{door}/manifest.json` or `/{door}/index` (`?q=`, optional `before`/`date`) returns one row per collected record (id, date, title/firm/subject, page cursor). Then pay the page. A plain GET sells the **newest 100 official texts** plus `records[]` / `ids[]` / `asOf` / next/prev cursor. The same URL with `?before=<id or date>` sells the **next older 100 for another $0.05**. `/ticks` and `/import-alerts` stay the full current table. Mariners doors stay **this week's LNM** (one weekly edition), not a 100-notice slice.
 
 ## Live paid GETs
 
@@ -61,12 +61,12 @@ Free manifests carry the full catalog (count, ids, official source URLs). They a
 
 ## Free discovery (not paid)
 
-- `GET /` — shop JSON (payTo + the thirty-two products). Note says newest 100 on a plain body GET; older pages on the same URL.
+- `GET /` — shop JSON (payTo + the thirty-two products). Note says free index/search, then pay the page.
 - `GET /.well-known/x402` — absolute URLs of the thirty-two paid routes only (not a SKU per page)
-- `GET /openapi.json` — OpenAPI 3.1 with `x-payment-info`. Body doors are newest chunk / older pages, not the entire cache.
-- `GET /llms.txt` — short agent guidance (extracted-body doors say newest 100 official texts; older pages on the same URL)
-- `GET /mcp` — Streamable HTTP MCP for the same thirty-two paid GETs plus free search (not a new SKU)
-- `GET /manifest.json` and `GET /{path}/manifest.json` — free per-SKU catalogs + page cursor; `?q=` stays free
+- `GET /openapi.json` — OpenAPI 3.1 with `x-payment-info`. Body doors: free index/search, then pay the page. Not the entire cache.
+- `GET /llms.txt` — short agent guidance (free index/search, then pay the page)
+- `GET /mcp` — Streamable HTTP MCP: one tool per paid GET plus free `search` and paid `get-page` (not a new SKU)
+- `GET /manifest.json` and `GET /{path}/manifest.json` (or `/{path}/index`) — free per-SKU catalogs + page cursor; `?q=` / `before` / `date` stay free
 
 ## How to buy
 
