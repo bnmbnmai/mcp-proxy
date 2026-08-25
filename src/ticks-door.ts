@@ -898,6 +898,9 @@ function usdcDisplayFromAtomic(atomic: string | null | undefined): string | null
 
 const PAID_BODY_N = paidBodyWindow();
 const PAID_WINDOW_COPY = `Newest chunk on a plain GET (${newestOfficialTextsCopy(PAID_BODY_N)}); ${olderChunkCopy(PAID_BODY_N)}.`;
+/** Shop-wide discovery. Never “entire current cache” as a body-door line. */
+const BODY_PAGE_DISCOVERY =
+  `Extracted-body doors: ${newestOfficialTextsCopy(PAID_BODY_N)} on a plain GET ($0.05); older pages on the same URL (?before, another $0.05). Table doors (/ticks, /import-alerts) stay the whole current table.`;
 
 const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> = {
   ticks: {
@@ -3021,13 +3024,13 @@ export function llmsTxt(): string {
   return [
     "# BNM Data Shop",
     "",
-    `Official public data as JSON at https://ticks.bnm.farm. ${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs. USDC on Base (eip155:8453). payTo 0xf59621FC406D266e18f314Ae18eF0a33b8401004.`,
+    `Official public data as JSON at https://ticks.bnm.farm. ${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs. USDC on Base (eip155:8453). payTo 0xf59621FC406D266e18f314Ae18eF0a33b8401004. ${BODY_PAGE_DISCOVERY}`,
     "",
     "## Paid",
     "",
     ...paid,
     "",
-    "Unpaid GET returns HTTP 402 with PAYMENT-REQUIRED and extensions.bazaar. After a valid X-PAYMENT, the same URL returns JSON. No API key. No request body.",
+    "Unpaid GET returns HTTP 402 with PAYMENT-REQUIRED and extensions.bazaar. After a valid X-PAYMENT, the same URL returns JSON: newest chunk on extracted-body doors, older chunk if they ask, whole current table on /ticks and /import-alerts. No API key. No request body.",
     "",
     "## Free discovery",
     "",
@@ -3039,7 +3042,7 @@ export function llmsTxt(): string {
     "",
     `- URL — https://ticks.bnm.farm${MCP_PATH}`,
     "- Connect — `npx -y mcp-remote https://ticks.bnm.farm/mcp`",
-    `- One tool per live paid GET from /.well-known/x402 (generated at request time; later SKUs appear without an MCP rewrite). Same ${paidCountWord()} URLs today. Unpaid tool calls still HTTP 402. Paid returns the JSON body. Not Bazaar-indexed.`,
+    `- One tool per live paid GET from /.well-known/x402 (generated at request time; later SKUs appear without an MCP rewrite). Same ${paidCountWord()} URLs today. ${BODY_PAGE_DISCOVERY} Unpaid tool calls still HTTP 402. Not Bazaar-indexed.`,
     "",
     "## Agent catalogs",
     "",
@@ -3079,7 +3082,7 @@ export function wellKnownX402(req: IncomingMessage, port: number): Record<string
     ownershipProofs: [PAY_TO],
     ...shopDiscoveryPointers(req, port),
     instructions:
-      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Pay USDC on Base. Free OpenAPI is at /openapi.json. MCP is at /mcp (same ${paidCountWord()} paid GETs, not a new SKU). Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
+      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Pay USDC on Base. ${BODY_PAGE_DISCOVERY} Free OpenAPI is at /openapi.json. MCP is at /mcp (same ${paidCountWord()} paid GETs, not a new SKU). Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
   };
 }
 
@@ -3153,10 +3156,21 @@ function paidOpenApiOp(opts: {
   };
 }
 
+const EXTRACTED_MANIFEST_OPENAPI =
+  " Full catalog + page cursor; ?q= is free. Plain paid GET is the newest 100 official texts, not the entire cache. Same URL ?before is the next older page ($0.05).";
+
 function freeOpenApiOp(summary: string, description: string): Record<string, unknown> {
+  const extractedCatalog =
+    /Not the (letter body|letter text|observation text|evaluation text|order body|ROD body|MPN body|decision body|observation body|report-card body text)\.?$/.test(
+      description,
+    );
+  const desc =
+    extractedCatalog && !description.includes("not the entire cache")
+      ? `${description.replace(/\.?$/, ".")}${EXTRACTED_MANIFEST_OPENAPI}`
+      : description;
   return {
     summary,
-    description,
+    description: desc,
     tags: ["free"],
     security: [],
     "x-auth": { mode: "none" },
@@ -3281,7 +3295,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       description: "Official public data as JSON. Unpaid paid routes return HTTP 402.",
       contact: { name: "BNM Data Shop", url: "https://bnm.farm/" },
       "x-guidance":
-        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. MCP at GET/POST /mcp lists one tool per paid GET. Free manifests do not include the paid body. No request body. ${noNextSkuWord()}`,
+        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. ${BODY_PAGE_DISCOVERY} Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. MCP at GET/POST /mcp lists one tool per paid GET. Free manifests do not include the paid body. No request body. ${noNextSkuWord()}`,
     },
     "x-discovery": {
       ownershipProofs: [PAY_TO],
@@ -4390,6 +4404,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   if (path === "/") {
     sendJson(res, 200, {
       shop: "bnm-data-shop",
+      note: BODY_PAGE_DISCOVERY,
       payTo: PAY_TO,
       network: NETWORK_V1,
       asset: USDC_BASE,

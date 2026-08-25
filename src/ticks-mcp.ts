@@ -182,7 +182,7 @@ export function mcpDiscovery(origin = LIVE_ORIGIN, catalog: LivePaidSku[]): Reco
     connect: `npx -y mcp-remote ${base}${MCP_PATH}`,
     source: WELL_KNOWN_PATH,
     note:
-      `Same ${catalog.length} paid GETs as ${WELL_KNOWN_PATH}. Extracted-body doors: newest chunk on a plain GET; older chunk if they ask (?before). Free ${SEARCH_TOOL_NAME} is not a paid SKU. Unpaid tool calls still HTTP 402 on the paid URL. Not Bazaar-indexed.`,
+      `Same ${catalog.length} paid GETs as ${WELL_KNOWN_PATH}. Extracted-body doors: newest 100 official texts on a plain GET ($0.05); older pages on the same URL (?before, another $0.05). Table doors stay the whole current table. Free ${SEARCH_TOOL_NAME} is not a paid SKU. Unpaid tool calls still HTTP 402 on the paid URL. Not Bazaar-indexed.`,
     freeTools: [SEARCH_TOOL_NAME],
   };
 }
@@ -348,7 +348,7 @@ export async function handleMcpJsonRpc(
       capabilities: { tools: { listChanged: false } },
       serverInfo: { name: "bnm-data-shop", version: "1.0.0" },
       instructions:
-        `${catalog.length} paid GETs from ${WELL_KNOWN_PATH}, plus free ${SEARCH_TOOL_NAME}. Extracted-body doors: newest chunk on a plain GET; older chunk if they ask (?before). Unpaid is HTTP 402. USDC on Base. Not Bazaar-indexed.`,
+        `${catalog.length} paid GETs from ${WELL_KNOWN_PATH}, plus free ${SEARCH_TOOL_NAME}. Extracted-body doors: newest 100 official texts on a plain GET ($0.05); older pages on the same URL (?before, another $0.05). Table doors stay the whole current table. Unpaid is HTTP 402. USDC on Base. Not Bazaar-indexed.`,
     });
   }
 
