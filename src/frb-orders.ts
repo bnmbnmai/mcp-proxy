@@ -258,6 +258,107 @@ export function pdfUrlFromPressUrl(url: string | null | undefined): string | nul
   return officialFrbPdfUrl(`${PDF_BASE}enf${m[1].toLowerCase()}1.pdf`);
 }
 
+const CSV_INSTITUTION_ACTION_RE =
+  /\bcease and desist\b|\bcease-and-desist\b|\bwritten agreement\b|\bprompt corrective action\b/i;
+
+export function splitBankingOrganization(raw: string): { institution: string; location: string | null } {
+  const trimmed = raw.replace(/\s+/g, " ").trim();
+  const loc = trimmed.match(/^(.*),\s+([^,]+,\s+[A-Za-z][A-Za-z .]+)$/);
+  if (loc) return { institution: loc[1].trim(), location: loc[2].trim() };
+  return { institution: trimmed, location: null };
+}
+
+/** Official enforcement CSV is listing metadata. Map press URLs to files/*.pdf. Skip people / IAP / §19. */
+export function parseFrbCsv(text: string): FrbOrderListing[] {
+  const lines = text.replace(/^\uFEFF/, "").replace(/\r/g, "").split("\n").filter((line) => line.trim());
+  if (lines.length < 2) return [];
+  const headers = splitCsvLine(lines[0]).map((h) => h.replace(/^\uFEFF/, "").trim().toLowerCase());
+  const idx = (name: string) => headers.indexOf(name);
+  const iDate = idx("effective date");
+  const iIndividual = idx("individual");
+  const iOrg = idx("banking organization");
+  const iAction = idx("action");
+  const iUrl = idx("url");
+  if (iOrg < 0 || iAction < 0 || iUrl < 0) return [];
+  const found: FrbOrderListing[] = [];
+  const seen = new Set<string>();
+  for (const line of lines.slice(1)) {
+    const cells = splitCsvLine(line);
+    const individual = (cells[iIndividual] ?? "").trim();
+    if (individual) continue;
+    const action = (cells[iAction] ?? "").trim();
+    if (!CSV_INSTITUTION_ACTION_RE.test(action)) continue;
+    if (/\bsection 19\b|\bprohibition from banking\b/i.test(action) && !CSV_INSTITUTION_ACTION_RE.test(action)) {
+      continue;
+    }
+    const sourceUrl = pdfUrlFromPressUrl(cells[iUrl] ?? "");
+    const pdfId = pdfIdFromUrl(sourceUrl ?? "") ?? "";
+    if (!sourceUrl || !pdfId) continue;
+    if (seen.has(sourceUrl)) continue;
+    seen.add(sourceUrl);
+    const { institution, location } = splitBankingOrganization(cells[iOrg] ?? "");
+    if (!institution) continue;
+    found.push({
+      id: pdfId,
+      docket: pdfId,
+      institution,
+      location,
+      date: isoDate(cells[iDate] ?? ""),
+      title: action,
+      sourceUrl,
+      pdfId,
+    });
+  }
+  found.sort((a, b) => `${b.date ?? ""}${b.pdfId}`.localeCompare(`${a.date ?? ""}${a.pdfId}`));
+  return found;
+}
+
+function splitCsvLine(line: string): string[] {
+  const out: string[] = [];
+  let cur = "";
+  let inQuotes = false;
+  for (let i = 0; i < line.length; i += 1) {
+    const ch = line[i];
+    if (ch === '"') {
+      if (inQuotes && line[i + 1] === '"') {
+        cur += '"';
+        i += 1;
+      } else {
+        inQuotes = !inQuotes;
+      }
+      continue;
+    }
+    if (ch === "," && !inQuotes) {
+      out.push(cur);
+      cur = "";
+      continue;
+    }
+    cur += ch;
+  }
+  out.push(cur);
+  return out;
+}
+
+export function mergeOfficialListings(listed: FrbOrderListing[], seeds: FrbOrderListing[]): FrbOrderListing[] {
+  const seenId = new Set<string>();
+  const seenUrl = new Set<string>();
+  const out: FrbOrderListing[] = [];
+  for (const row of seeds) {
+    if (!row.id || seenId.has(row.id)) continue;
+    seenId.add(row.id);
+    if (row.sourceUrl) seenUrl.add(row.sourceUrl);
+    out.push(row);
+  }
+  for (const row of listed) {
+    if (!row.id || seenId.has(row.id)) continue;
+    if (row.sourceUrl && seenUrl.has(row.sourceUrl)) continue;
+    seenId.add(row.id);
+    if (row.sourceUrl) seenUrl.add(row.sourceUrl);
+    out.push(row);
+  }
+  return out;
+}
+
 export function isPeopleRow(row: FrbListingRow): boolean {
   return Boolean((row.individual ?? "").trim());
 }
@@ -411,7 +512,7 @@ export function parseFrbOrderText(
   const docket = normalizeDocket(meta.docket) || parseDocketFromBody(body) || "unknown";
   const pdfId = meta.pdfId || pdfIdFromUrl(sourceUrl) || fileSafeDocket(docket);
   return {
-    id: meta.id || docket,
+    id: normalizeDocket(meta.id) || docket,
     docket,
     pdfId,
     institution: (meta.institution && meta.institution.trim()) || docket,
@@ -443,9 +544,15 @@ function cardDateKey(card: Pick<FrbOrderCard, "date" | "docket">): string {
 }
 
 export function assembleSnapshot(cards: FrbOrderCard[], fetchedAt = new Date().toISOString()): FrbOrdersSnapshot {
+  const seenDocket = new Set<string>();
   const withBody = cards
     .filter((c) => isRealFrbOrderBody(c.body))
-    .sort((a, b) => cardDateKey(b).localeCompare(cardDateKey(a)));
+    .sort((a, b) => cardDateKey(b).localeCompare(cardDateKey(a)))
+    .filter((c) => {
+      if (seenDocket.has(c.docket)) return false;
+      seenDocket.add(c.docket);
+      return true;
+    });
   const asOf =
     withBody
       .map((c) => c.date)
@@ -531,6 +638,14 @@ function readNamedFile(dir: string, names: string[]): string | null {
   return null;
 }
 
+export async function fetchFrbText(url: string): Promise<string> {
+  const res = await fetch(url, {
+    headers: { "User-Agent": HTTP_UA, Accept: "text/csv,text/plain" },
+  });
+  if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
+  return await res.text();
+}
+
 export async function fetchFrbBytes(url: string): Promise<Uint8Array> {
   const res = await fetch(url, {
     headers: { "User-Agent": HTTP_UA, Accept: "application/pdf" },
@@ -562,10 +677,22 @@ function pause(ms: number): Promise<void> {
 
 async function loadOfficialListings(dir: string): Promise<{ listed: FrbOrderListing[]; listedCount: number }> {
   if (dir) {
+    const csv = readNamedFile(dir, ["listing-excerpt.csv", "listing.csv"]);
+    if (csv) {
+      const listed = mergeOfficialListings(parseFrbCsv(csv), SEED_LISTINGS);
+      return { listed, listedCount: listed.length };
+    }
     const raw = readNamedFile(dir, ["listing-excerpt.json", "listing.json"]);
     const rows = raw ? (JSON.parse(raw) as FrbListingRow[]) : [];
     const listed = Array.isArray(rows) ? parseListingRows(rows) : [];
     return { listed, listedCount: listed.length };
+  }
+  try {
+    const listed = parseFrbCsv(await fetchFrbText(CSV_URL));
+    const merged = mergeOfficialListings(listed, SEED_LISTINGS);
+    if (merged.length > 0) return { listed: merged, listedCount: merged.length };
+  } catch {
+    /* official CSV missed; keep first-slice seeds */
   }
   return { listed: [...SEED_LISTINGS], listedCount: SEED_LISTINGS.length };
 }
@@ -618,10 +745,12 @@ export async function collectFrbOrders(opts?: {
   let addedThisRun = 0;
   for (const row of allListed) {
     if (target > 0 && addedThisRun >= target) break;
-    const cached = prior.get(row.id);
+    const cached =
+      prior.get(row.id) ||
+      [...prior.values()].find((card) => card.sourceUrl === row.sourceUrl || card.pdfId === row.pdfId);
     if (cached) {
       cards.push(cached);
-      seen.add(row.id);
+      seen.add(cached.id);
       reused += 1;
       continue;
     }
