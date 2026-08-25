@@ -39,7 +39,7 @@ export function parseExtractedPageQuery(url: URL): ExtractedPageQuery {
   return { page, before };
 }
 
-function rowId(row: Record<string, unknown>): string {
+export function rowId(row: Record<string, unknown>): string {
   return str(row.id) || str(row.docket) || str(row.mediaId);
 }
 
@@ -54,7 +54,7 @@ function listKey(body: Record<string, unknown>): "letters" | "cards" | "notices"
   return null;
 }
 
-function sortNewest(rows: Record<string, unknown>[]): Record<string, unknown>[] {
+export function sortNewest(rows: Record<string, unknown>[]): Record<string, unknown>[] {
   return [...rows].sort((a, b) => {
     const dateCmp = rowDate(b).localeCompare(rowDate(a));
     if (dateCmp !== 0) return dateCmp;

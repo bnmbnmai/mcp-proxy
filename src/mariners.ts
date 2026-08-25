@@ -11,6 +11,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
+import { marinersNoticeId } from "./paid-records.js";
 
 export const MARINERS_PATH = "/mariners";
 export const MARINERS_MANIFEST_PATH = "/mariners/manifest.json";
@@ -572,6 +573,16 @@ export function buildMarinersManifest(
     asOf: snap?.asOf ?? null,
     fetchedAt: snap?.fetchedAt ?? null,
     noticeCount: notices.length,
+    notices: notices.map((n) => {
+      const row = n as unknown as Record<string, unknown>;
+      return {
+        id: marinersNoticeId(row),
+        week: n.week,
+        section: n.section,
+        waterway: n.waterway,
+        sourceUrl: n.sourceUrl,
+      };
+    }),
     sections: sectionCounts(notices),
     sources: snap?.sources ?? {
       listing: spec.listingUrl,

@@ -490,6 +490,16 @@ export function paidGmpMdBody<
   return paidCardBody(payload, GMP_MD_TYPE, GMP_MD_SOURCE);
 }
 
+export function marinersNoticeId(row: Record<string, unknown>): string {
+  const text = str(row.text);
+  const week = str(row.week);
+  const section = str(row.section);
+  const waterway = str(row.waterway);
+  const llnr = officialLlnr(text);
+  const title = officialNoticeTitle(text);
+  return [week, section, llnr || waterway || title || str(row.id)].filter(Boolean).join(":");
+}
+
 /** Official Light List Number already copied into notice text by the LNM walker. */
 export function officialLlnr(text: string): string {
   return text.match(/\bLLNR\s+(\d{4,5}(?:\.\d+)?)\b/)?.[1] ?? "";
@@ -518,12 +528,10 @@ export function normalizeMarinersRecords(
   for (const row of asList(payload.notices)) {
     const text = str(row.text);
     if (!text) continue;
-    const week = str(row.week);
     const section = str(row.section);
     const waterway = str(row.waterway);
-    const llnr = officialLlnr(text);
     const title = officialNoticeTitle(text);
-    const id = [week, section, llnr || waterway || title].filter(Boolean).join(":");
+    const id = marinersNoticeId(row);
     if (!id) continue;
     const dateInText = text.match(/\b(?:19|20)\d{2}-\d{2}-\d{2}\b/)?.[0];
     out.push({
@@ -541,8 +549,13 @@ function paidNoticeBody<
   T extends { notices?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
 >(payload: T, type: string, fallbackSource: string): T & PaidEnvelope {
   const records = normalizeMarinersRecords(payload, type);
+  const notices = asList(payload.notices).map((row) => ({
+    ...row,
+    id: str(row.id) || marinersNoticeId(row),
+  }));
   return {
     ...payload,
+    notices,
     asOf: firstPlausibleDate(payload.asOf) ?? latestRecordDate(records),
     fetchedAt: honestFetchedAt(payload.fetchedAt),
     source: listingSource(payload, fallbackSource),

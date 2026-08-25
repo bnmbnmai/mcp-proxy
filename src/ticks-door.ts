@@ -316,6 +316,7 @@ import {
   paidWarningLettersBody,
 } from "./paid-records.js";
 import { EXTRACTED_PAGE_SIZE, isTableSku, pageExtractedPaidBody, parseExtractedPageQuery } from "./paid-page.js";
+import { applyFreeIndex } from "./free-index.js";
 import { mergeAmsNationalTicks } from "./ticks-ams.js";
 import {
   GMP_AMOUNT_ATOMIC,
@@ -1243,14 +1244,14 @@ export function skuBuyerDescription(sku: DoorSku, bag?: SkuBag): string {
   if (isTableSku(sku)) {
     return `${ended} One $0.05 GET returns the entire current table (${count}). Paid JSON is ${paid}.`;
   }
-  return `${ended} One $0.05 GET returns the newest 100 official texts. Older pages are another $0.05 on the same URL (page/before). Free manifest lists the full catalog (${count}). Paid JSON is ${paid}.`;
+  return `${ended} Find a record on the free index (?q=). Each index row names the page/before to pay. One $0.05 GET returns the newest 100 official texts, not the entire archive. Older pages are another $0.05 on the same URL. Free index lists the full catalog (${count}). Paid JSON is ${paid}.`;
 }
 
 export function skuOpenApiSummary(sku: DoorSku, bag: SkuBag): string {
   if (isTableSku(sku)) {
     return `${bag.oneLine} — entire current table on one GET (${bag.countLabel})`;
   }
-  return `${bag.oneLine} — newest 100 official texts per $0.05 GET (${bag.countLabel} in catalog)`;
+  return `${bag.oneLine} — newest 100 official texts per $0.05 GET; find on free index (?q=) (${bag.countLabel} in catalog)`;
 }
 
 export function skuOpenApiDescription(sku: DoorSku, bag: SkuBag): string {
@@ -1268,7 +1269,7 @@ function shopProductCard(sku: DoorSku, bag: SkuBag): Record<string, unknown> {
     manifest: SHOP_MANIFEST_PATH[sku],
     description: skuBuyerDescription(sku, bag),
     count: bag.count,
-    ...(isTableSku(sku) ? {} : { pageSize: EXTRACTED_PAGE_SIZE }),
+    ...(isTableSku(sku) ? {} : { pageSize: EXTRACTED_PAGE_SIZE, search: `${SHOP_MANIFEST_PATH[sku]}?q=` }),
     ...(bag.firms !== undefined ? { firms: bag.firms } : {}),
   };
 }
@@ -3131,6 +3132,16 @@ function withShopDiscovery(
   return { ...body, ...shopDiscoveryPointers(req, port) };
 }
 
+function sendExtractedManifest(
+  res: ServerResponse,
+  body: Record<string, unknown>,
+  req: IncomingMessage,
+  port: number,
+  q: string | null,
+): void {
+  sendJson(res, 200, withShopDiscovery(applyFreeIndex(body, q), req, port));
+}
+
 export async function llmsTxt(): Promise<string> {
   const listed483 = form483IsPublic();
   const listedGmp = gmpIsPublic();
@@ -3194,19 +3205,19 @@ export async function llmsTxt(): Promise<string> {
     "",
     ...paid,
     "",
-    "Unpaid GET returns HTTP 402 with PAYMENT-REQUIRED and extensions.bazaar. After a valid X-PAYMENT, the same URL returns JSON. Table doors (/ticks, /import-alerts): one $0.05 GET is the entire current table. Extracted-body doors: one $0.05 GET is the newest 100 official texts; older pages are another $0.05 on the same URL (page/before). No API key. No request body.",
+    "Unpaid GET returns HTTP 402 with PAYMENT-REQUIRED and extensions.bazaar. After a valid X-PAYMENT, the same URL returns JSON. Table doors (/ticks, /import-alerts): one $0.05 GET is the entire current table. Extracted-body doors: find a record on the free index (?q=); each row names the page/before to pay. One $0.05 GET is the newest 100 official texts, not the entire archive. Older pages are another $0.05 on the same URL. No API key. No request body.",
     "",
     "## Free discovery",
     "",
     ...free,
     "",
-    `${noNextSkuWord()} Free manifests are not the paid body.`,
+    `${noNextSkuWord()} Free manifests are not the paid body. Extracted-body indexes accept ?q=; each hit names the page/before to pay.`,
     "",
     "## MCP",
     "",
     `- URL — https://ticks.bnm.farm${MCP_PATH}`,
     "- Connect — `npx -y mcp-remote https://ticks.bnm.farm/mcp`",
-    `- One tool per live paid GET from /.well-known/x402 (generated at request time; later SKUs appear without an MCP rewrite). Same ${paidCountWord()} URLs today. Unpaid tool calls still HTTP 402. Paid returns the JSON body. Not Bazaar-indexed.`,
+    `- Free search tool \`search\` — GET {manifest}?q= on an extracted-body door. Each hit names the page/before to pay. Then call that door's paid page GET. Table doors have no page: one paid GET is the entire current table. Tools are generated at request time from /.well-known/x402; later SKUs appear without an MCP rewrite. Same ${paidCountWord()} paid URLs today. Unpaid tool calls still HTTP 402. Not Bazaar-indexed.`,
     "",
     "## Agent catalogs",
     "",
@@ -3247,7 +3258,7 @@ export async function wellKnownX402(req: IncomingMessage, port: number): Promise
     ownershipProofs: [PAY_TO],
     ...shopDiscoveryPointers(req, port),
     instructions:
-      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Table doors (/ticks, /import-alerts): one $0.05 GET is the entire current table. Extracted-body doors: one $0.05 GET is the newest 100 official texts; older pages are another $0.05 on the same URL (page/before). Free manifests list the full catalog. Pay USDC on Base. Free OpenAPI is at /openapi.json. MCP is at /mcp (same ${paidCountWord()} paid GETs). Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
+      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Table doors (/ticks, /import-alerts): one $0.05 GET is the entire current table. Extracted-body doors: find a record on the free index (?q=); each row names the page/before to pay. One $0.05 GET is the newest 100 official texts, not the entire archive. Older pages are another $0.05 on the same URL. Pay USDC on Base. Free OpenAPI is at /openapi.json. MCP is at /mcp (free search tool plus the ${paidCountWord()} paid page GETs). Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
   };
 }
 
@@ -3277,7 +3288,7 @@ function paidOpenApiOp(opts: {
             in: "query",
             required: false,
             schema: { type: "integer", minimum: 1, default: 1 },
-            description: "Page of official texts. Default 1 is the newest 100. Each page is another $0.05 on this same URL.",
+            description: "Page of official texts. Default 1 is the newest 100, not the entire archive. Each page is another $0.05 on this same URL. Find the page on the free index (?q=).",
           },
           {
             name: "before",
@@ -3318,22 +3329,39 @@ function paidOpenApiOp(opts: {
       "402": {
         description: isTableSku(opts.sku)
           ? `Payment Required — entire current table on one GET (${bag.countLabel}). x402 challenge in PAYMENT-REQUIRED and JSON body`
-          : `Payment Required — newest 100 official texts per GET (${bag.countLabel} in catalog). Older pages are another $0.05 on this same URL (page/before). x402 challenge in PAYMENT-REQUIRED and JSON body`,
+          : `Payment Required — newest 100 official texts per GET, not the entire archive (${bag.countLabel} in catalog). Find the page on the free index (?q=). Older pages are another $0.05 on this same URL (page/before). x402 challenge in PAYMENT-REQUIRED and JSON body`,
       },
     },
   };
 }
 
-function freeOpenApiOp(summary: string, description: string): Record<string, unknown> {
+function freeOpenApiOp(summary: string, description: string, extractedIndex = false): Record<string, unknown> {
   return {
     summary,
-    description,
+    description: extractedIndex
+      ? `${description} Find a record with ?q=. Each row names the page/before to pay. Does not return official bodies.`
+      : description,
     tags: ["free"],
     security: [],
     "x-auth": { mode: "none" },
+    ...(extractedIndex
+      ? {
+          parameters: [
+            {
+              name: "q",
+              in: "query",
+              required: false,
+              schema: { type: "string" },
+              description: "Free index search. Hits name the page/before to pay. Does not return official bodies.",
+            },
+          ],
+        }
+      : {}),
     responses: {
       "200": {
-        description: "Free JSON catalog / discovery document",
+        description: extractedIndex
+          ? "Free JSON index. ?q= filters rows. Each row names the page/before to pay."
+          : "Free JSON catalog / discovery document",
         content: { "application/json": { schema: { type: "object" } } },
       },
     },
@@ -3453,7 +3481,7 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       description: "Official public data as JSON. Unpaid paid routes return HTTP 402.",
       contact: { name: "BNM Data Shop", url: "https://bnm.farm/" },
       "x-guidance":
-        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. Table doors (/ticks, /import-alerts): one $0.05 GET is the entire current table. Extracted-body doors: one $0.05 GET is the newest 100 official texts; older pages are another $0.05 on the same URL (page/before). Free manifests list the full catalog. Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. MCP at GET/POST /mcp lists one tool per paid GET. No request body. ${noNextSkuWord()}`,
+        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. Table doors (/ticks, /import-alerts): one $0.05 GET is the entire current table. Extracted-body doors: find a record on the free index (?q=); each row names the page/before to pay. One $0.05 GET is the newest 100 official texts, not the entire archive. Older pages are another $0.05 on the same URL. Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. MCP at GET/POST /mcp has a free search tool plus one paid page GET per door. No request body. ${noNextSkuWord()}`,
     },
     "x-discovery": {
       ownershipProofs: [PAY_TO],
@@ -4220,153 +4248,176 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
         get: freeOpenApiOp("FDA import-alerts free manifest", "Count, catalog, and schema. Not the paid firm list."),
       },
       [MARINERS_MANIFEST_PATH]: {
-        get: freeOpenApiOp("USCG D13 LNM free manifest", "Count, week, and official PDF URL. Not the notice body."),
+        get: freeOpenApiOp("USCG D13 LNM free manifest", "Count, week, and official PDF URL. Not the notice body.", true),
       },
       [MARINERS_D11_MANIFEST_PATH]: {
-        get: freeOpenApiOp("USCG D11 LNM free manifest", "Count, week, and official PDF URL. Not the notice body."),
+        get: freeOpenApiOp("USCG D11 LNM free manifest", "Count, week, and official PDF URL. Not the notice body.", true),
       },
       [MARINERS_D7_MANIFEST_PATH]: {
-        get: freeOpenApiOp("USCG D7 LNM free manifest", "Count, week, and official PDF URL. Not the notice body."),
+        get: freeOpenApiOp("USCG D7 LNM free manifest", "Count, week, and official PDF URL. Not the notice body.", true),
       },
       [MARINERS_D8_MANIFEST_PATH]: {
-        get: freeOpenApiOp("USCG D8 LNM free manifest", "Count, week, and official PDF URL. Not the notice body."),
+        get: freeOpenApiOp("USCG D8 LNM free manifest", "Count, week, and official PDF URL. Not the notice body.", true),
       },
       [WARNING_LETTERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FDA warning-letters free manifest",
           "Count, firm, date, subject, and official source URL. Not the letter body.",
+          true,
         ),
       },
       [UNTITLED_LETTERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FDA untitled-letters free manifest",
           "Count, id, firm, date, product, and official source URL. Not the letter text.",
+          true,
         ),
       },
       [AWA_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "APHIS AWA free manifest",
           "Count, id, firm, date, and official source URL. Not the observation text.",
+          true,
         ),
       },
       [SWISSPAR_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "SwissPAR free manifest",
           "Count, name, date, MA, and official source URL. Not the evaluation text.",
+          true,
         ),
       },
       [PCAC_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FDA PCAC free manifest",
           "Count, substance, date, meeting, mediaId, and official source URL. Not the evaluation text.",
+          true,
         ),
       },
       [FTC_WL_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FTC BCP warning-letters free manifest",
           "Count, firm, date, subject, and official PDF URL. Not the letter body.",
+          true,
         ),
       },
       [CFPB_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "CFPB consent-orders free manifest",
           "Count, firm, date, title, fileNo, and official PDF URL. Not the order body.",
+          true,
         ),
       },
       [OCC_CD_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "OCC institution C&D free manifest",
           "Count, bank, docket, date, and official PDF URL. Not the order body.",
+          true,
         ),
       },
       [FDIC_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FDIC institution orders free manifest",
           "Count, bank, docket, date, and official PDF URL. Not the order body.",
+          true,
         ),
       },
       [FRB_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FRB institution orders free manifest",
           "Count, institution, docket, date, and official PDF URL. Not the order body.",
+          true,
         ),
       },
       [NCUA_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "NCUA institution orders free manifest",
           "Count, credit union, docket, date, and official HTML URL. Not the order body.",
+          true,
         ),
       },
       [FINCEN_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FinCEN institution orders free manifest",
           "Count, institution, docket, date, and official PDF URL. Not the order body.",
+          true,
         ),
       },
       [FERC_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FERC institution orders free manifest",
           "Count, institution, docket, date, and official PDF URL. Not the order body.",
+          true,
         ),
       },
       [OFAC_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "OFAC institution orders free manifest",
           "Count, institution, docket, date, and official PDF URL. Not the order body.",
+          true,
         ),
       },
       [BIS_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "BIS institution orders free manifest",
           "Count, institution, docket, date, and official PDF URL. Not the order body.",
+          true,
         ),
       },
       [CFTC_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "CFTC institution orders free manifest",
           "Count, institution, docket, date, and official PDF URL. Not the order body.",
+          true,
         ),
       },
       [FIFRA_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "EPA FIFRA institution orders free manifest",
           "Count, institution, docket, date, and official PDF URL. Not the order body.",
+          true,
         ),
       },
       [DENOVO_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FDA De Novo classification orders free manifest",
           "Count, institution, docket, date, and official PDF URL. Not the order body.",
+          true,
         ),
       },
       [TTB_OIC_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "TTB Offer in Compromise free manifest",
           "Count, institution, docket, date, and official PDF URL. Not the order body.",
+          true,
         ),
       },
       [AIR_LETTERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "APHIS AIR confirmation letters free manifest",
           "Count, institution, docket, date, and official PDF URL. Not the letter body.",
+          true,
         ),
       },
       [SUPERFUND_RODS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "EPA Superfund Records of Decision free manifest",
           "Count, institution, docket, date, and official PDF URL. Not the ROD body.",
+          true,
         ),
       },
       [ICO_MPN_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "ICO Monetary Penalty Notices free manifest",
           "Count, institution, docket, date, and official PDF URL. Not the MPN body.",
+          true,
         ),
       },
       [CMA_CA98_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "UK CMA CA98 infringement decisions free manifest",
           "Count, institution, docket, date, and official PDF URL. Not the decision body.",
+          true,
         ),
       },
       ...(listed483
@@ -4375,6 +4426,7 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
               get: freeOpenApiOp(
                 "FDA Form 483 free manifest",
                 "Count, id, firm, and dates. Not the observation body.",
+                true,
               ),
             },
           }
@@ -4385,6 +4437,7 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
               get: freeOpenApiOp(
                 "Health Canada GMP free manifest",
                 "Count, id, firm, date, and rating. Not the observation text.",
+                true,
               ),
             },
           }
@@ -4395,6 +4448,7 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
               get: freeOpenApiOp(
                 "Health Canada medical-device free manifest",
                 "Count, id, firm, date, and rating. Not the report-card body text.",
+                true,
               ),
             },
           }
@@ -4417,17 +4471,17 @@ export async function buildOpenApi(req: IncomingMessage, port: number): Promise<
       [MCP_PATH]: {
         get: freeOpenApiOp(
           "MCP discovery",
-          `Streamable HTTP MCP for the same ${paidCountWord()} paid GETs. Not a paid SKU. Connect: npx -y mcp-remote https://ticks.bnm.farm/mcp`,
+          `Streamable HTTP MCP: free search tool plus the ${paidCountWord()} paid page GETs. Not a paid SKU. Connect: npx -y mcp-remote https://ticks.bnm.farm/mcp`,
         ),
         post: freeOpenApiOp(
           "MCP JSON-RPC",
-          `initialize / tools/list / tools/call. Each tool GETs the matching paid URL. Unpaid still HTTP 402.`,
+          `initialize / tools/list / tools/call. Free search tool finds a record on the index (?q=). Paid tools GET the named page. Table doors return the entire current table. Unpaid paid tools still HTTP 402.`,
         ),
       },
       "/": {
         get: freeOpenApiOp(
           "Shop discovery JSON",
-          `payTo, network, and the ${paidCountWord()} public products. Each product has a one-line description plus catalog count. Table doors return the entire current table. Extracted-body doors return the newest 100 official texts per GET.`,
+          `payTo, network, and the ${paidCountWord()} public products. Each product has a one-line description plus catalog count. Table doors return the entire current table. Extracted-body doors: find on free index (?q=), then pay the named page (newest 100, not the entire archive).`,
         ),
       },
     },
@@ -4538,6 +4592,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
       wellKnown: WELL_KNOWN_PATH,
       llmsTxt: LLMS_PATH,
       mcp: MCP_PATH,
+      search: "Extracted-body doors: GET {manifest}?q=. Each hit names page/before to pay. Then pay that page. Table doors have no page — one paid GET is the entire current table.",
       products: publicBazaarSkus().map((sku) => shopProductCard(sku, bags.get(sku) ?? bagFromManifest(sku, {}))),
     });
     return;
@@ -4569,22 +4624,22 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === MARINERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadMarinersManifest(), req, port));
+    sendExtractedManifest(res, await loadMarinersManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
   if (path === MARINERS_D11_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadMarinersD11Manifest(), req, port));
+    sendExtractedManifest(res, await loadMarinersD11Manifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
   if (path === MARINERS_D7_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadMarinersD7Manifest(), req, port));
+    sendExtractedManifest(res, await loadMarinersD7Manifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
   if (path === MARINERS_D8_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadMarinersD8Manifest(), req, port));
+    sendExtractedManifest(res, await loadMarinersD8Manifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4614,7 +4669,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === WARNING_LETTERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadWarningLettersManifest(), req, port));
+    sendExtractedManifest(res, await loadWarningLettersManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4624,7 +4679,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === UNTITLED_LETTERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadUntitledLettersManifest(), req, port));
+    sendExtractedManifest(res, await loadUntitledLettersManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4634,7 +4689,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === AWA_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadAwaManifest(), req, port));
+    sendExtractedManifest(res, await loadAwaManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4644,7 +4699,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === SWISSPAR_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadSwissparManifest(), req, port));
+    sendExtractedManifest(res, await loadSwissparManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4654,7 +4709,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === PCAC_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadPcacManifest(), req, port));
+    sendExtractedManifest(res, await loadPcacManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4664,7 +4719,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === FTC_WL_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadFtcWlManifest(), req, port));
+    sendExtractedManifest(res, await loadFtcWlManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4674,7 +4729,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === CFPB_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadCfpbOrdersManifest(), req, port));
+    sendExtractedManifest(res, await loadCfpbOrdersManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4684,7 +4739,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === OCC_CD_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadOccCdManifest(), req, port));
+    sendExtractedManifest(res, await loadOccCdManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4694,7 +4749,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === FDIC_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadFdicOrdersManifest(), req, port));
+    sendExtractedManifest(res, await loadFdicOrdersManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4704,7 +4759,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === FRB_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadFrbOrdersManifest(), req, port));
+    sendExtractedManifest(res, await loadFrbOrdersManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4714,7 +4769,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === NCUA_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadNcuaOrdersManifest(), req, port));
+    sendExtractedManifest(res, await loadNcuaOrdersManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4724,7 +4779,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === FINCEN_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadFincenOrdersManifest(), req, port));
+    sendExtractedManifest(res, await loadFincenOrdersManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4734,7 +4789,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === FERC_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadFercOrdersManifest(), req, port));
+    sendExtractedManifest(res, await loadFercOrdersManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4744,7 +4799,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === OFAC_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadOfacOrdersManifest(), req, port));
+    sendExtractedManifest(res, await loadOfacOrdersManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4754,7 +4809,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === BIS_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadBisOrdersManifest(), req, port));
+    sendExtractedManifest(res, await loadBisOrdersManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4764,7 +4819,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === CFTC_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadCftcOrdersManifest(), req, port));
+    sendExtractedManifest(res, await loadCftcOrdersManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4774,7 +4829,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === FIFRA_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadFifraOrdersManifest(), req, port));
+    sendExtractedManifest(res, await loadFifraOrdersManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4784,7 +4839,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === DENOVO_ORDERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadDenovoOrdersManifest(), req, port));
+    sendExtractedManifest(res, await loadDenovoOrdersManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4794,7 +4849,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === TTB_OIC_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadTtbOicManifest(), req, port));
+    sendExtractedManifest(res, await loadTtbOicManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4804,7 +4859,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === AIR_LETTERS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadAirLettersManifest(), req, port));
+    sendExtractedManifest(res, await loadAirLettersManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4814,7 +4869,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === SUPERFUND_RODS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadSuperfundRodsManifest(), req, port));
+    sendExtractedManifest(res, await loadSuperfundRodsManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4824,7 +4879,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === ICO_MPN_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadIcoMpnManifest(), req, port));
+    sendExtractedManifest(res, await loadIcoMpnManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4834,7 +4889,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === CMA_CA98_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadCmaCa98Manifest(), req, port));
+    sendExtractedManifest(res, await loadCmaCa98Manifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4844,7 +4899,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === FORM_483_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadForm483Manifest(), req, port));
+    sendExtractedManifest(res, await loadForm483Manifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4854,7 +4909,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === GMP_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadGmpManifest(), req, port));
+    sendExtractedManifest(res, await loadGmpManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 
@@ -4864,7 +4919,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === GMP_MD_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadGmpMdManifest(), req, port));
+    sendExtractedManifest(res, await loadGmpMdManifest(), req, port, url.searchParams.get("q"));
     return;
   }
 

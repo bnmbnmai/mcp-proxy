@@ -6,6 +6,7 @@ import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
 import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus } from "./ticks-door.js";
 import { EXTRACTED_PAGE_SIZE, pageExtractedPaidBody } from "./paid-page.js";
+import { annotateIndexRows, applyFreeIndex, filterIndexRows } from "./free-index.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
   IMPORT_ALERTS_MANIFEST_PATH,
@@ -221,6 +222,23 @@ async function main(): Promise<void> {
   };
   assert.equal(older.returnedCount, 5);
   assert.equal(older.next, null);
+  const indexed = annotateIndexRows(pageFx.cards);
+  assert.equal(indexed[0]?.page, 1);
+  assert.equal(indexed[0]?.before, null);
+  assert.equal(indexed[100]?.page, 2);
+  assert.equal(indexed[100]?.before, indexed[99]?.id);
+  const hits = filterIndexRows(indexed, "card-105");
+  assert.equal(hits.length, 1);
+  assert.equal(hits[0]?.page, indexed.find((row) => row.id === "card-105")?.page);
+  const searched = applyFreeIndex({ note: "catalog only.", cards: pageFx.cards }, "card-101") as {
+    matchedCount?: number;
+    cards?: { page?: number; id?: string }[];
+    note?: string;
+  };
+  assert.equal(searched.matchedCount, 1);
+  assert.equal(searched.cards?.[0]?.id, "card-101");
+  assert.equal(searched.cards?.[0]?.page, indexed.find((row) => row.id === "card-101")?.page);
+  assert.ok((searched.note ?? "").includes("?q="));
 
   await withServer({
     TICKS_PATH: "",
@@ -350,6 +368,8 @@ async function main(): Promise<void> {
     assert.ok((wk.instructions ?? "").includes("twenty-nine paid"));
     assert.ok((wk.instructions ?? "").includes("entire current table"));
     assert.ok((wk.instructions ?? "").includes("newest 100 official texts"));
+    assert.ok((wk.instructions ?? "").includes("?q="));
+    assert.ok((wk.instructions ?? "").includes("not the entire archive"));
     assert.ok(!(wk.instructions ?? "").includes("entire current cache"));
     assert.ok(!wk.resources.some((r) => r.includes("/gain")));
     assert.equal(cdpEnvStatus(), "CDP env not set");
@@ -567,6 +587,8 @@ async function main(): Promise<void> {
     assert.ok(!llmsBody.includes("GET /ticks — $0.02"));
     assert.ok(llmsBody.includes("entire current table"));
     assert.ok(llmsBody.includes("newest 100 official texts"));
+    assert.ok(llmsBody.includes("?q="));
+    assert.ok(llmsBody.includes("not the entire archive"));
     assert.ok(!llmsBody.includes("entire current cache"));
     assert.ok(!llmsBody.includes("Entire current cache"));
     assert.ok(llmsBody.includes("Paid JSON is ticks[] + history"));
@@ -574,11 +596,14 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("Paid JSON is cards[].body"));
 
     const shop = (await (await fetch(`${base}/`)).json()) as {
-      products: { path: string; product?: string; name?: string; priceUsdc?: string; description?: string; count?: number; firms?: number }[];
+      search?: string;
+      products: { path: string; product?: string; name?: string; priceUsdc?: string; description?: string; count?: number; firms?: number; search?: string }[];
       openapi?: string;
       wellKnown?: string;
       llmsTxt?: string;
     };
+    assert.ok((shop.search ?? "").includes("?q="));
+    assert.ok((shop.search ?? "").includes("entire current table"));
     assert.deepEqual(shop.products.map((p) => p.path), [
       TICKS_PATH,
       IMPORT_ALERTS_PATH,
@@ -628,9 +653,13 @@ async function main(): Promise<void> {
       if (table) {
         assert.ok(product.description?.includes("entire current table"), `${product.path} shop description must name the table bag`);
         assert.ok(!product.description?.includes("newest 100"), `${product.path} is a table door`);
+        assert.equal(product.search, undefined, `${product.path} table door has no page search`);
       } else {
         assert.ok(product.description?.includes("newest 100 official texts"), `${product.path} shop description must name the extracted bag`);
+        assert.ok(product.description?.includes("?q="), `${product.path} shop description must name free index search`);
+        assert.ok(product.description?.includes("not the entire archive"), `${product.path} must not sell the default GET as the archive`);
         assert.ok(product.description?.includes("page/before"), `${product.path} shop description must name the cursor`);
+        assert.ok((product.search ?? "").includes("?q="), `${product.path} shop card must name free search`);
       }
       assert.ok(!product.description?.includes("entire current cache"), `${product.path} must not claim shop-wide entire cache`);
       assert.ok(product.description?.includes("$0.05"), `${product.path} shop description must name the price`);
@@ -660,6 +689,7 @@ async function main(): Promise<void> {
       assert.ok(iaRow?.includes("entire current table"), `${shopIndexPath} /import-alerts row is a table door`);
       assert.ok(!iaRow?.includes("Newest 100"), `${shopIndexPath} /import-alerts row must not claim newest 100`);
       assert.ok(icoRow?.includes("Newest 100 official texts"), `${shopIndexPath} /ico-mpn row is extracted-body`);
+      assert.ok(icoRow?.includes("?q="), `${shopIndexPath} /ico-mpn row must name free index search`);
     }
   });
 
@@ -1112,7 +1142,10 @@ async function main(): Promise<void> {
       assert.equal(man.free, true);
       assert.ok(((man as { note?: string }).note ?? "").includes("newest 100 official texts"));
       assert.ok(((man as { note?: string }).note ?? "").includes("page/before"));
+      assert.ok(((man as { note?: string }).note ?? "").includes("?q="));
       assert.ok(!((man as { note?: string }).note ?? "").includes("entire current cache"));
+      assert.ok(Array.isArray((man as { notices?: unknown[] }).notices));
+      assert.ok(!JSON.stringify((man as { notices?: unknown[] }).notices).includes("Anacortes Channel Light 4"));
       assert.equal(man.noticeCount, 1);
       assert.equal(man.week, "32-2026");
       assert.ok(man.sources?.pdfUrl?.includes("lnm13322026.pdf"));
@@ -4040,6 +4073,8 @@ async function main(): Promise<void> {
       const ico402 = body402.accepts[0]?.description ?? "";
       assert.ok(ico402.includes("Official UK ICO Monetary Penalty Notice"));
       assert.ok(ico402.includes("newest 100 official texts"));
+      assert.ok(ico402.includes("?q="));
+      assert.ok(ico402.includes("not the entire archive"));
       assert.ok(!ico402.includes("entire current cache"));
       assert.ok(ico402.includes("cards[].body"));
       assert.ok(ico402.includes("$0.05"));
@@ -4075,6 +4110,8 @@ async function main(): Promise<void> {
       const icoOpen = icoSpec.paths[ICO_MPN_PATH]?.get?.description ?? "";
       assert.ok(icoOpen.includes("Official UK ICO Monetary Penalty Notice"));
       assert.ok(icoOpen.includes("newest 100 official texts"));
+      assert.ok(icoOpen.includes("?q="));
+      assert.ok(icoOpen.includes("not the entire archive"));
       assert.ok(!icoOpen.includes("entire current cache"));
       assert.ok(icoOpen.includes("cards[].body"));
       assert.ok(!/Not people/i.test(icoOpen), "openapi /ico-mpn is the product only");
@@ -4110,7 +4147,20 @@ async function main(): Promise<void> {
       assert.equal(man.cardCount, 1);
       assert.ok((man.note ?? "").includes("newest 100 official texts"));
       assert.ok((man.note ?? "").includes("page/before"));
+      assert.ok((man.note ?? "").includes("?q="));
       assert.ok(!(man.note ?? "").includes("entire current cache"));
+      assert.equal((man.cards?.[0] as { page?: number } | undefined)?.page, 1);
+      const searched = (await (await fetch(`${base}${ICO_MPN_MANIFEST_PATH}?q=Reddit`)).json()) as {
+        matchedCount?: number;
+        cards?: { institution?: string; page?: number }[];
+      };
+      assert.equal(searched.matchedCount, 1);
+      assert.equal(searched.cards?.[0]?.institution, "Reddit, Inc.");
+      const miss = (await (await fetch(`${base}${ICO_MPN_MANIFEST_PATH}?q=zzzz-no-such-firm`)).json()) as {
+        matchedCount?: number;
+        cards?: unknown[];
+      };
+      assert.equal(miss.matchedCount, 0);
       assert.ok(man.openapi?.endsWith(OPENAPI_PATH));
       assert.ok(man.wellKnown?.endsWith(WELL_KNOWN_PATH));
       assert.equal(man.cards?.[0]?.institution, "Reddit, Inc.");
@@ -4657,9 +4707,11 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.endsWith(BIS_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(CFTC_ORDERS_PATH)));
       assert.ok((wk.instructions ?? "").includes("thirty-two paid"));
-      assert.ok((wk.instructions ?? "").includes("entire current table"));
-      assert.ok((wk.instructions ?? "").includes("newest 100 official texts"));
-      assert.ok(!(wk.instructions ?? "").includes("entire current cache"));
+    assert.ok((wk.instructions ?? "").includes("entire current table"));
+    assert.ok((wk.instructions ?? "").includes("newest 100 official texts"));
+    assert.ok((wk.instructions ?? "").includes("?q="));
+    assert.ok((wk.instructions ?? "").includes("not the entire archive"));
+    assert.ok(!(wk.instructions ?? "").includes("entire current cache"));
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
         paths: Record<string, { get?: { "x-payment-info"?: { price?: { amount?: string } } } }>;
