@@ -103,6 +103,17 @@ const seSteer747 = cattleSe.find((row) => row.id.includes("feeder-steer.ml12.747
 assert.ok(seSteer747, "SE continuation Current FOB steer 747 lb");
 assert.equal(seSteer747.price, 333.36);
 
+const cattleSw = parseAmsReportText(
+  fx("cattle-southwest-2940.txt"),
+  report("2940"),
+  "https://www.ams.usda.gov/mnreports/ams_2940.pdf",
+);
+assert.ok(cattleSw.length >= 2, `expected SW Beef/Dairy Current FOB prints, got ${cattleSw.length}`);
+assert.ok(!cattleSw.some((row) => /dec del|dairy/i.test(row.classGrade)), "forward Dec DEL dairy is not the current cash print");
+const swSteer = cattleSw.find((row) => row.id.includes("feeder-steer.ml23.550lb"));
+assert.ok(swSteer, "SW Beef/Dairy steer ML 2-3 Current FOB");
+assert.equal(swSteer.price, 362);
+
 const grainIl = parseAmsReportText(
   fx("grain-illinois-3192.txt"),
   report("3192"),
