@@ -1,7 +1,7 @@
 /**
  * NCUA institution consent C&D TEXT door.
- * Official per-order HTML from ncua.gov administrative-order body pages only.
- * Does not invent order text.
+ * Official per-order HTML body pages, or official /files/administrative-orders PDFs
+ * when the Drupal page is only a teaser. Does not invent order text.
  * Official CSV is docket/name/URL metadata only.
  * Drupal ?_format=json is 406. Sibling .json/.txt 404.
  * Not 2026 people/IAP. Not late-filer CMP $ table. Not LUAs. Not terminations.
@@ -10,6 +10,7 @@
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -27,7 +28,10 @@ export const HTML_HOST = "ncua.gov";
 export const ORDER_BASE = "https://ncua.gov/news/enforcement-actions/administrative-orders/";
 export const ORDER_PATH_RE =
   /\/news\/enforcement-actions\/administrative-orders\/(\d{4})\/([a-z0-9][a-z0-9-]*)\/?/i;
-export const DOCKET_RE = /\b(\d{2}-\d{4}-[A-Z]{2})\b/;
+export const PDF_ORIGIN = "https://ncua.gov";
+export const PDF_PATH_RE = /^\/files\/administrative-orders\/ao[^/?#]+\.pdf$/i;
+/** Recent ER/WR/SR plus older regional R1–R5 / roman / digit suffixes. */
+export const DOCKET_RE = /\b(\d{2}-\d{4}-(?:[A-Z]{2}|R[1-5]|I{1,3}|IV|VI?|[1-5]))\b/i;
 export const LICENSE = "17 USC 105";
 export const ATTRIBUTION = "NCUA";
 
@@ -90,6 +94,7 @@ export type NcuaOrdersSnapshot = {
   attribution: typeof ATTRIBUTION;
   listedCount?: number;
   fetchedPages?: number;
+  fetchedPdfs?: number;
   skippedNoText?: number;
   reused?: number;
   addedThisRun?: number;
@@ -154,6 +159,73 @@ export const SEED_LISTINGS: NcuaOrderListing[] = [
     title: "Stipulation and Consent to Cease and Desist Order",
     sourceUrl:
       "https://ncua.gov/news/enforcement-actions/administrative-orders/2022/administrative-order-matter-yonkers-postal-employees-credit-union",
+  },
+];
+
+/** Extra official institution C&D PDFs. Recent CSV/HTML rows are late-filer CMP teasers. */
+export const OFFICIAL_WALK_LISTINGS: NcuaOrderListing[] = [
+  {
+    id: "16-0188-R2",
+    docket: "16-0188-R2",
+    creditUnion: "S M Federal Credit Union",
+    location: "Philadelphia, PA",
+    date: "2016-12-08",
+    title: "Stipulation and Consent to Cease and Desist Order",
+    sourceUrl: "https://ncua.gov/files/administrative-orders/AO2016-0188-R2.pdf",
+  },
+  {
+    id: "14-0247-R2",
+    docket: "14-0247-R2",
+    creditUnion: "New Bethel Federal Credit Union",
+    location: "Portsmouth, VA",
+    date: "2014-12-18",
+    title: "Stipulation and Consent to Cease and Desist Order",
+    sourceUrl: "https://ncua.gov/files/administrative-orders/AO2014-0247-R2.pdf",
+  },
+  {
+    id: "09-0059-IV",
+    docket: "09-0059-IV",
+    creditUnion: "Rapid City Telco Federal Credit Union",
+    location: "Rapid City, SD",
+    date: "2009-11-10",
+    title: "Stipulation and Consent to Cease and Desist Order",
+    sourceUrl: "https://ncua.gov/files/administrative-orders/AO2009-0059-IV.pdf",
+  },
+  {
+    id: "07-0203-II",
+    docket: "07-0203-II",
+    creditUnion: "Dover N.J. Spanish American Federal Credit Union",
+    location: null,
+    date: "2007-01-01",
+    title: "Stipulation and Consent to Cease and Desist Order",
+    sourceUrl: "https://ncua.gov/files/administrative-orders/AO2007-0203-II.pdf",
+  },
+  {
+    id: "02-0901-I",
+    docket: "02-0901-I",
+    creditUnion: "Korean American Catholics Federal Credit Union",
+    location: null,
+    date: "2002-09-16",
+    title: "Stipulation and Consent to Cease and Desist Order",
+    sourceUrl: "https://ncua.gov/files/administrative-orders/AO2002-0901-I.pdf",
+  },
+  {
+    id: "98-0101-I",
+    docket: "98-0101-I",
+    creditUnion: "Polish & Slavic Federal Credit Union",
+    location: null,
+    date: "1998-01-12",
+    title: "Stipulation and Consent to Cease and Desist Order",
+    sourceUrl: "https://ncua.gov/files/administrative-orders/AO1998-0101-I.pdf",
+  },
+  {
+    id: "98-0601-I",
+    docket: "98-0601-I",
+    creditUnion: "Waterside Federal Credit Union",
+    location: null,
+    date: "1998-06-22",
+    title: "Stipulation and Consent to Cease and Desist Order",
+    sourceUrl: "https://ncua.gov/files/administrative-orders/AO1998-0601-1.pdf",
   },
 ];
 
@@ -253,8 +325,35 @@ export function isoDate(raw: string | null | undefined): string | null {
   return null;
 }
 
+export function officialNcuaPdfUrl(url: string | null | undefined): string | null {
+  if (!url) return null;
+  const trimmed = url.trim();
+  try {
+    const parsed = new URL(trimmed, PDF_ORIGIN);
+    const host = parsed.hostname.toLowerCase();
+    if (host === "web.archive.org") return null;
+    if (host !== "ncua.gov" && host !== "www.ncua.gov") return null;
+    if (!PDF_PATH_RE.test(parsed.pathname)) return null;
+    return `${PDF_ORIGIN}${parsed.pathname}`;
+  } catch {
+    return null;
+  }
+}
+
+export function extractOfficialPdfUrl(html: string): string | null {
+  const hrefs = [...html.matchAll(/href="([^"]*\/files\/administrative-orders\/[^"]+\.pdf[^"]*)"/gi)].map((m) => m[1]);
+  for (const href of hrefs) {
+    const abs = href.startsWith("http") ? href : `${PDF_ORIGIN}${href}`;
+    const official = officialNcuaPdfUrl(abs);
+    if (official) return official;
+  }
+  return null;
+}
+
 export function officialNcuaOrderUrl(url: string | null | undefined): string | null {
   if (!url) return null;
+  const pdf = officialNcuaPdfUrl(url);
+  if (pdf) return pdf;
   const trimmed = url.trim();
   try {
     const parsed = new URL(trimmed, "https://ncua.gov");
@@ -273,12 +372,17 @@ function listingKind(row: NcuaListingRow): string {
   return `${row.title ?? ""} ${row.type ?? ""}`.replace(/\s+/g, " ").trim();
 }
 
+function looksLikeCreditUnion(raw: string | null | undefined): boolean {
+  return /credit union|\bFCU\b/i.test(raw ?? "");
+}
+
 export function isPeopleRow(row: NcuaListingRow): boolean {
   const relationship = `${row.relationship ?? ""} ${row.individual ?? ""}`;
   if (/former employee|institution-affiliated party|\bIAP\b/i.test(relationship)) return true;
-  if ((row.individual ?? "").trim()) return true;
+  const individual = (row.individual ?? "").trim();
+  if (individual && !looksLikeCreditUnion(individual)) return true;
   const name = `${row.creditUnion ?? ""} ${row.institution ?? ""}`.trim();
-  if (/\bcredit union\b/i.test(name)) return false;
+  if (looksLikeCreditUnion(name)) return false;
   return /,\s*[A-Z][a-z]+/.test(relationship);
 }
 
@@ -302,7 +406,7 @@ export function isInstitutionOrderRow(row: NcuaListingRow): boolean {
   if (isPeopleRow(row)) return false;
   if (isCmpRow(row) || isTerminationRow(row) || isLuaRow(row) || isProhibitionRow(row)) return false;
   const creditUnion = ((row.creditUnion ?? row.institution) ?? "").trim();
-  if (!creditUnion || !/credit union/i.test(creditUnion)) return false;
+  if (!creditUnion || !looksLikeCreditUnion(creditUnion)) return false;
   const docket = normalizeDocket(row.docket);
   if (!docket) return false;
   const kind = listingKind(row);
@@ -385,7 +489,7 @@ export function parseNcuaCsv(text: string): NcuaOrderListing[] {
     const institution = (cells[iInst] ?? "").trim() || first;
     const url = (cells[iUrl] ?? "").trim();
     const relationship = (cells[iRel] ?? "").trim();
-    const people = last && !/^n\/a$/i.test(last);
+    const people = last && !/^n\/a$/i.test(last) && !looksLikeCreditUnion(last);
     const kind = `${url} ${relationship}`;
     if (/prohibition|civil-money|civil money|late[\s-]?filer|terminat|letter-of-understanding|\blua\b/i.test(kind)) {
       continue;
@@ -496,18 +600,25 @@ export function isRealNcuaOrderBody(text: string): boolean {
   if (/Letter of Understanding and Agreement|\bLUA\b/.test(text) && !/STIPULATION AND CONSENT TO CEASE AND DESIST/i.test(text)) {
     return false;
   }
-  if (/civil money penalty|late[\s-]?filer CMP/i.test(text) && !/STIPULATION AND CONSENT TO CEASE AND DESIST/i.test(text)) {
+  if (/civil money penalty|late[\s-]?filer CMP/i.test(text) && !/cease[\s-]+and[\s-]+desist/i.test(text)) {
     return false;
   }
-  const ncua = /National Credit Union Administration/i.test(text);
-  const order = /STIPULATION AND CONSENT TO CEASE AND DESIST/i.test(text);
+  const ncua = /National Credit Union Administration/i.test(compact);
+  const order =
+    /STIPULATION AND CONSENT\s+TO(?:\s+ISSUANCE OF(?:\s+A(?:N)?(?:\s+FINAL)?)?(?:\s+ORDER)?)?\s+(?:TO\s+)?CEASE AND DESIST/i.test(
+      compact,
+    ) ||
+    /CONSENT CEASE AND DESIST ORDER/i.test(compact) ||
+    /Consent to a Cease and Desist Order/i.test(compact) ||
+    /ORDER TO CEASE AND DESIST/i.test(compact) ||
+    /In the Matter of the\s+Cease-and-Desist Order/i.test(compact);
   const docket = DOCKET_RE.test(text);
-  const institution = /insured credit union|Federal Credit Union|Credit Union/i.test(text);
+  const institution = /insured credit union|Federal Credit Union|Credit Union/i.test(compact);
   const findings =
-    /\bConsent\b/i.test(text) ||
-    /\bWHEREFORE\b/i.test(text) ||
-    /consents to the issuance/i.test(text) ||
-    /12 U\.S\.C\.\s*§\s*1786/i.test(text);
+    /\bConsent\b/i.test(compact) ||
+    /\bWHEREFORE\b/i.test(compact) ||
+    /consents to the issuance/i.test(compact) ||
+    /12 U\.S\.C\.\s*§\s*1786/i.test(compact);
   return ncua && order && docket && institution && findings;
 }
 
@@ -668,17 +779,17 @@ function listingDir(): string {
 }
 
 function firstSliceLimit(): number {
-  const raw = env("NCUA_ORDERS_LIMIT", "5");
+  const raw = env("NCUA_ORDERS_LIMIT", "24");
   if (raw === "0") return 0;
   const n = Number(raw);
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 5;
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 24;
 }
 
 function maxFetchLimit(): number {
-  const raw = env("NCUA_ORDERS_MAX_FETCH", "8");
+  const raw = env("NCUA_ORDERS_MAX_FETCH", "36");
   if (raw === "0") return 0;
   const n = Number(raw);
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 8;
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 36;
 }
 
 function readNamedFile(dir: string, names: string[]): string | null {
@@ -696,6 +807,33 @@ export async function fetchNcuaHtml(url: string): Promise<string> {
   });
   if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
   return await res.text();
+}
+
+export async function fetchNcuaBytes(url: string): Promise<Uint8Array> {
+  const official = officialNcuaPdfUrl(url);
+  if (!official) throw new Error(`${url} is not an official NCUA administrative-order PDF`);
+  const res = await fetch(official, {
+    headers: { "User-Agent": HTTP_UA, Accept: "application/pdf" },
+  });
+  if (!res.ok) throw new Error(`${official} HTTP ${res.status}`);
+  const bytes = new Uint8Array(await res.arrayBuffer());
+  const head = new TextDecoder().decode(bytes.slice(0, 5));
+  if (head !== "%PDF-") throw new Error(`${official} is not an official PDF`);
+  return bytes;
+}
+
+export function pdfToText(pdfPath: string): string {
+  const helper = env("NCUA_ORDERS_PDFTOTEXT") || "pdftotext";
+  const result = spawnSync(helper, ["-layout", pdfPath, "-"], {
+    encoding: "utf8",
+    maxBuffer: 20 * 1024 * 1024,
+  });
+  if (result.error) throw new Error(`pdftotext failed: ${result.error.message}`);
+  if (result.status !== 0) {
+    const err = (result.stderr || result.stdout || "").trim() || `exit ${result.status}`;
+    throw new Error(`pdftotext failed: ${err}`);
+  }
+  return result.stdout || "";
 }
 
 function pause(ms: number): Promise<void> {
@@ -734,19 +872,20 @@ async function loadOfficialListings(dir: string): Promise<{ listed: NcuaOrderLis
   }
   try {
     const listed = parseNcuaCsv(await fetchNcuaHtml(CSV_URL));
-    const merged = mergeOfficialListings(listed, SEED_LISTINGS);
+    const merged = mergeOfficialListings([...OFFICIAL_WALK_LISTINGS, ...listed], SEED_LISTINGS);
     if (merged.length > 0) return { listed: merged, listedCount: merged.length };
   } catch {
     /* official CSV missed; try Drupal listing HTML */
   }
   try {
     const listed = parseListingHtml(await fetchNcuaHtml(LISTING_URL));
-    const merged = mergeOfficialListings(listed, SEED_LISTINGS);
+    const merged = mergeOfficialListings([...OFFICIAL_WALK_LISTINGS, ...listed], SEED_LISTINGS);
     if (merged.length > 0) return { listed: merged, listedCount: merged.length };
   } catch {
-    /* official listing missed; keep first-slice seeds */
+    /* official listing missed; walk official administrative-order PDFs */
   }
-  return { listed: [...SEED_LISTINGS], listedCount: SEED_LISTINGS.length };
+  const walked = mergeOfficialListings(OFFICIAL_WALK_LISTINGS, SEED_LISTINGS);
+  return { listed: walked, listedCount: walked.length };
 }
 
 function priorBodies(): Map<string, NcuaOrderCard> {
@@ -777,6 +916,7 @@ export async function collectNcuaOrders(opts?: {
         ...assembleSnapshot([...prior.values()]),
         listedCount: 0,
         fetchedPages: 0,
+        fetchedPdfs: 0,
         skippedNoText: 0,
         reused: prior.size,
         addedThisRun: 0,
@@ -792,6 +932,7 @@ export async function collectNcuaOrders(opts?: {
   const cards: NcuaOrderCard[] = [];
   const seen = new Set<string>();
   let fetchedPages = 0;
+  let fetchedPdfs = 0;
   let skippedNoText = 0;
   let reused = 0;
   let addedThisRun = 0;
@@ -804,7 +945,7 @@ export async function collectNcuaOrders(opts?: {
       reused += 1;
       continue;
     }
-    if (fetchCap > 0 && fetchedPages >= fetchCap) break;
+    if (fetchCap > 0 && fetchedPages + fetchedPdfs >= fetchCap) break;
     if (!dir) await pause(pauseMs);
     try {
       const local = readNamedFile(dir, [
@@ -818,16 +959,19 @@ export async function collectNcuaOrders(opts?: {
         continue;
       }
       const cacheFile = join(cacheDir, `${row.docket}.html`);
-      const raw =
+      const pdfFile = join(cacheDir, `${row.docket}.pdf`);
+      let raw =
         local ??
-        (await (async () => {
-          if (existsSync(cacheFile)) return readFileSync(cacheFile, "utf-8");
-          const html = await fetchNcuaHtml(row.sourceUrl);
-          writeFileSync(cacheFile, html);
-          fetchedPages += 1;
-          return html;
-        })());
-      const parsed = parseNcuaOrderHtml(raw, {
+        (officialNcuaPdfUrl(row.sourceUrl)
+          ? ""
+          : await (async () => {
+              if (existsSync(cacheFile)) return readFileSync(cacheFile, "utf-8");
+              const html = await fetchNcuaHtml(row.sourceUrl);
+              writeFileSync(cacheFile, html);
+              fetchedPages += 1;
+              return html;
+            })());
+      let parsed = parseNcuaOrderHtml(raw, {
         sourceUrl: row.sourceUrl,
         creditUnion: row.creditUnion,
         location: row.location,
@@ -836,6 +980,30 @@ export async function collectNcuaOrders(opts?: {
         id: row.id,
         title: row.title,
       });
+      if (!isRealNcuaOrderBody(parsed.body)) {
+        const pdfUrl = officialNcuaPdfUrl(row.sourceUrl) || officialNcuaPdfUrl(extractOfficialPdfUrl(raw));
+        if (pdfUrl) {
+          const localPdfText = readNamedFile(dir, [`${row.docket}.txt`, `${row.id}.txt`]);
+          const text =
+            localPdfText ??
+            (await (async () => {
+              if (!existsSync(pdfFile)) {
+                writeFileSync(pdfFile, await fetchNcuaBytes(pdfUrl));
+                fetchedPdfs += 1;
+              }
+              return pdfToText(pdfFile);
+            })());
+          parsed = parseNcuaOrderHtml(text, {
+            sourceUrl: pdfUrl,
+            creditUnion: row.creditUnion,
+            location: row.location,
+            date: row.date,
+            docket: row.docket,
+            id: row.id,
+            title: row.title,
+          });
+        }
+      }
       if (!isRealNcuaOrderBody(parsed.body)) {
         skippedNoText += 1;
         continue;
@@ -854,6 +1022,7 @@ export async function collectNcuaOrders(opts?: {
     ...assembleSnapshot(cards),
     listedCount,
     fetchedPages,
+    fetchedPdfs,
     skippedNoText,
     reused,
     addedThisRun,
@@ -935,6 +1104,7 @@ if (isMain()) {
             cardCount: snap.cards.filter((c) => isRealNcuaOrderBody(c.body)).length,
             listedCount: snap.listedCount ?? snap.cards.length,
             fetchedPages: snap.fetchedPages ?? 0,
+            fetchedPdfs: snap.fetchedPdfs ?? 0,
             skippedNoText: snap.skippedNoText ?? 0,
             reused: snap.reused ?? 0,
             addedThisRun: snap.addedThisRun ?? 0,

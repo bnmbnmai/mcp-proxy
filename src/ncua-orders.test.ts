@@ -9,9 +9,11 @@ import {
   CARD_FIELDS,
   LICENSE,
   LISTING_URL,
+  OFFICIAL_WALK_LISTINGS,
   SEED_LISTINGS,
   buildNcuaOrdersManifest,
   collectNcuaOrders,
+  extractOfficialPdfUrl,
   isCmpRow,
   isInstitutionOrderRow,
   isLuaRow,
@@ -19,6 +21,7 @@ import {
   isRealNcuaOrderBody,
   isTerminationRow,
   officialNcuaOrderUrl,
+  officialNcuaPdfUrl,
   parseListingHtml,
   parseListingRows,
   parseNcuaCsv,
@@ -48,6 +51,7 @@ async function main(): Promise<void> {
   assert.ok(listed.some((r) => r.id === "19-0187-ER"));
   assert.ok(listed.some((r) => r.id === "22-0112-ER"));
   assert.ok(listed.some((r) => r.id === "22-0122-ER"));
+  assert.ok(listed.some((r) => r.id === "14-0247-R2"));
   assert.ok(!listed.some((r) => r.id === "26-0031-WR"), "skip 2026 people/IAP");
   assert.ok(!listed.some((r) => r.id === "23-0107-ER"), "skip termination");
   assert.ok(!listed.some((r) => r.id === "25-0004-SR"), "skip late-filer CMP");
@@ -70,9 +74,32 @@ async function main(): Promise<void> {
     ),
     "https://ncua.gov/news/enforcement-actions/administrative-orders/2021/administrative-order-matter-live-life-federal-credit-union",
   );
+  assert.equal(
+    officialNcuaOrderUrl("https://ncua.gov/files/administrative-orders/AO2014-0247-R2.pdf"),
+    "https://ncua.gov/files/administrative-orders/AO2014-0247-R2.pdf",
+  );
   assert.ok(LISTING_URL.includes("ncua.gov"));
   assert.equal(SEED_LISTINGS.length, 5);
   assert.ok(SEED_LISTINGS.some((r) => r.docket === "21-0105-ER"));
+  assert.ok(OFFICIAL_WALK_LISTINGS.length >= 7, "official PDF walk lists leftover institution C&D bodies");
+  assert.ok(OFFICIAL_WALK_LISTINGS.some((r) => r.docket === "14-0247-R2" && /New Bethel/i.test(r.creditUnion)));
+  assert.ok(OFFICIAL_WALK_LISTINGS.some((r) => r.docket === "16-0188-R2"));
+  assert.ok(OFFICIAL_WALK_LISTINGS.every((r) => officialNcuaPdfUrl(r.sourceUrl)));
+  assert.ok(!OFFICIAL_WALK_LISTINGS.some((r) => r.docket === "26-0031-WR"), "walk skips people/IAP");
+  const walkIds = new Set([...SEED_LISTINGS, ...OFFICIAL_WALK_LISTINGS].map((r) => r.id));
+  assert.ok(walkIds.size > 5, "official PDF walk lists more than first-slice=5");
+  const src = readFs(join(dirname(fileURLToPath(import.meta.url)), "../src/ncua-orders.ts"), "utf-8");
+  assert.match(src, /NCUA_ORDERS_LIMIT", "24"/);
+  assert.match(src, /NCUA_ORDERS_MAX_FETCH", "36"/);
+  assert.equal(
+    officialNcuaPdfUrl("https://ncua.gov/files/administrative-orders/AO2014-0247-R2.pdf"),
+    "https://ncua.gov/files/administrative-orders/AO2014-0247-R2.pdf",
+  );
+  assert.equal(officialNcuaPdfUrl("https://www.occ.gov/static/enforcement-actions/eaAA-ENF-2026-29.pdf"), null);
+  assert.equal(
+    extractOfficialPdfUrl(readFx("pdf-teaser.html")),
+    "https://ncua.gov/files/administrative-orders/AO19-0116-ER.pdf",
+  );
 
   const htmlListed = parseListingHtml(readFx("listing-excerpt.html"));
   assert.ok(htmlListed.some((r) => r.id === "21-0105-ER"));
@@ -85,6 +112,7 @@ async function main(): Promise<void> {
   assert.ok(csvListed.some((r) => r.id === "19-0187-ER"));
   assert.ok(csvListed.some((r) => r.id === "22-0112-ER"));
   assert.ok(csvListed.some((r) => r.id === "22-0122-ER"));
+  assert.ok(csvListed.some((r) => r.id === "14-0247-R2"), "CSV walk keeps R2 institution C&D");
   assert.ok(!csvListed.some((r) => r.id === "26-0041-WR"), "CSV walk skips people");
   assert.ok(csvListed.every((r) => officialNcuaOrderUrl(r.sourceUrl)));
 
@@ -156,6 +184,22 @@ async function main(): Promise<void> {
     docket: "22-0122-ER",
   });
   assert.ok(isRealNcuaOrderBody(yonkers.body));
+
+  const bethel = parseNcuaOrderHtml(readFx("14-0247-R2.txt"), {
+    sourceUrl: "https://ncua.gov/files/administrative-orders/AO2014-0247-R2.pdf",
+    creditUnion: "New Bethel Federal Credit Union",
+    docket: "14-0247-R2",
+  });
+  assert.ok(isRealNcuaOrderBody(bethel.body), "official leftover PDF text is the C&D body");
+  assert.match(bethel.creditUnion, /New Bethel/i);
+  assert.equal(bethel.docket, "14-0247-R2");
+
+  const sm = parseNcuaOrderHtml(readFx("16-0188-R2.txt"), {
+    sourceUrl: "https://ncua.gov/files/administrative-orders/AO2016-0188-R2.pdf",
+    creditUnion: "S M Federal Credit Union",
+    docket: "16-0188-R2",
+  });
+  assert.ok(isRealNcuaOrderBody(sm.body), "official leftover PDF order-to-C&D is this SKU");
 
   const teaser = parseNcuaOrderHtml(readFx("no-body.txt"), {
     sourceUrl: LISTING_URL,
@@ -264,12 +308,13 @@ async function main(): Promise<void> {
   try {
     const snap = await collectNcuaOrders({ htmlDir: fixtures, limit: 10, pauseMs: 0 });
     assert.equal(snap.status, "ok");
-    assert.ok(snap.cards.length >= 5, "fixture collect extracts five official NCUA institution C&D bodies");
+    assert.ok(snap.cards.length >= 6, "fixture collect extracts seed HTML plus leftover official PDF text");
     assert.ok(snap.cards.some((c) => c.docket === "21-0105-ER" && isRealNcuaOrderBody(c.body)));
     assert.ok(snap.cards.some((c) => c.docket === "19-1061-ER" && isRealNcuaOrderBody(c.body)));
     assert.ok(snap.cards.some((c) => c.docket === "19-0187-ER" && isRealNcuaOrderBody(c.body)));
     assert.ok(snap.cards.some((c) => c.docket === "22-0112-ER" && isRealNcuaOrderBody(c.body)));
     assert.ok(snap.cards.some((c) => c.docket === "22-0122-ER" && isRealNcuaOrderBody(c.body)));
+    assert.ok(snap.cards.some((c) => c.docket === "14-0247-R2" && isRealNcuaOrderBody(c.body)));
     assert.ok(snap.cards.every((c) => isRealNcuaOrderBody(c.body)));
     assert.ok(!snap.cards.some((c) => c.id === "26-0031-WR"), "skip IAP");
     assert.ok(!snap.cards.some((c) => c.id === "23-0107-ER"), "skip termination");
