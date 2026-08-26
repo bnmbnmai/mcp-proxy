@@ -10,6 +10,7 @@ Public, agent-facing list of **live** paid GETs only. Re-read live manifests bef
 - OpenAPI: [https://ticks.bnm.farm/openapi.json](https://ticks.bnm.farm/openapi.json)
 - llms.txt: [https://ticks.bnm.farm/llms.txt](https://ticks.bnm.farm/llms.txt)
 - Sample (free canned paid-JSON keys): [https://ticks.bnm.farm/sample](https://ticks.bnm.farm/sample)
+- Firm check (free cross-door search): [https://ticks.bnm.farm/firm-check?q=](https://ticks.bnm.farm/firm-check?q=)
 - Shop JSON: [https://ticks.bnm.farm/](https://ticks.bnm.farm/)
 - Ticks manifest: [https://ticks.bnm.farm/manifest.json](https://ticks.bnm.farm/manifest.json)
 
@@ -71,7 +72,8 @@ Free manifests carry the full catalog (count, ids, official source URLs). They a
 - `GET /.well-known/x402` — absolute URLs of the live paid routes only (not a SKU per page). Lists `/sample` as a free discovery URL, not a resource.
 - `GET /openapi.json` — OpenAPI 3.1 with `x-payment-info`. Body doors: free index/search, then pay the page. Not the entire cache.
 - `GET /llms.txt` — short agent guidance (free index/search, then pay the page) plus a Prompt for AI block with exact URLs
-- `GET /mcp` — Streamable HTTP MCP: one tool per paid GET plus free `search`, paid `get-one` ($0.02), and paid `get-page` ($0.05)
+- `GET /mcp` — Streamable HTTP MCP: one tool per paid GET (from live well-known) plus free `search`, free `firm-check`, paid `get-one` ($0.02), and paid `get-page` ($0.05)
+- `GET /firm-check?q=` — free cross-door search of Form 483, FDA warning letters, and the FDA import-alert catalog. HTTP 200 JSON. Hits name the door, the id or page to buy, and fetchedAt/asOf. Buyer still pays $0.02 one official text or $0.05 page/table. Not a paid SKU. Does not return letter bodies or the full import-alert table.
 - `GET /manifest.json` and `GET /{path}/manifest.json` (or `/{path}/index`) — free per-SKU catalogs + `?id=` URL + page cursor; `?q=` / `before` / `date` stay free
 
 ## How to buy

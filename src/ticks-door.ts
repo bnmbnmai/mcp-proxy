@@ -4,6 +4,7 @@
  *
  * GET /ticks — US hay, cattle, and grain ticks ($0.05 USDC on Base)
  * GET /sample — free canned paid-JSON keys (not a SKU)
+ * GET /firm-check?q= — free firm-name search across Form 483, warning letters, import-alert indexes (not a SKU)
  * GET /.well-known/x402list.txt — free static ownership proof (HTTP 200, not a SKU)
  * GET /import-alerts — FDA Import Alert / DWPE firm ticks ($0.05)
  * GET /import-alerts/manifest.json — free catalog + schema + sample rows
@@ -362,6 +363,12 @@ import {
   SINGLE_DOC_AMOUNT_ATOMIC,
   type PaidBodyOpts,
 } from "./paid-records.js";
+import {
+  FIRM_CHECK_NOTE,
+  FIRM_CHECK_PATH,
+  firmCheckQuery,
+  runFirmCheck,
+} from "./firm-check.js";
 import {
   PRODUCT_PUBLIC_ID,
   SAMPLE_HOW_TO_USE,
@@ -3120,6 +3127,7 @@ function shopDiscoveryPointers(req: IncomingMessage, port: number): Record<strin
     llmsTxt: `${origin}${LLMS_PATH}`,
     mcp: `${origin}${MCP_PATH}`,
     sample: `${origin}${SAMPLE_PATH}`,
+    firmCheck: `${origin}${FIRM_CHECK_PATH}`,
   };
 }
 
@@ -3215,10 +3223,11 @@ export function llmsTxt(): string {
   }
   const free = [
     `- GET /sample — free canned paid-JSON keys (table SKU + ?id= body SKU). HTTP 200. Not live cache. Not a SKU.`,
+    `- GET /firm-check?q= — free firm-name search across Form 483, FDA warning letters, and the FDA import-alert catalog. HTTP 200. Names the door and the id or page to buy ($0.02 one text / $0.05 page or table). Not a SKU.`,
     `- GET /openapi.json — OpenAPI 3.1 with x-payment-info for the ${paidCountWord()} paid doors`,
     `- GET /.well-known/x402 — absolute URLs of the ${paidCountWord()} paid routes only`,
     `- GET / — shop JSON (payTo + the ${paidCountWord()} products)`,
-    `- GET/POST /mcp — Streamable HTTP MCP for the same ${paidCountWord()} paid GETs. Not a new SKU.`,
+    `- GET/POST /mcp — Streamable HTTP MCP for the same ${paidCountWord()} paid GETs plus free search and firm-check. Not a new SKU.`,
     "- GET /manifest.json — US hay, cattle, and grain count + schema",
     "- GET /import-alerts/manifest.json — FDA count + schema (not the firm dump)",
     "- GET /mariners/manifest.json — D13 LNM count + official PDF (not the notice body)",
@@ -3287,7 +3296,7 @@ export function llmsTxt(): string {
     "",
     `- URL — https://ticks.bnm.farm${MCP_PATH}`,
     "- Connect — `npx -y mcp-remote https://ticks.bnm.farm/mcp`",
-    `- One tool per live paid GET from /.well-known/x402 (generated at request time; later SKUs appear without an MCP rewrite). Same ${paidCountWord()} URLs today. Free search + paid get-page. ${BODY_PAGE_DISCOVERY} Unpaid tool calls still HTTP 402. Not Bazaar-indexed.`,
+    `- One tool per live paid GET from /.well-known/x402 (generated at request time; later SKUs appear without an MCP rewrite). Same ${paidCountWord()} URLs today. Free search + free firm-check + paid get-page. ${BODY_PAGE_DISCOVERY} Unpaid tool calls still HTTP 402. Not Bazaar-indexed.`,
     "",
     "## Agent catalogs",
     "",
@@ -3327,7 +3336,7 @@ export function wellKnownX402(req: IncomingMessage, port: number): Record<string
     ownershipProofs: [PAY_TO],
     ...shopDiscoveryPointers(req, port),
     instructions:
-      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Pay USDC on Base. ${BODY_PAGE_DISCOVERY} Free canned paid-JSON keys: GET /sample (HTTP 200, not a SKU). ${SAMPLE_HOW_TO_USE.join(" ")} Free OpenAPI is at /openapi.json. MCP is at /mcp (same ${paidCountWord()} paid GETs, not a new SKU). Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
+      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Pay USDC on Base. ${BODY_PAGE_DISCOVERY} Free canned paid-JSON keys: GET /sample (HTTP 200, not a SKU). Free firm-name search: GET ${FIRM_CHECK_PATH}?q= (HTTP 200, not a SKU). ${SAMPLE_HOW_TO_USE.join(" ")} Free OpenAPI is at /openapi.json. MCP is at /mcp (same ${paidCountWord()} paid GETs plus free search and firm-check, not a new SKU). Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
   };
 }
 
@@ -3599,7 +3608,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       description: "Official public data as JSON. Unpaid paid routes return HTTP 402.",
       contact: { name: "BNM Data Shop", url: "https://bnm.farm/" },
       "x-guidance":
-        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. ${BODY_PAGE_DISCOVERY} Free canned paid-JSON keys: GET /sample (HTTP 200, not a SKU). Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. MCP at GET/POST /mcp lists one tool per paid GET plus free search, paid get-one ($0.02), and paid get-page ($0.05). Free manifests do not include the paid body. No request body. ${noNextSkuWord()}`,
+        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. ${BODY_PAGE_DISCOVERY} Free canned paid-JSON keys: GET /sample (HTTP 200, not a SKU). Free firm-name search: GET ${FIRM_CHECK_PATH}?q= (HTTP 200, not a SKU). Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. MCP at GET/POST /mcp lists one tool per paid GET plus free search, free firm-check, paid get-one ($0.02), and paid get-page ($0.05). Free manifests do not include the paid body. No request body. ${noNextSkuWord()}`,
     },
     "x-discovery": {
       ownershipProofs: [PAY_TO],
@@ -4491,6 +4500,20 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           "HTTP 200 static example of /ticks table keys and extracted-body ?id= keys. Marked example:true. Not live cache. Not a paid SKU.",
         ),
       },
+      [FIRM_CHECK_PATH]: {
+        get: {
+          ...freeOpenApiOp("Free firm-check across official caches", FIRM_CHECK_NOTE),
+          parameters: [
+            {
+              name: "q",
+              in: "query",
+              required: true,
+              schema: { type: "string" },
+              description: "Firm, company, FEI, CMS, or import-alert number. Free. Not charged.",
+            },
+          ],
+        },
+      },
       [MANIFEST_PATH]: {
         get: freeOpenApiOp("US hay, cattle, and grain ticks free manifest", "Count, schema, and samples. Not the paid snapshot."),
       },
@@ -4850,6 +4873,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
       llmsTxt: LLMS_PATH,
       mcp: MCP_PATH,
       sample: SAMPLE_PATH,
+      firmCheck: FIRM_CHECK_PATH,
       products: [
         {
           path: TICKS_PATH,
@@ -5137,6 +5161,16 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
 
   if (path === SAMPLE_PATH) {
     sendJson(res, 200, shopPaidJsonSample());
+    return;
+  }
+
+  if (path === FIRM_CHECK_PATH) {
+    const q = firmCheckQuery(url.searchParams.get("q"));
+    if (!q) {
+      sendJson(res, 400, { error: "q_required" });
+      return;
+    }
+    sendJson(res, 200, await runFirmCheck(q));
     return;
   }
 
@@ -5505,7 +5539,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, SAMPLE_PATH, X402LIST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, SAMPLE_PATH, FIRM_CHECK_PATH, X402LIST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
 }
 
 export function bindHost(): string {
