@@ -9,6 +9,7 @@ import {
   CARD_FIELDS,
   LICENSE,
   LISTING_URL,
+  LEFTOVER_WALK_LISTINGS,
   OFFICIAL_WALK_LISTINGS,
   SEED_LISTINGS,
   YEAR_LISTING_URLS,
@@ -75,6 +76,9 @@ async function main(): Promise<void> {
   assert.ok(LISTING_URL.includes("ferc.gov"));
   assert.ok(YEAR_LISTING_URLS.some((u) => u.includes("all-civil-penalty-actions-2025")));
   assert.ok(YEAR_LISTING_URLS.some((u) => u.includes("all-civil-penalty-actions-2024")));
+  assert.ok(YEAR_LISTING_URLS.some((u) => u.includes("all-civil-penalty-actions-2023")));
+  assert.ok(YEAR_LISTING_URLS.some((u) => u.includes("all-civil-penalty-actions-2022")));
+  assert.ok(YEAR_LISTING_URLS.some((u) => u.includes("all-civil-penalty-actions-2021")));
   assert.equal(SEED_LISTINGS.length, 5);
   assert.ok(SEED_LISTINGS.some((r) => r.docket === "IN25-6-000"));
   assert.ok(OFFICIAL_WALK_LISTINGS.length >= 10, "www.ferc.gov year tables 403; collect walks official cms.ferc.gov PDFs");
@@ -84,8 +88,25 @@ async function main(): Promise<void> {
   assert.ok(!OFFICIAL_WALK_LISTINGS.some((r) => r.docket === "IN12-17-000"), "walk skips people");
   assert.ok(!OFFICIAL_WALK_LISTINGS.some((r) => r.docket === "IN21-10-000"), "walk skips Voltus people");
   assert.ok(!OFFICIAL_WALK_LISTINGS.some((r) => r.docket === "IN23-14-000"), "walk skips Ketchup Caddy people");
-  const walkIds = new Set([...SEED_LISTINGS, ...OFFICIAL_WALK_LISTINGS].map((r) => r.id));
+  const leftoverRows = JSON.parse(readFx("leftover-listing-excerpt.json")) as FercListingRow[];
+  const leftoverListed = parseListingRows(leftoverRows);
+  assert.ok(leftoverListed.some((r) => r.id === "IN23-3-000"), "leftover listing includes NRG Energy 2023");
+  assert.ok(leftoverListed.some((r) => r.id === "IN13-15-000"), "leftover listing includes BP America");
+  assert.ok(leftoverListed.some((r) => r.id === "IN17-7-000" && /Freeport/i.test(r.institution)), "leftover listing includes Freeport LNG L.P.");
+  assert.ok(leftoverListed.some((r) => r.id === "IN20-4-000"), "leftover listing includes NRG Power Marketing");
+  assert.ok(leftoverListed.some((r) => r.id === "IN21-2-000"), "leftover listing includes Algonquin");
+  assert.ok(!leftoverListed.some((r) => r.id === "IN23-4-000"), "leftover listing skips Meinershagen people");
+  assert.ok(!leftoverListed.some((r) => r.id === "IN21-4-000"), "leftover listing skips Alliance no-commissioners PDF");
+  assert.ok(leftoverListed.every((r) => officialFercPdfUrl(r.sourceUrl)));
+  assert.ok(LEFTOVER_WALK_LISTINGS.length >= 5, "leftover walk lists 2021-2023 official cms.ferc.gov PDFs");
+  assert.ok(LEFTOVER_WALK_LISTINGS.some((r) => r.docket === "IN23-3-000" && /NRG Energy/i.test(r.institution)));
+  assert.ok(LEFTOVER_WALK_LISTINGS.some((r) => r.docket === "IN13-15-000" && /BP America/i.test(r.institution)));
+  assert.ok(LEFTOVER_WALK_LISTINGS.every((r) => officialFercPdfUrl(r.sourceUrl)));
+  assert.ok(!LEFTOVER_WALK_LISTINGS.some((r) => r.docket === "IN23-4-000"), "leftover walk skips people");
+  assert.ok(!LEFTOVER_WALK_LISTINGS.some((r) => r.docket === "IN21-4-000"), "leftover walk skips Alliance no-commissioners PDF");
+  const walkIds = new Set([...SEED_LISTINGS, ...OFFICIAL_WALK_LISTINGS, ...LEFTOVER_WALK_LISTINGS].map((r) => r.id));
   assert.ok(walkIds.size > 5, "official PDF walk lists more than first-slice=5");
+  assert.ok(walkIds.size >= 20, "leftover walk lists leftover official institution PDFs past the 16-card first walk");
   const src = readFs(join(dirname(fileURLToPath(import.meta.url)), "../src/ferc-orders.ts"), "utf-8");
   assert.match(src, /FERC_ORDERS_LIMIT", "24"/);
   assert.match(src, /FERC_ORDERS_MAX_FETCH", "36"/);
@@ -104,6 +125,14 @@ async function main(): Promise<void> {
     officialFercPdfUrl(cordovaPdf),
   );
   assert.equal(officialFercPdfUrl(cordovaPdf), cordovaPdf);
+  const nrgPdf =
+    "https://cms.ferc.gov/sites/default/files/2023-07/20230720-184FERC61026-IN23-3-000-Nrg-Settlement%20Agreement.pdf";
+  assert.equal(
+    mediaSlugToOfficialPdfUrl(
+      "https://cms.ferc.gov/media/20230720-184ferc61026-in23-3-000-nrg-settlement-agreementpdf",
+    ),
+    officialFercPdfUrl(nrgPdf),
+  );
   const yearListed = parseListingHtml(readFx("2025-year-excerpt.html"));
   assert.ok(yearListed.some((r) => r.id === "IN25-8-000" && /Cordova/i.test(r.institution)));
   assert.ok(yearListed.some((r) => r.id === "IN25-9-000" && /Skye/i.test(r.institution)));
@@ -117,6 +146,9 @@ async function main(): Promise<void> {
   const iplRow = rows.find((r) => r.docket === "IN25-6-000" && officialFercPdfUrl(r.sourceUrl ?? ""));
   assert.equal(isInstitutionOrderRow(iplRow!), true);
   assert.equal(isPeopleRow(iplRow!), false);
+  const freeport = leftoverRows.find((r) => r.docket === "IN17-7-000");
+  assert.equal(isPeopleRow(freeport!), false);
+  assert.equal(isInstitutionOrderRow(freeport!), true, "Freeport LNG Development, L.P. is an institution");
 
   const iplText = parseFercOrderText(readFx("IN25-6-000.txt"), {
     sourceUrl:

@@ -6,6 +6,8 @@ Always listed on well-known / OpenAPI / llms.txt / shop catalog. Unpaid `GET /fe
 
 v1 seeds **5** official institution stipulation-and-consent PDFs. Required seed is Interstate Power and Light Company (`IN25-6-000`). Family: Digi Power X Inc. f/k/a Digihost Technology Inc. (`IN25-4-000`), MPH Rockaway Peakers / Bayswater (`IN25-10-000`), Terra-Gen, LLC (`IN26-2-000`), Tenaska Power Services Co. (`IN25-13-000`). Skip people.
 
+Leftover grow walks the same official `cms.ferc.gov` `/sites/default/files/{YYYY-MM}/` PDFs. First-slice only parsed the 2026 teaser plus 2025/2024 year tables (live lander still showed 5). Leftover official texts are on the 2023/2022/2021 civil-penalty year tables (`www.ferc.gov` HTML is often 403; Wayback + hardcoded leftover PDFs). People (Chen, Meinershagen, GreenHat estate) stay out. Alliance NYGT `IN21-4-000` is official but lacks `Before Commissioners` — not this gate.
+
 ## Paths
 
 | Path | Auth | Price |
@@ -17,7 +19,7 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 
 ## Source of truth
 
-- Listing / search (index only, not the product): https://www.ferc.gov/civil-penalties/all-civil-penalty-actions-2026
+- Listing / search (index only, not the product): https://www.ferc.gov/civil-penalties/all-civil-penalty-actions-2026 plus year tables 2025–2021
 - Official PDFs: `https://cms.ferc.gov/sites/default/files/{YYYY-MM}/{name}.pdf`
 - Media landing pages (`/media/...`) are HTML, not the product
 - Required seed: Interstate Power and Light Company — Docket IN25-6-000 — dated 17 Apr 2026 — https://cms.ferc.gov/sites/default/files/2026-04/20260417-195FERC61048-IN25-6-000-Interstate%20Power%20and%20Light%20Co-Settlement%20Agreement.pdf
@@ -36,8 +38,8 @@ Free `GET /ferc-orders/manifest.json` is institution / docket / date / sourceUrl
 | Variable | Default | Purpose |
 |---|---|---|
 | `FERC_ORDERS_DIR` | `$HOME/projects/mcp-proxy/data/ferc-orders` | Snapshot cache (`snapshot.json` + downloaded PDFs) |
-| `FERC_ORDERS_LIMIT` | `5` | Target **additional** real extractable bodies this run. Cached bodies are reused and do **not** count. `0` = keep walking |
-| `FERC_ORDERS_MAX_FETCH` | `8` | Max official PDF downloads per run. Already-on-disk PDFs do not count. `0` = no cap |
+| `FERC_ORDERS_LIMIT` | `24` | Target **additional** real extractable bodies this run. Cached bodies are reused and do **not** count. `0` = keep walking |
+| `FERC_ORDERS_MAX_FETCH` | `36` | Max official PDF downloads per run. Already-on-disk PDFs do not count. `0` = no cap |
 | `FERC_ORDERS_JSON_DIR` / `FERC_ORDERS_LISTING_DIR` | unset | Optional already-fetched `listing-excerpt.json` / `listing-excerpt.html` + `{docket}.txt` |
 | `FERC_ORDERS_PDFTOTEXT` | `pdftotext` | Poppler extractor |
 

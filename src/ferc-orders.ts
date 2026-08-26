@@ -25,9 +25,15 @@ export const LISTING_URL = "https://www.ferc.gov/civil-penalties/all-civil-penal
 export const YEAR_LISTING_URLS = [
   "https://www.ferc.gov/civil-penalties/all-civil-penalty-actions-2025",
   "https://www.ferc.gov/all-civil-penalty-actions-2024",
+  "https://www.ferc.gov/all-civil-penalty-actions-2023",
+  "https://www.ferc.gov/all-civil-penalty-actions-2022",
+  "https://www.ferc.gov/all-civil-penalty-actions-2021",
 ] as const;
 export const WAYBACK_CAPTURE: Record<string, string> = {
   "https://www.ferc.gov/civil-penalties/all-civil-penalty-actions-2025": "20251014062747",
+  "https://www.ferc.gov/all-civil-penalty-actions-2023": "20240625073035",
+  "https://www.ferc.gov/all-civil-penalty-actions-2022": "20231207201742",
+  "https://www.ferc.gov/all-civil-penalty-actions-2021": "20230922060545",
 };
 export const PDF_HOST = "cms.ferc.gov";
 export const PDF_ORIGIN = "https://cms.ferc.gov";
@@ -103,7 +109,7 @@ export type FercOrdersSnapshot = {
 const HTTP_UA = "bnm-data-shop/1.0 (FERC public institution orders; +https://www.ferc.gov/)";
 
 const ENTITY_RE =
-  /\b(Inc\.?|LLC|L\.L\.C\.|L\.P\.|LP|Corp\.?|Corporation|Company|Co\.|Ltd\.?|Limited|Holdings|Department|Authority|Services|Power|Energy|Utility|Utilities|Municipal|District)\b/i;
+  /\b(Inc\.?|LLC|L\.L\.C\.|L\.P\.?|LP|Corp\.?|Corporation|Company|Co\.|Ltd\.?|Limited|Holdings|Department|Authority|Services|Power|Energy|Utility|Utilities|Municipal|District)\b/i;
 const PERSON_NAME_RE = /^[A-Z][a-z]+(?:\s+[A-Z]\.?)?(?:\s+[A-Z][a-z]+){1,2}$/;
 const ORDER_KIND_RE =
   /stipulation and consent|order approving|order to show cause|show cause|civil penalt|settlement agreement/i;
@@ -266,6 +272,65 @@ export const OFFICIAL_WALK_LISTINGS: FercOrderListing[] = [
   },
 ];
 
+/**
+ * Leftover official institution stipulation-and-consent PDFs on cms.ferc.gov.
+ * 2023/2022/2021 year tables 403 on www.ferc.gov; media landings are HTML.
+ * People (Chen, Meinershagen, GreenHat estate) stay out. Alliance NYGT
+ * IN21-4-000 is official but lacks Before Commissioners — not this gate.
+ */
+export const LEFTOVER_WALK_LISTINGS: FercOrderListing[] = [
+  {
+    id: "IN23-3-000",
+    docket: "IN23-3-000",
+    institution: "NRG Energy, Inc.",
+    date: "2023-07-20",
+    title: "Order Approving Stipulation and Consent Agreement",
+    sourceUrl:
+      "https://cms.ferc.gov/sites/default/files/2023-07/20230720-184FERC61026-IN23-3-000-Nrg-Settlement%20Agreement.pdf",
+    pdfId: "20230720-184FERC61026-IN23-3-000-Nrg-Settlement Agreement",
+  },
+  {
+    id: "IN13-15-000",
+    docket: "IN13-15-000",
+    institution: "BP America Inc.",
+    date: "2023-07-07",
+    title: "Order Approving Stipulation and Consent Agreement",
+    sourceUrl:
+      "https://cms.ferc.gov/sites/default/files/2023-07/20230707-184FERC61016-IN13-15-000-Bp%20America%20Et%20Al-Settlement%20Agreement.pdf",
+    pdfId: "20230707-184FERC61016-IN13-15-000-Bp America Et Al-Settlement Agreement",
+  },
+  {
+    id: "IN17-7-000",
+    docket: "IN17-7-000",
+    institution: "Freeport LNG Development, L.P.",
+    date: "2021-01-28",
+    title: "Order Approving Stipulation and Consent Agreement",
+    sourceUrl:
+      "https://cms.ferc.gov/sites/default/files/2021-02/20210128-174FERC61055-Freeport%20Agreement.pdf",
+    pdfId: "20210128-174FERC61055-Freeport Agreement",
+  },
+  {
+    id: "IN20-4-000",
+    docket: "IN20-4-000",
+    institution: "NRG Power Marketing, LLC",
+    date: "2021-01-08",
+    title: "Order Approving Stipulation and Consent Agreement",
+    sourceUrl:
+      "https://cms.ferc.gov/sites/default/files/2021-01/20210108-174FERC61016-NRG%20Agreement.pdf",
+    pdfId: "20210108-174FERC61016-NRG Agreement",
+  },
+  {
+    id: "IN21-2-000",
+    docket: "IN21-2-000",
+    institution: "Algonquin Power Windsor Locks LLC",
+    date: "2021-01-05",
+    title: "Order Approving Stipulation and Consent Agreement",
+    sourceUrl:
+      "https://cms.ferc.gov/sites/default/files/2021-01/20210105-174FERC61001-Algonquin%20Agreement.pdf",
+    pdfId: "20210105-174FERC61001-Algonquin Agreement",
+  },
+];
+
 function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
@@ -409,8 +474,10 @@ export function mediaSlugToOfficialPdfUrl(slugOrUrl: string): string | null {
   const cite = m[2].replace(/ferc/gi, "FERC");
   const docket = m[3].toUpperCase();
   let rest = m[4];
-  if (/settlement-agreement$/i.test(rest)) rest = rest.replace(/-?settlement-agreement$/i, "");
+  if (/settlement-agreementpdf$/i.test(rest)) rest = rest.replace(/-?settlement-agreementpdf$/i, "");
+  else if (/settlement-agreement$/i.test(rest)) rest = rest.replace(/-?settlement-agreement$/i, "");
   else if (/settlement$/i.test(rest)) rest = rest.replace(/-?settlement$/i, "");
+  else if (/approving-sa$/i.test(rest)) rest = rest.replace(/-?approving-sa$/i, "");
   const name = titleCaseSlug(rest);
   const file = `${ymd}-${cite}-${docket}-${name}-Settlement Agreement.pdf`;
   return officialFercPdfUrl(`${PDF_ORIGIN}/sites/default/files/${folder}/${file}`);
@@ -798,20 +865,25 @@ function mergeOfficialListings(listed: FercOrderListing[], seeds: FercOrderListi
 
 async function loadOfficialListings(dir: string): Promise<{ listed: FercOrderListing[]; listedCount: number }> {
   if (dir) {
-    const json = readNamedFile(dir, ["listing-excerpt.json", "listing.json"]);
-    if (json) {
+    const listed: FercOrderListing[] = [];
+    for (const name of ["listing-excerpt.json", "leftover-listing-excerpt.json", "listing.json"]) {
+      const json = readNamedFile(dir, [name]);
+      if (!json) continue;
       const rows = JSON.parse(json) as FercListingRow[];
-      const listed = Array.isArray(rows) ? parseListingRows(rows) : [];
-      return { listed, listedCount: listed.length };
+      if (Array.isArray(rows)) listed.push(...parseListingRows(rows));
+    }
+    if (listed.length > 0) {
+      const merged = mergeOfficialListings(listed, []);
+      return { listed: merged, listedCount: merged.length };
     }
     const year = readNamedFile(dir, ["2025-year-excerpt.html", "year-excerpt.html"]);
     if (year) {
-      const listed = parseListingHtml(year);
-      return { listed, listedCount: listed.length };
+      const parsed = parseListingHtml(year);
+      return { listed: parsed, listedCount: parsed.length };
     }
     const html = readNamedFile(dir, ["listing-excerpt.html", "listing.html"]);
-    const listed = html ? parseListingHtml(html) : [];
-    return { listed, listedCount: listed.length };
+    const parsed = html ? parseListingHtml(html) : [];
+    return { listed: parsed, listedCount: parsed.length };
   }
   try {
     const listed: FercOrderListing[] = [];
@@ -822,12 +894,15 @@ async function loadOfficialListings(dir: string): Promise<{ listed: FercOrderLis
         /* one official year table missed; keep the others */
       }
     }
-    const merged = mergeOfficialListings([...OFFICIAL_WALK_LISTINGS, ...listed], SEED_LISTINGS);
+    const merged = mergeOfficialListings(
+      [...LEFTOVER_WALK_LISTINGS, ...OFFICIAL_WALK_LISTINGS, ...listed],
+      SEED_LISTINGS,
+    );
     if (merged.length > 0) return { listed: merged, listedCount: merged.length };
   } catch {
     /* official listing missed; walk official cms.ferc.gov PDFs */
   }
-  const walked = mergeOfficialListings(OFFICIAL_WALK_LISTINGS, SEED_LISTINGS);
+  const walked = mergeOfficialListings([...LEFTOVER_WALK_LISTINGS, ...OFFICIAL_WALK_LISTINGS], SEED_LISTINGS);
   return { listed: walked, listedCount: walked.length };
 }
 
