@@ -148,6 +148,23 @@ async function main(): Promise<void> {
   });
   assert.equal(isRealNpdesPermitBody(gp.body), false, "general permit is not this SKU");
 
+  const granite = parseNpdesPermitText(readFx("ma0020231.txt"), {
+    sourceUrl: "https://www.epa.gov/system/files/documents/2025-06/finalma0020231permit-2025.pdf",
+    pageUrl: MA_PAGE_URL,
+    name: "Granite State Concrete Co., Inc.",
+    permit: "MA0020231",
+    date: "2025-06-05",
+    state: "MA",
+    id: "ma0020231",
+  });
+  assert.ok(isRealNpdesPermitBody(granite.body), "individual permit may mention Construction General Permit");
+  assert.ok(
+    isRealNpdesPermitBody(
+      `${granite.body}\nThis definition of storm event corresponds with the requirements in EPA's 2022 Construction General Permit to conduct inspections.`,
+    ),
+    "CGP mention in an individual permit is not a general-permit body",
+  );
+
   const manifest = buildNpdesPermitsManifest({
     ok: true,
     product: "epa-npdes-individual-permit-bodies",

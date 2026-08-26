@@ -4552,6 +4552,8 @@ async function main(): Promise<void> {
       assert.ok(!leak402.includes("CertainTeed"));
       assert.ok(!leak402.includes("Official CertainTeed individual NPDES permit paragraph"));
       assert.ok(!leak402.includes("MA0003531"));
+      assert.ok(!leak402.includes("AUTHORIZATION TO DISCHARGE"));
+      assert.ok(!leak402.includes("NATIONAL POLLUTANT DISCHARGE"));
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === NPDES_PERMITS_PATH), true);

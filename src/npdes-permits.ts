@@ -418,7 +418,15 @@ export function isRealNpdesPermitBody(text: string): boolean {
   if (/\bICIS-NPDES\b/i.test(t) && /\bECHO\b/i.test(t) && !/\bauthorization to discharge\b/i.test(t)) return false;
   if (/\brecord of decision\b/i.test(t) && !/\bauthorization to discharge\b/i.test(t)) return false;
   if (/\badministrative civil liabilit/i.test(t) && /\bwater quality control board\b/i.test(t)) return false;
-  if (/\bconstruction general permit\b/i.test(t) || /\bnpdes general permit\b/i.test(t)) return false;
+  // Individual permits may mention EPA's Construction General Permit in stormwater definitions.
+  // Reject only documents that present a general permit as the sold unit.
+  if (/\bthis general permit is not an individual\b/i.test(t)) return false;
+  if (
+    /\b(construction general permit|npdes general permit|multi-sector general permit)\b/i.test(t) &&
+    !/\bnpdes permit no\.\s*[a-z]{2}\d{7}\b/i.test(t)
+  ) {
+    return false;
+  }
   if (/\bthis is the fact sheet only\b/i.test(t)) return false;
   const hasNpdes = /\bnational pollutant discharge elimination system\b|\bnpdes permit\b/i.test(t);
   const hasAuth = /\bauthorization to discharge\b|\bfinal npdes permit\b/i.test(t);
@@ -697,7 +705,10 @@ export async function collectNpdesPermits(opts?: {
 
 export async function loadNpdesPermits(): Promise<NpdesPermitsSnapshot> {
   const cached = readNpdesPermitsSnapshot();
-  if (cached && cached.cards.some((c) => isRealNpdesPermitBody(c.body))) return cached;
+  if (cached) {
+    const filtered = assembleNpdesPermitsSnapshot(cached.cards, cached.fetchedAt);
+    if (filtered.cards.length) return { ...cached, ...filtered };
+  }
   try {
     return await collectNpdesPermits();
   } catch (err) {
