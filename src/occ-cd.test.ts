@@ -19,6 +19,7 @@ import {
   isRealOccCdBody,
   isTerminatedRow,
   officialOccPdfUrl,
+  officialStem,
   parseExportRows,
   parseOccCdText,
   pdfIdFromUrl,
@@ -46,14 +47,35 @@ async function main(): Promise<void> {
   assert.ok(listed.some((r) => r.id === "AA-ENF-2024-110"));
   assert.ok(!listed.some((r) => r.id === "AA-ENF-2026-28"), "skip IAP prohibition");
   assert.ok(!listed.some((r) => r.id === "AA-ENF-2026-15"), "skip IAP prohibition");
-  assert.ok(!listed.some((r) => r.id === "AA-ENF-2022-21"), "skip terminated C&D");
+  const boa = listed.find((r) => r.id === "AA-ENF-2022-21");
+  assert.ok(boa, "terminated institution C&D stays in this SKU");
+  assert.equal(boa?.sourceUrl, `${PDF_BASE}ea2022-023.pdf`);
   assert.ok(listed.every((r) => officialOccPdfUrl(r.sourceUrl)));
   assert.equal(officialOccPdfUrl("https://files.consumerfinance.gov/f/documents/cfpb_american-honda-finance-corp-consent-order_2025-01.pdf"), null);
   assert.equal(officialOccPdfUrl("https://www.ftc.gov/system/files/ftc_gov/pdf/vtron-lasers-musa-warningletter.pdf"), null);
   assert.equal(officialOccPdfUrl("https://www.sec.gov/Archives/edgar/data/0001/0001.txt"), null);
   assert.equal(officialOccPdfUrl("https://www.occ.gov/static/enforcement-actions/eaAA-ENF-2026-29.pdf"), `${PDF_BASE}eaAA-ENF-2026-29.pdf`);
   assert.equal(officialOccPdfUrl("AA-ENF-2026-29"), `${PDF_BASE}eaAA-ENF-2026-29.pdf`);
+  assert.equal(officialOccPdfUrl("2023-031"), `${PDF_BASE}ea2023-031.pdf`);
+  assert.equal(officialOccPdfUrl("https://www.occ.gov/static/enforcement-actions/ea2023-031.pdf"), `${PDF_BASE}ea2023-031.pdf`);
+  assert.equal(officialOccPdfUrl("https://www.occ.gov/static/enforcement-actions/eaAA-EC-2020-64A.pdf"), `${PDF_BASE}eaAA-EC-2020-64A.pdf`);
+  assert.equal(officialStem("2023-031"), "2023-031");
+  assert.equal(officialStem("AA-WE- 2021-6"), "AA-WE-2021-6");
   assert.ok(LISTING_URL.includes("EASearch"));
+
+  const leftoverRows = JSON.parse(readFx("leftover-listing-excerpt.json")) as OccExportRow[];
+  const leftoverListed = parseExportRows(leftoverRows);
+  assert.ok(leftoverListed.some((r) => r.id === "AA-WE-2025-20"), "leftover listing includes terminated EH National Bank");
+  assert.ok(leftoverListed.some((r) => r.id === "AA-CE-2023-40"), "leftover listing includes leftover-active United Fidelity");
+  assert.ok(leftoverListed.some((r) => r.id === "AA-ENF-2024-82"), "leftover listing includes terminated Clear Fork");
+  assert.ok(leftoverListed.some((r) => r.id === "AA-WE-2021-6"), "leftover listing includes leftover-active Transact");
+  assert.equal(leftoverListed.find((r) => r.id === "AA-CE-2023-40")?.sourceUrl, `${PDF_BASE}ea2023-031.pdf`);
+  assert.equal(leftoverListed.find((r) => r.id === "AA-WE-2021-6")?.sourceUrl, `${PDF_BASE}ea2021-013.pdf`);
+  assert.ok(!leftoverListed.some((r) => r.id === "AA-EC-10-113"), "skip leftover people/IAP prohibition");
+  assert.ok(
+    leftoverListed.every((r) => officialOccPdfUrl(r.sourceUrl)),
+    "leftover walk keeps official occ.gov enforcement-action PDFs",
+  );
 
   const people = rows.find((r) => (r.DocketNumber ?? "") === "AA-ENF-2026-28");
   assert.ok(people);
@@ -62,9 +84,14 @@ async function main(): Promise<void> {
   const utbRow = rows.find((r) => r.DocketNumber === "AA-ENF-2026-29");
   assert.equal(isInstitutionCdRow(utbRow!), true);
   assert.equal(isPeopleRow(utbRow!), false);
-  const boa = rows.find((r) => r.DocketNumber === "AA-ENF-2022-21");
-  assert.equal(isTerminatedRow(boa!), true);
+  const boaRow = rows.find((r) => r.DocketNumber === "AA-ENF-2022-21");
+  assert.equal(isTerminatedRow(boaRow!), true);
+  assert.equal(isInstitutionCdRow(boaRow!), true, "terminated institution C&D is this SKU");
   assert.equal(docketFromRow(utbRow!), "AA-ENF-2026-29");
+  const ehRow = leftoverRows.find((r) => (r.DocketNumber ?? "") === "AA-WE-2025-20");
+  assert.equal(isInstitutionCdRow(ehRow!), true, "leftover terminated institution C&D is this SKU");
+  const fidelityRow = leftoverRows.find((r) => r.DocketNumber === "AA-CE-2023-40");
+  assert.equal(isInstitutionCdRow(fidelityRow!), true);
 
   const utbText = parseOccCdText(readFx("AA-ENF-2026-29.txt"), {
     sourceUrl: `${PDF_BASE}eaAA-ENF-2026-29.pdf`,
@@ -114,6 +141,25 @@ async function main(): Promise<void> {
   });
   assert.ok(isRealOccCdBody(north.body));
   assert.ok(north.body.includes("Admirals Bank"));
+
+  const eh = parseOccCdText(readFx("AA-WE-2025-20.txt"), {
+    sourceUrl: `${PDF_BASE}eaAA-WE-2025-20.pdf`,
+    bank: "EH National Bank",
+    docket: "AA-WE-2025-20",
+  });
+  assert.ok(isRealOccCdBody(eh.body), "official leftover terminated EH National Bank is this SKU");
+  assert.equal(eh.docket, "AA-WE-2025-20");
+  assert.ok(eh.body.includes("Beverly Hills"));
+
+  const fidelity = parseOccCdText(readFx("AA-CE-2023-40.txt"), {
+    sourceUrl: `${PDF_BASE}ea2023-031.pdf`,
+    bank: "United Fidelity Bank, F.S.B.",
+    docket: "AA-CE-2023-40",
+  });
+  assert.ok(isRealOccCdBody(fidelity.body), "official leftover-active United Fidelity numeric PDF is this SKU");
+  assert.equal(fidelity.sourceUrl, `${PDF_BASE}ea2023-031.pdf`);
+  assert.equal(pdfIdFromUrl(fidelity.sourceUrl), "2023-031");
+  assert.ok(fidelity.body.includes("Evansville"));
 
   const teaser = parseOccCdText(readFx("no-body.txt"), {
     sourceUrl: LISTING_URL,
@@ -194,15 +240,16 @@ async function main(): Promise<void> {
   try {
     const snap = await collectOccCd({ jsonDir: fixtures, limit: 10, pauseMs: 0 });
     assert.equal(snap.status, "ok");
-    assert.ok(snap.cards.length >= 5, "fixture collect extracts five official OCC institution C&D bodies");
+    assert.ok(snap.cards.length >= 6, "fixture collect extracts first-slice seeds plus leftover official PDF text");
     assert.ok(snap.cards.some((c) => c.docket === "AA-ENF-2026-29" && isRealOccCdBody(c.body)));
     assert.ok(snap.cards.some((c) => c.docket === "AA-ENF-2025-21" && isRealOccCdBody(c.body)));
     assert.ok(snap.cards.some((c) => c.docket === "AA-ENF-2025-63" && isRealOccCdBody(c.body)));
     assert.ok(snap.cards.some((c) => c.docket === "AA-EC-2025-04" && isRealOccCdBody(c.body)));
     assert.ok(snap.cards.some((c) => c.docket === "AA-ENF-2024-110" && isRealOccCdBody(c.body)));
+    assert.ok(snap.cards.some((c) => c.docket === "AA-WE-2025-20" && isRealOccCdBody(c.body)), "leftover terminated EH National Bank is collected");
+    assert.ok(snap.cards.some((c) => c.docket === "AA-CE-2023-40" && isRealOccCdBody(c.body)), "leftover-active United Fidelity is collected");
     assert.ok(snap.cards.every((c) => isRealOccCdBody(c.body)));
     assert.ok(!snap.cards.some((c) => c.id === "AA-ENF-2026-28"), "skip IAP");
-    assert.ok(!snap.cards.some((c) => c.id === "AA-ENF-2022-21"), "skip terminated");
     assert.ok(snap.cards.every((c) => officialOccPdfUrl(c.sourceUrl)));
     assert.ok(snap.cards.every((c) => !/archive\.org|sec\.gov|ftc\.gov|consumerfinance\.gov/i.test(c.sourceUrl)));
 

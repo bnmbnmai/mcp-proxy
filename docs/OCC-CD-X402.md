@@ -4,7 +4,9 @@ Official OCC-authored **institution Cease-and-Desist / Consent Order TEXT** extr
 
 Always listed on well-known / OpenAPI / llms.txt / shop catalog. Unpaid `GET /occ-cd` is HTTP 402.
 
-v1 seeds **5** still-active institution C&D / consent-order PDFs from https://apps.occ.gov/EASearch. Official ExportToJSON (2026-08-19) has only **three** institution C&Ds with StartDate in 2026; the other two are the next most recent still-active institution C&Ds on that same catalog. Do not harvest the 24-row active-C&D backlog here.
+v1 seeds **5** still-active institution C&D / consent-order PDFs from https://apps.occ.gov/EASearch. Official ExportToJSON (2026-08-19) has only **three** institution C&Ds with StartDate in 2026; the other two are the next most recent still-active institution C&Ds on that same catalog.
+
+Leftover grow walks the same official **EASearch ExportToJSON**. First-slice only kept still-active rows and only fetched `ea{AA-docket}.pdf`. Leftover institution C&Ds stay in this SKU: terminated orders whose official StartDocument still has extractable text, and leftover-active rows whose StartDocuments are `ea{YYYY-NNN}.pdf`. Same bag: free index + `?q=`, `?id=` $0.02, newest 10 $0.05.
 
 ## Paths
 
@@ -19,15 +21,15 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 
 - Listing / search: https://apps.occ.gov/EASearch
 - Official metadata catalog (not the product): https://apps.occ.gov/EASearch/Search/ExportToJSON
-- Official PDFs: `https://www.occ.gov/static/enforcement-actions/ea{DOCKET}.pdf`
+- Official PDFs: `https://www.occ.gov/static/enforcement-actions/ea{AA-DOCKET}.pdf` and leftover `https://www.occ.gov/static/enforcement-actions/ea{YYYY-NNN}.pdf`
 - Required seed: United Texas Bank, N.A., Dallas — `AA-ENF-2026-29` — https://www.occ.gov/static/enforcement-actions/eaAA-ENF-2026-29.pdf
 - License: **17 USC 105**. Attribute OCC.
 
 Paid body fields: `id`, `docket`, `pdfId`, `bank`, `location`, `date`, `title`, `sourceUrl`, `body`. `body` is official `pdftotext` of the OCC-authored PDF. `sourceUrl` is always the occ.gov enforcement-action PDF.
 
-Leak-tests already passed on the live OCC hosts: ExportToJSON is metadata only; `Accept: text/plain` on the PDF is HTTP 406 / stays PDF.
+Leak-tests already passed on the live OCC hosts: ExportToJSON is metadata only; `Accept: text/plain` on the PDF is HTTP 406 / stays PDF. Do not re-litigate unless you find a dump of the order TEXT.
 
-`data/occ-cd/` is gitignored. Order bodies get lost on a dead VM — do not harvest the whole catalog here. Seed stays at the five official institution C&Ds. Do not fill past the seed.
+`data/occ-cd/` is gitignored.
 
 Free `GET /occ-cd/manifest.json` is bank / docket / date / sourceUrl only.
 
@@ -36,23 +38,26 @@ Free `GET /occ-cd/manifest.json` is bank / docket / date / sourceUrl only.
 | Variable | Default | Purpose |
 |---|---|---|
 | `OCC_CD_DIR` | `$HOME/projects/mcp-proxy/data/occ-cd` | Snapshot cache (`snapshot.json` + downloaded PDFs) |
-| `OCC_CD_LIMIT` | `5` | Target **additional** real extractable bodies this run. Cached bodies are reused and do **not** count. `0` = keep walking |
-| `OCC_CD_MAX_FETCH` | `8` | Max official PDF downloads per run. Already-on-disk PDFs do not count. `0` = no cap |
-| `OCC_CD_JSON_DIR` / `OCC_CD_LISTING_DIR` | unset | Optional already-fetched `listing-excerpt.json` + `{docket}.txt` |
+| `OCC_CD_LIMIT` | `24` | Target **additional** real extractable bodies this run. Cached bodies are reused and do **not** count. `0` = keep walking |
+| `OCC_CD_MAX_FETCH` | `36` | Max official PDF downloads per run. Already-on-disk PDFs do not count. `0` = no cap |
+| `OCC_CD_JSON_DIR` / `OCC_CD_LISTING_DIR` | unset | Optional already-fetched `listing-excerpt.json` / leftover JSON + `{docket}.txt` |
 | `OCC_CD_PDFTOTEXT` | `pdftotext` | Poppler extractor |
 
 Do not set `X402_SKIP_SETTLE` on the standing public unit. Family / basic-auth stay off `ticks.bnm.farm`.
 
-## Apollo collect (do not run on this Cloud VM)
+## Apollo leftover collect
 
-Live-apply onto the apollo ticks unit. Seed the five bundled cards only. Do not collect past the seed.
+Build + restart **only** `idaho-ticks-x402.service`. Do not touch hay data files.
 
 ```bash
 cd ~/projects/mcp-proxy
 npm run build
 export OCC_CD_DIR=$HOME/projects/mcp-proxy/data/occ-cd
-# copy src/fixtures/occ-cd/seed-snapshot.json → $OCC_CD_DIR/snapshot.json
+OCC_CD_LIMIT=24 OCC_CD_MAX_FETCH=36 npm run collect:occ-cd
+systemctl --user restart idaho-ticks-x402.service
 ```
+
+Live after leftover apply (2026-08-26): **listedCount 522**, **cardCount 34**, asOf **2026-06-16**, fetchedAt **2026-08-26T19:17:04.043Z**. Official ExportToJSON listed 522 institution C&D PDFs (active + leftover terminated / numeric StartDocuments); this pulse reused 10 first-slice bodies and fetched 24 new extractable texts. Price still $0.02 / $0.05. No new SKU. Restarted only `idaho-ticks-x402.service`.
 
 ## Local smoke (cloud VM / laptop)
 

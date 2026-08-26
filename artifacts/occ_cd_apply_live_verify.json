@@ -1,0 +1,53 @@
+{
+  "before": {
+    "cardCount": 10,
+    "listedCount": 14,
+    "asOf": "2026-06-16",
+    "fetchedAt": "2026-08-26T13:56:55.920Z"
+  },
+  "after": {
+    "cardCount": 34,
+    "listedCount": 522,
+    "asOf": "2026-06-16",
+    "fetchedAt": "2026-08-26T19:17:04.043Z",
+    "addedThisRun": 24,
+    "fetchedPdfs": 24,
+    "skippedNoText": 0,
+    "reused": 10
+  },
+  "live": {
+    "manifest": "https://ticks.bnm.farm/occ-cd/manifest.json",
+    "manifestStatus": 200,
+    "manifestCardCount": 34,
+    "searchQ": "EH National",
+    "searchHits": ["AA-WE-2025-20"],
+    "newRows": [
+      "AA-WE-2025-20",
+      "AA-SO-2023-57",
+      "AA-SO-2023-56",
+      "AA-SO-2023-55",
+      "AA-ENF-2024-82",
+      "AA-CE-2023-40",
+      "AA-ENF-2022-21"
+    ],
+    "unpaidPage": 402,
+    "unpaidId": 402,
+    "unpaidIdAtomic": "20000",
+    "pageAtomic": "50000",
+    "license": "17 USC 105",
+    "attribution": "OCC",
+    "fincenCardCount": 33,
+    "ncuaCardCount": 12
+  },
+  "prs": {
+    "walker": {
+      "url": "https://github.com/bnmbnmai/mcp-proxy/pull/146",
+      "state": "open draft"
+    },
+    "lander": {
+      "url": "",
+      "state": "pending"
+    }
+  },
+  "blockers": []
+}
