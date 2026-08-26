@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "City / Town (Receiving Water)": "Adams (Hoosic River (Segment MA 11-04) (Hudson River Basin - USGS Code # 02020003))",
+      "Applicant / Facility Name": "<a href='https://www.epa.gov/system/files/documents/2025-07/finalma0100315permit-2017.pdf'>Adams <abbr title='Wastewater Treatment Plant'>WWTP</abbr> (pdf)</a> <span class='document__meta'>(11.7 MB)</span> <br> <strong>Coverage transferred to <a href='https://www.epa.gov/npdes-permits/region-1-final-medium-wastewater-treatment-facilities-general-permit-massachusetts'>MA Medium WWTF GP</a> on 04/01/2023</strong>",
+      "Permit Number": "MA0100315",
+      "Date of Issuance": "05/17/2017"
+    },
+    {
+      "City / Town (Receiving Water)": "Norwood (Neponset River (MA73-01))",
+      "Applicant / Facility Name": "<a href='https://www.epa.gov/system/files/documents/2026-05/finalma0003531permit-2026.pdf'>Bird, Incorporated d/b/a CertainTeed (pdf)</a> <span class='document__meta'>(1.3 MB)</span>",
+      "Permit Number": "MA0003531",
+      "Date of Issuance": "05/27/2026"
+    },
+    {
+      "City / Town (Receiving Water)": "Boston (Fort Point Channel, Boston Inner Harbor (MA70-02), Class SB (CSO))",
+      "Applicant / Facility Name": "<a href='https://www.epa.gov/system/files/documents/2026-04/finalma0003832permit-2026.pdf'>Procter and Gamble \u2013 Gillette (pdf)</a> <span class='document__meta'>(5 MB)</span>",
+      "Permit Number": "MA0003832",
+      "Date of Issuance": "04/15/2026"
+    },
+    {
+      "City / Town (Receiving Water)": "Boston (Fort Point Channel)",
+      "Applicant / Facility Name": "<a href='https://www.epa.gov/system/files/documents/2025-08/finalma0003832permit-2012.pdf'>Gillette Company, The (pdf)</a> <span class='document__meta'>(1.2 MB)</span>",
+      "Permit Number": "MA0003832",
+      "Date of Issuance": "07/10/2012"
+    }
+  ]
+}

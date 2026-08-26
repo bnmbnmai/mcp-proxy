@@ -1087,6 +1087,7 @@ async function main(): Promise<void> {
   assert.equal(SINGLE_DOC_AMOUNT_ATOMIC, "20000");
   assert.equal(EXTRACTED_BODY_SKUS.includes("gmp"), true);
   assert.equal(EXTRACTED_BODY_SKUS.includes("cder-reviews"), true);
+  assert.equal(EXTRACTED_BODY_SKUS.includes("npdes-permits"), true);
   assert.equal((EXTRACTED_BODY_SKUS as readonly string[]).includes("ticks"), false);
 
   const fatGmpCards = Array.from({ length: 120 }, (_, i) => {
