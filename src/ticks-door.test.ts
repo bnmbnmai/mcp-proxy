@@ -5,8 +5,8 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2 } from "./ticks-door.js";
-import { SINGLE_DOC_AMOUNT_ATOMIC } from "./paid-records.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2, sku402Description } from "./ticks-door.js";
+import { EXTRACTED_BODY_SKUS, SINGLE_DOC_AMOUNT_ATOMIC } from "./paid-records.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
   IMPORT_ALERTS_MANIFEST_PATH,
@@ -278,7 +278,24 @@ async function main(): Promise<void> {
     const frbDesc = String((frb402.accepts as { description?: string }[])[0]?.description ?? "");
     assert.ok(frbDesc.includes("$0.02"));
     assert.ok(frbDesc.includes("$0.05"));
+    assert.ok(frbDesc.includes("/frb-orders/manifest.json?q="));
     assert.ok(frbDesc.length <= 500, `frb-orders 402 description is ${frbDesc.length}`);
+    const wl402Desc = sku402Description("warning-letters");
+    assert.ok(wl402Desc.includes("https://ticks.bnm.farm/warning-letters/manifest.json?q="));
+    assert.ok(wl402Desc.includes("GET ?id= one official text ($0.02)"));
+    assert.ok(!/not the import-alerts/i.test(wl402Desc), "402 copy lock: no leak-test");
+    const ia402Desc = sku402Description("import-alerts");
+    assert.ok(ia402Desc.includes("$0.05 = entire current table."));
+    assert.ok(ia402Desc.includes("https://ticks.bnm.farm/firm-check?q="));
+    const ticks402Desc = sku402Description("ticks");
+    assert.ok(ticks402Desc.includes("$0.05 = entire current table."));
+    assert.ok(!ticks402Desc.includes("/firm-check"));
+    for (const sku of EXTRACTED_BODY_SKUS) {
+      const desc = sku402Description(sku);
+      assert.ok(desc.includes(`https://ticks.bnm.farm/${sku}/manifest.json?q=`), `${sku} 402 names free search`);
+      assert.ok(desc.length <= 500, `${sku} 402 description is ${desc.length}`);
+      assert.ok(!/^Not /m.test(desc) && !desc.includes("Not the"), `${sku} 402 has no leak-test`);
+    }
     const oneV2 = paymentRequiredV2("http://127.0.0.1/gmp?id=gmp-0001", "gmp", SINGLE_DOC_AMOUNT_ATOMIC);
     assert.equal((oneV2.accepts as { amount?: string }[])[0]?.amount, SINGLE_DOC_AMOUNT_ATOMIC);
     const declared = bazaarExtension("ticks");
@@ -343,6 +360,7 @@ async function main(): Promise<void> {
     assert.ok(wk.llmsTxt?.endsWith(LLMS_PATH));
     assert.ok(wk.sample?.endsWith(SAMPLE_PATH));
     assert.ok(!wk.resources.some((r) => r.includes(SAMPLE_PATH)), "/sample is free discovery, not a paid resource");
+    assert.ok(!wk.resources.some((r) => r.includes("/firm-check")), "/firm-check is free, not a paid resource");
     assert.ok(!wk.resources.some((r) => r.includes(X402LIST_PATH)), "ownership proof file is free, not a paid resource");
     assert.ok((wk.instructions ?? "").includes("/sample"));
     assert.ok(!(wk.instructions ?? "").includes("idaho-hay-feeder-ticks"));
@@ -1035,12 +1053,14 @@ async function main(): Promise<void> {
         payTo: string;
         asset: string;
         resource: string;
-        accepts: { maxAmountRequired?: string; payTo: string }[];
+        accepts: { maxAmountRequired?: string; payTo: string; description?: string }[];
       };
       assert.equal(body402.payTo, PAY_TO);
       assert.equal(body402.asset, USDC_BASE);
       assert.equal(body402.resource, IMPORT_ALERTS_PATH);
       assert.equal(body402.accepts[0]?.maxAmountRequired, IMPORT_ALERTS_AMOUNT_ATOMIC);
+      assert.ok((body402.accepts[0]?.description ?? "").includes("$0.05 = entire current table."));
+      assert.ok((body402.accepts[0]?.description ?? "").includes("/firm-check?q="));
       const iaPr = unpaid.headers.get("payment-required");
       assert.ok(iaPr, "v2 PAYMENT-REQUIRED header");
       const iaV2 = JSON.parse(Buffer.from(iaPr, "base64").toString("utf8")) as {
@@ -1573,10 +1593,11 @@ async function main(): Promise<void> {
         payTo: string;
         asset: string;
         resource: string;
-        accepts: { maxAmountRequired?: string }[];
+        accepts: { maxAmountRequired?: string; description?: string }[];
       };
       assert.equal(body402.resource, WARNING_LETTERS_PATH);
       assert.equal(body402.accepts[0]?.maxAmountRequired, WARNING_LETTERS_AMOUNT_ATOMIC);
+      assert.ok((body402.accepts[0]?.description ?? "").includes("/warning-letters/manifest.json?q="));
       const wlPr = unpaid.headers.get("payment-required");
       assert.ok(wlPr, "v2 PAYMENT-REQUIRED header");
       const wlV2 = JSON.parse(Buffer.from(wlPr, "base64").toString("utf8")) as {
