@@ -8,6 +8,8 @@ v1 seeds **5** 2026-dated institution consent-order PDFs from https://orders.fdi
 
 Leftover grow walks the same official `orders.fdic.gov` shepherd path. First-slice only accepted newer `069SJ` ContentDocument ids and only kept findings needles on a single line. Leftover official PDFs use `0693d` / `069t` ids (Tioga-Franklin, First IC, WEX, and the rest of this pulse) plus leftover-new `069SJ` rows (Unity Bank, Independence Bank). People / IAP / CMP stay out. EDOS Salesforce JSON is still listing-only — not the product.
 
+Live after leftover apply (2026-08-26): **listedCount 28**, **cardCount 26**, asOf **2026-05-13**, fetchedAt **2026-08-26T19:38:26.604Z**. This pulse reused 14 bodies and fetched 12 leftover official texts (Farmers and Mechanics `FDIC-25-0142b` and Commodore `FDIC-23-0123b` skipped no-text). Price still $0.02 / $0.05. No new SKU. Restarted only `idaho-ticks-x402.service`.
+
 ## Paths
 
 | Path | Auth | Price |
