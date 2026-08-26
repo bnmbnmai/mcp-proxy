@@ -5,8 +5,8 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2, sku402Description } from "./ticks-door.js";
-import { EXTRACTED_BODY_SKUS, SINGLE_DOC_AMOUNT_ATOMIC } from "./paid-records.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2, paymentExtra, sku402Description } from "./ticks-door.js";
+import { EXTRACTED_BODY_SKUS, PAGE_AMOUNT_ATOMIC, SINGLE_DOC_AMOUNT_ATOMIC } from "./paid-records.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
   IMPORT_ALERTS_MANIFEST_PATH,
@@ -241,11 +241,15 @@ async function main(): Promise<void> {
       TICKS_AMOUNT_ATOMIC,
       "Idaho /ticks list price is $0.05 (50000 atomic)",
     );
-    assert.equal(
-      (body.accepts[0] as { extra?: { name?: string } }).extra?.name,
-      "USD Coin",
-      "CDP v1 extra.name must be the on-chain USDC name",
-    );
+    const ticksExtra = (body.accepts[0] as { extra?: Record<string, unknown> }).extra;
+    assert.equal(ticksExtra?.name, "USD Coin", "CDP v1 extra.name must be the on-chain USDC name");
+    assert.equal(ticksExtra?.version, "2");
+    assert.equal(ticksExtra?.searchUrl, null, "pure table extra.searchUrl is null");
+    assert.equal(ticksExtra?.tableWhole, true);
+    assert.equal(ticksExtra?.pagePriceAtomic, Number(PAGE_AMOUNT_ATOMIC));
+    assert.equal(ticksExtra?.firmCheckUrl, "https://ticks.bnm.farm/firm-check");
+    assert.equal(ticksExtra?.sampleUrl, "https://ticks.bnm.farm/sample");
+    assert.equal(Object.prototype.hasOwnProperty.call(ticksExtra ?? {}, "oneDocPath"), false);
     assert.equal(
       Object.prototype.hasOwnProperty.call(body.accepts[0] as object, "outputSchema"),
       false,
@@ -295,7 +299,39 @@ async function main(): Promise<void> {
       assert.ok(desc.includes(`https://ticks.bnm.farm/${sku}/manifest.json?q=`), `${sku} 402 names free search`);
       assert.ok(desc.length <= 500, `${sku} 402 description is ${desc.length}`);
       assert.ok(!/^Not /m.test(desc) && !desc.includes("Not the"), `${sku} 402 has no leak-test`);
+      const extra = paymentExtra(sku);
+      assert.equal(extra.name, "USD Coin", `${sku} extra.name stays USDC`);
+      assert.equal(extra.version, "2");
+      assert.equal(extra.searchUrl, `https://ticks.bnm.farm/${sku}/manifest.json?q=`);
+      assert.equal(extra.oneDocPath, `/${sku}?id=`);
+      assert.equal(extra.priceAtomic, Number(SINGLE_DOC_AMOUNT_ATOMIC));
+      assert.equal(extra.pagePriceAtomic, Number(PAGE_AMOUNT_ATOMIC));
+      assert.equal(extra.pageDefault, 10);
+      assert.equal(extra.wholeSetIfFewer, true);
+      assert.equal(extra.firmCheckUrl, "https://ticks.bnm.farm/firm-check");
+      assert.equal(extra.sampleUrl, "https://ticks.bnm.farm/sample");
+      assert.equal(Object.prototype.hasOwnProperty.call(extra, "tableWhole"), false);
     }
+    const tableExtra = paymentExtra("ticks");
+    assert.equal(tableExtra.searchUrl, null);
+    assert.equal(tableExtra.tableWhole, true);
+    assert.equal(tableExtra.pagePriceAtomic, Number(PAGE_AMOUNT_ATOMIC));
+    assert.equal(Object.prototype.hasOwnProperty.call(tableExtra, "oneDocPath"), false);
+    const iaExtra = paymentExtra("import-alerts");
+    assert.equal(iaExtra.searchUrl, null);
+    assert.equal(iaExtra.tableWhole, true);
+    const marinersExtra = paymentExtra("mariners");
+    assert.equal(marinersExtra.searchUrl, null);
+    assert.equal(marinersExtra.wholeSetIfFewer, true);
+    assert.equal(Object.prototype.hasOwnProperty.call(marinersExtra, "tableWhole"), false);
+    assert.deepEqual(
+      (paymentRequiredBody("https://ticks.bnm.farm/ticks", "ticks").accepts as { extra?: unknown }[])[0]?.extra,
+      paymentExtra("ticks"),
+    );
+    assert.deepEqual(
+      (paymentRequiredV2("https://ticks.bnm.farm/warning-letters", "warning-letters").accepts as { extra?: unknown }[])[0]?.extra,
+      paymentExtra("warning-letters"),
+    );
     const oneV2 = paymentRequiredV2("http://127.0.0.1/gmp?id=gmp-0001", "gmp", SINGLE_DOC_AMOUNT_ATOMIC);
     assert.equal((oneV2.accepts as { amount?: string }[])[0]?.amount, SINGLE_DOC_AMOUNT_ATOMIC);
     const declared = bazaarExtension("ticks");
@@ -372,6 +408,10 @@ async function main(): Promise<void> {
     assert.ok((wk.instructions ?? "").includes("?q="));
     assert.ok((wk.instructions ?? "").includes("$0.02"));
     assert.ok((wk.instructions ?? "").includes("$0.05"));
+    const llmsBag = await (await fetch(`${base}${LLMS_PATH}`)).text();
+    assert.ok(llmsBag.includes("accepts[].extra"));
+    assert.ok(llmsBag.includes("searchUrl"));
+    assert.ok(llmsBag.includes("pagePriceAtomic"));
     assert.ok(!(wk.instructions ?? "").includes("entire current cache"));
     assert.ok(!(wk.instructions ?? "").includes("newest 100"));
     assert.ok(!(wk.instructions ?? "").includes("page of 100"));
@@ -387,7 +427,14 @@ async function main(): Promise<void> {
       info: { title: string; version: string; contact?: { name?: string; url?: string } };
       "x-discovery"?: { ownershipProofs?: string[] };
       "x-agentcash-provenance"?: { ownershipProofs?: string[] };
-      "x-agentcash-guidance"?: { llmsTxtUrl?: string; sampleUrl?: string };
+      "x-agentcash-guidance"?: {
+        llmsTxtUrl?: string;
+        sampleUrl?: string;
+        firmCheckUrl?: string;
+        oneDocPriceAtomic?: number;
+        pagePriceAtomic?: number;
+        pageDefault?: number;
+      };
       paths: Record<string, {
         get?: {
           "x-auth"?: { mode?: string };
@@ -409,6 +456,10 @@ async function main(): Promise<void> {
     assert.deepEqual(spec["x-agentcash-provenance"]?.ownershipProofs, [PAY_TO]);
     assert.ok(spec["x-agentcash-guidance"]?.llmsTxtUrl?.endsWith(LLMS_PATH));
     assert.ok(spec["x-agentcash-guidance"]?.sampleUrl?.endsWith(SAMPLE_PATH));
+    assert.ok(spec["x-agentcash-guidance"]?.firmCheckUrl?.endsWith("/firm-check"));
+    assert.equal(spec["x-agentcash-guidance"]?.oneDocPriceAtomic, Number(SINGLE_DOC_AMOUNT_ATOMIC));
+    assert.equal(spec["x-agentcash-guidance"]?.pagePriceAtomic, Number(PAGE_AMOUNT_ATOMIC));
+    assert.equal(spec["x-agentcash-guidance"]?.pageDefault, 10);
     for (const paid of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH]) {
       const op = spec.paths[paid]?.get;
       assert.ok(op?.["x-payment-info"], `${paid} must declare x-payment-info`);
@@ -1593,17 +1644,30 @@ async function main(): Promise<void> {
         payTo: string;
         asset: string;
         resource: string;
-        accepts: { maxAmountRequired?: string; description?: string }[];
+        accepts: { maxAmountRequired?: string; description?: string; extra?: Record<string, unknown> }[];
       };
       assert.equal(body402.resource, WARNING_LETTERS_PATH);
       assert.equal(body402.accepts[0]?.maxAmountRequired, WARNING_LETTERS_AMOUNT_ATOMIC);
       assert.ok((body402.accepts[0]?.description ?? "").includes("/warning-letters/manifest.json?q="));
+      const wlExtra = body402.accepts[0]?.extra;
+      assert.equal(wlExtra?.name, "USD Coin");
+      assert.equal(wlExtra?.searchUrl, "https://ticks.bnm.farm/warning-letters/manifest.json?q=");
+      assert.equal(wlExtra?.oneDocPath, "/warning-letters?id=");
+      assert.equal(wlExtra?.priceAtomic, Number(SINGLE_DOC_AMOUNT_ATOMIC));
+      assert.equal(wlExtra?.pagePriceAtomic, Number(PAGE_AMOUNT_ATOMIC));
+      assert.equal(wlExtra?.pageDefault, 10);
+      assert.equal(wlExtra?.wholeSetIfFewer, true);
+      assert.equal(wlExtra?.firmCheckUrl, "https://ticks.bnm.farm/firm-check");
+      assert.equal(wlExtra?.sampleUrl, "https://ticks.bnm.farm/sample");
       const wlPr = unpaid.headers.get("payment-required");
       assert.ok(wlPr, "v2 PAYMENT-REQUIRED header");
       const wlV2 = JSON.parse(Buffer.from(wlPr, "base64").toString("utf8")) as {
         extensions?: { bazaar?: { info?: { input?: { method?: string } } } };
+        accepts?: { extra?: Record<string, unknown> }[];
       };
       assert.equal(wlV2.extensions?.bazaar?.info?.input?.method, "GET");
+      assert.equal(wlV2.accepts?.[0]?.extra?.oneDocPath, "/warning-letters?id=");
+      assert.equal(wlV2.accepts?.[0]?.extra?.name, "USD Coin");
 
       const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
       assert.equal(shop.products.some((p) => p.path === WARNING_LETTERS_PATH), true);

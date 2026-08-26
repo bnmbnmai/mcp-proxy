@@ -18,7 +18,7 @@ payTo `0xf59621FC406D266e18f314Ae18eF0a33b8401004` · Base (`eip155:8453`) · US
 
 Official public data caches (PDF/HTML sources), returned as JSON after x402. Not free-JSON wraps. Unpaid GET on a paid path returns HTTP 402. No API key. No request body.
 
-Paid GETs are listed on live well-known (do not hardcode a door count). Table doors (`/ticks`, `/import-alerts`): one `$0.05` (`50000` atomic) GET is the **entire current table**. Extracted-body doors have **two bags on the same URL**: `?id=` one official text is `$0.02` (`20000` atomic); default GET is the newest 10 for `$0.05` (whole current set if n<10) (`50000` atomic). Free index (`?q=`) names the **id to buy**. Catalog counts are records, not SKUs.
+Paid GETs are listed on live well-known (do not hardcode a door count). Table doors (`/ticks`, `/import-alerts`): one `$0.05` (`50000` atomic) GET is the **entire current table**. Extracted-body doors have **two bags on the same URL**: `?id=` one official text is `$0.02` (`20000` atomic); default GET is the newest 10 for `$0.05` (whole current set if n<10) (`50000` atomic). Free index (`?q=`) names the **id to buy**. Catalog counts are records, not SKUs. Unpaid 402 `accepts[].extra` names `searchUrl`, `oneDocPath`, `priceAtomic`, `pagePriceAtomic`, `pageDefault`, `tableWhole`, `firmCheckUrl`, `sampleUrl` (`extra.name` stays USD Coin).
 ## Live paid GETs
 
 Rows match the live well-known resource list. One-line copy plus bag size is what an agent should see on `GET /`, `/llms.txt`, `/openapi.json`, and MCP tools.
