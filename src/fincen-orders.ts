@@ -1,8 +1,10 @@
 /**
- * FinCEN institution consent-order TEXT door.
+ * FinCEN institution consent-order / assessment TEXT door.
  * Official per-order PDFs from fincen.gov only. Does not invent order text.
- * Enforcement-actions index is title/date/matter/PDF URL only (listing metadata).
- * Not people-only CMP letters. Not a news-release wrap. Not Federal Register raw_text.
+ * First-slice miss: consent-order filename/title only, dated PDF folders, 20XX-XX dockets.
+ * Official leftover catalog is the same enforcement-actions table (institution CMP assessments
+ * + leftover consent orders whose listing title is only "In the Matter of").
+ * Not people-only CMP letters. Not casinos. Not a news-release wrap. Not Federal Register raw_text.
  * Not Drupal ?_format=json. Not NCUA /ncua-orders. Not FRB /frb-orders.
  * Not FDIC /fdic-orders. Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl.
  */
@@ -21,12 +23,14 @@ export const PRODUCT_ID = "fincen-institution-order-bodies";
 export const PRODUCT_NAME = "FinCEN institution consent-order text";
 
 export const LISTING_URL = "https://www.fincen.gov/news/enforcement-actions";
+/** First-slice teaser: recent consent-order filenames. Official catalog is the same table. */
+export const FIRST_SLICE_LISTING_URL = LISTING_URL;
 export const PDF_HOST = "www.fincen.gov";
 export const PDF_ORIGIN = "https://www.fincen.gov";
-export const DOCKET_RE = /\b(20\d{2}-\d{2})\b/;
-export const NUMBER_RE = /\bNumber\s+(20\d{2}-\d{2})\b/i;
+export const DOCKET_RE = /\b(20\d{2}-\d{1,2})\b/;
+export const NUMBER_RE = /\bNumber\s+\[?(20\d{2}-\d{1,2})\]?\b/i;
 export const PDF_PATH_RE =
-  /^\/system\/files\/(?:20\d{2}-\d{2}|enforcement_action\/\d{4}-\d{2}-\d{2})\/[A-Za-z0-9._%-]+\.pdf$/i;
+  /^\/system\/files\/(?:20\d{2}-\d{2}|enforcement_action(?:\/\d{4}-\d{2}-\d{2})?)\/[A-Za-z0-9._%-]+\.pdf$/i;
 export const LICENSE = "17 USC 105";
 export const ATTRIBUTION = "FinCEN";
 
@@ -99,7 +103,7 @@ const HTTP_UA = "bnm-data-shop/1.0 (FinCEN public consent orders; +https://www.f
 const INSTITUTION_TYPE_RE =
   /securities and futures|money services business|depository institution/i;
 const ENTITY_RE =
-  /\b(Inc\.?|LLC|L\.P\.|LP|Corp\.?|Corporation|Bank|N\.A\.|Ltd\.?|Limited|Company|Services|Holdings|Trust|National Association)\b/i;
+  /\b(Inc\.?|LLC|L\.P\.|LP|Corp\.?|Corporation|Incorporated|Bank|N\.A\.|Ltd\.?|Limited|Company|Services|Holdings|Trust|Credit Union|National Association)\b/i;
 const PERSON_NAME_RE = /^[A-Z][a-z]+(?:\s+[A-Z]\.?)?(?:\s+[A-Z][a-z]+){1,2}$/;
 
 /** Official FinCEN institution consent-order PDFs on fincen.gov. BD / MSB / bank only. */
@@ -290,6 +294,15 @@ export function isConsentOrderRow(row: FincenListingRow): boolean {
   return /consent[\s_-]?order/i.test(blob);
 }
 
+/** Official institution order on the enforcement-actions table: consent order or CMP assessment. */
+export function isOfficialOrderRow(row: FincenListingRow): boolean {
+  const blob = `${row.title ?? ""} ${row.sourceUrl ?? ""} ${row.pdfId ?? ""}`;
+  if (/consent/i.test(blob) || /assessment/i.test(blob) || /civil[\s_-]?money[\s_-]?penalty/i.test(blob)) {
+    return true;
+  }
+  return Boolean(officialFincenPdfUrl(row.sourceUrl ?? row.pdfId ?? ""));
+}
+
 export function isBdMsbBankType(row: FincenListingRow): boolean {
   const type = row.type ?? "";
   if (!type.trim()) return ENTITY_RE.test(row.institution ?? "");
@@ -301,12 +314,19 @@ export function isInstitutionOrderRow(row: FincenListingRow): boolean {
   if (isCasinoRow(row)) return false;
   if (isNewsReleaseRow(row)) return false;
   if (!isBdMsbBankType(row)) return false;
-  if (!isConsentOrderRow(row)) return false;
+  if (!isOfficialOrderRow(row)) return false;
   const institution = (row.institution ?? "").trim();
   if (!institution || !ENTITY_RE.test(institution)) return false;
   const docket = normalizeDocket(row.docket);
   if (!docket) return false;
   return Boolean(officialFincenPdfUrl(row.sourceUrl ?? row.pdfId ?? ""));
+}
+
+function listingTitle(row: FincenListingRow): string {
+  const blob = `${row.title ?? ""} ${row.sourceUrl ?? ""} ${row.pdfId ?? ""}`;
+  if (/consent/i.test(blob)) return "Consent Order Imposing Civil Money Penalty";
+  if (/assessment/i.test(blob)) return "Assessment of Civil Money Penalty";
+  return listingKind(row);
 }
 
 export function parseListingRows(rows: FincenListingRow[]): FincenOrderListing[] {
@@ -325,7 +345,7 @@ export function parseListingRows(rows: FincenListingRow[]): FincenOrderListing[]
       docket,
       institution: (row.institution ?? "").trim(),
       date: isoDate(row.date),
-      title: /consent/i.test(row.title ?? "") ? "Consent Order Imposing Civil Money Penalty" : listingKind(row),
+      title: listingTitle(row),
       sourceUrl,
       pdfId,
     });
@@ -391,8 +411,12 @@ export function isDrupalJsonDump(text: string): boolean {
 
 export function isPeopleCmpDump(text: string): boolean {
   if (/people-only CMP/i.test(text)) return true;
-  if (/ASSESSMENT OF CIVIL MONEY PENALTY/i.test(text) && !/CONSENT ORDER IMPOSING CIVIL MONEY PENALTY/i.test(text)) {
-    return true;
+  const assessment = /ASSESSMENT OF CIVIL MONEY PENALTY/i.test(text);
+  const consent =
+    /CONSENT ORDER IMPOSING CIVIL MONEY PENALTY/i.test(text) || /\bCONSENT ORDER\b/i.test(text);
+  if (assessment && !consent) {
+    const matter = (text.match(/IN THE MATTER OF:[\s\S]{0,500}/i) || [text.slice(0, 800)])[0];
+    if (!ENTITY_RE.test(matter)) return true;
   }
   return false;
 }
@@ -409,26 +433,32 @@ export function isRealFincenOrderBody(text: string): boolean {
   }
   const compact = text.replace(/\s+/g, " ").trim();
   if (compact.length < 2000) return false;
-  if (/CONSUMER FINANCIAL PROTECTION BUREAU/i.test(text) && /File No\.\s*\d{4}-CFPB-\d+/i.test(text)) {
-    return false;
-  }
-  if (/OFFICE OF THE COMPTROLLER OF THE CURRENCY/i.test(text) && /\bAA-[A-Z]{2,4}-\d{4}-\d+\b/.test(text)) {
-    return false;
-  }
-  if (/FEDERAL DEPOSIT INSURANCE CORPORATION/i.test(text) && /\bFDIC-\d{2}-\d{4}[a-z]\b/i.test(text)) {
-    return false;
-  }
-  if (/BOARD OF GOVERNORS OF THE FEDERAL RESERVE SYSTEM/i.test(text) && /\b\d{2}-\d{3}-(?:B|PCA|WA\/RB)/i.test(text)) {
-    return false;
-  }
-  if (/National Credit Union Administration/i.test(text) && /\b\d{2}-\d{4}-[A-Z]{2}\b/.test(text)) {
-    return false;
-  }
-  if (/Bureau of Consumer Protection/i.test(text) && /Made in the USA Labeling Rule|MUSA Labeling Rule/i.test(text)) {
-    return false;
-  }
   const fincen = /FINANCIAL CRIMES ENFORCEMENT NETWORK/i.test(text);
-  const order = /CONSENT ORDER IMPOSING CIVIL MONEY PENALTY/i.test(text) || /\bCONSENT ORDER\b/i.test(text);
+  if (!fincen) {
+    if (/CONSUMER FINANCIAL PROTECTION BUREAU/i.test(text) && /File No\.\s*\d{4}-CFPB-\d+/i.test(text)) {
+      return false;
+    }
+    if (/OFFICE OF THE COMPTROLLER OF THE CURRENCY/i.test(text) && /\bAA-[A-Z]{2,4}-\d{4}-\d+\b/.test(text)) {
+      return false;
+    }
+    if (/FEDERAL DEPOSIT INSURANCE CORPORATION/i.test(text) && /\bFDIC-\d{2}-\d{4}[a-z]\b/i.test(text)) {
+      return false;
+    }
+    if (/BOARD OF GOVERNORS OF THE FEDERAL RESERVE SYSTEM/i.test(text) && /\b\d{2}-\d{3}-(?:B|PCA|WA\/RB)/i.test(text)) {
+      return false;
+    }
+    if (/National Credit Union Administration/i.test(text) && /\b\d{2}-\d{4}-[A-Z]{2}\b/.test(text)) {
+      return false;
+    }
+    if (/Bureau of Consumer Protection/i.test(text) && /Made in the USA Labeling Rule|MUSA Labeling Rule/i.test(text)) {
+      return false;
+    }
+    return false;
+  }
+  const order =
+    /CONSENT ORDER IMPOSING CIVIL MONEY PENALTY/i.test(text) ||
+    /\bCONSENT ORDER\b/i.test(text) ||
+    /ASSESSMENT OF CIVIL MONEY PENALTY/i.test(text);
   const docket = NUMBER_RE.test(text) || DOCKET_RE.test(text);
   const facts = /STATEMENT OF FACTS/i.test(text) || /DETERMINATION/i.test(text) || /VIOLATIONS/i.test(text);
   return fincen && order && docket && facts;
@@ -437,6 +467,9 @@ export function isRealFincenOrderBody(text: string): boolean {
 export function parseOrderTitle(body: string): string {
   if (/CONSENT ORDER IMPOSING CIVIL MONEY PENALTY/i.test(body)) {
     return "Consent Order Imposing Civil Money Penalty";
+  }
+  if (/ASSESSMENT OF CIVIL MONEY PENALTY/i.test(body)) {
+    return "Assessment of Civil Money Penalty";
   }
   if (/\bCONSENT ORDER\b/i.test(body)) return "Consent Order";
   return "Consent Order Imposing Civil Money Penalty";
@@ -562,17 +595,17 @@ function listingDir(): string {
 }
 
 function firstSliceLimit(): number {
-  const raw = env("FINCEN_ORDERS_LIMIT", "5");
+  const raw = env("FINCEN_ORDERS_LIMIT", "24");
   if (raw === "0") return 0;
   const n = Number(raw);
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 5;
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 24;
 }
 
 function maxFetchLimit(): number {
-  const raw = env("FINCEN_ORDERS_MAX_FETCH", "8");
+  const raw = env("FINCEN_ORDERS_MAX_FETCH", "36");
   if (raw === "0") return 0;
   const n = Number(raw);
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 8;
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 36;
 }
 
 function readNamedFile(dir: string, names: string[]): string | null {
@@ -632,17 +665,24 @@ function mergeOfficialListings(listed: FincenOrderListing[], seeds: FincenOrderL
   return out;
 }
 
+const FIXTURE_LISTING_JSON = ["listing-excerpt.json", "leftover-listing-excerpt.json", "listing.json"];
+const FIXTURE_LISTING_HTML = ["listing-excerpt.html", "leftover-listing-excerpt.html", "listing.html"];
+
 async function loadOfficialListings(dir: string): Promise<{ listed: FincenOrderListing[]; listedCount: number }> {
   if (dir) {
-    const json = readNamedFile(dir, ["listing-excerpt.json", "listing.json"]);
-    if (json) {
+    const listed: FincenOrderListing[] = [];
+    for (const name of FIXTURE_LISTING_JSON) {
+      const json = readNamedFile(dir, [name]);
+      if (!json) continue;
       const rows = JSON.parse(json) as FincenListingRow[];
-      const listed = Array.isArray(rows) ? parseListingRows(rows) : [];
-      return { listed, listedCount: listed.length };
+      if (Array.isArray(rows)) listed.push(...parseListingRows(rows));
     }
-    const html = readNamedFile(dir, ["listing-excerpt.html", "listing.html"]);
-    const listed = html ? parseListingHtml(html) : [];
-    return { listed, listedCount: listed.length };
+    for (const name of FIXTURE_LISTING_HTML) {
+      const html = readNamedFile(dir, [name]);
+      if (html) listed.push(...parseListingHtml(html));
+    }
+    const merged = mergeOfficialListings(listed, SEED_LISTINGS);
+    return { listed: merged, listedCount: merged.length };
   }
   try {
     const listed = parseListingHtml(await fetchFincenText(LISTING_URL));

@@ -1,0 +1,75 @@
+[
+  {
+    "institution": "Brink’s Global Services USA, Inc.",
+    "docket": "2025-01",
+    "date": "2025-01-31",
+    "title": "In the Matter of Brink’s Global Services USA, Inc.",
+    "type": "Money Services Businesses",
+    "sourceUrl": "https://www.fincen.gov/system/files/enforcement_action/2025-02-06/FinCEN-Brinks-FINALv508.pdf",
+    "pdfId": "FinCEN-Brinks-FINALv508"
+  },
+  {
+    "institution": "Sahara Dunes Casino, LP d/b/a Lake Elsinore Hotel and Casino",
+    "docket": "2024-03",
+    "date": "2024-10-22",
+    "title": "In the Matter of Sahara Dunes Casino, LP d/b/a Lake Elsinore Hotel and Casino",
+    "type": "Casinos",
+    "sourceUrl": "https://www.fincen.gov/system/files/enforcement_action/2024-10-23/FinCEN-Consent-Order-Lake-Elsinore-508.pdf",
+    "pdfId": "FinCEN-Consent-Order-Lake-Elsinore-508"
+  },
+  {
+    "institution": "Gyanendra Kumar Asre",
+    "individual": "Gyanendra Kumar Asre",
+    "docket": "2024-01",
+    "date": "2024-01-31",
+    "title": "In the Matter of Gyanendra Kumar Asre",
+    "type": "Depository Institutions, Money Services Businesses",
+    "sourceUrl": "https://www.fincen.gov/system/files/enforcement_action/2024-01-31/FinCEN_Consent_Order_2024-01_FINAL508.pdf",
+    "pdfId": "FinCEN_Consent_Order_2024-01_FINAL508"
+  },
+  {
+    "institution": "Shinhan Bank America",
+    "docket": "2023-03",
+    "date": "2023-09-29",
+    "title": "In the Matter of Shinhan Bank America",
+    "type": "Depository Institutions",
+    "sourceUrl": "https://www.fincen.gov/system/files/enforcement_action/2023-09-29/SHBA_9-28_FINAL_508.pdf",
+    "pdfId": "SHBA_9-28_FINAL_508"
+  },
+  {
+    "institution": "Bancrédito International Bank and Trust Corporation",
+    "docket": "2023-02",
+    "date": "2023-09-15",
+    "title": "In the Matter of Bancrédito International Bank and Trust Corporation",
+    "type": "Depository Institutions",
+    "sourceUrl": "https://www.fincen.gov/system/files/enforcement_action/2023-09-15/Bancredito_Consent_FINAL_091523_508C.pdf",
+    "pdfId": "Bancredito_Consent_FINAL_091523_508C"
+  },
+  {
+    "institution": "Capital One, National Association",
+    "docket": "2021-01",
+    "date": "2021-01-15",
+    "title": "In the Matter of Capital One, National Association",
+    "type": "Depository Institutions",
+    "sourceUrl": "https://www.fincen.gov/system/files/enforcement_action/2023-04-05/Assessment_CONA_508_0.pdf",
+    "pdfId": "Assessment_CONA_508_0"
+  },
+  {
+    "institution": "JPMorgan Chase Bank, N.A.",
+    "docket": "2014-01",
+    "date": "2014-01-07",
+    "title": "In the Matter of JPMorgan Chase Bank, N.A.",
+    "type": "Depository Institutions",
+    "sourceUrl": "https://www.fincen.gov/system/files/enforcement_action/2020-05-21/JPMorgan_ASSESSMENT_01072014_0.pdf",
+    "pdfId": "JPMorgan_ASSESSMENT_01072014_0"
+  },
+  {
+    "institution": "HSBC Bank USA N.A.",
+    "docket": "2012-02",
+    "date": "2012-12-11",
+    "title": "In the Matter of HSBC Bank USA N.A.",
+    "type": "Depository Institutions",
+    "sourceUrl": "https://www.fincen.gov/system/files/enforcement_action/HSBC_ASSESSMENT.pdf",
+    "pdfId": "HSBC_ASSESSMENT"
+  }
+]

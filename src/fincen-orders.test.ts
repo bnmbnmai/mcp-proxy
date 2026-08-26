@@ -8,12 +8,14 @@ import {
   ATTRIBUTION,
   CARD_FIELDS,
   LICENSE,
+  FIRST_SLICE_LISTING_URL,
   LISTING_URL,
   SEED_LISTINGS,
   buildFincenOrdersManifest,
   collectFincenOrders,
   isCasinoRow,
   isInstitutionOrderRow,
+  isOfficialOrderRow,
   isPeopleRow,
   isRealFincenOrderBody,
   officialFincenPdfUrl,
@@ -71,7 +73,12 @@ async function main(): Promise<void> {
     null,
   );
   assert.equal(officialFincenPdfUrl("https://www.fincen.gov/news/enforcement-actions"), null);
+  assert.equal(
+    officialFincenPdfUrl("https://www.fincen.gov/system/files/enforcement_action/HSBC_ASSESSMENT.pdf"),
+    "https://www.fincen.gov/system/files/enforcement_action/HSBC_ASSESSMENT.pdf",
+  );
   assert.ok(LISTING_URL.includes("fincen.gov"));
+  assert.equal(FIRST_SLICE_LISTING_URL, LISTING_URL);
   assert.equal(SEED_LISTINGS.length, 5);
   assert.ok(SEED_LISTINGS.some((r) => r.docket === "2026-02"));
 
@@ -80,6 +87,22 @@ async function main(): Promise<void> {
   assert.ok(htmlListed.some((r) => r.id === "2024-02"));
   assert.ok(!htmlListed.some((r) => r.id === "2024-01"));
   assert.ok(!htmlListed.some((r) => /Lake Elsinore/i.test(r.institution)));
+
+  const leftoverRows = JSON.parse(readFx("leftover-listing-excerpt.json")) as FincenListingRow[];
+  const leftoverListed = parseListingRows(leftoverRows);
+  assert.ok(leftoverListed.some((r) => r.id === "2023-03"), "leftover listing includes Shinhan Bank America");
+  assert.ok(leftoverListed.some((r) => r.id === "2023-02"), "leftover listing includes Bancrédito");
+  assert.ok(leftoverListed.some((r) => r.id === "2021-01"), "leftover listing includes Capital One assessment");
+  assert.ok(leftoverListed.some((r) => r.id === "2014-01"), "leftover listing includes JPMorgan assessment");
+  assert.ok(leftoverListed.some((r) => r.id === "2012-02"), "leftover listing includes HSBC assessment");
+  assert.ok(leftoverListed.some((r) => r.id === "2025-01"), "Brink’s listing row is an official order even without consent in the title");
+  assert.ok(!leftoverListed.some((r) => r.id === "2024-01"), "skip people-only CMP");
+  assert.ok(!leftoverListed.some((r) => /Lake Elsinore/i.test(r.institution)), "skip casino");
+  assert.ok(leftoverListed.every((r) => officialFincenPdfUrl(r.sourceUrl)), "leftover walk keeps official fincen.gov PDFs");
+  const leftoverHtml = parseListingHtml(readFx("leftover-listing-excerpt.html"));
+  assert.ok(leftoverHtml.some((r) => r.id === "2021-01"));
+  assert.ok(leftoverHtml.some((r) => r.id === "2012-02"));
+  assert.ok(!leftoverHtml.some((r) => r.id === "2024-01"));
 
   const people = rows.find((r) => (r.docket ?? "") === "2024-01");
   assert.ok(people);
@@ -91,7 +114,13 @@ async function main(): Promise<void> {
   assert.equal(isInstitutionOrderRow(casino!), false);
   const ubsRow = rows.find((r) => r.docket === "2026-02" && officialFincenPdfUrl(r.sourceUrl ?? ""));
   assert.equal(isInstitutionOrderRow(ubsRow!), true);
+  assert.equal(isOfficialOrderRow(ubsRow!), true);
   assert.equal(isPeopleRow(ubsRow!), false);
+  const capitalOneRow = leftoverRows.find((r) => r.docket === "2021-01");
+  assert.equal(isInstitutionOrderRow(capitalOneRow!), true, "institution CMP assessment is this SKU");
+  assert.equal(isOfficialOrderRow(capitalOneRow!), true);
+  const shinhanRow = leftoverRows.find((r) => r.docket === "2023-03");
+  assert.equal(isInstitutionOrderRow(shinhanRow!), true, "leftover consent order without consent in the title is this SKU");
 
   const ubsText = parseFincenOrderText(readFx("2026-02.txt"), {
     sourceUrl: "https://www.fincen.gov/system/files/2026-07/UBS-Consent-Order.pdf",
@@ -164,6 +193,27 @@ async function main(): Promise<void> {
     institution: "Gyanendra Kumar Asre",
   });
   assert.equal(isRealFincenOrderBody(peopleBody.body), false, "people-only CMP is not this SKU");
+
+  const capitalOne = parseFincenOrderText(readFx("2021-01.txt"), {
+    sourceUrl: "https://www.fincen.gov/system/files/enforcement_action/2023-04-05/Assessment_CONA_508_0.pdf",
+    institution: "Capital One, National Association",
+    date: "2021-01-15",
+    docket: "2021-01",
+  });
+  assert.ok(isRealFincenOrderBody(capitalOne.body), "official leftover Capital One assessment is this SKU");
+  assert.equal(capitalOne.docket, "2021-01");
+  assert.equal(capitalOne.title, "Assessment of Civil Money Penalty");
+  assert.match(capitalOne.institution, /Capital One/i);
+
+  const shinhan = parseFincenOrderText(readFx("2023-03.txt"), {
+    sourceUrl: "https://www.fincen.gov/system/files/enforcement_action/2023-09-29/SHBA_9-28_FINAL_508.pdf",
+    institution: "Shinhan Bank America",
+    date: "2023-09-29",
+    docket: "2023-03",
+  });
+  assert.ok(isRealFincenOrderBody(shinhan.body), "official leftover Shinhan consent order is this SKU");
+  assert.equal(shinhan.docket, "2023-03");
+  assert.equal(shinhan.title, "Consent Order Imposing Civil Money Penalty");
 
   const fr = parseFincenOrderText(readFx("federal-register.txt"), {
     sourceUrl: "https://www.federalregister.gov/documents/2026/08/03/2026-99999/fincen-ubs",
@@ -250,12 +300,14 @@ async function main(): Promise<void> {
   try {
     const snap = await collectFincenOrders({ jsonDir: fixtures, limit: 10, pauseMs: 0 });
     assert.equal(snap.status, "ok");
-    assert.ok(snap.cards.length >= 5, "fixture collect extracts five official FinCEN institution consent-order bodies");
+    assert.ok(snap.cards.length >= 6, "fixture collect extracts first-slice seeds plus leftover official PDF text");
     assert.ok(snap.cards.some((c) => c.docket === "2026-02" && isRealFincenOrderBody(c.body)));
     assert.ok(snap.cards.some((c) => c.docket === "2026-01" && isRealFincenOrderBody(c.body)));
     assert.ok(snap.cards.some((c) => c.docket === "2025-02" && isRealFincenOrderBody(c.body)));
     assert.ok(snap.cards.some((c) => c.docket === "2025-01" && isRealFincenOrderBody(c.body)));
     assert.ok(snap.cards.some((c) => c.docket === "2024-02" && isRealFincenOrderBody(c.body)));
+    assert.ok(snap.cards.some((c) => c.docket === "2023-03" && isRealFincenOrderBody(c.body)), "leftover Shinhan consent order is collected");
+    assert.ok(snap.cards.some((c) => c.docket === "2021-01" && isRealFincenOrderBody(c.body)), "leftover Capital One assessment is collected");
     assert.ok(snap.cards.every((c) => isRealFincenOrderBody(c.body)));
     assert.ok(!snap.cards.some((c) => c.id === "2024-01"), "skip people CMP");
     assert.ok(snap.cards.every((c) => officialFincenPdfUrl(c.sourceUrl)));
