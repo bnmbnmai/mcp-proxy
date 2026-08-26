@@ -55,7 +55,7 @@ NCUA_ORDERS_LIMIT=24 NCUA_ORDERS_MAX_FETCH=36 npm run collect:ncua-orders
 systemctl --user restart idaho-ticks-x402.service
 ```
 
-Leftover collect on apollo (2026-08-26): snapshot **cardCount 12**, asOf **2022-11-29**, fetchedAt **2026-08-26T15:32:11.454Z**. Official extractable institution C&D text tops out at 12. Price still $0.02 / $0.05. No new SKU.
+Live after leftover apply (2026-08-26): **cardCount 12**, asOf **2022-11-29**, fetchedAt **2026-08-26T15:32:11.454Z**. Official extractable institution C&D text tops out at 12. Price still $0.02 / $0.05. No new SKU. Restarted only `idaho-ticks-x402.service`.
 
 ## Local smoke (cloud VM / laptop)
 
