@@ -1,0 +1,380 @@
+                              UNITED STATES OF AMERICA
+                       FINANCIAL CRIMES ENFORCEMENT NETWORK
+                            DEPARTMENT OF THE TREASURY
+
+    IN THE MATTER OF:                                        )
+                                                             )                Number 2023-03
+    Shinhan Bank America                                     )
+    New York, NY                                             )
+
+
+                   CONSENT ORDER IMPOSING CIVIL MONEY PENALTY
+
+             The Financial Crimes Enforcement Network (FinCEN) conducted a civil enforcement
+
+    investigation and determined that grounds exist to impose a Civil Money Penalty against
+
+    Shinhan Bank America (SHBA or the Bank) for violations of the Bank Secrecy Act (BSA)
+
+    and its implementing regulations.1 SHBA admits to the Statement of Facts and Violations set
+
+    forth below and consents to the issuance of this Consent Order.
+
+       I.        JURISDICTION
+
+             Overall authority for enforcement and compliance with the BSA lies with the Director
+
+    of FinCEN, and the Director may impose civil penalties for violations of the BSA and its
+
+    implementing regulations.2
+
+             At all times relevant to this Consent Order, SHBA was a “bank” and a “domestic
+
+    financial institution” as defined by the BSA and its implementing regulations.3              As such,
+
+    SHBA was required to comply with applicable FinCEN regulations.
+
+       II.       STATEMENT OF FACTS
+
+             The conduct described below took place from on or about April 1, 2016, through on
+
+    or about March 29, 2021 (Relevant Time Period), unless otherwise indicated.
+
+
+
+1
+  The BSA is codified at 12 U.S.C. §§ 1829b, 1951-1960, 31 U.S.C. §§ 5311-5314, 5316-5336 and notes
+thereto. Regulations implementing the BSA appear at 31 C.F.R. Chapter X.
+2
+  31 U.S.C. § 5321(a); 31 C.F.R. §§ 1010.810(a), (d); Treasury Order 180-01 (Jan. 14, 2020).
+3
+  31 U.S.C. §§ 5312(a)(2)(B), (b)(1); 31 C.F.R. § 1010.100(d).
+
+                A. Bank Secrecy Act
+
+           The BSA, together with its implementing regulations, establishes a framework for
+
+    financial institutions to guard against money laundering, and to report essential financial
+
+    intelligence to FinCEN. The BSA accomplishes this by, among other things, requiring banks
+
+    to implement and maintain an effective anti-money laundering (AML) program in order to
+
+    guard against money laundering through financial institutions.4                  Additionally, the BSA
+
+    imposes affirmative duties on banks such as SHBA, including the duty to identify and report
+
+    suspicious transactions relevant to a possible violation of law or regulation in suspicious
+
+    activity reports (SARs) filed with FinCEN.5 The reporting and transparency that financial
+
+    institutions provide through these reports is essential financial intelligence that FinCEN,
+
+    law enforcement, and others use to safeguard the U.S. financial system and combat serious
+
+    threats, including money laundering, terrorist financing, organized crime, corruption, drug
+
+    trafficking, and massive fraud schemes targeting the U.S. government, businesses, and
+
+    individuals.6
+
+                B. FinCEN
+
+           FinCEN is a bureau within the U.S. Department of the Treasury and is the federal
+
+    authority that enforces the BSA by investigating and imposing civil money penalties on
+
+    financial institutions and individuals for willful violations of the BSA.7 As delegated by the
+
+
+
+
+4
+  31 U.S.C. § 5318(h); 31 C.F.R. § 1020.210.
+5
+  31 U.S.C. § 5318(g); 31 C.F.R. § 1020.320.
+6
+  See FinCEN, FIN-2014-A007, FinCEN Advisory to U.S. Financial Institutions Promoting a Culture of Compliance
+(Aug. 11, 2014).
+7
+  31 U.S.C. § 5321(a). In civil enforcement of the BSA under 31 U.S.C. § 5321(a)(1), to establish that a financial
+institution or individual acted willfully, the government need only show that the financial institution or individual
+acted with either reckless disregard or willful blindness. The government need not show that the entity or individual
+had knowledge that the conduct violated the BSA, or that the entity or individual otherwise acted with an improper
+motive or bad purpose. The Bank admits to “willfulness” only as the term is used in civil enforcement of the BSA
+under 31 U.S.C. § 5321(a)(1).
+
+
+                                                          2
+
+    Secretary of the Treasury, FinCEN has “authority for the imposition of civil penalties” and
+
+    “[o]verall authority for enforcement and compliance, including coordination and direction of
+
+    procedures and activities of all other agencies exercising delegated authority under this
+
+    chapter,” including the Federal Deposit Insurance Corporation (FDIC).8
+
+                C. FDIC
+
+           The FDIC is an independent federal agency that has both delegated authority from
+
+    Treasury for BSA examinations and separate authority under Title 12 of the United States
+
+    Code, the Federal Deposit Insurance Act (FDIA), for compliance and enforcement.9 Under
+
+    this authority, the FDIC conducts regular examinations and issues reports assessing a bank’s
+
+    compliance with the BSA and other laws.
+
+                D. SHBA
+
+           Throughout the Relevant Time Period, SHBA was a New York-chartered, “state
+
+    nonmember insured bank,”10 headquartered in New York, New York and regulated and
+
+    examined by the New York State Department of Financial Services (NYDFS). SHBA was a
+
+    wholly-owned subsidiary of Shinhan Bank Co., Ltd. (Parent Bank), a foreign bank based in
+
+    Seoul, South Korea. SHBA operated as many as 15 branches throughout the United States,
+
+    primarily in the New York area and Southern California, with a smaller presence in Georgia
+
+    and Texas, offering a range of banking products and financial services to businesses and retail
+
+    customers. During the Relevant Time Period, SHBA was a “financial institution” and a
+
+    “bank” within the meaning of the BSA and its implementing regulations,11 and was subject to
+
+    an annual examination performed by the FDIC as its Federal functional regulator.
+
+
+
+8
+  31 C.F.R. § 1010.810(a), (b)(3), (d).
+9
+  12 U.S.C. §§ 1818; 1820(b).
+10
+   12 U.S.C. § 1813(q)(2)(A).
+11
+   31 U.S.C. § 5312(a)(2)(A), (B); 31 C.F.R. §§ 1010.100(d)(1), 1010.100(t)(1).
+
+
+                                                         3
+
+Factual Background
+
+         SHBA’s willful violations of the BSA stem from repeated notice during the Relevant
+
+ Time Period that its compliance program did not comply with the BSA.12 SHBA repeatedly
+
+ failed to fully remediate these deficiencies to bring the Bank into compliance with the law.
+
+         Specifically, beginning by at least 2015, the Bank was notified that it was in violation
+
+ of the BSA, including for failing to develop and implement an effective AML program that
+
+ met the minimum requirements of the BSA or the FDIA and for failing to file SARs in
+
+ accordance with BSA requirements. The BSA violations continued and, as a consequence, on
+
+ June 12, 2017, the FDIC, with SHBA’s consent, issued a Consent Order (2017 Consent Order)
+
+ requiring certain corrective action to redress the Bank’s non-compliance. On October 13,
+
+ 2022, the FDIC, again with SHBA’s consent, issued an Amended and Restated Consent Order
+
+ (2022 Consent Order) requiring additional corrective action to address the remaining
+
+ deficiencies and weaknesses identified in SHBA’s AML program. SHBA also entered into a
+
+ Memorandum of Understanding with NYDFS in May 2020 (2020 NYDFS MOU) to address
+
+ deficiencies in the Bank’s BSA/AML compliance program and its internal audit function,
+
+ which required the Bank to, among other things, submit written reports detailing its
+
+ remediation of these deficiencies.
+
+         By the terms of both the 2017 Consent Order and the 2020 NYDFS MOU, SHBA
+
+ agreed to take certain corrective action to bring the Bank into compliance with the BSA.
+
+ However, despite these agreements and SHBA’s prior awareness of its non-compliance with
+
+
+
+
+12
+  See In the Matter of Shinhan Bank America, Consent Order, FDIC-16-0237b (June 12, 2017) available at
+https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069t0000002Z6HvAAK?operationContext=S1; In
+the Matter of Shinhan Bank America, Amended and Restated Consent Order, FDIC-16-0237b (Oct. 13, 2022)
+available at https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069t000000giozPAAQ?operation
+Context=S 1.
+
+
+                                                    4
+
+ the BSA, SHBA failed to make all of the critical changes needed to bring the Bank into full
+
+ compliance with the BSA. For example, while SHBA management made improvements to
+
+ its AML program during the Relevant Time Period in response to certain of the Consent Order
+
+ provisions, it struggled even to retain a consistent compliance officer during parts of the
+
+ Relevant Time Period, let alone to fully address its more systemic violations. SHBA’s failure
+
+ to take the required corrective action and the identification of the remaining deficiencies and
+
+ weaknesses resulted in NYDFS notifying the Bank on May 14, 2021, that it was in material
+
+ breach of the 2020 NYDFS MOU.
+
+             As of the end of the Relevant Time Period, SHBA remained out of compliance with
+
+ several provisions of the 2017 Consent Order, and failed to implement and maintain a
+
+ satisfactory AML program and to detect and report suspicious activity to FinCEN. SHBA’s
+
+ recurrent failure to remedy its BSA violations demonstrates an inability during the Relevant
+
+ Time Period to comply with the legal requirements imposed on all regulated financial
+
+ institutions in the United States.
+
+                  E. The Bank Failed to Implement an Adequate Anti-Money Laundering
+                     Program
+
+             In order to guard against money laundering and the financing of terrorism through
+
+ financial institutions, the BSA and its implementing regulations require banks to establish an
+
+ AML program that is reasonably designed to assure and monitor BSA compliance, and
+
+ includes at a minimum: (a) the development of internal policies, procedures, and controls; (b)
+
+ an independent audit function to test programs; (c) designation of a compliance officer; (d) an
+
+ ongoing employee training program; and (e) appropriate risk-based procedures for conducting
+
+ ongoing customer due diligence (CDD).13                   Additionally, a bank supervised by a Federal
+
+
+13
+     31 U.S.C. § 5318(h); 31 C.F.R. § 1020.210; 12 C.F.R. §§ 21.21(c)(1), 21.21(d).
+
+
+                                                            5
+
+ functional regulator is required to implement and maintain an AML program that “[c]omplies
+
+ with the regulation of its Federal functional regulator governing such programs.”14 The Bank
+
+ willfully failed to implement an AML program that met these BSA requirements during the
+
+ Relevant Time Period.
+
+            As designed, SHBA’s AML program was intended to have functioned as follows. The
+
+ Bank should have conducted CDD on new customers during the onboarding process, which
+
+ would entail gathering general and risk-specific information about the customer.                     A
+
+ customer’s CDD should have been periodically updated to reflect changes that impacted the
+
+ customer’s money laundering or other risk.              The Bank should then calculate and assign the
+
+ customer a customer risk rating (CRR) score based on the data points collected during CDD,
+
+ which would reflect the customer’s risk for money laundering and other risks. SHBA should
+
+ then have monitored its customers’ transactions through an automatic transaction monitoring
+
+ (TM) system, which would run monitoring scenarios dependent on a customer’s CRR, in order
+
+ to take account of that customer’s overall risk.             Alerts or cases generated by the TM system
+
+ would then be investigated by compliance personnel for possible escalation for SAR filing.
+
+ However, throughout the Relevant Time Period and as described below, SHBA’s AML
+
+ program experienced repeated failures in performing each of these steps.                The program’s
+
+ deficiencies were brought to the attention of the Bank’s Board of Directors (Board) during the
+
+ Relevant Time Period, although due to governance and change management weaknesses, the
+
+ Board was unable to bring SHBA into compliance with the BSA.
+
+
+
+
+14
+     31 C.F.R. § 1020.210(c) (2016) and 31 C.F.R. § 1020.210(a)(3) (2020).
+
+
+                                                          6
+
+                  1. Customer Due Diligence / Customer Risk Rating
+
+         The BSA and its implementing regulations require banks to have “[a]ppropriate risk-
+
+ based procedures for conducting ongoing customer due diligence.”15 Under this requirement,
+
+ a bank’s AML program must include procedures for understanding the nature and purpose of
+
+ customer relationships to develop a customer risk profile. A bank must also conduct ongoing
+
+ monitoring to maintain and update customer information, on a risk basis. FinCEN guidance
+
+ clarifies that banks “must establish policies, procedures, and processes for determining
+
+ whether and when, on the basis of risk, to update customer information to ensure that customer
+
+ information is current and accurate.”16           It further states that a bank “should have an
+
+ understanding of the money laundering, terrorist financing, and other financial crime risks of
+
+ its customers to develop the customer risk profile.”17          Additionally, the determination of
+
+ customer risk profiles “should be sufficiently detailed to distinguish between significant
+
+ variations in the risks of its customers.”18
+
+         SHBA’s policies required first-line employees to collect information on anticipated
+
+ account activity from each customer at account opening. However, at times, this information
+
+ was not validated or transferred over to the TM system to establish a baseline for
+
+ evaluating the customer’s activity. Instead, TM baselines were established using 90 days of
+
+ actual activity, impairing management’s ability to determine whether the actual account
+
+ activity was unusual for the customer or not. In other words, SHBA measured whether its
+
+ customers’ activity was unusual solely against a benchmark that was set based on the
+
+
+
+15
+   31 C.F.R. § 1020.210(a)(2)(v).
+16
+   See “Frequently Asked Questions Regarding Customer Due Diligence (CDD) Requirements for Covered Financial
+Institutions,” FIN-2020-G002 (Aug. 3, 2020), available at https://www.fincen.gov/sites/default/files/2020-
+08/FinCEN_Guidance_CDD_508_FINAL.pdf.
+17
+   Id.
+18
+   Id.
+
+
+                                                     7
+
+ customers’ prior account activity, and not based on relevant information obtained at account
+
+ opening.
+
+         Further, as designed, SHBA’s CDD was supposed to be used to establish a CRR for
