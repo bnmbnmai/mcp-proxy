@@ -1771,7 +1771,7 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
     status: "ok",
     fetchedAt: "2026-08-23T12:00:00.000Z",
     asOf: "2026-07-31",
-    source: "https://www.cftc.gov/LawRegulation/Enforcement/EnforcementActions/index.htm",
+    source: "https://www.cftc.gov/LawRegulation/EnforcementActions/index.htm",
     recordCount: 1,
     records: [
       {

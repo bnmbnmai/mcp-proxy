@@ -17,7 +17,8 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 
 ## Source of truth
 
-- Listing / search (index only, not the product): https://www.cftc.gov/LawRegulation/Enforcement/EnforcementActions/index.htm
+- Official listing: https://www.cftc.gov/LawRegulation/EnforcementActions/index.htm (Drupal table; `?page=1`…`259`)
+- First-slice miss: the old `/LawRegulation/Enforcement/EnforcementActions` URL 301s here and only page 0 was walked (a teaser of ~9 media links)
 - Official PDFs: `https://www.cftc.gov/media/{id}/{slug}/download`
 - Press-release HTML (`/PressRoom/PressReleases/...`) is not the product
 - Required seed: UBS Financial Services Inc. — Docket 26-04 — dated 31 Jul 2026 — https://www.cftc.gov/media/14456/ENF_UBSFinancial%20ServicesOrder073126/download
@@ -29,7 +30,7 @@ Alongside those keys the paid JSON adds `records[]` (`id`, `date`, `firm`, `url`
 
 Leak-tests already passed on the live CFTC hosts: the UBS FSI press page (`9277-26`) is an ORDER link only; unique order phrases (`$8.9 billion`, `01:44 pm, Jul 31 2026`, `third-party consultant`) stay in the PDF. Do not re-litigate unless you find a dump of the order TEXT.
 
-`data/cftc-orders/` is gitignored. Order bodies get lost on a dead VM — do not harvest the whole catalog here. Live-apply on apollo stays at the 5 official seeds.
+`data/cftc-orders/` is gitignored. Order bodies get lost on a dead VM — do not harvest all 260 pager pages here.
 
 Free `GET /cftc-orders/manifest.json` is institution / docket / date / sourceUrl only. Needles such as `$8.9 billion`, `01:44 pm, Jul 31 2026`, and `third-party consultant` stay out of unpaid responses.
 
@@ -38,21 +39,22 @@ Free `GET /cftc-orders/manifest.json` is institution / docket / date / sourceUrl
 | Variable | Default | Purpose |
 |---|---|---|
 | `CFTC_ORDERS_DIR` | `$HOME/projects/mcp-proxy/data/cftc-orders` | Snapshot cache (`snapshot.json` + downloaded PDFs) |
-| `CFTC_ORDERS_LIMIT` | `5` | Target **additional** real extractable bodies this run. Cached bodies are reused and do **not** count. `0` = keep walking |
-| `CFTC_ORDERS_MAX_FETCH` | `8` | Max official PDF downloads per run. Already-on-disk PDFs do not count. `0` = no cap |
+| `CFTC_ORDERS_LIMIT` | `24` | Target **additional** real extractable bodies this run. Cached bodies are reused and do **not** count. `0` = keep walking |
+| `CFTC_ORDERS_MAX_FETCH` | `36` | Max official PDF downloads per run. Already-on-disk PDFs do not count. `0` = no cap |
+| `CFTC_ORDERS_PAGES` | `8` | Official Drupal pager pages to walk (`?page=0`…`7`). Not the whole 260-page catalog |
 | `CFTC_ORDERS_JSON_DIR` / `CFTC_ORDERS_LISTING_DIR` | unset | Optional already-fetched `listing-excerpt.json` / `listing-excerpt.html` + `{docket}.txt` |
 | `CFTC_ORDERS_PDFTOTEXT` | `pdftotext` | Poppler extractor |
 
 Do not set `X402_SKIP_SETTLE` on the standing public unit. Family / basic-auth stay off `ticks.bnm.farm`.
 
-## Apollo collect (5-seed only)
+## Apollo collect (official Drupal pager)
 
 ```bash
 sudo apt-get install -y poppler-utils
 cd ~/projects/mcp-proxy
 npm run build
 export CFTC_ORDERS_DIR=$HOME/projects/mcp-proxy/data/cftc-orders
-CFTC_ORDERS_LIMIT=5 CFTC_ORDERS_MAX_FETCH=8 npm run collect:cftc-orders
+CFTC_ORDERS_LIMIT=24 CFTC_ORDERS_MAX_FETCH=36 CFTC_ORDERS_PAGES=8 npm run collect:cftc-orders
 ```
 
 ## Local smoke (cloud VM / laptop)

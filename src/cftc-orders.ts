@@ -21,7 +21,11 @@ export const CFTC_ORDERS_AMOUNT_ATOMIC = "50000";
 export const PRODUCT_ID = "cftc-institution-order-bodies";
 export const PRODUCT_NAME = "CFTC institution enforcement-order / settlement text";
 
-export const LISTING_URL = "https://www.cftc.gov/LawRegulation/Enforcement/EnforcementActions/index.htm";
+/** Official Drupal enforcement-actions table. The old /Enforcement/EnforcementActions URL 301s here. */
+export const LISTING_URL = "https://www.cftc.gov/LawRegulation/EnforcementActions/index.htm";
+/** First-slice teaser: page 0 only. Official catalog continues on ?page=1…259. */
+export const FIRST_SLICE_LISTING_URL =
+  "https://www.cftc.gov/LawRegulation/Enforcement/EnforcementActions/index.htm";
 export const PDF_HOST = "www.cftc.gov";
 export const PDF_ORIGIN = "https://www.cftc.gov";
 export const DOCKET_LABEL_RE = /CFTC\s+Docket\s+No\.\s*(\d{2}-\d{2})\b/i;
@@ -293,17 +297,25 @@ export function isInstitutionOrderRow(row: CftcListingRow): boolean {
   return true;
 }
 
+export function institutionFromLinkTitle(title: string): string {
+  return title
+    .replace(/^(?:Supplemental\s+)?(?:Administrative\s+)?(?:Consent\s+)?Order(?:\s+Instituting Proceedings)?:\s*/i, "")
+    .replace(/^Complaint:\s*/i, "")
+    .replace(/^Default Judg[e]?ment:\s*/i, "")
+    .trim();
+}
+
 export function parseListingRows(rows: CftcListingRow[]): CftcOrderListing[] {
   const found: CftcOrderListing[] = [];
-  const seen = new Set<string>();
+  const seenPdf = new Set<string>();
   for (const row of rows) {
     if (!isInstitutionOrderRow(row)) continue;
     const sourceUrl = officialCftcPdfUrl(row.sourceUrl ?? "");
     const pdfId = (row.pdfId ?? "").trim() || pdfIdFromUrl(sourceUrl ?? "") || "";
     const docket = normalizeDocket(row.docket) || normalizeDocket(row.title ?? "") || pdfId;
     if (!docket || !sourceUrl || !pdfId) continue;
-    if (seen.has(docket)) continue;
-    seen.add(docket);
+    if (seenPdf.has(pdfId)) continue;
+    seenPdf.add(pdfId);
     found.push({
       id: normalizeDocket(row.docket) || docket,
       docket,
@@ -322,10 +334,34 @@ export function parseListingHtml(html: string): CftcOrderListing[] {
   const rows: CftcListingRow[] = [];
   const trs = html.match(/<tr\b[^>]*>[\s\S]*?<\/tr>/gi) ?? [];
   for (const row of trs) {
-    const href = (row.match(/href="([^"]+)"/i) || [])[1] || "";
+    const time = (row.match(/<time[^>]*datetime="([^"]+)"/i) || [])[1] || "";
     const cells = [...row.matchAll(/<t[dh]\b[^>]*>([\s\S]*?)<\/t[dh]>/gi)].map((m) => stripTags(m[1]));
-    if (cells.length < 2) continue;
-    const date = cells.find((c) => isoDate(c)) ?? cells[0] ?? "";
+    const date = isoDate(time) || cells.find((c) => isoDate(c)) || cells[0] || "";
+    const docketFromCells = normalizeDocket(cells.find((c) => normalizeDocket(c)) ?? "") ?? "";
+    const links = [...row.matchAll(/<a[^>]+href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi)];
+    let pushedMedia = false;
+    for (const m of links) {
+      const href = m[1];
+      const title = stripTags(m[2]);
+      const sourceUrl = href.startsWith("http") ? href : href ? `${PDF_ORIGIN}${href}` : "";
+      if (!officialCftcPdfUrl(sourceUrl)) continue;
+      pushedMedia = true;
+      rows.push({
+        institution:
+          cells.find((c) => ENTITY_RE.test(c)) ||
+          institutionFromLinkTitle(title) ||
+          cells.find((c) => PERSON_NAME_RE.test(c)) ||
+          "",
+        docket: docketFromCells,
+        date,
+        title,
+        type: title,
+        sourceUrl,
+        pdfId: pdfIdFromUrl(sourceUrl) ?? "",
+      });
+    }
+    if (pushedMedia || cells.length < 2) continue;
+    const href = (row.match(/href="([^"]+)"/i) || [])[1] || "";
     const institution =
       cells.find((c) => ENTITY_RE.test(c) || PERSON_NAME_RE.test(c)) ?? cells[1] ?? "";
     const sourceUrl = href.startsWith("http") ? href : href ? `${PDF_ORIGIN}${href}` : "";
@@ -343,9 +379,8 @@ export function parseListingHtml(html: string): CftcOrderListing[] {
   const loose = [...html.matchAll(/href="([^"]*\/media\/\d+\/[^"]+\/download[^"]*)"[^>]*>([\s\S]*?)<\/a>/gi)];
   for (const m of loose) {
     const title = stripTags(m[2]);
-    const institution = title.replace(/^(?:Administrative\s+)?(?:Consent\s+)?Order:\s*/i, "").trim();
     rows.push({
-      institution,
+      institution: institutionFromLinkTitle(title),
       title,
       sourceUrl: m[1],
       pdfId: pdfIdFromUrl(m[1]) ?? "",
@@ -498,8 +533,15 @@ function cardDateKey(card: Pick<CftcOrderCard, "date" | "docket">): string {
 }
 
 export function assembleSnapshot(cards: CftcOrderCard[], fetchedAt = new Date().toISOString()): CftcOrdersSnapshot {
+  const seenPdf = new Set<string>();
   const withBody = cards
-    .filter((c) => isRealCftcOrderBody(c.body))
+    .filter((c) => {
+      if (!isRealCftcOrderBody(c.body)) return false;
+      const key = c.pdfId || c.sourceUrl || c.id;
+      if (seenPdf.has(key)) return false;
+      seenPdf.add(key);
+      return true;
+    })
     .sort((a, b) => cardDateKey(b).localeCompare(cardDateKey(a)));
   const asOf =
     withBody
@@ -564,17 +606,28 @@ function listingDir(): string {
 }
 
 function firstSliceLimit(): number {
-  const raw = env("CFTC_ORDERS_LIMIT", "5");
+  const raw = env("CFTC_ORDERS_LIMIT", "24");
   if (raw === "0") return 0;
   const n = Number(raw);
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 5;
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 24;
 }
 
 function maxFetchLimit(): number {
-  const raw = env("CFTC_ORDERS_MAX_FETCH", "8");
+  const raw = env("CFTC_ORDERS_MAX_FETCH", "36");
   if (raw === "0") return 0;
   const n = Number(raw);
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 8;
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 36;
+}
+
+function listingPageLimit(): number {
+  const raw = env("CFTC_ORDERS_PAGES", "8");
+  const n = Number(raw);
+  return Number.isFinite(n) && n > 0 ? Math.min(Math.floor(n), 32) : 8;
+}
+
+export function listingPageUrl(page: number): string {
+  const n = Math.max(0, Math.floor(page));
+  return n === 0 ? LISTING_URL : `${LISTING_URL}?page=${n}`;
 }
 
 function readNamedFile(dir: string, names: string[]): string | null {
@@ -632,14 +685,24 @@ async function loadOfficialListings(dir: string): Promise<{ listed: CftcOrderLis
       const listed = Array.isArray(rows) ? parseListingRows(rows) : [];
       return { listed, listedCount: listed.length };
     }
-    const html = readNamedFile(dir, ["listing-excerpt.html", "listing.html"]);
-    const listed = html ? parseListingHtml(html) : [];
-    return { listed, listedCount: listed.length };
+    const pages = ["listing-excerpt.html", "listing-page-excerpt.html", "listing.html"]
+      .map((name) => readNamedFile(dir, [name]))
+      .filter((html): html is string => Boolean(html));
+    const listed = pages.flatMap((html) => parseListingHtml(html));
+    return { listed: mergeOfficialListings(listed, []), listedCount: listed.length };
   }
   try {
-    const listed = parseListingHtml(await fetchCftcText(LISTING_URL));
+    const listed: CftcOrderListing[] = [];
+    const pages = listingPageLimit();
+    for (let page = 0; page < pages; page += 1) {
+      try {
+        listed.push(...parseListingHtml(await fetchCftcText(listingPageUrl(page))));
+      } catch {
+        /* one official pager page missed; keep the others */
+      }
+    }
     const merged = mergeOfficialListings(listed, SEED_LISTINGS);
-    if (merged.length > 0) return { listed: merged, listedCount: merged.length };
+    if (merged.length > 0) return { listed: merged, listedCount: listed.length };
   } catch {
     /* official listing missed; keep first-slice seeds */
   }
@@ -647,11 +710,12 @@ async function loadOfficialListings(dir: string): Promise<{ listed: CftcOrderLis
 }
 
 function mergeOfficialListings(listed: CftcOrderListing[], seeds: CftcOrderListing[]): CftcOrderListing[] {
-  const seen = new Set<string>();
+  const seenPdf = new Set<string>();
   const out: CftcOrderListing[] = [];
-  for (const row of [...listed, ...seeds]) {
-    if (!row.id || seen.has(row.id)) continue;
-    seen.add(row.id);
+  for (const row of [...seeds, ...listed]) {
+    const key = row.pdfId || row.sourceUrl || row.id;
+    if (!row.id || !key || seenPdf.has(key)) continue;
+    seenPdf.add(key);
     out.push(row);
   }
   return out;
@@ -660,7 +724,9 @@ function mergeOfficialListings(listed: CftcOrderListing[], seeds: CftcOrderListi
 function priorBodies(): Map<string, CftcOrderCard> {
   const prior = new Map<string, CftcOrderCard>();
   for (const card of readSnapshot()?.cards ?? []) {
-    if (isRealCftcOrderBody(card.body)) prior.set(card.id, card);
+    if (!isRealCftcOrderBody(card.body)) continue;
+    prior.set(card.id, card);
+    if (card.pdfId) prior.set(card.pdfId, card);
   }
   return prior;
 }
@@ -705,10 +771,11 @@ export async function collectCftcOrders(opts?: {
   let addedThisRun = 0;
   for (const row of allListed) {
     if (target > 0 && addedThisRun >= target) break;
-    const cached = prior.get(row.id);
+    const cached = prior.get(row.id) ?? prior.get(row.pdfId);
     if (cached) {
       cards.push(cached);
       seen.add(row.id);
+      if (row.pdfId) seen.add(row.pdfId);
       reused += 1;
       continue;
     }
@@ -720,7 +787,7 @@ export async function collectCftcOrders(opts?: {
         skippedNoText += 1;
         continue;
       }
-      const pdfFile = join(cacheDir, `${row.docket}.pdf`);
+      const pdfFile = join(cacheDir, `${row.pdfId || row.docket}.pdf`);
       const text =
         localText ??
         (await (async () => {
@@ -745,14 +812,19 @@ export async function collectCftcOrders(opts?: {
       }
       cards.push(parsed);
       seen.add(row.id);
+      if (row.pdfId) seen.add(row.pdfId);
       addedThisRun += 1;
     } catch {
       skippedNoText += 1;
     }
   }
-  for (const [id, card] of prior) {
-    if (!seen.has(id)) cards.push(card);
+  const rest = new Map<string, CftcOrderCard>();
+  for (const card of prior.values()) {
+    const key = card.pdfId || card.id;
+    if (seen.has(card.id) || (card.pdfId && seen.has(card.pdfId)) || rest.has(key)) continue;
+    rest.set(key, card);
   }
+  cards.push(...rest.values());
   const snap = {
     ...assembleSnapshot(cards),
     listedCount,

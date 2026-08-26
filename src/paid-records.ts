@@ -145,7 +145,7 @@ export const UNTITLED_LETTER_SOURCE =
   "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/issuance-untitled-letters";
 export const AIR_LETTER_SOURCE = "https://www.aphis.usda.gov/confirmation-letters";
 export const IMPORT_ALERT_SOURCE = "https://www.accessdata.fda.gov/cms_ia/ialist.html";
-export const CFTC_ORDER_SOURCE = "https://www.cftc.gov/LawRegulation/Enforcement/EnforcementActions/index.htm";
+export const CFTC_ORDER_SOURCE = "https://www.cftc.gov/LawRegulation/EnforcementActions/index.htm";
 export const FIFRA_ORDER_SOURCE = "https://yosemite.epa.gov/oa/rhc/epaadmin.nsf";
 export const DENOVO_ORDER_SOURCE = "https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfpmn/denovo.cfm";
 export const TTB_OIC_SOURCE = "https://www.ttb.gov/business-central/fo/administrative-cases";
