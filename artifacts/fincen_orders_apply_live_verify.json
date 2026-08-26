@@ -42,6 +42,10 @@
     "walker": {
       "url": "https://github.com/bnmbnmai/mcp-proxy/pull/145",
       "state": "open draft"
+    },
+    "lander": {
+      "url": "https://github.com/bnmbnmai/tv-remote/pull/63",
+      "state": "open draft"
     }
   },
   "blockers": []
