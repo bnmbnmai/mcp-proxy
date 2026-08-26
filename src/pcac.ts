@@ -1,9 +1,8 @@
 /**
  * FDA Pharmacy Compounding Advisory Committee 503A briefing-memo TEXT door.
- * Official FDA-authored per-substance PDFs from the PCAC meeting page only.
- * Does not invent evaluation text. Does not wrap the FR notice or docket 0001.
- * Not CDER multidisciplinary reviews. Not combined sponsor/AdComm packs.
- * July 2026 peptide memos (FDA-2025-N-6895). Seed is 5 FDA-only memos.
+ * Official FDA-authored per-substance PDFs from PCAC year-materials + meeting pages.
+ * First-slice miss: only the July 2026 meeting page (~7 memos). Official year
+ * tables list October 29, 2024 and December 4, 2024 as well.
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -21,8 +20,20 @@ export const PRODUCT_NAME = "FDA PCAC 503A briefing-memo text";
 
 export const MEETING_URL =
   "https://www.fda.gov/advisory-committees/advisory-committee-calendar/july-23-24-2026-meeting-pharmacy-compounding-advisory-committee-07232026";
+/** First-slice teaser: July 2026 page 0 only. Official catalog continues on year-materials. */
+export const FIRST_SLICE_MEETING_URL = MEETING_URL;
 export const MEETING_WAYBACK_URL =
   "https://web.archive.org/web/20260724170451id_/https://www.fda.gov/advisory-committees/advisory-committee-calendar/july-23-24-2026-meeting-pharmacy-compounding-advisory-committee-07232026";
+/** Official year tables that list meeting pages. 2022 is a combined pack (skipped). */
+export const YEAR_MATERIALS_URLS = [
+  "https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/2026-meeting-materials-pharmacy-compounding-advisory-committee",
+  "https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/2024-meeting-materials-pharmacy-compounding-advisory-committee",
+] as const;
+export const OCT_2024_MEETING_URL =
+  "https://www.fda.gov/advisory-committees/advisory-committee-calendar/october-29-2024-meeting-pharmacy-compounding-advisory-committee-10292024";
+export const DEC_2024_MEETING_URL =
+  "https://www.fda.gov/advisory-committees/advisory-committee-calendar/updated-meeting-time-and-public-participation-information-december-4-2024-meeting-pharmacy";
+export const MEETING_URLS = [MEETING_URL, OCT_2024_MEETING_URL, DEC_2024_MEETING_URL] as const;
 export const FR_NOTICE_URL = "https://www.govinfo.gov/content/pkg/FR-2026-04-16/html/2026-07361.htm";
 export const DOCKET = "FDA-2025-N-6895";
 export const MEETING_LABEL = "July 23-24, 2026";
@@ -185,25 +196,85 @@ export function isoDate(raw: string | null | undefined): string | null {
 
 export function isPerSubstanceMemoTitle(title: string): boolean {
   const t = title.replace(/\s+/g, " ").trim();
-  if (!/FDA Briefing Document for /i.test(t)) return false;
-  if (/Briefing Document Introduction/i.test(t)) return false;
-  if (/FDA Presentations|Final Agenda|Meeting Roster|Webcast Information|\bQuestions\b/i.test(t)) {
+  if (!/FDA Briefing Document/i.test(t)) return false;
+  if (/Briefing Document(?:-\d+-?)?\s*Introduction/i.test(t)) return false;
+  if (
+    /FDA Presentations|Final Agenda|Meeting Roster|Webcast Information|\bQuestions\b|Waiver|Disclosure|Transcript|Minutes|Errata/i.test(
+      t,
+    )
+  ) {
     return false;
   }
-  return /Related Bulk Drug Substances/i.test(t);
+  if (/Related Bulk Drug Substances/i.test(t)) return true;
+  return /FDA Briefing Document-\d+-\s*\S/i.test(t);
 }
 
 export function substanceFromTitle(title: string): string | null {
-  const m = title.match(
-    /FDA Briefing Document for ([A-Za-z0-9][A-Za-z0-9./-]*)-Related Bulk Drug Substances/i,
+  const related = title.match(
+    /FDA Briefing Document for (.+?)[- ]Related Bulk Drug Substances/i,
   );
-  return m ? m[1].trim() : null;
+  if (related?.[1]) return related[1].replace(/\s+/g, " ").trim();
+  const numbered = title.match(/FDA Briefing Document-\d+-\s*(.+)$/i);
+  if (numbered?.[1]) {
+    const name = numbered[1].replace(/\s+/g, " ").trim();
+    if (!name || /^introduction$/i.test(name)) return null;
+    return name;
+  }
+  return null;
 }
 
-export function parseListingHtml(html: string): PcacListing[] {
+export function meetingLabelFromHtml(html: string, fallback = MEETING_LABEL): string {
+  const blob = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
+  const range = blob.match(
+    /\b((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2}\s*[-–]\s*\d{1,2},\s+\d{4})\b/i,
+  );
+  if (range) return range[1].replace(/\s+/g, " ").replace("–", "-").trim();
+  const single = blob.match(
+    /\b((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+\d{4})\b/i,
+  );
+  return single ? single[1].replace(/\s+/g, " ").trim() : fallback;
+}
+
+export function meetingLabelFromUrl(url: string, fallback = MEETING_LABEL): string {
+  const slug = url.toLowerCase();
+  if (slug.includes("july-23-24-2026")) return "July 23-24, 2026";
+  if (slug.includes("october-29-2024")) return "October 29, 2024";
+  if (slug.includes("december-4-2024")) return "December 4, 2024";
+  return fallback;
+}
+
+export function officialMeetingPageUrl(urlOrPath: string | null | undefined): string | null {
+  if (!urlOrPath) return null;
+  try {
+    const parsed = new URL(urlOrPath, "https://www.fda.gov");
+    if (parsed.hostname !== "www.fda.gov" && parsed.hostname !== "fda.gov") return null;
+    if (!/\/advisory-committees\/advisory-committee-calendar\//i.test(parsed.pathname)) return null;
+    if (!/pharmacy-compounding|meeting-pharmacy/i.test(parsed.pathname)) return null;
+    return `https://www.fda.gov${parsed.pathname}`;
+  } catch {
+    return null;
+  }
+}
+
+export function parseYearMaterialsHtml(html: string): string[] {
+  const found: string[] = [];
+  const seen = new Set<string>();
+  const blockRe = /<a\b[^>]*\bhref="([^"]+)"[^>]*>/gi;
+  for (const m of html.matchAll(blockRe)) {
+    const href = decodeHtml(m[1]);
+    const url = officialMeetingPageUrl(href.startsWith("http") ? href : `https://www.fda.gov${href}`);
+    if (!url || seen.has(url)) continue;
+    seen.add(url);
+    found.push(url);
+  }
+  return found;
+}
+
+export function parseListingHtml(html: string, meeting?: string): PcacListing[] {
+  const label = meeting || meetingLabelFromHtml(html);
   const found: PcacListing[] = [];
   const seen = new Set<string>();
-  const blockRe = /<a\s+href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi;
+  const blockRe = /<a\b[^>]*\bhref="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi;
   for (const m of html.matchAll(blockRe)) {
     const href = decodeHtml(m[1]);
     const title = decodeHtml(m[2].replace(/<[^>]+>/g, " ")).replace(/\s+/g, " ").trim();
@@ -222,11 +293,22 @@ export function parseListingHtml(html: string): PcacListing[] {
       substance,
       mediaId,
       date: null,
-      meeting: MEETING_LABEL,
+      meeting: label,
       sourceUrl,
     });
   }
   return found;
+}
+
+export function mergeOfficialListings(listed: PcacListing[]): PcacListing[] {
+  const seen = new Set<string>();
+  const out: PcacListing[] = [];
+  for (const row of listed) {
+    if (!row.mediaId || seen.has(row.mediaId)) continue;
+    seen.add(row.mediaId);
+    out.push(row);
+  }
+  return out;
 }
 
 export function stripNominatorPacks(text: string): string {
@@ -409,17 +491,17 @@ function listingDir(): string {
 }
 
 function firstSliceLimit(): number {
-  const raw = env("PCAC_LIMIT", "5");
+  const raw = env("PCAC_LIMIT", "24");
   if (raw === "0") return 0;
   const n = Number(raw);
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 5;
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 24;
 }
 
 function maxFetchLimit(): number {
-  const raw = env("PCAC_MAX_FETCH", "8");
+  const raw = env("PCAC_MAX_FETCH", "36");
   if (raw === "0") return 0;
   const n = Number(raw);
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 8;
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 36;
 }
 
 function readNamedFile(dir: string, names: string[]): string | null {
@@ -490,20 +572,54 @@ function pause(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-async function fetchListingWithWayback(): Promise<string> {
+async function fetchOfficialHtml(url: string): Promise<string> {
   try {
-    return await fetchFdaText(MEETING_URL);
+    return await fetchFdaText(url);
   } catch {
-    return await fetchFdaText(MEETING_WAYBACK_URL);
+    if (url === MEETING_URL) return await fetchFdaText(MEETING_WAYBACK_URL);
+    const archived = await waybackIdUrl(url);
+    if (!archived) throw new Error(`${url} FDA fetch failed and no Wayback id_ capture`);
+    return await fetchFdaText(archived);
   }
 }
 
+const FIXTURE_LISTING_FILES = [
+  "listing-excerpt.html",
+  "listing-oct-2024-excerpt.html",
+  "listing-dec-2024-excerpt.html",
+  "listing.html",
+  "meeting.html",
+];
+
 async function loadOfficialListings(dir: string): Promise<PcacListing[]> {
   if (dir) {
-    const raw = readNamedFile(dir, ["listing-excerpt.html", "listing.html", "meeting.html"]);
-    return raw ? parseListingHtml(raw) : [];
+    const listed: PcacListing[] = [];
+    for (const name of FIXTURE_LISTING_FILES) {
+      const raw = readNamedFile(dir, [name]);
+      if (raw) listed.push(...parseListingHtml(raw, meetingLabelFromHtml(raw)));
+    }
+    return mergeOfficialListings(listed);
   }
-  return parseListingHtml(await fetchListingWithWayback());
+  const meetingUrls = new Set<string>(MEETING_URLS);
+  for (const yearUrl of YEAR_MATERIALS_URLS) {
+    try {
+      for (const url of parseYearMaterialsHtml(await fetchOfficialHtml(yearUrl))) {
+        meetingUrls.add(url);
+      }
+    } catch {
+      /* one official year table missed; keep the others */
+    }
+  }
+  const listed: PcacListing[] = [];
+  for (const url of meetingUrls) {
+    try {
+      const html = await fetchOfficialHtml(url);
+      listed.push(...parseListingHtml(html, meetingLabelFromHtml(html, meetingLabelFromUrl(url))));
+    } catch {
+      /* one official meeting page missed; keep the others */
+    }
+  }
+  return mergeOfficialListings(listed);
 }
 
 function priorBodies(): Map<string, PcacCard> {
