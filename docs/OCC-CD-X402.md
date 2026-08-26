@@ -57,6 +57,8 @@ OCC_CD_LIMIT=24 OCC_CD_MAX_FETCH=36 npm run collect:occ-cd
 systemctl --user restart idaho-ticks-x402.service
 ```
 
+Live after leftover apply (2026-08-26): **listedCount 522**, **cardCount 34**, asOf **2026-06-16**, fetchedAt **2026-08-26T19:17:04.043Z**. Official ExportToJSON listed 522 institution C&D PDFs (active + leftover terminated / numeric StartDocuments); this pulse reused 10 first-slice bodies and fetched 24 new extractable texts. Price still $0.02 / $0.05. No new SKU. Restarted only `idaho-ticks-x402.service`.
+
 ## Local smoke (cloud VM / laptop)
 
 ```bash
