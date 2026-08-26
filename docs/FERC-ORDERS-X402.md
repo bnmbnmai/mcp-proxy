@@ -4,6 +4,8 @@ Official FERC-authored **institution stipulation-and-consent / show-cause / civi
 
 Always listed on well-known / OpenAPI / llms.txt / shop catalog. Unpaid `GET /ferc-orders` is HTTP 402.
 
+Live after leftover apply (2026-08-26): **listedCount 54**, **cardCount 22**, asOf **2026-08-03**, fetchedAt **2026-08-26T20:08:22.613Z**. This pulse reused 16 bodies and fetched 6 leftover official texts (NRG Energy `IN23-3-000`, BP America `IN13-15-000`, Montpelier / Rockland `IN24-15-000`, Freeport LNG `IN17-7-000`, NRG Power Marketing `IN20-4-000`, Algonquin `IN21-2-000`). Price still $0.02 / $0.05. No new SKU. Restarted only `idaho-ticks-x402.service`.
+
 v1 seeds **5** official institution stipulation-and-consent PDFs. Required seed is Interstate Power and Light Company (`IN25-6-000`). Family: Digi Power X Inc. f/k/a Digihost Technology Inc. (`IN25-4-000`), MPH Rockaway Peakers / Bayswater (`IN25-10-000`), Terra-Gen, LLC (`IN26-2-000`), Tenaska Power Services Co. (`IN25-13-000`). Skip people.
 
 Leftover grow walks the same official `cms.ferc.gov` `/sites/default/files/{YYYY-MM}/` PDFs. First-slice only parsed the 2026 teaser plus 2025/2024 year tables (live lander still showed 5). Leftover official texts are on the 2023/2022/2021 civil-penalty year tables (`www.ferc.gov` HTML is often 403; Wayback + hardcoded leftover PDFs). People (Chen, Meinershagen, GreenHat estate) stay out. Alliance NYGT `IN21-4-000` is official but lacks `Before Commissioners` — not this gate.

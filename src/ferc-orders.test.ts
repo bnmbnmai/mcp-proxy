@@ -92,6 +92,7 @@ async function main(): Promise<void> {
   const leftoverListed = parseListingRows(leftoverRows);
   assert.ok(leftoverListed.some((r) => r.id === "IN23-3-000"), "leftover listing includes NRG Energy 2023");
   assert.ok(leftoverListed.some((r) => r.id === "IN13-15-000"), "leftover listing includes BP America");
+  assert.ok(leftoverListed.some((r) => r.id === "IN24-15-000"), "leftover listing includes Montpelier / Rockland");
   assert.ok(leftoverListed.some((r) => r.id === "IN17-7-000" && /Freeport/i.test(r.institution)), "leftover listing includes Freeport LNG L.P.");
   assert.ok(leftoverListed.some((r) => r.id === "IN20-4-000"), "leftover listing includes NRG Power Marketing");
   assert.ok(leftoverListed.some((r) => r.id === "IN21-2-000"), "leftover listing includes Algonquin");
@@ -101,6 +102,7 @@ async function main(): Promise<void> {
   assert.ok(LEFTOVER_WALK_LISTINGS.length >= 5, "leftover walk lists 2021-2023 official cms.ferc.gov PDFs");
   assert.ok(LEFTOVER_WALK_LISTINGS.some((r) => r.docket === "IN23-3-000" && /NRG Energy/i.test(r.institution)));
   assert.ok(LEFTOVER_WALK_LISTINGS.some((r) => r.docket === "IN13-15-000" && /BP America/i.test(r.institution)));
+  assert.ok(LEFTOVER_WALK_LISTINGS.some((r) => r.docket === "IN24-15-000" && /Montpelier/i.test(r.institution)));
   assert.ok(LEFTOVER_WALK_LISTINGS.every((r) => officialFercPdfUrl(r.sourceUrl)));
   assert.ok(!LEFTOVER_WALK_LISTINGS.some((r) => r.docket === "IN23-4-000"), "leftover walk skips people");
   assert.ok(!LEFTOVER_WALK_LISTINGS.some((r) => r.docket === "IN21-4-000"), "leftover walk skips Alliance no-commissioners PDF");

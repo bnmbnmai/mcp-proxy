@@ -300,6 +300,16 @@ export const LEFTOVER_WALK_LISTINGS: FercOrderListing[] = [
     pdfId: "20230707-184FERC61016-IN13-15-000-Bp America Et Al-Settlement Agreement",
   },
   {
+    id: "IN24-15-000",
+    docket: "IN24-15-000",
+    institution: "Montpelier Generating Station, LLC and Rockland Capital, LP",
+    date: "2024-12-06",
+    title: "Order Approving Stipulation and Consent Agreement",
+    sourceUrl:
+      "https://cms.ferc.gov/sites/default/files/2024-12/20241206-189FERC61185-IN24-15-000-Montpelier%20Generating%20Station%20Et%20Al-Settlement%20Agreement.pdf",
+    pdfId: "20241206-189FERC61185-IN24-15-000-Montpelier Generating Station Et Al-Settlement Agreement",
+  },
+  {
     id: "IN17-7-000",
     docket: "IN17-7-000",
     institution: "Freeport LNG Development, L.P.",
