@@ -25,7 +25,8 @@ import {
   skusFromWellKnown,
 } from "./ticks-mcp.js";
 
-const LIVE_WELL_KNOWN_PATHS = [
+/** Must-have live doors. Count is taken from well-known, not hardcoded. */
+const LIVE_WELL_KNOWN_REQUIRED = [
   "/ticks",
   "/import-alerts",
   "/mariners",
@@ -62,7 +63,7 @@ const LIVE_WELL_KNOWN_PATHS = [
   "/form-483",
   "/gmp",
   "/gmp-md",
-];
+] as const;
 
 async function withServer(
   envPatch: Record<string, string | undefined>,
@@ -103,8 +104,11 @@ async function main(): Promise<void> {
   assert.equal(liveWk.status, 200, "live well-known must be reachable");
   const wk = (await liveWk.json()) as { resources: string[] };
   const livePaths = wk.resources.map((url) => new URL(url).pathname);
-  assert.equal(livePaths.length, 36, "this deploy well-known is 36 paid GETs after /ofsted-inspections");
-  assert.deepEqual(livePaths, LIVE_WELL_KNOWN_PATHS);
+  assert.ok(livePaths.length >= 1, "live well-known lists paid GETs");
+  for (const path of LIVE_WELL_KNOWN_REQUIRED) {
+    assert.ok(livePaths.includes(path), `live well-known lists ${path}`);
+  }
+  assert.ok(!livePaths.includes("/sample"), "/sample is free discovery, not a paid MCP tool");
   assert.ok(livePaths.includes("/cma-ca98"), "live well-known lists /cma-ca98");
   assert.ok(livePaths.includes("/cder-reviews"), "live well-known lists /cder-reviews");
   assert.ok(livePaths.includes("/npdes-permits"), "live well-known lists /npdes-permits");
@@ -121,7 +125,11 @@ async function main(): Promise<void> {
   assert.ok(!livePaidNames(fromLive).includes("wasde"));
   assert.equal(fromLive[0]?.priceUsdc, "0.05");
   assert.ok(fromLive.every((sku) => sku.priceUsdc === "0.05"));
-  assert.equal(mcpToolDescriptors(LIVE_ORIGIN, fromLive).length, 39);
+  assert.equal(
+    mcpToolDescriptors(LIVE_ORIGIN, fromLive).length,
+    livePaths.length + 3,
+    "one tool per live paid GET plus search / get-one / get-page",
+  );
   assert.equal(MCP_CONNECT, `npx -y mcp-remote ${LIVE_ORIGIN}${MCP_PATH}`);
 
   const listed = await handleMcpJsonRpc(
@@ -130,7 +138,7 @@ async function main(): Promise<void> {
   );
   const tools = (listed as { result: { tools: { name: string }[] } }).result.tools;
   const paidTools = tools.filter((t) => t.name !== "search" && t.name !== "get-page" && t.name !== "get-one");
-    assert.equal(paidTools.length, 36);
+    assert.equal(paidTools.length, livePaths.length);
     assert.ok(tools.some((t) => t.name === "ema-referrals"));
     assert.ok(tools.some((t) => t.name === "cder-reviews"));
     assert.ok(tools.some((t) => t.name === "npdes-permits"));

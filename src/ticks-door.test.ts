@@ -1,10 +1,11 @@
 import { createServer } from "node:http";
-import { existsSync, mkdtempSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2 } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2 } from "./ticks-door.js";
 import { SINGLE_DOC_AMOUNT_ATOMIC } from "./paid-records.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
@@ -293,6 +294,7 @@ async function main(): Promise<void> {
       resources: string[];
       openapi?: string;
       llmsTxt?: string;
+      sample?: string;
       instructions?: string;
       ownershipProofs?: string[];
     };
@@ -339,6 +341,12 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.every((r) => r.startsWith("http")), "well-known resources must be absolute URLs");
     assert.ok(wk.openapi?.endsWith(OPENAPI_PATH));
     assert.ok(wk.llmsTxt?.endsWith(LLMS_PATH));
+    assert.ok(wk.sample?.endsWith(SAMPLE_PATH));
+    assert.ok(!wk.resources.some((r) => r.includes(SAMPLE_PATH)), "/sample is free discovery, not a paid resource");
+    assert.ok(!wk.resources.some((r) => r.includes(X402LIST_PATH)), "ownership proof file is free, not a paid resource");
+    assert.ok((wk.instructions ?? "").includes("/sample"));
+    assert.ok(!(wk.instructions ?? "").includes("idaho-hay-feeder-ticks"));
+    assert.ok(!(wk.instructions ?? "").includes("Idaho-only"));
     assert.ok((wk.instructions ?? "").includes("thirty-three paid"));
     assert.ok((wk.instructions ?? "").includes("whole current table"));
     assert.ok((wk.instructions ?? "").includes("newest 10 official texts"));
@@ -361,7 +369,7 @@ async function main(): Promise<void> {
       info: { title: string; version: string; contact?: { name?: string; url?: string } };
       "x-discovery"?: { ownershipProofs?: string[] };
       "x-agentcash-provenance"?: { ownershipProofs?: string[] };
-      "x-agentcash-guidance"?: { llmsTxtUrl?: string };
+      "x-agentcash-guidance"?: { llmsTxtUrl?: string; sampleUrl?: string };
       paths: Record<string, {
         get?: {
           "x-auth"?: { mode?: string };
@@ -382,6 +390,7 @@ async function main(): Promise<void> {
     assert.deepEqual(spec["x-discovery"]?.ownershipProofs, [PAY_TO]);
     assert.deepEqual(spec["x-agentcash-provenance"]?.ownershipProofs, [PAY_TO]);
     assert.ok(spec["x-agentcash-guidance"]?.llmsTxtUrl?.endsWith(LLMS_PATH));
+    assert.ok(spec["x-agentcash-guidance"]?.sampleUrl?.endsWith(SAMPLE_PATH));
     for (const paid of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH]) {
       const op = spec.paths[paid]?.get;
       assert.ok(op?.["x-payment-info"], `${paid} must declare x-payment-info`);
@@ -560,6 +569,10 @@ async function main(): Promise<void> {
     assert.ok(!llmsBody.includes("GET /ticks — $0.02"));
     assert.ok(llmsBody.includes("US hay, cattle, and grain"));
     assert.ok(!llmsBody.includes("Idaho ticks"));
+    assert.ok(!llmsBody.includes("idaho-hay-feeder-ticks"));
+    assert.ok(!llmsBody.includes("Idaho-only"));
+    assert.ok(llmsBody.includes("GET /sample"));
+    assert.ok(llmsBody.includes("https://ticks.bnm.farm/sample"));
     assert.ok(llmsBody.includes("Newest 10 official texts"));
     assert.ok(!llmsBody.includes("Newest 100 official texts"));
     assert.ok(llmsBody.includes("older pages on the same URL"));
@@ -604,10 +617,11 @@ async function main(): Promise<void> {
     assert.ok(!(mcpInit.result?.instructions ?? "").toLowerCase().includes("entire current cache"));
 
     const shop = (await (await fetch(`${base}/`)).json()) as {
-      products: { path: string; priceUsdc?: string }[];
+      products: { path: string; priceUsdc?: string; product?: string }[];
       openapi?: string;
       wellKnown?: string;
       llmsTxt?: string;
+      sample?: string;
       note?: string;
     };
     assert.ok((shop.note ?? "").includes("newest 10 official texts"));
@@ -659,6 +673,65 @@ async function main(): Promise<void> {
     assert.equal(shop.openapi, OPENAPI_PATH);
     assert.equal(shop.wellKnown, WELL_KNOWN_PATH);
     assert.equal(shop.llmsTxt, LLMS_PATH);
+    assert.equal(shop.sample, SAMPLE_PATH);
+    assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.product, PRODUCT_PUBLIC_ID);
+    assert.ok(!shop.products.some((p) => p.product === "idaho-hay-feeder-ticks"));
+
+    const sampleRes = await fetch(`${base}${SAMPLE_PATH}`);
+    assert.equal(sampleRes.status, 200);
+    const sample = (await sampleRes.json()) as {
+      example?: boolean;
+      table?: { ticks?: unknown[]; asOf?: string; fetchedAt?: string; source?: string; product?: string };
+      body?: { id?: string; asOf?: string; letters?: { body?: string; sourceUrl?: string }[] };
+    };
+    assert.equal(sample.example, true);
+    assert.ok(Array.isArray(sample.table?.ticks) && sample.table.ticks.length === 1);
+    assert.ok(sample.table?.asOf && sample.table.fetchedAt && sample.table.source);
+    assert.equal(sample.table?.product, PRODUCT_PUBLIC_ID);
+    assert.ok(sample.body?.id);
+    assert.ok(sample.body?.asOf);
+    assert.ok(sample.body?.letters?.[0]?.sourceUrl);
+    assert.ok(sample.body?.letters?.[0]?.body);
+    assert.ok(!JSON.stringify(sample).includes("idaho-hay-feeder-ticks"));
+    assert.ok(!JSON.stringify(sample).includes("400.2"));
+    assert.ok(!JSON.stringify(sample).includes("citra100mg"));
+
+    const ticks402 = paymentRequiredBody("http://127.0.0.1/ticks", "ticks");
+    const ticksExample = (ticks402 as {
+      extensions?: { bazaar?: { info?: { output?: { example?: { product?: string; source?: string } } } } };
+    }).extensions?.bazaar?.info?.output?.example;
+    assert.equal(ticksExample?.product, PRODUCT_PUBLIC_ID);
+    assert.ok(!JSON.stringify(ticksExample).includes("idaho-hay-feeder-ticks"));
+
+    const specSample = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
+      paths: Record<string, { get?: { tags?: string[]; "x-payment-info"?: unknown } }>;
+    };
+    assert.ok(specSample.paths[SAMPLE_PATH]?.get);
+    assert.ok(specSample.paths[SAMPLE_PATH]?.get?.tags?.includes("free"));
+    assert.ok(!specSample.paths[SAMPLE_PATH]?.get?.["x-payment-info"]);
+    assert.equal(specSample.paths[X402LIST_PATH], undefined);
+
+    const x402listExpected = readFileSync(
+      join(dirname(fileURLToPath(import.meta.url)), "../src/fixtures/x402list.txt"),
+      "utf8",
+    );
+    const x402listToken = x402listExpected.trimEnd();
+    const x402listRes = await fetch(`${base}${X402LIST_PATH}`);
+    assert.equal(x402listRes.status, 200);
+    assert.match(x402listRes.headers.get("content-type") ?? "", /text\/plain/);
+    const x402listBody = await x402listRes.text();
+    assert.equal(x402listBody, x402listExpected);
+    assert.ok(x402listBody.endsWith("\n"));
+    assert.equal(x402listBody.replace(/\n$/, "").includes("\n"), false);
+    const x402listPaid = await fetch(`${base}${X402LIST_PATH}`, { headers: { "X-PAYMENT": "test" } });
+    assert.equal(x402listPaid.status, 200);
+    assert.equal(await x402listPaid.text(), x402listExpected);
+    assert.ok(!shop.products.some((p) => p.path === X402LIST_PATH));
+    const llmsTxt = await (await fetch(`${base}${LLMS_PATH}`)).text();
+    assert.ok(!llmsTxt.includes(x402listToken));
+    assert.ok(!JSON.stringify(specSample).includes(x402listToken));
+    assert.ok(!JSON.stringify(shop).includes(x402listToken));
+    assert.ok(!JSON.stringify(wk).includes(x402listToken));
   });
 
   const dir = mkdtempSync(join(tmpdir(), "idaho-ticks-"));

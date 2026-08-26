@@ -2,7 +2,9 @@
 /**
  * Thin x402 pay-per-pull door for the BNM Data Shop.
  *
- * GET /ticks — US hay, cattle, and grain ($0.05 USDC on Base)
+ * GET /ticks — US hay, cattle, and grain ticks ($0.05 USDC on Base)
+ * GET /sample — free canned paid-JSON keys (not a SKU)
+ * GET /.well-known/x402list.txt — free static ownership proof (HTTP 200, not a SKU)
  * GET /import-alerts — FDA Import Alert / DWPE firm ticks ($0.05)
  * GET /import-alerts/manifest.json — free catalog + schema + sample rows
  * GET /mariners — USCG D13 / Northwest Local Notice to Mariners ($0.05)
@@ -83,7 +85,8 @@
 import { createServer as createHttpServer, type IncomingMessage, type ServerResponse } from "node:http";
 import { readFileSync, existsSync, statSync } from "node:fs";
 import { homedir } from "node:os";
-import { join, resolve } from "node:path";
+import { dirname, join, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import { generateJwt } from "@coinbase/cdp-sdk/auth";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
@@ -359,6 +362,14 @@ import {
   SINGLE_DOC_AMOUNT_ATOMIC,
   type PaidBodyOpts,
 } from "./paid-records.js";
+import {
+  PRODUCT_PUBLIC_ID,
+  SAMPLE_HOW_TO_USE,
+  SAMPLE_PATH,
+  SAMPLE_TABLE_SKU,
+  TICKS_PUBLIC_CACHE_SOURCE,
+  shopPaidJsonSample,
+} from "./shop-sample.js";
 import { mergeAmsNationalTicks } from "./ticks-ams.js";
 import {
   GMP_AMOUNT_ATOMIC,
@@ -386,6 +397,7 @@ export const TICKS_PATH = "/ticks";
 export const MANIFEST_PATH = "/manifest.json";
 export const CATALOG_PATH = "/catalog.json";
 export const WELL_KNOWN_PATH = "/.well-known/x402";
+export const X402LIST_PATH = "/.well-known/x402list.txt";
 export const OPENAPI_PATH = "/openapi.json";
 export const LLMS_PATH = "/llms.txt";
 export { MCP_PATH } from "./ticks-mcp.js";
@@ -393,8 +405,21 @@ export { MCP_PATH } from "./ticks-mcp.js";
 export const X402SCAN_SERVER_URL =
   "https://www.x402scan.com/server/c6f584c5-e494-41d1-aa02-2efb07ac3546";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
-export const PRODUCT_NAME = "US hay, cattle, and grain";
+export { PRODUCT_PUBLIC_ID, SAMPLE_PATH } from "./shop-sample.js";
+export const PRODUCT_NAME = "US hay, cattle, and grain ticks";
 export const PRODUCT_VERSION = "1.4.0";
+
+function bundledX402listPath(): string {
+  const here = dirname(fileURLToPath(import.meta.url));
+  const candidates = [
+    join(here, "../src/fixtures/x402list.txt"),
+    join(here, "fixtures/x402list.txt"),
+  ];
+  return candidates.find((p) => existsSync(p)) ?? candidates[0];
+}
+
+const X402LIST_BODY = readFileSync(bundledX402listPath(), "utf8");
+
 const COLLECT_MEMO_RE =
   /we are not inventing|this report has no organic row|not reusing an older organic|usda printed no organic/i;
 
@@ -1156,33 +1181,14 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
 const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
   ticks: {
     ok: true,
-    product: "idaho-hay-feeder-ticks",
+    product: PRODUCT_PUBLIC_ID,
     status: "ok",
-    fetchedAt: "2026-08-17T21:22:50Z",
-    asOf: "2026-08-12",
-    source: "idaho-hay-feeder-ticks cache",
+    fetchedAt: "2026-01-16T00:00:00Z",
+    asOf: "2026-01-15",
+    source: TICKS_PUBLIC_CACHE_SOURCE,
     recordCount: 1,
-    records: [
-      {
-        id: "cattle-tf-feeder-steer",
-        date: "2026-08-12",
-        firm: "Twin Falls Livestock Commission (Wednesday auction)",
-        url: "",
-        type: "cattle",
-      },
-    ],
-    ticks: [
-      {
-        id: "cattle-tf-feeder-steer",
-        group: "cattle",
-        commodity: "Feeder steers",
-        market: "Twin Falls Livestock Commission (Wednesday auction)",
-        unit: "$/cwt",
-        asOf: "2026-08-12",
-        price: 400.2,
-        source: "Twin Falls Livestock Commission market report",
-      },
-    ],
+    records: [...SAMPLE_TABLE_SKU.records],
+    ticks: [...SAMPLE_TABLE_SKU.ticks],
   },
   "import-alerts": {
     ok: true,
@@ -2556,7 +2562,7 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
   return {
     ok: true,
     product: {
-      id: PRODUCT_ID,
+      id: PRODUCT_PUBLIC_ID,
       name: PRODUCT_NAME,
       version: PRODUCT_VERSION,
     },
@@ -3113,6 +3119,7 @@ function shopDiscoveryPointers(req: IncomingMessage, port: number): Record<strin
     wellKnown: `${origin}${WELL_KNOWN_PATH}`,
     llmsTxt: `${origin}${LLMS_PATH}`,
     mcp: `${origin}${MCP_PATH}`,
+    sample: `${origin}${SAMPLE_PATH}`,
   };
 }
 
@@ -3163,7 +3170,7 @@ export function llmsTxt(): string {
   const listedGmpMd = gmpMdIsPublic();
   const ticksPrice = usdcDisplayFromAtomic(amountAtomicFor("ticks")) ?? "$0.05";
   const paid = [
-    `- GET /ticks — ${ticksPrice} — US hay, cattle, and grain (USDA AMS nationwide, PNW barns, IBC grain, WD1 $/AF). Paid JSON keeps ticks[] and adds records[] + asOf.`,
+    `- GET /ticks — ${ticksPrice} — US hay, cattle, and grain ticks (USDA AMS nationwide). Idaho / PNW barns are example geography inside the table, not the SKU. Paid JSON keeps ticks[] and adds records[] + asOf.`,
     "- GET /import-alerts — $0.05 — FDA Import Alerts / DWPE firm-product snapshot. Paid JSON keeps ticks[] and adds records[] + asOf.",
     "- GET /mariners — $0.05 — USCG D13 / Northwest Local Notice to Mariners",
     "- GET /mariners-d11 — $0.05 — USCG D11 / Southwest Local Notice to Mariners",
@@ -3207,6 +3214,7 @@ export function llmsTxt(): string {
     paid.push(`- GET /gmp-md — $0.05 — Health Canada medical-device report-card observation text + MDR cites. Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`);
   }
   const free = [
+    `- GET /sample — free canned paid-JSON keys (table SKU + ?id= body SKU). HTTP 200. Not live cache. Not a SKU.`,
     `- GET /openapi.json — OpenAPI 3.1 with x-payment-info for the ${paidCountWord()} paid doors`,
     `- GET /.well-known/x402 — absolute URLs of the ${paidCountWord()} paid routes only`,
     `- GET / — shop JSON (payTo + the ${paidCountWord()} products)`,
@@ -3271,6 +3279,10 @@ export function llmsTxt(): string {
     "",
     `${noNextSkuWord()} Free manifests are not the paid body.`,
     "",
+    "## Prompt for AI",
+    "",
+    ...SAMPLE_HOW_TO_USE.map((line) => `- ${line}`),
+    "",
     "## MCP",
     "",
     `- URL — https://ticks.bnm.farm${MCP_PATH}`,
@@ -3315,7 +3327,7 @@ export function wellKnownX402(req: IncomingMessage, port: number): Record<string
     ownershipProofs: [PAY_TO],
     ...shopDiscoveryPointers(req, port),
     instructions:
-      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Pay USDC on Base. ${BODY_PAGE_DISCOVERY} Free OpenAPI is at /openapi.json. MCP is at /mcp (same ${paidCountWord()} paid GETs, not a new SKU). Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
+      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Pay USDC on Base. ${BODY_PAGE_DISCOVERY} Free canned paid-JSON keys: GET /sample (HTTP 200, not a SKU). ${SAMPLE_HOW_TO_USE.join(" ")} Free OpenAPI is at /openapi.json. MCP is at /mcp (same ${paidCountWord()} paid GETs, not a new SKU). Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
   };
 }
 
@@ -3587,7 +3599,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       description: "Official public data as JSON. Unpaid paid routes return HTTP 402.",
       contact: { name: "BNM Data Shop", url: "https://bnm.farm/" },
       "x-guidance":
-        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. ${BODY_PAGE_DISCOVERY} Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. MCP at GET/POST /mcp lists one tool per paid GET plus free search, paid get-one ($0.02), and paid get-page ($0.05). Free manifests do not include the paid body. No request body. ${noNextSkuWord()}`,
+        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. ${BODY_PAGE_DISCOVERY} Free canned paid-JSON keys: GET /sample (HTTP 200, not a SKU). Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. MCP at GET/POST /mcp lists one tool per paid GET plus free search, paid get-one ($0.02), and paid get-page ($0.05). Free manifests do not include the paid body. No request body. ${noNextSkuWord()}`,
     },
     "x-discovery": {
       ownershipProofs: [PAY_TO],
@@ -3597,6 +3609,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
     },
     "x-agentcash-guidance": {
       llmsTxtUrl: `${origin}${LLMS_PATH}`,
+      sampleUrl: `${origin}${SAMPLE_PATH}`,
     },
     servers: [{ url: origin }],
     paths: {
@@ -4472,11 +4485,17 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
             },
           }
         : {}),
+      [SAMPLE_PATH]: {
+        get: freeOpenApiOp(
+          "Free canned paid-JSON keys",
+          "HTTP 200 static example of /ticks table keys and extracted-body ?id= keys. Marked example:true. Not live cache. Not a paid SKU.",
+        ),
+      },
       [MANIFEST_PATH]: {
-        get: freeOpenApiOp("US hay, cattle, and grain free manifest", "Count, schema, and samples. Not the paid snapshot."),
+        get: freeOpenApiOp("US hay, cattle, and grain ticks free manifest", "Count, schema, and samples. Not the paid snapshot."),
       },
       [CATALOG_PATH]: {
-        get: freeOpenApiOp("US hay, cattle, and grain free catalog alias", "Same JSON as /manifest.json."),
+        get: freeOpenApiOp("US hay, cattle, and grain ticks free catalog alias", "Same JSON as /manifest.json."),
       },
       [IMPORT_ALERTS_MANIFEST_PATH]: {
         get: freeOpenApiOp("FDA import-alerts free manifest", "Count, catalog, and schema. Not the paid firm list."),
@@ -4830,10 +4849,11 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
       wellKnown: WELL_KNOWN_PATH,
       llmsTxt: LLMS_PATH,
       mcp: MCP_PATH,
+      sample: SAMPLE_PATH,
       products: [
         {
           path: TICKS_PATH,
-          product: "idaho-hay-feeder-ticks",
+          product: PRODUCT_PUBLIC_ID,
           priceUsdc: usdcPriceString(amountAtomicFor("ticks")),
           amountAtomic: amountAtomicFor("ticks"),
           manifest: MANIFEST_PATH,
@@ -5112,6 +5132,16 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
 
   if (path === LLMS_PATH) {
     sendText(res, 200, llmsTxt(), "text/markdown; charset=utf-8");
+    return;
+  }
+
+  if (path === SAMPLE_PATH) {
+    sendJson(res, 200, shopPaidJsonSample());
+    return;
+  }
+
+  if (path === X402LIST_PATH) {
+    sendText(res, 200, X402LIST_BODY, "text/plain");
     return;
   }
 
@@ -5475,7 +5505,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, SAMPLE_PATH, X402LIST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
 }
 
 export function bindHost(): string {
