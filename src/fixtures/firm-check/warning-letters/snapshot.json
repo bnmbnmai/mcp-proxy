@@ -1,0 +1,23 @@
+{
+  "ok": true,
+  "product": "fda-warning-letter-bodies",
+  "status": "ok",
+  "reason": null,
+  "fetchedAt": "2026-08-26T00:00:00.000Z",
+  "asOf": "2026-03-04",
+  "sources": {
+    "listing": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/warning-letters"
+  },
+  "letters": [
+    {
+      "id": "citra100mg-722606-03042026",
+      "firm": "Citra100mg",
+      "cms": "722606",
+      "issuedOn": "2026-03-04",
+      "subject": "Unapproved New Drugs/Misbranded",
+      "issuingOffice": "Center for Drug Evaluation and Research",
+      "sourceUrl": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/citra100mg-722606-03042026",
+      "body": "WARNING LETTER secret letter body"
+    }
+  ]
+}

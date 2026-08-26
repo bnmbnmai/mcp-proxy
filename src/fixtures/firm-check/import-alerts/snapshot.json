@@ -1,0 +1,72 @@
+{
+  "ok": true,
+  "product": "fda-import-alerts",
+  "status": "ok",
+  "reason": null,
+  "fetchedAt": "2026-08-26T00:00:00.000Z",
+  "asOf": "2026-08-07",
+  "sources": {
+    "catalog": "https://www.accessdata.fda.gov/cms_ia/ialist.html",
+    "byDate": "https://www.accessdata.fda.gov/cms_ia/iapublishdate.html",
+    "pattern": "https://www.accessdata.fda.gov/cms_ia/importalert_{id}.html"
+  },
+  "catalog": [
+    {
+      "alertNumber": "99-05",
+      "type": "DWPE",
+      "name": "Detention Without Physical Examination of Raw Agricultural Products for Pesticides",
+      "datePublished": "08/07/2026",
+      "sourceUrl": "https://www.accessdata.fda.gov/cms_ia/importalert_258.html",
+      "pageId": "258",
+      "firstSlice": true
+    },
+    {
+      "alertNumber": "16-81",
+      "type": "DWPE",
+      "name": "Detention Without Physical Examination of Seafood Products Due to Salmonella",
+      "datePublished": "03/05/2026",
+      "sourceUrl": "https://www.accessdata.fda.gov/cms_ia/importalert_49.html",
+      "pageId": "49",
+      "firstSlice": true
+    }
+  ],
+  "alerts": [],
+  "ticks": [
+    {
+      "alertNumber": "16-81",
+      "type": "DWPE",
+      "name": "Detention Without Physical Examination of Seafood Products Due to Salmonella",
+      "list": "red",
+      "firm": "Pacific Catch Ltd",
+      "country": "VN",
+      "product": "shrimp",
+      "datePublished": "03/05/2026",
+      "sourceUrl": "https://www.accessdata.fda.gov/cms_ia/importalert_49.html",
+      "asOf": "2026-08-07"
+    },
+    {
+      "alertNumber": "16-81",
+      "type": "DWPE",
+      "name": "Detention Without Physical Examination of Seafood Products Due to Salmonella",
+      "list": "red",
+      "firm": "Sample Catalog Firm SA",
+      "country": "EC",
+      "product": "tuna",
+      "datePublished": "03/05/2026",
+      "sourceUrl": "https://www.accessdata.fda.gov/cms_ia/importalert_49.html",
+      "asOf": "2026-08-07"
+    },
+    {
+      "alertNumber": "99-05",
+      "type": "DWPE",
+      "name": "Detention Without Physical Examination of Raw Agricultural Products for Pesticides",
+      "list": "red",
+      "firm": "Hidden Paid Firm Ltd",
+      "country": "MX",
+      "product": "secret product row",
+      "datePublished": "08/07/2026",
+      "sourceUrl": "https://www.accessdata.fda.gov/cms_ia/importalert_258.html",
+      "asOf": "2026-08-07"
+    }
+  ]
+}

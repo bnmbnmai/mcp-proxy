@@ -13,6 +13,8 @@ import {
 } from "./ticks-door.js";
 import {
   assertNoForbiddenExtras,
+  extraMcpToolNames,
+  FIRM_CHECK_TOOL_NAME,
   findLiveSku,
   handleMcpJsonRpc,
   LIVE_ORIGIN,
@@ -127,8 +129,8 @@ async function main(): Promise<void> {
   assert.ok(fromLive.every((sku) => sku.priceUsdc === "0.05"));
   assert.equal(
     mcpToolDescriptors(LIVE_ORIGIN, fromLive).length,
-    livePaths.length + 3,
-    "one tool per live paid GET plus search / get-one / get-page",
+    livePaths.length + extraMcpToolNames().length,
+    "one tool per live paid GET plus free search / firm-check and paid get-one / get-page",
   );
   assert.equal(MCP_CONNECT, `npx -y mcp-remote ${LIVE_ORIGIN}${MCP_PATH}`);
 
@@ -137,7 +139,8 @@ async function main(): Promise<void> {
     { wellKnown: wk },
   );
   const tools = (listed as { result: { tools: { name: string }[] } }).result.tools;
-  const paidTools = tools.filter((t) => t.name !== "search" && t.name !== "get-page" && t.name !== "get-one");
+  const extras = new Set(extraMcpToolNames());
+  const paidTools = tools.filter((t) => !extras.has(t.name));
     assert.equal(paidTools.length, livePaths.length);
     assert.ok(tools.some((t) => t.name === "ema-referrals"));
     assert.ok(tools.some((t) => t.name === "cder-reviews"));
@@ -145,6 +148,7 @@ async function main(): Promise<void> {
     assert.ok(tools.some((t) => t.name === "ofsted-inspections"));
   assert.deepEqual(paidTools.map((t) => `/${t.name}`), livePaths);
   assert.ok(tools.some((t) => t.name === "search"));
+  assert.ok(tools.some((t) => t.name === FIRM_CHECK_TOOL_NAME));
   assert.ok(tools.some((t) => t.name === "get-page"));
   assert.ok(tools.some((t) => t.name === "get-one"));
   assert.ok(tools.some((t) => t.name === "cma-ca98"));
@@ -257,10 +261,11 @@ async function main(): Promise<void> {
       });
       const listBody = (await list.json()) as { result: { tools: { name: string }[] } };
       assert.deepEqual(
-        listBody.result.tools.filter((t) => t.name !== "search" && t.name !== "get-page" && t.name !== "get-one").map((t) => t.name),
+        listBody.result.tools.filter((t) => !extraMcpToolNames().includes(t.name)).map((t) => t.name),
         livePaidNames(fromLocal),
       );
       assert.ok(listBody.result.tools.some((t) => t.name === "search"));
+      assert.ok(listBody.result.tools.some((t) => t.name === FIRM_CHECK_TOOL_NAME));
       assert.ok(listBody.result.tools.some((t) => t.name === "get-page"));
       assert.ok(listBody.result.tools.some((t) => t.name === "get-one"));
       assert.ok(listBody.result.tools.some((t) => t.name === "cma-ca98"));

@@ -42,6 +42,7 @@ build/ofsted-inspections.*
 build/ticks-ams.*
 build/paid-records.*
 build/shop-sample.*
+build/firm-check.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
