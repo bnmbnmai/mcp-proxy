@@ -1,0 +1,157 @@
+[
+  {
+    "Institution": "Clear Fork Bank, National Association",
+    "CharterNumber": "3248",
+    "Company": "",
+    "Individual": "",
+    "Location": "Albany, TX",
+    "TypeCode": "C&D",
+    "TypeDescription": "Cease-and-Desist Order (C&D) or Personal Cease-and-Desist Order (PC&D)",
+    "Amount": "0.00",
+    "StartDate": "10/08/2024",
+    "StartDocuments": [
+      "AA-ENF-2024-82"
+    ],
+    "TerminationDate": "12/16/2025",
+    "TerminationDocuments": [
+      "AA-SO-2025-66"
+    ],
+    "DocketNumber": "AA-ENF-2024-82",
+    "SubjectMatters": [
+      "BSA Internal Controls",
+      "BSA Program Violation / 12 CFR 21.21",
+      "BSA SAR Violation / 12 CFR 21.11 or 163.180",
+      "BSA Violation Cited",
+      "BSA/AML",
+      "Customer/Enhanced Due Diligence (CDD/EDD)",
+      "Noncompliance with Enforcement Action",
+      "SAR/CTR Monitoring/Filing Issue"
+    ]
+  },
+  {
+    "Institution": "EH National Bank",
+    "CharterNumber": "24493",
+    "Company": "",
+    "Individual": "",
+    "Location": "Beverly Hills, CA",
+    "TypeCode": "C&D",
+    "TypeDescription": "Cease-and-Desist Order (C&D) or Personal Cease-and-Desist Order (PC&D)",
+    "Amount": "0.00",
+    "StartDate": "04/29/2025",
+    "StartDocuments": [
+      "AA-WE-2025-20"
+    ],
+    "TerminationDate": "06/13/2025",
+    "TerminationDocuments": [],
+    "DocketNumber": "AA-WE-2025-20",
+    "SubjectMatters": [
+      "Board / Management Oversight",
+      "Capital",
+      "Liquidity",
+      "Strategic Planning"
+    ]
+  },
+  {
+    "Institution": "Transact Bank, National Association",
+    "CharterNumber": "8004",
+    "Company": "",
+    "Individual": "",
+    "Location": "Denver, CO",
+    "TypeCode": "C&D",
+    "TypeDescription": "Cease-and-Desist Order (C&D) or Personal Cease-and-Desist Order (PC&D)",
+    "Amount": "0.00",
+    "StartDate": "03/30/2021",
+    "StartDocuments": [
+      "2021-013"
+    ],
+    "TerminationDate": "",
+    "TerminationDocuments": [],
+    "DocketNumber": "AA-WE- 2021-6",
+    "SubjectMatters": [
+      "Board / Management Oversight",
+      "BSA/AML",
+      "Capital",
+      "Compensation",
+      "Earnings",
+      "Enterprise Governance / Internal Controls / General Risk Management",
+      "Insider Issues",
+      "Noncompliance with Enforcement Action",
+      "Strategic Planning",
+      "Trust Activities"
+    ]
+  },
+  {
+    "Institution": "United Fidelity Bank, F.S.B.",
+    "CharterNumber": "703676",
+    "Company": "",
+    "Individual": "",
+    "Location": "Evansville, IN",
+    "TypeCode": "C&D",
+    "TypeDescription": "Cease-and-Desist Order (C&D) or Personal Cease-and-Desist Order (PC&D)",
+    "Amount": "0.00",
+    "StartDate": "10/31/2023",
+    "StartDocuments": [
+      "2023-031"
+    ],
+    "TerminationDate": "",
+    "TerminationDocuments": [],
+    "DocketNumber": "AA-CE-2023-40",
+    "SubjectMatters": [
+      "Allowance for Losses (ALLL / ACL)",
+      "Asset Quality",
+      "Audit",
+      "Board / Management Oversight",
+      "Capital",
+      "Concentration Risk Management",
+      "Credit/Collateral Exceptions",
+      "Enterprise Governance / Internal Controls / General Risk Management",
+      "Internal Audit",
+      "Lending Issues",
+      "Liquidity",
+      "Loan Review",
+      "Other Lending Deficiencies",
+      "Problem Loan Identification",
+      "Sensitivity to Market Risk",
+      "Strategic Planning",
+      "Trading & Securities"
+    ]
+  },
+  {
+    "Institution": "",
+    "CharterNumber": "",
+    "Company": "Jack Henry & Associates",
+    "Individual": "",
+    "Location": "",
+    "TypeCode": "FA",
+    "TypeDescription": "Formal Agreement",
+    "Amount": "0.00",
+    "StartDate": "12/09/2013",
+    "StartDocuments": [
+      "2013-181"
+    ],
+    "TerminationDate": "03/29/2016",
+    "TerminationDocuments": [
+      "2016-042"
+    ],
+    "DocketNumber": "",
+    "SubjectMatters": []
+  },
+  {
+    "Institution": "Alabama Trust Bank, National Association",
+    "CharterNumber": "23896",
+    "Company": "",
+    "Individual": "Dickson, Harold A.",
+    "Location": "Sylacauga, AL",
+    "TypeCode": "Prohibition",
+    "TypeDescription": "Prohibition/Removal Orders",
+    "Amount": "0.00",
+    "StartDate": "12/16/2010",
+    "StartDocuments": [
+      "2010-246"
+    ],
+    "TerminationDate": "",
+    "TerminationDocuments": [],
+    "DocketNumber": "AA-EC-10-113",
+    "SubjectMatters": []
+  }
+]
