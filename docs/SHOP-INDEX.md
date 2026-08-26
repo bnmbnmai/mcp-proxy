@@ -10,6 +10,7 @@ Public, agent-facing list of **live** paid GETs only. Re-read live manifests on 
 - OpenAPI: [https://ticks.bnm.farm/openapi.json](https://ticks.bnm.farm/openapi.json)
 - llms.txt: [https://ticks.bnm.farm/llms.txt](https://ticks.bnm.farm/llms.txt)
 - Shop JSON: [https://ticks.bnm.farm/](https://ticks.bnm.farm/)
+- Firm check: [https://ticks.bnm.farm/firm-check?q=](https://ticks.bnm.farm/firm-check?q=)
 - Ticks manifest: [https://ticks.bnm.farm/manifest.json](https://ticks.bnm.farm/manifest.json)
 
 payTo `0xf59621FC406D266e18f314Ae18eF0a33b8401004` · Base (`eip155:8453`) · USDC `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
@@ -67,7 +68,8 @@ Free manifests carry count, ids, and official source URLs. They are not the paid
 - `GET /.well-known/x402` — absolute URLs of the live paid routes only
 - `GET /openapi.json` — OpenAPI 3.1 with `x-payment-info` and truthful bag-size copy
 - `GET /llms.txt` — short agent guidance (table vs `$0.02` id / `$0.05` page)
-- `GET /mcp` — Streamable HTTP MCP generated from live well-known (do not hardcode a door count)
+- `GET /mcp` — Streamable HTTP MCP generated from live well-known (do not hardcode a door count). Free `search` + free `firm-check` + paid `get-one` / `get-page`.
+- `GET /firm-check?q=` — free cross-door search of Form 483, FDA warning letters, and the FDA import-alert catalog. HTTP 200 JSON. Names the door and the paid pull ($0.02 one text / $0.05 page or table). Not a paid SKU. Does not return letter bodies or the full import-alert table.
 - `GET /manifest.json` and `GET /{path}/manifest.json` — free per-SKU manifests
 
 ## How to buy

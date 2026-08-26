@@ -12,6 +12,7 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import type { IncomingMessage, ServerResponse } from "node:http";
 import { resolve } from "node:path";
 import { z } from "zod";
+import { FIRM_CHECK_NOTE, FIRM_CHECK_PATH, FIRM_CHECK_TOOL_NAME, firmCheckQuery, runFirmCheck } from "./firm-check.js";
 import { catalogSearchQueryString, EXTRACTED_BODY_SKUS, isExtractedBodySku, newestOfficialTextsCopy } from "./paid-records.js";
 
 export const LIVE_ORIGIN = "https://ticks.bnm.farm";
@@ -23,6 +24,11 @@ export const MCP_CONNECT = `npx -y mcp-remote ${LIVE_ORIGIN}${MCP_PATH}`;
 export const SEARCH_TOOL_NAME = "search";
 export const GET_PAGE_TOOL_NAME = "get-page";
 export const GET_ONE_TOOL_NAME = "get-one";
+export { FIRM_CHECK_TOOL_NAME } from "./firm-check.js";
+
+export function extraMcpToolNames(): string[] {
+  return [SEARCH_TOOL_NAME, GET_PAGE_TOOL_NAME, GET_ONE_TOOL_NAME, FIRM_CHECK_TOOL_NAME];
+}
 
 export type LivePaidSku = {
   path: string;
@@ -184,8 +190,8 @@ export function mcpDiscovery(origin = LIVE_ORIGIN, catalog: LivePaidSku[]): Reco
     connect: `npx -y mcp-remote ${base}${MCP_PATH}`,
     source: WELL_KNOWN_PATH,
     note:
-      `Same ${catalog.length} paid GETs as ${WELL_KNOWN_PATH}. Free ${SEARCH_TOOL_NAME} finds id, the ?id= URL ($0.02), and the page cursor; paid ${GET_ONE_TOOL_NAME} is one official text ($0.02); paid ${GET_PAGE_TOOL_NAME} is the page ($0.05). Extracted-body doors: ${newestOfficialTextsCopy()} on a plain GET; older pages on the same URL (?before). Table doors stay the whole current table. Free ${SEARCH_TOOL_NAME} is not a paid SKU. Unpaid tool calls still HTTP 402 on the paid URL. Not Bazaar-indexed.`,
-    freeTools: [SEARCH_TOOL_NAME],
+      `Same ${catalog.length} paid GETs as ${WELL_KNOWN_PATH}. Free ${SEARCH_TOOL_NAME} finds id, the ?id= URL ($0.02), and the page cursor; free ${FIRM_CHECK_TOOL_NAME} searches Form 483, FDA warning letters, and the FDA import-alert catalog; paid ${GET_ONE_TOOL_NAME} is one official text ($0.02); paid ${GET_PAGE_TOOL_NAME} is the page ($0.05). Extracted-body doors: ${newestOfficialTextsCopy()} on a plain GET; older pages on the same URL (?before). Table doors stay the whole current table. Free ${SEARCH_TOOL_NAME} and ${FIRM_CHECK_TOOL_NAME} are not paid SKUs. Unpaid tool calls still HTTP 402 on the paid URL. Not Bazaar-indexed.`,
+    freeTools: [SEARCH_TOOL_NAME, FIRM_CHECK_TOOL_NAME],
   };
 }
 
@@ -241,6 +247,20 @@ export function mcpToolDescriptors(
   });
   return [
     ...paid,
+    {
+      name: FIRM_CHECK_TOOL_NAME,
+      description: FIRM_CHECK_NOTE,
+      inputSchema: {
+        type: "object" as const,
+        properties: {
+          q: {
+            type: "string",
+            description: "Firm, company, FEI, or import-alert number. Free. Not charged.",
+          },
+        },
+        additionalProperties: false as const,
+      },
+    },
     {
       name: SEARCH_TOOL_NAME,
       description:
@@ -420,7 +440,7 @@ export async function handleMcpJsonRpc(
       capabilities: { tools: { listChanged: false } },
       serverInfo: { name: "bnm-data-shop", version: "1.0.0" },
       instructions:
-        `${catalog.length} paid GETs from ${WELL_KNOWN_PATH}, plus free ${SEARCH_TOOL_NAME}, paid ${GET_ONE_TOOL_NAME} ($0.02), and paid ${GET_PAGE_TOOL_NAME} ($0.05). Free index/search finds id and the ?id= URL; then pay one text or the page. Extracted-body doors: ${newestOfficialTextsCopy()} on a plain GET; older pages on the same URL (?before). Table doors stay the whole current table. Unpaid is HTTP 402. USDC on Base. Not Bazaar-indexed.`,
+        `${catalog.length} paid GETs from ${WELL_KNOWN_PATH}, plus free ${SEARCH_TOOL_NAME}, free ${FIRM_CHECK_TOOL_NAME}, paid ${GET_ONE_TOOL_NAME} ($0.02), and paid ${GET_PAGE_TOOL_NAME} ($0.05). Free index/search finds id and the ?id= URL; then pay one text or the page. Extracted-body doors: ${newestOfficialTextsCopy()} on a plain GET; older pages on the same URL (?before). Table doors stay the whole current table. Unpaid is HTTP 402. USDC on Base. Not Bazaar-indexed.`,
     });
   }
 
@@ -443,6 +463,23 @@ export async function handleMcpJsonRpc(
       date?: string;
       id?: string;
     };
+    if (name === FIRM_CHECK_TOOL_NAME) {
+      const q = firmCheckQuery(args.q);
+      if (!q) {
+        return err(-32602, `firm-check needs q (firm, company, FEI, or import-alert number).`);
+      }
+      const origin = (opts.origin ?? LIVE_ORIGIN).replace(/\/+$/, "");
+      const url = `${origin}${FIRM_CHECK_PATH}?q=${encodeURIComponent(q)}`;
+      const result = await runFirmCheck(q);
+      return ok({
+        content: [
+          {
+            type: "text",
+            text: [`GET ${url}`, "HTTP 200", "", JSON.stringify(result)].join("\n"),
+          },
+        ],
+      });
+    }
     if (name === SEARCH_TOOL_NAME) {
       const door = String(args.door ?? "").replace(/^\//, "");
       if (!isExtractedBodySku(door)) {
@@ -506,7 +543,7 @@ export async function handleMcpJsonRpc(
     }
     const sku = findLiveSku(name, catalog);
     if (!sku) {
-      return err(-32602, `Unknown tool ${name}. Tools are the live paid GETs from ${WELL_KNOWN_PATH}, plus free ${SEARCH_TOOL_NAME}, paid ${GET_ONE_TOOL_NAME}, and paid ${GET_PAGE_TOOL_NAME}.`);
+      return err(-32602, `Unknown tool ${name}. Tools are the live paid GETs from ${WELL_KNOWN_PATH}, plus free ${SEARCH_TOOL_NAME}, free ${FIRM_CHECK_TOOL_NAME}, paid ${GET_ONE_TOOL_NAME}, and paid ${GET_PAGE_TOOL_NAME}.`);
     }
     const xPayment = args.x_payment || opts.xPayment;
     const result = await getPaidSku(sku.path, {
@@ -663,6 +700,26 @@ export async function createTicksMcpServer(origin = ticksOrigin()): Promise<McpS
       },
     );
   }
+  server.registerTool(
+    FIRM_CHECK_TOOL_NAME,
+    {
+      description: FIRM_CHECK_NOTE,
+      inputSchema: {
+        q: z.string().describe("Firm, company, FEI, or import-alert number. Free. Not charged."),
+      },
+    },
+    async ({ q }) => {
+      const query = firmCheckQuery(q);
+      if (!query) {
+        return { content: [{ type: "text" as const, text: "firm-check needs q." }], isError: true };
+      }
+      const result = await runFirmCheck(query);
+      const url = `${origin.replace(/\/+$/, "")}${FIRM_CHECK_PATH}?q=${encodeURIComponent(query)}`;
+      return {
+        content: [{ type: "text" as const, text: [`GET ${url}`, "HTTP 200", "", JSON.stringify(result)].join("\n") }],
+      };
+    },
+  );
   server.registerTool(
     SEARCH_TOOL_NAME,
     {

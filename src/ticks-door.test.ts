@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2 } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, FIRM_CHECK_PATH, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2 } from "./ticks-door.js";
 import { SINGLE_DOC_AMOUNT_ATOMIC } from "./paid-records.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
@@ -293,6 +293,7 @@ async function main(): Promise<void> {
       resources: string[];
       openapi?: string;
       llmsTxt?: string;
+      firmCheck?: string;
       instructions?: string;
       ownershipProofs?: string[];
     };
@@ -339,6 +340,9 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.every((r) => r.startsWith("http")), "well-known resources must be absolute URLs");
     assert.ok(wk.openapi?.endsWith(OPENAPI_PATH));
     assert.ok(wk.llmsTxt?.endsWith(LLMS_PATH));
+    assert.ok(wk.firmCheck?.endsWith(FIRM_CHECK_PATH));
+    assert.ok(!wk.resources.some((r) => r.includes(FIRM_CHECK_PATH)), "firm-check is free discovery, not a paid resource");
+    assert.ok((wk.instructions ?? "").includes("/firm-check"));
     assert.ok((wk.instructions ?? "").includes("thirty-three paid"));
     assert.ok((wk.instructions ?? "").includes("whole current table"));
     assert.ok((wk.instructions ?? "").includes("newest 10 official texts"));
@@ -516,6 +520,7 @@ async function main(): Promise<void> {
     const llms = await fetch(`${base}${LLMS_PATH}`);
     assert.equal(llms.status, 200);
     const llmsBody = await llms.text();
+    assert.ok(llmsBody.includes("GET /firm-check?q="));
     assert.ok(llmsBody.includes("GET /ticks"));
     assert.ok(llmsBody.includes("GET /import-alerts"));
     assert.ok(llmsBody.includes("GET /mariners"));
@@ -608,6 +613,7 @@ async function main(): Promise<void> {
       openapi?: string;
       wellKnown?: string;
       llmsTxt?: string;
+      firmCheck?: string;
       note?: string;
     };
     assert.ok((shop.note ?? "").includes("newest 10 official texts"));
@@ -659,6 +665,8 @@ async function main(): Promise<void> {
     assert.equal(shop.openapi, OPENAPI_PATH);
     assert.equal(shop.wellKnown, WELL_KNOWN_PATH);
     assert.equal(shop.llmsTxt, LLMS_PATH);
+    assert.equal(shop.firmCheck, FIRM_CHECK_PATH);
+    assert.ok(!shop.products.some((p) => p.path === FIRM_CHECK_PATH));
   });
 
   const dir = mkdtempSync(join(tmpdir(), "idaho-ticks-"));

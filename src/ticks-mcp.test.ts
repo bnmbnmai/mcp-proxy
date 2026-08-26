@@ -13,6 +13,7 @@ import {
 } from "./ticks-door.js";
 import {
   assertNoForbiddenExtras,
+  extraMcpToolNames,
   findLiveSku,
   handleMcpJsonRpc,
   LIVE_ORIGIN,
@@ -24,6 +25,7 @@ import {
   resolveMcpCatalog,
   skusFromWellKnown,
 } from "./ticks-mcp.js";
+import { FIRM_CHECK_TOOL_NAME } from "./firm-check.js";
 
 const LIVE_WELL_KNOWN_PATHS = [
   "/ticks",
@@ -58,6 +60,7 @@ const LIVE_WELL_KNOWN_PATHS = [
   "/ema-referrals",
   "/cder-reviews",
   "/npdes-permits",
+  "/ofsted-inspections",
   "/form-483",
   "/gmp",
   "/gmp-md",
@@ -102,8 +105,7 @@ async function main(): Promise<void> {
   assert.equal(liveWk.status, 200, "live well-known must be reachable");
   const wk = (await liveWk.json()) as { resources: string[] };
   const livePaths = wk.resources.map((url) => new URL(url).pathname);
-  assert.equal(livePaths.length, 35, "this deploy well-known is 35 paid GETs after /npdes-permits");
-  // After apollo apply of /ofsted-inspections, expect 36 live MCP tools generated from well-known.
+  assert.equal(livePaths.length, LIVE_WELL_KNOWN_PATHS.length, "MCP tools === live well-known paid GETs");
   assert.deepEqual(livePaths, LIVE_WELL_KNOWN_PATHS);
   assert.ok(livePaths.includes("/cma-ca98"), "live well-known lists /cma-ca98");
   assert.ok(livePaths.includes("/cder-reviews"), "live well-known lists /cder-reviews");
@@ -120,7 +122,7 @@ async function main(): Promise<void> {
   assert.ok(!livePaidNames(fromLive).includes("wasde"));
   assert.equal(fromLive[0]?.priceUsdc, "0.05");
   assert.ok(fromLive.every((sku) => sku.priceUsdc === "0.05"));
-  assert.equal(mcpToolDescriptors(LIVE_ORIGIN, fromLive).length, 38);
+  assert.equal(mcpToolDescriptors(LIVE_ORIGIN, fromLive).length, livePaths.length + extraMcpToolNames().length);
   assert.equal(MCP_CONNECT, `npx -y mcp-remote ${LIVE_ORIGIN}${MCP_PATH}`);
 
   const listed = await handleMcpJsonRpc(
@@ -128,13 +130,15 @@ async function main(): Promise<void> {
     { wellKnown: wk },
   );
   const tools = (listed as { result: { tools: { name: string }[] } }).result.tools;
-  const paidTools = tools.filter((t) => t.name !== "search" && t.name !== "get-page" && t.name !== "get-one");
-    assert.equal(paidTools.length, 35);
+  const extras = new Set(extraMcpToolNames());
+  const paidTools = tools.filter((t) => !extras.has(t.name));
+    assert.equal(paidTools.length, livePaths.length);
     assert.ok(tools.some((t) => t.name === "ema-referrals"));
     assert.ok(tools.some((t) => t.name === "cder-reviews"));
     assert.ok(tools.some((t) => t.name === "npdes-permits"));
   assert.deepEqual(paidTools.map((t) => `/${t.name}`), livePaths);
   assert.ok(tools.some((t) => t.name === "search"));
+  assert.ok(tools.some((t) => t.name === FIRM_CHECK_TOOL_NAME));
   assert.ok(tools.some((t) => t.name === "get-page"));
   assert.ok(tools.some((t) => t.name === "get-one"));
   assert.ok(tools.some((t) => t.name === "cma-ca98"));
@@ -247,10 +251,11 @@ async function main(): Promise<void> {
       });
       const listBody = (await list.json()) as { result: { tools: { name: string }[] } };
       assert.deepEqual(
-        listBody.result.tools.filter((t) => t.name !== "search" && t.name !== "get-page" && t.name !== "get-one").map((t) => t.name),
+        listBody.result.tools.filter((t) => !extraMcpToolNames().includes(t.name)).map((t) => t.name),
         livePaidNames(fromLocal),
       );
       assert.ok(listBody.result.tools.some((t) => t.name === "search"));
+      assert.ok(listBody.result.tools.some((t) => t.name === FIRM_CHECK_TOOL_NAME));
       assert.ok(listBody.result.tools.some((t) => t.name === "get-page"));
       assert.ok(listBody.result.tools.some((t) => t.name === "get-one"));
       assert.ok(listBody.result.tools.some((t) => t.name === "cma-ca98"));
