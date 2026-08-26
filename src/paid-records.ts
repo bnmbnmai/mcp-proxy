@@ -100,7 +100,7 @@ export function paidBodyCatalogNote(paidPath: string, catalogLead: string): stri
   return `${lead} Free index/search (?q=, optional before/date) stays free and includes id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ${paidPath}?id= is ${oneOfficialTextCopy()}. Plain paid GET ${paidPath} is the ${newestOfficialTextsCopy(n)}; ${olderChunkCopy(n)}.`;
 }
 
-export const TICKS_CACHE_SOURCE = "idaho-hay-feeder-ticks cache";
+export const TICKS_CACHE_SOURCE = "US hay, cattle, and grain ticks cache";
 export const FORM_483_TYPE = "form-483";
 export const WARNING_LETTER_TYPE = "warning-letter";
 export const CMA_CA98_TYPE = "cma-ca98";

@@ -278,7 +278,7 @@ assert.ok(SKIPPED_SOURCES.some((s) => s.id === "ams_3045_minneapolis_basis"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "cattle-auction-summaries"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "ams_2911_marsapi"));
 assert.equal(PRODUCT_ID, "idaho-hay-feeder-ticks");
-assert.equal(PRODUCT_NAME, "US hay, cattle, and grain");
+assert.equal(PRODUCT_NAME, "US hay, cattle, and grain ticks");
 
 mkdirSync(join(dir, "empty"), { recursive: true });
 assert.equal(mergeAmsNationalTicks(idaho, null).ticks.length, 1);
