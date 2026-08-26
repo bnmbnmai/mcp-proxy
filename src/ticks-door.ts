@@ -360,6 +360,7 @@ import {
   paidBodyOptsFromSearch,
   paidBodyQueryPath,
   paidBodyWindow,
+  PAGE_AMOUNT_ATOMIC,
   SINGLE_DOC_AMOUNT_ATOMIC,
   type PaidBodyOpts,
 } from "./paid-records.js";
@@ -1043,6 +1044,42 @@ export function sku402Description(sku: DoorSku): string {
     return clamp402Description(`${sku402Product(sku)} ${TABLE_ENTIRE_COPY}`, TABLE_ENTIRE_COPY);
   }
   return SKU_COPY[sku].description;
+}
+
+function isTableSku(sku: DoorSku): boolean {
+  return sku === "ticks" || sku === "import-alerts";
+}
+
+function isMarinersSku(sku: DoorSku): boolean {
+  return sku === "mariners" || sku === "mariners-d11" || sku === "mariners-d7" || sku === "mariners-d8";
+}
+
+/**
+ * 402 accepts[].extra — keep EIP-712 USDC name/version, then bag-size / how-to-buy.
+ * Bazaar stays on extensions.bazaar, not here.
+ */
+export function paymentExtra(sku: DoorSku): Record<string, unknown> {
+  const extra: Record<string, unknown> = {
+    name: "USD Coin",
+    version: "2",
+    searchUrl: isExtractedBodySku(sku) ? `${CANONICAL_ORIGIN}/${sku}/manifest.json?q=` : null,
+    pagePriceAtomic: Number(PAGE_AMOUNT_ATOMIC),
+    firmCheckUrl: `${CANONICAL_ORIGIN}${FIRM_CHECK_PATH}`,
+    sampleUrl: `${CANONICAL_ORIGIN}${SAMPLE_PATH}`,
+  };
+  if (isTableSku(sku)) {
+    extra.tableWhole = true;
+    return extra;
+  }
+  if (isExtractedBodySku(sku)) {
+    extra.oneDocPath = `/${sku}?id=`;
+    extra.priceAtomic = Number(SINGLE_DOC_AMOUNT_ATOMIC);
+    extra.pageDefault = paidBodyWindow();
+    extra.wholeSetIfFewer = true;
+    return extra;
+  }
+  if (isMarinersSku(sku)) extra.wholeSetIfFewer = true;
+  return extra;
 }
 
 const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> = {
@@ -2693,7 +2730,7 @@ export function paymentRequiredBody(
     description,
     mimeType: "application/json",
     maxTimeoutSeconds: 60,
-    extra: { name: "USD Coin", version: "2" },
+    extra: paymentExtra(sku),
     maxAmountRequired: amount,
   };
 
@@ -2723,7 +2760,7 @@ export function paymentRequiredV2(
     asset: USDC_BASE,
     payTo: PAY_TO,
     maxTimeoutSeconds: 60,
-    extra: { name: "USD Coin", version: "2" },
+    extra: paymentExtra(sku),
     amount,
     description,
   };
@@ -3329,6 +3366,7 @@ export function llmsTxt(): string {
     ...paid,
     "",
     "Unpaid GET returns HTTP 402 with PAYMENT-REQUIRED and extensions.bazaar. After a valid X-PAYMENT, the same URL returns JSON: newest chunk on extracted-body doors, older chunk if they ask, whole current table on /ticks and /import-alerts. No API key. No request body.",
+    "402 accepts[].extra names searchUrl, oneDocPath, priceAtomic, pagePriceAtomic, pageDefault, tableWhole, firmCheckUrl, sampleUrl. extra.name stays USD Coin.",
     "",
     "## Free discovery",
     "",
@@ -3667,6 +3705,10 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
     "x-agentcash-guidance": {
       llmsTxtUrl: `${origin}${LLMS_PATH}`,
       sampleUrl: `${origin}${SAMPLE_PATH}`,
+      firmCheckUrl: `${origin}${FIRM_CHECK_PATH}`,
+      oneDocPriceAtomic: Number(SINGLE_DOC_AMOUNT_ATOMIC),
+      pagePriceAtomic: Number(PAGE_AMOUNT_ATOMIC),
+      pageDefault: paidBodyWindow(),
     },
     servers: [{ url: origin }],
     paths: {
