@@ -45,8 +45,8 @@
       "state": "open draft"
     },
     "lander": {
-      "url": "",
-      "state": "pending"
+      "url": "https://github.com/bnmbnmai/tv-remote/pull/64",
+      "state": "open draft"
     }
   },
   "blockers": []
