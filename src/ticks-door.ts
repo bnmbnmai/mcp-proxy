@@ -2040,7 +2040,7 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         name: "Example wastewater treatment plant",
         date: "2026-01-01",
         sourceUrl: "https://www.epa.gov/system/files/documents/2026-01/example-individual-permit.pdf",
-        body: "UNITED STATES ENVIRONMENTAL PROTECTION AGENCY\nAUTHORIZATION TO DISCHARGE UNDER THE NATIONAL POLLUTANT DISCHARGE ELIMINATION SYSTEM\nThis teaser is not an official permit body.",
+        body: "This teaser is not an official permit body. Example wastewater treatment plant individual NPDES authorization excerpt.",
       },
     ],
   },
