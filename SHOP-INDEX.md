@@ -44,7 +44,7 @@ Extracted-body doors: **free index/search** on `/{door}/manifest.json` or `/{doo
 | `/frb-orders` | FRB institution C&D / written-agreement / PCA text. Newest 10 official texts | `cards[].body` | 29 cards | $0.05 | [frb-orders/manifest.json](https://ticks.bnm.farm/frb-orders/manifest.json) |
 | `/ncua-orders` | NCUA institution consent C&D text. Newest 10 official texts | `cards[].body` | 12 cards | $0.05 | [ncua-orders/manifest.json](https://ticks.bnm.farm/ncua-orders/manifest.json) |
 | `/fincen-orders` | FinCEN institution consent-order text. Newest 10 official texts | `cards[].body` | 33 cards | $0.05 | [fincen-orders/manifest.json](https://ticks.bnm.farm/fincen-orders/manifest.json) |
-| `/ferc-orders` | FERC institution stipulation-and-consent text. Newest 10 official texts | `cards[].body` | 5 cards | $0.05 | [ferc-orders/manifest.json](https://ticks.bnm.farm/ferc-orders/manifest.json) |
+| `/ferc-orders` | FERC institution stipulation-and-consent text. Newest 10 official texts | `cards[].body` | 22 cards | $0.05 | [ferc-orders/manifest.json](https://ticks.bnm.farm/ferc-orders/manifest.json) |
 | `/ofac-orders` | OFAC institution enforcement-release text. Newest 10 official texts | `cards[].body` | 25 cards | $0.05 | [ofac-orders/manifest.json](https://ticks.bnm.farm/ofac-orders/manifest.json) |
 | `/bis-orders` | BIS institution charging-letter / order text. Newest 10 official texts | `cards[].body` | 22 cards | $0.05 | [bis-orders/manifest.json](https://ticks.bnm.farm/bis-orders/manifest.json) |
 | `/cftc-orders` | CFTC institution enforcement-order / settlement text. Newest 10 official texts | `cards[].body` | 7 cards | $0.05 | [cftc-orders/manifest.json](https://ticks.bnm.farm/cftc-orders/manifest.json) |

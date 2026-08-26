@@ -1,0 +1,45 @@
+{
+  "before": {
+    "cardCount": 16,
+    "listedCount": 21,
+    "asOf": "2026-08-03",
+    "note": "first-slice lander said 5; live was 16 after earlier 2025/2024 walk"
+  },
+  "firstSlice": {
+    "cardCount": 5
+  },
+  "after": {
+    "cardCount": 22,
+    "listedCount": 54,
+    "asOf": "2026-08-03",
+    "fetchedAt": "2026-08-26T20:08:22.613Z",
+    "addedThisRun": 6,
+    "fetchedPdfs": 2,
+    "skippedNoText": 32,
+    "reused": 16
+  },
+  "live": {
+    "manifest": "https://ticks.bnm.farm/ferc-orders/manifest.json",
+    "manifestStatus": 200,
+    "manifestCardCount": 22,
+    "searchQ": "Algonquin",
+    "searchHits": ["IN21-2-000"],
+    "newRows": [
+      "IN23-3-000",
+      "IN13-15-000",
+      "IN24-15-000",
+      "IN17-7-000",
+      "IN20-4-000",
+      "IN21-2-000"
+    ],
+    "unpaidPage": 402,
+    "unpaidId": 402,
+    "unpaidIdAtomic": "20000",
+    "pageAtomic": "50000",
+    "license": "17 USC 105",
+    "attribution": "FERC",
+    "fdicCardCount": 26,
+    "occCdCardCount": 34,
+    "fincenCardCount": 33
+  }
+}
