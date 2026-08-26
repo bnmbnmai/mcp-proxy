@@ -38,6 +38,7 @@ build/cma-ca98.*
 build/ema-referrals.*
 build/cder-reviews.*
 build/npdes-permits.*
+build/ofsted-inspections.*
 build/ticks-ams.*
 build/paid-records.*
 data/import-alerts/
@@ -74,4 +75,5 @@ data/cma-ca98/
 data/ema-referrals/
 data/cder-reviews/
 data/npdes-permits/
+data/ofsted-inspections/
 data/ticks-ams/

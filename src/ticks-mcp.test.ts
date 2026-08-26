@@ -103,6 +103,7 @@ async function main(): Promise<void> {
   const wk = (await liveWk.json()) as { resources: string[] };
   const livePaths = wk.resources.map((url) => new URL(url).pathname);
   assert.equal(livePaths.length, 35, "this deploy well-known is 35 paid GETs after /npdes-permits");
+  // After apollo apply of /ofsted-inspections, expect 36 live MCP tools generated from well-known.
   assert.deepEqual(livePaths, LIVE_WELL_KNOWN_PATHS);
   assert.ok(livePaths.includes("/cma-ca98"), "live well-known lists /cma-ca98");
   assert.ok(livePaths.includes("/cder-reviews"), "live well-known lists /cder-reviews");
@@ -178,6 +179,7 @@ async function main(): Promise<void> {
       assert.ok(shop.products.some((p) => p.path === "/ema-referrals"));
       assert.ok(shop.products.some((p) => p.path === "/cder-reviews"));
       assert.ok(shop.products.some((p) => p.path === "/npdes-permits"));
+      assert.ok(shop.products.some((p) => p.path === "/ofsted-inspections"));
 
       const wellKnown = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
         mcp?: string;
@@ -192,6 +194,7 @@ async function main(): Promise<void> {
       assert.ok(localPaths.includes("/ema-referrals"), "local well-known lists /ema-referrals");
       assert.ok(localPaths.includes("/cder-reviews"), "local well-known lists /cder-reviews");
       assert.ok(localPaths.includes("/npdes-permits"), "local well-known lists /npdes-permits");
+      assert.ok(localPaths.includes("/ofsted-inspections"), "local well-known lists /ofsted-inspections");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(llms.includes("GET/POST /mcp"));
@@ -254,6 +257,7 @@ async function main(): Promise<void> {
       assert.ok(listBody.result.tools.some((t) => t.name === "ema-referrals"), "MCP tools come from local well-known");
       assert.ok(listBody.result.tools.some((t) => t.name === "cder-reviews"), "MCP tools come from local well-known");
       assert.ok(listBody.result.tools.some((t) => t.name === "npdes-permits"), "MCP tools come from local well-known");
+      assert.ok(listBody.result.tools.some((t) => t.name === "ofsted-inspections"), "MCP tools come from local well-known");
 
       const unpaid = await fetch(`${base}${MCP_PATH}`, {
         method: "POST",
