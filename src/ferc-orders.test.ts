@@ -9,6 +9,7 @@ import {
   CARD_FIELDS,
   LICENSE,
   LISTING_URL,
+  OFFICIAL_WALK_LISTINGS,
   SEED_LISTINGS,
   YEAR_LISTING_URLS,
   buildFercOrdersManifest,
@@ -76,6 +77,18 @@ async function main(): Promise<void> {
   assert.ok(YEAR_LISTING_URLS.some((u) => u.includes("all-civil-penalty-actions-2024")));
   assert.equal(SEED_LISTINGS.length, 5);
   assert.ok(SEED_LISTINGS.some((r) => r.docket === "IN25-6-000"));
+  assert.ok(OFFICIAL_WALK_LISTINGS.length >= 10, "www.ferc.gov year tables 403; collect walks official cms.ferc.gov PDFs");
+  assert.ok(OFFICIAL_WALK_LISTINGS.some((r) => r.docket === "IN25-9-000" && /Skye/i.test(r.institution)));
+  assert.ok(OFFICIAL_WALK_LISTINGS.some((r) => r.docket === "IN24-9-000"));
+  assert.ok(OFFICIAL_WALK_LISTINGS.every((r) => officialFercPdfUrl(r.sourceUrl)));
+  assert.ok(!OFFICIAL_WALK_LISTINGS.some((r) => r.docket === "IN12-17-000"), "walk skips people");
+  assert.ok(!OFFICIAL_WALK_LISTINGS.some((r) => r.docket === "IN21-10-000"), "walk skips Voltus people");
+  assert.ok(!OFFICIAL_WALK_LISTINGS.some((r) => r.docket === "IN23-14-000"), "walk skips Ketchup Caddy people");
+  const walkIds = new Set([...SEED_LISTINGS, ...OFFICIAL_WALK_LISTINGS].map((r) => r.id));
+  assert.ok(walkIds.size > 5, "official PDF walk lists more than first-slice=5");
+  const src = readFs(join(dirname(fileURLToPath(import.meta.url)), "../src/ferc-orders.ts"), "utf-8");
+  assert.match(src, /FERC_ORDERS_LIMIT", "24"/);
+  assert.match(src, /FERC_ORDERS_MAX_FETCH", "36"/);
 
   const htmlListed = parseListingHtml(readFx("listing-excerpt.html"));
   assert.ok(htmlListed.some((r) => r.id === "IN25-6-000"));
