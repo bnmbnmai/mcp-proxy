@@ -1,0 +1,86 @@
+      NPDES Permit No. MA0003531                                             2026 Final Permit
+                                                                                  Page 1 of 21
+
+
+                             AUTHORIZATION TO DISCHARGE UNDER
+                    THE NATIONAL POLLUTANT DISCHARGE ELIMINATION SYSTEM
+
+In compliance with the provisions of the Federal Clean Water Act as amended, 33 U.S.C. §§ 1251 et
+seq. (the “CWA”),
+                               Bird, Incorporated d/b/a CertainTeed
+
+is authorized to discharge from a facility located at
+
+                                      Bird, Incorporated d/b/a CertainTeed
+                                               1077 Pleasant Street
+                                               Norwood, MA 02062
+
+to receiving water named
+                                           Neponset River (MA73-01)
+                                           Boston Harbor Watershed
+
+in accordance with effluent limitations, monitoring requirements and other conditions set forth
+herein.
+
+This Permit shall become effective on the date of signature.
+
+This Permit expires at midnight on the last day of the month preceding the effective date.
+
+This Permit supersedes the Permit issued on January 13, 2015.
+
+This Permit consists of this cover page(s), Part I, Attachment A (Freshwater Acute Toxicity Test
+Procedure and Protocol, February 2011), Attachment B (PFAS Analyte List) and Part II (NPDES Part II
+Standard Conditions, April 2018).
+
+Signed this      day of
+ KENNETH        Digitally signed by
+                KENNETH MORAFF
+
+ MORAFF         Date: 2026.05.27
+
+
+Ken Moraff, Director
+Water Division
+Environmental Protection Agency
+Region 1
+Boston, MA
+              NPDES Permit No. MA0003531                                             2026 Final Permit
+                                                                                          Page 2 of 21
+
+          PART I
+
+          A. EFFLUENT LIMITATIONS AND MONITORING REQUIREMENTS
+
+              1. During the period beginning on the effective date and lasting through the expiration
+                 date, the Permittee is authorized to discharge treated contact cooling water through
+                 Outfall Serial Number 001 to the Neponset River. The discharge shall be limited and
+                 monitored as specified below; the receiving water shall be monitored as specified
+                 below.
+
+
+                                               Effluent Limitations            Monitoring Requirements1,2,3
+Effluent Characteristic
+                                             Average                         Measurement
+                                                           Maximum Daily                         Sample Type5
+                                             Monthly                          Frequency4
+Flow Rate6                             0.04 MGD            Report MGD       Continuous         Meter
+                                       Report              Report           When
+Total Flow6                                                                                    Meter
+                                       MGal/Month          MGal/Month       Discharging
+                                       40 mg/L             70 mg/L
+Total Suspended Solids (TSS)                                                1/Month            Grab
+                                       46 lbs/day          68 lbs/day
+pH7                                                6.5 - 8.3 S.U.           1/Week             Grab
+Oil and Grease                         ---                 15 mg/L          1/Month            Grab
+Temperature8                           83° F               84° F            1/Week             Grab
+Aluminum                               2.6 mg/L            Report mg/L      1/Week             Grab
+Copper                                 Report mg/L         Report mg/L      1/Month            Grab
+Lead                                   Report mg/L         Report mg/L      1/Month            Grab
+Total Residual Chlorine (TRC)9         0.24 mg/L           0.41 mg/L        1/Week             Grab
+Iron                                   ---                 Report mg/L      2/year             Grab
+
+Manganese                              ---                 Report mg/L      2/year             Grab
+
+Chromium                               ---                 Report mg/L      2/year             Grab
+
+Calcium                                ---  

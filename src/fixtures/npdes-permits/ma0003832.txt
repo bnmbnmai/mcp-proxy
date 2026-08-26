@@ -1,0 +1,96 @@
+          NPDES Permit No. MA0003832                                                        2026 Final Permit
+                                                                                                 Page 1 of 15
+
+
+                                  AUTHORIZATION TO DISCHARGE UNDER
+                         THE NATIONAL POLLUTANT DISCHARGE ELIMINATION SYSTEM
+
+In compliance with the provisions of the Federal Clean Water Act as amended, 33 U.S.C. §§ 1251 et
+seq. (the “CWA”),
+
+                                             Procter and Gamble – Gillette
+
+is authorized to discharge from a facility located at
+
+                                                     Gillette Park
+                                                   Boston, MA 02127
+
+to receiving water named
+                                                 Fort Point Channel
+                                           Boston Inner Harbor (MA70-02)
+
+in accordance with effluent limitations, monitoring requirements and other conditions set forth
+herein.
+
+This Permit shall become effective on the first day of the calendar month immediately following 60
+days after signature.1
+
+This Permit expires at midnight, five years from the last day of the month preceding the effective
+date.
+
+This Permit supersedes the Permit issued on July 10, 2012.
+
+This Permit consists of this cover page, Part I, Attachment A (Marine Acute Toxicity Test Procedure
+and Protocol, July 2012) and Part II (NPDES Part II Standard Conditions, April 2018).
+
+Signed this           day of
+    KENNETH          Digitally signed by
+                     KENNETH MORAFF
+
+    MORAFF           Date: 2026.04.15
+
+
+Ken Moraff, Director
+Water Division
+Environmental Protection Agency
+Region 1
+Boston, MA
+
+
+
+
+1
+    Procedures for appealing EPA’s Final Permit decision may be found at 40 CFR § 124.19.
+          NPDES Permit No. MA0003832                                          2026 Final Permit
+                                                                                   Page 2 of 15
+
+     PART I
+
+     A. EFFLUENT LIMITATIONS AND MONITORING REQUIREMENTS
+        1. Outfall 001
+           During the period beginning on the effective date and lasting through the expiration
+           date, the Permittee is authorized to discharge Reverse osmosis reject/backwash, boiler
+           blowdown, and non-contact cooling water through Outfall Serial Number 001 to Fort
+           Point Channel. The discharge shall be limited and monitored as specified below; the
+           receiving water shall be monitored as specified below.
+
+
+                                              Effluent Limitations         Monitoring Requirements1,2,3
+Effluent Characteristic
+                                                                           Measurement
+                                  Average Monthly         Maximum Daily                   Sample Type5
+                                                                            Frequency4
+                                                     26.0 (summer) 6
+Effluent Flow                     Report MGD                               1/Day          Estimate
+                                                     23.5 (non-summer) 6
+pH7                                           6.5 - 8.5 S.U.               5/Week         Grab
+Effluent Temperature              Report ⁰F          83oF                  1/Day 8        Grab
+Rise in temperature (Delta T)     Report ⁰F          Report ⁰F             1/Day9         Calculation
+Heat Load                         Report mBTU/day Report mBTU/day          1/Day10        Calculation
+Total Suspended Solids (TSS) 11   ------             Report mg/L           1/Quarter      Grab
+Oil & Grease11                    ----               Report mg/L           1/Quarter      Grab
+Whole Effluent Toxicity (WET) Testing12, 13
+
+   LC50                           ---                  Report %            1/year         Composite
+
+   Hardness                       ---                  Report mg/L         1/year         Composite
+
+   Ammonia Nitrogen               ---                  Report mg/L         1/year         Composite
+
+   Total Cadmium                  ---                  Report mg/L         1/year         Composite
+
+   Total Copper                   ---                  Report mg/L         1/year         Composite
+
+   Total Nickel                   ---                  Report mg/L         1/year         Composite
+
+   Total Lead                     ---               
