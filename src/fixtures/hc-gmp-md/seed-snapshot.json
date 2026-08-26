@@ -1,0 +1,408 @@
+{
+  "ok": true,
+  "product": "hc-md-inspection-cards",
+  "status": "ok",
+  "reason": null,
+  "fetchedAt": "2026-08-19T22:58:38.521Z",
+  "asOf": "2026-07-22",
+  "license": "Contains information licensed under the Open Government Licence – Canada.",
+  "sources": {
+    "listing": "https://www.drug-inspections.canada.ca/md/index-en.html",
+    "search": "https://www.drug-inspections.canada.ca/md/handler/searchResult.ashx?estName=&ref=&site=&rate=&term=&lic=&startDate=&endDate=&eType=&prov=&licNum=&act=&actCat=&cat=&pType=MD&lang=en",
+    "card": "https://www.drug-inspections.canada.ca/md/handler/fullReportCard.ashx"
+  },
+  "cards": [
+    {
+      "id": "coloplast-canada-corporation-549",
+      "inspectionNumber": "549",
+      "firm": "COLOPLAST CANADA CORPORATION",
+      "referenceNumber": "111941",
+      "site": "Ontario",
+      "inspectedOn": "2026-07-22",
+      "rating": "Compliant",
+      "ratingDesc": "Compliant",
+      "insType": "Domestic - Regular - Onsite",
+      "insSubType": null,
+      "sourceUrl": "https://www.drug-inspections.canada.ca/md/fullReportCard-en.html?insNumber=549&lang=en",
+      "outcome": [
+        "The inspection resulted in a ‘compliant' inspection rating. A compliant inspection rating allows a company to keep their licence and continue conducting business. A compliant rating does not mean that there were no observations during the inspection. If a company receives a compliant inspection rating and if observations were noted",
+        "the company is required to develop a plan to correct the observations to prevent them from occurring again."
+      ],
+      "measuresTaken": [
+        "Corrective actions were requested.",
+        "No actions taken"
+      ],
+      "body": "Health Canada medical-device inspection report card\nEstablishment: COLOPLAST CANADA CORPORATION\nInspection: 549\nReference: 111941\nSite: Ontario\nInspected: 2026-07-22\nRating: Compliant\nType: Domestic - Regular - Onsite\n\nSummary of observations\n\n1. MDR s.45 (c) Activities\nRisk 2: The company did not state the activities of importation and/or distribution on its establishment licence application.\n\n2. MDR s.59 (1) Incident reporting\nRisk 2: The company did not submit one or more incident reports to Health Canada concerning reportable incident(s) that occurred in Canada.\n\n3. MDR s.60 (2)(a)-(i) Contents of preliminary report\nRisk 2: The company submitted one or more preliminary incident report(s) to Health Canada that did not include the required information.\n\n4. MDR s.45 (i) Handling, storage, delivery, etc.\nRisk 3: The written procedure(s) for handling, storage, delivery, installation, and/or servicing of medical devices were inadequate.\n\nInspection outcome\nThe inspection resulted in a ‘compliant' inspection rating. A compliant inspection rating allows a company to keep their licence and continue conducting business. A compliant rating does not mean that there were no observations during the inspection. If a company receives a compliant inspection rating and if observations were noted\nthe company is required to develop a plan to correct the observations to prevent them from occurring again.\n\nMeasures taken\nCorrective actions were requested.\nNo actions taken",
+      "observations": [
+        {
+          "n": 1,
+          "regulation": "MDR s.45 (c) Activities",
+          "cite": "MDR s.45 (c)",
+          "text": "Risk 2: The company did not state the activities of importation and/or distribution on its establishment licence application."
+        },
+        {
+          "n": 2,
+          "regulation": "MDR s.59 (1) Incident reporting",
+          "cite": "MDR s.59 (1)",
+          "text": "Risk 2: The company did not submit one or more incident reports to Health Canada concerning reportable incident(s) that occurred in Canada."
+        },
+        {
+          "n": 3,
+          "regulation": "MDR s.60 (2)(a)-(i) Contents of preliminary report",
+          "cite": "MDR s.60 (2)",
+          "text": "Risk 2: The company submitted one or more preliminary incident report(s) to Health Canada that did not include the required information."
+        },
+        {
+          "n": 4,
+          "regulation": "MDR s.45 (i) Handling, storage, delivery, etc.",
+          "cite": "MDR s.45 (i)",
+          "text": "Risk 3: The written procedure(s) for handling, storage, delivery, installation, and/or servicing of medical devices were inadequate."
+        }
+      ]
+    },
+    {
+      "id": "can-med-healthcare-501",
+      "inspectionNumber": "501",
+      "firm": "CAN-MED HEALTHCARE",
+      "referenceNumber": "111868",
+      "site": "Nova Scotia",
+      "inspectedOn": "2026-05-25",
+      "rating": "Non-compliant",
+      "ratingDesc": "Non-compliant",
+      "insType": "Domestic - Regular - Onsite",
+      "insSubType": null,
+      "sourceUrl": "https://www.drug-inspections.canada.ca/md/fullReportCard-en.html?insNumber=501&lang=en",
+      "outcome": [
+        "The inspection resulted in a ‘non-compliant' rating. A non-compliant inspection rating means that",
+        "at the time of the inspection",
+        "the company's licensable activities did not comply with the Food and Drugs Act and its Medical Devices Regulations. If a company receives a non-compliant inspection rating",
+        "the company's licence may be suspended. The inspection rating considers the risk classification of all the observations",
+        "the number of observations made and if there are repeat observations."
+      ],
+      "measuresTaken": [
+        "Corrective actions were requested and a re-inspection may be required.",
+        "Detention of products"
+      ],
+      "body": "Health Canada medical-device inspection report card\nEstablishment: CAN-MED HEALTHCARE\nInspection: 501\nReference: 111868\nSite: Nova Scotia\nInspected: 2026-05-25\nRating: Non-compliant\nType: Domestic - Regular - Onsite\n\nSummary of observations\n\n1. MDR s.58 (b) Recall procedure\nRisk 1: The company did not adequately implement the written procedure for recalls.\n\n2. MDR s.21 (1) Labelling deficiencies\nRisk 2: Labels on one or more medical devices available for sale in Canada did not set out the required information and/or the information was incorrect.\n\n3. MDR s.26 No sale or import of unlicensed devices\nRisk 2: The company imported, sold and/or offered for sale medical device(s) that were not authorised for sale by Health Canada.\n\n4. MDR s.58 (a) Investigation procedure\nRisk 2: The company did not adequately implement the written procedure for complaint handling.\n\n5. MDR s.58 (b) Recall procedure\nRisk 2: The written procedure for recalls was inadequate.\n\n6. MDR s.63.2 Recall notification within 24 hours\nRisk 2: The company did not provide one or more 24-hour notifications to Health Canada.\n\n7. MDR s.64 Timeline requirement for initial recall report\nRisk 2: The company did not provide one or more initial recall reports to Health Canada within the required timeline.\n\nInspection outcome\nThe inspection resulted in a ‘non-compliant' rating. A non-compliant inspection rating means that\nat the time of the inspection\nthe company's licensable activities did not comply with the Food and Drugs Act and its Medical Devices Regulations. If a company receives a non-compliant inspection rating\nthe company's licence may be suspended. The inspection rating considers the risk classification of all the observations\nthe number of observations made and if there are repeat observations.\n\nMeasures taken\nCorrective actions were requested and a re-inspection may be required.\nDetention of products",
+      "observations": [
+        {
+          "n": 1,
+          "regulation": "MDR s.58 (b) Recall procedure",
+          "cite": "MDR s.58 (b)",
+          "text": "Risk 1: The company did not adequately implement the written procedure for recalls."
+        },
+        {
+          "n": 2,
+          "regulation": "MDR s.21 (1) Labelling deficiencies",
+          "cite": "MDR s.21 (1)",
+          "text": "Risk 2: Labels on one or more medical devices available for sale in Canada did not set out the required information and/or the information was incorrect."
+        },
+        {
+          "n": 3,
+          "regulation": "MDR s.26 No sale or import of unlicensed devices",
+          "cite": "MDR s.26",
+          "text": "Risk 2: The company imported, sold and/or offered for sale medical device(s) that were not authorised for sale by Health Canada."
+        },
+        {
+          "n": 4,
+          "regulation": "MDR s.58 (a) Investigation procedure",
+          "cite": "MDR s.58 (a)",
+          "text": "Risk 2: The company did not adequately implement the written procedure for complaint handling."
+        },
+        {
+          "n": 5,
+          "regulation": "MDR s.58 (b) Recall procedure",
+          "cite": "MDR s.58 (b)",
+          "text": "Risk 2: The written procedure for recalls was inadequate."
+        },
+        {
+          "n": 6,
+          "regulation": "MDR s.63.2 Recall notification within 24 hours",
+          "cite": "MDR s.63.2",
+          "text": "Risk 2: The company did not provide one or more 24-hour notifications to Health Canada."
+        },
+        {
+          "n": 7,
+          "regulation": "MDR s.64 Timeline requirement for initial recall report",
+          "cite": "MDR s.64",
+          "text": "Risk 2: The company did not provide one or more initial recall reports to Health Canada within the required timeline."
+        }
+      ]
+    },
+    {
+      "id": "winsham-fabrik-canada-ltd-dba-winsham-353",
+      "inspectionNumber": "353",
+      "firm": "WINSHAM FABRIK CANADA LTD. DBA WINSHAM",
+      "referenceNumber": "153394",
+      "site": "Ontario",
+      "inspectedOn": "2025-10-20",
+      "rating": "Non-compliant",
+      "ratingDesc": "Non-compliant",
+      "insType": "Domestic - Reassessment - Onsite",
+      "insSubType": null,
+      "sourceUrl": "https://www.drug-inspections.canada.ca/md/fullReportCard-en.html?insNumber=353&lang=en",
+      "outcome": [
+        "The inspection resulted in a ‘non-compliant' rating. A non-compliant inspection rating means that",
+        "at the time of the inspection",
+        "the company's licensable activities did not comply with the Food and Drugs Act and its Medical Devices Regulations. If a company receives a non-compliant inspection rating",
+        "the company's licence may be suspended. The inspection rating considers the risk classification of all the observations",
+        "the number of observations made and if there are repeat observations."
+      ],
+      "measuresTaken": [
+        "Corrective actions were requested.",
+        "Stop sale letter"
+      ],
+      "body": "Health Canada medical-device inspection report card\nEstablishment: WINSHAM FABRIK CANADA LTD. DBA WINSHAM\nInspection: 353\nReference: 153394\nSite: Ontario\nInspected: 2025-10-20\nRating: Non-compliant\nType: Domestic - Reassessment - Onsite\n\nSummary of observations\n\n1. FDA s.20 (1) Prohibition of misrepresentation\nRisk 2: Expired devices were available for sale in Canada.\n\n2. MDR s.26 No sale or import of unlicensed devices\nRisk 2: The company imported, sold and/or offered for sale medical device(s) that were not authorised for sale by Health Canada.\n\n3. MDR s.21 (1) Labelling deficiencies\nRisk 2: Labels on one or more medical devices available for sale in Canada did not set out the required information and/or the information was incorrect.\n\n4. MDR s.27 (a) No advertising of unlicensed devices\nRisk 2: The company advertised medical device(s) that were not authorised for sale on its website and/or in its catalog.\n\n5. MDR s.53 Sufficient information for complete and rapid recall\nRisk 1: The company's distribution records did not have enough information to allow for a complete and rapid withdrawal of the medical devices from the marketplace.\n\n6. MDR s.45 (d) Names of manufacturers\nRisk 2: The company did not provide a complete and/or accurate list of the names and/or addresses of the manufacturers of the medical devices that were being imported or distributed in Canada on its establishment licence application.\n\n7. MDR s.45 (g) Distribution, complaints, recalls\nRisk 2: The written procedure for distribution records was inadequate.\n\n8. MDR s.45 (i) Handling, storage, delivery, etc.\nRisk 2: The written procedure(s) for handling, storage, delivery, installation, and/or servicing of medical devices were inadequate.\n\n9. MDR s.52 (1) Distribution records per device\nRisk 2: The company did not maintain complete distribution records for some of its medical devices.\n\n10. MDR s.58 (a) Investigation procedure\nRisk 2: The written procedure for complaint handling was inadequate.\n\n11. MDR s.58 (b) Recall procedure\nRisk 2: The written procedure for recalls was inadequate.\n\nInspection outcome\nThe inspection resulted in a ‘non-compliant' rating. A non-compliant inspection rating means that\nat the time of the inspection\nthe company's licensable activities did not comply with the Food and Drugs Act and its Medical Devices Regulations. If a company receives a non-compliant inspection rating\nthe company's licence may be suspended. The inspection rating considers the risk classification of all the observations\nthe number of observations made and if there are repeat observations.\n\nMeasures taken\nCorrective actions were requested.\nStop sale letter",
+      "observations": [
+        {
+          "n": 1,
+          "regulation": "FDA s.20 (1) Prohibition of misrepresentation",
+          "cite": "FDA s.20 (1)",
+          "text": "Risk 2: Expired devices were available for sale in Canada."
+        },
+        {
+          "n": 2,
+          "regulation": "MDR s.26 No sale or import of unlicensed devices",
+          "cite": "MDR s.26",
+          "text": "Risk 2: The company imported, sold and/or offered for sale medical device(s) that were not authorised for sale by Health Canada."
+        },
+        {
+          "n": 3,
+          "regulation": "MDR s.21 (1) Labelling deficiencies",
+          "cite": "MDR s.21 (1)",
+          "text": "Risk 2: Labels on one or more medical devices available for sale in Canada did not set out the required information and/or the information was incorrect."
+        },
+        {
+          "n": 4,
+          "regulation": "MDR s.27 (a) No advertising of unlicensed devices",
+          "cite": "MDR s.27 (a)",
+          "text": "Risk 2: The company advertised medical device(s) that were not authorised for sale on its website and/or in its catalog."
+        },
+        {
+          "n": 5,
+          "regulation": "MDR s.53 Sufficient information for complete and rapid recall",
+          "cite": "MDR s.53",
+          "text": "Risk 1: The company's distribution records did not have enough information to allow for a complete and rapid withdrawal of the medical devices from the marketplace."
+        },
+        {
+          "n": 6,
+          "regulation": "MDR s.45 (d) Names of manufacturers",
+          "cite": "MDR s.45 (d)",
+          "text": "Risk 2: The company did not provide a complete and/or accurate list of the names and/or addresses of the manufacturers of the medical devices that were being imported or distributed in Canada on its establishment licence application."
+        },
+        {
+          "n": 7,
+          "regulation": "MDR s.45 (g) Distribution, complaints, recalls",
+          "cite": "MDR s.45 (g)",
+          "text": "Risk 2: The written procedure for distribution records was inadequate."
+        },
+        {
+          "n": 8,
+          "regulation": "MDR s.45 (i) Handling, storage, delivery, etc.",
+          "cite": "MDR s.45 (i)",
+          "text": "Risk 2: The written procedure(s) for handling, storage, delivery, installation, and/or servicing of medical devices were inadequate."
+        },
+        {
+          "n": 9,
+          "regulation": "MDR s.52 (1) Distribution records per device",
+          "cite": "MDR s.52 (1)",
+          "text": "Risk 2: The company did not maintain complete distribution records for some of its medical devices."
+        },
+        {
+          "n": 10,
+          "regulation": "MDR s.58 (a) Investigation procedure",
+          "cite": "MDR s.58 (a)",
+          "text": "Risk 2: The written procedure for complaint handling was inadequate."
+        },
+        {
+          "n": 11,
+          "regulation": "MDR s.58 (b) Recall procedure",
+          "cite": "MDR s.58 (b)",
+          "text": "Risk 2: The written procedure for recalls was inadequate."
+        }
+      ]
+    },
+    {
+      "id": "fernandas-beauty-and-spa-supplies-209",
+      "inspectionNumber": "209",
+      "firm": "FERNANDAS BEAUTY AND SPA SUPPLIES",
+      "referenceNumber": "151286",
+      "site": "Ontario",
+      "inspectedOn": "2025-09-17",
+      "rating": "Non-compliant",
+      "ratingDesc": "Non-compliant",
+      "insType": "Domestic - New - Onsite",
+      "insSubType": null,
+      "sourceUrl": "https://www.drug-inspections.canada.ca/md/fullReportCard-en.html?insNumber=209&lang=en",
+      "outcome": [
+        "The inspection resulted in a ‘non-compliant' rating. A non-compliant inspection rating means that",
+        "at the time of the inspection",
+        "the company's licensable activities did not comply with the Food and Drugs Act and its Medical Devices Regulations. If a company receives a non-compliant inspection rating",
+        "the company's licence may be suspended. The inspection rating considers the risk classification of all the observations",
+        "the number of observations made and if there are repeat observations."
+      ],
+      "measuresTaken": [
+        "Corrective actions were requested and a re-inspection may be required.",
+        "Stop sale letter",
+        "Detention of products"
+      ],
+      "body": "Health Canada medical-device inspection report card\nEstablishment: FERNANDAS BEAUTY AND SPA SUPPLIES\nInspection: 209\nReference: 151286\nSite: Ontario\nInspected: 2025-09-17\nRating: Non-compliant\nType: Domestic - New - Onsite\n\nSummary of observations\n\n1. MDR s.26 No sale or import of unlicensed devices\nRisk 1: The company imported, sold and/or offered for sale medical device(s) that were not authorised for sale by Health Canada.\n\n2. FDA s.20 (1) Prohibition of misrepresentation\nRisk 2: Expired devices were available for sale in Canada.\n\n3. MDR s.21 (1) Labelling deficiencies\nRisk 2: Labels on one or more medical devices available for sale in Canada did not set out the required information and/or the information was incorrect.\n\n4. MDR s.45 (d) Names of manufacturers\nRisk 2: The company did not provide a complete and/or accurate list of the names and/or addresses of the manufacturers of the medical devices that were being imported or distributed in Canada on its establishment licence application.\n\n5. MDR s.45 (g) Distribution, complaints, recalls\nRisk 2: The written procedure for distribution records was inadequate.\n\n6. MDR s.45 (h)-(h.1) Incident Reporting\nRisk 2: The written procedure for incident reporting was inadequate.\n\n7. MDR s.45 (i) Handling, storage, delivery, etc.\nRisk 2: The written procedure(s) for handling, storage, delivery, installation, and/or servicing of medical devices were inadequate.\n\n8. MDR s.45 (h.1) Incident reporting and/or provision of information in respect of serious risk of injury to human health\nRisk 2: The company did not have a written procedure in place for the provision of information related to serious risk of injury to human health, contrary to what was attested to on its establishment licence application.\n\n9. MDR s.48 Notification with respect to change to 45(a),(b) in 15 days\nRisk 2: The company did not notify Health Canada within the required timeline that it had changed its name and/or address.\n\n10. MDR s.52 (1) Distribution records per device\nRisk 2: The company did not maintain complete distribution records for some of its medical devices.\n\n11. MDR s.53 Sufficient information for complete and rapid recall\nRisk 2: The company's distribution records did not have enough information to allow for a complete and rapid withdrawal of the medical devices from the marketplace.\n\n12. MDR s.58 (a) Investigation procedure\nRisk 2: The written procedure for complaint handling was inadequate.\n\n13. MDR s.58 (b) Recall procedure\nRisk 2: The written procedure for recalls was inadequate.\n\nInspection outcome\nThe inspection resulted in a ‘non-compliant' rating. A non-compliant inspection rating means that\nat the time of the inspection\nthe company's licensable activities did not comply with the Food and Drugs Act and its Medical Devices Regulations. If a company receives a non-compliant inspection rating\nthe company's licence may be suspended. The inspection rating considers the risk classification of all the observations\nthe number of observations made and if there are repeat observations.\n\nMeasures taken\nCorrective actions were requested and a re-inspection may be required.\nStop sale letter\nDetention of products",
+      "observations": [
+        {
+          "n": 1,
+          "regulation": "MDR s.26 No sale or import of unlicensed devices",
+          "cite": "MDR s.26",
+          "text": "Risk 1: The company imported, sold and/or offered for sale medical device(s) that were not authorised for sale by Health Canada."
+        },
+        {
+          "n": 2,
+          "regulation": "FDA s.20 (1) Prohibition of misrepresentation",
+          "cite": "FDA s.20 (1)",
+          "text": "Risk 2: Expired devices were available for sale in Canada."
+        },
+        {
+          "n": 3,
+          "regulation": "MDR s.21 (1) Labelling deficiencies",
+          "cite": "MDR s.21 (1)",
+          "text": "Risk 2: Labels on one or more medical devices available for sale in Canada did not set out the required information and/or the information was incorrect."
+        },
+        {
+          "n": 4,
+          "regulation": "MDR s.45 (d) Names of manufacturers",
+          "cite": "MDR s.45 (d)",
+          "text": "Risk 2: The company did not provide a complete and/or accurate list of the names and/or addresses of the manufacturers of the medical devices that were being imported or distributed in Canada on its establishment licence application."
+        },
+        {
+          "n": 5,
+          "regulation": "MDR s.45 (g) Distribution, complaints, recalls",
+          "cite": "MDR s.45 (g)",
+          "text": "Risk 2: The written procedure for distribution records was inadequate."
+        },
+        {
+          "n": 6,
+          "regulation": "MDR s.45 (h)-(h.1) Incident Reporting",
+          "cite": "MDR s.45 (h)",
+          "text": "Risk 2: The written procedure for incident reporting was inadequate."
+        },
+        {
+          "n": 7,
+          "regulation": "MDR s.45 (i) Handling, storage, delivery, etc.",
+          "cite": "MDR s.45 (i)",
+          "text": "Risk 2: The written procedure(s) for handling, storage, delivery, installation, and/or servicing of medical devices were inadequate."
+        },
+        {
+          "n": 8,
+          "regulation": "MDR s.45 (h.1) Incident reporting and/or provision of information in respect of serious risk of injury to human health",
+          "cite": "MDR s.45 (h.1)",
+          "text": "Risk 2: The company did not have a written procedure in place for the provision of information related to serious risk of injury to human health, contrary to what was attested to on its establishment licence application."
+        },
+        {
+          "n": 9,
+          "regulation": "MDR s.48 Notification with respect to change to 45(a),(b) in 15 days",
+          "cite": "MDR s.48",
+          "text": "Risk 2: The company did not notify Health Canada within the required timeline that it had changed its name and/or address."
+        },
+        {
+          "n": 10,
+          "regulation": "MDR s.52 (1) Distribution records per device",
+          "cite": "MDR s.52 (1)",
+          "text": "Risk 2: The company did not maintain complete distribution records for some of its medical devices."
+        },
+        {
+          "n": 11,
+          "regulation": "MDR s.53 Sufficient information for complete and rapid recall",
+          "cite": "MDR s.53",
+          "text": "Risk 2: The company's distribution records did not have enough information to allow for a complete and rapid withdrawal of the medical devices from the marketplace."
+        },
+        {
+          "n": 12,
+          "regulation": "MDR s.58 (a) Investigation procedure",
+          "cite": "MDR s.58 (a)",
+          "text": "Risk 2: The written procedure for complaint handling was inadequate."
+        },
+        {
+          "n": 13,
+          "regulation": "MDR s.58 (b) Recall procedure",
+          "cite": "MDR s.58 (b)",
+          "text": "Risk 2: The written procedure for recalls was inadequate."
+        }
+      ]
+    },
+    {
+      "id": "acmedent-corporation-315",
+      "inspectionNumber": "315",
+      "firm": "ACMEDENT CORPORATION",
+      "referenceNumber": "113433",
+      "site": "Ontario",
+      "inspectedOn": "2025-09-16",
+      "rating": "Non-compliant",
+      "ratingDesc": "Non-compliant",
+      "insType": "Domestic - Reassessment - Onsite",
+      "insSubType": null,
+      "sourceUrl": "https://www.drug-inspections.canada.ca/md/fullReportCard-en.html?insNumber=315&lang=en",
+      "outcome": [
+        "The inspection resulted in a ‘non-compliant' rating. A non-compliant inspection rating means that",
+        "at the time of the inspection",
+        "the company's licensable activities did not comply with the Food and Drugs Act and its Medical Devices Regulations. If a company receives a non-compliant inspection rating",
+        "the company's licence may be suspended. The inspection rating considers the risk classification of all the observations",
+        "the number of observations made and if there are repeat observations."
+      ],
+      "measuresTaken": [
+        "Corrective actions were requested and a re-inspection may be required.",
+        "Stop sale letter"
+      ],
+      "body": "Health Canada medical-device inspection report card\nEstablishment: ACMEDENT CORPORATION\nInspection: 315\nReference: 113433\nSite: Ontario\nInspected: 2025-09-16\nRating: Non-compliant\nType: Domestic - Reassessment - Onsite\n\nSummary of observations\n\n1. MDR s.26 No sale or import of unlicensed devices\nRisk 1: The company imported, sold and/or offered for sale medical device(s) that were not authorised for sale by Health Canada.\n\n2. MDR s.21 (1) Labelling deficiencies\nRisk 2: Labels on one or more medical devices available for sale in Canada did not set out the required information and/or the information was incorrect.\n\n3. MDR s.45 (d) Names of manufacturers\nRisk 2: The company did not provide a complete and/or accurate list of the names and/or addresses of the manufacturers of the medical devices that were being imported or distributed in Canada on its establishment licence application.\n\n4. MDR s.45 (h.1) Incident reporting and/or provision of information in respect of serious risk of injury to human health\nRisk 2: The written procedure for the provision of information related to serious risk of injury to human health was inadequate.\n\n5. MDR s.48 Notification with respect to change to 45(a),(b) in 15 days\nRisk 2: The company did not notify Health Canada within the required timeline that it had changed its name and/or address.\n\n6. MDR s.58 (a) Investigation procedure\nRisk 2: The company did not adequately implement the written procedure for complaint handling.\n\n7. MDR s.58 (b) Recall procedure\nRisk 2: The written procedure for recalls was inadequate.\n\nInspection outcome\nThe inspection resulted in a ‘non-compliant' rating. A non-compliant inspection rating means that\nat the time of the inspection\nthe company's licensable activities did not comply with the Food and Drugs Act and its Medical Devices Regulations. If a company receives a non-compliant inspection rating\nthe company's licence may be suspended. The inspection rating considers the risk classification of all the observations\nthe number of observations made and if there are repeat observations.\n\nMeasures taken\nCorrective actions were requested and a re-inspection may be required.\nStop sale letter",
+      "observations": [
+        {
+          "n": 1,
+          "regulation": "MDR s.26 No sale or import of unlicensed devices",
+          "cite": "MDR s.26",
+          "text": "Risk 1: The company imported, sold and/or offered for sale medical device(s) that were not authorised for sale by Health Canada."
+        },
+        {
+          "n": 2,
+          "regulation": "MDR s.21 (1) Labelling deficiencies",
+          "cite": "MDR s.21 (1)",
+          "text": "Risk 2: Labels on one or more medical devices available for sale in Canada did not set out the required information and/or the information was incorrect."
+        },
+        {
+          "n": 3,
+          "regulation": "MDR s.45 (d) Names of manufacturers",
+          "cite": "MDR s.45 (d)",
+          "text": "Risk 2: The company did not provide a complete and/or accurate list of the names and/or addresses of the manufacturers of the medical devices that were being imported or distributed in Canada on its establishment licence application."
+        },
+        {
+          "n": 4,
+          "regulation": "MDR s.45 (h.1) Incident reporting and/or provision of information in respect of serious risk of injury to human health",
+          "cite": "MDR s.45 (h.1)",
+          "text": "Risk 2: The written procedure for the provision of information related to serious risk of injury to human health was inadequate."
+        },
+        {
+          "n": 5,
+          "regulation": "MDR s.48 Notification with respect to change to 45(a),(b) in 15 days",
+          "cite": "MDR s.48",
+          "text": "Risk 2: The company did not notify Health Canada within the required timeline that it had changed its name and/or address."
+        },
+        {
+          "n": 6,
+          "regulation": "MDR s.58 (a) Investigation procedure",
+          "cite": "MDR s.58 (a)",
+          "text": "Risk 2: The company did not adequately implement the written procedure for complaint handling."
+        },
+        {
+          "n": 7,
+          "regulation": "MDR s.58 (b) Recall procedure",
+          "cite": "MDR s.58 (b)",
+          "text": "Risk 2: The written procedure for recalls was inadequate."
+        }
+      ]
+    }
+  ],
+  "listedCount": 7,
+  "reportCardCount": 6,
+  "fetchedCards": 0,
+  "skippedNoText": 1,
+  "skippedKnown": 0,
+  "reused": 0,
+  "addedThisRun": 5
+}

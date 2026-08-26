@@ -1,0 +1,99 @@
+NPDES Permit No. NH0001023                                             2026 Final Permit
+                                                                            Page 1 of 13
+
+                                     AUTHORIZATION TO DISCHARGE UNDER
+                            THE NATIONAL POLLUTANT DISCHARGE ELIMINATION SYSTEM
+
+In compliance with the provisions of the Federal Clean Water Act as amended, 33 U.S.C. §§ 1251 et
+seq. (the “CWA”),
+
+                                             PCC Structurals, Inc.
+
+is authorized to discharge from a facility located at
+
+                                              PCC Structurals, Inc.
+                                               24 Granite Street
+                                           Northfield, NH 03276-1632
+
+to receiving water named
+
+                                             Winnipesaukee River
+
+in accordance with effluent limitations, monitoring requirements and other conditions set forth
+herein.
+
+This Permit shall become effective upon the date of signature.
+
+This Permit expires at midnight five years from the last day of the month preceding the effective
+date.
+
+This Permit supersedes the Permit issued on October 26, 2018.
+
+This Permit consists of this cover page(s), Part I, Attachment A (Freshwater Acute Toxicity Test
+Procedure and Protocol, February 2011) and Part II (NPDES Part II Standard Conditions, April 2018).
+
+Signed this            day of
+KENNETH       Digitally signed by
+              KENNETH MORAFF
+
+MORAFF        Date: 2026.07.20
+
+
+Ken Moraff, Director
+Water Division
+Environmental Protection Agency
+Region 1
+Boston, MA
+ NPDES Permit No. NH0001023                                                      2026 Final Permit
+                                                                                 Page 2 of 13
+
+PART I
+
+A. EFFLUENT LIMITATIONS AND MONITORING REQUIREMENTS
+
+      1. During the period beginning on the effective date and lasting through the expiration
+      date, the Permittee is authorized to discharge non-contact cooling water through Outfall
+      Serial Number 001 to the Winnipesaukee River. The discharge shall be limited and
+      monitored as specified below; the receiving water shall be monitored as specified below.
+
+
+                                           Effluent Limitations     Monitoring Requirements1,2,3
+Effluent Characteristic
+                                          Average       Maximum     Measurement         Sample
+                                          Monthly        Daily       Frequency4          Type5
+Effluent Flow                       Report MGD        0.22 MGD      Continuous       Meter
+
+pH6                                           6.5 - 8.0 S.U.        1/Week           Grab
+
+pH of upstream receiving water7           Report          Report    1/Week           Grab
+
+Temperature8                        ---                   90.0°F    3/Week           Grab
+Total Residual Chlorine (TRC)9      1.0 mg/L          1.0 mg/L      1/Week           Grab
+Total Copper                        ---               Report mg/L   1/Month          Grab
+Whole Effluent Toxicity (WET) Testing10,11
+
+   LC50                             ---               Report %      1/year           Composite
+
+   Hardness                         ---               Report mg/L   1/year           Composite
+
+   Ammonia Nitrogen                 ---               Report mg/L   1/year           Composite
+
+   Total Aluminum                   ---               Report mg/L   1/year           Composite
+
+   Total Cadmium                    ---               Report mg/L   1/year           Composite
+
+   Total Copper                     ---               Report mg/L   1/year           Composite
+
+   Total Nickel                     ---               Report mg/L   1/year           Composite
+
+   Total Lead                       ---               Report mg/L   1/year           Composite
+
+   Total Zinc                       ---               Report mg/L   1/year           Composite
+ NPDES Permit No. NH0001023                                           2026 Final Permit
+                                                                      Page 3 of 13
+
+
+                                  Reporting Requirements    Monitoring Requirements1,2,3
+Ambient Characteristic12       Average         Maximum      Measurement Sample
+                               Monthly         Daily        Frequency4     Type5
+Hardness                       ---            Report mg/L   1/year     

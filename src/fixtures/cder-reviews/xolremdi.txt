@@ -1,0 +1,65 @@
+CENTER FOR DRUG EVALUATION AND
+           RESEARCH
+
+
+     APPLICATION NUMBER:
+
+        218709Orig1s000
+
+    INTEGRATED REVIEW
+
+               NDA 218709
+               Mavorixafor (X4P-001) Xolremdi
+
+                                                               Integrated Review
+               Table 1. Application Information
+                Application type                              NDA
+                Application number(s)                         218709
+                Priority or standard                          PRIORITY
+                Submit date(s)                                8/31/2023
+                Received date(s)                              8/31/2023
+                PDUFA goal date                               4/30/2024
+                Division/office                               Division of Nonmalignant Hematology (DNH)
+                Review completion date                        Click or tap to enter a date.
+                Established/proper name                       mavorixafor
+                (Proposed) proprietary name                   Xolremdi
+                Pharmacologic class                           CXC chemokine receptor 4 antagonist
+                Other product name(s)                         X4P-001
+                Applicant                                     X4 PHARMACEUTICALS INC
+                Dosage form(s)/formulation(s)                 CAPSULE
+                                                                                        (b) (4)
+                Proposed dosing regimen                                                         weighing >50 kg: 400 mg orally
+                                                              once daily;           (b) (4)
+                                                                                            weighing ≤50 kg: (b) (4) mg orally once
+                                                              daily
+                   Applicant-proposed indication(s)/          Treatment of warts, hypogammaglobulinemia, infections and
+                                                                                                                           (b) (4)
+                   population(s)                              myelokathexis (WHIM) syndrome in
+                                                              patients 12 years of age and older.
+                   SNOMED CT code for proposed                234571003
+                   indication disease term(s)1
+                   Regulatory action                          Approval
+                   Approved dosage (if applicable)            • Weight more than 50 kg: 400 mg orally once daily
+                                                              • Weight up through 50 kg: 300 mg orally once daily
+                   Approved indication(s)/                    In patients 12 years of age and older with WHIM syndrome
+                   population(s) (if applicable)              (warts, hypogammaglobulinemia, infections and
+                                                              myelokathexis) to increase the number of circulating mature
+                                                              neutrophils and lymphocytes.
+                   SNOMED CT code for approved                234571003
+                   indication disease term(s)1
+               1For internal tracking purposes only.
+               Abbreviations: PDUFA, Prescription Drug User Fee Act; SNOMED CT, Systematized Nomenclature of Medicine Clinical Terms
+
+                  2. Benefit-Risk Assessment..............................................................................................4
+               Mavorixafor (X4P-001) Xolremdi
+                Established/proper name                       mavorixafor
+               Mavorixafor (X4P-001) Xolremdi
+               Mavorixafor (X4P-001) Xolremdi
+               Mavorixafor (X4P-001) Xolremdi
+               Mavorixafor (X4P-001) Xolremdi
+               Mavorixafor (X4P-001) Xolremdi
+                  for Mavorixafor............................................................................................................10
+               Table 6. Effect of Food on Mavorixafor Pharmacokinetics ..............................................21
+               Table 7. Time Above ANC and ALC Threshold by Mavorixafor Dose Level in Study
+                  Weighing 50 kg or Less Following Mavorixafor Dosages of 300 mg or 400 mg
+   

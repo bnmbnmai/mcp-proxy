@@ -1,0 +1,727 @@
+Document Accession #: 20260408-3063            Filed Date: 04/08/2026
+
+
+
+
+                                      195 FERC ¶ 61,019
+                                 UNITED STATES OF AMERICA
+                          FEDERAL ENERGY REGULATORY COMMISSION
+
+         Before Commissioners: Laura V. Swett, Chairman;
+                               David Rosner, Lindsay S. See,
+                               Judy W. Chang, and David LaCerte.
+
+         MPH Rockaway Peakers, LLC and                                 Docket No. IN25-10-000
+         Bayswater Peaking Facility, LLC
+
+                    ORDER APPROVING STIPULATION AND CONSENT AGREEMENT
+
+                                           (Issued April 8, 2026)
+
+                The Commission approves the attached Stipulation and Consent Agreement
+         (Agreement) between the Office of Enforcement and Regulatory Accounting
+         (Enforcement) and MPH Rockaway Peakers, LLC (MPH-Rockaway), and Bayswater
+         Peaking Facility, LLC (Bayswater) (collectively, Rockaway). This order is in the public
+         interest because the Agreement resolves on fair and equitable terms Enforcement’s
+         investigation (Investigation) under Part 1b of the Commission’s regulations,
+         18 C.F.R. Part 1b (2025).
+
+                The Investigation examined whether Rockaway violated the New York
+         Independent System Operator, Inc.’s (NYISO) Market Administration and Control Area
+         Services Tariff (Tariff) and Commission regulations when it, (a) conducted summer
+         capability tests in configurations that differ from expected operations; (b) did not inform
+         NYISO of derates; (c) submitted inaccurate Generating Availability Data System
+         (GADS) data1; and (d) oversold capacity and reserves from its Far Rockaway GT1
+         peaking unit (GT1).
+
+                Rockaway stipulates to the facts in Section II of the Agreement and admits the
+         violations in Section III of the Agreement. Rockaway agrees to pay sanctions and civil
+
+                1
+                  GADS is a mandatory industry program used by the North American Electric
+         Reliability Corporation (NERC) to collect information about the performance, reliability,
+         and availability of generating units. GADS reporting, which is mandatory for certain
+         NERC-registered entities, requires submitting specific GADS codes that provide the
+         reason a resource is derated or on outage. NYISO uses GADS reports to determine a
+         generator’s capacity value based on its outages in earlier periods.
+Document Accession #: 20260408-3063            Filed Date: 04/08/2026
+
+         Docket No. IN25-10-000                                                                  -2-
+
+
+         penalties of $185,000 and disgorge $626,642 in capacity and reserve market
+         overpayments. Rockaway has already disgorged $299,298 and paid tariff-based2
+         sanctions of $149,649 to NYISO. Therefore, Rockaway will (a) pay a civil penalty of
+         $35,351 to the United States Treasury, which takes into consideration credit for the
+         NYISO sanctions it has already paid, (b) disgorge a balance of $327,344 plus interest to
+         NYISO; and (c) be subject to compliance monitoring as provided more fully below.
+
+         I.     FACTS
+
+                 Bayswater owns GT1, which is an approximately 60.5 MW natural gas-fired
+         electric generation facility. Bayswater is a wholly owned indirect subsidiary of
+         MPH-Rockaway, which is owned by funds managed and controlled by Hull Street
+         Energy, LLC. The Commission authorized Bayswater and MPH-Rockaway to sell
+         energy, capacity, and ancillary services at market-based rates.3 Bayswater sells all of its
+         output to MPH-Rockaway, which in turn resells it into the NYISO markets.
+         MPH-Rockaway is the NYISO Market Participant for Bayswater and GT1.
+
+               MPH-Rockaway also indirectly owns Jamaica Bay Peaking Facility, LLC
+         (Jamaica Bay), which owns and operates Far Rockaway GT2 (GT2), an approximately
+         60.5 MW electric generation facility that is co-located with GT1. MPH-Rockaway
+         purchases from Jamaica Bay the output of GT2 and resells it into the NYISO markets.
+         MPH-Rockaway is the NYISO Market Participant for Jamaica Bay and GT2.
+
+                GT1 and GT2 share certain equipment and, in July 2021, GT2 was modified to
+         have dual fuel capabilities so that it could also run on natural gas. When both units run
+         on natural gas at the same time, GT2’s gas compressor becomes part of GT1’s auxiliary
+         load. As a result, when both units are run simultaneously on gas, GT1’s auxiliary load
+         increases by approximately 2.7 MW and its energy output decreases by that amount.
+
+                Tariff section 5.12.1.2 requires all Installed Capacity (ICAP) Suppliers, such as
+         GT1, to perform Dependable Maximum Net Capability (DMNC) tests. Pursuant to Tariff
+         section 2.4, the DMNC is defined as a measure of “[t]he sustained maximum net output
+         of a Generator, or, where appropriate, an Aggregation, as demonstrated by the
+         performance of a test or through actual operation, averaged over a continuous time period
+
+
+                2
+                  NYISO Tariff section 5.12.12.2 permits NYISO to impose sanctions and
+         penalties for certain capacity market violations.
+                3
+               Bayswater Peaking Facility, LLC, Docket No. ER02-669-000 (Feb. 27, 2002);
+         MPH-Rockaway Peakers, LLC, Docket No. ER20-2060-000 (Aug. 13, 2020).
+Document Accession #: 20260408-3063           Filed Date: 04/08/2026
+
+         Docket No. IN25-10-000                                                                -3-
+
+
+         as defined in the ISO Procedures.” The procedures for establishing the DMNC are
+         outlined in section 4.2 of the Installed Capacity Manual (ICAP Manual) and require
+         DMNC confirmation each year to be conducted in a way that reflects the expected
+         operating configuration and fuel that will be used at peak summer and winter load
+         conditions.
+
+                Since mid-July 2021, GT1 and GT2 have frequently been fired together on gas
+         during summer peak conditions, which resulted in an effective 2.7 MW derate for GT1 on
+         those occasions. However, the derate was not reflected in GT1’s ICAP for summer 2021
+         because that ICAP was established in September 2020 based on DMNC data established
+         with the two generators running separately.
+
+                Rockaway continued to follow the same erroneous DMNC data submission
+         practice for the summer 2022 and summer 2023 capacity seasons, which resulted in the
+         same 2.7 MW over-estimation of the GT1 ICAP value and violated protocols for setting
+         the DMNC as set forth in the ICAP Manual.
+
+                Tariff section 5.12.7 requires ICAP Suppliers to “notify the ISO of any outages,”
+         and Rockaway should have, but did not, notify NYISO in its Outage Scheduler System of
+         the 2.7 MW derate starting July 2021 as well as certain other mechanical and ambient
+         outages that occurred from January 2021 until March 2023. Nor did Rockaway
+         consistently and accurately submit GADS reports reflecting GT1’s reduced capability as
+         required by Tariff section 5.12.5.1 during the same period.
+
+                Rockaway’s noncompliance with Tariff section 5.12.5.1 had a downstream effect
+         on the unit’s capacity and reserves sales. Specifically, it resulted in inflated capacity
+         sales for GT1 because a resource’s capacity is determined by its Equivalent Forced
+         Outage Rate of demand (EFORd),4 which is based on GADS data. Likewise, reserve
+         schedules for generators are based on bid capability, which is largely determined by the
+         normal Upper Operating Limit (UOL) of a generator set by DMNC results. Because
+         GT1’s UOL bid capability was higher than it should have been, more reserves were
+         scheduled from GT1 by NYISO than the unit was able to provide.
+
+               To establish a resource’s summer DMNC rating, NYISO allows resources to
+         choose to submit either the results of a DMNC test or an hour of actual operation data
+
+
+
+               4
+                 Generators in NYISO sell capacity on an Unforced Capacity (UCAP) basis. A
+         resource’s UCAP is equal to its ICAP value adjusted downwards based on its EFORd
+         value, which is calculated from GADS data.
+Document Accession #: 20260408-3063           Filed Date: 04/08/2026
+
+         Docket No. IN25-10-000                                                                  -4-
+
+
+         from June 1 to September 15 in the prior year.5 During the Relevant Period, Rockaway’s
+         DMNC process was to review GT1’s performance and identify the hour with the highest
+         temperature-adjusted generation and submit that hour of operation for the DMNC rating.
+         However, as discussed above, Rockaway should have selected an hour of operation for
+         GT1 when GT1 and GT2 were simultaneously running on gas, because the ICAP Manual
+         required that testing be conducted in normal operating configuration, which would have
+         reflected the 2.7 MW derate.
+
+                Rockaway informed Enforcement staff and a senior vice-president for Rockaway
+         acknowledged in testimony that, after 2021, Rockaway’s DMNC process failed to
+         consider the reduced output during times when both GT1 and GT2 ran on gas and, thus,
+         did not account for the reduction in the capacity of GT1. The senior vice-president
+         acknowledged that GT1’s submitted capability should have been adjusted to ensure the
+         hour of operation used for the DMNC rating reflected times when GT1 and GT2 were
+         both running on gas.
+
+                 Since March 2023, Rockaway has corrected for this issue by reporting a derated
+         capacity in its energy and reserve offers and revised its GADS data submissions to reflect
+         its forced derates. Rockaway developed a protocol for determining the DMNC for GT1
+         starting with the summer 2024 season, which corrected the capacity and reserve bid
+         capability.
+
+                Rockaway fully cooperated with Enforcement during the Investigation.
+
+         II.    VIOLATIONS
+
+                Enforcement determined that, during the Relevant Period, Rockway violated
+         (a) sections 5.12.1.2, 5.12.5.1, 5.12.7, and 15.4.1.3 of the Tariff and (b) 18 C.F.R.
+         §§ 35.41(a) and (b).
+
+                 Tariff section 5.12.1.2 states that generators must “in accordance with the ISO
+         Procedures, perform DMNC or DMGC tests and submit the results to the ISO or provide
+         to the ISO appropriate historical production data.” NYISO provides additional guidance
+         as to how to conduct the DMNC test in section 4.2 of the ICAP Manual, which requires
+         that “all generating Resources must test using usual and customary industry
+         practices. For example, the operating configuration and fuel mix used to test must be the
+
+
+
+
+                5
+                    NYISO ICAP Manual §4.2 DMNC and DMGC Procedures.
+Document Accession #: 20260408-3063           Filed Date: 04/08/2026
+
+         Docket No. IN25-10-000                                                                  -5-
+
+
+         same configuration and fuel mix expected to be used during the summer or winter peak
+         Load conditions, as applicable.”6
+
+                 Enforcement staff found that Rockaway violated section 5.12.1.2 because it did
+         not calculate the DMNC for GT1 based on the configuration deployed under peak
+         summer conditions when the GT1 and GT2 operate simultaneously on natural gas,
+         resulting in a 2.7 MW auxiliary load reduction on GT1.
+
+                Tariff section 5.12.5.1 states that, “To qualify as Installed Capacity Suppliers in
+         the NYCA, Generators… shall submit GADS Data, data equivalent to GADS Data,
+         and/or other Operating Data to the ISO in accordance with the ISO Procedures.”
+
+                Enforcement staff found that Rockaway violated section 5.12.5.1 by not
+         submitting accurate GADS data from January 2021 to March 2023 because the data it
+         reported did not account for (a) forced derates due to the auxiliary load from GT2’s gas
+         compressor, which resulted in a 2.7 MW derate for GT1 during the summer peak season
+         and (b) derates due to mechanical and ambient conditions.
+
+                Tariff section 5.12.7 states that “…each Installed Capacity Supplier shall…on a
+         daily basis: … (iii) notify the ISO of any outages.”
+
+                Enforcement staff found that Rockaway violated section 5.12.7 when it failed to
+         notify NYISO of (a) forced derates due to the auxiliary load from GT2’s gas compressor,
+         which resulted in a 2.7 MW derate for GT1 during the summer peak season and (b)
+         derates due to mechanical and ambient conditions.
+
+                Tariff section 15.4.1.3 states that “Each Supplier bidding to supply Operating
+         Reserve or reduce demand must be able to provide Energy or reduce demand consistent
+         with the Reliability Rules and the ISO Procedures when called upon by the ISO.”
+
+                Enforcement staff found that Rockaway violated section 15.4.1.3 by failing to
+         report derates for GT1 and therefore bidding operating reserves for GT1 that exceeded its
+         actual capability to provide energy when called upon by the NYISO.
+
+                 18 C.F.R. section 35.41(a) states that “[w]here a Seller participates in
+         a Commission-approved organized market, Seller must operate and schedule generating
+         facilities, undertake maintenance, declare outages, and commit or otherwise bid supply in
+         a manner that complies with the Commission-approved rules and regulations of the
+         applicable market.”
+
+
+                6
+                    NYISO ICAP Manual §4.2 DMNC and DMGC Procedures (emphasis added).
+Document Accession #: 20260408-3063           Filed Date: 04/08/2026
+
+         Docket No. IN25-10-000                                                                  -6-
+
+
+                Enforcement staff found that Rockaway violated section 35.41(a) when it failed to
+         (a) properly test GT1’s DMNC for summer peak season based on the usual and
+         customary practice, (b) notify NYISO of GT1’s derates and outages, (c) submit accurate
+         GADS data, and (d) bid operating reserve capacity that GT1 could provide.
+
+                18 C.F.R. section 35.41(b) provides that, “[a] Seller must provide accurate and
+         factual information and not submit false or misleading information, or omit material
+         information, in any communication with the Commission, Commission-approved market
+         monitors, Commission-approved regional transmission organizations, Commission-
+         approved independent system operators, or jurisdictional transmission providers, unless
+         Seller exercises due diligence to prevent such occurrences.”
+
+                Enforcement staff found that Rockaway violated section 35.41(b) by failing to
+         notify NYISO of GT1’s derates and outages, submitting inaccurate GADS data, and
+         bidding operating reserve capacity that GT1 could not provide.
+
+         III.   Stipulation and Consent Agreement
+
+                Enforcement and Rockaway have resolved the Investigation by means of the
+         attached Agreement.
+
+                Rockaway stipulates to the facts set forth in Section II and admits the violations
+         described in Section III of the Agreement.
+
+                Rockaway agrees to pay a civil penalty of $35,351 to the United States Treasury,
+         by wire transfer, within ten (10) days after the Effective Date of this Agreement, as
+         defined herein. This amount reflects the tariff-based sanction already paid to NYISO of
+         $149,649 credited against the total penalty of $185,000 determined by Enforcement staff.
+
+                 Rockaway agrees to pay disgorgement within ten (10) days of the Effective Date
+         of this Agreement to NYISO in the amount of $327,344 plus interest. This amount
+         reflects the disgorgement already paid to NYISO of $299,298 credited against the total
+         disgorgement of $626,642 determined by Enforcement staff.
+
+                Rockaway agrees to submit annual compliance monitoring reports to Enforcement
+         for two years with a third year at Enforcement’s discretion.
+Document Accession #: 20260408-3063            Filed Date: 04/08/2026
+
+         Docket No. IN25-10-000                                                                   -7-
+
+
+         IV.    Determination of Appropriate Remedies and Sanctions
+
+                In recommending the appropriate remedy, Enforcement considered the factors
+         described in the Revised Policy Statement on Penalty Guidelines,7 including that
+         Rockaway fully cooperated with Enforcement during the Investigation.8
+
+                The Commission concludes that the Agreement is a fair and equitable resolution of
+         the matters concerned and is in the public interest, as it reflects the nature and seriousness
+         of the conduct and recognizes the specific considerations stated above and in the
+         Agreement.
+
+               The Commission also concludes that Rockaway’s civil penalty is consistent with
+         the Revised Policy Statement on Penalty Guidelines.9
+
+                The Commission directs Rockaway to make the civil penalty payment and
+         disgorgement as required by the Agreement within ten (10) days after the Effective Date
+         of the Agreement. The Commission directs Rockaway to pay the balance of the
+         disgorgement, $327,344 plus interest, no later than ten (10) days.
+
+
+
+
+                7
+                 Enforcement of Statutes, Orders, Rules, and Regulations, Revised Policy
+         Statement on Penalty Guidelines (Penalty Guidelines), 132 FERC ¶ 61,216 (2010).
+                8
+                   The following is applicable to small entities including businesses with 1,500 or
+         fewer employees, independent schools / universities, trade associations, other non-profits,
+         cities, counties, towns, townships, villages, school districts, and other special districts -
+         The National Ombudsman resolves concerns of uneven or excessive federal regulatory
+         enforcement. Reviews are confidential and do not waive the right to pursue
+         administrative appeals or any other legal action. 888-REG-FAIR /
+         Ombudsman@SBA.gov.
+                9
+                    Penalty Guidelines, 132 FERC ¶ 61,216 (2010).
+Document Accession #: 20260408-3063        Filed Date: 04/08/2026
+
+         Docket No. IN25-10-000                                                            -8-
+
+
+         The Commission orders:
+
+               The attached Stipulation and Consent Agreement is hereby approved without
+         modification.
+
+         By the Commission.
+
+         (SEAL)
+
+
+
+
+                                                   Debbie-Anne A. Reese,
+                                                         Secretary.
+Document Accession #: 20260408-3063           Filed Date: 04/08/2026
+
+
+
+                               UNITED STATES OF AMERICA
+                        FEDERAL ENERGY REGULATORY COMMISSION
+
+         MPH Rockaway Peakers, LLC &                                   Docket No. IN25-10-000
+         Bayswater Peaking Facility, LLC
+
+                           STIPULATION AND CONSENT AGREEMENT
+
+         I.    INTRODUCTION
+
+                The Office of Enforcement and Regulatory Accounting (Enforcement) of the
+         Federal Energy Regulatory Commission (Commission), MPH Rockaway Peakers, LLC
+         (MPH-Rockaway), and Bayswater Peaking Facility, LLC (Bayswater) (collectively,
+         Rockaway), enter into this Stipulation and Consent Agreement (Agreement) to resolve a
+         nonpublic, preliminary investigation (the Investigation) conducted by Enforcement
+         pursuant to Part 1b of the Commission’s regulations, 18 C.F.R. Part 1b (2025). The
+         Investigation examined whether from November 2020 to September 2023 (Relevant
+         Period) Rockaway violated the New York Independent System Operator, Inc.’s (NYISO)
+         Market Administration and Control Area Services Tariff (Tariff) and Commission
+         regulations by, (a) conducting summer capability tests in configurations that differ from
+         expected operations; (b) not informing NYISO of derates; (c) submitting inaccurate
+         Generating Availability Data System (GADS) data1; and (d) overselling capacity and
+         reserves from its Far Rockaway GT1 peaking unit (GT1).
+
+                Rockaway stipulates to the facts in Section II and admits the violations in Section
+         III. As detailed in Section IV, Rockaway has agreed to pay sanctions and civil penalties
+         of $185,000 and disgorgement of $626,642 in capacity and reserve market overpayments.
+         Rockaway has already disgorged $299,298 and paid tariff-based sanctions2 of $149,649
+         to NYISO. Rockaway agrees to (a) pay a civil penalty of $35,351 to the United States
+         Treasury, which takes into consideration credit for the NYISO sanctions it has already
+         paid, (b) disgorge a balance of $327,344 plus interest to NYISO; and (c) be subject to
+         compliance monitoring as provided more fully below.
+
+
+
+
+         1
+           GADS is a mandatory industry program used by the North American Electric
+         Reliability Corporation (NERC) to collect information about the performance, reliability,
+         and availability of generating units. GADS reporting, which is mandatory for certain
+         NERC-registered entities, requires submitting specific GADS codes that provide the
+         reason a resource did not meet its capacity commitments. NYISO uses GADS reports to
+         determine a generator’s capacity value based on its outages in earlier periods.
+         2
+          NYISO Tariff section 5.12.12.2, which is discussed below, permits NYISO to impose
+         penalties for certain capacity market violations.
+Document Accession #: 20260408-3063            Filed Date: 04/08/2026
+
+         Docket No. IN25-10-000                                                                  -2-
+
+         II.    STIPULATIONS
+
+         Enforcement and Rockaway hereby stipulate and agree to the following facts.
+
+                 Bayswater owns GT1, which is an approximately 60.5 MW natural gas-fired
+         electric generation facility. Bayswater is a wholly owned indirect subsidiary of MPH-
+         Rockaway, which is owned by funds managed and controlled by Hull Street Energy,
+         LLC. The Commission authorized Bayswater and MPH-Rockaway to sell energy,
+         capacity, and ancillary services at market-based rates.3 Bayswater sells all of its output to
+         MPH-Rockaway, which in turn resells it into the NYISO markets. MPH-Rockaway is
+         the NYISO Market Participant for Bayswater and GT1.
+
+               MPH-Rockaway also indirectly owns Jamaica Bay Peaking Facility, LLC
+         (Jamaica Bay), which owns and operates Far Rockaway GT2 (GT2), an approximately
+         60.5 MW electric generation facility that is co-located with GT1. MPH-Rockaway
+         purchases from Jamaica Bay the output of GT2 and resells it into the NYISO markets.
+         MPH-Rockaway is the NYISO Market Participant for Jamaica Bay and GT2.
+
+                GT1 and GT2 share certain equipment and, in July 2021, GT2 was modified to
+         have dual fuel capabilities so that it could also run on natural gas. When both units run
+         on natural gas at the same time, GT2’s gas compressor becomes part of GT1’s auxiliary
+         load. As a result, when both units are run simultaneously on gas, GT1’s auxiliary load
+         increases by approximately 2.7 MW and its energy output decreases by that amount.
+
+                Tariff section 5.12.1.2 requires all Installed Capacity (ICAP) Suppliers, such as
+         GT1, to perform Dependable Maximum Net Capability (DMNC) tests. Pursuant to Tariff
+         section 2.4, the DMNC is defined as a measure of “[t]he sustained maximum net output
+         of a Generator, or, where appropriate, an Aggregation, as demonstrated by the
+         performance of a test or through actual operation, averaged over a continuous time period
+         as defined in the ISO Procedures.” The procedures for establishing the DMNC are
+         outlined in section 4.2 of the Installed Capacity Manual (ICAP Manual) and require
+         DMNC confirmation each year to be conducted in a way that reflects the expected
+         operating configuration and fuel that will be used at peak summer and winter load
+         conditions.
+
+                Since mid-July 2021, GT1 and GT2 have frequently been fired together on gas
+         during summer peak conditions, which resulted in an effective 2.7 MW derate for GT1 on
+         those occasions. However, the derate was not reflected in GT1’s ICAP for summer 2021
+         because that ICAP was established in September 2020 based on DMNC data established
+         with the two generators running separately.
+
+
+
+         3
+          Bayswater Peaking Facility, LLC, Docket No. ER02-669-000 (Feb. 27, 2002); MPH-
+         Rockaway Peakers, LLC, Docket No. ER20-2060-000 (Aug. 13, 2020).
+
+                                                     -2-
+Document Accession #: 20260408-3063           Filed Date: 04/08/2026
+
+         Docket No. IN25-10-000                                                                -3-
+
+                Rockaway continued to follow the same erroneous DMNC data submission
+         practice for the summer 2022 and summer 2023 capacity seasons, which resulted in the
+         same 2.7 MW over-estimation of the GT1 ICAP value and violated protocols for setting
+         the DMNC as set forth in the ICAP Manual.
+
+                Tariff section 5.12.7 requires ICAP Suppliers to “notify the ISO of any outages,”
+         and Rockaway should have, but did not, notify NYISO in its Outage Scheduler System of
+         the 2.7 MW derate starting July 2021 as well as certain other mechanical and ambient
+         outages that occurred from January 2021 until March 2023. Nor did Rockaway
+         consistently and accurately submit GADS reports reflecting GT1’s reduced capability as
+         required by Tariff section 5.12.5.1 during the same period.
+
+                Rockaway’s noncompliance with Tariff section 5.12.5.1 had a downstream effect
+         on the unit’s capacity and reserves sales. Specifically, it resulted in inflated capacity
+         sales for GT1 because a resource’s capacity is determined by its Equivalent Forced
+         Outage Rate of demand (EFORd),4 which is based on GADS data. Likewise, reserve
+         schedules for generators are based on bid capability, which is largely determined by the
+         normal Upper Operating Limit (UOL) of a generator set by DMNC results. Because
+         GT1’s UOL bid capability was higher than it should have been, more reserves were
+         scheduled from GT1 by NYISO than the unit was able to provide.
+
+                To establish a resource’s summer DMNC rating, NYISO allows resources to
+         choose to submit either the results of a DMNC test or an hour of actual operation data
+         from June 1 to September 15 in the prior year.5 During the Relevant Period, Rockaway’s
+         DMNC process was to review GT1’s performance and identify the hour with the highest
+         temperature-adjusted generation and submit that hour of operation for the DMNC rating.
+         However, as discussed above, Rockaway should have selected an hour of operation for
+         GT1 when GT1 and GT2 were simultaneously running on gas, because the ICAP Manual
+         required that testing be conducted in normal operating configuration, which would have
+         reflected the 2.7 MW derate.
+
+                Rockaway informed Enforcement staff and a senior vice-president for Rockaway
+         acknowledged in testimony that, after 2021, Rockaway’s DMNC process failed to
+         consider the reduced output during times when both GT1 and GT2 ran on gas and, thus,
+         did not account for the reduction in the capacity of GT1. The senior vice-president
+         acknowledged that GT1’s submitted capability should have been adjusted to ensure the
+
+         4
+           Generators in NYISO sell capacity on an Unforced Capacity (UCAP) basis. A
+         resource’s UCAP is equal to its ICAP value adjusted downwards based on its EFORd
+         value, which is calculated from GADS data.
+         5
+             NYISO ICAP Manual §4.2 DMNC and DMGC Procedures.
+
+
+
+                                                    -3-
+Document Accession #: 20260408-3063           Filed Date: 04/08/2026
+
+         Docket No. IN25-10-000                                                                  -4-
+
+         hour of operation used for the DMNC rating reflected times when GT1 and GT2 were
+         both running on gas.
+
+                 Since March 2023, Rockaway has corrected for this issue by reporting a derated
+         capacity in its energy and reserve offers and revised its GADS data submissions to reflect
+         its forced derates. Rockaway developed a protocol for determining the DMNC for GT1
+         starting with the summer 2024 season, which corrected the capacity and reserve bid
+         capability.
+
+                 Rockaway fully cooperated with Enforcement during the Investigation.
+
+         III.    VIOLATIONS
+
+                Enforcement determined that, during the Relevant Period, Rockaway violated (a)
+         sections 5.12.1.2, 5.12.5.1, 5.12.7, and 15.4.1.3 of the Tariff and (b) 18 C.F.R. §§
+         35.41(a) and (b).
+
+                 Tariff section 5.12.1.2 states that generators must “in accordance with the ISO
+         Procedures, perform DMNC or DMGC tests and submit the results to the ISO or provide
+         to the ISO appropriate historical production data.” NYISO provides additional guidance
+         as to how to conduct the DMNC test in section 4.2 of the ICAP Manual, which requires
+         that “all generating Resources must test using usual and customary industry
+         practices. For example, the operating configuration and fuel mix used to test must be the
+         same configuration and fuel mix expected to be used during the summer or winter peak
+         Load conditions, as applicable.”6
+
+                 Enforcement staff found that Rockaway violated section 5.12.1.2 because it did
+         not calculate the DMNC for GT1 based on the configuration deployed under peak
+         summer conditions when GT1 and GT2 operate simultaneously on natural gas, resulting
+         in a 2.7 MW auxiliary load reduction on GT1.
+
+                Tariff section 5.12.5.1 states that, “To qualify as Installed Capacity Suppliers in
+         the NYCA, Generators… shall submit GADS Data, data equivalent to GADS Data,
+         and/or other Operating Data to the ISO in accordance with the ISO Procedures.”
+
+                Enforcement staff found that Rockaway violated section 5.12.5.1 by not
+         submitting accurate GADS data from January 2021 to March 2023 because the data it
+         reported did not account for (a) forced derates due to the auxiliary load from GT2’s gas
+         compressor, which resulted in a 2.7 MW derate for GT1 during the summer peak season
+         and (b) derates due to mechanical and ambient conditions.
+
+
+
+         6
+             NYISO ICAP Manual §4.2 DMNC and DMGC Procedures (emphasis added).
+
+
+                                                     -4-
+Document Accession #: 20260408-3063            Filed Date: 04/08/2026
+
+         Docket No. IN25-10-000                                                                  -5-
+
+                Tariff section 5.12.7 states that “…each Installed Capacity Supplier shall…on a
+         daily basis: … (iii) notify the ISO of any outages.”
+
+                Enforcement staff found that Rockaway violated section 5.12.7 when it failed to
+         notify NYISO of (a) forced derates due to the auxiliary load from GT2’s gas compressor,
+         which resulted in a 2.7 MW derate for GT1 during the summer peak season and (b)
+         derates due to mechanical and ambient conditions.
+
+                Tariff section 15.4.1.3 states that “Each Supplier bidding to supply Operating
+         Reserve or reduce demand must be able to provide Energy or reduce demand consistent
+         with the Reliability Rules and the ISO Procedures when called upon by the ISO.”
+
+                Enforcement staff found that Rockaway violated section 15.4.1.3 by failing to
+         report derates for GT1 and therefore bidding operating reserves for GT1 that exceeded its
+         actual capability to provide energy when called upon by the NYISO.
+
+                 18 C.F.R. section 35.41(a) states that “[w]here a Seller participates in
+         a Commission-approved organized market, Seller must operate and schedule generating
+         facilities, undertake maintenance, declare outages, and commit or otherwise bid supply in
+         a manner that complies with the Commission-approved rules and regulations of the
+         applicable market.”
+
+                Enforcement staff found that Rockaway violated section 35.41(a) when it failed to
+         (a) properly test GT1’s DMNC for summer peak season based on the usual and
+         customary practice, (b) notify NYISO of GT1’s derates and outages, (c) submit accurate
+         GADS data, and (d) bid operating reserve capacity that GT1 could provide.
+
+                18 C.F.R. section 35.41(b) provides that, “[a] Seller must provide accurate and
+         factual information and not submit false or misleading information, or omit material
+         information, in any communication with the Commission, Commission-approved market
+         monitors, Commission-approved regional transmission organizations, Commission-
+         approved independent system operators, or jurisdictional transmission providers, unless
+         Seller exercises due diligence to prevent such occurrences.”
+
+                Enforcement staff found that Rockaway violated section 35.41(b) by failing to
+         notify NYISO of GT1’s derates and outages, submitting inaccurate GADS data, and
+         bidding operating reserve capacity that GT1 could not provide.
+
+         IV.    REMEDIES AND SANCTIONS
+
+                Tariff section 5.12.12.2 grants NYISO authority to impose financial sanctions on
+         resources for certain violations of its Tariff related to the capacity market, equal to the
+         amount of any resulting overpayment, calculated based on volume and monthly spot
+         auction prices, plus a 50 percent penalty on top of that amount. NYISO assessed
+         $448,947 in total, reflecting $299,298 in disgorgement and a tariff-based sanction of
+         $149,649, which Rockaway has paid in full.
+                                                     -5-
+Document Accession #: 20260408-3063           Filed Date: 04/08/2026
+
+         Docket No. IN25-10-000                                                                 -6-
+
+                For purposes of settling the claims released pursuant to paragraph 37, Rockaway
+         agrees with the facts as stipulated in Section II of this Agreement and admits the
+         violations described in Section III of this Agreement. Rockaway further agrees to
+         undertake obligations set forth in the following paragraphs.
+
+                A.     Civil Penalty
+
+                Rockaway agrees to pay a civil penalty of $35,351 to the United States Treasury,
+         by wire transfer, within ten (10) days after the Effective Date of this Agreement, as
+         defined herein. This amount reflects the tariff-based sanction already paid to NYISO of
+         $149,649 credited against the total penalty of $185,000 determined by Enforcement Staff.
+
+                B.     Disgorgement
+
+                 Rockaway agrees to pay disgorgement within ten (10) days of the Effective Date
+         of this Agreement to NYISO in the amount of $327,344 plus interest. This amount
+         reflects the disgorgement already paid to NYISO of $299,298 credited against the total
+         disgorgement of $626,642 determined by Enforcement Staff.
+
+                C.     Compliance
+
+                 Rockaway shall make annual compliance monitoring reports to Enforcement for
+         two years following the Effective Date of this Agreement. The first report shall be
+         submitted no later than ten (10) days after the first anniversary of the Effective Date. The
+         second annual compliance monitoring report shall be submitted one year from the date of
+         the first report. After the receipt of the second annual report, Enforcement may require
+         Rockaway to submit reports for one additional year.
+
+                 Each compliance monitoring report shall: (1) identify any known violations of
+         Commission regulations or the NYISO Tariff that occurred during the applicable period,
+         including a description of the nature of the violation and what steps were taken to rectify
+         the situation; (2) describe all compliance measures and procedures Rockaway instituted
+         or modified during the reporting period related to compliance with Commission
+         regulations or the NYISO Tariff; and (3) describe all Commission and NYISO Tariff
+         related compliance training that Rockaway administered during the reporting period,
+         including the dates such training occurred, the topics covered, and the procedures used to
+         confirm which personnel attended.
+
+                Each compliance monitoring report shall also include an affidavit executed by an
+         officer of Rockaway stating that it is true and accurate to the best of his/her knowledge.
+
+              Upon request by Enforcement, Rockaway shall provide to Enforcement
+         documentation supporting the contents of its reports.
+
+
+
+
+                                                    -6-
+Document Accession #: 20260408-3063             Filed Date: 04/08/2026
+
+         Docket No. IN25-10-000                                                                      -7-
+
+         V.     TERMS
+
+             The “Effective Date” of this Agreement shall be the date on which the
+         Commission issues an order approving this Agreement without material modification.
+
+                 Commission approval of this Agreement without material modification shall
+         release Rockaway, and forever bar the Commission from holding Rockaway, any
+         affiliated entity, any successor in interest, and their respective agents, officers, directors,
+         or employees, both past and present, liable for any and all administrative or civil claims
+         brought by the Commission arising out of Enforcement’s determination of the specific
+         violations addressed in this Agreement that arose during the Relevant Period.
+
+               Failure by Rockaway to make the disgorgement or civil penalty payments, or to
+         comply with the compliance obligations agreed to herein, or any other provision of this
+         Agreement, shall be deemed a violation of a final order of the Commission issued
+         pursuant to the Federal Power Act (FPA), 16 U.S.C. §792, et seq., and may subject
+         Rockaway to additional action under the enforcement provisions of the FPA.
+
+                If Rockaway does not make the required civil penalty and disgorgement payments
+         described above within the times agreed by the parties, interest will be calculated
+         pursuant to 18 C.F.R. § 35.19a(a)(2)(iii)(A), (B) from the date that payment is due, in
+         addition to the penalty specified above and any other enforcement action and penalty that
+         the Commission may take or impose.
+
+                This Agreement binds Rockaway and its agents, successors, and assignees. This
+         Agreement does not create any additional or independent obligations on Rockaway, or
+         any affiliated entity, its agents, officers, directors, or employees, other than the
+         obligations identified in this Agreement.
+
+                The signatories to this Agreement agree that they enter into the Agreement
+         voluntarily and that, other than the recitations set forth herein, no tender, offer or promise
+         of any kind by any member, employee, officer, director, agent or representative of
+         Enforcement or Rockaway has been made to induce the signatories or any other party to
+         enter into the Agreement.
+
+                Unless the Commission issues an order approving the Agreement in its entirety
+         and without material modification, the Agreement shall be null and void and of no effect
+         whatsoever, and neither Enforcement nor Rockaway shall be bound by any provision or
+         term of the Agreement, unless otherwise agreed to in writing by Enforcement and
+         Rockaway.
+
+                In connection with the civil penalty provided for herein, Rockaway agrees that the
+         Commission’s order approving the Agreement without material modification shall be a
+         final and unappealable order assessing a civil penalty under section 316A(b) of the FPA,
+         16 U.S.C. § 825o-1(b). Rockaway waives findings of fact and conclusions of law,
+         rehearing of any Commission order approving the Agreement without material
+                                                     -7-
+Document Accession #: 20260408-3063           Filed Date: 04/08/2026
+
+         Docket No. IN25-10-000                                                                -8-
+
+         modification, and judicial review by any court of any Commission order approving the
+         Agreement without material modification.
+
+              This Agreement can be modified only if in writing and signed by Enforcement and
+         Rockaway, and any modifications will not be effective unless approved by the
+         Commission.
+
+                Each of the undersigned warrants that he or she is an authorized representative of
+         the entity designated, is authorized to bind such entity, and accepts the Agreement on the
+         entity’s behalf.
+
+                The undersigned representative of Rockaway affirms that he or she has read the
+         Agreement, that all of the matters set forth in the Agreement are true and correct to the
+         best of his or her knowledge, information and belief, and that he or she understands that
+         the Agreement is entered into by Enforcement in express reliance on those
+         representations.
+
+              This Agreement is executed in duplicate, each of which so executed shall be
+         deemed to be an original.
+
+
+
+
+                                                    -8-
+Document Accession #: 20260408-3063   Filed Date: 04/08/2026
+
+   Document Content(s)
+   IN25-10-000.docx..........................................................1
+

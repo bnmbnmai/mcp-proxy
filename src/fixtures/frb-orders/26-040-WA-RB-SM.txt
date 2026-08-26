@@ -1,0 +1,762 @@
+                        UNITED STATES OF AMERICA
+                               BEFORE THE
+            BOARD OF GOVERNORS OF THE FEDERAL RESERVE SYSTEM
+                            WASHINGTON, D.C.
+
+      ILLINOIS DEPARTMENT OF FINANCIAL AND PROFESSIONAL REGULATION
+                           SPRINGFIELD, ILLINOIS
+
+
+
+Written Agreement by and among
+
+IUKA BANCSHARES, INC.                                    Docket Nos. 26-040-WA/RB-HC
+Salem, Illinois                                                      26-040-WA/RB-SM
+                                                                     IDFPR 2026-DB SUP-03
+THE IUKA STATE BANK
+Salem, Illinois
+
+ILLINOIS DEPARTMENT OF FINANCIAL
+AND PROFESSIONAL REGULATION
+Springfield, Illinois
+
+and
+
+FEDERAL RESERVE BANK OF
+ST. LOUIS
+St. Louis, Missouri
+
+
+
+
+       WHEREAS, Iuka Bancshares, Inc. (“Bancshares”), Salem, Illinois, a registered bank
+
+holding company, owns and controls The Iuka State Bank (the “Bank”), Salem, Illinois, a state-
+
+chartered bank that is a member of the Federal Reserve System;
+
+       WHEREAS, the Board of Governors of the Federal Reserve System (the “Board of
+
+Governors”) is the appropriate federal supervisor of Bancshares and the Bank;
+
+       WHEREAS, the Illinois Department of Financial and Professional Regulation (the
+
+“IDFPR”) is the appropriate state supervisor for the Bank;
+       WHEREAS, the most recent examination of the Bank, dated May 27, 2026 (the “Report of
+
+Examination”), conducted by the Federal Reserve Bank of St. Louis (the “Reserve Bank,”
+
+together with the IDFPR, the “Supervisors”) identified certain deficiencies at the Bank related to
+
+internal controls, credit risk management, lending and credit administration, capital, and liquidity
+
+and funds management;
+
+       WHEREAS, the Report of Examination also identified deficiencies in the Bank’s risk
+
+management and compliance with federal laws, rules, and regulations relating to anti-money
+
+laundering (“AML”) compliance, including the Bank Secrecy Act (“BSA”) (31 U.S.C. § 5311 et
+
+seq.) and the rules and regulations issued thereunder by the U.S. Department of the Treasury
+
+(31 C.F.R. Chapter X) (collectively, the “BSA/AML Requirements”) at the Bank;
+
+       WHEREAS, Bancshares, the Bank, and the Supervisors have the common goal that
+
+Bancshares and the Bank operate in a safe and sound manner and in compliance with all
+
+applicable federal and state laws, rules, and regulations;
+
+       WHEREAS, Bancshares and the Bank and the Supervisors have mutually agreed to enter
+
+into this Written Agreement (the “Agreement”); and
+
+       WHEREAS, the undersigned are authorized to enter into this Agreement on behalf of
+
+Bancshares and the Bank, respectively, and consent to compliance with each and every provision
+
+of this Agreement by Bancshares and the Bank.
+
+       NOW, THEREFORE, Bancshares, the Bank, the IDFPR, and the Reserve Bank agree as
+
+follows:
+
+Source of Strength
+
+       1.      The board of directors of Bancshares shall take appropriate steps to fully utilize
+
+Bancshares’ financial and managerial resources, pursuant to section 38A of the Federal Deposit
+
+
+
+
+                                                 2
+Insurance Act, as amended, (the “FDI Act”) (12 U.S.C. § 1831o-1) and section 225.4(a) of
+
+Regulation Y of the Board of Governors (12 C.F.R. § 225.4(a)), to serve as a source of financial
+
+and managerial strength to the Bank, including, but not limited to, demonstrating the ability to
+
+provide financial assistance to the Bank as required by 12 U.S.C. § 1831o-1(a) and (f) by, for
+
+example, raising additional capital or taking other steps to improve the financial condition of the
+
+Bank in the event of the financial distress of the Bank, and taking steps to ensure that the Bank
+
+complies with this Agreement and any supervisory action taken by the Bank’s federal or state
+
+regulators.
+
+Board Oversight
+
+       2.      Within 60 days of the effective date of this Agreement, the board of directors of
+
+the Bank shall submit a written plan to the Supervisors to strengthen board oversight of the
+
+management and operations of the Bank. The plan shall include the following four items:
+
+               (a)     actions the Bank’s board of directors will take to improve the Bank’s
+
+condition and maintain effective control over, and oversight of, the Bank’s major operations and
+
+activities, including but not limited to, capital, earnings, liquidity and funds management,
+
+lending, and credit risk management;
+
+               (b)     measures for the Bank’s board of directors to establish appropriate risk
+
+tolerance guidelines and risk limits, and monitor management’s adherence thereto, including any
+
+exceptions;
+
+               (c)     measures to ensure the Bank’s board of directors monitors management’s
+
+adherence to approved policies and procedures, applicable laws and regulations, and any
+
+exceptions to approved policies and procedures; and
+
+               (d)     steps to improve the quality, comprehensiveness, and granularity of the
+
+
+
+
+                                                 3
+information and reports provided to the board of directors, including with respect to the Bank’s
+
+capital, earnings, liquidity, lending, and credit risk management.
+
+Credit Risk Management
+
+       3.      Within 30 days of the effective date of this Agreement, the Bank shall submit a
+
+written plan acceptable to the Supervisors to strengthen credit risk management practices. The
+
+plan shall include the following two items:
+
+               (a)     policies, procedures, and strategies to identify, limit, and manage
+
+concentrations of credit of borrowers, relationships, and industries; and
+
+               (b)     improvements to the Bank’s management information systems to ensure
+
+the board of directors and senior management obtain timely and accurate credit-related
+
+information, including identification of nonaccruals, concentrations, charge-offs, and decisions
+
+related to extensions or deferrals.
+
+Lending and Credit Risk Administration
+
+       4.      Within 30 days of the effective date of this Agreement, the Bank shall submit
+
+policies and procedures acceptable to the Supervisors to improve its lending and credit risk
+
+management. The policies and procedures shall include the following seven items:
+
+               (a)     measures to ensure employees who conduct the lending and underwriting
+
+functions have the necessary experience, training, and independence to perform their duties;
+
+               (b)     underwriting standards that require documented analyses of:
+
+                        (i)    the borrower’s repayment sources, financial statements, global
+
+cash flow, and overall debt service ability; and
+
+                        (ii)   the value of any collateral;
+
+               (c)     steps for management and administration of collateral, including:
+
+
+
+
+                                                   4
+                       (i)     proper collateral perfection documentation; and
+
+                       (ii)    procedures to ensure appraisals conform to accepted appraisal
+
+standards, as defined in the Uniform Standards of Professional Appraisal Practice, and comply
+
+with the requirements of Subpart G of Regulation Y of the Board of Governors (12 C.F.R. § 225,
+
+Subpart G) made applicable to state member banks by section 208.50 of Regulation H of the
+
+Board of Governors (12 C.F.R. § 208.50), and the Interagency Appraisal and Evaluation
+
+Guidelines, dated December 2, 2010 (SR 10-16);
+
+               (d)     procedures to ensure compliance with loan documentation and collateral
+
+requirements to minimize exceptions, including establishment of an exception tracking system;
+
+               (e)     standards to require periodic updating of borrowers’ financial information
+
+and credit analysis, and collateral evaluations;
+
+               (f)     policies, procedures, and standards for the timely movement of loans to
+
+non-accrual status, and the monitoring and reporting of loans on non-accrual status that are
+
+consistent with applicable regulatory and accounting guidance; and
+
+               (g)     enhanced procedures, reporting, and monitoring systems to ensure
+
+deteriorating credits are promptly identified, properly risk rated, and accurately and timely
+
+placed on the watch list.
+
+Loan Grading and Loan Review
+
+       5.      Within 30 days of the effective date of this Agreement, the Bank shall submit a
+
+written program for the effective, ongoing grading of the Bank’s loan portfolio by qualified staff
+
+that is independent of the Bank’s lending function and is acceptable to the Supervisors. The
+
+program shall provide for policies, procedures, and processes for the timely and ongoing grading
+
+of loans. The program shall include the following four items:
+
+
+
+
+                                                   5
+               (a)        standards and criteria for assessing the credit quality of loans, including a
+
+discussion of the factors used to assign appropriate risk grades to loans;
+
+               (b)        procedures to re-evaluate the grading of loans in the event of material
+
+changes in the borrower’s performance or the value of the collateral;
+
+               (c)        procedures to evaluate the grading of all loans that are adversely classified
+
+at least quarterly; and
+
+               (d)        controls to ensure staff’s consistent application and adherence to the loan
+
+grading system.
+
+       6.      Within 30 days of the effective date of this Agreement, the Bank shall submit a
+
+written program acceptable to the Supervisors for the effective, ongoing review of the Bank’s
+
+loan portfolio by qualified staff that is independent of the Bank’s lending function and is
+
+acceptable to the Supervisors. The program shall provide policies and procedures for the timely
+
+identification and categorization of problem loans, and processes to detect weaknesses in the
+
+Bank’s loan approval, monitoring, and grading process. The program shall include the following
+
+four items:
+
+               (a)        the scope, depth, and frequency of the independent loan review;
+
+               (b)        clearly defined responsibilities for the loan review function;
+
+               (c)        an objective and timely assessment of the overall quality of the loan
+
+portfolio and the accuracy of assigned loan grades; and
+
+               (d)        regular written reports documenting the findings of the loan review.
+
+       7.      The board of directors, or a committee thereof, shall evaluate the loan review
+
+report(s) and take appropriate steps to ensure management takes prompt action to address
+
+findings noted in the report(s).
+
+
+
+
+                                                    6
+Asset Improvement
+
+       8.      The Bank shall not, directly or indirectly, extend, renew, or restructure any credit
+
+to or for the benefit of any borrower, including any related interest of the borrower, whose loans
+
+or other extensions of credit are criticized in the Report of Examination, or in any subsequent
+
+report of examination, without the prior approval of a majority of the full board of directors or a
+
+designated committee thereof. The board of directors or its designated committee shall
+
+document in writing the reasons for the extension of credit, renewal, or restructuring, specifically
+
+certifying that: (i) the Bank’s risk management policies and practices for loan workout activity
+
+are acceptable; (ii) the extension of credit is necessary to improve and protect the Bank’s interest
+
+in the ultimate collection of the credit already granted and maximize its potential for collection;
+
+(iii) the extension of credit reflects prudent underwriting based on reasonable repayment terms
+
+and is adequately secured; and all necessary loan documentation has been properly and
+
+accurately prepared and filed; (iv) the Bank has performed a comprehensive credit analysis
+
+indicating the borrower has the willingness and ability to repay the debt as supported by an
+
+adequate workout plan, as necessary; and (v) the board of directors or its designated committee
+
+reasonably believes the extension of credit will not impair the Bank’s interest in obtaining
+
+repayment of the already outstanding credit and the extension of credit or renewal will be repaid
+
+according to its terms. The written certification shall be made a part of the minutes of the
+
+meetings of the board of directors or its designated committee, as appropriate, and a copy of the
+
+signed certification, together with the credit analysis and related information that was used in the
+
+determination, shall be retained by the Bank in the borrower’s credit file for subsequent
+
+supervisory review. For purposes of this Agreement, the term “related interest” is defined as set
+
+forth in section 215.2(n) of Regulation O of the Board of Governors (12 C.F.R. § 215.2(n)).
+
+
+
+
+                                                 7
+         9.     (a)     Within 30 days of the effective date of this Agreement, the Bank shall
+
+submit a written plan acceptable to the Supervisors designed to improve the Bank’s position
+
+through repayment, amortization, liquidation, additional collateral, or other means on each loan,
+
+relationship, or other asset in excess of $200,000, including other real estate owned (“OREO”),
+
+that is past due as to principal or interest more than 90 days as of the effective date of this
+
+Agreement, is on the Bank’s problem loan list, or was criticized in the Report of Examination.
+
+                (b)     Within 30 days of the date that any additional loan, relationship, or other
+
+asset in excess of $200,000, becomes past due as to principal or interest for more than 90 days, is
+
+on the Bank’s problem loan list, or is criticized in any subsequent report of examination of the
+
+Bank, the Bank shall submit to the Supervisors an acceptable written plan to improve the Bank’s
+
+position on such loan, relationship, or asset.
+
+                (c)     Within 45 days after the end of each calendar quarter thereafter, the Bank
+
+shall submit a written progress report to the Supervisors to update each asset improvement plan,
+
+which shall include, at a minimum, the carrying value of the loan or other asset and changes in
+
+the nature and value of supporting collateral, along with a copy of the Bank’s current problem
+
+loan list, a list of all loan renewals and extensions without full collection of interest in the last
+
+quarter, and past due/non-accrual report. The board of directors shall review the progress reports
+
+before submission to the Supervisors and shall document the review in the minutes of the board
+
+of directors’ meetings.
+
+Allowance for Credit Losses
+
+        10.     (a)     Within 30 days from the receipt of any report of examination, the Bank
+
+shall charge off all assets classified as “loss” unless otherwise approved in writing by the
+
+Supervisors.
+
+
+
+
+                                                   8
+                (b)    Within 30 days of the effective date of this Agreement, the Bank shall
+
+review and revise its allowance for credit losses (“ACL”) methodology consistent with relevant
+
+supervisory guidance, including the Interagency Policy Statement on Allowances for Credit
+
+Losses, dated May 8, 2020 (SR 20-12) and the findings and recommendations regarding the
+
+ACL, and submit a description of the revised methodology to the Supervisors. The revised ACL
+
+methodology shall be designed to maintain an adequate ACL and shall, at a minimum, include
+
+the reliability of the Bank’s loan grading system, the volume of criticized loans, concentrations
+
+of credit, the current level of past due and nonperforming loans, past loan loss experience,
+
+evaluation of probable losses in the Bank’s loan portfolio, including adversely classified loans,
+
+and the impact of market conditions on loan and collateral valuations and collectability.
+
+                (c)    Within 30 days of the effective date of this Agreement, the Bank shall
+
+submit to the Supervisors a written program for the maintenance of an adequate ACL. The
+
+program shall, at a minimum, include policies and procedures to ensure adherence to the ACL
+
+methodology and provide for periodic reviews and updates to the ACL methodology. The
+
+program also shall provide for a review of the ACL by the board of directors on at least a
+
+quarterly calendar basis. Any deficiency found in the ACL shall be remedied in the quarter it is
+
+discovered, prior to the filing of the Consolidated Report of Condition and Income. The board of
+
+directors shall maintain written documentation of its review, including the factors considered and
+
+conclusions reached by the Bank in determining the adequacy of the ACL. During the term of
+
+this Agreement, the Bank shall submit to the Supervisors, within 45 days after the end of each
+
+calendar quarter, a written report regarding the board of directors’ quarterly review of the ACL
+
+and a description of any changes to the methodology used in determining the amount of the ACL
+
+for that quarter.
+
+
+
+
+                                                 9
+Capital Plan
+
+        11.     Within 60 days of the effective date of this Agreement, Bancshares and the Bank
+
+shall jointly submit a written plan acceptable to the Supervisors to maintain sufficient capital.
+
+The plan shall include the following four items:
+
+                (a)     Bancshares and the Bank’s current and future capital requirements,
+
+including compliance with the applicable requirements of Regulation Q of the Board of
+
+Governors, Capital Adequacy of Board-Regulated Entities (12 C.F.R. Part 217);
+
+                (b)     an analysis of the adequacy of the Bank’s capital, taking into account the
+
+volume of classified assets, concentrations of credit, the adequacy of the ACL, current and
+
+projected asset growth, projected earnings, risk profile, and anticipated and contingency funding
+
+needs; and
+
+                (c)     an action plan to raise additional capital or take other steps to improve the
+
+financial condition of the Bank, which may include contributing assets to the Bank up to the
+
+amount of Bancshares’ capital; and
+
+                (d)     a capital contingency plan that fully addresses both Bancshares and the
+
+Bank’s short-term and long-term capital needs.
+
+        12.     (a)     Bancshares and the Bank shall notify the Supervisors, in writing, no more
+
+than 30 days after the end of any calendar quarter in which any of the Bank’s capital ratios (total
+
+risk-based, Tier 1 risk-based, common equity Tier 1, or leverage) fall below the approved capital
+
+plan’s minimum ratios. Together with the notification, the Bank shall submit a written plan
+
+acceptable to the Supervisors that details the steps it will take to increase its capital ratios to or
+
+above the approved capital plan’s minimums.
+
+                (b)     During the term of this Agreement, the Bank shall not enter into any
+
+
+
+
+                                                   10
+agreement to sell or purchase any loan or other asset that, in the aggregate, would exceed 5
+
+percent of the Bank’s total assets at the end of the prior quarter without the prior written approval
+
+of the Supervisors.
+
+               (c)     All requests for prior written approval shall be received at least 30 days
+
+prior to the proposed sale or purchase. All requests shall contain, at a minimum, a description of
+
+the terms of the proposed sale or purchase, the identity of the proposed purchaser or seller;
+
+current and projected information on the Bank’s capital, asset quality, earnings, and ACL needs,
+
+and the identification of the sources of funds for any proposed purchase or sale.
+
+Liquidity and Funds Management
+
+       13.     Within 60 days of this Agreement, the Bank shall submit a written contingency
+
+funding plan acceptable to the Supervisors that, at a minimum, takes steps to diversify sources of
+
+contingency funding, identifies available sources of liquidity, and includes adverse scenario
+
+planning.
+
+BSA/AML Compliance Program
+
+       14.     Within 60 days of this Agreement, the Bank shall submit a written plan acceptable
+
+to the Supervisors to improve the Bank’s BSA/AML compliance program in accordance with the
+
+BSA/AML Requirements. The plan shall include the following two enhancements to the
+
+BSA/AML compliance program:
+
+               (a)     improvements to the Bank’s system of internal controls to ensure
+
+compliance with the BSA/AML Requirements, including, but not limited to, customer due
+
+diligence, beneficial ownership, and suspicious activity monitoring and reporting; and
+
+
+
+
+                                                 11
+                (b)    enhanced independent testing to ensure that comprehensive and timely
+
+reviews of the Bank’s BSA/AML compliance program are performed on a regular basis by
+
+qualified parties who are independent of the Bank’s BSA/AML compliance function.
+
+Capital Conservation
+
+        15.     (a)    Effective immediately, Bancshares shall not, directly or indirectly, declare
+
+or pay dividends, engage in share repurchases, or make any other capital distribution in respect
+
+of common shares, preferred shares, trust preferred shares, or other capital instruments,
+
+including, without limitation, any interest payments due on subordinated debentures, without the
+
+prior written approval of the Supervisors and the Director of Supervision and Regulation of the
+
+Board of Governors. Effective immediately, the Bank shall not, directly or indirectly, declare or
+
+pay dividends, engage in share repurchases, or make any other capital distribution in respect of
+
+common shares, preferred shares, trust preferred shares, or other capital instruments, including,
+
+without limitation, any interest payments due on subordinated debentures, without the prior
+
+written approval of the Supervisors and the Director of Supervision and Regulation of the Board
+
+of Governors. All requests for prior approval shall be received in writing at least 30 days prior to
+
+the earlier of the proposed declaration, payment, or distribution date, or required notice of
+
+deferral, and shall contain, at a minimum, current and projected information, as appropriate, on
+
+Bancshares and the Bank’s respective capital, earnings, and cash flow; the Bank’s asset quality,
+
+earnings, and ACL; and identification of the source(s) of funding for the proposed payment or
+
+distribution.
+
+                (b)    Effectively immediately, Bancshares and the Bank shall not, directly or
+
+indirectly, incur, increase, or guarantee any debt without the prior written approval of the
+
+Supervisors and the Director of Supervision and Regulation of the Board of Governors. All
+
+
+
+
+                                                 12
+requests for prior approval shall be received at least 30 days prior to the proposed transaction
+
+date and contain, but not be limited to, a statement regarding the purpose of the debt, the terms of
+
+the debt, and the planned source(s) for debt repayment, and an analysis of the cash flow
+
+resources available to meet such debt repayment.
+
+Compliance with Laws and Regulations
+
+       16.     (a)     The Bank shall take all necessary steps to correct all apparent violations of
+
+law or regulation cited in the Report of Examination. In addition, the Bank shall take necessary
+
+steps to ensure future compliance with all applicable laws and regulations.
+
+               (b)     In appointing any new director or senior executive officer, or changing the
+
+responsibilities of any senior executive officer so that the officer would assume a different senior
+
+executive officer position, Bancshares and the Bank shall comply with the notice provisions of
+
+section 32 of the FDI Act, as amended, (12 U.S.C. § 1831i) and Subpart H of Regulation Y of
+
+the Board of Governors (12 C.F.R. §§ 225.71 et seq.).
+
+                (c)    Bancshares and the Bank shall comply with the restrictions on
+
+indemnification and severance payments of section 18(k) of the FDI Act (12 U.S.C. § 1828(k))
+
+and Part 359 of the Federal Deposit Insurance Corporation’s regulations (12 C.F.R. § 359).
+
+Progress Reports
+
+       17.      Within 45 days after the end of each calendar quarter following the date of this
+
+Agreement, the boards of directors of Bancshares and the Bank shall submit to the Supervisors,
+
+written progress reports detailing the form and manner of all actions taken to secure compliance
+
+with this Agreement and the results thereof.
+
+
+
+
+                                                13
+Approval and Implementation of Plans and Programs
+
+       18.     (a)    The Bank shall submit the written plans, programs, policies, and
+
+procedures that are acceptable to the Supervisors within the applicable time periods set forth in
+
+paragraphs 2, 3, 4, 5, 6, 9, 10(c), 11, 13, and 14 of this Agreement. Each plan, program, policy,
+
+and procedure shall contain a timeline for full implementation of the plan, program, or policy
+
+with specific deadlines for the completion of each component of the plan, program, policy, or
+
+procedure.
+
+               (b)    Within 10 days of approval by the Supervisors, the Bank shall adopt the
+
+approved plans, programs, policies, and procedures. Upon adoption the Bank shall promptly
+
+implement the approved plans, programs, policies, and procedures and thereafter fully comply
+
+with them.
+
+               (c)    During the term of this Agreement, the approved plans, programs,
+
+policies, and procedures shall not be amended or rescinded without the prior written approval of
+
+the Supervisors.
+
+Communications
+
+       20.     All communications regarding this Agreement shall be sent to:
+
+               (a)    Ms. Megan E. Kahlenberg
+                      Vice President
+                      Federal Reserve Bank of St. Louis
+                      P.O. Box 442
+                      St. Louis, Missouri 63166-0442
+
+               (b)    Ms. Susana Soriano
+                      Director of Banking
+                      Illinois Department of Financial and Professional Regulation
+                      320 West Washington Street
+                      Springfield, Illinois 62786
+
+
+
+
+                                                14
+                (c)    Mr. Carson Smith
+                       President and Chief Executive Officer
+                       Iuka Bancshares, Inc.
+                       The Iuka State Bank
+                       Bank of Eufaula
+                       205 West Main Street
+                       Salem, Illinois 62881
+
+Miscellaneous
+
+       21.      Notwithstanding any provision of this Agreement, the Supervisors, as applicable,
+
+may in their sole discretion, grant written extensions of time to Bancshares or the Bank to
+
+comply with any provision of this Agreement.
+
+       22.      The provisions of this Agreement shall be binding upon Bancshares, the Bank,
+
+and their institution-affiliated parties, as defined in sections 3(u) and 8(b)(3) of the FDI Act
+
+(12 U.S.C. §§1813(u) and 1818(b)(3)), in their capacities as such, and their successors and
+
+assigns.
+
+       23.      Each provision of this Agreement shall remain effective and enforceable until
+
+stayed, modified, terminated, or suspended in writing by the Supervisors, as applicable.
+
+       24.      The provisions of this Agreement shall not bar, estop, or otherwise prevent the
+
+Board of Governors, the Reserve Bank, the IDFPR, or any other federal or state agency from
+
+taking any other action affecting Bancshares or the Bank, or any of their current or former
+
+institution-affiliated parties and their successors and assigns.
+
+       25.      Pursuant to section 50 of the FDI Act (12 U.S.C. § 1831aa), this Agreement is
+
+enforceable by the Board of Governors under section 8 of the FDI Act (12 U.S.C. § 1818).
+
+       IN WITNESS WHEREOF, the parties have caused this Agreement to be executed as of
+
+the 15th day of July, 2026.
+
+
+
+
+                                                  15
+IUKA BANCSHARES, INC.                  FEDERAL RESERVE BANK
+                                       OF ST. LOUIS
+
+
+
+
+By: /s/ Carson Smith                   By: /s/ Megan E. Kahlenberg
+        Carson Smith                           Megan E. Kahlenberg
+        President and                          Vice President
+        Chief Executive Officer
+
+
+
+THE IUKA STATE BANK                    ILLINOIS DEPARTMENT OF
+                                       FINANCIAL AND PROFESSIONAL
+                                       REGULATION
+
+
+
+
+By: /s/ Carson Smith                   By: /s/ Susana Soriano
+        Carson Smith                           Susana Soriano
+        President and                          Director of Banking
+        Chief Executive Officer
+
+
+
+
+                                  16
+

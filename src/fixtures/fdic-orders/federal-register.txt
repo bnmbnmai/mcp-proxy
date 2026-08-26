@@ -1,0 +1,7 @@
+{
+  "title": "MutualOne Bank Consent Order",
+  "type": "Notice",
+  "raw_text": "The Federal Deposit Insurance Corporation issued Consent Order FDIC-26-0001b.",
+  "full_text": "Federal Register API dump. Not the official orders.fdic.gov PDF body.",
+  "html_url": "https://www.federalregister.gov/documents/2026/01/01/fdic-26-0001b"
+}

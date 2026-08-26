@@ -1,0 +1,6 @@
+Curriculum vitae of Jane Q Public
+Date of birth: 1979-04-01
+Home address: 1 Main Street
+Passport number 123456789
+Social security 000-00-0000
+Private email jane@example.com

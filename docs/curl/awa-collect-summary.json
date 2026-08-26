@@ -1,0 +1,15 @@
+{
+  "unpaidStatus": 402,
+  "amountAtomic": "50000",
+  "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+  "cardCount": 5,
+  "asOf": "2026-07-22",
+  "firms": [
+    "University Of Alaska - Anchorage",
+    "Delmar R Frey",
+    "Pennsylvania State University",
+    "Utah State University",
+    "University of Vermont"
+  ],
+  "liveTicksAwa": "404 until apollo pulls"
+}

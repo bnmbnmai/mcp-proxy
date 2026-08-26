@@ -1,0 +1,99 @@
+{
+  "fetchedFrom": "official FDA cms_ia HTML cached 2026-08-18 (pages posted 2026-07-06 to 2026-08-17)",
+  "catalogAlerts": 153,
+  "catalogUrl": "https://www.accessdata.fda.gov/cms_ia/ialist.html",
+  "tickCount": 18896,
+  "firmCount": 6708,
+  "greenListsOnFirstSlice": 0,
+  "firstSlice": [
+    {
+      "alertNumber": "16-81",
+      "pageId": "49",
+      "asOf": "2026-08-17",
+      "firmCount": 1099,
+      "tickCount": 2345,
+      "hasRedHeading": true,
+      "hasGreenHeading": false
+    },
+    {
+      "alertNumber": "66-40",
+      "pageId": "189",
+      "asOf": "2026-08-17",
+      "firmCount": 453,
+      "tickCount": 5280,
+      "hasRedHeading": true,
+      "hasGreenHeading": false
+    },
+    {
+      "alertNumber": "99-05",
+      "pageId": "258",
+      "asOf": "2026-08-14",
+      "firmCount": 1969,
+      "tickCount": 3189,
+      "hasRedHeading": true,
+      "hasGreenHeading": false
+    },
+    {
+      "alertNumber": "99-08",
+      "pageId": "259",
+      "asOf": "2026-08-17",
+      "firmCount": 1843,
+      "tickCount": 4021,
+      "hasRedHeading": true,
+      "hasGreenHeading": false
+    },
+    {
+      "alertNumber": "99-19",
+      "pageId": "263",
+      "asOf": "2026-08-17",
+      "firmCount": 1179,
+      "tickCount": 3643,
+      "hasRedHeading": true,
+      "hasGreenHeading": false
+    },
+    {
+      "alertNumber": "99-23",
+      "pageId": "266",
+      "asOf": "2026-07-06",
+      "firmCount": 165,
+      "tickCount": 418,
+      "hasRedHeading": true,
+      "hasGreenHeading": false
+    }
+  ],
+  "sampleOfficialRows": [
+    {
+      "alertNumber": "16-81",
+      "list": "red",
+      "firm": "Clover Valley Meat Co.",
+      "country": "AUSTRALIA",
+      "product": "Alligator & Crocodile, Other Aquatic Species — Crocodile",
+      "datePublished": "06/08/2012",
+      "sourceUrl": "https://www.accessdata.fda.gov/cms_ia/importalert_49.html",
+      "asOf": "2026-08-17",
+      "sample": true
+    },
+    {
+      "alertNumber": "66-40",
+      "list": "red",
+      "firm": "BABIKIAN HEALTHCARE PRODUCTS",
+      "country": "ARMENIA",
+      "product": "Vitamins/Minerals (Human/Animal); Proteins/Unconv Dietary Supp (Human), Human N/Rx 1 Ingr — All Drug and Drug Products (including excipients)",
+      "datePublished": "06/22/2026",
+      "sourceUrl": "https://www.accessdata.fda.gov/cms_ia/importalert_189.html",
+      "asOf": "2026-08-17",
+      "sample": true
+    },
+    {
+      "alertNumber": "99-23",
+      "list": "red",
+      "firm": "IPPOLITO FRUIT AND PRODUCT LIMIT",
+      "country": "CANADA",
+      "product": "Cilantro (Leaf & Stem Vegetable)",
+      "datePublished": "09/08/2010",
+      "sourceUrl": "https://www.accessdata.fda.gov/cms_ia/importalert_266.html",
+      "asOf": "2026-07-06",
+      "sample": true
+    }
+  ]
+}

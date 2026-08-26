@@ -1,0 +1,105 @@
+                                         United States Department of Agriculture                                  AGOPLEN
+                                        Animal and Plant Health Inspection Service                           INS-0001617878
+
+                                                  Inspection Report
+
+Utah State University                                                             Customer ID: 2
+V.P. FOR RESEARCH/1450 OLD MAIN HILL                                                Certificate: 87-R-0002
+LOGAN, UT 84322
+                                                                                          Site: 001
+                                                                                               UTAH STATE UNIVERSITY
+
+
+
+                                                                                        Type: ROUTINE INSPECTION
+                                                                                         Date: 07-JUL-2026
+
+2.31(c)(7)               Critical
+Institutional Animal Care and Use Committee (IACUC).
+82 naked mole rats were euthanized by a method not on the approved protocol between 9/26/2025 and 10/3/2025. The
+naked mole rats were euthanized by CO2 instead of the injectable euthanasia method approved in the protocol. Naked
+mole rats are a hypoxia tolerant species, and the use of CO2 required a prolonged exposure of ~40 minutes to achieve
+death.
+Failure to follow the approved protocol and making unapproved changes does not allow the IACUC to review these
+changes as required and ensure the animals involved do not experience negative impacts to their health and welfare.
+The IACUC must ensure that all significant changes regarding the care and use of animals in ongoing activities including
+euthanasia are reviewed and approved prior to implementation.
+
+Corrective action was implemented prior to this inspection.
+To be corrected from this day forward, July 7, 2026
+2.33(b)(4)               Critical
+Attending veterinarian and adequate veterinary care.
+A rabbit died during an anesthetic procedure on 12/11/2025. The animal’s depth of anesthesia had become too light and
+the anesthetic gas level was increased. The level was not reduced once a deeper plane of anesthesia was achieved and
+the animal subsequently died during the procedure and was not able to be resuscitated.
+Failure to appropriately monitor patients and adjust anesthetic levels during a procedure can lead to injury or death of the
+patient.
+Each research facility must establish and maintain programs of adequate veterinary care that provide adequate guidance
+to personnel involved in the care and use of animals regarding handling, immobilization, anesthesia. analgesia,
+tranquilization, and euthanasia.
+Corrective action was implemented prior to this inspection.
+To be corrected from this day forward, July 7, 2026
+
+
+
+This inspection and exit interview were conducted with facility representative.
+
+
+
+
+       Prepared By:      ANN GOPLEN                                                                   Date:
+                                                              USDA, APHIS, Animal Care                14-JUL-2026
+                Title:   VETERINARY MEDICAL
+                         OFFICER
+
+
+ Received by Title:      Attending Veterinarian                                                       Date:
+                                                                                                      14-JUL-2026
+                                                        Page 1 of 2
+                                     United States Department of Agriculture               AGOPLEN
+                                    Animal and Plant Health Inspection Service        INS-0001617878
+
+                                              Inspection Report
+
+n
+
+
+
+
+    Prepared By:     ANN GOPLEN                                                  Date:
+                                                      USDA, APHIS, Animal Care   14-JUL-2026
+            Title:   VETERINARY MEDICAL
+                     OFFICER
+
+
+Received by Title:   Attending Veterinarian                                      Date:
+                                                                                 14-JUL-2026
+                                                   Page 2 of 2
+                                         United States Department of Agriculture     Customer: 2
+                                        Animal and Plant Health Inspection Service   Inspection Date: 07-Jul-2026
+
+                                                 Species Inspected
+  Cust No            Cert No     Site      Site Name                                                    Inspection
+     2              87-R-0002    001       UTAH STATE UNIVERSITY                                       07-JUL-2026
+
+
+
+Count       Scientific Name                            Common Name
+000122      Ovis aries aries                           SHEEP INCLUDING ALL DOMESTIC BREEDS
+000057      Capra hircus                               DOMESTIC GOAT
+000072      Cavia porcellus                            DOMESTIC GUINEA PIG
+000322      Mesocricetus auratus                       SYRIAN / GOLDEN HAMSTER
+000019      Sigmodon hispidus                          HISPID COTTON RAT
+000009      Heterocephalus glaber                      NAKED MOLE-RAT
+000035      Peromyscus sonoriensis                     WESTERN DEERMOUSE
+000024      Peromyscus leucopus                        WHITE-FOOTED MOUSE
+000010      Oryctolagus cuniculus                      DOMESTIC RABBIT / EUROPEAN RABBIT
+000010      Bos taurus                                 CATTLE / COW / OX
+
+000680      Total
+
+
+
+
+                                                       Page 1 of 1
+

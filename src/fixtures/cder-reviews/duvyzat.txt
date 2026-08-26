@@ -1,0 +1,77 @@
+CENTER FOR DRUG EVALUATION AND
+           RESEARCH
+
+
+     APPLICATION NUMBER:
+
+        217865Orig1s000
+
+    INTEGRATED REVIEW
+
+               NDA 217865
+               Duvyzat (Givinostat)
+
+                                                               Integrated Review
+
+               Table 1. Application Information
+                Application type                              NDA
+                Application numbers                           217865
+                Priority or standard                          PRIORITY
+                Submit dates                                  4/21/2023
+                Received dates                                4/21/2023
+                PDUFA goal date                               3/21/2024
+                Division/office                               Division of Neurology I (DNI)
+                Review completion date                        3/21/2024
+                Established/proper name                       givinostat
+                (Proposed) proprietary name                   Duvyzat
+                Pharmacologic class                           Histone deacetylase inhibitor
+                Other product name(s)                         Duvyzat (givinostat)
+                Applicant                                     ITALFARMACO SPA
+                Dosage form(s)/formulation(s)                 Oral suspension
+                Dosing regimen                                Weight-based dosing regimen given orally twice daily
+                Applicant-proposed indication(s)/             Givinostat oral suspension is indicated for the treatment of
+                population(s)                                 Duchenne Muscular Dystrophy
+                SNOMED CT code for proposed                   76670001
+                indication disease term(s)1
+                Regulatory action                             Approval
+                Approved dosage (if applicable)               Weight-based dosing regimen given orally twice daily
+                Approved indication(s)/                       Treatment of Duchenne Muscular Dystrophy in patients 6
+                population(s) (if applicable)                 years and older
+                SNOMED CT code for approved                   76670001
+                indication disease term(s)1
+               1For internal tracking purposes only.
+               Abbreviations: NDA, new drug application; PDUFA, Prescription Drug User Fee Act; SNOMED CT, Systematized Nomenclature of
+               Medicine Clinical Terms
+
+
+
+
+                                                                           i
+               Integrated Review Template, version 3.0 (05/25/2022)
+
+
+Reference ID: 5351242
+
+               NDA 217865
+               Duvyzat (Givinostat)
+                                                                          Table of Contents
+               Table of Tables ............................................................................................................vii
+               Table of Figures ..........................................................................................................xiv
+               Glossary .......................................................................................................................18
+               I. Executive Summary..................................................................................................20
+                  1. Summary of Regulatory Action ...........................................................................20
+
+                  2. Benefit-Risk Assessment......................................................................................23
+               Duvyzat (Givinostat)
+                Established/proper name                       givinostat
+                Other product name(s)                         Duvyzat (givinostat)
+                Applicant-proposed indication(s)/             Givinostat oral suspension is indicated for the treatment of
+               Duvyzat (Givinostat)
+               Duvyzat (Givinostat)
+               Duvyzat (Givinostat)
+               Duvyzat (Givinostat)
+               Duvyzat (Givinostat)
+               Duvyzat (Givinostat)
+                  Determinations1 for Givinostat ....................................................................................31
+               Table 8. Recommended Dosing Regimen for Givinostat ..................................................42
+              

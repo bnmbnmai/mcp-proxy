@@ -1,0 +1,5 @@
+{
+  "complaint_what_happened": "I was charged a junk fee on my credit card and Equifax will not fix my report.",
+  "company": "EQUIFAX, INC.",
+  "product": "Credit reporting"
+}

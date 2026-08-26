@@ -1,0 +1,68 @@
+[
+  {
+    "mid": "202166",
+    "field_record_date": "07/07/2026",
+    "field_fein": "3027507354",
+    "field_company_name_1": "Turbare Manufacturing",
+    "field_foia_record_type_1": "<a href=\"/media/193490/download\">483</a>",
+    "field_state_1": "Arkansas",
+    "field_establishment_type_1": "Outsourcing Facility",
+    "field_publish_date": "07/14/2026",
+    "field_foia_record_type": "483"
+  },
+  {
+    "mid": "202230",
+    "field_record_date": "06/08/2026",
+    "field_fein": "3013438582",
+    "field_company_name_1": "Denver Solutions LLC dba Leiters Health",
+    "field_foia_record_type_1": "<a href=\"/media/193646/download\">Untitled Letter</a>",
+    "field_state_1": "Colorado",
+    "field_establishment_type_1": "Outsourcing Facility",
+    "field_publish_date": "07/16/2026",
+    "field_foia_record_type": "Untitled Letter"
+  },
+  {
+    "mid": "202303",
+    "field_record_date": "07/03/2026",
+    "field_fein": "3020928491",
+    "field_company_name_1": "Annovex Pharma Inc",
+    "field_foia_record_type_1": "<a href=\"/media/193728/download\">483</a>",
+    "field_state_1": "Virginia",
+    "field_establishment_type_1": "Outsourcing Facility",
+    "field_publish_date": "07/22/2026",
+    "field_foia_record_type": "483"
+  },
+  {
+    "mid": "202332",
+    "field_record_date": "06/04/2026",
+    "field_fein": "1074265",
+    "field_company_name_1": "Lt Col Luke Weather Jr Veterans Affairs Medical Center",
+    "field_foia_record_type_1": "<a href=\"/media/193769/download\">483</a>",
+    "field_state_1": "Tennessee",
+    "field_establishment_type_1": "Producer of Sterile Drug Products",
+    "field_publish_date": "07/23/2026",
+    "field_foia_record_type": "483"
+  },
+  {
+    "mid": "202527",
+    "field_record_date": "07/17/2026",
+    "field_fein": "3015133983",
+    "field_company_name_1": "Cascade Specialty Pharmacy LLC",
+    "field_foia_record_type_1": "<a href=\"/media/193964/download\">483</a>",
+    "field_state_1": "Washington",
+    "field_establishment_type_1": "Producer of Non Sterile Drug Products",
+    "field_publish_date": "07/31/2026",
+    "field_foia_record_type": "483"
+  },
+  {
+    "mid": "202764",
+    "field_record_date": "03/19/2026",
+    "field_fein": "3002726048",
+    "field_company_name_1": "Veterinary Pharmacy Corporation",
+    "field_foia_record_type_1": "<a href=\"/media/194143/download\">483</a>",
+    "field_state_1": "Minnesota",
+    "field_establishment_type_1": "Compounding Pharmacy",
+    "field_publish_date": "08/12/2026",
+    "field_foia_record_type": "483"
+  }
+]

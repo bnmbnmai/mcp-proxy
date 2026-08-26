@@ -1,0 +1,75 @@
+CENTER FOR DRUG EVALUATION AND
+           RESEARCH
+
+       APPLICATION NUMBER:
+
+
+        761194Orig1s000
+
+     INTEGRATED REVIEW
+
+               BLA 761194
+               Nexviazyme (avalglucosidase alfa-ngpt)
+
+                                                       BLA Integrated Review
+               Table 1. Administrative Application Information
+                Category                         Application Information
+                Application type                 BLA
+                Application number               761194
+                Priority or standard             Priority review with major amendment
+                Submit date                      9/18/2020
+                Received date                    9/18/2020
+                PDUFA goal date                  8/18/2021
+                Division                         Division of Rare Diseases and Medical Genetics (DRDMG)
+                Review completion date           8/5/2021
+                Established/proper name          Avalglucosidase alfa-ngpt
+                (Proposed) proprietary name      Nexviazyme
+                Pharmacologic class              Enzyme replacement therapy
+                Code name                        GZ402666
+                Applicant                        Genzyme Corporation
+                Dosage form                      Powder for solution for infusion, 100 mg/vial
+                Dosing regimen                   20 mg per kg of actual body weight administered every two weeks
+                                                 as intravenous infusion for patients 30 kg and greater with late-
+                                                 onset Pompe disease and 40 mg per kg of actual body weight
+                                                 administered every two weeks as intravenous infusion for patients
+                                                 less than 30 kg
+                Applicant proposed               Pompe disease
+                indication(s)/ population(s)
+                Proposed SNOMED indication 274864009, Glycogen Storage Disease, Type II
+                Regulatory action                Approval
+                Approved dosage (if              20 mg per kg of actual body weight administered every two weeks
+                applicable)                      as intravenous infusion for patients 30 kg and greater with late-
+                                                 onset Pompe disease and 40 mg per kg of actual body weight
+                                                 administered every two weeks as intravenous infusion for patients
+                                                 less than 30 kg
+                Approved indication(s)/          Treatment of patients 1 year of age and older with late-onset
+                population(s) (if applicable)    Pompe disease (lysosomal alpha-glucosidase [GAA] deficiency)
+                Approved SNOMED term for         722343009, Glycogen storage disease type II late onset (disorder)
+                indication (if applicable)
+
+
+
+
+                                                                      i
+               Integrated Review Template, version 2.0 (04/23/2020)
+
+Reference ID: 4836879
+
+               BLA 761194
+               Nexviazyme (avalglucosidase alfa-ngpt)
+
+                                                                       Table of Contents
+               Table of Tables............................................................................................................ vi
+
+                  2. Benefit-Risk Assessment....................................................................................... 5
+               Nexviazyme (avalglucosidase alfa-ngpt)
+                Established/proper name          Avalglucosidase alfa-ngpt
+               Nexviazyme (avalglucosidase alfa-ngpt)
+               Nexviazyme (avalglucosidase alfa-ngpt)
+               Nexviazyme (avalglucosidase alfa-ngpt)
+               Nexviazyme (avalglucosidase alfa-ngpt)
+               Nexviazyme (avalglucosidase alfa-ngpt)
+                  Determinations[1] for Avalglucosidase Alfa............................................................ 14
+               Table 25. Overview of Adverse Events for Avalglucosidase Alfa, Integrated Safety
+               Nexviazyme (avalglucosidase alfa-ngpt)
+                  Avalglucosidase Alfa.........................................................................................

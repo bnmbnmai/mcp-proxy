@@ -1,0 +1,87 @@
+          NPDES Permit No. MA0103390                                                        2025 Final Permit
+                                                                                                 Page 1 of 13
+
+                                         AUTHORIZATION TO DISCHARGE UNDER
+                                THE NATIONAL POLLUTANT DISCHARGE ELIMINATION SYSTEM
+
+In compliance with the provisions of the Federal Clean Water Act as amended, 33 U.S.C. §§ 1251 et
+seq. (the “CWA”),
+                                       Swansea Water District
+
+is authorized to discharge from a facility located at
+
+                                       Swansea Water District Desalination Facility
+                                                 240 Vinnicum Road
+                                                Swansea, MA 02777
+
+to receiving water named
+                                                     Palmer River
+                                              Narragansett Bay Watershed
+
+in accordance with effluent limitations, monitoring requirements and other conditions set forth
+herein.
+
+This Permit shall become effective on the first day of the calendar month following 60 days after
+signature.1
+
+This permit expires at midnight, five years from the last day of the month preceding the effective
+date
+
+This Permit supersedes the permit issued on January 13, 2017 and modified on March 1, 2022.
+
+This Permit consists of this cover page, Part I, Attachment A (Marine Acute Toxicity Test Procedure
+and Protocol, July 2012), Attachment B (Marine Chronic Toxicity Test Procedure and Protocol,
+November 2013), and Attachment C (PFAS Analyte List), and Part II (NPDES Part II Standard
+Conditions, April 2018).
+
+Signed this               day of
+    KENNETH      Digitally signed by
+                 KENNETH MORAFF
+
+    MORAFF       Date: 2025.04.21
+
+
+
+Ken Moraff, Director
+Water Division
+Environmental Protection Agency
+Region 1
+Boston, MA
+
+
+
+1
+    Procedures for appealing EPA’s Final Permit decision may be found at 40 CFR § 124.19.
+             NPDES Permit No. MA0103390                                             2025 Final Permit
+                                                                                         Page 2 of 13
+
+PART I
+A. EFFLUENT LIMITATIONS AND MONITORING REQUIREMENTS
+
+  1. During the period beginning on the effective date and lasting through the expiration date, the Permittee is
+  authorized to discharge treated reverse osmosis (RO) brine concentrate, filter backwash reject water from the
+  three microfiltration (MF) systems, strainer flushings and cleaning solutions from Outfall Serial Number 001 to
+  the Palmer River. The discharge shall be limited and monitored as specified below; the receiving water shall be
+  monitored as specified below.
+
+
+                                                Effluent Limitations             Monitoring Requirements1,2,3
+   Effluent Characteristic
+                                         Average      Average      Maximum       Measurement         Sample
+                                         Monthly      Weekly        Daily         Frequency4          Type
+
+   Effluent Flow5                  2.71 MGD            ******     Report MGD    Continuous          Recorder
+   Total Suspended Solids (TSS)6
+   (October 1- May 31)             20 mg/L            30 mg/L     Report        2/Week              Composite
+   (June 1-September 30)           40 mg/L            70 mg/L     Report        2/Week              Composite
+   Salinity7,8
+   (July 1-September 30)             ********       ****** 42 ppt               1/Day               Composite
+   (October 1-June 30)               ********       ****** 32 ppt               1/Day               Composite
+   Dissolved Oxygen7,9,11                    Minimum of 5.0 mg/L                1/Day               Composite
+   pH10,11                              Within 6.5 - 8.5 standard units         1/Day               Grab
+   Total Residual Chlorine12         70.2 μg/L       ****** 121.7 μg/L          1/Discharge cycle   Grab
+   Ammonia-Nitrogen                Report mg/L         ---     ---              1/Month             Composite
+                                   Report mg/L
+   Total Kjeldahl Nitrogen         Report lb/day       ---     ---              1/Month             Composite
+                                   Report mg/L         ---
+   Nitrite + Nitrate               Report lb/day               ---              1/Month             Composit

@@ -1,0 +1,10 @@
+{
+  "data": [
+    {
+      "referral_name": "Tavneos",
+      "current_status": "European Commission final decision",
+      "type_of_procedure": "Article 20 procedures",
+      "referral_url": "https://www.ema.europa.eu/en/medicines/human/referrals/tavneos"
+    }
+  ]
+}
