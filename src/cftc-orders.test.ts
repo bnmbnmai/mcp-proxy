@@ -8,13 +8,16 @@ import {
   ATTRIBUTION,
   CARD_FIELDS,
   LICENSE,
+  FIRST_SLICE_LISTING_URL,
   LISTING_URL,
   SEED_LISTINGS,
   buildCftcOrdersManifest,
   collectCftcOrders,
+  institutionFromLinkTitle,
   isInstitutionOrderRow,
   isPeopleRow,
   isRealCftcOrderBody,
+  listingPageUrl,
   officialCftcPdfUrl,
   parseCftcOrderText,
   parseListingHtml,
@@ -71,6 +74,13 @@ async function main(): Promise<void> {
   );
   assert.equal(officialCftcPdfUrl("https://www.fincen.gov/system/files/2026-07/UBS-Consent-Order.pdf"), null);
   assert.equal(officialCftcPdfUrl("https://www.federalregister.gov/documents/2026/08/03/2026-99999/ubs"), null);
+  assert.ok(LISTING_URL.includes("EnforcementActions/index.htm"), "live collect walks the official Drupal table");
+  assert.ok(FIRST_SLICE_LISTING_URL.includes("/Enforcement/EnforcementActions"), "old path stays the first-slice teaser");
+  assert.equal(listingPageUrl(0), LISTING_URL);
+  assert.equal(listingPageUrl(1), `${LISTING_URL}?page=1`);
+  const walkerSrc = readFs(join(dirname(fileURLToPath(import.meta.url)), "../src/cftc-orders.ts"), "utf-8");
+  assert.match(walkerSrc, /CFTC_ORDERS_LIMIT", "24"/);
+  assert.match(walkerSrc, /CFTC_ORDERS_PAGES", "8"/);
   assert.ok(LISTING_URL.includes("cftc.gov"));
   assert.equal(SEED_LISTINGS.length, 5);
   assert.ok(SEED_LISTINGS.some((r) => r.docket === "26-04"));
@@ -79,6 +89,13 @@ async function main(): Promise<void> {
   assert.ok(htmlListed.some((r) => r.id === "26-04"));
   assert.ok(htmlListed.some((r) => r.id === "25-04"));
   assert.ok(!htmlListed.some((r) => r.id === "26-99"));
+
+  const pageListed = parseListingHtml(readFx("listing-page-excerpt.html"));
+  assert.ok(pageListed.some((r) => /Peken Global Limited/i.test(r.institution)), "pager page=1 lists official institution consent orders");
+  assert.ok(pageListed.some((r) => r.pdfId === "13586"));
+  assert.ok(!pageListed.some((r) => /Sidney Lebental/i.test(r.institution)), "Drupal pager skips people");
+  assert.ok(!pageListed.some((r) => /complaint/i.test(r.title)), "Drupal pager skips complaints");
+  assert.equal(institutionFromLinkTitle("Consent Order: Peken Global Limited"), "Peken Global Limited");
 
   const people = rows.find((r) => (r.docket ?? "") === "26-99");
   assert.ok(people);

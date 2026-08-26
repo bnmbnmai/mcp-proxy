@@ -3333,7 +3333,7 @@ async function main(): Promise<void> {
       license: "17 USC 105",
       attribution: "CFTC",
       sources: {
-        listing: "https://www.cftc.gov/LawRegulation/Enforcement/EnforcementActions/index.htm",
+        listing: "https://www.cftc.gov/LawRegulation/EnforcementActions/index.htm",
         pdfHost: "https://www.cftc.gov/",
       },
       cards: [
