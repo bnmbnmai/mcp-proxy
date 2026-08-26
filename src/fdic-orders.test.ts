@@ -9,6 +9,7 @@ import {
   CARD_FIELDS,
   LICENSE,
   LISTING_URL,
+  LEFTOVER_WALK_LISTINGS,
   OFFICIAL_WALK_LISTINGS,
   PDF_DOWNLOAD,
   SEED_LISTINGS,
@@ -67,6 +68,11 @@ async function main(): Promise<void> {
     `${PDF_DOWNLOAD}069SJ000013gUnXYAU?operationContext=S1`,
   );
   assert.equal(officialFdicPdfUrl("069SJ000013gUnXYAU"), `${PDF_DOWNLOAD}069SJ000013gUnXYAU?operationContext=S1`);
+  assert.equal(
+    officialFdicPdfUrl("https://orders.fdic.gov/sfc/servlet.shepherd/document/download/0693d00000DRBvXAAX?operationContext=S1"),
+    `${PDF_DOWNLOAD}0693d00000DRBvXAAX?operationContext=S1`,
+  );
+  assert.equal(officialFdicPdfUrl("069t000000c8AF9AAM"), `${PDF_DOWNLOAD}069t000000c8AF9AAM?operationContext=S1`);
   assert.ok(LISTING_URL.includes("orders.fdic.gov"));
   assert.equal(SEED_LISTINGS.length, 5);
   assert.ok(SEED_LISTINGS.some((r) => r.docket === "FDIC-26-0001b"));
@@ -77,8 +83,26 @@ async function main(): Promise<void> {
   assert.ok(OFFICIAL_WALK_LISTINGS.every((r) => officialFdicPdfUrl(r.sourceUrl)));
   assert.ok(OFFICIAL_WALK_LISTINGS.every((r) => /b$/.test(r.docket)), "walk is institution consent orders only");
   assert.ok(!OFFICIAL_WALK_LISTINGS.some((r) => /e$|k$/.test(r.docket)), "walk skips people/CMP");
-  const walkIds = new Set([...SEED_LISTINGS, ...OFFICIAL_WALK_LISTINGS].map((r) => r.id));
+  const leftoverRows = JSON.parse(readFx("leftover-listing-excerpt.json")) as FdicListingRow[];
+  const leftoverListed = parseListingRows(leftoverRows);
+  assert.ok(leftoverListed.some((r) => r.id === "FDIC-24-0117b"), "leftover listing includes Independence Bank");
+  assert.ok(leftoverListed.some((r) => r.id === "FDIC-23-0124b"), "leftover listing includes Tioga-Franklin 0693d PDF");
+  assert.ok(leftoverListed.some((r) => r.id === "FDIC-22-0041b"), "leftover listing includes First IC 069t PDF");
+  assert.ok(leftoverListed.some((r) => r.id === "FDIC-25-0072b"), "leftover listing includes Unity Bank leftover-new 069SJ");
+  assert.ok(!leftoverListed.some((r) => r.id === "FDIC-23-0001e"), "skip leftover people/IAP");
+  assert.ok(
+    leftoverListed.every((r) => officialFdicPdfUrl(r.sourceUrl)),
+    "leftover walk keeps official orders.fdic.gov shepherd PDFs",
+  );
+  assert.ok(LEFTOVER_WALK_LISTINGS.length >= 10, "leftover shepherd walk lists leftover 0693d / 069t / leftover-new 069SJ");
+  assert.ok(LEFTOVER_WALK_LISTINGS.some((r) => r.docket === "FDIC-23-0124b" && /0693d/.test(r.pdfId)));
+  assert.ok(LEFTOVER_WALK_LISTINGS.some((r) => r.docket === "FDIC-22-0041b" && /069t/.test(r.pdfId)));
+  assert.ok(LEFTOVER_WALK_LISTINGS.every((r) => officialFdicPdfUrl(r.sourceUrl)));
+  assert.ok(LEFTOVER_WALK_LISTINGS.every((r) => /b$/.test(r.docket)), "leftover walk is institution consent orders only");
+  assert.ok(!LEFTOVER_WALK_LISTINGS.some((r) => /e$|k$/.test(r.docket)), "leftover walk skips people/CMP");
+  const walkIds = new Set([...SEED_LISTINGS, ...OFFICIAL_WALK_LISTINGS, ...LEFTOVER_WALK_LISTINGS].map((r) => r.id));
   assert.ok(walkIds.size > 5, "official shepherd walk lists more than first-slice=5");
+  assert.ok(walkIds.size >= 24, "leftover walk lists leftover official institution PDFs past the 16-card first walk");
   const src = readFs(join(dirname(fileURLToPath(import.meta.url)), "../src/fdic-orders.ts"), "utf-8");
   assert.match(src, /FDIC_ORDERS_LIMIT", "24"/);
   assert.match(src, /FDIC_ORDERS_MAX_FETCH", "36"/);
@@ -147,6 +171,17 @@ async function main(): Promise<void> {
   });
   assert.ok(isRealFdicOrderBody(connect.body));
   assert.ok(connect.body.includes("interest rate risk"));
+
+  const independence = parseFdicOrderText(readFx("FDIC-24-0117b.txt"), {
+    sourceUrl: `${PDF_DOWNLOAD}069SJ00000OJmxiYAD?operationContext=S1`,
+    bank: "Independence Bank",
+    location: "East Greenwich, Rhode Island",
+    date: "2025-01-14",
+    docket: "FDIC-24-0117b",
+  });
+  assert.ok(isRealFdicOrderBody(independence.body), "leftover Independence Bank line-wrapped findings are this SKU");
+  assert.match(independence.bank, /Independence Bank/i);
+  assert.equal(independence.docket, "FDIC-24-0117b");
 
   const teaser = parseFdicOrderText(readFx("no-body.txt"), {
     sourceUrl: LISTING_URL,
@@ -266,6 +301,7 @@ async function main(): Promise<void> {
     assert.ok(snap.cards.some((c) => c.docket === "FDIC-22-0042b" && isRealFdicOrderBody(c.body)));
     assert.ok(snap.cards.some((c) => c.docket === "FDIC-26-0011b" && isRealFdicOrderBody(c.body)));
     assert.ok(snap.cards.some((c) => c.docket === "FDIC-25-0148b" && isRealFdicOrderBody(c.body)));
+    assert.ok(snap.cards.some((c) => c.docket === "FDIC-24-0117b" && isRealFdicOrderBody(c.body)), "leftover Independence Bank is collected");
     assert.ok(snap.cards.every((c) => isRealFdicOrderBody(c.body)));
     assert.ok(!snap.cards.some((c) => c.id === "FDIC-26-0002e"), "skip IAP");
     assert.ok(!snap.cards.some((c) => c.id === "FDIC-26-0006k"), "skip CMP");

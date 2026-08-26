@@ -1,0 +1,66 @@
+[
+  {
+    "bank": "Independence Bank",
+    "location": "East Greenwich, Rhode Island",
+    "docket": "FDIC-24-0117b",
+    "date": "2025-01-14",
+    "title": "Consent Order",
+    "sourceUrl": "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ00000OJmxiYAD?operationContext=S1",
+    "pdfId": "069SJ00000OJmxiYAD"
+  },
+  {
+    "bank": "Unity Bank of Mississippi",
+    "location": "Holly Springs, Mississippi",
+    "docket": "FDIC-25-0072b",
+    "date": "2025-08-15",
+    "title": "Consent Order",
+    "sourceUrl": "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ00000m8pzOYAQ?operationContext=S1",
+    "pdfId": "069SJ00000m8pzOYAQ"
+  },
+  {
+    "bank": "Tioga-Franklin Savings Bank",
+    "location": "Philadelphia, Pennsylvania",
+    "docket": "FDIC-23-0124b",
+    "date": "2024-04-24",
+    "title": "Consent Order",
+    "sourceUrl": "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/0693d00000DRBvXAAX?operationContext=S1",
+    "pdfId": "0693d00000DRBvXAAX"
+  },
+  {
+    "bank": "The State Exchange Bank",
+    "location": "Lamont, Oklahoma",
+    "docket": "FDIC-24-0035b",
+    "date": "2024-07-01",
+    "title": "Consent Order",
+    "sourceUrl": "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/0693d00000EPyDAAA1?operationContext=S1",
+    "pdfId": "0693d00000EPyDAAA1"
+  },
+  {
+    "bank": "WEX Bank",
+    "location": "Sandy, Utah",
+    "docket": "FDIC-23-0044b",
+    "date": "2023-09-19",
+    "title": "Consent Order",
+    "sourceUrl": "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/0693d00000AAfvHAAT?operationContext=S1",
+    "pdfId": "0693d00000AAfvHAAT"
+  },
+  {
+    "bank": "First IC Bank",
+    "location": "Doraville, Georgia",
+    "docket": "FDIC-22-0041b",
+    "date": "2022-06-17",
+    "title": "Consent Order",
+    "sourceUrl": "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069t000000c8AF9AAM?operationContext=S1",
+    "pdfId": "069t000000c8AF9AAM"
+  },
+  {
+    "bank": "Some National Bank",
+    "individual": "Jane Q. Public",
+    "location": "Columbus, Ohio",
+    "docket": "FDIC-23-0001e",
+    "date": "2023-04-01",
+    "title": "Order of Prohibition from Further Participation",
+    "sourceUrl": "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/0693d00000PEOPLEFILE?operationContext=S1",
+    "pdfId": "0693d00000PEOPLEFILE"
+  }
+]

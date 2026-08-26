@@ -2,6 +2,8 @@
  * FDIC institution consent-order / C&D TEXT door.
  * Official per-order PDFs from orders.fdic.gov only. Does not invent order text.
  * EDOS is a Salesforce index (listing only). Not BankFind. Not monthly NR counts.
+ * Leftover catalog is the same shepherd download path — leftover 0693d / 069t
+ * ContentDocument ids plus leftover-new 069SJ rows the first walk missed.
  * Not IAP / 1829 / Section 19 people files. Not EDGAR 8-K. Not Federal Register raw_text.
  * Not OCC /occ-cd. Not CFPB /cfpb-orders. Not FTC /ftc-wl.
  */
@@ -23,7 +25,8 @@ export const LISTING_URL = "https://orders.fdic.gov/s/";
 export const PDF_HOST = "orders.fdic.gov";
 export const PDF_DOWNLOAD = "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/";
 export const DOCKET_RE = /\bFDIC-\d{2}-\d{4}[a-z]\b/i;
-export const CONTENT_ID_RE = /\b069SJ[0-9A-Za-z]{10,13}\b/;
+/** Official Salesforce ContentDocument Id on orders.fdic.gov (069SJ leftover-new, 0693d / 069t leftover-older). */
+export const CONTENT_ID_RE = /\b069[A-Za-z0-9]{12,15}\b/;
 export const LICENSE = "17 USC 105";
 export const ATTRIBUTION = "FDIC";
 
@@ -266,6 +269,135 @@ export const OFFICIAL_WALK_LISTINGS: FdicOrderListing[] = [
   },
 ];
 
+/**
+ * Leftover official institution consent-order PDFs on the same orders.fdic.gov
+ * shepherd path. First-slice only accepted 069SJ ids; leftover catalog uses
+ * 0693d / 069t ContentDocument ids plus leftover-new 069SJ rows the first
+ * walk missed. People / IAP / CMP stay out.
+ */
+export const LEFTOVER_WALK_LISTINGS: FdicOrderListing[] = [
+  {
+    id: "FDIC-25-0072b",
+    docket: "FDIC-25-0072b",
+    bank: "Unity Bank of Mississippi",
+    location: "Holly Springs, Mississippi",
+    date: "2025-08-15",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069SJ00000m8pzOYAQ?operationContext=S1",
+    pdfId: "069SJ00000m8pzOYAQ",
+  },
+  {
+    id: "FDIC-24-0035b",
+    docket: "FDIC-24-0035b",
+    bank: "The State Exchange Bank",
+    location: "Lamont, Oklahoma",
+    date: "2024-07-01",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/0693d00000EPyDAAA1?operationContext=S1",
+    pdfId: "0693d00000EPyDAAA1",
+  },
+  {
+    id: "FDIC-24-0019b",
+    docket: "FDIC-24-0019b",
+    bank: "TNBank",
+    location: "Oak Ridge, Tennessee",
+    date: "2024-05-22",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/0693d00000Dl4c4AAB?operationContext=S1",
+    pdfId: "0693d00000Dl4c4AAB",
+  },
+  {
+    id: "FDIC-24-0022b",
+    docket: "FDIC-24-0022b",
+    bank: "Thread Bank",
+    location: "Rogersville, Tennessee",
+    date: "2024-05-21",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/0693d00000Dl5geAAB?operationContext=S1",
+    pdfId: "0693d00000Dl5geAAB",
+  },
+  {
+    id: "FDIC-23-0125b",
+    docket: "FDIC-23-0125b",
+    bank: "Forbright Bank",
+    location: "Potomac, Maryland",
+    date: "2024-05-03",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/0693d00000DomY8AAJ?operationContext=S1",
+    pdfId: "0693d00000DomY8AAJ",
+  },
+  {
+    id: "FDIC-23-0124b",
+    docket: "FDIC-23-0124b",
+    bank: "Tioga-Franklin Savings Bank",
+    location: "Philadelphia, Pennsylvania",
+    date: "2024-04-24",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/0693d00000DRBvXAAX?operationContext=S1",
+    pdfId: "0693d00000DRBvXAAX",
+  },
+  {
+    id: "FDIC-23-0123b",
+    docket: "FDIC-23-0123b",
+    bank: "Commodore Bank",
+    location: "Somerset, Ohio",
+    date: "2024-04-19",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/0693d00000DRSZaAAP?operationContext=S1",
+    pdfId: "0693d00000DRSZaAAP",
+  },
+  {
+    id: "FDIC-23-0081b",
+    docket: "FDIC-23-0081b",
+    bank: "The Exchange Bank",
+    location: "Skiatook, Oklahoma",
+    date: "2024-02-29",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/0693d00000CnYzVAAV?operationContext=S1",
+    pdfId: "0693d00000CnYzVAAV",
+  },
+  {
+    id: "FDIC-23-0087b",
+    docket: "FDIC-23-0087b",
+    bank: "First Farmers & Commercial Bank",
+    location: "Pikeville, Tennessee",
+    date: "2024-01-29",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/0693d00000BrFlgAAF?operationContext=S1",
+    pdfId: "0693d00000BrFlgAAF",
+  },
+  {
+    id: "FDIC-23-0044b",
+    docket: "FDIC-23-0044b",
+    bank: "WEX Bank",
+    location: "Sandy, Utah",
+    date: "2023-09-19",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/0693d00000AAfvHAAT?operationContext=S1",
+    pdfId: "0693d00000AAfvHAAT",
+  },
+  {
+    id: "FDIC-22-0097b",
+    docket: "FDIC-22-0097b",
+    bank: "Citizens Savings Bank and Trust Company",
+    location: "Nashville, Tennessee",
+    date: "2022-11-09",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069t000000ghqJJAAY?operationContext=S1",
+    pdfId: "069t000000ghqJJAAY",
+  },
+  {
+    id: "FDIC-22-0041b",
+    docket: "FDIC-22-0041b",
+    bank: "First IC Bank",
+    location: "Doraville, Georgia",
+    date: "2022-06-17",
+    title: "Consent Order",
+    sourceUrl: "https://orders.fdic.gov/sfc/servlet.shepherd/document/download/069t000000c8AF9AAM?operationContext=S1",
+    pdfId: "069t000000c8AF9AAM",
+  },
+];
+
 function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
@@ -328,7 +460,7 @@ export function isoDate(raw: string | null | undefined): string | null {
 
 export function contentIdFromUrl(url: string | null | undefined): string | null {
   if (!url) return null;
-  const m = url.match(/\/document\/download\/(069SJ[0-9A-Za-z]{10,13})\b/);
+  const m = url.match(/\/document\/download\/(069[A-Za-z0-9]{12,15})\b/);
   return m ? m[1] : null;
 }
 
@@ -452,35 +584,38 @@ export function isRealFdicOrderBody(text: string): boolean {
   }
   const compact = text.replace(/\s+/g, " ").trim();
   if (compact.length < 2000) return false;
-  if (/CONSUMER FINANCIAL PROTECTION BUREAU/i.test(text) && /File No\.\s*\d{4}-CFPB-\d+/i.test(text)) {
+  if (/CONSUMER FINANCIAL PROTECTION BUREAU/i.test(compact) && /File No\.\s*\d{4}-CFPB-\d+/i.test(compact)) {
     return false;
   }
-  if (/OFFICE OF THE COMPTROLLER OF THE CURRENCY/i.test(text) && /\bAA-[A-Z]{2,4}-\d{4}-\d+\b/.test(text)) {
+  if (/OFFICE OF THE COMPTROLLER OF THE CURRENCY/i.test(compact) && /\bAA-[A-Z]{2,4}-\d{4}-\d+\b/.test(compact)) {
     return false;
   }
-  if (/Bureau of Consumer Protection/i.test(text) && /Made in the USA Labeling Rule|MUSA Labeling Rule/i.test(text)) {
+  if (/Bureau of Consumer Protection/i.test(compact) && /Made in the USA Labeling Rule|MUSA Labeling Rule/i.test(compact)) {
     return false;
   }
-  if (/ORDER TERMINATING/i.test(text)) return false;
-  if (/\bORDER OF PROHIBITION\b/i.test(text) && /institution-affiliated party/i.test(text) && !/\bCONSENT ORDER\b/i.test(text)) {
+  if (/ORDER TERMINATING/i.test(compact)) return false;
+  if (/\bORDER OF PROHIBITION\b/i.test(compact) && /institution-affiliated party/i.test(compact) && !/\bCONSENT ORDER\b/i.test(compact)) {
     return false;
   }
-  if (/Section 19 of the (FDI|Federal Deposit Insurance) Act/i.test(text) && /12 U\.S\.C\.\s*§\s*1829\b/.test(text) && !/1829b/.test(text)) {
+  if (/Section 19 of the (FDI|Federal Deposit Insurance) Act/i.test(compact) && /12 U\.S\.C\.\s*§\s*1829\b/.test(compact) && !/1829b/.test(compact)) {
     return false;
   }
-  if (/ORDER TO PAY\s+CIVIL MONEY PENALTY/i.test(text) && !/\bCONSENT ORDER\b/i.test(text)) {
+  if (/ORDER TO PAY\s+CIVIL MONEY PENALTY/i.test(compact) && !/\bCONSENT ORDER\b/i.test(compact)) {
     return false;
   }
-  const fdic = /FEDERAL DEPOSIT INSURANCE CORPORATION/i.test(text);
-  const order = /\bCONSENT ORDER\b/i.test(text) || /\bCEASE AND DESIST\b/i.test(text) || /\bCEASE-AND-DESIST\b/i.test(text);
-  const docket = DOCKET_RE.test(text);
-  const institution = /Insured State Nonmember|INSURED STATE NONMEMBER|STATE CHARTERED[\s\S]{0,40}INSURED NONMEMBER/i.test(text);
+  const fdic = /FEDERAL DEPOSIT INSURANCE CORPORATION/i.test(compact);
+  const order = /\bCONSENT ORDER\b/i.test(compact) || /\bCEASE AND DESIST\b/i.test(compact) || /\bCEASE-AND-DESIST\b/i.test(compact);
+  const docket = DOCKET_RE.test(compact);
+  const institution =
+    /Insured State Nonmember|INSURED STATE NONMEMBER|STATE CHARTERED.{0,80}INSURED NONMEMBER/i.test(compact);
   const findings =
-    /\bIT IS (HEREBY )?ORDERED\b/i.test(text) ||
-    /\bthe FDIC and the .{0,80} (order|hereby order)/i.test(text) ||
-    /\bHaving determined that the requirements for issuance of an order/i.test(text) ||
-    /\bBOARD REQUIREMENTS\b/i.test(text) ||
-    /\bACTION PLAN\b/i.test(text);
+    /\bIT IS (HEREBY )?ORDERED\b/i.test(compact) ||
+    /\bthe FDIC and the .{0,80} (order|hereby order)/i.test(compact) ||
+    /\bthe FDIC and (the )?(DBR|State|Division|Commissioner|GDBF|ASBD|DBCF|WDB|DFI)\b.{0,80}\border\b/i.test(compact) ||
+    /\bHaving determined that the requirements for issuance of an order/i.test(compact) ||
+    /\bBOARD REQUIREMENTS\b/i.test(compact) ||
+    /\bACTION PLAN\b/i.test(compact) ||
+    /\bCAPITAL PLAN AND MAINTENANCE\b/i.test(compact);
   return fdic && order && docket && institution && findings;
 }
 
@@ -676,12 +811,20 @@ function mergeOfficialListings(listed: FdicOrderListing[], seeds: FdicOrderListi
 
 async function loadOfficialListings(dir: string): Promise<{ listed: FdicOrderListing[]; listedCount: number }> {
   if (dir) {
-    const raw = readNamedFile(dir, ["listing-excerpt.json", "listing.json"]);
-    const rows = raw ? (JSON.parse(raw) as FdicListingRow[]) : [];
-    const listed = Array.isArray(rows) ? parseListingRows(rows) : [];
-    return { listed, listedCount: listed.length };
+    const listed: FdicOrderListing[] = [];
+    for (const name of ["listing-excerpt.json", "leftover-listing-excerpt.json", "listing.json"]) {
+      const raw = readNamedFile(dir, [name]);
+      if (!raw) continue;
+      const rows = JSON.parse(raw) as FdicListingRow[];
+      if (Array.isArray(rows)) listed.push(...parseListingRows(rows));
+    }
+    const merged = mergeOfficialListings(listed, []);
+    return { listed: merged, listedCount: merged.length };
   }
-  const listed = mergeOfficialListings(OFFICIAL_WALK_LISTINGS, SEED_LISTINGS);
+  const listed = mergeOfficialListings(
+    LEFTOVER_WALK_LISTINGS,
+    mergeOfficialListings(OFFICIAL_WALK_LISTINGS, SEED_LISTINGS),
+  );
   return { listed, listedCount: listed.length };
 }
 

@@ -4,7 +4,9 @@ Official FDIC-authored **institution consent-order / Cease-and-Desist TEXT** ext
 
 Always listed on well-known / OpenAPI / llms.txt / shop catalog. Unpaid `GET /fdic-orders` is HTTP 402.
 
-v1 seeds **5** 2026-dated institution consent-order PDFs from https://orders.fdic.gov. Required seed is MutualOne Bank (`FDIC-26-0001b`, privately held co-op; no 8-K of this order). Do not harvest the EDOS backlog here.
+v1 seeds **5** 2026-dated institution consent-order PDFs from https://orders.fdic.gov. Required seed is MutualOne Bank (`FDIC-26-0001b`, privately held co-op; no 8-K of this order).
+
+Leftover grow walks the same official `orders.fdic.gov` shepherd path. First-slice only accepted newer `069SJ` ContentDocument ids and only kept findings needles on a single line. Leftover official PDFs use `0693d` / `069t` ids (Tioga-Franklin, First IC, WEX, and the rest of this pulse) plus leftover-new `069SJ` rows (Unity Bank, Independence Bank). People / IAP / CMP stay out. EDOS Salesforce JSON is still listing-only — not the product.
 
 ## Paths
 
@@ -35,8 +37,8 @@ Free `GET /fdic-orders/manifest.json` is bank / docket / date / sourceUrl only. 
 | Variable | Default | Purpose |
 |---|---|---|
 | `FDIC_ORDERS_DIR` | `$HOME/projects/mcp-proxy/data/fdic-orders` | Snapshot cache (`snapshot.json` + downloaded PDFs) |
-| `FDIC_ORDERS_LIMIT` | `5` | Target **additional** real extractable bodies this run. Cached bodies are reused and do **not** count. `0` = keep walking |
-| `FDIC_ORDERS_MAX_FETCH` | `8` | Max official PDF downloads per run. Already-on-disk PDFs do not count. `0` = no cap |
+| `FDIC_ORDERS_LIMIT` | `24` | Target **additional** real extractable bodies this run. Cached bodies are reused and do **not** count. `0` = keep walking |
+| `FDIC_ORDERS_MAX_FETCH` | `36` | Max official PDF downloads per run. Already-on-disk PDFs do not count. `0` = no cap |
 | `FDIC_ORDERS_JSON_DIR` / `FDIC_ORDERS_LISTING_DIR` | unset | Optional already-fetched `listing-excerpt.json` + `{docket}.txt` |
 | `FDIC_ORDERS_PDFTOTEXT` | `pdftotext` | Poppler extractor |
 
