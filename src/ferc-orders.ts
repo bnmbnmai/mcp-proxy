@@ -162,6 +162,110 @@ export const SEED_LISTINGS: FercOrderListing[] = [
   },
 ];
 
+/** Extra official institution stipulation-and-consent PDFs. www.ferc.gov year tables 403; do not wrap media teasers. */
+export const OFFICIAL_WALK_LISTINGS: FercOrderListing[] = [
+  {
+    id: "IN25-9-000",
+    docket: "IN25-9-000",
+    institution: "Skye MS, LLC",
+    date: "2025-08-08",
+    title: "Order Approving Stipulation and Consent Agreement",
+    sourceUrl:
+      "https://cms.ferc.gov/sites/default/files/2025-08/20250808-192FERC61136-IN25-9-000-Skye%20MS%2C%20LLC-Settlement%20Agreement.pdf",
+    pdfId: "20250808-192FERC61136-IN25-9-000-Skye MS, LLC-Settlement Agreement",
+  },
+  {
+    id: "IN25-11-000",
+    docket: "IN25-11-000",
+    institution: "Los Angeles Department of Water and Power",
+    date: "2025-10-02",
+    title: "Order Approving Stipulation and Consent Agreement",
+    sourceUrl:
+      "https://cms.ferc.gov/sites/default/files/2025-10/20251002-193FERC61010-IN25-11-000-Los%20Angeles%20Department%20of%20Water%20and%20Power-Settlement%20Agreement.pdf",
+    pdfId: "20251002-193FERC61010-IN25-11-000-Los Angeles Department of Water and Power-Settlement Agreement",
+  },
+  {
+    id: "IN25-5-000",
+    docket: "IN25-5-000",
+    institution: "Enel North America, Inc.",
+    date: "2025-07-10",
+    title: "Order Approving Stipulation and Consent Agreement",
+    sourceUrl:
+      "https://cms.ferc.gov/sites/default/files/2025-07/20250710-192FERC61048-IN25-5-000-Enel%20North%20America%20Inc%20Et%20Al-Settlement%20Agreement.pdf",
+    pdfId: "20250710-192FERC61048-IN25-5-000-Enel North America Inc Et Al-Settlement Agreement",
+  },
+  {
+    id: "IN25-8-000",
+    docket: "IN25-8-000",
+    institution: "Cordova Energy Company LLC",
+    date: "2025-09-03",
+    title: "Order Approving Stipulation and Consent Agreement",
+    sourceUrl:
+      "https://cms.ferc.gov/sites/default/files/2025-09/20250903-192FERC61205-IN25-8-000-Cordova%20Energy%20Company%20LLC-Settlement%20Agreement.pdf",
+    pdfId: "20250903-192FERC61205-IN25-8-000-Cordova Energy Company LLC-Settlement Agreement",
+  },
+  {
+    id: "IN24-9-000",
+    docket: "IN24-9-000",
+    institution: "Big Rivers Electric Corporation",
+    date: "2024-09-05",
+    title: "Order Approving Stipulation and Consent Agreement",
+    sourceUrl:
+      "https://cms.ferc.gov/sites/default/files/2024-09/20240905-188FERC61155-IN24-9-000-Big%20Rivers-Settlement%20Agreement.pdf",
+    pdfId: "20240905-188FERC61155-IN24-9-000-Big Rivers-Settlement Agreement",
+  },
+  {
+    id: "IN24-11-000",
+    docket: "IN24-11-000",
+    institution: "Vista Energy Storage, LLC",
+    date: "2024-08-06",
+    title: "Order Approving Stipulation and Consent Agreement",
+    sourceUrl:
+      "https://cms.ferc.gov/sites/default/files/2024-08/20240806-188FERC61112-IN24-11-000-Vista%20Energy%20Storage%20LLC-Settlement%20Agreement.pdf",
+    pdfId: "20240806-188FERC61112-IN24-11-000-Vista Energy Storage LLC-Settlement Agreement",
+  },
+  {
+    id: "IN24-10-000",
+    docket: "IN24-10-000",
+    institution: "Arlington Energy Center III, LLC",
+    date: "2024-08-08",
+    title: "Order Approving Stipulation and Consent Agreement",
+    sourceUrl:
+      "https://cms.ferc.gov/sites/default/files/2024-08/20240808-188FERC61117-IN24-10-000-Arlington%20Energy%20Et%20Al-Settlement%20Agreement.pdf",
+    pdfId: "20240808-188FERC61117-IN24-10-000-Arlington Energy Et Al-Settlement Agreement",
+  },
+  {
+    id: "IN24-6-000",
+    docket: "IN24-6-000",
+    institution: "ENGIE Energy Marketing NA, Inc.",
+    date: "2024-05-20",
+    title: "Order Approving Stipulation and Consent Agreement",
+    sourceUrl:
+      "https://cms.ferc.gov/sites/default/files/2024-05/20240520-187FERC61084-IN24-6-000-Engie%20Energy-Settlement%20Agreement.pdf",
+    pdfId: "20240520-187FERC61084-IN24-6-000-Engie Energy-Settlement Agreement",
+  },
+  {
+    id: "IN24-3-000",
+    docket: "IN24-3-000",
+    institution: "Linde, Inc.",
+    date: "2024-01-04",
+    title: "Order Approving Stipulation and Consent Agreement",
+    sourceUrl:
+      "https://cms.ferc.gov/sites/default/files/2024-01/20240104-186FERC61009-IN24-3-000-Linde%20Inc%20Et%20Al-Settlement%20Agreement.pdf",
+    pdfId: "20240104-186FERC61009-IN24-3-000-Linde Inc Et Al-Settlement Agreement",
+  },
+  {
+    id: "IN24-13-000",
+    docket: "IN24-13-000",
+    institution: "Sonoran West Solar Holdings, LLC",
+    date: "2024-12-05",
+    title: "Order Approving Stipulation and Consent Agreement",
+    sourceUrl:
+      "https://cms.ferc.gov/sites/default/files/2024-12/20241205-189FERC61174-IN24-13-000-Sonoran%20West%20Solar%20Et%20Al-Settlement%20Agreement.pdf",
+    pdfId: "20241205-189FERC61174-IN24-13-000-Sonoran West Solar Et Al-Settlement Agreement",
+  },
+];
+
 function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
@@ -615,17 +719,17 @@ function listingDir(): string {
 }
 
 function firstSliceLimit(): number {
-  const raw = env("FERC_ORDERS_LIMIT", "5");
+  const raw = env("FERC_ORDERS_LIMIT", "24");
   if (raw === "0") return 0;
   const n = Number(raw);
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 5;
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 24;
 }
 
 function maxFetchLimit(): number {
-  const raw = env("FERC_ORDERS_MAX_FETCH", "8");
+  const raw = env("FERC_ORDERS_MAX_FETCH", "36");
   if (raw === "0") return 0;
   const n = Number(raw);
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 8;
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 36;
 }
 
 function readNamedFile(dir: string, names: string[]): string | null {
@@ -718,12 +822,13 @@ async function loadOfficialListings(dir: string): Promise<{ listed: FercOrderLis
         /* one official year table missed; keep the others */
       }
     }
-    const merged = mergeOfficialListings(listed, SEED_LISTINGS);
+    const merged = mergeOfficialListings([...OFFICIAL_WALK_LISTINGS, ...listed], SEED_LISTINGS);
     if (merged.length > 0) return { listed: merged, listedCount: merged.length };
   } catch {
-    /* official listing missed; keep first-slice seeds */
+    /* official listing missed; walk official cms.ferc.gov PDFs */
   }
-  return { listed: [...SEED_LISTINGS], listedCount: SEED_LISTINGS.length };
+  const walked = mergeOfficialListings(OFFICIAL_WALK_LISTINGS, SEED_LISTINGS);
+  return { listed: walked, listedCount: walked.length };
 }
 
 function priorBodies(): Map<string, FercOrderCard> {
