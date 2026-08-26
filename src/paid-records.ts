@@ -49,6 +49,7 @@ export const EXTRACTED_BODY_SKUS = [
   "cma-ca98",
   "ema-referrals",
   "cder-reviews",
+  "npdes-permits",
 ] as const;
 
 export type ExtractedBodySku = (typeof EXTRACTED_BODY_SKUS)[number];
@@ -117,6 +118,7 @@ export const AWA_TYPE = "awa";
 export const SWISSPAR_TYPE = "swisspar";
 export const EMA_REFERRALS_TYPE = "ema-referrals";
 export const CDER_REVIEWS_TYPE = "cder-reviews";
+export const NPDES_PERMITS_TYPE = "npdes-permits";
 export const CFPB_ORDER_TYPE = "cfpb-order";
 export const OFAC_ORDER_TYPE = "ofac-order";
 export const FRB_ORDER_TYPE = "frb-order";
@@ -155,6 +157,7 @@ export const SWISSPAR_SOURCE =
 export const EMA_REFERRALS_SOURCE =
   "https://www.ema.europa.eu/en/documents/report/referrals-output-json-report_en.json";
 export const CDER_REVIEWS_SOURCE = "https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm";
+export const NPDES_PERMITS_SOURCE = "https://www.epa.gov/npdes-permits";
 export const CFPB_ORDER_SOURCE = "https://www.consumerfinance.gov/enforcement/actions/";
 export const OFAC_ORDER_SOURCE = "https://ofac.treasury.gov/civil-penalties-and-enforcement-information";
 export const FRB_ORDER_SOURCE = "https://www.federalreserve.gov/supervisionreg/enforcementactions.htm";
@@ -734,6 +737,10 @@ export function paidEmaReferralsBody<T extends CardPayload>(payload: T, opts?: P
 
 export function paidCderReviewsBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
   return paidCardBody(payload, CDER_REVIEWS_TYPE, CDER_REVIEWS_SOURCE, opts);
+}
+
+export function paidNpdesPermitsBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, NPDES_PERMITS_TYPE, NPDES_PERMITS_SOURCE, opts);
 }
 
 export function paidIcoMpnBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
