@@ -1,10 +1,10 @@
 # FDA PCAC 503A briefing-memo text — x402 door
 
-Official FDA-authored Pharmacy Compounding Advisory Committee **503A briefing-memo TEXT** extracted from per-substance PDFs on the July 23–24, 2026 PCAC meeting page (docket FDA-2025-N-6895). Does not invent evaluation text. Not CDER multidisciplinary reviews. Not combined sponsor/AdComm packs. Not the FR notice or docket 0001 (those are names/uses only).
+Official FDA-authored Pharmacy Compounding Advisory Committee **503A briefing-memo TEXT** extracted from per-substance PDFs. Bag: newest 10 official texts ($0.05); one official text `?id=` ($0.02). Free `GET /pcac/manifest.json?q=` is the searchable index.
 
 Always listed on well-known / OpenAPI / llms.txt / shop catalog. Unpaid `GET /pcac` is HTTP 402.
 
-v1 seeds **5** FDA-only July 2026 peptide memos. Do not harvest the whole docket here.
+First-slice walked only the July 23–24, 2026 meeting page (7 per-substance memos). Official year-materials tables also list October 29, 2024 and December 4, 2024.
 
 ## Paths
 
@@ -17,8 +17,10 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 
 ## Source of truth
 
-- Meeting page (media links): https://www.fda.gov/advisory-committees/advisory-committee-calendar/july-23-24-2026-meeting-pharmacy-compounding-advisory-committee-07232026
-- FR notice (names/uses only): https://www.govinfo.gov/content/pkg/FR-2026-04-16/html/2026-07361.htm
+- Official year tables: https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/2026-meeting-materials-pharmacy-compounding-advisory-committee and `/2024-meeting-materials-pharmacy-compounding-advisory-committee`
+- First-slice miss: only https://www.fda.gov/advisory-committees/advisory-committee-calendar/july-23-24-2026-meeting-pharmacy-compounding-advisory-committee-07232026 (7 memos)
+- October 29, 2024 meeting: https://www.fda.gov/advisory-committees/advisory-committee-calendar/october-29-2024-meeting-pharmacy-compounding-advisory-committee-10292024
+- December 4, 2024 meeting: https://www.fda.gov/advisory-committees/advisory-committee-calendar/updated-meeting-time-and-public-participation-information-december-4-2024-meeting-pharmacy
 - Per-substance PDFs: `https://www.fda.gov/media/{id}/download`
 - Example: Emideltide / DSIP `https://www.fda.gov/media/193344/download` (Wayback `id_` if Akamai 401s)
 - License: **17 USC 105**. Attribute FDA.
@@ -27,7 +29,7 @@ Paid body keeps the existing `cards[]` fields: `id`, `substance`, `date`, `meeti
 
 Alongside those keys the paid JSON adds `records[]` (`id`, `date`, `firm` from official `substance`, `url`, `type=pcac`), `recordCount`, honest `asOf` / `fetchedAt`, and `source` (the official PCAC meeting page). A repeat buyer diffs `asOf` + record ids.
 
-`data/pcac/` is gitignored. Evaluation bodies get lost on a dead VM — do not harvest the whole docket here. Full fill waits for apollo.
+`data/pcac/` is gitignored. Evaluation bodies get lost on a dead VM — do not harvest archived combined packs here.
 
 Free `GET /pcac/manifest.json` is substance / date / meeting / mediaId / sourceUrl only. Family / basic-auth stay off `ticks.bnm.farm`.
 
@@ -36,32 +38,25 @@ Free `GET /pcac/manifest.json` is substance / date / meeting / mediaId / sourceU
 | Variable | Default | Purpose |
 |---|---|---|
 | `PCAC_DIR` | `$HOME/projects/mcp-proxy/data/pcac` | Snapshot cache (`snapshot.json` + downloaded PDFs) |
-| `PCAC_LIMIT` | `5` | Target **additional** real extractable bodies this run. Cached bodies are reused and do **not** count. `0` = keep walking |
-| `PCAC_MAX_FETCH` | `8` | Max official PDF downloads per run. Already-on-disk PDFs do not count. `0` = no cap |
-| `PCAC_HTML_DIR` / `PCAC_LISTING_DIR` | unset | Optional already-fetched `listing-excerpt.html` + `{mediaId}.txt` |
+| `PCAC_LIMIT` | `24` | Target **additional** real extractable bodies this run. Cached bodies are reused and do **not** count. `0` = keep walking |
+| `PCAC_MAX_FETCH` | `36` | Max official PDF downloads per run. Already-on-disk PDFs do not count. `0` = no cap |
+| `PCAC_HTML_DIR` / `PCAC_LISTING_DIR` | unset | Optional already-fetched `listing-excerpt.html` / `listing-oct-2024-excerpt.html` / `listing-dec-2024-excerpt.html` + `{mediaId}.txt` |
 | `PCAC_PDFTOTEXT` | `pdftotext` | Poppler extractor |
 
 Do not set `X402_SKIP_SETTLE` on the standing public unit. Family / basic-auth stay off `ticks.bnm.farm`.
 
-## Apollo collect (required for live)
-
-This cloud VM cannot publish `ticks.bnm.farm` and must not restart `idaho-ticks-x402`. Live `/pcac` stays **404** until apollo pulls this branch and restarts the door with `PCAC_DIR` pointed at the seed snapshot (or a fresh `npm run collect:pcac`).
+## Apollo collect (official year-materials walk)
 
 ```bash
-# on apollo — not this Cloud VM
-sudo apt-get install -y poppler-utils
 cd ~/projects/mcp-proxy
-git fetch origin
-git checkout cursor/pcac-door-4d7b
 npm run build
-
 export PCAC_DIR=$HOME/projects/mcp-proxy/data/pcac
-# seed is already in src/fixtures/fda-pcac/seed-snapshot.json
-# full fill later — LIMIT is additional, not total
-PCAC_LIMIT=5 PCAC_MAX_FETCH=8 npm run collect:pcac
-
-sudo systemctl restart idaho-ticks-x402
+# LIMIT is additional, not total. Cached July 2026 bodies are reused.
+PCAC_LIMIT=24 PCAC_MAX_FETCH=36 npm run collect:pcac
+systemctl --user restart idaho-ticks-x402.service
 ```
+
+Live after leftover apply (2026-08-26): **listedCount 15**, **cardCount 14**, asOf **2026-05-15**, fetchedAt **2026-08-26T15:42:23.299Z**. Hydroxyprogesterone caproate (`182090`, Withdrawn or Removed) failed the 503A evaluation gate. Price still $0.02 / $0.05. No new SKU. Restarted only `idaho-ticks-x402.service`. Official live catalog is the July 2026 + October 29, 2024 + December 4, 2024 meeting pages.
 
 ## Local smoke (cloud VM / laptop)
 

@@ -36,7 +36,7 @@ Extracted-body doors: **free index/search** on `/{door}/manifest.json` or `/{doo
 | `/untitled-letters` | FDA Untitled Letter text (CDER OPDP + CBER promo PDFs). Newest 10 official texts | `cards[].body` | 119 cards | $0.05 | [untitled-letters/manifest.json](https://ticks.bnm.farm/untitled-letters/manifest.json) |
 | `/awa` | USDA APHIS AWA inspection-report observation text. Newest 10 official texts | `cards[].body` | 25 cards | $0.05 | [awa/manifest.json](https://ticks.bnm.farm/awa/manifest.json) |
 | `/swisspar` | Swissmedic first-authorisation SwissPAR evaluation text. Newest 10 official texts | `cards[].body` | 37 cards | $0.05 | [swisspar/manifest.json](https://ticks.bnm.farm/swisspar/manifest.json) |
-| `/pcac` | FDA PCAC 503A briefing-memo evaluation text. Newest 10 official texts | `cards[].body` | 7 cards | $0.05 | [pcac/manifest.json](https://ticks.bnm.farm/pcac/manifest.json) |
+| `/pcac` | FDA PCAC 503A briefing-memo evaluation text. Newest 10 official texts | `cards[].body` | 14 cards | $0.05 | [pcac/manifest.json](https://ticks.bnm.farm/pcac/manifest.json) |
 | `/ftc-wl` | FTC BCP warning-letter text. Newest 10 official texts | `cards[].body` | 36 cards | $0.05 | [ftc-wl/manifest.json](https://ticks.bnm.farm/ftc-wl/manifest.json) |
 | `/cfpb-orders` | CFPB consent-order / administrative-order text. Newest 10 official texts | `cards[].body` | 37 cards | $0.05 | [cfpb-orders/manifest.json](https://ticks.bnm.farm/cfpb-orders/manifest.json) |
 | `/occ-cd` | OCC institution C&D / consent-order text. Newest 10 official texts | `cards[].body` | 10 cards | $0.05 | [occ-cd/manifest.json](https://ticks.bnm.farm/occ-cd/manifest.json) |
