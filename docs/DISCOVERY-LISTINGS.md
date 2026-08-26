@@ -23,7 +23,7 @@ Live paid doors (all return HTTP 402 unpaid, official bodies when paid):
 | `GET https://ticks.bnm.farm/occ-cd` | $0.05 | OCC institution C&D / consent-order PDF text |
 | `GET https://ticks.bnm.farm/fdic-orders` | $0.05 | FDIC institution consent-order / C&D PDF text |
 | `GET https://ticks.bnm.farm/frb-orders` | $0.05 | FRB institution C&D / written-agreement / PCA PDF text |
-| `GET https://ticks.bnm.farm/ncua-orders` | $0.05 | NCUA institution consent C&D HTML text |
+| `GET https://ticks.bnm.farm/ncua-orders` | $0.05 | NCUA institution consent C&D HTML or PDF text |
 | `GET https://ticks.bnm.farm/fincen-orders` | $0.05 | FinCEN institution consent-order PDF text |
 | `GET https://ticks.bnm.farm/ferc-orders` | $0.05 | FERC institution stipulation-and-consent / show-cause / civil-penalty PDF text |
 | `GET https://ticks.bnm.farm/ofac-orders` | $0.05 | OFAC institution/company enforcement-release PDF text |

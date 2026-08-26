@@ -1,6 +1,6 @@
 # NCUA institution consent C&D text — x402 door
 
-Official NCUA-authored **institution consent Cease-and-Desist TEXT** extracted from per-order HTML body pages on `ncua.gov`. Does not invent order text. Not the official administrative-orders CSV (docket/name/URL only). Not Drupal `?_format=json` (406). Not 2026 people/IAP. Not late-filer CMP $ table. Not LUAs. Not terminations. Not FRB `/frb-orders`. Not FDIC `/fdic-orders`. Not OCC `/occ-cd`. Not CFPB `/cfpb-orders`. Not FTC `/ftc-wl`.
+Official NCUA-authored **institution consent Cease-and-Desist TEXT** extracted from per-order HTML body pages or official `/files/administrative-orders/AO*.pdf` on `ncua.gov`. Does not invent order text. Not the official administrative-orders CSV (docket/name/URL only). Not Drupal `?_format=json` (406). Not 2026 people/IAP. Not late-filer CMP $ table. Not LUAs. Not terminations. Not FRB `/frb-orders`. Not FDIC `/fdic-orders`. Not OCC `/occ-cd`. Not CFPB `/cfpb-orders`. Not FTC `/ftc-wl`.
 
 Always listed on well-known / OpenAPI / llms.txt / shop catalog. Unpaid `GET /ncua-orders` is HTTP 402.
 
@@ -11,7 +11,7 @@ v1 seeds **5** official institution C&D body pages. Required seed is Live Life F
 | Path | Auth | Price |
 |---|---|---|
 | `GET /ncua-orders` | unpaid → **HTTP 402** | **$0.05** USDC on Base (`50000` atomic) |
-| `GET /ncua-orders/manifest.json` | free | HTTP 200 credit union / docket / date / official HTML URL (no order body) |
+| `GET /ncua-orders/manifest.json` | free | HTTP 200 credit union / docket / date / official HTML or PDF URL (no order body) |
 
 Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 
@@ -20,14 +20,15 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 - Listing / search (index only, not the product): https://ncua.gov/news/enforcement-actions/administrative-orders
 - Official CSV (metadata only): https://ncua.gov/sites/default/files/list_csv/administrative-orders.csv
 - Official C&D HTML: `https://ncua.gov/news/enforcement-actions/administrative-orders/{year}/{slug}`
+- Official leftover C&D PDFs: `https://ncua.gov/files/administrative-orders/AO*.pdf`
 - Required seed: Live Life Federal Credit Union, Fraser — `21-0105-ER` — dated 22 Feb 2021 — https://ncua.gov/news/enforcement-actions/administrative-orders/2021/administrative-order-matter-live-life-federal-credit-union
 - License: **17 USC 105**. Attribute NCUA.
 
-Paid body fields: `id`, `docket`, `creditUnion`, `location`, `date`, `title`, `sourceUrl`, `body`. `body` is official HTML-extracted order TEXT. `sourceUrl` is always the ncua.gov administrative-order page.
+Paid body fields: `id`, `docket`, `creditUnion`, `location`, `date`, `title`, `sourceUrl`, `body`. `body` is official HTML- or PDF-extracted order TEXT. `sourceUrl` is the ncua.gov administrative-order page or the official AO PDF.
 
 Leak-tests already passed on the live NCUA hosts: official CSV is metadata; Drupal `?_format=json` → 406; sibling `.json` / `.txt` 404; Federal Register API 0 on `21-0105-ER`.
 
-`data/ncua-orders/` is gitignored. Order bodies get lost on a dead VM — do not harvest the whole catalog here. Full fill waits for apollo. **This PR does not restart apollo and does not deploy.**
+`data/ncua-orders/` is gitignored. Official extractable institution C&D text on ncua.gov tops out at **12** (5 HTML seeds + 7 leftover AO PDFs). Remaining catalog rows are CMP, people/IAP, termination, or image-only scans. Do not pad.
 
 Free `GET /ncua-orders/manifest.json` is credit union / docket / date / sourceUrl only. Needles such as `Marijuana-Related`, `METRC`, and `BSA Expectations` stay out of unpaid responses.
 
@@ -42,17 +43,19 @@ Free `GET /ncua-orders/manifest.json` is credit union / docket / date / sourceUr
 
 Do not set `X402_SKIP_SETTLE` on the standing public unit. Family / basic-auth stay off `ticks.bnm.farm`.
 
-## Apollo collect (do not run on this Cloud VM)
+## Apollo leftover collect
 
-This cloud VM cannot publish `ticks.bnm.farm` and must not restart `idaho-ticks-x402`. Live `/ncua-orders` stays **404** until a later live-apply. Do not collect on apollo from this PR.
+Build + restart **only** `idaho-ticks-x402.service`. Do not touch hay data files.
 
 ```bash
-# on apollo later — not this Cloud VM, not this PR
 cd ~/projects/mcp-proxy
 npm run build
 export NCUA_ORDERS_DIR=$HOME/projects/mcp-proxy/data/ncua-orders
 NCUA_ORDERS_LIMIT=24 NCUA_ORDERS_MAX_FETCH=36 npm run collect:ncua-orders
+systemctl --user restart idaho-ticks-x402.service
 ```
+
+Leftover collect on apollo (2026-08-26): snapshot **cardCount 12**, asOf **2022-11-29**, fetchedAt **2026-08-26T15:32:11.454Z**. Official extractable institution C&D text tops out at 12. Price still $0.02 / $0.05. No new SKU.
 
 ## Local smoke (cloud VM / laptop)
 
