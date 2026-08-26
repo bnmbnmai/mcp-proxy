@@ -6,19 +6,26 @@ import { fileURLToPath } from "node:url";
 import { readFileSync as readFs } from "node:fs";
 import {
   CARD_FIELDS,
+  DEC_2024_MEETING_URL,
   DOCKET,
+  FIRST_SLICE_MEETING_URL,
   FR_NOTICE_URL,
   LICENSE,
   MEETING_URL,
+  MEETING_URLS,
+  OCT_2024_MEETING_URL,
+  YEAR_MATERIALS_URLS,
   buildPcacManifest,
   collectPcac,
   isCombinedSponsorPack,
   isPerSubstanceMemoTitle,
   isRealPcacBody,
   mediaIdFromUrl,
+  meetingLabelFromHtml,
   officialFdaMediaUrl,
   parseListingHtml,
   parsePcacText,
+  parseYearMaterialsHtml,
   stripNominatorPacks,
 } from "./pcac.js";
 
@@ -53,8 +60,52 @@ async function main(): Promise<void> {
     "https://www.fda.gov/media/193344/download",
   );
   assert.ok(MEETING_URL.includes("pharmacy-compounding-advisory-committee"));
+  assert.ok(FIRST_SLICE_MEETING_URL.includes("july-23-24-2026"), "old path stays the first-slice teaser");
+  assert.ok(
+    YEAR_MATERIALS_URLS.some((u) => u.includes("2024-meeting-materials")),
+    "live collect must walk official year-materials tables, not only the July 2026 meeting",
+  );
+  assert.ok(YEAR_MATERIALS_URLS.some((u) => u.includes("2026-meeting-materials")));
+  assert.ok(MEETING_URLS.includes(OCT_2024_MEETING_URL));
+  assert.ok(MEETING_URLS.includes(DEC_2024_MEETING_URL));
+  const walkerSrc = readFs(join(dirname(fileURLToPath(import.meta.url)), "../src/pcac.ts"), "utf-8");
+  assert.match(walkerSrc, /PCAC_LIMIT", "24"/);
+  assert.match(walkerSrc, /PCAC_MAX_FETCH", "36"/);
   assert.ok(FR_NOTICE_URL.includes("2026-07361"));
   assert.equal(DOCKET, "FDA-2025-N-6895");
+
+  const yearListed = parseYearMaterialsHtml(readFx("year-2024-excerpt.html"));
+  assert.ok(yearListed.includes(OCT_2024_MEETING_URL), "2024 year table lists the October meeting");
+  assert.ok(yearListed.includes(DEC_2024_MEETING_URL), "2024 year table lists the December meeting");
+
+  const octListed = parseListingHtml(readFx("listing-oct-2024-excerpt.html"));
+  assert.equal(meetingLabelFromHtml(readFx("listing-oct-2024-excerpt.html")), "October 29, 2024");
+  assert.ok(octListed.some((r) => r.mediaId === "182086" && r.substance === "L-Theanine"));
+  assert.ok(octListed.some((r) => r.mediaId === "182087" && /Ibutamoren Mesylate/i.test(r.substance)));
+  assert.ok(octListed.some((r) => r.mediaId === "182088" && r.substance === "Ipamorelin"));
+  assert.ok(octListed.some((r) => r.mediaId === "182089" && r.substance === "Kisspeptin-10"));
+  assert.ok(octListed.some((r) => r.mediaId === "182090" && /Hydroxyprogesterone/i.test(r.substance)));
+  assert.ok(!octListed.some((r) => r.mediaId === "182085"), "October numbered intro stays out");
+  assert.ok(!octListed.some((r) => r.mediaId === "182200"), "October presentations stay out");
+  assert.ok(octListed.every((r) => r.meeting === "October 29, 2024"));
+  assert.equal(
+    octListed.find((r) => r.mediaId === "182086")?.sourceUrl,
+    "https://www.fda.gov/media/182086/download",
+  );
+
+  const decListed = parseListingHtml(readFx("listing-dec-2024-excerpt.html"));
+  assert.ok(decListed.some((r) => r.mediaId === "183584" && r.substance === "AOD-9604"));
+  assert.ok(decListed.some((r) => r.mediaId === "183819" && r.substance === "CJC-1295"));
+  assert.ok(decListed.some((r) => r.mediaId === "183820" && /Thymosin Alpha-1/i.test(r.substance)));
+  assert.ok(!decListed.some((r) => r.mediaId === "183583"), "December intro stays out");
+  assert.ok(!decListed.some((r) => r.mediaId === "183900"), "waiver stays out");
+  assert.ok(decListed.every((r) => r.meeting === "December 4, 2024"));
+
+  const grown = [...listed, ...octListed, ...decListed];
+  assert.ok(grown.length >= 15, `official year+meeting walk lists past first-slice 7, got ${grown.length}`);
+  assert.ok(isPerSubstanceMemoTitle("FDA Briefing Document-2- L-Theanine"));
+  assert.ok(isPerSubstanceMemoTitle("FDA Briefing Document for AOD-9604 Related Bulk Drug Substances"));
+  assert.equal(isPerSubstanceMemoTitle("FDA Briefing Document-1- Introduction"), false);
 
   const emiText = parsePcacText(readFx("193344.txt"), {
     sourceUrl: emideltide!.sourceUrl,
@@ -146,19 +197,31 @@ async function main(): Promise<void> {
   const prevDir = process.env.PCAC_DIR;
   process.env.PCAC_DIR = cache;
   try {
-    const snap = await collectPcac({ htmlDir: fixtures, limit: 10, pauseMs: 0 });
+    const snap = await collectPcac({ htmlDir: fixtures, limit: 24, pauseMs: 0 });
     assert.equal(snap.status, "ok");
-    assert.ok(snap.cards.length >= 5, "fixture collect extracts five official FDA memo bodies");
+    assert.ok((snap.listedCount ?? 0) >= 15, `fixture collect lists past first-slice 7, got ${snap.listedCount}`);
+    assert.ok(snap.cards.length >= 8, `fixture collect extracts past live 7 official bodies, got ${snap.cards.length}`);
     assert.ok(snap.cards.some((c) => c.mediaId === "193344" && isRealPcacBody(c.body)));
     assert.ok(snap.cards.some((c) => c.mediaId === "193343" && isRealPcacBody(c.body)));
     assert.ok(snap.cards.some((c) => c.mediaId === "193346" && isRealPcacBody(c.body)));
     assert.ok(snap.cards.some((c) => c.mediaId === "193347" && isRealPcacBody(c.body)));
     assert.ok(snap.cards.some((c) => c.mediaId === "193348" && isRealPcacBody(c.body)));
+    assert.ok(snap.cards.some((c) => c.mediaId === "182086" && c.meeting === "October 29, 2024"));
+    assert.ok(snap.cards.some((c) => c.mediaId === "183584" && c.substance === "AOD-9604"));
+    assert.ok(snap.cards.some((c) => c.mediaId === "183819" && c.substance === "CJC-1295"));
     assert.ok(snap.cards.every((c) => isRealPcacBody(c.body)));
     assert.ok(!snap.cards.some((c) => c.mediaId === "193342"), "skip combined intro pack");
     assert.ok(!snap.cards.some((c) => c.mediaId === "193345"), "do not harvest the whole docket / missing local body");
     assert.ok(snap.cards.every((c) => officialFdaMediaUrl(c.sourceUrl)));
     assert.ok(snap.cards.every((c) => !/archive\.org|govinfo\.gov|regulations\.gov/i.test(c.sourceUrl)));
+    const grownManifest = buildPcacManifest(snap);
+    assert.ok((grownManifest.cardCount as number) >= 8);
+    assert.ok(
+      (grownManifest.cards as { mediaId: string; meeting: string }[]).some(
+        (c) => c.mediaId === "182086" && c.meeting === "October 29, 2024",
+      ),
+    );
+    assert.ok(!JSON.stringify(grownManifest).includes("weighs against"), "free index stays substance/date/meeting/mediaId/sourceUrl");
 
     writeFileSync(join(cache, "snapshot.json"), JSON.stringify(snap));
     const merged = await collectPcac({ htmlDir: fixtures, limit: 1, pauseMs: 0 });
