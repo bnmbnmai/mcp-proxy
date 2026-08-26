@@ -1,6 +1,8 @@
 /**
  * UK CMA CA98 infringement-decision TEXT door.
  * Official decision PDFs from assets.publishing.service.gov.uk only.
+ * First-slice miss: only the financial-services case page plus 5 seeds.
+ * Official leftover catalog is the CMA cases finder (CA98 infringement Chapter I/II).
  * Does not invent decision text. Institution/company only. Not people. Not the press teaser.
  * Not ICO /ico-mpn. Not Superfund /superfund-rods. Live public SKU. Listed on well-known / OpenAPI / llms.txt / shop catalog.
  */
@@ -18,6 +20,15 @@ export const PRODUCT_ID = "cma-ca98-infringement-decision-bodies";
 export const PRODUCT_NAME = "UK CMA CA98 infringement-decision text";
 
 export const LISTING_URL = "https://www.gov.uk/cma-cases/financial-services-sector-suspected-anti-competitive-practices";
+/** First-slice teaser: one case page. Official catalog continues on the CMA cases finder. */
+export const FIRST_SLICE_LISTING_URL = LISTING_URL;
+export const CASES_INDEX_URL =
+  "https://www.gov.uk/cma-cases?case_type%5B%5D=ca98-and-civil-cartels&outcome_type%5B%5D=ca98-infringement-chapter-i&outcome_type%5B%5D=ca98-infringement-chapter-ii";
+export const CASE_PATH_RE = /^\/cma-cases\/[a-z0-9][a-z0-9-]{2,200}$/i;
+export const DECISION_PDF_RE =
+  /infringement|non[-_ ]?confidential|non[-_ ]?confi|non[-_ ]?conf|CA98|chapter [i12]|decision/i;
+export const SKIP_PDF_RE =
+  /\bsummary\b|penalty notice|judgment|judgement|commitments?|statement of objections|notice of intention|case closure|annexes\b/i;
 export const PDF_HOST = "assets.publishing.service.gov.uk";
 export const PDF_ORIGIN = "https://assets.publishing.service.gov.uk";
 export const MEDIA_RE = /\/media\/([0-9a-f]+)\/([^/?#]+\.pdf)/i;
@@ -178,6 +189,11 @@ export function isoDate(raw: string | null | undefined): string | null {
   if (!raw) return null;
   const iso = raw.match(/(\d{4})-(\d{2})-(\d{2})/);
   if (iso) return `${iso[1]}-${iso[2]}-${iso[3]}`;
+  const ukDot = raw.match(/\b(\d{1,2})\.(\d{1,2})\.(\d{2,4})\b/);
+  if (ukDot) {
+    const yy = ukDot[3].length === 2 ? (Number(ukDot[3]) >= 70 ? `19${ukDot[3]}` : `20${ukDot[3]}`) : ukDot[3];
+    return `${yy}-${ukDot[2].padStart(2, "0")}-${ukDot[1].padStart(2, "0")}`;
+  }
   const us = raw.match(/\b(\d{1,2})\/(\d{1,2})\/(\d{4})\b/);
   if (us) return `${us[3]}-${us[1].padStart(2, "0")}-${us[2].padStart(2, "0")}`;
   const named = raw.match(
@@ -262,7 +278,13 @@ export function isPeopleRow(row: CmaCa98ListingRow): boolean {
   const name = (row.institution ?? "").trim();
   if (!name) return true;
   if (ENTITY_RE.test(name)) return false;
-  return PERSON_NAME_RE.test(name);
+  const cleaned = name
+    .replace(/\s+CA98\b[\s\S]*$/i, "")
+    .replace(/\s+Competition Act 1998[\s\S]*$/i, "")
+    .replace(/\s+infringement[\s\S]*$/i, "")
+    .replace(/\s+non-confidential[\s\S]*$/i, "")
+    .trim();
+  return PERSON_NAME_RE.test(name) || PERSON_NAME_RE.test(cleaned);
 }
 
 export function isPressTeaserRow(row: CmaCa98ListingRow): boolean {
@@ -276,32 +298,41 @@ export function isIcoMpnRow(row: CmaCa98ListingRow): boolean {
   return /ico\.org\.uk|monetary penalty notice|\bico-mpn\b|ICO MPN/i.test(kind);
 }
 
+export function isDecisionPdfBlob(text: string): boolean {
+  if (SKIP_PDF_RE.test(text)) return false;
+  return DECISION_PDF_RE.test(text);
+}
+
 export function isInstitutionOrderRow(row: CmaCa98ListingRow): boolean {
   if (isPeopleRow(row)) return false;
-  if (!ENTITY_RE.test((row.institution ?? "").trim())) return false;
   if (isPressTeaserRow(row)) return false;
   if (isIcoMpnRow(row)) return false;
   if (!officialCmaCa98PdfUrl(row.sourceUrl ?? "")) return false;
-  const kind = `${row.title ?? ""} ${row.type ?? ""} ${row.sourceUrl ?? ""} ${row.docket ?? ""}`;
-  if (!/CA98|Competition Act 1998|infringement decision|Chapter I|Chapter II|Non-confidential/i.test(kind) && !MEDIA_RE.test(kind)) {
-    return false;
-  }
+  const kind = `${row.title ?? ""} ${row.type ?? ""} ${row.sourceUrl ?? ""} ${row.docket ?? ""} ${row.pdfId ?? ""}`;
+  if (!isDecisionPdfBlob(kind) && !MEDIA_RE.test(kind)) return false;
   return true;
+}
+
+function listingRank(row: CmaCa98Listing): number {
+  let n = 0;
+  if (normalizeDocket(row.docket)) n += 2;
+  if (row.date) n += 1;
+  if (ENTITY_RE.test(row.institution)) n += 2;
+  if (/infringement decision/i.test(row.title)) n += 1;
+  return n;
 }
 
 export function parseListingRows(rows: CmaCa98ListingRow[]): CmaCa98Listing[] {
   const found: CmaCa98Listing[] = [];
-  const seen = new Set<string>();
+  const seen = new Map<string, number>();
   for (const row of rows) {
     if (!isInstitutionOrderRow(row)) continue;
     const sourceUrl = officialCmaCa98PdfUrl(row.sourceUrl ?? "");
     const pdfId = (row.pdfId ?? "").trim() || pdfIdFromUrl(sourceUrl ?? "") || "";
     const docket = normalizeDocket(row.docket) || slugFromUrl(sourceUrl ?? "");
     if (!docket || !sourceUrl || !pdfId) continue;
-    if (seen.has(docket)) continue;
-    seen.add(docket);
     const title = (row.title ?? "").trim();
-    found.push({
+    const next: CmaCa98Listing = {
       id: normalizeDocket(row.docket) || docket,
       docket,
       institution: (row.institution ?? "").trim(),
@@ -309,7 +340,14 @@ export function parseListingRows(rows: CmaCa98ListingRow[]): CmaCa98Listing[] {
       title: title || "CA98 infringement decision",
       sourceUrl,
       pdfId,
-    });
+    };
+    const prevIdx = seen.get(sourceUrl);
+    if (prevIdx !== undefined) {
+      if (listingRank(next) > listingRank(found[prevIdx])) found[prevIdx] = next;
+      continue;
+    }
+    seen.set(sourceUrl, found.length);
+    found.push(next);
   }
   found.sort((a, b) => `${b.date ?? ""}${b.docket}`.localeCompare(`${a.date ?? ""}${a.docket}`));
   return found;
@@ -320,6 +358,8 @@ export function docketFromText(text: string): string | null {
   if (ce) return `CE-${ce[1]}-${ce[2]}`;
   const citi = text.match(/\b50601\b/) && /citi|deutsche/i.test(text);
   if (citi) return "50601-citi-db";
+  const labeled = text.match(/\bCase[_\s-]+(\d{4,5}(?:-\d+)?)/i);
+  if (labeled) return labeled[1];
   const pair = text.match(/\b(50\d{3}-\d)\b/);
   if (pair) return pair[1];
   const bare = text.match(/\b(50\d{3})\b/);
@@ -327,22 +367,77 @@ export function docketFromText(text: string): string | null {
   return normalizeDocket(text);
 }
 
-export function parseListingHtml(html: string): CmaCa98Listing[] {
+export function caseTitleFromHtml(html: string): string {
+  const h1 = html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i);
+  return h1 ? stripTags(h1[1]) : "";
+}
+
+export function parseCasesIndexHtml(html: string): string[] {
+  const found: string[] = [];
+  const seen = new Set<string>();
+  for (const m of html.matchAll(/href="([^"]+)"/gi)) {
+    let href = m[1].replace(/&amp;/g, "&");
+    try {
+      const parsed = new URL(href, "https://www.gov.uk");
+      const host = parsed.hostname.toLowerCase();
+      if (host !== "www.gov.uk" && host !== "gov.uk") continue;
+      const path = parsed.pathname.replace(/\/+$/, "") || "/";
+      if (!CASE_PATH_RE.test(path)) continue;
+      if (/email-signup/i.test(path)) continue;
+      const abs = `https://www.gov.uk${path}`;
+      if (seen.has(abs)) continue;
+      seen.add(abs);
+      found.push(abs);
+    } catch {
+      /* skip */
+    }
+  }
+  return found;
+}
+
+export function parseCasesIndexPageUrls(html: string, currentUrl: string): string[] {
+  const found: string[] = [];
+  const seen = new Set<string>([currentUrl]);
+  for (const m of html.matchAll(/href="([^"]+page=\d+[^"]*)"/gi)) {
+    const href = m[1].replace(/&amp;/g, "&");
+    try {
+      const parsed = new URL(href, currentUrl);
+      if (!/\/cma-cases/i.test(parsed.pathname)) continue;
+      const abs = parsed.toString();
+      if (seen.has(abs)) continue;
+      seen.add(abs);
+      found.push(abs);
+    } catch {
+      /* skip */
+    }
+  }
+  return found;
+}
+
+export function parseListingHtml(
+  html: string,
+  pageMeta?: { institution?: string; title?: string },
+): CmaCa98Listing[] {
   const rows: CmaCa98ListingRow[] = [];
+  const pageTitle = (pageMeta?.institution || pageMeta?.title || caseTitleFromHtml(html)).trim();
   const links = [
     ...html.matchAll(
-      /(?:(\d{2}\/\d{2}\/\d{4}|\d{4}-\d{2}-\d{2})[\s\S]{0,240}?)?<a[^>]+href="([^"]+\.pdf[^"]*)"[^>]*>([\s\S]*?)<\/a>/gi,
+      /(?:(\d{1,2}\.\d{1,2}\.\d{2,4}|\d{2}\/\d{2}\/\d{4}|\d{4}-\d{2}-\d{2})[\s\S]{0,240}?)?<a[^>]+href="([^"]+\.pdf[^"]*)"[^>]*>([\s\S]*?)<\/a>([\s\S]{0,80})/gi,
     ),
   ];
   for (const m of links) {
     const href = m[2].startsWith("http") ? m[2] : `${PDF_ORIGIN}${m[2].startsWith("/") ? "" : "/"}${m[2]}`;
     if (!officialCmaCa98PdfUrl(href)) continue;
     const title = stripTags(m[3]);
-    const docket = docketFromText(title) || slugFromUrl(href);
+    const nearby = stripTags(m[4] ?? "");
+    const blob = `${title} ${nearby} ${href} ${pdfIdFromUrl(href) ?? ""}`;
+    if (!isDecisionPdfBlob(blob)) continue;
+    const docket = docketFromText(`${title} ${pageTitle} ${href}`) || slugFromUrl(href);
+    const institution = ENTITY_RE.test(title) ? title : pageTitle || title;
     rows.push({
-      institution: title,
-      date: m[1] || undefined,
-      title: /infringement|CA98|decision/i.test(title) ? "CA98 infringement decision" : title,
+      institution,
+      date: m[1] || nearby || undefined,
+      title: /infringement|CA98|decision/i.test(`${title} ${href}`) ? "CA98 infringement decision" : title,
       sourceUrl: href,
       pdfId: pdfIdFromUrl(href) ?? "",
       docket,
@@ -393,8 +488,7 @@ export function isRealCmaCa98Body(text: string): boolean {
   const cma = /Competition and Markets Authority|\bCMA\b/i.test(text);
   const act = /Competition Act 1998/i.test(text);
   const chapter = /Chapter I prohibition|Chapter II prohibition|section 2\(1\)|section 18/i.test(text);
-  const crown = /Crown copyright|Open Government Licence/i.test(text);
-  return cma && act && chapter && crown;
+  return cma && act && chapter;
 }
 
 export function parseCmaCa98Text(
@@ -436,7 +530,7 @@ export function emptyCmaCa98Snapshot(reason: string): CmaCa98Snapshot {
     asOf: null,
     license: LICENSE,
     attribution: ATTRIBUTION,
-    sources: { listing: LISTING_URL, pdfHost: `${PDF_ORIGIN}/` },
+    sources: { listing: CASES_INDEX_URL, pdfHost: `${PDF_ORIGIN}/` },
     cards: [],
   };
 }
@@ -445,9 +539,16 @@ export function assembleCmaCa98Snapshot(
   cards: CmaCa98Card[],
   fetchedAt = new Date().toISOString(),
 ): CmaCa98Snapshot {
-  const withBody = cards
-    .filter((c) => isRealCmaCa98Body(c.body))
-    .sort((a, b) => `${b.date ?? ""}${b.docket}`.localeCompare(`${a.date ?? ""}${a.docket}`));
+  const unique = new Map<string, CmaCa98Card>();
+  for (const card of cards) {
+    if (!isRealCmaCa98Body(card.body)) continue;
+    const key = officialCmaCa98PdfUrl(card.sourceUrl) || card.sourceUrl || card.id;
+    const prev = unique.get(key);
+    if (!prev || listingRank(card) > listingRank(prev)) unique.set(key, card);
+  }
+  const withBody = [...unique.values()].sort((a, b) =>
+    `${b.date ?? ""}${b.docket}`.localeCompare(`${a.date ?? ""}${a.docket}`),
+  );
   const asOf = withBody.map((c) => c.date).filter((d): d is string => Boolean(d)).sort().at(-1) ?? null;
   return {
     ok: true,
@@ -458,7 +559,7 @@ export function assembleCmaCa98Snapshot(
     asOf,
     license: LICENSE,
     attribution: ATTRIBUTION,
-    sources: { listing: LISTING_URL, pdfHost: `${PDF_ORIGIN}/` },
+    sources: { listing: CASES_INDEX_URL, pdfHost: `${PDF_ORIGIN}/` },
     cards: withBody,
   };
 }
@@ -498,10 +599,23 @@ export async function fetchCmaCa98Bytes(url: string): Promise<Uint8Array> {
   return bytes;
 }
 
+function pause(ms: number): Promise<void> {
+  return new Promise((r) => setTimeout(r, ms));
+}
+
 export async function fetchCmaCa98Text(url: string): Promise<string> {
-  const res = await fetch(url, { headers: { "User-Agent": HTTP_UA, Accept: "text/html,application/xhtml+xml" } });
-  if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
-  return await res.text();
+  let last: Error | null = null;
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    try {
+      const res = await fetch(url, { headers: { "User-Agent": HTTP_UA, Accept: "text/html,application/xhtml+xml" } });
+      if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
+      return await res.text();
+    } catch (err) {
+      last = err instanceof Error ? err : new Error(String(err));
+      await pause(400 * (attempt + 1));
+    }
+  }
+  throw last ?? new Error(`${url} fetch failed`);
 }
 
 function digitalPdfText(pdfPath: string): string {
@@ -520,13 +634,27 @@ function listingDir(): string {
 }
 
 function firstSliceLimit(): number {
-  const n = Number(env("CMA_CA98_LIMIT", "5"));
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 5;
+  const raw = env("CMA_CA98_LIMIT", "24");
+  if (raw === "0") return 0;
+  const n = Number(raw);
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 24;
 }
 
 function maxFetchLimit(): number {
-  const n = Number(env("CMA_CA98_MAX_FETCH", "8"));
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 8;
+  const raw = env("CMA_CA98_MAX_FETCH", "36");
+  if (raw === "0") return 0;
+  const n = Number(raw);
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 36;
+}
+
+function maxIndexPages(): number {
+  const n = Number(env("CMA_CA98_MAX_INDEX_PAGES", "3"));
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 3;
+}
+
+function maxCasePages(): number {
+  const n = Number(env("CMA_CA98_MAX_CASES", "80"));
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 80;
 }
 
 function readNamedFile(dir: string, names: string[]): string | null {
@@ -538,30 +666,87 @@ function readNamedFile(dir: string, names: string[]): string | null {
   return null;
 }
 
-function mergeOfficialListings(listed: CmaCa98Listing[], seeds: CmaCa98Listing[]): CmaCa98Listing[] {
-  const seen = new Set<string>();
-  const out: CmaCa98Listing[] = [];
+function mergeOfficialListings(listed: CmaCa98Listing[], seeds: CmaCa98Listing[] = []): CmaCa98Listing[] {
+  const byUrl = new Map<string, CmaCa98Listing>();
   for (const row of [...listed, ...seeds]) {
-    if (!row.id || seen.has(row.id)) continue;
-    seen.add(row.id);
-    out.push(row);
+    if (!row.sourceUrl) continue;
+    const prev = byUrl.get(row.sourceUrl);
+    if (!prev || listingRank(row) > listingRank(prev)) byUrl.set(row.sourceUrl, row);
   }
-  return out;
+  return [...byUrl.values()].sort((a, b) => `${b.date ?? ""}${b.docket}`.localeCompare(`${a.date ?? ""}${a.docket}`));
 }
 
-async function loadOfficialListings(dir: string): Promise<{ listed: CmaCa98Listing[]; listedCount: number }> {
+const FIXTURE_LISTING_FILES = [
+  "listing-excerpt.html",
+  "leftover-rangers-excerpt.html",
+  "listing.html",
+];
+
+async function walkOfficialCasePages(
+  caseUrls: string[],
+  pauseMs: number,
+): Promise<CmaCa98Listing[]> {
+  const listed: CmaCa98Listing[] = [];
+  const cap = maxCasePages();
+  for (const url of caseUrls.slice(0, cap)) {
+    try {
+      if (pauseMs) await pause(pauseMs);
+      const html = await fetchCmaCa98Text(url);
+      listed.push(...parseListingHtml(html, { institution: caseTitleFromHtml(html) }));
+    } catch {
+      /* one official case page missed; keep the others */
+    }
+  }
+  return listed;
+}
+
+async function walkOfficialIndex(pauseMs: number): Promise<string[]> {
+  const caseUrls: string[] = [];
+  const seen = new Set<string>();
+  const indexUrls = [CASES_INDEX_URL];
+  const pageCap = maxIndexPages();
+  for (let i = 0; i < indexUrls.length && i < pageCap; i += 1) {
+    const url = indexUrls[i];
+    try {
+      if (pauseMs && i > 0) await pause(pauseMs);
+      const html = await fetchCmaCa98Text(url);
+      for (const caseUrl of parseCasesIndexHtml(html)) {
+        if (seen.has(caseUrl)) continue;
+        seen.add(caseUrl);
+        caseUrls.push(caseUrl);
+      }
+      for (const next of parseCasesIndexPageUrls(html, url)) {
+        if (!indexUrls.includes(next) && indexUrls.length < pageCap) indexUrls.push(next);
+      }
+    } catch {
+      /* one official index page missed; keep the others */
+    }
+  }
+  if (!seen.has(FIRST_SLICE_LISTING_URL)) caseUrls.unshift(FIRST_SLICE_LISTING_URL);
+  return caseUrls;
+}
+
+async function loadOfficialListings(
+  dir: string,
+  pauseMs = 0,
+): Promise<{ listed: CmaCa98Listing[]; listedCount: number }> {
   if (dir) {
+    const listed: CmaCa98Listing[] = [];
     const json = readNamedFile(dir, ["listing-excerpt.json", "listing.json"]);
     if (json) {
       const rows = JSON.parse(json) as CmaCa98ListingRow[];
-      const listed = Array.isArray(rows) ? parseListingRows(rows) : [];
-      return { listed, listedCount: listed.length };
+      if (Array.isArray(rows)) listed.push(...parseListingRows(rows));
     }
-    const html = readNamedFile(dir, ["listing-excerpt.html", "listing.html"]);
-    return { listed: html ? parseListingHtml(html) : [], listedCount: html ? parseListingHtml(html).length : 0 };
+    for (const name of FIXTURE_LISTING_FILES) {
+      const html = readNamedFile(dir, [name]);
+      if (html) listed.push(...parseListingHtml(html, { institution: caseTitleFromHtml(html) }));
+    }
+    const merged = mergeOfficialListings(listed, SEED_LISTINGS);
+    return { listed: merged, listedCount: merged.length };
   }
   try {
-    const listed = parseListingHtml(await fetchCmaCa98Text(LISTING_URL));
+    const caseUrls = await walkOfficialIndex(pauseMs);
+    const listed = await walkOfficialCasePages(caseUrls, pauseMs);
     const merged = mergeOfficialListings(listed, SEED_LISTINGS);
     if (merged.length > 0) return { listed: merged, listedCount: merged.length };
   } catch {
@@ -577,14 +762,18 @@ export async function collectCmaCa98(opts?: {
   maxFetch?: number;
 }): Promise<CmaCa98Snapshot> {
   const dir = opts?.jsonDir ?? listingDir();
-  const { listed: allListed, listedCount } = await loadOfficialListings(dir);
+  const pauseMs = opts?.pauseMs ?? (dir ? 0 : 250);
+  const { listed: allListed, listedCount } = await loadOfficialListings(dir, pauseMs);
   const target = opts?.limit ?? firstSliceLimit();
   const fetchCap = opts?.maxFetch ?? (dir ? 0 : maxFetchLimit());
   const cacheDir = cmaCa98Dir();
   mkdirSync(cacheDir, { recursive: true });
-  const prior = new Map<string, CmaCa98Card>();
+  const priorById = new Map<string, CmaCa98Card>();
+  const priorByUrl = new Map<string, CmaCa98Card>();
   for (const card of readCmaCa98Snapshot()?.cards ?? []) {
-    if (isRealCmaCa98Body(card.body)) prior.set(card.id, card);
+    if (!isRealCmaCa98Body(card.body)) continue;
+    priorById.set(card.id, card);
+    priorByUrl.set(officialCmaCa98PdfUrl(card.sourceUrl) || card.sourceUrl, card);
   }
   const cards: CmaCa98Card[] = [];
   const seen = new Set<string>();
@@ -594,14 +783,15 @@ export async function collectCmaCa98(opts?: {
   let addedThisRun = 0;
   for (const row of allListed) {
     if (target > 0 && addedThisRun >= target) break;
-    const cached = prior.get(row.id);
+    const cached = priorByUrl.get(row.sourceUrl) || priorById.get(row.id);
     if (cached) {
-      cards.push(cached);
-      seen.add(row.id);
+      cards.push({ ...cached, id: row.id, docket: row.docket, institution: row.institution || cached.institution, date: row.date ?? cached.date, title: row.title || cached.title });
+      seen.add(row.sourceUrl);
       reused += 1;
       continue;
     }
     if (fetchCap > 0 && fetchedPdfs >= fetchCap) break;
+    if (!dir && pauseMs) await pause(pauseMs);
     try {
       const localText = readNamedFile(dir, [
         `${row.docket}.txt`,
@@ -629,14 +819,14 @@ export async function collectCmaCa98(opts?: {
         continue;
       }
       cards.push(parsed);
-      seen.add(row.id);
+      seen.add(row.sourceUrl);
       addedThisRun += 1;
     } catch {
       skippedNoText += 1;
     }
   }
-  for (const [id, card] of prior) {
-    if (!seen.has(id)) cards.push(card);
+  for (const [url, card] of priorByUrl) {
+    if (!seen.has(url)) cards.push(card);
   }
   const snap = { ...assembleCmaCa98Snapshot(cards), listedCount, fetchedPdfs, skippedNoText, reused, addedThisRun };
   writeCmaCa98Snapshot(snap);
@@ -687,7 +877,7 @@ export function buildCmaCa98Manifest(snap: CmaCa98Snapshot | null): Record<strin
       sourceUrl: c.sourceUrl,
     })),
     schema: { fields: ["id", "institution", "docket", "date", "sourceUrl"] },
-    sources: snap?.sources ?? { listing: LISTING_URL, pdfHost: `${PDF_ORIGIN}/` },
+    sources: snap?.sources ?? { listing: CASES_INDEX_URL, pdfHost: `${PDF_ORIGIN}/` },
   };
 }
 

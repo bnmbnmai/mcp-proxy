@@ -1,0 +1,49 @@
+{
+  "before": {
+    "cardCount": 9,
+    "listedCount": 9,
+    "asOf": "2025-02-21",
+    "fetchedAt": "2026-08-26T13:47:11.702Z"
+  },
+  "after": {
+    "cardCount": 32,
+    "listedCount": 40,
+    "asOf": "2025-07-16",
+    "fetchedAt": "2026-08-26T17:04:29.283Z",
+    "addedThisRun": 24,
+    "fetchedPdfs": 27,
+    "skippedNoText": 4,
+    "reused": 7
+  },
+  "live": {
+    "manifest": "https://ticks.bnm.farm/cma-ca98/manifest.json",
+    "manifestStatus": 200,
+    "manifestCardCount": 32,
+    "searchQ": "Rangers",
+    "searchHits": ["50930"],
+    "newRows": [
+      "Citi-Morgan-Stanley-Non-confidential-decision",
+      "Final-decision",
+      "50930",
+      "50415",
+      "50565-6",
+      "50565-4",
+      "50565-2"
+    ],
+    "unpaidCma": 402,
+    "unpaidId": 402,
+    "unpaidIdAtomic": "20000",
+    "pageAtomic": "50000",
+    "wellKnownHasCma": true,
+    "mcpHasCma": true,
+    "fincenCardCount": 9,
+    "occCdCardCount": 10
+  },
+  "prs": {
+    "walker": {
+      "url": "https://github.com/bnmbnmai/mcp-proxy/pull/144",
+      "state": "open draft"
+    }
+  },
+  "blockers": []
+}
