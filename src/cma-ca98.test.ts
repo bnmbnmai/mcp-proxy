@@ -7,15 +7,21 @@ import { readFileSync as readFs } from "node:fs";
 import {
   ATTRIBUTION,
   CARD_FIELDS,
+  CASES_INDEX_URL,
+  FIRST_SLICE_LISTING_URL,
   LICENSE,
   LISTING_URL,
   SEED_LISTINGS,
   buildCmaCa98Manifest,
+  caseTitleFromHtml,
   collectCmaCa98,
+  isDecisionPdfBlob,
   isInstitutionOrderRow,
   isPeopleRow,
   isRealCmaCa98Body,
   officialCmaCa98PdfUrl,
+  parseCasesIndexHtml,
+  parseCasesIndexPageUrls,
   parseListingHtml,
   parseListingRows,
   parseCmaCa98Text,
@@ -52,8 +58,16 @@ async function main(): Promise<void> {
   assert.equal(officialCmaCa98PdfUrl("https://semspub.epa.gov/work/05/711427.pdf"), null);
   assert.equal(officialCmaCa98PdfUrl("https://ico.org.uk/media/action-weve-taken/mpns/4020436/clearview-ai-inc-mpn.pdf"), null);
   assert.ok(LISTING_URL.includes("gov.uk/cma-cases"));
+  assert.equal(FIRST_SLICE_LISTING_URL, LISTING_URL);
+  assert.ok(CASES_INDEX_URL.includes("ca98-and-civil-cartels"));
+  assert.ok(CASES_INDEX_URL.includes("ca98-infringement-chapter-i"));
   assert.equal(SEED_LISTINGS.length, 5);
   assert.ok(SEED_LISTINGS.some((r) => r.docket === "50601-citi-db"));
+  const walkerSrc = readFs(join(dirname(fileURLToPath(import.meta.url)), "../src/cma-ca98.ts"), "utf-8");
+  assert.match(walkerSrc, /CMA_CA98_LIMIT", "24"/);
+  assert.match(walkerSrc, /CMA_CA98_MAX_FETCH", "36"/);
+  assert.match(walkerSrc, /walkOfficialIndex/);
+  assert.match(walkerSrc, /walkOfficialCasePages/);
 
   const htmlListed = parseListingHtml(readFx("listing-excerpt.html"));
   assert.ok(htmlListed.some((r) => r.id === "50601-citi-db"));
@@ -61,6 +75,30 @@ async function main(): Promise<void> {
   assert.ok(htmlListed.some((r) => /Dar Lighting/i.test(r.institution)));
   assert.ok(!htmlListed.some((r) => /Jane Q Public/i.test(r.institution)));
   assert.ok(!htmlListed.some((r) => /settlement with banks/i.test(r.title)));
+
+  const indexListed = parseCasesIndexHtml(readFx("cases-index-excerpt.html"));
+  assert.ok(indexListed.includes(FIRST_SLICE_LISTING_URL), "official index still lists the first-slice case page");
+  assert.ok(
+    indexListed.some((u) => u.includes("rangers-fc-branded-replica-football-kit")),
+    "official index lists leftover Rangers CA98 case page",
+  );
+  assert.ok(indexListed.some((u) => u.includes("price-comparison-website-use-of-most-favoured-nation")));
+  assert.ok(!indexListed.some((u) => /email-signup/i.test(u)), "index walk skips email signup");
+  const indexPages = parseCasesIndexPageUrls(readFx("cases-index-excerpt.html"), CASES_INDEX_URL);
+  assert.ok(indexPages.some((u) => /page=2/.test(u)), "official index has a leftover page");
+
+  const leftoverHtml = parseListingHtml(readFx("leftover-rangers-excerpt.html"));
+  assert.equal(caseTitleFromHtml(readFx("leftover-rangers-excerpt.html")).includes("Rangers FC"), true);
+  assert.ok(leftoverHtml.some((r) => r.docket === "50930"), "leftover case page lists the Rangers infringement decision");
+  assert.equal(leftoverHtml.find((r) => r.docket === "50930")?.date, "2022-11-25");
+  assert.ok(
+    leftoverHtml.every((r) => officialCmaCa98PdfUrl(r.sourceUrl)),
+    "leftover walk keeps official assets.publishing.service.gov.uk PDFs",
+  );
+  assert.ok(!leftoverHtml.some((r) => /Penalty|Judgment|Summary/i.test(r.pdfId)), "skip penalty / judgment / summary PDFs");
+  assert.equal(isDecisionPdfBlob("Summary of infringement decision"), false);
+  assert.equal(isDecisionPdfBlob("Penalty notice"), false);
+  assert.equal(isDecisionPdfBlob("Non-confidential decision"), true);
 
   const people = rows.find((r) => (r.docket ?? "") === "50601-people");
   assert.ok(people);
@@ -120,6 +158,19 @@ async function main(): Promise<void> {
     assert.equal(card.docket, docket);
     assert.ok(officialCmaCa98PdfUrl(card.sourceUrl));
   }
+
+  const rangers = parseCmaCa98Text(readFx("50930.txt"), {
+    sourceUrl:
+      "https://assets.publishing.service.gov.uk/media/637f41dbd3bf7f153fc0a9ce/Case_50930_-_Infringement_Decision_-_Non-confi_version.pdf",
+    institution: "Anti-competitive behaviour in relation to the pricing of Rangers FC-branded replica football kit",
+    date: "2022-11-25",
+    docket: "50930",
+    title: "CA98 infringement decision",
+  });
+  assert.equal(rangers.docket, "50930");
+  assert.ok(isRealCmaCa98Body(rangers.body), "official leftover Rangers PDF text is this SKU");
+  assert.match(rangers.body, /Rangers FC-branded clothing/i);
+  assert.match(rangers.body, /Chapter I prohibition/i);
 
   const teaser = parseCmaCa98Text(readFx("no-body.txt"), {
     sourceUrl: "https://www.gov.uk/government/news/cma-reaches-settlement-with-banks-in-competition-case",
@@ -194,8 +245,9 @@ async function main(): Promise<void> {
   try {
     const snap = await collectCmaCa98({ jsonDir: fixtures, limit: 10, pauseMs: 0 });
     assert.equal(snap.status, "ok");
-    assert.ok(snap.cards.length >= 5, "fixture collect extracts five official CMA CA98 bodies");
+    assert.ok(snap.cards.length >= 6, "fixture collect extracts first-slice seeds plus leftover official PDF text");
     assert.ok(snap.cards.some((c) => c.docket === "50601-citi-db" && isRealCmaCa98Body(c.body)));
+    assert.ok(snap.cards.some((c) => c.docket === "50930" && isRealCmaCa98Body(c.body)), "leftover Rangers decision is collected");
     assert.ok(snap.cards.every((c) => isRealCmaCa98Body(c.body)));
     assert.ok(!snap.cards.some((c) => c.id === "50601-people"), "skip people");
     assert.ok(!snap.cards.some((c) => c.id === "50601-press"), "skip press teaser");

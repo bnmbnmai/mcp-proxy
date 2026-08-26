@@ -1,0 +1,368 @@
+Decision of the
+Competition and Markets
+Authority
+
+Supply of Rangers FC-branded clothing
+Case 50930
+
+                             27 September 2022
+Contents
+1.   Introduction and next steps ................................................................. 2
+
+2.   Parties and relevant market ................................................................. 4
+     Parties ......................................................................................................................... 4
+     Relevant market .......................................................................................................... 6
+
+3.   The law ................................................................................................ 11
+     Chapter I prohibition .................................................................................................. 11
+     Legal principles for establishing the Chapter I prohibition ......................................... 11
+
+4.   Conduct and legal assessment ......................................................... 22
+     Introduction................................................................................................................ 22
+     Conduct giving rise to the single and continuous infringement .................................. 23
+     Legal assessment ..................................................................................................... 43
+
+5.   Attribution of liability ......................................................................... 54
+     Identification of the appropriate legal entity ............................................................... 54
+     Application to this case .............................................................................................. 55
+
+6.   The CMA’s action ............................................................................... 57
+     The CMA’s decision .................................................................................................. 57
+     Directions .................................................................................................................. 57
+     Financial penalties ..................................................................................................... 57
+     Calculation of the financial penalties ......................................................................... 59
+     Payment of penalty.................................................................................................... 73
+
+
+
+
+                                                                 1
+1.       Introduction and next steps
+1.1      By this decision (the ‘Decision’), the Competition and Markets Authority (‘CMA’)
+         has concluded that the persons listed below (each a ‘Party’, together the ‘Parties’)
+         have infringed the prohibition in section 2(1) (the ‘Chapter I prohibition’) of the
+         Competition Act 1998 (the ‘Act’):
+
+                     (a) Elite Sports Group Limited 1 and its parent company Elite Corporation
+                         Limited 2 (together, ‘Elite’);
+
+                     (b) JD Sports Fashion Plc (‘JD Sports’); 3 and
+
+                     (c) The Rangers Football Club Limited (‘TRFC’) 4 and its parent company
+                         Rangers International Football Club Plc5 (together, ‘Rangers’).
+
+1.2      The CMA finds that between 26 September 2018 and at least 8 July 2019 Elite and
+         JD Sports were parties to a single and continuous infringement (the ‘Single and
+         Continuous Infringement’) to fix retail prices for Rangers-branded clothing
+         products in the UK. The CMA also finds that Rangers participated in the Single and
+         Continuous Infringement, but only insofar as it related to fixing the retail price at
+         which Elite and JD Sports would sell the Rangers 2018 / 2019 season adult short
+         sleeved ‘home’ replica shirt (‘RFC H18 shirt’) at £60 between 26 September 2018
+         and at least 15 November 2018. The Single and Continuous Infringement, as well
+         as each of the agreements and/or concerted practices which constitute it, had as
+         its object the prevention, restriction or distortion of competition.
+
+1.3      Rangers-branded clothing products, including Rangers replica shirts, are important
+         products for Rangers football fans. Elite and JD Sports accounted for the vast
+         majority of retail sales of Rangers-branded clothing products during the period of
+         the relevant conduct.
+
+1.4      The CMA opened an investigation under section 25 of the Act on 15 December
+         2020. 6 Notices requiring the production of documents and information under
+         section 26 of the Act were sent to each of the Parties on launch. During the course
+         of the investigation the CMA also interviewed a number of witnesses, both on a
+
+1 Elite Sports Group Limited (previously known as LBJ Sports Apparel Ltd, until its name was changed to Elite Sports
+
+Group Limited on 24 August 2021) is a limited liability company registered in England and Wales, with Company Number
+07111486.
+2 Elite Corporation Limited is a limited liability company registered in England and Wales, with Company Number
+
+07111804.
+3 JD Sports Fashion Plc is a public limited company registered in England and Wales, with Company Number 01888425.
+
+4 The Rangers Football Club Limited is a limited liability company registered in Scotland, with Company Number
+
+SC425159.
+5 Rangers International Football Club Plc is a public limited company registered in Scotland, with Company Number
+
+SC437060.
+6 The case originally also involved two other parties: Hummel A/S and Greaves Sports Limited. However the
+
+investigation into their activities was closed on administrative priority grounds in December 2021 and May 2022
+respectively.
+
+
+                                                           2
+          voluntary basis and using its compulsory powers. Information and documents were
+          also provided by Elite and JD Sports without recourse to the CMA’s formal powers,
+          as part of their obligation to cooperate under leniency. JD Sports approached the
+          CMA for leniency under the CMA’s leniency policy 7 on 18 December 2020 and was
+          granted Type B leniency on 1 June 2022. 8 Elite approached the CMA for leniency
+          on 2 February 2021 and was granted Type C leniency on 31 May 2022.
+
+1.5       On 7 June 2022, the CMA issued a statement of objections 9 and a draft penalty
+          statement 10 to the Parties.
+
+1.6       On 6 September 2022, the CMA decided to settle the case with each of the
+          Parties, after each of the Parties: 11
+
+                     (a) made a clear and unequivocal admission that it had infringed the
+                         Chapter I prohibition in the terms set out in the statement of
+                         objections; 12
+
+                     (b) confirmed that it had ceased the infringing behaviour and committed
+                         that it would refrain from engaging again in the same or similar
+                         behaviour;
+
+                     (c) accepted that a maximum penalty would be imposed;
+
+                     (d) agreed to cooperate in expediting the process for concluding the
+                         CMA’s investigation; and
+
+                     (e) agreed not to challenge or appeal against the Decision to the
+                         Competition Appeal Tribunal (‘CAT’).
+
+1.7       By this Decision the CMA is imposing financial penalties under section 36 of the
+          Act.
+
+
+
+
+7 Applications for leniency and no-action in cartel cases (OFT1495, adopted by the CMA Board).
+
+8 []
+
+9 In accordance with section 31 of the Act and Rules 5 and 6 of The Competition Act 1998 (Competition and Market
+
+Authority’s Rules) Order 2014, SI 2014/458.
+10 In accordance with section 36(6) of the Act.
+
+11 CMA8, Competition Act 1998: Guidance on the CMA’s investigation procedures in Competition Act 1998 cases, 31
+
+January 2022, paragraphs 14.7 and 14.8.
+12 Including the minor amendments to the statement of objections made by the CMA on 16 August 2022 to reflect limited
+
+representations made as part of the settlement process, as per CMA8, paragraphs 14.14 and 14.15.
+
+
+                                                          3
+2.       Parties and relevant market
+Parties
+
+Elite
+
+2.1      Elite supplies technical kits and sports merchandising to professional clubs. It
+         offers retail management, white label leisurewear 13 and directly supplies the retail
+         sector as well as operating its own retail channels in the UK.
+
+2.2      On 30 March 2018, Elite was appointed by TRFC as exclusive worldwide supplier
+         of official and replica kit for Rangers, 14 and on 11 September 2018 TRFC licensed
+         Elite to deal with the sale of Rangers-branded products. 15 Accordingly, during the
+         period of the Single and Continuous Infringement, Elite manufactured and supplied
+         Rangers-branded products on a retail basis to the public, and on a wholesale basis
+         to retailers.
+
+2.3      During the period of the Single and Continuous Infringement Elite sold Rangers-
+         branded products, which it did initially via the online store Gers Online and
+         subsequently also through bricks-and-mortar stores in Glasgow and Belfast, and
+         was seen as Rangers’ retail partner. 16
+
+2.4      The CMA considers that Elite’s involvement in the Single and Continuous
+         Infringement took place primarily through the following individuals:
+
+                     (a) [Director A] (Elite), []; and
+
+                     (b) [Employee] (Elite), [].
+
+JD Sports
+
+2.5      JD Sports retails branded sports and casual wear and footwear, both through its
+         network of retail stores and online. During the period of the Single and Continuous
+
+
+13 White label describes a particular type of product where the brand name and logo has been removed from the product
+
+and the branding of the purchaser of the product is used instead.
+14 The agreement was effective from 1 June 2018 to the end of the 2020/2021 Scottish Football Premier League and
+
+European/Europe League seasons (LLL000001893, Rangers’ response dated 1 February 2021 to the CMA’s s.26 notice
+dated 15 December 2020, question 6(a), page 5).
+15 Elite was licensed to do so via two agreements, a non-exclusive rights agreement, which was effective from 15
+
+September 2018, and a retail units agreement, which took the form of a subsidiary letter to the non-exclusive rights
+agreement. The non-exclusive rights agreement was meant to be in place until the end of the 2019/2020 football season.
+However on 24 October 2018, TRFC was injuncted from continuing to perform the non-exclusive rights agreement (and
+though the injunction did not apply to the retail units agreement, TRFC treated it as such). Notwithstanding this,
+according to Rangers Elite continued to exercise its rights and sold Rangers-branded products at a retail and wholesale
+level for the 2018/2019 and 2019/2020 football seasons (LLL000001893, Rangers’ response dated 1 February 2021 to
+the CMA’s s.26 notice dated 15 December 2020, question 6(a), page 5).
+16 LLL000001855, Elite’s response dated 11 January 2021 to the CMA’s s.26 notice dated 15 December 2020, question
+
+6, page 3; LLL000001893, Rangers’ response dated 1 February 2021 to the CMA’s s.26 notice dated 15 December
+2020, question 6(a), page 6; transcript of interview with [Director A] (Elite) held on 28 July 2021, LLL000016767, pages
+24, 39 and 40; transcript of interview with [Director A] (Rangers) held on 30 July 2021, LLL000016775, page 34.
+
+
+                                                           4
+         Infringement, JD Sports retailed Rangers-branded clothing products supplied on a
+         wholesale basis by Elite. During that period, JD Sports had an arrangement with
+         Elite to purchase a minimum value of Rangers-branded clothing products in return
+         for being the exclusive high street retailer of Rangers products, with the exception
+         of certain independent retailers such as Greaves Sports, and of Elite. 17
+
+2.6      The CMA considers that JD Sports’ involvement in the Single and Continuous
+         Infringement took place primarily through the following individuals:
+
+                     (a) [Employee A] (JD Sports), [];
+
+                     (b) [Employee B] (JD Sports), [];
+
+                     (c) [Employee C] (JD Sports), []; and
+
+                     (d) [Employee D] (JD Sports), [].
+
+Rangers
+
+2.7      TRFC is the registered owner of all trademarks owned by the Rangers International
+         Football Club Plc group and is the main operating vehicle for Rangers Football
+         Club, a football club in the Scottish Professional Football League. TRFC licenses
+         third parties to use those trademarks and other intellectual property required for the
+         manufacture and sale of Rangers-branded products.
+
+2.8      During the period of the Single and Continuous Infringement, Rangers did not
+         manufacture, supply, distribute or retail Rangers-branded products itself, instead
+         appointing third parties to perform these roles. 18 As set out at paragraph 2.2, in
+         March 2018, TRFC appointed Elite as exclusive worldwide supplier of official and
+         replica kit, and in September 2018, it licensed Elite to deal with the sale of
+         Rangers-branded products.
+
+2.9      The CMA considers that Rangers’ involvement in the Single and Continuous
+         Infringement took place primarily through the following individuals:
+
+                     (a) [Director A] (Rangers), []; and
+
+                     (b) [Director B] (Rangers), []. 19
+
+
+
+17 LLL000000102.
+
+18 LLL000001891, Rangers’ response dated 22 December 2020 to the CMA’s s.26 notice dated 15 December 2020,
+
+question 1, page 2; LLL000001893, Rangers’ response dated 1 February 2021 to the CMA’s s.26 notice dated 15
+December 2020, question 7(b), page 9; and LLL000016688, Rangers’ letter to the CMA dated 1 March 2022 and
+Rangers’ response to the CMA’s s.26 notice dated 4 February 2022.
+19 [Director B] (Rangers) carried out this role on a [] and no longer works at Rangers (LLL000001891, Rangers’
+
+response dated 22 December 2020 to the CMA’s s.26 notice dated 15 December 2020, question 2, page 3). The CMA
+was told that [Director B] (Rangers) [] (transcript of interview with [Director B] (Rangers) held on 4 November 2021,
+LLL000016787, pages 8 and 9).
+
+
+                                                           5
+Relevant market
+
+Introduction
+
+2.10     The CMA has formed a view of the relevant market in order to calculate the
+         Parties’ ‘relevant turnover’ in the markets affected by the Single and Continuous
+         Infringement, for the purposes of establishing the level of the financial penalties
+         that the CMA has decided to impose. 20
+
+Relevant product market
+
+2.11     The process of defining the relevant market starts with the focal product or
+         products that are the subject of the investigation. In this case, the focal products of
+         the Single and Continuous Infringement are:
+
+                     (a) Rangers replica shirts (and specifically the RFC H18 shirt); and
+
+                     (b) the range of Rangers-branded clothing products sold by JD Sports
+                         and Elite. That includes Rangers replica kit 21 and other Rangers-
+                         branded clothing products.
+
+2.12     To define the relevant markets, the CMA has considered the following questions:
+
+                     (a) whether any of the relevant markets should include merchandise
+                         associated with other football clubs or with national teams;
+
+                     (b) whether Rangers replica shirts are part of a wider market for Rangers
+                         replica kit;
+
+                     (c) whether Rangers replica kit is part of a wider market for Rangers-
+                         branded products; and
+
+                     (d) whether other Rangers-branded clothing products are part of a wider
+                         market with non-clothing merchandise.
+
+
+
+
+20 CMA73, Guidance as to the appropriate amount of a penalty, 16 December 2021 (‘Penalty Guidance’), paragraphs
+
+2.1 and 2.10 to 2.13. When assessing the relevant market for these purposes, it is not necessary to carry out a formal
+analysis: the relevant market may properly be assessed on a broad view of the particular trade affected by the
+infringement in question. Argos Limited and Littlewoods Limited v OFT and JJB Sports plc v OFT [2006] EWCA Civ
+1318, paragraphs 169 to 173 and 189; Argos Limited and Littlewoods Limited v OFT [2005] CAT 13, paragraphs 176 to
+178. See also judgment of 6 July 2000, Volkswagen AG v Commission T-62/98, EU:T:2000:180, paragraph 230 and
+judgment of 12 January 1993, SPO and Others v Commission T-29/92, EU:T:1995:34, paragraph 74, on the
+circumstances in which market definition is required.
+21 These are authentic reproductions of the short- and long-sleeved shirt, shorts and socks (home, away, third,
+
+goalkeeper and special edition) in adult, junior and infant sizes to which Rangers’ trademark is applied and which are
+worn by Rangers’ team players when competing in football tournaments.
+
+
+                                                           6
+Whether any of the relevant markets should include merchandise associated with
+other football clubs or with national teams
+
+2.13     The CMA’s view is that other clubs’ merchandise is not part of the same market as
+         Rangers merchandise because demand side substitution between the replica kit of
+         different teams is virtually non-existent. As noted by the Office of Fair Trading
+         (‘OFT’) in Price-fixing of Replica Football Kit, 22 those supporters who are
+         sufficiently committed to Rangers to purchase Rangers merchandise will not
+         consider other clubs’ merchandise to be a suitable substitute. As regards supply-
+         side substitution, manufacturers are generally exclusively licensed by a football
+         club to manufacture all replica kit items, thus precluding other manufacturers from
+         supplying replica kit for that club.
+
+2.14     The OFT also considered whether the replica kit of national teams might be
+         substitutable. However, it concluded that purchases of the national team replica kit
+         would typically be an additional purchase rather than a substitute for the kits of
+         their own clubs. For the same reasons, the CMA’s view is that the branded
+         products of national teams do not form part of the same product market as
+         Rangers-branded clothing products.
+
+Whether Rangers replica shirts are part of a wider market for Rangers replica kit
+
+2.15     The CMA has considered whether Rangers replica shirts are part of a wider market
+         for Rangers replica kit. This question arises, in particular, because Rangers’
+         involvement in the Single and Continuous Infringement related only to the fixing of
+         the retail price for a particular Rangers replica shirt.
+
+2.16     In Price-fixing of Replica Football Kit, the OFT found that all but one of the
+         agreements covered by the decision had as their object the price-fixing of replica
+         shirts (one of the agreements extended to certain licensed merchandise).
+         Nevertheless, the OFT decided that the most appropriate market definition in that
+         case was a club’s replica kit, and that the relevant product market was not
+         narrower than that. This was on the basis that sales of replica shirts were the most
+         important item of replica kit and drove sales of replica shorts and socks, and that a
+         replica kit is designed and marketed at launch as a single product, each item
+         having the visible purpose of supporting a particular club or team. The CMA
+         understands that these key facts remain true today. Further, the OFT observed that
+         manufacturers are normally licensed to manufacture and distribute all items of the
+         kit together under an exclusive licence. The CMA notes that Elite’s license covered
+         all items of the kit as well as all other Rangers-branded products. In light of all of
+         this, the CMA considers that Rangers replica shirts are part of a wider market for
+         Rangers replica kit.
+
+
+22 Price-fixing of Replica Football Kit, OFT decision No CA98/06/2003, 1 August 2003. This was upheld by the Court of
+
+Appeal in JJB Sports PLC v OFT [2006] EWCA Civ 1318, paragraph 189.
+
+
+                                                           7
+
