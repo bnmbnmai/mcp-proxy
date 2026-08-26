@@ -1,298 +1,73 @@
-# Apollo Intelligence MCP Server 🏛️
+# BNM Data Shop — 36 official public-data x402 GETs at ticks.bnm.farm
 
-**40 tools for AI agents: intelligence feeds, economic data, DeFi, real-time search, crypto, OSINT, weather, ML/NLP, proxy infrastructure — all via x402 micropayments.**
+Official public data as JSON at [https://ticks.bnm.farm](https://ticks.bnm.farm). Thirty-six paid GETs. USDC on Base (`eip155:8453`) to `0xf59621FC406D266e18f314Ae18eF0a33b8401004`.
 
-Give your AI agent access to curated market intelligence, web scraping through 190+ country residential proxies, real-time X/Twitter search, crypto prices, GitHub trending data, and more.
+Shop: [https://bnm.farm/](https://bnm.farm/) · Agent brief: [https://ticks.bnm.farm/llms.txt](https://ticks.bnm.farm/llms.txt) · Door list: [SHOP-INDEX.md](./SHOP-INDEX.md)
 
-**🚀 Zero-config: just install and go.** The server auto-provisions a free API key with $0.10 balance on first run — no signup, no wallet, no configuration needed.
+## Bags and prices
 
-**🆓 Free trial: 5 requests/day per IP** on top of your auto-provisioned balance.
+- **Tables** (`GET /ticks`, `GET /import-alerts`) — **$0.05** = the entire current table.
+- **Body doors** (the other 34 paid GETs) — free search `GET https://ticks.bnm.farm/{door}/manifest.json?q=` (HTTP 200) returns `id` and the `?id=` URL. Then pay `GET ?id=` (**$0.02**, one official text) or the page (**$0.05**, newest 10 official texts; older page `?before=`, another $0.05).
 
-**🔑 Bring your own key:** Set `APOLLO_API_KEY` env var to use a specific key (overrides auto-provisioning).
+Unpaid GET on a paid path returns HTTP 402 with `PAYMENT-REQUIRED`. No request body.
 
-**💎 x402 (crypto):** Pay per request with USDC on Base — fully automatic via x402 protocol.
+## Free (not SKUs)
 
-[![npm version](https://img.shields.io/npm/v/@apollo_ai/mcp-proxy)](https://www.npmjs.com/package/@apollo_ai/mcp-proxy)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![x402scan](https://img.shields.io/badge/x402scan-listed-blue)](https://www.x402scan.com/server/3e61cb80-3b13-48cc-be79-db9dd85f57a4)
-[![MCP](https://img.shields.io/badge/MCP-compatible-green)](https://modelcontextprotocol.io)
+- `GET /sample` — canned paid-JSON keys. HTTP 200.
+- `GET /firm-check?q=` — firm-name search across Form 483, warning letters, and the import-alert table. HTTP 200. Names the door and the `?id=` or page to buy.
+- `GET /{door}/manifest.json?q=` — free index/search on every extracted-body door.
+- `GET /.well-known/x402` — the 36 paid URLs.
+- `GET /openapi.json` — OpenAPI 3.1.
+- `GET /llms.txt` — short agent guidance.
+- `GET /` — shop JSON (payTo + the 36 products).
 
-## Quick Start
+## MCP
 
-### Claude Desktop
+`GET/POST https://ticks.bnm.farm/mcp` — Streamable HTTP. One tool per live paid GET, plus free `search`, free `firm-check`, paid `get-one` ($0.02), paid `get-page` ($0.05).
 
-Add to `~/Library/Application Support/Claude/claude_desktop_config.json`:
-
-```json
-{
-  "mcpServers": {
-    "apollo": {
-      "command": "npx",
-      "args": ["@apollo_ai/mcp-proxy"]
-    }
-  }
-}
+```
+npx -y mcp-remote https://ticks.bnm.farm/mcp
 ```
 
-That's it! The server auto-provisions a free API key on first run. To use your own key instead:
-
-```json
-{
-  "mcpServers": {
-    "apollo": {
-      "command": "npx",
-      "args": ["@apollo_ai/mcp-proxy"],
-      "env": {
-        "APOLLO_API_KEY": "ak_YOUR_KEY_HERE"
-      }
-    }
-  }
-}
-```
-
-### Cursor / Windsurf / Any MCP Client
-
-```json
-{
-  "mcpServers": {
-    "apollo": {
-      "command": "npx",
-      "args": ["@apollo_ai/mcp-proxy"]
-    }
-  }
-}
-```
-
-> **Note:** No env vars needed. The server auto-provisions a free API key (`$0.10 balance`) on first run and caches it in `~/.apollo-mcp/key.json`. Set `APOLLO_API_KEY` env var to override.
-
-To use a specific key:
-
-```json
-{
-  "mcpServers": {
-    "apollo": {
-      "command": "npx",
-      "args": ["@apollo_ai/mcp-proxy"],
-      "env": {
-        "APOLLO_API_KEY": "ak_YOUR_KEY_HERE"
-      }
-    }
-  }
-}
-```
-
-> **Tip:** Without `APOLLO_API_KEY`, the server auto-provisions a free key on first run. You also get 5 free requests/day per IP on top of the provisioned balance.
-
-### Install Globally
-
-```bash
-npm install -g @apollo_ai/mcp-proxy
-```
-
-## All 40 Tools
-
-### 🔍 Search & Scraping
-
-| Tool | Description | Cost |
-|------|-------------|------|
-| `web_scrape` | Scrape any URL — proxy rotation, content extraction, markdown output | $0.02 |
-| `web_search` | Web search with site filters (Reddit, HN, GitHub, Twitter) | $0.01 |
-| `x_search` | Real-time X/Twitter search — posts, engagement, AI analysis (via Grok) | $0.75 |
-| `proxy_fetch` | Raw residential proxy relay — 190+ countries, rotating or sticky | $0.01 |
-| `proxy_status` | Check service availability and pricing | Free |
-| `list_countries` | List 190+ available proxy exit countries | Free |
-
-### 📊 Intelligence Feeds
-
-| Tool | Description | Cost |
-|------|-------------|------|
-| `agent_intel` | Agent economy opportunities — grants, bounties, hackathons, market gaps | $0.05 |
-| `sentiment` | Real-time social sentiment (crypto, DeFi, AI, tech) via Grok | $0.02 |
-| `pain_points` | NLP-clustered pain points from Quora, G2, Reddit, Upwork → SaaS ideas | $0.08 |
-| `agentic_trends` | Agentic economy signals — funding, adoption, multi-agent trends | $0.05 |
-| `keyword_opportunities` | Keyword flywheel — seed → variants → opportunity mapping | $0.05 |
-| `micro_saas` | Validated micro-SaaS ideas with market sizing and competition analysis | $0.10 |
-| `web3_hackathons` | Live hackathon tracker — ETHGlobal, DoraHacks, Devpost, Devfolio | $0.05 |
-| `github_trending` | GitHub repos ranked by star velocity, AI-categorized | $0.05 |
-| `producthunt` | Daily Product Hunt launches with AI categorization | $0.05 |
-| `weekly_digest` | Consolidated weekly intelligence report with cross-feed synthesis | $0.25 |
-| `stackexchange` | StackOverflow Q&A search — answers, scores, tags | $0.02 |
-
-### 💰 Crypto & DeFi
-
-| Tool | Description | Cost |
-|------|-------------|------|
-| `crypto_prices` | Live cryptocurrency prices from CoinGecko — any token | $0.01 |
-| `crypto_trending` | Trending cryptocurrencies with price changes and market cap | $0.02 |
-| `defi_yields` | Top DeFi yields across 18K+ pools — filter by chain, TVL, stablecoin | $0.03 |
-| `defi_protocols` | DeFi protocol TVL rankings — 7000+ protocols, category filtering | $0.02 |
-
-### 📈 Economic Data
-
-| Tool | Description | Cost |
-|------|-------------|------|
-| `economic_indicators` | Federal Reserve (FRED) data — GDP, CPI, unemployment, rates, 800K+ series | $0.03 |
-| `country_metrics` | World Bank development indicators — 260+ countries, GDP, population, literacy | $0.02 |
-| `fx_rates` | Live FX rates for 30+ currencies from ECB data | $0.005 |
-
-### 🔒 OSINT & Security
-
-| Tool | Description | Cost |
-|------|-------------|------|
-| `ip_intel` | Multi-source IP intelligence — geo, ports, vulns, threats (4 sources) | $0.03 |
-| `domain_intel` | Domain intelligence — DNS, SSL certs, geo, threat analysis | $0.03 |
-| `ip_geo` | IP geolocation + ASN — country, city, coordinates, organization | $0.01 |
-| `malware_feed` | URLhaus threat feed — 20K+ active malware URLs from abuse.ch | $0.02 |
-| `ip_reputation` | IP abuse scoring via AbuseIPDB — confidence score, reports, categories | $0.03 |
-| `malware_url_check` | VirusTotal URL scanning — malware detection across 70+ engines | $0.05 |
-| `breach_check` | Email breach check via HaveIBeenPwned (Troy Hunt) | $0.05 |
-| `geocode` | Forward + reverse geocoding via OpenStreetMap/Nominatim | $0.01 |
-
-### ⛓️ Ethereum / Etherscan
-
-| Tool | Description | Cost |
-|------|-------------|------|
-| `eth_balance` | Ethereum wallet balance via Etherscan | $0.03 |
-| `eth_transactions` | Ethereum transaction history via Etherscan | $0.03 |
-| `eth_gas` | Live Ethereum gas prices via Etherscan | $0.02 |
-
-### 🌤️ Weather & ML
-
-| Tool | Description | Cost |
-|------|-------------|------|
-| `weather` | Current weather + 7-day forecast from Open-Meteo | $0.01 |
-| `ml_analyze` | Text sentiment, entity extraction, or summarization via HuggingFace | $0.01–$0.02 |
-
-### 📦 Bundles (Save 33-50%)
-
-| Tool | Includes | Cost |
-|------|----------|------|
-| `opportunity_bundle` | Keywords + pain points + micro-SaaS ideas | $0.15 |
-| `agentic_insights_bundle` | Trends + pain points + agent intel | $0.12 |
-| `builder_intel_bundle` | GitHub trending + Product Hunt + agent intel | $0.10 |
-
-## Usage Examples
-
-### Find market opportunities
-```
-Search for pain points in "billing automation" and suggest micro-SaaS ideas
-```
-
-### Research competitors
-```
-Scrape https://competitor.com/pricing through a US proxy and extract the content
-```
-
-### Track trending repos
-```
-Show me GitHub trending repos in the AI agents category
-```
-
-### Real-time social intelligence
-```
-Search X/Twitter for discussions about "MCP protocol" in the last week
-```
-
-### Web search with site filters
-```
-Search for "x402 micropayments" on Reddit and Hacker News
-```
-
-### Get weekly intelligence
-```
-Give me the weekly intelligence digest — what opportunities should I focus on?
-```
-
-### Check crypto markets
-```
-What are the trending cryptocurrencies right now? Show prices and market caps.
-```
-
-## How Payment Works
-
-All paid tools use the [x402 protocol](https://x402.org) — an open standard for machine-to-machine micropayments.
-
-1. Your agent makes a request
-2. Server returns `402 Payment Required` with payment details
-3. Agent's wallet sends USDC on Base to complete the payment
-4. Server delivers the response
-
-**No API keys. No subscriptions. No accounts.** Just a USDC wallet on Base mainnet.
-
-**Payment wallet:** `0xf59621FC406D266e18f314Ae18eF0a33b8401004`
-
-> **📖 [Getting Started Guide](https://apolloai.team/docs/getting-started)** — Step-by-step instructions for Python, TypeScript, Go, and MCP. Make your first paid request in under 5 minutes.
-
-> **Note:** x402 payment handling depends on your MCP client. Clients like [x402scan Composer](https://www.x402scan.com/composer) handle payments automatically. For Claude Desktop, you'll need an x402-compatible wallet integration.
-
-## Environment Variables
-
-| Variable | Description | Default |
-|----------|-------------|---------|
-| `APOLLO_API_URL` | Override API endpoint | `https://apolloai.team` |
-
-## Data Freshness
-
-All intelligence feeds are pre-computed by Apollo's multi-agent system and refreshed every 2-6 hours:
-
-- **Scrape daemon** runs autonomously — DDG, HN, Reddit, GitHub via residential proxies
-- **NLP pipeline** — keyword expansion, pain point clustering, opportunity scoring
-- **Zero LLM cost per request** — all data pre-computed from real sources
-- **X/Twitter search** — real-time via Grok (not cached)
-
-## OpenAPI Specification
-
-Full OpenAPI 3.1 spec for all 40 endpoints: [`openapi.json`](./openapi.json)
-
-Import into Postman, Insomnia, or any API client to explore and test all endpoints interactively.
-
-## Ecosystem
-
-Apollo is listed across the x402 ecosystem:
-
-- **x402 Official Ecosystem:** [x402.org/ecosystem](https://x402.org/ecosystem)
-- **x402scan Marketplace:** [x402scan listing](https://www.x402scan.com/server/3e61cb80-3b13-48cc-be79-db9dd85f57a4)
-- **npm:** [@apollo_ai/mcp-proxy](https://www.npmjs.com/package/@apollo_ai/mcp-proxy)
-- **GitHub:** [bnmbnmai/mcp-proxy](https://github.com/bnmbnmai/mcp-proxy)
-
-## API Reference
-
-This MCP server wraps Apollo's x402 API at `https://apolloai.team`. You can also call the API directly:
-
-```bash
-# Discovery document (lists all endpoints)
-curl https://apolloai.team/.well-known/x402
-
-# Any endpoint returns 402 with payment info + preview data
-curl https://apolloai.team/api/pain-points
-
-# OpenAPI spec
-curl https://apolloai.team/openapi.json
-
-# Free landing page
-curl https://apolloai.team/
-```
-
-**Direct API endpoints:** [apolloai.team](https://apolloai.team) | **Getting Started:** [Guide](https://apolloai.team/docs/getting-started) | **Marketplace:** [x402scan](https://www.x402scan.com/server/3e61cb80-3b13-48cc-be79-db9dd85f57a4)
-
-## Requirements
-
-- Node.js 18+
-- MCP-compatible client (Claude Desktop, Cursor, Windsurf, etc.)
-- For paid tools: x402-compatible wallet with USDC on Base
-
-## About Apollo
-
-Apollo is a multi-agent intelligence system that provides curated data and infrastructure services for AI agents. We believe in the agent economy — AI systems that transact directly with each other.
-
-- **Website:** [apolloai.team](https://apolloai.team)
-- **x402scan:** [Marketplace listing](https://www.x402scan.com/server/3e61cb80-3b13-48cc-be79-db9dd85f57a4)
-- **Contact:** apollo_08@agentmail.to
-
-## License
-
-MIT
-
----
-
-Built by [Apollo Intelligence Network](https://apolloai.team) 🏛️
+## Paid doors
+
+| Path | Bag | Price |
+| --- | --- | --- |
+| `/ticks` | US hay, cattle, and grain ticks (USDA AMS nationwide). Entire current table | $0.05 |
+| `/import-alerts` | FDA Import Alerts / DWPE firm-product snapshot. Entire current table | $0.05 |
+| `/mariners` | USCG D13 / Northwest this week's Local Notice to Mariners | $0.05 |
+| `/mariners-d11` | USCG D11 / Southwest this week's LNM | $0.05 |
+| `/mariners-d7` | USCG D7 / Southeast this week's LNM | $0.05 |
+| `/mariners-d8` | USCG D8 / Gulf this week's LNM | $0.05 |
+| `/warning-letters` | FDA warning-letter bodies. Newest 10 official texts | $0.02 / $0.05 |
+| `/untitled-letters` | FDA Untitled Letter text (CDER OPDP + CBER promo PDFs). Newest 10 official texts | $0.02 / $0.05 |
+| `/awa` | USDA APHIS AWA inspection-report observation text. Newest 10 official texts | $0.02 / $0.05 |
+| `/swisspar` | Swissmedic first-authorisation SwissPAR evaluation text. Newest 10 official texts | $0.02 / $0.05 |
+| `/pcac` | FDA PCAC 503A briefing-memo evaluation text. Newest 10 official texts | $0.02 / $0.05 |
+| `/ftc-wl` | FTC BCP warning-letter text. Newest 10 official texts | $0.02 / $0.05 |
+| `/cfpb-orders` | CFPB consent-order / administrative-order text. Newest 10 official texts | $0.02 / $0.05 |
+| `/occ-cd` | OCC institution C&D / consent-order text. Newest 10 official texts | $0.02 / $0.05 |
+| `/fdic-orders` | FDIC institution consent-order / C&D text. Newest 10 official texts | $0.02 / $0.05 |
+| `/frb-orders` | FRB institution C&D / written-agreement / PCA text. Newest 10 official texts | $0.02 / $0.05 |
+| `/ncua-orders` | NCUA institution consent C&D text. Newest 10 official texts | $0.02 / $0.05 |
+| `/fincen-orders` | FinCEN institution consent-order text. Newest 10 official texts | $0.02 / $0.05 |
+| `/ferc-orders` | FERC institution stipulation-and-consent text. Newest 10 official texts | $0.02 / $0.05 |
+| `/ofac-orders` | OFAC institution enforcement-release text. Newest 10 official texts | $0.02 / $0.05 |
+| `/bis-orders` | BIS institution charging-letter / order text. Newest 10 official texts | $0.02 / $0.05 |
+| `/cftc-orders` | CFTC institution enforcement-order / settlement text. Newest 10 official texts | $0.02 / $0.05 |
+| `/fifra-orders` | EPA FIFRA institution order / consent text. Newest 10 official texts | $0.02 / $0.05 |
+| `/denovo-orders` | FDA De Novo classification-order text. Newest 10 official texts | $0.02 / $0.05 |
+| `/ttb-oic` | TTB Offer in Compromise text. Newest 10 official texts | $0.02 / $0.05 |
+| `/air-letters` | USDA APHIS AIR confirmation-letter text. Newest 10 official texts | $0.02 / $0.05 |
+| `/superfund-rods` | EPA Superfund Record of Decision text. Newest 10 official texts | $0.02 / $0.05 |
+| `/ico-mpn` | ICO Monetary Penalty Notice text. Newest 10 official texts | $0.02 / $0.05 |
+| `/cma-ca98` | UK CMA CA98 infringement-decision text. Newest 10 official texts | $0.02 / $0.05 |
+| `/ema-referrals` | EMA human-medicine referral procedure text. Newest 10 official texts | $0.02 / $0.05 |
+| `/cder-reviews` | FDA CDER Integrated Review text. Newest 10 official texts | $0.02 / $0.05 |
+| `/npdes-permits` | EPA-issued individual NPDES permit text. Newest 10 official texts | $0.02 / $0.05 |
+| `/ofsted-inspections` | Ofsted school / provider inspection-report text. Newest 10 official texts | $0.02 / $0.05 |
+| `/form-483` | FDA Form 483 inspectional observation bodies. Newest 10 official texts | $0.02 / $0.05 |
+| `/gmp` | Health Canada Drug GMP report-card observation text + C.02 cites. Newest 10 official texts | $0.02 / $0.05 |
+| `/gmp-md` | Health Canada medical-device report-card observation text + MDR cites. Newest 10 official texts | $0.02 / $0.05 |
+
+Search URL for each body door: `https://ticks.bnm.farm/{path}/manifest.json?q=`. Full list with search links: [SHOP-INDEX.md](./SHOP-INDEX.md). Live source of truth: [https://ticks.bnm.farm/.well-known/x402](https://ticks.bnm.farm/.well-known/x402).
