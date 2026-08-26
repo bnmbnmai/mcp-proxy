@@ -56,6 +56,8 @@ CMA_CA98_LIMIT=24 CMA_CA98_MAX_FETCH=36 npm run collect:cma-ca98
 systemctl --user restart idaho-ticks-x402.service
 ```
 
+Live after leftover apply (2026-08-26): **listedCount 40**, **cardCount 32**, asOf **2025-07-16**, fetchedAt **2026-08-26T17:04:29.283Z**. Official CMA CA98 infringement index listed 40 decision PDFs; this pulse fetched 24 new extractable bodies (4 skipped no-text). Price still $0.02 / $0.05. No new SKU. Restarted only `idaho-ticks-x402.service`. Official live catalog is the CMA cases finder (CA98 infringement Chapter I / Chapter II) plus first-slice seeds.
+
 ## Local smoke (cloud VM / laptop)
 
 ```bash
