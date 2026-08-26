@@ -1,0 +1,100 @@
+{
+  "http": "see paid-ticks-headers.txt",
+  "status": "ok",
+  "fetchedAt": "2026-08-17T18:48:46Z",
+  "tickCount": 13,
+  "failedCount": 1,
+  "historyPointCount": 575,
+  "tickIds": [
+    "cattle-tf-feeder-steer",
+    "cattle-tf-feeder-heifer",
+    "cattle-tf-yearling-heifer",
+    "cattle-tf-cull-cow",
+    "cattle-tf-bull",
+    "cattle-tf-pairs",
+    "cattle-bf-feeder-steer",
+    "cattle-bf-feeder-heifer",
+    "cattle-bf-yearling-heifer",
+    "cattle-bf-cull-cow",
+    "cattle-bf-bull",
+    "cattle-nw-feeder-steers-ml1",
+    "cattle-nw-feeder-heifers-ml1"
+  ],
+  "markets": [
+    "Blackfoot Livestock Auction",
+    "Northwest Direct (WA / OR / ID / UT)",
+    "Twin Falls Livestock Commission (Wednesday auction)"
+  ],
+  "sources": [
+    "Blackfoot Livestock Auction representative sales",
+    "Twin Falls Livestock Commission market report",
+    "USDA AMS Northwest Direct Cattle Report (AMS_3059)"
+  ],
+  "failed": [
+    {
+      "id": "idaho-hay",
+      "group": "hay",
+      "label": "Idaho hay",
+      "reason": "No report. HTTP Error 403: Forbidden",
+      "sourceUrl": "https://mymarketnews.ams.usda.gov/viewReport/3056"
+    }
+  ],
+  "historyHasAMS_3056": true,
+  "markers": {
+    "twin falls": true,
+    "blackfoot": true,
+    "ams_3056": true,
+    "ams_3059": true
+  },
+  "sampleTicks": [
+    {
+      "id": "cattle-tf-feeder-steer",
+      "market": "Twin Falls Livestock Commission (Wednesday auction)",
+      "commodity": "Feeder steers",
+      "unit": "$/cwt",
+      "price": 400.2,
+      "asOf": "2026-08-12",
+      "source": "Twin Falls Livestock Commission market report"
+    },
+    {
+      "id": "cattle-bf-feeder-steer",
+      "market": "Blackfoot Livestock Auction",
+      "commodity": "Feeder steers",
+      "unit": "$/cwt",
+      "price": 419.59,
+      "asOf": "2026-08-07",
+      "source": "Blackfoot Livestock Auction representative sales"
+    },
+    {
+      "id": "cattle-nw-feeder-steers-ml1",
+      "market": "Northwest Direct (WA / OR / ID / UT)",
+      "commodity": "Feeder steers",
+      "unit": "$/cwt",
+      "price": 326.34,
+      "asOf": "2026-08-14",
+      "source": "USDA AMS Northwest Direct Cattle Report (AMS_3059)"
+    },
+    {
+      "id": "cattle-nw-feeder-heifers-ml1",
+      "market": "Northwest Direct (WA / OR / ID / UT)",
+      "commodity": "Feeder heifers",
+      "unit": "$/cwt",
+      "price": 310,
+      "asOf": "2026-08-14",
+      "source": "USDA AMS Northwest Direct Cattle Report (AMS_3059)"
+    }
+  ],
+  "sampleHayHistory": {
+    "reportDate": "2025-02-13",
+    "source": "USDA AMS Idaho Direct Hay Report (AMS_3056)",
+    "sourceUrl": "https://esmis.nal.usda.gov/sites/default/release-files/x346d418q/cf95m677v/4m90gr86v/AMS_3056.PDF",
+    "series": "hay-id-conventional-alfalfa",
+    "group": "hay",
+    "kind": "conventional",
+    "commodity": "Alfalfa",
+    "market": "Idaho Direct Hay",
+    "classGrade": "Statewide alfalfa, 2880 tons confirmed",
+    "unit": "$/ton",
+    "price": 136.23
+  }
+}

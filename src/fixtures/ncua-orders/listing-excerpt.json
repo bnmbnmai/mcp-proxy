@@ -1,0 +1,75 @@
+[
+  {
+    "creditUnion": "Live Life Federal Credit Union",
+    "institution": "Live Life Federal Credit Union",
+    "docket": "21-0105-ER",
+    "date": "2021-02-22",
+    "title": "Stipulation and Consent to Cease and Desist Order",
+    "sourceUrl": "https://ncua.gov/news/enforcement-actions/administrative-orders/2021/administrative-order-matter-live-life-federal-credit-union"
+  },
+  {
+    "creditUnion": "Phi Beta Sigma Federal Credit Union",
+    "institution": "Phi Beta Sigma Federal Credit Union",
+    "docket": "19-1061-ER",
+    "date": "2019-09-05",
+    "title": "Stipulation and Consent to Cease and Desist Order",
+    "sourceUrl": "https://ncua.gov/news/enforcement-actions/administrative-orders/2019/administrative-order-matter-cease-and-desist-order-phi-beta-sigma-federal-credit-union"
+  },
+  {
+    "creditUnion": "Defense Logistics Federal Credit Union",
+    "institution": "Defense Logistics Federal Credit Union",
+    "docket": "19-0187-ER",
+    "date": "2019-12-12",
+    "title": "Stipulation and Consent to Cease and Desist Order",
+    "sourceUrl": "https://ncua.gov/news/enforcement-actions/administrative-orders/2019/administrative-order-matter-cease-and-desist-order-defense-logistics-federal-credit-union"
+  },
+  {
+    "creditUnion": "Inter-American Federal Credit Union",
+    "institution": "Inter-American Federal Credit Union",
+    "docket": "22-0112-ER",
+    "date": "2022-06-29",
+    "title": "Stipulation and Consent to Cease and Desist Order",
+    "sourceUrl": "https://ncua.gov/news/enforcement-actions/administrative-orders/2022/administrative-order-matter-inter-american-federal-credit-union"
+  },
+  {
+    "creditUnion": "Yonkers Postal Employees Credit Union",
+    "institution": "Yonkers Postal Employees Credit Union",
+    "docket": "22-0122-ER",
+    "date": "2022-11-29",
+    "title": "Stipulation and Consent to Cease and Desist Order",
+    "sourceUrl": "https://ncua.gov/news/enforcement-actions/administrative-orders/2022/administrative-order-matter-yonkers-postal-employees-credit-union"
+  },
+  {
+    "individual": "Jordan L. McCarthy",
+    "relationship": "Former Employee",
+    "institution": "Educators Credit Union",
+    "docket": "26-0031-WR",
+    "date": "2026-01-01",
+    "title": "Order of Prohibition",
+    "sourceUrl": "https://ncua.gov/news/enforcement-actions/administrative-orders/2026/administrative-order-matter-jordan-l-mccarthy"
+  },
+  {
+    "creditUnion": "Live Life Federal Credit Union",
+    "institution": "Live Life Federal Credit Union",
+    "docket": "23-0107-ER",
+    "date": "2023-03-17",
+    "title": "Termination of Consent Cease and Desist Order",
+    "sourceUrl": "https://ncua.gov/news/enforcement-actions/administrative-orders/2023/administrative-order-matter-live-life-federal-credit-union"
+  },
+  {
+    "creditUnion": "Example Filer Credit Union",
+    "institution": "Example Filer Credit Union",
+    "docket": "25-0004-SR",
+    "date": "2025-01-15",
+    "title": "Order Assessing Civil Money Penalty — Late Filer",
+    "sourceUrl": "https://ncua.gov/news/enforcement-actions/administrative-orders/2025/administrative-order-matter-golden-circle-credit-union"
+  },
+  {
+    "creditUnion": "Example LUA Credit Union",
+    "institution": "Example LUA Credit Union",
+    "docket": "18-0001-ER",
+    "date": "2018-01-01",
+    "title": "Letter of Understanding and Agreement",
+    "sourceUrl": "https://ncua.gov/news/enforcement-actions/administrative-orders/2018/administrative-order-matter-example-lua-credit-union"
+  }
+]

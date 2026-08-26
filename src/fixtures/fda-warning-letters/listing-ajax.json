@@ -1,0 +1,37 @@
+{
+  "draw": 1,
+  "recordsTotal": 3,
+  "recordsFiltered": 3,
+  "data": [
+    [
+      "<time datetime=\"2026-03-04T00:00:00Z\">03/04/2026</time>",
+      "<time datetime=\"2026-03-04T00:00:00Z\">03/04/2026</time>",
+      "<a href=\"/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/citra100mg-722606-03042026\">Citra100mg</a>",
+      "Center for Drug Evaluation and Research (CDER)",
+      "Unapproved New Drugs/Misbranded",
+      "",
+      "",
+      ""
+    ],
+    [
+      "<time datetime=\"2026-07-24T04:00:00Z\">07/24/2026</time>",
+      "<time datetime=\"2026-07-24T04:00:00Z\">07/24/2026</time>",
+      "<a href=\"/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/thomas-brunner-hygiene-gmbh-729018-07242026\">Thomas Brunner Hygiene GmbH</a>",
+      "Center for Drug Evaluation and Research (CDER)",
+      "CGMP/Finished Pharmaceuticals/Adulterated",
+      "",
+      "",
+      ""
+    ],
+    [
+      "<time datetime=\"2026-01-01T00:00:00Z\">01/01/2026</time>",
+      "<time datetime=\"2026-01-01T00:00:00Z\">01/01/2026</time>",
+      "<a href=\"/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/missing-letter-000000-01012026\">Missing Letter</a>",
+      "Center for Drug Evaluation and Research (CDER)",
+      "",
+      "",
+      "",
+      ""
+    ]
+  ]
+}

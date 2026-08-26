@@ -1,0 +1,1617 @@
+Date: 30 June 2026
+Swissmedic, Swiss Agency for Therapeutic Products
+
+
+
+
+Swiss Public Assessment Report
+
+
+Dawnzera
+
+
+
+International non-proprietary name: donidalorsen
+Pharmaceutical form:                                      Solution for injection in pre-filled pen
+Dosage strength(s):                                       Each pre-filled pen contains 80 mg
+                                                          donidalorsen (equivalent to 84 mg
+                                                          donidalorsen sodium) in 0.8 mL of
+                                                          solution
+Route(s) of administration:                               Subcutaneous injection
+Marketing authorisation holder:                           Otsuka Pharmaceutical
+Marketing authorisation no.:                              69883
+Decision and decision date:                               approved on 2 June 2026
+
+
+
+
+Note:
+This assessment report is as adopted by Swissmedic with all information of a commercially
+confidential nature deleted.
+
+SwissPARs are final documents that provide information on submissions at a particular point in time.
+They are not updated after publication.
+
+
+
+
+    Swissmedic | Hallerstrasse 7 | 3012 Bern | www.swissmedic.ch | Tel. +41 58 462 02 11 | anfragen@swissmedic.ch
+Table of contents
+1            Terms, Definitions, Abbreviations ..................................................................................... 3
+2            Background information on the procedure ...................................................................... 4
+2.1          Applicant’s request(s) and information regarding procedure................................................. 4
+2.2          Indication and dosage ........................................................................................................... 4
+2.2.1        Requested indication ............................................................................................................. 4
+2.2.2        Approved indication ............................................................................................................... 4
+2.2.3        Requested dosage ................................................................................................................ 4
+2.2.4        Approved dosage .................................................................................................................. 4
+2.3          Regulatory history (milestones) ............................................................................................. 4
+3            Medical context ................................................................................................................... 5
+4            Quality aspects .................................................................................................................... 5
+4.1          Drug substance ..................................................................................................................... 5
+4.2          Drug product.......................................................................................................................... 6
+4.3          Quality conclusions ............................................................................................................... 7
+5            Nonclinical aspects ............................................................................................................. 8
+5.1          Pharmacology ....................................................................................................................... 8
+5.2          Pharmacokinetics .................................................................................................................. 8
+5.3          Toxicology ........................................................................................................................... 10
+5.4          Nonclinical conclusions ....................................................................................................... 11
+6            Clinical aspects ................................................................................................................. 12
+6.1          Clinical pharmacology ......................................................................................................... 12
+6.2          Dose finding and dose recommendation ............................................................................. 13
+6.3          Efficacy ................................................................................................................................ 13
+6.4          Safety .................................................................................................................................. 14
+6.5          Final clinical benefit risk assessment .................................................................................. 15
+7            Risk management plan summary .................................................................................... 16
+8            Appendix ............................................................................................................................ 17
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                                                                      2 / 17
+1            Terms, Definitions, Abbreviations
+
+ADA               Anti-drug antibody
+ADME              Absorption, distribution, metabolism, elimination
+AE                Adverse event
+ALT               Alanine aminotransferase
+API               Active pharmaceutical ingredient
+AST               Aspartate aminotransferase
+ATC               Anatomical Therapeutic Chemical Classification System
+AUC               Area under the plasma concentration-time curve
+AUC0-24h          Area under the plasma concentration-time curve for the 24-hour dosing interval
+CI                Confidence interval
+Cmax              Maximum observed plasma/serum concentration of drug
+CYP               Cytochrome P450
+DDI               Drug-drug interaction
+EMA               European Medicines Agency
+ERA               Environmental risk assessment
+FDA               Food and Drug Administration (USA)
+GI                Gastrointestinal
+GLP               Good Laboratory Practice
+HPLC              High-performance liquid chromatography
+IC/EC50           Half-maximal inhibitory/effective concentration
+ICH               International Council for Harmonisation
+Ig                Immunoglobulin
+INN               International non-proprietary name
+ITT               Intention-to-treat
+LoQ               List of Questions
+MAH               Marketing authorisation holder
+Max               Maximum
+Min               Minimum
+MRHD              Maximum recommended human dose
+N/A               Not applicable
+NO(A)EL           No observed (adverse) effect level
+PBPK              Physiology-based pharmacokinetics
+PD                Pharmacodynamics
+PIP               Paediatric investigation plan (EMA)
+PK                Pharmacokinetics
+PopPK             Population pharmacokinetics
+PSP               Pediatric study plan (US FDA)
+RMP               Risk management plan
+SAE               Serious adverse event
+SwissPAR          Swiss Public Assessment Report
+TEAE              Treatment-emergent adverse event
+TPA               Federal Act of 15 December 2000 on Medicinal Products and Medical Devices (SR
+                  812.21)
+TPO               Ordinance of 21 September 2018 on Therapeutic Products (SR 812.212.21)
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                       3 / 17
+2              Background information on the procedure
+
+2.1            Applicant’s request(s) and information regarding procedure
+
+New active substance status
+The applicant requested new active substance status for donidalorsen in the above-mentioned
+medicinal product.
+
+Orphan drug status
+The applicant requested orphan drug status in accordance with Article 4 paragraph 1 letter adecies no. 1
+TPA.
+Orphan drug status was granted on 22.05.2024.
+
+
+2.2            Indication and dosage
+
+2.2.1          Requested indication
+
+Dawnzera is indicated for routine prevention of recurrent attacks of hereditary angioedema (HAE) in
+adults and adolescents aged 12 years and older.
+
+2.2.2          Approved indication
+
+Dawnzera is indicated for routine prevention of recurrent attacks of hereditary angioedema (HAE) in
+adults and adolescents aged 12 years and older.
+
+2.2.3          Requested dosage
+
+Summary of the requested standard dosage:
+The recommended starting dose in adult and adolescent patients is 80 mg donidalorsen by
+subcutaneous injection. Doses should be administered once monthly.
+A dosing interval of 80 mg once every 2 months may be considered if the patient is well controlled
+(e.g., attack free) for at least 3 months while receiving Dawnzera.
+
+2.2.4          Approved dosage
+
+(see appendix)
+
+
+2.3            Regulatory history (milestones)
+
+ Application                                         12 March 2025
+ Formal control completed                            18 March 2025
+ List of Questions (LoQ)                             16 July 2025
+ Response to LoQ                                     13 October 2025
+ Preliminary decision                                9 January 2026
+ Response to preliminary decision                    5 March 2026
+ Final decision                                      2 June 2026
+ Decision                                            approval
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                         4 / 17
+3            Medical context
+
+Hereditary angioedema (HAE) is a rare autosomal dominant disorder characterised by deficiency of C1
+inhibitor; the C1 inhibitor may be truly deficient due to genetic mutations (type I HAE) or dysfunctional
+(type II HAE). More than 150 mutations have been identified. The disorder is characterised by disabling
+recurrent episodes of local skin swellings, painful abdominal attacks, and, occasionally, laryngeal
+attacks that can be life-threatening.
+Estimates of HAE prevalence range from 1 in 150,000 to 1 in 10,000, but most studies report prevalence
+as 1 in 50,000-60,000. Roche et al. (2005) assessed the prevalence of HAE in Spain in July 1999 and
+reported 1.09 cases per 100,000 population. The mean age of onset of symptoms was 12.6 years with
+a mean age of diagnosis of 24.9 years, suggesting a significant delay in the diagnosis of HAE. Another
+study in Norway reported the prevalence of HAE to be 1.75 cases per 100,000 population.
+Hereditary angioedema typically first appears during childhood or adolescence and then persists
+throughout life. A study by Bork et al. (2006) reported a mean age of onset of 11.2 years, and 64/209
+(30%) patients with HAE had disease onset by age 5.
+Patients with HAE are generally healthy apart from their HAE. However, HAE may be associated with
+autoimmune diseases. In particular, systemic lupus erythematosus (SLE) has been reported in
+association with HAE. In one study of 157 patients with HAE, 19 (12%) had an autoimmune disorder
+such as inflammatory bowel disease, Sjogren’s syndrome, lupus, or glomerulonephritis.
+Treatment for HAE has two aspects. Some interventions seek to terminate acute attacks; others involve
+drugs whose goal is prophylaxis against future attacks. In the past, antihistamines, corticosteroids and
+epinephrine were utilised for acute attacks, despite a lack of evidence that they were effective, but there
+were no HAE-specific treatments then. Since 2008, various forms of C1 inhibitor have become
+available. Two randomised placebo-controlled trials demonstrated the efficacy of Cinryze, a C1 inhibitor
+(human) concentrate which is now approved in Europe. Other similar agents, including ecallantide and
+icatibant, are FDA-approved and available in the US for acute attacks. Icatibant is also approved in the
+EU and in Switzerland.
+For long-term prophylaxis, androgens have been utilised in the past under the rationale that they
+stimulate the production of C1 inhibitor. However, although they are effective in the prevention of
+attacks, it is generally believed that their toxicity limits their utility for long-term use. Antifibrinolytics,
+such as tranexamic acid, have also been utilised for this purpose, but careful studies have not clearly
+demonstrated efficacy. Lanadelumab and berotralstat, kallikrein inhibitors, are available for use as
+prophylactic agents.
+
+4            Quality aspects
+
+4.1          Drug substance
+
+INN:                 Donidalorsen
+Molecular mass:      8672.7 Da (free acid)
+                     9112.3 Da (sodium salt)
+Donidalorsen sodium drug substance is a synthetic antisense oligonucleotide (ASO) with 20
+base residues.
+Molecular structure:
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                               5 / 17
+Manufacture
+The drug substance is manufactured by solid-phase synthesis using well defined and characterised
+starting materials. The ASO is covalently bonded to the trivalent N-acetylgalactosamine (GalNAc), a
+high-affinity ligand for the hepatocyte-specific asialoglycoprotein receptor (ASGPR), to form an
+ASO‑GalNAc conjugate.
+The synthesis and purification of the drug substance are described in sufficient detail, including a
+clear flow diagram and a narrative description of each step, and appropriate in-process controls are
+applied.
+
+Specification and Analytical Procedures
+In order to ensure a consistent quality of donidalorsen sodium, the specifications include all relevant
+test parameters. Acceptance criteria are based on the results of release and stability studies on
+development and commercial batches and supported by toxicological studies.
+Detailed information on the analytical procedures and method validation reports have been provided.
+Impurities in the drug substance have been adequately discussed.
+
+Container Closure System
+The lyophilised bulk drug substance is packaged in HDPE bottles.
+
+Stability
+Appropriate stability data have been presented. Based on the results, a satisfactory storage condition
+and retest period were established.
+
+
+4.2          Drug product
+
+Description and composition
+The formulation of donidalorsen solution for injection contains 100 mg/mL free acid (105
+mg/mL donidalorsen sodium) in sodium phosphate buffer, at pH 7.4. Sodium chloride is
+added to achieve an isotonic solution for SC administration.
+Donidalorsen solution for injection, 80 mg, is a sterile, preservative-free solution.
+The solution appears clear and colourless to yellow.
+The drug product is provided in a glass prefilled syringe (PFS), which is assembled into
+an autoinjector for subcutaneous (SC) administration with a deliverable volume of 0.8
+mL.
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                        6 / 17
+Manufacture
+The drug product manufacturing process consists of dissolving the drug substance in an appropriate
+buffer, sterile filtration, and aseptic filling into syringes, followed by autoinjector assembly and
+packaging. The manufacturing process is described in sufficient detail, including a flow diagram and
+narrative of each step and is considered adequate. The process is sufficiently validated, and
+appropriate in-process controls are performed.
+
+Container Closure System
+Donidalorsen solution for injection is filled into a sterile syringe with 0.8 mL deliverable volume, which
+is further assembled into an autoinjector for the final drug product presentation.
+
+Specification and Analytical Procedures
+Drug product release specifications have been defined based on the characteristics of the drug
+substance and the drug product, compendial requirements for the dosage form and requirements
+for the functionality of the autoinjector. Results of release testing and stability studies of
+development and commercial batches were submitted in order to demonstrate consistent quality
+and to justify the acceptance criteria.
+The analytical methods used have been adequately described and appropriately validated.
+
+Stability
+The product is stable for the proposed shelf life under the approved storage conditions, as
+demonstrated by the provided stability data of development and commercial batches.
+
+
+4.3          Quality conclusions
+
+Satisfactory and consistent quality of the drug substance and drug product has been demonstrated.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                           7 / 17
+5            Nonclinical aspects
+
+5.1          Pharmacology
+
+Primary Pharmacodynamics
+Hereditary angioedema (HAE) is a rare and potentially life-threatening autosomal dominant inherited
+disease leading to inadvertent vascular permeability. It is often caused by mutations in the
+complement 1 inhibitor gene (C1-INH), resulting in uncontrolled activation of plasma prekallikrein
+(PKK) and subsequent formation of bradykinin.
+
+Donidalorsen (ISIS 721744), is a GalNAc3-linker conjugated chemically modified (2’-MOE, PS,
+among others) 20-nucleotide antisense oligonucleotide (ASO), specifically designed to degrade PKK
+mRNA via RNase H1 activation. Donidalorsen and several variants were tested in vitro in cultured
+hepatocellular carcinoma cells and primary human hepatocytes, and in vivo in mice and monkeys.
+Donidalorsen is not pharmacologically active in the mouse due to sequence differences between the
+human and the mouse PKK mRNA. The in vivo pharmacodynamics of donidalorsen was investigated
+in transgenic mice expressing the human PKK gene or in wild-type C57BL/6J mice with an
+unconjugated mouse surrogate ASO. Donidalorsen was shown to efficiently downregulate PKK
+mRNA in human cells and, after subcutaneous (SC) injection, in human-PKK transgenic mice and
+monkeys. The GalNAc3 modification increased the potency of uptake of the ASO by hepatocytes by
+46-fold in cells in culture and by about 10-fold in mice. In monkeys, donidalorsen doses of 6, 12 and
+30 mg/kg/wk resulted in 58%, 60% and 62% reductions, respectively, in hepatic PKK mRNA levels.
+PKK plasma protein activity was also dose-dependently reduced by 75%, 79% and 87% at 2, 6, and
+12 mg/kg/wk, respectively. Both PKK liver mRNA expression and plasma protein activity levels were
+completely restored after a 26-week recovery period. In mice, it was shown that experimentally
+induced vascular permeability was decreased by mouse-PKK-specific surrogate ASOs. The provided
+off-target analyses and proof-of-concept can be accepted.
+
+Safety Pharmacology
+In vitro, the hERG assay was used to assess the potential of donidalorsen to induce prolongation of
+the QT interval. Donidalorsen did not exhibit statistically significant hERG inhibition when compared to
+the vehicle at concentrations up to 300 µM.
+
+In vivo, a single administration of donidalorsen was used to evaluate potential effects on
+cardiovascular, respiratory, and central nervous system (CNS) function in monkeys. No critical effects
+on cardiovascular, respiratory or neurobehavioural parameters were identified after SC administration
+of donidalorsen at 12 or 30 mg/kg.
+
+Pharmacodynamic Drug Interactions
+No dedicated pharmacodynamic studies have been performed. However, donidalorsen interference
+with warfarin and ibuprofen plasma protein binding was investigated. Donidalorsen is highly bound (≥
+96%) to plasma proteins. The protein binding affinity is relatively weak. No drug-drug interaction with
+regards to plasma protein binding between donidalorsen and warfarin and ibuprofen were noted.
+
+
+5.2          Pharmacokinetics
+
+Absorption
+Donidalorsen was rapidly absorbed in mice and monkeys after SC administration, with a Tmax of 1–2
+hours. Plasma donidalorsen concentrations declined in a multiphasic manner with a rapid distribution
+phase, followed by a slower elimination phase with mean half-life values ranging from approximately 2
+to 5 weeks in monkeys. Plasma PK was unaltered after repeated dosing for up to 39 weeks in
+monkeys. Plasma trough concentrations were shown to be in equilibrium with tissues.
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                        8 / 17
+Distribution
+In mice, liver and kidney are the main organs of donidalorsen accumulation. Liver and kidney
+concentrations increased with increasing dose. There was no tendency to accumulate in tissues over
+time. After a 13-week recovery period, donidalorsen decreased below the limit of quantitation. In
+studies with respect to reproductive toxicity, donidalorsen was below the limit of quantitation in
+placenta samples, foetal liver samples and in breast milk from lactating parental females.
+In rats, radioactively labelled donidalorsen distributed to many tissues. Radioactivity in the kidney was
+primarily associated with the cortex. There was no notable gender difference. At the 2 mg/kg dose
+level, Tmax in the liver was 24 hours and in the kidney 158 hours. At the 10 mg/kg dose level, Tmax was
+8 hours in the liver and around 48 hours for at least half of the analysed tissues.
+In monkeys, data from toxicokinetic evaluations showed that donidalorsen distributed extensively to
+kidney cortex and liver. Unconjugated donidalorsen concentrations were dose-proportional in kidney
+cortex, while less than dose-proportional in liver, suggesting saturation of liver uptake at higher dose
+levels. Tissue concentrations decreased in a monophasic pattern. The half-life for a 2 mg/kg dose
+level in the kidney cortex was 18.6 days and in the liver 12.1 days, and was generally comparable to
+the estimated plasma elimination half-life (14.1 days).
+
+Metabolism
+Unconjugated donidalorsen was the major species of full-length oligonucleotide present in kidney and
+liver samples at the analysed time points. In mice, unconjugated donidalorsen accounted for
+approximately 93.1% and 96.4% of the total oligonucleotides present on Day 93. Numerous shortmer
+oligonucleotide metabolites of unconjugated donidalorsen were evident in the examined samples. The
+overall metabolic pathways for the oligonucleotide-related metabolites of donidalorsen observed
+across species is consistent with the endo- and exonuclease-mediated hydrolysis of the
+deoxyphosphorothioate linkages to form chain-shortened metabolites in tissues which are rapidly
+excreted in urine. The THA-linker-related metabolism is generally similar across species, with the
+formation of oxidative metabolites that are eliminated through urine and bile.
+
+Excretion
+In mice, donidalorsen and its unconjugated full-length oligonucleotide metabolite were the major
+components in urine samples. Metabolites generated by endonuclease and exonuclease cleavage
+were also identified.
+In rats, excretion of radioactively labelled donidalorsen occurred via the faecal and urinary routes.
+Within 48 hours, around 14% of the dose was excreted, with a mean of 1.5% of the dose recovered in
+urine, and around 12% in faeces. Overall, around 58% of the dose was excreted in faeces and 17% in
+urine.
+In urine samples of monkeys, donidalorsen and unconjugated donidalorsen were the major
+components. Other metabolites detected in urine from monkeys were 3′-deletion chain-shortened
+metabolites of donidalorsen with -2 and -3 GalNAc sugar deletions, as well as metabolites of
+unconjugated donidalorsen with loss of nucleotides from both the 3′- and 5′-ends.
+
+The analysis of the excretion of the THA-linker and its metabolites identified 10 metabolites in mice
+and monkeys in urine and faeces. The concentrations of the quantifiable metabolites M8 and M12
+were substantially higher in monkey faeces than in both plasma (> 1000x) and urine (> 5x). Therefore,
+faeces is the major route of elimination for the linker-related metabolites.
+
+Pharmacokinetic Drug Interactions
+Treatment of cryopreserved human primary hepatocytes with donidalorsen did not cause inhibition of
+CYP1A2, CYP2B6, CYP2C8, CYP2C9, CYP2C19, CYP2D6, CYP2E1, or CYP3A4 enzyme activity.
+With respect to transporters, donidalorsen (at 100 µM) did not inhibit more than 50% of human OAT1,
+OAT3, OCT1, OCT2, OATP1B1, OATP1B3, MATE1, MATE2-K, BCRP, P-gp, and BSEP transporters,
+and no effects were noted at lower concentrations.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                         9 / 17
+The M8 linker metabolite was found to inhibit CYP2B6, CYP2C9, CYP2C19 and CYP3A4 at 100 μM
+in human liver microsomes. CYP3A4 may be able to metabolise the M8 compound, the consumption
+was slow and produced metabolites that could only be detected at high incubation concentrations.
+The M8 metabolite was also tested for interaction / interference with human transporters. M8 inhibited
+MATE1 with an IC50 value of 62.7 μM. In the substrate study it was found that M8 is a substrate for
+OATP1B3. In addition, in BSEP vesicles supplied with ATP compared to the counterpart supplied with
+AMP, M8 uptake was 4.32-fold, suggesting that M8 is a substrate for BSEP as well. Based on the
+expected concentrations in human tissue, a safety margin of around 8-fold was calculated by the
+applicant, and no critical pharmacokinetic drug interactions are expected.
+
+
+5.3          Toxicology
+
+The nonclinical toxicology studies included 13- and 26-week repeat dose studies in the CD-1 mouse,
+and 13- and 39-week studies in the cynomolgus monkey. A battery of genotoxicity testing, a 27-week
+carcinogenicity study in Tg.rasH2 mice and a 2-year carcinogenicity study in rats were performed. In
+addition, a combined fertility and early embryonic development / embryo-foetal development study
+and a pre- and postnatal study were performed in mice. A 13-week impurity qualification study was
+performed in mice. A repeat-dose toxicity study in juvenile mice was performed to support a potential
+expansion of the indication to paediatric patients between 2 and < 12 years of age.
+
+The main findings in mice at high dose levels were increased liver weights with signs of liver toxicity
+(increased ALT, AST, ALP blood levels, hepatocyte hypertrophy, necrosis, increased mitotic rates),
+increased spleen weights and inguinal lymph node enlargements. Liver hepatocytes, Kupffer cells and
+macrophages displayed vacuolated / granular staining due to the extensive uptake of donidalorsen.
+Accumulation of vacuolated / granular macrophages was observed in several tissues, including
+injection sites. Effects in kidneys were limited to the accumulation of basophilic granules in proximal
+tubular epithelial cells. These effects were reversible or showed signs of reversibility. No toxicological
+finding related to PKK mRNA knockdown was observed. The NOAEL in mice was defined as 12
+mg/kg/q2w.
+
+The main findings in monkeys at 12 and 30 mg/kg/week donidalorsen dose levels were severe, but
+manageable, PLT reduction events in two animals, reversible increases in CRP, transient
+prolongation of aPTT and elevated levels of the complement factor Bb. Additional findings were
+injection site reactions (ISRs) (all groups), increased liver weight with associated hepatocyte
+hypertrophy, basophilic granules in hepatocytes and Kupffer cells), increased kidney weights with
+accumulation of basophilic granules within tubular epithelial cells, reactions in mesenteric /
+mandibular lymph nodes, and perivascular/vascular inflammations in several tissues. The findings
+reversed or showed signs of reversibility. No toxicological finding related to PKK mRNA knockdown
+was noted. In the keyhole limpet haemocyanin (KLH) antigenic challenge, donidalorsen was
+associated with decreases in mean anti-KLH IgM at 6 and 12 mg/kg/week. Anti-donidalorsen
+antibodies were noted in the toxicity studies, although these did not seem to have any effects on
+tissue exposure levels. The NOAEL in monkeys was considered as 6 mg/kg/week.
+
+No critical findings were noted in the assessments regarding genotoxicity (Ames test, chromosome
+aberration assay, in vivo mammalian micronucleus assay), reproductive and development toxicity in
+mice, pre- and postnatal development in mice, SC treatment of juvenile mice with donidalorsen and
+impurity qualification.
+
+No carcinoma development was observed in a 6-month carcinogenicity study in Tg.ras2 transgenic
+mice or in a 2-year carcinogenicity study in rats. Hepatocellular adenomas were present in two out of
+25 males at 20 mg/kg/q2w. In the 26-week repeat dose study in CD-1 mice, liver adenoma
+development was also observed in two male animals (at 1 and 12 mg/kg dose levels). In both studies
+the incidence of hepatocellular adenomas in donidalorsen-treated animals was close to historical
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                        10 / 17
+control data and did not show dose-dependence. Of note, mice are more sensitive to liver reactions
+than other species after repeated treatment with GalNAc3-linker conjugated ASOs.
+
+
+5.4          Nonclinical conclusions
+
+The nonclinical data showed that SC administered GalNAc3-linker conjugated donidalorsen was
+selectively taken up by hepatocytes and efficiently downregulated PKK mRNA, resulting in decreased
+vascular permeability. Safety pharmacology assessments did not reveal critical cardiovascular,
+respiratory, or CNS effects. No drug-drug interaction with regards to plasma protein binding between
+donidalorsen and other highly plasma protein bound drugs are expected.
+
+The pharmacokinetic assessment of donidalorsen showed the expected profile of GalNAc3-linker
+conjugated chemically modified ASOs with rapid absorption after SC administration, rapid distribution
+to many tissues and an elimination phase of 2-5 weeks. As expected, the main tissues of
+donidalorsen accumulation are the liver and the kidney. No measurable donidalorsen concentrations
+were noted in placenta, breast milk and foetal liver samples, suggesting no distribution to offspring.
+The metabolic pathway of the oligonucleotide part is consistent with the endo- and exonuclease-
+mediated hydrolysis and excretion via the faecal and urinary routes. Several THA-linker metabolites
+were identified in urine and faeces. Faeces is the major route of elimination for the linker-related
+metabolites. Pharmacokinetic drug interaction studies did not show critical effects on a battery of CYP
+enzymes and human transporters within a safety margin of around 8-fold as compared to the clinical
+relevant exposure.
+
+The nonclinical toxicological profile of repeat dose treatment with donidalorsen showed an acceptable
+safety profile. During clinical treatment, PLT events, liver and kidney parameters need to be
+monitored. The identified NOAELs allow safety margins of up to 29-fold in monkeys (cumulative
+exposures) and up to 5-fold in mice (cumulative exposures) with respect to the clinical dose of 80 mg
+donidalorsen. These are acceptable ranges, although the safety margin as calculated in mice is
+relatively low.
+
+No carcinoma development was observed in a 6-month carcinogenicity study in Tg.ras2 transgenic
+mice and in a 2-year carcinogenicity study in rats. Hepatocellular adenomas were present in a few
+male mice. The incidence rates are close to historical control data and do not show dose-
+dependence. In addition, it can be accepted that mice are known to be sensitive to liver reactions after
+repeated treatment with GalNAc3-linker conjugated ASOs. Therefore, the overall weight of evidence,
+including low and variable incidence, lack of dose-response, benign histopathology, alignment with
+historical control data, no neoplastic findings in the 2-year rat study, and lack of translation to non-
+rodent species, the observed liver adenomas in mice are not considered indicative of a human
+carcinogenic risk.
+
+No critical findings were noted in the assessments regarding genotoxicity (Ames test, chromosome
+aberration assay, in vivo mammalian micronucleus assay), reproductive and development toxicity in
+mice, pre- and postnatal development in mice, SC treatment of juvenile mice with donidalorsen and
+impurity qualification.
+
+Overall, in can be concluded that the nonclinical assessment of donidalorsen is complete and the
+benefit outweighs the risk. From the nonclinical perspective, donidalorsen can be approved for the
+treatment of HAE.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                      11 / 17
+6            Clinical aspects
+
+6.1          Clinical pharmacology
+
+Bioanalytics
+Donidalorsen was quantified in human plasma with a validated hybridisation ECL method. The
+method detects the total full-length ASO, independently of the constitution of the GalNAc conjugate.
+Around Cmax at steady state, the relative abundance of intact donidalorsen was found to be 94.5% of
+the total full-length ASO, whereas the full-length ASO with one, two or three GalNAc sugar moiety
+deletions, corresponding to 3.7%, 1.2% and 0.6%, respectively, of the relative abundance. Thus, the
+donidalorsen plasma concentration measured by the ECL method predominantly consists of the
+conjugated ASO species.
+
+Biopharmaceutical development
+The clinical formulation used during clinical development was a 100 mg/mL donidalorsen solution
+filled into vials and administered subcutaneously by a disposable dosing syringe. The commercial
+formulation is an autoinjector comprised of a glass prefilled syringe (PFS) assembled into a single-use
+autoinjector. Bioequivalence (BE) between the two formulations was demonstrated.
+
+Pharmacokinetics
+The pharmacokinetics of donidalorsen was analysed using a PopPK model with healthy volunteer and
+patient data. The final model was a two-compartment model with a biphasic elimination rate.
+
+Absorption
+After SC administration, donidalorsen was rapidly absorbed into the systemic circulation, with a Tmax
+at approximately 1-3 hours post dose. The accumulation of donidalorsen is negligible.
+
+Distribution
+Donidalorsen is highly bound to plasma proteins, independently of the concentrations tested. Approx
+98% of donidalorsen was bound to human plasma proteins over the range of concentrations tested.
+The distribution of donidalorsen was assessed in vivo in the non-clinical evaluation. After SC
+administration, donidalorsen is predominantly distributed to liver and kidney.
+
+Metabolism
+The GalNAc-conjugated ASO consists of two different parts undergoing different metabolic pathways.
+The ASO moiety is cleaved by exo- and endonucleases, whereas the GalNAc linker is cleaved by
+hydrolysis and is further oxidated.
+
+The unconjugated full-length ASO is the active principle of the molecule. After endocytosis into
+hepatocytes, a fast hydrolysis of the linker by glycosidases can be assumed. This is supported by
+non-clinical data from toxicology studies in cynomolgus monkeys, where predominantly the
+unconjugated ASO was found in liver tissue. The unconjugated ASO undergoes metabolism by
+endonucleases and exonucleases, leading to shortmers. The shortmers are then further eliminated
+through renal clearance. The metabolites were analysed in mouse, monkey and human urine, and a
+similar biotransformation was found across species. The predominant human metabolites in urine
+were the unconjugated full-length ASO (20-mer), accounting for approx. 40 % of the relative
+metabolites found in urine, and 5’-shortmers (9 to14-mers) thereof, accounting for less than 10%
+each. In plasma, no shortmers could be identified.
+
+The metabolic pathway of the linker was assessed in mice, monkey and human plasma samples by
+MS/MS. M8 and M12 were the predominant linker metabolites found in monkey and human plasma
+samples, corresponding to approx. 1.5% of the parent concentration.
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                      12 / 17
+Elimination
+Donidalorsen shows a biphasic elimination phase in plasma. The first elimination phase is attributed
+to a fast distribution of the donidalorsen into tissues (predominantly into liver and kidney). After 24
+hours the majority of donidalorsen is no longer available in plasma.
+The population estimate of the terminal elimination half-life of donidalorsen in a typical HAE patient is
+31.4 days (approximately 1 month). This parameter is of low clinical relevance, since the terminal half-
+life likely represents the unconjugated full-length ASO. The slowly formed fragmented oligonucleotide
+metabolites were subsequently excreted in urine. A strong biliary excretion of linker derived
+metabolites is seen in nonclinical analysis.
+
+Special populations / Intrinsic factors
+
+Body weight
+The body weight (BW) has an effect on the exposure of donidalorsen, with higher BW leading to lower
+exposure The BW effect was estimated in the PopPK model and was included as a factor on Cl/f,
+Vc/F, Q/F, and Vp/F. A similar response rate in efficacy can be expected across the investigated BW
+range.
+Due to the BW-dependent exposure, it can be expected that plasma exposure levels above the
+studied range are reached in patients below 35 kg.
+
+Age and gender
+No gender- or age-dependent effects in addition to the BW effect were observed.
+
+Hepatic impairment
+Two patients with mild hepatic impairment showed no differences in exposure. No dose adjustment
+for mild hepatic impairment is warranted. Moderate and severe hepatic impairment was not
+investigated. Therefore, the exposure and exposure-response relationship is unknown due to the
+unknown ASGPR expression status required for liver uptake.
+
+Renal impairment
+The predominant elimination pathway of the unconjugated full-length ASO (20-mer) and shortmers
+thereof is renal, and no data are available for patients with moderate to severe renal impairment.
+
+
+6.2          Dose finding and dose recommendation
+
+Dose finding was limited to 80 mg either 4 weekly or 8 weekly. Donidalorsen administered every 4 or
+8 weeks produced statistically significant reductions in the HAE attack rate (number of investigator-
+confirmed HAE attacks per 4 weeks) compared to placebo in patients weighing ≥ 35 kg.
+The reduction in dosing frequency from Q1M to Q2M for patients achieving a strong reduction in the
+HAE attack rate is deemed adequate based on the exposure-response relationship of donidalorsen.
+
+6.3          Efficacy
+
+The efficacy data are derived from one Phase 3 pivotal study (CS5), one Phase 2a study (CS2), one
+open label extension study (CS3), one OLE/Switch study (CS7) and two Phase 1 studies.
+The main study (CS5) involved 91 patients from 12 years of age with hereditary angioedema who
+received donidalorsen (either every 4 weeks or every 8 weeks) or placebo. After 24 weeks, the average
+number of attacks per month was around 0.4 in patients given donidalorsen every 4 weeks and around
+1 for those given donidalorsen every 8 weeks compared with around 2.3 for those given placebo. In
+addition, the study assessed the impact of treatment on patients’ quality of life using a validated
+questionnaire measuring how the disease symptoms affect people’s daily life.
+Overall, the results of pivotal Study ISIS 721744-CS5 show that donidalorsen 80 mg administered
+subcutaneously every 4 weeks or every 8 weeks as a prophylactic treatment resulted in clinically
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                       13 / 17
+meaningful benefits on multiple measures of HAE disease activity, including QoL, and perceived control
+of disease compared with the placebo group. Additionally, in an exploratory analysis, donidalorsen
+treatment resulted in a nominally significant reduction in emergency room visits compared with placebo.
+The efficacy and PK data and analyses presented in this report lead to the following conclusions:
+The primary efficacy endpoint, comparison of the time-normalised number of investigator-confirmed
+HAE attacks (per 4 weeks) from Week 1 to Week 25 between the donidalorsen-4 group and the placebo
+group, was met in this study. The least square mean (LSM) time-normalised investigator-confirmed
+HAE attack rate (per 4 weeks) from Week 1 to Week 25 was 0.44 for the donidalorsen-4 group and
+2.26 for the placebo group, representing an 81% reduction relative to placebo for the donidalorsen-4
+group (statistically significant p < 0.001).
+Donidalorsen-4 subgroup analyses on the primary efficacy endpoint by age, sex, race, region, and
+predefined prophylactic therapy use, produced similar results compared with the overall donidalorsen-
+4 group. For adolescent patients (aged 12 to 17 years), a 97.1% decrease from Baseline (Run-in Period)
+in the time-normalised HAE attack rate (per 4 weeks) from Week 1 to Week 25 was observed.
+All primary and secondary endpoint analyses assessing the donidalorsen-4 group were statistically or
+nominally significant compared with placebo. Of the 8 secondary endpoints in the hierarchical ranking
+strategy for the donidalorsen-8 group, all but 2 endpoints were statistically or nominally significant
+compared with placebo.
+Data from supportive clinical trials confirm the efficacy profile from study CS5.
+
+6.4          Safety
+
+The safety data are derived from one Phase 3 pivotal study (CS5), one Phase 2a study (CS2), one
+open label extension study (CS3), one OLE/Switch study (CS7) and two Phase 1 studies.
+The primary conclusions are derived from pivotal study CS5. Study CS2 is supportive for safety and is
+included in an integrated pool comprising placebo-controlled studies of CS5 and CS2 (Pool 1).
+Additional supportive evidence for establishing the safety profile of donidalorsen was generated by
+pooling safety data from CS5, CS2, CS3, and CS7 (Pool 2).
+The following AESIs were predefined: 1. Severe reductions in platelet counts < 50,000/mm3
+accompanied by an MB (major bleeding) event or CRNMB (clinically relevant non-major bleeding)
+event; or 2. Platelet count of < 25,000/mm3 independently of an MB event or CRNMB event.
+Additional safety analyses relevant to donidalorsen focused on organ systems of preferential
+distribution of ASO (hepatic and renal), and AEs known to be associated with subcutaneous ASO
+delivery (injection site events and flu-like reactions).
+There was a high rate of TEAEs in pivotal study CS5 and study CS2. In CS5 the highest rate of AEs
+was in the placebo group (81.8%), followed by the donidalorsen-4 group (73.3%), and followed by the
+donidalorsen-8 group (60.9%), with a similar pattern seen in Pool 1. In Pool 2, with additional long-term
+exposure to donidalorsen (but no additional exposure to placebo), the proportion of patients who
+experienced TEAEs was 93.3% in the donidalorsen-4 group, 69.8% in the donidalorsen-8 group, and
+82.1% in the placebo group.
+In terms of TEAE severity, in CS5 the majority of TEAEs across all treatment groups were mild or
+moderate. A greater proportion of patients in the donidalorsen-8 group (8.7%) and the placebo group
+(9.1%) had severe TEAEs compared with the donidalorsen-4 group (2.2%). Of the 5 severe TEAEs,
+only 1 event was serious, and 4 TEAEs were unrelated to study drug. Only 3 severe events were in
+donidalorsen-treated subjects. In Pool 2 the majority of TEAEs were mild or moderate, and rates of
+severe TEAEs were similar across the donidalorsen and placebo arms, despite longer exposure in the
+donidalorsen arms. In the donidalorsen-4 group, 9.2% experienced severe TEAEs, including headache
+(2 patients), nausea (2 patients), and cardiac failure acute, toothache, constipation, pyrexia, COVID-
+19, gastroenteritis, pneumonia, mastoiditis, otitis media chronic, neck pain, torticollis, meningioma,
+pulmonary oedema, pruritus, and deep vein thrombosis (all in 1 patient each). In the donidalorsen-8
+group, 7.0% had severe TEAEs, including epicondylitis, blood creatine phosphokinase increased, and
+spinal pain. In the 3 subjects that received donidalorsen-100 mg every 4 weeks, 33.3% (one patient)
+experienced a severe TEAE of dermatitis.
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                       14 / 17
+In terms of relatedness, in CS5 considerably more (42.2%) of the donidalorsen-4 group had related
+TEAEs compared with the donidalorsen-8 (17.4%) and placebo groups (27.3%). The majority of those
+AEs in donidalorsen groups were injection site reactions.
+No SAE was reported in any patient treated with donidalorsen in CS5, or in Pool 1. In Pool 2, 12 SAEs
+were reported, and all bar one (spontaneous abortion) occurred while on donidalorsen-4. The SAEs
+were varied. In all but one case there is a clear indicator from the background history to suggest a non-
+causal relationship with donidalorsen. There has been one study death since the data cut-off date:
+death by suicide. The SAE that does appear to be related to donidalorsen is discussed in detail under
+Hypersensitivity reactions. This was a second hypersensitivity severe allergic anaphylactic type reaction
+which fulfilled Sampson’s criteria.
+
+6.5          Final clinical benefit risk assessment
+
+The pivotal study ISIS 721744-CS5 met its primary endpoint, and the effect of the treatment is
+considered to be clinically relevant for patients with C1-INH HAE. The efficacy is also supported by the
+results from secondary endpoints and the second double-blind study (ISIS 721744-CS2). Moreover,
+the results from the longer-term open label trials support the maintenance of efficacy over time.
+From a safety perspective, while effects on liver function (generally mild), and a reasonably high rate of
+ISRs have been observed in the donidalorsen-treated arms, the tolerability can be considered
+acceptable and manageable provided the issues raised are satisfactorily addressed, including further
+safety data from the two ongoing OLEs CS3 and CS7
+
+The overall benefit /risk balance is positive.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                        15 / 17
+7            Risk management plan summary
+
+The RMP summaries contain information on the medicinal products′ safety profiles and explain the
+measures that are taken to further investigate and monitor the risks, as well as to prevent or minimise
+them.
+The RMP summaries are published separately on the Swissmedic website. It is the responsibility of
+the marketing authorisation holder to ensure that the content of the published RMP summaries is
+accurate and correct. As the RMPs are international documents, their summaries might differ from the
+content in the Information for healthcare professionals / product information approved and published
+in Switzerland, e.g. by mentioning risks that occur in populations or indications not included in the
+Swiss authorisations.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                      16 / 17
+8            Appendix
+
+Approved Information for healthcare professionals
+Please be aware that the following version of the Information for healthcare professionals for
+Dawnzera was approved with the submission described in the SwissPAR. This Information for
+healthcare professionals may have been updated since the SwissPAR was published.
+
+Please note that the valid and relevant reference document for the effective and safe use of medicinal
+products in Switzerland is the Information for healthcare professionals currently authorised by
+Swissmedic (see www.swissmedicinfo.ch).
+
+Note:
+The following Information for healthcare professionals has been translated by the MAH. It is the
+responsibility of the authorisation holder to ensure the translation is correct. The only binding and
+legally valid text is the Information for healthcare professionals approved in one of the official Swiss
+languages.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                         17 / 17
+                                               Product information for human medicinal products
+
+▼This medicinal product is subject to additional monitoring. This will allow quick identification of new
+safety information. Healthcare professionals are asked to report any suspected new or serious
+adverse reactions. See the “Undesirable effects” section for advice on the reporting of adverse
+reactions.
+
+
+
+Dawnzera 80 mg solution for injection in pre-filled pen
+
+Composition
+
+Active substances
+
+Donidalorsen (a synthetically produced, chemically modified antisense oligonucleotide)
+
+Excipients
+
+Sodium dihydrogen phosphate (E 339), Disodium hydrogen phosphate (E 339), Sodium chloride,
+Water for injections. Hydrochloric acid (E 507) (for pH adjustment), Sodium hydroxide (E 524) (for pH
+adjustment).
+
+Pharmaceutical form and active substance quantity per unit
+
+Solution for injection in pre-filled pen (injection).
+Each pre-filled pen contains 80 mg donidalorsen (equivalent to 84 mg donidalorsen sodium) in 0.8 mL
+of solution. Each mL contains 100 mg donidalorsen, equivalent to 105 mg donidalorsen sodium.
+Clear, colourless to yellow solution (pH of approximately 7.4).
+
+Indications/Uses
+
+Dawnzera is indicated for routine prevention of recurrent attacks of hereditary angioedema (HAE) in
+adults and adolescents aged 12 years and older.
+
+Dosage/Administration
+
+Treatment is to be initiated under the supervision of a physician experienced in the management of
+patients with HAE.
+
+Posology
+The recommended starting dose in adult and adolescent patients is 80 mg donidalorsen by
+subcutaneous injection. Doses should be administered once monthly.
+A dosing interval of 80 mg once every 2 months may be considered if the patient is well controlled
+(e.g., attack free) for at least 3 months while receiving Dawnzera.
+
+Missed dose
+
+
+
+
+                                                                                                     1 / 18
+                                             Product information for human medicinal products
+
+If a dose is missed, the patient or caregiver should be instructed to administer the dose as soon as
+possible. Thereafter, dosing should be resumed at the prescribed dosing frequency (once monthly or
+once every 2 months) from the date of the most recently administered dose.
+
+Special dosage instructions
+
+Elderly patients
+No dose adjustment is required for patients above 65 years of age (see section “Pharmacokinetics”).
+
+Patients with hepatic impairment
+No dose adjustment of Dawnzera is required for patients with mild hepatic impairment (see section
+“Pharmacokinetics”). Dawnzera has not been studied in patients with moderate or severe hepatic
+impairment. Therefore, Dawnzera should not be used in patients with moderate or severe hepatic
+impairment.
+
+Patients with renal impairment
+No dose adjustment of Dawnzera is required for patients with mild renal impairment. Dawnzera has
+not been studied in patients with moderate or severe renal impairment or end stage renal disease.
+Therefore, Dawnzera should be used with caution in patients with moderate or severe renal
+impairment or end-stage renal disease.
+
+Children and adolescents
+The posology is the same in adults and adolescents aged 12 years and older. Dawnzera has not
+been studied in adolescent patients weighing less than 35 kg and should therefore not be used in
+these patients (see “Pharmacokinetics”).
+The safety and efficacy of Dawnzera in children aged < 12 years have not been established. No data
+are available.
+
+Changing from other HAE prophylactic medicinal products
+The following treatment schedules (Table 1) are recommended for patients that are changing their
+HAE prophylactic therapy from berotralstat, a C1 esterase inhibitor, or lanadelumab to Dawnzera (see
+section “Pharmacodynamics”).
+
+
+Table 1: Treatment schedule for patients changing from other prophylactic therapy to Dawnzera.
+ Other Prophylactic Therapy:      Recommended treatment schedule when changing to Dawnzera:
+ Berotralstat                     Continue taking the current dose of berotralstat for 14 days after
+                                  initiating treatment with Dawnzera.
+
+ C1 esterase inhibitor            Continue taking the current dose of C1 esterase inhibitor for 14 days
+                                  after initiating treatment with Dawnzera.
+
+ Lanadelumab                      Administer last dose of lanadelumab 14 days prior to initiating
+                                  treatment with Dawnzera.
+
+                                                                                                          2 / 18
+                                            Product information for human medicinal products
+
+
+
+
+Method of administration
+Dawnzera is only intended for subcutaneous use.
+Dawnzera is to be administered as a subcutaneous injection in the abdomen, upper thigh region, or
+for caregivers only, the back of the upper arm. Rotation of the injection site is recommended.
+Dawnzera must not be injected into areas where the skin is tender, bruised, red, hard, infected or
+discoloured.
+After proper training on correct subcutaneous injection technique, a patient or caregiver may inject
+Dawnzera if their physician determines it is appropriate. Comprehensive instructions for
+administration using the pre-filled pen are provided in the package leaflet in the section instructions
+for use.
+For further instructions on preparation and special precautions for handling, see section “Other
+information”.
+
+Contraindications
+
+Hypersensitivity to the active substance or to any of the excipients listed in section “Composition”.
+
+Warnings and precautions
+
+Hypersensitivity including anaphylaxis
+Hypersensitivity reactions including anaphylaxis have been observed (see section “Undesirable
+effects”). In case of a severe hypersensitivity reaction, administration of Dawnzera must be stopped
+immediately and appropriate treatment must be initiated (see section “Contraindication”).
+Patients must be advised on the signs and symptoms of hypersensitivity reactions and instructed to
+promptly seek medical attention and to discontinue use of Dawnzera if serious hypersensitivity
+reactions occur.
+
+
+General
+Dawnzera is not intended for treatment of acute HAE attacks. In case of a breakthrough HAE attack,
+individualised treatment should be initiated with an approved rescue medicinal product.
+There are limited data available on the use of Dawnzera in HAE patients with HAE-nC1INH (see
+section “Pharmacodynamics”). It is recommended to perform genetic testing, if available, according to
+current HAE guidelines and to discontinue the treatment if clinical response is not observed.
+
+
+Sodium
+This medicinal product contains less than 1 mmol sodium (23 mg) per dose, that is to say essentially
+‘sodium-free’.
+
+
+
+
+                                                                                                        3 / 18
+                                            Product information for human medicinal products
+
+Interactions
+
+No clinical drug-drug interaction studies have been performed with donidalorsen.
+In vitro studies show that donidalorsen is not a substrate or inhibitor of transporters (OAT1, OAT3,
+OCT1, OCT2, OATP1B1, OATP1B3, MATE1, MATE2-K, BCRP, P-gp, BSEP), does not interact with
+medicinal products strongly bound to plasma proteins, and neither inhibits (CYP1A2, CYP2B6,
+CYP2C8, CYP2C9, CYP2C19, CYP2D6, CYP2E1, CYP3A4) nor induces (CYP1A2, CYP2B6,
+CYP3A4) cytochrome P450 (CYP) enzymes.
+Donidalorsen is not expected to cause or be affected by drug-drug interactions mediated through drug
+transporters, plasma protein binding, or CYP enzymes.
+
+
+Pregnancy, lactation
+
+Pregnancy
+
+There are no or limited amount of data (less than 300 pregnancy outcomes) from the use of
+donidalorsen in pregnant women.
+
+Animal studies do not indicate direct or indirect harmful effects with respect to reproductive toxicity
+(see section „Preclinical data“).
+
+As a precautionary measure, it is preferable to avoid the use of Dawnzera during pregnancy.
+
+Lactation
+
+Available pharmacodynamic/toxicological data in animals have shown excretion of
+donidalorsen/metabolites in milk (see section „Preclinical data“).
+
+A risk to the newborns/infants cannot be excluded.
+
+A decision must be made whether to discontinue breast-feeding or to discontinue/abstain from
+Dawnzera therapy taking into account the benefit of breast-feeding for the child and the benefit of
+therapy for the woman.
+
+Fertility
+
+No clinical data on the effect of this medicinal product on human fertility are available. Donidalorsen
+had no effect on fertility and early embryonic development toxicity in murine models (see section
+„Preclinical data“).
+
+Effects on ability to drive and use machines
+
+Dawnzera has no or negligible influence on the ability to drive and use machines.
+
+Undesirable effects
+
+Summary of the safety profile
+
+                                                                                                       4 / 18
+                                                Product information for human medicinal products
+
+The most frequently observed adverse drug reactions (ADRs) in patients treated with 80 mg
+donidalorsen every 4 weeks were injection site reactions (24.4%).
+No deaths or serious adverse drug reactions occurred during clinical trials.
+
+Tabulated list of adverse reactions
+Adverse reactions associated with donidalorsen obtained from clinical studies are tabulated below.
+All ADRs are listed by system organ class and frequency; very common (≥1/10), common (≥1/100,
+<1/10), uncommon (≥1/1 000, <1/100), rare (≥1/10’000, <1/1’000), very rare (<1/10’000) and not
+known (cannot be estimated from the available data). Within each frequency grouping, adverse
+reactions are presented in order of decreasing seriousness.
+Table 2: Adverse drug reactions to donidalorsen
+ System organ class                                 Adverse drug reaction          Frequency
+
+ Immune system disorders                            Hypersensitivity (including    Common
+                                                    anaphylaxis)
+  General disorders and administration site         Injection site reactions*         Very common (24.4%)
+  conditions
+* Injection site reactions include also: discolouration, erythema, pain, pruritus, induration, haematoma, bruising,
+exfoliation, hypersensitivity and swelling.
+
+Description of selected adverse reactions
+
+Hypersensitivity including anaphylaxis
+In clinical trials, a serious hypersensitivity reaction of anaphylaxis was reported in one patient.
+Symptoms included generalised rash, dyspnoea, chest pain and peri-oral swelling (see sections
+“Contraindications” and “Warnings and Precautions”).
+
+Injection site reactions
+During double-blind, placebo-controlled trials, injection site reactions were observed. All injection site
+reactions were non serious, mild to moderate in severity, and resolved over time. In some patients,
+the injection site reactions such as injection site erythema, injection site pruritus, and injection site
+discolouration persisted for 2 or more days. In one patient who received higher than labelled doses in
+accordance with the protocol, injection site discoloration led to permanent discontinuation of
+treatment.
+
+Paediatric population
+The safety of Dawnzera has been established in adolescent patients aged 12 to 17 years in a double-
+blind placebo-controlled clinical trial that included a total of 7 adolescent patients supplemented by 4
+Dawnzera naïve adolescent patients from an open label trial. The safety profile in these adolescents
+was similar to the profile observed in adults.
+
+
+Reporting suspected adverse reactions after authorisation of the medicinal product is very important.
+It allows continued monitoring of the benefit/risk balance of the medicinal product. Healthcare
+
+                                                                                                               5 / 18
+                                            Product information for human medicinal products
+
+professionals are asked to report any suspected adverse reactions online via the ElViS portal
+(Electronic Vigilance System). You can obtain information about this at www.swissmedic.ch.
+
+Overdose
+
+There is no available information to identify potential signs and symptoms of overdose. If symptoms
+should occur, symptomatic treatment is recommended. There is no antidote available.
+
+Properties/Effects
+
+ATC code
+
+B06AC09
+Pharmacotherapeutic group: Other haematological agents, drugs used in hereditary angioedema.
+
+Mechanism of action
+
+Donidalorsen is a 2’-O-methoxyethyl–modified antisense oligonucleotide (ASO) conjugated to a
+triantennary N-acetylgalactosamine (GalNAc3) moiety that causes ribonuclease H1 (RNase H1)
+mediated degradation of prekallikrein (PKK) mRNA through selective binding to PKK mRNA, which
+results in reduced production of PKK protein. PKK is a pro-enzyme for plasma kallikrein, which results
+in the release of bradykinin, a potent vasodilator causing swelling and pain in HAE. In patients with
+HAE, C1 inhibitor (C1-INH) deficiency or dysfunction leads to excessive plasma kallikrein activity,
+bradykinin generation, and angioedema attacks. Donidalorsen lowers PKK concentration, preventing
+excessive bradykinin production in patients with HAE.
+
+Pharmacodynamics
+
+In Trial 1 in adult and paediatric patients (≥12 years) with HAE 1 or HAE 2 (see clinical efficacy
+below), a decrease in plasma PKK concentrations was observed at the first assessment (Week 4)
+following treatment with Dawnzera 80 mg. The mean percentage change from baseline to Week 24 in
+trough plasma PKK concentrations indicated reductions of 73% and 47% following treatment with
+Dawnzera 80 mg every 4 weeks and every 8 weeks, respectively, compared with a slight increase
+(2%) observed in the placebo group.
+
+Clinical efficacy
+
+The efficacy of Dawnzera for the prevention of angioedema attacks in patients with HAE due to C1-
+INH deficiency type 1 (HAE 1) or HAE due to C1-INH deficiency type 2 (HAE 2) was demonstrated in
+a 24-week multicenter, randomised, double blind, placebo-controlled trial (Trial 1) and a 16 week
+multicenter, randomised, double blind, placebo-controlled trial (Trial 3).
+
+Trial 1- “OASIS-HAE”, ISIS 721744-CS5
+Trial 1 included 90 adult and paediatric patients (≥12 years) with at least 2 investigator-confirmed
+attacks during the 8-week run in period, who received at least 1 dose of study treatment. Patients
+
+
+                                                                                                       6 / 18
+                                               Product information for human medicinal products
+
+were randomised in a 2:1 ratio to 1 of 2 groups to receive study treatment either once every 4 weeks
+(q4wks group) or once every 8 weeks (q8wks group). Within each group, patients were randomised in
+a 3:1 ratio to receive Dawnzera 80 mg or a matching volume of placebo. The 2 placebo treated
+groups were combined for analysis. Patients were required to discontinue other prophylactic HAE
+medications prior to entering the trial; however, all patients were allowed to use rescue medications
+for treatment of any breakthrough HAE attacks.
+Overall, 93% of patients had HAE 1. A history of laryngeal angioedema attacks was reported in 52%
+of patients, and 18% of patients were on prior prophylactic therapy. The median HAE attack rate
+during the prospective run-in period (baseline attack rate) was 2.85 attacks/4 weeks and an attack
+rate of >2 attacks/4 weeks was observed in 69% of patients overall.
+
+
+Dawnzera administered every 4 or 8 weeks produced statistically significant reductions in the HAE
+attack rate (number of investigator-confirmed HAE attacks per 4 weeks) compared to placebo,
+meeting the primary endpoint in this trial. A sustained response to Dawnzera with mean decreases
+from baseline in the HAE attack rate was observed throughout the treatment period in the Dawnzera
+treatment groups as shown in Figure 1. All secondary endpoint analyses for the q4wks group and all
+but 2 secondary endpoint analyses for the q8wks group were statistically or nominally significant
+compared with placebo as shown in Table 3 and discussed further below.
+Figure 1: Percentage change (LSM ± SEM) from baseline in the rate of investigator-confirmed HAE
+attacks/4 weeks in trial 1
+
+
+
+
+HAE = hereditary angioedema; LSM = least square mean; q4wks = every 4 weeks; q8wks = every 8 weeks;
+SC = subcutaneous; SEM = standard error of the mean.
+
+Table 3: Results of primary and secondary efficacy endpoints (full analysis set)
+ Endpoint Statistics                    Placebo           Dawnzera 80 mg           Dawnzera 80 mg
+                                         (N=22)               q4wks                    q8wks
+                                                              (N=45)                   (N=23)
+ HAE attack rate per 4 weeks from baseline to Week 24*
+ LS mean (95% CI) attack rate           2.26                     0.44                    1.02
+                                    (1.66, 3.09)             (0.27, 0.73)            (0.65, 1.59)
+
+
+                                                                                                      7 / 18
+                                             Product information for human medicinal products
+
+ Endpoint Statistics                  Placebo           Dawnzera 80 mg           Dawnzera 80 mg
+                                       (N=22)               q4wks                    q8wks
+                                                            (N=45)                   (N=23)
+ % Reduction (95% CI) relative                                −81                      −55
+ to placebo                                               (−89, −65)               (−74, −22)
+ Wald chi-square p-value                                    <0.001†                   0.004†
+
+ HAE attack rate per 4 weeks from Week 4 to Week 24
+ LS mean (95% CI) attack rate
+                                       2.25                    0.30                     0.90
+ starting from second dose
+                                   (1.59, 3.18)            (0.15, 0.58)             (0.53, 1.52)
+ (Week 4)
+ % Reduction (95% CI) relative
+                                                              −87                      −60
+ to placebo starting from
+                                                           (−94, −72)               (−79, −25)
+ second dose (Week 4)
+ Wald chi-square p-value                                    <0.001†                   0.004†
+ Moderate or severe HAE attack rate per 4 weeks from Week 4 to Week 24
+ LS mean (95% CI) moderate
+                                        1.15                0.12                        0.68
+ or severe attack rate starting
+                                    (0.72, 1.83)        (0.04, 0.35)                (0.37, 1.23)
+ from second dose (Week 4)
+ % Reduction (95% CI) relative
+                                                             −89                       −41
+ to placebo starting from
+                                                         (−97, −66)                  (−72, 26)
+ second dose (Week 4)
+ Wald chi-square p-value                                  <0.001†                       NS
+ HAE attacks per 4 weeks requiring acute therapy from Week 4 to Week 24
+ LS mean (95% CI) HAE                   1.80                 0.15                       0.59
+ attacks requiring acute therapy    (1.23, 2.62)         (0.06, 0.39)               (0.31, 1.15)
+ starting from second dose
+ (Week 4)
+ % Reduction (95% CI) relative                               −92                       −67
+ to placebo starting from                                 (−97, −77)                (−85, −29)
+ second dose (Week 4)
+ Wald chi-square p-value                                   <0.001†                    0.004‡
+CI = confidence interval; HAE = hereditary angioedema; LS = least square; N = number of patients in the
+specific treatment group; NS = nonsignificant; q4wks = every 4 weeks; q8wks = every 8 weeks.
+* Primary efficacy endpoint = comparison of the time normalised number of investigator-confirmed HAE attacks
+per 4 weeks from baseline to Week 24 between the Dawnzera 80 mg q4wks group and the placebo group.
+† Reached statistical significance (p value <0.05).
+‡ Reached nominal significance (p value <0.05).
+
+
+Additional pre-defined study secondary endpoints included the proportion of responders to study drug
+and percentage of patients who had well controlled angioedema activity. The proportion of patients
+with a ≥50%, ≥70%, ≥90%, and 100% (attack free) reduction from baseline in HAE attack rate from
+Week 4 to Week 24 in the Dawnzera treatment group was 93%, 82%, 62%, and 53%, respectively, in
+the 80 mg q4wks group, and 83%, 65%, 48%, and 35%, respectively, in the 80 mg q8wks group,
+compared to 27%, 18%, 9%, and 9%, respectively, in the placebo group. The number of patients who
+had well controlled disease at Week 24 in the Dawnzera treatment group based on the Angioedema
+Control Test (AECT) score ≥10 at Week 24 was 41 (91%) (p-value <0.001) in the 80 mg q4wks group
+and 17 (74%) (p-value 0.028) in the 80 mg q8wks group, compared to 9 (41%) in the placebo group.
+
+
+Health-related Quality of Life
+
+
+                                                                                                        8 / 18
+                                           Product information for human medicinal products
+
+An improvement was observed for Dawnzera treatment groups compared to placebo in the
+Angioedema Quality of Life Questionnaire (AE-QoL) total score. A reduction of 6 points is considered
+a clinically meaningful improvement. For the total AE-QoL score at Week 24, the least square mean
+change from baseline in the Dawnzera treatment group was −24.8 and −19.9 for the 80 mg q4wks
+group and 80 mg q8wks group, respectively, compared to −6.2 in the placebo group (p <0.001 and
+p=0.010, respectively).
+
+Trial 2 – “OASISplus”, ISIS 721744-CS7
+A total of 147 adult and paediatric patients (≥12 years) with HAE 1 or HAE 2 received at least 1 dose
+of Dawnzera in an open label extension trial (Trial 2) of up to 3 years. Of these 147 patients, 83
+patients were previously treated with Dawnzera or placebo in Trial 1 and were included in the open
+label extension rollover group of this study. The other 64 patients were previously maintained on other
+HAE prophylactic medications (berotralstat, C1 esterase inhibitors, or lanadelumab) for at least 12
+weeks prior to the Trial 2 run in period and were included in the non-rollover group of this study as
+they were not previously enrolled in a Dawnzera study.
+
+
+Open label Extension Rollover Group (Trial 1 Rollover Patients):
+Rollover patients from Trial 1 continued in the same Dawnzera 80 mg q4wks or q8wks treatment
+groups in Trial 2; however, patients from the q8wks group that were not attack free for ≥8 weeks
+during Week 16 to 24 in Trial 1, received Dawnzera 80 mg every 4 weeks in Trial 2. Patients who
+received placebo in Trial 1 received Dawnzera 80 mg every 4 weeks in Trial 2. The mean HAE attack
+rate for all rollover patients was 0.22 attacks/4 weeks during Trial 2, showing a sustained mean
+reduction in HAE attack rate of 93% compared to the baseline attack rate of 3.42 attacks/4 weeks in
+Trial 1 after 76 weeks of treatment. On the basis of the AECT scores (score ≥10), 13/64 (20%) in the
+80 mg q4wks group had well controlled disease in the Dawnzera treatment group at baseline and
+42/46 (91%) at Week 24, and 5/12 (42%) at baseline and 9/9 (100%) in the 80 mg q8wks group at
+Week 24.
+
+
+Health-related quality of life
+The mean AE-QoL total score decreased from 46.3 (SD 16.6) (n=69) at baseline to 21.0 (SD 16.1)
+(n=47) at Week 25 in the q4wks group and from 41.8 (SD 18.4) (n=14) to 12.4 (SD 9.0) (n=9) in the
+q8wks group, corresponding to a mean change of -27.6 (95% CI -32.2, -23.1) and -23.9 (95% CI -
+37.9, -23.1), respectively.
+
+
+Non-rollover Group (Patients Previously Maintained on Other HAE Long-Term Prophylactic
+Medications):
+All non-rollover patients received Dawnzera 80 mg every 4 weeks in Trial 2 (n=64). Patients were to
+continue to take their other HAE prophylactic treatment during the run-in period as per the respective
+
+                                                                                                        9 / 18
+                                               Product information for human medicinal products
+
+recommended treatment schedules based on the half-life of the individual medicinal products (see
+section “Dosage/Administration”). The mean HAE attack rate for all non-rollover patients was 0.30
+attacks/4 weeks from Week 0 to Week 52, showing a sustained mean reduction in HAE attack rate of
+66% compared to the baseline attack rate of 0.85 attacks/4 weeks (for the subgroups the percent
+change included reductions of 51% for the prior lanadelumab group, 76% for the prior berotralstat
+group, and 78% for the prior C1-esterase inhibitor group). Overall, no increase in HAE attack rate was
+seen during the transition period from other HAE prophylactic medications to Dawnzera. Efficacy data
+up to week 52 and disease control available data (up to Week 16) measured by AECT score are
+reported in Table 4.
+
+
+Health-related quality of life
+Health-related quality of life available data (up to Week 16) measured by the AE-QoL score are
+reported in Table 4.
+Table 4: Non-rollover group efficacy, AECT, and AE-QoL data.
+                          Lanadelumab          Berotralstat       C1-esterase       Switch patients
+                             n = 31              n = 11             inhibitor            Total
+                                                                      n = 22             n = 64
+ Time normalised attack rate (per 4 weeks) from Week 0 to Week 52
+ Baseline               0.69 (0.29, 1.09) 1.80 (0.51, 3.09)     0.61 (0.19, 1.04) 0.85 (0.53, 1.17)
+ Mean (95% CI)          (n = 31)            (n = 11)            (n = 22)          (n = 64)
+ Week 0 – 52            0.27 (0.15, 0.39) 0.35 (0.13, 0.58)     0.33 (0.04, 0.62) 0.30 (0.19, 0.42)
+ Mean (95% CI)          (n = 31)            (n = 11)            (n = 22)          (n = 64)
+ % Change from          -51.05              -76.47              -78.20            -66.12
+ baseline to week 0 to (-78.77, -23.32)     (-93.38, -59.56)    (-97.31, -59.09)  (-79.69, -52.55)
+ week 52 period         (n = 15)            (n = 9)             (n = 11)          (n = 35)
+ Mean (95% CI)
+ Time normalised attack rate (per 4 weeks) from Week 4 to Week 52
+ Baseline               0.69 (0.29, 1.09) 1.80 (0.51, 3.09)     0.61 (0.19, 1.04) 0.85 (0.53, 1.17)
+ Mean (95% CI)          (n = 31)            (n = 11)            (n = 22)          (n = 64)
+ Week 4 – 52            0.28 (0.16, 0.41) 0.21 (0.05, 0.38)     0.29 (0.00, 0.59) 0.27 (0.16, 0.39)
+ Mean (95% CI)          (n = 30)            (n = 11)            (n = 22)          (n = 63)
+ % Change from          -52.82              -87.04              -78.30            -69.63
+ baseline to week 4 to (-79.89, -25.74)     (-100.33, -73.76)   (-97.24, -59.37)  (-83.01, -56.25)
+ week 52 period         (n = 15)            (n = 9)             (n = 11)          (n = 35)
+ Mean (95% CI)
+ Time normalised moderate or severe attack rate (per 4 weeks) from Week 4 to Week 52
+ Baseline               0.51 (0.16, 0.85) 0.94 (0.12, 1.76)     0.38 (0.01, 0.74) 0.54 (0.30, 0.78)
+ Mean (95% CI)          (n = 31)            (n = 11)            (n = 22)          (n = 64)
+ Week 4 – 52            0.20 (0.10, 0.30) 0.09 (0, 0.19)        0.16 (-0.06,      0.17 (0.08, 0.25)
+ Mean (95% CI)          (n = 30)            (n = 11)            0.37)             (n = 63)
+                                                                (n = 22)
+ % Change from          -65.55              -98.25              -95.09            -81.92
+ baseline to week 4 to (-92.24, -38.85)     (-101.11, -95.38)   (-108.72, -       (-95.60, -68.24)
+ week 52 period         (n = 11)            (n = 7)             81.45)            (n = 23)
+ Mean (95% CI)                                                  (n = 5)
+ Time normalised attack rate (per 4 weeks) requiring HAE acute therapy from Week 4 to Week 52
+ Baseline               0.46 (0.12, 0.80) 1.66 (0.30, 3.01)     0.55 (0.13, 0.97) 0.69 (0.38, 1.01)
+ Mean (95% CI)          (n = 31)            (n = 11)            (N = 22)          (n = 64)
+
+ Week 4 – 52             0.24 (0.13, 0.36)   0.18 (0.01, 0.34)   0.29 (-0.01,    0.25 (0.13, 0.36)
+ Mean (95% CI)           (n = 30)            (n = 11)            0.58)           (n = 63)
+                                                                 (n = 22)
+
+                                                                                                      10 / 18
+                                             Product information for human medicinal products
+
+                         Lanadelumab         Berotralstat        C1-esterase         Switch patients
+                            n = 31             n = 11              inhibitor              Total
+                                                                    n = 22                n = 64
+ % Change from          -44.95 (-79.56, - -91.56 (-99.39, -    -77.25 (-98.00, -   -68.99 (-84.33, -
+ baseline to week 4 to 10.33)             83.72)               56.49)              53.65)
+ week 52 period         (n = 10)          (n = 7)              (n = 10)            (n = 27)
+ Mean (95% CI)
+ AECT score from Week 0 to Week 16
+ Baseline               12.0 (10.8, 13.2) 8.7 (5.3, 12.1)      11.7 (10.2, 13.3)   11.3 (10.4, 12.3)
+ Mean (95% CI)          (n = 31)          (n = 11)             (n = 22)            (n = 64)
+ Week 16                13.9 (13.0, 14.8) 13.4 (11.7, 15.1)    14.2 (13.3, 15.1)   13.9 (13.4, 14.5)
+ Mean (95% CI)          (n = 27)          (n = 10)             (n = 20)            (n = 57)
+ % Change from          25.98 (10.63,     65.71 (11.20,        33.93 (10.92,       35.21 (21.89,
+ baseline to week 17    41.33)            120.23)              56.95)              48.53)
+ Mean (95% CI)          (n = 27)          (n = 9)              (n = 20)            (n = 56)
+ AE-QoL total score from Week 0 to Week 16
+ Baseline               33.58 (25.85,     37.17 (22.13,        29.76 (21.62,       32.92 (27.86,
+ Mean (95% CI)          41.31)            52.20)               37.91)              37.99)
+                        (n = 30)          (n = 11)             (n = 21)            (n = 62)
+
+ Week 16                24.53 (17.11,      19.56 (10.12,       21.71 (16.01,       22.65 (18.47,
+ Mean (95% CI)          31.95)             28.99)              27.41)              26.83)
+                        (n = 25)           (n = 10)            (n = 17)            (n = 52)
+ % Change from          -20.08 (-56.99,    -29.07 (-65.07,     -23.95 (-42.09, -   -23.07 (-41.89, -
+ baseline to week 16    16.84)             6.93)               5.80)               4.16)
+ Mean (95% CI)          (n = 25)           (n = 10)            (n = 17)            (n = 52)
+
+
+Trial 3 – Phase 2 Trial, ISIS 721744-CS2
+Trial 3 included 20 adult patients (≥18 years) with at least 2 investigator-confirmed attacks during the
+8-week run-in period, who received at least 1 dose of study treatment. Patients were randomised in a
+2:1 ratio to Dawnzera 80 mg once every 4 weeks or placebo once every 4 weeks. Patients were
+required to discontinue other prophylactic HAE medications prior to entering the trial; however, all
+patients were allowed to use rescue medications for treatment of any breakthrough HAE attacks.
+Overall, 90% of patients had HAE 1. A history of laryngeal angioedema attacks was reported in 60%
+of patients and no patients were on prior prophylactic therapy. The mean attack rate during the
+prospective run-in period (baseline attack rate) was 2.7 attacks/4 weeks and an attack rate of ≥2
+attacks/4 weeks were observed in 65% of patients overall.
+Dawnzera produced a clinically significant reduction in the HAE attack rate (number of investigator-
+confirmed HAE attacks per 4 weeks) compared to placebo, meeting the primary endpoint in this trial,
+as shown in Figure 2 and Table 5.
+
+
+Figure 2: Percentage change (LSM ± SEM) from baseline in the rate of investigator-confirmed HAE attacks/4
+weeks in Trial 3
+
+
+
+
+                                                                                                       11 / 18
+                                              Product information for human medicinal products
+
+
+
+
+HAE = hereditary angioedema; LSM = least square mean; q4wks = every 4 weeks; SC = subcutaneous;
+SEM = standard error of the mean.
+
+Table 5: Results of primary and secondary efficacy endpoints (ITT population)
+                                                Placebo                    Dawnzera 80 mg q4wks
+ Endpoint Statistics                             (N=6)                            (N=14)
+ HAE Attack Rate per 4 Weeks from Baseline to Week 16*
+                                            2.29                                    0.22
+ LS mean (95% CI) attack rate
+                                        (1.54, 3.41)                            (0.10, 0.50)
+ % Reduction (95% CI) relative                                                      −90
+ to placebo                                                                      (−96, −76)
+ Wald chi-square p-value                                                           <0.001
+ HAE Attack Rate per 4 Weeks from Week 4 to Week 16
+ LS mean (95% CI) attack rate
+                                           2.13                                     0.06
+ starting from second dose
+                                      (1.13, 4.01)                              (0.01, 0.61)
+ (Week 4)
+ % Reduction (95% CI) relative
+                                                                                   −97
+ to placebo starting from second
+                                                                                (−100, −69)
+ dose (Week 4)
+ Wald chi-square p-value                                                           0.003
+ CI = confidence interval; HAE = hereditary angioedema; ITT = Intent-to-Treat; LS = least square;
+ N = number of patients in the specific treatment group; q4wks = every 4 weeks.
+ * Primary efficacy endpoint = comparison of the time-normalised number of investigator-confirmed HAE
+ attacks per 4 weeks from baseline to Week 16 between the Dawnzera 80 mg q4wks group and the
+ placebo group.
+
+The least square mean moderate or severe HAE attack rate from Week 4 to Week 16 in the
+Dawnzera treatment group was 0.05, compared to 1.20 in the placebo group, showing a percentage
+reduction of 96%. The proportion of patients with a ≥50%, ≥70%, ≥90%, and 100% (attack free)
+reduction from baseline in HAE attack rate from Week 4 to Week 16 in the Dawnzera treatment group
+was 100%, 92%, 92%, and 92%, respectively, compared to 33%, 17%, 0%, and 0%, respectively, in
+the placebo group. The least square mean number of investigator-confirmed HAE attacks per 4
+
+                                                                                                        12 / 18
+                                            Product information for human medicinal products
+
+weeks requiring acute therapy from Week 4 to Week 16 was 0.06 in the Dawnzera treatment group
+and 1.16 in the placebo group; showing a percentage reduction of 95%.
+
+
+Health related quality of life
+An improvement was observed for the Dawnzera treatment group compared to the placebo group in
+the AE-QoL total score. For the total AE-QoL score at Week 16, the least square mean change from
+baseline in the Dawnzera treatment group was −26.9 compared to −6.2 with placebo.
+Open label arm for patients with HAE with normal C1INH (HAE-nC1INH)
+Trial 3 also included an open label arm for patients with HAE-nC1INH which included 3 adult patients
+who received Dawnzera 80 mg every 4 weeks. A reduction in mean HAE attack rate from 4.23
+attacks/4 weeks during the run-in period to 1.52 attacks/4 weeks from baseline to Week 16 was
+observed in this group.
+
+Trial 4 – Phase 2 Open-Label Extension Trial, ISIS 721744-CS3
+Patients who completed Trial 3 were eligible to rollover into Trial 4, an open label extension trial of up
+to 4 years. A total of 17 adult patients with HAE 1 or HAE 2 received at least 1 dose of Dawnzera in
+Trial 4. The mean HAE attack rate for these patients was 0.06 attacks/4 weeks during Trial 4, showing
+a sustained mean reduction in HAE attack rate of 96% compared to the baseline attack rate of 2.70
+attacks/4 weeks in Trial 3.
+
+
+Cardiac electrophysiology
+No clinically significant prolongation of QTc interval was observed at the recommended dosage of
+Dawnzera 80 mg every 4 weeks or every 8 weeks.
+
+
+Immunogenicity
+The observed incidence of anti-drug antibodies (ADAs) is highly dependent on the sensitivity and
+specificity of the assay. Differences in assay methods preclude meaningful comparisons of the
+incidence of ADAs in the studies described below with the incidence of ADAs in other studies,
+including those of donidalorsen or of other ASO products.
+In Trial 1, with a treatment duration up to 24 weeks, the incidence rate of treatment emergent ADAs in
+adult and paediatric patients (≥12 years) with HAE was 20% (9 of 45 patients) in the Dawnzera 80 mg
+q4wks group and 22% (5 of 23 patients) in the Dawnzera 80 mg q8wks group. In Trial 2, an open
+label extension trial, patients that rolled over from Trial 1 continued treatment with Dawnzera in the 80
+mg q4wks or q8wks groups for up to 3 years (current median exposure duration of 227 days) and
+showed an incidence rate of treatment emergent ADAs of 36% (25 of 69 patients) in the Dawnzera 80
+mg q4wks group and 21% (3 of 14 patients) in the Dawnzera 80 mg q8wks group. The incidence rate
+of treatment emergent ADAs was 42% (27 of 64 patients) for the non-rollover, Dawnzera naïve
+patients who were previously treated with berotralstat, C1 esterase inhibitors, or lanadelumab before
+
+                                                                                                     13 / 18
+                                            Product information for human medicinal products
+
+receiving Dawnzera 80 mg every 4 weeks for a current median exposure duration of 253 days in
+Trial 2.
+The presence of ADAs did not affect donidalorsen plasma Cmax, but increased Ctrough was observed.
+The development of ADAs was not found to affect the pharmacodynamics, safety, or efficacy of
+Dawnzera in these patients.
+
+
+Elderly patients
+The safety and effectiveness of Dawnzera for prophylaxis to prevent attacks of HAE were evaluated
+in a subgroup of patients 65 years and older. Use of Dawnzera in this population is supported by
+evidence from Trials 1 and 3 that included 3 geriatric patients (≥65 years) supplemented by 2
+Dawnzera naïve geriatric patients from an open label trial (Trial 2) that were previously maintained on
+other HAE prophylactic therapies and not previously enrolled in Trial 1. The safety profile and
+reduction in HAE attack rate in these geriatric patients were similar to those observed in younger adult
+patients.
+
+
+Paediatric population
+The safety and effectiveness of Dawnzera for prevention of attacks of HAE have been studied in
+paediatric patients 12 years and older. Use of Dawnzera in this population is supported by evidence
+from Trial 1 that included adults and a total of 7 adolescent patients (12 to 17 years) supplemented by
+4 Dawnzera naïve adolescent patients from an open label trial (Trial 2) that were previously
+maintained on other HAE prophylactic therapies and not previously enrolled in Trial 1. The safety
+profile and reduction in HAE attack rate in these adolescents were similar to those observed in adults
+(see section “Undesirable effects”).
+The safety and effectiveness of Dawnzera in paediatric patients less than 12 years of age have not
+been established.
+
+
+Pharmacokinetics
+
+The pharmacokinetic properties of donidalorsen were evaluated following subcutaneous
+administration of multiple doses every 4 weeks in healthy subjects and every 4 weeks or every 8
+weeks in patients with HAE.
+Population estimates (Geometric Mean) of steady state maximum plasma concentration (Cmax,ss),
+trough plasma concentration (Ctrough,ss), and area under the plasma concentration time curve over the
+dosing interval (AUCτ,ss) are presented in Table 6. No accumulation of donidalorsen Cmax and AUC
+was observed in plasma after repeated dosing every 4 weeks.
+Table 6: Summary of Simulated Pharmacokinetic Parameters from Population Pharmacokinetic
+Analysis Following Dosing of Dawnzera 80 mg q4wks or 80 mg q8wks in Patients with HAE at Steady State.
+
+
+
+
+                                                                                                    14 / 18
+                                              Product information for human medicinal products
+
+
+ Pharmacokinetic Parameters                                            Dawnzera
+ (Geometric Mean)                                80 mg q4wks                          80 mg q8wks
+ Cmax,ss (ng/mL)                                     417                                  416
+ Ctrough,ss (ng/mL)                                 0.755                                0.255
+ AUCτ,ss (ng·h/mL)                                   5240                                 5210
+AUCτ,ss = area under the plasma concentration time curve over the dosing interval at steady state;
+Cmax,ss = maximum plasma concentration at steady state; Ctrough,ss = trough plasma concentration at steady state;
+q4wks = every 4 weeks; q8wks = every 8 weeks.
+
+
+Pharmacokinetics
+
+Absorption
+
+Following subcutaneous administration, donidalorsen is absorbed with the time to maximum plasma
+concentration of approximately 2.5 hours post dose, based on population estimates.
+
+Distribution
+
+Donidalorsen is expected to distribute primarily to the liver and kidney cortex after subcutaneous
+dosing. The population estimate of apparent volume of distribution for the central (Vc/F) and
+peripheral (Vp/F) compartment were 69.8 L and 1840 L, respectively. Donidalorsen is highly bound to
+human plasma proteins (>98% bound) in vitro.
+
+Metabolism
+
+Donidalorsen is metabolised by endo- and exonucleases to short oligonucleotide fragments of varying
+sizes within the liver. The GalNAc moiety of donidalorsen is cleaved from the ASO portion by rapid
+hydrolysis once distributed to tissues.
+
+Elimination
+
+The population estimate of the terminal elimination half-life of the ASO moiety of donidalorsen in a
+typical patient with HAE is approximately 1 month. The mean fraction of unchanged ASO eliminated
+in urine was less than 1% of the administered dose in healthy subjects within 24 hours. Linker related
+metabolites are minimally released to circulation and subsequently rapidly excreted to urine or faeces.
+
+Kinetics in specific patient groups
+
+Population analyses showed no clinically meaningful differences in the pharmacokinetics of
+donidalorsen based on sex (79 Male, 98 Female), ethnicity (Black or African American, Caucasian),
+geographical region, disease status.
+Liver impairment
+Population analyses showed no clinically meaningful differences in the pharmacokinetics of
+donidalorsen in patient with normal liver function (N=175) or mild hepatic impairment (total bilirubin ≤
+1 × ULN and AST > 1 × ULN, or total bilirubin > 1 to 1.5 × ULN and any AST [N=2]). Donidalorsen has
+not been studied in patients with moderate or severe hepatic impairment.
+
+
+                                                                                                           15 / 18
+                                           Product information for human medicinal products
+
+
+
+Renal impairment
+Population based analyses showed no clinically meaningful differences in the pharmacokinetics of
+donidalorsen in patients with normal renal function (N=161) or mild renal impairment (eGFR ≥ 60 to <
+90 mL/min/1.73 m2[N=16]). Donidalorsen has not been studied in patients with moderate or severe
+renal impairment, or end stage renal disease.
+
+
+Children and adolescents
+Population analyses showed no clinically meaningful differences in the pharmacokinetics of
+donidalorsen based on age (12 to <18 years [N=6]; 18 to <65 years [N=169]; ≥65 years [N=2]).
+Population-based analyses showed differences in the pharmacokinetics of donidalorsen depending
+on body weight. The expected Cmax is 1.4 times higher in a patient weighing 60 kg (10th percentile)
+and 0.46 times lower in a patient weighing 100 kg (90th percentile) compared to a patient weighing 70
+kg (50th percentile). In the weight range studied, from 37 to 151.9 kg body weight, the differences are
+clinically not relevant. Donidalorsen has not been studied in children aged < 12 years and weighing
+less than 35 kg.
+
+
+Preclinical data
+
+Carcinogenesis
+In a 6 month carcinogenicity study in transgenic (Tg.rasH2) mice, subcutaneous administration of
+donidalorsen (5, 10, 20, or 60 mg/kg) or a rodent specific surrogate (10 mg/kg) once every 2 weeks
+did not result in an increase in malignant tumors. No malignant tumors were found in a 2-year study in
+rats. This suggests lack of human carcinogenic risk.
+
+Mutagenesis
+Donidalorsen was negative for genotoxicity in in vitro (bacterial reverse mutation, chromosomal
+aberration in Chinese hamster lung cells) and in vivo (mouse bone marrow micronucleus) assays.
+
+Pregnancy, lactation and fertility
+Subcutaneous administration of donidalorsen (0, 5, 10, or 20 mg/kg/week) or a rodent active inhibitor
+of PKK (5 mg/kg/week) to mice every other day throughout pregnancy and weekly throughout
+lactation produced no adverse effects on pre- and postnatal development.
+In the mouse pre- and postnatal development study, the concentrations of donidalorsen in breast milk
+from lactating mice increased in a dose dependent manner at doses ≥10 mg/kg/week, but these
+concentrations of donidalorsen in breast milk were >3000 fold lower than the observed tissue
+concentrations. Even though donidalorsen was detected in the maternal mouse milk, systemic
+exposure in pups was not expected due to the lack of oral absorption of donidalorsen.
+
+                                                                                                  16 / 18
+                                             Product information for human medicinal products
+
+In animal studies, administration of donidalorsen or a pharmacologically active rodent specific
+surrogate in a combined fertility and embryofetal development toxicity study in mice did not result in
+effects on male and female fertility or embryofetal development.
+Subcutaneous administration of donidalorsen (0, 1, 4, or 10 mg/kg/week) or a rodent active inhibitor of
+prekallikrein (PKK) (4 mg/kg/week) to male and female mice weekly, prior to and during mating, and
+continuing every other day in females throughout the period of organogenesis, resulted in no adverse
+effects on fertility, pregnancy, or embryofetal development.
+
+Other information
+
+Incompatibilities
+
+In the absence of compatibility studies, this medicinal product must not be mixed with other medicinal
+products.
+
+Shelf life
+
+Do not use this medicine after the expiry date marked as “EXP” on the pack.
+Dawnzera may be stored in the original carton below 30°C for a single period of up to 6 weeks, but
+not beyond the expiry date. In this case, the disposal date must be entered in the designated area on
+the original packaging.
+
+Special precautions for storage
+
+Store in a refrigerator (2°C to 8°C).
+Keep the pre-filled pen in the outer carton in order to protect from light.
+Do not freeze. Do not expose to heat.
+Keep out of the reach of children.
+
+Instructions for handling
+
+Prior to initiation, patients and/or caregivers must be trained on proper preparation and administration
+of Dawnzera (see Instructions for Use in the Patient Information).
+    •   The single-dose pre-filled pen should be removed from the refrigerator 30 minutes prior to the
+        injection to reach room temperature. Other warming methods must not be used.
+    •   The pre-filled pen must be inspected visually before use. The solution should appear clear and
+        colourless to yellow. The pre-filled pen must not be used if cloudiness, particulate matter, or
+        discolouration is observed prior to administration.
+    •   Dawnzera is to be administered as a subcutaneous injection in the abdomen, upper thigh
+        region, or for caregivers only, the back of the upper arm.
+    •   Dawnzera must not be injected into areas where the skin is tender, bruised, red, or hard.
+
+
+
+
+                                                                                                    17 / 18
+                                         Product information for human medicinal products
+
+Any unused medicinal product or waste material should be disposed of in accordance with local
+requirements.
+
+Authorisation number
+
+69883 (Swissmedic)
+
+Packs
+
+Pack size of one pre-filled pen. [B]
+
+Marketing authorisation holder
+
+Otsuka Pharmaceutical (Switzerland) GmbH, 8152 Opfikon
+
+Date of revision of the text
+
+June 2026
+
+
+
+
+                                                                                                18 / 18
+

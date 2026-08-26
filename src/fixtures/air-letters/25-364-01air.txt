@@ -1,0 +1,75 @@
+United States
+Department of
+                  LaSemilla. Co. Ltd
+Agriculture       1447 Pyeongchang-ro, Pyeongchang,
+Animal and
+                  Gangwon, 25354, Rep of Korea
+Plant Health
+Inspection
+Service
+                  Re: Confirmation of the regulatory status of genome-edited rice lines with drought
+                  tolerance
+Biotechnology
+Regulatory
+Services          Dear Dr. Se-Jun Oh:
+4700 River Road
+Riverdale, MD     Thank you for your letter received January 5, 2026 (25-364-01air), inquiring whether the
+20737             rice (Oryza sativa (L.)) product described in your letter is a regulated article under 7 CFR
+                  part 340. Your letter describes the use of CRISPR/Cas9 genome editing, resulting in the
+                  desired drought tolerance.
+
+                  The Plant Protection Act of 2000 (PPA) provides USDA with broad authority to protect
+                  U.S. agriculture, the environment, and the economy by, among other things, regulating
+                  the introduction of plants and articles to prevent the dissemination or establishment of a
+                  plant pest within the United States. As such, USDA, through the Animal and Plant Health
+                  Inspection Service, regulates the “Introduction of Organisms and Products Altered or
+                  Produced Through Genetic Engineering Which are Plant Pests or Which There is Reason
+                  to Believe Are Plant Pests,” as described in 7 CFR part 340. These regulations only apply
+                  to organisms that USDA deems regulated articles under § 340.1.
+
+                  In your letter, you describe your use of disarmed Agrobacterium tumefaciens to deliver a
+                  construct containing CRISPR/Cas9 reagents into rice plants to create a deletion in the
+                  targeted gene claimed as confidential business information (CBI). You state that you
+                  used conventional breeding techniques to remove the inserted construct DNA. You
+                  confirmed the absence of inserted DNA sequences, including plant pest sequences, using
+                  polymerase chain reaction (PCR) analysis with PCR primers that span the entire T-DNA
+                  region and the vector backbone.
+
+                  Based on the representations you made in your letter, including your description of the
+                  results of your confirmation methods, your rice lines are not themselves plant pests and
+                  no plant pest sequences remain integrated into the genome of rice. Consistent with
+                  previous responses to similar letters of inquiry, USDA does not consider your rice lines
+                  to be regulated pursuant to 7 CFR part 340.
+
+                  Although your modified rice is not regulated under 7 CFR part 340, it may be subject to
+                  other USDA regulations or other regulatory authorities. For example, importation of your
+                  plant or its seeds may be subject to Plant Protection and Quarantine (PPQ) permit and/or
+                  quarantine requirements. For further information, you may contact the PPQ general
+                  number for such inquiries at (877) 770-5990. To inquire about the regulatory status of
+                  your plant with the Environmental Protection Agency, please contact Alan Reynolds at
+                  reynolds.alan@epa.gov or (703) 605-0515. To inquire about the regulatory status of your
+                                                                     LaSemilla. Co. Ltd
+                                                                                 Page 2
+
+
+plant with the Food and Drug Administration (FDA), please contact FDA at
+PlantBiotech@fda.hhs.gov.
+
+Should you become aware at any time of any issues that may affect USDA’s conclusion
+regarding this inquiry, you should immediately notify us in writing of the nature of the
+issue.
+
+Sincerely,
+
+                         Digitally signed by DONNA
+
+DONNA LALLI              LALLI
+                         Date: 2026.01.28 13:07:29
+                         -05'00'
+
+Donna A. Lalli, Ph.D
+APHIS Deputy Administrator
+Biotechnology Regulatory Services
+Animal and Plant Health Inspection Service
+U.S. Department of Agriculture
+

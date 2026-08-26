@@ -1,0 +1,190 @@
+                                                     UNITED STATES DEPARTMENT OF COMMERCE
+                                                     Bureau of Industry and Security
+                                                     Office of Export Enforcement
+                                                     1401 Constitution Avenue, Suite 4508
+                                                     Washington, DC 20230
+
+
+
+                                    PROPOSED CHARGING LETTER
+
+
+Coastal PVA Technology, Inc.
+4031 Alvis Court
+Rocklin, CA 95677
+
+Dear Coastal PVA Technology, Inc.:
+
+The Bureau of Industry and Security, U.S. Department of Commerce (“BIS”), has reason to believe
+that Coastal PVA Technology, Inc. (“Coastal”) is responsible for 18 violations of the Export
+Administration Regulations (the “EAR” or “Regulations”). 1 Specifically, BIS alleges and charges
+the following violations:
+
+                                       GENERAL ALLEGATIONS
+
+Coastal is a California-based company that manufactures and exports polyvinyl alcohol (PVA)
+brushes, which can be used in the semiconductor manufacturing process. As described in further
+detail below, between May 2021 and May 2024, Coastal violated the EAR by selling such brushes
+for export, reexport, or transfer (in-country) to parties on the BIS Entity List in China without the
+requisite license or authorization from BIS. Specifically, using two third-party distributors,
+Coastal sold brushes and related products, valued at approximately $400,088, to Semiconductor
+Manufacturing International (Beijing) Corporation (“SMIC Beijing”) and Semiconductor
+Manufacturing North China (Beijing) Corporation (“SMIC North”). At all relevant times, a license
+was required for the export, reexport, or transfer (in-country) of such items to SMIC Beijing and
+SMIC North.
+
+                                      STATEMENT OF CHARGES
+
+Charges 1–18              15 C.F.R. § 764.2(a) – Engaging in Prohibited Conduct
+
+1. Between on or about May 15, 2021 and May 19, 2024, Coastal engaged in conduct prohibited
+   by the Regulations on 18 occasions when it sold and exported items subject to the EAR to
+   SMIC Beijing and SMIC North—both parties on the Entity List 2—without the requisite license
+   or other authorization from BIS.
+
+1
+  The Regulations are currently codified in the Code of Federal Regulations at 15 C.F.R. Parts 730-774 (2025). The
+charged violations occurred in 2021 through 2024. The Regulations governing the violations at issue are found in the
+2021 through 2024 versions of the Code of Federal Regulations (15 C.F.R. Parts 730-774). The 2025 Regulations set
+forth the procedures that apply to this matter.
+2
+ See 85 Fed. Reg. 83,420 (Dec. 22, 2020). Following the conduct discussed in this proposed charging letter, BIS
+updated the Entity List and maintained the inclusion of both SMIC Beijing and SMIC North on the Entity List. 89
+Fed. Reg. 96,836 (Dec. 5, 2024).
+Coastal PVA Technology, Inc.
+Proposed Charging Letter
+Page 2 of 4
+
+
+2. Pursuant to § 744.11 and Supplement No. 4 to Part 744 of the EAR, a license is required to
+   export, reexport, or transfer (in-country) any item subject to the EAR when an entity that is
+   listed on the Entity List is a party to the transaction as described in § 748.5(c)-(f) of the EAR.
+   At all times relevant to the charges in this letter, BIS authorization was required to export,
+   reexport, or transfer (in-country) any item subject to the EAR to SMIC Beijing or SMIC North.
+   Coastal never sought or received any license or other authorization from BIS for these exports.
+
+3. Among other products, at its facilities in California, Coastal manufactures polyvinyl alcohol
+   brushes and related products, which can be used in the semiconductor manufacturing process
+   to clean post-etched semiconductor wafers. The brushes and related products exported by
+   Coastal were of U.S.-origin, subject to the EAR, and classified as EAR99. 3
+
+4. During the relevant time period, Coastal sold its brushes and related products to end users in
+   China through two third-party distributors based in China. At times, even when it sold the
+   brushes and related products through these distributors, Coastal in fact shipped the items
+   directly to SMIC Beijing or SMIC North. At other times, Coastal shipped the items to the
+   distributors, who subsequently transferred the items to SMIC Beijing or SMIC North. For all
+   shipments, Coastal knew that its brushes were destined for SMIC Beijing or SMIC North.
+
+5. Coastal sold the brushes and related products at issue without identifying the need for a license
+   because of inadequate compliance controls. Coastal had no formal export compliance policies
+   or procedures in place at the time of the relevant sales. After receiving an inquiry from BIS, a
+   senior executive at Coastal stated that Coastal was unaware that unlicensed sales of EAR99
+   items to SMIC Beijing or SMIC North were prohibited by the Regulations. Coastal ceased
+   further sales to SMIC Beijing and SMIC North after being informed of the licensing
+   requirement.
+
+6. By engaging in the above-described conduct, Coastal committed 18 violations of Section
+   764.2(a) of the Regulations.
+
+                                      *        *       *        *        *
+
+
+Accordingly, Coastal is hereby notified that an administrative proceeding is instituted against it
+pursuant to Part 766 of the Regulations for the purpose of obtaining an order imposing
+administrative sanctions, including, but not limited to, any or all of the following:
+
+
+
+
+3
+ EAR99 is a designation for items subject to the EAR but not listed on the Commerce Control List. See Section
+734.3(c) of the EAR.
+
+
+
+
+                                                       2
+Coastal PVA Technology, Inc.
+Proposed Charging Letter
+Page 3 of 4
+
+•          The maximum civil penalty allowed by law of up to the greater of $374,474 per violation, 4
+           or twice the value of the transaction that is the basis of the violation; 5
+
+•          Denial of export privileges;
+
+•          Exclusion from practice before BIS; and/or
+
+•          Any other liability, sanction, or penalty available under law.
+
+If Coastal fails to answer the charges contained in this letter within 30 days after being served with
+notice of issuance of this letter, that failure will be treated as a default. See 15 C.F.R.
+§§ 766.6 and 766.7. If Coastal defaults, the Administrative Law Judge may find the charges
+alleged in this letter are true without a hearing or further notice to Coastal. 15 C.F.R. § 766.7(a).
+Coastal may then be subject to a sanction of up to the maximum penalty amount for the charges in
+this letter.
+
+Coastal is further notified that it is entitled to an agency hearing on the record if it files a written
+demand for one with any answer. See 15 C.F.R. § 766.6. Coastal is also entitled to be represented
+by counsel or other authorized representative who has power of attorney to represent it. See 15
+C.F.R. §§ 766.3(a) and 766.4.
+
+The Regulations provide for settlement without a hearing. See 15 C.F.R. § 766.18. Should Coastal
+have a proposal to settle this case, it should transmit it to the attorneys representing BIS named
+below.
+
+Coastal is further notified that under the Small Business Regulatory Enforcement Flexibility Act,
+Coastal may be eligible for assistance from the Office of the National Ombudsman of the Small
+Business Administration in this matter. To determine eligibility and get more information, please
+see: http://www.sba.gov/ombudsman/.
+
+The U.S. Coast Guard is providing administrative law judge services in connection with the
+matters set forth in this letter. Accordingly, Coastal’s answer must be filed in accordance with the
+instructions in Section 766.5(a) of the Regulations with:
+
+
+
+           U.S. Coast Guard ALJ Docketing Center
+           40 S. Gay Street
+           Baltimore, Maryland 21202-4022
+
+
+4
+  See 15 C.F.R. § 6.3(c)(6). This amount is subject to annual increases pursuant to the Federal Civil Penalties
+Inflation Adjustment Act Improvements Act of 2015, Sec. 701 of Public Law 114-74, enacted on November 2,
+2015. See 89 Fed. Reg. 106,308 (Dec. 30, 2024) (adjusting for inflation the maximum civil monetary penalty under
+the Export Control Reform Act of 2018 from $364,992 to 374,474, effective January 15, 2025).
+5
+    See Export Control Reform Act of 2018, 50 U.S.C. § 4819(c)(1)(A) (2019).
+
+
+
+                                                         3
+Coastal PVA Technology, Inc.
+Proposed Charging Letter
+Page 4 of 4
+
+In addition, a copy of Coastal’s answer must be served on BIS at the following address:
+
+       Chief Counsel for Industry and Security
+       Attention: Kimberly Hsu and Malorie Eisenbrei
+       Room H-3839
+       14th Street and Constitution Avenue, N.W.
+       Washington, D.C. 20230
+
+Kimberly Hsu and Malorie Eisenbrei are the attorneys representing BIS in this case; any
+communications that Coastal may wish to have concerning this matter should occur through
+them. Ms. Hsu and Ms. Eisenbrei may be contacted at 202-482-5301.
+
+
+Sincerely,
+
+Steven Fisher
+Acting Director
+Office of Export Enforcement
+
+
+
+
+                                               4
+

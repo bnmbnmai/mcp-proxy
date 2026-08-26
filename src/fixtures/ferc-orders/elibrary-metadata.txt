@@ -1,0 +1,13 @@
+eLibrary metadata only. Not the order TEXT.
+
+{
+  "description": "Order Approving Stipulation and Consent Agreement re Interstate Power and Light Company under IN25-6.",
+  "acesssionNumber": "20260417-3061",
+  "fileName": "IN25-6-000.docx",
+  "docketNumbers": ["IN25-6-000"]
+}
+
+Filing Description for Accession Number 20260417-3061
+Generate PDF
+File List
+IN25-6-000.docx | Notational Order | DOCX | 107 KB | Public

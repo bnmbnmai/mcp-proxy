@@ -1,0 +1,2677 @@
+UNITED STATES OF AMERICA
+FINANCIAL CRIMES ENFORCEMENT NETWORK
+DEPARTMENT OF THE TREASURY
+
+
+IN THE MATTER OF:                                                )
+                                                                 )                 Number 2026-02
+UBS Financial Services Inc.                                      )
+
+
+
+                       CONSENT ORDER IMPOSING CIVIL MONEY PENALTY
+
+            The Financial Crimes Enforcement Network (FinCEN) has conducted a civil enforcement
+
+investigation and determined that grounds exist to impose a Civil Money Penalty against UBS
+
+Financial Services Inc. (UBSFS or the Firm) for violations of the Bank Secrecy Act (BSA) and its
+
+implementing regulations. 1 UBSFS admits to the Statement of Facts and Violations set forth
+
+below, consents to the issuance of this Consent Order, agrees to pay the civil money penalty
+
+imposed in this Consent Order, and agrees to comply with the provisions of this Consent Order,
+
+including, but not limited to, the Undertakings.
+
+       I.      JURISDICTION
+
+            Overall authority for enforcement and compliance with the BSA lies with the Director of
+
+FinCEN, and the Director may impose civil penalties for violations of the BSA and its
+
+implementing regulations. 2
+
+            At all times relevant to this Consent Order, UBSFS was a “broker or dealer in securities”
+
+(broker-dealer) and “futures commission merchant” (FCM), as defined by the BSA and its
+
+
+
+
+1
+ The BSA is codified at 12 U.S.C. §§ 1829b, 1951-1960, 31 U.S.C. §§ 5311-5314, 5316-5336 and includes other
+authorities reflected in notes thereto. Regulations implementing the BSA appear at 31 C.F.R. Chapter X.
+2
+    31 U.S.C. § 5321(a); 31 C.F.R. § 1010.810(a), (d); Treasury Order 180-01 (July 1, 2014, reaff’d Jan. 14, 2020).
+implementing regulations. 3 As such, UBSFS was required to comply with applicable BSA
+
+regulations.
+
+           AML Program: The BSA and its implementing regulations require broker-dealers and
+
+FCMs, such as UBSFS, to implement and maintain an anti-money laundering (AML) program,
+
+including policies, procedures, and controls to assure ongoing compliance with the applicable
+
+provisions of the BSA. 4             UBSFS is also required to: (1) conduct independent testing for
+
+compliance; (2) designate an individual or individuals responsible for implementing and
+
+monitoring the operations and internal controls of the program; (3) conduct ongoing training for
+
+appropriate persons; and (4) implement appropriate risk-based procedures for conducting ongoing
+
+customer due diligence, including but not limited to (a) understanding the nature and purpose of
+
+customer relationships for the purpose of developing a customer risk profile and (b) conducting
+
+ongoing monitoring to identify and report suspicious transactions and, on a risk basis, to maintain
+
+and update customer information. 5
+
+           Suspicious Activity Reporting: Broker-dealers and FCMs must identify suspicious
+
+transactions relevant to a possible violation of law or regulation in Suspicious Activity Reports
+
+(SARs) filed with FinCEN. 6 Specifically, the BSA and its implementing regulations require
+
+broker-dealers and FCMs to report transactions that involve or aggregate to at least $5,000; are
+
+conducted or attempted by, at, or through the broker-dealer or FCM; and that the broker-dealer or
+
+FCM “knows, suspects, or has reason to suspect” are suspicious. 7 A transaction is “suspicious” if
+
+
+
+
+3
+    31 U.S.C. § 5312(a)(2)(G) and (H); 31 C.F.R. § 1010.100(h), (t)(2), (t)(8), and (x).
+4
+    31 U.S.C. § 5318(h); 31 C.F.R. § 1023.210; 31 C.F.R. § 1026.210.
+5
+    31 U.S.C. § 5318(h); 31 C.F.R. § 1023.210(b); 31 C.F.R. § 1026.210(b).
+6
+    31 U.S.C. § 5318(g); 31 C.F.R. § 1023.320; 31 C.F.R. § 1026.320.
+7
+    31 U.S.C. § 5318(g); 31 C.F.R. § 1023.320; 31 C.F.R. § 1026.320.
+
+                                                                 2
+a broker-dealer or FCM “knows, suspects, or has reason to suspect” that the transaction:
+
+(i) involves funds derived from illegal activities; (ii) is designed to evade the reporting or
+
+recordkeeping requirements of the BSA or regulations implementing it; (iii) has no business or
+
+apparent lawful purpose or is not the sort in which the customer normally would be expected to
+
+engage, and the broker-dealer or FCM knows of no reasonable explanation for the transaction after
+
+examining the available facts, including background and possible purpose of the transaction; or
+
+(iv) involves the use of the broker-dealer or FCM to facilitate criminal activity. 8 A broker-dealer
+
+or FCM is generally required to file a SAR no later than 30 calendar days after the initial detection
+
+by the broker-dealer or FCM of the facts that may constitute a basis for filing a SAR. 9
+
+             The reporting and transparency that financial institutions provide through SARs is essential
+
+financial intelligence that FinCEN, law enforcement, and others use to safeguard the U.S. financial
+
+system and combat serious threats, including money laundering, terrorist financing, organized
+
+crime, corruption, drug trafficking, and massive fraud schemes targeting the U.S. government,
+
+businesses, and individuals. 10
+
+       II.      STATEMENT OF FACTS
+
+             The conduct described below took place from January 1, 2019, through June 30, 2023 (the
+
+Relevant Time Period) unless otherwise indicated. 11
+
+                A.       FinCEN
+
+             FinCEN is a bureau within the U.S. Department of the Treasury and is the federal authority
+
+
+
+
+8
+    31 C.F.R. § 1023.320(a)(2)(i)-(iv); 31 C.F.R. § 1026.320(a)(2)(i)-(iv).
+9
+    31 C.F.R. § 1023.320(b)(3); 31 C.F.R. § 1026.320(b)(3).
+10
+  FinCEN, FIN-2014-A007, FinCEN Advisory to U.S. Financial Institutions on Promoting a Culture of Compliance
+(Aug. 11, 2014).
+11
+  As explained below, certain of the violations described in the Statement of Facts represent UBSFS’s continued
+violation of the BSA following a prior consent order that it entered into with FinCEN and other regulators.
+
+                                                                 3
+that enforces the BSA by investigating and imposing civil money penalties on financial institutions
+
+and individuals for willful violations of the BSA. 12 As delegated by the Secretary of the Treasury,
+
+FinCEN has “[a]uthority for the imposition of civil penalties” and “[o]verall authority for
+
+enforcement and compliance, including coordination and direction of procedures and activities of
+
+all other agencies exercising delegated authority under this chapter,” including the Commodities
+
+Futures Trading Commission (CFTC) and the Securities and Exchange Commission (SEC). 13
+
+                B.       CFTC
+
+           The CFTC is a federal regulator of UBSFS and has both delegated authority from
+
+FinCEN, 14 and separate authority under Title 7 of the United States Code, for examining FCMs,
+
+including UBSFS, for compliance with the BSA and its implementing regulations and similar rules
+
+under Title 7 of the United States Code.
+
+                C.       SEC
+
+           The SEC is a federal regulator of UBSFS and has both delegated authority from FinCEN, 15
+
+and separate authority under Title 15 of the United States Code, for examining broker-dealers,
+
+including UBSFS, for compliance with the BSA and its implementing regulations and similar rules
+
+under Title 15 of the United States Code.
+
+                D.       FINRA
+
+           The Financial Industry Regulatory Authority (FINRA) is a self-regulatory organization
+
+
+
+12
+  31 U.S.C. § 5321(a). In civil enforcement of the BSA under 31 U.S.C. § 5321(a)(1), to establish that a financial
+institution or individual acted willfully, the government need only show that the financial institution or individual
+acted with either reckless disregard or willful blindness. The government need not show that the entity or individual
+had knowledge that the conduct violated the BSA, or that the entity or individual otherwise acted with an improper
+motive or bad purpose. UBSFS admits to “willfulness” only as the term is used in civil enforcement of the BSA under
+31 U.S.C. § 5321(a)(1).
+13
+     31 C.F.R. § 1010.810(a), (d).
+14
+     31 C.F.R. § 1010.810(b)(9).
+15
+     31 C.F.R. § 1010.810(b)(6).
+
+                                                              4
+with authority to examine its member firms, including UBSFS, for compliance with the BSA and
+
+its implementing regulations. FINRA also issues regulations that govern the conduct of its
+
+members, including minimum standards for AML programs. 16
+
+               E.       UBS Financial Services Inc.
+
+           As a full-service broker-dealer and FCM, UBSFS offers securities and commodities
+
+brokerage services; investment products and advisory services; portfolio management products
+
+and services; and execution and clearance services for transactions originated by individual
+
+investors. UBSFS is a wholly owned subsidiary of UBS Americas Inc., which is an indirect
+
+subsidiary of UBS AG in Switzerland (UBS Head Office), a subsidiary of its holding company,
+
+UBS Group AG. UBS Group AG reported consolidated total assets of approximately $1.62 trillion
+
+and annual total revenue of approximately $49.6 billion for the year ending December 31, 2025.
+
+               F.       FinCEN’s 2018 Consent Order with UBSFS
+
+           On December 11, 2018, UBSFS entered into a Consent Order with FinCEN for violations
+
+of the BSA that included the assessment of a civil money penalty of $14.5 million (the 2018
+
+Consent Order). 17 There, FinCEN determined that, for the time period 2004 through April 2017,
+
+UBSFS willfully violated AML program requirements 18 and willfully violated the requirement to
+
+conduct ongoing due diligence on correspondent accounts for foreign financial institutions. 19 The
+
+2018 Consent Order found that UBSFS failed to provide adequate resources to its AML
+
+
+
+16
+   FINRA Rule 3310 requires that “[e]ach member shall develop and implement a written anti-money laundering
+program reasonably designed to achieve and monitor the member’s compliance with the requirements of the Bank
+Secrecy Act (31 U.S.C. 5311, et seq.), and the implementing regulations promulgated thereunder by the Department
+of the Treasury.” FinCEN’s regulation requiring broker-dealers to implement an AML program requires, among other
+things, that broker-dealers comply with “the rules, regulations, or requirements of its self-regulatory organization
+governing such programs.” 31 C.F.R. § 1023.210(c).
+17
+     FinCEN, In the Matter of UBS Financial Services, Inc. (Dec. 11, 2018).
+18
+     31 U.S.C. § 5318(h); 31 C.F.R. § 1023.210.
+19
+     31 U.S.C. § 5318(i); 31 C.F.R. § 1010.610(a).
+
+                                                               5
+Compliance Officer, including staffing, to ensure day-to-day compliance with the BSA, hindering
+
+UBSFS’s ability to file SARs in a timely manner. The 2018 Consent Order also stated that UBSFS
+
+failed to develop sufficient policies and procedures to address the AML risks associated with
+
+providing financial services to shell companies, which can be used to mask the beneficial
+
+ownership of account assets, making the tracking of funds movement more difficult for law
+
+enforcement and tax officials. Lastly, the 2018 Consent Order stated that UBSFS also failed to
+
+adequately monitor foreign currency wires conducted through commodities accounts and retail
+
+brokerage accounts due to weaknesses in its automated monitoring system. In the 2018 Consent
+
+Order, FinCEN recognized UBSFS’s “commitment and ability to correct the issues” identified
+
+therein, including “upgrading its AML surveillance monitoring system.” However, as detailed
+
+below, such upgrade was subject to delays and a flawed implementation process, which UBSFS
+
+failed to disclose to FinCEN until FinCEN’s own investigation was already underway. 20
+
+                      1.      UBSFS’s Failures Related to Monitoring of Commodities
+                              Accounts in the December 2018 Consent Order
+
+        Beginning in 2004, UBSFS failed to adequately monitor foreign currency wires conducted
+
+through UBSFS’s commodities accounts.                    Specifically, UBSFS’s automated transaction
+
+monitoring system failed to capture critical information about these foreign currency wires,
+
+including sender and recipient information and the country of origin and destination. This gap in
+
+the automated transaction monitoring system impacted thousands of wire transfers amounting to
+
+billions of dollars sent or received through commodities accounts, including transfers to and from
+
+countries known for heightened money laundering risk. In August 2012, UBSFS implemented a
+
+
+
+
+20
+  During the course of FinCEN’s investigation, UBSFS uncovered certain transaction-related data issues; despite the
+2018 Consent Order, such issues were not previously investigated by UBSFS in its implementation of the upgraded
+AML surveillance monitoring system. UBSFS then disclosed these issues to FinCEN.
+
+                                                             6
+manual report of foreign currency wires into and out of commodities accounts. This manual
+
+process, however, was insufficient to identify patterns of suspicious activity and ensure
+
+compliance with the BSA’s monitoring requirements.
+
+                     2.      UBSFS’s Failures Related to Monitoring of Retail Brokerage
+                             Accounts in the December 2018 Consent Order
+
+        In addition to commodities accounts, the 2018 Consent Order noted that UBSFS customers
+
+were able to send or receive foreign currency wires through retail brokerage accounts. 21 Unlike
+
+the foreign currency wires effected by commodities accounts, UBSFS did not implement a manual
+
+report or any other compensating control to adequately monitor foreign currency wires effected by
+
+these accounts. 22
+
+        Retail brokerage accounts did not have multi-currency capability and therefore were
+
+restricted to carrying balances and conducting transactions in U.S. dollars. To assist customers
+
+who needed to transact in foreign currency, UBSFS provided a service to convert U.S. dollars to
+
+foreign currency (or vice versa). Although the U.S. dollar debits and credits in the accounts were
+
+subject to automated transaction monitoring, UBSFS’s automated monitoring system failed to
+
+capture critical information about foreign currency wires, including the identity and location of the
+
+sender or recipient of the wire, the foreign currency denomination, and the counterparty (including
+
+whether a third party was involved in the transaction). Without this critical information about the
+
+transaction, UBSFS could not adequately monitor foreign currency wires in its retail brokerage
+
+accounts.
+
+
+
+ While not discussed in the 2018 Consent Order, securities-backed loan accounts were also affected by UBSFS’s
+21
+
+monitoring deficiencies.
+22
+  In July 2012, UBSFS adjusted its automated transaction monitoring system to enhance its review of foreign currency
+wires in retail accounts. However, as noted in the 2018 Consent Order, these measures were insufficient for BSA
+compliance purposes because the system still failed to capture certain information related to the foreign currency
+denomination and the identity and jurisdictions of the parties to the transaction.
+
+                                                             7
+           Before entering into the 2018 Consent Order, UBSFS represented to FinCEN that, by mid-
+
+2019, it expected to implement a new system for the automated monitoring of foreign currency
+
+wires, currency transactions, and wire activity that would remediate these deficiencies.
+
+              G.     UBSFS Continued to Violate the BSA After the 2018 Consent Order
+
+           Notwithstanding these representations to FinCEN, it was not until March 2021 that UBSFS
+
+belatedly deployed a new automated monitoring system in an attempt to remediate these known
+
+issues. As explained below, due to deficiencies in the planning and testing of the new system’s
+
+implementation, UBSFS’s monitoring failure persisted into the second quarter of 2023, more than
+
+four years after the 2018 Consent Order. UBSFS also failed to comply with its BSA obligations
+
+in other respects, primarily related to its provision of services to certain high-risk customers with
+
+ties to Russia and Latin America.
+
+              H.     UBSFS’s Failure to Implement and Maintain a Reasonably Designed
+                     AML Program during the Relevant Time Period
+
+                     1.      Policies, Procedures, and Internal Controls
+
+           Throughout the Relevant Time Period and despite the 2018 Consent Order, UBSFS failed
+
+to implement and maintain reasonably designed internal controls to monitor foreign currency wires
+
+effected through its customers’ accounts. For more than four years, UBSFS failed to appropriately
+
+monitor more than 61,500 foreign currency wires with an aggregate value of more than $10.5
+
+billion.
+
+
+
+
+                                                     8
+                           a.      Failures to Correct Monitoring Deficiencies Related to
+                                   Foreign Currency Wires for Commodities Accounts
+
+                                                    1) Overview
+
+       Dating back to 2012 and through at least March 2021, UBSFS relied on a manual control—
+
+a report flawed in both its design and execution—to monitor foreign currency wires effected
+
+through customers’ commodities accounts, even after the 2018 Consent Order and contrary to
+
+representations to FinCEN.
+
+       This manual control suffered from three primary deficiencies that rendered it unfit for
+
+purpose: (i) the report was not reasonably tailored for the attendant risk; (ii) the report-generation
+
+process was unreliable and prone to error; and (iii) the report was generated and reviewed too
+
+infrequently to mitigate known risks.
+
+       First, the report, which relied on three parameters, was not tailored to address the money
+
+laundering and terrorist financing risks of UBSFS’s customer base. An internal UBSFS slide deck
+
+from January 2019—shortly after UBSFS entered into the 2018 Consent Order with FinCEN—
+
+acknowledged that the report was “as noted by the regulators . . . still not effective.” When UBSFS
+
+implemented automated monitoring for foreign currency wire transactions in March 2021, it was
+
+finally able to enact appropriate monitoring scenarios—long used by many financial institutions
+
+with risk profiles and resources equivalent to UBSFS—that captured risks omitted by the prior,
+
+rudimentary controls, including: (i) high-risk geographies; (ii) suspicious payment instructions
+
+(based on keywords and an internal watchlist); (iii) deviation of a customer’s actual behavior from
+
+expected behavior; (iv) velocity of funds movement across products; (v) activity in a dormant
+
+account; and (vi) round-dollar transactions. The application of these scenarios eventually led to
+
+necessary improvements to the Firm’s monitoring of foreign currency wires, but only after years
+
+of delays wherein UBSFS failed to adequately monitor the risks associated with these accounts.
+
+
+                                                      9
+Additionally, as explained further below, UBSFS’s flawed implementation of the new automated
+
+transaction monitoring system meant that many foreign currency wires were not subject to these
+
+scenarios—an issue that UBSFS remediated only after FinCEN’s investigation raised questions
+
+about the new system’s coverage of foreign currency wires.
+
+         Second, the interim control involved a complex, manual process that was not well
+
+documented and resulted in errors. The generation process required multiple UBSFS personnel to
+
+take a dozen steps to manually query four different systems and then manually copy and paste the
+
+corresponding data points into an Excel document. Two of the most important steps in the process
+
+often resulted in additional manual “cleanup” work. 23 Personnel who assisted in generating or
+
+using this report described its generation as a “big issue” because “the data [] a lot of time is
+
+incomplete and very messy.” These challenges were compounded by an apparent lack of approved
+
+procedures governing this manual process for much of the Relevant Time Period.
+
+         Third, the report did not allow UBSFS to review the relevant transactions for potentially
+
+suspicious activity in a timely manner, because it was run, at best, quarterly, 24 leading to backlogs
+
+of alerts that UBSFS could only clear after delays associated with hiring and onboarding additional
+
+staff. In an internal email thread sent shortly after UBSFS entered into the 2018 Consent Order,
+
+UBSFS personnel were instructed to either “prevent FX [foreign currency wire] transactions from
+
+
+
+
+23
+   In order to properly associate a wire transfer with an account, the wire had to be matched with the relevant account
+number that was debited or credited. However, incoming wires did not list the customer account in a standalone field,
+so any attempt to query for such account number, according to a UBSFS employee, “wasn’t perfect and could never
+be.” In one run of the report during the Relevant Time Period, nearly half of the records lacked a valid account
+number. Similarly, because alerts were based on activity at the “household” (i.e., not account) level, a household
+identification number was also needed to properly generate an alert. However, the source data did not always include
+valid household identification numbers, so further manual “clean up” would often be required.
+24
+  UBSFS was inconsistent in running the report on even a quarterly basis, with largely all 2019 transactions covered
+through just two instances of the report (not four reports, as would be expected if they were generated on a quarterly
+basis).
+
+                                                              10
+being undertaken through commodities accounts . . . or (if there is strong rationale to retain),
+
+increase the frequency of checks to monthly from quarterly.” The president of the intermediate
+
+holding company for UBS’s operations in the U.S. “insist[ed]” that this change occur. UBSFS
+
+never implemented this change to the manual control before its deactivation in March 2021, in
+
+connection with the move to the new automated transaction monitoring system, despite
+
+recognizing early in the Relevant Time Period the importance of an increase in frequency of the
+
+report and taking preliminary steps to accomplish this.
+
+                               2) Coding Glitch and Flawed Internal Lookback
+
+       One aspect of the report-generation process involved running “code” within Excel to
+
+identify transactions that met alert parameters.       One of these parameters was identifying
+
+households whose accounts effected transactions that totaled more than USD-equivalent of
+
+300,000 in foreign currency wires within a one-month period. Due to the lack of quality control
+
+in generating this report, UBSFS personnel failed to ascertain that UBSFS was systematically
+
+undercounting the value of these foreign currency wires for roughly two years. This delayed
+
+discovery resulted in a failure to “alert” on hundreds of transactions.
+
+       UBSFS personnel who discovered this issue in late 2020 were aware that it affected prior
+
+reports. Nevertheless, these UBSFS personnel took no immediate steps to escalate this issue or
+
+ascertain the scope of the missed transactions.        After an inquiry from FINRA during an
+
+examination caused UBSFS to revisit the issue, UBSFS voluntarily commenced an internal
+
+lookback in December 2020, about two months after personnel discovered the issue and became
+
+aware of its effect on prior reports. UBSFS completed the internal lookback in 2021, which did
+
+not result in UBSFS filing any SARs. The relevant transactions and associated customers,
+
+however, included the following activity:
+
+
+
+                                                     11
+             •   A Venezuelan financial institution with a retail brokerage account for which
+
+                 UBSFS’s investigator failed to obtain information to identify the originator of
+
+                 certain wire transfers, despite the fact that the missing originator was the primary
+
+                 reason that the alert was escalated (and a request for this information was sent to
+
+                 the relevant UBSFS branch without any response) and despite the investigator
+
+                 noting that the account posed heightened risks;
+
+             •   A customer whose beneficial owner was under investigation for money laundering
+
+                 and tax evasion 25 and for whom UBSFS had already been informed by an affiliate
+
+                 that it had decided to exit its accounts with this customer due to negative news, for
+
+                 which the UBSFS investigator conducted no meaningful analysis of the
+
+                 transactions in light of the negative news.
+
+             •   A Mexico-based customer who was involved in alleged fraud and was later
+
+                 kidnapped and murdered. UBSFS’s investigator conducted no meaningful analysis
+
+                 of transaction activity that exhibited signs of pass-through activity despite concerns
+
+                 about potential pass-through activity forming the primary basis for the alert being
+
+                 escalated.
+
+        •        A customer with Venezuelan beneficial owners whose account exhibited red flags
+
+                 that included sending wire transfers to “an unregistered currency exchanger” from
+
+                 high-risk jurisdictions such as Venezuela and transactions indicative of potential
+
+                 layering and other suspicious activity involving a private mortgage provider.
+
+
+
+
+25
+  The customer was later added to the U.S. State Department’s “Engel List” of individuals who have knowingly
+engaged in acts that threaten democratic processes or institutions, engaged in significant corruption, or obstructed
+investigations of such acts of corruption in Guatemala, Honduras, and El Salvador.
+
+                                                            12
+                    Notwithstanding these apparent red flags and risks, the UBSFS investigator failed
+
+                    to investigate the circuitous flow of funds and purpose of the transactions.
+
+                                 b.       Failures to Timely Correct Monitoring Deficiencies Related
+                                          to Foreign Currency Wires for Other Account Types
+
+           UBSFS also failed to reasonably monitor foreign currency wires for retail brokerage and
+
+securities-backed loan accounts or to implement adequate compensating controls, from the start of
+
+the Relevant Time Period until March 2021. As described above, foreign currency wires in
+
+UBSFS’s retail brokerage and securities-backed loan accounts were monitored only for their U.S.
+
+dollar debits and credits, without the transaction monitoring system surveilling the foreign-
+
+currency and foreign counterparty aspects of the transactions, until at least March 2021, 26 despite
+
+the Firm having been cited in the 2018 Consent Order for inadequately monitoring retail brokerage
+
+accounts. 27 This gap in monitoring of foreign currency wires was particularly egregious for two
+
+reasons:
+
+           First, the 2018 Consent Order made clear that the automated monitoring system in place
+
+at the time (and which UBSFS continued to use until March 2021) was “not sufficient for BSA
+
+compliance” because it “failed to capture certain information related to the foreign currency
+
+denomination and the identity of certain parties to the transaction, and the jurisdictions
+
+involved.” 28
+
+           Second, UBSFS consistently ignored and failed to escalate examples of foreign currency
+
+wires for non-commodities accounts that were not subject to appropriate monitoring even after the
+
+
+
+26
+     The batch of transactions that the system monitored in March 2021 consisted of February 2021 transactions.
+27
+  The 2018 Consent Order established clear deficiencies with UBSFS’s monitoring of these transactions, yet UBSFS
+neither implemented any changes to existing monitoring nor added other compensating controls while it waited for
+the automated monitoring system to be implemented. See FinCEN, In the Matter of UBS Financial Services, Inc.
+(Dec. 11, 2018).
+28
+     FinCEN, In the Matter of UBS Financial Services, Inc. (Dec. 11, 2018).
+
+                                                               13
+2018 Consent Order. On multiple occasions, UBSFS personnel investigating alerts in connection
+
+with the report for commodities accounts identified that, due in part to the complex and manual
+
+nature of the report generation process, the report sometimes included foreign currency wires for
+
+other, non-commodities account types. At no point did UBSFS take steps to confirm that such
+
+foreign currency wires were being properly monitored; instead, UBSFS closed the alerts without
+
+any investigation under the rationale that they were “generated in error” or “not in scope of the
+
+manual control.”
+
+                              c.      Delayed and Flawed Implementation of the New
+                                      Automated Monitoring System
+
+        UBSFS’s implementation of the new automated monitoring system was delayed and
+
+flawed. In communications related to the 2018 Consent Order, UBSFS informed FinCEN that it
+
+anticipated the automated monitoring system would be in place and applicable to foreign currency
+
+wires by mid-2019. Within weeks of the December 2018 Consent Order, however, UBSFS,
+
+including its senior executives, and UBS Head Office became aware that it would not meet the
+
+mid-2019 implementation date and that automated monitoring of foreign currency wires would
+
+not be in place until at least late 2019 and potentially into 2020. UBSFS did not inform FinCEN
+
+regarding these delays. 29 UBSFS internally attributed the delays in implementing the automated
+
+monitoring system to: (i) data feed problems; (ii) a high volume of alerts in the model calibration
+
+phase; (iii) limitations associated with the sponsorship of this project within the broader UBS
+
+organization; and (iv) changes to UBSFS’s approach to model governance.
+
+
+
+
+29
+  UBS’s Group Internal Audit group issued audit reports in 2019 and 2020 that focused on UBSFS’s transaction
+monitoring program; although the audits noted the need to implement the new automated system, the later of these
+two reports inaccurately found that UBSFS had “adequately implemented compensating controls over the legacy []
+applications…”
+
+                                                          14
+        As the year progressed, UBSFS’s planned implementation date continued to slip further
+
+away. In September 2019, the Americas Head of Monitoring received an update to include in an
+
+upcoming briefing he was providing to the CEO of UBS Americas Holding indicating that the
+
+automated monitoring system was now expected to be implemented in the first quarter of 2020.
+
+UBSFS did not implement the automated monitoring system until March 2021, and FinCEN only
+
+learned of this deficiency through its follow-up investigation.
+
+        Even with these delays, UBSFS’s implementation of the new system was flawed and failed
+
+to adequately address the deficiencies associated with the monitoring of foreign currency wires.
+
+These issues were compounded by deficiencies in the application of UBSFS’s data governance
+
+framework to its transaction monitoring program, which failed to require complete data lineage
+
+mapping and testing. As a result, UBSFS failed to appropriately monitor thousands more foreign
+
+currency wires after the date of the 2018 Consent Order and promised remediation, aggregating to
+
+billions of dollars.
+
+        UBSFS acknowledged the ongoing deficiencies once they were discovered in mid-2022,
+
+after extensive engagement with FinCEN, as well as FINRA and the SEC, regarding concerns
+
+about the adequacy of UBSFS’s controls—including whether the recently implemented system
+
+was, in fact, monitoring the relevant foreign currency wire transactions. In August 2022, UBSFS
+
+engaged a third-party consultant to assist in identifying and remediating the various deficiencies
+
+in UBSFS’s implementation of the automated monitoring system. UBSFS identified a number of
+
+errors that hindered the effectiveness of its monitoring system, which generally fell into three
+
+categories: (i) certain foreign currency wire transactions were not transmitted from other systems
+
+to the automated monitoring system, and therefore went unmonitored; (ii) many foreign currency
+
+wire transactions were missing counterparty information, thus hindering monitoring—notably this
+
+
+
+                                                    15
+was one of the issues identified in the 2018 Consent Order, yet it remained an issue even after
+
+2018; and (iii) UBSFS’s implementation of the system did not include an exception queue or error
+
+reporting mechanism, which would have detected when certain transactions were either not
+
+monitored or were missing critical data points necessary for adequate monitoring.
+
+       More broadly, a root cause associated with many of these discrete issues was that UBSFS
+
+failed to apply relevant data-governance policies, procedures, and internal controls to the data upon
+
+which its anti-money laundering transaction monitoring process relied. UBSFS did not apply a
+
+coherent data management framework to this process until April 2023, and the absence of such a
+
+coherent framework contributed to the issues described below.
+
+       In particular, although UBSFS conducted certain data quality tests as part of the validation
+
+of the new system’s implementation, such tests did not include data lineage mapping and testing.
+
+Similarly, after the system’s launch, UBSFS generated monthly model performance monitoring
+
+(MPM) reports to assess the performance of the new system’s model, yet none of the MPM reports
+
+identified any problems with the automated monitoring model. The failure of these processes to
+
+identify the ongoing gaps in foreign currency wire monitoring stemmed from the fact that no group
+
+within UBS—such as Group Internal Audit or Model Risk Management and Control—had
+
+responsibility within UBSFS for conducting full data lineage mapping and testing back to the
+
+sources of foreign exchange wire data. As a result, UBSFS did not identify foreign exchange wire-
+
+related data discrepancies between the source data and the data relied upon by the Firm’s
+
+transaction monitoring system. Not until around May 2022 did UBSFS, prompted by FinCEN’s
+
+investigation, appreciate and begin to address—including by retention of a third-party
+
+consultant—the issues with the foreign exchange wire data flowing into its new automated
+
+transaction monitoring system.
+
+
+
+                                                     16
+                                 1.      The Automated Monitoring System Omitted Transactions
+
+        UBSFS failed to monitor a significant number of the transactions that flowed to and from
+
+its customers’ accounts. UBSFS selected an incorrect, partial data feed of foreign currency wires,
+
+instead of a complete, end-of-day data feed. As a result, UBSFS omitted a significant number of
+
+foreign currency wire transactions from the automated monitoring system, likely due to its
+
+inadequate testing and data management framework. UBSFS made its initial attempt to quantify
+
+the scope of this monitoring gap in early 2022, based on data from a one-month sample. It found
+
+that more than five percent of foreign currency wires were completely excluded from the
+
+automated monitoring system and another roughly 12% were missing certain counterparty
+
+information, thus resulting in a material percentage of the foreign currency wires failing to include
+
+adequate data.
+
+        Similarly, UBSFS’s failure to implement adequate policies, procedures, and internal
+
+controls to oversee manual processes or appropriately oversee the management of data resulted in
+
+additional foreign currency wires not being sent to the monitoring system. 30
+
+                                 2.      Missing or Incomplete Counterparty Information in
+                                         Foreign Currency Wire Transactions
+
+        Certain foreign currency wires captured by the monitoring system lacked critically
+
+important counterparty information. Critical information about the counterparty to a foreign
+
+currency wire is stored separately from information about the customer or other aspects of the
+
+transaction due to the way in which UBSFS maintained data. Therefore, to properly monitor the
+
+wire for potentially suspicious activity, UBSFS needed to ensure that such counterparty
+
+information was identified and matched with the relevant wires. UBSFS failed to implement a
+
+
+
+ As an example, UBSFS’s Payment Operations team changed the label of certain foreign currency wires from “FX
+30
+
+RECEIVED” to “FX RCVD,” which prevented them from being sent to the monitoring system.
+
+                                                        17
+unique identifier or other safeguard that would allow for a reliable process to do so. Instead,
+
+UBSFS adopted a complex matching logic that was vulnerable to errors as mismatches were likely
+
+to (and did) occur, such as rounding up of the exchange rate used at the time of the transaction.
+
+UBSFS failed to implement appropriate policies, procedures, and internal controls to check that
+
+the matching logic was working as required.
+
+                               3.      Missing Exception-Handling Process Control
+
+       UBSFS’s data repository had no exception queue or process to catch, resolve, and report
+
+when a foreign currency wire could not be processed by the automated monitoring system. In the
+
+case of UBSFS’s monitoring of foreign currency wires, the lack of such a control resulted in
+
+UBSFS failing to reasonably identify the existence of, much less remediate, unmonitored
+
+transactions and the root causes that prevented them from being properly monitored. UBSFS’s
+
+failure to implement this basic feature meant that it processed a significant volume of foreign
+
+currency wires without proper monitoring and missed opportunities to remediate this deficiency
+
+until December 2022, after FinCEN commenced its investigation. This failure was particularly
+
+egregious in light of the large size, scale, and complexity of UBSFS’s business.
+
+                          d.        Other Monitoring Issues
+
+       In addition to the above, UBSFS engaged in a series of other practices that hindered its
+
+ability to appropriately monitor its customers’ foreign currency transfers to identify potentially
+
+suspicious activity. For example, prior to the implementation of UBSFS’s new automated
+
+transaction monitoring system in March 2021, UBSFS utilized a report to monitor cross-border
+
+U.S. dollars wires. Among other criteria, the report identified wire transfers involving high-risk
+
+countries using predetermined parameters. The Firm designated transactions on this report with a
+
+specific code if the Firm’s systems were unable to recognize the country of the beneficiary based
+
+on the wire message details.
+
+                                                   18
+        Prior to April 2019, the Firm assigned such transactions a moderate risk rating, which was
+
+not a reasonably designed control because a transaction involving a high-risk country would have
+
+been otherwise treated by UBSFS as high risk. This issue was compounded by the fact that UBSFS
+
+failed to consistently capture beneficiary addresses for outgoing wire transfers. The third-party
+
+consultant that UBSFS engaged in connection with the remediation of foreign currency wire
+
+monitoring issues found that many outgoing foreign currency wires lacked beneficiary address
+
+information because UBSFS failed to obtain that information from the customers who requested
+
+that UBSFS send these wires. In a sample of outgoing wires, the third-party consultant found
+
+nearly 20% lacked an address for the beneficiary of the wire.
+
+                  2.      Customer Due Diligence
+
+        UBSFS is a U.S. broker-dealer and indirect subsidiary of UBS Group AG, the world’s
+
+largest global wealth manager. UBSFS provides products and services to U.S.-based customers,
+
+as well as those who live in or derive their source of wealth from high-risk jurisdictions, including
+
+Russia and Latin American jurisdictions. In growing its business, UBSFS has sought out wealthy
+
+customers, some of whom present greater risk of money laundering and other illicit activities. This
+
+includes ultra-high net worth customers who live in or derive their source of wealth from
+
+jurisdictions that present a heightened risk of illicit finance.
+
+        As part of its obligation to implement and maintain an effective AML program, UBSFS
+
+was required to maintain risk-based procedures to conduct ongoing customer due diligence (CDD).
+
+To comply with this regulatory requirement, UBSFS’s CDD processes must, among other things,
+
+allow it to: (i) understand the nature and purpose of the customer relationship and accounts;
+
+(ii) conduct ongoing monitoring of the accounts to identify and report suspicious transactions; and
+
+(iii) on a risk basis, maintain and update customer information (including beneficial ownership
+
+
+
+                                                       19
+information of legal entity customers). 31
+
+           Appropriate CDD at onboarding also aims to, among other things, assess the applicant’s
+
+risk profile—which can include, for example, understanding the customer’s source of wealth and
+
+source of funds, 32 and determining whether the customer or related parties are politically exposed
+
+persons (PEPs) 33—and to consider any red flags the applicant might present. 34
+
+           UBSFS’s own policies and procedures stated that CDD “establishes the institution’s
+
+understanding of risk associated with its client, as well as the client’s expected and usual practices,
+
+such that the institution can detect and report where required unusual or potentially suspicious
+
+transactions.” 35 As part of its CDD process, UBSFS classified a customer into one of four risk
+
+ratings: Low, Medium, High, or Higher. UBSFS policies and procedures required that Higher-
+
+risk customers be subjected to increased scrutiny. For example, a High- or Higher-risk rating
+
+would subject a customer to enhanced due diligence (EDD), stricter monitoring, and more frequent
+
+(at least annual) periodic reviews.
+
+           In practice, as described below, UBSFS did not consistently maintain updated customer
+
+profiles associated with certain customers in accordance with the CDD Rule. The examples set
+
+
+
+
+31
+     31 C.F.R. § 1023.210(b)(5).
+32
+  See FINCEN, Customer Due Diligence Requirements for Financial Institutions, 81 Fed. Reg. 29422 (May 11, 2016)
+(noting that broker-dealers are expected to, among other things, “inquire about the source of the customer’s assets and
+income” as part of account opening due diligence).
+33
+   The term “PEP” is commonly used in the financial industry to refer to foreign individuals who are or have been
+entrusted with a prominent public function, as well as their immediate family members and close associates. See Joint
+Statement on Bank Secrecy Act Due Diligence Requirements for Customers Who May Be Considered Politically
+Exposed Persons (Aug. 21, 2020) (“A bank may choose to determine whether a customer is a PEP at account opening,
+if the bank determines the information is necessary for the development of a customer risk profile”).
+34
+  Red flags commonly observed at onboarding include, among other things, inconsistent identification details,
+complex ownership structures, and reluctance to provide necessary information.
+35
+  “Client” is not a term used in the BSA. “Customer” is. See 31 C.F.R. § 1023.100(d) (defining “customer” in the
+context of Customer Identification Programs for broker-dealers). UBSFS interchangeably uses the terms “client” and
+“customer.”
+
+                                                              20
+forth below illustrate CDD failures by UBSFS in certain instances to appropriately consider,
+
+document, and mitigate money-laundering and illicit finance risks, including those related to:
+
+(i) source of wealth, such as instances in which questions about ties to “unwanted business
+
+relationships” or alleged corruption were dispositioned without sufficient analysis or evidence;
+
+(ii) negative news, including not reasonably analyzing the negative news that UBSFS identified;
+
+(iii) PEPs, including incomplete assessment of the money laundering risks posed by certain PEPs;
+
+and (iv) account restrictions and monitoring of customers, including not implementing specially
+
+tailored restrictions identified at account opening.
+
+                           a.      Customer 1
+
+       Customer 1 is a retired U.S. national who first opened accounts with UBSFS in April 2021,
+
+which were funded entirely through same-name transfers from a U.S. bank account. During the
+
+onboarding process, Customer 1 indicated that he had been retired since 2018 and reported a source
+
+of wealth derived from prior employment at a consulting firm.
+
+       Based on the information provided at onboarding, UBSFS did not evaluate the nature and
+
+extent of the nexus of Customer 1’s income to Russian sources and rated this customer as Low-
+
+risk, meaning this customer was not subject to enhanced due diligence. Such enhanced due
+
+diligence could have identified that Customer 1 earned consulting income from his work for a
+
+project associated with a Russian oligarch through at least 2017, years after this oligarch was
+
+designated by the U.S. Office of Foreign Assets Control (OFAC). Despite Customer 1’s affiliation
+
+with the Russian oligarch being publicly reported as early as 2018, UBSFS did not identify it until
+
+shortly before Customer 1 was indicted for U.S. sanctions violations in March 2022. After UBSFS
+
+learned of this negative news, Customer 1 and his wife processed multiple large dollar same name
+
+transactions that were not subject to increased monitoring or restrictions. UBSFS later determined
+
+that a SAR should be filed regarding Customer 1’s transactional activity and decided to exit this
+                                                       21
+customer relationship in April 2022. As a result of its failure to identify Customer 1’s nexus with
+
+Russia and the sanctioned oligarch at onboarding, UBSFS did not adequately maintain this
+
+customer’s risk profile as required by the CDD Rule.
+
+                              b.       Customer 2
+
+        UBSFS onboarded Customer 2, a U.S. national, in July 2008. UBSFS records identified
+
+Customer 2’s source of wealth as derived from an inherited retirement account and his employment
+
+as a professor at an educational institution in the United States, where he resided at the time, and
+
+he was consequently rated a Low-risk customer. In 2013, Customer 2 relocated to Russia and
+
+joined the faculty of a technical university supported by the Russian government and indirectly
+
+affiliated with a Russian national that was subsequently designated under U.S. sanctions,
+
+eventually being appointed to a leadership position. 36 Customer 2 did not notify UBSFS of these
+
+changes to his customer risk profile, and because he remained rated Low-risk, he was not subject
+
+to periodic KYC reviews.
+
+        UBSFS did not identify the change in Customer 2’s domicile and source of wealth for more
+
+than eight years despite multiple indicia of activity inconsistent with his existing customer risk
+
+profile—including adding a Russia-based phone number to his profile—and Customer 2 opening
+
+a new account in May 2018.
+
+        Between 2014 and 2022, Customer 2 received wires totaling more than $2 million from a
+
+same-name Russian account at the Russian branch of a U.S. financial institution, representing the
+
+only source of funding for Customer 2 during that period. Two of these transactions from the
+
+Russian bank account generated alerts due to their nexus to a high-risk jurisdiction but were
+
+
+
+
+36
+   The FBI has publicly raised national security concerns about this university, including concerns about espionage
+arising from its access to American science and technology and its links to Russian defense contractors
+
+                                                            22
+dispositioned without further investigation based on public reporting regarding Customer 2’s
+
+affiliation and employment with the Russian technical university (which, as noted above, was not
+
+reflected in UBSFS’s customer profile for Customer 2). Customer 2 instructed his UBSFS
+
+financial advisor to add a Russian phone number to his customer profile in 2019 and accessed
+
+UBSFS online services fourteen times between June 2021 and February 2022, all but one of which
+
+took place from Russia.
+
+       Despite these multiple indicia, UBSFS did not update Customer 2’s customer risk profile
+
+or ask for additional information about his apparent Russia nexus until this customer relationship
+
+was reviewed as part of an internal Russia review in 2022. Pursuant to this review, UBSFS
+
+recommended Customer 2 for exit in June 2022 due to its reduced risk appetite regarding Russia-
+
+related customers following the invasion of Ukraine and filed a SAR in July 2022 regarding
+
+Customer 2’s Russia-related transactional activity. As a result of its failure to appropriately
+
+respond to multiple indications of a change in Customer 2’s domicile and source of wealth, UBSFS
+
+did not appropriately maintain this customer’s risk profile as required by the CDD Rule.
+
+                          c.     Customer 3 and its UBO, Individual A
+
+       By opening an account in 2020, UBSFS accepted known money-laundering risks related
+
+to Customer 3, a Cypriot personal investment company, without sufficient justification for taking
+
+on the risks and without sufficient controls to mitigate such risks. During onboarding, UBSFS
+
+examined Customer 3’s ultimate beneficial owner, Individual A, and Individual A’s brother,
+
+Individual B, a high-profile Russian oligarch who, according to negative news articles identified
+
+
+
+
+                                                   23
+by UBSFS, was suspected of embezzlement and laundering billions of dollars for Russian
+
+oligarchs and politicians. 37
+
+        At onboarding, UBSFS identified that Individual A’s source of wealth stemmed from:
+
+(i) salary from senior positions at Russian oil and gas companies, one of which UBSFS had
+
+identified as an “Unwanted Business Relationship;” 38 and (ii) a $40 million gift from Individual
+
+B, for which UBSFS noted that Individual B “currently, does not contribute” to Individual A’s
+
+source of wealth. UBSFS’s CDD process identified multiple reported connections between
+
+Individual B and the Troika Laundromat, 39 but this reporting was not addressed when assessing
+
+the risk associated with Customer 3. Instead, an internal memorandum concluded that there was
+
+“no formal negative news on [Individual B].” UBSFS later determined that Customer 3’s actual
+
+account activity was inconsistent with expected activity, including the receipt of inbound wires
+
+totaling roughly ten times the amount of expected incoming wire activity. UBSFS failed to
+
+escalate or adequately investigate these discrepancies.
+
+                               d.       Customer 4, Customer 5, and their UBO, Individual C
+
+        Individual C is a Russian oligarch, reported as one of the wealthiest individuals in the world
+
+with close ties to Russian President Vladimir Putin. In 2015, Individual C became a customer of
+
+a UBS affiliate, which resulted in “significant” assets under management. During the onboarding
+
+process, UBSFS branch management and the responsible financial advisor repeatedly “expressed
+
+their wish to proceed forward” because Individual C was “an existing client of a UBS affiliate with
+
+
+
+ At the time of UBSFS’s onboarding of Customer 3 in January 2020, Individual A was an existing customer of
+37
+
+multiple UBS affiliates; Individual B had also recently been onboarded by a UBS affiliate.
+38
+  UBSFS’s policies and procedures categorically prohibited business relationships with companies identified as
+Unwanted Business Relationships due to possible “link[s] to money laundering or to activity that might support it.”
+39
+  The Troika Laundromat, which operated from 2006 to early 2013, involved a network of dozens of offshore shell
+companies with fraudulent nominees that were reportedly controlled by Russia’s then-largest private investment bank,
+Troika Dialog.
+
+                                                            24
+AUM [assets under management] there of approximately $1.5 billion and he has never been
+
+arrested or charged with any crimes.” Ultimately, UBSFS opened six accounts for two entities
+
+beneficially owned by Individual C: Customer 4 and Customer 5. UBSFS assigned Customer 4
+
+and Customer 5 a Higher-risk rating at onboarding. In February 2022, these customer accounts
+
+had assets at UBSFS of more than $175 million.
+
+       UBSFS proceeded to open accounts for Individual C without sufficient justification for
+
+taking on heightened money-laundering risks and without adequate controls to mitigate those risks.
+
+At onboarding, UBSFS’s negative news screening of Individual C resulted in thousands of hits
+
+across more than 300 articles. Similarly, the periodic KYC process returned more than 150
+
+articles, of which UBSFS reviewed only the first twenty-five. For the negative news that UBSFS
+
+considered, UBSFS did not appropriately explain or justify how it dispositioned this news.
+
+       Such negative news included a significant “criticism” of Individual C that his source of
+
+wealth derived from the controversial “loans for shares” program—a program where the Soviet
+
+Russian government received money “loans” from Russian businessmen, such as Individual C, in
+
+exchange for “shares” of Russia’s largest state industrial assets, which were then sold at
+
+exceptionally low prices at rigged “auctions.” In dismissing this criticism, UBSFS wrote that
+
+“[t]he adverse news regarding how [Individual C] originally began amassing his wealth through
+
+the ‘loans for shares’ are only speculations and there have been no legal proceeding filed against
+
+[him].” UBSFS also found multiple articles during its own internet search that reported on a close
+
+relationship between Individual C and Russian President Putin.
+
+       UBSFS personnel also accepted without any scrutiny the financial advisor’s assessment—
+
+which was based on discussions with a UBS affiliate and Individual C—of news reports related to
+
+Individual C’s connections to an alleged 2020 money laundering scheme involving the use of a
+
+
+
+                                                   25
+professional sports team and multiple OFAC Specially Designated Nationals to transfer billions of
+
+euros to offshore firms. In response to concerns about Individual C’s connections to this scheme,
+
+the financial advisor concluded that the allegations were not credible, reporting that Individual C
+
+“simply doesn’t have the funds” for the alleged money-laundering scheme and recommended that
+
+UBSFS “disregard these [negative news] articles altogether.”
+
+       During a subsequent, periodic review of Customer 4 conducted in or around 2020, UBSFS
+
+identified a 2012 article reporting on a ship that docked at a Middle Eastern port with weapons for
+
+a dictatorial regime. As indicated in contemporaneous notes, UBSFS understood that the ship was
+
+registered to a company ultimately owned by Individual C. During the same periodic review,
+
+UBSFS also identified negative news dated 2015 of Individual C’s investment in a company that
+
+actively invested in Iranian digital assets. UBSFS personnel failed to further investigate or escalate
+
+either piece of negative news about Individual C.
+
+       UBSFS also found multiple articles during its own internet search that reported on a close
+
+relationship between Individual C and Russian President Putin that were at odds with UBSFS’s
+
+PEP assessment of Individual C. At onboarding, UBSFS adopted the same reasoning as another
+
+UBS affiliate’s assessment that Individual C was not a PEP, with the rationale given that Individual
+
+C had “cooled off” his prior positions and no explanation provided as to why Individual C’s status
+
+as a “close associate” of Putin did not result in Individual C remaining as a PEP.
+
+       Due to the significant risk associated with Individual C, UBSFS imposed restrictions on
+
+the accounts of Customer 4 and Customer 5 to bring them within UBSFS’s “risk threshold.” In
+
+particular, the accounts for Customer 4 and Customer 5 were subject to, among other restrictions,
+
+restrictions on third-party wires and enhanced monitoring. Of the more than $60 million of
+
+outgoing wires from Customer 4’s accounts, about three-quarters (by amount) were third-party
+
+
+
+                                                     26
+ wires seemingly in violation of the restriction on third-party activity and wires. 40 For example,
+
+ Customer 4’s third party wires included transactions with a virtual asset service provider that
+
+ Individual C controlled, despite not having performed appropriate due diligence to comply with
+
+ UBSFS’s requirements applicable to beneficial owners of virtual asset service providers.
+
+                                                *        *        *
+
+         In connection with Russia’s invasion of Ukraine, UBSFS identified about 100 customers
+
+ who, as of March 2022, were domiciled in or whose source of wealth derived from Russia or
+
+ countries in the former Soviet Union. Following its review of these customers, UBSFS decided to
+
+ exit, or require additional controls, for a third of these customers, which held several hundred
+
+ million dollars’ worth of assets under management.
+
+                              e.       Equity Syndicate Customers
+
+        UBSFS’s historically deficient approach to KYC allowed a small cohort of illicit actors to
+
+open more than 40 accounts across multiple UBSFS branches for dozens of shell companies through
+
+at least December 2020. These accounts concealed third-party financing related to secondary market
+
+or initial public offering (IPO) issuances, which had the effect of permitting the beneficial owners of
+
+the accounts to maximize their share in syndicated allocations. The scheme involved the same
+
+handful of illicit actors, including one former UBSFS financial advisor, with the same modus
+
+operandi, but it escaped UBSFS’s detection for more than a decade.
+
+        The scheme primarily persisted because of UBSFS’s failure to identify common ownership at
+
+onboarding. However, UBSFS also missed other red flags in its CDD processes, including that certain
+
+
+
+
+ 40
+   The third-party wire restrictions provided an exception for “third parties” with Individual C as their beneficial
+ owner. Some of the third-party wires from Customer 4’s accounts may have met this exception, but UBSFS’s records
+ suggest that UBSFS failed to conduct a reasonable analysis of beneficial ownership before processing these third-
+ party wires.
+
+                                                             27
+CDD forms were left incomplete or blank, certain customers listed suspicious mailbox addresses,41
+
+incongruencies between stated income and occupation (without corroboration), and unverified
+
+material changes to customer income and net worth. 42 UBSFS detected the broader scheme only after
+
+a regulatory inquiry about one of the accounts.
+
+                I.       Failures to Report Suspicious Transactions
+
+           FinCEN has identified hundreds of suspicious transactions for which UBSFS failed to timely
+
+and accurately file a SAR. These suspicious transactions involved tens of millions of dollars. These
+
+suspicious transactions related to both the high-risk customer relationships set forth above, including
+
+those with a nexus to Russia 43 and Latin America 44 and the broader lookback involving foreign
+
+currency wires that were not subject to proper monitoring due to the issues described above with
+
+UBSFS’s controls applicable to such wires. For example, one customer had been the subject of a
+
+2021 arrest warrant from the Prosecutor General’s Office in Mexico, but UBSFS’s foreign currency
+
+wire control gaps resulted in UBSFS failing to investigate certain transactions this customer effected
+
+shortly before the arrest warrant was issued; one such transaction was an incoming wire for which
+
+UBSFS was unable to identify the originator of the transaction, but because so much time had elapsed
+
+between when the wire was effected and when it was subject to investigation, UBSFS’s resulting
+
+SAR filing was both untimely and incomplete (i.e., because it could not identify the counterparty to
+
+this transaction) and therefore deprived law enforcement of important information.                           UBSFS
+
+
+
+
+41
+  Newly registered Limited Liability Corporations were formed utilizing mailbox services as their principal place of
+business and multiple examples of mail being noted as “undeliverable” for companies utilizing mailbox service addresses
+were not addressed.
+42
+  For example, UBSFS onboarded two accounts for one of these customers four months apart. In the interim, the customer
+purportedly doubled his annual income and liquid assets from $500,000 to $900,000 and increased his net worth fourfold
+from $10 million to $40 million.
+43
+     See supra at Section II.H.2.
+44
+     See Section II.H.1 a(2), describing UBSFS’s flawed internal lookback.
+
+                                                                28
+ultimately filed dozens of SARs relating to hundreds of transactions that were recommended as part
+
+of the consultant’s lookback, years later than they would have been filed but for the issues with
+
+UBSFS’s monitoring of foreign currency wires. Those customers and transactions also included the
+
+following activity:
+
+                      1.   Customer 6 and Individual D
+
+       This activity included a SAR reporting two suspicious transactions that were processed for
+
+Customer 6, a legal entity that serves as an investment vehicle with assets funded by Individual D.
+
+The two transactions between June and November 2020 had an aggregate value of more than
+
+$100,000.
+
+       Individual D served as a high-ranking official in a Latin American country and is associated
+
+with negative news related to corruption, improper seizure of assets, and the murder of multiple
+
+individuals by that country’s army. Until 2022, Customer 6 was beneficially owned by Individual D,
+
+but Customer 6 is now beneficially owned by Individual D’s two children as well as two of Individual
+
+D’s grandchildren.
+
+       Between June and November 2020, Customer 6 effected and attempted to effect multiple wire
+
+transfers to accounts beneficially owned by a company that purports to serve as the marketing arm of
+
+a Mexican fruit and vegetable farm. However, in reality, the beneficiary of these wire transfers served
+
+as an entity to receive campaign financing for a political party. In 2022, UBSFS filed two SARs
+
+involving this customer, reporting 157 wires amounting to $20 million worth of activity, but at that
+
+time, UBSFS did not include in the SARs any reference to the purported Mexican fruit and vegetable
+
+farm, thereby limiting their utility to law enforcement. UBSFS did not file a SAR on these two
+
+additional wires until 2024, as a result of the voluntary lookback it conducted in this matter.
+
+                      2.   Customer 7 and Individuals E and F
+
+       UBSFS also ultimately filed a SAR, several years late, on activity conducted by Customer 7,
+
+                                                      29
+a legal entity whose principals, Individuals E and F, were charged by the Prosecutor General’s Office
+
+of Mexico with tax fraud, criminal association, and money laundering in connection with the
+
+fraudulent theft and laundering of nearly six billion Mexican pesos they illicitly obtained from a
+
+Mexican governmental fund. Customer 7 opened an account at UBSFS in March 2008. In December
+
+2020, Mexico’s Specialized Prosecutor’s Office for Organized Crime announced that it had issued
+
+warrants against both Individual E and Individual F on allegations of criminal association and money
+
+laundering. Individual E was arrested and imprisoned in Mexico in April 2021 while he awaited trial.
+
+The charges against Individual F were ultimately dropped in June 2022, but his children as well as
+
+those of Individual E continued to access and operate accounts associated with Individual E and
+
+Individual F throughout the year and a half during which he evaded arrest. As of at least late 2025,
+
+Individual E was reportedly still awaiting trial and may have been staying at a luxury property he had
+
+purchased in the United States.
+
+       Public reporting indicates that Individuals E and F carried out a money laundering scheme
+
+that included, among other things, sales of foreign currency, check deposits, interbank transfers, and
+
+donations in order to hide the origin and final destination of more than 900 million laundered Mexican
+
+pesos during the time that they maintained their account at UBSFS.
+
+       In connection with the lookback into foreign currency wires, UBSFS ultimately filed a SAR
+
+in February 2024 to report several suspicious foreign currency wire transfers totaling over $1.6
+
+million that Customer 7 transacted throughout 2019 to 2020 (i.e., the time period following UBSFS’s
+
+2018 Consent Order with FinCEN and during which it continued to fail to properly monitor foreign
+
+currency wires). In the filing, UBSFS cited concerns (a) that the transactions lacked transparency
+
+regarding the business rationale or economic purpose; (b) that the customer’s relationship to the
+
+counterparties remains unknown; and (c) that the customer’s remitting of funds to various third parties
+
+
+
+                                                      30
+were potentially indicative of an intent to conceal illicit assets.
+
+                     3.     Customer 8
+
+           UBSFS also filed a late SAR in August 2024 on activity conducted through Customer 8’s
+
+accounts at UBSFS and UBS affiliates between 2018 and 2022. Customer 8 opened two accounts at
+
+UBSFS in December 2016. In 2021, the Mexican government issued an arrest warrant for Customer
+
+8 for his alleged engagement in criminal money laundering on behalf of a criminal network led by a
+
+Mexican individual known for his use of shell companies that allegedly invoiced and laundered tens
+
+of millions of dollars to hide the identity of recipients. The allegations of money laundering by
+
+Customer 8 coincided with large dollar deposits into his accounts that represented more than his stated
+
+net worth.
+
+           During this time, Customer 8’s account activity showed clear signs of layering and pass-
+
+through activity by moving money back and forth between accounts and investments. For example,
+
+he would liquidate holdings in a money market fund in one account, transfer the resulting USD funds
+
+to first one FX Commodity account and then to another, before ultimately transferring the funds back
+
+to the original money market fund in the original account. The combined amount of the reported
+
+activity totaled more than $57 million over four years.
+
+    III.      VIOLATIONS
+
+           FinCEN has determined that UBSFS willfully violated the BSA and its implementing
+
+regulations during the Relevant Time Period. Specifically, FinCEN has determined that UBSFS
+
+willfully failed to implement and maintain an AML program that met the minimum requirements of
+
+the BSA, in violation of 31 U.S.C. § 5318(h), 31 C.F.R. § 1023.210, and 31 C.F.R. § 1026.210.
+
+Additionally, FinCEN has determined that UBSFS willfully failed to accurately and timely report
+
+suspicious transactions to FinCEN, in violation of 31 U.S.C. § 5318(g) and 31 C.F.R. § 1023.320,
+
+and 31 C.F.R. § 1026.320.
+
+                                                        31
+       IV.      ENFORCEMENT FACTORS
+
+             FinCEN considered all of the factors outlined in the Statement on Enforcement of the Bank
+
+Secrecy Act issued August 18, 2020, when deciding whether to impose a civil money penalty in this
+
+matter. 45
+
+       •     Nature and seriousness of the violations, including the extent of possible harm to the
+
+             public and the amounts involved: UBSFS’s violations presented significant risk of serious
+
+             harm to the U.S. financial system. During the Relevant Time Period, UBSFS failed to
+
+             appropriately monitor more than 61,500 foreign currency transactions, totaling approximately
+
+             $10.5 billion, that flowed through the U.S. financial system.        This gap in transaction
+
+             monitoring dates back nearly twenty years, to at least 2004, despite UBSFS acknowledging
+
+             these issues in the 2018 Consent Order.          These monitoring issues, however, persisted
+
+             substantially unaddressed and without mitigation until at least March 2021, and after that
+
+             continued in other forms for more than two years. UBSFS also improperly discounted money-
+
+             laundering risks presented by certain customer relationships with individuals from high-risk
+
+             jurisdictions, such as Russia and Venezuela. UBSFS grew its assets under management by
+
+             opening accounts for, and those closely associated with, ultra-high net worth Russian
+
+             oligarchs. In opening accounts for these high-risk customers, UBSFS disregarded risks
+
+             associated with, among other things, sources of wealth arising from, and negative news related
+
+             to, bribery, cronyism, corruption, and money laundering. Once accounts were opened,
+
+             UBSFS failed to sufficiently monitor account activity—including due to the monitoring issues
+
+             described above. As a result, UBSFS maintained customers despite negative news regarding
+
+
+
+
+45
+     FinCEN, Statement on Enforcement of the Bank Secrecy Act (Aug. 18, 2020).
+
+                                                             32
+    their alleged connections to high-risk activities such as the Troika Laundromat, political
+
+    corruption, and potential ties to Russian propaganda.
+
+•   Impact or harm of the violations on FinCEN’s mission to safeguard the financial system
+
+    from illicit use, combat money laundering, and promote national security: As a general
+
+    matter, SARs represent one of the most important tools to FinCEN and law enforcement in
+
+    fighting financial crime, both in proactively identifying potential illicit activity and in
+
+    understanding the scope and scale of that illicit activity. FinCEN and law enforcement must
+
+    be able to rely on financial institutions to remain vigilant and comply with their obligation to
+
+    report suspicious activity, and UBSFS’s failures caused a significant gap in the reporting of
+
+    suspicious activity. UBSFS also materially harmed FinCEN’s mission to safeguard the U.S.
+
+    financial system from illicit use because it onboarded and failed to appropriately monitor high-
+
+    risk customers from jurisdictions posing elevated risks of illicit financial activity.
+
+•   Pervasiveness of wrongdoing within an entity, including management’s complicity in,
+
+    condoning or enabling of, or knowledge of the conduct underlying the violations:
+
+    UBSFS’s violations were pervasive. The 2018 Consent Order reinforced UBSFS’s, including
+
+    its management’s, notice of its longstanding failure to adequately monitor foreign currency
+
+    wires. Despite assurances made to FinCEN, UBSFS did not implement an automated
+
+    transaction monitoring system for foreign currency wires until years later in March 2021, and
+
+    management was aware of such delays. Despite these repeated delays, UBSFS took no steps
+
+    to notify FinCEN that automated monitoring had not been implemented as promised.
+
+    Moreover, UBSFS made no meaningful attempt to implement mitigating controls to address
+
+    this delay.
+
+
+
+
+                                                   33
+•   History of similar violations, or misconduct in general, including prior criminal, civil,
+
+    and regulatory enforcement actions: The 2018 Consent Order specifically addressed,
+
+    among other things, UBSFS’s violation of the BSA by failing to effectively monitor foreign
+
+    currency wires. These failures were that of a recidivist, which allowed UBSFS to continue
+
+    the same BSA violations subject to its 2018 Consent Order with FinCEN.
+
+•   Financial gain or other benefit resulting from, or attributable to, the violations: UBSFS
+
+    did not appropriately analyze and explain its assessment of risk relating to certain clients
+
+    associated with high-risk jurisdictions or timely implement adequate controls to mitigate
+
+    them. A substantial portion of UBSFS’s Russia business was later the subject of remediation
+
+    by UBSFS and UBSFS voluntarily improved certain controls and exited many of these high-
+
+    risk customers after the Russian invasion of Ukraine. The unmonitored foreign currency wires
+
+    accounted for a high volume of activity: over 61,500 transactions amounting to more than
+
+    $10.5 billion over more than four years.
+
+•   Presence or absence of prompt, effective action to terminate the violations upon
+
+    discovery, including self-initiated remedial measures: Despite UBSFS’s awareness of
+
+    significant gaps in its AML program and the corresponding risks and impact of the filing of
+
+    SARs, it nevertheless continued business as usual. UBSFS addressed these gaps only after
+
+    coming under regulatory scrutiny. The gap in monitoring foreign currency wires, for example,
+
+    began in 2004, continued through the 2018 Consent Order, and remained unresolved until late
+
+    2023. Similarly, UBSFS was aware of the heightened risk from its book of high-risk
+
+    customers, particularly those with a nexus to Russia, but failed to consistently implement
+
+    appropriate and effective controls proportionate to that increased risk. Only after the 2022
+
+    Russian invasion of Ukraine (and under the threat of regulatory scrutiny) did UBSFS
+
+
+                                                34
+    voluntarily implement additional controls and take remedial action including restricting or
+
+    exiting some Russia-related customers following a portfolio review.
+
+•   Timely and voluntary disclosure of the violations to FinCEN: UBSFS was neither timely
+
+    nor voluntary in its disclosure of violations. UBSFS knew, from at least the 2018 Consent
+
+    Order, that it violated the BSA by failing to adequately monitor foreign currency wires.
+
+    UBSFS also knew that, in entering the 2018 Consent Order, it had represented to FinCEN that
+
+    it anticipated remediating the violation by mid-2019.            FinCEN acknowledged such
+
+    commitment in the 2018 Consent Order, referencing UBSFS’s “commitment and ability” to
+
+    correct the identified issues and noting that the accuracy of certain assertions was “a condition
+
+    to the settlement of any claim that FinCEN may have against UBSFS” for conduct described
+
+    in the 2018 Consent Order. When delays resulted in a failure to timely complete these
+
+    remedial measures, UBSFS neglected to voluntarily self-disclose its continued BSA violation.
+
+    In connection with Russia’s invasion of Ukraine, UBSFS scrutinized its Russia-related
+
+    business. The review resulted in the offboarding of some Russian customers and filing of
+
+    SARs, and uncovered deficiencies in UBSFS’s CDD. UBSFS did not voluntarily disclose
+
+    these issues.
+
+•   Quality and extent of cooperation with FinCEN and other relevant agencies, including
+
+    as to potential wrongdoing by its directors, officers, employees, agents, and
+
+    counterparties: UBSFS cooperated with FinCEN’s investigation by making substantial
+
+    productions, providing routine reporting, delivering multiple presentations, and, in connection
+
+    with FinCEN’s investigation, engaged a third-party vendor to assist in remediating the
+
+    longstanding gaps in its monitoring of foreign currency wires. However, UBSFS’s responses
+
+    to requests for information and documents were at times delayed and incomplete.
+
+
+                                                   35
+       •    Systemic nature of the violations. Considerations include, but are not limited to, the
+
+            number and extent of violations, failure rates (e.g., the number of violations out of total
+
+            number of transactions), and duration of violations: As explained above, the violations
+
+            that FinCEN identified were numerous, substantial in aggregate value, and occurred over an
+
+            extended period. UBSFS failed to effectively monitor foreign currency wires for nearly
+
+            twenty years, including over 61,500 transactions with an aggregate value of more than $10.5
+
+            billion during the Relevant Time Period. UBSFS also demonstrated reoccurring issues with
+
+            its customer due diligence for certain customers.       For high-risk Russian customers, a
+
+            meaningful portion of these customers required further action upon a focused review that
+
+            UBSFS self-initiated and conducted following Russia’s invasion of Ukraine.
+
+       •    Whether another agency took enforcement action for related activity. FinCEN will
+
+            consider the amount of any fine, penalty, forfeiture, and/or remedial action ordered:
+
+            Following separate but parallel investigations, UBSFS has agreed to pay $20 million to
+
+            FINRA, $20 million to the SEC, and $8 million to the CFTC to resolve these investigations.
+
+       V.      CIVIL PENALTY
+
+            FinCEN may impose a Civil Money Penalty of up to $71,545 per day for willful violations of
+
+the requirement to implement and maintain an effective AML program. 46
+
+            For each willful violation of a SAR reporting requirement, FinCEN may impose a civil money
+
+penalty not to exceed the greater of the amount of the transaction (capped at $286,184) or $71,545.47
+
+            After considering all the facts and circumstances, as well as the enforcement factors discussed
+
+above, FinCEN is imposing a Civil Money Penalty of $125 million in this matter. FinCEN has agreed
+
+
+
+46
+     31 U.S. C. § 5321(a)(1); 31 C.F.R. § 1010.821.
+47
+     31 U.S. C. § 5321(a)(1); 31 C.F.R. § 1010.821.
+
+                                                          36
+to credit against the $125 million Civil Money Penalty payments of $48 million to the CFTC, SEC
+
+and FINRA. UBSFS shall make payment of $62 million to the U.S. Department of the Treasury
+
+pursuant to the payment instructions that will be transmitted to UBSFS upon execution of this Consent
+
+Order, with the remaining amount of $15 million due to FinCEN on or before May 31, 2028
+
+(Remaining Amount).
+
+       Subject to the conditions set out below, FinCEN shall waive UBSFS’s obligation to pay all or
+
+a portion of the Remaining Amount equal to the amount of Qualifying Expenses (as defined below)
+
+and not exceeding the Remaining Amount, provided FinCEN determines, in its sole discretion, that:
+
+(i) UBSFS has fully complied with all aspects of the AML Program Undertaking set forth in Section
+
+VI.B, infra; and (ii) in completing the AML Program Review Undertaking described in Section VI.B,
+
+infra, UBSFS has incurred and paid Qualifying Expenses.
+
+       For purposes of this Consent Order, “Qualifying Expenses” are specified fees and costs
+
+UBSFS has incurred and paid in completing the AML Program Review Undertaking, consisting only
+
+of: (i) fees that, subject to the exclusions below, UBSFS paid to third parties conducting or assisting
+
+in the AML Program Review; and (ii) internal costs that, subject to the exclusions below, are
+
+associated with UBSFS’s implementation of enhancements associated with such AML Program
+
+Review. For the avoidance of doubt, “Qualifying Expenses” do not include any amounts that UBSFS
+
+would have incurred in the ordinary course of implementing and maintaining its AML program,
+
+including conducting independent testing of its AML program for compliance with the BSA and its
+
+implementing regulation (even if such testing is conducted as part of the AML Program Review).
+
+FinCEN, in its sole discretion, shall determine whether any fees or costs that UBSFS has incurred and
+
+paid in completing the AML Program Review Undertaking are Qualifying Expenses. In connection
+
+with reaching a determination about the amount of Qualifying Expenses that UBSFS incurred,
+
+
+
+                                                      37
+FinCEN may request from UBSFS, and UBSFS shall produce, documents, records, or other tangible
+
+evidence. In exercising its discretion to determine the amount of Qualifying Expenses that UBSFS
+
+incurred, FinCEN will consider the extent of UBSFS’s cooperation with FinCEN’s requests for
+
+tangible evidence of the Qualifying Expenses, including applicable laws and regulations relevant to
+
+such requests for tangible evidence, as well as valid and properly documented claims of attorney-
+
+client privilege or the attorney work product doctrine. Within 60 days of UBSFS’s submission of
+
+each of the quarterly progress reports described in Section VI.B.3 and provided that UBSFS timely
+
+produces any documents, records, or other tangible evidence requested by FinCEN, FinCEN shall
+
+indicate to UBSFS whether the expenses documented in such quarterly report as having been incurred
+
+and paid by UBSFS are eligible to be deemed Qualifying Expenses as defined above. In addition, if
+
+FinCEN concludes that fees or costs that UBSFS has incurred and paid in completing the AML
+
+Program Review Undertaking are not Qualifying Expenses, it shall provide UBSFS with a reasonable
+
+opportunity to justify the fees or costs and obtain credit for them as Qualifying Expenses within a
+
+period of time not to exceed 60 days.
+
+         Provided that FinCEN determines that UBSFS has satisfied these conditions, the portion of
+
+the Remaining Amount that FinCEN waives (Waived Amount) shall equal the amount of Qualifying
+
+Expenses that FinCEN determines, in its sole discretion, that UBSFS has incurred and paid in
+
+completing the AML Program Review Undertaking, with the Waived Amount not to exceed the
+
+Remaining Amount. In the event that the Waived Amount is less than the Remaining Amount,
+
+UBSFS shall make payment of the difference between the Remaining Amount and the Waived
+
+Amount to the U.S. Department of the Treasury pursuant to the payment instructions that will be
+
+transmitted to UBSFS upon FinCEN’s determination of the Waived Amount.
+
+   VI.      UNDERTAKINGS
+
+         By execution of this Consent Order, UBSFS agrees to the following Undertakings:
+                                                    38
+              A.      SAR LOOKBACK UNDERTAKING
+
+         1.        In connection with this resolution, UBSFS has engaged a qualified independent
+
+consultant (SAR Lookback Consultant) at its own expense to conduct a SAR Lookback Review. The
+
+SAR Lookback Consultant will: (i) complete a review of foreign currency wire transactions or
+
+attempted transactions by, at, or through UBSFS, that occurred during the Relevant Time Period; 48
+
+and (ii) complete data lineage mapping and testing to determine whether the transaction monitoring
+
+associated with other products during the time period that UBSFS’s automated transaction monitoring
+
+system was implemented was subject to material gaps similar to, including due to similar root causes,
+
+those affecting the monitoring of foreign currency wires (Covered Transactions) to determine whether
+
+suspicious activity was properly identified and reported under 31 U.S.C. § 5318(g) and implementing
+
+regulations. 49
+
+         2.        Upon completion of the SAR Lookback Review, and by no later than 180 days from
+
+the date of this Consent Order, the SAR Lookback Consultant will deliver a detailed report (SAR
+
+Lookback Report) to FinCEN and UBSFS that summarizes the methodology and findings of its
+
+review and identifies the Covered Transactions that may require a SAR to be filed pursuant to 31
+
+U.S.C. § 5318(g) and its implementing regulations. UBSFS will make, and will cause the SAR
+
+Lookback Consultant to make, interim reports, drafts, work papers, or other supporting materials
+
+related to the SAR Lookback Review available to FinCEN upon request. UBSFS will comply with
+
+the findings of the SAR Lookback Consultant or FinCEN that UBSFS file SARs on any of the
+
+Covered Transactions, and, in the event that the SAR Lookback Consultant or FinCEN recommend
+
+
+
+48
+  The SAR Lookback Consultant may consider the results of a lookback review covering part of the Relevant Time Period
+completed by the consultant.
+49
+   The time period for the review of any transactions involving other products (but associated with gaps similar to those
+affecting foreign currency wires) will depend on the period in which such gaps affected UBSFS’s monitoring of the
+transactions.
+
+                                                               39
+that UBSFS file a SAR on a Covered Transaction(s), UBSFS will comply with that recommendation.
+
+Subject to approval of FinCEN, UBSFS may, during the pendency of the SAR Lookback Review,
+
+begin to file SARs regarding the Covered Transactions that would have required a report pursuant to
+
+31 U.S.C. § 5318(g) and implementing regulations.
+
+       3.          No later than 90 days from the date of the SAR Lookback Report, UBSFS will
+
+complete the filing with FinCEN of SARs regarding all of the Covered Transactions identified by the
+
+SAR Lookback Consultant as ones that would have required a report pursuant to 31 U.S.C. § 5318(g)
+
+and implementing regulations. UBSFS shall be entitled to one 60-day extension of this SAR filing
+
+deadline as of right. Any additional extensions require the written consent of FinCEN in its sole
+
+discretion.
+
+              B.      AML PROGRAM UNDERTAKING
+
+       1.          Within 60 days of signing the Consent Order, UBSFS will propose a qualified
+
+independent consultant (AML Program Consultant) to hire within 30 days (at its own expense) to
+
+conduct a review of the effectiveness of UBSFS’s current AML program though an AML Program
+
+Review focused on areas of the Program identified to contain deficiencies that contributed to the
+
+violations described in this Consent Order. For purposes of this provision, “independent” means that
+
+the qualified consultant and any affiliate thereof did not, since the start of the Relevant Time Period,
+
+provide services to UBSFS or an affiliate thereof regarding the design, implementation, testing, or
+
+enhancements to the aspects of the current AML program of UBSFS or an affiliate thereof that are
+
+within the scope of the Program Review described in this Section VI or otherwise described in the
+
+Statement of Facts set forth in Section II, supra. FinCEN has the right to veto the engagement of an
+
+AML Program Consultant deemed unsuitable to complete the AML Program Review but shall
+
+provide a written explanation of its reasoning for exercising this veto right to UBSFS. The AML
+
+
+
+                                                      40
+Program Review will determine whether the assessed areas of UBSFS’s AML Program support
+
+UBSFS’s compliance with the BSA.
+
+       2.      Within 90 days from the date of UBSFS’s retention of the AML Program Consultant,
+
+the AML Program Consultant will provide FinCEN with a report summarizing the proposed scope
+
+and methodology of the review of UBSFS’s current AML program (AML Program Scope Report).
+
+Such methodology must include risk-based testing of UBSFS’s high-risk customers, with the
+
+determination of the in-scope population for such testing to be in the discretion of the AML Program
+
+Consultant, in consultation with FinCEN, which may provide to the AML Program Consultant, prior
+
+to the AML Program Scope Report deadline, a list of specific accounts that must be included in the
+
+in-scope population for the risk-based testing of UBSFS’s high-risk customers. UBSFS will grant
+
+the AML Program Consultant access to all appropriate systems and records reasonably necessary to
+
+identify the in-scope population for such testing. In undertaking such testing, as well as approaching
+
+the AML Program Review more broadly, the Consultant will prioritize customers and transactions
+
+with potential ties to the following risks: (i) the U.S. Southwest border, cartels, and possible narcotics
+
+trafficking; (ii) Iran; (iii) Venezuela; and (iv) Russia (collectively, “Priority Illicit Finance Risks”).
+
+For purposes of determining the in-scope population, the AML Program Consultant may, in its
+
+discretion, primarily select samples from customers that UBSFS rated as high and higher risk,
+
+provided that such sample is supplemented with additional customers that the Consultant identifies
+
+from populations that UBSFS rated as medium and low risk. At a minimum, such testing should
+
+occur at two different times during the AML Program Review: (i) an initial review to inform and
+
+highlight instances in which potential deficiencies associated with UBSFS’s policies and procedures
+
+(including failure to adhere to them) may have led to issues involving UBSFS customers, and
+
+(ii) following UBSFS’s execution of the steps set forth in the Implementation Plan described below,
+
+
+
+                                                       41
+a subsequent review to validate the effectiveness in meaningfully mitigating the relevant risks of any
+
+enhancements UBSFS makes in connection with the AML Program Review. The Consultant will
+
+measure the results of such testing using objective criteria to determine UBSFS’s compliance with
+
+the BSA and its implementing regulations, including but not limited to the degree of UBSFS’s
+
+adherence to its current AML program’s internal controls, policies, and procedures. Additionally, the
+
+AML Program Scope Report must include proposed analyses to cover the following aspects of
+
+UBSFS’s AML Program:
+
+      i.   Independent Testing: whether UBSFS conducts periodic reviews and tests of its AML
+
+           program designed to evaluate and improve its effectiveness in preventing and detecting
+
+           money laundering, terrorist financing, and other illicit finance activity, including by taking
+
+           into account ongoing or recently completed enhancements to AML-related systems.
+
+     ii.   CDD – Customer Risk Profiles: whether UBSFS’s current policies, procedures, and
+
+           controls are reasonably designed to ensure it develops and maintains customer risk profiles
+
+           consistent with the requirements of 31 CFR 1023.210(b)(5), including by ensuring that
+
+           UBSFS incorporates and adjudicates in such risk profiles information regarding: (A) the
+
+           customer’s source of wealth, including information regarding the customer’s wealth
+
+           derived from business ownership, employment, and/or gifts that may have potential
+
+           connections to illicit or suspicious activity; (B) information identified by UBSFS in media
+
+           reports regarding the customer’s alleged direct or indirect ties to illicit or suspicious
+
+           activity; and (C) transaction monitoring alerts and related investigations, including
+
+           processes maintained by UBSFS to prevent maintenance of such information in siloes that
+
+           are not considered as part of the customer’s risk profile.
+
+
+
+
+                                                      42
+iii.   CDD – Ongoing Monitoring of Customer Activity: whether UBSFS conducts ongoing
+
+       monitoring of customer activity to identify and report suspicious transactions in a manner
+
+       consistent with the requirements of 31 CFR 1023.210(b)(5), including, as applicable:
+
+       (A) how such monitoring by UBSFS is informed by the relevant customer risk profile,
+
+       such as UBSFS’s processes to identify and address material deviations between expected
+
+       activity and actual transactions; (B) the extent to which such monitoring is informed by
+
+       changes to customer information, including updated risk profiles, such as in response to
+
+       information about a customer identified by UBSFS in adverse media (e.g., alleged ties to
+
+       cartel activity), and the procedures UBSFS applies to that customer’s subsequent
+
+       transactions to validate the purpose of significant and/or high-risk transactions; and
+
+       (C) processes used by “second-level” investigators to review concerns raised by “first-
+
+       level” reviewers of alerts (e.g., if an alert for potential pass-through activity is escalated,
+
+       does the resulting investigation address the potential concerns with pass-through activity?)
+
+       as well as quality assurance, quality control, and/or independent testing to evaluate the
+
+       consistency and effectiveness of such processes.
+
+iv.    Other CDD and Transaction Monitoring-related Policies, Procedures and Internal
+
+       Controls: the extent to which UBSFS maintains and enforces clearly articulated and visible
+
+       corporate AML policies that are consistent with the BSA and applicable to all officers and
+
+       employees, and, where necessary and appropriate, UBSFS’s agents; including policies,
+
+       procedures, and internal controls associated with:
+
+                a. verifying customer identification and KYC, including the consistent
+
+                    application of any applicable proof of address requirements, and the use of
+
+
+
+
+                                                   43
+                           customer identification, KYC, and other data houses by UBSFS to identify
+
+                           users resident in high-risk jurisdictions;
+
+                       b. the controls associated with UBSFS’s exposure to customers with a nexus to
+
+                           high-risk jurisdictions, including Russia and Latin America;
+
+                       c. transaction monitoring, including related data governance controls;
+
+                       d. issue management for identified deficiencies to assess timely remediation
+
+                           and compensating controls;
+
+                       e. identifying suspicious activity and filing reports of such activity with
+
+                           FinCEN; and
+
+                       f. restricting or offboarding of customers—including the extent to which
+
+                           personnel from UBSFS’s revenue generating units as well as those associated
+
+                           with UBSFS affiliates influence the application of such controls.
+
+        3.       FinCEN may amend the scope of the review of UBSFS’s current AML program
+
+through a notification to UBSFS within 30 days of FinCEN’s receipt of the report summarizing the
+
+proposed scope and methodology. Following submission of the AML Program Scope Report to
+
+FinCEN, UBSFS will deliver quarterly progress reports to FinCEN documenting the status of the
+
+AML Program Review, including the amounts of Qualifying Expenses incurred as of the date for
+
+which such quarterly report is effective.
+
+        4.       Within 60 days from the end of its review, but no later than nine months from the date
+
+of its engagement, 50 the AML Program Consultant will submit to FinCEN a written report:
+
+(i) addressing the overall adequacy of the aspects of UBSFS’s current AML program set forth in the
+
+
+
+
+50
+  After consultation with UBSFS, the AML Program Consultant may extend the time period for issuance of the written
+report for up to 60 days with prior written approval of FinCEN.
+
+                                                           44
+AML Program Scope Report; (ii) describing the review performed—including, at a minimum, the
+
+sampling methodology, number of customers, and amount of transactional activity evaluated as part
+
+of the review (including the number of customers and amount of transactional activity evaluated
+
+because of a potential nexus to Priority Illicit Finance Risks); (iii) the number of SARs and other
+
+reports UBSFS filed as a result of the review, including those with a nexus to Priority Illicit Finance
+
+Risks (e.g., SARs filed with a tag responsive to a corresponding FinCEN Advisory, Alert, or Notice
+
+with a nexus to a customer or transaction within the scope of the review); and (iv) describing any
+
+recommended modifications or enhancements to the aspects of UBSFS’s AML program set forth in
+
+the AML Program Scope Report. UBSFS will make, and will cause the AML Program Consultant to
+
+make, interim reports, drafts, workpapers or other supporting materials related to the AML Program
+
+Review available to FinCEN upon request.
+
+         5.       UBSFS will develop a plan to implement any recommendations made in connection
+
+with the AML Program Review (Implementation Plan) or, within 90 days after issuance of a report,
+
+propose alternatives.        The AML Program Consultant will provide a written response to the
+
+Implementation Plan, including any proposed alternatives, within 60 days. Within 180 days after
+
+finalization of the Implementation Plan, 51 the AML Program Consultant will provide FinCEN with a
+
+written report detailing the extent to which UBSFS has adopted and implemented the Implementation
+
+Plan, including, but not limited to specific changes that the AML Program Consultant verified that
+
+
+
+
+51
+   If UBSFS determines that execution of certain aspects of the Implementation Plan will take more than 180 days to
+complete (e.g., if the Implementation Plan involves significant changes to UBSFS systems), UBSFS may request an
+alternative timeline for those aspects of the Implementation Plan through the provision of a written request, including the
+justification for the alternative timeline, to FinCEN and the AML Program Consultant. In its discretion and after
+consultation with the AML Program Consultant, FinCEN may provide an extension for the deadline of the Consultant’s
+written report consistent with such alternative timeline provided that the Consultant confirms that it will provide FinCEN
+with its written report detailing the extent to which UBSFS has adopted and implemented such aspects of the
+Implementation Plan no later than 90 days of the deadline set forth in the alternative timeline for UBSFS to complete its
+implementation.
+
+                                                                45
+UBSFS made to customer relationships in response to the review, such as enhanced monitoring, the
+
+application of new controls, and/or restriction of products and services.
+
+       6.      Upon completion of the foregoing, FinCEN will consider waiving, pursuant to Section
+
+V and in its sole discretion, all or a portion of the Remaining Amount.
+
+   VII.     CONSENT AND ADMISSIONS
+
+       To resolve this matter and only for that purpose, UBSFS admits to the Statement of Facts and
+
+Violations set forth in this Consent Order and admits that it willfully violated the BSA and its
+
+implementing regulations. UBSFS consents to the use of the Statement of Facts, and any other
+
+findings, determinations, and conclusions of law set forth in this Consent Order in any other
+
+proceeding brought by or on behalf of FinCEN, or to which FinCEN is a party or claimant, and agrees
+
+they shall be taken as true and correct and be given preclusive effect without any further proof.
+
+UBSFS understands and agrees that in any administrative or judicial proceeding brought by or on
+
+behalf of FinCEN against it, including any proceeding to enforce the Civil Money Penalty imposed
+
+by this Consent Order or for any equitable remedies under the BSA, UBSFS shall be precluded from
+
+disputing any fact or contesting any determinations set forth in this Consent Order.
+
+       To resolve this matter, UBSFS agrees to and consents to the issuance of this Consent Order
+
+and all terms herein and agrees to make payment of $62 million to the U.S. Department of the
+
+Treasury within ten days of the Effective Date of this Consent Order. UBSFS further agrees to make
+
+payment of the Remaining Amount of $15 million to FinCEN on or before May 31, 2028, with all or
+
+a portion of the Remaining Amount subject to waiver by FinCEN, in its sole discretion, pursuant to
+
+Section V, supra. If timely payment is not made (including any portion of the Remaining Amount
+
+
+
+
+                                                      46
+that is not waived by FinCEN), UBSFS agrees that interest, penalties, and administrative costs will
+
+accrue. 52
+
+           UBSFS understands and agrees that it must treat the Civil Money Penalty paid under this
+
+Consent Order as a penalty paid to the government and may not claim, assert, or apply for a tax
+
+deduction, tax credit, or any other tax benefit for any payments made to satisfy the Civil Money
+
+Penalty. UBSFS understands and agrees that, with the exception of FinCEN’s determination, and its
+
+sole discretion, of the Waived Amount pursuant to Section V, supra, any acceptance by or on behalf
+
+of FinCEN of any partial payment of the Civil Money Penalty obligation will not be deemed a waiver
+
+UBSFS’s obligation to make further payments pursuant to this Consent Order, or a waiver of
+
+FinCEN’s right to seek to compel payment of any amount assessed under the terms of this Consent
+
+Order, including any applicable interest, penalties, or other administrative costs.
+
+           UBSFS affirms that it agrees to and approves this Consent Order and all terms herein freely
+
+and voluntarily and that no offers, promises, or inducements of any nature whatsoever have been
+
+made by FinCEN or any employee, agent, or representative of FinCEN to induce UBSFS to agree to
+
+or approve this Consent Order, except as specified in this Consent Order.
+
+           UBSFS understands and agrees that this Consent Order implements and embodies the entire
+
+agreement between UBSFS and FinCEN, and its terms relate only to this enforcement matter and any
+
+related proceeding and the facts and determinations contained herein. UBSFS further understands
+
+and agrees that there are no express or implied promises, representations, or agreements between
+
+UBSFS and FinCEN other than those expressly set forth or referred to in this Consent Order and that
+
+
+
+
+52
+     31 U.S.C. § 3717; 31 C.F.R. § 901.9.
+
+
+
+                                                       47
+nothing in this Consent Order is binding on any other law enforcement or regulatory agency or any
+
+other governmental authority, whether foreign, Federal, State, or local.
+
+        UBSFS understands and agrees that nothing in this Consent Order may be construed as
+
+allowing UBSFS, its subsidiaries, affiliates, Board, officers, employees, or agents to violate any law,
+
+rule, or regulation.
+
+        UBSFS consents to the continued jurisdiction of the courts of the United States over it and
+
+waives any defense based on lack of personal jurisdiction or improper venue in any action to enforce
+
+the terms and conditions of this Consent Order or for any other purpose relevant to this enforcement
+
+action. Solely in connection with an action filed by or on behalf of FinCEN to enforce this Consent
+
+Order or for any other purpose relevant to this action, UBSFS authorizes and agrees to accept all
+
+service of process and filings through the Notification procedures below and to waive formal service
+
+of process.
+
+    VIII. COOPERATION
+
+        UBSFS shall fully cooperate with FinCEN in any and all matters within the scope of or related
+
+to the Statement of Facts, including any investigation of its current or former directors, officers,
+
+employees, agents, consultants, or any other party. UBSFS understands that its cooperation pursuant
+
+to this paragraph shall include, but is not limited to, truthfully disclosing all factual information with
+
+respect to its activities, and those of its present and former directors, officers, employees, agents, and
+
+consultants. This obligation includes providing to FinCEN, upon request, any document, record or
+
+other tangible evidence about which FinCEN may inquire of UBSFS. UBSFS’s cooperation pursuant
+
+to this paragraph is subject to applicable laws and regulations, as well as valid and properly
+
+documented claims of attorney-client privilege or the attorney work product doctrine.
+
+
+
+
+                                                       48
+   IX.      RELEASE
+
+         Execution of this Consent Order and compliance with all of the terms of this Consent Order
+
+settles all claims that FinCEN may have against UBSFS for the conduct described in this Consent
+
+Order during the Relevant Time Period. Execution of this Consent Order, and compliance with the
+
+terms of this Consent Order, does not release any claim that FinCEN may have for conduct by UBSFS
+
+other than the conduct described in this Consent Order during the Relevant Time Period, or any claim
+
+that FinCEN may have against any current or former director, officer, owner, or employee of UBSFS
+
+or any other individual or entity other than those named in this Consent Order. In addition, this
+
+Consent Order does not release any claim or provide any other protection in any investigation,
+
+enforcement action, penalty assessment, or injunction relating to any conduct that occurs after the
+
+Relevant Time Period as described in this Consent Order.
+
+   X.       WAIVERS
+
+         Nothing in this Consent Order shall preclude any proceedings brought by, or on behalf of,
+
+FinCEN to enforce the terms of this Consent Order, nor shall it constitute a waiver of any right, power,
+
+or authority of any other representative of the United States or agencies thereof, including but not
+
+limited to the Department of Justice.
+
+         In consenting to and approving this Consent Order, UBSFS stipulates to the terms of this
+
+Consent Order and waives:
+
+         A. Any and all defenses to this Consent Order, the Civil Money Penalty imposed by this
+
+            Consent Order, and any action taken by or on behalf of FinCEN that can be waived,
+
+            including any statute of limitations or other defense based on the passage of time;
+
+         B. Any and all claims that FinCEN lacks jurisdiction over all matters set forth in this Consent
+
+            Order, lacks the authority to issue this Consent Order or to impose the Civil Money
+
+
+
+                                                       49
+            Penalty, or lacks authority for any other action or proceeding related to the matters set
+
+            forth in this Consent Order;
+
+         C. Any and all claims that this Consent Order, any term of this Consent Order, the Civil
+
+            Money Penalty, or compliance with this Consent Order, or the Civil Money Penalty, is in
+
+            any way unlawful or violates the Constitution of the United States of America or any
+
+            provision thereof;
+
+         D. Any and all rights to judicial review, appeal or reconsideration, or to seek in any way to
+
+            contest the validity of this Consent Order, any term of this Consent Order, or the Civil
+
+            Money Penalty arising from this Consent Order;
+
+         E. Any and all claims that this Consent Order does not have full force and effect, or cannot
+
+            be enforced in any proceeding, due to changed circumstances, including any change in
+
+            law; and
+
+         F. Any and all claims for fees, costs, or expenses related in any way to this enforcement
+
+            matter, Consent Order, or any related administrative action, whether arising under
+
+            common law or under the terms of any statute, including, but not limited to, under the
+
+            Equal Access to Justice Act. UBSFS agrees to bear its own costs and attorneys’ fees.
+
+   XI.      VIOLATIONS OF THIS CONSENT ORDER
+
+         Determination of whether UBSFS has failed to comply with this Consent Order, or any portion
+
+thereof, and whether to pursue any further action or relief against UBSFS shall be in FinCEN’s sole
+
+discretion. If FinCEN determines, in its sole discretion, that a failure to comply with this Consent
+
+Order, or any portion thereof, has occurred, or that UBSFS has made any misrepresentations to
+
+FinCEN or any other government agency related to the underlying enforcement matter, FinCEN may
+
+void any and all releases or waivers contained in this Consent Order; reinstitute administrative
+
+proceedings; take any additional action that it deems appropriate; and pursue any and all violations,
+                                                      50
+maximum penalties, injunctive relief, or other relief that FinCEN deems appropriate. FinCEN may
+
+take any such action even if it did not take such action against UBSFS in this Consent Order and
+
+notwithstanding the releases and waivers herein. In the event FinCEN takes such action under this
+
+paragraph, UBSFS expressly agrees to toll any applicable statute of limitations and to waive any
+
+defenses based on a statute of limitations or the passage of time that may be applicable to the
+
+Statement of Facts in this Consent Order, until a date 180 days following UBSFS’s receipt of notice
+
+of FinCEN’s determination that a misrepresentation or breach of this agreement has occurred, except
+
+as to claims already time barred as of the Effective Date of this Consent Order.
+
+       In the event that FinCEN determines that UBSFS has made a misrepresentation or failed to
+
+comply with this Consent Order, or any portion thereof, all statements made by or on behalf of UBSFS
+
+to FinCEN, including the Statement of Facts, whether prior or subsequent to this Consent Order, will
+
+be admissible in evidence in any and all proceedings brought by or on behalf of FinCEN. UBSFS
+
+agrees that it will not assert any claim under the Constitution of the United States of America, Rule
+
+408 of the Federal Rules of Evidence, or any other law or federal rule that any such statements should
+
+be suppressed or are otherwise inadmissible. Such statements shall be treated as binding admissions,
+
+and UBSFS agrees that it shall be precluded from disputing or contesting any such statements.
+
+FinCEN shall have sole discretion over the decision to impute conduct or statements of any director,
+
+officer, employee, agent, or any person or entity acting on behalf of, or at the direction of UBSFS in
+
+determining whether UBSFS has violated any provision of this Consent Order.
+
+   XII.    PUBLIC STATEMENTS
+
+       UBSFS agrees that it shall not, nor shall its attorneys, agents, partners, directors, officers,
+
+employees, affiliates, or any other person authorized to speak on its behalf or within its authority or
+
+control, take any action or make any public statement, directly or indirectly, contradicting its
+
+
+
+                                                      51
+admissions and acceptance of responsibility or any terms of this Consent Order, including any fact
+
+finding, determination, or conclusion of law in this Consent Order.
+
+       FinCEN shall have sole discretion to determine whether any action or statement made by
+
+UBSFS, or by any person under the authority, control, or speaking on behalf of UBSFS contradicts
+
+this Consent Order, and whether UBSFS has repudiated such statement.
+
+   XIII. RECORD RETENTION
+
+       In addition to any other record retention required under applicable law, UBSFS agrees to retain
+
+all documents and records required to be prepared or recorded under this Consent Order or otherwise
+
+necessary to demonstrate full compliance with each provision of this Consent Order, including
+
+supporting data and documentation. UBSFS agrees to retain these records for a period of 6 years
+
+after creation of the record, unless required to retain them for a longer period of time under applicable
+
+law.
+
+   XIV. SEVERABILITY
+
+       UBSFS agrees that if a court of competent jurisdiction considers any of the provisions of this
+
+Consent Order unenforceable, such unenforceability does not render the entire Consent Order
+
+unenforceable. Rather, the entire Consent Order will be construed as if not containing the particular
+
+unenforceable provision(s), and the rights and obligations of FinCEN and UBSFS shall be construed
+
+and enforced accordingly.
+
+   XV.     SUCCESSORS AND ASSIGNS
+
+       UBSFS agrees that the provisions of this Consent Order are binding on its owners, officers,
+
+employees, agents, representatives, affiliates, successors, assigns, and transferees to whom UBSFS
+
+agrees to provide a copy of the executed Consent Order. Should UBSFS seek to sell, merge, transfer,
+
+or assign its operations, or any portion thereof, that are the subject of this Consent Order, UBSFS
+
+must, as a condition of sale, merger, transfer, or assignment obtain the written agreement of the buyer,
+
+                                                       52
+merging entity, transferee, or assignee to comply with this Consent Order.
+
+   XVI. MODIFICATIONS AND HEADINGS
+
+       This Consent Order can only be modified with the express written consent of FinCEN and
+
+UBSFS. The headings in this Consent Order are inserted for convenience only and are not intended
+
+to affect the meaning or interpretation of this Consent Order or its individual terms.
+
+   XVII. AUTHORIZED REPRESENTATIVE
+
+       UBSFS’s representative, by consenting to and approving this Consent Order, hereby
+
+represents and warrants that the representative has full power and authority to consent to and approve
+
+this Consent Order for and on behalf of UBSFS and further represents and warrants that UBSFS
+
+agrees to be bound by the terms and conditions of this Consent Order.
+
+   XVIII. NOTIFICATION
+
+       Unless otherwise specified herein, whenever notifications, submissions, or communications
+
+are required by this Consent Order, they shall be made in writing and sent via first-class mail and
+
+simultaneous email, addressed as follows:
+
+               To FinCEN:
+
+                              Associate Director, Enforcement and Compliance Division,
+                              Financial Crimes Enforcement Network,
+                              P.O. Box 39, Vienna, Virginia 22183
+
+               To UBS Financial Services Inc.:
+
+                              Taryn V. Shelton
+                              Executive Director and Senior Regulatory Counsel
+                              1000 Harbor Boulevard, 9th Floor, Legal Department
+                              Weehawken, NJ 07086
+                              Taryn.Shelton@ubs.com
+
+       Notices submitted pursuant to this paragraph will be deemed effective upon receipt unless
+
+otherwise provided in this Consent Order or approved by FinCEN in writing.
+
+
+
+                                                      53
+   XIX. COUNTERPARTS
+
+               This Consent Order may be signed in counterpart and electronically. Each counterpart,
+
+when executed and delivered, shall be an original, and all of the counterparts together shall constitute
+
+one and the same fully executed instrument.
+
+
+
+
+                                                      54
+   XX.     EFFECTIVE DATE AND CALCULATION OF TIME
+
+               This Consent Order shall be effective upon the date signed by FinCEN. Calculation
+
+of deadlines and other time limitations set forth herein shall run from the effective date (excluding
+
+the effective date in the calculation) and be based on calendar days, unless otherwise noted, including
+
+intermediate Saturdays, Sundays, and legal holidays.
+
+
+
+               By Order of the Director of the Financial Crimes Enforcement Network.
+
+
+
+
+       /s/__________________________________________
+
+       Andrea Gacki                   Date:
+       Director
+
+
+               Consented to and Approved By:
+
+
+
+
+       /s/__________________________________________
+
+       Jaclyn A. Barnao            Date:
+       Managing Director and Head of Americas Litigation
+       UBS Financial Services Inc.
+
+
+
+       /s/__________________________________________
+
+       Taryn V. Shelton             Date:
+       Executive Director and Senior Regulatory Counsel
+       UBS Financial Services Inc.
+
+
+
+
+                                                       55
+

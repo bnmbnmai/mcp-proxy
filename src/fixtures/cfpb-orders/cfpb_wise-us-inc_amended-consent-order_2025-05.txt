@@ -1,0 +1,2518 @@
+            2025-CFPB-0004     Document 3       Filed 05/15/2025   Page 1 of 56
+
+
+
+                   UNITED STATES OF AMERICA
+             CONSUMER FINANCIAL PROTECTION BUREAU
+
+
+ADMINISTRATIVE PROCEEDING
+File No. 2025-CFPB-0004
+
+
+In the Matter of:
+
+                                                   AMENDED CONSENT ORDER
+
+
+
+WISE US INC.
+
+
+
+      The Consumer Financial Protection Bureau (Bureau) has reviewed the
+
+remittance services and Prepaid Accounts activities of Wise US Inc. (Respondent,
+
+as defined below) and asserts the following violations of law: (1) violating
+
+sections 1031 and 1036 of the Consumer Financial Protection Act (CFPA) by
+
+employing deceptive marketing disclosures relating to ATM fees leading to ATM
+
+fee overcharges; and (2) violating the Electronic Fund Transfer Act (EFTA), 15
+
+U.S.C. §§ 1693 et seq., and its implementing Regulation E, 12 C.F.R. pt. 1005, by
+
+failing to provide disclosures and notices, including change-in-term notices;
+
+failing to adhere to error resolution provisions and failing to correct errors; failing
+
+to comply with the retention of document requirements; and failing to develop and
+
+maintain policies and procedures that are designed to ensure compliance with error
+
+resolution requirements.
+                                            1
+           2025-CFPB-0004     Document 3         Filed 05/15/2025   Page 2 of 56
+
+
+
+      Under sections 1053 and 1055 of the Consumer Financial Protection Act of
+
+2010 (CFPA), 12 U.S.C. §§ 5563 and 5565, the Bureau issues this Consent Order
+
+(Amended Consent Order).
+
+                                           I.
+                                    Jurisdiction
+
+1.    The Bureau has jurisdiction over this matter under sections 1053 and 1055
+
+      of the CFPA, 12 U.S.C. §§ 5563 and 5565, and section 918 of EFTA, 15
+
+      U.S.C. § 1693o.
+
+                                           II.
+                                     Stipulation
+2.    Respondent has executed a “Stipulation and Consent to the Issuance of an
+
+      Amended Consent Order,” dated May 14, 2025 (Stipulation), which is
+
+      incorporated by reference and is accepted by the Bureau. By this
+
+      Stipulation, Respondent has consented to the issuance of this Amended
+
+      Consent Order by the Bureau under sections 1053 and 1055 of the CFPA,
+
+      12 U.S.C. §§ 5563 and 5565, and without admitting or denying any of the
+
+      findings of fact or conclusions of law, except that Respondent admits the
+
+      facts necessary to establish the Bureau’s jurisdiction over Respondent and
+
+      the subject matter of this action.
+
+
+
+
+                                           2
+          2025-CFPB-0004     Document 3       Filed 05/15/2025   Page 3 of 56
+
+
+
+                                       III.
+
+                                   Definitions
+3.   The following definitions apply to this Amended Consent Order:
+
+     a.    “Advertisement” or “Advertising” means any statement, illustration,
+
+           depiction, or promotional material, whether in English or another
+
+           language, that is designed to effect a sale or create interest in goods or
+
+           services, regardless of where it appears. The term advertisement
+
+           includes but is not limited to web pages, social media, and online
+
+           videos created by Respondent or others on Respondent’s behalf.
+
+     b.    “Affected Consumers” includes: (i) U.S. consumers who were
+
+           charged more for ATM withdrawals after Respondent posted a blog
+
+           post indicating ATM fees would be reduced for 80% of senders but
+
+           which was inaccurate for U.S. consumers; (ii) U.S. consumers who
+
+           held a balance above 15,000 Euros (EUR) from January 1, 2021
+
+           through April 19, 2022, and were charged a fee for maintaining that
+
+           balance that was higher than disclosed; (iii) U.S. consumers who were
+
+           not provided with accurate, updated prepayment disclosures when
+
+           they funded accounts through Apple Pay or Google Pay using a credit
+
+           card instead of a debit card; (iv) U.S. consumers who did not receive
+
+           a notice of remedies or a fee refund when receiving the results of a
+
+           Notice of Error investigation; (v) U.S. consumers whose Notices of
+                                          3
+       2025-CFPB-0004        Document 3       Filed 05/15/2025   Page 4 of 56
+
+
+
+         Error were not properly designated as errors; (vi) U.S. consumers
+
+         who Respondent required to provide information beyond that which is
+
+            required in a Notice of Error prior to commencing its investigation;
+
+            (vii) U.S. consumers who were not issued refunds within one
+
+            business day of, or as soon as reasonably practicable after, receiving
+
+            the sender’s instructions regarding the appropriate Notice of Error
+
+            remedy; (viii) U.S. consumers whose transfers were not made
+
+            available by the date of availability stated in disclosures; and (ix) U.S.
+
+            consumers for whom Notice of Error investigations were not
+
+            completed within 90 days of receiving a sender’s Notice of Error.
+
+c.          “Assisting Others” includes, but is not limited to:
+
+       i.      Consulting in any form whatsoever;
+
+      ii.      Formulating, providing, or arranging for the formulation or
+
+               provision of any advertising or marketing material, or performing
+
+               marketing services of any kind; and
+
+     iii.      Acting or serving as an owner, officer, director, manager, or
+
+               principal of any entity.
+
+d.          “Board” means Respondent’s duly elected and acting Board of
+
+            Directors.
+
+e.          “Effective Date” means the date on which the Amended
+
+                                          4
+     2025-CFPB-0004       Document 3       Filed 05/15/2025   Page 5 of 56
+
+
+
+     Consent Order is entered on the administrative docket.
+
+f.   “Enforcement Director” means the Enforcement Director of the
+
+     Enforcement Division for the Consumer Financial Protection Bureau,
+
+     or their delegate.
+
+g.   “Notice of Error” means any oral or written communication from a
+
+     sender that: (i) Is received by the remittance transfer provider no later
+
+     than 180 days after the disclosed date of availability of the remittance
+
+     transfer; (ii) Enables the provider to identify: (A) The sender’s name
+
+     and telephone number or address; (B) The recipient’s name, and if
+
+     known, the telephone number or address of the recipient; and (C) The
+
+     remittance transfer to which the notice of error applies; and (iii)
+
+     Indicates why the sender believes an error exists and includes to the
+
+     extent possible the type, date, and amount of the error. 12 C.F.R. §
+
+     1005.33(b).
+
+h.   “Prepaid Rule” means the final rules issued by the Bureau to create
+
+     comprehensive protections for prepaid accounts under Regulation E,
+
+     which implements EFTA, and Regulation Z, which implements the
+
+     Truth in Lending Act.
+
+i.   “Remittance Rule” means the final rules issued by the Bureau to
+
+     create comprehensive protections under Regulation E, which
+
+
+                                       5
+           2025-CFPB-0004        Document 3       Filed 05/15/2025   Page 6 of 56
+
+
+
+            implements EFTA, for consumers who send remittance transfers.
+
+      j.    “Supervision Director” means the Supervision Director of the
+
+            Supervision Division for the Consumer Financial Protection Bureau,
+
+            or their delegate.
+
+      k.    “Related Consumer Action” means a private action by or on behalf of
+
+            one or more consumers or an enforcement action by another
+
+            governmental agency brought against Respondent based on
+
+            substantially the same facts as described in Section IV of this
+
+            Amended Consent Order.
+
+      l.    “Respondent” means Wise US Inc. and its successors and assigns.
+
+                                          IV.
+                       Bureau Findings and Conclusions
+The Bureau finds the following:
+4.   Respondent is a Delaware-incorporated remittance transfer provider
+
+      headquartered at 30 West 26th Street, 6th Floor, New York, NY 10010.
+
+      Respondent is a subsidiary of Wise PLC, a global electronic money services
+
+      corporation headquartered in the United Kingdom. Respondent began
+
+      providing remittance transfer services to U.S. consumers in September 2016.
+
+5.    Respondent is licensed in 48 states, the District of Columbia, Guam, the U.S.
+
+      Virgin Islands, and Puerto Rico. Respondent offers and provides remittance
+
+      transfer services to consumers throughout the United States through its
+
+                                              6
+          2025-CFPB-0004      Document 3       Filed 05/15/2025   Page 7 of 56
+
+
+
+     mobile application and website, enabling users to send money to recipients
+
+     in several countries.
+
+6.   Respondent is a remittance transfer provider under EFTA and the
+
+     Remittance Rule because it provides remittance transfers for consumers in
+
+     the normal course of business. 15 U.S.C. § 1693o-1(g)(3); 12 C.F.R. §
+
+     1005.30(f)(1).
+
+7.   Respondent is a financial institution under EFTA and the Prepaid Rule
+
+     because it holds, directly or indirectly, prepaid accounts for consumers in the
+
+     normal course of business. 15 U.S.C. § 1693o-1(g)(3); 12 C.F.R. §§
+
+     1005.18(a), 1005.2(b).
+
+8.   Respondent is a “covered person” under the CFPA because it engages in
+
+     selling, providing, or issuing stored value or payment instruments and
+
+     deposit-taking activities, transmitting or exchanging funds and providing
+
+     payment and other financial data processing products or services to
+
+     consumers by technological means, which are offered to or provided for use
+
+     by consumers primarily for personal, family, or household purposes. 12
+
+     U.S.C. § 5481(5), (6), (15)(A)(iv), (15)(A)(v), (15)(A)(vii).
+
+9.   Respondent allows consumers in the United States to fund prepaid accounts
+
+     with multiple currencies, and has called such accounts, at various times,
+
+     “Wise Multi-Currency Accounts,” “Wise Borderless Accounts,” and “Wise
+
+
+                                           7
+           2025-CFPB-0004     Document 3       Filed 05/15/2025   Page 8 of 56
+
+
+
+      Accounts” (referred to herein as “Wise Prepaid Accounts”).
+
+10.   Consumers were able to load funds into their Wise Prepaid Accounts to
+
+      conduct transactions and transfer money to other consumers.
+
+11.   Respondent also allows consumers to make remittance transfers, including
+
+      from Wise Prepaid Accounts.
+
+12.   Respondent had approximately 3.1 million customers in the United States.
+
+13.   Between April 2022 and March 2023, Respondent’s revenue from
+
+      remittance transfer and prepaid account services was approximately
+
+      $157.3 million.
+
+14.   In 2010, Congress amended EFTA to create a comprehensive system of
+
+      consumer protections for remittance transfers sent by consumers in the
+
+      United States to recipients in foreign countries. To implement the new
+
+      requirements under EFTA, the Bureau issued the Remittance Rule, which is
+
+      part of Regulation E and became effective on October 28, 2013.
+
+15.   The Remittance Rule makes remittance transfers more transparent for
+
+      consumers sending money abroad. Among other things, the Remittance
+
+      Rule requires remittance transfer providers, such as Respondent, to disclose
+
+      fees and date of availability information about each transfer, investigate
+
+      and respond to Notices of Error by senders, and provide consumer
+
+      remedies, including refunds in certain circumstances.
+
+
+                                           8
+           2025-CFPB-0004     Document 3       Filed 05/15/2025   Page 9 of 56
+
+
+
+16.   The Remittance Rule also requires providers to create and maintain written
+
+      policies and procedures that are designed to ensure compliance with the
+
+      error resolution requirements set forth in the Remittance Rule, including
+
+      policies and procedures regarding the retention of documentation related to
+
+      error investigations that must meet certain minimum criteria.
+
+17.   Additionally, the Remittance Rule provides that remittance transfer
+
+      providers are subject to the general record retention requirements of
+
+      Regulation E.
+
+18.   The Bureau issued the Prepaid Rule to create comprehensive protections for
+
+      prepaid accounts under Regulation E, which implements EFTA, and
+
+      Regulation Z, which implements the Truth in Lending Act. The Prepaid Rule
+
+      became effective on April 1, 2019.
+
+19.   The Prepaid Rule extends Regulation E’s coverage to prepaid accounts. It
+
+      modifies Regulation E to create tailored provisions governing disclosures,
+
+      limited liability and error resolution, and periodic statements for prepaid
+
+      accounts. It also creates new requirements that apply only to prepaid
+
+      accounts.
+
+20.   The Prepaid Rule provides consumer protections for prepaid account users
+
+      by requiring that information like periodic fees and ATM withdrawal and
+
+      inquiry fees are disclosed to the consumer. The Prepaid Rule also ensures
+
+
+                                           9
+             2025-CFPB-0004     Document 3    Filed 05/15/2025   Page 10 of 56
+
+
+
+        consumers who encounter errors associated with their accounts have error
+
+        resolution rights.
+
+21.     Wise began providing remittance transfer services for consumers in the
+
+        United States in 2016, and prepaid accounts for consumers in the United
+
+        States in 2019, after the issuance of the Remittance Rule and the Prepaid
+
+        Rule. Wise violated certain of its obligations under the CFPA, EFTA, and
+
+        Regulation E, including the Remittance Rule and the Prepaid Rule.
+
+22.     Respondent was aware of EFTA and Regulation E, including the Remittance
+
+        Rule and the Prepaid Rule, as well as the Prepaid Rule’s and Remittance
+
+        Rule’s applicability to its remittance transfer services business and its
+
+        prepaid accounts, but Respondent failed to comply—in many cases for a
+
+        period of years—with several of the Remittance Rule’s and Prepaid Rule’s
+
+        requirements. This was due, in part, to Respondent’s failure to scale its
+
+        compliance team and processes commensurate with the company’s rapid
+
+        expansion and growth in the U.S. market.
+
+          Findings and Conclusions as to Respondent’s Violations of the CFPA
+
+      Respondent Violated the CFPA through Statements About its ATM Fees
+
+23.     Sections 1031 and 1036 of the CFPA “covered person” from committing or
+
+        engaging in any “unfair, deceptive, or abusive act or practice” in connection
+
+        with “any transaction with a consumer for a consumer financial product or
+
+        service, or the offering of a consumer financial product or service.” 12
+                                             10
+           2025-CFPB-0004    Document 3    Filed 05/15/2025    Page 11 of 56
+
+
+
+      U.S.C. §§ 5531(a), 5536(a)(1)(B).
+
+24.   In or around January 2021, Respondent increased ATM fees for its Wise
+
+      Prepaid Accounts and notified its consumers of the fee change on or around
+
+      October 30, 2020, via the following message:
+
+
+
+      lnbox Message
+      We're changing the way we calculate ATM fees
+      Tneyll be cneaper for 80% of users. Tap to learn more.
+
+
+
+
+25.   When consumers tapped the “learn more” hyperlink, they were directed to
+
+      Respondent’s website that outlined Respondent’s new fee structure in an
+
+      October 2020 page (2020 Message) as follows: two free withdrawals up to
+
+      200 Euros total (or equivalent) per month; 1.75% on each withdrawal if a
+
+      consumer withdraws more than 200 Euros per month; and 50p (or
+
+      equivalent) on each withdrawal if a consumer withdraws more than two
+
+      times a month.
+
+26.   The ATM fees that Respondent advertised in its 2020 Message were not
+
+      accurate for consumers in the United States. Specifically, the fee structure
+
+      for U.S. consumers was the following: two free withdrawals up to $100
+
+      during a 30-day rolling period; 2.00% on any withdrawals over $100 during
+
+      a 30-day rolling period; and $1.50 in ATM fees on each withdrawal if a
+                                          11
+          2025-CFPB-0004     Document 3    Filed 05/15/2025   Page 12 of 56
+
+
+
+      consumer withdraws more than twice in a 30-day rolling period.
+
+27.   Respondent’s inaccurate representations about its ATM fees and charges
+
+      were misleading and deceptive to U.S. consumers, in violation of sections
+
+      1031 and 1036 of the CFPA, resulting in Respondent overcharging
+
+      thousands of consumers approximately $156,000 in fees.
+
+28.   Respondent’s misrepresentations concerning ATM fees for U.S. consumers
+
+      were material and likely to mislead consumers acting reasonably under the
+
+      circumstances.
+
+29.   Therefore, Respondent engaged in deceptive acts or practices in violation of
+
+      sections 1031 and 1036 of the CFPA. 12 U.S.C. §§ 5531(a), 5536.
+
+                 Findings and Conclusions as to Respondent’s
+                  Violations of Regulation E’s Prepaid Rule
+Respondent Violated 12 C.F.R. § 1005.18(b) of the Prepaid Rule by Failing to
+  Require that Customers View Disclosures Prior to Accepting a Prepaid
+                                 Account
+30.   Under 12 C.F.R. § 1005.18(b) of the Prepaid Rule, Respondent must
+
+      provide the consumer with certain disclosures before the consumer acquires
+
+      a prepaid account. The Prepaid Rule further requires that, for prepaid
+
+      accounts acquired electronically, a consumer must view the web page
+
+      containing the disclosure before choosing to accept the prepaid account.
+
+31.   Until approximately June 15, 2022, when consumers opened a Wise Prepaid
+
+      Account, Respondent provided consumers with a hyperlink to the
+
+                                          12
+             2025-CFPB-0004     Document 3    Filed 05/15/2025   Page 13 of 56
+
+
+
+        disclosures along with Respondent’s customer agreement but did not require
+
+        consumers to view the electronic disclosures prior to acquiring the account
+
+        and instead used a “check-box procedure” that allowed consumers to bypass
+
+        reviewing the disclosure by checking a box.
+
+32.     By using a “check-box procedure” and providing a hyperlink to the
+
+        disclosure rather than requiring consumers view the disclosures prior to
+
+        acquiring a Prepaid Account, Respondent failed to comply with the Prepaid
+
+        Rule’s requirements and thus violated § 1005.18(b) of Regulation E’s
+
+        Prepaid Rule.
+
+      Respondent Violated 12 C.F.R. § 1005.18(b)(4)(ii) of the Prepaid Rule by
+              Failing to Accurately Disclose Consumer Euro Fees
+
+33.     Section 1005.18 of the Prepaid Rule requires that, on prepaid account long
+
+        form disclosures, “[f]or each fee, the financial institution must disclose the
+
+        amount of the fee and the conditions, if any, under which the fee may be
+
+        imposed, waived, or reduced.” 12 C.F.R. § 1005.18(b)(4)(ii).
+
+34.     On its Wise Prepaid Account long form disclosure that was issued on or
+
+        about January 1, 2021, Respondent failed to accurately disclose fees for
+
+        consumers who held over 15,000 Euros in their Wise Prepaid Accounts.
+
+35.     For those consumers, Respondent’s long form disclosure listed a “[m]onthly
+
+        fee for EUR balance of 0.03%,” when in fact because Respondent calculated
+
+        the holding fees on a daily basis, it charged a daily 0.00109% rate, resulting
+
+                                             13
+             2025-CFPB-0004     Document 3    Filed 05/15/2025   Page 14 of 56
+
+
+
+        in an actual monthly holding fee of 0.033%.
+
+36.     Respondent updated its long form disclosure on March 28, 2022, changed its
+
+        disclosure process on June 15, 2022, and eliminated the EUR holding fee in
+
+        August 2022.
+
+37.     As a result, between January 1, 2021, and March 28, 2022, Respondent did
+
+        not accurately disclose the Euro holding fee in its long form disclosures.
+
+        Over 2,000 consumers who held a balance above 15,000 EUR incurred
+
+        approximately $130,000 in fees that they should not have incurred,
+
+        constituting the difference between fees actually charged and fees that would
+
+        have been charged before the change.
+
+38.     By not disclosing accurate Euro fees in its long form disclosure, Respondent
+
+        failed to comply with the Prepaid Rule’s fee-disclosure provisions and thus
+
+        violated § 1005.18(b)(4)(ii) of the Prepaid Rule.
+
+      Respondent Violated 12 C.F.R. § 1005.18(b)(4)(ii) of the Prepaid Rule by
+       Failing to Disclose Accurate Fees to Consumers Who Funded Prepaid
+         Accounts Using a Credit Card Through Apple Pay or Google Pay
+
+39.     Section 1005.18(b)(4)(ii) of the Prepaid Rule requires that, on prepaid
+
+        account long form disclosures, a financial institution shall set forth “all fees
+
+        that may be imposed in connection with a prepaid account.”
+
+40.     On its Wise Prepaid Account long form disclosure, Respondent failed to
+
+        identify the different fees a consumer would incur when funding a Wise
+
+        Prepaid Account through Apple Pay or Google Pay using a debit card versus
+                                             14
+                2025-CFPB-0004   Document 3    Filed 05/15/2025   Page 15 of 56
+
+
+
+        a credit card.
+
+41.     Respondent disclosed that the Apple Pay and Google Pay-funded transfer
+
+        fee was 1.25% for consumers adding money to their balance, but the fee was
+
+        3.8% if the transfer was ultimately funded using a credit card rather than a
+
+        debit card.
+
+42.     Between approximately December 1, 2018, when the issue first occurred,
+
+        and April 19, 2022, Respondent failed to accurately disclose the Apple Pay
+
+        and Google Pay credit card fees on its long form disclosures. As a result,
+
+        over 17,000 consumers incurred a total of over $140,000 in overcharged
+
+        fees.
+
+43.     By not disclosing accurate fees in its long form disclosure, Respondent
+
+        failed to comply with the Prepaid Rule’s fee-disclosure provisions and thus
+
+        violated § 1005.18(b)(4)(ii) of the Prepaid Rule.
+
+      Respondent Violated 12 C.F.R. § 1005.18(b)(4)(v) of the Prepaid Rule by
+       Failing to Disclose Contact Information in its Long Form Disclosures
+
+44.     Section 1005.18(b)(4)(v) of the Prepaid Rule requires that, on prepaid
+
+        account long form disclosures, financial institutions provide contact
+
+        information including a telephone number, mailing address, and website
+
+        URL of the person or office that a consumer may contact with questions
+
+        regarding their Wise Prepaid Account or to report an unauthorized
+
+        transfer. 12 C.F.R. § 1005.18(b)(4)(v).
+
+                                              15
+           2025-CFPB-0004    Document 3    Filed 05/15/2025   Page 16 of 56
+
+
+
+45.   On its Wise Prepaid Account long form disclosure, Respondent failed to
+
+      disclose its telephone number, mailing address, and website URL that a
+
+      consumer may use to contact Respondent with questions regarding their
+
+      Wise Prepaid Account or to report an unauthorized transfer.
+
+46.   By failing to disclose its contact information on its Wise Prepaid Account
+
+      long form disclosures, Respondent violated § 1005.18(b)(4)(v) of the
+
+      Prepaid Rule.
+
+Respondent Violated 12 C.F.R. §§ 1005.8(a)(1) and 1005.18(f)(2) of Regulation
+E by Failing to Timely Provide Consumers with a Notice of Change-in-Terms
+                           for ATM Withdrawals
+
+47.   Section 1005.8(a)(1) requires that a “financial institution shall mail or
+
+      deliver a written notice to the consumer, at least 21 days before the effective
+
+      date, of any change in a term or condition required to be disclosed under §
+
+      1005.7(b),” which among other things includes increased fees to the
+
+      consumer. 12 C.F.R. §§ 1005.8(a)(1), 1005.18(f)(2).
+
+48.   When Respondent sent an email on October 30, 2020, announcing the
+
+      change in terms via a URL linking to a blog post explaining the ATM
+
+      withdrawal fee structure change, it failed to provide written notice to
+
+      consumers, at least 21 days before October 30, 2020, of the increased ATM
+
+      withdrawal fees change in terms.
+
+49.   As a result of Respondent’s violations, at least 16,000 consumers were
+
+
+                                          16
+           2025-CFPB-0004    Document 3    Filed 05/15/2025   Page 17 of 56
+
+
+
+      overcharged about $130,000 without being timely notified of changes in
+
+      terms as required by Regulation E.
+
+50.   Because Respondent implemented the change in terms less than 21 days
+
+      after issuing the notice of change in terms, it violated §§ 1005.8(a)(1) and
+
+      1005.18(f)(2) of Regulation E.
+
+                 Findings and Conclusions as to Respondent’s
+                 Violations of Regulation E’s Remittance Rule
+  Respondent Violated 12 C.F.R. § 1005.31(g)(2) of the Remittance Rule by
+   Failing to Provide Certain Foreign Language Disclosures to Senders of
+                           Remittance Transfers
+
+51.   Section 1005.31(a)(5) of the Remittance Rule allows remittance providers to
+
+      provide prepayment disclosures for transactions conducted via mobile
+
+      application or text message to consumers orally or through a mobile
+
+      application or text message under certain circumstances, including if the
+
+      transaction was conducted entirely by telephone via mobile application or
+
+      text message.
+
+52.   Section 1005.31(g)(2) of the Remittance Rule sets forth the foreign language
+
+      requirements applicable to oral, mobile application, or text message
+
+      disclosures. When a remittance provider provides disclosures by mobile
+
+      application, the disclosure shall be made in the language primarily used by
+
+      the sender with the remittance provider to conduct the transaction.
+
+53.   Until March 9, 2022, for transactions conducted entirely via mobile
+
+                                          17
+           2025-CFPB-0004    Document 3    Filed 05/15/2025   Page 18 of 56
+
+
+
+      applications, Respondent provided its cancellations and disputes section of
+
+      its receipts in English and not in the foreign language primarily used by the
+
+      sender with the remittance transfer provided to conduct the transaction, as
+
+      required under § 1005.31(g)(2).
+
+54.   Therefore, Respondent violated § 1005.31(g)(2) of the Remittance Rule.
+
+ Respondent Violated 12 C.F.R. § 1005.31(b)(1)(iv) of the Remittance Rule by
+               Failing to Properly Disclose Exchange Rates
+55.   Section 1005.31(b)(1)(iv) of the Remittance Rule required that the exchange
+
+      rate used by the provider in its disclosures be “rounded consistently for each
+
+      currency to no fewer than two decimal places and no more than four decimal
+
+      places[.]”
+
+56.   Respondent failed in its disclosures to consistently round the exchange rate
+
+      for each currency to no fewer than two decimal places and no more than four
+
+      decimal places.
+
+57.   Instead, Respondent disclosed exchange rates up to six decimal places and
+
+      failed to consistently round the exchange rate for each currency as required
+
+      by the Remittance Rule.
+
+58.   Therefore, Respondent violated § 1005.31(b)(1)(iv) of the Remittance Rule.
+
+  Respondent Violated 12 C.F.R. § 1005.31(b)(1) of the Remittance Rule by
+         Failing to Use Specified or Substantially Similar Terms
+59.   Under § 1005.31(b)(1) of the Remittance Rule, on the prepayment
+
+      disclosures required by the Remittance Rule, Respondent must use the terms
+                                          18
+           2025-CFPB-0004      Document 3    Filed 05/15/2025   Page 19 of 56
+
+
+
+      specified in the Remittance Rule or substantially similar terms. This includes
+
+      disclosure of “Transfer Amount” as described in § 1005.31(b)(1)(i), “Total”
+
+      in § (b)(1)(iii), and “Exchange Rate” in § (b)(1)(iv), or substantially similar
+
+      terms.
+
+60.   On its remittance prepayment disclosures, Respondent failed to use the
+
+      required terms or substantially similar terms and instead used the following
+
+      terms:
+
+      a.       “Amount We’ll Convert” or “Estimated amount we’ll convert” instead
+
+               of “Transfer Amount” or a substantially similar term as required by §
+
+               1005.31(b)(1)(i);
+
+      b.       “You Send” instead of “Total” or a substantially similar term as
+
+               required by § 1005.31(b)(1)(iii); and
+
+      c.       “Estimated Rate” instead of “Exchange Rate” or a substantially
+
+               similar term as required by § 1005.31(b)(1)(iv).
+
+61.   The terms used by Respondent did not comply with the prescribed terms in
+
+      the Remittance Rule, nor did they constitute substantially similar terms.
+
+62.   Therefore, Respondent violated § 1005.31(b)(1)(i), (b)(1)(iii), and (b)(1)(iv)
+
+      of the Remittance Rule.
+
+  Respondent Violated 12 C.F.R. § 1005.31(e)(2) of the Remittance Rule by
+      Failing to Provide a Receipt When a Sender Initiated Payment
+
+63.   For transfers by telephone via mobile application or text message a receipt
+
+                                            19
+           2025-CFPB-0004    Document 3    Filed 05/15/2025   Page 20 of 56
+
+
+
+      required by § 1005.31(b)(2) must, pursuant to § 1005.31(e)(2), be provided
+
+      to the sender when payment is made for the transfer, or may be mailed or
+
+      delivered to the sender no later than one business day after the date on which
+
+      payment is made for the remittance transfer.
+
+64.   Respondent failed to timely provide a receipt when a sender made a payment
+
+      and, instead, only provided a receipt when Respondent’s payment partner
+
+      initiated the payout to the designated recipient’s bank, which could happen
+
+      hours or days after the sender’s payment was made.
+
+65.   Respondent violated § 1005.31(e)(2) of the Remittance Rule by providing
+
+      receipts more than one business day after payment was made for the
+
+      remittance transfer.
+
+ Respondent Violated 12 C.F.R. § 1005.31(b)(2)(ii) of the Remittance Rule by
+ Failing to Use Prescribed Terms or Substantially Similar Terms on Receipts
+66.   For transfers by telephone via mobile application or text message a
+
+      receipt required by § 1005.31(b)(2)(ii) must disclose the “date in the
+
+      foreign country on which funds will be available to the designated
+
+      recipient, using the term ‘Date Available’ or a substantially similar term.
+
+      A provider may provide a statement that funds ‘may be available’ to the
+
+      designated recipient earlier than the date disclosed[.]” 12 C.F.R. §
+
+      1005.31(b)(2)(ii).
+
+67.   On its remittance receipts, Respondent failed to identify when the funds will
+
+                                          20
+           2025-CFPB-0004     Document 3    Filed 05/15/2025   Page 21 of 56
+
+
+
+      actually be available to the designated recipients; instead, it identified the
+
+      date when the funds are transferred by Respondent to the recipient financial
+
+      institution, which Respondent described in the receipt as the “Paid Out”
+
+      date. The “Paid Out” date did not necessarily reflect when the funds were
+
+      available to the designated recipient. As a result, Respondent failed to
+
+      comply with the Remittance Rule’s requirement to disclose the date required
+
+      by the Remittance Rule and, in addition, Respondent failed to use terms that
+
+      were substantially similar.
+
+68.   By failing to identify when the funds will actually be available to the
+
+      designated recipients and failing to use the prescribed term or a substantially
+
+      similar term for the date when funds would be available, Respondent
+
+      violated § 1005.31(b)(2)(ii) of the Remittance Rule.
+
+ Respondent Violated 12 C.F.R. § 1005.31(b)(2)(iv) and (vi) of the Remittance
+   Rule by Failing to Provide Certain Senders with Disclosures Relating to
+                    Resolution of Errors and Cancelations
+69.   For transfers by telephone via mobile application or text message, a receipt
+
+      required by § 1005.31(b)(2) must include a notice of the sender’s rights
+
+      regarding the resolution of errors and cancellation using language set forth
+
+      in Model Form A–37 of Appendix A to the Remittance Rule or
+
+      substantially similar language per § 1005.31(b)(2)(iv). Such receipts must
+
+      also disclose the names, telephone numbers, and Web sites of the State
+
+      agency that licenses or charters the remittance transfer provider and the
+                                           21
+           2025-CFPB-0004    Document 3    Filed 05/15/2025   Page 22 of 56
+
+
+
+      Bureau’s contact information for questions and complaints about the
+
+      remittance provider. 12 12C.F.R. § 1005.31(b)(2)(vi).
+
+70.   Respondent failed to treat remittance transfers made by senders located in
+
+      the United States using their Prepaid Accounts funded through foreign bank
+
+      accounts, where the source currency and target currency were not United
+
+      States dollars, as remittance transfers subject to the Remittance Rule.
+
+71.   As a result, Respondent failed to include on these receipts both a statement
+
+      about the rights of the sender regarding the resolution of errors and
+
+      cancellations in violation of § 1005.31(b)(2)(iv) and the names, telephone
+
+      numbers, and Web sites of the State agency that licenses or charters
+
+      Respondent and the Bureau’s contact information in violation of §
+
+      1005.31(b)(2)(vi).
+
+72.   By failing to treat these remittance transfers as subject to the Remittance
+
+      Rule, Respondent failed to provide users with required disclosures and
+
+      thus violated § 1005.31(b)(2)(iv) and (vi).
+
+ Respondent Violated 12 C.F.R. § 1005.31(b)(2)(v) of the Remittance Rule by
+  Failing to Provide Senders with Receipts Disclosing Respondent’s Website
+
+73.   For transfers by telephone via mobile application or text message a receipt
+
+      required by § 1005.31(b)(2) of the Remittance Rule must disclose the
+
+      website of the remittance transfer provider, among other contact
+
+      information, as set forth in § 1005.31(b)(2)(v).
+
+                                          22
+           2025-CFPB-0004     Document 3    Filed 05/15/2025   Page 23 of 56
+
+
+
+74.   Respondent failed to provide Respondent’s website on receipts for its one-
+
+      time transfers and preauthorized transfers.
+
+75.   Instead of providing Respondent’s website, Respondent included a hyperlink
+
+      with only the words “Help Centre” on the footer of its receipt in violation of
+
+      § 1005.31(b)(2)(v).
+
+76.   Therefore, Respondent violated § 1005.31(b)(2)(v) of the Remittance Rule.
+
+ Respondent Violated 12 C.F.R. § 1005.33(a)(1)(iv) of the Remittance Rule by
+ Failing to Investigate Notices of Errors Relating to Fund Availability Dates
+
+77.   Subject to specific exceptions, § 1005.33(a)(1)(iv) of the Remittance Rule
+
+      provides that an error occurs if the remittance provider fails to make funds
+
+      available to a designated recipient by the date stated in the disclosure
+
+      provided to the sender under § 1005.31(b)(2) or (3) for the remittance
+
+      transfer.
+
+78.   In some instances, when senders’ alleged funds were not made available
+
+      to the designated recipient by the date Respondent previously disclosed to
+
+      the sender, which is generally an error as defined by § 1005.33(a)(1)(iv),
+
+      Respondent failed to investigate the error as alleged, and determined no
+
+      error occurred because it concluded the remittance arrived at the
+
+      recipient’s bank, even though in some instances the funds were not
+
+      available to that recipient by the disclosed date of availability.
+
+79.   As a result, Respondent identified over 1,000 cases where funds were not
+
+                                           23
+           2025-CFPB-0004     Document 3    Filed 05/15/2025   Page 24 of 56
+
+
+
+      made available by the disclosed date of availability, and thus senders
+
+      incurred fees that were not refunded.
+
+80.   By failing to investigate Notices of Error related to its failure to make funds
+
+      available to a designated recipient by the date of availability stated in the
+
+      disclosure, Respondent failed to comply with § 1005.33(a)(1)(iv).
+
+  Respondent Violated 12 C.F.R. § 1005.33(c)(1) of the Remittance Rule by
+        Failing to Timely Determine Whether an Error Occurred
+
+81.   Section 1005.33(c)(1) of the Remittance Rule requires that “[a] remittance
+
+      transfer provider shall investigate promptly and determine whether an error
+
+      occurred within 90 days of receiving notice of error.”
+
+82.   Though Respondent had a policy to resolve errors within 90 days of
+
+      receiving a Notice of Error, Respondent failed to follow its policies and
+
+      procedures and failed to provide customer service staff with adequate
+
+      training on required timelines.
+83.   As a result, Respondent failed to determine whether errors occurred within
+
+      90 days of receiving a Notice of Error in violation of § 1005.33(c)(1) of the
+
+      Remittance Rule.
+
+  Respondent Violated 12 C.F.R. § 1005.33(c)(1) of the Remittance Rule by
+  Requiring that Senders Provide the Recipient’s Bank Statement Prior to
+                           Investigating Errors
+
+84.   Section 1005.33(c)(1) of the Remittance Rule requires that “[a] remittance
+
+      transfer provider shall investigate promptly” Notices of Error. This section
+
+
+                                           24
+           2025-CFPB-0004     Document 3    Filed 05/15/2025   Page 25 of 56
+
+
+
+      does not require a consumer to provide any additional information in a
+
+      Notice of Error other than a basis for the error and information sufficient to
+
+      enable the provider to identify the sender’s name and telephone number or
+
+      address, the recipient’s name, and the remittance transfer to which the
+
+      Notice of Error applies, as set forth in § 1005.33(b)(1)(ii)-(iii).
+
+85.   Respondent required its payment operation team to trace customer funds
+
+      when a consumer asserted that the funds were not available to the designated
+
+      recipient by the disclosed date of availability and further required that the
+
+      consumer provide a copy of the recipient’s bank account statement prior to
+
+      initiating a trace.
+
+86.   Respondent’s requirement that a consumer provide a copy of the recipient’s
+
+      bank account statement imposed a condition beyond what the Remittance
+
+      Rule § 1005.33(b)(1)(ii)-(iii) requires prior to investigating a claim
+
+      regarding funds availability. As a result, Respondent failed to promptly
+
+      investigate certain Notices of Error as required by § 1005.33(c)(1) of the
+
+      Remittance Rule.
+
+87.   For some consumers who were asked to provide additional information not
+
+      required by the Remittance Rule, claims of error that should have been
+
+      resolved in the consumers’ favor were instead resolved unfavorably.
+
+88.   Therefore, Respondent violated § 1005.33(c)(1) of the Remittance Rule by
+
+
+                                           25
+           2025-CFPB-0004     Document 3    Filed 05/15/2025   Page 26 of 56
+
+
+
+      imposing conditions that interfered with a prompt investigation.
+
+  Respondent Violated 12 C.F.R. § 1005.33(c)(1) of the Remittance Rule by
+  Failing to Include a Notice of Remedies Available for Correcting Errors
+
+89.   Section 1005.33(c)(1) of the Remittance Rule requires remittance providers
+
+      to report the results of an error investigation to the sender, “including notice
+
+      of any remedies available for correcting any error that the provider
+
+      determines has occurred, within three business days after completing its
+
+      investigation.”
+
+90.   When reporting the results of error investigations, Respondent failed to
+
+      provide some consumers with notices of remedies available for correcting
+
+      the errors.
+
+91.   By failing to provide notices of remedies available, some consumers were
+
+      unable to request an available remedy.
+
+92.   Respondent also failed to report the results of investigations within three
+
+      business days (or at all) after completing its investigation.
+
+93.   Therefore, Respondent violated § 1005.33(c)(1) of the Remittance Rule.
+
+  Respondent Violated 12 C.F.R. § 1005.33(c)(2) of the Remittance Rule by
+       Failing to Timely Correct Errors with Appropriate Remedy
+94.   Section 1005.33(c)(2) of the Remittance Rule requires that after determining
+
+      an error occurred, a remittance provider “shall, within one business day of,
+
+      or as soon as reasonably practicable after, receiving the sender’s instruction
+
+      regarding the appropriate remedy, correct the error as designated by the
+                                           26
+           2025-CFPB-0004    Document 3    Filed 05/15/2025   Page 27 of 56
+
+
+
+      sender[.]”
+
+95.   After receiving senders’ instructions regarding the appropriate error remedy,
+
+      Respondent failed to provide the remedy requested by the senders within one
+
+      business day or as soon as reasonably practicable after receiving the senders’
+
+      instructions. As a result, after properly designating complaints as errors, in
+
+      351 instances Respondent failed to comply with the one-business-day timing
+
+      requirement, thus failing to timely provide required refunds.
+
+96.   By failing to timely provide the requested remedy, Respondent violated §
+
+      1005.33(c)(2) of the Remittance Rule.
+
+ Respondent Violated 12 C.F.R. § 1005.33(c)(2)(ii) of the Remittance Rule by
+ Failing to Refund Fees When Funds Were Not Available to the Recipient by
+                          the Date of Availability
+97.   Section 1005.33(c)(2)(ii) of the Remittance Rule requires that when an
+
+      error occurs that concerns the failure to make funds available to a
+
+      designated recipient by the date of availability on the receipt or combined
+
+      disclosure, under § 1005.31(b)(3), the remittance provider must provide
+
+      certain remedies to the sender, including, at § 1005.33(c)(2)(ii)(B),
+
+      refunding any fees imposed on the transfer due to such failure.
+
+98.   In certain instances, Respondent failed to refund sender fees even where
+
+      Respondent found that funds were not made available to the designated
+
+      recipient by the date disclosed on the receipt or combined disclosure, and
+
+      thus did not comply with the refund requirements in § 1005.33(c)(2)(ii)(B)
+                                          27
+           2025-CFPB-0004    Document 3    Filed 05/15/2025   Page 28 of 56
+
+
+
+      of the Remittance Rule. As a result, Respondent identified 351 instances
+
+      of sender fees that were not refunded.
+
+99.   Therefore, Respondent violated § 1005.33(c)(2)(ii)(B) of the Remittance
+
+      Rule.
+
+  Respondent Violated 12 C.F.R. § 1005.33(d)(1) of the Remittance Rule by
+  Failing to Note Senders’ Right to Request Error Investigation Documents
+
+100. Section 1005.33(d)(1) of the Remittance Rule requires that “[t]he remittance
+
+      transfer provider’s report of the results of the investigation shall … note the
+
+      sender’s right to request the documents on which the provider relied in
+
+      making its determination.”
+
+101. In reporting the results of error investigations to consumers, Respondent
+
+      failed to note the sender’s right to request documents on which Respondent
+
+      relied in making its determination, as required by § 1005.33(d)(1) of the
+
+      Remittance Rule.
+
+102. Therefore, Respondent violated § 1005.33(d)(1) of the Remittance Rule.
+
+  Respondent Violated the Remittance Rule by Failing to Retain Documents,
+           Including Records of Error Resolution Investigations
+103. Under sections 1005.13(b)(1) and 1005.33(g)(2) of Regulation E, remittance
+
+      transfer providers must maintain policies and procedures regarding the
+
+      retention of documentation related to error investigations for period not less
+
+      than two years from the date of the required disclosures or action.
+
+104. Section 1005.33(g)(2) of Regulation E requires that remittance transfer
+                                          28
+           2025-CFPB-0004    Document 3    Filed 05/15/2025   Page 29 of 56
+
+
+
+      providers should maintain policies and procedures regarding the retention of
+
+      documentation related to error investigations. Section 1005.13(b)(1) requires
+
+      that “[a]ny person subject to this Act and this part shall retain evidence proof
+
+      compliance with the requirements imposed by the Act and this part for a
+
+      period not less than two years from the date disclosures are required to be
+
+      made or action is required to be taken.”
+
+105. Respondent did not begin tracking document retention compliance until
+
+      December 2020. Between approximately April 2018 and December 2020,
+
+      Respondent failed to meet its document retention compliance obligations. In
+
+      some instances, Respondent failed to maintain records of its error resolution
+
+      investigation sufficient to demonstrate compliance with the Remittance
+
+      Rule.
+
+106. Respondent’s procedures requiring that customer service agents manually
+
+      upload any error investigation attachments from a third-party customer
+
+      service program to the sender’s profile on Respondent’s servers failed to
+
+      reasonably ensure the relevant documents were retained and failed to ensure
+
+      compliance with Regulation E and the Remittance Rule. Therefore,
+
+      Respondent violated §§ 1005.33(g)(2) and 1005.13.
+
+
+
+
+                                          29
+           2025-CFPB-0004    Document 3    Filed 05/15/2025   Page 30 of 56
+
+
+
+Respondent Violated the Remittance Rule by Failing to Develop and Maintain
+  Policies and Procedures to Ensure Compliance with the Remittance Rule
+
+107. Section 1005.33(g) of the Remittance Rule requires a remittance provider to
+
+      “develop and maintain written policies and procedures that are designed to
+
+      ensure compliance with the error resolution requirements applicable to
+
+      remittance transfers[.]” 12 C.F.R. § 1055.33(g)(1).
+
+108. This provision applies to remittance transactions involving consumers
+
+      located in the United States who held Prepaid Accounts that were funded
+
+      from foreign bank accounts.
+
+109. Despite this requirement, Respondent lacked policies and procedures to
+
+      ensure it treated transfers by consumers located in the United States using
+
+      Prepaid Accounts funded by foreign bank accounts as remittance transfers.
+
+110. As a result, Respondent failed to develop or maintain policies and
+
+      procedures that acknowledged senders who Respondent knew were
+
+      located in the United States, as evidenced by the address associated with
+
+      the consumer account and included on receipts to those senders, but who
+
+      held Prepaid Accounts funded by foreign bank accounts.
+
+111. Thus, certain of Respondent’s remittance transfer senders were unable to
+
+      avail themselves of error resolution rights provided under 12 C.F.R. §
+
+      1005.33.
+
+112. Therefore, Respondent violated § 1005.33(g)(1) of the Remittance Rule.
+
+                                          30
+           2025-CFPB-0004    Document 3    Filed 05/15/2025   Page 31 of 56
+
+
+
+Respondent’s Violations of the Remittance Rule, Prepaid Rule, Regulation E,
+    and EFTA are also Violations of Section 5536(a)(1)(A) of the CFPA
+
+113. Section 1036(a)(1)(A) of the CFPA prohibits covered persons from offering
+
+      or providing consumer financial products or services that are not in
+
+      conformity with “Federal consumer financial law.” 12 U.S.C. §
+
+      5536(a)(1)(A).
+
+114. The Remittance Rule is a “Federal consumer financial law.” 12 U.S.C. §
+
+      5481(14); 12 C.F.R. § 1005.1(a).
+
+115. Regulation E, including the provisions constituting the Prepaid Rule, is a
+
+      “Federal consumer financial law.” 12 U.S.C. § 5481(14); 12 C.F.R. §
+
+      1005.1(a).
+
+116. EFTA is an “enumerated consumer law” and a “Federal consumer financial
+
+      law.” 12 U.S.C. § 5481(12)(C), (14).
+
+117. As described above, Respondent offered or provided prepaid accounts and
+
+      remittance transfers not in conformity with EFTA, Regulation E, the
+
+      Prepaid Rule, and the Remittance Rule. Therefore, Respondent violated
+
+      section 1036(a)(1)(A) of the CFPA. 12 U.S.C. § 5536(a)(1)(A).
+
+                            CONDUCT PROVISIONS
+
+                                          V.
+
+                               Prohibited Conduct
+IT IS ORDERED, under sections 1053 and 1055 of the CFPA, that:
+
+
+                                          31
+           2025-CFPB-0004    Document 3    Filed 05/15/2025   Page 32 of 56
+
+
+
+118. Respondent and its officers, agents, servants, employees, and attorneys
+
+      whether acting directly or indirectly, in connection with Advertising,
+
+      marketing, promoting, offering or providing remittance transfer services,
+
+      may not violate sections 1031 and 1036 of the CFPA, 12 U.S.C. §§ 5531 and
+
+      5536, and are prohibited from misrepresenting, or Assisting Others in
+
+      misrepresenting, expressly or impliedly, any fees or charges.
+
+119. Respondent and its officers, agents, servants, employees, and attorneys
+
+      whether acting directly or indirectly, in connection with the provision of
+
+      remittance transfers, may not violate the prepaid provisions of EFTA under
+
+      Regulation E, 12 C.F.R. §§ 1005.1 through 1005.20 and are prohibited from:
+
+      a.    Failing to require that consumers view disclosures prior to opening a
+
+            Wise Prepaid Account;
+
+      b.    Failing to accurately disclose fees for consumers who hold balances
+
+            in Wise Prepaid Accounts;
+
+      c.    Failing to accurately disclose the fees a consumer will incur when
+
+            initiating a transaction with funding from a debit card, but switching
+
+            to a credit card before finalizing funding for an account or
+
+            transaction;
+
+      d.    In long form disclosures, failing to disclose the telephone number,
+
+            mailing address, and website that a consumer may use to contact
+
+
+                                          32
+           2025-CFPB-0004     Document 3    Filed 05/15/2025   Page 33 of 56
+
+
+
+            Respondent with questions regarding their account or to report an
+
+            unauthorized transfer; and
+
+      e.    Failing to provide written notice to consumers at least 21 days
+
+            before announced changes in terms take effect pursuant to 12 C.F.R.
+
+            § 1005.8(a)(1).
+
+120. Respondent and its officers, agents, servants, employees, and attorneys
+
+      whether acting directly or indirectly, in connection with the provision of
+
+      remittance transfers, may not violate the disclosure requirements of the
+
+      Remittance Rule, 12 C.F.R. § 1005.31, and of EFTA, 15 U.S.C. § 1693o-1,
+
+      and are prohibited from:
+
+      a.    Failing to treat remittance transfers made by senders using their
+
+            Wise Prepaid Accounts that were funded through foreign bank
+
+            accounts as remittance transfers and, as a result, failing to
+
+            include a statement about the rights of the sender regarding the
+
+            resolution of errors and cancellations on the sender’s receipt,
+
+            and failing to include a statement that the sender can contact the
+
+            State agency that licenses or charters Respondent and the
+
+            Bureau for questions or complaints about the remittance transfer
+
+            provider on the sender’s receipt;
+
+      b.    Failing to provide the Cancellations and Disputes section of
+
+
+                                           33
+     2025-CFPB-0004     Document 3    Filed 05/15/2025   Page 34 of 56
+
+
+
+      receipts in the foreign language primarily used by the sender to
+
+      conduct the transaction;
+
+c.    Failing to send accurate and timely disclosures, receipts, and
+
+      combined disclosures to a sender when the sender makes
+
+      payment for the transfer;
+
+d.    Failing to round the exchange rate consistently for each currency
+
+      to no fewer than two decimal places and no more than four
+
+      decimal places;
+
+e.    Failing to disclose the date in the foreign country on which
+
+      funds will be available to the designated recipient, using the
+
+      term “Date Available” or a substantially similar term;
+
+f.    Failing to disclose the exchange rate used for the remittance
+
+      transfer in compliance with the Remittance Rule, using the term
+
+      “Exchange Rate” or a substantially similar term;
+
+g.    Failing to disclose the total amount of the transaction in the
+
+      currency in which the remittance transfer is funded, using the
+
+      term “Total,” or a substantially similar term;
+
+h.    Failing to disclose the amount that will be transferred to the
+
+      designated recipient, using the term “Transfer Amount” or a
+
+      substantially similar term; and
+
+
+                                     34
+           2025-CFPB-0004    Document 3    Filed 05/15/2025      Page 35 of 56
+
+
+
+      i.    Failing to provide Respondent’s website on receipts for one-time
+
+            transfers and preauthorized transfers.
+
+121. Respondent and its officers, agents, servants, employees, and attorneys
+
+      whether acting directly or indirectly, in connection with the provision of
+
+      remittance transfers, may not violate the error-resolution requirements of
+
+      EFTA, 15 U.S.C. § 1693o-1, and the Remittance Rule, 12 C.F.R. § 1005.33,
+
+      and are prohibited from:
+
+      a.    Failing to treat remittance transfers made by senders using their Wise
+
+            Prepaid Accounts that were funded through foreign bank accounts as
+
+            remittance transfers;
+
+      b.    Failing to maintain written policies and procedures relating to error
+
+            resolution rights relating to these transfers;
+
+      c.    Failing to develop and maintain written policies and procedures that
+
+            are designed to ensure Respondent’s compliance with the Remittance
+
+            Rule’s error resolution requirements;
+
+      d.    Failing to timely investigate when a sender alleges Respondent failed
+
+            to make funds available to the designated recipient by the disclose
+
+            date of availability on the receipt or disclosure;
+
+      e.    Failing to investigate fund availability errors without requiring
+
+            additional information beyond that required under the Remittance
+
+
+                                          35
+     2025-CFPB-0004    Document 3    Filed 05/15/2025   Page 36 of 56
+
+
+
+      Rule, when a sender alleges Respondent failed to make funds
+
+      available to the designated recipient by the disclosed date of
+
+      availability on the receipt or disclosure;
+
+f.    Failing to investigate promptly and determine whether an error
+
+      occurred in response to a sender’s Notice of Error; report the results of
+
+      the investigation to the sender; and, when making that report to the
+
+      sender, include notice of remedies available for correcting any errors
+
+      that Respondent determines have occurred;
+
+g.    Failing to properly train staff to properly report investigation results to
+
+      the sender;
+
+h.    Failing to promptly report investigation results to the sender;
+
+i.    Failing to note the sender’s right to request documents which
+
+      Respondent relied on in making its determination as part of the error
+
+      investigation process;
+
+j.    Failing to provide the sender-requested remedy within one business
+
+      day or as soon as reasonably practicable after receiving the sender’s
+
+      instructions;
+
+k.    Failing to refund a sender all fees and taxes imposed when the sender
+
+      provides a Notice of Error and Respondent determines that an error
+
+      occurred; and
+
+
+                                    36
+           2025-CFPB-0004    Document 3    Filed 05/15/2025   Page 37 of 56
+
+
+
+      l.    Failing to incorporate into Respondent’s policies and procedures the
+
+            record retention requirements of § 1005.13(b)(1) of Regulation E—
+
+            that Respondent retain evidence of compliance with the Remittance
+
+            Rule’s error resolution requirements, for at least two years, including
+
+            retention of evidence demonstrating that its procedures reasonably
+
+            ensure the senders’ receipt of required disclosures and documentation.
+
+                            Affirmative Requirements
+IT IS ORDERED, under sections 1053 and 1055 of the CFPA, that:
+
+122. Respondent, in connection with the offering or provision of remittance
+
+      transfers and associated Wise Prepaid Accounts, must take all of the
+
+      following affirmative actions:
+
+      a.    Develop, implement, and maintain written policies and procedures
+
+            designed to ensure Respondent’s compliance with EFTA, Regulation
+
+            E, the Prepaid Rule, and the Remittance Rule, including but not
+
+            limited to written policies and procedures detailing the roles and
+
+            responsibilities of Respondent’s officers, agents, and employees in
+
+            complying with error resolution and disclosure requirements;
+
+      b.    Develop, implement, and maintain a compliance management system
+
+            that is designed to ensure that Respondent’s operations comply with
+
+            EFTA, and Regulation E, including the Prepaid Rule, and the
+
+            Remittance Rule;
+                                          37
+           2025-CFPB-0004   Document 3     Filed 05/15/2025   Page 38 of 56
+
+
+
+      c.    Oversee and, at least annually, train all agents, employees, and service
+
+            providers whose work relates to EFTA and Regulation E in a manner
+
+            reasonably designed to ensure compliance with EFTA and Regulation
+
+            E, including the Prepaid Rule, and the Remittance Rule;
+
+      d.    Develop and maintain monitoring and audit functions designed to
+
+            uncover and promptly remedy deficiencies or violations of EFTA,
+
+      e.    Regulation E, the Prepaid Rule, and the Remittance Rule; and
+
+      f.    Develop, implement, and maintain a comprehensive advertising
+
+            compliance policy and procedure for evaluating all new and existing
+
+            Advertisements, including blog posts, for compliance with Federal
+
+            consumer financial law.
+
+                                         VI.
+
+                                Compliance Plan
+IT IS FURTHER ORDERED that:
+
+123. Within 60 days of the Effective Date, Respondent must create and implement
+
+      a comprehensive compliance plan designed to ensure that Respondent’s
+
+      remittance transfer and Prepaid Account services comply with all applicable
+
+      laws that the Bureau enforces, including Federal consumer financial law, and
+
+      the terms of this Amended Consent Order (Compliance Plan). The
+
+      Compliance Plan must include, at a minimum:
+
+      a.    Detailed steps for addressing each action required by this
+                                         38
+           2025-CFPB-0004   Document 3    Filed 05/15/2025   Page 39 of 56
+
+
+
+            Amended Consent Order;
+
+      b.    A mechanism to ensure that the Board is kept apprised of the status of
+
+            compliance actions; and
+
+      c.    Specific timeframes and deadlines for implementation of the steps
+
+            described above.
+
+124. Respondent will provide the Compliance Plan to the Bureau upon
+
+      request.
+
+                                       VII.
+                       Role of the Board and Executives
+IT IS FURTHER ORDERED that:
+
+125. Respondent’s Board has the ultimate responsibility for ensuring that
+
+      Respondent complies with this Amended Consent Order.
+
+126. Respondent’s Chief Executive Officer and Chief Compliance Officer
+
+      (collectively “Respondent’s Executives”) and Respondent’s Board must
+
+      review all plans and reports required by this Amended Consent Order,
+
+      and any submissions to the Bureau prior to such submission.
+
+127. One year after the Effective Date, Respondent must submit to the
+
+      Supervision Director an accurate written compliance progress report
+
+      (Compliance Report) that has been approved by the Board, the
+
+      accuracy of which is sworn to under penalty of perjury, and which, at a
+
+                                         39
+          2025-CFPB-0004   Document 3    Filed 05/15/2025   Page 40 of 56
+
+
+
+     minimum:
+
+    a.    Describes the steps that Respondent’s Executives and Board have taken
+
+          to reasonably assess whether Respondent is complying with the Redress
+
+          Plan, Compliance Plan, and each applicable paragraph and
+
+          subparagraph of the Order;
+
+    b.    Describes in detail whether and how Respondent has complied with the
+
+          Redress Plan, Compliance Plan, and each applicable paragraph and
+
+          subparagraph of the Order, including the manner of verification of such
+
+          compliance and any corrective actions taken to remedy potential non-
+
+          compliance with the applicable requirement, paragraph, or
+
+          subparagraph; and
+
+    c.    Attaches a copy of each Order Acknowledgment obtained under Section
+
+          XII, unless previously submitted to the Bureau.
+
+128. Respondent’s Board and Executives must:
+
+     a.    Authorize whatever actions are necessary for Respondent to assess
+
+           whether Respondent is complying with the Redress Plan, Compliance
+
+           Plan, and each applicable paragraph and subparagraph of the Order;
+
+     b.    Authorize whatever actions, including corrective actions, are
+
+           necessary for Respondent to fully comply with the Redress Plan,
+
+           Compliance Plan, and each applicable paragraph and subparagraph of
+
+
+                                        40
+           2025-CFPB-0004    Document 3    Filed 05/15/2025   Page 41 of 56
+
+
+
+            the Order; and
+
+      c.    Require timely reporting by management to Respondent’s Board and
+
+            Executives on the status of compliance obligations.
+
+                          MONETARY PROVISIONS
+
+                                       VIII.
+                              Order to Pay Redress
+
+IT IS FURTHER ORDERED that:
+
+129. Within 10 days of the Effective Date, Respondent must reserve or deposit
+
+      into a segregated deposit account $449,550.99, for the purpose of providing
+
+      redress to Affected Consumers as required by this Section. Respondent may
+
+      reduce this reserve or deposit by the amount of any restitution Respondent
+
+      made prior to the Effective Date that complies with the requirements of this
+
+      Amended Consent Order, for the purpose of providing redress to Affected
+
+      Customers.
+
+130. Within 60 days of the Effective Date, Respondent must submit to the
+
+      Enforcement Director for review and non-objection a comprehensive
+
+      written plan for providing redress consistent with this Amended Consent
+
+      Order, including a detailed description of redress provided by Respondent
+
+      to Affected Consumers prior to the Effective Date (Redress Plan). The
+
+      Enforcement Director will have the discretion to make a determination of
+
+      non-objection to the Redress Plan or direct Respondent to revise it. If the
+
+                                          41
+           2025-CFPB-0004     Document 3    Filed 05/15/2025   Page 42 of 56
+
+
+
+      Enforcement Director directs Respondent to revise the Redress Plan,
+
+      Respondent must revise and resubmit the Redress Plan to the Enforcement
+
+      Director within 30 days. After receiving notification that the Enforcement
+
+      Director has made a determination of non-objection to the Redress Plan,
+
+      Respondent must implement and adhere to the steps, recommendations,
+
+      deadlines, and timeframes outlined in the Redress Plan.
+
+131. The Redress Plan must, at a minimum, identify: (i) Respondent’s
+
+      methodology used to identify all Affected Consumers and to calculate fees
+
+      and where applicable, taxes, imposed on their remittance transfers as well
+
+      as a complete list of all Affected Consumers and amounts refunded or to be
+
+      refunded; (ii) Respondent’s plan for locating Affected Consumers and
+
+      notifying them that they are entitled to redress; (iii) A description of the
+
+      steps already taken to locate Affected Consumers, notify them that they are
+
+      entitled to redress, and provide any redress to the extent they have not
+
+      already been provided with redress; (iv) The method(s) by which
+
+      Respondent will refund or has already refunded Affected Consumers; and
+
+      (v) Specific procedures and deadlines for completing each step of the
+
+      Redress Plan, including identifying which of Respondent’s officers, agents,
+
+      servants, employees, and attorneys will be responsible for executing
+
+      administration of the Redress Plan.
+
+
+                                           42
+           2025-CFPB-0004    Document 3     Filed 05/15/2025   Page 43 of 56
+
+
+
+132. Within 30 days of completing all actions required by the Redress Plan,
+
+      Respondent must submit to the Bureau a Redress Report detailing the
+
+      consumers and consumer accounts who received redress and the amount of
+
+      redress paid to each of those consumers.
+
+133. If the amount of redress provided to Affected Consumers after the Effective
+
+      Date is less than the amount reserved by Respondent under Paragraph 128,
+
+      within 90 days of the submission of the Redress Report, Respondent must
+
+      pay to the Bureau, by wire transfer to the Bureau or to the Bureau’s agent,
+
+      and according to the Bureau’s wiring instructions, the difference between the
+
+      amount of redress provided to Affected Consumers and amount reserved.
+
+134. Respondent may not condition the payment of any redress to any Affected
+
+      Consumer under this Amended Consent Order on that Affected Consumer
+
+      waiving any right.
+
+                                          IX.
+                       Order to Pay Civil Money Penalty
+IT IS FURTHER ORDERED that:
+
+135. Under section 1055(c) of the CFPA, 12 U.S.C. § 5565(c), by reason of the
+
+      violations of law described in Section IV of this Amended Consent Order,
+
+      Respondent must pay a civil money penalty of $44,955.00 to the Bureau.
+
+136. Within 10 days of the Effective Date of this Amended Consent Order,
+
+      Respondent must pay the civil money penalty by wire transfer to the
+                                          43
+           2025-CFPB-0004    Document 3    Filed 05/15/2025   Page 44 of 56
+
+
+
+      Bureau or to the Bureau’s agent in compliance with the Bureau’s wiring
+
+      instructions.
+
+137. The civil money penalty paid under this Amended Consent Order will be
+
+      deposited in the Civil Penalty Fund of the Bureau as required by section
+
+      1017(d) of the CFPA, 12 U.S.C. § 5497(d).
+
+138. Respondent, for all purposes, must treat the civil money penalty paid under
+
+      this Amended Consent Order as a penalty paid to the government.
+
+      Regardless of how the Bureau ultimately uses those funds, Respondent
+
+      may not:
+
+      a.    Claim, assert, or apply for a tax deduction, tax credit, or any other tax
+
+            benefit for any civil money penalty paid under this Amended Consent
+
+            Order; or
+
+      b.    Seek or accept, directly or indirectly, reimbursement or
+
+            indemnification from any source, including but not limited to
+
+            payment made under any insurance policy, with regard to any civil
+
+            money penalty paid under this Consent Order.
+
+139. To preserve the deterrent effect of the civil money penalty in any Related
+
+      Consumer Action, Respondent may not argue that Respondent is entitled to,
+
+      nor may Respondent benefit by, any offset or reduction of any compensatory
+
+      monetary remedies imposed in the Related Consumer Action because of the
+
+
+                                          44
+           2025-CFPB-0004    Document 3    Filed 05/15/2025   Page 45 of 56
+
+
+
+      civil money penalty paid in this action or because of any payment that the
+
+      Bureau makes from the Civil Penalty Fund. If the court in any Related
+
+      Consumer Action offsets or otherwise reduces the amount of compensatory
+
+      monetary remedies imposed against Respondent based on the civil money
+
+      penalty paid in this action or based on any payment that the Bureau makes
+
+      from the Civil Penalty Fund, Respondent must, within 30 days after entry of
+
+      a final order granting such offset or reduction, notify the Bureau, and pay the
+
+      amount of the offset or reduction to the U.S. Treasury. Such a payment will
+
+      not be considered an additional civil money penalty and will not change the
+
+      amount of the civil money penalty imposed in this action.
+
+                                          X.
+                         Additional Monetary Provisions
+IT IS FURTHER ORDERED that:
+
+140. In the event of any default on Respondent’s obligations to make payment
+
+      under this Amended Consent Order, interest, computed under 28 U.S.C. §
+
+      1961, as amended, will accrue on any outstanding amounts not paid from the
+
+      Effective Date to the date of payment, and will immediately become due and
+
+      payable.
+
+141. Respondent must relinquish all dominion, control, and title to the funds paid
+
+      to the fullest extent permitted by law and no part of the funds may be
+
+      returned to Respondent.
+                                          45
+           2025-CFPB-0004     Document 3     Filed 05/15/2025   Page 46 of 56
+
+
+
+142. Respondent acknowledges that its Taxpayer Identification Number, which
+
+      Respondent previously submitted to the Bureau, may be used for collecting
+
+      and reporting on any delinquent amount arising out of this Order, in
+
+      accordance with 31 U.S.C. § 7701.
+
+143. Within 30 days of the entry of a final judgment, consent order, or settlement
+
+      in a Related Consumer Action, Respondent must notify the Supervision
+
+      Director of the final judgment, consent order, or settlement in writing. That
+
+      notification must indicate the amount of redress, if any, that Respondent paid
+
+      or is required to pay to consumers and describe the consumers or classes of
+
+      consumers to whom that redress has been or will be paid.
+
+                         COMPLIANCE PROVISIONS
+                                           XI.
+                             Reporting Requirements
+
+IT IS FURTHER ORDERED that:
+144. Respondent must notify the Bureau of any development that may affect
+
+      compliance obligations arising under this Amended Consent Order,
+
+      including but not limited to a dissolution, assignment, sale, merger, or other
+
+      action that would result in the emergence of a successor company; the
+
+      creation or dissolution of a subsidiary, parent, or affiliate that engages in
+
+      any acts or practices subject to this Amended Consent Order; the filing of
+
+      any bankruptcy or insolvency proceeding by or against Respondent; or a
+
+                                           46
+           2025-CFPB-0004    Document 3    Filed 05/15/2025   Page 47 of 56
+
+
+
+      change in Respondent’s name or address. Respondent must provide this
+
+      notice, if practicable, at least 30 days before the development, but in any
+
+      case no later than 14 days after the development.
+
+145. Within 7 days of the Effective Date, Respondent must:
+
+      a.    Designate at least one telephone number and email, physical, and
+
+            postal addresses as points of contact that the Bureau may use to
+
+            communicate with Respondent; and
+
+      b.    Designate at least one telephone number and email, and postal
+
+            addresses as points of contact for consumers with inquiries related to
+
+            consumer relief under the Amended Consent Order.
+
+146. Respondent must report any change in the information required to be
+
+      submitted under Paragraph 144 at least 30 days before the change or as soon
+
+      as practicable after the learning about the change, whichever is sooner.
+
+                                        XII.
+
+                    Order Distribution and Acknowledgment
+IT IS FURTHER ORDERED that:
+
+147. Within 7 days of the Effective Date, Respondent must submit to the
+
+      Supervision Director an acknowledgment of receipt of this Consent Order,
+
+      sworn under penalty of perjury.
+
+148. Within 30 days of the Effective Date, Respondent must deliver a copy of this
+
+      Amended Consent Order to each of its board members and executive
+                                          47
+             2025-CFPB-0004   Document 3    Filed 05/15/2025   Page 48 of 56
+
+
+
+      officers, as well as to any managers, employees, service providers, or other
+
+      agents and representatives who have responsibilities related to the subject
+
+      matter of the Amended Consent Order.
+
+149. For 5 years from the Effective Date, Respondent must deliver a copy of this
+
+      Amended Consent Order to any business entity resulting from any change
+
+      in structure referred to in Section XI, any future board members and
+
+      executive officers, as well as to any managers, employees, service
+
+      providers, or other agents and representatives who will have
+
+      responsibilities related to the subject matter of the Amended Consent Order
+
+      before they assume their responsibilities.
+
+150. Respondent must secure a signed and dated statement acknowledging receipt
+
+      of a copy of this Amended Consent Order, within 30 days of delivery, from
+
+      all persons receiving a copy of this Amended Consent Order under this
+
+      Section.
+
+151. Ninety days from the Effective Date, Respondent must submit to the Bureau
+
+      a list of all persons and their titles to whom this Amended Consent Order
+
+      has been delivered under the Section of this Order titled “Order Distribution
+
+      and Acknowledgment” and a copy of all signed and dated statements
+
+      acknowledging receipt of this Amended Consent Order under Paragraph
+
+      148.
+
+
+                                           48
+           2025-CFPB-0004    Document 3    Filed 05/15/2025   Page 49 of 56
+
+
+
+                                       XIII.
+
+                                 Recordkeeping
+IT IS FURTHER ORDERED that:
+
+152. Respondent must create and retain the following business records:
+
+      a.    All documents and records necessary to demonstrate full compliance
+
+            with the Compliance Plan, Redress Plan, and each provision of this
+
+            Amended Consent Order, including all submissions to the Bureau;
+
+      b.    All documents and records pertaining to the Redress Plan, described
+
+            in Section VIII above;
+
+      c.    Copies of all training materials, Advertisements, websites, and other
+
+            marketing materials, including any such materials used by a third-
+
+            party on Respondent’s behalf, along with records sufficient to
+
+            demonstrate the dates and locations in which such materials were in
+
+            use;
+
+      d.    Templates of all prepayment and remittance disclosures, receipts, and
+
+            combined disclosures, along with records sufficient to demonstrate
+
+            the dates and locations in which each template was in use and the
+
+            number of consumers who received each template, for remittance
+
+            transfers; and
+
+      e.    All consumer complaints, Notices of Error, and refund requests
+
+            (whether received directly or indirectly, such as through a third party),
+                                          49
+           2025-CFPB-0004    Document 3    Filed 05/15/2025   Page 50 of 56
+
+
+
+            determinations of error or non-error under the Remittance Rule, and
+
+            any responses to those notices, complaints or requests, along with
+
+            records sufficient to demonstrate the dates thereof.
+
+153. All documents and records must be maintained in their original electronic
+
+      format. Data must be centralized, and maintained in such a way that access,
+
+      retrieval, auditing and production are not hindered.
+
+154. Respondent must make the documents identified in Paragraph 152 available
+
+      to the Bureau upon the Bureau’s request.
+
+                                       XIV.
+                                      Notices
+IT IS FURTHER ORDERED that:
+155. Unless otherwise directed in writing by the Bureau, Respondent must
+
+      provide all submissions, requests, communications, or other documents
+
+      relating to this Amended Consent Order in writing, with the subject line,
+
+      “In re Wise US Inc., File No. 2025-CFPB-0004,” and send them to the
+
+      following email: Enforcement_Compliance@cfpb.gov addressed as
+
+      follows:
+
+           ATTN: Supervision Director
+           Consumer Financial Protection Bureau
+           Supervision Division
+
+           ATTN: Enforcement Director
+           Consumer Financial Protection Bureau
+           Enforcement Division
+                                          50
+           2025-CFPB-0004    Document 3    Filed 05/15/2025   Page 51 of 56
+
+
+
+                                        XV.
+
+                          Cooperation with the Bureau
+IT IS FURTHER ORDERED that:
+
+156. Respondent must cooperate fully to help the Bureau determine the identity
+
+      and location of, and the amount of injury sustained by, each Affected
+
+      Consumer. Respondent must provide such information in its or its agents’
+
+      possession or control within 14 days of receiving a written request from the
+
+      Bureau.
+
+157. Respondent must remain registered for the Bureau’s Company Portal and in
+
+      connection with responding to consumer complaints and inquiries on the
+
+      Company Portal, must comply with the timely response requirements set
+
+      forth in section 1034(b)(1)-(3) of the CFPA, 12 U.S.C. § 5534(b).
+
+158. Unless otherwise prohibited by law or regulation, Respondent must identify
+
+      in its mobile application and website’s “Activity Page,” its website’s
+
+      landing page, and its “Help Center” page that consumers can file a
+
+      complaint with the Bureau and provide the applicable telephone, website,
+
+      and mailing information to do so.
+
+                                       XVI.
+
+                             Compliance Monitoring
+IT IS FURTHER ORDERED that:
+
+159. Within 14 days of receipt of a written request from the Bureau, Respondent
+
+                                          51
+          2025-CFPB-0004      Document 3    Filed 05/15/2025   Page 52 of 56
+
+
+
+      must submit the requested information, which must be made under penalty
+
+      of perjury; provide sworn testimony; or produce documents.
+
+160. For purposes of this Section, the Bureau may communicate directly with
+
+      Respondent, unless Respondent retains counsel related to these
+
+      communications.
+
+161. Respondent must permit Bureau representatives to interview any employee
+
+      or other person affiliated with Respondent who has agreed to such an
+
+      interview regarding: (i) this matter; or (ii) compliance with the Amended
+
+      Consent Order. The person interviewed may have counsel present.
+
+162. Nothing in this Amended Consent Order will limit the Bureau’s lawful
+
+      use of civil investigative demands under 12 C.F.R. § 1080.6 or other
+
+      compulsory process.
+
+                                      XVII.
+                 Modifications to Non-Material Requirements
+IT IS FURTHER ORDERED that:
+
+163. Respondent may seek a modification to non-material requirements of this
+
+      Amended Consent Order (e.g., reasonable extensions of time and changes
+
+      to reporting requirements) by submitting a written request to the
+
+      Supervision Director.
+
+164. The Supervision Director may, in their discretion, modify any non-material
+
+      requirements of this Amended Consent Order (e.g., reasonable extensions of
+                                           52
+           2025-CFPB-0004     Document 3    Filed 05/15/2025   Page 53 of 56
+
+
+
+      time and changes to reporting requirements) if they determine good cause
+
+      justifies the modification. Any such modification by the Supervision
+
+      Director must be in writing.
+
+                                       XVIII.
+
+                       ADMINISTRATIVE PROVISIONS
+IT IS FURTHER ORDERED that:
+
+165. The provisions of this Amended Consent Order do not bar, estop, or
+
+      otherwise prevent the Bureau from taking any other action against
+
+      Respondent, except as described in Paragraph166. Further, for the
+
+      avoidance of doubt, the provisions of this Amended Consent Order do not
+
+      bar, estop, or otherwise prevent any other person or governmental agency
+
+      from taking any action against Respondent.
+
+166. The Bureau releases and discharges Respondent from all potential liability
+
+      for law violations that the Bureau has or might have asserted based on the
+
+      practices described in Section IV of this Amended Consent Order, to the
+
+      extent such practices occurred before the Effective Date and the Bureau
+
+      knows about them as of the Effective Date. The Bureau may use the
+
+      practices described in this Amended Consent Order in future enforcement
+
+      actions against Respondent and its affiliates, including, without limitation, to
+
+      establish a pattern or practice of violations or the continuation of a pattern or
+
+      practice of violations or to calculate the amount of any penalty. This release
+                                           53
+           2025-CFPB-0004    Document 3    Filed 05/15/2025   Page 54 of 56
+
+
+
+      does not preclude or affect any right of the Bureau to determine and ensure
+
+      compliance with the Amended Consent Order, or to seek penalties for any
+
+      violations of the Amended Consent Order.
+
+167. This Amended Consent Order is intended to be, and will be construed as,
+
+      a final Amended Consent Order issued under section 1053 of the CFPA,
+
+      12 U.S.C. § 5563, and expressly does not form, and may not be construed
+
+      to form, a contract binding the Bureau or the United States.
+
+168. This Amended Consent Order will terminate on the later of 5 years from the
+
+      Effective Date or 5 years from the most recent date that the Bureau initiates
+
+      an action alleging any violation of the Amended Consent Order by
+
+      Respondent if such action is initiated within 5 years of the Effective Date. If
+
+      such action is dismissed or the relevant adjudicative body rules that
+
+      Respondent did not violate any provision of the Amended Consent Order,
+
+      and the dismissal or ruling is either not appealed or upheld on appeal, then
+
+      the Amended Consent Order will terminate as though the action had never
+
+      been filed. The Amended Consent Order will remain effective and
+
+      enforceable until such time, except to the extent that any provisions of this
+
+      Amended Consent Order have been amended, suspended, waived, or
+
+      terminated in writing by the Bureau or its designated agent.
+
+169. Calculation of time limitations will run from the Effective Date and be based
+
+                                          54
+          2025-CFPB-0004     Document 3    Filed 05/15/2025   Page 55 of 56
+
+
+
+
+      on calendar days, unless otherwise noted. For the purpose of this Amended
+
+      Consent Order, if the prescribed time period in which to complete any
+
+      required or permitted action expires on a Saturday, Sunday, or federal
+
+      holiday, such time period shall be continued to the next day that is not a
+
+      Saturday, Sunday, or federal holiday.
+
+170. Should Respondent seek to transfer or assign all or part of its operations that
+
+      are subject to this Amended Consent Order, Respondent must, as a
+
+      condition of sale, obtain the written agreement of the transferee or assignee
+
+      to comply with all applicable provisions of this Amended Consent Order.
+
+171. The provisions of this Amended Consent Order will be enforceable by the
+
+      Bureau. In connection with any attempt by the Bureau to enforce this
+
+      Amended Consent Order in federal district court, the Bureau may serve
+
+      Respondent wherever Respondent may be found and Respondent may not
+
+      contest that court' s personal jurisdiction over Respondent.
+
+172. This Amended Consent Order and the accompanying Stipulation contain the
+
+      complete agreement between the parties. The parties have made no
+
+      promises, representations, or warranties other than what is contained in this
+
+      Amended Consent Order and the accompanying Stipulation. This Amended
+
+      Consent Order and the accompanying Stipulation supersede any prior oral
+
+      or written communications, discussions, or understandings.
+
+
+                                          55
+        2025-CFPB-0004     Document 3    Filed 05/15/2025   Page 56 of 56
+
+
+
+
+173. Nothing in this Amended Consent Order or the accompanying
+
+     Stipulation may be construed as allowing Respondent, its Board, its
+
+     Executives, officers, or employees to violate any law, rule, or
+
+     regulation.
+
+
+IT IS SO ORDERED, this \ r"° day of May 2025.
+
+
+
+                            C\ ~             u\ ~ - - - -
+                              Rusself'\rought V
+                              Acting Director
+                              Consumer Financial Protection Bureau
+
+
+
+
+                                        56
+

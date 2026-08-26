@@ -1,0 +1,1320 @@
+Date: 14 July 2026
+Swissmedic, Swiss Agency for Therapeutic Products
+
+
+
+
+Swiss Public Assessment Report
+
+
+Inluriyo, film-coated tablets
+
+
+
+International non-proprietary name: imlunestrant
+Pharmaceutical form:                                      film-coated tablets
+Dosage strength(s):                                       Inluriyo 200 mg, film-coated tablets
+Route(s) of administration:                               oral
+Marketing authorisation holder:                           Eli Lilly (Suisse) SA
+Marketing authorisation no.:                              70233
+Decision and decision date:                               approved on 29 April 2026
+
+
+
+
+Note:
+This assessment report is as adopted by Swissmedic with all information of a commercially
+confidential nature deleted.
+
+SwissPARs are final documents that provide information on submissions at a particular point in time.
+They are not updated after publication.
+
+
+
+
+    Swissmedic | Hallerstrasse 7 | 3012 Bern | www.swissmedic.ch | Tel. +41 58 462 02 11 | anfragen@swissmedic.ch
+Table of contents
+1            Terms, definitions, abbreviations .....................................................................................3
+2            Background information on the procedure .....................................................................5
+2.1          Applicant’s request(s) and information regarding procedure ................................................5
+2.2          Indication and dosage..........................................................................................................5
+2.2.1        Requested indication ...........................................................................................................5
+2.2.2        Approved indication .............................................................................................................5
+2.2.3        Requested dosage ..............................................................................................................5
+2.2.4        Approved dosage ................................................................................................................5
+2.3          Regulatory history (milestones) ...........................................................................................5
+3            Medical context..................................................................................................................6
+4            Quality aspects ..................................................................................................................6
+4.1          Drug substance ...................................................................................................................6
+4.2          Drug product ........................................................................................................................7
+4.3          Quality conclusions ..............................................................................................................7
+5            Nonclinical aspects ...........................................................................................................8
+5.1          Pharmacology .....................................................................................................................8
+5.2          Pharmacokinetics ................................................................................................................8
+5.3          Toxicology ...........................................................................................................................9
+5.4          Nonclinical conclusions........................................................................................................9
+6            Clinical aspects ...............................................................................................................10
+6.1          Clinical pharmacology........................................................................................................10
+6.2          Dose finding and dose recommendation ............................................................................12
+6.3          Efficacy ..............................................................................................................................12
+6.4          Safety ................................................................................................................................13
+6.5          Final clinical benefit risk assessment .................................................................................13
+7            Risk management plan summary ...................................................................................13
+8            Appendix ..........................................................................................................................14
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                                                                   2 / 14
+1            Terms, definitions, abbreviations
+
+1L                First-line
+2L                Second-line
+ADA               Anti-drug antibody
+ADME              Absorption, distribution, metabolism, elimination
+AE                Adverse event
+AI                Aromatase inhibitor
+ALT               Alanine aminotransferase
+AST               Aspartate aminotransferase
+API               Active pharmaceutical ingredient
+ATC               Anatomical Therapeutic Chemical Classification System
+AUC               Area under the plasma concentration-time curve
+AUC0-24h          Area under the plasma concentration-time curve for the 24-hour dosing interval
+BC                Breast cancer
+BRCA              Breast cancer susceptibility gene
+CBR               Clinical benefit rate
+CDK4/6            Cyclin-dependent kinases 4 and 6CI Confidence interval
+Cmax              Maximum observed plasma/serum concentration of drug
+CYP               Cytochrome P450
+DCO               Data cut-off
+DDI               Drug-drug interaction
+DOR               Duration of response
+ECOG              Eastern Cooperative Oncology Group
+EMA               European Medicines Agency
+ER                Estrogen receptor
+ERA               Environmental risk assessment
+ESR1              Estrogen receptor 1
+ET                Endocrine therapy
+FDA               Food and Drug Administration (USA)
+GLP               Good Laboratory Practice
+HER2              Human epidermal growth factor receptor 2
+HPLC              High-performance liquid chromatography
+HR                Hormone receptor
+IC/EC50           Half-maximal inhibitory/effective concentration
+ICH               International Council for Harmonisation
+Ig                Immunoglobulin
+INN               International non-proprietary name
+ITT               Intention-to-treat
+LHRH              Luteinising hormone releasing hormone
+LoQ               List of Questions
+MAH               Marketing Authorisation Holder
+Max               Maximum
+MCF7              Michigan Cancer Foundation-7
+Min               Minimum
+MRHD              Maximum recommended human dose
+MTD               Maximum tolerated dose
+N/A               Not applicable
+NCCN              National Comprehensive Cancer Network
+NO(A)EL           No observed (adverse) effect level
+OS                Overall survival
+PBPK              Physiology-based pharmacokinetics
+PD                Pharmacodynamics
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                       3 / 14
+PFS               Progression-free survival
+P-gp              P-glycoprotein
+PGR               Progesterone receptor
+Ph.Eur.           European Pharmacopoeia
+PIP               Paediatric Investigation Plan (EMA)
+PIK3CA            Phosphatidylinositol-4,5-bisphosphate 3-kinase catalytic subunit alpha
+PK                Pharmacokinetics
+PopPK             Population pharmacokinetics
+PSP               Pediatric study plan (US FDA)
+RMP               Risk management plan
+SAE               Serious adverse event
+SERD              Selective estrogen receptor degrader
+SwissPAR          Swiss Public Assessment Report
+TEAE              Treatment-emergent adverse event
+Tmax              Time to peak drug concentration
+TNBC              Triple-negative breast cancer
+TPA               Federal Act of 15 December 2000 on Medicinal Products and Medical Devices (SR
+                  812.21)
+TPO               Ordinance of 21 September 2018 on Therapeutic Products (SR 812.212.21)
+UGT               Uridine diphosphate glucuronosyltransferase
+WT                Wild-type
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                      4 / 14
+2              Background information on the procedure
+
+2.1            Applicant’s request(s) and information regarding procedure
+
+New active substance status
+The applicant requested new active substance status for imlunestrant in the above-mentioned
+medicinal product.
+
+2.2            Indication and dosage
+
+2.2.1          Requested indication
+
+Inluriyo is indicated for the treatment of adult patients with estrogen receptor (ER)-positive, human
+epidermal growth factor receptor 2 (HER2)-negative, estrogen receptor 1 (ESR1)-mutated, advanced
+or metastatic breast cancer, following prior endocrine therapy.
+
+2.2.2          Approved indication
+
+Inluriyo is indicated as monotherapy for the treatment of adult female patients with ER-positive, HER2-
+negative, ESR1-mutated, advanced or metastatic breast cancer, who have disease progression
+following prior treatment with an endocrine based regimen.
+
+In pre- or perimenopausal women, Inluriyo should be combined with an LHRH agonist.
+
+2.2.3          Requested dosage
+
+Summary of the requested standard dosage:
+
+The recommended dose of imlunestrant as monotherapy is 400 mg (two tablets of 200 mg) orally
+once daily.
+Pre- or perimenopausal women and men should receive an LHRH agonist in accordance with current
+clinical treatment standards when undergoing treatment with Inluriyo.
+
+2.2.4          Approved dosage
+
+(See appendix)
+
+2.3            Regulatory history (milestones)
+
+ Application                                        21 February 2025
+ Formal control completed                           4 March 2025
+ List of Questions (LoQ)                            1 July 2025
+ Response to LoQ                                    8 September 2025
+ Preliminary decision                               9 December 2025
+ Response to preliminary decision                   1 March 2026
+ Final decision                                     29 April 2026
+ Decision                                           approval
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                      5 / 14
+3            Medical context
+
+Breast cancer (BC) is the most commonly diagnosed cancer among women in Switzerland, with an
+incidence of 77.4 for every 100,000 women (Global Cancer Observatory: Cancer Today (version 1.1),
+accessed 26 May 2026). Male BC is rare, representing approximately 1% of cancers that occur in men
+and approximately 1% of all BCs worldwide (Gucalp A, Traina T, Eisner J et al. Male breast cancer: a
+disease distinct from female breast cancer. Breast Cancer Res Treat. 2019 Jan;173(1):37-48. doi:
+10.1007/s10549-018-4921-9).
+
+BC is categorised into 3 major subtypes based on the presence or absence of molecular markers for
+hormone receptors (HR), i.e. ER and progesterone receptors (PGR), and HER2: HR-positive/ HER2-
+negative BC, HER2-positive BC, and triple-negative BC (TNBC), which lacks all 3 standard molecular
+markers. The HR, HER2-negative subtype accounts for approximately 70% of all breast cancer cases.
+Around 90% of HR positive breast cancer are ER positive.
+In patients whose disease progresses during or after endocrine therapy (ET), with or without a cyclin-
+dependent kinases 4/6 (CDK4/6) inhibitor (used either as adjuvant treatment or as first-line therapy in
+the metastatic setting), second-line treatment options include: the selective estrogen receptor
+degrader (SERD) fulvestrant plus a CDK4/6 inhibitor for women not previously exposed to a CDK4/6
+inhibitor, subsequent lines of ET depending on prior treatments, everolimus in combination with
+exemestane, targeted therapies in the presence of specific mutations such as phosphatidylinositol-
+4,5-bisphosphate 3-kinase catalytic subunit alpha (PIK3CA) or breast cancer susceptibility gene
+(BRCA), or chemotherapy in the case of visceral crisis. Premenopausal women must receive ovarian
+function suppression in addition to all endocrine-based therapies. In addition, elacestrant, an oral
+SERD, is indicated for use in postmenopausal patients with ESR1 mutations following treatment with
+aromatase inhibitors (AI) or fulvestrant and CDK4/6 inhibitors.
+
+A substantial proportion of patients with ER-positive breast cancer develops endocrine resistance with
+genomic and epigenetic alterations of ESR1, encoding for the ER, being one of the causes. Mutations
+of the ESR1 gene have a high prevalence (6-55%) in patients with metastatic BC who have previously
+received ET. Many BCs that are resistant to AI or tamoxifen still depend on ER signalling and show a
+partial sensitivity to treatment with SERDs. At present, fulvestrant and elacestrant are the only SERDs
+available in this setting. However, PFS rates were also lower among patients with ESR1 mutant cancers
+when treated with fulvestrant as compared to patients with wild-type (WT) tumours, and elacestrant is
+approved solely for postmenopausal patients after a CDK 4/6 inhibitor. Effective treatment options are
+needed for these patients.
+
+4            Quality aspects
+
+4.1          Drug substance
+
+INN: Imlunestrant (as tosylate salt)
+Chemical name:
+5H-[1]Benzopyrano[4,3-c]quinolin-2-ol, 5-[4-[2-[3-(fuoromethyl)-1-azetidinyl]ethoxy]phenyl]-8-
+(trifluoromethyl)-,(5R)-,4-methylbenzenesulfonate (1:1)
+
+Molecular formula parent compound: C29H24F4N2O3
+Molecular formula tosylate salt: C29H24F4N2O3.C7H8O3S
+Molecular mass parent compound: 524.52g/mol
+Molecular mass tosylate salt: 696.71g/mol
+Molecular structure:
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                      6 / 14
+Physicochemical properties: White to practically white to yellow powder with defined physicochemical
+properties, stereochemistry and crystal form.
+
+The synthetic process leads to the desired form.
+
+Specifications include the relevant test parameters as recommended by the relevant international
+Council for Harmonisation (ICH) guidelines and are compliant with the current European
+pharmacopoeia (Ph.Eur.). The analytical methods are adequately described and the methods are
+validated.
+
+Appropriate stability data have been generated, resulting in a suitable retest period.
+
+4.2          Drug product
+
+Description and composition:
+White immediate release tablet containing 200mg imlunestrant with modified capsule shape, one side
+debossed with an elongated 4-point starburst over “1717” and the other side debossed with “LILLY”.
+
+The manufacturing process consists of standard unit operations and yields appropriate quality.
+
+Specifications include the relevant test parameters as recommended by relevant ICH guidelines and
+are compliant with the current Ph.Eur. The analytical methods are adequately described and the
+methods are validated.
+
+Appropriate stability data have been generated in the packaging material intended for commercial use
+and according to the relevant international guidelines.
+
+4.3          Quality conclusions
+
+Satisfactory and consistent quality of the drug substance and drug product has been demonstrated.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                       7 / 14
+5            Nonclinical aspects
+
+5.1          Pharmacology
+
+Imlunestrant demonstrated high-affinity binding to both WT and mutant estrogen receptor α (ERα or
+ESR1), with inhibitory constant values of 0.63 nM and 2.8 nM, respectively, and effectively degraded
+both forms (half maximal inhibitory concentration (IC50) values approximately 3 nM). Suppression of
+ERα activity was evidenced by reduced transcription of ER-regulated genes, including the
+progesterone receptor (PGR). No imlunestrant-related PGR induction was observed in estradiol-
+stimulated Michigan Cancer Foundation-7 (MCF7) ER-positive breast cancer cells (IC50 > 2 μM),
+confirming that imlunestrant functions as a pure ERα antagonist.
+In vitro, imlunestrant potently inhibited proliferation of ESR1 WT MCF7 cells, ESR1-Y537N MCF7
+mutant cells, and ST941/C ESR1-Y537S mutant breast cancer patient-derived xenograft cell lines
+(IC50 values 3.49 nM, 16.7 nM, and 6.8 nM, respectively). Across a panel of breast cancer cell lines,
+11 out of 12 ER+ cell lines were sensitive to imlunestrant (IC50 < 100 nM), whereas all ER-negative
+cell lines were insensitive (IC50 > 2 μM).
+In vitro combination studies with the CDK4/6 inhibitor abemaciclib revealed synergistic or additive
+effects on cell proliferation inhibition in 4 out of 5 ER-positive breast cancer cell lines.
+The two primary metabolites of imlunestrant (M1 and M2) exhibited significantly lower
+pharmacological activity – 35- to 136-fold less potent – compared to imlunestrant in ERα degradation,
+PGR inhibition, and cell proliferation assays.
+In murine xenograft models harbouring WT and mutant ESR1 cell-derived tumours, as well as in
+patient-derived xenograft models, daily oral administration of imlunestrant resulted in sustained and
+significant tumour growth reduction. Imlunestrant demonstrated superior efficacy compared to
+fulvestrant in these models. Additionally, imlunestrant penetrated the blood-brain barrier, inhibited the
+growth of MCF7-fLuc breast cancer cells implanted in the brain, and improved overall survival (OS).
+Imlunestrant exhibited high selectivity as an ERα antagonist, with no significant activity against other
+nuclear hormone receptors. A comprehensive screen of kinases and human G-protein-coupled
+receptors revealed no off-target pharmacology. Furthermore, imlunestrant displayed no uterotrophic
+effects in immature female rats.
+In terms of safety pharmacology, imlunestrant showed no effects on the human ether-à-go-go-related
+gene cardiac potassium channel or the human cardiac sodium channel Nav 1.5. No dedicated in vivo
+safety pharmacology studies were conducted, but endpoints were assessed in repeat-dose toxicology
+studies in monkeys. Imlunestrant did not affect cardiovascular, respiratory, or central nervous system
+functions.
+
+5.2          Pharmacokinetics
+
+The pharmacokinetics of imlunestrant were characterised in mice, rats, and monkeys. Following oral
+administration, imlunestrant was slowly absorbed, with a time to peak drug concentration (Tmax) of
+approximately 4 hours in rats and 8.3 hours in monkeys (Tmax in humans was 4.37 hours). The
+clearance of imlunestrant was low to moderate, and its half-life (T1/2) was 22.2 hours in mice, 20.7
+hours in male rats, 15.2 hours in female rats, and 12.2 hours in monkeys, compared to 30.1 hours in
+humans. After repeated daily oral administration in rats and monkeys, systemic exposure increased
+approximately proportionally to dose in rats, while the increase was less proportional in monkeys. No
+sex-related differences in systemic exposure were observed. There was no significant accumulation
+of imlunestrant or its metabolites (assessed in rats only). The oral bioavailability of imlunestrant
+ranged from 8% to 44% in animals and was 10.5% in humans.
+In vitro plasma protein binding of imlunestrant was similarly high across species, including mice, rats,
+dogs, monkeys (99.83% to 99.90%), and humans (99.89%). Quantitative tissue distribution studies in
+albino and pigmented rats demonstrated rapid and widespread distribution into tissues following oral
+administration of [14C]-imlunestrant. Tmax in most tissues was ≤8 hours, with the exception of the
+eye/uveal tract, harderian gland, epididymis, preputial gland, and testis. Radioactivity persisted in the
+uveal tract up to 672 hours post-dose, suggesting binding to melanin. [14C]-imlunestrant-derived
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                         8 / 14
+radioactivity was also detected in the brain and spinal cord, although levels had dropped below the
+quantitation limit by 48 hours post-dose.
+Glucuronidation and sulfation were the predominant biotransformation pathways in animals and
+humans. The glucuronide metabolite M1 and imlunestrant itself were the main drug-related
+components in human plasma, with M1 adequately qualified in toxicity studies.
+In rats, imlunestrant-related radioactivity was almost entirely excreted via faeces, primarily as the
+unchanged parent compound and, to a lesser extent, as the sulphate conjugate M2. Similarly, in
+humans, imlunestrant was the predominant component in faeces, with M2 being the most abundant
+faecal metabolite. Placental transfer and excretion into milk were not investigated.
+
+5.3          Toxicology
+
+Toxicological studies were conducted in rats and monkeys, which are considered appropriate
+preclinical species based on their pharmacological and pharmacokinetic profiles. Animals were dosed
+once daily via the oral route, consistent with the proposed clinical use. The duration of the repeat-
+dose toxicity studies was deemed suitable for a product intended for the treatment of advanced
+cancer.
+In the repeat-dose toxicity studies, imlunestrant-related mortality was observed in rats and was
+attributed to urinary tract obstruction with ascending inflammation with limited relevance to humans.
+The primary target organs of imlunestrant in both species were the female reproductive organs, along
+with rat-specific urinary tract toxicities. These included renal tubular degeneration/regeneration and
+transitional cell hyperplasia in the urinary bladder at all dose levels. Toxic effects were mostly
+reversible or showed a tendency to reverse during treatment-free recovery periods, although recovery
+was only studied in rats. The most relevant in-life findings at tolerated doses were body weight loss
+and female reproductive toxicity, which were observed at all doses in both species. The adverse
+effects on the female reproductive system were related to imlunestrant’s pharmacological activity. An
+observed adverse effect level for the effects on female reproductive organs could not be established;
+the exposures at which these effects occurred were lower than human exposure at therapeutic doses.
+Adverse effects on male reproductive organs were observed only in rats, with an 8.75-fold safety
+margin.
+Imlunestrant caused embryofoetal lethality and malformations when administered to pregnant rats at
+clinically relevant exposures. Similar developmental toxicities have been observed with other
+estrogen-modulating products. The Information for healthcare professionals contains adequate risk
+mitigation measures, i.e., contraception.
+Imlunestrant tested negative for genotoxicity. Carcinogenicity studies were not conducted and are not
+required under the ICH S9 guideline.
+Juvenile toxicity was not assessed, as imlunestrant is intended solely for the treatment of adults.
+Imlunestrant demonstrated a potential for phototoxicity in vivo, with a safety margin greater than 10-
+fold compared to human exposure.
+There are no concerns regarding excipients or impurities.
+The description and evaluation of the findings from the nonclinical studies in the Risk Management
+Plan (RMP) are considered adequate.
+Based on the environmental Risk assessment (ERA), the therapeutic use of imlunestrant in humans is
+unlikely to pose an environmental risk.
+
+5.4          Nonclinical conclusions
+
+The submitted nonclinical documentation is sufficient to support the approval of Inluriyo with the new
+active substance imlunestrant in the proposed indication. The pharmacological properties and the
+pharmacokinetic and toxicity profiles of imlunestrant, were adequately characterised in the nonclinical
+studies. All nonclinical data relevant to safety have been included in the Information for healthcare
+professionals.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                       9 / 14
+6            Clinical aspects
+
+6.1          Clinical pharmacology
+
+Absorption, distribution, metabolism, elimination
+Absorption
+Following a single oral dose, imlunestrant reached peak plasma concentrations at approximately 4
+hours. The absolute oral bioavailability of the tablet formulation was 10.5% (coefficient of variation
+32%).
+Administration of the proposed commercial tablet with a low‑fat meal resulted in a marked food effect,
+with a 104% increase in the area under the plasma concentration-time curve (AUC) and a 255%
+increase in Cmax. As this increase in exposure is considered clinically relevant, imlunestrant should be
+administered under fasted conditions, i.e. at least 1 hour after or 2 hours before a meal.
+
+Dose proportionality
+The total imlunestrant Cmax and AUC increased proportionally to the administered dose after
+administration of single doses and continuous QD dosing between 200 mg and 1200 mg, with no
+evidence of dose-limited absorption.
+
+Pharmacokinetics after multiple dosing
+Following multiple once‑daily dosing, an approximately 2‑ to 3‑fold AUC0-24h accumulation depending
+on the dose, was observed. For the recommended dose of 400 mg once daily, the accumulation factor
+was approximately 2.6 after 7 days of treatment (time to steady state), which is consistent with the
+elimination half‑life of imlunestrant.
+
+Distribution
+Plasma protein binding was high (>99.9%), independent of concentration and hepatic function, with
+binding mainly to albumin and α1‑acid glycoprotein. The blood‑to‑plasma ratio was close to 1, indicating
+similar concentrations in whole blood and plasma.
+Pop PK modelling indicated a large central volume of distribution (4312 L in metastatic breast cancer
+and 2948 L in endometrioid endometrial cancer), consistent with extensive tissue distribution. In breast
+cancer patients, tumour exposure was approximately 15‑fold higher than plasma exposure.
+
+Metabolism and elimination
+The parent compound accounted for approximately 19.8% of total circulating entities in plasma. The
+most abundant metabolites were a glucuronide conjugate (M1; ~19.9%), a sulphate conjugate (M2;
+~4.5%), and a mono‑oxidised sulphate conjugate (M12; ~4.6%). Additional metabolites were present
+at low levels, generally around 1% each. The pharmacological activity is mediated by the parent
+compound, while the identified major metabolites were shown to be pharmacologically inactive.
+Oxidative metabolism was primarily mediated by cytochrome P450 (CYP) 3A4/5, with only a marginal
+contribution from CYP2D6. Glucuronidation was mainly catalysed by uridine diphosphate
+glucuronosyltransferase (UGT) 1A1 and UGT1A8, with minor involvement of other UGT enzymes.
+Genetic variation in UGT1A1 did not result in clinically relevant differences in exposure.
+Elimination occurred predominantly via the faecal route, with the parent compound representing the
+major eliminated component (~61.8% of the dose), followed by metabolite M2 (~20.9%). Other
+metabolites each accounted for less than 5.1% of the dose. Urinary excretion was negligible, accounting
+for approximately 0.3% of elimination. The mean terminal elimination half‑life was approximately 31
+hours.
+
+Special populations
+Hepatic impairment resulted in increased exposure, with mean AUC increases of 23%, 120% and 206%
+in mild, moderate and severe impairment, respectively, and a prolonged half‑life, while protein binding
+remained unchanged (>99.9%). A dose reduction to 200 mg once daily is recommended in patients
+with moderate and severe hepatic impairment.
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                      10 / 14
+Population pharmacokinetic analyses showed that mild and moderate renal impairment had no clinically
+relevant impact on exposure, and no dose adjustment is required; use in severe or end‑stage renal
+impairment is not recommended due to lack of data. Body weight, age and ethnicity did not have a
+clinically meaningful impact on exposure, and pharmacokinetics were comparable in Chinese subjects
+and the overall population.
+
+Interactions
+Effect of other drugs on imlunestrant
+Although identified as a P-glycoprotein (P‑gp) substrate in vitro, no clinically relevant effect on exposure
+was observed in vivo, with unchanged Cmax and only a marginal decrease in AUC in the presence of a
+P‑gp inhibitor.
+Co‑administration with a strong CYP3A inhibitor increased exposure by ~90% (Cmax) and ~112% (AUC),
+whereas a strong CYP3A inducer decreased exposure by ~29% (Cmax) and ~42% (AUC). Accordingly,
+a dose reduction to 200 mg once daily with strong CYP3A inhibitors and consideration of a dose
+increase to 600 mg once daily with strong CYP3A inducers are recommended.
+Protein‑binding displacement interactions were not investigated and are considered unlikely to be
+clinically relevant.
+
+Effect of imlunestrant on other drugs
+Clinically relevant increases in exposure were observed for digoxin (P‑gp substrate) and rosuvastatin
+(breast cancer resistance protein substrate), supporting the recommendation for caution when
+imlunestrant is co‑administered with P‑gp and breast cancer resistance protein substrates.
+Imlunestrant acted as a moderate CYP2D6 inhibitor, increasing dextromethorphan exposure by
+approximately 30–40%; dose adjustment is not required, but clinical monitoring is recommended.
+No clinically relevant interactions were observed with proton pump inhibitors, abemaciclib, aromatase
+inhibitors or pertuzumab.
+
+Pharmacodynamics
+Mechanism of action and primary pharmacology
+Imlunestrant is a SERD and antagonist of WT and mutant ERα, inhibiting tumour cell proliferation.
+Anti‑tumour activity was demonstrated in ER‑positive breast cancer models, including ESR1‑mutant
+and endocrine‑resistant disease, with no clear concentration‑dependent effects on estrogen and
+progesterone receptor depletion.
+
+Secondary pharmacology (safety)
+The relationship between imlunestrant plasma concentrations and corrected QT was evaluated at
+steady state over a dose range of 200 to 1200 mg, covering exposures well above the recommended
+dose. No concentration-dependent increase in corrected QT was observed, and no cardiac safety
+concerns were identified. This is consistent with non-clinical findings.
+
+Exposure efficacy/safety relationship
+Both progression-free survival (PFS) and the probability of clinical benefit rate (CBR) did not increase
+significantly with imlunestrant exposure. However, increases in PFS and CBR were observed when
+imlunestrant was combined with abemaciclib, in the absence of visceral metastases, and in the absence
+of prior CDK4/6 inhibitor treatment.
+Exposure-safety analyses showed a counter-intuitive decrease in the probability of treatment-emergent
+adverse events (nausea, diarrhoea, and fatigue) with increasing exposure, which was attributed to
+confounding factors; only prior CDK4/6 inhibitor treatment was associated with an increased risk of
+nausea.
+An effective exposure range of 18–38 ng/mL was defined based on threshold effective concentration
+for 80% target inhibition, supporting 400 mg once daily as an appropriate dose; higher doses resulted
+in only a marginal additional increase in exposure, without the expected clinical benefit.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                          11 / 14
+6.2          Dose finding and dose recommendation
+
+The recommended dose of imlunestrant is 400 mg administered orally once daily. Dose selection was
+based on the phase 1a dose escalation part of the EMBER study employing a standard 3+3 design.
+The 400 mg dose level was identified as providing sustained plasma exposure while maintaining a
+favourable tolerability profile compared to higher dose levels, particularly with respect to gastrointestinal
+toxicity.
+
+6.3          Efficacy
+
+The efficacy of imlunestrant is primarily supported by the randomised, open-label, phase 3 EMBER-3
+study comparing imlunestrant monotherapy (Arm A) and imlunestrant plus abemaciclib (Arm C) with
+standard ET (fulvestrant or exemestane) (Arm B) in patients with ER-positive, HER2-negative advanced
+or metastatic breast cancer following prior treatment with one line of an AI either as monotherapy or in
+combination with a CDK4/6 inhibitor.
+
+Eligible patients had experienced a recurrence either during or within the 12 months following
+completion of adjuvant treatment exclusively with an AI or in combination with a CDK4/6 inhibitor in
+early breast cancer, or a recurrence more than 12 months after completion of adjuvant treatment
+followed by disease progression during or after treatment with an AI alone or an AI in combination with
+a CDK4/6 inhibitor, or they were diagnosed with de novo metastatic disease with progression after
+treatment with an AI alone or an AI in combination with a CDK4/6 inhibitor.
+Randomisation was stratified according to prior treatment with a CDK4/6 inhibitor, presence of visceral
+metastases and geographic region. ESR1 mutation status was determined using the Guardant360 CDx
+assay. Premenopausal and perimenopausal women received a gonadotropin-releasing hormone
+agonist. Treatment was continued until disease progression, treatment discontinuation, or death. The
+three primary efficacy endpoints were PFS assessed by the investigator in the intent-to-treat (ITT)
+population, comparing Arm A vs Arm B; PFS assessed by the investigator in the ESR1m-detected
+population, again comparing Arm A vs Arm B; and PFS assessed by the investigator in the concurrent
+ITT population, comparing Arm C vs Arm A. Key secondary endpoints were OS in the ITT population,
+comparing Arm A vs Arm B; OS in patients in the ESR1m-detected population, comparing Arm A vs
+Arm B; and OS in the concurrent ITT population, comparing Arm C vs Arm A.
+The efficacy evaluation focused on comparing imlunestrant monotherapy with ET (Arm A vs Arm B)
+and on the ESR1-mutated population, in accordance with the requested indication.
+
+EMBER-3 enrolled 874 patients; a total of 323 (37%) patients were ESR1 mutation-positive. Among
+patients in the monotherapy arms (Arms A and B) with ESR1 mutation-positive disease (n=256), the
+median age was 61 years (range: 28–85 years), and all patients were female. The ethnic distribution
+was 61% White, 26% Asian, 4% Black, 4% American Indian or Alaska Native, and 19% Hispanic or
+Latino. All patients had an Eastern Cooperative Oncology Group performance status of 0 or 1 at
+baseline. Most patients had visceral metastases (59%) at study entry, 23% had stage IIIB/IIIC disease,
+12% had lobular breast cancer, and 14% were premenopausal. Of the enrolled patients, 21% received
+imlunestrant as first-line treatment for metastatic breast cancer, whereas 79% received it as second-
+line treatment in the metastatic setting. Overall, 70% of patients had prior exposure to a CDK4/6
+inhibitor, including 2% in the adjuvant setting and 67% in the metastatic setting.
+At the data cut-off (DCO) of the PFS final analysis (24 June 2024), the study demonstrated a statistically
+significant improvement in PFS with imlunestrant compared to ET in the ESR1-mutated population, with
+a median PFS of 5.5 months (95% CI 3.9-7.4) versus 3.8 months (95% CI 3.7-5.5) and a hazard ratio
+of 0.62 (95% CI 0.46,0.82; p=0.0008). The Kaplan-Meier curves separated at around 4 months and
+remained separated throughout follow-up. These findings were consistent across updated analyses
+with extended follow-up.
+It is noteworthy that statistical significance for the other primary endpoint – PFS in the ITT – was not
+met at the final analysis, leading to the applicant restricting the proposed indication to the ESR1-m-
+detected population.
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                           12 / 14
+At DCO of interim analysis 3, (OS) analyses demonstrated a clinically meaningful benefit for
+imlunestrant compared to the control arm in the ESR1-mutated population, with a hazard ratio of 0.60
+(95% CI 0.43-0.86) at the most recent interim analysis, although statistical significance was not
+reached. The Kaplan-Meier curves show a sustained separation over time.
+The robustness of the efficacy conclusions is limited by multiple factors, including the open-label design
+of the study, the use of investigator-assessed PFS as primary endpoint the absence of ESR1 mutation
+status as a stratification factor. Notwithstanding these limitations, the consistency of OS results provides
+supportive evidence of clinical benefit in the female ESR1-mutated population. As no male patients
+were included in the ESR1 mutation-positive population, the indication was restricted to the female
+population.
+
+6.4          Safety
+
+The safety profile of imlunestrant was primarily characterised in the EMBER-3 study and is considered
+acceptable within the context of advanced breast cancer. The most frequently reported adverse events
+included fatigue, diarrhoea and nausea. The incidence of grade ≥3 AEs, serious adverse events, and
+fatal adverse events was comparable between treatment arms. Please refer to the attached Information
+for healthcare professionals for further information.
+
+6.5          Final clinical benefit risk assessment
+
+The EMBER-3 study demonstrated a statistically significant improvement in PFS in patients with ESR1-
+mutated ER-positive, HER2-negative advanced breast cancer; however, the magnitude of the benefit
+is modest and associated with methodological limitations, including the open-label design and
+uncertainties related to endpoint assessment.
+OS results, although not statistically significant at interim analyses, consistently demonstrated a
+clinically meaningful benefit, supported by sustained separation of survival curves. The safety profile of
+imlunestrant was considered acceptable overall and comparable to available ETs.
+Despite residual uncertainties related to study design and the limited magnitude of PFS benefit, the
+totality of the evidence, in particular the consistent and clinically meaningful OS findings, supports a
+positive benefit-risk balance in a population with an unmet medical need. Final OS results will be
+provided as a post-authorisation requirement.
+
+7            Risk management plan summary
+
+The RMP summaries contain information on the medicinal products′ safety profiles and explain the
+measures that are taken to further investigate and monitor the risks, as well as to prevent or minimise
+them.
+The RMP summaries are published separately on the Swissmedic website. It is the responsibility of
+the marketing authorisation holder to ensure that the content of the published RMP summaries is
+accurate and correct. As the RMPs are international documents, their summaries might differ from the
+content in the Information for healthcare professionals / product information approved and published
+in Switzerland, e.g. by mentioning risks that occur in populations or indications not included in the
+Swiss authorisations.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                          13 / 14
+8            Appendix
+
+Approved Information for healthcare professionals
+Please be aware that the following version of the Information for healthcare professionals for Inluriyo,
+film coated tablets was approved with the submission described in the SwissPAR. This Information for
+healthcare professionals may have been updated since the SwissPAR was published.
+
+Please note that the valid and relevant reference document for the effective and safe use of medicinal
+products in Switzerland is the Information for healthcare professionals currently authorised by
+Swissmedic (see www.swissmedicinfo.ch).
+
+Note:
+The following Information for healthcare professionals has been translated by the MAH. It is the
+responsibility of the authorisation holder to ensure the translation is correct. The only binding and
+legally valid text is the Information for healthcare professionals approved in one of the official Swiss
+languages.
+
+
+
+
+ZL000_10_033_VL - Vorlage | 8.0 | 05.06.2025                                                         14 / 14
+Information for healthcare professionals
+
+
+
+
+     This medicinal product is subject to additional monitoring. This will allow quick identification of
+new safety information. Healthcare professionals are asked to report any suspected new or serious
+adverse reactions. See the "Undesirable effects" section for advice on the reporting of adverse
+reactions.
+
+
+
+INLURIYO®
+
+Composition
+
+Active substances
+
+Imlunestrant as imlunestrant tosylate
+
+Excipients
+
+Tablet core:
+
+croscarmellose sodium, hydroxypropylcellulose, magnesium stearate, cellulose microcrystalline.
+
+Film-coating
+
+Macrogols 4000, polyvinyl alcohol (E1203), talc (E553b), titanium dioxide (E171).
+
+A 200 mg film-coated tablet contains ca. 3.0 mg of sodium (as croscarmellose sodium).
+
+Pharmaceutical form and active substance quantity per unit
+
+Imlunestrant film-coated tablets 200 mg:
+
+Each film-coated tablet contains 200 mg imlunestrant as imlunestrant tosylate.
+
+White, oval tablet debossed with “Lilly” on one side and “1717” and an elongated 4-point starburst on
+the other side.
+
+Indications/Uses
+
+Inluriyo is indicated as monotherapy for the treatment of adult female patients with estrogen receptor
+(ER)-positive, human epidermal growth factor receptor 2 (HER2)-negative, estrogen receptor 1 (ESR1)-
+mutated, advanced or metastatic breast cancer, who have disease progression following prior treatment
+with an endocrine based regimen.
+
+In pre- or perimenopausal women, Inluriyo should be combined with an LHRH agonist (LHRH =
+Luteinising Hormone Releasing Hormone).
+Information for healthcare professionals
+
+
+
+
+Dosage/Administration
+
+Posology
+
+Treatment must be initiated by a physician experienced in the use of anticancer therapies.
+
+The selection of patients with ER-positive, HER2-negative advanced breast cancer for treatment with
+Inluriyo must be based on the detection of an activating ESR1 mutation carried out with a validated test
+in plasma samples (see «Clinical efficacy»).
+
+The recommended dose of imlunestrant as a single agent is 400 mg orally (two 200 mg tablets), once
+daily.
+
+Treatment should be continued, as long as a clinical benefit is observed or until unacceptable toxicity
+occurs.
+
+Missed dose
+
+If a dose is missed, it can be taken up to 6 hours after the time it is usually taken. After more than
+6 hours, the dose should be skipped for that day. An additional dose should not be taken. On the next
+day, Inluriyo should be taken at the usual time.
+
+Vomiting
+
+If the patient vomits after taking the Inluriyo dose, the patient should not take an additional dose on that
+day and should resume the usual dosing schedule the next day at the usual time.
+
+Dose adjustments
+
+If dose reduction is necessary, decrease the dose by 200 mg. Management of some adverse reactions
+may require dose interruption and/or dose reduction as shown in Tables 1-2. Discontinue Inluriyo for
+patients unable to tolerate 200 mg once daily.
+
+Table 1: Recommended Dose Modification for Hepatotoxicity
+Monitor alanine aminotransferase (ALT)/aspartate aminotransferase (AST) during
+Inluriyo therapy as clinically indicated.
+Toxicity a                                  Inluriyo Dose Modifications
+Persistent or Recurrent:                    Suspend until toxicity resolves to baseline or to
+AST/ALT >3.0-5.0 × upper limit of           >ULN-3.0×ULN.
+normal (ULN)                                Dose reduction is not required.
+If AST/ALT at baseline is within the        Suspend until toxicity resolves to baseline or to
+normal range:                               >ULN-3.0×ULN.
+AST/ALT >5.0-20×ULN                         Resume at next lower dose level.
+Or
+If AST/ALT at baseline is above ULN:
+Information for healthcare professionals
+
+
+
+
+AST/ALT ≥3 × baseline (if AST/ALT
+≥1.5 x ULN at baseline) or
+AST/ALT >8 × ULN
+(whichever is the lower threshold)
+
+
+AST/ALT >20.0×ULN                          Discontinue Inluriyo.
+Or
+ALT/AST ≥3 × ULN concurrent with
+total bilirubin (TBL) ≥2 × ULN (if
+ALT/AST <1.5 × ULN at baseline), in
+the absence of cholestasis
+Or
+ALT/AST ≥2 × baseline concurrent
+with TBL ≥2 × ULN (if ALT or AST
+≥1.5 × ULN at baseline), in the
+absence of cholestasis
+
+
+Table 2: Recommended Dose Modification for Adverse Reactions (except hepatotoxicity)
+Toxicity a                                 Inluriyo Dose Modifications
+Persistent or recurrent Grade 2 that       Suspend until toxicity resolves to baseline or
+does not resolve with maximal              ≤Grade 1.
+supportive measures within 7 days to       Dose reduction is not required.
+baseline or Grade 1
+Grade 3 or 4 (except non-hepatic           Suspend until toxicity resolves to baseline or
+asymptomatic laboratory changes)           ≤Grade 1.
+                                           Resume at next lower dose level.
+a
+    NCI CTCAE
+
+
+Strong CYP3A Inhibitors
+
+Concomitant use of strong CYP3A inhibitors should be avoided. If strong CYP3A inhibitors cannot be
+avoided, the imlunestrant dose should be reduced by 200 mg once daily (see section «Interactions»).
+
+Strong CYP3A inducers
+
+Concomitant use of strong CYP3A inducers should be avoided. If strong CYP3A inducers cannot be
+avoided, the imlunestrant dose should be increased by 200 mg once daily (see section «Interactions»).
+Information for healthcare professionals
+
+
+
+
+Special Populations
+
+Elderly
+
+No dose adjustment is required on the basis of patient age (see section «Pharmacokinetic properties»).
+
+Hepatic impairment
+
+Reduce the Inluriyo dose to 200 mg once daily in patients with moderate (Child-Pugh B) or severe
+(Child-Pugh C) hepatic impairment. No dose adjustment is recommended for patients with mild hepatic
+impairment (Child-Pugh A).
+
+Renal impairment
+
+No dose adjustment is necessary in patients with mild or moderate renal impairment. There are no data
+regarding Inluriyo administration in patients with severe renal impairment, end stage renal disease, or
+in patients on dialysis (see section «Pharmacokinetic properties»).
+
+Paediatric population
+
+The safety and efficacy of Inluriyo in children from birth to 18 years of age has not been established.
+No data are available.
+
+Mode of administration
+
+Inluriyo is for oral use.
+
+Patients should take their dose of Inluriyo at approximately the same time each day.
+
+Take on an empty stomach at least 1 hour before or 2 hours after food (see section «Pharmacokinetic
+properties»). The tablets should be swallowed whole (patients should not split, crush, or chew the
+tablets before swallowing).
+
+Contraindications
+
+Hypersensitivity to the active substance or to any of the excipients.
+
+Warnings and precautions
+
+Embryofetal toxicity
+
+Imlunestrant can cause embryofetal toxicity when administered during pregnancy based on its
+mechanism of action and findings from toxicity studies in animals. A pregnancy test must be performed
+prior to starting imlunestrant therapy, and highly effective contraception should be used during treatment
+and for at least 1 week after the last dose (see section «Pregnancy, lactation»).
+
+Sodium
+
+This medicinal product contains less than 1 mmol sodium (23 mg) per dose, i.e., essentially “sodium-
+free”.
+Information for healthcare professionals
+
+
+
+
+Interactions
+
+Imlunestrant is metabolized by sulfation, CYP3A4 oxidation, and direct glucuronidation.
+
+Potential for other medicinal products to affect imlunestrant
+
+Strong CYP3A inhibitors
+
+Coadministration of imlunestrant with itraconazole (a strong CYP3A inhibitor) increased the AUC and
+Cmax of imlunestrant by 111% and 87%, respectively. Concomitant use of strong CYP3A inhibitors should
+be avoided. If strong CYP3A inhibitors cannot be avoided, the imlunestrant dose should be decreased
+by 200 mg once daily (see section «Posology»).
+
+Strong CYP3A inducers
+
+Coadministration of imlunestrant with carbamazepine (a strong CYP3A inducer) decreased the AUC
+and Cmax of imlunestrant by 42% and 29%, respectively. Concomitant use of strong CYP3A inducers
+should be avoided. If strong CYP3A inducers cannot be avoided, the imlunestrant dose should be
+increased by 200 mg once daily (see section «Posology»).
+
+Gastric reducing agents
+
+Coadministration of imlunestrant with omeprazole (a proton pump inhibitor) had no clinically meaningful
+effect on the pharmacokinetics of imlunestrant.
+
+Potential for imlunestrant to affect other medicinal products
+
+CYP2D6 substrates
+
+Imlunestrant increased the AUC and Cmax of dextromethorphan (a CYP2D6 substrate) by 33% and 43%,
+respectively. Use caution when coadministering imlunestrant with CYP2D6 substrates for which a small
+increase in concentration leads to significant adverse events.
+
+P-glycoprotein (P-gp) substrates
+
+Imlunestrant increased the AUC and Cmax of digoxin (a P-gp substrate) by 39% and 60%, respectively.
+Use caution when coadministering imlunestrant with P-gp substrates for which a small increase in
+concentration leads to significant adverse events.
+
+BCRP substrates
+
+Imlunestrant increased the AUC and Cmax of rosuvastatin (a BCRP substrate) by 49% and 65%,
+respectively. Use caution when coadministering imlunestrant with BCRP substrates for which a small
+increase in concentration leads to significant adverse events.
+
+In vitro studies
+
+In vitro studies indicated that imlunestrant is a substrate of P-gp but not a substrate of BCRP, OCT1,
+OATP1B1, or OATP1B3.
+Information for healthcare professionals
+
+
+
+
+Coadministration of imlunestrant with quinidine (P-gp inhibitor) had no clinically meaningful effect on
+the pharmacokinetics of imlunestrant.
+
+Effect of imlunestrant on other drugs
+
+Imlunestrant had no clinically meaningful effect on the pharmacokinetics of midazolam (a CYP3A
+substrate) or repaglinide (a CYP2C8 substrate).
+
+Imlunestrant increased the Cmax of omeprazole (a CYP2C19 substrate) by 28%. No changes in
+omeprazole AUC were observed.
+
+
+
+
+Pregnancy, lactation
+
+Inluriyo should be avoided during pregnancy and in women of childbearing potential not using
+contraception. Based on the mechanism of action of imlunestrant and findings from toxicity studies in
+animals, Inluriyo can cause foetal harm when administered to pregnant women. Females of
+reproductive potential should be advised to use highly effective contraception during treatment with
+Inluriyo and for at least 1 week after the last dose (see section «Warnings and precautions» and
+
+«Preclinical safety data»).
+
+Pregnancy
+
+Inluriyo should not be used during pregnancy. There are no data from the use of imlunestrant in
+pregnant women. Studies in animals have shown embryofoetal toxicity (see section «Preclinical safety
+data»). The pregnancy status of females of reproductive potential should be verified prior to starting
+treatment with Inluriyo. If pregnancy occurs while taking Inluriyo, the patient must be informed of the
+potential hazard to the foetus and potential risk of miscarriage.
+
+Breast-feeding
+
+It is unknown whether imlunestrant or its metabolites are excreted in human milk. Because of the
+potential for serious adverse reactions in the breast-fed infant, it is recommended that lactating women
+should not breast-feed during treatment with Inluriyo and at least 1 week after the last dose of Inluriyo.
+
+Fertility
+
+Based on findings from animal studies (see section «Preclinical safety data») and its mechanism of
+action, Inluriyo may impair fertility in females.
+Information for healthcare professionals
+
+
+
+
+Effects on the ability to drive and use machines
+
+Inluriyo has influence on the ability to drive and use machines. Because fatigue, arthralgia, nausea, and
+headaches have been reported in patients treated with Inluriyo (see «Undesirable effects»), patients
+affected by these undesirable effects must exercise caution when driving or operating machines.
+
+Undesirable effects
+
+Summary of the safety profile
+
+The most common adverse reactions with Inluriyo monotherapy (≥10%) were ALT increased, AST
+increased, joint and musculoskeletal pain, fatigue, diarrhoea, nausea, triglycerides increased and back
+pain. The most common Grade ≥3 (≥1%) adverse reactions were joint and musculoskeletal pain. No
+serious adverse reactions were reported in ≥1% of patients.
+
+Adverse reactions leading to discontinuations of Inluriyo monotherapy, not including discontinuations
+due to fatal adverse reactions, were ALT increased (0.9%), abdominal pain and fatigue (each 0.3%).
+
+Adverse reactions leading to dose reductions of Inluriyo monotherapy included AST increased (0.6%),
+ALT increased, fatigue, nausea, and vomiting (each 0.3%).
+
+Adverse reactions leading to dose interruption of Inluriyo monotherapy in ≥1% of patients included
+vomiting.
+
+List of adverse reactions
+
+The integrated frequency and severity of adverse drug reactions reported in patients treated with
+400 mg Inluriyo once daily from a randomized, open-label, multicenter Phase 3 study (EMBER-3)
+(N=327) and an open-label, multicenter, dose escalation and dose expansion phase 1a/1b study
+(EMBER) (N=208) are presented in the following list.
+
+In the following list, adverse reactions are listed in order of MedDRA body system organ class and
+frequency. Frequency gradings are: very common (≥1 / 10), common (≥1 / 100 to < 1 / 10), uncommon
+(≥1 / 1 000 to <1 / 100), rare (≥1 / 10 000 to <1 / 1 000), very rare (<1 / 10 000), and not known (cannot
+be estimated from the available data). Within each frequency grouping, adverse reactions are presented
+in order of decreasing seriousness.
+
+Adverse Drug Reactions in Patients Receiving Imlunestrant (400 mg, Once Daily), EMBER-3
+and EMBER (N: 378)
+
+Metabolism and nutrition disorders
+
+Common: Decreased appetitea
+
+Nervous system disorders
+
+Common: Headache
+Information for healthcare professionals
+
+
+
+
+Vascular disorders
+
+Common: Hot flusha
+
+Respiratory, thoracic and mediastinal disorders
+
+Common: Cougha
+
+Gastrointestinal disorders
+
+Very common: Diarrhoea (22.5%), Nausea (20.1%),
+
+Common: Abdominal paina, Constipation, Vomiting.
+
+Hepatobiliary Disorders
+
+Very common: Alanine aminotransferase increasedb (34.3%), Aspartate aminotransferase increasedb
+(33.2%), Triglycerides increasedb (21%).
+
+Musculoskeletal and connective tissue disorders
+
+Very common: Joint and musculoskeletal paina (23.2%), Back pain (10.3%)
+
+General disorders and administration site conditions
+
+Very common: Fatiguea (25.7%)
+a Consolidated term. The Preferred Terms included in each consolidated term are as follows:
+
+    -     Abdominal pain (abdominal pain, abdominal pain upper, abdominal pain lower, abdominal discomfort, abdominal
+          rigidity, abdominal tenderness, epigastric discomfort, gastrointestinal pain)
+    -     Cough (cough, productive cough)
+    -     Decreased appetite (decreased appetite, early satiety)
+    -     Fatigue (fatigue, asthenia, lethargy, malaise)
+    -     Hot flush (flushing, hot flush)
+    -     Infections (Includes all reported preferred terms that are part of the Infections and Infestations System Organ
+          Class)
+    -     Joint and musculoskeletal pain (arthralgia, myalgia, musculoskeletal discomfort, musculoskeletal chest pain,
+          musculoskeletal pain, pain in extremity, neck pain)
+    -     Rash (dermatitis acneiform, drug eruption, erythema multiforme, rash, rash erythematous, rash maculo-papular,
+          rash papular, rash pruritic, rash pustular, rash vesicular)
+b Based on laboratory assessments
+
+
+
+Elderly
+Inluriyo has been studied in 211 patients aged greater than or equal to 65 years, including 65 patients
+aged ≥75 years. No clinically meaningful differences in safety profile were observed in elderly patients
+compared to non elderly patients.
+
+Reporting suspected adverse reactions after authorisation of the medicinal product is very important. It
+allows continued monitoring of the benefit/risk balance of the medicinal product. Healthcare
+Information for healthcare professionals
+
+
+
+
+professionals are asked to report any suspected adverse reactions online via the ElViS portal
+(Electronic Vigilance System). You can obtain information about this at www.swissmedic.ch.
+
+Overdose
+
+In case of overdose, use supportive therapy. There is no known antidote for imlunestrant overdose.
+
+Properties/Effects
+
+ATC code
+
+Not yet assigned.
+
+Mechanism of action
+
+Imlunestrant is an orally bioavailable potent selective degrader and complete antagonist of wild-type
+and mutant estrogen receptor α (ERα). In in vitro studies, imlunestrant antagonized and degraded wild-
+type and mutant ERα, leading to inhibition of estrogen receptor-dependent gene transcription and
+cellular proliferation in ER+ breast cancer cells. In in vivo studies, imlunestrant exhibited continuous
+estrogen receptor (ER) antagonism throughout the dosing period, intratumoural accumulation relative
+to plasma, and brain penetration. Imlunestrant demonstrated anti-tumour activity in multiple ER+ breast
+cancer xenograft models, including models with ESR1 mutations, and models with resistance to
+fulvestrant and CDK4/6 inhibitors. Consistent with its profile as a complete antagonist, imlunestrant
+displayed no uterotrophic activity in an immature rat model.
+
+Pharmacodynamics
+
+Cardiac Electrophysiology
+
+The effect of imlunestrant on the QTc interval was evaluated in 79 patients with matching PK and QTcF
+samples from EMBER. Imlunestrant concentrations across the 200 mg to 1200 mg dose range had no
+clinically meaningful effect on QTc interval (that is, >10 ms). At 3 times the recommended dose,
+clinically significant QTc interval prolongation was not observed.
+Clinical efficacy
+
+The efficacy of INLURIYO monotherapy was evaluated in EMBER-3, a randomized, open-label, active-
+controlled, multicenter trial that enrolled adult patients with ER+, HER2- locally advanced or metastatic
+breast cancer (MBC), who were previously treated with an aromatase inhibitor either alone or in
+combination with a CDK 4/6 inhibitor. Patients had either: experienced recurrence while receiving or
+within 12 months of completing adjuvant treatment with an AI alone or with a CDK4/6 inhibitor for early
+breast cancer, experienced recurrence > 12 months after completing adjuvant treatment followed by
+disease progression on or after an AI alone or with a CDK4/6 inhibitor, or been diagnosed with de novo
+metastatic disease and had disease progression on or after an AI alone or with a CDK4/6 inhibitor.
+
+A total of 874 patients were randomized 1:1:1 between 3 treatment arms:
+Information for healthcare professionals
+
+
+
+
+        •   Arm A (N=331): INLURIYO 400 mg orally, once daily
+
+        •   Arm B (N=330): Standard of Care (SOC) which included Investigator’s Choice of Endocrine
+            Therapy (fulvestrant 500 mg IM or exemestane 25 mg orally, once daily)
+
+        •   Arm C (N=213): INLURIYO 400 mg orally, once daily + Abemaciclib 150 mg orally, twice
+            daily
+
+Most patients, 64% (N=561), were enrolled following locally advanced or metastatic disease
+progression while on or after treatment with an AI alone or in combination with a CDK 4/6i (59%). 32%
+(N=282) of patients were enrolled after disease recurrence while receiving, or within 12-months of
+completing adjuvant endocrine therapy (ET) with an aromatase inhibitor (AI) alone or in combination
+with a CDK 4/6 inhibitor.
+
+Randomization was stratified by previous treatment with CDK4/6 inhibitor (yes vs no), presence of
+visceral metastasis (yes vs no), and region (East Asia vs North America/Western Europe vs Others).
+ESR1m status was detected using the Guardant360 CDx assay. Pre/perimenopausal women and men
+enrolled in the study were administered the gonadotropin-releasing hormone agonist for at least
+4 weeks prior to and for the duration of EMBER-3. Patients were treated until disease progression,
+treatment discontinuation, or death.
+
+The primary endpoint for EMBER-3 was progression-free survival (PFS) as assessed by the
+investigator and was tested for the following comparisons: Arm A versus Arm B in the intent to treat
+population (ITT); Arm A versus Arm B in the ESR1m sub-population, and Arm C versus Arm A in a
+concurrent ITT population. Other efficacy endpoints included overall survival (OS).
+
+Among the patients in the monotherapy arms (Arms A and B) who were positive for ESR1m (N=256),
+the median age was 61 years (range: 28-85 years); all patients were female; 61% were White, 26%
+Asian, 4% Black, 4% were American Indian or Alaskan Native and 19% were Hispanic/Latino. All
+patients were required to have a baseline ECOG performance status of 0 or 1. Most patients had
+visceral metastasis (59%) at baseline, 2% had stage IIIB/IIIC disease, 9% had lobular breast cancer
+and 11% were pre-menopausal. Of the patients enrolled, 21% were treated with INLURIYO in 1L MBC
+and 79% were treated in 2L MBC. Overall, 70% of patients were treated with a prior CDK 4/6i, 2%
+treated in the adjuvant setting and 67% treated in the MBC setting.
+
+The efficacy results from these patients are summarized in Table 3. At the primary analysis (24 June
+2024 cut-off), there was a statistically significant difference in investigator-assessed PFS for INLURIYO
+compared to SOC (fulvestrant or exemestane).
+
+
+
+Table 3: Summary of efficacy data for patients with ESR1m treated with Inluriyo monotherapy
+in EMBER-3
+Information for healthcare professionals
+
+
+
+
+                                                             Inluriyo                          Standard of care
+
+                                                              N=138                                   N=118
+
+    Progression-free Survival
+
+    Number of Events, n (%)                                  109 (79)                               102 (86.4)
+
+                                                                 5.5                                    3.8
+    Median PFS, months
+                                                             (3.9, 7.4)                             (3.7, 5.5)
+    (95% CI)*
+    Hazard Ratio (95% CI)**                                                 0.62 (0.46, 0.82)
+
+    p-value (2-sided)**                                                           0.0008
+
+         CI=confidence interval; ESR1 = oestrogen receptor 1.
+
+* Kaplan-Meier estimate; 95 % CI based on the Brookmeyer-Crowley method. ** From a Cox proportional hazards model
+and a stratified log-rank test stratified by previous treatment with CDK4/6 inhibitor (yes vs. no) and presence of visceral
+metastasis (yes vs. no).
+
+
+
+
+At the third interim analysis of OS (data cut-off 18 August 2025), a total of 128 OS events were observed
+in the two ESR1m-positive arms (57 in Arm A and 71 in Arm B). The HR was 0.60 (95% CI: 0.43, 0.86)
+(not statistically significant).
+
+Pharmacokinetics
+
+Absorption
+
+The steady-state mean (%CV) maximum concentration (Cmax) of imlunestrant is 141 ng/mL (45%) and
+the area under the concentration-time curve (AUC0-24h) is 2400 ng*h/mL (46%) after administration of
+the recommended dosage of 400 mg once daily. The Cmax and AUC of imlunestrant increase
+proportionally over a dosage range from 200 mg to 1200 mg once daily (0.5 to 3 times the approved
+recommended dosage).
+
+The mean (CV%) absolute bioavailability of imlunestrant after a single oral 400 mg dose is
+10.5% (32%). The median time to reach peak plasma concentration (tmax) is approximately 4 hours.
+
+Effect of food
+
+Administration of imlunestrant 400 mg with a low-fat meal (approximately 400-500 calories with 100-
+125 calories from fat) increased Cmax by 255% and AUC(0-∞) by 104% compared to fasted administration.
+Imlunestrant exposures in the presence of a high-fat meal are unknown.
+Information for healthcare professionals
+
+
+
+
+Distribution
+
+The mean (CV%) apparent central volume of distribution of imlunestrant is 4310 L (69%) in patients
+with advanced or metastatic breast cancer. Human protein binding of imlunestrant is 99.93 to 99.96%
+and independent of concentration.
+
+Metabolism
+
+Imlunestrant is metabolized by sulfation, CYP3A4 oxidation, and direct glucuronidation.
+
+Elimination
+
+The elimination half-life of imlunestrant is approximately 30 hours and the mean (CV%) apparent
+clearance is 166 L/h (51%). Following a single radiolabeled dose of imlunestrant 400 mg to healthy
+subjects, 97.3% of the dose was recovered in feces and 0.278% in urine.
+
+Kinetics in specific patient groups
+
+Effect of Age, race, and body weight
+
+In a population pharmacokinetic analysis, age (range: 28 years to 95 years), race and body weight
+(range: 36 kg to 145 kg) had no clinically meaningful effect on the pharmacokinetics of imlunestrant.
+
+Hepatic impairment
+
+There were no clinically significant differences in the pharmacokinetics of imlunestrant in subjects with
+mild hepatic impairment (Child-Pugh A). The AUC of imlunestrant increased by 122% in subjects with
+moderate hepatic impairment (Child-Pugh B) and dose-normalized AUC increased by 206% in subjects
+with severe hepatic impairment (Child-Pugh C).
+
+Renal impairment
+
+In a population pharmacokinetic analysis, mild renal impairment (60 mL/min ≤ eGFR <90 mL/min) and
+moderate renal impairment (30 mL/min ≤ eGFR <60 mL/min) had no effect on the exposure of
+imlunestrant. The effect of severe renal impairment (15 mL/min ≤ eGFR <30 mL/min) and patients on
+dialysis on pharmacokinetics of imlunestrant is unknown.
+
+Preclinical data
+
+Repeat-dose studies were conducted in rats and cynomolgus monkeys to characterize toxicity.
+Important effects included pharmacologically mediated female reproductive tract toxicity at all doses
+tested, and effects in other organs sensitive to hormones such as the mammary gland and testes. Other
+important effects were anatomic changes in the urinary tract, and minimal to mild ocular lens fiber
+degeneration. There were no adverse non-reproductive findings at any dose in cynomolgus monkeys.
+In rats, imlunestrant produced no adverse non-reproductive effects at exposures of approximately 4-
+fold the systemic exposure (AUC0-24hr) achieved in humans receiving the recommended dose of
+400 mg/day.
+Information for healthcare professionals
+
+
+
+
+Genotoxicity/Carcinogenicity
+
+Imlunestrant does not pose a biologically relevant genotoxic risk. Imlunestrant was not mutagenic in
+the bacterial reverse mutation assay. Imlunestrant was positive in the in vitro micronucleus assay but
+did not cause chromosomal damage or DNA strand breaks in vivo when tested up to 2000 mg/kg in the
+rat comet and bone marrow micronucleus assays.
+
+In the 26-week transgenic mouse carcinogenicity study, rasH2 mice were given oral doses of 5, 375, or
+750 mg/kg imlunestrant, which caused an increased incidence of benign and malignant sex cord
+stromal tumors (granulosa and mixed cell) in the ovaries of mice at all dose levels. These doses
+correspond to 2-, 32-, and 41-times the human AUC at the recommended dose.
+
+Induction of such tumors is consistent with the pharmacology-related endocrine feedback alterations in
+gonadotropin levels caused by an antiestrogen.
+
+Embryofetal toxicity/Teratogenicity
+
+Based on findings in animals and its mechanism of action, imlunestrant can cause fetal harm when
+administered during pregnancy. In animal studies, administration of imlunestrant to pregnant rats during
+the period of organogenesis led to maternal toxicity, early delivery, embryo lethality, and teratogenic
+foetal effects at maternal exposures lower than the human therapeutic exposure.
+
+Fertility
+
+Based on its mechanism of action and findings from repeat-dose toxicity studies, imlunestrant may
+impair fertility. In animals, imlunestrant was associated with reversible cessation of estrous cycling and
+generally reversible anatomic effects on the female and male reproductive tract.
+
+Other information
+
+Shelf life
+
+Do not use this medicine after the expiry date ("EXP") stated on the container.
+
+Special precautions for storage
+
+Do not store above 30°C.
+
+Keep out of the reach of children.
+
+Authorisation number
+
+70233 (Swissmedic)
+
+Packs
+
+Inluriyo 200 mg pack: 28 and 56 film-coated tablets (B)
+Information for healthcare professionals
+
+
+
+
+Marketing authorisation holder
+
+Eli Lilly (Suisse) SA, 1214 Vernier/GE.
+
+Date of revision of the text
+
+November 2025
+

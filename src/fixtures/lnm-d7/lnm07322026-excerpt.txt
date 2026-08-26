@@ -1,0 +1,77 @@
+8/12/26, 12:20 PM                                         Maritime Safety Information Products | Navigation Center
+
+                               Local Notice to Mariners for Southeast District                                        08/12/2026
+
+                                                            Altamaha Sound
+   Federal Discrepancies
+                                             NAME                                 LLNR                              STATUS                         AID TYPE
+ Altamaha Sound Daybeacon 197                                             36887                STRUCT DEST/TRUB                          FD
+ Altamaha Sound Light 198                                                 36890                STRUCT DEST/TRLB                          FD
+ Altamaha Sound Light 201                                                 36905                STRUCT DEST/TRLB                          FD
+ Altamaha Sound Light 202                                                 36910                STRUCT DEST/TRLB                          FD
+ Altamaha Sound Light 209                                                 36930                STRUCT DEST/TRLB                          FD
+ Altamaha Sound Range Front Light C                                       36935                STRUCT DEST                               FD
+
+
+
+                                                               Amelia River
+   Federal Discrepancies
+                                            NAME                                LLNR                              STATUS                       AID TYPE
+ Amelia River Lighted Buoy 8                                           7080                    OFF STATION                     FD
+ Amelia River Lighted Buoy 4                                           37940                   MISSING                         FD
+
+
+
+                                                    Anclote Anchorage North Entrance
+   Federal Discrepancies
+                                            NAME                          LLNR                                     STATUS                            AID TYPE
+ Anclote Anchorage North Entrance Light 7                              26130            STRUCT DEST/HAZ NAV/TRLB                              FD
+
+
+   Private Discrepancies
+                                            NAME                               LLNR                                 STATUS                          AID TYPE
+ Sea Forest Cut Channel Daybeacon 6                                 26451.5                  STRUCT DEST                                  PA
+ Sea Forest Cut Channel Daybeacon 9                                 26451.8                  STRUCT DEST/HAZ NAV                          PA
+ Upper Cross Bayou Daybeacon 1                                      26453                    STRUCT DEST                                  PA
+ Upper Cross Bayou Daybeacon 7                                      26453.3                  STRUCT DEST/HAZ NAV                          PA
+ Big Bayou Point Channel Daybeacon 5                                26454.2                  STRUCT DEST/HAZ NAV                          PA
+
+
+
+                                                               Anclote River
+   Federal Discrepancies
+                                             NAME                                LLNR                                 STATUS                         AID TYPE
+ Anclote River Light 9                                                    26180               STRUCT DEST/TRLB                                 FD
+ Anclote River Daybeacon 11                                               26190               STRUCT DEST/TRLB/HAZ NAV                         FD
+
+                                                         Army Terminal Channel
+   Additional MSI Categories
+             TITLE             SUBCATEGORY                                              DESCRIPTION                                                       LOCATION
+
+
+
+
+https://navcen.uscg.gov/msi                                                                                                                                     1/85
+
+8/12/26, 12:20 PM                                                                    Maritime Safety Information Products | Navigation Center
+ Bahia De San Juan - Army        Proposed Notice ATON/Proposed Notice of Change From: 2026-06-04 45425 Location: 18-25-28.632N/066-06-27.504W Aid Name: Army Terminal Channel                          Lat:
+ Terminal                        of Change         Range Rear Light LLNR: 30870 Action: CHANGE Action Type Change Light System Primary The U.S. Coast Guard is proposing the following       18° 25' 29"
+ Channel/ATON/Proposed                             changes to the Aids to Navigation System in Army Terminal Channel, Bahia de San Juan, Puerto Rico: Army Terminal Channel Range Rear Light Lon:
+ Notice of Change                                  (LLNR 30870) will be changed to Army Terminal Channel Port Entry Light (LLNR 30870) in approximate position 18-25-28.622N / 066-06-                 -066° 06'
+                                                   27.515W. This is an establishment of a day and night single station oscillating boundary system. Army Terminal Channel Range Front Light            28"
+                                                   (LLNR 30865) in approximate position 18-25-39.901N/ 066-06-28.253W, will be permanently discontinued due to the establishment of Army
+                                                   Terminal Channel Port Entry Light (LLNR 30870). All comments should be emailed to: D07-SMB-DPWPublicComments@uscg.mil or
+                                                   scott.r.forbidussi2@uscg.mil with Army Terminal Channel as the subject line. Comments can also be mailed to Commander (dpw), Southeast
+                                                   Coast Guard District, 909 SE 1st Ave (STE 406) Brickell Plaza Federal Building, Miami, FL. 33131-3050 to be received by August 5, 2026.
+ Bahia De San Juan - Army        Proposed Notice ATON/Proposed Notice of Change From: 2026-06-04 45426 Location: 18-25-39.900N/066-06-28.260W Aid Name: Army Terminal Channel                          Lat:
+ Terminal                        of Change       Range Front Light LLNR: 30865 Action: DISCONTINUE The U.S. Coast Guard is proposing the following changes to the Aids to Navigation                   18° 25' 40"
+ Channel/ATON/Proposed                             System in Army Terminal Channel, Bahia de San Juan, Puerto Rico: Army Terminal Channel Range Rear Light (LLNR 30870) will be changed to Lon:
+ Notice of Change                                  Army Terminal Channel Port Entry Light (LLNR 30870) in approximate position 18-25-28.622N / 066-06-27.515W. This is an establishment of a -066° 06'
+                                                   day and night single station oscillating boundary system. Army Terminal Channel Range Front Light (LLNR 30865) in approximate position 18- 28"
+                                                   25-39.901N/ 066-06-28.253W, will be permanently discontinued due to the establishment of Army Terminal Channel Port Entry Light (LLNR
+                                                   30870). All comments should be emailed to: D07-SMB-DPWPublicComments@uscg.mil or scott.r.forbidussi2@uscg.mil with Army Terminal
+                                                   Channel as the subject line. Comments can also be mailed to Commander (dpw), Southeast Coast Guard District, 909 SE 1st Ave (STE 406)
+                                                   Brickell Plaza Federal Building, Miami, FL. 33131-3050 to be received by August 5, 2026.
+
+
+

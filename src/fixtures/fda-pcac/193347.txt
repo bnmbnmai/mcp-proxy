@@ -1,0 +1,1620 @@
+FDA Briefing Document
+
+       Pharmacy Compounding Advisory Committee (PCAC)
+                          Meeting
+
+                                    July 23 -24, 2026
+
+
+
+
+The attached package contains background information prepared by the Food and Drug
+Administration (FDA or Agency) for the panel members of the Pharmacy Compounding Advisory
+Committee (advisory committee). We are bringing certain compounding issues to this advisory
+committee to obtain the advisory committee’s advice. The background package may not include all
+issues relevant to the final committee recommendation and instead is intended to focus on issues
+identified by the Agency for discussion by the advisory committee. The FDA will not issue a final
+determination on the issues at hand until input from the advisory committee process has been
+considered and all reviews have been finalized. The final determination may be affected by issues
+not discussed at the advisory committee meeting.
+
+
+
+
+                                                                                                    1
+MOTS-c-Related Bulk
+  Drug Substances
+(MOTS-c (free base)
+and MOTS-c acetate)
+
+
+
+
+                      2
+FDA Evaluation of MOTS-c –
+Related Bulk Drug Substances
+  (MOTS-c (free base) and
+      MOTS-c acetate)
+
+
+
+
+                               4
+DATE:           5/11/2026
+
+FROM:           Jing Li, Ph.D.
+                Chemistry reviewer, Office of Product Quality Assessment II (OPQAII), Office of
+                Pharmaceutical Quality (OPQ)
+
+                Nga-Lai Poon, Pharm.D.
+                Regulatory Specialist, Office of Compounding Quality and Compliance (OCQC),
+                CDER, Office of Compliance (OC)
+
+                Kemi Asante, Pharm.D., M.P.H., RAC
+                Lead Consumer Safety Officer, OCQC, OC
+
+                Edna Albuquerque, Ph.D.
+                Senior Pharmacology/Toxicology Reviewer, Division of
+                Pharmacology/Toxicology for Rare Diseases, Pediatrics, Urologic, and
+                Reproductive Medicine (DPT-RPURM/SM), Office of New Drugs (OND)
+
+                Andrea Benedict, Ph.D.
+                Nonclinical Team Leader, DPT-RPURM/SM, OND
+
+                Marianne San Antonio, D.O.
+                Physician, PCRT, OSM, OND
+
+                Suhail Kasim, M.D., MPH
+                Lead Physician, PCRT, OSM, OND
+
+THROUGH: Russell Wesdyk, M.S., M.B.A.
+         Associate Director Regulatory Affairs, OPQA2, OPQ
+
+                Alex Gorovets, M.D.
+                Deputy Director, OSM, OND
+
+                Matt Lash, J.D.
+                Acting Director, OCQC, OC
+                Deputy Director, OC
+
+TO:             Pharmacy Compounding Advisory Committee
+
+SUBJECT :   Evaluation of MOTS-c-related Bulk Drug Substances (MOTS-c (free base) and
+            MOTS-c acetate) for Inclusion on the 503A Bulk Drug Substances List
+______________________________________________________________________________
+U.S. Food & Drug Administration
+10903 New Hampshire Avenue
+Silver Spring, MD 20993
+www.fda.gov
+
+
+
+                                                                                              5
+List of Abbreviations
+
+ Abbreviation           Term
+ AMPK                   adenosine monophosphate-activated protein kinase
+ API                    active pharmaceutical ingredient
+ AT1R                   angiotensin II type 1 receptor
+ BDS                    bulk drug substance
+ BET                    bacterial endotoxins test
+ BMM                    bone marrow macrophage
+ CoA                    Certificate of Analysis
+ ETβR                   endothelin β receptor
+ FAERS                  FDA Adverse Event Reporting System
+ FD&C Act               Federal Food, Drug, and Cosmetic Act
+ FDA                    Food and Drug Administration
+ Global DRO             Global Drug Reference Online
+ INN                    International Non-proprietary Name
+ IP                     intraperitoneal
+ IUPAC                  International Union of Pure and Applied Chemistry
+ IV                     intravenous
+ MOTS-c                 Mitochondrial Open Reading Frame of the 12S rRNA-c
+ NF                     National Formulary
+ OF                     outsourcing facility
+ OVX                    ovariectomy
+ ROA                    route of administration
+ SC                     subcutaneous
+ UHMWPE                 ultra-high molecular weight polyethylene
+ USAN                   United States Adopted Name
+ USP                    United States Pharmacopeia
+
+
+
+
+                                                                             6
+I.     INTRODUCTION
+The Food and Drug Administration (FDA, the Agency, or we) received a nomination for
+Mitochondrial Open Reading Frame of the 12S rRNA-c (MOTS-c)-related bulk drug substances
+(BDSs) for inclusion on the list of BDSs that can be used in compounding under section 503A of
+the Federal Food, Drug, and Cosmetic Act (FD&C Act). 1 The nominator of MOTS-c-related
+BDSs provided inconsistent information in the nomination package regarding the specific BDS
+proposed. Specifically, it is unclear in the nomination package whether the nomination was for
+MOTS-c (free base) or MOTS-c acetate. MOTS-c (free base) and MOTS-c acetate are different
+pharmaceutical ingredients and hence are considered different BDSs. Please see additional
+information in Section II.A. The nomination was withdrawn 2, and FDA is evaluating the
+substances at its discretion.
+
+MOTS-c is reported to be a peptide consisting of 16 amino acids. Although it is unclear whether
+the nominator intended to nominate MOTS-c (free base) or MOTS-c acetate, FDA has decided to
+evaluate both on its own initiative.
+
+MOTS-c-related BDSs were nominated for the following uses: insulin resistance, obesity,
+osteoporosis, vascular calcification, muscle/fat metabolism, longevity.3,4 The MOTS-c-related
+drug products proposed in the nomination are 5 mg and 10 mg for subcutaneous (SC) injection.
+
+There is no applicable United States Pharmacopeia (USP) or National Formulary (NF) drug
+substance monograph for MOTS-c (free base) or its acetate form, and neither is a component of
+an FDA-approved drug.
+
+We have evaluated publicly available data on the physicochemical characteristics, historical use,
+safety, and effectiveness in compounding of these substances. For the reasons discussed below,
+we believe the evaluation criteria weigh against placing MOTS-c (free base) or MOTS-c acetate
+
+
+
+
+1
+ The nomination of “Mitochondrial Open Reading Frame of the 12S rRNA-c (MOTS-c)” was submitted
+by Wells Pharmacy Network (Wells) (Document ID: FDA-2015-N-3534-0293) and can be accessed at:
+https://www.regulations.gov/document/FDA-2015-N-3534-0293. The nomination was withdrawn, but
+because FDA is evaluating MOTS-c (free base) and MOTS-c acetate on its own initiative, FDA
+considered information submitted in this nomination as part of this evaluation.
+2
+    Document ID: FDA-2015-N-3534-0484.
+3
+  We have explained that it is necessary to evaluate a nominated bulk drug substance in the context of the
+uses proposed for compounded drug products that include the substance, though we acknowledge that
+inclusion of a substance on the 503A Bulks List may not be limited to a specific use. See 84 FR 4696,
+4701.
+4
+  FDA did not evaluate the proposed uses: insulin resistance, obesity, osteoporosis, vascular calcification,
+muscle/fat metabolism, longevity because the nomination did not include sufficient information for the
+Agency to evaluate whether the substance is appropriate for these uses in compounded drug products. In
+addition, FDA did not identify clinical studies evaluating these uses of MOTS-c. See 80 FR 65765 for the
+information necessary to fully evaluate a substance for inclusion on the 503A Bulks List.
+
+
+
+                                                                                                           7
+on the list of bulk drug substances that can be used to compound drug products in accordance
+with section 503A of the FD&C Act (503A Bulks List).
+
+II. EVALUATION CRITERIA
+
+     A. Is the Substance Well-Characterized, Physically and Chemically? 5
+MOTS-c is a common name and not a United States Adopted Name (USAN). 6 FDA has
+encountered multiple salts, and derivatives, including different active moieties, sold
+commercially under the same common name for similarly situated products. Inconsistent naming
+conventions that do not follow established chemical nomenclature standards (e.g., INN 7,
+IUPAC 8, USAN) represent a safety risk for patients as they may be dosed with a different BDS
+than the physician ordered. From a chemical analysis standpoint, inconsistent naming
+conventions for MOTS-c related BDSs also introduce risks because of the inability to determine
+which BDS a particular reference standard is referencing.
+
+A BDS or active pharmaceutical ingredient (API) 9 used in a drug product may be a free base
+(i.e., the native molecule) or a salt or an ester of the free base, all of which share the same active
+
+
+
+
+5
+  Among the conditions that must be met for a drug compounded using bulk drug substances to be eligible
+for the exemptions in section 503A of the FD&C Act is that the bulk drug substances are manufactured
+by an establishment that is registered under section 510 of the FD&C Act and that each bulk drug
+substance is accompanied by a valid certificate of analysis. Sections 503A(b)(1)(A)(ii) and (iii). A bulk
+drug substance is deemed to be adulterated if the methods used in, or the facilities or controls used for, its
+manufacture, processing, packing, or holding do not conform to or are not operated or administered in
+conformity with current good manufacturing practice. Section 501(a)(2)(B).
+6
+  United States Adopted Name (USAN) is a unique, nonproprietary name for a drug sold in the United
+States. The USAN Council, which is sponsored by several organizations, assigns USANs. This program
+and naming convention are intended to help physicians, pharmaceutical manufacturers of active
+ingredients and finished dosage forms, and pharmacists ensure that the patient is provided with the drug
+the physician intended.
+7
+  International Nonproprietary Names (INN) facilitate the identification of pharmaceutical substances or
+active pharmaceutical ingredients. Each INN is a unique name that is globally recognized and is public
+property. A nonproprietary name is also known as a generic name.
+8
+  The International Union of Pure and Applied Chemistry (IUPAC) is an international federation of
+National Adhering Organizations working for the advancement of the chemical sciences, especially by
+developing nomenclature and terminology.
+9
+  The terms BDS and active pharmaceutical ingredient (API) are used interchangeably in the
+compounding context. See 21 CFR 207.3 (“Bulk drug substance, as referenced in sections 503A(b)(1)(A)
+and 503B(a)(2) of the Federal Food, Drug, and Cosmetic Act, previously defined in § 207.3(a)(4), means
+the same as "active pharmaceutical ingredient" as defined in § 207.1.”). An API is defined in FDA
+regulations at 21 CFR 207.1, which states “Active pharmaceutical ingredient means any substance that is
+intended for incorporation into a finished drug product and is intended to furnish pharmacological activity
+or other direct effect in the diagnosis, cure, mitigation, treatment, or prevention of disease, or to affect the
+structure or any function of the body. Active pharmaceutical ingredient does not include intermediates
+used in the synthesis of the substance.”
+
+
+
+                                                                                                              8
+moiety. 10 Different active moieties are not interchangeable because they can have different safety
+and efficacy profiles. Similarly, a free base or the various salts or ester of an active moiety are
+distinct chemical entities, each with a different chemical structure and unique physical/chemical,
+or pharmacokinetic/pharmacodynamic characteristics. As a result, each may offer distinct
+properties (e.g., different solubilities, permeability, melting points, stability, or flow
+characteristics) and may also have different safety and/or efficacy profiles. All distinct active
+moieties, as well as free bases, salts, or esters of any given active moiety, are distinct BDSs for
+these reasons.
+
+MOTS-c is a 16-amino-acid peptide encoded by a short open reading frame (sORF) within the
+mitochondrial 12S rRNA (mitochondrial open-reading-frame of the twelve S rRNA type-c)
+(Zheng et al. 2023). As discussed above, FDA received a nomination for MOTS-c related BDSs
+that were not clear whether the intended nomination was for MOTS-c (free base) or MOTS-c
+acetate salt. These substances are distinct BDSs/APIs. Therefore, for the purpose of this
+assessment, we will consider both MOTS-c (free base) and MOTS-c acetate and will evaluate the
+physical and chemical characterization of each.
+
+Table 1 below summarizes available identifying information obtained from the public domain for
+each BDS.
+
+Table 1. Summary of Basic Information on MOTS-c (Free Base) and MOTS-c Acetate.
+                        MOTS-c (Free Base)                   MOTS-c Acetate
+  UNII Code                A5CV6JFB78                         Not available
+   CAS No.*                1627580-64-6             CAS number of the free base is used
+    MF/MW
+                      C101H152N28O22S2/2174.6       C101H152N28O22S2·xCH3COOH/NA
+     (g/mol)
+                 H-Met-Arg-Trp-Gln-Glu-Met-Gly- H-Met-Arg-Trp-Gln-Glu-Met-Gly-Tyr-
+     Peptide
+                 Tyr-Ile-Phe-Tyr-Pro-Arg-Lys-Leu- Ile-Phe-Tyr-Pro-Arg-Lys-Leu-Arg-OH
+    sequence
+                              Arg-OH
+                                                              x.CH3COOH
+   Supplier 11                  Yes                               Yes
+ Active moiety           MOTS-c (free base)                MOTS-c (free base)
+* CAS is an abbreviation of Chemical Abstracts Service. MF = molecular formula. MW = molecular weight.
+
+One nomination was submitted, which, as discussed above, was later withdrawn. The nominator
+provided inconsistent information about the different MOTS-c BDSs in their nomination
+package. Due to inconsistencies in the nomination, it is unclear which MOTS-c-related BDS the
+
+
+10
+   “Active moiety is the molecule or ion, excluding those appended portions of the molecule that cause the
+drug to be an ester, salt (including a salt with hydrogen or coordination bonds), or other noncovalent
+derivative (such as a complex, chelate, or clathrate) of the molecule, responsible for the physiological or
+pharmacological action of the drug substance.”21 CFR 314.3.
+11
+   The existence of a supplier of BDS may be relevant to FDA’s characterization analysis because it
+indicates that consistent production of the BDS according to a standard may be possible. BDSs with
+suppliers are also frequently accompanied by COAs associated with their production, which can help
+FDA to identify and characterize BDSs.
+
+
+
+                                                                                                          9
+nominator intended to nominate. For example, the Certificate of Analysis (CoA) submitted with
+the nomination package refers to one BDS by name in the title and a different BDS by the CAS
+number. All chemistry related information about the BDSs provided by nominator is summarized
+in Table 2.
+
+Table 2. Summary of Information Submitted in the Withdrawn Nomination.
+ Nominator           1
+ Nominated BDS       MOTS-c
+ BDS per UNII code A5CV6JFB78 (matches MOTS-c free base)
+ CoA                 CoA provided for MOTS-c Acetate
+ CAS No.             1627580-64-6 (matches MOTS-c free base)
+                     C101H152N28O22S2 (provided in the nomination package that matches
+ MF
+                     MOTS-c free base)
+ MW (g/mol)          Not provided
+                     (4S)-4-[[(2S)-5-amino-2-[[(2S)-2-[[(2S)-2-[[(2S)-2-amino-4-
+                     methylsulfanylbutanoyl]amino]-5-carbamimidamidopentanoyl]amino]-3-
+                     (1H-indol-3-yl)propanoyl]amino]-5-oxopentanoyl]amino]-5-[[(2S)-1-[[2-
+                     [[(2S)-1-[[(2S,3S)-1-[[(2S)-1-[[(2S)-1-[(2S)-2-[[(2S)-1-[[(2S)-6-amino-1-
+                     [[(2S)-1-[[(1S)-4-carbamimidamido-1-carboxybutyl]amino]-4-methyl-1-
+ Chemical name       oxopentan-2-yl]amino]-1-oxohexan-2-yl]amino]-5-carbamimidamido-1-
+                     oxopentan-2-yl]carbamoyl]pyrrolidin-1-yl]-3-(4-hydroxyphenyl)-1-
+                     oxopropan-2-yl]amino]-1-oxo-3-phenylpropan-2-yl]amino]-3-methyl-1-
+                     oxopentan-2-yl]amino]-3-(4-hydroxyphenyl)-1-oxopropan-2-yl]amino]-
+                     2-oxoethyl]amino]-4-methylsulfanyl-1-oxobutan-2-yl]amino]-5-
+                     oxopentanoic acid (matches MOTS-c free base)
+Italics in the table above represents the information identified by the FDA.
+
+FDA is choosing to concurrently evaluate both BDSs (MOTS-c free base and MOTS-c acetate)
+in this section under two different sub-sections (II.A.1 and II.A.2) and will provide a separate
+conclusion for each of the two BDSs.
+
+The nominator has proposed to compound this BDS into the following dosage form:
+
+•   Injection
+
+    − For an injection product, in general, critical quality attributes (CQAs) including sterility,
+      bacterial endotoxins test (BET), and foreign particulates are considered critical safety
+      factors. For this reason, microbial bioburden load (i.e., microbial enumeration test) and
+      BET are critical for the BDSs to be used in compounding injections. Evaluation of the
+      solubility of the BDS is also considered critical to ensure that no BDS precipitates are
+      formed in the compounded drug product.
+
+There is no USP drug substance monograph for MOTS-c (free base) or its acetate salt. We
+reviewed physical and chemical characterization-related information provided by the nominator
+and performed a literature search for additional information on MOTS-c (free base) and its
+acetate salt. Databases searched for information on MOTS-c (free base) and its acetate salt in
+
+
+
+
+                                                                                                      10
+preparation of this section included SciFinder, Analytical Profiles of Drug Substances, PubMed,
+the European Pharmacopoeia, and the USP-NF.
+
+       1. MOTS-c (Free Base)
+MOTS-c is reported to be a synthetic version of a mitochondria-derived 16-amino acid peptide
+encoded by the open reading frame of the 12S rRNA type C (Lee et al. 2016). The molecular
+formula of MOTS-c (free base) is C101H152N28O22S2 with the molecular weight of 2174.6 g/mol.
+The chemical structure and peptide sequence of MOTS-c are shown in Figure 1. There is no CoA
+available for MOTS-c (free base) in the nomination.
+
+Figure 1. The Chemical Structure 12 and Peptide Sequence 13 of MOTS-c (Free Base).
+Chemical Structure of MOTS-c:
+
+
+
+
+Sequence:
+
+H-Met-Arg-Trp-Gln-Glu-Met-Gly-Tyr-Ile-Phe-Tyr-Pro-Arg-Lys-Leu-Arg-OH
+
+               a. Stability of the Active Pharmaceutical Ingredient and Likely Dosage Forms
+It is reported that lyophilized MOTS-c (free base) is stable when stored at -20°C desiccated and
+protected from light in a tightly closed container. 14 Upon reconstitution, the solution is
+recommended to keep/store at +4°C between 2-7 days and for future use below -18°C. 15
+
+FDA notes that peptides can be extremely sensitive to product formulation, process, and
+environmental conditions (e.g., pH, heat (temperature), concentration, in-process related
+impurities, excipients etc.), which may lead to the aggregation and degradation of peptides. This
+could result in loss of their biological activity (Zapadka et al. 2017). Multiple analytical methods
+
+
+12
+   https://www.peptides.org/mots-c/. Accessed March 21, 2025.
+13
+   https://pubchem.ncbi.nlm.nih.gov/compound/146675088#section=Biologic-Description. Accessed
+March 21, 2025.
+14
+   https://www.anaspec.com/assets/b2f60ab5-a1f5-4201-9a1b-435a9bcf7abc/sds-en-as-65587-mots-c.pdf.
+Accessed March 21, 2025.
+15
+   https://www.prospecbio.com/mots-c. Accessed March 21, 2025.
+
+
+
+                                                                                                   11
+may be needed to detect various aggregates, including size exclusion chromatography or field
+flow fractionation. Hence, peptides may require more and/or specific analytical in-process and
+finished product testing for impurities than what is required for small molecules. Uncontrolled
+manufacturing processes as well as impurities may increase the risk of product aggregation,
+especially for MOTS-c (free base) with 16-amino acids. Significant amounts of aggregates can
+form in formulated products, especially during storage or when exposed to stress conditions.
+Therefore, product formulation is critical to the quality and stability of peptide drug products, as
+it is necessary to maintain the peptide molecules in their native state (in the formulation) to the
+extent possible.
+
+            b. Probable Routes of API Synthesis
+MOTS-c (free base) can be synthesized using a standard Fmoc-based solid phase synthesis
+methodology, as described by Jiang (Jiang et al. 2021). Then, the obtained crude peptide was
+purified by preparative High-Performance Liquid Chromatography (HPLC). The purity of the
+peptide was determined by analytical HPLC and Electrospray Ionization Time-of-Flight (ESI-
+TOF) Mass Spectrometry (ESI-TOF MS). There are other possible synthesis paths as well, which
+would result in different impurity profiles. It is difficult to know which synthesis pathways are
+used by chemical suppliers of the nominated MOTS-c (free base).
+
+            c. Likely Impurities 16
+Generally speaking, peptide-related impurities and peptide synthesis process-related impurities
+contribute to and are considered in understanding the impurity profile for all peptides, including
+MOTS-c (free base). For most synthetic peptides, solid-phase peptide synthesis method has been
+widely used by industry for peptide synthesis. The solid phase synthesis of peptides may lead to
+potential peptide-related impurities due to incomplete coupling reactions, truncations, or side
+reactions. These peptide-related impurities are typically similar in structure to the target peptide
+and may be difficult to identify and quantify without sophisticated analytical methods.
+Additional potential common impurities may be derived from impurities in the protected amino
+acid starting materials (e.g., isomeric impurities and free amino acids) and other species that may
+carry over into drug substances. In addition, residual solvents, coupling reagents, activators,
+catalysts, and scavengers may exist as solid phase peptide synthesis process related impurities.
+Drug substance and its proposed product-related impurities may also include peptide-related
+aggregates.
+
+There is no CoA for MOTS-c (free base) in the nomination package. We conducted literature
+searches and found a CoA for MOTS-c (free base) that only contains purity testing result shown
+
+
+16
+  This evaluation contains a non-exhaustive list of potential impurities in the bulk drug substance and
+does not address fully the potential safety concerns associated with those impurities. The compounder
+should use the information about the impurities identified in the certificate of analysis accompanying the
+bulk drug substance to evaluate any potential safety and quality issues associated with impurities in a drug
+product compounded using that bulk drug substance taking into account the amount of the impurity, dose,
+route of administration, and chronicity of dosing. Available nonclinical toxicity data for likely impurities
+of concern (e.g., nitrosamines, potential mutagenic substances, and potential teratogenic substances) in
+the nominated bulk drug substance are discussed in the Nonclinical Assessment at Section C.I. as part of
+the safety assessment of the substance.
+
+
+
+                                                                                                          12
+below as an example (Figure 2). 17 However, there is no information on the impurity
+limits/testing results as attribute control in the CoA to demonstrate quality control of impurity
+profile of MOTS-c (free base).
+
+Because there is lack of information regarding potential impurities that can be present in MOTS-
+c (free base) and the lack of information on the potential of peptide aggregation, we cannot rule
+out the potential for immunogenicity associated with these impurities and peptide-related
+aggregates.
+
+Figure 2. Example of CoA for MOTS-c (Free Base).
+
+
+
+
+           d. Physicochemical Characteristics Pertinent to Product Performance, Such as
+              Particle Size and Polymorphism
+MOTS-c (free base) is white to off-white lyophilized powder. Based on the reports in most
+publicly available literature MOTS-c (free base) is soluble in water 18,19and in phosphate-buffered
+saline (Bhullar et al. 2021).
+
+In the nomination package, under “What strength(s) will be compounded from the nominated
+substance?”, it claims as “5 mg and 10 mg Lyophilized Vial”. However, there is no information
+in the nomination about the volume of water or other solvent used to reconstitute the final
+
+
+17
+   https://www.limitlesslifenootropics.com/product/mots-c-10mg/. Accessed March 21, 2025.
+18
+   https://lifescienceproduction.co.uk/mots-c/. Accessed March 21, 2025.
+19
+   https://pharmalabglobal.com/product/mots-c-peptide/. Accessed March 21, 2025.
+
+
+
+                                                                                                    13
+solution for SC administration. MOTS-c is reported to be soluble in water, however there is no
+solubility data available from public domain or in the nomination for FDA assessment to ensure
+that the nominated BDS will be completely soluble in the final solution without precipitates
+formed in the compounded drug product. Because the nominator did not provide any information
+on how to compound the proposed injectable product with known concentration, we cannot
+evaluate how the water solubility of MOTS-c (free base) will impact the performance of the
+proposed injectable final product.
+
+           e. Any Other Information About the Substance That May Be Relevant, Such as
+              Whether the API Is Poorly Characterized or Difficult to Characterize
+Because there is lack of CoA for MOTS-c (free base), we do not know if microbial bioburden
+and/or BETs are in place to control the BDS proposed for compounding injectable dosage form.
+Endotoxin test is considered a critical quality control attribute for injection product. No such
+relevant information was identified from public domain either.
+
+Conclusions: MOTS-c (free base) is reported to be a peptide consisting of 16 amino acids. As
+reported in the literature, lyophilized MOTS-c (free base) is expected to be stable when stored
+below -20°C desiccated and protected from light in a tightly closed container.
+
+Compounded drugs containing MOTS-c (free base) may pose significant risk for
+immunogenicity when administered by injection routes due to potential of aggregate formation
+as well as potential peptide-related impurities. The nominator did not provide information
+regarding the immunogenicity risk of MOTS-c (free base) and FDA identified only limited
+information in the literature. Because of the lack of information regarding potential impurities
+that can be present in MOTS-c (free base) and the lack of information on the potential of peptide
+aggregation, FDA cannot rule out the potential for immunogenicity associated with these
+impurities and peptide related impurity aggregates.
+
+MOTS-c (free base) is considered to be not well-characterized from the physical and chemical
+characterization perspective because (1) inconsistent naming conventions that do not follow
+established chemical nomenclature standards (e.g., USAN, INN, IUPAC), and (2) BDS specific
+quality control attributes, including impurities, aggregates, bacterial endotoxins, and microbial
+bioburden testing, were not found in the publicly available scientific literature and lack of CoA
+in the nomination package which are offered as evidence to establishing identity, purity, and
+impurity profiles of the substance. We also note that the stability, pharmacological activity, and
+immunogenic properties of peptides such as MOTS-c (free base) are highly sensitive to the
+manufacturing process and quality attributes of the compounded/finished drug product. In
+addition, due to lack of information on the water solubility data of MOTS-c (free base) as well as
+the reconstituted concentration of proposed injectable final product, it is difficult to draw a
+conclusion if the water solubility of MOTS-c (free base) will be a potential issue to impact
+product performance for the proposed injectable dosage form.
+
+       2. MOTS-c Acetate
+The molecular formula of MOTS-c acetate is C101H152N28O22S2·CH3COOH with the molecular
+weight of 2234.64 g/mol. The chemical structure is shown in Figure 3. The nominator provided
+CoA for MOTS-c acetate with the quality control attribute testing results, including
+
+
+
+                                                                                                  14
+identification, amino acid composition, assay, water content and acetate content (Figure 4).
+There is no testing result for the quality control attribute on impurities, aggregates, microbial
+bioburden and/or bacterial endotoxin levels, and residual solvent(s).
+
+Figure 3. The Chemical Structure of MOTS-c Acetate. 20
+
+
+
+
+                                                                                          ·CH3COOH
+
+
+
+
+20
+     https://aapep.bocsci.com/product/mots-c-human-acetate-447759.html. Accessed April 23, 2026.
+
+
+
+                                                                                                    15
+Figure 4. Nominator-Provided Example of a CoA for MOTS-c Acetate.
+
+
+
+
+              a. Stability of the API and Likely Dosage Forms
+Based on the CoA provided by the nominator, long-term storage conditions for MOTS-c acetate
+are “in a sealed container at 2°C to 8°C”. Additionally, MOTS-c acetate is reported to be stable
+at -80°C for 2 years and at -20°C for 1 year. The aliquot solution of MOTS-c acetate is stable at
+-80°C for 6 months and at -20°C for 1 month. 21
+
+FDA notes that peptides can be extremely sensitive to product formulation, process, and
+environmental conditions (e.g., pH, heat (temperature), concentration, in-process related
+impurities, excipients etc.), which may lead to the aggregation and degradation of peptides. This
+could result in loss of their biological activity (Zapadka et al. 2017). Multiple analytical methods
+may be needed to detect various aggregates, including size exclusion chromatography or field
+flow fractionation. Hence, peptides may require more and/or specific analytical in-process and
+finished product testing for impurities than what is required for small molecules. Uncontrolled
+manufacturing processes as well as impurities may increase the risk of product aggregation.
+Significant amounts of aggregates can form in formulated products, especially during storage or
+when exposed to stress conditions. Therefore, product formulation is critical to the quality and
+stability of peptide drug products, as it is necessary to maintain the peptide molecules in their
+native state (in the formulation) to the extent possible.
+
+
+
+21
+     https://www.medchemexpress.com/mots-c-human-acetate.html. Accessed March 21, 2025.
+
+
+
+                                                                                                  16
+            b. Probable Routes of API Synthesis
+MOTS-c (free base) can be synthesized using a standard Fmoc-based solid phase synthesis
+methodology as mentioned in Section A.1.b. Then, the free base can be converted into MOTS-c
+salt. As mentioned in A1.2, there are other possible synthesis paths as well, which would result
+in different impurity profiles. It is difficult to know which synthesis pathways are used by
+chemical suppliers of the nominated MOTS-c acetate.
+
+            c. Likely Impurities 22
+Generally speaking, peptide-related impurities and peptide synthesis process-related impurities
+contribute to and are considered in understanding the impurity profile for all peptides, including
+MOTS-c acetate. For most synthetic peptides, solid-phase peptide synthesis method has been
+widely used by industry for peptide synthesis. The solid phase synthesis of peptides may lead to
+potential peptide-related impurities due to incomplete coupling reactions, truncations, or side
+reactions. These peptide-related impurities are typically similar in structure to the target peptide
+and may be difficult to identify and quantify without sophisticated analytical methods.
+Additional potential common impurities may be derived from impurities in the protected amino
+acid starting materials (e.g., isomeric impurities and free amino acids) and other species that may
+carry over into drug substances. In addition, residual solvents, coupling reagents, activators,
+catalysts, and scavengers may exist as solid phase peptide synthesis process related impurities.
+Drug substance and its proposed product-related impurities may also include peptide-related
+aggregates, especially for peptide like MOTS-c acetate with 16-amino acid that may have an
+inherent tendency to aggregate.
+
+In the CoA the nominator provided there is purity test limit of ≥ 98.0% with the testing result of
+99.2% for MOTS-c acetate. However, there is no impurity quality control attribute tests to
+demonstrate the impurity profiles.
+
+We conducted literature searches and found that most CoA for MOTS-c acetate only contains
+purity testing result shown below as an example (Figure 5). 23 However, there is no information
+on the impurity limits/testing results as attribute control in the CoA to demonstrate quality
+control of impurity profile of MOTS-c acetate.
+
+
+
+
+22
+   This evaluation contains a non-exhaustive list of potential impurities in the bulk drug substance and
+does not address fully the potential safety concerns associated with those impurities. The compounder
+should use the information about the impurities identified in the certificate of analysis accompanying the
+bulk drug substance to evaluate any potential safety and quality issues associated with impurities in a drug
+product compounded using that bulk drug substance taking into account the amount of the impurity, dose,
+route of administration, and chronicity of dosing. Available nonclinical toxicity data for likely impurities
+of concern (e.g., nitrosamines, potential mutagenic substances, and potential teratogenic substances) in
+the nominated bulk drug substance are discussed in the Nonclinical Assessment at Section C.I. as part of
+the safety assessment of the substance.
+23
+   https://file.medchemexpress.com/batch_PDF/HY-P2048A/MOTS-c-human-acetate-COA-66073-
+MedChemExpress.pdf. Accessed March 21, 2025.
+
+
+
+                                                                                                         17
+Because there is lack of information regarding potential impurities that can be present in MOTS-
+c acetate and the lack of information on the potential of peptide aggregation, we cannot rule out
+the potential for immunogenicity associated with these impurities and peptide related aggregates.
+Figure 5. Example of a CoA for MOTS-c Acetate.
+
+
+
+
+              d. Physicochemical Characteristics Pertinent to Product Performance, Such as
+                 Particle Size and Polymorphism
+MOTS-c acetate is a white to off-white solid powder. It is reported to dissolve in water at
+6.25 mg/mL. 24 Because the nominator did not provide any information on how to compound the
+proposed injectable product with known concentration, we cannot evaluate how the water
+solubility of MOTS-c acetate will impact the performance of the proposed injectable final
+product.
+
+              e. Any Other Information About the Substance That May Be Relevant, Such as
+                 Whether the API Is Poorly Characterized or Difficult to Characterize
+In the CoA the nominator provided, there is no testing result for the quality control attribute on
+impurities, aggregates, and microbial bioburden and/or bacterial endotoxin levels. Bacterial
+endotoxin test is considered a critical quality control attribute for injection products. No such
+relevant information was identified from public domain, either.
+
+
+
+
+24
+     https://www.medchemexpress.com/mots-c-human-acetate.html. Accessed March 21, 2025.
+
+
+
+                                                                                                     18
+Conclusions: MOTS-c acetate is an acetate salt of a peptide consisting of 16 amino acids. As
+reported in the literature, MOTS-c acetate is expected to be stable under reported storage
+conditions (below -20°C).
+
+MOTS-c acetate is considered not well-characterized from the physical and chemical
+characterization perspective because (1) inconsistent naming conventions that do not follow
+established chemical nomenclature standards (e.g., INN, IUPAC, USAN,), and (2) certain critical
+characterization data specific to MOTS-c acetate (including impurities, aggregates, microbial
+bioburden and/or bacterial endotoxin) were not found in the publicly available scientific
+literature, and the provided CoA, which was offered as evidence to establishing identity, purity,
+and impurity profiles of the substance. The limited information related to critical characterization
+data is particularly important for immunogenicity. As discussed in Section II.D.2.d., FDA is
+concerned about the potential for immunogenicity of MOTS-c acetate when formulated in an
+injectable dosage form for SC administration due to the potential for aggregation as well as
+potential peptide-related impurities, as discussed in the impurities section. Injectable routes of
+administration may present a particular risk for immunogenicity. The nomination did not include,
+and FDA has not identified, information about MOTS-c acetate to suggest that this substance
+does not present these risks. Therefore, we cannot rule out potential immunogenicity issues
+associated with peptide and peptide-related impurities aggregates. In addition, we cannot
+evaluate how the water solubility of MOTS-c acetate will impact the performance of the
+proposed injectable final product due to lack of information on how to compound the proposed
+injectable product with known concentration. We also note that the stability, pharmacological
+activity, and immunogenic properties of peptides such as MOTS-c acetate are highly sensitive to
+the manufacturing process and quality attributes of the compounded/finished drug product.
+
+       B.    Has the Substance Been Used Historically in Compounding?
+MOTS-c related BDSs were nominated for the injectable route of administration and use in
+insulin resistance, obesity, osteoporosis, vascular calcification, muscle/fat metabolism, longevity;
+however, FDA searched generally for information on the historical use of MOTS-c (free base)
+and MOTS-c acetate in compounding. Information about use may not specify specific attributes
+of the product, such as route of administration. Databases searched for information on both
+substances for this evaluation included PubMed, EMBASE, Google/Google Scholar,
+Micromedex, Clinical Pharmacology, NatMedPro Database, USP/NF, European Pharmacopoeia,
+Japanese Pharmacopoeia, European Medicines Agency, GlobalEdge.com, and the Outsourcing
+Facility (OF) Product Reporting Database. 25 It is often unclear whether the MOTS-c discussed in
+information from these sources is the salt form or the free base and whether it was compounded
+or not. Therefore, FDA will consider the information discussed in this section in its evaluation
+for both the free base and salt form as appropriate.
+
+            1. Length of Time the Substance Has Been Used in Compounding
+The nominator did not provide historical use data.
+
+
+
+
+25
+     Available at https://dps.fda.gov/outsourcingfacility.
+
+
+
+                                                                                                 19
+MOTS-c, a peptide containing 16 amino acids encoded by the genic region 12S rRNA
+mitochondrial or MT-RNR1, was first discovered by Lee et al. in 2015 (Monterio et al. 2019).
+
+The earliest and extent of MOTS-c (free base) or MOTS-c acetate use in compounding is
+unknown. No published studies were found in which non-compounded or compounded drug
+products containing MOTS-c (free base) or MOTS-c acetate were used in humans. According to
+outsourcing facility (OF) reports submitted to FDA, OFs have not reported preparing single or
+multiple-API compounded drug products containing MOTS-c (free base) or MOTS-c acetate
+from January 2017 to December 2025. 26
+
+       2. The Medical Condition(s) It Has Been Used to Treat
+Results from a Google search indicate that MOTS-c is marketed on websites alone and in
+combination with other substances.
+
+Several websites assert that MOTS-c is used to regulate mitochondrial energy; promote the
+metabolism of fatty acid in the liver; promote metabolic homeostasis; improve glucose
+regulation; aid in the resistance of metabolic stress; protect against insulin resistance; promote
+weight loss; improve physical performance (Appendix 1); promote muscle health; support DNA
+repair and autophagy; and slow cellular aging. 27 It is unclear whether compounded products are
+being used in all of these instances.
+
+       3. How Widespread Its Use Has Been
+An internet search for compounded drug products containing MOTS-c revealed that a holistic
+clinic states that they work with compounding pharmacies to obtain compounded peptide drug
+products containing MOTS-c. 28 A wellness clinic promotes a “Cocktail IV Therapy” that
+contains MOTS-c but does not provide additional drug product details of the other substances in
+the compounded drug product (Appendix 2).
+
+MOTS-c appears as a prohibited substance in the Global Drug Reference Online (Global DRO)
+Database, which obtains information from the 2024 WADA (World-Anti-Doping Agency)
+Prohibited List of Hormone and Metabolic Modulators. 29
+
+
+
+
+26
+   The Drug Quality and Security Act, signed into law on November 27, 2013, created a new section 503B
+in the Federal Food, Drug, and Cosmetic Act. Under section 503B, a compounder can become an
+outsourcing facility. Outsourcing facilities are required to provide FDA with a list of drugs they
+compounded during the previous six- month period upon initial registration and in June and December
+each year. This retrospective information does not identify drugs that outsourcing facilities intend to
+produce in the future. https://dps.fda.gov/outsourcingfacility
+27
+   Renew Youth – MOTS-c: A potential anti-aging peptide. Available at
+https://www.renewyouth.com/mots-c-a-potential-anti-aging-peptide/. Accessed 3/20/24.
+28
+   What are Peptides? Available at https://www.hawaiiwholepersonhealing.com/peptides/. Accessed
+3/20/24.
+29
+   Global Drug Reference Online (Global DRO). Available at https://globaldro.com/Home. Accessed
+3/20/24.
+
+
+
+                                                                                                    20
+       4. Recognition of the Substance in Other Countries or Foreign Pharmacopeias
+A search of the European Pharmacopoeia (11.5 edition, 2024), and the Japanese Pharmacopoeia
+(18th Edition) did not show any monograph listings for MOTS-c (free base) or MOTS-c acetate.
+The European Medicines Agency did not list any products containing MOTS-c or MOTS-c
+acetate that are authorized for use.
+
+Conclusions: It is often unclear whether the MOTS-c discussed in the sources considered for
+this section is the salt formulation or the free base. Available literature indicates that MOTS-c
+was discovered by researchers in 2015. Published literature did not reveal studies in which
+compounded drug products containing MOTS-c or MOTS-c acetate were used in humans. OFs
+did not report compounding drug products containing MOTS-c or MOTS-c acetate. Based on
+internet searches, it appears that compounded MOTS-c is marketed alone and in combination
+with other substances as injectable formulations. MOTS-c is marketed for numerous uses,
+including regulating mitochondrial energy, promoting the metabolism of fatty acid in the liver;
+promoting metabolic homeostasis; improving glucose regulation; aiding in the resistance of
+metabolic stress; protecting against insulin resistance; promoting weight loss, and improving
+physical performance. In addition, MOTS-c is a prohibited substance on the Global DRO
+database.
+
+    C. Are There Concerns About the Safety of the Substance for Use in Compounding?
+
+       1. Nonclinical Assessment
+The nominator submitted nonclinical information. Specifically, they submitted 10 articles
+describing pharmacological studies of MOTS-c (Fuku et al. 2015; Hu and Chen 2018; Kim et al.
+2019; Lee et al. 2016; Lee et al. 2015; Lu et al. 2019a; Monteiro et al. 2019; Reynolds et al.
+2021; Wei et al. 2020; Yang et al. 2019).
+
+The following databases were consulted in preparation of this section: Drugs@FDA, Embase,
+European Chemicals Agency, FDA’s Generally Recognized as Safe Notice Inventory, Google,
+Google Scholar, National Institutes of Health’s dietary supplement label database, National
+Toxicology Program website, Pharmapendium, PubMed, Society of Toxicology, USP, and Web
+of Science.
+
+The studies discussed in this section do not clearly identify the specific form of MOTS-c (free
+base or salt) used in the different experiments. Therefore, throughout this section, we refer to
+MOTS-c as it is referred to in the articles.
+
+           a. General Pharmacology of the Drug Substance
+As described in section II.A, MOTS-c is a naturally occurring mitochondrial hexadecapeptide
+encoded by a transcript consisting of a 51-base pair short open reading frame within the
+mitochondrial 12S ribosomal RNA type-c. According to Lee and collaborators, who first
+sequenced MOTS-c, this mitochondrial peptide appears to be highly conserved across species
+and is expressed in different tissues, including skeletal muscle, heart, and brain. In addition,
+MOTS-c is present in the systemic circulation in humans and rodents (Lee et al. 2015). Figure 6
+illustrates the sequence of MOTS-c, which is the active moiety of MOTS-c (free base) and
+MOTS-c acetate.
+
+
+
+                                                                                                    21
+Figure 6. Amino Acid Sequence of MOTS-c (Excerpted From Knoop et al. 2019).
+
+
+
+
+Nonclinical pharmacological studies have reported that MOTS-c affects glucose and lipid
+metabolism, bone remodeling, and the cardiovascular system in in-vivo and in-vitro models.
+Specifically, as discussed below, synthetic MOTS-c can according to the authors: (i) suppress
+diet-induced obesity and diet- and age-dependent insulin resistance in mice (Kim et al. 2019; Lee
+et al. 2015; Lee et al. 2016), (ii) promote osteogenesis in rat bone mesenchymal stem cells
+(BMSCs) in vitro (Hu and Chen 2018), (iii) inhibit osteolysis in vivo and in vitro (Yan et al.
+2019), and (iv) reduce vascular calcification and associated myocardial remodeling in a rat
+model of vascular calcification (Wei et al. 2020).
+
+MOTS-c on Glucose and Lipid Metabolism
+
+Lee and collaborators reported that adult male CD-1 mice fed a high-fat diet (60% by calories)
+and treated with intraperitoneal (IP) injections of MOTS-c (0.5 mg/kg/day) for 8 weeks gained
+significantly less body weight than untreated male mice fed the same diet. At the end of the 8-
+week treatment, MOTS-c-treated mice weighed ~20% less than vehicle-treated mice. The
+reduced body weight gain of MOTS-c-treated mice was accompanied by increased energy
+expenditure and reduced fat accumulation in the liver. In addition, treatment with MOTS-c
+suppressed the hyperinsulinemia induced by high-fat diet in mice (Lee et al. 2015).
+
+Evidence that MOTS-c can improve insulin sensitivity was obtained from two additional
+experiments in the study by Lee and collaborators. In one experiment, adult male CD1 mice
+treated with MOTS-c (5 mg/kg/day, IP) required ~30% higher glucose infusion rate than vehicle-
+treated mice to maintain euglycemia during insulin stimulation. In addition, the MOTS-c
+treatment increased insulin-stimulated glucose disposal rate without affecting hepatic glucose
+production (Lee et al. 2015). In the other experiment, soleus muscles from older (12 months old)
+male C57/BL6 mice were shown to be more insulin resistant than soleus mice from younger (3
+months old) mice, and MOTS-c treatment (5 mg/kg/day, IP) of the older mice restored the
+insulin sensitivity of their soleus muscles to levels comparable to those of the younger mice.
+Specifically, ex vivo, insulin (60 μU/ml)-induced 2-deoxyglucose uptake into soleus muscles of
+12-month-old mice treated with MOTS-c (5 mg/kg/day; IP) for 7 days was significantly higher
+than that in soleus muscle from age-matched mice treated with saline and was comparable to that
+in soleus muscle from 3-month-old mice treated with saline (Lee et al. 2015).
+
+A separate study from the same research group reported that, in 17-week-old male C57/BL6J
+mice made obese by a high-fat diet, MOTS-c treatment (2.5 mg/kg, IP, twice a day, 3 days)
+compared to vehicle treatment (water, IP, twice a day, 3 days) significantly reduced (by ~50%)
+blood glucose levels (Kim et al. 2019). Treatment with MOTS-c also reduced plasma levels of
+oxidized glutathione in obese mice, a finding suggestive of reduced cellular oxidative stress. In
+addition, treatment with MOTS-c decreased levels of plasma metabolites associated with three
+lipid metabolism pathways: sphingolipid metabolism, monoacylglycerol metabolism, and fatty
+acid dicarboxylate metabolism (Kim et al. 2019).
+
+
+
+                                                                                                    22
+MOTS-c was shown to prevent obesity and insulin resistance induced by ovariectomy (OVX) in
+female mice (Lu et al. 2019b). Specifically, ovariectomized mice treated with MOTS-c (5
+mg/kg/day, IP) for 12 weeks gained significantly less body weight than saline-treated,
+ovariectomized mice. In addition, compared to the vehicle treatment, the MOTS-c treatment: (i)
+increased glucose tolerance in ovariectomized mice, (ii) reduced OVX-induced fat accumulation,
+(iii) increased brown fat activation in ovariectomized mice, (iv) decreased OVX-induced
+upregulation of inflammatory cytokines (e.g., interleukin 1β and interleukin 6), and (v)
+suppressed OVX-induced increase in levels of lipid oxidation markers in white adipose tissue
+(Lu et al. 2019b).
+
+Consistent with the findings that MOTS-c can improve metabolic homeostasis, acute treatment
+of young (2 months old), middle-age (12 months old), and old (22 months old) CD-1 mice with
+MOTS-c (5 mg/kg, IP) significantly enhanced their performance in a treadmill (Reynolds et al.
+2021). Evidence was also provided that a 2-week treatment of treadmill-exercised old mice with
+MOTS-c (15 mg/kg/day) compared to an equivalent vehicle treatment increased glucose
+metabolism and upregulated expression of metabolism-associated genes in the mouse skeletal
+muscles (Reynolds et al. 2021).
+
+Intermittent treatment with MOTS-c (15 mg/kg; 3x/week) initiated late in the life of male
+C57BL/6N mice (when the animals were 23.5 months old) increased not only their physical
+capacity but also their lifespan (Reynolds et al. 2021). The median and maximal lifespans were
+912 and 1047 days, respectively, for vehicle-treated mice and 970 and 1120 days, respectively,
+for MOTS-c-treated mice.
+
+The initial work by Lee and collaborators reported that the effects of MOTS-c on fatty acid
+oxidation, glycolysis, and insulin resistance in mice fed with high-fat diet could not observed if
+the animals were also treated with compound C, an inhibitor of the adenosine monophosphate-
+activated protein kinase (AMPK) signaling (Lee et al. 2015; Lee et al. 2016). This finding
+suggested that MOTS-c-induced improvement of metabolic homeostasis in the mouse model of
+obesity may be mediated, at least in part, by AMPK signaling (Lee et al. 2015).
+
+Although the molecular mechanisms by which MOTS-c increases AMPK signaling remain
+poorly understood, in-vitro experiments carried out in HEK-293 cells have shown that MOTS-c
+(10 μM, up to 72-hour incubation) downregulates enzymes involved in the one-carbon metabolic
+pathways, which include the folate and methionine cycles (Lee et al. 2015). As illustrated in
+Figure 7 by reducing the activity of the one-carbon metabolic pathways and decreasing the de-
+novo synthesis of purines, MOTS-c can cause accumulation of the intermediate 5-
+aminoimidazole-4-carboxamide (AICAR), which is a well-known AMPK activator, that can, in
+turn stimulate mitochondrial metabolism, fatty acid oxidation, glycolysis, and shunting of
+glucose to the glucose phosphate pathway.
+
+
+
+
+                                                                                                 23
+Figure 7. Diagrammatic Representation of MOTS-c-Induced Regulation of Metabolic
+Homeostasis in Skeletal Muscles (Adapted From Lee et al. 2015).
+
+
+
+
+MOTS-c on Bone Remodeling
+
+An in-vitro study demonstrated that MOTS-c can promote osteogenesis, i.e., the development of
+bone cells (Hu and Chen 2018). In this study, rat BMSCs were subjected to in-vitro osteogenic
+differentiation for 7 days in the absence or in the continuous presence of 1 μM MOTS-c (the
+highest MOTS-c concentration that had no significant effect on BMSC proliferation). The
+MOTS-c treatment of cultured BMSCs increased the cellular expression of osteogenesis-related
+genes, including alkaline phosphatase (ALP), runt-related transcription factor 2 (RUNX2), and
+osteocalcin (also known as bone gamma-carboxyglutamic acid-containing protein or BGLAP).
+The MOTS-c treatment also increased the presence of calcified nodules, a marker of
+osteogenesis, in the cultured cells. The finding that the MOTS-c-induced osteogenesis was not
+observed in BMSC cultures with a null expression of the gene that encodes the transforming
+growth factor β (TGFβ) suggested that the osteogenic effect of MOTS-c depends, at least in part,
+on the TGFβ signaling pathway, whose stimulation is known to promote bone remodeling (Hu
+and Chen 2018).
+
+In addition to inducing osteogenesis, MOTS-c can inhibit osteolysis, i.e., the breakdown of bone
+tissue (Yan et al. 2019). In an in-vivo experiment, bone loss induced by implantation of ultra-
+high molecular weight polyethylene (UHMWPE) particles in the calvaria (the uppermost part of
+the skull) of adult male C57/BL6 mice was markedly reduced by local injection of MOTS-c (1
+mM, 150 μL) once a day for 7 days in the UHMWPE-implanted area. In MOTS-c-treated,
+UHMWPE-implanted mice, the reduced bone loss was accompanied by significantly reduced
+number of osteoclasts (cells that degrade bone) per bone perimeter and markedly reduced the
+surface area that was eroded. In the calvaria of MOTS-c-treated, UHMWPE-implanted mice, the
+reduced numbers of cells positive for the osteoclast differentiation factor receptor activator of
+nuclear factor-κB ligand (RANKL) was accompanied by increased numbers of cells positive for
+the osteoclastogenesis inhibitor ostoprotegerin (Yan et al. 2019). As discussed below, data from
+an in-vitro experiment provided evidence that the inhibitory effect of MOTS-c on
+osteoclastogenesis was due to MOTS-c-induced suppression of secretion of osteoclast
+differentiation factors from osteocytes (Yan et al. 2019).
+
+
+
+
+                                                                                               24
+In their in-vitro experiment, Yan and collaborators incubated primary cultures of mouse
+osteocytes with MOTS-c (10, 20, or 30 μM) for 12 h, at which time the culture supernatants were
+collected and applied to primary cultures of mouse bone marrow macrophages (BMMs) under
+conditions that would favor the macrophage differentiation into osteoclasts. Supernatants from
+MOTS-c-treated osteocytes were reported to significantly inhibited osteoclastogenesis, i.e., the
+differentiation of BMMs into osteoclasts. Inhibition of osteoclastogenesis was greatest in
+cultured BMMs incubated with supernatants from osteocytes that had been treated with the
+highest MOTS-c concentration (30 μM). Conversely, osteoclastogenesis occurred in cultured
+BMMs that were incubated with supernatants collected from primary cultures of osteocytes that
+had been treated with MOTS-c (30 μM) plus the AMPK inhibitor compound C. These findings
+led the authors to conclude that the anticlastogenic effect of MOTS-c is mediated, at least in part,
+by its ability to increase the release of anticlastogenic factors from osteocytes via an AMPK-
+dependent mechanism (Yan et al. 2019).
+
+MOTS-c on Vascular Calcification and Myocardial Remodeling
+
+Considering reports that AMPK signaling suppresses vascular calcification, i.e. the pathological
+accumulation of calcium deposits in the walls of blood vessels that is associated with different
+clinical conditions including obesity, Wei and collaborators investigated the effects of MOTS-c
+in a rat model of vascular calcification (Wei et al. 2020). In this model, male Sprague-Dawley
+rats that are exposed daily to nicotine (5 mg/kg/day, oral gavage) plus vitamin D3 (300,000
+U/kg/day, intramuscular or IM) for 4 weeks present with decreased vascular tension, increased
+blood pressure, and increased calcium deposition in the aorta in addition to myocardial
+remodeling characterized by echocardiographic reductions of the internal diameter of the left
+ventricle at diastole and systole. Treatment of the rats with MOTS-c (5 mg/kg/day, IP) during the
+time they were being exposed to nicotine-plus-vitamin D3 significantly reduced the pathological
+changes in vascular tension, blood pressure, aortic calcium deposition, and myocardial
+remodeling (Wei et al. 2020).
+
+The 4-week exposure of rats to vitamin D3-plus-nicotine also reduced the phosphorylation (and,
+therefore, the activity) of AMPK and upregulated the expression of angiotensin II type 1
+receptors (AT1Rs) and endothelin β receptors (ETβRs) in the aorta (Wei et al. 2020). Treatment
+with MOTS-c prevented the reduction of levels of phosphorylated AMPK and the upregulation
+of AT1Rs and ETβRs. The authors concluded that MOTS-c, most likely via AMPK-dependent
+signaling mechanisms that may contribute to downregulation of AT1Rs and ETβRs, inhibits
+vascular calcification and myocardial remodeling (Wei et al. 2020).
+
+The pleiotropic pharmacological effects of MOTS-c on lipid and glucose metabolism, bone
+remodeling, and vascular calcification have prompted interest of researchers on the potential
+therapeutic effectiveness of this peptide for management of different clinical conditions,
+including obesity and osteoporosis (reviewed in Lee et al. 2016; Monteiro et al. 2019). However,
+caution is warranted in interpreting the potential clinical relevance of the nonclinical
+pharmacological effects of MOTS-c. To date, nonclinical pharmacological studies of MOTS-c
+have been limited to in-vivo and in-vitro rodent models and have not evaluated the dose-response
+relationships for the effects of MOTS-c in vivo. In addition, although the pharmacological
+effects of MOTS-c appear to depend, at least in part, on AMPK signaling, the molecular target(s)
+
+
+
+
+                                                                                                 25
+through which MOTS-c acts remains unknown. As such, it is difficult to predict which organs
+might be targeted and affected by MOTS-c.
+
+            b. Pharmacokinetics/Toxicokinetics
+At the time of this evaluation, the nominator did not submit, and FDA did not identify in-vivo
+pharmacokinetic or toxicokinetic studies of MOTS-c.
+
+The only pharmacokinetic-related study FDA identified in the biomedical literature was an in-
+vitro study assessing the metabolic degradation of MOTS-c in human whole blood that had been
+incubated with MOTS-c (5 μg/mL) at 37°C for 15 or 60 minutes (Knoop et al. 2019). Using high
+resolution mass spectrometry, the authors identified the peptides MOTS-c(2–16), MOTS-c(3–16),
+MOTS-c(4–16), and MOTS-c(5–16) in MOTSC-c-incubated human blood (Figure 8). The authors
+stated that in-vitro proteolytic hydrolysis of MOTS-c into the shorter peptides was rapid and did
+not require its long incubation with human blood (Knoop et al. 2019). It remains to be
+determined whether exogenous administration of MOTS-c to humans can generate
+pharmacologically active concentrations of the peptide over time.
+
+Figure 8. Amino Acid Sequences of MOTS-c Metabolites in Human Blood Incubated With
+MOTS-c In Vitro (Sequences Excerpted From Knoop et al. 2019).
+
+
+
+
+            c. Acute Toxicity 30
+At the time of this evaluation, the nominator did not submit, and FDA did not identify acute
+toxicity studies of MOTS-c (free base) or MOTS-c acetate.
+
+
+
+
+30
+  Acute toxicity refers to adverse effects observed following administration of a single dose of a
+substance, or multiple doses given within a short period (approximately 24 hours). For more information
+on general approaches for acute toxicity studies, please refer to FDA’s guidance for industry M3(R2)
+Nonclinical Safety Studies for the Conduct of Human Clinical Trials and Marketing Authorization for
+Pharmaceuticals (January 2010), available at https://www.fda.gov/media/71542/download.
+
+
+
+                                                                                                      26
+            d. Repeat-Dose Toxicity 31
+At the time of this evaluation, the nominator did not submit, and FDA did not identify repeat-
+dose toxicity studies of MOTS-c (free base) or MOTS-c acetate.
+
+            e. Genotoxicity 32
+At the time of this evaluation, the nominator did not submit, and FDA did not identify
+genotoxicity studies of MOTS-c (free base) or MOTS-c acetate.
+
+            f. Developmental and Reproductive Toxicity 33
+At the time of this evaluation, the nominator did not submit, and FDA did not identify
+nonclinical developmental and reproductive studies of MOTS-c (free base) or MOTS-c acetate.
+
+            g. Carcinogenicity 34
+At the time of this evaluation, the nominator did not submit, and FDA did not identify
+nonclinical carcinogenicity studies of MOTS-c (free base) or MOTS-c acetate.
+
+Conclusions: From the pharmacological perspective, nonclinical pharmacological studies
+submitted by the nominator and identified by FDA indicate that, in rodent models, MOTS-c,
+acting via AMPK-dependent mechanisms, can according to the authors: (i) improve glucose and
+
+
+31
+   Repeat-dose toxicity studies consist of in-vivo animal studies that seek to evaluate the toxicity of the
+test substance when it is repetitively administered daily for an extended period. For more information on
+general approaches for repeat-dose toxicity studies, please refer to FDA’s guidance for industry M3(R2)
+Nonclinical Safety Studies for the Conduct of Human Clinical Trials and Marketing Authorization for
+Pharmaceuticals (January 2010), available at https://www.fda.gov/media/71542/download.
+32
+   The genotoxicity assessment battery usually consists of a gene mutagenicity assay (for single dose
+trials) and a variety of clastogenicity/genotoxicity assays. To support multiple dose administration in
+humans, additional genotoxicity testing assessment is usually conducted to detect chromosomal damage
+in mammalian systems. For more information on general approaches for genotoxicity studies, please refer
+to FDA’s guidance for industry S2(R1) Genotoxicity Testing and Data Interpretation for Pharmaceuticals
+Intended for Human Use (June 2012), available at https://www.fda.gov/media/71980/download.
+33
+   Developmental and reproductive toxicity studies are usually designed to assess the potential adverse
+effects of a substance within a complete reproductive cycle, from conception to reproductive capacity in
+subsequent generations, and to identify the potential effects of a substance on pre-, peri-, and postnatal
+development. Developmental toxicity or teratogenicity refers to adverse effects (can include embryo-fetal
+mortality, structural abnormalities, functional impairment, or alterations to growth) and can occur in pups
+either as a result of the exposure of their parents to the substance, prior to the pups’ birth, or by direct
+exposure of the pups to the substance after birth. For more information on general approaches for
+reproductive and developmental toxicity studies, please refer to FDA’s guidance for industry S5(R3)
+Detection of Reproductive and Developmental Toxicity for Human Pharmaceuticals (May 2021),
+available at https://www.fda.gov/media/148475/download.
+34
+   Studies that assess cancer risk in animals are used as predictive tools to evaluate the potential for drugs
+to cause tumors when used by humans on a chronic basis. Carcinogenicity studies are conducted if the
+clinical use is expected to be continuous for a minimum of 6 months of life, or if intermittent clinical use
+is expected to total 6 months or more of life. For more information on general approaches for
+carcinogenicity studies, please refer to FDA’s guidance for industry S1B Testing for Carcinogenicity of
+Pharmaceuticals (July 1997), available at https://www.fda.gov/media/71935/download.
+
+
+
+                                                                                                           27
+lipid metabolism, (ii) increase osteogenesis and suppress osteolysis, and (iii) suppress vascular
+calcification and associated myocardial remodeling. These nonclinical findings sparked interest
+of researchers on the potential usefulness of MOTS-c as a pharmacological intervention for
+different clinical conditions, including obesity and osteoporosis. However, the findings should be
+interpreted with caution because the nonclinical pharmacological studies of MOTS-c published
+to date have been restricted to rodent models and have not assessed dose-response relationships
+for the different pharmacological effects of MOTS-c in vivo. In addition, while AMPK-
+dependent signaling appears to contribute to the pharmacological effects of MOTS-c, the
+molecular targets underlying the pharmacological effects of MOTS-c remain unknown making it
+difficult to predict which organs are likely to be affected by MOTS-c.
+
+Although the nominator did not submit, and FDA did not identify in-vivo studies assessing the
+pharmacokinetic profile of MOTS-c, FDA identified an in-vitro study reporting that MOTS-c is
+quickly hydrolyzed in human blood. This finding raises the question as to whether exogenous
+administration of MOTS-c to humans can generate pharmacologically active concentrations of
+the peptide over time. At the time of this evaluation, the nominator did not submit, and FDA did
+not identify nonclinical toxicity studies to inform safety considerations for potential clinical uses
+of MOTS-c (free base) or MOTS-c acetate.
+
+       2. Human Safety
+The following databases were consulted in the preparation of this section: PubMed, Embase,
+Cochrane Database of Systematic Reviews, FDA Adverse Event Reporting System (FAERS),
+ClinicalTrials.gov, professional healthcare organization websites, and various online clinical
+references and websites. Note that throughout this section, the substance will be generally
+referred to as MOTS-c unless otherwise specified as free base or acetate salt.
+
+The nomination did not include, and FDA did not identify, information including human
+exposure data to evaluate whether MOTS-c-related BDSs are safe for use in compounded
+products.
+
+           a. Pharmacokinetic Data
+The nominator did not submit, and FDA did not identify clinical studies that provided
+pharmacokinetic data for MOTS-c-related BDSs.
+
+           b. Reported Adverse Reactions
+The Office of Surveillance and Epidemiology conducted searches of the FAERS database for
+reports of adverse events for MOTS-c through February 28, 2024, and from February 26, 2024
+through March 9, 2025. 35 The searches retrieved no reports.
+
+
+
+35
+  Compounders under section 503A of the FD&C Act generally do not report adverse events to FDA.
+FDA encourages compounders, health care professionals, and consumers to report adverse events and
+product quality concerns associated with compounded drugs to FDA’s MedWatch Adverse Event
+Reporting program. Unless an adverse event report is submitted to FDA, the Agency may not be aware of
+adverse events associated with a product compounded under section 503A.
+
+
+
+                                                                                                   28
+           c. Clinical Studies Assessing Safety
+The nomination did not include, and FDA has not identified, any clinical studies or human
+exposure data for MOTS-c via any route of administration. Therefore, potential safety risks
+associated with the use of MOTS-c-related BDSs in humans are unknown.
+
+           d. Other Safety Information
+Immunogenicity and Aggregation Concerns
+
+FDA has issued guidance regarding immunogenicity assessment for therapeutic protein
+products. 36 The guidance describes immunogenicity as the propensity of a therapeutic protein
+product to generate immune responses to itself and to related proteins including endogenous
+proteins or peptides, or to induce immunologically related adverse clinical events. Although this
+guidance addresses therapeutic protein products, the concerns about immunogenicity are also
+relevant to peptides (such as MOTS-c), which can similarly elicit an immunogenic response; this
+immunogenic response may be enhanced when peptides are given via SC route of administration
+(ROA). In general, SC ROA is associated with increased immunogenicity compared to
+intravenous (IV) ROA.
+
+The consequences of triggering an immune response may range from antibody responses with no
+apparent clinical manifestations to life-threatening and catastrophic reactions. Such outcomes are
+often unpredictable in patients administered therapeutic protein or peptide products. One possible
+consequence of the development of an immune response is the development of neutralizing
+antibody activity that may lead to loss of efficacy or even result in the neutralization of the
+activity of the endogenous peptide counterpart.
+
+In addition, compared to small molecule active pharmaceutical ingredients, peptides are distinct
+because they may have an inherent tendency to aggregate. Aggregation refers to the processes
+through which peptides associate into larger species consisting of multiple peptide chains.
+Aggregates can be highly ordered or amorphous and the formation can be reversible or
+irreversible (Zapadka et al. 2017). Peptides with as few as two amino acids have been shown to
+aggregate (Frederix et al. 2011). Aggregates can impact the pharmacology of the peptide. In
+addition, aggregation is a risk factor in immunogenicity and for decreased pharmacotherapeutic
+effect of the drug product due to effects on bioavailability, formation of precipitates, or anti-drug
+antibody production (Ratanji et al. 2014).
+
+The nominators did not provide, and FDA did not identify, clinical studies assessing
+immunogenicity or aggregation of MOTS-c-related BDSs. MOTS-c-related BDSs contains 16
+amino acids, and FDA is concerned about potential for immunogenicity when administered by an
+injection ROA as proposed, due to the potential for aggregation, as well as potential peptide-
+related impurities. Based on available information, there are insufficient data to conclude that
+MOTS-c-related BDSs do not present these risks.
+
+
+
+
+36
+  See FDA’s guidance for industry Immunogenicity Assessment for Therapeutic Protein Products
+(August 2014), available at https://www.fda.gov/media/85017/download.
+
+
+
+                                                                                                   29
+            e. Therapies That Have Been Used for the Condition(s) Under Consideration
+There are FDA-approved drug products for weight reduction in patients with obesity and
+treatment of osteoporosis. 37
+
+Conclusions: There is a lack of clinical and nonclinical safety information on the use of MOTS-
+c. FDA is particularly concerned about the lack of human data on drug products containing this
+substance administered via any route of administration. MOTS-c is a peptide containing 16
+amino acids for which there is a lack of information to assess its immunogenic safety risk.
+Therefore, potential safety risks associated with the use of MOTS-c in humans are unknown.
+There are currently available FDA-approved therapies for some of the nominated uses.
+
+     D. Available Evidence of Effectiveness or Lack of Effectiveness of Drug Products
+        Compounded With the Substance
+The following databases were consulted in the preparation of this section: PubMed, Embase,
+Cochrane Database of Systematic Reviews, DailyMed, Drugs@FDA, relevant professional
+healthcare organization websites, and various online clinical references and websites, such as
+information from the Centers for Disease Control and Prevention (CDC).
+
+MOTS-c-related BDSs were nominated for the following uses: insulin resistance, obesity, 38
+osteoporosis, 39 vascular calcification, muscle/fat metabolism, and longevity. The nomination
+cited 12 literature references in support of the nomination; these did not include clinical studies.
+
+
+
+
+37
+   FDA considers the existence of FDA-approved or OTC monograph drug products to treat the same
+condition as that proposed for the nomination relevant to FDA’s consideration of the safety criterion, to
+the extent there may be therapies that have been demonstrated to be safe under the conditions of use set
+forth in the approved labeling. See 84 FR 4696.
+38
+   Obesity is defined by the increase in size and amount of fat cells in the body. Obesity is a chronic
+health condition that increases the risk for heart disease and is linked to other health problems, such as
+type 2 diabetes and cancer. Diagnosis may be based on medical history and high body mass index (BMI).
+For adults, obesity is defined as BMI ≥ 30 kg/m2. Treatment options may involve dietary or nutritional
+counselling, behavioral weight-loss programs, medicines, or surgery (See: Overweight and Obesity, NIH
+National Heart, Lung, and Blood Institute, accessed 8/23/2024,
+https://www.nhlbi.nih.gov/health/overweight-and-obesity).
+39
+   Osteoporosis is a bone disease that develops when bone mineral density (BMD) and bone mass
+decreases or when the structure and strength of bone changes; this can lead to a decrease in bone strength
+that can increase the risk of fractures. Osteoporosis is typically asymptomatic until fractures occur.
+Treatment of osteoporosis aims to prevent fractures and may include nutrition, exercise, and medications
+(See: Osteoporosis. NIH National Institute of Arthritis and Musculoskeletal and Skin Diseases, accessed
+3/20/2025, https://www.niams.nih.gov/health-topics/osteoporosis)
+
+
+
+                                                                                                        30
+We performed our own search of published medical literature and did not identify clinical studies
+evaluating administration of MOTS-c-related BDSs in human subjects. 40
+
+        1. Reports of Trials, Clinical Evidence, and Anecdotal Reports of Effectiveness, or Lack
+           of Effectiveness, of the Bulk Drug Substance
+We reviewed information from the nominator-cited references. The nominator has not provided
+clinical evidence on the use of MOTS-c-related BDSs in insulin resistance, obesity, osteoporosis,
+vascular calcification, muscle/fat metabolism, and longevity. We performed our own search of
+published medical literature, and we did not identify data, such as clinical studies, evaluating the
+administration of MOTS-c to humans.
+
+        2. Whether the Product Compounded With This Bulk Drug Substance Is Intended To Be
+           Used in a Serious or Life-Threatening Disease
+Patients with obesity are at increased risk for many serious diseases and health conditions such
+as type 2 diabetes, heart disease, stroke, and certain types of cancers. 41
+
+Osteoporosis is associated with increased risk of potentially serious fractures which can generate
+a heavy burden of morbidity and an increased risk of mortality (Leboime et al. 2010).
+
+        3. Therapies That Have Been Used for the Condition(s) Under Consideration
+There are FDA-approved drug products for weight reduction in patients with obesity and
+treatment of osteoporosis. 42
+
+Conclusion: There is a lack of evidence to evaluate the effectiveness of the MOTS-c-related
+BDSs for the nominated uses. As discussed in section II.C.1, although nonclinical
+pharmacological studies investigated the role of MOTS-c on biological processes that could be
+relevant to the nominated uses, these studies were limited to in-vitro and in-vivo rodent models.
+In addition, assessments of the dose-response relationships for the effects of MOTS-c are
+missing, and the molecular target(s) through which MOTS-c acts remains unknown. It is difficult
+to predict which organs might be targeted and affected by MOTS-c. Therefore, the clinical
+relevance of the findings of these nonclinical studies is currently unknown. The nomination did
+not include, and our evaluation did not identify, information on the use of MOTS-c-related BDSs
+administered in humans in order to evaluate whether MOTS-c-related BDSs are appropriate for
+the proposed uses in compounded drug products. Obesity and osteoporosis are serious conditions
+
+
+40
+   FDA did not evaluate the proposed uses: insulin resistance, obesity, osteoporosis, vascular calcification,
+muscle/fat metabolism, longevity because the nomination did not include sufficient information for the
+Agency to evaluate whether the substance is appropriate for these uses in compounded drug products. In
+addition, FDA did not identify clinical studies evaluating these uses of MOTS-c. See 80 FR 65765 for the
+information necessary to fully evaluate a substance for inclusion on the 503A Bulks List.
+41
+   See: How Overweight and Obesity Impacts Your Health, CDC website, https://www.cdc.gov/healthy-
+weight-growth/food-activity/overweight-obesity-impacts-health.html. Accessed 8/23/2024.
+42
+   FDA considers the existence of FDA-approved or OTC monograph drug products to treat the same
+condition as that proposed for the nomination relevant to FDA’s consideration of the effectiveness
+criterion, to the extent there may be alternative therapies that have been demonstrated to be effective for
+certain conditions. See 84 FR 4696.
+
+
+
+                                                                                                          31
+and there are FDA-approved therapies for weight reduction in patients with obesity and
+treatment of osteoporosis.
+
+III. CONCLUSION AND RECOMMENDATION
+We have balanced the criteria described in section II above to evaluate MOTS-c related BDSs
+for the 503A Bulks List. After considering the information currently available, a balancing of
+the criteria weighs against MOTS-c free base or MOTS-c acetate being placed on that list
+based on the following:
+
+1. Conclusions on the physical and chemical characterization for each MOTS-c related BDS,
+   MOTS-c (free base) and MOTS-c acetate, are included in subsections 1.1 and 1.2.
+
+   1.1.
+
+   MOTS-c (free base) is reported to be a peptide consisting of 16 amino acids. As reported in
+   the literature, lyophilized MOTS-c (free base) is expected to be stable when stored below -
+   20°C desiccated and protected from light.
+
+   MOTS-c (free base) is considered to be not well-characterized from the physical and
+   chemical characterization perspective because (1) inconsistent naming conventions that do
+   not follow established chemical nomenclature standards (e.g., INN, IUPAC, USAN), and (2)
+   BDS specific quality control attributes, including impurities, aggregates, and endotoxins,
+   were not found in the publicly available scientific literature and lack of CoA in the
+   nomination package which are offered as evidence to establishing identity, purity, and
+   impurity profiles of the substance. Due to lack of information on the water solubility data of
+   MOTS-c (free base) as well as the reconstitute concentration of proposed injectable final
+   product, it is difficult to draw a conclusion if the water solubility of MOTS-c (free base) will
+   be a potential issue to impact product performance for the proposed injectable dosage form.
+   In addition, due to lack of information regarding potential peptide related impurities and
+   potential of peptide aggregates that can be present in MOTS-c (free base) FDA cannot rule
+   out the potential for immunogenicity associated with them, especially when administered by
+   injection routes.
+
+   1.2.
+
+   MOTS-c acetate is reported to be an acetate salt of peptide consisting of 16 amino acids. As
+   reported in the literature, MOTS-c acetate is expected to be stable under reported storage
+   conditions (below -20°C).
+
+   MOTS-c acetate is considered not well-characterized from the physical and chemical
+   characterization perspective because (1) inconsistent naming conventions that do not follow
+   established chemical nomenclature standards (e.g., INN, IUPAC, USAN), and (2) certain
+   critical characterization data specific to MOTS-c acetate (including impurities, aggregates,
+   and microbial bioburden and/or bacterial endotoxin levels) were not found in the publicly
+   available scientific literature, and the provided CoA, which was offered as evidence to
+   establishing identity, purity, and impurity profiles of the substance. We cannot evaluate how
+   the water solubility of MOTS-c acetate will impact the performance of the proposed
+
+
+
+                                                                                                 32
+   injectable final product due to lack of information on how to compound the proposed
+   injectable product with known concentration. In addition, due to lack of information
+   regarding potential peptide related impurities and potential of peptide aggregates that can be
+   present in MOTS-c acetate FDA cannot rule out the potential for immunogenicity associated
+   with them, especially when administered by injection routes.
+
+2. MOTS-c was discovered in 2015. A search of published literature did not reveal studies in
+   which compounded drug products containing MOTS-c or MOTS-c acetate were used in
+   humans. OFs have not reported preparing single or multiple API compounded drug products
+   containing MOTS-c or MOTS-c acetate. Internet search results indicate that injectable
+   MOTS-c is marketed for different uses, including regulating mitochondrial energy,
+   promoting the metabolism of fatty acid in the liver; promoting metabolic homeostasis;
+   improving glucose regulation; aiding in the resistance of metabolic stress; protecting against
+   insulin resistance; promoting weight loss, and improving physical performance. MOTS-c and
+   MOTS-c acetate do not have an applicable USP or NF drug substance monograph and neither
+   is a component of an FDA-approved drug. MOTS-c is listed as a prohibited substance in the
+   Global DRO Database, which obtains information from the 2024 World-Anti-Doping
+   Agency Prohibited List of Hormone and Metabolic Modulators.
+
+3. There is a lack of evidence to evaluate the effectiveness of the MOTS-c-related BDSs for the
+   nominated uses. Although nonclinical pharmacological studies investigated the role of
+   MOTS-c on biological processes that could be relevant to the nominated uses, these studies
+   were limited to in-vitro and in-vivo rodent models. In addition, assessments of the dose-
+   response relationships for the effects of MOTS-c are missing, and the molecular targets
+   through which MOTS-c acts remain unknown. It is difficult to predict which organs might be
+   targeted and affected by MOTS-c. Therefore, the clinical relevance of the findings of these
+   nonclinical studies is currently unknown. The nomination did not include, and our evaluation
+   did not identify, information on the use of MOTS-c-related BDSs administered in humans in
+   order to evaluate whether MOTS-c-related BDSs are appropriate for the proposed uses in
+   compounded drug products. Obesity and osteoporosis are serious conditions and there are
+   FDA-approved therapies for weight reduction in patients with obesity and treatment of
+   osteoporosis.
+
+4. There is a lack of clinical and nonclinical information on MOTS-c-related BDSs. FDA is
+   particularly concerned about the lack of human data on drug products containing this
+   substance delivered via any route of administration. MOTS-c is a peptide containing 16
+   amino acids for which there is a lack of information to assess its immunogenic safety risk.
+   Therefore, potential safety risks associated with the use of MOTS-c-related BDSs in humans
+   are unknown. There are currently available FDA-approved therapies for some of the
+   nominated uses.
+
+On balance, the physicochemical characterization, information on historical use, lack of any
+safety and effectiveness information in humans for both MOTS-c (free base) and MOTS-c
+acetate weigh against their being added to the 503A Bulks List. FDA’s proposal is based on the
+fact that these substances are not well-characterized from a physical and chemical
+characterization perspective, unknown use in compounding, no available nonclinical data to
+inform safety considerations for potential clinical uses of MOTS-c-related BDSs, and no clinical
+
+
+
+                                                                                                33
+studies to assess the safety and effectiveness of MOTS-c-related BDSs in humans. Accordingly,
+we propose not adding MOTS-c (free base) or MOTS-c acetate to the 503A Bulks List.
+
+
+
+
+                                                                                            34
+IV. REFERENCES
+Bhullar, KS, N Shang, E Kerek, K Wu and J Wu, 2021, Mitofusion Is Required for MOTS-c
+Induced GLUT4 Translocation, Sci Rep, 11(1):14291.
+
+Frederix, PW, RV Ulijn, NT Hunt and T Tuttle, 2011, Virtual Screening for Dipeptide
+Aggregation: Toward Predictive Tools for Peptide Self-Assembly, J Phys Chem Lett,
+2(19):2380-2384.
+
+Fuku, N, H Pareja-Galeano, H Zempo, R Alis, Y Arai, A Lucia and N Hirose, 2015, The
+Mitochondrial-Derived Peptide MOTS-C: A Player in Exceptional Longevity?, Aging Cell,
+14(6):921-923.
+
+Hu, BT and WZ Chen, 2018, Mots-C Improves Osteoporosis by Promoting Osteogenic
+Differentiation of Bone Marrow Mesenchymal Stem Cells Via TGF-β/Smad Pathway, Eur Rev
+Med Pharmacol Sci, 22(21):7156-7163.
+
+Kim, SJ, B Miller, HH Mehta, J Xiao, J Wan, TE Arpawong, K Yen and P Cohen, 2019, The
+Mitochondrial‐Derived Peptide MOTS‐c Is a Regulator of Plasma Metabolites and Enhances
+Insulin Sensitivity, Physiol Rep, 7(13):e14171.
+
+Knoop, A, A Thomas and M Thevis, 2019, Development of a Mass Spectrometry Based
+Detection Method for the Mitochondrion‐Derived Peptide MOTS‐c in Plasma Samples for
+Doping Control Purposes, Rap Comm Mass Spec, 33(4):371-380.
+
+Leboime, A, C Confavreux, N Mehsen, J Paccou, C David and C Roux, 2010, Osteoporosis and
+Mortality, Joint Bone Spine, 77(S2): S107-S112.
+
+Lee, C, KH Kim and P Cohen, 2016, MOTS-c: A Novel Mitochondrial-Derived Peptide
+Regulating Muscle and Fat Metabolism, Free Radic Biol Med, 100:182-187.
+
+Lee, C, J Zeng, BG Drew, T Sallam, A Martin-Montalvo, J Wan, S-J Kim, H Mehta, AL
+Hevener and R de Cabo, 2015, The Mitochondrial-Derived Peptide MOTS-c Promotes
+Metabolic Homeostasis and Reduces Obesity and Insulin Resistance, Cell Metab, 21(3):443-454.
+
+Lu, H, S Tang, C Xue, Y Liu, J Wang, W Zhang, W Luo and J Chen, 2019a, Mitochondrial-
+Derived Peptide MOTS-c Increases Adipose Thermogenic Activation to Promote Cold
+Adaptation, Int J Mol Sci, 20(10):2456.
+
+Lu, H, M Wei, Y Zhai, Q Li, Z Ye, L Wang, W Luo, J Chen and Z Lu, 2019b, MOTS-C Peptide
+Regulates Adipose Homeostasis to Prevent Ovariectomy-Induced Metabolic Dysfunction, J Mol
+Med (Berl), 97(4):473-485.
+
+Monteiro, A, G Scarlato, DF Cavalini and GE Shiguemoto, 2019, Humanin, MOTS-c and
+Physical Exercise: A New Perspective, Biomed Res, 3:1-6.
+
+Ratanji, KD, JP Derrick, RJ Dearman and I Kimber, 2014, Immunogenicity of Therapeutic
+Proteins: Influence of Aggregation, J Immunotoxicol, 11(2):99-109.
+
+
+
+
+                                                                                          35
+Reynolds, JC, RW Lai, JS Woodhead, JH Joly, CJ Mitchell, D Cameron-Smith, R Lu, P Cohen,
+NA Graham and BA Benayoun, 2021, MOTS-c Is an Exercise-Induced Mitochondrial-Encoded
+Regulator of Age-Dependent Physical Decline and Muscle Homeostasis, Nat Commun, 12(1):1-
+11.
+
+Wei, M, L Gan, Z Liu, L Liu, J-R Chang, D-C Yin, H-L Cao, X-L Su and WW Smith, 2020,
+Mitochondrial-Derived Peptide MOTS-c Attenuates Vascular Calcification and Secondary
+Myocardial Remodeling Via Adenosine Monophosphate-Activated Protein Kinase Signaling
+Pathway, Cardiorenal Med, 10(1):42-50.
+
+Yan, Z, S Zhu, H Wang, L Wang, T Du, Z Ye, D Zhai, Z Zhu, X Tian and Z Lu, 2019, MOTS-c
+Inhibits Osteolysis in the Mouse Calvaria by Affecting Osteocyte-Osteoclast Crosstalk and
+Inhibiting Inflammation, Pharmacol Res, 147:104381.
+
+Yang, Y, H Gao, H Zhou, Q Liu, Z Qi, Y Zhang and J Zhang, 2019, The Role of Mitochondria-
+Derived Peptides in Cardiovascular Disease: Recent Updates, Biomed Pharmacother,
+117:109075.
+
+Zapadka, KL, FJ Becher, AL Gomes Dos Santos and SE Jackson, 2017, Factors Affecting the
+Physical Stability (Aggregation) of Peptide Therapeutics, Interface Focus, 7(6):20170030.
+
+Zheng, Y, Z Wei and T Wang, 2023, MOTS-c: A promising mitochondrial-derived peptide for
+therapeutic exploitation. Front Endocrinol (Lausanne), 14:1120533.
+
+
+
+
+                                                                                            36
+V. APPENDICES
+APPENDIX 1: AFFIRM HEALTH CENTER MOTS-c WEBPAGE (ACCESSED 3/20/24)
+
+
+
+
+                                                                     37
+APPENDIX 2: MYERS COCKTAIL IV THERAPY WEBPAGE (ACCESSED 3/20/24)
+
+
+
+
+                                                                   38
+ MOTS-c – Related Bulk Drug
+Substances (MOTS-c (free base)
+     and MOTS-c acetate)
+         Nomination
+
+
+
+
+                                 39
+Does the substance have a UNII code?                                     A5CV6JFB78
+
+
+What is the chemical grade of the substance?            Provided by FDA Registered Supplier/COA
+
+                                                     Assay, Description, Solubility, etc.; Example of
+What is the strength, quality, stability, and
+purity of the ingredient?                          Certificate of Analysis for this chemical is attached.
+
+How is the ingredient supplied?                                      Lyophilized Powder
+Is the substance recognized in foreign
+pharmacopeias or registered in other                                          No
+countries?
+Has information been submitted about the
+substance to the USP for consideration of drug                                No
+monograph development?
+What dosage form(s) will be compounded using
+                                                                          Injectable
+the bulk drug substance?
+What strength(s) will be compounded from the
+                                                               5mg and 10mg Lyophilized Vial
+nominated substance?
+What is the anticipated route(s) of
+administration of the compounded drug                              Subcutaneous Injection
+product(s)?
+                                                 Lee C, Zeng J, Drew BG, et al. The mitochondrial-derived
+                                                 peptide MOTS-c promotes metabolic homeostasis and
+                                                 reduces obesity and insulin resistance. Cell Metab.
+                                                 2015;21(3):443-454. doi:10.1016/j.cmet.2015.02.009
+
+                                                 Lee C, Kim KH, Cohen P. MOTS-c: A novel mitochondrial-
+                                                 derived peptide regulating muscle and fat metabolism. Free
+                                                 Radic Biol Med. 2016;100:182-187.
+                                                 doi:10.1016/j.freeradbiomed.2016.05.015
+
+                                                 Lu H, Wei M, Zhai Y, et al. MOTS-c peptide regulates adipose
+                                                 homeostasis to prevent ovariectomy-induced metabolic
+                                                 dysfunction. J Mol Med (Berl). 2019;97(4):473-485.
+                                                 doi:10.1007/s00109-018-01738-w
+
+                                                 Kim SJ, Miller B, Mehta HH, et al. The mitochondrial-derived
+                                                 peptide MOTS-c is a regulator of plasma metabolites and
+                                                 enhances insulin sensitivity. Physiol Rep. 2019;7(13):e14171.
+Are there safety and efficacy data on            doi:10.14814/phy2.14171
+compounded drugs using the nominated             Crescenzo R, Bianco F, Mazzoli A, Giacco A, Liverini G, Iossa
+substance?                                       S. A possible link between hepatic mitochondrial dysfunction
+                                                 and diet-induced insulin resistance. Eur J Nutr. 2016;55(1):1-
+                                                 6. doi:10.1007/s00394-015-1073-0
+
+                                                 Hu BT, Chen WZ. MOTS-c improves osteoporosis by
+                                                 promoting osteogenic differentiation of bone marrow
+                                                 mesenchymal stem cells via TGF-β/Smad pathway. Eur Rev
+                                                 Med Pharmacol Sci. 2018;22(21):7156-7163.
+                                                 doi:10.26355/eurrev 201811 16247
+
+                                                 Fuku N, Pareja-Galeano H, Zempo H, et al. The mitochondrial-
+                                                 derived peptide MOTS-c: a player in exceptional
+                                                 longevity?. Aging Cell. 2015;14(6):921-923.
+                                                 doi:10.1111/acel.12389
+
+                                                 Yang Y, Gao H, Zhou H, et al. The role of mitochondria-
+                                                 derived peptides in cardiovascular disease: Recent
+                                                 updates. Biomed Pharmacother. 2019;117:109075.
+                                                 doi:10.1016/j.biopha.2019.109075
+
+                                                                                                                  41
+Has the bulk drug substance been used
+                                                                    YES
+previously to compound drug product(s)?
+What is the proposed use for the drug        Insulin Resistance, Obesity, Osteoporosis, Vascular
+product(s) to be compounded with the           Calcification, Muscle/Fat Metabolism, Longevity
+nominated substance?
+What is the reason for use of a compounded
+drug product rather than an FDA-approved            no FDA-approved product available
+product?
+Is there any other relevant information?                  Added as an Attachment
+
+
+
+
+                                                                                                   42
+43
+                  References included with nomination FDA-2015-N-3534-0293
+Lu H, Tang S, Xue C, Liu Y, Wang J, Zhang W, Luo W, Chen J. Mitochondrial-Derived Peptide MOTS-
+c Increases Adipose Thermogenic Activation to Promote Cold Adaptation. Int J Mol Sci. 2019 May
+17;20(10):2456. doi: 10.3390/ijms20102456. PMID: 31109005; PMCID: PMC6567243.
+Monteiro A, Scarlato G, Cavalini D, Shiguemoto G. Humanin, MOTS-c and physical exercise: A new
+perspective. Biomedical Research and Reviews. Biomedical Research and Review. 2019. doi:
+10.15761/brr.1000129.
+Reynolds JC, Lai RW, Woodhead JST, Joly JH, Mitchell CJ, Cameron-Smith D, Lu R, Cohen P, Graham
+NA, Benayoun BA, Merry TL, Lee C. MOTS-c is an exercise-induced mitochondrial-encoded regulator
+of age-dependent physical decline and muscle homeostasis. Nat Commun. 2021 Jan 20;12(1):470. doi:
+10.1038/s41467-020-20790-0. PMID: 33473109; PMCID: PMC7817689.
+Wei M, Gan L, Liu Z, Liu L, Chang JR, Yin DC, Cao HL, Su XL, Smith WW. Mitochondrial-Derived
+Peptide MOTS-c Attenuates Vascular Calcification and Secondary Myocardial Remodeling via
+Adenosine Monophosphate-Activated Protein Kinase Signaling Pathway. Cardiorenal Med.
+2020;10(1):42-50. doi: 10.1159/000503224. Epub 2019 Nov 6. PMID: 31694019.
+
+
+
+
+                                                                                                 44

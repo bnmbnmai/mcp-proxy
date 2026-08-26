@@ -1,0 +1,59 @@
+[
+  {
+    "institution": "Reddit, Inc.",
+    "docket": "reddit-mpn-20260223",
+    "date": "2026-02-23",
+    "title": "Monetary Penalty Notice",
+    "sourceUrl": "https://ico.org.uk/media2/hrlmvj14/reddit-mpn-20260223.pdf",
+    "pdfId": "reddit-mpn-20260223.pdf"
+  },
+  {
+    "institution": "MediaLab.AI, Inc.",
+    "docket": "medialab-20260204",
+    "date": "2026-02-04",
+    "title": "Monetary Penalty Notice",
+    "sourceUrl": "https://ico.org.uk/media2/bghpp40j/medialab-penalty-notice-20260204.pdf",
+    "pdfId": "medialab-penalty-notice-20260204.pdf"
+  },
+  {
+    "institution": "LastPass UK Ltd",
+    "docket": "lastpass-uk-ltd",
+    "date": "2025-11-20",
+    "title": "Monetary Penalty Notice",
+    "sourceUrl": "https://ico.org.uk/media2/xfbl1uaa/lastpass-uk-ltd-penalty-notice.pdf",
+    "pdfId": "lastpass-uk-ltd-penalty-notice.pdf"
+  },
+  {
+    "institution": "Capita plc and Capita Pension Solutions Limited",
+    "docket": "capita-plc",
+    "date": "2025-10-15",
+    "title": "Monetary Penalty Notice",
+    "sourceUrl": "https://ico.org.uk/media2/pv5nhks4/capita-plc-and-cpsl-monetary-penalty-notice.pdf",
+    "pdfId": "capita-plc-and-cpsl-monetary-penalty-notice.pdf"
+  },
+  {
+    "institution": "South Staffordshire Plc and South Staffordshire Water Plc",
+    "docket": "south-staffordshire-plc",
+    "date": "2026-05-07",
+    "title": "Monetary Penalty Notice",
+    "sourceUrl": "https://ico.org.uk/media2/xdrfahsw/south-staffordshire-plc-and-south-staffordshire-water-plc-monetary-penalty-notice.pdf",
+    "pdfId": "south-staffordshire-plc-and-south-staffordshire-water-plc-monetary-penalty-notice.pdf"
+  },
+  {
+    "institution": "Jane Q Public",
+    "individual": "Jane Q Public",
+    "docket": "jane-q-public",
+    "date": "2026-01-01",
+    "title": "Monetary Penalty Notice",
+    "sourceUrl": "https://ico.org.uk/media2/peopleonly/jane-q-public-mpn.pdf",
+    "pdfId": "jane-q-public-mpn.pdf"
+  },
+  {
+    "institution": "Reddit, Inc.",
+    "docket": "reddit-press",
+    "date": "2026-02-24",
+    "title": "News",
+    "type": "News",
+    "sourceUrl": "https://ico.org.uk/about-the-ico/media-centre/news-and-blogs/2026/02/reddit-issued-with-1447m-fine-for-children-s-privacy-failures/"
+  }
+]

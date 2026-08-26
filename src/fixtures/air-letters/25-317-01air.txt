@@ -1,0 +1,80 @@
+United States
+Department of
+                  Sarah Forrester
+Agriculture       Inari Agriculture, Inc.
+Animal and
+                  One Kendall Square
+Plant Health      Building 600/700, Suite 7-501
+Inspection
+Service
+                  Cambridge, MA 02139
+
+Biotechnology
+Regulatory
+                  Re: Confirmation of the regulatory status of gene edited wheat lines with increased yield
+Services          and modified plant architecture
+4700 River Road
+Riverdale, MD     Dear Sarah Forrester:
+20737
+
+                  Thank you for your letter received November 13, 2025 (25-317-01air), inquiring whether
+                  the wheat (Triticum aestivum L.) product described in your letter is a regulated article
+                  under 7 CFR part 340. Your letter describes CRISPR-Cas gene editing, resulting in the
+                  desired increased yield and modified plant architecture.
+
+                  The Plant Protection Act of 2000 (PPA) provides USDA with broad authority to protect
+                  U.S. agriculture, the environment, and the economy by, among other things, regulating
+                  the introduction of plants and articles to prevent the dissemination or establishment of a
+                  plant pest within the United States. As such, USDA, through the Animal and Plant Health
+                  Inspection Service, regulates the “Introduction of Organisms and Products Altered or
+                  Produced Through Genetic Engineering Which are Plant Pests or Which There is Reason
+                  to Believe Are Plant Pests,” as described in 7 CFR part 340. These regulations only apply
+                  to organisms that USDA deems regulated articles under § 340.1.
+
+                  In your letter, you describe your CRISPR-Cas mediated gene editing technology for non-
+                  templated repair of targeted double stranded breaks to modify wheat genes claimed as
+                  confidential business information (CBI). You used and will use Agrobacterium-mediated
+                  transformation to introduce constructs into wheat to create edits in CBI target genes
+                  individually or in combination to obtain increased yield and modified plant architecture.
+                  You state that you will use conventional breeding to remove vector sequences and
+                  confirm the absence of vector sequences using quantitative-PCR assays that will cover
+                  every genetic element in your transformation vector.
+
+                  Based on the representations you made in your letter, including your description of your
+                  confirmation methods, your wheat lines are not themselves plant pests and you attest that
+                  no plant pest sequences will remain integrated into the genome of wheat. Consistent with
+                  previous responses to similar letters of inquiry, USDA does not consider your modified
+                  wheat lines to be regulated pursuant to 7 CFR part 340.
+
+                  Although your modified wheat is not regulated under 7 CFR part 340, it may be subject
+                  to other USDA regulations or other regulatory authorities. For example, importation of
+                  your plant or its seeds may be subject to Plant Protection and Quarantine (PPQ) permit
+                  and/or quarantine requirements. For further information, you may contact the PPQ
+                  general number for such inquiries at (877) 770-5990. To inquire about the regulatory
+                                                                  Inari Agriculture, Inc.
+                                                                                  Page 2
+
+
+status of your plant with the Environmental Protection Agency, please contact Alan
+Reynolds at reynolds.alan@epa.gov or (703) 605-0515. To inquire about the regulatory
+status of your plant with the Food and Drug Administration (FDA), please contact FDA
+at PlantBiotech@fda.hhs.gov.
+
+Should you become aware at any time of any issues that may affect USDA’s conclusion
+regarding this inquiry, you should immediately notify us in writing of the nature of the
+issue.
+
+Sincerely,
+
+                         Digitally signed by DONNA
+
+DONNA LALLI              LALLI
+                         Date: 2025.12.09 12:21:16
+                         -05'00'
+
+Donna A. Lalli, Ph.D
+APHIS Deputy Administrator
+Biotechnology Regulatory Services
+Animal and Plant Health Inspection Service
+U.S. Department of Agriculture
+
