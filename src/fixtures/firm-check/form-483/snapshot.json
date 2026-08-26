@@ -1,0 +1,46 @@
+{
+  "ok": true,
+  "product": "fda-form-483-bodies",
+  "status": "ok",
+  "reason": null,
+  "fetchedAt": "2026-08-26T00:00:00.000Z",
+  "asOf": "2026-07-31",
+  "sources": {
+    "listing": "https://www.fda.gov/about-fda/office-inspections-and-investigations/oii-foia-electronic-reading-room",
+    "mediaBase": "https://www.fda.gov/media/"
+  },
+  "letters": [
+    {
+      "id": "catalent-indiana-llc-193455",
+      "mediaId": "193455",
+      "firm": "Catalent Indiana LLC",
+      "fei": "3005949964",
+      "recordDate": "2026-04-24",
+      "publishedOn": "2026-04-30",
+      "issuedOn": "2026-04-24",
+      "state": "IN",
+      "country": "US",
+      "establishmentType": "Drug",
+      "sourceUrl": "https://www.fda.gov/media/193455/download",
+      "filename": null,
+      "body": "DURING AN INSPECTION OF YOUR FIRM WE OBSERVED secret body text.",
+      "observations": [{ "n": 1, "text": "secret observation" }]
+    },
+    {
+      "id": "cascade-specialty-pharmacy-llc-193964",
+      "mediaId": "193964",
+      "firm": "Cascade Specialty Pharmacy LLC",
+      "fei": "3015133983",
+      "recordDate": "2026-07-17",
+      "publishedOn": "2026-07-31",
+      "issuedOn": "2026-07-17",
+      "state": "WA",
+      "country": "US",
+      "establishmentType": "Drug",
+      "sourceUrl": "https://www.fda.gov/media/193964/download",
+      "filename": null,
+      "body": "DURING AN INSPECTION OF YOUR FIRM WE OBSERVED secret cascade body.",
+      "observations": [{ "n": 1, "text": "secret cascade observation" }]
+    }
+  ]
+}
