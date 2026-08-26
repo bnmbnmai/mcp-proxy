@@ -47,25 +47,16 @@ Do not set `X402_SKIP_SETTLE` on the standing public unit. Family / basic-auth s
 
 ## Apollo collect (official year-materials walk)
 
-This cloud VM cannot publish `ticks.bnm.farm` and must not fight for the media-box worker. Live `/pcac` stays at first-slice **7** until apollo pulls this branch and runs a PCAC-only collect.
-
 ```bash
-# on apollo — not this Cloud VM
-sudo apt-get install -y poppler-utils
 cd ~/projects/mcp-proxy
-git fetch origin
-git checkout cursor/grow-pcac-627f
 npm run build
-
 export PCAC_DIR=$HOME/projects/mcp-proxy/data/pcac
 # LIMIT is additional, not total. Cached July 2026 bodies are reused.
 PCAC_LIMIT=24 PCAC_MAX_FETCH=36 npm run collect:pcac
-
 systemctl --user restart idaho-ticks-x402.service
-# if the unit is system-wide: sudo systemctl restart idaho-ticks-x402
 ```
 
-Expected after apply: `listedCount` **15** official per-substance rows (7 + 5 + 3). `cardCount` **14** if Hydroxyprogesterone caproate (Withdrawn or Removed List, media `182090`) stays out of the 503A evaluation gate; **15** if that body later matches. Official live catalog is those three meeting pages.
+Live after leftover apply (2026-08-26): **listedCount 15**, **cardCount 14**, asOf **2026-05-15**, fetchedAt **2026-08-26T15:42:23.299Z**. Hydroxyprogesterone caproate (`182090`, Withdrawn or Removed) failed the 503A evaluation gate. Price still $0.02 / $0.05. No new SKU. Restarted only `idaho-ticks-x402.service`. Official live catalog is the July 2026 + October 29, 2024 + December 4, 2024 meeting pages.
 
 ## Local smoke (cloud VM / laptop)
 
