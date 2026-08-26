@@ -1,92 +1,16 @@
-# Apollo MCP Server - Publish Checklist
+# BNM Data Shop — official MCP registry
 
-**Status:** Ready for publish (Bruce QC approved)  
-**Created:** 2026-02-07
+Do not publish from a box that is not logged in as `bnmbnmai`.
 
-## Step 1: npm Publish (Required First)
-
-```bash
-cd projects/apollo-mcp-server
-
-# Login to npm (interactive)
-npm login
-
-# Verify login
-npm whoami
-
-# Publish (scoped public package)
-npm publish --access public
-```
-
-**Note:** The @apollo_ai org may need to be created first:
-- Go to https://www.npmjs.com/org/create
-- Create org: apollo_ai
-- Then publish
-
-## Step 2: GitHub Repository
+`server.json` is the live shop only: `io.github.bnmbnmai/bnm-data-shop` → `https://ticks.bnm.farm/mcp` (streamable-http). Website `https://bnm.farm/`.
 
 ```bash
-# Create repo on GitHub: https://github.com/new
-# Name: mcp-proxy
-# Org: apollo_ai (or personal account)
-
-cd projects/apollo-mcp-server
-git init
-git add .
-git commit -m "Initial release: Apollo Proxy MCP Server v1.0.0"
-git remote add origin https://github.com/bnmbnmai/mcp-proxy.git
-git push -u origin main
+mcp-publisher login github
+mcp-publisher publish ./server.json
 ```
 
-## Step 3: Directory Submissions
-
-### 3a. mcpmarket.com
-1. Go to https://mcpmarket.com/submit
-2. Use info from `submissions/mcpmarket-submission.md`
-3. Submit form
-
-### 3b. mcp.so (Awesome MCP Servers)
-1. Go to https://github.com/punkpeye/awesome-mcp-servers/issues/new
-2. Copy content from `submissions/mcp-so-issue.md`
-3. Submit issue
-
-### 3c. LobeHub MCP Marketplace
-1. Fork https://github.com/lobehub/lobe-chat-plugins
-2. Copy `submissions/lobehub-plugin.json` to `src/apollo-proxy.json`
-3. Submit PR
-
-### 3d. PulseMCP (Auto-indexed)
-- Will auto-index from npm within 24-48 hours
-- https://www.pulsemcp.com/servers
-
-## Step 4: Verify
-
-After npm publish, verify installation works:
+Check:
 
 ```bash
-# Test global install
-npm install -g @apollo_ai/mcp-proxy
-apollo-proxy-mcp --help
-
-# Test npx
-npx @apollo_ai/mcp-proxy
+curl "https://registry.modelcontextprotocol.io/v0/servers?search=io.github.bnmbnmai/bnm-data-shop"
 ```
-
-## Key Info for Forms
-
-| Field | Value |
-|-------|-------|
-| Package Name | @apollo_ai/mcp-proxy |
-| Homepage | https://apolloai.team |
-| Author | Apollo Intelligence Network |
-| Email | apollo_08@agentmail.to |
-| License | MIT |
-| Pricing | $0.005/req (x402, USDC on Base) |
-| Tools | proxy_fetch, proxy_status, list_countries |
-
-## Time Estimate
-
-- npm publish: 2 minutes
-- GitHub repo: 5 minutes  
-- Directory submissions: 15 minutes total
-- **Total: ~25 minutes**

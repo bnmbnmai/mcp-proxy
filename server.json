@@ -1,31 +1,19 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "team.apolloai/intelligence",
-  "title": "Apollo Intelligence",
-  "description": "36 tools: intel feeds, DeFi, crypto, OSINT, NLP, scraping, proxy. x402 micropayments.",
+  "name": "io.github.bnmbnmai/bnm-data-shop",
+  "title": "BNM Data Shop",
+  "description": "BNM Data Shop. 36 official-data x402 GETs. Table $0.05; body $0.02/$0.05.",
   "repository": {
     "url": "https://github.com/bnmbnmai/mcp-proxy",
-    "source": "github"
+    "source": "github",
+    "id": "1152521266"
   },
-  "version": "4.8.1",
-  "websiteUrl": "https://apolloai.team",
-  "packages": [
+  "version": "1.0.0",
+  "websiteUrl": "https://bnm.farm/",
+  "remotes": [
     {
-      "registryType": "npm",
-      "identifier": "@apollo_ai/mcp-proxy",
-      "version": "4.8.1",
-      "transport": {
-        "type": "stdio"
-      },
-      "environmentVariables": [
-        {
-          "description": "Override API endpoint (default: https://apolloai.team)",
-          "name": "APOLLO_API_URL",
-          "format": "string",
-          "isRequired": false,
-          "isSecret": false
-        }
-      ]
+      "type": "streamable-http",
+      "url": "https://ticks.bnm.farm/mcp"
     }
   ]
 }
