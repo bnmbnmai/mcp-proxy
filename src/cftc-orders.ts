@@ -347,11 +347,12 @@ export function parseListingHtml(html: string): CftcOrderListing[] {
       if (!officialCftcPdfUrl(sourceUrl)) continue;
       pushedMedia = true;
       rows.push({
-        institution:
-          cells.find((c) => ENTITY_RE.test(c)) ||
-          institutionFromLinkTitle(title) ||
-          cells.find((c) => PERSON_NAME_RE.test(c)) ||
-          "",
+        institution: (() => {
+          const fromLink = institutionFromLinkTitle(title);
+          if (fromLink && (ENTITY_RE.test(fromLink) || PERSON_NAME_RE.test(fromLink))) return fromLink;
+          const fromCell = cells.find((c) => c.length < 160 && ENTITY_RE.test(c));
+          return fromCell || fromLink || "";
+        })(),
         docket: docketFromCells,
         date,
         title,
@@ -773,7 +774,11 @@ export async function collectCftcOrders(opts?: {
     if (target > 0 && addedThisRun >= target) break;
     const cached = prior.get(row.id) ?? prior.get(row.pdfId);
     if (cached) {
-      cards.push(cached);
+      const institution =
+        row.institution && row.institution.length < (cached.institution?.length ?? 999)
+          ? row.institution
+          : cached.institution;
+      cards.push({ ...cached, institution, date: row.date ?? cached.date, title: row.title || cached.title });
       seen.add(row.id);
       if (row.pdfId) seen.add(row.pdfId);
       reused += 1;
