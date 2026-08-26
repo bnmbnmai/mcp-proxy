@@ -1,7 +1,7 @@
 {
   "name": "@apollo_ai/mcp-proxy",
   "version": "4.10.0",
-  "description": "MCP server for Apollo Intelligence Network \u2014 40 tools: intelligence feeds, OSINT, DeFi, economic data, security scanning, crypto, weather, ML/NLP, and proxy infrastructure via x402 micropayments",
+  "description": "BNM Data Shop \u2014 36 official public-data x402 GETs at ticks.bnm.farm",
   "type": "module",
   "bin": {
     "apollo-proxy-mcp": "build/index.js"
@@ -20,26 +20,18 @@
   "keywords": [
     "mcp",
     "model-context-protocol",
-    "proxy",
-    "web-scraping",
-    "residential-proxy",
     "x402",
     "micropayments",
-    "ai-agent",
-    "claude",
-    "anthropic",
     "usdc",
     "base",
-    "crypto",
-    "apollo"
+    "official-data"
   ],
-  "author": "Apollo Intelligence Network <apollo_08@agentmail.to>",
   "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bnmbnmai/mcp-proxy.git"
   },
-  "homepage": "https://apolloai.team",
+  "homepage": "https://ticks.bnm.farm",
   "bugs": {
     "url": "https://github.com/bnmbnmai/mcp-proxy/issues"
   },
@@ -55,173 +47,9 @@
     "node": ">=18"
   },
   "mcp": {
-    "tools": [
-      {
-        "name": "web_scrape",
-        "description": "Scrape any URL \u2014 proxy rotation + content extraction. $0.02/req"
-      },
-      {
-        "name": "web_search",
-        "description": "Search the web. Site filters, structured results. $0.01/query"
-      },
-      {
-        "name": "x_search",
-        "description": "Real-time X/Twitter search via Grok. $0.75/query"
-      },
-      {
-        "name": "agent_intel",
-        "description": "Curated agent economy opportunities. $0.05/req"
-      },
-      {
-        "name": "sentiment",
-        "description": "Real-time social sentiment via Grok. $0.02/req"
-      },
-      {
-        "name": "pain_points",
-        "description": "NLP pain point clustering + SaaS suggestions. $0.08/req"
-      },
-      {
-        "name": "agentic_trends",
-        "description": "Agentic economy signals + funding data. $0.05/req"
-      },
-      {
-        "name": "keyword_opportunities",
-        "description": "Keyword flywheel expansion. $0.05/req"
-      },
-      {
-        "name": "micro_saas",
-        "description": "Validated micro-SaaS ideas with revenue estimates. $0.10/req"
-      },
-      {
-        "name": "web3_hackathons",
-        "description": "Rich hackathon data \u2014 prizes, dates, locations. $0.05/req"
-      },
-      {
-        "name": "github_trending",
-        "description": "GitHub repos by star velocity, AI-categorized. $0.05/req"
-      },
-      {
-        "name": "producthunt",
-        "description": "Daily Product Hunt launches, AI-categorized. $0.05/req"
-      },
-      {
-        "name": "weekly_digest",
-        "description": "Weekly intelligence synthesis. $0.25/req"
-      },
-      {
-        "name": "opportunity_bundle",
-        "description": "Bundle: keywords + pains + micro-SaaS. 35% off. $0.15/req"
-      },
-      {
-        "name": "agentic_insights_bundle",
-        "description": "Bundle: trends + pains + intel. 33% off. $0.12/req"
-      },
-      {
-        "name": "builder_intel_bundle",
-        "description": "Bundle: GitHub + PH + intel. 33% off. $0.10/req"
-      },
-      {
-        "name": "proxy_fetch",
-        "description": "Raw proxy relay \u2014 residential proxies (190+ countries). $0.01/req"
-      },
-      {
-        "name": "proxy_status",
-        "description": "Check service availability and pricing"
-      },
-      {
-        "name": "list_countries",
-        "description": "List available proxy exit countries (190+)"
-      },
-      {
-        "name": "crypto_prices",
-        "description": "Live crypto prices from CoinGecko. Any token, real-time. $0.01/req"
-      },
-      {
-        "name": "crypto_trending",
-        "description": "Trending cryptocurrencies by search volume. $0.02/req"
-      },
-      {
-        "name": "ip_intel",
-        "description": "Multi-source IP intelligence: geo, ports, vulnerabilities, threats. $0.03/req"
-      },
-      {
-        "name": "domain_intel",
-        "description": "Domain intelligence: DNS, SSL certs, geo, threat analysis. $0.03/req"
-      },
-      {
-        "name": "fx_rates",
-        "description": "Live FX rates for 30+ currencies from ECB. $0.005/req"
-      },
-      {
-        "name": "stackexchange",
-        "description": "StackOverflow Q&A search for coding agents. $0.02/req"
-      },
-      {
-        "name": "defi_yields",
-        "description": "Top DeFi yields across 18K+ pools from DefiLlama. $0.03/req"
-      },
-      {
-        "name": "defi_protocols",
-        "description": "DeFi protocol TVL rankings, 7000+ protocols. $0.02/req"
-      },
-      {
-        "name": "economic_indicators",
-        "description": "Federal Reserve economic data: GDP, unemployment, inflation. $0.03/req"
-      },
-      {
-        "name": "country_metrics",
-        "description": "World Bank country indicators: GDP, population, 260+ countries. $0.02/req"
-      },
-      {
-        "name": "malware_feed",
-        "description": "Live malware URLs from URLhaus (abuse.ch) threat intel. $0.02/req"
-      },
-      {
-        "name": "ip_geo",
-        "description": "IP geolocation: country, city, coords, ASN, timezone. $0.01/req"
-      },
-      {
-        "name": "geocode",
-        "description": "Forward + reverse geocoding via OpenStreetMap. $0.01/req"
-      },
-      {
-        "name": "weather",
-        "description": "Current weather + 7-day forecast from Open-Meteo. $0.01-$0.02/req"
-      },
-      {
-        "name": "ml_analyze",
-        "description": "Text sentiment, entity extraction, or summarization via HuggingFace. $0.01-$0.03/req"
-      },
-      {
-        "name": "ip_reputation",
-        "description": "IP abuse scoring via AbuseIPDB \u2014 confidence score, reports. $0.03/req"
-      },
-      {
-        "name": "malware_url_check",
-        "description": "VirusTotal URL scanning \u2014 malware detection across 70+ engines. $0.05/req"
-      },
-      {
-        "name": "breach_check",
-        "description": "Email breach check via HaveIBeenPwned (Troy Hunt). $0.05/req"
-      },
-      {
-        "name": "eth_balance",
-        "description": "Ethereum wallet balance via Etherscan. $0.03/req"
-      },
-      {
-        "name": "eth_transactions",
-        "description": "Ethereum transaction history via Etherscan. $0.03/req"
-      },
-      {
-        "name": "eth_gas",
-        "description": "Live Ethereum gas prices via Etherscan. $0.02/req"
-      }
-    ],
-    "pricing": {
-      "model": "pay-per-use",
-      "currency": "USDC",
-      "network": "Base (eip155:8453)"
-    }
+    "name": "io.github.bnmbnmai/bnm-data-shop",
+    "url": "https://ticks.bnm.farm/mcp",
+    "transport": "streamable-http"
   },
-  "mcpName": "team.apolloai/intelligence"
+  "mcpName": "io.github.bnmbnmai/bnm-data-shop"
 }
