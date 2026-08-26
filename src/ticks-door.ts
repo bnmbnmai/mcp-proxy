@@ -998,6 +998,53 @@ const PAID_WINDOW_COPY = `GET ?id= one official text ($0.02). Newest chunk on a 
 const BODY_PAGE_DISCOVERY =
   `Extracted-body doors: free index/search on /{door}/manifest.json or /{door}/index (?q=, optional before/date), then pay ${oneOfficialTextCopy()} or the page ($0.05). ${newestOfficialTextsCopy(PAID_BODY_N)} on a plain GET ($0.05), or the whole current set if fewer; older pages on the same URL (?before, another $0.05). Table doors (/ticks, /import-alerts) stay the whole current table.`;
 
+const CANONICAL_ORIGIN = "https://ticks.bnm.farm";
+const CDP_DESCRIPTION_MAX = 500;
+const TABLE_ENTIRE_COPY = "$0.05 = entire current table.";
+const IMPORT_ALERTS_FIRM_CHECK_COPY =
+  `Free firm search across 483 + warning letters + this table: GET ${CANONICAL_ORIGIN}/firm-check?q=`;
+
+function extractedBodyFreeSearchCopy(door: string): string {
+  return `Free search: GET ${CANONICAL_ORIGIN}/${door}/manifest.json?q= (HTTP 200) returns id and the ?id= URL. Then pay GET ?id= ($0.02) or the page ($0.05).`;
+}
+
+/** First product sentence only. Drops leak-test “not this / not that.” */
+function sku402Product(sku: DoorSku): string {
+  const text = SKU_COPY[sku].description.replace(PAID_WINDOW_COPY, "").trim();
+  for (const sentence of text.split(/(?<=\.)\s+/)) {
+    const t = sentence.trim();
+    if (!t) continue;
+    if (/^Not\b/i.test(t) || /^Does not\b/i.test(t)) continue;
+    if (/\bdoes not invent\b/i.test(t) || /\bdoes not sell\b/i.test(t) || /\bdoes not wrap\b/i.test(t)) continue;
+    return t;
+  }
+  return text;
+}
+
+function clamp402Description(text: string, mustKeep: string): string {
+  if (text.length <= CDP_DESCRIPTION_MAX) return text;
+  const suffix = mustKeep.startsWith(" ") ? mustKeep : ` ${mustKeep}`;
+  const budget = CDP_DESCRIPTION_MAX - suffix.length;
+  if (budget < 1) return suffix.trim().slice(0, CDP_DESCRIPTION_MAX);
+  return `${text.slice(0, Math.max(0, text.length - suffix.length)).slice(0, budget).trim()}${suffix}`;
+}
+
+/** 402 accepts[].description — product + bag + price + where free search is. OpenAPI keeps SKU_COPY. */
+export function sku402Description(sku: DoorSku): string {
+  if (isExtractedBodySku(sku)) {
+    const free = extractedBodyFreeSearchCopy(sku);
+    return clamp402Description(`${sku402Product(sku)} ${PAID_WINDOW_COPY} ${free}`, free);
+  }
+  if (sku === "import-alerts") {
+    const extra = `${TABLE_ENTIRE_COPY} ${IMPORT_ALERTS_FIRM_CHECK_COPY}`;
+    return clamp402Description(`${sku402Product(sku)} ${extra}`, extra);
+  }
+  if (sku === "ticks") {
+    return clamp402Description(`${sku402Product(sku)} ${TABLE_ENTIRE_COPY}`, TABLE_ENTIRE_COPY);
+  }
+  return SKU_COPY[sku].description;
+}
+
 const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> = {
   ticks: {
     description:
@@ -2636,13 +2683,14 @@ export function paymentRequiredBody(
 ): Record<string, unknown> {
   const amount = amountAtomic;
   const copy = SKU_COPY[sku];
+  const description = sku402Description(sku);
   const acceptV1: Record<string, unknown> = {
     scheme: "exact",
     network: NETWORK_V1,
     asset: USDC_BASE,
     payTo: PAY_TO,
     resource: resourceUrl,
-    description: copy.description,
+    description,
     mimeType: "application/json",
     maxTimeoutSeconds: 60,
     extra: { name: "USD Coin", version: "2" },
@@ -2668,7 +2716,7 @@ export function paymentRequiredV2(
   amountAtomic = amountAtomicFor(sku),
 ): Record<string, unknown> {
   const amount = amountAtomic;
-  const copy = SKU_COPY[sku];
+  const description = sku402Description(sku);
   const accept: Record<string, unknown> = {
     scheme: "exact",
     network: NETWORK_V2,
@@ -2677,14 +2725,14 @@ export function paymentRequiredV2(
     maxTimeoutSeconds: 60,
     extra: { name: "USD Coin", version: "2" },
     amount,
-    description: copy.description,
+    description,
   };
   return {
     x402Version: 2,
     error: "PAYMENT-SIGNATURE header is required",
     resource: {
       url: resourceUrl,
-      description: copy.description,
+      description,
       mimeType: "application/json",
     },
     accepts: [accept],
