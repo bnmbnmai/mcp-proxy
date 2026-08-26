@@ -1,10 +1,11 @@
 import { createServer } from "node:http";
-import { existsSync, mkdtempSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, PRODUCT_PUBLIC_ID, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2 } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2 } from "./ticks-door.js";
 import { SINGLE_DOC_AMOUNT_ATOMIC } from "./paid-records.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
@@ -342,6 +343,7 @@ async function main(): Promise<void> {
     assert.ok(wk.llmsTxt?.endsWith(LLMS_PATH));
     assert.ok(wk.sample?.endsWith(SAMPLE_PATH));
     assert.ok(!wk.resources.some((r) => r.includes(SAMPLE_PATH)), "/sample is free discovery, not a paid resource");
+    assert.ok(!wk.resources.some((r) => r.includes(X402LIST_PATH)), "ownership proof file is free, not a paid resource");
     assert.ok((wk.instructions ?? "").includes("/sample"));
     assert.ok(!(wk.instructions ?? "").includes("idaho-hay-feeder-ticks"));
     assert.ok(!(wk.instructions ?? "").includes("Idaho-only"));
@@ -707,6 +709,29 @@ async function main(): Promise<void> {
     assert.ok(specSample.paths[SAMPLE_PATH]?.get);
     assert.ok(specSample.paths[SAMPLE_PATH]?.get?.tags?.includes("free"));
     assert.ok(!specSample.paths[SAMPLE_PATH]?.get?.["x-payment-info"]);
+    assert.equal(specSample.paths[X402LIST_PATH], undefined);
+
+    const x402listExpected = readFileSync(
+      join(dirname(fileURLToPath(import.meta.url)), "../src/fixtures/x402list.txt"),
+      "utf8",
+    );
+    const x402listToken = x402listExpected.trimEnd();
+    const x402listRes = await fetch(`${base}${X402LIST_PATH}`);
+    assert.equal(x402listRes.status, 200);
+    assert.match(x402listRes.headers.get("content-type") ?? "", /text\/plain/);
+    const x402listBody = await x402listRes.text();
+    assert.equal(x402listBody, x402listExpected);
+    assert.ok(x402listBody.endsWith("\n"));
+    assert.equal(x402listBody.replace(/\n$/, "").includes("\n"), false);
+    const x402listPaid = await fetch(`${base}${X402LIST_PATH}`, { headers: { "X-PAYMENT": "test" } });
+    assert.equal(x402listPaid.status, 200);
+    assert.equal(await x402listPaid.text(), x402listExpected);
+    assert.ok(!shop.products.some((p) => p.path === X402LIST_PATH));
+    const llmsTxt = await (await fetch(`${base}${LLMS_PATH}`)).text();
+    assert.ok(!llmsTxt.includes(x402listToken));
+    assert.ok(!JSON.stringify(specSample).includes(x402listToken));
+    assert.ok(!JSON.stringify(shop).includes(x402listToken));
+    assert.ok(!JSON.stringify(wk).includes(x402listToken));
   });
 
   const dir = mkdtempSync(join(tmpdir(), "idaho-ticks-"));
