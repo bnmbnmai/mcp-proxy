@@ -63,6 +63,8 @@
  * GET /ema-referrals/manifest.json — free count + name/date/status/sourceUrl (no procedure body)
  * GET /cder-reviews — FDA CDER Integrated Review PDF text ($0.02 id / $0.05 page)
  * GET /cder-reviews/manifest.json — free count + name/date/application/sourceUrl (no review body)
+ * GET /npdes-permits — EPA-issued individual NPDES permit PDF text ($0.02 id / $0.05 page)
+ * GET /npdes-permits/manifest.json — free count + name/date/permit/sourceUrl (no permit body)
  * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
  * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.05). Listed only when a real body is cached.
@@ -287,6 +289,13 @@ import {
   loadCderReviewsManifest,
 } from "./cder-reviews.js";
 import {
+  NPDES_PERMITS_AMOUNT_ATOMIC,
+  NPDES_PERMITS_MANIFEST_PATH,
+  NPDES_PERMITS_PATH,
+  loadNpdesPermits,
+  loadNpdesPermitsManifest,
+} from "./npdes-permits.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -303,6 +312,7 @@ import {
   paidCmaCa98Body,
   paidCderReviewsBody,
   paidEmaReferralsBody,
+  paidNpdesPermitsBody,
   paidDenovoOrdersBody,
   paidFdicOrdersBody,
   paidFercOrdersBody,
@@ -674,7 +684,7 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "ema-referrals" | "cder-reviews" | "form-483" | "gmp" | "gmp-md";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "ema-referrals" | "cder-reviews" | "npdes-permits" | "form-483" | "gmp" | "gmp-md";
 /** Always-public SKUs. /form-483, /gmp, and /gmp-md join only when a real observation body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "ticks",
@@ -708,6 +718,7 @@ export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "cma-ca98",
   "ema-referrals",
   "cder-reviews",
+  "npdes-permits",
 ];
 
 export function form483IsPublic(): boolean {
@@ -734,7 +745,7 @@ export function isPublicBazaarSku(sku: DoorSku): boolean {
   return publicBazaarSkus().includes(sku);
 }
 
-const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six", "twenty-seven", "twenty-eight", "twenty-nine", "thirty", "thirty-one", "thirty-two", "thirty-three", "thirty-four"] as const;
+const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six", "twenty-seven", "twenty-eight", "twenty-nine", "thirty", "thirty-one", "thirty-two", "thirty-three", "thirty-four", "thirty-five", "thirty-six"] as const;
 const NEXT_SKU_WORDS = [
   "first",
   "second",
@@ -770,6 +781,8 @@ const NEXT_SKU_WORDS = [
   "thirty-second",
   "thirty-third",
   "thirty-fourth",
+  "thirty-fifth",
+  "thirty-sixth",
 ] as const;
 
 function paidCountWord(): string {
@@ -780,7 +793,7 @@ function paidCountWord(): string {
 function noNextSkuWord(): string {
   const n = publicBazaarSkus().length;
   const next = NEXT_SKU_WORDS[n] ?? `${n + 1}th`;
-  return `/cder-reviews is a live public SKU on purpose. No ${next} public SKU.`;
+  return `/npdes-permits is a live public SKU on purpose. No ${next} public SKU.`;
 }
 
 function amountAtomicFor(sku: DoorSku): string {
@@ -898,6 +911,10 @@ function amountAtomicFor(sku: DoorSku): string {
   if (sku === "cder-reviews") {
     const raw = env("CDER_REVIEWS_USDC_ATOMIC");
     return raw.length > 0 ? raw : CDER_REVIEWS_AMOUNT_ATOMIC;
+  }
+  if (sku === "npdes-permits") {
+    const raw = env("NPDES_PERMITS_USDC_ATOMIC");
+    return raw.length > 0 ? raw : NPDES_PERMITS_AMOUNT_ATOMIC;
   }
   if (sku === "form-483") {
     const raw = env("FORM_483_USDC_ATOMIC");
@@ -1091,6 +1108,12 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
       "Call GET /cder-reviews when you need official FDA CDER drug-approval Integrated Review text extracted from accessdata.fda.gov Drugs@FDA PDFs. Official public US federal documents. Does not invent review text. Does not sell the free TOC / openFDA index. " +
       PAID_WINDOW_COPY,
     resourcePath: CDER_REVIEWS_PATH,
+  },
+  "npdes-permits": {
+    description:
+      "Call GET /npdes-permits when you need official EPA-issued individual NPDES permit text extracted from epa.gov PDFs. Official public US federal documents. EPA-issued individual permits only. Does not invent permit text. Does not sell the free Region 1 listing JSON or ECHO/ICIS metadata. Not Superfund RODs. Not state Water Boards ACL orders. Not general permits. " +
+      PAID_WINDOW_COPY,
+    resourcePath: NPDES_PERMITS_PATH,
   },
   "form-483": {
     description:
@@ -1991,6 +2014,33 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         date: "2024-03-14",
         sourceUrl: "https://www.accessdata.fda.gov/drugsatfda_docs/nda/2024/217785Orig1s000IntegratedR.pdf",
         body: "CENTER FOR DRUG EVALUATION AND RESEARCH\nINTEGRATED REVIEW\nNDA 217785\nREZDIFFRA\nBenefit-Risk Assessment",
+      },
+    ],
+  },
+  "npdes-permits": {
+    ok: true,
+    product: "epa-npdes-individual-permit-bodies",
+    status: "ok",
+    fetchedAt: "2026-08-26T12:00:00.000Z",
+    asOf: "2026-07-20",
+    source: "https://www.epa.gov/npdes-permits",
+    recordCount: 1,
+    records: [
+      {
+        id: "example-permit",
+        date: "2026-01-01",
+        firm: "Example wastewater treatment plant",
+        url: "https://www.epa.gov/system/files/documents/2026-01/example-individual-permit.pdf",
+        type: "npdes-permits",
+      },
+    ],
+    cards: [
+      {
+        id: "example-permit",
+        name: "Example wastewater treatment plant",
+        date: "2026-01-01",
+        sourceUrl: "https://www.epa.gov/system/files/documents/2026-01/example-individual-permit.pdf",
+        body: "UNITED STATES ENVIRONMENTAL PROTECTION AGENCY\nAUTHORIZATION TO DISCHARGE UNDER THE NATIONAL POLLUTANT DISCHARGE ELIMINATION SYSTEM\nThis teaser is not an official permit body.",
       },
     ],
   },
@@ -3095,6 +3145,7 @@ export function llmsTxt(): string {
     `- GET /cma-ca98 — $0.05 — UK CMA CA98 infringement-decision text (official assets.publishing.service.gov.uk PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /ema-referrals — $0.05 — EMA human-medicine referral procedure text (official ema.europa.eu English PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /cder-reviews — $0.05 — FDA CDER Integrated Review text (official accessdata.fda.gov Drugs@FDA PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /npdes-permits — $0.05 — EPA-issued individual NPDES permit text (official epa.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
   ];
   if (listed483) {
     paid.push(`- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`);
@@ -3141,6 +3192,7 @@ export function llmsTxt(): string {
     "- GET /cma-ca98/manifest.json — CMA CA98 count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the decision body)",
     "- GET /ema-referrals/manifest.json — EMA referral count + name/date/status/sourceUrl (full catalog + page cursor; ?q= is free search; not the procedure body)",
     "- GET /cder-reviews/manifest.json — CDER Integrated Review count + name/date/application/sourceUrl (full catalog + page cursor; ?q= is free search; not the review body)",
+    "- GET /npdes-permits/manifest.json — EPA individual NPDES permit count + name/date/permit/sourceUrl (full catalog + page cursor; ?q= is free search; not the permit body)",
   ];
   if (listed483) {
     free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (full catalog + page cursor; ?q= is free search; not the observation body)");
@@ -3194,7 +3246,7 @@ function discoveryOrigin(req: IncomingMessage, port: number): string {
 }
 
 function paidDiscoveryPaths(): string[] {
-  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH];
+  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH];
   if (form483IsPublic()) paths.push(FORM_483_PATH);
   if (gmpIsPublic()) paths.push(GMP_PATH);
   if (gmpMdIsPublic()) paths.push(GMP_MD_PATH);
@@ -3393,6 +3445,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const cmaCa98Atomic = amountAtomicFor("cma-ca98");
   const emaReferralsAtomic = amountAtomicFor("ema-referrals");
   const cderReviewsAtomic = amountAtomicFor("cder-reviews");
+  const npdesPermitsAtomic = amountAtomicFor("npdes-permits");
   const f483Atomic = amountAtomicFor("form-483");
   const gmpAtomic = amountAtomicFor("gmp");
   const gmpMdAtomic = amountAtomicFor("gmp-md");
@@ -3427,6 +3480,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const cmaCa98Price = (Number(cmaCa98Atomic) / 1e6).toFixed(2);
   const emaReferralsPrice = (Number(emaReferralsAtomic) / 1e6).toFixed(2);
   const cderReviewsPrice = (Number(cderReviewsAtomic) / 1e6).toFixed(2);
+  const npdesPermitsPrice = (Number(npdesPermitsAtomic) / 1e6).toFixed(2);
   const f483Price = (Number(f483Atomic) / 1e6).toFixed(2);
   const gmpPrice = (Number(gmpAtomic) / 1e6).toFixed(2);
   const gmpMdPrice = (Number(gmpMdAtomic) / 1e6).toFixed(2);
@@ -3465,6 +3519,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
     "/cma-ca98 ($0.05)",
     "/ema-referrals ($0.05)",
     "/cder-reviews ($0.05)",
+    "/npdes-permits ($0.05)",
   ];
   if (listed483) paidBits.push("/form-483 ($0.05)");
   if (listedGmp) paidBits.push("/gmp ($0.05)");
@@ -4231,6 +4286,30 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           },
         }),
       },
+      [NPDES_PERMITS_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getNpdesPermits",
+          summary: "EPA individual NPDES permit text",
+          description: SKU_COPY["npdes-permits"].description,
+          priceUsdc: npdesPermitsPrice,
+          amountAtomic: npdesPermitsAtomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["npdes-permits"],
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              status: { type: "string" },
+              fetchedAt: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
+              cards: { type: "array", items: { type: "object" } },
+            },
+          },
+        }),
+      },
       ...(listed483
         ? {
             [FORM_483_PATH]: {
@@ -4484,6 +4563,12 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
         get: freeOpenApiOp(
           "FDA CDER Integrated Reviews free manifest",
           "Count, name, date, application, and official PDF URL. Not the review body.",
+        ),
+      },
+      [NPDES_PERMITS_MANIFEST_PATH]: {
+        get: freeOpenApiOp(
+          "EPA individual NPDES permits free manifest",
+          "Count, name, date, permit number, and official PDF URL. Not the permit body.",
         ),
       },
       ...(listed483
@@ -4879,6 +4964,13 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
           amountAtomic: amountAtomicFor("cder-reviews"),
           manifest: CDER_REVIEWS_MANIFEST_PATH,
         },
+        {
+          path: NPDES_PERMITS_PATH,
+          product: "epa-npdes-individual-permit-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("npdes-permits"),
+          manifest: NPDES_PERMITS_MANIFEST_PATH,
+        },
         ...(form483IsPublic()
           ? [
               {
@@ -5237,6 +5329,16 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === NPDES_PERMITS_MANIFEST_PATH) {
+    sendExtractedManifest(req, res, port, url, await loadNpdesPermitsManifest());
+    return;
+  }
+
+  if (path === NPDES_PERMITS_PATH) {
+    await servePaid(req, res, port, "npdes-permits", async (opts) => paidNpdesPermitsBody(await loadNpdesPermits(), opts));
+    return;
+  }
+
   if (path === FORM_483_MANIFEST_PATH) {
     sendExtractedManifest(req, res, port, url, await loadForm483Manifest());
     return;
@@ -5272,7 +5374,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
 }
 
 export function bindHost(): string {
@@ -5331,6 +5433,7 @@ if (isMain()) {
     console.error(`${CMA_CA98_PATH} $${Number(amountAtomicFor("cma-ca98")) / 1e6} USDC`);
     console.error(`${EMA_REFERRALS_PATH} $${Number(amountAtomicFor("ema-referrals")) / 1e6} USDC`);
     console.error(`${CDER_REVIEWS_PATH} $${Number(amountAtomicFor("cder-reviews")) / 1e6} USDC`);
+    console.error(`${NPDES_PERMITS_PATH} $${Number(amountAtomicFor("npdes-permits")) / 1e6} USDC`);
     console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
     console.error(`${GMP_PATH} $${Number(amountAtomicFor("gmp")) / 1e6} USDC${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
     console.error(`${GMP_MD_PATH} $${Number(amountAtomicFor("gmp-md")) / 1e6} USDC${gmpMdIsPublic() ? "" : " (unlisted until a real MD observation body is cached)"}`);

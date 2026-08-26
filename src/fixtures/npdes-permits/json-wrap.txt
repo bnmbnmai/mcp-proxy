@@ -1,0 +1,14 @@
+{
+  "Results": {
+    "Message": "Success"
+  },
+  "Facilities": [
+    {
+      "CWPName": "Example WWTP",
+      "SourceID": "MA0003531",
+      "CWPPermitStatus": "Effective",
+      "CWPPermitTypeDesc": "NPDES Individual Permit",
+      "FacPermitDocuments": null
+    }
+  ]
+}
