@@ -9,6 +9,7 @@ Public, agent-facing list of **live** paid GETs only. Re-read live manifests bef
 - Discovery: [https://ticks.bnm.farm/.well-known/x402](https://ticks.bnm.farm/.well-known/x402)
 - OpenAPI: [https://ticks.bnm.farm/openapi.json](https://ticks.bnm.farm/openapi.json)
 - llms.txt: [https://ticks.bnm.farm/llms.txt](https://ticks.bnm.farm/llms.txt)
+- Sample (free canned paid-JSON keys): [https://ticks.bnm.farm/sample](https://ticks.bnm.farm/sample)
 - Shop JSON: [https://ticks.bnm.farm/](https://ticks.bnm.farm/)
 - Ticks manifest: [https://ticks.bnm.farm/manifest.json](https://ticks.bnm.farm/manifest.json)
 
@@ -24,7 +25,7 @@ Extracted-body doors: **free index/search** on `/{door}/manifest.json` or `/{doo
 
 | Path | What you get | Paid JSON | Catalog | Price | Free manifest |
 | --- | --- | --- | ---: | --- | --- |
-| `/ticks` | US hay, cattle, and grain (USDA AMS nationwide, PNW barns, IBC grain, WD1 $/AF). Entire current table on one GET | `ticks[] + history` | 611 ticks | $0.05 | [manifest.json](https://ticks.bnm.farm/manifest.json) |
+| `/ticks` | US hay, cattle, and grain ticks (USDA AMS nationwide). Idaho / PNW barns are example geography inside the table, not the SKU. Entire current table on one GET | `ticks[] + history` | 611 ticks | $0.05 | [manifest.json](https://ticks.bnm.farm/manifest.json) |
 | `/import-alerts` | FDA Import Alerts / DWPE firm-product snapshot. Entire current table on one GET | `ticks[]` | 18904 rows / 6709 firms | $0.05 | [import-alerts/manifest.json](https://ticks.bnm.farm/import-alerts/manifest.json) |
 | `/mariners` | USCG D13 / Northwest this week's LNM | `notices[]` | 124 notices | $0.05 | [mariners/manifest.json](https://ticks.bnm.farm/mariners/manifest.json) |
 | `/mariners-d11` | USCG D11 / Southwest this week's LNM | `notices[]` | 198 notices | $0.05 | [mariners-d11/manifest.json](https://ticks.bnm.farm/mariners-d11/manifest.json) |
@@ -65,10 +66,11 @@ Free manifests carry the full catalog (count, ids, official source URLs). They a
 
 ## Free discovery (not paid)
 
+- `GET /sample` — free canned paid-JSON keys (table SKU + `?id=` body SKU). HTTP 200. Marked `example:true`. Not live cache. Not a 37th SKU.
 - `GET /` — shop JSON (payTo + live products). Note says free index/search, then pay the page.
-- `GET /.well-known/x402` — absolute URLs of the live paid routes only (not a SKU per page)
+- `GET /.well-known/x402` — absolute URLs of the live paid routes only (not a SKU per page). Lists `/sample` as a free discovery URL, not a resource.
 - `GET /openapi.json` — OpenAPI 3.1 with `x-payment-info`. Body doors: free index/search, then pay the page. Not the entire cache.
-- `GET /llms.txt` — short agent guidance (free index/search, then pay the page)
+- `GET /llms.txt` — short agent guidance (free index/search, then pay the page) plus a Prompt for AI block with exact URLs
 - `GET /mcp` — Streamable HTTP MCP: one tool per paid GET plus free `search`, paid `get-one` ($0.02), and paid `get-page` ($0.05)
 - `GET /manifest.json` and `GET /{path}/manifest.json` (or `/{path}/index`) — free per-SKU catalogs + `?id=` URL + page cursor; `?q=` / `before` / `date` stay free
 

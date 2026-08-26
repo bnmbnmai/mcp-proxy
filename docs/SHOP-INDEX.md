@@ -9,6 +9,7 @@ Public, agent-facing list of **live** paid GETs only. Re-read live manifests on 
 - Discovery: [https://ticks.bnm.farm/.well-known/x402](https://ticks.bnm.farm/.well-known/x402)
 - OpenAPI: [https://ticks.bnm.farm/openapi.json](https://ticks.bnm.farm/openapi.json)
 - llms.txt: [https://ticks.bnm.farm/llms.txt](https://ticks.bnm.farm/llms.txt)
+- Sample (free canned paid-JSON keys): [https://ticks.bnm.farm/sample](https://ticks.bnm.farm/sample)
 - Shop JSON: [https://ticks.bnm.farm/](https://ticks.bnm.farm/)
 - Ticks manifest: [https://ticks.bnm.farm/manifest.json](https://ticks.bnm.farm/manifest.json)
 
@@ -23,12 +24,12 @@ Rows match the live well-known resource list. One-line copy plus bag size is wha
 
 | Path | What you get | Paid JSON | Bag | Price | Free manifest |
 | --- | --- | --- | ---: | --- | --- |
-| `/ticks` | US hay, cattle, and grain ticks (USDA AMS official prints). Cache also has produce, wool, and WD1 water where those series exist. One $0.05 GET returns the entire current table | `ticks[] + history` | 611 ticks | $0.05 | [manifest.json](https://ticks.bnm.farm/manifest.json) |
+| `/ticks` | US hay, cattle, and grain ticks (USDA AMS nationwide). Idaho / PNW barns are example geography inside the table, not the SKU. One $0.05 GET returns the entire current table | `ticks[] + history` | 611 ticks | $0.05 | [manifest.json](https://ticks.bnm.farm/manifest.json) |
 | `/import-alerts` | FDA Import Alerts / DWPE firm-product snapshot. One $0.05 GET returns the entire current table | `ticks[]` | 18904 rows / 6709 firms | $0.05 | [import-alerts/manifest.json](https://ticks.bnm.farm/import-alerts/manifest.json) |
-| `/mariners` | USCG D13 / Northwest Local Notice to Mariners. Find on free index (?q=); each row names the id to buy. GET ?id= one official text $0.02. Default GET is the newest 10 for $0.05 (whole current set if n<10); older pages another $0.05 on the same URL | `notices[]` | 124 notices | $0.02 / $0.05 | [mariners/manifest.json](https://ticks.bnm.farm/mariners/manifest.json) |
-| `/mariners-d11` | USCG D11 / Southwest Local Notice to Mariners. Find on free index (?q=); each row names the id to buy. GET ?id= one official text $0.02. Default GET is the newest 10 for $0.05 (whole current set if n<10); older pages another $0.05 on the same URL | `notices[]` | 198 notices | $0.02 / $0.05 | [mariners-d11/manifest.json](https://ticks.bnm.farm/mariners-d11/manifest.json) |
-| `/mariners-d7` | USCG D7 / Southeast Local Notice to Mariners. Find on free index (?q=); each row names the id to buy. GET ?id= one official text $0.02. Default GET is the newest 10 for $0.05 (whole current set if n<10); older pages another $0.05 on the same URL | `notices[]` | 1825 notices | $0.02 / $0.05 | [mariners-d7/manifest.json](https://ticks.bnm.farm/mariners-d7/manifest.json) |
-| `/mariners-d8` | USCG D8 / Gulf Local Notice to Mariners. Find on free index (?q=); each row names the id to buy. GET ?id= one official text $0.02. Default GET is the newest 10 for $0.05 (whole current set if n<10); older pages another $0.05 on the same URL | `notices[]` | 1258 notices | $0.02 / $0.05 | [mariners-d8/manifest.json](https://ticks.bnm.farm/mariners-d8/manifest.json) |
+| `/mariners` | USCG D13 / Northwest this week's LNM | `notices[]` | 124 notices | $0.05 | [mariners/manifest.json](https://ticks.bnm.farm/mariners/manifest.json) |
+| `/mariners-d11` | USCG D11 / Southwest this week's LNM | `notices[]` | 198 notices | $0.05 | [mariners-d11/manifest.json](https://ticks.bnm.farm/mariners-d11/manifest.json) |
+| `/mariners-d7` | USCG D7 / Southeast this week's LNM | `notices[]` | 1825 notices | $0.05 | [mariners-d7/manifest.json](https://ticks.bnm.farm/mariners-d7/manifest.json) |
+| `/mariners-d8` | USCG D8 / Gulf this week's LNM | `notices[]` | 1258 notices | $0.05 | [mariners-d8/manifest.json](https://ticks.bnm.farm/mariners-d8/manifest.json) |
 | `/warning-letters` | FDA warning-letter bodies (firm, date, subject, full letter text). Find on free index (?q=); each row names the id to buy. GET ?id= one official text $0.02. Default GET is the newest 10 for $0.05 (whole current set if n<10); older pages another $0.05 on the same URL | `letters[].body` | 396 letters | $0.02 / $0.05 | [warning-letters/manifest.json](https://ticks.bnm.farm/warning-letters/manifest.json) |
 | `/untitled-letters` | FDA Untitled Letter text (CDER OPDP + CBER promo PDFs). Find on free index (?q=); each row names the id to buy. GET ?id= one official text $0.02. Default GET is the newest 10 for $0.05 (whole current set if n<10); older pages another $0.05 on the same URL | `cards[].body` | 119 cards | $0.02 / $0.05 | [untitled-letters/manifest.json](https://ticks.bnm.farm/untitled-letters/manifest.json) |
 | `/awa` | USDA APHIS AWA inspection-report observation text. Find on free index (?q=); each row names the id to buy. GET ?id= one official text $0.02. Default GET is the newest 10 for $0.05 (whole current set if n<10); older pages another $0.05 on the same URL | `cards[].body` | 25 cards | $0.02 / $0.05 | [awa/manifest.json](https://ticks.bnm.farm/awa/manifest.json) |
@@ -63,10 +64,11 @@ Free manifests carry count, ids, and official source URLs. They are not the paid
 
 ## Free discovery (not paid)
 
+- `GET /sample` — free canned paid-JSON keys (table SKU + `?id=` body SKU). HTTP 200. Marked `example:true`. Not live cache. Not a 37th SKU.
 - `GET /` — shop JSON (payTo + live products, each with `description` + `count`)
-- `GET /.well-known/x402` — absolute URLs of the live paid routes only
+- `GET /.well-known/x402` — absolute URLs of the live paid routes only. Lists `/sample` as a free discovery URL, not a resource.
 - `GET /openapi.json` — OpenAPI 3.1 with `x-payment-info` and truthful bag-size copy
-- `GET /llms.txt` — short agent guidance (table vs `$0.02` id / `$0.05` page)
+- `GET /llms.txt` — short agent guidance (table vs `$0.02` id / `$0.05` page) plus a Prompt for AI block with exact URLs
 - `GET /mcp` — Streamable HTTP MCP generated from live well-known (do not hardcode a door count)
 - `GET /manifest.json` and `GET /{path}/manifest.json` — free per-SKU manifests
 
