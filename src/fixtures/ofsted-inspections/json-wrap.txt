@@ -1,0 +1,15 @@
+{
+  "urn": "116780",
+  "name": "Abberley Parochial VC Primary School",
+  "latestInspection": {
+    "date": "2025-03-18",
+    "type": "School inspection"
+  },
+  "judgements": [
+    {
+      "area": "Quality of education",
+      "grade": "Good"
+    }
+  ],
+  "latestReportUrl": "https://files.ofsted.gov.uk/v1/file/50276206"
+}

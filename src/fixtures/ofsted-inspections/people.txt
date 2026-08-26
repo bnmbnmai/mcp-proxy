@@ -1,0 +1,5 @@
+Curriculum vitae of Jane Q Public
+Date of birth: 1 January 1990
+Home address: 1 Example Street
+Pupil roll class list: Alice, Bob, Cara
+Private email: jane@example.com
