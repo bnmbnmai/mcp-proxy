@@ -509,7 +509,7 @@ async function main(): Promise<void> {
     assert.equal(spec.paths["/gain"], undefined);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
-      32,
+      33,
       "OpenAPI lists the always-public paid paths",
     );
 
