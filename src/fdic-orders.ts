@@ -612,17 +612,17 @@ function listingDir(): string {
 }
 
 function firstSliceLimit(): number {
-  const raw = env("FDIC_ORDERS_LIMIT", "5");
+  const raw = env("FDIC_ORDERS_LIMIT", "24");
   if (raw === "0") return 0;
   const n = Number(raw);
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 5;
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 24;
 }
 
 function maxFetchLimit(): number {
-  const raw = env("FDIC_ORDERS_MAX_FETCH", "8");
+  const raw = env("FDIC_ORDERS_MAX_FETCH", "36");
   if (raw === "0") return 0;
   const n = Number(raw);
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 8;
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 36;
 }
 
 function readNamedFile(dir: string, names: string[]): string | null {

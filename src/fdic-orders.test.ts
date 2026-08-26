@@ -77,6 +77,11 @@ async function main(): Promise<void> {
   assert.ok(OFFICIAL_WALK_LISTINGS.every((r) => officialFdicPdfUrl(r.sourceUrl)));
   assert.ok(OFFICIAL_WALK_LISTINGS.every((r) => /b$/.test(r.docket)), "walk is institution consent orders only");
   assert.ok(!OFFICIAL_WALK_LISTINGS.some((r) => /e$|k$/.test(r.docket)), "walk skips people/CMP");
+  const walkIds = new Set([...SEED_LISTINGS, ...OFFICIAL_WALK_LISTINGS].map((r) => r.id));
+  assert.ok(walkIds.size > 5, "official shepherd walk lists more than first-slice=5");
+  const src = readFs(join(dirname(fileURLToPath(import.meta.url)), "../src/fdic-orders.ts"), "utf-8");
+  assert.match(src, /FDIC_ORDERS_LIMIT", "24"/);
+  assert.match(src, /FDIC_ORDERS_MAX_FETCH", "36"/);
 
   const people = rows.find((r) => (r.docket ?? "") === "FDIC-26-0002e");
   assert.ok(people);
