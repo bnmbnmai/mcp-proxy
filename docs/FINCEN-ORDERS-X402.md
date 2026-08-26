@@ -57,7 +57,7 @@ FINCEN_ORDERS_LIMIT=24 FINCEN_ORDERS_MAX_FETCH=36 npm run collect:fincen-orders
 systemctl --user restart idaho-ticks-x402.service
 ```
 
-Live first-slice before leftover apply: **cardCount 9**. Official enforcement-actions table lists the leftover institution consent orders and CMP assessments on the same page.
+Live after leftover apply (2026-08-26): **listedCount 69**, **cardCount 33**, asOf **2026-08-03**, fetchedAt **2026-08-26T17:27:02.558Z**. Official enforcement-actions table listed 69 institution order PDFs; this pulse reused 9 first-slice bodies and fetched 24 new extractable texts (1 skipped no-text). Price still $0.02 / $0.05. No new SKU. Restarted only `idaho-ticks-x402.service`.
 
 ## Local smoke (cloud VM / laptop)
 

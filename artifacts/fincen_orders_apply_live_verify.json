@@ -1,0 +1,48 @@
+{
+  "before": {
+    "cardCount": 9,
+    "listedCount": 9,
+    "asOf": "2026-08-03",
+    "fetchedAt": "2026-08-26T13:58:25.551Z"
+  },
+  "after": {
+    "cardCount": 33,
+    "listedCount": 69,
+    "asOf": "2026-08-03",
+    "fetchedAt": "2026-08-26T17:27:02.558Z",
+    "addedThisRun": 24,
+    "fetchedPdfs": 25,
+    "skippedNoText": 1,
+    "reused": 9
+  },
+  "live": {
+    "manifest": "https://ticks.bnm.farm/fincen-orders/manifest.json",
+    "manifestStatus": 200,
+    "manifestCardCount": 33,
+    "searchQ": "Shinhan",
+    "searchHits": ["2023-03"],
+    "newRows": [
+      "2023-03",
+      "2023-02",
+      "2022-02",
+      "2021-02",
+      "2021-01",
+      "2018-03",
+      "2014-01"
+    ],
+    "unpaidPage": 402,
+    "unpaidId": 402,
+    "unpaidIdAtomic": "20000",
+    "pageAtomic": "50000",
+    "license": "17 USC 105",
+    "attribution": "FinCEN",
+    "occCdCardCount": 10
+  },
+  "prs": {
+    "walker": {
+      "url": "https://github.com/bnmbnmai/mcp-proxy/pull/145",
+      "state": "open draft"
+    }
+  },
+  "blockers": []
+}
