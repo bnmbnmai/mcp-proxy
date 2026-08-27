@@ -1,0 +1,5 @@
+GDELT headline cluster
+article url: https://example.test/ag-news
+Mexico livestock prices jump after New World screwworm headlines.
+
+This is a news/GDELT wrap, not an official USDA FAS GAIN attaché PDF.

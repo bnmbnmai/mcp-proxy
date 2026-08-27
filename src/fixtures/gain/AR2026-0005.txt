@@ -1,0 +1,1243 @@
+Required Report: Required - Public Distribution                      Date: April 09, 2026
+
+                                                                     Report Number:      AR2026-0005
+
+
+
+
+Report Name: Oilseeds and Products Annual
+Country: Argentina
+
+Post: Buenos Aires
+
+Report Category: Oilseeds and Products
+
+
+
+
+Prepared By:    Chase McGrath
+
+Approved By: William Verzani
+
+Report Highlights:
+
+Post forecasts Argentina’s soybean production at 49 MMT in MY2026/27 on slightly higher area, with
+yields returning to more typical levels following the current season’s strong performance. Crush is
+projected to ease slightly to 42 MMT as margins soften, resulting in marginally lower soymeal
+production (31.9 MMT) while exports remain strong at 30 MMT. Soybean oil production and exports
+are forecast largely unchanged, supported by firm global vegetable oil demand. Post forecasts
+Argentina’s sunflower area to expand by approximately 14 percent in MY2026/27 to 3.3 million
+hectares, continuing a multi-year upward trend following already strong gains in the previous two
+seasons. Peanut production is forecast to recover to 1.5 MMT as area stabilizes following last year’s
+decline, though exports are expected to decrease slightly on weaker demand. Argentina’s oilseed sector
+remains highly export-oriented, with global vegetable oil demand expected to drive crush and trade in
+the coming year.
+
+
+
+
+THIS REPORT CONTAINS ASSESSMENTS OF COMMODITY AND TRADE ISSUES MADE BY USDA STAFF AND NOT NECESSARILY
+STATEMENTS OF OFFICIAL U.S. GOVERNMENT POLICY
+Oilseeds
+
+SOYBEANS
+
+Production
+
+Post forecasts Argentina’s soybean planted area at 17.4 million hectares (MHA) a slight increase from
+the previous year driven by reduced corn acreage. Production is forecast at 49 million metric tons
+(MMT) on this expanded area. Soybean area in Argentina is well established and not expected to decline
+significantly regardless of prices or global demand. Most arable land is already under cultivation, and
+annual fluctuations in soybean area are primarily driven by crop rotation decisions and relative
+profitability between soybeans and corn. Additional land that could be brought into production is
+marginal, with lower yield potential and limited impact on total production. In some cases, land is
+considered marginal due to logistical constraints; improvements in infrastructure, particularly rail, could
+make these areas more competitive. However, such developments remain long term, and sustained
+higher global prices for years would be required to offset increased freight costs and incentivize
+expansion.
+                               First Crop Soy in Southern Santa Fe Province
+
+
+
+
+                                     Source: Post FAS Buenos Aires
+
+Soybeans continue to underpin Argentina’s agricultural economy. There is consistently strong market
+demand, and soybeans function as a store of value in an environment with limited access to credit and a
+volatile currency. Producers frequently use soybeans to pay for land rent, inputs, and other expenses.
+Most expenses are priced in tons of soybeans. The presence of the significant domestic crush industry
+also ensures a stable market and that there is always a buyer for soybeans, as processors must maintain
+throughput and will continue purchasing soybeans throughout the year.
+
+Argentina produces two soybean crops each year, commonly referred to as first soy (soja primera) and
+second soy (soja de segunda). First soy is typically planted from late October through mid to late
+December and harvested from early April through the end of May. This crop represents the majority of
+total production with much higher yields.
+
+Second soy is planted later, from late December into early January, immediately following the harvest of
+winter wheat, and is typically harvested from May through early July. It is commonly grown in a
+rotation system that includes corn followed by winter wheat, then soybeans. Due to its later planting
+window and shorter growing season on ground that already produced a wheat crop, second soy generally
+yields significantly less than first soy. In a typical year, including the MY2026/27 forecast,
+approximately 70 percent of total soybean area is planted to first soy, with the remaining 30 percent
+allocated to second soy.
+
+
+
+
+                       Source: FAS International Production Assessment Division
+
+Overall soybean area is expected to increase modestly, though not to its full potential. Some land
+previously allocated to corn will shift to sunflower rather than soybeans, while first-crop soybean area
+will expand and second-crop soybean area will decline due to the forecasted reduced wheat planting.
+Lower wheat area is driven by higher input costs, particularly fertilizer, and weaker prices following the
+previous harvest. However, soybean area could increase more substantially under two scenarios. First,
+further increases in global fertilizer prices due to the conflict in the Middle East could incentivize a shift
+away from corn toward soybeans at planting. Argentina maintains minimal fertilizer stocks and is highly
+dependent on global supply, with concerns already emerging regarding future availability of urea. Even
+the perception of limited supply could influence planting decisions. Second, elimination of export taxes
+(known locally as retenciones) would significantly increase soybean area. While producers hope for
+policy changes, there is currently no indication from the government export taxes will be removed in the
+near term, given their importance to government revenue and foreign exchange. Partial reductions, as
+seen twice in the past year, would not shape planting decisions. Only a full and sustained elimination of
+export taxes would encourage an expansion in planted area, likely through conversion of pasture and
+marginal lands which were previously unprofitable to plant.
+
+Despite the projected increase in area, yields are expected to decline slightly in MY2026/27, as many
+regions are currently experiencing historically high yields,
+particularly for second soybeans. Yields are expected to
+return to average levels under normal weather conditions.
+However, this outlook could shift if an El Niño pattern
+develops, which typically brings above-average precipitation
+to Argentina. Yield potential beyond MY2026/27 is expected
+to remain constrained without changes to Argentina’s seed
+law. Argentina allows farmers to save and reuse seed without
+paying royalties, reducing incentives for private sector
+investment in improved genetics. Approximately 70 percent
+of Argentina’s soybeans are planted with saved seed or seed
+procured through gray channels from dealers or other
+producers. While some in the industry recognize the potential
+value and gain of increased plant variety protections, which
+would allow newer and more cutting-edge soybean varieties
+to be planted in the country, many farmers and producer
+groups remain opposed.
+
+Argentina’s government is currently meeting with farm
+groups and multinational seed companies to reform the
+country’s seed law. The proposed changes aim to strengthen intellectual property protections, potentially
+requiring farmers to pay royalties each time they plant seeds, and align Argentina with international
+standards such as the UPOV 1991 convention, which has sparked strong resistance among local
+producers. Farmers argue the reforms would increase production costs and restrict traditional practices
+like saving seeds, while the government and private sector contend that stronger patent protections are
+necessary to boost innovation, yields, and long-term export growth. Ongoing discussions seek a
+compromise to balance these competing interests, though tensions remain high with vocal
+opposition in the Congress.
+
+Fertilizer prices will be a key factor in MY2026/27 and will likely shape final planted area. Fertilizer
+prices spiked by over $200 per ton in Argentina in just one week after the operation in Iran sent global
+fertilizer prices rising. At current prices, producers may be able to absorb some of the additional costs
+with less profit for themselves. But if fertilizer climbs any higher and remains there at planting, it could
+push more producers to favor soy over corn as soy has substantially less fertilizer requirements. Corn’s
+higher nitrogen fertilizer costs could increase producers’ production costs to the point of negative
+margins resulting in even more soy planted than Post currently forecasts. Even the perception of limited
+fertilizer availability or elevated prices, regardless of actual supply, could significantly shift acreage
+from corn to soybeans, sunflower, or other crops. With planting for MY2026/27 not beginning until
+November, there remains time for the situation to evolve, though producers are monitoring
+developments closely and are already wary. The U.S. harvest could play a role if fertilizer prices also
+influence planting decisions there, resulting in a larger soybean harvest that could depress global soy
+prices at the time most Argentine farmers plant their summer crops. As of writing, farmers are making
+their planting estimates and decisions based on current fertilizer prices but carefully watching prices.
+
+While input costs will be higher for all crops next year, particularly fuel, this across the board increase is
+not expected to push acreage towards one crop or another. Fertilizer prices, however, will be a key
+determinant of planting decisions MY2026/27, with elevated costs favoring soybeans over corn due to
+lower input requirements, while a return to lower prices would likely stabilize soybean area near
+MY2025/26 levels. Reduced wheat and barley area is expected to shift some land into first-crop
+soybeans, although land rents, typically set as fixed costs based on forward soybean prices, may create
+financial pressure for producers.
+
+Despite pressures on profitability, land rents are expected to remain elevated, as landowners face strong
+demand and have limited incentive to reduce rates. This environment may disproportionately impact
+smaller producers if input costs continue to rise and commodity prices weaken. Producers are also
+anticipating an El Niño year, which typically brings increased precipitation and warmer conditions.
+Representative planting allocations for larger producers are estimated at approximately 25 percent
+wheat/second soy, 40 percent first soy, and 35 percent corn. Soil moisture conditions at planting will
+remain a key determinant of production outcomes. While current crops benefited from strong initial
+moisture conditions that mitigated the impact of mid-season dryness, similar conditions are not expected
+for MY2026/27. However, a potential El Niño event could offset early deficits with increased rainfall
+during the growing season.
+
+Soil moisture and reserves as the time of planting and early in the season will determine next year’s
+production and yields. The current crop in most areas entered the season with great soil moisture and
+reserves. Because of this, many crops were able to weather and lessen the impact of a very dry late
+December into mid-February. Soil moisture is unlikely to be as favorable at the time of planting
+MY2026/27, forecasting lower yields than the previous year. At the same time, producers expect an El
+Niño year which could bring significant, potentially excess, rainfall during the summer growing season.
+                           First Crop Soybeans in Southern Cordoba Province
+
+
+
+
+                                     Source: Post FAS Buenos Aires
+
+Consumption and Crush
+
+Soybean crush is forecast at 42 MMT, down 1 MMT from the previous year with decreased supply from
+Paraguay, as Paraguayan production decreases from the all-time record the year prior and projected
+slightly lower crush margins. Crush in MY2026/27 is expected to normalize to MY2024/25 levels,
+remaining well above the ten-year average of 38.9 MMT. Argentina is expected to maintain its position
+as the world’s leading exporter of soymeal and soy oil, supported by one of the largest and most
+developed crush industries in the world. The sector is highly concentrated along the Parana River
+system, primarily in Santa Fe province around the ports in Rosario.
+
+In MY2026/27, approximately 86 percent of Argentina’s soybean production is projected to be
+processed domestically, slightly below the previous year’s elevated level of 90 percent but consistent
+with historical trends in recent years.
+
+Crush margins in Argentina remain high and have been strong for an extended period, currently
+estimated at approximately $30-35 per ton, well above the typical target range of $20-25. Industry
+contacts expect margins to moderate in the coming marketing year, as sustained high margins are
+uncommon, particularly in the context of a large Brazilian crop and a forecast increase in U.S. soybean
+production. Currently, high soybean oil prices are supporting favorable crush margins, and to a lesser
+extent soymeal prices.
+
+Developments in global soybean meal and oil markets will influence crush levels going forward. Strong
+soybean oil prices have been a key driver of increased crushing activity, and traders expect these prices
+to remain firm. If soybean oil prices continue at current levels, they will provide continued incentives for
+crushers to maintain high utilization rates, potentially sustaining crush volumes near those observed in
+the previous year.
+Argentina currently has 345 crushing facilities with a combined annual crush capacity of 67 MMT.
+Roughly 80 percent of this capacity is concentrated in Santa Fe province where crushers benefit from
+direct access to the Paraná River and well-developed infrastructure. This is not expected to expand in the
+near future as the industry already operates with significant underutilized capacity. The river system
+allows for efficient logistics, with ocean-going vessels able to load right at the crushers, while shipments
+originating further upriver are transported to the Rosario hub for transshipment onto larger vessels
+
+With a crush of 42 MMT, Argentina’s crush capacity will once again be greatly underutilized with a use
+capacity of only 63 percent in MY2026/27
+
+Feed, Seed, and Waste Use
+Domestic consumption of soybeans for feed, seed, and waste is forecast to remain stable in MY2026/27.
+While growth continues incrementally in Argentina’s poultry, pork, and dairy sectors, these remain
+relatively small in scale. Nonetheless, rising beef prices may gradually shift consumer demand toward
+more affordable protein sources such as chicken and pork, potentially boosting domestic demand for
+soybean meal.
+
+An increasing share of soybean processing for feed is occurring outside of the traditional industrial
+sector. Small-scale crushing operations have emerged across Santa Fe, Buenos Aires, and Entre Ríos
+provinces. These facilities, often owned by local cooperatives or livestock producers, serve as alternative
+market channels, reducing the cost of transporting soybeans to major crushing centers. Locally produced
+soybean meal and oil are increasingly used in on-farm or regional feed rations, particularly in pork and
+poultry operations.
+
+Food Use Consumption
+Argentina has negligible food use consumption. The majority of soy for human consumption
+domestically is in the form of soybean oil.
+
+Trade
+
+Post forecasts MY2026/27 soybean exports at 5.5 MMT, unchanged from the prior year, reflecting
+steady Chinese demand for Argentina’s whole soybeans.
+
+Nearly all of Argentina’s soybeans exports will once again be destined for China. China traditionally
+buys more than 90 percent of Argentina’s whole soybean exports, nearly all of which are shipped out of
+the ports in southern Buenos Aires Province of Bahia Blanca and Necochea where the growing area
+produces lower quality soybeans with lower yields and protein. With no crushing facilities in this region
+and the production area far from the crushing industry and main port in Rosario, nearly all the soybeans
+in this area are exported whole.
+
+Whole soybean exports in MY2026/27 are expected to remain in line with the previous year but
+significantly below the elevated levels observed in MY2024/25, which marked the second-highest
+export volume on record. The surge in MY2024/25 exports was driven by the government’s temporary
+elimination of export taxes, which accelerated farmer selling and export registrations.
+This policy-driven increase is considered a one-time event and is unlikely to be repeated under normal
+market conditions. During this period, China emerged as the dominant buyer, capitalizing on increased
+Argentine supply as producers and traders moved quickly to market volumes, particularly at a time when
+Chinese purchases from the United States were limited. The remainder of Argentina’s soybeans not
+shipped to China will be exported to the United States again. Chile is expected to remain a distant third
+market. In addition, Post contacts report it is likely some of Argentina’s soybeans will cross the border
+to Brazil for local processing and feeding there in the coming marketing year.
+
+                         Argentina Top Soybean Export Markets Calendar Year 2025
+
+                                    Top 10 Destinations (Million Tons)
+           3.00
+
+                  2.63
+
+           2.50
+
+
+
+           2.00
+
+
+
+           1.50
+
+
+
+           1.00
+
+
+                           0.53
+           0.50
+
+                                  0.11
+                                         0.05    0.04    0.04    0.02    0.02    0.02   0.01
+           0.00
+
+
+
+
+  Source: Post with data provided by Nabasa, a local shipping agent, as Argentine official trade data
+  includes exports under the market “confidential” by which companies are able to obscure the final
+                                     destination for shipments.
+
+Export taxes (known locally as retenciones) on soy and soy products remain high despite the
+administration’s promises to eventually eliminate them. Soybeans are currently taxed at 24 percent. The
+industry continues to call for a reduction or elimination of these taxes. Including most recently in March
+2026 when the President of Sociedad Rural Argentina (SRA), the most influential ag. group in the
+country called on the president to lower retenciones. Elimination of retenciones could have a significant
+impact in spurring much higher soybean exports in MY2026/27, as seen the recent tax holiday.
+However, there is no current indication from the government they plan to eliminate them.
+
+On September 22, 2025, the Argentine government announced the temporary elimination of export taxes
+on major agricultural commodities, including soybeans and coproducts, corn, wheat, sorghum, barley,
+sunflower, beef, and poultry. The measure set export taxes at zero until October 31 or until export
+declarations reach $7 billion, whichever occurred first. The announcement came as Argentina faced
+currency pressures and just ahead of mid-term elections.
+
+The move came at a crucial moment for Argentina as the Milei Administration continues to enact its
+fiscal reform policies and strive to stabilize the nation’s currency. In addition, the October 31 end-date
+of the temporary tax elimination was just five days after key mid-term elections, which were seen as a
+referendum on support for Milei and his reforms. President Milei and his administration hoped to pick
+up seats in Congress in the mid-terms after a recent key provincial election swung significantly against
+his party.
+
+The temporary tax holiday had the intended effect with Argentina selling the $7 billion limit set in less
+than 72 hours, nearly all to the PRC which swooped in at an opportune moment to buy soybeans at a
+discount during a tense time in the U.S.-PRC relationship when it was not buying from the United
+States. This helped the peso to stabilize, and President Milei’s party picked up seats in Congress.
+
+The measure came as an unexpected surprise across the agricultural sector. Several major industry
+groups welcomed the announcement, noting it aligns with their longstanding calls to reduce export taxes
+and provide short-term relief. However, many industry leaders and groups emphasized that the measure
+is insufficient on its own, stressing the need for a long-term policy framework, or permanent elimination
+of export taxes to support sustained growth and investment in the sector.
+
+Following this temporary lifting, on December 9, 2025, Argentina permanently lowered export taxes for
+the second time that year.
+
+Retenciones rates are currently set at:
+
+                    Commodity                      Previously                    Now
+             Soybeans                                 26%                        24%
+             Soybean By-products                     24.5%                      22.5%
+             Wheat                                    9.5%                       7.5%
+             Barley                                   9.5%                       7.5%
+             Corn                                     9.5%                       8.5%
+             Sorghum                                  9.5%                       8.5%
+             Sunflower                                5.5%                       4.5%
+
+Imports will decrease slightly in MY2026/27 to 6.5 MMT, down 500,000 MT with Paraguayan
+production forecast down from the previous year and increased domestic crush in Paraguay resulting in
+less exportable supplies from Argentina’s number one supplier. Small volumes will be imported from
+Brazil and Uruguay, and to a lesser extend Bolivia, to meet crushing demand.
+
+Soybean imports have remained high since 2016 after the Argentine government permitted the
+importation of foreign soybeans for further processing in domestic crush facilities. Argentine crushers
+will continue to import Paraguayan soybeans due to their higher protein content and blend with local
+soybeans to raise the overall protein content of the resulting soy meal and oil and to maintain higher
+crush utilization rates in their Argentine plants. In addition, the efficiency of the developed infrastructure
+along the Parana riverway makes it more economical and easier to import beans from Paraguay to crush
+than to source from farther afield in the Argentine growing areas which must be trucked in.
+
+Stocks
+
+Post forecasts beginning stocks at 5.15 MMT in MY2026/27, up from the previous year, which opened
+with below-average stocks following record soybean exports in MY2024/25. Ending stocks are
+projected to increase to 8.15 MMT on higher production and a return to more typical crush and export
+patterns.
+
+Argentine producers typically sell corn, wheat, and other crops shortly after harvest to meet financial
+obligations but retain soybeans as a store of value in a volatile macroeconomic environment. Contacts
+indicate producers are holding larger stocks in anticipation of improved prices and potential changes to
+export taxes. While crushers generally maintain inventories equivalent to two to three months of
+processing needs, the majority of soybean stocks are held on-farm in silo bags, allowing producers
+flexibility in marketing decisions.
+
+MY2025/26
+
+Post maintains the previous estimate of 48 MMT of soybeans in MY2025/26. Yield outcomes and crop
+conditions across Argentina’s primary soybean-producing region, the “zona núcleo,” vary significantly
+even over short distances. In the area surrounding Nueve de Julio, excessive rainfall and flooding during
+the off-season and planting period were followed by a prolonged dry spell, resulting in deteriorating
+crop conditions and declining yield potential as the lack of precipitation persists. In contrast, areas
+located approximately 100 kilometers away have received timely rainfall following a dry January and
+early February, supporting strong crop development and, in many cases, near-record yields. Favorable
+conditions are reported in southern Santa Fe, southern and central Córdoba, and northern Buenos Aires
+provinces.
+
+In northern Buenos Aires province, soybean crop conditions are reported as very good, with first soy
+yields expected to reach 4.5 to 5.0 MT/HA and second soy yields forecast at approximately 2.6 MT/HA.
+Later-planted soybeans have generally benefited from the timing of the dry period, as crops were at less
+sensitive growth stages. Despite higher production costs for corn—estimated at approximately $560 per
+hectare in central Buenos Aires compared to $450 per hectare for soybeans—producers continue to favor
+corn due to its stronger profitability, supported in part by lower export taxes. At the same time, soybean
+production costs are increasing due to the spread of herbicide-resistant weeds, including amaranth,
+which adds an estimated $25 per hectare in additional chemical control costs.
+
+Post maintains its previous forecasts for imports and crush. Imports are forecast at 7 MMT, up from the
+previous year due to larger production in Paraguay, resulting in more exportable supplies. The previous
+crush estimate of 43 MMT in MY2025/26 stands based on these expected imports from Paraguay.
+
+Post lowers exports by 500,000 MT to 5.5 MMT based on the expected increase in crush and domestic
+demand returning to normal levels after dipping the year before (with more supply diverted to
+abnormally high exports).
+Ending stocks are expected to return to more traditional levels, but up 1 MMT from the previous year as
+exports stabilize.
+
+MY2024/25
+
+Post maintains its previous estimate of 50.5 MMT production based on sales and yields reported to date
+and conversations with Post contacts. This estimate is still below USDA official numbers but above
+many private sources in the country. This is based on a lower area harvested but slightly higher yield
+than USDA official estimates.
+
+Post lowers MY2024/25 soybean imports by 5 MMT from Post’s last update due to import pace to date
+with only one month remaining in the marketing year. Year to date 4.97 MMT have been imported with
+only one month of date remaining. While the Paraguayan harvest has begun offering more available
+supply, it is unlikely to exceed 1 MMT imports in March.
+
+Post lowers domestic consumption by 100,000 MT due to higher exports.
+
+Farmer selling has decreased and stalled recently as farmers both have already sold much of their old
+crop soy and are also reportedly holding out to sell remaining supply with the hopes that President Milei
+will lower export taxes soon as he did in the previous crop year near the end or after the harvest.
+
+Soybean Production, Supply, and Demand Statistical Table
+Oilseed, Soybean (Local)                2024/2025             2025/2026            2026/2027
+Market Year Begins                       Apr 2025              Apr 2026             Apr 2027
+                                     USDA                USDA                  USDA
+Argentina                                       New Post            New Post            New Post
+                                     Official            Official              Official
+Area Planted (1000 HA)                  17455      17500    17300        16500        0     17400
+Area Harvested (1000 HA)                17455      16900    16800        15900        0     17100
+Beginning Stocks (1000 MT)                6749      6749      3857        3649        0      5149
+Production (1000 MT)                    51108      50500    48000        48000        0     49000
+MY Imports (1000 MT)                      6300      5800      7800        7000        0      6500
+Total Supply (1000 MT)                  64157      63049    59657        58649        0     60649
+MY Exports (1000 MT)                    12500      12500      4600        5500        0      5500
+Crush (1000 MT)                         41000      42000    42500        43000        0     42000
+Food Use Dom. Cons. (1000 MT)                 0        0          0          0        0         0
+Feed Waste Dom. Cons. (1000 MT)           6800      4900      6900        5000        0      5000
+Total Dom. Cons. (1000 MT)              47800      46900    49400        48000        0     47000
+Ending Stocks (1000 MT)                   3857      3649      5657        5149        0      8149
+Total Distribution (1000 MT)            64157      63049    59657        58649        0     60649
+Yield (MT/HA)                            2.928    2.9882   2.8571       3.0189        0    2.8655
+(1000 HA) ,(1000 MT) ,(MT/HA)
+SUNFLOWERSEED
+
+Production
+
+Post forecasts Argentina’s planted sunflower area to expand by approximately 14 percent in MY2026/27
+to 3.3 million hectares, continuing a multi-year upward trend following already strong gains in the
+previous two seasons. While production is projected to increase more modestly, by roughly 300,000
+metric tons year-on-year, this forecast assumes a return to average yields after the exceptionally strong
+yields seen in the current season. If yields approach or reach this year’s record levels, total production
+could outpace current projections and rise substantially.
+
+The expected expansion in area is driven primarily by sustained favorable prices. Sunflower prices have
+remained attractive for three consecutive years, incentivizing both existing producers and new entrants
+to incorporate the crop into their rotations. At the same time, relatively weaker corn and soybean prices
+have improved sunflower’s comparative profitability, particularly at times of planting decisions. Input
+costs will also play a critical role as sunflower’s lower fertilizer requirements make it an increasingly
+attractive alternative to corn, especially in an environment of persistently high or volatile fertilizer
+prices.
+                      Source: FAS International Production Assessment Division
+
+Yield gains also support continued growth. Producers report consistently improving yields over recent
+seasons, reinforcing confidence in the crop and encouraging adoption through both direct experience and
+observation of neighbors. Sunflower is also well suited to marginal production areas where corn and
+soybeans are less competitive, allowing for expansion into drier regions. Its relative tolerance to heat
+and moisture stress has been demonstrated during recent hot and dry summer periods in the past three
+seasons which further its appeal as a less risky crop. Additionally, sunflower fits well within existing
+crop rotations, particularly with wheat, further supporting its expansion.
+
+At the same time, in contrast to soybeans, investment in new and improved sunflower genetics continues
+in Argentina as the crop grows in popularity and the market for it continues with favorable prices. This
+will boost production and yields in the coming marketing year and beyond.
+Producers in the northern growing regions of Chaco Province, Santiago del Estero Province, and Salta
+Province were able to plant their intended sunflower area in MY2025/26 following two consecutive
+seasons in which insufficient soil moisture and lack of rain at planting limited planting progress.
+Favorable weather conditions and resulting yields this year are expected to reinforce producer
+confidence in sunflower as a viable crop option in these marginal production zones. Given sunflower’s
+relative tolerance to drier conditions compared to corn and soybeans, Post expects area in these regions
+to remain stable or expand modestly in the coming crop year, assuming a return to normal precipitation
+patterns. Which the expectation of an El Niño year supports.
+
+Sunflower cultivation remains concentrated in west-central and southern Buenos Aires, La Pampa, and
+the northern growing regions of Chaco and northern Santa Fe. However, recent seasons have seen
+sunflower production expand into non-traditional areas, driven by positive production and economic
+outcomes. Producers in marginal zones, previously considered unsuitable for sunflower, have reported
+good yields and economic returns, fostering optimism about the crop's potential. Industry sources
+suggest this expansion will likely persist in MY2026/27 and beyond.
+
+Producers continue to express concern regarding the high degree of concentration in the domestic
+sunflower market, which is largely controlled by a limited number of processors. These facilities are
+primarily located in Buenos Aires Province and Santa Fe Province, resulting in higher transportation
+costs for producers in northern regions who must ship production distances of up to 850 kilometers to
+access processing capacity. Industry contacts also note that limited price transparency and the absence of
+widely accepted reference pricing mechanisms constrain producers’ ability to effectively market their
+crop. Nevertheless, despite these structural challenges, Post expects sunflower planted area to expand in
+MY2026/27, supported by favorable relative profitability and strong international demand.
+                              Sunflowers in Central Buenos Aires Province
+
+
+
+
+                                     Source: Post FAS Buenos Aires
+
+Consumption and Crush
+
+Sunflower seed crush is forecast up slightly to 5.6 MMT in MY2025/26, a five percent increase from a
+year prior. More than 80 percent of Argentina’s sunflower seed production is expected to be processed
+domestically and exported as value-added products.
+
+While many crush facilities in Argentina are capable of processing multiple oilseeds, including
+sunflower, most operators have been reluctant to switch from soybeans due to the additional costs and
+processes required to crush other oilseeds in the same plant. However, this dynamic is beginning to shift
+as sunflower crush margins remain highly attractive. Although official margin data are not publicly
+available, industry contacts estimate current sunflower crush margins at as high as $180 per ton. Market
+participants expect these favorable margins to persist into the next marketing year, incentivizing greater
+utilization of existing capacity for sunflower processing. In addition, a new sunflower-dedicated
+crushing facility is expected to begin operations during MY2025/26 and reach full capacity in
+MY2026/27, further supporting increased crush volumes and creating another buyer for the increased
+crop.
+
+Domestic consumption of sunflower seed in Argentina remains limited, as the sector is largely oriented
+toward the export of processed products, particularly oil and meal. The small share of whole sunflower
+seed consumed locally is primarily seed for the following crop, with only minimal volumes directed to
+the food processing and confectionary sectors.
+Trade
+
+Post forecasts whole sunflower seed exports steady at 900,000 MT, the same as the previous year.
+However, this is up substantially from MY2024/25. Exports in MY2025/26 are forecast up 45 percent
+from the previous year driven by demand from markets in Eastern Europe.
+Sunflower seed exports are expected to increase significantly, reaching up to 10 percent of total
+production, compared to historically negligible levels of less than 1 percent. This growth is driven
+primarily by demand from European markets, including Bulgaria and Romania, which have faced higher
+costs and supply constraints sourcing from Ukraine. As a result, the share of Argentina’s sunflower seed
+production processed domestically is projected to decline modestly, with more than 80 percent expected
+to be crushed, compared to typical levels exceeding 95 percent in most years. Absent a resolution to the
+conflict in Ukraine, these elevated levels of whole seed exports are expected to persist into MY2026/27.
+
+However, these exports recently encountered a setback. In late March shipments of Argentine sunflower
+seed to Bulgaria were found to exceed EU maximum residue limits (MRLs) for certain insecticides,
+including deltamethrin, with three cargos testing double above permitted levels. As harvest is already
+underway, exporters have limited ability to adjust practices for the current crop year, raising the risk that
+some volumes initially destined for export may be redirected to the domestic crush sector.
+
+While affected shipments have not been rejected outright, importers declared the product may be re-
+exported to alternative markets with higher MRL thresholds or diverted to industrial uses such as
+biodiesel in the EU. Additional cargos currently in transit are expected to face similar testing upon
+arrival. Looking ahead, industry contacts anticipate the issue will be addressed by MY2026/27 through
+adjustments in crop protection practices and compliance protocols. If not, any constraints on these
+exports to the EU would likely result in increased Argentine domestic crush and subsequent exports of
+processed products.
+
+In December 2025, the government once again permanently lowered export taxes, down to 4.5 percent
+on sunflower seed from 5.5 percent and previously 7 percent before January 2025. While this lower tax
+was welcomed by industry and marginally boosts profitability of the industry, the increase in whole
+sunflower seed exports is attributed more to external demand and prices than the lower export tax.
+
+Argentina’s sunflower sector is benefiting from a highly favorable global supply-demand balance,
+positioning the country to expand its role in international markets. According to industry sources,
+tightening global availability has created a strategic opportunity for Argentine exports, as competing
+suppliers, most notably Ukraine, have become less competitive. Reflecting this shift, the global
+sunflower stocks-to-use ratio has declined, indicating a significantly constrained supply environment. In
+this context, Argentina’s share of global trade is expected to increase, supported by its strong production
+outlook and export capacity. A similar tightening is observed in the sunflower oil market, further
+reinforcing upward pressure on prices.
+
+These global dynamics have translated directly into improved domestic price signals. International
+sunflower oil prices remain elevated, supporting higher local prices and improving crush margins. As a
+result, domestic sunflower seed prices have strengthened, with current values above $400 per MT for
+June to August delivery. Industry contacts note that this combination of tight global supplies, strong
+prices, and robust export demand has created a favorable commercial environment, reinforcing
+sunflower’s position as one of Argentina’s fastest growing agricultural export sectors.
+
+Stocks
+
+In contrast to soybeans, very little sunflower seed stocks are held on farm. The majority of stocks are
+held by processors but in general Argentina’s sunflower seed stocks are very low. Stocks are forecast
+even lower than average due to increased domestic crush and exports.
+
+MY2025/26
+Post raises MY2025/26 sunflower production to 6.5 MMT, up significantly from the previous year and
+Post’s last update, on record high yields reported to date and increased planted area of 2.9 MHA (based
+on field reports and conversations with Post contacts). This would be near record production not seen
+since the late 1990’s.
+
+The MY2025/26 sunflower harvest is underway with 61 percent of this year’s crop harvest completed as
+of writing, according to the Bolsa de Cereales.
+
+This higher production is boosted by exceptionally high yields particularly in the key growing areas of
+Chaco and Santiago del Estero provinces, as well as central to northern Cordoba.
+Despite the otherwise favorable outlook, moisture deficits in southern production areas present a key
+downside risk to final yields. Dry conditions have intensified in parts of southern Buenos Aires and La
+Pampa Provinces, where the share of sunflower crop rated as dry to poor has increased. However, about
+40 percent of the crop in this area remains in reproductive stages, with yield outcomes still developing
+and likely to be influenced by recent and expected rainfall in the coming weeks.
+
+Both crush and exports are forecast to increase significantly in MY2025/26 with higher supply, high
+crush margins, and demand for whole sunflower seed exports from the EU.
+
+Sunflower Seed Production, Supply, and Demand Statistical Table
+   Oilseed, Sunflowerseed                 2024/2025                2025/2026                  2026/2027
+   Market Year Begins                      Mar 2025                 Mar 2026                  Mar 2027
+                                     USDA                    USDA                       USDA
+   Argentina                                    New Post                  New Post                  New Post
+                                     Official                Official                   Official
+   Area Planted (1000 HA)                 2397        2200         3000          2900            0        3300
+   Area Harvested (1000 HA)               2397        2150         3000          2850            0        3300
+   Beginning Stocks (1000 MT)               820        820           688          564            0         559
+   Production (1000 MT)                   5592        5500         7000          6500            0        6800
+   MY Imports (1000 MT)                       1          1             1            0            0           0
+   Total Supply (1000 MT)                 6413        6321         7689          7064            0        7359
+   MY Exports (1000 MT)                     475        624           600          900            0         900
+   Crush (1000 MT)                        4850        4828         5500          5300            0        5600
+   Food Use Dom. Cons. (1000 MT)              0          0             0            0            0           0
+   Feed Waste Dom. Cons. (1000 MT)          400        305           575          305            0         305
+   Total Dom. Cons. (1000 MT)             5250        5133         6075          5605            0        5905
+   Ending Stocks (1000 MT)                  688        564         1014           559            0         554
+   Total Distribution (1000 MT)           6413        6321         7689          7064            0        7359
+   Yield (MT/HA)                        2.3329      2.5581       2.3333        2.2807            0      2.0299
+   (1000 HA) ,(1000 MT) ,(MT/HA)
+PEANUT
+
+Production
+
+Post forecasts Argentina’s peanut production at 1.5 MMT in MY2026/27, driven by a modest recovery
+in planted area as the sector returns to more typical levels following last year’s contraction. Planted area
+is projected at 420,000 hectares, up 30,000 hectares from MY2025/26, with yields expected to average
+slightly above trend at 3.6 MT/HA.
+
+Peanut area declined sharply in MY2025/26 following a surge the previous year, when strong prices at
+planting encouraged expanded area. However, prices fell significantly by harvest, reducing returns and
+discouraging producers. In addition, some first-time growers were discouraged by the experience of
+growing peanuts, as they require more complex management than competing crops.
+
+
+
+
+                       Source: FAS International Production Assessment Division
+
+As a result, acreage is expected to stabilize in MY2026/27, with the sector returning to an equilibrium
+following recent swings.
+High fertilizer costs will be another factor pushing more acreage to peanuts as peanuts have no fertilizer
+requirements. Peanuts could become a viable option for producers to plant in place of corn if fertilizer
+prices continue to rise.
+
+Córdoba will remain the center of Argentina’s peanut production and processing sector, accounting for
+approximately 68 percent of total output. Production has expanded beyond its traditional core, with
+northern Buenos Aires projected to account for roughly 18 percent, while southern Santa Fe and
+northern La Pampa comprise a growing share of planted area. However, crop rotation requirements,
+which limit peanut cultivation on the same field to once every three to seven years, are constraining
+further expansion of acreage in established growing regions. As a result, production is expected to
+continue shifting into new areas in MY2026/27, particularly in northern Buenos Aires, southern Santa
+Fe, and San Luis. This geographic dispersion reflects processors’ need to secure additional contracted
+acreage and sustain throughput for their facilities while balancing rotational constraints.
+
+                                 Peanuts in Southern Cordoba Province
+
+
+
+
+                                     Source: Post FAS Buenos Aires
+
+Logistics and transportation costs prevent Argentina’s peanut production from increasing or moving into
+new areas as it must be transported to be processed and then transported again for export. Industry
+sources generally consider it unfeasible to grow peanuts if they must be transported more than 100 km to
+processors as the trucking prices make them unprofitable.
+
+Rent prices have come down this season and will remain the same in the coming marketing year though
+not as much as processors would have hoped. Land rent makes up over 50 percent of processors’
+production costs. But strong world peanut oil prices are expected to be a factor in the prices offered to
+growers in MY2026/27. With prices of $600/MT producers will manage to be profitable.
+Any future growth in Argentina’s peanut area is tied to processing capacity as processors contract only
+the acreage they are able to handle. Given that nearly all peanut production in Argentina is grown under
+contract, expansion is largely determined by the industry’s processing capacity. As a result, growth in
+planted area would need to be precipitated by investments in increased processing capacity or opening
+of new plants.
+
+Consumption and Crush
+
+Crush remains flat at 250,000 MT in MY2026/27 as most of Argentina’s peanuts will continue to be
+blanched and exported, rather than crushed.
+
+A new peanut processing facility in northern Buenos Aires Province is expected to become operational
+in MY2026/27 following delays, increasing processing capacity in the sector. As the first facility located
+outside Argentina’s traditional peanut production and processing region, it is expected to support area
+expansion in the surrounding region over time. The plant is reportedly designed to process between
+100,000 and 150,000 MT annually and is expected to operate at approximately 75–80 percent of
+capacity in MY2026/27.
+
+Post’s contacts estimate that with this addition, Argentina’s total peanut processing capacity will reach
+850,000 MT per year.
+
+Post industry contacts note that there is potential for Argentina to expand its production of higher value-
+added peanut products, particularly peanut paste and blanched peanuts for export. Argentina’s
+competitive cost structure for processing, including sorting and further value-added operations, positions
+it at an advantage over other suppliers. These cost advantages may encourage a reallocation of
+processing activity toward Argentina over time. In combination with new favorable taxes to the
+European Union, this could support increased Argentine production and exports of processed peanut
+products.
+
+Domestic peanut consumption in Argentina is forecast to remain flat in MY2026/27. The country does
+not have a strong cultural tradition of peanut consumption, and the crop remains overwhelmingly
+export-oriented. While peanut-based products, particularly peanut butter, have become more visible in
+urban retail markets in recent years, this is a relatively new trend. Industry sources indicate that growth
+in this segment is expected to remain limited over the near to medium term.
+
+Most domestic peanut usage occurs in the form of snacks or specialty food products within the food
+processing, bakery, and retail sectors. While consumer interest in peanuts and peanut-derived products is
+gradually increasing, overall consumption volumes remain low by international standards and are
+unlikely to shift materially in the upcoming marketing year.
+
+Peanut crushing activity in Argentina remains minimal and is projected to hold steady in MY2025/26,
+despite a significant surge in production in the prior year. The vast majority of Argentine peanut
+production is destined for export, primarily to the confectionery market, leaving limited volumes for
+domestic processing or oil extraction.
+Argentina’s peanut sector is vertically integrated, with approximately 25 companies controlling nearly
+all national production through contractual arrangements with growers. While a small number of
+independent producers operate outside this structure, they are the exception rather than the norm. These
+integrated firms manage planting, harvesting, processing, and export operations, allowing for greater
+control of quality, traceability, and marketing.
+
+                                 Peanuts in Southern Cordoba Province
+
+
+
+
+                                     Source: Post FAS Buenos Aires
+
+Trade
+
+Exports are forecast to decline slightly to 850,000 MMT in MY2026/27, reflecting weaker international
+demand from the prior year, particularly from China. Despite this slight reduction, Argentina is expected
+to remain the world's top peanut exporter, even as it ranks as the sixth largest producer globally.
+
+The vast majority of Argentine peanut exports are shipped shelled and blanched, with in-shell exports
+comprising only a negligible share of total shipments. Nearly all of Argentina’s peanut exports will be
+destined to the EU once again, where they are sought after for their high quality, flavor profile, and low
+aflatoxin rates.
+
+China, another major exporter, re-entered the Argentine peanut market in MY2025/26 for the first time
+in many years, providing a temporary boost to export demand. According to Post contacts, Chinese
+buyers likely sold lower-quality domestic supplies into processing channels overseas at higher-prices
+and turned to Argentina to secure higher-quality peanuts for food consumption, taking advantage of their
+relatively low prices this year. However, this demand is viewed as opportunistic and is not expected to
+persist into MY2026/27, contributing to Post’s forecast for lower exports.
+
+The recently signed EU-MERCOSUR trade agreement includes provisions to gradually eliminate tariffs
+on EU imports of peanut butter and peanut paste from Argentina. If implemented, these measures could
+enhance Argentina’s competitiveness in the EU market, supporting increased exports and incentivizing
+further production of these value-added peanut products. However, domestic consumption of peanut
+butter and related products in Argentina is expected to remain limited, with little indication of any
+meaningful growth.
+
+In January 2025, the Argentine government permanently eliminated export taxes on peanuts. Although
+the removal of export duties was welcomed by producers and exporters, it is not expected to result in a
+significant increase in exports as the sector was already nearly fully export-oriented, and the tax
+reduction alone will not expand trade.
+
+Stocks
+Stocks are forecast nearly equal as demand continues for Argentina’s peanuts overseas and processors
+will have worked through the large carry-in stocks from the MY2024/25 bumper harvest with processing
+and exports normalizing.
+
+Virtually all peanut stocks in Argentina are held by processors, who maintain inventory to ensure year-
+round operation of shelling, blanching, and export facilities. Stock retention at the farm level is
+negligible, as most peanuts are grown under contract and delivered directly to processing firms upon
+harvest. This vertical integration structure enables processors to manage their supply flow efficiently and
+plan export shipments according to market demand and logistics.
+
+MY2025/26
+
+Post lowers peanut production in MY2025/26 to 1.38 MMT on lower planted area of 390,000 MT based
+on crop surveys and conversations with Post industry contact.
+
+Overall crop conditions are rated good, although portions of western Córdoba Province were negatively
+impacted by earlier-season moisture deficits and are currently rated fair. Recent rainfall is expected to
+improve conditions in these areas. Most of the crop is in the pod formation and grain-filling stages,
+while later plantings in the northern region remain in the flowering stage. No significant pest or disease
+pressure has been reported.
+
+Key peanut-producing regions experienced an extended dry period of approximately 45 days, which
+limited yield potential. Rainfall returned in mid-February and has remained favorable since, stabilizing
+crop conditions. However, the earlier moisture deficit prevented the crop from reaching the record yields
+initially anticipated. Yields are still expected to be good, though below earlier expectations.
+
+Harvest is expected to be slightly delayed as a result of the earlier dry conditions. Digging is projected to
+begin in mid-May, with harvest typically occurring 10–14 days later, contingent on favorable weather
+during the digging and drying period.
+Peanut Production, Supply, and Demand Statistical Table
+Oilseed, Peanut                       2024/2025             2025/2026               2026/2027
+Market Year Begins                     Mar 2025              Mar 2026               Mar 2027
+                                  USDA                                         USDA
+Argentina                                     New Post USDA Official New Post             New Post
+                                  Official                                     Official
+Area Planted (1000 HA)                   532        532         450        390          0       420
+Area Harvested (1000 HA)                 532        532         410        390          0       420
+Beginning Stocks (1000 MT)               453        453         608        764          0       519
+Production (1000 MT)                   1810        1865       1350        1385          0      1525
+MY Imports (1000 MT)                        0         0            0         0          0         0
+Total Supply (1000 MT)                 2263        2318       1958        2149          0      2044
+MY Exports (1000 MT)                   1150        1081       1150        1200          0       850
+Crush (1000 MT)                          300        298         200        250          0       250
+Food Use Dom. Cons. (1000 MT)              80        95          80         95          0        95
+Feed Waste Dom. Cons. (1000 MT)          125         80          80         85          0        85
+Total Dom. Cons. (1000 MT)               505        473         360        430          0       430
+Ending Stocks (1000 MT)                  608        764         448        519          0       764
+Total Distribution (1000 MT)           2263        2318       1958        2149          0      2044
+Yield (MT/HA)                        3.4023      3.5056     3.2927      3.5513          0     3.631
+
+(1000 HA) ,(1000 MT) ,(MT/HA)
+
+OFFICIAL DATA CAN BE ACCESSED AT: PSD Online Advanced Query
+
+RAPESEED
+
+Production
+
+Rapeseed remains a minor crop in Argentina, with planted area expected to decline further in
+MY2026/27. Limited adoption is largely driven by crop management factors and rotational constraints,
+as the crop must be planted early in the winter season, complicating the timing of the subsequent
+soybean planting. Producers report that second-crop soybeans planted after rapeseed generally yield less
+than those following wheat or barley, reducing its attractiveness within typical crop rotations. As a
+result, rapeseed is expected to remain a niche crop with limited area expansion prospects.
+
+OTHER OILSEEDS
+
+Other winter oilseeds such as carinata, camelina, and safflower have been gaining some ground in
+Argentina but also remain marginal crops. There are reports these two crops combined could have more
+planted acreage than rapeseed in Argentina. One industry analyst estimates 45,000 HA.
+
+Growth in these crops is driven by growing global demand for certified low-carbon feedstocks for
+biofuel production. These niche crops are currently planted under contract-based production systems, in
+which companies provide inputs and purchase the full harvest for processing and export. These crops are
+typically incorporated into rotations to replace fallow periods between summer crops, allowing
+producers to generate additional income without directly competing for area with major crops such as
+soybeans or corn. Their expansion is supported by increasing interest from energy markets and
+sustainability-driven supply chains, particularly in export-oriented biofuel sectors.
+Adoption remains limited but is supported by crop management and environmental benefits, including
+improved soil structure, increased water infiltration, and reduced. Crop selection is region-specific, with
+rapeseed better suited to more humid areas, safflower to drier regions, and camelina offering flexibility
+due to its short cycle and low water requirements. Despite these advantages, yields remain below those
+of traditional winter crops such as wheat, and broader expansion will depend on continued development
+of production knowledge, contract structures, and sustained demand for low-carbon biofuel inputs.
+
+One multinational has been investing in and encouraging the production of carinata for sustainable
+aviation fuel (SAF) production. Another small facility was built in recent years to process carinata in
+southern Santa Fe province. This company is paying farmers to grow it and is encouraging some growth
+but still in on a very small scale and the trend is not growing beyond the immediate area. The facility
+cleans the seed and exports nearly all of the product to Europe for crushing and processing.
+
+Rapeseed Production, Supply, and Demand Statistical Table
+Oilseed, Rapeseed                        2024/2025               2025/2026             2026/2027
+Market Year Begins                       May 2025                May 2026               May 2027
+                                   USDA                     USDA                   USDA
+Argentina                                     New Post                  New Post              New Post
+                                   Official                 Official               Official
+Area Planted (1000 HA)                    35           35            25        25           0        20
+Area Harvested (1000 HA)                  35           35            25        25           0        20
+Beginning Stocks (1000 MT)                12           12            14          5          0         7
+Production (1000 MT)                      58           58            40        40           0        33
+MY Imports (1000 MT)                        0           0             0          0          0         0
+Total Supply (1000 MT)                    70           70            54        45           0        40
+MY Exports (1000 MT)                      20           18            15        12           0        12
+Crush (1000 MT)                             1          22             1          1          0         1
+Food Use Dom. Cons. (1000 MT)               0           0             0          0          0         0
+Feed Waste Dom. Cons. (1000 MT)           35           25            25        25           0        20
+Total Dom. Cons. (1000 MT)                36           47            26        26           0        21
+Ending Stocks (1000 MT)                   14            5            13          7          0         7
+Total Distribution (1000 MT)              70           70            54        45           0        40
+Yield (MT/HA)                        1.6571        1.6571           1.6       1.6           0      1.65
+
+(1000 HA) ,(1000 MT) ,(MT/HA)
+
+OFFICIAL DATA CAN BE ACCESSED AT: PSD Online Advanced Query
+Meals
+Production
+
+Soymeal production is forecast to decline 2 percent to 31.9 MMT in MY2026/27, reflecting a modest
+reduction in crush driven by weaker margins and lower soybean imports from Paraguay (as its
+production returns to more typical levels). Despite this decline, Argentina is expected to remain one of
+the world’s leading oilseed processors and a dominant global supplier of protein meals, primarily
+derived from soybean and sunflower seed crushing.
+
+Argentina’s soybean crop is typically characterized by lower protein content. Crushers routinely import
+higher protein soybeans from Paraguay and blend them with domestically produced meal to raise overall
+protein levels.
+
+Sunflower meal production is forecast to increase to 2.5 MMT in MY2026/27, marking a second
+consecutive year of growth, driven by higher sunflower seed production and continued favorable crush
+margins. Strong profitability is encouraging processors to utilize available spare capacity for sunflower
+crushing, particularly in facilities traditionally oriented toward soybeans.
+
+Additional crush capacity will also come this year from a new crush facility in Buenos Aires Province
+expected to become operational during the MY2026/27 marketing year.
+Peanut meal production remains negligible and is only a byproduct of Argentina’s highly export-oriented
+peanut industry.
+
+Feed Consumption
+
+Domestic soymeal consumption is forecast up slightly at 2.7 MMT in MY2026/27, driven by continued
+modest growth in the pork, poultry and dairy industries. Less than 8 percent of Argentina’s soymeal
+production is expected to be consumed domestically as exports continued to dominate the market.
+Domestic consumption of protein meals in Argentina remains modest relative to total production, as the
+country's livestock and poultry industries are comparatively small. Argentina’s massive crush industry is
+export-oriented and grew to take advantage of global demand, add value to domestic soybeans, and
+provide jobs. However, the local dairy industry is doing particularly well and is expected to support
+domestic soymeal consumption.
+
+Sunflower meal has limited use in domestic feed rations due to its lower protein content compared to
+soymeal. Most sunflower meal is exported, with only a small portion retained for use in local livestock
+and dairy sectors. Feed consumption is forecast flat.
+
+The small amount of peanut meal produced in Argentina is consumed entirely within the domestic
+market, mostly in close proximity to processing facilities.
+
+Overall, while rising beef prices may incentivize some consumers to shift toward pork and poultry,
+leading to slightly increased demand for animal feed, the resulting growth in meal consumption will
+remain minor compared to the volumes produced and exported.
+Trade
+
+Soymeal exports are forecast steady at 30 MMT in MY2026/27 with less supply on a lower crush but
+continued strong global demand for protein meals. Argentina is a global leader in the export of soymeal
+and sunflower meal, supported by a well-developed crushing sector and export logistics network
+centered along the Paraná River system.
+
+Argentina remains the world’s largest exporter of soybean meal with a massive crush industry and
+competitive FOB prices. The country’s soymeal exports are supported by decades of investment in
+domestic crushing capacity and historically favorable export tax structures. Although the differential
+export tax advantage that once favored meal exports was removed in 2018, the scale and efficiency of
+Argentina’s crushing industry have sustained its global competitiveness.
+
+By far the top market for Argentina’s soymeal is once again expected to be the EU with over half of
+Argentina’s exports. Vietnam is expected to be a distant second but still a significant customer. Other
+markets include Saudi Arabia, Turkey, Malaysia, and Indonesia.
+
+The graph below illustrates Argentina’s top soybean meal export markets in calendar year (CY) 2025
+with data provided by Nabasa, a local shipping agent, as Argentine official trade data includes exports
+under the market “confidential” by which companies are able to obscure the final destination for
+shipments.
+                      Argentina Top Soymeal Export Markets Calendar Year 2025
+
+                                   Top 10 Destinations (Million Tons)
+              3.00
+                     2.63
+              2.50
+
+
+              2.00
+
+
+              1.50
+
+
+              1.00
+
+                            0.53
+              0.50
+                                     0.11   0.05   0.04   0.04   0.02   0.02   0.02   0.01
+              0.00
+
+
+
+
+                            Source: Post FAS Buenos Aires with Nabsa Data
+
+Traders have expected a build-up of soymeal stocks based on increased crush in the United States and
+Brazil (driven by strong oil demand). But to date soymeal prices have remained higher than expected
+and sales have continued at a brisk rate, to the surprise of industry analysts. Given this, continued
+favorable sales of Argentine soymeal are expected into the new marketing year.
+Post forecasts sunflower meal exports steady in MY2026/27 at 1.7 MMT with little change expected in
+demand for Argentina’s sunflower meal as demand has increased for whole sunflower seed exports.
+
+Nearly 65 percent of Argentina’s sunflower meal will once again be destined for the EU with the UK as
+the second largest buyer. Combined, these two markets are forecast to account for nearly 80 percent of
+Argentina’s sunflower meal exports with the remainder sent to neighboring countries. According to
+traders, Argentina’s strong sunflower meal exports to Europe are attributed to lower prices and EU
+preference for its non-GE and high-fiber traits.
+
+Peanut Meal Exports are forecast unchanged from the previous year. Argentina exports only a small
+volume of peanut meal, almost exclusively to Chile, where it is used in the farmed salmon industry.
+
+Stocks
+
+Protein meals are generally not stored in large volumes due to quality degradation risks over time.
+Stocks at the end of MY2026/27 are expected to remain minimal, consistent with historical trends.
+Ending stocks typically represent only one to two months of domestic consumption and are held
+primarily by processors and feed mills for operational continuity.
+
+
+Meals Production, Supply, and Demand Statistical Tables
+Meal, Soybean (Local)                  2024/2025               2025/2026               2026/2027
+Market Year Begins                      Apr 2025                Apr 2026                Apr 2027
+                                  USDA                    USDA                    USDA
+Argentina                                    New Post                  New Post              New Post
+                                  Official                Official                Official
+Crush (1000 MT)                       41000      42000         42500       43000           0     42000
+Extr. Rate, 999.9999 (PERCENT)          0.77       0.76           0.77       0.76          0       0.76
+Beginning Stocks (1000 MT)             2404       2404           2474       2834           0      3015
+Production (1000 MT)                  31570      31920         32725       32680           0     31920
+MY Imports (1000 MT)                     500        510              1          1          0          1
+Total Supply (1000 MT)                34474      34834         35200       35515           0     34936
+MY Exports (1000 MT)                  28500      28500         29400       30000           0     30000
+Industrial Dom. Cons. (1000 MT)            0          0              0          0          0          0
+Food Use Dom. Cons. (1000 MT)              0          0              0          0          0          0
+Feed Waste Dom. Cons. (1000 MT)        3500       3500           3500       2500           0      2700
+Total Dom. Cons. (1000 MT)             3500       3500           3500       2500           0      2700
+Ending Stocks (1000 MT)                2474       2834           2300       3015           0      2236
+Total Distribution (1000 MT)          34474      34834         35200       35515           0     34936
+
+(1000 MT) ,(PERCENT)
+
+OFFICIAL DATA CAN BE ACCESSED AT: PSD Online Advanced Query
+Meal, Sunflowerseed                   2024/2025             2025/2026               2026/2027
+Market Year Begins                    Mar 2025              Mar 2026                Mar 2027
+                                  USDA                                         USDA
+Argentina                                    New Post USDA Official New Post             New Post
+                                  Official                                     Official
+Crush (1000 MT)                         4850     4828         5500       5300          0      5600
+Extr. Rate, 999.9999 (PERCENT)       0.4439    0.4461       0.4411     0.4472          0    0.4464
+Beginning Stocks (1000 MT)               208      208          211        155          0       275
+Production (1000 MT)                    2153     2154         2426       2370          0      2500
+MY Imports (1000 MT)                       0        0             0          0         0         0
+Total Supply (1000 MT)                  2361     2362         2637       2525          0      2775
+MY Exports (1000 MT)                    1600     1657         1800       1700          0      1700
+Industrial Dom. Cons. (1000 MT)            0        0             0          0         0         0
+Food Use Dom. Cons. (1000 MT)              0        0             0          0         0         0
+Feed Waste Dom. Cons. (1000 MT)          550      550          615        550          0       550
+Total Dom. Cons. (1000 MT)               550      550          615        550          0       550
+Ending Stocks (1000 MT)                  211      155          222        275          0       525
+Total Distribution (1000 MT)            2361     2362         2637       2525          0      2775
+
+(1000 MT) ,(PERCENT)
+
+OFFICIAL DATA CAN BE ACCESSED AT: PSD Online Advanced Query
+
+
+Meal, Peanut                            2024/2025               2025/2026             2026/2027
+Market Year Begins                      Mar 2025                 Mar 2026              Mar 2027
+                                  USDA                     USDA                   USDA
+Argentina                                    New Post                  New Post              New Post
+                                  Official                 Official               Official
+Crush (1000 MT)                         300          298          200        250           0      250
+Extr. Rate, 999.9999 (PERCENT)      0.5833        0.4966         0.58         0.5          0       0.5
+Beginning Stocks (1000 MT)                 0           0             0          0          0         0
+Production (1000 MT)                    175          148          116        125           0      125
+MY Imports (1000 MT)                       0           0             0          0          0         0
+Total Supply (1000 MT)                  175          148          116        125           0      125
+MY Exports (1000 MT)                     35           35            30         35          0        35
+Industrial Dom. Cons. (1000 MT)            0           0             0          0          0         0
+Food Use Dom. Cons. (1000 MT)              0           0             0          0          0         0
+Feed Waste Dom. Cons. (1000 MT)         140          113            86         90          0        90
+Total Dom. Cons. (1000 MT)              140          113            86         90          0        90
+Ending Stocks (1000 MT)                    0           0             0          0          0         0
+Total Distribution (1000 MT)            175          148          116        125           0      125
+
+(1000 MT) ,(PERCENT)
+
+OFFICIAL DATA CAN BE ACCESSED AT: PSD Online Advanced Query
+Oils
+Production
+
+Post forecasts Argentina’s soybean oil production at 8.4 MMT, down 200,000 MT from the previous
+year on a modestly lower crush. Any growth in soy oil production would depend on crush margins and
+global demand, particularly from India.
+
+Sunflower oil production is forecast to increase to 1.8 MMT in MY2026/27, driven by higher crush
+volumes supported by expanded planted area with increased seed availability, and favorable crush
+margins. Strong international demand for sunflower oil continues to underpin both crush activity and
+export prospects, contributing to stronger domestic farmgate prices for sunflower seed. This trend is
+expected to persist, supported by ongoing supply disruptions from key exporters, particularly due to the
+war in Ukraine, as well as the broader geopolitical tensions affecting global vegetable oil markets.
+
+Argentina is not significant producer, consumer, or exporter of peanut oil.
+
+Post observes that global crush margins everywhere, including in Argentina, have strengthened amid
+ongoing geopolitical tensions. Should these conditions persist, margins are expected to remain
+supportive of continued crushing activity. Shipments of both soybean oil and meal remained robust
+throughout the previous year. If current price trends are sustained, particularly for vegetable oils,
+additional crushing may occur in the near term. However, the extent of any increase will depend on how
+the conflict evolves.
+
+Food Consumption
+
+With stable population growth and limited expansion in per capita consumption, domestic consumption
+for soybean oil and sunflower oil for food use are both forecast at 550,000 MT in MY2026/27,
+unchanged from the previous two years.
+
+Domestic food use of vegetable oils in Argentina remains dominated by soybean and sunflower oil.
+Sunflower oil is the preferred cooking oil of Argentines but purchasing decisions are largely driven by
+price. Sunflower oil produced from domestic crush is primarily used for human consumption. Soybean
+oil now accounts for approximately 75 percent of Argentina’s edible oil consumption. Both oils are also
+widely consumed by Argentina’s sizeable food processing industry for products such as cooking oils,
+mayonnaise, and canned goods.
+Peanut oil consumption is minimal and not forecast to change for the foreseeable future.
+
+Industrial Consumption
+
+Domestic soybean oil consumption is also forecast steady at 1.7 MMT for industrial use as there
+currently is no biodiesel blend mandate and no political appetite for a change in policy in the current
+Congress or Administration.
+The local biofuels sector has been stagnant in the past several years because of laws regulating the
+sector, official policy or lack thereof, and political/economic decisions. Biodiesel is almost exclusively
+made from soybean oil,
+
+The average national blend rate of biodiesel is forecast at 6.6 percent, down from 6.8 percent in 2024.
+However, this blend rate is higher than recent years. This blend rate is still below the stated 7.5 percent
+mandate in place for sales of on/off road diesel.
+
+Industrial and feed consumption of sunflower oil is minimal and remains unchanged from previous
+years.
+
+Trade
+
+Soybean oil exports are forecast at 6.3 MMT in MY2026/27, unchanged from the previous year,
+assuming stable global prices and demand conditions. Any increased exports would depend on improved
+crush margins driven by stronger international demand or higher world prices.
+
+Global demand for vegetable oils is expected to remain firm, supported in part by policy-driven
+increases in biodiesel production in several countries seeking to moderate diesel prices and reduce
+reliance on fossil fuels. Industry analysts forecast a bullish outlook for vegetable oils for the foreseeable
+future. Including trends in several countries including the United States to increase biodiesel production.
+India is projected to remain the leading destination for Argentine soybean oil, accounting for over 60
+percent of exports and continuing to play a central role in driving demand.
+
+Canada recently began importing soy oil from Argentina as a feedstock for renewable diesel production.
+This is anticipated to drive demand for Argentine soy oil exports in MY2026/27 as the refinery is located
+in Newfoundland, making the logistics of sourcing from Argentina viable. This new demand is expected
+to continue into the new marketing year, which could raise exports higher than the current forecast.
+
+                                        Argentina Soy Oil Exports CY2025
+                                  Top 10 Destinations (Million Tons)
+                   3.00
+                          2.63
+                   2.50
+
+
+                   2.00
+
+
+                   1.50
+
+
+                   1.00
+                                 0.53
+                   0.50
+                                          0.11   0.05   0.04   0.04   0.02   0.02   0.02   0.01
+                   0.00
+
+
+
+
+                             Source: Post FAS Buenos Aires with Nabsa Data
+Sunflower oil exports are forecast up slightly to 1.8 MMT, driven almost entirely by India’s demand and
+continued imports of Argentine soy oil. Over half of Argentina’s sunflower oil exports are forecast to go
+to India in MY2026/27. Chile, Iraq, and the United States make up the next three largest markets.
+
+Argentina also plays a significant role in the global sunflower oil trade. The European Union is a key
+export market for Argentine sunflower oil, and demand fluctuations in this region can significantly
+impact Argentina’s crush volume. Future growth in the crushing sector will depend on improved crop
+productivity, enhanced access to export markets, and Argentina’s ability to remain cost-competitive
+against other vegetable oils, including soybean and palm oil.
+
+Peanut oil exports are small but forecast flat. Nearly all of Argentina’s peanut oil will be destined for
+China in MY206/27, with the EU a distant second. However, there is potential for marginal growth in
+export volumes should demand from China increase. As with other vegetable oils, peanut oil exports are
+influenced by global demand dynamics and relative pricing competitiveness, particularly in Asia and
+Europe.
+
+Stocks
+
+Soybean oil ending stocks are forecast at 102,000 MT. Argentina keeps very little, if any stocks on hand.
+Little to no stocks are kept of other oils.
+
+Oils Production, Supply, and Demand Statistical Tables
+Oil, Soybean (Local)                   2024/2025                2025/2026             2026/2027
+Market Year Begins                      Apr 2025                 Apr 2026              Apr 2027
+                                  USDA                    USDA                   USDA
+Argentina                                    New Post                 New Post              New Post
+                                  Official                Official               Official
+Crush (1000 MT)                       41000       42000        42500      43000           0      42000
+Extr. Rate, 999.9999 (PERCENT)       0.1995      0.1995       0.1995         0.2          0     0.1995
+Beginning Stocks (1000 MT)              452         452          422        252           0        262
+Production (1000 MT)                   8180        8380         8479       8600           0       8380
+MY Imports (1000 MT)                    170         170            10         10          0         10
+Total Supply (1000 MT)                 8802        9002         8911       8862           0       8652
+MY Exports (1000 MT)                   6400        6500         6500       6300           0       6300
+Industrial Dom. Cons. (1000 MT)        1400        1700         1400       1750           0       1700
+Food Use Dom. Cons. (1000 MT)           580         550          580        550           0        550
+Feed Waste Dom. Cons. (1000 MT)            0          0             0          0          0          0
+Total Dom. Cons. (1000 MT)             1980        2250         1980       2300           0       2250
+Ending Stocks (1000 MT)                 422         252          431        262           0        102
+Total Distribution (1000 MT)           8802        9002         8911       8862           0       8652
+
+(1000 MT) ,(PERCENT)
+
+OFFICIAL DATA CAN BE ACCESSED AT: PSD Online Advanced Query
+Oil, Sunflowerseed                      2024/2025             2025/2026             2026/2027
+Market Year Begins                      Mar 2025               Mar 2026             Mar 2027
+                                  USDA                   USDA                  USDA
+Argentina                                    New Post               New Post              New Post
+                                  Official               Official              Official
+Crush (1000 MT)                        4850         4828     5500         5300          0      5600
+Extr. Rate, 999.9999 (PERCENT)        0.439       0.4263   0.4384       0.4264          0    0.4268
+Beginning Stocks (1000 MT)              244          244       161          54          0        52
+Production (1000 MT)                   2129         2058     2411         2260          0      2390
+MY Imports (1000 MT)                       0           0          0          0          0         0
+Total Supply (1000 MT)                 2373         2302     2572         2314          0      2442
+MY Exports (1000 MT)                   1650         1686     1825         1700          0      1800
+Industrial Dom. Cons. (1000 MT)            2           2          2          2          0         2
+Food Use Dom. Cons. (1000 MT)           550          550       560         550          0       550
+Feed Waste Dom. Cons. (1000 MT)           10          10          0         10          0        10
+Total Dom. Cons. (1000 MT)              562          562       562         562          0       562
+Ending Stocks (1000 MT)                 161           54       185          52          0        80
+Total Distribution (1000 MT)           2373         2302     2572         2314          0      2442
+
+(1000 MT) ,(PERCENT)
+
+OFFICIAL DATA CAN BE ACCESSED AT: PSD Online Advanced Query
+
+
+Oil, Peanut                             2024/2025                2025/2026              2026/2027
+Market Year Begins                      Mar 2025                  Mar 2026              Mar 2027
+                                   USDA                     USDA                   USDA
+Argentina                                      New Post                 New Post              New Post
+                                   Official                 Official               Official
+Crush (1000 MT)                           300        298           200        250           0       250
+Extr. Rate, 999.9999 (PERCENT)        0.3833      0.3893         0.385      0.392           0     0.392
+Beginning Stocks (1000 MT)                  33        33             48        59           0        66
+Production (1000 MT)                      115        116             77        98           0        98
+MY Imports (1000 MT)                         0          0             0          0          0         0
+Total Supply (1000 MT)                    148        149           125        157           0       164
+MY Exports (1000 MT)                        85        84             75        85           0        85
+Industrial Dom. Cons. (1000 MT)              0          0             0          0          0         0
+Food Use Dom. Cons. (1000 MT)               15          6            15          6          0         6
+Feed Waste Dom. Cons. (1000 MT)              0          0             0          0          0         0
+Total Dom. Cons. (1000 MT)                  15          6            15          6          0         6
+Ending Stocks (1000 MT)                     48        59             35        66           0        73
+Total Distribution (1000 MT)              148        149           125        157           0       164
+
+(1000 MT) ,(PERCENT)
+
+OFFICIAL DATA CAN BE ACCESSED AT: PSD Online Advanced Query
+Attachments:
+
+No Attachments
+
