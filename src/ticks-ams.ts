@@ -878,18 +878,48 @@ function pushTick(
   out.push({ ...row, ...base, series: row.id });
 }
 
+function lastDollarOnLine(line: string): number | null {
+  const all = [...line.matchAll(/\$([0-9.]+)/g)];
+  if (all.length === 0) return null;
+  const n = Number(all[all.length - 1][1]);
+  return Number.isFinite(n) ? n : null;
+}
+
+/** CME weekly AVERAGE column survives two-column glance wraps. */
+function dairyWeeklyTableAverages(text: string): Record<string, number> {
+  const block = text.match(/COMMODITY[\s\S]{0,3500}?Prices are USD per lb/i)?.[0] ?? "";
+  const out: Record<string, number> = {};
+  const rows: { key: string; re: RegExp }[] = [
+    { key: "barrels", re: /^\s*BARRELS\b/i },
+    { key: "blocks", re: /^\s*BLOCKS\b/i },
+    { key: "ndm", re: /^\s*GRADE A\b/i },
+    { key: "butter", re: /^\s*GRADE AA\b/i },
+    { key: "whey", re: /^\s*EXTRA GRADE\b/i },
+  ];
+  for (const line of block.split(/\n/)) {
+    for (const row of rows) {
+      if (out[row.key] != null) continue;
+      if (!row.re.test(line)) continue;
+      const price = lastDollarOnLine(line);
+      if (price != null && price > 0.2 && price < 8) out[row.key] = price;
+    }
+  }
+  return out;
+}
+
 export function parseDairyWeeklyReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
   const asOf = parseReportDate(text);
   if (!asOf) return [];
   const out: AmsTick[] = [];
+  const table = dairyWeeklyTableAverages(text);
   const glance = [
-    { re: /BUTTER:\s*Grade AA closed at \$([0-9.]+)[\s\S]{0,80}?weekly average for Grade\s+AA is \$([0-9.]+)/i, commodity: "Butter", grade: "Grade AA", id: "butter.grade_aa" },
-    { re: /weekly average for barrels is \$([0-9.]+)[\s\S]{0,80}?blocks \$([0-9.]+)/i, commodity: "Cheese", grade: "barrels+blocks", id: "cheese" },
-    { re: /NONFAT DRY MILK:[\s\S]{0,120}?weekly average for Grade A is \$([0-9.]+)/i, commodity: "Nonfat dry milk", grade: "Grade A", id: "ndm.grade_a" },
-    { re: /DRY WHEY:[\s\S]{0,160}?weekly average for dry whey is \$([0-9.]+)/i, commodity: "Dry whey", grade: "Extra grade", id: "dry_whey.extra" },
+    { re: /BUTTER:[\s\S]{0,400}?weekly[\s\S]{0,220}?average for Grade[\s\S]{0,220}?AA is \$([0-9.]+)/i, key: "butter" },
+    { re: /weekly average for barrels is \$([0-9.]+)[\s\S]{0,80}?blocks \$([0-9.]+)/i, key: "cheese" },
+    { re: /NONFAT DRY MILK:[\s\S]{0,400}?weekly[\s\S]{0,220}?average for Grade A is \$([0-9.]+)/i, key: "ndm" },
+    { re: /DRY WHEY:[\s\S]{0,400}?weekly[\s\S]{0,220}?average for dry whey is \$([0-9.]+)/i, key: "whey" },
   ];
-  const butter = text.match(glance[0].re);
-  if (butter) {
+  const butterPx = table.butter ?? Number(text.match(glance[0].re)?.[1]);
+  if (Number.isFinite(butterPx) && butterPx > 0) {
     pushTick(out, report, sourceUrl, asOf, {
       id: `dairy.ams_${report.slug}.national.butter.grade_aa.weekly`,
       group: "dairy",
@@ -898,13 +928,15 @@ export function parseDairyWeeklyReport(text: string, report: AmsReport, sourceUr
       market: report.title,
       classGrade: "CME cash Grade AA, weekly average, $/lb",
       unit: "$/lb",
-      price: roundMoney(Number(butter[2])),
-      lo: Number(butter[2]),
-      hi: Number(butter[2]),
+      price: roundMoney(butterPx),
+      lo: butterPx,
+      hi: butterPx,
     });
   }
   const cheese = text.match(glance[1].re);
-  if (cheese) {
+  const barrelPx = table.barrels ?? (cheese ? Number(cheese[1]) : NaN);
+  const blockPx = table.blocks ?? (cheese ? Number(cheese[2]) : NaN);
+  if (Number.isFinite(barrelPx) && barrelPx > 0) {
     pushTick(out, report, sourceUrl, asOf, {
       id: `dairy.ams_${report.slug}.national.cheese.barrels.weekly`,
       group: "dairy",
@@ -913,8 +945,10 @@ export function parseDairyWeeklyReport(text: string, report: AmsReport, sourceUr
       market: report.title,
       classGrade: "CME cash barrels, weekly average, $/lb",
       unit: "$/lb",
-      price: roundMoney(Number(cheese[1])),
+      price: roundMoney(barrelPx),
     });
+  }
+  if (Number.isFinite(blockPx) && blockPx > 0) {
     pushTick(out, report, sourceUrl, asOf, {
       id: `dairy.ams_${report.slug}.national.cheese.blocks.weekly`,
       group: "dairy",
@@ -923,11 +957,11 @@ export function parseDairyWeeklyReport(text: string, report: AmsReport, sourceUr
       market: report.title,
       classGrade: "CME cash 40# blocks, weekly average, $/lb",
       unit: "$/lb",
-      price: roundMoney(Number(cheese[2])),
+      price: roundMoney(blockPx),
     });
   }
-  const ndm = text.match(glance[2].re);
-  if (ndm) {
+  const ndmPx = table.ndm ?? Number(text.match(glance[2].re)?.[1]);
+  if (Number.isFinite(ndmPx) && ndmPx > 0) {
     pushTick(out, report, sourceUrl, asOf, {
       id: `dairy.ams_${report.slug}.national.ndm.grade_a.weekly`,
       group: "dairy",
@@ -936,11 +970,11 @@ export function parseDairyWeeklyReport(text: string, report: AmsReport, sourceUr
       market: report.title,
       classGrade: "CME cash Grade A, weekly average, $/lb",
       unit: "$/lb",
-      price: roundMoney(Number(ndm[1])),
+      price: roundMoney(ndmPx),
     });
   }
-  const whey = text.match(glance[3].re);
-  if (whey) {
+  const wheyPx = table.whey ?? Number(text.match(glance[3].re)?.[1]);
+  if (Number.isFinite(wheyPx) && wheyPx > 0) {
     pushTick(out, report, sourceUrl, asOf, {
       id: `dairy.ams_${report.slug}.national.dry_whey.extra.weekly`,
       group: "dairy",
@@ -949,7 +983,7 @@ export function parseDairyWeeklyReport(text: string, report: AmsReport, sourceUr
       market: report.title,
       classGrade: "CME cash extra grade, weekly average, $/lb",
       unit: "$/lb",
-      price: roundMoney(Number(whey[1])),
+      price: roundMoney(wheyPx),
     });
   }
   const classI = text.match(/base Class I price for\s+[A-Za-z]+\s+(\d{4})\s+is \$([0-9.]+)\s+per cwt/i);
