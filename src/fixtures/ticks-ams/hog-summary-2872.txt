@@ -1,0 +1,41 @@
+National Daily Hog and Pork Summary
+Des Moines, Iowa                                Wed,          Aug 26, 2026                USDA Livestock, Poultry & Grain Market News
+ DAILY DIRECT HOGS PLANT DELIVERED as of 1:30 PM
+ Negotiated Barrow and Gilt:    Carcass Base Price                           Live Price
+NATIONAL - AMS 2675/LM_HG203:
+
+                   Range:          $83.00               $91.50                 *    *
+
+        Weighted Average:          $90.75                                      *
+    Change from Prior Day:       (-$0.27)                                      *
+              Head Count:          11,391                                    734
+
+IOWA/MINNESOTA - AMS 2675/LM_HG206:
+
+          Weighted Average:                    $90.72                           *
+      Change from Prior Day:                   $0.01                            *
+
+EASTERN CORNBELT - AMS 2675/LM_HG210:
+
+            Weighted Average:                   *               *
+       Change from Prior Day:                   *               *
+
+*Price not reported due to confidentiality.
+NATIONAL DAILY PORK REPORT FOB PLANT - AMS 2498/LM_PK602:
+
+        Carcass Cutout Values        95.55        Change: (-2.12)
+
+                   Primal Loin       91.54                (-0.36)
+                    Primal Butt    114.79                   0.72
+                  Primal Picnic      62.98                (-4.96)
+                     Primal Rib    162.85                 (-0.47)
+                   Primal Ham        71.35                (-2.43)
+                   Primal Belly    151.42                 (-6.94)
+
+National Daily Direct Hog Prior Day Report - Slaughtered Swine - AMS 2511/LM_HG201
+Producer Sold:                      NEG         OMF            SPMF          OPA         Total
+Head Count                         4,968       22,094        127,442       73,869      230,041
+Carcass Base Price                 93.71        84.93           90.78       89.94        90.03
+Average Net Price                  94.13        87.67           92.31       92.13        91.87
+***Negotiated Formula included in total*** *Price not reported due to confidentiality.
+https://mymarketnews.ams.usda.gov/viewReport/2872

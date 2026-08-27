@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, X402SCAN_SERVER_URL, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, X402SCAN_SERVER_URL, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, isOrganicHay } from "./ticks-door.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
   IMPORT_ALERTS_MANIFEST_PATH,
@@ -193,6 +193,12 @@ async function withServer(
 const FRESH_FETCHED_AT = new Date(Date.now() - 60_000).toISOString();
 
 async function main(): Promise<void> {
+  assert.equal(isOrganicHay({ id: "hay-id-organic-alfalfa", kind: "organic" }), true);
+  assert.equal(isOrganicHay({ id: "hay-idaho-organic" }), true);
+  assert.equal(isOrganicHay({ id: "hay.ams_2904.north_inter_mountains.organic.alfalfa.supreme.large_square" }), false);
+  assert.equal(isOrganicHay({ id: "dairy.ams_2997.organic_ads.milk_half_gal" }), false);
+  assert.equal(isOrganicHay({ id: "grain.ams_3802.national.organic.yellow_corn" }), false);
+
   await withServer({
     TICKS_PATH: "",
     TICKS_DIR: "",
@@ -740,6 +746,105 @@ async function main(): Promise<void> {
     },
   );
 
+  const compositeDir = mkdtempSync(join(tmpdir(), "ticks-composites-"));
+  writeFileSync(
+    join(compositeDir, "board.json"),
+    JSON.stringify({
+      fetchedAt: "2026-08-27T00:00:00Z",
+      rows: [
+        {
+          id: "hay.ams_3056.idaho.alfalfa.premium.large_square",
+          group: "hay",
+          commodity: "Alfalfa",
+          unit: "$/ton",
+          price: 200,
+          asOf: "2026-08-21",
+          source: "AMS_3056 hay",
+          sourceUrl: "https://www.ams.usda.gov/mnreports/ams_3056.pdf",
+        },
+        {
+          id: "hay.ams_3058.columbia_basin.alfalfa.supreme",
+          group: "hay",
+          commodity: "Alfalfa",
+          unit: "$/ton",
+          price: 240,
+          asOf: "2026-08-20",
+          source: "AMS_3058 Columbia Basin hay",
+        },
+        {
+          id: "hay.ams_2707.texas.alfalfa.premium.small_square",
+          group: "hay",
+          commodity: "Alfalfa",
+          unit: "$/ton",
+          price: 15,
+          asOf: "2026-08-21",
+          source: "AMS_2707 Texas hay",
+        },
+        {
+          id: "cattle-tf-feeder-steer",
+          group: "cattle",
+          commodity: "Feeder steers",
+          unit: "$/cwt",
+          price: 400.2,
+          asOf: "2026-08-12",
+          source: "Twin Falls Livestock Commission market report",
+        },
+        {
+          id: "dairy.ams_2998.national.class_i.base",
+          group: "dairy",
+          commodity: "Class I milk",
+          unit: "$/cwt",
+          price: 17.04,
+          asOf: "2026-08-21",
+          source: "AMS_2998 Dairy Market News weekly",
+        },
+        {
+          id: "hogs.ams_2872.national.negotiated.carcass",
+          group: "hogs",
+          commodity: "Hogs",
+          unit: "$/cwt",
+          price: 90.75,
+          asOf: "2026-08-26",
+          source: "AMS_2872 National hog/pork summary",
+        },
+      ],
+      failed: [],
+      history: { points: [], emptyReports: [], series: [] },
+    }),
+  );
+  await withServer(
+    { TICKS_DIR: compositeDir, TICKS_AMS_DIR: join(compositeDir, "no-ams"), X402_SKIP_SETTLE: "1", X402_USDC_ATOMIC: "20000", FORM_483_DIR: join(tmpdir(), "form-483-absent-comp-") },
+    async (base) => {
+      const unpaid = await fetch(`${base}${TICKS_PATH}`);
+      assert.equal(unpaid.status, 402, "composites do not open a new paid path or skip the 402");
+      const dairyDoor = await fetch(`${base}/dairy`);
+      assert.equal(dairyDoor.status, 404, "no /dairy door");
+      const man = (await (await fetch(`${base}${MANIFEST_PATH}`)).json()) as {
+        composites?: { id: string; price: number; sourceCount: number; asOf: string; method?: string }[];
+      };
+      assert.ok(Array.isArray(man.composites) && man.composites.length >= 3);
+      const manById = Object.fromEntries((man.composites ?? []).map((row) => [row.id, row]));
+      assert.equal(manById["composite.pnw.alfalfa.ton"]?.price, 220);
+      assert.equal(manById["composite.pnw.alfalfa.ton"]?.sourceCount, 2);
+      assert.equal(manById["composite.pnw.alfalfa.ton"]?.asOf, "2026-08-21");
+      assert.equal(manById["composite.us.feeder_steer.cwt"]?.price, 400.2);
+      assert.equal(manById["composite.us.dairy.class_i.cwt"]?.price, 17.04);
+      assert.equal(manById["composite.us.hogs.negotiated_carcass.cwt"]?.price, 90.75);
+      assert.ok(!man.composites?.some((row) => row.price === 15), "Texas alfalfa is not the PNW rollup");
+      const paid = await fetch(`${base}${TICKS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as ReturnType<typeof loadTicks> & {
+        composites?: { id: string; price: number }[];
+      };
+      assert.deepEqual(
+        (paidBody.composites ?? []).map((row) => row.id).sort(),
+        (man.composites ?? []).map((row) => row.id).sort(),
+      );
+      assert.ok(!JSON.stringify(man).includes("craigslist"));
+      assert.ok(!JSON.stringify(paidBody).includes("facebook"));
+    },
+  );
+
   const liveBoard = join(DEFAULT_TICKS_DIR, "board.json");
   if (existsSync(liveBoard)) {
     await withServer(
@@ -767,15 +872,11 @@ async function main(): Promise<void> {
         assert.equal(tm.tickCount, body.ticks.length);
         const publicCopy = `${JSON.stringify(tm)}${JSON.stringify(catalogBody)}${JSON.stringify(body)}`.toLowerCase();
         assert.ok(!publicCopy.includes("inventing"), "unpaid catalog/manifest and paid body must not include collect-policy prose");
-        assert.ok(!publicCopy.includes("usda organic"), "organic hay is not a product");
         assert.ok(!publicCopy.includes("we are not inventing"), "must not include first-person collect notes");
-        assert.ok(!(tm.empty ?? []).some((e) => /organic/i.test(`${e.id ?? ""} ${e.name ?? ""} ${e.reason ?? ""}`)));
         assert.ok((tm.empty ?? []).every((e) => e.status === "empty" && e.id && !("reason" in e)));
-        assert.ok(!body.ticks.some((row) => /organic/i.test(String((row as Record<string, unknown>).id ?? ""))));
         for (const row of body.history.emptyReports as Record<string, unknown>[]) {
           assert.deepEqual(Object.keys(row).sort(), ["id", "status"]);
           assert.equal(row.status, "empty");
-          assert.ok(!/organic/i.test(String(row.id ?? "")));
         }
       },
     );

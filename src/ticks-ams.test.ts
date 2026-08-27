@@ -41,10 +41,13 @@ assert.equal(parseReportDate(fx("hay-california-2904.txt")), "2025-09-26");
 assert.ok(hayCa.length >= 4, `expected several CA hay prints, got ${hayCa.length}`);
 assert.ok(hayCa.every((row) => row.group === "hay"));
 assert.ok(hayCa.every((row) => row.id.startsWith("hay.ams_2904.")));
-assert.ok(!hayCa.some((row) => /organic/i.test(JSON.stringify(row))), "organic hay is not a product");
-const caSupreme = hayCa.find((row) => row.id.includes("north_inter_mountains") && row.id.includes("supreme") && row.id.includes("large_square"));
+const caSupreme = hayCa.find((row) => row.id.includes("north_inter_mountains") && row.id.includes("supreme") && row.id.includes("large_square") && !row.id.includes("organic"));
 assert.ok(caSupreme, "CA North Inter-Mountains supreme large square");
 assert.equal(caSupreme.price, 220);
+const caOrganic = hayCa.find((row) => row.id.includes("organic") && row.id.includes("supreme"));
+assert.ok(caOrganic, "CA North Inter-Mountains organic supreme");
+assert.equal(caOrganic.price, 300);
+assert.match(caOrganic.classGrade, /organic/i);
 assert.equal(caSupreme.unit, "$/ton");
 assert.equal(caSupreme.asOf, "2025-09-26");
 assert.match(caSupreme.source, /AMS_2904/);
@@ -221,12 +224,122 @@ assert.ok(!cattleAuction.some((row) => row.price === 169.49), "slaughter cows ar
 const mtHeadline = cattleAuction.find((row) => row.id === "cattle.ams_1778.montana_weekly.feeder-steers-ml1");
 assert.ok(mtHeadline, "MT weekly headline ML1 steers");
 
+const dairyWeekly = parseAmsReportText(
+  fx("dairy-weekly-2998.txt"),
+  report("2998"),
+  "https://www.ams.usda.gov/mnreports/dywweeklyreport.pdf",
+);
+assert.equal(parseReportDate(fx("dairy-weekly-2998.txt")), "2026-08-21");
+assert.ok(dairyWeekly.length >= 5, `expected dairy weekly prints, got ${dairyWeekly.length}`);
+assert.ok(dairyWeekly.every((row) => row.group === "dairy" && row.id.startsWith("dairy.ams_2998.")));
+const butterWk = dairyWeekly.find((row) => row.id.includes("butter.grade_aa"));
+assert.ok(butterWk);
+assert.equal(butterWk.price, 1.451);
+assert.equal(butterWk.unit, "$/lb");
+const barrelWk = dairyWeekly.find((row) => row.id.includes("cheese.barrels"));
+assert.ok(barrelWk);
+assert.equal(barrelWk.price, 1.565);
+const classI = dairyWeekly.find((row) => row.id.includes("class_i"));
+assert.ok(classI);
+assert.equal(classI.price, 17.04);
+assert.equal(classI.unit, "$/cwt");
+
+const dairyDry = parseAmsReportText(
+  fx("dairy-dry-1598.txt"),
+  report("1598"),
+  "https://www.ams.usda.gov/mnreports/ams_1598.pdf",
+);
+assert.equal(parseReportDate(fx("dairy-dry-1598.txt")), "2026-08-21");
+assert.ok(dairyDry.length >= 4, `expected dry-product prints, got ${dairyDry.length}`);
+const ndmEast = dairyDry.find((row) => /ndm|nonfat/i.test(row.id) && /central_and_east|low_medium/i.test(row.id));
+assert.ok(ndmEast, "NDM Central and East");
+assert.equal(ndmEast.lo, 1.6);
+assert.equal(ndmEast.hi, 1.9);
+
+const dairyFluid = parseAmsReportText(
+  fx("dairy-fluid-west-1102.txt"),
+  report("1102"),
+  "https://www.ams.usda.gov/mnreports/ams_1102.pdf",
+);
+assert.equal(parseReportDate(fx("dairy-fluid-west-1102.txt")), "2026-08-28");
+assert.ok(dairyFluid.length >= 2, `expected West cream butterfat prints, got ${dairyFluid.length}`);
+const creamAll = dairyFluid.find((row) => row.id.includes("all_classes"));
+assert.ok(creamAll);
+assert.equal(creamAll.lo, 1.6686);
+assert.equal(creamAll.hi, 1.8863);
+assert.ok(!dairyFluid.some((row) => /multiple/i.test(row.classGrade)), "cream multiples are not $/lb butterfat");
+
+const dairyOrg = parseAmsReportText(
+  fx("dairy-organic-2997.txt"),
+  report("2997"),
+  "https://www.ams.usda.gov/mnreports/dybdairyorganic.pdf",
+);
+assert.equal(parseReportDate(fx("dairy-organic-2997.txt")), "2026-08-21");
+assert.ok(dairyOrg.length >= 4, `expected organic advertised dairy, got ${dairyOrg.length}`);
+const orgMilk = dairyOrg.find((row) => /half_gal|milk/i.test(row.id));
+assert.ok(orgMilk, "organic half-gal milk ad");
+assert.equal(orgMilk.price, 4.16);
+assert.ok(!dairyOrg.some((row) => row.price === 9.41), "n.a. this-week butter 1 lb is not last-week's price");
+
+const hogs = parseAmsReportText(
+  fx("hog-summary-2872.txt"),
+  report("2872"),
+  "https://www.ams.usda.gov/mnreports/lsddhps.pdf",
+);
+assert.equal(parseReportDate(fx("hog-summary-2872.txt")), "2026-08-26");
+assert.ok(hogs.length >= 8, `expected hog/pork summary prints, got ${hogs.length}`);
+assert.ok(hogs.every((row) => row.group === "hogs" && row.unit === "$/cwt"));
+const hogNat = hogs.find((row) => row.id === "hogs.ams_2872.national.negotiated.carcass");
+assert.ok(hogNat);
+assert.equal(hogNat.price, 90.75);
+assert.equal(hogNat.lo, 83);
+assert.equal(hogNat.hi, 91.5);
+const cutout = hogs.find((row) => row.id.includes("pork.cutout"));
+assert.ok(cutout);
+assert.equal(cutout.price, 95.55);
+assert.ok(!hogs.some((row) => row.price === 0 || Number.isNaN(row.price)), "confidential * is not a tick");
+
+const orgGrain = parseAmsReportText(
+  fx("organic-grain-3802.txt"),
+  report("3802"),
+  "https://www.ams.usda.gov/mnreports/ams_3802.pdf",
+);
+assert.equal(parseReportDate(fx("organic-grain-3802.txt")), "2026-08-14");
+const orgCorn = orgGrain.find((row) => row.group === "grain" && /yellow_corn/i.test(row.id) && /national/i.test(row.id));
+assert.ok(orgCorn, "organic national spot corn");
+assert.equal(orgCorn.price, 13.85);
+assert.equal(orgCorn.unit, "$/bu");
+const orgHay = orgGrain.find((row) => row.group === "hay" && /alfalfa/i.test(row.id));
+assert.ok(orgHay, "organic alfalfa when the same 3802 family prints hay");
+assert.equal(orgHay.price, 300);
+assert.ok(!orgGrain.some((row) => row.price === 920), "forward-contract meal is not a spot tick");
+
+const nyFruit = parseAmsReportText(
+  fx("produce-ny-fruit-2314.txt"),
+  report("2314"),
+  "https://www.ams.usda.gov/mnreports/nx_fv010.pdf",
+);
+assert.equal(parseReportDate(fx("produce-ny-fruit-2314.txt")), "2026-08-27");
+assert.ok(nyFruit.length >= 4, `expected NY terminal fruit prints, got ${nyFruit.length}`);
+assert.ok(nyFruit.every((row) => row.group === "produce" && row.id.startsWith("produce.ams_2314.")));
+const bbCa = nyFruit.find((row) => /blackberr/i.test(row.commodity) && /california/i.test(row.id));
+assert.ok(bbCa);
+assert.equal(bbCa.lo, 36);
+assert.equal(bbCa.hi, 38);
+const straw = nyFruit.find((row) => /strawberr/i.test(row.commodity));
+assert.ok(straw);
+assert.equal(straw.price, 24, "use mostly 24.00, not holdovers 12-14");
+assert.ok(!nyFruit.some((row) => row.price === 13 || (row.lo === 12 && row.hi === 14)), "holdovers are not the print");
+
 const liveFirst = officialPdfCandidateOrder("2904", [
   "https://esmis.nal.usda.gov/sites/default/release-files/th83kz35x/h702s6021/br86d3252/AMS_2904.PDF",
 ]);
 assert.equal(liveFirst[0], "https://www.ams.usda.gov/mnreports/ams_2904.pdf");
 assert.ok(liveFirst.some((u) => u.includes("esmis.nal.usda.gov")));
 assert.ok(liveFirst.findIndex((u) => u.includes("esmis")) > liveFirst.findIndex((u) => u.includes("ams.usda.gov/mnreports")));
+const dairyPdfs = officialPdfCandidateOrder("2998", [], ["dywweeklyreport"]);
+assert.ok(dairyPdfs.some((u) => /dywweeklyreport\.pdf/i.test(u)), "weekly dairy uses official dywweeklyreport stem");
+assert.ok(dairyPdfs[0].includes("www.ams.usda.gov/mnreports"));
 
 const listing = latestEsmisPdfUrl(fx("esmis-california-listing.html"), "2904");
 assert.equal(
@@ -314,6 +427,13 @@ assert.ok(
   ["3652", "2245", "2246", "1716", "1650", "2132", "1778", "2039", "2106", "1775"].every((s) => slugs.includes(s)),
   "official AMS hay-auction barns + PNW/mountain cattle auctions",
 );
+assert.ok(
+  ["2998", "1598", "1102", "2997", "2872", "3802", "2314", "2315", "2306", "2290"].every((s) => slugs.includes(s)),
+  "official AMS dairy / hog / organic grain / national terminal-market slugs",
+);
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2998")?.group, "dairy");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2872")?.group, "hogs");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2314")?.group, "produce");
 assert.ok(AMS_NATIONAL_REPORTS.every((r) => !["3056", "3057", "3058", "3059", "2914"].includes(r.slug)));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "marsapi"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "nass-quick-stats"));
@@ -326,8 +446,18 @@ assert.ok(SKIPPED_SOURCES.some((s) => s.id === "facebook-private-barns"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "gis-echo-family-herd"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "new-x402-door"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "ams_2911_marsapi"));
+assert.ok(SKIPPED_SOURCES.some((s) => s.id === "lmr-hog-pdfs"));
+assert.ok(SKIPPED_SOURCES.some((s) => s.id === "cme-cash-trading-doors"));
+assert.ok(SKIPPED_SOURCES.some((s) => s.id === "sheep-goats"));
+assert.ok(SKIPPED_SOURCES.some((s) => s.id === "poultry-eggs"));
+assert.ok(SKIPPED_SOURCES.some((s) => s.id === "cotton-rice"));
+assert.ok(SKIPPED_SOURCES.some((s) => s.id === "if_fv130_already"));
+assert.ok(SKIPPED_SOURCES.some((s) => s.id === "mx_fv010_discontinued"));
+assert.ok(!slugs.includes("mx_fv010") && !slugs.includes("mx_fv020"), "discontinued Mexico City terminal is not a slug");
+assert.ok(!slugs.includes("2513") && !slugs.includes("2675"), "LMR hog PDFs are not catalog slugs");
+assert.ok(slugs.includes("bh_fv020") && slugs.includes("na_fv020"), "Boston/Philadelphia terminal vegetables");
 assert.equal(PRODUCT_ID, "idaho-hay-feeder-ticks");
-assert.equal(PRODUCT_NAME, "Idaho + nationwide USDA AMS hay/cattle/grain");
+assert.equal(PRODUCT_NAME, "Idaho + nationwide USDA AMS hay/cattle/grain/dairy/hogs/produce");
 
 mkdirSync(join(dir, "empty"), { recursive: true });
 assert.equal(mergeAmsNationalTicks(idaho, null).ticks.length, 1);
@@ -384,6 +514,66 @@ try {
   assert.ok(woolRec, "paid records include AMS_2911 wool");
   assert.equal(woolRec.type, "wool");
   assert.ok(paid.asOf);
+  writeAmsSnapshot(
+    {
+      ok: true,
+      product: "idaho-hay-feeder-ticks",
+      fetchedAt: "2026-08-27T16:00:00Z",
+      asOf: "2026-08-26",
+      tickCount: hayCa.length + dairyOrg.length + orgGrain.length,
+      rows: [...hayCa, ...dairyOrg, ...orgGrain],
+      failed: [],
+      sources: ["AMS_2904 California Direct Hay", "AMS_2997 Organic Dairy Market News", "AMS_3802 National Organic Grain"],
+    },
+    dir,
+  );
+  process.env.TICKS_AMS_DIR = dir;
+  const loadedOrg = loadTicks();
+  const paidOrg = paidTicksBody(loadedOrg);
+  assert.ok(paidOrg.records.some((row) => row.id.includes("organic") && row.id.startsWith("hay.ams_2904.")));
+  assert.ok(paidOrg.records.some((row) => row.id.startsWith("dairy.ams_2997.")));
+  assert.ok(paidOrg.records.some((row) => row.id.startsWith("grain.ams_3802.")));
+  writeAmsSnapshot(
+    {
+      ok: true,
+      product: "idaho-hay-feeder-ticks",
+      fetchedAt: "2026-08-27T18:00:00Z",
+      asOf: "2026-08-26",
+      tickCount: dairyWeekly.length + hogs.length + 1,
+      rows: [
+        ...dairyWeekly,
+        ...hogs,
+        {
+          id: "hay.ams_3056.idaho.alfalfa.premium.large_square",
+          group: "hay",
+          commodity: "Alfalfa",
+          label: "Idaho alfalfa premium large square",
+          market: "Idaho Direct Hay",
+          classGrade: "Premium, Large Square",
+          unit: "$/ton",
+          price: 210,
+          asOf: "2026-08-21",
+          source: "AMS_3056 hay",
+          sourceUrl: "https://www.ams.usda.gov/mnreports/ams_3056.pdf",
+          reportDate: "2026-08-21",
+          series: "hay.ams_3056.idaho.alfalfa.premium.large_square",
+        },
+      ],
+      failed: [],
+      sources: ["AMS_2998 Dairy Market News weekly", "AMS_2872 National hog/pork summary", "AMS_3056 hay"],
+    },
+    dir,
+  );
+  process.env.TICKS_AMS_DIR = dir;
+  const paidComp = paidTicksBody(loadTicks());
+  const comps = paidComp.composites ?? [];
+  assert.ok(comps.some((row) => row.id === "composite.pnw.alfalfa.ton" && row.price === 210 && row.sourceCount === 1));
+  assert.ok(comps.some((row) => row.id === "composite.us.feeder_steer.cwt"));
+  assert.ok(comps.some((row) => row.id === "composite.us.dairy.class_i.cwt" && row.price === 17.04));
+  const hogCarcass = comps.find((row) => row.id === "composite.us.hogs.negotiated_carcass.cwt");
+  assert.ok(hogCarcass);
+  assert.equal(hogCarcass.sourceCount, 2);
+  assert.equal(hogCarcass.price, 90.735);
 } finally {
   for (const [k, v] of Object.entries(prevEnv)) {
     if (v === undefined) delete process.env[k];
@@ -405,6 +595,14 @@ console.log(
     woolNational: wool.length,
     hayArthurAuction: hayAuction.length,
     cattleMontanaAuction: cattleAuction.length,
+    dairyWeekly: dairyWeekly.length,
+    dairyDry: dairyDry.length,
+    dairyFluidWest: dairyFluid.length,
+    dairyOrganicAds: dairyOrg.length,
+    hogsSummary: hogs.length,
+    organicGrain: orgGrain.length,
+    nyTerminalFruit: nyFruit.length,
+    hayCaliforniaOrganic: hayCa.filter((row) => row.id.includes("organic")).length,
     mergedTickCount: merged.ticks.length,
     keptTwinFalls: true,
   }),
