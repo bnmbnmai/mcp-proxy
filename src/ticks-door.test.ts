@@ -170,6 +170,11 @@ import {
   OFGEM_ENFORCEMENT_PATH,
 } from "./ofgem-enforcement.js";
 import {
+  GAIN_AMOUNT_ATOMIC,
+  GAIN_MANIFEST_PATH,
+  GAIN_PATH,
+} from "./gain.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -450,7 +455,7 @@ async function main(): Promise<void> {
     assert.ok((wk.instructions ?? "").includes("/sample"));
     assert.ok(!(wk.instructions ?? "").includes("idaho-hay-feeder-ticks"));
     assert.ok(!(wk.instructions ?? "").includes("Idaho-only"));
-    assert.ok((wk.instructions ?? "").includes("thirty-five paid"));
+    assert.ok((wk.instructions ?? "").includes("thirty-six paid"));
     assert.ok((wk.instructions ?? "").includes("whole current table"));
     assert.ok((wk.instructions ?? "").includes("newest 10 official texts"));
     assert.ok((wk.instructions ?? "").includes("whole current set"));
@@ -466,7 +471,7 @@ async function main(): Promise<void> {
     assert.ok(!(wk.instructions ?? "").includes("page of 100"));
     assert.ok(!(wk.instructions ?? "").includes("3,550"));
     assert.ok(!(wk.instructions ?? "").includes("3550 SKU"));
-    assert.ok(!wk.resources.some((r) => r.includes("/gain")));
+    assert.ok(wk.resources.some((r) => r.includes("/gain")), "well-known lists /gain");
     assert.equal(cdpEnvStatus(), "CDP env not set");
 
     const specRes = await fetch(`${base}${OPENAPI_PATH}`);
@@ -634,13 +639,16 @@ async function main(): Promise<void> {
     assert.ok(spec.paths[OFGEM_ENFORCEMENT_PATH]?.get?.["x-payment-info"]);
     assert.ok(spec.paths[OFGEM_ENFORCEMENT_MANIFEST_PATH]?.get);
     assert.equal(spec.paths[OFGEM_ENFORCEMENT_MANIFEST_PATH]?.get?.["x-auth"]?.mode, "none");
+    assert.ok(spec.paths[GAIN_PATH]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths[GAIN_MANIFEST_PATH]?.get);
+    assert.equal(spec.paths[GAIN_MANIFEST_PATH]?.get?.["x-auth"]?.mode, "none");
     assert.equal(spec.paths[FORM_483_PATH], undefined, "no stub /form-483 in OpenAPI without a cached body");
     assert.equal(spec.paths[FORM_483_MANIFEST_PATH], undefined);
     assert.equal(spec.paths[GMP_PATH], undefined, "no stub /gmp in OpenAPI without a cached body");
     assert.equal(spec.paths[GMP_MANIFEST_PATH], undefined);
     assert.equal(spec.paths[GMP_MD_PATH], undefined, "no stub /gmp-md in OpenAPI without a cached body");
     assert.equal(spec.paths[GMP_MD_MANIFEST_PATH], undefined);
-    assert.equal(spec.paths["/gain"], undefined);
+    assert.ok(spec.paths["/gain"]?.get?.["x-payment-info"]);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
       PUBLIC_BAZAAR_SKUS.length,
@@ -686,10 +694,10 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /ofsted-inspections"));
     assert.ok(llmsBody.includes("GET /ofwat-enforcement"));
     assert.ok(llmsBody.includes("GET /ofgem-enforcement"));
+    assert.ok(llmsBody.includes("GET /gain"));
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.includes("GET /gmp-md"));
-    assert.ok(!llmsBody.toLowerCase().includes("/gain"));
     assert.ok(!llmsBody.includes("WASDE"));
     assert.ok(llmsBody.includes(X402SCAN_SERVER_URL));
     assert.ok(!llmsBody.includes("TCPA"));
@@ -5412,6 +5420,150 @@ async function main(): Promise<void> {
   );
 
 
+  const gainDir = mkdtempSync(join(tmpdir(), "gain-"));
+  const gainBody = [
+    "Required Report: Required - Public Distribution                       Date: August 24, 2026",
+    "Report Number:      MX2026-0040",
+    "Report Name: Livestock and Products Annual",
+    "Country: Mexico",
+    "Post: Mexico City",
+    "While the outbreak of New World screwworm (NWS) has disrupted traditional livestock trade flows.",
+    ...Array.from(
+      { length: 40 },
+      (_, i) => `Official Mexico livestock attaché paragraph ${i + 1}. USDA FAS GAIN MX2026-0040.`,
+    ),
+  ].join("\n");
+  writeFileSync(
+    join(gainDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "gain-attache-report-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: FRESH_FETCHED_AT,
+      asOf: "2026-08-24",
+      license: "17 U.S.C. § 105 (U.S. government work; public domain)",
+      attribution: "USDA Foreign Agricultural Service, Global Agricultural Information Network (GAIN). U.S. government work. 17 U.S.C. § 105.",
+      sources: {
+        index: "https://gain.fas.usda.gov/",
+        pdfHost: "https://gain.fas.usda.gov/Download.aspx",
+        schedule: "https://gain.fas.usda.gov/assets/GAIN%20Report%20Schedule.pdf",
+      },
+      cards: [
+        {
+          id: "MX2026-0040",
+          reportNumber: "MX2026-0040",
+          country: "Mexico",
+          post: "Mexico City",
+          date: "2026-08-24",
+          category: "Livestock and Products",
+          title: "Livestock and Products Annual",
+          pageUrl: "https://www.fas.usda.gov/data/gain/2026/08/mexico-livestock-and-products-annual",
+          sourceUrl: "https://apps.fas.usda.gov/newgainapi/api/Report/DownloadReportByFileName?fileName=Livestock%20and%20Products%20Annual_Mexico%20City_Mexico_MX2026-0040.pdf",
+          body: gainBody,
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      GAIN_DIR: gainDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-gain-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${GAIN_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /gain must be 402");
+      const body402 = (await unpaid.json()) as {
+        payTo: string;
+        asset: string;
+        resource: string;
+        accepts: { maxAmountRequired?: string; extra?: { name?: string } }[];
+      };
+      assert.equal(body402.resource, GAIN_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, GAIN_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
+      const unpaidId = await fetch(`${base}${GAIN_PATH}?id=MX2026-0040`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /gain?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("New World screwworm"));
+      assert.ok(!leak402.includes("546,000 MT"));
+      assert.ok(!leak402.includes("277.2 million MT"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === GAIN_PATH), true);
+      assert.equal(shop.products.some((p) => p.path === OFGEM_ENFORCEMENT_PATH), true);
+      assert.equal(shop.products.some((p) => p.path === FORM_483_PATH), false);
+      assert.equal(shop.products.length, PUBLIC_BAZAAR_SKUS.length);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(GAIN_PATH)), "well-known lists /gain");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /gain"));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[GAIN_PATH]);
+      assert.ok(spec.paths[GAIN_MANIFEST_PATH]);
+
+      const manifest = await fetch(`${base}${GAIN_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "gain free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        asOf?: string;
+        cards?: { country?: string; id?: string; body?: string; paidUrl?: string; page?: number }[];
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.asOf, "2026-08-24");
+      assert.equal(man.cards?.[0]?.country, "Mexico");
+      assert.equal(man.cards?.[0]?.id, "MX2026-0040");
+      assert.equal(man.cards?.[0]?.paidUrl, `${GAIN_PATH}?id=MX2026-0040`);
+      assert.ok(man.cards?.[0]?.page);
+      const manBlob = JSON.stringify(man);
+      assert.ok(!manBlob.includes("New World screwworm"));
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+
+      const qName = await fetch(`${base}${GAIN_MANIFEST_PATH}?q=mexico`);
+      assert.equal(qName.status, 200);
+      const qNameMan = (await qName.json()) as { cards?: { id?: string; paidUrl?: string }[] };
+      assert.equal(qNameMan.cards?.[0]?.id, "MX2026-0040");
+
+      const paid = await fetch(`${base}${GAIN_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { country: string; date: string; id: string; body: string }[];
+        records?: { id: string; date: string | null; firm: string; url: string; type: string }[];
+        recordCount?: number;
+        asOf?: string;
+      };
+      assert.equal(paidBody.product, "gain-attache-report-bodies");
+      assert.equal(paidBody.cards[0]?.country, "Mexico");
+      assert.equal(paidBody.cards[0]?.date, "2026-08-24");
+      assert.equal(paidBody.cards[0]?.id, "MX2026-0040");
+      assert.ok(paidBody.cards[0]?.body.includes("New World screwworm"));
+      assert.ok((paidBody.recordCount ?? 0) > 0, "empty records[] is a fail");
+      assert.equal(paidBody.asOf, "2026-08-24");
+      assert.equal(paidBody.records?.[0]?.id, "MX2026-0040");
+      assert.equal(paidBody.records?.[0]?.type, "gain");
+      assert.equal(paidBody.records?.[0]?.firm, "Mexico");
+      assert.ok((paidBody.cards.length ?? 0) <= 10, "paid page returns <=10");
+
+      const paidId = await fetch(`${base}${GAIN_PATH}?id=MX2026-0040`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paidId.status, 200);
+      const paidIdBody = (await paidId.json()) as { cards: { id: string; body: string }[]; recordCount?: number };
+      assert.equal(paidIdBody.cards[0]?.id, "MX2026-0040");
+      assert.equal(paidIdBody.cards.length, 1);
+      assert.equal(paidIdBody.recordCount, 1);
+      assert.ok(paidIdBody.cards[0]?.body.includes("New World screwworm"));
+    },
+  );
+
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -5492,7 +5644,7 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D8_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(UNTITLED_LETTERS_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(PCAC_PATH)));
-      assert.ok((wk.instructions ?? "").includes("thirty-six paid"));
+      assert.ok((wk.instructions ?? "").includes("thirty-seven paid"));
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
         paths: Record<string, { get?: { "x-payment-info"?: { price?: { amount?: string } } } }>;
@@ -5648,7 +5800,7 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.endsWith(OFAC_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(BIS_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(CFTC_ORDERS_PATH)));
-      assert.ok((wk.instructions ?? "").includes("thirty-seven paid"));
+      assert.ok((wk.instructions ?? "").includes("thirty-eight paid"));
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
         paths: Record<string, { get?: { "x-payment-info"?: { price?: { amount?: string } } } }>;
@@ -6040,7 +6192,7 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.endsWith(OFAC_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(BIS_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(CFTC_ORDERS_PATH)));
-      assert.ok((wk.instructions ?? "").includes("thirty-eight paid"));
+      assert.ok((wk.instructions ?? "").includes("thirty-nine paid"));
       assert.ok((wk.instructions ?? "").includes("whole current table"));
       assert.ok((wk.instructions ?? "").includes("newest 10 official texts"));
       assert.ok((wk.instructions ?? "").includes("?q="));
@@ -6176,7 +6328,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -6206,6 +6358,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("ofsted-inspections"), true);
   assert.equal(isPublicBazaarSku("ofwat-enforcement"), true);
   assert.equal(isPublicBazaarSku("ofgem-enforcement"), true);
+  assert.equal(isPublicBazaarSku("gain"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");

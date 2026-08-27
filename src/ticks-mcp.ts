@@ -53,7 +53,6 @@ const FORBIDDEN_NON_SHOP = [
   "fred",
   "wasde",
   "economic_indicators",
-  "/gain",
   "/api/",
 ] as const;
 
