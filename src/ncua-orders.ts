@@ -2,7 +2,10 @@
  * NCUA institution consent C&D TEXT door.
  * Official per-order HTML body pages, or official /files/administrative-orders PDFs
  * when the Drupal page is only a teaser. Does not invent order text.
- * Official CSV is docket/name/URL metadata only.
+ * Official leftover catalog is the same /files/administrative-orders path —
+ * leftover AO{YYYY}-*.pdf plus leftover {docket}.pdf stems the first walk
+ * missed. 2011–2017 leftover C&D teasers are image-only scans (pdftotext
+ * empty). Does not invent OCR. Official CSV is docket/name/URL metadata only.
  * Drupal ?_format=json is 406. Sibling .json/.txt 404.
  * Not 2026 people/IAP. Not late-filer CMP $ table. Not LUAs. Not terminations.
  * Not FRB /frb-orders. Not FDIC /fdic-orders. Not OCC /occ-cd.
@@ -29,7 +32,9 @@ export const ORDER_BASE = "https://ncua.gov/news/enforcement-actions/administrat
 export const ORDER_PATH_RE =
   /\/news\/enforcement-actions\/administrative-orders\/(\d{4})\/([a-z0-9][a-z0-9-]*)\/?/i;
 export const PDF_ORIGIN = "https://ncua.gov";
-export const PDF_PATH_RE = /^\/files\/administrative-orders\/ao[^/?#]+\.pdf$/i;
+/** Official leftover PDF stem: AO{YYYY}-* or leftover {yy}-{nnnn}-{region}. */
+export const PDF_PATH_RE =
+  /^\/files\/administrative-orders\/(?:ao[^/?#]+|\d{2}-\d{4}-(?:[a-z]{2}|r[1-5]|i{1,3}|iv|vi?|[1-5]))\.pdf$/i;
 /** Recent ER/WR/SR plus older regional R1–R5 / roman / digit suffixes. */
 export const DOCKET_RE = /\b(\d{2}-\d{4}-(?:[A-Z]{2}|R[1-5]|I{1,3}|IV|VI?|[1-5]))\b/i;
 export const LICENSE = "17 USC 105";
@@ -855,20 +860,25 @@ function mergeOfficialListings(listed: NcuaOrderListing[], seeds: NcuaOrderListi
 
 async function loadOfficialListings(dir: string): Promise<{ listed: NcuaOrderListing[]; listedCount: number }> {
   if (dir) {
-    const json = readNamedFile(dir, ["listing-excerpt.json", "listing.json"]);
-    if (json) {
+    const listed: NcuaOrderListing[] = [];
+    for (const name of ["listing-excerpt.json", "leftover-listing-excerpt.json", "listing.json"]) {
+      const json = readNamedFile(dir, [name]);
+      if (!json) continue;
       const rows = JSON.parse(json) as NcuaListingRow[];
-      const listed = Array.isArray(rows) ? parseListingRows(rows) : [];
-      return { listed, listedCount: listed.length };
+      if (Array.isArray(rows)) listed.push(...parseListingRows(rows));
+    }
+    if (listed.length > 0) {
+      const merged = mergeOfficialListings(listed, []);
+      return { listed: merged, listedCount: merged.length };
     }
     const csv = readNamedFile(dir, ["csv-metadata.csv", "administrative-orders.csv"]);
     if (csv) {
-      const listed = parseNcuaCsv(csv);
-      return { listed, listedCount: listed.length };
+      const fromCsv = parseNcuaCsv(csv);
+      return { listed: fromCsv, listedCount: fromCsv.length };
     }
     const html = readNamedFile(dir, ["listing-excerpt.html", "listing.html"]);
-    const listed = html ? parseListingHtml(html) : [];
-    return { listed, listedCount: listed.length };
+    const fromHtml = html ? parseListingHtml(html) : [];
+    return { listed: fromHtml, listedCount: fromHtml.length };
   }
   try {
     const listed = parseNcuaCsv(await fetchNcuaHtml(CSV_URL));

@@ -4,7 +4,7 @@ Official NCUA-authored **institution consent Cease-and-Desist TEXT** extracted f
 
 Always listed on well-known / OpenAPI / llms.txt / shop catalog. Unpaid `GET /ncua-orders` is HTTP 402.
 
-v1 seeds **5** official institution C&D body pages. Required seed is Live Life Federal Credit Union (`21-0105-ER`, 2021). Family: Phi Beta Sigma `19-1061-ER`, Defense Logistics `19-0187-ER`. Recent institution cards are often CMP/termination — harvest stays on C&D body pages. Leftover grow follows official `/files/administrative-orders/AO*.pdf` when the Drupal page is a teaser.
+v1 seeds **5** official institution C&D body pages. Required seed is Live Life Federal Credit Union (`21-0105-ER`, 2021). Family: Phi Beta Sigma `19-1061-ER`, Defense Logistics `19-0187-ER`. Recent institution cards are often CMP/termination — harvest stays on C&D body pages. Leftover grow follows official `/files/administrative-orders/AO*.pdf` and leftover `{docket}.pdf` stems when the Drupal page is a teaser. 2011–2017 leftover C&D teasers (Montgomery County Teachers `12-0027-R2`, White Rock `14-0057-R2`, Borinquen `11-0022-R2`, Bagumbayan `13-0039-R4`, Garden Savings `07-0502-II`, leftover stem `17-0020-R1`) are official image-only scans — `pdftotext` empty, do not invent OCR. Leftover people/IAP (Rhonda Hitt `11-0028-R4`) stay out.
 
 ## Paths
 
@@ -28,7 +28,7 @@ Paid body fields: `id`, `docket`, `creditUnion`, `location`, `date`, `title`, `s
 
 Leak-tests already passed on the live NCUA hosts: official CSV is metadata; Drupal `?_format=json` → 406; sibling `.json` / `.txt` 404; Federal Register API 0 on `21-0105-ER`.
 
-`data/ncua-orders/` is gitignored. Official extractable institution C&D text on ncua.gov tops out at **12** (5 HTML seeds + 7 leftover AO PDFs). Remaining catalog rows are CMP, people/IAP, termination, or image-only scans. Do not pad.
+`data/ncua-orders/` is gitignored. Official extractable institution C&D text on ncua.gov tops out at **12** (5 HTML seeds + 7 leftover AO PDFs). Leftover walk of 2011–2017 teaser PDFs plus leftover `{docket}.pdf` stems and 1998–2010 text-layer leftovers found CMP, people/IAP, termination, or image-only scans. Do not pad. Do not OCR.
 
 Free `GET /ncua-orders/manifest.json` is credit union / docket / date / sourceUrl only. Needles such as `Marijuana-Related`, `METRC`, and `BSA Expectations` stay out of unpaid responses.
 
@@ -55,7 +55,7 @@ NCUA_ORDERS_LIMIT=24 NCUA_ORDERS_MAX_FETCH=36 npm run collect:ncua-orders
 systemctl --user restart idaho-ticks-x402.service
 ```
 
-Live after leftover apply (2026-08-26): **cardCount 12**, asOf **2022-11-29**, fetchedAt **2026-08-26T15:32:11.454Z**. Official extractable institution C&D text tops out at 12. Price still $0.02 / $0.05. No new SKU. Restarted only `idaho-ticks-x402.service`.
+Live after leftover apply (2026-08-26): **cardCount 12**, asOf **2022-11-29**. Leftover pulse walked official leftover C&D teasers / leftover `{docket}.pdf` stems; extractable text still **12**. Price still $0.02 / $0.05. No new SKU. Restarted only `idaho-ticks-x402.service`.
 
 ## Local smoke (cloud VM / laptop)
 
