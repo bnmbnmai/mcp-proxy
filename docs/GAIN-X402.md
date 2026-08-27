@@ -10,9 +10,11 @@ Public catalog (`SHOP-INDEX.md` / README) lists this door. MCP tools stay genera
 
 | Field | Value |
 | --- | --- |
-| Product | USDA FAS GAIN attaché report TEXT (Grain and Feed / Livestock / Poultry / Oilseeds) |
-| Bag | first slice: **8** official texts |
-| Price | `$0.02` via `?id=`; `$0.05` newest 10 (whole current set while the bag is under 10) |
+| Product | USDA FAS GAIN attaché report TEXT |
+| Bag | Newest 10 official texts |
+| Price | `$0.02` / `$0.05` |
+
+This repo does **not** own the bnm.farm lander card. tv-remote follow-up: add a `/gain` card there after apply. Do not put first-slice counts, category lists, or habit-calendar notes on the lander card.
 
 ## Paths
 
