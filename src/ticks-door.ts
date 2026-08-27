@@ -619,6 +619,15 @@ export const TICKS_SOURCE_NAMES = [
   "AMS_3239 Wyoming grain",
   "AMS_2887 National sunflower/flax",
   "AMS_2911 National Wool",
+  "AMS_3652 Arthur hay auction",
+  "AMS_2245 Dakota hay auction",
+  "AMS_2246 Pipestone hay auction",
+  "AMS_1716 Wolgemuth hay auction",
+  "AMS_1650 Topeka hay auction",
+  "AMS_2132 Toppenish cattle auction",
+  "AMS_1778 Montana weekly cattle auction",
+  "AMS_2039 Utah weekly cattle auction",
+  "AMS_2106 Wyoming weekly cattle auction",
 ] as const;
 
 export type TickStatus = "ok" | "empty" | "stale";
