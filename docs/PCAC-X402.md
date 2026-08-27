@@ -59,7 +59,7 @@ PCAC_LIMIT=24 PCAC_MAX_FETCH=36 npm run collect:pcac
 systemctl --user restart idaho-ticks-x402.service
 ```
 
-Live after leftover apply (2026-08-26): **listedCount 15**, **cardCount 14**, asOf **2026-05-15**. Hydroxyprogesterone caproate (`182090`, Withdrawn or Removed) failed the 503A evaluation gate. Leftover walk of 2027/2022 year tables plus leftover 2021/2018/2017/2016 briefing pages added **0** extractable per-substance bodies — remaining official catalog is combined briefing packs or empty. Price still $0.02 / $0.05. No new SKU. Restarted only `idaho-ticks-x402.service`. Official extractable catalog is still the July 2026 + October 29, 2024 + December 4, 2024 meeting pages.
+Live after leftover apply (2026-08-27): **listedCount 15**, **cardCount 14**, asOf **2026-05-15**, fetchedAt **2026-08-27T05:29:46.873Z**. Hydroxyprogesterone caproate (`182090`, Withdrawn or Removed) failed the 503A evaluation gate. This pulse reused 14 bodies, fetched 0 leftover PDFs, and added 0 extractable per-substance texts. Remaining official catalog is combined FDA Briefing Information packs (2022 / 2021 / 2016–2018) or the empty 2027 year table. Price still $0.02 / $0.05. No new SKU. Restarted only `idaho-ticks-x402.service`. Official extractable catalog is still the July 2026 + October 29, 2024 + December 4, 2024 meeting pages.
 
 ## Local smoke (cloud VM / laptop)
 
