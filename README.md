@@ -1,13 +1,13 @@
-# BNM Data Shop — 36 official public-data x402 GETs at ticks.bnm.farm
+# BNM Data Shop — official public-data x402 GETs at ticks.bnm.farm
 
-Official public data as JSON at [https://ticks.bnm.farm](https://ticks.bnm.farm). Thirty-six paid GETs. USDC on Base (`eip155:8453`) to `0xf59621FC406D266e18f314Ae18eF0a33b8401004`.
+Official public data as JSON at [https://ticks.bnm.farm](https://ticks.bnm.farm). Paid GET count is live [/.well-known/x402](https://ticks.bnm.farm/.well-known/x402), not a hardcoded door number. USDC on Base (`eip155:8453`) to `0xf59621FC406D266e18f314Ae18eF0a33b8401004`.
 
 Shop: [https://bnm.farm/](https://bnm.farm/) · Agent brief: [https://ticks.bnm.farm/llms.txt](https://ticks.bnm.farm/llms.txt) · Door list: [SHOP-INDEX.md](./SHOP-INDEX.md)
 
 ## Bags and prices
 
 - **Tables** (`GET /ticks`, `GET /import-alerts`) — **$0.05** = the entire current table.
-- **Body doors** (the other 34 paid GETs) — free search `GET https://ticks.bnm.farm/{door}/manifest.json?q=` (HTTP 200) returns `id` and the `?id=` URL. Then pay `GET ?id=` (**$0.02**, one official text) or the page (**$0.05**, newest 10 official texts; older page `?before=`, another $0.05).
+- **Body doors** — free search `GET https://ticks.bnm.farm/{door}/manifest.json?q=` (HTTP 200) returns `id` and the `?id=` URL. Then pay `GET ?id=` (**$0.02**, one official text) or the page (**$0.05**, newest 10 official texts; older page `?before=`, another $0.05).
 
 Unpaid GET on a paid path returns HTTP 402 with `PAYMENT-REQUIRED`. No request body.
 
@@ -16,10 +16,10 @@ Unpaid GET on a paid path returns HTTP 402 with `PAYMENT-REQUIRED`. No request b
 - `GET /sample` — canned paid-JSON keys. HTTP 200.
 - `GET /firm-check?q=` — firm-name search across Form 483, warning letters, and the import-alert table. HTTP 200. Names the door and the `?id=` or page to buy.
 - `GET /{door}/manifest.json?q=` — free index/search on every extracted-body door.
-- `GET /.well-known/x402` — the 36 paid URLs.
+- `GET /.well-known/x402` — the live paid URLs.
 - `GET /openapi.json` — OpenAPI 3.1.
 - `GET /llms.txt` — short agent guidance.
-- `GET /` — shop JSON (payTo + the 36 products).
+- `GET /` — shop JSON (payTo + the live products).
 
 ## MCP
 
@@ -66,6 +66,7 @@ npx -y mcp-remote https://ticks.bnm.farm/mcp
 | `/cder-reviews` | FDA CDER Integrated Review text. Newest 10 official texts | $0.02 / $0.05 |
 | `/npdes-permits` | EPA-issued individual NPDES permit text. Newest 10 official texts | $0.02 / $0.05 |
 | `/ofsted-inspections` | Ofsted school / provider inspection-report text. Newest 10 official texts | $0.02 / $0.05 |
+| `/gain` | USDA FAS GAIN attaché report TEXT (Grain and Feed / Livestock / Poultry / Oilseeds). First slice: eight official texts. Newest 10 official texts | $0.02 / $0.05 |
 | `/form-483` | FDA Form 483 inspectional observation bodies. Newest 10 official texts | $0.02 / $0.05 |
 | `/gmp` | Health Canada Drug GMP report-card observation text + C.02 cites. Newest 10 official texts | $0.02 / $0.05 |
 | `/gmp-md` | Health Canada medical-device report-card observation text + MDR cites. Newest 10 official texts | $0.02 / $0.05 |

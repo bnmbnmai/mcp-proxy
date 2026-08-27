@@ -1,0 +1,9 @@
+Global Agricultural Trade System (GATS)
+Query results — FAS Open Data numbers, not attaché report TEXT.
+
+HS Code,Description,2024,2025
+1001,Wheat & Meslin,1400680,1522109
+1201,Soybeans,715393,698441
+
+Source: https://apps.fas.usda.gov/opendataweb/home
+Do not sell GATS tables as GAIN attaché bodies.

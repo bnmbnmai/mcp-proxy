@@ -1,0 +1,1275 @@
+Required Report: Required - Public Distribution              Date: April 15, 2026
+
+                                                             Report Number:      VM2026-0012
+
+
+
+
+Report Name: Grain and Feed Annual
+Country: Vietnam
+
+Post: Ho Chi Minh City
+
+Report Category: Grain and Feed
+
+
+
+
+Prepared By:    Loc Nguyen
+
+Approved By: Travis Stahl
+
+Report Highlights:
+
+Vietnam’s livestock and aquaculture sectors continue steady growth in CY 2026, driven by stronger
+domestic consumption and export demand. Feed ingredient import demand is forecast to expand to
+support domestic use and exports. Weaker global rice demand has led to downward revisions in
+Vietnam's rice production and export forecasts.
+
+
+
+
+THIS REPORT CONTAINS ASSESSMENTS OF COMMODITY AND TRADE ISSUES MADE BY USDA STAFF AND NOT NECESSARILY
+STATEMENTS OF OFFICIAL U.S. GOVERNMENT POLICY
+Acronyms
+CY – Calendar Year
+DDGS – Distillers’ dried grains with solubles
+GDP – Gross Domestic Product
+HA - Hectare
+NSO – National Statistics Office
+MAE – Ministry of Agriculture and Environment
+MFN - Most-Favored-Nation
+MMT – million metric tons
+MT - metric tons
+MY – Marketing Year
+TDM – Trade Data Monitor
+TY - Trade Year
+VASEP – Vietnam Association of Seafood Export and Production
+Executive Summary
+
+Vietnam’s livestock and aquaculture sectors are expected to grow steadily in Calendar Year (CY) 2026,
+driven by rising domestic consumption and exports. Post forecasts total feed demand to reach 30.6
+MMT in CY 2027, up from 29.5 MMT forecast for CY 2026 and a revised estimate of 28.6 MMT for
+CY 2025.
+
+Corn production is expected to continue declining, while increased exports of local feed ingredients are
+driving higher demand for imported feed inputs such as corn and dried distillers’ grains with solubles
+(DDGS). Marketing Year (MY) 2026/27 corn imports are forecast at 13.3 MMT and estimated MY
+2025/26 corn imports are revised up to 13 MMT.
+
+Post forecasts MY 2026/27 wheat imports at 6.1 MMT, up from the MY 2025/26 estimate of 5.8 MMT,
+as demand for food processing remains robust, supported by growth in the bakery and instant noodle
+industries.
+
+Weaker global demand has led to a downward revision in Vietnam’s rice production and exports. MY
+2026/27 rice exports are forecast at 7.6 MMT, while MY 2025/26 rice exports are revised down to 7.9
+MMT.
+Vietnam Feed Industry Summary
+
+Vietnam’s economy continued its strong performance in 2025, with gross domestic product (GDP)
+growth above 8 percent and GDP per capita surpassing $5,000, about a 7 percent increase compared to
+2024. Growth is driven by exports, rising foreign direct investment, and high public investment.
+Tourism rebounded to a record 21 million international visitors, about 20 percent higher compared to
+2024, and higher than pre-pandemic levels, boosting consumption and overall growth.
+
+Vietnam held nationwide elections for the National Assembly and local People’s Committees in March
+and plans to form a new central government cabinet in April. Vietnam leaders seek double-digit
+economic growth and have set a 10 percent or higher annual GDP target for 2026-2030 to avoid the
+middle-income trap and move toward a high-tech, digital economy. Global institutions, including ADB,
+Moody’s, and Standard Chartered, forecast solid growth of 6.5–7.5 percent. Despite higher freight costs
+for feed, industry sources report feed ingredient supply chains remain stable, with most imports from the
+United States, Australia, South America and the Black Sea region.
+
+In 2025, agricultural GDP (including crops, husbandry, forestry, and fishery) grew by around 4 percent
+with total exports nearing 70 billion USD. Animal product exports reached about $630 million, the
+highest on record. The livestock sector expanded herd size and output despite disease and market
+volatility, as production shifts from small‑scale household farms to larger, biosecure, high‑tech
+operations. These farms are improving productivity, quality, disease control, and food safety. Ministry
+of Agriculture and Environment (MAE) reported that in 2025 swine and poultry herds grew by 0.5
+percent and 3 percent respectively; milk and egg production increased by 6 percent and 5 percent, while
+the cattle herd declined.
+
+Figure 1. Domestic Pork and Broiler Prices
+                    90,000
+                    80,000
+                    70,000
+   Price (VND\kg)
+
+
+
+
+                    60,000
+                    50,000
+                    40,000
+                    30,000
+                    20,000
+                    10,000
+                        -
+                             23/04/2024
+
+
+
+
+                             01/07/2025
+                             05/12/2023
+                             26/12/2023
+                             12/03/2024
+                             02/04/2024
+
+                             14/05/2024
+                             04/06/2024
+                             25/06/2024
+                             16/07/2024
+                             06/08/2024
+                             27/08/2024
+                             17/09/2024
+                             08/10/2024
+                             29/10/2024
+                             19/11/2024
+                             10/12/2024
+                             31/12/2024
+                             21/01/2025
+                             18/02/2025
+                             11/03/2025
+                             08/04/2025
+                             29/04/2025
+                             20/05/2025
+                             10/06/2025
+
+                             22/07/2025
+                             12/08/2025
+                             02/09/2025
+                             23/09/2025
+                             14/10/2025
+                             04/11/2025
+                             25/11/2025
+                             16/12/2025
+                             06/01/2026
+                             27/01/2026
+                             24/02/2026
+                             17/03/2026
+
+
+
+
+                                 Pork       Native Broiler      White Broiler
+
+Source: local contacts and media sources
+Exchange rate: $US: 26,323 VND (April 1st, 2026)
+During 2025, relatively high live hog prices motivated many households and businesses to expand
+production and restock herds in the first two quarters. By the third quarter, however, African Swine
+Fever (ASF) outbreaks in most provinces made farmers cautious. Farmers and authorities culled
+approximately 1.2 million hogs in 2025, according to the MAE. The culling temporarily increased pork
+supply, causing localized oversupply and driving live hog prices lower, particularly in November when
+prices fell to around 50,000 VND per kg. By late 2025 and early 2026, as authorities brought ASF under
+control and demand rose – especially during holidays and Lunar New Year – live hog prices began to
+recover. However, high feed and breeding stock costs kept production expenses elevated, leaving
+farmers with unstable profits and vulnerable to volatility.
+
+Broiler chicken prices, both native and white, increased in 2025 compared with 2024 due to high
+demand and tighter supply. Natural disasters and flooding further reduced poultry output, tightening
+supply and supporting higher prices. Consumers increasingly substituted chicken for pork amid disease
+outbreaks and food safety concerns, while growing export demand from Cambodia also supported price
+increases.
+
+Figure 2. Monthly Catfish and Shrimp Export Revenues, CY 2023 to February 2026
+
+             600
+
+
+             500
+
+
+             400
+ $ Million
+
+
+
+
+             300
+
+
+             200
+
+
+             100
+
+
+               0
+
+
+
+
+                                            Catfish   Shrimp
+
+Source: Vietnam Association of Seafood Export and Production (VASEP)
+
+National Statistics Office (NSO) data indicate that, in 2025, aquaculture fish and shrimp production rose
+by 5 percent and 6 percent, respectively, compared with 2024. Beyond pangasius and shrimp, tilapia is
+emerging as a major aquaculture product. Producers have established tilapia production in the Mekong
+Delta and are expanding into northern provinces. VASEP reported catfish exports of $2.2 billion and
+shrimp exports of $4.6 billion, up 8 percent and 19 percent, respectively. These aquaculture sectors still
+face challenges. Catfish fingerling prices in the Mekong Delta region have doubled, slowing restocking,
+a trend expected to persist through the second quarter of 2026. Contacts also report that diseases and
+environmental pollution are significantly hindering restocking, particularly for shrimp farms.
+The Animal feed industry recorded solid growth in 2025, supported by lower and more stable global raw
+material prices and steady domestic demand. Total animal feed production reached approximately 22
+million tons, up 3 percent, according to the Department of Livestock and Veterinary. Vietnam exported
+nearly $1.44 billion in animal feed in 2025, an increase of approximately 40 percent compared with
+2024, according to Vietnam Customs data. China and Southeast Asian countries remained the dominant
+export markets. Vietnam also exported about 1.2 million metric tons (MMT) of rice bran and 4 MMT of
+cassava in 2025, increases of roughly 100 percent and 52 percent, respectively, compared with 2024.
+
+Post forecasts that total feed demand will reach 30.6 MMT in CY 2027. Based on updated data from the
+Department of Livestock and Veterinary, Post revises CY 2026 feed demand to 29.5 MMT and CY 2025
+to 28.6 MMT.
+
+Table 1. Feed Demand in Metric Tons
+                            CY 2025             CY 2026            CY 2027
+Animal Feed                          22,120,000         22,770,000         23,480,000
+Aquaculture Feed                      6,500,000          6,730,000          7,120,000
+Total                                28,620,000         29,500,000         30,600,000
+Source: Post estimates and forecasts
+
+Table 2. Feed Ingredients Demand in Metric Tons
+
+Year                                    CY 2025           CY 2026         CY 2027
+Imports                                       23,570,000       24,330,000     25,420,000
+Soybean Meal*                                   7,206,000       7,400,000      7,814,000
+Corn                                            9,214,000       9,713,000     10,000,000
+Distillers dried grains soluble (DDGS)          1,550,000       1,572,000      1,790,000
+Feed wheat                                      2,580,000       2,615,000      2,657,000
+Rice bran, broken rice                            545,000         540,000        550,000
+Plant-based meal/bran                           1,825,000       1,815,000      1,811,000
+Other protein meals                               650,000         675,000        798,000
+Local Supply                                    5,050,000       5,170,000      5,180,000
+Corn                                            1,700,000       1,600,000      1,580,000
+Rice bran, broken rice                          2,800,000       3,000,000      2,955,000
+Cassava                                           550,000         570,000        645,000
+Total                                         28,620,000       29,500,000     30,600,000
+Source: Post’s estimate.
+*Including local crush from imported beans.
+CORN
+Production, Supply, and Distribution
+Corn                               2024/2025          2025/2026         2026/2027
+Market Year Begins                 May 2024           May 2025          May 2026
+                               USDA               USDA               USDA       New
+Vietnam                                 New Post           New Post
+                               Official           Official           Official   Post
+Area Harvested (1000 HA)            865       820      835       810          0    800
+Beginning Stocks (1000 MT)          800       800      900       745          0    695
+Production (1000 MT)               4350      4105     4200      4100          0   4000
+MY Imports (1000 MT)              12000     12240    13500     13000          0 13300
+TY Imports (1000 MT)              12700     12370    13800     13600          0 13300
+Total Supply (1000 MT)            17150     17145    18600     17845          0 17995
+MY Exports (1000 MT)                500       500      500       600          0    650
+TY Exports (1000 MT)                500       500      500       600          0    650
+Feed and Residual (1000 MT)       14300     14400    15700     15000          0 15100
+FSI Consumption (1000 MT)          1450      1500     1450      1550          0   1650
+Total Consumption (1000 MT)       15750     15900    17150     16550          0 16750
+Ending Stocks (1000 MT)             900       745      950       695          0    595
+Total Distribution (1000 MT)      17150     17145    18600     17845          0 17995
+Yield (MT/HA)                    5.0289    5.0061   5.0299    5.0617          0      5
+
+(1000 HA), (1000 MT), (MT/HA)
+MY = Marketing Year, begins with the month listed at the top of each column
+TY = Trade Year, which for Corn begins in October for all countries. TY 2026/2027 = October
+2026 - September 2027
+
+OFFICIAL DATA CAN BE ACCESSED AT: PSD Online Advanced Query
+PRODUCTION
+The forecasts for MY 2026/27 corn production and area have steadily declined to 4 MMT and 800,000
+hectares, respectively. The estimates for MY 2025/26 corn production and area remained at 4.1 MMT
+and 810,000 hectares, unchanged from the previous estimate.
+
+Corn cultivation in Vietnam is highly diversified, with varieties selected based on intended use and
+ecological region. Varieties include corn for feed and industrial uses, corn for human consumption such
+as glutinous corn (sticky varieties consumed fresh), sweet corn (fresh consumption or processing) and
+nutrient-rich yellow corn. The cultivation period for corn typically ranges from 90 to 100 days, enabling
+up to three to four production cycles per year under optimal conditions. Corn is often grown in rotation
+or intercropped with other cash crops such as rice or vegetables, which complicates accurate estimation
+of the total harvested area.
+
+Figure 3. Corn Area and Productivity by Ecological Regions in Vietnam, CY 2024
+ 8.0
+
+ 7.0
+
+ 6.0
+
+ 5.0
+
+ 4.0
+
+ 3.0
+
+ 2.0
+
+ 1.0
+
+  -
+       Red River Delta   Northern   Northern Central      Central       South East   Mekong River
+                         Mountain                        Highlands                      Delta
+
+                               Area (100,000 hectares)     Yield (tons/ha)
+
+Source: Post calculation by using NSO Data.
+
+Figure 3 shows that corn production is concentrated in the Northern Mountains region, which accounts
+for approximately half of Vietnam's total corn area. However, this region has the lowest productivity
+compared with other regions, particularly the Central Highlands, Southeast, and Mekong River Delta,
+which have smaller planted areas but higher yields. The concentration of production in low-productivity
+regions, combined with strong competition from imports, discourages farmers from expanding corn
+cultivation. Instead, farmers increasingly shift to more profitable crops such as fruits and vegetables.
+According to the NSO, corn harvested areas and production have continued to decline as farmers switch
+to other crops. However, official estimates remain higher than those reported by trade contacts and
+industry sources.
+CONSUMPTION
+Post forecasts MY 2026/27 corn consumption at 16.75 MMT. The estimate of MY 2025/26 corn
+consumption is revised up to 16.55 MMT, including 15 MMT for feed and residual and 1.55 MMT for
+food, seed and industrial (FSI) consumption. Post revised MY 2024/25 consumption up to 15.9 MMT,
+with higher feed and residual consumption. Lower prices for corn and Dried Distillers Grains with
+Soluble (DDGS) have made these feed ingredients more affordable, driving increased demand among
+producers seeking cost-effective options.
+
+TRADE
+
+Imports
+The forecast for MY 2026/27 corn imports is 13.3 MMT, driven by strong demand for feed
+consumption, particularly in pork and poultry sectors. The estimate of MY 2025/26 imports is revised
+slightly up to 13 MMT based on recent data from Vietnam customs.
+
+Figure 4. Vietnam’s Monthly Corn Imports, CY 2023 to February 2026
+                  1,600
+                  1,400
+                  1,200
+ Quantity (TMT)
+
+
+
+
+                  1,000
+                   800
+                   600
+                   400
+                   200
+                     -
+
+
+
+Source: Post calculated based on Vietnam customs data
+
+Corn imports totaled 12 MMT in CY 2025, a decrease of about 4 percent compared with the previous
+year. However, in the first 2 months of CY 2026, corn imports reached 2.6 MMT, approximately 70
+percent higher compared to the same period in CY 2025, signaling the potential for higher imports in
+CY 2026. Argentina and Brazil remained the primary suppliers, accounting for 47 percent and 35
+percent of Vietnam’s corn imports, respectively. Vietnam imported approximately 1.6 MMT of corn
+from the United States, a significant increase from CY2024. The United States became the third largest
+corn supplier, accounting for 13 percent of total corn imports. In CY 2025, Vietnam Customs noted
+122,000 MT of corn imports from Cambodia from August to December, a substantial increase from zero
+imports in CY 2024.
+Figure 5. Corn Suppliers to Vietnam, CY 2022-CY 2025
+                        14,000
+
+                        12,000
+
+                        10,000
+       Qauntity (TMT)
+
+
+
+
+                         8,000
+
+                         6,000
+
+                         4,000
+
+                         2,000
+
+                             0
+                                 CY2022         CY2023                 CY2024           CY2025
+                                       Argentina Brazil     US       India Others
+Source: Post calculated based on Vietnam customs data
+
+
+Imports of DDGS
+Vietnam imported 1.5 MMT of DDGS in the CY 2025, up 14 percent from last year. The United States
+supplied 72 percent of Vietnam’s DDGS imports, followed by Brazil (15 percent) and India (13
+percent). U.S. DDGS exports to Vietnam rose 18 percent compared with the previous year, while
+Brazilian DDGS exports increased 15 percent. Indian DDGS export volume also rose 10 percent. Higher
+DDGS imports in CY 2025 partially offset corn import demand, as feed manufacturers substituted
+DDGS for corn in some feed rations.
+
+Figure 6. Vietnam’s monthly DDGS Imports
+                200,000
+                180,000
+                160,000
+                140,000
+                120,000
+Quantity (MT)
+
+
+
+
+                100,000
+                        80,000
+                        60,000
+                        40,000
+                        20,000
+                            0
+
+
+
+                                          United States   Paraguay     Others   India   Brazil
+
+Source: Post calculated based on Vietnam customs data
+Tariffs
+On March 31, 2025, the Government of Vietnam issued Decree 73/2025/ND-CP, to reduce the most-
+favored-nation (MFN) tariff on corn products under HS 1005.90.99 from 2 percent to zero. The decree
+entered into force upon issuance. See GAIN Report VM2025-0014 for additional details. Tariffs for
+other corn import categories remain unchanged, as shown in the table below.
+
+Table 3. Vietnam’s Tariff on Corn Import
+
+
+                                                       ATIGA/ ACFTA/
+                                                       AJCEP/ AKFTA/
+
+
+                                                       AIFTA/ VJEPA/
+
+
+
+
+                                                                                                RCEP (ASEAN)
+                                                       VKFTA/ EAEU
+
+
+
+
+                                                                                                                              RCEP (Korea)
+                                                                                                               RCEP (Japan)
+                                                        FTA/ CPTPP
+
+
+
+
+                                                                                                                                             RCEP (New
+                                                         AANZFTA/
+                                        Preferential
+                          Description
+
+
+
+
+                                                         AHKFTA/
+
+
+
+
+                                                                               UKVFTA
+
+
+
+
+                                                                                                                                              Zealand)
+    HS Code
+
+
+
+
+                                                                                        VCFTA
+                                                                       EVFTA
+
+
+
+
+                                                                                                                                                         Normal
+1005        Maize (corn).
+10051000    Seed                          0                       0     0       0        0        0              0              0                 0       5
+100590      Other:
+10059010    Popcorn                     30                        0 7.5 7.5              4      24             30             30                30       45
+10059091    Fit for human                2                        0   0   0              0       0              0              0                 0        3
+            consumption
+10059099 Other                            0                       0     0       0        0        0              0              0                 0       3
+Source: Vietnam Customs
+
+Note:
+              Preferential: Most-favored nation (MFN) rate for World Trade Organization members.
+              EVFTA: Vietnam-Europe Union Free Trade Agreement
+              UKVFTA: Vietnam-United Kingdom and Ireland Free Trade Agreement
+              VCFTA: Vietnam Chile Free Trade Agreement
+              RCEP: Regional Comprehensive Economic Partnership
+              ATIGA: ASEAN Trade in Goods Agreement
+              ACFTA: ASEAN-China Free Trade Area
+              AJCEP: ASEAN – Japan Comprehensive Economic Partnership Agreement
+              AKFTA: ASEAN-Korea Free Trade Area
+              AHKFTA: ASEAN-Hong Kong Free Trade Area
+              AANZFTA: ASEAN-New Zealand Free Trade Area
+              AIFTA: ASEAN-India Free Trade Area
+              VJEPA: Vietnam -Japan Economic Partnership Agreement
+              VKFTA: Vietnam Korea Free Trade Agreement
+              EAEU FTA: Vietnam Eurasian Economic Commission Free Trade Agreement
+              CPTPP: Comprehensive and Progressive Agreement for Trans-Pacific Partnership
+STOCKS
+Forecast for MY 2026/27 ending stocks is 595,000 MT. MY 2025/26 ending stocks are revised down to
+695,000 MT, and MY 2024/25 ending stocks down to 745,000 MT, reflecting increased feed
+consumption driven by strong livestock and aquaculture sector growth.
+WHEAT
+Production, Supply, and Distribution
+Wheat                              2024/2025            2025/2026           2026/2027
+Market Year Begins                  Jul 2024             Jul 2025            Jul 2026
+                               USDA                USDA                 USDA
+Vietnam                                  New Post             New Post            New Post
+                              Official             Official             Official
+Area Harvested (1000 HA)              0          0         0          0         0        0
+Beginning Stocks (1000 MT)         495        495       587        660          0      580
+Production (1000 MT)                  0          0         0          0         0        0
+MY Imports (1000 MT)              5700       5730      6600       5800          0     6100
+TY Imports (1000 MT)              5700       5730      6600       5800          0     6100
+Total Supply (1000 MT)            6195       6225      7187       6460          0     6680
+MY Exports (1000 MT)               508        365       500        430          0      450
+TY Exports (1000 MT)               508        365       500        430          0      450
+Feed and Residual (1000 MT)       2550       2550      3000       2600          0     2650
+FSI Consumption (1000 MT)         2550       2650      2900       2850          0     2950
+Total Consumption (1000           5100       5200      5900       5450          0     5600
+MT)
+Ending Stocks (1000 MT)            587        660       787        580          0      630
+Total Distribution (1000 MT)      6195       6225      7187       6460          0     6680
+Yield (MT/HA)                         0          0         0          0         0        0
+
+(1000 HA), (1000 MT), (MT/HA)
+MY = Marketing Year, begins with the month listed at the top of each column
+TY = Trade Year, which for Wheat begins in July for all countries. TY 2026/2027 = July 2026 -
+June 2027
+
+OFFICIAL DATA CAN BE ACCESSED AT: PSD Online Advanced Query
+CONSUMPTION
+MY2026/27 wheat consumption is forecast at 5.6 MMT, up from the estimate of 5.45 MMT in
+MY2025/26. The steady growth, particularly for milling wheat, is driven primarily by robust demand in
+the food sector.
+
+Rapid urbanization and the rise of Vietnam’s middle-class are significantly altering consumer food
+preferences. Urban consumers increasingly favor convenient, ready-to-eat, and packaged foods, driving
+demand for bakery products such as bread, pastries, and cakes. Additionally, Vietnam ranks among the
+top four global consumers of instant noodles with 8.14 billion servings in 2024. Consumption is
+projected to reach 10 billion servings in 2030 (World Instant Noodle Association ). Instant noodle
+production not only serves the domestic market, but also exports which reached $196 million in 2025.
+Key export destinations include the EU, China, Taiwan, the United Kingdom, and Cambodia, according
+to Trade Data Monitor (TDM).
+
+Demand for feed and residual use continues to rise. However, wheat feed faces strong competition from
+substitute feed ingredients such as corn and locally produced alternatives, which may temper growth in
+this segment.
+
+Figure 7. Vietnam Instant Noodle and Pasta Export Value, 2020-2025
+                              250
+
+
+                                                                           196
+                              200                               189
+   Export Value ($ million)
+
+
+
+
+                                                  166
+
+                              150   135                  135
+                                           120
+
+                              100
+
+
+
+                               50
+
+
+
+                               -
+                                    2020   2021   2022   2023   2024      2025
+
+Commodity: HS-Code190230, Pasta, Prepared, Nesoi
+Source: Trade Data Monitor
+
+TRADE
+
+Imports
+The forecast for MY 2026/27 wheat imports reaches 6.1 MMT due to the continued strong demand
+growth. Post has revised the MY 2025/26 estimate up to 5.8 MMT based on strong demand from the
+food industry.
+Figure 8. Feed Wheat and Milling Wheat Imports
+                           7,000
+
+
+                           6,000
+
+
+                           5,000
+  Quantity (Thousand MT)
+
+
+
+
+                           4,000
+
+
+                           3,000
+
+
+                           2,000
+
+
+                           1,000
+
+
+                              -
+                                   MY 2019/20   MY 2020/21   MY 2021/22       MY 2022/23      MY 2023/24   MY 2024/25 MY 2025/26*
+                                                              Milling wheat      Feed wheat
+
+Source: Post calculations based on Vietnam customs data and trade contacts.
+Note: Wheat imports are classified into two categories based on Vietnam’s customs classification:
+    Milling Wheat: Designated for human consumption under HS code 10019912.
+    Feed Wheat: Used for animal feed processing under HS codes 1001999 and 10019919.
+
+According to Vietnam Customs, Vietnam imported approximately 5.5 MMT of wheat in CY 2025, a 5
+percent decrease compared with CY 2024 imports. However, in the first two months of CY 2026, the
+imports reached 1.7 MMT, an increase of 53 percent compared to the same period last year, indicating
+the potential for higher imports in MY 2025/26.
+
+In CY 2025, Australia, Brazil and the United States were the main suppliers, accounting for 26 percent,
+19 percent, and 17 percent of total wheat imports, respectively. Ukraine is the fourth largest supplier at
+13 percent, followed by Canada and Russia. Australia remains the largest supplier of milling wheat to
+Vietnam, but its market share has declined to 40 percent, down from 42 percent in CY 2024 and 68
+percent in CY 2023. Meanwhile, imports from the United States grew from 11 percent in CY 2023 to 23
+percent in CY 2025, making it the second largest milling wheat supplier to Vietnam’s market. Canada is
+the third-largest supplier, accounting for 20 percent of total milling wheat imports in CY 2025.
+
+Less expensive feed wheat from Brazil and Ukraine remains a key source for Vietnam, accounting for
+29 percent and 24 percent, respectively, in CY 2025. However, their market share has significantly
+declined compared to the previous years. In contrast, Russia’s feed wheat has grown, accounting for 12
+percent of total feed wheat imports. Similarly, less expensive wheat imports from the United States have
+also increased, accounting for 12 percent of total imports. It is followed by Australian feed wheat with
+10 percent of total feed wheat imports.
+
+Those trends indicate that Vietnam is diversifying its wheat import sources instead of specializing in
+specific ones.
+Figure 9. Milling Wheat Import by Source, CY 2023-CY 2025
+ 100%
+
+  90%
+               13%                          9%
+  80%
+                                            11%                                             20%
+  70%
+                                                                     15%
+  60%
+
+  50%                                                                17%                    23%
+
+  40%          77%
+                                            68%
+  30%
+
+  20%                                                                42%                    40%
+
+  10%
+
+   0%
+               2022                         2023                     2024                   2025
+                       Australia      USA        Canada    Ukraine     Russia    Other
+
+Source: Post calculated based on Vietnam customs data
+
+Figure 10. Feed Wheat Import by Source, CY 2023-CY 2025
+ 100%
+  90%
+                                                                     8%
+  80%                                                                                       10%
+
+  70%                                                                                       12%
+                                            46%
+                                                                     38%
+  60%                                                                                       12%
+                71%
+  50%
+  40%                                       8%                                              29%
+                                            6%
+  30%
+  20%                                                                43%
+                7%                          30%
+  10%                                                                                       24%
+                8%
+   0%
+                2022                        2023                     2024                  2025
+                Ukraine      Brazil     Russia       USA     Australia      Argentina    Others
+
+Source: Post calculation based on Vietnam customs data
+Exports
+
+The wheat flour exports in MY2026/27 are forecast at 450,000 MT (wheat base). The estimates of
+MY2025/26 wheat flour exports at 430,000 MT, reflecting a 20 percent increase compared to the
+volume exported in MY 2024/25. Local contacts report that improved logistics and high demand from
+primary importers – including Thailand, Cambodia, the Philippines, and Hong Kong – are driving
+Vietnam's wheat flour export growth.
+
+Figure 11. Major markets of Vietnam wheat flour exports, CY 2022 to CY 2025
+                          400,000
+
+                          350,000
+
+                          300,000
+          Quantity (MT)
+
+
+
+
+                          250,000
+
+                          200,000
+
+                          150,000
+
+                          100,000
+
+                           50,000
+
+                               -
+                                           CY2022               CY2023                 CY2024               CY2025
+
+                           Thailand   Philippines   Cambodia   Hong Kong   Singapore    Indonesia   South Korea   Others
+
+Source: Post calculation based on TDM data
+
+Tariff
+
+The Government of Vietnam issued Decree 101/2021/ND-CP, effective November 15, 2021, reducing
+the Most-Favored-Nation (MFN) tariff rate on wheat from 3 percent to zero (VM2021-0097). This
+MFN rate has remained unchanged to date.
+Table 4. Vietnam’s Tariff on Wheat Import
+
+
+
+
+                                                                  ATIGA/ ACFTA/ AJCEP/
+
+
+                                                                  AIFTA/ VJEPA/ VKFTA/
+                                                                  RCEP (China)/ EVFTA/
+
+
+
+                                                                  AHKFTA/ AANZFTA/
+
+
+
+
+                                                                                                                       RCEP (New Zealand)
+                                                                  EAEU FTA/ CPTPP
+                                                                  UKVFTA/ VCFTA/
+                                                   RCEP (ASEAN)
+
+
+
+
+                                                                                                        RCEP (Korea)
+                                                                                         RCEP (Japan)
+                                    Preferential
+                      Description
+   HS Code
+
+
+
+
+                                                                  AKFTA/
+
+
+
+
+                                                                                                                                            Normal
+1001         Wheat and meslin.
+10011100     Seed                    0       0                                       0          0              0                  0          5
+10011900     Other                   0       0                                       0          0              0                  0          5
+10019100     Seed                    0       0                                       0          0              0                  0          5
+100199       Other:
+10019911     Meslin                  0     3.7                                       0   3.8            3.7            3.7                   5
+10019912     Wheat grain             0       0                                       0     0              0              0                   5
+             without extreme
+             outer layer
+10019919 Other                       0       0                                       0     0              0              0                   5
+10019991 Meslin                      0     3.7                                       0   3.8            3.7            3.7                   5
+10019999 Other                       0     3.7                                       0   3.8            3.7            3.7                   5
+Source: Vietnam Customs. See notes for Table 3.
+
+STOCKS
+MY 2026/27 stocks are forecast to rise to 630,000 MT, with higher imports outpacing an increase in
+consumption. MY 2025/26 and MY 2024/25 ending stocks are revised lower to 580,000 MT and
+660,000 MT based on increasing consumption and rising exports.
+RICE
+
+Production, Supply, and Distribution
+Rice, Milled                               2024/2025            2025/2026          2026/2027
+Market Year Begins                          Jan 2025             Jan 2026           Jan 2027
+                                         USDA       New      USDA       New      USDA     New
+Vietnam
+                                        Official Post Official Post Official Post
+Area Harvested (1000 HA)                    6950      7020       6800     6810         0     6710
+Beginning Stocks (1000 MT)                  2985      2985       2597     3365         0     2665
+Milled Production (1000 MT)                26750 26850         26000 26200             0    26100
+Rough Production (1000 MT)                 42800 42960         41600 41920             0    41760
+Milling Rate (.9999) (1000 MT)              6250      6250       6250     6250         0     6250
+MY Imports (1000 MT)                        3525      4300       3900     3800         0     3600
+TY Imports (1000 MT)                        3525      4300       3900     3800         0     3600
+Total Supply (1000 MT)                     33260 34135         32497 33365             0    32365
+MY Exports (1000 MT)                        8063      8070       7900     7900         0     7600
+TY Exports (1000 MT)                        8063      8070       7900     7900         0     7600
+Consumption and Residual (1000 MT)         22600 22700         22700 22800             0    22850
+Ending Stocks (1000 MT)                     2597      3365       1897     2665         0     1915
+Total Distribution (1000 MT)               33260 34135         32497 33365             0    32365
+Yield (Rough) (MT/HA)                     6.1583 6.1197 6.1176 6.1557                  0 6.2235
+(1000 HA), (1000 MT), (MT/HA)
+MY = Marketing Year, begins with the month listed at the top of each column
+TY = Trade Year, which for Rice, Milled begins in January for all countries. TY 2026/2027 =
+January 2027 - December 2027
+
+OFFICIAL DATA CAN BE ACCESSED AT: PSD Online Advanced Query
+PRODUCTION
+Post forecasts rice area and production to decline in MY 2026/27 to 6.71 million hectares and 41.76
+MMT of paddy rice, respectively, continuing the trend of rice farmers switching to more profitable crops
+or aquaculture. Estimated MY2025/26 rice area harvested and production are revised to 6.81 million HA
+and 41.92 MMT of paddy rice, respectively.
+
+As of the end of February 2026, spring rice sowing is nearly complete in the southern regions, with
+approximately 30 percent of sown areas already harvested. Generally, weather conditions are favorable
+for rice growing, although unusual rains may have negatively impacted yields in some areas.
+Meanwhile, sowing continues in the northern regions, according to the February report from the NSO.
+The report also noted reductions in sown area in both regions.
+
+Table 5. Vietnam’s Rice Area, Yield, and Production
+     Marketing Year               2024/2025              2025/2026              2026/2027
+                                  Jan 2025                Jan 2026              Jan 2027
+                                  Estimate                Estimate               Forecast
+Harvested Area (THA)
+   Spring1                                  2,960                  2,900                   2,860
+            2
+   Autumn                                   2,520                  2,450                   2,400
+          3
+   Winter                                   1,540                  1,460                   1,450
+   TOTAL                                    7,020                  6,810                   6,710
+Yield (MT/HA)
+   Spring                                    6.86                    6.97                   6.99
+   Autumn                                    5.79                    5.77                   5.90
+   Winter                                    5.23                    5.19                   5.25
+   AVERAGE                                   6.12                    6.16                   6.22
+Production (TMT)
+   Spring                                  20,300                 20,200                  20,000
+   Autumn                                  14,600                 14,140                  14,150
+   Winter                                   8,060                  7,580                   7,610
+   TOTAL                                   42,960                 41,920                  41,760
+Milled (MT)                                26,850                 26,200                  26,100
+Source: Post estimates based on MAE report and NSO statistics. Winter-Spring, Summer-Autumn, 3
+                                                              1              2
+
+Lua Mua (10th Month)
+
+Average paddy prices in MY2025 are 26 percent lower than in MY2024. Prices reached their lowest
+point between September and November, largely due to the Philippines’ import restriction policy.
+Although prices have recovered slightly since then, they remain below levels observed during the same
+period last year.
+
+Additionally, recent sharp increases in input costs, particularly gasoline and fertilizer, have further
+compressed rice farmers’ margins. Combined with weak farm-gate prices, higher production costs are
+expected to reduce farmers’ planting incentives and may lead to lower rice area and output in the next
+crop season. In response, the Vietnam Food Association (VFA) has requested government support to
+identify new export markets and to enhance the rice stockholding program.
+Local paddy prices vary by rice varieties (Figure 12). In February 2026, high-quality fragrant paddy
+(represented by Dai Thom 8/OM 18) reached approximately VND 6,200 per kilogram, about 12 percent
+higher than medium-quality paddy (represented by OM5451 variety) and 14 percent higher than normal
+white rice (represented by IR50404 variety). These price differentials encourage rice farmers to shift
+production toward higher-quality varieties. The Government of Vietnam also seeks to maintain food
+security and rice areas by supporting farmers’ production of high-quality rice through the development
+and dissemination of new rice varieties and improved cultivation technologies.
+
+Figure 12. Monthly Paddy Prices, CY 2022 to February 2026
+
+            12,000
+
+            10,000
+
+             8,000
+   VND/kg
+
+
+
+
+             6,000
+
+             4,000
+
+             2,000
+
+                -
+
+
+
+
+                            IR50404        OM5451        Dai Thom 8/OM18
+
+Source: Trade contacts, AgroMonitor.
+
+
+
+CONSUMPTION
+MY 2026/27 rice consumption is forecast at 22.85 MMT on continued consumption growth. Estimated
+MY2025/26 consumption remained at 22.8 MMT, unchanged from the previous estimate. Estimated
+MY2024/25 rice consumption is also unchanged at 22.7 MMT.
+
+According to the Vietnam Household Living Standard Survey (VHLSS) conducted by the NSO, per
+capita rice consumption has steadily declined over the past decade. In 2024, average monthly rice
+consumption per person was 6.5 kg, representing a 40 percent decrease compared with 2006 levels.
+Despite this decline in per capita consumption, total rice consumption continues to grow, driven by
+population growth, increasing consumption of rice-based processed products such as rice noodles and
+baked goods (which increased by approximately 30 percent over the same period), and the expansion of
+tourism.
+Figure 13. Monthly Rice and Other Staple Food Consumption Per Capita, 2006-2024
+                            12.0    11.4
+                                             11.0
+                                                      9.7     9.6
+                            10.0                                      9.0      8.8
+                                                                                          8.1
+                             8.0                                                                  7.6
+   Quantity (kg)
+
+
+
+
+                                                                                                          6.9
+                                                                                                                  6.5
+                             6.0
+
+                             4.0
+
+                             2.0       1.0              1.1     1.0      1.0      1.1       1.3     1.3     1.2     1.3
+                                                0.9
+
+                             0.0
+                                    2006     2008     2010    2012    2014      2016      2018    2020    2022    2024
+
+                                                              Rice    Other staple food
+
+Source: Post calculated from VHLSS Data
+
+TRADE
+
+Exports
+
+Figure 14. Vietnam’s Monthly Rice Export Volume, CY 2023 to February 2026
+                            1,200
+
+                            1,000
+   Quantity (Thousand MT)
+
+
+
+
+                              800
+
+                              600
+
+                              400
+
+                              200
+
+                               -
+
+
+
+
+Source: Post calculation based on Vietnam Custom Data
+
+Post forecasts MY 2026/27 rice exports to decline to 7.6 MMT, down from the MY 2025/26 estimate of
+7.9 MMT, continuing the downward trend from MY 2024/25 when exports reached 8.07 MMT, an 11
+percent decrease from the previous year. Export values fell to $4.1 billion in MY 2024/25, a decrease of
+about 28 percent compared with MY 2023/24. Post expects this downward trend to continue.
+The global rice market in 2025 has become increasingly competitive as major importing countries
+expanded domestic production to strengthen food security. The Philippine government’s suspension of
+rice imports during the last three months of 2025 had a significant negative impact on Vietnam rice
+exports.
+
+The Philippines remained Vietnam’s largest rice export market, accounting 40 percent of total exports,
+but its import fell to roughly 3.2 MMT, down 23 percent compared to the previous year. Indonesia
+imported only 32, 000 MT, a decline of approximately 97 percent. Exports to Cuba, Malaysia and
+Singapore also declined about 70 percent, 30 percent and 5 percent, respectively. These reductions were
+partially offset by higher shipment to China (up 2.6 times), Côte d'Ivoire (up 2.2 times), Ghana (up 1.4
+times) and Mozambique (up 1.2 times). (Figure 15).
+
+In the first two months of CY2026., Vietnam exported approximately 1.24 MMT, up 22 percent from
+the same period in 2025, due to the renewed imports from the Philippines, which accounted for about 56
+percent of total shipment. However, the Philippines has again suspended rice imports to protect domestic
+production, which Post expects to contribute significantly to the downward trend in Vietnam's rice
+exports in MY 2025/26. Trade contacts report that they have largely released their stocks and remain
+concerned about weak market conditions, particularly with the upcoming peak harvest period.
+
+Figure 15. Vietnam Rice Export to Major Markets, CY 2023 - CY2025
+                   4,500
+                   4,000
+                   3,500
+                   3,000
+                   2,500
+  Quantity (TMT)
+
+
+
+
+                   2,000
+                   1,500
+                   1,000
+                    500
+                      -
+                           Philippine Indonesia Malaysia    Ghana       Côte       China   Cuba   Singapore   Others
+                                                                       d'Ivoire
+
+                                                           2023     2024    2025
+
+Source: Post calculation based on Vietnam Custom Data
+
+White rice continued to dominate Vietnam's rice exports in 2025, accounting for 53 percent of total
+shipments, though its share declined from 70 percent in 2024. Within the white rice category, white rice
+with 5 percent broken (WR 5%) – the highest quality white rice segment – accounted for 49 percent of
+white rice exports in 2025, down from 61 percent the previous year. Meanwhile, fragrant rice's share of
+total exports increased from 16 percent in 2024 to 24 percent in 2025, reflecting its higher export prices
+relative to other rice categories. Broken rice (100 percent broken) exports also grew significantly in
+2025, as demand from African markets increased.
+Figure 16. Rice Exports Categories, 2024-2025
+100%
+ 90%
+ 80%
+ 70%
+ 60%
+ 50%
+ 40%
+ 30%
+ 20%
+ 10%
+   0%
+                                2024                       2025
+                     WR 5%             WR 15%       WR 25%         Broken Rice
+                     Fragrant          Glutinous    Japonica       Others
+
+Source: Post calculation based on Vietnam Custom Data. WR – White rice
+
+Figure 17. Monthly Rice Export Price, CY 2023 to February 2026
+                    800
+                    700
+                    600
+                    500
+  FOB Price (USD)
+
+
+
+
+                    400
+                    300
+                    200
+                    100
+                     -
+
+
+
+
+                                            WR 5%      OM5451 5%         Dai Thom 8/OM18 5%
+
+Source: Trade contacts, AgroMonitor.
+Note: WR: White Rice; OM 5451 variety indicates for medium quality rice and Dai Thom 8/OM 18
+varieties indicate for high quality fragrant rice.
+
+Export prices dropped significantly in MY 2024/25. The average export price in 2025 is approximately
+$428 per ton, a 28 percent decrease compared to 2024. Export prices also vary by rice categories. In
+December 2025, export prices for WR 5%, OM 5451, and fragrant rice were $365, $407, and $440 per
+ton, respectively. These price differentials encourage increased production and exports of fragrant rice.
+Imports
+
+Post forecasts rice imports will drop to 3.6 MMT of milled rice equivalent (MRE) in MY 2026/27. MY
+2025/26 rice imports are revised down to 3.8 MMT, while MY 2024/25 rice imports remained
+unchanged at 4.3 MMT.
+
+Figure 18. Import Rice Category, CY 2023- CY 2025
+ 100%
+  90%
+  80%
+  70%
+  60%
+  50%
+  40%
+  30%
+  20%
+  10%
+   0%
+                2023                2024                  2025
+
+        Paddy    Milled Rice   Brown Rice   Broken Rice     Others
+
+Source: Vietnam Customs, trade contacts
+
+Paddy rice remains the main rice import category, accounting for 83 percent of Vietnam’s total imports
+in MY 2024/25, supplied mostly by Cambodia. Imports from Cambodia increased significantly due to
+competitive prices for Cambodian paddy and reduced Cambodian exports to Thailand, particularly
+during the last six months of 2025. Most paddy rice imported from Cambodia consists of Vietnamese
+rice varieties, with OM 5451 accounting for approximately 60 percent of total imports from Cambodia.
+Vietnamese processors mill this imported paddy and export it along with domestically grown OM 5451
+rice. Therefore, under lower export demand, paddy imports are expected to decline in the following
+years. In the first three months of CY 2026, according to trade contacts, Vietnam imported
+approximately 1.6 MMT of paddy rice from Cambodia, a 25 percent decrease from the same period in
+2025.
+
+The second-largest import category is milled rice (12 percent), which comes mostly from India. Vietnam
+shifted to importing more milled rice in 2025 rather than brown rice after India lifted its export
+restrictions. This rice serves primarily as animal feed, with higher-quality rice going to the food
+processing industry. Vietnam also increased imports of broken rice in MY 2024/25, mainly from
+Cambodia, for export to African markets as mentioned in the export section.
+
+
+Tariff
+Tariffs on rice imports into Vietnam have remained unchanged to date. Details are provided in the
+following table.
+Table 6. Vietnam’s Tariff on Rice Imports
+
+
+
+
+                                                          AJCEP/AKFTA/AHKFTA/VJEPA/
+
+
+
+
+                                                                                                                                                                                           RCEP (Korea/New Zealand)
+                                                          VKFTA/VN-EAEU FTA
+
+                                                                                      EVFTA/UKVFTA
+
+
+
+
+                                                                                                                             CPTPP (Mexico)
+
+                                                                                                                                              RCEP (ASEAN)
+                                                                                                             Viet Nam-Laos
+
+
+
+
+                                                                                                                                                                            RCEP (Japan)
+                                                                                                                                                             RCEP (China)
+                           Preferential
+           Description
+HS Code
+
+
+
+
+                                                  ACFTA
+
+
+
+
+                                                                                                     VCFTA
+                                          ATIGA
+
+
+
+
+                                                                                                                                                                                                                      Normal
+1006       Rice.
+100610     Rice in the husk (paddy or rough):
+10061010   Suitable for    0    5 0 0           0        0     0     0                                                                        0              0              0              0                          5
+           sowing
+10061090   Other           40 5 0 0             18.1     0     2.5 0                                                                          24             24             25.5           24                         60
+100620     Husked (brown) rice:
+10062010   Hom Mali        40 5 5 0             10       0     2.5 0                                                                          40             40             40             40                         60
+           rice
+10062090   Other           40 5 5 0             18.1     0     2.5 0                                                                          40             40             40             40                         60
+100630     Semi-milled or wholly milled rice, whether or not polished or
+           glazed:
+10063030   Glutinous       40 0 0 0             18.1     32 0        0                                                                        40             *              40             40                         60
+           rice
+10063040   Hom Mali        40 0 0 0             10       32 0        0                                                                        40             *              40             40                         60
+           rice
+10063050   Basmati rice 40 0 0 0                18.1     0     0     0                                                                        40             *              40             40                         60
+10063060   Malys rice      40 0 0 0             18.1     0     0     0                                                                        40             *              40             40                         60
+10063070   Other           40 0 0 0             18.1     0     0     0                                                                        40             *              40             40                         60
+           fragrant rice
+10063091   Parboiled       40 0 0 0             18.1     32 0        0                                                                        40             *              40             40                         60
+           rice
+10063099   Other           40 0 0 0             18.1     0     0     0                                                                        40             *              40             40                         60
+100640     Broken rice:
+10064010   Of a kind       40 0 0 0             18.1     0     0     0                                                                        40             *              40             40                         60
+           used for
+           animal feed
+10064090   Other           40 0 0 0             18.1     0     0     0                                                                        40             *              40             40                         60
+Source: Vietnam Customs
+STOCKS
+Ending stocks are forecast to decline in MY2026/27 to 1.915 MMT due to a lower forecast of
+production and imports. For MY2024/25, Post revised ending stocks up to 3.365 MMT, due to declining
+export demand and increased supply from higher production and imports. This revision also raised
+MY2025/2026 ending stocks to 2.665 MMT.
+
+The Prime Minister issued Official Dispatch No. 21/CĐ-TTg on March 11, 2026, directing authorities to
+accelerate rice procurement, particularly in the Mekong Delta during the peak harvest of the 2025/26
+Spring crop. The dispatch calls for developing an appropriate plan to purchase additional rice for
+national reserves and for supporting the expansion of temporary private storage to help stabilize
+domestic prices.
+Table 7. Vietnam Rice Exports by Grade and Destination in Metric Tons in CY 2025
+Destination     WR 5%       WR15%     WR25%     Broken     Fragrant    Glutinous   Japonica   Others     Grand
+                broken      broken    broken     Rice                                                    Total
+      Asia      3,023,746   217,891    78,799   285,561     810,284      485,446    214,253    43,414   5,159,396
+Philippines     2,394,821   201,554    77,086    62,998     285,934      134,056     75,559     2,409   3,234,417
+China             163,643    12,629       500   138,243     135,572      262,593      5,633    12,659     731,471
+Malaysia          298,611       586       270     3,048     138,345       36,758     23,576       373     501,566
+Singapore          27,192                         4,773      81,872       10,391     22,601       956     147,786
+Bangladesh        104,500                                       154           40        609               105,302
+Korea                 151                  96    55,019       1,971           88        959    15,814      74,097
+UAE                 1,375       108       100                51,542          710     14,350     1,367      69,552
+Others             33,453     3,014       747    21,480     114,895       40,812     70,967     9,837     295,204
+     Africa       858,319        13     9,644   571,365     909,758          142      8,935    58,480   2,416,656
+Ivory Coast       318,982               9,025   361,931     355,309                                     1,045,247
+Ghana             459,948                 606    32,366     302,443                   1,116    49,086     845,566
+Senegal               122                       142,412      25,137                     312       951     168,934
+Mozambique         16,236                                    92,088                     379        13     108,716
+Gabon              13,436                                    47,919                      73                61,428
+Guinea             35,444                           549      15,356                     203     7,897      59,448
+Others             14,151        13        13    34,107      71,504         142       6,853       533     127,316
+   Oceania          7,455     2,923               9,152      60,871         828     114,693     5,320     201,241
+Solomon             1,475        27                           6,507           3      36,917     1,909      46,837
+Papua New             130                         8,157       4,154         520      24,673     2,988      40,622
+Guinea
+Australia             955       195                 406       22,270        268      13,703      211       38,008
+Fiji                2,447     2,675                 500       13,482                  2,125                21,228
+Others              2,448        27                  89       14,459          37     37,275       211      54,547
+   Europe           9,368                         6,444       67,828       1,915     58,010     5,216     148,781
+Germany               602                                     17,353         315      4,472       105      22,847
+Netherlands         3,216                                     10,251         130      5,014       323      18,934
+England               219                           278        2,953         268     10,660       275      14,653
+Poland                 93                                      5,121          49      5,788       994      12,045
+Turkey                 90                                        883          56     10,290        80      11,399
+Others              5,148                         6,166       31,266       1,097     21,786     3,440      68,903
+  Americas         61,962    16,433                  54       47,606         607     12,999     2,589     142,251
+Cuba               61,069                                      1,475                            1,095      63,639
+United States         371    15,384                           31,561          86      5,343       924      53,670
+Canada                491                            43       12,298         457      3,454       436      17,179
+Others                 31     1,049                            2,273          64      4,202       133       7,763
+ Grand Total    3,960,850   237,261    88,443   872,576    1,896,347     488,938    408,891   115,018   8,068,324
+
+Destination      WR 5%      WR15%     WR25%     Broken     Fragrant    Glutinous   Japonica   Others     Grand
+                 broken     broken    broken     Rice                                                     Total
+       Asia     3,023,746   217,891    78,799   285,561      810,284     485,446    214,253    43,414   5,159,396
+      Africa      858,319        13     9,644   571,365      909,758         142      8,935    58,480   2,416,656
+    Oceania         7,455     2,923               9,152       60,871         828    114,693     5,320     201,241
+     Europe         9,368                         6,444       67,828       1,915     58,010     5,216     148,781
+   Americas        61,962    16,433                   54      47,606         607     12,999     2,589     142,251
+Grand Total     3,960,850   237,261    88,443   872,576    1,896,347     488,938    408,891   115,018   8,068,324
+Source: Vietnam Customs, post calculations
+Attachments:
+
+No Attachments
+

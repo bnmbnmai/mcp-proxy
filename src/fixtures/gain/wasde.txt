@@ -1,0 +1,6 @@
+World Agricultural Supply and Demand Estimates (WASDE)
+United States Department of Agriculture
+WASDE-662
+
+This circular is WASDE, not a FAS GAIN attaché report.
+Do not wrap WASDE / PSD / ESR numbers as GET /gain TEXT.
