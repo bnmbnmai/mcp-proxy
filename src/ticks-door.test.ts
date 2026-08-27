@@ -5430,6 +5430,9 @@ async function main(): Promise<void> {
     "Report Name: Livestock and Products Annual",
     "Country: Mexico",
     "Post: Mexico City",
+    "Report Category: Livestock and Products",
+    "Prepared By:    Gustavo Lara",
+    "Approved By: Morgan Perkins",
     "While the outbreak of New World screwworm (NWS) has disrupted traditional livestock trade flows.",
     ...Array.from(
       { length: 40 },
