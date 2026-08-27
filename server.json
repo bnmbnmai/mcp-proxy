@@ -2,7 +2,7 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.bnmbnmai/bnm-data-shop",
   "title": "BNM Data Shop",
-  "description": "BNM Data Shop. 36 official-data x402 GETs. Table $0.05; body $0.02/$0.05.",
+  "description": "BNM Data Shop. Official-data x402 GETs at ticks.bnm.farm (count from live /.well-known/x402). Table $0.05; body $0.02/$0.05.",
   "repository": {
     "url": "https://github.com/bnmbnmai/mcp-proxy",
     "source": "github",
