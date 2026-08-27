@@ -1,0 +1,5 @@
+company,metric,value
+Tomato Energy,riio_ed2_totex,12.4
+SSE Generation,open data pack,71.2
+Farringdon Energy,regulatory reporting pack,88
+# Ofgem RIIO / open-data CSV — not an enforcement-notice body

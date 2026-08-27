@@ -1,0 +1,876 @@
+    NOTICE OF DECISION TO IMPOSE A FINANCIAL PENALTY PURSUANT TO
+    SECTION 27A(5) OF THE ELECTRICITY ACT 1989
+    Date: 25 JULY 2023
+
+
+Decision of the Gas and Electricity Markets Authority to impose a financial penalty, following
+an investigation into SSE Generation Limited (“SSE”) and its compliance with its obligations
+under the electricity generation licence (Standard Licence Condition 20A, known as the
+Transmission Constraint Licence Condition, or “TCLC”).
+
+
+1. SUMMARY
+
+1.1     With this document, we the Authority1 are giving notice under S27A(5) of the Electricity
+        Act 1989 of our decision to impose a penalty on SSE, in relation to a breach of the
+        TCLC. In it, we have set out the acts or omissions which constitute the relevant
+        contraventions and the other facts which justify the imposition of a penalty on SSE and
+        the amount of the penalty chosen.
+
+1.2     Our investigation was opened in October 2021, and concerns the bid prices submitted
+        by SSE in the Balancing Mechanism (“BM”) for Foyers pumped storage power station
+        (“Foyers”). It focused on a decision taken by SSE in May 2020 to make the price that it
+        required the system operator to pay in order to reduce Foyers’ output significantly
+        more expensive so as to bring Foyers in line with what SSE believed was the market
+        practice of other pumped storage operators and generate more profit. This included in
+        periods of transmission constraint, where the system operator had limited options
+        available other than bidding Foyers down.
+
+1.3     Following our investigation, we have concluded that the bids submitted in accordance
+        with the revised pricing policy resulted in SSE obtaining a profit which was significantly
+        greater than that which it would have obtained absent the transmission constraint, and
+        so was in breach of the TCLC.
+
+
+
+
+1
+ In this Notice we use interchangeably “the Authority”, “Ofgem” and “we” to refer to the Gas
+and Electricity Markets Authority.
+1.4   SSE has admitted that it breached the TCLC, and indicated its desire to settle the
+      investigation, in line with the process described in our enforcement guidelines. 2
+
+1.5   As set out in section 4 of this Notice, we consider that the imposition of a penalty for
+      the contraventions is justified in this case. Among other reasons, this is because the
+      breach caused damage to the interests of consumers, and a penalty is necessary to
+      deliver credible deterrence and visible and meaningful consequences for breaching the
+      TCLC.
+
+1.6   In determining the amount of the penalty we have taken into consideration the factors
+      set out in the relevant penalty statement, including the serious nature of the breach,
+      the financial harm suffered by customers as a result of the contravention, and the
+      existence of aggravating factors. We have also considered representations received in
+      response to the notice of our proposal to impose a penalty on SSE. We consider the
+      penalty to be reasonable in all of the circumstances of this case.
+
+1.7   Having considered all of the circumstances, we consider that a payment into the
+      consumer redress fund3 is of greater benefit to energy consumers than if a significant
+      financial penalty were to be imposed. Accordingly, we consider it reasonable to impose
+      a financial penalty of £1, provided SSE pays the sum of £9,780,000.00 (less £1) in
+      redress.
+
+1.8   In these circumstances and mindful of our principal objective to protect the interests of
+      existing and future consumers, we hereby give notice under section 27A(5) of the
+      Electricity Act 1989 of our decision to impose a penalty of £1 in respect of the
+      contraventions set out above. This is subject to SSE paying £9,780,000.00 (less £1)
+      into Ofgem’s consumer redress fund. The payment of the amounts must be made by 5
+      September 2023.
+
+
+
+
+2
+  https://www.ofgem.gov.uk/publications/enforcement-guidelines
+3
+  We have appointed an expert independent third party to manage the allocation of voluntary
+redress payments from licensees to charitable organisations.
+https://www.ofgem.gov.uk/publications-and-updates/authority-guidance-allocation-redress-
+funds
+2     BACKGROUND
+
+The Balancing Mechanism
+
+2.1     The BM is the primary tool used by the Electricity System Operator (“ESO”) to co-
+        ordinate and direct the flow of electricity onto and over the electricity transmission
+        network. Over £2bn was spent by the ESO on balancing in the BM in the year to March
+        2023,4 with the costs eventually recovered from consumers via balancing charges.
+
+2.2     In the BM, parties to the Balancing and Settlement Code – including all large electricity
+        generators – submit one or more pairs of bids and offers. Bids represent the price at
+        which the party would be willing to decrease its generation or increase its consumption
+        of electricity for a given unit in a given half-hourly delivery period, while offers
+        represent the price at which the party would be willing to increase its generation or
+        decrease its consumption of electricity. Bid and offer prices are specified in £ per
+        megawatt hour (£/MWh) of reduced or additional output or consumption that the ESO
+        requires that a unit deliver (relative to the unit’s expected output or consumption prior
+        to the action being taken).
+
+2.3     A unit’s expected level of output or consumption in each half-hourly settlement period
+        – prior to any actions taken in the BM – is indicated through parties’ submissions of
+        Physical Notifications (“PNs”), made in accordance with the Grid Code. The prevailing
+        PNs at the point which is one hour prior to delivery (referred to as gate closure) are
+        confirmed by the ESO as Final Physical Notifications (“FPNs”), and used for the
+        purposes of taking any required balancing actions in the BM. For each half-hourly
+        settlement period, the ESO may accept various sets of bids and offers, making
+        payments to (or receiving payments from) different parties in exchange for them
+        agreeing to alter their generation or consumption as compared to their FPNs.
+
+
+
+
+4
+ Source: ESO monthly balancing services summary, February 2023. The amount spent in the
+BM in the year to March 2021 (the period on which our investigation has centred) was over
+£1bn.
+The TCLC
+
+2.4   The ESO uses the BM, amongst other balancing markets, to address any expected
+      energy imbalances over the transmission system as well as to manage any
+      transmission constraints which may arise on the network.
+
+2.5   Transmission constraints as defined in the TCLC are any limits on the ability of the
+      transmission system (or any part of it) to transmit power from where it is supplied to
+      where it is needed, arising as a result of factors such as (but not limited to) the
+      thermal rating of assets forming part of the transmission network, or the need to
+      maintain voltage on the system, or the need to maintain the transient and dynamic
+      stability of plant and equipment connected to the system.
+
+2.6   Transmission constraints may occur because of design limitations of the transmission
+      network or because of outage patterns, including the need to deal with credible failures
+      of parts of the system or equipment connected to it and to ensure that they do not
+      have serious consequences for safety or security and quality of supply. The ESO will
+      often accept bids and offers in the BM to help resolve transmission constraints, and
+      ensure that power flows across the transmission system remain within the necessary
+      bounds to ensure the security and quality of supply and safe operation of the system.
+
+2.7   The TCLC requires that generation licensees must not obtain or seek to obtain an
+      excessive benefit from a reduction in electricity generation in relation to a transmission
+      constraint period. In practice, this means that – where a transmission constraint as
+      defined in the TCLC occurs, and where the generator intends to export power –
+      generators must not submit bid prices in the BM at a level which would result in them
+      obtaining an excessive benefit, were that bid subsequently accepted by the ESO.
+
+2.8   The TCLC applies to reductions in electricity generation only. Therefore it would not
+      apply in situations where a generator was not due to export any power to the NETS in
+      a given settlement period (ie its FPN was zero) or was due to import power from the
+      transmission system (ie its FPN had a negative value), as in those cases a bid in the
+      BM to (further) import power would not constitute a “… reduction in generation”.
+
+2.9   The objective of the TCLC is to protect against the exploitation of market power by
+      generators operating in the presence of transmission constraints. Transmission
+      constraints routinely lead to either individual generators or groups of generators in
+       particular areas holding a position of market power in one or more settlement periods,
+       with the ESO having limited options to manage the constraint other than reaching an
+       agreement with the owners of those specific units to reduce their planned output in
+       those periods. If generators were free to take advantage of this market power in their
+       agreements with the ESO, this would increase balancing costs (which are ultimately
+       passed onto consumers) and create harmful incentives – encouraging further
+       generation in those same areas or by generators with the same characteristics,
+       exacerbating the constraints, and increasing system costs further.
+
+Foyers pumped storage power station
+
+2.10   Foyers is a pumped storage power station in Northern Scotland, operating under the
+       generation licence of SSE Generation Limited (company number 02310571). It has two
+       150MW reversible pumping turbines, providing a total capacity of 300MW. In periods of
+       high demand (and so high prices), water is released from the upper reservoir (Loch
+       Mhor) and the units export power to the transmission system, generating revenue for
+       SSE. The upper reservoir is then refilled either by rainfall, or by SSE paying (or being
+       paid) to consume power in order to pump water to the upper reservoir.
+
+
+ Figure 1: Image of Foyers pumped storage power station
+
+
+
+
+ Source: Foyers hydro scheme | SSE Renewables
+2.11   One implication of the transmission constraints created by the thermal limits of the
+       transmission system is to give rise to restrictions on the amount of power which can be
+       transferred between different areas of the network, creating what are known as
+       “constraint boundaries”, each with a particular transfer limit. Foyers is located behind a
+       number of key thermal constraint boundaries between the North and South of Great
+       Britain, including:
+
+
+       •   The SHARN3 boundary (B7) in Northern England;
+
+
+       •   The SCOTEX or ‘Cheviot’ boundary (B6) between Scotland and England;
+
+
+       •   The SSE-GRMO and NKILGRMO boundaries (B5) between Central and Southern
+           Scotland
+
+
+       •   The SSE-SP2 boundary (B4) between the SSEN Transmission and SP transmission
+           networks
+
+
+       •   The SSEN-S North to South SSEN Transmission boundary (B2); and
+
+
+       •   The SSENWEX boundary (B1a) in North West Scotland.
+
+
+2.12   It is common for anticipated power flows as reflected in FPNs to exceed the transfer
+       limits of the boundaries that Foyers is situated behind and for the ESO to therefore
+       need to instruct SSE to reduce Foyers’ generation (or instruct it to pump) to ensure
+       that the equipment carrying power from Northern Scotland to demand centres further
+       south is not overloaded. This is particularly the case in periods of high wind generation
+       in Scotland. Foyers was the generator in Great Britain with the 9 th greatest number of
+       system flagged bid acceptances in the year to March 2021, with a total volume of
+       219GWh.5
+
+Our investigation
+
+2.13   In Winter 2019/20, Foyers was taken offline for maintenance. In May 2020, when it
+       returned to (partial) operation, SSE changed its approach to setting bid prices for
+       Foyers in the BM. This change was made in order to bring Foyers in line with what SSE
+       believed was the market practice of other pumped storage operators, and to generate
+       more profit. In making the change, SSE was aware of the transmission constraint
+       regularly affecting Foyers, and so the relevance of the TCLC to how it set its bid prices.
+
+2.14   Under the new pricing policy, SSE commonly submitted bids at a price point close to
+       minus £60/MWh – ie requiring the ESO to pay it around £60 for each MWh by which it
+       was asked to reduce its output. As shown in Figure 2, the prices in this period were
+       substantially more expensive than the bid prices SSE had typically submitted
+       previously. This approach to pricing continued up to the end of March 2021,
+       subsequent to which SSE’s bid prices became less expensive (as wholesale prices rose)
+       and negative prices less common.
+
+
+
+
+5
+  Where the ESO takes actions in the BM to manage certain transmission constraints (including
+thermal limits), these are “system flagged”, allowing such actions to be identified in publicly
+available balancing data.
+Figure 2: The average price of Foyers’ accepted bids, 1 Jan 2011 – 31 March 2023
+
+
+
+
+Source: Ofgem analysis of BMRS data.
+Notes:
+1.   The grey shaded area shows the period from May 2020 to March 2021 that our investigation has focused on.
+2.   The monthly weighted average bid price is calculated by taking the price of each bid acceptance for either
+     Foyers unit in £/MWh, and then weighting by the accepted bid volume in MWh, before averaging over the
+     month.
+3.   Individual bid acceptances are plotted as crosses for each day. Price points with more bid acceptances are
+     darker.
+4.   A small minority of bid acceptances occurred in the period outside of the axis range – these are not shown
+
+
+
+     2.15    In April 2021 we contacted SSE asking for an explanation of the change to its bid prices
+             starting May 2020, given its position behind a transmission constraint and its
+             obligations under the TCLC. On 4 October 2021, we opened a formal investigation into
+             whether SSE had failed to comply with the requirements of the TCLC.
+
+     2.16    In the period from October 2021 to June 2022 we issued a number of notices to SSE
+             requiring it to provide information to allow us to assess whether there had been a
+             breach of the TCLC. In August 2022, we issued to SSE a summary statement of initial
+             findings setting out that we had reached the provisional conclusion that it had breached
+        the TCLC in relation to the bid prices submitted for Foyers in respect of the period from
+        May 2020 to March 2021, and may have continued to breach the TCLC from April 2021
+        onwards.
+
+2.17    In October 2022, SSE submitted its response to the summary statement. In March
+        2023, SSE contacted Ofgem to note that it was willing to admit a breach, make a
+        payment to offset the associated consumer detriment, and pay a penalty. On 6 June
+        2023 we published details of our findings and notice of our intention to impose a
+        penalty on SSE, and invited any representations on that proposal.
+
+3     THE BREACH
+
+3.1     Following our investigation, we have concluded that SSE’s revised pricing policy was
+        such that, in the period from May 2020 to March 2021, SSE obtained an excessive
+        benefit during periods in which a transmission constraint occurred, in breach of the
+        TCLC. Additionally, although it was much less common for SSE to submit negative bid
+        prices after March 2021, the nature of its pricing policy was such that SSE may have
+        continued to breach the TCLC even after this date.
+
+Description of the breach
+
+3.2     In order to assess the excessiveness (or otherwise) of the bid prices submitted by SSE
+        for Foyers, we considered whether those prices were set at a level which meant that
+        the benefit that SSE obtained or sought to obtain in relation to transmission constraint
+        periods was significantly greater than the benefit it would have obtained in the absence
+        of any transmission constraint, and therefore whether those bid prices were excessive.
+
+3.3     The benefit that SSE obtained or sought to obtain through its bid prices for Foyers is
+        the profit associated with those bids (or the implied profit, had those bids been
+        accepted). We are unable to directly observe what bids the ESO would have accepted
+        in the BM absent any transmission constraint, and the prices that it would have paid for
+        those reductions in generation. However, we are able to use a number of different
+        benchmarks to form a view on what benefit SSE would have been likely to be able to
+        obtain absent the constraint.
+
+3.4     In our assessment, we placed particular weight on the fact that from May 2020, SSE’s
+        bid prices for Foyers were primarily set with reference to the bid prices of selected
+      other generators, rather than the costs and benefits of being bid down. This included in
+      periods in which a transmission constraint existed.
+
+3.5   By linking its bid prices for Foyers to those of selected other generators (in this
+      instance, Cruachan – another pumped storage power station in Northern Scotland,
+      itself frequently bid down due to constraints – and SSE group’s own wind generation
+      units), without regard to the costs and benefits it itself incurred when being bid down,
+      SSE’s policy failed to put any controls on the level of benefit it would obtain on bids in
+      transmission constraint periods. This approach by its nature created an intrinsic risk of
+      breaching the TCLC.
+
+3.6   The revised pricing strategy was particularly likely to breach the TCLC because the
+      generators most commonly referenced by SSE when setting its prices were themselves
+      regularly bid down due to transmission constraints, as would have been apparent to
+      SSE given the significant proportion of those generators’ bids that were system
+      flagged. In January 2023, Drax Pumped Storage Limited (“Drax”) agreed to pay an
+      amount of £6.12m into the consumer redress fund to reflect its admission that it had
+      submitted excessively expensive bid prices for Cruachan in the period from 1 January
+      2019 to 31 July 2022. In contrast to SSE, a formal investigation into Drax’s compliance
+      with the TCLC was not active at the time – the payment was made in lieu of a formal
+      investigation being opened.
+
+3.7   SSE’s approach to pricing contrasted to that which had been used at the start of 2017
+      – and that which is used for wind generation assets in the wider SSE group portfolio –
+      according to which bid prices should take into account the costs and benefits of
+      providing the reduction in generation.
+
+3.8   Our analysis showed that the bid prices that SSE submitted allowed it to generate a
+      profit on its bids in periods in which transmission constraints occurred which appeared
+      significant when compared to a number of possible benchmarks (including SSE’s
+      revenue; historic profit levels; and the profit earned on bids for other units operated by
+      SSE group). SSE itself noted in its annual reporting for 2020/21 that Foyers had
+      “achieved exceptional performance” in the period of concern.
+
+3.9   We also placed weight in our assessment on evidence that SSE’s prices were
+      significantly more expensive both than they had been in previous periods; and
+       significantly more expensive than those of the two Welsh pumped storage units in GB
+       which – unlike Foyers – were not routinely bid down to manage a transmission
+       constraint in the period. Its prices in transmission constraint periods were also
+       significantly more expensive than the prices at which it had bids accepted when a
+       transmission constraint did not occur. Crucially, none of these price differentials
+       appeared to be explained by differences or changes in the costs and benefits to Foyers
+       of being bid down.
+
+3.10   While its average bid price became less expensive from April 2021 onwards as
+       wholesale power prices rose, SSE told us that it continued to take the same broad
+       approach to setting its bid prices for Foyers in transmission constraint periods – ie it set
+       these prices with reference to those of selected other generators frequently bid down
+       due to a transmission constraint, and particularly Cruachan. Given this, we consider
+       there to be a risk that SSE continued to be in breach of the TCLC even after May 2020
+       to March 2021 (the period on which our investigation has centred), due to the lack of
+       controls in its pricing policy to ensure that its bids in transmission constraint periods in
+       which it intended to generate were set at a level that ensured that the benefit to SSE
+       did not exceed what would be expected in the absence of a transmission constraint.
+
+Consumer impact
+
+3.11   We considered the impact of SSE’s excessive pricing, and particularly what SSE gained
+       as a result of the breach and, related, any detriment suffered by consumers and other
+       market participants.
+
+3.12   The most direct impact of the breach is the cost to the ESO – and ultimately consumers
+       – arising from SSE having a higher volume of bids accepted at more expensive prices
+       than would have been expected absent any transmission constraint. This is distinct
+       from any indirect effects of the breach via, for example, the potential impact on other
+       generators’ bid prices. The impact is equivalent to the gain earned by SSE in relation to
+       its excessive bids.
+
+3.13   To assess this direct impact, we considered what SSE’s prices might have been, had
+       those prices properly reflected the costs and benefits of being bid down (and a
+       reasonable level of profit), and not been excessive. As set out above, SSE itself did not
+       set its bid prices for Foyers in individual settlement periods with reference to its
+       expectations of the incurred costs, opportunity costs or avoided costs associated with
+       reductions in generation in those periods, and so was unable to produce systematic
+       estimate of these costs and benefits which could be used for this analysis. Therefore,
+       we estimated these costs and benefits ourselves.
+
+3.14   Where Foyers had a bid accepted in the period in question it would have enjoyed
+       significant benefits. These would primarily have comprised:
+
+       (a) any bid revenues received from the ESO (driven by its bid prices which – as set out
+          above – were commonly close to minus £60/MWh);
+
+       (b) avoided balancing charges (which in the period of concern were levied on metered
+          output – and so were “avoided” where SSE had a bid accepted reducing generation
+          at Foyers); and
+
+       (c) the value associated with additional water in the upper reservoir (which would allow
+          SSE to sell power in subsequent periods without any further requirement to pump).
+
+3.15   The box below shows an example of the benefits to SSE of Foyers being bid down due
+       to a transmission constraint on a day in September 2020.
+Example 1: 2 September 2020, Foyers unit 1
+
+   1. ESO is required to bid Foyers down                   2. This gave Foyers capacity to sell power for
+  due to thermal constraint for successive                 an extended period (the grey line shows the
+     periods across the day (red area)                      unit due to export 150MW for entire period
+                                                                     from 06:00 to 22:00 GMT)
+
+
+
+
+                            3. Foyers is able to capture the bid price of -£59/MWh, and to sell its
+                           additional generation into the wholesale market at prices of £30/MWh to
+                          £60/MWh – while avoiding balancing charges of £5-£10/MWh (not shown)
+
+
+
+
+3.16   A bid acceptance may also have resulted in certain costs. Likely to be most significant
+       is the potential opportunity cost to SSE associated with a reduced ability to pump in
+       subsequent periods (where profitable opportunities to pump either in the BM or
+       wholesale markets existed), due to reduced capacity in the upper reservoir compared
+       to the situation absent the bid having been accepted. This opportunity cost is illustrated
+       in the box below for two days in June 2020. At times, the opportunity cost could
+       materialise in the form of SSE choosing to sell power in periods with negative wholesale
+       prices in order to keep the water level in the upper reservoir at the optimal level.
+Example 2: 5 and 6 June 2020, Foyers unit 2
+
+
+         1. ESO required to bid Foyers             2. One implication is that Foyers has a reduced capacity
+        down due to thermal constraint             to pump at a profit when wholesale prices subsequently
+             for successive periods                go negative, due to reduced capacity in upper reservoir
+
+
+
+
+                      3. SSE also potentially loses out on an opportunity to pump in the BM at a even
+                      greater profit (ie a price of minus £58/MWh) for the period where its maximum
+                        import limit (MIL) is zero (subject to demand from the ESO to pump Foyers)
+
+
+Note: The Maximum Import Limit denotes the maximum amount of power that a generated is able to import
+from the transmission system. Where Foyers has capacity to pump in the BM, the MIL will be set below zero,
+indicating its availability. Where Foyers is unable to pump, the MIL will be set at zero.
+
+
+
+3.17   By comparing an estimate of the scale of these different costs and benefits in each
+       settlement period in which Foyers had a bid accepted between May 2020 and March
+       2021, we estimated a total excess of £5.58m (after deducting an amount to reflect
+       what we considered to be a reasonable contribution to indirect costs and a reasonable
+       profit). This estimate was subject to uncertainty, due (among other things) to the
+       uncertainty as to the volume of bids that Foyers would have had accepted absent the
+       transmission constraint, and the prices at which those bids would have been accepted,
+       as well as the simplifications and assumptions used when estimating the costs and
+       benefits to SSE of being bid down.
+
+3.18   In addition to this direct detriment, we considered that the excess pricing was also
+       likely to have led to other market distortions. For example, this included the risk that
+       as a result of SSE submitting expensive prices in the period of concern, other
+        generators may have on occasion also submitted more expensive prices than they
+        otherwise would have, pushing up balancing costs for consumers.
+
+4     PENALTY
+
+Whether a financial penalty should be imposed in this case
+
+4.1     In deciding whether it is appropriate to impose a financial penalty on SSE, and the
+        amount of any penalty, we have had regard to the Statement of Policy with respect to
+        Financial Penalties and Consumer Redress published in 2014 (the “2014 Penalty
+        Policy”).6
+
+4.2     We are required to carry out our functions under Part 1 of the Electricity Act 1989,
+        including the taking of any decision as to the imposition of a penalty, in the manner
+        that we consider best calculated to further our principal objective set out in section 3A
+        of the Electricity Act 1989, having regard to our other duties. In formulating our
+        decision as to whether it is appropriate to impose a financial penalty, we have
+        considered all the circumstances of the case presently known including, but not limited
+        to, SSE’s representations, the representations received in response to the notice of our
+        intention to impose a penalty on SSE, and the specific matters set out in the 2014
+        Penalty Policy.
+
+4.3     In this case we have decided that a financial penalty is appropriate. This is because:
+
+        •   As set out above, the breach caused significant damage to the interests of
+            consumers, including (but not limited to) by increasing balancing charges and so
+            ultimately increasing costs for consumers. Consumer redress will help obtain a fair
+            outcome for consumers;
+
+        •   The breach did or could have damaged consumer and market participants’
+            confidence in the market, given the crucial role that the TCLC plays in protecting
+            against the inherent market power that is enjoyed by generators situated behind a
+            constraint;
+
+
+
+
+6
+
+https://www.ofgem.gov.uk/sites/default/files/docs/2014/03/penalties_and_redress_policy_sta
+tement_31_march_2014.pdf
+       •   We consider that a penalty is necessary to deliver credible deterrence and visible
+           and meaningful consequences for breaching the TCLC. This includes the need to
+           ensure that the amount paid by SSE significantly exceeds the gain it derived;
+
+       •   The chosen pricing strategy which gave rise to the breach was wholly within the
+           control of SSE;
+
+       •   It should have been clear to SSE that its revised approach carried a significant risk
+           of breaching the TCLC;
+
+       •   Even after becoming aware of Ofgem’s investigation, we understand that SSE
+           continued to take broadly the same approach to setting its bid prices for Foyers in
+           transmission constraint periods; and
+
+       •   SSE has breached the TCLC previously.
+
+4.4    These factors are discussed in further detail below where we describe the level of the
+       penalty.
+
+Level of penalty
+
+4.5    Having considered the circumstances of the case we have required SSE to pay:
+
+           •   An amount of £5.58m to reflect quantified consumer detriment relating to the
+               breach
+
+           •   A penal amount of £6m, discountable to £4.2m due to settlement being agreed
+               within the 28 day early discount window.
+
+4.6    In what follows we work through each of the steps set out in the 2014 Penalty Policy,
+       and discuss how they apply to this case.
+
+Step 1: Calculate detriment and gain
+
+4.7    It is inherently difficult to estimate the direct detriment and gain from the breach.
+       Among other reasons, this is because we do not know how SSE would have priced its
+       bids absent any transmission constraint; nor the volume of bids that the ESO would
+       have accepted for Foyers absent any transmission constraint. There are also various
+       unknowns attached to our estimates of the costs and benefits of reductions in
+       generation for Foyers.
+4.8    Notwithstanding this, we set out at 3.17 above our estimate of the “direct” impact of
+       the breach of £5.58m. This is an estimate of the cost to the ESO – and ultimately
+       consumers – directly arising from SSE having a higher volume of bids accepted at more
+       expensive prices than would have been expected absent any transmission constraint. It
+       is distinct from any indirect effect of the breach via, for example, a potential impact on
+       other generators’ bid prices. It is equivalent to the gain earned by SSE in relation to its
+       excessive bids.
+
+Step 2: Assess seriousness
+
+4.9    As per sections 5.10 to 5.14 of the 2014 Penalty Policy, the seriousness of a breach
+       depends on the nature and impact of the breach and whether or not the contravention
+       was deliberate or reckless.
+
+4.10   As set out in the previous section, it is our view that the breach is likely to have
+       resulted in significant consumer detriment, by increasing balancing charges in the
+       period in question. It is also likely to have had further impacts on the market – and
+       ultimately consumers – that have not been quantified. This includes both distorting
+       pricing in the BM more widely; and distorting investment incentives – particularly for
+       network reinforcement in Scotland.
+
+4.11   The breach also has the potential to damage consumer and market participants’
+       confidence in the market. This is because the TCLC plays a crucial role in protecting
+       against the inherent market power that is enjoyed by generators situated behind a
+       constraint.
+
+4.12   We have not seen any evidence which suggests that the breach was deliberate, ie that
+       SSE changed its pricing strategy for Foyers knowing that the revised strategy would
+       breach the TCLC. SSE itself has told us that the decisions it took around pricing for
+       Foyers were made in good faith, and that it did not set out to deliberately breach the
+       TCLC.
+
+4.13   At the same time, the evidence we have collected makes clear that:
+
+       •   in May 2020 SSE’s senior management amended its pricing policy to bring Foyers in
+           line with what SSE believed was the market practice of Drax in relation to Cruachan
+             pumped storage power station, rather than reflecting any particular change in
+             market conditions or the costs or benefits to it of having bids accepted in the BM;
+
+       •     this had the result of making Foyers’ bid prices significantly more expensive than
+             the prices it had submitted previously;
+
+       •     the primary driver for doing so was to generate more profit;
+
+       •     in making the change, SSE was aware of the transmission constraint regularly
+             affecting Foyers, and so its obligation to set its prices in a way that ensured it did
+             not obtain an excessive benefit; and
+
+       •     despite this, the effect of the revised pricing policy was to link bid prices for Foyers
+             directly to those of Cruachan and SSE’s own wind generation units. In both cases,
+             the generators in question were frequently bid down due to transmission
+             constraints.
+
+4.14   Given this we consider that it should have been clear to SSE (including senior
+       management) that its revised approach carried a significant risk of breaching the TCLC.
+
+4.15   The approach to pricing contrasted to that which had been used by SSE for Foyers at
+       the start of 2017 – and that which was used for wind generation assets in SSE group’s
+       portfolio – according to which bid prices should take into account the costs and benefits
+       of providing the reduction in generation. While precisely estimating the opportunity
+       costs of having a bid accepted for a pumped storage unit is complex, we considered
+       that it would have been possible for SSE to form an approximate view of these costs,
+       and so to set bid prices which were broadly reflective of the estimated costs and
+       benefits of being bid down.
+
+4.16   Taking into account the nature of the breach, its impact and the context surrounding
+       the introduction of SSE’s revised pricing policy, we consider the breach to have been
+       serious.
+
+Step 3: consider aggravating or mitigating factors
+
+4.17   We consider that in this case, a number of aggravating factors may apply:
+
+       (a)        SSE has breached the TCLC previously: in 2015 SSE made a payment to
+                  Energy Action Scotland of £100,000 after its bid prices for its Scottish hydro
+               cascade units resulted in it receiving excessive payments in the BM, in breach
+               of the TCLC;7
+
+       (b)     SSE’s senior management was directly involved in the revision to the pricing
+               policy which led to the breach, and – as set out above – the risks of breaching
+               the TCLC given the nature of the policy should have been clear;
+
+       (c)     Even after becoming aware of Ofgem’s investigation, SSE continued to take the
+               same broad approach to setting its bid prices for Foyers in transmission
+               constraint periods – ie setting these with reference to those of selected other
+               generators frequently bid down due to a transmission constraint, and
+               particularly Cruachan.
+
+4.18   On the basis of the above, we consider that there are likely to be a number of
+       aggravating factors in this case. Taken together, we have therefore decided to
+       recommend a higher level of penalty than might otherwise have been considered
+       suitable.
+
+Step 4: consider whether the penal element ensures deterrence
+
+4.19   As per sections 5.21 to 5.22 of the 2014 Penalty Policy, we next consider what level of
+       penalty would be required to ensure that the penalty has sufficient deterrent effect.
+
+4.20   In light of the need to ensure a credible deterrent, the indirect detriment described
+       above (which has not been quantified), the seriousness of the breach and the
+       aggravating factors described above, we consider that a further payment of £6m is
+       reasonable in all of the circumstances, after having regard to the level of consumer
+       redress that is to be paid.
+
+4.21   We note that this amounts to only a small share of SSE’s total revenue (and operating
+       profit) for the period in question. Nevertheless, we consider that a penalty of £6m is
+       sufficiently material to provide a credible deterrent signal to the market.
+
+
+
+
+7
+ https://www.ofgem.gov.uk/publications/sse-pay-ps100000-energy-action-scotland-over-
+constraint-payments
+Step 5: Apply any settlement discount to the penal element
+
+4.22    SSE has engaged constructively and has agreed to settle the investigation within the
+        28 day settlement window, and therefore has benefitted from a 30% discount. This
+        reduced the penal element from £6m to £4.2m.
+
+Step 6: Establish the total financial liability
+
+4.23    Having considered all of the above matters, we have required SSE to pay a total
+        amount of £9.78 million, comprising £5.58m to reflect the consumer detriment we
+        have quantified, and further penal element of £4.2m.
+
+4.24    We have imposed a financial penalty of £1 on the condition that SSE pays the balance
+        of the £9.78 million to Ofgem’s consumer redress fund. This approach is preferred
+        because we consider that a payment into the consumer redress fund is of greater
+        benefit to energy consumers than if a significant financial penalty were to be imposed.
+        We consider the penalty to be reasonable in all of the circumstance of the case.
+
+5     REPRESENTATIONS RECEIVED IN RESPONSE TO THE NOTICE OF 6 JUNE 2023
+
+5.1     On 6 June 2023, the Authority published notice of its intention to impose a financial
+        penalty on SSE pursuant to s27A(3) of the Electricity Act 1989, and invited any
+        representations on that proposal. We received one response.
+
+5.2     That response (published on our website) did not comment on the specifics of the SSE
+        investigation or the penalty proposed. However, it did raise various concerns with the
+        approach Ofgem had taken to assessing the excessiveness of SSE’s bids, including:
+
+        •   That given the design of the BM and the lack of foreseeability of application of the
+            TCLC, it seemed both entirely reasonable and rational for a generator to price its
+            bids with reference to competitor bids which it expects will be accepted by the ESO,
+            rather than the costs and benefits of its own asset being bid down as per Ofgem’s
+            assessment;
+
+        •   That the price of rival generators is explicitly included in the list of benchmarks
+            included in the TCLC guidance – in contrast to the inference from Ofgem’s notice of
+            6 June 2023 which implied that a generator can only ensure compliance if it bids
+            purely by reference to its own costs and benefits of being bid down;
+      •   That requiring generators to price their bids with reference to the costs and benefits
+          of being bid down would make the TCLC a blanket restriction on bid pricing in the
+          BM rather than a control on market power in specific circumstances, interfering with
+          the efficient operation of the market;
+
+      •   That if licensees were required to place controls on the overall level of benefit
+          obtained during transmission constraint periods rather than bid prices (which would
+          not be in line with the TCLC or the TCLC guidance), then the only way it would be
+          possible to achieve compliance would be to set bid prices without any profit margin
+          – which would place them at a disadvantage to generators the other side of the
+          constraint; and
+
+      •   That Ofgem should reconsider what it is asking of licensees, and whether a clearer
+          definition of ‘excessive benefit’ is required; as well as further transparency around
+          the occurrence of constraints.
+
+5.3   We have considered this response carefully, and remain of the view that our approach
+      to assessing the excessiveness of SSE’s bid prices is correct, and that a breach of the
+      TCLC has occurred. Far from undermining competition in the BM or interfering with the
+      efficient operation of the market, the TCLC both supports competition and ensures that
+      the BM works in the best interests of consumers. Were generators subject to a
+      transmission constraint free to take an approach to bid pricing along the lines set out in
+      the response, it would result in those generators being able to take advantage of their
+      market power - directly undermining the purpose of the TCLC, pushing up costs to
+      consumers, and giving those generators a significant advantage relative to their rivals.
+      We address the points raised in the response more fully below.
+
+5.4   We agree with the respondent that in the BM generators have an incentive to submit
+      prices close to the expected ‘marginal’ level – ie at a level reflecting the most
+      expensive bid price that the ESO is expected to accept, given its likely requirements
+      and the expected price of the next best alternative. However, the fact that generators
+      have an incentive to price at this profit-maximising level does not mean that a licensee
+      submitting bids at this level cannot be in breach of the TCLC. In fact, depending on the
+      circumstances, the opposite may be true – ie in certain situations, pricing at this level
+      may directly result in a breach of the TCLC.
+5.5   It is important to note here that there will generally not be a single ‘marginal’ bid price
+      in any given settlement period. Instead, in any given period the ESO will typically need
+      to accept bids from certain groups of generators in order to balance the system, with
+      the result that it will have different sets of alternatives available to it at different prices
+      depending on the specific balancing requirement being addressed.
+
+5.6   In the case of Foyers, the bids which SSE submitted were priced relative to selected
+      alternatives which might have been available to the ESO specifically to manage thermal
+      constraints in Scotland and/or Northern England (ie Cruachan and wind units).
+      Therefore, those bid prices could be argued to reflect the ‘marginal’ price of managing
+      the constraint(s), and the price at which SSE was incentivised to submit bids in order
+      to maximise profit given the design of the BM. However the ESO’s willingness to accept
+      bids at this level was a direct consequence of the existence of the transmission
+      constraint, and particularly the lack of economic alternatives available to it to resolve
+      that constraint. The TCLC is specifically intended to protect against generators taking
+      advantage of the market power arising in such situations. By submitting bid prices at
+      this level, SSE’s pricing policy by its nature carried a significant risk of giving rise to an
+      excessive benefit, in breach of the TCLC.
+
+5.7   An alternative ‘marginal’ price that generators might in principle seek to set their prices
+      with reference to would be an estimate of the most expensive bid that the ESO would
+      be likely to accept in a given period from generators that are not subject to a
+      transmission constraint (eg based on observations of patterns in historic accepted bid
+      prices which were not system flagged). While such an approach would have been
+      expected to result in less expensive prices than those submitted by SSE for Foyers in
+      the period in question, it is important to note that a benchmark of this type could also
+      result in bid prices which are not compliant with the TCLC, where used by a generator
+      that is subject to a transmission constraint. This is because such a bid price is not
+      necessarily likely to be reflective of the benefit that the generator would have obtained
+      absent the transmission constraint.
+
+5.8   One reason for this is that – given the significant uncertainty around the ESO’s
+      requirements and the prices of their rivals in any given period – generators that are not
+      subject to a transmission constraint typically face a trade-off. On the one hand, they
+      can choose to submit more expensive prices, increasing their profit if the bid is
+       accepted, but reducing the probability of the bid being accepted if the ESO’s
+       requirements are less than anticipated or rivals submit cheaper prices than expected.
+       On the other hand, they can submit less expensive bid prices, increasing their chance
+       of having a bid accepted, but sacrificing some profit in the process.
+
+5.9    The effect of this trade-off is that in practice we see significant variation in the bid
+       prices submitted by different generators in any given settlement period, with most
+       submitting bids that are less expensive than what ultimately turns out to be the
+       marginal level. A generator which sought to maximise profit by setting its bid prices at
+       the very top of the expected acceptance range in every settlement period would
+       frequently not have a bid accepted at all.
+
+5.10   In contrast, a generator behind a transmission constraint does not face the same
+       trade-off. This is because the existence of the transmission constraint has the effect
+       that even where the licensee submits relatively expensive bid prices, the ESO will have
+       few economic alternatives available to it other than accepting the bid of that generator.
+
+5.11   The result is that, were a constrained generator to use an estimate of the most
+       expensive bid price that will be accepted among generators not subject to a
+       transmission constraint as a benchmark when setting its own prices, then this would
+       likely result in that generator earning on average a level of profit significantly greater
+       than generators not subject to a constraint. Allowing constrained generators to submit
+       bid prices at this level could therefore give generators subject to a transmission
+       constraint a very significant advantage compared to unconstrained generators, allowing
+       them to obtain a profit far in excess of that which would be achievable absent the
+       constraint, and undermining the purpose of the TCLC.
+
+5.12   This is not to say that the prices of rival generators can never provide a useful
+       benchmark when considering the excessiveness or otherwise of a licensee’s bid prices.
+       This is reflected in the TCLC guidance, which refers to such benchmarks as indicators
+       which may be considered when determining whether an excessive benefit has been
+       obtained. In fact, as described in section 3 of this notice, we have carried out and
+       placed weight on comparisons with benchmarks of this type in the context of this
+       investigation. Rather than the marginal price, we would generally expect average
+       prices or profit margins of groups of comparable generators to be a more useful guide
+       to what would be a ‘reasonable’ level of profit for a generator operating in transmission
+       constraint periods to price into its bids.
+
+5.13   Related, where a generator fails to have any regard to its costs and benefits of being
+       bid down, and instead relies wholly on comparator generator benchmarks to set its bid
+       prices in transmission constraint periods, that does not mean that its bid prices will
+       necessarily be excessive. Rather, this will depend on the specific comparator chosen,
+       and whether the prices of that comparator provide a useful guide to the benefit that
+       the generator would obtain absent the transmission constraint. However, such a pricing
+       policy does create an intrinsic risk of breaching the TCLC, as the generator has
+       essentially delegated responsibility for its bid prices, without any controls in place on
+       the level of benefit received and in turn, the risk of breaching the TCLC.
+
+5.14   With respect to a generator’s ability to know when it submits a bid whether that will bid
+       will, if accepted, be used to manage a transmission constraint, we agree that in general
+       generators have limited visibility of the ESO’s rationale for accepting specific bids and
+       offers, and the existence of transmission constraints more generally. This has been the
+       case since the TCLC was first introduced. It reflects the fact that, in deciding what
+       information to publish regarding both transmission constraints and bid acceptances, the
+       ESO must take into account both the practical challenges associated with publishing
+       such information (given that actions are being taken in real time, and given the
+       number of actions being taken); and the commercial implications of doing so.
+
+5.15   Nevertheless, this does not mean that it is acceptable for generators to submit
+       excessive prices in transmission constraint periods. Nor is this to say that generators
+       will be unable to form any expectation as to whether or not they are operating in a
+       transmission constraint period. Significant information regarding the occurrence of
+       transmission constraints is available to generators. The clearest indicator is the
+       licensee’s ability to observe whether or not previous bids have been system flagged,
+       while further information on the presence and nature of constraints is also available to
+       market participants via the ESO’s publications (particularly the ESO data portal) and its
+       operational transparency forums. This information allows generators to form a view on
+       the likelihood that they are subject to a transmission constraint, and so whether the
+       TCLC will apply to their bid pricing.
+5.16    Finally, we do not agree that requiring licensees to place controls on the overall level of
+        benefit in £ million obtained during transmission constraint periods is inconsistent with
+        the TCLC or the TCLC guidance, nor that this would require generators to set their bid
+        prices to reflect costs and benefits of being bid down, but no more. The TCLC refers
+        directly to ‘excessive benefits’, and the benefit to a generator of a bid acceptance is the
+        profit it earns. While a generator does not have control over the amount of bid volume
+        which the ESO considers is required to address a transmission constraint, it does have
+        full control over the profit margin in £/MWh it prices into those bids, and in setting this
+        element of bid prices, is able to take into account previous bid acceptances.
+
+5.17    The requirement that generators do not obtain an excessive benefit in transmission
+        constraint periods does not mean that no profit margin can be priced into bids. The
+        TCLC requires only that the profit earned is not significantly greater than would have
+        been obtained absent the transmission constraint. Exactly what level of profit margin in
+        £/MWh would not amount to an benefit that is excessive will in part depend on the
+        volume of bids accepted, because it is the combination of those margins and
+        exogenous bid acceptance volumes which will determine the overall profit (and
+        contribution to indirect costs) that is obtained by the business.
+
+6     THE AUTHORITY’S DECISION
+
+6.1     We have found that SSE has breached the TCLC as set out in section 3 of this Notice.
+        Having considered all of the relevant facts and circumstances in our possession and
+        having regard to the 2014 Penalty Policy, we therefore have decided to impose a
+        penalty of £1 on SSE which we consider to be an amount which is reasonable in all the
+        circumstances of the case for the reasons set out in section 4 of this Notice. We have
+        considered the representations received in response to the notice of our proposal to
+        impose a penalty on SSE, but do not consider that any changes are required to the
+        penalty compared to the level described in that notice, for the reasons set out in
+        section 5.
+
+6.2     The penalty takes into account that SSE will pay £9,780,000.00 (less £1 penalty), into
+        the consumer redress fund. The payment of the amounts will be made by 5 September
+        2023 (ie 42 days of the date of service of this notice).
+6.3   In reaching this decision, we have taken the relevant factors under the 2014 Penalty
+      Policy into account, including:
+
+      •   The serious nature of the breach
+
+      •   The financial harm suffered by customers as a result of the contravention
+
+      •   The aggravating factors described above.
+
+6.4   We hereby give notice under section 27A(5) of the Electricity Act 1989 of our decision
+      to impose a penalty of £1 on SSE in respect of the contraventions set out above.
+
+6.5   SSE has agreed to settle the investigation on the basis of paying a financial penalty of
+      £1 and the pay the sum of £9,780,000.00 (less £1 penalty) by way of consumer
+      redress.
+
+Gas and Electricity Markets Authority Date: 25 July 2023
+

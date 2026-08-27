@@ -1,0 +1,422 @@
+NOTICE OF PROPOSAL TO IMPOSE A FINANCIAL PENALTY PURSUANT TO SECTION
+27A(3) OF THE ELECTRICITY ACT 1989
+    Date: 06 11 2024
+
+Proposal of the Gas and Electricity Markets Authority (‘the Authority’) to impose a financial penalty,
+following a Provisional Order (“PO”) served on Farringdon Energy Limited (Farringdon) trading as
+Champion Energy, in relation to its compliance with its obligations under Standard Licence Conditions
+(‘SLCs’) 4A.1 of its electricity supply licence. 1
+
+
+1. Summary
+     1.1.    The Authority is satisfied that Farringdon has contravened SLC 4A.1 (a) and (b) as it did not
+             have the internal capability, systems and processes to efficiently and effectively serve its
+             customers or to efficiently and effectively identify likely risks of consumer harm and to mitigate
+             any such risks. This resulted in Farringdon, without legitimate reason, collecting payments for
+             energy not supplied to customers.
+     1.2.    An investigation was launched by the Authority and a Provisional Order (PO) was issued to
+             Farringdon on the 9 May 2024 on the basis that it appeared:
+             (i)     Farringdon had been receiving payments from in the region of 200 Customers and
+                     consumers for supply of electricity that Farringdon had not supplied and had not
+                     informed the Customers and consumers that it had not been supplying.
+             (ii)    The Customers and consumers were, unknowingly, being supplied by other energy
+                     companies, and there was evidence that these energy companies were not being paid
+                     for their supply.
+     1.3.    There was evidence that the Customers and consumers were unknowingly accruing debt to
+             the true suppliers of their electricity.
+
+
+
+
+1
+  The SLCs considered within this Notice of Proposal have similar wording in the Gas and Electricity Supply Licences and are
+interpreted by the Authority in a consistent manner. In this document, a reference to an SLC by number refers to the identical
+condition in both licences. All terms used in this Notice of Proposal are deemed to have the same definitions as those in the
+Electricity and Gas Supply Licences, unless indicated otherwise.
+  1.4.   Following the PO, Farringdon has supplied the Authority with evidence showing that it had,
+         without legitimate reason, been collecting payments from 25 customers and consumers             for
+         energy it did not supply. This resulted in Farringdon gaining payments it was not entitled to,
+         causing a collective detriment of in excess of £175,00 to those customers. This was a failure
+         to have the internal capability, systems and processes required by SLC 4A (a) and (b) to
+         efficiently and effectively serve its customers or to efficiently and effectively identify likely
+         risks of consumer harm and to mitigate any such risks.
+  1.5.   Conditions of the PO required Farringdon to contact all affected customers and terminate any
+         direct debit payments. Farrington has made attempts to comply with this order. However,
+         some affected customers could not be contacted as contact details were no longer valid, the
+         customer had moved, or the (non-domestic) customer had ceased trading.
+  1.6.   Farringdon has taken appropriate remedial actions. However, applying the criteria in section
+         3 of this Notice, the Authority considers that a penalty ought to be imposed for the
+         contraventions set out in the PO. In determining the amount of the proposed penalty, the
+         Authority has considered the factors set out in section 4 of this Notice. The Authority considers
+         the proposed penalty to be reasonable in all the circumstances of this case.
+  1.7.   In these circumstances, and mindful of its principal objective to protect the interests of existing
+         and future consumers, the Authority hereby gives notice under section 27A (3) of the
+         Electricity Act 1989 (“EA 89”) of its intention to impose a penalty of £223,676 on Farringdon.
+  1.8.   Any written representations or objections to this notice must be received by email to Head of
+         Enforcement Paul Stuart, Paul.Stuart@ofgem.gov.uk, or Senior Enforcement Investigator
+         Stefano Gurini, Stefano.Gurini@ofgem.gov.uk, or by post to Paul Stuart, Head Of
+         Enforcement, Ofgem, Enforcement, 4th Floor, 10 South Colonnade, Canary Wharf, London E14
+         4PU by 4pm on 27 November 2024 . Any representations received by this date will be
+         considered by the Authority before it makes a final decision on imposing a penalty.
+  1.9.   The Authority may publish any representations or objections that are not marked as
+         confidential. Should you wish your response or part of your response to remain confidential,
+         please indicate this clearly. The Authority will consider whether to comply with any such
+         requests on a case-by-case basis.
+
+
+2. The authority’s view on the contravention
+
+  2.1.   SLC 4A.1 states that the “licensee must ensure it has and maintains robust internal capability,
+         systems and processes to enable the licensee to: (a) efficiently and effectively serve each of
+         its Customers; (b) efficiently and effectively identify likely risks of consumer harm and to
+         mitigate any such risks”.
+2.2.   Farringdon informed the Authority there were two legitimate circumstances in which customers
+       were paying by Direct Debit (DD) to, but not receiving supply from, Farringdon. These were:
+       a.    Customers deemed a credit risk whereby, Farringdon requested advance payments to
+             build credit to mitigate risks. Farringdon identified 270 customers within this category.
+       b.    Customers permitted to switch, from Farringdon, despite being in debt with Farringdon.
+             In this instance, the customer continued to pay Farringdon, following the switch, to
+             cover the outstanding debt. Farringdon identified 3 customers within this category.
+2.3.   On 5 June 2024, Farringdon informed the Authority it had identified 14 customers, referred to
+       as "Prejudiced Customers”, who, for no legitimate reason, were paying DD without receiving
+       supply. On 20 June 2024, this number was revised to 16. In June 2024 Farringdon informed
+       the Authority it had employed an independent consultant who had identified a further 9
+       Prejudiced Customers. In total 25 Prejudiced Customers were identified.
+2.4.   Evidence provided by Farringdon indicates that over the course of their business, since 2021,
+       they have allowed 30 customers to switch to another supplier despite being in debt. These
+       customers continued making DD payments to pay off this debt. Of these 30 customers, 21
+       have been categorised as Prejudiced Customers because Farringdon continued to take
+       payments after the debt was cleared. In addition, Farringdon have provided evidence of 4
+       cases in which they failed to take supply but set up, and continued to take, direct debits.
+2.5.   Farringdon had no documented internal systems and processes to manage customers’
+       accounts and payments. Farringdon failed to identify that it was taking DD from customers
+       illegitimately, in some cases since 2021. Farringdon’s policies and procedures were managed
+       by one employee relying on personal knowledge and experience. Farringdon had no
+       contingency plans or resilience in place to manage customer accounts and payments should a
+       change in management be necessary.
+2.6.   The detriment caused to the 25 Prejudiced Customers is evidence that Farringdon were unable
+       to efficiently and effectively identify risk of consumer harm and mitigate any such risks in
+       breach of SLC 4A.1(a) and (b). The total detriment is £175,112. It can be broken down as
+       follows:
+       (a)   The detriment associated with the customers who were never supplied electricity by
+             Farringdon is £23,715.
+       (b)   The detriment associated with customers who switched to another supplier, while having
+             a debt with Farringdon, is calculated at £151,397.
+2.7.   It is noted that Farringdon have reimbursed to Prejudiced Customers they have been able to
+       contact and have compensated those customers an additional gesture of goodwill.
+      2.8.   The lack of internal controls, systems and processes to manage customer accounts has
+             contributed to Farringdon being unable to contact 9 (nine) Prejudiced Customers to reimburse
+             the overpayment. This may have been due to the customers moving or ceasing to trade.
+      2.9.   For the reasons set out above, the Authority is satisfied that, in breach of SLC 4A.1 (a) and
+             (b), Farringdon did not have the internal capability, systems and processes to efficiently and
+             effectively serve its customers or to efficiently and effectively identify likely risks of consumer
+             harm and to mitigate any such risks.
+
+
+3. The authority’s view on whether to impose a financial penalty
+      3.1.   In deciding whether to impose a penalty, and in determining the amount of any penalty, in
+             respect of a contravention or failure, the Authority is required to have regard to its Statement
+             of Policy with Respect to Financial Penalties and Consumer Redress2.
+      3.2.   The Authority is required to carry out its functions under Part 1 of the EA 89 including the
+             taking of any decision as to the imposition of a penalty, in the manner which it considers is
+             best calculated to further its principal objective set out in section 3A EA 89 having regard to
+             its other duties.
+      3.3.   The Authority is clear that regulated persons should not benefit financially from any
+             contravention or failure. Indeed, the Authority considers that non-compliance should normally
+             cost significantly more than compliance and that financial penalties should act as a significant
+             deterrent to future non-compliance.
+      3.4.   When determining the amount of a financial penalty and/or consumer redress payment, the
+             Authority will consider any remedial measures that have been taken by a regulated person.
+             However, the Authority may impose a financial penalty significantly in excess of the gain or
+             detriment even where the gain or detriment has been mitigated in full. The Authority considers
+             that this may be necessary in order to deter non-compliance and provide appropriate
+             encouragement for all regulated persons to comply with their obligations.
+      3.5.   The Authority will take into consideration various factors when deciding to impose a financial
+             penalty. The following factors are applicable in this case:
+
+
+
+
+2
+    Statement of Policy With Respect to Financial Penalties And Consumer Redress 2022 | OFGEM, drafted in
+accordance with Section 27B(2) EA 89 and section 30B GA 86
+Seriousness and impact of the contravention or failure.
+
+
+   3.6.    Farringdon received in excess of £175,000 from 25 customers which it was not entitled to
+           take. This could have been prevented had Farringdon implemented internal processes, and
+           regular reviews of accounts.
+   3.7.    Farringdon have made attempts to reimburse money taken from Prejudiced Customers.
+           However, several appear to have moved premises or ceased trading and cannot be contacted.
+           The Authority cannot know the reasons why these businesses have ceased trading, these
+           unnecessary payments may have impacted on the business’ liquidity.
+   3.8.    Farringdon have also offered these customers a goodwill payment (approximately 5% of the
+           detriment) in compensation. This has been considered in determining what penalty should be
+           imposed.
+   3.9.    The impact of the contravention on these microbusinesses cannot be determined but is likely
+           to be significant. The lack of procedures and internal controls resulted in Farringdon taking
+           money from consumers for no legitimate reason. This would likely have continued without the
+           intervention by the Authority and the issue of the PO. Were it not for the PO, more customers
+           could have been affected.
+
+
+
+Deterrence, including whether a financial penalty and/or restitution payment is necessary to deter future
+contraventions or failures by all market participants and encourage compliance.
+
+
+
+   3.10.   The integrity of a supplier’s oversight of customers’ accounts and payments relies on robust
+           systems and clear internal policies and procedures. Customers must have confidence that
+           suppliers   will   manage   accounts   effectively.   Farringdon   took   payments    from   25
+           microbusinesses, which it was not entitled to take, over a sustained period of time and involved
+           a significant amount of money.
+   3.11.   The Authority has noted that, since the PO was issued, Farringdon has attempted to return
+           the payments to the Prejudiced Customers. However, in 9 cases, this has not been possible
+           due to Farringdon not being able to make contact with the customers.
+   3.12.   Whilst Farringdon has not previously been the focus of enforcement action, a strong deterrent
+           message must be sent to focus its attention on taking its licence obligations seriously.
+   3.13.   The Authority also considers it necessary for a strong deterrent message to be sent to the
+           wider market, to encourage the compliance of all suppliers and put them on notice that
+           breaches of this nature will be penalised.
+   3.14.   Taking all of these factors into account, the Authority considers it necessary to impose a
+           penalty.
+
+
+4. Determining the amount of the financial penalty
+
+   4.1.    The Penalty Policy outlines the steps that should be taken in calculating the penalty amount
+           for any given case. This is a six-step process, and the Authority’s views and determinations
+           for each of these steps is laid out below.
+
+Step 1 – Calculate the detriment and gain
+
+   4.2.    The Authority, in reviewing all the available evidence, has attempted to obtain information
+           that would allow it to quantify the full gain to Farringdon and detriment suffered by the
+           consumer in this case. When the Prejudiced Customers were identified, the detriment was in
+           excess of £175,000. Where possible, since the PO was issued, Farringdon has voluntarily
+           refunded some of the Prejudiced Customers.
+   4.3.    The effect of the financial gain to Farringdon over the contravention period cannot be fully
+           determined or quantified as it is unknown how Farringdon used these additional funds or if
+           any interest was earned.
+   4.4.    For these reasons it is not possible to accurately quantify the gain and detriment here. Instead,
+           the Authority intends to consider this at Step 2 in assessing the seriousness of the breach.
+
+Step 2 – Assess the seriousness of the breach
+
+   4.5.    In assessing the seriousness of the breach, the Authority has given due regard to factors
+           outlined in the Penalty Policy (Paragraph 5) and considers all those listed within Step 2 to be
+           applicable in this case. These are outlined below:
+
+Factors relating to the nature of a contravention or failure
+
+   4.6.    The Authority considers the contravention to be serious. It occurred over a substantial period,
+           demonstrating a long-term systemic failure of Farringdon’s operational capability. Farringdon
+           should have been aware that payments were being taken from customers who had never been
+           or were no longer being supplied energy by Farringdon.
+
+Impact of the contravention or failure, including any detrimental effect on the ability of Ofgem or the
+Authority to fulfil its statutory duties and whether there was any consumer or market participant
+detriment or gain (financial or otherwise) made by the regulated person.
+
+   4.7.    Farringdon was unable to identify all “Prejudiced Customers”, requiring them to engage a
+           consultant to assist complying with regulatory obligations after the PO has been issued.
+            Without directions given under the PO, it is likely that these customers would not have been
+            identified and Farringdon would have continued to take payments from customers erroneously.
+     4.8.   Customers affected were all micro businesses which are likely to be at higher risk from financial
+            harm than larger businesses due to lower turnover and profit. Micro-businesses should have
+            confidence that energy suppliers have sufficient procedures and capabilities in place to ensure
+            that direct debits are justified.
+     4.9.   Farringdon took payments, in excess of £175,000, from 25 identified Prejudiced Customers
+            with some of these payments commencing in 2021.             The Authority is satisfied that the
+            contravention likely caused significant impact to the Prejudiced Customers.
+
+
+
+Step 3 - Consider aggravating or mitigating factors
+
+     4.10. The Penalty Policy provides a non-exhaustive list of aggravating factors and mitigating factors
+            that ought to be considered when determining a penalty. In this case, the Authority deems
+            the following aggravating factors (table 2) and mitigating factors (table 3) to be applicable.
+
+
+     4.11. Table 2 - Aggravating factors
+
+
+No            Aggravating Factor                Applies                       Detail
+                                                 Y/N/P
+       (factors tending to increase penal
+                                                (partial)
+                    element)
+
+1     Compliance history                           N         Farringdon has not previously been the
+                                                             subject of Ofgem's enforcement action.
+
+
+2     Actions, or lack thereof, taken after        Y        Farringdon was taking incorrect payments
+      becoming aware of the                                 from customers for a substantial period of
+      contravention or failure prior to                     time. Customer accounts should be
+      Ofgem's investigation                                 regularly reviewed. Farringdon’s complaint
+                                                            data provided to Ofgem details four
+                                                            similar cases resolved by the
+                                                            Ombudsman. These complaints date as far
+                                                            back as 31 October 2021. Therefore,
+                                                            Farringdon should have been aware or
+                                                            could reasonably have been expected to
+No           Aggravating Factor              Applies                          Detail
+                                              Y/N/P
+      (factors tending to increase penal
+                                             (partial)
+                   element)
+                                                         have been aware of its contraventions
+                                                         before our action.
+
+3    Actions, or lack thereof, taken after      P        Farringdon initially identified 14 affected
+     becoming aware of the                               customers following the issue of a
+     contravention or failure during                     Provisional Order. After requests for
+     Ofgem's investigation                               information by the Authority, 2 further
+                                                         customers were identified. Farringdon
+                                                         then employed a consultant to assist, and
+                                                         a further 9 customers were identified.
+                                                         Farringdon did not have the capability to
+                                                         identify failures and affected customers
+                                                         without the services of an outside
+                                                         consultant.
+
+4    The involvement of senior                  Y        Farringdon is a small supplier, and its
+     management in any contravention                     senior management were, as might be
+     or failure                                          expected, heavily involved in the day-to-
+                                                         day management of the business.
+
+     The absence of any evidence of             Y        Farringdon had no documented internal
+     internal mechanisms or procedures                   policies or procedures to adequately
+5
+     intended to prevent contravention                   identify and prevent the contravention.
+     or failure
+
+6    The absence of any evidence that           Y                         As above.
+     such internal mechanisms and
+     procedures as exist within the
+     regulated person have been
+     properly applied and kept under
+     appropriate review by senior
+     management
+
+
+
+
+Table 3 – Mitigating factors
+No           Mitigating Factor              Applies                        Detail
+                                             Y/N/P
+     (factors tending to decrease penal
+                                            (partial)
+                   element)
+
+1    The extent to which the regulated         N        Farringdon had no internal procedures, or
+     person had taken steps to secure                   controls to monitor and review customer
+     compliance either specifically or by               accounts and payments being taken from
+     maintaining an appropriate                         customers.
+     compliance policy, with effective
+     management supervision
+
+2    Evidence that the contravention or        N        The Authority considers it a reasonable
+     failure was genuinely accidental or                expectation if Farrington had in place
+     inadvertent                                        relevant policies and procedures, it could
+                                                        or should have identified the
+                                                        contravention earlier.
+
+
+3    Promptly, accurately and                  N        Farringdon did not report this failure to
+     comprehensively reporting the                      the Authority
+     contravention or failure to Ofgem
+     (self-reporting breach)
+
+4    Appropriate action by the regulated       Y        Farringdon has complied with the terms of
+     person to remedy the                               the Provisional Order and employed the
+     contravention or failure                           services of a consultant to assist with its
+                                                        regulatory obligations.
+
+
+5    The terms of the Order are likely to      P        Farringdon has offered all customers
+     have already led to some financial                 affected a voluntary goodwill payment
+     penalty for the supplier                           which has been taken into account within
+                                                        the penalty figure imposed in Para 5.1.
+
+                                                        As part of the PO Farringdon was
+                                                        compelled to refrain from all sales
+                                                        acquisition activity including the
+                                                        acquisition of new non-domestic
+                                                        customers. The financial impact of this
+No             Mitigating Factor                   Applies                      Detail
+                                                   Y/N/P
+       (factors tending to decrease penal
+                                               (partial)
+                    element)
+                                                             cannot be assessed but it is likely this
+                                                             would have had some impact.
+
+                                                             Farringdon has also engaged the services
+                                                             of a consultant to assist with its
+                                                             compliance of licence conditions. The
+                                                             Authority acknowledges that this may
+                                                             have come at a considerable financial cost
+                                                             however Farringdon should have had the
+                                                             resources, policies and procedures already
+                                                             in place to ensure compliance.
+
+                                                             Therefore, the Authority has partially
+                                                             considered this factor.
+
+
+
+
+Step 4 – Consider an adjustment for deterrence
+
+     4.12. As outlined elsewhere in this Notice, the Authority considers that a strong deterrent message
+            ought to be sent to Farringdon, to focus their attention on complying with their relevant
+            regulatory obligations. Equally important to this, is sending a clear deterrent message to the
+            wider market that this kind of misconduct will not be tolerated and will be appropriately
+            penalised.
+     4.13. For this reason, the Authority proposes an appropriate uplift to the penal element for
+            deterrence.
+
+Step 5 – Apply a discount in settled cases
+
+     4.14. Not applicable
+
+Step 6 – Establish the total financial liability
+
+     4.15. Having considered all the available evidence, and the factors outlined earlier in this section,
+            the Authority proposes to impose a penalty of £223,676.
+5. The Authority’s decision
+  5.1.   The Authority is satisfied that Farringdon breached SLC 4A.1 (a) and (b). Having considered
+         the relevant facts and circumstances in its possession, and having regard to the Penalty Policy,
+         the Authority hereby proposes to impose a penalty of £223,676 on Farringdon, which it
+         considers to be an amount that is reasonable in all the circumstances of the case.
+  5.2.   In reaching its decision, the Authority took the relevant factors under the Penalty Policy into
+         account, including but not limited to:
+         (i)     The very serious nature of the breach.
+         (ii)    The likely, but unquantifiable, detriment that the breach would have caused to
+                 consumers and other market participants; and the resultant gain to Farringdon.
+         (iii)   The aggravating and mitigating factors outlined in Tables 1 and 2, that are either
+                 applicable or partially applicable in this case.
+         (iv)    Sending a strong deterrence message to Farringdon and the market.
+  5.3.   The Authority hereby gives notice under section 27A (3) of the EA 89 of its proposal to impose
+         a penalty of £223,676 on Farringdon, in respect of the contraventions set out above.
+  5.4.   Any written representations or objections to this notice must be received by 4pm on 27
+         November 2024.
+
+  5.5.   Any representations or objections received by this date will be considered by the Authority
+         before it makes a final decision on imposing a penalty. If as a result of representations or
+         objections the Authority proposes to vary the penalty per section 27A(3)(a) EA 89, it will
+         consult again in accordance with section 27A (4) EA 89.
+  5.6.   Any representations or objections received that are not marked as confidential may be
+         published on the Ofgem website. Should you wish your response or part of your response to
+         remain confidential, please indicate this clearly. The Authority will consider whether to comply
+         with any such requests on a case-by-case basis
+
+  The Gas and Electricity Markets Authority
+
+
+  Date: 6 November 2024
+
