@@ -1,0 +1,5 @@
+company,metric,value
+South East Water,leakage_ml_per_day,12.4
+Thames Water,c-mex_score,71.2
+Southern Water,pollution_incidents,88
+# Ofwat open-data performance CSV — not an enforcement-notice body
