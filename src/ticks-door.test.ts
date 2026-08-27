@@ -4,7 +4,7 @@ import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, X402SCAN_SERVER_URL, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, X402SCAN_SERVER_URL, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, isOrganicHay } from "./ticks-door.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
   IMPORT_ALERTS_MANIFEST_PATH,
@@ -193,6 +193,12 @@ async function withServer(
 const FRESH_FETCHED_AT = new Date(Date.now() - 60_000).toISOString();
 
 async function main(): Promise<void> {
+  assert.equal(isOrganicHay({ id: "hay-id-organic-alfalfa", kind: "organic" }), true);
+  assert.equal(isOrganicHay({ id: "hay-idaho-organic" }), true);
+  assert.equal(isOrganicHay({ id: "hay.ams_2904.north_inter_mountains.organic.alfalfa.supreme.large_square" }), false);
+  assert.equal(isOrganicHay({ id: "dairy.ams_2997.organic_ads.milk_half_gal" }), false);
+  assert.equal(isOrganicHay({ id: "grain.ams_3802.national.organic.yellow_corn" }), false);
+
   await withServer({
     TICKS_PATH: "",
     TICKS_DIR: "",
@@ -767,15 +773,11 @@ async function main(): Promise<void> {
         assert.equal(tm.tickCount, body.ticks.length);
         const publicCopy = `${JSON.stringify(tm)}${JSON.stringify(catalogBody)}${JSON.stringify(body)}`.toLowerCase();
         assert.ok(!publicCopy.includes("inventing"), "unpaid catalog/manifest and paid body must not include collect-policy prose");
-        assert.ok(!publicCopy.includes("usda organic"), "organic hay is not a product");
         assert.ok(!publicCopy.includes("we are not inventing"), "must not include first-person collect notes");
-        assert.ok(!(tm.empty ?? []).some((e) => /organic/i.test(`${e.id ?? ""} ${e.name ?? ""} ${e.reason ?? ""}`)));
         assert.ok((tm.empty ?? []).every((e) => e.status === "empty" && e.id && !("reason" in e)));
-        assert.ok(!body.ticks.some((row) => /organic/i.test(String((row as Record<string, unknown>).id ?? ""))));
         for (const row of body.history.emptyReports as Record<string, unknown>[]) {
           assert.deepEqual(Object.keys(row).sort(), ["id", "status"]);
           assert.equal(row.status, "empty");
-          assert.ok(!/organic/i.test(String(row.id ?? "")));
         }
       },
     );

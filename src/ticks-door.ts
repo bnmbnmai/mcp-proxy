@@ -342,8 +342,8 @@ export { MCP_PATH } from "./ticks-mcp.js";
 export const X402SCAN_SERVER_URL =
   "https://www.x402scan.com/server/c6f584c5-e494-41d1-aa02-2efb07ac3546";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
-export const PRODUCT_NAME = "Idaho + nationwide USDA AMS hay/cattle/grain";
-export const PRODUCT_VERSION = "1.4.0";
+export const PRODUCT_NAME = "Idaho + nationwide USDA AMS hay/cattle/grain/dairy/hogs/produce";
+export const PRODUCT_VERSION = "1.5.0";
 const COLLECT_MEMO_RE =
   /we are not inventing|this report has no organic row|not reusing an older organic|usda printed no organic/i;
 
@@ -539,6 +539,9 @@ const PUBLIC_SERIES_PREFIXES = [
   "cattle.ams_",
   "grain.ams_",
   "wool.ams_",
+  "dairy.ams_",
+  "hogs.ams_",
+  "produce.ams_",
   "fiber.ams_",
   "ibc.id.grain.",
   "wd1.",
@@ -628,6 +631,15 @@ export const TICKS_SOURCE_NAMES = [
   "AMS_1778 Montana weekly cattle auction",
   "AMS_2039 Utah weekly cattle auction",
   "AMS_2106 Wyoming weekly cattle auction",
+  "AMS_2998 Dairy Market News weekly",
+  "AMS_1598 Dry products",
+  "AMS_1102 Fluid milk West",
+  "AMS_2997 Organic dairy",
+  "AMS_2872 National hog/pork summary",
+  "AMS_3802 National organic grain",
+  "AMS_2314 New York terminal fruit",
+  "AMS_2306 Los Angeles terminal fruit",
+  "AMS_2290 Chicago terminal fruit",
 ] as const;
 
 export type TickStatus = "ok" | "empty" | "stale";
@@ -885,7 +897,7 @@ function amountAtomicFor(sku: DoorSku): string {
 const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> = {
   ticks: {
     description:
-      "Call GET /ticks when you need the current official Idaho + nationwide USDA AMS hay/cattle/grain snapshot (PNW barns + AMS Direct reports; IBC grain; WD1 $/AF). JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /ticks when you need the current official Idaho + nationwide USDA AMS hay/cattle/grain/dairy/hogs/produce snapshot (PNW barns + AMS Direct/auction/terminal reports; IBC grain; WD1 $/AF). JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: TICKS_PATH,
   },
   "import-alerts": {
@@ -2040,7 +2052,10 @@ function historyPath(): string {
   return board ? resolve(board, "..", "history.json") : "";
 }
 
+/** Invented Idaho organic placeholders only. Official AMS organic prints stay on /ticks. */
 export function isOrganicHay(row: Record<string, unknown>): boolean {
+  const id = String(row.id ?? row.series ?? "").toLowerCase();
+  if (id.includes(".ams_") || /^(hay|grain|dairy)\.ams_/.test(id)) return false;
   const blob = [row.id, row.series, row.kind, row.commodity, row.label, row.name]
     .map((v) => String(v ?? "").toLowerCase())
     .join(" ");
@@ -2182,8 +2197,11 @@ const GROUP_LABELS: { id: string; name: string }[] = [
   { id: "cattle", name: "Cattle" },
   { id: "produce", name: "Produce" },
   { id: "grain", name: "Grain" },
+  { id: "dairy", name: "Dairy" },
+  { id: "hogs", name: "Hogs" },
   { id: "water", name: "Water" },
   { id: "pulses", name: "Pulses" },
+  { id: "wool", name: "Wool" },
 ];
 
 const SAMPLE_SERIES_IDS = [
@@ -2362,7 +2380,7 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
     schema: {
       tickFields: {
         id: "string — deterministic series id",
-        group: "hay | cattle | produce | grain | water | pulses | wool",
+        group: "hay | cattle | produce | grain | dairy | hogs | water | pulses | wool",
         commodity: "string",
         label: "string",
         market: "string — geography / barn / shipping point",
@@ -2738,7 +2756,7 @@ export function llmsTxt(): string {
   const listedGmp = gmpIsPublic();
   const listedGmpMd = gmpMdIsPublic();
   const paid = [
-    "- GET /ticks — $0.02 — Idaho + nationwide USDA AMS hay/cattle/grain ticks (PNW barns, IBC grain, WD1 $/AF). Paid JSON keeps ticks[] and adds records[] + asOf.",
+    "- GET /ticks — $0.02 — Idaho + nationwide USDA AMS hay/cattle/grain/dairy/hogs/produce ticks (PNW barns, IBC grain, WD1 $/AF). Paid JSON keeps ticks[] and adds records[] + asOf.",
     "- GET /import-alerts — $0.05 — FDA Import Alerts / DWPE firm-product snapshot. Paid JSON keeps ticks[] and adds records[] + asOf.",
     "- GET /mariners — $0.05 — USCG D13 / Northwest Local Notice to Mariners",
     "- GET /mariners-d11 — $0.05 — USCG D11 / Southwest Local Notice to Mariners",
@@ -3081,7 +3099,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       [TICKS_PATH]: {
         get: paidOpenApiOp({
           operationId: "getTicks",
-          summary: "Idaho + nationwide AMS hay/cattle/grain ticks",
+          summary: "Idaho + nationwide AMS hay/cattle/grain/dairy/hogs/produce ticks",
           description: SKU_COPY.ticks.description,
           priceUsdc: ticksPrice,
           amountAtomic: ticksAtomic,
