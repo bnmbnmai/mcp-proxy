@@ -1,0 +1,326 @@
+NOTICE IN ACCORDANCE WITH SECTION 55(6) OF THE RAILWAYS ACT 1993, AS
+AMENDED, OF THE OFFICE OF RAIL AND ROAD DECISION NOT TO MAKE A FINAL
+ORDER, OR MAKE OR CONFIRM A PROVISIONAL ORDER, IN RELATION TO
+NETWORK RAIL INFRASTRUCTURE LIMITED'S CONTRAVENTION OF CONDITION 1
+OF ITS NETWORK LICENCE
+16 October 2015
+
+   1. This document constitutes a notice issued by the Office of Rail and Road (ORR)
+      published in accordance with section 55(6) of the Railways Act 1993, as amended
+      (the Act) stating that:
+      a. ORR is satisfied that Network Rail Infrastructure Limited (Network Rail) is
+          contravening Condition 1 of its network licence by not acting in accordance with
+          best practice and in a timely, efficient and economical manner, to achieve the
+          purpose in paragraph 1 of Condition 1 to the greatest extent reasonably
+          practicable having regard to all to all relevant circumstances including the ability
+         of Network Rail to finance its licenced activities, in that it is failing to adequately
+          plan and deliver its enhancements programme due to systemic weaknesses in
+         the planning, and delivery of its enhancement portfolio. Although Network Rail
+         has started to address these issues through its Enhancements Improvement Plan
+         (EIP), it does not currently have a comprehensive plan in place and therefore
+         ORR is satisfied that there is a high risk that milestones will continue to be
+         missed.
+      b. Nevertheless, ORR will not at present make an order under section 55 of the Act
+         because:
+             i.   Network Rail has agreed to take, and is taking, all such steps as appear
+                  appropriate to ORR for the purpose of securing or facilitating compliance
+                  with condition 1 of its network licence. In particular Network Rail is
+                  committed to finalising its EIP on or before 30 October 2015, and
+                  publishing it by mid-November. After finalising the EIP and to ensure
+                  integration and oversight of the business changes, reports will be made to
+                  Network Rail's Business Change Committee which will ensure there is no
+                  duplication of accountabilities and that Network Rail's resources are
+                  appropriately optimised across the business.
+            ii.   Where a weakness has not been addressed in the remit of the EIP,
+                  Network Rail has set out steps it has taken and will take to address them,
+                  as set out in the Annex.
+                 iii.     ORR does not consider it appropriate to make an order because it is
+                          satisfied that an enforcement order would not, at this stage, deliver a
+                          better result than would be achieved by:
+                                     a. implementing and delivering the EIP; and
+                                     b. taking the steps set out in the Annex
+
+                        and would not provide greater impetus on Network Rail's delivery to secure
+                        more effective or timely compliance with condition 1 of its network licence.
+
+           Background
+
+       2. This Notice follows ORR's investigation into missed enhancement milestones in the
+           first year of Control Period 5 (CP5).
+       3. ORR's PR13 final determination defined the regulated outputs for enhancements in
+           CP5 as scheme development milestones (for early stage projects) and scheme
+           completion milestones. These milestones are set out in Network Rail's CP5
+           Enhancements Delivery Plan, which is revised quarterly using a regulated change
+           control process.
+       4. ORR refers to these regulated output milestones using Network Rail's GRIP 1 stage­
+           gates, as set out below:
+               a. GRIP 3 completion (single option development)- scheme development
+                    regulated output
+               b. GRIP 6 completion (infrastructure ready for use)- scheme delivery regulated
+                    output
+       5. In 2014-15, Network Rail missed 16 of 44 (36%) GRIP 3 regulated outputs and 14
+           out of 40 (35%) GRIP 6 regulated outputs.
+       6. ORR raised concerns about the high number of slipping and/or missed milestones
+           with Network Rail in July 2014 through its regulatory escalator, which is ORR's
+           method of raising regulatory concerns. ORR further escalated the issues through
+           formal letters sent from November 2014.
+       7. ORR also raised concerns (and taken separate safety enforcement action locally)
+           regarding Network Rail's approach to risk assessment and safety by design since
+           early 2014.
+      8. Network Rail's response to the above concerns was slow and localised, but began to
+           be properly co-ordinated in January 2015 by its initiation of a review led by one of its
+           non-executive directors who chaired a specially convened task force known as the
+           Major Projects Delivery Committee (MPDC.) In addition, in April 2014 ORR agreed a
+
+
+1
+    Governance for Railway Improvement Projects
+            set of actions for Network Rail to take to improve its approach to securing
+            interoperability authorisations
+       9. ORR wrote to Network Rail on 31 March 2015 initiating an investigation into its ability
+            to plan, manage and deliver its enhancement regulated outputs. 2 The investigation
+            focused on the late completion of Network Rail's development and delivery
+            milestones. ORR also considered whether there was evidence of systemic
+            weaknesses relating to the delivery of these regulated outputs, with a particular focus
+            on the following concerns:
+                a. project development (including estimating costs, assessing risks, compliance
+                     with legislation and ensuring safety by design);
+                b. project delivery;
+                c. delivering major complex programmes (such as Great Western Route
+                     Modernisation); and
+                d. management of the CPS portfolio.
+       10. During the course of ORR's investigation, Network Rail presented several iterations
+            of its EIP, which was produced under the auspices of the MPDC and was designed
+            to draw together a range of cross-Network Rail actions to improve its capability and
+           address ORR's concerns. As part of its investigation, ORR analysed whether the
+            EIP adequately addresses the weaknesses identified in paragraph 14.
+
+
+           Condition 1
+       11. The relevant condition of Network Rail's licence is Condition 1
+       12. Condition 1 requires Network Rail, by virtue of paragraph 1.2, to:
+                " ... achieve the purpose in condition 1.1 to the greatest extent reasonably
+                 practicable having regard to all relevant circumstances including the ability of the
+                 licence holder to finance its licensed activities."
+
+
+                The purpose referred to in paragraph 1.2 is defined in paragraph 1. 1, and is:
+                " ... to secure:
+                (a) the operation and maintenance of the network;
+                (b) the renewal and replacement of the network; and
+                (c) the improvement, enhancement and development of the network.
+                In each case in accordance with best practice and in a timely, efficient and
+                economical manner so as to satisfy the reasonable requirements of persons
+
+
+
+
+2
+    [link to Terms of Reference)
+            providing services relating to railways and funders, including potential providers
+            or potential funders, in respect of:
+                        (i)    the quality and capability of the network; and
+                        (ii)   the facilitation of railway service performance in respect of
+                               services for the carriage of passengers and goods by railway
+                               operating on the network
+
+
+   The Contravention
+13. ORR is satisfied that Network Rail is contravening Condition 1 of its network licence
+   by not acting in accordance with best practice and in a timely, efficient and
+   economical manner, to achieve the purpose in paragraph 1.1 of Condition 1 to the
+   greatest extent reasonably practicable having regard to all relevant circumstances
+   including the ability of Network Rail to finance its licensed activities.
+14. In particular, as detailed above, ORR is satisfied that Network Rail is failing to
+   adequately plan and deliver its enhancements programme. ORR considers that
+   Network Rail failed to meet its regulated outputs for a number of reasons and
+   identified the following weaknesses:
+       a. poor setting of project requirements (front-end definition) with inadequate
+               change control against a baseline;
+       b. inadequate governance and challenge of projects as they pass through
+               development gateways;
+       c.      inconsistent consideration of safety issues during design and optioneering;
+       d. blurred accountabilities of the client, sponsor and deliverer are blurred, as
+               projects move through their lifecycle;
+       e. cost estimation and risk functions inadequately resourced or governed
+               through the early project lifecycle;
+       f.      no defined framework, tools and techniques for managing complex
+               infrastructure programmes resulting in underestimates of timescales, costs
+              and impact on operational performance;
+       g. absence of portfolio management capability to validate project reporting in
+              terms of cost and schedule, for example by peer reviewing and challenging
+              projects to provide early warning of failure or by better identification of
+              shortages in critical resources;
+       h. late requirements identified when handing asset over to operator;
+       i.     land and consents issues underestimated causing delays in purchasing land
+              and obtaining building consents, leading to extra project costs and schedule
+              delays;
+        j.    unknown asset condition, resulting in late increases to scope and re-planning;
+        k. lower than planned productivity;
+        I.    weak assurance of compliance with safety legislation and standards; and
+        m. inadequate and late technical files for authorisation under interoperability
+              regulations.
+15. ORR is satisfied that the wide range of identified weaknesses indicate that Network
+    Rail's project development and delivery weaknesses are systemic, rather than the
+    result of individual project failings or adverse circumstances. This is also evidenced
+    by the wide range of causes and the scale of the required long-term improvements
+   that ORR considers Network Rail needs to develop and embed into its business.
+16. Although Network Rail has started to address these issues through its EIP and other
+   actions, it does not currently have a comprehensive plan in place and therefore ORR
+    is satisfied that there is a high risk that milestones will continue to be missed.
+
+
+
+   Section 4 of the Act
+
+17. ORR must exercise its functions (including its enforcement function) in the manner
+   which it considers best calculated to achieve a series of duties set out at section 4 of
+   the Act.
+
+
+   Section 55 of the Act
+18. Section 55(1) of the Act obliges ORR to make a final order if it satisfied that a licence
+   holder is contravening, or is likely to contravene, any condition of its licence. Section
+   55(2) of the Act provides that ORR must instead make a provisional order where it is
+   requisite to do so. In determining if it is requisite, ORR must have regard in particular
+   the extent to which any person is likely to sustain loss or damage in consequence of
+   anything which likely to be done, or omitted to be done before a final order can be
+   made.
+19. Any enforcement order must contain such provisions as is requisite for the purpose
+   of securing compliance with the relevant licence condition .
+20. The obligations to make an enforcement order contained in sections 55(1) and 55(2)
+   are subject to a number of exceptions, as follows:
+       a. Section 55(5) provides that ORR must not make an Order if it is satisfied that
+             the duties imposed upon it by section 4 of the Act preclude making an Order;
+       b. section 55(5A) provides that ORR must not make an Order if it is satisfied that
+             the most appropriate way of proceeding is under the Competition Act 1993;
+             and
+       c.    section 55(58) requires that if ORR is satisfied that:
+                 i. the relevant operator has agreed to take, and is taking, all such steps
+                    as it appears to ORR for the time being, to be appropriate for it to take
+                    for the purposes of securing or facilitating compliance with the
+                    condition or requirement in question; or
+                ii. where the contravention will not adversely affect the interests of users
+                    of railway services or lead to any increase in public expenditure;
+            it must only make an Order if it considers it appropriate to do so.
+21. ORR does not consider that the exception in section 55(5) applies. ORR is satisfied
+   that its section 4 duties do not preclude the making of an Order.
+22. ORR is satisfied that the exception in section 55(5A) does not apply. In this case
+   ORR has no reason to believe that NR's failure to deliver its enhancement regulated
+   outputs could amount to an infringement of the Competition Act 1998.
+23. ORR does, however, consider that the exception in section 55(58) applies:
+       a. Network Rail has agreed to take, and is taking, all such steps as appear
+            appropriate to ORR for the purpose of securing or facilitating compliance with
+            condition 1 of its network licence. In particular Network Rail is committed to
+            finalising its EIP on or before 30 October 2015, and publishing it by mid­
+            November. The EIP will address the following areas of enhancements
+            planning and delivery:
+                   i. Clienting and Governing the Enhancements Portfolio
+                   ii. Sponsorship and Transition Management
+                  iii. Cost planning, estimating, risk and whole life costs
+                  iv. Project Governance and Stage Gate Assurance
+                   v. Project and Portfolio Monitoring
+                  vi. Project and Portfolio Delivery Capability
+                  vii. Safety by Design
+       b. After finalising the EIP and to ensure integration and oversight of the business
+            changes, reports will be made to Network Rail's Business Change Committee
+            which will ensure there is no duplication of accountabilities and that Network
+            Rail's resources are appropriately optimised across the business.
+       c.   Where a weakness has not been included in the remit of the EIP, Network
+            Rail has set out steps it has taken and will take to address them, as set out in
+            the Annex.
+       d. ORR does not consider it appropriate to make an order because it is satisfied
+            that an enforcement order would not, at this stage, deliver a better result than
+            would be achieved by:
+                i.   implementing and delivering the EIP; and
+                ii. taking the steps set out in the Annex
+
+      and would not provide greater impetus on Network Rail's delivery to secure
+      more effective or timely compliance with condition 1 of its network licence.
+
+
+
+
+Richard Price
+Chief Executive
+      Annex - Additional areas addressed by Network Rail outside the remit of the
+      EIP:
+
+Concern raised by ORR              Network Rail's response
+Governance arrangements for        Network Rail has set out 4 levels of governance to hold itself
+all workstreams in the plan        to account for delivery of the EIP:
+should be fit for purpose and        • L1 -Working level (Project Management Office)
+sustainable beyond the life of       • L2 ­ Director level (National Investment Portfolio
+the MPDC.                               Strategic Review Meeting - NIPSRM)
+                                     • L3 ­ CEO level (Whole business review)
+                                     • External - High Level Trilateral (NR/ORR/DfT) and
+                                        Director Level Meetings
+
+                                   Network Rail is also considering continuing a quarterly MPDC
+                                   review throughout 2016 to strengthen the transition towards
+                                   the new governance arrangements
+Clear reporting and monitoring     Network Rail has agreed to four-weekly reviews of progress
+arrangements should be             at the outset, maybe changing to quarterly in longer term.
+agreed between Network Rail
+and ORR in relation to the         The EIP is also a standing agenda item at quarterly
+EIP, so that ORR can monitor       Infrastructure Projects Director Level Meetings and the High
+progress on delivery with an       Level Trilateral with the Department for Transport.
+appropriate level of
+independent assurance to
+verify that benefits are being
+delivered.
+
+Productivity per shift should be   Network Rail proposes to address productivity issues in
+improved in OLE projects.          existing forums, instead of in the EIP, as these provide more
+                                   focussed and effective opportunity to seek industry
+                                   engagement.
+
+                                   Specific examples provided for the Great Western Route
+                                   Modernisation. Network Rail has worked with industry
+                                   partners to identify management/engineering process
+                                   opportunities. Network Rail has also identified a number of
+                                   initiatives to improve productivity inside possessions.
+
+                                   Network Rail is developing key performance indicators to
+                                   measure productivity and is using Rail Electrification Delivery
+                                   Group chaired by the Rail Industry Association to work with
+                                   suppliers.
+
+                                   Network Rail highlighted that the EIP includes workstreams to
+                                   improve supply chain capacity and to identify and reward high
+                                   performing contractors.
+
+The issues raised in the           Network Rail has referred to a meeting planned for 14
+Independent Reporter study         October, where recommendations of CN031 will be reviewed.
+(by Nichols) CN031 must be         Network Rail stated it is likely that most will sit within the EIP.
+properly taken into account in     Network Rail requested that timely implementation is tracked
+the EIP.                           via the normal independent reporter recommendation tracking
+                                   process.
+Authorisations -assurance         Network Rail has identified several actions:
+required that Network Rail's      • Work in progress to address conflicts within Work Activity
+Safety Technical &                   Risk Assessments.
+Engineering organisation has      • Business Critical Rules Programme allows Network Rail
+a timetabled plan to:                to move away from on-size-fits-all approach to risk based
+    a) assimilate Technical          approach.
+        Specifications for        • Network Rail is completing workshops to establish
+        Interoperability (TSI)       process for implementation of TSls compliance in late
+        into its business            November. Network Rail will then complete gap analysis
+        processes and                and establish hierarchy of compliance to address by end
+        standards framework;         of December 2015.
+       and                        • Governance processes for bringing Network Rail's
+    b) review its company            standards in-line with TSls and other statutory provisions
+       and other relevant            will be in place in early December.
+       standards, designs etc.
+       to bring up to date with
+       TSls and other relevant
+       statutory provisions.
+
+Greater clarity is needed on      Network Rail is introducing a systems engineering approach
+actions to improve                for all enhancements projects and design gate reviews with
+sponsorship capability and        guidance and checklists are being developed to enable
+stage gate robustness to take     challenge of non-compliant projects.
+into account the need to
+improve safety by design and      Network Rail has set up an Interface and Risk workshop
+risk assessment.                  during October, to identify and log interdependencies of this
+                                  type across the EIP and build into the final programme.
+
