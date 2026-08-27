@@ -390,6 +390,7 @@ import {
   shopPaidJsonSample,
 } from "./shop-sample.js";
 import { mergeAmsNationalTicks } from "./ticks-ams.js";
+import { attachOfficialComposites, type OfficialComposite } from "./ticks-composites.js";
 import {
   GMP_AMOUNT_ATOMIC,
   GMP_MANIFEST_PATH,
@@ -753,6 +754,7 @@ export type TicksPayload = {
     emptyReports: unknown[];
     series: unknown[];
   };
+  composites?: OfficialComposite[];
 };
 
 function env(name: string, fallback = ""): string {
@@ -2537,7 +2539,7 @@ export function loadTicks(): TicksPayload {
         }, null);
 
   if (!board && !historyFile) {
-    return mergeAmsNationalTicks({
+    return attachOfficialComposites(mergeAmsNationalTicks({
       ok: true,
       product: "idaho-hay-feeder-ticks",
       sources: [...TICKS_SOURCE_NAMES],
@@ -2548,11 +2550,11 @@ export function loadTicks(): TicksPayload {
       ticks: [],
       failed: [],
       history: { points: [], emptyReports: [], series: [] },
-    });
+    }));
   }
 
   const hasTicks = ticks.length + points.length > 0;
-  return mergeAmsNationalTicks({
+  return attachOfficialComposites(mergeAmsNationalTicks({
     ok: true,
     product: "idaho-hay-feeder-ticks",
     sources: [...TICKS_SOURCE_NAMES],
@@ -2564,7 +2566,7 @@ export function loadTicks(): TicksPayload {
     ticks,
     failed,
     history: { points, emptyReports, series },
-  });
+  }));
 }
 
 const GROUP_LABELS: { id: string; name: string }[] = [
@@ -2752,6 +2754,7 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
     latestAsOfBySource: asOfBySource,
     tickCount: ticks.length,
     status: payload.status,
+    ...(payload.composites && payload.composites.length > 0 ? { composites: payload.composites } : {}),
     schema: {
       tickFields: {
         id: "string — deterministic series id",
@@ -2781,13 +2784,14 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
         fetchedAt: "ISO timestamp of the last official collect",
         asOf: "YYYY-MM-DD — newest plausible tick date in this cache",
         records: "id / date / firm / url / type — same snapshot, for agent diffs. Does not replace ticks[]",
+        composites: "median of official ticks already on this door (sourceCount + asOf). Omitted when empty. Not a barn quote.",
       },
     },
     groups,
     empty,
     samples,
     sampleNote:
-      "samples are marked sample:true and are a few real official rows for identification. The paid GET /ticks body has the full current snapshot. This manifest does not list every current price.",
+      "samples are marked sample:true and are a few real official rows for identification. composites[] are medians of official ticks already on this door (sourceCount + asOf); omitted when the book has no matching rows. The paid GET /ticks body has the full current snapshot. This manifest does not list every current price.",
   };
 }
 
@@ -3392,7 +3396,7 @@ export function llmsTxt(): string {
     `- GET /.well-known/x402 — absolute URLs of the ${paidCountWord()} paid routes only`,
     `- GET / — shop JSON (payTo + the ${paidCountWord()} products)`,
     `- GET/POST /mcp — Streamable HTTP MCP for the same ${paidCountWord()} paid GETs plus free search and firm-check. Not a new SKU.`,
-    "- GET /manifest.json — US hay, cattle, and grain count + schema",
+    "- GET /manifest.json — US hay, cattle, and grain count + schema + official composites (median rollups of ticks already on the door; no listings scrape)",
     "- GET /import-alerts/manifest.json — FDA count + schema (not the firm dump)",
     "- GET /mariners/manifest.json — D13 LNM count + official PDF (not the notice body)",
     "- GET /mariners-d11/manifest.json — D11 LNM count + official PDF (not the notice body)",
