@@ -6,12 +6,14 @@ Thin pay-per-pull HTTP door. Not the Apollo Intelligence catalog. Not listed on 
 
 ```
 GET /ticks
+POST /ticks   (same 402 challenge when unpaid; empty JSON `{}` is accepted)
 ```
 
 Unpaid (must be **HTTP 402**):
 
 ```bash
 curl -i http://127.0.0.1:4020/ticks
+curl -i -X POST -H 'Content-Type: application/json' -d '{}' http://127.0.0.1:4020/ticks
 ```
 
 Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.

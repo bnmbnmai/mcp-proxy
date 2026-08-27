@@ -226,6 +226,37 @@ async function main(): Promise<void> {
   }, async (base) => {
     const res = await fetch(`${base}${TICKS_PATH}`);
     assert.equal(res.status, 402, "unpaid GET /ticks must be 402");
+    const gold402Post = await fetch(`${base}${TICKS_PATH}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: "{}",
+    });
+    assert.equal(gold402Post.status, 402, "unpaid POST /ticks {} must be the same 402 as GET");
+    const gold402Body = (await gold402Post.json()) as {
+      accepts: { maxAmountRequired?: string; extra?: Record<string, unknown> }[];
+    };
+    assert.equal(gold402Body.accepts[0]?.maxAmountRequired, TICKS_AMOUNT_ATOMIC, "POST {} does not change /ticks price");
+    assert.equal(gold402Body.accepts[0]?.extra?.tableWhole, true);
+    assert.equal(gold402Body.accepts[0]?.extra?.name, "USD Coin");
+    const putTicks = await fetch(`${base}${TICKS_PATH}`, { method: "PUT", headers: { "Content-Type": "application/json" }, body: "{}" });
+    assert.equal(putTicks.status, 405, "PUT /ticks stays method_not_allowed");
+    const postSample = await fetch(`${base}${SAMPLE_PATH}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: "{}",
+    });
+    assert.equal(postSample.status, 405, "POST /sample stays free-GET-only");
+    const optTicks = await fetch(`${base}${TICKS_PATH}`, { method: "OPTIONS" });
+    assert.equal(optTicks.status, 204);
+    assert.match(optTicks.headers.get("access-control-allow-methods") ?? "", /POST/);
+    const postWl = await fetch(`${base}${WARNING_LETTERS_PATH}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: "{}",
+    });
+    assert.equal(postWl.status, 402, "unpaid POST on a paid body door is 402");
+    const postWlBody = (await postWl.json()) as { accepts: { maxAmountRequired?: string }[] };
+    assert.equal(postWlBody.accepts[0]?.maxAmountRequired, WARNING_LETTERS_AMOUNT_ATOMIC);
     const body = (await res.json()) as {
       payTo: string;
       asset: string;
@@ -595,6 +626,7 @@ async function main(): Promise<void> {
     assert.equal(llms.status, 200);
     const llmsBody = await llms.text();
     assert.ok(llmsBody.includes("GET /ticks"));
+    assert.ok(llmsBody.includes("Unpaid POST on the same paid path"));
     assert.ok(llmsBody.includes("GET /import-alerts"));
     assert.ok(llmsBody.includes("GET /mariners"));
     assert.ok(llmsBody.includes("GET /mariners-d11"));
@@ -819,8 +851,20 @@ async function main(): Promise<void> {
     async (base) => {
       const unpaid = await fetch(`${base}${TICKS_PATH}`);
       assert.equal(unpaid.status, 402);
+      const unpaidPost = await fetch(`${base}${TICKS_PATH}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: "{}",
+      });
+      assert.equal(unpaidPost.status, 402, "unpaid POST {} must not return 200 with data");
       const paid = await fetch(`${base}${TICKS_PATH}`, { headers: { "X-PAYMENT": "test" } });
       assert.equal(paid.status, 200);
+      const paidPost = await fetch(`${base}${TICKS_PATH}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "X-PAYMENT": "test" },
+        body: "{}",
+      });
+      assert.equal(paidPost.status, 200, "paid POST {} serves the same bag as GET");
       const body = (await paid.json()) as ReturnType<typeof loadTicks>;
       assert.equal(body.product, "idaho-hay-feeder-ticks");
       assert.equal(body.status, "stale");
