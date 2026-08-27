@@ -53,6 +53,7 @@ export const EXTRACTED_BODY_SKUS = [
   "ofsted-inspections",
   "ofwat-enforcement",
   "ofgem-enforcement",
+  "gain",
 ] as const;
 
 export type ExtractedBodySku = (typeof EXTRACTED_BODY_SKUS)[number];
@@ -125,6 +126,7 @@ export const NPDES_PERMITS_TYPE = "npdes-permits";
 export const OFSTED_INSPECTIONS_TYPE = "ofsted-inspections";
 export const OFWAT_ENFORCEMENT_TYPE = "ofwat-enforcement";
 export const OFGEM_ENFORCEMENT_TYPE = "ofgem-enforcement";
+export const GAIN_TYPE = "gain";
 export const CFPB_ORDER_TYPE = "cfpb-order";
 export const OFAC_ORDER_TYPE = "ofac-order";
 export const FRB_ORDER_TYPE = "frb-order";
@@ -168,6 +170,7 @@ export const OFSTED_INSPECTIONS_SOURCE = "https://reports.ofsted.gov.uk/";
 export const OFWAT_ENFORCEMENT_SOURCE = "https://www.ofwat.gov.uk/regulated-companies/investigations/";
 export const OFGEM_ENFORCEMENT_SOURCE =
   "https://www.ofgem.gov.uk/energy-regulation/how-we-regulate/compliance-and-enforcement";
+export const GAIN_SOURCE = "https://gain.fas.usda.gov/";
 export const CFPB_ORDER_SOURCE = "https://www.consumerfinance.gov/enforcement/actions/";
 export const OFAC_ORDER_SOURCE = "https://ofac.treasury.gov/civil-penalties-and-enforcement-information";
 export const FRB_ORDER_SOURCE = "https://www.federalreserve.gov/supervisionreg/enforcementactions.htm";
@@ -399,7 +402,7 @@ export function searchCatalogRows(rows: Record<string, unknown>[], q: string): R
   const needle = q.trim().toLowerCase();
   if (!needle) return rows;
   return rows.filter((row) => {
-    const hay = [row.id, row.docket, row.firm, row.institution, row.bank, row.creditUnion, row.subject, row.title, row.name, row.substance, row.urn, row.provider, row.permit, row.date, row.issuedOn, row.publishedOn, row.inspectedOn, row.recordDate, row.sourceUrl]
+    const hay = [row.id, row.docket, row.firm, row.institution, row.bank, row.creditUnion, row.subject, row.title, row.name, row.substance, row.urn, row.provider, row.permit, row.country, row.post, row.reportNumber, row.date, row.issuedOn, row.publishedOn, row.inspectedOn, row.recordDate, row.sourceUrl]
       .map((value) => str(value).toLowerCase())
       .join(" ");
     return hay.includes(needle);
@@ -600,6 +603,7 @@ export function normalizeCardRecords(
         str(row.substance) ||
         str(row.name) ||
         str(row.provider) ||
+        str(row.country) ||
         id,
       url: str(row.sourceUrl),
       type,
@@ -764,6 +768,10 @@ export function paidOfwatEnforcementBody<T extends CardPayload>(payload: T, opts
 
 export function paidOfgemEnforcementBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
   return paidCardBody(payload, OFGEM_ENFORCEMENT_TYPE, OFGEM_ENFORCEMENT_SOURCE, opts);
+}
+
+export function paidGainBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, GAIN_TYPE, GAIN_SOURCE, opts);
 }
 
 export function paidIcoMpnBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {

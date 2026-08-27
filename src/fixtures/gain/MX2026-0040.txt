@@ -1,0 +1,753 @@
+Required Report: Required - Public Distribution                       Date: August 24, 2026
+
+                                                               Report Number:      MX2026-0040
+
+
+
+
+Report Name: Livestock and Products Annual
+Country: Mexico
+
+Post: Mexico City
+
+Report Category: Livestock and Products
+
+
+
+
+Prepared By:    Gustavo Lara
+
+Approved By: Morgan Perkins
+
+Report Highlights:
+
+Mexico is forecast to enter 2027 with modest improvements in livestock productivity, expanded
+processing capacity, and continued growth opportunities for the beef and pork sectors. While the
+outbreak of New World screwworm (NWS) has disrupted traditional livestock trade flows, it has also
+led to adjustments in meat production and supply chains. The calf crop is forecast to increase 1 percent
+as retained heifers reach reproductive maturity, supporting marginal herd expansion. Beef production is
+forecast to remain flat as market-ready cattle continue to enter slaughter channels, supporting
+commercial beef output. Following recent disease challenges, the swine sector is expected to continue
+recovering, with improved herd productivity and production efficiency supporting a 3 percent increase
+in commercial slaughter and higher pork output.
+
+
+
+
+                                                    1
+                                                                  Cattle
+
+Table 1: Cattle – Production, Supply, and Distribution (PSD)
+Animal Numbers, Cattle                          2025                            2026                            2027
+Market Year Begins                             Jan 2025                        Jan 2026                        Jan 2027
+Mexico                               USDA Official     New Post      USDA Official     New Post      USDA Official     New Post
+Total Cattle Beg. Stks (1000 HEAD)          17,965          17,965          18,995          18,995               0          19,490
+Dairy Cows Beg. Stocks (1000                 3,700           3,700           3,750           3,750               0           3,800
+HEAD)
+Beef Cows Beg. Stocks (1000 HEAD)            8,100           8,100           8,300           8,300               0           8,450
+Production (Calf Crop) (1000 HEAD)           8,400           8,400           8,400           8,400               0           8,500
+Total Imports (1000 HEAD)                       38              38              10              10               0              10
+Total Supply (1000 HEAD)                    26,403          26,403          27,405          27,405               0          28,000
+Total Exports (1000 HEAD)                      229             229               0              45               0             150
+Cow Slaughter (1000 HEAD)                    1,445           1,445           1,600           1,600               0           1,625
+Calf Slaughter (1000 HEAD)                     315             315             325             325               0             325
+Other Slaughter (1000 HEAD)                  5,100           5,100           5,625           5,600               0           5,625
+Total Slaughter (1000 HEAD)                  6,860           6,860           7,550           7,525               0           7,575
+Loss and Residual (1000 HEAD)                  319             319             345             345               0             345
+Ending Inventories (1000 HEAD)              18,995          18,995          19,510          19,490               0          19,930
+Total Distribution (1000 HEAD)              26,403          26,403          27,405          27,405               0          28,000
+
+(1000 HEAD)
+
+OFFICIAL DATA CAN BE ACCESSED AT: PSD Online Advanced Query
+Not official USDA data
+
+Note: The report forecast reflects animal disease policies/restrictions and trade policies in place as of
+July 31, 2026, and assumes their continuation. Export projections assume cattle movement operations
+through the Douglas, AZ port of entry.
+
+Production
+
+2027
+Calf crop production is forecast to increase 1 percent to 8.5 million head in 2027. The previous
+suspensions of live cattle exports to the United States due to NWS has disrupted Mexico's historical
+ranching model. Traditionally, producers in northern Mexico operated a low-overhead, high-turnover
+system, breeding calves for export to U.S. feedlots. With the previous nationwide ban on live cattle
+exports to the U.S. market, Mexican producers are expected to increase resources towards domestic
+feeding infrastructure, allowing cattle to be retained and finished locally. This shift is also expected to
+provide producers with greater control over animal nutrition and health throughout the production cycle,
+improve herd management and survival rates, and support marginal growth in calf crop production.
+
+2026
+Calf crop production is estimated to remain flat at 8.4 million head in 2026. Successive droughts,
+disease outbreaks, and record live cattle exports to the United States in 2024 have significantly reduced
+the national breeding herd and therefore, the country’s reproductive capacity.
+
+Despite increased slaughter, producers in Mexico are retaining select heifers to rebuild breeding herds
+over the next two to three years. By incorporating improved genetics during this transition, producers
+are expected to enhance herd productivity.
+Slaughter
+
+2027
+Slaughter is forecast to rise 1 percent to 7.6 million head in 2027. Reduced access to the U.S. live cattle
+export market has removed Mexico's primary avenue for exports, leaving approximately one million
+additional cattle available for domestic feeding and slaughter. This increased supply is expected to
+improve utilization of Mexico's processing infrastructure, enabling packers to operate more efficiently,
+expand throughput, and optimize production schedules.
+
+2026
+Slaughter is estimated to increase 10 percent to 7.5 million head in 2026. The estimated increase in cattle
+slaughter in 2026 reflects the effects of the 2025 suspension of live cattle exports to the United States
+due to NWS. The export suspension left more than one million head of cattle in Mexico that had been
+intended for U.S. feedlots. Rather than marketing these animals into a less profitable domestic market,
+many producers retained them on feed in anticipation of the border reopening. As a result, fewer cattle
+were slaughtered in 2025, creating a backlog of market-ready animals that are estimated to support
+higher slaughter in 2026 as rising holding cost encourages producers to market these animals through
+domestic feedlots.
+
+Trade
+
+Imports
+
+2027
+Cattle imports are forecast to remain unchanged at 10,000 head in 2027. Ongoing NWS-related animal
+health measures, including movement restrictions, quarantine requirements, and inspection protocols
+implemented by SENASICA, are expected to continue limiting live cattle imports. Historically,
+Mexico’s live cattle imports relied on sourcing young calves from Central America, mainly Nicaragua,
+at low prices. However, the post-NWS sanitary requirements have dramatically increased the financial
+and administrative burden of importing cattle, slowing down the pace of imports
+
+2026
+Cattle imports are estimated to decrease by 74 percent to 10,000 head in 2026. This significant reduction
+is largely attributed to widespread opposition from northern ranching groups, who raised concerns about
+animal health risks associated with imported cattle. In response, Mexico instituted stringent sanitary
+requirements following the emergence of NWS, which rendered live cattle imports from Central
+America economically unfeasible for most producers
+
+Exports
+
+Note: The report forecast reflects animal disease policies/restrictions and trade policies in place as of
+July 31, 2026, and assumes their continuation. Export projections assume cattle movement operations
+through the Douglas, AZ port of entry.
+2027
+Cattle exports are forecast to increase 233 percent to 150,000 head in 2027. The August 2026 reopening
+of the Douglas, Arizona port of entry is forecast to support increased cattle exports. However,
+operational and supply chain constraints may limit volumes from returning to pre-closure levels. While
+market demand remains strong, export capacity is constrained by enhanced animal health protocols
+requiring veterinarians to conduct individual inspections for wounds and potential screwworm
+infestations. These procedures are more time-intensive than previous visual lot-based inspections,
+creating a limit on daily processing capacity. Prior to the outbreak, the Douglas port of entry handled
+approximately 16 percent of all Mexico's live cattle exports.
+Additional requirements, including organophosphate dipping and mandatory holding periods at Pre-
+Export Inspection Facilities (PIFs), may create processing backlogs. Even with sufficient cattle
+availability in Agua Prieta, export volumes will ultimately depend on inspection throughput, facility
+capacity, and compliance with biosecurity requirements. Exporters are also expected to apply additional
+internal self-screening measures, reducing the number of cattle presented for export.
+The delayed movement of lightweight feeder calves may further limit export recovery. Calves typically
+exported at 300 to 400 pounds may gain additional weight while awaiting clearance, potentially
+reducing their attractiveness to U.S. backgrounders seeking lighter feeder cattle. Heavier animals may
+no longer command the same premium and instead be directed toward domestic finishing operations in
+Mexico.
+2026
+Cattle exports are estimated to decrease 80 percent to 45,000 head in 2026. Adjusting to NWS
+restrictions, ranchers in northern states such as Chihuahua, Coahuila, and Tamaulipas have shifted from
+rapid-turnover breeding operations focused on exporting lightweight calves to domestic finishing
+systems, with retained cattle moving into Mexican feedlots for grain-based finishing through slaughter.
+
+The economic conditions of exporting lightweight feeder cattle have changed significantly for Mexican
+producers following the implementation of enhanced animal health requirements. Exporters must now
+absorb additional costs associated with mandatory holding periods at certified PIFs, including feed,
+water, yardage, handling, and required parasite treatments. These requirements increase the cost of
+preparing cattle for export and reduce producer margins, which is estimated to dampen export
+expectations despite port capacity at Douglas, AZ.
+
+Additionally, export eligibility requirements limit sourcing flexibility by restricting shipments to cattle
+born and raised in USDA-approved low-risk areas, including Sonora. This prevents exporters from
+sourcing feeder cattle from other regions to assemble export lots, reducing available supply and limiting
+the ability to quickly scale exports.
+                                                                  Beef
+Table 2: Beef – Production, Supply, and Distribution (PSD)
+Meat, Beef and Veal                             2025                             2026                             2027
+Market Year Begins                            Jan 2025                         Jan 2026                         Jan 2027
+Mexico                              USDA Official      New Post      USDA Official      New Post      USDA Official      New Post
+Slaughter (Reference) (1000 HEAD)           6,860            6,860           7,550            7,525                0           7,575
+Beginning Stocks (1000 MT CWE)                  0                0               0                0                0               0
+Production (1000 MT CWE)                    2,170            2,170           2,410            2,410                0           2,420
+Total Imports (1000 MT CWE)                   339              339             310              320                0             310
+Total Supply (1000 MT CWE)                  2,509            2,509           2,720            2,730                0           2,730
+Total Exports (1000 MT CWE)                   324              324             400              400                0             500
+Human Dom. Consumption (1000 MT             2,185            2,185           2,320            2,330                0           2,230
+CWE)
+Other Use, Losses (1000 MT CWE)                 0                0               0                0                0               0
+Total Dom. Consumption (1000 MT             2,185            2,185           2,320            2,330                0           2,230
+CWE)
+Ending Stocks (1000 MT CWE)                     0                0               0                0                0               0
+Total Distribution (1000 MT CWE)            2,509            2,509           2,720            2,730                0           2,730
+
+(1000 HEAD) ,(1000 MT CWE)
+
+OFFICIAL DATA CAN BE ACCESSED AT: PSD Online Advanced Query
+Not official USDA data.
+
+Production
+
+2027
+Beef production is forecast to remain flat at 2.4 million metric tons (MMT) carcass weight equivalent
+(CWE) in 2027. While the estimated increase in beef production in 2026 was driven by a backlog of
+retained cattle, the forecasted 2027 production reflects the continued shift toward domestic feeding and
+in-country slaughter.
+
+Mexican feedlot operations in 2027 are forecast to stabilize following the supply chain adjustments of
+the previous two years. As more cattle are retained for domestic feeding rather than exported live,
+Mexico is expected to continue increasing beef production and exports. Continued contraction of the
+U.S. cattle herd is expected to sustain demand for imported beef, while greater availability of market-
+ready cattle in Mexico will support higher slaughter volumes and export opportunities, particularly to
+the United States and Asian markets.
+
+2026
+Beef production is estimated to rise 11 percent to 2.4 MMT CWE in 2026. Cattle retained following the
+2025 border closure, which normally would have been exported at lighter weights (175-225 kg),
+remained in domestic feedlots for additional months. The additional feeding period is expected to
+increase average carcass weights, as animals are sent to slaughter at 500-550 kg, resulting in greater beef
+production per animal.
+
+The increase in production is expected to be temporary, reflecting the processing of cattle retained
+following the prior year’s border closure. Once this backlog is reduced, production is expected to align
+more closely with domestic cattle inventories and annual calf crop production.
+Consumption
+2027
+Beef consumption is forecast to decrease by 4 percent, reaching 2.2 MMT CWE in 2027. High beef
+prices lead households and food processors to substitute beef with lower-cost animal proteins, such as
+pork and poultry. Domestic pork production and imports offer a price-competitive alternative, capturing
+market share from beef in both retail and institutional channels.
+
+Moderating GDP growth and reduced real wage expansion constrain discretionary consumer spending,
+weakening demand in high-end retail, food service, and hospitality sectors.
+
+The growth of Quick Service Restaurant (QSR) chains and fast casual franchises has impacted dining
+preferences in high-end urban areas. As these commercial networks have expanded their supply chains
+to accommodate international travelers, they have become increasingly influential in shaping local
+eating habits. Their operational scale and ability to serve large volumes have positioned them as key
+drivers of demand for processed beef products.
+Looking ahead to 2027, these QSR and fast casual franchises are expected to sustain substantial,
+contract-backed demand for high-volume processed beef items, such as burger patties and taco meats.
+Their continued presence in urban markets will reinforce the consumption of processed beef, ensuring a
+relative stable demand for these products within both domestic and international supply chains.
+2026
+Beef consumption is estimated to rise 7 percent, reaching 2.3 MMT CWE in 2026. Growth is supported
+by increased demand from the HRI sector amid elevated tourism activity. While initial projections were
+tempered by FIFA World Cup visitor figures coming in 40 percent below pre-tournament expectations,
+tourism activity continued to provide support to food service demand. Foreign exchange earnings from
+tourism increased in early 2026, and food service activity during the tournament contributed to
+continued demand for beef products in major urban centers.
+
+Easing general inflation is expected to strengthen household purchasing power across Mexican urban
+centers, allowing consumers to allocate more discretionary income toward animal proteins.
+Simultaneously, price softening in domestic beef, driven by an influx of retained feeder cattle into local
+feedlots, is expected to make red meat more accessible relative to its previous highs.
+                 Figure 1. Mexico Beef Carcass Prices Annual Trend (pesos per kg)
+
+                                   115.00
+                  Pesos/Kilogram   105.00
+                                    95.00
+                                    85.00
+                                    75.00
+                                    65.00
+                                               2019     2020     2021 2022 2023            2024     2025    2026
+                                                                  Calendar Year
+
+                                              Note: 2026 Data is January to June
+                  Source: Post estimate with data from Agricultural and Fisheries Information Service (SIAP)
+
+
+                                                 Figure 2. Mexico’s Beef Price Inflation
+                                   18.00
+                                   13.00
+                 Percentage
+
+
+
+
+                                    8.00
+                                    3.00
+                                   -2.00
+                                            Jan 2022
+
+
+
+
+                                            Jan 2023
+
+
+
+
+                                            Jan 2024
+
+
+
+
+                                            Jan 2025
+
+
+
+
+                                            Jan 2026
+                                            Oct 2022
+
+
+
+
+                                            Oct 2023
+
+
+
+
+                                            Oct 2024
+
+
+
+
+                                            Oct 2025
+                                            Apr 2022
+
+
+
+
+                                            Apr 2023
+
+
+
+
+                                            Apr 2024
+
+
+
+
+                                            Apr 2025
+
+
+
+
+                                            Apr 2026
+                                             Jul 2022
+
+
+
+
+                                             Jul 2023
+
+
+
+
+                                             Jul 2024
+
+
+
+
+                                             Jul 2025
+
+
+                                           Source: National Institute of Statistics and Geography (INEGI)
+
+Trade
+
+Imports
+
+2027
+Beef imports are forecast to decrease 3 percent to 310,000 MT CWE in 2027. Retained feeder cattle that
+were unable to move through export channels at the U.S. border during the prior marketing year were
+increasingly redirected to domestic feedlots and slaughter channels. As a result, Mexican processors,
+retailers, and foodservice operators were able to meet a greater share of demand through locally
+harvested beef rather than relying on higher-cost imports. Elevated U.S. wholesale beef prices also
+reduced the competitiveness of imported boxed beef relative to domestic supplies available from
+northern and central Mexican packing plants.
+
+2026
+Beef imports are estimated to decrease 6 percent to 320,000 MT CWE in 2026. This decline is driven by
+large domestic supplies, tight U.S. beef inventories, trade policy measures, and escalating international
+logistics costs.
+Mexico removed beef from the broad Presidential Anti-Inflation Decree (PACIC) duty exemptions
+starting in 2026. In its place, the government established a 70,000 MT tariff-rate quota (TRQ) for non-
+FTA countries like Brazil. Once imports exceed this annual cap, standard out-of-quota tariffs apply,
+curbing duty-free access and reducing the price advantages that South American exporters previously
+enjoyed. Furthermore, Mexican food safety authorities (SENASICA) maintain intensive sanitary
+inspections on South American product to mitigate pest and foot-and-mouth disease risks. These
+regulatory adjustments are likely to remove the prior price competitiveness that Brazilian exporters
+usually rely on.
+
+Animals diverted into local feedlots are hitting Mexican processing lines at higher finished weights.
+With domestic beef production increasing, wholesale markets are adjusting to higher product
+availability. Local beef prices are softening gradually, making domestic product more competitive and
+replacing lower tier processing meat that Mexico would normally import from overseas.
+
+        Table 3. Average Wholesale Values for Beef Products, pesos per kilogram (MXN/kg)
+Category / Product Cut 2024             2025          2026 (YTD /          YoY Change (2025
+                          Average       Average       Projected)           vs 2026)
+Beef Carcass              $75.50 –      $88.00 –      $82.00 – $86.00      -7.4%
+                          $80.00        $94.00
+Diezmillo (Chuck Roll) $197.00          $257.00       $242.00 –            -4.5%
+                                                      $248.00
+Bistec / Pulpa (Round / $159.00         $223.00       $210.00 –            -4.7%
+Steak Cut)                                            $215.00
+Costilla (Rib / Ribeye                 $220.00             $258.00          $245.00 –             -3.8%
+Cuts)                                                                       $250.00
+Recortes (Trimmings                    $149.00             $152.00          $144.00 –             -3.9%
+80/20)                                                                      $148.00
+                     Source: Post with data from National System of Market Information (SNIIM)
+
+                                      Figure 3. Mexico’s Beef Imports by Origin, MT
+
+                                  250,000
+
+                                  200,000
+                    Metric Tons
+
+
+
+
+                                  150,000
+
+                                  100,000
+
+                                   50,000
+
+                                       0
+                                                 2021         2022        2023      2024         2025
+                                            Brazil      Canada       Nicaragua   United States
+                                                     Source: Trade Data Monitor (TDM)
+Exports
+
+2027
+Beef exports are forecast to rise 25 percent to 500,000 MT CWE in 2027. The U.S. commercial cattle
+inventory continues to contract, with domestic beef production forecast to decline in 2027. Reduced
+cattle supplies and elevated beef prices are expected to support continued demand for imported beef,
+providing additional opportunities for Mexican suppliers.
+
+Considering the continued border closure of most ports of entry into the United States for Mexican live
+cattle, Mexico’s industry organizations and TIF plants are forecast to continue to expand their
+commercial targets. Mexican packers are likely to capture high end hotel and restaurant sector market
+shares in the United States and Japan, replacing tightening U.S. export availability and outcompeting
+high-priced Australian alternatives.
+
+2026
+Beef exports are estimated to rise 23 percent to 400,000 MT CWE in 2026. This expansion is driven by
+the convergence of tight international supplies and changes in North American livestock handling. The
+United States is currently navigating a cattle inventory contraction, causing a decline in available
+supplies from American packers, pushing domestic beef and cattle prices to highs. To fill this vacuum,
+major U.S. packers are sourcing high-quality cuts from across the border, drawing heavy volumes of
+Mexican product into the U.S. supply chain.
+
+Despite the recent opening of the Douglas, AZ port for live cattle exports, overall live cattle exports will
+likely remain bottlenecked due to health protocols and supply chain challenges. With the traditional
+pipeline of over one million live feeder calves still largely retained, Mexican producers continue to
+finish a significant share of light calves in local feedlots for domestic TIF processing. This ongoing
+operational switch allows Mexico to capture higher domestic processing margins and expand boxed beef
+production rather than relying strictly on live calf exports.
+                                                                      Swine
+
+Table 3: Swine – Production, Supply, and Distribution (PSD)
+Animal Numbers, Swine                           2025                               2026                              2027
+Market Year Begins                             Jan 2025                           Jan 2026                          Jan 2027
+Mexico                              USDA Official       New Post       USDA Official       New Post      USDA Official       New Post
+Total Beginning Stocks (1000                16,532           16,532            16,725           16,725                0           17,090
+HEAD)
+Sow Beginning Stocks (1000 HEAD)             1,195            1,195             1,205            1,205                0            1,220
+Production (Pig Crop) (1000 HEAD)           20,180           20,180            20,550           20,550                0           20,900
+Total Imports (1000 HEAD)                       58               58                55               15                0               20
+Total Supply (1000 HEAD)                    36,770           36,770            37,330           37,290                0           38,010
+Total Exports (1000 HEAD)                        0                0                 0                0                0                0
+Sow Slaughter (1000 HEAD)                        0                0                 0                0                0                0
+Other Slaughter (1000 HEAD)                 17,700           17,700            18,200           18,200                0           18,700
+Total Slaughter (1000 HEAD)                 17,700           17,700            18,200           18,200                0           18,700
+Loss and Residual (1000 HEAD)                2,345            2,345             2,000            2,000                0            2,200
+Ending Inventories (1000 HEAD)              16,725           16,725            17,130           17,090                0           17,110
+Total Distribution (1000 HEAD)              36,770           36,770            37,330           37,290                0           38,010
+
+(1000 HEAD)
+
+OFFICIAL DATA CAN BE ACCESSED AT: PSD Online Advanced Query
+Not official USDA data
+
+Production
+
+2027
+The pig crop is forecast to increase 2 percent to 20.9 million head in 2027. Producers replaced animals
+lost during the 2023–2025 Porcine Reproductive and Respiratory Syndrome (PRRS) and Porcine
+Epidemic Diarrhea virus (PEDv) outbreaks with more productive genetic sow lines. By 2027,
+replacement herds are expected to stabilize across major operations, with future growth dependent on
+capital-intensive barn expansion.
+
+Beyond genetic replacement, modest growth in 2027 is supported by the expanded use of artificial
+insemination (AI) with imported semen. According to the Secretariat of Economia, the United States
+represents 85 percent of the market share, while Canada represents 15 percent. This approach reduces
+the need to import live breeding animals, lowering biosecurity risks while expanding genetic
+improvement across commercial farrowing operations. Additionally, traditional, independent backyard
+and small-scale farms are increasingly giving way to highly integrated corporate entities that manage the
+entire value chain, from grain importing and feed mills to advanced genetics, slaughtering, and cold
+chain distribution.
+
+2026
+The pig crop is estimated to increase 2 percent to 20.6 million heads in 2026. The estimated 2026
+expansion is tied to an industry wide biosecurity overhaul. Large scale commercial producers culled
+vulnerable animals linked to the prior year’s PRRS and PEDv outbreaks, replacing them with genetically
+improved herds and higher reproductive traits. The industry also adopted improved biosecurity
+measures, including enhanced sanitary infrastructure, regional movement controls, and disease
+monitoring systems. These measures contributed to lower mortality rates and improved survival through
+weaning.
+
+                                 Figure 4. Mexico’s Live Hog Prices, pesos per kilogram
+                     Pesos/Kilogram   55.00
+                                      50.00
+                                      45.00
+                                      40.00
+                                      35.00
+                                      30.00
+                                      25.00
+
+
+
+
+                                                                  Calendar Year
+
+                                              2022      2023        2024         2025        2026
+                                          Source: National System of Market Information (SNIIM)
+
+Slaughter
+
+2027
+Slaughter is forecast to rise 3 percent to 18.7 million heads in 2027. An expanding pig crop, driven by a
+larger breeding herd and improved sow productivity, is forecast to support higher slaughter volumes in
+2027. Earlier replacement of older, lower-productivity sows with improved genetics has left a healthier,
+more productive herd, resulting in more piglets reaching market weight. Continued investments in
+nutrition, housing, and herd management are also expected to improve feed efficiency and reduce days
+to market, further supporting higher slaughter volumes.
+
+2026
+Slaughter is estimated to rise 3 percent to 18.2 million head in 2026. The increase in slaughter is
+supported by improved piglet survival rates following investments in herd health and replacement
+breeding stock after the prior year’s PRRS and PEDv outbreaks. As these larger pig crops reached
+market weight in 2026, they increased the number of market hogs available for processing. Improved
+operating margins and lower input costs are also expected to support higher slaughter rates by
+encouraging producers to maintain strong processing volumes.
+                                                                  Pork
+
+Table 4: Pork – Production, Supply, and Distribution (PSD)
+Meat, Swine                                     2025                             2026                             2027
+Market Year Begins                            Jan 2025                         Jan 2026                         Jan 2027
+Mexico                              USDA Official      New Post      USDA Official      New Post      USDA Official      New Post
+Slaughter (Reference) (1000 HEAD)          17,700           17,700          18,200           18,200                0          18,750
+Beginning Stocks (1000 MT CWE)                  0                0               0                0                0               0
+Production (1000 MT CWE)                    1,370            1,370           1,410            1,410                0           1,480
+Total Imports (1000 MT CWE)                 1,651            1,651           1,715            1,715                0           1,800
+Total Supply (1000 MT CWE)                  3,021            3,021           3,125            3,125                0           3,280
+Total Exports (1000 MT CWE)                   196              196             170              210                0             220
+Human Dom. Consumption (1000 MT             2,825            2,825           2,955            2,915                0           3,060
+CWE)
+Other Use, Losses (1000 MT CWE)                 0                0               0                0                0               0
+Total Dom. Consumption (1000 MT             2,825            2,825           2,955            2,915                0           3,060
+CWE)
+Ending Stocks (1000 MT CWE)                     0                0               0                0                0               0
+Total Distribution (1000 MT CWE)            3,021            3,021           3,125            3,125                0           3,280
+
+(1000 HEAD) ,(1000 MT CWE)
+
+OFFICIAL DATA CAN BE ACCESSED AT: PSD Online Advanced Query
+Not official USDA data
+
+Production
+
+2027
+Pork production is forecast to rise 5 percent to 1.5 MMT CWE in 2027, supported by higher commercial
+slaughter and improved slaughter weights. Favorable grain prices during the prior years have restored
+producer margins, enabling investments in optimized sow-and-nursery nutrition, improved disease
+containment, and climate-controlled housing. These efficiency gains are reducing piglet mortality and
+boosting slaughter weights, driving total pork output higher relative to overall herd size. Additionally,
+continued investments in nutrition, modernized climate-controlled housing, and biosecurity protocols are
+lowering nursery mortality rates, allowing a higher percentage of market hogs to reach slaughter weight
+efficiently throughout the year.
+
+2026
+Pork production is estimated to rise 3 percent to 1.4 MMT CWE in 2026. This growth reflects sustained
+changes in how Mexican consumers, food processors, and restaurant networks purchase and use pork.
+Expanding domestic pork production strengthens supply availability for Mexico’s food manufacturing
+and foodservice sectors. Increased domestic TIF slaughter provides processors with a more consistent
+supply of fresh pork trimmings, shoulders, and fatbacks for products such as ham, sausage, and chorizo.
+At the same time, HRI operators benefit from greater availability of key primal cuts, supporting steady
+supplies for popular menu items such as tacos al pastor and carnitas.
+
+Consumption
+
+2027
+Consumption is forecast to rise 5 percent to 3.1 MMT CWE in 2027. The baseline consumer profile in
+Mexico’s urban centers is evolving, supported by favorable macroeconomic conditions like consecutive
+minimum wage increases. The rapid expansion of dual-income, middle class households has created a
+strong demand for value added convenience proteins. Large integration firms have capitalized on this by
+increasing supermarket shelves with marinated, portion controlled, and Ready-to-Cook (RTC) pork cuts.
+Pork is increasingly viewed as an everyday protein rather than being consumed primarily in traditional
+dishes such as pozole and carnitas.
+
+Pork provides an optimal middle ground for middle-class budgets, offering a red-meat eating experience
+at a price point significantly closer to poultry. Real purchasing power in urban centers has been boosted
+by successive rounds of statutory minimum wage hikes and strong remittance inflows. Higher income
+urban households are willing to spend their increased discretionary income on time-saving premium
+features, such as pre-seasoned, pre-sliced, and pre-packaged meats rather than raw, un-trimmed bulk
+cuts. As large integrators continue expanding RTC product lines across Mexico's growing supermarket
+footprint, pork will increasingly consolidate its position as an everyday staple.
+
+2026
+Consumption is estimated to rise 3 percent to 2.9 MMT CWE in 2026, supported by stronger demand
+from tourism and industrial food manufacturing.
+
+While total visitor arrivals fell below initial projections during the summer of 2026, Mexico’s co-hosting
+of the FIFA World Cup still delivered a measurable boost to the HRI sector. Gastronomy emerged as the
+single highest performing commercial category during the tournament. Concentrated visitor activity and
+fan gatherings in major host hubs, Mexico City, Guadalajara, and Monterrey, sustained strong food
+service demand, driving steady pork utilization across restaurant and institutional channels.
+
+                                        Figure 5. Mexico’s Pork Price Inflation (%)
+                                15.00
+                                10.00
+                   Percentage
+
+
+
+
+                                 5.00
+                                 0.00
+                                -5.00
+                                        Apr 2022
+
+
+
+
+                                        Apr 2023
+
+
+
+                                        Jan 2024
+                                        Apr 2024
+
+
+
+
+                                        Apr 2025
+
+
+
+
+                                        Apr 2026
+                                        Jan 2022
+
+
+
+
+                                        Jan 2023
+
+
+
+
+                                        Jan 2025
+
+
+
+
+                                        Jan 2026
+                                        Oct 2025
+                                        Oct 2022
+
+
+
+
+                                        Oct 2023
+
+
+
+
+                                        Oct 2024
+                                         Jul 2022
+
+
+
+
+                                         Jul 2023
+
+
+
+
+                                         Jul 2024
+
+
+
+
+                                         Jul 2025
+
+
+
+
+                                   Source: National Institute of Statistics and Geography (INEGI)
+
+Trade
+
+Imports
+
+2027
+Imports are forecast to rise 5 percent to 1.8 MMT CWE in 2027. Imports are forecast to increase as
+domestic consumption continues to outpace production growth. Pork production is forecast to increase
+nearly 3 percent in 2027, while consumption is expected to grow at a slightly faster pace, widening the
+gap between domestic supply and demand. As a result, imports will continue to play an important role in
+meeting Mexico's pork needs.
+
+The United States is expected to remain Mexico's primary pork supplier, supported by price
+competitiveness, and duty-free access provided under the USMCA. At the same time, the expiration of
+Mexico's temporary duty-free import measures for non-FTA suppliers is expected to reduce the
+competitiveness of imports from other origins.
+
+2026
+Imports are estimated to rise by 4 percent to 1.7 MMT CWE in 2026. Although Mexico’s swine sector
+continues to recover, consumption growth is expected to outpace domestic production, increasing
+reliance on imports to meet domestic demand. Demand is supported by continued needs from the food
+processing sector, particularly for hams and shoulders, as well as increased activity in the food service
+sector.
+
+Mexico adjusted its temporary anti-inflationary import measures by establishing TRQs for non-FTA
+suppliers. Under the updated policy framework, 51,000 metric tons of fresh, chilled, or frozen pork from
+non-FTA countries may enter duty-free, while additional volumes are subject to the standard MFN tariff
+rate. The TRQ has already been fully allocated year-to-date, and imports are expected to continue as the
+year progresses.
+
+Exports
+
+2027
+Exports are forecast to increase 5 percent to 220,000 MT CWE in 2027. Mexico’s pork exports are
+forecast to recover in 2027 as domestic market conditions stabilize, and production growth supports
+greater export availability. As domestic consumption growth moderates and domestic production
+rebounds, processors are expected to have additional supplies available for export markets. Improved
+logistics conditions and continued access to key Asian markets are expected to support export
+opportunities, particularly for higher-value cuts.
+
+2026
+Exports are estimated to increase 7 percent to 210,000 MT CWE in 2026. Mexican pork production has
+continued its steady upward trajectory, supported by modernizations in swine health management, feed
+cost stabilization, and improved herd efficiencies. This increase in domestic production has created
+larger available volumes dedicated to export channels.
+
+Mexican pork exporters are expanding their footprint across key Asian destinations (such as Japan and
+South Korea) and Latin American markets. Rather than competing solely on bulk primal cuts, Mexican
+processors are optimizing export value by targeting specialized cut preferences in high-demand
+international markets.
+For More Information
+Visit the FAS headquarters' home page at Error! Hyperlink reference not valid. for a complete selection of
+FAS worldwide agricultural reporting.
+
+  Report Number                             Title                               Dated
+MX2026-0012                Livestock and Products Semi-annual           02/26/2026
+MX2025-0035                Livestock and Products Annual                08/27/2025
+MX2025-0008                Livestock and Products Semi-annual           03/03/2025
+
+
+
+
+Attachments:
+
+No Attachments
+

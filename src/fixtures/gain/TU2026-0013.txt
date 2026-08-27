@@ -1,0 +1,697 @@
+Required Report: Required - Public Distribution                       Date: April 08, 2026
+
+                                                                      Report Number:      TU2026-0013
+
+
+
+
+Report Name: Grain and Feed Annual
+Country: Turkiye
+
+Post: Ankara
+
+Report Category: Grain and Feed
+
+
+
+
+Prepared By:    FAS Staff
+
+Approved By: Michael Francom
+
+Report Highlights:
+
+Owing to improved rainfall conditions in the autumn and winter months, Turkiye’s production of wheat
+and barley in marketing year (MY) 2026/27 are both expected to see significant year-to-year increases.
+If favorable weather conditions continue, some industry insiders are predicting that production of these
+two winter crops could even set new records. In contrast, corn production is forecast to dip noticeably
+lower as some farmers switch to less water-intensive crops. Although Turkiye’s flour exports are
+projected higher year-to-year, exports still haven’t recovered to their former levels.
+
+
+
+
+THIS REPORT CONTAINS ASSESSMENTS OF COMMODITY AND TRADE ISSUES MADE BY USDA STAFF AND NOT NECESSARILY
+STATEMENTS OF OFFICIAL U.S. GOVERNMENT POLICY
+                                                 Wheat
+
+
+Production
+Wheat area harvested for MY 2026/27 is projected to expand year-to-year by 150,000 hectares (HA) to
+7.45 million HA. According to industry sources, many farmers planted more winter wheat last
+fall expecting that it would offer higher and more predictable returns than other row crops, especially
+cotton. This expansion will be most pronounced in southeastern Anatolia where many farmers have
+switched from planting cotton to growing wheat. Winter wheat is generally planted in October-
+November and harvested in May-June.
+
+The government’s Agricultural Production Plan (GAIN TU2025-0012), which went into effect last year
+and is aimed at incentivizing the production of drought-resistant crops in water scarce areas, also helped
+contribute to the forecasted expansion in area harvested. At the same time, this expansion hinges
+on farmers continued expectation that they will be able to sell their wheat at a competitive price to
+the Turkish Grain Board (TMO).
+
+One of the most important factors farmers consider when making wheat planting decisions is the ability
+to sell their crops to TMO. TMO purchases domestic and imported wheat and other commodities on
+behalf of the government to stabilize the market and provide a safety net for farmers. During the MY
+2026/27 season, farmers will be interested in selling as much of their wheat as possible to TMO
+since the government-run organization is expected to offer a higher purchase price than private sector
+buyers in order to help wheat growers stay afloat amid rising production costs. For reference, industry
+sources report that TMO purchased around 5.0 MMT of domestic wheat in the current marketing year or
+about one-quarter of national production. See historical TMO purchase prices in table 1.
+
+
+In line with the anticipated expansion in area harvested and increased yields resulting from favorable
+weather conditions, MY 2026/27 wheat production is projected to surge 20 percent higher year-to-year,
+reaching the second highest amount on record at 19.8 million metric tons (MMT). Some industry
+insiders believe production could climb higher and even surpass the prior record of 21.0 MMT, if spring
+rains in March-May are favorable. With 80 percent of the country’s wheat (and barley) grown on dryland
+farms, adequate and timely rains are critical to overall production.
+
+According to the Turkish State Meteorological Service, precipitation during the 2026 hydrological
+year (Oct-Feb) was up 24 percent compared to the long-term average for this five-month
+span and was 75 percent higher than the same period last year. See figures 1 and 2. Although cumulative
+rainfall figures are encouraging, the timing and intensity of the rain are also important considerations.
+For example, while farmers in the Southeast, Mediterranean, and Aegean regions are currently grappling
+with localized flooding issues, farmers in some parts of the Thrace region are complaining about a lack
+of consistent rainfall. However, these specific weather events are not expected at this time to have any
+noticeable impact on the country’s MY 2026/27grain production totals.
+
+The turmoil in the Middle East has caused fertilizer and fuel prices in March to jump about 25 percent
+from the previous month. There were also worries about potential fertilizer shortages since most
+of Turkiye’s fertilizer is imported. To allay these concerns, the Minister from the Ministry of
+Agriculture & Forestry has made several public statements, reassuring farmers that the country
+has adequate fertilizer stocks for the MY 2026/27 crop year. At the same time, in order to reduce the
+upward pressure on local fertilizer prices, the Turkish government eliminated the 6.5 percent tariff on
+imported urea, banned urea exports, and temporarily suspended the ban on ammonium nitrate
+fertilizer until the end of May. While the government hasn’t announced any additional support to
+offset rising fuel prices, some sources anticipate that the government will eventually intervene.
+
+The MY 2026/27 winter wheat and barley crops were planted and fertilized last fall. Another round of
+fertilizer was applied in March. Most of this fertilizer used in the most recent application was purchased
+before prices spiked. As a result, Post does not anticipate any measurable impact on Turkiye’s wheat and
+barley production from the economic fallout from the war in the Middle East. In contrast, if the conflict
+persists through the spring, it could cause farmers to pull back on applying fertilizer and crop
+protectants, which could depress yields. For now, though, it’s too early to predict how farmers might
+react during the spring planting season should the war continue.
+
+Wheat production in MY 2025/26 is estimated at 16.5 MMT, which is 1.0 MMT lower than the current
+USDA figure. This estimate reflects the most recent crop production information from different
+industry sources. Although the dry weather conditions resulted in a large year-to-year drop in MY
+2025/26 wheat production, industry sources report that the quality of this year’s crop was good.
+
+Figure 1: Comparison of Cumulative Precipitation between October and February with the Long-
+Term Average (Normal) in the Last Three Years
+
+
+
+
+Source: Turkish State Meteorological Service
+Figure 2: Standard Precipitation Index (SPI) (Sep 2025-Feb 2026)
+
+
+
+
+Table 1: TMO’s Purchase Price for Domestic Milling Wheat*
+Year        Intervention price       Date/Exchange Rate
+            TL           USD
+2020        1650 TL      $235        (As of May 2020, $1 USD = 7 TL)
+2021        2250 TL      $268        (As of May 2021, $1 USD = 8.4 TL)
+2022        6450 TL      $391        (As of June 2022, $1 USD
+                                     = 16.5 TL)
+2023        8250 TL      $358        (As of June 2023, $1 USD = 23 TL)
+2024        9750 TL      $304        (As of June 2024, $1 USD = 32 TL)
+2025        13,750TL $324            (As of June 2025, $1 USD = 39 TL)
+Source: Turkish Grain Board (TMO) www.tmo.gov.tr
+Note: As of March 2026, the exchange rate was about $1 to 44 TL.
+* The TMO purchase price varies according to product quality. The listed purchase prices in the
+table are for first class wheat with a max moisture level of 14 percent and protein level of 13
+percent.
+
+Consumption
+For the 2026/27 marketing year, wheat consumption is projected to reach 18.8 million tons, representing
+a marginal increase from the previous year which is attributed to an increase in feed wheat consumption.
+The demand for food-grade wheat, which accounts for approximately 95 percent of total consumption, is
+expected to remain stable.
+Wheat consumption, which has plateaued in recent years, was especially influenced by demographic
+shifts and evolving dietary preferences earlier this century. According to Turkish official statistics, the
+population growth rate has decelerated over the past five years, reflecting a significant contrast with the
+period between 2010 and 2020, when a faster rate of population increase was observed, partly due to an
+influx of refugees from war-stricken Syria. Concurrently, dietary trends among middle- and upper-
+income segments have shifted, with consumers increasingly reducing their bread intake in favor of
+alternative food choices that are now more readily available.
+
+While bread consumption has softened in recent years, Turkiye remains one of the largest consumers of
+bread globally on a per capita basis. Recognizing its central role in the Turkish diet, the government has
+traditionally sought to regulate bread production and pricing through various market interventions.
+Despite these efforts, the cost of a standard 200-gram loaf of bread in cities like Ankara and Istanbul
+jumped to about 15 TL ($0.34) as of January this year, a year-on-year increase of approximately 20
+percent but still below the increase in the general inflation rate.
+
+Turkiye produces over 24.0 MMT of various wheat-based products, including flour, pasta, biscuits, and
+more. The country is home to around 550 operational wheat milling facilities with a combined annual
+capacity of approximately 33.0 MMT. The sector’s capacity utilization rate (CUR) was around 60
+percent prior to the government’s decision to suspend IPR wheat imports in MY 2024/25. However, the
+current CUR has fallen below this level since wheat flour exporters have yet to regain their lost market
+share.
+
+Alongside these mills, 25 pasta factories are in operation, boasting an annual production capacity of
+around 3 MMT and a CUR of roughly 75 percent. According to pasta producers, with new investments
+coming online, this capacity is expected to reach 4.0 MMT in the next few years. Additionally, Turkey
+has over 140 factories manufacturing bulgur, biscuits, cookies, crackers, and semolina.
+
+According to market sources, domestic wheat prices in MY 2025/26 have remained fairly flat over the
+last six months because TMO has not adjusted the price it sells wheat onto the local market. Another
+reason domestic wheat prices have remained steady during this period is because Black Sea wheat prices
+have remained reasonably steady. While Turkish wheat is more expensive than Black Sea wheat,
+Turkish wheat price movements tend to track Black Sea prices.
+
+In March 2026, the market price for Anatolian hard red winter wheat (AKS), which is the domestic
+benchmark for milling wheat and comparable to U.S. hard red wheat, was 14,400 TL/MT ($327/MT),
+whereas a year ago it was selling for 12,000 TL/MT ($325/MT). By comparison, the CIF price for
+imported Russian wheat (12.5 protein) in March was about $260/MT, which is similar to the same
+month last year.
+Figure 3: Milling Wheat Price, Turkish Lira/Metric Ton
+
+
+
+
+Source: Average prices as reported on the major commodity exchanges.
+
+Trade
+Wheat Imports
+MY 2026/27 wheat imports are forecast to reach 6.5 MMT, down year-over-year by 700,000 MT and
+assumes that the government will not institute import restrictions like they did after the bumper wheat
+crop a couple of years ago. With the expected near record harvest in MY 2026/27, Turkiye won’t need
+to import wheat for domestic consumption, but will still continue to import milling wheat under the
+inward processing regime (IPR) framework to fuel the nation’s flour export business.1 However, IPR
+wheat import volumes aren’t expected to fully recover to where they were several years ago, signaling
+that Turkiye’s flour exports will not regain their former stature in MY 2026/27.
+
+The MY 2025/26 wheat import estimate is revised lower from the USDA figure to 7.2 MMT, based on
+slower-than-expected flour exports. From June through January of the current marketing year, wheat
+imports reached about 4.1 MMT, most of which was imported from Russia (3.9 MMT) and Ukraine (0.1
+MMT).
+
+Table 2: Turkish Wheat Imports by Origin (Metric Ton)
+Countries          MY 2023/24         MY 2024/25                       MY 2025/26 (Jun-Jan)
+Russia               7,500,000          3,128,000                      3,860,000
+Ukraine            1,526,000          99,000                           115,000
+Moldova                87,000             4,000                        44,000
+Other              203,000            33,000                           88,000
+Total               9,316,000          3,264,000                       4,107,000
+Source: Turkish Statistics Institute
+
+For reference, imports of wheat bran (HS 230230) during the first eight months (Jun-Jan) of the current
+marketing year climbed to 1.25 MT, an increase of 6 percent from the same period the previous year.
+Bran imports were mostly sourced from Russia (880,000 MT), Italy (143,500 MT), and Ukraine
+(143,000 MT). The bran is used as an ingredient in animal feed. When Turkey’s flour exports – and
+consequently its domestic flour production – decrease, the feed industry typically requires more
+imported wheat bran.
+
+Wheat Exports
+Although wheat exports in MY 2026/27 are forecast to increase marginally year-to-year to 6.5 MMT,
+export volumes will continue to lag behind MY 2023/24 levels for the third straight year as flour
+exporters continue to struggle to regain lost market share in key export markets in Africa and the Middle
+East. This forecast assumes that the government will not re-impose restrictions on wheat imports for
+processing and re-exporting as flour.
+
+ The MY 2025/26 wheat export estimate is expected to fall to its lowest level in almost a decade to 6.3
+MMT, which is down year-over-year by almost 850,000 MT. This estimate is based on several factors: a
+slowdown in durum wheat exports due to smaller available supplies for export; a sharp downturn in
+Iraq’s demand for Turkish flour; and continued challenges in clawing back market share in traditional
+flour export markets after the government suspended IPR wheat imports in MY 2024/25 to liquidate
+huge inventories of domestic wheat.
+
+ From June-January of MY 2025/26, flour exports were down 3 percent year-over-year to 2.2 MMT,
+wheat grain equivalent (WGE). Even though exports to Iraq have dropped, it still remains the top
+destination for Turkish flour exports followed by Syria and Somalia. Despite the continued slump in
+flour exports, there has been some bright spots for the Turkish flour industry, with rising exports to
+select markets, such as Syria, Indonesia, and Ghana.
+
+ Over the past five years, Turkish pasta exports have remained stable at around 1.8 MMT WGE. To help
+make the pasta more affordable for African households, some African buyers request Turkish pasta
+makers to replace some of the durum wheat with cheaper milling wheat. MY 2025/26 pasta exports from
+June-January totaled almost 1.25 MMT (WGE), almost unchanged from the same period the prior year.
+Leading destinations were Somalia (118,000 MT), Ghana (103,000MT), and Togo (70,000MT).
+
+Figure 4: Turkish Wheat and Wheat Products Export, MT, Wheat Grain Equivalent
+
+
+
+
+Source: Turkish Statistical Institute (TUIK) Others: Bulgur, Cuscus etc.
+Stocks
+Wheat inventories for MY 2026/27 are forecast significantly higher year-to-year to about 3.5 MMT,
+based on the assumption that TMO will hold onto more stock after a near record wheat crop. Forecasted
+inventories represent about two months of Turkiye’s wheat consumption needs.
+
+The MY 2025/26 ending stock levels for wheat are estimated at 2.5 MMT. TMO holds most of the
+country’s wheat stocks since it’s one of the leading buyers of domestic wheat and isn’t exposed to the
+same economic pressure to liquidate excess stocks. In contrast, the private sector prefers to keep their
+inventories as small as possible since they can make more money by investing in financial assets with
+higher returns given current economic conditions.
+
+
+                                                  Barley
+
+Production
+Barley area harvested for MY 2026/27 is projected to increase year-to-year by about 8 percent to
+3.75 million hectares. According to sources, farmers expanded their barley plantings last fall because
+domestic barley prices were relatively strong at that time compared to other row crops and offered
+potentially higher profit margins. Fears of continued drought at the time of planting also motivated
+farmers to plant more barley. Additionally, the expectation that TMO would purchase domestic barely at
+a favorable price, likely above prevailing market prices, also gave farmers confidence to plant more
+barley.
+
+Heading into the winter barley planting season last fall, farmers, especially in Thrace region in the
+northwest part of the country, were worried that dry weather conditions would continue into MY
+2026/27. (However, the weather turned out to be much wetter than originally expected.) Fearing
+persistent drought conditions, some farmers in Thrace as well as Central Anatolia, especially in
+unirrigated areas, switched from growing sunflowers to producing barley in hopes of better yields and
+profits.
+
+With the projected expansion in area harvested and higher yields resulting from favorable weather
+conditions, barley production for MY 2026/27 is forecast up year-over-year by about 35 percent to a
+near record of 7.0 MMT. Please refer to the wheat production section for information about weather
+conditions and fertilizer availability.
+
+Barley production in MY 2025/26 is estimated at 5.1 MMT, which is down significantly year-to-year
+because of dry weather conditions. For the MY 2025/26 season, TMO’s purchase price for domestic
+barley was 11,000 TL/MT ($248/MT).
+
+Consumption
+In parallel with the projected increase in domestic barley production in MY 2026/27, barley
+consumption is forecast higher year-to-year at 7.0 MMT. Feed manufacturers and, to a lesser extent, the
+malting and beer industries are expected to remain the leading end users of barley. About 90 percent of
+barley is consumed as feed and is predominantly used in ruminant feed rations. Malting barley
+consumption, which has held steady in recent years, is estimated around 900,000 MT.
+The MY 2025/26 barley consumption estimate is adjusted lower to 6.7 MMT since feed millers prefer
+using more corn since it’s cheaper than barley. Barley prices are higher this year due to the large year-
+to-year downturn in barley production. Since September, TMO imported about 600,000 MT of barley to
+help address the upward price pressure, but barley prices have still climbed steadily higher each month.
+See figure 5 below. TMO is currently selling its barley stocks around 10 percent below the current
+market price at about 11,500 TL/MT (~$262/MT). By comparison, the CIF price for imported Black Sea
+origin barley in March was around $270/MT.
+
+Figure 5: Average Barley Price on Konya Commodity Exchange (TL/MT)
+
+
+
+
+Source: Average prices as reported on the major commodity exchanges.
+
+Trade
+
+Barley Imports
+With barley production forecast higher, imports in MY 2026/27 are forecast to significantly contract
+year-to-year to 250,000 MT. This projection assumes that all imported barley will be transshipped to
+third countries since domestic supplies will be ample and the current, trade-prohibitive tariff rate of 130
+percent will remain in place.
+
+MY 2025/26 barley imports are estimated slightly higher than the USDA figure at 1.6 MMT. This
+upward adjustment assumes there will be a slight increase in transshipments. From Jan-Jun of the
+current marketing year, import volumes grew by more than six times year-over-year to 917,000 MT. The
+leading suppliers were Russia (363,000 MT), Romania (120,000 MT), Germany (120,000 MT), and
+Ukraine (104,000MT).
+TMO is expected to procure more than 1.0 MMT of the overall MY 2025/26 import estimate to bridge
+the gap in domestic barley production. TMO has already imported 700,000 MT and the remainder
+will be imported in March and April. Post assesses that the reminder will be transshipments since the
+current tariff on imports is trade-prohibitive at 130 percent. Turkiye is a major transshipment hub for
+barley and other agricultural commodities.
+
+Barley Exports
+In MY 2026/27, barley exports are forecast slightly down year-to-year to 250,000 MT,
+based on industry reports that neighboring markets’ demand will soften since grain production in
+those countries is expected to improve due to favorable growing conditions. Based on Post’s analysis,
+most exports will likely be transshipments from Black Sea countries via Turkiye to Iraq and other
+markets in the region.
+
+The MY 2025/26 barley export estimate is adjusted above the USDA number to 300,000 MT, based
+on an expected increase in transshipments as evidenced in the latest trade data. During the first eight
+months of the marketing year (Jun-Jan), barley exports totaled 234,000 MT, down 43 percent year-to-
+year. The top destinations were Iraq (80,000MT), Iran (58,000MT), and Syria (46,000MT). Of note, it is
+too early to assess whether the war in the Middle East will impact barley exports.
+
+Stocks
+For MY 2026/27, barley stocks are forecast unchanged from the prior year’s newly revised
+figure of 387,000 MT. This forecast assumes growing animal feed demand and the private sector’s
+continued interest to carry minimal inventories given current economic conditions inside Turkiye.
+
+MY 2025/26 ending stocks for barley are estimated lower at 387,000 MT. The private sector’s interest in
+minimizing inventories is helping to drive stock levels lower. Sectoral contacts report that it is more
+profitable to sell off inventories and invest the cash in higher-returning financial investments.
+
+
+                                                  Corn
+
+Production
+Corn area harvested in MY 2026/27 is expected to contract year-to-year by 10 percent to 550,000
+hectares, especially in water-scarce regions such as Central Anatolia and the Aegean. Instead of corn,
+farmers in these regions are expected to grow more wheat, oilseeds, and vegetables. According to
+market contacts, the key reason behind this anticipated contraction is the government’s Agricultural
+Production Plan (GAIN TU2025-0012), which was launched last season to prioritize water conservation
+by incentivizing the production of less water intensive crops in water scarce regions.
+
+While down nationally, corn area harvested is expected to expand in Southeastern Anatolia where many
+farmers, who are frustrated with depressed cotton prices, are expected to switch from cotton to growing
+more corn and other row crops. This regional expansion, though, will not offset the downturn in corn
+area harvested in other parts of the country.
+
+Market sources report that excess rain and flooding has delayed the planting of the first corn crop,
+especially in the Cukurova region in southern Turkiye along the Mediterranean Sea. The wetter-than-
+normal conditions in this part of the country have delayed corn planting which could lead to yield losses
+later in the season. However, it’s too early at this time to assess the magnitude of any potential yield
+losses.
+Planting of first crop corn started in February in Southeastern Anatolia where the weather is warmer and
+will gradually move northward and wrap up in April.
+
+In line with this contraction in area harvested, MY 2026/27 corn production is forecast to decrease year-
+over-year by 11 percent to about 7.0 MMT. For the corn growing season, Post is currently assuming
+favorable weather conditions and sufficient volumes of irrigation water. In comparison to wheat and
+barley, corn production is generally less affected by inadequate rainfall since a large share of it is
+irrigated. Please refer to the wheat production section for information about weather conditions and
+fertilizer availability.
+
+MY 2025/26 corn production is forecast unchanged at about 7.9 MMT. In mid-August, TMO announced
+its MY 2025/26 procurement price for domestic corn at 11,300 TL/MT ($275/MT). Contacts estimated
+that TMO has purchased upward of 1.5 MMT of domestic corn, more than 20 percent of total crop.
+
+Consumption
+MY 2026/27 corn consumption is forecast higher than last year at 12.0 MMT, based on growing demand
+for animal feed and to a lesser extent starch. Demand for corn in poultry rations is expected to continue
+along its upward trajectory as Turkiye, the world’s eighth largest chicken meat producer, continues to
+expand its production volumes. According to recent reports from the Turkish Statistical Institute
+(TUIK), production of poultry and livestock grew in calendar year 2025. This growth trend is
+expected to continue in 2026.
+
+Corn consumption in MY 2025/26 is revised higher to a record of 11.6 MMT, based on growing demand
+from the animal feed and starch industries. According to industry sources, feed manufacturers are
+switching away from barley and using more corn since the latter is cheaper and more widely
+available. Corn consumption is not expected to be impacted by the government’s decision in February of
+this calendar year to ban poultry meat exports during the month of Ramadan (Feb 17th - Mar 19th). The
+goal of the ban, which remains in place as of writing this report, was to curb rising food inflation,
+especially during the religious celebration when consumers typically eat more meat and poultry.
+
+With nearly 85 percent of corn used to make animal feed, overall corn consumption typically parallels
+trends in the feed sector. Industry sources consistently predict steady year-over-year growth in
+compound feed production based, in large part, on the country’s growing demand for meat, poultry,
+eggs, fish, and other livestock products. Export demand for these animal products is also cited as a
+contributing factor for the growth in compound feed production and consumption. Another reason for
+this purported steady growth is said to be the ongoing registration of farms, some of which have on-farm
+feed mills, in the government’s Farmer Registration System (CKS). Registration allows the government
+to better account for feed production on these farms, most of which are relatively small, and entitles the
+farmer to government support.
+
+In 2025, Turkiye’s total compound feed production increased by almost 4 percent year-on-year to 30.7
+MMT. See table 3. A large share of compound feed is made from domestic corn and other feed
+ingredients, some of which are imported like soybeans and distillers’ dried grains with soluble (DDGS).
+Table 3: Compound Feed Production in Turkey by Sectors (Million MT)
+Product                         2023         2024            2025                 %Y/Y
+Broiler Feed                    5.30         6.11            6.37                 4.4
+Layer Feed                      3.53         3.74            3.73                 -0.2
+Other Poultry Feed              1.00         1.09            1.10                 1.8
+All Poultry Feed                10.35        10.93           11.21                2.6
+Calf & Lamb                     1.47         1.68            2.13                 27.2
+Beef                            6.83         7.36            7.66                 4.1
+Dairy                           7.74         7.89            8.26                 4.7
+Other Ruminants                 0.20         0.24            0.18                 -22.5
+All Ruminant Feed               16.24        17.17           18.24                6.3
+Other (mostly aquaculture feed) 1.31         1.23            1.30                 5.1
+Total                           27.90        29.33           30.74                4.8
+Source: Sectoral Sources
+1/ Other feed includes aquaculture feed and other feeds.
+
+Corn starch-based sugar production is regulated by the government through a production quota system.
+The government announces the annual starch production quota. Starch producers use about 1.5 MMT of
+domestic corn each year to make food and industrial products for the local and export markets. The
+industry’s annual production capacity is 1.8 MMT.
+
+In March, the domestic corn price was about at 13,750 TL/MT ($312/MT), up about 30 percent in terms
+of Turkish Lira from a year ago because of strong demand from feed millers who prefer corn instead
+of barley since the former is cheaper. At the same time, TMO is currently selling corn at a discount
+at about 12,200 TL ($277/MT) to feed producers. By comparison, the CIF price for imported Black Sea
+corn in March was around $255/MT, nearly the same from a year ago.
+
+Figure 6: Average Corn Price on the Main Commodity Exchanges (TL/MT)
+
+
+
+
+Source: Average prices as reported on the major commodity exchanges.
+ Trade
+Imports
+With an anticipated decrease in MY 2026/27 corn production, corn imports are forecast higher year-
+over-year at 5.7 MMT. This projection assumes stable feed demand and a steady flow of
+transshipments.
+
+MY 2025/26 corn imports are estimated marginally higher than the USDA official number at 4.2 MMT.
+This upward adjustment is based on strong corn demand since corn is currently cheaper than other feed
+ingredients like barley. Most of the imported corn to date has been purchased by private buyers under
+the IPR (zero-duty) for use by companies producing poultry products for export. Other commercial
+imports are out of the question since the current import duty is set at the bound MFN rate of 130
+percent.
+
+In the meantime, though, TMO has purchased approximately 600,000 MT to date and reportedly has
+plans to purchase more in the second half of the year. Additionally, the government hasn’t announced a
+zero-duty tariff rate quota (TRQ) like they did last year and it’s uncertain whether they will this year.
+
+Import volumes during the first five months (Sep-Jan) of the marketing year reached 1.3 MMT, with
+purchases expected to ramp up in the coming months in response to domestic demand signals. The main
+suppliers were Ukraine (1.0 MMT) and Russia (231,000 MT).
+
+Exports
+Corn exports in MY 2026/27 are forecasted to slightly increase year-over-year to 700,000 MT, assuming
+most of the corn will originate in Black Sea countries and be transshipped via Turkiye overland to
+neighboring countries, especially Iraq and Syria. This forecast also assumes steady transshipment
+demand from these countries, especially Iraq as it reportedly continues to expand its poultry sector. In
+the last decade, Turkiye has become a major transshipment hub for corn and other agricultural
+products (GAIN TU2024-0039).
+
+MY 2025/26 corn exports are estimated at 600,000 MT, which is more in line with Turkiye’s historical
+export volumes, most of which are generally transshipments. For September through January of the
+current marketing year, corn exports reached 169,000 MT. In line with sectoral expectations, Post
+expects that transshipment volumes will pick up in the coming months. Major export destinations were
+Iraq (59,000 MT) and Syria (37,000 MT). Of note, it is too early to assess whether the war in the Middle
+East will impact barley exports.
+
+Stocks
+For MY 2026/27, corn stocks are forecast to remain unchanged year-to-year at 841,000 MT. Forecasted
+stock levels are within the standard range seen over the last decade and cover a little less than one month
+of consumption needs. Sectoral contacts report that it is more profitable to sell off inventories and invest
+the cash in higher-returning financial investments.
+
+MY 2025/26 corn ending stocks are down year-over-year to 841,000 MT, assuming the private sector
+will continue to minimize their inventories. Sectoral contacts report that it is more profitable to sell off
+inventories and invest the cash in higher-returning financial investments.
+                                                   Rice
+
+Production
+MY 2026/27 rice area harvested is forecast to reach 97,000 hectares, an increase of approximately 2
+percent compared to the previous year. Heading into the spring planting season, which kicks off in May,
+farmers are more optimistic than last year about planting rice since the threat of drought appears to have
+receded for the time being. Wetter than usual winter and autumn weather have helped to partially
+recharge rivers and dams in rice-growing areas and other parts of the country.
+
+This projected expansion in area harvested assumes that the main rice growing regions across the
+country, especially on the west coast Marmara region, where 70 percent of the country’s rice production
+is concentrated, will have sufficient access to irrigation water. Precipitation in the Marmara region for
+the 2026 hydrological year (Oct 2025-Feb 2026) was up 18 percent compared to the long-term average
+for this five-month period and was 49 percent higher than the same period last year.
+
+With the expected expansion in area harvested and assuming favorable weather conditions persist
+throughout the growing season, rice production in MY 2026/27 is forecast slightly higher year-on-year
+to 866,000 MT (paddy).
+
+Like wheat growers, one of the most important factors farmers consider when deciding to plant rice is
+whether they will be able to sell their crops to TMO. TMO purchases help stabilize market prices and
+provide farmers with a financial safety. This is especially true in recent years as TMO has become one
+of the country’s biggest buyers (and sellers) of domestic rice, while the private sector has increasingly
+focused on buying cheaper imported rice.
+
+In January of this year, TMO announced its MY 205/26 procurement price. The announcement, which
+normally comes out right after the harvest, was delayed several months since TMO was previously
+sitting on large inventories of domestic rice and wasn’t in a position to buy any more at that
+time. TMO’s MY 2025/26 procurement prices for Osmancik paddy rice is 32,000 TL/MT ($739/MT)
+and for Baldo paddy rice it is 40,000 TL/MT ($923/MT).
+
+Turkiye’s rice production is mostly spread across several regions, including Marmara, Black Sea, and
+Central Anatolia. There are more than 25,000 rice farms and 130 rice millers in the country with an
+annual milling capacity of 2.8 MMT.
+
+Consumption
+The consumption of rice in MY 2026/27 is projected to remain unchanged from the previous year’s
+newly revised estimate of 790,000 MT. This forecast is based on the expectation that consumer demand
+will remain relatively steady as it has for the last several years.
+
+Turkish households prefer to eat the well-known, high-quality medium grain varieties such as Baldo,
+Osmancik, and Calrose (imported) in traditional rice dishes, especially pilaf. However, in recent years,
+cheap imported rice from China and Southeast Asian countries has gotten a foothold in the market,
+especially in the HRI (Hotel, Restaurant, and Institutional) sector as food establishments seek to offer
+competitive menu prices to their clientele. Sector contacts report that this imported rice, which is often
+considered lower quality, is also sometimes blended with higher-quality domestic rice for sale on retail
+store shelves.
+
+TMO currently sells domestic rice through a handful of discount retail outlets. TMO’s current retail
+price for the highest quality rice, Type A milled rice (e.g. Baldo) is 66 TL/kg ($1.5/kg). Lower quality
+Type B varieties are selling between 50-56 TL ($1.13-$1.30/kg).
+
+Figure 7: Average Milled Rice Price on Edirne Commodity Exchange (TL/KG)
+
+
+
+
+Source: Edirne Commodity Exchange
+
+Trade
+Imports
+For MY 2025/26, rice imports are forecast lower year-to-year at 425,000 MT, about half of which
+will likely be transshipments. This projection assumes lower import demand resulting from an increase
+in domestic rice production and steady transshipment demand.
+
+MY 2025/26 rice imports are expected to increase year-on-year to 450,000 MT, based on the
+latest import trends. In the first five months of MY 2025/26 (Sep-Jan), Turkiye imported about 146,000
+MT of rice (milled equivalent), which was up about 57 percent year-to-year. The major sources of
+imported rice, most of which was milled, were China (52,000 MT), India (38,000 MT), and Uruguay
+(34,000 MT). Even though Turkiye lifted its 10 percent retaliatory tariff on U.S. rice last September,
+sources report that importers aren’t interested in purchasing U.S. rice right now since it is considered too
+expensive. TMO also isn’t in a position to buy U.S. rice at the moment since it still sitting on sizeable
+inventories of domestic rice.
+
+ In recent years, there has been growing concerns that the current 45 percent MFN tariff applied to
+commercial rice imports is insufficient to protect domestic rice producers from the onslaught of cheaper,
+lower-quality imported rice. Some industry sources assert that TMO wouldn’t have to buy as much
+domestic rice if the tariff was increased to make imported rice less price competitive.
+Table 4:Turkey’s Rice Imports (milled equivalent) Marketing Year (Sep-Aug)
+
+
+
+
+Source: Turkish Statistical Institute (TUIK)
+
+Exports
+For MY 2026/27, rice exports are forecast unchanged from the previous year at 225,000 MT,
+assuming steady transshipment demand. Based on Post’s analysis of prior year trade volumes, the
+majority of Turkiye’s rice exports are transshipments to regional markets. The minority amount
+of Turkish-origin rice is only shipped in consumer-ready packages.
+
+For MY 2025/26, rice exports are forecast to decrease to 225,000 MT (milled equivalent), down 25,000
+MT year to year. This prediction, based on information from market sources, assumes a decrease in
+transshipment demand from neighboring markets, some of which are seeking to import directly. In the
+first five months of MY 2025/26 (Sep-Jan), Turkiye exported about 90,000 MT of rice, which
+was down about 20 percent year-to-year. The main export destinations were Syria (24,000
+MT), Iraq (8,000 MT), and Libya (22,000 MT).
+
+Stocks
+In MY 2026/27, rice stocks are forecast lower at 162,000 MT, which is in line with historical
+amounts and equates to about two months of consumption.
+
+The rice stock estimate for MY 2025/26 is reduced from the previous year to 172,000 MT, based on
+the government and private sectors’ interest in reducing the size of their larger-than-normal rice
+inventories. TMO is one of the biggest holders of rice stocks. Sector contacts blame TMO’s big stocks
+of domestic rice on the private sector importing cheap rice.
+Production, Supply and Demand
+
+
+Wheat                                       2024/2025                         2025/2026                         2026/2027
+Market Year Begins                            Jun 2024                          Jun 2025                          Jun 2026
+Turkey                             USDA Official       New Post      USDA Official       New Post      USDA Official       New Post
+Area Harvested (1000 HA)                     7250             7250            7300              7300                0             7450
+Beginning Stocks (1000 MT)                   7484             7484            3320              3820                0             2520
+Production (1000 MT)                        19000            19000           17500             16500                0            19800
+MY Imports (1000 MT)                         3318             3318            7700              7200                0             6500
+TY Imports (1000 MT)                         2985             2985            7700              7200                0             6500
+Total Supply (1000 MT)                      29802            29802           28520             27520                0            28820
+MY Exports (1000 MT)                         7282             7282            6500              6300                0             6500
+TY Exports (1000 MT)                         7148             7148            6500              6300                0                0
+Feed and Residual (1000 MT)                  1000              900             700               700                0              800
+FSI Consumption (1000 MT)                   18200            18000           18200             18000                0            18000
+Total Consumption (1000 MT)                 19200            18900           18900             18700                0            18800
+Ending Stocks (1000 MT)                      3320             3820            3120              2520                0             3520
+Total Distribution (1000 MT)                29802            30002           28520             27520                0            28820
+Yield (MT/HA)                              2.6207           2.6207          2.3973            2.2603                0           2.6577
+
+(1000 HA) ,(1000 MT) ,(MT/HA)
+MY = Marketing Year, begins with the month listed at the top of each column
+TY = Trade Year, which for Wheat begins in July for all countries. TY 2026/2027 = July 2026 - June 2027
+
+OFFICIAL DATA CAN BE ACCESSED AT: PSD Online Advanced Query
+
+
+
+Barley                                      2024/2025                         2025/2026                         2026/2027
+Market Year Begins                            Jun 2024                          Jun 2025                          Jun 2026
+Turkey                             USDA Official       New Post      USDA Official       New Post      USDA Official       New Post
+Area Harvested (1000 HA)                     3750             3750            3500              3500                0             3750
+Beginning Stocks (1000 MT)                   2087             2087             687               687                0              387
+Production (1000 MT)                         7000             7000            5600              5100                0             7000
+MY Imports (1000 MT)                          154              154            1500              1600                0              250
+TY Imports (1000 MT)                          371              371            1300              1600                0              250
+Total Supply (1000 MT)                       9241             9241            7787              7387                0             7637
+MY Exports (1000 MT)                         1154             1154             200               300                0              250
+TY Exports (1000 MT)                         1170             1170             200               300                0              250
+Feed and Residual (1000 MT)                  6500             6500            6000              5800                0             6100
+FSI Consumption (1000 MT)                     900              900             900               900                0              900
+Total Consumption (1000 MT)                  7400             7400            6900              6700                0             7000
+Ending Stocks (1000 MT)                       687              687             687               387                0              387
+Total Distribution (1000 MT)                 9241             9241            7787              7387                0             7637
+Yield (MT/HA)                              1.8667           1.8667             1.6            1.4571                0           1.8667
+
+(1000 HA) ,(1000 MT) ,(MT/HA)
+MY = Marketing Year, begins with the month listed at the top of each column
+TY = Trade Year, which for Barley begins in October for all countries. TY 2026/2027 = October 2026 - September 2027
+
+OFFICIAL DATA CAN BE ACCESSED AT: PSD Online Advanced Query
+Corn                                       2024/2025                           2025/2026                       2026/2027
+Market Year Begins                           Sep 2024                            Sep 2025                        Sep 2026
+Turkey                             USDA Official     New Post          USDA Official     New Post      USDA Official     New Post
+Area Harvested (1000 HA)                     560              560                610             610                0            550
+Beginning Stocks (1000 MT)                   699              699                961            1041                0            841
+Production (1000 MT)                        6800             6800               7900            7900                0           7000
+MY Imports (1000 MT)                        5654             5657               3800            4200                0           5700
+TY Imports (1000 MT)                        5587             5587               3900            4200                0           5700
+Total Supply (1000 MT)                    13153            13156              12661           13141                 0         13541
+MY Exports (1000 MT)                         392              515                600             600                0            700
+TY Exports (1000 MT)                         375              450                600             600                0            700
+Feed and Residual (1000 MT)               10600            10200              10100           10300                 0         10500
+FSI Consumption (1000 MT)                   1200             1400               1200            1400                0           1500
+Total Consumption (1000 MT)               11800            11600              11300           11700                 0         12000
+Ending Stocks (1000 MT)                      961             1041                761             841                0            841
+Total Distribution (1000 MT)              13153            13156              12661           13141                 0         13541
+Yield (MT/HA)                            12.1429          12.1429            12.9508         12.9508                0        12.7273
+
+(1000 HA) ,(1000 MT) ,(MT/HA)
+MY = Marketing Year, begins with the month listed at the top of each column
+TY = Trade Year, which for Corn begins in October for all countries. TY 2026/2027 = October 2026 - September 2027
+
+OFFICIAL DATA CAN BE ACCESSED AT: PSD Online Advanced Query
+
+
+
+Rice, Milled                                 2024/2025                          2025/2026                      2026/2027
+Market Year Begins                            Sep 2024                            Sep 2025                       Sep 2026
+Turkey                              USDA Official     New Post          USDA Official     New Post     USDA Official     New Post
+Area Harvested (1000 HA)                        97                97               95             95                0             97
+Beginning Stocks (1000 MT)                     277               277              172            177                0            172
+Milled Production (1000 MT)                    580               580              560            560                0            580
+Rough Production (1000 MT)                     866               866              836            836                0            866
+Milling Rate (.9999) (1000 MT)                6700              6700             6700           6700                0           6700
+MY Imports (1000 MT)                           358               358              450            450                0            425
+TY Imports (1000 MT)                           438               438              450            450                0            425
+Total Supply (1000 MT)                        1215              1215             1182           1187                0           1177
+MY Exports (1000 MT)                           248               248              225            225                0            225
+TY Exports (1000 MT)                           228               250              225            225                0            225
+Consumption and Residual (1000                 795               790              800            790                0            790
+MT)
+Ending Stocks (1000 MT)                        172             177                157            172                0            162
+Total Distribution (1000 MT)                  1215            1215               1182           1187                0           1177
+Yield (Rough) (MT/HA)                       8.9278          8.9278                8.8            8.8                0         8.9278
+
+(1000 HA) ,(1000 MT) ,(MT/HA)
+MY = Marketing Year, begins with the month listed at the top of each column
+TY = Trade Year, which for Rice, Milled begins in January for all countries. TY 2026/2027 = January 2027 - December 2027
+
+OFFICIAL DATA CAN BE ACCESSED AT: PSD Online Advanced Query
+Attachments:
+
+No Attachments
+

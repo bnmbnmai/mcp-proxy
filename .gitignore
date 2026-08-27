@@ -41,6 +41,7 @@ build/npdes-permits.*
 build/ofsted-inspections.*
 build/ofwat-enforcement.*
 build/ofgem-enforcement.*
+build/gain.*
 build/ticks-ams.*
 build/paid-records.*
 build/shop-sample.*
@@ -82,4 +83,5 @@ data/npdes-permits/
 data/ofsted-inspections/
 data/ofwat-enforcement/
 data/ofgem-enforcement/
+data/gain/
 data/ticks-ams/

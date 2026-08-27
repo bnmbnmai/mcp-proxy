@@ -1,0 +1,687 @@
+Required Report: Required - Public Distribution                    Date: July 13, 2026
+
+                                                            Report Number:     CH2026-0087
+
+
+
+
+Report Name: Poultry and Products Annual
+Country: China - People's Republic of
+
+Post: Beijing
+
+Report Category: Poultry and Products
+
+
+
+
+Prepared By:    FAS China Staff & Victoria Dokken
+
+Approved By: Abigail Nguema
+
+Report Highlights:
+
+FAS China forecasts chicken meat production will reach 19.0 MMT in 2027, driven by white broiler
+expansion, as large integrated companies continue investing in new capacity. Higher domestic
+production is outpacing demand growth, pushing imports lower while exports surge — China's chicken
+meat exports by volume rose 51 percent year-on-year during January–May 2026, reaching 546,000 MT.
+Post raised its 2026 production and export estimates and lowered its 2026 import estimate based on
+January-June 2026 trade data. Following the May 2026 presidential summit in Beijing, China restored
+poultry market access for 17 U.S. states based on HPAI status, with the near-term impact on U.S.
+poultry exports to China is expected to be limited.
+                                      EXECUTIVE SUMMARY
+
+FAS China provides this reporting and analysis as a service to U.S. farmers, ranchers, rural
+communities, and agribusinesses in support of a worldwide agricultural information system and a level
+playing field for U.S. agriculture.
+
+The forecasts and revised estimates provided in this report are issued by FAS China and are not official
+USDA data.
+
+Production
+
+Post forecasts China’s chicken meat production to continue increasing in 2027, driven primarily by
+continued expansion of white broiler production, while yellow broiler production remains stable. Post
+also raised its 2026 production estimate to reflect stronger-than-expected production growth during the
+first half of the year.
+
+Consumption
+
+China’s chicken meat consumption is forecast to continue increasing in 2027. White broiler products are
+expected to account for most of the growth, while yellow broiler consumption remains relatively stable.
+
+Trade
+
+China’s chicken meat imports are forecast to continue declining in 2027 as domestic production growth
+outpaces demand. Post also lowered its 2026 import estimate to reflect weaker-than-expected imports
+during the first half of the year.
+
+China’s chicken meat exports are expected to continue increasing in 2027, supported by competitive
+export prices and continued market expansion. Post also raised its 2026 export estimate based on
+stronger-than-expected export performance.
+
+Chicken Paws
+
+Post expects chicken paw imports to remain under pressure in 2027 due to abundant domestic supplies
+and cautious import demand. Expanded U.S. market access is expected to create additional
+opportunities, but market recovery is likely to remain gradual.
+
+
+
+
+                                                    2
+                                             PRODUCTION
+
+Table 1. China: Production, Supply, and Distribution for Chicken Meat
+    Meat, Chicken                 2025                     2026                                    2027
+  Market Begin Year            Jan 2025                 Jan 2026                                Jan 2027
+                           USDA                    USDA                                    USDA
+         China                        New Post                New Post                                 New Post
+                          Official                 Official                                Official
+                                                                                                  Unit: 1000 MT
+Beginning Stocks                        0             0              0             0                0          0
+Production                         16,500        16,500         17,300        18,000                0     19,000
+Total Imports                         297           297            250           200                0        170
+Total Supply                       16,797        16,797         17,550        18,200                0     19,170
+Total Exports                       1,085         1,085          1,400         1,500                0      1,800
+Human Consumption                  15,712        15,712         16,150        16,700                0     17,370
+Other Use, Losses                       0             0              0             0                0          0
+Total Dom.                         15,712        15,712         16,150        16,700                0     17,370
+Consumption
+Total Use                          16,797        16,797         17,550        18,200              0      19,170
+Ending Stocks                           0             0              0             0              0           0
+Total Distribution                 16,797        16,797         17,550        18,200              0      19,170
+Note: Chicken paws (HS 0207.14.22) are excluded from PSD calculations and trade numbers.
+Note: Not official USDA data.
+
+China’s Chicken Meat Production to Continue Growing
+
+China's chicken meat production is forecast to increase in 2027. Industry estimates indicate that white
+broilers account for approximately 70 percent of China's chicken meat production, while yellow broilers
+account for approximately 20 percent. The remainder of China’s chicken meat production comes from
+hybrid broilers. White broiler production will remain the primary driver of growth, supported by
+expanding export opportunities, sufficient breeding stock supplies, and continued investment by large
+integrated poultry companies. In contrast, Post forecasts yellow broiler production to remain stable as
+production gains by large producers offset declines among smaller operations.
+
+Export Demand Drives White Broiler Growth
+
+Post expects export demand to remain an important driver of white broiler production growth in 2027.
+China’s chicken meat exports reached 546,000 metric tons (MT) between January and May 2026, up 51
+percent year-on-year. Poultry industry contacts reported that a growing share of additional production is
+being marketed overseas. As export demand continues to grow, the expanding export market will
+continue to support white broiler production growth in 2027.
+
+Breeding Stock Supplies Remain Adequate
+
+Breeding stock supplies are expected to be sufficient to support continued white broiler production
+growth in 2027. Industry data indicate that grandparent stock inventories remain adequate to support
+
+
+                                                          3
+parent stock and commercial broiler production, while continued expansion of domestic breeding
+programs has strengthened supply security.
+
+Domestic breeding varieties continue to gain market share. Industry data indicate that domestic varieties
+accounted for approximately one-third of grandparent stock updates in 2025, compared to a significantly
+smaller share several years ago. Government support for domestic breeding programs and continued
+adoption of domestic genetics have further expanded domestic breeding capacity and reduced reliance
+on direct imports. In addition, imported breeding lines continue to contribute to production through
+domestic propagation programs.
+
+U.S. breeding stock exports to China were disrupted following the implementation of highly pathogenic
+avian influenza (HPAI)-related restrictions, which limited access to one of China's traditional breeding
+stock suppliers. By May 2026, China had restored poultry export eligibility for 17 U.S. states. The May
+2026 reopening of poultry trade from 17 U.S. states improves access to U.S. breeding stock and provides
+additional opportunities for future imports.
+
+Investment by Large Integrated Companies to Support Expansion
+
+Post expects large integrated white broiler companies to continue increasing production through
+investments in breeding, hatching, growing, slaughtering, and further-processing facilities. Relatively
+stable corn and soybean meal prices have also supported continued investment by helping contain feed
+costs for integrated poultry companies, creating favorable conditions for further production expansion
+(Chart 1).
+
+Chart 1. China: Corn and Soybean Meal Prices
+            5.50
+            5.00
+            4.50
+   RMB/KG
+
+
+
+
+            4.00
+            3.50
+            3.00
+            2.50
+            2.00
+                                                                                                                                                                                          7/4/2025
+                   1/4/2023
+                              3/4/2023
+                                         5/4/2023
+                                                    7/4/2023
+                                                               9/4/2023
+                                                                          11/4/2023
+                                                                                      1/4/2024
+                                                                                                 3/4/2024
+                                                                                                            5/4/2024
+                                                                                                                       7/4/2024
+                                                                                                                                  9/4/2024
+                                                                                                                                             11/4/2024
+                                                                                                                                                         1/4/2025
+                                                                                                                                                                    3/4/2025
+                                                                                                                                                                               5/4/2025
+
+
+                                                                                                                                                                                                     9/4/2025
+                                                                                                                                                                                                                11/4/2025
+                                                                                                                                                                                                                            1/4/2026
+                                                                                                                                                                                                                                       3/4/2026
+                                                                                                                                                                                                                                                  5/4/2026
+
+
+
+
+                                                                                                   Corn                           Soya Meal
+             Source: MARA
+
+Recent investments illustrate this trend. For example, a large integrated broiler project in Northeast
+China began trial operations in January 2026 and officially commenced operations in May 2026. During
+the first quarter of 2026, the project slaughtered 5.3 million broilers and sold more than 12,700 MT of
+
+
+                                                                                                                            4
+poultry products. The first phase includes annual slaughtering capacity of 40 million broilers and eight
+broiler farms. Once all three phases are completed, the project is designed to support annual production
+and slaughtering capacity of 80 million broilers, with additional breeder, hatchery, and further-
+processing facilities planned.
+
+Another example is a project with continued expansion in broiler growing and hatchery capacity. In
+Central China, a large-scale broiler project began operations in June 2026, with the first placement of
+280,000 broiler chicks across seven poultry houses. By August 2026, 18 poultry houses are expected to
+be fully operational, supporting a single-cycle inventory of approximately 720,000 broilers. Additional
+production sites are planned, and the project targets annual production exceeding 15 million broilers
+after full implementation. Post believes continued investment by large integrated poultry companies will
+support further growth in white broiler production through 2027.
+
+Yellow Broiler Production to Remain Stable
+
+Post forecasts yellow broiler production to remain stable in 2027. Expansion by large integrated
+producers is likely to offset production declines among smaller producers, while relatively weak
+consumption growth limits incentives for significant industry-wide expansion. The largest yellow broiler
+producer sold 1.3 billion birds in 2025 (up 7.9 percent year-on-year), while the second largest sold 567
+million (up 9.9 percent) and reported continued growth in Q1 2026. However, smaller producers
+continue to exit the market due to weak profitability, rising production standards, and higher
+environmental compliance costs.
+
+China's Ecological and Environmental Code, which takes effect in August 2026, further strengthens the
+environmental compliance framework for livestock and poultry operations. Large integrated producers
+generally spread environmental investments and compliance costs over much larger production volumes,
+while smaller producers have fewer resources to upgrade facilities and meet the new requirements,
+accelerating industry consolidation. Production gains by large integrated producers largely offset these
+declines.
+
+Demand is unlikely to support meaningful expansion: consumer preferences continue to shift toward
+white broiler products, and traditional live yellow broiler sales channels remain under pressure.
+
+2026 Production Estimate Revised Upward
+
+Post raised its 2026 chicken production estimate to reflect stronger-than-expected production growth
+during the first half of the year. Expansion by large integrated companies, commissioning of new
+capacity, and robust export growth all contributed. Official data from the National Bureau of Statistics
+(NBS) confirm the trend, with poultry meat production up 9.3 percent year-on-year to 7.01 million MT
+and poultry slaughter up 7.5 percent in Q1 2026. Higher production contributed to softer chicken meat
+prices in 2026 (Chart 2). While increased domestic supply was the primary driver of lower chicken
+prices, weaker pork prices, shown in Chart 2 for comparison, also contributed to downward pressure on
+the chicken market, as pork remains the primary competing animal protein in China.
+
+
+
+
+                                                    5
+Chart 2. China: National Average Chicken and Pork1 Prices2
+     34.00
+     32.00
+     30.00
+    RMB/KG
+
+
+
+
+     28.00
+     26.00
+     24.00
+     22.00
+     20.00
+     18.00
+
+
+
+
+                                                                                                                                                                           5/4/2025
+               1/4/2023
+                          3/4/2023
+                                     5/4/2023
+                                                7/4/2023
+                                                           9/4/2023
+                                                                      11/4/2023
+                                                                                  1/4/2024
+                                                                                             3/4/2024
+                                                                                                        5/4/2024
+                                                                                                                   7/4/2024
+                                                                                                                              9/4/2024
+                                                                                                                                         11/4/2024
+                                                                                                                                                     1/4/2025
+                                                                                                                                                                3/4/2025
+
+
+                                                                                                                                                                                      7/4/2025
+                                                                                                                                                                                                 9/4/2025
+                                                                                                                                                                                                            11/4/2025
+                                                                                                                                                                                                                        1/4/2026
+                                                                                                                                                                                                                                   3/4/2026
+                                                                                                                                                                                                                                              5/4/2026
+                                                                                                   Chicken                               Pork
+Source: China’s Ministry of Agriculture and Rural Affairs (MARA)
+
+                                                                                  CONSUMPTION
+
+Chicken Meat Consumption Continues to Increase
+
+Post forecasts chicken meat consumption to continue increasing in 2027. Although pork remains the
+primary animal protein in China, consumers continue to diversify their protein choices. Chicken has
+become increasingly popular because of its convenience, and versatility across both traditional Chinese
+cuisine and modern foodservice channels. Its expanding use in prepared foods, quick-service restaurants,
+and retail products continues to support consumption growth. Foodservice demand expanded during
+2026, with NBS data indicating catering revenue increased 3.8 percent from January–April 2026, and
+chain restaurant penetration rising from 21 percent in 2023 to 25 percent in 2025. Despite this growth,
+industry contacts reported that slowing economic growth has made consumers more cautious with
+discretionary spending, prompting restaurants to increasingly emphasize affordability and value-oriented
+menu offerings.
+
+White Broiler Consumption Continues to Grow
+
+White broiler consumption is expected to remain the primary driver of growth in China's chicken
+market. Younger consumers increasingly prefer convenient and easy-to-prepare chicken products,
+supporting demand for white broiler meat in prepared foods, further-processed products, foodservice
+channels, and home cooking. Continued growth in processed chicken products and expanding chain
+foodservice channels will support further increases in white broiler consumption in 2027.
+
+1
+  Chart 2 includes national average pork prices for comparison. Pork is the primary competing animal protein in China. While
+increased chicken production was the primary factor behind lower chicken prices in 2026, weaker pork prices also
+contributed to downward pressure on the chicken market.
+2
+  The chicken meat price here refers to the average price collected by MARA from monitored traditional markets across
+China.
+
+
+                                                                                                                   6
+Yellow Broiler Consumption Remains Stable
+
+Post forecasts yellow broiler consumption to remain relatively stable in 2027. While younger consumers
+increasingly favor white broiler products, yellow broilers continue to maintain a loyal consumer base in
+southern China, where traditional consumption preferences, and willingness to pay a price premium and
+invest preparation time, remain strong. These factors limit opportunities for significant growth but
+support a stable consumption base.
+
+Figure 1. Roast Poultry Display at a Traditional Cantonese Barbecue Shop in Guangzhou3
+
+
+
+
+Source: FAS China
+
+                                                   TRADE
+
+Imports
+
+Chicken Meat Imports to Continue Declining
+
+Post forecasts chicken meat imports to continue declining in 2027 (Chart 3). Although chicken meat
+consumption is expected to increase in 2027, domestic production growth could outpace demand,
+reducing the need for imported chicken products and pressuring market prices. Industry contacts
+reported that major importers plan to reduce purchases.
+
+
+
+
+3
+  Yellow broilers are commonly used in Cantonese roasted and poached chicken dishes and remain an important part of
+traditional poultry consumption in southern China.
+
+
+                                                           7
+Chart 3. China: Imports4 of Chicken Products
+     1,200
+               1,000
+                800
+    1,000 MT
+
+
+
+
+                600
+                400
+                200
+                   0
+                          2020        2021        2022         2023    2024         2025       2026     2027
+                                                                                              Estimate Forecast
+                Source: USDA Official Data and Post Forecast
+
+Brazil Remains the Leading Supplier
+
+Post expects Brazil to remain China's largest chicken meat supplier in 2027, followed by Russia and the
+United States. Although imports from all major suppliers declined during the first quarter of 2026,
+Brazil maintained a dominant market position and increased its share. Post believes Brazil will remain
+highly competitive due to its scale, established trade relationships, and broad product offering.
+
+Market Access Constraints Limit U.S. and Other Suppliers
+
+China restored poultry market access for products originating from 17 U.S. states, representing around
+25 percent of production, effective May 15, 2026 (see Policy section for more information). The
+renewed access for these states is not expected to materially impact China’s overall declining chicken
+import trend.
+
+Post notes that market access restrictions continue to affect some suppliers, although these restrictions
+are expected to have only a limited impact on China's overall chicken meat imports in 2027. Imports
+from Chile remain suspended following HPAI detections5, although Chile represents only a small share
+of China's chicken meat imports. In addition, several Thai processing establishments remain suspended
+from exporting poultry products to China, although most approved Thai establishments continue to
+maintain market access.
+
+2026 Import Estimate Revised Downward
+
+Post lowered its 2026 chicken import estimate to reflect weaker than expected imports during the first
+half of the year. Stronger than expected domestic production, supported by continued expansion of large
+integrated poultry companies, has reduced import demand more than previously anticipated. Chicken
+
+4
+  In this report, unless otherwise specified, chicken imports and exports refer to the following HS codes: 020711, 020712,
+020713, 020714, and 160232.
+5
+  China suspended imports of poultry and poultry products from Chile on April 20, 2026, following reports of HPAI in Chile.
+
+
+                                                                8
+paw imports declined approximately 35 percent year-on-year during January-April 2026, falling from
+158,000 MT to 103,000 MT.
+
+Exports
+
+Chicken Meat Exports to Increase
+
+Post forecasts chicken meat exports to continue increasing in 2027 (Chart 4). Large integrated poultry
+companies continue to actively develop export markets and diversify overseas customers, while
+competitive export prices have strengthened China’s position in international markets (Chart 5).
+
+Chart 4. China: Exports of Chicken Products
+              2,000
+              1,800
+              1,600
+              1,400
+   1,000 MT
+
+
+
+
+              1,200
+              1,000
+                800
+                600
+                400
+                200
+                  0
+                      2020    2021        2022   2023      2024       2025      2026     2027
+                                                                               Estimate Forecast
+Source: USDA Official Data and Post Forecast
+
+Chart 5. China: Chicken Meat Export Unit Value
+              3600
+              3400
+              3200
+              3000
+   USD/MT
+
+
+
+
+              2800
+              2600
+              2400
+              2200
+              2000
+                      2020   2021         2022   2023       2024       2025     01/2025 - 01/2026 -
+                                                                                 05/2025 05/2026
+Source: Trade Data Monitor, LLC
+
+
+
+
+                                                   9
+Japan, Hong Kong, Russia, and Middle Eastern Markets Remain Key Export Destinations
+
+Post expects Japan, Hong Kong, Russia, and Middle Eastern markets to remain China's most important
+chicken meat export destinations (Chart 6), with exports also expanding into selected markets in Africa
+and Central Asia. While competition among exporters has intensified and profit margins have narrowed,
+exporters continue to pursue market expansion as domestic production increases.
+
+Chart 6. China: Selected Chicken Meat Export Destinations
+
+
+
+
+Source: Trade Data Monitor, LLC
+
+Chicken Breast Products Continue to Drive Export Growth
+
+Chicken breast products remained the largest export category. Industry sources reported that chicken
+breast exports accounted for more than half of total chicken meat exports during the first quarter of 2026
+and increased by more than 50 percent year-over-year.
+
+Exports of bone-in chicken cuts also increased rapidly during the same period. Post believes processed
+chicken products and value-added products will also continue to support export growth as Chinese
+companies expand overseas market opportunities.
+
+Post Raises 2026 Export Estimate
+
+Post raises its 2026 chicken meat export estimate based on stronger than expected export performance
+during the first five months of 2026. China's chicken meat exports reached 546,000 MT during January-
+May 2026, up approximately 51 percent from the same period in 2025.
+
+Industry contacts noted that international shipping costs increased during 2026 due to geopolitical
+tensions in the Middle East. However, Post believes transportation costs represent a relatively small
+share of total processed chicken product value and therefore are unlikely to significantly constrain
+export growth.
+                                        CHICKEN PAWS
+
+
+                                                   10
+Domestic Supply Growth Limits Import Demand
+
+China's white broiler production continued to expand in 2026, increasing domestic availability of
+chicken paws. Industry sources reported that domestic supply remains adequate for most market
+segments, reducing demand for imported commodity products. However, domestically produced
+chicken paws generally do not meet the size specifications preferred by some high-end foodservice
+operators and processors. As a result, import demand is expected to be limited and will remain
+concentrated in products with unique market advantages, particularly jumbo-sized chicken paws.
+
+Demand Remains Under Pressure
+
+Chicken paws remain a popular ingredient in southern China, particularly in Cantonese cuisine and dim
+sum products. Demand from the ready-to-eat snack sector also continues to support consumption.
+However, industry contacts reported that macroeconomic pressures and government austerity measures
+weakened demand from foodservice, retail, and processing channels during 2026. In addition, industry
+sources reported weaker sales of chicken paw snack products following a widely publicized food safety
+incident involving chicken paw processors in early 2026.
+
+Frozen Chicken Paw Imports Continue to Decline
+
+Imports of frozen chicken paws (HS 02071422) continued to decline during the first five months of 2026
+(Chart 7). Total imports reached 100,000 MT from January through May 2026, down 37.5 percent from
+160,000 MT during the same period in 2025.
+
+Chart 7. China: Frozen Chicken Paw Imports
+              800
+              700
+              600
+              500
+   1,000 MT
+
+
+
+
+              400
+              300
+              200
+              100
+                0
+                    2020    2021    2022       2023       2024       2025     01/2025 - 01/2026 -
+                                                                               05/2025 05/2026
+Source: Trade Data Monitor, LLC
+
+Brazil remained the dominant supplier, accounting for approximately 58 percent of total imports during
+January-May 2026 with shipments of 58,000 MT. Russia supplied 28,000 MT. Thailand supplied 8,000
+MT, while imports from the United States totaled 2,000 MT during the period (Chart 8).
+
+
+                                                  11
+Chart 8. China: Frozen Chicken Paw Imports from Top Suppliers
+
+              300
+              250
+              200
+   1,000 MT
+
+
+
+
+              150
+              100
+               50
+                0
+                    2020    2021           2022       2023        2024      2025     01/2025 - 01/2026 -
+                                                                                      05/2025 05/2026
+                                  Russia     Brazil    Thailand      United States
+Source: Trade Data Monitor, LLC
+
+Industry sources reported that importers remained cautious because domestic supplies were abundant,
+inventories remained elevated, and market prices were under pressure. Market participants also
+expressed concerns that additional U.S. supply could further weaken prices.
+
+Heat-Treated Chicken Paw Imports Also Declined
+
+Imports of heat-treated chicken paws (HS 16023299) declined moderately during the first five months of
+2026. Industry sources attributed the decline primarily to expanding domestic poultry production. In
+addition, industry sources reported that continued inspection and testing requirements increased
+uncertainty for importers.
+
+While expanded U.S. market access will create additional opportunities for U.S. chicken paw exports,
+abundant domestic supplies, and continued inspection and testing requirements on U.S. poultry
+shipments (see Policy section below) are expected to constrain import demand and limit the pace of
+market recovery in the near term.
+
+                                                  POLICY
+
+U.S. Market Access
+
+China restored market access for poultry products from 17 U.S. states, representing around 25 percent of
+U.S. production, effective May 15, 2026. Aside from export eligibility, industry sources report increased
+inspection rates resulting in higher compliance costs.
+Tariffs on U.S. Products
+
+On November 5, 2025, the State Council Tariff Commission (SCTC) announced the removal of the 10-
+15 percent tariffs imposed on 740 U.S. agricultural products (SCTC Announcement No. 9 of 2025),
+
+
+                                                       12
+including chicken products, with an effective date of November 10, 2025 (see GAIN Report CH2025-
+0050). However, the 10 percent tariffs on all products from the United States (SCTC Announcement No.
+7 of 2025), including chicken products, remain in place. See GAIN Report CH2025-0209) for additional
+information on the timeline of China’s tariffs on U.S. agricultural products.
+
+The tariff exclusion process introduced by the State Council Tariff Commission (SCTC) in March 2020
+(see GAIN report CH2020-0017) remains in effect. The program allows importers to apply for tariff
+exclusions on the Chinese Government’s retaliatory Section 301 tariffs on U.S. products, including
+chicken products. The Ministry of Finance has reportedly extended the market-based Section 301 tariff
+exclusion process to December 31, 2026 (see GAIN Report CH2025-0223). The following tables
+summarize the current tariffs on U.S. chicken exports to China.
+
+Table 2. China: Tariff Schedule for U.S. Chicken Meat and Chicken Paws
+                                                            SCTC
+                                                                        SCTC
+                                                             Ann.                   Total      TOTAL APPLIED
+               Product           MFN       Section 301                 Ann. No.
+                                                            No. 2                  Applied       TARIFF WITH
+              Description        Rate      Retaliation*                 7 May
+HS Code                                                     March                   Tariff     301 EXCLUSION*
+                                                                       12, 2025
+(8-digit)                                                  10, 2025
+            Implementation
+                   Date         1/1/2025    2/14/2020      3/10/2025   5/14/2025   5/14/2025      5/14/2025
+            Chickens, not cut
+            in pieces, fresh
+02071100    or chilled           20%          30.0%           0%         10%        60.0%          30.0%
+            Frozen Whole
+02071200    Chickens             20%          30.0%           0%         10%        60.0%          30.0%
+            Fresh Or Chilled
+            Cuts Of Chicken,
+02071311    With Bone            20%          30.0%           0%         10%        60.0%          30.0%
+            Fresh or chilled
+            cuts of chicken,
+02071319    other                20%          30.0%           0%         10%        60.0%          30.0%
+            Fresh or chilled
+            wing of chicken
+            (excluding
+02071321    wingtips             20%          30.0%           0%         10%        60.0%          30.0%
+            Fresh or chilled
+            offal of chicken,
+02071329    other                20%          30.0%           0%         10%        60.0%          30.0%
+                                                                                   40.0% +
+            Frozen Chicken        0.6                                                0.6           10.0% +
+02071411    Cuts, With Bone     RMB/kg        30.0%           0%         10%       RMB/kg        0.6 RMB/kg
+            Frozen Chicken
+02071419    Cuts, Nes            10%          30.0%           0%         10%        50.0%          20.0%
+            Frozen Midjoint                                                        40.0% +
+            Wing Of               0.8                                                0.8           10.0% +
+02071421    Chicken             RMB/kg        30.0%           0%         10%       RMB/kg        0.8 RMB/kg
+                                                                                   40.0% +
+            Frozen Chicken        1.0                                                1.0           10.0% +
+02071422    Claw                RMB/kg        30.0%           0%         10%       RMB/kg        1.0 RMB/kg
+
+
+                                                      13
+                                                                                         40.0% +
+             Frozen Offal Of       0.5                                                     0.5       10.0% +
+02071429     Chicken, Nes        RMB/kg          30.0%           0%          10%         RMB/kg    0.5 RMB/kg
+             Preparations Of
+             Chicken, In
+             Airtight
+16023210     Containers             5%           2.5%            0%          10%          17.5%      15.0%
+             Other Prepared
+             Chicken Breast
+16023291     Filets                 5%           10.0%           0%          10%          25.0%      15.0%
+             Other Prepared
+             Meat Of Chicken
+16023292     Legs                   5%           2.5%            0%          10%          17.5%      15.0%
+             Other Prepared
+             Chicken,
+             Chicken Offal Or
+16023299     Blood                  5%           2.5%            0%          10%          17.5%      15.0%
+
+Source: Customs Import and Export Tariff of China, State Council Tariff Commission Announcements
+
+
+
+
+Attachments:
+
+No Attachments
+
+
+
+
+                                                         14
+
