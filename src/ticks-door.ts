@@ -634,6 +634,9 @@ const PUBLIC_SERIES_PREFIXES = [
   "cattle.ams_",
   "grain.ams_",
   "wool.ams_",
+  "dairy.ams_",
+  "hogs.ams_",
+  "produce.ams_",
   "fiber.ams_",
   "ibc.id.grain.",
   "wd1.",
@@ -723,6 +726,15 @@ export const TICKS_SOURCE_NAMES = [
   "AMS_1778 Montana weekly cattle auction",
   "AMS_2039 Utah weekly cattle auction",
   "AMS_2106 Wyoming weekly cattle auction",
+  "AMS_2998 Dairy Market News weekly",
+  "AMS_1598 Dry products",
+  "AMS_1102 Fluid milk West",
+  "AMS_2997 Organic dairy",
+  "AMS_2872 National hog/pork summary",
+  "AMS_3802 National organic grain",
+  "AMS_2314 New York terminal fruit",
+  "AMS_2306 Los Angeles terminal fruit",
+  "AMS_2290 Chicago terminal fruit",
 ] as const;
 
 export type TickStatus = "ok" | "empty" | "stale";
@@ -1112,7 +1124,7 @@ export function paymentExtra(sku: DoorSku): Record<string, unknown> {
 const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> = {
   ticks: {
     description:
-      "Call GET /ticks when you need the current official US hay, cattle, and grain snapshot (USDA AMS nationwide plus PNW barns; IBC grain; WD1 $/AF). JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      "Call GET /ticks when you need the current official US hay, cattle, and grain snapshot (USDA AMS nationwide plus PNW barns; dairy, hogs, and terminal produce; IBC grain; WD1 $/AF). JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: TICKS_PATH,
   },
   "import-alerts": {
@@ -2415,7 +2427,10 @@ function historyPath(): string {
   return board ? resolve(board, "..", "history.json") : "";
 }
 
+/** Invented Idaho organic placeholders only. Official AMS organic prints stay on /ticks. */
 export function isOrganicHay(row: Record<string, unknown>): boolean {
+  const id = String(row.id ?? row.series ?? "").toLowerCase();
+  if (id.includes(".ams_") || /^(hay|grain|dairy)\.ams_/.test(id)) return false;
   const blob = [row.id, row.series, row.kind, row.commodity, row.label, row.name]
     .map((v) => String(v ?? "").toLowerCase())
     .join(" ");
@@ -2557,6 +2572,8 @@ const GROUP_LABELS: { id: string; name: string }[] = [
   { id: "cattle", name: "Cattle" },
   { id: "produce", name: "Produce" },
   { id: "grain", name: "Grain" },
+  { id: "dairy", name: "Dairy" },
+  { id: "hogs", name: "Hogs" },
   { id: "water", name: "Water" },
   { id: "pulses", name: "Pulses" },
   { id: "wool", name: "Wool" },
@@ -2738,7 +2755,7 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
     schema: {
       tickFields: {
         id: "string — deterministic series id",
-        group: "hay | cattle | produce | grain | water | pulses | wool",
+        group: "hay | cattle | produce | grain | dairy | hogs | water | pulses | wool",
         commodity: "string",
         label: "string",
         market: "string — geography / barn / shipping point",
@@ -3324,7 +3341,7 @@ export function llmsTxt(): string {
   const listedGmpMd = gmpMdIsPublic();
   const ticksPrice = usdcDisplayFromAtomic(amountAtomicFor("ticks")) ?? "$0.05";
   const paid = [
-    `- GET /ticks — ${ticksPrice} — US hay, cattle, and grain ticks (USDA AMS nationwide). Idaho / PNW barns are example geography inside the table, not the SKU. Paid JSON keeps ticks[] and adds records[] + asOf.`,
+    `- GET /ticks — ${ticksPrice} — US hay, cattle, and grain ticks (USDA AMS nationwide plus official dairy, hogs, and terminal produce). Idaho / PNW barns are example geography inside the table, not the SKU. Paid JSON keeps ticks[] and adds records[] + asOf.`,
     "- GET /import-alerts — $0.05 — FDA Import Alerts / DWPE firm-product snapshot. Paid JSON keeps ticks[] and adds records[] + asOf.",
     "- GET /mariners — $0.05 — USCG D13 / Northwest Local Notice to Mariners",
     "- GET /mariners-d11 — $0.05 — USCG D11 / Southwest Local Notice to Mariners",

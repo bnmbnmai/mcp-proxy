@@ -1,0 +1,29 @@
+DAIRY MARKET NEWS                                                             WEEK OF AUGUST 17 – 21, 2026
+                                                                                                                                           VOLUME 93, REPORT 34
+                                                                   MMN Slug ID 2998
+                                                       DAIRY MARKET NEWS AT A GLANCE
+CME GROUP CASH MARKETS (8/21)
+BUTTER: Grade AA closed at $1.4625. The weekly average for Grade AA is $1.4510 (-0.0245).
+CHEESE: Barrels closed at $1.5650 and 40# blocks at $1.5275. The weekly average for barrels is $1.5650 (+0.0115) and blocks $1.5620 (-0.0430).
+NONFAT DRY MILK: Grade A closed at $1.8000. The weekly average for Grade A is $1.7925 (+0.1355).
+DRY WHEY: Extra grade dry whey closed at $0.7025. The weekly average for dry whey is $0.6975 (+0.0080).
+
+ The base Class I price for September 2026 is $17.04 per cwt, a decrease of $1.72 per cwt when compared to August 2026.
+
+ COMMODITY
+                            Aug 17            Aug 18           Aug 19                     Aug 20            Aug 21             CHANGE             AVERAGE
+ CHEESE
+ BARRELS                     $1.5650          $1.5650             $1.5650                  $1.5650          $1.5650                -                $1.5650
+ 40 POUND
+ BLOCKS                      $1.5975          $1.5775             $1.5750                  $1.5325          $1.5275                 -               $1.5620
+ NONFAT DRY
+ MILK
+ GRADE A                     $1.7525          $1.7800             $1.8100                  $1.8200          $1.8000                -                $1.7925
+ BUTTER
+ GRADE AA                    $1.4725          $1.4600             $1.4300                  $1.4300          $1.4625                -                $1.4510
+ DRY WHEY
+ EXTRA GRADE                 $0.6950          $0.6950             $0.6925                  $0.7025          $0.7025                -                $0.6975
+
+Prices are USD per lb. in carlot quantities.
+Source: USDA AMS Dairy Market News
+https://mymarketnews.ams.usda.gov/viewReport/2998
