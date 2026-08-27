@@ -1,0 +1,1431 @@
+Required Report: Required - Public Distribution                     Date: April 23, 2026
+
+                                                                    Report Number:      CA2026-0008
+
+
+
+
+Report Name: Oilseeds and Products Annual
+Country: Canada
+
+Post: Ottawa
+
+Report Category: Oilseeds and Products
+
+
+
+
+Prepared By:    Erin Danielson
+
+Approved By: Tacarra Birmingham
+
+Report Highlights:
+
+Production of oilseeds (including canola, soybeans, and sunflower seeds) is forecast to decrease four
+percent in marketing year (MY) 2026/27 over the previous marketing year, to 27.55 million metric tons
+(MMT). In February 2026, China announced that it will suspend all agricultural tariffs on Canadian
+canola meal from March 1 through the end of 2026. On February 28, China announced that it will lower
+its anti-dumping tariff on Canadian canola seed to 5.9 percent from the 75.8 percent imposed in August
+2025. Canola oil continues to be subject to a tariff of 100 percent. Several regulatory changes are
+expected to boost vegetable oil domestic consumption and exports in MY 2025/26 and MY 2026/27,
+primarily for its use as a biofuel feedstock.
+
+
+
+
+THIS REPORT CONTAINS ASSESSMENTS OF COMMODITY AND TRADE ISSUES MADE BY USDA STAFF AND NOT NECESSARILY
+STATEMENTS OF OFFICIAL U.S. GOVERNMENT POLICY
+EXECUTIVE SUMMARY
+
+Oilseeds
+
+Production of oilseeds (including canola, soybeans, and sunflower seeds) is forecast to decrease four
+percent in marketing year (MY) 2026/27 over the previous marketing year, to 27.55 million metric tons
+(MMT). This forecast is based on Statistics Canada’s survey-based seeding intentions data for MY
+2026/27 and an assumption that yields of canola and sunflower seed will fall to their three-year average,
+while soybean yields will increase to their three-year average. Area planted to canola is forecast to
+increase one percent compared to the previous year; a return to average yields for canola is the largest
+reason for the forecasted total oilseed production decline.
+
+In MY 2026/27, total seed exports are forecast to increase seven percent on increased soybean exports
+due to high demand for biofuel feedstocks in the United States. This is despite a 14 percent reduction in
+canola seed exports due to increased domestic processing of canola seed as crush capacity rises from
+13.56 MMT in 2025 to 14.8 MMT by the end of 2026. Imports of seed remains small due to Canada’s
+limited capacity for soybean and sunflower seed processing, and its large domestic production of canola
+seed.
+
+In MY 2025/26, oilseed production increased seven percent over the previous marketing year to 28.67
+MMT. Canola was the main driver in the increase, despite reduced area planted, owing to it having the
+greatest yield gains.
+
+
+
+Oil
+
+In MY 2026/27, total oil production is forecast to increase by six percent over the previous year to reach
+5.67 MMT, subsequently leading to increased domestic supply and a decline in vegetable oil imports
+(mainly soybean oil). However, soybean oil imports (mainly from Argentina) are still expected to be
+nearly 16 times larger than five years previous, due to demand for renewable fuel feedstock in
+Newfoundland and Labrador. Canada will still hold a net positive trade balance in vegetable oil as soy
+oil imports are still less than a third of canola oil exports.
+
+Strong canola oil demand from the United States is expected to continue as demand for biofuel
+feedstock in the United States increase due to large Renewable Volume Obligations (RVO) and
+restrictions on the importation of foreign used cooking oil (UCO).
+
+Canola oil exports will benefit from the U.S. Environmental Protection Agency (EPA) announcement
+that it is expanding its renewable fuel volume obligations (RVOs) for 2026 and 2027. Further, canola
+will benefit from EPA’s decision to delay a policy aimed to reduce RIN credits by 50 percent for fuels
+produced from foreign feedstocks—such as used cooking oil (UCO) from China or canola oil from
+Canada.
+
+
+
+                                                                                                         1
+Secondly, legislative changes made to the United States’ One Big Beautiful Bill Act (OBBA) will
+benefit canola. The OBBBA limits the U.S. Inflation Reduction Act 45Z Fuel Production Tax credit to
+fuel that is exclusively derived from a feedstock that was produced or grown in the United States,
+Mexico, or Canada.
+
+In MY 2025/26, total oil production is forecast to increase six percent to 5.33 million MT as Canadian
+canola processors crush more seed to meet strong U.S. demand.
+
+
+
+Meal
+
+Total meal production (canola and soy) is forecasted to increase about six percent in MY 2026/27 over
+the previous year, driven by an increase in the volume of canola processed for oil.
+
+In MY 2025/26, total meal production is forecast to fall over the previous year, primarily due to a
+decrease in soybean crush due to limited domestic supplies. Exports are forecast to be higher than the
+previous year due to growth in exports of both canola and soybean meal.
+
+
+
+Table 1: Soymeal equivalent (SME) protein consumption, 1,000 MT
+
+Protein Meal               2020/21   2021/22   2022/23   2023/24     2024/25   2025/26(f)   2026/27(f)
+Meal, Soybean                2,170     2,332     2,234     2,349      2,577       2,274        2,338
+Meal, Rapeseed                 682       529       661       743        875         880          900
+Soybean (full fat)           1,003       640       932       571        851         700          800
+Sunflowerseed (full fat)        64        58        51        51         51          53           53
+           Total in SME      3,491     3,251     3,476     3,361      3,907       3,488        3,646
+
+
+Source: Statistics
+Canada; FAS Ottawa
+Marketing year: Aug/July
+f = forecast
+
+
+ACRONYMS
+
+45Z: The U.S. Clean Fuel Production Tax Credit (45Z) is a tax credit established by the U.S. Inflation
+Reduction Act (IRA) and became available on January 1, 2025
+
+BBD: The term ‘biomass-based diesel’ refers to biodiesel and renewable diesel. Canola oil, soybean oil,
+used cooking oil, and tallow are commonly used as a feedstock in both biodiesel and renewable diesel.
+Current growth in BBD production in North America is primarily in renewable diesel.
+
+BTC: Blender’s Tax Credit
+
+
+
+                                                                                                         2
+CFR: Canada’s Clean Fuel Regulation
+
+ECCC: Environment and Climate Change Canada
+
+EPA: Environmental Protection Agency
+
+RFR: U.S. Renewable Fuel Regulation
+
+IRA: U.S. Inflation Reduction Act
+
+MMT: Million metric tons
+
+MY: Marketing years
+
+PTC: Producer Tax Credit, such as 45Z in the U.S. IRA
+
+TMT: Thousand Metric Tons
+
+UCO: Used cooking oil
+
+
+
+MARKETING YEARS
+
+The marketing years used in this report are:
+
+•      August to July: Canola complex, soybean complex, sunflower complex
+
+
+
+
+                                                                            3
+Canola (Rapeseed), Oilseeds
+
+Table 2. Production, Supply, and Distribution of Canola
+
+Oilseed, Rapeseed                     2024/2025               2025/2026(f)              2026/2027(f)
+Market Begin Year                       Aug-24                    Aug-25                   Aug-26
+                                USDA                      USDA                      USDA
+Canada                                       New Post                  New Post                 New Post
+                                Official                  Official                  Official
+Area Planted                         8,900       8,908         8,760       8,748                     8,838
+Area Harvested                       8,846       8,846        8,700        8,699                     8,770
+Beginning Stocks                     3,231       3,225        1,597        1,597                     2,571
+Production                          19,239      19,239      22,000        21,809                    20,110
+MY Imports                             131         131          150          150                       150
+Total Supply                       22,601       22,595       23,747       23,556                    22,831
+MY Exports                           9,331       9,387        7,600        8,700                     7,500
+Crush                               11,412      11,412      12,000        11,700                    12,500
+Food Use Dom. Cons.                      0           0             0           0                         0
+Feed Waste Dom. Cons.                  261         199        1,000          585                       200
+Total Dom. Cons.                    11,673      11,611      13,000        12,258                    12,700
+Ending Stocks                        1,597       1,597        3,147        2,571                     2,631
+Total Distribution                  22,601      22,595      23,747        23,556                    22,831
+Yield                                2.175        2.175        2.529        2.507                    2.293
+(1000 HA) ,(1000 MT) ,(MT/HA)
+
+
+
+
+Canola Seed Production – Marketing Year (MY) 2026/2027
+
+Statistics Canada’s March 5, 2026, Planting Intentions Report indicates that area planted to canola is
+forecast to increase one percent over the previous marketing year. FAS/Ottawa forecasts that production
+will fall by less than eight percent, assuming yields fall in line with the three-year average.
+
+Saskatchewan remains the dominant producer, but increased area is expected across the Canadian
+Prairies (Saskatchewan, Manitoba, and Alberta) in response to growing crush capacity.
+
+By the end of March, 39 percent of the country was classified as abnormally dry or in moderate to
+severe drought (down from 53 percent a month earlier), including 32 percent of the country's agricultural
+landscape (down from 60 percent a month earlier).
+
+While it’s still early in the planting season, this data indicates that while the country is slightly drier than
+a year ago, less agricultural area is currently impacted by drought. Last year, by the end of March 2025,
+35 percent of the country was classified as abnormally dry or in moderate to severe drought, including
+37 percent of the country’s agricultural landscape.
+
+
+
+
+                                                                                                               4
+Figure 1: Drought conditions of March 31, 2025 (left) and March 31, 2026 (right)
+
+
+
+
+Source: Agriculture and Agri-Food Canada’s Drought Monitor
+
+
+
+The war in Iran has impacted the global fertilizer market and will have a trickle-down impact on
+Canada’s fertilizer market, as a reduction in supply drives up prices. This is particularly evident in
+Ontario and Quebec, where most of the nitrogen supply is imported from outside of North America.
+March 2026 analysis from Farm Credit Canada (FCC) warns that escalating nitrogen prices could
+severely squeeze farm margins. It states that a hypothetical 40 percent rise in nitrogen costs could cut
+average Saskatchewan crop margins for wheat and canola by half, from CDN $50 per acre to CDN $25
+per acre, they state.
+
+To date, the war in Iran has had minimal impact on Canada’s potash. Potash prices rose in early March
+2026 but reacted less sharply to the war in Iran than nitrogen and phosphate fertilizers. As of the second
+week of March 2026, the average retail price for potash in the U.S. reached U.S. $487 per ton, a slight
+increase from approximately U.S. $485 per ton in late January.
+
+New potash market entrant, Australian-owned BHP, is developing the Jansen Potash Mine near
+Saskatoon, Saskatchewan, with a USD $10.3 billion investment. The project aims for initial production
+by late 2026 or mid-2027, with a potential to become one of the world's largest potash mines, producing
+up to 8.5 million tons annually.
+
+
+
+
+                                                                                                           5
+Canola seed production – MY 2025/2026
+
+Canadian canola production in MY 2025/26 achieved a record-breaking year, with production reaching
+21.8 million metric tons (MMT), driven by record-high average yields of 2.507 MT/hectare. Despite
+large production, producers reported lower harvested area in 2025 than the previous year.
+
+Statistics Canada significantly revised upward their 2025 canola seed production estimate, a
+continuation of a pattern of revisions as the agency transitions from model-based projections to farmer
+survey data each December.
+
+
+
+Canola seed exports – MY 2026/2027
+
+Post forecasts that the volume of canola seed exported in MY 2026/2027 will fall from the previous
+marketing year as a greater share of domestic supply is crushed within Canada. Regulatory uncertainty
+around the canola oil export market in the United States has been resolved, at least for 2026 and 2027
+(see the canola oil export section of this report for further details), which will boost the share of seed
+supply going to domestic processing for canola oil export versus canola seed export. Further, Canada
+will see increased crush capacity in 2026.
+
+However, domestic processors may face increased competition for canola seed from Chinese canola
+seed buyers due to a significant reduction in trade barriers that will allow for greater export volumes of
+Canadian canola seed to China. On February 28, China announced it will lower its anti-dumping tariff
+on Canadian canola seed to 5.9 percent from the 75.8 percent imposed in August 2025. The levy is
+effective from March 1 and will last for at least five years. This announcement was expected after
+Canada announced a preliminary deal with China on January 16, 2026.
+
+
+
+
+                                                                                                             6
+Figure 2: Canola seed exports fall as more is retained for domestic processing
+
+
+
+
+Data source: Trade Data Monitor, LLC
+
+
+
+Canola seed exports – MY 2025/2026
+
+MY 2025/26 year-to-date (i.e. August to February), exports of canola seed are down 28 percent over the
+same period of the previous year. This decrease is attributable to a significantly lower volume of exports
+to China due to a 75.8 percent tariff imposed on Canada’s canola seed in August 2025. A second reason
+for lower exports is the increased demand from domestic seed processors. Post forecasts that more than
+37 percent of canola seed supply will be exported as raw product, compared to 42 percent in the
+previous year, as domestic crush capacity increases. Improved certainty over U.S. Renewable
+Identification Numbers, as explained in the canola oil section of this report, will give a further boost to
+domestic processing and reduce the share of seeds that go to export.
+
+
+
+
+                                                                                                          7
+Table 3: Canadian exports of canola seed, MT ‘000
+
+Partner Country                             Year Ending                                      Year to Date
+                  2020/21      2021/22        2022/23      2023/24      2024/25    08/24-02/25 08/25-02/26    %Δ
+World             10,485,441    5,245,560      7,950,683    6,811,581    9,386,659    5,933,543   4,266,453    -28.1
+Japan              2,264,852    1,382,650      1,101,055      808,807    1,724,652      946,703     891,545    -5.83
+Mexico             1,346,241    1,034,210      1,208,607      582,602      857,777      469,714     621,199    32.25
+France               952,422      456,790        123,250            0      530,508      315,857     445,021    40.89
+Pakistan             660,414       63,686        267,016            0            0            0     424,447        0
+China              2,713,379    1,265,157      4,607,522    4,859,661    4,601,908    3,241,660     332,653   -89.74
+Bangladesh           231,840          269         52,583          992      138,396       88,394     323,955   266.49
+United Arab
+Emirates            996,681      307,233        168,960      155,718      567,896      325,631      244,306   -24.97
+Belgium             148,167      125,705         23,423       91,198      160,009      160,009      238,912    49.31
+Germany             234,090            0         67,953            0      120,200       60,300      189,423   214.13
+Netherlands         373,877       42,248              0            2      205,088       46,530      160,993      246
+Portugal             42,855            0              0            0       45,429       45,429      121,939   168.42
+Bulgaria                  0            0              0            0      216,230       99,630      112,278    12.69
+United States       428,929      537,518        318,978      299,246      148,105       94,855       88,574    -6.62
+
+Source: Trade Data Monitor, LLC
+
+Several factors will influence the seed and oil export balance in the second half of MY 2025/26 and
+beyond. A strengthening Canadian dollar could make canola seed exports less competitive, unless
+cancelled out by low canola prices. Secondly, seed prices remain low relative to four years ago when
+they were nearly double average price in the first week of March 2026. Further, similar to the MY
+2026/27 outlook, domestic processors may face increased competition for canola seed from Chinese
+canola seed buyers due to a significant reduction in trade barriers that will allow for greater export
+volumes of Canadian canola seed to China.
+
+Price sensitive countries: FAS/Ottawa forecasts increased seed exports to price sensitive countries such
+as United Arab Emirates (UAE), Bangladesh, and Pakistan, comparted to the previous year. In MY
+2019/20, when canola prices were low, UAE, Bangladesh and Pakistan imported 20 percent of the total
+share of Canadian canola seed exports. In MY 2023/24, when seed prices were higher, UAE imported
+just two percent of the total share and Bangladesh and Pakistan did not import any.
+
+Japan: Japan will likely sustain the same share of seed imports from Canada as it did last year.
+Historically, Japan has relied on Canada for approximately 95-97 percent of its rapeseed imports.
+However, starting in MY 2021/22, Japan increased the purchase of Australian canola seeds due to a poor
+MY 2021/22 canola crop in Canada. Australia meanwhile had bumper canola crops in MY 2021/22 and
+MY 2022/23. Japanese crushers also noted higher oil extraction rates from Australian canola seeds
+compared to Canadian seeds. In MY 2022/23, only 38 percent of rapeseed imported to Japan came from
+Canada and 62 percent came from Australia. Year to date (August to February), 72 percent of imports
+were derived from Canada and 28 percent from Australia, similar to the previous marketing year.
+
+European Union: Delivery volumes to the EU market have increased year to date (August to February)
+over the same period of the previous year, mainly used for biofuel production. Because Canadian
+
+
+                                                                                                                       8
+farmers grow genetically modified varieties, the use of rapeseed oil derived from Canadian sources is
+partly restricted in the EU. Canadian canola is a qualified feedstock for use in EU biofuels, but exporters
+and growers need to be certified if they choose to take advantage of this opportunity, which reportedly
+caused some bottlenecks in 2025.
+
+China: China is an important market for Canada’s canola complex. In 2023, the last “normal” year of
+exports for Canada’s canola complex, Canada exported 65 percent of its canola seed volume, 34 percent
+of canola meal, and 3.7 percent of canola oil, to China, for a combined value of USD 3.7 billion.
+
+But Canada’s canola sector has had a tumultuous relationship with China, as outlined in the text box that
+follows. Most recently, in March 2025, China announced a 100 percent tariff rate on Canadian canola oil
+and meal (along with other commodities), effective immediately. In August 2025, it announced
+preliminary tariffs of 75.8 percent on canola seed.
+
+On February 27, 2026, as expected by Canada, China announced that it will suspend all agricultural
+tariffs on Canadian canola meal from March 1 through the end of 2026. On February 28, China
+announced that it will lower its anti-dumping tariff on Canadian canola seed to 5.9 percent from the 75.8
+percent imposed in August 2025. Canola oil continues to be subject to a tariff of 100 percent.
+
+
+
+
+                                                                                                          9
+Timeline of major events between Canada and China affecting Canada’s canola
+exports
+
+2016: A 2016 Memorandum of Understanding (MOU) between Canada and China establishes
+the following parameters:
+     • Canada and China will invest resources into researching risks and mitigation of
+     blackleg disease
+     • Canola seed exports to China can only go to processing facilities approved by
+     Chinese authorities in areas where rapeseed is not grown
+     • Dockage limits remain at 2.5 percent, the standard set out by the Canadian Grain
+     Commission
+
+March 1, 2019: China delists the canola export license of Richardson International following
+the arrest of Huawei executive Meng Wanzhou in Canada in December 2018.
+
+March 26, 2019: China delists the canola export license of Viterra.
+
+March 30, 2020: China lowers the dockage limits on canola seed imports from 2.5 to 1
+percent, citing sanitary and phytosanitary (SPS) concerns, increasing the processing cost for
+Canadian canola seed shippers and limiting the ability of other countries to export canola to
+China.
+
+March 31, 2020: MOU expires, and trade continues under temporary MOUs.
+
+May 18, 2022: China re-lists Viterra and Richardson as approved exporters of canola.
+
+August 26, 2024: In a move backed by both major Canadian political parties, Canada places
+100% tariffs on Chinese electric vehicles, to match U.S. levies and win the union vote.
+
+September 3, 2024: China announces plans of an anti-dumping probe. Unlike the SPS
+approach of 2019, China adopts domestic policy approach.
+
+September 10, 2024: China announced the launch of two investigations related to Canadian
+canola: one on dumping and another on industry injury. The deadline for completion of
+investigations is Sept. 9, 2025, although it may be extended for another six months under
+special circumstances, a statement from China says.
+
+March 20, 2025: China imposes 100 percent tariff rate on Canadian canola oil and meal
+(along with other commodities).
+
+August 14, 2025: China imposes 75.8 percent tariff on Canadian canola seed.
+
+February 27, 2026: China announced that it will suspend all agricultural tariffs on Canadian
+canola meal from March 1 through the end of 2026.
+
+February 28, 2026: China announced that it will lower its anti-dumping tariff on Canadian
+canola seed to 5.9 percent from the 75.8 percent imposed in August 2025.
+
+
+
+
+                                                                                                10
+Canola seed imports
+
+Canada has large domestic supplies of canola seed and is not a significant importer.
+
+FAS/Ottawa is forecasting a 15 percent increase in canola seed imports in MY 2025/26, compared to the
+previous marketing year, a nearly eight percent drop from the five-year (MY 20/21 to 24/25) average.
+Market watchers speculate that the return to more “normal” import levels are likely due to the
+improvement of the Canadian dollar.
+
+Canada’s dollar value vis-à-vis the U.S. dollar remains weak by comparison to the five-year average but
+has strengthened since 2025, and canola seed import prices have eased since the sustained high prices
+that persisted for five months of 2025.
+
+About 99 percent of Canada’s MY 2025/26 canola seed imports to date have come from the United
+States, higher than the historical average.
+
+
+
+Figure 3: Canada’s imports of U.S. canola seed
+
+
+
+
+Data source: Trade Data Monitor, LLC
+
+
+
+
+                                                                                                     11
+Canola seed, domestic use
+
+Canola seed is primarily used to crush for oil. Post is forecasting a 2.5 percent and nearly seven percent
+increase in canola crush in MY 2025/26 and MY 2026/27, respectively, over the corresponding previous
+marketing years. This increase is due to increased demand for canola oil for biofuels. See the canola oil
+production section for further information.
+
+
+
+Canola seed, storage stocks
+
+According to Statistics Canada data, as of December 31, 2025, total Canadian canola seed stocks rose
+18.1 percent year-over-year to 15.6 MMT, driven by high on-farm inventory. They attribute the increase
+to the drop in exports, leading to burdensome carryover levels.
+
+FAS/Ottawa forecasts storage stocks will finish MY 2025/26 higher than the previous year due to
+reduced exports. However, a sudden return of demand from China could drive stocks down. Similarly,
+MY 2026/27 stocks are forecast to remain higher than historical averages but are responsive to swings in
+Chinese demand.
+
+
+
+Figure 4: End of marketing year stocks of canola seed
+
+
+
+
+Data source: Statistics Canada, Table
+
+
+                                                                                                        12
+Canola Oil (Rapeseed Oil)
+
+Table 4. Production, Supply, and Distribution of Canola Oil
+
+      Oil, Canola           2024/2025             2025/2026(f)           2026/2027(f)
+   Market Begin Year          Aug-24                  Aug-25                 Aug-26
+                         USDA                   USDA                   USDA
+         Canada                     Post                    Post                   Post
+                        Official                Official               Official
+Crush                     11,412     11,412      12,000      11,700                 12,500
+Extr. Rate, 999.9999        0.42       0.42         0.43       0.42                   0.42
+Beginning Stocks             550        109          730        109                    115
+Production                 4,821      4,821        5,102      4,960                  5,300
+MY Imports                    16         16           20         15                     14
+Total Supply               5,387       4,946       5,852       5,084                  5,429
+MY Exports                 3,327      3,327        3,525      3,400                  3,600
+Industrial Dom. Cons.        550           x         750           x                      x
+Food Use Dom. Cons.          780           x         835           x                      x
+Feed Waste Dom. Cons.           0           x           0         0                      0
+Total Dom. Cons.           1,330      1,510        1,585      1,569                  1,700
+Ending Stocks                730        109          742        115                    129
+Total Distribution         5,387      4,946        5,852      5,084                  5,429
+(1000 HA) ,(1000 MT) ,(MT/HA)
+
+
+
+Canola oil production - MY 2026/2027
+
+FAS/Ottawa forecasts that 5,300 MT of canola oil will be produced in MY 2026/27, a 6.9 percent
+increase over the previous year. This forecast assumes a three-year average (MY 2023/24 to MY
+2025/26) oil extraction rate of 0.424 and a crush volume of 12,500 TMT canola seeds.
+
+The Louie Dreyfus expansion in Yorkton, Saskatchewan is expected to come online in Fall 2026 and
+add an additional 1.15 MMT, bringing its total capacity to 2.0 MMT, and bringing total national crush
+capacity to 14.8 MMT.
+
+
+
+Canola oil production - MY 2025/2026
+
+Post forecasts that Canada will crush approximately 50 percent (11.7 MMT) of total canola supply
+(where supply includes stocks, production, and imports), which is above the ten-year average of 9.8
+MMT. From August to January (the most recent data available), Canada has already crushed 52 percent
+of supply (including assumed imports), which is more than the three-year average of 50 percent for this
+period.
+
+
+
+
+                                                                                                        13
+Canada’s oilseed crush capacity is expected to grow from 13.56 MMT in 2025 to 14.81 MMT in
+calendar year 2026, with the expansion of the Louis Dreyfus crush plant in Yorkton, Saskatchewan and
+establishment of a new Cargill facility in Regina, Saskatchewan.
+
+Cargill’s new crush facility in Regina, Saskatchewan is expected to begin commercial operation in
+Spring 2025. The exact month of its opening is unknown, but Canada’s Spring runs from March through
+May. The new Cargill facility is expected to add 100,000 MT, bringing total capacity to one million tons
+of canola per year. Assuming the facility operates at the equivalent of two months of near-full capacity
+this marketing year (which runs from August to July), Post is forecasting that Canada’s crush capacity
+will reach approximately 13.58 MMT over the entirety of MY 2025/26, up from 13.56 MMT at the
+beginning of 2025.
+
+Bunge and Viterra merged at the end of MY 2024/25, on July 2, 2025. The merger significantly impacts
+Canadian canola processing by centralizing over 40 percent of the nation's crush capacity under one
+firm, reducing competition within Canada. The merger also creates uncertainty regarding the
+construction of new crush facilities, such as the proposed Viterra facility in Regina.
+
+
+
+Canola oil exports - MY 2026/2027
+
+Several factors are expected to boost foreign demand for Canadian canola oil to record high levels in
+MY 2026/27.
+
+Firstly, in March 2026, the U.S. Environmental Protection Agency (EPA) announced that it is expanding
+its renewable fuel volume obligations (RVOs) for 2026 and 2027. Members of Canada’s canola industry
+state that enlarged RVOs can’t be met by using only U.S. feedstocks, so the market for Canadian canola
+is expected to expand. As a second part of this announcement, EPA stated that it is postponing changes
+to how Renewable Identification Number (RIN) credits are applied to foreign feedstocks. Initially
+proposed in June 2025 as part of the 2026–2027 Renewable Fuel Standard (RFS) rules, the policy aimed
+to reduce RIN credits by 50 percent for fuels produced from foreign feedstocks—such as used cooking
+oil (UCO) from China or canola oil from Canada.
+
+Secondly, legislative changes made to the United States’ One Big Beautiful Bill Act (OBBBA - Public
+Law 119-21) on July 4, 2025, will benefit canola. For fuels produced after 2025, OBBBA limits the U.S.
+Inflation Reduction Act 45Z Fuel Production Tax credit to fuel that is exclusively derived from a
+feedstock that was produced or grown in the United States, Mexico, or Canada. This benefits Canadian
+canola over other foreign feedstocks such as Chinese used cooking oil (UCO).1
+
+Canadian canola oil is now the most prominent non-domestic beneficiary of the 45Z credit changes in
+the OBBBA. Industry states that fifteen percent of the U.S. feedstock mix is canola oil in the best year,
+including U.S. canola oil. The average over past ten years is about ten percent.
+1
+    U.S. imports of Chinese UCO for biofuels had been growing, and by 2024 they reached roughly 1.27 MMT.
+
+
+                                                                                                            14
+Further, OBBBA removed indirect land use change (ILUC) penalties from the calculation of emissions
+for the 45Z tax credit, which allows canola oil’s carbon intensity score to fall low enough to enable it to
+be used as a feedstock under 45Z.
+
+However, there are also factors to watch for that could reduce Canadian canola oil exports.
+
+Firstly, the forthcoming 2026 announcement of targeted amendments to the Clean Fuels Regulation
+could include national domestic content requirements on biobased diesel production, resulting in more
+biobased diesel facilities producing at capacity and consuming more domestic canola oil.
+
+In April 2025, the California Air Resources Board (CARB) finalized amendments to the California Low
+Carbon Fuel Standard (LCFS). CARB proposed in August 2024 to limit virgin soy and canola oil to a 20
+percent aggregate cap per company within the LCFS program. According to the American Soybean
+Association, currently, virgin vegetable oils account for approximately 30 percent of the feedstock used
+in California's biofuels market. CARB is essentially prioritizing used cooking oil and tallow over
+vegetable oils, and this will lead to a reduction in canola oil use in California, as fuel suppliers adjust
+their feedstock usage in the lead-up to the January 2028 implementation.
+
+Separately, EPA stated that it aims to reduce RIN credits by 50 percent for fuels produced from foreign
+feedstocks—such as used cooking oil (UCO) from China or canola oil from Canada, beginning
+sometime in 2028. Details are forthcoming. In the lead-up to the implementation date, this news is
+expected to drive increased investment in U.S. soybean crush capacity and boost U.S. domestic
+feedstock demand.
+
+Despite current free access for the oilseed complex (i.e. seed, oil and meal), the upcoming 2026
+USMCA review creates potential for trade policy uncertainty.
+
+The Canadian dollar (CAD) is projected to strengthen against the USD in 2026, with analysts
+anticipating a rise towards 75 cents (USD). A stronger loonie, will likely make Canadian exports less
+competitive than they were in 2026. A weak Canadian dollar, coupled with export prices that are
+currently higher than in 2025 (e.g. canola oil and canola seed), could disadvantage net export volumes,
+unless demand is strong enough.
+
+
+
+
+                                                                                                         15
+Figure 5: Canadian dollars to U.S. dollar spot exchange rate
+
+
+
+
+Source: FRED - Federal Reserve Bank of St. Louis
+
+
+
+Canola oil exports – 2025/2026
+
+Year-to-date (August to February) exports are down nearly six percent over the same period in the
+previous year, but this is primarily because exports to the United States were front loaded in MY
+2024/25, ahead of the implementation of 45Z, whereas MY 2025/26 is expected to be back loaded.
+FAS/Ottawa forecasts that the pace of demand for canola oil will increase in the second half of the
+marketing year, raising total MY 2026/27 exports above the previous year’s. This increase is driven by
+canola oil’s eligibility under 45Z as of July 2025, and EPA’s March 27, 2026 announcement of a final
+rule to establish required Renewable Fuel Standard volumes and percentage standards for 2026 and
+2027, which will lead to an increase of canola oil feedstocks in the remaining last few months of the
+marketing year and into MY 2026/27.
+
+Exports to the United States will be volatile throughout MY 2025/26 and have been since March 2024
+(in the second half of MY 2023/24). Because exporters were concerned about the forthcoming details of
+45Z, in March 2024 Canadian crushers began crushing at an increased capacity and exporting higher
+volumes of oil. This period of increased exports continued into MY 2024/25, until it was announced in
+January 10, 2025 that canola would be deemed ineligible for the 45Z tax credit due to its carbon
+intensity score. 2 U.S. canola oil imports from Canada then declined drastically, falling 44 percent year-
+over-year in the month of February 2025 and 42 percent year-over-year in March 2025. The temporary
+shuttering of several biobased diesel facilities in the United States and Canada in MY 2024/25 may have
+also contributed to the drop in canola oil exports.
+
+2
+ See the January 10, 2025 version of the 45ZCF-GREET (Greenhouse Gases, Regulated Emissions, and Energy use in
+Technologies) life cycle analysis model.
+
+
+                                                                                                                 16
+The United States remains Canada’s largest export market for canola oil, due to demand for renewable
+fuel feedstocks. Average monthly export prices of Canadian canola oil to the United States (and
+everywhere, on average) have fallen since 2022 due to a combination of trade disputes, lower demand
+(due in part to regulatory uncertainty), and increased competition from global oilseed supplies. High
+tariffs from China and trade restrictions have heavily impacted exports, while increased Australian
+competition and a record South American soybean crop have added downward pressure.
+
+Canada’s dollar value vis-à-vis the U.S. dollar remains weak by comparison to the five-year average but
+has strengthened since 2025. The average monthly USD/CAD exchange rate in March 2026 was 1.3720,
+which is greater than the five-year monthly average of 1.334, but less than the 2025 monthly average of
+1.3978. This means that, while exports are not benefiting from the dollar as they did in 2025, Canadian
+prices are still attractive to U.S. importers.
+
+
+
+Table 5: Canola oil exports
+
+Partner Country                         Marketing Year                                    Year to Date
+                  2020/21      2021/22      2022/23      2023/24      2024/25    08/24-02/25 08/25-02/26   %Δ
+World             3,447,563    2,573,451    3,017,521    3,444,419    3,326,674    2,099,474   1,976,828    -5.84
+United States     1,793,087    1,920,492    2,599,204    3,301,865    2,699,315    1,766,237   1,602,418    -9.28
+Mexico              160,457      183,301      143,456       94,893      171,148       63,614     126,052    98.15
+South Korea         153,969       94,905       79,087        8,123      136,976       58,671      75,760    29.13
+China                93,558       70,655       14,821           20       14,544       14,503      41,071   183.19
+Belgium                  23             0            0            0            0            0     40,034        0
+Peru                     27          315           34            3       43,507       15,000      39,518   163.45
+Malaysia                   0          81             0            0      20,024       10,014      18,598    85.72
+Netherlands              64          149             0         156       33,309       16,757      17,044     1.71
+Chile                 2,311        9,591        3,001          790        8,572        2,622       9,157   249.24
+
+Source: Trade Data Monitor, LLC
+
+
+
+
+                                                                                                                    17
+Figure 6: Canadian exports of canola oil to the United States have been volatile since MY 2023/24
+
+
+
+
+Data source: Trade Data Monitor, LLC
+
+
+
+Canola oil, imports
+
+Canola oil imports remain small due to large domestic seed supplies and sufficient crush capacity. Of the
+small volume imported, the United States and India account for approximately 74 percent and 10 percent,
+respectively, with the remainder distributed across a range of other countries.
+
+
+
+Canola oil, domestic consumption
+
+Canola oil is used for food and industrial purposes, but official data does not disaggregate the two uses
+by vegetable oil type. In addition to its use as a bio-based diesel (BBD, or biodiesel and renewable
+diesel) feedstock, canola oil also has industrial uses in the production of paints and varnishes.
+
+The vegetable oil and fuel trade dynamic has likely changed in Canada. Historically, Canadian canola
+oil makes up the bulk of vegetable oil used to produce BBD within Canada, but not the bulk of
+feedstock in BBD that is used in Canada. Until 2025, biodiesel produced in Canada was exported to the
+United States and U.S. fuel suppliers benefitted from the (now expired) Blenders Tax Credit (BTC).
+Meanwhile, the majority of BBD consumed in Canada was imported from the United States, produced
+mainly from UCO, and some soy oil. This trade dynamic with the United States changed in January
+2025 when the United States converted from having a blenders’ tax credit to having a producers’ tax
+credit (45Z).
+
+
+
+                                                                                                          18
+Further, domestic content requirements on renewable fuels were implemented in Ontario and British
+Columbia in 2025 in response to 45Z. The provinces adopted domestic production requirements due to
+the Canadian federal government’s nonresponse to the U.S. Clean Fuel Production Tax Credit (45Z).
+The 45Z tax credit established by the U.S. Inflation Reduction Act (IRA) became available on January
+1, 2025,3 and Canadian fuel suppliers lobbied the federal government to offer a production tax credit that
+approximates 45Z. In absence of similar benefits, British Columbia and Ontario imposed domestic
+content requirements. These requirements will presumably lead to more BBD being produced in Canada
+than previously, larger volumes of canola oil being used in Canada, and more Canadian-produced BBD
+remaining in Canada.
+
+British Columbia requires that renewable content in diesel fuel be produced in Canada effective April 1,
+2025 (and renewable content in gasoline be produced in Canada effective January 1, 2026). Further,
+British Columbia has increased the renewable fuel requirement for diesel from four percent to eight
+percent effective February 27, 2025 (the minimum renewable content requirement of gasoline remains at
+five percent). Any volume above the eight percent can be imported from the United States. Whether
+British Columbia imports renewable diesel feedstocks (such as soy oil or used cooking oil) from the
+United States or uses Canadian canola oil will depend on relative feedstock pricing and, somewhat, the
+carbon intensity scores.
+
+On July 8, 2025, Ontario’s Ministry of the Environment, Conservation and Parks announced its decision
+to proceed with domestic bio-based content requirements for both diesel fuel and gasoline in the Ontario
+market under the Cleaner Transportation Fuels (CTF) regulation. At least 75 percent of the renewable
+content required in diesel fuel (and 64 percent of the renewable content required in gasoline) must be
+produced in Canada. This announcement made Ontario the second province in Canada to announce
+domestic content requirements.
+
+The measure is expected to be time-limited and temporary in nature, and the ministry will monitor the
+situation impacting the domestic biofuels industry.
+
+The minimum 75 percent Canadian content requirement was prorated to 25 percent for the remainder of
+the 2025 compliance period due to the shorter timeframe for compliance. For subsequent compliance
+years the minimum domestic content requirement will remain at 75 percent on an annual basis.
+
+
+
+
+3
+  The Clean Fuel Production Tax Credit (45Z) is a tax credit established by the U.S. Inflation Reduction Act
+(IRA). It is administered by U.S. Treasury and is currently scheduled to be available through December 31, 2027.
+45Z replaces the U.S. blenders tax credit (BTC) that has applied to bio-based diesel (biodiesel and renewable
+diesel, or BBD) for many years and sunset in December 2024. Canadian biodiesel qualified U.S. importers to
+benefit from the sunset BTC, whereas Canadian biodiesel (nor renewable diesel) qualifies for 45Z.
+
+
+
+
+                                                                                                              19
+Canola oil, ending stocks
+
+Oil ending stocks differ from USDA Official and are derived from a Statistics Canada survey of industry
+(Table: 32-10-0352-01). Canada’s canola oil stocks are consistently very low primarily due to extremely
+high export demand, with 86 percent of production sold internationally in MY 2024/25 (the last year of
+full data).
+
+
+
+Canola Meal (Rapeseed Meal)
+
+Table 6. Production, Supply, and Distribution of Canola Meal
+
+Meal, Canola                 2024/2025          2025/2026(f)           2026/2027(f)
+Market Begin Year              Aug-24               Aug-25                Aug-26
+                         USDA                 USDA                  USDA
+        Canada                       Post                  Post                 Post
+                         Official             Official              Official
+Crush                     11,412     11,412    12,000      11,700                12,500
+Extr. Rate                0.5880     0.5880    0.5757      0.5810                0.5800
+Beginning Stocks              169       105        156         66                    70
+Production                 6,710      6,709      6,908      6,798                 7,250
+MY Imports                      1         1          10         6                     6
+Total Supply               6,880      6,815      7,074      6,870                 7,326
+MY Exports                 5,799      5,874      5,850      5,920                 6,350
+Industrial Dom. Cons.
+Food Use Dom. Cons.            0         0          0           0                    0
+Feed Waste Dom. Cons.        925       875      1,075        880                   900
+Total Dom. Cons.             925       875      1,075        880                   900
+Ending Stocks                156        66        149         70                    76
+Total Distribution         6,880     6,815      7,074      6,870                 7,326
+SME                       658.14    622.56     764.86     626.12                640.35
+(1000 MT) ,(PERCENT)
+
+Canola meal, production -- MY 2026/2027
+
+Post forecasts that MY 2026/27 canola meal production will increase on the assumption that the
+extraction rate will increase marginally to align with the average of the preceding three years and that
+domestic processors will use about 55 percent of total supply.
+
+
+
+Canola meal, production -- MY 2025/2026
+
+
+
+
+                                                                                                           20
+FAS/Ottawa’s MY 2025/26 meal extraction rate forecast is the average of the November and December
+2025 extraction rate reported by Statistics Canada. The November/December average is generally
+indicative of the average extraction rate for the full marketing year.
+
+
+
+
+Canola meal, domestic consumption
+
+In MY 2026/27, canola meal use in Canada is forecasted to increase from the previous marketing year,
+on the assumption of a larger dairy herd size, and increased supplies. Canola meal is increasingly
+favored in Canadian dairy rations due to its ability to boost milk production and its competitive cost
+compared to soybean meal.
+
+In MY 2025/26, canola meal consumption is forecasted to increase marginally on larger dairy herds.
+
+Canola meal is used domestically as livestock feed, primarily for dairy cattle, but also for swine, poultry,
+and fish. Canola meal is also used in pet foods.
+
+An increase in domestic crush capacity has prompted interest in ways to utilize canola differently,
+diversify exports into markets where livestock production is growing (e.g., IndoChina), and increase
+meal’s nutritional and economic value. Recently, a chemical engineering team from Queen’s University
+was granted funding to conduct a research project exploring uses of canola meal as a material feedstock.
+
+
+
+Canola meal, trade
+
+Canola meal exports are forecast to increase by more than five percent in MY 2026/27 over the previous
+year, and by less than one percent in MY 2025/26. Demand in MY 2025/26 is strong in its primary
+market of the United States and also in secondary markets such as in the EU; however, exports are
+constrained by supply.
+
+Canada’s canola meal exports are generally tied to domestic supply and have hovered around 88 percent
+of domestic production for the past ten years. Post’s MY 2025/26 and MY 2026/27 canola meal export
+forecasts assume that this production-trade relationship will continue.
+
+The United States remains the largest buyer of Canadian canola meal. Canola meal export prices to the
+United States remain stable relative to seed and oil. But in MY 2025/26, especially in October and
+February, the monthly average unit prices of canola reached the lowest monthly average since at least
+2009, primarily due to Chinese retaliatory tariffs of 100 percent on imports, restricting access to its
+second-largest market.
+
+Canada is not a significant importer of canola meal, due to its oversupply of domestic production.
+
+
+                                                                                                         21
+Table 7: Demand for canola meal is high in primary and secondary markets in MY 2025/26
+Partner Country                         Marketing Year                                     Year to Date
+                  2020/21      2021/22      2022/23      2023/24      2024/25    08/24-02/25 08/25-02/26    %Δ
+World              5,261,165    4,515,921    5,317,757    5,651,541    5,874,784    3,464,827   3,524,341        2
+United States      3,581,060    2,920,143    3,479,952    3,617,396    3,969,343    2,229,713   2,571,530       15
+Netherlands                0            0            0            0       58,251            0     217,310        0
+Spain                      0            0            0            0       46,019            0     209,861        0
+Vietnam                  926            0            0            0       53,880          632      86,596   13,602
+Thailand              18,342            0            0            0          502            0      85,847        0
+United Kingdom        47,537            0        7,000            0       80,050            0      76,970        0
+South Korea                0            0           13            0            0            0      75,514        0
+New Zealand                0            0            0            0            0            0      37,560        0
+France                     0            0            0            0       18,900            0      32,920        0
+China              1,576,695    1,587,177    1,829,398    2,031,534    1,614,591    1,234,482      32,297      -97
+
+Source: Trade Data Monitor, LLC
+
+
+
+Figure 7: Unit prices of canola meal exports to the United States stable but falling
+
+
+
+
+                                                                                                                     22
+Canola meal, storage stocks
+
+Canola meal stocks remain low due to strong export and domestic demand. Statistics Canada tracks meal
+stocks through its Monthly Crushing Operations Survey, which Post generally relies on. The stocks to
+use ratio is forecast to be roughly in line with the past two years.
+
+
+
+Soybeans, Oilseeds
+
+Table 8. Production, Supply, and Distribution of Soybeans
+
+Oilseed, Soybean              2024/2025        2025/2026(f)      2026/2027(f)
+Market Begin Year               Aug-24             Aug-25            Aug-26
+                            USDA              USDA              USDA
+Canada                                Post              Post              Post
+                           Official           Official          Official
+Area Planted                  2,300    2,311   2,250     2,340             2,383
+Area Harvested                2,290    2,290   2,321     2,321             2,364
+Beginning Stocks                563      605      532      511               347
+Production                    7,606    7,606   6,793     6,793             7,376
+MY Imports                      249      250      360      283               310
+Total Supply                   8,418    8,461   7,685     7,587             8,033
+MY Exports                    5,448    5,500   5,100     4,950             5,200
+Crush                         1,650    1,599   1,400     1,590             1,650
+Food Use Dom. Cons.                 0       0        0        0                 0
+Feed Waste Dom. Cons.           788      851      700      700               800
+Total Dom. Cons.              2,438    2,450   2,100     2,290             2,450
+Ending Stocks                   532      511      485      347               383
+Total Distribution             8,418    8,461   7,685     7,587             8,033
+Yield                           3.32     3.32     2.93     2.93              3.12
+(1000 HA) ,(1000 MT) ,(MT/HA)
+
+
+
+Soybean production – MY 2026/2027
+
+According to Statistics Canada, March release of planting intentions survey data, area planted to
+soybeans is forecast to increase 1.8 percent to 2.38 million hectares, owing to increased area in the major
+growing areas of Ontario and Quebec, and despite a reduction in area in Quebec and the minor growing
+area of Saskatchewan. The FAS/Ottawa forecast assumes yields to be in line with the three-year
+average.
+
+Canada’s Pest Management Regulatory Agency (PMRA) published a proposed special review decision
+for dicamba on Sept 17, 2025 that sees some uses proposed for cancellation. The proposal means that
+dicamba would not be used on post-emergence crops. This proposal would not have on impact on U.S.
+
+
+
+                                                                                                        23
+imports to Canada because the concern is around drift. The crops most impacted would be soybeans and
+corn, by means of having fewer tools available to farmers that grow these crops.
+
+Note that there is a mismatch between USDA’s marketing years for soybeans and Agriculture and Agri-
+Food Canada’s. USDA’s marketing year for soybeans in Canada runs from August to July while
+Agriculture and Agri-Food Canada’s marketing year runs from September to August. Soybeans in
+Ontario are primarily harvested in the fall, typically starting in the third week of September and running
+through October and November. This makes it the last crop to be harvested of all crops that FAS/Ottawa
+covers.
+
+
+
+Soybean production – MY 2025/2026
+
+In MY 2025/2026, national soybean production decreased nearly 11 percent over the previous marketing
+year, to 6.79 MMT, primarily due to intense summer heat and severe moisture stress in key growing
+regions, particularly Ontario and Quebec.
+
+
+
+Soybean trade– MY 2026/2027
+
+Imports of soybeans will remain limited by soybean processing capacity and sufficient domestic oilseed
+supplies (i.e. canola). Most soybean commodity volume is imported in meal form for animal feed.
+
+Soybean imports are forecasted to increase 13 percent on increased demand from domestic processors
+due to increased demand from Canadian renewable fuel producers in eastern Canada, and the reduction
+in domestic production in 2025.
+
+Canada is also a global leader in producing quality, sustainable, food-grade soybeans for international
+markets. However, starting in 2025, Canadian farmers faced new administrative burdens: only soybeans
+proven to be produced on land that has not been deforested since 2020 are eligible for export to the
+European Union (EU). Although the implementation date is in 2025, this restriction also impacts crops
+harvested in 2024. The EU has been one of Canada’s largest and most stable export markets for
+soybeans. Over the preceding years, it has represented 23 percent of Canadian soybean exports.
+
+
+
+Soybean trade – MY 2025/2026
+
+MY 2025/26 year-to-date (i.e. August to February), exports of soybeans have reached a record high for
+the period, increasing three percent year-over-year to 4.49 MMT on record production levels and,
+potentially, increased demand from U.S. biobased diesel producers looking to back-fill foreign used
+cooking oil (UCO). The U.S. Treasury Department effectively blocked the import of UCO and, in recent
+
+
+
+                                                                                                        24
+months, U.S. importers have benefited from a low import price from Canada, relative to monthly
+averages in recent years.
+
+The pace of exports is expected to slow in the latter half of the year, constrained by domestic supply.
+
+
+
+
+Table 9: Exports of soybeans
+
+Partner Country                        Marketing Year                                  Year to Date
+                  2020/21     2021/22     2022/23     2023/24     2024/25   08/24-02/25 08/25-02/26      %Δ
+World             4,553,581    4,288,563  4,239,747   4,860,926   5,550,601    4,367,999     4,492,373     2.85
+EU 27 Brexit      1,011,359    1,072,661    839,815     649,117     639,367      544,837       836,765    53.58
+China               527,184      480,769  1,377,560   1,528,714   1,041,653      954,103     1,766,441    85.14
+Algeria             318,015      219,228    320,683     581,551     549,289      438,164       527,434    20.37
+Netherlands         273,261      192,721    128,349     123,770     151,431      103,367       522,426   405.41
+Iran                863,063      469,101    413,381     523,016     838,994      838,994       430,749   -48.66
+Japan               294,236      288,359    380,021     339,487     402,078      206,671       198,000     -4.2
+United States       141,492      146,833    102,778     217,814     429,514      229,263       195,221   -14.85
+Italy               246,051      446,046    274,394     164,400     192,751      192,203       124,163    -35.4
+Indonesia           269,066      291,385    264,489     281,562     317,675      130,976       106,777   -18.48
+Vietnam              84,177       92,624     96,982     139,403     159,073       77,702       105,235    35.43
+
+
+
+
+Soybeans domestic consumption
+
+When soybeans are not exported to be processed, they are generally crushed into oil and meal. In
+addition, approximately half of the soybeans that are domestically consumed are fed whole to beef and
+dairy cattle as a high-protein, high-fat supplement, often when market prices make them cheaper than
+soybean meal, or to utilize damaged crops.
+
+When the Bunge-Viterra merger was finalized on July 2, 2025, Statistics Canada began suppressing
+soybean data that same month to ensure that it was not revealing confidential production data of the only
+two remaining crushers in Canada, Bunge and ADM.
+
+Therefore, StatsCan will no longer publish production data related to the soybean complex, such as
+soybean crush levels, oil and meal production, stock levels, and extraction rates.
+
+
+
+Soybean stocks – MY 2026/27
+
+Ending stocks are forecast to recover nearly ten percent from the low stocks of MY 2025/26 when levels
+were driven down by lower soybean production. However, strong export demand is expected to limit
+stocks to a level below the ten-year average.
+
+
+
+                                                                                                                  25
+Soybean stocks – MY 2025/26
+
+FAS/Ottawa forecasts that MY 2025/26 ending stocks will fall by more than 30 percent on a nearly 11
+percent drop in soybean production in 2025 over the previous year.
+
+Statistics Canada reports that as of December 31, 2025, total Canadian soybean stocks fell 26.6 percent
+year-over-year to 3.2 MMT, driven by lower production. On-farm stocks dropped 52.4 percent to 1.4
+MMT, while commercial stocks rose 30.5 percent to 1.8 MMT. On-farm stocks fell largely due to lower
+production in Eastern Canada, combined with an aggressive sell-off by farmers.
+
+
+
+Soybean Oil
+
+Table 10. Production, Supply, and Distribution of Soybean Oil
+
+    Oil, Soybean              2024/2025           2025/2026(f)        2026/2027(f)
+  Market Begin Year             Aug-24               Aug-25              Aug-26
+                          USDA                 USDA                 USDA
+        Canada                        Post                 Post                Post
+                          Official             Official            Official
+Crush                         1,650      1,599    1,400      1,590               1,650
+Extr. Rate                  0.1897     0.1868   0.1900      0.1863              0.1863
+Beginning Stocks                112         10       189        10                  10
+Production                      313        299       266       296                 307
+MY Imports                      637        637       800     1,040                 800
+Total Supply                  1,062        946      1255     1,346          -    1,117
+MY Exports                      128        128       115       129                 135
+Industrial Dom. Cons.           475        643       700     1,047                 830
+Food Use Dom. Cons.             270        165       260       160                 142
+Feed Waste Dom.                    0         0          0        0                   0
+Total Dom. Cons.                745        808       960     1,207          -      972
+Ending Stocks                   189         10       180        10                  10
+Total Distribution            1,062        946      1255     1,346          -    1,117
+(1000 HA) ,(1000 MT) ,(MT/HA)
+
+
+
+
+Soybean oil production – 2026/2027
+
+In the absence of soybean oil extraction rates for MY 2026/27, a five-year average (MY 2021/22 to MY
+2025/26) was used to determine the MY 2026/2027 rate. The oil extraction rate does not change
+significantly from year to year, ranging from 0.183 MT to 0.189 MT of oil derived from a metric ton of
+soybeans over the five-year period.
+
+
+                                                                                                      26
+About 3.46 MMT of Canada’s crush capacity, of a total of 13.35 MMT of capacity (as of February
+2026), crushes soybeans, with some facilities alternating between canola and soybeans.
+
+
+
+
+Soybean oil production – MY 2025/2026
+
+A five-year average (MY 2020/21 to MY 2024/25) was used to determine the soy oil extraction rate
+which, along with the crush forecast, was used to determine the oil production forecast in the absence of
+data.
+
+
+
+Soybean oil exports – MY 2026/2027
+
+Soybean oil exports are forecast to increase five percent over the previous period, on strong demand
+from the United States. Similar to canola oil exports, factors to watch for include:
+
+       2026 soybean production levels, which will partly determine exportable supply;
+       the 2026 announcement of targeted amendments to the Clean Fuels Regulation4, which could
+        include national domestic content requirements on biobased diesel production, resulting in more
+        biobased diesel facilities producing at capacity and consuming more domestic soybean oil;
+       demand for soybean oil from the United States, as a result of high RVOs announced in March
+        2026;
+       if Ontario or British Columbia alter or abandon their domestic content requirements on biobased
+        diesel, this could impact the exportable supply of soybean oil. For example, if they abandon
+        their policies, other things being equal, biofuel production could fall and exportable supply
+        would thus increase.
+
+
+
+Soybean oil exports – MY 2025/2026
+
+
+
+4
+ Announced on September 5, 2025, Canada is implementing targeted amendments to the Clean Fuel Regulations
+(CFR) to strengthen domestic low-carbon fuel production and enhance supply security. Key changes focus on
+boosting the competitiveness of Canadian producers against foreign competition via potential credit multipliers
+and minimum domestic content requirements. The proposed amendments are expected to be published in Canada
+Gazette I sometime in 2026, likely not until Fall or Winter.
+
+
+
+
+                                                                                                             27
+Exports of soy oil are forecast to be roughly in line with the previous period. Exports to date (August to
+February) are up 32 percent over the same period in the previous year; however, only 26 percent of
+forecasted production has been exported versus 43 percent at this time last year. This is owing to
+increased soy oil production this year and in part due to increased domestic consumption to date.
+Biobased diesel facilities are running at higher capacity than last year because of domestic content
+requirements on biobased diesel introduced in British Columbia and Ontario in 2025, which means they
+require increased feedstocks such soy oil. However, renewable fuel producers may face increased
+competition for soybean oil from U.S. buyers in the latter part of this marketing year due to the larger
+U.S. RVOs announced in March.
+
+
+
+Soybean oil imports – MY 2026/2027
+
+Soybean oil imports are forecast to remain at a sustained, high level, relative to years prior to MY
+2025/26. Argentinian soy oil continues to be Canada’s second largest imported product of the entire
+oilseeds complex (after soymeal from the United States). Imports of Argentinian soy oil increased
+significantly in 2024 when renewable diesel began being produced at the Braya Renewable Fuels facility
+in Newfoundland and Labrador in February 2024. Braya does not consume a significant volume (if any)
+vegetable oil from Canada, in part due to the logistical challenges and costs of transporting it from the
+canola growing regions of the Canadian Prairies, or even the soybean-growing areas of Ontario.
+
+Newfoundland and Labrador imported just 48 TMT of soy oil from Argentina in MY 2020/21, growing
+to 637 TMT in MY 2024/25, and 697 TMT in just the first half of MY 2025/26. One hundred percent of
+the province’s vegetable oil imports over this period are in the form of soy oil from Argentina, according
+to trade data. (The province also imported 24 TMT of corn oil from the United States in 2024, which
+may or may not have been used in renewable fuel production.)
+
+Publicly available trade data indicates that nearly all of Braya’s renewable diesel product is exported to
+the United States.
+
+Potential downside risks to this forecast for sustained levels of soybean oil imports include any
+regulatory changes in the United States that could adversely affect renewable diesel exports from
+Canada to the United States, or regulatory obstacles that challenge foreign (i.e. Argentinian) feedstocks
+from being used in U.S.-consumed renewable diesel.
+
+
+
+
+                                                                                                         28
+Figure 8: Soybean Oil Imports Increase on Demand for Renewable Diesel Feedstock
+
+
+
+
+Soybean oil imports – MY 2025/2026
+
+Soybean oil imports are forecast to grow by 63 percent over the previous marketing year, based on a 46
+percent increase to date (August to February) over the same period last year on increased demand for
+renewable diesel feedstocks in Newfoundland and Labrador.
+
+
+
+
+                                                                                                     29
+Soybean Meal
+
+Table 11. Production, Supply, and Distribution of Soybean Meal
+
+    Meal, Soybean             2024/2025           2025/2026(f)       2026/2027(f)
+   Market Begin Year            Aug-24               Aug-25              Aug-26
+                          USDA                 USDA                USDA
+        Canada                         Post                Post                Post
+                          Official             Official            Official
+Crush                        1,650      1,599     1,400      1,590              1,650
+Extr. Rate                  0.7776     0.7161   0.7971     0.7658              0.7629
+Beginning Stocks               118         20       136         28                 22
+Production                   1,283      1,450     1,116      1,218              1,259
+MY Imports                   1,448      1,448     1,550      1,400              1,430
+Total Supply                  2,849      2,918    2,802      2,646               2,711
+MY Exports                     313         313                 350                 350
+Industrial Dom. Cons.
+Food Use Dom. Cons.
+Feed Waste Dom. Cons.           2,400    2,577     2,340   2,274                2,338
+Total Dom. Cons.                2,400    2,577    2,340    2,274                2,338
+Ending Stocks                     136       28      132       22                   23
+Total Distribution               2,849    2,918    2,472    2,646                2,711
+SME                             2,400     2,577    2,340    2,274                2,338
+(1000 HA) ,(1000 MT) ,(MT/HA)
+
+Soybean meal production – MY 2026/2027
+
+In the absence of soybean meal extraction rates for MY 2026/27, a five-year average (MY 2021/22 to
+MY 2025/26) was used to determine the rate. Similar to oil, the meal extraction rate does not change
+significantly from year to year, ranging from 0.716 to 0.78 MT of meal derived from a metric ton of
+soybeans over the five-year period.
+
+
+
+Soybean meal production – MY 2025/2026
+
+With Statistics Canada no longer publishing data on meal, since July 2025, FAS/Ottawa used the five-
+year average (MY 2020/21 to MY 2024/25) meal extraction rate, and the estimated crush level, to
+estimate MY 2025/2026 production.
+
+
+                                                                                                       30
+FAS/Ottawa’s MY 2024/25 meal production figure is also an estimate. Statistics Canada began
+suppressing soybean data in July 2025, which means the final month of the marketing year is an
+estimate.
+
+While extraction rates for MY 2025/26 are not published, soybean meal extraction in Canada generally
+averages about 0.76 percent per year. The extraction rate represents the weight of soybean meal
+produced relative to the total weight of the processed soybeans. Approximately 75 percent of a
+soybean's weight is converted into soybean meal, while 20 percent is oil and five percent is hull.
+
+
+
+Soybean meal exports – MY 2026/2027
+
+Canada is a minor player compared to other major soybean meal suppliers like Brazil and Argentina.
+Soybean meal production is expected to make up only 15 percent of Canada’s total meal production (i.e.
+soybean meal and canola meal) in MY 2026/27, and only about 29 percent of soybean meal production
+will be exported.
+
+An increase in exports to the United Kingdom in MY 2025/26 could be an indication of an upward trend
+that will continue into MY 2026/27, driven by United Kingdom retailers’ voluntary commitments to
+deforestation-free soy in food and feed. FAS in the United Kingdom reports that these commitments are
+expected to boost demand for North American origin soybean meal over the next two years.
+
+
+
+Soybean meal exports – MY 2025/2026
+
+To date (August to February), exports are up 23 percent over the same period last year. This is primarily
+due to an increase in exports to the United Kingdom and the United States. They report, “While the
+UK’s Forest Risk Commodities legislation is still pending, demand has surged for North American
+soybean meal in UK animal feed rations as a proxy for a verifiably low deforestation-risk supply.”
+
+Table 12: Soybean meal exports
+Partner Country                       Marketing Year                                   Year to Date
+                  2020/21     2021/22     2022/23      2023/24     2024/25   08/24-02/25 08/25-02/26    %Δ
+World               362,836     406,009     379,246      326,746     312,624      172,682     211,924    22.73
+EU                   57,327      45,137      34,464       41,935      21,254       10,716         423   -96.05
+United States       265,625     268,739     265,070      241,824     236,010      150,589     159,877     6.17
+United Kingdom       29,829      88,676      78,060       40,576      54,343       11,001      51,023    363.8
+Belgium                   0         164       2,236        1,256       1,091          217         220     1.38
+Germany               1,292         784           89           0         862          632         203   -67.88
+Ireland              55,951      25,309      10,000        8,686      19,273        9,867           0     -100
+
+Source: Trade Data Monitor, LLC
+
+
+
+
+                                                                                                                 31
+Soybean meal imports
+
+With little capacity for soybean processing in Canada, import volume of soybean meal is expected to
+continue to exceed that of soybean seeds. Soybean meal is sourced primarily from the United States and
+is used as livestock feed. It makes up nearly 70 percent of feed meal in Canada.
+
+Year to date (August to February), imports of soybean meal are nearly ten percent below the same
+period of the previous year, due to reduced feed usage.
+
+
+
+Table 13: Soybean meal imports
+
+Partner Country                         Marketing Year                                     Year to Date
+                  2020/21      2021/22      2022/23      2023/24      2024/25    08/24-02/25 08/25-02/26    %Δ
+World              1,262,283    1,325,996    1,208,169    1,347,093    1,447,701     906,067     819,855     -9.51
+United States      1,203,160    1,284,525    1,175,459    1,326,176    1,428,828     899,739     800,902    -10.99
+India                 53,417       26,871       15,042       11,189       12,172        3,388     11,504    239.55
+Benin                      0            0            0            0            0            0       3,988        0
+Nigeria                    0            0          216          926        1,342          385       1,982   414.81
+China                  1,316        5,842        3,560        1,678        1,639          820         540   -34.15
+
+Source: Trade Data Monitor, LLC
+
+
+
+Soybean meal stocks
+
+Statistics Canada began suppressing soybean data in July 2025, for confidentiality.
+
+Due to the suppression of data, the final month of stocks in MY 2024/25 and beginning stocks in MY
+2025/26 are estimates.
+
+
+
+Oilseeds, Sunflower Seeds
+
+Table 14. Production, Supply, and Distribution of Sunflower Seeds
+
+
+
+
+                                                                                                                     32
+ Oilseed, Sunflowerseed         2024/2025             2025/2026(f)           2026/2027(f)
+    Market Begin Year             Aug-24                 Aug-25                 Aug-26
+                            USDA                   USDA                   USDA
+          Canada                         Post                   Post                   Post
+                            Official               Official               Official
+Area Planted                       40         24          40         31                     27
+Area Harvested                     24         24          29         29                     27
+Beginning Stocks                   47        175          30        151                    150
+Production                         51         51          69         69                     60
+MY Imports                         27         25          20         27                     27
+Total Supply                      125        251         119        247                    237
+MY Exports                         40         40          40         35                     35
+Crush                                0         0            0         0                      0
+Food Use Dom. Cons.                10          9          10          9                      9
+Feed Waste Dom. Cons.              45         51          40         53                     53
+Total Dom. Cons.                   55         60          50         62                     62
+Ending Stocks                      30        151          29        150                    140
+Total Distribution                125        251         119        247                    237
+Yield                            2.13       2.13        2.38       2.40                   2.23
+(1000 HA) ,(1000 MT) ,(MT/HA)
+
+Sunflower seed production, MY 2026/2027
+
+Sunflower seed production is forecast to decrease 13 percent in MY 2026/27 over the previous year,
+based area planted data provided by Statistics Canada’s planting intentions survey, and the assumption
+that yields will fall in line with the five-year average (2021/22 to 2025/26) of 2.23 MT/ hectare.
+
+Sunflower seed is not a major oilseed in Canada and imports remain limited due to limited processing
+capacity.
+
+
+
+Sunflower seed production, MY 2025/2026
+
+Statistics Canada reports that 69,000 MT of sunflower seeds were produced in 2025, a 35 percent
+increase over the previous year, driven by a 29 percent increase in area planted, and improved yields
+over the previous year. The previous year saw the smallest area planted to sunflower seeds since MY
+2011/12, due to large stocks and unfavorable market prices.
+
+Manitoba produced 96 percent of Canada’s sunflower seed in 2025 (the highest share since 2017),
+owing to the fact that 97 percent of area planted to sunflower seed was in Manitoba. Industry contacts
+estimate that in MY 2025/26 Manitoba sunflower seed area consisted of 4,717 hectares of confection
+and 21,405 hectares of oilseed. In the year prior, Manitoba area consisted of 4,993 hectares of confection
+and 7,963 hectares of oilseeds. Area planted to sunflower oilseeds grew as MY 2024/25 stocks were
+worked down and market prices improved. Post is not aware of breakdowns in other provinces.
+
+
+
+
+                                                                                                         33
+Sunflower seed trade
+
+Sunflower seed is not a major oilseed in Canada and imports remain limited due to limited processing
+capacity.
+
+
+
+
+Sunflower Seed Oil
+
+Table 15. Production, Supply, and Distribution of Sunflower Seed Oil
+
+   Oil, Sunflowerseed           2024/2025         2025/2026(f)        2026/2027(f)
+   Market Begin Year              Aug-24              Aug-25              Aug-26
+                            USDA                USDA                USDA
+          Canada                        Post                Post                Post
+                            Official            Official            Official
+Crush                                0        0          0        0                   0
+Extr. Rate                           0        0          0        0                   0
+Beginning Stocks                     4        5          4        5                   5
+Production                           0                   0        0                   0
+MY Imports                         52        52        55        50                  50
+Total Supply                       56        57        59        55                  55
+MY Exports                           4        4          4        3                   3
+Industrial Dom. Cons.                0        0          0        0                   0
+Food Use Dom. Cons.                48        48        51        47                  47
+Feed Waste Dom. Cons.                0        0          0        0                   0
+Total Dom. Cons.                   48        48        51        47                  47
+Ending Stocks                        4        5          4        5                   5
+Total Distribution                 56        57        59        55          0       55
+(1000 HA) ,(1000 MT) ,(MT/HA)
+
+
+
+
+There is no sunflower seed oil production in Canada due to limited processing capacity. Imports are low
+due to Canada’s large supply of competing canola oil.
+
+
+                                                                                                       34
+Attachments:
+
+No Attachments
+
+
+
+
+                 35
+
