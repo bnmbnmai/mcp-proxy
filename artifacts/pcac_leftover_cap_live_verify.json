@@ -1,0 +1,65 @@
+{
+  "before": {
+    "cardCount": 14,
+    "listedCount": 15,
+    "asOf": "2026-05-15",
+    "fetchedAt": "2026-08-26T15:42:23.299Z",
+    "meetings": [
+      "December 4, 2024",
+      "July 23-24, 2026",
+      "October 29, 2024"
+    ]
+  },
+  "after": {
+    "cardCount": 14,
+    "listedCount": 15,
+    "asOf": "2026-05-15",
+    "fetchedAt": "2026-08-27T05:29:46.873Z",
+    "addedThisRun": 0,
+    "fetchedPdfs": 0,
+    "skippedNoText": 1,
+    "reused": 14,
+    "skipped": "182090 Hydroxyprogesterone caproate (Withdrawn/Removed, 503A gate)"
+  },
+  "leftoverWalk": {
+    "yearsWalked": [2027, 2026, 2024, 2022, 2021, 2018, 2017, 2016],
+    "combinedPacks": [
+      "158541 June 8, 2022 FDA Briefing Information",
+      "June 9, 2021 FDA Briefing Information",
+      "115545 September 12, 2018 FDA Briefing Information",
+      "108743 November 20-21, 2017 FDA Briefing Information",
+      "104134 May 8-9, 2017 FDA Briefing Information",
+      "100283 November 3, 2016 FDA Briefing Information",
+      "98730 June 23, 2016 FDA Briefing Information",
+      "95976 March 8-9, 2016 FDA Briefing Information"
+    ],
+    "emptyYear": "2027 year table live, materials not posted",
+    "missingYears": ["2025 404", "2023 404"],
+    "whyNoGrow": "leftover official catalog is combined FDA Briefing Information packs, not per-substance 503A memos; do not OCR; do not split archived combined packs",
+    "sourceCap": 14
+  },
+  "live": {
+    "manifest": "https://ticks.bnm.farm/pcac/manifest.json",
+    "manifestStatus": 200,
+    "manifestCardCount": 14,
+    "unpaidPcac": 402,
+    "unpaidId": 402,
+    "unpaidIdAtomic": "20000",
+    "pageAtomic": "50000",
+    "wellKnownHasPcac": true,
+    "mcpTools": 36
+  },
+  "lander": {
+    "url": "https://bnm.farm/",
+    "liveN": 14,
+    "baked": false,
+    "cardCopy": "FDA PCAC 503A briefing-memo extracted text. Live: 14 memos. One document $0.02 via ?id=. $0.05 per 10 (newest 10 default). Free search: /pcac/manifest.json?q=."
+  },
+  "prs": {
+    "walker": {
+      "url": "https://github.com/bnmbnmai/mcp-proxy/pull/153",
+      "state": "open draft"
+    }
+  },
+  "blockers": []
+}

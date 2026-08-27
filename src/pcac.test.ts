@@ -10,6 +10,9 @@ import {
   DOCKET,
   FIRST_SLICE_MEETING_URL,
   FR_NOTICE_URL,
+  JUN_2021_MEETING_URL,
+  JUN_2022_MEETING_URL,
+  LEFTOVER_BRIEFING_URLS,
   LICENSE,
   MEETING_URL,
   MEETING_URLS,
@@ -17,12 +20,14 @@ import {
   YEAR_MATERIALS_URLS,
   buildPcacManifest,
   collectPcac,
+  isCombinedBriefingInformationTitle,
   isCombinedSponsorPack,
   isPerSubstanceMemoTitle,
   isRealPcacBody,
   mediaIdFromUrl,
   meetingLabelFromHtml,
   officialFdaMediaUrl,
+  officialMeetingPageUrl,
   parseListingHtml,
   parsePcacText,
   parseYearMaterialsHtml,
@@ -66,8 +71,14 @@ async function main(): Promise<void> {
     "live collect must walk official year-materials tables, not only the July 2026 meeting",
   );
   assert.ok(YEAR_MATERIALS_URLS.some((u) => u.includes("2026-meeting-materials")));
+  assert.ok(YEAR_MATERIALS_URLS.some((u) => u.includes("2027-meeting-materials")), "walk empty 2027 year table");
+  assert.ok(YEAR_MATERIALS_URLS.some((u) => u.includes("2022-meeting-materials")), "walk leftover 2022 combined-pack year");
+  assert.ok(YEAR_MATERIALS_URLS.some((u) => u.includes("2016-meeting-materials")), "walk leftover Wayback year tables");
   assert.ok(MEETING_URLS.includes(OCT_2024_MEETING_URL));
   assert.ok(MEETING_URLS.includes(DEC_2024_MEETING_URL));
+  assert.ok(MEETING_URLS.includes(JUN_2022_MEETING_URL));
+  assert.ok(MEETING_URLS.includes(JUN_2021_MEETING_URL));
+  assert.ok(LEFTOVER_BRIEFING_URLS.some((u) => u.includes("march-8-9-2016")));
   const walkerSrc = readFs(join(dirname(fileURLToPath(import.meta.url)), "../src/pcac.ts"), "utf-8");
   assert.match(walkerSrc, /PCAC_LIMIT", "24"/);
   assert.match(walkerSrc, /PCAC_MAX_FETCH", "36"/);
@@ -77,6 +88,19 @@ async function main(): Promise<void> {
   const yearListed = parseYearMaterialsHtml(readFx("year-2024-excerpt.html"));
   assert.ok(yearListed.includes(OCT_2024_MEETING_URL), "2024 year table lists the October meeting");
   assert.ok(yearListed.includes(DEC_2024_MEETING_URL), "2024 year table lists the December meeting");
+  const year2022 = parseYearMaterialsHtml(readFx("year-2022-excerpt.html"));
+  assert.ok(year2022.includes(JUN_2022_MEETING_URL), "2022 year table lists the June combined-pack meeting");
+  const year2018 = parseYearMaterialsHtml(readFx("year-2018-excerpt.html"));
+  assert.ok(
+    year2018.includes(LEFTOVER_BRIEFING_URLS[0]),
+    "leftover 2018 year table lists the combined briefing-information page",
+  );
+  assert.equal(
+    officialMeetingPageUrl(LEFTOVER_BRIEFING_URLS[5]),
+    LEFTOVER_BRIEFING_URLS[5],
+    "leftover briefing-information pages are official leftover listing doors",
+  );
+  assert.equal(officialMeetingPageUrl(JUN_2021_MEETING_URL), JUN_2021_MEETING_URL);
 
   const octListed = parseListingHtml(readFx("listing-oct-2024-excerpt.html"));
   assert.equal(meetingLabelFromHtml(readFx("listing-oct-2024-excerpt.html")), "October 29, 2024");
@@ -106,6 +130,26 @@ async function main(): Promise<void> {
   assert.ok(isPerSubstanceMemoTitle("FDA Briefing Document-2- L-Theanine"));
   assert.ok(isPerSubstanceMemoTitle("FDA Briefing Document for AOD-9604 Related Bulk Drug Substances"));
   assert.equal(isPerSubstanceMemoTitle("FDA Briefing Document-1- Introduction"), false);
+  assert.equal(
+    isCombinedBriefingInformationTitle(
+      "FDA Briefing Information for the June 8, 2022 Meeting of the Pharmacy Compounding Advisory Committee",
+    ),
+    true,
+  );
+  assert.equal(
+    isPerSubstanceMemoTitle(
+      "FDA Briefing Information for the March 8-9, 2016 Meeting of the Pharmacy Compounding Advisory Committee",
+    ),
+    false,
+    "leftover combined briefing packs are not this SKU",
+  );
+
+  const june2022 = parseListingHtml(readFx("listing-june-2022-excerpt.html"));
+  assert.equal(june2022.length, 0, "June 2022 combined briefing information stays out");
+  assert.ok(!june2022.some((r) => r.mediaId === "158541"));
+  const leftover2016 = parseListingHtml(readFx("leftover-briefing-2016-excerpt.html"));
+  assert.equal(leftover2016.length, 0, "2016 leftover combined briefing information stays out");
+  assert.ok(!leftover2016.some((r) => r.mediaId === "95976"));
 
   const emiText = parsePcacText(readFx("193344.txt"), {
     sourceUrl: emideltide!.sourceUrl,
@@ -212,6 +256,8 @@ async function main(): Promise<void> {
     assert.ok(snap.cards.every((c) => isRealPcacBody(c.body)));
     assert.ok(!snap.cards.some((c) => c.mediaId === "193342"), "skip combined intro pack");
     assert.ok(!snap.cards.some((c) => c.mediaId === "193345"), "do not harvest the whole docket / missing local body");
+    assert.ok(!snap.cards.some((c) => c.mediaId === "158541"), "skip leftover 2022 combined briefing information");
+    assert.ok(!snap.cards.some((c) => c.mediaId === "95976"), "skip leftover 2016 combined briefing information");
     assert.ok(snap.cards.every((c) => officialFdaMediaUrl(c.sourceUrl)));
     assert.ok(snap.cards.every((c) => !/archive\.org|govinfo\.gov|regulations\.gov/i.test(c.sourceUrl)));
     const grownManifest = buildPcacManifest(snap);

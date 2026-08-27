@@ -6,6 +6,8 @@ Always listed on well-known / OpenAPI / llms.txt / shop catalog. Unpaid `GET /pc
 
 First-slice walked only the July 23–24, 2026 meeting page (7 per-substance memos). Official year-materials tables also list October 29, 2024 and December 4, 2024.
 
+Leftover official catalog past those three meeting pages is combined **FDA Briefing Information** packs (June 8, 2022 live; June 9, 2021 Wayback; 2016–2018 leftover briefing-information pages). 2027 year table is live but empty (materials not posted). 2025/2023 year tables 404. Hydroxyprogesterone caproate (`182090`) is Withdrawn or Removed and fails the 503A evaluation gate. Official extractable per-substance 503A memo text tops out at **14**. Do not pad. Do not OCR. Do not split archived combined packs.
+
 ## Paths
 
 | Path | Auth | Price |
@@ -17,10 +19,11 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 
 ## Source of truth
 
-- Official year tables: https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/2026-meeting-materials-pharmacy-compounding-advisory-committee and `/2024-meeting-materials-pharmacy-compounding-advisory-committee`
+- Official year tables: 2027 (empty), 2026, 2024, 2022, plus leftover Wayback 2021/2018/2017/2016
 - First-slice miss: only https://www.fda.gov/advisory-committees/advisory-committee-calendar/july-23-24-2026-meeting-pharmacy-compounding-advisory-committee-07232026 (7 memos)
 - October 29, 2024 meeting: https://www.fda.gov/advisory-committees/advisory-committee-calendar/october-29-2024-meeting-pharmacy-compounding-advisory-committee-10292024
 - December 4, 2024 meeting: https://www.fda.gov/advisory-committees/advisory-committee-calendar/updated-meeting-time-and-public-participation-information-december-4-2024-meeting-pharmacy
+- Leftover combined packs (not this SKU): June 8, 2022; June 9, 2021; leftover 2016–2018 `briefing-information-*` pages FDA still links from the committee page via Wayback
 - Per-substance PDFs: `https://www.fda.gov/media/{id}/download`
 - Example: Emideltide / DSIP `https://www.fda.gov/media/193344/download` (Wayback `id_` if Akamai 401s)
 - License: **17 USC 105**. Attribute FDA.
@@ -56,7 +59,7 @@ PCAC_LIMIT=24 PCAC_MAX_FETCH=36 npm run collect:pcac
 systemctl --user restart idaho-ticks-x402.service
 ```
 
-Live after leftover apply (2026-08-26): **listedCount 15**, **cardCount 14**, asOf **2026-05-15**, fetchedAt **2026-08-26T15:42:23.299Z**. Hydroxyprogesterone caproate (`182090`, Withdrawn or Removed) failed the 503A evaluation gate. Price still $0.02 / $0.05. No new SKU. Restarted only `idaho-ticks-x402.service`. Official live catalog is the July 2026 + October 29, 2024 + December 4, 2024 meeting pages.
+Live after leftover apply (2026-08-27): **listedCount 15**, **cardCount 14**, asOf **2026-05-15**, fetchedAt **2026-08-27T05:29:46.873Z**. Hydroxyprogesterone caproate (`182090`, Withdrawn or Removed) failed the 503A evaluation gate. This pulse reused 14 bodies, fetched 0 leftover PDFs, and added 0 extractable per-substance texts. Remaining official catalog is combined FDA Briefing Information packs (2022 / 2021 / 2016–2018) or the empty 2027 year table. Price still $0.02 / $0.05. No new SKU. Restarted only `idaho-ticks-x402.service`. Official extractable catalog is still the July 2026 + October 29, 2024 + December 4, 2024 meeting pages.
 
 ## Local smoke (cloud VM / laptop)
 
