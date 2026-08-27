@@ -1,33 +1,77 @@
 /**
  * Free cross-door firm check on official caches already indexed here.
- * Searches Form 483, FDA warning letters, and the FDA import-alert catalog.
+ * Searches firm/institution/bank-nameable official indexes that already
+ * expose a usable name field: Form 483, FDA warning letters, FDA untitled
+ * letters, FTC BCP warning letters, Ofwat, Ofgem, CFPB orders, OCC C&Ds,
+ * FDIC orders, and the FDA import-alert catalog.
  * Does not scrape FDA.gov. Does not return letter bodies or the full import-alert table.
- * Not a paid SKU.
+ * Not a paid SKU. Does not invent a new paid door.
  */
 
+import { loadCfpbOrdersManifest } from "./cfpb-orders.js";
+import { loadFdicOrdersManifest } from "./fdic-orders.js";
 import { loadForm483Manifest } from "./form-483.js";
+import { loadFtcWlManifest } from "./ftc-wl.js";
 import { loadManifest as loadImportAlertsManifest } from "./import-alerts.js";
+import { loadOccCdManifest } from "./occ-cd.js";
+import { loadOfgemEnforcementManifest } from "./ofgem-enforcement.js";
+import { loadOfwatEnforcementManifest } from "./ofwat-enforcement.js";
 import {
   attachPaidPageCursors,
   PAGE_PRICE_USDC,
   paidOneUrl,
   SINGLE_DOC_PRICE_USDC,
 } from "./paid-records.js";
+import { loadUntitledLettersManifest } from "./untitled-letters.js";
 import { loadWarningLettersManifest } from "./warning-letters.js";
 
 export const FIRM_CHECK_PATH = "/firm-check";
 export const FIRM_CHECK_TOOL_NAME = "firm-check";
 export const FIRM_CHECK_CAP = 20;
-export const FIRM_CHECK_DOORS = ["form-483", "warning-letters", "import-alerts"] as const;
+export const FIRM_CHECK_DOORS = [
+  "form-483",
+  "warning-letters",
+  "untitled-letters",
+  "ftc-wl",
+  "ofwat-enforcement",
+  "ofgem-enforcement",
+  "cfpb-orders",
+  "occ-cd",
+  "fdic-orders",
+  "import-alerts",
+] as const;
 
 export const FIRM_CHECK_NOTE =
-  "Free cross-door search of official caches: Form 483, FDA warning letters, and the FDA import-alert catalog. Not a paid SKU. Hits name the door, the id or page to buy, and fetchedAt/asOf. One official text is GET ?id= ($0.02). The page of newest 10 official texts is $0.05. The import-alert table stays the entire current table at $0.05. Does not return letter bodies or the full import-alert table.";
+  "Free cross-door search of official caches: Form 483, FDA warning letters, FDA untitled letters, FTC BCP warning letters, Ofwat enforcement, Ofgem enforcement, CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog. Not a paid SKU. Hits name the door, the id or page to buy, and fetchedAt/asOf. One official text is GET ?id= ($0.02). The page of newest 10 official texts is $0.05. The import-alert table stays the entire current table at $0.05. Does not return letter bodies or the full import-alert table.";
 
-const BODY_DOOR_ORDER: Record<string, number> = {
-  "form-483": 0,
-  "warning-letters": 1,
-  "import-alerts": 2,
+const BODY_DOOR_ORDER: Record<string, number> = Object.fromEntries(
+  FIRM_CHECK_DOORS.map((door, i) => [door, i]),
+);
+
+export type FirmCheckIndexes = {
+  form483?: Record<string, unknown> | null;
+  warningLetters?: Record<string, unknown> | null;
+  untitledLetters?: Record<string, unknown> | null;
+  ftcWl?: Record<string, unknown> | null;
+  ofwatEnforcement?: Record<string, unknown> | null;
+  ofgemEnforcement?: Record<string, unknown> | null;
+  cfpbOrders?: Record<string, unknown> | null;
+  occCd?: Record<string, unknown> | null;
+  fdicOrders?: Record<string, unknown> | null;
+  importAlerts?: Record<string, unknown> | null;
 };
+
+const BODY_INDEX_DOORS: Array<{ door: Exclude<(typeof FIRM_CHECK_DOORS)[number], "import-alerts">; key: keyof FirmCheckIndexes }> = [
+  { door: "form-483", key: "form483" },
+  { door: "warning-letters", key: "warningLetters" },
+  { door: "untitled-letters", key: "untitledLetters" },
+  { door: "ftc-wl", key: "ftcWl" },
+  { door: "ofwat-enforcement", key: "ofwatEnforcement" },
+  { door: "ofgem-enforcement", key: "ofgemEnforcement" },
+  { door: "cfpb-orders", key: "cfpbOrders" },
+  { door: "occ-cd", key: "occCd" },
+  { door: "fdic-orders", key: "fdicOrders" },
+];
 
 function str(value: unknown): string {
   return typeof value === "string" ? value.trim() : value == null ? "" : String(value).trim();
@@ -81,8 +125,12 @@ function rowId(row: Record<string, unknown>): string {
   return str(row.id) || str(row.alertNumber) || str(row.mediaId) || str(row.cms) || str(row.pageId);
 }
 
+function rowFirmName(row: Record<string, unknown>): string {
+  return str(row.firm) || str(row.institution) || str(row.bank);
+}
+
 function rowTitle(row: Record<string, unknown>): string {
-  return str(row.firm) || str(row.title) || str(row.name) || str(row.subject) || rowId(row);
+  return rowFirmName(row) || str(row.title) || str(row.name) || str(row.subject) || rowId(row);
 }
 
 function matchesNeedle(row: Record<string, unknown>, needle: string): boolean {
@@ -150,7 +198,7 @@ function bodyMatch(
     id,
     page: rowPage(row),
     title: rowTitle(row),
-    firm: str(row.firm) || null,
+    firm: rowFirmName(row) || null,
     date: rowDate(row),
     fetchedAt: stamp.fetchedAt,
     asOf: stamp.asOf,
@@ -172,7 +220,7 @@ function tableMatch(
     id: rowId(row),
     page: null,
     title: rowTitle(row),
-    firm: str(row.firm) || null,
+    firm: rowFirmName(row) || null,
     date: rowDate(row),
     fetchedAt: stamp.fetchedAt,
     asOf: stamp.asOf,
@@ -204,26 +252,22 @@ function searchImportAlertIndex(manifest: Record<string, unknown>, needle: strin
 
 export function firmCheckFromIndexes(
   q: string,
-  indexes: {
-    form483?: Record<string, unknown> | null;
-    warningLetters?: Record<string, unknown> | null;
-    importAlerts?: Record<string, unknown> | null;
-  },
+  indexes: FirmCheckIndexes,
   cap = FIRM_CHECK_CAP,
 ): FirmCheckResult {
   const needle = q.trim().toLowerCase();
   const collected: FirmCheckMatch[] = [];
   if (needle) {
-    if (indexes.form483) collected.push(...searchBodyIndex("form-483", indexes.form483, needle));
-    if (indexes.warningLetters) {
-      collected.push(...searchBodyIndex("warning-letters", indexes.warningLetters, needle));
+    for (const { door, key } of BODY_INDEX_DOORS) {
+      const index = indexes[key];
+      if (index) collected.push(...searchBodyIndex(door, index, needle));
     }
     if (indexes.importAlerts) collected.push(...searchImportAlertIndex(indexes.importAlerts, needle));
   }
   collected.sort((a, b) => {
     const dateCmp = (b.date ?? "").localeCompare(a.date ?? "");
     if (dateCmp !== 0) return dateCmp;
-    const doorCmp = (BODY_DOOR_ORDER[a.door] ?? 9) - (BODY_DOOR_ORDER[b.door] ?? 9);
+    const doorCmp = (BODY_DOOR_ORDER[a.door] ?? 99) - (BODY_DOOR_ORDER[b.door] ?? 99);
     if (doorCmp !== 0) return doorCmp;
     return a.id.localeCompare(b.id);
   });
@@ -246,12 +290,45 @@ export function firmCheckFromIndexes(
 }
 
 export async function runFirmCheck(q: string, cap = FIRM_CHECK_CAP): Promise<FirmCheckResult> {
-  const [form483, warningLetters, importAlerts] = await Promise.all([
+  const [
+    form483,
+    warningLetters,
+    untitledLetters,
+    ftcWl,
+    ofwatEnforcement,
+    ofgemEnforcement,
+    cfpbOrders,
+    occCd,
+    fdicOrders,
+    importAlerts,
+  ] = await Promise.all([
     loadForm483Manifest(),
     loadWarningLettersManifest(),
+    loadUntitledLettersManifest(),
+    loadFtcWlManifest(),
+    loadOfwatEnforcementManifest(),
+    loadOfgemEnforcementManifest(),
+    loadCfpbOrdersManifest(),
+    loadOccCdManifest(),
+    loadFdicOrdersManifest(),
     loadImportAlertsManifest(),
   ]);
-  return firmCheckFromIndexes(q, { form483, warningLetters, importAlerts }, cap);
+  return firmCheckFromIndexes(
+    q,
+    {
+      form483,
+      warningLetters,
+      untitledLetters,
+      ftcWl,
+      ofwatEnforcement,
+      ofgemEnforcement,
+      cfpbOrders,
+      occCd,
+      fdicOrders,
+      importAlerts,
+    },
+    cap,
+  );
 }
 
 export function firmCheckQuery(q: unknown): string {

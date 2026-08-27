@@ -6,6 +6,7 @@ import { AddressInfo } from "node:net";
 import { handleRequest, LLMS_PATH, MCP_PATH, OPENAPI_PATH, WELL_KNOWN_PATH } from "./ticks-door.js";
 import {
   FIRM_CHECK_CAP,
+  FIRM_CHECK_DOORS,
   FIRM_CHECK_NOTE,
   FIRM_CHECK_PATH,
   FIRM_CHECK_TOOL_NAME,
@@ -104,11 +105,118 @@ async function main(): Promise<void> {
         },
       ],
     },
+    untitledLetters: {
+      fetchedAt: "2026-08-26T00:00:00.000Z",
+      asOf: "2026-07-15",
+      cards: [
+        {
+          id: "sanofi-vaccines-us-inc-193721",
+          firm: "Sanofi Vaccines US Inc.",
+          date: "2026-07-15",
+          product: "BEYFORTUS",
+        },
+      ],
+    },
+    ftcWl: {
+      fetchedAt: "2026-08-26T00:00:00.000Z",
+      asOf: "2026-07-06",
+      cards: [
+        {
+          id: "vtron-inc-dba-vtron-lasers",
+          firm: "Vtron Inc. d/b/a Vtron Lasers",
+          date: "2026-07-06",
+          subject: "Warning Letter Regarding “Made in the USA” Representations",
+        },
+      ],
+    },
+    ofwatEnforcement: {
+      fetchedAt: "2026-08-27T00:00:00.000Z",
+      asOf: "2026-03-01",
+      cards: [
+        {
+          id: "2025-05-28-Thames-Water-Final-Decision-Document-REDACTED",
+          institution: "Thames Water",
+          docket: "thames-final-2025-05",
+          date: "2025-05-28",
+        },
+      ],
+    },
+    ofgemEnforcement: {
+      fetchedAt: "2026-08-27T20:00:00.000Z",
+      asOf: "2026-06-03",
+      cards: [
+        {
+          id: "Tomato Energy Limited - Notice of Proposal to Impose a Penalty",
+          institution: "Tomato Energy Limited",
+          docket: "tomato-penalty-2025-10",
+          date: "2025-10-10",
+        },
+      ],
+    },
+    cfpbOrders: {
+      fetchedAt: "2026-08-26T00:00:00.000Z",
+      asOf: "2025-01-17",
+      cards: [
+        {
+          id: "equifax-inc-and-equifax-information-services-llc",
+          firm: "Equifax, Inc. and Equifax Information Services LLC",
+          title: "Consent Order",
+          date: "2025-01-17",
+        },
+      ],
+    },
+    occCd: {
+      fetchedAt: "2026-08-26T00:00:00.000Z",
+      asOf: "2026-06-16",
+      cards: [
+        {
+          id: "AA-ENF-2026-29",
+          bank: "United Texas Bank, National Association",
+          docket: "AA-ENF-2026-29",
+          date: "2026-06-16",
+        },
+      ],
+    },
+    fdicOrders: {
+      fetchedAt: "2026-08-26T00:00:00.000Z",
+      asOf: "2026-05-13",
+      cards: [
+        {
+          id: "FDIC-25-0148b",
+          bank: "Connect Community Bank",
+          docket: "FDIC-25-0148b",
+          date: "2026-05-13",
+        },
+      ],
+    },
   };
+
+  assert.deepEqual([...FIRM_CHECK_DOORS], [
+    "form-483",
+    "warning-letters",
+    "untitled-letters",
+    "ftc-wl",
+    "ofwat-enforcement",
+    "ofgem-enforcement",
+    "cfpb-orders",
+    "occ-cd",
+    "fdic-orders",
+    "import-alerts",
+  ]);
+  assert.ok(FIRM_CHECK_NOTE.includes("FDA untitled letters"));
+  assert.ok(FIRM_CHECK_NOTE.includes("FTC BCP warning letters"));
+  assert.ok(FIRM_CHECK_NOTE.includes("Ofwat enforcement"));
+  assert.ok(FIRM_CHECK_NOTE.includes("Ofgem enforcement"));
+  assert.ok(FIRM_CHECK_NOTE.includes("CFPB orders"));
+  assert.ok(FIRM_CHECK_NOTE.includes("OCC C&Ds"));
+  assert.ok(FIRM_CHECK_NOTE.includes("FDIC orders"));
+  assert.ok(!FIRM_CHECK_NOTE.toLowerCase().includes("sku #39"));
+  assert.ok(!FIRM_CHECK_NOTE.toLowerCase().includes("39th"));
 
   const catalent = firmCheckFromIndexes("catalent", indexes);
   assert.equal(catalent.free, true);
   assert.equal(catalent.product, "firm-check");
+  assert.deepEqual(catalent.doors, [...FIRM_CHECK_DOORS]);
   assert.equal(catalent.matches.length, 1);
   assert.equal(catalent.matches[0]?.door, "form-483");
   assert.equal(catalent.matches[0]?.id, "catalent-indiana-llc-193455");
@@ -153,6 +261,44 @@ async function main(): Promise<void> {
   assert.equal(firmOnSample.matches[0]?.id, "16-81");
   assert.equal(firmOnSample.matches[0]?.firm, "Pacific Catch Ltd");
 
+  const untitled = firmCheckFromIndexes("sanofi", indexes);
+  assert.equal(untitled.matches[0]?.door, "untitled-letters");
+  assert.equal(untitled.matches[0]?.firm, "Sanofi Vaccines US Inc.");
+  assert.equal(untitled.matches[0]?.paidUrl, "/untitled-letters?id=sanofi-vaccines-us-inc-193721");
+  assert.equal(untitled.matches[0]?.priceUsdc, "0.02");
+
+  const ftc = firmCheckFromIndexes("vtron", indexes);
+  assert.equal(ftc.matches[0]?.door, "ftc-wl");
+  assert.equal(ftc.matches[0]?.firm, "Vtron Inc. d/b/a Vtron Lasers");
+
+  const thames = firmCheckFromIndexes("Thames", indexes);
+  assert.equal(thames.matches[0]?.door, "ofwat-enforcement");
+  assert.equal(thames.matches[0]?.firm, "Thames Water");
+  assert.equal(thames.matches[0]?.title, "Thames Water");
+  assert.equal(
+    thames.matches[0]?.paidUrl,
+    "/ofwat-enforcement?id=2025-05-28-Thames-Water-Final-Decision-Document-REDACTED",
+  );
+
+  const tomato = firmCheckFromIndexes("Tomato", indexes);
+  assert.equal(tomato.matches[0]?.door, "ofgem-enforcement");
+  assert.equal(tomato.matches[0]?.firm, "Tomato Energy Limited");
+  assert.equal(tomato.matches[0]?.pagePaidUrl, "/ofgem-enforcement");
+
+  const cfpb = firmCheckFromIndexes("equifax", indexes);
+  assert.equal(cfpb.matches[0]?.door, "cfpb-orders");
+  assert.equal(cfpb.matches[0]?.firm, "Equifax, Inc. and Equifax Information Services LLC");
+
+  const occ = firmCheckFromIndexes("United Texas", indexes);
+  assert.equal(occ.matches[0]?.door, "occ-cd");
+  assert.equal(occ.matches[0]?.firm, "United Texas Bank, National Association");
+  assert.equal(occ.matches[0]?.id, "AA-ENF-2026-29");
+
+  const fdic = firmCheckFromIndexes("Connect Community", indexes);
+  assert.equal(fdic.matches[0]?.door, "fdic-orders");
+  assert.equal(fdic.matches[0]?.firm, "Connect Community Bank");
+  assert.equal(fdic.matches[0]?.paidUrl, "/fdic-orders?id=FDIC-25-0148b");
+
   const manyLetters = Array.from({ length: 30 }, (_, i) => ({
     id: `firm-${String(i).padStart(2, "0")}`,
     firm: "Acme Pharma",
@@ -186,6 +332,7 @@ async function main(): Promise<void> {
       assert.equal(found.status, 200);
       const body = (await found.json()) as {
         free?: boolean;
+        doors?: string[];
         matches?: {
           door?: string;
           paidUrl?: string;
@@ -197,14 +344,40 @@ async function main(): Promise<void> {
         note?: string;
       };
       assert.equal(body.free, true);
+      assert.deepEqual(body.doors, [...FIRM_CHECK_DOORS]);
       assert.equal(body.matches?.[0]?.door, "form-483");
       assert.equal(body.matches?.[0]?.paidUrl, "/form-483?id=cascade-specialty-pharmacy-llc-193964");
       assert.equal(body.matches?.[0]?.page, 1);
       assert.equal(body.matches?.[0]?.fetchedAt, "2026-08-26T00:00:00.000Z");
       assert.equal(body.matches?.[0]?.asOf, "2026-07-31");
+      assert.ok((body.note ?? "").includes("Ofwat enforcement"));
+      assert.ok((body.note ?? "").includes("Ofgem enforcement"));
+
+      const nestle = await fetch(`${base}${FIRM_CHECK_PATH}?q=nestle`);
+      assert.equal(nestle.status, 200);
+      const nestleBody = (await nestle.json()) as { matches?: { door?: string; firm?: string | null }[] };
+      assert.equal(nestleBody.matches?.[0]?.door, "form-483");
+      assert.ok((nestleBody.matches?.[0]?.firm ?? "").toLowerCase().includes("nestle"));
+
+      const water = await fetch(`${base}${FIRM_CHECK_PATH}?q=Thames`);
+      assert.equal(water.status, 200);
+      const waterBody = (await water.json()) as {
+        matches?: { door?: string; firm?: string | null; paidUrl?: string }[];
+      };
+      assert.equal(waterBody.matches?.[0]?.door, "ofwat-enforcement");
+      assert.equal(waterBody.matches?.[0]?.firm, "Thames Water");
+
+      const energy = await fetch(`${base}${FIRM_CHECK_PATH}?q=OVO`);
+      assert.equal(energy.status, 200);
+      const energyBody = (await energy.json()) as {
+        matches?: { door?: string; firm?: string | null }[];
+      };
+      assert.equal(energyBody.matches?.[0]?.door, "ofgem-enforcement");
+      assert.equal(energyBody.matches?.[0]?.firm, "OVO Energy Limited");
       const raw = JSON.stringify(body);
       assert.ok(!raw.includes("secret cascade body"));
       assert.ok(!raw.includes("secret cascade observation"));
+      assert.ok(!raw.includes("secret nestle body"));
       assert.ok(!raw.includes("Hidden Paid Firm Ltd"));
       assert.ok(!raw.includes("secret product row"));
       assert.ok((body.note ?? "").includes("$0.02"));
