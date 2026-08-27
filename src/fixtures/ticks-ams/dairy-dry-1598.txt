@@ -1,0 +1,19 @@
+                         Dry Products Price Summary - U.S.
+                         Agricultural Marketing Service
+                         Dairy Market News
+                                                                                                                                                                        August 20, 2026
+                                                                                                                                               MMN Slug ID 1598 / Slug Name: MD_DA599
+
+                                                                                U.S. Dry Products Price Summary
+Prices reported below represent carlot/trucklot quantities, spray process, dollars per pound, in 50 lb. & 25 kg bags, and totes, prices are FOB unless otherwise specified.
+
+                      Commodity                                          Region                          Price Range           Price Change          Mostly Range             Mostly Change
+NONFAT DRY MILK - LOW/MEDIUM HEAT                      CENTRAL AND EAST                               1.6000 - 1.9000          .1500 - .2000        1.7500 - 1.8500           .2000 - .2000
+NONFAT DRY MILK - HIGH HEAT                            CENTRAL AND EAST                               1.7400 - 1.9500          .1500 - .1000
+NONFAT DRY MILK - LOW/MEDIUM HEAT                      WEST                                           1.5800 - 1.8500          .1000 - .1500        1.6600 - 1.7600           .0900 - .0900
+DRY WHEY                                               CENTRAL                                          .6200 - .7300            - (-.0200)          .6300 - .7000
+DRY WHEY                                               WEST                                             .6500 - .7300                                .6700 - .7200
+DRY WHOLE MILK                                         NATIONAL                                       2.0000 - 2.2800             - .0500
+CASEIN - ACID                                          U.S. IMPORTS                                   4.2500 - 5.2500
+Information for the period August 17 - 21, 2026, issued weekly
+https://mymarketnews.ams.usda.gov/viewReport/1598
