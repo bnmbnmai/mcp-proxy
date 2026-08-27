@@ -12,7 +12,9 @@ BNM Data Shop — 36 official public-data x402 GETs at [ticks.bnm.farm](https://
 
 payTo `0xf59621FC406D266e18f314Ae18eF0a33b8401004` · Base (`eip155:8453`) · USDC `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
 
-Unpaid GET on a paid path returns HTTP 402. After `X-PAYMENT`, the same URL returns JSON.
+Unpaid GET on a paid path returns HTTP 402. After `X-PAYMENT`, the same URL returns JSON. Unpaid 402 `accepts[].extra` names `searchUrl`, `oneDocPath`, `priceAtomic`, `pagePriceAtomic`, `pageDefault`, `tableWhole`, `firmCheckUrl`, `sampleUrl`. `extra.name` stays USD Coin.
+
+MCP at `/mcp` is generated from live [/.well-known/x402](https://ticks.bnm.farm/.well-known/x402) (one paid tool per paid resource) plus free `search` and `firm-check`. `/sample` is the free canned-keys GET, not an MCP tool and not a SKU.
 
 ## Free (not paid)
 
