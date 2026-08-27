@@ -165,6 +165,11 @@ import {
   OFWAT_ENFORCEMENT_PATH,
 } from "./ofwat-enforcement.js";
 import {
+  OFGEM_ENFORCEMENT_AMOUNT_ATOMIC,
+  OFGEM_ENFORCEMENT_MANIFEST_PATH,
+  OFGEM_ENFORCEMENT_PATH,
+} from "./ofgem-enforcement.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -431,6 +436,7 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.some((r) => r.endsWith(NPDES_PERMITS_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(OFSTED_INSPECTIONS_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(OFWAT_ENFORCEMENT_PATH)));
+    assert.ok(wk.resources.some((r) => r.endsWith(OFGEM_ENFORCEMENT_PATH)));
     assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)), "do not list /form-483 without a cached body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_PATH)), "do not list /gmp without a cached observation body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_MD_PATH)), "do not list /gmp-md without a cached observation body");
@@ -444,7 +450,7 @@ async function main(): Promise<void> {
     assert.ok((wk.instructions ?? "").includes("/sample"));
     assert.ok(!(wk.instructions ?? "").includes("idaho-hay-feeder-ticks"));
     assert.ok(!(wk.instructions ?? "").includes("Idaho-only"));
-    assert.ok((wk.instructions ?? "").includes("thirty-four paid"));
+    assert.ok((wk.instructions ?? "").includes("thirty-five paid"));
     assert.ok((wk.instructions ?? "").includes("whole current table"));
     assert.ok((wk.instructions ?? "").includes("newest 10 official texts"));
     assert.ok((wk.instructions ?? "").includes("whole current set"));
@@ -545,6 +551,7 @@ async function main(): Promise<void> {
     assert.equal(spec.paths[CDER_REVIEWS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[NPDES_PERMITS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[OFSTED_INSPECTIONS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
+    assert.equal(spec.paths[OFGEM_ENFORCEMENT_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[CATALOG_PATH]?.get?.["x-auth"]?.mode, "none");
     assert.deepEqual(spec.paths[CATALOG_PATH]?.get?.security, []);
     assert.ok(spec.paths["/"]?.get);
@@ -624,6 +631,9 @@ async function main(): Promise<void> {
     assert.ok(spec.paths[OFWAT_ENFORCEMENT_PATH]?.get?.["x-payment-info"]);
     assert.ok(spec.paths[OFWAT_ENFORCEMENT_MANIFEST_PATH]?.get);
     assert.equal(spec.paths[OFWAT_ENFORCEMENT_MANIFEST_PATH]?.get?.["x-auth"]?.mode, "none");
+    assert.ok(spec.paths[OFGEM_ENFORCEMENT_PATH]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths[OFGEM_ENFORCEMENT_MANIFEST_PATH]?.get);
+    assert.equal(spec.paths[OFGEM_ENFORCEMENT_MANIFEST_PATH]?.get?.["x-auth"]?.mode, "none");
     assert.equal(spec.paths[FORM_483_PATH], undefined, "no stub /form-483 in OpenAPI without a cached body");
     assert.equal(spec.paths[FORM_483_MANIFEST_PATH], undefined);
     assert.equal(spec.paths[GMP_PATH], undefined, "no stub /gmp in OpenAPI without a cached body");
@@ -675,6 +685,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /npdes-permits"));
     assert.ok(llmsBody.includes("GET /ofsted-inspections"));
     assert.ok(llmsBody.includes("GET /ofwat-enforcement"));
+    assert.ok(llmsBody.includes("GET /ofgem-enforcement"));
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.includes("GET /gmp-md"));
@@ -783,6 +794,7 @@ async function main(): Promise<void> {
       NPDES_PERMITS_PATH,
       OFSTED_INSPECTIONS_PATH,
       OFWAT_ENFORCEMENT_PATH,
+      OFGEM_ENFORCEMENT_PATH,
     ]);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.priceUsdc, "0.05");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
@@ -5259,6 +5271,147 @@ async function main(): Promise<void> {
     },
   );
 
+  const ofgemEnforcementDir = mkdtempSync(join(tmpdir(), "ofgem-enforcement-"));
+  const ofgemBody = [
+    "Notice of Proposal to Impose a Financial Penalty Pursuant to Section 27A(3) of the Electricity Act 1989",
+    "Proposal of the Gas and Electricity Markets Authority (Ofgem) following a Provisional Order issued to Tomato Energy Ltd.",
+    "Standard Licence Condition SLC 4B.1 and the 2022 gas crisis are addressed in this Penalty Policy calculation.",
+    ...Array.from(
+      { length: 40 },
+      (_, i) => `Official Tomato Energy enforcement paragraph ${i + 1}. The Authority proposes a financial penalty under section 27A.`,
+    ),
+  ].join("\n");
+  writeFileSync(
+    join(ofgemEnforcementDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "ofgem-enforcement-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: FRESH_FETCHED_AT,
+      asOf: "2025-10-10",
+      license: "Crown copyright / Open Government Licence v3.0",
+      attribution: "Ofgem (Gas and Electricity Markets Authority). Contains public sector information licensed under the Open Government Licence v3.0. Logos reserved.",
+      sources: {
+        index: "https://www.ofgem.gov.uk/energy-regulation/how-we-regulate/compliance-and-enforcement",
+        pdfHost: "https://www.ofgem.gov.uk/sites/default/files/",
+      },
+      cards: [
+        {
+          id: "Tomato Energy Limited - Notice of Proposal to Impose a Penalty",
+          docket: "tomato-s27a-proposal-2025-10",
+          institution: "Tomato Energy Limited",
+          date: "2025-10-10",
+          kind: "penalty-proposal",
+          title: "Notice of Proposal to Impose a Financial Penalty",
+          pageUrl: "https://www.ofgem.gov.uk/publications/tomato-energy-limited-failure-maintain-liquidity",
+          sourceUrl: "https://www.ofgem.gov.uk/sites/default/files/2025-10/Tomato%20Energy%20Limited%20-%20Notice%20of%20Proposal%20to%20Impose%20a%20Penalty.pdf",
+          body: ofgemBody,
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      OFGEM_ENFORCEMENT_DIR: ofgemEnforcementDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-ofgem-enforcement-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${OFGEM_ENFORCEMENT_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /ofgem-enforcement must be 402");
+      const body402 = (await unpaid.json()) as {
+        payTo: string;
+        asset: string;
+        resource: string;
+        accepts: { maxAmountRequired?: string; extra?: { name?: string } }[];
+      };
+      assert.equal(body402.resource, OFGEM_ENFORCEMENT_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, OFGEM_ENFORCEMENT_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
+      const unpaidId = await fetch(`${base}${OFGEM_ENFORCEMENT_PATH}?id=${encodeURIComponent("Tomato Energy Limited - Notice of Proposal to Impose a Penalty")}`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /ofgem-enforcement?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("SLC 4B.1"));
+      assert.ok(!leak402.includes("gas crisis"));
+      assert.ok(!leak402.includes("Penalty Policy"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === OFGEM_ENFORCEMENT_PATH), true);
+      assert.equal(shop.products.some((p) => p.path === OFSTED_INSPECTIONS_PATH), true);
+      assert.equal(shop.products.some((p) => p.path === FORM_483_PATH), false);
+      assert.equal(shop.products.length, PUBLIC_BAZAAR_SKUS.length);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(OFGEM_ENFORCEMENT_PATH)), "well-known lists /ofgem-enforcement");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /ofgem-enforcement"));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[OFGEM_ENFORCEMENT_PATH]);
+      assert.ok(spec.paths[OFGEM_ENFORCEMENT_MANIFEST_PATH]);
+
+      const tomatoId = "Tomato Energy Limited - Notice of Proposal to Impose a Penalty";
+      const manifest = await fetch(`${base}${OFGEM_ENFORCEMENT_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "ofgem-enforcement free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        cards?: { institution?: string; id?: string; body?: string; paidUrl?: string; page?: number }[];
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.cards?.[0]?.institution, "Tomato Energy Limited");
+      assert.equal(man.cards?.[0]?.id, tomatoId);
+      assert.equal(man.cards?.[0]?.paidUrl, `${OFGEM_ENFORCEMENT_PATH}?id=${encodeURIComponent(tomatoId)}`);
+      assert.ok(man.cards?.[0]?.page);
+      const manBlob = JSON.stringify(man);
+      assert.ok(!manBlob.includes("SLC 4B.1"));
+      assert.ok(!manBlob.includes("gas crisis"));
+      assert.ok(!manBlob.includes("Penalty Policy"));
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+
+      const qName = await fetch(`${base}${OFGEM_ENFORCEMENT_MANIFEST_PATH}?q=tomato`);
+      assert.equal(qName.status, 200);
+      const qNameMan = (await qName.json()) as { cards?: { id?: string; paidUrl?: string }[] };
+      assert.equal(qNameMan.cards?.[0]?.id, tomatoId);
+
+      const paid = await fetch(`${base}${OFGEM_ENFORCEMENT_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { institution: string; date: string; id: string; body: string }[];
+        records?: { id: string; date: string | null; firm: string; url: string; type: string }[];
+        recordCount?: number;
+        asOf?: string;
+      };
+      assert.equal(paidBody.product, "ofgem-enforcement-bodies");
+      assert.equal(paidBody.cards[0]?.institution, "Tomato Energy Limited");
+      assert.equal(paidBody.cards[0]?.date, "2025-10-10");
+      assert.equal(paidBody.cards[0]?.id, tomatoId);
+      assert.ok(paidBody.cards[0]?.body.includes("SLC 4B.1"));
+      assert.ok(paidBody.cards[0]?.body.includes("gas crisis"));
+      assert.ok((paidBody.recordCount ?? 0) > 0, "empty records[] is a fail");
+      assert.equal(paidBody.asOf, "2025-10-10");
+      assert.equal(paidBody.records?.[0]?.id, tomatoId);
+      assert.equal(paidBody.records?.[0]?.type, "ofgem-enforcement");
+      assert.equal(paidBody.records?.[0]?.firm, "Tomato Energy Limited");
+      assert.ok((paidBody.cards.length ?? 0) <= 10, "paid page returns <=10");
+
+      const paidId = await fetch(`${base}${OFGEM_ENFORCEMENT_PATH}?id=${encodeURIComponent(tomatoId)}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paidId.status, 200);
+      const paidIdBody = (await paidId.json()) as { cards: { id: string; body: string }[]; recordCount?: number };
+      assert.equal(paidIdBody.cards[0]?.id, tomatoId);
+      assert.equal(paidIdBody.cards.length, 1);
+      assert.equal(paidIdBody.recordCount, 1);
+      assert.ok(paidIdBody.cards[0]?.body.includes("Penalty Policy"));
+    },
+  );
+
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -5339,7 +5492,7 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.endsWith(MARINERS_D8_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(UNTITLED_LETTERS_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(PCAC_PATH)));
-      assert.ok((wk.instructions ?? "").includes("thirty-five paid"));
+      assert.ok((wk.instructions ?? "").includes("thirty-six paid"));
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
         paths: Record<string, { get?: { "x-payment-info"?: { price?: { amount?: string } } } }>;
@@ -5495,7 +5648,7 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.endsWith(OFAC_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(BIS_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(CFTC_ORDERS_PATH)));
-      assert.ok((wk.instructions ?? "").includes("thirty-six paid"));
+      assert.ok((wk.instructions ?? "").includes("thirty-seven paid"));
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
         paths: Record<string, { get?: { "x-payment-info"?: { price?: { amount?: string } } } }>;
@@ -5887,7 +6040,7 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.endsWith(OFAC_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(BIS_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.endsWith(CFTC_ORDERS_PATH)));
-      assert.ok((wk.instructions ?? "").includes("thirty-seven paid"));
+      assert.ok((wk.instructions ?? "").includes("thirty-eight paid"));
       assert.ok((wk.instructions ?? "").includes("whole current table"));
       assert.ok((wk.instructions ?? "").includes("newest 10 official texts"));
       assert.ok((wk.instructions ?? "").includes("?q="));
@@ -5972,7 +6125,7 @@ async function main(): Promise<void> {
     },
     async (base) => {
       assert.equal(cdpEnvStatus(), "CDP env not set");
-      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
+      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
         const unpaid = await fetch(`${base}${path}`);
         assert.equal(unpaid.status, 402, `unpaid ${path} must stay 402`);
         const present = await fetch(`${base}${path}`, { headers: { "X-PAYMENT": "test" } });
@@ -6010,6 +6163,7 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.includes(NPDES_PERMITS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(OFSTED_INSPECTIONS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(OFWAT_ENFORCEMENT_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(OFGEM_ENFORCEMENT_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D11_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D7_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D8_PATH)));
@@ -6022,7 +6176,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -6051,6 +6205,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("npdes-permits"), true);
   assert.equal(isPublicBazaarSku("ofsted-inspections"), true);
   assert.equal(isPublicBazaarSku("ofwat-enforcement"), true);
+  assert.equal(isPublicBazaarSku("ofgem-enforcement"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
