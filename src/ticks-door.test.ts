@@ -175,6 +175,11 @@ import {
   GAIN_PATH,
 } from "./gain.js";
 import {
+  ORR_ENFORCEMENT_AMOUNT_ATOMIC,
+  ORR_ENFORCEMENT_MANIFEST_PATH,
+  ORR_ENFORCEMENT_PATH,
+} from "./orr-enforcement.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -443,6 +448,7 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.some((r) => r.endsWith(OFWAT_ENFORCEMENT_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(OFGEM_ENFORCEMENT_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(GAIN_PATH)));
+    assert.ok(wk.resources.some((r) => r.endsWith(ORR_ENFORCEMENT_PATH)));
     assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)), "do not list /form-483 without a cached body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_PATH)), "do not list /gmp without a cached observation body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_MD_PATH)), "do not list /gmp-md without a cached observation body");
@@ -456,7 +462,7 @@ async function main(): Promise<void> {
     assert.ok((wk.instructions ?? "").includes("/sample"));
     assert.ok(!(wk.instructions ?? "").includes("idaho-hay-feeder-ticks"));
     assert.ok(!(wk.instructions ?? "").includes("Idaho-only"));
-    assert.ok((wk.instructions ?? "").includes("thirty-six paid"));
+    assert.ok((wk.instructions ?? "").includes("thirty-seven paid"));
     assert.ok((wk.instructions ?? "").includes("whole current table"));
     assert.ok((wk.instructions ?? "").includes("newest 10 official texts"));
     assert.ok((wk.instructions ?? "").includes("whole current set"));
@@ -473,6 +479,7 @@ async function main(): Promise<void> {
     assert.ok(!(wk.instructions ?? "").includes("3,550"));
     assert.ok(!(wk.instructions ?? "").includes("3550 SKU"));
     assert.ok(wk.resources.some((r) => r.includes("/gain")), "well-known lists /gain");
+    assert.ok(wk.resources.some((r) => r.includes("/orr-enforcement")), "well-known lists /orr-enforcement");
     assert.equal(cdpEnvStatus(), "CDP env not set");
 
     const specRes = await fetch(`${base}${OPENAPI_PATH}`);
@@ -559,6 +566,7 @@ async function main(): Promise<void> {
     assert.equal(spec.paths[OFSTED_INSPECTIONS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[OFGEM_ENFORCEMENT_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[GAIN_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
+    assert.equal(spec.paths[ORR_ENFORCEMENT_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[CATALOG_PATH]?.get?.["x-auth"]?.mode, "none");
     assert.deepEqual(spec.paths[CATALOG_PATH]?.get?.security, []);
     assert.ok(spec.paths["/"]?.get);
@@ -644,6 +652,9 @@ async function main(): Promise<void> {
     assert.ok(spec.paths[GAIN_PATH]?.get?.["x-payment-info"]);
     assert.ok(spec.paths[GAIN_MANIFEST_PATH]?.get);
     assert.equal(spec.paths[GAIN_MANIFEST_PATH]?.get?.["x-auth"]?.mode, "none");
+    assert.ok(spec.paths[ORR_ENFORCEMENT_PATH]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths[ORR_ENFORCEMENT_MANIFEST_PATH]?.get);
+    assert.equal(spec.paths[ORR_ENFORCEMENT_MANIFEST_PATH]?.get?.["x-auth"]?.mode, "none");
     assert.equal(spec.paths[FORM_483_PATH], undefined, "no stub /form-483 in OpenAPI without a cached body");
     assert.equal(spec.paths[FORM_483_MANIFEST_PATH], undefined);
     assert.equal(spec.paths[GMP_PATH], undefined, "no stub /gmp in OpenAPI without a cached body");
@@ -651,6 +662,7 @@ async function main(): Promise<void> {
     assert.equal(spec.paths[GMP_MD_PATH], undefined, "no stub /gmp-md in OpenAPI without a cached body");
     assert.equal(spec.paths[GMP_MD_MANIFEST_PATH], undefined);
     assert.ok(spec.paths["/gain"]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths["/orr-enforcement"]?.get?.["x-payment-info"]);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
       PUBLIC_BAZAAR_SKUS.length,
@@ -697,6 +709,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /ofwat-enforcement"));
     assert.ok(llmsBody.includes("GET /ofgem-enforcement"));
     assert.ok(llmsBody.includes("GET /gain"));
+    assert.ok(llmsBody.includes("GET /orr-enforcement"));
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.includes("GET /gmp-md"));
@@ -806,6 +819,7 @@ async function main(): Promise<void> {
       OFWAT_ENFORCEMENT_PATH,
       OFGEM_ENFORCEMENT_PATH,
       GAIN_PATH,
+      ORR_ENFORCEMENT_PATH,
     ]);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.priceUsdc, "0.05");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
@@ -5570,6 +5584,150 @@ async function main(): Promise<void> {
   );
 
 
+  const orrEnforcementDir = mkdtempSync(join(tmpdir(), "orr-enforcement-"));
+  const northernId = "orr-to-northern-trains-limited-statutory-notice-dated-3-march-2026";
+  const orrBody = [
+    "Office of Rail and Road",
+    "Railways Act 1993 section 55(6) statutory notice",
+    "To: Northern Trains Limited",
+    "Date: 3 March 2026",
+    "This is a notice in accordance with section 55 of the Railways Act 1993.",
+    "ORR has decided to make a final order if the licence holder does not take the specified steps.",
+    "23 actions are listed in the official Northern investigation report, not this fixture.",
+    ...Array.from(
+      { length: 40 },
+      (_, i) => `Official Northern Trains Limited Railways Act 1993 section 55 statutory notice paragraph ${i + 1}. Office of Rail and Road ORR.`,
+    ),
+  ].join("\n");
+  writeFileSync(
+    join(orrEnforcementDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "orr-enforcement-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: FRESH_FETCHED_AT,
+      asOf: "2026-03-03",
+      license: "Crown copyright / Open Government Licence v3.0",
+      attribution: "Office of Rail and Road. Contains public sector information licensed under the Open Government Licence v3.0. Logos reserved.",
+      sources: {
+        index: "https://www.orr.gov.uk/monitoring-regulation/rail/investigations",
+        pdfHost: "https://www.orr.gov.uk/sites/default/files/",
+      },
+      cards: [
+        {
+          id: northernId,
+          docket: northernId,
+          institution: "Northern Trains Limited",
+          date: "2026-03-03",
+          kind: "statutory-notice",
+          title: "ORR to Northern Trains Limited statutory notice dated 3 March 2026",
+          pageUrl: "https://www.orr.gov.uk/monitoring-regulation/rail/investigations/northern-trains-limited",
+          sourceUrl: "https://www.orr.gov.uk/sites/default/files/2026-03/orr-to-northern-trains-limited-statutory-notice-dated-3-march-2026.pdf",
+          body: orrBody,
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      ORR_ENFORCEMENT_DIR: orrEnforcementDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-orr-enforcement-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${ORR_ENFORCEMENT_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /orr-enforcement must be 402");
+      const body402 = (await unpaid.json()) as {
+        payTo: string;
+        asset: string;
+        resource: string;
+        accepts: { maxAmountRequired?: string; extra?: { name?: string } }[];
+      };
+      assert.equal(body402.resource, ORR_ENFORCEMENT_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, ORR_ENFORCEMENT_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
+      const unpaidId = await fetch(`${base}${ORR_ENFORCEMENT_PATH}?id=${encodeURIComponent(northernId)}`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /orr-enforcement?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("23 actions"));
+      assert.ok(!leak402.includes("£3,000,000"));
+      assert.ok(!leak402.includes("Enhancements Improvement Plan"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === ORR_ENFORCEMENT_PATH), true);
+      assert.equal(shop.products.some((p) => p.path === GAIN_PATH), true);
+      assert.equal(shop.products.some((p) => p.path === FORM_483_PATH), false);
+      assert.equal(shop.products.length, PUBLIC_BAZAAR_SKUS.length);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(ORR_ENFORCEMENT_PATH)), "well-known lists /orr-enforcement");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /orr-enforcement"));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[ORR_ENFORCEMENT_PATH]);
+      assert.ok(spec.paths[ORR_ENFORCEMENT_MANIFEST_PATH]);
+
+      const manifest = await fetch(`${base}${ORR_ENFORCEMENT_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "orr-enforcement free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        asOf?: string;
+        cards?: { institution?: string; id?: string; body?: string; paidUrl?: string; page?: number }[];
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.asOf, "2026-03-03");
+      assert.equal(man.cards?.[0]?.institution, "Northern Trains Limited");
+      assert.equal(man.cards?.[0]?.id, northernId);
+      assert.equal(man.cards?.[0]?.paidUrl, `${ORR_ENFORCEMENT_PATH}?id=${encodeURIComponent(northernId)}`);
+      assert.ok(man.cards?.[0]?.page);
+      const manBlob = JSON.stringify(man);
+      assert.ok(!manBlob.includes("23 actions"));
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+
+      const qName = await fetch(`${base}${ORR_ENFORCEMENT_MANIFEST_PATH}?q=northern`);
+      assert.equal(qName.status, 200);
+      const qNameMan = (await qName.json()) as { cards?: { id?: string; paidUrl?: string }[] };
+      assert.equal(qNameMan.cards?.[0]?.id, northernId);
+
+      const paid = await fetch(`${base}${ORR_ENFORCEMENT_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { institution: string; date: string; id: string; body: string }[];
+        records?: { id: string; date: string | null; firm: string; url: string; type: string }[];
+        recordCount?: number;
+        asOf?: string;
+      };
+      assert.equal(paidBody.product, "orr-enforcement-bodies");
+      assert.equal(paidBody.cards[0]?.institution, "Northern Trains Limited");
+      assert.equal(paidBody.cards[0]?.date, "2026-03-03");
+      assert.equal(paidBody.cards[0]?.id, northernId);
+      assert.ok(paidBody.cards[0]?.body.includes("23 actions"));
+      assert.ok((paidBody.recordCount ?? 0) > 0, "empty records[] is a fail");
+      assert.equal(paidBody.asOf, "2026-03-03");
+      assert.equal(paidBody.records?.[0]?.id, northernId);
+      assert.equal(paidBody.records?.[0]?.type, "orr-enforcement");
+      assert.equal(paidBody.records?.[0]?.firm, "Northern Trains Limited");
+      assert.ok((paidBody.cards.length ?? 0) <= 10, "paid page returns <=10");
+
+      const paidId = await fetch(`${base}${ORR_ENFORCEMENT_PATH}?id=${encodeURIComponent(northernId)}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paidId.status, 200);
+      const paidIdBody = (await paidId.json()) as { cards: { id: string; body: string }[]; recordCount?: number };
+      assert.equal(paidIdBody.cards[0]?.id, northernId);
+      assert.equal(paidIdBody.cards.length, 1);
+      assert.equal(paidIdBody.recordCount, 1);
+      assert.ok(paidIdBody.cards[0]?.body.includes("23 actions"));
+    },
+  );
+
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -6283,7 +6441,7 @@ async function main(): Promise<void> {
     },
     async (base) => {
       assert.equal(cdpEnvStatus(), "CDP env not set");
-      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
+      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
         const unpaid = await fetch(`${base}${path}`);
         assert.equal(unpaid.status, 402, `unpaid ${path} must stay 402`);
         const present = await fetch(`${base}${path}`, { headers: { "X-PAYMENT": "test" } });
@@ -6323,6 +6481,7 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.includes(OFWAT_ENFORCEMENT_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(OFGEM_ENFORCEMENT_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(GAIN_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(ORR_ENFORCEMENT_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D11_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D7_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D8_PATH)));
@@ -6335,7 +6494,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);

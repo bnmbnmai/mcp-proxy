@@ -1,0 +1,5 @@
+company,metric,value
+Northern Trains,punctuality_ppm,87.2
+Network Rail,open data pack,71.2
+GTR,regulatory reporting pack,88
+# ORR open-data / performance CSV — not a s.55 enforcement body

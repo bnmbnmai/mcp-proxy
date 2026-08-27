@@ -54,6 +54,7 @@ export const EXTRACTED_BODY_SKUS = [
   "ofwat-enforcement",
   "ofgem-enforcement",
   "gain",
+  "orr-enforcement",
 ] as const;
 
 export type ExtractedBodySku = (typeof EXTRACTED_BODY_SKUS)[number];
@@ -127,6 +128,7 @@ export const OFSTED_INSPECTIONS_TYPE = "ofsted-inspections";
 export const OFWAT_ENFORCEMENT_TYPE = "ofwat-enforcement";
 export const OFGEM_ENFORCEMENT_TYPE = "ofgem-enforcement";
 export const GAIN_TYPE = "gain";
+export const ORR_ENFORCEMENT_TYPE = "orr-enforcement";
 export const CFPB_ORDER_TYPE = "cfpb-order";
 export const OFAC_ORDER_TYPE = "ofac-order";
 export const FRB_ORDER_TYPE = "frb-order";
@@ -171,6 +173,7 @@ export const OFWAT_ENFORCEMENT_SOURCE = "https://www.ofwat.gov.uk/regulated-comp
 export const OFGEM_ENFORCEMENT_SOURCE =
   "https://www.ofgem.gov.uk/energy-regulation/how-we-regulate/compliance-and-enforcement";
 export const GAIN_SOURCE = "https://gain.fas.usda.gov/";
+export const ORR_ENFORCEMENT_SOURCE = "https://www.orr.gov.uk/monitoring-regulation/rail/investigations";
 export const CFPB_ORDER_SOURCE = "https://www.consumerfinance.gov/enforcement/actions/";
 export const OFAC_ORDER_SOURCE = "https://ofac.treasury.gov/civil-penalties-and-enforcement-information";
 export const FRB_ORDER_SOURCE = "https://www.federalreserve.gov/supervisionreg/enforcementactions.htm";
@@ -772,6 +775,10 @@ export function paidOfgemEnforcementBody<T extends CardPayload>(payload: T, opts
 
 export function paidGainBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
   return paidCardBody(payload, GAIN_TYPE, GAIN_SOURCE, opts);
+}
+
+export function paidOrrEnforcementBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, ORR_ENFORCEMENT_TYPE, ORR_ENFORCEMENT_SOURCE, opts);
 }
 
 export function paidIcoMpnBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
