@@ -1,0 +1,709 @@
+NOTICE IN ACCORDANCE WITH SECTION 56 OF THE RAILWAYS ACT 1993 (AS
+AMENDED) OF THE OFFICE OF RAIL AND ROAD’S PROPOSAL TO MAKE A FINAL
+ORDER    IN    RELATION       TO    NETWORK         RAIL    INFRASTRUCTURE            LIMITED’S
+CONTRAVENTION OF CONDITION 1 OF ITS NETWORK LICENCE
+
+
+29 May 2024
+
+
+   1. This document constitutes a notice issued by the Office of Rail and Road (“ORR")
+      published in accordance with section 56 of the Railways Act 1993, as amended, (“the
+      Act”) stating that:
+
+
+          a) ORR is satisfied that Network Rail Infrastructure Limited (“Network Rail”) is
+              contravening condition 1 of its network licence, as more particularly set out in
+              this notice;
+
+
+          b) ORR proposes to make a Final Order under section 55 of the Act. The form of
+              the order is attached at Annex A to this notice;
+
+
+          c) The effect of the order will be to require Network Rail to take the steps outlined
+              in the proposed order so that Network Rail has produced to ORR, by no later
+              than 31 August 2024, a robust and evidenced plan identifying those further
+              activities that it will undertake to secure the operation and maintenance of the
+              network in accordance with best practice to meet the reasonable requirements
+              of persons providing services relating to railways in respect of the facilitation of
+              railway service performance to the greatest extent reasonably practicable.
+              Network Rail will also be required to implement the plan consistent with any
+              timing set out therein, or in the absence of a timing as soon as reasonably
+              practicable and deliver to ORR within one month of ORR’s request a report
+              demonstrating why it is satisfied that the plan has been implemented. If by 31
+              October 2024 ORR is satisfied that Network Rail has failed to produce the plan
+              as directed, Network Rail is required to pay to the Secretary of State within one
+              month of ORR’s demand, the sum of £3,000,000.
+          d) ORR proposes to make this order for the purposes of ensuring that Network
+              Rail is complying with condition 1 of its network licence, in respect of the
+              contravention which is the subject matter of this notice;
+
+
+
+
+                                                                                                1
+       e) The other facts which, in the opinion of ORR justify the making of the order are
+            set out below; and
+
+
+       f)   Representations or objections with respect to the proposed order should be
+            made by close of business on 20 June 2024 by:
+
+
+                    email to: patrick.crowley@orr.gov.uk; or
+                    post to: Patrick Crowley
+                    Office of Rail and Road
+                    25 Cabot Square,
+                    London,
+                    E14 4QZ.
+
+
+Background
+
+
+2. This notice follows a worsening trend in train performance in Network Rail’s Wales &
+   Western region since 2021. Wales & Western produced and iterated a performance
+   recovery plan that included actions aimed at causes of delay from its analysis of
+   attribution data. However, it did not reverse the decline in overall train performance.
+
+
+3. ORR wrote to Network Rail on 29 November 2023 initiating an investigation into
+   Network Rail’s contribution to the delivery of train service performance in Wales &
+   Western and whether Network Rail had contravened or is contravening its network
+   licence.
+
+
+4. The investigation considered whether Wales & Western has, to the greatest extent
+   reasonably practicable having regard to all relevant circumstances:
+
+
+       a) applied best practice in train service performance management capability and
+            system operation;
+
+
+       b) systematically reviewed the key factors that contributed to deteriorating train
+            service performance (including those within and outside of its control);
+
+
+       c) developed and delivered a suitably evidenced and resourced improvement
+            plan;
+
+
+                                                                                             2
+        d) engaged with relevant stakeholders in the development of the plan to ensure it
+             meets their reasonable requirements;
+
+
+        e) reviewed the adequacy of the plan, its delivery and realisation, and
+
+
+        f)   where the plan has not led to improvement, sought to understand why,
+             including in respect of factors that are beyond its direct control.
+
+
+5. ORR considered information provided by Network Rail as part of this investigation
+   and as part of ORR discharging its regulatory functions, as well as information
+   provided by relevant passenger and freight train operators, funders and passenger
+   groups and representatives.
+
+
+Relevant Legal Provisions
+
+
+Condition 1
+
+
+6. The relevant condition of Network Rail’s network licence is condition 1, paragraphs 1.1
+   – 1.4 and 1.9, which provide as follows:
+
+
+   “1        Core Duties
+
+
+   Network Management Duty
+
+
+   1.1 The “Network Management Purpose” is to secure:
+
+
+             (a) the operation and maintenance of the Network;
+
+
+             (b) the renewal and replacement of the Network; and
+
+
+             (c) the improvement, enhancement and development of the Network,
+
+
+   in each case in accordance with best practice and in a timely, efficient and economical
+   manner so as to satisfy the requirements set out in Condition 1.2.
+
+
+
+
+                                                                                        3
+   1.2 For these purposes, the requirements are the reasonable requirements of persons
+   providing services relating to railways and Funders, including Potential Providers or
+   Potential Funders, in respect of:
+
+
+             (a) the quality and capability of the Network; and
+
+
+             (b) the facilitation of railway service performance in respect of services for the
+             carriage of passengers and goods by railway operating on the Network.
+
+
+   1.3 The licence holder shall achieve the Network Management Purpose to the greatest
+   extent reasonably practicable having regard to all relevant circumstances including the
+   ability of the licence holder to finance its Licensed Activities (the “Network Management
+   Duty”).
+
+
+   1.4 In complying with the Network Management Duty, the licence holder shall in
+   particular ensure that it duly takes into account the interests of all classes of passenger
+   operator and freight operator in satisfying the requirements set out in Condition 1.2.
+   …
+   Route Business and System Operator responsibilities
+
+
+   1.9 Each Route Business and the System Operator shall comply with the Core Duties
+   in the performance of their functions.”
+
+
+The Contravention
+
+
+7. ORR is satisfied that Network Rail is contravening condition 1 of its network licence:
+
+
+       a) by failing to achieve to the greatest extent reasonably practicable having regard
+             to all relevant circumstances its obligations to secure the operation and
+             maintenance of the network in accordance with best practice to meet the
+             reasonable requirements of persons providing services relating to railways in
+             respect of the facilitation of railway service performance; and
+
+
+       b) for each Route Business (or Region) to comply with the obligations set out in
+             7(a)(i) above in the performance of their functions.
+
+
+8. Several areas of concern and deficiencies were identified. These include the following:
+
+                                                                                             4
+       a) Network Rail failed to plan sufficiently for cumulative changes on the network,
+             including as a result of the Great Western Electrification Project (GWEP) and
+             Crossrail;
+
+
+       b) Network Rail does not fully understand the extent to which different operational
+             factors are driving increased delay;
+
+
+       c) there are weaknesses in Network Rail’s processes for learning lessons from
+             incidents; and
+
+
+       d) Network Rail’s leadership structure and governance is not currently set up to
+             drive optimised train performance outcomes.
+
+
+9. These areas of concern and deficiencies are set out in further detail in Annex B to this
+   Notice.
+
+
+Section 4 of the Act
+
+
+10. ORR must exercise its functions (including its enforcement function) in the manner
+   which it considers best calculated to achieve a series of duties set out at section 4 of
+   the Act.
+
+
+Section 55 of the Act
+
+
+11. Section 55(1) of the Act obliges ORR to make a final order if it is satisfied that a licence
+   holder is contravening, or is likely to contravene, any condition of its licence.
+
+
+12. Section 55(2) of the Act provides that ORR must instead make a provisional order
+   where it appears it is requisite to do so. In determining if it requisite, ORR must have
+   regard, in particular, to the extent to which any person is likely to sustain loss or
+   damage in consequence of anything which is likely to be done, or omitted to be done,
+   before a final order can be made.
+
+
+13. Any enforcement order must contain such provisions as is requisite for the purpose of
+   securing compliance with the relevant licence conditions.
+
+
+                                                                                              5
+14. The obligations to make an enforcement order contained in sections 55(1) and 55(2)
+   of the Act are subject to a number of exceptions, as follows:
+
+
+       a) section 55(5) of the Act provides that ORR must not make an order if it is
+           satisfied that the duties imposed upon it by section 4 of the Act preclude making
+           an order;
+
+
+       b) section 55(5A) of the Act provides that ORR shall consider whether it would be
+           more appropriate to proceed under the Competition Act 1998 and section
+           55(5AA) of the Act provides that ORR must not make an order if it considers
+           that it would be more appropriate to proceed under the Competition Act 1998;
+           and
+
+
+       c) section 55(5B) of the Act requires that if ORR is satisfied that:
+
+
+                 i. the relevant operator has agreed to take, and is taking, all such steps
+                    as it appears to ORR for the time being, to be appropriate for it to take
+                    for the purpose of securing or facilitating compliance with the condition
+                    or requirement in question; or
+
+
+                 ii. the contravention or apprehended contravention will not adversely
+                    affect the interests of users of railway services or lead to any increase
+                    in public expenditure;
+
+
+           it shall only make a final order if it considers it appropriate to do so.
+
+
+15. ORR does not consider it is requisite to make a provisional order as it does not consider
+   that any person is likely to sustain loss of damage in consequence of Network Rail’s
+   contravention before a final order can be made.
+
+
+16. ORR does not consider that the exception in section 55(5) of the Act applies. ORR is
+   satisfied that its section 4 duties do not preclude the making of an order.
+
+
+17. ORR has considered whether it would be more appropriate to proceed under the
+   Competition Act 1998 and does not consider that the exception in section 55(5AA) of
+   the Act applies. In this case, ORR does not consider that Network Rail’s failure to
+
+
+                                                                                           6
+   deliver its performance obligations could amount to an infringement of the Competition
+   Act 1998.
+
+
+18. ORR does not consider that the exception in section 55(5B) applies because:
+
+
+       a) Network Rail is not currently taking all such steps as it appears to ORR for the
+          time being, it considers to be appropriate for the purpose of securing or
+          facilitating compliance with condition 1. Although Network Rail has taken steps
+          to produce a recovery plan and is taking steps to ensure further improvements
+          through its Project Brunel plan, which is aimed at asset reliability and
+          operational practices on the Western route out of Paddington, these require
+          further development and therefore the delivery of future performance in Wales
+          & Western is at risk without further actions to ensure sustainable improvements
+          and processes are in place; and
+
+
+       b) the contravention adversely affects the interests of users of railway services
+          and could lead to an increase in public expenditure. This is because the
+          contravention relates to a failure to deliver performance obligations, which may
+          impact industry revenue and therefore, if it continues, it could require greater
+          government financial support for the railway industry.
+
+
+19. ORR therefore considers it appropriate to impose a final order, containing such
+   provisions as it considers requisite for the purposes of securing compliance with
+   condition 1.
+
+
+20. The proposed order requires Network Rail to produce to ORR, by 31 August 2024, a
+   robust and evidenced plan identifying those further activities that Network Rail will
+   undertake to secure the operation and maintenance of the network in accordance with
+   best practice to meet the reasonable requirements of persons providing services
+   relating to railways in respect of the facilitation of railway service performance to the
+   greatest extent reasonably practicable. Network Rail will also be required to implement
+   the plan consistent with any timing set out therein, or in the absence of a timing as
+   soon as reasonably practicable and deliver to ORR within one month of ORR’s request
+   a report demonstrating why it is satisfied that the plan has been implemented. The
+   proposed order also provides that if, by 31 October 2024 ORR is satisfied that Network
+   Rail has failed to produce the plan, Network Rail is to pay the sum of £3,000,000.
+   Details as to how the reasonable sum has been calculated are included in Annex B.
+
+                                                                                          7
+   21. Section 56 of the Act requires ORR to publish this notice specifying the period, being
+      no less than 21 days, in which representations or objections with the proposed order
+      may be made. The notice period ends on 20 June 2024. ORR will consider any
+      representations or objections which are duly made and not withdrawn before the end
+      of this notice period.
+
+
+
+
+John Larkinson
+Chief Executive
+
+
+
+
+                                                                                           8
+Annex A
+Draft Final Order
+
+
+SECTION 55
+
+
+DRAFT FINAL ORDER
+
+
+   A. The Office of Rail and Road (“ORR”) is satisfied that Network Rail is contravening
+       condition 1 of its network licence (“the contravention”):
+
+
+          a. by failing to achieve to the greatest extent reasonably practicable having regard
+              to all relevant circumstances its obligations to secure the operation and
+              maintenance of the network in accordance with best practice to meet the
+              reasonable requirements of persons providing services relating to railways in
+              respect of the facilitation of railway service performance; and
+
+
+          b. for each Route Business (or Region) to comply with the obligations set out in
+              A(a) above in the performance of their functions.
+
+
+    B. Having regard to the matters set out in section 55(1) of the Railways Act 1993, as
+       amended (“the Act”), ORR considers it appropriate to make a final order for the purpose
+       of securing Network Rail’s compliance with condition 1.
+
+
+    C. ORR is satisfied that:
+
+
+          a. the duties imposed on it by section 4 of the Act do not preclude the making of
+              this order; and
+
+
+          b. it is not more appropriate to proceed under the Competition Act 1998.
+
+
+    D. Having regard to all the circumstances and, in particular, the factors set out in section
+       55(3) of the Act, it does not appear to ORR that it is requisite that a provisional order
+       be made.
+    E. ORR need not consider, under section 55(5B) of the Act, the appropriateness of the
+       making of this order because:
+
+
+
+
+                                                                                              9
+       a. ORR is not satisfied Network Rail has taken, and is taking, all such steps as
+           appear to ORR for the time being to be appropriate for Network Rail to take for
+           the purpose of securing or facilitating compliance with condition 1; and
+
+
+       b. ORR is not satisfied that the contravention will not adversely affect the interest
+           of users of railway services or lead to an increase in public expenditure.
+
+
+F. [ORR gave notice under section 56 of the Act of its proposal to make a final order and
+   has taken into consideration all representations made and not withdrawn in relation to
+   the proposed order.]
+
+
+   Therefore:
+
+
+   1. In respect of the contravention, pursuant to section 55 of the Act, ORR requires
+       Network Rail to:
+
+
+
+           a) Produce to ORR by 31 August 2024 a robust and evidenced plan identifying
+                those further activities that Network Rail will undertake to secure the
+                operation and maintenance of the network in accordance with best practice
+                to meet the reasonable requirements of persons providing services relating
+                to railways in respect of the facilitation of railway service performance to
+                the greatest extent reasonably practicable. In particular, the plan should:
+
+
+
+                i.    develop further its improvement plan for the Thames Valley section of
+                      the Western route (known as ‘Project Brunel’) including ensuring
+                      sufficient definition of and focus on operational culture and process
+                      improvements. It must provide a clear, timebound plan for renewing
+                      the headspans of overhead line equipment from Paddington to Airport
+                      Junction, together with a mitigation plan until that work is complete;
+
+
+
+                ii.   set out timebound and measurable actions to deliver sustainable
+                      operational and performance improvements in the long-term across
+                      the wider Western route and Wales & Western region – which could
+                      include expansion of the approaches being adopted under the current
+                      ‘Project Brunel’;
+
+                                                                                           10
+          iii.   set out timebound and measurable actions that adequately address
+                 the relevant findings of the ‘Wales & Western Region – Network Rail,
+                 Investigation Report dated 28 May 2024’ relating to the contravention,
+                 including, but not limited to:
+
+
+
+                          improved governance around learning reviews to ensure
+                           they are fully and effectively implemented including for
+                           complex, multi-lateral incidents;
+
+
+
+                          improved governance of train performance delivery,
+                           including how performance risks are identified and
+                           escalated; and
+
+
+
+                          prioritised improvement plans, demonstrably based on
+                           sufficiently robust data describing key operational factors
+                           that are driving increased delay associated with each
+                           incident.
+
+
+
+          iv.    set out how i to iii above will be governed and managed, including
+                 through any update to existing performance recovery plans; and
+
+
+
+       b) Implement the plan consistent with any timing set out therein, or in the
+          absence of a timing as soon as reasonably practicable and deliver to ORR
+          within one month of ORR’s request a report demonstrating why it is satisfied
+          that the plan has been implemented.
+
+
+
+2. If, by 31 October 2024, ORR is satisfied that Network Rail has failed to produce
+   the plan set out at 1(a) above, Network Rail shall pay to the Secretary of State, by
+   bank transfer to such account as notified by ORR, within one month of ORR’s
+   demand the sum of £3,000,000.
+
+
+
+
+                                                                                    11
+       3. Nothing in this order shall be taken to permit Network Rail to breach any licence,
+           contract or other legal obligation.
+
+
+This order shall have immediate effect.
+
+
+
+
+John Larkinson
+Chief Executive
+[Insert Date]
+
+
+
+
+                                                                                         12
+Annex B
+
+1. This annex contains supporting information in relation to the Contravention.            It is
+   underpinned by the ‘Wales & Western Region – Network Rail, Investigation Report dated
+   28 May 2024’ and which is published on our website. This annex also contains details as
+   to how the reasonable sum has been calculated.
+
+
+2. Wales & Western ended Control Period 6 (March 2024) below the regulatory floor for both
+   CRM-P (Consistent Region Measure – Performance) and FDM-R (Freight Delivery Metric
+   by Region). For the start of control period 7 (CP7) (April 2024) whilst the first railway
+   period was a better period for punctuality, the moving annual average for the regulatory
+   success measures (On Time and Cancellations) remained significantly below the targeted
+   performance for the end of year 1 of CP7.
+
+
+3. Our investigation has identified a range of factors impacting performance in the region.
+   We have assessed Network Rail’s actions to date to address these including leadership
+   structure and governance on train performance, preparing for and delivering major network
+   changes, managing assets to deliver train performance, operational management of the
+   network, and resourcing to support train performance.
+
+
+4. We are not satisfied that Network Rail is doing everything to achieve the Network
+   Management Purpose to the greatest extent reasonably practicable, and we are satisfied
+   that Network Rail is contravening condition 1 of its network licence as:
+
+
+            a. Sufficient planning for cumulative change
+
+
+                Network Rail has failed to plan sufficiently for cumulative changes on the
+                network. Network Rail does not yet have comprehensive asset and
+                operations improvement plans that will recover from its previous failure to
+                sufficiently plan for the cumulative changes on the network, including as a
+                result of the Great Western Electrification Project and Crossrail. It appears
+                that it did not fully understand and articulate the impact of increased services
+                and tonnage on effective management of network assets and therefore did
+                not develop appropriate asset management plans and engineering access
+                plans. Whilst the emergent Project Brunel (aimed at addressing longer-term
+                asset sustainability, asset reliability and operational practices on the Western
+                route out of Paddington) is intended to partially address this, it is not
+
+
+                                                                                             13
+   sufficiently developed and is limited geographically to the London end of the
+   Great Western Mainline (GWML). It has not delivered substantial outputs nor
+   achieved lasting performance outcomes for passengers and freight and it has
+   not yet made longer-term plans to take and use engineering access
+   effectively and efficiently. The region has not provided a clear, timebound
+   plan for renewing the overhead lines from Paddington to Airport Junction and
+   a mitigation plan to ensure reliability until that work is complete.
+
+
+b. Understanding operational factors driving increased delay.
+   Wales & Western does not fully understand to what extent different
+   operational factors are driving increased delay when incidents occur. This
+   hampers its ability to precisely and efficiently target improvements. The
+   region has not yet delivered an effective operational business and culture
+   change programme that will promote success of the Western route following
+   the significant change to the mix of traffic during CP6 and its plans to do so
+   are not yet fully defined and developed. Project Brunel is still under
+   development and to date has far greater focus on asset interventions rather
+   than operational measures to manage and reduce delay. It is not yet fully
+   scoped with clear, timebound milestones for all aspects of delivery. It is also
+   unclear how Project Brunel’s benefits and any structural improvements from
+   this project will be incorporated into the region’s wider Western route and
+   regional performance recovery plan, to deliver sustainable improvement.
+
+
+c. Learning lessons from incidents.
+   There are weaknesses in Wales & Western’s processes for learning lessons
+   from incidents. There is an urgent need for it to review lessons from the
+   introduction of major network changes on Western (including GWEP and
+   Crossrail) to ensure that it applies that learning in managing HS2
+   interfaces. There are specific instances of lessons from major disruption
+   events not being fully learnt and implemented. These include lessons from
+   the 19 September 2022 overhead line failure not being fully reflected in Wales
+   & Western’s response in the 7 December 2023 overhead line failure incident,
+   including ineffective action taken to improve its management of stranded
+   trains. Lessons relating to the management of Nuneham Viaduct, in particular
+   the impact of its closure on passengers and freight, have not been fully
+   reviewed. These examples demonstrate that Wales & Western needs to
+   improve governance around incident learning reviews to make sure they are
+
+                                                                               14
+                 fully and effectively implemented, and knowledge is shared across the
+                 industry.
+
+
+             d. Leadership structures and governance
+                 There are weaknesses in Wales & Western’s leadership structures and
+                 governance. We consider that the region is not currently set up to drive
+                 optimised train performance outcomes. Network Rail has not demonstrated
+                 how the region’s overarching strategy and governance for delivering good
+                 train performance provides clear line-of-sight and appropriate accountability.
+                 We consider that the incident at Nuneham Viaduct demonstrated substantial
+                 weakness in the region’s approach to understanding and managing the
+                 network effects of engineering decisions, and also in how it identifies and
+                 escalates     resultant   performance   risks   both   internally   and   with
+                 operators. Wales & Western’s proposed changes to leadership structures
+                 and governance currently lack sufficient maturity.
+
+
+5. There are substantial discrepancies within Wales & Western when compared to train
+   service performance and best practice in other regions. We consider there is a need for
+   a more mature operating culture where different stakeholder requirements can be better
+   balanced and factors directly within Wales & Western’s control are managed more
+   precisely. We also consider there is a need to improve governance arrangements to align
+   the management of operations and assets for the benefit of freight users and passengers.
+
+
+6. In conclusion, for the reasons set out above, we consider that Network Rail is failing to
+   achieve to the greatest extent reasonably practicable having regard to all relevant
+   circumstances its obligations to secure the operation and maintenance of the network in
+   accordance with best practice to meet the reasonable requirements of persons providing
+   services relating to railways in respect of the facilitation of railway service performance.
+   Network Rail has failed to demonstrate that it is taking and will take all necessary steps
+   across the region to improve performance. Project Brunel is not sufficiently developed to
+   address longer-term asset sustainability, asset reliability and operational practices and it
+   is limited to the Thames Valley area of the Western route. Progress to date, and the scope
+   of current commitments do not provide a sufficiently developed strategic plan so as to
+   satisfy ORR that Network Rail is doing everything reasonably practicable to secure the
+   operation of the network. In particular, some of the plans in place are either too immature
+   or insufficient in scale.
+
+
+                                                                                            15
+7. The proposed order requires Network Rail to produce to ORR, by 31 August 2024, a robust
+   and evidenced plan identifying those further activities that it will undertake to secure the
+   operation and maintenance of the network in accordance with best practice to meet the
+   reasonable requirements of persons providing services relating to railways in respect of
+   the facilitation of railway service performance to the greatest extent reasonably
+   practicable. Network Rail will also be required to implement the plan consistent with any
+   timing set out therein, or in the absence of a timing as soon as reasonably practicable and
+   deliver to ORR within one month of ORR’s request a report demonstrating why it is
+   satisfied that the plan has been implemented.
+
+
+8. The proposed order also provides that, if by 31 October 2024, ORR is satisfied that
+   Network Rail has failed to produce the plan, Network Rail is to pay a reasonable sum, in
+   accordance with section 55(7A) of the Act, in the sum of £3,000,000.
+
+
+9. In calculating the reasonable sum, we have followed our penalties statement and had
+   regard to our section 4 duties. We consider that a reasonable sum will incentivise Network
+   Rail to ensure it reaches compliance with condition 1 of its network licence and deter future
+   non-compliance. It will also underpin longer-term actions for improvements, such as the
+   development of the Project Brunel plan.
+
+
+10. We have considered the harm caused to customers of Wales & Western by Network Rail’s
+   failure to deliver its regulatory requirements. There will have been a significant number of
+   passengers impacted by Wales & Western poor performance, which will have also had a
+   significant impact on operators. We therefore assess that the harm to Wales & Western
+   customers is significant.
+
+
+11. We have also considered the culpability of Network Rail. We recognise that Network Rail
+   has paid compensation to train operators for lost future revenues through Schedule 8 to
+   the relevant track access contract. It has not benefitted financially from the breach. We
+   have not seen evidence of Network Rail’s senior managers or Board acting recklessly,
+   knowingly or intentionally in a way that would undermine performance delivery. However,
+   Network Rail’s behaviour demonstrates weaknesses in management of performance. We
+   therefore consider that Network Rail bears some culpability in relation to its delivery of
+   critical industry processes such as operational management and planning.
+
+
+
+
+                                                                                             16
+12. We have applied a number of mitigating factors. Network Rail has been proactive in taking
+   forward improvement initiatives by appointing new senior members of the region’s
+   leadership team and developing Project Brunel.        It has also committed to making
+   improvements to performance governance and has provided some examples of where
+   lessons have been learned. Network Rail has also fully cooperated with ORR’s
+   investigation.
+
+
+13. Given that Network Rail is funded by taxpayers and railway users, and taking into account
+   all our Section 4 duties, we have considered whether it is more appropriate to scale a
+   reasonable sum so that it is broadly capable of being funded by executive bonuses.
+
+
+14. Network Rail’s Regulatory Statement for 2022–2023 set out that bonus payments to all
+   executive directors in Network Rail amounted to £3,000,000. Although it is for Network
+   Rail to decide how to fund any reasonable sum, we believe that it is appropriate to scale
+   that reasonable sum so that it is broadly capable of being funded by executive bonuses.
+
+
+15. ORR therefore proposes to make a Final Order that includes provision for Network Rail to
+   pay the sum of £3,000,000 in the event that it fails to produce the plan by 31 August 2024.
+
+
+
+
+                                                                                           17
+
