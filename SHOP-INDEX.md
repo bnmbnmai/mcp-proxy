@@ -1,6 +1,6 @@
 # BNM Data Shop — live door index
 
-BNM Data Shop — 36 official public-data x402 GETs at [ticks.bnm.farm](https://ticks.bnm.farm).
+BNM Data Shop — official public-data x402 GETs at [ticks.bnm.farm](https://ticks.bnm.farm). Live count is [/.well-known/x402](https://ticks.bnm.farm/.well-known/x402), not a hardcoded door number.
 
 - Shop: [https://bnm.farm/](https://bnm.farm/)
 - Paid host: [https://ticks.bnm.farm](https://ticks.bnm.farm)
@@ -25,7 +25,7 @@ MCP at `/mcp` is generated from live [/.well-known/x402](https://ticks.bnm.farm/
 
 ## Live paid GETs
 
-36 doors, same order as live [/.well-known/x402](https://ticks.bnm.farm/.well-known/x402). Tables: **$0.05** = entire current table. Mariners: **$0.05** = this week's LNM. Body doors: free search, then **$0.02** one official text (`?id=`) or **$0.05** newest 10 (older page `?before=`).
+Same order as live [/.well-known/x402](https://ticks.bnm.farm/.well-known/x402), plus `/ofgem-enforcement` listed here (first slice; not live until apply). Tables: **$0.05** = entire current table. Mariners: **$0.05** = this week's LNM. Body doors: free search, then **$0.02** one official text (`?id=`) or **$0.05** newest 10 (older page `?before=`).
 
 | Path | Bag | Price | Search |
 | --- | --- | --- | --- |
@@ -62,6 +62,7 @@ MCP at `/mcp` is generated from live [/.well-known/x402](https://ticks.bnm.farm/
 | `/cder-reviews` | FDA CDER Integrated Review text. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/cder-reviews/manifest.json?q=) |
 | `/npdes-permits` | EPA-issued individual NPDES permit text. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/npdes-permits/manifest.json?q=) |
 | `/ofsted-inspections` | Ofsted school / provider inspection-report text. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/ofsted-inspections/manifest.json?q=) |
+| `/ofgem-enforcement` | Ofgem enforcement-notice / s.27A / provisional-order text (official ofgem.gov.uk PDFs, Crown / OGL). First slice: six harvested texts. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/ofgem-enforcement/manifest.json?q=) |
 | `/form-483` | FDA Form 483 inspectional observation bodies. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/form-483/manifest.json?q=) |
 | `/gmp` | Health Canada Drug GMP report-card observation text + C.02 cites. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/gmp/manifest.json?q=) |
 | `/gmp-md` | Health Canada medical-device report-card observation text + MDR cites. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/gmp-md/manifest.json?q=) |
