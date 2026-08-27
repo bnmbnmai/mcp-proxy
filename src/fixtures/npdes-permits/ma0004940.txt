@@ -1,0 +1,93 @@
+      NPDES Permit No. MA0004940                                             2024 Final Permit
+                                                                                   Page 1 of 9
+
+
+                             AUTHORIZATION TO DISCHARGE UNDER
+                    THE NATIONAL POLLUTANT DISCHARGE ELIMINATION SYSTEM
+
+In compliance with the provisions of the Federal Clean Water Act as amended, 33 U.S.C. §§ 1251 et
+seq. (the “CWA”),
+
+                                                Sunrise Wind LLC
+
+is authorized to discharge from a facility located at
+
+                                              Sunrise Wind Project
+                                      BOEM Renewable Lease Area OCS-A0487
+
+to receiving water named
+                                                 Atlantic Ocean
+
+in accordance with effluent limitations, monitoring requirements and other conditions set forth
+herein.
+
+This Permit shall become effective on September 1, 2024.
+
+This Permit expires at midnight, August 31, 2029.
+
+This Permit consists of this cover page, Part I, Attachment A (Biological and Thermal Monitoring
+Requirements), and Part II (NPDES Part II Standard Conditions, April 2018).
+
+Signed this      day of
+KENNETH         Digitally signed by
+                KENNETH MORAFF
+
+MORAFF          Date: 2024.06.13
+
+
+Ken Moraff, Director
+Water Division
+Environmental Protection Agency
+Region 1
+Boston, MA
+    NPDES Permit No. MA0004940                                                2024 Final Permit
+                                                                                    Page 2 of 9
+
+PART I
+
+A. EFFLUENT LIMITATIONS AND MONITORING REQUIREMENTS
+
+1. During the period beginning on the effective date and lasting through the expiration date,
+   the Permittee is authorized to discharge non-contact cooling water and filter backwash
+   from the offshore converter station through Outfall Serial Number 001 to the Atlantic
+   Ocean. The intake and discharge shall be limited and monitored as specified below.
+
+
+                                  Effluent Limitations             Monitoring Requirements1,2,3
+Effluent Characteristic
+                               Average          Maximum          Measurement
+                                                                                      Sample Type
+                               Monthly           Daily            Frequency4
+Effluent Flow5                 5.3 MGD           7.8 MGD           Continuous            Meter
+                            Report Minimum and Maximum
+Ambient pH6                                                         1/Month              Meter
+                                          S.U.
+                            Report Minimum and Maximum
+Effluent pH6                                                        1/Month              Meter
+                                          S.U.
+                               7.5 μg/L          13 μg/L
+Total Residual Oxidants
+                              compliance       compliance          Continuous            Meter
+(TRO)7
+                            level = 30 μg/L level = 30 μg/L
+Temperature                      86°F              90°F            Continuous            Meter
+Through-screen Intake
+                                  ---             ≤0.5 fps         Continuous          Calculated
+Velocity8
+
+Footnotes:
+
+1. Effluent samples shall yield data representative of the discharge. A routine sampling
+   program shall be developed in which samples are taken at the discharge point to the
+   receiving water, prior to co-mingling with the receiving water. Changes in sampling location
+   must be approved in writing by the Environmental Protection Agency Region 1 (EPA). The
+   Permittee shall report the results to EPA of any additional testing above that required
+   herein, if testing is done in accordance with 40 CFR Part 136.
+
+2. In accordance with 40 CFR § 122.44(i)(1)(iv), the Permittee shall monitor according to
+   sufficiently sensitive test procedures (i.e., methods) approved under 40 CFR Part 136 or
+   required under 40 CFR chapter I, subchapter N or O, for the analysis of pollutants or
+   pollutant parameters. A method is “sufficiently sensitive” when: 1) the method minimum
+   level (ML) is at or below the level of the effluent limitation established in the permit for the
+   measured pollutant or pollutant parameter; or 2) the method has the lowest ML of the
+   analytical methods approved under 40 CFR Part 136 or required under 40

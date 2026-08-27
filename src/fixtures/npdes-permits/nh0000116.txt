@@ -1,0 +1,99 @@
+            NPDES Permit No. NH0000116                                                      2026 Final Permit
+                                                                                                 Page 1 of 12
+
+
+                                         AUTHORIZATION TO DISCHARGE UNDER
+                                THE NATIONAL POLLUTANT DISCHARGE ELIMINATION SYSTEM
+
+In compliance with the provisions of the Federal Clean Water Act as amended, 33 U.S.C. §§ 1251 et
+seq. (the “CWA”),
+
+                                             Nylon Corporation of America
+
+is authorized to discharge from a facility located at
+
+                                             Nylon Corporation of America
+                                                 333 Sundial Avenue
+                                                Manchester, NH 03103
+
+to receiving water named
+                                                  Merrimack River
+                                             Merrimack River Watershed
+
+in accordance with effluent limitations, monitoring requirements and other conditions set forth
+herein.
+
+This Permit shall become effective on the first day of the calendar month following sixty (60) days
+after the date of signature.1
+
+This Permit expires at midnight on five years from the last day of the month preceding the effective
+date.
+
+This Permit supersedes the Permit issued on August 1, 2019.
+
+This Permit consists of this cover page, Part I, Attachment A, (Freshwater Chronic Toxicity Test
+Procedure and Protocol, March 2013), Attachment B, List for Pollutant Scans, and Part II (NPDES
+Part II Standard Conditions, April 2018).
+
+Signed this                   day of
+    KENNETH
+    MORAFF 09:53:49 -05'00'
+Ken Moraff, Director
+Water Division
+Environmental Protection Agency
+Region 1
+Boston, MA
+
+
+
+
+1
+    Procedures for appealing EPA’s Final Permit decision may be found at 40 CFR § 124.19.
+          NPDES Permit No. NH0000116                                             2026 Final Permit
+                                                                                      Page 2 of 12
+
+      PART I
+
+      A. EFFLUENT LIMITATIONS AND MONITORING REQUIREMENTS
+
+          1. During the period beginning on the effective date and lasting through the expiration
+          date, the Permittee is authorized to discharge non-contact cooling water from heat
+          exchangers, vacuum pumps, and reactor vessel components and filter backwash water
+          through Outfall Serial Number 004 to the Merrimack River. The discharge shall be limited
+          and monitored as specified below; the receiving water shall be monitored as specified
+          below.
+
+
+                                              Effluent Limitations        Monitoring Requirements1,2,3
+Effluent Characteristic
+                                           Average           Maximum    Measurement
+                                                                                            Sample Type5
+                                           Monthly            Daily      Frequency4
+                                                                                          Meter or
+Effluent Flow6                       Report MGD           1.44 MGD      Continuous
+                                                                                          Calculation
+pH7                                               6.5 - 8.0 S.U.        1/Week            Grab
+
+pH of upstream receiving water8              Report            Report   1/Week            Grab
+
+Temperature, June to September       ---                  95.0°F        3/Week            Grab
+
+Temperature, October to May          ---                  83.0°F        1/Week            Grab
+
+Total Residual Chlorine (TRC)9       1.0 mg/L             1.0 mg/L      1/Week            Grab
+
+Oil & Grease                         ---                  15 mg/L       1/Quarter         Grab
+
+Total Suspended Solids               30 mg/L              100 mg/L      1/Quarter         Grab
+
+Pollutant Scan10                     ---                  Report µg/L   1/Year            Composite
+
+Whole Effluent Toxicity (WET) Testing11,12
+
+   C-NOEC                            ---                  Report %      1/year            Composite
+
+   LC50                              ---                  Report %      1/year            Composite
+
+   Hardness                          ---                  Report mg/L   1/year            Composite
+
+   Ammonia Nitrogen  
