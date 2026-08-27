@@ -86,8 +86,22 @@ async function main(): Promise<void> {
   assert.ok(OFFICIAL_WALK_LISTINGS.some((r) => r.docket === "16-0188-R2"));
   assert.ok(OFFICIAL_WALK_LISTINGS.every((r) => officialNcuaPdfUrl(r.sourceUrl)));
   assert.ok(!OFFICIAL_WALK_LISTINGS.some((r) => r.docket === "26-0031-WR"), "walk skips people/IAP");
-  const walkIds = new Set([...SEED_LISTINGS, ...OFFICIAL_WALK_LISTINGS].map((r) => r.id));
+  const leftoverRows = JSON.parse(readFx("leftover-listing-excerpt.json")) as NcuaListingRow[];
+  const leftoverListed = parseListingRows(leftoverRows);
+  assert.ok(leftoverListed.some((r) => r.id === "12-0027-R2"), "leftover listing includes Montgomery County Teachers");
+  assert.ok(leftoverListed.some((r) => r.id === "14-0057-R2"), "leftover listing includes White Rock");
+  assert.ok(leftoverListed.some((r) => r.id === "11-0022-R2"), "leftover listing includes Borinquen");
+  assert.ok(leftoverListed.some((r) => r.id === "13-0039-R4"), "leftover listing includes Bagumbayan");
+  assert.ok(leftoverListed.some((r) => r.id === "07-0502-II"), "leftover listing includes Garden Savings");
+  assert.ok(leftoverListed.some((r) => r.id === "17-0020-R1"), "leftover listing includes leftover docket-stem PDF");
+  assert.ok(!leftoverListed.some((r) => r.id === "11-0028-R4"), "skip leftover people/IAP prohibition");
+  assert.ok(
+    leftoverListed.every((r) => officialNcuaPdfUrl(r.sourceUrl)),
+    "leftover walk keeps official ncua.gov administrative-order PDFs",
+  );
+  const walkIds = new Set([...SEED_LISTINGS, ...OFFICIAL_WALK_LISTINGS, ...leftoverListed].map((r) => r.id));
   assert.ok(walkIds.size > 5, "official PDF walk lists more than first-slice=5");
+  assert.ok(walkIds.size >= 12, "leftover walk lists leftover official institution PDFs past the first-slice seeds");
   const src = readFs(join(dirname(fileURLToPath(import.meta.url)), "../src/ncua-orders.ts"), "utf-8");
   assert.match(src, /NCUA_ORDERS_LIMIT", "24"/);
   assert.match(src, /NCUA_ORDERS_MAX_FETCH", "36"/);
@@ -99,6 +113,18 @@ async function main(): Promise<void> {
   assert.equal(
     extractOfficialPdfUrl(readFx("pdf-teaser.html")),
     "https://ncua.gov/files/administrative-orders/AO19-0116-ER.pdf",
+  );
+  assert.equal(
+    extractOfficialPdfUrl(readFx("leftover-teaser.html")),
+    "https://ncua.gov/files/administrative-orders/AO2012-0027-R2.pdf",
+  );
+  assert.equal(
+    officialNcuaPdfUrl("https://ncua.gov/files/administrative-orders/17-0020-R1.pdf"),
+    "https://ncua.gov/files/administrative-orders/17-0020-R1.pdf",
+  );
+  assert.equal(
+    officialNcuaPdfUrl("https://ncua.gov/files/administrative-orders/AO2012-0027-R2.pdf"),
+    "https://ncua.gov/files/administrative-orders/AO2012-0027-R2.pdf",
   );
 
   const htmlListed = parseListingHtml(readFx("listing-excerpt.html"));
@@ -132,6 +158,14 @@ async function main(): Promise<void> {
   const lua = rows.find((r) => r.docket === "18-0001-ER");
   assert.equal(isLuaRow(lua!), true);
   assert.equal(isInstitutionOrderRow(lua!), false);
+  const mctRow = leftoverRows.find((r) => r.docket === "12-0027-R2");
+  assert.equal(isInstitutionOrderRow(mctRow!), true, "leftover Montgomery County Teachers teaser is this SKU");
+  assert.equal(isPeopleRow(mctRow!), false);
+  const gardenRow = leftoverRows.find((r) => r.docket === "07-0502-II");
+  assert.equal(isInstitutionOrderRow(gardenRow!), true, "leftover Garden Savings C&D is this SKU");
+  const hittRow = leftoverRows.find((r) => r.docket === "11-0028-R4");
+  assert.equal(isPeopleRow(hittRow!), true);
+  assert.equal(isInstitutionOrderRow(hittRow!), false, "skip leftover people/IAP");
 
   const liveText = parseNcuaOrderHtml(readFx("21-0105-ER.html"), {
     sourceUrl:
@@ -200,6 +234,13 @@ async function main(): Promise<void> {
     docket: "16-0188-R2",
   });
   assert.ok(isRealNcuaOrderBody(sm.body), "official leftover PDF order-to-C&D is this SKU");
+
+  const leftoverScan = parseNcuaOrderHtml(readFx("leftover-image-only.txt"), {
+    sourceUrl: "https://ncua.gov/files/administrative-orders/AO2007-0502-II.pdf",
+    creditUnion: "Garden Savings Federal Credit Union",
+    docket: "07-0502-II",
+  });
+  assert.equal(isRealNcuaOrderBody(leftoverScan.body), false, "leftover image-only scan is not extractable C&D text");
 
   const teaser = parseNcuaOrderHtml(readFx("no-body.txt"), {
     sourceUrl: LISTING_URL,
@@ -318,6 +359,9 @@ async function main(): Promise<void> {
     assert.ok(snap.cards.every((c) => isRealNcuaOrderBody(c.body)));
     assert.ok(!snap.cards.some((c) => c.id === "26-0031-WR"), "skip IAP");
     assert.ok(!snap.cards.some((c) => c.id === "23-0107-ER"), "skip termination");
+    assert.ok(!snap.cards.some((c) => c.id === "12-0027-R2"), "skip leftover image-only Montgomery County Teachers");
+    assert.ok(!snap.cards.some((c) => c.id === "07-0502-II"), "skip leftover image-only Garden Savings");
+    assert.ok(!snap.cards.some((c) => c.id === "11-0028-R4"), "skip leftover people/IAP");
     assert.ok(snap.cards.every((c) => officialNcuaOrderUrl(c.sourceUrl)));
     assert.ok(
       snap.cards.every((c) => !/archive\.org|fdic\.gov|occ\.gov|ftc\.gov|consumerfinance\.gov|federalreserve\.gov/i.test(c.sourceUrl)),
