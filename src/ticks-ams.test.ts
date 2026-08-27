@@ -8,6 +8,7 @@ import {
   SKIPPED_SOURCES,
   latestEsmisPdfUrl,
   mergeAmsNationalTicks,
+  officialPdfCandidateOrder,
   parseAmsReportText,
   parseReportDate,
   readAmsSnapshot,
@@ -184,6 +185,49 @@ assert.equal(merino.hi, 3.15);
 assert.ok(!wool.some((row) => /emi|exch|bales|greasy/i.test(row.id + row.label)));
 assert.ok(!wool.some((row) => /domestic/i.test(row.id)), "no invented domestic wool when AMS printed no trades");
 
+const hayAuction = parseAmsReportText(
+  fx("hay-arthur-3652.txt"),
+  report("3652"),
+  "https://www.ams.usda.gov/mnreports/ams_3652.pdf",
+);
+assert.equal(parseReportDate(fx("hay-arthur-3652.txt")), "2026-08-17");
+assert.ok(hayAuction.length >= 3, `expected Arthur hay-auction prints, got ${hayAuction.length}`);
+assert.ok(hayAuction.every((row) => row.id.startsWith("hay.ams_3652.") && row.asOf === "2026-08-17"));
+const arthurPrem = hayAuction.find((row) => row.id.includes("alfalfa.premium.small_square"));
+assert.ok(arthurPrem, "Arthur alfalfa premium small square");
+assert.equal(arthurPrem.unit, "$/bale");
+assert.equal(arthurPrem.price, 6.5);
+const arthurGoodMix = hayAuction.find((row) => /clover/i.test(row.commodity) && row.price > 2 && row.price < 3);
+assert.ok(arthurGoodMix, "Arthur clover/grass mix good avg 2.32");
+assert.equal(arthurGoodMix.price, 2.32);
+
+const cattleAuction = parseAmsReportText(
+  fx("cattle-montana-auction-1778.txt"),
+  report("1778"),
+  "https://www.ams.usda.gov/mnreports/ams_1778.pdf",
+);
+assert.equal(parseReportDate(fx("cattle-montana-auction-1778.txt")), "2026-08-22");
+assert.ok(cattleAuction.length >= 5, `expected MT weekly auction feeder prints, got ${cattleAuction.length}`);
+assert.ok(cattleAuction.every((row) => row.group === "cattle" && row.unit === "$/cwt"));
+assert.ok(cattleAuction.every((row) => row.id.startsWith("cattle.ams_1778.")));
+const mtSteer484 = cattleAuction.find((row) => row.id.includes("feeder-steer.ml1.484lb"));
+assert.ok(mtSteer484, "MT weekly ML1 steer 484 lb");
+assert.equal(mtSteer484.price, 456.82);
+const mtHeifer625 = cattleAuction.find((row) => row.id.includes("feeder-heifer.ml1.625lb"));
+assert.ok(mtHeifer625);
+assert.equal(mtHeifer625.price, 380);
+assert.ok(!cattleAuction.some((row) => row.price === 200), "dairy steers are not the feeder print");
+assert.ok(!cattleAuction.some((row) => row.price === 169.49), "slaughter cows are not the feeder print");
+const mtHeadline = cattleAuction.find((row) => row.id === "cattle.ams_1778.montana_weekly.feeder-steers-ml1");
+assert.ok(mtHeadline, "MT weekly headline ML1 steers");
+
+const liveFirst = officialPdfCandidateOrder("2904", [
+  "https://esmis.nal.usda.gov/sites/default/release-files/th83kz35x/h702s6021/br86d3252/AMS_2904.PDF",
+]);
+assert.equal(liveFirst[0], "https://www.ams.usda.gov/mnreports/ams_2904.pdf");
+assert.ok(liveFirst.some((u) => u.includes("esmis.nal.usda.gov")));
+assert.ok(liveFirst.findIndex((u) => u.includes("esmis")) > liveFirst.findIndex((u) => u.includes("ams.usda.gov/mnreports")));
+
 const listing = latestEsmisPdfUrl(fx("esmis-california-listing.html"), "2904");
 assert.equal(
   listing,
@@ -267,15 +311,21 @@ assert.ok(
 assert.ok(!slugs.includes("3045"), "Minneapolis Daily Basis is not POS");
 assert.ok(slugs.includes("2911"), "National Wool Review leftover");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2911")?.group, "wool");
+assert.ok(
+  ["3652", "2245", "2246", "1716", "1650", "2132", "1778", "2039", "2106", "1775"].every((s) => slugs.includes(s)),
+  "official AMS hay-auction barns + PNW/mountain cattle auctions",
+);
 assert.ok(AMS_NATIONAL_REPORTS.every((r) => !["3056", "3057", "3058", "3059", "2914"].includes(r.slug)));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "marsapi"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "nass-quick-stats"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "wasde-psd-esr"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "SJ_LS850"));
-assert.ok(SKIPPED_SOURCES.some((s) => s.id === "hay-auction-barns"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "no-il-ga-direct-hay"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "ams_3045_minneapolis_basis"));
-assert.ok(SKIPPED_SOURCES.some((s) => s.id === "cattle-auction-summaries"));
+assert.ok(SKIPPED_SOURCES.some((s) => s.id === "se-individual-cattle-barns"));
+assert.ok(SKIPPED_SOURCES.some((s) => s.id === "facebook-private-barns"));
+assert.ok(SKIPPED_SOURCES.some((s) => s.id === "gis-echo-family-herd"));
+assert.ok(SKIPPED_SOURCES.some((s) => s.id === "new-x402-door"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "ams_2911_marsapi"));
 assert.equal(PRODUCT_ID, "idaho-hay-feeder-ticks");
 assert.equal(PRODUCT_NAME, "US hay, cattle, and grain ticks");
@@ -354,6 +404,8 @@ console.log(
     grainIllinois: grainIl.length,
     grainKansas: grainKs.length,
     woolNational: wool.length,
+    hayArthurAuction: hayAuction.length,
+    cattleMontanaAuction: cattleAuction.length,
     mergedTickCount: merged.ticks.length,
     keptTwinFalls: true,
   }),

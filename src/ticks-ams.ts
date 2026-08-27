@@ -4,6 +4,10 @@
  * Does not open a new SKU. Does not wrap marsapi (403 without a key), LMR datamart JSON,
  * NASS Quick Stats, WASDE/PSD/ESR, the National Feeder dashboard, or SJ_LS850.txt.
  * AMS_2911 National Wool Review is public-domain 17 USC 105; parse the official PDF only.
+ *
+ * Prefer live mnreports over NAL/esmis archives. Collect used to unshift ESMIS first and
+ * keep the first parseable PDF — that left many Direct Hay/Cattle/Grain rows on Sept 2025
+ * NAL copies while official still published Aug 2026 bodies on ams.usda.gov/mnreports.
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -54,6 +58,24 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "3050", group: "hay", region: "alabama", title: "Alabama Direct Hay", esmisPublication: "alabama-direct-hay-report" },
   { slug: "3793", group: "hay", region: "tennessee", title: "Tennessee Direct Hay", esmisPublication: "tennessee-direct-hay-report" },
   { slug: "3926", group: "hay", region: "nevada", title: "Nevada Direct Hay", esmisPublication: "" },
+  { slug: "3652", group: "hay", region: "arthur_il", title: "Arthur Sale Barn Hay Auction (Monday)", esmisPublication: "" },
+  { slug: "3872", group: "hay", region: "arthur_il_sat", title: "Arthur Sale Barn Hay Auction (Saturday, seasonal)", esmisPublication: "" },
+  { slug: "3679", group: "hay", region: "fort_collins_co", title: "Centennial Livestock Hay Auction (Fort Collins)", esmisPublication: "" },
+  { slug: "2245", group: "hay", region: "corsica_sd", title: "Dakota Hay Auction (Corsica, Monday)", esmisPublication: "" },
+  { slug: "3870", group: "hay", region: "corsica_sd_seasonal", title: "Dakota Hay Auction (Corsica, seasonal)", esmisPublication: "" },
+  { slug: "3729", group: "hay", region: "union_ia", title: "HPL Auctions Hay Auction (Union)", esmisPublication: "" },
+  { slug: "3627", group: "hay", region: "brush_co", title: "Livestock Exchange Hay Auction (Brush)", esmisPublication: "" },
+  { slug: "3660", group: "hay", region: "bethalto_il", title: "Madison County Ag Hay Auction (Bethalto)", esmisPublication: "" },
+  { slug: "2246", group: "hay", region: "pipestone_mn", title: "Pipestone Hay and Straw Auction", esmisPublication: "" },
+  { slug: "3694", group: "hay", region: "greeley_co", title: "Producers Livestock Hay Auction (Greeley)", esmisPublication: "" },
+  { slug: "2243", group: "hay", region: "rock_valley_ia_mon", title: "Rock Valley Hay Auction (Monday)", esmisPublication: "" },
+  { slug: "2244", group: "hay", region: "rock_valley_ia_thu", title: "Rock Valley Hay Auction (Thursday)", esmisPublication: "" },
+  { slug: "3489", group: "hay", region: "rushville_va", title: "Rushville Hay Auction", esmisPublication: "" },
+  { slug: "3723", group: "hay", region: "golden_city_mo", title: "Southwest Missouri Hay Auction (Golden City)", esmisPublication: "" },
+  { slug: "3364", group: "hay", region: "shipshewana_in", title: "Shipshewana Hay Auction", esmisPublication: "" },
+  { slug: "1650", group: "hay", region: "topeka_in", title: "Topeka Hay Auction", esmisPublication: "" },
+  { slug: "1716", group: "hay", region: "new_holland_pa", title: "Wolgemuth Hay Auction (New Holland)", esmisPublication: "" },
+  { slug: "1725", group: "hay", region: "leola_pa", title: "Wolgemuth Hay Auction (Leola)", esmisPublication: "" },
   { slug: "2710", group: "cattle", region: "texas", title: "Texas Direct Cattle", esmisPublication: "texas-direct-cattle-report" },
   { slug: "3097", group: "cattle", region: "kansas", title: "Kansas Direct Feeder Cattle", esmisPublication: "kansas-direct-cattle-report" },
   { slug: "3098", group: "cattle", region: "oklahoma", title: "Oklahoma Direct Feeder Cattle", esmisPublication: "oklahoma-direct-cattle-report" },
@@ -67,6 +89,31 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "2709", group: "cattle", region: "southeast", title: "Southeast Direct Feeder Cattle", esmisPublication: "" },
   { slug: "2940", group: "cattle", region: "southwest", title: "Southwest Direct Feeder Cattle", esmisPublication: "" },
   { slug: "3237", group: "cattle", region: "wyoming_nebraska", title: "Wyoming-Nebraska Direct Feeder Cattle", esmisPublication: "wyoming-nebraska-direct-cattle-report" },
+  { slug: "2132", group: "cattle", region: "toppenish_wa", title: "Toppenish Livestock Commission Cattle Auction", esmisPublication: "" },
+  { slug: "1773", group: "cattle", region: "miles_city_mt", title: "Miles City Livestock Commission Cattle Auction", esmisPublication: "" },
+  { slug: "1774", group: "cattle", region: "billings_pay_wed", title: "Public Auction Yards Cattle Auction (Billings, Wednesday)", esmisPublication: "" },
+  { slug: "1775", group: "cattle", region: "billings_lc_mon", title: "Billings Livestock Commission Cattle Auction (Monday)", esmisPublication: "" },
+  { slug: "1776", group: "cattle", region: "billings_pay_fri", title: "Public Auction Yards Cattle Auction (Billings, Friday)", esmisPublication: "" },
+  { slug: "1777", group: "cattle", region: "billings_lc_thu", title: "Billings Livestock Commission Cattle Auction (Thursday)", esmisPublication: "" },
+  { slug: "1778", group: "cattle", region: "montana_weekly", title: "Montana Weekly Cattle Auction Summary", esmisPublication: "" },
+  { slug: "2036", group: "cattle", region: "cedar_city_ut", title: "Cedar Livestock Cattle Auction (Cedar City)", esmisPublication: "" },
+  { slug: "2037", group: "cattle", region: "salina_ut", title: "Producers Livestock Cattle Auction (Salina)", esmisPublication: "" },
+  { slug: "2383", group: "cattle", region: "monroe_ut", title: "R Livestock Connection Cattle Auction (Monroe)", esmisPublication: "" },
+  { slug: "2039", group: "cattle", region: "utah_weekly", title: "Utah Weekly Cattle Auction Summary", esmisPublication: "" },
+  { slug: "2101", group: "cattle", region: "torrington_wy_fri", title: "Torrington Livestock Commission Cattle Auction (Friday)", esmisPublication: "" },
+  { slug: "2103", group: "cattle", region: "torrington_wy_wed", title: "Torrington Livestock Commission Feeder Cattle Auction (Wednesday)", esmisPublication: "" },
+  { slug: "2104", group: "cattle", region: "riverton_wy", title: "Winter Livestock Cattle Auction (Riverton)", esmisPublication: "" },
+  { slug: "2106", group: "cattle", region: "wyoming_weekly", title: "Wyoming Weekly Cattle Auction Summary", esmisPublication: "" },
+  { slug: "1907", group: "cattle", region: "colorado_weekly", title: "Colorado Weekly Cattle Auction Summary", esmisPublication: "" },
+  { slug: "2027", group: "cattle", region: "south_dakota_weekly", title: "South Dakota Weekly Cattle Auction Summary", esmisPublication: "" },
+  { slug: "2100", group: "cattle", region: "north_dakota_weekly", title: "North Dakota Weekly Cattle Auction Summary", esmisPublication: "" },
+  { slug: "1860", group: "cattle", region: "nebraska_weekly", title: "Nebraska Weekly Cattle Auction Summary", esmisPublication: "" },
+  { slug: "1895", group: "cattle", region: "kansas_weekly", title: "Kansas Weekly Cattle Auction Summary", esmisPublication: "" },
+  { slug: "1784", group: "cattle", region: "new_mexico_weekly", title: "New Mexico Weekly Cattle Auction Summary", esmisPublication: "" },
+  { slug: "1831", group: "cattle", region: "oklahoma_weekly", title: "Oklahoma Weekly Cattle Auction Summary", esmisPublication: "" },
+  { slug: "1955", group: "cattle", region: "texas_weekly", title: "Texas Weekly Cattle Auction Summary", esmisPublication: "" },
+  { slug: "2167", group: "cattle", region: "iowa_weekly", title: "Iowa Weekly Cattle Auction Summary", esmisPublication: "" },
+  { slug: "1821", group: "cattle", region: "missouri_weekly", title: "Missouri Weekly Cattle Auction Summary", esmisPublication: "" },
   { slug: "3148", group: "grain", region: "portland", title: "Portland Daily Grain Bids", esmisPublication: "portland-daily-grain-bids" },
   { slug: "3046", group: "grain", region: "minneapolis", title: "Minneapolis Daily Grain", esmisPublication: "minneapolis-daily-grain-report" },
   { slug: "3223", group: "grain", region: "kansas_city", title: "Kansas City Daily Grain Bids", esmisPublication: "kansas-city-daily-grain-bids" },
@@ -108,13 +155,19 @@ export const SKIPPED_SOURCES = [
   { id: "SJ_LS850", why: "https://www.ams.usda.gov/mnreports/SJ_LS850.txt already returns the official plaintext body" },
   { id: "nass-quick-stats", why: "documented no-auth JSON API — KILL" },
   { id: "wasde-psd-esr", why: "documented no-auth USDA JSON/CSV — KILL" },
-  { id: "hay-auction-barns", why: "local AMS hay-auction PDFs would be 50-state doors; this pass is regional Direct reports" },
   { id: "ams_3056_3057_3058_3059_2914", why: "already collected on /ticks (Idaho/Oregon/Columbia Basin hay, NW Direct cattle, PNW pulses)" },
-  { id: "no-il-ga-direct-hay", why: "AMS hay listing has no Illinois or Georgia Direct Hay — only local hay-auction barn PDFs, which we skip" },
+  { id: "no-il-ga-direct-hay", why: "AMS hay listing has no Illinois or Georgia Direct Hay report — IL hay is auction-barn PDFs already wired" },
   { id: "retired-city-grain-txt", why: "sj_gr851 / gx_gr110 / wh_gr110 / jc_gr111 are retired or already plaintext city grain .txt — skip wrapping" },
   { id: "ams_3045_minneapolis_basis", why: "AMS_3045 Minneapolis Daily Basis is a MIAX floor-basis sheet, not a POS bid table" },
-  { id: "cattle-auction-summaries", why: "state cattle-auction summary PDFs are local-barn dumps; this pass is leftover Grain POS" },
+  { id: "se-individual-cattle-barns", why: "400+ official SE/Midwest individual sale-barn PDFs stay off this slice; weekly mountain/plains summaries + PNW/MT/UT/WY barns are wired. Not a new SKU." },
+  { id: "se-weekly-cattle-summaries", why: "AL/FL/GA/MS/NC/SC/TN/KY/VA/WV/PA/IN/IL daily+weekly auction summaries leftover — same door later, not this pass" },
+  { id: "seasonal-specials", why: "official seasonal/replacement/stock-show specials often empty off-season; skip rather than invent" },
+  { id: "video-internet-auctions", why: "feeder cattle internet/video/board sales are a different AMS family than sale-barn floor sheets" },
   { id: "lmr-slaughter-pdfs", why: "national/regional Direct Slaughter PDFs are LMR fed-cattle tables, not the feeder/POS parser this door already sells" },
+  { id: "plaintext-recaps", why: "lswalabama / lswkssum / CO_LS146.txt already return official plaintext — do not wrap" },
+  { id: "facebook-private-barns", why: "Facebook barns, private sale-barn homepages, and Treasure Valley Caldwell stay out — no dated official PDF/HTML print" },
+  { id: "gis-echo-family-herd", why: "GIS wraps, EPA ECHO, and the sold family herd ledger are not /ticks rows" },
+  { id: "new-x402-door", why: "no per-barn / per-state / per-region SKU; extra official rows stay on GET /ticks" },
   { id: "ams_2911_marsapi", why: "marsapi /services/v1.2/reports/2911 returns HTTP 403 without a key — parse the official mnreports PDF only" },
 ] as const;
 
@@ -214,6 +267,12 @@ const MONTHS: Record<string, string> = {
 export function parseReportDate(text: string): string | null {
   const ending = text.match(/week ending\s+(\d{1,2}\/\d{1,2}\/\d{4})/i);
   if (ending) return parseMdY(ending[1]);
+  const livestockThru = text.match(
+    /Livestock Weighted Average Report for\s+\d{1,2}\/\d{1,2}\/\d{4}\s*-\s*(\d{1,2}\/\d{1,2}\/\d{4})/i,
+  );
+  if (livestockThru) return parseMdY(livestockThru[1]);
+  const hayAuction = text.match(/Hay Auction Weighted Average Report for\s+(\d{1,2}\/\d{1,2}\/\d{4})/i);
+  if (hayAuction) return parseMdY(hayAuction[1]);
   const grain = text.match(/Grain Report for\s+(\d{1,2}\/\d{1,2}\/\d{4})/i);
   if (grain) return parseMdY(grain[1]);
   const woolThru = text.match(/Report For:\s*\d{1,2}\/\d{1,2}\/\d{4}\s+thru\s+(\d{1,2}\/\d{1,2}\/\d{4})/i);
@@ -265,7 +324,13 @@ export function mnreportsPdfUrls(slug: string): string[] {
   return [
     `https://www.ams.usda.gov/mnreports/ams_${slug}.pdf`,
     MNREPORTS_PDF(slug),
+    `https://search.ams.usda.gov/mnreports/ams_${slug}.pdf`,
   ];
+}
+
+/** Live official host first. NAL/esmis archives are fallback only (Sept 2025 copies). */
+export function officialPdfCandidateOrder(slug: string, esmisUrls: string[] = []): string[] {
+  return [...new Set([...mnreportsPdfUrls(slug), ...esmisUrls])];
 }
 
 const PACKAGE_RE =
@@ -300,13 +365,14 @@ function hayKindLine(line: string): string | null {
 
 function hayClass(line: string): { commodity: string; grade: string; unit: string } | null {
   const m = line.match(
-    /^([A-Za-z][A-Za-z0-9 /]+?)\s+-\s+(?:([A-Za-z][A-Za-z/ ]+?)\s+)?\((?:Ask|Trade|Contract \(Trade\))\/Per\s+(Ton|Bale)\)/i,
+    /^([A-Za-z][A-Za-z0-9 /]+?)\s+-\s+(?:([A-Za-z][A-Za-z/ ]+?)\s+)?\((?:(?:Ask|Trade|Contract \(Trade\))\/)?Per\s+(Ton|Bale|Bundle)\)/i,
   );
   if (!m) return null;
+  const kind = m[3].toLowerCase();
   return {
     commodity: m[1].trim(),
     grade: (m[2] || "quoted").trim(),
-    unit: m[3].toLowerCase() === "ton" ? "$/ton" : "$/bale",
+    unit: kind === "ton" ? "$/ton" : kind === "bundle" ? "$/bundle" : "$/bale",
   };
 }
 
@@ -364,11 +430,15 @@ function parseHayRow(
   out: AmsTick[],
 ): void {
   if (/\borganic\b/i.test(`${region} ${cls.commodity} ${cls.grade} ${line}`)) return;
-  const afterPkg = line.slice(line.toLowerCase().indexOf(pkg.toLowerCase()) + pkg.length);
+  const afterPkg = line
+    .slice(line.toLowerCase().indexOf(pkg.toLowerCase()) + pkg.length)
+    .replace(/\b\d+(?:st|nd|rd|th)\s+Cut\b/gi, "");
   const nums = [...afterPkg.matchAll(/\d+(?:\.\d+)?(?:\s*-\s*\d+(?:\.\d+)?)?/g)].map((m) => m[0]);
+  const loBound = cls.unit === "$/ton" ? 5 : 0.4;
+  const hiBound = cls.unit === "$/ton" ? 800 : 200;
   const money = nums
     .map((n) => parseMoney(n))
-    .filter((n): n is NonNullable<typeof n> => n !== null && n.mid >= 5 && n.mid <= 800);
+    .filter((n): n is NonNullable<typeof n> => n !== null && n.mid >= loBound && n.mid <= hiBound);
   if (money.length === 0) return;
   const chosen = money.find((n) => !n.lo.toString().includes(".") && n.mid >= 20) && money.length > 1
     ? money[money.length - 1]
@@ -406,7 +476,100 @@ function parseHayRow(
 const CATTLE_ROW_RE =
   /^(?:Current FOB\s+)?(\d+)\s+(\d+)(?:\s*-\s*(\d+))?\s+(\d+)\s+(\d+(?:\.\d+)?)(?:\s*-\s*(\d+(?:\.\d+)?))?\s+(\d+(?:\.\d+)?)/i;
 
+const AUCTION_CATTLE_HDR =
+  /^(STEERS|HEIFERS)\s+-\s+(Medium and Large [12](?:-[23])?|Large [123](?:-[23])?)\s+\(Per Cwt\s*\/\s*Actual Wt\)/i;
+const AUCTION_CATTLE_ROW =
+  /^(\d+)\s+(\d+)(?:-(\d+))?\s+(\d+)\s+(\d+(?:\.\d+)?)(?:-(\d+(?:\.\d+)?))?\s+(\d+(?:\.\d+)?)/;
+
+export function looksLikeCattleAuction(text: string): boolean {
+  return /Livestock Weighted Average Report for/i.test(text) || /\(Per Cwt\s*\/\s*Actual Wt\)/i.test(text);
+}
+
+export function parseCattleAuctionReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const asOf = parseReportDate(text);
+  if (!asOf) return [];
+  const source = `USDA AMS ${report.title} Report (AMS_${report.slug})`;
+  const out: AmsTick[] = [];
+  let sex = "";
+  let grade = "";
+  let inFeeder = false;
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.replace(/\s+/g, " ").trim();
+    if (!line) continue;
+    if (/^FEEDER CATTLE\b/i.test(line)) {
+      inFeeder = true;
+      sex = "";
+      grade = "";
+      continue;
+    }
+    if (/^(SLAUGHTER|REPLACEMENT|FEEDER SHEEP|SLAUGHTER SHEEP|SLAUGHTER GOAT)/i.test(line)) {
+      inFeeder = false;
+      sex = "";
+      grade = "";
+      continue;
+    }
+    const hdr = line.match(AUCTION_CATTLE_HDR);
+    if (hdr) {
+      sex = hdr[1];
+      grade = hdr[2];
+      inFeeder = true;
+      continue;
+    }
+    if (/\(Per Cwt/i.test(line) && /^(DAIRY|BEEF\/DAIRY|COWS|BULLS|PAIRS|STOCK|BRED)/i.test(line)) {
+      sex = "";
+      continue;
+    }
+    if (!sex || !inFeeder) continue;
+    const row = line.match(AUCTION_CATTLE_ROW);
+    if (!row) continue;
+    const head = Number(row[1]);
+    const wt = Number(row[4]);
+    const lo = Number(row[5]);
+    const hi = row[6] ? Number(row[6]) : lo;
+    const avg = Number(row[7]);
+    if (!Number.isFinite(avg) || avg < 20 || avg > 900) continue;
+    if (!Number.isFinite(wt) || wt < 250 || wt > 1050) continue;
+    const sexTok = /heifer/i.test(sex) ? "feeder-heifer" : "feeder-steer";
+    const gradeTok = /2-3/.test(grade)
+      ? "ml23"
+      : /1-2/.test(grade)
+        ? "ml12"
+        : /large 3/i.test(grade)
+          ? "l3"
+          : /large 2/i.test(grade)
+            ? "ml2"
+            : /medium and large 2/i.test(grade)
+              ? "ml2"
+              : "ml1";
+    const note = /\bunweaned\b/i.test(line) ? "unweaned" : "";
+    const id = ["cattle", `ams_${report.slug}`, token(report.region), sexTok, gradeTok, `${wt}lb`].join(".");
+    out.push({
+      id,
+      group: "cattle",
+      commodity: /heifer/i.test(sex) ? "Heifers" : "Steers",
+      label: `${report.title} ${sex} ${grade} ${wt} lb`,
+      market: report.title,
+      classGrade: `USDA ${grade}, ${wt} lb, ${head} head${note ? `, ${note}` : ""}`,
+      unit: "$/cwt",
+      price: roundMoney(avg),
+      lo,
+      hi,
+      asOf,
+      source,
+      sourceUrl,
+      reportDate: asOf,
+      series: id,
+    });
+  }
+  const headlines = headlineCattle(out, report, source, sourceUrl, asOf);
+  return dedupeTicks([...headlines, ...out]);
+}
+
 export function parseCattleReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  if (looksLikeCattleAuction(text)) {
+    const auction = parseCattleAuctionReport(text, report, sourceUrl);
+    if (auction.length > 0) return auction;
+  }
   const asOf = parseReportDate(text);
   if (!asOf) return [];
   const source = `USDA AMS ${report.title} Report (AMS_${report.slug})`;
@@ -703,16 +866,16 @@ function pause(ms: number): Promise<void> {
 }
 
 export async function officialPdfCandidates(report: AmsReport): Promise<string[]> {
-  const urls = mnreportsPdfUrls(report.slug);
+  const esmisUrls: string[] = [];
   if (report.esmisPublication) {
     try {
       const html = await fetchText(esmisPublicationUrl(report));
-      urls.unshift(...esmisPdfUrls(html, report.slug));
+      esmisUrls.push(...esmisPdfUrls(html, report.slug));
     } catch {
       /* mnreports still tried */
     }
   }
-  return [...new Set(urls)];
+  return officialPdfCandidateOrder(report.slug, esmisUrls);
 }
 
 export async function resolveOfficialPdfUrl(report: AmsReport): Promise<string> {

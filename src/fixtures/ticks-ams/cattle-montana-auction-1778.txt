@@ -1,0 +1,37 @@
+Montana Weekly Livestock Auction Summary
+AMS Livestock, Poultry, & Grain Market News
+Montana Dept of Ag Mrkt News Mon Aug 24, 2026
+
+Livestock Weighted Average Report for 8/16/2026 - 8/22/2026
+
+LIVESTOCK SUMMARY
+Total Receipts: 1,461
+Feeder Cattle: 828(56.7%)
+Slaughter Cattle: 554(37.9%)
+
+FEEDER CATTLE
+
+STEERS - Medium and Large 1 (Per Cwt / Actual Wt)
+  Head            Wt Range          Avg Wt              Price Range     Avg Price
+   7              460-494            484               455.00-457.50     456.82
+   22             486-498            496               425.00-443.00     439.79     Unweaned
+   7                740              740                  370.00         370.00
+   19             850-865            852               337.00-352.00     350.40
+
+HEIFERS - Medium and Large 1 (Per Cwt / Actual Wt)
+  Head            Wt Range          Avg Wt              Price Range     Avg Price
+   12             450-475            462               400.00-420.00     412.50
+   8                625              625                  380.00         380.00
+
+DAIRY STEERS - Large 2 (Per Cwt / Actual Wt)
+  Head            Wt Range          Avg Wt              Price Range     Avg Price
+   10               400              400                  200.00         200.00
+
+SLAUGHTER CATTLE
+
+COWS - Boner 80-85% (Per Cwt / Actual Wt)
+  Head           Wt Range           Avg Wt              Price Range    Avg Price
+  104           1355-1527            1458              165.00-175.00    169.49
+
+Source: USDA AMS Livestock, Poultry & Grain Market News
+https://mymarketnews.ams.usda.gov/viewReport/1778
