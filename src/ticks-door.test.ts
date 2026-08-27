@@ -442,6 +442,7 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.some((r) => r.endsWith(OFSTED_INSPECTIONS_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(OFWAT_ENFORCEMENT_PATH)));
     assert.ok(wk.resources.some((r) => r.endsWith(OFGEM_ENFORCEMENT_PATH)));
+    assert.ok(wk.resources.some((r) => r.endsWith(GAIN_PATH)));
     assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)), "do not list /form-483 without a cached body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_PATH)), "do not list /gmp without a cached observation body");
     assert.ok(!wk.resources.some((r) => r.includes(GMP_MD_PATH)), "do not list /gmp-md without a cached observation body");
@@ -557,6 +558,7 @@ async function main(): Promise<void> {
     assert.equal(spec.paths[NPDES_PERMITS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[OFSTED_INSPECTIONS_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[OFGEM_ENFORCEMENT_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
+    assert.equal(spec.paths[GAIN_PATH]?.get?.["x-payment-info"]?.price?.amount, "0.05");
     assert.equal(spec.paths[CATALOG_PATH]?.get?.["x-auth"]?.mode, "none");
     assert.deepEqual(spec.paths[CATALOG_PATH]?.get?.security, []);
     assert.ok(spec.paths["/"]?.get);
@@ -803,6 +805,7 @@ async function main(): Promise<void> {
       OFSTED_INSPECTIONS_PATH,
       OFWAT_ENFORCEMENT_PATH,
       OFGEM_ENFORCEMENT_PATH,
+      GAIN_PATH,
     ]);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.priceUsdc, "0.05");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
@@ -6277,7 +6280,7 @@ async function main(): Promise<void> {
     },
     async (base) => {
       assert.equal(cdpEnvStatus(), "CDP env not set");
-      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
+      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
         const unpaid = await fetch(`${base}${path}`);
         assert.equal(unpaid.status, 402, `unpaid ${path} must stay 402`);
         const present = await fetch(`${base}${path}`, { headers: { "X-PAYMENT": "test" } });
@@ -6316,6 +6319,7 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.includes(OFSTED_INSPECTIONS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(OFWAT_ENFORCEMENT_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(OFGEM_ENFORCEMENT_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(GAIN_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D11_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D7_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D8_PATH)));
