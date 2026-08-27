@@ -1,6 +1,6 @@
 /**
  * Free GET /sample — static canned paid-JSON keys.
- * Not live cache. Not a wrap of the current table. Not a 37th SKU.
+ * Not live cache. Not a wrap of the current table. Not a paid SKU.
  */
 
 export const SAMPLE_PATH = "/sample";
