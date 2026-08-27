@@ -59,6 +59,7 @@ Extracted-body doors: **free index/search** on `/{door}/manifest.json` or `/{doo
 | `/cder-reviews` | FDA CDER Integrated Review text (official accessdata.fda.gov Drugs@FDA PDFs). Find on free index (?q=); each row names the id to buy. GET ?id= one official text $0.02. Default GET is the newest 10 for $0.05 (whole current set if n<10); older pages another $0.05 on the same URL | `cards[].body` | 16 cards | $0.02 / $0.05 | [cder-reviews/manifest.json](https://ticks.bnm.farm/cder-reviews/manifest.json) |
 | `/npdes-permits` | EPA-issued individual NPDES permit text (official epa.gov PDFs). Find on free index (?q=); each row names the id to buy. GET ?id= one official text $0.02. Default GET is the newest 10 for $0.05 (whole current set if n<10); older pages another $0.05 on the same URL | `cards[].body` | 16 cards | $0.02 / $0.05 | [npdes-permits/manifest.json](https://ticks.bnm.farm/npdes-permits/manifest.json) |
 | `/ofsted-inspections` | Ofsted school / provider inspection-report text (official files.ofsted.gov.uk PDFs, OGL v3.0). Find on free index (?q=); each row names the id to buy. GET ?id= one official text $0.02. Default GET is the newest 10 for $0.05 (whole current set if n<10); older pages another $0.05 on the same URL | `cards[].body` | 16 cards | $0.02 / $0.05 | [ofsted-inspections/manifest.json](https://ticks.bnm.farm/ofsted-inspections/manifest.json) |
+| `/ofgem-enforcement` | Ofgem enforcement-notice / s.27A / provisional-order text (official ofgem.gov.uk PDFs, Crown / OGL). Find on free index (?q=); each row names the id to buy. GET ?id= one official text $0.02. Default GET is the newest 10 for $0.05 (whole current set if n<10); older pages another $0.05 on the same URL | `cards[].body` | 6 cards | $0.02 / $0.05 | [ofgem-enforcement/manifest.json](https://ticks.bnm.farm/ofgem-enforcement/manifest.json) |
 | `/form-483` | FDA Form 483 inspectional observation bodies. Newest 10 official texts | `letters[].body` | 314 letters | $0.05 | [form-483/manifest.json](https://ticks.bnm.farm/form-483/manifest.json) |
 | `/gmp` | Health Canada Drug GMP report-card observation text + C.02 cites. Newest 10 official texts | `cards[].body` | 3550 cards | $0.05 | [gmp/manifest.json](https://ticks.bnm.farm/gmp/manifest.json) |
 | `/gmp-md` | Health Canada medical-device report-card observation text + MDR cites. Newest 10 official texts | `cards[].body` | 33 cards | $0.05 | [gmp-md/manifest.json](https://ticks.bnm.farm/gmp-md/manifest.json) |
@@ -67,7 +68,7 @@ Free manifests carry the full catalog (count, ids, official source URLs). They a
 
 ## Free discovery (not paid)
 
-- `GET /sample` — free canned paid-JSON keys (table SKU + `?id=` body SKU). HTTP 200. Marked `example:true`. Not live cache. Not a 37th SKU.
+- `GET /sample` — free canned paid-JSON keys (table SKU + `?id=` body SKU). HTTP 200. Marked `example:true`. Not live cache. Not a paid SKU.
 - `GET /` — shop JSON (payTo + live products). Note says free index/search, then pay the page.
 - `GET /.well-known/x402` — absolute URLs of the live paid routes only (not a SKU per page). Lists `/sample` as a free discovery URL, not a resource.
 - `GET /openapi.json` — OpenAPI 3.1 with `x-payment-info`. Body doors: free index/search, then pay the page. Not the entire cache.

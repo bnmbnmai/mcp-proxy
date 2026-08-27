@@ -51,6 +51,7 @@ export const EXTRACTED_BODY_SKUS = [
   "cder-reviews",
   "npdes-permits",
   "ofsted-inspections",
+  "ofgem-enforcement",
 ] as const;
 
 export type ExtractedBodySku = (typeof EXTRACTED_BODY_SKUS)[number];
@@ -121,6 +122,7 @@ export const EMA_REFERRALS_TYPE = "ema-referrals";
 export const CDER_REVIEWS_TYPE = "cder-reviews";
 export const NPDES_PERMITS_TYPE = "npdes-permits";
 export const OFSTED_INSPECTIONS_TYPE = "ofsted-inspections";
+export const OFGEM_ENFORCEMENT_TYPE = "ofgem-enforcement";
 export const CFPB_ORDER_TYPE = "cfpb-order";
 export const OFAC_ORDER_TYPE = "ofac-order";
 export const FRB_ORDER_TYPE = "frb-order";
@@ -161,6 +163,8 @@ export const EMA_REFERRALS_SOURCE =
 export const CDER_REVIEWS_SOURCE = "https://www.accessdata.fda.gov/scripts/cder/daf/index.cfm";
 export const NPDES_PERMITS_SOURCE = "https://www.epa.gov/npdes-permits";
 export const OFSTED_INSPECTIONS_SOURCE = "https://reports.ofsted.gov.uk/";
+export const OFGEM_ENFORCEMENT_SOURCE =
+  "https://www.ofgem.gov.uk/energy-regulation/how-we-regulate/compliance-and-enforcement";
 export const CFPB_ORDER_SOURCE = "https://www.consumerfinance.gov/enforcement/actions/";
 export const OFAC_ORDER_SOURCE = "https://ofac.treasury.gov/civil-penalties-and-enforcement-information";
 export const FRB_ORDER_SOURCE = "https://www.federalreserve.gov/supervisionreg/enforcementactions.htm";
@@ -749,6 +753,10 @@ export function paidNpdesPermitsBody<T extends CardPayload>(payload: T, opts?: P
 
 export function paidOfstedInspectionsBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
   return paidCardBody(payload, OFSTED_INSPECTIONS_TYPE, OFSTED_INSPECTIONS_SOURCE, opts);
+}
+
+export function paidOfgemEnforcementBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, OFGEM_ENFORCEMENT_TYPE, OFGEM_ENFORCEMENT_SOURCE, opts);
 }
 
 export function paidIcoMpnBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {

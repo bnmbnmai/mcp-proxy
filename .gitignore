@@ -39,6 +39,7 @@ build/ema-referrals.*
 build/cder-reviews.*
 build/npdes-permits.*
 build/ofsted-inspections.*
+build/ofgem-enforcement.*
 build/ticks-ams.*
 build/paid-records.*
 build/shop-sample.*
@@ -78,4 +79,5 @@ data/ema-referrals/
 data/cder-reviews/
 data/npdes-permits/
 data/ofsted-inspections/
+data/ofgem-enforcement/
 data/ticks-ams/
