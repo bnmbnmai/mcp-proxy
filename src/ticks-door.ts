@@ -76,6 +76,8 @@
  * GET /ofgem-enforcement/manifest.json — free count + institution/docket/date/sourceUrl (no notice body)
  * GET /gain — USDA FAS GAIN attaché report TEXT ($0.02 id / $0.05 page)
  * GET /gain/manifest.json — free count + report number/country/post/date/sourceUrl (no attaché body)
+ * GET /orr-enforcement — ORR Railways Act s.55 statutory-notice / final-order / investigation-report TEXT ($0.02 id / $0.05 page)
+ * GET /orr-enforcement/manifest.json — free count + institution/docket/date/sourceUrl (no notice body)
  * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
  * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.05). Listed only when a real body is cached.
@@ -337,6 +339,13 @@ import {
   loadGainManifest,
 } from "./gain.js";
 import {
+  ORR_ENFORCEMENT_AMOUNT_ATOMIC,
+  ORR_ENFORCEMENT_MANIFEST_PATH,
+  ORR_ENFORCEMENT_PATH,
+  loadOrrEnforcement,
+  loadOrrEnforcementManifest,
+} from "./orr-enforcement.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -358,6 +367,7 @@ import {
   paidOfwatEnforcementBody,
   paidOfgemEnforcementBody,
   paidGainBody,
+  paidOrrEnforcementBody,
   paidDenovoOrdersBody,
   paidFdicOrdersBody,
   paidFercOrdersBody,
@@ -781,7 +791,7 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "ema-referrals" | "cder-reviews" | "npdes-permits" | "ofsted-inspections" | "ofwat-enforcement" | "ofgem-enforcement" | "gain" | "form-483" | "gmp" | "gmp-md";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "ema-referrals" | "cder-reviews" | "npdes-permits" | "ofsted-inspections" | "ofwat-enforcement" | "ofgem-enforcement" | "gain" | "orr-enforcement" | "form-483" | "gmp" | "gmp-md";
 /** Always-public SKUs. /form-483, /gmp, and /gmp-md join only when a real observation body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "ticks",
@@ -820,6 +830,7 @@ export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "ofwat-enforcement",
   "ofgem-enforcement",
   "gain",
+  "orr-enforcement",
 ];
 
 export function form483IsPublic(): boolean {
@@ -846,7 +857,7 @@ export function isPublicBazaarSku(sku: DoorSku): boolean {
   return publicBazaarSkus().includes(sku);
 }
 
-const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six", "twenty-seven", "twenty-eight", "twenty-nine", "thirty", "thirty-one", "thirty-two", "thirty-three", "thirty-four", "thirty-five", "thirty-six", "thirty-seven", "thirty-eight", "thirty-nine"] as const;
+const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six", "twenty-seven", "twenty-eight", "twenty-nine", "thirty", "thirty-one", "thirty-two", "thirty-three", "thirty-four", "thirty-five", "thirty-six", "thirty-seven", "thirty-eight", "thirty-nine", "forty"] as const;
 const NEXT_SKU_WORDS = [
   "first",
   "second",
@@ -887,6 +898,7 @@ const NEXT_SKU_WORDS = [
   "thirty-seventh",
   "thirty-eighth",
   "thirty-ninth",
+  "fortieth",
 ] as const;
 
 function paidCountWord(): string {
@@ -897,7 +909,7 @@ function paidCountWord(): string {
 function noNextSkuWord(): string {
   const n = publicBazaarSkus().length;
   const next = NEXT_SKU_WORDS[n] ?? `${n + 1}th`;
-  return `/gain is a live public SKU on purpose. No ${next} public SKU.`;
+  return `/orr-enforcement is a live public SKU on purpose. No ${next} public SKU.`;
 }
 
 function amountAtomicFor(sku: DoorSku): string {
@@ -1035,6 +1047,10 @@ function amountAtomicFor(sku: DoorSku): string {
   if (sku === "gain") {
     const raw = env("GAIN_USDC_ATOMIC");
     return raw.length > 0 ? raw : GAIN_AMOUNT_ATOMIC;
+  }
+  if (sku === "orr-enforcement") {
+    const raw = env("ORR_ENFORCEMENT_USDC_ATOMIC");
+    return raw.length > 0 ? raw : ORR_ENFORCEMENT_AMOUNT_ATOMIC;
   }
   if (sku === "form-483") {
     const raw = env("FORM_483_USDC_ATOMIC");
@@ -1341,6 +1357,12 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
       "Call GET /gain when you need official USDA FAS GAIN attaché report TEXT extracted from gain.fas.usda.gov/Download.aspx or the matching no-auth DownloadReportByFileName PDF (Grain and Feed / Livestock / Poultry / Oilseeds). US federal public domain (17 U.S.C. § 105). Does not invent report text. Does not sell public search HTML. Does not wrap USDA commodity-table numbers. " +
       PAID_WINDOW_COPY,
     resourcePath: GAIN_PATH,
+  },
+  "orr-enforcement": {
+    description:
+      "Call GET /orr-enforcement when you need official ORR-authored Railways Act 1993 s.55 statutory-notice / final-order / investigation-report TEXT extracted from orr.gov.uk/sites/default/files/ and /media/{id}/download PDFs. Official public UK documents under Crown copyright / OGL v3.0. Company/licence-holder files only. Does not invent notice text. Does not sell the HTML investigation card (index + teaser only), people files, open-data CSVs, or GOV.UK correspondence HTML. Not Ofgem / Ofwat / Ofsted / RAIB / MAIB. Does not list EIS. " +
+      PAID_WINDOW_COPY,
+    resourcePath: ORR_ENFORCEMENT_PATH,
   },
   "form-483": {
     description:
@@ -2363,6 +2385,34 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         category: "Livestock and Products",
         sourceUrl: "https://apps.fas.usda.gov/newgainapi/api/Report/DownloadReportByFileName?fileName=Livestock%20and%20Products%20Annual_Mexico%20City_Mexico_MX2026-0040.pdf",
         body: "This teaser is not an official attaché body. USDA FAS GAIN MX2026-0040 excerpt.",
+      },
+    ],
+  },
+  "orr-enforcement": {
+    ok: true,
+    product: "orr-enforcement-bodies",
+    status: "ok",
+    fetchedAt: "2026-08-27T22:45:00.000Z",
+    asOf: "2026-03-03",
+    source: "https://www.orr.gov.uk/monitoring-regulation/rail/investigations",
+    recordCount: 1,
+    records: [
+      {
+        id: "orr-to-northern-trains-limited-statutory-notice-dated-3-march-2026",
+        date: "2026-03-03",
+        firm: "Northern Trains Limited",
+        url: "https://www.orr.gov.uk/sites/default/files/2026-03/orr-to-northern-trains-limited-statutory-notice-dated-3-march-2026.pdf",
+        type: "orr-enforcement",
+      },
+    ],
+    cards: [
+      {
+        id: "orr-to-northern-trains-limited-statutory-notice-dated-3-march-2026",
+        institution: "Northern Trains Limited",
+        docket: "orr-to-northern-trains-limited-statutory-notice-dated-3-march-2026",
+        date: "2026-03-03",
+        sourceUrl: "https://www.orr.gov.uk/sites/default/files/2026-03/orr-to-northern-trains-limited-statutory-notice-dated-3-march-2026.pdf",
+        body: "This teaser is not an official enforcement body. Northern Trains Limited Railways Act 1993 s.55 statutory-notice excerpt.",
       },
     ],
   },
@@ -3482,6 +3532,7 @@ export function llmsTxt(): string {
     `- GET /ofwat-enforcement — $0.05 — Ofwat Water Industry Act 1991 enforcement-notice text (official ofwat.gov.uk PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /ofgem-enforcement — $0.05 — Ofgem enforcement-notice text (official ofgem.gov.uk PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /gain — $0.05 — USDA FAS GAIN attaché report TEXT (official gain.fas.usda.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /orr-enforcement — $0.05 — ORR Railways Act 1993 s.55 statutory-notice / final-order / investigation-report text (official orr.gov.uk PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
   ];
   if (listed483) {
     paid.push(`- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`);
@@ -3535,6 +3586,7 @@ export function llmsTxt(): string {
     "- GET /ofwat-enforcement/manifest.json — Ofwat enforcement count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the notice body)",
     "- GET /ofgem-enforcement/manifest.json — Ofgem enforcement count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the notice body)",
     "- GET /gain/manifest.json — GAIN attaché count + report number/country/post/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the attaché body)",
+    "- GET /orr-enforcement/manifest.json — ORR enforcement count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the notice body)",
   ];
   if (listed483) {
     free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (full catalog + page cursor; ?q= is free search; not the observation body)");
@@ -3593,7 +3645,7 @@ function discoveryOrigin(req: IncomingMessage, port: number): string {
 }
 
 function paidDiscoveryPaths(): string[] {
-  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH];
+  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH];
   if (form483IsPublic()) paths.push(FORM_483_PATH);
   if (gmpIsPublic()) paths.push(GMP_PATH);
   if (gmpMdIsPublic()) paths.push(GMP_MD_PATH);
@@ -3797,6 +3849,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const ofwatEnforcementAtomic = amountAtomicFor("ofwat-enforcement");
   const ofgemEnforcementAtomic = amountAtomicFor("ofgem-enforcement");
   const gainAtomic = amountAtomicFor("gain");
+  const orrEnforcementAtomic = amountAtomicFor("orr-enforcement");
   const f483Atomic = amountAtomicFor("form-483");
   const gmpAtomic = amountAtomicFor("gmp");
   const gmpMdAtomic = amountAtomicFor("gmp-md");
@@ -3836,6 +3889,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const ofwatEnforcementPrice = (Number(ofwatEnforcementAtomic) / 1e6).toFixed(2);
   const ofgemEnforcementPrice = (Number(ofgemEnforcementAtomic) / 1e6).toFixed(2);
   const gainPrice = (Number(gainAtomic) / 1e6).toFixed(2);
+  const orrEnforcementPrice = (Number(orrEnforcementAtomic) / 1e6).toFixed(2);
   const f483Price = (Number(f483Atomic) / 1e6).toFixed(2);
   const gmpPrice = (Number(gmpAtomic) / 1e6).toFixed(2);
   const gmpMdPrice = (Number(gmpMdAtomic) / 1e6).toFixed(2);
@@ -3879,6 +3933,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
     "/ofwat-enforcement ($0.05)",
     "/ofgem-enforcement ($0.05)",
     "/gain ($0.05)",
+    "/orr-enforcement ($0.05)",
   ];
   if (listed483) paidBits.push("/form-483 ($0.05)");
   if (listedGmp) paidBits.push("/gmp ($0.05)");
@@ -4770,6 +4825,30 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           },
         }),
       },
+      [ORR_ENFORCEMENT_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getOrrEnforcement",
+          summary: "ORR Railways Act s.55 enforcement-notice text",
+          description: SKU_COPY["orr-enforcement"].description,
+          priceUsdc: orrEnforcementPrice,
+          amountAtomic: orrEnforcementAtomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["orr-enforcement"],
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              status: { type: "string" },
+              fetchedAt: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
+              cards: { type: "array", items: { type: "object" } },
+            },
+          },
+        }),
+      },
       ...(listed483
         ? {
             [FORM_483_PATH]: {
@@ -5073,6 +5152,12 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
         get: freeOpenApiOp(
           "USDA FAS GAIN attaché reports free manifest",
           "Count, report number, country, post, date, and official PDF URL. Not the attaché body.",
+        ),
+      },
+      [ORR_ENFORCEMENT_MANIFEST_PATH]: {
+        get: freeOpenApiOp(
+          "ORR enforcement notices free manifest",
+          "Count, institution, docket, date, and official PDF URL. Not the notice body.",
         ),
       },
       ...(listed483
@@ -5521,6 +5606,13 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
           amountAtomic: amountAtomicFor("gain"),
           manifest: GAIN_MANIFEST_PATH,
         },
+        {
+          path: ORR_ENFORCEMENT_PATH,
+          product: "orr-enforcement-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("orr-enforcement"),
+          manifest: ORR_ENFORCEMENT_MANIFEST_PATH,
+        },
         ...(form483IsPublic()
           ? [
               {
@@ -5949,6 +6041,16 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === ORR_ENFORCEMENT_MANIFEST_PATH) {
+    sendExtractedManifest(req, res, port, url, await loadOrrEnforcementManifest());
+    return;
+  }
+
+  if (path === ORR_ENFORCEMENT_PATH) {
+    await servePaid(req, res, port, "orr-enforcement", async (opts) => paidOrrEnforcementBody(await loadOrrEnforcement(), opts));
+    return;
+  }
+
   if (path === FORM_483_MANIFEST_PATH) {
     sendExtractedManifest(req, res, port, url, await loadForm483Manifest());
     return;
@@ -5984,7 +6086,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, OFWAT_ENFORCEMENT_PATH, OFWAT_ENFORCEMENT_MANIFEST_PATH, OFGEM_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_MANIFEST_PATH, GAIN_PATH, GAIN_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, SAMPLE_PATH, FIRM_CHECK_PATH, X402LIST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, OFWAT_ENFORCEMENT_PATH, OFWAT_ENFORCEMENT_MANIFEST_PATH, OFGEM_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_MANIFEST_PATH, GAIN_PATH, GAIN_MANIFEST_PATH, ORR_ENFORCEMENT_PATH, ORR_ENFORCEMENT_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, SAMPLE_PATH, FIRM_CHECK_PATH, X402LIST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
 }
 
 export function bindHost(): string {
@@ -6048,6 +6150,7 @@ if (isMain()) {
     console.error(`${OFWAT_ENFORCEMENT_PATH} $${Number(amountAtomicFor("ofwat-enforcement")) / 1e6} USDC`);
     console.error(`${OFGEM_ENFORCEMENT_PATH} $${Number(amountAtomicFor("ofgem-enforcement")) / 1e6} USDC`);
     console.error(`${GAIN_PATH} $${Number(amountAtomicFor("gain")) / 1e6} USDC`);
+    console.error(`${ORR_ENFORCEMENT_PATH} $${Number(amountAtomicFor("orr-enforcement")) / 1e6} USDC`);
     console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
     console.error(`${GMP_PATH} $${Number(amountAtomicFor("gmp")) / 1e6} USDC${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
     console.error(`${GMP_MD_PATH} $${Number(amountAtomicFor("gmp-md")) / 1e6} USDC${gmpMdIsPublic() ? "" : " (unlisted until a real MD observation body is cached)"}`);
