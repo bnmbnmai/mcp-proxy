@@ -2,7 +2,10 @@
  * FDA Pharmacy Compounding Advisory Committee 503A briefing-memo TEXT door.
  * Official FDA-authored per-substance PDFs from PCAC year-materials + meeting pages.
  * First-slice miss: only the July 2026 meeting page (~7 memos). Official year
- * tables list October 29, 2024 and December 4, 2024 as well.
+ * tables list October 29, 2024 and December 4, 2024 as well. Leftover official
+ * 2016–2018 / 2021 / 2022 pages are combined "FDA Briefing Information" packs,
+ * not this SKU. 2027 year table is live but empty (materials not posted).
+ * Do not invent OCR. Do not split archived combined packs.
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -24,16 +27,60 @@ export const MEETING_URL =
 export const FIRST_SLICE_MEETING_URL = MEETING_URL;
 export const MEETING_WAYBACK_URL =
   "https://web.archive.org/web/20260724170451id_/https://www.fda.gov/advisory-committees/advisory-committee-calendar/july-23-24-2026-meeting-pharmacy-compounding-advisory-committee-07232026";
-/** Official year tables that list meeting pages. 2022 is a combined pack (skipped). */
+/** Official year tables FDA still links. 2025/2023 404. Leftover 2021/2018/2017/2016 404 live. */
 export const YEAR_MATERIALS_URLS = [
+  "https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/2027-meeting-materials-pharmacy-compounding-advisory-committee",
   "https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/2026-meeting-materials-pharmacy-compounding-advisory-committee",
   "https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/2024-meeting-materials-pharmacy-compounding-advisory-committee",
+  "https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/2022-meeting-materials-pharmacy-compounding-advisory-committee",
+  "https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/2021-meeting-materials-pharmacy-compounding-advisory-committee",
+  "https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/2018-meeting-materials-pharmacy-compounding-advisory-committee",
+  "https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/2017-meeting-materials-pharmacy-compounding-advisory-committee",
+  "https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/2016-meeting-materials-pharmacy-compounding-advisory-committee",
 ] as const;
 export const OCT_2024_MEETING_URL =
   "https://www.fda.gov/advisory-committees/advisory-committee-calendar/october-29-2024-meeting-pharmacy-compounding-advisory-committee-10292024";
 export const DEC_2024_MEETING_URL =
   "https://www.fda.gov/advisory-committees/advisory-committee-calendar/updated-meeting-time-and-public-participation-information-december-4-2024-meeting-pharmacy";
-export const MEETING_URLS = [MEETING_URL, OCT_2024_MEETING_URL, DEC_2024_MEETING_URL] as const;
+export const JUN_2022_MEETING_URL =
+  "https://www.fda.gov/advisory-committees/advisory-committee-calendar/june-8-2022-meeting-pharmacy-compounding-advisory-committee-meeting-announcement-06082022";
+export const JUN_2021_MEETING_URL =
+  "https://www.fda.gov/advisory-committees/updated-agenda-information-june-9-2021-meeting-pharmacy-compounding-advisory-committee-meeting";
+/** Leftover official briefing-information pages. Live 404; Wayback still has the combined pack titles. */
+export const LEFTOVER_BRIEFING_URLS = [
+  "https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/briefing-information-september-12-2018-meeting-pharmacy-compounding-advisory-committee-pcac",
+  "https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/briefing-information-november-20-21-2017-meeting-pharmacy-compounding-advisory-committee-pcac",
+  "https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/briefing-information-may-8-9-2017-meeting-pharmacy-compounding-advisory-committee-pcac",
+  "https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/briefing-information-november-3-2016-meeting-pharmacy-compounding-advisory-committee-pcac",
+  "https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/briefing-information-june-23-2016-meeting-pharmacy-compounding-advisory-committee-pcac",
+  "https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/briefing-information-march-8-9-2016-meeting-pharmacy-compounding-advisory-committee-pcac",
+] as const;
+export const MEETING_URLS = [
+  MEETING_URL,
+  OCT_2024_MEETING_URL,
+  DEC_2024_MEETING_URL,
+  JUN_2022_MEETING_URL,
+  JUN_2021_MEETING_URL,
+  ...LEFTOVER_BRIEFING_URLS,
+] as const;
+/** Leftover year / briefing pages 404 live. Prefer a known Wayback capture over CDX. */
+export const WAYBACK_CAPTURE: Record<string, string> = {
+  [JUN_2021_MEETING_URL]: "20241109001606",
+  "https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/2021-meeting-materials-pharmacy-compounding-advisory-committee":
+    "20241108191004",
+  "https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/2018-meeting-materials-pharmacy-compounding-advisory-committee":
+    "20190720073519",
+  "https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/2017-meeting-materials-pharmacy-compounding-advisory-committee":
+    "20190612181545",
+  "https://www.fda.gov/advisory-committees/pharmacy-compounding-advisory-committee/2016-meeting-materials-pharmacy-compounding-advisory-committee":
+    "20190612181621",
+  [LEFTOVER_BRIEFING_URLS[0]]: "20190819112450",
+  [LEFTOVER_BRIEFING_URLS[1]]: "20190918210006",
+  [LEFTOVER_BRIEFING_URLS[2]]: "20190821183201",
+  [LEFTOVER_BRIEFING_URLS[3]]: "20191015050521",
+  [LEFTOVER_BRIEFING_URLS[4]]: "20190919231630",
+  [LEFTOVER_BRIEFING_URLS[5]]: "20190819205849",
+};
 export const FR_NOTICE_URL = "https://www.govinfo.gov/content/pkg/FR-2026-04-16/html/2026-07361.htm";
 export const DOCKET = "FDA-2025-N-6895";
 export const MEETING_LABEL = "July 23-24, 2026";
@@ -194,8 +241,13 @@ export function isoDate(raw: string | null | undefined): string | null {
   return null;
 }
 
+export function isCombinedBriefingInformationTitle(title: string): boolean {
+  return /FDA Briefing Information/i.test(title.replace(/\s+/g, " "));
+}
+
 export function isPerSubstanceMemoTitle(title: string): boolean {
   const t = title.replace(/\s+/g, " ").trim();
+  if (isCombinedBriefingInformationTitle(t)) return false;
   if (!/FDA Briefing Document/i.test(t)) return false;
   if (/Briefing Document(?:-\d+-?)?\s*Introduction/i.test(t)) return false;
   if (
@@ -240,6 +292,14 @@ export function meetingLabelFromUrl(url: string, fallback = MEETING_LABEL): stri
   if (slug.includes("july-23-24-2026")) return "July 23-24, 2026";
   if (slug.includes("october-29-2024")) return "October 29, 2024";
   if (slug.includes("december-4-2024")) return "December 4, 2024";
+  if (slug.includes("june-8-2022")) return "June 8, 2022";
+  if (slug.includes("june-9-2021")) return "June 9, 2021";
+  if (slug.includes("september-12-2018")) return "September 12, 2018";
+  if (slug.includes("november-20-21-2017")) return "November 20-21, 2017";
+  if (slug.includes("may-8-9-2017")) return "May 8-9, 2017";
+  if (slug.includes("november-3-2016")) return "November 3, 2016";
+  if (slug.includes("june-23-2016")) return "June 23, 2016";
+  if (slug.includes("march-8-9-2016")) return "March 8-9, 2016";
   return fallback;
 }
 
@@ -247,10 +307,23 @@ export function officialMeetingPageUrl(urlOrPath: string | null | undefined): st
   if (!urlOrPath) return null;
   try {
     const parsed = new URL(urlOrPath, "https://www.fda.gov");
-    if (parsed.hostname !== "www.fda.gov" && parsed.hostname !== "fda.gov") return null;
-    if (!/\/advisory-committees\/advisory-committee-calendar\//i.test(parsed.pathname)) return null;
-    if (!/pharmacy-compounding|meeting-pharmacy/i.test(parsed.pathname)) return null;
-    return `https://www.fda.gov${parsed.pathname}`;
+    const host = parsed.hostname.toLowerCase();
+    const path = host === "web.archive.org"
+      ? (parsed.pathname.match(/\/https?:\/\/www\.fda\.gov(\/advisory-committees\/.+)$/i) || [])[1]
+      : parsed.pathname;
+    if (!path) return null;
+    if (host !== "www.fda.gov" && host !== "fda.gov" && host !== "web.archive.org") return null;
+    const calendar =
+      /\/advisory-committees\/advisory-committee-calendar\//i.test(path) &&
+      /pharmacy-compounding|meeting-pharmacy/i.test(path);
+    const leftoverBriefing =
+      /\/advisory-committees\/pharmacy-compounding-advisory-committee\/briefing-information-.*pharmacy-compounding/i.test(
+        path,
+      );
+    const leftoverAgenda =
+      /\/advisory-committees\/updated-agenda-information-.*pharmacy-compounding/i.test(path);
+    if (!calendar && !leftoverBriefing && !leftoverAgenda) return null;
+    return `https://www.fda.gov${path}`;
   } catch {
     return null;
   }
@@ -572,11 +645,24 @@ function pause(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
 }
 
+function waybackCaptureUrl(officialUrl: string): string | null {
+  const ts = WAYBACK_CAPTURE[officialUrl];
+  return ts ? `https://web.archive.org/web/${ts}id_/${officialUrl}` : null;
+}
+
 async function fetchOfficialHtml(url: string): Promise<string> {
   try {
     return await fetchFdaText(url);
   } catch {
     if (url === MEETING_URL) return await fetchFdaText(MEETING_WAYBACK_URL);
+    const pinned = waybackCaptureUrl(url);
+    if (pinned) {
+      try {
+        return await fetchFdaText(pinned);
+      } catch {
+        /* pinned miss; try CDX */
+      }
+    }
     const archived = await waybackIdUrl(url);
     if (!archived) throw new Error(`${url} FDA fetch failed and no Wayback id_ capture`);
     return await fetchFdaText(archived);
@@ -587,6 +673,9 @@ const FIXTURE_LISTING_FILES = [
   "listing-excerpt.html",
   "listing-oct-2024-excerpt.html",
   "listing-dec-2024-excerpt.html",
+  "listing-june-2022-excerpt.html",
+  "leftover-briefing-2016-excerpt.html",
+  "year-2018-excerpt.html",
   "listing.html",
   "meeting.html",
 ];
