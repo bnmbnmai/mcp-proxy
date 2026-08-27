@@ -55,7 +55,7 @@ NCUA_ORDERS_LIMIT=24 NCUA_ORDERS_MAX_FETCH=36 npm run collect:ncua-orders
 systemctl --user restart idaho-ticks-x402.service
 ```
 
-Live after leftover apply (2026-08-26): **cardCount 12**, asOf **2022-11-29**. Leftover pulse walked official leftover C&D teasers / leftover `{docket}.pdf` stems; extractable text still **12**. Price still $0.02 / $0.05. No new SKU. Restarted only `idaho-ticks-x402.service`.
+Live after leftover apply (2026-08-27): **listedCount 407**, **cardCount 12**, asOf **2022-11-29**, fetchedAt **2026-08-27T03:26:20.345Z**. This pulse reused 12 extractable bodies, fetched 18 leftover HTML teasers + 18 leftover official PDFs, and skipped 60 no-text (image-only leftover C&Ds / CMP / people). Extractable institution C&D text still tops out at 12. Price still $0.02 / $0.05. No new SKU. Restarted only `idaho-ticks-x402.service`.
 
 ## Local smoke (cloud VM / laptop)
 

@@ -1,0 +1,52 @@
+{
+  "before": {
+    "cardCount": 12,
+    "asOf": "2022-11-29",
+    "fetchedAt": "2026-08-26T15:32:11.454Z",
+    "note": "first leftover walk 5 HTML seeds + 7 extractable AO PDFs"
+  },
+  "after": {
+    "cardCount": 12,
+    "listedCount": 407,
+    "asOf": "2022-11-29",
+    "fetchedAt": "2026-08-27T03:26:20.345Z",
+    "addedThisRun": 0,
+    "fetchedPages": 18,
+    "fetchedPdfs": 18,
+    "skippedNoText": 60,
+    "reused": 12
+  },
+  "leftoverWalk": {
+    "officialCAndDTeasers": [
+      "12-0027-R2",
+      "14-0057-R2",
+      "11-0022-R2",
+      "13-0039-R4",
+      "07-0502-II",
+      "17-0020-R1"
+    ],
+    "whyNoGrow": "official leftover C&D teasers are image-only scans (pdftotext empty); remaining catalog is CMP / people/IAP / termination",
+    "skippedPeople": ["11-0028-R4"]
+  },
+  "live": {
+    "manifest": "https://ticks.bnm.farm/ncua-orders/manifest.json",
+    "manifestStatus": 200,
+    "manifestCardCount": 12,
+    "unpaidPage": 402,
+    "unpaidId": 402,
+    "unpaidIdAtomic": "20000",
+    "pageAtomic": "50000",
+    "license": "17 USC 105",
+    "attribution": "NCUA",
+    "occCdCardCount": 34,
+    "fdicCardCount": 26,
+    "fincenCardCount": 33,
+    "fercCardCount": 22
+  },
+  "lander": {
+    "url": "https://bnm.farm/",
+    "liveN": 12,
+    "baked": false,
+    "cardCopy": "NCUA C&D / consent-order extracted text. Live: 12 orders. One document $0.02 via ?id=. $0.05 per 10."
+  }
+}
