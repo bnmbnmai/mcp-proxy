@@ -14,7 +14,7 @@ Stdio on this lineage: `TICKS_BASE=https://ticks.bnm.farm node build/ticks-mcp.j
 
 ## Tools
 
-One tool per live paid path from `/.well-known/x402` (enriched from `/openapi.json` and `GET /` when present). Paid tools are generated from that document — do not hardcode a door count. Free extras: `search` (one extracted-body door) and `firm-check` (cross-door Form 483 / warning letters / import-alert catalog). Paid `get-one` is `?id=` at $0.02; paid `get-page` is the page at $0.05. Unpaid paid URLs still HTTP 402.
+One tool per live paid path from `/.well-known/x402` (enriched from `/openapi.json` and `GET /` when present). Paid tools are generated from that document — do not hardcode a door count. Free extras: `search` (one extracted-body door) and `firm-check` (cross-door Form 483 / warning letters / untitled letters / FTC WL / Ofwat / Ofgem / CFPB / OCC / FDIC / import-alert catalog). Paid `get-one` is `?id=` at $0.02; paid `get-page` is the page at $0.05. Unpaid paid URLs still HTTP 402.
 
 `firm-check` is free HTTP 200 JSON at `/firm-check?q=` and the MCP tool of the same name. Hits name the door, the id or page to buy, and fetchedAt/asOf. It does not return letter bodies or the full import-alert table.
 
