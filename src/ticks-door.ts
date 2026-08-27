@@ -4,7 +4,7 @@
  *
  * GET /ticks — US hay, cattle, and grain ticks ($0.05 USDC on Base)
  * GET /sample — free canned paid-JSON keys (not a SKU)
- * GET /firm-check?q= — free firm-name search across Form 483, warning letters, import-alert indexes (not a SKU)
+ * GET /firm-check?q= — free firm-name search across Form 483, warning letters, untitled letters, FTC WL, Ofwat, Ofgem, CFPB/OCC/FDIC, import-alert indexes (not a SKU)
  * GET /.well-known/x402list.txt — free static ownership proof (HTTP 200, not a SKU)
  * GET /import-alerts — FDA Import Alert / DWPE firm ticks ($0.05)
  * GET /import-alerts/manifest.json — free catalog + schema + sample rows
@@ -1059,7 +1059,7 @@ const CANONICAL_ORIGIN = "https://ticks.bnm.farm";
 const CDP_DESCRIPTION_MAX = 500;
 const TABLE_ENTIRE_COPY = "$0.05 = entire current table.";
 const IMPORT_ALERTS_FIRM_CHECK_COPY =
-  `Free firm search across 483 + warning letters + this table: GET ${CANONICAL_ORIGIN}/firm-check?q=`;
+  `Free firm search across 483, warning letters, untitled letters, FTC/Ofwat/Ofgem/CFPB/OCC/FDIC, and this table: GET ${CANONICAL_ORIGIN}/firm-check?q=`;
 
 function extractedBodyFreeSearchCopy(door: string): string {
   return `Free search: GET ${CANONICAL_ORIGIN}/${door}/manifest.json?q= (HTTP 200) returns id and the ?id= URL. Then pay GET ?id= ($0.02) or the page ($0.05).`;
@@ -3441,7 +3441,7 @@ export function llmsTxt(): string {
   }
   const free = [
     `- GET /sample — free canned paid-JSON keys (table SKU + ?id= body SKU). HTTP 200. Not live cache. Not a SKU.`,
-    `- GET /firm-check?q= — free firm-name search across Form 483, FDA warning letters, and the FDA import-alert catalog. HTTP 200. Names the door and the id or page to buy ($0.02 one text / $0.05 page or table). Not a SKU.`,
+    `- GET /firm-check?q= — free firm-name search across Form 483, FDA warning letters, FDA untitled letters, FTC BCP warning letters, Ofwat enforcement, Ofgem enforcement, CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog. HTTP 200. Names the door and the id or page to buy ($0.02 one text / $0.05 page or table). Not a SKU.`,
     `- GET /openapi.json — OpenAPI 3.1 with x-payment-info for the ${paidCountWord()} paid doors`,
     `- GET /.well-known/x402 — absolute URLs of the ${paidCountWord()} paid routes only`,
     `- GET / — shop JSON (payTo + the ${paidCountWord()} products)`,
