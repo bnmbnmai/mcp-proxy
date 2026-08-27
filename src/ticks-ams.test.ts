@@ -533,6 +533,47 @@ try {
   assert.ok(paidOrg.records.some((row) => row.id.includes("organic") && row.id.startsWith("hay.ams_2904.")));
   assert.ok(paidOrg.records.some((row) => row.id.startsWith("dairy.ams_2997.")));
   assert.ok(paidOrg.records.some((row) => row.id.startsWith("grain.ams_3802.")));
+  writeAmsSnapshot(
+    {
+      ok: true,
+      product: "idaho-hay-feeder-ticks",
+      fetchedAt: "2026-08-27T18:00:00Z",
+      asOf: "2026-08-26",
+      tickCount: dairyWeekly.length + hogs.length + 1,
+      rows: [
+        ...dairyWeekly,
+        ...hogs,
+        {
+          id: "hay.ams_3056.idaho.alfalfa.premium.large_square",
+          group: "hay",
+          commodity: "Alfalfa",
+          label: "Idaho alfalfa premium large square",
+          market: "Idaho Direct Hay",
+          classGrade: "Premium, Large Square",
+          unit: "$/ton",
+          price: 210,
+          asOf: "2026-08-21",
+          source: "AMS_3056 hay",
+          sourceUrl: "https://www.ams.usda.gov/mnreports/ams_3056.pdf",
+          reportDate: "2026-08-21",
+          series: "hay.ams_3056.idaho.alfalfa.premium.large_square",
+        },
+      ],
+      failed: [],
+      sources: ["AMS_2998 Dairy Market News weekly", "AMS_2872 National hog/pork summary", "AMS_3056 hay"],
+    },
+    dir,
+  );
+  process.env.TICKS_AMS_DIR = dir;
+  const paidComp = paidTicksBody(loadTicks());
+  const comps = paidComp.composites ?? [];
+  assert.ok(comps.some((row) => row.id === "composite.pnw.alfalfa.ton" && row.price === 210 && row.sourceCount === 1));
+  assert.ok(comps.some((row) => row.id === "composite.us.feeder_steer.cwt"));
+  assert.ok(comps.some((row) => row.id === "composite.us.dairy.class_i.cwt" && row.price === 17.04));
+  const hogCarcass = comps.find((row) => row.id === "composite.us.hogs.negotiated_carcass.cwt");
+  assert.ok(hogCarcass);
+  assert.equal(hogCarcass.sourceCount, 2);
+  assert.equal(hogCarcass.price, 90.735);
 } finally {
   for (const [k, v] of Object.entries(prevEnv)) {
     if (v === undefined) delete process.env[k];
