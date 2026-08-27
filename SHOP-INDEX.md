@@ -16,7 +16,7 @@ Public, agent-facing list of **live** paid GETs only. Re-read live manifests bef
 
 payTo `0xf59621FC406D266e18f314Ae18eF0a33b8401004` · Base (`eip155:8453`) · USDC `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
 
-Official public data caches (PDF/HTML sources), returned as JSON after x402. Not free-JSON wraps. Unpaid GET on a paid path returns HTTP 402. No API key. No request body.
+Official public data caches (PDF/HTML sources), returned as JSON after x402. Not free-JSON wraps. Unpaid GET on a paid path returns HTTP 402. Unpaid POST on the same paid path (empty JSON `{}` accepted) returns that same 402; it does not return data. No API key. GET has no request body.
 
 Paid GETs are listed on live well-known (do not hardcode a door count). `$0.05` (`50000` atomic) for table / page GETs. Extracted-body `?id=` is `$0.02` (`20000` atomic). No per-record SKU. No alerts/delta door.
 

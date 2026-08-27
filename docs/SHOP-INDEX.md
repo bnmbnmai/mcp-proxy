@@ -16,7 +16,7 @@ Public, agent-facing list of **live** paid GETs only. Re-read live manifests on 
 
 payTo `0xf59621FC406D266e18f314Ae18eF0a33b8401004` · Base (`eip155:8453`) · USDC `0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913`
 
-Official public data caches (PDF/HTML sources), returned as JSON after x402. Not free-JSON wraps. Unpaid GET on a paid path returns HTTP 402. No API key. No request body.
+Official public data caches (PDF/HTML sources), returned as JSON after x402. Not free-JSON wraps. Unpaid GET on a paid path returns HTTP 402. Unpaid POST on the same paid path (empty JSON `{}` accepted) returns that same 402; it does not return data. No API key. GET has no request body.
 
 Paid GETs are listed on live well-known (do not hardcode a door count). Table doors (`/ticks`, `/import-alerts`): one `$0.05` (`50000` atomic) GET is the **entire current table**. Extracted-body doors have **two bags on the same URL**: `?id=` one official text is `$0.02` (`20000` atomic); default GET is the newest 10 for `$0.05` (whole current set if n<10) (`50000` atomic). Free index (`?q=`) names the **id to buy**. Catalog counts are records, not SKUs. Unpaid 402 `accepts[].extra` names `searchUrl`, `oneDocPath`, `priceAtomic`, `pagePriceAtomic`, `pageDefault`, `tableWhole`, `firmCheckUrl`, `sampleUrl` (`extra.name` stays USD Coin).
 ## Live paid GETs
