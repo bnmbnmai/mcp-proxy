@@ -79,7 +79,8 @@
  * GET /gmp-md — Health Canada medical-device report-card observation bodies ($0.05). Listed only when a real body is cached.
  * GET /gmp-md/manifest.json — free id / firm / date / rating (no report-card body text)
  *
- * Unpaid paid paths → HTTP 402. Public doors persist via a CDP v2
+ * Unpaid paid paths → HTTP 402 (GET or POST; empty JSON `{}` is accepted).
+ * Public doors persist via a CDP v2
  * verify/settle body: paymentPayload.resource is {url,description,mimeType}
  * and extensions.bazaar lives on the payload (not on paymentRequirements).
  * No keys in the repo.
@@ -3418,7 +3419,7 @@ export function llmsTxt(): string {
     "",
     ...paid,
     "",
-    "Unpaid GET returns HTTP 402 with PAYMENT-REQUIRED and extensions.bazaar. After a valid X-PAYMENT, the same URL returns JSON: newest chunk on extracted-body doors, older chunk if they ask, whole current table on /ticks and /import-alerts. No API key. No request body.",
+    "Unpaid GET returns HTTP 402 with PAYMENT-REQUIRED and extensions.bazaar. Unpaid POST on the same paid path (empty JSON `{}` accepted) returns that same 402 challenge and does not return data. After a valid X-PAYMENT, the same URL returns JSON: newest chunk on extracted-body doors, older chunk if they ask, whole current table on /ticks and /import-alerts. No API key. GET has no request body.",
     "402 accepts[].extra names searchUrl, oneDocPath, priceAtomic, pagePriceAtomic, pageDefault, tableWhole, firmCheckUrl, sampleUrl. extra.name stays USD Coin.",
     "",
     "## Free discovery",
@@ -3750,7 +3751,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       description: "Official public data as JSON. Unpaid paid routes return HTTP 402.",
       contact: { name: "BNM Data Shop", url: "https://bnm.farm/" },
       "x-guidance":
-        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. ${BODY_PAGE_DISCOVERY} Free canned paid-JSON keys: GET /sample (HTTP 200, not a SKU). Free firm-name search: GET ${FIRM_CHECK_PATH}?q= (HTTP 200, not a SKU). Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402. MCP at GET/POST /mcp lists one tool per paid GET plus free search, free firm-check, paid get-one ($0.02), and paid get-page ($0.05). Free manifests do not include the paid body. No request body. ${noNextSkuWord()}`,
+        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. ${BODY_PAGE_DISCOVERY} Free canned paid-JSON keys: GET /sample (HTTP 200, not a SKU). Free firm-name search: GET ${FIRM_CHECK_PATH}?q= (HTTP 200, not a SKU). Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402 (GET or POST '{}'). MCP at GET/POST /mcp lists one tool per paid GET plus free search, free firm-check, paid get-one ($0.02), and paid get-page ($0.05). Free manifests do not include the paid body. GET has no request body. ${noNextSkuWord()}`,
     },
     "x-discovery": {
       ownershipProofs: [PAY_TO],
@@ -5009,9 +5010,23 @@ async function servePaid(
   );
 }
 
+function isPaidDoorPath(path: string): boolean {
+  return (Object.values(SKU_COPY) as { resourcePath: string }[]).some((copy) => copy.resourcePath === path);
+}
+
+async function drainRequestBody(req: IncomingMessage): Promise<void> {
+  if (req.method !== "POST") return;
+  await new Promise<void>((resolve, reject) => {
+    req.on("data", () => {});
+    req.on("end", resolve);
+    req.on("error", reject);
+  });
+}
+
 export async function handleRequest(req: IncomingMessage, res: ServerResponse, port: number): Promise<void> {
   const url = new URL(req.url || "/", `http://${req.headers.host || "127.0.0.1"}`);
   const path = extractedCatalogPath(url.pathname.replace(/\/+$/, "") || "/");
+  const paidDoorPost = req.method === "POST" && isPaidDoorPath(path);
 
   if (path === MCP_PATH) {
     const origin = discoveryOrigin(req, port);
@@ -5026,16 +5041,18 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     res.writeHead(204, {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Headers": "X-PAYMENT, PAYMENT-SIGNATURE, Content-Type",
-      "Access-Control-Allow-Methods": "GET, OPTIONS",
+      "Access-Control-Allow-Methods": isPaidDoorPath(path) ? "GET, POST, OPTIONS" : "GET, OPTIONS",
     });
     res.end();
     return;
   }
 
-  if (req.method !== "GET") {
+  if (req.method !== "GET" && !paidDoorPost) {
     sendJson(res, 405, { error: "method_not_allowed" });
     return;
   }
+
+  if (paidDoorPost) await drainRequestBody(req);
 
   if (path === "/") {
     sendJson(res, 200, {
