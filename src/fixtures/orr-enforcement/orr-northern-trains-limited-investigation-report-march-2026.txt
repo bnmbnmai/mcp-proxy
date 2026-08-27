@@ -1,0 +1,1173 @@
+Northern Trains Limited:
+Investigation report
+3 March 2026
+
+
+
+
+               Page 1 of 30
+               Office of Rail and Road | Northern Trains – Investigation report
+
+
+
+
+Contents
+      Executive summary ..................................................................................................... 3
+      1. Investigation background ..................................................................................... 5
+      Introduction .................................................................................................................... 5
+      ORR Investigation overview .......................................................................................... 6
+      Condition 5 of Northern’s licences ................................................................................. 7
+      Conduct of the investigation........................................................................................... 7
+      2. Accessible Travel Policy (ATP)............................................................................. 8
+      Introduction .................................................................................................................... 8
+      Disability awareness training ......................................................................................... 8
+      3. Timeframe, scale and impact .............................................................................. 10
+      Timeframe and scale ................................................................................................... 10
+      Impact on disabled passengers ................................................................................... 13
+      4. Underlying causes ............................................................................................... 15
+      Northern’s internal audit findings ................................................................................. 15
+      5. Assurance and improvements ............................................................................ 17
+      Recent training ............................................................................................................ 17
+      Will a similar situation arise in future?.......................................................................... 18
+      6. Annexes ................................................................................................................ 20
+      Annex A: Terms of reference of investigation .............................................................. 21
+      Annex B: Chronology of events ................................................................................... 23
+      Annex C: Follow up questions issued as part of investigation ...................................... 26
+      Annex D: Supporting data............................................................................................ 29
+
+
+
+
+Page 2 of 30
+               Office of Rail and Road | Northern Trains – Investigation report
+
+
+
+
+ Executive summary
+ On 4 December 2025, ORR opened a formal licence investigation into Northern Trains
+ Limited (Northern) to establish if it had contravened or was contravening Condition 5
+ (Accessible Travel Policy) of its GB Statement of National Regulatory Provisions (SNRP):
+ Passenger and Station Licence. Northern has engaged constructively throughout our
+ investigation.
+
+ Condition 5 in both the GB SNRP: Passenger and Station Licences states: The holder
+ shall establish and thereafter comply with an Accessible Travel Policy (ATP). ATPs set out
+ how operators will protect the interests of disabled users of their trains and stations, and
+ cover areas such as provision of assistance, staff training and passenger information.
+ Operators must secure ORR’s approval for their ATPs and comply with the commitments
+ they make.
+
+ In 2024, Northern agreed a passenger assistance improvement plan with ORR designed to
+ tackle poor performance in delivering reliable assistance as identified through ORR’s
+ Experiences of Passenger Assist survey. Northern made good progress in delivering the
+ actions it set out in its plan and we wrote to Northern in July 2025 confirming that, over the
+ year ahead, our focus would shift to monitoring the realisation of benefits for passengers.
+
+ However, in August 2025 new reporting requirements for all operators revealed that
+ around 800 Northern passenger facing staff had not received disability awareness training.
+ This gap had not been identified or addressed in the passenger assistance improvement
+ plan. Northern took action to deliver training to station staff and, on 4 November 2025,
+ reported that it had fulfilled the plan.
+
+ Notwithstanding the delivery of training in October 2025, given the range of issues raised
+ previously, we continued to have concerns about Northern’s historic and ongoing
+ compliance. The licence investigation that we opened in December 2025 focused on
+ commitments that Northern makes in its Accessible Travel Policy relating to disability
+ awareness training and included:
+
+      •   The timeframe over which staff who had not received required training were
+          interacting with disabled passengers, and the scale and impact of the issue;
+
+      •   The circumstances that led to staff not receiving training when required and
+          how the issue remained unresolved and unreported during this timeframe;
+
+      •   How Northern can assure itself, its passengers and ORR that:
+Page 3 of 30
+                Office of Rail and Road | Northern Trains – Investigation report
+
+
+          i)      The recent training has been effective and is enabling staff to meet
+                  the required training outcomes, and
+          ii)     A similar situation will not arise in future.
+
+ The main sources of information have come from Northern itself, including a response on
+ 17 December 2025 to questions issued as part of the investigation, and a response on 4
+ February 2026 to our Case to Answer letter.
+
+ Summary of findings
+ Northern has been developing disability awareness training plans and materials for its staff
+ since 2021, when its ATP was established. Northern has stated that both induction and
+ refresher training have been delivered to conductors. However, induction training for new
+ station staff has only been provided since late 2023 and the evidence indicates that most
+ station staff did not have access to disability awareness refresher training until 2025.
+
+ Staff at Northern’s ten busiest stations received training that addressed some of the
+ mandatory training outcomes in 2025, as part of Northern’s passenger assistance
+ improvement plan, and disability awareness refresher training was delivered to station staff
+ across Northern’s network in October 2025. A gap remains for some staff with respect to
+ one of the mandatory training outcomes (outcome 9), which Northern aims to resolve by
+ July 2026.
+
+ Disability awareness training is intended to equip staff with the tools to better understand
+ the needs of disabled passengers and how these can best be met to support their journeys
+ on the rail network. Northern has acknowledged the impact on disabled passengers caused
+ by the gap in training provision.
+
+ Northern’s own internal audit, conducted in December 2025, identified a number of
+ systemic issues relating to governance processes, monitoring and controls as key
+ issues that led to the failure to deliver training to staff. Northern did not make ORR aware
+ of gaps in provision of disability awareness training until it reported data under new
+ reporting requirements in August 2025.
+
+ The training undertaken by Northern in October 2025 went a significant way towards
+ closing the training gap for station staff. However, until systemic issues are addressed
+ there is a risk that similar issues with disability awareness training could re-occur.
+
+ Northern has set out actions that it plans to take aimed at resolving systemic issues.
+ These are tailored to address the issues identified in Northern’s internal audit with some
+ actions already complete and most to be completed by end March 2026.
+
+Page 4 of 30
+               Office of Rail and Road | Northern Trains – Investigation report
+
+
+
+
+ 1. Investigation background
+ Introduction
+    1.1. ORR holds operators to account against the commitments they make in their
+         Accessible Travel Policies (ATPs), which cover areas such as provision of
+         assistance, staff training and passenger information.
+
+    1.2. To inform our engagement with operators, we have been surveying passengers on
+         their experiences of booked assistance on an ongoing basis since 2017,
+         and publish findings annually.
+
+    1.3. Northern was the poorest performer in our survey from 2020-2024 for the reliability
+         of assistance. At our request, Northern carried out an assessment of the gaps in
+         the passenger assistance service and proposed a passenger assistance
+         improvement plan. Staff training is central to the safe, reliable and effective
+         delivery of assistance to passengers, and the improvement plan included delivery
+         of some staff training, for example refresher disability awareness training for
+         conductors.
+
+    1.4. In December 2024, we confirmed that ORR would hold Northern accountable for
+         the delivery of its passenger assistance improvement plan. Northern made good
+         progress implementing the actions in its plan, and we wrote to Northern in July
+         2025 confirming that, over the year ahead, our focus would shift to monitoring the
+         realisation of benefits for passengers.
+
+    1.5. However, in August 2025 our new reporting requirements for all operators revealed
+         that around 800 Northern passenger facing staff, consisting of station-based staff
+         and revenue protection officers, had not received disability awareness training.
+         This gap had not been identified or addressed in the passenger assistance
+         improvement plan.
+
+    1.6. Our new reporting requirements involve quarterly submissions from all operators
+         on the numbers of staff who have not received required disability awareness
+         training. The reporting replaces previous biannual engagement with operators on
+         compliance with disability awareness training requirements and better reflects that
+         this is now a rolling business-as-usual activity for operators.
+
+    1.7. In September 2025 we asked Northern to explain how it intended to ensure that all
+         relevant staff receive appropriate training. The level of information provided in the
+Page 5 of 30
+               Office of Rail and Road | Northern Trains – Investigation report
+
+
+        response was not sufficient to provide us with confidence about the pace or quality of
+        training provision, or that it would result in staff able to demonstrate the mandatory
+        training outcomes.
+
+    1.8. In October 2025, we requested a full plan, setting out how Northern would ensure
+         that station staff are able to meet the mandatory training outcomes set out in our
+         ATP guidance. The plan that Northern submitted was ambitious and aimed to
+         deliver training to all staff who required it over a 4-week period and be completed
+         by 31 October 2025. On 4 November 2025, Northern reported that it had fulfilled
+         the plan.
+
+    1.9. This action by Northern was a rapid response that aimed to ensure that all station
+         staff had received disability awareness training. However, we had outstanding
+         questions and concerns, in particular around whether Northern had taken the steps
+         necessary to gain assurance that the plan had delivered the intended outcomes
+         and to prevent a similar situation from arising again. As a result, we decided to
+         open a formal licence investigation.
+
+ ORR Investigation overview
+    1.10. On 4 December 2025, ORR opened a formal licence investigation into Northern
+          to establish if it had contravened or was contravening condition 5 (Accessible
+          Travel Policy) of its GB Statement of National Regulatory Provisions (SNRP):
+          Passenger and Station licence.
+
+    1.11. The scope of the investigation focused on commitments that Northern makes in
+          its Accessible Travel Policy relating to disability awareness training and
+          included:
+
+           •     The timeframe over which staff who had not received required training were
+                 interacting with disabled passengers, and the scale and impact of the issue;
+
+           •     The circumstances that led to staff not receiving training when required and
+                 how the issue remained unresolved and unreported during this timeframe;
+
+           •     How Northern can assure itself, its passengers and ORR that:
+
+                i)     The recent training has been effective and is enabling staff to meet
+                       the required training outcomes, and
+
+                ii)    A similar situation will not arise in future.
+
+
+Page 6 of 30
+               Office of Rail and Road | Northern Trains – Investigation report
+
+
+
+    1.12. The main sources of information have come from Northern itself, following the
+          data submission on 12 August 2025. They include information shared with ORR
+          on 4 September 2025 and 15 October 2025 as part of our early compliance
+          engagement, a response on 17 December 2025 to questions issued as part of
+          the investigation, and a response on 4 February 2026 to our Case to Answer
+          letter.
+
+    1.13. We have also considered information and data relating to Northern and other
+          operators as part of our business as usual (BAU) regulatory activities, including
+          our passenger assistance satisfaction surveys and passenger complaints.
+
+ Condition 5 of Northern’s licences
+    1.14. Condition 5: Accessible Travel Policy in the GB SNRP: Passenger states:
+
+           “The SNRP holder shall establish and thereafter comply with:
+
+           (a) a statement of policy; and
+
+           (b) a detailed body of arrangements, procedures, services and other benefits to
+              be implemented or provided by the SNRP holder,
+
+           designed to protect the interests of people who are disabled in their use of trains
+           operated by the SNRP holder and to facilitate such use (together the “ATP”).”
+
+    1.15. The full text of the Condition is set out in the model passenger licence.
+
+    1.16. Condition 5 of the Station Licence is identical except it refers to stations rather
+          than trains.
+
+    1.17. Operators can only establish, or make material changes to, their ATP with
+          approval from ORR.
+
+    1.18. Each operator is held to account against the commitments they make in their
+          approved ATP.
+
+ Conduct of the investigation
+    1.19. The terms of reference of this investigation as set out in our initiation letter of 4
+          December 2025 issued to Northern is provided in Annex A.
+
+    1.20. This investigation has been carried out in line with our Economic Enforcement
+           Policy.
+
+
+Page 7 of 30
+               Office of Rail and Road | Northern Trains – Investigation report
+
+
+
+
+ 2. Accessible Travel Policy (ATP)
+ Introduction
+    2.1. ORR has published detailed guidance for train and station operators setting out the
+         criteria that ORR will normally adopt in approving each operator’s Accessible
+         Travel Policy. That guidance sets out expectations relating to the provision of
+         disability awareness training for passenger-facing staff (section B6) and defines
+         mandatory training outcomes. It also sets out expectations relating to strategy and
+         management (sections B1, B2 and B3). The commitments made in Northern’s ATP
+         are consistent with the expectations set out in the ATP guidance.
+
+ Disability awareness training
+        Baseline training for existing staff in 2021
+
+    2.2. Northern’s ATP, as approved by ORR on 25 February 2021, committed to deliver
+         disability awareness training to existing passenger facing staff by 31 December
+         2021, covering the mandatory training outcomes. This date was an extension to the
+         original date of 31 July 2021 that is set out in our ATP guidance. This extension
+         was to facilitate Northern introducing a three-hour briefing window for disability
+         awareness training delivery.
+
+    2.3. In 2022, through the ATP annual review process, Northern amended its ATP to
+         remove the now historic reference to the 31 December 2021 commitment.
+
+        Induction training for new staff
+
+    2.4. Northern’s ATP maintains commitments that:
+
+               •   “All new staff will receive disability awareness training as part of their
+                   corporate induction” (Northern ATP, page 30).
+
+               •   “The Office for Rail and Road (sic) have set out in their guidance nine
+                   mandatory training outcomes… which our training includes” (Northern ATP,
+                   page 30).
+
+        Refresher training
+
+    2.5. Northern’s ATP maintains a commitment that:
+
+Page 8 of 30
+                   Office of Rail and Road | Northern Trains – Investigation report
+
+
+
+               •     “All Northern staff will receive refresher training within two years of the initial
+                     training they have received, and as a minimum every two years thereafter;
+                     in order to ensure the mandatory training outcomes are maintained”
+                     (Northern ATP, page 32).
+
+        Strategy and Management
+
+    2.6. Northern’s ATP maintains a commitment that Northern will:
+
+               •     “Embed the provision of services to disabled people within our business and
+                     our project planning
+
+               •     Will continue to improve access to the railways for disabled people and
+                     those with reduced mobility
+
+               •     Ensure our staff have the resources, skills and confidence to deliver
+                     assistance to customers
+
+               •     Measure the success of our Accessible Travel Policies” (Northern ATP,
+                     pages 23-24).
+
+    2.7. With respect to monitoring and evaluation, Northern’s ATP maintains a
+         commitment that:
+
+           •         “We will regularly review this policy and a report on findings will be sent to
+                     the DfT and the ORR. This will include details of the achievements of
+                     objectives, new initiatives to improve our service to disabled customers
+                     and any difficulties we have encountered with the implementation of this
+                     policy.” (Northern ATP, page 25).
+
+
+
+
+Page 9 of 30
+                Office of Rail and Road | Northern Trains – Investigation report
+
+
+
+
+ 3. Timeframe, scale and impact
+    3.1. ORR published ATP guidance, setting out new requirements relating to disability
+         awareness training in July 2019 and initiated engagement with operators on their
+         ATP commitments and training plans. A timeline, noting key events and
+         engagements with Northern since 2019, is set out in Annex B. Information gathered
+         through these various engagements has provided the evidence base for this
+         chapter.
+
+
+ Timeframe and scale
+    3.2. We sought to establish the timeframe over which passenger-facing staff have not
+         received the disability awareness training that Northern commits to provide in its
+         ATP and the scale of the issue.
+
+   3.3. Northern provided some narrative alongside the data it submitted to ORR on 12
+        August 2025, stating:
+
+            •     “We have been delivering DA training on induction for station staff since late
+                  2023. Before then the planned national stations reform work… was planned
+                  to pick up the full training requirement for all station-based staff. The
+                  cancellation of that work resulted in us moving to training new starters on
+                  induction as for other grades, but we have a backlog of longer serving
+                  station colleagues who don't currently have agreements in place for
+                  biannual safety brief days like conductors, and who we don't therefore have
+                  opportunities with off-roster time when we can deliver refresher training.”
+
+            •     “100% of our Conductors are trained in line with the requirements as we
+                  have delivered DA training at induction since 2017 and we also have their 6
+                  monthly safety brief we refresh training each time.”
+
+    3.4. This narrative suggests that the training gap lies with station staff, not conductors.
+         Specifically, it suggests that induction training was not available for new station
+         staff between 2021 and late 2023 and that longer serving station staff had
+         potentially not been offered refresher training at all.
+
+    3.5. In its response dated 19 September 2025 to ORR’s initial questions on the matter,
+         Northern provided a brief timeline. The key points were:
+
+
+Page 10 of 30
+                Office of Rail and Road | Northern Trains – Investigation report
+
+
+
+            •       “2021/22: DA training was integrated into Northern’s Annual Business Plan.
+                    The plan would ensure all new station staff received DA training at induction,
+                    as per the already established process for Conductors, and a dedicated
+                    management training day was also to be delivered via Enhance the UK. A
+                    refresher training plan for station colleagues was drafted but not
+                    implemented.
+
+            •       2022: The national Station Reform programme was launched…. This
+                    would have ensured full coverage of training for Station colleagues and
+                    would also have embedded future training requirements for refresher
+                    training.
+
+            •       Mid-2022: Due to the scale of reform, negotiations around eLearning and
+                    training paused. The backlog of station colleagues without DA training was
+                    acknowledged as a temporary issue, with resolution expected post-reform.
+
+            •       Autumn 2023: The Station Reform programme was discontinued
+                    nationally, removing the planned solution for DA training coverage.
+
+            •       2023/24: Northern developed a new 5-module DA eLearning package in
+                    collaboration with Enhance the UK for Station and Conductor colleagues to
+                    facilitate the required refresher training. Modules 1–4 were immediately
+                    adopted for Conductor refresher training as part of their biannual safety brief
+                    days in 2023.”
+
+    3.6. With respect to conductors, in its response of 17 December 2025 Northern
+         additionally stated that:
+
+                •   “Conductors at Northern are trained and assessed as competent on entry,
+                    placed into an ongoing competency cycle designed to maintain that
+                    competence, and supported by safety briefs that reinforce and enhance
+                    existing capability for Disability Awareness training.”
+
+    3.7. Northern’s timeline suggests that in the period 2021-2024 Northern developed
+         training plans and materials for its staff and that, consistent with the information
+         provided in August 2025, training was delivered to conductors, but that station staff
+         did not receive refresher training (as above, induction training was available to
+         station staff from late 2023). It appears that the issues Northern cites, relating to
+         rostered time off for training, access to e-learning for station staff, and discontinued
+
+
+
+Page 11 of 30
+                Office of Rail and Road | Northern Trains – Investigation report
+
+
+
+        plans for the Station Reform programme may apply to all station staff - and
+        therefore most station staff appear not to have had access to disability
+        awareness refresher training over the period 2021 to 2024.
+
+    3.8. During 2025, as one of the actions in its improvement plan for increasing the
+         reliability of assistance, Northern delivered a 2-hour training session to 99 staff
+         across its ten largest stations. The session covered Handover Protocol (the
+         process of staff communicating between boarding and aligning stations to ensure
+         passenger assistance is delivered), assistance best practice and communication
+         skills.
+
+    3.9. On 12 August 2025 Northern reported that around 800 passenger facing staff had
+         not received disability awareness training. This is around one third of all Northern
+         permanent passenger-facing staff. On 4 November, Northern reported that it had
+         completed delivery of its plan to address this training gap by providing training for
+         station staff.
+
+    3.10. When we asked Northern to provide further evidence of the timeframe over
+          which staff had not received required training as part of the investigation across
+          2021 to 2025 (see Annex C for the questions we asked), its response of 17
+          December 2025 stated:
+
+                •   “Northern has worked hard to understand the timeframe over which
+                    required staff did not receive Disability Awareness training following the
+                    move into public ownership. Regretfully, Northern do not hold complete
+                    records to establish the station staff who would require the training nor that
+                    this training has been completed. Whilst Northern are confident that
+                    previous figures shared with ORR are broadly correct, further work needs
+                    to be undertaken to ensure that Northern can be confident about the
+                    records it holds moving forward. It is for this reason that we are unable to
+                    share any evidence to support the additional questions provided for 1.1-
+                    1.11.” (ORR’s question references)
+
+    3.11. Northern was therefore unable to confirm if or when its station staff had
+          completed disability awareness training either initially by the 31 December 2021
+          deadline, as part of induction for new starters or as part of any 2-year refresher
+          training cycle.
+
+    3.12. With regard to the disability awareness training delivered in October 2025, in its
+          response on 4 February 2026 to our Case to Answer letter, Northern confirmed
+          that all relevant station staff completed the training, covering mandatory
+          outcomes 1-8 and 9c, and records of this are held within its learning
+Page 12 of 30
+                Office of Rail and Road | Northern Trains – Investigation report
+
+
+          management system.
+
+    3.13. A gap remains for some staff with respect to one of the mandatory training
+          outcomes (outcome 9), which Northern states is its priority focus and aims to
+          resolve by July 2026.
+
+ Findings
+    3.14. Northern has been developing disability awareness training plans and materials
+          for its staff since 2021, when its ATP was established. Northern has stated that
+          both induction and refresher training have been delivered to conductors.
+          However, induction training for new station staff has only been provided since
+          late 2023 and the evidence indicates that most station staff appear not to have had
+          access to disability awareness refresher training until 2025.
+
+    3.15. Staff at Northern’s ten busiest stations received training that addressed some of
+          the mandatory training outcomes in 2025, as part of Northern’s passenger
+          assistance improvement plan, and disability awareness refresher training was
+          delivered to station staff across Northern’s network in October 2025. A gap
+          remains for some staff with respect to one of the mandatory training outcomes
+          (outcome 9), which Northern aims to resolve by July 2026.
+
+ Impact on disabled passengers
+    3.16. We sought to establish the impact of the training gap on disabled passengers.
+
+    3.17. The purpose of staff training is to ensure that disabled passengers receive a
+          good service from all staff. The mandatory training outcomes were arrived at
+          following extensive consultation with disabled passengers, disability
+          campaigners, disability organisations, and the rail industry, and are specifically
+          targeted to support a good quality service for all disabled passengers. They are
+          designed to address the consistent feedback that staff should understand the
+          complexity of disabilities and appreciate the challenges each person faces.
+
+    3.18. Where disability awareness training is delivered well, and staff can assist
+          disabled passengers with confidence, it should result in a more reliable service
+          and more positive experiences. Where staff are not well trained and do not
+          understand the challenges some passengers face or their responsibilities as
+          staff, it opens up risks of negative experiences for disabled passengers.
+
+    3.19. In its 17 December 2025 submission, Northern stated that it:
+
+Page 13 of 30
+                Office of Rail and Road | Northern Trains – Investigation report
+
+
+
+                 •   “understands the potential impact on some disabled customers who may
+                     not have received the standard of support they rightly expect.”
+
+
+    3.20. ORR has been engaging with Northern since July 2024 regarding its
+          passenger assistance reliability, which has been historically poor. In its 17
+          December 2025 submission, Northern reported on the positive impact of training it
+          delivered in October 2025 on assistance reliability, supported by insights from
+          Northern’s accessibility mystery shopping programme, post and during travel and
+          customer experience centre survey.
+
+    3.21. We note that Northern also took a wide range of actions under its 2024
+          improvement plan on assistance reliability that were designed to deliver
+          improvements in the same areas.
+
+    3.22. In the 17 December 2025 submission, Northern also highlighted data relating to
+          other aspects of the passenger experience:
+
+                 •   “To help assess potential impact, we have reviewed customer experience
+                     indicators during the relevant timeframe. Our overall Customer
+                     Satisfaction (CSAT) scores for customers who have indicated they have a
+                     disability consistently perform higher than overall CSAT for all customers.
+                     In the ORR benchmarking report between 2022 to 2025 Northern
+                     received an average of 93% satisfaction with assistance received at the
+                     station and with staff knowledge and proficiency at the station. Northern
+                     complaint volumes relating to accessibility have continued to be low at an
+                     average 0.7 per 100k journeys.”
+
+
+
+ Findings
+    3.23. Disability awareness training is intended to equip staff with the tools to better
+          understand the needs of disabled passengers and how these can best be met
+          to support their journeys on the rail network. Northern has acknowledged the
+          impact on disabled passengers caused by the gap in training provision.
+
+
+
+
+Page 14 of 30
+                Office of Rail and Road | Northern Trains – Investigation report
+
+
+
+
+ 4. Underlying causes
+ Northern’s internal audit findings
+    4.1. Our investigation sought to explore the circumstances that led to staff not receiving
+         training when required and how the issue remained unresolved and unreported
+         during this timeframe.
+
+    4.2. Northern did not make ORR aware of gaps in provision of disability awareness
+         training until it reported data under new reporting requirements in August 2025 (see
+         timeline of engagement in annex B).
+
+    4.3. Prompted by our investigation initiation letter of December 2025, Northern
+         commissioned an urgent high level internal audit to investigate why the training
+         issue went unresolved and unreported.
+
+    4.4. In its submission of 17 December 2025, Northern reported that the audit identified
+         the following key issues with Northern’s control framework for Disability Awareness
+         training for passenger-facing colleagues:
+
+                •   “Undefined Roles and Responsibilities: No documented accountability
+                    for training delivery or compliance monitoring. A RACI has now
+                    been established and approved by Northern’s Director Group.
+
+                •   Data Fragmentation: Absence of a single source of truth, making
+                    compliance tracking difficult.
+
+                •   Lack of Standard Operating Procedure (SOP): No formal process in
+                    place for managing this training”.
+
+    4.5. RACI is an acronym for a project management tool that describes who is
+         Responsible, Accountable, Consulted and Informed.
+
+    4.6. We note that Northern, in evidence cited earlier, has also pointed to issues around
+         rostered time off for training and access to e-learning as key issues for station staff.
+
+    4.7. As a result of the audit, Northern also stated that “Northern is unable to provide
+         assurance at this stage over its records” and, for that reason, did not provide
+         responses to many of the questions that we posed to them (see Annex C).
+Page 15 of 30
+                Office of Rail and Road | Northern Trains – Investigation report
+
+
+
+    4.8. The audit made a number of recommendations which Northern has committed to
+         take forward (see chapter 5).
+
+ Findings
+    4.9. Northern did not make ORR aware of gaps in provision of disability awareness
+         training until it reported data under new reporting requirements in August 2025.
+
+    4.10. Northern’s own internal audit identified a number of systemic issues relating to
+          governance processes, monitoring and controls as key issues that led to the
+          failure to deliver training to staff.
+
+
+
+
+Page 16 of 30
+                Office of Rail and Road | Northern Trains – Investigation report
+
+
+
+
+ 5. Assurance and improvements
+    5.1. Our investigation has examined how Northern can assure itself, its passengers and
+         ORR that:
+
+                 •   The recent training has been effective and is enabling staff to meet
+                     the required training outcomes; and
+
+                 •   A similar situation will not arise in future.
+
+ Recent training
+    5.2. On 15 October 2025 Northern provided a detailed training plan to address the gap
+         in disability awareness training for station staff. It set a target to deliver outstanding
+         training by 31 October 2025 using 20 Passenger Assist Champions and Team
+         Leaders to deliver training face-to-face at stations.
+
+    5.3. On 4 November 2025 Northern submitted a final report confirming that delivery of
+         the plan had been completed on 31 October 2025.
+
+    5.4. The chart below is an extract from the final weekly progress report submitted by
+         Northern on 4 November 2025 and shows the trajectory for Northern training the
+         staff it identified as having insufficient training records and therefore needing
+         training.
+
+
+
+
+Page 17 of 30
+                Office of Rail and Road | Northern Trains – Investigation report
+
+
+
+
+    5.5. Northern reported that written records of attendees were kept at the station to be
+         manually entered into Northern’s Learning Management System (LMS) at a later
+         stage.
+
+    5.6. In its response on 4 February 2026 to our Case to Answer letter, Northern
+         confirmed that records had been entered into its LMS. It also provided an update
+         on training for the 34 station staff who were on long term absence in October
+         2025. As of 3 February 2026, nine have returned to the business and were
+         awaiting Disability Awareness training, while the rest have either received it, have
+         left the business or are still absent.
+
+ Will a similar situation arise in future?
+    5.7. Northern’s own internal audit identified a number of systemic issues relating to
+         governance processes, monitoring and controls as key issues that led to the failure
+         to deliver training to staff. The audit made a number of recommendations which
+         Northern has committed to take forward. In its submission of 17 December 2025,
+         Northern stated:
+
+                 •       “Northern will take steps to strengthen governance and compliance
+                         around disability awareness training. To sustain this, we recognise that
+                         we need to improve our systematic monitoring and management of
+                         accessibility risks, with appropriate governance for decision-making and
+                         escalation thresholds. We have conducted an immediate audit, and we
+                         recognise there are improvements needed in the supporting documents
+                         and procedures and to ensure that there is a robust structure in place.”
+
+    5.8. In an appendix to its submission on 17 December 2025, Northern set out plans for
+         Disability Awareness: Approach to Improvement, that set out the details of the
+         actions that it would take, and the timescales. The plan identified four priority
+         areas, with specific actions associated with each, to be delivered largely by end
+         March 2026:
+
+                     •    review governance controls and reporting
+
+                     •    define role-based training requirements
+
+                     •    address retrospective gaps
+
+
+
+Page 18 of 30
+                Office of Rail and Road | Northern Trains – Investigation report
+
+
+                  •   update induction, onboarding and refresher training
+
+
+    5.9. We have assessed the plan and consider it to be comprehensive and well-
+         targeted at tackling systemic issues relating to governance, oversight and delivery
+         of disability awareness training. The actions set out, once delivered, should offer
+         confidence that Northern will be able to meet, and demonstrate that it is meeting
+         the commitments set out in its ATP relating to delivery of disability awareness
+         training for staff and provision of the management and oversight arrangements to
+         support and assure delivery of that training.
+
+    5.10. Of the 23 actions in the plan, eight were to be delivered by end January and
+          were confirmed as complete by Northern in their response to our Case to
+          Answer letter of 4 February 2026.
+
+
+ Findings
+    5.11. The training undertaken by Northern in October 2025 went a significant way
+          towards closing the training gap for station staff. However, until systemic issues
+          are addressed there is a risk that similar issues with disability awareness training
+          could re-occur.
+    5.12. Northern has set out actions that it plans to take aimed at resolving the systemic
+          issues. These are tailored to address the issues identified in Northern’s internal
+          audit with some actions already complete and most to be completed by end March
+          2026.
+
+
+
+
+Page 19 of 30
+                Office of Rail and Road | Northern Trains – Investigation report
+
+
+
+
+ 6. Annexes
+ Annex A: Terms of reference of investigation
+ Annex B: Chronology of events
+ Annex C: Follow up questions issued as part of
+ investigation
+ Annex D: Supporting data
+
+
+
+
+Page 20 of 30
+                Office of Rail and Road | Northern Trains – Investigation report
+
+
+
+ Annex A: Terms of reference of investigation
+ Investigation initiation letter from ORR to Northern dated 4 December
+ 2025
+ ORR investigation of Northern Trains Limited’s Compliance with Condition 5
+ (Accessible Travel Policy) of your Station Licence and GB Statement of National
+ Regulatory Provisions: Passenger
+
+ I am writing to inform you we are opening a formal investigation into whether Northern
+ contravened, or is contravening, Condition 5 of its Station Licence and GB Statement of
+ National Regulatory Provisions (SNRP): Passenger. We are inviting you to share further
+ information with us by close of business on Wednesday 17 December 2025.
+
+ Background
+
+ Condition 5 of the Station Licence and GB SNRP: Passenger requires the holder to
+ establish and comply with an Accessible Travel Policy (ATP).
+
+ ORR approved Northern’s ATP on 25 February 2021. Northern committed to deliver
+ disability awareness training covering the mandatory training outcomes to existing
+ passenger facing staff by 31 December 2021; induction training for new staff thereafter;
+ and refresher training every two years. In 2022, through the ATP annual review process,
+ Northern amended its ATP to remove the now historic reference to the 31 December
+ 2021 commitment. Whilst the ATP has been updated since 2021 as part of an annual
+ review process, commitments regarding the ongoing training of new and existing staff
+ have remained.
+
+ On 12 August 2025, in response to ORR’s new approach to monitoring training delivery,
+ Northern reported that around 800 staff members, consisting of station-based staff and
+ revenue protection officers, had not completed disability awareness training. On 3
+ October 2025, I wrote to you setting out my concerns about the impact this lack of
+ training may have had on the experiences of your passengers, and also that Northern
+ had not made us aware of this compliance issue before.
+
+ Upon our request Northern provided a plan on 15 October 2025 setting out how it would
+ ensure that affected staff were able to meet the training requirements set out in the ATP
+ guidance. Northern’s plan was ambitious and aimed to deliver training to all staff who
+ required it over a 4-week period and be completed by 31 October 2025. On 4 November
+ 2025, Northern reported that it had fulfilled the plan and all training had been delivered.
+
+ Given the concerns already raised with Northern, the scope of the investigation will
+ include the following:
+
+ • The timeframe over which staff who had not received required training were
+ interacting with disabled passengers, and the scale and impact of the issue;
+
+Page 21 of 30
+                Office of Rail and Road | Northern Trains – Investigation report
+
+
+
+ • The circumstances that led to staff not receiving training when required and how
+ the issue remained unresolved and unreported during this timeframe;
+
+ • How Northern can assure itself, its passengers and ORR that i) the recent training
+ has been effective and is enabling staff to meet the required training outcomes
+ and ii) a similar situation will not arise in future.
+
+ Delivering the investigation
+
+ Jacqui Russell, Head of Consumer, will lead this investigation and Stewart Hill will
+ support Jacqui as lead contact. We will carry out our investigation in accordance with
+ our economic enforcement policy processes.
+
+ We will review the information we already hold on this matter and would welcome any
+ additional information Northern would like us to consider, which could be shared with
+ us in writing or through discussion of the issues, by close of business on Wednesday 17
+ December 2025.
+
+ We may also provide you with further specific clarification questions and/or requests for
+ information or require additional engagement. Should we choose to do so, we will write
+ to you under separate cover.
+
+ Given the engagement between us already undertaken on this issue, we aim to
+ conclude our investigation as soon as possible. We will write to Northern again to
+ advise of our findings and any relevant next steps in our process.
+
+ Our economic enforcement policy also encourages licence holders to offer reparations
+ to be considered as part of our enforcement process, if a licence holder is willing to
+ acknowledge its failings. Where reparations are to be offered, we prefer licence holders
+ and relevant operators to offer reparations as early as possible.
+
+ To the extent you may be considering carrying out an internal review covering this
+ matter, we would expect you to conduct the same with an eye to reducing unnecessary
+ burden on yourselves, but without limiting in any way your response and provision of
+ information to our investigation.
+
+ The outcomes of this formal investigation could ultimately result in a finding of breach
+ of Northern’s Station Licence and GB SNRP: Passenger, and if appropriate, formal
+ action.
+
+ Please be aware that we may use any information you provide, including information
+ provided to date, to inform the discharge of our regulatory functions. We will publish
+ our findings.
+
+ If you have any questions, please do not hesitate to contact Stewart Hill (…). A copy of
+ this letter will be published on our website in due course.
+
+Page 22 of 30
+                Office of Rail and Road | Northern Trains – Investigation report
+
+
+
+
+ Annex B: Chronology of events
+ Table B.1 - Chronology of events / actions 2019-2026
+
+  Date                      Commentary on event / actions
+
+  July 2019                 ORR announced new disability awareness training
+                            requirements and shared guidance for operators via an
+                            industry letter to all Train Operating Companies (TOC)
+                            managing directors. TOCs were asked to submit a plan
+                            alongside revised ATPs setting out how the new disability
+                            awareness training requirements would be met. TOCs were
+                            also asked to provide a report by July 2020 outlining progress
+                            towards meeting the new training requirements. Operators
+                            are required to provide training for existing staff by 31 July
+                            2021, and then induction training for passenger-facing staff,
+                            with refresher training for all every two years.
+
+  2019 and 2020             Northern engaged positively and committed to meet the training
+                            requirements across several communications. As Northern
+                            began to share plans with ORR, concerns arose about its ability
+                            to meet the deadline of 31 July 2021 while delivering the
+                            required quality. These concerns were shared with Northern
+                            which committed to take steps to address them.
+
+  1 March 2020              The franchise became directly operated by DfT OLR Holdings.
+                            Northern Trains Limited trading as ‘Northern’ is owned by the
+                            DfT Operator for the Department for Transport (DfT).
+
+  25 February 2021          ORR approved Northern’s ATP on condition of further training
+                            material being shared, which was sent by Northern on 4 June
+                            2021. At this stage Northern committed in its ATP to deliver the
+                            training by the deadline of 31 July 2021.
+
+  July 2021                 Northern requested an extension to 31 December 2021 to
+                            deliver the training. Northern stated it needed the extension to
+                            implement a 3-hour briefing to deliver face-to-face training in
+                            addition to e-learning. ORR granted an extension on this
+                            basis.
+
+Page 23 of 30
+                Office of Rail and Road | Northern Trains – Investigation report
+
+  During 2022 and           Little correspondence specifically on disability awareness
+  2023                      training between ORR and Northern. However, during the
+                            engagement in 2025, Northern suggested issues with
+                            delivering disability awareness training to station staff were
+                            known about in mid-2022 (see section 3.5).
+
+  30 January 2023           As part of the annual ATP review cycle, Northern sent a letter to
+                            ORR outlining steps to show how it enhanced its disability
+                            awareness refresher training. As part of the review, Northern
+                            raised no concerns about delivery of disability awareness training
+                            to its staff.
+
+  2024                      There was no correspondence specifically about disability
+                            awareness training between ORR and Northern. However, on
+                            19 September 2024, ORR requested an improvement plan
+                            from Northern regarding its passenger assistance delivery due
+                            to sustained poor performance in ORR’s Passenger Assist
+                            satisfaction survey. ORR letter to Northern Trains dated 19
+                            September 2024
+
+  4 December 2024           Northern’s passenger assistance improvement plan was
+                            accepted by ORR on 4 December 2024. The plan included
+                            updated disability awareness training for conductors, and
+                            refresher training for staff at the ten busiest stations.
+
+  1 April 2025              ORR introduced a new approach to monitoring compliance
+                            with disability awareness training requirements, with quarterly
+                            data reporting by all operators.
+
+  10 July 2025              Northern requested a meeting with ORR to discuss the new
+                            reporting requirements on training. The aim of the call was to
+                            understand what data was required.
+
+  12 August 2025            Northern’s first submission for ORR’s new monitoring data
+                            request showed that around 800 Northern passenger facing staff,
+                            consisting of station-based staff and revenue protection officers,
+                            had not received disability awareness training.
+
+  4 September 2025          Via email ORR requested an explanation of how the situation
+                            arose and Northern’s plan to rectify it.
+
+Page 24 of 30
+                Office of Rail and Road | Northern Trains – Investigation report
+
+  19 September 2025         Northern submitted a training recovery plan via email to ORR.
+
+
+  3 October 2025            ORR sent a letter to Northern rejecting the initial plan and
+                            requesting an updated one. ORR letter to Northern Trains
+                            dated 3 October 2025
+
+  15 October 2025           Northern submitted a plan to deliver disability awareness training
+                            to the staff it identified as having insufficient training records. The
+                            training was planned to be delivered over a 4-week period and by
+                            31 October 2025. ORR staff attended and observed three of the
+                            Northern training sessions during this period.
+
+  4 November 2025           Northern confirmed to ORR that the disability awareness
+                            training plan has been delivered.
+
+  4 December 2025           ORR opened a formal licence investigation relating to Northern’s
+                            disability awareness training obligations.
+
+  17 December 2025          Northern provided a response to ORR questions issued as part of
+                            the investigation, acknowledging the issues and setting out a plan
+                            to address them.
+
+  23 January 2026           ORR sent Northern a Case to Answer letter, outlining the
+                            findings from our review of the available evidence inviting
+                            Northern to provide any further information it felt was relevant.
+
+  4 February 2026           Northern responded to the Case to Answer letter, providing
+                            more details around records of the staff trained in October
+                            2025 and an update on progress against actions in the plan it
+                            had provided in December.
+
+
+
+
+Page 25 of 30
+                Office of Rail and Road | Northern Trains – Investigation report
+
+
+
+ Annex C: Follow up questions issued as part of
+ investigation
+ We wrote to Northern on 9 December 2025 to ask follow-up questions as part of the
+ investigation. The content of that email is included below:
+
+ These questions identify information and evidence that we consider are relevant to ORR’s
+ investigation into provision of disability awareness training, as outlined in the investigation
+ initiation letter of 4 December. We would ask that Northern provide its response to the
+ questions below by Wednesday 17 December 2025. Northern may also choose to provide
+ us with any other information it considers relevant.
+
+ 1. The timeframe over which staff who had not received required training were
+ interacting with disabled passengers, and the scale and impact of the issue.
+
+ Initial training mandate
+
+  1.1. How many passenger-facing staff were eligible for disability awareness training as of
+ 31 December 2021, and what were their roles?
+
+ 1.2. How many of these staff received disability awareness training by 31 December
+ 2021? Please specify their roles.
+
+ 1.3. Northern stated in its response of 19 September 2025 to ORR’s initial request for a
+ disability awareness training recovery plan that, in mid-2022, ‘The backlog of station
+ colleagues without DA training was acknowledged as a temporary issue, with resolution
+ expected post-reform’. How many station staff were in this backlog?
+
+ 1.4. As of 15 August 2025, when Northern submitted its core data return to ORR, how
+ many station staff and conductors did Northern employ?
+
+ Induction training for new staff
+
+ 1.5. When did disability awareness training as part of new starter induction start to be
+ delivered?
+
+ 1.6. How many passenger-facing staff who were eligible for disability awareness training
+ joined Northern between 1 January 2022 and 4 December 2025? Please break this down
+ by year and role.
+
+ 1.7. How many of these staff received disability awareness induction training. Please
+Page 26 of 30
+                Office of Rail and Road | Northern Trains – Investigation report
+
+ break this down by year and role.
+
+ Refresher training
+
+ 1.8. When did delivery of disability awareness refresher training begin?
+
+ 1.9. How many staff were eligible for disability awareness refresher training in the period
+ between 31 December 2021 and 4 December 2025? Please break this down by year and
+ role.
+
+ 1.10. Please also confirm how many passenger-facing staff were employed by Northern as
+ of August 15 2025, broken down by role.
+
+ 1.11. How many of these eligible staff received disability awareness refresher training
+ between 31 December 2021 and 4 December 2025? Please break this down by year and
+ role.
+
+ 2. The circumstances that led to staff not receiving training when required and how
+ the issue remained unresolved and unreported during this timeframe.
+
+ 2.1. If the response to 1.2 above indicates that not all eligible staff received disability
+ awareness training by 31 December 2021, please provide the reasons for this together
+ with an explanation of whether, and how, the issues were resolved.
+
+ 2.2. In respect of the backlog identified in 2022, please describe how you became aware
+ of this issue. Please also provide the reasons for this backlog together with an explanation
+ of whether, and how, the issues were resolved.
+
+ 2.3. If the response to 1.7 above indicates that not all eligible staff received disability
+ awareness induction training, please provide the reasons for this together with an
+ explanation of whether, and how, the issues were resolved.
+
+ 2.4. If the response to 1.11 above indicates that not all eligible staff received disability
+ awareness refresher training, please provide the reasons for this together with an
+ explanation of whether, and how, the issues were resolved.
+
+ 3. How Northern can assure itself, its passengers and ORR that:
+
+  i) the recent training has been effective and is enabling staff to meet the required
+ training outcomes
+
+
+
+Page 27 of 30
+                Office of Rail and Road | Northern Trains – Investigation report
+
+
+
+ 3.1. How did Northern identify the staff that were reported in the Core data return of 15
+ August 2025 to require disability awareness training?
+
+
+  3.2. In discussions between Northern and ORR, Northern has described the approach to
+delivering the disability awareness training during October 2025 as 'train the trainer'.
+Please outline the process that was followed to prepare colleagues for delivering the
+training.
+
+
+ 3.3. How did Northern assure itself that the disability awareness training delivered during
+ October 2025 had been delivered effectively, covering the required training outcomes?
+
+ ii) a similar situation will not arise in future
+
+ 3.4. Northern described reasons why training has not been delivered in its response of 19
+ September 2025 to ORR’s initial request for a disability awareness training recovery plan.
+ What steps have been taken, or are planned, to mitigate what Northern has described as
+ ‘training access barriers’? Please provide the dates for when those steps were taken or
+ are planned to be taken.
+
+ 3.5. What steps have been taken, or are planned, to monitor and record the delivery of
+ disability awareness training? Please provide the dates for when those steps were taken
+ or are planned to be taken, together with any documentary evidence.
+
+ 3.6. What steps have been taken, or are planned, to assure the quality of disability
+ awareness training for passenger-facing staff? Please provide the dates for when those
+ steps were taken or are planned to be taken, together with any documentary evidence.
+
+
+
+
+Page 28 of 30
+                Office of Rail and Road | Northern Trains – Investigation report
+
+
+
+ Annex D: Supporting data
+ ORR’s Experiences of Passenger Assist survey 2021-2025
+
+ Table 1: Proportion of passengers who reported they received none of the assistance
+ booked
+
+  Year               Northern Trains              Other Operators
+  2021–2022          24%                          11%
+  2022–2023          13%                          8%
+  2023–2024          18%                          12%
+  2024–2025          19%                          11%
+
+
+ Table 2: Overall Satisfaction of passengers with assistance at the station
+
+  Year               Northern Trains              Other Operators
+  2021–2022          91%                          94%
+  2022–2023          94%                          95%
+  2023–2024          97%                          94%
+  2024–2025          94%                          94%
+
+
+ Table 5: Satisfaction of passenger with staff knowledge and proficiency
+
+  Year               Northern Trains              Other Operators
+  2021–2022          95%                          95%
+  2022–2023          94%                          94%
+  2023–2024          96%                          94%
+  2024–2025          94%                          94%
+
+
+ Full reports available: ORR research into accessibility | Office of Rail and Road
+
+
+
+
+Page 29 of 30
+© Crown copyright 2026
+This publication is licensed under the terms of the Open Government Licence v3.0 except where otherwise
+stated. To view this licence, visit
+Where we have identified any third party copyright information you will need to obtain permission from the
+copyright holders concerned.
+This publication is available at orr.gov.uk
+Any enquiries regarding this publication should be sent to us at orr.gov.uk/contact-us
+

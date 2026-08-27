@@ -42,6 +42,7 @@ build/ofsted-inspections.*
 build/ofwat-enforcement.*
 build/ofgem-enforcement.*
 build/gain.*
+build/orr-enforcement.*
 build/ticks-ams.*
 build/paid-records.*
 build/shop-sample.*
@@ -84,4 +85,5 @@ data/ofsted-inspections/
 data/ofwat-enforcement/
 data/ofgem-enforcement/
 data/gain/
+data/orr-enforcement/
 data/ticks-ams/
