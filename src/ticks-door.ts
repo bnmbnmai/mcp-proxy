@@ -412,6 +412,12 @@ import {
   runFirmCheck,
 } from "./firm-check.js";
 import {
+  SHOP_REQUEST_LOG_ROLLUP_PATH,
+  logShopRequest,
+  sendLocalShopRequestRollup,
+  shopRequestLogPath,
+} from "./shop-request-log.js";
+import {
   PRODUCT_PUBLIC_ID,
   SAMPLE_HOW_TO_USE,
   SAMPLE_PATH,
@@ -5263,12 +5269,27 @@ async function servePaid(
   const v2 = paymentRequiredV2(resource, sku, amount);
   const paymentRequiredHeader = Buffer.from(JSON.stringify(v2), "utf-8").toString("base64");
 
+  const logPaid = (status: number) => {
+    logShopRequest(req, {
+      kind: "paid-door",
+      path: copy.resourcePath,
+      status,
+      id: opts?.id,
+      paymentHeader: Boolean(payment),
+    });
+  };
+
   if (!payment) {
+    logPaid(402);
     sendJson(res, 402, body402, { "PAYMENT-REQUIRED": paymentRequiredHeader });
     return;
   }
 
-  const serve = async () => sendJson(res, 200, await load(opts));
+  const serve = async () => {
+    const body = await load(opts);
+    logPaid(200);
+    sendJson(res, 200, body);
+  };
 
   if (skipSettle()) {
     await serve();
@@ -5285,6 +5306,7 @@ async function servePaid(
     await serve();
     return;
   }
+  logPaid(402);
   sendJson(
     res,
     402,
@@ -5339,6 +5361,8 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (paidDoorPost) await drainRequestBody(req);
+
+  if (sendLocalShopRequestRollup(req, res)) return;
 
   if (path === "/") {
     sendJson(res, 200, {
@@ -5674,10 +5698,13 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   if (path === FIRM_CHECK_PATH) {
     const q = firmCheckQuery(url.searchParams.get("q"));
     if (!q) {
+      logShopRequest(req, { kind: "firm-check", path, status: 400, q: url.searchParams.get("q") ?? "" });
       sendJson(res, 400, { error: "q_required" });
       return;
     }
-    sendJson(res, 200, await runFirmCheck(q));
+    const result = await runFirmCheck(q);
+    logShopRequest(req, { kind: "firm-check", path, status: 200, q, matchCount: result.matchCount });
+    sendJson(res, 200, result);
     return;
   }
 
@@ -6158,5 +6185,6 @@ if (isMain()) {
     console.error(`payTo ${PAY_TO} USDC ${USDC_BASE} on Base`);
     console.error(`ticksDir ${ticksDir() || "(unset)"}`);
     console.error(`board ${board && existsSync(board) ? board : "missing — paid /ticks body will be empty/stale"}`);
+    console.error(`shop request log ${shopRequestLogPath()} (rollup: node build/shop-request-log.js or GET ${SHOP_REQUEST_LOG_ROLLUP_PATH} on loopback)`);
   });
 }
