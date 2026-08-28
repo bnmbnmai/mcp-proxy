@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createServer, type IncomingMessage } from "node:http";
-import { mkdtempSync, readFileSync, rmSync } from "node:fs";
+import { cpSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -124,16 +124,28 @@ async function main(): Promise<void> {
 
   await withLoggedServer(
     {
-      FORM_483_DIR: join(FIXTURES, "form-483"),
-      WARNING_LETTERS_DIR: join(FIXTURES, "warning-letters"),
-      IMPORT_ALERTS_DIR: join(FIXTURES, "import-alerts"),
-      FORM_483_TTL_MS: String(24 * 3600 * 1000),
-      WARNING_LETTERS_TTL_MS: String(24 * 3600 * 1000),
+      FORM_483_DIR: join(mkdtempSync(join(tmpdir(), "fc-483-")), "form-483"),
+      WARNING_LETTERS_DIR: join(mkdtempSync(join(tmpdir(), "fc-wl-")), "warning-letters"),
+      IMPORT_ALERTS_DIR: join(mkdtempSync(join(tmpdir(), "fc-ia-")), "import-alerts"),
+      UNTITLED_LETTERS_DIR: join(tmpdir(), "untitled-absent-log-"),
+      FTC_WL_DIR: join(tmpdir(), "ftc-wl-absent-log-"),
+      OFWAT_ENFORCEMENT_DIR: join(tmpdir(), "ofwat-absent-log-"),
+      OFGEM_ENFORCEMENT_DIR: join(tmpdir(), "ofgem-absent-log-"),
+      CFPB_ORDERS_DIR: join(tmpdir(), "cfpb-absent-log-"),
+      OCC_CD_DIR: join(tmpdir(), "occ-absent-log-"),
+      FDIC_ORDERS_DIR: join(tmpdir(), "fdic-absent-log-"),
       X402_SKIP_SETTLE: "1",
     },
     async (base, logPath) => {
-      const huge = `pfizer${"x".repeat(400)}`;
-      const search = await fetch(`${base}/firm-check?q=${encodeURIComponent(huge)}`, {
+      const scratch = mkdtempSync(join(tmpdir(), "shop-log-fixtures-"));
+      cpSync(join(FIXTURES, "form-483"), join(scratch, "form-483"), { recursive: true });
+      cpSync(join(FIXTURES, "warning-letters"), join(scratch, "warning-letters"), { recursive: true });
+      cpSync(join(FIXTURES, "import-alerts"), join(scratch, "import-alerts"), { recursive: true });
+      process.env.FORM_483_DIR = join(scratch, "form-483");
+      process.env.WARNING_LETTERS_DIR = join(scratch, "warning-letters");
+      process.env.IMPORT_ALERTS_DIR = join(scratch, "import-alerts");
+
+      const search = await fetch(`${base}/firm-check?q=cascade`, {
         headers: {
           "User-Agent": "farm-test/1",
           "CF-Connecting-IP": "203.0.113.88",
@@ -142,7 +154,14 @@ async function main(): Promise<void> {
       assert.equal(search.status, 200);
       const searchBody = (await search.json()) as { matchCount?: number; matches?: { body?: string }[] };
       assert.equal(typeof searchBody.matchCount, "number");
+      assert.ok((searchBody.matchCount ?? 0) >= 1);
       assert.ok(!JSON.stringify(searchBody).includes("secret cascade body"));
+
+      const huge = `cascade${"x".repeat(400)}`;
+      const hugeRes = await fetch(`${base}/firm-check?q=${encodeURIComponent(huge)}`, {
+        headers: { "CF-Connecting-IP": "203.0.113.88", "User-Agent": "farm-test/1" },
+      });
+      assert.equal(hugeRes.status, 200);
 
       const missing = await fetch(`${base}/firm-check`, {
         headers: { "CF-Connecting-IP": "203.0.113.88", "User-Agent": "farm-test/1" },
@@ -161,7 +180,7 @@ async function main(): Promise<void> {
       });
       assert.equal(ticks402.status, 402);
 
-      const paid = await fetch(`${base}/form-483?id=cascade-specialty-pharmacy-llc-193964`, {
+      const paid = await fetch(`${base}/ticks`, {
         headers: {
           "CF-Connecting-IP": "203.0.113.88",
           "User-Agent": "farm-test/1",
@@ -179,7 +198,7 @@ async function main(): Promise<void> {
         paid200Count?: number;
       };
       assert.equal(localBody.uniqueIps, 1);
-      assert.equal(localBody.searchCount, 2);
+      assert.equal(localBody.searchCount, 3);
       assert.equal(localBody.paidFollowCount, 1);
       assert.equal(localBody.paid200Count, 1);
 
@@ -189,16 +208,18 @@ async function main(): Promise<void> {
       assert.equal(publicRollup.status, 404);
 
       const lines = readLog(logPath);
-      assert.equal(lines.length, 5);
+      assert.equal(lines.length, 6);
       const firm = lines.filter((row) => row.kind === "firm-check");
       assert.equal(firm[0]?.ip, "203.0.113.88");
       assert.equal(firm[0]?.path, "/firm-check");
       assert.equal(firm[0]?.status, 200);
       assert.equal(firm[0]?.ua, "farm-test/1");
-      assert.equal(firm[0]?.q?.startsWith("pfizer"), true);
-      assert.ok((firm[0]?.q?.length ?? 0) <= Q_MAX);
+      assert.equal(firm[0]?.q, "cascade");
       assert.equal(typeof firm[0]?.matchCount, "number");
-      assert.equal(firm[1]?.status, 400);
+      assert.equal(firm[1]?.q?.startsWith("cascade"), true);
+      assert.ok((firm[1]?.q?.length ?? 0) <= Q_MAX);
+      assert.ok((firm[1]?.q?.length ?? 0) < huge.length);
+      assert.equal(firm[2]?.status, 400);
 
       const doors = lines.filter((row) => row.kind === "paid-door");
       assert.equal(doors[0]?.path, "/form-483");
