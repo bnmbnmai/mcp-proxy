@@ -209,6 +209,9 @@ async function withServer(
   if (!Object.prototype.hasOwnProperty.call(envPatch, "TICKS_AMS_DIR")) {
     envPatch = { ...envPatch, TICKS_AMS_DIR: join(tmpdir(), "ticks-ams-absent-withserver-") };
   }
+  if (!Object.prototype.hasOwnProperty.call(envPatch, "SHOP_REQUEST_LOG")) {
+    envPatch = { ...envPatch, SHOP_REQUEST_LOG: "0" };
+  }
   for (const [k, v] of Object.entries(envPatch)) {
     prev[k] = process.env[k];
     if (v === undefined) delete process.env[k];

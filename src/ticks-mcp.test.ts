@@ -76,6 +76,7 @@ async function withServer(
     FORM_483_DIR: join(tmpdir(), "form-483-absent-mcp-"),
     GMP_DIR: join(tmpdir(), "gmp-absent-mcp-"),
     GMP_MD_DIR: join(tmpdir(), "gmp-md-absent-mcp-"),
+    SHOP_REQUEST_LOG: "0",
     ...envPatch,
   };
   for (const [k, v] of Object.entries(patch)) {

@@ -21,6 +21,9 @@ async function withServer(
   fn: (base: string) => Promise<void>,
 ): Promise<void> {
   const prev: Record<string, string | undefined> = {};
+  if (!Object.prototype.hasOwnProperty.call(envPatch, "SHOP_REQUEST_LOG")) {
+    envPatch = { ...envPatch, SHOP_REQUEST_LOG: "0" };
+  }
   for (const [k, v] of Object.entries(envPatch)) {
     prev[k] = process.env[k];
     if (v === undefined) delete process.env[k];
