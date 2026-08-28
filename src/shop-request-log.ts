@@ -1,6 +1,6 @@
 /**
  * Append-only shop request log for free /firm-check and paid-door traffic.
- * Answers whether an IP farms search and never pays for a body.
+ * Answers whether an IP searches a lot and never pays for a body (skip-pay).
  *
  * Not a SKU. Not a public URL. Does not log payment payloads, wallets,
  * keys, or letter/table bodies.

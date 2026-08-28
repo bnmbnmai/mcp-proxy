@@ -1,4 +1,4 @@
-# Shop request log — firm-check farming rollup
+# Shop request log — search tape / skip-pay rollup
 
 Local append-only JSONL on the ticks shop host. Not a SKU. Not a public URL. Search stays free. Pricing is unchanged.
 
@@ -41,23 +41,23 @@ Default file: `data/shop-request-log.jsonl` under the shop cwd (`~/projects/mcp-
 | `SHOP_REQUEST_LOG_PATH` | `data/shop-request-log.jsonl` | absolute or cwd-relative JSONL path |
 | `SHOP_REQUEST_HEAVY_SEARCH_MIN` | `5` | “searched a lot” cutoff for never-paid IPs |
 
-## How an operator reads the farming rollup
+## How an operator reads the skip-pay rollup
 
 On the shop host, after the door has taken traffic:
 
 ```bash
 cd ~/projects/mcp-proxy
 node build/shop-request-log.js
-# or: npm run shop:farm-rollup
+# or: npm run shop:search-rollup
 ```
 
 That prints:
 
-- `uniqueIps` — distinct client IPs in the log
+- `uniqueIps` — distinct client IPs in the search tape
 - `searchCount` — `/firm-check` lines
 - `paidDoorCount` / `paid200Count` — paid-door hits, and how many actually returned a body
 - `paidFollowCount` — unique IPs that searched, then later hit a paid door (402 or 200). Join key is `ip`
-- `heavyNeverPaid` — IPs with ≥ `heavySearchMin` searches and **no** paid-door HTTP 200. That is the farming question.
+- `heavyNeverPaid` — IPs with ≥ `heavySearchMin` searches and **no** paid-door HTTP 200. That is the skip-pay question.
 
 Optional local HTTP (not public, not in well-known):
 
