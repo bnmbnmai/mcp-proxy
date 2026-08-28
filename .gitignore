@@ -47,6 +47,7 @@ build/ticks-ams.*
 build/paid-records.*
 build/shop-sample.*
 build/firm-check.*
+build/shop-request-log.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
@@ -87,3 +88,5 @@ data/ofgem-enforcement/
 data/gain/
 data/orr-enforcement/
 data/ticks-ams/
+data/shop-request-log.jsonl
+data/shop-request-log*.jsonl
