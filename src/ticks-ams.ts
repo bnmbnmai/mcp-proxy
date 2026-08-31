@@ -17,6 +17,9 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { join, resolve } from "node:path";
+import { AMS_LEFTOVER_REPORTS, AMS_LEFTOVER_SLUGS } from "./ticks-ams-leftovers.js";
+
+export { AMS_LEFTOVER_REPORTS, AMS_LEFTOVER_SLUGS };
 
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
 export const ESMIS_HOST = "https://esmis.nal.usda.gov";
@@ -119,6 +122,7 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "1955", group: "cattle", region: "texas_weekly", title: "Texas Weekly Cattle Auction Summary", esmisPublication: "" },
   { slug: "2167", group: "cattle", region: "iowa_weekly", title: "Iowa Weekly Cattle Auction Summary", esmisPublication: "" },
   { slug: "1821", group: "cattle", region: "missouri_weekly", title: "Missouri Weekly Cattle Auction Summary", esmisPublication: "" },
+  ...AMS_LEFTOVER_REPORTS,
   { slug: "3148", group: "grain", region: "portland", title: "Portland Daily Grain Bids", esmisPublication: "portland-daily-grain-bids" },
   { slug: "3046", group: "grain", region: "minneapolis", title: "Minneapolis Daily Grain", esmisPublication: "minneapolis-daily-grain-report" },
   { slug: "3223", group: "grain", region: "kansas_city", title: "Kansas City Daily Grain Bids", esmisPublication: "kansas-city-daily-grain-bids" },
@@ -186,8 +190,8 @@ export const SKIPPED_SOURCES = [
   { id: "no-il-ga-direct-hay", why: "AMS hay listing has no Illinois or Georgia Direct Hay report — IL hay is auction-barn PDFs already wired" },
   { id: "retired-city-grain-txt", why: "sj_gr851 / gx_gr110 / wh_gr110 / jc_gr111 are retired or already plaintext city grain .txt — skip wrapping" },
   { id: "ams_3045_minneapolis_basis", why: "AMS_3045 Minneapolis Daily Basis is a MIAX floor-basis sheet, not a POS bid table" },
-  { id: "se-individual-cattle-barns", why: "400+ official SE/Midwest individual sale-barn PDFs stay off this slice; weekly mountain/plains summaries + PNW/MT/UT/WY barns are wired. Not a new SKU." },
-  { id: "se-weekly-cattle-summaries", why: "AL/FL/GA/MS/NC/SC/TN/KY/VA/WV/PA/IN/IL daily+weekly auction summaries leftover — same door later, not this pass" },
+  { id: "se-individual-cattle-barns", why: "400+ remaining official SE/Midwest individual sale-barn PDFs stay off this slice; five current official SE barns (1988/1946/1995/1419/1997) + nine SE weeklies are on /ticks. Not a new SKU." },
+  { id: "se-weekly-cattle-summaries", why: "AL/FL/GA/KY/TN/VA/NC/MS/SC weeklies now on /ticks; leftover WV/PA/IN/IL/MO regional weeklies stay off this pass" },
   { id: "seasonal-specials", why: "official seasonal/replacement/stock-show specials often empty off-season; skip rather than invent" },
   { id: "video-internet-auctions", why: "feeder cattle internet/video/board sales are a different AMS family than sale-barn floor sheets" },
   { id: "lmr-slaughter-pdfs", why: "national/regional Direct Slaughter PDFs are LMR fed-cattle tables, not the feeder/POS parser this door already sells" },
@@ -1514,9 +1518,74 @@ export function mergeAmsNationalTicks<T extends {
   };
 }
 
+function reportSlugFromTickId(id: string): string | null {
+  const m = id.match(/\.ams_([a-z0-9_]+)\./i);
+  return m ? m[1] : null;
+}
+
+function reportSlugFromFailedId(id: string): string | null {
+  const m = id.match(/^ams_([a-z0-9_]+)$/i);
+  return m ? m[1] : null;
+}
+
+function reportSlugFromSourceLabel(label: string): string | null {
+  const m = label.match(/^AMS_([a-z0-9_]+)\b/i);
+  return m ? m[1] : null;
+}
+
+export function collectReportFilter(): readonly { slug: string; group: AmsGroup; region: string; title: string; esmisPublication: string; pdfNames?: readonly string[] }[] {
+  const leftoverOnly = /^(1|true|yes)$/i.test(env("TICKS_AMS_LEFTOVERS_ONLY"));
+  const only = leftoverOnly
+    ? [...AMS_LEFTOVER_SLUGS]
+    : env("TICKS_AMS_ONLY_SLUGS")
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean);
+  if (only.length === 0) return AMS_NATIONAL_REPORTS;
+  const want = new Set(only);
+  return AMS_NATIONAL_REPORTS.filter((r) => want.has(r.slug));
+}
+
+export function mergePartialAmsSnapshot(prev: AmsSnapshot, next: AmsSnapshot, slugs: readonly string[]): AmsSnapshot {
+  const want = new Set(slugs);
+  const rows = [
+    ...prev.rows.filter((row) => {
+      const slug = reportSlugFromTickId(row.id);
+      return !slug || !want.has(slug);
+    }),
+    ...next.rows,
+  ];
+  const failed = [
+    ...prev.failed.filter((row) => {
+      const slug = reportSlugFromFailedId(row.id);
+      return !slug || !want.has(slug);
+    }),
+    ...next.failed,
+  ];
+  const sources = [
+    ...prev.sources.filter((label) => {
+      const slug = reportSlugFromSourceLabel(label);
+      return !slug || !want.has(slug);
+    }),
+    ...next.sources,
+  ];
+  const asOf = rows.map((r) => r.asOf).sort().at(-1) ?? next.asOf ?? prev.asOf;
+  return {
+    ok: true,
+    product: prev.product || next.product,
+    fetchedAt: next.fetchedAt,
+    asOf,
+    tickCount: rows.length,
+    rows,
+    failed,
+    sources,
+  };
+}
+
 export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number }): Promise<AmsSnapshot> {
   const dir = opts?.dir ?? amsNationalDir();
   const pauseMs = opts?.pauseMs ?? Number(env("TICKS_AMS_PAUSE_MS") || "1200");
+  const reports = collectReportFilter();
   const rows: AmsTick[] = [];
   const failed: AmsFailed[] = [];
   const sources: string[] = [];
@@ -1524,7 +1593,7 @@ export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number
   const tmpDir = join(dir, "tmp");
   mkdirSync(tmpDir, { recursive: true });
 
-  for (const report of AMS_NATIONAL_REPORTS) {
+  for (const report of reports) {
     const label = `AMS_${report.slug} ${report.title}`;
     const candidates = await officialPdfCandidates(report);
     let parsed: AmsTick[] = [];
@@ -1563,7 +1632,7 @@ export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number
   }
 
   const asOf = rows.map((r) => r.asOf).sort().at(-1) ?? null;
-  const snap: AmsSnapshot = {
+  let snap: AmsSnapshot = {
     ok: true,
     product: PRODUCT_ID,
     fetchedAt: new Date().toISOString(),
@@ -1573,6 +1642,11 @@ export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number
     failed,
     sources,
   };
+  const filteredSlugs = reports.map((r) => r.slug);
+  const prev = reports.length < AMS_NATIONAL_REPORTS.length ? readAmsSnapshot(dir) : null;
+  if (prev && prev.rows.length > 0) {
+    snap = mergePartialAmsSnapshot(prev, snap, filteredSlugs);
+  }
   writeAmsSnapshot(snap, dir);
   return snap;
 }

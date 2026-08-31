@@ -1,0 +1,188 @@
+{
+  "applied": {
+    "liveBase": "cursor/rename-search-rollup-2c08 @ ea2342b",
+    "sourcePr": "https://github.com/bnmbnmai/mcp-proxy/pull/175",
+    "applyBranch": "cursor/apply-ams-leftovers-0b6b",
+    "applyPr": "https://github.com/bnmbnmai/mcp-proxy/pull/176",
+    "service": "idaho-ticks-x402.service not restarted \u2014 snapshot served from disk",
+    "ticksAmsDir": "/home/apollo/projects/mcp-proxy/data/ticks-ams",
+    "collect": "TICKS_AMS_LEFTOVERS_ONLY=1 AMS-only; not the 7:45 all-door collect"
+  },
+  "sku": {
+    "product": {
+      "id": "us-hay-cattle-grain-ticks",
+      "name": "US hay, cattle, and grain ticks",
+      "version": "1.4.0"
+    },
+    "productCount": 1,
+    "wellKnownResources": 40,
+    "newSku": false,
+    "priceAtomic": "50000",
+    "priceDisplay": "$0.05",
+    "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004"
+  },
+  "http": {
+    "GET https://ticks.bnm.farm/ticks": {
+      "status": 402,
+      "amount": "50000",
+      "tableWhole": true,
+      "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004"
+    },
+    "POST https://ticks.bnm.farm/ticks {}": {
+      "status": 402,
+      "amount": "50000",
+      "tableWhole": true,
+      "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004"
+    },
+    "GET https://ticks.bnm.farm/manifest.json": {
+      "status": 200
+    }
+  },
+  "tickCount": {
+    "old": 3999,
+    "new": 5076,
+    "delta": 1077
+  },
+  "amsSnapshotTickCount": {
+    "old": 3868,
+    "new": 4945,
+    "delta": 1077
+  },
+  "asOf": "2026-08-29",
+  "fetchedAt": {
+    "old": "2026-08-30T13:51:52.772Z",
+    "new": "2026-08-31T01:21:22.344Z"
+  },
+  "groups": {
+    "before": {
+      "hay": 589,
+      "cattle": 1405,
+      "produce": 1817,
+      "grain": 127,
+      "dairy": 31,
+      "hogs": 9,
+      "water": 5,
+      "pulses": 4,
+      "wool": 12
+    },
+    "after": {
+      "hay": 589,
+      "cattle": 2482,
+      "produce": 1817,
+      "grain": 127,
+      "dairy": 31,
+      "hogs": 9,
+      "water": 5,
+      "pulses": 4,
+      "wool": 12
+    }
+  },
+  "slugsLanded": [
+    {
+      "slug": "2006",
+      "title": "Alabama Weekly Cattle Auction Summary",
+      "kind": "se-weekly",
+      "asOf": "2026-08-29",
+      "ticks": 76
+    },
+    {
+      "slug": "1704",
+      "title": "Florida Weekly Livestock Auction Summary",
+      "kind": "se-weekly",
+      "asOf": "2026-08-29",
+      "ticks": 59
+    },
+    {
+      "slug": "1933",
+      "title": "Georgia Weekly Livestock Auction Summary",
+      "kind": "se-weekly",
+      "asOf": "2026-08-29",
+      "ticks": 71
+    },
+    {
+      "slug": "2193",
+      "title": "Kentucky Weekly Livestock Auction Summary",
+      "kind": "se-weekly",
+      "asOf": "2026-08-22",
+      "ticks": 134
+    },
+    {
+      "slug": "2063",
+      "title": "Tennessee Weekly Cattle Auction Summary",
+      "kind": "se-weekly",
+      "asOf": "2026-08-22",
+      "ticks": 173
+    },
+    {
+      "slug": "2187",
+      "title": "Virginia Weekly Cattle Auction Summary",
+      "kind": "se-weekly",
+      "asOf": "2026-08-22",
+      "ticks": 99
+    },
+    {
+      "slug": "2091",
+      "title": "North Carolina Weekly Livestock Auction Summary",
+      "kind": "se-weekly",
+      "asOf": "2026-08-22",
+      "ticks": 86
+    },
+    {
+      "slug": "2115",
+      "title": "Mississippi Weekly Livestock Auction Summary",
+      "kind": "se-weekly",
+      "asOf": "2026-08-29",
+      "ticks": 114
+    },
+    {
+      "slug": "1963",
+      "title": "South Carolina Weekly Livestock Auction Summary",
+      "kind": "se-weekly",
+      "asOf": "2026-08-29",
+      "ticks": 81
+    },
+    {
+      "slug": "1988",
+      "title": "Mid State Stockyards Cattle Auction (Letohatchee)",
+      "kind": "se-barn",
+      "asOf": "2026-08-25",
+      "ticks": 46
+    },
+    {
+      "slug": "1946",
+      "title": "Calhoun Stockyard Cattle Auction",
+      "kind": "se-barn",
+      "asOf": "2026-08-25",
+      "ticks": 25
+    },
+    {
+      "slug": "1995",
+      "title": "Alabama Livestock Auction Cattle Auction (Uniontown)",
+      "kind": "se-barn",
+      "asOf": "2026-08-25",
+      "ticks": 34
+    },
+    {
+      "slug": "1419",
+      "title": "Okeechobee Livestock Auction Cattle Auction (Tuesday)",
+      "kind": "se-barn",
+      "asOf": "2026-08-25",
+      "ticks": 37
+    },
+    {
+      "slug": "1997",
+      "title": "Tennessee Valley Livestock Cattle Auction (Florence)",
+      "kind": "se-barn",
+      "asOf": "2026-08-24",
+      "ticks": 42
+    }
+  ],
+  "failedPdfs": [],
+  "preexistingEmpty": [
+    "ams_3096",
+    "ams_2770",
+    "ams_2101",
+    "ams_1907"
+  ],
+  "restarted": false
+}
