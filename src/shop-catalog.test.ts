@@ -22,6 +22,7 @@ const REQUIRED_LIVE_PATHS = [
   "/gain",
   "/orr-enforcement",
   "/phmsa-orders",
+  "/aaib-reports",
   "/form-483",
   "/gmp",
   "/gmp-md",
@@ -103,10 +104,10 @@ async function main(): Promise<void> {
   assert.equal(manOnDisk.cards?.[0]?.id, "aaib-investigation-to-eurofox-2k-g-cmax");
   assert.ok(manOnDisk.cards?.every((c) => !("body" in c)), "checked-in free manifest has no report body");
 
-  const liveOpenapiHasFour = ["/ofwat-enforcement", "/ofgem-enforcement", "/gain", "/orr-enforcement"].every(
+  const liveOpenapiHasFour = ["/ofwat-enforcement", "/ofgem-enforcement", "/gain", "/orr-enforcement", "/aaib-reports"].every(
     (p) => Boolean(live.openApi.paths?.[p]),
   );
-  assert.ok(liveOpenapiHasFour, "live OpenAPI already lists the four doors");
+  assert.ok(liveOpenapiHasFour, "live OpenAPI already lists the four doors plus /aaib-reports");
 
   console.log(
     `shop-catalog tests ok (live paid GETs: ${paths.length}; MCP extras: ${extraMcpToolNames().join(",")})`,

@@ -1,7 +1,7 @@
 {
   "generatedFrom": "https://ticks.bnm.farm/.well-known/x402",
-  "generatedAt": "2026-08-31T23:45:43.801Z",
-  "paidGetCount": 41,
+  "generatedAt": "2026-08-31T23:55:43.850Z",
+  "paidGetCount": 42,
   "resources": [
     "/ticks",
     "/import-alerts",
@@ -41,6 +41,7 @@
     "/gain",
     "/orr-enforcement",
     "/phmsa-orders",
+    "/aaib-reports",
     "/form-483",
     "/gmp",
     "/gmp-md"
