@@ -1,0 +1,359 @@
+U.S. Department                                                          1200 New Jersey Avenue, S.E.
+of Transportation                                                         Washington, D.C. 20590
+Pipeline and Hazardous
+Materials Safety
+Administration
+                                April 7, 2026
+VIA ELECTRONIC MAIL TO: vrosa@nesmidstream.com
+
+Vidal Rosa
+Senior Vice President of Operations
+Canyon Crossing LLC
+3625 North Hall Street,
+Suite 630
+Dallas, Texas 75219
+
+Re: CPF No. 4-2026-012-NOPV
+
+Dear Mr. Rosa:
+
+Enclosed please find the Final Order issued in the above-referenced case. It makes findings of
+violation, finds that the civil penalty amount of $62,900 has been paid in full, and specifies
+actions that need to be taken to comply with the pipeline safety regulations. When the terms of
+the compliance order are completed, as determined by the Director, Southwest Region, this
+enforcement action will be closed. Service of the Final Order by e-mail is effective upon the date
+of transmission and acknowledgement of receipt as provided under 49 CFR § 190.5.
+
+Thank you for your cooperation in this matter.
+
+                                             Sincerely,
+                                                              Digitally signed by LINDA
+                                              LINDA GAIL GAIL DAUGHERTY
+                                              DAUGHERTY Date:  2026.04.07
+                                                         14:28:16 -04'00'
+
+                                             Linda Daugherty
+                                             Acting Associate Administrator
+                                               for Pipeline Safety
+
+
+Enclosures (Final Order and NOPV)
+
+cc:    Bryan Lethcoe, Director, Southwest Region, Office of Pipeline Safety, PHMSA
+       Vanessa Romero, EHS Regulatory Manager, Navigator Energy Services,
+       vromero@nesmidstream.com
+
+CONFIRMATION OF RECEIPT REQUESTED
+                 U.S. DEPARTMENT OF TRANSPORTATION
+      PIPELINE AND HAZARDOUS MATERIALS SAFETY ADMINISTRATION
+                       OFFICE OF PIPELINE SAFETY
+                         WASHINGTON, D.C. 20590
+
+
+____________________________________
+                                    )
+In the Matter of                     )
+                                    )
+Navigator Panhandle Holdco, LLC     )                        CPF No. 4-2026-012-NOPV
+and Navigator PH Crossing LLC,       )
+                                    )
+Respondent.                          )
+____________________________________)
+
+
+                                        FINAL ORDER
+
+On February 12, 2026, pursuant to 49 CFR § 190.207, the Director, Southwest Region, Office of
+Pipeline Safety (OPS), issued a Notice of Probable Violation (Notice) to Navigator Panhandle
+Holdco, LLC and Navigator P+ Crossing LLC (Respondent). The Notice proposed finding that
+Respondent had violated the pipeline safety regulations in 49 CFR Part 195 and proposed a civil
+penalty of $62,900. The Notice also proposed certain measures to correct the violations. Canyon
+Crossing LLC responded to the Notice on March 19, 2026, stating that “Navigator Panhandle
+Holdco, LLC and Navigator PH Crossing LLC are now each known as Canyon Crossing LLC by
+way of merger that was complete on December 2, 2024.” Canyon Crossing LLC did not contest
+the allegations of violation or corrective measures and paid the proposed civil penalty on March
+25, 2026. In accordance with VHFWLRQ 190.208(a)(1), such payment authorizes the entry of this
+final order.
+
+Based upon a review of all of the evidence, pursuant to VHFWLRQ 190.213, I find Respondent
+violated the pipeline safety regulations listed below, as more fully described in the enclosed
+Notice, which is incorporated by reference:
+
+       49 CFR § 195.452(l)(1)(ii) (Item 1) ņ5HVSRQGHQWIDLOHGWRhave records to
+       support its decision in selecting methods for integrity assessment based on
+       specific integrity threats.
+
+       49 CFR § 195.452(g)(1) (Item 2) ņ5HVSRQGHQWIDLOHGWR integrate information
+       and attributes about its pipeline in its analysis of all available information about
+       the integrity of its entire pipeline and the consequences of a possible failure along
+       the pipeline.
+
+These findings of violation will be considered prior offenses in any subsequent enforcement
+action taken against Respondent. In accordance with 49 CFR § 190.223, Respondent is assessed
+the proposed civil penalty amount of $62,900, which Respondent has already paid in full.
+
+                                            Compliance Actions
+
+Pursuant to 49 U.S.C. § 60118(b) and 49 CFR § 190.217, Respondent is ordered to take the
+actions proposed in the enclosed Notice to correct one of the violations. The Director may grant
+an extension of time to comply with any of the required items upon a written request timely
+submitted by the Respondent and upon demonstrating good cause for an extension. Upon
+completion of the ordered actions, Respondent may request that the Director close the case.
+Failure to comply with this Order may result in the assessment of civil penalties under
+49 CFR § 190.223 or in referral to the Attorney General for appropriate relief in a district court
+of the United States.
+
+The terms and conditions of this order are effective upon service in accordance with
+49 CFR § 190.5.
+
+                Digitally signed by LINDA
+LINDA GAIL GAIL DAUGHERTY
+DAUGHERTY Date:    2026.04.07
+___________________________________
+             14:28:40 -04'00'
+                                                         April 7, 2026
+                                                         _________________________
+Linda Daugherty                                               Date Issued
+Acting Associate Administrator
+ for Pipeline Safety
+U.S. Department of Transportation
+Pipeline and Hazardous Materials
+Safety Administration                                                              8701 S. Gessner, Suite 630
+                                                                                   Houston TX 77074
+
+
+
+
+                         NOTICE OF PROBABLE VIOLATION
+                           PROPOSED CIVIL PENALTY
+                                      and
+                         PROPOSED COMPLIANCE ORDER
+VIA ELECTRONIC MAIL TO: vrosa@nesmidstream.com
+
+February 12, 2026
+
+Vidal Rosa
+Senior Vice President of Operations
+Navigator Energy Services
+2626 Cole Avenue, Suite 900
+Dallas, Texas 75204
+
+                                                                          CPF 4-2026-012-NOPV
+Dear Mr. Rosa:
+
+From August 5 to September 18, 2023 of the on-site inspection, a representative of the Pipeline
+and Hazardous Materials Safety Administration (PHMSA), pursuant to Chapter 601 of 49 United
+States Code (U.S.C.), inspected Navigator Panhandle Holdco, LLC, and Navigator Ph Crossing
+LLC’s (Navigator) crude pipeline assets between Cushing, Oklahoma to Perryton, Oklahoma. 1
+
+As a result of the inspection, it is alleged that Navigator has committed probable violations of the
+Pipeline Safety Regulations, Title 49, Code of Federal Regulations (CFR). The items inspected
+and the probable violations are:
+
+
+1.      § 195.452 Pipeline integrity management in high consequence areas.
+            (a) . . . .
+            (l) What records must an operator keep to demonstrate compliance?
+            (1) An operator must maintain, for the useful life of the pipeline,
+        records that demonstrate compliance with the requirements of this
+        subpart. At a minimum, an operator must maintain the following
+        records for review during an inspection:
+            (i) . . . .
+
+1
+ Navigator Panhandle Holdco, LLC, Navigator Ph Crossing, LLC, and The Glass Mountain Pipeline System
+(GMPL), are subsidiaries of Navigator Energy Services.
+             (ii) Documents to support the decisions and analyses, including any
+         modifications, justifications, deviations and determinations made,
+         variances, and actions taken, to implement and evaluate each element
+         of the integrity management program listed in paragraph (f) of this
+         section.
+
+Navigator failed to have records to support its decision in selecting methods for integrity
+assessment based on specific integrity threats in accordance with § 195.452(l)(1)(ii) and its
+procedures. 2 Specifically, Navigator failed to have records that comply with its Integrity
+Assessment Method Selection Process Workflow as detailed in Section 3.1 Select Integrity
+Assessment Methods of its Integrity Management Program Manual: Hazardous Liquid Pipeline
+Facilities (Rev. Dec. 31, 2023), Section 3.1 Select Integrity Assessment Methods, when selecting
+the integrity assessment methods for the Arnett to Ruby, Cushing to Ruby, and Arnett to Perryton
+pipeline segments.
+
+The records provided to PHMSA by Navigator did not include an evaluation of the specific
+integrity threats identified and considered for the identified segments through an updated risk
+analysis, periodic evaluations, previous assessments, or industry experience, and did not include
+an explanation for how integrity assessment methods were selected.
+
+Therefore, Navigator failed to have records to support its decision in selecting methods for
+integrity assessment based on specific integrity threats in accordance with § 195.452(l)(1)(ii).
+
+2.       § 195.452 Pipeline integrity management in high consequence areas.
+             (a) . . . .
+             (g) What is an information analysis? In periodically evaluating the
+         integrity of each pipeline segment (see paragraph (j) of this section), an
+         operator must analyze all available information about the integrity of
+         its entire pipeline and the consequences of a possible failure along the
+         pipeline. Operators must continue to comply with the data integration
+         elements specified in § 195.452(g) that were in effect on October 1, 2018,
+         until October 1, 2022. Operators must begin to integrate all the data
+         elements specified in this section starting October 1, 2020, with all
+         attributes integrated by October 1, 2022. This analysis must:
+             (1) Integrate information and attributes about the pipeline that
+         include, but are not limited to:
+             (i) Pipe diameter, wall thickness, grade, and seam type;
+             (ii) Pipe coating, including girth weld coating;
+             (iii) Maximum operating pressure (MOP) and temperature;
+
+
+2
+ Section 195.452(f)(2) requires operators to have a baseline assessment plan that meets the requirements of
+paragraph (c) of that section. Section 195.452(c)(i) and (c)(iii) require operators to include in its baseline
+assessment plan the methods selected to assess the integrity of the line pipe, and an explanation of the assessment
+methods selected and evaluation of risk factors considered in establishing the assessment schedule, respectively.
+                                                          2
+            (iv) Endpoints of segments that could affect high consequence areas
+       (HCAs);
+            (v) Hydrostatic test pressure including any test failures or leaks - if
+       known;
+            (vi) Location of casings and if shorted;
+            (vii) Any in-service ruptures or leaks - including identified causes;
+            (viii) Data gathered through integrity assessments required under
+       this section;
+            (ix) Close interval survey (CIS) survey results;
+            (x) Depth of cover surveys;
+            (xi) Corrosion protection (CP) rectifier readings;
+            (xii) CP test point survey readings and locations;
+            (xiii) AC/DC and foreign structure interference surveys;
+            (xiv) Pipe coating surveys and cathodic protection surveys.
+            (xv) Results of examinations of exposed portions of buried pipelines
+       (i.e., pipe and pipe coating condition, see § 195.569);
+            (xvi) Stress corrosion cracking (SCC) and other cracking (pipe
+       body or weld) excavations and findings, including in-situ non-
+       destructive examinations and analysis results for failure stress
+       pressures and cyclic fatigue crack growth analysis to estimate the
+       remaining life of the pipeline;
+            (xvii) Aerial photography;
+            (xviii) Location of foreign line crossings;
+            (xix) Pipe exposures resulting from repairs and encroachments;
+            (xx) Seismicity of the area; and
+            (xxi) Other pertinent information derived from operations and
+       maintenance activities and any additional tests, inspections, surveys,
+       patrols, or monitoring required under this part.
+
+Navigator failed to integrate information and attributes about the pipeline in its analysis of all
+available information about the integrity of its entire pipeline and the consequences of a possible
+failure along the pipeline in accordance with the requirements of § 195.452(g)(1). Specifically,
+Navigator failed to provide records demonstrating that it integrated the information and attributes
+that include, but are not limited to, the data integration elements in § 195.452(g)(1)(i) through
+(xxi), in its information analyses between 2018 and 2023.
+
+Proposed Civil Penalty
+
+Under 49 U.S.C. § 60122 and 49 CFR § 190.223, you are subject to a civil penalty not to exceed
+$272,926 per violation per day the violation persists, up to a maximum of $2,729,245 for a related
+series of violations. For violation occurring on or after December 28, 2023 and before December
+30, 2024, the maximum penalty may not exceed $266,015 per violation per day the violation
+persists, up to a maximum of $2,660,135 for a related series of violations. For violation occurring
+on or after January 6, 2023 and before December 28, 2023, the maximum penalty may not exceed
+
+                                                3
+$257,664 per violation per day the violation persists, up to a maximum of $2,576,627 for a related
+series of violations. For violation occurring on or after March 21, 2022 and before January 6,
+2023, the maximum penalty may not exceed $239,142 per violation per day the violation persists,
+up to a maximum of $2,391,412 for a related series of violations. For violation occurring on or
+after May 3, 2021 and before March 21, 2022, the maximum penalty may not exceed $225,134
+per violation per day the violation persists, up to a maximum of $2,251,334 for a related series of
+violations. For violation occurring on or after January 11, 2021 and before May 3, 2021, the
+maximum penalty may not exceed $222,504 per violation per day the violation persists, up to a
+maximum of $2,225,034 for a related series of violations. For violation occurring on or after July
+31, 2019 and before January 11, 2021, the maximum penalty may not exceed $218,647 per
+violation per day the violation persists, up to a maximum of $2,186,465 for a related series of
+violations.
+
+We have reviewed the circumstances and supporting documentation involved for the above
+probable violation(s) and recommend that you be preliminarily assessed a civil penalty of $62,900
+as follows:
+
+                               Item number              PENALTY
+                               Item 1                   $ 62,900
+
+Proposed Compliance Order
+
+With respect to Item 2 pursuant to 49 U.S.C. § 60118, the Pipeline and Hazardous Materials Safety
+Administration proposes to issue a Compliance Order to Navigator Energy Services. Please refer
+to the Proposed Compliance Order, which is enclosed and made a part of this Notice.
+
+Response to this Notice
+
+Enclosed as part of this Notice is a document entitled Response Options for Pipeline Operators in
+Enforcement Proceedings. Please refer to this document and note the response options. All
+material you submit in response to this enforcement action may be made publicly available. If you
+believe that any portion of your responsive material qualifies for confidential treatment under 5
+U.S.C. §552(b), along with the complete original document you must provide a second copy of
+the document with the portions you believe qualify for confidential treatment redacted and an
+explanation of why you believe the redacted information qualifies for confidential treatment under
+5 U.S.C. § 552(b).
+
+Following your receipt of this Notice, you have 30 days to respond as described in the enclosed
+Response Options. If you do not respond within 30 days of receipt of this Notice, this constitutes
+a waiver of your right to contest the allegations in this Notice and authorizes the Associate
+Administrator for Pipeline Safety to find facts as alleged in this Notice without further notice to
+you and to issue a Final Order. If you are responding to this Notice, we propose that you submit
+your correspondence to my office within 30 days from receipt of this Notice. The Region Director
+
+
+                                                4
+may extend the period for responding upon a written request timely submitted demonstrating good
+cause for an extension.
+
+In your correspondence on this matter, please refer to CPF 4-2026-012-NOPV and, for each
+document you submit, please provide a copy in electronic format whenever possible.
+
+Sincerely,
+BRYAN JEFFERY               Digitally signed by BRYAN
+                            JEFFERY LETHCOE
+LETHCOE                     Date: 2026.02.12 13:57:22 -06'00'
+Bryan Lethcoe
+Director, Southwest Region, Office of Pipeline Safety
+Pipeline and Hazardous Materials Safety Administration
+
+
+Enclosures: Proposed Compliance Order
+            Response Options for Pipeline Operators in Enforcement Proceedings
+
+cc:    Vanessa Romero, EHS Regulatory Manager, Navigator Energy Services,
+        vromero@nesmidstream.com
+
+
+
+
+                                                  5
+                       PROPOSED COMPLIANCE ORDER
+
+Pursuant to 49 United States Code § 60118, the Pipeline and Hazardous Materials Safety
+Administration (PHMSA), proposes to issue to Navigator Energy Services a Compliance Order
+incorporating the following remedial requirements to ensure the compliance of Navigator Energy
+Services with the pipeline safety regulations:
+
+       A.     In regard to Item 2 of the Notice pertaining to Navigator’s failure to integrate
+              information and attributes about the pipeline into its integrity management
+              information analysis in accordance with § 195.452(g)(1), Navigator must revise its
+              Integrity Management Program to include all information and attributes about its
+              entire pipeline system, complete a data integration for each pipeline segment
+              subject to Navigator’s Integrity Management Program, and submit the revised
+              procedure and analyses to the Director, Southwest Region, within 90 days of receipt
+              of the Final Order.
+
+       B.     It is requested (not mandated) that to Navigator maintain documentation of the
+              safety improvement costs associated with fulfilling this Compliance Order and
+              submit the total to Bryan Lethcoe, Director, Southwest Region, Office of Pipeline
+              Safety, Pipeline and Hazardous Materials Safety Administration. It is requested
+              that these costs be reported in two categories: 1) total cost associated with
+              preparation/revision of plans, procedures, studies and analyses, and 2) total cost
+              associated with replacements, additions and other changes to pipeline
+              infrastructure.
+
+
+
+
+                                               6
+

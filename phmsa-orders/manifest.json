@@ -1,0 +1,88 @@
+{
+  "product": "phmsa-enforcement-order-bodies",
+  "name": "PHMSA pipeline enforcement-order text",
+  "free": true,
+  "note": "Free index for /phmsa-orders. Count + institution + CPF/docket + date + official PHMSA PDF URL only. Order body is the paid GET /phmsa-orders payload. This free manifest lists the full catalog. Operator-response letters, the killed incident NARRATIVE zip, and the primis TSV (dates/penalties only) are not sold. Distinct from /ferc-orders. GET /phmsa-orders?id= is one official text ($0.02). Plain GET /phmsa-orders is the newest 10 official texts ($0.05).",
+  "license": "17 U.S.C. § 105 (U.S. government work; public domain)",
+  "attribution": "Pipeline and Hazardous Materials Safety Administration (PHMSA), U.S. Department of Transportation. Work of the United States Government; 17 U.S.C. § 105.",
+  "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+  "network": "base",
+  "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+  "amountAtomic": "50000",
+  "oneAmountAtomic": "20000",
+  "priceUsdc": "0.05",
+  "fetchedAt": "2026-08-31T23:19:31.970Z",
+  "asOf": "2026-08-03",
+  "cardCount": 6,
+  "cards": [
+    {
+      "id": "3-2026-023-cao",
+      "cpf": "32026023CAO",
+      "docket": "3-2026-023-CAO",
+      "institution": "Amoco Oil Company",
+      "date": "2026-08-03",
+      "kind": "corrective-action-order",
+      "sourceUrl": "https://primis.phmsa.dot.gov/enforcement-documents/32026023CAO/32026023CAO_Corrective%20Action%20Order_08032026_(26-379109)_text.pdf"
+    },
+    {
+      "id": "3-2026-020-cao",
+      "cpf": "32026020CAO",
+      "docket": "3-2026-020-CAO",
+      "institution": "Gulf South Pipeline Company, LLC",
+      "date": "2026-05-16",
+      "kind": "corrective-action-order",
+      "sourceUrl": "https://primis.phmsa.dot.gov/enforcement-documents/32026020CAO/32026020CAO_Corrective%20Action%20Order_05162026_(26-372495).pdf"
+    },
+    {
+      "id": "4-2026-012-nopv",
+      "cpf": "42026012NOPV",
+      "docket": "4-2026-012-NOPV",
+      "institution": "Canyon Crossing LLC / Navigator Panhandle Holdco LLC",
+      "date": "2026-04-07",
+      "kind": "final-order",
+      "sourceUrl": "https://primis.phmsa.dot.gov/enforcement-documents/42026012NOPV/42026012NOPV_Final%20Order_04072026_(23-266706).pdf"
+    },
+    {
+      "id": "4-2026-004-nopv",
+      "cpf": "42026004NOPV",
+      "docket": "4-2026-004-NOPV",
+      "institution": "Valero Partners Operating Co., LLC",
+      "date": "2026-04-01",
+      "kind": "final-order",
+      "sourceUrl": "https://primis.phmsa.dot.gov/enforcement-documents/42026004NOPV/42026004NOPV_Final%20Order_04012026_(25-329817).pdf"
+    },
+    {
+      "id": "4-2025-049-nopv",
+      "cpf": "42025049NOPV",
+      "docket": "4-2025-049-NOPV",
+      "institution": "Energy Transfer Company",
+      "date": "2026-03-26",
+      "kind": "final-order",
+      "sourceUrl": "https://primis.phmsa.dot.gov/enforcement-documents/42025049NOPV/42025049NOPV_Final%20Order_03262026_(24-296979).pdf"
+    },
+    {
+      "id": "4-2026-005-cao",
+      "cpf": "42026005CAO",
+      "docket": "4-2026-005-CAO",
+      "institution": "Enterprise Products Operating, LLC",
+      "date": "2026-02-17",
+      "kind": "corrective-action-order",
+      "sourceUrl": "https://primis.phmsa.dot.gov/enforcement-documents/42026005CAO/42026005CAO_Corrective%20Action%20Order_02172026_(26-364755).pdf"
+    }
+  ],
+  "schema": {
+    "fields": [
+      "id",
+      "cpf",
+      "docket",
+      "institution",
+      "date",
+      "kind",
+      "sourceUrl"
+    ]
+  },
+  "sources": {
+    "index": "https://primis.phmsa.dot.gov/enforcement-documents/",
+    "pdfHost": "https://primis.phmsa.dot.gov/enforcement-documents/"
+  }
+}

@@ -9,14 +9,16 @@
   "main": "./build/index.js",
   "types": "./build/index.d.ts",
   "scripts": {
-    "build": "tsc && chmod 755 build/index.js build/ticks-ams-leftovers.js",
+    "build": "tsc && chmod 755 build/index.js build/ticks-ams-leftovers.js build/phmsa-orders.js",
     "prepare": "npm run build",
     "start": "node build/index.js",
     "sync:live-shop": "node scripts/sync-live-shop.mjs",
     "collect:ticks-ams-leftovers": "node build/ticks-ams-leftovers.js",
+    "collect:phmsa-orders": "node build/phmsa-orders.js",
     "test:shop-catalog": "node build/shop-catalog.test.js",
     "test:ticks-ams-leftovers": "node build/ticks-ams-leftovers.test.js",
-    "test": "npm run test:shop-catalog && npm run test:ticks-ams-leftovers"
+    "test:phmsa-orders": "node build/phmsa-orders.test.js",
+    "test": "npm run test:shop-catalog && npm run test:ticks-ams-leftovers && npm run test:phmsa-orders"
   },
   "files": [
     "build",

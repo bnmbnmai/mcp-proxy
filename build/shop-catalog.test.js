@@ -13,6 +13,7 @@ const REQUIRED_LIVE_PATHS = [
     "/form-483",
     "/gmp",
     "/gmp-md",
+    "/phmsa-orders",
 ];
 function fixtureWellKnown(paths) {
     return { resources: paths.map((p) => `${LIVE_ORIGIN}${p}`) };
@@ -24,6 +25,13 @@ async function main() {
     assert.equal(two[0].kind, "table");
     assert.equal(two[1].path, "/ofwat-enforcement");
     assert.equal(two[1].kind, "body");
+    const phmsa = skusFromWellKnown(fixtureWellKnown(["/phmsa-orders"]));
+    assert.equal(phmsa.length, 1);
+    assert.equal(phmsa[0].path, "/phmsa-orders");
+    assert.equal(phmsa[0].kind, "body");
+    assert.equal(phmsa[0].price, "$0.02 / $0.05");
+    assert.match(phmsa[0].bag, /PHMSA pipeline enforcement-order text/);
+    assert.match(shopIndexMarkdown(phmsa), /\/phmsa-orders\/manifest\.json/);
     const md2 = shopIndexMarkdown(two);
     assert.match(md2, /\/ofwat-enforcement/);
     assert.doesNotMatch(md2, /36 doors|40 doors|Thirty-six|Forty paid/);
@@ -48,6 +56,13 @@ async function main() {
     }
     const root = join(dirname(fileURLToPath(import.meta.url)), "..");
     const shopIndexOnDisk = readFileSync(join(root, "SHOP-INDEX.md"), "utf8");
+    const openapiOnDisk = JSON.parse(readFileSync(join(root, "openapi.json"), "utf8"));
+    assert.ok(openapiOnDisk.paths?.["/phmsa-orders"], "checked-in OpenAPI lists /phmsa-orders");
+    assert.ok(openapiOnDisk.paths?.["/phmsa-orders/manifest.json"], "checked-in OpenAPI lists /phmsa-orders/manifest.json");
+    const manOnDisk = JSON.parse(readFileSync(join(root, "phmsa-orders/manifest.json"), "utf8"));
+    assert.equal(manOnDisk.free, true, "checked-in /phmsa-orders/manifest.json is the free index");
+    assert.ok((manOnDisk.cards?.length ?? 0) >= 1, "checked-in free manifest lists ids");
+    assert.ok(manOnDisk.cards?.every((c) => !("body" in c)), "checked-in free manifest has no order body");
     const readmeOnDisk = readFileSync(join(root, "README.md"), "utf8");
     const pkg = JSON.parse(readFileSync(join(root, "package.json"), "utf8"));
     const server = JSON.parse(readFileSync(join(root, "server.json"), "utf8"));
@@ -59,6 +74,8 @@ async function main() {
         assert.ok(shopIndexOnDisk.includes(`\`${path}\``), `checked-in SHOP-INDEX lists ${path}`);
     }
     assert.ok(!shopIndexOnDisk.includes("36 doors"), "checked-in SHOP-INDEX dropped the stale 36");
+    assert.ok(shopIndexOnDisk.includes("`/phmsa-orders`"), "checked-in SHOP-INDEX lists /phmsa-orders");
+    assert.ok(readmeOnDisk.includes("`/phmsa-orders`"), "checked-in README lists /phmsa-orders");
     const liveOpenapiHasFour = ["/ofwat-enforcement", "/ofgem-enforcement", "/gain", "/orr-enforcement"].every((p) => Boolean(live.openApi.paths?.[p]));
     assert.ok(liveOpenapiHasFour, "live OpenAPI already lists the four doors");
     console.log(`shop-catalog tests ok (live paid GETs: ${paths.length}; MCP extras: ${extraMcpToolNames().join(",")})`);
