@@ -89,7 +89,7 @@ export type AaibReportsSnapshot = {
 const HTTP_UA = "bnm-data-shop/1.0 (AAIB investigation-report texts; +https://www.gov.uk/aaib-reports)";
 const OFFICIAL_PDF_HOSTS = new Set(["assets.publishing.service.gov.uk"]);
 const OFFICIAL_PAGE_HOSTS = new Set(["www.gov.uk", "gov.uk"]);
-const MIN_BODY_CHARS = 1800;
+const MIN_BODY_CHARS = 1200;
 const GLOSSARY_RE = /glossary of abbreviations|abbreviations\.pdf/i;
 const ANNUAL_REVIEW_RE = /annual safety review/i;
 const RAIB_RE = /\bRail Accident Investigation Branch\b|\bRAIB\b/;
@@ -322,7 +322,9 @@ export function parseSearchJson(raw: string): AaibReportListing[] {
   } catch {
     return [];
   }
-  const results = (parsed as { results?: unknown[] })?.results;
+  const results = Array.isArray(parsed)
+    ? parsed
+    : (parsed as { results?: unknown[] })?.results;
   if (!Array.isArray(results)) return [];
   const rows: AaibReportListing[] = [];
   for (const item of results) {

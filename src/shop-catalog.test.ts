@@ -21,6 +21,7 @@ const REQUIRED_LIVE_PATHS = [
   "/ofgem-enforcement",
   "/gain",
   "/orr-enforcement",
+  "/phmsa-orders",
   "/form-483",
   "/gmp",
   "/gmp-md",
