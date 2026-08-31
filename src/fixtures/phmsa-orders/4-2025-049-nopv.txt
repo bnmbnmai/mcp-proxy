@@ -1,0 +1,207 @@
+U.S. Department                                                          1200 New Jersey Avenue, SE
+of Transportation                                                        Washington, DC 20590
+Pipeline and Hazardous
+Materials Safety
+Administration
+
+                                   March 26, 2026
+VIA ELECTRONIC MAIL TO: tom.long@energytransfer.com
+
+Thomas E. Long
+Chief Executive Officer
+Energy Transfer LP
+8111 Westchester Drive
+Dallas, Texas 75225
+
+Re: CPF No. 4-2025-049-NOPV
+
+Dear Mr. Long:
+
+Enclosed please find the Final Order issued in the above-referenced case. It makes a finding of
+violation and finds that Energy Transfer Company has completed the actions specified in the
+Notice to comply with the pipeline safety regulations. Therefore, this case is now closed. Service
+of the Final Order by e-mail is effective upon the date of transmission and acknowledgement of
+receipt as provided under 49 CFR § 190.5.
+
+Thank you for your cooperation in this matter.
+
+
+                                             Sincerely,
+                                                             Digitally signed by LINDA
+                                             LINDA GAIL GAIL DAUGHERTY
+                                             DAUGHERTY Date:  2026.03.26
+                                                        01:54:45 -04'00'
+
+                                             Linda Daugherty
+                                             Acting Associate Administrator
+                                              for Pipeline Safety
+
+
+Enclosure
+
+cc:    Bryan Lethcoe, Director, Southwest Region, Office of Pipeline Safety, PHMSA
+       Todd Nardozzi, Director – DOT Compliance, Energy Transfer
+       Todd Stamm, Senior Vice President, Operations, Energy Transfer
+       Matthew Stork, Vice President, Technical Services, Energy Transfer
+       Susie Sjulin, Director – DOT Compliance, Energy Transfer
+
+
+ &21),50$7,212)5(&(,375(48(67('
+                  U.S. DEPARTMENT OF TRANSPORTATION
+       PIPELINE AND HAZARDOUS MATERIALS SAFETY ADMINISTRATION
+                        OFFICE OF PIPELINE SAFETY
+                          WASHINGTON, D.C. 20590
+
+
+____________________________________
+                                      )
+In the Matter of                      )
+                                      )
+Energy Transfer Company,              )
+ a subsidiary of Energy Transfer, LP, )                      CPF No. 4-2025-049-NOPV
+                                      )
+Respondent.                           )
+____________________________________)
+
+
+                                               FINAL ORDER
+
+From March 4 to September 26, 2024, pursuant to 49 U.S.C. § 60117, a representative of the
+Pipeline and Hazardous Materials Safety Administration (PHMSA), Office of Pipeline Safety
+(OPS), conducted an on-site pipeline safety inspection of the facilities and records of Energy
+Transfer Company’s (ETC or Respondent) Sunoco Lea to Midland interstate hazardous liquid
+pipeline located in New Mexico and Texas.
+
+As a result of the inspection, the Director, Southwest Region, OPS (Director), issued to
+Respondent, by letter dated July 10, 2025, a Notice of Probable Violation and Proposed
+Compliance Order (Notice). In accordance with 49 CFR § 190.207, the Notice proposed finding
+that ETC had violated 49 CFR § 195.452(f)(3) and proposed ordering Respondent to take certain
+measures to correct the alleged violation.
+
+ETC responded to the Notice by letter dated September 8, 2025 (Response). 1 Respondent
+provided an explanation regarding the allegations in the Notice and offered additional
+information in response to the Notice. Respondent did not request a hearing and therefore has
+waived its right to one.
+
+
+
+                                       FINDING OF VIOLATION
+
+
+The Notice alleged that Respondent violated 49 CFR Part 195, as follows:
+
+Item 1: The Notice alleged that Respondent violated 49 CFR § 195.452(f)(3), which states:
+
+1
+ ETC requested an extension to respond to the Notice via email on July 10, 2025. This request was granted by the
+Director via letter dated July 17, 2025, extending ETC’s time to respond to September 8, 2025.
+                                                                                                   2
+
+
+
+           § 195.452 Pipeline integrity management in high consequence areas.
+               (a) …
+               (f) What are the elements of an integrity management program? An
+           integrity management program begins with the initial framework. An
+           operator must continually change the program to reflect operating
+           experience, conclusions drawn from results of the integrity assessments,
+           and other maintenance and surveillance data, and evaluation of
+           consequences of a failure on the high consequence area. An operator must
+           include, at minimum, each of the following elements in its written integrity
+           management program:
+               (1) …
+               (3) An analysis that integrates all available information about the
+           integrity of the entire pipeline and the consequences of a failure (see
+           paragraph (g) of this section);
+
+The Notice alleged that Respondent violated 49 CFR § 195.452(f)(3) E\failing to include in its
+written integrity management program an analysis of its Sunoco Lea to Midland pipeline system
+that integrates all available information about the integrity of the entire pipeline and the
+consequences of failure. Specifically, the Notice alleged that ETC failed to incorporate coupon
+and inhibitor data on its Sunoco Lea to Midland pipeline system into its risk model.
+
+In its Response, ETC averred that the risk model reviewed by PHMSA in March 2024 “did
+consider both coupon data and inhibiter program for the Internal Corrosion (IC) Threat.” 2
+However, ETC noted that because of “data issues both coupon and inhibitor factors used default
+values” in the risk model for the Sunoco Lea to Midland pipeline segments. 3 ETC stated that
+“[o]ther factors such as ILI feature count, number of leaks, product type, and assessment dates
+were used for the IC threat.” 4
+
+ETC further asserted that it transitioned to a new semi-quantitative risk analysis model in 2024
+that “does consider if the pipeline has an inhibitor program in the internal corrosion risk score.” 5
+Citing that transition, ETC contends that the “data issues with inhibitor data for these pipeline
+segments have been resolved” as well as the inclusion of the coupon data. 6 ETC included with its
+Response Attachment A, updated risk analysis results, and Attachment B, updated risk model
+internal corrosion algorithm procedures, to corroborate its statements in its Response. 7
+
+ETC does not state in its Response when the transition to the new risk model occurred other than
+to indicate it occurred sometime in 2024. In addition, ETC created and revised Attachments A
+
+2
+    Response at Page 1.
+3
+    Id.
+4
+    Id.
+5
+    Response at Page 2.
+6
+    Id.
+7
+    Id.
+                                                                                                     3
+
+
+and B in 2025, a year after the PHMSA inspection took place. ETC also conceded in its
+Response that the risk model reviewed by PHMSA during the inspection did not factor the
+pipeline’s coupon and inhibitor data in the risk model. Rather, the risk model used default values
+for those data points and relied on other factors to determine the internal corrosion threat to the
+Sunoco Lea to Midland pipeline system.
+
+Accordingly, after considering all of the evidence, I find that Respondent violated 49 CFR
+§ 195.452(f)(3) by failing to include in its written integrity management program an analysis of
+its Sunoco Lea to Midland pipeline system that integrates all available information about the
+integrity of the entire pipeline including coupon and inhibitor data.
+
+This finding of violation will be considered a prior offense in any subsequent enforcement action
+taken against Respondent.
+
+
+                                         COMPLIANCE ORDER
+
+The Notice proposed a compliance order with respect to Item 1 in the Notice for the violation of
+49 CFR § 195.452(f)(3). Under 49 U.S.C. § 60118(a), each person who engages in the
+transportation of hazardous liquids or who owns or operates a pipeline facility is required to
+comply with the applicable safety standards established under chapter 601. The Director
+indicates that Respondent has taken the following actions specified in the proposed compliance
+order:
+
+             1.With respect to the violation of VHFWLRQ 195.452(f)(3) (Item 1), Respondent has
+             incorporated coupon and inhibitor data from the Sunoco Lea to Midland pipeline
+             system into its risk model and provided the risk model analysis results to Southwest
+             Region.
+Accordingly, I find that compliance has been achieved with respect to this violation. Therefore,
+the compliance terms proposed in the Notice are not included in this Order.
+
+Under 49 CFR § 190.243, Respondent may submit a Petition for Reconsideration of this Final
+Order to the Associate Administrator, Office of Pipeline Safety, PHMSA, 1200 New Jersey
+Avenue, SE, East Building, 2nd Floor, Washington, DC 20590, with a copy sent to the Office
+of Chief Counsel, PHMSA, at the same address. The written petition must be received no later
+than 20 days after receipt of the Final Order by Respondent. Any petition submitted must
+contain a statement of the issue(s) and meet all other requirements of 49 CFR § 190.243. The
+terms of the order, including corrective action, remain in effect unless the Associate
+Administrator, upon request, grants a stay. The terms and conditions of this Final Order are
+effective upon service in accordance with 49 CFR § 190.5.
+
+LINDA GAIL        Digitally signed by LINDA GAIL
+
+DAUGHERTY
+                  DAUGHERTY
+___________________________________
+                  Date: 2026.03.26 01:57:03 -04'00'
+                                                                   March 26, 2026
+                                                                   __________________________
+Linda Daugherty                                                    Date Issued
+Acting Associate Administrator
+ for Pipeline Safety
+

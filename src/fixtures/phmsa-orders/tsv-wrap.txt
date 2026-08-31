@@ -1,0 +1,4 @@
+CPF_Number	Operator_ID	Operator_Name	Opened_Date	Latest_Order_Type	Latest_Order_Date	Proposed_Penalties	Assessed_Penalties	Case_Status
+42026012NOPV	40329	NAVIGATOR PANHANDLE HOLDCO LLC	2/12/26	Final Order	4/7/26	62900	62900	OPEN
+32026023CAO	395	AMOCO OIL CO	8/3/26	Corrective Action Order	8/3/26			OPEN
+PHMSA Pipeline Enforcement Raw Data.txt — dates/penalties only. Do not wrap or sell this spreadsheet.

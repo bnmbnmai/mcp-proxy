@@ -8,7 +8,7 @@
       "name": "BNM Data Shop",
       "url": "https://bnm.farm/"
     },
-    "x-guidance": "Forty paid GETs: /ticks ($0.05), /import-alerts ($0.05), /mariners ($0.05), /mariners-d11 ($0.05), /mariners-d7 ($0.05), /mariners-d8 ($0.05), /warning-letters ($0.05), /untitled-letters ($0.05), /awa ($0.05), /swisspar ($0.05), /pcac ($0.05), /ftc-wl ($0.05), /cfpb-orders ($0.05), /occ-cd ($0.05), /fdic-orders ($0.05), /frb-orders ($0.05), /ncua-orders ($0.05), /fincen-orders ($0.05), /ferc-orders ($0.05), /ofac-orders ($0.05), /bis-orders ($0.05), /cftc-orders ($0.05), /fifra-orders ($0.05), /denovo-orders ($0.05), /ttb-oic ($0.05), /air-letters ($0.05), /superfund-rods ($0.05), /ico-mpn ($0.05), /cma-ca98 ($0.05), /ema-referrals ($0.05), /cder-reviews ($0.05), /npdes-permits ($0.05), /ofsted-inspections ($0.05), /ofwat-enforcement ($0.05), /ofgem-enforcement ($0.05), /gain ($0.05), /orr-enforcement ($0.05), /form-483 ($0.05), /gmp ($0.05), /gmp-md ($0.05), USDC on Base. Extracted-body doors: free index/search on /{door}/manifest.json or /{door}/index (?q=, optional before/date), then pay one official text GET ?id= ($0.02) or the page ($0.05). newest 10 official texts on a plain GET ($0.05), or the whole current set if fewer; older pages on the same URL (?before, another $0.05). Table doors (/ticks, /import-alerts) stay the whole current table. Free canned paid-JSON keys: GET /sample (HTTP 200, not a SKU). Free firm-name search: GET /firm-check?q= (HTTP 200, not a SKU). Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402 (GET or POST '{}'). MCP at GET/POST /mcp lists one tool per paid GET plus free search, free firm-check, paid get-one ($0.02), and paid get-page ($0.05). Free manifests do not include the paid body. GET has no request body. /orr-enforcement is a live public SKU on purpose. No 41th public SKU."
+    "x-guidance": "Paid GETs (live count is /.well-known/x402): /ticks ($0.05), /import-alerts ($0.05), /mariners ($0.05), /mariners-d11 ($0.05), /mariners-d7 ($0.05), /mariners-d8 ($0.05), /warning-letters ($0.05), /untitled-letters ($0.05), /awa ($0.05), /swisspar ($0.05), /pcac ($0.05), /ftc-wl ($0.05), /cfpb-orders ($0.05), /occ-cd ($0.05), /fdic-orders ($0.05), /frb-orders ($0.05), /ncua-orders ($0.05), /fincen-orders ($0.05), /ferc-orders ($0.05), /ofac-orders ($0.05), /bis-orders ($0.05), /cftc-orders ($0.05), /fifra-orders ($0.05), /denovo-orders ($0.05), /ttb-oic ($0.05), /air-letters ($0.05), /superfund-rods ($0.05), /ico-mpn ($0.05), /cma-ca98 ($0.05), /ema-referrals ($0.05), /cder-reviews ($0.05), /npdes-permits ($0.05), /ofsted-inspections ($0.05), /ofwat-enforcement ($0.05), /ofgem-enforcement ($0.05), /gain ($0.05), /orr-enforcement ($0.05), /form-483 ($0.05), /gmp ($0.05), /gmp-md ($0.05), /phmsa-orders ($0.05), USDC on Base. Extracted-body doors: free index/search on /{door}/manifest.json or /{door}/index (?q=, optional before/date), then pay one official text GET ?id= ($0.02) or the page ($0.05). newest 10 official texts on a plain GET ($0.05), or the whole current set if fewer; older pages on the same URL (?before, another $0.05). Table doors (/ticks, /import-alerts) stay the whole current table. Free canned paid-JSON keys: GET /sample (HTTP 200, not a SKU). Free firm-name search: GET /firm-check?q= (HTTP 200, not a SKU). Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402 (GET or POST '{}'). MCP at GET/POST /mcp lists one tool per paid GET plus free search, free firm-check, paid get-one ($0.02), and paid get-page ($0.05). Free manifests do not include the paid body. GET has no request body. /phmsa-orders is listed here (first slice; live after apollo apply). Live count is /.well-known/x402, not a hardcoded door number."
   },
   "x-discovery": {
     "ownershipProofs": [
@@ -149,7 +149,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -245,7 +245,7 @@
                   "recordCount": 1,
                   "records": [
                     {
-                      "id": "16-81:red:Clover Valley Meat Co.:Alligator & Crocodile, Other Aquatic Species — Crocodile",
+                      "id": "16-81:red:Clover Valley Meat Co.:Alligator & Crocodile, Other Aquatic Species \u2014 Crocodile",
                       "date": "2012-06-08",
                       "firm": "Clover Valley Meat Co.",
                       "url": "https://www.accessdata.fda.gov/cms_ia/importalert_49.html",
@@ -259,7 +259,7 @@
                       "list": "red",
                       "firm": "Clover Valley Meat Co.",
                       "country": "AUSTRALIA",
-                      "product": "Alligator & Crocodile, Other Aquatic Species — Crocodile",
+                      "product": "Alligator & Crocodile, Other Aquatic Species \u2014 Crocodile",
                       "datePublished": "06/08/2012",
                       "sourceUrl": "https://www.accessdata.fda.gov/cms_ia/importalert_49.html",
                       "asOf": "2026-08-17"
@@ -270,7 +270,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -384,7 +384,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -498,7 +498,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -612,7 +612,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -726,7 +726,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -880,7 +880,7 @@
                       "issuedOn": "2026-03-04",
                       "subject": "Unapproved New Drugs/Misbranded",
                       "sourceUrl": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/citra100mg-722606-03042026",
-                      "body": "WARNING LETTER\nMarch 4, 2026\nRE: Notice of Unlawful Sale of Unapproved and Misbranded Drugs…"
+                      "body": "WARNING LETTER\nMarch 4, 2026\nRE: Notice of Unlawful Sale of Unapproved and Misbranded Drugs\u2026"
                     }
                   ]
                 }
@@ -888,7 +888,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -1040,14 +1040,14 @@
                       "id": "bayer-healthcare-pharmaceuticals-inc-192241",
                       "firm": "Bayer HealthCare Pharmaceuticals, Inc.",
                       "date": "2026-04-28",
-                      "product": "NUBEQA® (darolutamide) tablets, for oral use",
+                      "product": "NUBEQA\u00ae (darolutamide) tablets, for oral use",
                       "office": "OPDP",
                       "sourceUrl": "https://www.fda.gov/media/192241/download",
                       "cites": [
                         "FD&C Act"
                       ],
                       "said": "FDA has determined that the video and TV ad are false or misleading.",
-                      "body": "The Office of Prescription Drug Promotion (OPDP) of the U.S. Food and Drug Administration (FDA) has reviewed the promotional communications…"
+                      "body": "The Office of Prescription Drug Promotion (OPDP) of the U.S. Food and Drug Administration (FDA) has reviewed the promotional communications\u2026"
                     }
                   ]
                 }
@@ -1055,7 +1055,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -1218,7 +1218,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -1227,7 +1227,7 @@
       "get": {
         "operationId": "getSwisspar",
         "summary": "Swissmedic first-authorisation SwissPAR evaluation text",
-        "description": "Call GET /swisspar when you need official Swissmedic first-authorisation SwissPAR evaluation text extracted from per-product PDFs. Not the A–Z HTML index. Not EMA EPARs/referrals. Not FDA CDER reviews. Not the HCP/FI appendix. GET ?id= one official text ($0.02). Newest chunk on a plain GET (newest 10 official texts, $0.05); older page ?before= another $0.05.",
+        "description": "Call GET /swisspar when you need official Swissmedic first-authorisation SwissPAR evaluation text extracted from per-product PDFs. Not the A\u2013Z HTML index. Not EMA EPARs/referrals. Not FDA CDER reviews. Not the HCP/FI appendix. GET ?id= one official text ($0.02). Newest chunk on a plain GET (newest 10 official texts, $0.05); older page ?before= another $0.05.",
         "tags": [
           "paid"
         ],
@@ -1382,7 +1382,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -1545,7 +1545,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -1697,9 +1697,9 @@
                       "id": "vtron-inc-dba-vtron-lasers",
                       "firm": "Vtron Inc. d/b/a Vtron Lasers",
                       "date": "2026-07-06",
-                      "subject": "Warning Letter Regarding “Made in the USA” Representations",
+                      "subject": "Warning Letter Regarding \u201cMade in the USA\u201d Representations",
                       "sourceUrl": "https://www.ftc.gov/system/files/ftc_gov/pdf/vtron-lasers-musa-warningletter.pdf",
-                      "body": "Bureau of Consumer Protection\nJuly 6, 2026\nVtron Inc. d/b/a Vtron Lasers\nRe: Warning Letter Regarding “Made in the USA” Representations"
+                      "body": "Bureau of Consumer Protection\nJuly 6, 2026\nVtron Inc. d/b/a Vtron Lasers\nRe: Warning Letter Regarding \u201cMade in the USA\u201d Representations"
                     }
                   ]
                 }
@@ -1707,7 +1707,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -1869,7 +1869,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -2031,7 +2031,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -2193,7 +2193,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -2355,7 +2355,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -2517,7 +2517,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -2679,7 +2679,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -2841,7 +2841,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -3003,7 +3003,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -3165,7 +3165,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -3327,7 +3327,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -3489,7 +3489,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -3651,7 +3651,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -3813,7 +3813,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -3975,7 +3975,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -4137,7 +4137,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -4299,7 +4299,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -4461,7 +4461,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -4622,7 +4622,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -4783,7 +4783,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -4944,7 +4944,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -5106,7 +5106,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -5268,7 +5268,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -5430,7 +5430,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -5438,8 +5438,8 @@
     "/gain": {
       "get": {
         "operationId": "getGain",
-        "summary": "USDA FAS GAIN attaché report TEXT",
-        "description": "Call GET /gain when you need official USDA FAS GAIN attaché report TEXT extracted from gain.fas.usda.gov/Download.aspx or the matching no-auth DownloadReportByFileName PDF (Grain and Feed / Livestock / Poultry / Oilseeds). US federal public domain (17 U.S.C. § 105). Does not invent report text. Does not sell public search HTML. Does not wrap USDA commodity-table numbers. GET ?id= one official text ($0.02). Newest chunk on a plain GET (newest 10 official texts, $0.05); older page ?before= another $0.05.",
+        "summary": "USDA FAS GAIN attach\u00e9 report TEXT",
+        "description": "Call GET /gain when you need official USDA FAS GAIN attach\u00e9 report TEXT extracted from gain.fas.usda.gov/Download.aspx or the matching no-auth DownloadReportByFileName PDF (Grain and Feed / Livestock / Poultry / Oilseeds). US federal public domain (17 U.S.C. \u00a7 105). Does not invent report text. Does not sell public search HTML. Does not wrap USDA commodity-table numbers. GET ?id= one official text ($0.02). Newest chunk on a plain GET (newest 10 official texts, $0.05); older page ?before= another $0.05.",
         "tags": [
           "paid"
         ],
@@ -5586,7 +5586,7 @@
                       "date": "2026-08-24",
                       "category": "Livestock and Products",
                       "sourceUrl": "https://apps.fas.usda.gov/newgainapi/api/Report/DownloadReportByFileName?fileName=Livestock%20and%20Products%20Annual_Mexico%20City_Mexico_MX2026-0040.pdf",
-                      "body": "This teaser is not an official attaché body. USDA FAS GAIN MX2026-0040 excerpt."
+                      "body": "This teaser is not an official attach\u00e9 body. USDA FAS GAIN MX2026-0040 excerpt."
                     }
                   ]
                 }
@@ -5594,7 +5594,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -5756,7 +5756,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -5917,7 +5917,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -6080,7 +6080,7 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -6243,7 +6243,169 @@
             }
           },
           "402": {
-            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
+          }
+        }
+      }
+    },
+    "/phmsa-orders": {
+      "get": {
+        "operationId": "getPhmsaOrders",
+        "summary": "PHMSA pipeline enforcement-order text",
+        "description": "Call GET /phmsa-orders when you need official PHMSA-authored pipeline enforcement TEXT extracted from primis.phmsa.dot.gov/enforcement-documents/{CPF}/ PDFs (NOPV / Notice of Probable Violation, Final Order, Corrective Action Order / CAO, and similar PHMSA-written orders). US federal public domain (17 U.S.C. \u00a7 105). Institution/operator files only. Does not invent order text. Does not sell operator-response / operator-reply letters. Does not sell the killed PHMSA incident NARRATIVE zip. Does not wrap the primis TSV (dates/penalties only). Distinct from /ferc-orders. GET ?id= one official text ($0.02). Newest chunk on a plain GET (newest 10 official texts, $0.05); older page ?before= another $0.05. If fewer than 10, the nickel is the whole current set.",
+        "tags": [
+          "paid"
+        ],
+        "security": [
+          {
+            "x402": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Official catalog id from the free index. That one official text. $0.02 (20000 atomic). Same door, not a new SKU. Wins over before/page."
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Official catalog id or YYYY-MM-DD from the free manifest. Next older chunk. Another $0.05. Omit for the newest chunk."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "description": "1-based page. Page 1 is the newest chunk. Ignored when before is set."
+          }
+        ],
+        "x-auth": {
+          "mode": "x402"
+        },
+        "x-payment-info": {
+          "protocols": [
+            {
+              "x402": {
+                "scheme": "exact",
+                "network": "eip155:8453",
+                "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+                "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+                "amount": "50000"
+              }
+            }
+          ],
+          "price": {
+            "mode": "fixed",
+            "currency": "USD",
+            "amount": "0.05"
+          },
+          "network": "eip155:8453",
+          "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004"
+        },
+        "responses": {
+          "200": {
+            "description": "Paid JSON body after a valid x402 settlement",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    },
+                    "product": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "fetchedAt": {
+                      "type": "string"
+                    },
+                    "asOf": {
+                      "type": "string"
+                    },
+                    "source": {
+                      "type": "string"
+                    },
+                    "recordCount": {
+                      "type": "integer"
+                    },
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "cards": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "Official catalog ids on this paid page"
+                    },
+                    "nextBefore": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "prevBefore": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  }
+                },
+                "example": {
+                  "ok": true,
+                            "product": "phmsa-enforcement-order-bodies",
+                  "status": "ok",
+                  "fetchedAt": "2026-08-31T12:00:00.000Z",
+                  "asOf": "2026-04-07",
+                  "source": "https://primis.phmsa.dot.gov/enforcement-documents/",
+                  "recordCount": 1,
+                  "records": [
+                    {
+                      "id": "4-2026-012-nopv",
+                      "date": "2026-04-07",
+                      "firm": "Canyon Crossing LLC / Navigator Panhandle Holdco LLC",
+                      "url": "https://primis.phmsa.dot.gov/enforcement-documents/42026012NOPV/42026012NOPV_Final%20Order_04072026_(23-266706).pdf",
+                      "type": "phmsa-orders"
+                    }
+                  ],
+                  "cards": [
+                    {
+                      "id": "4-2026-012-nopv",
+                      "institution": "Canyon Crossing LLC / Navigator Panhandle Holdco LLC",
+                      "docket": "4-2026-012-NOPV",
+                      "date": "2026-04-07",
+                      "sourceUrl": "https://primis.phmsa.dot.gov/enforcement-documents/42026012NOPV/42026012NOPV_Final%20Order_04072026_(23-266706).pdf",
+                      "body": "This teaser is not an official enforcement body. CPF No. 4-2026-012-NOPV Final Order excerpt."
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required \u2014 x402 challenge in PAYMENT-REQUIRED and JSON body"
           }
         }
       }
@@ -6487,7 +6649,7 @@
     "/warning-letters/manifest.json": {
       "get": {
         "summary": "FDA warning-letters free manifest",
-        "description": "Count, firm, date, subject, and official source URL. Not the letter body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, firm, date, subject, and official source URL. Not the letter body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -6541,7 +6703,7 @@
     "/untitled-letters/manifest.json": {
       "get": {
         "summary": "FDA untitled-letters free manifest",
-        "description": "Count, id, firm, date, product, and official source URL. Not the letter text. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, id, firm, date, product, and official source URL. Not the letter text. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -6595,7 +6757,7 @@
     "/awa/manifest.json": {
       "get": {
         "summary": "APHIS AWA free manifest",
-        "description": "Count, id, firm, date, and official source URL. Not the observation text. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, id, firm, date, and official source URL. Not the observation text. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -6649,7 +6811,7 @@
     "/swisspar/manifest.json": {
       "get": {
         "summary": "SwissPAR free manifest",
-        "description": "Count, name, date, MA, and official source URL. Not the evaluation text. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, name, date, MA, and official source URL. Not the evaluation text. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -6703,7 +6865,7 @@
     "/pcac/manifest.json": {
       "get": {
         "summary": "FDA PCAC free manifest",
-        "description": "Count, substance, date, meeting, mediaId, and official source URL. Not the evaluation text. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, substance, date, meeting, mediaId, and official source URL. Not the evaluation text. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -6757,7 +6919,7 @@
     "/ftc-wl/manifest.json": {
       "get": {
         "summary": "FTC BCP warning-letters free manifest",
-        "description": "Count, firm, date, subject, and official PDF URL. Not the letter body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, firm, date, subject, and official PDF URL. Not the letter body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -6811,7 +6973,7 @@
     "/cfpb-orders/manifest.json": {
       "get": {
         "summary": "CFPB consent-orders free manifest",
-        "description": "Count, firm, date, title, fileNo, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, firm, date, title, fileNo, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -6865,7 +7027,7 @@
     "/occ-cd/manifest.json": {
       "get": {
         "summary": "OCC institution C&D free manifest",
-        "description": "Count, bank, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, bank, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -6919,7 +7081,7 @@
     "/fdic-orders/manifest.json": {
       "get": {
         "summary": "FDIC institution orders free manifest",
-        "description": "Count, bank, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, bank, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -6973,7 +7135,7 @@
     "/frb-orders/manifest.json": {
       "get": {
         "summary": "FRB institution orders free manifest",
-        "description": "Count, institution, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, institution, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -7027,7 +7189,7 @@
     "/ncua-orders/manifest.json": {
       "get": {
         "summary": "NCUA institution orders free manifest",
-        "description": "Count, credit union, docket, date, and official HTML URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, credit union, docket, date, and official HTML URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -7081,7 +7243,7 @@
     "/fincen-orders/manifest.json": {
       "get": {
         "summary": "FinCEN institution orders free manifest",
-        "description": "Count, institution, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, institution, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -7135,7 +7297,7 @@
     "/ferc-orders/manifest.json": {
       "get": {
         "summary": "FERC institution orders free manifest",
-        "description": "Count, institution, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, institution, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -7189,7 +7351,7 @@
     "/ofac-orders/manifest.json": {
       "get": {
         "summary": "OFAC institution orders free manifest",
-        "description": "Count, institution, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, institution, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -7243,7 +7405,7 @@
     "/bis-orders/manifest.json": {
       "get": {
         "summary": "BIS institution orders free manifest",
-        "description": "Count, institution, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, institution, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -7297,7 +7459,7 @@
     "/cftc-orders/manifest.json": {
       "get": {
         "summary": "CFTC institution orders free manifest",
-        "description": "Count, institution, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, institution, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -7351,7 +7513,7 @@
     "/fifra-orders/manifest.json": {
       "get": {
         "summary": "EPA FIFRA institution orders free manifest",
-        "description": "Count, institution, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, institution, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -7405,7 +7567,7 @@
     "/denovo-orders/manifest.json": {
       "get": {
         "summary": "FDA De Novo classification orders free manifest",
-        "description": "Count, institution, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, institution, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -7459,7 +7621,7 @@
     "/ttb-oic/manifest.json": {
       "get": {
         "summary": "TTB Offer in Compromise free manifest",
-        "description": "Count, institution, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, institution, docket, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -7513,7 +7675,7 @@
     "/air-letters/manifest.json": {
       "get": {
         "summary": "APHIS AIR confirmation letters free manifest",
-        "description": "Count, institution, docket, date, and official PDF URL. Not the letter body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, institution, docket, date, and official PDF URL. Not the letter body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -7567,7 +7729,7 @@
     "/superfund-rods/manifest.json": {
       "get": {
         "summary": "EPA Superfund Records of Decision free manifest",
-        "description": "Count, institution, docket, date, and official PDF URL. Not the ROD body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, institution, docket, date, and official PDF URL. Not the ROD body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -7621,7 +7783,7 @@
     "/ico-mpn/manifest.json": {
       "get": {
         "summary": "ICO Monetary Penalty Notices free manifest",
-        "description": "Count, institution, docket, date, and official PDF URL. Not the MPN body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, institution, docket, date, and official PDF URL. Not the MPN body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -7675,7 +7837,7 @@
     "/cma-ca98/manifest.json": {
       "get": {
         "summary": "UK CMA CA98 infringement decisions free manifest",
-        "description": "Count, institution, docket, date, and official PDF URL. Not the decision body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, institution, docket, date, and official PDF URL. Not the decision body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -7878,8 +8040,8 @@
     },
     "/gain/manifest.json": {
       "get": {
-        "summary": "USDA FAS GAIN attaché reports free manifest",
-        "description": "Count, report number, country, post, date, and official PDF URL. Not the attaché body.",
+        "summary": "USDA FAS GAIN attach\u00e9 reports free manifest",
+        "description": "Count, report number, country, post, date, and official PDF URL. Not the attach\u00e9 body.",
         "tags": [
           "free"
         ],
@@ -7929,7 +8091,7 @@
     "/form-483/manifest.json": {
       "get": {
         "summary": "FDA Form 483 free manifest",
-        "description": "Count, id, firm, and dates. Not the observation body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, id, firm, and dates. Not the observation body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -7983,7 +8145,7 @@
     "/gmp/manifest.json": {
       "get": {
         "summary": "Health Canada GMP free manifest",
-        "description": "Count, id, firm, date, and rating. Not the observation text. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, id, firm, date, and rating. Not the observation text. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -8037,7 +8199,7 @@
     "/gmp-md/manifest.json": {
       "get": {
         "summary": "Health Canada medical-device free manifest",
-        "description": "Count, id, firm, date, and rating. Not the report-card body text. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "description": "Count, id, firm, date, and rating. Not the report-card body text. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer \u2014 not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
         "tags": [
           "free"
         ],
@@ -8088,10 +8250,46 @@
         }
       }
     },
+    "/phmsa-orders/manifest.json": {
+      "get": {
+        "summary": "PHMSA pipeline enforcement orders free manifest",
+        "description": "Count, institution, CPF/docket, date, and official PDF URL. Not the order body. Free index/search (?q=) returns id and the ?id= URL ($0.02).",
+        "tags": [
+          "free"
+        ],
+        "security": [],
+        "x-auth": {
+          "mode": "none"
+        },
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Free-text match against id, institution, CPF, date. Not charged."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Free JSON catalog / discovery document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/.well-known/x402": {
       "get": {
         "summary": "x402 well-known fan-out",
-        "description": "Absolute URLs of the forty live paid routes only.",
+        "description": "Absolute URLs of the live paid routes. Count is whatever this document lists today \u2014 not a hardcoded door number. /phmsa-orders is listed in this spec (first slice; live after apollo apply).",
         "tags": [
           "free"
         ],
@@ -8141,7 +8339,7 @@
     "/llms.txt": {
       "get": {
         "summary": "Short agent guidance",
-        "description": "The forty paid doors and free discovery URLs. Not a paid SKU.",
+        "description": "The live paid doors and free discovery URLs. Count is /.well-known/x402. Not a paid SKU.",
         "tags": [
           "free"
         ],
@@ -8166,7 +8364,7 @@
     "/mcp": {
       "get": {
         "summary": "MCP discovery",
-        "description": "Streamable HTTP MCP for the same forty paid GETs. Not a paid SKU. Connect: npx -y mcp-remote https://ticks.bnm.farm/mcp",
+        "description": "Streamable HTTP MCP generated from live /.well-known/x402 (one tool per paid GET). Not a paid SKU. Connect: npx -y mcp-remote https://ticks.bnm.farm/mcp",
         "tags": [
           "free"
         ],
@@ -8214,7 +8412,7 @@
     "/": {
       "get": {
         "summary": "Shop discovery JSON",
-        "description": "payTo, network, and the forty public products.",
+        "description": "payTo, network, and the live public products. Count is /.well-known/x402.",
         "tags": [
           "free"
         ],

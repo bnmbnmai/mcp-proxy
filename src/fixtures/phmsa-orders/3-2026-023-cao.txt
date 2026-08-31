@@ -1,0 +1,493 @@
+U.S. Department
+of Transportation
+Pipeline and                                                       1200 New Jersey Avenue, S.E.
+Hazardous Materials                                                Washington, D.C. 20590
+Safety Administration
+
+                                    August 3, 2026
+
+VIA EMAIL TO: lori.knutson@bp.com; chris.vodicka@bp.com; jim.bruen@bp.com;
+james.fraleyjr@bp.com
+
+Lori Knutson
+Vice President
+AMOCO Oil Co.
+501 Westlake Park Boulevard
+Houston, Texas 60606
+
+                                                                  CPF 3-2026-023-CAO
+
+Dear Ms. Knutson:
+
+Enclosed please find a Corrective Action Order (CAO or Order) issued by the Pipeline and
+Hazardous Materials Safety Administration (PHMSA), Office of Pipeline Safety (OPS). The CAO
+requires Amoco Oil Company (Amoco) to take certain corrective actions with respect to the
+pipeline failure that occurred on July 29, 2026, on the 12-inch Rouge Pipeline that transports
+refined petroleum products from Whiting Refinery in East Chicago, Indiana, to River Rouge,
+Michigan.
+
+Service of the CAO by email is effective upon the date of transmission and acknowledgment of
+receipt as provided under 49 CFR § 190.5. The terms and conditions of this Order are effective
+upon completion of service.
+
+
+                                           Sincerely,
+
+
+
+                                           Keith Coyle
+                                           General Counsel
+                                           Pipeline and Hazardous Materials Safety
+                                             Administration
+Enclosure:   CAO
+
+cc:    AJ McKean, Director, Central Region, Office of Pipeline Safety, PHMSA
+       Ryan McClure, Attorney Advisor, PHMSA, ryan.mcclure@dot.gov
+       Chris Vodicka, Vice President, Amoco, chris.vodicka@bp.com
+       Jim Bruen, DOT Compliance Lead, Amoco, jim.bruen@bp.com
+       James Fraley, Amoco, James.FraleyJr@bp.com
+
+
+
+CONFIRMATION OF RECEIPT REQUESTED
+                    DEPARTMENT OF TRANSPORTATION
+       PIPELINE AND HAZARDOUS MATERIALS SAFETY ADMINISTRATION
+                       OFFICE OF PIPELINE SAFETY
+                        WASHINGTON, D.C. 20590
+
+
+____________________________________
+                                    )
+In the Matter of                    )
+                                    )
+Amoco Oil Company,                  )                                  CPF No. 3-2026-023-CAO
+                                    )
+Respondent                          )
+____________________________________)
+
+
+                               CORRECTIVE ACTION ORDER
+
+
+Background and Purpose
+
+The Pipeline and Hazardous Materials Safety Administration (PHMSA), Office of Pipeline
+Safety (OPS), is issuing this Corrective Action Order (CAO or Order) pursuant to the authority
+provided in 49 U.S.C. § 60112. The CAO requires Amoco Oil Company (Amoco or
+Respondent), a BP subsidiary, to take certain necessary corrective actions to protect the public,
+property, and the environment from the potential hazards associated with the continued operation
+of the Rouge Pipeline. The Rouge Pipeline is a 12-inch pipeline that transports refined petroleum
+products from Whiting Refinery in East Chicago, Indiana, to River Rouge, Michigan.
+
+On July 29, 2026, Amoco reported to the National Response Center a suspected leak on its
+Rouge Pipeline near the BP Whiting Refinery in East Chicago, Indiana, after discovering a pool
+of diesel fuel directly above the pipeline (hereinafter the Failure). The Failure resulted in a three-
+foot diameter pool of diesel directly above the pipeline. At this location, the pipeline runs
+between two railroad tracks. Amoco isolated the segment and dispatched personnel to excavate
+and expose the pipeline. Respondent found the source of the leak on its pipeline August 2, 2026.
+
+Pursuant to 49 U.S.C. § 60117, PHMSA has initiated an investigation of the Failure. The
+preliminary findings of PHMSA’s ongoing investigation are as follows:
+
+   ● The Rouge Pipeline is a 12-inch, 0.344-inch wt, seamless, X42 grade, coal tar coated, 1953
+     vintage interstate pipeline. In certain locations, the pipeline is encased in concrete. Amoco
+     does not know the manufacturer at this time. In the area of the Failure, the pipeline runs
+     between two railroad tracks and then has a bend of approximately 90 degrees where it
+     crosses under the west track owned by the Indiana Harbor Belt Railroad (IHBR). This
+     crossing is a cased pipeline. The other track is owned by the Canadian National Railroad
+     and was inactive at the time of the accident. The pipeline does not cross the Canadian
+     National Railroad.
+                                                                                                  2
+
+
+   ● On July 29, 2026, a railroad worker reported a diesel odor near the intersection of Canal
+     Street and Dock Street in East Chicago, Indiana.
+   ● After receiving the report, Amoco initiated an investigation. Amoco personnel discovered
+     a three-foot diameter pool of diesel directly above the Rouge Pipeline. Amoco isolated a
+     three-mile long section of the pipeline to allow its personnel to excavate and expose the
+     pipeline.
+   ● Amoco notified the National Response Center (NRC 1469300) on July 29, 2026, at 6:38
+     pm.
+   ● The maximum operating pressure (MOP) of the pipeline is 1439 psig and the actual
+     operating pressure was 1175 psig at the time the Failure was discovered. As of August 2,
+     2026, the pipeline pressure is 6.2 psig as a result of product in the line.
+   ● A separate pipeline operated by Linde that transports nitrogen is located beneath the Rouge
+     Pipeline.
+   ● Rail traffic on the active IHBR track was stopped until personnel could be dispatched to
+     ensure safe passage of trains by the excavation site. Restricted rail traffic has resumed
+     although pipeline repair activities may further restrict or stop rail traffic.
+   ● The Failure occurred in a largely industrial area east of a PHMSA-regulated breakout tank
+     facility owned by Buckeye and north of a residential neighborhood. No property damage
+     or evacuations were reported beyond the immediate location of the Failure.
+   ● On August 1, 2026, excavators unearthed the 90-degree pipeline bend. The exposed
+     pipeline has 16 clocksprings (i.e., composite repair wraps) that were installed in 2012.
+     Amoco installed the clocksprings to remediate corrosion identified during an in-line
+     inspection.
+   ● During the excavation, heavy rain impeded the initial determination of the leak location.
+     As of August 2, 2026, Amoco believes it found the source of the leak along the bend that
+     was repaired with clocksprings in 2012.
+   ● The upstream pipeline extending north of the bend is surrounded by concrete for buoyancy
+     control.
+   ● PHMSA dispatched an accident investigator on July 30, 2026. The investigator arrived on-
+     site on July 31, 2026. PHMSA’s investigation is ongoing.
+
+Determination of Necessity for Corrective Action Order and Right to Hearing
+
+Section 60112 of title 49, United States Code, authorizes PHMSA to determine that a pipeline
+facility is or would be hazardous to life, property, or the environment and if there is a likelihood
+of serious harm, to expeditiously order the operator of the facility to take necessary corrective
+action, including suspended or restricted use of the facility, physical inspection, testing, repair,
+replacement, or other appropriate action. An order issued expeditiously must provide an
+opportunity for a hearing as soon as practicable after the order is issued.
+
+In deciding whether to issue an order, PHMSA must consider the following, if relevant: (1) the
+characteristics of the pipe and other equipment used in the pipeline facility, including the age,
+manufacture, physical properties, and method of manufacturing, constructing, or assembling the
+                                                                                                  3
+
+
+equipment; (2) the nature of the material the pipeline facility transports, the corrosive and
+deteriorative qualities of the material, the sequence in which the material is transported, and the
+pressure required for transporting the material; (3) the aspects of the area in which the pipeline
+facility is located, including climatic and geologic conditions and soil characteristics; (4) the
+proximity of the area in which the facility is located to environmentally sensitive areas; (5) the
+population density and population and growth patterns of the area in which the pipeline facility is
+located; (6) any recommendation of the National Transportation Safety Board made under another
+law; and (7) any other factors PHMSA may consider as appropriate.
+
+After evaluating the foregoing preliminary findings of fact, and having considered the
+characteristics of the pipeline, including the number of repairs made to the pipe at this location;
+the nature of the Failure, which appears to have originated along the pipeline bend previously
+repaired with composite repair wraps; the hazardous nature of the material transported (diesel fuel
+presents fire, health and environmental hazards); the location of the Failure near industrial and
+residential areas, train infrastructure, and other pipeline infrastructure; and the existing and
+potential additional impacts to life, property, or the environment; it is hereby determined that
+continued operation of the Affected Segment of the Rouge Pipeline, as defined below, without
+corrective measures is or would be hazardous to life, property, or the environment, and that failure
+to issue this Order expeditiously would result in the likelihood of serious harm.
+
+Accordingly, this Order mandating immediate corrective action is issued expeditiously without
+prior notice and opportunity for a hearing. The terms and conditions of this Order are effective
+upon completion of service.
+
+Within 10 days of receipt of this Order, Respondent may request a hearing, to be held as soon as
+practicable, by notifying the Associate Administrator for Pipeline Safety in writing, with a copy
+to the Director, PHMSA, OPS Central Region. If a hearing is requested, it will be held in
+accordance with 49 CFR § 190.211.
+
+After receiving and analyzing additional data in the course of this investigation, PHMSA may
+identify other corrective measures that need to be taken. Respondent will be notified of any
+additional measures required and, if appropriate, PHMSA will consider an amended order. To
+the extent consistent with safety, Respondent will be afforded notice and an opportunity for a
+hearing prior to the imposition of any additional corrective measures.
+
+Corrective Measures
+
+Definitions
+
+Affected Segment – The “Affected Segment” means the approximately 70-mile pipeline
+segment between Whiting Pump Station and South Bend Pump Station on the Rouge Pipeline.
+
+Isolated Segment – The “Isolated Segment” means the approximately 9,150-feet pipeline
+segment from Whiting Pump Station to Gate 23 on the Rouge Pipeline. The Isolated Section has
+8,354 feet of concrete coated pipe out of the total 9,150 feet of pipeline in this section.
+
+Failure – The “Failure” means the leak reported on July 29, 2026, near the intersection of Canal
+Street and Dock Street in East Chicago, Indiana.
+                                                                                                  4
+
+
+Director – The “Director” means the Director, PHMSA, OPS Central Region.
+
+   1. Shut Down. Amoco must not operate the Isolated Segment until authorized to do so by the
+      Director.
+   2. Operating Pressure Restriction. Amoco must reduce and maintain a twenty percent
+      (20%) pressure reduction in the actual operating pressure along the entire length of the
+      Affected Segment such that the operating pressure along the Affected Segment will not
+      exceed eighty percent (80%) of the actual operating pressure in effect immediately prior to
+      the Failure.
+          a. This pressure restriction is to remain in effect until written approval to increase the
+             pressure or return the pipeline to its pre-failure operating pressure is obtained from
+             the Director.
+          b. Within 10 days of receipt of this Order, Amoco must provide the Director the actual
+             operating pressures of each pump/compressor station and each main line pressure
+             regulating station on the Affected Segment at the time of failure and the reduced
+             pressure restriction set-points at these same locations.
+          c. This pressure restriction requires any relevant remote or local alarm limits, software
+             programming set-points or control points, and mechanical over-pressure devices to
+             be adjusted accordingly.
+          d. When determining the pressure restriction set-points, Amoco must take into
+             account any in-line inspection (ILI) features or anomalies present in the Affected
+             Segment to provide for continued safe operation while further corrective actions
+             are completed.
+          e. Amoco must review the pressure restriction monthly by analyzing the operating
+             pressure data. Amoco must take into account any in-line inspection (ILI) features
+             or anomalies present in the Affected Segment and immediately reduce the operating
+             pressure to maintain the safe operations of the Affected Segment, if warranted by
+             the monthly review. Amoco must submit the results of the monthly review to the
+             Director. The results must include, at a minimum, the current discharge set-points
+             (including any additional pressure reductions), and any pressure exceedance at
+             discharge set-points.
+   3. Restart Plan. Prior to resuming operation of the Isolated Segment, Amoco must develop
+      and submit a written Restart Plan to the Director for prior approval.
+          a. The Director may approve the Restart Plan incrementally without approving the
+             entire plan but the Isolated Segment cannot resume operation until the Restart Plan
+             is approved in its entirety.
+          b. Once approved by the Director, the Restart Plan will be incorporated by reference
+             into this Order.
+          c. The Restart Plan must provide for adequate ground patrolling of the Isolated
+             Segment during the restart process and must include incremental pressure increases
+             during start up, with each increment to be held for at least 2 hours.
+                                                                                                5
+
+
+       d. The Restart Plan must specify a day-light restart and include advance
+          communications with local emergency response officials.
+       e. The Restart Plan must provide for a review of the Isolated Segment for conditions
+          similar to those of the Failure including a review of construction, operating and
+          maintenance (O&M), and integrity management records such as in-line inspection
+          (ILI) results, hydrostatic tests, root cause failure analysis of prior failures, aerial
+          and ground patrols, corrosion, cathodic protection, excavations, and pipe
+          replacements. Amoco must address any findings that require remedial measures to
+          be implemented prior to restart.
+       f. The Restart Plan must also include documentation of the completion of all
+          mandated actions, and a management of change plan to ensure that all procedural
+          modifications are incorporated into Amoco’s operations and maintenance
+          procedures manual.
+4. Return to Service. After the Director approves the Restart Plan, Amoco may return the
+   Isolated Segment to service but the operating pressure must not exceed eighty percent
+   (80%) of the actual operating pressure in effect immediately prior to the Failure on July
+   29, 2026 in accordance with Item 2 above.
+5. Removal of Pressure Restriction. The Director may allow the removal or modification
+   of the pressure restriction upon a written request from Amoco demonstrating that restoring
+   the pipeline to its pre-failure operating pressure is justified based on a reliable engineering
+   analysis showing that the pressure increase is safe considering all known defects,
+   anomalies, and operating parameters of the pipeline.
+6. Temporary Modification of Pressure Restrictions. The Director may allow the
+   temporary removal or modification of the pressure restrictions upon a written request from
+   Amoco demonstrating that temporary mitigative and preventive measures are implemented
+   prior to and during the temporary removal or modification of the pressure restriction. The
+   Director's determination will be based on the Failure cause and provision of evidence that
+   preventative and mitigative actions taken by the operator provide for the safe operation of
+   the Affected Segment during the temporary removal or modification of the pressure
+   restriction. Appeals to determinations of the Director in this regard will be decided by the
+   Associate Administrator for Pipeline Safety.
+7. Mechanical and Metallurgical Testing. Within 45 days of receipt of this Order, Amoco
+   must complete mechanical and metallurgical testing and failure analysis of the failed pipe,
+   including an analysis of soil samples and any foreign materials, and submit the results to
+   the Director for review. Amoco must submit the completed final report of this testing and
+   analysis to the Director for review and approval. Amoco must ensure that all reports,
+   whether draft or final, are made available in their entirety to the Director at the same time
+   they are made available to Amoco. Soil analysis and mechanical and metallurgical testing
+   must be conducted by an independent third-party approved by the Director prior to
+   commencing testing and must document the decision-making process and all factors
+   contributing to the failure. Respondent must complete the testing and analysis as follows:
+       a. Document the chain-of-custody when handling and transporting the failed pipe
+          section and other evidence from the Failure site.
+                                                                                               6
+
+
+       b. Within 10 days of receipt of this Order, develop and submit the testing protocol and
+          the proposed testing laboratory to the Director for prior approval.
+       c. Prior to beginning the soil analysis and mechanical and metallurgical testing,
+          provide the Director with the scheduled date, time, and location of the testing to
+          allow for an OPS representative to witness the testing.
+       d. Ensure the testing laboratory distributes all reports whether draft or final in their
+          entirety to the Director at the same time they are made available to Amoco.
+8. Root Cause Failure Analysis. Within 90 days following receipt of this Order, Amoco
+   must complete a root cause failure analysis (RCFA) and submit a final report of this RCFA
+   to the Director for review and approval. No later than 30 days following receipt of this
+   Order, Amoco must provide the scope and protocol of the RCFA to the Director for review
+   and approval. The RCFA must be conducted by an independent third-party, different from
+   the independent third-party performing the mechanical and metallurgical testing required
+   in paragraph 7 above, approved by the Director prior to commencing the analysis, and must
+   document the decision-making process and all factors contributing to the failure. Amoco
+   must direct the third-party to engage in once-a-week calls with PHMSA to provide updates
+   as to the progress of the RCFA. These calls shall be done virtually and continue until the
+   RCFA has been submitted to the Director. Amoco must ensure that all reports, whether
+   draft or final, are made available in their entirety to the Director at the same time they are
+   made available to Amoco. The final report must include findings, and any lessons learned
+   and whether the findings and any lessons learned are applicable to other locations within
+   Amoco’s pipeline system.
+9. Records Verification. As recommended in PHMSA Advisory Bulletin 2012-06, Amoco
+   must verify the records for the Affected Segment to confirm the maximum operating
+   pressure. Amoco must submit documentation of this record verification to the Director
+   within 15 days of receipt of this Order.
+10. Remedial Work Plan (RWP).
+       a. Within 60 days of approval of the RCFA required above, Amoco must submit a
+          Remedial Work Plan (RWP) to the Director for approval.
+       b. The Director may approve the RWP incrementally without approving the entire
+          RWP.
+       c. Once approved by the Director, the RWP will be incorporated by reference into this
+          Order.
+       d. The RWP must specify the tests, inspections, assessments, evaluations, and
+          remedial measures Amoco will use to verify the integrity of the Affected Segment.
+          It must address all known or suspected factors and causes of the Failure. Amoco
+          should consider both the risk of another failure and the consequence of another
+          failure to develop a prioritized schedule for RWP related work along the Affected
+          Segment.
+       e. The RWP must include a procedure or process to:
+                i. Identify pipe in the Affected Segment with characteristics similar to the
+                   contributing factors identified for the Failure.
+                                                                                   7
+
+
+ii. Gather all data necessary to review the failure history (in service and
+    pressure test failures) of the Affected Segment and to prepare a written
+    report containing all the available information such as the locations, dates,
+    and causes of leaks and failures.
+iii. Integrate the results of the metallurgical testing, root cause failure analysis,
+     and other corrective actions required by this Order with all relevant pre-
+     existing operational and assessment data for the Affected Segment. Pre-
+     existing operational data includes, but is not limited to, construction,
+     operations, maintenance, testing, repairs, prior metallurgical analyses, and
+     any third-party consultation information. Pre-existing assessment data
+     includes, but is not limited to, ILI tool runs, hydrostatic pressure testing,
+     direct assessments, close interval surveys, and DCVG/ACVG surveys.
+iv. Determine if conditions similar to those contributing to the Failure are likely
+    to exist elsewhere on the Affected Segment. Conduct additional field tests,
+    inspections, assessments, and/or evaluations to determine whether, and to
+    what extent, the conditions associated with the Failure and other failures
+    from the failure history (see (e)(ii) above) or any other integrity threats are
+    present elsewhere on the Affected Segment. At a minimum, this process
+    must consider all failure causes and specify the use of one or more of the
+    following:
+        1) Inline inspection (ILI) tools that are technically appropriate for
+           assessing the pipeline system based on the cause of the Failure and
+           that can reliably detect and identify anomalies,
+        2) Hydrostatic pressure testing,
+        3) Corrosion control methods including cathodic protection and
+           coating evaluations, close-interval surveys, evaluation of stray
+           current, and stress corrosion cracking and selective seam corrosion
+           surveys, if applicable,
+        4) Other tests, inspections, assessments, and evaluations appropriate
+           for the Failure causes.
+        Note: Amoco may use the results of previous tests, inspections,
+        assessments, and evaluations if approved by the Director, provided the
+        results of the tests, inspections, assessments, and evaluations are
+        analyzed with regard to the factors known or suspected to have caused
+        the Failure.
+v. Describe the inspection and repair criteria Amoco will use to prioritize,
+   excavate, evaluate, and repair anomalies, imperfections, and other identified
+   integrity threats, including those related to processes applied per (e)(iv)
+   above. Include a description of how any defects will be graded and a
+   schedule for repairs or replacement.
+vi. Based on the known history and condition of the Affected Segment,
+    describe the methods Amoco will use to repair, replace, or take other
+    corrective measures to remediate the conditions associated with the Failure
+                                                                                               8
+
+
+                   and to address other known integrity threats along the Affected Segment.
+                   The repair, replacement, or other corrective measures must meet the criteria
+                   specified in (e)(v) above.
+              vii. Incorporate findings and lessons learned in response to the Failure in all
+                   related programs and procedures to ensure the ongoing safe operation of the
+                   Affected Segment considering the results of the analyses, inspections, and
+                   evaluations resulting from actions taken in response to this Order.
+       f. Include a proposed schedule for completion of the RWP.
+       g. Amoco must revise the RWP as necessary to incorporate new information obtained
+          during the failure investigation and remedial activities, to incorporate the results of
+          actions undertaken pursuant to this Order, and to incorporate modifications
+          required by the Director. Amoco must submit any plan revisions to the Director for
+          prior approval. The Director may approve plan revisions incrementally. Any and
+          all revisions to the RWP after it has been approved and incorporated by reference
+          into this Order will be fully described and documented in the CAO Documentation
+          Report (CDR).
+       h. Amoco must implement the RWP as it is approved by the Director, including any
+          revisions to the plan.
+11. CAO Documentation Report (CDR). Amoco must create and revise, as necessary, a CAO
+    Documentation Report (CDR). When Amoco has concluded all the items in this Order it
+    will submit the final CDR in its entirety to the Director. This will allow the Director to
+    complete a thorough review of all actions taken by Amoco with regards to this Order prior
+    to approving the closure of this Order. The intent is for the CDR to summarize all activities
+    and documentation associated with this Order in one document.
+       a. The Director may approve the CDR incrementally without approving the entire
+          CDR.
+       b. Once approved by the Director, the CDR will be incorporated by reference into this
+          Order.
+       c. The CDR must include but not be limited to:
+                i. Table of Contents;
+               ii. Summary of the pipeline Failure, and the response activities;
+              iii. Summary of pipe data and properties and all prior assessments of the
+                   Affected Segment;
+              iv. Summary of all tests, inspections, assessments, evaluations, and analysis
+                  required by the Order;
+               v. Summary of the Mechanical and Metallurgical Testing as required by the
+                  Order;
+              vi. Summary of the RCFA with all root causes as required by the Order;
+              vii. Documentation of all actions taken by Amoco to implement the RWP, the
+                   results of those actions, and the inspection and repair criteria used;
+                                                                                                   9
+
+
+                viii. Documentation of any revisions to the RWP including those necessary to
+                      incorporate the results of actions undertaken pursuant to this Order and
+                      whenever necessary to incorporate new information obtained during the
+                      failure investigation and remedial activities;
+                  ix. Lessons learned while completing this Order;
+                  x. A path forward describing specific actions Amoco will take on its entire
+                     pipeline system as a result of the lessons learned from work on this Order;
+                     and
+                  xi. Appendices (if required).
+   12. Reporting. Amoco must submit quarterly reports to the Director that: (1) include all
+       available data and results of the testing and evaluations required by this Order; and (2)
+       describe the progress of the repairs or other remedial actions being undertaken. The first
+       quarterly report is due on November 1, 2026, covering the period through the date the first
+       quarterly report is submitted. The Director may change the interval for the submission of
+       these reports.
+   13. Documentation of the Costs. It is requested that Respondent maintain documentation of
+       the costs associated with implementation of this CAO. Include in each quarterly report
+       submitted the to-date total costs associated with: (1) preparation and revision of procedures,
+       studies, and analyses; (2) physical changes to pipeline infrastructure, including repairs,
+       replacements, and other modifications; and (3) environmental remediation, if applicable.
+
+   Administrative Actions
+
+   14. Approvals. With respect to each submission under this Order that requires the approval of
+       the Director, the Director may: (a) approve, in whole or part, the submission; (b) approve
+       the submission on specified conditions; (c) modify the submission to cure any deficiencies;
+       (d) disapprove in whole or in part, the submission, directing that Respondent modify the
+       submission, or (e) any combination of the above. In the event of approval, approval upon
+       conditions, or modification by the Director, Respondent shall proceed to take all action
+       required by the submission as approved or modified by the Director. If the Director
+       disapproves all or any portion of the submission, Respondent must correct all deficiencies
+       within the time specified by the Director and resubmit it for approval.
+   15. Extensions of Time. The Director may grant an extension of time for compliance with any
+       of the terms of this Order upon a written request timely submitted demonstrating good
+       cause for an extension.
+
+Be advised that all material submitted in response to this enforcement action is subject to being
+made publicly available. If you believe that any portion of your responsive material qualifies for
+confidential treatment under 5 U.S.C. § 552(b), along with the complete original document you
+must provide a second copy of the document with the portions you believe qualify for confidential
+treatment redacted and an explanation of why you believe the redacted information qualifies for
+confidential treatment under 5 U.S.C. § 552(b).
+                                                                                                 10
+
+
+In your correspondence on this matter, please refer to “CPF No. 3-2026-023-CAO” and for each
+document you submit, please provide a copy in electronic format whenever possible. The actions
+required by this Order are in addition to and do not waive any requirements that apply to
+Respondent’s pipeline system under 49 CFR Parts 190 through 199, under any other order issued
+to Respondent under authority of 49 U.S.C. Chapter 601, or under any other provision of federal
+or state law.
+
+Respondent may appeal any decision of the Director to the Associate Administrator for Pipeline
+Safety. Decisions of the Associate Administrator shall be final.
+
+Failure to comply with this Order may result in the assessment of civil penalties and in referral to
+the Attorney General for appropriate relief in United States District Court pursuant to 49 U.S.C.
+§ 60120.
+
+The terms and conditions of this Order are effective upon service in accordance with 49 CFR
+§ 190.5.
+
+
+
+__________________________                           _______________________
+Keith Coyle                                          Date Issued
+Chief Counsel
+Pipeline and Hazardous Materials
+  Safety Administration
+

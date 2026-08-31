@@ -1,0 +1,282 @@
+U.S. Department                                                        1200 New Jersey Avenue, S.E.
+of Transportation                                                       Washington, D.C. 20590
+Pipeline and Hazardous
+Materials Safety
+Administration
+                                        April 01, 2026
+
+VIA EMAIL TO: lane.riggs@valero.com
+
+Lane Riggs
+President & CEO
+Valero Partners Operating Co., LLC
+One Valero Way
+San Antonio, TX 78249
+
+Re: CPF No. 4-2026-004-NOPV
+
+Dear Mr. Riggs:
+
+Enclosed please find the Final Order issued in the above-referenced case. It makes a finding of
+violation and specifies actions that need to be taken to comply with the pipeline safety
+regulations. When the terms of the compliance order are completed, as determined by the
+Director, Southwest Region, this enforcement action will be closed. Service of the Final Order
+by e-mail is effective upon the date of transmission and acknowledgement of receipt as provided
+under 49 CFR § 190.5.
+
+Thank you for your cooperation in this matter.
+
+                                            Sincerely,
+                                                           Digitally signed by LINDA
+                                            LINDA GAIL GAIL DAUGHERTY
+                                            DAUGHERTY Date:  2026.03.31
+                                                       16:38:05 -04'00'
+                                            Linda Daugherty
+                                            Acting Associate Administrator
+                                              for Pipeline Safety
+
+Enclosures (Final Order and NOPV)
+
+cc:    Bryan Lethcoe, Director, Southwest Region, Office of Pipeline Safety, PHMSA
+       Fred Hampton, Vice President, Valero Partners Operating Co., LLC,
+       fred.hampton@valero.com
+       Carlos Gauna, Director Pipeline and Facility Integrity, Valero Partners Operating Co.,
+       LLC, carlos.gauna@valero.com
+       Darin Banther, Manager Regulatory Compliance, Valero Partners Operating Co., LLC,
+       darin.banther@valero.com
+
+CONFIRMATION OF RECEIPT REQUESTED
+                                                                                                  2
+
+
+                 U.S. DEPARTMENT OF TRANSPORTATION
+      PIPELINE AND HAZARDOUS MATERIALS SAFETY ADMINISTRATION
+                       OFFICE OF PIPELINE SAFETY
+                         WASHINGTON, D.C. 20590
+
+
+____________________________________
+                                    )
+In the Matter of                     )
+                                    )
+Valero Terminaling and Distribution )
+Company, a subsidiary of Valero      )                        CPF No. 4-2026-004-NOPV
+Partners Operating Co., LLC,         )
+                                    )
+Respondent.                          )
+____________________________________)
+
+
+                                         FINAL ORDER
+
+On February 11, 2026, pursuant to 49 CFR § 190.207, the Director, Southwest Region, Office of
+Pipeline Safety (OPS), issued a Notice of Probable Violation (Notice) to Valero Partners
+Operation Co., LLC, and Valero Terminaling and Distribution Company (Respondent). The
+Notice proposed finding that Respondent had violated the pipeline safety regulations in
+49 CFR Part 195. The Notice also proposed certain measures to correct the violation.
+Respondent did not contest the allegation of violation or corrective measures.
+
+Based upon a review of all of the evidence, pursuant to VHFWLRQ 190.213, I find Respondent
+violated the pipeline safety regulation listed below, as more fully described in the enclosed
+Notice, which is incorporated by reference:
+
+       49 CFR § 195.428(a) (Item 1) ņ5HVSRQGHQWIDLOHGWR properly inspect and test
+       the thermal relief devices on Tanks 813 and 816 at its West Memphis facility.
+
+This finding of violation will be considered a prior offense in any subsequent enforcement action
+taken against Respondent.
+
+                                      Compliance Actions
+
+Pursuant to 49 U.S.C. § 60118(b) and 49 CFR § 190.217, Respondent is ordered to take the
+actions proposed in the enclosed Notice to correct the violation. The Director may grant an
+extension of time to comply with any of the required items upon a written request timely
+submitted by the Respondent and demonstrating good cause for an extension. Upon completion
+of the ordered actions, Respondent may request that the Director close the case. Respondent
+previously submitted evidence to show appropriate actions have been taken to correct the
+violation. This evidence is currently under review by the Director. Failure to comply with this
+                                                                                                 3
+
+
+Order may result in the assessment of civil penalties under 49 CFR § 190.223 or in referral to the
+Attorney General for appropriate relief in a district court of the United States.
+
+The terms and conditions of this order are effective upon service in accordance with
+49 CFR § 190.5.
+
+
+LINDA GAIL           Digitally signed by LINDA GAIL
+
+DAUGHERTY
+                     DAUGHERTY
+___________________________________
+                     Date: 2026.03.31 16:38:55 -04'00'
+                                                         March 31, 2026
+                                                         _________________________
+Linda Daugherty                                               Date Issued
+Acting Associate Administrator
+ for Pipeline Safety
+U.S. Department of Transportation
+Pipeline and Hazardous Materials
+Safety Administration                                                       8701 S. Gessner, Suite 630
+                                                                            Houston TX 77074
+
+
+
+                        NOTICE OF PROBABLE VIOLATION
+                                     and
+                        PROPOSED COMPLIANCE ORDER
+VIA ELECTRONIC MAIL TO: fred.hampton@valero.com
+
+February 11, 2026
+
+Fred E. Hampton
+Vice President, Pipeline & Terminals
+Valero Terminaling and Distribution Company
+One Valero Way,
+San Antonio, TX 78249
+                                                                    CPF 4-2026-004-NOPV
+
+Dear Mr. Hampton:
+
+From February 24 through June 30, 2025, a representative of the Pipeline and Hazardous Materials
+Safety Administration (PHMSA), Office of Pipeline Safety (OPS), pursuant to Chapter 601 of 49
+United States Code (U.S.C.) inspected the procedures and facilities of Valero Partners Operating
+Co. LLC and Valero Terminaling and Distribution Company (Valero) in Arkansas, Mississippi,
+San Antonio, Texas and Memphis, Tennessee.
+
+As a result of the inspection, it is alleged that Valero has committed a probable violation of the
+Pipeline Safety Regulations, Title 49, Code of Federal Regulations (CFR). The item inspected and
+the probable violation is:
+
+1.     § 195.428 Overpressure safety devices and overfill protection systems.
+           (a) Except as provided in paragraph (b) of this section, each
+       operator shall, at intervals not exceeding 15 months, but at least once
+       each calendar year, or in the case of pipelines used to carry highly
+       volatile liquids, at intervals not to exceed 7½ months, but at least twice
+       each calendar year, inspect and test each pressure limiting device, relief
+       valve, pressure regulator, or other item of pressure control equipment
+       to determine that it is functioning properly, is in good mechanical
+       condition, and is adequate from the standpoint of capacity and
+       reliability of operation for the service in which it is used.
+Valero failed to, at intervals not exceeding 15 months, but at least once each calendar year, inspect
+and test each pressure limiting device, relief valve, pressure regulator, or other item of pressure
+control equipment to determine that it is functioning properly, is in good mechanical condition,
+and is adequate from the standpoint of capacity and reliability of operation for the service in which
+it is used in accordance with § 195.428(a). Specifically, Valero has failed to properly inspect and
+test the thermal relief devices on Tanks 813 and 816 at its West Memphis facility since 2022.
+
+Relief Valve Inspection Reports from Nov. 29, 2022 and Nov. 27, 2023 show the thermal relief
+devices on Tanks 813 and 816 as set to 150 psig. On Nov. 29, 2022 the valves were tested at 81
+and 91 psig, respectively. On Nov. 27, 2023 the valves were tested to 95 and 90 psig, respectively.
+The differentials between the set points and testing points indicate that the valves were not properly
+tested.
+
+A separate inspection report from Nov. 30, 2023 lists the setting for the thermal relief device on
+Tank 813 as 60 psig and states that it was tested to 80 psig. On Nov. 11, 2024, the device was
+listed as set to 60 psig and was tested to 70 psig. Similarly, an inspection report from Nov. 11,
+2024 lists the setting for the thermal relief device on Tank 816 as 55 psig and states that it was
+tested to 83 psig. Changes to the set point were not documented by any management of change
+record, the test points differ from the settings considerably, and there are no records indicating
+why either device was tested to a higher psig than its setting.
+
+Testing substantially below the established set pressure does not verify that the valve will open at
+its required activation pressure and therefore fails to confirm proper overpressure protection.
+Conversely, if a valve were to open above its set point, it could allow the tank to exceed its
+maximum allowable working pressure before relieving. In either case, a significant differential
+between the set pressure and the actual lift (test) pressure is problematic because it demonstrates
+that the valve’s performance is not aligned with its design set point, undermining confidence that
+the tank is adequately protected against overpressure conditions.
+
+Therefore, Valero failed to, at intervals not exceeding 15 months, but at least once each calendar
+year, inspect and test each pressure limiting device, relief valve, pressure regulator, or other item
+of pressure control equipment to determine that it is functioning properly, is in good mechanical
+condition, and is adequate from the standpoint of capacity and reliability of operation for the
+service in which it is used in accordance with § 195.428(a).
+
+Proposed Compliance Order
+
+With respect to Item 1, pursuant to 49 U.S.C. § 60118, the Pipeline and Hazardous Materials Safety
+Administration proposes to issue a Compliance Order to Valero. Please refer to the Proposed
+Compliance Order, which is enclosed and made a part of this Notice.
+
+
+
+
+                                                  2
+Response to this Notice
+
+Enclosed as part of this Notice is a document entitled Response Options for Pipeline Operators in
+Enforcement Proceedings. Please refer to this document and note the response options. All
+material you submit in response to this enforcement action may be made publicly available. If you
+believe that any portion of your responsive material qualifies for confidential treatment under 5
+U.S.C. §552(b), along with the complete original document you must provide a second copy of
+the document with the portions you believe qualify for confidential treatment redacted and an
+explanation of why you believe the redacted information qualifies for confidential treatment under
+5 U.S.C. § 552(b).
+
+Following your receipt of this Notice, you have 30 days to respond as described in the enclosed
+Response Options. If you do not respond within 30 days of receipt of this Notice, this constitutes
+a waiver of your right to contest the allegations in this Notice and authorizes the Associate
+Administrator for Pipeline Safety to find facts as alleged in this Notice without further notice to
+you and to issue a Final Order. If you are responding to this Notice, we propose that you submit
+your correspondence to my office within 30 days from receipt of this Notice. The Region Director
+may extend the period for responding upon a written request timely submitted demonstrating good
+cause for an extension.
+
+In your correspondence on this matter, please refer to CPF 4-2026-004-NOPV and, for each
+document you submit, please provide a copy in electronic format whenever possible.
+
+Sincerely,
+BRYAN JEFFERY                Digitally signed by BRYAN
+                             JEFFERY LETHCOE
+LETHCOE                      Date: 2026.02.11 15:02:14 -06'00'
+Bryan Lethcoe
+Director, Southwest Region, Office of Pipeline Safety
+Pipeline and Hazardous Materials Safety Administration
+
+
+Enclosures: Proposed Compliance Order
+            Response Options for Pipeline Operators in Enforcement Proceedings
+
+
+cc:    Darin Banther, Manager Regulatory Compliance, Valero Terminaling and Distribution
+       Company, darin.banther@valero.com
+
+
+
+
+                                                   3
+                        PROPOSED COMPLIANCE ORDER
+
+Pursuant to 49 United States Code § 60118, the Pipeline and Hazardous Materials Safety
+Administration (PHMSA) proposes to issue to Valero Partners Operating Company (Valero) a
+Compliance Order incorporating the following remedial requirements to ensure the compliance of
+Valero Partners with the pipeline safety regulations:
+
+       A.     In regard to Item 1 of the Notice pertaining to Valero’s failure to properly inspect
+              and test the thermal relief devices on Tanks 813 and 816, Valero Partners must
+              perform the following:
+              a. Review the set points for the thermal relief devices on Tanks 813 and 816 and
+                  ensure they are correctly calibrated within 30 days of receipt of the Final Order.
+              b. Review thermal relief device settings and required testing points with personnel
+                  at its West Memphis and ensure that personnel have access to required records
+                  showing the set points within 30 days of receipt of the Final Order.
+              c. Review the personnel qualifications for personnel performing inspections of the
+                  thermal relief devices at its West Memphis facility and determine if they require
+                  retraining within 30 days of receipt of the Final Order.
+
+       D.     It is requested (not mandated) that Valero maintain documentation of the safety
+              improvement costs associated with fulfilling this Compliance Order and submit the
+              total to Bryan Lethcoe, Director, Southwest Region, Office of Pipeline Safety,
+              Pipeline and Hazardous Materials Safety Administration. It is requested that these
+              costs be reported in two categories: 1) total cost associated with
+              preparation/revision of plans, procedures, studies and analyses, and 2) total cost
+              associated with replacements, additions and other changes to pipeline
+              infrastructure.
+
+
+
+
+                                                4
+

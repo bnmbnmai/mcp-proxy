@@ -1,0 +1,508 @@
+@
+250
+U.S. Department
+of Transportation
+Plpellne and                                                     1200 New Jersey Avenue, S.E.
+Hazardous Materials                                              Washington, D.C. 20590
+Safety Administration
+
+
+
+                                        May 1, 2026
+
+VIA EMAIL TO: scott.hallam@bwpipelines.com
+
+Scott Hallam
+President and CEO
+Gulf South Pipeline Company, LLC
+9 Greenway Plaza, Suite 2800
+Houston, Texas 77046
+
+                                                                  CPF 3-2026-020-CAO
+
+Dear Mr. Hallam:
+
+Enclosed please find a Corrective Action Order (“CAO” or “Order”) issued by the Pipeline and
+Hazardous Materials Safety Administration (PHMSA), Office of Pipeline Safety (OPS). The CAO
+requires Gulf South Pipeline Company, LLC (Gulf South) to take certain corrective actions with
+respect to the pipeline failure that occurred on May 14, 2026, on a 20-inch diameter interstate
+natural gas transmission line near Choudrant, Louisiana.
+
+Service of the CAO by email is effective upon the date of transmission and acknowledgment of
+receipt as provided under 49 CFR § 190.5. The terms and conditions of this Order are effective
+upon completion of service.
+
+                                           Sincerely,
+                                            LINDA GAIL Digitally signed by LINDA
+                                                       GAIL DAUGHERTY
+
+                                            DAUGHERTY Date:  2026.05.16 20:15:07
+                                                       -04'00'
+                                           Linda Daugherty
+                                           Associate Administrator
+                                           Pipeline and Hazardous Materials Safety
+                                             Administration
+Enclosure:    CAO
+
+cc:    AJ McKean, Central Region Director, Office of Pipeline Safety, PHMSA
+       Tim Brown, Manager of Compliance and Assurance, Boardwalk Pipelines,
+         tim.brown@bwpipelines.com
+       Michael Preuit, Manager of Integrity, Boardwalk Pipelines,
+         micheal.preuit@bwpipelines.com
+                                                                                                 1
+
+
+
+
+                   DEPARTMENT OF TRANSPORTATION
+      PIPELINE AND HAZARDOUS MATERIALS SAFETY ADMINISTRATION
+                      OFFICE OF PIPELINE SAFETY
+                       WASHINGTON, D.C. 20590
+
+
+____________________________________
+                                    )
+In the Matter of                    )
+                                    )
+Gulf South Pipeline Company, LLC,   )                       CPF No. 3-2026-020-CAO
+                                    )
+Respondent                          )
+____________________________________)
+
+
+                              CORRECTIVE ACTION ORDER
+
+
+Background and Purpose
+
+The Pipeline and Hazardous Materials Safety Administration (PHMSA), Office of Pipeline Safety
+(OPS), is issuing this Corrective Action Order (CAO or Order) pursuant to the authority provided
+in 49 U.S.C. § 60112. The CAO requires Gulf South Pipeline Company, LLC (Gulf South or
+Respondent), a subsidiary of Boardwalk Pipelines, to take certain necessary corrective actions to
+protect the public, property, and the environment from the potential hazards associated with the
+continued operation of its interstate 266 loop line. The 266 loop line is a 1949 vintage, 20-inch
+diameter interstate natural gas transmission line.
+
+On May 14, 2026, the 266 loop line ruptured near Choudrant, Louisiana (Failure). The Failure
+resulted in the release of natural gas. Gulf South responded by closing main line block valves and
+taking approximately 17 miles of pipe out of service. PHMSA inspectors dispatched to the scene
+of the Failure and observed the excavation and removal of the ruptured pipe. Visual inspection
+indicated that the rupture originated in the longitudinal seam.
+
+Pursuant to 49 U.S.C. § 60117, PHMSA has initiated an investigation of the Failure. The
+preliminary findings of PHMSA’s ongoing investigation are as follows:
+
+   භ The 266 loop line is a 20-inch diameter interstate gas transmission line installed prior to
+     the adoption of the Federal safety standards in 49 CFR Part 192.
+   භ The 266 loop line is constructed with pipe manufactured by Youngstown Steel in 1949
+     with a DC-ERW seam.
+   භ The 266 loop line received a pressure test in 1984 to 1082 psig.
+   භ The 266 loop line has a maximum allowable operating pressure (MAOP) of 828 psig.
+                                                                                                   2
+
+
+
+
+   භ Gulf South conducted in-line inspection of the 266 loop line using magnetic flux leakage
+     (MFL) tools in 2005, 2011, 2018, and 2025.
+   භ On May 14, 2026, at 10:27 PM, Gulf South supervisory control and data acquisition
+     (SCADA) system received a low-low pressure alarm.
+   භ The low-low pressure alarm indicated that the 266 loop line had ruptured near Choudrant,
+     Louisiana.
+   භ The operating pressure of the 266 loop line at the time of the rupture was 760 psig.
+   භ The portion of the 266 loop line that ruptured is in a Class 1 location.
+   භ The rupture resulted in the release of natural gas.
+   භ The rupture did not result in any injuries or fatalities.
+   භ Gulf South technicians closed the main line block valves on the 266 loop line after the
+     rupture, taking approximately 17 miles of pipe out of service.
+   භ On May 15, 2026, PHMSA inspectors arrived at the scene to witness the excavation and
+     removal of the ruptured pipe.
+   භ PHMSA inspectors observed that the rupture originated in the longitudinal seam of the
+     pipe.
+   භ Gulf South has sent the ruptured pipe to a third-party laboratory for metallurgical testing.
+   භ Gulf South is in the process of repairing the 266 loop line.
+
+Determination of Necessity for Corrective Action Order and Right to Hearing
+
+Section 60112 of title 49, United States Code, authorizes PHMSA to determine that a pipeline
+facility is or would be hazardous to life, property, or the environment and if there is a likelihood
+of serious harm, to expeditiously order the operator of the facility to take necessary corrective
+action, including suspended or restricted use of the facility, physical inspection, testing, repair,
+replacement, or other appropriate action. An order issued expeditiously must provide an
+opportunity for a hearing as soon as practicable after the order is issued.
+
+In deciding whether to issue an order, PHMSA must consider the following, if relevant: (1) the
+characteristics of the pipe and other equipment used in the pipeline facility, including the age,
+manufacture, physical properties, and method of manufacturing, constructing, or assembling the
+equipment; (2) the nature of the material the pipeline facility transports, the corrosive and
+deteriorative qualities of the material, the sequence in which the material is transported, and the
+pressure required for transporting the material; (3) the aspects of the area in which the pipeline
+facility is located, including climatic and geologic conditions and soil characteristics; (4) the
+proximity of the area in which the facility is located to environmentally sensitive areas; (5) the
+population density and population and growth patterns of the area in which the pipeline facility is
+located; (6) any recommendation of the National Transportation Safety Board made under another
+law; and (7) any other factors PHMSA may consider as appropriate.
+
+The preliminary findings of fact indicate that the 266 loop line is constructed with vintage pipe of
+a seam type that is known to be susceptible to potential integrity issues, i.e., DC-ERW pipe
+                                                                                                    3
+
+
+
+
+manufactured in 1949 by Youngtown Steel; that this vintage seam type pipe ruptured due to a
+longitudinal seam defect that Gulf South failed to detect and remediate following multiple MFL
+ILI tool runs; and that the rupture resulted in the release of natural gas, creating potential impacts
+to life, property and the environment. For these reasons, and considering the nature of the Failure,
+the possibility that the cause of the Failure may be present elsewhere on the 266 loop line, the
+hazardous nature of the material transported (natural gas), and the existing and potential impacts
+to life, property, and the environment, it is hereby determined that continued operation of the
+Affected Segment of the 266 loop line, as defined below, without corrective measures is or would
+be hazardous to life, property, or the environment, and that failure to issue this Order expeditiously
+would result in the likelihood of serious harm.
+
+Accordingly, this Order mandating immediate corrective action is issued expeditiously without
+prior notice and opportunity for a hearing. The terms and conditions of this Order are effective
+upon completion of service.
+
+Within 10 days of receipt of this Order, Respondent may request a hearing, to be held as soon as
+practicable, by notifying the Associate Administrator for Pipeline Safety in writing, with a copy
+to the Director, PHMSA, OPS Central Region. If a hearing is requested, it will be held in
+accordance with 49 CFR § 190.211.
+
+After receiving and analyzing additional data in the course of this investigation, PHMSA may
+identify other corrective measures that need to be taken. Gulf South will be notified of any
+additional measures required and, if appropriate, PHMSA will consider a further amended order.
+To the extent consistent with safety, Gulf South will be afforded notice and an opportunity for a
+hearing prior to the imposition of any additional corrective measures.
+
+
+
+
+Corrective Measures
+
+Definitions
+
+Affected Segment – The “Affected Segment” means the pipe and facilities from the upstream
+compressor station (Halls Summit) to the West Monroe Junction (end of line) where the Failure
+occurred.
+
+Director – The “Director” means the Director, PHMSA, OPS Central Region.
+
+Failure – The “Failure” means the rupture and resulting release of natural gas that occurred on
+the 266 loop line near Choudrant, Louisiana, on May 14, 2026.
+
+Isolated Segment – The “Isolated Segment” means the 17 miles of pipeline taken out of service
+following the Failure (station 2934+98 to station 3845+22) on Index 266-L.
+
+   1. Shut Down. Gulf South must not operate the Isolated Segment until authorized to do so by
+      the Director.
+                                                                                                4
+
+
+
+
+2. Operating Pressure Restriction. Gulf South must reduce and maintain a twenty percent
+   (20%) pressure reduction in the actual operating pressure along the entire length of the
+   Affected Segment such that the operating pressure along the Affected Segment will not
+   exceed eighty percent (80%) of the actual operating pressure in effect immediately prior to
+   the Failure.
+       a. This pressure restriction is to remain in effect until written approval to increase the
+          pressure or return the pipeline to its pre-failure operating pressure is obtained from
+          the Director.
+       b. Within 10 days of receipt of this Order, Gulf South must provide the Director the
+                                                     I
+          actual operating pressures of each pump/compressor station and each main line
+          pressure regulating station on the Affected Segment at the time of failure and the
+          reduced pressure restriction set-points at these same locations.
+       c. This pressure restriction requires any relevant remote or local alarm limits, software
+          programming set-points or control points, and mechanical over-pressure devices to
+          be adjusted accordingly.
+       d. When determining the pressure restriction set-points, Gulf South must take into
+          account any in-line inspection (ILI) features or anomalies present in the Affected
+          Segment to provide for continued safe operation while further corrective actions
+          are completed.
+       e. Gulf South must review the pressure restriction monthly by analyzing the operating
+          pressure data. Gulf South must take into account any in-line inspection (ILI)
+          features or anomalies present in the Affected Segment and immediately reduce the
+          operating pressure to maintain the safe operations of the Affected Segment, if
+          warranted by the monthly review. Gulf South must submit the results of the
+          monthly review to the Director. The results must include, at a minimum, the current
+          discharge set-points (including any additional pressure reductions), and any
+          pressure exceedance at discharge set-points.
+3. Restart Plan. Prior to resuming operation of the Isolated Segment, Gulf South must
+   develop and submit a written Restart Plan to the Director for prior approval.
+       a. The Director may approve the Restart Plan incrementally without approving the
+          entire plan, but the Isolated Segment cannot resume operation until the Restart Plan
+          is approved in its entirety.
+       b. Once approved by the Director, the Restart Plan will be incorporated by reference
+          into this Order.
+       c. The Restart Plan must provide for adequate patrolling of the Isolated Segment
+          during the restart process and must include incremental pressure increases during
+          start up, with each increment to be held for at least 2 hours.
+       d. The Restart Plan must specify a day-light restart and include advanced
+          communications with local emergency response officials.
+       e. The Restart Plan must provide for a review of the Isolated Segment for conditions
+          similar to those of the Failure including a review of construction, operating and
+          maintenance (O&M), and integrity management records such as in-line inspection
+                                                                                                 5
+
+
+
+
+           (ILI) results, hydrostatic tests, root cause failure analysis of prior failures, aerial
+           and ground patrols, corrosion, cathodic protection, excavations, and pipe
+           replacements. Gulf South must address any findings that require remedial measures
+           to be implemented prior to restart.
+       f. The Restart Plan must also include documentation of the completion of all
+          mandated actions, and a management of change plan to ensure that all procedural
+          modifications are incorporated into Gulf South’s operations and maintenance
+          procedures manual.
+4. Return to Service. After the Director approves the Restart Plan, Gulf South may return
+   the Isolated Segment to service but the operating pressure must not exceed eighty percent
+   (80%) of the actual operating pressure in effect immediately prior to the Failure on May
+   14, 2026, in accordance with Item 2 above.
+5. Removal of Pressure Restriction. The Director may allow the removal or modification
+   of the pressure restriction upon a written request from Gulf South demonstrating that
+   restoring the pipeline to its pre-failure operating pressure is justified based on a reliable
+   engineering analysis showing that the pressure increase is safe considering all known
+   defects, anomalies, and operating parameters of the pipeline.
+6. Temporary Modification of Pressure Restrictions. The Director may allow the
+   temporary removal or modification of the pressure restrictions upon a written request from
+   Gulf South demonstrating that temporary mitigative and preventive measures are
+   implemented prior to and during the temporary removal or modification of the pressure
+   restriction. The Director's determination will be based on the Failure cause and provision
+   of evidence that preventative and mitigative actions taken by the operator provide for the
+   safe operation of the Affected Segment during the temporary removal or modification of
+   the pressure restriction. Appeals to determinations of the Director in this regard will be
+   decided by the Associate Administrator for Pipeline Safety.
+7. Mechanical and Metallurgical Testing. Within 45 days of receipt of this Order, Gulf
+   South must complete mechanical and metallurgical testing and failure analysis of the failed
+   pipe, including an analysis of soil samples and any foreign materials. Gulf South must
+   submit the completed final report of this testing and analysis to the Director for review and
+   approval. Gulf South must ensure that all reports, whether draft or final, are made available
+   in their entirety to the Director at the same time they are made available to Gulf South.
+   Mechanical and metallurgical testing must be conducted by an independent third-party
+   approved by the Director prior to commencing testing and must document the decision-
+   making process and all factors contributing to the failure. Respondent must complete the
+   testing and analysis as follows:
+       a. Document the chain-of-custody when handling and transporting the failed pipe
+          section and other evidence from the Failure site.
+       b. Within 10 days of receipt of this Order, develop and submit the testing protocol and
+          the proposed testing laboratory to the Director for prior approval.
+       c. Prior to beginning the mechanical and metallurgical testing, provide the Director
+          with the scheduled date, time, and location of the testing to allow for an OPS
+          representative to witness the testing.
+                                                                                                  6
+
+
+
+
+       d. Ensure the testing laboratory distributes all reports whether draft or final in their
+          entirety to the Director at the same time they are made available to Gulf South.
+8. Root Cause Failure Analysis. Within 90 days following receipt of this Order, Gulf South
+   must complete a root cause failure analysis (RCFA) and submit a final report of this RCFA
+   to the Director for review and approval. No later than 30 days following receipt of this
+   Order, Gulf South must provide the scope and protocol of the RCFA to the Director for
+   review and approval. The RCFA must be conducted by an independent third-party
+   approved by the Director prior to commencing the analysis, and must document the
+   decision-making process and all factors contributing to the failure. Gulf South must direct
+   the third-party to engage in once-a-week calls with PHMSA to provide updates as to the
+   progress of the RCFA. These calls shall be done virtually and continue until the RCFA has
+   been submitted to the Director. Gulf South must ensure that all reports, whether draft or
+   final, are made available in their entirety to the Director at the same time they are made
+   available to Gulf South. The final report must include findings, and any lessons learned
+   and whether the findings and any lessons learned are applicable to other locations within
+   Gulf South’s pipeline system.
+9. Remedial Work Plan (RWP).
+       a. Within 60 days of approval of the RCFA required above, Gulf South must submit
+          a Remedial Work Plan (RWP) to the Director for approval.
+       b. The Director may approve the RWP incrementally without approving the entire
+          RWP.
+       c. Once approved by the Director, the RWP will be incorporated by reference into this
+          Order.
+       d. The RWP must specify the tests, inspections, assessments, evaluations, and
+          remedial measures Gulf South will use to verify the integrity of the Affected
+          Segment. It must address all known or suspected factors and causes of the Failure.
+          Guld South should consider both the risk of another failure and the consequence of
+          another failure to develop a prioritized schedule for RWP related work along the
+          Affected Segment.
+       e. The RWP must include a procedure or process to:
+               i. Identify pipe within Gulf South’s systems (OPID 31728) with
+                  characteristics similar to the contributing factors identified for the Failure.
+              ii. Gather all data necessary to review the failure history (in service and
+                  pressure test failures) of pipe within Gulf South’s systems (OPID 31728)
+                  and to prepare a written report containing all the available information such
+                  as the locations, dates, and causes of leaks and failures.
+              iii. Integrate the results of the metallurgical testing, root cause failure analysis,
+                   and other corrective actions required by this Order with all relevant pre-
+                   existing operational and assessment data for pipe within Gulf South’s
+                   systems (OPID 31728). Pre-existing operational data includes, but is not
+                   limited to, construction, operations, maintenance, testing, repairs, prior
+                   metallurgical analyses, and any third-party consultation information. Pre-
+                                                                                  7
+
+
+
+
+     existing assessment data includes, but is not limited to, ILI tool runs,
+     hydrostatic pressure testing, direct assessments, close interval surveys, and
+     DCVG/ACVG surveys.
+iv. Determine if conditions similar to those contributing to the Failure are likely
+    to exist elsewhere on pipe within Gulf South’s systems (OPID 31728).
+    Conduct additional field tests, inspections, assessments, and/or evaluations
+    to determine whether, and to what extent, the conditions associated with the
+    Failure and other failures from the failure history (see 9(e)(ii) above) or any
+    other integrity threats are present elsewhere on the pipe within Gulf South’s
+    systems (OPID 31728). At a minimum, this process must consider all failure
+    causes and specify the following:
+        1) Inline inspection (ILI) tools that are technically appropriate for
+           assessing the pipeline system based on the cause of the Failure and
+           that can reliably detect and identify anomalies,
+        2) Hydrostatic pressure testing,
+        3) Corrosion control methods including cathodic protection and
+           coating evaluations, close-interval surveys, evaluation of stray
+           current, and stress corrosion cracking and selective seam corrosion
+           surveys, if applicable,
+        4) Other tests, inspections, assessments, and evaluations appropriate
+           for the Failure causes.
+        Note: Gulf South may use the results of previous tests, inspections,
+        assessments, and evaluations if approved by the Director, provided the
+        results of the tests, inspections, assessments, and evaluations are
+        analyzed with regard to the factors known or suspected to have caused
+        the Failure.
+ v. Describe the inspection and repair criteria Gulf South will use to prioritize,
+    excavate, evaluate, and repair anomalies, imperfections, and other identified
+    integrity threats, including those related to processes applied per 9(e)(iv)
+    above. Include a description of how any defects will be graded and a
+    schedule for repairs or replacement.
+vi. Based on the known history and condition of the pipe within Gulf South’s
+    systems (OPID 31728), describe the methods Gulf South will use to repair,
+    replace, or take other corrective measures to remediate the conditions
+    associated with the Failure and to address other known integrity threats
+    along the pipe within Gulf South’s systems (OPID 31728). The repair,
+    replacement, or other corrective measures must meet the criteria specified
+    in 9(e)(v) above.
+vii. Incorporate findings and lessons learned in response to the Failure in all
+     related programs and procedures to ensure the ongoing safe operation of the
+     pipe within Gulf South’s systems (OPID 31728) considering the results of
+     the analyses, inspections, and evaluations resulting from actions taken in
+     response to this Order.
+                                                                                                  8
+
+
+
+
+       f. Include a proposed schedule for completion of the RWP.
+       g. Gulf South must revise the RWP as necessary to incorporate new information
+          obtained during the failure investigation and remedial activities, to incorporate the
+          results of actions undertaken pursuant to this Order, and to incorporate
+          modifications required by the Director. Gulf South must submit any plan revisions
+          to the Director for prior approval. The Director may approve plan revisions
+          incrementally. Any and all revisions to the RWP after it has been approved and
+          incorporated by reference into this Order will be fully described and documented
+          in the CAO Documentation Report (CDR).
+       h. Gulf South must implement the RWP as it is approved by the Director, including
+          any revisions to the plan.
+10. CAO Documentation Report (CDR). Gulf South must create and revise, as necessary, a
+    CAO Documentation Report (CDR). When Gulf South has concluded all the items in this
+    Order it will submit the final CDR in its entirety to the Director. This will allow the Director
+    to complete a thorough review of all actions taken by Gulf South with regards to this Order
+    prior to approving the closure of this Order. The intent is for the CDR to summarize all
+    activities and documentation associated with this Order in one document.
+       a. The Director may approve the CDR incrementally without approving the entire
+          CDR.
+       b. Once approved by the Director, the CDR will be incorporated by reference into this
+          Order.
+       c. The CDR must include but not be limited to:
+                i. Table of Contents;
+               ii. Summary of the pipeline Failure, and the response activities;
+               iii. Summary of pipe data and properties and all prior assessments of the
+                    Affected Segment;
+               iv. Summary of all tests, inspections, assessments, evaluations, and analysis
+                   required by the Order;
+               v. Summary of the Mechanical and Metallurgical Testing as required by the
+                  Order;
+               vi. Summary of the RCFA with all root causes as required by the Order;
+              vii. Documentation of all actions taken by Gulf South to implement the RWP,
+                   the results of those actions, and the inspection and repair criteria used;
+             viii. Documentation of any revisions to the RWP including those necessary to
+                   incorporate the results of actions undertaken pursuant to this Order and
+                   whenever necessary to incorporate new information obtained during the
+                   failure investigation and remedial activities;
+               ix. Lessons learned while completing this Order;
+                                                                                                    9
+
+
+
+
+                  x. A path forward describing specific actions Gulf South will take on its entire
+                     pipeline system as a result of the lessons learned from work on this Order;
+                     and
+                  xi. Appendices (if required).
+   11. Reporting. Gulf South must submit quarterly reports to the Director that: (1) include all
+       available data and results of the testing and evaluations required by this Order; and (2)
+       describe the progress of the repairs or other remedial actions being undertaken. The first
+       quarterly report is due on August 14, 2026, covering the period through the date the
+       quarterly report is submitted. The Director may change the interval for the submission of
+       these reports.
+   12. Documentation of the Costs. It is requested that Respondent maintain documentation of
+       the costs associated with implementation of this CAO. Include in each quarterly report
+       submitted the to-date total costs associated with: (1) preparation and revision of procedures,
+       studies, and analyses; (2) physical changes to pipeline infrastructure, including repairs,
+       replacements, and other modifications; and (3) environmental remediation, if applicable.
+
+   Administrative Actions
+
+   13. Approvals. With respect to each submission under this Order that requires the approval of
+       the Director, the Director may: (a) approve, in whole or part, the submission; (b) approve
+       the submission on specified conditions; (c) modify the submission to cure any deficiencies;
+       (d) disapprove in whole or in part, the submission, directing that Respondent modify the
+       submission, or (e) any combination of the above. In the event of approval, approval upon
+       conditions, or modification by the Director, Respondent shall proceed to take all action
+       required by the submission as approved or modified by the Director. If the Director
+       disapproves all or any portion of the submission, Respondent must correct all deficiencies
+       within the time specified by the Director and resubmit it for approval.
+   14. Extensions of Time. The Director may grant an extension of time for compliance with any
+       of the terms of this Order upon a written request timely submitted demonstrating good
+       cause for an extension.
+
+Be advised that all material submitted in response to this enforcement action is subject to being
+made publicly available. If you believe that any portion of your responsive material qualifies for
+confidential treatment under 5 U.S.C. § 552(b), along with the complete original document you
+must provide a second copy of the document with the portions you believe qualify for confidential
+treatment redacted and an explanation of why you believe the redacted information qualifies for
+confidential treatment under 5 U.S.C. § 552(b).
+
+In your correspondence on this matter, please refer to “CPF No. 3-2026-020-CAO” and for each
+document you submit, please provide a copy in electronic format whenever possible. The actions
+required by this Order are in addition to and do not waive any requirements that apply to
+Respondent’s pipeline system under 49 CFR Parts 190 through 199, under any other order issued
+to Respondent under authority of 49 U.S.C. Chapter 601, or under any other provision of federal
+or state law.
+                                                                                                  10
+
+
+
+
+Respondent may appeal any decision of the Director to the Associate Administrator for Pipeline
+Safety. Decisions of the Associate Administrator shall be final.
+
+Failure to comply with this Order may result in the assessment of civil penalties and in referral to
+the Attorney General for appropriate relief in United States District Court pursuant to 49 U.S.C. §
+60120.
+
+The terms and conditions of this Order are effective upon service in accordance with 49 CFR
+§ 190.5.
+
+                y Digitally signed by LINDA
+LINDA GAIL GAIL DAUGHERTY
+              Date: 2026.05.16
+DAUGHERTY 20:19:16 -04'00'
+__________________________
+                                                     May 16, 2026
+                                                     _____________________
+Linda Daugherty                                      Date Issued
+Acting Associate Administrator
+  for Pipeline Safety
+

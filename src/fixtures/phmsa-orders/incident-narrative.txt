@@ -1,0 +1,3 @@
+PHMSA 27nc-rsge incident NARRATIVE zip extract.
+This is the killed incident NARRATIVE dump. Not a PHMSA-authored NOPV,
+Final Order, or Corrective Action Order. Narrative of an incident report only.
