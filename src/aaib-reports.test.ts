@@ -209,7 +209,8 @@ async function main(): Promise<void> {
   assert.ok(!manBlob.includes("Immediately after takeoff"));
   assert.equal(manifest.priceUsdc, "0.05");
   assert.equal(manifest.license, LICENSE);
-  assert.match(String(manifest.attribution), /OGL v3\.0/);
+  assert.match(String(manifest.attribution), /Open Government Licence v3\.0/);
+  assert.equal(manifest.license, "OGL v3.0");
   assert.equal(AAIB_REPORTS_PATH, "/aaib-reports");
   assert.equal(AAIB_REPORTS_MANIFEST_PATH, "/aaib-reports/manifest.json");
 
