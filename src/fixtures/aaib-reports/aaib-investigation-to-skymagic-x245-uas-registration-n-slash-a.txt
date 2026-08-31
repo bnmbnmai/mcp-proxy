@@ -1,0 +1,55 @@
+AAIB Bulletin: 8/2026                   Skymagic X245                              AAIB-31623
+
+
+Accident
+
+Aircraft Type and Registration:             UAS Skymagic X245
+
+No & Type of Engines:                       4 x electrical brushless motors
+
+Year of Manufacture:                        2021
+
+Date & Time (UTC):                          23 March 2026 at 0247 hrs
+
+Location:                                   London Eye Pier, Greater London
+
+Type of Flight:                             Commercial Operations (UAS)
+
+Persons on Board:                           Crew - None            Passengers - None
+
+Injuries:                                   Crew - N/A             Passengers - N/A
+
+Nature of Damage:                           Multiple Unmanned Aircraft (UA) destroyed
+
+Commander’s Licence:                        Other
+
+Commander’s Age:                            30 years
+
+Commander’s Flying Experience:              48 hours (of which 25 were on type)
+                                            Last 90 days - 10 hours
+                                            Last 28 days - 4 hours
+
+Information Source:                         Aircraft Accident Report Form submitted by the
+                                            pilot
+
+
+During a night-time rehearsal of a UAS light display over the River Thames, several UAs
+within a swarm experienced degraded positional accuracy, while operating in close formation
+near the London Eye. Two UAs descended out of control early in the flight and, later in the
+sequence, five additional UAs collided during a programmed transition and fell into the river.
+No injuries were reported, and the UAs were not recovered.
+
+The operator determined that several UAs had reverted to a lower-accuracy positioning
+mode during the flight, resulting in positional drift within the swarm. Post-flight examination
+indicated that the Real-Time Kinematic (RTK) base station antenna used to enhance UA
+position sensing may have been partially obscured.
+
+The operator reported that the RTK antenna height had subsequently been increased with
+additional checks introduced to ensure an unobstructed signal and a stable RTK fix prior to
+flight.
+
+
+
+
+© Crown copyright 2026                        46                                    All times are UTC
+

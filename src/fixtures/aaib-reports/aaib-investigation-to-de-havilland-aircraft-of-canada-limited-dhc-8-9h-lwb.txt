@@ -1,0 +1,140 @@
+AAIB Bulletin:                            9H-LWB                                 AAIB-29976
+
+
+Serious Incident
+
+Aircraft Type and Registration:            De Havilland Aircraft of Canada Limited DHC-8,
+                                           9H-LWB
+
+No & Type of Engines:                      2 Pratt & Whitney Canada PW150A turboprop
+                                           engines
+
+Year of Manufacture:                       2010 (Serial no: 4332)
+
+Date & Time (UTC):                         23 April 2024 at 1740 hrs
+
+Location:                                  Runway 27, Guernsey Airport
+
+Type of Flight:                            Commercial Air transport (Passenger)
+
+Persons on Board:                          Crew - 5              Passengers - 63
+
+Injuries:                                  Crew - None           Passengers - None
+
+Nature of Damage:                          None
+
+Commander’s Licence:                       Airline Transport Pilot’s Licence
+
+Commander’s Age:                           56 years
+
+Commander’s Flying Experience:             8,472 hours (of which 241 were on type)
+                                           Last 90 days - 110 hours
+                                           Last 28 days - 45 hours
+
+Information Source:                        AAIB Field Investigation
+
+
+Synopsis
+
+On a flight returning to Guernsey from London Gatwick the Commander tried to execute a
+gentle touchdown, the aircraft floated and touched down about two-thirds down the runway
+length, it then overran the end of the runway at slow speed. There were no injuries to the
+passengers or crew and the aircraft was undamaged. The flight was being operated under
+a Wet Lease agreement and following the Serious Incident both the Lessee and the Lessor
+made changes to their safety management systems. Two safety actions were implemented
+after the event; one to enhance the Lessee’s initial understanding of how flights under Wet
+Lease contracts were being operated, and the other was the implementation by the Channel
+Islands Director of Civil Aviation of an Augmented Review of Foreign Carrier Permit (FCP)
+Applications for Wet Lease operations in the Channel Islands. One Safety Recommendation
+resulted from the investigation regarding the location of emergency checklists in the DHC-8
+Quick Reference Handbook.
+
+History of the flight
+
+The crew reported for duty at 1050 hrs UTC at Guernsey Airport to operate four sectors.
+They worked for a foreign charter airline which was flying under contract to a local airline.
+The crew comprised a commander, who was undertaking line training of the co-pilot, a
+first officer who had only recently joined the company. A further first officer occupied the
+jump seat acting as a safety pilot. In the cabin were the cabin manager and another member
+
+
+© Crown copyright 2026                       1                                     All times are UTC
+
+AAIB Bulletin:                              9H-LWB                                    AAIB-29976
+
+
+of cabin crew. A representative of the contracting operator was also onboard but was flying
+as a passenger, rather than as part of the crew.
+
+The first two sectors were to East Midlands Airport and return. The co-pilot was the handling
+pilot on the outbound flight with the commander flying the return leg. The commander
+reported that this was due to the short runway at Guernsey. Both flights went without
+incident.
+
+The aircraft then operated to Gatwick, with the co-pilot acting as handling pilot. After an
+uneventful flight, the aircraft took off for the return flight to Guernsey at 1709 hrs UTC. Again,
+the commander flew the return leg due, he stated, to the short runway at Guernsey. After
+a short cruise at FL180 the aircraft commenced a descent for an approach to Runway 27
+at Guernsey. After handover to Guernsey Approach ATC, the crew requested an extended
+route in order to lose sufficient height for the approach. In response, ATC gave the crew
+extended radar vectors before then clearing them for an ILS approach to Runway 27.
+
+The crew configured the aircraft for landing with Flaps 35 and a VREF of 118 kt. The
+commander reported he flew the approach at about 124 kt to take account of the small
+headwind and any inaccuracies in manually setting the power. He stated the aircraft was
+stable when it descended through 1,000 ft AAL, in accordance with the operator’s standard
+operating procedures. At about 250 ft radio altitude, with the runway clearly in sight, the
+commander disconnected the autopilot to manually fly the rest of the approach and landing.
+
+The commander stated he would normally aim to touchdown on Runway 27 at the touchdown
+markers abeam Taxiway B (Figure 1). He stated that on this occasion he flew across the
+runway threshold at about 50 ft, as intended, and then flared the aircraft to try and achieve
+gentle touchdown. This resulted in the aircraft floating down the runway for an extended
+period, compounded by the runway gently sloping away from the aircraft. The commander
+stated that a combination of the aircraft pitch and runway slope meant he was unaware
+of how far down the runway the aircraft had travelled. Both the co-pilot and safety pilot
+reported they had also not realised how far the aircraft had travelled and did not consider
+they needed to warn the commander or call for a go-around. When the aircraft did finally
+touch down, it was about two-thirds of the way down the runway.
+
+On touchdown the commander stated he applied ‘normal’ braking, being confident this
+would be sufficient. He did not routinely use reverse pitch unless he thought it necessary
+and did not do so for this landing. On passing the turnoff for Taxiway C, however, he
+realised the end of the runway was fast approaching and, although the aircraft was slowing,
+he judged it would not stop before the runway end. The commander stated he therefore
+applied ‘full’ brakes, but still without applying reverse pitch on the propellers as he still
+thought this unnecessary to stop the aircraft in time. He could hear the anti-skid working
+and the aircraft started to deviate to the right. He reported he used the steering tiller to steer
+the aircraft back towards the centreline and the aircraft then departed the end of the runway
+at low speed. The aircraft continued to the left and came to a halt about 30 m beyond the
+end of the runway.
+
+
+
+© Crown copyright 2026                          2                                      All times are UTC
+
+AAIB Bulletin:                            9H-LWB                                 AAIB-29976
+
+
+The commander kept the engines running and about 10 seconds later applied some power
+to attempt to taxi back to the runway. The aircraft however did not move, and ATC instructed
+the crew to remain in position. The airport fire services then arrived and contacted the crew
+using a discrete frequency. The commander was advised there were no signs of fire and
+was asked if he was able to taxi back to the runway. Despite the previous unsuccessful
+attempt to taxi off the grass, the commander asked ATC whether he would be able to move
+and was told to wait while enquiries were made. ATC then came back instructing the
+commander he should shut down the engines. In response, the commander shutdown the
+engines by selecting the propeller condition levers to the fuel shutoff position, but without
+further reference to either the normal or emergency shutdown checklists. The aircraft had
+by then been off the runway for just over six minutes.
+
+As the aircraft’s APU was unserviceable the aircraft was left on battery power only. A bus
+was then arranged to collect the passengers, but the only airport bus was unserviceable
+and a replacement had to be found in the local town. This arrived about 45 minutes later
+to transport the passengers back to the terminal. The aircraft was then towed to the apron.
+
+There were no injuries among either the passengers or crew.
+
+
+
+

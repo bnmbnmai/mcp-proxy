@@ -1,0 +1,140 @@
+AAIB Bulletin: 7/2026                       G-BWHU                                    AAIB-31680
+
+
+Accident
+
+Aircraft Type and Registration:              Westland Scout AH1, G-BWHU
+
+No & Type of Engines:                        1 Rolls-Royce Nimbus Mk 10501 turboshaft
+                                             engine
+
+Year of Manufacture:                         1964 (Serial no: F9517)
+
+Date & Time (UTC):                           24 April 2026 at 1225 hrs
+
+Location:                                    Turweston Aerodrome, Buckinghamshire
+
+Type of Flight:                              Training
+
+Persons on Board:                            Crew - 2                Passengers - None
+
+Injuries:                                    Crew - 2 (Minor)        Passengers - N/A
+
+Nature of Damage:                            Significant damage to skids, tail cone, tail rotor
+                                             transmission and tail rotor
+
+Commander’s Licence:                         Commercial Pilot’s Licence
+
+Commander’s Age:                             67 years
+
+Commander’s Flying Experience:               5,500 hours (of which 352 were on type)
+                                             Last 90 days - 79 hours
+                                             Last 28 days - 36 hours
+
+Information Source:                          Aircraft Accident Report Form submitted by the
+                                             pilot
+
+
+Synopsis
+
+The helicopter was lifting off having been refuelled at Turweston Aerodrome. As the pilot
+commenced a pedal turn to the left, the helicopter rapidly rotated to the right. The pilot took
+immediate action to counter the rotation but with no effect. The helicopter landed heavily
+and its main rotors struck the tail boom causing substantial damage to the tail rotor drive
+train. The exact cause of the loss of control could not be determined.
+
+History of the flight
+
+The helicopter was on a repositioning and revision flight with its owner and an instructor,
+conducting a Scout type rating course. The aircraft had landed at Turweston to refuel.
+There was an estimated 5 to 8 kt wind from 090° and the helicopter had been positioned 90°
+out of wind to enable ease of refuelling from the bowser. With refuelling complete, pre-flight
+checks were carried out and the instructor noted the position of another fixed wing aircraft in
+front and to the right of the helicopter. The instructor advised the pilot that a vertical takeoff
+would be appropriate and then to move sideways away from the parked aircraft observing
+the downwash during the manoeuvre.
+
+The pilot did as suggested, and gently lifted into the hover, and as planned, there was no
+observable effect on the parked aircraft. However, to further reduce perceived risk the
+instructor took control of the helicopter and slowly moved it to the left to then turn into wind.
+
+
+© Crown copyright 2026                         46                                      All times are UTC
+
+AAIB Bulletin: 7/2026                      G-BWHU                                   AAIB-31680
+
+
+The instructor then commenced a pedal turn to the left and as he did so, the helicopter
+suddenly rotated in the opposite direction to the right. The rate of rotation increased. He
+applied full left yaw which appeared to have no effect. Thinking there was a problem with
+the tail rotor he closed the throttle and as the helicopter settled, he raised the collective to
+cushion the landing.
+
+The helicopter landed heavily damaging the skids and causing the main rotors to droop
+whilst rotating and strike the tail boom (Figure 1). This resulted in significant disruption
+to the tail rotor drive system shafts and support bearings. The pilot and instructor were
+uninjured.
+
+
+
+
+                                           Figure 1
+                             G-BWHU immediately after landing
+
+
+Aircraft examination
+
+The aircraft was examined onsite and the extensive damage to the structure surrounding
+the tail rotor drive shafts and transmission system was indicative of the main rotor blades
+striking the tail boom. It was also found that the tail rotor blades had also contacted the
+ground sustaining damage during the landing, shock loading and further damaging the
+drive train. There was no evidence of pre-existent faults or malfunctions that could have
+contributed to this accident. Foreign object or an external control restriction was also
+considered but no evidence was found.
+
+
+
+
+© Crown copyright 2026                        47                                     All times are UTC
+
+AAIB Bulletin: 7/2026                            G-BWHU                              AAIB-31680
+
+
+
+
+                                                Figure 2
+                         Tail rotor drive system and fairing blade strike location
+
+
+Analysis
+
+The instructor and pilot of the aircraft were perplexed as to the cause of the accident as
+the takeoff had been benign in calm weather conditions with no obvious factors that could
+have led to a loss of control. To assist in their understanding of the accident, they presented
+the circumstances to a rotary wing test pilot and instructor with experience on a range
+of helicopters including the Westland Wasp and Scout. A summary of observations and
+analysis are as follows.
+
+
+© Crown copyright 2026                              48                                All times are UTC
+
+AAIB Bulletin: 7/2026                     G-BWHU                                 AAIB-31680
+
+
+In the absence of a technical malfunction and taking into consideration the relatively calm
+and unchallenging conditions at the time, along with the simplicity of the manoeuvre, an
+obvious cause was not clear. The vigorous yaw of the helicopter and its apparent failure
+to react to corrective inputs, seemed to suggest the characteristics of a loss of tail rotor
+effectiveness. However, in service experience with the Wasp and Scout helicopter does not
+show they were prone to this sort of occurrence.
+
+Further discussion between the pilot and another experienced Scout pilot suggested that
+slightly different but lesser known tail rotor effect, called tail rotor breakaway, may have
+been a contributory factor. Tail rotor breakaway was considered to be more akin to blade
+stall under certain combinations of light airflows.
+
+However, faced with the rapid yaw, the instructor took actions in accordance with the Scout
+emergency procedures in the Flight Reference Cards. He correctly closed the throttle to
+reduce torque and slow the yaw and then cushion the landing by raising the collective. The
+proximity to the ground left very little time to react and resulted in the unavoidable heavy
+landing.
