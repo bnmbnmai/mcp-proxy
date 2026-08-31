@@ -4,10 +4,13 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
+  AMS_LEFTOVER_REPORTS,
+  AMS_LEFTOVER_SLUGS,
   AMS_NATIONAL_REPORTS,
   SKIPPED_SOURCES,
   latestEsmisPdfUrl,
   mergeAmsNationalTicks,
+  mergePartialAmsSnapshot,
   officialPdfCandidateOrder,
   parseAmsReportText,
   parseReportDate,
@@ -428,6 +431,51 @@ assert.ok(
   ["3652", "2245", "2246", "1716", "1650", "2132", "1778", "2039", "2106", "1775"].every((s) => slugs.includes(s)),
   "official AMS hay-auction barns + PNW/mountain cattle auctions",
 );
+assert.deepEqual(
+  [...AMS_LEFTOVER_SLUGS],
+  ["2006", "1704", "1933", "2193", "2063", "2187", "2091", "2115", "1963", "1988", "1946", "1995", "1419", "1997"],
+);
+assert.equal(AMS_LEFTOVER_REPORTS.length, 14);
+assert.ok(
+  AMS_LEFTOVER_SLUGS.every((s) => slugs.includes(s)),
+  "leftover official SE weeklies + five SE barns fold into AMS_NATIONAL_REPORTS",
+);
+assert.ok(AMS_LEFTOVER_REPORTS.every((r) => r.group === "cattle" && r.esmisPublication === ""));
+assert.equal(AMS_LEFTOVER_REPORTS.filter((r) => r.kind === "se-weekly").length, 9);
+assert.equal(AMS_LEFTOVER_REPORTS.filter((r) => r.kind === "se-barn").length, 5);
+{
+  const prev = {
+    ok: true as const,
+    product: "idaho-hay-feeder-ticks" as const,
+    fetchedAt: "2026-08-30T13:51:52.772Z",
+    asOf: "2026-08-29",
+    tickCount: 2,
+    rows: [
+      { id: "cattle.ams_1778.montana_weekly.feeder-steer.ml1.550lb", group: "cattle" as const, commodity: "Steers", label: "keep", market: "MT", classGrade: "x", unit: "$/cwt", price: 1, asOf: "2026-08-22", source: "old", sourceUrl: "https://example.invalid/1778", reportDate: "2026-08-22", series: "keep" },
+      { id: "cattle.ams_2006.alabama_weekly.feeder-steer.ml1.550lb", group: "cattle" as const, commodity: "Steers", label: "stale leftover", market: "AL", classGrade: "x", unit: "$/cwt", price: 1, asOf: "2026-08-01", source: "old", sourceUrl: "https://example.invalid/2006", reportDate: "2026-08-01", series: "stale" },
+    ],
+    failed: [{ id: "ams_2006", source: "AMS_2006 old", sourceUrl: "https://example.invalid/2006", reason: "stale" }],
+    sources: ["AMS_1778 Montana Weekly Cattle Auction Summary", "AMS_2006 Alabama Weekly Cattle Auction Summary"],
+  };
+  const next = {
+    ok: true as const,
+    product: "idaho-hay-feeder-ticks" as const,
+    fetchedAt: "2026-08-31T01:00:00.000Z",
+    asOf: "2026-08-29",
+    tickCount: 1,
+    rows: [
+      { id: "cattle.ams_2006.alabama_weekly.feeder-steer.ml1.550lb", group: "cattle" as const, commodity: "Steers", label: "fresh leftover", market: "AL", classGrade: "x", unit: "$/cwt", price: 2, asOf: "2026-08-29", source: "new", sourceUrl: "https://example.invalid/2006", reportDate: "2026-08-29", series: "fresh" },
+    ],
+    failed: [],
+    sources: ["AMS_2006 Alabama Weekly Cattle Auction Summary"],
+  };
+  const folded = mergePartialAmsSnapshot(prev, next, ["2006"]);
+  assert.equal(folded.tickCount, 2);
+  assert.ok(folded.rows.some((r) => r.id.startsWith("cattle.ams_1778.") && r.label === "keep"));
+  assert.equal(folded.rows.find((r) => r.id.includes("ams_2006"))?.label, "fresh leftover");
+  assert.equal(folded.failed.length, 0);
+  assert.ok(folded.sources.includes("AMS_1778 Montana Weekly Cattle Auction Summary"));
+}
 assert.ok(
   ["2998", "1598", "1102", "2997", "2872", "3802", "2314", "2315", "2306", "2290"].every((s) => slugs.includes(s)),
   "official AMS dairy / hog / organic grain / national terminal-market slugs",

@@ -44,6 +44,7 @@ build/ofgem-enforcement.*
 build/gain.*
 build/orr-enforcement.*
 build/ticks-ams.*
+build/ticks-ams-leftovers.*
 build/paid-records.*
 build/shop-sample.*
 build/firm-check.*
