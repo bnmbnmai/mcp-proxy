@@ -271,7 +271,9 @@ export function listingFromRow(
   if (!cpf || !wms || !parsed) return null;
   const sourceUrl = officialPdfUrl(cpf, kind, parsed.stamp, wms);
   if (!isOfficialPhmsaPdf(sourceUrl) || isOperatorResponseName(sourceUrl)) return null;
-  const institution = (row.Operator_Name || row.Operator_Searchable_Name || cpf).trim();
+  const institution = (row.Operator_Name || row.Operator_Searchable_Name || cpf)
+    .trim()
+    .replace(/^"(.*)"$/, "$1");
   return {
     id: `${cpf}-${slugKind(kind)}`,
     cpf,

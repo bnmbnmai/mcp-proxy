@@ -49,6 +49,10 @@ async function main(): Promise<void> {
     "NOA and warning-letter rows are not harvested",
   );
   assert.ok(listed.every((r) => isOfficialPhmsaPdf(r.sourceUrl)));
+  assert.ok(
+    listed.every((r) => !r.institution.startsWith('"') && !r.institution.endsWith('"')),
+    "TSV quotes are stripped from operator names",
+  );
 
   const seed = SEED_LISTINGS.find((r) => r.cpf === "42026012NOPV");
   assert.ok(seed);
