@@ -59,7 +59,10 @@ async function main(): Promise<void> {
 
   const live = await liveSourceSlugs();
   for (const leftover of AMS_LEFTOVER_REPORTS) {
-    assert.ok(!live.has(leftover.slug.toLowerCase()), `AMS_${leftover.slug} must not already be on live /ticks`);
+    assert.ok(
+      live.has(leftover.slug.toLowerCase()),
+      `AMS_${leftover.slug} already applied on live /ticks — do not re-collect`,
+    );
   }
 
   const leak = await leakTestSlug("1988");
