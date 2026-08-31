@@ -66,6 +66,8 @@ Same order as live [/.well-known/x402](https://ticks.bnm.farm/.well-known/x402).
 | `/ofgem-enforcement` | Ofgem enforcement-notice / s.27A penalty-proposal / confirmed and provisional-order text. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/ofgem-enforcement/manifest.json?q=) |
 | `/gain` | USDA FAS GAIN attaché report TEXT. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/gain/manifest.json?q=) |
 | `/orr-enforcement` | ORR Railways Act 1993 s.55 statutory-notice / final-order / investigation-report text. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/orr-enforcement/manifest.json?q=) |
+| `/phmsa-orders` | PHMSA pipeline enforcement-order text. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/phmsa-orders/manifest.json?q=) |
+| `/aaib-reports` | UK AAIB investigation-report text. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/aaib-reports/manifest.json?q=) |
 | `/form-483` | FDA Form 483 inspectional observation bodies. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/form-483/manifest.json?q=) |
 | `/gmp` | Health Canada Drug GMP report-card observation text + C.02 cites. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/gmp/manifest.json?q=) |
 | `/gmp-md` | Health Canada medical-device report-card observation text + MDR cites. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/gmp-md/manifest.json?q=) |

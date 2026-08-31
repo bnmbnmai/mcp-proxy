@@ -21,6 +21,8 @@ const REQUIRED_LIVE_PATHS = [
   "/ofgem-enforcement",
   "/gain",
   "/orr-enforcement",
+  "/phmsa-orders",
+  "/aaib-reports",
   "/form-483",
   "/gmp",
   "/gmp-md",
@@ -37,6 +39,13 @@ async function main(): Promise<void> {
   assert.equal(two[0].kind, "table");
   assert.equal(two[1].path, "/ofwat-enforcement");
   assert.equal(two[1].kind, "body");
+  const aaib = skusFromWellKnown(fixtureWellKnown(["/aaib-reports"]));
+  assert.equal(aaib.length, 1);
+  assert.equal(aaib[0].path, "/aaib-reports");
+  assert.equal(aaib[0].kind, "body");
+  assert.equal(aaib[0].price, "$0.02 / $0.05");
+  assert.match(aaib[0].bag, /UK AAIB investigation-report text/);
+  assert.match(shopIndexMarkdown(aaib), /\/aaib-reports\/manifest\.json/);
   const md2 = shopIndexMarkdown(two);
   assert.match(md2, /\/ofwat-enforcement/);
   assert.doesNotMatch(md2, /36 doors|40 doors|Thirty-six|Forty paid/);
@@ -83,10 +92,22 @@ async function main(): Promise<void> {
   }
   assert.ok(!shopIndexOnDisk.includes("36 doors"), "checked-in SHOP-INDEX dropped the stale 36");
 
-  const liveOpenapiHasFour = ["/ofwat-enforcement", "/ofgem-enforcement", "/gain", "/orr-enforcement"].every(
+  const manOnDisk = JSON.parse(readFileSync(join(root, "aaib-reports/manifest.json"), "utf8")) as {
+    free?: boolean;
+    cards?: { body?: unknown; id?: string }[];
+    product?: string;
+    cardCount?: number;
+  };
+  assert.equal(manOnDisk.free, true, "checked-in /aaib-reports/manifest.json is the free index");
+  assert.equal(manOnDisk.product, "aaib-investigation-report-bodies");
+  assert.equal(manOnDisk.cardCount, 10, "first slice is ten official investigation reports");
+  assert.equal(manOnDisk.cards?.[0]?.id, "aaib-investigation-to-eurofox-2k-g-cmax");
+  assert.ok(manOnDisk.cards?.every((c) => !("body" in c)), "checked-in free manifest has no report body");
+
+  const liveOpenapiHasFour = ["/ofwat-enforcement", "/ofgem-enforcement", "/gain", "/orr-enforcement", "/aaib-reports"].every(
     (p) => Boolean(live.openApi.paths?.[p]),
   );
-  assert.ok(liveOpenapiHasFour, "live OpenAPI already lists the four doors");
+  assert.ok(liveOpenapiHasFour, "live OpenAPI already lists the four doors plus /aaib-reports");
 
   console.log(
     `shop-catalog tests ok (live paid GETs: ${paths.length}; MCP extras: ${extraMcpToolNames().join(",")})`,

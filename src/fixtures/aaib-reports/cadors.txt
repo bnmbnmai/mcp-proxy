@@ -1,0 +1,1 @@
+{"CADORS": true, "narrative": "no-auth JSON body wrap — do not sell"}

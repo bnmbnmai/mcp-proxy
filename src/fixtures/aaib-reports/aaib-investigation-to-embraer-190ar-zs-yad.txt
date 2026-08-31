@@ -1,0 +1,140 @@
+AAIB Bulletin:                             ZS-YAD                                 AAIB-29325
+
+
+Incident
+
+Aircraft Type and Registration:            Embraer 190AR, ZS-YAD
+
+No & Type of Engines:                      2 General Electric CF34-10E6 turbofan engines
+
+Year of Manufacture:                       2017 (Serial no: 746)
+
+Date & Time (UTC):                         17 June 2023 at 1235 hrs
+
+Location:                                  St Helena Airport
+
+Type of Flight:                            Commercial Air Transport (Passenger)
+
+Persons on Board:                          Crew - 5                Passengers - 28
+
+Injuries:                                  Crew - None             Passengers - None
+
+Nature of Damage:                          None
+
+Commander’s Licence:                       Airline Transport Pilot’s Licence
+
+Commander’s Age:                           Not provided
+
+Commander’s Flying Experience:             Not provided
+
+Information Source:                        AAIB Field Investigation
+
+
+Synopsis
+
+The Air Accidents Investigation Branch (AAIB) was informed of concerns about a scheduled
+flight to St Helena on 17 June 2023 which encountered wind conditions necessitating
+two go-arounds, with the flight landing on the third attempt. During enquiries into the event,
+a further report was received from a different source regarding another scheduled flight
+on 10 September, during which four go-arounds were made before a landing could be
+achieved. The AAIB, as the nominated State Accident Investigation Authority for the British
+Overseas Territories of Saint Helena, Ascension and Tristan da Cunha, reviewed the events,
+but did not consider they met the ICAO definition of a serious incident. However, the AAIB
+considered that the immediate issues identified warranted further investigation under the
+St Helena Civil Aviation (Investigation of Air Accidents and Incidents) Regulations 2019, to
+identify any potential safety improvements.
+
+The subsequent investigation confirmed the challenging nature of operations to the airport
+due to its isolated location and wind effects acting on the final approach and runway. It
+also identified issues with the aircraft operation, airport and diversion alternate which it
+considered needed to be addressed. Safety Actions included the installation of runway
+distance marker boards and the imposition of additional wind limits by the operator.
+
+Six safety recommendations are made to address intended improvements which have
+yet to be implemented and some improvements where agreement could not be reached.
+In particular, the matter of allowing relevant flights to nominate Wideawake Airfield on
+Ascension Island as a diversion, in accordance with the Wideawake Agreement of 2023,
+remained unresolved.
+
+
+© Crown copyright 2026                        1                                      All times are UTC
+
+AAIB Bulletin:                                  ZS-YAD                              AAIB-29325
+
+
+Background
+
+The AAIB was informed of concerns regarding a commercial flight to St Helena on
+17 June 2023. These centred on the weather conditions at the time, which resulted in
+significant turbulence on the approach and the aircraft having to go-around twice late in
+the approach whilst it was over the runway. The reporter considered the isolated nature of
+the airport may have put undue pressure on the crew to land in the prevailing conditions,
+because of the lack of a suitable alternate. A further report was received by the AAIB from
+a different source regarding another commercial flight on 10 September 2023. This flight
+had departed from Ascension Island and was due to fly to St Helena before then continuing
+on to Johannesburg. It had to go-around four times due to turbulence before it could land at
+St Helena. It’s onward flight to Johannesburg then had to be delayed until 12 September,
+due to continuing poor weather.
+
+St Helena
+
+St Helena is a small island of 47 square miles situated in the South Atlantic, with a population
+of about 4,400 people. It is part of the British Overseas Territory of St Helena, Ascension,
+and Tristan da Cunha. The St Helena Government website describes it as ‘one of the
+remotest islands on Earth… 1,200 miles from Africa and 1,800 miles from South America.’
+It further states that ‘the only other near landmass is Ascension Island, which is 807 miles
+to the northwest.’
+
+St Helena Airport
+
+Historically, St Helena was only accessible by ship, with a UK Government owned vessel,
+the RMS St Helena, providing scheduled access for both goods and people. The UK
+Government then made the decision to fund a major project to build an airport on the island,
+which was completed and certified to commence operations on 10 May 2016.
+
+Geographical restrictions meant there were limited locations for siting the runway, which
+was constructed in an area called Prosperous Bay Plain. Completion of the airport required
+extensive earthworks to accommodate the single 1,950 m long concrete runway, aligned
+01/191, at an elevation of 1,017 ft. The location of the runway and the need for such
+extensive works meant that the land at either end of the runway dropped away steeply and
+there was only limited space available for parking aircraft.
+
+On completion, it was found the runway suffered from significant turbulence and wind shear
+due to the prevailing wind and local topography. This predominately affected aircraft on
+final approach to Runway 19, sometimes preventing them touching down and requiring
+them to go-around. The alternative of landing downwind on Runway 01 greatly reduced
+the turbulence problem, but resulted in significant payload restrictions due to the tail wind
+component encountered. The situation was sufficiently severe that research was conducted
+in 2016 which indicated that significant changes to the local topography could considerably
+reduce turbulence and wind shear on the approach to Runway 19. These changes were
+not, however, carried out and the situation remained.
+Footnote
+1
+    The runway was redeclared in early 2022, being previously Runway 02/20.
+
+
+© Crown copyright 2026                              2                                All times are UTC
+
+AAIB Bulletin:                             ZS-YAD                                  AAIB-29325
+
+
+Certification of the airport is the responsibility of Air Safety Support International (ASSI),
+a not-for-profit wholly-owned subsidiary of the UK Civil Aviation Authority. ASSI also has
+the responsibility for managing the civil aviation State Safety Programme for St Helena on
+behalf of the Governor.
+
+Commercial air services
+
+Commercial air services commenced on 14 October 2017 and the RMS St Helena’s final
+voyage from the island took place in February 2018, after which the ship was sold. A
+tender had been run to select an operator to provide regular air services to St Helena in
+place of the ship, intended to start in 2016. The original winner of the tender was based
+in South Africa and operated B737-800 aircraft. It never commenced passenger flights
+after a single trial flight to St Helena on 18 April 2016 proved too problematic due to the
+issues with the turbulence on the approach. A further operator was then selected, which
+was also based in South Africa, and operated the Embraer ERJ-190. Prior to passenger
+operations commencing, the aircraft manufacturer conducted trial flights to the island in
+December 2016 to assess the aircraft’s suitability and the most effective means of operating
+flights under the prevailing conditions. These trials were reported to be successful and
+passenger flights commenced in October 2017 under the new operator, initially on a weekly
+basis.

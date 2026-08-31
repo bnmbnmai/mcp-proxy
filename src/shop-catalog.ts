@@ -80,6 +80,8 @@ const BAG_BY_PATH: Record<string, string> = {
   "/gain": "USDA FAS GAIN attaché report TEXT. Newest 10 official texts",
   "/orr-enforcement":
     "ORR Railways Act 1993 s.55 statutory-notice / final-order / investigation-report text. Newest 10 official texts",
+  "/phmsa-orders": "PHMSA pipeline enforcement-order text. Newest 10 official texts",
+  "/aaib-reports": "UK AAIB investigation-report text. Newest 10 official texts",
   "/form-483": "FDA Form 483 inspectional observation bodies. Newest 10 official texts",
   "/gmp": "Health Canada Drug GMP report-card observation text + C.02 cites. Newest 10 official texts",
   "/gmp-md": "Health Canada medical-device report-card observation text + MDR cites. Newest 10 official texts",
