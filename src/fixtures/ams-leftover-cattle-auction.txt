@@ -1,0 +1,24 @@
+Livestock Weighted Average Report for 8/24/2026 - 8/25/2026 - Final
+
+FEEDER CATTLE
+
+STEERS - Medium and Large 1 (Per Cwt / Actual Wt)
+
+Head   Wt Range   Avg Wt   Price Range   Avg Price
+12     450-480     465      380.00-395.00  388.50
+8      550-575     562      360.00-372.00  366.25
+
+HEIFERS - Medium and Large 1 (Per Cwt / Actual Wt)
+
+Head   Wt Range   Avg Wt   Price Range   Avg Price
+10     430-470     452      340.00-355.00  348.00
+
+SLAUGHTER CATTLE
+
+COWS - Breaker 75-80% (Per Cwt / Actual Wt)
+
+Head   Wt Range   Avg Wt   Price Range   Avg Price
+4      1200-1350   1280     140.00-148.00  144.00
+
+Source: USDA AMS Livestock, Poultry & Grain Market News
+https://mymarketnews.ams.usda.gov/viewReport/1988
