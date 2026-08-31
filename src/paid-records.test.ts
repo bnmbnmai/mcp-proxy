@@ -28,6 +28,7 @@ import {
   OCC_CD_TYPE,
   OFAC_ORDER_TYPE,
   PCAC_TYPE,
+  PHMSA_ORDERS_TYPE,
   DEFAULT_PAID_BODY_WINDOW,
   EXTRACTED_BODY_SKUS,
   RECORD_FIELDS,
@@ -79,6 +80,7 @@ import {
   paidOccCdBody,
   paidOfacOrdersBody,
   paidPcacBody,
+  paidPhmsaOrdersBody,
   paidSuperfundRodsBody,
   paidSwissparBody,
   paidTicksBody,
@@ -435,6 +437,30 @@ async function main(): Promise<void> {
   assert.equal(fifraA.records[0]?.type, FIFRA_ORDER_TYPE);
   assert.equal(fifraA.records[0]?.id, "FIFRA-05-2026-0015");
   assert.ok(fifraA.recordCount > 0);
+
+  const phmsaA = paidPhmsaOrdersBody({
+    ok: true as const,
+    product: "phmsa-enforcement-order-bodies" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-31T12:00:00.000Z",
+    asOf: "2026-08-03",
+    sources: { listing: "https://primis.phmsa.dot.gov/enforcement-documents/PHMSA%20Pipeline%20Enforcement%20Raw%20Data.txt" },
+    cards: [
+      {
+        id: "32026023CAO-corrective-action-order",
+        institution: "AMOCO OIL CO",
+        docket: "3-2026-023-CAO",
+        date: "2026-08-03",
+        sourceUrl:
+          "https://primis.phmsa.dot.gov/enforcement-documents/32026023CAO/32026023CAO_Corrective%20Action%20Order_08032026_(26-379109).pdf",
+        body: "CORRECTIVE ACTION ORDER\nPipeline and Hazardous Materials Safety Administration\nCPF No. 3-2026-023-CAO",
+      },
+    ],
+  });
+  assert.equal(phmsaA.records[0]?.type, PHMSA_ORDERS_TYPE);
+  assert.equal(phmsaA.records[0]?.id, "32026023CAO-corrective-action-order");
+  assert.equal(phmsaA.records[0]?.firm, "AMOCO OIL CO");
+  assert.ok(phmsaA.recordCount > 0);
 
   const iaSnap = {
     ok: true as const,
@@ -1093,6 +1119,7 @@ async function main(): Promise<void> {
   assert.equal(EXTRACTED_BODY_SKUS.includes("ofgem-enforcement"), true);
   assert.equal(EXTRACTED_BODY_SKUS.includes("gain"), true);
   assert.equal(EXTRACTED_BODY_SKUS.includes("orr-enforcement"), true);
+  assert.equal(EXTRACTED_BODY_SKUS.includes("phmsa-orders"), true);
   assert.equal((EXTRACTED_BODY_SKUS as readonly string[]).includes("ticks"), false);
 
   const fatGmpCards = Array.from({ length: 120 }, (_, i) => {

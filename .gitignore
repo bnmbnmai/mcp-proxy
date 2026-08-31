@@ -43,6 +43,7 @@ build/ofwat-enforcement.*
 build/ofgem-enforcement.*
 build/gain.*
 build/orr-enforcement.*
+build/phmsa-orders.*
 build/ticks-ams.*
 build/ticks-ams-leftovers.*
 build/paid-records.*
@@ -88,6 +89,7 @@ data/ofwat-enforcement/
 data/ofgem-enforcement/
 data/gain/
 data/orr-enforcement/
+data/phmsa-orders/
 data/ticks-ams/
 data/shop-request-log.jsonl
 data/shop-request-log*.jsonl
