@@ -1,0 +1,140 @@
+AAIB Bulletin:                               G-TOMX                                    AAIB-30853
+
+
+Accident
+
+Aircraft Type and Registration:               Dyn Aero MCR-01, G-TOMX
+
+No & Type of Engines:                         1 Rotax 912ULS piston engine
+
+Year of Manufacture:                          2009 (Serial no: PFA 301-14624)
+
+Date & Time (UTC):                            4 May 2025 at 1558 hrs
+
+Location:                                     Shenstone Hall Airfield, Staffordshire
+
+Type of Flight:                               Private
+
+Persons on Board:                             Crew - 1                Passengers - None
+
+Injuries:                                     Crew - 1 (Fatal)        Passengers - N/A
+
+Nature of Damage:                             Destroyed
+
+Commander’s Age:                              60 years
+
+Commander’s Flying Experience:                1,368 hours (of which 890 were on type)
+                                              Last 90 days - 1 hour
+                                              Last 28 days - 0 hour
+
+Information Source:                           AAIB Field Investigation
+
+
+Synopsis
+
+Shortly after takeoff the aircraft is likely to have lost power. It appears that the pilot attempted
+to return to the departure airfield but lost control of the aircraft whilst doing so. The aircraft
+struck the ground in a cultivated field close to the grass airstrip, resulting in a post-accident
+fire which destroyed the aircraft. The pilot was fatally injured.
+
+In the event of a power loss shortly after takeoff pilots must make quick and difficult decisions
+whether to attempt a forced landing. The performance of the aircraft meant a turnback
+to the airfield runway was not possible. The CAA guidance is not to attempt a turnback
+manoeuvre and to aim for a point in front in the event of power loss shortly after takeoff.
+This accident serves to remind pilots that pre-briefing actions in an emergency, especially
+when close to the ground, taking into account the prevailing weather conditions and aircraft
+performance, may aid them in making quick and decisive decisions if faced with such an
+emergency.
+
+The pilot had recently performed several maintenance activities on the engine and fuel
+system but had not had the work assessed by a Light Aircraft Association (LAA) inspector.
+Although the cause of the power loss could not be determined it is possible that it was
+associated with work carried out on the aircraft prior to the flight.
+
+This accident also highlights the importance of following the guidance provided by the
+relevant regulatory bodies or sporting associations to ensure that all maintenance completed,
+other than that described as ‘pilot maintenance’, is inspected and signed off by a suitable
+inspector.
+
+
+© Crown copyright 2026                           1                                       All times are UTC
+
+AAIB Bulletin:                             G-TOMX                                   AAIB-30853
+
+
+History of the flight
+
+On the day of the accident, the pilot was seen removing the aircraft from its hangar at the
+private airstrip where it was based, by other pilots at the strip. The other pilots had left
+the strip before the aircraft departed and there was no witness to the aircraft’s departure.
+CCTV captured the aircraft back tracking and subsequently departing from Runway 33 at
+approximately 1558 hrs. The pilot was the sole occupant onboard. CCTV further captured
+the aircraft downwind and then turning back towards the strip, approaching the runway
+at right angles. The aircraft was captured on CCTV striking the ground and bursting into
+flames, in a field close to the airstrip.
+
+The wreckage of the aircraft was discovered the following morning by the landowner whilst
+walking his dog.
+
+Accident site
+
+The aircraft had come to rest in cultivated farmland to the east of the grass strip of Shenstone
+Hall Airfield (Figure 1).
+
+
+
+
+                                           Figure 1
+                               G-TOMX accident site location
+
+
+Small fragments of tree debris were found to the west of the airfield’s easterly boundary,
+suggesting the aircraft struck the treetops before ground contact. An initial ground scar was
+located 15 m from the tree line, with the main impact point being 5 m beyond that. The main
+wreckage was 32 m from the tree line.
+
+
+
+
+© Crown copyright 2026                         2                                     All times are UTC
+
+AAIB Bulletin:                                 G-TOMX                              AAIB-30853
+
+
+The aircraft came to rest inverted with its nose pointing in the direction it had come from.
+The seat pan was found 10 m beyond the main wreckage. A significant fire had consumed
+most of the composite aircraft, with only the engine block remaining intact.
+
+One of the three ground adjustable propeller blades remained attached to the hub. The
+two other blades were found in the wreckage trail. All the blades were intact with no
+leading-edge damage, suggesting that the propeller was not rotating, or rotating slowly at
+the time the aircraft struck the ground.
+
+The ground scars suggest that the right wing contacted the ground first, before the aircraft
+cartwheeled and came to rest. Scorching of the ground between the main impact location
+and where the wreckage came to rest suggested that the composite fuel tank had ruptured
+when the aircraft initially struck the ground causing the fuel within it to immediately ignite.
+
+The damage sustained by the aircraft in the subsequent fire was such that it was not
+possible to confirm the continuity of any of the primary flying controls to their respective
+control surfaces.
+
+The forces involved in the accident sequence suggest that the accident was not survivable.
+
+Recorded information
+
+Two CCTV cameras, one positioned at a gateway opposite the entrance to the farm strip
+with a view down the runway and the other on a farm building approximately 200 m further
+away from the strip captured most of the accident flight (Figure 2).
+
+
+
+
+                                              Figure 2
+                         Shenstone Hall Airfield and location of CCTV cameras
+
+
+© Crown copyright 2026                            3                                 All times are UTC
+
+AAIB Bulletin:                                   G-TOMX                                        AAIB-30853
+

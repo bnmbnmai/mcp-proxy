@@ -1,0 +1,140 @@
+AAIB Bulletin: 7/2026                               G-CRUX                                          AAIB-31017
+
+
+Serious Incident
+
+Aircraft Type and Registration:                      Boeing 737-8, G-CRUX
+
+No & Type of Engines:                                2 CFM International SA LEAP-1B27G05
+                                                     turbofan engines
+
+Year of Manufacture:                                 2018 (Serial no: 44863)
+
+Date & Time (UTC):                                   22 April 2025 at 0630 hrs
+
+Location:                                            London Luton Airport
+
+Type of Flight:                                      Commercial Air Transport (Passenger)
+
+Persons on Board:                                    Crew - 6                    Passengers - 162
+
+Injuries:                                            Crew - None                 Passengers - None
+
+Nature of Damage:                                    None reported
+
+Commander’s Licence:                                 Airline Transport Pilot’s Licence
+
+Commander’s Age:                                     61 years
+
+Commander’s Flying Experience:                       10,000 hours (of which 3,000 were on type)
+                                                     Last 90 days - not known
+                                                     Last 28 days - not known
+
+Information Source:                                  Aircraft Accident Report Form submitted by the
+                                                     pilot
+
+
+
+Synopsis
+
+A change from the planned departure point led to the aircraft taking off with an incorrect
+power setting and rotating with fewer than 162 m of the paved runway surface remaining.
+A very shallow climb resulted in the aircraft reaching a height of 13 ft at the threshold. The
+operator reviewed its procedures and issued new guidance to crews.
+
+History of the flight
+
+The crew was carrying out a scheduled early morning flight to Athens and had prepared the
+aircraft for a departure from Runway 25 at London Luton Airport (LTN) using data for the full
+length of the runway. The pilots checked the performance calculations to see if they could
+use Intersection ‘A’, and during the pushback clearance, notified ATC that they were able to
+accept an intersection departure. Approaching the holding point, the crew recalled checking
+the Onboard Performance Tool (OPT)1 and believed they had updated the V speeds2 in
+the Flight Management Computer (FMC) to the correct values. Subsequent Flight Data
+Monitoring (FDM) analysis showed the maximum thrust used during the takeoff was 82.1%
+Footnote
+1
+    The OPT is an electronic performance calculation tool used by flight crews to determine takeoff and landing
+    performance for a specific aircraft, runway, and set of conditions.
+2
+    V speeds are defined airspeeds used during critical phases of flight, especially takeoff, climb, approach, and
+    landing.
+
+
+© Crown copyright 2026                                 41                                            All times are UTC
+
+AAIB Bulletin: 7/2026                          G-CRUX                                  AAIB-31017
+
+
+instead of the required 85.2% and the V2 speed was not changed between initial data entry
+during flight preparation and takeoff, which resulted in the aircraft lifting off 162 m from the
+end of the paved runway surface (Figure 1).
+
+
+
+
+                                              Figure 1
+           Flight Data overlay of Google satellite image showing the aircraft lift off point
+
+
+The aircraft crossed the end of the runway at an altitude of 13 ft agl. Reports from ATC
+described the aircraft appearing on radar climbing through 900 ft agl at approximately
+0.8 nm from the airfield. Under normal circumstances the aircraft would appear much
+closer to the airfield at that height. CCTV from LTN ATC showed two images, one of the
+incident aircraft and a representative departure a few minutes later (Figure 2).
+
+
+
+
+© Crown copyright 2026                            42                                     All times are UTC
+
+AAIB Bulletin: 7/2026                     G-CRUX                                 AAIB-31017
+
+
+
+
+                                          Figure 2
+                               Images from LTN ATC CCTV
+   The upper image is the incident aircraft, the lower image is a representative departure
+
+
+
+
+© Crown copyright 2026                       43                                   All times are UTC
+
+AAIB Bulletin: 7/2026                              G-CRUX                                         AAIB-31017
+
+
+
+
+                                                   Figure 3
+                         London Luton Aerodrome Chart (correct Apr 2025)
+
+
+The declared TORA3 from A was 1,771 m and the calculated required thrust was 85.2%.
+
+Full length TORA was 2,116 m and the calculated required thrust was 81.4%.
+
+FDM data showed that the maximum achieved thrust during takeoff was 82.1%. It is not
+possible to determine if this was a result of the autothrottle setting a slightly higher value
+than required or if it was manually set by the pilot.
+
+A full length takeoff on Runway 25 is achieved by the aircraft entering the runway through
+the holding point at A1 and turning left to the end of the runway where there is sufficient
+room to complete a 180° turn.
+
+Performance calculations are carried out to ensure that the aircraft has sufficient runway
+remaining to stop should a failure occur at a critical speed and also meets certain criteria
+during the climb to provide minimum height clearance from obstacles.
+
+
+
+
+Footnote
+3
+    TORA (TakeOff Run Available) is the length of runway available for an aircraft’s ground run during takeoff.
+
+
+© Crown copyright 2026                                 44                                           All times are UTC
+
+AAIB Bulletin: 7/2026                      G-CRUX                                  AAIB-31017

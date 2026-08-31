@@ -1,0 +1,140 @@
+AAIB Bulletin:                             G-CMAX                                  AAIB-31440
+
+
+Accident
+
+Aircraft Type and Registration:             Eurofox 2K, G-CMAX
+
+No & Type of Engines:                       1 Rotax 915 iS piston engine
+
+Year of Manufacture:                        2021 (Serial no: 62421)
+
+Date & Time (UTC):                          27 December 2025 at 1130 hrs
+
+Location:                                   Talgarth Airfield, Powys
+
+Type of Flight:                             Private
+
+Persons on Board:                           Crew - 1               Passengers - None
+
+Injuries:                                   Crew - 1 (Serious)     Passengers - N/A
+
+Nature of Damage:                           Damage to propeller, cockpit and wing
+                                            disruption
+
+Commander’s Licence:                        Private Pilot’s Licence
+
+Commander’s Age:                            81 years
+
+Commander’s Flying Experience:              2,249 hours (of which 54 were on type)
+                                            Last 90 days - 1 hour
+                                            Last 28 days - 0 hours
+
+Information Source:                         AAIB Field Investigation
+
+
+Synopsis
+
+Immediately after takeoff, the tug aircraft in a glider-tug launch combination rolled,
+uncommanded, to approximately 60° left wing down. The glider disconnected and landed
+safely ahead, but the tug aircraft turned left and touched down within the airfield boundary
+before becoming airborne again. Control of the aircraft was then lost and it struck the
+ground in an adjacent field. The sole pilot was seriously injured.
+
+The wind at the time of the accident was fully across the runway in use and may have been
+above the crosswind limit of the aircraft. Turbulence encountered by the aircraft during
+the flight immediately before the accident indicated that the air mass over the runway was
+unstable and is likely to have been so during the accident flight, probably causing the initial
+roll and subsequent loss of control.
+
+As a result of this accident the gliding club improved the weather reporting system to provide
+more accessible and accurate wind measurements to pilots and began work to improve the
+safety culture at the gliding club.
+
+History of the flight
+
+The pilot initially intended to take off to the east, into wind. However, it was discovered
+whilst setting up that the launch area was wet and too boggy to operate from. Following a
+conversation between the duty instructor and the tug pilot it was agreed to change runways
+
+
+© Crown copyright 2026                        1                                     All times are UTC
+
+AAIB Bulletin:                                    G-CMAX                                         AAIB-31440
+
+
+and operate from the north-westerly runway1, accepting a 90° crosswind from right to left.
+Whilst moving the glider to the new launch area, G-CMAX departed from the north-westerly
+runway without a glider attached to check the local flying conditions. It was common
+practice at the club for the tug aircraft to fly for about 10 to 15 minutes before the start of
+gliding operations to check for rotor turbulence from the mountains in the area in which the
+gliders were going to be flying. The aircraft was seen returning to the airfield and making an
+approach in the reciprocal direction to departure. As the wind was blowing at right-angles to
+the chosen runway, neither direction had a favourable headwind. On final the aircraft was
+observed being rocked considerably by turbulence. The amount of rocking was enough for
+a club member to comment on it to a fellow member. The aircraft was seen to climb away
+after which the pilot made a second approach to the same runway and landed.
+
+The tug aircraft taxied over to the waiting ASK13 glider, and the glider was attached to the
+aircraft for launch. The glider had two experienced glider pilots onboard, both pilots being
+qualified gliding instructors. The pilot of the tug aircraft was also a qualified gliding instructor
+and had over 20 years of tug flying experience. The tug-glider combination was observed to
+accelerate slowly due to the boggy nature of the grass runway, but this had been anticipated
+and the launch had been commenced close to the boundary fence to leave as much takeoff
+distance as possible. Once the combination was airborne the tug aircraft was observed
+rocking from side to side and then to drop the left wing by approximately 60°. On seeing this
+the glider pilot released the tow and performed a safe landing within the airfield boundary.
+The tug aircraft turned approximately 60° to the left (downwind), increasing the tailwind
+component that it was experiencing. The main landing gear tyres touched the ground
+briefly, whilst the aircraft was tracking towards a line of trees. The aircraft became airborne
+again and was observed to be climbing “almost vertically” as viewed from the launch point.
+The aircraft passed over the trees and a small hangar, the left wing dropped, and the aircraft
+descended rapidly into a field just outside the airfield boundary.
+
+Accident site
+
+The aircraft came to rest in a field to the west of and adjacent to the gliding site (Figure 1).
+Damage to the aircraft’s wings, a wire fence on the edge of the field and ground scars in
+the field indicated that the aircraft initially clipped the top of the fence with its left wingtip
+before striking the ground in a nose down attitude. It then turned horizontally through 270°
+before coming to rest on its wheels, facing in a northerly direction. The glider towing line
+remained attached to the aircraft and trailed over the boundary fence and foliage, indicating
+the direction from which the aircraft had come (Figure 2).
+
+
+
+
+Footnote
+1
+    Runways at the airfield are named using words to represent the takeoff direction rather than °M.
+
+
+© Crown copyright 2026                                 2                                           All times are UTC
+
+AAIB Bulletin:                             G-CMAX                                AAIB-31440
+
+
+
+
+                                           Figure 1
+       Google Earth image of Talgarth Airfield with aerial image of G-CMAX accident site
+                                           overlayed
+
+
+
+
+                                           Figure 2
+G-CMAX final resting position – note tow rope trailing over foliage in the right of the image
+
+
+Wheel marks in the soft ground between the runway and the accident location indicated
+that the aircraft touched down briefly and became airborne again before crossing the airfield
+boundary (Figure 3).
+
+
+
+
+© Crown copyright 2026                         3                                   All times are UTC
+
+AAIB Bulletin:                                G-CMAX                             AAIB-31440
+

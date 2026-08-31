@@ -29,6 +29,7 @@ import {
   OFAC_ORDER_TYPE,
   PCAC_TYPE,
   PHMSA_ORDERS_TYPE,
+  AAIB_REPORTS_TYPE,
   DEFAULT_PAID_BODY_WINDOW,
   EXTRACTED_BODY_SKUS,
   RECORD_FIELDS,
@@ -81,6 +82,7 @@ import {
   paidOfacOrdersBody,
   paidPcacBody,
   paidPhmsaOrdersBody,
+  paidAaibReportsBody,
   paidSuperfundRodsBody,
   paidSwissparBody,
   paidTicksBody,
@@ -461,6 +463,30 @@ async function main(): Promise<void> {
   assert.equal(phmsaA.records[0]?.id, "32026023CAO-corrective-action-order");
   assert.equal(phmsaA.records[0]?.firm, "AMOCO OIL CO");
   assert.ok(phmsaA.recordCount > 0);
+
+  const aaibA = paidAaibReportsBody({
+    ok: true as const,
+    product: "aaib-investigation-report-bodies" as const,
+    status: "ok" as const,
+    fetchedAt: "2026-08-31T12:00:00.000Z",
+    asOf: "2026-08-20",
+    sources: { index: "https://www.gov.uk/aaib-reports" },
+    cards: [
+      {
+        id: "aaib-investigation-to-eurofox-2k-g-cmax",
+        aircraft: "Eurofox 2K",
+        registration: "G-CMAX",
+        date: "2026-08-20",
+        sourceUrl:
+          "https://assets.publishing.service.gov.uk/media/6a730cd0de77e2943cd3bbe8/Eurofox_2K_G-CMAX_09-26.pdf",
+        body: "AAIB Bulletin: G-CMAX AAIB-31440\nAircraft Type and Registration: Eurofox 2K, G-CMAX",
+      },
+    ],
+  });
+  assert.equal(aaibA.records[0]?.type, AAIB_REPORTS_TYPE);
+  assert.equal(aaibA.records[0]?.id, "aaib-investigation-to-eurofox-2k-g-cmax");
+  assert.equal(aaibA.records[0]?.firm, "Eurofox 2K G-CMAX");
+  assert.ok(aaibA.recordCount > 0);
 
   const iaSnap = {
     ok: true as const,
@@ -1120,6 +1146,7 @@ async function main(): Promise<void> {
   assert.equal(EXTRACTED_BODY_SKUS.includes("gain"), true);
   assert.equal(EXTRACTED_BODY_SKUS.includes("orr-enforcement"), true);
   assert.equal(EXTRACTED_BODY_SKUS.includes("phmsa-orders"), true);
+  assert.equal(EXTRACTED_BODY_SKUS.includes("aaib-reports"), true);
   assert.equal((EXTRACTED_BODY_SKUS as readonly string[]).includes("ticks"), false);
 
   const fatGmpCards = Array.from({ length: 120 }, (_, i) => {

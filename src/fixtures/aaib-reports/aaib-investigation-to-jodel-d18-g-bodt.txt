@@ -1,0 +1,140 @@
+AAIB Bulletin:                               G-BODT                                   AAIB-31324
+
+
+Accident
+
+Aircraft Type and Registration:               Jodel D18, G-BODT
+
+No & Type of Engines:                         1 Rotax 912-UL piston engine
+
+Year of Manufacture:                          1988 (Serial no: PFA 169-11290)
+
+Date & Time (UTC):                            27 October 2025 at 1350 hrs
+
+Location:                                     Portmoak Airfield, Kinross
+
+Type of Flight:                               Private
+
+Persons on Board:                             Crew - 1                Passengers - None
+
+Injuries:                                     Crew - 1 (Fatal)        Passengers - N/A
+
+Nature of Damage:                             Aircraft destroyed
+
+Commander’s Licence:                          Private Pilot’s Licence
+
+Commander’s Age:                              81 years
+
+Commander’s Flying Experience:                Approximately 700 hours (of which around 250
+                                              were on type)
+                                              Last 90 days - Unknown
+                                              Last 28 days - Unknown
+
+Information Source:                           AAIB Field Investigation
+
+
+Synopsis
+
+During the takeoff ground roll from Portmoak Airfield, the aircraft yawed sharply to the
+right. After becoming airborne, while still yawed, it then rolled to the right and entered a
+descending turn. Approximately six seconds after takeoff the aircraft struck the ground
+in a field to the north of the runway. The aircraft was destroyed and the pilot was fatally
+injured. No mechanical or technical defects were identified which would have prevented
+normal control of the aircraft. It is possible that the pilot suffered either a partial or complete
+incapacitation during the takeoff roll.
+
+History of the flight
+
+On the day of the accident, the pilot drove to the airfield with the intention of conducting a
+short, local area flight. He prepared the aircraft and taxied from the hangar to the takeoff
+end of the runway. He made a brief radio call to announce that he was going to take off from
+Runway 28R which was heard by several glider pilots who were operating on the southern
+area of the airfield.
+
+A CCTV camera mounted to a local building overlooking the airfield captured the takeoff
+and subsequent accident. The camera is approximately 250 m from the accident site, and
+it was not possible to observe details of G-BODT such as control positions although the
+general attitude and direction of the aircraft was clear. The footage shows the aircraft pause
+at the beginning of the runway for a few minutes, presumably to perform pre-takeoff power
+
+
+© Crown copyright 2026                          1                                       All times are UTC
+
+AAIB Bulletin:                                   G-BODT                              AAIB-31324
+
+
+checks before lining up on the runway. It then commenced its takeoff roll. The tailwheel lifts
+off from the ground and a few seconds later appears to make contact with the ground again.
+During the final section of the ground roll, the aircraft deviated sharply to the right. Despite
+the deviation, the aircraft continued to accelerate and became airborne. Immediately after
+lifting off, the aircraft continued to yaw to the right and did not realign with the original
+takeoff heading. Within seconds the aircraft began to roll to the right while climbing only
+slightly. The rate of roll then increased rapidly, and the aircraft descended in a tightening
+right turn. Approximately six seconds after leaving the ground the right wingtip struck the
+ground followed by the nose of the aircraft. Figure 1 shows a composite photo taken from
+the CCTV footage.
+
+
+
+
+                                                 Figure 1
+                         Composite CCTV image G-BODT, arrow shows flight direction
+
+
+Witnesses reported that engine power sounded normal and continuous throughout the
+takeoff.
+
+Accident site
+
+The aircraft came to rest in a field adjacent and to the north of Runway 28R, approximately
+95 m from the edge of the grass runway. Ground marks showed the right wingtip struck the
+ground first, followed by the propeller and then the canopy. Clear propeller strikes in the
+ground and the location of a propeller blade tip 65 m from the strikes suggested propeller
+rotation at the time of impact and that the engine was producing high power. The aircraft
+travelled a further 30 m before coming to rest. Separation of the fuselage from both the
+wing structure and the engine indicated a dynamic impact sequence that included inversion.
+
+
+
+
+© Crown copyright 2026                              2                                 All times are UTC
+
+AAIB Bulletin:                               G-BODT                                    AAIB-31324
+
+
+Aircraft information
+
+The Jodel D18 is a low-wing two seat aircraft fitted with a tailwheel. It is a plans-built aircraft,
+of wood construction with fabric covering. The aircraft was built in 1988, had accrued
+1,888 flying hours, and had a valid Permit to Fly.
+
+G-BODT was equipped with a Rotax 912-UL engine and three-bladed Ivoprop in-flight
+electrically adjustable pitch propeller. Pitch adjustment is made using a sprung toggle
+switch on the instrument panel, requiring constant pressure to hold the switch in the
+fine or coarse positions to adjust the propeller pitch. The switch self-centres after releasing
+pressure, and the propeller remains in the selected pitch. The propeller rotates clockwise,
+as viewed from the rear.
+
+Aircraft examination
+
+Engine and propeller
+
+The engine and engine controls were severely damaged during the accident sequence,
+although some inspection was possible. The throttle control was found fully open, and the
+friction adjustment was at a tight setting. There was control continuity between the throttle
+and mixture controls to both carburettors. Oil and coolant were both present and the spark
+plugs were in good condition. The fuel tank was damaged but intact and contained just over
+30 litres of Mogas.
+
+The propeller sustained substantial damage. The composite outer surfaces of all three
+blades had detached from the hub as well as from their adjustable pitch rods, which were
+deformed. The pitch adjustment switch had self-centred.
+
+Airframe
+
+The airframe was significantly disrupted, having come to rest with the wing structure
+detached from the fuselage. The outer section of the right wing had separated from the
+rest of the wing structure, which was largely undamaged. The tailplane and rudder were
+attached to the fuselage and remained intact. The engine, engine mounting structure and
+cockpit instrument panel were no longer attached to the fuselage and had turned through
+90°. The canopy transparency and frame had been destroyed, and all parts were found at

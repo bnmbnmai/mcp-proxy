@@ -44,6 +44,7 @@ build/ofgem-enforcement.*
 build/gain.*
 build/orr-enforcement.*
 build/phmsa-orders.*
+build/aaib-reports.*
 build/ticks-ams.*
 build/ticks-ams-leftovers.*
 build/paid-records.*
@@ -90,6 +91,7 @@ data/ofgem-enforcement/
 data/gain/
 data/orr-enforcement/
 data/phmsa-orders/
+data/aaib-reports/
 data/ticks-ams/
 data/shop-request-log.jsonl
 data/shop-request-log*.jsonl

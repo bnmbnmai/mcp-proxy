@@ -185,6 +185,11 @@ import {
   PHMSA_ORDERS_PATH,
 } from "./phmsa-orders.js";
 import {
+  AAIB_REPORTS_AMOUNT_ATOMIC,
+  AAIB_REPORTS_MANIFEST_PATH,
+  AAIB_REPORTS_PATH,
+} from "./aaib-reports.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -489,6 +494,7 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.some((r) => r.includes("/gain")), "well-known lists /gain");
     assert.ok(wk.resources.some((r) => r.includes("/orr-enforcement")), "well-known lists /orr-enforcement");
     assert.ok(wk.resources.some((r) => r.includes("/phmsa-orders")), "well-known lists /phmsa-orders");
+    assert.ok(wk.resources.some((r) => r.includes("/aaib-reports")), "well-known lists /aaib-reports");
     assert.equal(cdpEnvStatus(), "CDP env not set");
 
     const specRes = await fetch(`${base}${OPENAPI_PATH}`);
@@ -668,6 +674,9 @@ async function main(): Promise<void> {
     assert.ok(spec.paths[PHMSA_ORDERS_PATH]?.get?.["x-payment-info"]);
     assert.ok(spec.paths[PHMSA_ORDERS_MANIFEST_PATH]?.get);
     assert.equal(spec.paths[PHMSA_ORDERS_MANIFEST_PATH]?.get?.["x-auth"]?.mode, "none");
+    assert.ok(spec.paths[AAIB_REPORTS_PATH]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths[AAIB_REPORTS_MANIFEST_PATH]?.get);
+    assert.equal(spec.paths[AAIB_REPORTS_MANIFEST_PATH]?.get?.["x-auth"]?.mode, "none");
     assert.equal(spec.paths[FORM_483_PATH], undefined, "no stub /form-483 in OpenAPI without a cached body");
     assert.equal(spec.paths[FORM_483_MANIFEST_PATH], undefined);
     assert.equal(spec.paths[GMP_PATH], undefined, "no stub /gmp in OpenAPI without a cached body");
@@ -677,6 +686,7 @@ async function main(): Promise<void> {
     assert.ok(spec.paths["/gain"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/orr-enforcement"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/phmsa-orders"]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths["/aaib-reports"]?.get?.["x-payment-info"]);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
       PUBLIC_BAZAAR_SKUS.length,
@@ -725,6 +735,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /gain"));
     assert.ok(llmsBody.includes("GET /orr-enforcement"));
     assert.ok(llmsBody.includes("GET /phmsa-orders"));
+    assert.ok(llmsBody.includes("GET /aaib-reports"));
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.includes("GET /gmp-md"));
@@ -836,6 +847,7 @@ async function main(): Promise<void> {
       GAIN_PATH,
       ORR_ENFORCEMENT_PATH,
       PHMSA_ORDERS_PATH,
+      AAIB_REPORTS_PATH,
     ]);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.priceUsdc, "0.05");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
@@ -5858,6 +5870,117 @@ async function main(): Promise<void> {
     },
   );
 
+  const aaibReportsDir = mkdtempSync(join(tmpdir(), "aaib-reports-"));
+  const eurofoxId = "aaib-investigation-to-eurofox-2k-g-cmax";
+  const aaibBody = [
+    "AAIB Bulletin:                             G-CMAX                                  AAIB-31440",
+    "",
+    "Accident",
+    "",
+    "Aircraft Type and Registration:             Eurofox 2K, G-CMAX",
+    "History of the flight",
+    "Safety actions",
+    "This fixture is official AAIB investigation-report text. Not the GOV.UK synopsis.",
+    ...Array.from(
+      { length: 40 },
+      (_, i) => `Official AAIB investigation paragraph ${i + 1}. AAIB Bulletin Aircraft Type and Registration AAIB-31440.`,
+    ),
+  ].join("\n");
+  writeFileSync(
+    join(aaibReportsDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "aaib-investigation-report-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-08-31T22:00:00.000Z",
+      asOf: "2026-08-20",
+      license: "OGL v3.0",
+      attribution: "Air Accidents Investigation Branch. OGL v3.0.",
+      sources: { index: "https://www.gov.uk/aaib-reports", search: "https://www.gov.uk/api/search.json", pdfHost: "https://assets.publishing.service.gov.uk/media/" },
+      cards: [
+        {
+          id: eurofoxId,
+          registration: "G-CMAX",
+          aircraft: "Eurofox 2K",
+          date: "2026-08-20",
+          title: "AAIB investigation to Eurofox 2K, G-CMAX",
+          pageUrl: "https://www.gov.uk/aaib-reports/aaib-investigation-to-eurofox-2k-g-cmax",
+          sourceUrl: "https://assets.publishing.service.gov.uk/media/6a730cd0de77e2943cd3bbe8/Eurofox_2K_G-CMAX_09-26.pdf",
+          kind: "investigation-report",
+          body: aaibBody,
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      AAIB_REPORTS_DIR: aaibReportsDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-aaib-reports-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${AAIB_REPORTS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /aaib-reports must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; extra?: { name?: string } }[];
+      };
+      assert.equal(body402.resource, AAIB_REPORTS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, AAIB_REPORTS_AMOUNT_ATOMIC);
+      const unpaidId = await fetch(`${base}${AAIB_REPORTS_PATH}?id=${encodeURIComponent(eurofoxId)}`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /aaib-reports?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("AAIB-31440"));
+      assert.ok(!leak402.includes("Talgarth"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === AAIB_REPORTS_PATH), true);
+      assert.equal(shop.products.length, PUBLIC_BAZAAR_SKUS.length);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(AAIB_REPORTS_PATH)), "well-known lists /aaib-reports");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /aaib-reports"));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[AAIB_REPORTS_PATH]);
+      assert.ok(spec.paths[AAIB_REPORTS_MANIFEST_PATH]);
+
+      const manifest = await fetch(`${base}${AAIB_REPORTS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "aaib-reports free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        asOf?: string;
+        cards?: { aircraft?: string; id?: string; body?: string }[];
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.asOf, "2026-08-20");
+      assert.equal(man.cards?.[0]?.aircraft, "Eurofox 2K");
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+      assert.ok(!JSON.stringify(man).includes("AAIB-31440"));
+
+      const paid = await fetch(`${base}${AAIB_REPORTS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { aircraft: string; date: string; id: string; body: string }[];
+        records?: { id: string; firm: string; type: string }[];
+      };
+      assert.equal(paidBody.product, "aaib-investigation-report-bodies");
+      assert.equal(paidBody.cards[0]?.aircraft, "Eurofox 2K");
+      assert.equal(paidBody.cards[0]?.id, eurofoxId);
+      assert.ok(paidBody.cards[0]?.body.includes("AAIB Bulletin"));
+      assert.equal(paidBody.records?.[0]?.type, "aaib-reports");
+      assert.equal(paidBody.records?.[0]?.firm, "Eurofox 2K G-CMAX");
+    },
+  );
+
 
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
@@ -6572,7 +6695,7 @@ async function main(): Promise<void> {
     },
     async (base) => {
       assert.equal(cdpEnvStatus(), "CDP env not set");
-      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
+      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
         const unpaid = await fetch(`${base}${path}`);
         assert.equal(unpaid.status, 402, `unpaid ${path} must stay 402`);
         const present = await fetch(`${base}${path}`, { headers: { "X-PAYMENT": "test" } });
@@ -6614,6 +6737,7 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.includes(GAIN_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(ORR_ENFORCEMENT_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(PHMSA_ORDERS_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(AAIB_REPORTS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D11_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D7_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D8_PATH)));
@@ -6626,7 +6750,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -6659,6 +6783,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("gain"), true);
   assert.equal(isPublicBazaarSku("orr-enforcement"), true);
   assert.equal(isPublicBazaarSku("phmsa-orders"), true);
+  assert.equal(isPublicBazaarSku("aaib-reports"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
