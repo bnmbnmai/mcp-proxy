@@ -14,7 +14,7 @@ This cloud VM cannot publish `ticks.bnm.farm` and must not restart `idaho-ticks-
 cd ~/projects/mcp-proxy
 git fetch origin cursor/apply-aaib-reports-a8df
 git checkout cursor/apply-aaib-reports-a8df
-# apply SHA is the tip of this branch after push — document it in the PR
+# apply SHA: 6ab0a3011805a8fe8247c14bc4fb96179499dfae
 export AAIB_REPORTS_DIR=$HOME/projects/mcp-proxy/data/aaib-reports
 mkdir -p "$AAIB_REPORTS_DIR"
 npm run build
