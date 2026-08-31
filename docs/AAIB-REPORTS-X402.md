@@ -79,12 +79,12 @@ Free manifest is id / registration / aircraft / date / title / pageUrl / sourceU
 
 ## Apply
 
-Worker apply is **`cursor/apply-aaib-reports-a8df`** (base `cursor/apply-phmsa-orders-7781`). This listing PR does **not** apply on apollo from the cloud VM. Do not deploy or restart `idaho-ticks-x402` from this PR. Do not touch `/ticks` AMS. Do not replace the live PHMSA cache.
+Worker apply is **`cursor/apply-aaib-reports-a8df`** @ **`6ab0a3011805a8fe8247c14bc4fb96179499dfae`** (base `cursor/apply-phmsa-orders-7781`). This listing PR does **not** apply on apollo from the cloud VM. Do not deploy or restart `idaho-ticks-x402` from this PR. Do not touch `/ticks` AMS. Do not replace the live PHMSA cache.
 
 ```bash
 cd ~/projects/mcp-proxy
 git fetch origin cursor/apply-aaib-reports-a8df
-git checkout cursor/apply-aaib-reports-a8df
+git checkout 6ab0a3011805a8fe8247c14bc4fb96179499dfae
 export AAIB_REPORTS_DIR=$HOME/projects/mcp-proxy/data/aaib-reports
 mkdir -p "$AAIB_REPORTS_DIR"
 npm run build
