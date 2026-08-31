@@ -1,0 +1,140 @@
+AAIB Bulletin: 8/2026                     G-MLZZ                                   AAIB-31685
+
+
+Accident
+
+Aircraft Type and Registration:            Skyranger Swift 912S(1), G-MLZZ
+
+No & Type of Engines:                      1 Rotax 912ULS piston engine
+
+Year of Manufacture:                       2007 (Serial no: BMAA/HB/557)
+
+Date & Time (UTC):                         24 April 2026 at 1740 hrs
+
+Location:                                  Balado Airfield, Kinross
+
+Type of Flight:                            Private
+
+Persons on Board:                          Crew - 1               Passengers - 1
+
+Injuries:                                  Crew - 1 (Minor)       Passengers - None
+
+Nature of Damage:                          Aircraft destroyed by fire
+
+Commander’s Licence:                       National Private Pilot’s Licence
+
+Commander’s Age:                           70 years
+
+Commander’s Flying Experience:             429 hours (of which 34 were on type)
+                                           Last 90 days - 8 hours
+                                           Last 28 days - 4 hours
+
+Information Source:                        Aircraft Accident Report Form submitted by the
+                                           pilot
+
+
+Synopsis
+
+During a flight, the pilot was alerted to the presence of high levels of carbon monoxide by
+his active detector. Having taken action to increase the ventilation, he landed at the nearest
+airfield. During the approach the engine began to fluctuate in power and stopped just after
+landing. After attempting to restart the engine, the pilot noticed smoke and then flames from
+under the cowls. The aircraft was consumed by fire. The cause of the carbon monoxide
+and the fire was not established.
+
+History of the flight
+
+The pilot was flying from Laurencekirk Airfield, Aberdeenshire to Strathaven Airfield, South
+Lanarkshire. On takeoff the pilot heard what he described as an unusual engine noise, but
+he elected to continue the flight as it was not associated with a noticeable loss of power or
+abnormal indications.
+
+When the aircraft was to the south-west of Dundee around 40 minutes into the flight,
+the pilot was alerted to the presence of carbon monoxide by his active detector. He
+noted that there was still no change in engine performance and no visual sign, taste or
+smell of anything amiss in the cabin. The detector, which had a digital display in parts
+per million (ppm), was now reading 465 ppm so the pilot decided to land at the nearest
+airfield, Balado. He opened both windows and flew sideslipped to improve the ventilation
+and the reading reduced to 190 ppm as a result.
+
+
+© Crown copyright 2026                       43                                     All times are UTC
+
+AAIB Bulletin: 8/2026                            G-MLZZ                                     AAIB-31685
+
+
+On approach to Balado the engine power began to fluctuate, and this resulted in what the
+pilot described as a “hard landing”. The engine finally stopped whilst he was vacating the
+runway onto the taxiway. He made several attempts to restart the engine but whilst it would
+turn over, it would not catch and run. He observed that there was smoke beginning to
+appear from under the cowls and, when he vacated the aircraft to look, he could see flames.
+Although the pilot and another person at the airfield gathered some extinguishers, they felt
+it was too dangerous to approach the aircraft as the flames had by then taken hold. By
+the time the local fire service arrived to extinguish the remaining fire, the aircraft had been
+destroyed.
+
+Carbon monoxide
+
+Carbon monoxide is a colourless, odourless and tasteless gas produced by the incomplete
+combustion of carbon-based fuels. When inhaled, it enters the bloodstream and binds
+with haemoglobin in red blood cells to form carboxyhaemoglobin. This reduces the blood’s
+ability to carry oxygen. Early symptoms of exposure can include headache, dizziness,
+drowsiness, nausea, fatigue, and confusion. More severe exposure may result in visual
+disturbance, shortness of breath, abdominal pain, and loss of consciousness. The normal
+background level of carbon monoxide would be between 0 – 9 ppm.
+
+In light aircraft, a common source of carbon monoxide exposure is exhaust gas leakage
+into cabin heating systems that use air passed over the engine’s exhaust manifold. Cracks,
+corrosion, or failed seals in the exhaust system can allow fumes to enter the cabin, creating
+a significant safety risk to occupants. The CAA have produced a Safety Sense Leaflet1 on
+carbon monoxide which contains extensive details and advice for pilots.
+
+Active carbon monoxide detector
+
+The pilot always carried an active carbon monoxide detector with him when he flew. He had
+previously experienced a carbon monoxide leak in another aircraft and had found the active
+detector a vital tool in recognising the leak before he was affected. He noted that in this
+case the alarm was clearly audible, even through his headset. Although the detector had a
+digital readout in ppm, the pilot was unsure of what levels should be considered dangerous
+and at what point he would need to react.
+
+The Safety Sense Leaflet suggests that 50 ppm, which is the threshold at which many
+active detectors start alerting, to be an ‘appropriate threshold that minimises excessive
+low-level alerting whilst also giving the pilot time to respond to a CO event.’
+
+Actions to take for carbon monoxide
+
+The Safety Sense Leaflet suggests that the pilot take action straight away in the event of
+the alert sounding in the air or on the ground and that these actions should include turning
+off the heat supply and maximizing fresh air into the aircraft. If the aircraft is airborne then
+the leaflet suggests landing as soon as possible rather than waiting for the situation to get
+
+Footnote
+1
+    https://www.caa.co.uk/media/xs5axnpi/safety-sense-leaflet-34.pdf [accessed May 2026].
+
+
+© Crown copyright 2026                              44                                       All times are UTC
+
+AAIB Bulletin: 8/2026                      G-MLZZ                                  AAIB-31685
+
+
+worse. If pilots are experiencing symptoms of carbon monoxide poisoning or if the readings
+are persistently high, then an off-airfield landing should be considered.
+
+The pilot of G-MLZZ commented that opening both windows and sideslipping the aircraft to
+increase the ventilation had a significant effect on the level of carbon monoxide indicated
+on the alarm. The aircraft's pitch attitude and airspeed also affected the level of carbon
+monoxide in the cabin.
+
+Other information
+The cause of the carbon monoxide and the fire in the engine after landing was not determined.
+
+Analysis
+
+During a flight from Laurencekirk to Strathaven the pilot was alerted to the presence of a
+very high concentration of carbon monoxide by his active detector. He took immediate
+action to divert to the nearest airfield and increase the ventilation in the cabin. The engine
+began to fluctuate on approach to Balado, and the variation in power lead the aircraft to land
+heavily. The engine stopped completely shortly after landing. After making a number of
+attempts to restart the engine, the pilot noticed smoke appearing from under the cowls. By
