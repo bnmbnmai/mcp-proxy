@@ -190,6 +190,11 @@ import {
   AAIB_REPORTS_PATH,
 } from "./aaib-reports.js";
 import {
+  CSB_REPORTS_AMOUNT_ATOMIC,
+  CSB_REPORTS_MANIFEST_PATH,
+  CSB_REPORTS_PATH,
+} from "./csb-reports.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -364,6 +369,17 @@ async function main(): Promise<void> {
     const ticks402Desc = sku402Description("ticks");
     assert.ok(ticks402Desc.includes("$0.05 = entire current table."));
     assert.ok(!ticks402Desc.includes("/firm-check"));
+    const csb402Desc = sku402Description("csb-reports");
+    assert.ok(csb402Desc.includes("https://ticks.bnm.farm/csb-reports/manifest.json?q="));
+    assert.ok(csb402Desc.includes("$0.05 one official PDF"));
+    assert.ok(!csb402Desc.includes("$0.02"));
+    assert.ok(csb402Desc.length <= 500, `csb-reports 402 description is ${csb402Desc.length}`);
+    assert.ok(!/^Not /m.test(csb402Desc) && !csb402Desc.includes("Not the"), "csb-reports 402 has no leak-test");
+    const csbExtra = paymentExtra("csb-reports");
+    assert.equal(csbExtra.name, "USD Coin");
+    assert.equal(csbExtra.pdf, true);
+    assert.equal(csbExtra.priceAtomic, Number(CSB_REPORTS_AMOUNT_ATOMIC));
+    assert.equal(csbExtra.oneDocPath, "/csb-reports?id=");
     for (const sku of EXTRACTED_BODY_SKUS) {
       const desc = sku402Description(sku);
       assert.ok(desc.includes(`https://ticks.bnm.farm/${sku}/manifest.json?q=`), `${sku} 402 names free search`);
@@ -495,6 +511,7 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.some((r) => r.includes("/orr-enforcement")), "well-known lists /orr-enforcement");
     assert.ok(wk.resources.some((r) => r.includes("/phmsa-orders")), "well-known lists /phmsa-orders");
     assert.ok(wk.resources.some((r) => r.includes("/aaib-reports")), "well-known lists /aaib-reports");
+    assert.ok(wk.resources.some((r) => r.includes("/csb-reports")), "well-known lists /csb-reports");
     assert.equal(cdpEnvStatus(), "CDP env not set");
 
     const specRes = await fetch(`${base}${OPENAPI_PATH}`);
@@ -677,6 +694,9 @@ async function main(): Promise<void> {
     assert.ok(spec.paths[AAIB_REPORTS_PATH]?.get?.["x-payment-info"]);
     assert.ok(spec.paths[AAIB_REPORTS_MANIFEST_PATH]?.get);
     assert.equal(spec.paths[AAIB_REPORTS_MANIFEST_PATH]?.get?.["x-auth"]?.mode, "none");
+    assert.ok(spec.paths[CSB_REPORTS_PATH]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths[CSB_REPORTS_MANIFEST_PATH]?.get);
+    assert.equal(spec.paths[CSB_REPORTS_MANIFEST_PATH]?.get?.["x-auth"]?.mode, "none");
     assert.equal(spec.paths[FORM_483_PATH], undefined, "no stub /form-483 in OpenAPI without a cached body");
     assert.equal(spec.paths[FORM_483_MANIFEST_PATH], undefined);
     assert.equal(spec.paths[GMP_PATH], undefined, "no stub /gmp in OpenAPI without a cached body");
@@ -687,6 +707,7 @@ async function main(): Promise<void> {
     assert.ok(spec.paths["/orr-enforcement"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/phmsa-orders"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/aaib-reports"]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths["/csb-reports"]?.get?.["x-payment-info"]);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
       PUBLIC_BAZAAR_SKUS.length,
@@ -736,6 +757,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /orr-enforcement"));
     assert.ok(llmsBody.includes("GET /phmsa-orders"));
     assert.ok(llmsBody.includes("GET /aaib-reports"));
+    assert.ok(llmsBody.includes("GET /csb-reports"));
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.includes("GET /gmp-md"));
@@ -848,6 +870,7 @@ async function main(): Promise<void> {
       ORR_ENFORCEMENT_PATH,
       PHMSA_ORDERS_PATH,
       AAIB_REPORTS_PATH,
+      CSB_REPORTS_PATH,
     ]);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.priceUsdc, "0.05");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
@@ -5981,6 +6004,109 @@ async function main(): Promise<void> {
     },
   );
 
+  const csbReportsDir = mkdtempSync(join(tmpdir(), "csb-reports-"));
+  const bioId = "bio-lab-inc-conyers-fire-and-chemical-release";
+  const csbPdfBytes = Buffer.from(
+    "%PDF-1.4\n1 0 obj<</Type/Catalog>>endobj\ntrailer<</Root 1 0 R>>\n% fixture-csb-final-pdf-bytes trichloroisocyanuric-acid-runaway-decomposition-sequence\n%%EOF",
+  );
+  writeFileSync(join(csbReportsDir, `${bioId}.pdf`), csbPdfBytes);
+  writeFileSync(
+    join(csbReportsDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "csb-final-investigation-report-pdfs",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-09-01T00:00:00.000Z",
+      asOf: "2026-07-21",
+      license: "17 USC 105",
+      attribution: "U.S. Chemical Safety and Hazard Investigation Board",
+      sources: {
+        index: "https://www.csb.gov/investigations/completed-investigations/",
+        current: "https://www.csb.gov/investigations/current-investigations/",
+        pdfHost: "https://www.csb.gov/assets/",
+      },
+      cards: [
+        {
+          id: bioId,
+          facility: "Bio-Lab Inc. Conyers",
+          date: "2026-07-21",
+          title: "Bio-Lab Inc. Conyers Fire and Chemical Release",
+          pageUrl: "https://www.csb.gov/bio-lab-inc-conyers-fire-and-chemical-release-/",
+          sourceUrl: "https://www.csb.gov/assets/1/20/bio-lab_report__public_record_copy_.pdf",
+          kind: "final-investigation-report",
+          bytes: csbPdfBytes.byteLength,
+          sha256: "fixture",
+          pdfFile: join(csbReportsDir, `${bioId}.pdf`),
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      CSB_REPORTS_DIR: csbReportsDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-csb-reports-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${CSB_REPORTS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /csb-reports must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; mimeType?: string; extra?: { pdf?: boolean; priceAtomic?: number } }[];
+      };
+      assert.equal(body402.resource, CSB_REPORTS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, CSB_REPORTS_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.mimeType, "application/pdf");
+      assert.equal(body402.accepts[0]?.extra?.pdf, true);
+      assert.equal(body402.accepts[0]?.extra?.priceAtomic, Number(CSB_REPORTS_AMOUNT_ATOMIC));
+      const unpaidId = await fetch(`${base}${CSB_REPORTS_PATH}?id=${encodeURIComponent(bioId)}`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /csb-reports?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, CSB_REPORTS_AMOUNT_ATOMIC, "id bag stays $0.05");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("%PDF-"));
+      assert.ok(!leak402.includes("trichloroisocyanuric-acid-runaway-decomposition-sequence"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === CSB_REPORTS_PATH), true);
+      assert.equal(shop.products.length, PUBLIC_BAZAAR_SKUS.length);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(CSB_REPORTS_PATH)), "well-known lists /csb-reports");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /csb-reports"));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[CSB_REPORTS_PATH]);
+      assert.ok(spec.paths[CSB_REPORTS_MANIFEST_PATH]);
+
+      const manifest = await fetch(`${base}${CSB_REPORTS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "csb-reports free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        asOf?: string;
+        cards?: { facility?: string; id?: string; body?: string }[];
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.asOf, "2026-07-21");
+      assert.equal(man.cards?.[0]?.facility, "Bio-Lab Inc. Conyers");
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+      assert.ok(!JSON.stringify(man).includes("%PDF-"));
+      assert.ok(!JSON.stringify(man).includes("trichloroisocyanuric-acid-runaway-decomposition-sequence"));
+
+      const paid = await fetch(`${base}${CSB_REPORTS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      assert.match(paid.headers.get("content-type") ?? "", /application\/pdf/);
+      const paidBuf = Buffer.from(await paid.arrayBuffer());
+      assert.equal(paidBuf.subarray(0, 5).toString(), "%PDF-");
+      assert.ok(paidBuf.toString("utf8").includes("trichloroisocyanuric-acid-runaway-decomposition-sequence"));
+    },
+  );
+
 
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
@@ -6695,7 +6821,7 @@ async function main(): Promise<void> {
     },
     async (base) => {
       assert.equal(cdpEnvStatus(), "CDP env not set");
-      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
+      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
         const unpaid = await fetch(`${base}${path}`);
         assert.equal(unpaid.status, 402, `unpaid ${path} must stay 402`);
         const present = await fetch(`${base}${path}`, { headers: { "X-PAYMENT": "test" } });
@@ -6738,6 +6864,7 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.includes(ORR_ENFORCEMENT_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(PHMSA_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(AAIB_REPORTS_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(CSB_REPORTS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D11_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D7_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D8_PATH)));
@@ -6750,7 +6877,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -6784,6 +6911,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("orr-enforcement"), true);
   assert.equal(isPublicBazaarSku("phmsa-orders"), true);
   assert.equal(isPublicBazaarSku("aaib-reports"), true);
+  assert.equal(isPublicBazaarSku("csb-reports"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
@@ -6821,7 +6949,7 @@ async function main(): Promise<void> {
     assert.equal(persist.paymentHeader, undefined, "paymentHeader is not a CDP field and 400s verify");
     assert.equal(payload.x402Version, 2);
     assert.equal(payload.resource?.url, resource, "CDP v2 persist needs paymentPayload.resource.url");
-    assert.equal(payload.resource?.mimeType, "application/json");
+    assert.equal(payload.resource?.mimeType, sku === "csb-reports" ? "application/pdf" : "application/json");
     assert.ok((payload.resource?.description ?? "").length > 0);
     assert.ok((payload.resource?.description ?? "").length <= 500);
     assert.deepEqual(payload.extensions?.bazaar, bazaarExtension(sku));

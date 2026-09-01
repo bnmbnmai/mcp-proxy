@@ -82,6 +82,8 @@
  * GET /phmsa-orders/manifest.json — free count + operator/CPF/date/sourceUrl (no order body)
  * GET /aaib-reports — UK AAIB investigation-report PDF text ($0.02 id / $0.05 page)
  * GET /aaib-reports/manifest.json — free count + title/registration/aircraft/date/sourceUrl (no report body)
+ * GET /csb-reports — US CSB final investigation report PDF ($0.05 one official PDF)
+ * GET /csb-reports/manifest.json — free count + facility/date/title/pageUrl/sourceUrl (no PDF bytes)
  * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
  * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.05). Listed only when a real body is cached.
@@ -363,6 +365,15 @@ import {
   loadAaibReports,
   loadAaibReportsManifest,
 } from "./aaib-reports.js";
+import {
+  CSB_REPORTS_AMOUNT_ATOMIC,
+  CSB_REPORTS_MANIFEST_PATH,
+  CSB_REPORTS_PATH,
+  loadCsbReports,
+  loadCsbReportsManifest,
+  readCachedPdf,
+  selectCsbReportCard,
+} from "./csb-reports.js";
 import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
@@ -817,7 +828,7 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "ema-referrals" | "cder-reviews" | "npdes-permits" | "ofsted-inspections" | "ofwat-enforcement" | "ofgem-enforcement" | "gain" | "orr-enforcement" | "phmsa-orders" | "aaib-reports" | "form-483" | "gmp" | "gmp-md";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "ema-referrals" | "cder-reviews" | "npdes-permits" | "ofsted-inspections" | "ofwat-enforcement" | "ofgem-enforcement" | "gain" | "orr-enforcement" | "phmsa-orders" | "aaib-reports" | "csb-reports" | "form-483" | "gmp" | "gmp-md";
 /** Always-public SKUs. /form-483, /gmp, and /gmp-md join only when a real observation body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "ticks",
@@ -859,6 +870,7 @@ export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "orr-enforcement",
   "phmsa-orders",
   "aaib-reports",
+  "csb-reports",
 ];
 
 export function form483IsPublic(): boolean {
@@ -946,7 +958,7 @@ function paidCountWord(): string {
 function noNextSkuWord(): string {
   const n = publicBazaarSkus().length;
   const next = NEXT_SKU_WORDS[n] ?? `${n + 1}th`;
-  return `/aaib-reports is a live public SKU on purpose. No ${next} public SKU.`;
+  return `Live public SKU count is well-known. No ${next} public SKU.`;
 }
 
 function amountAtomicFor(sku: DoorSku): string {
@@ -1097,6 +1109,10 @@ function amountAtomicFor(sku: DoorSku): string {
     const raw = env("AAIB_REPORTS_USDC_ATOMIC");
     return raw.length > 0 ? raw : AAIB_REPORTS_AMOUNT_ATOMIC;
   }
+  if (sku === "csb-reports") {
+    const raw = env("CSB_REPORTS_USDC_ATOMIC");
+    return raw.length > 0 ? raw : CSB_REPORTS_AMOUNT_ATOMIC;
+  }
   if (sku === "form-483") {
     const raw = env("FORM_483_USDC_ATOMIC");
     return raw.length > 0 ? raw : FORM_483_AMOUNT_ATOMIC;
@@ -1164,7 +1180,19 @@ function clamp402Description(text: string, mustKeep: string): string {
 }
 
 /** 402 accepts[].description — product + bag + price + where free search is. OpenAPI keeps SKU_COPY. */
+function isPdfCacheSku(sku: DoorSku): boolean {
+  return sku === "csb-reports";
+}
+
+function skuMimeType(sku: DoorSku): string {
+  return isPdfCacheSku(sku) ? "application/pdf" : "application/json";
+}
+
 export function sku402Description(sku: DoorSku): string {
+  if (isPdfCacheSku(sku)) {
+    const extra = `$0.05 one official PDF. Free search: GET ${CANONICAL_ORIGIN}/${sku}/manifest.json?q= (HTTP 200).`;
+    return clamp402Description(`${sku402Product(sku)} ${extra}`, extra);
+  }
   if (isExtractedBodySku(sku)) {
     const free = extractedBodyFreeSearchCopy(sku);
     return clamp402Description(`${sku402Product(sku)} ${PAID_WINDOW_COPY} ${free}`, free);
@@ -1209,6 +1237,14 @@ export function paymentExtra(sku: DoorSku): Record<string, unknown> {
     extra.priceAtomic = Number(SINGLE_DOC_AMOUNT_ATOMIC);
     extra.pageDefault = paidBodyWindow();
     extra.wholeSetIfFewer = true;
+    return extra;
+  }
+  if (isPdfCacheSku(sku)) {
+    extra.searchUrl = `${CANONICAL_ORIGIN}/${sku}/manifest.json?q=`;
+    extra.oneDocPath = `/${sku}?id=`;
+    extra.priceAtomic = Number(amountAtomicFor(sku));
+    extra.pageDefault = 1;
+    extra.pdf = true;
     return extra;
   }
   if (isMarinersSku(sku)) extra.wholeSetIfFewer = true;
@@ -1420,6 +1456,11 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
       "Call GET /aaib-reports when you need official UK AAIB investigation-report TEXT extracted from assets.publishing.service.gov.uk PDFs linked from GOV.UK /aaib-reports. OGL v3.0. Does not invent report text. GOV.UK Content API / Search are synopsis / title / link only — full TEXT is in the PDF. Skip glossary PDFs and the Annual Safety Review. Not RAIB. Distinct from /orr-enforcement. " +
       PAID_WINDOW_COPY,
     resourcePath: AAIB_REPORTS_PATH,
+  },
+  "csb-reports": {
+    description:
+      "Call GET /csb-reports when you need official US Chemical Safety Board final investigation report PDFs from csb.gov/assets. License 17 USC 105. $0.05 one official PDF. Same URL ?id= or ?before= is the next older official PDF for another $0.05.",
+    resourcePath: CSB_REPORTS_PATH,
   },
   "form-483": {
     description:
@@ -2530,6 +2571,34 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
       },
     ],
   },
+  "csb-reports": {
+    ok: true,
+    product: "csb-final-investigation-report-pdfs",
+    status: "ok",
+    fetchedAt: "2026-09-01T00:00:00.000Z",
+    asOf: "2026-07-21",
+    source: "https://www.csb.gov/investigations/completed-investigations/",
+    recordCount: 1,
+    records: [
+      {
+        id: "bio-lab-inc-conyers-fire-and-chemical-release",
+        date: "2026-07-21",
+        firm: "Bio-Lab Inc. Conyers",
+        url: "https://www.csb.gov/assets/1/20/bio-lab_report__public_record_copy_.pdf",
+        type: "csb-reports",
+      },
+    ],
+    cards: [
+      {
+        id: "bio-lab-inc-conyers-fire-and-chemical-release",
+        facility: "Bio-Lab Inc. Conyers",
+        date: "2026-07-21",
+        title: "Bio-Lab Inc. Conyers Fire and Chemical Release",
+        sourceUrl: "https://www.csb.gov/assets/1/20/bio-lab_report__public_record_copy_.pdf",
+        bytes: 5568830,
+      },
+    ],
+  },
   "form-483": {
     ok: true,
     product: "fda-form-483-bodies",
@@ -2624,10 +2693,14 @@ export function bazaarExtension(sku: DoorSku): Record<string, unknown> {
       input: {
         type: "http",
         method: "GET",
-        queryParams: isExtractedBodySku(sku) ? { id: "", before: "", page: "" } : {},
+        queryParams: isExtractedBodySku(sku)
+          ? { id: "", before: "", page: "" }
+          : isPdfCacheSku(sku)
+            ? { id: "", before: "" }
+            : {},
       },
       output: {
-        type: "json",
+        type: isPdfCacheSku(sku) ? "pdf" : "json",
         example: BAZAAR_OUTPUT_EXAMPLE[sku],
       },
     },
@@ -3075,7 +3148,7 @@ export function paymentRequiredBody(
     payTo: PAY_TO,
     resource: resourceUrl,
     description,
-    mimeType: "application/json",
+    mimeType: skuMimeType(sku),
     maxTimeoutSeconds: 60,
     extra: paymentExtra(sku),
     maxAmountRequired: amount,
@@ -3117,7 +3190,7 @@ export function paymentRequiredV2(
     resource: {
       url: resourceUrl,
       description,
-      mimeType: "application/json",
+      mimeType: skuMimeType(sku),
     },
     accepts: [accept],
     extensions: {
@@ -3649,6 +3722,7 @@ export function llmsTxt(): string {
     `- GET /orr-enforcement — $0.05 — ORR Railways Act 1993 s.55 statutory-notice / final-order / investigation-report text (official orr.gov.uk PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /phmsa-orders — $0.05 — PHMSA pipeline enforcement-order text (official primis.phmsa.dot.gov PDFs; NOPV PCP/PCO, Final Order, CAO, Consent Order, Decision on Petition). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /aaib-reports — $0.05 — UK AAIB investigation-report text (official assets.publishing.service.gov.uk PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /csb-reports — $0.05 — US CSB final investigation report PDF (official csb.gov/assets PDFs). One official PDF. Same URL ?id= or ?before=<id or date> is the next older official PDF for another $0.05.`,
   ];
   if (listed483) {
     paid.push(`- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`);
@@ -3705,6 +3779,7 @@ export function llmsTxt(): string {
     "- GET /orr-enforcement/manifest.json — ORR enforcement count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the notice body)",
     "- GET /phmsa-orders/manifest.json — PHMSA enforcement count + operator/CPF/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
     "- GET /aaib-reports/manifest.json — AAIB investigation count + title/registration/aircraft/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the report body)",
+    "- GET /csb-reports/manifest.json — CSB final-report count + facility/date/title/pageUrl/sourceUrl (full catalog; ?q= is free search; not the PDF bytes)",
   ];
   if (listed483) {
     free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (full catalog + page cursor; ?q= is free search; not the observation body)");
@@ -3763,7 +3838,7 @@ function discoveryOrigin(req: IncomingMessage, port: number): string {
 }
 
 function paidDiscoveryPaths(): string[] {
-  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH];
+  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH];
   if (form483IsPublic()) paths.push(FORM_483_PATH);
   if (gmpIsPublic()) paths.push(GMP_PATH);
   if (gmpMdIsPublic()) paths.push(GMP_MD_PATH);
@@ -3970,6 +4045,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const orrEnforcementAtomic = amountAtomicFor("orr-enforcement");
   const phmsaOrdersAtomic = amountAtomicFor("phmsa-orders");
   const aaibReportsAtomic = amountAtomicFor("aaib-reports");
+  const csbReportsAtomic = amountAtomicFor("csb-reports");
   const f483Atomic = amountAtomicFor("form-483");
   const gmpAtomic = amountAtomicFor("gmp");
   const gmpMdAtomic = amountAtomicFor("gmp-md");
@@ -4012,6 +4088,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const orrEnforcementPrice = (Number(orrEnforcementAtomic) / 1e6).toFixed(2);
   const phmsaOrdersPrice = (Number(phmsaOrdersAtomic) / 1e6).toFixed(2);
   const aaibReportsPrice = (Number(aaibReportsAtomic) / 1e6).toFixed(2);
+  const csbReportsPrice = (Number(csbReportsAtomic) / 1e6).toFixed(2);
   const f483Price = (Number(f483Atomic) / 1e6).toFixed(2);
   const gmpPrice = (Number(gmpAtomic) / 1e6).toFixed(2);
   const gmpMdPrice = (Number(gmpMdAtomic) / 1e6).toFixed(2);
@@ -4058,6 +4135,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
     "/orr-enforcement ($0.05)",
     "/phmsa-orders ($0.05)",
     "/aaib-reports ($0.05)",
+    "/csb-reports ($0.05)",
   ];
   if (listed483) paidBits.push("/form-483 ($0.05)");
   if (listedGmp) paidBits.push("/gmp ($0.05)");
@@ -5021,6 +5099,20 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           },
         }),
       },
+      [CSB_REPORTS_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getCsbReports",
+          summary: "US CSB final investigation report PDFs",
+          description: SKU_COPY["csb-reports"].description,
+          priceUsdc: csbReportsPrice,
+          amountAtomic: csbReportsAtomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["csb-reports"],
+          outputSchema: {
+            type: "string",
+            description: "Official CSB final investigation report PDF bytes (application/pdf)",
+          },
+        }),
+      },
       ...(listed483
         ? {
             [FORM_483_PATH]: {
@@ -5344,6 +5436,12 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           "Count, title, registration, aircraft, date, and official PDF URL. Not the report body.",
         ),
       },
+      [CSB_REPORTS_MANIFEST_PATH]: {
+        get: freeOpenApiOp(
+          "CSB final investigation reports free manifest",
+          "Count, facility, date, title, official page, and PDF URL. Not the PDF bytes.",
+        ),
+      },
       ...(listed483
         ? {
             [FORM_483_MANIFEST_PATH]: {
@@ -5420,6 +5518,12 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
 }
 
 function paidOptsFromReq(req: IncomingMessage, sku: DoorSku): PaidBodyOpts | undefined {
+  if (isPdfCacheSku(sku)) {
+    const url = new URL(req.url || "/", "http://127.0.0.1");
+    const id = url.searchParams.get("id")?.trim() || undefined;
+    const before = url.searchParams.get("before")?.trim() || undefined;
+    return { id, before };
+  }
   if (!isExtractedBodySku(sku)) return undefined;
   const url = new URL(req.url || "/", "http://127.0.0.1");
   const opts = paidBodyOptsFromSearch(url.searchParams);
@@ -5467,6 +5571,94 @@ async function servePaid(
     const body = await load(opts);
     logPaid(200);
     sendJson(res, 200, body);
+  };
+
+  if (skipSettle()) {
+    await serve();
+    return;
+  }
+
+  const accept = facilitatorPaymentRequirements(resource, sku, amount);
+  const verified = await facilitatorVerify(payment, accept);
+  if (verified && (await facilitatorSettle(payment, accept))) {
+    await serve();
+    return;
+  }
+  if (await localEip3009Settle(payment, accept)) {
+    await serve();
+    return;
+  }
+  logPaid(402);
+  sendJson(
+    res,
+    402,
+    {
+      ...body402,
+      error: "Payment present but not settled. Set X402_FACILITATOR_URL or pay with a valid x402 X-PAYMENT header.",
+    },
+    { "PAYMENT-REQUIRED": paymentRequiredHeader },
+  );
+}
+
+function sendPdf(
+  res: ServerResponse,
+  status: number,
+  bytes: Uint8Array,
+  filename: string,
+  extraHeaders: Record<string, string> = {},
+): void {
+  res.writeHead(status, {
+    "Content-Type": "application/pdf",
+    "Content-Disposition": `inline; filename="${filename}"`,
+    "Cache-Control": "no-store",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Expose-Headers": "PAYMENT-REQUIRED, X-PAYMENT-RESPONSE, PAYMENT-RESPONSE",
+    ...extraHeaders,
+  });
+  res.end(Buffer.from(bytes));
+}
+
+async function servePaidPdf(
+  req: IncomingMessage,
+  res: ServerResponse,
+  port: number,
+  sku: DoorSku,
+  load: (opts?: PaidBodyOpts) => Promise<{ bytes: Uint8Array; filename: string } | null>,
+): Promise<void> {
+  const copy = SKU_COPY[sku];
+  const payment = paymentHeader(req);
+  const opts = paidOptsFromReq(req, sku);
+  const amount = amountAtomicForRequest(sku, opts);
+  const resource = resourceUrl(req, port, paidBodyQueryPath(copy.resourcePath, opts));
+  const body402 = paymentRequiredBody(resource, sku, amount);
+  const v2 = paymentRequiredV2(resource, sku, amount);
+  const paymentRequiredHeader = Buffer.from(JSON.stringify(v2), "utf-8").toString("base64");
+
+  const logPaid = (status: number) => {
+    logShopRequest(req, {
+      kind: "paid-door",
+      path: copy.resourcePath,
+      status,
+      id: opts?.id,
+      paymentHeader: Boolean(payment),
+    });
+  };
+
+  if (!payment) {
+    logPaid(402);
+    sendJson(res, 402, body402, { "PAYMENT-REQUIRED": paymentRequiredHeader });
+    return;
+  }
+
+  const serve = async () => {
+    const packed = await load(opts);
+    if (!packed) {
+      logPaid(404);
+      sendJson(res, 404, { error: "not_found", path: copy.resourcePath });
+      return;
+    }
+    logPaid(200);
+    sendPdf(res, 200, packed.bytes, packed.filename);
   };
 
   if (skipSettle()) {
@@ -5828,6 +6020,13 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
           priceUsdc: "0.05",
           amountAtomic: amountAtomicFor("aaib-reports"),
           manifest: AAIB_REPORTS_MANIFEST_PATH,
+        },
+        {
+          path: CSB_REPORTS_PATH,
+          product: "csb-final-investigation-report-pdfs",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("csb-reports"),
+          manifest: CSB_REPORTS_MANIFEST_PATH,
         },
         ...(form483IsPublic()
           ? [
@@ -6290,6 +6489,23 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === CSB_REPORTS_MANIFEST_PATH) {
+    sendJson(res, 200, withShopDiscovery(await loadCsbReportsManifest(url.searchParams.get("q") ?? undefined), req, port));
+    return;
+  }
+
+  if (path === CSB_REPORTS_PATH) {
+    await servePaidPdf(req, res, port, "csb-reports", async (opts) => {
+      const snap = await loadCsbReports();
+      const card = selectCsbReportCard(snap, { id: opts?.id, before: opts?.before });
+      if (!card) return null;
+      const bytes = readCachedPdf(card);
+      if (!bytes) return null;
+      return { bytes, filename: `${card.id}.pdf` };
+    });
+    return;
+  }
+
   if (path === FORM_483_MANIFEST_PATH) {
     sendExtractedManifest(req, res, port, url, await loadForm483Manifest());
     return;
@@ -6325,7 +6541,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, OFWAT_ENFORCEMENT_PATH, OFWAT_ENFORCEMENT_MANIFEST_PATH, OFGEM_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_MANIFEST_PATH, GAIN_PATH, GAIN_MANIFEST_PATH, ORR_ENFORCEMENT_PATH, ORR_ENFORCEMENT_MANIFEST_PATH, PHMSA_ORDERS_PATH, PHMSA_ORDERS_MANIFEST_PATH, AAIB_REPORTS_PATH, AAIB_REPORTS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, SAMPLE_PATH, FIRM_CHECK_PATH, X402LIST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, OFWAT_ENFORCEMENT_PATH, OFWAT_ENFORCEMENT_MANIFEST_PATH, OFGEM_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_MANIFEST_PATH, GAIN_PATH, GAIN_MANIFEST_PATH, ORR_ENFORCEMENT_PATH, ORR_ENFORCEMENT_MANIFEST_PATH, PHMSA_ORDERS_PATH, PHMSA_ORDERS_MANIFEST_PATH, AAIB_REPORTS_PATH, AAIB_REPORTS_MANIFEST_PATH, CSB_REPORTS_PATH, CSB_REPORTS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, SAMPLE_PATH, FIRM_CHECK_PATH, X402LIST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
 }
 
 export function bindHost(): string {
@@ -6392,6 +6608,7 @@ if (isMain()) {
     console.error(`${ORR_ENFORCEMENT_PATH} $${Number(amountAtomicFor("orr-enforcement")) / 1e6} USDC`);
     console.error(`${PHMSA_ORDERS_PATH} $${Number(amountAtomicFor("phmsa-orders")) / 1e6} USDC`);
     console.error(`${AAIB_REPORTS_PATH} $${Number(amountAtomicFor("aaib-reports")) / 1e6} USDC`);
+    console.error(`${CSB_REPORTS_PATH} $${Number(amountAtomicFor("csb-reports")) / 1e6} USDC`);
     console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
     console.error(`${GMP_PATH} $${Number(amountAtomicFor("gmp")) / 1e6} USDC${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
     console.error(`${GMP_MD_PATH} $${Number(amountAtomicFor("gmp-md")) / 1e6} USDC${gmpMdIsPublic() ? "" : " (unlisted until a real MD observation body is cached)"}`);
