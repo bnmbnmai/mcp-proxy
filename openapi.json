@@ -8,7 +8,7 @@
       "name": "BNM Data Shop",
       "url": "https://bnm.farm/"
     },
-    "x-guidance": "Forty-two paid GETs: /ticks ($0.05), /import-alerts ($0.05), /mariners ($0.05), /mariners-d11 ($0.05), /mariners-d7 ($0.05), /mariners-d8 ($0.05), /warning-letters ($0.05), /untitled-letters ($0.05), /awa ($0.05), /swisspar ($0.05), /pcac ($0.05), /ftc-wl ($0.05), /cfpb-orders ($0.05), /occ-cd ($0.05), /fdic-orders ($0.05), /frb-orders ($0.05), /ncua-orders ($0.05), /fincen-orders ($0.05), /ferc-orders ($0.05), /ofac-orders ($0.05), /bis-orders ($0.05), /cftc-orders ($0.05), /fifra-orders ($0.05), /denovo-orders ($0.05), /ttb-oic ($0.05), /air-letters ($0.05), /superfund-rods ($0.05), /ico-mpn ($0.05), /cma-ca98 ($0.05), /ema-referrals ($0.05), /cder-reviews ($0.05), /npdes-permits ($0.05), /ofsted-inspections ($0.05), /ofwat-enforcement ($0.05), /ofgem-enforcement ($0.05), /gain ($0.05), /orr-enforcement ($0.05), /phmsa-orders ($0.05), /aaib-reports ($0.05), /form-483 ($0.05), /gmp ($0.05), /gmp-md ($0.05), USDC on Base. Extracted-body doors: free index/search on /{door}/manifest.json or /{door}/index (?q=, optional before/date), then pay one official text GET ?id= ($0.02) or the page ($0.05). newest 10 official texts on a plain GET ($0.05), or the whole current set if fewer; older pages on the same URL (?before, another $0.05). Table doors (/ticks, /import-alerts) stay the whole current table. Free canned paid-JSON keys: GET /sample (HTTP 200, not a SKU). Free firm-name search: GET /firm-check?q= (HTTP 200, not a SKU). Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402 (GET or POST '{}'). MCP at GET/POST /mcp lists one tool per paid GET plus free search, free firm-check, paid get-one ($0.02), and paid get-page ($0.05). Free manifests do not include the paid body. GET has no request body. /aaib-reports is a live public SKU on purpose. No forty-third public SKU."
+    "x-guidance": "Forty-three paid GETs: /ticks ($0.05), /import-alerts ($0.05), /mariners ($0.05), /mariners-d11 ($0.05), /mariners-d7 ($0.05), /mariners-d8 ($0.05), /warning-letters ($0.05), /untitled-letters ($0.05), /awa ($0.05), /swisspar ($0.05), /pcac ($0.05), /ftc-wl ($0.05), /cfpb-orders ($0.05), /occ-cd ($0.05), /fdic-orders ($0.05), /frb-orders ($0.05), /ncua-orders ($0.05), /fincen-orders ($0.05), /ferc-orders ($0.05), /ofac-orders ($0.05), /bis-orders ($0.05), /cftc-orders ($0.05), /fifra-orders ($0.05), /denovo-orders ($0.05), /ttb-oic ($0.05), /air-letters ($0.05), /superfund-rods ($0.05), /ico-mpn ($0.05), /cma-ca98 ($0.05), /ema-referrals ($0.05), /cder-reviews ($0.05), /npdes-permits ($0.05), /ofsted-inspections ($0.05), /ofwat-enforcement ($0.05), /ofgem-enforcement ($0.05), /gain ($0.05), /orr-enforcement ($0.05), /phmsa-orders ($0.05), /aaib-reports ($0.05), /csb-reports ($0.05), /form-483 ($0.05), /gmp ($0.05), /gmp-md ($0.05), USDC on Base. Extracted-body doors: free index/search on /{door}/manifest.json or /{door}/index (?q=, optional before/date), then pay one official text GET ?id= ($0.02) or the page ($0.05). newest 10 official texts on a plain GET ($0.05), or the whole current set if fewer; older pages on the same URL (?before, another $0.05). Table doors (/ticks, /import-alerts) stay the whole current table. Free canned paid-JSON keys: GET /sample (HTTP 200, not a SKU). Free firm-name search: GET /firm-check?q= (HTTP 200, not a SKU). Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402 (GET or POST '{}'). MCP at GET/POST /mcp lists one tool per paid GET plus free search, free firm-check, paid get-one ($0.02), and paid get-page ($0.05). Free manifests do not include the paid body. GET has no request body. Live public SKU count is well-known. No forty-fourth public SKU."
   },
   "x-discovery": {
     "ownershipProofs": [
@@ -6086,6 +6086,90 @@
         }
       }
     },
+    "/csb-reports": {
+      "get": {
+        "operationId": "getCsbReports",
+        "summary": "US CSB final investigation report PDFs",
+        "description": "Call GET /csb-reports when you need official US Chemical Safety Board final investigation report PDFs from csb.gov/assets. License 17 USC 105. $0.05 one official PDF. Same URL ?id= or ?before= is the next older official PDF for another $0.05.",
+        "tags": [
+          "paid"
+        ],
+        "security": [
+          {
+            "x402": []
+          }
+        ],
+        "parameters": [],
+        "x-auth": {
+          "mode": "x402"
+        },
+        "x-payment-info": {
+          "protocols": [
+            {
+              "x402": {
+                "scheme": "exact",
+                "network": "eip155:8453",
+                "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+                "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+                "amount": "50000"
+              }
+            }
+          ],
+          "price": {
+            "mode": "fixed",
+            "currency": "USD",
+            "amount": "0.05"
+          },
+          "network": "eip155:8453",
+          "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004"
+        },
+        "responses": {
+          "200": {
+            "description": "Paid JSON body after a valid x402 settlement",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "description": "Official CSB final investigation report PDF bytes (application/pdf)"
+                },
+                "example": {
+                  "ok": true,
+                  "product": "csb-final-investigation-report-pdfs",
+                  "status": "ok",
+                  "fetchedAt": "2026-09-01T00:00:00.000Z",
+                  "asOf": "2026-07-21",
+                  "source": "https://www.csb.gov/investigations/completed-investigations/",
+                  "recordCount": 1,
+                  "records": [
+                    {
+                      "id": "bio-lab-inc-conyers-fire-and-chemical-release",
+                      "date": "2026-07-21",
+                      "firm": "Bio-Lab Inc. Conyers",
+                      "url": "https://www.csb.gov/assets/1/20/bio-lab_report__public_record_copy_.pdf",
+                      "type": "csb-reports"
+                    }
+                  ],
+                  "cards": [
+                    {
+                      "id": "bio-lab-inc-conyers-fire-and-chemical-release",
+                      "facility": "Bio-Lab Inc. Conyers",
+                      "date": "2026-07-21",
+                      "title": "Bio-Lab Inc. Conyers Fire and Chemical Release",
+                      "sourceUrl": "https://www.csb.gov/assets/1/20/bio-lab_report__public_record_copy_.pdf",
+                      "bytes": 5568830
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+          }
+        }
+      }
+    },
     "/form-483": {
       "get": {
         "operationId": "getForm483",
@@ -8330,6 +8414,31 @@
         }
       }
     },
+    "/csb-reports/manifest.json": {
+      "get": {
+        "summary": "CSB final investigation reports free manifest",
+        "description": "Count, facility, date, title, official page, and PDF URL. Not the PDF bytes.",
+        "tags": [
+          "free"
+        ],
+        "security": [],
+        "x-auth": {
+          "mode": "none"
+        },
+        "responses": {
+          "200": {
+            "description": "Free JSON catalog / discovery document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/form-483/manifest.json": {
       "get": {
         "summary": "FDA Form 483 free manifest",
@@ -8495,7 +8604,7 @@
     "/.well-known/x402": {
       "get": {
         "summary": "x402 well-known fan-out",
-        "description": "Absolute URLs of the forty-two live paid routes only.",
+        "description": "Absolute URLs of the forty-three live paid routes only.",
         "tags": [
           "free"
         ],
@@ -8545,7 +8654,7 @@
     "/llms.txt": {
       "get": {
         "summary": "Short agent guidance",
-        "description": "The forty-two paid doors and free discovery URLs. Not a paid SKU.",
+        "description": "The forty-three paid doors and free discovery URLs. Not a paid SKU.",
         "tags": [
           "free"
         ],
@@ -8570,7 +8679,7 @@
     "/mcp": {
       "get": {
         "summary": "MCP discovery",
-        "description": "Streamable HTTP MCP for the same forty-two paid GETs. Not a paid SKU. Connect: npx -y mcp-remote https://ticks.bnm.farm/mcp",
+        "description": "Streamable HTTP MCP for the same forty-three paid GETs. Not a paid SKU. Connect: npx -y mcp-remote https://ticks.bnm.farm/mcp",
         "tags": [
           "free"
         ],
@@ -8618,7 +8727,7 @@
     "/": {
       "get": {
         "summary": "Shop discovery JSON",
-        "description": "payTo, network, and the forty-two public products.",
+        "description": "payTo, network, and the forty-three public products.",
         "tags": [
           "free"
         ],

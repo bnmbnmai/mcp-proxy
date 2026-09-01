@@ -10,6 +10,9 @@ const REQUIRED_LIVE_PATHS = [
     "/ofgem-enforcement",
     "/gain",
     "/orr-enforcement",
+    "/phmsa-orders",
+    "/aaib-reports",
+    "/csb-reports",
     "/form-483",
     "/gmp",
     "/gmp-md",
@@ -64,8 +67,8 @@ async function main() {
         assert.ok(shopIndexOnDisk.includes(`\`${path}\``), `checked-in SHOP-INDEX lists ${path}`);
     }
     assert.ok(!shopIndexOnDisk.includes("36 doors"), "checked-in SHOP-INDEX dropped the stale 36");
-    const liveOpenapiHasFour = ["/ofwat-enforcement", "/ofgem-enforcement", "/gain", "/orr-enforcement"].every((p) => Boolean(live.openApi.paths?.[p]));
-    assert.ok(liveOpenapiHasFour, "live OpenAPI already lists the four doors");
+    const liveOpenapiHasFour = ["/ofwat-enforcement", "/ofgem-enforcement", "/gain", "/orr-enforcement", "/csb-reports"].every((p) => Boolean(live.openApi.paths?.[p]));
+    assert.ok(liveOpenapiHasFour, "live OpenAPI already lists the four doors plus /csb-reports");
     console.log(`shop-catalog tests ok (live paid GETs: ${paths.length}; MCP extras: ${extraMcpToolNames().join(",")})`);
 }
 main().catch((err) => {

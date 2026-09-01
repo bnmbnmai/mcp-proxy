@@ -73,6 +73,7 @@ npx -y mcp-remote https://ticks.bnm.farm/mcp
 | `/orr-enforcement` | ORR Railways Act 1993 s.55 statutory-notice / final-order / investigation-report text. Newest 10 official texts | $0.02 / $0.05 |
 | `/phmsa-orders` | PHMSA pipeline enforcement-order text (official primis.phmsa.dot.gov PDFs). Newest 10 official texts | $0.02 / $0.05 |
 | `/aaib-reports` | UK AAIB investigation-report text (official assets.publishing.service.gov.uk PDFs). Newest 10 official texts | $0.02 / $0.05 |
+| `/csb-reports` | US CSB final investigation report PDFs. One official PDF | $0.05 |
 | `/form-483` | FDA Form 483 inspectional observation bodies. Newest 10 official texts | $0.02 / $0.05 |
 | `/gmp` | Health Canada Drug GMP report-card observation text + C.02 cites. Newest 10 official texts | $0.02 / $0.05 |
 | `/gmp-md` | Health Canada medical-device report-card observation text + MDR cites. Newest 10 official texts | $0.02 / $0.05 |
