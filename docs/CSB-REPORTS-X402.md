@@ -14,6 +14,7 @@ This cloud VM cannot publish `ticks.bnm.farm` and must not restart `idaho-ticks-
 cd ~/projects/mcp-proxy
 git fetch origin cursor/apply-csb-reports-705d
 git checkout cursor/apply-csb-reports-705d
+# apply SHA: b7d4b910367f3261c71df9fc1c8b2ce25f782aa1
 export CSB_REPORTS_DIR=$HOME/projects/mcp-proxy/data/csb-reports
 mkdir -p "$CSB_REPORTS_DIR"
 npm run build
