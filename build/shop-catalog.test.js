@@ -10,6 +10,9 @@ const REQUIRED_LIVE_PATHS = [
     "/ofgem-enforcement",
     "/gain",
     "/orr-enforcement",
+    "/phmsa-orders",
+    "/aaib-reports",
+    "/csb-reports",
     "/form-483",
     "/gmp",
     "/gmp-md",
@@ -24,6 +27,11 @@ async function main() {
     assert.equal(two[0].kind, "table");
     assert.equal(two[1].path, "/ofwat-enforcement");
     assert.equal(two[1].kind, "body");
+    const pdf = skusFromWellKnown(fixtureWellKnown(["/csb-reports"]))[0];
+    assert.equal(pdf.kind, "pdf");
+    assert.equal(pdf.price, "$0.05");
+    assert.match(pdf.bag, /US CSB final investigation report PDFs/);
+    assert.doesNotMatch(pdf.bag, /not this|SaferProducts|CPSC/i);
     const md2 = shopIndexMarkdown(two);
     assert.match(md2, /\/ofwat-enforcement/);
     assert.doesNotMatch(md2, /36 doors|40 doors|Thirty-six|Forty paid/);
@@ -59,8 +67,8 @@ async function main() {
         assert.ok(shopIndexOnDisk.includes(`\`${path}\``), `checked-in SHOP-INDEX lists ${path}`);
     }
     assert.ok(!shopIndexOnDisk.includes("36 doors"), "checked-in SHOP-INDEX dropped the stale 36");
-    const liveOpenapiHasFour = ["/ofwat-enforcement", "/ofgem-enforcement", "/gain", "/orr-enforcement"].every((p) => Boolean(live.openApi.paths?.[p]));
-    assert.ok(liveOpenapiHasFour, "live OpenAPI already lists the four doors");
+    const liveOpenapiHasFour = ["/ofwat-enforcement", "/ofgem-enforcement", "/gain", "/orr-enforcement", "/csb-reports"].every((p) => Boolean(live.openApi.paths?.[p]));
+    assert.ok(liveOpenapiHasFour, "live OpenAPI already lists the four doors plus /csb-reports");
     console.log(`shop-catalog tests ok (live paid GETs: ${paths.length}; MCP extras: ${extraMcpToolNames().join(",")})`);
 }
 main().catch((err) => {

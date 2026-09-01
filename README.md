@@ -7,7 +7,8 @@ Shop: [https://bnm.farm/](https://bnm.farm/) · Agent brief: [https://ticks.bnm.
 ## Bags and prices
 
 - **Tables** (`GET /ticks`, `GET /import-alerts`) — **$0.05** = the entire current table.
-- **Body doors** (the other paid GETs) — free search `GET https://ticks.bnm.farm/{door}/manifest.json?q=` (HTTP 200) returns `id` and the `?id=` URL. Then pay `GET ?id=` (**$0.02**, one official text) or the page (**$0.05**, newest 10 official texts; older page `?before=`, another $0.05).
+- **Body doors** — free search `GET https://ticks.bnm.farm/{door}/manifest.json?q=` (HTTP 200) returns `id` and the `?id=` URL. Then pay `GET ?id=` (**$0.02**, one official text) or the page (**$0.05**, newest 10 official texts; older page `?before=`, another $0.05).
+- **PDF doors** (`GET /csb-reports`) — **$0.05** one official PDF. Free search on `/{door}/manifest.json?q=`.
 
 Unpaid GET on a paid path returns HTTP 402 with `PAYMENT-REQUIRED`. No request body.
 
@@ -70,6 +71,9 @@ npx -y mcp-remote https://ticks.bnm.farm/mcp
 | `/ofgem-enforcement` | Ofgem enforcement-notice / s.27A penalty-proposal / confirmed and provisional-order text. Newest 10 official texts | $0.02 / $0.05 |
 | `/gain` | USDA FAS GAIN attaché report TEXT. Newest 10 official texts | $0.02 / $0.05 |
 | `/orr-enforcement` | ORR Railways Act 1993 s.55 statutory-notice / final-order / investigation-report text. Newest 10 official texts | $0.02 / $0.05 |
+| `/phmsa-orders` | PHMSA pipeline enforcement-order text (official primis.phmsa.dot.gov PDFs). Newest 10 official texts | $0.02 / $0.05 |
+| `/aaib-reports` | UK AAIB investigation-report text (official assets.publishing.service.gov.uk PDFs). Newest 10 official texts | $0.02 / $0.05 |
+| `/csb-reports` | US CSB final investigation report PDFs. One official PDF | $0.05 |
 | `/form-483` | FDA Form 483 inspectional observation bodies. Newest 10 official texts | $0.02 / $0.05 |
 | `/gmp` | Health Canada Drug GMP report-card observation text + C.02 cites. Newest 10 official texts | $0.02 / $0.05 |
 | `/gmp-md` | Health Canada medical-device report-card observation text + MDR cites. Newest 10 official texts | $0.02 / $0.05 |

@@ -11,6 +11,7 @@ export declare const USDC = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913";
 export declare const NETWORK = "eip155:8453";
 export declare const TABLE_PATHS: Set<string>;
 export declare const MARINER_PATHS: Set<string>;
+export declare const PDF_PATHS: Set<string>;
 export declare const SEARCH_TOOL_NAME = "search";
 export declare const FIRM_CHECK_TOOL_NAME = "firm-check";
 export declare const GET_PAGE_TOOL_NAME = "get-page";
@@ -36,7 +37,7 @@ export type OpenApiDoc = {
 export type LivePaidSku = {
     path: string;
     name: string;
-    kind: "table" | "mariners" | "body";
+    kind: "table" | "mariners" | "body" | "pdf";
     price: string;
     bag: string;
     searchMd: string;
