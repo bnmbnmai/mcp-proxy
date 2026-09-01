@@ -1,0 +1,105 @@
+{
+  "product": "csb-final-investigation-report-pdfs",
+  "name": "US CSB final investigation report PDFs",
+  "free": true,
+  "note": "Free index for /csb-reports. Count + facility + date + official CSB page + PDF URL only. Paid GET /csb-reports is the official final investigation report PDF. License 17 USC 105.",
+  "license": "17 USC 105",
+  "attribution": "U.S. Chemical Safety and Hazard Investigation Board",
+  "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+  "network": "base",
+  "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+  "amountAtomic": "50000",
+  "priceUsdc": "0.05",
+  "asOf": "2026-07-21",
+  "cardCount": 10,
+  "cards": [
+    {
+      "id": "bio-lab-inc-conyers-fire-and-chemical-release",
+      "facility": "Bio-Lab Inc. Conyers",
+      "date": "2026-07-21",
+      "title": "Bio-Lab Inc. Conyers Fire and Chemical Release",
+      "pageUrl": "https://www.csb.gov/bio-lab-inc-conyers-fire-and-chemical-release-/",
+      "sourceUrl": "https://www.csb.gov/assets/1/20/bio-lab_report__public_record_copy_.pdf"
+    },
+    {
+      "id": "givaudan-sense-colour-explosion",
+      "facility": "Givaudan Sense Colour",
+      "date": "2026-05-27",
+      "title": "Givaudan Sense Colour Explosion",
+      "pageUrl": "https://www.csb.gov/givaudan-sense-colour-explosion-/",
+      "sourceUrl": "https://www.csb.gov/assets/1/20/givaudan_investigation_report_publication.pdf"
+    },
+    {
+      "id": "dow-louisiana-operations-explosions",
+      "facility": "Dow Louisiana Operations",
+      "date": "2026-02-26",
+      "title": "Dow Louisiana Operations Explosions",
+      "pageUrl": "https://www.csb.gov/dow-louisiana-operations-explosions/",
+      "sourceUrl": "https://www.csb.gov/assets/1/20/dow_investigation_report-final_(002).pdf"
+    },
+    {
+      "id": "pemex-deer-park-chemical-release",
+      "facility": "PEMEX Deer Park",
+      "date": "2026-02-23",
+      "title": "PEMEX Deer Park Chemical Release",
+      "pageUrl": "https://www.csb.gov/pemex-deer-park-chemical-release-/",
+      "sourceUrl": "https://www.csb.gov/assets/1/20/pemex_investigation_report_final.pdf"
+    },
+    {
+      "id": "honeywell-geismar-chlorine-and-hydrogen-fluoride-releases",
+      "facility": "Honeywell Geismar",
+      "date": "2025-05-27",
+      "title": "Honeywell Geismar Chlorine and Hydrogen Fluoride Releases",
+      "pageUrl": "https://www.csb.gov/honeywell-geismar-chlorine-and-hydrogen-fluoride-releases/",
+      "sourceUrl": "https://www.csb.gov/assets/1/20/honeywell_geismar_investigation_report_-_final.pdf"
+    },
+    {
+      "id": "marathon-martinez-renewable-fuels-fire",
+      "facility": "Marathon Martinez Renewable Fuels",
+      "date": "2025-03-13",
+      "title": "Marathon Martinez Renewable Fuels Fire",
+      "pageUrl": "https://www.csb.gov/marathon-martinez-renewable-fuels-fire-/",
+      "sourceUrl": "https://www.csb.gov/assets/1/6/marathon_martinez_2025-03-12_forpublication.pdf"
+    },
+    {
+      "id": "didion-milling-company-explosion-and-fire",
+      "facility": "Didion Milling Company",
+      "date": "2023-12-06",
+      "title": "Didion Milling Company Explosion and Fire",
+      "pageUrl": "https://www.csb.gov/didion-milling-company-explosion-and-fire-/",
+      "sourceUrl": "https://www.csb.gov/assets/1/6/didion_milling_report_for_public_release.pdf"
+    },
+    {
+      "id": "yenkin-majestic-resin-plant-vapor-cloud-explosion-and-fire",
+      "facility": "Yenkin-Majestic Resin Plant",
+      "date": "2023-11-30",
+      "title": "Yenkin-Majestic Resin Plant Vapor Cloud Explosion and Fire",
+      "pageUrl": "https://www.csb.gov/yenkin-majestic-resin-plant-vapor-cloud-explosion-and-fire/",
+      "sourceUrl": "https://www.csb.gov/assets/1/6/yenkin-majestic_report_for_public_release-upload.pdf"
+    },
+    {
+      "id": "optima-belle-explosion-and-fire",
+      "facility": "Optima Belle",
+      "date": "2023-07-06",
+      "title": "Optima Belle Explosion and Fire",
+      "pageUrl": "https://www.csb.gov/optima-belle-explosion-and-fire/",
+      "sourceUrl": "https://www.csb.gov/assets/1/20/optima_report_for_publication.pdf"
+    },
+    {
+      "id": "kuraray-pasadena-release-and-fire",
+      "facility": "Kuraray Pasadena",
+      "date": "2022-12-21",
+      "title": "Kuraray Pasadena Release and Fire",
+      "pageUrl": "https://www.csb.gov/kuraray-pasadena-release-and-fire/",
+      "sourceUrl": "https://www.csb.gov/assets/1/20/kuraray_america_inc_final_report_2022-12-16.pdf"
+    }
+  ],
+  "schema": {
+    "fields": ["id", "facility", "date", "title", "pageUrl", "sourceUrl"]
+  },
+  "sources": {
+    "index": "https://www.csb.gov/investigations/completed-investigations/",
+    "current": "https://www.csb.gov/investigations/current-investigations/",
+    "pdfHost": "https://www.csb.gov/assets/"
+  }
+}

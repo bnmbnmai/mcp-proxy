@@ -15,8 +15,9 @@
     "sync:live-shop": "node scripts/sync-live-shop.mjs",
     "collect:ticks-ams-leftovers": "node build/ticks-ams-leftovers.js",
     "test:shop-catalog": "node build/shop-catalog.test.js",
+    "test:csb-reports": "node build/csb-reports.test.js",
     "test:ticks-ams-leftovers": "node build/ticks-ams-leftovers.test.js",
-    "test": "npm run test:shop-catalog && npm run test:ticks-ams-leftovers"
+    "test": "npm run test:shop-catalog && npm run test:csb-reports && npm run test:ticks-ams-leftovers"
   },
   "files": [
     "build",

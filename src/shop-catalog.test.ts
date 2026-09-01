@@ -37,6 +37,11 @@ async function main(): Promise<void> {
   assert.equal(two[0].kind, "table");
   assert.equal(two[1].path, "/ofwat-enforcement");
   assert.equal(two[1].kind, "body");
+  const pdf = skusFromWellKnown(fixtureWellKnown(["/csb-reports"]))[0];
+  assert.equal(pdf.kind, "pdf");
+  assert.equal(pdf.price, "$0.05");
+  assert.match(pdf.bag, /US CSB final investigation report PDFs/);
+  assert.doesNotMatch(pdf.bag, /not this|SaferProducts|CPSC/i);
   const md2 = shopIndexMarkdown(two);
   assert.match(md2, /\/ofwat-enforcement/);
   assert.doesNotMatch(md2, /36 doors|40 doors|Thirty-six|Forty paid/);

@@ -11,6 +11,7 @@ export const USDC = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913";
 export const NETWORK = "eip155:8453";
 export const TABLE_PATHS = new Set(["/ticks", "/import-alerts"]);
 export const MARINER_PATHS = new Set(["/mariners", "/mariners-d11", "/mariners-d7", "/mariners-d8"]);
+export const PDF_PATHS = new Set(["/csb-reports"]);
 export const SEARCH_TOOL_NAME = "search";
 export const FIRM_CHECK_TOOL_NAME = "firm-check";
 export const GET_PAGE_TOOL_NAME = "get-page";
@@ -53,6 +54,9 @@ const BAG_BY_PATH = {
     "/ofgem-enforcement": "Ofgem enforcement-notice / s.27A penalty-proposal / confirmed and provisional-order text. Newest 10 official texts",
     "/gain": "USDA FAS GAIN attaché report TEXT. Newest 10 official texts",
     "/orr-enforcement": "ORR Railways Act 1993 s.55 statutory-notice / final-order / investigation-report text. Newest 10 official texts",
+    "/phmsa-orders": "PHMSA pipeline enforcement-order text (official primis.phmsa.dot.gov PDFs). Newest 10 official texts",
+    "/aaib-reports": "UK AAIB investigation-report text (official assets.publishing.service.gov.uk PDFs). Newest 10 official texts",
+    "/csb-reports": "US CSB final investigation report PDFs. One official PDF",
     "/form-483": "FDA Form 483 inspectional observation bodies. Newest 10 official texts",
     "/gmp": "Health Canada Drug GMP report-card observation text + C.02 cites. Newest 10 official texts",
     "/gmp-md": "Health Canada medical-device report-card observation text + MDR cites. Newest 10 official texts",
@@ -74,6 +78,8 @@ export function skuKind(path) {
         return "table";
     if (MARINER_PATHS.has(path))
         return "mariners";
+    if (PDF_PATHS.has(path))
+        return "pdf";
     return "body";
 }
 export function skuPrice(kind) {
@@ -86,7 +92,7 @@ export function searchMarkdown(path) {
     if (path === "/import-alerts") {
         return `[firm-check?q=](${LIVE_ORIGIN}/firm-check?q=) · [manifest.json](${LIVE_ORIGIN}${path}/manifest.json)`;
     }
-    if (skuKind(path) === "body") {
+    if (skuKind(path) === "body" || skuKind(path) === "pdf") {
         return `[manifest.json?q=](${LIVE_ORIGIN}${path}/manifest.json?q=)`;
     }
     return `[manifest.json](${LIVE_ORIGIN}${path}/manifest.json)`;
@@ -98,6 +104,8 @@ export function bagForPath(path, openApi) {
     const op = openApi?.paths?.[path]?.get;
     const summary = typeof op?.summary === "string" ? op.summary.trim() : "";
     if (summary) {
+        if (skuKind(path) === "pdf")
+            return `${summary}. One official PDF`;
         return skuKind(path) === "body" ? `${summary}. Newest 10 official texts` : summary;
     }
     return `Official public-data GET ${path}`;
@@ -182,7 +190,7 @@ MCP at \`/mcp\` is generated from live [/.well-known/x402](https://ticks.bnm.far
 
 ## Live paid GETs
 
-Same order as live [/.well-known/x402](https://ticks.bnm.farm/.well-known/x402). Tables: **$0.05** = entire current table. Mariners: **$0.05** = this week's LNM. Body doors: free search, then **$0.02** one official text (\`?id=\`) or **$0.05** newest 10 (older page \`?before=\`).
+Same order as live [/.well-known/x402](https://ticks.bnm.farm/.well-known/x402). Tables: **$0.05** = entire current table. Mariners: **$0.05** = this week's LNM. Body doors: free search, then **$0.02** one official text (\`?id=\`) or **$0.05** newest 10 (older page \`?before=\`). PDF doors: **$0.05** one official PDF.
 
 | Path | Bag | Price | Search |
 | --- | --- | --- | --- |
@@ -202,7 +210,8 @@ Shop: [https://bnm.farm/](https://bnm.farm/) · Agent brief: [https://ticks.bnm.
 ## Bags and prices
 
 - **Tables** (\`GET /ticks\`, \`GET /import-alerts\`) — **$0.05** = the entire current table.
-- **Body doors** (the other paid GETs) — free search \`GET https://ticks.bnm.farm/{door}/manifest.json?q=\` (HTTP 200) returns \`id\` and the \`?id=\` URL. Then pay \`GET ?id=\` (**$0.02**, one official text) or the page (**$0.05**, newest 10 official texts; older page \`?before=\`, another $0.05).
+- **Body doors** — free search \`GET https://ticks.bnm.farm/{door}/manifest.json?q=\` (HTTP 200) returns \`id\` and the \`?id=\` URL. Then pay \`GET ?id=\` (**$0.02**, one official text) or the page (**$0.05**, newest 10 official texts; older page \`?before=\`, another $0.05).
+- **PDF doors** (\`GET /csb-reports\`) — **$0.05** one official PDF. Free search on \`/{door}/manifest.json?q=\`.
 
 Unpaid GET on a paid path returns HTTP 402 with \`PAYMENT-REQUIRED\`. No request body.
 

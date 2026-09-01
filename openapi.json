@@ -8,7 +8,7 @@
       "name": "BNM Data Shop",
       "url": "https://bnm.farm/"
     },
-    "x-guidance": "Forty paid GETs: /ticks ($0.05), /import-alerts ($0.05), /mariners ($0.05), /mariners-d11 ($0.05), /mariners-d7 ($0.05), /mariners-d8 ($0.05), /warning-letters ($0.05), /untitled-letters ($0.05), /awa ($0.05), /swisspar ($0.05), /pcac ($0.05), /ftc-wl ($0.05), /cfpb-orders ($0.05), /occ-cd ($0.05), /fdic-orders ($0.05), /frb-orders ($0.05), /ncua-orders ($0.05), /fincen-orders ($0.05), /ferc-orders ($0.05), /ofac-orders ($0.05), /bis-orders ($0.05), /cftc-orders ($0.05), /fifra-orders ($0.05), /denovo-orders ($0.05), /ttb-oic ($0.05), /air-letters ($0.05), /superfund-rods ($0.05), /ico-mpn ($0.05), /cma-ca98 ($0.05), /ema-referrals ($0.05), /cder-reviews ($0.05), /npdes-permits ($0.05), /ofsted-inspections ($0.05), /ofwat-enforcement ($0.05), /ofgem-enforcement ($0.05), /gain ($0.05), /orr-enforcement ($0.05), /form-483 ($0.05), /gmp ($0.05), /gmp-md ($0.05), USDC on Base. Extracted-body doors: free index/search on /{door}/manifest.json or /{door}/index (?q=, optional before/date), then pay one official text GET ?id= ($0.02) or the page ($0.05). newest 10 official texts on a plain GET ($0.05), or the whole current set if fewer; older pages on the same URL (?before, another $0.05). Table doors (/ticks, /import-alerts) stay the whole current table. Free canned paid-JSON keys: GET /sample (HTTP 200, not a SKU). Free firm-name search: GET /firm-check?q= (HTTP 200, not a SKU). Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402 (GET or POST '{}'). MCP at GET/POST /mcp lists one tool per paid GET plus free search, free firm-check, paid get-one ($0.02), and paid get-page ($0.05). Free manifests do not include the paid body. GET has no request body. /orr-enforcement is a live public SKU on purpose. No 41th public SKU."
+    "x-guidance": "Forty-two paid GETs: /ticks ($0.05), /import-alerts ($0.05), /mariners ($0.05), /mariners-d11 ($0.05), /mariners-d7 ($0.05), /mariners-d8 ($0.05), /warning-letters ($0.05), /untitled-letters ($0.05), /awa ($0.05), /swisspar ($0.05), /pcac ($0.05), /ftc-wl ($0.05), /cfpb-orders ($0.05), /occ-cd ($0.05), /fdic-orders ($0.05), /frb-orders ($0.05), /ncua-orders ($0.05), /fincen-orders ($0.05), /ferc-orders ($0.05), /ofac-orders ($0.05), /bis-orders ($0.05), /cftc-orders ($0.05), /fifra-orders ($0.05), /denovo-orders ($0.05), /ttb-oic ($0.05), /air-letters ($0.05), /superfund-rods ($0.05), /ico-mpn ($0.05), /cma-ca98 ($0.05), /ema-referrals ($0.05), /cder-reviews ($0.05), /npdes-permits ($0.05), /ofsted-inspections ($0.05), /ofwat-enforcement ($0.05), /ofgem-enforcement ($0.05), /gain ($0.05), /orr-enforcement ($0.05), /phmsa-orders ($0.05), /aaib-reports ($0.05), /form-483 ($0.05), /gmp ($0.05), /gmp-md ($0.05), USDC on Base. Extracted-body doors: free index/search on /{door}/manifest.json or /{door}/index (?q=, optional before/date), then pay one official text GET ?id= ($0.02) or the page ($0.05). newest 10 official texts on a plain GET ($0.05), or the whole current set if fewer; older pages on the same URL (?before, another $0.05). Table doors (/ticks, /import-alerts) stay the whole current table. Free canned paid-JSON keys: GET /sample (HTTP 200, not a SKU). Free firm-name search: GET /firm-check?q= (HTTP 200, not a SKU). Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402 (GET or POST '{}'). MCP at GET/POST /mcp lists one tool per paid GET plus free search, free firm-check, paid get-one ($0.02), and paid get-page ($0.05). Free manifests do not include the paid body. GET has no request body. /aaib-reports is a live public SKU on purpose. No forty-third public SKU."
   },
   "x-discovery": {
     "ownershipProofs": [
@@ -5761,6 +5761,331 @@
         }
       }
     },
+    "/phmsa-orders": {
+      "get": {
+        "operationId": "getPhmsaOrders",
+        "summary": "PHMSA pipeline enforcement-order text",
+        "description": "Call GET /phmsa-orders when you need official PHMSA-authored pipeline enforcement TEXT extracted from primis.phmsa.dot.gov/enforcement-documents/{CPF}/ PDFs (NOPV PCP/PCO, Final Order, Corrective Action Order, Consent Order, Decision on Petition). US federal public domain (17 U.S.C. § 105). Does not invent order text. Does not sell the 53-column TSV. Skip operator-response PDFs. Distinct from killed PHMSA incident NARRATIVE zip and from /ferc-orders. GET ?id= one official text ($0.02). Newest chunk on a plain GET (newest 10 official texts, $0.05); older page ?before= another $0.05.",
+        "tags": [
+          "paid"
+        ],
+        "security": [
+          {
+            "x402": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Official catalog id from the free index. That one official text. $0.02 (20000 atomic). Same door, not a new SKU. Wins over before/page."
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Official catalog id or YYYY-MM-DD from the free manifest. Next older chunk. Another $0.05. Omit for the newest chunk."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "description": "1-based page. Page 1 is the newest chunk. Ignored when before is set."
+          }
+        ],
+        "x-auth": {
+          "mode": "x402"
+        },
+        "x-payment-info": {
+          "protocols": [
+            {
+              "x402": {
+                "scheme": "exact",
+                "network": "eip155:8453",
+                "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+                "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+                "amount": "50000"
+              }
+            }
+          ],
+          "price": {
+            "mode": "fixed",
+            "currency": "USD",
+            "amount": "0.05"
+          },
+          "network": "eip155:8453",
+          "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004"
+        },
+        "responses": {
+          "200": {
+            "description": "Paid JSON body after a valid x402 settlement",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    },
+                    "product": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "fetchedAt": {
+                      "type": "string"
+                    },
+                    "asOf": {
+                      "type": "string"
+                    },
+                    "source": {
+                      "type": "string"
+                    },
+                    "recordCount": {
+                      "type": "integer"
+                    },
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "cards": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "Official catalog ids on this paid page"
+                    },
+                    "nextBefore": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "prevBefore": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  }
+                },
+                "example": {
+                  "ok": true,
+                  "product": "phmsa-enforcement-order-bodies",
+                  "status": "ok",
+                  "fetchedAt": "2026-08-31T22:00:00.000Z",
+                  "asOf": "2026-08-03",
+                  "source": "https://primis.phmsa.dot.gov/enforcement-documents/",
+                  "recordCount": 1,
+                  "records": [
+                    {
+                      "id": "32026023CAO-corrective-action-order",
+                      "date": "2026-08-03",
+                      "firm": "AMOCO OIL CO",
+                      "url": "https://primis.phmsa.dot.gov/enforcement-documents/32026023CAO/32026023CAO_Corrective%20Action%20Order_08032026_(26-379109).pdf",
+                      "type": "phmsa-orders"
+                    }
+                  ],
+                  "cards": [
+                    {
+                      "id": "32026023CAO-corrective-action-order",
+                      "institution": "AMOCO OIL CO",
+                      "cpf": "32026023CAO",
+                      "date": "2026-08-03",
+                      "sourceUrl": "https://primis.phmsa.dot.gov/enforcement-documents/32026023CAO/32026023CAO_Corrective%20Action%20Order_08032026_(26-379109).pdf",
+                      "body": "This teaser is not an official PHMSA order body. Amoco Oil Co Corrective Action Order excerpt."
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+          }
+        }
+      }
+    },
+    "/aaib-reports": {
+      "get": {
+        "operationId": "getAaibReports",
+        "summary": "UK AAIB investigation-report text",
+        "description": "Call GET /aaib-reports when you need official UK AAIB investigation-report TEXT extracted from assets.publishing.service.gov.uk PDFs linked from GOV.UK /aaib-reports. OGL v3.0. Does not invent report text. GOV.UK Content API / Search are synopsis / title / link only — full TEXT is in the PDF. Skip glossary PDFs and the Annual Safety Review. Not RAIB. Distinct from /orr-enforcement. GET ?id= one official text ($0.02). Newest chunk on a plain GET (newest 10 official texts, $0.05); older page ?before= another $0.05.",
+        "tags": [
+          "paid"
+        ],
+        "security": [
+          {
+            "x402": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Official catalog id from the free index. That one official text. $0.02 (20000 atomic). Same door, not a new SKU. Wins over before/page."
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Official catalog id or YYYY-MM-DD from the free manifest. Next older chunk. Another $0.05. Omit for the newest chunk."
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "description": "1-based page. Page 1 is the newest chunk. Ignored when before is set."
+          }
+        ],
+        "x-auth": {
+          "mode": "x402"
+        },
+        "x-payment-info": {
+          "protocols": [
+            {
+              "x402": {
+                "scheme": "exact",
+                "network": "eip155:8453",
+                "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+                "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+                "amount": "50000"
+              }
+            }
+          ],
+          "price": {
+            "mode": "fixed",
+            "currency": "USD",
+            "amount": "0.05"
+          },
+          "network": "eip155:8453",
+          "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004"
+        },
+        "responses": {
+          "200": {
+            "description": "Paid JSON body after a valid x402 settlement",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": {
+                      "type": "boolean"
+                    },
+                    "product": {
+                      "type": "string"
+                    },
+                    "status": {
+                      "type": "string"
+                    },
+                    "fetchedAt": {
+                      "type": "string"
+                    },
+                    "asOf": {
+                      "type": "string"
+                    },
+                    "source": {
+                      "type": "string"
+                    },
+                    "recordCount": {
+                      "type": "integer"
+                    },
+                    "records": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "cards": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    },
+                    "ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "description": "Official catalog ids on this paid page"
+                    },
+                    "nextBefore": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "prevBefore": {
+                      "type": "string",
+                      "nullable": true
+                    }
+                  }
+                },
+                "example": {
+                  "ok": true,
+                  "product": "aaib-investigation-report-bodies",
+                  "status": "ok",
+                  "fetchedAt": "2026-08-31T22:00:00.000Z",
+                  "asOf": "2026-08-20",
+                  "source": "https://www.gov.uk/aaib-reports",
+                  "recordCount": 1,
+                  "records": [
+                    {
+                      "id": "aaib-investigation-to-eurofox-2k-g-cmax",
+                      "date": "2026-08-20",
+                      "firm": "Eurofox 2K G-CMAX",
+                      "url": "https://assets.publishing.service.gov.uk/media/6a730cd0de77e2943cd3bbe8/Eurofox_2K_G-CMAX_09-26.pdf",
+                      "type": "aaib-reports"
+                    }
+                  ],
+                  "cards": [
+                    {
+                      "id": "aaib-investigation-to-eurofox-2k-g-cmax",
+                      "registration": "G-CMAX",
+                      "aircraft": "Eurofox 2K",
+                      "date": "2026-08-20",
+                      "title": "AAIB investigation to Eurofox 2K, G-CMAX",
+                      "sourceUrl": "https://assets.publishing.service.gov.uk/media/6a730cd0de77e2943cd3bbe8/Eurofox_2K_G-CMAX_09-26.pdf",
+                      "body": "This teaser is not an official AAIB investigation body. Eurofox 2K G-CMAX excerpt."
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "402": {
+            "description": "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body"
+          }
+        }
+      }
+    },
     "/form-483": {
       "get": {
         "operationId": "getForm483",
@@ -7926,6 +8251,85 @@
         }
       }
     },
+    "/phmsa-orders/manifest.json": {
+      "get": {
+        "summary": "PHMSA enforcement orders free manifest",
+        "description": "Count, operator, CPF, date, and official PDF URL. Not the order body. Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).",
+        "tags": [
+          "free"
+        ],
+        "security": [],
+        "x-auth": {
+          "mode": "none"
+        },
+        "parameters": [
+          {
+            "name": "q",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Free-text match against id, firm, date, subject. Not charged."
+          },
+          {
+            "name": "before",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Free filter: page cursor (id) returns that page's rows; YYYY-MM-DD returns older dates. Not charged."
+          },
+          {
+            "name": "date",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Free date prefix filter (YYYY, YYYY-MM, or YYYY-MM-DD). Not charged."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Free JSON catalog / discovery document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/aaib-reports/manifest.json": {
+      "get": {
+        "summary": "AAIB investigation reports free manifest",
+        "description": "Count, title, registration, aircraft, date, and official PDF URL. Not the report body.",
+        "tags": [
+          "free"
+        ],
+        "security": [],
+        "x-auth": {
+          "mode": "none"
+        },
+        "responses": {
+          "200": {
+            "description": "Free JSON catalog / discovery document",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/form-483/manifest.json": {
       "get": {
         "summary": "FDA Form 483 free manifest",
@@ -8091,7 +8495,7 @@
     "/.well-known/x402": {
       "get": {
         "summary": "x402 well-known fan-out",
-        "description": "Absolute URLs of the forty live paid routes only.",
+        "description": "Absolute URLs of the forty-two live paid routes only.",
         "tags": [
           "free"
         ],
@@ -8141,7 +8545,7 @@
     "/llms.txt": {
       "get": {
         "summary": "Short agent guidance",
-        "description": "The forty paid doors and free discovery URLs. Not a paid SKU.",
+        "description": "The forty-two paid doors and free discovery URLs. Not a paid SKU.",
         "tags": [
           "free"
         ],
@@ -8166,7 +8570,7 @@
     "/mcp": {
       "get": {
         "summary": "MCP discovery",
-        "description": "Streamable HTTP MCP for the same forty paid GETs. Not a paid SKU. Connect: npx -y mcp-remote https://ticks.bnm.farm/mcp",
+        "description": "Streamable HTTP MCP for the same forty-two paid GETs. Not a paid SKU. Connect: npx -y mcp-remote https://ticks.bnm.farm/mcp",
         "tags": [
           "free"
         ],
@@ -8214,7 +8618,7 @@
     "/": {
       "get": {
         "summary": "Shop discovery JSON",
-        "description": "payTo, network, and the forty public products.",
+        "description": "payTo, network, and the forty-two public products.",
         "tags": [
           "free"
         ],
