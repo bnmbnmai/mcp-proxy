@@ -5701,22 +5701,8 @@ async function servePaid(
   const body402 = paymentRequiredBody(resource, sku, amount);
   const v2 = paymentRequiredV2(resource, sku, amount);
   const paymentRequiredHeader = Buffer.from(JSON.stringify(v2), "utf-8").toString("base64");
-  const body = await load(opts);
-  const envelope = paidEnvelope(body);
-  const etag = etagFromPaidEnvelope(sku, envelope);
-  const noneMatch = ifNoneMatchHits(req.headers["if-none-match"], etag);
-  const emptySince =
-    Boolean(opts?.since) && !opts?.id && isExtractedBodySku(sku) && Number(envelope.recordCount ?? 0) === 0;
-  const tableSame =
-    isTableSku(sku) &&
-    (noneMatch ||
-      tableUnchangedSince(
-        {
-          fetchedAt: typeof envelope.fetchedAt === "string" ? envelope.fetchedAt : null,
-          asOf: typeof envelope.asOf === "string" ? envelope.asOf : null,
-        },
-        opts?.since,
-      ));
+  const wantsNotModified =
+    Boolean(opts?.since) || Boolean(req.headers["if-none-match"]);
 
   const logPaid = (status: number) => {
     logShopRequest(req, {
@@ -5728,36 +5714,61 @@ async function servePaid(
     });
   };
 
-  if (tableSame || (emptySince && !payment)) {
-    logPaid(304);
-    sendNotModified(res, etag);
-    return;
-  }
+  const maybeNotModified = (body: unknown): boolean => {
+    const envelope = paidEnvelope(body);
+    const etag = etagFromPaidEnvelope(sku, envelope);
+    const noneMatch = ifNoneMatchHits(req.headers["if-none-match"], etag);
+    const emptySince =
+      Boolean(opts?.since) && !opts?.id && isExtractedBodySku(sku) && Number(envelope.recordCount ?? 0) === 0;
+    const tableSame =
+      isTableSku(sku) &&
+      (noneMatch ||
+        tableUnchangedSince(
+          {
+            fetchedAt: typeof envelope.fetchedAt === "string" ? envelope.fetchedAt : null,
+            asOf: typeof envelope.asOf === "string" ? envelope.asOf : null,
+          },
+          opts?.since,
+        ));
+    if (tableSame || (emptySince && !payment)) {
+      logPaid(304);
+      sendNotModified(res, etag);
+      return true;
+    }
+    return false;
+  };
 
   if (!payment) {
+    if (wantsNotModified) {
+      const peeked = await load(opts);
+      if (maybeNotModified(peeked)) return;
+    }
     logPaid(402);
-    sendJson(res, 402, body402, { "PAYMENT-REQUIRED": paymentRequiredHeader, ETag: etag });
+    sendJson(res, 402, body402, { "PAYMENT-REQUIRED": paymentRequiredHeader });
     return;
   }
 
-  const serve = () => {
+  const serve = async () => {
+    const body = await load(opts);
+    if (maybeNotModified(body)) return;
+    const etag = etagFromPaidEnvelope(sku, paidEnvelope(body));
     logPaid(200);
     sendJson(res, 200, body, { ETag: etag });
   };
 
   if (skipSettle()) {
-    serve();
+    await serve();
     return;
   }
 
   const accept = facilitatorPaymentRequirements(resource, sku, amount);
   const verified = await facilitatorVerify(payment, accept);
   if (verified && (await facilitatorSettle(payment, accept))) {
-    serve();
+    await serve();
     return;
   }
   if (await localEip3009Settle(payment, accept)) {
-    serve();
+    await serve();
     return;
   }
   logPaid(402);
@@ -5768,7 +5779,7 @@ async function servePaid(
       ...body402,
       error: "Payment present but not settled. Set X402_FACILITATOR_URL or pay with a valid x402 X-PAYMENT header.",
     },
-    { "PAYMENT-REQUIRED": paymentRequiredHeader, ETag: etag },
+    { "PAYMENT-REQUIRED": paymentRequiredHeader },
   );
 }
 
