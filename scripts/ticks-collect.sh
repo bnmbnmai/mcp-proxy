@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 # Daily apollo ticks collect (user cron, America/Boise).
-# Hay/cattle FIRST every morning, then deepen LIVE official first-slice caches
-# past cardCount=5 toward ~20–24 using official walkers. Skip fresh fat doors
-# (n >= 20 and fetchedAt within 36h). Refresh when official asOf moved
-# (year-2825) or fetchedAt > 36h. One pass. No second cron.
+# Hay/cattle FIRST, then every official paid door from live well-known
+# (or PUBLIC_BAZAAR_SKUS that well-known is generated from). Do not freeze
+# a 33/36/40/44 list. Two passes: 7:45am and 7:45pm America/Boise. Delta only:
+# CHECK every door including fat and source-capped; skip only the recrawl
+# when official asOf is unchanged. Refresh when asOf moved (year-2825) or
+# fetchedAt > 36h.
 # Imagine-safe: skip 02:00-04:00 Boise and skip if Imagine/rmbg is active.
 # flock so two collects cannot overlap. No secrets in this file or its log.
 # No new SKUs. Code path only — CoS applies on apollo after Imagine.
@@ -19,7 +21,14 @@ STALE_HOURS="${TICKS_COLLECT_STALE_HOURS:-36}"
 GROW_UNTIL="${TICKS_COLLECT_GROW_UNTIL:-20}"
 GROW_LIMIT="${TICKS_COLLECT_GROW_LIMIT:-24}"
 GROW_FETCH="${TICKS_COLLECT_GROW_FETCH:-36}"
-PLAN="${TICKS_COLLECT_PLAN:-$MCP/scripts/ticks-collect-plan.py}"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PLAN="${TICKS_COLLECT_PLAN:-$SCRIPT_DIR/ticks-collect-plan.py}"
+WELL_KNOWN_URL="${TICKS_COLLECT_WELL_KNOWN_URL:-http://127.0.0.1:4020/.well-known/x402}"
+WELL_KNOWN_FILE="${TICKS_COLLECT_WELL_KNOWN_FILE:-}"
+DOOR_SRC="${TICKS_COLLECT_DOOR_SRC:-$SCRIPT_DIR/../src/ticks-door.ts}"
+# 1 = run the official walker on every door (delta inside the collector).
+# Skip recrawl only when the walker sees unchanged asOf. Dry-run still plans.
+CHECK_ALL="${TICKS_COLLECT_CHECK_ALL:-1}"
 NODE_BIN="${NODE_BIN:-$HOME/.nvm/versions/node/v24.13.0/bin/node}"
 if [[ ! -x "$NODE_BIN" ]]; then
   NODE_BIN="$(command -v node)"
@@ -98,6 +107,17 @@ export SUPERFUND_RODS_DIR="${SUPERFUND_RODS_DIR:-$MCP/data/superfund-rods}"
 export ICO_MPN_DIR="${ICO_MPN_DIR:-$MCP/data/ico-mpn}"
 export CMA_CA98_DIR="${CMA_CA98_DIR:-$MCP/data/cma-ca98}"
 export EMA_REFERRALS_DIR="${EMA_REFERRALS_DIR:-$MCP/data/ema-referrals}"
+export CDER_REVIEWS_DIR="${CDER_REVIEWS_DIR:-$MCP/data/cder-reviews}"
+export NPDES_PERMITS_DIR="${NPDES_PERMITS_DIR:-$MCP/data/npdes-permits}"
+export OFSTED_INSPECTIONS_DIR="${OFSTED_INSPECTIONS_DIR:-$MCP/data/ofsted-inspections}"
+export OFWAT_ENFORCEMENT_DIR="${OFWAT_ENFORCEMENT_DIR:-$MCP/data/ofwat-enforcement}"
+export OFGEM_ENFORCEMENT_DIR="${OFGEM_ENFORCEMENT_DIR:-$MCP/data/ofgem-enforcement}"
+export GAIN_DIR="${GAIN_DIR:-$MCP/data/gain}"
+export ORR_ENFORCEMENT_DIR="${ORR_ENFORCEMENT_DIR:-$MCP/data/orr-enforcement}"
+export PHMSA_ORDERS_DIR="${PHMSA_ORDERS_DIR:-$MCP/data/phmsa-orders}"
+export AAIB_REPORTS_DIR="${AAIB_REPORTS_DIR:-$MCP/data/aaib-reports}"
+export CSB_REPORTS_DIR="${CSB_REPORTS_DIR:-$MCP/data/csb-reports}"
+export HHS_OIG_REPORTS_DIR="${HHS_OIG_REPORTS_DIR:-$MCP/data/hhs-oig-reports}"
 export FORM_483_DIR="${FORM_483_DIR:-$MCP/data/form-483}"
 export GMP_DIR="${GMP_DIR:-$MCP/data/gmp}"
 export AWA_DIR="${AWA_DIR:-$MCP/data/awa}"
@@ -119,7 +139,9 @@ for prefix in \
   ICO_MPN CMA_CA98 EMA_REFERRALS SWISSPAR OFAC_ORDERS BIS_ORDERS CFTC_ORDERS GMP_MD AWA \
   PCAC FTC_WL CFPB_ORDERS OCC_CD FIFRA_ORDERS DENOVO_ORDERS TTB_OIC \
   AIR_LETTERS SUPERFUND_RODS FDIC_ORDERS FRB_ORDERS NCUA_ORDERS \
-  FINCEN_ORDERS FERC_ORDERS
+  FINCEN_ORDERS FERC_ORDERS CDER_REVIEWS NPDES_PERMITS OFSTED_INSPECTIONS \
+  OFWAT_ENFORCEMENT OFGEM_ENFORCEMENT GAIN ORR_ENFORCEMENT PHMSA_ORDERS \
+  AAIB_REPORTS CSB_REPORTS HHS_OIG_REPORTS
 do
   set_grow "$prefix"
 done
@@ -193,15 +215,20 @@ plan_fields "$_ticks_snap"
 _ticks_before="${_n}"
 _ticks_action="${_action}"
 _ticks_reason="${_reason}"
-if [[ "${_ticks_action}" == "skip" || "${SKIP_HAY:-}" == "1" || "${DRY_RUN}" == "1" ]]; then
-  if [[ "${DRY_RUN}" == "1" ]]; then
-    log "dry-run plan nationwide AMS hay/cattle/grain (same /ticks door)"
-  elif [[ "${SKIP_HAY:-}" == "1" ]]; then
-    log "skip hay (SKIP_HAY=1)"
-  fi
+if [[ "${SKIP_HAY:-}" == "1" ]]; then
+  log "skip hay (SKIP_HAY=1)"
+  log "/ticks, ${_ticks_before}, ${_ticks_before}, ${_ticks_reason}"
+elif [[ "${DRY_RUN}" == "1" ]]; then
+  log "dry-run plan nationwide AMS hay/cattle/grain (same /ticks door)"
+  log "/ticks, ${_ticks_before}, ${_ticks_before}, ${_ticks_reason}"
+elif [[ "${_ticks_action}" == "skip" && "${CHECK_ALL}" != "1" ]]; then
   log "/ticks, ${_ticks_before}, ${_ticks_before}, ${_ticks_reason}"
 else
-  log "hay/cattle collect"
+  if [[ "${_ticks_action}" == "skip" ]]; then
+    log "hay/cattle check asOf-delta (plan ${_ticks_reason})"
+  else
+    log "hay/cattle collect"
+  fi
   /usr/bin/python3 "$FARM/scripts/collect-prices.py" >>"$LOG" 2>&1 || log "hay/cattle collect failed (exit $?)"
   log "nationwide AMS hay/cattle/grain collect"
   if [[ -f "$MCP/build/ticks-ams.js" ]]; then
@@ -210,7 +237,13 @@ else
     log "nationwide AMS collect skipped (missing $MCP/build/ticks-ams.js)"
   fi
   plan_fields "$(ticks_snapshot)"
-  log "/ticks, ${_ticks_before}, ${_n}, $([[ "${_ticks_action}" == "grow" ]] && echo grew || echo refreshed)"
+  local_done="refreshed"
+  if [[ "${_ticks_action}" == "grow" ]]; then
+    local_done="grew"
+  elif [[ "${_n}" -eq "${_ticks_before}" ]]; then
+    local_done="current"
+  fi
+  log "/ticks, ${_ticks_before}, ${_n}, ${local_done}"
 fi
 
 if imagine_busy; then
@@ -218,41 +251,28 @@ if imagine_busy; then
   exit 0
 fi
 
-# Every listed official door except /ticks (hay/cattle above). No new SKUs.
-DOORS=(
-  warning-letters
-  form-483
-  untitled-letters
-  gmp
-  gmp-md
-  import-alerts
-  mariners
-  mariners-d11
-  mariners-d7
-  mariners-d8
-  cma-ca98
-  ico-mpn
-  ema-referrals
-  swisspar
-  ofac-orders
-  bis-orders
-  cftc-orders
-  awa
-  pcac
-  ftc-wl
-  cfpb-orders
-  occ-cd
-  fifra-orders
-  denovo-orders
-  ttb-oic
-  air-letters
-  superfund-rods
-  fdic-orders
-  frb-orders
-  ncua-orders
-  fincen-orders
-  ferc-orders
-)
+# Official doors from live well-known. Hay /ticks already ran. No frozen N.
+list_official_doors() {
+  local out source line
+  out="$(python3 "$PLAN" --list-official \
+    ${WELL_KNOWN_FILE:+--file "$WELL_KNOWN_FILE"} \
+    --url "$WELL_KNOWN_URL" \
+    --door-src "$DOOR_SRC")" || true
+  source="${out%%$'\n'*}"
+  DOORS=()
+  while IFS= read -r line; do
+    [[ -z "$line" || "$line" == "$source" ]] && continue
+    DOORS+=("$line")
+  done <<<"$out"
+  _door_source="${source:-empty}"
+}
+
+list_official_doors
+if [[ ${#DOORS[@]} -eq 0 ]]; then
+  log "official doors 0 from ${_door_source} (well-known + PUBLIC_BAZAAR_SKUS failed)"
+else
+  log "official doors ${#DOORS[@]} from ${_door_source} (hay /ticks separate)"
+fi
 
 door_snap() {
   local sku="$1"
@@ -289,7 +309,7 @@ run_door() {
   local before="${_n}"
   local action="${_action}"
   local reason="${_reason}"
-  if [[ "$action" == "skip" ]]; then
+  if [[ "$action" == "skip" && ( "${DRY_RUN}" == "1" || "${CHECK_ALL}" != "1" ) ]]; then
     log "/${sku}, ${before}, ${before}, ${reason}"
     return 0
   fi
@@ -297,7 +317,11 @@ run_door() {
     log "stop doors: Imagine/rmbg became active"
     return 1
   fi
-  log "$sku $action n=${before} growUntil=${GROW_UNTIL} limit=${GROW_LIMIT}"
+  if [[ "$action" == "skip" ]]; then
+    log "$sku check n=${before} asOf-delta (plan ${reason})"
+  else
+    log "$sku $action n=${before} growUntil=${GROW_UNTIL} limit=${GROW_LIMIT}"
+  fi
   if [[ "${DRY_RUN}" == "1" ]]; then
     log "/${sku}, ${before}, ${before}, ${reason}"
     return 0
@@ -310,7 +334,11 @@ run_door() {
   plan_fields "$snap"
   local after="${_n}"
   local done="$reason"
-  if [[ "$action" == "grow" && "$after" -le 5 ]]; then
+  if [[ "$action" == "skip" && "$after" -eq "$before" ]]; then
+    done="current"
+  elif [[ "$action" == "skip" ]]; then
+    done="asof-moved"
+  elif [[ "$action" == "grow" && "$after" -le 5 ]]; then
     done="teaser-blocked"
   elif [[ "$action" == "grow" ]]; then
     done="grew"
