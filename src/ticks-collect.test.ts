@@ -42,6 +42,7 @@ function runDryCollect(opts: {
   snapshot?: unknown;
   doors?: Array<{ sku: string; snapshot: unknown }>;
   ticks?: unknown;
+  wellKnown?: string[];
 }): string {
   const root = mkdtempSync(join(tmpdir(), "ticks-collect-dry-"));
   const doors = opts.doors ?? (opts.sku && opts.snapshot !== undefined ? [{ sku: opts.sku, snapshot: opts.snapshot }] : []);
@@ -55,6 +56,15 @@ function runDryCollect(opts: {
   if (opts.ticks !== undefined) {
     writeFileSync(join(ticksDir, "manifest.json"), JSON.stringify(opts.ticks));
   }
+  const wkSkus = opts.wellKnown ?? ["ticks", ...doors.map((d) => d.sku)];
+  const wkPath = join(root, "well-known.json");
+  writeFileSync(
+    wkPath,
+    JSON.stringify({
+      version: 1,
+      resources: wkSkus.map((sku) => `https://ticks.bnm.farm/${sku}`),
+    }),
+  );
   const log = join(root, "ticks-collect.log");
   const result = spawnSync("bash", [join(repoRoot, "scripts/ticks-collect.sh")], {
     encoding: "utf8",
@@ -68,6 +78,7 @@ function runDryCollect(opts: {
       MCP_PROXY_DIR: root,
       TICKS_DIR: ticksDir,
       TICKS_COLLECT_PLAN: join(repoRoot, "scripts/ticks-collect-plan.py"),
+      TICKS_COLLECT_WELL_KNOWN_FILE: wkPath,
       TICKS_COLLECT_LOG: log,
       TICKS_COLLECT_LOCK: join(root, "ticks-collect.lock"),
     },
@@ -174,16 +185,18 @@ async function main(): Promise<void> {
   assert.match(script, /nationwide AMS hay\/cattle\/grain/);
   assert.match(script, /Always consider \/ticks first/);
   assert.doesNotMatch(script, /crontab -e|0 8 \*|0 6 \*/);
-  assert.match(script, /No second cron/);
+  assert.match(script, /Two passes: 7:45am and 7:45pm/);
   assert.match(script, /02:00-04:00 America\/Boise/);
-  const hayBlock = script.slice(script.indexOf("hay/cattle collect"), script.indexOf("DOORS=("));
+  assert.match(script, /--list-official/);
+  assert.match(script, /live well-known/);
+  const hayBlock = script.slice(script.indexOf("hay/cattle collect"), script.indexOf("list_official_doors"));
   assert.match(hayBlock, /collect-prices\.py/);
   assert.match(hayBlock, /ticks-ams\.js/);
   assert.ok(hayBlock.indexOf("collect-prices.py") < hayBlock.indexOf("ticks-ams.js"), "Idaho hay stays first");
-  const doorsBlock = script.slice(script.indexOf("DOORS=("), script.indexOf("door_snap"));
-  assert.match(doorsBlock, /ema-referrals/);
-  assert.doesNotMatch(doorsBlock, /npdes/i);
-  assert.doesNotMatch(doorsBlock, /ticks-ams/);
+  assert.doesNotMatch(script, /No NPDES/);
+  const listBlock = script.slice(script.indexOf("list_official_doors"), script.indexOf("door_snap"));
+  assert.match(listBlock, /well-known/);
+  assert.doesNotMatch(listBlock, /ticks-ams/);
 
   const dry = runDryCollect({
     sku: "cfpb-orders",
@@ -204,11 +217,28 @@ async function main(): Promise<void> {
   });
   assert.match(dry, /cfpb-orders grow n=5 growUntil=20 limit=24/);
   assert.match(dry, /collect start growUntil=20 limit=24/);
+  assert.match(dry, /official doors 1 from well-known-file/);
   assert.match(dry, /dry-run plan nationwide AMS hay\/cattle\/grain \(same \/ticks door\)/);
   assert.match(dry, /\/ticks, 611, 611, fat/);
   assert.match(dry, /\/cfpb-orders, 5, 5, thin/);
   assert.doesNotMatch(dry, /cfpb-orders skip/);
+  assert.doesNotMatch(dry, /\/ferc-orders/);
   assert.ok(dry.indexOf("/ticks,") < dry.indexOf("/cfpb-orders,"), "/ticks is planned first");
+
+  const leftoverDry = runDryCollect({
+    doors: [
+      {
+        sku: "npdes-permits",
+        snapshot: { cardCount: 5, fetchedAt: "2026-08-23T14:49:34.065Z", asOf: "2026-07-29" },
+      },
+    ],
+    wellKnown: ["ticks", "npdes-permits", "hhs-oig-reports"],
+    ticks: { tickCount: 611, fetchedAt: new Date().toISOString(), asOf: "2026-08-25" },
+  });
+  assert.match(leftoverDry, /official doors 2 from well-known-file/);
+  assert.match(leftoverDry, /\/npdes-permits, 5, 5, thin/);
+  assert.match(leftoverDry, /\/hhs-oig-reports, 0, 0, thin/);
+  assert.doesNotMatch(leftoverDry, /\/ferc-orders/);
 
   const fatDry = runDryCollect({
     doors: [

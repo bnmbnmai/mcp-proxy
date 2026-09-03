@@ -12,6 +12,7 @@ Grow/refresh reasons: thin | asof | stale. No secrets.
 from __future__ import annotations
 
 import json
+import re
 import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -125,7 +126,116 @@ def write_hay_plan(out_path: str, paths: list[str]) -> int:
     return 0
 
 
+def sku_from_resource(url: str) -> str | None:
+    """Paid well-known resource -> door sku. /ticks is hay (collected first)."""
+    raw = (url or "").strip()
+    if not raw:
+        return None
+    path = raw
+    if "://" in raw:
+        path = raw.split("://", 1)[1]
+        path = path.split("/", 1)[1] if "/" in path else ""
+    path = path.split("?", 1)[0].split("#", 1)[0].strip("/")
+    if not path or "/" in path or path == "ticks":
+        return None
+    return path
+
+
+def official_doors_from_well_known(payload: dict[str, Any]) -> list[str]:
+    resources = payload.get("resources")
+    if not isinstance(resources, list):
+        return []
+    out: list[str] = []
+    seen: set[str] = set()
+    for item in resources:
+        sku = sku_from_resource(item if isinstance(item, str) else "")
+        if not sku or sku in seen:
+            continue
+        seen.add(sku)
+        out.append(sku)
+    return out
+
+
+def official_doors_from_door_src(path: str) -> list[str]:
+    """Fallback: PUBLIC_BAZAAR_SKUS in ticks-door.ts (the list well-known is generated from)."""
+    try:
+        text = Path(path).read_text()
+    except Exception:
+        return []
+    marker = "export const PUBLIC_BAZAAR_SKUS"
+    start = text.find(marker)
+    if start < 0:
+        return []
+    block = text[start : text.find("];", start) + 2]
+    skus = [s for s in re.findall(r'"([a-z0-9-]+)"', block) if s != "ticks"]
+    extra = ["form-483", "gmp", "gmp-md"]
+    return skus + [s for s in extra if s not in skus]
+
+
+def list_official_doors(
+    *,
+    url: str = "",
+    file: str = "",
+    door_src: str = "",
+) -> tuple[list[str], str]:
+    if file:
+        try:
+            data = json.loads(Path(file).read_text())
+        except Exception:
+            data = None
+        if isinstance(data, dict):
+            doors = official_doors_from_well_known(data)
+            if doors:
+                return doors, "well-known-file"
+    if url:
+        try:
+            from urllib.request import Request, urlopen
+
+            req = Request(url, headers={"User-Agent": "ticks-collect"})
+            with urlopen(req, timeout=2) as resp:
+                data = json.loads(resp.read().decode())
+            if isinstance(data, dict):
+                doors = official_doors_from_well_known(data)
+                if doors:
+                    return doors, "well-known"
+        except Exception:
+            pass
+    if door_src:
+        doors = official_doors_from_door_src(door_src)
+        if doors:
+            return doors, "public-bazaar-skus"
+    return [], "empty"
+
+
 def main(argv: list[str] = sys.argv) -> int:
+    if len(argv) >= 2 and argv[1] == "--list-official":
+        url = ""
+        file = ""
+        door_src = ""
+        i = 2
+        while i < len(argv):
+            if argv[i] == "--url" and i + 1 < len(argv):
+                url = argv[i + 1]
+                i += 2
+                continue
+            if argv[i] == "--file" and i + 1 < len(argv):
+                file = argv[i + 1]
+                i += 2
+                continue
+            if argv[i] == "--door-src" and i + 1 < len(argv):
+                door_src = argv[i + 1]
+                i += 2
+                continue
+            print(
+                "usage: ticks-collect-plan.py --list-official [--url URL] [--file FILE] [--door-src ticks-door.ts]",
+                file=sys.stderr,
+            )
+            return 2
+        doors, source = list_official_doors(url=url, file=file, door_src=door_src)
+        print(source)
+        for sku in doors:
+            print(sku)
+        return 0 if doors else 2
     if len(argv) >= 3 and argv[1] == "--write-hay":
         if len(argv) < 4:
             print("usage: ticks-collect-plan.py --write-hay OUT.json SNAP [SNAP...]", file=sys.stderr)
