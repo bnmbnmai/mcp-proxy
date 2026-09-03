@@ -230,10 +230,10 @@ export function parseListingRows(rows: HhsOigListing[]): HhsOigListing[] {
     if (LEIE_RE.test(`${row.title} ${row.pageUrl} ${row.sourceUrl}`)) continue;
     const reportNumber = normalizeReportNumber(row.reportNumber || row.id);
     const kind = kindFromLabel(row.kind, reportNumber);
-    const sourceUrl = officialHhsOigPdfUrl(row.sourceUrl);
+    const sourceUrl = officialHhsOigPdfUrl(row.sourceUrl) || "";
     const pageUrl = officialHhsOigPageUrl(row.pageUrl);
     const id = (row.id || (reportNumber ? idFromReportNumber(reportNumber) : "")).replace(/-+$/g, "").trim();
-    if (!reportNumber || !kind || !sourceUrl || !pageUrl || !id || seen.has(id)) continue;
+    if (!reportNumber || !kind || !pageUrl || !id || seen.has(id)) continue;
     if (!KEEP_KINDS.has(kind) && kind !== "audit" && kind !== "evaluation") continue;
     seen.add(id);
     found.push({
