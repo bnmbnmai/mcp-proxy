@@ -1147,6 +1147,7 @@ async function main(): Promise<void> {
   assert.equal(EXTRACTED_BODY_SKUS.includes("orr-enforcement"), true);
   assert.equal(EXTRACTED_BODY_SKUS.includes("phmsa-orders"), true);
   assert.equal(EXTRACTED_BODY_SKUS.includes("aaib-reports"), true);
+  assert.equal(EXTRACTED_BODY_SKUS.includes("eis-reports"), true);
   assert.equal((EXTRACTED_BODY_SKUS as readonly string[]).includes("ticks"), false);
 
   const fatGmpCards = Array.from({ length: 120 }, (_, i) => {

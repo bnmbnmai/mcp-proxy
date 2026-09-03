@@ -57,6 +57,7 @@ export const EXTRACTED_BODY_SKUS = [
   "orr-enforcement",
   "phmsa-orders",
   "aaib-reports",
+  "eis-reports",
 ] as const;
 
 export type ExtractedBodySku = (typeof EXTRACTED_BODY_SKUS)[number];
@@ -133,6 +134,7 @@ export const GAIN_TYPE = "gain";
 export const ORR_ENFORCEMENT_TYPE = "orr-enforcement";
 export const PHMSA_ORDERS_TYPE = "phmsa-orders";
 export const AAIB_REPORTS_TYPE = "aaib-reports";
+export const EIS_REPORTS_TYPE = "eis-reports";
 export const CFPB_ORDER_TYPE = "cfpb-order";
 export const OFAC_ORDER_TYPE = "ofac-order";
 export const FRB_ORDER_TYPE = "frb-order";
@@ -180,6 +182,7 @@ export const GAIN_SOURCE = "https://gain.fas.usda.gov/";
 export const ORR_ENFORCEMENT_SOURCE = "https://www.orr.gov.uk/monitoring-regulation/rail/investigations";
 export const PHMSA_ORDERS_SOURCE = "https://primis.phmsa.dot.gov/enforcement-documents/";
 export const AAIB_REPORTS_SOURCE = "https://www.gov.uk/aaib-reports";
+export const EIS_REPORTS_SOURCE = "https://cdxapps.epa.gov/cdx-enepa-II/public/action/eis/search";
 export const CFPB_ORDER_SOURCE = "https://www.consumerfinance.gov/enforcement/actions/";
 export const OFAC_ORDER_SOURCE = "https://ofac.treasury.gov/civil-penalties-and-enforcement-information";
 export const FRB_ORDER_SOURCE = "https://www.federalreserve.gov/supervisionreg/enforcementactions.htm";
@@ -614,6 +617,8 @@ export function normalizeCardRecords(
         str(row.provider) ||
         str(row.country) ||
         [str(row.aircraft), str(row.registration)].filter(Boolean).join(" ") ||
+        str(row.agency) ||
+        str(row.title) ||
         id,
       url: str(row.sourceUrl),
       type,
@@ -794,6 +799,10 @@ export function paidPhmsaOrdersBody<T extends CardPayload>(payload: T, opts?: Pa
 
 export function paidAaibReportsBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
   return paidCardBody(payload, AAIB_REPORTS_TYPE, AAIB_REPORTS_SOURCE, opts);
+}
+
+export function paidEisReportsBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, EIS_REPORTS_TYPE, EIS_REPORTS_SOURCE, opts);
 }
 
 export function paidIcoMpnBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
