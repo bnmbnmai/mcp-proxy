@@ -436,15 +436,21 @@ import {
   paidTtbOicBody,
   paidUntitledLettersBody,
   paidWarningLettersBody,
+  COLLECT_CADENCE,
   decorateExtractedBodyManifest,
+  etagFromPaidEnvelope,
+  HTTP_429_COPY,
+  ifNoneMatchHits,
   isExtractedBodySku,
   newestOfficialTextsCopy,
+  newerSinceCopy,
   oneOfficialTextCopy,
   paidBodyOptsFromSearch,
   paidBodyQueryPath,
   paidBodyWindow,
   PAGE_AMOUNT_ATOMIC,
   SINGLE_DOC_AMOUNT_ATOMIC,
+  tableUnchangedSince,
   type PaidBodyOpts,
 } from "./paid-records.js";
 import {
@@ -1159,10 +1165,10 @@ function usdcDisplayFromAtomic(atomic: string | null | undefined): string | null
 }
 
 const PAID_BODY_N = paidBodyWindow();
-const PAID_WINDOW_COPY = `GET ?id= one official text ($0.02). Newest chunk on a plain GET (${newestOfficialTextsCopy(PAID_BODY_N)}, $0.05); older page ?before= another $0.05.`;
+const PAID_WINDOW_COPY = `GET ?id= one official text ($0.02). Newest chunk on a plain GET (${newestOfficialTextsCopy(PAID_BODY_N)}, $0.05); older page ?before= another $0.05. ${newerSinceCopy()}.`;
 /** Shop-wide discovery. Free index/search, then pay one text or the page. Never “entire current cache”. */
 const BODY_PAGE_DISCOVERY =
-  `Extracted-body doors: free index/search on /{door}/manifest.json or /{door}/index (?q=, optional before/date), then pay ${oneOfficialTextCopy()} or the page ($0.05). ${newestOfficialTextsCopy(PAID_BODY_N)} on a plain GET ($0.05), or the whole current set if fewer; older pages on the same URL (?before, another $0.05). Table doors (/ticks, /import-alerts) stay the whole current table.`;
+  `Extracted-body doors: free index/search on /{door}/manifest.json or /{door}/index (?q=, optional before/date), then pay ${oneOfficialTextCopy()} or the page ($0.05). ${newestOfficialTextsCopy(PAID_BODY_N)} on a plain GET ($0.05), or the whole current set if fewer; older pages on the same URL (?before, another $0.05). Poll newer with ?since=<ISO timestamp or official catalog id> ($0.05; empty new set is HTTP 304 or paid recordCount 0). Table doors (/ticks, /import-alerts) stay the whole current table; If-None-Match / ETag (or ?since=) avoids re-buying an unchanged snapshot. ${COLLECT_CADENCE} ${HTTP_429_COPY}`;
 
 const CANONICAL_ORIGIN = "https://ticks.bnm.farm";
 const CDP_DESCRIPTION_MAX = 500;
@@ -2745,9 +2751,11 @@ export function bazaarExtension(sku: DoorSku): Record<string, unknown> {
         type: "http",
         method: "GET",
         queryParams: isExtractedBodySku(sku)
-          ? { id: "", before: "", page: "" }
-          : isPdfCacheSku(sku)
-            ? { id: "", before: "" }
+          ? { id: "", before: "", since: "", page: "" }
+          : isTableSku(sku)
+            ? { since: "" }
+            : isPdfCacheSku(sku)
+              ? { id: "", before: "" }
             : {},
       },
       output: {
@@ -3660,7 +3668,7 @@ function sendJson(res: ServerResponse, status: number, body: unknown, extraHeade
     "Content-Type": "application/json; charset=utf-8",
     "Cache-Control": "no-store",
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Expose-Headers": "PAYMENT-REQUIRED, X-PAYMENT-RESPONSE, PAYMENT-RESPONSE",
+    "Access-Control-Expose-Headers": "PAYMENT-REQUIRED, X-PAYMENT-RESPONSE, PAYMENT-RESPONSE, ETag",
     ...extraHeaders,
   });
   res.end(payload);
@@ -3734,13 +3742,13 @@ export function llmsTxt(): string {
   const listedGmpMd = gmpMdIsPublic();
   const ticksPrice = usdcDisplayFromAtomic(amountAtomicFor("ticks")) ?? "$0.05";
   const paid = [
-    `- GET /ticks — ${ticksPrice} — US hay, cattle, and grain ticks (USDA AMS nationwide plus official dairy, hogs, and terminal produce). Idaho / PNW barns are example geography inside the table, not the SKU. Paid JSON keeps ticks[] and adds records[] + asOf.`,
-    "- GET /import-alerts — $0.05 — FDA Import Alerts / DWPE firm-product snapshot. Paid JSON keeps ticks[] and adds records[] + asOf.",
+    `- GET /ticks — ${ticksPrice} — US hay, cattle, and grain ticks (USDA AMS nationwide plus official dairy, hogs, and terminal produce). Idaho / PNW barns are example geography inside the table, not the SKU. Paid JSON keeps ticks[] and adds records[] + asOf. ETag / If-None-Match (or ?since=) 304s an unchanged snapshot.`,
+    "- GET /import-alerts — $0.05 — FDA Import Alerts / DWPE firm-product snapshot. Paid JSON keeps ticks[] and adds records[] + asOf. ETag / If-None-Match (or ?since=) 304s an unchanged snapshot.",
     "- GET /mariners — $0.05 — USCG D13 / Northwest Local Notice to Mariners",
     "- GET /mariners-d11 — $0.05 — USCG D11 / Southwest Local Notice to Mariners",
     "- GET /mariners-d7 — $0.05 — USCG D7 / Southeast Local Notice to Mariners",
     "- GET /mariners-d8 — $0.05 — USCG D8 / Gulf Local Notice to Mariners",
-    `- GET /warning-letters — $0.05 — FDA warning-letter bodies (firm, date, subject, full letter text). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /warning-letters — $0.05 — FDA warning-letter bodies (firm, date, subject, full letter text). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05. Same URL ?since=<ISO timestamp or id> is newer texts only.`,
     `- GET /untitled-letters — $0.05 — FDA Untitled Letter text (CDER OPDP + CBER promo PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /awa — $0.05 — USDA APHIS AWA inspection-report observation text (official per-report PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /swisspar — $0.05 — Swissmedic first-authorisation SwissPAR evaluation text (official per-product PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
@@ -3852,7 +3860,7 @@ export function llmsTxt(): string {
     "",
     ...paid,
     "",
-    "Unpaid GET returns HTTP 402 with PAYMENT-REQUIRED and extensions.bazaar. Unpaid POST on the same paid path (empty JSON `{}` accepted) returns that same 402 challenge and does not return data. After a valid X-PAYMENT, the same URL returns JSON: newest chunk on extracted-body doors, older chunk if they ask, whole current table on /ticks and /import-alerts. No API key. GET has no request body.",
+    "Unpaid GET returns HTTP 402 with PAYMENT-REQUIRED and extensions.bazaar. Unpaid POST on the same paid path (empty JSON `{}` accepted) returns that same 402 challenge and does not return data. After a valid X-PAYMENT, the same URL returns JSON: newest chunk on extracted-body doors, older chunk if they ask, newer-than ?since= if they poll, whole current table on /ticks and /import-alerts. Empty ?since= delta is HTTP 304 or paid recordCount 0. Table If-None-Match 304s an unchanged snapshot. No API key. GET has no request body.",
     "402 accepts[].extra names searchUrl, oneDocPath, priceAtomic, pagePriceAtomic, pageDefault, tableWhole, firmCheckUrl, sampleUrl. extra.name stays USD Coin.",
     "",
     "## Free discovery",
@@ -3908,6 +3916,14 @@ export function wellKnownX402(req: IncomingMessage, port: number): Record<string
     resources: paidDiscoveryUrls(req, port),
     ownershipProofs: [PAY_TO],
     ...shopDiscoveryPointers(req, port),
+    extra: {
+      since:
+        "Extracted-body doors accept ?since=<ISO timestamp or official catalog id> (same watermark shape as ?before=). Paid GET returns only official texts newer than that watermark. Empty new set: HTTP 304 with ETag, or paid 200 with empty records/ids and a stable asOf/fetchedAt. Newest-10 ?before= and ?id= stay.",
+      etag:
+        "GET /ticks and GET /import-alerts send ETag. If-None-Match on an unchanged snapshot returns 304 and does not re-sell the table. If the table changed, the whole current table is returned (existing product). Optional ?since= on those tables 304s when fetchedAt/asOf is not newer.",
+      updateCadence: COLLECT_CADENCE,
+      http429: HTTP_429_COPY,
+    },
     instructions:
       `GET each resource unpaid for HTTP 402 with extensions.bazaar. Pay USDC on Base. ${BODY_PAGE_DISCOVERY} Free canned paid-JSON keys: GET /sample (HTTP 200, not a SKU). Free firm-name search: GET ${FIRM_CHECK_PATH}?q= (HTTP 200, not a SKU). ${SAMPLE_HOW_TO_USE.join(" ")} Free OpenAPI is at /openapi.json. MCP is at /mcp (same ${paidCountWord()} paid GETs plus free search and firm-check, not a new SKU). Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
   };
@@ -3948,7 +3964,15 @@ function paidOpenApiOp(opts: {
             required: false,
             schema: { type: "string" },
             description:
-              "Official catalog id from the free index. That one official text. $0.02 (20000 atomic). Same door, not a new SKU. Wins over before/page.",
+              "Official catalog id from the free index. That one official text. $0.02 (20000 atomic). Same door, not a new SKU. Wins over since/before/page.",
+          },
+          {
+            name: "since",
+            in: "query",
+            required: false,
+            schema: { type: "string" },
+            description:
+              "ISO timestamp or official catalog id (same shape as ?before=). Official texts newer than this watermark. $0.05. Empty new set is HTTP 304 or paid recordCount 0. The other direction from ?before=.",
           },
           {
             name: "before",
@@ -3963,10 +3987,29 @@ function paidOpenApiOp(opts: {
             in: "query",
             required: false,
             schema: { type: "integer", minimum: 1 },
-            description: "1-based page. Page 1 is the newest chunk. Ignored when before is set.",
+            description: "1-based page. Page 1 is the newest chunk. Ignored when since/before is set.",
           },
         ]
-      : [],
+      : opts.operationId === "getTicks" || opts.operationId === "getImportAlerts"
+        ? [
+            {
+              name: "since",
+              in: "query",
+              required: false,
+              schema: { type: "string" },
+              description:
+                "ISO timestamp or asOf date. If the current table fetchedAt/asOf is not newer, HTTP 304 (not charged). If the table changed, the whole current table is returned.",
+            },
+            {
+              name: "If-None-Match",
+              in: "header",
+              required: false,
+              schema: { type: "string" },
+              description:
+                "ETag from a prior paid GET. Unchanged snapshot returns HTTP 304 and does not re-sell the table.",
+            },
+          ]
+        : [],
     "x-auth": { mode: "x402" },
     "x-payment-info": {
       protocols: [
@@ -3994,16 +4037,26 @@ function paidOpenApiOp(opts: {
             example: opts.example,
           },
         },
+        headers: {
+          ETag: { schema: { type: "string" }, description: "Snapshot / catalog-tip ETag for If-None-Match polls" },
+        },
+      },
+      "304": {
+        description:
+          "Not Modified. Catalog tip or table snapshot unchanged. No body. Not charged. Send If-None-Match or ?since=.",
       },
       "402": {
         description: "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body",
+      },
+      "429": {
+        description: HTTP_429_COPY,
       },
     },
   };
 }
 
 const EXTRACTED_MANIFEST_OPENAPI =
-  " Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05).";
+  " Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05). Same URL ?since=<ISO timestamp or official catalog id> is official texts newer than that watermark ($0.05; empty new set is 304 or recordCount 0).";
 
 function freeOpenApiOp(summary: string, description: string): Record<string, unknown> {
   const extractedCatalog =
@@ -4220,6 +4273,10 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       oneDocPriceAtomic: Number(SINGLE_DOC_AMOUNT_ATOMIC),
       pagePriceAtomic: Number(PAGE_AMOUNT_ATOMIC),
       pageDefault: paidBodyWindow(),
+      since: "ISO timestamp or official catalog id on extracted-body doors; fetchedAt/asOf on /ticks and /import-alerts",
+      etag: "GET /ticks and GET /import-alerts. If-None-Match → 304 when unchanged.",
+      updateCadence: COLLECT_CADENCE,
+      http429: HTTP_429_COPY,
     },
     servers: [{ url: origin }],
     paths: {
@@ -5594,16 +5651,34 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
 }
 
 function paidOptsFromReq(req: IncomingMessage, sku: DoorSku): PaidBodyOpts | undefined {
+  const url = new URL(req.url || "/", "http://127.0.0.1");
   if (isPdfCacheSku(sku)) {
-    const url = new URL(req.url || "/", "http://127.0.0.1");
     const id = url.searchParams.get("id")?.trim() || undefined;
     const before = url.searchParams.get("before")?.trim() || undefined;
-    return { id, before };
+    const since = url.searchParams.get("since")?.trim() || undefined;
+    return { id, before, since };
+  }
+  if (isTableSku(sku)) {
+    const since = url.searchParams.get("since")?.trim() || undefined;
+    return since ? { since } : {};
   }
   if (!isExtractedBodySku(sku)) return undefined;
-  const url = new URL(req.url || "/", "http://127.0.0.1");
   const opts = paidBodyOptsFromSearch(url.searchParams);
-  return opts.id || opts.before || opts.page ? opts : {};
+  return opts.id || opts.before || opts.since || opts.page ? opts : {};
+}
+
+function sendNotModified(res: ServerResponse, etag: string): void {
+  res.writeHead(304, {
+    ETag: etag,
+    "Cache-Control": "no-store",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Expose-Headers": "PAYMENT-REQUIRED, X-PAYMENT-RESPONSE, PAYMENT-RESPONSE, ETag",
+  });
+  res.end();
+}
+
+function paidEnvelope(body: unknown): { fetchedAt?: unknown; asOf?: unknown; records?: unknown; ids?: unknown; recordCount?: unknown } {
+  return body && typeof body === "object" ? (body as { fetchedAt?: unknown; asOf?: unknown; records?: unknown; ids?: unknown; recordCount?: unknown }) : {};
 }
 
 function amountAtomicForRequest(sku: DoorSku, opts?: PaidBodyOpts): string {
@@ -5626,6 +5701,22 @@ async function servePaid(
   const body402 = paymentRequiredBody(resource, sku, amount);
   const v2 = paymentRequiredV2(resource, sku, amount);
   const paymentRequiredHeader = Buffer.from(JSON.stringify(v2), "utf-8").toString("base64");
+  const body = await load(opts);
+  const envelope = paidEnvelope(body);
+  const etag = etagFromPaidEnvelope(sku, envelope);
+  const noneMatch = ifNoneMatchHits(req.headers["if-none-match"], etag);
+  const emptySince =
+    Boolean(opts?.since) && !opts?.id && isExtractedBodySku(sku) && Number(envelope.recordCount ?? 0) === 0;
+  const tableSame =
+    isTableSku(sku) &&
+    (noneMatch ||
+      tableUnchangedSince(
+        {
+          fetchedAt: typeof envelope.fetchedAt === "string" ? envelope.fetchedAt : null,
+          asOf: typeof envelope.asOf === "string" ? envelope.asOf : null,
+        },
+        opts?.since,
+      ));
 
   const logPaid = (status: number) => {
     logShopRequest(req, {
@@ -5637,31 +5728,36 @@ async function servePaid(
     });
   };
 
-  if (!payment) {
-    logPaid(402);
-    sendJson(res, 402, body402, { "PAYMENT-REQUIRED": paymentRequiredHeader });
+  if (tableSame || (emptySince && !payment)) {
+    logPaid(304);
+    sendNotModified(res, etag);
     return;
   }
 
-  const serve = async () => {
-    const body = await load(opts);
+  if (!payment) {
+    logPaid(402);
+    sendJson(res, 402, body402, { "PAYMENT-REQUIRED": paymentRequiredHeader, ETag: etag });
+    return;
+  }
+
+  const serve = () => {
     logPaid(200);
-    sendJson(res, 200, body);
+    sendJson(res, 200, body, { ETag: etag });
   };
 
   if (skipSettle()) {
-    await serve();
+    serve();
     return;
   }
 
   const accept = facilitatorPaymentRequirements(resource, sku, amount);
   const verified = await facilitatorVerify(payment, accept);
   if (verified && (await facilitatorSettle(payment, accept))) {
-    await serve();
+    serve();
     return;
   }
   if (await localEip3009Settle(payment, accept)) {
-    await serve();
+    serve();
     return;
   }
   logPaid(402);
@@ -5672,7 +5768,7 @@ async function servePaid(
       ...body402,
       error: "Payment present but not settled. Set X402_FACILITATOR_URL or pay with a valid x402 X-PAYMENT header.",
     },
-    { "PAYMENT-REQUIRED": paymentRequiredHeader },
+    { "PAYMENT-REQUIRED": paymentRequiredHeader, ETag: etag },
   );
 }
 
@@ -5688,7 +5784,7 @@ function sendPdf(
     "Content-Disposition": `inline; filename="${filename}"`,
     "Cache-Control": "no-store",
     "Access-Control-Allow-Origin": "*",
-    "Access-Control-Expose-Headers": "PAYMENT-REQUIRED, X-PAYMENT-RESPONSE, PAYMENT-RESPONSE",
+    "Access-Control-Expose-Headers": "PAYMENT-REQUIRED, X-PAYMENT-RESPONSE, PAYMENT-RESPONSE, ETag",
     ...extraHeaders,
   });
   res.end(Buffer.from(bytes));
@@ -5794,7 +5890,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   if (req.method === "OPTIONS") {
     res.writeHead(204, {
       "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers": "X-PAYMENT, PAYMENT-SIGNATURE, Content-Type",
+      "Access-Control-Allow-Headers": "X-PAYMENT, PAYMENT-SIGNATURE, Content-Type, If-None-Match",
       "Access-Control-Allow-Methods": isPaidDoorPath(path) ? "GET, POST, OPTIONS" : "GET, OPTIONS",
     });
     res.end();
