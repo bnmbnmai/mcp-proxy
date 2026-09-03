@@ -8,7 +8,7 @@ Official **EPA NEPA Environmental Impact Statement PDFs** from CDX e-NEPA (`cdxa
 
 **Leak-test:** no-auth JSON / `?format=json` / `/api/eis/{id}` do **not** dump EIS PDF bytes. Free search/details HTML is titles, CEQ numbers, dates, agencies, attachment IDs. If a no-auth JSON starts dumping the EIS body, KILL the door.
 
-**First cache:** last-week habit + Clinch River SEIS seed `20260036` (eisId `555705`, attachment `555711`, FR `2026-04-10`). Official PDFs stay on Apollo under `data/eis-reports/` (gitignored).
+**First cache (cloud VM unattended collect):** **2 PDFs**, asOf **2026-08-28**. F-35A Beddown Draft EIS `20260104` (101,414,998 bytes) + Clinch River SEIS `20260036` (6,606,213 bytes). Official PDFs stay on Apollo under `data/eis-reports/` (gitignored).
 
 This cloud VM is **not** apollo. Do **not** fight apollo / media-box for the live apply if a LeadRTB agent (`bc-6ee4f761`) is still on the box. Leave this handoff.
 
