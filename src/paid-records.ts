@@ -1073,7 +1073,7 @@ export function paidImportAlertsBody<
 export const RECORD_FIELDS = ["id", "date", "firm", "url", "type"] as const;
 
 export const COLLECT_CADENCE =
-  "Daily America/Boise user cron (ticks-collect.sh, typically 07:45). Skip 02:00-04:00 Imagine window. Fat doors skipped when n>=20 and fetchedAt within 36h.";
+  "Two daily America/Boise collects (07:45 and 19:45). Walk every live well-known paid door. Skip only the recrawl when official asOf is unchanged. Skip 02:00-04:00 Imagine window.";
 
 export const HTTP_429_COPY =
   "HTTP 429 is not a SKU and is not a subscription. Official collect may see upstream 429s; those are not sold. If this host returns 429, honor Retry-After and poll with ?since= or If-None-Match.";
