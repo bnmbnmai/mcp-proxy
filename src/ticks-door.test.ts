@@ -7368,6 +7368,170 @@ async function main(): Promise<void> {
     mockFacilitator.close((err) => (err ? reject(err) : resolve())),
   );
 
+  const habitWlDir = mkdtempSync(join(tmpdir(), "warning-letters-habit-"));
+  writeFileSync(
+    join(habitWlDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "fda-warning-letter-bodies",
+      status: "ok",
+      fetchedAt: "2026-09-02T13:46:18.671Z",
+      asOf: "2026-08-24",
+      sources: {
+        listing:
+          "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/warning-letters",
+      },
+      letters: [
+        {
+          id: "peak-performance-peptides-735127-08242026",
+          firm: "Peak Performance Peptides",
+          cms: "735127",
+          issuedOn: "2026-08-24",
+          subject: "Unapproved New Drugs/Misbranded",
+          sourceUrl:
+            "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/peak-performance-peptides-735127-08242026",
+          body: "WARNING LETTER\nAugust 24, 2026\nRE: newer letter body.",
+        },
+        {
+          id: "citra100mg-722606-03042026",
+          firm: "Citra100mg",
+          cms: "722606",
+          issuedOn: "2026-03-04",
+          subject: "Unapproved New Drugs/Misbranded",
+          sourceUrl:
+            "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/citra100mg-722606-03042026",
+          body: "WARNING LETTER\nMarch 4, 2026\nRE: older letter body.",
+        },
+      ],
+    }),
+  );
+  const habitTicksDir = mkdtempSync(join(tmpdir(), "ticks-habit-"));
+  writeFileSync(
+    join(habitTicksDir, "board.json"),
+    JSON.stringify({
+      fetchedAt: "2026-08-31T01:21:22.344Z",
+      rows: [
+        {
+          id: "cattle-bf-feeder-steer",
+          group: "cattle",
+          commodity: "Feeder steers",
+          market: "Blackfoot Livestock Auction",
+          unit: "$/cwt",
+          price: 376.57,
+          asOf: "2026-08-14",
+          source: "Blackfoot Livestock Auction representative sales",
+          sourceUrl: "https://blackfootlivestockauction.com/representative-sales/",
+        },
+      ],
+      failed: [],
+      history: { points: [], emptyReports: [], series: [] },
+    }),
+  );
+
+  await withServer(
+    {
+      WARNING_LETTERS_DIR: habitWlDir,
+      WARNING_LETTERS_TTL_MS: String(24 * 3600 * 1000),
+      TICKS_DIR: habitTicksDir,
+      TICKS_AMS_DIR: join(habitTicksDir, "no-ams"),
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-habit-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${WARNING_LETTERS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid still 402");
+
+      const paidNewest = await fetch(`${base}${WARNING_LETTERS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paidNewest.status, 200);
+      const newest = (await paidNewest.json()) as { ids?: string[]; records?: { id: string }[] };
+      assert.deepEqual(newest.ids, ["peak-performance-peptides-735127-08242026", "citra100mg-722606-03042026"]);
+
+      const paidId = await fetch(`${base}${WARNING_LETTERS_PATH}?id=citra100mg-722606-03042026`, {
+        headers: { "X-PAYMENT": "test" },
+      });
+      assert.equal(paidId.status, 200, "?id= still works");
+      const one = (await paidId.json()) as { ids?: string[]; recordCount?: number };
+      assert.deepEqual(one.ids, ["citra100mg-722606-03042026"]);
+
+      const paidBefore = await fetch(`${base}${WARNING_LETTERS_PATH}?before=peak-performance-peptides-735127-08242026`, {
+        headers: { "X-PAYMENT": "test" },
+      });
+      assert.equal(paidBefore.status, 200, "?before= still works");
+      const older = (await paidBefore.json()) as { ids?: string[] };
+      assert.deepEqual(older.ids, ["citra100mg-722606-03042026"]);
+
+      const sinceNewerUnpaid = await fetch(`${base}${WARNING_LETTERS_PATH}?since=citra100mg-722606-03042026`);
+      assert.equal(sinceNewerUnpaid.status, 402, "since with new rows is still unpaid 402");
+      const sinceNewer = await fetch(`${base}${WARNING_LETTERS_PATH}?since=citra100mg-722606-03042026`, {
+        headers: { "X-PAYMENT": "test" },
+      });
+      assert.equal(sinceNewer.status, 200);
+      const delta = (await sinceNewer.json()) as { ids?: string[]; recordCount?: number; letters?: { publishedAt?: string }[] };
+      assert.deepEqual(delta.ids, ["peak-performance-peptides-735127-08242026"], "since returns only newer ids");
+      assert.equal(delta.recordCount, 1);
+      assert.equal(delta.letters?.[0]?.publishedAt, "2026-08-24");
+
+      const sinceEmpty = await fetch(`${base}${WARNING_LETTERS_PATH}?since=peak-performance-peptides-735127-08242026`);
+      assert.equal(sinceEmpty.status, 304, "since with no new rows is 304 unpaid");
+      assert.ok(sinceEmpty.headers.get("etag"));
+      const sinceEmptyPaid = await fetch(`${base}${WARNING_LETTERS_PATH}?since=peak-performance-peptides-735127-08242026`, {
+        headers: { "X-PAYMENT": "test" },
+      });
+      assert.equal(sinceEmptyPaid.status, 200, "paid empty since is recordCount 0, not a pretend letter");
+      const emptyPage = (await sinceEmptyPaid.json()) as {
+        recordCount?: number;
+        ids?: string[];
+        records?: unknown[];
+        asOf?: string;
+        fetchedAt?: string;
+      };
+      assert.equal(emptyPage.recordCount, 0);
+      assert.deepEqual(emptyPage.ids, []);
+      assert.deepEqual(emptyPage.records, []);
+      assert.equal(emptyPage.asOf, "2026-08-24");
+      assert.equal(emptyPage.fetchedAt, "2026-09-02T13:46:18.671Z");
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
+        paths?: Record<string, { get?: { parameters?: { name?: string }[]; responses?: Record<string, unknown> } }>;
+        info?: { "x-guidance"?: string };
+      };
+      const wlParams = spec.paths?.[WARNING_LETTERS_PATH]?.get?.parameters?.map((p) => p.name) ?? [];
+      assert.ok(wlParams.includes("since"));
+      assert.ok(spec.paths?.[WARNING_LETTERS_PATH]?.get?.responses?.["304"]);
+      assert.ok(spec.paths?.[TICKS_PATH]?.get?.responses?.["304"]);
+      assert.ok(spec.paths?.[TICKS_PATH]?.get?.responses?.["429"]);
+      assert.ok((spec.info?.["x-guidance"] ?? "").includes("?since="));
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
+        extra?: { since?: string; etag?: string; updateCadence?: string; http429?: string };
+        resources?: string[];
+      };
+      assert.ok(wk.extra?.since?.includes("?since="));
+      assert.ok(wk.extra?.etag?.includes("If-None-Match"));
+      assert.ok(wk.extra?.updateCadence?.includes("America/Boise"));
+      assert.ok(wk.extra?.http429?.includes("429"));
+      assert.equal(wk.resources?.length, PUBLIC_BAZAAR_SKUS.length);
+
+      const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llmsBody.includes("?since="));
+      assert.ok(llmsBody.includes("If-None-Match"));
+
+      const unpaidTicks = await fetch(`${base}${TICKS_PATH}`);
+      assert.equal(unpaidTicks.status, 402, "unpaid /ticks still 402");
+      const paidTicks = await fetch(`${base}${TICKS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paidTicks.status, 200);
+      const ticksEtag = paidTicks.headers.get("etag");
+      assert.ok(ticksEtag, "paid /ticks sends ETag");
+      const notModified = await fetch(`${base}${TICKS_PATH}`, { headers: { "If-None-Match": ticksEtag ?? "" } });
+      assert.equal(notModified.status, 304, "ticks ETag 304 when unchanged");
+      assert.equal(notModified.headers.get("etag"), ticksEtag);
+      const staleMatch = await fetch(`${base}${TICKS_PATH}`, { headers: { "If-None-Match": '"nope"' } });
+      assert.equal(staleMatch.status, 402, "stale If-None-Match still unpaid 402");
+      const sinceTable = await fetch(`${base}${TICKS_PATH}?since=2026-08-31T01:21:22.344Z`);
+      assert.equal(sinceTable.status, 304, "table ?since= matching fetchedAt is 304");
+    },
+  );
+
   console.log("ticks-door tests ok");
 }
 
