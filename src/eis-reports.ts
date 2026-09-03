@@ -416,9 +416,10 @@ export function isSuperfundRodDump(text: string): boolean {
 }
 
 export function isRealEisBody(text: string): boolean {
-  const t = String(text || "").replace(/\s+/g, " ").trim();
+  const raw = String(text || "");
+  const t = raw.replace(/\s+/g, " ").trim();
   if (t.length < MIN_BODY_CHARS) return false;
-  if (isChromeEisHtml(t)) return false;
+  if (isChromeEisHtml(raw) && /<[a-z][\s\S]*>/i.test(raw)) return false;
   if (isSuperfundRodDump(t)) return false;
   if (isCommentLetterTitle(t.slice(0, 240))) return false;
   if (/Please check the ALTCHA/i.test(t)) return false;
