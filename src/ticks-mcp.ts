@@ -13,7 +13,7 @@ import type { IncomingMessage, ServerResponse } from "node:http";
 import { resolve } from "node:path";
 import { z } from "zod";
 import { FIRM_CHECK_NOTE, FIRM_CHECK_PATH, FIRM_CHECK_TOOL_NAME, firmCheckQuery, runFirmCheck } from "./firm-check.js";
-import { catalogSearchQueryString, EXTRACTED_BODY_SKUS, isExtractedBodySku, newestOfficialTextsCopy } from "./paid-records.js";
+import { catalogSearchQueryString, EXTRACTED_BODY_SKUS, isExtractedBodySku, newestOfficialTextsCopy, newerSinceCopy } from "./paid-records.js";
 
 export const LIVE_ORIGIN = "https://ticks.bnm.farm";
 export const MCP_PATH = "/mcp";
@@ -189,7 +189,7 @@ export function mcpDiscovery(origin = LIVE_ORIGIN, catalog: LivePaidSku[]): Reco
     connect: `npx -y mcp-remote ${base}${MCP_PATH}`,
     source: WELL_KNOWN_PATH,
     note:
-      `Same ${catalog.length} paid GETs as ${WELL_KNOWN_PATH}. Free ${SEARCH_TOOL_NAME} finds id, the ?id= URL ($0.02), and the page cursor; free ${FIRM_CHECK_TOOL_NAME} searches Form 483, FDA warning letters, FDA untitled letters, FTC BCP warning letters, Ofwat, Ofgem, CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog; paid ${GET_ONE_TOOL_NAME} is one official text ($0.02); paid ${GET_PAGE_TOOL_NAME} is the page ($0.05). Extracted-body doors: ${newestOfficialTextsCopy()} on a plain GET; older pages on the same URL (?before). Table doors stay the whole current table. Free ${SEARCH_TOOL_NAME} and ${FIRM_CHECK_TOOL_NAME} are not paid SKUs. Unpaid tool calls still HTTP 402 on the paid URL. Not Bazaar-indexed.`,
+      `Same ${catalog.length} paid GETs as ${WELL_KNOWN_PATH}. Free ${SEARCH_TOOL_NAME} finds id, the ?id= URL ($0.02), and the page cursor; free ${FIRM_CHECK_TOOL_NAME} searches Form 483, FDA warning letters, FDA untitled letters, FTC BCP warning letters, Ofwat, Ofgem, CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog; paid ${GET_ONE_TOOL_NAME} is one official text ($0.02); paid ${GET_PAGE_TOOL_NAME} is the page ($0.05). Extracted-body doors: ${newestOfficialTextsCopy()} on a plain GET; older pages on the same URL (?before); ${newerSinceCopy()}. Table doors stay the whole current table; If-None-Match / ETag (or ?since=) 304s an unchanged snapshot. Free ${SEARCH_TOOL_NAME} and ${FIRM_CHECK_TOOL_NAME} are not paid SKUs. Unpaid tool calls still HTTP 402 on the paid URL. Not Bazaar-indexed.`,
     freeTools: [SEARCH_TOOL_NAME, FIRM_CHECK_TOOL_NAME],
   };
 }
@@ -220,13 +220,26 @@ export function mcpToolDescriptors(
         type: "string",
         description: "Official catalog id. That one official text, $0.02. Same door, not a new SKU.",
       };
+      properties.since = {
+        type: "string",
+        description: "ISO timestamp or official catalog id. Official texts newer than this watermark, $0.05. Empty new set is 304 or recordCount 0.",
+      };
       properties.before = {
         type: "string",
         description: "Official catalog id or YYYY-MM-DD. Next older chunk on the same URL, another $0.05. Omit for the newest chunk.",
       };
       properties.page = {
         type: "string",
-        description: "1-based page. Page 1 is the newest chunk. Ignored when before is set.",
+        description: "1-based page. Page 1 is the newest chunk. Ignored when since/before is set.",
+      };
+    } else if (sku.path === "/ticks" || sku.path === "/import-alerts") {
+      properties.since = {
+        type: "string",
+        description: "ISO timestamp or asOf date. 304 when the current table is not newer.",
+      };
+      properties.if_none_match = {
+        type: "string",
+        description: "ETag from a prior paid GET. Unchanged snapshot returns HTTP 304 and is not re-sold.",
       };
     }
     return {
@@ -234,7 +247,9 @@ export function mcpToolDescriptors(
       description:
         `GET ${base}${sku.path} — $${sku.priceUsdc} USDC on Base to ${PAY_TO}. ${sku.summary} ` +
         (extracted
-          ? "GET ?id= is one official text ($0.02). Newest chunk on a plain GET ($0.05); older chunk if they ask (?before, $0.05). "
+          ? "GET ?id= is one official text ($0.02). Newest chunk on a plain GET ($0.05); older chunk if they ask (?before, $0.05); newer than a watermark ?since= ($0.05). "
+          : sku.path === "/ticks" || sku.path === "/import-alerts"
+            ? "Whole current table ($0.05). Send If-None-Match or ?since= to 304 an unchanged snapshot. "
           : "") +
         "Unpaid returns HTTP 402. After a valid X-PAYMENT, the same URL returns JSON. Not a new SKU.",
       inputSchema: {
@@ -290,13 +305,17 @@ export function mcpToolDescriptors(
     {
       name: GET_PAGE_TOOL_NAME,
       description:
-        `Paid get-page on an extracted-body door. Same URL as the door GET ($0.05). Omit before/page for the ${newestOfficialTextsCopy()}; pass the free-index cursor for an older page. Not a new SKU. Unpaid returns HTTP 402.`,
+        `Paid get-page on an extracted-body door. Same URL as the door GET ($0.05). Omit before/page for the ${newestOfficialTextsCopy()}; pass the free-index cursor for an older page; ?since= for newer-than. Not a new SKU. Unpaid returns HTTP 402.`,
       inputSchema: {
         type: "object" as const,
         properties: {
           door: {
             type: "string",
             description: `Extracted-body door name, e.g. gmp. One of: ${EXTRACTED_BODY_SKUS.join(", ")}`,
+          },
+          since: {
+            type: "string",
+            description: "ISO timestamp or official catalog id. Official texts newer than this watermark.",
           },
           before: {
             type: "string",
@@ -354,8 +373,10 @@ export async function getPaidSku(
     xPayment?: string;
     catalog?: LivePaidSku[];
     before?: string;
+    since?: string;
     page?: string | number;
     id?: string;
+    ifNoneMatch?: string;
   } = {},
 ): Promise<PaidGetResult> {
   const catalog = opts.catalog ?? (await resolveMcpCatalog({ origin: opts.origin }));
@@ -365,12 +386,14 @@ export async function getPaidSku(
   }
   const q = new URLSearchParams();
   if (opts.id?.trim()) q.set("id", opts.id.trim());
+  else if (opts.since?.trim()) q.set("since", opts.since.trim());
   else if (opts.before?.trim()) q.set("before", opts.before.trim());
   else if (opts.page != null && String(opts.page).trim()) q.set("page", String(opts.page).trim());
   const qs = q.toString();
   const url = `${ticksOrigin(opts.origin)}${sku.path}${qs ? `?${qs}` : ""}`;
   const headers: Record<string, string> = { Accept: "application/json" };
   if (opts.xPayment?.trim()) headers["X-PAYMENT"] = opts.xPayment.trim();
+  if (opts.ifNoneMatch?.trim()) headers["If-None-Match"] = opts.ifNoneMatch.trim();
   const response = await fetch(url, { method: "GET", headers });
   return {
     url,
@@ -439,7 +462,7 @@ export async function handleMcpJsonRpc(
       capabilities: { tools: { listChanged: false } },
       serverInfo: { name: "bnm-data-shop", version: "1.0.0" },
       instructions:
-        `${catalog.length} paid GETs from ${WELL_KNOWN_PATH}, plus free ${SEARCH_TOOL_NAME}, free ${FIRM_CHECK_TOOL_NAME}, paid ${GET_ONE_TOOL_NAME} ($0.02), and paid ${GET_PAGE_TOOL_NAME} ($0.05). Free index/search finds id and the ?id= URL; then pay one text or the page. Extracted-body doors: ${newestOfficialTextsCopy()} on a plain GET; older pages on the same URL (?before). Table doors stay the whole current table. Unpaid is HTTP 402. USDC on Base. Not Bazaar-indexed.`,
+        `${catalog.length} paid GETs from ${WELL_KNOWN_PATH}, plus free ${SEARCH_TOOL_NAME}, free ${FIRM_CHECK_TOOL_NAME}, paid ${GET_ONE_TOOL_NAME} ($0.02), and paid ${GET_PAGE_TOOL_NAME} ($0.05). Free index/search finds id and the ?id= URL; then pay one text or the page. Extracted-body doors: ${newestOfficialTextsCopy()} on a plain GET; older pages on the same URL (?before); ${newerSinceCopy()}. Table doors stay the whole current table; If-None-Match 304s an unchanged snapshot. Unpaid is HTTP 402. USDC on Base. Not Bazaar-indexed.`,
     });
   }
 
@@ -456,11 +479,13 @@ export async function handleMcpJsonRpc(
     const args = (message.params?.arguments ?? {}) as {
       x_payment?: string;
       before?: string;
+      since?: string;
       page?: string | number;
       door?: string;
       q?: string;
       date?: string;
       id?: string;
+      if_none_match?: string;
     };
     if (name === FIRM_CHECK_TOOL_NAME) {
       const q = firmCheckQuery(args.q);
@@ -514,6 +539,7 @@ export async function handleMcpJsonRpc(
         xPayment,
         catalog,
         before: args.before,
+        since: args.since,
         page: args.page,
       });
       return ok({
@@ -551,7 +577,9 @@ export async function handleMcpJsonRpc(
       catalog,
       id: args.id,
       before: args.before,
+      since: args.since,
       page: args.page,
+      ifNoneMatch: args.if_none_match,
     });
     return ok({
       content: [{ type: "text", text: formatPaidToolText(result) }],
@@ -682,16 +710,47 @@ export async function createTicksMcpServer(origin = ticksOrigin()): Promise<McpS
           ...(extracted
             ? {
                 id: z.string().optional().describe("Official catalog id. That one official text, $0.02."),
+                since: z.string().optional().describe(
+                  "ISO timestamp or official catalog id. Official texts newer than this watermark.",
+                ),
                 before: z.string().optional().describe(
                   "Official catalog id or YYYY-MM-DD. Next older chunk on the same URL, another $0.05.",
                 ),
                 page: z.string().optional().describe("1-based page. Page 1 is the newest chunk."),
               }
+            : sku.path === "/ticks" || sku.path === "/import-alerts"
+              ? {
+                  since: z.string().optional().describe("ISO timestamp or asOf date. 304 when the table is not newer."),
+                  if_none_match: z.string().optional().describe("ETag from a prior paid GET. 304 when unchanged."),
+                }
             : {}),
         },
       },
-      async ({ x_payment, id: recordId, before, page }: { x_payment?: string; id?: string; before?: string; page?: string }) => {
-        const result = await getPaidSku(sku.path, { origin, xPayment: x_payment, catalog, id: recordId, before, page });
+      async ({
+        x_payment,
+        id: recordId,
+        before,
+        since,
+        page,
+        if_none_match,
+      }: {
+        x_payment?: string;
+        id?: string;
+        before?: string;
+        since?: string;
+        page?: string;
+        if_none_match?: string;
+      }) => {
+        const result = await getPaidSku(sku.path, {
+          origin,
+          xPayment: x_payment,
+          catalog,
+          id: recordId,
+          before,
+          since,
+          page,
+          ifNoneMatch: if_none_match,
+        });
         return {
           content: [{ type: "text" as const, text: formatPaidToolText(result) }],
           isError: result.status >= 500,
@@ -753,20 +812,21 @@ export async function createTicksMcpServer(origin = ticksOrigin()): Promise<McpS
     GET_PAGE_TOOL_NAME,
     {
       description:
-        `Paid get-page on an extracted-body door. Same URL as the door GET ($0.05). Omit before/page for the ${newestOfficialTextsCopy()}. Not a new SKU.`,
+        `Paid get-page on an extracted-body door. Same URL as the door GET ($0.05). Omit before/page for the ${newestOfficialTextsCopy()}; ?since= for newer-than. Not a new SKU.`,
       inputSchema: {
         door: z.string().describe("Extracted-body door name, e.g. gmp"),
+        since: z.string().optional().describe("ISO timestamp or official catalog id. Newer-than watermark."),
         before: z.string().optional().describe("Official catalog id or YYYY-MM-DD from free search."),
         page: z.string().optional().describe("1-based page. Page 1 is the newest chunk."),
         x_payment: z.string().optional().describe("Optional x402 X-PAYMENT value."),
       },
     },
-    async ({ door, before, page, x_payment }) => {
+    async ({ door, before, since, page, x_payment }) => {
       const sku = findLiveSku(String(door ?? ""), catalog);
       if (!sku || !isExtractedBodySku(sku.name)) {
         return { content: [{ type: "text" as const, text: "get-page is for extracted-body doors only." }], isError: true };
       }
-      const result = await getPaidSku(sku.path, { origin, xPayment: x_payment, catalog, before, page });
+      const result = await getPaidSku(sku.path, { origin, xPayment: x_payment, catalog, before, since, page });
       return {
         content: [{ type: "text" as const, text: formatPaidToolText(result) }],
         isError: result.status >= 500,

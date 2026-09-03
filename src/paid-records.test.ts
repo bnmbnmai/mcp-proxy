@@ -49,6 +49,11 @@ import {
   paidBodyOptsFromSearch,
   paidBodyQueryPath,
   paidBodyWindow,
+  ifNoneMatchHits,
+  newerSinceCopy,
+  slicePaidCatalog,
+  snapshotEtag,
+  tableUnchangedSince,
   SINGLE_DOC_AMOUNT_ATOMIC,
   normalizeCardRecords,
   normalizeForm483Records,
@@ -1129,13 +1134,16 @@ async function main(): Promise<void> {
   assert.ok(olderChunkCopy(10).includes("?before="));
   assert.equal(
     paidBodyCatalogNote("/gmp", "Full catalog: count + id + firm + date + url"),
-    "Full catalog: count + id + firm + date + url. Free index/search (?q=, optional before/date) stays free and includes id, the ?id= URL ($0.02), and the page cursor ($0.05). GET /gmp?id= is one official text GET ?id= ($0.02). Plain paid GET /gmp is the newest 10 official texts; older chunk if they ask (?before=<id or date>, another $0.05).",
+    "Full catalog: count + id + firm + date + url. Free index/search (?q=, optional before/date) stays free and includes id, the ?id= URL ($0.02), and the page cursor ($0.05). GET /gmp?id= is one official text GET ?id= ($0.02). Plain paid GET /gmp is the newest 10 official texts; older chunk if they ask (?before=<id or date>, another $0.05); newer than a watermark ?since=<ISO timestamp or official catalog id> ($0.05; empty new set is 304 or recordCount 0).",
   );
   assert.equal(DEFAULT_PAID_BODY_WINDOW, 10);
+  assert.ok(newerSinceCopy().includes("?since="));
   assert.deepEqual(paidBodyOptsFromSearch("before=gmp-0100"), { before: "gmp-0100" });
+  assert.deepEqual(paidBodyOptsFromSearch("since=2026-08-24T15:20:36.317Z"), { since: "2026-08-24T15:20:36.317Z" });
   assert.deepEqual(paidBodyOptsFromSearch("page=2"), { page: 2 });
   assert.deepEqual(paidBodyOptsFromSearch("id=gmp-0001"), { id: "gmp-0001" });
   assert.equal(paidBodyQueryPath("/gmp", { id: "gmp-0001" }), "/gmp?id=gmp-0001");
+  assert.equal(paidBodyQueryPath("/gmp", { since: "gmp-0001" }), "/gmp?since=gmp-0001");
   assert.equal(SINGLE_DOC_AMOUNT_ATOMIC, "20000");
   assert.equal(EXTRACTED_BODY_SKUS.includes("gmp"), true);
   assert.equal(EXTRACTED_BODY_SKUS.includes("cder-reviews"), true);
@@ -1241,9 +1249,9 @@ async function main(): Promise<void> {
       sourceUrl: c.sourceUrl,
     })),
   });
-  const indexCards = fatIndex.cards as { id?: string; date?: string; page?: number; before?: string | null; firm?: string }[];
+  const indexCards = fatIndex.cards as { id?: string; date?: string; publishedAt?: string; page?: number; before?: string | null; firm?: string }[];
   assert.equal(indexCards.length, 121);
-  assert.ok(indexCards.every((row) => row.id && row.page && "before" in row && row.date));
+  assert.ok(indexCards.every((row) => row.id && row.page && "before" in row && row.date && row.publishedAt));
   const page2Index = indexCards.find((row) => row.page === 2);
   assert.ok(page2Index?.before);
   const foundFirm = decorateExtractedBodyManifest(
@@ -1338,6 +1346,105 @@ async function main(): Promise<void> {
   });
   assert.equal(fatNotices.recordCount, 120, "Mariners weekly edition is not a 10-notice slice");
   assert.equal(fatNotices.notices.length, 120);
+
+  const newestGmpId = fatGmp.records[0]?.id ?? "";
+  const olderGmpId = olderGmp.records[0]?.id ?? "";
+  const sinceNewer = paidGmpBody(
+    {
+      ok: true as const,
+      product: "hc-gmp-report-cards" as const,
+      fetchedAt: "2026-08-25T12:00:00.000Z",
+      cards: fatGmpCards,
+    },
+    { since: olderGmpId },
+  );
+  assert.ok(sinceNewer.recordCount > 0, "since an older id returns newer ids");
+  assert.ok(sinceNewer.ids.every((id) => id !== olderGmpId), "since excludes the watermark id");
+  assert.ok(sinceNewer.ids.includes(newestGmpId), "since includes the newest id");
+  assert.equal(sinceNewer.since, olderGmpId);
+  assert.equal(sinceNewer.asOf, fatGmp.asOf, "since keeps the catalog-tip asOf");
+  assert.equal(sinceNewer.fetchedAt, "2026-08-25T12:00:00.000Z");
+  const sinceEmpty = paidGmpBody(
+    {
+      ok: true as const,
+      product: "hc-gmp-report-cards" as const,
+      fetchedAt: "2026-08-25T12:00:00.000Z",
+      cards: fatGmpCards,
+    },
+    { since: newestGmpId },
+  );
+  assert.equal(sinceEmpty.recordCount, 0, "since the newest id is an empty new set");
+  assert.deepEqual(sinceEmpty.ids, []);
+  assert.deepEqual(sinceEmpty.records, []);
+  assert.equal(sinceEmpty.cards.length, 0);
+  assert.equal(sinceEmpty.asOf, fatGmp.asOf, "empty since keeps a stable asOf");
+  assert.equal(sinceEmpty.fetchedAt, "2026-08-25T12:00:00.000Z");
+  const sinceDate = paidGmpBody(
+    {
+      ok: true as const,
+      product: "hc-gmp-report-cards" as const,
+      fetchedAt: "2026-08-25T12:00:00.000Z",
+      cards: fatGmpCards,
+    },
+    { since: fatGmp.asOf ?? "2026-08-11" },
+  );
+  assert.equal(sinceDate.recordCount, 0, "since the catalog asOf date is empty");
+  const sinceIso = paidGmpBody(
+    {
+      ok: true as const,
+      product: "hc-gmp-report-cards" as const,
+      fetchedAt: "2026-08-25T12:00:00.000Z",
+      cards: fatGmpCards,
+    },
+    { since: "2026-08-25T12:00:00.000Z" },
+  );
+  assert.equal(sinceIso.recordCount, 0, "since a later ISO timestamp is empty");
+  const stillNewest = paidGmpBody({
+    ok: true as const,
+    product: "hc-gmp-report-cards" as const,
+    cards: fatGmpCards,
+  });
+  assert.deepEqual(stillNewest.ids, fatGmp.ids, "plain GET newest-10 still works");
+  const stillOne = paidGmpBody(
+    {
+      ok: true as const,
+      product: "hc-gmp-report-cards" as const,
+      cards: fatGmpCards,
+    },
+    { id: "gmp-0001" },
+  );
+  assert.deepEqual(stillOne.ids, ["gmp-0001"], "?id= still wins");
+  const stillBefore = paidGmpBody(
+    {
+      ok: true as const,
+      product: "hc-gmp-report-cards" as const,
+      cards: fatGmpCards,
+    },
+    { before: fatGmp.nextBefore ?? undefined },
+  );
+  assert.deepEqual(stillBefore.ids, olderGmp.ids, "?before= still walks older");
+
+  const slicedSince = slicePaidCatalog(
+    [
+      { id: "new", date: "2026-08-20", firm: "A", url: "https://example.gov/a", type: "x" },
+      { id: "old", date: "2026-08-01", firm: "B", url: "https://example.gov/b", type: "x" },
+    ],
+    10,
+    { since: "old" },
+  );
+  assert.deepEqual(slicedSince.records.map((r) => r.id), ["new"]);
+
+  const etagA = snapshotEtag({ sku: "ticks", fetchedAt: "2026-08-25T12:00:00.000Z", asOf: "2026-08-21", ids: ["a", "b"] });
+  const etagB = snapshotEtag({ sku: "ticks", fetchedAt: "2026-08-25T12:00:00.000Z", asOf: "2026-08-21", ids: ["a", "b"] });
+  const etagC = snapshotEtag({ sku: "ticks", fetchedAt: "2026-08-26T12:00:00.000Z", asOf: "2026-08-21", ids: ["a", "b"] });
+  assert.equal(etagA, etagB);
+  assert.notEqual(etagA, etagC);
+  assert.equal(ifNoneMatchHits(etagA, etagA), true);
+  assert.equal(ifNoneMatchHits(`W/${etagA}`, etagA), true);
+  assert.equal(ifNoneMatchHits(etagC, etagA), false);
+  assert.equal(ifNoneMatchHits("*", etagA), true);
+  assert.equal(tableUnchangedSince({ fetchedAt: "2026-08-25T12:00:00.000Z", asOf: "2026-08-21" }, "2026-08-25T12:00:00.000Z"), true);
+  assert.equal(tableUnchangedSince({ fetchedAt: "2026-08-26T00:00:00.000Z", asOf: "2026-08-21" }, "2026-08-25T12:00:00.000Z"), false);
 
   console.log("paid-records normalize tests ok");
 }

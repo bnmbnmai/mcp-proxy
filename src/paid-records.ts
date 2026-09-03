@@ -1,3 +1,5 @@
+import { createHash } from "node:crypto";
+
 /**
  * Deterministic paid-body normalize for live official doors.
  * Reads OUR cache only. Does not call official APIs or an LLM.
@@ -6,8 +8,10 @@
  *
  * Extracted-body doors sell the newest N official texts on a plain GET (default 10).
  * Same URL ?before=<id or date> (from the free manifest) is the next older N for
- * another $0.05. If the door has fewer than N collected records, the $0.05 page
- * is the whole current set. Free /{door}/manifest.json stays the full catalog.
+ * another $0.05. Same URL ?since=<ISO timestamp or official catalog id> is the
+ * newer-than watermark (the other direction). If the door has fewer than N
+ * collected records, the $0.05 page is the whole current set. Free
+ * /{door}/manifest.json stays the full catalog.
  * /ticks, /import-alerts, and Mariners weekly editions are not windowed.
  */
 
@@ -66,9 +70,11 @@ export type PaidBodyOpts = {
   window?: number;
   /** Official catalog id, or YYYY-MM-DD. Next older page after that cursor. */
   before?: string;
-  /** 1-based page. Page 1 is the newest chunk. Ignored when before is set. */
+  /** ISO timestamp or official catalog id. Official texts newer than this watermark. */
+  since?: string;
+  /** 1-based page. Page 1 is the newest chunk. Ignored when before/since is set. */
   page?: number;
-  /** Official catalog id. That one official text ($0.02). Wins over before/page. */
+  /** Official catalog id. That one official text ($0.02). Wins over since/before/page. */
   id?: string;
 };
 
@@ -95,6 +101,10 @@ export function olderChunkCopy(n = paidBodyWindow()): string {
   return `older chunk if they ask (?before=<id or date>, another $0.05)`;
 }
 
+export function newerSinceCopy(): string {
+  return `newer than a watermark ?since=<ISO timestamp or official catalog id> ($0.05; empty new set is 304 or recordCount 0)`;
+}
+
 export function oneOfficialTextCopy(): string {
   return `one official text GET ?id= ($0.02)`;
 }
@@ -103,7 +113,7 @@ export function oneOfficialTextCopy(): string {
 export function paidBodyCatalogNote(paidPath: string, catalogLead: string): string {
   const n = paidBodyWindow();
   const lead = catalogLead.trim().replace(/\.?$/, ".");
-  return `${lead} Free index/search (?q=, optional before/date) stays free and includes id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ${paidPath}?id= is ${oneOfficialTextCopy()}. Plain paid GET ${paidPath} is the ${newestOfficialTextsCopy(n)}; ${olderChunkCopy(n)}.`;
+  return `${lead} Free index/search (?q=, optional before/date) stays free and includes id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ${paidPath}?id= is ${oneOfficialTextCopy()}. Plain paid GET ${paidPath} is the ${newestOfficialTextsCopy(n)}; ${olderChunkCopy(n)}; ${newerSinceCopy()}.`;
 }
 
 export const TICKS_CACHE_SOURCE = "US hay, cattle, and grain ticks cache";
@@ -222,6 +232,7 @@ export type PaidBodyWindowEnvelope = PaidEnvelope & {
   ids: string[];
   id: string | null;
   before: string | null;
+  since: string | null;
   nextBefore: string | null;
   prevBefore: string | null;
   page: number;
@@ -304,6 +315,7 @@ export type PaidCatalogSlice = {
   records: PaidRecord[];
   id: string | null;
   before: string | null;
+  since: string | null;
   nextBefore: string | null;
   prevBefore: string | null;
   page: number;
@@ -314,7 +326,37 @@ function isDateCursor(raw: string): boolean {
   return raw.length === 10 && isPlausibleDate(raw);
 }
 
-/** Newest-first catalog. id= is that one text; before=<id> starts after that id; before=<YYYY-MM-DD> starts at the first older date. */
+/** YYYY-MM-DD or ISO-8601 timestamp. Same watermark shape as ?before= plus a full ISO asOf/fetchedAt. */
+export function isTimeCursor(raw: string): boolean {
+  if (isDateCursor(raw)) return true;
+  if (!/^\d{4}-\d{2}-\d{2}T/.test(raw)) return false;
+  const parsed = Date.parse(raw);
+  return Number.isFinite(parsed);
+}
+
+/** Date-only rows are newer when their day is after the watermark day. */
+export function recordNewerThanWatermark(row: PaidRecord, since: string): boolean {
+  const rowDay = row.date ?? "";
+  if (!rowDay) return false;
+  const sinceDay = since.slice(0, 10);
+  return rowDay > sinceDay;
+}
+
+function emptySlice(pageCount: number, extras: Partial<PaidCatalogSlice> = {}): PaidCatalogSlice {
+  return {
+    records: [],
+    id: null,
+    before: null,
+    since: null,
+    nextBefore: null,
+    prevBefore: null,
+    page: 1,
+    pageCount,
+    ...extras,
+  };
+}
+
+/** Newest-first catalog. id= is that one text; since= is newer-than; before=<id> starts after that id; before=<YYYY-MM-DD> starts at the first older date. */
 export function slicePaidCatalog(
   catalog: PaidRecord[],
   limit: number,
@@ -330,19 +372,36 @@ export function slicePaidCatalog(
       records,
       id: rawId,
       before: null,
+      since: null,
       nextBefore: null,
       prevBefore: null,
       page,
       pageCount,
     };
   }
+  const rawSince = str(opts?.since);
+  if (rawSince) {
+    const newer = isTimeCursor(rawSince)
+      ? catalog.filter((row) => recordNewerThanWatermark(row, rawSince))
+      : (() => {
+          const idx = catalog.findIndex((row) => row.id === rawSince);
+          return idx >= 0 ? catalog.slice(0, idx) : [];
+        })();
+    return emptySlice(pageCount, {
+      records: newer,
+      since: rawSince,
+      nextBefore: newer.length ? (newer[newer.length - 1]?.id ?? null) : null,
+      page: 1,
+    });
+  }
   let start = 0;
   let before: string | null = null;
   const rawBefore = str(opts?.before);
   if (rawBefore) {
     before = rawBefore;
-    if (isDateCursor(rawBefore)) {
-      const idx = catalog.findIndex((row) => (row.date ?? "") < rawBefore);
+    if (isTimeCursor(rawBefore) || isDateCursor(rawBefore)) {
+      const day = rawBefore.slice(0, 10);
+      const idx = catalog.findIndex((row) => (row.date ?? "") < day);
       start = idx >= 0 ? idx : catalog.length;
     } else {
       const idx = catalog.findIndex((row) => row.id === rawBefore);
@@ -359,7 +418,7 @@ export function slicePaidCatalog(
     start + records.length < catalog.length ? (records[records.length - 1]?.id ?? null) : null;
   const prevStart = Math.max(0, start - limit);
   const prevBefore = start <= 0 ? null : prevStart <= 0 ? null : (catalog[prevStart - 1]?.id ?? null);
-  return { records, id: null, before, nextBefore, prevBefore, page, pageCount };
+  return { records, id: null, before, since: null, nextBefore, prevBefore, page, pageCount };
 }
 
 export function attachPaidPageCursors(
@@ -389,7 +448,8 @@ export function attachPaidPageCursors(
     const date =
       firstPlausibleDate(row.date, row.issuedOn, row.publishedOn, row.inspectedOn, row.recordDate) ??
       (str(row.date) || null);
-    return { ...row, date, page: cursor.page, before: cursor.before };
+    const publishedAt = str(row.publishedAt) || date;
+    return { ...row, date, ...(publishedAt ? { publishedAt } : {}), page: cursor.page, before: cursor.before };
   });
 }
 
@@ -460,11 +520,13 @@ export function paidBodyOptsFromSearch(search: string | URLSearchParams): PaidBo
       : search;
   const id = str(params.get("id"));
   const before = str(params.get("before"));
+  const since = str(params.get("since"));
   const pageRaw = str(params.get("page"));
   const page = Number(pageRaw);
   const out: PaidBodyOpts = {};
   if (id) out.id = id;
   if (before) out.before = before;
+  if (since) out.since = since;
   if (Number.isFinite(page) && page >= 1) out.page = Math.floor(page);
   return out;
 }
@@ -472,6 +534,7 @@ export function paidBodyOptsFromSearch(search: string | URLSearchParams): PaidBo
 export function paidBodyQueryPath(path: string, opts?: PaidBodyOpts): string {
   const q = new URLSearchParams();
   if (opts?.id) q.set("id", opts.id);
+  else if (opts?.since) q.set("since", opts.since);
   else if (opts?.before) q.set("before", opts.before);
   else if (opts?.page && opts.page > 1) q.set("page", String(opts.page));
   const qs = q.toString();
@@ -512,6 +575,14 @@ function officialItemId(row: Record<string, unknown>): string {
 }
 
 /** Keep only the windowed official bodies, newest-first to match records[]. */
+function withPublishedAt(row: Record<string, unknown>): Record<string, unknown> {
+  if (str(row.publishedAt)) return row;
+  const date =
+    firstPlausibleDate(row.date, row.issuedOn, row.publishedOn, row.inspectedOn, row.recordDate) ??
+    (str(row.date) || null);
+  return date ? { ...row, publishedAt: date } : row;
+}
+
 function windowOfficialItems(
   items: Record<string, unknown>[],
   records: PaidRecord[],
@@ -519,7 +590,8 @@ function windowOfficialItems(
   const order = new Map(records.map((row, i) => [row.id, i]));
   return items
     .filter((row) => order.has(officialItemId(row)))
-    .sort((a, b) => (order.get(officialItemId(a)) ?? 0) - (order.get(officialItemId(b)) ?? 0));
+    .sort((a, b) => (order.get(officialItemId(a)) ?? 0) - (order.get(officialItemId(b)) ?? 0))
+    .map(withPublishedAt);
 }
 
 export function normalizeTicksRecords(payload: { ticks?: unknown[] }): PaidRecord[] {
@@ -642,6 +714,32 @@ export function normalizeImportAlertRecords(payload: { ticks?: unknown[] }): Pai
   return sortRecords(dedupeById(out));
 }
 
+function windowEnvelope(
+  catalog: PaidRecord[],
+  sliced: PaidCatalogSlice,
+  limit: number,
+  fetchedAt: unknown,
+): Omit<PaidBodyWindowEnvelope, "records" | "source"> {
+  const records = sliced.records;
+  const one = Boolean(sliced.id);
+  const catalogTip = latestRecordDate(catalog);
+  return {
+    asOf: sliced.since != null ? catalogTip : latestRecordDate(records),
+    fetchedAt: honestFetchedAt(fetchedAt),
+    recordCount: records.length,
+    ids: records.map((row) => row.id),
+    paidWindow: one ? 1 : limit,
+    catalogCount: catalog.length,
+    id: sliced.id,
+    before: sliced.before,
+    since: sliced.since,
+    nextBefore: sliced.nextBefore,
+    prevBefore: sliced.prevBefore,
+    page: sliced.page,
+    pageCount: sliced.pageCount,
+  };
+}
+
 function paidCardBody<T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown }>(
   payload: T,
   type: string,
@@ -652,24 +750,12 @@ function paidCardBody<T extends { cards?: unknown[]; fetchedAt?: unknown; asOf?:
   const limit = paidBodyWindow(opts?.window);
   const sliced = slicePaidCatalog(catalog, limit, opts);
   const records = sliced.records;
-  const one = Boolean(sliced.id);
   return {
     ...payload,
     cards: windowOfficialItems(asList(payload.cards), records),
-    asOf: latestRecordDate(records),
-    fetchedAt: honestFetchedAt(payload.fetchedAt),
     source: listingSource(payload, fallbackSource),
     records,
-    recordCount: records.length,
-    ids: records.map((row) => row.id),
-    paidWindow: one ? 1 : limit,
-    catalogCount: catalog.length,
-    id: sliced.id,
-    before: sliced.before,
-    nextBefore: sliced.nextBefore,
-    prevBefore: sliced.prevBefore,
-    page: sliced.page,
-    pageCount: sliced.pageCount,
+    ...windowEnvelope(catalog, sliced, limit, payload.fetchedAt),
   };
 }
 
@@ -695,27 +781,15 @@ export function paidForm483Body<T extends { letters?: unknown[]; fetchedAt?: unk
   const limit = paidBodyWindow(opts?.window);
   const sliced = slicePaidCatalog(catalog, limit, opts);
   const records = sliced.records;
-  const one = Boolean(sliced.id);
   return {
     ...payload,
     letters: windowOfficialItems(asList(payload.letters), records),
-    asOf: latestRecordDate(records),
-    fetchedAt: honestFetchedAt(payload.fetchedAt),
     source: listingSource(
       payload,
       "https://www.fda.gov/about-fda/office-inspections-and-investigations/oii-foia-electronic-reading-room",
     ),
     records,
-    recordCount: records.length,
-    ids: records.map((row) => row.id),
-    paidWindow: one ? 1 : limit,
-    catalogCount: catalog.length,
-    id: sliced.id,
-    before: sliced.before,
-    nextBefore: sliced.nextBefore,
-    prevBefore: sliced.prevBefore,
-    page: sliced.page,
-    pageCount: sliced.pageCount,
+    ...windowEnvelope(catalog, sliced, limit, payload.fetchedAt),
   };
 }
 
@@ -726,27 +800,15 @@ export function paidWarningLettersBody<
   const limit = paidBodyWindow(opts?.window);
   const sliced = slicePaidCatalog(catalog, limit, opts);
   const records = sliced.records;
-  const one = Boolean(sliced.id);
   return {
     ...payload,
     letters: windowOfficialItems(asList(payload.letters), records),
-    asOf: latestRecordDate(records),
-    fetchedAt: honestFetchedAt(payload.fetchedAt),
     source: listingSource(
       payload,
       "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/compliance-actions-and-activities/warning-letters",
     ),
     records,
-    recordCount: records.length,
-    ids: records.map((row) => row.id),
-    paidWindow: one ? 1 : limit,
-    catalogCount: catalog.length,
-    id: sliced.id,
-    before: sliced.before,
-    nextBefore: sliced.nextBefore,
-    prevBefore: sliced.prevBefore,
-    page: sliced.page,
-    pageCount: sliced.pageCount,
+    ...windowEnvelope(catalog, sliced, limit, payload.fetchedAt),
   };
 }
 
@@ -1000,3 +1062,68 @@ export function paidImportAlertsBody<
 }
 
 export const RECORD_FIELDS = ["id", "date", "firm", "url", "type"] as const;
+
+export const COLLECT_CADENCE =
+  "Daily America/Boise user cron (ticks-collect.sh, typically 07:45). Skip 02:00-04:00 Imagine window. Fat doors skipped when n>=20 and fetchedAt within 36h.";
+
+export const HTTP_429_COPY =
+  "HTTP 429 is not a SKU and is not a subscription. Official collect may see upstream 429s; those are not sold. If this host returns 429, honor Retry-After and poll with ?since= or If-None-Match.";
+
+export function snapshotEtag(parts: {
+  sku: string;
+  fetchedAt?: string | null;
+  asOf?: string | null;
+  ids: string[];
+}): string {
+  const material = [parts.sku, parts.fetchedAt ?? "", parts.asOf ?? "", String(parts.ids.length), parts.ids.join("\n")].join(
+    "\0",
+  );
+  return `"${createHash("sha1").update(material).digest("hex")}"`;
+}
+
+export function ifNoneMatchHits(header: string | string[] | undefined, etag: string): boolean {
+  const raw = Array.isArray(header) ? header.join(",") : header;
+  if (!raw || !etag) return false;
+  const want = etag.replace(/^W\//, "").trim();
+  return raw.split(",").some((part) => {
+    const token = part.trim();
+    if (token === "*") return true;
+    return token.replace(/^W\//, "").trim() === want;
+  });
+}
+
+export function tableUnchangedSince(
+  snapshot: { fetchedAt?: string | null; asOf?: string | null },
+  since: string | null | undefined,
+): boolean {
+  const watermark = str(since);
+  if (!watermark) return false;
+  const fetchedAt = str(snapshot.fetchedAt);
+  const asOf = str(snapshot.asOf);
+  if (isTimeCursor(watermark)) {
+    if (watermark.includes("T") && fetchedAt && fetchedAt <= watermark) return true;
+    const day = watermark.slice(0, 10);
+    if (asOf && asOf <= day && (!fetchedAt || fetchedAt.slice(0, 10) <= day)) return true;
+  }
+  return false;
+}
+
+export function etagFromPaidEnvelope(
+  sku: string,
+  body: { fetchedAt?: unknown; asOf?: unknown; records?: unknown; ids?: unknown },
+): string {
+  const records = Array.isArray(body.records) ? body.records : [];
+  const idsFromBody = Array.isArray(body.ids) ? body.ids.map((id) => str(id)).filter(Boolean) : [];
+  const ids =
+    idsFromBody.length > 0
+      ? idsFromBody
+      : records
+          .map((row) => (row && typeof row === "object" ? str((row as { id?: unknown }).id) : ""))
+          .filter(Boolean);
+  return snapshotEtag({
+    sku,
+    fetchedAt: typeof body.fetchedAt === "string" ? body.fetchedAt : null,
+    asOf: typeof body.asOf === "string" ? body.asOf : null,
+    ids,
+  });
+}
