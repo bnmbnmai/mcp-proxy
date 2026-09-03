@@ -11,6 +11,7 @@ import {
   CARD_FIELDS,
   EIS_REPORTS_AMOUNT_ATOMIC,
   EIS_REPORTS_MANIFEST_PATH,
+  EIS_REPORTS_ONE_AMOUNT_ATOMIC,
   EIS_REPORTS_PATH,
   LAST_WEEK_URL,
   LICENSE,
@@ -24,11 +25,15 @@ import {
   isChromeEisHtml,
   isCommentLetterTitle,
   isPdfBytes,
+  isRealEisBody,
   isSkippedEisAttachment,
   isSummaryTeaserTitle,
+  isSuperfundRodDump,
   looksLikeLeakedEisBody,
+  looksLikeLoginGov,
   officialEisPageUrl,
   parseDetailsListings,
+  parseSearchDownloadEis,
   parseSearchRows,
   selectEisReportCard,
   solveAltchaPow,
@@ -48,6 +53,10 @@ async function main(): Promise<void> {
   assert.equal(lastWeek.length, 5, "five last-week habit rows");
   assert.ok(lastWeek.every((r) => officialEisPageUrl(r.pageUrl)));
   assert.ok(LAST_WEEK_URL.includes("commonSearch=lastWeek"));
+  const f35Dl = lastWeek.find((r) => r.eisId === "569578");
+  assert.equal(f35Dl?.downloadGroups, "569653;569535;");
+  const publicDl = parseSearchDownloadEis(readFx("lastWeek.html"));
+  assert.ok(publicDl.groups.includes("569535"));
 
   const clinch = parseDetailsListings(readFx("details-555705.html"), "https://cdxapps.epa.gov/cdx-enepa-II/public/action/eis/details?eisId=555705");
   assert.equal(clinch.length, 1, "one kept EIS document; comment letter skipped");
@@ -83,12 +92,20 @@ async function main(): Promise<void> {
     officialEisPageUrl("https://cdxapps.epa.gov/cdx-enepa-II/public/action/eis/details?eisId=555705"),
     "https://cdxapps.epa.gov/cdx-enepa-II/public/action/eis/details?eisId=555705",
   );
-  assert.ok(CARD_FIELDS.includes("sourceUrl"));
+  assert.ok(CARD_FIELDS.includes("body"));
   assert.ok(isChromeEisHtml(readFx("details-555705.html")));
   assert.ok(!readFx("details-555705.html").includes(BODY_NEEDLE_CLINCH), "details HTML is chrome");
   assert.ok(!readFx("lastWeek.html").includes(BODY_NEEDLE_CLINCH));
+  assert.ok(!readFx("details-555705.html").includes("ML26035A285"));
   assert.ok(!looksLikeLeakedEisBody(readFx("details-555705.html")));
   assert.ok(!looksLikeLeakedEisBody(readFx("lastWeek.html")));
+  assert.ok(looksLikeLoginGov("https://secure.login.gov/?redirect=1"));
+  assert.ok(!looksLikeLoginGov(readFx("lastWeek.html")));
+  assert.ok(isSuperfundRodDump("RECORD OF DECISION Superfund SEMS site cleanup"));
+  assert.ok(!isSuperfundRodDump(readFx("20260036.txt")));
+  assert.ok(!isRealEisBody(readFx("lastWeek.html")));
+  assert.ok(isRealEisBody(readFx("20260036.txt")));
+  assert.ok(isRealEisBody(readFx("20260104.txt")));
 
   const cacheDir = mkdtempSync(join(tmpdir(), "eis-reports-"));
   const prevDir = process.env.EIS_REPORTS_DIR;
@@ -103,12 +120,12 @@ async function main(): Promise<void> {
   else process.env.EIS_REPORTS_DIR = prevDir;
 
   assert.equal(snap.status, "ok");
-  assert.ok(snap.cards.length >= 2, "htmlDir collect caches Clinch River + F-35 full EIS");
+  assert.ok(snap.cards.length >= 2, "htmlDir collect caches Clinch River + F-35 full EIS text");
   assert.equal(snap.cards[0]?.id, "20260104", "newest habit card is last-week F-35");
   assert.equal(snap.asOf, "2026-08-28");
-  assert.ok(snap.cards.every((c) => c.bytes > 0 && c.sha256 && c.pdfFile));
+  assert.ok(snap.cards.every((c) => isRealEisBody(c.body)));
   assert.ok(snap.cards.some((c) => c.id === "20260036"));
-  assert.ok(!JSON.stringify(snap.cards.map((c) => ({ ...c, pdfFile: undefined }))).includes("%PDF-"));
+  assert.ok(snap.cards.some((c) => c.body.includes("ML26035A285")));
   assert.ok(snap.captcha?.kind === "altcha-pow");
 
   const assembled = assembleEisReportsSnapshot(snap.cards, snap.fetchedAt);
@@ -117,6 +134,7 @@ async function main(): Promise<void> {
   assert.equal(manifest.free, true);
   assert.equal(manifest.priceUsdc, "0.05");
   assert.equal(manifest.amountAtomic, EIS_REPORTS_AMOUNT_ATOMIC);
+  assert.equal(manifest.oneAmountAtomic, EIS_REPORTS_ONE_AMOUNT_ATOMIC);
   assert.equal(manifest.license, LICENSE);
   assert.equal(manifest.attribution, ATTRIBUTION);
   assert.equal(manifest.cardCount, assembled.cards.length);
@@ -124,6 +142,7 @@ async function main(): Promise<void> {
   assert.ok(!manText.includes("%PDF-"), "free manifest is titles/links/counts, not PDF bytes");
   assert.ok(!manText.includes(BODY_NEEDLE_CLINCH), "free manifest has no distinctive PDF phrase");
   assert.ok(!manText.includes(BODY_NEEDLE_F35));
+  assert.ok(!manText.includes("ML26035A285"));
   const seedCard = (manifest.cards as { id?: string; body?: string; title?: string }[]).find((c) => c.id === "20260036");
   assert.equal(seedCard?.title?.includes("Clinch River"), true);
   assert.ok(!("body" in (seedCard ?? {})));

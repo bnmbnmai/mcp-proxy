@@ -404,14 +404,13 @@ async function main(): Promise<void> {
     assert.equal(hhsExtra.oneDocPath, "/hhs-oig-reports?id=");
     const eis402Desc = sku402Description("eis-reports");
     assert.ok(eis402Desc.includes("https://ticks.bnm.farm/eis-reports/manifest.json?q="));
-    assert.ok(eis402Desc.includes("$0.05 one official PDF"));
-    assert.ok(!eis402Desc.includes("$0.02"));
+    assert.ok(eis402Desc.includes("$0.02"));
     assert.ok(eis402Desc.length <= 500, `eis-reports 402 description is ${eis402Desc.length}`);
     assert.ok(!/^Not /m.test(eis402Desc) && !eis402Desc.includes("Not the"), "eis-reports 402 has no leak-test");
     const eisExtra = paymentExtra("eis-reports");
     assert.equal(eisExtra.name, "USD Coin");
-    assert.equal(eisExtra.pdf, true);
-    assert.equal(eisExtra.priceAtomic, Number(EIS_REPORTS_AMOUNT_ATOMIC));
+    assert.equal(eisExtra.pdf, undefined);
+    assert.equal(eisExtra.priceAtomic, Number(SINGLE_DOC_AMOUNT_ATOMIC));
     assert.equal(eisExtra.oneDocPath, "/eis-reports?id=");
     for (const sku of EXTRACTED_BODY_SKUS) {
       const desc = sku402Description(sku);
@@ -6260,15 +6259,21 @@ async function main(): Promise<void> {
 
   const eisReportsDir = mkdtempSync(join(tmpdir(), "eis-reports-"));
   const eisId = "20260104";
-  const eisPdfBytes = Buffer.from(
-    "%PDF-1.4\n1 0 obj<</Type/Catalog>>endobj\ntrailer<</Root 1 0 R>>\n% EIS_BODY_NEEDLE_F35A_BEDDOWN_20260104\n%%EOF",
-  );
-  writeFileSync(join(eisReportsDir, `${eisId}.pdf`), eisPdfBytes);
+  const eisBody = [
+    "DRAFT ENVIRONMENTAL IMPACT STATEMENT",
+    "F-35A Beddown at Moody Air Force Base, Georgia",
+    "EIS_BODY_NEEDLE_F35A_BEDDOWN_20260104",
+    "Purpose and Need for the Proposed Action.",
+    ...Array.from(
+      { length: 40 },
+      (_, i) => `Official EIS paragraph ${i + 1}. Environmental Impact Statement airspace utilization alternative analysis.`,
+    ),
+  ].join("\n");
   writeFileSync(
     join(eisReportsDir, "snapshot.json"),
     JSON.stringify({
       ok: true,
-      product: "epa-nepa-eis-pdfs",
+      product: "epa-nepa-eis-bodies",
       status: "ok",
       reason: null,
       fetchedAt: "2026-09-03T00:00:00.000Z",
@@ -6295,9 +6300,8 @@ async function main(): Promise<void> {
           pageUrl: "https://cdxapps.epa.gov/cdx-enepa-II/public/action/eis/details?eisId=569578",
           sourceUrl: "https://cdxapps.epa.gov/cdx-enepa-II/public/action/eis/details?eisId=569578#attachment-569535",
           attachmentTitle: "Draft EIS for F-35A Beddown at Moody Air Force Base, Georgia (August 2026).pdf",
-          bytes: eisPdfBytes.byteLength,
-          sha256: "fixture",
-          pdfFile: join(eisReportsDir, `${eisId}.pdf`),
+          kind: "eis-document",
+          body: eisBody,
         },
       ],
     }),
@@ -6318,13 +6322,13 @@ async function main(): Promise<void> {
       };
       assert.equal(body402.resource, EIS_REPORTS_PATH);
       assert.equal(body402.accepts[0]?.maxAmountRequired, EIS_REPORTS_AMOUNT_ATOMIC);
-      assert.equal(body402.accepts[0]?.mimeType, "application/pdf");
-      assert.equal(body402.accepts[0]?.extra?.pdf, true);
-      assert.equal(body402.accepts[0]?.extra?.priceAtomic, Number(EIS_REPORTS_AMOUNT_ATOMIC));
+      assert.equal(body402.accepts[0]?.mimeType, "application/json");
+      assert.equal(body402.accepts[0]?.extra?.pdf, undefined);
+      assert.equal(body402.accepts[0]?.extra?.priceAtomic, Number(SINGLE_DOC_AMOUNT_ATOMIC));
       const unpaidId = await fetch(`${base}${EIS_REPORTS_PATH}?id=${encodeURIComponent(eisId)}`);
       assert.equal(unpaidId.status, 402, "unpaid GET /eis-reports?id= must be 402");
       const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
-      assert.equal(id402.accepts[0]?.maxAmountRequired, EIS_REPORTS_AMOUNT_ATOMIC, "id bag stays $0.05");
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
 
       const leak402 = JSON.stringify(body402);
       assert.ok(!leak402.includes("%PDF-"));
@@ -6349,7 +6353,7 @@ async function main(): Promise<void> {
       const man = (await manifest.json()) as {
         cardCount?: number;
         asOf?: string;
-        cards?: { ceqNumber?: string; id?: string; body?: string }[];
+        cards?: { ceqNumber?: string; id?: string; body?: string; agency?: string }[];
       };
       assert.equal(man.cardCount, 1);
       assert.equal(man.asOf, "2026-08-28");
@@ -6360,10 +6364,18 @@ async function main(): Promise<void> {
 
       const paid = await fetch(`${base}${EIS_REPORTS_PATH}`, { headers: { "X-PAYMENT": "test" } });
       assert.equal(paid.status, 200);
-      assert.match(paid.headers.get("content-type") ?? "", /application\/pdf/);
-      const paidBuf = Buffer.from(await paid.arrayBuffer());
-      assert.equal(paidBuf.subarray(0, 5).toString(), "%PDF-");
-      assert.ok(paidBuf.toString("utf8").includes("EIS_BODY_NEEDLE_F35A_BEDDOWN_20260104"));
+      assert.match(paid.headers.get("content-type") ?? "", /application\/json/);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { agency: string; date: string; id: string; body: string }[];
+        records?: { id: string; firm: string; type: string }[];
+      };
+      assert.equal(paidBody.product, "epa-nepa-eis-bodies");
+      assert.equal(paidBody.cards[0]?.agency, "United States Air Force");
+      assert.equal(paidBody.cards[0]?.id, eisId);
+      assert.ok(paidBody.cards[0]?.body.includes("EIS_BODY_NEEDLE_F35A_BEDDOWN_20260104"));
+      assert.equal(paidBody.records?.[0]?.type, "eis-reports");
+      assert.equal(paidBody.records?.[0]?.firm, "United States Air Force");
     },
   );
 
@@ -7212,7 +7224,7 @@ async function main(): Promise<void> {
     assert.equal(persist.paymentHeader, undefined, "paymentHeader is not a CDP field and 400s verify");
     assert.equal(payload.x402Version, 2);
     assert.equal(payload.resource?.url, resource, "CDP v2 persist needs paymentPayload.resource.url");
-      assert.equal(payload.resource?.mimeType, sku === "csb-reports" || sku === "hhs-oig-reports" || sku === "eis-reports" ? "application/pdf" : "application/json");
+      assert.equal(payload.resource?.mimeType, sku === "csb-reports" || sku === "hhs-oig-reports" ? "application/pdf" : "application/json");
     assert.ok((payload.resource?.description ?? "").length > 0);
     assert.ok((payload.resource?.description ?? "").length <= 500);
     assert.deepEqual(payload.extensions?.bazaar, bazaarExtension(sku));

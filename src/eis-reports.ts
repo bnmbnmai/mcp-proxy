@@ -1,24 +1,29 @@
 #!/usr/bin/env node
 /**
- * EPA NEPA Environmental Impact Statement PDFs from CDX e-NEPA (ugly PDF cache).
- * Official EIS document PDFs since ~2012. 17 U.S.C. § 105. Cache + resale OK.
- * Paid GET is one official EIS PDF. Free manifest is titles / links / counts.
- * Search HTML is chrome. Skip EPA comment letters and "Summary for the" teasers.
+ * EPA NEPA Environmental Impact Statement TEXT from CDX e-NEPA PDFs.
+ * Official EIS document PDFs since ~Oct 2012. 17 U.S.C. § 105. Cache + resale OK.
+ * Extracted-body door: free manifest; GET ?id= one official text ($0.02);
+ * plain GET is the newest 10 texts ($0.05). Search HTML is chrome.
+ * Skip EPA comment letters and "Summary for the" teasers. Not Superfund RODs.
  * Download is POST + ALTCHA SHA-256 PoW (not a picture captcha). Solve in-collector.
- * If a CDX login wall or a second human check appears, stop.
+ * Prefer the public Download EIS link after PoW. If a download 302s to login.gov,
+ * that file is not the public EIS — skip it. Do not stall on a CDX login wall.
  * Habit: last-week FR filings. Kill if a no-auth JSON already dumps the EIS body.
  */
 
 import { createHash } from "node:crypto";
+import { spawnSync } from "node:child_process";
 import { existsSync, mkdirSync, readdirSync, readFileSync, unlinkSync, writeFileSync } from "node:fs";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
+import { paidBodyCatalogNote } from "./paid-records.js";
 
 export const EIS_REPORTS_PATH = "/eis-reports";
 export const EIS_REPORTS_MANIFEST_PATH = "/eis-reports/manifest.json";
 export const EIS_REPORTS_AMOUNT_ATOMIC = "50000";
-export const PRODUCT_ID = "epa-nepa-eis-pdfs";
-export const PRODUCT_NAME = "EPA NEPA Environmental Impact Statement PDFs";
+export const EIS_REPORTS_ONE_AMOUNT_ATOMIC = "20000";
+export const PRODUCT_ID = "epa-nepa-eis-bodies";
+export const PRODUCT_NAME = "EPA NEPA Environmental Impact Statement text";
 
 export const SEARCH_ORIGIN = "https://cdxapps.epa.gov";
 export const SEARCH_PATH = "/cdx-enepa-II/public/action/eis/search";
@@ -46,9 +51,11 @@ export const CARD_FIELDS = [
   "state",
   "pageUrl",
   "sourceUrl",
-  "bytes",
-  "sha256",
+  "kind",
+  "body",
 ] as const;
+
+const MIN_BODY_CHARS = 800;
 
 export const BODY_NEEDLE_CLINCH = "EIS_BODY_NEEDLE_CLINCH_RIVER_SEIS_20260036";
 export const BODY_NEEDLE_F35 = "EIS_BODY_NEEDLE_F35A_BEDDOWN_20260104";
@@ -66,12 +73,13 @@ export type EisListing = {
   pageUrl: string;
   sourceUrl: string;
   attachmentTitle: string;
+  downloadGroups?: string;
+  downloadSet?: string;
 };
 
 export type EisCard = EisListing & {
-  bytes: number;
-  sha256: string;
-  pdfFile: string;
+  kind: string;
+  body: string;
 };
 
 export type EisReportsSnapshot = {
@@ -86,6 +94,7 @@ export type EisReportsSnapshot = {
   listedCount?: number;
   fetchedPdfs?: number;
   skipped?: number;
+  skippedNoText?: number;
   reused?: number;
   addedThisRun?: number;
   captcha?: { kind: "altcha-pow"; solved: boolean; tookMs: number | null; note: string };
@@ -120,6 +129,7 @@ export const SEED_LISTINGS: EisListing[] = [
     sourceUrl: `${DETAILS_URL}?eisId=555705#attachment-555711`,
     attachmentTitle:
       "Supplemental Environmental Impact Statement for a Construction Permit at the Clinch River Nuclear Site, Final Report.pdf",
+    downloadGroups: "555711;",
   },
   {
     id: "20260104",
@@ -134,6 +144,7 @@ export const SEED_LISTINGS: EisListing[] = [
     pageUrl: `${DETAILS_URL}?eisId=569578`,
     sourceUrl: `${DETAILS_URL}?eisId=569578#attachment-569535`,
     attachmentTitle: "Draft EIS for F-35A Beddown at Moody Air Force Base, Georgia (August 2026).pdf",
+    downloadGroups: "569653;569535;",
   },
 ];
 
@@ -243,6 +254,13 @@ export function parseAttachmentSection(html: string, heading: string): EisAttach
   return out;
 }
 
+export function parseSearchDownloadEis(html: string): { groups: string; set: string } {
+  const m = String(html || "").match(
+    /startDownload\(\s*['"]downloadEisDocuments['"]\s*,\s*['"]\d+['"]\s*,\s*['"]([^'"]*)['"](?:\s*,\s*['"]([^'"]*)['"])?/i,
+  );
+  return { groups: m?.[1] || "", set: m?.[2] || "" };
+}
+
 export function parseSearchRows(html: string): Array<{
   eisId: string;
   ceqNumber: string;
@@ -252,6 +270,8 @@ export function parseSearchRows(html: string): Array<{
   agency: string;
   state: string;
   pageUrl: string;
+  downloadGroups: string;
+  downloadSet: string;
 }> {
   const out: Array<{
     eisId: string;
@@ -262,6 +282,8 @@ export function parseSearchRows(html: string): Array<{
     agency: string;
     state: string;
     pageUrl: string;
+    downloadGroups: string;
+    downloadSet: string;
   }> = [];
   const seen = new Set<string>();
   const trRe = /<tr[^>]*>([\s\S]*?)<\/tr>/gi;
@@ -276,6 +298,7 @@ export function parseSearchRows(html: string): Array<{
     if (tds.length < 3) continue;
     const ceqNumber = (tds[1] || "").match(/\d{8}/)?.[0] || "";
     if (!ceqNumber) continue;
+    const dl = parseSearchDownloadEis(cell);
     seen.add(eisId);
     out.push({
       eisId,
@@ -286,6 +309,8 @@ export function parseSearchRows(html: string): Array<{
       agency: tds[6] || "",
       state: tds[8] || "",
       pageUrl: detailsUrlFor(eisId),
+      downloadGroups: dl.groups,
+      downloadSet: dl.set,
     });
   }
   return out;
@@ -333,7 +358,8 @@ export function parseListingRows(rows: EisListing[]): EisListing[] {
   const seen = new Set<string>();
   const out: EisListing[] = [];
   for (const row of rows) {
-    if (!row.id || !row.ceqNumber || !row.eisId || !row.attachmentId) continue;
+    if (!row.id || !row.ceqNumber || !row.eisId) continue;
+    if (!row.attachmentId && !row.downloadGroups) continue;
     if (isSkippedEisAttachment(row.attachmentTitle || row.title)) continue;
     if (seen.has(row.id)) continue;
     seen.add(row.id);
@@ -357,7 +383,13 @@ export function looksLikeLeakedEisBody(text: string): boolean {
   const t = String(text || "");
   if (t.trimStart().startsWith("%PDF-")) return true;
   if (t.includes(BODY_NEEDLE_CLINCH) || t.includes(BODY_NEEDLE_F35)) return true;
+  if (/\bML26035A285\b/.test(t) || /Supplement to NUREG-2226/i.test(t)) return true;
   return false;
+}
+
+export function looksLikeLoginGov(htmlOrUrl: string): boolean {
+  const t = String(htmlOrUrl || "");
+  return /login\.gov|secure\.login\.gov|idp\.int\.identitysandbox\.gov/i.test(t);
 }
 
 export function looksLikeCdxLogin(htmlOrUrl: string): boolean {
@@ -365,11 +397,89 @@ export function looksLikeCdxLogin(htmlOrUrl: string): boolean {
   return /cdx\.epa\.gov\/CDX\/Login|name=["']userId["']|Sign in to CDX/i.test(t);
 }
 
+export function looksLikeLoginWall(htmlOrUrl: string): boolean {
+  return looksLikeLoginGov(htmlOrUrl) || looksLikeCdxLogin(htmlOrUrl);
+}
+
 export function looksLikeHumanCaptcha(html: string): boolean {
   const t = String(html || "");
   if (/g-recaptcha|recaptcha\/api\.js|hcaptcha/i.test(t) && !/altcha-widget/i.test(t)) return true;
   if (/Please complete the (reCAPTCHA|hCaptcha|picture)/i.test(t)) return true;
   return false;
+}
+
+export function isSuperfundRodDump(text: string): boolean {
+  const t = String(text || "");
+  if (!/RECORD OF DECISION/i.test(t)) return false;
+  if (!/superfund|SEMS|semspub\.epa\.gov/i.test(t)) return false;
+  return !/Environmental Impact Statement/i.test(t);
+}
+
+export function isRealEisBody(text: string): boolean {
+  const t = String(text || "").replace(/\s+/g, " ").trim();
+  if (t.length < MIN_BODY_CHARS) return false;
+  if (isChromeEisHtml(t)) return false;
+  if (isSuperfundRodDump(t)) return false;
+  if (isCommentLetterTitle(t.slice(0, 240))) return false;
+  if (/Please check the ALTCHA/i.test(t)) return false;
+  const eisPhrase =
+    /Environmental Impact Statement/i.test(t) ||
+    /\bNUREG-\d+/i.test(t) ||
+    /Docket Number:\s*\d/i.test(t) ||
+    /\bML\d{8,}\b/.test(t) ||
+    t.includes(BODY_NEEDLE_CLINCH) ||
+    t.includes(BODY_NEEDLE_F35);
+  return eisPhrase;
+}
+
+export function parseEisReportText(
+  text: string,
+  meta: Partial<EisListing> & { sourceUrl: string },
+): EisCard {
+  const body = text.replace(/\f/g, "\n").trim();
+  const official = officialEisPageUrl(meta.pageUrl) || meta.pageUrl || `${SEARCH_ORIGIN}${SEARCH_PATH}`;
+  const eisId = meta.eisId || "";
+  const attachmentId = meta.attachmentId || "";
+  return {
+    id: meta.id || meta.ceqNumber || eisId,
+    ceqNumber: meta.ceqNumber || "",
+    eisId,
+    attachmentId,
+    documentType: meta.documentType || "",
+    date: isoDate(meta.date),
+    title: (meta.title || "").trim() || `EIS ${meta.ceqNumber || eisId}`,
+    agency: (meta.agency || "").trim(),
+    state: (meta.state || "").trim(),
+    pageUrl: official,
+    sourceUrl: meta.sourceUrl || official,
+    attachmentTitle: meta.attachmentTitle || "",
+    downloadGroups: meta.downloadGroups,
+    downloadSet: meta.downloadSet,
+    kind: "eis-document",
+    body,
+  };
+}
+
+export function pdfToText(pdfPath: string): string {
+  const helper = env("EIS_REPORTS_PDFTOTEXT") || "pdftotext";
+  const result = spawnSync(helper, ["-layout", pdfPath, "-"], {
+    encoding: "utf8",
+    maxBuffer: 80 * 1024 * 1024,
+  });
+  if (!result.error && result.status === 0 && (result.stdout || "").trim()) {
+    return result.stdout || "";
+  }
+  const py = spawnSync(
+    "python3",
+    [
+      "-c",
+      "import sys\nfrom pypdf import PdfReader\nr=PdfReader(sys.argv[1])\nprint('\\n'.join((p.extract_text() or '') for p in r.pages))",
+      pdfPath,
+    ],
+    { encoding: "utf8", maxBuffer: 80 * 1024 * 1024 },
+  );
+  if (!py.error && py.status === 0) return py.stdout || "";
+  return "";
 }
 
 export function solveAltchaPow(challenge: Pick<AltchaChallenge, "challenge" | "salt" | "maxnumber">): number {
@@ -447,14 +557,14 @@ export function emptyEisReportsSnapshot(reason: string): EisReportsSnapshot {
 
 export function assembleEisReportsSnapshot(cards: EisCard[], fetchedAt = new Date().toISOString()): EisReportsSnapshot {
   const kept = cards
-    .filter((c) => c.bytes > 0 && c.sha256 && c.attachmentId && !isSkippedEisAttachment(c.attachmentTitle || c.title))
+    .filter((c) => isRealEisBody(c.body) && !isSkippedEisAttachment(c.attachmentTitle || c.title))
     .sort((a, b) => `${b.date ?? ""}${b.id}`.localeCompare(`${a.date ?? ""}${a.id}`));
   const asOf = kept.map((c) => c.date).filter((d): d is string => Boolean(d)).sort().at(-1) ?? null;
   return {
     ok: true,
     product: PRODUCT_ID,
     status: kept.length > 0 ? "ok" : "empty",
-    reason: kept.length > 0 ? null : "Official EPA NEPA EIS PDFs were not cached.",
+    reason: kept.length > 0 ? null : "Official EPA NEPA EIS PDFs had no extractable EIS text.",
     fetchedAt,
     asOf,
     license: LICENSE,
@@ -487,12 +597,12 @@ export function writeEisReportsSnapshot(snap: EisReportsSnapshot): void {
   writeFileSync(path, `${JSON.stringify(snap, null, 2)}\n`);
 }
 
-export function pdfPathForCard(card: Pick<EisCard, "id" | "pdfFile">): string {
+export function pdfPathForCard(card: Pick<EisCard, "id"> & { pdfFile?: string }): string {
   if (card.pdfFile && existsSync(card.pdfFile)) return card.pdfFile;
   return join(eisReportsDir(), `${card.id}.pdf`);
 }
 
-export function readCachedPdf(card: Pick<EisCard, "id" | "pdfFile">): Uint8Array | null {
+export function readCachedPdf(card: Pick<EisCard, "id"> & { pdfFile?: string }): Uint8Array | null {
   const path = pdfPathForCard(card);
   if (!existsSync(path)) return null;
   const bytes = new Uint8Array(readFileSync(path));
@@ -560,16 +670,20 @@ function pause(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-async function waitForPdfFile(dir: string, timeoutMs: number): Promise<string | null> {
+function isZipBytes(bytes: Uint8Array): boolean {
+  return bytes.length >= 4 && bytes[0] === 0x50 && bytes[1] === 0x4b;
+}
+
+async function waitForDownloadFile(dir: string, timeoutMs: number): Promise<string | null> {
   const start = Date.now();
   while (Date.now() - start < timeoutMs) {
     const names = existsSync(dir) ? readdirSync(dir) : [];
-    const pdf = names.find((n) => n.toLowerCase().endsWith(".pdf") && !n.endsWith(".crdownload"));
-    if (pdf) {
-      const path = join(dir, pdf);
+    const hit = names.find((n) => /\.(pdf|zip)$/i.test(n) && !n.endsWith(".crdownload"));
+    if (hit) {
+      const path = join(dir, hit);
       try {
         const bytes = readFileSync(path);
-        if (isPdfBytes(bytes) && bytes.byteLength > 80) return path;
+        if ((isPdfBytes(bytes) || isZipBytes(bytes)) && bytes.byteLength > 80) return path;
       } catch {
         /* still writing */
       }
@@ -579,11 +693,94 @@ async function waitForPdfFile(dir: string, timeoutMs: number): Promise<string | 
   return null;
 }
 
-export async function downloadEisPdfWithChrome(opts: {
+export function pickMainEisPdf(paths: string[]): string | null {
+  const scored = paths
+    .filter((p) => existsSync(p))
+    .map((p) => {
+      const name = p.split("/").pop() || "";
+      const skip = isSkippedEisAttachment(name);
+      let bytes = 0;
+      try {
+        bytes = readFileSync(p).byteLength;
+      } catch {
+        bytes = 0;
+      }
+      return { p, name, skip, bytes };
+    })
+    .filter((x) => !x.skip && x.bytes > 80);
+  scored.sort((a, b) => b.bytes - a.bytes);
+  return scored[0]?.p ?? null;
+}
+
+export function unpackEisDownload(downloadPath: string, destPath: string): Uint8Array {
+  const bytes = new Uint8Array(readFileSync(downloadPath));
+  if (isPdfBytes(bytes)) {
+    mkdirSync(dirname(destPath), { recursive: true });
+    writeFileSync(destPath, bytes);
+    return bytes;
+  }
+  if (!isZipBytes(bytes)) throw new Error(`${downloadPath} is neither a PDF nor a zip`);
+  const unzipDir = `${downloadPath}.unzip`;
+  mkdirSync(unzipDir, { recursive: true });
+  const unzip = spawnSync("python3", ["-c", "import sys,zipfile; zipfile.ZipFile(sys.argv[1]).extractall(sys.argv[2])", downloadPath, unzipDir], {
+    encoding: "utf8",
+  });
+  if (unzip.status !== 0) throw new Error(`unzip failed: ${unzip.stderr || unzip.stdout || unzip.status}`);
+  const found: string[] = [];
+  const walk = (dir: string) => {
+    for (const name of readdirSync(dir, { withFileTypes: true })) {
+      const next = join(dir, name.name);
+      if (name.isDirectory()) walk(next);
+      else if (name.name.toLowerCase().endsWith(".pdf")) found.push(next);
+    }
+  };
+  walk(unzipDir);
+  const main = pickMainEisPdf(found);
+  if (!main) throw new Error(`zip ${downloadPath} had no public EIS PDF`);
+  const out = new Uint8Array(readFileSync(main));
+  mkdirSync(dirname(destPath), { recursive: true });
+  writeFileSync(destPath, out);
+  return out;
+}
+
+type ChromeDownloadOpts = {
   eisId: string;
-  attachmentId: string;
+  attachmentId?: string;
   destPath: string;
-}): Promise<{ bytes: Uint8Array; captchaTookMs: number }> {
+  groups?: string;
+  set?: string;
+};
+
+async function injectAltchaAndStart(
+  page: {
+    evaluate: (fn: (packed: Record<string, string>) => void, packed: Record<string, string>) => Promise<void>;
+  },
+  packed: Record<string, string>,
+): Promise<void> {
+  await page.evaluate((args: Record<string, string>) => {
+    const cap = document.querySelector("#downloadFormCaptcha") as HTMLInputElement | null;
+    if (!cap) throw new Error("downloadFormCaptcha missing");
+    cap.value = args.payload;
+    const hidden = document.createElement("input");
+    hidden.type = "hidden";
+    hidden.name = "altcha";
+    hidden.value = args.payload;
+    cap.form?.appendChild(hidden);
+    const start = (
+      window as unknown as {
+        startDownload?: (event: string, id: string, groups?: string, set?: string) => void;
+      }
+    ).startDownload;
+    if (!start) throw new Error("startDownload missing");
+    if (args.mode === "downloadEisDocuments") {
+      start("downloadEisDocuments", args.eisId, args.groups || "", args.set || "");
+    } else {
+      start("downloadAttachment", args.attachmentId);
+    }
+  }, packed);
+}
+
+export async function downloadEisPdfWithChrome(opts: ChromeDownloadOpts): Promise<{ bytes: Uint8Array; captchaTookMs: number }> {
   const executablePath = chromePath();
   if (!executablePath) {
     throw new Error("Chrome not found. Set CHROME_PATH. Apply host needs google-chrome + puppeteer-core.");
@@ -595,7 +792,7 @@ export async function downloadEisPdfWithChrome(opts: {
   } catch {
     throw new Error("puppeteer-core is not installed. npm i puppeteer-core (Chrome is not bundled).");
   }
-  const downloadDir = join(eisReportsDir(), ".chrome-dl", `${opts.eisId}-${opts.attachmentId}`);
+  const downloadDir = join(eisReportsDir(), ".chrome-dl", `${opts.eisId}-${opts.attachmentId || "public"}`);
   mkdirSync(downloadDir, { recursive: true });
   for (const leftover of readdirSync(downloadDir)) {
     try {
@@ -616,68 +813,84 @@ export async function downloadEisPdfWithChrome(opts: {
     page.setDefaultTimeout(45000);
     const client = await page.createCDPSession();
     await client.send("Page.setDownloadBehavior", { behavior: "allow", downloadPath: downloadDir });
-    const details = detailsUrlFor(opts.eisId);
-    await page.goto(details, { waitUntil: "domcontentloaded" });
-    const html = await page.content();
-    const urlNow = page.url();
-    if (looksLikeCdxLogin(urlNow) || looksLikeCdxLogin(html)) {
-      throw new Error(
-        "BLOCKER: CDX login wall on details page. Stop. Do not ask Bruce to click. Collector cannot fetch this EIS unattended.",
-      );
-    }
-    if (looksLikeHumanCaptcha(html)) {
-      throw new Error(
-        "BLOCKER: second human captcha (reCAPTCHA/hCaptcha) on CDX e-NEPA. Stop. Do not ask Bruce unless it is truly human-only and this is that case.",
-      );
-    }
-    const attrs = await page.evaluate(() => {
-      const w = document.querySelector("#altcha");
-      return {
-        naasip: w?.getAttribute("naasip") || w?.getAttribute("naasIp") || "",
-        naastoken: w?.getAttribute("naastoken") || w?.getAttribute("naasToken") || "",
-        hasWidget: Boolean(w),
-      };
-    });
-    if (!attrs.hasWidget || !attrs.naasip || !attrs.naastoken) {
-      throw new Error("ALTCHA widget or naasIp/naasToken missing on details page.");
-    }
-    const challenge = await fetchAltchaChallenge(attrs.naasip, attrs.naastoken);
-    const t0 = Date.now();
-    const number = solveAltchaPow(challenge);
-    const took = Date.now() - t0;
-    const payload = altchaPayload(challenge, number, took);
-    await page.evaluate(
-      (packed: { payload: string; attachmentId: string }) => {
-        const cap = document.querySelector("#downloadFormCaptcha") as HTMLInputElement | null;
-        if (!cap) throw new Error("downloadFormCaptcha missing");
-        cap.value = packed.payload;
-        const hidden = document.createElement("input");
-        hidden.type = "hidden";
-        hidden.name = "altcha";
-        hidden.value = packed.payload;
-        cap.form?.appendChild(hidden);
-        const start = (window as unknown as { startDownload?: (event: string, id: string) => void }).startDownload;
-        if (!start) throw new Error("startDownload missing");
-        start("downloadAttachment", packed.attachmentId);
-      },
-      { payload, attachmentId: opts.attachmentId },
-    );
-    const found = await waitForPdfFile(downloadDir, 45000);
-    const afterUrl = page.url();
-    const afterHtml = await page.content();
-    if (!found) {
-      if (looksLikeCdxLogin(afterUrl) || looksLikeCdxLogin(afterHtml)) {
+
+    const tryStart = async (url: string, mode: "downloadEisDocuments" | "downloadAttachment"): Promise<{ bytes: Uint8Array; took: number } | "skip" | "retry"> => {
+      await page.goto(url, { waitUntil: "domcontentloaded" });
+      const html = await page.content();
+      const urlNow = page.url();
+      if (looksLikeLoginGov(urlNow) || looksLikeLoginGov(html)) {
+        return "skip";
+      }
+      if (looksLikeHumanCaptcha(html)) {
         throw new Error(
-          "BLOCKER: download 302ed to CDX Login after ALTCHA. Browser session failed. Stop and report; do not ask Bruce to click a puzzle.",
+          "BLOCKER: second human captcha (reCAPTCHA/hCaptcha) on CDX e-NEPA. Stop. Do not ask Bruce unless it is truly human-only and this is that case.",
         );
       }
-      throw new Error(`Chrome download produced no PDF for eisId=${opts.eisId} attachment=${opts.attachmentId}`);
+      if (looksLikeCdxLogin(urlNow) || looksLikeCdxLogin(html)) {
+        return "retry";
+      }
+      const attrs = await page.evaluate(() => {
+        const w = document.querySelector("#altcha");
+        return {
+          naasip: w?.getAttribute("naasip") || w?.getAttribute("naasIp") || "",
+          naastoken: w?.getAttribute("naastoken") || w?.getAttribute("naasToken") || "",
+          hasWidget: Boolean(w),
+        };
+      });
+      if (!attrs.hasWidget || !attrs.naasip || !attrs.naastoken) {
+        throw new Error("ALTCHA widget or naasIp/naasToken missing.");
+      }
+      const challenge = await fetchAltchaChallenge(attrs.naasip, attrs.naastoken);
+      const t0 = Date.now();
+      const number = solveAltchaPow(challenge);
+      const took = Date.now() - t0;
+      const payload = altchaPayload(challenge, number, took);
+      await injectAltchaAndStart(page, {
+        payload,
+        mode,
+        eisId: opts.eisId,
+        groups: opts.groups || "",
+        set: opts.set || "",
+        attachmentId: opts.attachmentId || "",
+      });
+      const found = await waitForDownloadFile(downloadDir, 45000);
+      const afterUrl = page.url();
+      const afterHtml = await page.content();
+      if (looksLikeLoginGov(afterUrl) || looksLikeLoginGov(afterHtml)) {
+        return "skip";
+      }
+      if (!found) {
+        if (looksLikeCdxLogin(afterUrl) || looksLikeCdxLogin(afterHtml)) return "retry";
+        return "retry";
+      }
+      const bytes = unpackEisDownload(found, opts.destPath);
+      return { bytes, took };
+    };
+
+    let lastTook = 0;
+    if (opts.groups) {
+      const publicHit = await tryStart(LAST_WEEK_URL, "downloadEisDocuments");
+      if (publicHit === "skip") {
+        throw new Error(`SKIP: login.gov wall on public Download EIS for eisId=${opts.eisId}; not the public EIS PDF.`);
+      }
+      if (publicHit !== "retry") {
+        return { bytes: publicHit.bytes, captchaTookMs: publicHit.took };
+      }
+      lastTook = 0;
     }
-    const bytes = new Uint8Array(readFileSync(found));
-    if (!isPdfBytes(bytes)) throw new Error(`${found} is not a PDF`);
-    mkdirSync(dirname(opts.destPath), { recursive: true });
-    writeFileSync(opts.destPath, bytes);
-    return { bytes, captchaTookMs: took };
+    if (opts.attachmentId) {
+      const attachHit = await tryStart(detailsUrlFor(opts.eisId), "downloadAttachment");
+      if (attachHit === "skip") {
+        throw new Error(`SKIP: login.gov wall on attachment ${opts.attachmentId}; not the public EIS PDF.`);
+      }
+      if (attachHit !== "retry") {
+        return { bytes: attachHit.bytes, captchaTookMs: attachHit.took };
+      }
+      lastTook = 0;
+    }
+    throw new Error(
+      `SKIP: no public EIS PDF after PoW for eisId=${opts.eisId} (login wall or empty download). captchaTookMs=${lastTook}`,
+    );
   } finally {
     await browser.close();
   }
@@ -715,6 +928,8 @@ async function loadOfficialListings(dir: string): Promise<{ listed: EisListing[]
       pageUrl: row.pageUrl,
       sourceUrl: row.pageUrl,
       attachmentTitle: "",
+      downloadGroups: row.downloadGroups,
+      downloadSet: row.downloadSet,
     })),
     ...SEED_LISTINGS,
   ];
@@ -726,27 +941,47 @@ async function loadOfficialListings(dir: string): Promise<{ listed: EisListing[]
       ? readNamedFile(dir, [`details-${row.eisId}.html`, `${row.eisId}.html`, `${row.id}.html`])
       : null;
     if (pageHtml) {
-      enriched.push(...parseDetailsListings(pageHtml, row.pageUrl, row));
+      enriched.push(
+        ...parseDetailsListings(pageHtml, row.pageUrl, row).map((c) => ({
+          ...c,
+          downloadGroups: c.downloadGroups || row.downloadGroups,
+          downloadSet: c.downloadSet || row.downloadSet,
+        })),
+      );
       continue;
     }
     if (dir) {
-      if (row.attachmentId) enriched.push(row);
+      if (row.attachmentId || row.downloadGroups) enriched.push(row);
       continue;
     }
     try {
       const liveHtml = await fetchEisText(row.pageUrl);
-      if (looksLikeCdxLogin(liveHtml)) {
-        throw new Error("BLOCKER: CDX login on details HTML fetch.");
+      if (looksLikeLoginGov(liveHtml)) {
+        if (row.downloadGroups || row.attachmentId) enriched.push(row);
+        continue;
       }
       if (looksLikeHumanCaptcha(liveHtml)) {
         throw new Error("BLOCKER: human captcha on details HTML fetch.");
       }
+      if (looksLikeCdxLogin(liveHtml)) {
+        if (row.downloadGroups || row.attachmentId) enriched.push(row);
+        continue;
+      }
       const parsed = parseDetailsListings(liveHtml, row.pageUrl, row);
-      if (parsed.length) enriched.push(...parsed);
-      else if (row.attachmentId) enriched.push(row);
+      if (parsed.length) {
+        enriched.push(
+          ...parsed.map((c) => ({
+            ...c,
+            downloadGroups: c.downloadGroups || row.downloadGroups,
+            downloadSet: c.downloadSet || row.downloadSet,
+          })),
+        );
+      } else if (row.attachmentId || row.downloadGroups) {
+        enriched.push(row);
+      }
     } catch (err) {
-      if (String(err).includes("BLOCKER")) throw err;
-      if (row.attachmentId) enriched.push(row);
+      if (String(err).includes("BLOCKER") || String(err).includes("KILL")) throw err;
+      if (row.attachmentId || row.downloadGroups) enriched.push(row);
     }
   }
   const listed = parseListingRows(enriched);
@@ -772,12 +1007,13 @@ export async function collectEisReports(opts?: {
   mkdirSync(cacheDir, { recursive: true });
   const prior = new Map<string, EisCard>();
   for (const card of readEisReportsSnapshot()?.cards ?? []) {
-    if (readCachedPdf(card)) prior.set(card.id, card);
+    if (isRealEisBody(card.body)) prior.set(card.id, card);
   }
   const cards: EisCard[] = [];
   const seen = new Set<string>();
   let fetchedPdfs = 0;
   let skipped = 0;
+  let skippedNoText = 0;
   let reused = 0;
   let addedThisRun = 0;
   let captchaTookMs: number | null = null;
@@ -794,43 +1030,49 @@ export async function collectEisReports(opts?: {
     if (fetchCap > 0 && fetchedPdfs >= fetchCap) break;
     if (!dir && pauseMs) await pause(pauseMs);
     try {
+      const localText = readNamedFile(dir, [`${row.id}.txt`]) || readNamedFile(cacheDir, [`${row.id}.txt`]);
+      if (dir && !localText) {
+        skippedNoText += 1;
+        continue;
+      }
       const pdfFile = join(cacheDir, `${row.id}.pdf`);
-      const localPdf = existsSync(pdfFile) ? new Uint8Array(readFileSync(pdfFile)) : null;
-      const fixturePdf = dir ? join(dir, `${row.id}.pdf`) : "";
-      let bytes: Uint8Array | null = localPdf && isPdfBytes(localPdf) ? localPdf : null;
-      if (!bytes && fixturePdf && existsSync(fixturePdf)) {
-        const fx = new Uint8Array(readFileSync(fixturePdf));
-        if (isPdfBytes(fx)) bytes = fx;
-      }
-      if (!bytes) {
-        if (dir) {
-          skipped += 1;
-          continue;
-        }
-        const got = await downloadEisPdfWithChrome({
-          eisId: row.eisId,
-          attachmentId: row.attachmentId,
-          destPath: pdfFile,
-        });
-        bytes = got.bytes;
-        fetchedPdfs += 1;
-        captchaSolved = true;
-        captchaTookMs = got.captchaTookMs;
-      }
-      const pdfBytes = bytes;
-      writeFileSync(pdfFile, pdfBytes);
-      const sha256 = createHash("sha256").update(pdfBytes).digest("hex");
-      cards.push({
+      const text =
+        localText ??
+        (await (async () => {
+          if (!existsSync(pdfFile) || !isPdfBytes(new Uint8Array(readFileSync(pdfFile)))) {
+            if (dir) return "";
+            const got = await downloadEisPdfWithChrome({
+              eisId: row.eisId,
+              attachmentId: row.attachmentId,
+              destPath: pdfFile,
+              groups: row.downloadGroups,
+              set: row.downloadSet,
+            });
+            fetchedPdfs += 1;
+            captchaSolved = true;
+            captchaTookMs = got.captchaTookMs;
+          }
+          return pdfToText(pdfFile);
+        })());
+      const parsed = parseEisReportText(text, {
         ...row,
-        bytes: pdfBytes.byteLength,
-        sha256,
-        pdfFile,
+        sourceUrl: row.sourceUrl || sourceUrlFor(row.eisId, row.attachmentId),
       });
+      if (!isRealEisBody(parsed.body)) {
+        skippedNoText += 1;
+        continue;
+      }
+      cards.push(parsed);
       seen.add(row.id);
       addedThisRun += 1;
     } catch (err) {
-      if (String(err).includes("BLOCKER") || String(err).includes("KILL")) throw err;
-      skipped += 1;
+      const msg = String(err);
+      if (msg.includes("BLOCKER") || msg.includes("KILL")) throw err;
+      if (msg.includes("SKIP:")) {
+        skipped += 1;
+        continue;
+      }
+      skippedNoText += 1;
     }
   }
   for (const [id, card] of prior) {
@@ -841,6 +1083,7 @@ export async function collectEisReports(opts?: {
     listedCount,
     fetchedPdfs,
     skipped,
+    skippedNoText,
     reused,
     addedThisRun,
     captcha: {
@@ -850,8 +1093,8 @@ export async function collectEisReports(opts?: {
       note: dir
         ? "htmlDir collect; ALTCHA not live. Live download is SHA-256 PoW in-collector (not a picture captcha)."
         : captchaSolved
-          ? "ALTCHA SHA-256 PoW solved in-collector. Not a picture captcha. Not human-only."
-          : "No new live PDF this run; reused cache or skipped.",
+          ? "ALTCHA SHA-256 PoW solved in-collector. Public Download EIS after PoW. login.gov 302s are skipped."
+          : "No new live PDF this run; reused cache or skipped login.gov / empty extract.",
     },
   };
   writeEisReportsSnapshot(snap);
@@ -870,29 +1113,33 @@ export async function loadEisReports(): Promise<EisReportsSnapshot> {
     if (cached) {
       return {
         ...cached,
-        status: cached.cards.length ? "stale" : "empty",
+        status: cached.cards.some((c) => isRealEisBody(c.body)) ? "stale" : "empty",
         reason: `Live EPA NEPA EIS fetch failed; showing last cache. ${err instanceof Error ? err.message : String(err)}`,
       };
     }
     return emptyEisReportsSnapshot(
-      `EPA NEPA EIS PDFs are not on this host and live fetch failed. ${err instanceof Error ? err.message : String(err)}`,
+      `EPA NEPA EIS texts are not on this host and live fetch failed. ${err instanceof Error ? err.message : String(err)}`,
     );
   }
 }
 
 export function buildEisReportsManifest(snap: EisReportsSnapshot | null): Record<string, unknown> {
-  const cards = snap?.cards ?? [];
+  const cards = (snap?.cards ?? []).filter((c) => isRealEisBody(c.body));
   return {
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Free index for /eis-reports. Count + CEQ number + date + official e-NEPA page only. Paid GET /eis-reports is one official EIS PDF. License 17 USC 105.",
+    note: paidBodyCatalogNote(
+      EIS_REPORTS_PATH,
+      "Count + CEQ number + date + title + agency + official e-NEPA page only. EIS body is the paid GET /eis-reports payload. This free manifest lists the full catalog. Search/details HTML is chrome. Skip EPA comment letters and Summary-for-the teasers. Distinct from Superfund RODs.",
+    ),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: PAY_TO,
     network: "base",
     asset: USDC,
     amountAtomic: EIS_REPORTS_AMOUNT_ATOMIC,
+    oneAmountAtomic: EIS_REPORTS_ONE_AMOUNT_ATOMIC,
     priceUsdc: "0.05",
     fetchedAt: snap?.fetchedAt ?? null,
     asOf: snap?.asOf ?? null,
@@ -909,10 +1156,9 @@ export function buildEisReportsManifest(snap: EisReportsSnapshot | null): Record
       state: c.state,
       pageUrl: c.pageUrl,
       sourceUrl: c.sourceUrl,
-      bytes: c.bytes,
     })),
     schema: {
-      fields: ["id", "ceqNumber", "eisId", "attachmentId", "documentType", "date", "title", "agency", "state", "pageUrl", "sourceUrl", "bytes"],
+      fields: ["id", "ceqNumber", "eisId", "attachmentId", "documentType", "date", "title", "agency", "state", "pageUrl", "sourceUrl"],
     },
     sources: snap?.sources ?? emptySources(),
   };
@@ -984,6 +1230,7 @@ if (isMain()) {
             listedCount: snap.listedCount ?? snap.cards.length,
             fetchedPdfs: snap.fetchedPdfs ?? 0,
             skipped: snap.skipped ?? 0,
+            skippedNoText: snap.skippedNoText ?? 0,
             reused: snap.reused ?? 0,
             addedThisRun: snap.addedThisRun ?? 0,
             captcha: snap.captcha,
@@ -993,7 +1240,7 @@ if (isMain()) {
               eisId: c.eisId,
               attachmentId: c.attachmentId,
               date: c.date,
-              bytes: c.bytes,
+              bodyChars: c.body.length,
               title: c.title,
             })),
             snapshot: snapshotPath(),

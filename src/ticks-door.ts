@@ -86,8 +86,8 @@
  * GET /csb-reports/manifest.json — free count + facility/date/title/pageUrl/sourceUrl (no PDF bytes)
  * GET /hhs-oig-reports — HHS OIG full Audit / Evaluation report PDF ($0.05 one official PDF)
  * GET /hhs-oig-reports/manifest.json — free count + report number/date/title/pageUrl/sourceUrl (no PDF bytes)
- * GET /eis-reports — EPA NEPA Environmental Impact Statement PDF ($0.05 one official PDF)
- * GET /eis-reports/manifest.json — free count + CEQ number/date/title/pageUrl (no PDF bytes)
+ * GET /eis-reports — EPA NEPA Environmental Impact Statement PDF text ($0.02 id / $0.05 page)
+ * GET /eis-reports/manifest.json — free count + CEQ number/date/title/agency/pageUrl (no EIS body)
  * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
  * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.05). Listed only when a real body is cached.
@@ -393,8 +393,6 @@ import {
   EIS_REPORTS_PATH,
   loadEisReports,
   loadEisReportsManifest,
-  readCachedPdf as readCachedEisPdf,
-  selectEisReportCard,
 } from "./eis-reports.js";
 import {
   FORM_483_AMOUNT_ATOMIC,
@@ -421,6 +419,7 @@ import {
   paidOrrEnforcementBody,
   paidPhmsaOrdersBody,
   paidAaibReportsBody,
+  paidEisReportsBody,
   paidDenovoOrdersBody,
   paidFdicOrdersBody,
   paidFercOrdersBody,
@@ -1213,7 +1212,7 @@ function clamp402Description(text: string, mustKeep: string): string {
 
 /** 402 accepts[].description — product + bag + price + where free search is. OpenAPI keeps SKU_COPY. */
 function isPdfCacheSku(sku: DoorSku): boolean {
-  return sku === "csb-reports" || sku === "hhs-oig-reports" || sku === "eis-reports";
+  return sku === "csb-reports" || sku === "hhs-oig-reports";
 }
 
 function skuMimeType(sku: DoorSku): string {
@@ -1501,7 +1500,8 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
   },
   "eis-reports": {
     description:
-      "Call GET /eis-reports when you need official EPA NEPA Environmental Impact Statement PDFs from CDX e-NEPA (cdxapps.epa.gov). License 17 USC 105. $0.05 one official PDF. Same URL ?id= or ?before= is the next older official PDF for another $0.05.",
+      "Call GET /eis-reports when you need official EPA NEPA Environmental Impact Statement TEXT extracted from CDX e-NEPA (cdxapps.epa.gov) EIS document PDFs. License 17 USC 105. Does not invent EIS text. Search/details HTML is title / CEQ number / date / agency only — full TEXT is in the PDF. Skip EPA comment letters and Summary-for-the teasers. Distinct from Superfund RODs. " +
+      PAID_WINDOW_COPY,
     resourcePath: EIS_REPORTS_PATH,
   },
   "form-483": {
@@ -2673,7 +2673,7 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
   },
   "eis-reports": {
     ok: true,
-    product: "epa-nepa-eis-pdfs",
+    product: "epa-nepa-eis-bodies",
     status: "ok",
     fetchedAt: "2026-09-03T00:00:00.000Z",
     asOf: "2026-08-28",
@@ -2695,8 +2695,9 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         eisId: "569578",
         date: "2026-08-28",
         title: "F-35A Beddown at Moody Air Force Base, Georgia",
+        agency: "United States Air Force",
         pageUrl: "https://cdxapps.epa.gov/cdx-enepa-II/public/action/eis/details?eisId=569578",
-        bytes: 22100000,
+        body: "Draft Environmental Impact Statement for F-35A Beddown at Moody Air Force Base.",
       },
     ],
   },
@@ -3825,7 +3826,7 @@ export function llmsTxt(): string {
     `- GET /aaib-reports — $0.05 — UK AAIB investigation-report text (official assets.publishing.service.gov.uk PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /csb-reports — $0.05 — US CSB final investigation report PDF (official csb.gov/assets PDFs). One official PDF. Same URL ?id= or ?before=<id or date> is the next older official PDF for another $0.05.`,
     `- GET /hhs-oig-reports — $0.05 — HHS OIG full Audit / Evaluation report PDF (official oig.hhs.gov/documents/audit/ and /documents/evaluation/ PDFs). One official PDF. Same URL ?id= or ?before=<id or date> is the next older official PDF for another $0.05.`,
-    `- GET /eis-reports — $0.05 — EPA NEPA Environmental Impact Statement PDF (official CDX e-NEPA EIS document PDFs). One official PDF. Same URL ?id= or ?before=<id or date> is the next older official PDF for another $0.05.`,
+    `- GET /eis-reports — $0.05 — EPA NEPA Environmental Impact Statement text (official CDX e-NEPA EIS document PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
   ];
   if (listed483) {
     paid.push(`- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`);
@@ -3884,7 +3885,7 @@ export function llmsTxt(): string {
     "- GET /aaib-reports/manifest.json — AAIB investigation count + title/registration/aircraft/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the report body)",
     "- GET /csb-reports/manifest.json — CSB final-report count + facility/date/title/pageUrl/sourceUrl (full catalog; ?q= is free search; not the PDF bytes)",
     "- GET /hhs-oig-reports/manifest.json — HHS OIG report count + report number/date/title/pageUrl/sourceUrl (full catalog; ?q= is free search; not the PDF bytes)",
-    "- GET /eis-reports/manifest.json — EPA NEPA EIS count + CEQ number/date/title/pageUrl (full catalog; ?q= is free search; not the PDF bytes)",
+    "- GET /eis-reports/manifest.json — EPA NEPA EIS count + CEQ number/date/title/agency/pageUrl (full catalog + page cursor; ?q= is free search; not the EIS body)",
   ];
   if (listed483) {
     free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (full catalog + page cursor; ?q= is free search; not the observation body)");
@@ -6188,7 +6189,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
         },
         {
           path: EIS_REPORTS_PATH,
-          product: "epa-nepa-eis-pdfs",
+          product: "epa-nepa-eis-bodies",
           priceUsdc: "0.05",
           amountAtomic: amountAtomicFor("eis-reports"),
           manifest: EIS_REPORTS_MANIFEST_PATH,
@@ -6689,19 +6690,12 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === EIS_REPORTS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadEisReportsManifest(url.searchParams.get("q") ?? undefined), req, port));
+    sendExtractedManifest(req, res, port, url, await loadEisReportsManifest());
     return;
   }
 
   if (path === EIS_REPORTS_PATH) {
-    await servePaidPdf(req, res, port, "eis-reports", async (opts) => {
-      const snap = await loadEisReports();
-      const card = selectEisReportCard(snap, { id: opts?.id, before: opts?.before });
-      if (!card) return null;
-      const bytes = readCachedEisPdf(card);
-      if (!bytes) return null;
-      return { bytes, filename: `${card.id}.pdf` };
-    });
+    await servePaid(req, res, port, "eis-reports", async (opts) => paidEisReportsBody(await loadEisReports(), opts));
     return;
   }
 
