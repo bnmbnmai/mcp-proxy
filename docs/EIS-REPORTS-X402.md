@@ -36,7 +36,7 @@ If prior PDF bytes are already under `data/eis-reports/` (or a copied `/tmp/eis-
 
 ## Lander card (tv-remote / bnm.farm)
 
-Stacked on the HHS OIG lander tip. Product + bag + price only (`$0.02 ?id=`, `$0.05 / 10`). No “not this” copy. See the tv-remote PR on `cursor/eis-reports-lander-dedd`.
+Stacked on the HHS OIG lander tip. Product + bag + price only (`$0.02 ?id=`, `$0.05 / 10`). No “not this” copy. Lander PR: https://github.com/bnmbnmai/tv-remote/pull/85 (`cursor/eis-reports-lander-dedd`).
 
 ## After apply
 
