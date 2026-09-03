@@ -86,6 +86,8 @@
  * GET /csb-reports/manifest.json — free count + facility/date/title/pageUrl/sourceUrl (no PDF bytes)
  * GET /hhs-oig-reports — HHS OIG full Audit / Evaluation report PDF ($0.05 one official PDF)
  * GET /hhs-oig-reports/manifest.json — free count + report number/date/title/pageUrl/sourceUrl (no PDF bytes)
+ * GET /eis-reports — EPA NEPA Environmental Impact Statement PDF ($0.05 one official PDF)
+ * GET /eis-reports/manifest.json — free count + CEQ number/date/title/pageUrl (no PDF bytes)
  * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
  * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.05). Listed only when a real body is cached.
@@ -385,6 +387,15 @@ import {
   readCachedPdf as readCachedHhsOigPdf,
   selectHhsOigReportCard,
 } from "./hhs-oig-reports.js";
+import {
+  EIS_REPORTS_AMOUNT_ATOMIC,
+  EIS_REPORTS_MANIFEST_PATH,
+  EIS_REPORTS_PATH,
+  loadEisReports,
+  loadEisReportsManifest,
+  readCachedPdf as readCachedEisPdf,
+  selectEisReportCard,
+} from "./eis-reports.js";
 import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
@@ -839,7 +850,7 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "ema-referrals" | "cder-reviews" | "npdes-permits" | "ofsted-inspections" | "ofwat-enforcement" | "ofgem-enforcement" | "gain" | "orr-enforcement" | "phmsa-orders" | "aaib-reports" | "csb-reports" | "hhs-oig-reports" | "form-483" | "gmp" | "gmp-md";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "ema-referrals" | "cder-reviews" | "npdes-permits" | "ofsted-inspections" | "ofwat-enforcement" | "ofgem-enforcement" | "gain" | "orr-enforcement" | "phmsa-orders" | "aaib-reports" | "csb-reports" | "hhs-oig-reports" | "eis-reports" | "form-483" | "gmp" | "gmp-md";
 /** Always-public SKUs. /form-483, /gmp, and /gmp-md join only when a real observation body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "ticks",
@@ -883,6 +894,7 @@ export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "aaib-reports",
   "csb-reports",
   "hhs-oig-reports",
+  "eis-reports",
 ];
 
 export function form483IsPublic(): boolean {
@@ -1129,6 +1141,10 @@ function amountAtomicFor(sku: DoorSku): string {
     const raw = env("HHS_OIG_REPORTS_USDC_ATOMIC");
     return raw.length > 0 ? raw : HHS_OIG_REPORTS_AMOUNT_ATOMIC;
   }
+  if (sku === "eis-reports") {
+    const raw = env("EIS_REPORTS_USDC_ATOMIC");
+    return raw.length > 0 ? raw : EIS_REPORTS_AMOUNT_ATOMIC;
+  }
   if (sku === "form-483") {
     const raw = env("FORM_483_USDC_ATOMIC");
     return raw.length > 0 ? raw : FORM_483_AMOUNT_ATOMIC;
@@ -1197,7 +1213,7 @@ function clamp402Description(text: string, mustKeep: string): string {
 
 /** 402 accepts[].description — product + bag + price + where free search is. OpenAPI keeps SKU_COPY. */
 function isPdfCacheSku(sku: DoorSku): boolean {
-  return sku === "csb-reports" || sku === "hhs-oig-reports";
+  return sku === "csb-reports" || sku === "hhs-oig-reports" || sku === "eis-reports";
 }
 
 function skuMimeType(sku: DoorSku): string {
@@ -1482,6 +1498,11 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
     description:
       "Call GET /hhs-oig-reports when you need official HHS OIG-authored full Audit (OAS / A-*) and Evaluation / Inspection (OEI-*) report PDFs from oig.hhs.gov/documents/audit/ and oig.hhs.gov/documents/evaluation/. License 17 USC 105. $0.05 one official PDF. Same URL ?id= or ?before= is the next older official PDF for another $0.05.",
     resourcePath: HHS_OIG_REPORTS_PATH,
+  },
+  "eis-reports": {
+    description:
+      "Call GET /eis-reports when you need official EPA NEPA Environmental Impact Statement PDFs from CDX e-NEPA (cdxapps.epa.gov). License 17 USC 105. $0.05 one official PDF. Same URL ?id= or ?before= is the next older official PDF for another $0.05.",
+    resourcePath: EIS_REPORTS_PATH,
   },
   "form-483": {
     description:
@@ -2650,6 +2671,35 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
       },
     ],
   },
+  "eis-reports": {
+    ok: true,
+    product: "epa-nepa-eis-pdfs",
+    status: "ok",
+    fetchedAt: "2026-09-03T00:00:00.000Z",
+    asOf: "2026-08-28",
+    source: "https://cdxapps.epa.gov/cdx-enepa-II/public/action/eis/search",
+    recordCount: 1,
+    records: [
+      {
+        id: "20260104",
+        date: "2026-08-28",
+        firm: "United States Air Force",
+        url: "https://cdxapps.epa.gov/cdx-enepa-II/public/action/eis/details?eisId=569578",
+        type: "eis-reports",
+      },
+    ],
+    cards: [
+      {
+        id: "20260104",
+        ceqNumber: "20260104",
+        eisId: "569578",
+        date: "2026-08-28",
+        title: "F-35A Beddown at Moody Air Force Base, Georgia",
+        pageUrl: "https://cdxapps.epa.gov/cdx-enepa-II/public/action/eis/details?eisId=569578",
+        bytes: 22100000,
+      },
+    ],
+  },
   "form-483": {
     ok: true,
     product: "fda-form-483-bodies",
@@ -3775,6 +3825,7 @@ export function llmsTxt(): string {
     `- GET /aaib-reports — $0.05 — UK AAIB investigation-report text (official assets.publishing.service.gov.uk PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /csb-reports — $0.05 — US CSB final investigation report PDF (official csb.gov/assets PDFs). One official PDF. Same URL ?id= or ?before=<id or date> is the next older official PDF for another $0.05.`,
     `- GET /hhs-oig-reports — $0.05 — HHS OIG full Audit / Evaluation report PDF (official oig.hhs.gov/documents/audit/ and /documents/evaluation/ PDFs). One official PDF. Same URL ?id= or ?before=<id or date> is the next older official PDF for another $0.05.`,
+    `- GET /eis-reports — $0.05 — EPA NEPA Environmental Impact Statement PDF (official CDX e-NEPA EIS document PDFs). One official PDF. Same URL ?id= or ?before=<id or date> is the next older official PDF for another $0.05.`,
   ];
   if (listed483) {
     paid.push(`- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`);
@@ -3833,6 +3884,7 @@ export function llmsTxt(): string {
     "- GET /aaib-reports/manifest.json — AAIB investigation count + title/registration/aircraft/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the report body)",
     "- GET /csb-reports/manifest.json — CSB final-report count + facility/date/title/pageUrl/sourceUrl (full catalog; ?q= is free search; not the PDF bytes)",
     "- GET /hhs-oig-reports/manifest.json — HHS OIG report count + report number/date/title/pageUrl/sourceUrl (full catalog; ?q= is free search; not the PDF bytes)",
+    "- GET /eis-reports/manifest.json — EPA NEPA EIS count + CEQ number/date/title/pageUrl (full catalog; ?q= is free search; not the PDF bytes)",
   ];
   if (listed483) {
     free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (full catalog + page cursor; ?q= is free search; not the observation body)");
@@ -4100,6 +4152,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const aaibReportsAtomic = amountAtomicFor("aaib-reports");
   const csbReportsAtomic = amountAtomicFor("csb-reports");
   const hhsOigReportsAtomic = amountAtomicFor("hhs-oig-reports");
+  const eisReportsAtomic = amountAtomicFor("eis-reports");
   const f483Atomic = amountAtomicFor("form-483");
   const gmpAtomic = amountAtomicFor("gmp");
   const gmpMdAtomic = amountAtomicFor("gmp-md");
@@ -4144,6 +4197,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const aaibReportsPrice = (Number(aaibReportsAtomic) / 1e6).toFixed(2);
   const csbReportsPrice = (Number(csbReportsAtomic) / 1e6).toFixed(2);
   const hhsOigReportsPrice = (Number(hhsOigReportsAtomic) / 1e6).toFixed(2);
+  const eisReportsPrice = (Number(eisReportsAtomic) / 1e6).toFixed(2);
   const f483Price = (Number(f483Atomic) / 1e6).toFixed(2);
   const gmpPrice = (Number(gmpAtomic) / 1e6).toFixed(2);
   const gmpMdPrice = (Number(gmpMdAtomic) / 1e6).toFixed(2);
@@ -4192,6 +4246,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
     "/aaib-reports ($0.05)",
     "/csb-reports ($0.05)",
     "/hhs-oig-reports ($0.05)",
+    "/eis-reports ($0.05)",
   ];
   if (listed483) paidBits.push("/form-483 ($0.05)");
   if (listedGmp) paidBits.push("/gmp ($0.05)");
@@ -5183,6 +5238,20 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           },
         }),
       },
+      [EIS_REPORTS_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getEisReports",
+          summary: "EPA NEPA Environmental Impact Statement PDFs",
+          description: SKU_COPY["eis-reports"].description,
+          priceUsdc: eisReportsPrice,
+          amountAtomic: eisReportsAtomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["eis-reports"],
+          outputSchema: {
+            type: "string",
+            description: "Official EPA NEPA Environmental Impact Statement PDF bytes (application/pdf)",
+          },
+        }),
+      },
       ...(listed483
         ? {
             [FORM_483_PATH]: {
@@ -5516,6 +5585,12 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
         get: freeOpenApiOp(
           "HHS OIG audit and evaluation reports free manifest",
           "Count, report number, date, title, official page, and PDF URL. Not the PDF bytes.",
+        ),
+      },
+      [EIS_REPORTS_MANIFEST_PATH]: {
+        get: freeOpenApiOp(
+          "EPA NEPA EIS free manifest",
+          "Count, CEQ number, date, title, and official e-NEPA page. Not the PDF bytes.",
         ),
       },
       ...(listed483
@@ -6111,6 +6186,13 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
           amountAtomic: amountAtomicFor("hhs-oig-reports"),
           manifest: HHS_OIG_REPORTS_MANIFEST_PATH,
         },
+        {
+          path: EIS_REPORTS_PATH,
+          product: "epa-nepa-eis-pdfs",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("eis-reports"),
+          manifest: EIS_REPORTS_MANIFEST_PATH,
+        },
         ...(form483IsPublic()
           ? [
               {
@@ -6606,6 +6688,23 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === EIS_REPORTS_MANIFEST_PATH) {
+    sendJson(res, 200, withShopDiscovery(await loadEisReportsManifest(url.searchParams.get("q") ?? undefined), req, port));
+    return;
+  }
+
+  if (path === EIS_REPORTS_PATH) {
+    await servePaidPdf(req, res, port, "eis-reports", async (opts) => {
+      const snap = await loadEisReports();
+      const card = selectEisReportCard(snap, { id: opts?.id, before: opts?.before });
+      if (!card) return null;
+      const bytes = readCachedEisPdf(card);
+      if (!bytes) return null;
+      return { bytes, filename: `${card.id}.pdf` };
+    });
+    return;
+  }
+
   if (path === FORM_483_MANIFEST_PATH) {
     sendExtractedManifest(req, res, port, url, await loadForm483Manifest());
     return;
@@ -6641,7 +6740,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, OFWAT_ENFORCEMENT_PATH, OFWAT_ENFORCEMENT_MANIFEST_PATH, OFGEM_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_MANIFEST_PATH, GAIN_PATH, GAIN_MANIFEST_PATH, ORR_ENFORCEMENT_PATH, ORR_ENFORCEMENT_MANIFEST_PATH, PHMSA_ORDERS_PATH, PHMSA_ORDERS_MANIFEST_PATH, AAIB_REPORTS_PATH, AAIB_REPORTS_MANIFEST_PATH, CSB_REPORTS_PATH, CSB_REPORTS_MANIFEST_PATH, HHS_OIG_REPORTS_PATH, HHS_OIG_REPORTS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, SAMPLE_PATH, FIRM_CHECK_PATH, X402LIST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, OFWAT_ENFORCEMENT_PATH, OFWAT_ENFORCEMENT_MANIFEST_PATH, OFGEM_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_MANIFEST_PATH, GAIN_PATH, GAIN_MANIFEST_PATH, ORR_ENFORCEMENT_PATH, ORR_ENFORCEMENT_MANIFEST_PATH, PHMSA_ORDERS_PATH, PHMSA_ORDERS_MANIFEST_PATH, AAIB_REPORTS_PATH, AAIB_REPORTS_MANIFEST_PATH, CSB_REPORTS_PATH, CSB_REPORTS_MANIFEST_PATH, HHS_OIG_REPORTS_PATH, HHS_OIG_REPORTS_MANIFEST_PATH, EIS_REPORTS_PATH, EIS_REPORTS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, SAMPLE_PATH, FIRM_CHECK_PATH, X402LIST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
 }
 
 export function bindHost(): string {
@@ -6710,6 +6809,7 @@ if (isMain()) {
     console.error(`${AAIB_REPORTS_PATH} $${Number(amountAtomicFor("aaib-reports")) / 1e6} USDC`);
     console.error(`${CSB_REPORTS_PATH} $${Number(amountAtomicFor("csb-reports")) / 1e6} USDC`);
     console.error(`${HHS_OIG_REPORTS_PATH} $${Number(amountAtomicFor("hhs-oig-reports")) / 1e6} USDC`);
+    console.error(`${EIS_REPORTS_PATH} $${Number(amountAtomicFor("eis-reports")) / 1e6} USDC`);
     console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
     console.error(`${GMP_PATH} $${Number(amountAtomicFor("gmp")) / 1e6} USDC${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
     console.error(`${GMP_MD_PATH} $${Number(amountAtomicFor("gmp-md")) / 1e6} USDC${gmpMdIsPublic() ? "" : " (unlisted until a real MD observation body is cached)"}`);

@@ -47,6 +47,7 @@ build/phmsa-orders.*
 build/aaib-reports.*
 build/csb-reports.*
 build/hhs-oig-reports.*
+build/eis-reports.*
 build/ticks-ams.*
 build/ticks-ams-leftovers.*
 build/paid-records.*
@@ -96,6 +97,7 @@ data/phmsa-orders/
 data/aaib-reports/
 data/csb-reports/
 data/hhs-oig-reports/
+data/eis-reports/
 data/ticks-ams/
 data/shop-request-log.jsonl
 data/shop-request-log*.jsonl
