@@ -37,6 +37,8 @@ EPA_CAFO_DIR=/tmp/epa-cafo-live \
 
 Applied on this machine (2026-09-04): **listedCount 100**, **cardCount 15**, asOf **2026-08-28**, fetchedAt **2026-09-04T22:58:06.398Z**. This pulse reused 7 first-slice bodies and fetched 8 more official texts. Price still $0.02 / $0.05. No new SKU. Local `127.0.0.1:4020` unpaid GET is HTTP 402; paid `?id=CWA-06-2026-1792` returns Apache Feedyard. Live `ticks.bnm.farm` stays **404** — `systemctl --user` has no bus here, so `idaho-ticks-x402.service` was not restarted.
 
+Applied on apollo / media-box `pop-os.lan` (2026-09-04): checkout `cursor/epa-cafo-door-74df` @ `9db0c79e40a7d9b7caea9666dfd7bef3a157531b`. Collect into `$HOME/projects/mcp-proxy/data/epa-cafo`: **listedCount 100**, **cardCount 16**, seed `CWA-06-2026-1792` Apache Feedyard **25671** chars. Restarted **only** `idaho-ticks-x402.service`. Live unpaid `GET https://ticks.bnm.farm/epa-cafo` is **402** / `50000`. Unpaid `?id=CWA-06-2026-1792` is **402** / `20000`. Free manifest **200**, 16 cards, no letter body. `/.well-known/x402` door count **47** and lists `/epa-cafo`. Shop lander cards pasted on live `bnm.farm` (FSIS + EPA CAFO after EIS).
+
 ## Apply on apollo / media-box (`systemctl --user`; no sudo)
 
 Restart **only** `idaho-ticks-x402.service`. Do not replace other door caches. Do not checkout catalog `main`. Do not flip Origin.
