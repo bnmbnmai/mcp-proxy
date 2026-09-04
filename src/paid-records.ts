@@ -62,6 +62,7 @@ export const EXTRACTED_BODY_SKUS = [
   "phmsa-orders",
   "aaib-reports",
   "eis-reports",
+  "fsis-humane",
 ] as const;
 
 export type ExtractedBodySku = (typeof EXTRACTED_BODY_SKUS)[number];
@@ -145,6 +146,7 @@ export const ORR_ENFORCEMENT_TYPE = "orr-enforcement";
 export const PHMSA_ORDERS_TYPE = "phmsa-orders";
 export const AAIB_REPORTS_TYPE = "aaib-reports";
 export const EIS_REPORTS_TYPE = "eis-reports";
+export const FSIS_HUMANE_TYPE = "fsis-humane";
 export const CFPB_ORDER_TYPE = "cfpb-order";
 export const OFAC_ORDER_TYPE = "ofac-order";
 export const FRB_ORDER_TYPE = "frb-order";
@@ -193,6 +195,8 @@ export const ORR_ENFORCEMENT_SOURCE = "https://www.orr.gov.uk/monitoring-regulat
 export const PHMSA_ORDERS_SOURCE = "https://primis.phmsa.dot.gov/enforcement-documents/";
 export const AAIB_REPORTS_SOURCE = "https://www.gov.uk/aaib-reports";
 export const EIS_REPORTS_SOURCE = "https://cdxapps.epa.gov/cdx-enepa-II/public/action/eis/search";
+export const FSIS_HUMANE_SOURCE =
+  "https://www.fsis.usda.gov/inspection/regulatory-enforcement/humane-handling-enforcement";
 export const CFPB_ORDER_SOURCE = "https://www.consumerfinance.gov/enforcement/actions/";
 export const OFAC_ORDER_SOURCE = "https://ofac.treasury.gov/civil-penalties-and-enforcement-information";
 export const FRB_ORDER_SOURCE = "https://www.federalreserve.gov/supervisionreg/enforcementactions.htm";
@@ -865,6 +869,10 @@ export function paidAaibReportsBody<T extends CardPayload>(payload: T, opts?: Pa
 
 export function paidEisReportsBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
   return paidCardBody(payload, EIS_REPORTS_TYPE, EIS_REPORTS_SOURCE, opts);
+}
+
+export function paidFsisHumaneBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, FSIS_HUMANE_TYPE, FSIS_HUMANE_SOURCE, opts);
 }
 
 export function paidIcoMpnBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
