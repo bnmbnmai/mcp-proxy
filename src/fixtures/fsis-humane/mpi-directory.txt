@@ -1,0 +1,4 @@
+Meat, Poultry and Egg Product Inspection Directory
+Establishment Number, Name, Street, City, State, Zip
+M47033, Salsabil Meat Processing, 12 Ehle Street, Nelliston, NY
+This MPI directory row dump is not an FSIS humane-handling enforcement letter.
