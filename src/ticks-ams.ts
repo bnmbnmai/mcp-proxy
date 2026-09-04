@@ -1310,7 +1310,7 @@ export function parseFeederPigReport(text: string, report: AmsReport, sourceUrl:
   for (const raw of text.split(/\r?\n/)) {
     const line = raw.replace(/\s+/g, " ").trim();
     if (!line) continue;
-    if (/^PIGS EARLY WEANED\b/i.test(line)) {
+    if (/^PIGS EARLY WEANED\s*-\s*10/i.test(line)) {
       cls = "early_weaned_10_12lb";
       sale = "";
       continue;
