@@ -1,0 +1,83 @@
+{
+  "ranOn": "cursor-cloud-vm",
+  "hostname": "cursor",
+  "mcpProxyPath": "/home/ubuntu/projects/mcp-proxy",
+  "mcpProxyResolved": "/workspace",
+  "branch": "cursor/epa-cafo-door-74df",
+  "sha": "fc8f118d6ef755bd8e3e94852916c4e18cbba990",
+  "applied": true,
+  "systemctlUserRestart": {
+    "unit": "idaho-ticks-x402.service",
+    "ok": false,
+    "error": "Failed to connect to bus: No medium found"
+  },
+  "localDoor": {
+    "bind": "127.0.0.1:4020",
+    "command": "EPA_CAFO_DIR=$HOME/projects/mcp-proxy/data/epa-cafo X402_SKIP_SETTLE=1 npm run start:ticks"
+  },
+  "collect": {
+    "status": "ok",
+    "fetchedAt": "2026-09-04T22:58:06.398Z",
+    "asOf": "2026-08-28",
+    "cardCount": 15,
+    "listedCount": 100,
+    "fetchedPdfs": 10,
+    "skippedNoText": 7,
+    "reused": 7,
+    "addedThisRun": 8,
+    "ids": [
+      "CWA-03-2026-0073",
+      "CWA-03-2026-0072",
+      "CWA-07-2026-0227",
+      "CWA-03-2026-0078",
+      "CWA-05-2026-0018",
+      "CWA-10-2025-0023",
+      "CWA-08-2026-0009",
+      "CWA-03-2026-0115",
+      "CWA-05-2026-0008",
+      "CWA-05-2026-0017",
+      "CWA-06-2026-1792",
+      "MM-09-2026-0093",
+      "CWA-05-2026-0015",
+      "CWA-05-2026-0011",
+      "CWA-07-2026-0005"
+    ],
+    "CWA-06-2026-1792": {
+      "institution": "Apache Feedyard",
+      "date": "2026-07-14",
+      "title": "Complaint, Consent Agreement and Final Order",
+      "bodyChars": 25671
+    }
+  },
+  "local": {
+    "unpaidPage": 402,
+    "pageAtomic": "50000",
+    "unpaidId": 402,
+    "idAtomic": "20000",
+    "unpaidSince": 304,
+    "manifest": 200,
+    "manifestCardCount": 15,
+    "manifestHasBody": false,
+    "paidPage": 200,
+    "paidPageCardCount": 10,
+    "paidId": 200,
+    "paidIdInstitution": "Apache Feedyard",
+    "paidIdHasSeedNeedle": true,
+    "wellKnownListsEpaCafo": true,
+    "shopListsEpaCafo": true,
+    "shopProductCount": 45,
+    "llmsListsEpaCafo": true,
+    "openapiHasPath": true,
+    "mcpDiscoverTools": 45,
+    "mcpToolsListIncludesEpaCafo": true
+  },
+  "live": {
+    "epaCafo": 404,
+    "epaCafoManifest": 404,
+    "fsisHumane": 402,
+    "note": "This machine has ~/projects/mcp-proxy and served GET /epa-cafo locally. Live ticks.bnm.farm stays HTTP 404 because systemctl --user cannot reach idaho-ticks-x402.service on this VM. media-box worker 73601a61-9e44-4caa-acef-bbb25947fc24 is idle."
+  },
+  "landerPr": "https://github.com/bnmbnmai/tv-remote/pull/87",
+  "doorPr": "https://github.com/bnmbnmai/mcp-proxy/pull/191",
+  "untouched": ["Redbubble", "Dryland", "farm family gates", "catalog main", "Origin", "other door caches"]
+}

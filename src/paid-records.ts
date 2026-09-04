@@ -63,6 +63,7 @@ export const EXTRACTED_BODY_SKUS = [
   "aaib-reports",
   "eis-reports",
   "fsis-humane",
+  "epa-cafo",
 ] as const;
 
 export type ExtractedBodySku = (typeof EXTRACTED_BODY_SKUS)[number];
@@ -147,6 +148,7 @@ export const PHMSA_ORDERS_TYPE = "phmsa-orders";
 export const AAIB_REPORTS_TYPE = "aaib-reports";
 export const EIS_REPORTS_TYPE = "eis-reports";
 export const FSIS_HUMANE_TYPE = "fsis-humane";
+export const EPA_CAFO_TYPE = "epa-cafo";
 export const CFPB_ORDER_TYPE = "cfpb-order";
 export const OFAC_ORDER_TYPE = "ofac-order";
 export const FRB_ORDER_TYPE = "frb-order";
@@ -197,6 +199,7 @@ export const AAIB_REPORTS_SOURCE = "https://www.gov.uk/aaib-reports";
 export const EIS_REPORTS_SOURCE = "https://cdxapps.epa.gov/cdx-enepa-II/public/action/eis/search";
 export const FSIS_HUMANE_SOURCE =
   "https://www.fsis.usda.gov/inspection/regulatory-enforcement/humane-handling-enforcement";
+export const EPA_CAFO_SOURCE = "https://yosemite.epa.gov/oa/rhc/epaadmin.nsf";
 export const CFPB_ORDER_SOURCE = "https://www.consumerfinance.gov/enforcement/actions/";
 export const OFAC_ORDER_SOURCE = "https://ofac.treasury.gov/civil-penalties-and-enforcement-information";
 export const FRB_ORDER_SOURCE = "https://www.federalreserve.gov/supervisionreg/enforcementactions.htm";
@@ -873,6 +876,10 @@ export function paidEisReportsBody<T extends CardPayload>(payload: T, opts?: Pai
 
 export function paidFsisHumaneBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
   return paidCardBody(payload, FSIS_HUMANE_TYPE, FSIS_HUMANE_SOURCE, opts);
+}
+
+export function paidEpaCafoBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, EPA_CAFO_TYPE, EPA_CAFO_SOURCE, opts);
 }
 
 export function paidIcoMpnBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {

@@ -1,0 +1,46 @@
+{
+  "ranOn": "cursor-cloud-vm",
+  "hostname": "cursor",
+  "usePrivateWorker": false,
+  "mediaBoxWorkerId": "73601a61-9e44-4caa-acef-bbb25947fc24",
+  "mediaBoxIdle": true,
+  "branch": "cursor/epa-cafo-door-74df",
+  "sha": "7b502e3b45580f2af16c8e04c50e9f0f13761a29",
+  "collect": {
+    "status": "ok",
+    "fetchedAt": "2026-09-04T22:49:41.706Z",
+    "asOf": "2026-08-28",
+    "cardCount": 7,
+    "listedCount": 100,
+    "fetchedPdfs": 12,
+    "skippedNoText": 5,
+    "ids": [
+      "CWA-03-2026-0073",
+      "CWA-07-2026-0227",
+      "CWA-03-2026-0078",
+      "CWA-10-2025-0023",
+      "CWA-06-2026-1792",
+      "MM-09-2026-0093",
+      "CWA-07-2026-0005"
+    ],
+    "CWA-06-2026-1792": {
+      "institution": "Apache Feedyard",
+      "date": "2026-07-14",
+      "title": "Complaint, Consent Agreement and Final Order",
+      "bodyChars": 25671
+    }
+  },
+  "live": {
+    "epaCafo": 404,
+    "epaCafoManifest": 404,
+    "fsisHumane": 402,
+    "fsisPageAtomic": "50000",
+    "fsisCardCount": 60,
+    "landerHasFsisCard": false,
+    "landerHasEpaCafoCard": false,
+    "note": "Live lander ends at the EIS card. FSIS door is live; FSIS shop card is missing."
+  },
+  "landerPr": "https://github.com/bnmbnmai/tv-remote/pull/87",
+  "doorPr": "https://github.com/bnmbnmai/mcp-proxy/pull/191",
+  "untouched": ["Redbubble", "Dryland", "farm family gates", "idaho-ticks-x402.service"]
+}
