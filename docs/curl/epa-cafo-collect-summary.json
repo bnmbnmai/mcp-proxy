@@ -2,25 +2,33 @@
   "source": "https://yosemite.epa.gov/oa/rhc/epaadmin.nsf",
   "seed": "https://www.epa.gov/system/files/documents/2026-07/apache-feedyard_nmg010040_cwa0620261792_07142026.pdf",
   "liveManifest": "https://ticks.bnm.farm/epa-cafo/manifest.json",
-  "fetchedAt": "2026-09-04T22:49:41.706Z",
+  "fetchedAt": "2026-09-04T22:58:06.398Z",
   "asOf": "2026-08-28",
   "status": "ok",
-  "cardCount": 7,
+  "cardCount": 15,
   "listedCount": 100,
-  "fetchedPdfs": 12,
-  "skippedNoText": 5,
-  "reused": 0,
-  "addedThisRun": 7,
+  "fetchedPdfs": 10,
+  "skippedNoText": 7,
+  "reused": 7,
+  "addedThisRun": 8,
   "limit": 8,
   "maxFetch": 12,
-  "note": "Bodies are gitignored (data/epa-cafo/). This file is id/institution/docket/date only. Text is official pdftotext, not invented. This collect ran on a Cursor cloud VM. Live GET https://ticks.bnm.farm/epa-cafo stays HTTP 404 until media-box checks out cursor/epa-cafo-door-74df, collects into $HOME/projects/mcp-proxy/data/epa-cafo, and restarts only idaho-ticks-x402.service.",
+  "note": "Bodies are gitignored (data/epa-cafo/). This file is id/institution/docket/date only. Text is official pdftotext, not invented. Applied on this machine (~/projects/mcp-proxy) into $HOME/projects/mcp-proxy/data/epa-cafo and verified on 127.0.0.1:4020. Live GET https://ticks.bnm.farm/epa-cafo stays HTTP 404 until media-box restarts only idaho-ticks-x402.service.",
   "ids": [
     "CWA-03-2026-0073",
+    "CWA-03-2026-0072",
     "CWA-07-2026-0227",
     "CWA-03-2026-0078",
+    "CWA-05-2026-0018",
     "CWA-10-2025-0023",
+    "CWA-08-2026-0009",
+    "CWA-03-2026-0115",
+    "CWA-05-2026-0008",
+    "CWA-05-2026-0017",
     "CWA-06-2026-1792",
     "MM-09-2026-0093",
+    "CWA-05-2026-0015",
+    "CWA-05-2026-0011",
     "CWA-07-2026-0005"
   ],
   "CWA-06-2026-1792": {
@@ -41,6 +49,12 @@
       "title": "Consent Agreement and Final Order"
     },
     {
+      "id": "CWA-03-2026-0072",
+      "institution": "Denton Scrap Metal Recycling, LLC",
+      "date": "2026-08-26",
+      "title": "Consent Agreement and Final Order"
+    },
+    {
       "id": "CWA-07-2026-0227",
       "institution": "Michels Construction, Inc.",
       "date": "2026-08-24",
@@ -53,10 +67,40 @@
       "title": "Consent Agreement and Final Order"
     },
     {
+      "id": "CWA-05-2026-0018",
+      "institution": "Tricor Industrial",
+      "date": "2026-08-17",
+      "title": "Consent Agreement and Final Order"
+    },
+    {
       "id": "CWA-10-2025-0023",
       "institution": "Jackson & Son Distributors, Inc. d/b/a Jackson & Son Oil",
       "date": "2026-08-11",
       "title": "Consent Agreement and Final Order"
+    },
+    {
+      "id": "CWA-08-2026-0009",
+      "institution": "CF&I Steel, L.P., dba Rocky Mountain Steel Mill",
+      "date": "2026-08-10",
+      "title": "Consent Agreement and Final Order"
+    },
+    {
+      "id": "CWA-03-2026-0115",
+      "institution": "Real Alloy Recycling, LLC",
+      "date": "2026-08-05",
+      "title": "Consent Agreement and Final Order"
+    },
+    {
+      "id": "CWA-05-2026-0008",
+      "institution": "Terminal Ready-Mix, Inc.",
+      "date": "2026-08-03",
+      "title": "Consent Agreement and Final Order"
+    },
+    {
+      "id": "CWA-05-2026-0017",
+      "institution": "Hershey Chocolate and Confectionery, LLC",
+      "date": "2026-07-28",
+      "title": "Expedited Settlement Agreement"
     },
     {
       "id": "CWA-06-2026-1792",
@@ -68,6 +112,18 @@
       "id": "MM-09-2026-0093",
       "institution": "Camino Real Foods, Inc.",
       "date": "2026-05-29",
+      "title": "Consent Agreement and Final Order"
+    },
+    {
+      "id": "CWA-05-2026-0015",
+      "institution": "Kinder Morgan Terminals and Milwaukee Bulk Terminals",
+      "date": "2026-05-28",
+      "title": "Expedited Settlement Agreement"
+    },
+    {
+      "id": "CWA-05-2026-0011",
+      "institution": "City of Brooklyn, Minnesota",
+      "date": "2026-04-30",
       "title": "Consent Agreement and Final Order"
     },
     {
