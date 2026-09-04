@@ -5,7 +5,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2, paymentExtra, sku402Description, isOrganicHay, countWord } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, PRODUCT_NAME, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2, paymentExtra, sku402Description, isOrganicHay, isWaterTick, buildTicksManifest, countWord } from "./ticks-door.js";
 import { EXTRACTED_BODY_SKUS, PAGE_AMOUNT_ATOMIC, SINGLE_DOC_AMOUNT_ATOMIC } from "./paid-records.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
@@ -825,7 +825,10 @@ async function main(): Promise<void> {
     assert.ok(!llmsBody.includes("TCPA"));
     assert.ok(llmsBody.includes("GET /ticks — $0.05"));
     assert.ok(!llmsBody.includes("GET /ticks — $0.02"));
-    assert.ok(llmsBody.includes("US hay, cattle, and grain"));
+    assert.ok(llmsBody.includes("USDA farm market prices"));
+    assert.ok(llmsBody.includes("hay, cattle, grain, dairy, hogs, produce"));
+    assert.ok(llmsBody.includes("not water"));
+    assert.ok(!llmsBody.toLowerCase().includes("wd1"));
     assert.ok(!llmsBody.includes("Idaho ticks"));
     assert.ok(!llmsBody.includes("idaho-hay-feeder-ticks"));
     assert.ok(!llmsBody.includes("Idaho-only"));
@@ -848,7 +851,7 @@ async function main(): Promise<void> {
     assert.ok(!(wk.instructions ?? "").toLowerCase().includes("entire current cache"));
     const specGuidance = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
       info?: { "x-guidance"?: string };
-      paths?: Record<string, { get?: { description?: string } }>;
+      paths?: Record<string, { get?: { description?: string; summary?: string } }>;
     };
     assert.ok((specGuidance.info?.["x-guidance"] ?? "").includes("newest 10 official texts"));
     assert.ok(!(specGuidance.info?.["x-guidance"] ?? "").includes("newest 100 official texts"));
@@ -860,7 +863,8 @@ async function main(): Promise<void> {
     assert.ok((specGuidance.paths?.[WARNING_LETTERS_PATH]?.get?.description ?? "").includes("GET ?id= one official text"));
     assert.ok((specGuidance.paths?.[WARNING_LETTERS_PATH]?.get?.description ?? "").includes("Newest chunk on a plain GET"));
     assert.ok(!(specGuidance.paths?.[WARNING_LETTERS_PATH]?.get?.description ?? "").toLowerCase().includes("entire current cache"));
-    assert.ok((specGuidance.paths?.[TICKS_PATH]?.get?.description ?? "").includes("current official US hay"));
+    assert.ok((specGuidance.paths?.[TICKS_PATH]?.get?.description ?? "").includes("current official USDA farm market prices"));
+    assert.ok((specGuidance.paths?.[TICKS_PATH]?.get?.summary ?? "").includes("USDA farm market prices"));
     const mcpInit = (await (
       await fetch(`${base}${MCP_PATH}`, {
         method: "POST",
@@ -1315,6 +1319,85 @@ async function main(): Promise<void> {
     },
   );
 
+  const waterDir = mkdtempSync(join(tmpdir(), "ticks-no-water-"));
+  writeFileSync(
+    join(waterDir, "board.json"),
+    JSON.stringify({
+      fetchedAt: "2026-08-27T00:00:00Z",
+      rows: [
+        {
+          id: "cattle-tf-feeder-steer",
+          group: "cattle",
+          commodity: "Feeder steers",
+          unit: "$/cwt",
+          price: 400.2,
+          asOf: "2026-08-12",
+          source: "Twin Falls Livestock Commission market report",
+        },
+        {
+          id: "wd1.rental.common.above_milner",
+          group: "water",
+          commodity: "Rental pool",
+          unit: "$/AF",
+          price: 26,
+          asOf: "2026-01-01",
+          source: "Water District 1 — Rental Pool Procedures (Committee of Nine)",
+          sourceUrl: "https://www.waterdistrict1.com/media/ywolyn3k/2026-final-rental-pool-procedures.pdf",
+        },
+      ],
+      failed: [],
+      history: {
+        points: [
+          {
+            id: "wd1.rental.common.above_milner",
+            series: "wd1.rental.common.above_milner",
+            group: "water",
+            price: 26,
+            asOf: "2026-01-01",
+            source: "Water District 1 — Rental Pool Procedures (Committee of Nine)",
+          },
+        ],
+        emptyReports: [],
+        series: [{ id: "wd1.rental.common.above_milner", label: "Common pool", group: "water" }],
+      },
+    }),
+  );
+  {
+    const prev = {
+      TICKS_DIR: process.env.TICKS_DIR,
+      TICKS_AMS_DIR: process.env.TICKS_AMS_DIR,
+      TICKS_PATH: process.env.TICKS_PATH,
+    };
+    process.env.TICKS_DIR = waterDir;
+    process.env.TICKS_AMS_DIR = join(waterDir, "no-ams");
+    delete process.env.TICKS_PATH;
+    try {
+      assert.equal(PRODUCT_NAME, "USDA farm market prices");
+      assert.equal(
+        isWaterTick({ id: "wd1.rental.common.above_milner", group: "water", source: "Water District 1" }),
+        true,
+      );
+      const loaded = loadTicks();
+      assert.ok(loaded.ticks.some((row) => (row as { id?: string }).id === "cattle-tf-feeder-steer"));
+      assert.ok(!loaded.ticks.some((row) => String((row as { id?: string }).id ?? "").startsWith("wd1.")));
+      assert.ok(!loaded.history.points.some((row) => String((row as { id?: string }).id ?? "").startsWith("wd1.")));
+      const man = buildTicksManifest("https://ticks.bnm.farm/ticks") as {
+        product?: { name?: string };
+        groups?: { id?: string }[];
+        schema?: { tickFields?: { group?: string; unit?: string } };
+      };
+      assert.equal(man.product?.name, "USDA farm market prices");
+      assert.ok(!(man.groups ?? []).some((g) => g.id === "water"), "water group stays out of /ticks manifest");
+      assert.ok(!String(man.schema?.tickFields?.group ?? "").includes("water"));
+      assert.ok(!String(man.schema?.tickFields?.unit ?? "").includes("$/AF"));
+    } finally {
+      for (const [k, v] of Object.entries(prev)) {
+        if (v === undefined) delete process.env[k];
+        else process.env[k] = v;
+      }
+    }
+  }
+
   const liveBoard = join(DEFAULT_TICKS_DIR, "board.json");
   if (existsSync(liveBoard)) {
     await withServer(
@@ -1326,7 +1409,7 @@ async function main(): Promise<void> {
         assert.equal(paid.status, 200);
         const body = (await paid.json()) as ReturnType<typeof loadTicks>;
         const blob = JSON.stringify(body).toLowerCase();
-        for (const marker of ["twin falls", "blackfoot", "ams_3056", "ams_3059", "ibc.id.grain", "wd1.", "hay.ams_3058", "ams.2914"]) {
+        for (const marker of ["twin falls", "blackfoot", "ams_3056", "ams_3059", "ibc.id.grain", "hay.ams_3058", "ams.2914"]) {
           assert.ok(blob.includes(marker), `paid JSON must include ${marker} when cache exists`);
         }
         assert.ok(body.ticks.length + body.history.points.length > 0, "real ticks present");
@@ -1336,10 +1419,13 @@ async function main(): Promise<void> {
         assert.equal(catalogRes.status, 200);
         const tm = (await ticksManifest.json()) as {
           tickCount: number;
+          groups?: { id?: string }[];
           empty?: { id?: string; status?: string; reason?: string; name?: string }[];
         };
         const catalogBody = await catalogRes.json();
         assert.equal(tm.tickCount, body.ticks.length);
+        assert.ok(!(tm.groups ?? []).some((g) => g.id === "water"), "live /ticks manifest drops water");
+        assert.ok(!blob.includes("wd1."), "paid /ticks drops Water District 1");
         const publicCopy = `${JSON.stringify(tm)}${JSON.stringify(catalogBody)}${JSON.stringify(body)}`.toLowerCase();
         assert.ok(!publicCopy.includes("inventing"), "unpaid catalog/manifest and paid body must not include collect-policy prose");
         assert.ok(!publicCopy.includes("we are not inventing"), "must not include first-person collect notes");

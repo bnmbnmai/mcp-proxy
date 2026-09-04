@@ -1,4 +1,4 @@
-# US hay, cattle, and grain — x402 door
+# USDA farm market prices — x402 door (`GET /ticks`)
 
 Thin pay-per-pull HTTP door. Not the Apollo Intelligence catalog. Not listed on x402scan / Bazaar. Public go-live is later.
 

@@ -1,0 +1,16 @@
+          13.89       13.64
+                                                    FEDERAL MILK ORDER CLASS PRICES FOR 2026 (3.5% Butterfat)
+ CLASS         JAN             FEB          MAR         APR           MAY         JUN           JUL          AUG           SEP              OCT             NOV         DEC
+ I (BASE)      16.35           14.70        15.47       18.66         20.15       22.18         21.33        18.76         17.04            NA              NA          NA
+ II            13.92           15.34        17.34       18.82         20.28       22.78         21.89        NA            NA               NA              NA          NA
+ III           14.59           14.94        16.16       16.82         16.92       15.98         15.52        NA            NA               NA              NA          NA
+ IV            13.55           16.29        18.94       20.22         22.32       20.96         18.34        NA            NA               NA              NA          NA
+
+Further information may be found at: https://www.ams.usda.gov/rules-regulations/mmr/dmr
+
+                                                            NATIONAL DAIRY PRODUCTS SALES REPORT
+                                                                U.S. AVERAGES AND TOTAL POUNDS
+
+
+                        WEEK ENDING                      BUTTER         CHEESE – 40 LB BLOCKS                    DRY WHEY                              NDM
+                                               
