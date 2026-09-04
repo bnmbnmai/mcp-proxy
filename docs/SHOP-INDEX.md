@@ -25,7 +25,7 @@ Rows match the live well-known resource list. One-line copy plus bag size is wha
 
 | Path | What you get | Paid JSON | Bag | Price | Free manifest |
 | --- | --- | --- | ---: | --- | --- |
-| `/ticks` | US hay, cattle, and grain ticks (USDA AMS nationwide). Idaho / PNW barns are example geography inside the table, not the SKU. One $0.05 GET returns the entire current table | `ticks[] + history` | 611 ticks | $0.05 | [manifest.json](https://ticks.bnm.farm/manifest.json) |
+| `/ticks` | USDA farm market prices (hay, cattle, grain, dairy, hogs, produce). Idaho / PNW barns are example geography inside the table, not the SKU. Not water. One $0.05 GET returns the entire current table | `ticks[] + history` | 611 ticks | $0.05 | [manifest.json](https://ticks.bnm.farm/manifest.json) |
 | `/import-alerts` | FDA Import Alerts / DWPE firm-product snapshot. One $0.05 GET returns the entire current table | `ticks[]` | 18904 rows / 6709 firms | $0.05 | [import-alerts/manifest.json](https://ticks.bnm.farm/import-alerts/manifest.json) |
 | `/mariners` | USCG D13 / Northwest this week's LNM | `notices[]` | 124 notices | $0.05 | [mariners/manifest.json](https://ticks.bnm.farm/mariners/manifest.json) |
 | `/mariners-d11` | USCG D11 / Southwest this week's LNM | `notices[]` | 198 notices | $0.05 | [mariners-d11/manifest.json](https://ticks.bnm.farm/mariners-d11/manifest.json) |

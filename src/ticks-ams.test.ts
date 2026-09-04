@@ -246,6 +246,15 @@ const classI = dairyWeekly.find((row) => row.id.includes("class_i"));
 assert.ok(classI);
 assert.equal(classI.price, 17.04);
 assert.equal(classI.unit, "$/cwt");
+const weeklyWithTable = parseAmsReportText(
+  `${fx("dairy-weekly-2998.txt")}\n${fx("dairy-weekly-2998-class-table.txt")}`,
+  report("2998"),
+  "https://www.ams.usda.gov/mnreports/dywweeklyreport.pdf",
+);
+assert.equal(weeklyWithTable.find((row) => row.id.includes("class_i"))?.price, 17.04);
+assert.equal(weeklyWithTable.find((row) => row.id.endsWith(".class_ii"))?.price, 21.89);
+assert.equal(weeklyWithTable.find((row) => row.id.endsWith(".class_iii"))?.price, 15.52);
+assert.equal(weeklyWithTable.find((row) => row.id.endsWith(".class_iv"))?.price, 18.34);
 
 const dairyDry = parseAmsReportText(
   fx("dairy-dry-1598.txt"),
@@ -301,6 +310,85 @@ const cutout = hogs.find((row) => row.id.includes("pork.cutout"));
 assert.ok(cutout);
 assert.equal(cutout.price, 95.55);
 assert.ok(!hogs.some((row) => row.price === 0 || Number.isNaN(row.price)), "confidential * is not a tick");
+
+const ndpsr = parseAmsReportText(
+  fx("dairy-ndpsr-2993.txt"),
+  report("2993"),
+  "https://www.ams.usda.gov/mnreports/dywdairyproductssales.pdf",
+);
+assert.equal(parseReportDate(fx("dairy-ndpsr-2993.txt")), "2026-08-29");
+assert.ok(ndpsr.length >= 4, `expected NDPSR weighted prints, got ${ndpsr.length}`);
+assert.ok(ndpsr.every((row) => row.group === "dairy" && row.unit === "$/lb"));
+assert.equal(ndpsr.find((row) => row.id.includes("butter"))?.price, 1.5143);
+assert.equal(ndpsr.find((row) => row.id.includes("cheese_blocks"))?.price, 1.614);
+assert.equal(ndpsr.find((row) => row.id.includes("dry_whey"))?.price, 0.653);
+assert.equal(ndpsr.find((row) => row.id.includes("ndm"))?.price, 1.676);
+
+const retail = parseAmsReportText(
+  fx("dairy-retail-2995.txt"),
+  report("2995"),
+  "https://www.ams.usda.gov/mnreports/dybretail.pdf",
+);
+assert.ok(retail.length >= 8, `expected national grocery dairy ads, got ${retail.length}`);
+assert.ok(retail.every((row) => row.group === "dairy" && row.unit === "$/pkg"));
+const convCheese = retail.find((row) => row.id.includes("conventional") && /shred/i.test(row.id) && /6_8/i.test(row.id));
+assert.ok(convCheese, "conventional 6-8 oz shred");
+assert.equal(convCheese.price, 2.55);
+assert.ok(retail.some((row) => row.id.includes("organic")), "organic advertised dairy stays on the same table");
+
+const ndmWest = parseAmsReportText(
+  fx("dairy-ndm-west-1048.txt"),
+  report("1048"),
+  "https://www.ams.usda.gov/mnreports/ams_1048.pdf",
+);
+assert.ok(ndmWest.length >= 2, `expected West NDM ranges, got ${ndmWest.length}`);
+const ndmLow = ndmWest.find((row) => /low/i.test(row.id) && /medium/i.test(row.id));
+assert.ok(ndmLow);
+assert.equal(ndmLow.lo, 1.79);
+assert.equal(ndmLow.hi, 1.88);
+
+const wheyCentral = parseAmsReportText(
+  fx("dairy-whey-central-1045.txt"),
+  report("1045"),
+  "https://www.ams.usda.gov/mnreports/ams_1045.pdf",
+);
+assert.ok(wheyCentral.some((row) => row.lo === 0.63 && row.hi === 0.7), "prefer Mostly over Price Range");
+assert.ok(!wheyCentral.some((row) => row.lo === 0.62 && row.hi === 0.73), "Price Range is not the print when Mostly exists");
+
+const casein = parseAmsReportText(
+  fx("dairy-casein-1051.txt"),
+  report("1051"),
+  "https://www.ams.usda.gov/mnreports/ams_1051.pdf",
+);
+assert.equal(casein.find((row) => /acid/i.test(row.id))?.price, 4.75);
+assert.equal(casein.find((row) => /rennet/i.test(row.id))?.lo, 4.4);
+
+const lactose = parseAmsReportText(
+  fx("dairy-lactose-1052.txt"),
+  report("1052"),
+  "https://www.ams.usda.gov/mnreports/ams_1052.pdf",
+);
+assert.ok(lactose.some((row) => row.lo === 0.62 && row.hi === 0.72));
+
+const feederPigs = parseAmsReportText(
+  fx("hog-feeder-2810.txt"),
+  report("2810"),
+  "https://www.ams.usda.gov/mnreports/ams_2810.pdf",
+);
+assert.ok(feederPigs.length >= 5, `expected feeder-pig composites, got ${feederPigs.length}`);
+assert.ok(feederPigs.every((row) => row.group === "hogs" && row.unit === "$/head"));
+assert.equal(feederPigs.find((row) => row.id.endsWith("early_weaned_10_12lb.cash"))?.price, 43.37);
+assert.equal(feederPigs.find((row) => row.id.endsWith("feeder_40lb.cash"))?.price, 59.44);
+assert.ok(!feederPigs.some((row) => /barn|auction/i.test(row.id)), "no sale-barn mill on feeder-pig report");
+
+const dairySteers = parseAmsReportText(
+  fx("cattle-colorado-weekly-1907.txt"),
+  report("1907"),
+  "https://www.ams.usda.gov/mnreports/ams_1907.pdf",
+);
+assert.ok(dairySteers.length >= 2, `expected CO dairy-steer prints, got ${dairySteers.length}`);
+assert.ok(dairySteers.every((row) => row.id.includes("dairy-steer") || row.id.includes("dairy-heifer")));
+assert.equal(dairySteers.find((row) => row.id.includes("419lb"))?.price, 541.93);
 
 const orgGrain = parseAmsReportText(
   fx("organic-grain-3802.txt"),
@@ -477,11 +565,15 @@ assert.equal(AMS_LEFTOVER_REPORTS.filter((r) => r.kind === "se-barn").length, 5)
   assert.ok(folded.sources.includes("AMS_1778 Montana Weekly Cattle Auction Summary"));
 }
 assert.ok(
-  ["2998", "1598", "1102", "2997", "2872", "3802", "2314", "2315", "2306", "2290"].every((s) => slugs.includes(s)),
+  ["2998", "2993", "2995", "1598", "1048", "1045", "1051", "1052", "1102", "2997", "2872", "2810", "3802", "2314", "2315", "2306", "2290"].every((s) => slugs.includes(s)),
   "official AMS dairy / hog / organic grain / national terminal-market slugs",
 );
+assert.ok(!slugs.includes("3096"), "WAF-empty Eastern Cornbelt Direct Feeder is dropped");
+assert.ok(!slugs.includes("3458") && !slugs.includes("2498"), "LMR hog/pork PDFs stay off the allowlist");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2998")?.group, "dairy");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2993")?.group, "dairy");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2872")?.group, "hogs");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2810")?.group, "hogs");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2314")?.group, "produce");
 assert.ok(AMS_NATIONAL_REPORTS.every((r) => !["3056", "3057", "3058", "3059", "2914"].includes(r.slug)));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "marsapi"));
@@ -497,6 +589,9 @@ assert.ok(SKIPPED_SOURCES.some((s) => s.id === "new-x402-door"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "ams_2911_marsapi"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "lmr-hog-pdfs"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "cme-cash-trading-doors"));
+assert.ok(SKIPPED_SOURCES.some((s) => s.id === "ams_3096_waf"));
+assert.ok(SKIPPED_SOURCES.some((s) => s.id === "dairy-waf-empty"));
+assert.ok(SKIPPED_SOURCES.some((s) => s.id === "se-swine-auction-barns"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "sheep-goats"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "poultry-eggs"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "cotton-rice"));
@@ -506,7 +601,7 @@ assert.ok(!slugs.includes("mx_fv010") && !slugs.includes("mx_fv020"), "discontin
 assert.ok(!slugs.includes("2513") && !slugs.includes("2675"), "LMR hog PDFs are not catalog slugs");
 assert.ok(slugs.includes("bh_fv020") && slugs.includes("na_fv020"), "Boston/Philadelphia terminal vegetables");
 assert.equal(PRODUCT_ID, "idaho-hay-feeder-ticks");
-assert.equal(PRODUCT_NAME, "US hay, cattle, and grain ticks");
+assert.equal(PRODUCT_NAME, "USDA farm market prices");
 
 mkdirSync(join(dir, "empty"), { recursive: true });
 assert.equal(mergeAmsNationalTicks(idaho, null).ticks.length, 1);
@@ -645,10 +740,18 @@ console.log(
     hayArthurAuction: hayAuction.length,
     cattleMontanaAuction: cattleAuction.length,
     dairyWeekly: dairyWeekly.length,
+    dairyNdpsr: ndpsr.length,
+    dairyRetailAds: retail.length,
+    dairyNdmWest: ndmWest.length,
+    dairyWheyCentral: wheyCentral.length,
+    dairyCasein: casein.length,
+    dairyLactose: lactose.length,
     dairyDry: dairyDry.length,
     dairyFluidWest: dairyFluid.length,
     dairyOrganicAds: dairyOrg.length,
     hogsSummary: hogs.length,
+    feederPigs: feederPigs.length,
+    dairySteers1907: dairySteers.length,
     organicGrain: orgGrain.length,
     nyTerminalFruit: nyFruit.length,
     hayCaliforniaOrganic: hayCa.filter((row) => row.id.includes("organic")).length,

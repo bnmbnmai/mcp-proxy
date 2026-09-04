@@ -7,6 +7,8 @@
  * AMS_2911 National Wool Review is public-domain 17 USC 105; parse the official PDF only.
  * AMS_2872 National Daily Hog and Pork Summary is the official AMS public PDF, not an
  * LMR dashboard / datamart wrap. Individual LM_HG* / LM_PK* PDFs stay skipped.
+ * AMS_2810 National Direct Feeder Pig is the official AMS voluntary weekly print.
+ * Water District 1 rental-pool $/AF is not an AMS source and stays off this table.
  *
  * Prefer live mnreports over NAL/esmis archives. Collect used to unshift ESMIS first and
  * keep the first parseable PDF — that left many Direct Hay/Cattle/Grain rows on Sept 2025
@@ -88,7 +90,6 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "3097", group: "cattle", region: "kansas", title: "Kansas Direct Feeder Cattle", esmisPublication: "kansas-direct-cattle-report" },
   { slug: "3098", group: "cattle", region: "oklahoma", title: "Oklahoma Direct Feeder Cattle", esmisPublication: "oklahoma-direct-cattle-report" },
   { slug: "2906", group: "cattle", region: "colorado", title: "Colorado Direct Cattle", esmisPublication: "colorado-direct-cattle-report" },
-  { slug: "3096", group: "cattle", region: "eastern_cornbelt", title: "Eastern Cornbelt Direct Feeder Cattle", esmisPublication: "" },
   { slug: "3455", group: "cattle", region: "iowa", title: "Iowa Direct Feeder Cattle", esmisPublication: "iowa-direct-cattle-report" },
   { slug: "2808", group: "cattle", region: "missouri", title: "Missouri Direct Feeder Cattle", esmisPublication: "" },
   { slug: "2770", group: "cattle", region: "montana", title: "Montana Direct Feeder Cattle", esmisPublication: "montana-direct-cattle-report" },
@@ -157,12 +158,19 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "3802", group: "grain", region: "national_organic", title: "National Organic Grain and Feedstuffs", esmisPublication: "national-organic-grain-and-feedstuffs", pdfNames: ["lsbnof"] },
   { slug: "2911", group: "wool", region: "national", title: "National Wool Review", esmisPublication: "national-wool-review-fri" },
   { slug: "2998", group: "dairy", region: "national", title: "Dairy Market News Weekly Report", esmisPublication: "dairy-market-news-weekly-report", pdfNames: ["dywweeklyreport"] },
+  { slug: "2993", group: "dairy", region: "national", title: "National Dairy Products Sales Report", esmisPublication: "", pdfNames: ["dywdairyproductssales"] },
+  { slug: "2995", group: "dairy", region: "national_retail", title: "Grocery Store Dairy Feature", esmisPublication: "", pdfNames: ["dybretail"] },
   { slug: "1598", group: "dairy", region: "national", title: "Dry Products Price Summary", esmisPublication: "" },
+  { slug: "1045", group: "dairy", region: "central", title: "Dry Whey Central", esmisPublication: "" },
+  { slug: "1048", group: "dairy", region: "west", title: "Nonfat Dry Milk West", esmisPublication: "" },
+  { slug: "1051", group: "dairy", region: "national", title: "Casein US", esmisPublication: "" },
+  { slug: "1052", group: "dairy", region: "central_west", title: "Lactose Central and West", esmisPublication: "" },
   { slug: "1101", group: "dairy", region: "east", title: "Fluid Milk and Cream East", esmisPublication: "" },
   { slug: "1100", group: "dairy", region: "central", title: "Fluid Milk and Cream Central", esmisPublication: "" },
   { slug: "1102", group: "dairy", region: "west", title: "Fluid Milk and Cream West", esmisPublication: "" },
   { slug: "2997", group: "dairy", region: "national_organic", title: "Organic Dairy Market News", esmisPublication: "", pdfNames: ["dybdairyorganic"] },
   { slug: "2872", group: "hogs", region: "national", title: "National Daily Hog and Pork Summary", esmisPublication: "national-daily-hog-pork-summary-report", pdfNames: ["lsddhps"] },
+  { slug: "2810", group: "hogs", region: "national", title: "National Direct Feeder Pig", esmisPublication: "" },
   { slug: "2314", group: "produce", region: "new_york", title: "New York Terminal Market Fruit", esmisPublication: "", pdfNames: ["nx_fv010"] },
   { slug: "2315", group: "produce", region: "new_york", title: "New York Terminal Market Vegetables", esmisPublication: "", pdfNames: ["nx_fv020"] },
   { slug: "2290", group: "produce", region: "chicago", title: "Chicago Terminal Market Fruit", esmisPublication: "", pdfNames: ["hx_fv010"] },
@@ -200,11 +208,13 @@ export const SKIPPED_SOURCES = [
   { id: "gis-echo-family-herd", why: "GIS wraps, EPA ECHO, and the sold family herd ledger are not /ticks rows" },
   { id: "new-x402-door", why: "no per-barn / per-state / per-region SKU; extra official rows stay on GET /ticks" },
   { id: "ams_2911_marsapi", why: "marsapi /services/v1.2/reports/2911 returns HTTP 403 without a key — parse the official mnreports PDF only" },
-  { id: "lmr-hog-pdfs", why: "LM_HG203/206/210/212, LM_PK602, LM_HG201 are LMR licensed tables; parse official AMS_2872 / lsddhps summary PDF only — do not wrap LMR dashboards" },
+  { id: "lmr-hog-pdfs", why: "LM_HG203/206/210/212, LM_PK602, LM_HG201, AMS_3458/2498/2510/2675 are LMR licensed tables; parse official AMS_2872 / lsddhps summary PDF and AMS_2810 feeder-pig voluntary print only — do not wrap LMR dashboards" },
   { id: "cme-cash-trading-doors", why: "dedicated CME cash slugs 1599-1602 wrap CME; weekly AMS_2998 already prints Dairy Market News weekly averages from that cash table" },
-  { id: "dairy-regional-narrative", why: "AMS_1090/1089/1091 butter and AMS_1084/1083/1085 cheese regional PDFs printed overages/narrative this week, not dollar prints — skip rather than invent" },
+  { id: "dairy-regional-narrative", why: "AMS_1090/1089/1091 butter and AMS_1084/1083/1085/1092 cheese regional PDFs printed overages/narrative this week, not dollar prints — skip rather than invent" },
   { id: "dairy-gdt-farmers-markets", why: "GDT 1604, farmers-market dairy, and international DMN PDFs are a leftover dairy slice; not this pass" },
-  { id: "se-swine-auction-barns", why: "individual AMS swine-auction barn PDFs leftover — same door later; national 2872 summary is this hog slice" },
+  { id: "dairy-waf-empty", why: "AMS_1043/1044/1046/1047/1049/1050/1053 regional dry slugs 403 WAF on this VM — skip rather than leave silent holes" },
+  { id: "ams_3096_waf", why: "AMS_3096 Eastern Cornbelt Direct Feeder Cattle mnreports 403 WAF; drop rather than leave a silent empty" },
+  { id: "se-swine-auction-barns", why: "individual AMS swine-auction barn PDFs leftover — not a national sale-barn mill; AMS_2872 summary + AMS_2810 feeder pig are this hog slice" },
   { id: "sheep-goats", why: "official AMS sheep/lamb/goat PDFs are a leftover slice; LMR boxed-lamb LM_XL* skipped; parser stretch is not small" },
   { id: "poultry-eggs", why: "official AMS broiler/egg PDFs leftover — different LPGMN family than hog summary / cattle auctions" },
   { id: "cotton-rice", why: "official AMS cotton and rice PDFs leftover — not in the grain POS / organic-feedstuffs family this door already parses" },
@@ -307,6 +317,17 @@ const MONTHS: Record<string, string> = {
 };
 
 export function parseReportDate(text: string): string | null {
+  const weeksEnding = text.match(
+    /Weeks Ending:\s+\d{1,2}\/\d{1,2}\/\d{4}\s*[-–]\s*(\d{1,2}\/\d{1,2}\/\d{4})/i,
+  );
+  if (weeksEnding) return parseMdY(weeksEnding[1]);
+  const endingNamed = text.match(
+    /week ending\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),\s+(\d{4})/i,
+  );
+  if (endingNamed) {
+    const mon = MONTHS[endingNamed[1].toLowerCase()];
+    if (mon) return `${endingNamed[3]}-${mon}-${endingNamed[2].padStart(2, "0")}`;
+  }
   const ending = text.match(/week ending\s+(\d{1,2}\/\d{1,2}\/\d{4})/i);
   if (ending) return parseMdY(ending[1]);
   const livestockThru = text.match(
@@ -579,6 +600,15 @@ export function parseCattleAuctionReport(text: string, report: AmsReport, source
       grade = "";
       continue;
     }
+    const dairyHdr = line.match(
+      /^DAIRY (STEERS|HEIFERS)\s+-\s+(Medium and Large [12](?:-[23])?|Large [123](?:-[23])?)\s+\(Per Cwt/i,
+    );
+    if (dairyHdr) {
+      sex = `DAIRY ${dairyHdr[1]}`;
+      grade = dairyHdr[2];
+      inFeeder = true;
+      continue;
+    }
     const hdr = line.match(AUCTION_CATTLE_HDR);
     if (hdr) {
       sex = hdr[1];
@@ -600,7 +630,13 @@ export function parseCattleAuctionReport(text: string, report: AmsReport, source
     const avg = Number(row[7]);
     if (!Number.isFinite(avg) || avg < 20 || avg > 900) continue;
     if (!Number.isFinite(wt) || wt < 250 || wt > 1050) continue;
-    const sexTok = /heifer/i.test(sex) ? "feeder-heifer" : "feeder-steer";
+    const sexTok = /dairy/i.test(sex)
+      ? /heifer/i.test(sex)
+        ? "dairy-heifer"
+        : "dairy-steer"
+      : /heifer/i.test(sex)
+        ? "feeder-heifer"
+        : "feeder-steer";
     const gradeTok = /2-3/.test(grade)
       ? "ml23"
       : /1-2/.test(grade)
@@ -617,7 +653,13 @@ export function parseCattleAuctionReport(text: string, report: AmsReport, source
     out.push({
       id,
       group: "cattle",
-      commodity: /heifer/i.test(sex) ? "Heifers" : "Steers",
+      commodity: /dairy/i.test(sex)
+        ? /heifer/i.test(sex)
+          ? "Dairy heifers"
+          : "Dairy steers"
+        : /heifer/i.test(sex)
+          ? "Heifers"
+          : "Steers",
       label: `${report.title} ${sex} ${grade} ${wt} lb`,
       market: report.title,
       classGrade: `USDA ${grade}, ${wt} lb, ${head} head${note ? `, ${note}` : ""}`,
@@ -1003,7 +1045,51 @@ export function parseDairyWeeklyReport(text: string, report: AmsReport, sourceUr
       price: roundMoney(Number(classI[2])),
     });
   }
+  const fmmo = dairyFmmoClassPrices(text);
+  const fmmoYear = text.match(/FEDERAL MILK ORDER CLASS PRICES FOR\s+(\d{4})/i)?.[1] ?? asOf.slice(0, 4);
+  const fmmoRows: Array<[string, string, string]> = [
+    ["class_i", "Class I milk", "base"],
+    ["class_ii", "Class II milk", ""],
+    ["class_iii", "Class III milk", ""],
+    ["class_iv", "Class IV milk", ""],
+  ];
+  for (const [key, commodity, suffix] of fmmoRows) {
+    const px = fmmo[key];
+    if (px == null) continue;
+    const idSuffix = suffix ? `${key}.${suffix}` : key;
+    pushTick(out, report, sourceUrl, asOf, {
+      id: `dairy.ams_${report.slug}.national.${idSuffix}`,
+      group: "dairy",
+      commodity,
+      label: `AMS FMMO ${commodity} ${fmmoYear}`,
+      market: report.title,
+      classGrade: `FMMO ${commodity}, ${fmmoYear}, $/cwt`,
+      unit: "$/cwt",
+      price: roundMoney(px),
+    });
+  }
   return dedupeTicks(out);
+}
+
+function dairyFmmoClassPrices(text: string): Record<string, number> {
+  const block =
+    text.match(/FEDERAL MILK ORDER CLASS PRICES[\s\S]{0,900}?(?:Further information|NATIONAL DAIRY PRODUCTS)/i)?.[0] ??
+    "";
+  const out: Record<string, number> = {};
+  const rows: Array<[string, RegExp]> = [
+    ["class_i", /^\s*I\s*\(BASE\)\s+(.+)$/im],
+    ["class_ii", /^\s*II\s+(.+)$/im],
+    ["class_iii", /^\s*III\s+(.+)$/im],
+    ["class_iv", /^\s*IV\s+(.+)$/im],
+  ];
+  for (const [key, re] of rows) {
+    const m = block.match(re);
+    if (!m) continue;
+    const nums = [...m[1].matchAll(/(\d+\.\d{2})/g)].map((x) => Number(x[1]));
+    const last = nums.at(-1);
+    if (last != null && last >= 5 && last <= 40) out[key] = last;
+  }
+  return out;
 }
 
 export function parseDairyDrySummary(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
@@ -1090,6 +1176,201 @@ export function parseDairyOrganicAds(text: string, report: AmsReport, sourceUrl:
       classGrade: "Weighted average advertised price, organic, this week",
       unit: "$/pkg",
       price: roundMoney(price),
+    });
+  }
+  return dedupeTicks(out);
+}
+
+export function parseDairyNdpsr(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const asOf = parseReportDate(text);
+  if (!asOf) return [];
+  const out: AmsTick[] = [];
+  const rows: Array<[RegExp, string, string, string]> = [
+    [/Butter Prices and Sales[\s\S]{0,500}?Weighted Price\s+((?:\*?[\d.]+(?:\s+|\s*$))+)/i, "butter", "Butter", "NDPSR US weighted butter"],
+    [/40-Pound Block Cheddar Cheese Prices and Sales[\s\S]{0,500}?Weighted Price\s+((?:\*?[\d.]+(?:\s+|\s*$))+)/i, "cheese_blocks", "Cheddar 40# blocks", "NDPSR US weighted 40# cheddar"],
+    [/500-Pound Barrel Cheddar Cheese Prices[\s\S]{0,500}?Weighted Price\s+((?:\*?[\d.]+(?:\s+|\s*$))+)/i, "cheese_barrels", "Cheddar 500# barrels", "NDPSR US weighted 500# cheddar"],
+    [/Dry Whey Prices and Sales[\s\S]{0,500}?Weighted Price\s+((?:\*?[\d.]+(?:\s+|\s*$))+)/i, "dry_whey", "Dry whey", "NDPSR US weighted dry whey"],
+    [/Nonfat Dry Milk Prices and Sales[\s\S]{0,500}?Weighted Price\s+((?:\*?[\d.]+(?:\s+|\s*$))+)/i, "ndm", "Nonfat dry milk", "NDPSR US weighted NDM"],
+  ];
+  for (const [re, tok, commodity, label] of rows) {
+    const m = text.match(re);
+    if (!m) continue;
+    const nums = [...m[1].matchAll(/\*?(\d+\.\d{2,4})/g)].map((x) => Number(x[1]));
+    const px = nums.at(-1);
+    if (px == null || px < 0.2 || px > 8) continue;
+    pushTick(out, report, sourceUrl, asOf, {
+      id: `dairy.ams_${report.slug}.national.${tok}.weighted`,
+      group: "dairy",
+      commodity,
+      label,
+      market: report.title,
+      classGrade: `NDPSR US weighted average, week ending ${asOf}, $/lb`,
+      unit: "$/lb",
+      price: roundMoney(px),
+    });
+  }
+  return dedupeTicks(out);
+}
+
+export function parseDairyRetailAds(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const asOf = parseReportDate(text);
+  if (!asOf) return [];
+  const out: AmsTick[] = [];
+  const sections: Array<[string, string]> = [
+    ["NATIONAL -- CONVENTIONAL DAIRY PRODUCTS", "conventional"],
+    ["NATIONAL -- ORGANIC DAIRY PRODUCTS", "organic"],
+  ];
+  const packRe =
+    /((?:\d+-?\d*\s*(?:oz|lb)|Half Gallon|Gallon)(?:\s+(?:Block|Shred|Sliced))?)\s+(\s*)(\d+)\s+(\d+\.\d{2})\b/i;
+  for (const [header, channel] of sections) {
+    const start = text.indexOf(header);
+    if (start < 0) continue;
+    const rest = text.slice(start);
+    const next = rest.search(/\n\s*(REGIONAL --|NATIONAL -- ORGANIC|1--Dairy Market News)/i);
+    const block = next > 0 ? rest.slice(0, next) : rest.slice(0, 8000);
+    for (const raw of block.split(/\r?\n/)) {
+      if (!/^(Butter|Cheese|Cottage Cheese|Cream Cheese|Flavored Milk|Ice Cream|Milk|Sour Cream|Yogurt)\b/i.test(raw.trim())) {
+        continue;
+      }
+      const m = raw.match(packRe);
+      if (!m) continue;
+      // Collapsed last-week columns sit far right of pack size when this period is empty.
+      if ((m[2] ?? "").length > 28) continue;
+      const stores = Number(m[3]);
+      const price = Number(m[4]);
+      if (!Number.isFinite(price) || price < 0.4 || price > 20) continue;
+      if (!Number.isFinite(stores) || stores < 1) continue;
+      const name = raw
+        .slice(0, raw.indexOf(m[1]!))
+        .replace(/\s+/g, " ")
+        .trim();
+      const commodity = `${name} ${m[1]}`.replace(/\s+/g, " ").trim();
+      pushTick(out, report, sourceUrl, asOf, {
+        id: ["dairy", `ams_${report.slug}`, channel, token(commodity)].join("."),
+        group: "dairy",
+        commodity,
+        label: `National ${channel} advertised ${commodity}`,
+        market: report.title,
+        classGrade: `Weighted average advertised price, ${channel}, ${stores} stores`,
+        unit: "$/pkg",
+        price: roundMoney(price),
+      });
+    }
+  }
+  return dedupeTicks(out);
+}
+
+export function parseDairyRegionalDry(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const asOf = parseReportDate(text);
+  if (!asOf) return [];
+  const found: Array<{ kind: string; grade: string; lo: number; hi: number }> = [];
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.replace(/\s+/g, " ").trim();
+    const m = line.match(
+      /^(?:(Mostly Range|Price Range)\s+-\s+([^;]+);\s*\$\/LB:|([A-Za-z][A-Za-z /-]+);\s*Price Range\s+-\s*\$\/LB:)\s*(\d*\.\d{2,4})\s*-\s*(\d*\.\d{2,4})/i,
+    );
+    if (!m) continue;
+    const lo = Number(m[4]);
+    const hi = Number(m[5]);
+    if (!Number.isFinite(lo) || !Number.isFinite(hi) || lo < 0.1 || hi > 20) continue;
+    found.push({
+      kind: (m[1] || "Price Range").toLowerCase(),
+      grade: (m[2] || m[3] || "quoted").trim(),
+      lo,
+      hi,
+    });
+  }
+  const mostly = new Set(found.filter((r) => r.kind.startsWith("mostly")).map((r) => token(r.grade)));
+  const out: AmsTick[] = [];
+  for (const row of found) {
+    const tok = token(row.grade);
+    if (!row.kind.startsWith("mostly") && mostly.has(tok)) continue;
+    pushTick(out, report, sourceUrl, asOf, {
+      id: ["dairy", `ams_${report.slug}`, token(report.region), tok].join("."),
+      group: "dairy",
+      commodity: report.title,
+      label: `${report.title} ${row.grade}`,
+      market: report.title,
+      classGrade: `${row.kind} ${row.grade}, FOB $/lb`,
+      unit: "$/lb",
+      price: roundMoney((row.lo + row.hi) / 2),
+      lo: row.lo,
+      hi: row.hi,
+    });
+  }
+  return dedupeTicks(out);
+}
+
+export function parseFeederPigReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const asOf = parseReportDate(text);
+  if (!asOf) return [];
+  const out: AmsTick[] = [];
+  let cls = "";
+  let sale = "";
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.replace(/\s+/g, " ").trim();
+    if (!line) continue;
+    if (/^PIGS EARLY WEANED\b/i.test(line)) {
+      cls = "early_weaned_10_12lb";
+      sale = "";
+      continue;
+    }
+    if (/^PIGS - 40 lb\b/i.test(line)) {
+      cls = "feeder_40lb";
+      sale = "";
+      continue;
+    }
+    if (/^Cash Current\b/i.test(line)) {
+      sale = "cash";
+      continue;
+    }
+    if (/^Formula Current\b/i.test(line)) {
+      sale = "formula";
+      continue;
+    }
+    const composite = line.match(
+      /^Total Composite\s+([\d,]+)\s+(\d+\.\d{2})\s*-\s*(\d+\.\d{2})\s+(\d+\.\d{2})\b/i,
+    );
+    const onePx = line.match(/^Total Composite\s+([\d,]+)\s+(\d+\.\d{2})\s+(\d+\.\d{2})\b/i);
+    const picked = composite
+      ? { head: composite[1], lo: Number(composite[2]), hi: Number(composite[3]), avg: Number(composite[4]) }
+      : onePx
+        ? { head: onePx[1], lo: Number(onePx[2]), hi: Number(onePx[2]), avg: Number(onePx[3]) }
+        : null;
+    if (picked && cls && sale) {
+      const avg = picked.avg;
+      if (avg >= 5 && avg <= 200) {
+        pushTick(out, report, sourceUrl, asOf, {
+          id: `hogs.ams_${report.slug}.national.${cls}.${sale}`,
+          group: "hogs",
+          commodity: cls.startsWith("early") ? "Early-weaned pigs 10-12 lb" : "Feeder pigs 40 lb",
+          label: `National ${sale} ${cls.replace(/_/g, " ")}`,
+          market: report.title,
+          classGrade: `${sale} current, ${picked.head} head, delivered, $/head`,
+          unit: "$/head",
+          price: roundMoney(avg),
+          lo: picked.lo,
+          hi: picked.hi,
+        });
+      }
+      continue;
+    }
+    const all = line.match(
+      /^Pigs (Early Weaned - All|-\s*All)\s+([\d,]+)\s+(\d+\.\d{2})\b/i,
+    );
+    if (!all) continue;
+    const avg = Number(all[3]);
+    if (avg < 5 || avg > 200) continue;
+    const tok = /early/i.test(all[1]) ? "early_weaned_all" : "feeder_40lb_all";
+    pushTick(out, report, sourceUrl, asOf, {
+      id: `hogs.ams_${report.slug}.national.${tok}`,
+      group: "hogs",
+      commodity: /early/i.test(all[1]) ? "Early-weaned pigs" : "Feeder pigs 40 lb",
+      label: `National composite ${tok.replace(/_/g, " ")}`,
+      market: report.title,
+      classGrade: `Formula and cash composite, ${all[2]} head, $/head`,
+      unit: "$/head",
+      price: roundMoney(avg),
     });
   }
   return dedupeTicks(out);
@@ -1347,11 +1628,19 @@ export function parseAmsReportText(text: string, report: AmsReport, sourceUrl: s
   if (report.group === "wool") return parseWoolReport(text, report, sourceUrl);
   if (report.group === "dairy") {
     if (report.slug === "2998") return parseDairyWeeklyReport(text, report, sourceUrl);
+    if (report.slug === "2993") return parseDairyNdpsr(text, report, sourceUrl);
+    if (report.slug === "2995") return parseDairyRetailAds(text, report, sourceUrl);
     if (report.slug === "1598") return parseDairyDrySummary(text, report, sourceUrl);
     if (report.slug === "2997") return parseDairyOrganicAds(text, report, sourceUrl);
+    if (["1045", "1048", "1051", "1052"].includes(report.slug)) {
+      return parseDairyRegionalDry(text, report, sourceUrl);
+    }
     return parseDairyFluidReport(text, report, sourceUrl);
   }
-  if (report.group === "hogs") return parseHogSummary(text, report, sourceUrl);
+  if (report.group === "hogs") {
+    if (report.slug === "2810") return parseFeederPigReport(text, report, sourceUrl);
+    return parseHogSummary(text, report, sourceUrl);
+  }
   if (report.group === "produce") return parseProduceTerminal(text, report, sourceUrl);
   if (report.slug === "3802" || /organic grain/i.test(report.title)) {
     return parseOrganicGrainReport(text, report, sourceUrl);
