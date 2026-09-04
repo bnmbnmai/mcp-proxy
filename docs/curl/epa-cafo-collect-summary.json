@@ -1,0 +1,80 @@
+{
+  "source": "https://yosemite.epa.gov/oa/rhc/epaadmin.nsf",
+  "seed": "https://www.epa.gov/system/files/documents/2026-07/apache-feedyard_nmg010040_cwa0620261792_07142026.pdf",
+  "liveManifest": "https://ticks.bnm.farm/epa-cafo/manifest.json",
+  "fetchedAt": "2026-09-04T22:49:41.706Z",
+  "asOf": "2026-08-28",
+  "status": "ok",
+  "cardCount": 7,
+  "listedCount": 100,
+  "fetchedPdfs": 12,
+  "skippedNoText": 5,
+  "reused": 0,
+  "addedThisRun": 7,
+  "limit": 8,
+  "maxFetch": 12,
+  "note": "Bodies are gitignored (data/epa-cafo/). This file is id/institution/docket/date only. Text is official pdftotext, not invented. This collect ran on a Cursor cloud VM. Live GET https://ticks.bnm.farm/epa-cafo stays HTTP 404 until media-box checks out cursor/epa-cafo-door-74df, collects into $HOME/projects/mcp-proxy/data/epa-cafo, and restarts only idaho-ticks-x402.service.",
+  "ids": [
+    "CWA-03-2026-0073",
+    "CWA-07-2026-0227",
+    "CWA-03-2026-0078",
+    "CWA-10-2025-0023",
+    "CWA-06-2026-1792",
+    "MM-09-2026-0093",
+    "CWA-07-2026-0005"
+  ],
+  "CWA-06-2026-1792": {
+    "id": "CWA-06-2026-1792",
+    "institution": "Apache Feedyard",
+    "docket": "CWA-06-2026-1792",
+    "date": "2026-07-14",
+    "title": "Complaint, Consent Agreement and Final Order",
+    "statute": "CWA",
+    "bodyChars": 25671,
+    "sourceUrl": "https://www.epa.gov/system/files/documents/2026-07/apache-feedyard_nmg010040_cwa0620261792_07142026.pdf"
+  },
+  "cards": [
+    {
+      "id": "CWA-03-2026-0073",
+      "institution": "City of Scranton",
+      "date": "2026-08-28",
+      "title": "Consent Agreement and Final Order"
+    },
+    {
+      "id": "CWA-07-2026-0227",
+      "institution": "Michels Construction, Inc.",
+      "date": "2026-08-24",
+      "title": "Complaint, Consent Agreement and Final Order"
+    },
+    {
+      "id": "CWA-03-2026-0078",
+      "institution": "Kokosing Construction Company Inc",
+      "date": "2026-08-20",
+      "title": "Consent Agreement and Final Order"
+    },
+    {
+      "id": "CWA-10-2025-0023",
+      "institution": "Jackson & Son Distributors, Inc. d/b/a Jackson & Son Oil",
+      "date": "2026-08-11",
+      "title": "Consent Agreement and Final Order"
+    },
+    {
+      "id": "CWA-06-2026-1792",
+      "institution": "Apache Feedyard",
+      "date": "2026-07-14",
+      "title": "Complaint, Consent Agreement and Final Order"
+    },
+    {
+      "id": "MM-09-2026-0093",
+      "institution": "Camino Real Foods, Inc.",
+      "date": "2026-05-29",
+      "title": "Consent Agreement and Final Order"
+    },
+    {
+      "id": "CWA-07-2026-0005",
+      "institution": "D&S Cattle Company, LLC",
+      "date": "2026-01-01",
+      "title": "Complaint and Consent Agreement / Final Order"
+    }
+  ]
+}

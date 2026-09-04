@@ -58,7 +58,7 @@ Paste after the FSIS humane-handling card. Product + bag size + price only.
 <article class="card">
   <p class="kicker">Product</p>
   <h2 class="product">EPA CAFO / ESA letters</h2>
-  <p class="facts" id="epa-cafo-facts">EPA Part 22 CAFO / ESA administrative penalty letter text. Live: <strong>8</strong> official texts. $0.02 one text / $0.05 newest 10.</p>
+  <p class="facts" id="epa-cafo-facts">EPA Part 22 CAFO / ESA administrative penalty letter text. Live: <strong>7</strong> official texts. $0.02 one text / $0.05 newest 10.</p>
   <div class="meta" aria-label="EPA CAFO letter payment">
     <span class="pill">Base</span>
     <span class="pill">USDC</span>
