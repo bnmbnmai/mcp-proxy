@@ -1,0 +1,118 @@
+{
+  "hostname": "pop-os.lan",
+  "whoami": "apollo",
+  "mcpProxyPath": "/home/apollo/projects/mcp-proxy",
+  "mcpProxyResolved": "/home/apollo/projects/mcp-proxy",
+  "branch": "cursor/epa-cafo-door-74df",
+  "sha": "9db0c79e40a7d9b7caea9666dfd7bef3a157531b",
+  "unit": "idaho-ticks-x402.service",
+  "unpaidPage": {
+    "http": 402,
+    "maxAmountRequired": "50000",
+    "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+    "resource": "/epa-cafo",
+    "loopbackHttp": 402,
+    "loopbackAmount": "50000"
+  },
+  "unpaidId": {
+    "http": 402,
+    "maxAmountRequired": "20000",
+    "loopbackHttp": 402,
+    "loopbackAmount": "20000"
+  },
+  "manifest": {
+    "http": 200,
+    "cardCount": 16,
+    "asOf": "2026-08-28",
+    "ids": [
+      "CWA-03-2026-0073",
+      "CWA-03-2026-0072",
+      "CWA-07-2026-0227",
+      "CWA-03-2026-0078",
+      "CWA-05-2026-0018",
+      "CWA-10-2025-0023",
+      "CWA-08-2026-0009",
+      "CWA-03-2026-0115",
+      "CWA-05-2026-0008",
+      "CWA-05-2026-0017",
+      "CWA-06-2026-1792",
+      "CWA-04-2024-1011(B)",
+      "MM-09-2026-0093",
+      "CWA-05-2026-0015",
+      "CWA-05-2026-0011",
+      "CWA-07-2026-0005"
+    ],
+    "institutions": [
+      "City of Scranton",
+      "Denton Scrap Metal Recycling, LLC",
+      "Michels Construction, Inc.",
+      "Kokosing Construction Company Inc",
+      "Tricor Industrial",
+      "Jackson & Son Distributors, Inc. d/b/a Jackson & Son Oil",
+      "CF&I Steel, L.P., dba Rocky Mountain Steel Mill",
+      "Real Alloy Recycling, LLC",
+      "Terminal Ready-Mix, Inc.",
+      "Hershey Chocolate and Confectionery, LLC",
+      "Apache Feedyard",
+      "Concrete Supply Company, LLC Mauldin Simpsonville, SC",
+      "Camino Real Foods, Inc.",
+      "Kinder Morgan Terminals and Milwaukee Bulk Terminals",
+      "City of Brooklyn, Minnesota",
+      "D&S Cattle Company, LLC"
+    ],
+    "hasBodyField": false,
+    "hasLetterBody": false,
+    "seedPresent": true
+  },
+  "wellKnown": {
+    "http": 200,
+    "resourceCount": 47,
+    "listsEpaCafo": true,
+    "epaCafoUrl": "https://ticks.bnm.farm/epa-cafo"
+  },
+  "shop": {
+    "http": 200,
+    "listsEpaCafo": true,
+    "productCount": 47
+  },
+  "keptDoors": {
+    "/fsis-humane": {
+      "http": 402
+    },
+    "/ticks": {
+      "http": 402,
+      "maxAmountRequired": "50000"
+    }
+  },
+  "lander": {
+    "http": 200,
+    "hasEpaCafoCard": true,
+    "hasFsisCard": true,
+    "bag16": true,
+    "price": true,
+    "url": "https://bnm.farm/"
+  },
+  "bagOnDisk": {
+    "dir": "/home/apollo/projects/mcp-proxy/data/epa-cafo",
+    "cardCount": 16,
+    "listedCount": 100,
+    "seed": "CWA-06-2026-1792",
+    "seedInstitution": "Apache Feedyard",
+    "seedBodyChars": 25671
+  },
+  "deploy": {
+    "doorSha": "9db0c79e40a7d9b7caea9666dfd7bef3a157531b",
+    "doorBranch": "cursor/epa-cafo-door-74df",
+    "unit": "idaho-ticks-x402.service",
+    "restartedAt": "2026-09-04T17:11:35-06:00",
+    "untouched": [
+      "Redbubble",
+      "Dryland",
+      "farm family gates",
+      "catalog main",
+      "Origin",
+      "other door caches",
+      "other systemd units"
+    ]
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "source": "https://yosemite.epa.gov/oa/rhc/epaadmin.nsf",
+  "seed": "CWA-06-2026-1792",
+  "liveManifest": "https://ticks.bnm.farm/epa-cafo/manifest.json",
+  "fetchedAt": "2026-09-04T23:11:26.159Z",
+  "asOf": "2026-08-28",
+  "status": "ok",
+  "cardCount": 16,
+  "listedCount": 100,
+  "ids": [
+    "CWA-03-2026-0073",
+    "CWA-03-2026-0072",
+    "CWA-07-2026-0227",
+    "CWA-03-2026-0078",
+    "CWA-05-2026-0018",
+    "CWA-10-2025-0023",
+    "CWA-08-2026-0009",
+    "CWA-03-2026-0115",
+    "CWA-05-2026-0008",
+    "CWA-05-2026-0017",
+    "CWA-06-2026-1792",
+    "CWA-04-2024-1011(B)",
+    "MM-09-2026-0093",
+    "CWA-05-2026-0015",
+    "CWA-05-2026-0011",
+    "CWA-07-2026-0005"
+  ],
+  "CWA-06-2026-1792": {
+    "id": "CWA-06-2026-1792",
+    "institution": "Apache Feedyard",
+    "docket": "CWA-06-2026-1792",
+    "date": "2026-07-14",
+    "title": "Complaint, Consent Agreement and Final Order",
+    "statute": "CWA",
+    "sourceUrl": "https://www.epa.gov/system/files/documents/2026-07/apache-feedyard_nmg010040_cwa0620261792_07142026.pdf",
+    "bodyChars": 25671
+  },
+  "snapshot": "/home/apollo/projects/mcp-proxy/data/epa-cafo/snapshot.json",
+  "host": "pop-os.lan / apollo"
+}
