@@ -1,0 +1,7 @@
+{
+  "source": "MSHA Open Government",
+  "dataset": "AssessedViolations",
+  "rows": [
+    {"EVENT_NO": "1234567", "MINE_ID": "4105690", "VIOLATION_NO": "9994013", "VIOLATOR": "BIG SPRING SANDS LLC"}
+  ]
+}

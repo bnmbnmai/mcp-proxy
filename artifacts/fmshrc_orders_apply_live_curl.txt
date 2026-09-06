@@ -1,0 +1,49 @@
+# Live prove on ticks.bnm.farm after apply of cursor/fmshrc-orders-door-e154
+# SHA 5ad976102d3e090bb2544025e3bbbd2c1add2988
+# Restarted only idaho-ticks-x402.service
+
+# before restart
+GET https://ticks.bnm.farm/fmshrc-orders
+HTTP 404
+
+# after restart
+GET https://ticks.bnm.farm/fmshrc-orders
+HTTP 402
+maxAmountRequired 50000
+resource https://ticks.bnm.farm/fmshrc-orders
+
+GET https://ticks.bnm.farm/fmshrc-orders?id=CENT-2025-0091
+HTTP 402
+maxAmountRequired 20000
+
+GET https://ticks.bnm.farm/fmshrc-orders?since=2099-01-01T00:00:00.000Z
+HTTP 304
+
+GET https://ticks.bnm.farm/fmshrc-orders/manifest.json
+HTTP 200
+cardCount 8
+ids WEST-2021-0229 CENT-2025-0091 CENT-2025-0051 CENT-2025-0167 CENT-2024-0092 WEVA-2024-0205 WEST-2024-0218 WEVA-2024-0231
+manifestHasBody false
+
+GET https://ticks.bnm.farm/.well-known/x402
+HTTP 200
+resourceCount 48
+includes /fmshrc-orders
+includes /epa-cafo
+does not include settle-metrics
+
+GET https://ticks.bnm.farm/
+HTTP 200
+shopProductCount 48
+lists /fmshrc-orders
+
+GET https://ticks.bnm.farm/llms.txt
+includes GET /fmshrc-orders
+includes GET /fmshrc-orders/manifest.json
+
+POST https://ticks.bnm.farm/mcp tools/list
+HTTP 200
+mcp_tool_count 52
+includes fmshrc-orders
+includes epa-cafo
+does not include settle-metrics

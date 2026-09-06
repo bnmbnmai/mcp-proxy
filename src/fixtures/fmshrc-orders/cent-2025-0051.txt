@@ -1,0 +1,163 @@
+           FEDERAL MINE SAFETY AND HEALTH REVIEW COMMISSION
+                              1331 PENNSYLVANIA AVE., N.W., SUITE 520N
+                                    WASHINGTON, DC 20004-1710
+
+                                         March 9, 2026
+ SECRETARY OF LABOR
+  MINE SAFETY AND HEALTH
+  ADMINISTRATION (MSHA)
+                                                      Docket No. CENT 2025-0051
+               v.                                     A.C. No. 23-02327-606696
+
+ TRAP ROCK AND GRANITE
+  QUARRIES, LLC
+
+
+BEFORE:     Rajkovich, Chair; Jordan, Baker and Marvit, Commissioners
+
+                                             ORDER
+
+BY: Rajkovich, Chair; Jordan, and Baker, Commissioners
+
+       This matter arises under the Federal Mine Safety and Health Act of 1977, 30 U.S.C.
+§ 801 et seq. (2024) (“Mine Act”). On June 30, 2025, the Commission received from Trap Rock
+and Granite Quarries, LLC (“Trap Rock”) a motion seeking to reopen a penalty assessment
+proceeding and relieve it from the Default Order entered against it.
+
+        On March 3, 2025, the Chief Administrative Law Judge issued an Order to Show Cause
+in response to Trap Rock’s perceived failure to answer the Secretary of Labor’s December 30,
+2024 Petition for Assessment of Civil Penalty. By its terms, the Order to Show Cause
+was deemed a Default Order on April 3, 2025, when it appeared that the operator had not filed an
+answer within 30 days.
+
+        Trap Rock asserts that the captioned matter was formerly handled by its site
+superintendent; he left the company around January 27, 2025. The operator’s new
+superintendent was not aware of the civil penalty proceeding and thus did not respond to the
+Commission’s Order. The Secretary does not oppose the operator’s request and notes that, given
+the change in personnel, it cannot confirm that a representative of the operator received the
+Commission’s Order. Furthermore, the Secretary represents that Trap Rock has recently hired an
+environmental compliance manager who reached out to the Secretary to sort through outstanding
+penalties.
+
+        The Judge’s jurisdiction in this matter terminated when the default occurred. 29 C.F.R.
+§ 2700.69(b). Under the Mine Act and the Commission's procedural rules, relief from a Judge's
+decision may be sought by filing a petition for discretionary review within 30 days of its
+issuance. 30 U.S.C. § 823(d)(2)(A)(i); 29 C.F.R. § 2700.70(a). If the Commission does not
+direct review within 40 days of a decision's issuance, it becomes a final decision of the
+
+                                                 1
+Commission. 30 U.S.C. § 823(d)(1). Consequently, the Judge’s order here has become a final
+decision of the Commission.
+
+        In evaluating requests to reopen final orders, the Commission has found guidance in Rule
+60(b) of the Federal Rules of Civil Procedure under which the Commission may relieve a party
+from a final order of the Commission on the basis of mistake, inadvertence, excusable neglect, or
+other reason justifying relief. See 29 C.F.R. § 2700.1(b) (“the Commission and its Judges shall
+be guided so far as practicable by the Federal Rules of Civil Procedure””); Jim Walter Res., Inc.,
+15 FMSHRC 782, 786-89 (May 1993). We have also observed that default is a harsh remedy
+and that, if the defaulting party can make a showing of good cause for a failure to timely
+respond, the case may be reopened and appropriate proceedings on the merits will be permitted.
+See Coal Prep. Servs., Inc., 17 FMSHRC 1529, 1530 (Sept. 1995).
+
+        Having reviewed the operator’s request and the Secretary’s response, we conclude that
+the operator has established good cause for its failure to timely respond to the Commission’s
+Order to Show cause. Specifically, Trap Rock articulated a clear explanation for its failure to
+timely respond, including the personnel involved and relevant dates. See Higgins Stone Co., 32
+FMSHRC 33, 34 (Jan. 2010) (requiring that “[a]t a minimum, the applicant must provide all
+known details, including relevant dates and persons involved, and a clear explanation that
+accounts, to the best of the operator’s knowledge, for the failure to submit a timely response.”).
+Furthermore, the operator’s proactive attempts to communicate with the Secretary and resolve
+the matter upon discovery of the error demonstrates the operator’s good faith. See Explosive
+Contractors, Inc., 46 FMSHRC 965, 966 (Dec. 2024) (citations omitted) (“[a] movant’s good
+faith and intent to contest are both relevant in determining whether the movant has demonstrated
+good cause to reopen a final assessment.”).
+
+       In the interest of justice, we hereby reopen the proceeding and vacate the Default Order.
+Accordingly, this case is remanded to the Chief Administrative Law Judge for further
+proceedings pursuant to the Mine Act and the Commission’s Procedural Rules, 29 C.F.R. Part
+2700.
+
+
+
+                                                     _________________________________
+                                                     Marco M. Rajkovich, Jr., Chair
+
+
+
+                                                     _________________________________
+                                                     Mary Lu Jordan, Commissioner
+
+
+
+                                                     _________________________________
+                                                     Timothy J. Baker, Commissioner
+
+
+
+                                                2
+Commissioner Marvit, dissenting:
+
+       I write to disagree with the Majority in this case for the reasons set forth below.
+
+        In Explosive Contractors, 46 FMSHRC 965 (Dec. 2024), I dissented and explained that
+Congress did not grant the Commission the authority to reopen final orders under section 105(a)
+of the Mine Act. The Commission’s repeated invocation of Federal Rule of Civil Procedure
+60(b) cannot overcome the statutory language. However, in Belt Tech, I explained in my
+concurrence that “the Act clearly states that to become a final order of the Commission, the
+operator must have received the notification from the Secretary.” 46 FMSHRC 975 (citing
+Hancock Materials, Inc., 31 FMSHRC 537 (May 2009)). Taken together, these opinions stand
+for the proposition that the Commission may not reopen final orders under its statutory grant, but
+an operator may proceed if it has not properly received a proposed order.
+
+        In the instant case, as the Majority recounts, the Commission’s order became final under
+the language of section 105(a). The Majority, however, votes to reopen the case. The Mine Act
+has not granted us authority to reconsider final orders of the Commission as I set out more fully
+in Explosive Contractors. To the contrary, it has limited our authority to do so. Therefore, I
+respectfully dissent and would deny reopening.
+
+
+
+                                                     _________________________________
+                                                     Moshe Z. Marvit, Commissioner
+
+
+
+
+                                                 3
+Distribution:
+
+Eric Alberter,
+Environmental Compliance Manager
+Trap Rock and Granite Quarries, LLC
+11313 Highway N,
+Ironton, MO 63650
+Erica@beelman.com
+
+Alexandra J. Gilewicz, Esq.
+Thomas A. Paige, Esq.
+Office of the Solicitor
+U.S. Department of Labor
+Division of Mine Safety and Health
+200 Constitution Avenue NW, Suite N4428
+Washington, DC 20210
+Gilewicz.Alexandra.J@dol.gov
+Paige.Thomas.A@dol.gov
+
+Melanie Garris
+US Department of Labor/MSHA
+Office of Assessments, Room N3454
+200 Constitution Ave NW
+Washington, DC 20210
+Garris.Melanie@dol.gov
+
+Acting Chief Administrative Law Judge Michael G. Young
+Federal Mine Safety Health Review Commission
+1331 Pennsylvania Avenue, NW Suite 520N
+Washington, DC 20004-1710
+MYoung@fmshrc.gov
+
+
+
+
+                                           4
+

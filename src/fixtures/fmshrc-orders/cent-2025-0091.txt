@@ -1,0 +1,233 @@
+                                         NOTICE
+1.   Enclosed is a copy of a decision by an Administrative Law Judge of the Federal Mine Safety and
+     Health Review Commission. The issuance date of this decision appears on the first page of the
+     Decision.
+
+         THIS DECISION MUST BE POSTED ON THE MINE BULLETIN BOARD BY THE
+                                    OPERATOR.
+
+2.   You may petition for review of this decision by the Commission. A PETITION FOR
+     DISCRETIONARY REVIEW must be received by the Commission within thirty (30) calendar
+     days after the issuance date of the decision to be considered [29 C.F.R. § 2700.5(f) and .70(a)]. If
+     this decision is an ORDER OF TEMPORARY REINSTATEMENT, the Petition for Review must
+     be received within 5 days of the receipt of the order [29 C.F.R. § 2700.45(f)].
+
+     If a party wishes to file a petition for discretionary review, you are encouraged to file it within the
+     Commission’s electronic filing system (https://www.fmshrc.gov). Petitions are not currently being
+     accepted via fax during the Commission’s pandemic related operational changes
+     (https://www.fmshrc.gov). If you mail the petition, you should allow enough time for delivery by the
+     thirtieth day. Petitions should be filed at:
+
+                                    DOCKET OFFICE
+                FEDERAL MINE SAFETY AND HEALTH REVIEW COMMISSION
+                           1331 Pennsylvania Ave., N.W., Suite 520 N
+                               WASHINGTON, D.C. 20004-1710
+                                Telephone No. (202) 434-9950
+
+3.   The Federal Mine Safety and Health Review Commission's Rules of Procedure specify that a
+     petition may be filed only on one or more of the following grounds:
+
+              A.       A finding or conclusion of material fact is not supported by
+                       substantial evidence.
+              B.       A necessary legal conclusion is erroneous.
+              C.       The decision is contrary to law or to the duly promulgated
+                       rules or decision of the Commission.
+              D.       A substantial question of law, policy or discretion is involved.
+              E.       A prejudicial error of procedure was committed.
+
+     Each issue shall be separately numbered and plainly and concisely stated, and shall be supported by
+     detailed citations to the record when assignment of error are based on the record. Statutes,
+     regulations or principal authorities shall be relied upon. Except for good cause shown, no assignment
+     of error by any party shall rely on any question of fact or law upon which the administrative law
+     judge has not been afforded an opportunity to pass. For further details on the filing of documents
+     and the review process, see 30 U.S.C. § 823{d) and Commission rules 5 through 9 and .70 through
+     .78 [29 C.F.R. §2700.5-.9 and .70-.78].
+
+4.   A Petition for Review must be served on the opposing party.
+
+5.   If a petition is filed, each party will be notified of the Commission’s action on the petition.
+           FEDERAL MINE SAFETY AND HEALTH REVIEW COMMISSION
+                           OFFICE OF THE CHIEF ADMINISTRATIVE LAW JUDGE
+                                        721 19th ST. SUITE 443
+                                       DENVER, CO 80202-2500
+                                      TELEPHONE: 303-844-5266
+
+
+                                          July 2, 2026
+ SECRETARY OF LABOR,                                 CIVIL PENALTY PROCEEDING
+ MINE SAFETY AND HEALTH
+ ADMINISTRATION (MSHA),                              Docket No. CENT 2025-0091
+            Petitioner,                              A.C. No. 41-05690-610399
+
+
+                 v.
+
+
+ BIG SPRING SANDS LLC,                               Mine: Big Spring Plant
+              Respondent.
+
+
+                                  DECISION AND ORDER
+
+Appearances:          Dolores G. Wolfe, Esq., U.S. Department of Labor, Office of the Solicitor,
+                      525 S. Griffin Street, Suite 501, Dallas, TX 75202
+
+                      Mark E. Dooley, Esq., Neaton & Puklich, PLLP,
+                      7975 Stone Creek Drive, Suite 120, Chanhassen, MN 55317
+
+Before:               Judge Simonton
+
+                                     I. INTRODUCTION
+
+        This matter is before me upon the Petition for the Assessment of Civil Penalty filed by
+the Secretary of Labor, acting through the Mine Safety and Health Administration (“MSHA”),
+against Big Spring Sands LLC (“Big Spring” or “Respondent”), pursuant to the Federal Mine
+Safety and Health Act of 1977 (“Mine Act”), 30 U.S.C. § 801. In dispute is a single section
+104(d)(1) order issued to Big Spring, as owner and operator of the Big Spring Plant in Big
+Spring, Texas.
+
+        Order No. 9994013 alleges Big Spring violated 30 C.F.R. § 56.14101(a) on October 8,
+2024, when an MSHA inspector discovered that the operator’s CAT 980M front end loader was
+not equipped with an emergency brake capable of stopping and holding the equipment with its
+typical load on its maximum grade. The Secretary proposed a special assessment penalty of
+$88,354.00, which Big Spring contested.
+
+       The parties presented testimony and documentary evidence regarding the order at issue
+during a virtual hearing held on February 13, 2026. The Secretary presented testimony from
+
+
+
+
+                                               –2–
+       MSHA Inspector Clifton Brayfield and Big Spring Supervisor Juan Milian. Respondent
+presented testimony from Big Spring President Jeff Flood.
+
+        After the hearing, the Secretary filed a Motion to Conform Pleadings to the Evidence
+seeking to amend Order No. 9994013 to allege a violation of 30 C.F.R. § 56.14101(a)(2) rather
+than § 56.14101(a) generally, and to change the words “service brake system” in the order to
+“parking brakes.” Big Spring contested the Secretary’s motion and filed its Reply to the
+Secretary of Labor’s Motion to Conform the Pleadings on March 27, 2026. Upon consideration
+of the parties’ arguments and the testimony presented at hearing, I granted the Secretary’s
+motion and ordered that Box 8 and 9.C. in Order No. 9994013 be amended to replace the
+language “service brake system” with “parking brake” and to allege a violation of 30 C.F.R. §
+56.14101(a)(2), respectively. The parties then filed post-hearing briefs on April 20, 2026. 1
+
+       After fully considering the testimony and evidence presented at hearing and the parties’
+post-hearing briefs, I AFFIRM Order No. 9994103.
+
+                                 II. STIPULATIONS OF FACT
+
+1. Operations of the Respondent at the Big Spring Plant at which the order was issued are
+subject to the jurisdiction of the Mine Act.
+
+2. Big Spring Plant is engaged in mining operations in which its products enter and affect
+interstate commerce.
+
+3. Big Spring Sands LLC demonstrated good faith in abating the alleged violation and in a
+timely fashion.
+
+4. MSHA Inspector Clifton Brayfield was acting in an official capacity and as authorized
+representative of the Secretary of Labor when the order was issued and there is no dispute
+that they are authentic.
+
+5. On October 8, 2024, when MSHA Inspector Brayfield tested the parking brakes on the
+front-end loader that is the subject of the [order], it did not pass inspection.
+
+Tr. 24:4–20, 270:8–273:11.
+
+
+
+
+1
+  The hearing transcript, the Secretary’s exhibits, the Secretary’s Post-Hearing Brief, and Big
+Spring’s Post-Hearing Brief are abbreviated, respectively, as: “Tr.,” “Ex. P–#,” “Sec’y Br.,” and
+“Resp’t Br.” Citations to exhibit page numbers are based on the page number of the actual
+individual exhibits, with the first page of the exhibit being cited as “Ex. P-#, p.1” and subsequent
+pages cited sequentially. The decision does not cite the bates numbers, or other numbering
+systems, that may be found on the exhibits themselves.
+                                  III. FINDINGS OF FACT
+
+        Big Spring Plant mines, cleans, and sells sand to customers. Tr. 31:17–32:5, 154:19–
+155:4, 155:22–156:5. This process begins during the evening shift with the use of excavators to
+extract sand from the ground pit of the plant and load it into large dump trucks. Tr. 31:17–32:2,
+34:22–36:2, 48:10–49:21, 126:8–22, 154:19–25, 218:9-18. From there, the large dump trucks
+transport the sand up from the pit and dump it near a washout plant. Tr. 34:22–36:2, 48:10–
+49:21, 126:8–22. In this area, Big Spring utilizes the CAT 980H loader (“dirty loader”) to move
+the newly extricated sand into the washout plant for cleaning. Tr. 47:7–24, 49:13–21, 218:9-18,
+267:24–268:2.
+
+        After the sand is cleaned, it is transported and dumped on to a concrete floor loading area
+near the plant’s hopper to await loading. Tr. 126:8–22, 218:1–9. Once the day shift arrives, Big
+Spring utilizes the CAT 980M loader (“clean loader”) to load the clean sand into the plant’s
+hopper which transports and loads the clean sand on to customer vehicles. Tr. 58:16–59:11,
+97:25–99:3, 155:22–156:7, 218:1–9.
+
+        On October 8, 2024, MSHA Inspector Clifton Brayfield traveled to the Big Spring Plant–
+a surface mine and processing facility in Big Spring, Texas, as part of the plant’s standard
+quarterly inspection. Tr. 154:13–25; Ex. P–9. Big Spring Supervisor Juan Milian accompanied
+Brayfield on his inspection. Tr. 31:2–4, 53:17–54:2, 61:7–17; Ex. P–9, p. 2.
+
+        During the inspection, Brayfield saw the clean loader operating in the plant’s clean sand
+loading area. Tr. 154:22–155:9, 155:22–156:7. Brayfield then requested that Milian flag down
+the employee operating the CAT loader so that he could conduct an inspection of the vehicle.
+Tr. 61:7–17, 62:1–20, 163:19–25. Milian complied with Brayfield’s request and had the CAT
+loader operator stop the vehicle for inspection. Tr. 62:1–20, 63:12–22, 154-155, 163:19–25.
+
+        Brayfield began his inspection by asking Milian about the CAT loader’s broken
+windshield. Tr. 163:19–25. Brayfield then requested and received the CAT loader’s pre-shift
+inspection reports from the equipment operator and reviewed entries ranging from September 23,
+2024, through October 8, 2024. Tr. 37:16–23, 64:1–14, 66:17–18, 131:20–132:3, 163:19–164:6,
+164:11–165:1, 181:9–15; Ex. P–7. In reviewing each entry, Brayfield noticed that not only did
+each entry indicate that the CAT loader’s windshield was damaged, but it also noted that the
+CAT loader’s emergency brakes were defective and in need of repair. 2 Tr. 65:2–66:1, 164:1–13.
+
+        Brayfield then showed the pre-shift inspection reports to Milian, informed him that they
+noted that the emergency brakes on the CAT loader needed repair, and asked if he was aware of
+the defects identified on the reports. Tr. 65:2–66:1, 165:2–13, 166:3–25. Milian responded that
+he only reviews pre-shift inspection reports if an employee verbally informs him that they found
+a defect in the equipment. Tr. 165:2–13, 166:3–25, Ex. P–14. Brayfield then inquired why the
+CAT loader’s brakes had not been repaired despite being marked as defective on the pre-shift
+
+
+2
+  At hearing, the testimony established that the terms “parking brake” and “emergency brake”
+referred to the same braking system and were used interchangeably. See Order Granting the
+Secretary of Labor’s Motion to Conform Pleadings to the Evidence (Apr. 8, 2026).
+
+
+                                               –4–
+inspection reports. Tr. 165:2–10, 167:1–13. However, Milian could not provide an explanation
+as to why. Tr. 167:1–13.
+
+       Brayfield then requested Milian and the equipment operator of the CAT loader to
+perform a brake test on the concrete floor loading area. Tr. 51:14–52:4, 72:25–73:20, 100:2–20,
+109:15–110:5. First, Brayfield instructed the equipment operator to fill the CAT loader’s front
+bucket with dirt so that the brake test is done with the vehicle’s typical load. Tr. 74:9–12, 75:5–
+24, 109:15–110:5. Brayfield also ensured the CAT loader was placed on ground that had a slight
+decline in grade level, but not at its maximum grade as he was unsure whether the vehicle’s main
+brakes were functioning. Tr. 73:21–74:8, 74:23–75:4.
+
+        Brayfield then directed the equipment operator to put the vehicle in neutral and release
+the operating brakes to determine whether the emergency brakes alone would hold the CAT
+loader in place. Tr. 71:24–75:20. However, the test failed as the CAT loader began to roll
+despite having the emergency brake engaged. Tr. 71:24–75:20, 195:15–22. Brayfield then asked
+that the CAT loader be turned around so that same test could be performed in the opposite
+direction. Tr. 71:24–75:20. Once again, the CAT loader failed the test. Tr. 71:24–75:20,
+195:15–22. Brayfield then directed Milian to immediately shut down the machine and remove it
+from the plant’s property, which Milian complied with. Tr. 130:8–20, 172:7–16, 220:5–18.
+
+       Based on these observations, Brayfield issued 104(d)(1) Order No. 9994103 to Big
+Spring on October 8, 2024, which alleged:
+
+               The Cat 980M front end loader vin number 01220 was not equipped
+               with a [emergency brake] capable of stopping and holding the
+               equipment with its typical load on the maximum grade it travels.
+               When tested the front end loader failed to hold the break in both
+               directions. This condition is obvious and extensive and would be
+               evident to the most casual observer. Pre operational checks had
+               notated the breaks not working as far back as September 23rd 2024.
+               The loader is used daily to load material for the loadout for two
+               twelve hour shifts seven days a week. The front end loader was in
+               operation at the time of inspection exposing five miners working on
+               the ground as well as customer trucks. The operator stated he looks
+               at the pre-operational checks but the equipment operators tell him

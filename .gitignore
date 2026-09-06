@@ -50,6 +50,7 @@ build/hhs-oig-reports.*
 build/eis-reports.*
 build/fsis-humane.*
 build/epa-cafo.*
+build/fmshrc-orders.*
 build/ticks-ams.*
 build/ticks-ams-leftovers.*
 build/paid-records.*
@@ -102,6 +103,7 @@ data/hhs-oig-reports/
 data/eis-reports/
 data/fsis-humane/
 data/epa-cafo/
+data/fmshrc-orders/
 data/ticks-ams/
 data/shop-request-log.jsonl
 data/shop-request-log*.jsonl
