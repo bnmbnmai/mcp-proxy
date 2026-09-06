@@ -84,7 +84,7 @@
  * GET /aaib-reports/manifest.json — free count + title/registration/aircraft/date/sourceUrl (no report body)
  * GET /csb-reports — US CSB final investigation report PDF ($0.05 one official PDF)
  * GET /csb-reports/manifest.json — free count + facility/date/title/pageUrl/sourceUrl (no PDF bytes)
- * GET /hhs-oig-reports — HHS OIG full Audit / Evaluation report PDF ($0.05 one official PDF)
+ * GET /hhs-oig-reports — HHS OIG Audit / Evaluation plus VA OIG audit / inspection / review PDFs ($0.05 one official PDF)
  * GET /hhs-oig-reports/manifest.json — free count + report number/date/title/pageUrl/sourceUrl (no PDF bytes)
  * GET /eis-reports — EPA NEPA Environmental Impact Statement PDF text ($0.02 id / $0.05 page)
  * GET /eis-reports/manifest.json — free count + CEQ number/date/title/agency/pageUrl (no EIS body)
@@ -1580,7 +1580,7 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
   },
   "hhs-oig-reports": {
     description:
-      "Call GET /hhs-oig-reports when you need official HHS OIG-authored full Audit (OAS / A-*) and Evaluation / Inspection (OEI-*) report PDFs from oig.hhs.gov/documents/audit/ and oig.hhs.gov/documents/evaluation/. License 17 USC 105. $0.05 one official PDF. Same URL ?id= or ?before= is the next older official PDF for another $0.05.",
+      "Call GET /hhs-oig-reports when you need official HHS OIG Audit / Evaluation PDFs (oig.hhs.gov) or VA OIG audit / inspection / review PDFs (vaoig.gov). Same door. License 17 USC 105. $0.05 one official PDF. Same URL ?id= or ?before= is the next older official PDF for another $0.05.",
     resourcePath: HHS_OIG_REPORTS_PATH,
   },
   "eis-reports": {
@@ -4029,7 +4029,7 @@ export function llmsTxt(): string {
     `- GET /phmsa-orders — $0.05 — PHMSA pipeline enforcement-order text (official primis.phmsa.dot.gov PDFs; NOPV PCP/PCO, Final Order, CAO, Consent Order, Decision on Petition). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /aaib-reports — $0.05 — UK AAIB investigation-report text (official assets.publishing.service.gov.uk PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /csb-reports — $0.05 — US CSB final investigation report PDF (official csb.gov/assets PDFs). One official PDF. Same URL ?id= or ?before=<id or date> is the next older official PDF for another $0.05.`,
-    `- GET /hhs-oig-reports — $0.05 — HHS OIG full Audit / Evaluation report PDF (official oig.hhs.gov/documents/audit/ and /documents/evaluation/ PDFs). One official PDF. Same URL ?id= or ?before=<id or date> is the next older official PDF for another $0.05.`,
+    `- GET /hhs-oig-reports — $0.05 — HHS OIG Audit / Evaluation and VA OIG audit / inspection / review PDFs (official oig.hhs.gov and vaoig.gov). One official PDF. Same URL ?id= or ?before=<id or date> is the next older official PDF for another $0.05.`,
     `- GET /eis-reports — $0.05 — EPA NEPA Environmental Impact Statement text (official CDX e-NEPA EIS document PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /fsis-humane — $0.05 — USDA FSIS humane-handling enforcement letter text (official fsis.usda.gov NOS / NOIE / deferral / abeyance / reinstatement PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /epa-cafo — $0.05 — EPA Part 22 CAFO / ESA administrative penalty letter text (official yosemite.epa.gov and regional epa.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
@@ -4091,7 +4091,7 @@ export function llmsTxt(): string {
     "- GET /phmsa-orders/manifest.json — PHMSA enforcement count + operator/CPF/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
     "- GET /aaib-reports/manifest.json — AAIB investigation count + title/registration/aircraft/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the report body)",
     "- GET /csb-reports/manifest.json — CSB final-report count + facility/date/title/pageUrl/sourceUrl (full catalog; ?q= is free search; not the PDF bytes)",
-    "- GET /hhs-oig-reports/manifest.json — HHS OIG report count + report number/date/title/pageUrl/sourceUrl (full catalog; ?q= is free search; not the PDF bytes)",
+    "- GET /hhs-oig-reports/manifest.json — HHS OIG + VA OIG report count + report number/date/title/pageUrl/sourceUrl (full catalog; ?q= is free search; not the PDF bytes)",
     "- GET /eis-reports/manifest.json — EPA NEPA EIS count + CEQ number/date/title/agency/pageUrl (full catalog + page cursor; ?q= is free search; not the EIS body)",
     "- GET /fsis-humane/manifest.json — FSIS humane-handling letter count + establishment/letter type/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the letter body)",
     "- GET /epa-cafo/manifest.json — EPA CAFO / ESA letter count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the letter body)",
