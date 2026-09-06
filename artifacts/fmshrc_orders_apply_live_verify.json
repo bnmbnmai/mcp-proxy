@@ -1,0 +1,96 @@
+{
+  "job": "apply GET /fmshrc-orders onto live ticks.bnm.farm",
+  "ranOn": "apollo",
+  "hostname": "pop-os",
+  "path": "/fmshrc-orders",
+  "priceUsdc": "0.05",
+  "amountAtomic": "50000",
+  "oneAmountAtomic": "20000",
+  "network": "base",
+  "branch": "cursor/fmshrc-orders-door-e154",
+  "applySha": "5ad976102d3e090bb2544025e3bbbd2c1add2988",
+  "stackedOn": "cursor/epa-cafo-door-74df",
+  "stackedOnSha": "9db0c79e40a7d9b7caea9666dfd7bef3a157531b",
+  "doorPr": "https://github.com/bnmbnmai/mcp-proxy/pull/195",
+  "product": "fmshrc-order-bodies",
+  "systemctlUserRestart": {
+    "unit": "idaho-ticks-x402.service",
+    "ok": true,
+    "otherUnitsRestarted": false
+  },
+  "collect": {
+    "status": "ok",
+    "dir": "$HOME/projects/mcp-proxy/data/fmshrc-orders",
+    "fetchedAt": "2026-09-06T17:26:11.312Z",
+    "asOf": "2026-07-23",
+    "cardCount": 8,
+    "listedCount": 22,
+    "fetchedPdfs": 8,
+    "skippedNoText": 0,
+    "reused": 0,
+    "addedThisRun": 8,
+    "limit": 8,
+    "maxFetch": 12,
+    "ids": [
+      "WEST-2021-0229",
+      "CENT-2025-0091",
+      "CENT-2025-0051",
+      "CENT-2025-0167",
+      "CENT-2024-0092",
+      "WEVA-2024-0205",
+      "WEST-2024-0218",
+      "WEVA-2024-0231"
+    ],
+    "CENT-2025-0091": {
+      "id": "CENT-2025-0091",
+      "institution": "Big Spring Sands LLC",
+      "docket": "CENT-2025-0091",
+      "board": "alj",
+      "kind": "Decision and Order",
+      "date": "2026-07-02",
+      "title": "SECRETARY OF LABOR v. BIG SPRING SANDS LLC",
+      "bodyChars": 50311,
+      "sourceUrl": "https://www.fmshrc.gov/sites/default/files/decisions/alj/Big%20Spring%20Sands%20LLC%20CENT%202025-0091-Decision%20and%20Order.pdf"
+    }
+  },
+  "live": {
+    "beforeRestart": {
+      "unpaidGet": 404
+    },
+    "unpaidGet": 402,
+    "pageAtomic": "50000",
+    "unpaidId": 402,
+    "idAtomic": "20000",
+    "id": "CENT-2025-0091",
+    "unpaidSince": 304,
+    "since": "2099-01-01T00:00:00.000Z",
+    "manifest": 200,
+    "manifestCardCount": 8,
+    "manifestHasBody": false,
+    "wellKnown": 200,
+    "wellKnownHasPath": true,
+    "resourceCount": 48,
+    "shop": 200,
+    "shopListsPath": true,
+    "shopProductCount": 48,
+    "llmsListsPath": true,
+    "mcpTools": 52,
+    "mcpToolName": "fmshrc-orders",
+    "mcpIncludesEpaCafo": true,
+    "mcpIncludesSettleMetrics": false
+  },
+  "settleMetrics": {
+    "inThisCheckout": false,
+    "branch": "cursor/settle-metrics-c08d",
+    "pr": "https://github.com/bnmbnmai/mcp-proxy/pull/194",
+    "tip": "d4976fe1c359911a779a5e9c46eb58d8dba9648a",
+    "note": "Still needs a separate apply after. Did not switch away mid-prove."
+  },
+  "untouched": [
+    "Redbubble",
+    "catalog main",
+    "other systemd units",
+    "other door caches",
+    "settle-metrics"
+  ]
+}

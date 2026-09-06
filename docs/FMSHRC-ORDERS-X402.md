@@ -10,7 +10,7 @@ Prefer Secretary of Labor v. [Operator] civil-penalty adjudications. Do **not** 
 
 MCP tools are generated from live well-known (no hardcoded door count).
 
-This cloud VM does **not** deploy to apollo / media-box. Code + PR only.
+Applied on apollo (2026-09-06): **cardCount 8**, listedCount 22, asOf **2026-07-23**, fetchedAt **2026-09-06T17:26:11.312Z**. Restarted **only** `idaho-ticks-x402.service`. Live unpaid `GET https://ticks.bnm.farm/fmshrc-orders` is **402**. Catalog `main` was not checked out. `cursor/settle-metrics-c08d` (PR 194) is **not** in this checkout and still needs a separate apply.
 
 ## Collect command
 
