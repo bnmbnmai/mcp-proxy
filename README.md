@@ -70,6 +70,14 @@ npx -y mcp-remote https://ticks.bnm.farm/mcp
 | `/ofgem-enforcement` | Ofgem enforcement-notice / s.27A penalty-proposal / confirmed and provisional-order text. Newest 10 official texts | $0.02 / $0.05 |
 | `/gain` | USDA FAS GAIN attaché report TEXT. Newest 10 official texts | $0.02 / $0.05 |
 | `/orr-enforcement` | ORR Railways Act 1993 s.55 statutory-notice / final-order / investigation-report text. Newest 10 official texts | $0.02 / $0.05 |
+| `/phmsa-orders` | PHMSA pipeline enforcement-order text. Newest 10 official texts | $0.02 / $0.05 |
+| `/aaib-reports` | UK AAIB investigation-report text. Newest 10 official texts | $0.02 / $0.05 |
+| `/csb-reports` | US CSB final investigation report PDFs. Newest 10 official texts | $0.02 / $0.05 |
+| `/hhs-oig-reports` | HHS OIG audit and evaluation report PDFs. Newest 10 official texts | $0.02 / $0.05 |
+| `/eis-reports` | EPA NEPA Environmental Impact Statement PDFs. Newest 10 official texts | $0.02 / $0.05 |
+| `/fsis-humane` | USDA FSIS humane-handling enforcement letter text. Newest 10 official texts | $0.02 / $0.05 |
+| `/epa-cafo` | EPA Part 22 CAFO / ESA administrative penalty letter text. Newest 10 official texts | $0.02 / $0.05 |
+| `/fmshrc-orders` | FMSHRC ALJ + Commission Decision/Order text. Newest 10 official texts | $0.02 / $0.05 |
 | `/form-483` | FDA Form 483 inspectional observation bodies. Newest 10 official texts | $0.02 / $0.05 |
 | `/gmp` | Health Canada Drug GMP report-card observation text + C.02 cites. Newest 10 official texts | $0.02 / $0.05 |
 | `/gmp-md` | Health Canada medical-device report-card observation text + MDR cites. Newest 10 official texts | $0.02 / $0.05 |
