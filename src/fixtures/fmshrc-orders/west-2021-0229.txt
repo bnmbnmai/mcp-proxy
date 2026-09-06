@@ -1,0 +1,243 @@
+                                              NOTICE
+1.   Enclosed is a copy of a decision by an Administrative Law Judge of the Federal Mine Safety and
+     Health Review Commission. The issuance date of this decision appears on the first page of the
+     Decision.
+
+         THIS DECISION MUST BE POSTED ON THE MINE BULLETIN BOARD BY THE
+                                    OPERATOR.
+
+2.   You may petition for review of this decision by the Commission. A PETITION FOR
+     DISCRETIONARY REVIEW must be received by the Commission within thirty (30) calendar
+     days after the issuance date of the decision to be considered [29 C.F.R. § 2700.5(f) and .70(a)]. If
+     this decision is an ORDER OF TEMPORARY REINSTATEMENT, the Petition for Review must
+     be received within 5 days of the receipt of the order [29 C.F.R. § 2700.45(f)].
+
+     If a party wishes to file a petition for discretionary review, you are encouraged to file it within the
+     Commission’s electronic filing system (https://www.fmshrc.gov). Petitions are not currently being
+     accepted via fax during the Commission’s pandemic related operational changes
+     (https://www.fmshrc.gov). If you mail the petition, you should allow enough time for delivery by the
+     thirtieth day. Petitions should be filed at:
+
+                                    DOCKET OFFICE
+                FEDERAL MINE SAFETY AND HEALTH REVIEW COMMISSION
+                           1331 Pennsylvania Ave., N.W., Suite 520 N
+                               WASHINGTON, D.C. 20004-1710
+                                Telephone No. (202) 434-9950
+
+3.   The Federal Mine Safety and Health Review Commission's Rules of Procedure specify that a
+     petition may be filed only on one or more of the following grounds:
+
+              A.       A finding or conclusion of material fact is not supported by
+                       substantial evidence.
+              B.       A necessary legal conclusion is erroneous.
+              C.       The decision is contrary to law or to the duly promulgated
+                       rules or decision of the Commission.
+              D.       A substantial question of law, policy or discretion is involved.
+              E.       A prejudicial error of procedure was committed.
+
+     Each issue shall be separately numbered and plainly and concisely stated, and shall be supported by
+     detailed citations to the record when assignment of error are based on the record. Statutes,
+     regulations or principal authorities shall be relied upon. Except for good cause shown, no assignment
+     of error by any party shall rely on any question of fact or law upon which the administrative law
+     judge has not been afforded an opportunity to pass. For further details on the filing of documents
+     and the review process, see 30 U.S.C. § 823{d) and Commission rules 5 through 9 and .70 through
+     .78 [29 C.F.R. §2700.5-.9 and .70-.78].
+
+4.   A Petition for Review must be served on the opposing party.
+
+5.   If a petition is filed, each party will be notified of the Commission’s action on the petition.
+           FEDERAL MINE SAFETY AND HEALTH REVIEW COMMISSION
+                           OFFICE OF THE CHIEF ADMINISTRATIVE LAW JUDGE
+                              1331 PENNSYLVANIA AVE., N.W., SUITE 1400
+                                     WASHINGTON, DC 20004-1710
+                                      TELEPHONE: 202 434-9987
+
+
+                                         July 23, 2026
+ SECRETARY OF LABOR,                                CIVIL PENALTY PROCEEDING
+ MINE SAFETY AND HEALTH
+ ADMINISTRATION (MSHA),                             Docket No. WEST 2021-0229
+           Petitioner,                              A.C. No. 42-01566-535306
+
+                      v.                            Docket No. WEST 2021-0254
+                                                    A.C. No. 42-01566-536066
+ CANYON FUEL COMPANY, LLC,
+          Respondent,
+
+                      &
+
+
+ SHANE ALLRED, employed by                          Docket No. WEST 2021-0315
+ CANYON FUEL COMPANY, LLC,                          A.C. No. 42-01566-540910A
+           Respondent,
+
+
+ MICHAEL COOPER, employed by                        Docket No. WEST 2021-0319
+ CANYON FUEL COMPANY, LLC,                          A.C. No. 42-01566-540909A
+           Respondent.
+
+                                                    Mine: Skyline Mine #3 1
+
+                           DECISION AND ORDER ON REMAND
+                                   ORDER TO PAY
+
+Before: Judge Young
+
+       This matter is before me pursuant to an Order for Remand issued by the Federal Mine
+Safety and Health Review Commission (“Commission”) on January 30, 2026. Canyon Fuel Co.,
+
+       1
+          The order at issue in this decision, Order No. 8541891, is docketed under Docket No.
+WEST 2021-0188. On September 7, 2021, this docket was consolidated with Docket Nos.
+WEST 2021-0229 and WEST 2021-0254. See Order to Consolidate (Sept. 7, 2021). On October
+25, 2021, these dockets were subsequently consolidated with additional related Docket Nos.
+WEST 2021-0314, WEST 2021-0317, WEST 2021-0318, and WEST 2021-0319. See Order of
+Consolidation (Oct. 25, 2021). This caption contains all dockets listed in the Commission’s
+decision.
+                                                2
+et al., 48 FMSHRC 2 (Jan. 2026). It involves a petition for assessment of civil penalty filed by
+the Secretary of Labor (“Secretary”) through the Mine Safety and Health Administration
+(“MSHA”) against Respondent Canyon Fuel Company, LLC (“Respondent”) for an accident that
+occurred at the Skyline Mine #3 (“Skyline”). 2
+
+                               I.      HISTORY OF THE CASE
+
+        On August 25, 2020, a miner was seriously injured in an accident where a violent bounce
+caused a rib to blow out on the 8 Right Longwall of the mine. GX-2 at DOL 0037–38. There
+was no standing support installed in this area prior to the bounce. Id. The rib burst struck the
+injured miner, and he sustained serious head and neck injuries, including a concussion, which
+required hospitalization and surgery. Five days before this accident occurred, on August 20, a
+previous bounce had occurred in this area of the mine. Id.
+
+       On September 10, 2020, MSHA issued Section 104(d)(1) Order No. 8541891, alleging
+Respondent violated 30 C.F.R. § 75.202(a), which requires an operator to protect miners from
+mine roof, face, and rib falls. Id. The inspector designated this order as Significant and
+Substantial (“S&S”), having occurred and causing an injury, and the result of Respondent’s high
+negligence and an unwarrantable failure to comply with a mandatory standard. Id. The
+Secretary proposed a penalty of $74,700.00. Pet. at 4, No. WEST 2021-0254 (Aug. 6, 2021).
+
+        MSHA also issued Order No. 8541892 to Respondent, which alleged the operator failed
+to report an immediately reportable injury that had a reasonable potential to cause death in
+violation of Section 50.10. GX-1. MSHA also assessed penalties against five of Respondent’s
+employees at Skyline for individual liability for this violation under Section 110(c) of the Mine
+Act. See generally Pet., No. WEST 2021-0314 (Oct. 8, 2021); Pet., No. WEST 2021-0315 (Oct.
+8, 2021); Pet., No. WEST 2021-0317 (Oct. 8, 2021); Pet., No. WEST 2021-0318 (Oct. 8, 2021);
+Pet., No. WEST 2021-0319 (Oct. 8, 2021).
+
+       A hearing was held in these cases on May 17–19, 2022, and on May 23, 2023, I issued a
+decision in which I affirmed both orders, as well as the finding of individual liability for two of
+Respondent’s employees. See generally Canyon Fuel Co., et al, 45 FMSHRC 328, 329, 378–79
+(May 2023).
+
+       While I affirmed the violation for Order No. 8541891, including the gravity
+determinations and the S&S designation, I found this violation was the result of moderate
+negligence and was not an unwarrantable failure to comply with a mandatory standard. Id. at
+343–46. I assessed a $25,000.00 penalty for this violation. Id.
+
+
+
+
+       2
+         This order incorporates all findings and conclusions from my initial decision issued on
+May 23, 2023, Canyon Fuel Company, et al, 45 FMSHRC 328, 329, 378–79 (May 2023), except
+as superseded by the Commission’s decision, Canyon Fuel Company, et al., 48 FMSHRC 2 (Jan.
+2026).
+
+
+                                                 3
+        Following the issuance of my decision, both parties filed petitions for discretionary
+review before the Commission. Sec’y’s PDR (June 22, 2023); Resp’t’s PDR (June 22, 2023).
+The Commission granted review, and on January 30, 2026, issued its decision. 48 FMSHRC at
+2. The Commission affirmed my findings for Order No. 8541892 and the Section 110(c)
+individual penalties against two of Respondent’s employees. Id. at 19–20. The Commission
+also affirmed my finding that a violation had occurred in Order No. 8541891. Id. at 8. However,
+the Commission reversed my findings on negligence and unwarrantable failure. Id. at 9-11. It
+found the record “compel[ed] a finding of high negligence” because Respondent’s mitigation
+efforts did not prevent a second rib failure and Respondent should have known its mitigation
+efforts were inadequate. Id. at 9. The Commission remanded this case to me for reassessment of
+the penalty for Order No. 8541891 consistent with the findings in this decision. Id. at 20.
+
+        After the Commission issued its decision, counsel for Respondent contacted my office on
+April 8 about the pending decision on remand. See Letter from R. Henry Moore, Counsel for
+Respondent, to this Court (Apr. 9, 2026). Counsel indicated that both parties had a preliminary
+discussion as to whether they “could agree on an appropriate penalty so any appeal might move
+forward once the decision is a final one.” Id.
+
+       My office advised the parties that they could work together to agree on an appropriate
+penalty for Order No. 8541891, which I would consider in the decision on remand. Email from
+Alexandra Timcheck, ALJ Attorney Advisor, to Mr. Moore and Thomas A. Paige, U.S. Dep’t of
+Labor (May 4, 2026, 3:47 PM EDT). On June 17, the parties jointly filed a Stipulation of
+Penalty on Remand in which they agreed that a $50,000.00 penalty would be appropriate. Stip.
+of Penalty on Remand at 3 (June 17, 2026).
+
+                                     II.     DISPOSITION
+
+        The only issue before me here is the penalty for Order No. 8541891. The Secretary’s
+regulations establish a minimum penalty amount for any order issued under Section 104(d)(1) of
+the Mine Act. 30 C.F.R. § 100.4(a). 3
+
+       Commission ALJs have the authority to assess civil penalties de novo for violations of
+the Mine Act. 30 U.S.C. § 820(i); Sellersburg Stone Co., 5 FMSHRC 287, 291 (Mar. 1983).
+The Mine Act requires an ALJ to consider the six statutory criteria specified in section 110(i) of
+the Act when assessing a penalty:
+
+               (1) the operator’s history of previous violations, (2) the
+               appropriateness of such penalty to the size of the business of the
+               operator charged, (3) whether the operator was negligent, (4) the
+               effect on the operator’s ability to continue in business, (5) the
+               gravity of the violation, and (6) the demonstrated good faith of the
+
+
+       3
+         As of September 10, 2020, the date Order No. 8541891 was issued, the minimum
+penalty for an order issued under Section 104(d)(1) of the Mine Act was $2,464.00. 30 C.F.R. §
+100.4(a) (2020). As of the writing of this decision on remand, the minimum penalty is
+$3,022.00. 30 C.F.R. § 100.4(a) (2025).
+                                                 4
+               person charged in attempting to achieve rapid compliance after
+               notification of a violation.
+
+30 U.S.C. § 820(i) (numbering added).
+
+         In the two years prior to the issuance of Order No. 8541891, Respondent had been cited
+seven times for a violation of Section 75.202(a). 45 FMSHRC at 346. I also find that the
+Secretary has properly evaluated the size of the mine. Id. The parties have stipulated that
+payment of this penalty will not affect the Respondent’s ability to continue in business. Stips. ¶
+7. 4 I also consider the gravity designations and the fact that this violation resulted in an accident
+where a miner suffered an injury with a reasonable potential to cause death. 45 FMSHRC at
+358.
+
+        The Commission has determined that this violation was the result of high negligence and
+an unwarrantable failure, and thus, a higher penalty than I initially assessed is appropriate here.
+Respondent should have known that its mitigation efforts in the days between the August 20 and
+August 25 incidents were inadequate. See 48 FMSHRC at 9. However, I have considered that
+Respondent did take steps to attempt to mitigate the hazard or limit the possible severity of a rib
+burst here following the bounce on August 20, even if those steps were not reasonable under the
+circumstances. See 45 FMSHRC at 346. I also note that Respondent made efforts following the
+incident to achieve compliance and better safety. Id. at 347.
+
+       After considering the penalty in light of my initial findings, the Commission’s decision,
+and the six penalty criteria, I find that a penalty of $50,000.00 is appropriate.
+
+
+
+
+       4
+          I note that four years has passed since the parties entered into their Joint Stipulations.
+The Stipulation on Remand does not state that this circumstance has changed. I also infer from
+Respondent’s agreeance to a $50,000.00 penalty that payment of this penalty would not affect its
+ability to continue in business.
+
+
+                                                  5
+                            III.    CONCLUSION AND ORDER
+
+         As discussed above, a penalty of $50,000.00 is assessed for Order No. 8541891.
+Respondent is ORDERED TO PAY the sum of $50,000.00 within 30 days of the date of this
+order. 5
+
+
+
+
+                                            Michael G. Young
+     

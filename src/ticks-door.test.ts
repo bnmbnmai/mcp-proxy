@@ -215,6 +215,11 @@ import {
   EPA_CAFO_PATH,
 } from "./epa-cafo.js";
 import {
+  FMSHRC_ORDERS_AMOUNT_ATOMIC,
+  FMSHRC_ORDERS_MANIFEST_PATH,
+  FMSHRC_ORDERS_PATH,
+} from "./fmshrc-orders.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -442,6 +447,16 @@ async function main(): Promise<void> {
     assert.equal(epaCafoExtra.pdf, undefined);
     assert.equal(epaCafoExtra.priceAtomic, Number(SINGLE_DOC_AMOUNT_ATOMIC));
     assert.equal(epaCafoExtra.oneDocPath, "/epa-cafo?id=");
+    const fmshrc402Desc = sku402Description("fmshrc-orders");
+    assert.ok(fmshrc402Desc.includes("https://ticks.bnm.farm/fmshrc-orders/manifest.json?q="));
+    assert.ok(fmshrc402Desc.includes("$0.02"));
+    assert.ok(fmshrc402Desc.length <= 500, `fmshrc-orders 402 description is ${fmshrc402Desc.length}`);
+    assert.ok(!/^Not /m.test(fmshrc402Desc) && !fmshrc402Desc.includes("Not the"), "fmshrc-orders 402 has no leak-test");
+    const fmshrcExtra = paymentExtra("fmshrc-orders");
+    assert.equal(fmshrcExtra.name, "USD Coin");
+    assert.equal(fmshrcExtra.pdf, undefined);
+    assert.equal(fmshrcExtra.priceAtomic, Number(SINGLE_DOC_AMOUNT_ATOMIC));
+    assert.equal(fmshrcExtra.oneDocPath, "/fmshrc-orders?id=");
     for (const sku of EXTRACTED_BODY_SKUS) {
       const desc = sku402Description(sku);
       assert.ok(desc.includes(`https://ticks.bnm.farm/${sku}/manifest.json?q=`), `${sku} 402 names free search`);
@@ -578,6 +593,7 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.some((r) => r.includes("/eis-reports")), "well-known lists /eis-reports");
     assert.ok(wk.resources.some((r) => r.includes("/fsis-humane")), "well-known lists /fsis-humane");
     assert.ok(wk.resources.some((r) => r.includes("/epa-cafo")), "well-known lists /epa-cafo");
+    assert.ok(wk.resources.some((r) => r.includes("/fmshrc-orders")), "well-known lists /fmshrc-orders");
     assert.equal(cdpEnvStatus(), "CDP env not set");
 
     const specRes = await fetch(`${base}${OPENAPI_PATH}`);
@@ -781,6 +797,7 @@ async function main(): Promise<void> {
     assert.ok(spec.paths["/eis-reports"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/fsis-humane"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/epa-cafo"]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths["/fmshrc-orders"]?.get?.["x-payment-info"]);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
       PUBLIC_BAZAAR_SKUS.length,
@@ -835,6 +852,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /eis-reports"));
     assert.ok(llmsBody.includes("GET /fsis-humane"));
     assert.ok(llmsBody.includes("GET /epa-cafo"));
+    assert.ok(llmsBody.includes("GET /fmshrc-orders"));
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.includes("GET /gmp-md"));
@@ -956,6 +974,7 @@ async function main(): Promise<void> {
       EIS_REPORTS_PATH,
       FSIS_HUMANE_PATH,
       EPA_CAFO_PATH,
+      FMSHRC_ORDERS_PATH,
     ]);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.priceUsdc, "0.05");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
@@ -6744,6 +6763,128 @@ async function main(): Promise<void> {
     },
   );
 
+  const fmshrcDir = mkdtempSync(join(tmpdir(), "fmshrc-orders-"));
+  const fmshrcId = "CENT-2025-0091";
+  const fmshrcBody = [
+    "FEDERAL MINE SAFETY AND HEALTH REVIEW COMMISSION",
+    "OFFICE OF THE CHIEF ADMINISTRATIVE LAW JUDGE",
+    "July 2, 2026",
+    "SECRETARY OF LABOR, CIVIL PENALTY PROCEEDING",
+    "Docket No. CENT 2025-0091",
+    "v. BIG SPRING SANDS LLC",
+    "DECISION AND ORDER",
+    "Order No. 9994013 alleges Big Spring violated 30 C.F.R. § 56.14101(a)",
+    ...Array.from({ length: 40 }, (_, i) => `Official FMSHRC Decision and Order paragraph ${i + 1} describing the civil-penalty findings.`),
+  ].join("\n");
+  writeFileSync(
+    join(fmshrcDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "fmshrc-order-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-09-06T00:00:00.000Z",
+      asOf: "2026-07-02",
+      license: "17 USC 105",
+      attribution:
+        "Federal Mine Safety and Health Review Commission. Work of the United States Government; 17 U.S.C. § 105.",
+      sources: {
+        alj: "https://www.fmshrc.gov/decisions/alj",
+        commission: "https://www.fmshrc.gov/decisions/commission",
+        pdfHost: "https://www.fmshrc.gov/sites/default/files/decisions/",
+      },
+      cards: [
+        {
+          id: fmshrcId,
+          docket: fmshrcId,
+          board: "alj",
+          kind: "Decision and Order",
+          institution: "Big Spring Sands LLC",
+          date: "2026-07-02",
+          title: "SECRETARY OF LABOR v. BIG SPRING SANDS LLC",
+          sourceUrl:
+            "https://www.fmshrc.gov/sites/default/files/decisions/alj/Big%20Spring%20Sands%20LLC%20CENT%202025-0091-Decision%20and%20Order.pdf",
+          body: fmshrcBody,
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      FMSHRC_ORDERS_DIR: fmshrcDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-fmshrc-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${FMSHRC_ORDERS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /fmshrc-orders must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; mimeType?: string; extra?: { pdf?: boolean; priceAtomic?: number } }[];
+      };
+      assert.equal(body402.resource, FMSHRC_ORDERS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, FMSHRC_ORDERS_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.mimeType, "application/json");
+      assert.equal(body402.accepts[0]?.extra?.pdf, undefined);
+      assert.equal(body402.accepts[0]?.extra?.priceAtomic, Number(SINGLE_DOC_AMOUNT_ATOMIC));
+      const unpaidId = await fetch(`${base}${FMSHRC_ORDERS_PATH}?id=${encodeURIComponent(fmshrcId)}`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /fmshrc-orders?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("%PDF-"));
+      assert.ok(!leak402.includes("Order No. 9994013 alleges Big Spring violated"));
+      assert.ok(!leak402.includes("9994013"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === FMSHRC_ORDERS_PATH), true);
+      assert.equal(shop.products.length, PUBLIC_BAZAAR_SKUS.length);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(FMSHRC_ORDERS_PATH)), "well-known lists /fmshrc-orders");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /fmshrc-orders"));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[FMSHRC_ORDERS_PATH]);
+      assert.ok(spec.paths[FMSHRC_ORDERS_MANIFEST_PATH]);
+
+      const unpaidSince = await fetch(`${base}${FMSHRC_ORDERS_PATH}?since=2026-09-02`);
+      assert.equal(unpaidSince.status, 304, "empty ?since= delta is 304 unpaid");
+
+      const manifest = await fetch(`${base}${FMSHRC_ORDERS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "fmshrc-orders free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        asOf?: string;
+        cards?: { institution?: string; id?: string; body?: string; sourceUrl?: string }[];
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.cards?.[0]?.institution, "Big Spring Sands LLC");
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+      assert.ok(!JSON.stringify(man).includes("%PDF-"));
+      assert.ok(!JSON.stringify(man).includes("Order No. 9994013 alleges Big Spring violated"));
+
+      const paid = await fetch(`${base}${FMSHRC_ORDERS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      assert.match(paid.headers.get("content-type") ?? "", /application\/json/);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { institution: string; date: string; id: string; body: string }[];
+        records?: { id: string; firm: string; type: string }[];
+      };
+      assert.equal(paidBody.product, "fmshrc-order-bodies");
+      assert.equal(paidBody.cards[0]?.institution, "Big Spring Sands LLC");
+      assert.equal(paidBody.cards[0]?.id, fmshrcId);
+      assert.ok(paidBody.cards[0]?.body.includes("Order No. 9994013 alleges Big Spring violated"));
+      assert.equal(paidBody.records?.[0]?.type, "fmshrc-orders");
+      assert.equal(paidBody.records?.[0]?.firm, "Big Spring Sands LLC");
+    },
+  );
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -7457,7 +7598,7 @@ async function main(): Promise<void> {
     },
     async (base) => {
       assert.equal(cdpEnvStatus(), "CDP env not set");
-      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
+      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
         const unpaid = await fetch(`${base}${path}`);
         assert.equal(unpaid.status, 402, `unpaid ${path} must stay 402`);
         const present = await fetch(`${base}${path}`, { headers: { "X-PAYMENT": "test" } });
@@ -7515,7 +7656,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -7554,6 +7695,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("eis-reports"), true);
   assert.equal(isPublicBazaarSku("fsis-humane"), true);
   assert.equal(isPublicBazaarSku("epa-cafo"), true);
+  assert.equal(isPublicBazaarSku("fmshrc-orders"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
