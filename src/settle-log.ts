@@ -1,8 +1,8 @@
 /**
  * Path-level x402 settle journal for the ticks shop.
  *
- * One JSONL line per successful paid 200 (after verify/settle, or the
- * documented X402_SKIP_SETTLE test path). Not a SKU. Not a public URL.
+ * One JSONL line per verified facilitator / local EIP-3009 settle success.
+ * Skip-settle test 200s are not journaled. Not a SKU. Not a public URL.
  *
  * Does not log X-PAYMENT payloads, facilitator JWTs, settle key files,
  * letter/table bodies, or private keys. Payer is the EIP-3009 `from`
@@ -395,7 +395,7 @@ export function settleEventFromAccessRecord(raw: unknown): SettleEvent | null {
   if (!raw || typeof raw !== "object" || Array.isArray(raw)) return null;
   const rec = raw as Record<string, unknown>;
 
-  if (rec.kind === "paid-door" && Number(rec.status) === 200 && typeof rec.path === "string") {
+  if (rec.kind === "paid-door" && Number(rec.status) === 200 && rec.paymentHeader === true && typeof rec.path === "string") {
     const path = resourcePathOf(rec.path);
     if (!isPaidShopPath(path)) return null;
     const id = typeof rec.id === "string" ? rec.id : "";
@@ -424,6 +424,9 @@ export function settleEventFromAccessRecord(raw: unknown): SettleEvent | null {
   const path = resourcePathOf(parsed.pathname);
   if (!isPaidShopPath(path)) return null;
   const headers = request?.headers ?? rec.headers;
+  const paidHeader =
+    headerMapValue(headers, "x-payment") || headerMapValue(headers, "payment-signature");
+  if (!paidHeader) return null;
   const requestId = headerMapValue(headers, "cf-ray") || headerMapValue(headers, "x-request-id") || `access-${caddyTs(rec.ts)}`;
   return sanitizeSettleEvent({
     ts: caddyTs(rec.ts),
@@ -448,24 +451,8 @@ export function parseAccessLog(text: string): SettleEvent[] {
         event = null;
       }
     } else {
-      const combined = parseCombinedLine(trimmed);
-      if (combined && (combined.method === "GET" || combined.method === "POST") && combined.status === 200) {
-        try {
-          const url = new URL(combined.uri, "https://ticks.bnm.farm");
-          const path = resourcePathOf(url.pathname);
-          if (isPaidShopPath(path)) {
-            event = sanitizeSettleEvent({
-              ts: combined.ts,
-              path,
-              amountAtomic: amountAtomicFromQuery(path, url.search),
-              requestId: `access-${combined.ts}-${path}`,
-              source: "access-log",
-            });
-          }
-        } catch {
-          event = null;
-        }
-      }
+      // Combined logs cannot prove X-PAYMENT. Apollo ticks Caddy has no access file.
+      event = null;
     }
     if (!event) continue;
     const key = `${event.ts}|${event.path}|${event.requestId}`;

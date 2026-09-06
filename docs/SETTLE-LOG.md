@@ -1,56 +1,50 @@
 # Path-level settle journal
 
-Internal shop metrics for Chief. Public x402scan only shows origin totals and no resource path. This journal records **which door paid, when, and how much**.
+Internal shop metrics for Chief. Inventory of what was already on apollo: [`SHOP-METRICS-ON-DISK.md`](./SHOP-METRICS-ON-DISK.md). This file is the **settle** journal only. The request tape stays as-is.
 
-Not a SKU. Not a public URL. Pricing is unchanged. Does not replace the skip-pay search tape in [`SHOP-REQUEST-LOG.md`](./SHOP-REQUEST-LOG.md).
+Not a SKU. Not a public URL. Public `GET /shop-request-log` stays **404**.
 
 ## How paid GETs verify today
 
 `servePaid` / `servePaidPdf` in `src/ticks-door.ts`:
 
-1. Unpaid paid path → HTTP 402 (`X-PAYMENT` / `PAYMENT-SIGNATURE` required).
-2. If `X402_SKIP_SETTLE=1` (local/test only) → serve 200.
-3. Else CDP facilitator `POST {X402_FACILITATOR_URL}/verify` then `/settle` (`transferWithAuthorization` / exact scheme on Base USDC).
+1. Unpaid paid path → HTTP 402 (`X-PAYMENT` / `PAYMENT-SIGNATURE` required). Request tape logs 402.
+2. If `X402_SKIP_SETTLE=1` (local/test only) → serve 200. Request tape logs 200. **No settle journal line.**
+3. Else CDP facilitator `POST {X402_FACILITATOR_URL}/verify` then `/settle`.
 4. Else local EIP-3009 helper when `X402_SETTLE_KEY_FILE` is set on the host (never committed).
 
-There was no settle journal before this file. The request log records 200 vs 402 by IP for skip-pay farming; it does **not** store amount, payer, or tx hash.
+On **verified settle success** (step 3 or 4), the door appends one JSONL line, then serves the 200. Path + atomic amount + tx hash when the settle body has `transaction`.
 
-## What is written (live, going forward)
+Known past settle (from the request tape + unit journal, not this file): **`GET /ticks` $0.05 at 2026-09-05T06:30:52.126Z** (`Mizan/0.1`).
 
-On a successful paid **HTTP 200** (after verify/settle, immediately before the JSON/PDF body), the door appends one JSONL line.
-
-Default file on apollo after deploy:
+## Where it lives on apollo after deploy
 
 ```
 ~/projects/mcp-proxy/data/settle.jsonl
 ```
 
-Cwd is the shop checkout (`~/projects/mcp-proxy`). Directory is created if missing. Gitignored.
+Cwd is the shop checkout (`~/projects/mcp-proxy`). Directory is created if missing. Gitignored. Request tape remains `~/projects/mcp-proxy/data/shop-request-log.jsonl`.
 
 ```json
-{"ts":"2026-09-06T17:00:00.000Z","path":"/form-483","amountAtomic":"20000","requestId":"a36f186d1d9bbde9-CMH","payer":"0x1111111111111111111111111111111111111111","txHash":"0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","source":"live"}
+{"ts":"2026-09-06T17:00:00.000Z","path":"/ticks","amountAtomic":"50000","requestId":"a36f186d1d9bbde9-CMH","payer":"0x1111111111111111111111111111111111111111","txHash":"0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","source":"live"}
 ```
 
 | Field | Notes |
 | --- | --- |
 | `ts` | UTC ISO timestamp |
-| `path` | Resource path only (`/ticks`, `/form-483`, …) |
+| `path` | Resource path only |
 | `amountAtomic` | USDC 6-decimal atomic (`20000` = $0.02, `50000` = $0.05) |
 | `requestId` | `CF-Ray`, else `X-Request-Id`, else a generated `s-…` id |
-| `payer` | EIP-3009 `authorization.from` when the payment header decodes. Wallet address only |
+| `payer` | EIP-3009 `authorization.from` when the payment header decodes. Wallet only — never a key |
 | `txHash` | Facilitator / local settle `transaction` when present |
 | `source` | `live` for the door writer |
 
 Not logged: `X-PAYMENT` payloads, signatures, settle key files, CDP JWTs, letter/table bodies, family passwords.
 
-HTTP 304 (unchanged table / empty `?since=`) and failed settle 402s are **not** journaled.
-
 | Env | Default | Purpose |
 | --- | --- | --- |
 | `SETTLE_LOG` | `1` | `0` disables writes |
 | `SETTLE_LOG_PATH` | `data/settle.jsonl` | absolute or cwd-relative JSONL path |
-
-Restart after deploy so the running `idaho-ticks-x402.service` picks up the writer:
 
 ```bash
 cd ~/projects/mcp-proxy
@@ -58,41 +52,29 @@ git fetch origin cursor/settle-metrics-c08d
 git checkout cursor/settle-metrics-c08d
 npm run build
 systemctl --user restart idaho-ticks-x402.service
+./scripts/settle-metrics.sh
 ```
 
-Restart **only** that unit. Redbubble / Dryland / farm family gates stay untouched.
+Restart **only** that unit.
 
 ## How Chief / apollo reads aggregates
-
-Prefer the script. Do **not** put settle metrics behind a paid door.
 
 ```bash
 cd ~/projects/mcp-proxy
 ./scripts/settle-metrics.sh
 # or: npm run shop:settle-metrics
-# or: node build/settle-log.js
 ```
 
-Prints counts and USDC totals **by path**. Payer addresses and tx hashes are not printed (only `payerCount` / `txCount`).
+By path: count + USDC. Does not print payer addresses or tx hashes.
+
+The skip-pay rollup is still `node build/shop-request-log.js` (loopback `GET /shop-request-log` only).
+
+## Best-effort backfill
+
+Caddy `ticks.bnm.farm` has **no access log**. Past path comes from the request tape.
 
 ```bash
-tail -n 20 data/settle.jsonl
+./scripts/backfill-settles-from-access-log.sh data/shop-request-log.jsonl
 ```
 
-## Best-effort backfill (past events)
-
-Apollo access logs are the ground truth for past paid 200s. This helper is **best-effort and clearly labeled**: it cannot recover payer or tx hash from Caddy/common logs.
-
-Typical inputs on apollo:
-
-- `~/projects/mcp-proxy/data/shop-request-log.jsonl` (paid-door HTTP 200 lines, if that tape was applied)
-- Caddy JSON or combined access logs, if the ticks reverse-proxy writes them (often `/var/log/caddy/access.log` or a journald dump). Live ticks is `via: 1.1 Caddy` behind Cloudflare.
-
-```bash
-cd ~/projects/mcp-proxy
-./scripts/backfill-settles-from-access-log.sh \
-  data/shop-request-log.jsonl \
-  /var/log/caddy/access.log
-```
-
-Rules: HTTP 200 + GET/POST on a paid door path only. Free `/firm-check`, `/sample`, `/{door}/manifest.json`, well-known, MCP, and OpenAPI are skipped. `?id=` on extracted-body doors is recorded as `20000`; page/table/mariners as `50000`. Idempotent on `ts|path|requestId`. `source` is `access-log` or `shop-request-log`.
+Only `kind=paid-door` + `status=200` + `paymentHeader=true`. Infers `50000` / `20000` from path/`?id=`. Cannot recover tx hash. Operator curls on the tape (e.g. `/hhs-oig-reports` skip-settle) will still look like paid 200s — labeled best-effort.

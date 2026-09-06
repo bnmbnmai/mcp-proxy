@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
-# BEST-EFFORT one-shot: paid HTTP 200s by path from Caddy / combined access
-# logs or shop-request-log.jsonl. Cannot recover payer or tx hash.
-# Usage: ./scripts/backfill-settles-from-access-log.sh FILE [FILE...]
+# BEST-EFFORT one-shot from the existing request tape (preferred) or a Caddy
+# JSON log that includes X-PAYMENT. Apollo ticks Caddy has no access file.
+# Only paid-door 200 + paymentHeader:true. Cannot recover tx hash.
+# Usage: ./scripts/backfill-settles-from-access-log.sh data/shop-request-log.jsonl
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$ROOT"
