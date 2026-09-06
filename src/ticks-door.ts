@@ -2889,7 +2889,7 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         title: "SECRETARY OF LABOR v. BIG SPRING SANDS LLC",
         sourceUrl:
           "https://www.fmshrc.gov/sites/default/files/decisions/alj/Big%20Spring%20Sands%20LLC%20CENT%202025-0091-Decision%20and%20Order.pdf",
-        body: "DECISION AND ORDER. CIVIL PENALTY PROCEEDING. Docket No. CENT 2025-0091. Order No. 9994013 alleges Big Spring violated 30 C.F.R. § 56.14101(a).",
+        body: "DECISION AND ORDER. CIVIL PENALTY PROCEEDING. Docket No. CENT 2025-0091. Official FMSHRC ALJ findings extracted from the decision PDF.",
       },
     ],
   },

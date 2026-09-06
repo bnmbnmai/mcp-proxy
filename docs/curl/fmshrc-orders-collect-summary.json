@@ -1,0 +1,108 @@
+{
+  "source": {
+    "alj": "https://www.fmshrc.gov/decisions/alj",
+    "commission": "https://www.fmshrc.gov/decisions/commission"
+  },
+  "seed": "https://www.fmshrc.gov/sites/default/files/decisions/alj/Big%20Spring%20Sands%20LLC%20CENT%202025-0091-Decision%20and%20Order.pdf",
+  "liveManifest": "https://ticks.bnm.farm/fmshrc-orders/manifest.json",
+  "fetchedAt": "2026-09-06T17:21:15.096Z",
+  "asOf": "2026-07-23",
+  "status": "ok",
+  "cardCount": 8,
+  "listedCount": 22,
+  "fetchedPdfs": 8,
+  "skippedNoText": 0,
+  "reused": 0,
+  "addedThisRun": 8,
+  "limit": 8,
+  "maxFetch": 12,
+  "note": "Bodies are gitignored (data/fmshrc-orders/). This file is id/institution/docket/date only. Text is official pdftotext, not invented. Collected on this cloud VM into /tmp/fmshrc-orders-live and verified on 127.0.0.1:14020. Live GET https://ticks.bnm.farm/fmshrc-orders stays HTTP 404 until apollo/media-box restarts only idaho-ticks-x402.service.",
+  "ids": [
+    "WEST-2021-0229",
+    "CENT-2025-0091",
+    "CENT-2025-0051",
+    "CENT-2025-0167",
+    "CENT-2024-0092",
+    "WEVA-2024-0205",
+    "WEST-2024-0218",
+    "WEVA-2024-0231"
+  ],
+  "CENT-2025-0091": {
+    "id": "CENT-2025-0091",
+    "institution": "Big Spring Sands LLC",
+    "docket": "CENT-2025-0091",
+    "board": "alj",
+    "kind": "Decision and Order",
+    "date": "2026-07-02",
+    "title": "SECRETARY OF LABOR v. BIG SPRING SANDS LLC",
+    "bodyChars": 50311,
+    "needle": "Order No. 9994013 alleges Big Spring violated",
+    "sourceUrl": "https://www.fmshrc.gov/sites/default/files/decisions/alj/Big%20Spring%20Sands%20LLC%20CENT%202025-0091-Decision%20and%20Order.pdf"
+  },
+  "cards": [
+    {
+      "id": "WEST-2021-0229",
+      "institution": "Canyon Fuel Company, LLC",
+      "board": "alj",
+      "kind": "Decision and Order",
+      "date": "2026-07-23",
+      "title": "SECRETARY OF LABOR v. CANYON FUEL COMPANY, LLC"
+    },
+    {
+      "id": "CENT-2025-0091",
+      "institution": "Big Spring Sands LLC",
+      "board": "alj",
+      "kind": "Decision and Order",
+      "date": "2026-07-02",
+      "title": "SECRETARY OF LABOR v. BIG SPRING SANDS LLC"
+    },
+    {
+      "id": "CENT-2025-0051",
+      "institution": "Trap Rock and Granite Quarries, LLC",
+      "board": "commission",
+      "kind": "Commission Order",
+      "date": "2026-03-09",
+      "title": "Secretary of Labor v. Trap Rock and Granite Quarries, LLC"
+    },
+    {
+      "id": "CENT-2025-0167",
+      "institution": "Doe Run Co.",
+      "board": "alj",
+      "kind": "Decision on Motion",
+      "date": "2026-03-02",
+      "title": "Secretary of Labor v. Doe Run Co."
+    },
+    {
+      "id": "CENT-2024-0092",
+      "institution": "Central Stone Company",
+      "board": "alj",
+      "kind": "Decision and Order",
+      "date": "2025-12-17",
+      "title": "Secretary of Labor v. Central Stone Company"
+    },
+    {
+      "id": "WEVA-2024-0205",
+      "institution": "Harrison County Coal Resources, Inc.",
+      "board": "alj",
+      "kind": "Decision and Order",
+      "date": "2025-09-30",
+      "title": "Secretary of Labor v. Harrison County Coal Resources, Inc."
+    },
+    {
+      "id": "WEST-2024-0218",
+      "institution": "Iron Mountain Quarry, LLC",
+      "board": "alj",
+      "kind": "Decision and Order",
+      "date": "2025-08-20",
+      "title": "Secretary of Labor v. Iron Mountain Quarry, LLC"
+    },
+    {
+      "id": "WEVA-2024-0231",
+      "institution": "CONSOL Mining Company, LLC",
+      "board": "alj",
+      "kind": "Decision and Order",
+      "date": "2025-08-01",
+      "title": "Secretary of Labor v. CONSOL Mining Company, LLC"
+    }
+  ]
+}
