@@ -2,6 +2,8 @@
 
 Local append-only JSONL on the ticks shop host. Not a SKU. Not a public URL. Search stays free. Pricing is unchanged.
 
+Path-level USDC settles (which door paid, amount, tx) are a separate journal: [`SETTLE-LOG.md`](./SETTLE-LOG.md). Apollo inventory: [`SHOP-METRICS-ON-DISK.md`](./SHOP-METRICS-ON-DISK.md). This tape is the skip-pay / search rollup only. Public `GET /shop-request-log` stays 404.
+
 ## What is logged
 
 Every `GET /firm-check` and every paid-door GET/POST (`/ticks` and the official text doors) appends one JSON line. Manifests, `/sample`, well-known, MCP, and OpenAPI are not logged.
