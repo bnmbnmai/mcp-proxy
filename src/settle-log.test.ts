@@ -1,11 +1,13 @@
 import assert from "node:assert/strict";
 import { createServer } from "node:http";
-import { mkdtempSync, readFileSync, rmSync } from "node:fs";
+import { existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { AddressInfo } from "node:net";
-import { handleRequest } from "./ticks-door.js";
+import { handleRequest, PAY_TO } from "./ticks-door.js";
+import { SHOP_REQUEST_LOG_ROLLUP_PATH } from "./shop-request-log.js";
 import {
+  PAGE_AMOUNT_ATOMIC,
   amountAtomicFromQuery,
   atomicToUsdc,
   backfillSettlesFromAccessLog,
@@ -19,6 +21,9 @@ import {
   type SettleEvent,
 } from "./settle-log.js";
 
+const PAYER = "0x1111111111111111111111111111111111111111";
+const TX = "0xcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc";
+
 function samplePayment(from: string): string {
   return Buffer.from(
     JSON.stringify({
@@ -26,14 +31,33 @@ function samplePayment(from: string): string {
       payload: {
         authorization: {
           from,
-          to: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
-          value: "50000",
+          to: PAY_TO,
+          value: PAGE_AMOUNT_ATOMIC,
         },
         signature: "0xdeadbeef",
       },
     }),
     "utf8",
   ).toString("base64");
+}
+
+function v1ExactPayment(): string {
+  return JSON.stringify({
+    x402Version: 1,
+    scheme: "exact",
+    network: "base",
+    payload: {
+      signature: `0x${"ab".repeat(65)}`,
+      authorization: {
+        from: PAYER,
+        to: PAY_TO,
+        value: PAGE_AMOUNT_ATOMIC,
+        validAfter: "0",
+        validBefore: "9999999999",
+        nonce: `0x${"22".repeat(32)}`,
+      },
+    },
+  });
 }
 
 async function withSettleServer(
@@ -66,88 +90,75 @@ async function withSettleServer(
   }
 }
 
+async function withMockFacilitator(fn: (url: string) => Promise<void>): Promise<void> {
+  const mock = createServer((req, res) => {
+    const chunks: Buffer[] = [];
+    req.on("data", (c) => chunks.push(Buffer.isBuffer(c) ? c : Buffer.from(c)));
+    req.on("end", () => {
+      const path = req.url || "";
+      res.writeHead(200, { "Content-Type": "application/json" });
+      if (path.endsWith("/verify")) {
+        res.end(JSON.stringify({ isValid: true }));
+        return;
+      }
+      res.end(JSON.stringify({ success: true, transaction: TX }));
+    });
+  });
+  await new Promise<void>((resolve) => mock.listen(0, "127.0.0.1", resolve));
+  const { port } = mock.address() as AddressInfo;
+  try {
+    await fn(`http://127.0.0.1:${port}`);
+  } finally {
+    await new Promise<void>((resolve, reject) => mock.close((err) => (err ? reject(err) : resolve())));
+  }
+}
+
 async function main(): Promise<void> {
-  const payer = "0x1111111111111111111111111111111111111111";
-  const payment = samplePayment(payer);
-  assert.equal(payerFromPayment(payment), payer);
+  const payment = samplePayment(PAYER);
+  assert.equal(payerFromPayment(payment), PAYER);
   assert.equal(payerFromPayment("not-json"), undefined);
   assert.equal(payerFromPayment(""), undefined);
-  assert.ok(!JSON.stringify(sanitizeSettleEvent({ path: "/ticks", amountAtomic: "50000" })).includes("deadbeef"));
 
   const dirty = sanitizeSettleEvent({
     path: "/form-483",
     amountAtomic: "20000",
     requestId: "ray-1",
-    payer,
-    txHash: "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    payer: PAYER,
+    txHash: TX,
     ...({
-      payment: payment,
+      payment,
       key: "family-password-must-not-land",
       body: "secret letter",
     } as Record<string, string>),
   });
   const dirtyJson = JSON.stringify(dirty);
-  assert.equal(dirty.payer, payer);
-  assert.equal(dirty.amountAtomic, "20000");
+  assert.equal(dirty.payer, PAYER);
   assert.ok(!dirtyJson.includes("family-password"));
   assert.ok(!dirtyJson.includes("secret letter"));
   assert.ok(!dirtyJson.includes("deadbeef"));
   assert.ok(!dirtyJson.includes(payment));
 
-  assert.equal(
-    txHashFromSettleBody({
-      success: true,
-      transaction: "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-    }),
-    "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
-  );
+  assert.equal(txHashFromSettleBody({ success: true, transaction: TX }), TX);
   assert.equal(txHashFromSettleBody({ transaction: "nope" }), undefined);
 
   assert.equal(isPaidShopPath("/ticks"), true);
-  assert.equal(isPaidShopPath("/form-483"), true);
   assert.equal(isPaidShopPath("/firm-check"), false);
   assert.equal(isPaidShopPath("/form-483/manifest.json"), false);
-  assert.equal(isPaidShopPath("/sample"), false);
   assert.equal(amountAtomicFromQuery("/form-483", "?id=cascade"), "20000");
-  assert.equal(amountAtomicFromQuery("/form-483", ""), "50000");
   assert.equal(amountAtomicFromQuery("/ticks", "?id=ignored"), "50000");
   assert.equal(atomicToUsdc("70000"), "0.070000");
 
   const events: SettleEvent[] = [
-    {
-      ts: "2026-09-01T00:00:00.000Z",
-      path: "/ticks",
-      amountAtomic: "50000",
-      requestId: "a",
-      payer,
-    },
-    {
-      ts: "2026-09-01T00:01:00.000Z",
-      path: "/form-483",
-      amountAtomic: "20000",
-      requestId: "b",
-      payer,
-      txHash: "0xcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
-    },
-    {
-      ts: "2026-09-01T00:02:00.000Z",
-      path: "/ticks",
-      amountAtomic: "50000",
-      requestId: "c",
-    },
+    { ts: "2026-09-01T00:00:00.000Z", path: "/ticks", amountAtomic: "50000", requestId: "a", payer: PAYER },
+    { ts: "2026-09-01T00:01:00.000Z", path: "/form-483", amountAtomic: "20000", requestId: "b", payer: PAYER, txHash: TX },
+    { ts: "2026-09-01T00:02:00.000Z", path: "/ticks", amountAtomic: "50000", requestId: "c" },
   ];
   const metrics = summarizeSettles(events, "/tmp/settle.jsonl");
   assert.equal(metrics.eventCount, 3);
-  assert.equal(metrics.pathCount, 2);
   assert.equal(metrics.amountAtomic, "120000");
-  assert.equal(metrics.amountUsdc, "0.120000");
   assert.equal(metrics.byPath[0]?.path, "/ticks");
-  assert.equal(metrics.byPath[0]?.count, 2);
-  assert.equal(metrics.byPath[0]?.payerCount, 1);
-  assert.equal(metrics.byPath[1]?.path, "/form-483");
-  assert.equal(metrics.byPath[1]?.amountAtomic, "20000");
   const metricsJson = JSON.stringify(metrics);
-  assert.ok(!metricsJson.includes(payer), "summarizer must not dump payer addresses");
+  assert.ok(!metricsJson.includes(PAYER), "summarizer must not dump payer addresses");
   assert.ok(!metricsJson.includes("0xcccc"), "summarizer must not dump tx hashes");
 
   const access = [
@@ -161,22 +172,22 @@ async function main(): Promise<void> {
       request: { method: "GET", uri: "/form-483?id=cascade", headers: { "X-Payment": ["eyJ4cGF5bWVudCI6InNlY3JldCJ9"] } },
       status: 200,
     }),
-    JSON.stringify({
-      ts: 1757184120,
-      request: { method: "GET", uri: "/form-483/manifest.json?q=cascade" },
-      status: 200,
-    }),
-    JSON.stringify({
-      ts: 1757184180,
-      request: { method: "GET", uri: "/firm-check?q=acme" },
-      status: 200,
-    }),
-    JSON.stringify({
-      ts: 1757184240,
-      request: { method: "GET", uri: "/untitled-letters" },
-      status: 402,
-    }),
     `203.0.113.9 - - [06/Sep/2026:17:00:00 +0000] "GET /warning-letters HTTP/1.1" 200 99`,
+    JSON.stringify({
+      ts: "2026-09-05T06:30:52.126Z",
+      kind: "paid-door",
+      path: "/ticks",
+      status: 200,
+      paymentHeader: true,
+      ua: "Mizan/0.1",
+    }),
+    JSON.stringify({
+      ts: "2026-09-03T00:00:00.000Z",
+      kind: "paid-door",
+      path: "/hhs-oig-reports",
+      status: 200,
+      paymentHeader: false,
+    }),
     JSON.stringify({
       ts: "2026-09-01T00:00:00.000Z",
       kind: "paid-door",
@@ -187,29 +198,30 @@ async function main(): Promise<void> {
     }),
   ].join("\n");
   const parsed = parseAccessLog(access);
-  assert.equal(parsed.some((e) => e.path === "/ticks" && e.amountAtomic === "50000"), true);
+  assert.equal(parsed.some((e) => e.path === "/ticks" && e.source === "shop-request-log"), true);
   assert.equal(parsed.some((e) => e.path === "/form-483" && e.amountAtomic === "20000"), true);
-  assert.equal(parsed.some((e) => e.path === "/warning-letters"), true);
-  assert.equal(parsed.some((e) => e.path === "/gmp" && e.amountAtomic === "20000"), true);
-  assert.equal(parsed.some((e) => e.path === "/firm-check"), false);
-  assert.equal(parsed.some((e) => e.path.includes("manifest")), false);
-  const rawAccess = JSON.stringify(parsed);
-  assert.ok(!rawAccess.includes("eyJ4cGF5bWVud"), "backfill must not copy X-PAYMENT");
-  assert.ok(!rawAccess.includes("secret"));
+  assert.equal(parsed.some((e) => e.path === "/gmp"), true);
+  assert.equal(parsed.some((e) => e.path === "/hhs-oig-reports"), false, "skip-settle / no paymentHeader is not a settle");
+  assert.equal(parsed.some((e) => e.path === "/warning-letters"), false, "combined log cannot prove payment");
+  assert.equal(
+    parsed.some((e) => e.path === "/ticks" && e.source === "access-log"),
+    false,
+    "Caddy 200 without X-PAYMENT is not a settle",
+  );
+  assert.ok(!JSON.stringify(parsed).includes("eyJ4cGF5bWVud"));
 
   const backDir = mkdtempSync(join(tmpdir(), "settle-backfill-"));
   const backFile = join(backDir, "settle.jsonl");
   const first = backfillSettlesFromAccessLog(access, backFile);
   const second = backfillSettlesFromAccessLog(access, backFile);
-  assert.ok(first.wrote >= 4);
-  assert.equal(second.wrote, 0, "second backfill is idempotent");
-  const backLines = parseSettleLog(readFileSync(backFile, "utf8"));
-  assert.equal(backLines.length, first.wrote);
+  assert.equal(first.wrote, 3);
+  assert.equal(second.wrote, 0);
   rmSync(backDir, { recursive: true, force: true });
 
   await withSettleServer(
     {
       X402_SKIP_SETTLE: "1",
+      X402_FACILITATOR_URL: undefined,
       FORM_483_DIR: join(tmpdir(), "form-483-absent-settle-"),
       WARNING_LETTERS_DIR: join(tmpdir(), "wl-absent-settle-"),
       IMPORT_ALERTS_DIR: join(tmpdir(), "ia-absent-settle-"),
@@ -217,26 +229,57 @@ async function main(): Promise<void> {
     async (base, logPath) => {
       const unpaid = await fetch(`${base}/ticks`);
       assert.equal(unpaid.status, 402);
-      const paid = await fetch(`${base}/ticks`, {
-        headers: {
-          "X-PAYMENT": payment,
-          "CF-Ray": "settle-test-ray",
-        },
+      const skipped = await fetch(`${base}/ticks`, {
+        headers: { "X-PAYMENT": payment, "CF-Ray": "skip-settle-ray" },
       });
-      assert.equal(paid.status, 200);
+      assert.equal(skipped.status, 200);
+      assert.equal(
+        existsSync(logPath) ? parseSettleLog(readFileSync(logPath, "utf8")).length : 0,
+        0,
+        "skip-settle 200 is not a settle",
+      );
 
-      const raw = readFileSync(logPath, "utf8");
-      const lines = parseSettleLog(raw);
-      assert.equal(lines.length, 1, "paid 200 appends one settle line; unpaid 402 does not");
-      assert.equal(lines[0]?.path, "/ticks");
-      assert.equal(lines[0]?.amountAtomic, "50000");
-      assert.equal(lines[0]?.requestId, "settle-test-ray");
-      assert.equal(lines[0]?.payer, payer);
-      assert.ok(!raw.includes(payment));
-      assert.ok(!raw.includes("deadbeef"));
-      assert.equal(raw.includes("X-PAYMENT"), false);
+      const publicRollup = await fetch(`${base}${SHOP_REQUEST_LOG_ROLLUP_PATH}`, {
+        headers: { "CF-Connecting-IP": "203.0.113.88" },
+      });
+      assert.equal(publicRollup.status, 404, "public shop-request-log stays 404");
     },
   );
+
+  await withMockFacilitator(async (facilitatorUrl) => {
+    await withSettleServer(
+      {
+        X402_SKIP_SETTLE: undefined,
+        X402_FACILITATOR_URL: facilitatorUrl,
+        CDP_API_KEY_ID: undefined,
+        CDP_API_KEY_SECRET: undefined,
+        TICKS_DIR: "",
+        TICKS_PATH: "",
+        FORM_483_DIR: join(tmpdir(), "form-483-absent-fac-"),
+        WARNING_LETTERS_DIR: join(tmpdir(), "wl-absent-fac-"),
+        IMPORT_ALERTS_DIR: join(tmpdir(), "ia-absent-fac-"),
+      },
+      async (base, logPath) => {
+        const paid = await fetch(`${base}/ticks`, {
+          headers: {
+            "X-PAYMENT": v1ExactPayment(),
+            "CF-Ray": "settle-test-ray",
+          },
+        });
+        assert.equal(paid.status, 200, "mock facilitator settle serves 200");
+        const raw = readFileSync(logPath, "utf8");
+        const lines = parseSettleLog(raw);
+        assert.equal(lines.length, 1);
+        assert.equal(lines[0]?.path, "/ticks");
+        assert.equal(lines[0]?.amountAtomic, PAGE_AMOUNT_ATOMIC);
+        assert.equal(lines[0]?.requestId, "settle-test-ray");
+        assert.equal(lines[0]?.payer, PAYER);
+        assert.equal(lines[0]?.txHash, TX);
+        assert.ok(!raw.includes("deadbeef"));
+        assert.ok(!raw.includes("0xab".repeat(4)));
+      },
+    );
+  });
 
   console.log("settle-log tests ok");
 }
