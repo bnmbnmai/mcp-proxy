@@ -8,6 +8,16 @@ Skip FYR protectiveness letters, transmittals, and deferral memos. ROD cards sta
 
 Habit newest FYR: Cape Fear Wood Preserving 5th FYR (`04-11246061`, signed 2026-09-02).
 
+**Dry-run (this VM):** empty bag **0 → 10** official FYR report bodies (`asOf` **2026-09-02**). Merge onto 5 cached ROD fixtures: **5 → 15** (ROD cards kept). Live shop before apply is **29** ROD cards; apply reuses those and adds FYRs. Bodies are extracted FYR report text (50k–530k chars), not URL stubs.
+
+| id | date | title | site |
+|---|---|---|---|
+| `04-11246061` | 2026-09-02 | Fifth Five-Year Review | Cape Fear Wood Preserving |
+| `03-2517425` | 2026-09-01 | Fourth Five-Year Review | Ryeland Road Arsenic |
+| `03-2517424` | 2026-09-01 | Fifth Five-Year Review | Westinghouse Electric (Sharon Plant) |
+| `06-100036514` | 2026-08-28 | Sixth Five-Year Review | Arkwood, Inc. |
+| `02-765944` | 2026-08-28 | Fifth Five-Year Review | Reynolds Metals Co |
+
 ## Apply on apollo (Chief; not this VM)
 
 ```bash
