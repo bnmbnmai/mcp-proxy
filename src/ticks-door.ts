@@ -495,6 +495,7 @@ import {
   sendLocalShopRequestRollup,
   shopRequestLogPath,
 } from "./shop-request-log.js";
+import { logPaidSettle, settleLogPath, txHashFromSettleBody } from "./settle-log.js";
 import {
   PRODUCT_PUBLIC_ID,
   SAMPLE_HOW_TO_USE,
@@ -3788,10 +3789,13 @@ async function facilitatorVerify(payment: string, requirements: Record<string, u
   return body.isValid === true || body.success === true;
 }
 
-async function facilitatorSettle(payment: string, requirements: Record<string, unknown>): Promise<boolean> {
+type SettleAttempt = { ok: boolean; txHash?: string };
+
+async function facilitatorSettle(payment: string, requirements: Record<string, unknown>): Promise<SettleAttempt> {
   const body = await facilitatorPost("/settle", payment, requirements);
-  if (!body) return false;
-  return body.success === true || body.isValid === true || typeof body.transaction === "string";
+  if (!body) return { ok: false };
+  const ok = body.success === true || body.isValid === true || typeof body.transaction === "string";
+  return { ok, txHash: txHashFromSettleBody(body) };
 }
 
 function localSettleKeyFile(): string {
@@ -3799,9 +3803,9 @@ function localSettleKeyFile(): string {
   return explicit ? resolve(explicit) : "";
 }
 
-async function localEip3009Settle(payment: string, requirements: Record<string, unknown>): Promise<boolean> {
+async function localEip3009Settle(payment: string, requirements: Record<string, unknown>): Promise<SettleAttempt> {
   const keyFile = localSettleKeyFile();
-  if (!keyFile || !existsSync(keyFile)) return false;
+  if (!keyFile || !existsSync(keyFile)) return { ok: false };
   const wrapper = paymentPayload(payment);
   const inner = (wrapper?.payload && typeof wrapper.payload === "object"
     ? (wrapper.payload as Record<string, unknown>)
@@ -3810,14 +3814,14 @@ async function localEip3009Settle(payment: string, requirements: Record<string, 
     ? (inner.authorization as Record<string, unknown>)
     : null);
   const signature = typeof inner.signature === "string" ? inner.signature : "";
-  if (!auth || !signature) return false;
+  if (!auth || !signature) return { ok: false };
   const wantAmount = String(requirements.maxAmountRequired ?? requirements.amount ?? "");
   const to = String(auth.to ?? "").toLowerCase();
   const value = String(auth.value ?? "");
-  if (to !== PAY_TO.toLowerCase()) return false;
-  if (wantAmount && value !== wantAmount) return false;
+  if (to !== PAY_TO.toLowerCase()) return { ok: false };
+  if (wantAmount && value !== wantAmount) return { ok: false };
   const helper = resolve(new URL("./../scripts/local-eip3009-settle.py", import.meta.url).pathname);
-  if (!existsSync(helper)) return false;
+  if (!existsSync(helper)) return { ok: false };
   const { spawn } = await import("node:child_process");
   return await new Promise((resolveOk) => {
     const child = spawn("python3", [helper], {
@@ -3833,18 +3837,19 @@ async function localEip3009Settle(payment: string, requirements: Record<string, 
     });
     child.on("close", (code) => {
       if (code !== 0) {
-        resolveOk(false);
+        resolveOk({ ok: false });
         return;
       }
       try {
         const parsed = JSON.parse(out) as { ok?: boolean; tx?: string };
-        if (parsed.ok && parsed.tx) console.error(`local eip3009 settle ${parsed.tx}`);
-        resolveOk(parsed.ok === true);
+        const txHash = typeof parsed.tx === "string" && /^0x[0-9a-fA-F]{64}$/.test(parsed.tx) ? parsed.tx : undefined;
+        if (parsed.ok && txHash) console.error(`local eip3009 settle ${txHash}`);
+        resolveOk({ ok: parsed.ok === true, txHash });
       } catch {
-        resolveOk(false);
+        resolveOk({ ok: false });
       }
     });
-    child.on("error", () => resolveOk(false));
+    child.on("error", () => resolveOk({ ok: false }));
     child.stdin.write(
       JSON.stringify({
         asset: USDC_BASE,
@@ -6005,6 +6010,15 @@ async function servePaid(
     });
   };
 
+  const journalVerifiedSettle = (txHash?: string) => {
+    logPaidSettle(req, {
+      path: copy.resourcePath,
+      amountAtomic: amount,
+      payment,
+      txHash,
+    });
+  };
+
   const maybeNotModified = (body: unknown): boolean => {
     const envelope = paidEnvelope(body);
     const etag = etagFromPaidEnvelope(sku, envelope);
@@ -6054,11 +6068,15 @@ async function servePaid(
 
   const accept = facilitatorPaymentRequirements(resource, sku, amount);
   const verified = await facilitatorVerify(payment, accept);
-  if (verified && (await facilitatorSettle(payment, accept))) {
+  const settled = verified ? await facilitatorSettle(payment, accept) : { ok: false };
+  if (settled.ok) {
+    journalVerifiedSettle(settled.txHash);
     await serve();
     return;
   }
-  if (await localEip3009Settle(payment, accept)) {
+  const local = await localEip3009Settle(payment, accept);
+  if (local.ok) {
+    journalVerifiedSettle(local.txHash);
     await serve();
     return;
   }
@@ -6118,6 +6136,15 @@ async function servePaidPdf(
     });
   };
 
+  const journalVerifiedSettle = (txHash?: string) => {
+    logPaidSettle(req, {
+      path: copy.resourcePath,
+      amountAtomic: amount,
+      payment,
+      txHash,
+    });
+  };
+
   if (!payment) {
     logPaid(402);
     sendJson(res, 402, body402, { "PAYMENT-REQUIRED": paymentRequiredHeader });
@@ -6142,11 +6169,15 @@ async function servePaidPdf(
 
   const accept = facilitatorPaymentRequirements(resource, sku, amount);
   const verified = await facilitatorVerify(payment, accept);
-  if (verified && (await facilitatorSettle(payment, accept))) {
+  const settled = verified ? await facilitatorSettle(payment, accept) : { ok: false };
+  if (settled.ok) {
+    journalVerifiedSettle(settled.txHash);
     await serve();
     return;
   }
-  if (await localEip3009Settle(payment, accept)) {
+  const local = await localEip3009Settle(payment, accept);
+  if (local.ok) {
+    journalVerifiedSettle(local.txHash);
     await serve();
     return;
   }
@@ -7170,5 +7201,6 @@ if (isMain()) {
     console.error(`ticksDir ${ticksDir() || "(unset)"}`);
     console.error(`board ${board && existsSync(board) ? board : "missing — paid /ticks body will be empty/stale"}`);
     console.error(`shop request log ${shopRequestLogPath()} (rollup: node build/shop-request-log.js or GET ${SHOP_REQUEST_LOG_ROLLUP_PATH} on loopback)`);
+    console.error(`settle journal ${settleLogPath()} (metrics: ./scripts/settle-metrics.sh)`);
   });
 }
