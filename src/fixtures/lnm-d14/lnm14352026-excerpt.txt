@@ -1,0 +1,80 @@
+
+                                  Local Notice to Mariners for Oceania District                                                                    09/02/2026
+
+
+   Private Discrepancies
+
+ Ala Wai Boat Harbor Channel Range Rear Light                                                                          29105           LT EXT                                          PA
+ Ala Wai Boat Harbor Channel Buoy 4                                                                                    29115           OFF STA/SINKING                                 PA
+ Ala Wai Boat Harbor Channel Daybeacon 6                                                                               29125           DAYMK DMGD                                      PA
+ Ala Wai Boat Harbor Channel Daybeacon 8                                                                               29135           DAYMK DMGD                                      PA
+
+
+   Additional MSI Categories
+                   TITLE                  SUBCATEGORY                                                                  DESCRIPTION                                                                    LOCATION
+ Sector Honolulu, Territorial Sea - Ala Wai Marine Events   FIREWORKS Hawaii Explosives and Pyrotechnics, Inc. will be conducting a land fireworks display neighboring Duke Kahanamoku                Lat:
+ Boat Harbor/General/Marine                                 Beach on Fridays from 1915 - 2030 January 03, 2026 to December 26, 2026. Please require all vessels to observe the safety/fallout         21° 16' 53"
+ Events/Fireworks                                           zone radius from the firing site. Vessels and spectators are advised to maintain a distance of at least 210 feet radius from the          Lon:
+                                                            launch site. Contact (808) 968-0600 for further information.                                                                              -157° 50'
+                                                                                                                                                                                                      44"
+
+
+
+
+   Private Discrepancies
+
+ Barbers Point Anchorage Area Bravo Tank Terminal Lighted Buoy A                                                                                     29600           LT EXT                PA
+ West Beach Marina Light 2                                                                                                                           29656           LT EXT                PA
+
+
+
+                                                                                       Island Of Hawaii
+   Additional MSI Categories
+                 TITLE                 SUBCATEGORY                                                                     DESCRIPTION                                                                     LOCATION
+ Sector Honolulu, Territorial Sea -    Marine Events    HI – Kailua Bay and Kona Coast – Canoe Races The Queen Lili`uokalani Outrigger Canoe Races and Festival will occur in Kailua bay and
+ Island Of Hawaii/General/Marine                        along the Kona Coast from Thursday September 3rd, 2026 to Monday September 7th, 2026 from 0630 to 1630. Participants and
+ Events/Regatta (Race)                                  motorized escort vessels will transit along the Kona Coast of the Island of Hawaii between Kailua bay and Honaunau Bay. Mariners are
+                                                        advised to maintain a sharp navigational watch, keep well clear of all participants and safety vessels, and transit the area at a slow, no-
+                                                        wake speed.
+
+
+
+
+   Private Discrepancies
+
+
+
+https://navcen.uscg.gov/msi                                                                                                                                                                                       1/6
+
+9/2/26, 12:58 PM                                                                    Maritime Safety Information Products | Navigation Center
+
+                                                                                             Kaneohe Bay
+   Federal Discrepancies
+                                                       NAME                                                             LLNR                           STATUS                                AID TYPE
+ Kaneohe Bay Channel Daybeacon 5                                                                                28700                  DAYMK IMCH                                 FD
+
+
+   Additional MSI Categories
+                 TITLE                SUBCATEGORY                                                                       DESCRIPTION                                                                      LOCATION
+ Sector Honolulu, Territorial Sea -   Naval Activity    Military amphibious and search and rescue operations may be underway at any time, day or night, within Kaneohe Bay in the vicinity of 21-
+ Kaneohe Bay/General/Naval                              26-06.83N/157-46-11.00W and 21-26-45.00N/157-46-55.00W (approximately .5 NM south of Mokapu Peninsula). Support surface craft will
+ Activity/Military Operations                           be equipped with appropriate day/night signals and markings and can be reached on VHF-Ch 82. In the interest of saftey, it is requested
+                                                        that all vessels that use Sonar contact Water Front Operations on VHF-Ch 82A or by phone at (808) 257-2941 to avoid injury to divers that
+                                                        may be in the area.
+
+
+
+                                                                              Kaneohe Bay Utility Channel
+   Federal Discrepancies
+                                                       NAME                                                            LLNR                            STATUS                                 AID TYPE
+ Kaneohe Bay Utility Channel Light 4                                                                           28860                  DAYMK DMGD                                   FD
+
+
+
+                                                                                             Kauai Island
+   Private Discrepancies
+                                                        NAME                                                               LLNR                          STATUS                                AID TYPE
+ Kikiaola Boat Harbor Range Front Light                                                                            29900                DAYMK DMGD                                    PA
+ Kikiaola Boat Harbor Range Rear Light                                                                             29901                DAYMK DMGD                                    PA
+
+

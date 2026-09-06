@@ -10,7 +10,17 @@ export const PAY_TO = "0xf59621FC406D266e18f314Ae18eF0a33b8401004";
 export const USDC = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913";
 export const NETWORK = "eip155:8453";
 export const TABLE_PATHS = new Set(["/ticks", "/import-alerts"]);
-export const MARINER_PATHS = new Set(["/mariners", "/mariners-d11", "/mariners-d7", "/mariners-d8"]);
+export const MARINER_PATHS = new Set([
+    "/mariners",
+    "/mariners-d11",
+    "/mariners-d7",
+    "/mariners-d8",
+    "/mariners-d1",
+    "/mariners-d5",
+    "/mariners-d9",
+    "/mariners-d14",
+    "/mariners-d17",
+]);
 export const SEARCH_TOOL_NAME = "search";
 export const FIRM_CHECK_TOOL_NAME = "firm-check";
 export const GET_PAGE_TOOL_NAME = "get-page";
@@ -22,6 +32,11 @@ const BAG_BY_PATH = {
     "/mariners-d11": "USCG D11 / Southwest this week's LNM",
     "/mariners-d7": "USCG D7 / Southeast this week's LNM",
     "/mariners-d8": "USCG D8 / Gulf this week's LNM",
+    "/mariners-d1": "USCG D1 / Northeast this week's LNM",
+    "/mariners-d5": "USCG D5 / Mid-Atlantic this week's LNM",
+    "/mariners-d9": "USCG D9 / Great Lakes this week's LNM",
+    "/mariners-d14": "USCG D14 / Pacific this week's LNM",
+    "/mariners-d17": "USCG D17 / Alaska this week's LNM",
     "/warning-letters": "FDA warning-letter bodies. Newest 10 official texts",
     "/untitled-letters": "FDA Untitled Letter text (CDER OPDP + CBER promo PDFs). Newest 10 official texts",
     "/awa": "USDA APHIS AWA inspection-report observation text. Newest 10 official texts",

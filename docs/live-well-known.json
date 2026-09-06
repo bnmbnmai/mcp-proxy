@@ -1,7 +1,7 @@
 {
   "generatedFrom": "https://ticks.bnm.farm/.well-known/x402",
-  "generatedAt": "2026-08-31T03:12:31.874Z",
-  "paidGetCount": 40,
+  "generatedAt": "2026-09-06T19:35:27.837Z",
+  "paidGetCount": 48,
   "resources": [
     "/ticks",
     "/import-alerts",
@@ -40,6 +40,14 @@
     "/ofgem-enforcement",
     "/gain",
     "/orr-enforcement",
+    "/phmsa-orders",
+    "/aaib-reports",
+    "/csb-reports",
+    "/hhs-oig-reports",
+    "/eis-reports",
+    "/fsis-humane",
+    "/epa-cafo",
+    "/fmshrc-orders",
     "/form-483",
     "/gmp",
     "/gmp-md"

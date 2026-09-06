@@ -37,6 +37,12 @@ async function main(): Promise<void> {
   assert.equal(two[0].kind, "table");
   assert.equal(two[1].path, "/ofwat-enforcement");
   assert.equal(two[1].kind, "body");
+  const leftoverMariners = skusFromWellKnown(
+    fixtureWellKnown(["/mariners-d1", "/mariners-d5", "/mariners-d9", "/mariners-d14", "/mariners-d17"]),
+  );
+  assert.ok(leftoverMariners.every((sku) => sku.kind === "mariners" && sku.price === "$0.05"));
+  assert.match(leftoverMariners[0].bag, /D1 \/ Northeast/);
+  assert.match(leftoverMariners[4].bag, /D17 \/ Alaska/);
   const md2 = shopIndexMarkdown(two);
   assert.match(md2, /\/ofwat-enforcement/);
   assert.doesNotMatch(md2, /36 doors|40 doors|Thirty-six|Forty paid/);
