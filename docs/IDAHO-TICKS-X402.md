@@ -40,6 +40,8 @@ List price is **$0.05** USDC (`50000` atomic). Override with `X402_USDC_ATOMIC` 
 | `X402_FACILITATOR_URL` | unset | Public facilitator for real settlement |
 | `X402_USDC_ATOMIC` | `50000` | `/ticks` amount in USDC 6-decimal units ($0.05). Live `idaho-ticks-x402.service` sets this; other doors keep their own `*_USDC_ATOMIC` / `50000` defaults. |
 | `X402_RESOURCE_URL` | request host | Public URL prefix if behind a reverse proxy |
+| `SETTLE_LOG` | `1` | `0` disables the path-level settle JSONL |
+| `SETTLE_LOG_PATH` | `data/settle.jsonl` | On apollo after deploy: `~/projects/mcp-proxy/data/settle.jsonl`. See [`SETTLE-LOG.md`](./SETTLE-LOG.md). |
 
 The door **only reads** the farm-plan price cache. It does not scrape. Refresh ticks on apollo the same way the Market tab already does:
 
