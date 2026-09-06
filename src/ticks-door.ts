@@ -6096,13 +6096,12 @@ async function servePaid(
     });
   };
 
-  let settleTx: string | undefined;
-  const logSettle200 = () => {
+  const journalVerifiedSettle = (txHash?: string) => {
     logPaidSettle(req, {
       path: copy.resourcePath,
       amountAtomic: amount,
       payment,
-      txHash: settleTx,
+      txHash,
     });
   };
 
@@ -6145,7 +6144,6 @@ async function servePaid(
     if (maybeNotModified(body)) return;
     const etag = etagFromPaidEnvelope(sku, paidEnvelope(body));
     logPaid(200);
-    logSettle200();
     sendJson(res, 200, body, { ETag: etag });
   };
 
@@ -6158,13 +6156,13 @@ async function servePaid(
   const verified = await facilitatorVerify(payment, accept);
   const settled = verified ? await facilitatorSettle(payment, accept) : { ok: false };
   if (settled.ok) {
-    settleTx = settled.txHash;
+    journalVerifiedSettle(settled.txHash);
     await serve();
     return;
   }
   const local = await localEip3009Settle(payment, accept);
   if (local.ok) {
-    settleTx = local.txHash;
+    journalVerifiedSettle(local.txHash);
     await serve();
     return;
   }
@@ -6224,13 +6222,12 @@ async function servePaidPdf(
     });
   };
 
-  let settleTx: string | undefined;
-  const logSettle200 = () => {
+  const journalVerifiedSettle = (txHash?: string) => {
     logPaidSettle(req, {
       path: copy.resourcePath,
       amountAtomic: amount,
       payment,
-      txHash: settleTx,
+      txHash,
     });
   };
 
@@ -6248,7 +6245,6 @@ async function servePaidPdf(
       return;
     }
     logPaid(200);
-    logSettle200();
     sendPdf(res, 200, packed.bytes, packed.filename);
   };
 
@@ -6261,13 +6257,13 @@ async function servePaidPdf(
   const verified = await facilitatorVerify(payment, accept);
   const settled = verified ? await facilitatorSettle(payment, accept) : { ok: false };
   if (settled.ok) {
-    settleTx = settled.txHash;
+    journalVerifiedSettle(settled.txHash);
     await serve();
     return;
   }
   const local = await localEip3009Settle(payment, accept);
   if (local.ok) {
-    settleTx = local.txHash;
+    journalVerifiedSettle(local.txHash);
     await serve();
     return;
   }
