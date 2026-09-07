@@ -1,0 +1,101 @@
+{
+  "job": "apply PR 204 scorecard fixes onto live ticks.bnm.farm",
+  "ranOn": "apollo",
+  "hostname": "pop-os",
+  "branch": "cursor/apply-vet402-receipt-e6e8",
+  "servingSha": "ada70dc484cd8d6545db270b6437b07f9ef6d76f",
+  "checkoutSha": "ada70dc484cd8d6545db270b6437b07f9ef6d76f",
+  "sourcePr": "https://github.com/bnmbnmai/mcp-proxy/pull/204",
+  "sourceBranch": "cursor/vet402-receipt-schema-6ae8",
+  "sourceHead": "0334c8475bdd2f65609408871663660d3b58ee4d",
+  "stackedOn": "cursor/apply-bsee-reports-5a99",
+  "stackedOnSha": "4e416e4bd0377a2fe27d72ddbf95da6cbbb05013",
+  "thisApply": "https://github.com/bnmbnmai/mcp-proxy/pull/205",
+  "systemctlUserRestart": {
+    "unit": "idaho-ticks-x402.service",
+    "ok": true,
+    "otherUnitsRestarted": false,
+    "activeEnterTimestamp": "Mon 2026-09-07 17:39:59 MDT",
+    "activeEnterUtc": "2026-09-07T23:39:59Z",
+    "pidAfter": "1084062",
+    "dockerGwUntouched": "Mon 2026-09-07 11:00:23 MDT"
+  },
+  "banner": {
+    "bsee": "/bsee-reports $0.05 USDC",
+    "mcp": "mcp /mcp — 49 tools from /.well-known/x402"
+  },
+  "live": {
+    "unpaidGetTicks": {
+      "status": 402,
+      "amountAtomic": "50000",
+      "hasPaymentRequired": true,
+      "hasPaymentResponse": false
+    },
+    "headTicks": {
+      "public": {
+        "status": 402,
+        "hasPaymentRequired": true,
+        "hasPaymentResponse": false,
+        "note": "Cloudflare HTTP/2 HEAD reports content-length 20; status and PAYMENT-REQUIRED are what probes use"
+      },
+      "loopback": {
+        "status": 402,
+        "hasPaymentRequired": true,
+        "hasPaymentResponse": false,
+        "contentLength": 2566
+      }
+    },
+    "headLlmsTxt": {
+      "public": { "status": 200, "contentType": "text/plain; charset=utf-8" },
+      "loopback": { "status": 200, "contentType": "text/plain; charset=utf-8", "contentLength": 22043 }
+    },
+    "headWellKnownLlms": { "status": 200, "contentType": "text/plain; charset=utf-8" },
+    "headRobots": { "status": 200 },
+    "headWellKnown": { "status": 200 },
+    "wellKnown": {
+      "status": 200,
+      "resourceCount": 49,
+      "extraResourceCount": 49,
+      "hasBsee": true,
+      "bseeUrl": "https://ticks.bnm.farm/bsee-reports"
+    },
+    "shop": {
+      "status": 200,
+      "resourceCount": 49,
+      "network": "eip155:8453"
+    },
+    "bazaar": {
+      "paidOutputRequired": [
+        "ok",
+        "product",
+        "status",
+        "fetchedAt",
+        "asOf",
+        "source",
+        "recordCount",
+        "records",
+        "ticks"
+      ],
+      "wrapperOutputRequired": null
+    },
+    "superfundRodsManifest": {
+      "status": 502,
+      "note": "untouched; Superfund FYR not applied"
+    }
+  },
+  "tests": {
+    "settle-log.test.js": "ok",
+    "ticks-door.test.js": "ok"
+  },
+  "stillHuman": {
+    "x402ListOwnerEndpointsAdd": "Chief/human — not this apply. Listing still 36 until they add the missing paths.",
+    "x402ListVerified": "needs their paid probe after receipts are live",
+    "vet402Reprobe": "after this apply"
+  },
+  "excluded": {
+    "superfundFyr": "not applied",
+    "newCollectCron": "not started",
+    "catalogMain": "not checked out",
+    "redbubble": "untouched"
+  }
+}

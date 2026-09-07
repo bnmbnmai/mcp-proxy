@@ -1,0 +1,18 @@
+# apply PR 204 scorecard fixes — live ticks.bnm.farm
+# serving SHA ada70dc
+# idaho-ticks-x402.service restart Mon 2026-09-07 17:39:59 MDT PID 1084062
+# Restarted only that unit. No collect cron. Superfund untouched.
+
+GET  https://ticks.bnm.farm/ticks                 402  PAYMENT-REQUIRED  amount=50000
+HEAD https://ticks.bnm.farm/ticks                 402  PAYMENT-REQUIRED  (not 405)
+HEAD http://127.0.0.1:4020/ticks                  402  PAYMENT-REQUIRED  Content-Length=2566
+HEAD https://ticks.bnm.farm/llms.txt              200  text/plain
+HEAD http://127.0.0.1:4020/llms.txt               200  text/plain  Content-Length=22043
+HEAD https://ticks.bnm.farm/.well-known/llms.txt  200  text/plain
+HEAD https://ticks.bnm.farm/robots.txt            200
+HEAD https://ticks.bnm.farm/.well-known/x402      200
+GET  https://ticks.bnm.farm/.well-known/x402      200  extra.resourceCount=49  resources=49  has /bsee-reports
+GET  https://ticks.bnm.farm/                      200  resourceCount=49  network=eip155:8453
+GET  https://ticks.bnm.farm/superfund-rods/manifest.json  502  (untouched)
+
+# x402-list owner endpoints_add is still Chief/human (not this apply)

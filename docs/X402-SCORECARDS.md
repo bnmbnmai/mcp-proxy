@@ -1,6 +1,8 @@
 # x402 scorecard fixes (ticks door)
 
-Code PR only. Do **not** merge to `main`. Apollo apply is a later step.
+Do **not** merge to `main`. Live checkout after apollo apply is `cursor/apply-vet402-receipt-e6e8`.
+
+Applied on apollo (2026-09-07): **serving SHA `ada70dc`** (merge of PR 204 @ `0334c84` onto `cursor/apply-bsee-reports-5a99` @ `4e416e4`). Restarted **only** `idaho-ticks-x402.service` at **2026-09-07 17:39:59 MDT** (PID 1084062). Unpaid `GET /ticks` is **402**. `HEAD /ticks` is **402** with `PAYMENT-REQUIRED` (not 405). `HEAD /llms.txt` is **200**. `/.well-known/x402` lists **49** doors including `/bsee-reports` and publishes `extra.resourceCount` 49. x402-list owner `endpoints_add` is still Chief/human. Superfund FYR was not applied. No new collect cron.
 
 ## Issue → fix
 
