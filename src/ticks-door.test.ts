@@ -1089,11 +1089,11 @@ async function main(): Promise<void> {
     assert.ok(!JSON.stringify(sample).includes("citra100mg"));
 
     const ticks402 = paymentRequiredBody("http://127.0.0.1/ticks", "ticks");
-    const ticksExample = (ticks402 as {
+    const ticksBazaarExample = (ticks402 as {
       extensions?: { bazaar?: { info?: { output?: { example?: { product?: string; source?: string } } } } };
     }).extensions?.bazaar?.info?.output?.example;
-    assert.equal(ticksExample?.product, PRODUCT_PUBLIC_ID);
-    assert.ok(!JSON.stringify(ticksExample).includes("idaho-hay-feeder-ticks"));
+    assert.equal(ticksBazaarExample?.product, PRODUCT_PUBLIC_ID);
+    assert.ok(!JSON.stringify(ticksBazaarExample).includes("idaho-hay-feeder-ticks"));
 
     const specSample = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
       paths: Record<string, { get?: { tags?: string[]; "x-payment-info"?: unknown } }>;
