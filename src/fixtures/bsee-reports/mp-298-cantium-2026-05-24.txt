@@ -1,0 +1,224 @@
+                          UNITED STATES DEPARTMENT OF THE INTERIOR                          For Public Release
+                       BUREAU OF SAFETY AND ENVIRONMENTAL ENFORCEMENT
+                                    GULF OF AMERICA REGION
+                            ACCIDENT INVESTIGATION REPORT
+
+
+1. OCCURRED                                            STRUCTURAL DAMAGE
+   DATE:    24-MAY-2026     TIME: 1138     HOURS       CRANE
+                                                       OTHER LIFTING
+2. OPERATOR: Cantium, LLC                              DAMAGED/DISABLED SAFETY SYS.
+   REPRESENTATIVE:                                     INCIDENT >$25K
+   TELEPHONE:                                          H2S/15MIN./20PPM
+   CONTRACTOR:                                         REQUIRED MUSTER
+   REPRESENTATIVE:                                     SHUTDOWN FROM GAS RELEASE
+   TELEPHONE:                                          OTHER
+
+
+3. OPERATOR/CONTRACTOR REPRESENTATIVE/SUPERVISOR         8. OPERATION:
+   ON SITE AT TIME OF INCIDENT:                              X PRODUCTION        TEMP ABAND
+                                                               DRILLING          PERM ABAND
+4. LEASE:     G01315                                           WORKOVER          DECOM PIPELINE
+    AREA:         MP       LATITUDE:                           COMPLETION        DECOM FACILITY
+                          LONGITUDE:                           HELICOPTER        SITE CLEARANCE
+   BLOCK:        298
+                                                               MOTOR VESSEL
+                                                               PIPELINE SEGMENT NO.
+5. PLATFORM: A                                                 OTHER
+   RIG NAME:
+6. ACTIVITY:     EXPLORATION(POE)
+               X DEVELOPMENT/PRODUCTION(DOCD/POD)
+                 DECOMMISSIONING
+                                                         9. CAUSE:
+7. TYPE:
+   INJURIES:                                                 X EQUIPMENT FAILURE
+                                                             X HUMAN ERROR
+         HISTORIC INJURY                                       EXTERNAL DAMAGE
+                                OPERATOR     CONTRACTOR        SLIP/TRIP/FALL
+          REQUIRED EVACUATION                                  WEATHER RELATED
+          LTA (1-3 days)                                     X LEAK
+          LTA (>3 days)                                        UPSET H2O TREATING
+          RW/JT (1-3 days)                                     OVERBOARD DRILLING FLUID
+          RW/JT (>3 days)                                      OTHER
+          FATALITY
+          Other Injury                                   10. WATER DEPTH:         210 FT.
+                                                         11. DISTANCE FROM SHORE:       16     MI.
+     POLLUTION
+   X FIRE                                                12. WIND DIRECTION:
+     EXPLOSION                                                       SPEED:           M.P.H.
+   LWC      HISTORIC BLOWOUT                             13. CURRENT DIRECTION:
+            UNDERGROUND                                               SPEED:          M.P.H.
+            SURFACE
+            DEVERTER                                     14. SEA STATE:         FT.
+            SURFACE EQUIPMENT FAILURE OR PROCEDURES      15. PICTURES TAKEN:
+   COLLISION        HISTORIC       >$25K      <=$25K     16. STATEMENT TAKEN:
+
+
+
+
+MMS - FORM 2010                                                                 PAGE: 1 OF 4
+EV2010R                                                                            02-JUL-2026
+   17. INVESTIGATION FINDINGS:                                                   For Public Release
+
+   INCIDENT SUMMARY:
+
+   At 1138 hours on 24 May 2026, a fire occurred at Main Pass (MP) 298 A located on Lease
+   G01315. MP 298 A is a production platform owned and operated by Cantium, LLC
+   (Cantium). The fire was observed in the vicinity of the Gas Compressor and Glycol
+   Dehydration System. The fire was extinguished by the production operator with a water
+   hose. The platform was shut in and remained out of service pending investigation and
+   verification of the equipment’s condition prior to restart. There were no personnel
+   injuries or pollution as a result of this incident.
+
+
+   SEQUENCE OF EVENTS:
+
+   On 24 May 2026, at approximately 1138 hours, a small flash fire was observed by the
+   Cantium Production Operator during his morning rounds. The Operator was responding to
+   a Pressure Alarm Low (PAL) for the glycol pump when the operator observed a fire on
+   the top deck. The fire was observed near the Glycol Dehydration System and where the
+   Gas Compressor (located on the lower deck) exhaust piping penetrates through the top
+   deck. The Operator immediately grabbed a nearby water hose and quickly extinguished
+   the flame on the top deck. As he continued his inspection of the area, he noticed
+   another flame on the Gas Compressor exhaust piping, on the lower deck. The Operator
+   immediately went down to the lower level and used another water hose to extinguish the
+   flame on the lower deck. Once both fires were extinguished, the Operator shut down
+   both the Compressor and Glycol Dehydration system. The Operator then notified Cantium
+   management of the event and then continued to monitor and cool down the area with
+   water to prevent re-ignition.
+
+   Shortly after being notified of the incident, Cantium personnel arrived on location
+   and initiated evidence preservation and began an incident investigation. Cantium’s
+   investigation consisted of collecting witness statements, equipment photographs,
+   safety system information, operational timelines, and affected equipment
+   documentation.
+
+
+   BSEE INVESTIGATION:
+
+   On 29 May 2026, the Bureau of Safety and Environmental Enforcement (BSEE)
+   investigation team arrived at MP 298 to perform their investigation. The team
+   consisted of a New Orleans District (NOD) Accident Investigator (AI), a NOD Lead
+   Inspector (Lead) and an additional Investigator with the Office of Incident
+   Investigations (OII). The team requested and reviewed documentation of the event,
+   photos of the incident location, interviewed personnel on the facility, and performed
+   a walkthrough of the incident area as well as the rest of the facility.
+
+   Cantium’s investigation determined that glycol leaked from a failed hose connection on
+   one of the glycol pumps (PBA 1210/11). The glycol leaked onto solid decking, flowed
+   across the deck approximately 8 feet until it reached a breach in containment caused
+   by corrosion (pinholes). The pinholes in the deck allowed the glycol to drip onto the
+   gas compressor’s hot exhaust piping at the deck penetration. When the glycol contacted
+   the compressor’s hot exhaust piping, the glycol ignited.
+
+   As a result of reviewing the documentation provided to the investigation team, the
+   BSEE investigation aligned with Cantium’s Root Cause Analysis (RCA), which suggested
+   that a loose glycol pump hose fitting allowed glycol to leak onto the solid deck below
+   the pump. The glycol then “flowed” across the solid deck until it leaked through
+   pinholes in the containment deck and then impacted the compressor hot exhaust piping
+
+MMS - FORM 2010                                                        PAGE: 2 OF 4
+EV2010R                                                                  02-JUL-2026
+                                                                                  For Public Release
+   where it ignited.
+
+   During the investigation, the Platform Operator stated that the glycol pump had been
+   replaced a week earlier. As such, it’s possible that the hose fittings may not have
+   been properly secured/ tightened after the pump was replaced. As a result of the
+   incident, Cantium personnel did a “blitz” inspection of their facilities to look for
+   similar containment deficiencies across their entire fleet. There is a Hot Work Plan
+   in place to correct all these containment breeches while the platform is shut in.
+
+
+   IN CONCLUSION:
+
+   After performing a walkthrough of the facility, and investigating the incident
+   location, the BSEE investigation team determined that this incident was caused by poor
+   containment which allowed glycol to drip through pinholes in the containment deck onto
+   a hot compressor exhaust on the deck below. Once the glycol came into contact with the
+   hot exhaust piping, the fire occurred.
+
+   BSEE recognizes that leaks from production equipment are common throughout the Gulf of
+   America and are experienced by all companies involved in the production of oil and
+   gas. The primary method of minimizing the effects of leaks is through good containment
+   systems beneath the equipment.
+
+   The investigation revealed that Cantium had been operating the facility with multiple
+   breaches in containment. As a result of this fire, Cantium has allocated additional
+   resources to address similar containment issues across this facility and other Cantium
+   facilities across the gulf.
+
+
+
+
+   18. LIST THE PROBABLE CAUSE(S) OF ACCIDENT:
+
+   Human Performance Error: Inattention to task.
+
+   • Personnel failed to adequately secure or tighten the fittings associated with the
+   glycol pump installation after swapping out the glycol pump.
+
+   • Personnel failed to identify containment breeches in the Glycol Dehydration System
+   skid.
+
+   19. LIST THE CONTRIBUTING CAUSE(S) OF ACCIDENT:
+   Equipment Failure: Inadequate equipment maintenance or equipment repairs.
+
+   • Containment breeches under the Glycol Dehydration System allowed glycol to leak onto
+   the hot exhaust piping of the Gas Compressor where it ignited.
+
+   20. LIST THE ADDITIONAL INFORMATION:
+
+
+
+
+   21. PROPERTY DAMAGED:                             NATURE OF DAMAGE:
+    No fire damages to equipment                     Fire
+
+
+
+MMS - FORM 2010                                                          PAGE: 3 OF 4
+EV2010R                                                                   02-JUL-2026
+     ESTIMATED AMOUNT (TOTAL):               $
+                                                                                   For Public Release
+   22. RECOMMENDATIONS TO PREVENT RECURRANCE NARRATIVE:
+    The BSEE New Orleans District has no recommendations to the Office of Incident
+    Investigations at this time.
+
+
+
+
+   23. POSSIBLE OCS VIOLATIONS RELATED TO ACCIDENT:    YES
+
+   24. SPECIFY VIOLATIONS DIRECTLY OR INDIRECTLY CONTRIBUTING. NARRATIVE:
+
+    G- 111 Code C Cantium failed to maintain the containment system at MP 298 A in good
+    condition to prevent the release or discharge of fluids onto hot surfaces, lower decks, or
+    into the Gulf of America Waters. Leaking glycol from a loose hose connection ignited as it
+    fell through pinholes in containment onto the Gas Compressor hot exhaust piping below.
+
+
+   25. DATE OF ONSITE INVESTIGATION:             28. ACCIDENT CLASSIFICATION:
+
+
+
+   26. Investigation Team Members/Panel Members: 29. ACCIDENT INVESTIGATION PANEL FORMED:
+                                                               NO
+
+                                                  OCS REPORT:
+   27. OPERATOR REPORT ON FILE:
+                                                 30. DISTRICT SUPERVISOR:
+                                                      Brody Vial
+
+
+
+
+                                                      APPROVED
+                                                      DATE:        01-JUL-2026
+
+
+
+
+MMS - FORM 2010                                                           PAGE: 4 OF 4
+EV2010R                                                                     02-JUL-2026
+

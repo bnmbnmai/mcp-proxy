@@ -1,0 +1,268 @@
+                          UNITED STATES DEPARTMENT OF THE INTERIOR                        For Public Release
+                               MARINE MINERALS ADMINISTRATION
+                                   GULF OF AMERICA REGION
+                           ACCIDENT INVESTIGATION REPORT
+
+
+1. OCCURRED                                          STRUCTURAL DAMAGE
+   DATE:    17-MAY-2026     TIME: 1515     HOURS   X CRANE
+                                                     OTHER LIFTING
+2. OPERATOR: Talos Energy Ventures, LLC              DAMAGED/DISABLED SAFETY SYS.
+   REPRESENTATIVE:                                   INCIDENT >$25K
+   TELEPHONE:                                        H2S/15MIN./20PPM
+   CONTRACTOR: White Fleet Abandonment, LLC          REQUIRED MUSTER
+   REPRESENTATIVE:                                   SHUTDOWN FROM GAS RELEASE
+   TELEPHONE:                                        OTHER
+
+
+3. OPERATOR/CONTRACTOR REPRESENTATIVE/SUPERVISOR       8. OPERATION:
+   ON SITE AT TIME OF INCIDENT:                              PRODUCTION         TEMP ABAND
+                                                             DRILLING         X PERM ABAND
+4. LEASE:     G03061                                         WORKOVER           DECOM PIPELINE
+    AREA:         MU       LATITUDE:                         COMPLETION         DECOM FACILITY
+                          LONGITUDE:                         HELICOPTER         SITE CLEARANCE
+   BLOCK:      A 85
+                                                             MOTOR VESSEL
+                                                             PIPELINE SEGMENT NO.
+5. PLATFORM: A                                               OTHER
+   RIG NAME:
+6. ACTIVITY:     EXPLORATION(POE)
+                 DEVELOPMENT/PRODUCTION(DOCD/POD)
+               X DECOMMISSIONING
+                                                       9. CAUSE:
+7. TYPE:
+   INJURIES:                                                 EQUIPMENT FAILURE
+                                                           X HUMAN ERROR
+         HISTORIC INJURY
+                                                           X EXTERNAL DAMAGE
+                                OPERATOR     CONTRACTOR      SLIP/TRIP/FALL
+          REQUIRED EVACUATION                                WEATHER RELATED
+          LTA (1-3 days)                                     LEAK
+          LTA (>3 days)                                      UPSET H2O TREATING
+          RW/JT (1-3 days)                                   OVERBOARD DRILLING FLUID
+          RW/JT (>3 days)                                    OTHER
+          FATALITY
+          Other Injury                                 10. WATER DEPTH:         260 FT.
+                                                       11. DISTANCE FROM SHORE:        43     MI.
+     POLLUTION
+     FIRE                                              12. WIND DIRECTION:    SE
+     EXPLOSION                                                     SPEED:       20   M.P.H.
+   LWC      HISTORIC BLOWOUT                           13. CURRENT DIRECTION:
+            UNDERGROUND                                             SPEED:           M.P.H.
+            SURFACE
+            DEVERTER                                   14. SEA STATE:     6   FT.
+            SURFACE EQUIPMENT FAILURE OR PROCEDURES    15. PICTURES TAKEN:
+   COLLISION        HISTORIC       >$25K      <=$25K   16. STATEMENT TAKEN:
+
+
+
+
+MMS - FORM 2010                                                               PAGE: 1 OF 5
+EV2010R                                                                          24-JUL-2026
+   17. INVESTIGATION FINDINGS:                                                   For Public Release
+   On 5/17/2026 at approximately 1515 hours, during decommissioning operations located at
+   Mustang Island 85, Lease G03061, operated by Talos Energy, the slot “C” 30-inch
+   conductor which was secured by 30-inch stationary casing slips, unexpectedly dropped.
+   This caused the temporary crane’s auxiliary line to part and the headache to fall into
+   the work basket occupied by three White Fleet Abandonment decommissioning crew members.
+   There were no injuries or pollution associated with the incident. Operations were
+   suspended until equipment was assessed, the crane was repaired and a recovery plan
+   approved by Talos was completed. At the time of the investigation, Marine Minerals
+   Administration (MMA) personnel were operating under the former Bureau of Safety and
+   Environmental Enforcement (BSEE). Therefore, all MMA personnel referenced in this
+   report will be identified as BSEE personnel.
+
+   The slot “C” (CS6) 30-inch conductor was previously cut 15-feet below mudline. The
+   slot “C” conductor was the only casing installed in this slot, so it has no cement
+   grout or other casings associated with it.
+
+   The White Fleet Abandonment decommissioning crew was in the process of pulling the
+   slot “C” conductor to remove it from the facility when the incident occurred. First,
+   White Fleet Abandonment decommissioning crew members torch cut holes in the slot “C”
+   conductor to pin it near the plus 10 deck. Talos Company Representative and White
+   Fleet Abandonment Supervisor agreed to pin the slot “C” conductor at the plus ten deck
+   opposed to near the top of the conductor due to corrosion degradation near the top of
+   the conductor.   Next, the White Fleet Abandonment decommissioning crew ran three
+   joints of 5-inch work string with attached becket and bails inside the slot “C”
+   conductor to a depth near the torch cut holes at the plus ten deck. The bails were
+   then secured inside the conductor by a 3-inch diameter steel pin that ran through the
+   previously torch cut holes in the conductor at the plus ten deck and secured with
+   thru-bolts and washers.
+
+   With the 30-inch slot “C” conductor connected to the 5-inch work string, the White
+   Fleet Abandonment decommissioning crew began to lift the conductor with casing jacks.
+   During onsite interviews by BSEE with Talos Company Representative and White Fleet
+   Abandonment Supervisor, the weight of the conductor was estimated to be 56,000 pounds.
+   An initial estimate provided to BSEE by email stated the estimated weight to be 75,000
+   pounds. During the initial lift of the conductor off bottom both the casing jack’s
+   stationary (lower assembly) and traveling head (upper assembly) were configured with
+   5-inch bowls and 5-inch slips to accommodate the 5-inch work string. Once the 30-inch
+   conductor was lifted to a height just below the casing jack’s stationary, the 5-inch
+   slips and bowl installed in the stationary were changed out to a 30-inch slips and
+   bowl to accommodate the 30-inch conductor. The White Fleet Abandonment decommissioning
+   crew continued jacking the 30-inch conductor upwards with the casing jack’s traveling
+   head until full stroke was reached. The 30-inch slips were set in the stationary on
+   the 30-inch conductor. The 30-inch slips secured the conductor and supported the
+   conductor while the traveling head which still had 5-inch slips and bowl was lowered.
+   The traveling head with the 5-inch slips were set and secured the work string again,
+   and the casing jack’s traveling head made another stroke upwards. Upon full stroke of
+   the casing jack’s traveling head, the 30-inch conductor slips were set in the
+   stationary and again secured the conductor. The casing jack’s traveling head was
+   lowered approximately 1-foot to ensure the stationary slips held and to allow the
+   bails to be free of the 3-inch pin installed in the conductor. Note the bails have
+   approximately 41-inches of travel. The temporary crane’s auxiliary line was then
+   attached with single joint elevators to the 5-inch work string, becket and bails to
+   allow for the removal of the 5-inch slips and bowl installed in the traveling head.
+   This was in preparation for the 30-inch slips and bowl to be installed in the
+   traveling head to handle the 30-inch conductor.
+
+   The Fluid Crane Operator began to lift the 5-inch work with the temporary crane’s
+
+MMS - FORM 2010                                                        PAGE: 2 OF 5
+EV2010R                                                                  24-JUL-2026
+                                                                                 For Public Release
+   auxiliary line just enough to allow the 5-inch slips installed in the traveling head
+   to be removed by White Fleet Abandonment decommissioning crew members in the work
+   basket. Upon removing the 5-inch slips in the traveling head (15-30 seconds), the 30-
+   inch slips in the stationary lost grip on the 30-inch conductor allowing the conductor
+   to fall approximately 100-foot back to the seafloor while remaining in the bell
+   guides. The pin in the conductor attached to the bails had not yet been removed. When
+   the conductor dropped the temporary crane’s auxiliary line took the conductor’s weight
+   of an estimated 56,000 pounds plus the shock load force. This weight and shock load
+   parted the temporary crane’s auxiliary line allowing the headache ball to drop and
+   make impact on the West side of the work basket extremely close to White Fleet
+   Abandonment decommissioning crew members who had to get out of the way. An all stop
+   was initiated pending an investigation and further evaluation of recovery methods.
+
+   BSEE Investigators and Talos Representatives were unable to make it out to location
+   until 5/22/2026 due to weather. No equipment had been moved since the day of the
+   incident. When BSEE Investigators arrived on 5/22/2026, White Fleet Abandonment
+   decommissioning crew members and Talos Company Representative who were on location the
+   day of the incident had been sent in for a Talos investigation debrief. BSEE
+   Investigators took photos of the area, equipment utilized, 30-inch conductor, and
+   interviewed the Fluid Crane Operator who was still on the platform assisting the Fluid
+   Crane Mechanic with repairs.
+
+   BSEE Investigators documented that all sides of slot “C” conductor had slip die marks
+   and the pin which had been installed in the conductor to secure the 5-inch work string
+   was missing. The drop likely caused the pin to break or deform enough that it came
+   out. BSEE Investigators did note that the torch cut holes in the 30-inch conductor did
+   not appear deformed from the pin impacting. 30-inch slip dies installed in the casing
+   jack’s stationary appeared in good condition and were free of debris which would have
+   made the slips ineffective. The 30-inch slip dies did have casing material embedded in
+   them. BSEE Investigators identified a chain hoist connected to the 30-inch slip
+   handles still installed in the stationary bowl. Investigators sent questions to Talos
+   questioning the manufacturer’s guidance concerning the chain hoist being attached and
+   the possibility of the chain hoist preventing the slips from seating evenly around
+   conductor. Vendor owner of the 30-inch slips stated “The chain hoist should not be
+   connected to the slips while slips are supporting pipe. They should only be used to
+   lift slips out of bottom bowl.” BSEE Investigators confirmed through multiple sources
+   the chain hoist was connected to the 30-inch slips after the conductor slipped to
+   secure the 30-inch slips from falling out the bowl.
+
+    The Fluid Crane Operator stated he did not take any weight beyond the 5-inch work
+   string, becket, and bails which allowed the 5-inch slips installed in the traveling
+   head to be removed. The weight indicator in the crane was analog with no recording
+   capability. BSEE Investigators reviewed the daily report for day of the incident,
+   weather report for the day of the incident, witness statements, JSA, White Fleet
+   Abandonment Procedure for pulling casing with casing jacks, crane records, Talos
+   photos, Talos initial report, Talos Procedure Hazard Review, and Talos Recovery Plan.
+
+   BSEE Investigators followed up with an onsite visit on 6/11/2026 to interview the
+   White Fleet Abandonment decommissioning Supervisor in charge of running the casing
+   jacks and a White Fleet Abandonment decommissioning crew member who was in basket at
+   the time of the incident. The White Fleet Abandonment decommissioning crew reported
+   the casing was moving due to weather conditions but not beyond normal conditions which
+   would require stop work. Weather conditions at the time of the incident were a wind
+   speed of 27 knots and sea state of 6-foot. BSEE Interviews aligned with witness
+   statements and procedure questions were answered by Talos Company Representative and
+   White Fleet Abandonment decommissioning Supervisor. The upper section of the slot “C”
+   conductor and 30-inch stationary slips were sent in for a material evaluation to
+   include dimensional, mechanical, chemistry and a bacterial
+
+MMS - FORM 2010                                                        PAGE: 3 OF 5
+EV2010R                                                                  24-JUL-2026
+                                                                                    For Public Release
+   evaluation. The Drive Pipe Recovery Procedure was discussed, and the temporary crane
+   was inspected. All critical crane parts were changed out, and an annual crane
+   inspection was completed 6/9/2026. A load test was completed on the crane’s main line,
+   and a pull test was completed on the crane’s auxiliary line before operations
+   commenced following the incident.
+
+   The remaining conductors were removed successfully without incident. A spear was
+   utilized after the top section of the slot “C” Conductor was removed. Due to the
+   unknown failure mechanism of the drop, a two-retention method was utilized which
+   incorporated the use of two sets of slips, or one set of slips and a pin inserted
+   above the stationary slips. Note: A controlled cutter was used which expedited the
+   cutting and pinning process.
+
+   The material evaluation report concluded the slot “C” 30-inch conductor showed extreme
+   wall loss predominantly on a quarter section of the casing near the top. This reduced
+   the casing’s resistance against slip crushing forces and led to the slips losing grip
+   as the compromised casing pipe elastically deflected out of shape. The 30-inch
+   stationary slips had minimal wear and were in good overall condition. The material
+   evaluation report recommends that the conductor pipe be inspected prior to pulling
+   operations.
+
+
+   18. LIST THE PROBABLE CAUSE(S) OF ACCIDENT:
+
+   The slot “C” 30-inch conductor had poor structural integrity due to corrosion at the
+   top of the casing where the 30-inch stationary slips were set. The slot “C” conductor’s
+   top section could not sustain the slip forces which allowed the slot “C” conductor to
+   slip through the 30-inch stationary slips and fall back to the initial lift elevation.
+   19. LIST THE CONTRIBUTING CAUSE(S) OF ACCIDENT:
+   Sea conditions impacted conductor movement, but sea conditions remained within the
+   operational requirements set by the Operator.
+   20. LIST THE ADDITIONAL INFORMATION:
+
+   All well conductors and slot conductors other than the slot “C” conductor were removed
+   before and after the incident without issue.
+
+   21. PROPERTY DAMAGED:                              NATURE OF DAMAGE:
+    Temporary Crane's Auxillary line.                 Temporary Cran's Auxillary line parted due
+                                                      to overload condition.
+     ESTIMATED AMOUNT (TOTAL):            $5,000
+   22. RECOMMENDATIONS TO PREVENT RECURRANCE NARRATIVE:
+    A safety alert is recommended to help prevent recurrence. All well casings and especially
+    slot well casings should be evaluated for corrosion degradation and procedures put in
+    place to handle the casing with additional risk mitigations to prevent drop hazards. This
+    can include removing sections of casing instead of removing the entire casing string
+    and/or using additional securing methods.
+
+
+   23. POSSIBLE OCS VIOLATIONS RELATED TO ACCIDENT:      NO
+
+   24. SPECIFY VIOLATIONS DIRECTLY OR INDIRECTLY CONTRIBUTING. NARRATIVE:
+
+    None.
+
+
+
+
+MMS - FORM 2010                                                           PAGE: 4 OF 5
+EV2010R                                                                     24-JUL-2026
+   25. DATE OF ONSITE INVESTIGATION:             28. ACCIDENT CLASSIFICATION:
+                                                                                   For Public Release
+    22-MAY-2026
+
+   26. Investigation Team Members/Panel Members: 29. ACCIDENT INVESTIGATION PANEL FORMED:
+                                                               NO
+
+                                                  OCS REPORT:
+   27. OPERATOR REPORT ON FILE:
+                                                 30. DISTRICT SUPERVISOR:
+                                                     Stephen Martinez
+
+
+
+
+                                                    APPROVED
+                                                    DATE:
+
+
+
+
+MMS - FORM 2010                                                         PAGE: 5 OF 5
+EV2010R                                                                     24-JUL-2026
+

@@ -220,6 +220,11 @@ import {
   FMSHRC_ORDERS_PATH,
 } from "./fmshrc-orders.js";
 import {
+  BSEE_REPORTS_AMOUNT_ATOMIC,
+  BSEE_REPORTS_MANIFEST_PATH,
+  BSEE_REPORTS_PATH,
+} from "./bsee-reports.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -460,6 +465,16 @@ async function main(): Promise<void> {
     assert.equal(fmshrcExtra.pdf, undefined);
     assert.equal(fmshrcExtra.priceAtomic, Number(SINGLE_DOC_AMOUNT_ATOMIC));
     assert.equal(fmshrcExtra.oneDocPath, "/fmshrc-orders?id=");
+    const bsee402Desc = sku402Description("bsee-reports");
+    assert.ok(bsee402Desc.includes("https://ticks.bnm.farm/bsee-reports/manifest.json?q="));
+    assert.ok(bsee402Desc.includes("$0.02"));
+    assert.ok(bsee402Desc.length <= 500, `bsee-reports 402 description is ${bsee402Desc.length}`);
+    assert.ok(!/^Not /m.test(bsee402Desc) && !bsee402Desc.includes("Not the"), "bsee-reports 402 has no leak-test");
+    const bseeExtra = paymentExtra("bsee-reports");
+    assert.equal(bseeExtra.name, "USD Coin");
+    assert.equal(bseeExtra.pdf, undefined);
+    assert.equal(bseeExtra.priceAtomic, Number(SINGLE_DOC_AMOUNT_ATOMIC));
+    assert.equal(bseeExtra.oneDocPath, "/bsee-reports?id=");
     for (const sku of EXTRACTED_BODY_SKUS) {
       const desc = sku402Description(sku);
       assert.ok(desc.includes(`https://ticks.bnm.farm/${sku}/manifest.json?q=`), `${sku} 402 names free search`);
@@ -597,6 +612,7 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.some((r) => r.includes("/fsis-humane")), "well-known lists /fsis-humane");
     assert.ok(wk.resources.some((r) => r.includes("/epa-cafo")), "well-known lists /epa-cafo");
     assert.ok(wk.resources.some((r) => r.includes("/fmshrc-orders")), "well-known lists /fmshrc-orders");
+    assert.ok(wk.resources.some((r) => r.includes("/bsee-reports")), "well-known lists /bsee-reports");
     assert.equal(cdpEnvStatus(), "CDP env not set");
 
     const specRes = await fetch(`${base}${OPENAPI_PATH}`);
@@ -801,6 +817,7 @@ async function main(): Promise<void> {
     assert.ok(spec.paths["/fsis-humane"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/epa-cafo"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/fmshrc-orders"]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths["/bsee-reports"]?.get?.["x-payment-info"]);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
       PUBLIC_BAZAAR_SKUS.length,
@@ -856,6 +873,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /fsis-humane"));
     assert.ok(llmsBody.includes("GET /epa-cafo"));
     assert.ok(llmsBody.includes("GET /fmshrc-orders"));
+    assert.ok(llmsBody.includes("GET /bsee-reports"));
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.includes("GET /gmp-md"));
@@ -6888,6 +6906,132 @@ async function main(): Promise<void> {
     },
   );
 
+  const bseeDir = mkdtempSync(join(tmpdir(), "bsee-reports-"));
+  const bseeId = "mp-298-cantium-2026-05-24";
+  const bseeBody = [
+    "UNITED STATES DEPARTMENT OF THE INTERIOR",
+    "BUREAU OF SAFETY AND ENVIRONMENTAL ENFORCEMENT",
+    "ACCIDENT INVESTIGATION REPORT",
+    "DATE: 24-MAY-2026",
+    "OPERATOR: Cantium, LLC",
+    "LEASE: G01315",
+    "AREA: MP",
+    "BLOCK: 298",
+    "X FIRE",
+    "Cantium’s investigation determined that glycol leaked from a failed hose connection on one of the glycol pumps (PBA 1210/11).",
+    ...Array.from({ length: 40 }, (_, i) => `Official BSEE District Accident Investigation Report paragraph ${i + 1} describing the fire findings.`),
+  ].join("\n");
+  writeFileSync(
+    join(bseeDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "bsee-district-investigation-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-09-07T00:00:00.000Z",
+      asOf: "2026-05-24",
+      license: "17 USC 105",
+      attribution:
+        "Bureau of Safety and Environmental Enforcement, U.S. Department of the Interior. Work of the United States Government; 17 U.S.C. § 105.",
+      sources: {
+        listing:
+          "https://www.bsee.gov/what-we-do/incident-investigations/offshore-incident-investigations/district-investigation-reports",
+        pdfHost: "https://www.bsee.gov/sites/bsee.gov/files/",
+      },
+      cards: [
+        {
+          id: bseeId,
+          title: "Cantium MP 298 A Lease G01315 fire 24-MAY-2026",
+          date: "2026-05-24",
+          lease: "G01315",
+          areaBlock: "MP 298",
+          accidentType: "Fire",
+          institution: "Cantium",
+          sourceUrl:
+            "https://www.bsee.gov/sites/bsee.gov/files/2026-07/MP%20298%20Cantium%2024-May-26.pdf",
+          pdfId: "MP 298 Cantium 24-May-26.pdf",
+          body: bseeBody,
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      BSEE_REPORTS_DIR: bseeDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-bsee-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${BSEE_REPORTS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /bsee-reports must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; mimeType?: string; extra?: { pdf?: boolean; priceAtomic?: number } }[];
+      };
+      assert.equal(body402.resource, BSEE_REPORTS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, BSEE_REPORTS_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.mimeType, "application/json");
+      assert.equal(body402.accepts[0]?.extra?.pdf, undefined);
+      assert.equal(body402.accepts[0]?.extra?.priceAtomic, Number(SINGLE_DOC_AMOUNT_ATOMIC));
+      const unpaidId = await fetch(`${base}${BSEE_REPORTS_PATH}?id=${encodeURIComponent(bseeId)}`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /bsee-reports?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("%PDF-"));
+      assert.ok(!leak402.includes("PBA 1210/11"));
+      assert.ok(!leak402.includes("glycol leaked from a failed hose"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === BSEE_REPORTS_PATH), true);
+      assert.equal(shop.products.length, PUBLIC_BAZAAR_SKUS.length);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(BSEE_REPORTS_PATH)), "well-known lists /bsee-reports");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /bsee-reports"));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[BSEE_REPORTS_PATH]);
+      assert.ok(spec.paths[BSEE_REPORTS_MANIFEST_PATH]);
+
+      const unpaidSince = await fetch(`${base}${BSEE_REPORTS_PATH}?since=2026-09-02`);
+      assert.equal(unpaidSince.status, 304, "empty ?since= delta is 304 unpaid");
+
+      const manifest = await fetch(`${base}${BSEE_REPORTS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "bsee-reports free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        asOf?: string;
+        cards?: { institution?: string; id?: string; body?: string; lease?: string; sourceUrl?: string }[];
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.cards?.[0]?.institution, "Cantium");
+      assert.equal(man.cards?.[0]?.lease, "G01315");
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+      assert.ok(!JSON.stringify(man).includes("%PDF-"));
+      assert.ok(!JSON.stringify(man).includes("PBA 1210/11"));
+
+      const paid = await fetch(`${base}${BSEE_REPORTS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      assert.match(paid.headers.get("content-type") ?? "", /application\/json/);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { institution: string; date: string; id: string; body: string }[];
+        records?: { id: string; firm: string; type: string }[];
+      };
+      assert.equal(paidBody.product, "bsee-district-investigation-bodies");
+      assert.equal(paidBody.cards[0]?.institution, "Cantium");
+      assert.equal(paidBody.cards[0]?.id, bseeId);
+      assert.ok(paidBody.cards[0]?.body.includes("PBA 1210/11"));
+      assert.equal(paidBody.records?.[0]?.type, "bsee-reports");
+      assert.equal(paidBody.records?.[0]?.firm, "Cantium");
+    },
+  );
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -7659,7 +7803,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -7699,6 +7843,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("fsis-humane"), true);
   assert.equal(isPublicBazaarSku("epa-cafo"), true);
   assert.equal(isPublicBazaarSku("fmshrc-orders"), true);
+  assert.equal(isPublicBazaarSku("bsee-reports"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
