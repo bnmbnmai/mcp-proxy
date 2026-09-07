@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtempSync, readFileSync } from "node:fs";
+import { copyFileSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -13,20 +13,28 @@ import {
   LICENSE,
   PRODUCT_ID,
   SEED_LISTINGS,
+  VA_INDEX_URL,
+  VA_SEED_LISTINGS,
   assembleHhsOigReportsSnapshot,
   buildHhsOigReportsManifest,
   collectHhsOigReports,
   filterHhsOigReportsManifest,
   isChromeReportCardHtml,
   isKeptHhsOigPdfName,
+  isOfficialBagPdf,
   isOfficialHhsOigPdf,
   isPdfBytes,
   isSkippedHhsOigPdfName,
+  officialBagPdfUrl,
   officialHhsOigPageUrl,
   officialHhsOigPdfUrl,
+  officialVaOigPageUrl,
+  officialVaOigPdfUrl,
   parseReportCardPage,
   parseReportsIndex,
   parseListingRows,
+  parseVaReportCardPage,
+  parseVaReportsIndex,
   selectHhsOigReportCard,
 } from "./hhs-oig-reports.js";
 
@@ -167,6 +175,106 @@ async function main(): Promise<void> {
   assert.ok(pdfBytes.toString("utf8").includes("Appendix A"));
   assert.equal(HHS_OIG_REPORTS_PATH, "/hhs-oig-reports");
   assert.equal(HHS_OIG_REPORTS_MANIFEST_PATH, "/hhs-oig-reports/manifest.json");
+
+  const vaIndex = parseVaReportsIndex(readFx("vaoig-reports-all.html"));
+  assert.ok(vaIndex.length >= 4, `VA list HTML should yield several reports, got ${vaIndex.length}`);
+  assert.ok(vaIndex.some((r) => r.id === "vaoig-26-00030-213"), "Salisbury 26-00030-213");
+  assert.ok(vaIndex.some((r) => r.id === "vaoig-26-00038-262"), "Tuscaloosa 26-00038-262");
+  assert.ok(vaIndex.some((r) => r.id === "vaoig-26-00045-263"), "Southern Arizona 26-00045-263");
+  assert.ok(vaIndex.some((r) => r.id === "vaoig-25-00255-206"), "Philadelphia 25-00255-206");
+  assert.ok(
+    vaIndex.filter((r) => r.date === "2026-09-04").length >= 4,
+    "new inspections dated 2026-09-04",
+  );
+  assert.ok(vaIndex.every((r) => r.kind === "audit" || r.kind === "evaluation"));
+  assert.equal(
+    vaIndex.some((r) => /data-dashboard|major-management-challenges|jsonapi/i.test(r.pageUrl)),
+    false,
+    "skip VA dashboard / MMC / jsonapi",
+  );
+  assert.equal(officialVaOigPageUrl("https://www.vaoig.gov/reports/all"), null);
+  assert.equal(officialVaOigPageUrl("https://www.vaoig.gov/reports/data-dashboard"), null);
+  assert.equal(officialVaOigPageUrl("https://www.vaoig.gov/jsonapi/node/report"), null);
+  assert.equal(
+    officialVaOigPdfUrl("https://www.vaoig.gov/sites/default/files/reports/2026-09/vaoig-26-00030-213_final.pdf"),
+    "https://www.vaoig.gov/sites/default/files/reports/2026-09/vaoig-26-00030-213_final.pdf",
+  );
+  assert.equal(
+    officialVaOigPdfUrl("https://www.vaoig.gov/sites/default/files/reports/2026-09/vaoig-26-00030-213-highlights.pdf"),
+    null,
+  );
+  assert.ok(isOfficialBagPdf("https://www.vaoig.gov/sites/default/files/reports/2026-09/vaoig-26-00030-213_final.pdf"));
+  assert.ok(VA_INDEX_URL.includes("vaoig.gov/reports/all"));
+
+  const salisbury = parseVaReportCardPage(
+    readFx("vaoig-26-00030-213.html"),
+    "https://www.vaoig.gov/reports/healthcare-facility-inspection/healthcare-facility-inspection-salisbury-va-health-care",
+    { id: "vaoig-26-00030-213" },
+  );
+  assert.equal(salisbury?.id, "vaoig-26-00030-213");
+  assert.equal(salisbury?.reportNumber, "VAOIG-26-00030-213");
+  assert.equal(salisbury?.kind, "evaluation");
+  assert.equal(salisbury?.date, "2026-09-04");
+  assert.equal(
+    salisbury?.sourceUrl,
+    "https://www.vaoig.gov/sites/default/files/reports/2026-09/vaoig-26-00030-213_final.pdf",
+  );
+  const tuscaloosa = parseReportCardPage(
+    readFx("vaoig-26-00038-262.html"),
+    "https://www.vaoig.gov/reports/healthcare-facility-inspection/healthcare-facility-inspection-va-tuscaloosa-healthcare",
+  );
+  assert.equal(tuscaloosa?.id, "vaoig-26-00038-262");
+  assert.equal(
+    tuscaloosa?.sourceUrl,
+    "https://www.vaoig.gov/sites/default/files/reports/2026-09/vaoig-26-00038-262_final.pdf",
+  );
+  const vaAudit = parseVaReportCardPage(
+    readFx("vaoig-24-03691-175.html"),
+    "https://www.vaoig.gov/reports/audit/audit-healthcare-enrollment-program-va-medical-facilities",
+  );
+  assert.equal(vaAudit?.kind, "audit");
+  assert.equal(vaAudit?.reportNumber, "VAOIG-24-03691-175");
+  assert.equal(
+    vaAudit?.sourceUrl,
+    "https://www.vaoig.gov/sites/default/files/reports/2026-08/vaoig-24-03691-175_-_final.pdf",
+  );
+
+  const vaListed = parseListingRows(VA_SEED_LISTINGS);
+  assert.ok(vaListed.length >= 5, "VA habit seeds stay in the same bag");
+  assert.ok(vaListed.every((r) => officialBagPdfUrl(r.sourceUrl)));
+  assert.ok(vaListed.some((r) => r.date === "2026-09-04"));
+
+  const vaDir = mkdtempSync(join(tmpdir(), "hhs-oig-va-"));
+  const tinyPdf = Buffer.from("%PDF-1.4\n1 0 obj<<>>endobj\ntrailer<<>>\n%%EOF\n");
+  mkdirSync(vaDir, { recursive: true });
+  copyFileSync(join(fixtures, "vaoig-reports-all.html"), join(vaDir, "vaoig-reports-all.html"));
+  copyFileSync(join(fixtures, "vaoig-26-00030-213.html"), join(vaDir, "vaoig-26-00030-213.html"));
+  copyFileSync(join(fixtures, "vaoig-26-00038-262.html"), join(vaDir, "vaoig-26-00038-262.html"));
+  copyFileSync(join(fixtures, "vaoig-24-03691-175.html"), join(vaDir, "vaoig-24-03691-175.html"));
+  writeFileSync(join(vaDir, "vaoig-26-00030-213.pdf"), tinyPdf);
+  writeFileSync(join(vaDir, "vaoig-26-00038-262.pdf"), tinyPdf);
+  writeFileSync(join(vaDir, "vaoig-24-03691-175.pdf"), tinyPdf);
+  const prevVaDir = process.env.HHS_OIG_REPORTS_DIR;
+  process.env.HHS_OIG_REPORTS_DIR = mkdtempSync(join(tmpdir(), "hhs-oig-va-cache-"));
+  const vaSnap = await collectHhsOigReports({
+    htmlDir: vaDir,
+    limit: 8,
+    maxFetch: 0,
+    pauseMs: 0,
+  });
+  if (prevVaDir === undefined) delete process.env.HHS_OIG_REPORTS_DIR;
+  else process.env.HHS_OIG_REPORTS_DIR = prevVaDir;
+  assert.ok(vaSnap.cards.length >= 3, `VA fixture collect should cache at least 3 PDFs, got ${vaSnap.cards.length}`);
+  assert.ok(vaSnap.cards.some((c) => c.id === "vaoig-26-00030-213"));
+  assert.ok(vaSnap.cards.some((c) => c.id === "vaoig-26-00038-262"));
+  assert.ok(vaSnap.cards.some((c) => c.id === "vaoig-24-03691-175" && c.kind === "audit"));
+  assert.equal(vaSnap.asOf, "2026-09-04");
+  assert.equal(HHS_OIG_REPORTS_PATH, "/hhs-oig-reports");
+  const vaManifest = buildHhsOigReportsManifest(vaSnap);
+  assert.ok(!JSON.stringify(vaManifest).includes("%PDF-"));
+  assert.equal((vaManifest.sources as { vaIndex?: string }).vaIndex, VA_INDEX_URL);
+  const picked = selectHhsOigReportCard(vaSnap, { id: "26-00030-213" });
+  assert.equal(picked?.id, "vaoig-26-00030-213");
 }
 
 main().catch((err) => {

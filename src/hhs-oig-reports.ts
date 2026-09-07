@@ -2,9 +2,12 @@
 /**
  * HHS OIG–authored full Audit (OAS / A-*) and Evaluation / Inspection (OEI-*)
  * report PDFs under oig.hhs.gov/documents/audit/ and
- * oig.hhs.gov/documents/evaluation/. 17 U.S.C. § 105. Ugly PDF cache.
+ * oig.hhs.gov/documents/evaluation/, plus VA OIG audit / inspection / review
+ * PDFs from vaoig.gov/reports/all (official list HTML; /jsonapi 404s).
+ * Same door GET /hhs-oig-reports. $0.05. 17 U.S.C. § 105. Ugly PDF cache.
  * Paid GET is the official full report PDF. Free manifest is titles/links/counts.
- * Skip *-highlights.pdf, SAR/TMC/budget HTML, recommendations HTML index.
+ * Skip *-highlights.pdf, SAR/TMC/budget HTML, recommendations HTML index,
+ * VA dashboards / major-management-challenges, and people dumps.
  * Kill HHS OIG LEIE UPDATED.csv (people-as-product). Habit: 2026 report index.
  */
 
@@ -18,12 +21,15 @@ export const HHS_OIG_REPORTS_PATH = "/hhs-oig-reports";
 export const HHS_OIG_REPORTS_MANIFEST_PATH = "/hhs-oig-reports/manifest.json";
 export const HHS_OIG_REPORTS_AMOUNT_ATOMIC = "50000";
 export const PRODUCT_ID = "hhs-oig-audit-evaluation-report-pdfs";
-export const PRODUCT_NAME = "HHS OIG audit and evaluation report PDFs";
+export const PRODUCT_NAME = "HHS OIG and VA OIG audit, evaluation, and inspection report PDFs";
 
 export const INDEX_URL = "https://oig.hhs.gov/reports/all/?fy=2026";
 export const AUDIT_HOST = "https://oig.hhs.gov";
+export const VA_INDEX_URL = "https://www.vaoig.gov/reports/all";
+export const VA_HOST = "https://www.vaoig.gov";
 export const LICENSE = "17 USC 105";
-export const ATTRIBUTION = "U.S. Department of Health and Human Services Office of Inspector General";
+export const ATTRIBUTION =
+  "U.S. Department of Health and Human Services Office of Inspector General and Department of Veterans Affairs Office of Inspector General";
 
 export const PAY_TO = "0xf59621FC406D266e18f314Ae18eF0a33b8401004";
 export const USDC = "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913";
@@ -65,14 +71,36 @@ export type HhsOigReportsSnapshot = {
   skipped?: number;
   reused?: number;
   addedThisRun?: number;
-  sources: { index: string; auditHost: string; evaluationHost: string };
+  sources: {
+    index: string;
+    auditHost: string;
+    evaluationHost: string;
+    vaIndex: string;
+    vaPdfHost: string;
+  };
   cards: HhsOigCard[];
 };
 
-const HTTP_UA = "bnm-data-shop/1.0 (HHS OIG audit and evaluation reports; +https://oig.hhs.gov/reports/)";
+const HTTP_UA =
+  "bnm-data-shop/1.0 (HHS OIG + VA OIG audit and evaluation reports; +https://oig.hhs.gov/reports/ +https://www.vaoig.gov/reports/all)";
 const OFFICIAL_HOSTS = new Set(["oig.hhs.gov", "www.oig.hhs.gov"]);
+const VA_OFFICIAL_HOSTS = new Set(["vaoig.gov", "www.vaoig.gov"]);
 const PAGE_PATH_RE = /^\/reports\/all\/20\d{2}\/[a-z0-9][a-z0-9-]{6,220}\/?$/i;
 const PDF_PATH_RE = /^\/documents\/(audit|evaluation)\/(\d+)\/([^/?#]+\.pdf)$/i;
+const VA_REPORT_NUMBER_RE = /^\d{2}-\d{5}-\d{2,3}$/;
+const VA_KEEP_PATHS = new Set([
+  "audit",
+  "healthcare-facility-inspection",
+  "mental-health-inspection-program",
+  "vet-center-inspection-program",
+  "hotline-healthcare-inspection",
+  "review",
+]);
+const VA_PAGE_PATH_RE =
+  /^\/reports\/(audit|healthcare-facility-inspection|mental-health-inspection-program|vet-center-inspection-program|hotline-healthcare-inspection|review)\/[a-z0-9][a-z0-9-]{6,220}\/?$/i;
+const VA_PDF_PATH_RE = /^\/sites\/default\/files\/reports\/(\d{4}-\d{2})\/(vaoig-\d{2}-\d{5}-\d{2,3}[^/?#]*\.pdf)$/i;
+const VA_SKIP_PAGE_RE =
+  /\/reports\/(all|data-dashboard|major-management-challenges|semiannual|congressional|testimony|press)\b/i;
 const HIGHLIGHTS_RE = /highlights/i;
 const SKIP_PAGE_RE =
   /\/(reports\/sar|reports\/tmcs|reports\/recommendations|about-oig\/oig-budget|reports-and-publications\/budget|exclusions)\b/i;
@@ -114,6 +142,73 @@ export const SEED_LISTINGS: HhsOigListing[] = [
   },
 ];
 
+/** Habit VA OIG inspections dated 2026-09-04 plus one recent official audit PDF. Same bag. */
+export const VA_SEED_LISTINGS: HhsOigListing[] = [
+  {
+    id: "vaoig-26-00030-213",
+    reportNumber: "VAOIG-26-00030-213",
+    kind: "evaluation",
+    date: "2026-09-04",
+    title: "Healthcare Facility Inspection of the Salisbury VA Health Care System in North Carolina",
+    pageUrl:
+      "https://www.vaoig.gov/reports/healthcare-facility-inspection/healthcare-facility-inspection-salisbury-va-health-care",
+    sourceUrl: "https://www.vaoig.gov/sites/default/files/reports/2026-09/vaoig-26-00030-213_final.pdf",
+  },
+  {
+    id: "vaoig-26-00038-262",
+    reportNumber: "VAOIG-26-00038-262",
+    kind: "evaluation",
+    date: "2026-09-04",
+    title: "Healthcare Facility Inspection of the VA Tuscaloosa Healthcare System in Alabama",
+    pageUrl:
+      "https://www.vaoig.gov/reports/healthcare-facility-inspection/healthcare-facility-inspection-va-tuscaloosa-healthcare",
+    sourceUrl: "https://www.vaoig.gov/sites/default/files/reports/2026-09/vaoig-26-00038-262_final.pdf",
+  },
+  {
+    id: "vaoig-26-00045-263",
+    reportNumber: "VAOIG-26-00045-263",
+    kind: "evaluation",
+    date: "2026-09-04",
+    title: "Healthcare Facility Inspection of the Southern Arizona VA Health Care System",
+    pageUrl:
+      "https://www.vaoig.gov/reports/healthcare-facility-inspection/healthcare-facility-inspection-southern-arizona-va-health",
+    sourceUrl: "https://www.vaoig.gov/sites/default/files/reports/2026-09/vaoig-26-00045-263_final.pdf",
+  },
+  {
+    id: "vaoig-25-00255-206",
+    reportNumber: "VAOIG-25-00255-206",
+    kind: "evaluation",
+    date: "2026-09-04",
+    title: "Healthcare Facility Inspection of the VA Philadelphia Healthcare System in Pennsylvania",
+    pageUrl:
+      "https://www.vaoig.gov/reports/healthcare-facility-inspection/healthcare-facility-inspection-va-philadelphia-healthcare",
+    sourceUrl: "https://www.vaoig.gov/sites/default/files/reports/2026-09/vaoig-25-00255-206-_final.pdf",
+  },
+  {
+    id: "vaoig-24-03691-175",
+    reportNumber: "VAOIG-24-03691-175",
+    kind: "audit",
+    date: "2026-08-21",
+    title: "Audit of the Healthcare Enrollment Program at VA Medical Facilities",
+    pageUrl: "https://www.vaoig.gov/reports/audit/audit-healthcare-enrollment-program-va-medical-facilities",
+    sourceUrl: "https://www.vaoig.gov/sites/default/files/reports/2026-08/vaoig-24-03691-175_-_final.pdf",
+  },
+];
+
+function bagSources(): HhsOigReportsSnapshot["sources"] {
+  return {
+    index: INDEX_URL,
+    auditHost: `${AUDIT_HOST}/documents/audit/`,
+    evaluationHost: `${AUDIT_HOST}/documents/evaluation/`,
+    vaIndex: VA_INDEX_URL,
+    vaPdfHost: `${VA_HOST}/sites/default/files/reports/`,
+  };
+}
+
+export function vaCollectEnabled(): boolean {
+  return env("HHS_OIG_VA", "1") !== "0";
+}
+
 function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
@@ -141,13 +236,29 @@ export function isoDate(raw: string | null | undefined): string | null {
 export function normalizeReportNumber(raw: string | null | undefined): string | null {
   const text = String(raw || "").trim().toUpperCase();
   const match = text.match(/\b((?:OAS|A|OEI)-\d{2}-\d{2}-\d{3,5})\b/i);
-  if (!match) return null;
-  const num = match[1].toUpperCase();
-  return REPORT_NUMBER_RE.test(num) ? num : null;
+  if (match) {
+    const num = match[1].toUpperCase();
+    return REPORT_NUMBER_RE.test(num) ? num : null;
+  }
+  const va = text.match(/(?:VAOIG-)?(\d{2}-\d{5}-\d{2,3})(?![0-9])/i);
+  if (!va) return null;
+  return VA_REPORT_NUMBER_RE.test(va[1]) ? `VAOIG-${va[1]}` : null;
 }
 
 export function idFromReportNumber(reportNumber: string): string {
   return reportNumber.toLowerCase();
+}
+
+export function kindFromVaPath(pathOrUrl: string | null | undefined): HhsOigKind | null {
+  try {
+    const path = new URL(String(pathOrUrl || ""), VA_HOST).pathname.toLowerCase();
+    const slug = path.split("/").filter(Boolean)[1] || "";
+    if (slug === "audit") return "audit";
+    if (VA_KEEP_PATHS.has(slug)) return "evaluation";
+    return null;
+  } catch {
+    return null;
+  }
 }
 
 export function kindFromLabel(raw: string | null | undefined, reportNumber?: string | null): HhsOigKind | null {
@@ -155,9 +266,18 @@ export function kindFromLabel(raw: string | null | undefined, reportNumber?: str
   if (label === "sar" || label === "tmc" || label === "budget") return null;
   if (label === "audit") return "audit";
   if (label === "evaluation" || label === "inspection") return "evaluation";
+  if (/healthcare facility inspection|mental health inspection|vet center inspection|hotline healthcare inspection|hotline/.test(label)) {
+    return "evaluation";
+  }
+  if (label === "review") return "evaluation";
   const num = (reportNumber || "").toUpperCase();
   if (num.startsWith("OAS-") || num.startsWith("A-")) return "audit";
   if (num.startsWith("OEI-")) return "evaluation";
+  if (num.startsWith("VAOIG-")) {
+    if (/audit/i.test(label)) return "audit";
+    if (label) return "evaluation";
+    return null;
+  }
   return null;
 }
 
@@ -172,6 +292,7 @@ function decodePdfName(name: string): string {
 export function isSkippedHhsOigPdfName(name: string): boolean {
   const n = decodePdfName(name);
   if (HIGHLIGHTS_RE.test(n)) return true;
+  if (/fact[-_]?sheet|one[-_]?pager|infographic|dashboard|summary-only/i.test(n)) return true;
   if (/\.(png|jpe?g|gif|svg|csv|html?)$/i.test(n)) return true;
   if (/^UPDATED\.csv$/i.test(n)) return true;
   return false;
@@ -218,8 +339,52 @@ export function officialHhsOigPdfUrl(urlOrPath: string | null | undefined): stri
   }
 }
 
+export function officialVaOigPageUrl(raw: string | null | undefined): string | null {
+  if (!raw) return null;
+  try {
+    const parsed = new URL(raw.trim(), VA_HOST);
+    if (!VA_OFFICIAL_HOSTS.has(parsed.hostname.toLowerCase())) return null;
+    if (VA_SKIP_PAGE_RE.test(parsed.pathname) || PEOPLE_RE.test(parsed.pathname)) return null;
+    const path = parsed.pathname.replace(/\/+$/, "") || "/";
+    if (!VA_PAGE_PATH_RE.test(path) && !VA_PAGE_PATH_RE.test(`${path}/`)) return null;
+    if (!kindFromVaPath(path)) return null;
+    return `${VA_HOST}${path}`;
+  } catch {
+    return null;
+  }
+}
+
+export function officialVaOigPdfUrl(urlOrPath: string | null | undefined): string | null {
+  if (!urlOrPath) return null;
+  try {
+    const parsed = new URL(urlOrPath.trim(), VA_HOST);
+    if (!VA_OFFICIAL_HOSTS.has(parsed.hostname.toLowerCase())) return null;
+    if (VA_SKIP_PAGE_RE.test(parsed.pathname) || PEOPLE_RE.test(parsed.pathname)) return null;
+    const asset = parsed.pathname.match(VA_PDF_PATH_RE);
+    if (!asset) return null;
+    const file = decodePdfName(asset[2]);
+    if (isSkippedHhsOigPdfName(file)) return null;
+    if (!normalizeReportNumber(file)) return null;
+    return `${VA_HOST}/sites/default/files/reports/${asset[1]}/${file}`;
+  } catch {
+    return null;
+  }
+}
+
+export function officialBagPageUrl(raw: string | null | undefined): string | null {
+  return officialHhsOigPageUrl(raw) || officialVaOigPageUrl(raw);
+}
+
+export function officialBagPdfUrl(raw: string | null | undefined): string | null {
+  return officialHhsOigPdfUrl(raw) || officialVaOigPdfUrl(raw);
+}
+
 export function isOfficialHhsOigPdf(url: string | null | undefined): boolean {
   return Boolean(officialHhsOigPdfUrl(url));
+}
+
+export function isOfficialBagPdf(url: string | null | undefined): boolean {
+  return Boolean(officialBagPdfUrl(url));
 }
 
 export function parseListingRows(rows: HhsOigListing[]): HhsOigListing[] {
@@ -229,9 +394,9 @@ export function parseListingRows(rows: HhsOigListing[]): HhsOigListing[] {
     if (PEOPLE_RE.test(`${row.title} ${row.id} ${row.reportNumber}`)) continue;
     if (LEIE_RE.test(`${row.title} ${row.pageUrl} ${row.sourceUrl}`)) continue;
     const reportNumber = normalizeReportNumber(row.reportNumber || row.id);
-    const kind = kindFromLabel(row.kind, reportNumber);
-    const sourceUrl = officialHhsOigPdfUrl(row.sourceUrl) || "";
-    const pageUrl = officialHhsOigPageUrl(row.pageUrl);
+    const kind = kindFromLabel(row.kind, reportNumber) || kindFromVaPath(row.pageUrl);
+    const sourceUrl = officialBagPdfUrl(row.sourceUrl) || "";
+    const pageUrl = officialBagPageUrl(row.pageUrl);
     const id = (row.id || (reportNumber ? idFromReportNumber(reportNumber) : "")).replace(/-+$/g, "").trim();
     if (!reportNumber || !kind || !pageUrl || !id || seen.has(id)) continue;
     if (!KEEP_KINDS.has(kind) && kind !== "audit" && kind !== "evaluation") continue;
@@ -298,11 +463,95 @@ export function parseReportsIndex(html: string): HhsOigListing[] {
   return rows;
 }
 
+export function parseVaReportsIndex(html: string): HhsOigListing[] {
+  const rows: HhsOigListing[] = [];
+  const seen = new Set<string>();
+  const cards = String(html || "").split(/<article\b/i).slice(1);
+  for (const card of cards) {
+    const href = (card.match(/href=["'](\/reports\/[^"'>\s]+)/i) || [])[1] || "";
+    const pageUrl = officialVaOigPageUrl(href);
+    if (!pageUrl) continue;
+    const title = decodeHtml((card.match(/field--name-title[^>]*>([\s\S]*?)<\//i) || [])[1] || "");
+    const reportNumber = normalizeReportNumber(
+      (card.match(/field-report-number[\s\S]*?field__item">([^<]+)/i) || [])[1] || "",
+    );
+    const date = isoDate((card.match(/datetime="(\d{4}-\d{2}-\d{2})/i) || [])[1] || "");
+    const kind = kindFromVaPath(pageUrl) || kindFromLabel("", reportNumber);
+    if (!reportNumber || !kind) continue;
+    const id = idFromReportNumber(reportNumber);
+    if (seen.has(id)) continue;
+    seen.add(id);
+    rows.push({
+      id,
+      reportNumber,
+      kind,
+      date,
+      title: title || reportNumber,
+      pageUrl,
+      sourceUrl: "",
+    });
+  }
+  return rows;
+}
+
+export function parseVaReportCardPage(
+  html: string,
+  pageUrl: string,
+  prior?: Partial<HhsOigListing>,
+): HhsOigListing | null {
+  const officialPage = officialVaOigPageUrl(pageUrl) || officialVaOigPageUrl(prior?.pageUrl);
+  if (!officialPage) return null;
+  const reportNumber =
+    normalizeReportNumber(prior?.reportNumber) ||
+    normalizeReportNumber((html.match(/Report Number<\/div>[\s\S]*?field__item">([^<]+)/i) || [])[1] || "") ||
+    normalizeReportNumber((html.match(/\b(\d{2}-\d{5}-\d{2,3})\b/) || [])[1] || "");
+  const kind =
+    kindFromVaPath(officialPage) ||
+    kindFromLabel(prior?.kind, reportNumber) ||
+    kindFromLabel((html.match(/Report Type<\/div>[\s\S]*?field__item">([^<]+)/i) || [])[1] || "", reportNumber);
+  if (!reportNumber || !kind) return null;
+  let sourceUrl = officialVaOigPdfUrl(prior?.sourceUrl);
+  if (!sourceUrl) {
+    for (const href of extractHrefCandidates(html)) {
+      const pdf = officialVaOigPdfUrl(href);
+      if (pdf) {
+        sourceUrl = pdf;
+        break;
+      }
+    }
+  }
+  if (!sourceUrl) return null;
+  const date =
+    isoDate(prior?.date) ||
+    isoDate((html.match(/datetime="(\d{4}-\d{2}-\d{2})/i) || [])[1] || "") ||
+    isoDate((html.match(/Issue Date[\s\S]*?datetime="(\d{4}-\d{2}-\d{2})/i) || [])[1] || "");
+  const title =
+    (prior?.title || "").trim() ||
+    decodeHtml((html.match(/<h1[^>]*>\s*([\s\S]*?)<\/h1>/i) || [])[1] || "") ||
+    decodeHtml((html.match(/<title>([^<]+)<\/title>/i) || [])[1] || "").replace(
+      /\s+\|\s+Department of Veterans Affairs OIG.*$/i,
+      "",
+    ) ||
+    reportNumber;
+  return {
+    id: prior?.id || idFromReportNumber(reportNumber),
+    reportNumber,
+    kind,
+    date,
+    title,
+    pageUrl: officialPage,
+    sourceUrl,
+  };
+}
+
 export function parseReportCardPage(
   html: string,
   pageUrl: string,
   prior?: Partial<HhsOigListing>,
 ): HhsOigListing | null {
+  if (officialVaOigPageUrl(pageUrl) || officialVaOigPageUrl(prior?.pageUrl)) {
+    return parseVaReportCardPage(html, pageUrl, prior);
+  }
   const officialPage = officialHhsOigPageUrl(pageUrl);
   if (!officialPage) return null;
   const reportNumber =
@@ -366,11 +615,7 @@ export function emptyHhsOigReportsSnapshot(reason: string): HhsOigReportsSnapsho
     asOf: null,
     license: LICENSE,
     attribution: ATTRIBUTION,
-    sources: {
-      index: INDEX_URL,
-      auditHost: `${AUDIT_HOST}/documents/audit/`,
-      evaluationHost: `${AUDIT_HOST}/documents/evaluation/`,
-    },
+    sources: bagSources(),
     cards: [],
   };
 }
@@ -380,23 +625,19 @@ export function assembleHhsOigReportsSnapshot(
   fetchedAt = new Date().toISOString(),
 ): HhsOigReportsSnapshot {
   const kept = cards
-    .filter((c) => officialHhsOigPdfUrl(c.sourceUrl) && c.bytes > 0 && c.sha256)
+    .filter((c) => officialBagPdfUrl(c.sourceUrl) && c.bytes > 0 && c.sha256)
     .sort((a, b) => `${b.date ?? ""}${b.id}`.localeCompare(`${a.date ?? ""}${a.id}`));
   const asOf = kept.map((c) => c.date).filter((d): d is string => Boolean(d)).sort().at(-1) ?? null;
   return {
     ok: true,
     product: PRODUCT_ID,
     status: kept.length > 0 ? "ok" : "empty",
-    reason: kept.length > 0 ? null : "Official HHS OIG audit and evaluation report PDFs were not cached.",
+    reason: kept.length > 0 ? null : "Official HHS OIG and VA OIG audit / evaluation / inspection report PDFs were not cached.",
     fetchedAt,
     asOf,
     license: LICENSE,
     attribution: ATTRIBUTION,
-    sources: {
-      index: INDEX_URL,
-      auditHost: `${AUDIT_HOST}/documents/audit/`,
-      evaluationHost: `${AUDIT_HOST}/documents/evaluation/`,
-    },
+    sources: bagSources(),
     cards: kept,
   };
 }
@@ -437,7 +678,7 @@ export function readCachedPdf(card: Pick<HhsOigCard, "id" | "pdfFile">): Uint8Ar
 }
 
 export async function fetchHhsOigBytes(url: string): Promise<Uint8Array> {
-  const official = officialHhsOigPdfUrl(url) || url;
+  const official = officialBagPdfUrl(url) || url;
   const res = await fetch(official, {
     headers: { "User-Agent": HTTP_UA, Accept: "application/pdf,*/*" },
     redirect: "follow",
@@ -476,6 +717,11 @@ function maxIndexPages(): number {
   return Number.isFinite(n) && n > 0 ? Math.floor(n) : 8;
 }
 
+function maxVaIndexPages(): number {
+  const n = Number(env("HHS_OIG_VA_INDEX_PAGES", "3"));
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 3;
+}
+
 function readNamedFile(dir: string, names: string[]): string | null {
   if (!dir) return null;
   for (const name of names) {
@@ -489,7 +735,41 @@ function pause(ms: number): Promise<void> {
   return new Promise((r) => setTimeout(r, ms));
 }
 
+async function loadVaOfficialListings(dir: string): Promise<HhsOigListing[]> {
+  if (!vaCollectEnabled()) return [];
+  if (dir) {
+    const html = readNamedFile(dir, ["vaoig-reports-all.html", "va-reports-all.html"]);
+    if (!html) return [];
+    const fromIndex = parseVaReportsIndex(html);
+    const enriched: HhsOigListing[] = [];
+    for (const row of [...fromIndex, ...VA_SEED_LISTINGS]) {
+      const pageHtml = readNamedFile(dir, [`${row.id}.html`, `${row.id}.htm`]);
+      if (pageHtml) {
+        const parsed = parseVaReportCardPage(pageHtml, row.pageUrl, row);
+        if (parsed) enriched.push(parsed);
+      } else if (officialVaOigPdfUrl(row.sourceUrl) || officialVaOigPageUrl(row.pageUrl)) {
+        enriched.push(row);
+      }
+    }
+    return parseListingRows(enriched);
+  }
+  try {
+    const pages: HhsOigListing[] = [];
+    for (let page = 0; page < maxVaIndexPages(); page += 1) {
+      const url = page === 0 ? VA_INDEX_URL : `${VA_INDEX_URL}?page=${page}`;
+      const html = await fetchHhsOigText(url);
+      const rows = parseVaReportsIndex(html);
+      if (!rows.length) break;
+      pages.push(...rows);
+    }
+    return parseListingRows([...pages, ...VA_SEED_LISTINGS]);
+  } catch {
+    return parseListingRows(VA_SEED_LISTINGS);
+  }
+}
+
 async function loadOfficialListings(dir: string): Promise<{ listed: HhsOigListing[]; listedCount: number }> {
+  let hhs: HhsOigListing[] = [];
   if (dir) {
     const html = readNamedFile(dir, ["reports-2026.html", "index.html", "listing.html"]);
     const fromIndex = html ? parseReportsIndex(html) : [];
@@ -503,24 +783,25 @@ async function loadOfficialListings(dir: string): Promise<{ listed: HhsOigListin
         enriched.push(row);
       }
     }
-    const listed = parseListingRows(enriched);
-    return { listed, listedCount: listed.length };
-  }
-  try {
-    const pages: HhsOigListing[] = [];
-    for (let page = 1; page <= maxIndexPages(); page += 1) {
-      const url = page === 1 ? INDEX_URL : `https://oig.hhs.gov/reports/all/?fy=2026&page=${page}`;
-      const html = await fetchHhsOigText(url);
-      const rows = parseReportsIndex(html);
-      if (!rows.length) break;
-      pages.push(...rows);
+    hhs = parseListingRows(enriched);
+  } else {
+    try {
+      const pages: HhsOigListing[] = [];
+      for (let page = 1; page <= maxIndexPages(); page += 1) {
+        const url = page === 1 ? INDEX_URL : `https://oig.hhs.gov/reports/all/?fy=2026&page=${page}`;
+        const html = await fetchHhsOigText(url);
+        const rows = parseReportsIndex(html);
+        if (!rows.length) break;
+        pages.push(...rows);
+      }
+      hhs = parseListingRows([...pages, ...SEED_LISTINGS]);
+    } catch {
+      hhs = parseListingRows(SEED_LISTINGS);
     }
-    const listed = parseListingRows([...pages, ...SEED_LISTINGS]);
-    if (listed.length > 0) return { listed, listedCount: listed.length };
-  } catch {
-    /* keep seeds */
   }
-  return { listed: parseListingRows(SEED_LISTINGS), listedCount: SEED_LISTINGS.length };
+  const va = await loadVaOfficialListings(dir);
+  const listed = parseListingRows([...hhs, ...va]);
+  return { listed, listedCount: listed.length };
 }
 
 export async function collectHhsOigReports(opts?: {
@@ -559,7 +840,7 @@ export async function collectHhsOigReports(opts?: {
     if (!dir && pauseMs) await pause(pauseMs);
     try {
       let listing = row;
-      if (!officialHhsOigPdfUrl(listing.sourceUrl)) {
+      if (!officialBagPdfUrl(listing.sourceUrl)) {
         const pageHtml = dir ? readNamedFile(dir, [`${row.id}.html`]) : await fetchHhsOigText(row.pageUrl);
         if (!pageHtml) {
           skipped += 1;
@@ -572,7 +853,7 @@ export async function collectHhsOigReports(opts?: {
         }
         listing = parsed;
       }
-      const sourceUrl = officialHhsOigPdfUrl(listing.sourceUrl);
+      const sourceUrl = officialBagPdfUrl(listing.sourceUrl);
       if (!sourceUrl) {
         skipped += 1;
         continue;
@@ -652,7 +933,7 @@ export function buildHhsOigReportsManifest(snap: HhsOigReportsSnapshot | null): 
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Free index for /hhs-oig-reports. Count + report number + date + official OIG page + PDF URL only. Paid GET /hhs-oig-reports is the official full Audit / Evaluation report PDF. License 17 USC 105.",
+    note: "Free index for /hhs-oig-reports. Count + report number + date + official OIG page + PDF URL only. Paid GET /hhs-oig-reports is the official full HHS OIG Audit / Evaluation or VA OIG audit / inspection / review PDF. Same door. License 17 USC 105.",
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: PAY_TO,
@@ -674,11 +955,7 @@ export function buildHhsOigReportsManifest(snap: HhsOigReportsSnapshot | null): 
       bytes: c.bytes,
     })),
     schema: { fields: ["id", "reportNumber", "kind", "date", "title", "pageUrl", "sourceUrl", "bytes"] },
-    sources: snap?.sources ?? {
-      index: INDEX_URL,
-      auditHost: `${AUDIT_HOST}/documents/audit/`,
-      evaluationHost: `${AUDIT_HOST}/documents/evaluation/`,
-    },
+    sources: snap?.sources ?? bagSources(),
   };
 }
 
@@ -713,7 +990,15 @@ export function selectHhsOigReportCard(
   const one = opts?.id?.trim();
   if (one) {
     const needle = one.toLowerCase();
-    return all.find((c) => c.id === needle || c.reportNumber.toLowerCase() === needle) ?? null;
+    return (
+      all.find(
+        (c) =>
+          c.id === needle ||
+          c.reportNumber.toLowerCase() === needle ||
+          c.id === `vaoig-${needle}` ||
+          c.reportNumber.toLowerCase() === `vaoig-${needle}`,
+      ) ?? null
+    );
   }
   if (opts?.before?.trim()) {
     const before = opts.before.trim().toLowerCase();
