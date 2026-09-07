@@ -5,7 +5,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, PRODUCT_NAME, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2, paymentExtra, sku402Description, isOrganicHay, isWaterTick, buildTicksManifest, countWord } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, PRODUCT_NAME, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, paidOutputJsonSchema, settlementReceiptHeaders, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2, paymentExtra, sku402Description, isOrganicHay, isWaterTick, buildTicksManifest, countWord } from "./ticks-door.js";
 import { EXTRACTED_BODY_SKUS, PAGE_AMOUNT_ATOMIC, SINGLE_DOC_AMOUNT_ATOMIC } from "./paid-records.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
@@ -291,6 +291,8 @@ async function main(): Promise<void> {
   assert.equal(isOrganicHay({ id: "hay.ams_2904.north_inter_mountains.organic.alfalfa.supreme.large_square" }), false);
   assert.equal(isOrganicHay({ id: "dairy.ams_2997.organic_ads.milk_half_gal" }), false);
   assert.equal(isOrganicHay({ id: "grain.ams_3802.national.organic.yellow_corn" }), false);
+  assert.deepEqual(settlementReceiptHeaders(null, { network: "base" }), {});
+  assert.deepEqual(settlementReceiptHeaders(null, { network: "base" }, ""), {});
 
   await withServer({
     TICKS_PATH: "",
@@ -326,6 +328,16 @@ async function main(): Promise<void> {
     const optTicks = await fetch(`${base}${TICKS_PATH}`, { method: "OPTIONS" });
     assert.equal(optTicks.status, 204);
     assert.match(optTicks.headers.get("access-control-allow-methods") ?? "", /POST/);
+    assert.match(optTicks.headers.get("access-control-allow-methods") ?? "", /HEAD/);
+    const headTicks = await fetch(`${base}${TICKS_PATH}`, { method: "HEAD" });
+    assert.equal(headTicks.status, 402, "HEAD /ticks is the same unpaid wall as GET (uptime probes)");
+    assert.ok(headTicks.headers.get("payment-required"), "HEAD 402 carries PAYMENT-REQUIRED");
+    assert.equal(headTicks.headers.get("payment-response"), null);
+    assert.equal(headTicks.headers.get("x-payment-response"), null);
+    assert.equal(await headTicks.text(), "");
+    const headPaid = await fetch(`${base}${TICKS_PATH}`, { method: "HEAD", headers: { "X-PAYMENT": "test" } });
+    assert.equal(headPaid.status, 402, "HEAD never settles even with a payment header");
+    assert.equal(headPaid.headers.get("payment-response"), null);
     const postWl = await fetch(`${base}${WARNING_LETTERS_PATH}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -344,6 +356,8 @@ async function main(): Promise<void> {
     assert.equal(body.accepts[0]?.payTo, PAY_TO);
     assert.equal(body.accepts[0]?.network, "base");
     assert.ok(res.headers.get("payment-required"), "v2 PAYMENT-REQUIRED header");
+    assert.equal(res.headers.get("payment-response"), null, "unpaid 402 has no settlement receipt");
+    assert.equal(res.headers.get("x-payment-response"), null);
     assert.equal(
       (body.accepts[0] as { maxAmountRequired?: string }).maxAmountRequired,
       TICKS_AMOUNT_ATOMIC,
@@ -374,7 +388,14 @@ async function main(): Promise<void> {
     const v2 = JSON.parse(Buffer.from(pr, "base64").toString("utf8")) as {
       extensions?: { bazaar?: { info?: { input?: { type?: string; method?: string } } } };
       resource?: { description?: string };
+      accepts?: { amount?: string }[];
     };
+    assert.equal(
+      String(v2.accepts?.[0]?.amount),
+      String((body.accepts[0] as { maxAmountRequired?: string }).maxAmountRequired),
+      "v2 header amount matches v1 body maxAmountRequired",
+    );
+    assert.equal(String(v2.accepts?.[0]?.amount), TICKS_AMOUNT_ATOMIC);
     assert.equal(v2.extensions?.bazaar?.info?.input?.type, "http");
     assert.equal(v2.extensions?.bazaar?.info?.input?.method, "GET");
     assert.ok((v2.resource?.description ?? "").includes("Call GET /ticks"));
@@ -520,6 +541,27 @@ async function main(): Promise<void> {
       v2.extensions?.bazaar?.info?.input,
       (declared.info as { input: unknown }).input,
     );
+    const ticksPaidSchema = paidOutputJsonSchema("ticks") as {
+      required?: string[];
+    };
+    const ticksExample = (declared.info as { output?: { example?: Record<string, unknown>; schema?: { required?: string[] }; type?: string } }).output;
+    assert.equal(ticksExample?.type, "json");
+    assert.deepEqual(ticksPaidSchema.required, Object.keys(ticksExample?.example ?? {}));
+    assert.deepEqual(ticksExample?.schema?.required, ticksPaidSchema.required);
+    const wrapperOutputRequired = (
+      declared.schema as { properties?: { output?: { required?: string[] } } }
+    ).properties?.output?.required;
+    assert.equal(
+      wrapperOutputRequired,
+      undefined,
+      "do not advertise schema.properties.output.required: [type] as the paid-body schema",
+    );
+    for (const key of ticksPaidSchema.required ?? []) {
+      assert.ok(
+        Object.prototype.hasOwnProperty.call(ticksExample?.example ?? {}, key),
+        `ticks required ${key} must be on the paid example`,
+      );
+    }
 
     const wellKnown = await fetch(`${base}${WELL_KNOWN_PATH}`);
     assert.equal(wellKnown.status, 200);
@@ -935,7 +977,8 @@ async function main(): Promise<void> {
     assert.ok((mcpInit.result?.instructions ?? "").includes("$0.05"));
     assert.ok(!(mcpInit.result?.instructions ?? "").toLowerCase().includes("entire current cache"));
 
-    const shop = (await (await fetch(`${base}/`)).json()) as {
+    const shopRes = await fetch(`${base}/`);
+    const shop = (await shopRes.json()) as {
       products: { path: string; priceUsdc?: string; product?: string }[];
       openapi?: string;
       wellKnown?: string;
@@ -1005,6 +1048,23 @@ async function main(): Promise<void> {
     assert.equal(shop.openapi, OPENAPI_PATH);
     assert.equal(shop.wellKnown, WELL_KNOWN_PATH);
     assert.equal(shop.llmsTxt, LLMS_PATH);
+    assert.equal(
+      (shop as { resourceCount?: number }).resourceCount,
+      PUBLIC_BAZAAR_SKUS.length,
+      "shop resourceCount matches live well-known, not a stale 36",
+    );
+    const robots = await fetch(`${base}/robots.txt`);
+    assert.equal(robots.status, 200);
+    assert.match(await robots.text(), /llms\.txt/);
+    const wkLlms = await fetch(`${base}/.well-known/llms.txt`);
+    assert.equal(wkLlms.status, 200);
+    assert.match(wkLlms.headers.get("content-type") ?? "", /text\/plain/);
+    assert.match((shopRes.headers.get("link") ?? "").toLowerCase(), /llms\.txt/);
+    for (const path of [LLMS_PATH, "/.well-known/llms.txt", "/robots.txt", WELL_KNOWN_PATH, OPENAPI_PATH, "/"]) {
+      const head = await fetch(`${base}${path}`, { method: "HEAD" });
+      assert.equal(head.status, 200, `HEAD ${path} is the same 200 as GET (crawlers)`);
+      assert.equal(await head.text(), "", `HEAD ${path} has no body`);
+    }
     assert.equal(shop.sample, SAMPLE_PATH);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.product, PRODUCT_PUBLIC_ID);
     assert.ok(!shop.products.some((p) => p.product === "idaho-hay-feeder-ticks"));
@@ -1029,11 +1089,11 @@ async function main(): Promise<void> {
     assert.ok(!JSON.stringify(sample).includes("citra100mg"));
 
     const ticks402 = paymentRequiredBody("http://127.0.0.1/ticks", "ticks");
-    const ticksExample = (ticks402 as {
+    const ticksBazaarExample = (ticks402 as {
       extensions?: { bazaar?: { info?: { output?: { example?: { product?: string; source?: string } } } } };
     }).extensions?.bazaar?.info?.output?.example;
-    assert.equal(ticksExample?.product, PRODUCT_PUBLIC_ID);
-    assert.ok(!JSON.stringify(ticksExample).includes("idaho-hay-feeder-ticks"));
+    assert.equal(ticksBazaarExample?.product, PRODUCT_PUBLIC_ID);
+    assert.ok(!JSON.stringify(ticksBazaarExample).includes("idaho-hay-feeder-ticks"));
 
     const specSample = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
       paths: Record<string, { get?: { tags?: string[]; "x-payment-info"?: unknown } }>;
@@ -1090,19 +1150,31 @@ async function main(): Promise<void> {
       assert.equal(unpaidPost.status, 402, "unpaid POST {} must not return 200 with data");
       const paid = await fetch(`${base}${TICKS_PATH}`, { headers: { "X-PAYMENT": "test" } });
       assert.equal(paid.status, 200);
+      assert.equal(
+        paid.headers.get("payment-response"),
+        null,
+        "skip-settle 200 has no fake txHash receipt",
+      );
+      assert.equal(paid.headers.get("x-payment-response"), null);
       const paidPost = await fetch(`${base}${TICKS_PATH}`, {
         method: "POST",
         headers: { "Content-Type": "application/json", "X-PAYMENT": "test" },
         body: "{}",
       });
       assert.equal(paidPost.status, 200, "paid POST {} serves the same bag as GET");
-      const body = (await paid.json()) as ReturnType<typeof loadTicks>;
+      const body = (await paid.json()) as ReturnType<typeof loadTicks> & Record<string, unknown>;
       assert.equal(body.product, "idaho-hay-feeder-ticks");
       assert.equal(body.status, "stale");
       assert.ok(body.reason);
       assert.deepEqual(body.ticks, []);
       assert.deepEqual((body as { records?: unknown[] }).records, []);
       assert.equal((body as { recordCount?: number }).recordCount, 0);
+      for (const key of paidOutputJsonSchema("ticks")?.required as string[]) {
+        assert.ok(
+          Object.prototype.hasOwnProperty.call(body, key),
+          `paid /ticks JSON must include declared required key ${key}`,
+        );
+      }
     },
   );
 
@@ -8020,6 +8092,21 @@ async function main(): Promise<void> {
       assert.ok(captured.some((c) => c.path === "/verify" && c.status === 200));
       assert.ok(captured.some((c) => c.path === "/settle" && c.status === 200));
       assert.equal(captured.every((c) => c.problems.length === 0), true);
+      const receiptHdr = paid.headers.get("payment-response");
+      const receiptHdrV1 = paid.headers.get("x-payment-response");
+      assert.ok(receiptHdr, "paid 200 sets PAYMENT-RESPONSE when settle returned txHash");
+      assert.equal(receiptHdr, receiptHdrV1, "dual-expose PAYMENT-RESPONSE and X-PAYMENT-RESPONSE");
+      const receipt = JSON.parse(Buffer.from(receiptHdr ?? "", "base64").toString("utf8")) as {
+        success?: boolean;
+        transaction?: string;
+        network?: string;
+        payer?: string;
+      };
+      assert.equal(receipt.success, true);
+      assert.equal(receipt.transaction, `0x${"cd".repeat(32)}`);
+      assert.match(receipt.transaction ?? "", /^0x[0-9a-fA-F]{64}$/);
+      assert.equal(receipt.payer, "0x1111111111111111111111111111111111111111");
+      assert.ok(receipt.network === NETWORK_V1 || receipt.network === NETWORK_V2);
     },
   );
   await new Promise<void>((resolve, reject) =>
@@ -8161,13 +8248,14 @@ async function main(): Promise<void> {
       assert.ok((spec.info?.["x-guidance"] ?? "").includes("?since="));
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
-        extra?: { since?: string; etag?: string; updateCadence?: string; http429?: string };
+        extra?: { since?: string; etag?: string; updateCadence?: string; http429?: string; resourceCount?: number };
         resources?: string[];
       };
       assert.ok(wk.extra?.since?.includes("?since="));
       assert.ok(wk.extra?.etag?.includes("If-None-Match"));
       assert.ok(wk.extra?.updateCadence?.includes("America/Boise"));
       assert.ok(wk.extra?.http429?.includes("429"));
+      assert.equal(wk.extra?.resourceCount, PUBLIC_BAZAAR_SKUS.length);
       assert.equal(wk.resources?.length, PUBLIC_BAZAAR_SKUS.length);
 
       const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();
