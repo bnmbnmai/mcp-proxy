@@ -21,6 +21,8 @@ systemctl --user restart idaho-ticks-x402.service
 
 Restart **only** that unit. Merge into the live HHS cache. Do not replace other doors. Do not add a new well-known URL.
 
+Applied on apollo (2026-09-07): live SHA **c489088**. Collect reused the 144 HHS OAS / OEI / A-* PDFs and added **20** official VA OIG PDFs (`addedThisRun` 20, `fetchedPdfs` 20, skipped 1). Live bag **cardCount 164**, asOf **2026-09-04**, fetchedAt **2026-09-07T19:50:41.853Z**. Habit `vaoig-26-00030-213` Salisbury is in the free manifest. Restarted **only** `idaho-ticks-x402.service`. Unpaid `GET https://ticks.bnm.farm/hhs-oig-reports` is **402** at $0.05. `/.well-known/x402` still lists `/hhs-oig-reports` among **48** doors. Superfund FYR (PR 199) was not applied.
+
 ## After apply
 
 - Live `/.well-known/x402` still lists `/hhs-oig-reports` and does **not** add a 49th door
