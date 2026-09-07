@@ -48,14 +48,15 @@ Not logged: `X-PAYMENT` payloads, signatures, settle key files, CDP JWTs, letter
 
 ```bash
 cd ~/projects/mcp-proxy
-git fetch origin cursor/settle-metrics-c08d
-git checkout cursor/settle-metrics-c08d
+git fetch origin cursor/apply-settle-metrics-65c4
+git checkout cursor/apply-settle-metrics-65c4
 npm run build
 systemctl --user restart idaho-ticks-x402.service
 ./scripts/settle-metrics.sh
+./scripts/backfill-settles-from-access-log.sh data/shop-request-log.jsonl
 ```
 
-Restart **only** that unit.
+Restart **only** that unit. This apply restacks PR 194 / PR 196 onto the live VA OIG tip (`cursor/apply-va-oig-fatten-cd1b` @ `2baaf04`). Do not check out the older `cursor/settle-metrics-c08d` or `cursor/settle-on-fmshrc-2ad8` bases — they sit behind VA OIG.
 
 ## How Chief / apollo reads aggregates
 
