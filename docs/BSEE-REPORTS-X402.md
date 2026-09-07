@@ -42,7 +42,7 @@ BSEE_REPORTS_LIMIT=18 BSEE_REPORTS_MAX_FETCH=20 npm run collect:bsee-reports
 systemctl --user restart idaho-ticks-x402.service
 ```
 
-Applied on apollo (2026-09-07): live SHA **687416a** (PR 202 merged onto `cursor/apply-settle-metrics-65c4` @ `5d78959`). Collect wrote **18** official 2026 district-investigation texts (`addedThisRun` 18, `fetchedPdfs` 18, skipped 0), listedCount **133**, asOf **2026-07-01**, fetchedAt **2026-09-07T23:05:30.998Z**. Seed `mp-298-cantium-2026-05-24` is in the free manifest (title/date/lease only; PBA 1210/11 stays in the paid body). Restarted **only** `idaho-ticks-x402.service` at **2026-09-07 17:05:37 MDT**. Unpaid `GET https://ticks.bnm.farm/bsee-reports` is **402** at $0.05; `?id=mp-298-cantium-2026-05-24` is **402** at $0.02. `/.well-known/x402` lists `/bsee-reports` among **49** doors. Banner `mcp /mcp — 49 tools`. Superfund FYR was not applied. No new collect cron.
+Applied on apollo (2026-09-07): live checkout **d2fbf73** (door merge **687416a**, PR 202 onto `cursor/apply-settle-metrics-65c4` @ `5d78959`). Collect wrote **18** official 2026 district-investigation texts (`addedThisRun` 18, `fetchedPdfs` 18, skipped 0), listedCount **133**, asOf **2026-07-01**, fetchedAt **2026-09-07T23:05:30.998Z**. Seed `mp-298-cantium-2026-05-24` is in the free manifest (title/date/lease only; PBA 1210/11 stays in the paid body). Restarted **only** `idaho-ticks-x402.service` at **2026-09-07 17:05:37 MDT**. Unpaid `GET https://ticks.bnm.farm/bsee-reports` is **402** at $0.05; `?id=mp-298-cantium-2026-05-24` is **402** at $0.02. `/.well-known/x402` lists `/bsee-reports` among **49** doors. Banner `mcp /mcp — 49 tools`. Superfund FYR was not applied. No new collect cron.
 
 ## Lander card (tv-remote / bnm.farm)
 
