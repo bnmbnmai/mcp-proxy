@@ -1,0 +1,89 @@
+{
+  "job": "apply GET /bsee-reports onto live ticks.bnm.farm",
+  "ranOn": "apollo",
+  "hostname": "pop-os",
+  "branch": "cursor/apply-bsee-reports-5a99",
+  "checkoutSha": "687416af381e7e3035b7c10e0c48774ca98b7bb0",
+  "doorMergeSha": "687416af381e7e3035b7c10e0c48774ca98b7bb0",
+  "sourcePr": "https://github.com/bnmbnmai/mcp-proxy/pull/202",
+  "sourceBranch": "cursor/bsee-reports-door-b89c",
+  "sourceHead": "3614953bac4580b9225f523188982d02e0c4ab94",
+  "stackedOn": "cursor/apply-settle-metrics-65c4",
+  "stackedOnSha": "5d789590cb7403fcb0865baeb901c6b6d9f106a7",
+  "thisApply": "https://github.com/bnmbnmai/mcp-proxy/pull/203",
+  "systemctlUserRestart": {
+    "unit": "idaho-ticks-x402.service",
+    "ok": true,
+    "otherUnitsRestarted": false,
+    "activeEnterTimestamp": "Mon 2026-09-07 17:05:37 MDT",
+    "activeEnterUtc": "2026-09-07T23:05:37Z",
+    "pidAfter": "1052337"
+  },
+  "banner": {
+    "bsee": "/bsee-reports $0.05 USDC",
+    "mcp": "mcp /mcp — 49 tools from /.well-known/x402"
+  },
+  "collect": {
+    "cardCount": 18,
+    "listedCount": 133,
+    "fetchedPdfs": 18,
+    "skippedNoText": 0,
+    "addedThisRun": 18,
+    "asOf": "2026-07-01",
+    "fetchedAt": "2026-09-07T23:05:30.998Z",
+    "cantiumId": "mp-298-cantium-2026-05-24",
+    "cantiumBodyChars": 11769,
+    "cantiumHasPBA1210": true
+  },
+  "live": {
+    "unpaidPage": { "status": 402, "amountAtomic": "50000", "hasPBA": false },
+    "unpaidId": { "status": 402, "id": "mp-298-cantium-2026-05-24", "amountAtomic": "20000", "hasPBA": false },
+    "emptySince": { "status": 304 },
+    "manifest": {
+      "status": 200,
+      "cardCount": 18,
+      "asOf": "2026-07-01",
+      "fetchedAt": "2026-09-07T23:05:30.998Z",
+      "hasCantium": true,
+      "cantiumTitle": "Cantium MP 298 A Lease G01315 fire 24-MAY-2026",
+      "cantiumLease": "G01315",
+      "freeManifestHasBody": false,
+      "freeManifestHasPBA": false
+    },
+    "wellKnown": {
+      "status": 200,
+      "resourceCount": 49,
+      "hasBsee": true,
+      "bseeUrl": "https://ticks.bnm.farm/bsee-reports"
+    },
+    "shop": {
+      "status": 200,
+      "productCount": 49,
+      "hasBsee": true,
+      "path": "/bsee-reports"
+    },
+    "mcp": {
+      "toolsHasBseeReports": true,
+      "llmsTxtHasBsee": true
+    },
+    "lander": {
+      "host": "https://bnm.farm/",
+      "hasBseeCard": true,
+      "after": "epa-cafo"
+    },
+    "siblingsStill402": {
+      "/ticks": 402,
+      "/epa-cafo": 402,
+      "/fmshrc-orders": 402
+    },
+    "superfundRodsManifest": {
+      "status": 502,
+      "note": "untouched; Superfund FYR not applied"
+    }
+  },
+  "excluded": {
+    "incOnlineQuery": "not sold",
+    "superfundFyr": "not applied",
+    "newCollectCron": "not started; evening 7:45 Boise collect owns walks"
+  }
+}
