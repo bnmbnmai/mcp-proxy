@@ -235,7 +235,7 @@ export function operatorFromFilename(file: string): string {
     "",
   );
   const areaFirst = dateCut.match(
-    /^(?:[A-Z]{1,3}[- ]?\d+[A-Z]?(?:[- ][A-Z0-9]+)?)\s+(.+)$/i,
+    /^(?:[A-Z]{1,3}[- ]?\d+(?:[- ]?[A-Z])?)(?:\s+[A-Z](?=\s|$))?\s+(.+)$/i,
   );
   if (areaFirst) {
     return areaFirst[1]

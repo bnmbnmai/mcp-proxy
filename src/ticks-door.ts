@@ -2943,7 +2943,7 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         accidentType: "Fire",
         institution: "Cantium",
         sourceUrl: "https://www.bsee.gov/sites/bsee.gov/files/2026-07/MP%20298%20Cantium%2024-May-26.pdf",
-        body: "ACCIDENT INVESTIGATION REPORT. Cantium MP 298 A Lease G01315. Glycol leaked from a failed hose connection on one of the glycol pumps (PBA 1210/11).",
+        body: "ACCIDENT INVESTIGATION REPORT. Cantium MP 298 A Lease G01315. Official BSEE District Accident Investigation Report findings extracted from the PDF.",
       },
     ],
   },
