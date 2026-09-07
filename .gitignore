@@ -57,6 +57,7 @@ build/paid-records.*
 build/shop-sample.*
 build/firm-check.*
 build/shop-request-log.*
+build/settle-log.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
@@ -107,3 +108,5 @@ data/fmshrc-orders/
 data/ticks-ams/
 data/shop-request-log.jsonl
 data/shop-request-log*.jsonl
+data/settle.jsonl
+data/settle*.jsonl
