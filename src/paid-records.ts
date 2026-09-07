@@ -65,6 +65,7 @@ export const EXTRACTED_BODY_SKUS = [
   "fsis-humane",
   "epa-cafo",
   "fmshrc-orders",
+  "bsee-reports",
 ] as const;
 
 export type ExtractedBodySku = (typeof EXTRACTED_BODY_SKUS)[number];
@@ -151,6 +152,7 @@ export const EIS_REPORTS_TYPE = "eis-reports";
 export const FSIS_HUMANE_TYPE = "fsis-humane";
 export const EPA_CAFO_TYPE = "epa-cafo";
 export const FMSHRC_ORDERS_TYPE = "fmshrc-orders";
+export const BSEE_REPORTS_TYPE = "bsee-reports";
 export const CFPB_ORDER_TYPE = "cfpb-order";
 export const OFAC_ORDER_TYPE = "ofac-order";
 export const FRB_ORDER_TYPE = "frb-order";
@@ -203,6 +205,8 @@ export const FSIS_HUMANE_SOURCE =
   "https://www.fsis.usda.gov/inspection/regulatory-enforcement/humane-handling-enforcement";
 export const EPA_CAFO_SOURCE = "https://yosemite.epa.gov/oa/rhc/epaadmin.nsf";
 export const FMSHRC_ORDERS_SOURCE = "https://www.fmshrc.gov/decisions/alj";
+export const BSEE_REPORTS_SOURCE =
+  "https://www.bsee.gov/what-we-do/incident-investigations/offshore-incident-investigations/district-investigation-reports";
 export const CFPB_ORDER_SOURCE = "https://www.consumerfinance.gov/enforcement/actions/";
 export const OFAC_ORDER_SOURCE = "https://ofac.treasury.gov/civil-penalties-and-enforcement-information";
 export const FRB_ORDER_SOURCE = "https://www.federalreserve.gov/supervisionreg/enforcementactions.htm";
@@ -484,7 +488,7 @@ export function searchCatalogRows(rows: Record<string, unknown>[], q: string): R
   const needle = q.trim().toLowerCase();
   if (!needle) return rows;
   return rows.filter((row) => {
-    const hay = [row.id, row.docket, row.firm, row.institution, row.bank, row.creditUnion, row.subject, row.title, row.name, row.substance, row.urn, row.provider, row.permit, row.country, row.post, row.reportNumber, row.aircraft, row.registration, row.date, row.issuedOn, row.publishedOn, row.inspectedOn, row.recordDate, row.sourceUrl]
+    const hay = [row.id, row.docket, row.firm, row.institution, row.bank, row.creditUnion, row.subject, row.title, row.name, row.substance, row.urn, row.provider, row.permit, row.country, row.post, row.reportNumber, row.aircraft, row.registration, row.lease, row.areaBlock, row.accidentType, row.date, row.issuedOn, row.publishedOn, row.inspectedOn, row.recordDate, row.sourceUrl]
       .map((value) => str(value).toLowerCase())
       .join(" ");
     return hay.includes(needle);
@@ -887,6 +891,10 @@ export function paidEpaCafoBody<T extends CardPayload>(payload: T, opts?: PaidBo
 
 export function paidFmshrcOrdersBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
   return paidCardBody(payload, FMSHRC_ORDERS_TYPE, FMSHRC_ORDERS_SOURCE, opts);
+}
+
+export function paidBseeReportsBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, BSEE_REPORTS_TYPE, BSEE_REPORTS_SOURCE, opts);
 }
 
 export function paidIcoMpnBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {

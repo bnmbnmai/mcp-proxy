@@ -1,0 +1,221 @@
+{
+  "source": {
+    "listing": "https://www.bsee.gov/what-we-do/incident-investigations/offshore-incident-investigations/district-investigation-reports",
+    "pdfHost": "https://www.bsee.gov/sites/bsee.gov/files/"
+  },
+  "seeds": [
+    "https://www.bsee.gov/sites/bsee.gov/files/2026-07/MP%20298%20Cantium%2024-May-26.pdf",
+    "https://www.bsee.gov/sites/bsee.gov/files/2026-07/MU%2085%20Talos%20Energy%20Conductor%20Drop%2017-May-26.pdf",
+    "https://www.bsee.gov/sites/bsee.gov/files/2026-08/EI%20320B%20Arena%2001-JUL-2026.pdf"
+  ],
+  "liveManifest": "https://ticks.bnm.farm/bsee-reports/manifest.json",
+  "fetchedAt": "2026-09-07T22:57:56.568Z",
+  "asOf": "2026-07-01",
+  "status": "ok",
+  "cardCount": 18,
+  "listedCount": 133,
+  "fetchedPdfs": 18,
+  "skippedNoText": 0,
+  "reused": 0,
+  "addedThisRun": 18,
+  "limit": 18,
+  "maxFetch": 20,
+  "note": "Bodies are gitignored (data/bsee-reports/). This file is id/date/lease/area-block/accident-type only. Text is official pdftotext, not invented. Not BSEE Data Center INC Online Query, INC counts, eWell WAR, platform INC dumps, or CSB / PHMSA / FMSHRC / EPA CAFO / NTSB packs. Apply on apollo into $HOME/projects/mcp-proxy/data/bsee-reports. Restart only idaho-ticks-x402.service.",
+  "ids": [
+    "ei-320-arena-2026-07-01",
+    "mp-298-cantium-2026-05-24",
+    "mu-85-talos-2026-05-17",
+    "gi-48-gom-2026-05-05",
+    "wc-498-white-2026-05-02",
+    "ss-229-w-2026-04-18",
+    "gi-47-gom-2026-04-14",
+    "wr-425-murphy-2026-04-11",
+    "mc-243-w-2026-04-09",
+    "sp-27-nugulf-2026-03-30",
+    "st-26-white-2026-03-25",
+    "st-52-arena-2026-03-14",
+    "gb-783-w-2026-03-07",
+    "ac-25-exxon-2026-02-24",
+    "mc-759-beacon-2026-02-20",
+    "ew-910-w-2026-02-09",
+    "ew-834-wog-2026-02-04",
+    "vk-989-talos-2026-01-08"
+  ],
+  "mp-298-cantium-2026-05-24": {
+    "id": "mp-298-cantium-2026-05-24",
+    "institution": "Cantium",
+    "lease": "G01315",
+    "areaBlock": "MP 298",
+    "accidentType": "Fire",
+    "date": "2026-05-24",
+    "title": "Cantium MP 298 A Lease G01315 fire 24-MAY-2026",
+    "bodyChars": 11769,
+    "wordCount": 1274,
+    "needle": "PBA 1210/11",
+    "sourceUrl": "https://www.bsee.gov/sites/bsee.gov/files/2026-07/MP%20298%20Cantium%2024-May-26.pdf"
+  },
+  "cards": [
+    {
+      "id": "ei-320-arena-2026-07-01",
+      "institution": "Arena",
+      "lease": "G36211",
+      "areaBlock": "EI 320",
+      "accidentType": "Required Evacuation, LTA >3 days, Other Lifting (Top Drive)",
+      "date": "2026-07-01",
+      "title": "Arena EI 320B Lease G36211 required evacuation 01-JUL-2026"
+    },
+    {
+      "id": "mp-298-cantium-2026-05-24",
+      "institution": "Cantium",
+      "lease": "G01315",
+      "areaBlock": "MP 298",
+      "accidentType": "Fire",
+      "date": "2026-05-24",
+      "title": "Cantium MP 298 A Lease G01315 fire 24-MAY-2026"
+    },
+    {
+      "id": "mu-85-talos-2026-05-17",
+      "institution": "Talos Energy",
+      "lease": "G03061",
+      "areaBlock": "MU 85",
+      "accidentType": "Conductor Drop",
+      "date": "2026-05-17",
+      "title": "Talos Energy MU 85 Lease G03061 conductor drop 17-MAY-2026"
+    },
+    {
+      "id": "gi-48-gom-2026-05-05",
+      "institution": "GOM Shelf",
+      "lease": "00134",
+      "areaBlock": "GI 48",
+      "accidentType": "Structural Damage, Incident > $25K, Collision > $25K",
+      "date": "2026-05-05",
+      "title": "GOM Shelf GI 48 Lease 00134 Structural Damage 05-MAY-2026"
+    },
+    {
+      "id": "wc-498-white-2026-05-02",
+      "institution": "White Fleet",
+      "lease": "G03520",
+      "areaBlock": "WC 498",
+      "accidentType": "Required Evacuation, RW/JT (1-3 days)",
+      "date": "2026-05-02",
+      "title": "White Fleet WC 498 Lease G03520 Required Evacuation 02-MAY-2026"
+    },
+    {
+      "id": "ss-229-w-2026-04-18",
+      "institution": "W&T",
+      "lease": "G00830",
+      "areaBlock": "SS 229",
+      "accidentType": "Required Evacuation, Other Injury (First Aid), Crane",
+      "date": "2026-04-18",
+      "title": "W&T SS 229 Lease G00830 Required Evacuation 18-APR-2026"
+    },
+    {
+      "id": "gi-47-gom-2026-04-14",
+      "institution": "GOM Shelf",
+      "lease": "00133",
+      "areaBlock": "GI 47",
+      "accidentType": "Structural Damage, Incident > $25K, Collision > $25K",
+      "date": "2026-04-14",
+      "title": "GOM Shelf GI 47 Lease 00133 Structural Damage 14-APR-2026"
+    },
+    {
+      "id": "wr-425-murphy-2026-04-11",
+      "institution": "Murphy",
+      "lease": "G16987",
+      "areaBlock": "WR 425",
+      "accidentType": "Required Evacuation, RW/JT >3 days, Crane",
+      "date": "2026-04-11",
+      "title": "Murphy WR 425 Lease G16987 Required Evacuation 11-APR-2026"
+    },
+    {
+      "id": "mc-243-w-2026-04-09",
+      "institution": "W&T Energy VI LLC",
+      "lease": "G19931",
+      "areaBlock": "MC 243",
+      "accidentType": "Incident >$25K - Structural Damage",
+      "date": "2026-04-09",
+      "title": "W&T Energy VI LLC MC 243 Lease G19931 Incident >$25K - Structural Damage 09-APR-2026"
+    },
+    {
+      "id": "sp-27-nugulf-2026-03-30",
+      "institution": "NuGulf",
+      "lease": "00693",
+      "areaBlock": "SP 27",
+      "accidentType": "Crane",
+      "date": "2026-03-30",
+      "title": "NuGulf SP 27 Lease 00693 Crane 30-MAR-2026"
+    },
+    {
+      "id": "st-26-white-2026-03-25",
+      "institution": "White Fleet",
+      "lease": "G01870",
+      "areaBlock": "ST 26",
+      "accidentType": "Required Evacuation, RW/JT >3, Crane",
+      "date": "2026-03-25",
+      "title": "White Fleet ST 26 Lease G01870 Required Evacuation 25-MAR-2026"
+    },
+    {
+      "id": "st-52-arena-2026-03-14",
+      "institution": "Arena",
+      "lease": "G01241",
+      "areaBlock": "ST 52",
+      "accidentType": "Fire, Incident >$25k, Required Muster, Shutdown from Gas Release",
+      "date": "2026-03-14",
+      "title": "Arena ST 52 Lease G01241 Fire 14-MAR-2026"
+    },
+    {
+      "id": "gb-783-w-2026-03-07",
+      "institution": "W&T 7Mar2026",
+      "lease": "G11573",
+      "areaBlock": "GB 783",
+      "accidentType": "Required Evacuation, LTA (>3 days)",
+      "date": "2026-03-07",
+      "title": "W&T 7Mar2026 GB 783 Lease G11573 Required Evacuation 07-MAR-2026"
+    },
+    {
+      "id": "ac-25-exxon-2026-02-24",
+      "institution": "Exxon",
+      "lease": "G10380",
+      "areaBlock": "AC 25",
+      "accidentType": "Other Lifting Device - Incident >$25K",
+      "date": "2026-02-24",
+      "title": "Exxon AC 25 Lease G10380 Other Lifting Device - Incident >$25K 24-FEB-2026"
+    },
+    {
+      "id": "mc-759-beacon-2026-02-20",
+      "institution": "Beacon Growtco Operating",
+      "lease": "G35833",
+      "areaBlock": "MC 759",
+      "accidentType": "Damaged/Disabled Safety System, Incident > $25K",
+      "date": "2026-02-20",
+      "title": "Beacon Growtco Operating MC 759 Lease G35833 Damaged/Disabled Safety System 20-FEB-2026"
+    },
+    {
+      "id": "ew-910-w-2026-02-09",
+      "institution": "W&T",
+      "lease": "G13079",
+      "areaBlock": "EW 910",
+      "accidentType": "Fire, Incident >$25k",
+      "date": "2026-02-09",
+      "title": "W&T EW 910 Lease G13079 Fire 09-FEB-2026"
+    },
+    {
+      "id": "ew-834-wog-2026-02-04",
+      "institution": "WOG",
+      "lease": "G27982",
+      "areaBlock": "EW 834",
+      "accidentType": "Required Evacuation, LTA (>3 days)",
+      "date": "2026-02-04",
+      "title": "WOG EW 834 Lease G27982 Required Evacuation 04-FEB-2026"
+    },
+    {
+      "id": "vk-989-talos-2026-01-08",
+      "institution": "Talos Energy",
+      "lease": "G06898",
+      "areaBlock": "VK 989",
+      "accidentType": "Fire",
+      "date": "2026-01-08",
+      "title": "Talos Energy VK 989 Lease G06898 Fire 08-JAN-2026"
+    }
+  ]
+}
