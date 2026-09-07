@@ -67,7 +67,7 @@ async function withSettleServer(
   const dir = mkdtempSync(join(tmpdir(), "settle-log-"));
   const logPath = join(dir, "settle.jsonl");
   const prev: Record<string, string | undefined> = {};
-  const patch = { SETTLE_LOG: "1", SETTLE_LOG_PATH: logPath, ...envPatch };
+  const patch = { SETTLE_LOG: "1", SETTLE_LOG_PATH: logPath, SHOP_REQUEST_LOG: "0", ...envPatch };
   for (const [k, v] of Object.entries(patch)) {
     prev[k] = process.env[k];
     if (v === undefined) delete process.env[k];

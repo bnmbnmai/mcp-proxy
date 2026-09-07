@@ -10,7 +10,7 @@ Prefer Secretary of Labor v. [Operator] civil-penalty adjudications. Do **not** 
 
 MCP tools are generated from live well-known (no hardcoded door count).
 
-Applied on apollo (2026-09-06): **cardCount 8**, listedCount 22, asOf **2026-07-23**, fetchedAt **2026-09-06T17:26:11.312Z**. Restarted **only** `idaho-ticks-x402.service`. Live unpaid `GET https://ticks.bnm.farm/fmshrc-orders` is **402**. Catalog `main` was not checked out. `cursor/settle-metrics-c08d` (PR 194) is **not** in this checkout and still needs a separate apply.
+Applied on apollo (2026-09-06): **cardCount 8**, listedCount 22, asOf **2026-07-23**, fetchedAt **2026-09-06T17:26:11.312Z**. Restarted **only** `idaho-ticks-x402.service`. Live unpaid `GET https://ticks.bnm.farm/fmshrc-orders` is **402**. Catalog `main` was not checked out. Path-level settle journal was applied later on `cursor/apply-settle-metrics-65c4` (restack of PR 194 / 196 onto the VA OIG tip).
 
 ## Collect command
 
