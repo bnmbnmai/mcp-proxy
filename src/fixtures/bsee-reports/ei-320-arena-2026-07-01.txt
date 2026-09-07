@@ -1,0 +1,181 @@
+                           UNITED STATES DEPARTMENT OF THE INTERIOR                        For Public Release
+                        BUREAU OF SAFETY AND ENVIRONMENTAL ENFORCEMENT
+                                     GULF OF AMERICA REGION
+                             ACCIDENT INVESTIGATION REPORT
+
+
+1. OCCURRED                                           STRUCTURAL DAMAGE
+   DATE:     01-JUL-2026     TIME: 1945     HOURS     CRANE
+                                                    X OTHER LIFTING Top Drive
+2. OPERATOR: Arena Offshore, LP                       DAMAGED/DISABLED SAFETY SYS.
+   REPRESENTATIVE:                                    INCIDENT >$25K
+   TELEPHONE:                                         H2S/15MIN./20PPM
+   CONTRACTOR: Enterprise Offshore Drilling           REQUIRED MUSTER
+   REPRESENTATIVE:                                    SHUTDOWN FROM GAS RELEASE
+   TELEPHONE:                                         OTHER
+
+
+3. OPERATOR/CONTRACTOR REPRESENTATIVE/SUPERVISOR        8. OPERATION:
+   ON SITE AT TIME OF INCIDENT:                               PRODUCTION        TEMP ABAND
+                                                            X DRILLING          PERM ABAND
+4. LEASE:      G36211                                         WORKOVER          DECOM PIPELINE
+    AREA:          EI       LATITUDE:                         COMPLETION        DECOM FACILITY
+                           LONGITUDE:                         HELICOPTER        SITE CLEARANCE
+   BLOCK:         320
+                                                              MOTOR VESSEL
+                                                              PIPELINE SEGMENT NO.
+5. PLATFORM: B                                                OTHER
+   RIG NAME: WFD 450
+6. ACTIVITY:      EXPLORATION(POE)
+                X DEVELOPMENT/PRODUCTION(DOCD/POD)
+                  DECOMMISSIONING
+                                                        9. CAUSE:
+7. TYPE:
+   INJURIES:                                                  EQUIPMENT FAILURE
+                                                            X HUMAN ERROR
+         HISTORIC INJURY                                      EXTERNAL DAMAGE
+                               OPERATOR       CONTRACTOR      SLIP/TRIP/FALL
+         X REQUIRED EVACUATION      0                1        WEATHER RELATED
+           LTA (1-3 days)                                     LEAK
+         X LTA (>3 days)            0               1         UPSET H2O TREATING
+           RW/JT (1-3 days)                                   OVERBOARD DRILLING FLUID
+           RW/JT (>3 days)                                    OTHER
+           FATALITY
+           Other Injury                                 10. WATER DEPTH:         252 FT.
+                                                        11. DISTANCE FROM SHORE:         62     MI.
+     POLLUTION
+     FIRE                                               12. WIND DIRECTION:
+     EXPLOSION                                                      SPEED:         6   M.P.H.
+   LWC      HISTORIC BLOWOUT                            13. CURRENT DIRECTION:
+            UNDERGROUND                                              SPEED:            M.P.H.
+            SURFACE
+            DEVERTER                                    14. SEA STATE:         FT.
+            SURFACE EQUIPMENT FAILURE OR PROCEDURES     15. PICTURES TAKEN:
+   COLLISION         HISTORIC       >$25K      <=$25K   16. STATEMENT TAKEN:
+
+
+
+
+MMS - FORM 2010                                                                PAGE: 1 OF 4
+EV2010R                                                                           17-AUG-2026
+   17. INVESTIGATION FINDINGS:                                                   For Public Release
+   Incident Summary:
+   At the time of the investigation, Marine Minerals Administration (MMA) personnel were
+   operating under the former Bureau of Safety and Environmental Enforcement (BSEE).
+   Therefore, all MMA personnel referenced in this report will be identified as BSEE
+   personnel.
+
+   On 1 July 2026, an Enterprise Offshore Drilling (Enterprise) Floor Hand, identified as
+   the Injured Party (IP), sustained a facial injury while conducting drilling operations
+   on Well B004 on the White Fleet Drilling (WFD)Rig 450 located at Eugene Island Block
+   320B. The severity of the injury required the IP to be evacuated from the WFD 450 for
+   medical treatment.
+
+   Sequence of Events:
+   On 1 July 2026, an Enterprise crew was in the process of running in the hole with 4.5-
+   inch drill pipe on Well B004. An Enterprise Floor Hand, the IP, was using a rope to
+   assist the top drive in guiding the 4.5-inch drill pipe to the center of the rotary
+   table. Enterprise's Drilling Operations Manual is referred to as “Tail-in” when
+   tripping pipe into the hole. During this operation, as the top drive lifts one stand
+   of drill pipe, the tail-in rope is used to wrap around the drill pipe while the other
+   end of the rope is tied off on the choke stand manifold located on the WFD 450 rig
+   floor. This technique applies additional friction to the drill pipe to control and
+   gradually advance the pipe toward the center of the rotary table as the top drive
+   raises the stand, in which the tripping in the hole process can be furthered.
+   According to the onsite incident follow-up investigation and Arena documentation,
+   while the 4.5-inch drill pipe was being lifted, the tail-in rope slipped from the IP’s
+   gloved hands, causing the drill pipe subsequently to swing toward the IP striking him
+   in the face, knocking him back approximately five feet onto the rig floor. As a
+   result, the IP sustained a 0.75-inch laceration to his forehead, along with minor skin
+   abrasions below his left eyebrow and across the bridge of his nose. Minor capillary
+   bleeding was documented in the Rig Medic’s statement. Following the incident, the IP
+   reported to the Rig Medic for evaluation. During the evaluation, the IP became dizzy
+   and vomited. A video conference was conducted with an onshore physician. Based on the
+   IP’s symptoms and the medical assessment, the onshore physician and Rig Medic
+   determined that the IP required transportation to a trauma center for further
+   evaluation. The IP was evacuated by medevac helicopter to Ochsner Lafayette General
+   Medical Center in Lafayette, Louisiana. He was diagnosed with a closed fracture of the
+   frontal sinus and was released from the hospital on 3 July 2026, with two
+   prescriptions. The IP was instructed not to return to work until cleared by a
+   neurosurgeon or his primary care provider. On 7 July 2026, the IP received a medical
+   clearance to return to work without restrictions or limitations.
+
+   BSEE Investigation:
+   On 7 July 2026, the MMA Lafayette District conducted an onsite Incident Follow-up
+   (IF)Investigation. MMA investigators met with representatives from Arena and
+   Enterprise and collected all available incident-related documentation. During the IF
+   Investigation, MMA reviewed Enterprise’s job safety analysis (JSA), Job Description
+   and Hazards, and Drilling Operations Manual for Tripping Operations. Based on the
+   investigation information reviewed, the MMA Incident Investigation Team determined
+   that the incident resulted from the IP’s body positioning and the use of a saturated
+   tail rope. The JSA did not address the hazards of using a tail rope for tripping in
+   the hole with drill pipe. Additionally, the IP failed to follow the hazards identified
+   in the Job Description and Hazards or guidance provided in the Enterprise’s Drilling
+   Operations Manual for Tripping Operations.
+
+   18. LIST THE PROBABLE CAUSE(S) OF ACCIDENT:
+
+   Human Performance Error:
+
+MMS - FORM 2010                                                        PAGE: 2 OF 4
+EV2010R                                                                  17-AUG-2026
+   • Not aware of hazards. The IP’s body position during tripping in the hole put For
+                                                                                  him Public Release
+   directly in the line of fire with the drill pipe. The rope that the IP was using was
+   saturated with synthetic based drilling mud making it slippery to handle.
+   19. LIST THE CONTRIBUTING CAUSE(S) OF ACCIDENT:
+   Human Performance Error:
+   • Not following proper procedures. The IP did not follow the procedures stated in the
+   Job Description and Hazards and in Enterprise’s Drilling Operations Manual for
+   Tripping Operations.
+
+   Management Systems:
+   • Inadequate hazard analysis. The Enterprise JSA did not specially address the hazards
+   associated with tripping in the hole with drill pipe using a tail rope.
+   20. LIST THE ADDITIONAL INFORMATION:
+
+
+
+
+   21. PROPERTY DAMAGED:                              NATURE OF DAMAGE:
+    There was no property damaged during this         Not applicable.
+    incident.
+    ESTIMATED AMOUNT (TOTAL):                $
+   22. RECOMMENDATIONS TO PREVENT RECURRANCE NARRATIVE:
+    The MMA Lafayette District makes no recommendations to the Office of Incident
+    Investigations regarding this incident.
+
+
+   23. POSSIBLE OCS VIOLATIONS RELATED TO ACCIDENT:      NO
+
+   24. SPECIFY VIOLATIONS DIRECTLY OR INDIRECTLY CONTRIBUTING. NARRATIVE:
+
+    Not applicable.
+
+
+   25. DATE OF ONSITE INVESTIGATION:             28. ACCIDENT CLASSIFICATION:
+
+    07-JUL-2026
+
+   26. Investigation Team Members/Panel Members: 29. ACCIDENT INVESTIGATION PANEL FORMED:
+                                                               NO
+
+                                                     OCS REPORT:
+   27. OPERATOR REPORT ON FILE:
+                                                 30. DISTRICT SUPERVISOR:
+                                                        Mark Malbrue
+
+
+
+
+MMS - FORM 2010                                                           PAGE: 3 OF 4
+EV2010R                                                                     17-AUG-2026
+                  APPROVED
+                  DATE:      17-AUG-2026     For Public Release
+
+
+
+
+MMS - FORM 2010                     PAGE: 4 OF 4
+EV2010R                               17-AUG-2026
+
