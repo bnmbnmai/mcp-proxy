@@ -515,7 +515,7 @@ import {
   sendLocalShopRequestRollup,
   shopRequestLogPath,
 } from "./shop-request-log.js";
-import { logPaidSettle, settleLogPath, txHashFromSettleBody } from "./settle-log.js";
+import { logPaidSettle, payerFromPayment, settleLogPath, txHashFromSettleBody } from "./settle-log.js";
 import {
   PRODUCT_PUBLIC_ID,
   SAMPLE_HOW_TO_USE,
@@ -3034,8 +3034,41 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
   },
 };
 
+/**
+ * Paid-body JSON Schema for table / extracted-body doors.
+ * Required keys are the example's top-level keys (⊆ real paid JSON).
+ * PDF doors have no JSON body schema.
+ */
+export function paidOutputJsonSchema(sku: DoorSku): Record<string, unknown> | undefined {
+  if (isPdfCacheSku(sku)) return undefined;
+  const example = BAZAAR_OUTPUT_EXAMPLE[sku];
+  const properties: Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(example)) {
+    if (Array.isArray(value)) properties[key] = { type: "array", items: { type: "object" } };
+    else if (value !== null && typeof value === "object") properties[key] = { type: "object" };
+    else if (typeof value === "boolean") properties[key] = { type: "boolean" };
+    else if (typeof value === "number") properties[key] = { type: "integer" };
+    else properties[key] = { type: "string" };
+  }
+  return {
+    type: "object",
+    properties,
+    required: Object.keys(example),
+  };
+}
+
 /** x402 Bazaar discovery block (v2 PAYMENT-REQUIRED extensions.bazaar). */
 export function bazaarExtension(sku: DoorSku): Record<string, unknown> {
+  const outputType = isPdfCacheSku(sku) ? "pdf" : "json";
+  const paidSchema = paidOutputJsonSchema(sku);
+  const output: Record<string, unknown> = {
+    type: outputType,
+    example: BAZAAR_OUTPUT_EXAMPLE[sku],
+  };
+  // Paid-body schema lives here — not on the discovery wrapper's
+  // schema.properties.output.required (that was ["type"] and vet402 L2
+  // treated it as catalog-declared paid keys → mismatch vs /ticks).
+  if (paidSchema) output.schema = paidSchema;
   return {
     info: {
       input: {
@@ -3049,10 +3082,7 @@ export function bazaarExtension(sku: DoorSku): Record<string, unknown> {
               ? { id: "", before: "" }
             : {},
       },
-      output: {
-        type: isPdfCacheSku(sku) ? "pdf" : "json",
-        example: BAZAAR_OUTPUT_EXAMPLE[sku],
-      },
+      output,
     },
     schema: {
       $schema: "https://json-schema.org/draft/2020-12/schema",
@@ -3080,8 +3110,8 @@ export function bazaarExtension(sku: DoorSku): Record<string, unknown> {
           properties: {
             type: { type: "string" },
             example: { type: "object" },
+            schema: { type: "object" },
           },
-          required: ["type"],
         },
       },
       required: ["input"],
@@ -3511,7 +3541,7 @@ export function paymentRequiredBody(
     mimeType: skuMimeType(sku),
     maxTimeoutSeconds: 60,
     extra: paymentExtra(sku),
-    maxAmountRequired: amount,
+    maxAmountRequired: String(amount),
   };
 
   return {
@@ -3541,7 +3571,7 @@ export function paymentRequiredV2(
     payTo: PAY_TO,
     maxTimeoutSeconds: 60,
     extra: paymentExtra(sku),
-    amount,
+    amount: String(amount),
     description,
   };
   return {
@@ -3967,6 +3997,43 @@ async function localEip3009Settle(payment: string, requirements: Record<string, 
 }
 
 
+/** Base64 SettlementResponse for paid 200s. Only when settle returned a real txHash. */
+export function settlementReceiptHeaders(
+  payment: string | null,
+  requirements: Record<string, unknown>,
+  txHash?: string,
+): Record<string, string> {
+  if (!txHash) return {};
+  const decoded = payment ? decodePayment(payment) : null;
+  const v2 = decoded?.x402Version === 2 || (typeof requirements.network === "string" && requirements.network.startsWith("eip155:"));
+  const receipt: Record<string, unknown> = {
+    success: true,
+    transaction: txHash,
+    network: v2 ? caip2Network(requirements.network) : NETWORK_V1,
+  };
+  const payer = payerFromPayment(payment);
+  if (payer) receipt.payer = payer;
+  const encoded = Buffer.from(JSON.stringify(receipt), "utf8").toString("base64");
+  return {
+    "PAYMENT-RESPONSE": encoded,
+    "X-PAYMENT-RESPONSE": encoded,
+  };
+}
+
+const headResponses = new WeakSet<ServerResponse>();
+
+function markHeadResponse(res: ServerResponse): void {
+  headResponses.add(res);
+}
+
+function discoveryLinkHeader(): string {
+  return `<${LLMS_PATH}>; rel="llms-txt"; type="text/plain", <${OPENAPI_PATH}>; rel="service-desc"; type="application/json"`;
+}
+
+function endMaybeEmpty(res: ServerResponse, payload: string | Buffer): void {
+  res.end(headResponses.has(res) ? undefined : payload);
+}
+
 function sendJson(res: ServerResponse, status: number, body: unknown, extraHeaders: Record<string, string> = {}): void {
   const payload = JSON.stringify(body);
   res.writeHead(status, {
@@ -3974,18 +4041,21 @@ function sendJson(res: ServerResponse, status: number, body: unknown, extraHeade
     "Cache-Control": "no-store",
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Expose-Headers": "PAYMENT-REQUIRED, X-PAYMENT-RESPONSE, PAYMENT-RESPONSE, ETag",
+    "Content-Length": String(Buffer.byteLength(payload)),
     ...extraHeaders,
   });
-  res.end(payload);
+  endMaybeEmpty(res, payload);
 }
 
-function sendText(res: ServerResponse, status: number, body: string, contentType: string): void {
+function sendText(res: ServerResponse, status: number, body: string, contentType: string, extraHeaders: Record<string, string> = {}): void {
   res.writeHead(status, {
     "Content-Type": contentType,
     "Cache-Control": "no-store",
     "Access-Control-Allow-Origin": "*",
+    "Content-Length": String(Buffer.byteLength(body)),
+    ...extraHeaders,
   });
-  res.end(body);
+  endMaybeEmpty(res, body);
 }
 
 function shopDiscoveryPointers(req: IncomingMessage, port: number): Record<string, string> {
@@ -4236,6 +4306,7 @@ export function wellKnownX402(req: IncomingMessage, port: number): Record<string
         "Extracted-body doors accept ?since=<ISO timestamp or official catalog id> (same watermark shape as ?before=). Paid GET returns only official texts newer than that watermark. Empty new set: HTTP 304 with ETag, or paid 200 with empty records/ids and a stable asOf/fetchedAt. Newest-10 ?before= and ?id= stay.",
       etag:
         "GET /ticks and GET /import-alerts send ETag. If-None-Match on an unchanged snapshot returns 304 and does not re-sell the table. If the table changed, the whole current table is returned (existing product). Optional ?since= on those tables 304s when fetchedAt/asOf is not newer.",
+      resourceCount: paidDiscoveryPaths().length,
       updateCadence: COLLECT_CADENCE,
       http429: HTTP_429_COPY,
     },
@@ -4254,6 +4325,7 @@ function paidOpenApiOp(opts: {
   outputSchema: Record<string, unknown>;
 }): Record<string, unknown> {
   const olderPages = opts.description.includes("Newest chunk on a plain GET");
+  const exampleKeys = Object.keys(opts.example);
   const outputSchema = olderPages
     ? {
         ...opts.outputSchema,
@@ -4263,8 +4335,12 @@ function paidOpenApiOp(opts: {
           nextBefore: { type: "string", nullable: true },
           prevBefore: { type: "string", nullable: true },
         },
+        required: exampleKeys,
       }
-    : opts.outputSchema;
+    : {
+        ...opts.outputSchema,
+        required: Array.isArray(opts.outputSchema.required) ? opts.outputSchema.required : exampleKeys,
+      };
   return {
     operationId: opts.operationId,
     summary: opts.summary,
@@ -6227,12 +6303,12 @@ async function servePaid(
     return;
   }
 
-  const serve = async () => {
+  const serve = async (receipt: Record<string, string> = {}) => {
     const body = await load(opts);
     if (maybeNotModified(body)) return;
     const etag = etagFromPaidEnvelope(sku, paidEnvelope(body));
     logPaid(200);
-    sendJson(res, 200, body, { ETag: etag });
+    sendJson(res, 200, body, { ETag: etag, ...receipt });
   };
 
   if (skipSettle()) {
@@ -6245,13 +6321,13 @@ async function servePaid(
   const settled = verified ? await facilitatorSettle(payment, accept) : { ok: false };
   if (settled.ok) {
     journalVerifiedSettle(settled.txHash);
-    await serve();
+    await serve(settlementReceiptHeaders(payment, accept, settled.txHash));
     return;
   }
   const local = await localEip3009Settle(payment, accept);
   if (local.ok) {
     journalVerifiedSettle(local.txHash);
-    await serve();
+    await serve(settlementReceiptHeaders(payment, accept, local.txHash));
     return;
   }
   logPaid(402);
@@ -6279,9 +6355,10 @@ function sendPdf(
     "Cache-Control": "no-store",
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Expose-Headers": "PAYMENT-REQUIRED, X-PAYMENT-RESPONSE, PAYMENT-RESPONSE, ETag",
+    "Content-Length": String(bytes.byteLength),
     ...extraHeaders,
   });
-  res.end(Buffer.from(bytes));
+  endMaybeEmpty(res, Buffer.from(bytes));
 }
 
 async function servePaidPdf(
@@ -6325,7 +6402,7 @@ async function servePaidPdf(
     return;
   }
 
-  const serve = async () => {
+  const serve = async (receipt: Record<string, string> = {}) => {
     const packed = await load(opts);
     if (!packed) {
       logPaid(404);
@@ -6333,7 +6410,7 @@ async function servePaidPdf(
       return;
     }
     logPaid(200);
-    sendPdf(res, 200, packed.bytes, packed.filename);
+    sendPdf(res, 200, packed.bytes, packed.filename, receipt);
   };
 
   if (skipSettle()) {
@@ -6346,13 +6423,13 @@ async function servePaidPdf(
   const settled = verified ? await facilitatorSettle(payment, accept) : { ok: false };
   if (settled.ok) {
     journalVerifiedSettle(settled.txHash);
-    await serve();
+    await serve(settlementReceiptHeaders(payment, accept, settled.txHash));
     return;
   }
   const local = await localEip3009Settle(payment, accept);
   if (local.ok) {
     journalVerifiedSettle(local.txHash);
-    await serve();
+    await serve(settlementReceiptHeaders(payment, accept, local.txHash));
     return;
   }
   logPaid(402);
@@ -6398,13 +6475,40 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     res.writeHead(204, {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Headers": "X-PAYMENT, PAYMENT-SIGNATURE, Content-Type, If-None-Match",
-      "Access-Control-Allow-Methods": isPaidDoorPath(path) ? "GET, POST, OPTIONS" : "GET, OPTIONS",
+      "Access-Control-Allow-Methods": isPaidDoorPath(path) ? "GET, HEAD, POST, OPTIONS" : "GET, HEAD, OPTIONS",
     });
     res.end();
     return;
   }
 
-  if (req.method !== "GET" && !paidDoorPost) {
+  if (req.method === "HEAD" && isPaidDoorPath(path)) {
+    const sku = (Object.entries(SKU_COPY) as [DoorSku, { resourcePath: string }][]).find(
+      ([, copy]) => copy.resourcePath === path,
+    )?.[0];
+    if (sku) {
+      const amount = amountAtomicForRequest(sku, paidOptsFromReq(req, sku));
+      const resource = resourceUrl(req, port, path);
+      const body402 = paymentRequiredBody(resource, sku, amount);
+      const v2 = paymentRequiredV2(resource, sku, amount);
+      const paymentRequiredHeader = Buffer.from(JSON.stringify(v2), "utf8").toString("base64");
+      logShopRequest(req, { kind: "paid-door", path, status: 402 });
+      const payload = JSON.stringify(body402);
+      res.writeHead(402, {
+        "Content-Type": "application/json; charset=utf-8",
+        "Cache-Control": "no-store",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Expose-Headers": "PAYMENT-REQUIRED, X-PAYMENT-RESPONSE, PAYMENT-RESPONSE, ETag",
+        "PAYMENT-REQUIRED": paymentRequiredHeader,
+        "Content-Length": String(Buffer.byteLength(payload)),
+      });
+      res.end();
+      return;
+    }
+  }
+
+  if (req.method === "HEAD") {
+    markHeadResponse(res);
+  } else if (req.method !== "GET" && !paidDoorPost) {
     sendJson(res, 405, { error: "method_not_allowed" });
     return;
   }
@@ -6418,8 +6522,9 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
       shop: "bnm-data-shop",
       note: BODY_PAGE_DISCOVERY,
       payTo: PAY_TO,
-      network: NETWORK_V1,
+      network: NETWORK_V2,
       asset: USDC_BASE,
+      resourceCount: publicBazaarSkus().length,
       openapi: OPENAPI_PATH,
       wellKnown: WELL_KNOWN_PATH,
       llmsTxt: LLMS_PATH,
@@ -6783,22 +6888,39 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
             ]
           : []),
       ],
-    });
+    }, { Link: discoveryLinkHeader() });
     return;
   }
 
   if (path === WELL_KNOWN_PATH || path === "/.well-known/x402.json") {
-    sendJson(res, 200, wellKnownX402(req, port));
+    sendJson(res, 200, wellKnownX402(req, port), { Link: discoveryLinkHeader() });
     return;
   }
 
   if (path === OPENAPI_PATH) {
-    sendJson(res, 200, buildOpenApi(req, port));
+    sendJson(res, 200, buildOpenApi(req, port), { Link: discoveryLinkHeader() });
     return;
   }
 
-  if (path === LLMS_PATH) {
-    sendText(res, 200, llmsTxt(), "text/markdown; charset=utf-8");
+  if (path === LLMS_PATH || path === "/.well-known/llms.txt") {
+    sendText(res, 200, llmsTxt(), "text/plain; charset=utf-8", { Link: discoveryLinkHeader() });
+    return;
+  }
+
+  if (path === "/robots.txt") {
+    sendText(
+      res,
+      200,
+      [
+        "User-agent: *",
+        "Allow: /",
+        `Llms-Txt: ${LLMS_PATH}`,
+        `Sitemap: ${OPENAPI_PATH}`,
+        "",
+      ].join("\n"),
+      "text/plain; charset=utf-8",
+      { Link: discoveryLinkHeader() },
+    );
     return;
   }
 
