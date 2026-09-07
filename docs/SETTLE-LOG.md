@@ -58,7 +58,7 @@ systemctl --user restart idaho-ticks-x402.service
 
 Restart **only** that unit. This apply restacks PR 194 / PR 196 onto the live VA OIG tip (`cursor/apply-va-oig-fatten-cd1b` @ `2baaf04`). Do not check out the older `cursor/settle-metrics-c08d` or `cursor/settle-on-fmshrc-2ad8` bases — they sit behind VA OIG.
 
-Applied on apollo (2026-09-07): live SHA **d6a7137** plus isolation follow-ups on `cursor/apply-settle-metrics-65c4`. Restarted **only** `idaho-ticks-x402.service`. Banner still `mcp /mcp — 48 tools` and now also `settle journal ~/projects/mcp-proxy/data/settle.jsonl`. Unpaid `/ticks`, `/fmshrc-orders`, `/hhs-oig-reports`, `/epa-cafo` stay **402**. `/.well-known/x402` still lists **48** doors (no new settle SKU). Public `GET /shop-request-log` stays **404**. `./scripts/settle-metrics.sh` rolls up by path. Best-effort backfill from `data/shop-request-log.jsonl` wrote labeled `source=shop-request-log` lines (no tx hash). Superfund FYR (PR 199) was not applied.
+Applied on apollo (2026-09-07): live SHA **2d56dcd**. Restarted **only** `idaho-ticks-x402.service`. Banner still `mcp /mcp — 48 tools` and now also `settle journal ~/projects/mcp-proxy/data/settle.jsonl`. Unpaid `/ticks`, `/fmshrc-orders`, `/hhs-oig-reports`, `/epa-cafo` stay **402**. `/.well-known/x402` still lists **48** doors (no new settle SKU). Public `GET /shop-request-log` stays **404**. `./scripts/settle-metrics.sh` rolls up by path. Best-effort backfill from `data/shop-request-log.jsonl` wrote labeled `source=shop-request-log` lines (no tx hash). Superfund FYR (PR 199) was not applied.
 
 ## How Chief / apollo reads aggregates
 
