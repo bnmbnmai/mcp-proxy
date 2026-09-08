@@ -1,0 +1,25 @@
+# apply PR 213 GET /oshrc-orders — live ticks.bnm.farm
+# serving SHA 44e7a2e
+# idaho-ticks-x402.service restart Tue 2026-09-08 16:40:45 MDT PID 291681
+# Restarted only that unit. docker untouched.
+
+BEFORE
+GET  https://ticks.bnm.farm/.well-known/x402               200  resources=54  /oshrc-orders missing
+GET  https://ticks.bnm.farm/oshrc-orders                   404
+GET  https://ticks.bnm.farm/oshrc-orders/manifest.json     404
+GET  https://ticks.bnm.farm/ticks                          402  sibling
+GET  https://ticks.bnm.farm/fmshrc-orders                  402  sibling
+
+AFTER (merge 44e7a2e + collect cardCount 8 + restart)
+GET  https://ticks.bnm.farm/.well-known/x402               200  via: 1.1 Caddy  resources=55  extra.resourceCount=55  has /oshrc-orders
+GET  https://ticks.bnm.farm/oshrc-orders                   402  maxAmountRequired=50000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/oshrc-orders?id=24-0889-eaja   402  maxAmountRequired=20000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/oshrc-orders/manifest.json     200  via: 1.1 Caddy  cardCount=8  asOf=2026-09-04  fetchedAt=2026-09-08T22:40:41.204Z  no body  ids=24-0889-eaja,24-0702,24-1509,19-1566-eaja,24-1011,18-1287-18-1288,20-0762,19-1467
+GET  https://ticks.bnm.farm/ticks                          402  sibling
+GET  https://ticks.bnm.farm/fmshrc-orders                  402  sibling
+
+loopback GET http://127.0.0.1:4020/oshrc-orders            402
+loopback GET manifest                                      200  cardCount=8
+
+banner: /oshrc-orders $0.05 USDC
+banner: mcp /mcp — 55 tools from /.well-known/x402

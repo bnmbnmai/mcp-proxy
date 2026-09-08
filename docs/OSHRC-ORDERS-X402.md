@@ -8,7 +8,7 @@ Walk the official index. Do **not** wrap a free `wp-json` decision-narrative API
 **Collector:** decision-search ALJ + Commission table scrape + `pdftotext` with official HTML-twin fallback.
 **Seeds:** Finley Farmers Grain & Elevator `24-0889-eaja` (EAJA final 2026-09-04). STIS, Inc. `24-0702` (ALJ Decision and Order 2026-07-15).
 
-MCP tools are generated from live well-known (no hardcoded door count). Catalog `main` is not the door host. Stacked on `cursor/x402list-ownership-c90d`. Do not apply from this cloud VM — apply on apollo / media-box later.
+MCP tools are generated from live well-known (no hardcoded door count). Catalog `main` is not the door host. Stacked on the live Superfund FYR tip (`16cecab` / apply-record [PR 212](https://github.com/bnmbnmai/mcp-proxy/pull/212)), which itself sits on `cursor/x402list-ownership-c90d`.
 
 ## Collect command
 
@@ -34,13 +34,15 @@ Restart **only** `idaho-ticks-x402.service`. Do not replace other door caches. D
 ```bash
 cd ~/projects/mcp-proxy
 git fetch origin cursor/oshrc-orders-door-84d3
-git checkout cursor/oshrc-orders-door-84d3
+git checkout cursor/apply-oshrc-orders-6483
 export OSHRC_ORDERS_DIR=$HOME/projects/mcp-proxy/data/oshrc-orders
 mkdir -p "$OSHRC_ORDERS_DIR"
 npm run build
 OSHRC_ORDERS_LIMIT=8 OSHRC_ORDERS_MAX_FETCH=12 npm run collect:oshrc-orders
 systemctl --user restart idaho-ticks-x402.service
 ```
+
+Applied on apollo (2026-09-08): **serving SHA `44e7a2e`** (apply-record [PR 214](https://github.com/bnmbnmai/mcp-proxy/pull/214); merge of [PR 213](https://github.com/bnmbnmai/mcp-proxy/pull/213) onto `cursor/apply-superfund-fyr-title-63f9` @ `d0e6069`). Restarted **only** `idaho-ticks-x402.service` at **2026-09-08 16:40:45 MDT** (PID 291681). Collect wrote **8** official texts (`addedThisRun` 8, `fetchedPdfs` 10, skipped 2), listedCount **20**, asOf **2026-09-04**, fetchedAt **2026-09-08T22:40:41.204Z**. Seeds `24-0889-eaja` (Finley) and `24-0702` (STIS) are in the free manifest (operator/docket/date/sourceUrl only). Unpaid `GET https://ticks.bnm.farm/oshrc-orders` is **402** at $0.05; `?id=24-0889-eaja` is **402** at $0.02. `/.well-known/x402` lists `/oshrc-orders` among **55** doors. Banner `mcp /mcp — 55 tools`. Siblings `/ticks` `/fmshrc-orders` still 402. No new collect cron. No lander PR from this apply.
 
 ## Lander card (tv-remote / bnm.farm)
 
