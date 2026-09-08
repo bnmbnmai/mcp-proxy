@@ -1,0 +1,24 @@
+# apply PR 208 CFPB collect health + Superfund public manifest — live ticks.bnm.farm
+# serving SHA 3eb5cec
+# idaho-ticks-x402.service restart Mon 2026-09-07 22:54:39 MDT PID 1356455
+# Restarted only that unit. docker-gw untouched (11:00:23 MDT).
+
+BEFORE
+GET  https://ticks.bnm.farm/superfund-rods/manifest.json  502  Cloudflare error code 502 (no via: Caddy)
+GET  http://127.0.0.1:4020/superfund-rods/manifest.json    200  cardCount=389  asOf=2026-08-05  fetchedAt=2026-09-08T03:48:59.093Z
+GET  https://ticks.bnm.farm/superfund-rods                 402
+GET  http://127.0.0.1:4020/cfpb-orders/manifest.json      200  cardCount=137  fetchedAt=2026-09-07T14:13:36.511Z (morning / stale)
+GET  https://ticks.bnm.farm/.well-known/x402               200  resources=54
+
+AFTER (FF 3eb5cec + restart + one-door CFPB collect)
+GET  https://ticks.bnm.farm/superfund-rods/manifest.json  200  via: 1.1 Caddy  cardCount=389  asOf=2026-08-05  fetchedAt=2026-09-08T03:48:59.093Z  no body
+GET  https://ticks.bnm.farm/superfund-rods                 402  PAYMENT-REQUIRED  maxAmountRequired=50000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/cfpb-orders/manifest.json      200  cardCount=137  asOf=2025-01-30  fetchedAt=2026-09-08T04:56:02.857Z
+GET  https://ticks.bnm.farm/cfpb-orders                    402
+GET  https://ticks.bnm.farm/.well-known/x402               200  resources=54  extra.resourceCount=54  /superfund-rods /cfpb-orders leftover LNM
+GET  https://ticks.bnm.farm/mariners-d1                    402  leftover sibling
+GET  https://ticks.bnm.farm/ticks                          402
+
+one-door CFPB collect 2026-09-07T22:55:31-06:00 → 22:56:03-06:00 EXIT 0
+status=ok listedCount=386 reused=45 skippedNoText=40 addedThisRun=0 fetchedPdfs=0
+fetchedAt 2026-09-07T14:13:36.511Z → 2026-09-08T04:56:02.857Z

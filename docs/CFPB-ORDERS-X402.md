@@ -38,10 +38,14 @@ Free `GET /cfpb-orders/manifest.json` is firm / date / title / fileNo / sourceUr
 | `CFPB_ORDERS_DIR` | `$HOME/projects/mcp-proxy/data/cfpb-orders` | Snapshot cache (`snapshot.json` + downloaded PDFs) |
 | `CFPB_ORDERS_LIMIT` | `5` | Target **additional** real extractable bodies this run. Cached bodies are reused and do **not** count. `0` = keep walking |
 | `CFPB_ORDERS_MAX_FETCH` | `8` | Max official PDF downloads per run. Already-on-disk PDFs do not count. `0` = no cap |
+| `CFPB_ORDERS_MAX_ACTIONS` | `40` | Cap uncached action-page fetches so complaint-only rows cannot walk past the PDF cap |
+| `CFPB_ORDERS_FETCH_MS` | `20000` | Listing / action / PDF fetch timeout. Later-page fail keeps the cached bag and refreshes `fetchedAt` |
 | `CFPB_ORDERS_HTML_DIR` / `CFPB_ORDERS_LISTING_DIR` | unset | Optional already-fetched `listing-excerpt.html` + `{slug}.html` + `{pdfId}.txt` |
 | `CFPB_ORDERS_PDFTOTEXT` | `pdftotext` | Poppler extractor |
 
 Do not set `X402_SKIP_SETTLE` on the standing public unit. Family / basic-auth stay off `ticks.bnm.farm`.
+
+Applied on apollo (2026-09-07): **serving SHA `3eb5cec`** (apply-record [PR 209](https://github.com/bnmbnmai/mcp-proxy/pull/209); FF of [PR 208](https://github.com/bnmbnmai/mcp-proxy/pull/208) onto `cursor/apply-vet402-receipt-e6e8` @ `43f5ce7`). Restarted **only** `idaho-ticks-x402.service` at **2026-09-07 22:54:39 MDT** (PID 1356455). One-door collect EXIT 0 in 32s: `fetchedAt` **2026-09-07T14:13:36.511Z → 2026-09-08T04:56:02.857Z**, `cardCount` still **137**, `listedCount` 386. Did not log `collect failed`. Public unpaid `GET /cfpb-orders` stays **402**.
 
 ## Apollo collect (required for live)
 

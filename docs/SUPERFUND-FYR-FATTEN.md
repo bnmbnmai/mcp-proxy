@@ -36,10 +36,12 @@ Public unpaid `GET /superfund-rods/manifest.json` reads slim `catalog.json` (no 
 
 `SUPERFUND_FYR=0` turns FYR collect off if needed.
 
+Applied on apollo (2026-09-07): public unpaid manifest **200** / **cardCount 389** (evening ROD bag; catalog sidecar). Unpaid GET **402**. Well-known still **54**. FYR collect **not** run this apply — Cape Fear `04-11246061` is not in the live catalog yet. Next 07:45 / 19:45 Boise Superfund walk can add FYRs onto the same door.
+
 ## After apply
 
 - Live `/.well-known/x402` still lists `/superfund-rods` and does **not** add a new door
 - Public unpaid manifest is HTTP 200 with real `cardCount` (loopback and edge)
-- Free manifest includes FYR ids (habit: `04-11246061` Cape Fear, 2026-09-02)
+- Free manifest includes FYR ids after a Superfund collect (habit: `04-11246061` Cape Fear, 2026-09-02)
 - Unpaid GET stays HTTP 402 at $0.05
 - `?id=`, `?since=`, and ETag stay the extracted-body semantics already on this door
