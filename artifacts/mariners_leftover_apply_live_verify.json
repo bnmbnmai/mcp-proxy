@@ -9,6 +9,8 @@
   "sourceHead": "787ae064fab146b73f3f22967786e7d391e55cda",
   "stackedOn": "cursor/apply-vet402-receipt-e6e8",
   "stackedOnSha": "1db2c00b1f8bebd5e6c14bf360d1251d85d4e5f6",
+  "thisApply": "https://github.com/bnmbnmai/mcp-proxy/pull/207",
+  "applyRecordSha": "7361727",
   "systemctlUserRestart": {
     "unit": "idaho-ticks-x402.service",
     "ok": true,
