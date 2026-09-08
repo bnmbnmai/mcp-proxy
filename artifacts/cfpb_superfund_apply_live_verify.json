@@ -1,0 +1,118 @@
+{
+  "job": "apply PR 208 CFPB evening-collect health + public Superfund manifest 200 on ticks.bnm.farm",
+  "ranOn": "apollo",
+  "hostname": "pop-os",
+  "branch": "cursor/apply-cfpb-superfund-10db",
+  "servingSha": "3eb5cece22ed00ad591af961813a2863538500a6",
+  "sourcePr": "https://github.com/bnmbnmai/mcp-proxy/pull/208",
+  "sourceBranch": "cursor/cfpb-superfund-health-bead",
+  "sourceHead": "3eb5cece22ed00ad591af961813a2863538500a6",
+  "stackedOn": "cursor/apply-vet402-receipt-e6e8",
+  "stackedOnSha": "43f5ce744a7b40e6fe5c73c71c82038c17aa9a36",
+  "thisApply": null,
+  "systemctlUserRestart": {
+    "unit": "idaho-ticks-x402.service",
+    "ok": true,
+    "otherUnitsRestarted": false,
+    "activeEnterTimestamp": "Mon 2026-09-07 22:54:39 MDT",
+    "activeEnterUtc": "2026-09-08T04:54:39Z",
+    "pidAfter": "1356455",
+    "dockerGwUntouched": "Mon 2026-09-07 11:00:23 MDT"
+  },
+  "banner": {
+    "superfund": "/superfund-rods $0.05 USDC",
+    "mcp": "mcp /mcp — 54 tools from /.well-known/x402"
+  },
+  "before": {
+    "superfundRodsManifest": {
+      "public": 502,
+      "loopback": 200,
+      "loopbackCardCount": 389,
+      "loopbackFetchedAt": "2026-09-08T03:48:59.093Z"
+    },
+    "cfpbOrders": {
+      "cardCount": 137,
+      "fetchedAt": "2026-09-07T14:13:36.511Z",
+      "note": "evening collect failed 20:11 MDT; morning fetchedAt left stale"
+    },
+    "wellKnown": { "status": 200, "resourceCount": 54 }
+  },
+  "live": {
+    "superfundRodsManifest": {
+      "public": {
+        "status": 200,
+        "via": "1.1 Caddy",
+        "cardCount": 389,
+        "asOf": "2026-08-05",
+        "fetchedAt": "2026-09-08T03:48:59.093Z",
+        "product": "epa-superfund-rod-bodies",
+        "bodyLeak": false
+      },
+      "loopback": {
+        "status": 200,
+        "cardCount": 389,
+        "asOf": "2026-08-05",
+        "fetchedAt": "2026-09-08T03:48:59.093Z",
+        "bodyLeak": false
+      },
+      "catalogSidecar": {
+        "path": "data/superfund-rods/catalog.json",
+        "cardCount": 389,
+        "writtenAt": "2026-09-07T22:54:00-06:00"
+      }
+    },
+    "superfundRodsUnpaid": {
+      "status": 402,
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "50000",
+      "extraName": "USD Coin"
+    },
+    "cfpbOrders": {
+      "publicManifest": {
+        "status": 200,
+        "cardCount": 137,
+        "asOf": "2025-01-30",
+        "fetchedAt": "2026-09-08T04:56:02.857Z"
+      },
+      "unpaid": { "status": 402 }
+    },
+    "wellKnown": {
+      "status": 200,
+      "resourceCount": 54,
+      "extraResourceCount": 54,
+      "hasSuperfundRods": true,
+      "hasCfpbOrders": true,
+      "hasLeftoverFive": true,
+      "superfundUrl": "https://ticks.bnm.farm/superfund-rods",
+      "newSuperfundPath": false
+    },
+    "siblingsStill402": ["/mariners-d1", "/ticks"]
+  },
+  "cfpbOneDoorCollect": {
+    "started": "2026-09-07T22:55:31-06:00",
+    "finished": "2026-09-07T22:56:03-06:00",
+    "exit": 0,
+    "status": "ok",
+    "fetchedAtBefore": "2026-09-07T14:13:36.511Z",
+    "fetchedAtAfter": "2026-09-08T04:56:02.857Z",
+    "cardCount": 137,
+    "listedCount": 386,
+    "reused": 45,
+    "skippedNoText": 40,
+    "addedThisRun": 0,
+    "fetchedPdfs": 0,
+    "collectFailedLog": false
+  },
+  "tests": {
+    "cfpb-orders.test.js": "ok",
+    "superfund-rods.test.js": "ok"
+  },
+  "excluded": {
+    "superfundFyrCollect": "not run this apply; evening bag 389 reused; Cape Fear 04-11246061 not in catalog yet",
+    "newCollectCron": "not started",
+    "catalogMain": "not checked out",
+    "redbubble": "untouched",
+    "lander": "not opened from this apply",
+    "dockerGw": "untouched"
+  }
+}

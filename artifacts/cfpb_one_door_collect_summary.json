@@ -1,0 +1,16 @@
+{
+  "started": "2026-09-07T22:55:31-06:00",
+  "finished": "2026-09-07T22:56:03-06:00",
+  "exit": 0,
+  "fetchedAtBefore": "2026-09-07T14:13:36.511Z",
+  "status": "ok",
+  "fetchedAt": "2026-09-08T04:56:02.857Z",
+  "asOf": "2025-01-30",
+  "cardCount": 137,
+  "listedCount": 386,
+  "fetchedPdfs": 0,
+  "skippedNoText": 40,
+  "reused": 45,
+  "addedThisRun": 0,
+  "note": "Listing walk succeeded. Action-page cap (CFPB_ORDERS_MAX_ACTIONS=40) stopped on complaint-only rows. Cached 137 bodies kept. fetchedAt moved. Did not log collect failed."
+}
