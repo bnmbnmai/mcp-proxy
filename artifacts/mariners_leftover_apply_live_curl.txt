@@ -1,0 +1,21 @@
+# apply PR 206 leftover USCG LNM districts — live ticks.bnm.farm
+# serving SHA 787ae06
+# idaho-ticks-x402.service restart Mon 2026-09-07 22:23:28 MDT PID 1329475
+# Restarted only that unit. docker-gw untouched (11:00:23 MDT). Superfund untouched.
+
+GET  https://ticks.bnm.farm/mariners-d1                 402  PAYMENT-REQUIRED  amount=50000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/mariners-d5                 402  PAYMENT-REQUIRED  amount=50000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/mariners-d9                 402  PAYMENT-REQUIRED  amount=50000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/mariners-d14                402  PAYMENT-REQUIRED  amount=50000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/mariners-d17                402  PAYMENT-REQUIRED  amount=50000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/mariners-d1/manifest.json   200  noticeCount=520  week=35-2026  asOf=2026-09-02  no notice text
+GET  https://ticks.bnm.farm/mariners-d5/manifest.json   200  noticeCount=901  week=35-2026  asOf=2026-09-02  no notice text
+GET  https://ticks.bnm.farm/mariners-d9/manifest.json   200  noticeCount=336  week=35-2026  asOf=2026-09-02  no notice text
+GET  https://ticks.bnm.farm/mariners-d14/manifest.json  200  noticeCount=118  week=35-2026  asOf=2026-09-02  no notice text
+GET  https://ticks.bnm.farm/mariners-d17/manifest.json  200  noticeCount=235  week=35-2026  asOf=2026-09-02  no notice text
+GET  https://ticks.bnm.farm/.well-known/x402            200  resources=54  extra.resourceCount=54  lists all five leftover paths
+GET  http://127.0.0.1:4020/mariners                     402  sibling
+GET  http://127.0.0.1:4020/mariners-d11                 402  sibling
+GET  http://127.0.0.1:4020/mariners-d7                  402  sibling
+GET  http://127.0.0.1:4020/mariners-d8                  402  sibling
+GET  https://ticks.bnm.farm/superfund-rods/manifest.json  502  (untouched)

@@ -1,0 +1,130 @@
+{
+  "job": "apply PR 206 leftover USCG LNM districts D1/D5/D9/D14/D17 onto live ticks.bnm.farm",
+  "ranOn": "apollo",
+  "hostname": "pop-os",
+  "branch": "cursor/apply-vet402-receipt-e6e8",
+  "servingSha": "787ae064fab146b73f3f22967786e7d391e55cda",
+  "sourcePr": "https://github.com/bnmbnmai/mcp-proxy/pull/206",
+  "sourceBranch": "cursor/mariners-remaining-lnm-c7d6",
+  "sourceHead": "787ae064fab146b73f3f22967786e7d391e55cda",
+  "stackedOn": "cursor/apply-vet402-receipt-e6e8",
+  "stackedOnSha": "1db2c00b1f8bebd5e6c14bf360d1251d85d4e5f6",
+  "systemctlUserRestart": {
+    "unit": "idaho-ticks-x402.service",
+    "ok": true,
+    "otherUnitsRestarted": false,
+    "activeEnterTimestamp": "Mon 2026-09-07 22:23:28 MDT",
+    "activeEnterUtc": "2026-09-08T04:23:28Z",
+    "pidAfter": "1329475",
+    "dockerGwUntouched": "Mon 2026-09-07 11:00:23 MDT"
+  },
+  "banner": {
+    "leftover": "/mariners-d1 /mariners-d5 /mariners-d9 /mariners-d14 /mariners-d17 $0.05 USDC",
+    "mcp": "mcp /mcp — 54 tools from /.well-known/x402"
+  },
+  "eveningCollect": {
+    "cron": ["45 7 * * *", "45 19 * * *"],
+    "started": "2026-09-07T19:45:01-0600",
+    "done": "2026-09-07T22:07:49-0600",
+    "officialDoorsWalked": 48,
+    "officialDoorsSource": "public-bazaar-skus",
+    "hayTicksSeparate": true,
+    "liveWellKnownBeforeApply": 49,
+    "walkedVsWellKnown": "48 official + /ticks = 49 live well-known",
+    "hay": {
+      "log": "/ticks, 5245, 5251, refreshed",
+      "manifestFetchedAt": "2026-09-08T02:01:00.095Z",
+      "manifestTickCount": 5244
+    },
+    "bagDeltas": {
+      "moved": {
+        "/ticks": "5245→5251 refreshed",
+        "/warning-letters": "1096→1146 asof-moved",
+        "/awa": "146→170 asof-moved",
+        "/occ-cd": "370→394 asof-moved",
+        "/frb-orders": "334→357 asof-moved",
+        "/superfund-rods": "365→389 asof-moved",
+        "/ema-referrals": "317→318 asof-moved",
+        "/phmsa-orders": "256→280 asof-moved",
+        "/hhs-oig-reports": "164→188 asof-moved",
+        "/fmshrc-orders": "19→20 grew",
+        "/bsee-reports": "18→42 grew",
+        "/form-483": "689→714 asof-moved",
+        "/gmp-md": "391→414 asof-moved"
+      },
+      "grewUnchangedN": [
+        "/pcac 14",
+        "/ncua-orders 12",
+        "/cftc-orders 19",
+        "/cder-reviews 16",
+        "/npdes-permits 16",
+        "/ofsted-inspections 16",
+        "/ofgem-enforcement 6",
+        "/gain 8",
+        "/orr-enforcement 6",
+        "/csb-reports 10"
+      ],
+      "teaserBlocked": {
+        "/ofwat-enforcement": "3→3",
+        "/eis-reports": "1→1"
+      },
+      "failedStale": {
+        "/cfpb-orders": "collect failed 20:11:35; bag 137→137 current; loopback fetchedAt 2026-09-07T14:13:36.511Z (morning)"
+      }
+    },
+    "superfund": {
+      "fatCheckStarted": "2026-09-07T20:22:51-0600",
+      "finished": "2026-09-07T21:49:10-0600",
+      "bag": "365→389 asof-moved",
+      "publicManifest": 502,
+      "loopbackManifest": 200,
+      "loopbackCardCount": 389,
+      "loopbackFetchedAt": "2026-09-08T03:48:59.093Z"
+    }
+  },
+  "leftoverCollect": {
+    "week": "35-2026",
+    "asOf": "2026-09-02",
+    "noticeCounts": {
+      "/mariners-d1": 520,
+      "/mariners-d5": 901,
+      "/mariners-d9": 336,
+      "/mariners-d14": 118,
+      "/mariners-d17": 235
+    }
+  },
+  "live": {
+    "unpaid": {
+      "/mariners-d1": { "status": 402, "amountAtomic": "50000", "extraName": "USD Coin", "hasPaymentRequired": true },
+      "/mariners-d5": { "status": 402, "amountAtomic": "50000", "extraName": "USD Coin", "hasPaymentRequired": true },
+      "/mariners-d9": { "status": 402, "amountAtomic": "50000", "extraName": "USD Coin", "hasPaymentRequired": true },
+      "/mariners-d14": { "status": 402, "amountAtomic": "50000", "extraName": "USD Coin", "hasPaymentRequired": true },
+      "/mariners-d17": { "status": 402, "amountAtomic": "50000", "extraName": "USD Coin", "hasPaymentRequired": true }
+    },
+    "manifests": {
+      "/mariners-d1": { "status": 200, "noticeCount": 520, "week": "35-2026", "noticeBody": false },
+      "/mariners-d5": { "status": 200, "noticeCount": 901, "week": "35-2026", "noticeBody": false },
+      "/mariners-d9": { "status": 200, "noticeCount": 336, "week": "35-2026", "noticeBody": false },
+      "/mariners-d14": { "status": 200, "noticeCount": 118, "week": "35-2026", "noticeBody": false },
+      "/mariners-d17": { "status": 200, "noticeCount": 235, "week": "35-2026", "noticeBody": false }
+    },
+    "siblingsStill402": ["/mariners", "/mariners-d11", "/mariners-d7", "/mariners-d8"],
+    "wellKnown": {
+      "status": 200,
+      "resourceCount": 54,
+      "hasLeftoverFive": true
+    },
+    "superfundRodsManifest": {
+      "public": 502,
+      "loopback": 200,
+      "note": "untouched; Superfund FYR not applied"
+    }
+  },
+  "excluded": {
+    "superfundFyr": "not applied",
+    "newCollectCron": "not started",
+    "catalogMain": "not checked out",
+    "redbubble": "untouched",
+    "lander": "not opened from this apply"
+  }
+}
