@@ -1,0 +1,992 @@
+                         FIFTH FIVE-YEAR REVIEW REPORT FOR
+              WESTINGHOUSE ELECTRIC CORP. (SHARON PLANT) SUPERFUND SITE
+                           MERCER COUNTY, PENNSYLVANIA
+
+
+
+
+                                                     Prepared by
+
+                                      U.S. Environmental Protection Agency
+                                                     Region 3
+                                            Philadelphia, Pennsylvania
+
+
+PAUL             Digitally signed by PAUL LEONARD
+
+
+LEONARD
+                 Date: 2026.09.01 09:57:18 -04'00'
+
+
+---------------------------------
+Paul Leonard, Director
+Superfund and Emergency Management Division
+U.S. EPA, Region 3
+Table of Contents
+LIST OF ABBREVIATIONS AND ACRONYMS ..................................................................................................ii
+I. INTRODUCTION ........................................................................................................................................ 1
+    Site Background ...................................................................................................................................... 1
+    FIVE-YEAR REVIEW SUMMARY FORM .................................................................................................... 4
+II. RESPONSE ACTION SUMMARY ............................................................................................................... 4
+    Basis for Taking Action ............................................................................................................................ 4
+    Response Actions .................................................................................................................................... 5
+    Status of Implementation ..................................................................................................................... 10
+III. PROGRESS SINCE THE PREVIOUS REVIEW ........................................................................................... 14
+IV. FIVE-YEAR REVIEW PROCESS ............................................................................................................... 16
+    Community Notification, Community Involvement and Site Interviews.............................................. 16
+    Data Review .......................................................................................................................................... 16
+    Site Inspection....................................................................................................................................... 18
+V. TECHNICAL ASSESSMENT ...................................................................................................................... 18
+    QUESTION A: Is the remedy functioning as intended by the decision documents? ........................... 18
+    QUESTION B: Are the exposure assumptions, toxicity data, cleanup levels and RAOs used at the time
+    of the remedy selection still valid? ....................................................................................................... 18
+    QUESTION C: Has any other information come to light that could call into question the
+    protectiveness of the remedy? ............................................................................................................. 19
+VI. ISSUES/RECOMMENDATIONS .............................................................................................................. 20
+VII. PROTECTIVENESS STATEMENT ........................................................................................................... 20
+VIII. NEXT REVIEW ..................................................................................................................................... 21
+
+APPENDIX A – 2023 SEDIMENT REMOVAL AREA ..................................................................................... A-1
+APPENDIX B – DATA REVIEW ................................................................................................................... B-1
+APPENDIX C – SITE PHOTOGRAPHS ......................................................................................................... C-1
+
+
+
+
+                                                                              i
+LIST OF ABBREVIATIONS AND ACRONYMS
+
+
+CERCLA    Comprehensive Environmental Response, Compensation, and Liability Act
+CFR       Code of Federal Regulations
+COC       Contaminant of Concern
+EPA       U.S. Environmental Protection Agency
+ESD       Explanation of Significant Differences
+FYR       Five-Year Review
+HHRA      Human Health Risk Assessment
+IC        Institutional Control
+LNAPL     Light Non-Aqueous Phase Liquid
+MCL       Maximum Contaminant Level
+MCLG      Maximum Contaminant Level Goal
+NCP       National Oil and Hazardous Substances Pollution Contingency Plan
+NPL       National Priorities List
+mg/kg     Milligrams per Kilogram
+OU        Operable Unit
+OU-1      Operable Unit 1
+OU-2      Operable Unit 2
+PADEP     Pennsylvania Department of Environmental Protection
+PCB       Polychlorinated Biphenyl
+PFAS      Per- and Polyfluoroalkyl Substances
+PRP       Potentially Responsible Party
+RAO       Remedial Action Objective
+ROD       Record of Decision
+SLERA     Screening-Level Ecological Risk Assessment
+TCE       Trichloroethene
+TEQ       Toxicity Equivalent
+TI        Technical Impracticability
+UAO       Unilateral Administrative Order
+UU/UE     Unlimited Use and Unrestricted Exposure
+µg/L      Micrograms per Liter
+
+
+
+
+                                            ii
+I. INTRODUCTION
+
+The purpose of a five-year review (FYR) is to evaluate the implementation and performance of a
+remedy to determine if the remedy is and will continue to be protective of human health and the
+environment. The methods, findings and conclusions of reviews are documented in FYR Reports such
+as this one. In addition, FYR Reports identify issues found during the review, if any, and document
+recommendations to address them.
+
+The U.S. Environmental Protection Agency (EPA) is preparing this FYR pursuant to the Comprehensive
+Environmental Response, Compensation, and Liability Act (CERCLA) Section 121, consistent with the
+National Oil and Hazardous Substances Pollution Contingency Plan (NCP) (40 Code of Federal
+Regulations (CFR) Section 300.430(f)(4)(ii)), and considering EPA policy.
+
+This is the fifth FYR for the Westinghouse Electric Corp. (Sharon Plant) Superfund site (Site). The
+triggering action for this statutory review is the completion date of the previous FYR. The FYR has been
+prepared because hazardous substances, pollutants or contaminants remain at the Site above levels
+that allow for unlimited use and unrestricted exposure (UU/UE).
+
+The Site consists of two operable units (OUs). This FYR includes a review of Operable Unit 1 (OU-1) that
+addresses soils and Operable Unit 2 (OU-2) that addresses groundwater, storm sewer drainageways,
+Shenango River sediments, and riparian soils.
+
+EPA led the FYR with support from the Pennsylvania Department of Environmental Protection (PADEP).
+The PRPs were notified of the initiation of the FYR. The review began on August 13, 2025.
+
+Site Background
+For more than 60 years, Westinghouse Electric Corp. (Westinghouse) produced distribution
+transformers, power transformers and related electrical apparatus at the former transformer plant
+(Westinghouse Plant) on the Site. Some transformers produced at the Westinghouse Plant were filled
+with a dielectric fluid called Inerteen. Inerteen was nonflammable and consisted of undiluted
+polychlorinated biphenyls (PCBs) or a mixture of PCBs and trichlorobenzene. Westinghouse first used
+Inerteen at the Sharon plant in 1936 and discontinued its use in 1976. During operations, leakages and
+spills of PCBs contaminated soils; storm sewer drainageways that lead from the plant to the Shenango
+River; sediments and riparian soils of the Shenango River; and groundwater at and downgradient of the
+former plant. The Westinghouse Plant located on the Site stopped operating in 1984.
+
+The Site is located on the west side of Sharpsville Avenue in the City of Sharon, Mercer County,
+Pennsylvania (Figure 1). For purposes of conducting the environmental investigations, the
+Westinghouse Plant was divided into three areas: the North Sector, Middle Sector and South Sector.
+Currently, the Westinghouse Plant houses a variety of industrial businesses, including Sharon Coating,
+LLC (South Sector) and the Ellwood Crankshaft Group (North Sector).
+
+The Site is in the Shenango River Valley. The Shenango River varies from 800 to 2,000 feet west of the
+Westinghouse Plant and flows south. There are two aquifers at the Site. The alluvial aquifer is
+unconfined and associated with alluvial deposits. The groundwater in the lower, bedrock aquifer is
+present under confined or semi-confined conditions in Orangeville Shale. An 8-foot to 80-foot thick
+                                                   1
+layer of glacial till underlies the alluvial aquifer and acts as an aquitard between the alluvial aquifer and
+the bedrock aquifer. Groundwater in the alluvial and bedrock aquifers generally flows west-southwest
+toward the Shenango River.
+
+
+
+
+                                                     2
+Figure 1: Site Location Map
+
+
+
+
+                              3
+FIVE-YEAR REVIEW SUMMARY FORM
+
+
+                                          SITE IDENTIFICATION
+     Site Name: Westinghouse Electric Corp. (Sharon Plant)
+     EPA ID: PAD005000575
+     Region: 3               State: PA           City/County: Sharon / Mercer
+
+                                              SITE STATUS
+     NPL Status: Final
+     Multiple OUs?                       Has the Site achieved construction completion?
+     Yes                                 Yes
+
+
+                                            REVIEW STATUS
+     Lead agency: EPA
+     Author name: Aaron Mroz
+
+     Author affiliation: EPA Region 3, Remedial Project Manager
+     Review period: 8/13/2025 - 9/2/2026
+     Date of site inspection: 6/10/2026
+     Type of review: Statutory
+     Review number: 5
+     Triggering action date: 9/2/2021
+     Due date (five years after triggering action date): 9/2/2026
+
+
+
+II. RESPONSE ACTION SUMMARY
+
+Basis for Taking Action
+EPA proposed the Site to the National Priorities List (NPL) in June 1988 and added the Site to the NPL in
+August 1990. In June 1997, Westinghouse submitted a final Screening-Level Ecological Risk Assessment
+(SLERA). In April 1998, Westinghouse submitted the final Baseline Human Health Risk Assessment
+(HHRA). The HHRA evaluated carcinogenic and non-carcinogenic risks to various potential human
+receptors from contaminants of concern, including PCBs, lead, and arsenic, which contaminated media
+at the Site. The results of the HHRA indicated unacceptable carcinogenic and non-carcinogenic risk in
+soil and groundwater via ingestion, dermal contact, and inhalation exposure pathways. The SLERA
+included a conclusion that there is potential unacceptable risk in the sediment and riparian soils. The
+Site contaminants of concern (COCs) by media are included in Table 1.
+
+
+                                                    4
+Table 1: Site COCs
+ Media                                 Contaminant
+ Soil                                  PCBs                                   arsenic
+                                       lead                                   manganese
+ Drainageway                           PCBs
+ Sediment                              PCBs
+ Riparian soil                         PCBs
+ Groundwater                           1,2-dichlorobenzene                    trichloroethene
+                                       1,4-dichlorobenzene                    vinyl chloride
+                                       1,2-dichloroethane                     bis(2-ethylhexyl)phthalate
+                                       cis-1,2-dichloroethene                 benzene
+                                       2,3,7,8-TCDD (teq)                     arsenic
+                                       1,2,4-trichlorobenzene                 barium
+                                       Aroclor 1242                           beryllium
+                                       PCB Aroclor 1248                       cadmium
+                                       PCB Aroclor 1254                       chromium
+                                       PCB Aroclor 1260                       cyanide
+                                       tetrachloroethene                      mercury
+Notes:
+   1. The groundwater COCs listed are the COCs included in the Technical Impracticability (TI) Waiver for
+       federal Maximum Contaminant Levels (MCLs) and federal non-zero Maximum Contaminant Level Goals
+       (MCLGs).
+   2. In order to evaluate all dioxins and furans, a toxicity equivalency factor is to adjust a concentration to a
+       dioxin toxicity equivalent (TEQ) concentration. 2,3,7,8-TCDD (teq) is the dioxin toxicity equivalent
+       concentration.
+
+Response Actions
+From 1976 to 1986, Westinghouse voluntarily undertook several cleanup actions, including:
+   • Excavation and off-site disposal of more than 7,800 tons of PCB-contaminated soil, including
+      soil from five underground storage tanks and from the cleanup of a spill in the moat area
+   • Removal and off-site disposal in a permitted landfill of 60 cubic yards of PCB-contaminated fly
+      ash from two settling tanks and a reservoir for the collection of hot water, known as a hot well
+   • Recovery and off-site incineration of 104 gallons of PCB liquid discovered in a concrete sump
+   • Removal, shredding, and incineration of more than 4,500 PCB-containing capacitors
+
+In February 1994, EPA issued a Unilateral Administrative Order (UAO) to Westinghouse for
+development and implementation of a Response Action Plan for removal of light non-aqueous phase
+liquid (LNAPL) from groundwater under the tank farm in a part of the Site referred to as the Middle
+Sector to reduce the threat of off-site LNAPL migration. The LNAPL response action used skimmers,
+bailers, and absorbent socks to remove the LNAPL. The LNAPL was containerized and shipped off-site
+for proper disposal. The LNAPL response action was terminated after EPA issued the Record of Decision
+(ROD) for OU-2 in 2003.
+
+
+
+
+                                                         5
+OU-1
+EPA selected the remedy for OU-1 in a February 18, 2000 ROD (2000 ROD), and an April 30, 2020
+Explanation of Significant Differences (ESD) (2020 ESD). The 2000 ROD and 2020 ESD document the
+selected remedy for OU-1 (OU-1 Selected Remedy). The OU-1 Selected Remedy consists of
+characterization, excavation, treatment, and off-site disposal of contaminated soils and institutional
+controls (ICs). The Remedial Action Objective (RAO) identified in the 2000 ROD for OU-1 is to reduce
+the risk posed by contaminated soils to acceptable levels for industrial use of the Site. The OU-1
+Selected Remedy also defined surface soil as soils from the ground surface to a depth of two feet and
+subsurface soil as soils deeper than two feet. The cleanup criteria requirements for each contaminant
+were calculated utilizing site-specific, risk-based calculations and correspond to specific Site areas and
+surface soil depths. The specific areas with surface soil cleanup criteria are listed below in Table 2. The
+specific areas are shown on Figure 2.
+
+Table 2: Surface Soil Cleanup Criteria in the OU-1 Selected Remedy
+ Area                    Location          Depth Below       Contaminant                 Surface Soil
+                         Description       Ground Surface                                Cleanup
+                                                                                         Criteria
+ A/B Slab                  If exposed soil    0-10 inches            PCBs                1 milligram per
+ North Sector                                                                            kilogram
+ Y Building (S, E, N)                                                                    (mg/kg)
+ Former Tank Farm                                                    Lead                1,000 mg/kg
+ Middle Sector East                                                  Arsenic             104 mg/kg
+ Sharpsville Avenue                           10-24 inches           PCBs                25 mg/kg
+ Slope                                                               Lead                1,000 mg/kg
+ Remaining Sitewide                                                  Arsenic             104 mg/kg
+                           If area paved      0-24 inches            PCBs                25 mg/kg
+                                                                     Lead                1,000 mg/kg
+                                                                     Arsenic             104 mg/kg
+ Railroad Property         Railroad           0-10 inches            PCBs                25 mg/kg
+ Winner Truck                                                        Lead                1,000 mg/kg
+ Roadway and                                                         Arsenic             104 mg/kg
+ Railroad Spur                                10-24 inches           PCBs                71 mg/kg
+ Y Building (W)                                                      Lead                1,000 mg/kg
+                                                                     Arsenic             104 mg/kg
+ Moat                      Backfill           0-24 inches            PCBs                1 mg/kg
+                                              Or
+                                              0-10 inches            PCBs                1 mg/kg
+                                              10-24 inches           PCBs                25 mg/kg
+Note: The letters after the Y building refer to the four directions around the Y building.
+
+
+
+
+                                                         6
+Figure 2: Surface Soil Cleanup Criteria Areas
+
+
+
+
+                                                7
+OU-2
+EPA selected the remedy for OU-2 (OU-2 Selected Remedy) in a February 20, 2003 ROD (2003 ROD).
+The OU-2 Selected Remedy includes the following components:
+   •       Groundwater monitoring with no further action
+   •       A TI Waiver of drinking water standards (described below)
+   •       ICs
+   •       Removal and off-site disposal of PCB-contaminated sediments from about 600 feet of the
+           Wishart Court sewer line north of Silver Street
+   •       Excavation and off-site disposal of PCB-contaminated riparian soils in the floodway along
+           the eastern edge of the Shenango River downstream from Clark Street
+   •       Excavation and off-site disposal of up to 48 inches of PCB-contaminated sediments in the
+           Shenango River in areas between the Clark Street Bridge and the dam immediately
+           downstream of the intake of the Aqua America water treatment plant
+   •       Fish tissue monitoring
+
+EPA issued a TI Waiver because of the technical impracticability from an engineering perspective of
+restoring the groundwater to beneficial use due to the presence of dense non-aqueous phase liquids.
+The EPA TI Waiver waived federal MCLs and federal non-zero MCLGs within the TI Zone for the
+groundwater COCs listed on Table 1. The extent of the TI Zone is presented on Figure 3.
+
+The RAOs for the OU-2 Selected Remedy are as follows:
+   •      To prevent human exposures via ingestion, inhalation and dermal contact to site-related
+          contaminants in the groundwater
+   •      To eliminate potential exposures of ecological receptors to riparian soils where those soils
+          have total PCB concentrations greater than 10 mg/kg, and to minimize the probability that
+          soils having PCB concentrations between 1 and 10 mg/kg would erode into the Shenango
+          River
+   •      To eliminate the possibility of sediments containing concentrations of PCBs of 1 mg/kg or
+          greater located in the storm sewer drainageways from migrating into the Shenango River
+   •      To eliminate the possibility of exposure of ecological receptors to Shenango River sediments
+          with total PCB concentrations greater than 1 mg/kg
+
+
+
+
+                                                  8
+Figure 3: Extent of TI Zone
+
+
+
+
+                              9
+Status of Implementation
+
+OU-1
+In September 2000, EPA issued a UAO to three Potentially Responsible Parties (PRPs), Viacom Inc.
+(formerly Westinghouse and now Paramount Global), Winner Development LLC, and AK Steel
+Corporation, to conduct the OU-1 remedial design and remedial action required to implement the
+2000 ROD.
+
+The OU-1 cleanup occurred from October 8, 2001 to September 1, 2004 and included excavation of
+about 44,460 tons of PCB-contaminated soils. Most excavated soils were sent for off-site disposal at
+permitted residual waste or hazardous waste landfills. A portion of the excavated soils, containing less
+than the cleanup criteria of 25 mg/kg PCBs, was used for fill material in several of the specific cleanup
+areas identified in the 2000 ROD. Additionally, soil containing less than 25 mg/kg of PCBs was used as
+backfill in an area of the Site named the Sharpsville Avenue Slope. After excavation of contaminated
+soils and backfilling, large portions of the Site were paved.
+
+The Site is inspected twice a year to confirm the conditions of the capped areas and repairs have been
+made as needed.
+
+OU-2
+On April 29, 2003, EPA issued a UAO to the PRPs to conduct the OU-2 remedial design and remedial
+action required to implement the 2003 ROD.
+
+To monitor the TI Zone, the remedial action included the installation of additional monitoring wells
+along the perimeter of the TI Zone, abandoning monitoring wells, retrofitting or re-establishing
+damaged monitoring wells, and establishing an initial monitoring schedule. Groundwater is sampled
+within and on the perimeter of the TI Zone to monitor potential contaminant migration. The recovery
+of LNAPL from groundwater was terminated as stated in the 2003 ROD, but in 2014, EPA requested
+that the PRPs restart the LNAPL recovery activities. LNAPL recovery is now performed semi-annually via
+manual bailing or sorbent socks. Approximately 40 gallons of LNAPL have been removed and disposed
+of offsite over the last five years. Since LNAPL recovery activities restarted in 2014 through the end of
+2025, approximately 136 gallons have been removed and disposed of offsite.
+
+In 2004, PCB-contaminated sediments were removed from the Wishart Court sewer line and were
+disposed of offsite. During the sediment dredging activities sampling was conducted from the Clark
+Street outfall and the results indicated the presence of PCBs. As a result of additional assessment
+activities, sediment and debris were removed from the Clark Street storm sewer and the connecting
+storm sewer under the Middle Sector building. Additionally, roof drains that feed into the Middle
+Sector storm sewer were also cleaned. All removed material was properly disposed of offsite.
+
+In 2004 and 2005, sediments contaminated with PCBs greater than 1 mg/kg and riparian soils
+contaminated with PCBs greater than 10 mg/kg were cleaned up in a ¼-mile section of the Shenango
+River. The area cleaned up extends from the Clark Street Bridge to the dam immediately downstream
+of the intake of the Aqua America water treatment plant. Excavations were made to a maximum depth
+of 48 inches, and areas where PCBs in excess of 1 mg/kg remained after excavation were backfilled.
+
+
+                                                   10
+The remedial action resulted in excavation and off-site disposal of about 12,615 tons of PCB-
+contaminated sediments and riparian soils.
+
+In 2023, sediments with PCBs greater than 1 mg/kg were removed from an area directly south of the
+Clark Street Bridge by the Clark Street outfall. This area was dredged in 2004 and 2005, but was
+recontaminated. This additional action excavated 1,131 tons of PCB-contaminated sediments that
+were disposed of at an off-site facility. A figure presenting the excavation area from the remedial
+action completion report documenting the 2023 work is included in Appendix A.
+
+Institutional Controls
+All ICs called for in the decision documents have been implemented. The decision documents call for
+the ICs to provide for worker safety, to limit soil disturbance, to prevent the installation or use of
+groundwater wells, and to prevent use of the Site for residential purposes. The ICs are summarized in
+Table 3 and shown on Figure 4.
+
+Table 3: Summary of Implemented Institutional Controls
+  Media, Engineered
+                                 ICs Called
+ Controls, and Areas
+                         ICs     for in the   Impacted             IC                  Title of IC Instrument
+ That Do Not Support
+                       Needed     Decision      Areas           Objective             Implemented and Date
+   UU/UE Based on
+                                Documents
+  Current Conditions
+                                                         Reduce the risk posed by
+                                                          contaminated site soils
+                                                          to acceptable levels for
+                                                         industrial use by stating
+                                                           that the property shall
+                                               South
+        Soil            Yes        Yes                      only be used for the            1994 Deed
+                                               Sector
+                                                                 purpose of
+                                                           manufacturing and/or
+                                                           warehousing products
+                                                          that are non-hazardous
+                                                            and non-consumable
+
+                                                         Prohibits drilling or use
+                                                         of private groundwater
+                                                See                                    2000 City of Sharon
+    Groundwater         Yes        Yes                     wells as a source of
+                                              Figure 4                                     Ordinance
+                                                         water for either potable
+                                                             or industrial use
+
+                                                         Restricts the installation
+                                                           of new groundwater
+                                                            wells or use of any
+                                                           existing groundwater
+                                                            wells, prohibits the
+                                               North
+ Soil & Groundwater     Yes        Yes                     property from being           2003 Title Notice
+                                               Sector
+                                                            used for residential
+                                                         purposes, and prevents
+                                                          the disturbance of the
+                                                           surface without prior
+                                                            approval from EPA
+
+
+
+                                                   11
+ Media, Engineered
+                                ICs Called
+Controls, and Areas
+                        ICs     for in the   Impacted               IC                   Title of IC Instrument
+That Do Not Support
+                      Needed     Decision      Areas             Objective              Implemented and Date
+  UU/UE Based on
+                               Documents
+ Current Conditions
+                                                          Restricts the installation
+                                                            of new groundwater
+                                                             wells or use of any
+                                                            existing groundwater
+                                                             wells, prohibits the
+                                              Middle
+Soil & Groundwater     Yes        Yes                       property from being            2004 Title Notice
+                                              Sector
+                                                             used for residential
+                                                          purposes, and prevents
+                                                           the disturbance of the
+                                                            surface without prior
+                                                             approval from EPA
+                                                          Restricts the installation
+                                                            of new groundwater
+                                                             wells or use of any
+                                                            existing groundwater
+                                                             wells, prohibits the
+Soil & Groundwater     Yes        Yes        Y Building     property from being            2004 Title Notice
+                                                             used for residential
+                                                          purposes, and prevents
+                                                           the disturbance of the
+                                                            surface without prior
+                                                             approval from EPA
+                                                          Reduces the risk posed
+                                                            by contaminated site
+                                                            soils by requiring the
+                                                               flooring and/or
+                                                           subsurface material if
+                                              Middle                                        2006 Notice of
+  Soils & Flooring     Yes        Yes                        disturbed would be
+                                              Sector                                        Encumbrance
+                                                             stored, treated and
+                                                                disposed of in
+                                                            accordance with the
+                                                          Toxic Substance Control
+                                                                      Act
+
+
+                                                               Prevents the            Pennsylvania Public Health
+                                             Shenango
+       Fish            Yes         No                      consumption of PCB-            Advisory, 2026 Fish
+                                               River
+                                                            contaminated fish                Consumption
+
+
+                                                          Reduces the risk posed
+                                                           by contaminated site
+                                                            soils by requesting
+                                                                                       2016 Informational Letter
+                                             Railroad        notification about
+Soil & Groundwater     Yes        Yes                                                    to Norfolk Southern
+                                             Property      intrusive activities so
+                                                                                          Railway Company
+                                                            EPA can coordinate
+                                                             about appropriate
+                                                                  activities
+
+
+
+
+                                                   12
+Figure 4: Implemented ICs
+
+
+
+
+                            13
+III. PROGRESS SINCE THE PREVIOUS REVIEW
+
+This section includes the protectiveness determinations and statements from the previous FYR as well
+as the recommendations from the previous FYR and the status of those recommendations.
+
+Table 4: Protectiveness Determinations/Statements from the 2021 FYR
+                     Protectiveness
+     OU #                                               Protectiveness Statement
+                     Determination
+                                         The remedy for OU-1 is protective of human health
+                                          and the environment. All exposure pathways that
+                                              could result in unacceptable risks are being
+       1                Protective
+                                         controlled. Soil contamination has been excavated
+                                          or capped. ICs are in place to prevent exposure to
+                                                            contaminated soil.
+                                            The remedy for OU-2 is currently protective of
+                                         human health and the environment. Groundwater
+                                             is monitored annually to determine whether
+                                              contaminants of concern are exceeding the
+                                          performance standards outside the limits of the TI
+                                         Zone. The PCB-contaminated material in the storm
+                                              sewer drainageways has been removed and
+                                         disposed of offsite. PCB-contaminated riparian soils
+                                         and sediments have been remediated, but there is
+       2          Short-term Protective    an area of sediments that were recontaminated.
+                                               ICs are in place to prevent the exposure to
+                                           contaminated groundwater and consumption of
+                                             PCB-contaminated fish. For the remedy to be
+                                         protective in the long term, the PCB-contaminated
+                                          sediments near the Clark Street outfall need to be
+                                            excavated and disposed offsite. Additionally, it
+                                                 should be determined whether the TCE
+                                             groundwater plume is Site-related, and if so,
+                                              follow-up actions will need to be evaluated.
+
+
+
+
+                                                 14
+                              Protectiveness
+          OU #                                                  Protectiveness Statement
+                              Determination
+                                                    The remedy is currently protective of human health
+                                                    and the environment. Soil contamination has been
+                                                     excavated or capped. Groundwater is monitored
+                                                      annually to determine whether contaminants of
+                                                       concern are exceeding performance standards
+                                                         outside the limits of the TI Zone. The PCB-
+                                                         contaminated material in the storm sewer
+                                                       drainageways has been removed and disposed
+                                                        offsite. PCB-contaminated riparian soils and
+                                                     sediments have been remediated, but there is an
+                                                     area of sediments that were recontaminated. All
+        Sitewide        Short-term Protective
+                                                           exposure pathways that could result in
+                                                     unacceptable risks are being controlled. ICs are in
+                                                      place to prevent exposure to contaminated soil,
+                                                           groundwater and consumption of PCB-
+                                                    contaminated fish. For the remedy to be protective
+                                                    in the long term, the PCB-contaminated sediments
+                                                     near the Clark Street outfall need to be excavated
+                                                       and disposed offsite. Additionally, it should be
+                                                    determined whether the TCE groundwater plume is
+                                                          Site-related and if so, conduct a remedial
+                                                                investigation/feasibility study.
+
+     Table 5: Status of Recommendations from the 2021 FYR
+                                                                                                      Completion
+OU                                                         Current      Current Implementation
+             Issue               Recommendation                                                         Date (if
+ #                                                          Status         Status Description
+                                                                                                      applicable)
+                                Evaluate whether the
+                                   TCE groundwater
+        There is a TCE
+                               plume is Site-related. If
+         groundwater                                                       Additional sampling
+                                the TCE groundwater
+        plume with an                                                    indicated the TCE plume
+2                                plume is determined     Completed                                    5/31/2023
+       unknown source                                                   does not appear to be site
+                               to be site-related, then
+       located outside                                                           related.
+                                  conduct a remedial
+          the TI Zone.
+                               investigation/feasibility
+                                        study.
+        Sediment in the
+                                  Dredge the PCB-                         PCB-contaminated
+      vicinity of the Clark
+                                    contaminated                        sediment was removed
+2     Street outfall have                                Completed                                    5/22/2024
+                                 sediment near the                       and disposed of at an
+              been
+                                 Clark Street outfall.                 approved off-site location.
+       recontaminated.
+
+
+
+
+                                                           15
+IV. FIVE-YEAR REVIEW PROCESS
+
+Community Notification, Community Involvement and Site Interviews
+A public notice was made available in the Sharon Herald newspaper, on April 18, 2026 stating that
+there was a FYR underway and inviting the public to submit any comments to EPA. No responses were
+received in response to the public notice. The results of the review and the report will be made
+available on the site profile page at https://www.epa.gov/superfund/westinghouseelectric.
+
+Data Review
+
+Over the last five years monitoring has continued, which provides data to evaluate the effectiveness of
+the remedies.
+
+Groundwater Monitoring
+Groundwater sampling has been performed annually to determine whether contaminants of concern
+are migrating beyond the boundary of the TI Zone. Monitoring wells are screened within the alluvial
+and bedrock aquifers. Since the start of the groundwater monitoring required by the 2003 ROD, the
+number of monitoring wells sampled and the analyses on the specific monitoring wells have changed
+at different times due to COCs no longer being observed in certain wells and items discussed in FYRs.
+The long-term monitoring was revised after the last sampling event included in this FYR. For the last
+sampling event included in this FYR, October 2025, the list of monitoring wells sampled plus their
+analyses is included as Appendix B, Table B-1 and the monitoring well locations are shown as Appendix
+B, Figure B-1.
+
+Over the last five years benzene, chlorobenzene, tetrachloroethene, trichloroethene (TCE), cis-1,2-
+dichloroethene, vinyl chloride, 1,4-dichlorobenzene, 1,2,4-trichlorobenzene, and PCBs were detected
+above their respective MCLs in monitoring wells located within the TI Zone. The highest total PCB
+groundwater concentration observed over the past five years was 6,100 µg/L (micrograms per liter) in
+monitoring well M-2 which is a monitoring well that has LNAPL removed semi-annually.
+
+Over the last five years, concentrations in the monitoring wells outside the TI Zone have been below
+federal MCLs with the exception of one monitoring well. In 2024, arsenic was observed in monitoring
+well OS-9A at a concentration of 22 µg/L, which is above the federal MCL of 10 µg/L. This was the only
+time since 2017 that arsenic has been detected above the federal MCL in monitoring well OS-9A.
+Arsenic has been detected above the federal MCL in several of the monitoring wells within the TI Zone.
+These exceedances have been consistent in one monitoring well while in other wells it is more
+sporadic.
+
+Storm Sewer Drainageways
+The likely transport pathway of PCB contamination from the Site to the sediments in the Shenango
+River is the storm sewer drainageways that originates in the Middle Sector building and then travels
+into Clark Street and then finally discharge from the Clark Street outfall. There have been five sampling
+events from the drainageways following the removal of contaminated sediment by the Clark Street
+outfall in 2023. The sample location is at a location outside the middle sector building before the storm
+sewer drainageway reaches Clark Street. With the exception of one of the sampling events, PCBs have
+
+                                                   16
+not been detected above laboratory detection limits. PCBs were detected at a concentration of 0.036
+µg/L in the last monitoring event in 2025. The detected concentration is below the 3 µg/L level that
+would require additional sampling. Moving forward the monitoring is scheduled to continue on an
+annual basis.
+
+TCE Source Area
+As part of the investigation into the storm sewer, in 2019, elevated levels of TCE were observed in the
+groundwater entering the storm sewer system somewhere in the vicinity of Clark Street, likely in the
+vicinity of the Sawhill Tube Site. The Sawhill Tube Site is located west of the North Sector and Middle
+Sector. The cleanup for the Sawhill Tube Site was overseen by PADEP. Reports from the Sawhill Tube
+Site attributed the TCE groundwater plume to the Westinghouse Plant.
+
+The investigation to determine the source of TCE included the installation of monitoring wells, soil
+sampling, and groundwater water sampling. The investigation did not indicate a source of TCE on the
+North Sector. The highest TCE groundwater concentrations were observed on the southwest corner
+North Sector in the deep monitoring well N-8B. TCE groundwater concentrations were detected at
+higher levels to the west on the Sawhill Tube Site. Additionally, TCE Concentrations were orders of
+magnitude less at N-8A and N-9B than N-8B. A groundwater figure from the TCE investigation is
+included as Appendix B, Figure B-2. The data indicates that the source is likely not the Site but either
+the railroad or the Sawhill Tube Site.
+
+Fish Tissue
+The OU-2 Selected Remedy required a fish tissue monitoring plan to be implemented with the purpose
+to determine the edibility of the fish tissue from the Shenango River. Previous sampling events
+performed by the PRP to assess fish tissue occurred in 2003, 2005, 2010, 2015, 2016, and 2020. No
+standards were set for fish tissue in the 2003 ROD; instead, PCB concentrations were expected to
+decline once the PCBs in the sediments of the Shenango River had been addressed. There currently is a
+“Do Not Eat” advisory to all fish species in the Shenango River.
+
+For this FYR, one of the PRPs performed fish tissue sampling on August 27, 2025, per the fish tissue
+sampling plan included in the Remedial Action Work Plan, dated January 29, 2021. Fish were collected
+from the Shenango River between the Clark Street Bridge and the dam next to the Aqua America water
+treatment plant. Five carp, five smallmouth bass and five catfish were collected. Each fish caught was
+weighed and had its length measured. One fillet from each fish was analyzed for PCBs. In addition, the
+five fillets from each species were composited and analyzed for PCBs. The table summarizing the 2025
+fish tissue sampling results is included as Appendix B, Table B-2 and figures comparing the PRP
+collected fish tissue events since 2003 are included as Appendix B, Figure B-3 through Figure B-5.
+
+PCB-Aroclor 1260 was detected in all fish samples. Concentrations ranged from 0.040 mg/kg to 4.9
+mg/kg and potential additional cancer risk from fish ingestion ranges from 2E-5 to 2E-3. The fish tissue
+concentrations are highly variable between the same species of fish, but overall concentrations appear
+to be decreasing. PCB concentrations in at least one tissue sample of catfish and carp exceeded the fish
+ingestion value of 1.9 mg/kg used as a threshold value by the Commonwealth of Pennsylvania for their
+“Do Not Eat” fish advisories. The risk from ingestion of fish remains unacceptable but the “Do Not Eat”
+fish advisory remains an effective and necessary component of the remedy.
+
+
+                                                   17
+Site Inspection
+The site inspection took place on June 10, 2026. Participants included the EPA Remedial Project
+Manager, EPA human health and ecological risk assessors, and EPA hydrogeologist. Representatives
+from PADEP and the PRPs also participated in the site inspection. The purpose of the site inspection
+was to assess the protectiveness of the remedy and nothing was observed that affects the
+protectiveness of the remedy.
+
+The site inspection started at the Clark Street outfall where PCB-contaminated sediments were
+removed in 2023. Vegetation was well established in the riparian zone. A “Do Not Eat” fish sign was
+posted along Clark Street. The participants continued to Westinghouse Plant, where use has not
+changed much over the last five years. One change is an aquaponics operation in the Middle Sector
+Building. No issues were noted in any of the capped areas. Pictures from the inspection are included in
+Appendix C.
+
+V. TECHNICAL ASSESSMENT
+
+QUESTION A: Is the remedy functioning as intended by the decision documents?
+
+The remedy is functioning as intended by the decision documents. The PRPs continue limited LNAPL
+removal activities, and the groundwater is monitored annually to determine whether contaminants of
+concern are exceeding federal MCLs beyond the limits of the TI Zone. Arsenic was detected above the
+federal MCL in one monitoring well outside the TI Zone in 2024, but arsenic was below the federal MCL
+in the most recent sampling event. This one exceedance appears to be an anomaly but warrants
+further scrutiny to determine if it becomes a trend. The PCB-contaminated riparian soil and sediment
+above cleanup levels were removed. The ICs are in place and maintained. Over the last five years, EPA
+and PADEP have been informed of and have reviewed all plans when building tenants have needed to
+excavate into the soil. Signs are visible in the Middle Sector Building indicating the walls are
+contaminated with PCBs.
+
+QUESTION B: Are the exposure assumptions, toxicity data, cleanup levels and RAOs used at the time
+of the remedy selection still valid?
+
+The RAOs used at the time of remedy selection are still valid. Many standardized methodologies have
+changed since the baseline risk assessment was prepared, including dermal guidance, inhalation
+guidance, default exposure factors, and guidance on carcinogenicity via a mutagenic mode of action.
+Toxicity factors and exposure assumptions have also changed. However, these changes do not impact
+the protectiveness of the remedy and cleanup levels are still valid. The implemented remedy removed
+or covered soils exceeding cleanup levels in soils. The exposed soil cleanup levels for arsenic and lead
+are still within the acceptable range for workers, as specified in ROD as future industrial landuse.
+Exposed soils at the Site have PCBs at 1 mg/kg or less (10 mg/kg in riparian soils), and where clean fill
+was used on the surface, the PCB concentrations were less than 1 mg/kg. Using updated worker
+exposure factors and toxicity factors, these concentrations are still protective. The soil cleanup levels of
+25 mg/kg for PCBs and soil cleanup levels of 104 mg/kg for arsenic is within the acceptable risk range
+for industrial worker while the soil cleanup level of 689 mg/kg for PCB exceeds acceptable risk level of
+1E-4 for industrial worker. However, the remedy consists of restricting the use for industrial use and
+
+                                                    18
+includes restriction on disturbing surface soils so the remedy remains protective. The 1 mg/kg PCB
+cleanup levels for sediment remains valid, because the 1990 Guidance on Remedial Actions for
+Superfund Sites with PCB Contamination states that PCB concentrations of 1 to 2 mg/kg will be
+protective of wildlife. The riparian soils are vegetated or supported with riprap to minimize the
+probability that soils having PCB concentrations between 1 and 10 mg/kg are eroding into the
+Shenango River. While groundwater concentrations exceed MCLs within the TI Zone there is a TI
+Waiver in place that means the groundwater is not required to be cleaned up because it is not feasible
+from an engineering perspective. The continued implementation of institutional controls will prevent
+the future use of contaminated groundwater.
+
+Multiple rounds of vapor intrusion sampling have been performed at the Site. Most of the buildings did
+not demonstrate unacceptable risks due to vapor intrusion. In some buildings, high concentrations of
+chemicals were noted in indoor air but could not be linked to subsurface contamination, and indoor
+sources were suspected. At some buildings, sub-slab VOCs could cause levels of concern in the future,
+depending on the attenuation into indoor air, but there were no unacceptable indoor concentrations
+at the time of sampling. Resampling may be recommended in the future, especially if conditions
+change, such as changes in building use or slab integrity.
+
+The reduction of PCBs in sediment was also expected to reduce the level of PCBs in fish tissue over
+time. No specific standards were selected by EPA for fish tissue, but as stated previously, the risk from
+fish ingestion remains unacceptable. The “Do Not Eat” fish advisory remains in effect, preventing
+human exposure.
+
+Current or anticipated land use at or near site remains urban residential and industrial. The landuse is
+not expected to change in future. No known changes in building conditions or use at and around the
+Site has been noted. The receptors and exposure routes considered at the time of developing RAOs
+and remedy selection remain valid.
+
+Per- and polyfluoroalkyl substances (PFAS) are a class of synthetic fluorinated chemicals developed for
+their surfactant and durability properties. PFAS are known to be highly persistent and mobile in the
+environment. There is a Westinghouse Electric Corporation patent from 1955 that indicates that
+fluorinated organic compounds were used as a dielectric fluid. It is unknown if these transformers were
+manufactured during the historical operations at the Westinghouse Plant, but the potential presence
+of PFAS should be evaluated in the groundwater to determine if it is present at the Site.
+
+QUESTION C: Has any other information come to light that could call into question the protectiveness
+of the remedy?
+
+No other information has been identified that could impact the remedy.
+
+
+
+
+                                                   19
+VI. ISSUES/RECOMMENDATIONS
+
+                                       Issues/Recommendations
+   OU(s) without Issues/Recommendations Identified in the FYR:
+   OU-1
+
+
+   Issues and Recommendations Identified in the FYR:
+
+
+   OU(s): 2            Issue Category: Changed Site Conditions
+                       Issue: It is possible that PFAS was used as a dielectric fluid in transformers that
+                       were manufactured at the Site.
+                       Recommendation: Groundwater sampling should be performed to determine if
+                       PFAS are present and related to the Site.
+    Affect Current        Affect Future      Party Responsible      Oversight Party       Milestone Date
+    Protectiveness       Protectiveness
+   No                  Yes                   PRP                   EPA/State             3/3/2028
+
+
+VII. PROTECTIVENESS STATEMENT
+
+                                       Protectiveness Statement(s)
+   Operable Unit: 1             Protectiveness Determination:
+                                Protective
+   Protectiveness Statement:
+   The remedy for OU-1 is protective of human health and the environment because direct exposure
+   pathways have been eliminated by the implantation of the remedy. Soil contamination has been
+   excavated or capped and the capped areas are in good condition. ICs are in place to prevent exposure
+   to contaminated soil.
+
+
+                                       Protectiveness Statement(s)
+   Operable Unit: 2             Protectiveness Determination:
+                                Short-term Protective
+   Protectiveness Statement:
+   The remedy for OU-2 is currently protective of human health and the environment. Groundwater is
+   monitored annually to determine whether contaminants of concern are exceeding the performance
+   standards outside the limits of the TI Zone. The PCB-contaminated material in the storm sewer
+   drainageways has been removed and disposed of offsite. PCB-contaminated riparian soils and
+   sediments have been remediated. ICs are in place to prevent the exposure to contaminated
+   groundwater and consumption of PCB-contaminated fish. For the remedy to be protective in the long
+   term, sampling should be performed to determine if PFAS are present and related to the Site.
+
+
+                                                     20
+                                      Sitewide Protectiveness Statement
+     Protectiveness Determination:
+     Short-term Protective
+     Protectiveness Statement:
+     The remedy is currently protective of human health and the environment. Soil contamination has been
+     excavated or capped. Groundwater is monitored annually to determine whether contaminants of
+     concern are exceeding performance standards outside the limits of the TI Zone. The PCB-contaminated
+     material in the storm sewer drainageways has been removed and disposed of offsite. PCB-
+     contaminated riparian soils and sediments have been remediated. All exposure pathways that could
+     result in unacceptable risks are being controlled. ICs are in place to prevent exposure to contaminated
+     soil, groundwater and consumption of PCB-contaminated fish. For the remedy to be protective in the
+     long term, sampling should be performed to determine if PFAS are present and related to the Site.
+
+
+VIII. NEXT REVIEW
+
+The next FYR Report for the Westinghouse Electric Corp. (Sharon Plant) Superfund site is required five
+years from the completion date of this review.
+
+
+
+
+                                                       21
+APPENDIX A – 2023 SEDIMENT REMOVAL AREA
+
+
+
+
+                  A-1
+                        APPENDIX B – DATA REVIEW
+
+Appendix B, Table B-1
+
+
+
+
+                                  B-1
+Appendix B, Figure B-1
+
+
+
+
+                         B-2
+Appendix B, Figure B-2
+
+
+
+
+                         B-3
+Appendix B, Table B-2
+
+
+
+
+                        B-4
+Appendix B, Figure B-3
+
+
+
+
+                         B-5
+Appendix B, Figure B-4
+
+
+
+
+                         B-6
+Appendix B, Figure B-5
+
+
+
+
+                         B-7
+APPENDIX C – SITE PHOTOGRAPHS
+
+           Carp Sample
+
+
+
+
+      Channel Catfish Sample
+
+
+
+
+               C-1
+Smallmouth Bass Sample
+
+
+
+
+  Clark Street Outfall
+
+
+
+
+          C-2
+“Do Not Eat” Signage
+
+
+
+
+    Aquaponics
+
+
+
+
+        C-3
+Inside the Middle Sector Building
+
+
+
+
+Inside the Middle Sector Building
+
+
+
+
+              C-4
+Outside the North Sector Building
+
+
+
+
+Monitoring Wells N-8A and N-8B
+
+
+
+
+              C-5
+

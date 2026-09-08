@@ -20,6 +20,10 @@ export const PRODUCT_ID = "cfpb-consent-order-bodies";
 export const PRODUCT_NAME = "CFPB consent-order / administrative-order text";
 
 export const LISTING_URL = "https://www.consumerfinance.gov/enforcement/actions/";
+
+export function listingUrl(): string {
+  return env("CFPB_ORDERS_LISTING_URL") || LISTING_URL;
+}
 export const ACTION_BASE = "https://www.consumerfinance.gov/enforcement/actions/";
 export const PDF_HOST = "files.consumerfinance.gov";
 export const PDF_PATH_RE =
@@ -263,7 +267,9 @@ export function isRealCfpbOrderBody(text: string): boolean {
 }
 
 export function listedCountFromHtml(html: string): number | null {
-  const m = html.match(/([\d,]+)\s+filtered results/i);
+  const m =
+    html.match(/([\d,]+)\s+filtered results/i) ||
+    html.match(/m-notification__message[^>]*>\s*([\d,]+)\s+filtered results/i);
   if (!m) return null;
   const n = Number(m[1].replace(/,/g, ""));
   return Number.isFinite(n) && n > 0 ? n : null;
@@ -455,6 +461,18 @@ function maxFetchLimit(): number {
   return Number.isFinite(n) && n > 0 ? Math.floor(n) : 8;
 }
 
+function maxActionLimit(): number {
+  const raw = env("CFPB_ORDERS_MAX_ACTIONS", "40");
+  if (raw === "0") return 0;
+  const n = Number(raw);
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 40;
+}
+
+function fetchTimeoutMs(): number {
+  const n = Number(env("CFPB_ORDERS_FETCH_MS", "20000"));
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 20000;
+}
+
 function readNamedFile(dir: string, names: string[]): string | null {
   if (!dir) return null;
   for (const name of names) {
@@ -467,6 +485,7 @@ function readNamedFile(dir: string, names: string[]): string | null {
 export async function fetchCfpbText(url: string): Promise<string> {
   const res = await fetch(url, {
     headers: { "User-Agent": HTTP_UA, Accept: "text/html" },
+    signal: AbortSignal.timeout(fetchTimeoutMs()),
   });
   if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
   return await res.text();
@@ -475,6 +494,7 @@ export async function fetchCfpbText(url: string): Promise<string> {
 export async function fetchCfpbBytes(url: string): Promise<Uint8Array> {
   const res = await fetch(url, {
     headers: { "User-Agent": HTTP_UA, Accept: "application/pdf" },
+    signal: AbortSignal.timeout(fetchTimeoutMs()),
   });
   if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
   return new Uint8Array(await res.arrayBuffer());
@@ -499,17 +519,30 @@ function pause(ms: number): Promise<void> {
 }
 
 export function listingPageUrl(page: number): string {
-  if (page <= 1) return LISTING_URL;
-  return `${LISTING_URL}?page=${page}`;
+  const base = listingUrl();
+  if (page <= 1) return base;
+  const join = base.includes("?") ? "&" : "?";
+  return `${base}${join}page=${page}`;
 }
 
-async function loadOfficialListings(dir: string): Promise<{ listed: CfpbOrderListing[]; listedCount: number }> {
+async function loadOfficialListings(
+  dir: string,
+): Promise<{ listed: CfpbOrderListing[]; listedCount: number; listingError?: string }> {
   if (dir) {
     const raw = readNamedFile(dir, ["listing-excerpt.html", "listing.html"]);
     const listed = raw ? parseListingHtml(raw) : [];
     return { listed, listedCount: raw ? listedCountFromHtml(raw) ?? listed.length : 0 };
   }
-  const first = await fetchCfpbText(LISTING_URL);
+  let first: string;
+  try {
+    first = await fetchCfpbText(listingUrl());
+  } catch (err) {
+    return {
+      listed: [],
+      listedCount: 0,
+      listingError: err instanceof Error ? err.message : String(err),
+    };
+  }
   const listed = parseListingHtml(first);
   const listedCount = listedCountFromHtml(first) ?? listed.length;
   const seen = new Set(listed.map((r) => r.id));
@@ -517,17 +550,21 @@ async function loadOfficialListings(dir: string): Promise<{ listed: CfpbOrderLis
   for (let page = 2; page < pageCap; page += 1) {
     if (listed.length >= listedCount && listedCount > 0) break;
     await pause(250);
-    const html = await fetchCfpbText(listingPageUrl(page));
-    const rows = parseListingHtml(html);
-    if (rows.length === 0) break;
-    let added = 0;
-    for (const row of rows) {
-      if (seen.has(row.id)) continue;
-      seen.add(row.id);
-      listed.push(row);
-      added += 1;
+    try {
+      const html = await fetchCfpbText(listingPageUrl(page));
+      const rows = parseListingHtml(html);
+      if (rows.length === 0) break;
+      let added = 0;
+      for (const row of rows) {
+        if (seen.has(row.id)) continue;
+        seen.add(row.id);
+        listed.push(row);
+        added += 1;
+      }
+      if (added === 0) break;
+    } catch {
+      break;
     }
-    if (added === 0) break;
   }
   return { listed, listedCount };
 }
@@ -554,108 +591,135 @@ async function resolveOrderPdf(
   return { sourceUrl, pdfId };
 }
 
+function keepCachedCfpbOrders(reason: string, listedCount = 0): CfpbOrderSnapshot | null {
+  const prior = priorBodies();
+  if (prior.size === 0) return null;
+  const snap = {
+    ...assembleSnapshot([...prior.values()]),
+    listedCount,
+    fetchedPdfs: 0,
+    skippedNoText: 0,
+    reused: prior.size,
+    addedThisRun: 0,
+    reason,
+  };
+  writeSnapshot(snap);
+  return snap;
+}
+
 export async function collectCfpbOrders(opts?: {
   pauseMs?: number;
   htmlDir?: string;
   limit?: number;
   maxFetch?: number;
+  maxActions?: number;
 }): Promise<CfpbOrderSnapshot> {
-  const dir = opts?.htmlDir ?? listingDir();
-  const pauseMs = opts?.pauseMs ?? (dir ? 0 : 400);
-  const { listed: allListed, listedCount } = await loadOfficialListings(dir);
-  const target = opts?.limit ?? firstSliceLimit();
-  const fetchCap = opts?.maxFetch ?? (dir ? 0 : maxFetchLimit());
-  const cacheDir = cfpbOrdersDir();
-  mkdirSync(cacheDir, { recursive: true });
-  const prior = priorBodies();
-  if (allListed.length === 0) {
-    if (prior.size > 0) {
-      const snap = {
-        ...assembleSnapshot([...prior.values()]),
-        listedCount: 0,
-        fetchedPdfs: 0,
-        skippedNoText: 0,
-        reused: prior.size,
-        addedThisRun: 0,
-        reason: "Official CFPB enforcement listing missed; kept cached consent-order bodies.",
-      };
+  try {
+    const dir = opts?.htmlDir ?? listingDir();
+    const pauseMs = opts?.pauseMs ?? (dir ? 0 : 400);
+    const { listed: allListed, listedCount, listingError } = await loadOfficialListings(dir);
+    const target = opts?.limit ?? firstSliceLimit();
+    const fetchCap = opts?.maxFetch ?? (dir ? 0 : maxFetchLimit());
+    const actionCap = opts?.maxActions ?? (dir ? 0 : maxActionLimit());
+    const cacheDir = cfpbOrdersDir();
+    mkdirSync(cacheDir, { recursive: true });
+    const prior = priorBodies();
+    if (allListed.length === 0) {
+      const kept = keepCachedCfpbOrders(
+        listingError
+          ? `Official CFPB enforcement listing failed; kept cached consent-order bodies. ${listingError}`
+          : "Official CFPB enforcement listing missed; kept cached consent-order bodies.",
+        listedCount,
+      );
+      if (kept) return kept;
+      const snap = emptySnapshot(
+        listingError
+          ? `Official CFPB enforcement listing failed. ${listingError}`
+          : "Official CFPB enforcement listing had no company action links.",
+      );
       writeSnapshot(snap);
       return snap;
     }
-    const snap = emptySnapshot("Official CFPB enforcement listing had no company action links.");
+    const cards: CfpbOrderCard[] = [];
+    const seen = new Set<string>();
+    let fetchedPdfs = 0;
+    let skippedNoText = 0;
+    let reused = 0;
+    let addedThisRun = 0;
+    let actionFetches = 0;
+    for (const row of allListed) {
+      if (target > 0 && addedThisRun >= target) break;
+      const cached = prior.get(row.id);
+      if (cached) {
+        cards.push(cached);
+        seen.add(row.id);
+        reused += 1;
+        continue;
+      }
+      if (fetchCap > 0 && fetchedPdfs >= fetchCap) break;
+      if (actionCap > 0 && actionFetches >= actionCap) break;
+      if (!dir) await pause(pauseMs);
+      try {
+        actionFetches += 1;
+        const resolved = await resolveOrderPdf(row, dir);
+        if (!resolved) {
+          skippedNoText += 1;
+          continue;
+        }
+        const localText = readNamedFile(dir, [`${resolved.pdfId}.txt`, `${resolved.pdfId}-excerpt.txt`, `${row.id}.txt`]);
+        if (dir && !localText) {
+          skippedNoText += 1;
+          continue;
+        }
+        const pdfFile = join(cacheDir, `${resolved.pdfId}.pdf`);
+        const text =
+          localText ??
+          (await (async () => {
+            if (!existsSync(pdfFile)) {
+              writeFileSync(pdfFile, await fetchCfpbBytes(resolved.sourceUrl));
+              fetchedPdfs += 1;
+            }
+            return pdfToText(pdfFile);
+          })());
+        const parsed = parseCfpbOrderText(text, {
+          sourceUrl: resolved.sourceUrl,
+          firm: row.firm,
+          date: row.date,
+          actionUrl: row.actionUrl,
+          pdfId: resolved.pdfId,
+          id: row.id,
+        });
+        if (!isRealCfpbOrderBody(parsed.body)) {
+          skippedNoText += 1;
+          continue;
+        }
+        cards.push(parsed);
+        seen.add(row.id);
+        addedThisRun += 1;
+      } catch {
+        skippedNoText += 1;
+      }
+    }
+    for (const [id, card] of prior) {
+      if (!seen.has(id)) cards.push(card);
+    }
+    const snap = {
+      ...assembleSnapshot(cards),
+      listedCount,
+      fetchedPdfs,
+      skippedNoText,
+      reused,
+      addedThisRun,
+    };
     writeSnapshot(snap);
     return snap;
+  } catch (err) {
+    const kept = keepCachedCfpbOrders(
+      `Official CFPB collect failed; kept cached consent-order bodies. ${err instanceof Error ? err.message : String(err)}`,
+    );
+    if (kept) return kept;
+    throw err;
   }
-  const cards: CfpbOrderCard[] = [];
-  const seen = new Set<string>();
-  let fetchedPdfs = 0;
-  let skippedNoText = 0;
-  let reused = 0;
-  let addedThisRun = 0;
-  for (const row of allListed) {
-    if (target > 0 && addedThisRun >= target) break;
-    const cached = prior.get(row.id);
-    if (cached) {
-      cards.push(cached);
-      seen.add(row.id);
-      reused += 1;
-      continue;
-    }
-    if (fetchCap > 0 && fetchedPdfs >= fetchCap) break;
-    if (!dir) await pause(pauseMs);
-    try {
-      const resolved = await resolveOrderPdf(row, dir);
-      if (!resolved) {
-        skippedNoText += 1;
-        continue;
-      }
-      const localText = readNamedFile(dir, [`${resolved.pdfId}.txt`, `${resolved.pdfId}-excerpt.txt`, `${row.id}.txt`]);
-      if (dir && !localText) {
-        skippedNoText += 1;
-        continue;
-      }
-      const pdfFile = join(cacheDir, `${resolved.pdfId}.pdf`);
-      const text =
-        localText ??
-        (await (async () => {
-          if (!existsSync(pdfFile)) {
-            writeFileSync(pdfFile, await fetchCfpbBytes(resolved.sourceUrl));
-            fetchedPdfs += 1;
-          }
-          return pdfToText(pdfFile);
-        })());
-      const parsed = parseCfpbOrderText(text, {
-        sourceUrl: resolved.sourceUrl,
-        firm: row.firm,
-        date: row.date,
-        actionUrl: row.actionUrl,
-        pdfId: resolved.pdfId,
-        id: row.id,
-      });
-      if (!isRealCfpbOrderBody(parsed.body)) {
-        skippedNoText += 1;
-        continue;
-      }
-      cards.push(parsed);
-      seen.add(row.id);
-      addedThisRun += 1;
-    } catch {
-      skippedNoText += 1;
-    }
-  }
-  for (const [id, card] of prior) {
-    if (!seen.has(id)) cards.push(card);
-  }
-  const snap = {
-    ...assembleSnapshot(cards),
-    listedCount,
-    fetchedPdfs,
-    skippedNoText,
-    reused,
-    addedThisRun,
-  };
-  writeSnapshot(snap);
-  return snap;
 }
 
 export async function loadCfpbOrders(): Promise<CfpbOrderSnapshot> {

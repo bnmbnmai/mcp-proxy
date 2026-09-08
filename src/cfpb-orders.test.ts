@@ -248,6 +248,33 @@ async function main(): Promise<void> {
       "re-collect keeps cached bodies",
     );
     assert.ok((merged.reused ?? 0) >= 5);
+
+    const beforeKeep = Date.now() - 1000;
+    const prevListing = process.env.CFPB_ORDERS_LISTING_URL;
+    const prevFetchMs = process.env.CFPB_ORDERS_FETCH_MS;
+    process.env.CFPB_ORDERS_LISTING_URL = "http://127.0.0.1:9/enforcement/actions/";
+    process.env.CFPB_ORDERS_FETCH_MS = "250";
+    try {
+      const kept = await collectCfpbOrders({ pauseMs: 0, limit: 24, maxFetch: 8 });
+      assert.ok(
+        kept.cards.some((c) => c.pdfId === "cfpb_american-honda-finance-corp-consent-order_2025-01"),
+        "listing timeout/refuse keeps the cached bag",
+      );
+      assert.ok((kept.reused ?? 0) >= 5);
+      assert.equal(kept.addedThisRun, 0);
+      assert.ok(kept.reason && /listing failed|collect failed/i.test(kept.reason));
+      assert.ok(Date.parse(kept.fetchedAt) >= beforeKeep, "kept bag refreshes fetchedAt so health is not stuck");
+    } finally {
+      if (prevListing === undefined) delete process.env.CFPB_ORDERS_LISTING_URL;
+      else process.env.CFPB_ORDERS_LISTING_URL = prevListing;
+      if (prevFetchMs === undefined) delete process.env.CFPB_ORDERS_FETCH_MS;
+      else process.env.CFPB_ORDERS_FETCH_MS = prevFetchMs;
+    }
+
+    const liveCount = listedCountFromHtml(
+      `<div class="m-notification__message">386 filtered results</div><article class="o-post-preview">`,
+    );
+    assert.equal(liveCount, 386, "live CFPB listing still reports filtered results");
   } finally {
     if (prevDir === undefined) delete process.env.CFPB_ORDERS_DIR;
     else process.env.CFPB_ORDERS_DIR = prevDir;

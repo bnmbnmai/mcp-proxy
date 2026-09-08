@@ -66,8 +66,8 @@
  * GET /ttb-oic/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
  * GET /air-letters — USDA APHIS AIR confirmation-letter PDF text ($0.05)
  * GET /air-letters/manifest.json — free count + institution/docket/date/sourceUrl (no letter body)
- * GET /superfund-rods — EPA Superfund Record of Decision PDF text ($0.05)
- * GET /superfund-rods/manifest.json — free count + institution/docket/date/sourceUrl (no ROD body)
+ * GET /superfund-rods — EPA Superfund Record of Decision + Five-Year Review PDF text ($0.05)
+ * GET /superfund-rods/manifest.json — free count + institution/docket/date/sourceUrl (no ROD/FYR body)
  * GET /ico-mpn — ICO Monetary Penalty Notice PDF text ($0.05)
  * GET /ico-mpn/manifest.json — free count + institution/docket/date/sourceUrl (no MPN body)
  * GET /cma-ca98 — UK CMA CA98 institution infringement-decision PDF text ($0.05)
@@ -1590,7 +1590,7 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
   },
   "superfund-rods": {
     description:
-      "Call GET /superfund-rods when you need official EPA Superfund Record of Decision text extracted from SEMS PDFs on semspub.epa.gov. Not a Proposed Plan or fact sheet. " + PAID_WINDOW_COPY,
+      "Call GET /superfund-rods when you need official EPA Superfund Record of Decision or Five-Year Review text extracted from SEMS PDFs on semspub.epa.gov. Not a Proposed Plan, fact sheet, or FYR letter. " + PAID_WINDOW_COPY,
     resourcePath: SUPERFUND_RODS_PATH,
   },
   "ico-mpn": {
@@ -4357,7 +4357,7 @@ export function llmsTxt(): string {
     `- GET /denovo-orders — $0.05 — FDA De Novo classification-order text (official accessdata.fda.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /ttb-oic — $0.05 — TTB Offer in Compromise text (official ttb.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /air-letters — $0.05 — USDA APHIS AIR confirmation-letter text (official direct.aphis.usda.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
-    `- GET /superfund-rods — $0.05 — EPA Superfund Record of Decision text (official semspub.epa.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /superfund-rods — $0.05 — EPA Superfund Record of Decision and Five-Year Review text (official semspub.epa.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /ico-mpn — $0.05 — ICO Monetary Penalty Notice text (official ico.org.uk PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /cma-ca98 — $0.05 — UK CMA CA98 infringement-decision text (official assets.publishing.service.gov.uk PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /ema-referrals — $0.05 — EMA human-medicine referral procedure text (official ema.europa.eu English PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
@@ -4425,7 +4425,7 @@ export function llmsTxt(): string {
     "- GET /denovo-orders/manifest.json — FDA De Novo order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
     "- GET /ttb-oic/manifest.json — TTB OIC count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
     "- GET /air-letters/manifest.json — APHIS AIR letter count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the letter body)",
-    "- GET /superfund-rods/manifest.json — EPA Superfund ROD count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the ROD body)",
+    "- GET /superfund-rods/manifest.json — EPA Superfund ROD + FYR count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the ROD/FYR body)",
     "- GET /ico-mpn/manifest.json — ICO MPN count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the MPN body)",
     "- GET /cma-ca98/manifest.json — CMA CA98 count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the decision body)",
     "- GET /ema-referrals/manifest.json — EMA referral count + name/date/status/sourceUrl (full catalog + page cursor; ?q= is free search; not the procedure body)",
@@ -5658,7 +5658,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       [SUPERFUND_RODS_PATH]: {
         get: paidOpenApiOp({
           operationId: "getSuperfundRods",
-          summary: "EPA Superfund Record of Decision text",
+          summary: "EPA Superfund ROD and Five-Year Review text",
           description: SKU_COPY["superfund-rods"].description,
           priceUsdc: superfundRodsPrice,
           amountAtomic: superfundRodsAtomic,
