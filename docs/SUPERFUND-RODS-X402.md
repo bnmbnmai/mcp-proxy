@@ -11,7 +11,7 @@ v1 seeds **5** official institution/site ROD PDFs. Required seed is Federated Me
 | Path | Auth | Price |
 |---|---|---|
 | `GET /superfund-rods` | unpaid → **HTTP 402** | **$0.05** USDC on Base (`50000` atomic) |
-| `GET /superfund-rods/manifest.json` | free | HTTP 200 institution / docket / date / official PDF URL (no ROD/FYR body) |
+| `GET /superfund-rods/manifest.json` | free | HTTP 200 title + Doc ID + official PDF URL (no ROD/FYR body) |
 
 Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 
@@ -28,11 +28,11 @@ Receive USDC on Base at **`0xf59621FC406D266e18f314Ae18eF0a33b8401004`**.
 
 Paid body keeps the existing `cards[]` fields. Alongside those keys the paid JSON adds `records[]` (`id`, `date`, `firm`, `url`, `type=superfund-rod`), `recordCount`, honest `asOf` / `fetchedAt`, and `source` (the official decision-document table). A repeat buyer diffs `asOf` + record ids.
 
-Free manifest is institution / docket / date / sourceUrl only. Needles such as `1,200 ppm`, `lead dross`, and `x-ray florescence` stay out of unpaid responses.
+Free manifest is title + Doc ID + official PDF URL (plus institution / date). Needles such as `1,200 ppm`, `lead dross`, and `x-ray florescence` stay out of unpaid responses.
 
 `data/superfund-rods/` is gitignored.
 
-Applied on apollo (2026-09-07): **serving SHA `3eb5cec`** (apply-record [PR 209](https://github.com/bnmbnmai/mcp-proxy/pull/209); FF of [PR 208](https://github.com/bnmbnmai/mcp-proxy/pull/208)). Restarted **only** `idaho-ticks-x402.service` at **2026-09-07 22:54:39 MDT** (PID 1356455). Public `GET https://ticks.bnm.farm/superfund-rods/manifest.json` is **200** (`via: Caddy`) with **cardCount 389**, asOf **2026-08-05**, fetchedAt **2026-09-08T03:48:59.093Z**, no body leak. Slim `data/superfund-rods/catalog.json` written on first read. Unpaid `GET /superfund-rods` stays **402** at $0.05 / `50000`. `/.well-known/x402` still **54** doors (no new Superfund path). FYR collect was not run this apply; evening ROD bag reused.
+Live public `GET https://ticks.bnm.farm/superfund-rods/manifest.json` is **200** (`via: Caddy`) with **cardCount 413**, asOf **2026-09-03**, fetchedAt **2026-09-08T18:27:29.933Z**. Cape Fear FYR `04-11246061` is in that bag. Unpaid `GET /superfund-rods` stays **402** at $0.05 / `50000`. Collection **28008** is already on the collector (`FYR_COLLECTION_ID`). This restack adds `title` to the free catalog so FYR reports are visible without a paid GET. Do not merge to `main`. Apollo apply is later — do not collect from a cloud VM.
 
 ## Apollo collect (official ROD + FYR walk)
 

@@ -67,7 +67,7 @@
  * GET /air-letters — USDA APHIS AIR confirmation-letter PDF text ($0.05)
  * GET /air-letters/manifest.json — free count + institution/docket/date/sourceUrl (no letter body)
  * GET /superfund-rods — EPA Superfund Record of Decision + Five-Year Review PDF text ($0.05)
- * GET /superfund-rods/manifest.json — free count + institution/docket/date/sourceUrl (no ROD/FYR body)
+ * GET /superfund-rods/manifest.json — free count + title/Doc ID/PDF URL (no ROD/FYR body)
  * GET /ico-mpn — ICO Monetary Penalty Notice PDF text ($0.05)
  * GET /ico-mpn/manifest.json — free count + institution/docket/date/sourceUrl (no MPN body)
  * GET /cma-ca98 — UK CMA CA98 institution infringement-decision PDF text ($0.05)
@@ -4425,7 +4425,7 @@ export function llmsTxt(): string {
     "- GET /denovo-orders/manifest.json — FDA De Novo order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
     "- GET /ttb-oic/manifest.json — TTB OIC count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
     "- GET /air-letters/manifest.json — APHIS AIR letter count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the letter body)",
-    "- GET /superfund-rods/manifest.json — EPA Superfund ROD + FYR count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the ROD/FYR body)",
+    "- GET /superfund-rods/manifest.json — EPA Superfund ROD + FYR count + title/Doc ID/PDF URL (full catalog + page cursor; ?q= is free search; not the ROD/FYR body)",
     "- GET /ico-mpn/manifest.json — ICO MPN count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the MPN body)",
     "- GET /cma-ca98/manifest.json — CMA CA98 count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the decision body)",
     "- GET /ema-referrals/manifest.json — EMA referral count + name/date/status/sourceUrl (full catalog + page cursor; ?q= is free search; not the procedure body)",
