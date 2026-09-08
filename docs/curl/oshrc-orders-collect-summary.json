@@ -1,0 +1,22 @@
+{
+  "product": "oshrc-order-bodies",
+  "status": "ok",
+  "fetchedAt": "2026-09-08T22:34:52.144Z",
+  "asOf": "2026-09-04",
+  "cardCount": 8,
+  "listedCount": 20,
+  "fetchedPdfs": 10,
+  "skippedNoText": 2,
+  "addedThisRun": 8,
+  "note": "Id/date/sourceUrl only. Decision body stays out of git.",
+  "cards": [
+    { "id": "24-0889-eaja", "docket": "24-0889 (EAJA)", "institution": "Finley Farmers Grain & Elevator", "board": "alj", "kind": "EAJA Decision and Order", "date": "2026-09-04", "sourceUrl": "https://www.oshrc.gov/wp-content/uploads/ALJ-Dec-Finley-Farmers-24-0889-EAJA.pdf" },
+    { "id": "24-0702", "docket": "24-0702", "institution": "STIS, Inc., dba Southeast Texas Industrial Services", "board": "alj", "kind": "ALJ Decision and Order", "date": "2026-07-15", "sourceUrl": "https://www.oshrc.gov/wp-content/uploads/24-0702-STIS-Inc.-ALJ-Decision-and-Order-redacted.pdf" },
+    { "id": "24-1509", "docket": "24-1509", "institution": "C Pacific Corporation, dba Five Star Builders", "board": "alj", "kind": "ALJ Decision and Order", "date": "2026-07-01", "sourceUrl": "https://www.oshrc.gov/wp-content/uploads/ALJ-Decision-and-Order-24-1509-C-Pacific-Corporation.pdf" },
+    { "id": "19-1566-eaja", "docket": "19-1566, 19-2011 (EAJA)", "institution": "Riverdale Mills Corporation", "board": "alj", "kind": "EAJA Decision and Order", "date": "2026-06-04", "sourceUrl": "https://www.oshrc.gov/wp-content/uploads/19-1566-19-2011-Decision-and-Order-Denying-EAJA-Application-dated-redacted.pdf" },
+    { "id": "24-1011", "docket": "24-1011", "institution": "H.G. Arias & Associates, LLC", "board": "alj", "kind": "ALJ Decision and Order", "date": "2026-05-27", "sourceUrl": "https://www.oshrc.gov/wp-content/uploads/24-1011-HG-Arias-ALJ-Decision-FINAL.pdf" },
+    { "id": "18-1287-18-1288", "docket": "18-1287 & 18-1288", "institution": "First Marine, LLC", "board": "commission", "kind": "Commission Decision", "date": "2023-04-06", "sourceUrl": "https://www.oshrc.gov/wp-content/uploads/First_Marine_LLC_18-1287__18-1288_Comm_Decision-Web.pdf" },
+    { "id": "20-0762", "docket": "20-0762", "institution": "CentiMark Corporation", "board": "commission", "kind": "Commission Decision", "date": "2023-03-29", "sourceUrl": "https://www.oshrc.gov/wp-content/uploads/CentiMark_Corp%5E20-0762_-_Comm-Decision_for_web.pdf" },
+    { "id": "19-1467", "docket": "19-1467", "institution": "Fama Construction, LLC", "board": "commission", "kind": "Commission Order", "date": "2023-03-29", "sourceUrl": "https://www.oshrc.gov/wp-content/uploads/Fama_Construction_LLC%5E19-1467_-_Remand_Order-web-1.pdf" }
+  ]
+}
