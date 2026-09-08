@@ -2,9 +2,13 @@
  * USCG Local Notice to Mariners — official weekly NavCEN PDF only.
  * One parser walks District 13 / Northwest (`/mariners`), District 11 /
  * Southwest northern (`/mariners-d11`), District 7 / Southeast
- * (`/mariners-d7`), and District 8 / Gulf (`/mariners-d8`). Does not invent
- * notices. Does not wrap CBP AD/CVD. D11 south has no 2026 weekly PDFs —
- * not shipped. D8 rivers is a separate NavCEN listing — not this SKU.
+ * (`/mariners-d7`), District 8 / Gulf (`/mariners-d8`), plus leftover
+ * Districts 1 / Northeast (`/mariners-d1`), 5 / Mid-Atlantic
+ * (`/mariners-d5`), 9 / Great Lakes (`/mariners-d9`), 14 / Pacific
+ * (`/mariners-d14`), and 17 / Alaska (`/mariners-d17`). Does not invent
+ * notices. Does not wrap CBP AD/CVD. Does not wrap Light List GeoJSON or
+ * MSI Download dumps. D11 south has no 2026 weekly PDFs — not shipped.
+ * D8 rivers is a separate NavCEN listing — not this SKU.
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -20,6 +24,16 @@ export const MARINERS_D7_PATH = "/mariners-d7";
 export const MARINERS_D7_MANIFEST_PATH = "/mariners-d7/manifest.json";
 export const MARINERS_D8_PATH = "/mariners-d8";
 export const MARINERS_D8_MANIFEST_PATH = "/mariners-d8/manifest.json";
+export const MARINERS_D1_PATH = "/mariners-d1";
+export const MARINERS_D1_MANIFEST_PATH = "/mariners-d1/manifest.json";
+export const MARINERS_D5_PATH = "/mariners-d5";
+export const MARINERS_D5_MANIFEST_PATH = "/mariners-d5/manifest.json";
+export const MARINERS_D9_PATH = "/mariners-d9";
+export const MARINERS_D9_MANIFEST_PATH = "/mariners-d9/manifest.json";
+export const MARINERS_D14_PATH = "/mariners-d14";
+export const MARINERS_D14_MANIFEST_PATH = "/mariners-d14/manifest.json";
+export const MARINERS_D17_PATH = "/mariners-d17";
+export const MARINERS_D17_MANIFEST_PATH = "/mariners-d17/manifest.json";
 export const MARINERS_AMOUNT_ATOMIC = "50000";
 export const PRODUCT_ID = "uscg-d13-lnm";
 export const PRODUCT_NAME = "USCG D13 / Northwest LNM";
@@ -29,6 +43,16 @@ export const D7_PRODUCT_ID = "uscg-d7-lnm";
 export const D7_PRODUCT_NAME = "USCG D7 / Southeast LNM";
 export const D8_PRODUCT_ID = "uscg-d8-lnm";
 export const D8_PRODUCT_NAME = "USCG D8 / Gulf LNM";
+export const D1_PRODUCT_ID = "uscg-d1-lnm";
+export const D1_PRODUCT_NAME = "USCG D1 / Northeast LNM";
+export const D5_PRODUCT_ID = "uscg-d5-lnm";
+export const D5_PRODUCT_NAME = "USCG D5 / Mid-Atlantic LNM";
+export const D9_PRODUCT_ID = "uscg-d9-lnm";
+export const D9_PRODUCT_NAME = "USCG D9 / Great Lakes LNM";
+export const D14_PRODUCT_ID = "uscg-d14-lnm";
+export const D14_PRODUCT_NAME = "USCG D14 / Pacific LNM";
+export const D17_PRODUCT_ID = "uscg-d17-lnm";
+export const D17_PRODUCT_NAME = "USCG D17 / Alaska LNM";
 
 export const LNM_LISTING_URL =
   "https://www.navcen.uscg.gov/local-notices-to-mariners?district=13+0&subdistrict=n";
@@ -38,11 +62,26 @@ export const D7_LNM_LISTING_URL =
   "https://www.navcen.uscg.gov/local-notices-to-mariners?district=7+0&subdistrict=n";
 export const D8_LNM_LISTING_URL =
   "https://www.navcen.uscg.gov/local-notices-to-mariners?district=8+0&subdistrict=g";
+export const D1_LNM_LISTING_URL =
+  "https://www.navcen.uscg.gov/local-notices-to-mariners?district=1+0&subdistrict=n";
+export const D5_LNM_LISTING_URL =
+  "https://www.navcen.uscg.gov/local-notices-to-mariners?district=5+0&subdistrict=n";
+export const D9_LNM_LISTING_URL =
+  "https://www.navcen.uscg.gov/local-notices-to-mariners?district=9+0&subdistrict=n";
+export const D14_LNM_LISTING_URL =
+  "https://www.navcen.uscg.gov/local-notices-to-mariners?district=14+0&subdistrict=n";
+export const D17_LNM_LISTING_URL =
+  "https://www.navcen.uscg.gov/local-notices-to-mariners?district=17+0&subdistrict=n";
 export const LNM_PDF_BASE = "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/";
 export const LNM_PDF_PATTERN = "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm13{WW}{YYYY}.pdf";
 export const D11_LNM_PDF_PATTERN = "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm11{WW}{YYYY}.pdf";
 export const D7_LNM_PDF_PATTERN = "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm07{WW}{YYYY}.pdf";
 export const D8_LNM_PDF_PATTERN = "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm08{WW}g{YYYY}.pdf";
+export const D1_LNM_PDF_PATTERN = "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm01{WW}{YYYY}.pdf";
+export const D5_LNM_PDF_PATTERN = "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm05{WW}{YYYY}.pdf";
+export const D9_LNM_PDF_PATTERN = "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm09{WW}{YYYY}.pdf";
+export const D14_LNM_PDF_PATTERN = "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm14{WW}{YYYY}.pdf";
+export const D17_LNM_PDF_PATTERN = "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm17{WW}{YYYY}.pdf";
 export const DISTRICT = "13";
 export const DISTRICT_NAME = "Northwest";
 export const D11_DISTRICT = "11";
@@ -51,6 +90,16 @@ export const D7_DISTRICT = "7";
 export const D7_DISTRICT_NAME = "Southeast";
 export const D8_DISTRICT = "8";
 export const D8_DISTRICT_NAME = "Gulf";
+export const D1_DISTRICT = "1";
+export const D1_DISTRICT_NAME = "Northeast";
+export const D5_DISTRICT = "5";
+export const D5_DISTRICT_NAME = "Mid-Atlantic";
+export const D9_DISTRICT = "9";
+export const D9_DISTRICT_NAME = "Great Lakes";
+export const D14_DISTRICT = "14";
+export const D14_DISTRICT_NAME = "Pacific";
+export const D17_DISTRICT = "17";
+export const D17_DISTRICT_NAME = "Alaska";
 
 export type LnmSpec = {
   productId: string;
@@ -135,7 +184,103 @@ export const D8_SPEC: LnmSpec = {
   userAgent: "bnm-data-shop/1.0 (USCG D8 LNM public PDF; +https://www.navcen.uscg.gov/)",
 };
 
-/** NavCEN weekly PDF prefix is two digits (`lnm07…`, `lnm08…g`, `lnm11…`, `lnm13…`). */
+function leftoverSpec(opts: {
+  productId: string;
+  productName: string;
+  district: string;
+  districtName: string;
+  listingUrl: string;
+  pdfPattern: string;
+  path: string;
+  cacheDir: string;
+  envKey: string;
+}): LnmSpec {
+  return {
+    productId: opts.productId,
+    productName: opts.productName,
+    district: opts.district,
+    districtName: opts.districtName,
+    listingUrl: opts.listingUrl,
+    pdfPattern: opts.pdfPattern,
+    path: opts.path,
+    cacheDir: opts.cacheDir,
+    dirEnv: `${opts.envKey}_DIR`,
+    ttlEnv: `${opts.envKey}_TTL_MS`,
+    listingPathEnv: `${opts.envKey}_LISTING_PATH`,
+    pdfPathEnv: `${opts.envKey}_PDF_PATH`,
+    userAgent: `bnm-data-shop/1.0 (USCG D${opts.district} LNM public PDF; +https://www.navcen.uscg.gov/)`,
+  };
+}
+
+export const D1_SPEC: LnmSpec = leftoverSpec({
+  productId: D1_PRODUCT_ID,
+  productName: D1_PRODUCT_NAME,
+  district: D1_DISTRICT,
+  districtName: D1_DISTRICT_NAME,
+  listingUrl: D1_LNM_LISTING_URL,
+  pdfPattern: D1_LNM_PDF_PATTERN,
+  path: MARINERS_D1_PATH,
+  cacheDir: "mariners-d1",
+  envKey: "MARINERS_D1",
+});
+
+export const D5_SPEC: LnmSpec = leftoverSpec({
+  productId: D5_PRODUCT_ID,
+  productName: D5_PRODUCT_NAME,
+  district: D5_DISTRICT,
+  districtName: D5_DISTRICT_NAME,
+  listingUrl: D5_LNM_LISTING_URL,
+  pdfPattern: D5_LNM_PDF_PATTERN,
+  path: MARINERS_D5_PATH,
+  cacheDir: "mariners-d5",
+  envKey: "MARINERS_D5",
+});
+
+export const D9_SPEC: LnmSpec = leftoverSpec({
+  productId: D9_PRODUCT_ID,
+  productName: D9_PRODUCT_NAME,
+  district: D9_DISTRICT,
+  districtName: D9_DISTRICT_NAME,
+  listingUrl: D9_LNM_LISTING_URL,
+  pdfPattern: D9_LNM_PDF_PATTERN,
+  path: MARINERS_D9_PATH,
+  cacheDir: "mariners-d9",
+  envKey: "MARINERS_D9",
+});
+
+export const D14_SPEC: LnmSpec = leftoverSpec({
+  productId: D14_PRODUCT_ID,
+  productName: D14_PRODUCT_NAME,
+  district: D14_DISTRICT,
+  districtName: D14_DISTRICT_NAME,
+  listingUrl: D14_LNM_LISTING_URL,
+  pdfPattern: D14_LNM_PDF_PATTERN,
+  path: MARINERS_D14_PATH,
+  cacheDir: "mariners-d14",
+  envKey: "MARINERS_D14",
+});
+
+export const D17_SPEC: LnmSpec = leftoverSpec({
+  productId: D17_PRODUCT_ID,
+  productName: D17_PRODUCT_NAME,
+  district: D17_DISTRICT,
+  districtName: D17_DISTRICT_NAME,
+  listingUrl: D17_LNM_LISTING_URL,
+  pdfPattern: D17_LNM_PDF_PATTERN,
+  path: MARINERS_D17_PATH,
+  cacheDir: "mariners-d17",
+  envKey: "MARINERS_D17",
+});
+
+/** Live sibling doors already on ticks.bnm.farm. */
+export const LIVE_LNM_SPECS: readonly LnmSpec[] = [D13_SPEC, D11_SPEC, D7_SPEC, D8_SPEC];
+
+/** Dual-hunt TAKE 2026-09-06 leftover districts (same walker, new sibling paths). */
+export const LEFTOVER_LNM_SPECS: readonly LnmSpec[] = [D1_SPEC, D5_SPEC, D9_SPEC, D14_SPEC, D17_SPEC];
+
+export const ALL_LNM_SPECS: readonly LnmSpec[] = [...LIVE_LNM_SPECS, ...LEFTOVER_LNM_SPECS];
+
+/** NavCEN weekly PDF prefix is two digits (`lnm01…`, `lnm07…`, `lnm08…g`, `lnm11…`, `lnm13…`). */
 export function lnmPdfCode(district: string): string {
   return district.padStart(2, "0");
 }
@@ -632,12 +777,79 @@ export function loadMarinersD8Manifest(): Promise<Record<string, unknown>> {
   return loadMarinersManifest(D8_SPEC);
 }
 
+export function collectMarinersD1(): Promise<MarinersSnapshot> {
+  return collectMariners(D1_SPEC);
+}
+
+export function loadMarinersD1(): Promise<MarinersSnapshot> {
+  return loadMariners(D1_SPEC);
+}
+
+export function loadMarinersD1Manifest(): Promise<Record<string, unknown>> {
+  return loadMarinersManifest(D1_SPEC);
+}
+
+export function collectMarinersD5(): Promise<MarinersSnapshot> {
+  return collectMariners(D5_SPEC);
+}
+
+export function loadMarinersD5(): Promise<MarinersSnapshot> {
+  return loadMariners(D5_SPEC);
+}
+
+export function loadMarinersD5Manifest(): Promise<Record<string, unknown>> {
+  return loadMarinersManifest(D5_SPEC);
+}
+
+export function collectMarinersD9(): Promise<MarinersSnapshot> {
+  return collectMariners(D9_SPEC);
+}
+
+export function loadMarinersD9(): Promise<MarinersSnapshot> {
+  return loadMariners(D9_SPEC);
+}
+
+export function loadMarinersD9Manifest(): Promise<Record<string, unknown>> {
+  return loadMarinersManifest(D9_SPEC);
+}
+
+export function collectMarinersD14(): Promise<MarinersSnapshot> {
+  return collectMariners(D14_SPEC);
+}
+
+export function loadMarinersD14(): Promise<MarinersSnapshot> {
+  return loadMariners(D14_SPEC);
+}
+
+export function loadMarinersD14Manifest(): Promise<Record<string, unknown>> {
+  return loadMarinersManifest(D14_SPEC);
+}
+
+export function collectMarinersD17(): Promise<MarinersSnapshot> {
+  return collectMariners(D17_SPEC);
+}
+
+export function loadMarinersD17(): Promise<MarinersSnapshot> {
+  return loadMariners(D17_SPEC);
+}
+
+export function loadMarinersD17Manifest(): Promise<Record<string, unknown>> {
+  return loadMarinersManifest(D17_SPEC);
+}
+
+export function specFromDistrict(raw: string | undefined): LnmSpec {
+  const key = (raw ?? "").trim().replace(/^0+/, "") || "13";
+  const hit = ALL_LNM_SPECS.find((spec) => spec.district === key);
+  return hit ?? D13_SPEC;
+}
+
 export function specFromArgv(argv: string[] = process.argv): LnmSpec {
   const raw = argv.find((arg) => arg.startsWith("--district="))?.slice("--district=".length);
-  if (raw === "11") return D11_SPEC;
-  if (raw === "8" || raw === "08") return D8_SPEC;
-  if (raw === "7" || raw === "07") return D7_SPEC;
-  return D13_SPEC;
+  return specFromDistrict(raw);
+}
+
+export function leftoverCollectArgv(spec: LnmSpec): string {
+  return `--district=${spec.district}`;
 }
 
 function isMain(): boolean {

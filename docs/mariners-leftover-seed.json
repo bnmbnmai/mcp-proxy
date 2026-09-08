@@ -1,0 +1,67 @@
+{
+  "collectedAt": "2026-09-06T19:34:02.953Z",
+  "source": "https://www.navcen.uscg.gov/local-notices-to-mariners",
+  "week": "35-2026",
+  "asOf": "2026-09-02",
+  "note": "Counts + official PDF URLs only. Notice bodies stay out of git (paid GET).",
+  "districts": [
+    {
+      "path": "/mariners-d1",
+      "product": "uscg-d1-lnm",
+      "district": "1",
+      "districtName": "Northeast",
+      "noticeCount": 520,
+      "pdfUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm01352026.pdf"
+    },
+    {
+      "path": "/mariners-d5",
+      "product": "uscg-d5-lnm",
+      "district": "5",
+      "districtName": "Mid-Atlantic",
+      "noticeCount": 901,
+      "pdfUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm05352026.pdf"
+    },
+    {
+      "path": "/mariners-d9",
+      "product": "uscg-d9-lnm",
+      "district": "9",
+      "districtName": "Great Lakes",
+      "noticeCount": 336,
+      "pdfUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm09352026.pdf"
+    },
+    {
+      "path": "/mariners-d14",
+      "product": "uscg-d14-lnm",
+      "district": "14",
+      "districtName": "Pacific",
+      "noticeCount": 118,
+      "pdfUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm14352026.pdf"
+    },
+    {
+      "path": "/mariners-d17",
+      "product": "uscg-d17-lnm",
+      "district": "17",
+      "districtName": "Alaska",
+      "noticeCount": 235,
+      "pdfUrl": "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm17352026.pdf"
+    }
+  ],
+  "skipped": [
+    {
+      "id": "d11-south",
+      "why": "D11 south still has no 2026 weekly PDFs — not a leftover SKU"
+    },
+    {
+      "id": "d8-rivers",
+      "why": "D8 rivers (lnm08{WW}r{YYYY}.pdf) is a separate NavCEN listing — not this SKU"
+    },
+    {
+      "id": "msi-download-geojson",
+      "why": "MSI Download / Light List GeoJSON is a free GIS dump — do not wrap"
+    },
+    {
+      "id": "official-api",
+      "why": "NavCEN LNM API is not live; week 35-2026 weekly PDFs are the working path"
+    }
+  ]
+}

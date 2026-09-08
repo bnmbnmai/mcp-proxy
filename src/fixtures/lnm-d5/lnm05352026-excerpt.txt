@@ -1,0 +1,80 @@
+9/2/26, 12:54 PM                                                                 Maritime Safety Information Products | Navigation Center
+
+                                    Local Notice to Mariners for East District                                                               09/02/2026
+
+                                                                                        Absecon Inlet
+   Additional MSI Categories
+                   TITLE                      SUBCATEGORY                                                                 DESCRIPTION                                                              LOCATION
+ Sector Delaware Bay, Submerged Land      Marine Construction General/Marine Construction (Excluding Bridges)/Dredging From: 2026-06-08 To: 2026-10-19 Location: 39-23-07.296N/074-
+ Act (SLA) - Absecon Inlet/General/Marine (Excluding Bridges)   25-07.320W 39-22-59.196N/074-24-58.464W 39-22-57.576N/074-25-00.300W 39-23-05.928N/074-25-09.120W 39-23-
+ Construction (Excluding                                        07.296N/074-25-07.320W Waterside Staging Area for Great Lakes Dredge and Dock, LLC beach renourishment project, Ocean
+ Bridges)/Dredging                                              City, NJ. Operations will start June 6, 2026 with completion date of October 19, 2026. Ops will be conduct 24 hours a day, 7
+                                                                days a week. Vessels will monitor VHF 13 and 16. MSI # 45757.
+ Sector Delaware Bay, Submerged Land      Marine Construction General/Marine Construction (Excluding Bridges)/Dredging From: 2026-06-08 To: 2026-10-19 Location: 39-23-26.232N/074-
+ Act (SLA) - Absecon Inlet/General/Marine (Excluding Bridges) 25-31.620W 39-23-21.192N/074-25-19.452W 39-23-18.636N/074-25-20.784W 39-23-23.964N/074-25-33.168W 39-23-
+ Construction (Excluding                                        26.232N/074-25-31.620W Waterside Staging Area for Great Lakes Dredge and Dock, LLC beach renourishment project, Ocean
+ Bridges)/Dredging                                              City, NJ. Operations will start June 6, 2026 with completion date of October 19, 2026. Ops will be conduct 24 hours a day, 7
+                                                                days a week. Vessels will monitor VHF 13 and 16. MSI # 45758.
+
+
+
+                                                                                     Albemarle Sound
+   Federal Discrepancies
+                                                  NAME                                                             LLNR                              STATUS                                 AID TYPE
+ Kendrick Creek Channel Entrance Light 1KC                                                                   31660             LT EXT                                               FD
+ Kendrick Creek Channel Daybeacon 2                                                                          31665             STRUCT DEST/TRUB                                     FD
+
+
+
+                                                                                  Alexandria Channel
+   Federal Discrepancies
+                                       NAME                                                LLNR                                           STATUS                                             AID TYPE
+ Marbury Point Warning Daybeacon                                                      18655            STRUCT DEST/HAZ NAV/TRUB                                                      FD
+
+
+   Federal Discrepancies
+
+ Alligator River Light WR24                                                  37890              STRUCT DEST                                                                        FD
+ Alligator River Light 26                                                    37895              STRUCT DEST/HAZ NAV/TRLB                                                           FD
+ Alligator River Daybeacon 35                                                37920              STRUCT DEST/TRUB                                                                   FD
+ Alligator River Daybeacon 45                                                37975              STRUCT DEST/TRUB                                                                   FD
+
+
+   Additional MSI Categories
+                 TITLE               SUBCATEGORY                                                                     DESCRIPTION                                                                   LOCATION
+ Alligator                          Bridges          General/Bridges/Construction From: 2025-03-17 To: 2029-11-30 Location: 35.89975° N / 76.00926° W Bridge Name: United States 64                Lat:
+ River/General/Bridges/Construction                  Highway Bridge Mariners are advised that an engineering firm, on behalf of North Carolina Department of Transportation, will be               35° 53' 59"
+                                                     performing construction on the US 64 (Alligator River Bridge) Bridge over AICW (Alligator River), mile 83.5, between Dare and Tyrrell         Lon:
+                                                     County, NC. Construction began on February 14, 2025, and will continue through November 30, 2029, Monday through Sunday, 24                   -076° 00'
+                                                     hours per day. Detailed project information and information concerning waterway closures will be provided via updated local notice to 33"
+                                                     mariners, broadcast notice to mariners and/or marine safety information bulletins. To facilitate bridge construction, two temporary crane
+                                                     work trestles will be constructed alongside the location of replacement bridge, one to the south on the west side approach and one to
+                                                     the north on the east side approach. One temporary material/load out trestle will be constructed off the western shoreline to the south
+
+                                                    NAME                                                            LLNR                               STATUS                                       AID TYPE
+ Alligator River - Pungo River Light 55                                                                     38005               STRUCT DEST/TRLB                                          FD
+
+
+
+                                                                                           Antipoison Creek
+   Additional MSI Categories
+                 TITLE                    SUBCATEGORY                                                                      DESCRIPTION                                                                      LOCATION
+ Chesapeake Channel - Antipoison          Bridges            General/Bridges/Construction From: 2026-08-26 To: 2028-05-26 Location: 37-38-01.824N/076-18-09.468W Bridge Name: 695 State                     Lat:
+ Creek/General/Bridges/Construction                          Route Bridge Mariners are advised that a construction firm, on behalf of Virginia Department of Transportation, will be constructing a         37° 38' 02"
+                                                             new bridge to replace the 695 State Route (Windmill Point Road) across Oyster Creek, near Foxwells, Lancaster County, VA.                      Lon:
+                                                             Construction activities will begin September 2, 2026, and are expected to finish on May 22, 2027. Work will be on-going from 7 a.m. to -076° 18'
+                                                             5 p.m., Monday-Friday and from 7 a.m. to 3 p.m. on Saturday. Detailed project information and information concerning waterway          09"
+                                                             closures will be provided via updated local notice to mariners, broadcast notice to mariners and marine safety information bulletins. A
+                                                             16-foot safety boat, an 8-foot work float and a 16-foot work float, will be operating or stationed in the vicinity of the existing and new
+                                                             bridge. A temporary bridge will be constructed adjacent to the existing bridge site to allow for vehicular travel. The temporary bridge
+
+                                                                                          Appomattox River
+   Federal Discrepancies
+                                                                NAME                                                                         LLNR                  STATUS                       AID TYPE
+ Appomattox River Channel Daybeacon 17                                                                                               12595                TRLB                       FD
+
+
+   Additional MSI Categories
+                  TITLE                     SUBCATEGORY                                                                      DESCRIPTION                                                                    LOCATION
+ James River - Appomattox                  Hazards To           General/Hazards To Navigation/Shoaling Reported From: 2026-07-07 To: 2031-06-11 Location: 37-16-03.792N/077-22-26.148W 37-
+ River/General/Hazards To                  Navigation           16-02.460N/077-22-21.792W 37-15-49.752N/077-22-27.408W 37-15-50.868N/077-22-32.232W 37-16-03.792N/077-22-26.148W

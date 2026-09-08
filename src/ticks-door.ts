@@ -16,6 +16,16 @@
  * GET /mariners-d7/manifest.json — free count + official source (no notice body)
  * GET /mariners-d8 — USCG D8 / Gulf Local Notice to Mariners ($0.05)
  * GET /mariners-d8/manifest.json — free count + official source (no notice body)
+ * GET /mariners-d1 — USCG D1 / Northeast Local Notice to Mariners ($0.05)
+ * GET /mariners-d1/manifest.json — free count + official source (no notice body)
+ * GET /mariners-d5 — USCG D5 / Mid-Atlantic Local Notice to Mariners ($0.05)
+ * GET /mariners-d5/manifest.json — free count + official source (no notice body)
+ * GET /mariners-d9 — USCG D9 / Great Lakes Local Notice to Mariners ($0.05)
+ * GET /mariners-d9/manifest.json — free count + official source (no notice body)
+ * GET /mariners-d14 — USCG D14 / Pacific Local Notice to Mariners ($0.05)
+ * GET /mariners-d14/manifest.json — free count + official source (no notice body)
+ * GET /mariners-d17 — USCG D17 / Alaska Local Notice to Mariners ($0.05)
+ * GET /mariners-d17/manifest.json — free count + official source (no notice body)
  * GET /warning-letters — FDA warning-letter bodies ($0.05)
  * GET /warning-letters/manifest.json — free count + source (no letter body)
  * GET /untitled-letters — FDA Untitled Letter bodies, CDER OPDP + CBER promo ($0.05)
@@ -56,8 +66,8 @@
  * GET /ttb-oic/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
  * GET /air-letters — USDA APHIS AIR confirmation-letter PDF text ($0.05)
  * GET /air-letters/manifest.json — free count + institution/docket/date/sourceUrl (no letter body)
- * GET /superfund-rods — EPA Superfund Record of Decision PDF text ($0.05)
- * GET /superfund-rods/manifest.json — free count + institution/docket/date/sourceUrl (no ROD body)
+ * GET /superfund-rods — EPA Superfund Record of Decision + Five-Year Review PDF text ($0.05)
+ * GET /superfund-rods/manifest.json — free count + institution/docket/date/sourceUrl (no ROD/FYR body)
  * GET /ico-mpn — ICO Monetary Penalty Notice PDF text ($0.05)
  * GET /ico-mpn/manifest.json — free count + institution/docket/date/sourceUrl (no MPN body)
  * GET /cma-ca98 — UK CMA CA98 institution infringement-decision PDF text ($0.05)
@@ -125,25 +135,50 @@ import {
   loadManifest,
 } from "./import-alerts.js";
 import {
+  D1_SPEC,
+  D5_SPEC,
   D7_SPEC,
   D8_SPEC,
+  D9_SPEC,
   D11_SPEC,
+  D14_SPEC,
+  D17_SPEC,
   MARINERS_AMOUNT_ATOMIC,
+  MARINERS_D1_MANIFEST_PATH,
+  MARINERS_D1_PATH,
+  MARINERS_D5_MANIFEST_PATH,
+  MARINERS_D5_PATH,
   MARINERS_D7_MANIFEST_PATH,
   MARINERS_D7_PATH,
   MARINERS_D8_MANIFEST_PATH,
   MARINERS_D8_PATH,
+  MARINERS_D9_MANIFEST_PATH,
+  MARINERS_D9_PATH,
   MARINERS_D11_MANIFEST_PATH,
   MARINERS_D11_PATH,
+  MARINERS_D14_MANIFEST_PATH,
+  MARINERS_D14_PATH,
+  MARINERS_D17_MANIFEST_PATH,
+  MARINERS_D17_PATH,
   MARINERS_MANIFEST_PATH,
   MARINERS_PATH,
   loadMariners,
+  loadMarinersD1,
+  loadMarinersD1Manifest,
+  loadMarinersD5,
+  loadMarinersD5Manifest,
   loadMarinersD7,
   loadMarinersD7Manifest,
   loadMarinersD8,
   loadMarinersD8Manifest,
+  loadMarinersD9,
+  loadMarinersD9Manifest,
   loadMarinersD11,
   loadMarinersD11Manifest,
+  loadMarinersD14,
+  loadMarinersD14Manifest,
+  loadMarinersD17,
+  loadMarinersD17Manifest,
   loadMarinersManifest,
 } from "./mariners.js";
 import {
@@ -473,9 +508,14 @@ import {
   paidIcoMpnBody,
   paidImportAlertsBody,
   paidMarinersBody,
-  paidMarinersD11Body,
+  paidMarinersD1Body,
+  paidMarinersD5Body,
   paidMarinersD7Body,
   paidMarinersD8Body,
+  paidMarinersD9Body,
+  paidMarinersD11Body,
+  paidMarinersD14Body,
+  paidMarinersD17Body,
   paidNcuaOrdersBody,
   paidOccCdBody,
   paidOfacOrdersBody,
@@ -515,7 +555,7 @@ import {
   sendLocalShopRequestRollup,
   shopRequestLogPath,
 } from "./shop-request-log.js";
-import { logPaidSettle, settleLogPath, txHashFromSettleBody } from "./settle-log.js";
+import { logPaidSettle, payerFromPayment, settleLogPath, txHashFromSettleBody } from "./settle-log.js";
 import {
   PRODUCT_PUBLIC_ID,
   SAMPLE_HOW_TO_USE,
@@ -927,7 +967,7 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "ema-referrals" | "cder-reviews" | "npdes-permits" | "ofsted-inspections" | "ofwat-enforcement" | "ofgem-enforcement" | "gain" | "orr-enforcement" | "phmsa-orders" | "aaib-reports" | "csb-reports" | "hhs-oig-reports" | "eis-reports" | "fsis-humane" | "epa-cafo" | "fmshrc-orders" | "bsee-reports" | "form-483" | "gmp" | "gmp-md";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "mariners-d1" | "mariners-d5" | "mariners-d9" | "mariners-d14" | "mariners-d17" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "ema-referrals" | "cder-reviews" | "npdes-permits" | "ofsted-inspections" | "ofwat-enforcement" | "ofgem-enforcement" | "gain" | "orr-enforcement" | "phmsa-orders" | "aaib-reports" | "csb-reports" | "hhs-oig-reports" | "eis-reports" | "fsis-humane" | "epa-cafo" | "fmshrc-orders" | "bsee-reports" | "form-483" | "gmp" | "gmp-md";
 /** Always-public SKUs. /form-483, /gmp, and /gmp-md join only when a real observation body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "ticks",
@@ -936,6 +976,11 @@ export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "mariners-d11",
   "mariners-d7",
   "mariners-d8",
+  "mariners-d1",
+  "mariners-d5",
+  "mariners-d9",
+  "mariners-d14",
+  "mariners-d17",
   "warning-letters",
   "untitled-letters",
   "awa",
@@ -1002,7 +1047,7 @@ export function isPublicBazaarSku(sku: DoorSku): boolean {
   return publicBazaarSkus().includes(sku);
 }
 
-const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six", "twenty-seven", "twenty-eight", "twenty-nine", "thirty", "thirty-one", "thirty-two", "thirty-three", "thirty-four", "thirty-five", "thirty-six", "thirty-seven", "thirty-eight", "thirty-nine", "forty", "forty-one", "forty-two", "forty-three", "forty-four", "forty-five", "forty-six", "forty-seven", "forty-eight"] as const;
+const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six", "twenty-seven", "twenty-eight", "twenty-nine", "thirty", "thirty-one", "thirty-two", "thirty-three", "thirty-four", "thirty-five", "thirty-six", "thirty-seven", "thirty-eight", "thirty-nine", "forty", "forty-one", "forty-two", "forty-three", "forty-four", "forty-five", "forty-six", "forty-seven", "forty-eight", "forty-nine", "fifty", "fifty-one", "fifty-two", "fifty-three", "fifty-four"] as const;
 const NEXT_SKU_WORDS = [
   "first",
   "second",
@@ -1053,6 +1098,12 @@ const NEXT_SKU_WORDS = [
   "forty-seventh",
   "forty-eighth",
   "forty-ninth",
+  "fiftieth",
+  "fifty-first",
+  "fifty-second",
+  "fifty-third",
+  "fifty-fourth",
+  "fifty-fifth",
 ] as const;
 
 export function countWord(n: number): string {
@@ -1074,14 +1125,10 @@ function amountAtomicFor(sku: DoorSku): string {
     const raw = env("IMPORT_ALERTS_USDC_ATOMIC");
     return raw.length > 0 ? raw : IMPORT_ALERTS_AMOUNT_ATOMIC;
   }
-  if (sku === "mariners" || sku === "mariners-d11" || sku === "mariners-d7" || sku === "mariners-d8") {
-    const envName = sku === "mariners-d8"
-      ? "MARINERS_D8_USDC_ATOMIC"
-      : sku === "mariners-d7"
-        ? "MARINERS_D7_USDC_ATOMIC"
-        : sku === "mariners-d11"
-          ? "MARINERS_D11_USDC_ATOMIC"
-          : "MARINERS_USDC_ATOMIC";
+  if (isMarinersSku(sku)) {
+    const envName = sku === "mariners"
+      ? "MARINERS_USDC_ATOMIC"
+      : `MARINERS_${sku.slice("mariners-".length).toUpperCase().replace("-", "")}_USDC_ATOMIC`;
     const raw = env(envName);
     return raw.length > 0 ? raw : MARINERS_AMOUNT_ATOMIC;
   }
@@ -1344,7 +1391,9 @@ function isTableSku(sku: DoorSku): boolean {
 }
 
 function isMarinersSku(sku: DoorSku): boolean {
-  return sku === "mariners" || sku === "mariners-d11" || sku === "mariners-d7" || sku === "mariners-d8";
+  return sku === "mariners" || sku === "mariners-d11" || sku === "mariners-d7" || sku === "mariners-d8"
+    || sku === "mariners-d1" || sku === "mariners-d5" || sku === "mariners-d9" || sku === "mariners-d14"
+    || sku === "mariners-d17";
 }
 
 /**
@@ -1413,6 +1462,31 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
     description:
       "Call GET /mariners-d8 when you need the latest USCG District 8 / Gulf (New Orleans) Local Notice to Mariners as structured JSON from the official weekly PDF. Same NavCEN walker as /mariners. Returns week, section, text, and source URL. Does not invent notices. Paid JSON keeps notices[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
     resourcePath: MARINERS_D8_PATH,
+  },
+  "mariners-d1": {
+    description:
+      "Call GET /mariners-d1 when you need the latest USCG District 1 / Northeast Local Notice to Mariners as structured JSON from the official weekly PDF. Same NavCEN walker as /mariners. Returns week, section, text, and source URL. Does not invent notices. Paid JSON keeps notices[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    resourcePath: MARINERS_D1_PATH,
+  },
+  "mariners-d5": {
+    description:
+      "Call GET /mariners-d5 when you need the latest USCG District 5 / Mid-Atlantic Local Notice to Mariners as structured JSON from the official weekly PDF. Same NavCEN walker as /mariners. Returns week, section, text, and source URL. Does not invent notices. Paid JSON keeps notices[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    resourcePath: MARINERS_D5_PATH,
+  },
+  "mariners-d9": {
+    description:
+      "Call GET /mariners-d9 when you need the latest USCG District 9 / Great Lakes Local Notice to Mariners as structured JSON from the official weekly PDF. Same NavCEN walker as /mariners. Returns week, section, text, and source URL. Does not invent notices. Paid JSON keeps notices[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    resourcePath: MARINERS_D9_PATH,
+  },
+  "mariners-d14": {
+    description:
+      "Call GET /mariners-d14 when you need the latest USCG District 14 / Pacific Local Notice to Mariners as structured JSON from the official weekly PDF. Same NavCEN walker as /mariners. Returns week, section, text, and source URL. Does not invent notices. Paid JSON keeps notices[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    resourcePath: MARINERS_D14_PATH,
+  },
+  "mariners-d17": {
+    description:
+      "Call GET /mariners-d17 when you need the latest USCG District 17 / Alaska Local Notice to Mariners as structured JSON from the official weekly PDF. Same NavCEN walker as /mariners. Returns week, section, text, and source URL. Does not invent notices. Paid JSON keeps notices[] and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+    resourcePath: MARINERS_D17_PATH,
   },
   "warning-letters": {
     description:
@@ -1516,7 +1590,7 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
   },
   "superfund-rods": {
     description:
-      "Call GET /superfund-rods when you need official EPA Superfund Record of Decision text extracted from SEMS PDFs on semspub.epa.gov. Not a Proposed Plan or fact sheet. " + PAID_WINDOW_COPY,
+      "Call GET /superfund-rods when you need official EPA Superfund Record of Decision or Five-Year Review text extracted from SEMS PDFs on semspub.epa.gov. Not a Proposed Plan, fact sheet, or FYR letter. " + PAID_WINDOW_COPY,
     resourcePath: SUPERFUND_RODS_PATH,
   },
   "ico-mpn": {
@@ -1794,6 +1868,141 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         waterway: "Acadiana Navigation Channel",
         text: "Acadiana Navigation Channel Light 6 LLNR 20305 STRUCT DEST/TRLB FD",
         sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm0833g2026.pdf",
+      },
+    ],
+  },
+  "mariners-d1": {
+    ok: true,
+    product: "uscg-d1-lnm",
+    status: "ok",
+    week: "35-2026",
+    asOf: "2026-09-02",
+    source: "https://www.navcen.uscg.gov/local-notices-to-mariners?district=1+0&subdistrict=n",
+    recordCount: 1,
+    records: [
+      {
+        id: "35-2026:Federal Discrepancies:34850",
+        date: "2026-09-02",
+        firm: "Ambrose Channel",
+        url: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm01352026.pdf",
+        type: "mariners-d1",
+      },
+    ],
+    notices: [
+      {
+        week: "35-2026",
+        section: "Federal Discrepancies",
+        waterway: "Ambrose Channel",
+        text: "Ambrose Channel Lighted Buoy 12 LLNR 34850",
+        sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm01352026.pdf",
+      },
+    ],
+  },
+  "mariners-d5": {
+    ok: true,
+    product: "uscg-d5-lnm",
+    status: "ok",
+    week: "35-2026",
+    asOf: "2026-09-02",
+    source: "https://www.navcen.uscg.gov/local-notices-to-mariners?district=5+0&subdistrict=n",
+    recordCount: 1,
+    records: [
+      {
+        id: "35-2026:Federal Discrepancies:31660",
+        date: "2026-09-02",
+        firm: "Albemarle Sound",
+        url: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm05352026.pdf",
+        type: "mariners-d5",
+      },
+    ],
+    notices: [
+      {
+        week: "35-2026",
+        section: "Federal Discrepancies",
+        waterway: "Albemarle Sound",
+        text: "Kendrick Creek Channel Entrance Light 1KC LLNR 31660",
+        sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm05352026.pdf",
+      },
+    ],
+  },
+  "mariners-d9": {
+    ok: true,
+    product: "uscg-d9-lnm",
+    status: "ok",
+    week: "35-2026",
+    asOf: "2026-09-02",
+    source: "https://www.navcen.uscg.gov/local-notices-to-mariners?district=9+0&subdistrict=n",
+    recordCount: 1,
+    records: [
+      {
+        id: "35-2026:Federal Discrepancies:11355",
+        date: "2026-09-02",
+        firm: "Alpena",
+        url: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm09352026.pdf",
+        type: "mariners-d9",
+      },
+    ],
+    notices: [
+      {
+        week: "35-2026",
+        section: "Federal Discrepancies",
+        waterway: "Alpena",
+        text: "Thunder Bay Traffic Lighted Bell Buoy TB LLNR 11355",
+        sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm09352026.pdf",
+      },
+    ],
+  },
+  "mariners-d14": {
+    ok: true,
+    product: "uscg-d14-lnm",
+    status: "ok",
+    week: "35-2026",
+    asOf: "2026-09-02",
+    source: "https://www.navcen.uscg.gov/local-notices-to-mariners?district=14+0&subdistrict=n",
+    recordCount: 1,
+    records: [
+      {
+        id: "35-2026:Federal Discrepancies:28700",
+        date: "2026-09-02",
+        firm: "Kaneohe Bay",
+        url: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm14352026.pdf",
+        type: "mariners-d14",
+      },
+    ],
+    notices: [
+      {
+        week: "35-2026",
+        section: "Federal Discrepancies",
+        waterway: "Kaneohe Bay",
+        text: "Kaneohe Bay Channel Daybeacon 5 LLNR 28700",
+        sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm14352026.pdf",
+      },
+    ],
+  },
+  "mariners-d17": {
+    ok: true,
+    product: "uscg-d17-lnm",
+    status: "ok",
+    week: "35-2026",
+    asOf: "2026-09-02",
+    source: "https://www.navcen.uscg.gov/local-notices-to-mariners?district=17+0&subdistrict=n",
+    recordCount: 1,
+    records: [
+      {
+        id: "35-2026:Federal Discrepancies:27520",
+        date: "2026-09-02",
+        firm: "Adak Island",
+        url: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm17352026.pdf",
+        type: "mariners-d17",
+      },
+    ],
+    notices: [
+      {
+        week: "35-2026",
+        section: "Federal Discrepancies",
+        waterway: "Adak Island",
+        text: "Finger Shoal Lighted Bell Buoy 3 LLNR 27520",
+        sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm17352026.pdf",
       },
     ],
   },
@@ -3034,8 +3243,41 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
   },
 };
 
+/**
+ * Paid-body JSON Schema for table / extracted-body doors.
+ * Required keys are the example's top-level keys (⊆ real paid JSON).
+ * PDF doors have no JSON body schema.
+ */
+export function paidOutputJsonSchema(sku: DoorSku): Record<string, unknown> | undefined {
+  if (isPdfCacheSku(sku)) return undefined;
+  const example = BAZAAR_OUTPUT_EXAMPLE[sku];
+  const properties: Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(example)) {
+    if (Array.isArray(value)) properties[key] = { type: "array", items: { type: "object" } };
+    else if (value !== null && typeof value === "object") properties[key] = { type: "object" };
+    else if (typeof value === "boolean") properties[key] = { type: "boolean" };
+    else if (typeof value === "number") properties[key] = { type: "integer" };
+    else properties[key] = { type: "string" };
+  }
+  return {
+    type: "object",
+    properties,
+    required: Object.keys(example),
+  };
+}
+
 /** x402 Bazaar discovery block (v2 PAYMENT-REQUIRED extensions.bazaar). */
 export function bazaarExtension(sku: DoorSku): Record<string, unknown> {
+  const outputType = isPdfCacheSku(sku) ? "pdf" : "json";
+  const paidSchema = paidOutputJsonSchema(sku);
+  const output: Record<string, unknown> = {
+    type: outputType,
+    example: BAZAAR_OUTPUT_EXAMPLE[sku],
+  };
+  // Paid-body schema lives here — not on the discovery wrapper's
+  // schema.properties.output.required (that was ["type"] and vet402 L2
+  // treated it as catalog-declared paid keys → mismatch vs /ticks).
+  if (paidSchema) output.schema = paidSchema;
   return {
     info: {
       input: {
@@ -3049,10 +3291,7 @@ export function bazaarExtension(sku: DoorSku): Record<string, unknown> {
               ? { id: "", before: "" }
             : {},
       },
-      output: {
-        type: isPdfCacheSku(sku) ? "pdf" : "json",
-        example: BAZAAR_OUTPUT_EXAMPLE[sku],
-      },
+      output,
     },
     schema: {
       $schema: "https://json-schema.org/draft/2020-12/schema",
@@ -3080,8 +3319,8 @@ export function bazaarExtension(sku: DoorSku): Record<string, unknown> {
           properties: {
             type: { type: "string" },
             example: { type: "object" },
+            schema: { type: "object" },
           },
-          required: ["type"],
         },
       },
       required: ["input"],
@@ -3511,7 +3750,7 @@ export function paymentRequiredBody(
     mimeType: skuMimeType(sku),
     maxTimeoutSeconds: 60,
     extra: paymentExtra(sku),
-    maxAmountRequired: amount,
+    maxAmountRequired: String(amount),
   };
 
   return {
@@ -3541,7 +3780,7 @@ export function paymentRequiredV2(
     payTo: PAY_TO,
     maxTimeoutSeconds: 60,
     extra: paymentExtra(sku),
-    amount,
+    amount: String(amount),
     description,
   };
   return {
@@ -3967,6 +4206,43 @@ async function localEip3009Settle(payment: string, requirements: Record<string, 
 }
 
 
+/** Base64 SettlementResponse for paid 200s. Only when settle returned a real txHash. */
+export function settlementReceiptHeaders(
+  payment: string | null,
+  requirements: Record<string, unknown>,
+  txHash?: string,
+): Record<string, string> {
+  if (!txHash) return {};
+  const decoded = payment ? decodePayment(payment) : null;
+  const v2 = decoded?.x402Version === 2 || (typeof requirements.network === "string" && requirements.network.startsWith("eip155:"));
+  const receipt: Record<string, unknown> = {
+    success: true,
+    transaction: txHash,
+    network: v2 ? caip2Network(requirements.network) : NETWORK_V1,
+  };
+  const payer = payerFromPayment(payment);
+  if (payer) receipt.payer = payer;
+  const encoded = Buffer.from(JSON.stringify(receipt), "utf8").toString("base64");
+  return {
+    "PAYMENT-RESPONSE": encoded,
+    "X-PAYMENT-RESPONSE": encoded,
+  };
+}
+
+const headResponses = new WeakSet<ServerResponse>();
+
+function markHeadResponse(res: ServerResponse): void {
+  headResponses.add(res);
+}
+
+function discoveryLinkHeader(): string {
+  return `<${LLMS_PATH}>; rel="llms-txt"; type="text/plain", <${OPENAPI_PATH}>; rel="service-desc"; type="application/json"`;
+}
+
+function endMaybeEmpty(res: ServerResponse, payload: string | Buffer): void {
+  res.end(headResponses.has(res) ? undefined : payload);
+}
+
 function sendJson(res: ServerResponse, status: number, body: unknown, extraHeaders: Record<string, string> = {}): void {
   const payload = JSON.stringify(body);
   res.writeHead(status, {
@@ -3974,18 +4250,21 @@ function sendJson(res: ServerResponse, status: number, body: unknown, extraHeade
     "Cache-Control": "no-store",
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Expose-Headers": "PAYMENT-REQUIRED, X-PAYMENT-RESPONSE, PAYMENT-RESPONSE, ETag",
+    "Content-Length": String(Buffer.byteLength(payload)),
     ...extraHeaders,
   });
-  res.end(payload);
+  endMaybeEmpty(res, payload);
 }
 
-function sendText(res: ServerResponse, status: number, body: string, contentType: string): void {
+function sendText(res: ServerResponse, status: number, body: string, contentType: string, extraHeaders: Record<string, string> = {}): void {
   res.writeHead(status, {
     "Content-Type": contentType,
     "Cache-Control": "no-store",
     "Access-Control-Allow-Origin": "*",
+    "Content-Length": String(Buffer.byteLength(body)),
+    ...extraHeaders,
   });
-  res.end(body);
+  endMaybeEmpty(res, body);
 }
 
 function shopDiscoveryPointers(req: IncomingMessage, port: number): Record<string, string> {
@@ -4053,6 +4332,11 @@ export function llmsTxt(): string {
     "- GET /mariners-d11 — $0.05 — USCG D11 / Southwest Local Notice to Mariners",
     "- GET /mariners-d7 — $0.05 — USCG D7 / Southeast Local Notice to Mariners",
     "- GET /mariners-d8 — $0.05 — USCG D8 / Gulf Local Notice to Mariners",
+    "- GET /mariners-d1 — $0.05 — USCG D1 / Northeast Local Notice to Mariners",
+    "- GET /mariners-d5 — $0.05 — USCG D5 / Mid-Atlantic Local Notice to Mariners",
+    "- GET /mariners-d9 — $0.05 — USCG D9 / Great Lakes Local Notice to Mariners",
+    "- GET /mariners-d14 — $0.05 — USCG D14 / Pacific Local Notice to Mariners",
+    "- GET /mariners-d17 — $0.05 — USCG D17 / Alaska Local Notice to Mariners",
     `- GET /warning-letters — $0.05 — FDA warning-letter bodies (firm, date, subject, full letter text). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05. Same URL ?since=<ISO timestamp or id> is newer texts only.`,
     `- GET /untitled-letters — $0.05 — FDA Untitled Letter text (CDER OPDP + CBER promo PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /awa — $0.05 — USDA APHIS AWA inspection-report observation text (official per-report PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
@@ -4073,7 +4357,7 @@ export function llmsTxt(): string {
     `- GET /denovo-orders — $0.05 — FDA De Novo classification-order text (official accessdata.fda.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /ttb-oic — $0.05 — TTB Offer in Compromise text (official ttb.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /air-letters — $0.05 — USDA APHIS AIR confirmation-letter text (official direct.aphis.usda.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
-    `- GET /superfund-rods — $0.05 — EPA Superfund Record of Decision text (official semspub.epa.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /superfund-rods — $0.05 — EPA Superfund Record of Decision and Five-Year Review text (official semspub.epa.gov PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /ico-mpn — $0.05 — ICO Monetary Penalty Notice text (official ico.org.uk PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /cma-ca98 — $0.05 — UK CMA CA98 infringement-decision text (official assets.publishing.service.gov.uk PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /ema-referrals — $0.05 — EMA human-medicine referral procedure text (official ema.europa.eu English PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
@@ -4116,6 +4400,11 @@ export function llmsTxt(): string {
     "- GET /mariners-d11/manifest.json — D11 LNM count + official PDF (not the notice body)",
     "- GET /mariners-d7/manifest.json — D7 LNM count + official PDF (not the notice body)",
     "- GET /mariners-d8/manifest.json — D8 LNM count + official PDF (not the notice body)",
+    "- GET /mariners-d1/manifest.json — D1 LNM count + official PDF (not the notice body)",
+    "- GET /mariners-d5/manifest.json — D5 LNM count + official PDF (not the notice body)",
+    "- GET /mariners-d9/manifest.json — D9 LNM count + official PDF (not the notice body)",
+    "- GET /mariners-d14/manifest.json — D14 LNM count + official PDF (not the notice body)",
+    "- GET /mariners-d17/manifest.json — D17 LNM count + official PDF (not the notice body)",
     "- GET /warning-letters/manifest.json — FDA letter count + firm/date/subject (full catalog + page cursor; ?q= is free search; not the letter body)",
     "- GET /untitled-letters/manifest.json — FDA untitled count + id/firm/date/product (full catalog + page cursor; ?q= is free search; not the letter text)",
     "- GET /awa/manifest.json — APHIS AWA count + id/firm/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the observation text)",
@@ -4136,7 +4425,7 @@ export function llmsTxt(): string {
     "- GET /denovo-orders/manifest.json — FDA De Novo order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
     "- GET /ttb-oic/manifest.json — TTB OIC count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
     "- GET /air-letters/manifest.json — APHIS AIR letter count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the letter body)",
-    "- GET /superfund-rods/manifest.json — EPA Superfund ROD count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the ROD body)",
+    "- GET /superfund-rods/manifest.json — EPA Superfund ROD + FYR count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the ROD/FYR body)",
     "- GET /ico-mpn/manifest.json — ICO MPN count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the MPN body)",
     "- GET /cma-ca98/manifest.json — CMA CA98 count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the decision body)",
     "- GET /ema-referrals/manifest.json — EMA referral count + name/date/status/sourceUrl (full catalog + page cursor; ?q= is free search; not the procedure body)",
@@ -4214,7 +4503,7 @@ function discoveryOrigin(req: IncomingMessage, port: number): string {
 }
 
 function paidDiscoveryPaths(): string[] {
-  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, BSEE_REPORTS_PATH];
+  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, MARINERS_D1_PATH, MARINERS_D5_PATH, MARINERS_D9_PATH, MARINERS_D14_PATH, MARINERS_D17_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, BSEE_REPORTS_PATH];
   if (form483IsPublic()) paths.push(FORM_483_PATH);
   if (gmpIsPublic()) paths.push(GMP_PATH);
   if (gmpMdIsPublic()) paths.push(GMP_MD_PATH);
@@ -4236,6 +4525,7 @@ export function wellKnownX402(req: IncomingMessage, port: number): Record<string
         "Extracted-body doors accept ?since=<ISO timestamp or official catalog id> (same watermark shape as ?before=). Paid GET returns only official texts newer than that watermark. Empty new set: HTTP 304 with ETag, or paid 200 with empty records/ids and a stable asOf/fetchedAt. Newest-10 ?before= and ?id= stay.",
       etag:
         "GET /ticks and GET /import-alerts send ETag. If-None-Match on an unchanged snapshot returns 304 and does not re-sell the table. If the table changed, the whole current table is returned (existing product). Optional ?since= on those tables 304s when fetchedAt/asOf is not newer.",
+      resourceCount: paidDiscoveryPaths().length,
       updateCadence: COLLECT_CADENCE,
       http429: HTTP_429_COPY,
     },
@@ -4254,6 +4544,7 @@ function paidOpenApiOp(opts: {
   outputSchema: Record<string, unknown>;
 }): Record<string, unknown> {
   const olderPages = opts.description.includes("Newest chunk on a plain GET");
+  const exampleKeys = Object.keys(opts.example);
   const outputSchema = olderPages
     ? {
         ...opts.outputSchema,
@@ -4263,8 +4554,12 @@ function paidOpenApiOp(opts: {
           nextBefore: { type: "string", nullable: true },
           prevBefore: { type: "string", nullable: true },
         },
+        required: exampleKeys,
       }
-    : opts.outputSchema;
+    : {
+        ...opts.outputSchema,
+        required: Array.isArray(opts.outputSchema.required) ? opts.outputSchema.required : exampleKeys,
+      };
   return {
     operationId: opts.operationId,
     summary: opts.summary,
@@ -4433,6 +4728,11 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const lnmD11Atomic = amountAtomicFor("mariners-d11");
   const lnmD7Atomic = amountAtomicFor("mariners-d7");
   const lnmD8Atomic = amountAtomicFor("mariners-d8");
+  const lnmD1Atomic = amountAtomicFor("mariners-d1");
+  const lnmD5Atomic = amountAtomicFor("mariners-d5");
+  const lnmD9Atomic = amountAtomicFor("mariners-d9");
+  const lnmD14Atomic = amountAtomicFor("mariners-d14");
+  const lnmD17Atomic = amountAtomicFor("mariners-d17");
   const wlAtomic = amountAtomicFor("warning-letters");
   const ulAtomic = amountAtomicFor("untitled-letters");
   const awaAtomic = amountAtomicFor("awa");
@@ -4482,6 +4782,11 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const lnmD11Price = (Number(lnmD11Atomic) / 1e6).toFixed(2);
   const lnmD7Price = (Number(lnmD7Atomic) / 1e6).toFixed(2);
   const lnmD8Price = (Number(lnmD8Atomic) / 1e6).toFixed(2);
+  const lnmD1Price = (Number(lnmD1Atomic) / 1e6).toFixed(2);
+  const lnmD5Price = (Number(lnmD5Atomic) / 1e6).toFixed(2);
+  const lnmD9Price = (Number(lnmD9Atomic) / 1e6).toFixed(2);
+  const lnmD14Price = (Number(lnmD14Atomic) / 1e6).toFixed(2);
+  const lnmD17Price = (Number(lnmD17Atomic) / 1e6).toFixed(2);
   const wlPrice = (Number(wlAtomic) / 1e6).toFixed(2);
   const ulPrice = (Number(ulAtomic) / 1e6).toFixed(2);
   const awaPrice = (Number(awaAtomic) / 1e6).toFixed(2);
@@ -4535,6 +4840,11 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
     "/mariners-d11 ($0.05)",
     "/mariners-d7 ($0.05)",
     "/mariners-d8 ($0.05)",
+    "/mariners-d1 ($0.05)",
+    "/mariners-d5 ($0.05)",
+    "/mariners-d9 ($0.05)",
+    "/mariners-d14 ($0.05)",
+    "/mariners-d17 ($0.05)",
     "/warning-letters ($0.05)",
     "/untitled-letters ($0.05)",
     "/awa ($0.05)",
@@ -4735,6 +5045,121 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           priceUsdc: lnmD8Price,
           amountAtomic: lnmD8Atomic,
           example: BAZAAR_OUTPUT_EXAMPLE["mariners-d8"],
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              week: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
+              notices: { type: "array", items: { type: "object" } },
+            },
+          },
+        }),
+      },
+      [MARINERS_D1_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getMarinersD1",
+          summary: "USCG D1 / Northeast LNM",
+          description: SKU_COPY["mariners-d1"].description,
+          priceUsdc: lnmD1Price,
+          amountAtomic: lnmD1Atomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["mariners-d1"],
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              week: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
+              notices: { type: "array", items: { type: "object" } },
+            },
+          },
+        }),
+      },
+      [MARINERS_D5_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getMarinersD5",
+          summary: "USCG D5 / Mid-Atlantic LNM",
+          description: SKU_COPY["mariners-d5"].description,
+          priceUsdc: lnmD5Price,
+          amountAtomic: lnmD5Atomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["mariners-d5"],
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              week: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
+              notices: { type: "array", items: { type: "object" } },
+            },
+          },
+        }),
+      },
+      [MARINERS_D9_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getMarinersD9",
+          summary: "USCG D9 / Great Lakes LNM",
+          description: SKU_COPY["mariners-d9"].description,
+          priceUsdc: lnmD9Price,
+          amountAtomic: lnmD9Atomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["mariners-d9"],
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              week: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
+              notices: { type: "array", items: { type: "object" } },
+            },
+          },
+        }),
+      },
+      [MARINERS_D14_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getMarinersD14",
+          summary: "USCG D14 / Pacific LNM",
+          description: SKU_COPY["mariners-d14"].description,
+          priceUsdc: lnmD14Price,
+          amountAtomic: lnmD14Atomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["mariners-d14"],
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              week: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
+              notices: { type: "array", items: { type: "object" } },
+            },
+          },
+        }),
+      },
+      [MARINERS_D17_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getMarinersD17",
+          summary: "USCG D17 / Alaska LNM",
+          description: SKU_COPY["mariners-d17"].description,
+          priceUsdc: lnmD17Price,
+          amountAtomic: lnmD17Atomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["mariners-d17"],
           outputSchema: {
             type: "object",
             properties: {
@@ -5233,7 +5658,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       [SUPERFUND_RODS_PATH]: {
         get: paidOpenApiOp({
           operationId: "getSuperfundRods",
-          summary: "EPA Superfund Record of Decision text",
+          summary: "EPA Superfund ROD and Five-Year Review text",
           description: SKU_COPY["superfund-rods"].description,
           priceUsdc: superfundRodsPrice,
           amountAtomic: superfundRodsAtomic,
@@ -5805,6 +6230,21 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       [MARINERS_D8_MANIFEST_PATH]: {
         get: freeOpenApiOp("USCG D8 LNM free manifest", "Count, week, and official PDF URL. Not the notice body."),
       },
+      [MARINERS_D1_MANIFEST_PATH]: {
+        get: freeOpenApiOp("USCG D1 LNM free manifest", "Count, week, and official PDF URL. Not the notice body."),
+      },
+      [MARINERS_D5_MANIFEST_PATH]: {
+        get: freeOpenApiOp("USCG D5 LNM free manifest", "Count, week, and official PDF URL. Not the notice body."),
+      },
+      [MARINERS_D9_MANIFEST_PATH]: {
+        get: freeOpenApiOp("USCG D9 LNM free manifest", "Count, week, and official PDF URL. Not the notice body."),
+      },
+      [MARINERS_D14_MANIFEST_PATH]: {
+        get: freeOpenApiOp("USCG D14 LNM free manifest", "Count, week, and official PDF URL. Not the notice body."),
+      },
+      [MARINERS_D17_MANIFEST_PATH]: {
+        get: freeOpenApiOp("USCG D17 LNM free manifest", "Count, week, and official PDF URL. Not the notice body."),
+      },
       [WARNING_LETTERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FDA warning-letters free manifest",
@@ -6227,12 +6667,12 @@ async function servePaid(
     return;
   }
 
-  const serve = async () => {
+  const serve = async (receipt: Record<string, string> = {}) => {
     const body = await load(opts);
     if (maybeNotModified(body)) return;
     const etag = etagFromPaidEnvelope(sku, paidEnvelope(body));
     logPaid(200);
-    sendJson(res, 200, body, { ETag: etag });
+    sendJson(res, 200, body, { ETag: etag, ...receipt });
   };
 
   if (skipSettle()) {
@@ -6245,13 +6685,13 @@ async function servePaid(
   const settled = verified ? await facilitatorSettle(payment, accept) : { ok: false };
   if (settled.ok) {
     journalVerifiedSettle(settled.txHash);
-    await serve();
+    await serve(settlementReceiptHeaders(payment, accept, settled.txHash));
     return;
   }
   const local = await localEip3009Settle(payment, accept);
   if (local.ok) {
     journalVerifiedSettle(local.txHash);
-    await serve();
+    await serve(settlementReceiptHeaders(payment, accept, local.txHash));
     return;
   }
   logPaid(402);
@@ -6279,9 +6719,10 @@ function sendPdf(
     "Cache-Control": "no-store",
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Expose-Headers": "PAYMENT-REQUIRED, X-PAYMENT-RESPONSE, PAYMENT-RESPONSE, ETag",
+    "Content-Length": String(bytes.byteLength),
     ...extraHeaders,
   });
-  res.end(Buffer.from(bytes));
+  endMaybeEmpty(res, Buffer.from(bytes));
 }
 
 async function servePaidPdf(
@@ -6325,7 +6766,7 @@ async function servePaidPdf(
     return;
   }
 
-  const serve = async () => {
+  const serve = async (receipt: Record<string, string> = {}) => {
     const packed = await load(opts);
     if (!packed) {
       logPaid(404);
@@ -6333,7 +6774,7 @@ async function servePaidPdf(
       return;
     }
     logPaid(200);
-    sendPdf(res, 200, packed.bytes, packed.filename);
+    sendPdf(res, 200, packed.bytes, packed.filename, receipt);
   };
 
   if (skipSettle()) {
@@ -6346,13 +6787,13 @@ async function servePaidPdf(
   const settled = verified ? await facilitatorSettle(payment, accept) : { ok: false };
   if (settled.ok) {
     journalVerifiedSettle(settled.txHash);
-    await serve();
+    await serve(settlementReceiptHeaders(payment, accept, settled.txHash));
     return;
   }
   const local = await localEip3009Settle(payment, accept);
   if (local.ok) {
     journalVerifiedSettle(local.txHash);
-    await serve();
+    await serve(settlementReceiptHeaders(payment, accept, local.txHash));
     return;
   }
   logPaid(402);
@@ -6398,13 +6839,40 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     res.writeHead(204, {
       "Access-Control-Allow-Origin": "*",
       "Access-Control-Allow-Headers": "X-PAYMENT, PAYMENT-SIGNATURE, Content-Type, If-None-Match",
-      "Access-Control-Allow-Methods": isPaidDoorPath(path) ? "GET, POST, OPTIONS" : "GET, OPTIONS",
+      "Access-Control-Allow-Methods": isPaidDoorPath(path) ? "GET, HEAD, POST, OPTIONS" : "GET, HEAD, OPTIONS",
     });
     res.end();
     return;
   }
 
-  if (req.method !== "GET" && !paidDoorPost) {
+  if (req.method === "HEAD" && isPaidDoorPath(path)) {
+    const sku = (Object.entries(SKU_COPY) as [DoorSku, { resourcePath: string }][]).find(
+      ([, copy]) => copy.resourcePath === path,
+    )?.[0];
+    if (sku) {
+      const amount = amountAtomicForRequest(sku, paidOptsFromReq(req, sku));
+      const resource = resourceUrl(req, port, path);
+      const body402 = paymentRequiredBody(resource, sku, amount);
+      const v2 = paymentRequiredV2(resource, sku, amount);
+      const paymentRequiredHeader = Buffer.from(JSON.stringify(v2), "utf8").toString("base64");
+      logShopRequest(req, { kind: "paid-door", path, status: 402 });
+      const payload = JSON.stringify(body402);
+      res.writeHead(402, {
+        "Content-Type": "application/json; charset=utf-8",
+        "Cache-Control": "no-store",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Expose-Headers": "PAYMENT-REQUIRED, X-PAYMENT-RESPONSE, PAYMENT-RESPONSE, ETag",
+        "PAYMENT-REQUIRED": paymentRequiredHeader,
+        "Content-Length": String(Buffer.byteLength(payload)),
+      });
+      res.end();
+      return;
+    }
+  }
+
+  if (req.method === "HEAD") {
+    markHeadResponse(res);
+  } else if (req.method !== "GET" && !paidDoorPost) {
     sendJson(res, 405, { error: "method_not_allowed" });
     return;
   }
@@ -6418,8 +6886,9 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
       shop: "bnm-data-shop",
       note: BODY_PAGE_DISCOVERY,
       payTo: PAY_TO,
-      network: NETWORK_V1,
+      network: NETWORK_V2,
       asset: USDC_BASE,
+      resourceCount: publicBazaarSkus().length,
       openapi: OPENAPI_PATH,
       wellKnown: WELL_KNOWN_PATH,
       llmsTxt: LLMS_PATH,
@@ -6468,6 +6937,41 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
           priceUsdc: "0.05",
           amountAtomic: amountAtomicFor("mariners-d8"),
           manifest: MARINERS_D8_MANIFEST_PATH,
+        },
+        {
+          path: MARINERS_D1_PATH,
+          product: D1_SPEC.productId,
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("mariners-d1"),
+          manifest: MARINERS_D1_MANIFEST_PATH,
+        },
+        {
+          path: MARINERS_D5_PATH,
+          product: D5_SPEC.productId,
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("mariners-d5"),
+          manifest: MARINERS_D5_MANIFEST_PATH,
+        },
+        {
+          path: MARINERS_D9_PATH,
+          product: D9_SPEC.productId,
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("mariners-d9"),
+          manifest: MARINERS_D9_MANIFEST_PATH,
+        },
+        {
+          path: MARINERS_D14_PATH,
+          product: D14_SPEC.productId,
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("mariners-d14"),
+          manifest: MARINERS_D14_MANIFEST_PATH,
+        },
+        {
+          path: MARINERS_D17_PATH,
+          product: D17_SPEC.productId,
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("mariners-d17"),
+          manifest: MARINERS_D17_MANIFEST_PATH,
         },
         {
           path: WARNING_LETTERS_PATH,
@@ -6783,22 +7287,39 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
             ]
           : []),
       ],
-    });
+    }, { Link: discoveryLinkHeader() });
     return;
   }
 
   if (path === WELL_KNOWN_PATH || path === "/.well-known/x402.json") {
-    sendJson(res, 200, wellKnownX402(req, port));
+    sendJson(res, 200, wellKnownX402(req, port), { Link: discoveryLinkHeader() });
     return;
   }
 
   if (path === OPENAPI_PATH) {
-    sendJson(res, 200, buildOpenApi(req, port));
+    sendJson(res, 200, buildOpenApi(req, port), { Link: discoveryLinkHeader() });
     return;
   }
 
-  if (path === LLMS_PATH) {
-    sendText(res, 200, llmsTxt(), "text/markdown; charset=utf-8");
+  if (path === LLMS_PATH || path === "/.well-known/llms.txt") {
+    sendText(res, 200, llmsTxt(), "text/plain; charset=utf-8", { Link: discoveryLinkHeader() });
+    return;
+  }
+
+  if (path === "/robots.txt") {
+    sendText(
+      res,
+      200,
+      [
+        "User-agent: *",
+        "Allow: /",
+        `Llms-Txt: ${LLMS_PATH}`,
+        `Sitemap: ${OPENAPI_PATH}`,
+        "",
+      ].join("\n"),
+      "text/plain; charset=utf-8",
+      { Link: discoveryLinkHeader() },
+    );
     return;
   }
 
@@ -6855,6 +7376,31 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === MARINERS_D1_MANIFEST_PATH) {
+    sendJson(res, 200, withShopDiscovery(await loadMarinersD1Manifest(), req, port));
+    return;
+  }
+
+  if (path === MARINERS_D5_MANIFEST_PATH) {
+    sendJson(res, 200, withShopDiscovery(await loadMarinersD5Manifest(), req, port));
+    return;
+  }
+
+  if (path === MARINERS_D9_MANIFEST_PATH) {
+    sendJson(res, 200, withShopDiscovery(await loadMarinersD9Manifest(), req, port));
+    return;
+  }
+
+  if (path === MARINERS_D14_MANIFEST_PATH) {
+    sendJson(res, 200, withShopDiscovery(await loadMarinersD14Manifest(), req, port));
+    return;
+  }
+
+  if (path === MARINERS_D17_MANIFEST_PATH) {
+    sendJson(res, 200, withShopDiscovery(await loadMarinersD17Manifest(), req, port));
+    return;
+  }
+
   if (path === IMPORT_ALERTS_PATH) {
     await servePaid(req, res, port, "import-alerts", async () => paidImportAlertsBody(await loadImportAlerts()));
     return;
@@ -6877,6 +7423,31 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
 
   if (path === MARINERS_D8_PATH) {
     await servePaid(req, res, port, "mariners-d8", async () => paidMarinersD8Body(await loadMarinersD8()));
+    return;
+  }
+
+  if (path === MARINERS_D1_PATH) {
+    await servePaid(req, res, port, "mariners-d1", async () => paidMarinersD1Body(await loadMarinersD1()));
+    return;
+  }
+
+  if (path === MARINERS_D5_PATH) {
+    await servePaid(req, res, port, "mariners-d5", async () => paidMarinersD5Body(await loadMarinersD5()));
+    return;
+  }
+
+  if (path === MARINERS_D9_PATH) {
+    await servePaid(req, res, port, "mariners-d9", async () => paidMarinersD9Body(await loadMarinersD9()));
+    return;
+  }
+
+  if (path === MARINERS_D14_PATH) {
+    await servePaid(req, res, port, "mariners-d14", async () => paidMarinersD14Body(await loadMarinersD14()));
+    return;
+  }
+
+  if (path === MARINERS_D17_PATH) {
+    await servePaid(req, res, port, "mariners-d17", async () => paidMarinersD17Body(await loadMarinersD17()));
     return;
   }
 
@@ -7329,7 +7900,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, OFWAT_ENFORCEMENT_PATH, OFWAT_ENFORCEMENT_MANIFEST_PATH, OFGEM_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_MANIFEST_PATH, GAIN_PATH, GAIN_MANIFEST_PATH, ORR_ENFORCEMENT_PATH, ORR_ENFORCEMENT_MANIFEST_PATH, PHMSA_ORDERS_PATH, PHMSA_ORDERS_MANIFEST_PATH, AAIB_REPORTS_PATH, AAIB_REPORTS_MANIFEST_PATH, CSB_REPORTS_PATH, CSB_REPORTS_MANIFEST_PATH, HHS_OIG_REPORTS_PATH, HHS_OIG_REPORTS_MANIFEST_PATH, EIS_REPORTS_PATH, EIS_REPORTS_MANIFEST_PATH, FSIS_HUMANE_PATH, FSIS_HUMANE_MANIFEST_PATH, EPA_CAFO_PATH, EPA_CAFO_MANIFEST_PATH, FMSHRC_ORDERS_PATH, FMSHRC_ORDERS_MANIFEST_PATH, BSEE_REPORTS_PATH, BSEE_REPORTS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, SAMPLE_PATH, FIRM_CHECK_PATH, X402LIST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, MARINERS_D1_PATH, MARINERS_D1_MANIFEST_PATH, MARINERS_D5_PATH, MARINERS_D5_MANIFEST_PATH, MARINERS_D9_PATH, MARINERS_D9_MANIFEST_PATH, MARINERS_D14_PATH, MARINERS_D14_MANIFEST_PATH, MARINERS_D17_PATH, MARINERS_D17_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, OFWAT_ENFORCEMENT_PATH, OFWAT_ENFORCEMENT_MANIFEST_PATH, OFGEM_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_MANIFEST_PATH, GAIN_PATH, GAIN_MANIFEST_PATH, ORR_ENFORCEMENT_PATH, ORR_ENFORCEMENT_MANIFEST_PATH, PHMSA_ORDERS_PATH, PHMSA_ORDERS_MANIFEST_PATH, AAIB_REPORTS_PATH, AAIB_REPORTS_MANIFEST_PATH, CSB_REPORTS_PATH, CSB_REPORTS_MANIFEST_PATH, HHS_OIG_REPORTS_PATH, HHS_OIG_REPORTS_MANIFEST_PATH, EIS_REPORTS_PATH, EIS_REPORTS_MANIFEST_PATH, FSIS_HUMANE_PATH, FSIS_HUMANE_MANIFEST_PATH, EPA_CAFO_PATH, EPA_CAFO_MANIFEST_PATH, FMSHRC_ORDERS_PATH, FMSHRC_ORDERS_MANIFEST_PATH, BSEE_REPORTS_PATH, BSEE_REPORTS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, SAMPLE_PATH, FIRM_CHECK_PATH, X402LIST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
 }
 
 export function bindHost(): string {
@@ -7363,6 +7934,11 @@ if (isMain()) {
     console.error(`${MARINERS_D11_PATH} $${Number(amountAtomicFor("mariners-d11")) / 1e6} USDC`);
     console.error(`${MARINERS_D7_PATH} $${Number(amountAtomicFor("mariners-d7")) / 1e6} USDC`);
     console.error(`${MARINERS_D8_PATH} $${Number(amountAtomicFor("mariners-d8")) / 1e6} USDC`);
+    console.error(`${MARINERS_D1_PATH} $${Number(amountAtomicFor("mariners-d1")) / 1e6} USDC`);
+    console.error(`${MARINERS_D5_PATH} $${Number(amountAtomicFor("mariners-d5")) / 1e6} USDC`);
+    console.error(`${MARINERS_D9_PATH} $${Number(amountAtomicFor("mariners-d9")) / 1e6} USDC`);
+    console.error(`${MARINERS_D14_PATH} $${Number(amountAtomicFor("mariners-d14")) / 1e6} USDC`);
+    console.error(`${MARINERS_D17_PATH} $${Number(amountAtomicFor("mariners-d17")) / 1e6} USDC`);
     console.error(`${WARNING_LETTERS_PATH} $${Number(amountAtomicFor("warning-letters")) / 1e6} USDC`);
     console.error(`${UNTITLED_LETTERS_PATH} $${Number(amountAtomicFor("untitled-letters")) / 1e6} USDC`);
     console.error(`${AWA_PATH} $${Number(amountAtomicFor("awa")) / 1e6} USDC`);

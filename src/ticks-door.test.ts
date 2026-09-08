@@ -5,7 +5,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, PRODUCT_NAME, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2, paymentExtra, sku402Description, isOrganicHay, isWaterTick, buildTicksManifest, countWord } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, PRODUCT_NAME, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, paidOutputJsonSchema, settlementReceiptHeaders, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2, paymentExtra, sku402Description, isOrganicHay, isWaterTick, buildTicksManifest, countWord } from "./ticks-door.js";
 import { EXTRACTED_BODY_SKUS, PAGE_AMOUNT_ATOMIC, SINGLE_DOC_AMOUNT_ATOMIC } from "./paid-records.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
@@ -17,10 +17,16 @@ import {
   MARINERS_AMOUNT_ATOMIC,
   MARINERS_D7_MANIFEST_PATH,
   MARINERS_D7_PATH,
+  MARINERS_D1_MANIFEST_PATH,
+  MARINERS_D1_PATH,
+  MARINERS_D5_PATH,
   MARINERS_D8_MANIFEST_PATH,
   MARINERS_D8_PATH,
+  MARINERS_D9_PATH,
   MARINERS_D11_MANIFEST_PATH,
   MARINERS_D11_PATH,
+  MARINERS_D14_PATH,
+  MARINERS_D17_PATH,
   MARINERS_MANIFEST_PATH,
   MARINERS_PATH,
 } from "./mariners.js";
@@ -291,6 +297,8 @@ async function main(): Promise<void> {
   assert.equal(isOrganicHay({ id: "hay.ams_2904.north_inter_mountains.organic.alfalfa.supreme.large_square" }), false);
   assert.equal(isOrganicHay({ id: "dairy.ams_2997.organic_ads.milk_half_gal" }), false);
   assert.equal(isOrganicHay({ id: "grain.ams_3802.national.organic.yellow_corn" }), false);
+  assert.deepEqual(settlementReceiptHeaders(null, { network: "base" }), {});
+  assert.deepEqual(settlementReceiptHeaders(null, { network: "base" }, ""), {});
 
   await withServer({
     TICKS_PATH: "",
@@ -326,6 +334,16 @@ async function main(): Promise<void> {
     const optTicks = await fetch(`${base}${TICKS_PATH}`, { method: "OPTIONS" });
     assert.equal(optTicks.status, 204);
     assert.match(optTicks.headers.get("access-control-allow-methods") ?? "", /POST/);
+    assert.match(optTicks.headers.get("access-control-allow-methods") ?? "", /HEAD/);
+    const headTicks = await fetch(`${base}${TICKS_PATH}`, { method: "HEAD" });
+    assert.equal(headTicks.status, 402, "HEAD /ticks is the same unpaid wall as GET (uptime probes)");
+    assert.ok(headTicks.headers.get("payment-required"), "HEAD 402 carries PAYMENT-REQUIRED");
+    assert.equal(headTicks.headers.get("payment-response"), null);
+    assert.equal(headTicks.headers.get("x-payment-response"), null);
+    assert.equal(await headTicks.text(), "");
+    const headPaid = await fetch(`${base}${TICKS_PATH}`, { method: "HEAD", headers: { "X-PAYMENT": "test" } });
+    assert.equal(headPaid.status, 402, "HEAD never settles even with a payment header");
+    assert.equal(headPaid.headers.get("payment-response"), null);
     const postWl = await fetch(`${base}${WARNING_LETTERS_PATH}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -344,6 +362,8 @@ async function main(): Promise<void> {
     assert.equal(body.accepts[0]?.payTo, PAY_TO);
     assert.equal(body.accepts[0]?.network, "base");
     assert.ok(res.headers.get("payment-required"), "v2 PAYMENT-REQUIRED header");
+    assert.equal(res.headers.get("payment-response"), null, "unpaid 402 has no settlement receipt");
+    assert.equal(res.headers.get("x-payment-response"), null);
     assert.equal(
       (body.accepts[0] as { maxAmountRequired?: string }).maxAmountRequired,
       TICKS_AMOUNT_ATOMIC,
@@ -374,7 +394,14 @@ async function main(): Promise<void> {
     const v2 = JSON.parse(Buffer.from(pr, "base64").toString("utf8")) as {
       extensions?: { bazaar?: { info?: { input?: { type?: string; method?: string } } } };
       resource?: { description?: string };
+      accepts?: { amount?: string }[];
     };
+    assert.equal(
+      String(v2.accepts?.[0]?.amount),
+      String((body.accepts[0] as { maxAmountRequired?: string }).maxAmountRequired),
+      "v2 header amount matches v1 body maxAmountRequired",
+    );
+    assert.equal(String(v2.accepts?.[0]?.amount), TICKS_AMOUNT_ATOMIC);
     assert.equal(v2.extensions?.bazaar?.info?.input?.type, "http");
     assert.equal(v2.extensions?.bazaar?.info?.input?.method, "GET");
     assert.ok((v2.resource?.description ?? "").includes("Call GET /ticks"));
@@ -520,6 +547,27 @@ async function main(): Promise<void> {
       v2.extensions?.bazaar?.info?.input,
       (declared.info as { input: unknown }).input,
     );
+    const ticksPaidSchema = paidOutputJsonSchema("ticks") as {
+      required?: string[];
+    };
+    const ticksExample = (declared.info as { output?: { example?: Record<string, unknown>; schema?: { required?: string[] }; type?: string } }).output;
+    assert.equal(ticksExample?.type, "json");
+    assert.deepEqual(ticksPaidSchema.required, Object.keys(ticksExample?.example ?? {}));
+    assert.deepEqual(ticksExample?.schema?.required, ticksPaidSchema.required);
+    const wrapperOutputRequired = (
+      declared.schema as { properties?: { output?: { required?: string[] } } }
+    ).properties?.output?.required;
+    assert.equal(
+      wrapperOutputRequired,
+      undefined,
+      "do not advertise schema.properties.output.required: [type] as the paid-body schema",
+    );
+    for (const key of ticksPaidSchema.required ?? []) {
+      assert.ok(
+        Object.prototype.hasOwnProperty.call(ticksExample?.example ?? {}, key),
+        `ticks required ${key} must be on the paid example`,
+      );
+    }
 
     const wellKnown = await fetch(`${base}${WELL_KNOWN_PATH}`);
     assert.equal(wellKnown.status, 200);
@@ -655,7 +703,7 @@ async function main(): Promise<void> {
     assert.equal(spec["x-agentcash-guidance"]?.oneDocPriceAtomic, Number(SINGLE_DOC_AMOUNT_ATOMIC));
     assert.equal(spec["x-agentcash-guidance"]?.pagePriceAtomic, Number(PAGE_AMOUNT_ATOMIC));
     assert.equal(spec["x-agentcash-guidance"]?.pageDefault, 10);
-    for (const paid of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH]) {
+    for (const paid of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, MARINERS_D1_PATH, MARINERS_D5_PATH, MARINERS_D9_PATH, MARINERS_D14_PATH, MARINERS_D17_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH]) {
       const op = spec.paths[paid]?.get;
       assert.ok(op?.["x-payment-info"], `${paid} must declare x-payment-info`);
       assert.equal(op?.["x-auth"]?.mode, "x402");
@@ -834,6 +882,11 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /mariners-d11"));
     assert.ok(llmsBody.includes("GET /mariners-d7"));
     assert.ok(llmsBody.includes("GET /mariners-d8"));
+    assert.ok(llmsBody.includes("GET /mariners-d1"));
+    assert.ok(llmsBody.includes("GET /mariners-d5"));
+    assert.ok(llmsBody.includes("GET /mariners-d9"));
+    assert.ok(llmsBody.includes("GET /mariners-d14"));
+    assert.ok(llmsBody.includes("GET /mariners-d17"));
     assert.ok(llmsBody.includes("GET /warning-letters"));
     assert.ok(llmsBody.includes("GET /untitled-letters"));
     assert.ok(llmsBody.includes("GET /awa"));
@@ -935,7 +988,8 @@ async function main(): Promise<void> {
     assert.ok((mcpInit.result?.instructions ?? "").includes("$0.05"));
     assert.ok(!(mcpInit.result?.instructions ?? "").toLowerCase().includes("entire current cache"));
 
-    const shop = (await (await fetch(`${base}/`)).json()) as {
+    const shopRes = await fetch(`${base}/`);
+    const shop = (await shopRes.json()) as {
       products: { path: string; priceUsdc?: string; product?: string }[];
       openapi?: string;
       wellKnown?: string;
@@ -957,6 +1011,11 @@ async function main(): Promise<void> {
       MARINERS_D11_PATH,
       MARINERS_D7_PATH,
       MARINERS_D8_PATH,
+      MARINERS_D1_PATH,
+      MARINERS_D5_PATH,
+      MARINERS_D9_PATH,
+      MARINERS_D14_PATH,
+      MARINERS_D17_PATH,
       WARNING_LETTERS_PATH,
       UNTITLED_LETTERS_PATH,
       AWA_PATH,
@@ -1005,6 +1064,23 @@ async function main(): Promise<void> {
     assert.equal(shop.openapi, OPENAPI_PATH);
     assert.equal(shop.wellKnown, WELL_KNOWN_PATH);
     assert.equal(shop.llmsTxt, LLMS_PATH);
+    assert.equal(
+      (shop as { resourceCount?: number }).resourceCount,
+      PUBLIC_BAZAAR_SKUS.length,
+      "shop resourceCount matches live well-known, not a stale 36",
+    );
+    const robots = await fetch(`${base}/robots.txt`);
+    assert.equal(robots.status, 200);
+    assert.match(await robots.text(), /llms\.txt/);
+    const wkLlms = await fetch(`${base}/.well-known/llms.txt`);
+    assert.equal(wkLlms.status, 200);
+    assert.match(wkLlms.headers.get("content-type") ?? "", /text\/plain/);
+    assert.match((shopRes.headers.get("link") ?? "").toLowerCase(), /llms\.txt/);
+    for (const path of [LLMS_PATH, "/.well-known/llms.txt", "/robots.txt", WELL_KNOWN_PATH, OPENAPI_PATH, "/"]) {
+      const head = await fetch(`${base}${path}`, { method: "HEAD" });
+      assert.equal(head.status, 200, `HEAD ${path} is the same 200 as GET (crawlers)`);
+      assert.equal(await head.text(), "", `HEAD ${path} has no body`);
+    }
     assert.equal(shop.sample, SAMPLE_PATH);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.product, PRODUCT_PUBLIC_ID);
     assert.ok(!shop.products.some((p) => p.product === "idaho-hay-feeder-ticks"));
@@ -1029,11 +1105,11 @@ async function main(): Promise<void> {
     assert.ok(!JSON.stringify(sample).includes("citra100mg"));
 
     const ticks402 = paymentRequiredBody("http://127.0.0.1/ticks", "ticks");
-    const ticksExample = (ticks402 as {
+    const ticksBazaarExample = (ticks402 as {
       extensions?: { bazaar?: { info?: { output?: { example?: { product?: string; source?: string } } } } };
     }).extensions?.bazaar?.info?.output?.example;
-    assert.equal(ticksExample?.product, PRODUCT_PUBLIC_ID);
-    assert.ok(!JSON.stringify(ticksExample).includes("idaho-hay-feeder-ticks"));
+    assert.equal(ticksBazaarExample?.product, PRODUCT_PUBLIC_ID);
+    assert.ok(!JSON.stringify(ticksBazaarExample).includes("idaho-hay-feeder-ticks"));
 
     const specSample = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
       paths: Record<string, { get?: { tags?: string[]; "x-payment-info"?: unknown } }>;
@@ -1090,19 +1166,31 @@ async function main(): Promise<void> {
       assert.equal(unpaidPost.status, 402, "unpaid POST {} must not return 200 with data");
       const paid = await fetch(`${base}${TICKS_PATH}`, { headers: { "X-PAYMENT": "test" } });
       assert.equal(paid.status, 200);
+      assert.equal(
+        paid.headers.get("payment-response"),
+        null,
+        "skip-settle 200 has no fake txHash receipt",
+      );
+      assert.equal(paid.headers.get("x-payment-response"), null);
       const paidPost = await fetch(`${base}${TICKS_PATH}`, {
         method: "POST",
         headers: { "Content-Type": "application/json", "X-PAYMENT": "test" },
         body: "{}",
       });
       assert.equal(paidPost.status, 200, "paid POST {} serves the same bag as GET");
-      const body = (await paid.json()) as ReturnType<typeof loadTicks>;
+      const body = (await paid.json()) as ReturnType<typeof loadTicks> & Record<string, unknown>;
       assert.equal(body.product, "idaho-hay-feeder-ticks");
       assert.equal(body.status, "stale");
       assert.ok(body.reason);
       assert.deepEqual(body.ticks, []);
       assert.deepEqual((body as { records?: unknown[] }).records, []);
       assert.equal((body as { recordCount?: number }).recordCount, 0);
+      for (const key of paidOutputJsonSchema("ticks")?.required as string[]) {
+        assert.ok(
+          Object.prototype.hasOwnProperty.call(body, key),
+          `paid /ticks JSON must include declared required key ${key}`,
+        );
+      }
     },
   );
 
@@ -2047,6 +2135,102 @@ async function main(): Promise<void> {
       assert.equal(paidBody.district, "8");
       assert.equal(paidBody.notices[0]?.section, "Federal Discrepancies");
       assert.ok(paidBody.notices[0]?.text.includes("Acadiana Navigation Channel Light 6"));
+    },
+  );
+
+  const marinersD1Dir = mkdtempSync(join(tmpdir(), "mariners-d1-"));
+  writeFileSync(
+    join(marinersD1Dir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "uscg-d1-lnm",
+      status: "ok",
+      reason: null,
+      fetchedAt: FRESH_FETCHED_AT,
+      asOf: "2026-09-02",
+      week: "35-2026",
+      year: 2026,
+      edition: "35-2026",
+      district: "1",
+      districtName: "Northeast",
+      sources: {
+        listing: "https://www.navcen.uscg.gov/local-notices-to-mariners?district=1+0&subdistrict=n",
+        pdfPattern: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm01{WW}{YYYY}.pdf",
+        pdfUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm01352026.pdf",
+      },
+      editions: [
+        {
+          week: 35,
+          year: 2026,
+          edition: "35-2026",
+          href: "/sites/default/files/pdf/lnms/lnm01352026.pdf",
+          sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm01352026.pdf",
+        },
+      ],
+      notices: [
+        {
+          week: "35-2026",
+          section: "Federal Discrepancies",
+          waterway: "Ambrose Channel",
+          text: "Ambrose Channel Lighted Buoy 12 LLNR 34850",
+          sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm01352026.pdf",
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      MARINERS_D1_DIR: marinersD1Dir,
+      MARINERS_D1_TTL_MS: String(24 * 3600 * 1000),
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-lnm-d1-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${MARINERS_D1_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /mariners-d1 must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; extra?: { name?: string } }[];
+      };
+      assert.equal(body402.resource, MARINERS_D1_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, MARINERS_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
+
+      const d13Unpaid = await fetch(`${base}${MARINERS_PATH}`);
+      assert.equal(d13Unpaid.status, 402, "leftover D1 door must not replace GET /mariners");
+      const d8Unpaid = await fetch(`${base}${MARINERS_D8_PATH}`);
+      assert.equal(d8Unpaid.status, 402, "leftover D1 door must not replace GET /mariners-d8");
+
+      const manifest = await fetch(`${base}${MARINERS_D1_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "unpaid leftover D1 mariners manifest is free");
+      const man = (await manifest.json()) as {
+        free: boolean;
+        product?: string;
+        noticeCount?: number;
+        week?: string;
+        asOf?: string;
+        district?: string;
+      };
+      assert.equal(man.free, true);
+      assert.equal(man.product, "uscg-d1-lnm");
+      assert.equal(man.district, "1");
+      assert.equal(man.noticeCount, 1);
+      assert.equal(man.week, "35-2026");
+      assert.equal(man.asOf, "2026-09-02");
+      assert.ok(!JSON.stringify(man).includes("Ambrose Channel Lighted Buoy 12"));
+
+      const paid = await fetch(`${base}${MARINERS_D1_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        district?: string;
+        notices: { text: string; section: string }[];
+      };
+      assert.equal(paidBody.product, "uscg-d1-lnm");
+      assert.equal(paidBody.district, "1");
+      assert.equal(paidBody.notices[0]?.section, "Federal Discrepancies");
+      assert.ok(paidBody.notices[0]?.text.includes("Ambrose Channel Lighted Buoy 12"));
     },
   );
 
@@ -7746,7 +7930,7 @@ async function main(): Promise<void> {
     },
     async (base) => {
       assert.equal(cdpEnvStatus(), "CDP env not set");
-      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, BSEE_REPORTS_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
+      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, MARINERS_D1_PATH, MARINERS_D5_PATH, MARINERS_D9_PATH, MARINERS_D14_PATH, MARINERS_D17_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, BSEE_REPORTS_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
         const unpaid = await fetch(`${base}${path}`);
         assert.equal(unpaid.status, 402, `unpaid ${path} must stay 402`);
         const present = await fetch(`${base}${path}`, { headers: { "X-PAYMENT": "test" } });
@@ -7795,6 +7979,11 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D11_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D7_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D8_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(MARINERS_D1_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(MARINERS_D5_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(MARINERS_D9_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(MARINERS_D14_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(MARINERS_D17_PATH)));
       assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)));
       assert.ok(!wk.resources.some((r) => r.includes(GMP_PATH)));
       assert.ok(!wk.resources.some((r) => r.includes(GMP_MD_PATH)));
@@ -7804,7 +7993,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -8020,6 +8209,21 @@ async function main(): Promise<void> {
       assert.ok(captured.some((c) => c.path === "/verify" && c.status === 200));
       assert.ok(captured.some((c) => c.path === "/settle" && c.status === 200));
       assert.equal(captured.every((c) => c.problems.length === 0), true);
+      const receiptHdr = paid.headers.get("payment-response");
+      const receiptHdrV1 = paid.headers.get("x-payment-response");
+      assert.ok(receiptHdr, "paid 200 sets PAYMENT-RESPONSE when settle returned txHash");
+      assert.equal(receiptHdr, receiptHdrV1, "dual-expose PAYMENT-RESPONSE and X-PAYMENT-RESPONSE");
+      const receipt = JSON.parse(Buffer.from(receiptHdr ?? "", "base64").toString("utf8")) as {
+        success?: boolean;
+        transaction?: string;
+        network?: string;
+        payer?: string;
+      };
+      assert.equal(receipt.success, true);
+      assert.equal(receipt.transaction, `0x${"cd".repeat(32)}`);
+      assert.match(receipt.transaction ?? "", /^0x[0-9a-fA-F]{64}$/);
+      assert.equal(receipt.payer, "0x1111111111111111111111111111111111111111");
+      assert.ok(receipt.network === NETWORK_V1 || receipt.network === NETWORK_V2);
     },
   );
   await new Promise<void>((resolve, reject) =>
@@ -8161,13 +8365,14 @@ async function main(): Promise<void> {
       assert.ok((spec.info?.["x-guidance"] ?? "").includes("?since="));
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
-        extra?: { since?: string; etag?: string; updateCadence?: string; http429?: string };
+        extra?: { since?: string; etag?: string; updateCadence?: string; http429?: string; resourceCount?: number };
         resources?: string[];
       };
       assert.ok(wk.extra?.since?.includes("?since="));
       assert.ok(wk.extra?.etag?.includes("If-None-Match"));
       assert.ok(wk.extra?.updateCadence?.includes("America/Boise"));
       assert.ok(wk.extra?.http429?.includes("429"));
+      assert.equal(wk.extra?.resourceCount, PUBLIC_BAZAAR_SKUS.length);
       assert.equal(wk.resources?.length, PUBLIC_BAZAAR_SKUS.length);
 
       const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();

@@ -1,0 +1,10 @@
+---
+description: Cloud VM vs media-box apply
+alwaysApply: true
+---
+
+You are a cloud VM only unless you are already on media-box.
+
+Do not SSH to apollo. Do not restart `idaho-ticks-x402.service` from a cloud VM. Do not collect on media-box from a cloud VM. Live apply, restart, and bag writes stay on the media-box / apollo host.
+
+If this session is already on media-box, apply there. Otherwise leave a handoff.

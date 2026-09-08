@@ -189,6 +189,11 @@ const PAGE_ONLY_PATHS = new Set([
   "/mariners-d11",
   "/mariners-d7",
   "/mariners-d8",
+  "/mariners-d1",
+  "/mariners-d5",
+  "/mariners-d9",
+  "/mariners-d14",
+  "/mariners-d17",
 ]);
 
 export function amountAtomicFromQuery(path: string, search = ""): string {

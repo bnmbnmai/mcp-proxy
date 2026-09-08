@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdtempSync, writeFileSync } from "node:fs";
+import { existsSync, mkdtempSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -8,15 +8,24 @@ import {
   ATTRIBUTION,
   CARD_FIELDS,
   LICENSE,
+  FYR_COLLECTION_ID,
+  FYR_LISTING_URL,
+  FYR_SEED_LISTINGS,
   LISTING_URL,
   MASTER_COLLECTION_URL,
   ROD_COLLECTION_ID,
   SEED_LISTINGS,
   SITE_PROFILE_URL,
   buildSuperfundRodsManifest,
+  catalogPath,
   collectSuperfundRods,
+  loadSuperfundRodsManifest,
+  stripJsonStringField,
+  isFyrChromeTitle,
+  isFyrReportTitle,
   isInstitutionOrderRow,
   isPeopleRow,
+  isRealSuperfundFyrBody,
   isRealSuperfundRodBody,
   officialSuperfundRodPdfUrl,
   parseListingHtml,
@@ -49,6 +58,8 @@ async function main(): Promise<void> {
   assert.ok(listed.some((r) => r.id === "05-964773"));
   assert.ok(!listed.some((r) => r.id === "05-999999"), "skip people");
   assert.ok(!listed.some((r) => r.id === "05-709513"), "skip Proposed Plan");
+  assert.ok(listed.some((r) => r.id === "04-11246061" && r.title === "Fifth Five-Year Review"));
+  assert.ok(!listed.some((r) => r.id === "04-11246059"), "skip FYR protectiveness letter");
   assert.ok(listed.every((r) => officialSuperfundRodPdfUrl(r.sourceUrl)));
   assert.equal(officialSuperfundRodPdfUrl(FEDERATED), FEDERATED);
   assert.equal(
@@ -62,11 +73,15 @@ async function main(): Promise<void> {
   assert.equal(officialSuperfundRodPdfUrl("https://www.ttb.gov/system/files/2026-07/ABSTMT-21st_Amendment_Brewery_Cafe_Redacted.pdf"), null);
   assert.equal(officialSuperfundRodPdfUrl("https://www.accessdata.fda.gov/cdrh_docs/pdf25/DEN250042.pdf"), null);
   assert.ok(LISTING_URL.includes("search-superfund-decision-documents"), "live collect walks the official ROD table");
+  assert.ok(FYR_LISTING_URL.includes("search-superfund-five-year-reviews"), "same door also walks the official FYR table");
   assert.ok(MASTER_COLLECTION_URL.includes("HQ_MasterCollection_11.json"));
   assert.equal(ROD_COLLECTION_ID, "25504");
+  assert.equal(FYR_COLLECTION_ID, "28008");
   assert.ok(SITE_PROFILE_URL.includes("fuseaction=second.Cleanup"), "site profile stays the first-slice teaser");
   assert.equal(SEED_LISTINGS.length, 5);
   assert.ok(SEED_LISTINGS.some((r) => r.docket === "05-711427"));
+  assert.ok(FYR_SEED_LISTINGS.some((r) => r.docket === "04-11246061"), "Cape Fear 5th FYR is the habit seed");
+  assert.ok(FYR_SEED_LISTINGS.every((r) => isFyrReportTitle(r.title)));
 
   const officialListed = parseMasterCollectionJson(readFx("master-collection-excerpt.json"));
   assert.ok(officialListed.some((r) => r.id === "05-711427" && r.sourceUrl === FEDERATED));
@@ -76,6 +91,9 @@ async function main(): Promise<void> {
   assert.ok(!officialListed.some((r) => r.id === "07-30284035"), "skip ROD amendment");
   assert.ok(!officialListed.some((r) => r.id === "02-774375"), "skip EPA approval-of-ROD memo");
   assert.ok(!officialListed.some((r) => r.id === "05-709513"), "skip Proposed Plan outside collection 25504");
+  assert.ok(officialListed.some((r) => r.id === "04-11246061" && r.title === "Fifth Five-Year Review"), "keep official FYR reports from collection 28008");
+  assert.ok(officialListed.some((r) => r.id === "03-2517424"));
+  assert.ok(!officialListed.some((r) => r.id === "04-11246059"), "skip FYR protectiveness letters");
   assert.ok(officialListed.every((r) => officialSuperfundRodPdfUrl(r.sourceUrl)));
 
   const creek = {
@@ -92,8 +110,10 @@ async function main(): Promise<void> {
   assert.ok(htmlListed.some((r) => r.id === "05-711427"));
   assert.ok(htmlListed.some((r) => /Federated Metals/i.test(r.institution)));
   assert.ok(htmlListed.some((r) => /Velsicol/i.test(r.institution)));
+  assert.ok(htmlListed.some((r) => r.id === "04-11246061" && r.title === "Fifth Five-Year Review"));
   assert.ok(!htmlListed.some((r) => /Jane Q Public/i.test(r.institution)));
   assert.ok(!htmlListed.some((r) => /Proposed Plan/i.test(r.title)));
+  assert.ok(!htmlListed.some((r) => r.id === "04-11246059"), "HTML listing skips FYR letters");
 
   const people = rows.find((r) => (r.docket ?? "") === "05-999999");
   assert.ok(people);
@@ -104,6 +124,14 @@ async function main(): Promise<void> {
   assert.equal(isPeopleRow(federatedRow!), false);
   const plan = rows.find((r) => r.docket === "05-709513");
   assert.equal(isInstitutionOrderRow(plan!), false, "Proposed Plan is not this SKU");
+  const capeFearRow = rows.find((r) => r.docket === "04-11246061");
+  assert.ok(capeFearRow);
+  assert.equal(isFyrReportTitle(capeFearRow!.title), true);
+  assert.equal(isInstitutionOrderRow(capeFearRow!), true, "official FYR report is this SKU");
+  const fyrLetterRow = rows.find((r) => r.docket === "04-11246059");
+  assert.ok(fyrLetterRow);
+  assert.equal(isFyrChromeTitle(fyrLetterRow!.title), true);
+  assert.equal(isInstitutionOrderRow(fyrLetterRow!), false, "FYR protectiveness letter is not the report body");
 
   const federatedText = parseSuperfundRodText(readFx("05-711427.txt"), {
     sourceUrl: FEDERATED,
@@ -135,6 +163,38 @@ async function main(): Promise<void> {
     assert.equal(card.docket, docket);
     assert.ok(officialSuperfundRodPdfUrl(card.sourceUrl));
   }
+
+  const capeFear = parseSuperfundRodText(readFx("04-11246061.txt"), {
+    sourceUrl: "https://semspub.epa.gov/work/04/11246061.pdf",
+    institution: "Cape Fear Wood Preserving Superfund Site",
+    date: "2026-09-02",
+    docket: "04-11246061",
+    title: "Fifth Five-Year Review Report for Cape Fear Wood Preserving Superfund Site",
+  });
+  assert.equal(capeFear.docket, "04-11246061");
+  assert.equal(capeFear.title, "Fifth Five-Year Review");
+  assert.equal(capeFear.date, "2026-09-02");
+  assert.ok(isRealSuperfundFyrBody(capeFear.body));
+  assert.ok(isRealSuperfundRodBody(capeFear.body), "FYR report text is a real body in this bag");
+  assert.match(capeFear.body, /FIFTH FIVE-YEAR REVIEW REPORT/i);
+  assert.match(capeFear.body, /CAPE FEAR WOOD PRESERVING/i);
+  assert.match(capeFear.body, /PROTECTIVENESS STATEMENT/i);
+
+  const westinghouse = parseSuperfundRodText(readFx("03-2517424.txt"), {
+    sourceUrl: "https://semspub.epa.gov/work/03/2517424.pdf",
+    docket: "03-2517424",
+    title: "Fifth Five Year Review Report",
+  });
+  assert.ok(isRealSuperfundFyrBody(westinghouse.body));
+  assert.equal(westinghouse.title, "Fifth Five-Year Review");
+
+  const fyrLetter = parseSuperfundRodText(readFx("fyr-letter.txt"), {
+    sourceUrl: "https://semspub.epa.gov/work/04/11246059.pdf",
+    institution: "USN Air Station Cecil Field",
+    title: "LETTER FROM HUNTER JOHNSON protectiveness determination",
+  });
+  assert.equal(isRealSuperfundFyrBody(fyrLetter.body), false, "FYR protectiveness letter is not the report");
+  assert.equal(isRealSuperfundRodBody(fyrLetter.body), false);
 
   const teaser = parseSuperfundRodText(readFx("no-body.txt"), {
     sourceUrl: "https://www.epa.gov/superfund/federated-metals-press",
@@ -233,20 +293,77 @@ async function main(): Promise<void> {
   try {
     const snap = await collectSuperfundRods({ jsonDir: fixtures, limit: 10, pauseMs: 0 });
     assert.equal(snap.status, "ok");
-    assert.ok(snap.cards.length >= 5, "fixture collect extracts five official EPA Superfund ROD bodies");
+    assert.ok(snap.cards.length >= 7, "fixture collect extracts ROD bodies plus official FYR reports");
     assert.ok(snap.cards.some((c) => c.docket === "05-711427" && isRealSuperfundRodBody(c.body)));
+    assert.ok(snap.cards.some((c) => c.docket === "04-11246061" && isRealSuperfundFyrBody(c.body)));
+    assert.ok(snap.cards.some((c) => c.docket === "03-2517424" && c.title === "Fifth Five-Year Review"));
     assert.ok(snap.cards.every((c) => isRealSuperfundRodBody(c.body)));
     assert.ok(!snap.cards.some((c) => c.id === "05-999999"), "skip people");
     assert.ok(!snap.cards.some((c) => c.id === "05-709513"), "skip Proposed Plan");
+    assert.ok(!snap.cards.some((c) => c.id === "04-11246059"), "skip FYR protectiveness letter");
     assert.ok(snap.cards.every((c) => officialSuperfundRodPdfUrl(c.sourceUrl)));
 
     writeFileSync(join(cache, "snapshot.json"), JSON.stringify(snap));
     const merged = await collectSuperfundRods({ jsonDir: fixtures, limit: 1, pauseMs: 0 });
     assert.ok(merged.cards.some((c) => c.docket === "05-711427"), "re-collect keeps cached bodies");
-    assert.ok((merged.reused ?? 0) >= 5);
+    assert.ok(merged.cards.some((c) => c.docket === "04-11246061"), "re-collect keeps cached FYR bodies");
+    assert.ok((merged.reused ?? 0) >= 7);
+    assert.ok(existsSync(catalogPath()), "collect writes slim catalog.json next to the fat bag");
+    const fromCatalog = await loadSuperfundRodsManifest();
+    assert.ok((fromCatalog.cardCount as number) >= 7);
+    assert.ok(!JSON.stringify(fromCatalog).includes("DECLARATION"), "catalog path must not dump ROD/FYR bodies");
   } finally {
     if (prevDir === undefined) delete process.env.SUPERFUND_RODS_DIR;
     else process.env.SUPERFUND_RODS_DIR = prevDir;
+  }
+
+  const fatDir = mkdtempSync(join(tmpdir(), "superfund-rods-fat-"));
+  const fatPrev = process.env.SUPERFUND_RODS_DIR;
+  process.env.SUPERFUND_RODS_DIR = fatDir;
+  try {
+    const huge = `${"RECORD OF DECISION\n".repeat(80)}United States Environmental Protection Agency\nDECLARATION\nCERCLA Superfund\n${"x".repeat(4000)}`;
+    const fatCards = Array.from({ length: 24 }, (_, i) => ({
+      id: `05-${700000 + i}`,
+      docket: `05-${700000 + i}`,
+      pdfId: `05-${700000 + i}.pdf`,
+      institution: `Fat Superfund Site ${i}`,
+      date: "2026-08-05",
+      title: "Record of Decision",
+      sourceUrl: `https://semspub.epa.gov/work/05/${700000 + i}.pdf`,
+      body: `${huge} needle-${i}-lead-dross`,
+    }));
+    writeFileSync(
+      join(fatDir, "snapshot.json"),
+      JSON.stringify(
+        {
+          ok: true,
+          product: "epa-superfund-rod-bodies",
+          status: "ok",
+          reason: null,
+          fetchedAt: "2026-09-07T20:22:00.000Z",
+          asOf: "2026-09-02",
+          license: LICENSE,
+          attribution: ATTRIBUTION,
+          sources: { listing: LISTING_URL, pdfHost: "https://semspub.epa.gov/" },
+          cards: fatCards,
+        },
+        null,
+        2,
+      ),
+    );
+    const stripped = stripJsonStringField(readFs(join(fatDir, "snapshot.json"), "utf-8"));
+    assert.ok(!stripped.includes("lead-dross"), "strip bodies before public parse");
+    const publicMan = await loadSuperfundRodsManifest();
+    assert.equal(publicMan.cardCount, 24, "public unpaid manifest keeps real cardCount from the fat bag");
+    const publicBlob = JSON.stringify(publicMan);
+    assert.ok(!publicBlob.includes("lead-dross"));
+    assert.ok(!publicBlob.includes("RECORD OF DECISION"));
+    assert.ok(existsSync(catalogPath()), "first public read writes catalog.json so the edge path stays cheap");
+    const again = await loadSuperfundRodsManifest();
+    assert.equal(again.cardCount, 24);
+  } finally {
+    if (fatPrev === undefined) delete process.env.SUPERFUND_RODS_DIR;
+    else process.env.SUPERFUND_RODS_DIR = fatPrev;
   }
 
   console.log("superfund-rods parser tests ok");

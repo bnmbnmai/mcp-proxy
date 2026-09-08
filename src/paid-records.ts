@@ -168,6 +168,11 @@ export const MARINERS_TYPE = "mariners";
 export const MARINERS_D11_TYPE = "mariners-d11";
 export const MARINERS_D7_TYPE = "mariners-d7";
 export const MARINERS_D8_TYPE = "mariners-d8";
+export const MARINERS_D1_TYPE = "mariners-d1";
+export const MARINERS_D5_TYPE = "mariners-d5";
+export const MARINERS_D9_TYPE = "mariners-d9";
+export const MARINERS_D14_TYPE = "mariners-d14";
+export const MARINERS_D17_TYPE = "mariners-d17";
 
 export const CMA_CA98_SOURCE =
   "https://www.gov.uk/cma-cases/financial-services-sector-suspected-anti-competitive-practices";
@@ -226,6 +231,16 @@ export const MARINERS_D7_SOURCE =
   "https://www.navcen.uscg.gov/local-notices-to-mariners?district=7+0&subdistrict=n";
 export const MARINERS_D8_SOURCE =
   "https://www.navcen.uscg.gov/local-notices-to-mariners?district=8+0&subdistrict=g";
+export const MARINERS_D1_SOURCE =
+  "https://www.navcen.uscg.gov/local-notices-to-mariners?district=1+0&subdistrict=n";
+export const MARINERS_D5_SOURCE =
+  "https://www.navcen.uscg.gov/local-notices-to-mariners?district=5+0&subdistrict=n";
+export const MARINERS_D9_SOURCE =
+  "https://www.navcen.uscg.gov/local-notices-to-mariners?district=9+0&subdistrict=n";
+export const MARINERS_D14_SOURCE =
+  "https://www.navcen.uscg.gov/local-notices-to-mariners?district=14+0&subdistrict=n";
+export const MARINERS_D17_SOURCE =
+  "https://www.navcen.uscg.gov/local-notices-to-mariners?district=17+0&subdistrict=n";
 
 export type PaidRecord = {
   id: string;
@@ -1084,6 +1099,36 @@ export function paidMarinersD8Body<
   T extends { notices?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
 >(payload: T): T & PaidEnvelope {
   return paidNoticeBody(payload, MARINERS_D8_TYPE, MARINERS_D8_SOURCE);
+}
+
+export function paidMarinersD1Body<
+  T extends { notices?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidNoticeBody(payload, MARINERS_D1_TYPE, MARINERS_D1_SOURCE);
+}
+
+export function paidMarinersD5Body<
+  T extends { notices?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidNoticeBody(payload, MARINERS_D5_TYPE, MARINERS_D5_SOURCE);
+}
+
+export function paidMarinersD9Body<
+  T extends { notices?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidNoticeBody(payload, MARINERS_D9_TYPE, MARINERS_D9_SOURCE);
+}
+
+export function paidMarinersD14Body<
+  T extends { notices?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidNoticeBody(payload, MARINERS_D14_TYPE, MARINERS_D14_SOURCE);
+}
+
+export function paidMarinersD17Body<
+  T extends { notices?: unknown[]; fetchedAt?: unknown; asOf?: unknown; sources?: unknown },
+>(payload: T): T & PaidEnvelope {
+  return paidNoticeBody(payload, MARINERS_D17_TYPE, MARINERS_D17_SOURCE);
 }
 
 export function paidImportAlertsBody<

@@ -1,8 +1,9 @@
 /**
- * EPA Superfund Record of Decision TEXT door.
- * Official ROD PDFs from semspub.epa.gov only.
- * Does not invent ROD text. Institution/site only. Not people. Not a Proposed Plan or fact sheet.
- * Not AIR /air-letters. Not TTB /ttb-oic. Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders.
+ * EPA Superfund Record of Decision + Five-Year Review TEXT door.
+ * Official ROD and FYR report PDFs from semspub.epa.gov only. Same /superfund-rods bag.
+ * Does not invent ROD or FYR text. Institution/site only. Not people. Not a Proposed Plan or fact sheet.
+ * Not FYR protectiveness letters / transmittals. Not AIR /air-letters. Not TTB /ttb-oic.
+ * Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders.
  */
 
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -15,16 +16,19 @@ export const SUPERFUND_RODS_PATH = "/superfund-rods";
 export const SUPERFUND_RODS_MANIFEST_PATH = "/superfund-rods/manifest.json";
 export const SUPERFUND_RODS_AMOUNT_ATOMIC = "50000";
 export const PRODUCT_ID = "epa-superfund-rod-bodies";
-export const PRODUCT_NAME = "EPA Superfund ROD text";
+export const PRODUCT_NAME = "EPA Superfund ROD and Five-Year Review text";
 
 /** Official EPA Superfund decision-document table. Collection 25504 is RODs / amendments / ESDs. */
 export const LISTING_URL = "https://www.epa.gov/superfund/search-superfund-decision-documents";
+/** Official EPA Superfund Five-Year Review table. Collection 28008. Same SEMS JSON, different filter. */
+export const FYR_LISTING_URL = "https://www.epa.gov/superfund/search-superfund-five-year-reviews";
 /** First-slice teaser: one CUMULIS site-profile cleanup page, not the ROD table. */
 export const SITE_PROFILE_URL =
   "https://cumulis.epa.gov/supercpad/SiteProfiles/index.cfm?fuseaction=second.Cleanup&id=0501275";
-/** Same listing feed the official decision-document DataTable loads. Used only to find official SEMS PDF URLs. */
+/** Same listing feed the official decision-document and FYR DataTables load. Used only to find official SEMS PDF URLs. */
 export const MASTER_COLLECTION_URL = "https://www3.epa.gov/semsjson/HQ_MasterCollection_11.json";
 export const ROD_COLLECTION_ID = "25504";
+export const FYR_COLLECTION_ID = "28008";
 export const PDF_HOST = "semspub.epa.gov";
 export const PDF_ORIGIN = "https://semspub.epa.gov";
 export const DOCKET_BARE_RE = /^(\d{2}-\d+)$/;
@@ -90,12 +94,12 @@ export type SuperfundRodSnapshot = {
   skippedNoText?: number;
   reused?: number;
   addedThisRun?: number;
-  sources: { listing: string; pdfHost: string };
+  sources: { listing: string; fyrListing?: string; pdfHost: string };
   cards: SuperfundRodCard[];
 };
 
 const HTTP_UA =
-  "bnm-data-shop/1.0 (EPA Superfund ROD texts; +https://www.epa.gov/superfund)";
+  "bnm-data-shop/1.0 (EPA Superfund ROD and FYR texts; +https://www.epa.gov/superfund)";
 const OFFICIAL_HOSTS = new Set(["semspub.epa.gov"]);
 const ENTITY_RE =
   /\b(Inc\.?|LLC|L\.L\.C\.|L\.P\.|LP|Corp\.?|Corporation|Company|Co\.|Ltd\.?|Limited|Chemical|Superfund|Site|Plume|Drain)\b/i;
@@ -146,6 +150,82 @@ export const SEED_LISTINGS: SuperfundRodListing[] = [
     title: "Record of Decision",
     sourceUrl: "https://semspub.epa.gov/work/05/964773.pdf",
     pdfId: "05-964773.pdf",
+  },
+];
+
+/** Newest official FYR report PDFs from collection 28008. Same bag. Skip letters/transmittals. */
+export const FYR_SEED_LISTINGS: SuperfundRodListing[] = [
+  {
+    id: "04-11246061",
+    docket: "04-11246061",
+    institution: "Cape Fear Wood Preserving Superfund Site",
+    date: "2026-09-02",
+    title: "Fifth Five-Year Review",
+    sourceUrl: "https://semspub.epa.gov/work/04/11246061.pdf",
+    pdfId: "04-11246061.pdf",
+  },
+  {
+    id: "03-2517424",
+    docket: "03-2517424",
+    institution: "Westinghouse Electric Corp. (Sharon Plant) Superfund Site",
+    date: "2026-09-01",
+    title: "Fifth Five-Year Review",
+    sourceUrl: "https://semspub.epa.gov/work/03/2517424.pdf",
+    pdfId: "03-2517424.pdf",
+  },
+  {
+    id: "03-2517425",
+    docket: "03-2517425",
+    institution: "Ryeland Road Arsenic Superfund Site",
+    date: "2026-09-01",
+    title: "Fourth Five-Year Review",
+    sourceUrl: "https://semspub.epa.gov/work/03/2517425.pdf",
+    pdfId: "03-2517425.pdf",
+  },
+  {
+    id: "02-765944",
+    docket: "02-765944",
+    institution: "Reynolds Metals Co Superfund Site",
+    date: "2026-08-28",
+    title: "Fifth Five-Year Review",
+    sourceUrl: "https://semspub.epa.gov/work/02/765944.pdf",
+    pdfId: "02-765944.pdf",
+  },
+  {
+    id: "06-100036514",
+    docket: "06-100036514",
+    institution: "Arkwood, Inc. Superfund Site",
+    date: "2026-08-28",
+    title: "Sixth Five-Year Review",
+    sourceUrl: "https://semspub.epa.gov/work/06/100036514.pdf",
+    pdfId: "06-100036514.pdf",
+  },
+  {
+    id: "04-11246045",
+    docket: "04-11246045",
+    institution: "Ciba-Geigy Corp. (McIntosh Plant) Superfund Site",
+    date: "2026-08-27",
+    title: "Sixth Five-Year Review",
+    sourceUrl: "https://semspub.epa.gov/work/04/11246045.pdf",
+    pdfId: "04-11246045.pdf",
+  },
+  {
+    id: "05-711834",
+    docket: "05-711834",
+    institution: "Lehillier/Mankato Superfund Site",
+    date: "2026-08-27",
+    title: "Seventh Five-Year Review",
+    sourceUrl: "https://semspub.epa.gov/work/05/711834.pdf",
+    pdfId: "05-711834.pdf",
+  },
+  {
+    id: "05-711830",
+    docket: "05-711830",
+    institution: "East Bethel Demolition Landfill Superfund Site",
+    date: "2026-08-26",
+    title: "Sixth Five-Year Review",
+    sourceUrl: "https://semspub.epa.gov/work/05/711830.pdf",
+    pdfId: "05-711830.pdf",
   },
 ];
 
@@ -259,8 +339,45 @@ export function normalizeDocket(raw: string | null | undefined): string | null {
 function siteNameForPeopleCheck(name: string): string {
   return name
     .replace(/\s+(Interim\s+)?Record of Decision.*$/i, "")
+    .replace(/\s+(First|Second|Third|Fourth|Fifth|Sixth|Seventh|Eighth|Ninth|Tenth|\d+(?:st|nd|rd|th))?\s*Five[- ]Year Review.*$/i, "")
     .replace(/\s+Proposed Plan.*$/i, "")
     .trim();
+}
+
+export function fyrCollectEnabled(): boolean {
+  return env("SUPERFUND_FYR", "1") !== "0";
+}
+
+const FYR_ORDINAL_RE =
+  /\b(First|Second|Third|Fourth|Fifth|Sixth|Seventh|Eighth|Ninth|Tenth|\d+(?:st|nd|rd|th))\b/i;
+
+export function isFyrChromeTitle(title: string | null | undefined): boolean {
+  const kind = title ?? "";
+  return /LETTER FROM|TRANSMITTAL OF|PROTECTIVENESS DETERMINATION LETTER|DEFERRAL OF PROTECTIVENESS|INDEPENDENT DETERMINATION OF REMEDY|MEMORANDUM FROM/i.test(
+    kind,
+  );
+}
+
+export function isFyrReportTitle(title: string | null | undefined): boolean {
+  const kind = title ?? "";
+  if (!/Five[- ]Year Review/i.test(kind)) return false;
+  return !isFyrChromeTitle(kind);
+}
+
+export function fyrTitleFromRaw(title: string): string {
+  const ordinal = title.match(FYR_ORDINAL_RE);
+  if (!ordinal) return "Five-Year Review";
+  const raw = ordinal[1];
+  if (/^\d/.test(raw)) return `${raw} Five-Year Review`;
+  return `${raw.charAt(0).toUpperCase()}${raw.slice(1).toLowerCase()} Five-Year Review`;
+}
+
+export function canonicalSuperfundTitle(title: string): string {
+  const t = (title ?? "").trim();
+  if (isFyrReportTitle(t)) return fyrTitleFromRaw(t);
+  if (/interim/i.test(t)) return "Interim Record of Decision";
+  if (isRodTitle(t) || /Record of Decision|\bIROD\b|\bROD\b/i.test(t)) return /interim/i.test(t) ? "Interim Record of Decision" : "Record of Decision";
+  return t || "Record of Decision";
 }
 
 export function isPeopleRow(row: SuperfundRodListingRow): boolean {
@@ -278,7 +395,9 @@ export function isProposedPlanRow(row: SuperfundRodListingRow): boolean {
 
 export function isNonRodDecisionRow(row: SuperfundRodListingRow): boolean {
   const kind = `${row.title ?? ""} ${row.type ?? ""}`;
-  if (/Proposed Plan|Fact Sheet|Community Update|Five[- ]Year Review/i.test(kind)) return true;
+  if (isFyrReportTitle(kind)) return false;
+  if (/Proposed Plan|Fact Sheet|Community Update/i.test(kind)) return true;
+  if (isFyrChromeTitle(kind)) return true;
   if (/Explanation of Signif[i]?cant Differences|\bESD\b/i.test(kind)) return true;
   if (/\bAmendment\b/i.test(kind)) return true;
   if (/Approval of the Record of Decision|US EPA Approval/i.test(kind)) return true;
@@ -294,10 +413,11 @@ export function isRodTitle(title: string | null | undefined): boolean {
 
 export function isInstitutionOrderRow(row: SuperfundRodListingRow): boolean {
   if (isPeopleRow(row)) return false;
-  if (isNonRodDecisionRow(row) || isProposedPlanRow(row)) return false;
+  if (isProposedPlanRow(row) || isFyrChromeTitle(`${row.title ?? ""} ${row.type ?? ""}`)) return false;
   if (!officialSuperfundRodPdfUrl(row.sourceUrl ?? "")) return false;
   const kind = `${row.title ?? ""} ${row.type ?? ""}`;
-  if (!isRodTitle(kind)) return false;
+  if (isFyrReportTitle(kind)) return fyrCollectEnabled();
+  if (isNonRodDecisionRow(row) || !isRodTitle(kind)) return false;
   return true;
 }
 
@@ -318,7 +438,7 @@ export function parseListingRows(rows: SuperfundRodListingRow[]): SuperfundRodLi
       docket,
       institution: (row.institution ?? "").trim(),
       date: isoDate(row.date),
-      title: /interim/i.test(title) ? "Interim Record of Decision" : "Record of Decision",
+      title: canonicalSuperfundTitle(title),
       sourceUrl,
       pdfId,
     });
@@ -344,9 +464,13 @@ export function parseListingHtml(html: string): SuperfundRodListing[] {
       date: m[1] || undefined,
       title: /proposed plan/i.test(title)
         ? "Proposed Plan"
-        : /interim/i.test(title)
-          ? "Interim Record of Decision"
-          : "Record of Decision",
+        : isFyrChromeTitle(title)
+          ? title
+          : isFyrReportTitle(title)
+            ? fyrTitleFromRaw(title)
+            : /interim/i.test(title)
+              ? "Interim Record of Decision"
+              : "Record of Decision",
       sourceUrl: href,
       pdfId: pdfIdFromUrl(href) ?? "",
       docket,
@@ -374,10 +498,23 @@ function masterCollectionRows(raw: unknown): MasterCollectionRow[] {
 }
 
 export function hasRodCollection(collections: string | null | undefined): boolean {
+  return collectionIds(collections).includes(ROD_COLLECTION_ID);
+}
+
+export function hasFyrCollection(collections: string | null | undefined): boolean {
+  return collectionIds(collections).includes(FYR_COLLECTION_ID);
+}
+
+export function hasKeepCollection(collections: string | null | undefined): boolean {
+  if (hasRodCollection(collections)) return true;
+  return fyrCollectEnabled() && hasFyrCollection(collections);
+}
+
+function collectionIds(collections: string | null | undefined): string[] {
   return (collections ?? "")
     .split("|")
     .map((part) => part.trim())
-    .includes(ROD_COLLECTION_ID);
+    .filter(Boolean);
 }
 
 export function parseMasterCollectionJson(raw: string | unknown): SuperfundRodListing[] {
@@ -391,7 +528,7 @@ export function parseMasterCollectionJson(raw: string | unknown): SuperfundRodLi
   }
   const rows: SuperfundRodListingRow[] = [];
   for (const item of masterCollectionRows(parsed)) {
-    if (!hasRodCollection(item.collections)) continue;
+    if (!hasKeepCollection(item.collections)) continue;
     const titleHtml = item.title ?? "";
     const href =
       (titleHtml.match(/href=['"]([^'"]+)['"]/i) || [])[1] ||
@@ -432,12 +569,28 @@ export function isPeopleDump(text: string): boolean {
   return false;
 }
 
+export function isRealSuperfundFyrBody(text: string): boolean {
+  if (isIndexTeaserDump(text) || isFederalRegisterDump(text) || isPeopleDump(text)) return false;
+  const compact = text.replace(/\s+/g, " ").trim();
+  if (compact.length < 2000) return false;
+  if (!/FIVE[- ]YEAR REVIEW/i.test(text)) return false;
+  const template = /FIVE[- ]YEAR REVIEW SUMMARY FORM/i.test(text);
+  const sections = /I\.\s+INTRODUCTION/i.test(text) && /TECHNICAL ASSESSMENT/i.test(text);
+  if (!template && !sections) return false;
+  const epa = /ENVIRONMENTAL PROTECTION AGENCY|U\.S\. EPA|United States Environmental Protection Agency/i.test(text);
+  const cercla = /Superfund|CERCLA|Comprehensive Environmental Response/i.test(text);
+  const protect = /protectiveness|protective of human health/i.test(text);
+  return epa && cercla && protect;
+}
+
 export function isRealSuperfundRodBody(text: string): boolean {
   if (isIndexTeaserDump(text) || isFederalRegisterDump(text) || isPeopleDump(text)) return false;
   const compact = text.replace(/\s+/g, " ").trim();
   if (compact.length < 2000) return false;
-  if (/Proposed Plan/i.test(text) && !/Record of Decision/i.test(text)) return false;
-  if (/Community Update|Fact Sheet/i.test(text) && !/Record of Decision/i.test(text)) return false;
+  if (/Proposed Plan/i.test(text) && !/Record of Decision/i.test(text) && !isRealSuperfundFyrBody(text)) return false;
+  if (/Community Update|Fact Sheet/i.test(text) && !/Record of Decision/i.test(text) && !isRealSuperfundFyrBody(text)) {
+    return false;
+  }
   if (/Center for Devices and Radiological Health/i.test(text) && /De Novo request/i.test(text)) return false;
   if (/ENVIRONMENTAL PROTECTION AGENCY/i.test(text) && /FIFRA-\d{2}-\d{4}-\d{4}/i.test(text)) return false;
   if (/COMMODITY FUTURES TRADING COMMISSION/i.test(text) && /CFTC Docket No/i.test(text)) return false;
@@ -449,6 +602,7 @@ export function isRealSuperfundRodBody(text: string): boolean {
   if (/(?:MONETARY )?PENALTY NOTICE/i.test(text) && /Information Commissioner/i.test(text) && /(?:Data Protection Act 2018|section 155)/i.test(text)) {
     return false;
   }
+  if (isRealSuperfundFyrBody(text)) return true;
   const rod = /RECORD OF DECISION/i.test(text);
   const epa = /ENVIRONMENTAL PROTECTION AGENCY|U\.S\. EPA|United States Environmental Protection Agency/i.test(text);
   const cercla = /Superfund|CERCLA|Comprehensive Environmental Response/i.test(text);
@@ -479,7 +633,7 @@ export function parseSuperfundRodText(
     pdfId,
     institution: (meta.institution && meta.institution.trim()) || docket,
     date: meta.date ?? isoDate(body.slice(0, 4000)),
-    title: /interim/i.test(title) ? "Interim Record of Decision" : title || "Record of Decision",
+    title: canonicalSuperfundTitle(title || "Record of Decision"),
     sourceUrl,
     body,
   };
@@ -495,9 +649,13 @@ export function emptySuperfundRodsSnapshot(reason: string): SuperfundRodSnapshot
     asOf: null,
     license: LICENSE,
     attribution: ATTRIBUTION,
-    sources: { listing: LISTING_URL, pdfHost: `${PDF_ORIGIN}/` },
+    sources: bagSources(),
     cards: [],
   };
+}
+
+function bagSources(): SuperfundRodSnapshot["sources"] {
+  return { listing: LISTING_URL, fyrListing: FYR_LISTING_URL, pdfHost: `${PDF_ORIGIN}/` };
 }
 
 export function assembleSuperfundRodsSnapshot(
@@ -512,12 +670,12 @@ export function assembleSuperfundRodsSnapshot(
     ok: true,
     product: PRODUCT_ID,
     status: withBody.length > 0 ? "ok" : "empty",
-    reason: withBody.length > 0 ? null : "Official EPA Superfund ROD PDFs had no extractable ROD text.",
+    reason: withBody.length > 0 ? null : "Official EPA Superfund ROD and Five-Year Review PDFs had no extractable text.",
     fetchedAt,
     asOf,
     license: LICENSE,
     attribution: ATTRIBUTION,
-    sources: { listing: LISTING_URL, pdfHost: `${PDF_ORIGIN}/` },
+    sources: bagSources(),
     cards: withBody,
   };
 }
@@ -542,10 +700,147 @@ export function readSuperfundRodsSnapshot(): SuperfundRodSnapshot | null {
   return null;
 }
 
+export function catalogPath(): string {
+  return join(superfundRodsDir(), "catalog.json");
+}
+
+export type SuperfundRodCatalogCard = {
+  id: string;
+  institution: string;
+  docket: string;
+  date: string | null;
+  sourceUrl: string;
+};
+
+/** Drop JSON string fields (ROD/FYR bodies) so a fat live bag can be parsed for the free catalog. */
+export function stripJsonStringField(raw: string, field = "body"): string {
+  const needle = `"${field}"`;
+  let out = "";
+  let i = 0;
+  while (i < raw.length) {
+    const idx = raw.indexOf(needle, i);
+    if (idx < 0) {
+      out += raw.slice(i);
+      break;
+    }
+    out += raw.slice(i, idx);
+    let j = idx + needle.length;
+    while (j < raw.length && /\s/.test(raw[j]!)) j += 1;
+    if (raw[j] !== ":") {
+      out += raw.slice(idx, idx + needle.length);
+      i = idx + needle.length;
+      continue;
+    }
+    j += 1;
+    while (j < raw.length && /\s/.test(raw[j]!)) j += 1;
+    if (raw[j] !== '"') {
+      out += raw.slice(idx, j);
+      i = j;
+      continue;
+    }
+    j += 1;
+    while (j < raw.length) {
+      if (raw[j] === "\\") {
+        j += 2;
+        continue;
+      }
+      if (raw[j] === '"') {
+        j += 1;
+        break;
+      }
+      j += 1;
+    }
+    out += `"${field}":""`;
+    i = j;
+  }
+  return out;
+}
+
+export function catalogCardsFromSnapshot(snap: SuperfundRodSnapshot | null): SuperfundRodCatalogCard[] {
+  return (snap?.cards ?? [])
+    .filter((c) => Boolean(c?.id && (c.sourceUrl || c.docket)))
+    .map((c) => ({
+      id: c.id,
+      institution: c.institution,
+      docket: c.docket,
+      date: c.date,
+      sourceUrl: c.sourceUrl,
+    }));
+}
+
+export function writeSuperfundRodsCatalog(snap: SuperfundRodSnapshot): void {
+  const path = catalogPath();
+  mkdirSync(dirname(path), { recursive: true });
+  const cards = catalogCardsFromSnapshot(snap);
+  writeFileSync(
+    path,
+    JSON.stringify(
+      {
+        product: PRODUCT_ID,
+        fetchedAt: snap.fetchedAt,
+        asOf: snap.asOf,
+        cardCount: cards.length,
+        cards,
+        sources: snap.sources ?? bagSources(),
+      },
+      null,
+      2,
+    ) + "\n",
+  );
+}
+
 export function writeSuperfundRodsSnapshot(snap: SuperfundRodSnapshot): void {
   const path = snapshotPath();
   mkdirSync(dirname(path), { recursive: true });
   writeFileSync(path, JSON.stringify(snap, null, 2) + "\n");
+  writeSuperfundRodsCatalog(snap);
+}
+
+export function readSuperfundRodsCatalog(): {
+  fetchedAt: string | null;
+  asOf: string | null;
+  cards: SuperfundRodCatalogCard[];
+  sources: SuperfundRodSnapshot["sources"];
+} | null {
+  const cat = catalogPath();
+  if (existsSync(cat)) {
+    try {
+      const parsed = JSON.parse(readFileSync(cat, "utf-8")) as {
+        product?: string;
+        fetchedAt?: string;
+        asOf?: string | null;
+        cards?: SuperfundRodCatalogCard[];
+        sources?: SuperfundRodSnapshot["sources"];
+      };
+      if (parsed.product === PRODUCT_ID && Array.isArray(parsed.cards)) {
+        return {
+          fetchedAt: parsed.fetchedAt ?? null,
+          asOf: parsed.asOf ?? null,
+          cards: parsed.cards,
+          sources: parsed.sources ?? bagSources(),
+        };
+      }
+    } catch {
+      /* corrupt catalog; fall through to fat snapshot */
+    }
+  }
+  const path = snapshotPath();
+  if (!existsSync(path)) return null;
+  try {
+    const slim = stripJsonStringField(readFileSync(path, "utf-8"));
+    const parsed = parseSnapshotFile(JSON.parse(slim));
+    if (!parsed) return null;
+    const cards = catalogCardsFromSnapshot(parsed);
+    writeSuperfundRodsCatalog(parsed);
+    return {
+      fetchedAt: parsed.fetchedAt,
+      asOf: parsed.asOf,
+      cards,
+      sources: parsed.sources ?? bagSources(),
+    };
+  } catch {
+    return null;
+  }
 }
 
 export async function fetchSuperfundRodBytes(url: string): Promise<Uint8Array> {
@@ -635,12 +930,17 @@ async function loadOfficialListings(dir: string): Promise<{ listed: SuperfundRod
   }
   try {
     const listed = parseMasterCollectionJson(await fetchSuperfundRodText(MASTER_COLLECTION_URL));
-    const merged = mergeOfficialListings(listed, SEED_LISTINGS);
+    const merged = mergeOfficialListings(listed, officialSeeds());
     if (merged.length > 0) return { listed: merged, listedCount: listed.length };
   } catch {
-    /* official ROD table missed; keep first-slice seeds */
+    /* official ROD / FYR table missed; keep first-slice seeds */
   }
-  return { listed: [...SEED_LISTINGS], listedCount: SEED_LISTINGS.length };
+  const seeds = officialSeeds();
+  return { listed: [...seeds], listedCount: seeds.length };
+}
+
+function officialSeeds(): SuperfundRodListing[] {
+  return fyrCollectEnabled() ? [...FYR_SEED_LISTINGS, ...SEED_LISTINGS] : [...SEED_LISTINGS];
 }
 
 export async function collectSuperfundRods(opts?: {
@@ -726,18 +1026,18 @@ export async function loadSuperfundRods(): Promise<SuperfundRodSnapshot> {
       };
     }
     return emptySuperfundRodsSnapshot(
-      `Superfund ROD PDFs are not on this host and live fetch failed. ${err instanceof Error ? err.message : String(err)}`,
+      `Superfund ROD / FYR PDFs are not on this host and live fetch failed. ${err instanceof Error ? err.message : String(err)}`,
     );
   }
 }
 
 export function buildSuperfundRodsManifest(snap: SuperfundRodSnapshot | null): Record<string, unknown> {
-  const cards = (snap?.cards ?? []).filter((c) => isRealSuperfundRodBody(c.body));
+  const cards = catalogCardsFromSnapshot(snap);
   return {
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: paidBodyCatalogNote("/superfund-rods", 'Full catalog: count + institution + docket + date + official URL. Not a Proposed Plan or fact sheet'),
+    note: paidBodyCatalogNote("/superfund-rods", 'Full catalog: count + institution + docket + date + official URL. ROD + Five-Year Review report text. Not a Proposed Plan, fact sheet, or FYR letter'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
@@ -748,20 +1048,36 @@ export function buildSuperfundRodsManifest(snap: SuperfundRodSnapshot | null): R
     fetchedAt: snap?.fetchedAt ?? null,
     asOf: snap?.asOf ?? null,
     cardCount: cards.length,
-    cards: cards.map((c) => ({
-      id: c.id,
-      institution: c.institution,
-      docket: c.docket,
-      date: c.date,
-      sourceUrl: c.sourceUrl,
-    })),
+    cards,
     schema: { fields: ["id", "institution", "docket", "date", "sourceUrl"] },
-    sources: snap?.sources ?? { listing: LISTING_URL, pdfHost: `${PDF_ORIGIN}/` },
+    sources: snap?.sources ?? bagSources(),
+  };
+}
+
+function catalogAsSnapshot(cat: NonNullable<ReturnType<typeof readSuperfundRodsCatalog>>): SuperfundRodSnapshot {
+  return {
+    ok: true,
+    product: PRODUCT_ID,
+    status: cat.cards.length > 0 ? "ok" : "empty",
+    reason: null,
+    fetchedAt: cat.fetchedAt ?? new Date().toISOString(),
+    asOf: cat.asOf,
+    license: LICENSE,
+    attribution: ATTRIBUTION,
+    sources: cat.sources,
+    cards: cat.cards.map((c) => ({
+      ...c,
+      pdfId: `${c.docket}.pdf`,
+      title: "",
+      body: "",
+    })),
   };
 }
 
 export async function loadSuperfundRodsManifest(): Promise<Record<string, unknown>> {
-  return buildSuperfundRodsManifest(readSuperfundRodsSnapshot());
+  const cat = readSuperfundRodsCatalog();
+  if (cat) return buildSuperfundRodsManifest(catalogAsSnapshot(cat));
+  return buildSuperfundRodsManifest(null);
 }
 
 function isMain(): boolean {
