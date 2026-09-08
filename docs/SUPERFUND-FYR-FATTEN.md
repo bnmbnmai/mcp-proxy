@@ -34,6 +34,8 @@ systemctl --user restart idaho-ticks-x402.service
 
 Restart **only** that unit. Do not replace other doors. Do not add a new well-known URL. Do not run collect from a cloud VM — the next 07:45 / 19:45 Boise Superfund walk keeps growing the same bag. First unpaid manifest after apply rebuilds slim `catalog.json` from the fat bag (bodies stripped) so title lands without a 502.
 
+Applied on apollo (2026-09-08): **serving SHA `16cecab`** (apply-record [PR 212](https://github.com/bnmbnmai/mcp-proxy/pull/212); FF of [PR 211](https://github.com/bnmbnmai/mcp-proxy/pull/211)). Restarted **only** `idaho-ticks-x402.service` at **2026-09-08 13:17:59 MDT** (PID 122615). Public unpaid manifest **200** / **cardCount 413** / **413 titled** / fetchedAt **2026-09-08T18:27:29.933Z**. Cape Fear `04-11246061` title **Fifth Five-Year Review**. Unpaid GET **402**. Well-known still **54**. Stale PR 199 not applied. Collect not run.
+
 ## After apply
 
 - Live `/.well-known/x402` still lists `/superfund-rods` and does **not** add a new door

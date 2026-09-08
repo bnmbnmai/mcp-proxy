@@ -32,7 +32,7 @@ Free manifest is title + Doc ID + official PDF URL (plus institution / date). Ne
 
 `data/superfund-rods/` is gitignored.
 
-Live public `GET https://ticks.bnm.farm/superfund-rods/manifest.json` is **200** (`via: Caddy`) with **cardCount 413**, asOf **2026-09-03**, fetchedAt **2026-09-08T18:27:29.933Z**. Cape Fear FYR `04-11246061` is in that bag. Unpaid `GET /superfund-rods` stays **402** at $0.05 / `50000`. Collection **28008** is already on the collector (`FYR_COLLECTION_ID`). This restack adds `title` to the free catalog so FYR reports are visible without a paid GET. Do not merge to `main`. Apollo apply is later — do not collect from a cloud VM.
+Applied on apollo (2026-09-08): **serving SHA `16cecab`** (apply-record [PR 212](https://github.com/bnmbnmai/mcp-proxy/pull/212); FF of [PR 211](https://github.com/bnmbnmai/mcp-proxy/pull/211) onto `cursor/x402list-ownership-c90d` @ `e05b9bc`). Restarted **only** `idaho-ticks-x402.service` at **2026-09-08 13:17:59 MDT** (PID 122615). Public `GET https://ticks.bnm.farm/superfund-rods/manifest.json` is **200** (`via: Caddy`) with **cardCount 413**, asOf **2026-09-03**, fetchedAt **2026-09-08T18:27:29.933Z**, schema includes `title`, **413/413** cards titled, no body leak. Sample FYR: Cape Fear `04-11246061` **Fifth Five-Year Review**. Slim `data/superfund-rods/catalog.json` rebuilt on first loopback read. Unpaid `GET /superfund-rods` stays **402** at $0.05 / `50000`. `/.well-known/x402` still **54** doors (no new Superfund path). Did not apply stale PR 199. Did not collect.
 
 ## Apollo collect (official ROD + FYR walk)
 
