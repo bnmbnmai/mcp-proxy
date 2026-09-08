@@ -1,0 +1,168 @@
+{
+  "job": "apply PR 213 GET /oshrc-orders onto live ticks.bnm.farm",
+  "ranOn": "apollo",
+  "hostname": "pop-os",
+  "path": "/oshrc-orders",
+  "priceUsdc": "0.05",
+  "amountAtomic": "50000",
+  "oneAmountAtomic": "20000",
+  "network": "base",
+  "branch": "cursor/apply-oshrc-orders-6483",
+  "servingSha": "44e7a2e6a1f97d999d02b68ffda58230a258eb68",
+  "sourcePr": "https://github.com/bnmbnmai/mcp-proxy/pull/213",
+  "sourceBranch": "cursor/oshrc-orders-door-84d3",
+  "sourceHead": "02875f7832fcc94979e19c0efa1c81a04055e00a",
+  "stackedOn": "cursor/apply-superfund-fyr-title-63f9",
+  "stackedOnSha": "d0e6069f53df5f438b4b47ae2956e7f81029b015",
+  "liveServingBefore": "16cecab31aace84d74b5e470a5d2c9e690fa255a",
+  "thisApply": "https://github.com/bnmbnmai/mcp-proxy/pull/214",
+  "systemctlUserRestart": {
+    "unit": "idaho-ticks-x402.service",
+    "ok": true,
+    "otherUnitsRestarted": false,
+    "activeEnterTimestamp": "Tue 2026-09-08 16:40:45 MDT",
+    "pidAfter": "291681",
+    "dockerGwUntouched": "Tue 2026-09-08 11:07:33 MDT"
+  },
+  "banner": {
+    "oshrc": "/oshrc-orders $0.05 USDC",
+    "mcp": "mcp /mcp \u2014 55 tools from /.well-known/x402"
+  },
+  "before": {
+    "oshrcUnpaid": 404,
+    "oshrcManifest": 404,
+    "wellKnown": {
+      "status": 200,
+      "resourceCount": 54,
+      "hasOshrc": false
+    },
+    "siblings": {
+      "/ticks": 402,
+      "/fmshrc-orders": 402
+    }
+  },
+  "collect": {
+    "status": "ok",
+    "dir": "$HOME/projects/mcp-proxy/data/oshrc-orders",
+    "fetchedAt": "2026-09-08T22:40:41.204Z",
+    "asOf": "2026-09-04",
+    "cardCount": 8,
+    "listedCount": 20,
+    "fetchedPdfs": 10,
+    "skippedNoText": 2,
+    "reused": 0,
+    "addedThisRun": 8,
+    "ids": [
+      "24-0889-eaja",
+      "24-0702",
+      "24-1509",
+      "19-1566-eaja",
+      "24-1011",
+      "18-1287-18-1288",
+      "20-0762",
+      "19-1467"
+    ]
+  },
+  "live": {
+    "wellKnown": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "resourceCount": 55,
+      "extraResourceCount": 55,
+      "hasOshrc": true,
+      "oshrcUrl": "https://ticks.bnm.farm/oshrc-orders"
+    },
+    "unpaidGet": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "50000",
+      "extraName": "USD Coin",
+      "resource": "https://ticks.bnm.farm/oshrc-orders",
+      "error": "X-PAYMENT header is required",
+      "x402Version": 1
+    },
+    "unpaidId": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "id": "24-0889-eaja",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "20000",
+      "extraName": "USD Coin",
+      "resource": "https://ticks.bnm.farm/oshrc-orders?id=24-0889-eaja",
+      "error": "X-PAYMENT header is required",
+      "x402Version": 1
+    },
+    "manifest": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "cardCount": 8,
+      "asOf": "2026-09-04",
+      "fetchedAt": "2026-09-08T22:40:41.204Z",
+      "product": "oshrc-order-bodies",
+      "ids": [
+        "24-0889-eaja",
+        "24-0702",
+        "24-1509",
+        "19-1566-eaja",
+        "24-1011",
+        "18-1287-18-1288",
+        "20-0762",
+        "19-1467"
+      ],
+      "hasFinley": true,
+      "hasStis": true,
+      "finley": {
+        "id": "24-0889-eaja",
+        "institution": "Finley Farmers Grain & Elevator",
+        "docket": "24-0889 (EAJA)",
+        "date": "2026-09-04",
+        "sourceUrl": "https://www.oshrc.gov/wp-content/uploads/ALJ-Dec-Finley-Farmers-24-0889-EAJA.pdf",
+        "title": "Finley Farmers Grain & Elevator"
+      },
+      "stis": {
+        "id": "24-0702",
+        "institution": "STIS, Inc., dba Southeast Texas Industrial Services",
+        "docket": "24-0702",
+        "date": "2026-07-15",
+        "sourceUrl": "https://www.oshrc.gov/wp-content/uploads/24-0702-STIS-Inc.-ALJ-Decision-and-Order-redacted.pdf",
+        "title": "STIS, Inc., dba Southeast Texas Industrial Services"
+      },
+      "bodyLeak": false,
+      "bodyKeys": [],
+      "schemaFields": [
+        "before",
+        "board",
+        "date",
+        "docket",
+        "htmlUrl",
+        "id",
+        "institution",
+        "kind",
+        "page",
+        "paidUrl",
+        "publishedAt",
+        "sourceUrl",
+        "title"
+      ]
+    },
+    "siblingsStill402": {
+      "/ticks": 402,
+      "/fmshrc-orders": 402
+    },
+    "loopback": {
+      "wellKnown": 200,
+      "unpaidGet": 402,
+      "unpaidId": 402,
+      "manifest": 200,
+      "manifestCardCount": 8
+    }
+  },
+  "excluded": {
+    "catalogMain": "not checked out",
+    "lander": "not opened from this apply",
+    "newCollectCron": "not started",
+    "dockerGw": "untouched",
+    "otherUnits": "not restarted"
+  }
+}

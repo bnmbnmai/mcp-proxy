@@ -1,0 +1,106 @@
+{
+  "job": "apply PR 211 Superfund FYR catalog title on live /superfund-rods",
+  "ranOn": "apollo",
+  "hostname": "pop-os",
+  "branch": "cursor/apply-superfund-fyr-title-63f9",
+  "servingSha": "16cecab31aace84d74b5e470a5d2c9e690fa255a",
+  "sourcePr": "https://github.com/bnmbnmai/mcp-proxy/pull/211",
+  "sourceBranch": "cursor/restack-superfund-fyr-d94f",
+  "sourceHead": "16cecab31aace84d74b5e470a5d2c9e690fa255a",
+  "stackedOn": "cursor/x402list-ownership-c90d",
+  "stackedOnSha": "e05b9bc2ff968eaf0313ebb4387714524c4bd5af",
+  "thisApply": "https://github.com/bnmbnmai/mcp-proxy/pull/212",
+  "stalePr199": "not applied",
+  "systemctlUserRestart": {
+    "unit": "idaho-ticks-x402.service",
+    "ok": true,
+    "otherUnitsRestarted": false,
+    "activeEnterTimestamp": "Tue 2026-09-08 13:17:59 MDT",
+    "activeEnterUtc": "2026-09-08T19:17:59Z",
+    "pidAfter": "122615",
+    "dockerGwUntouched": "Tue 2026-09-08 13:00:21 MDT"
+  },
+  "banner": {
+    "superfund": "/superfund-rods $0.05 USDC",
+    "mcp": "mcp /mcp — 54 tools from /.well-known/x402"
+  },
+  "before": {
+    "superfundRodsManifest": {
+      "public": 200,
+      "via": "1.1 Caddy",
+      "cardCount": 413,
+      "asOf": "2026-09-03",
+      "fetchedAt": "2026-09-08T18:27:29.933Z",
+      "schemaFields": ["id", "institution", "docket", "date", "sourceUrl"],
+      "titledCards": 0,
+      "capeFearPresent": true,
+      "capeFearTitle": null
+    },
+    "wellKnown": { "status": 200, "resourceCount": 54 }
+  },
+  "live": {
+    "superfundRodsManifest": {
+      "public": {
+        "status": 200,
+        "via": "1.1 Caddy",
+        "cardCount": 413,
+        "asOf": "2026-09-03",
+        "fetchedAt": "2026-09-08T18:27:29.933Z",
+        "product": "epa-superfund-rod-bodies",
+        "schemaFields": ["id", "institution", "docket", "date", "title", "sourceUrl"],
+        "titledCards": 413,
+        "bodyLeak": false
+      },
+      "loopback": {
+        "status": 200,
+        "cardCount": 413,
+        "asOf": "2026-09-03",
+        "fetchedAt": "2026-09-08T18:27:29.933Z",
+        "titledCards": 413,
+        "bodyLeak": false
+      },
+      "sampleFyrCard": {
+        "id": "04-11246061",
+        "institution": "Cape Fear Wood Preserving Superfund Site",
+        "docket": "04-11246061",
+        "date": "2026-09-02",
+        "title": "Fifth Five-Year Review",
+        "sourceUrl": "https://semspub.epa.gov/work/04/11246061.pdf"
+      },
+      "catalogSidecar": {
+        "path": "data/superfund-rods/catalog.json",
+        "cardCount": 413,
+        "titledCards": 413,
+        "bytes": 105232,
+        "writtenAt": "2026-09-08T13:18:24-06:00"
+      }
+    },
+    "superfundRodsUnpaid": {
+      "status": 402,
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "50000",
+      "extraName": "USD Coin",
+      "resource": "https://ticks.bnm.farm/superfund-rods"
+    },
+    "wellKnown": {
+      "status": 200,
+      "resourceCount": 54,
+      "extraResourceCount": 54,
+      "hasSuperfundRods": true,
+      "superfundUrl": "https://ticks.bnm.farm/superfund-rods",
+      "newSuperfundPath": false
+    },
+    "siblingsStill402": ["/ticks", "/cfpb-orders", "/mariners-d1"]
+  },
+  "tests": {
+    "superfund-rods.test.js": "ok"
+  },
+  "excluded": {
+    "stalePr199": "not applied",
+    "superfundCollect": "not run this apply; live bag 413 reused",
+    "newCollectCron": "not started",
+    "catalogMain": "not checked out",
+    "lander": "not opened from this apply",
+    "dockerGw": "untouched"
+  }
+}

@@ -278,6 +278,7 @@ async function main(): Promise<void> {
   assert.equal(manifest.cardCount, 1);
   assert.match((manifest.cards as { institution: string }[])[0]?.institution ?? "", /Federated Metals/i);
   assert.equal((manifest.cards as { docket: string }[])[0]?.docket, "05-711427");
+  assert.equal((manifest.cards as { title: string }[])[0]?.title, "Interim Record of Decision");
   assert.ok(!manBlob.includes("1,200 ppm"), "free manifest must not dump ROD body");
   assert.ok(!manBlob.includes("lead dross"));
   assert.ok(!manBlob.includes("x-ray florescence"));
@@ -311,6 +312,9 @@ async function main(): Promise<void> {
     assert.ok(existsSync(catalogPath()), "collect writes slim catalog.json next to the fat bag");
     const fromCatalog = await loadSuperfundRodsManifest();
     assert.ok((fromCatalog.cardCount as number) >= 7);
+    const catalogCards = fromCatalog.cards as { docket?: string; title?: string }[];
+    assert.equal(catalogCards.find((c) => c.docket === "04-11246061")?.title, "Fifth Five-Year Review");
+    assert.deepEqual(fromCatalog.schema, { fields: ["id", "institution", "docket", "date", "title", "sourceUrl"] });
     assert.ok(!JSON.stringify(fromCatalog).includes("DECLARATION"), "catalog path must not dump ROD/FYR bodies");
   } finally {
     if (prevDir === undefined) delete process.env.SUPERFUND_RODS_DIR;
@@ -358,9 +362,59 @@ async function main(): Promise<void> {
     const publicBlob = JSON.stringify(publicMan);
     assert.ok(!publicBlob.includes("lead-dross"));
     assert.ok(!publicBlob.includes("RECORD OF DECISION"));
+    assert.equal((publicMan.cards as { title?: string }[])[0]?.title, "Record of Decision");
     assert.ok(existsSync(catalogPath()), "first public read writes catalog.json so the edge path stays cheap");
     const again = await loadSuperfundRodsManifest();
     assert.equal(again.cardCount, 24);
+
+    writeFileSync(
+      catalogPath(),
+      JSON.stringify({
+        product: "epa-superfund-rod-bodies",
+        fetchedAt: "2026-09-08T18:27:29.933Z",
+        asOf: "2026-09-03",
+        cardCount: 1,
+        cards: [
+          {
+            id: "04-11246061",
+            institution: "Cape Fear Wood Preserving Superfund Site",
+            docket: "04-11246061",
+            date: "2026-09-02",
+            sourceUrl: "https://semspub.epa.gov/work/04/11246061.pdf",
+          },
+        ],
+      }),
+    );
+    writeFileSync(
+      join(fatDir, "snapshot.json"),
+      JSON.stringify({
+        ok: true,
+        product: "epa-superfund-rod-bodies",
+        status: "ok",
+        reason: null,
+        fetchedAt: "2026-09-08T18:27:29.933Z",
+        asOf: "2026-09-03",
+        license: LICENSE,
+        attribution: ATTRIBUTION,
+        sources: { listing: LISTING_URL, pdfHost: "https://semspub.epa.gov/" },
+        cards: [
+          {
+            id: "04-11246061",
+            docket: "04-11246061",
+            pdfId: "04-11246061.pdf",
+            institution: "Cape Fear Wood Preserving Superfund Site",
+            date: "2026-09-02",
+            title: "Fifth Five-Year Review",
+            sourceUrl: "https://semspub.epa.gov/work/04/11246061.pdf",
+            body: `${huge} Cape Fear FYR body needle`,
+          },
+        ],
+      }),
+    );
+    const upgraded = await loadSuperfundRodsManifest();
+    assert.equal((upgraded.cards as { title?: string; docket?: string }[])[0]?.title, "Fifth Five-Year Review");
+    assert.equal((upgraded.cards as { docket?: string }[])[0]?.docket, "04-11246061");
+    assert.ok(!JSON.stringify(upgraded).includes("Cape Fear FYR body needle"), "title rebuild must not dump FYR body");
   } finally {
     if (fatPrev === undefined) delete process.env.SUPERFUND_RODS_DIR;
     else process.env.SUPERFUND_RODS_DIR = fatPrev;

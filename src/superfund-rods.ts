@@ -709,8 +709,13 @@ export type SuperfundRodCatalogCard = {
   institution: string;
   docket: string;
   date: string | null;
+  title?: string;
   sourceUrl: string;
 };
+
+function catalogHasTitles(cards: SuperfundRodCatalogCard[]): boolean {
+  return cards.some((c) => Boolean((c.title ?? "").trim()));
+}
 
 /** Drop JSON string fields (ROD/FYR bodies) so a fat live bag can be parsed for the free catalog. */
 export function stripJsonStringField(raw: string, field = "body"): string {
@@ -764,6 +769,7 @@ export function catalogCardsFromSnapshot(snap: SuperfundRodSnapshot | null): Sup
       institution: c.institution,
       docket: c.docket,
       date: c.date,
+      title: (c.title ?? "").trim(),
       sourceUrl: c.sourceUrl,
     }));
 }
@@ -812,7 +818,7 @@ export function readSuperfundRodsCatalog(): {
         cards?: SuperfundRodCatalogCard[];
         sources?: SuperfundRodSnapshot["sources"];
       };
-      if (parsed.product === PRODUCT_ID && Array.isArray(parsed.cards)) {
+      if (parsed.product === PRODUCT_ID && Array.isArray(parsed.cards) && catalogHasTitles(parsed.cards)) {
         return {
           fetchedAt: parsed.fetchedAt ?? null,
           asOf: parsed.asOf ?? null,
@@ -1037,7 +1043,7 @@ export function buildSuperfundRodsManifest(snap: SuperfundRodSnapshot | null): R
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: paidBodyCatalogNote("/superfund-rods", 'Full catalog: count + institution + docket + date + official URL. ROD + Five-Year Review report text. Not a Proposed Plan, fact sheet, or FYR letter'),
+    note: paidBodyCatalogNote("/superfund-rods", 'Full catalog: title + Doc ID + official PDF URL (plus institution / date). ROD + Five-Year Review report text. Not a Proposed Plan, fact sheet, or FYR letter'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
@@ -1049,7 +1055,7 @@ export function buildSuperfundRodsManifest(snap: SuperfundRodSnapshot | null): R
     asOf: snap?.asOf ?? null,
     cardCount: cards.length,
     cards,
-    schema: { fields: ["id", "institution", "docket", "date", "sourceUrl"] },
+    schema: { fields: ["id", "institution", "docket", "date", "title", "sourceUrl"] },
     sources: snap?.sources ?? bagSources(),
   };
 }
@@ -1068,7 +1074,7 @@ function catalogAsSnapshot(cat: NonNullable<ReturnType<typeof readSuperfundRodsC
     cards: cat.cards.map((c) => ({
       ...c,
       pdfId: `${c.docket}.pdf`,
-      title: "",
+      title: c.title ?? "",
       body: "",
     })),
   };

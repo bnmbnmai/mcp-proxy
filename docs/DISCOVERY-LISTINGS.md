@@ -33,7 +33,7 @@ Live paid doors (all return HTTP 402 unpaid, official bodies when paid):
 | `GET https://ticks.bnm.farm/denovo-orders` | $0.05 | FDA De Novo institution/company classification-order PDF text |
 | `GET https://ticks.bnm.farm/ttb-oic` | $0.05 | TTB institution/company Offer in Compromise PDF text |
 | `GET https://ticks.bnm.farm/air-letters` | $0.05 | USDA APHIS institution/company AIR confirmation-letter PDF text |
-| `GET https://ticks.bnm.farm/superfund-rods` | $0.05 | EPA Superfund institution/site Record of Decision PDF text |
+| `GET https://ticks.bnm.farm/superfund-rods` | $0.05 | EPA Superfund institution/site Record of Decision and Five-Year Review PDF text |
 | `GET https://ticks.bnm.farm/ico-mpn` | $0.05 | ICO institution/company Monetary Penalty Notice PDF text |
 | `GET https://ticks.bnm.farm/cma-ca98` | $0.05 | UK CMA CA98 institution/company infringement-decision PDF text |
 
