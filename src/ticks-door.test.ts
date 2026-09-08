@@ -4721,7 +4721,7 @@ async function main(): Promise<void> {
       assert.equal(manifest.status, 200, "superfund-rods free manifest is free");
       const man = (await manifest.json()) as {
         cardCount?: number;
-        cards?: { institution?: string; docket?: string; id?: string; body?: string }[];
+        cards?: { institution?: string; docket?: string; id?: string; title?: string; body?: string }[];
         openapi?: string;
         wellKnown?: string;
       };
@@ -4730,6 +4730,7 @@ async function main(): Promise<void> {
       assert.ok(man.wellKnown?.endsWith(WELL_KNOWN_PATH));
       assert.equal(man.cards?.[0]?.institution, "Federated Metals Corp. Whiting Superfund Site");
       assert.equal(man.cards?.[0]?.docket, "05-711427");
+      assert.equal(man.cards?.[0]?.title, "Interim Record of Decision");
       const manBlob = JSON.stringify(man);
       assert.ok(!manBlob.includes("1,200 ppm"));
       assert.ok(!manBlob.includes("lead dross"));

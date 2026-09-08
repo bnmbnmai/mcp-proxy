@@ -1,0 +1,22 @@
+# apply PR 211 Superfund FYR catalog title — live ticks.bnm.farm
+# serving SHA 16cecab
+# idaho-ticks-x402.service restart Tue 2026-09-08 13:17:59 MDT PID 122615
+# Restarted only that unit. docker-gw untouched (13:00:21 MDT).
+# Did not apply stale PR 199. Did not collect.
+
+BEFORE
+GET  https://ticks.bnm.farm/superfund-rods/manifest.json  200  via: 1.1 Caddy  cardCount=413  asOf=2026-09-03  fetchedAt=2026-09-08T18:27:29.933Z  schema=[id,institution,docket,date,sourceUrl]  titledCards=0  Cape Fear 04-11246061 present, title missing
+GET  https://ticks.bnm.farm/superfund-rods                 402
+GET  https://ticks.bnm.farm/.well-known/x402               200  resources=54
+
+AFTER (FF 16cecab + restart + first loopback manifest rebuilds title-less catalog.json)
+GET  http://127.0.0.1:4020/superfund-rods/manifest.json    200  cardCount=413  titledCards=413  schema includes title  no body
+GET  https://ticks.bnm.farm/superfund-rods/manifest.json  200  via: 1.1 Caddy  cardCount=413  asOf=2026-09-03  fetchedAt=2026-09-08T18:27:29.933Z  titledCards=413
+     sample FYR: 04-11246061 Cape Fear Wood Preserving Superfund Site  2026-09-02  title="Fifth Five-Year Review"  https://semspub.epa.gov/work/04/11246061.pdf
+GET  https://ticks.bnm.farm/superfund-rods                 402  PAYMENT-REQUIRED  maxAmountRequired=50000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/.well-known/x402               200  resources=54  extra.resourceCount=54  /superfund-rods only (no new Superfund path)
+GET  https://ticks.bnm.farm/ticks                          402  sibling
+GET  https://ticks.bnm.farm/cfpb-orders                    402  sibling
+GET  https://ticks.bnm.farm/mariners-d1                    402  leftover sibling
+
+sidecar data/superfund-rods/catalog.json rewritten 2026-09-08T13:18:24-06:00  413 cards  413 titled  105232 bytes
