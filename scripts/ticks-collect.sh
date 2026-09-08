@@ -85,6 +85,11 @@ export MARINERS_DIR="${MARINERS_DIR:-$MCP/data/mariners}"
 export MARINERS_D11_DIR="${MARINERS_D11_DIR:-$MCP/data/mariners-d11}"
 export MARINERS_D7_DIR="${MARINERS_D7_DIR:-$MCP/data/mariners-d7}"
 export MARINERS_D8_DIR="${MARINERS_D8_DIR:-$MCP/data/mariners-d8}"
+export MARINERS_D1_DIR="${MARINERS_D1_DIR:-$MCP/data/mariners-d1}"
+export MARINERS_D5_DIR="${MARINERS_D5_DIR:-$MCP/data/mariners-d5}"
+export MARINERS_D9_DIR="${MARINERS_D9_DIR:-$MCP/data/mariners-d9}"
+export MARINERS_D14_DIR="${MARINERS_D14_DIR:-$MCP/data/mariners-d14}"
+export MARINERS_D17_DIR="${MARINERS_D17_DIR:-$MCP/data/mariners-d17}"
 export GMP_MD_DIR="${GMP_MD_DIR:-$MCP/data/gmp-md}"
 export SWISSPAR_DIR="${SWISSPAR_DIR:-$MCP/data/swisspar}"
 export PCAC_DIR="${PCAC_DIR:-$MCP/data/pcac}"
@@ -289,13 +294,19 @@ door_argv() {
     mariners-d11) printf '%s\n' --district=11 ;;
     mariners-d7) printf '%s\n' --district=7 ;;
     mariners-d8) printf '%s\n' --district=8 ;;
+    mariners-d1) printf '%s\n' --district=1 ;;
+    mariners-d5) printf '%s\n' --district=5 ;;
+    mariners-d9) printf '%s\n' --district=9 ;;
+    mariners-d14) printf '%s\n' --district=14 ;;
+    mariners-d17) printf '%s\n' --district=17 ;;
   esac
 }
 
 door_js() {
   local sku="$1"
   case "$sku" in
-    mariners-d11|mariners-d7|mariners-d8) printf '%s\n' "$MCP/build/mariners.js" ;;
+    mariners-d11|mariners-d7|mariners-d8|mariners-d1|mariners-d5|mariners-d9|mariners-d14|mariners-d17)
+      printf '%s\n' "$MCP/build/mariners.js" ;;
     *) printf '%s\n' "$MCP/build/${sku}.js" ;;
   esac
 }

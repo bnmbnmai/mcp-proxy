@@ -1,0 +1,80 @@
+
+                               Local Notice to Mariners for Great Lakes District                                                                            09/02/2026
+
+
+   Private Discrepancies
+                                                      NAME                                                               LLNR                        STATUS                              AID TYPE
+ Bay Shore County Park Light                                                                                   22050                     LT IMCH                           PA
+
+
+
+                                                                                                    Alpena
+   Federal Discrepancies
+                                                              NAME                                                                      LLNR                   STATUS                        AID TYPE
+ Thunder Bay Traffic Lighted Bell Buoy TB                                                                                       11355                MISSING                      FD
+ Alpena Junction Lighted Buoy Al                                                                                                11390                LT EXT                       FD
+
+
+
+                                                                                        APOSTLE ISLANDS
+   Federal Discrepancies
+                                                             NAME                                                                   LLNR                      STATUS                        AID TYPE
+ Madeline Island Lighted Buoy 4                                                                                             15290                  LT EXT                        FD
+ Chequamegon Point Lighted Buoy 5                                                                                           15296                  LT EXT                        FD
+ York Island Shoals Lighted Bell Buoy 1                                                                                     15570                  MISSING                       FD
+ Sand Island Buoy 2                                                                                                         15575                  MISSING                       FD
+
+
+   Additional MSI Categories
+                   TITLE                      SUBCATEGORY                                                                  DESCRIPTION                                                                 LOCATION
+ Lake Superior - APOSTLE             Marine                      General/Marine Construction (Excluding Bridges)/Facilities, Barriers, Manmade Reefs, Riprap, Jetties/Dikes From: 2026-05-10 To:       Lat:
+ ISLANDS/General/Marine Construction Construction                2026-10-02 Kokosing Industrial will be conducting Stone Breakwall Construction at South End of Devils Island and at Little Sand       46° 56' 52"
+ (Excluding Bridges)/Facilities, Barriers,   (Excluding          Bay Marina in Wisconsin 0700-1900 7 days a week. Tug Nancy Anne can be contacted on VHF 13 and 16. MM 142 barge and Sam Lon:
+ Manmade Reefs, Riprap, Jetties/Dikes        Bridges)            II will be working on spuds with Tug Nancy Anne within 400' of Devil's Island. Operations primarily located on the south end of -090° 53'
+                                                                 Devil's Island. Pleasure craft and passing vessels should remain a distance of 500' from work at all times.MM 142 barge and Sam II 34"
+                                                                 will also be working on spuds with Tug Nancy Anne at Little Sand Bay Marina Operations primarily located within 500' of the
+                                                                 Marina. Additional Barges may be moored on an anchor can buoy northwest of Little Sand Bay Marina. Anchor Buoy coordinates
+                                                                 N 46°56'56.24" W 90°53'40.21
+
+
+
+                                                                          APPROACHES TO NIAGARA RIVER
+   Additional MSI Categories
+                           TITLE                          SUBCATEGORY                                                           DESCRIPTION                                                            LOCATION
+ Lake Erie - APPROACHES TO NIAGARA                        Marine Events   The Floating Garden display is an attraction vessel that will be moored up to the wall of the Erie Canal in Medina, NY for
+ RIVER/General/Marine Events/Other                                        an extended period. it will not impede traffic or pose a navigational hazard on the canal.
+
+
+
+                                                                                           Au Gres Harbor
+   Additional MSI Categories
+                TITLE                  SUBCATEGORY                                                                      DESCRIPTION                                                                    LOCATION
+ SAGINAW BAY - Au Gres                Autonomous          General/Autonomous Vessel Operations From: 2026-07-24 To: 2026-09-04 The NOAA Great Lakes Environmental Research Laboratory
+ Harbor/General/Autonomous            Vessel              (GLERL) will be conducting multiple scientific instrumentation deployments, including some Autonomous Surface Vessel (ASV)
+ Vessel Operations                    Operations          deployments between July 29 and September 4, 2026, in the area crosshatched in yellow on the attached map. The vessel will be on the
+                                                          water three days or less per week during that time period responding to weather driven events (heat waves, high precipitation, etc.). The
+                                                          ASV is a 16-foot single hull SeaTrac that operates on the water surface. Mariners are asked to keep a minimum distance of 200 feet away
+                                                          from the ASV. The vessel will be clearly marked with the word “SeaTrac” and the NOAA logo and will display navigation lights for a
+                                                          powered vessel of its size. The vessel will carry AIS and broadcast its position under the name “UNCREWED NOAA SP48” with an MMSI
+                                                          number of 338555458. The R4107, R4108, or the R2604 may be on scene during some operations and may be hailed on VHF-FM channel
+
+                                             NAME                                                       LLNR                                STATUS                                       AID TYPE
+ Youngs Bay Lighted Buoy 1                                                                     16947                     OFF STATION                                    FD
+
+
+
+                                                                                     Black Rock Canal
+   Additional MSI Categories
+                       TITLE                        SUBCATEGORY                                                            DESCRIPTION                                                              LOCATION
+ Strawberry Island Cut - Black Rock                 Bridges          On April 22, 2026, from 0700 to 1300, the Canadian National International Railroad Bridge at mile 3.8 over the Black       Lat:
+ Canal/General/Bridges/Maintenance                                   Rock Canal will be secured to masted navigation for maintenance. Vessels able to pass under the bridge without an          42° 55' 52"
+                                                                     opening may do so at any time.                                                                                             Lon:
+                                                                                                                                                                                                -078° 54' 08"
+
+
+
+                                                                                        Bolles Harbor
+   Additional MSI Categories
+                             TITLE                                   SUBCATEGORY                                                       DESCRIPTION                                                  LOCATION
+
+

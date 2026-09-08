@@ -17,10 +17,16 @@ import {
   MARINERS_AMOUNT_ATOMIC,
   MARINERS_D7_MANIFEST_PATH,
   MARINERS_D7_PATH,
+  MARINERS_D1_MANIFEST_PATH,
+  MARINERS_D1_PATH,
+  MARINERS_D5_PATH,
   MARINERS_D8_MANIFEST_PATH,
   MARINERS_D8_PATH,
+  MARINERS_D9_PATH,
   MARINERS_D11_MANIFEST_PATH,
   MARINERS_D11_PATH,
+  MARINERS_D14_PATH,
+  MARINERS_D17_PATH,
   MARINERS_MANIFEST_PATH,
   MARINERS_PATH,
 } from "./mariners.js";
@@ -697,7 +703,7 @@ async function main(): Promise<void> {
     assert.equal(spec["x-agentcash-guidance"]?.oneDocPriceAtomic, Number(SINGLE_DOC_AMOUNT_ATOMIC));
     assert.equal(spec["x-agentcash-guidance"]?.pagePriceAtomic, Number(PAGE_AMOUNT_ATOMIC));
     assert.equal(spec["x-agentcash-guidance"]?.pageDefault, 10);
-    for (const paid of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH]) {
+    for (const paid of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, MARINERS_D1_PATH, MARINERS_D5_PATH, MARINERS_D9_PATH, MARINERS_D14_PATH, MARINERS_D17_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH]) {
       const op = spec.paths[paid]?.get;
       assert.ok(op?.["x-payment-info"], `${paid} must declare x-payment-info`);
       assert.equal(op?.["x-auth"]?.mode, "x402");
@@ -876,6 +882,11 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /mariners-d11"));
     assert.ok(llmsBody.includes("GET /mariners-d7"));
     assert.ok(llmsBody.includes("GET /mariners-d8"));
+    assert.ok(llmsBody.includes("GET /mariners-d1"));
+    assert.ok(llmsBody.includes("GET /mariners-d5"));
+    assert.ok(llmsBody.includes("GET /mariners-d9"));
+    assert.ok(llmsBody.includes("GET /mariners-d14"));
+    assert.ok(llmsBody.includes("GET /mariners-d17"));
     assert.ok(llmsBody.includes("GET /warning-letters"));
     assert.ok(llmsBody.includes("GET /untitled-letters"));
     assert.ok(llmsBody.includes("GET /awa"));
@@ -1000,6 +1011,11 @@ async function main(): Promise<void> {
       MARINERS_D11_PATH,
       MARINERS_D7_PATH,
       MARINERS_D8_PATH,
+      MARINERS_D1_PATH,
+      MARINERS_D5_PATH,
+      MARINERS_D9_PATH,
+      MARINERS_D14_PATH,
+      MARINERS_D17_PATH,
       WARNING_LETTERS_PATH,
       UNTITLED_LETTERS_PATH,
       AWA_PATH,
@@ -2119,6 +2135,102 @@ async function main(): Promise<void> {
       assert.equal(paidBody.district, "8");
       assert.equal(paidBody.notices[0]?.section, "Federal Discrepancies");
       assert.ok(paidBody.notices[0]?.text.includes("Acadiana Navigation Channel Light 6"));
+    },
+  );
+
+  const marinersD1Dir = mkdtempSync(join(tmpdir(), "mariners-d1-"));
+  writeFileSync(
+    join(marinersD1Dir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "uscg-d1-lnm",
+      status: "ok",
+      reason: null,
+      fetchedAt: FRESH_FETCHED_AT,
+      asOf: "2026-09-02",
+      week: "35-2026",
+      year: 2026,
+      edition: "35-2026",
+      district: "1",
+      districtName: "Northeast",
+      sources: {
+        listing: "https://www.navcen.uscg.gov/local-notices-to-mariners?district=1+0&subdistrict=n",
+        pdfPattern: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm01{WW}{YYYY}.pdf",
+        pdfUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm01352026.pdf",
+      },
+      editions: [
+        {
+          week: 35,
+          year: 2026,
+          edition: "35-2026",
+          href: "/sites/default/files/pdf/lnms/lnm01352026.pdf",
+          sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm01352026.pdf",
+        },
+      ],
+      notices: [
+        {
+          week: "35-2026",
+          section: "Federal Discrepancies",
+          waterway: "Ambrose Channel",
+          text: "Ambrose Channel Lighted Buoy 12 LLNR 34850",
+          sourceUrl: "https://www.navcen.uscg.gov/sites/default/files/pdf/lnms/lnm01352026.pdf",
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      MARINERS_D1_DIR: marinersD1Dir,
+      MARINERS_D1_TTL_MS: String(24 * 3600 * 1000),
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-lnm-d1-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${MARINERS_D1_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /mariners-d1 must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; extra?: { name?: string } }[];
+      };
+      assert.equal(body402.resource, MARINERS_D1_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, MARINERS_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
+
+      const d13Unpaid = await fetch(`${base}${MARINERS_PATH}`);
+      assert.equal(d13Unpaid.status, 402, "leftover D1 door must not replace GET /mariners");
+      const d8Unpaid = await fetch(`${base}${MARINERS_D8_PATH}`);
+      assert.equal(d8Unpaid.status, 402, "leftover D1 door must not replace GET /mariners-d8");
+
+      const manifest = await fetch(`${base}${MARINERS_D1_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "unpaid leftover D1 mariners manifest is free");
+      const man = (await manifest.json()) as {
+        free: boolean;
+        product?: string;
+        noticeCount?: number;
+        week?: string;
+        asOf?: string;
+        district?: string;
+      };
+      assert.equal(man.free, true);
+      assert.equal(man.product, "uscg-d1-lnm");
+      assert.equal(man.district, "1");
+      assert.equal(man.noticeCount, 1);
+      assert.equal(man.week, "35-2026");
+      assert.equal(man.asOf, "2026-09-02");
+      assert.ok(!JSON.stringify(man).includes("Ambrose Channel Lighted Buoy 12"));
+
+      const paid = await fetch(`${base}${MARINERS_D1_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        district?: string;
+        notices: { text: string; section: string }[];
+      };
+      assert.equal(paidBody.product, "uscg-d1-lnm");
+      assert.equal(paidBody.district, "1");
+      assert.equal(paidBody.notices[0]?.section, "Federal Discrepancies");
+      assert.ok(paidBody.notices[0]?.text.includes("Ambrose Channel Lighted Buoy 12"));
     },
   );
 
@@ -7818,7 +7930,7 @@ async function main(): Promise<void> {
     },
     async (base) => {
       assert.equal(cdpEnvStatus(), "CDP env not set");
-      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, BSEE_REPORTS_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
+      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, MARINERS_D1_PATH, MARINERS_D5_PATH, MARINERS_D9_PATH, MARINERS_D14_PATH, MARINERS_D17_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, BSEE_REPORTS_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
         const unpaid = await fetch(`${base}${path}`);
         assert.equal(unpaid.status, 402, `unpaid ${path} must stay 402`);
         const present = await fetch(`${base}${path}`, { headers: { "X-PAYMENT": "test" } });
@@ -7867,6 +7979,11 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D11_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D7_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D8_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(MARINERS_D1_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(MARINERS_D5_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(MARINERS_D9_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(MARINERS_D14_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(MARINERS_D17_PATH)));
       assert.ok(!wk.resources.some((r) => r.includes(FORM_483_PATH)));
       assert.ok(!wk.resources.some((r) => r.includes(GMP_PATH)));
       assert.ok(!wk.resources.some((r) => r.includes(GMP_MD_PATH)));
@@ -7876,7 +7993,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);

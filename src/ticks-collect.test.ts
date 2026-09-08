@@ -181,6 +181,11 @@ async function main(): Promise<void> {
   assert.match(script, /AIR_LETTERS/);
   assert.match(script, /untitled-letters/);
   assert.match(script, /mariners-d8/);
+  assert.match(script, /mariners-d1/);
+  assert.match(script, /mariners-d5/);
+  assert.match(script, /mariners-d9/);
+  assert.match(script, /mariners-d14/);
+  assert.match(script, /mariners-d17/);
   assert.match(script, /ticks-ams\.js/);
   assert.match(script, /nationwide AMS hay\/cattle\/grain/);
   assert.match(script, /Always consider \/ticks first/);

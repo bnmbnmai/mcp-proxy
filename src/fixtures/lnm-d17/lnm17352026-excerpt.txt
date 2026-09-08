@@ -1,0 +1,80 @@
+9/2/26, 12:59 PM                                                                 Maritime Safety Information Products | Navigation Center
+
+                                     Local Notice to Mariners for Arctic District                                                              09/02/2026
+
+                                                                                           Adak Island
+   Federal Discrepancies
+                                                    NAME                                                                 LLNR                     STATUS                           AID TYPE
+ Finger Shoal Lighted Bell Buoy 3                                                                               27520                  MISSING                        FD
+
+
+
+                                                                                      Alaska Peninsula
+   Additional MSI Categories
+                     TITLE                  SUBCATEGORY                                                                 DESCRIPTION                                                            LOCATION
+ Sector Anchorage, Submerged Land Act       Miscellaneous   U.S. Coast Pilot® 9-NEW EDITION PUBLICATION–National Oceanic and Atmospheric Administration (NOAA) – U.S. Coast Pilot 9,
+ (SLA) - Alaska                                             Alaska: Cape Spencer to Beaufort Sea, 44th Edition, 2026, has been issued and is ready for free download and weekly updates at
+ Peninsula/General/Miscellaneous                            https://nauticalcharts.noaa.gov/publications/coast-pilot/index.html. Only Print-on-Demand (POD) bound copies are available for
+                                                            purchase; visit www.nauticalcharts.noaa.gov/publications/print-agents.html#coast-pilot. The 2026 Edition cancels the preceding
+                                                            2025 Edition, and incorporates all previous corrections. 09/01/2026
+
+
+
+                                                                                             Alitak Bay
+   Federal Discrepancies
+
+   Federal Discrepancies
+
+ Cape Krenitzen Light 7                                                                       27285                        LT IMCH                              FD
+ Bechevin Bay Buoy 28                                                                         27390                        MISSING                              FD
+
+
+
+                                                                                Bering Sea Eastern Part
+   Additional MSI Categories
+                          TITLE                      SUBCATEGORY                                                           DESCRIPTION                                                        LOCATION
+ Sector Anchorage, Submerged Land Act (SLA) -       Hazards To         General/Hazards To Navigation/Obstructions From: 2024-10-28 To: 2026-10-28 Location: 62.5925° N / 164.908° W A 6' Lat:
+ Bering Sea Eastern Part/General/Hazards To         Navigation         by 6' by 15' metal tower was destroyed and partially submerged in this position in June of 2021. Mariners are          62° 35' 33"
+ Navigation/Obstructions                                               requested to transit the area with caution and make sighting reports to the Coast Guard Sector Western Alaska and      Lon:
+                                                                       U.S. Arctic at 907-428-4100.                                                                                           -164° 54'
+                                                                                                                                                                                              29"
+ Sector Anchorage, Submerged Land Act (SLA) -       Miscellaneous      General/Miscellaneous From: 2025-05-16 To: 2027-05-16 Location: 56.15927° N / 166.58292° E Submerged Data              Lat:
+ Bering Sea Eastern Part/General/Miscellaneous                         Mooring Name: AL25_AU_BS10 Water Depth: 110 m Top Float Depth: 102 m POC: Catherine Berchok Phone: 206-526-            56° 09' 33"
+                                                                       6331 Email: catherine.berchok@noaa.gov                                                                                 Lon:
+
+   Federal Discrepancies
+
+   Federal Discrepancies
+
+ Morris Reef Lighted Buoy 35                                                       24035              MISSING                                                               FD
+ Morris Reef Lighted Buoy 35                                                       24035              MISSING                                                               FD
+ Morris Reef Lighted Buoy 35                                                       24035              MISSING                                                               FD
+ Point Augusta Light                                                               24105              NIGHT LT BURNING DAY                                                  FD
+
+
+   Additional MSI Categories
+                        TITLE                       SUBCATEGORY                                                            DESCRIPTION                                                        LOCATION
+
+
+
+
+https://navcen.uscg.gov/msi                                                                                                                                                                            1/19
+
+9/2/26, 12:59 PM                                                                    Maritime Safety Information Products | Navigation Center
+ Sector Southeast Alaska, Submerged Land Act        Hazards To          General/Hazards To Navigation/Wrecks From: 2024-10-28 To: 2026-10-28 Location: 57.84975° N / 135.02875° W The              Lat:
+
+                                                                                                                                                                                                   -135° 01'
+                                                                                                                                                                                                   44"
+
+
+
+                                                                                           Chilkoot Inlet
+   Additional MSI Categories
+                      TITLE                   SUBCATEGORY                                                                     DESCRIPTION                                                          LOCATION
+ LynnCanal - Chilkoot                        Hazards To          General/Hazards To Navigation/Obstructions From: 2024-10-28 To: 2026-10-28 Location: 59.24033° N / 135.43087° W An                Lat:
+ Inlet/General/Hazards To                    Navigation          anchor and 1 shot of chain from a 120 foot vessel was reported as lost and sitting on the sea floor. All vessels anchoring in the 59° 14' 25"
+ Navigation/Obstructions                                         vicinity are requested to remain clear of the lost anchor.                                                                        Lon:
+                                                                                                                                                                                                   -135° 25'
+                                                                                                                                                                                                   51"
+
+
