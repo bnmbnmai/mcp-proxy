@@ -1,0 +1,320 @@
+Finley Farmers Grain & Elevator., OSHRC DOCKET No. 24-0889
+
+United States of America
+
+OCCUPATIONAL SAFETY AND HEALTH REVIEW COMMISSION
+
+SECRETARY OF LABOR,
+
+Complainant,
+
+v.
+
+FINLEY FARMERS GRAIN & ELEVATOR,
+
+Respondent.
+
+OSHRC DOCKET NO.: 24-0889 (EAJA)
+
+For Respondent: Eric J. Conn, Esq. and Lindsay DiSalvo, Esq., Conn, Maciel Carey, LLC., Washington, D.C.
+
+For the Solicitor: Karen E. Bobela, Esq. and Alicia Truman, Esq.. Office of the Regional Solicitor, Denver, CO.
+
+Before: U. S. Administrative Law Judge Patrick B. Augustine
+
+DECISION AND ORDER ON RESPONDENT’S EQUAL ACCESS TO JUSTICE (EAJA) FEE APPLICATION
+
+Procedural Background
+
+On July 24, 2025, the Court issued an Order granting Respondent Finley Farmers Grain & Elevator’s (Finley’s) Motion for Partial Summary Judgment and vacating the Willful violation alleged in Citation 2, Item 1. On September 2, 2025, the parties notified the Court they had reached a settlement of the sole remaining Serious violation alleged in Citation 1, Item 1, and on September 19, 2025, the Occupational Safety and Health Review Commission (Commission) docketed the Court’s Order Terminating the Enforcement Proceedings. On November 17, 2025, Respondent filed an Application for Award of Attorneys’ Fees and Costs (EAJA Application) pursuant to the Equal Access to Justice Act (EAJA), 5 U.S.C. § 504 1 , and the Commission’s procedural rules implementing the EAJA, 29 C.F.R. §§ 2204.101-.401. 2 See also Friends of Boundary Waters Wilderness v. Thomas , 53 F.3d 881, 886 (8th Cir. 1995) (noting that a court must have jurisdiction over an underlying action to award fees under the EAJA). 3 The Secretary of Labor (Secretary) filed an Answer to Respondent’s EAJA Application (EAJA Answer), defending the government’s position on the vacated citation as substantially justified. Respondent filed a Reply in Further Support of its EAJA Application (EAJA Reply). 4
+
+Congressional Findings and Purpose of the EAJA
+
+Congress enacted the EAJA in 1980 to reduce the financial deterrent for individuals, small businesses, and other entities challenging or defending against federal government actions when the government’s position is not substantially justified, “and thereby to deter the unreasonable exercise of government authority.” 5 Ardestani v. INS , 502 U.S. 129, 138, (1991) (citing Congressional Findings and Purposes, 94 Stat. 2325 (1980); H.R. Rep. No. 96–1418, at 10, 12 (1980); S. Rep. No. 96–253, at 5 (1979); INS v. Jean , 496 U.S. 154, 163 (1990)). Under the EAJA, “a party that prevails on a discrete portion of an adversary adjudication and otherwise meets the size and financial criteria . . . may be reimbursed for its attorneys’ fees and expenses unless the Secretary demonstrates by a preponderance of the evidence 6 that [his] position in the matter was substantially justified or that particular circumstances would render an award unjust.” Contour Erection & Siding Sys., Inc. , No. 96-0063, 1999 WL 261250, at *3 (OSHRC, Apr. 27, 1999); see Herman v. Schwent , 177 F.3d 1063, 1065 (8th Cir. 1999) (quoting parallel EAJA provisions in 28 U.S.C. § 2412(d)(1)(A)). Because the Secretary has failed to carry his burden to demonstrate the Occupational Safety & Health Administration’s (OSHA) position was substantially justified following the depositions of OSHA’s Area Director and Compliance Health and Safety Officer nor has he identified particular circumstances which would render an award unjust, Respondent’s EAJA Application is GRANTED, IN PART, for reasonable fees after those depositions.
+
+Background
+
+As detailed in the Court’s July 24, 2025, Order Granting Respondent’s Motion for Partial Summary Judgment (PSJ Order), which vacated Citation 2, Item 1, Respondent operates a grain elevator in Finley, ND, where it stored grain and distributed it to customers. On December 4, 2023, a Finley employee was seriously injured when he fell from the top of a railcar while preparing it to be loaded with grain. The empty railcar was positioned approximately 300 yards down track and away from Respondent’s loadout facility. Finley had installed a fall protection system at its loadout facility, but the employee preparing the railcars away from the facility was not using fall protection.
+
+OSHA’s Bismark Area Office conducted an inspection of the worksite and issued a Citation and Notification of Penalty (Citation) to Respondent for one Serious violation (Citation 1, Item 1) and one Willful violation (Citation 2, Item 1). The Secretary proposed penalties totaling $120,993, including $112,926 for the Willful violation and $8,067 for the Serious violation. Citation 2, Item 1, which the Court vacated and which forms the basis of Respondent’s EAJA Application, cited Finley for a Willful violation of 29 C.F.R. § 1910.132(a) 7 for failing to provide and require the use of personal fall protection equipment while employees worked on top of the railcars, i.e. rolling stock. OSHA also cited Finley in the alternative for a Willful violation of § 5(a)(1) of the Occupational Safety and Health Act (“section 5(a)(1)” or “General Duty Clause”), 29 U.S.C. § 654(a)(1).
+
+After more than a year of litigating the Citation before the Commission, Respondent, on June 13, 2025, filed a Motion for Partial Summary Judgment seeking to dismiss the Willful violation. Respondent first asserted that citing Finley under § 1910.132(a) violated the Secretary’s longstanding enforcement guidance for fall protection for employees working on rolling stock, announced in a 1996 Memorandum to Regional Administrators known as the Miles Memo. 8 Respondent further asserted that citing it under the General Duty Clause was improper because a specific standard, § 1910.132(a), applied to the cited conditions and therefore preempted application of the General Duty Clause. Relying on the Commission’s 2012 decision in Erickson Air-Crane, Inc. , No. 07-0645, 2012 WL 762001 (OSHRC, Mar. 2, 2012), Respondent asserted the Secretary could only cite employers under the General Duty Clause for failing to take administrative measures to reduce fall exposure from rolling stock, and not for failing to use fall protection. Finally, Respondent argued it lacked fair notice from the Secretary that Respondent had a duty to use fall protection under the circumstances of the case.
+
+In his response to Finley’s Motion for Partial Summary Judgment , the Secretary defended it was appropriate to cite Finley under § 1910.132(a) because it was feasible for employees to use personal fall protection at Finley’s loadout facility. The Secretary asserted the Miles Memo, which was written in response to an inquiry about federal grain inspectors working atop railcars where it was not feasible to install and use fall protection systems, was not applicable to the circumstances of this case because Finley’s loadout facility had a fall protection system. According to the Secretary, Finley was obliged to relocate railcars to the loadout facility before employees could work on top of the rolling stock. The Secretary further argued Finley was aware that it could be cited for failing to use fall protection, in large part, because Respondent had previously received a citation for similar conduct. Finally, the Secretary asserted it was appropriate to cite the General Duty Clause in the alternative in case the Court determined the specific standard did not apply.
+
+The Secretary’s positions could not withstand summary judgment, and this Court granted Respondent’s Motion for Partial Summary Judgment to vacate the Willful violation. The Court first found that although § 1910.132(a) applied to workers atop rolling stock, the Miles Memo created a clear exception that foreclosed citing Finley under the standard because the specific railcars at issue were not inside or adjacent to a structure that would make using personal fall protection feasible. (Ord. on Resp’t Mot. for Partial Summ. J. at 11-14). The Court further determined the Secretary’s attempt to ignore his own Interpretive Ruling in the Miles Memo was arbitrary and capricious, and therefore legally unsupportable. ( Id. at 13). Second, the Court concluded because § 1910.132(a) applied and addressed the cited fall hazard, the specific standard preempted the application of the General Duty Clause. ( Id. at 16). The Court emphasized the alternative citation also ran afoul of Commission precedent holding that under the Miles Memo the Secretary can only cite employers for General Duty Clause violations where the Secretary is seeking administrative measures that reduce fall exposure, “which are clearly distinct from . . . fall protection methods.” ( Id. at 17 (quoting Erickson Air-Crane , 2012 WL 762001, at *5)). Finally, the Court concluded Respondent lacked fair notice of the Secretary’s position that OSHA could issue citations for work atop rolling stock not contiguous to a facility with fall protection. ( Id. at 22-31). The Court noted the Secretary repeatedly stood behind the Miles Memo for almost three decades despite multiple opportunities to reconsider the guidance, both informally and through the rulemaking process. ( Id. at 24-27). The Court further found the Secretary’s prior enforcement efforts did not provide fair notice of his position because those prior inspections did not involve rolling stock located a significant distance from facilities where the use of fall protection was feasible. ( Id. at 28-30).
+
+Applicable Legal Precedent
+
+A party seeking an award for EAJA fees and expenses must file an application “within 30 days after the final disposition of the adversary adjudication 9 ,” or when the Judge’s decision or order “becomes final and unappealable, both within the agency and to the courts.” 29 C.F.R. §§ 2204.301, 2204.201 (defining “final disposition”); see Shalala v. Schaefer , 509 U.S. 292, 298 (1993) (holding that a court judgment is final “when the time for seeking appellate review has run”). The application must “show that the applicant has prevailed and identify the position of the Secretary that the applicant alleges was not substantially justified.” 29 C.F.R. § 2204.301(b). The application must also “show that the applicant meets the definition of ‘party’” under the Commission’s rules governing EAJA proceedings, 29 C.F.R. § 2204.201. 29 C.F.R. § 2204.301(c). Finally, the application must set forth: (i) the amount sought, including an itemized statement from any attorney stating the actual time expended and the rate charged; and (ii) the basis showing the applicant is eligible to receive an award. 29 C. F. R. §§ 301, 302. The applicant bears the initial burden of establishing its eligibility for an EAJA award and that it is a prevailing party. See Scarborough v. Principi , 541 U.S. 401, 408 (2004) (setting forth the burden of proof for EAJA applicants).
+
+“Once an eligible applicant establishes that it is the prevailing party, the Secretary bears the burden of establishing that [his] position was substantially justified.” Paramount Advanced Wireless, LLC , No. 09-0178, 2011 WL 1399218, at *2 (OSHRC, Jan. 11, 2011) (EAJA) (citing Joseph Watson, d/b/a Joseph Watson Masonry , No. 00-1726, 2006 WL 2641337, at *2 (OSHRC, Sep. 6, 2006) (EAJA); Consol. Constr. Inc. , No. 89-2839, 1993 WL 69989, at *2 (OSHRC, Mar. 3, 1993) (EAJA)); see also Brouwers v. Bowen , 823 F.2d 273, 275-76 (8th Cir. 1987) (holding the government’s position must be “clearly reasonable, well founded in law and fact, solid though not necessarily correct,” and noting that the position is not substantially justified where the government relies “on isolated parts of the then existing evidence” or where the government’s position is “directed towards challenging establish precedent”) (citations omitted) (emphasis added).
+
+A. Jurisdiction
+
+The Court finds it has jurisdiction to rule on the EAJA Application since it had jurisdiction over the underlying action. Friends of Boundary Waters Wilderness , 53 F.3d at 885.
+
+B. Timeliness and Eligibility
+
+The Order Terminating the Enforcement Proceedings in this matter became a final order of the Commission on October 20, 2025. Respondent filed its EAJA Application on November 17, 2025. The Secretary does not dispute this fact. The Court finds the EAJA Application was timely filed “within 30 days after the final disposition of the adversary adjudication,” satisfying 29 C.F.R. § 2204.301(a).
+
+Next, Respondent asserts it was the prevailing party in the underlying enforcement proceeding because the Court dismissed the Willful violation that accounted for the majority of the Secretary’s proposed penalty. A party prevails “‘if they succeed on any significant issue in litigation which achieves some of the benefit the parties sought in bringing suit.’” Joseph Watson , 2006 WL 2641337 at *2 (quoting Hensley v. Eckerhart , 461 U.S. 424, 433 (1983)). A party “may be deemed prevailing even if [it] does not prevail on all issues.” H.P. Fowler Contracting Corp. , No. 80-3699, 1984 WL 34997, at *6-8 (OSHRC, Mar. 14, 1984) (finding employer was the prevailing party where the Secretary agreed in a settlement to vacate one Willful violation, reduce two Willful violations to Serious, and leave two Serious violations unchanged). The PSJ Order gave the relief Respondent sought from the Court by vacating the Willful violation. Indeed, the Secretary does not dispute Respondent was the prevailing party with respect to Citation 2, Item 1. Accordingly, the Court finds Respondent has demonstrated it prevailed in significant part in the underlying enforcement proceeding and may receive related attorney fees if the Secretary’s position was not substantially justified. 29 C.F.R. § 2204.301(b).
+
+Respondent provided documentation with its application showing Finley is a “farmer-owned cooperative association.” ( See EAJA Appl. Ex. A, Att. 1 (“Finley Farmers Grain & Elevator Company: Restated Articles of Incorporation and By Laws”)). The Commission’s EAJA rule defining “party” provides, “a cooperative association as defined in section 15(a) of the Agricultural Marketing Act [] may be a party regardless of the net worth of such organization or cooperative association.” 29 C.F.R. § 2204.201 (defining “party”). The Secretary concedes Finley is an eligible party. The Court finds Respondent has shown it meets the definition of “party” and is eligible to receive an EAJA award. See 29 C.F.R. § 2204.301(c).
+
+Finally, the Secretary does not dispute and the Court finds the EAJA Application sets forth the amount sought, including an itemized statement from any attorney stating the actual time expended and the rate charged, as well as the basis showing the applicant is eligible to receive an award. 29 C.F.R. §§ 301(c), 302.
+
+C. Substantial Justification
+
+Since Finley has demonstrated its basis and eligibility for an EAJA award, the burden shifts to the Secretary to establish his position in this matter was substantially justified. Bah v. Cangemi , 548 F.3d 680, 684 (8th Cir. 2008); Joseph Watson , 2006 WL 2641337, at *2. The term “‘substantially justified’ means justified to a degree that could satisfy a reasonable person.” Pierce v. Underwood , 487 U.S. 552, 565 (1988); Bah v. Cangemi , 548 F.3d at 683-84. The Secretary must show “that there is a reasonable basis in truth for the facts alleged in the pleadings; that there exists a reasonable basis in law for the theory it propounds; and that the facts alleged will reasonably support the legal theory advanced.” Iowa Express Distribs., Inc. v. NLRB, 739 F.2d 1305, 1308 (8th Cir. 1984) (quoting United States v. 2,116 Boxes of Boned Beef , 726 F.2d 1481, 1487 (10th Cir. 1984)), cert. denied, 469 U.S. 1088 (1984); Contour Erection & Siding , 1999 WL 261250, at *3.
+
+A substantially justified position need not be correct so long as “a reasonable person could think it correct, that is, if it has a reasonable basis in law and fact.” Bah v. Cangemi , 548 F.3d at 683-84. “[A] loss on the merits . . . does not give rise to a presumption that [the government] lacked substantial justification for [its] position.” Boad v. Barnhart , 398 F.3d 1021, 1025 (8th Cir. 2005). “On the other hand, cases in which summary judgment are granted are ones for which it seems Congress envisioned the fee award could be justified; they raise the possibility that the government’s position was unreasonable.” Keasler v. United States, 766 F.2d 1227, 1235 (8th Cir. 1985).
+
+In defense against Respondent’s petition for an EAJA award, the Secretary avers OSHA was substantially justified in issuing and pursuing both the violation of § 1910.132(a) and the alternative citation under the General Duty Clause because the Secretary was pursuing a novel legal theory “in good faith to advance the objective of workplace safety and health in a manner that was reasonably supported in fact and law.” (Sec’y EAJA Answer at 3). The Secretary asserts it was reasonable to believe the Miles Memo was not applicable to the circumstances of this case because, in contrast to the rolling stock addressed in the Miles Memo, the railcars here feasibly 10 could have been moved to Finley’s facility and fall protection used, but Respondent permitted employees instead to prepare the railcars away from the facility. ( Id. at 5-11). The Secretary contends these facts presented “a novel issue not addressed by any Commission decision.” ( Id. at 10). However, the Secretary’s novel argument was undercut by his admission the Respondent did not have the “legal obligation” to move the rolling stock down track next to the loading facility. (Sec’y Resp. to Partial Mot. for Partial Summ. J at 5, 11-12). The novel theory had no basis of support without a legal obligation to move the rolling stock.
+
+Similarly, the Secretary asserts citing the General Duty Clause in the alternative comported with Commission precedent. (Sec’y EAJA Answer at 13-15). The Court found, while it is proper to cite in the alternative when a question exists whether a standard has specifically addressed the cited hazard, in this case there was no dispute the cited hazard (i.e. fall protection) in the General Duty Clause citation was specifically addressed by § 1910.132(a) and was also precluded under Erickson Air-Crane . The Area Director admitted in his deposition the cited hazard in both the § 1910.132(a) citation and the General Duty Clause citation was the same. (Resp’t Mot. for Partial Summ. J. at 14-15). Therefore, under established Commission case law and the facts, pursuing the General Duty Clause as substantially justified was not supported.
+
+Finally, the Secretary avers Finley “was aware that it could be cited for failing to have employees use PPE on top of railcars,” and the Secretary was substantially justified in characterizing Respondent’s failure to do so as Willful violations. ( Id. at 15-19). As the Court found in its PSJ Order , the Secretary conveniently overlooked the undisputed fact that Finley’s prior citations under § 1910.132(a) were for Finley’s failure to use fall protection when the railcars were located adjacent to the loading facility – which was not the case in this matter. (Ord. on Resp’t Mot. for Partial Summ. J. at 29-31).
+
+The Secretary initiated the inspection in this matter following a serious injury to a Finley employee. The Secretary undoubtedly was substantially justified in conducting the investigation of the accident and in pursuing the Citation through the initial phases of litigation. The Secretary must have discretion to develop his case and verify his alleged facts through discovery. Indeed, information the Secretary gathered early in discovery suggested Finley’s supervisors were aware that employees should use fall protection available at Finley’s loadout facility and employees avoided using personal fall protection devices because they were uncomfortable and time-consuming. ( See Sec’y Opp. to Resp’t Mot. for Partial Summ. J. Exs. 3, 4 (recorded interviews with Finley supervisors)). That evidence generally lent support to the Secretary’s allegation Respondent had disregarded the fall protection requirements of § 1910.132(a).
+
+As discovery progressed, however, the Secretary’s theory of the case began to unravel. In a deposition taken on May 7, 2025, Ronald Meyer, the compliance safety and health officer (CSHO) who conducted the inspection of Respondent’s workplace, stated he did not believe the Miles Memo permitted OSHA to cite an employer under § 1910.132(a) when railcars are positioned away from a structure, and that the railcars in this matter were positioned away from the structure. (Resp’t EAJA Appl. Ex. D at 114). Then, on May 9, 2025, OSHA Area Director Scott Overson questioned the relevance of the Miles Memo because it had been issued 30 years ago and was outdated. 11 (Resp’t EAJA Appl. Ex. E at 91, 99-100). Overson suggested OSHA should retain the Miles Memo’s requirement that fall protection be provided for rolling stock contiguous to a structure, but should reconsider the guidance’s broad exemption for rolling stock not contiguous to a structure. ( Id. at 100-101).
+
+Taken together, the officials’ statements indicate the Bismark Area Office was not pursuing the Citation within the auspices of the Miles Memo but instead was seeking to contravene the Secretary’s longstanding enforcement guidance. Indeed, when subsequently defending against Respondent’s Motion for Partial Summary Judgment seeking the dismissal of the Willful citation, counsel for the Secretary was forced to awkwardly disclaim the opinion of his own Area Director who issued the Citation. (Sec’y Opp. to Resp’t Mot. for Partial Summ. J. at 5 (asserting Overson’s statement “does not necessarily reflect the Secretary’s legal interpretation”)) 12 . S ee Brouwers v. Bowen , 823 F.2d at 275-76 (holding the government’s position is not substantially justified where the government relies “on isolated parts of the then existing evidence” or where the government’s position is “directed towards challenging establish precedent”) (citations omitted) (emphasis added). As the Court detailed in granting dismissal of the Willful citation, the Secretary’s attempt to cite Respondent under § 1910.132(a) conflicted with the plain language of the Miles Memo, and the disregard for his own Interpretive Ruling was arbitrary and capricious. See F.J. Vollmer Co. v. Magaw , 102 F.3d 591, 595 (D.C. Cir. 1996) (suggesting it would be neither surprising nor erroneous that a judge’s conclusion in an EAJA proceeding would be consistent with his conclusion on the merits). When passing the EAJA, Congress emphasized, “[a]gency action found to be arbitrary and capricious or unsupported by substantial evidence is virtually certain not to have been substantially justified under the Act.” H.R. Rep. No. 120, 99th Cong., 1st Sess. 9-10, reprinted in 1985 U.S. Code Cong. & Admin. News 132, 138; Jackson v. Bowen , 807 F.2d 12 7, 129 (8th Cir. 1986). Upon hearing the testimony of OSHA’s key witnesses, the Secretary should have reassessed his theory of the case and recognized he no longer had a reasonable basis in law and the facts alleged would not support that legal theory. See Consol. Constr. Inc. , No. 89-2839, 1993 WL 69989, at *2 (OSHRC, Mar. 3, 1993) (awarding fees following deposition that undermined factual basis for Secretary’s case). After the depositions of the Area Director and the CSHO, there no longer existed a reasonable basis in law for the theory the Secretary advanced; and the facts alleged did not reasonably support the legal theory advanced. Iowa Express Distribs., Inc. v. NLRB, 739 F.2d at 1308 (quoting United States v. 2,116 Boxes of Boned Beef , 726 F.2d at 1487, cert. denied, 469 U.S. 1088 (1984)); Contour Erection & Siding , 1999 WL 261250, at *3.
+
+Given the apparent departure from the Secretary’s initial theory of the case, the Secretary also should have reconsidered whether Respondent had fair notice it could be cited for a violation of § 1910.132(a) under these circumstances. In particular, the Secretary should have recognized OSHA’s prior enforcement actions could not provide fair notice of its altered interpretation of the Miles Memo because, as the Court found, those citations did not involve rolling stock located away from fall protection systems. 13 Similarly, the Secretary should have recognized existing safety programs could not provide notice of a new interpretation not previously embraced by the agency.
+
+The Secretary’s alternative citation of the General Duty Clause suffered a similar fate. When asked why the Secretary cited the General Duty Clause, Area Director Overson emphasized the Secretary believed § 1910.132(a) applied to the cited conditions and only cited the General Duty Clause in case the Commission determined the standard did not apply. (Resp’t EAJA Appl. Ex. E at 85-86). When pressed whether the Commission’s holding in Erickson Air-Crane limited the Secretary’s ability to cite Finley under the General Duty Clause, Overson suggested he was not familiar with some details of the Commission’s holding and the precedent nevertheless should be limited to the facts of that case. ( Id. at 94-95). The OSHA Area Director did not demonstrate he was aware that Commission precedent limited the Secretary’s ability to cite the General Duty Clause for fall protection manners. Rather, his statements strongly indicated OSHA had pursued its citation of the General Duty Clause without careful regard to the confines of Commission case law. However, it was incumbent upon the Secretary’s counsel, who should have been familiar with the Erickson Air-Crane holding as well as general Commission case law, to advise OSHA the General Duty Clause citation was not supported under the facts of this case by either general Commission case law on the applicability of the General Duty Clause or Erickson Air-Crane .
+
+As explained in the PSJ Order dismissing the Willful citation, longstanding Commission precedent holds the applicability of a more specific standard addressing the cited hazard preempts application of the General Duty Clause. See, e.g., Armstrong Cork Co. , No. 76-2777, 1980 WL 10754, at *4 (OSHRC, Feb. 29, 1980) (citing cases); Active Oil Serv., Inc. , No. 00-0553, 2005 WL 3934873, at *4 (OSHRC, July 15, 2005); Am. Smelting & Refining Co. v. OSHRC , 501 F.2d 504, 512 (8th Cir. 1974). Moreover, the Commission specifically held in Erickson Air-Crane if the Secretary cites employers under the General Duty Clause, he can only seek administrative measures that reduce fall exposures that “are clearly distinct from . . . fall protection methods.” See Erickson Air-Crane , 2012 WL 762001, at *5. Despite this direction, the Secretary never sought to amend the General Duty Clause citation to allege an inadequate administrative measure that was clearly distinct from fall protection methods. The Secretary’s case thus contradicted Commission precedent in multiple ways. Where the government has failed to follow reasoned precedent, the courts have found the government lacked a substantial justification for its position. See, e.g., Keasler v. United States , 766 F.2d 1227, 1235-37 (8th Cir. 1985) (granting EAJA fees where government sought to create conflicting precedent). Area Director Overson admitted in his deposition that § 1910.132(a) addressed fall hazards. Under his training, and irrespective of his knowledge of Erickson Air-Crane , Overson knew citing the General Duty Clause as an alternative cause of action was not permissible under long standing Commission case law.
+
+“When evaluating the government’s ‘position’ under the EAJA, [the court considers] both the government’s litigation position and the ‘action or failure to act by the agency upon which the civil action is based.’” Ibrahim v. U.S. Dep’t of Homeland Sec. , 912 F.3d 1147, 1168 (9th Cir. 2019) (en banc) (quoting 28 U.S.C. § 2412(d)(1)(B)). Upon learning of the OSHA Area Director’s mistaken understanding of the law, the Secretary should have re-evaluated the General Duty Clause citation and realized it too lacked substantial justification. At that point, it was incumbent upon the Secretary to move to dismiss both the citation of § 1910.132(a) and the alternate citation of the General Duty Clause. By continuing to pursue the Willful citation after such clear indications of its legal insufficiency, the Secretary was exercising precisely the kind of unreasonable authority Congress sought to deter through the EAJA.
+
+Given all this, the Court concludes the Secretary has failed to demonstrate his positions were substantially justified following the deposition of the CSHO and the Area Director Scott Overson. 14 Accordingly, the Court awards to Respondent reasonable attorney fees from May 10, 2025, through the conclusion of this litigation with exclusions discussed below. No costs or expenses are awarded since those that are documented occurred prior to May 10. 2025.
+
+Analysis of Reasonable Hours Billed
+
+The Supreme Court has warned counsel for a prevailing party should exercise “billing judgment” and “exclude from a fee request hours that are excessive, redundant, or otherwise unnecessary.” Hensley v. Eckerhart , 461 U.S. at 434. Where a party does not exercise such judgment, the court must do it for them. See Am. Civ. Liberties Union of Georgia v. Barnes , 168 F.3d 423, 428 (11th Cir. 1999) (excluding excessive hours awarded under the EAJA). For the court to carry out this duty, the objections and proof from a fee opponent must be reasonably specific and precise. See id. (citing Norman v. Hous. Auth. of City of Montgomery , 836 F.2d 1292, 1301 (11th Cir. 1988) (finding that district court improperly excluded hours billed by multiple attorneys as redundant); see also McClure v. Mexia Indep. Sch. Dist ., 750 F.2d 396, 405 (5th Cir. 1985) (comparing hours spent by plaintiff and defendant). The Court “may reduce the amount to be awarded, or deny any award, to the extent that the party during the course of the proceedings engaged in conduct which unduly and unreasonably protracted the final resolution of the matter in controversy.” 29 C.F.R. § 2204.406(c).
+
+A. Respondent’s Billing Requests
+
+According to Respondent’s billing sheets, counsel for Finley billed 349.1 hours after the May 9, 2025. (Resp’t EAJA Appl. Ex. F, Attach. 1 at 20-40). Respondent’s counsel states that 95% of their billed hours from May 10, 2025, through July 2025 were dedicated to Citation 2, Item 1 or issues related to both citations. ( Id. at 24). Respondent’s counsel further avers that preparing its EAJA Application consisted of 80% of hours billed in August 2025, 90% of hours billed in September 2025, and all hours billed in October 2025. ( Id. at 29). Using these percentages, Respondent’s counsel spent approximately 326.6 hours on this matter from May 10, 2025, through the filing of its EAJA application. Thus, the appropriate number to start the Court’s analysis is less than the actual billing of 349.1 hours. Finley, by asserting these percentages has reduced its actual hours for time spent on matters not relating to the issues in this case and which are not subject to reimbursement. Absent the Secretary’s presenting specific and credible arguments these percentages are not accurate, the percentages should be applied to reduce the starting point from May 10. 2025 forward to 326.6 hours.
+
+Respondent also requests the Court grant it an additional fee award “in an amount the Court deems reasonable” for time spent preparing its EAJA Reply and for the time spent filing its supplemental EAJA application. (Resp’t EAJA Reply at 28). This approach was taken by Respondent as opposed to seeking an amendment to its EAJA Application to include these fees. In the supplemental EAJA application, Respondent requests reimbursement of expenses related to the depositions of the CSHO and Area Director. As stated previously these expenses are denied as they were incurred prior to May 10, 2025.
+
+B. The Secretary’s Position
+
+The Secretary asserts the claimed hours are unreasonable and excessive. (Sec’y EAJA Answer at 19-24). First, the Secretary protests Respondent’s counsel billing for redundant hours for work performed by multiple attorneys, including two partners and two senior attorneys. ( Id. at 21-22). Second, the Secretary asserts Respondent’s counsel unreasonably inflated their billing hours by filing unnecessary motions and improperly delaying discovery. ( Id. at 20-23). Third, the Secretary generally objects to the number of hours Respondent’s counsel billed for the EAJA Application and suggests that counsel’s estimate of the percentage of billable hours attributable to the EAJA Application was arbitrary. 15 ( Id. at 23-24). Finally, the Secretary objects that a paralegal, Michelle Connors, billed at the same hourly rate as attorneys in counsel’s Washington, D.C. office. Each of these positions will be analyzed below.
+
+The Secretary first objects that staffing four attorneys for Respondent’s defense resulted “in a great deal of duplication of efforts,” particularly by sending two partners to depose the Secretary’s primary witnesses. Although multiple partners attending the depositions of OSHA’s witnesses appears duplicative and unnecessary, this Court is limiting its fee award to work performed after those depositions were taken. 16 Thus, the Secretary’s objection on this basis is moot.
+
+And contrary to the Secretary’s assertion of redundant billing, the billing records indicate that lower-ranking attorneys conducted the primary research and drafted the initial versions of Respondent’s Motion for Partial Summary Judgment and other filings, while more senior attorneys edited the drafts and communicated with their client. Thus, while the attorneys were all working on issues contained in the Motion for Partial Summary Judgment , each attorney has a different role or scope in the process. This structure does not make attorney fees charged by these individuals excessive or unreasonable. Rather, this division of labor is reasonable and conforms with the Model Rules of Professional Conduct. Model Rules of Pro. Conduct r. 3.12 (A.B.A. 2025) 17 ; see Norman , 836 F.2d at 1302 (“There is nothing inherently unreasonable about a client having multiple attorneys, and they may all be compensated if they are not unreasonably doing the same work and are being compensated for the distinct contribution of each lawyer.”) (citations omitted); Anchondo v. Anderson, Crenshaw & Associates , LLC, 616 F.3d 1098, 1105 (10th Cir. 2010) (same). Although the Secretary specifically protests the four attorneys representing Finely billed more than 44 hours over three days for work on Respondent’s Motion for Partial Summary Judgment , nothing in the record or in the Secretary’s Answer indicates the hours were improperly billed or the overall time spent on Respondent’s thorough, successful motion was excessive. The Secretary provides no specific evidence or judicial precedent holding this type of arrangement is impermissible and resulted in unreasonable attorney fees. Accordingly, the Court does not find it appropriate to reduce Respondent’s EAJA award for duplicative or redundant billing.
+
+Second, the Secretary contends many of the hours claimed were spent on unnecessary motions and discovery disputes. (Sec’y EAJA Answer at 20-23). The Secretary accuses Respondent of acting in bad faith to obstruct the discovery process and prevent the depositions of three Finley supervisors, which “unreasonably protracted this proceeding.” ( Id. at 20-21). Although the Court was critical of Respondent’s actions in discovery, those actions, when viewed in light of Finley’s successful Motion for Partial Summary Judgment , appear more reasonable. Indeed, had Respondent succeeded in blocking the Secretary’s requested depositions, Finley’s counsel would have spent significantly fewer hours defending the Secretary’s unjustified pursuit of the Willful citation. In addition, most of Respondent’s efforts seeking Rule 30(b)(6) depositions and opposing the Secretary’s depositions took place prior to Overson’s deposition on May 9, 2025, and there is no indication the discovery disputes delayed the resolution of this matter. Moreover, because Respondent’s disputed actions largely took place before May 9, 2025 , those hours are not included in the Court’s EAJA award. Given all this, the Court does not find it appropriate to reduce Respondent’s EAJA award for Respondent’s attempts to block the Secretary’s depositions. The fees incurred in that discovery dispute after May 9, 2025, could have been entirely avoided had the Secretary vacated the Willful citation after the depositions of the Area Director and CSHO. If anything, it was the Secretary’s inaction in this regard which delayed and prolonged this matter.
+
+The Secretary similarly protests Respondent’s motion to compel production of case files involving separate employers as “wholly irrelevant to this case,” and the hours spent on that motion should be disallowed. (Sec’y EAJA Answer at 23). Although the Court did not consider Respondent’s motion to compel before it was withdrawn by Respondent, the Court agrees the hours spent attempting to compel the Secretary to produce investigation files from separate incidents involving different employers were not reasonable as it would not have led to evidence that was relevant or admissible in this action. Respondent noted in its withdrawn motion the information it sought could have been obtained through a Freedom of Information Act (FOIA) request. (Resp’t Mot. to Compel. Disc. Resps. at 5). Respondent’s timekeeping files indicate counsel spent 20.7 hours between July 20 and July 23, 2025, most of which was spent producing the motion to compel. The Court finds 3 hours of that time was reasonably spent on other tasks. The remaining 17.7 hours were not reasonably spent and therefore are excluded from Respondent’s fee award.
+
+Although not explicitly noted by the Secretary, Respondent’s billing records contain another entry which is unreasonable on its face. The record indicates Mark Trapp spent 2.5 hours on June 26, 2025, researching the Commission’s rules governing petitions for interlocutory review. That research had no bearing on the outcome of this matter before the Court. Moreover, in June 2025, there were no sitting Commission members, let alone the two members necessary to direct a petition for interlocutory review. See R+L Carriers Shared Servs., LLC , No. 22-0122, at 2 (OSHRC, June 1, 2022), oshrc.gov/wp-content/uploads/R_L_Carriers_ Shared_Services%5E22-0122%5EPIR_Denial_Notice%5E06012 2%5Efor_website.txt (denying interlocutory review because two Commissioners did not agree to grant the petition). Mr. Trapp’s foray into this topic therefore is excessive and unnecessary. As such, those hours are excluded from Finley’s fee award.
+
+Finally, the Secretary objects to the number of hours Respondent spent on its EAJA Application and the method Respondent used to estimate those hours. (Sec’y EAJA Answer at 23). Respondent’s timekeeping records indicate counsel billed a total of 63.3 hours from August 1, 2025, through October 21, 2025. (Resp’t EAJA Appl. Ex. F Attach. 1 at 36-40). Adjusted according to Respondent’s calculations, counsel spent approximately 54.1 hours on its EAJA Application. The Secretary attacks this estimate and Respondent’s method for reaching it, asserting “[m]uch of the application repeats arguments made its [sic] motion for summary judgment” and the estimate of time spent “is arbitrary and unreasonable.” (Sec’y EAJA Answer at 23.)
+
+The Eighth Circuit has emphasized a Court considering an attorney fees request should “weigh the hours claimed against [its] own knowledge, experience, and expertise of the time required to complete similar activities.” Paris Sch. Dist. v. Harter , 894 F.3d 885, 889 (8th Cir. 2018) (cleaned up). The Court agrees with the Secretary that Respondent’s EAJA Application adds little legal value beyond what was already provided in Respondent’s Motion for Partial Summary Judgment . As such, the Court considers counsel’s expenditure 55 hours on the EAJA application excessive. Instead, the Court, utilizing its own knowledge, experience, and expertise of the time required, finds Respondent should be reimbursed for 32 hours on the EAJA Application.
+
+Respondent has not specifically itemized the time spent on its EAJA Reply. Instead, Respondent has requested the Court, based on its own knowledge, experience, and expertise of the time required to file the EAJA Reply, award reasonable fees. The Court finds Respondent should be awarded 20 hours producing its EAJA Reply. See Timothy Victory , No. 93-3359, 1997 WL 603003, at *6 (OSHRC, Sep. 30, 1997) (holding a party entitled to EAJA fees “is entitled to reasonable attorneys’ fees and expenses for the fee litigation itself”) (citing INS. v. Jean , 496 U.S. 154 (1990)).
+
+Respondent also requests the Court, based on its own knowledge, experience, and expertise, award reasonable attorney fees for the time required to prepare its Supplemental EAJA Application. The Court finds Respondent’s request for additional fees to prepare its Supplemental EAJA Application is not reasonable. Respondent’s filing merely corrected its failure to include supporting documentation for expenses related to the May 7 and May 9, 2025 depositions, an error of its own making. The Court does not grant counsel’s request to be rewarded for fixing their own error. See , e.g. , Blackorby v. BNSF Ry. Co. , 60 F.4th 415, 422 (8th Cir. 2023) (denying fees unreasonably caused by the party’s own legal error).
+
+The Secretary has not demonstrated Respondent “unduly or unreasonably protracted the proceeding” or that “special circumstances make an award unjust.” 29 C.F.R. § 2204.406(a). Given all the above, the Court finds Respondent’s counsel reasonably billed 265.6 hours from May 10 until July 31, 2025, defending against the Secretary’s litigation. However, the Court reduces the awarded hours to account for Respondent’s acceptance of Citation 1, Item 1. See Hensley v. Eckerhart , 461 U.S. at 436-37 (noting a court “may simply reduce the award to account for the limited success” of a party). Weighing the “complexity and novelty of the issues” presented in this matter, the Court finds that Respondent’s award should be reduced by 5% to account for the settled Citation 1, Item 1. See Central Brass Manufacturing Co. , Nos. 86-978 & 86-1610, 11990 WL 201594, at *4-5 (OSHRC, Nov. 15, 1990) (noting that when determining an EAJA award, “the judge should consider the complexity and novelty of the issues based on his own knowledge, experience and expertise of the time required to complete similar activities”).
+
+With all reductions, the Court awards Respondent 252.3 hours for its work from May 10, 2025, through July 31, 2025, including 62 hours for work performed by Eric Conn, 107.6 hours for work by Lindsay DiSalvo, 51.4 hours for work by Mark Trapp, 3.3 hours for work by Hema Steele, and 28 hours for work by Michelle Connors. As explained above, the Court awards Respondent an additional 52 hours for its work after August 1, 2025, on the EAJA Application and EAJA Reply. In total, the Court awards Respondent 304.3 hours of attorneys’ fees.
+
+The following chart illustrates the Court’s calculation and application of deductions discussed above for attorney hours awarded:
+
+Actual Hours Billed from May 10, 2025
+
+349.1
+
+% Reduction by Respondent
+
+-22.5
+
+Reduction: EAJA hours billed
+
+-54.1 18
+
+Reduction: Motion to Compel
+
+-17.7
+
+Reduction: Interlocutory Appeal
+
+-2.5
+
+Subtotal
+
+252.3
+
+Add: EAJA Application
+
+32.0
+
+Add: EAJA Reply
+
+20.0
+
+Total Hours Awarded
+
+304.3
+
+Calculation of Hourly Rates
+
+The EAJA caps the rate attorneys or agents may recover at $125 per hour “unless the agency determines by regulation that an increase in the cost of living or a special factor . . . justifies a higher fee.” 5 U.S.C. § 504(b)(1)(A). The Commission’s procedural rules allow for the statutory rate to be increased “to account for inflation since the last update of the statute’s maximum award upon the request of the applicant as documented in the application.” 29 C.F.R. § 2204.406(c)(2).
+
+Respondent asserts it should be awarded hourly rates ranging from $240 to $259, depending on the location of the attorney or paralegal who performed the work. 19 (Resp’t EAJA Appl. at 26-29). Respondent avers the hourly rate for its attorneys and paralegal exceeds the statutory maximum. ( Id. at 24). Respondent supports its request with documentation showing the consumer price index (CPI) for Washington, D.C., Chicago, Illinois, and Columbus, Ohio, the three cities where its attorneys and paralegal worked. ( Id. at 26-29). The Secretary does not contest Respondent’s documentation of the CPI. Accordingly, the Court finds an adjustment to the statutory rate for the rate of inflation based upon Respondent’s calculations under the CPI is appropriate. The Court finds, based on an adjustment for inflation, Respondent is entitled to an hourly rate of $258 for work performed by counsel in Washington, D.C. through July 31, 2025, and an hourly rate of $259 for its work on the EAJA proceeding after August 1, 2025; $242 per hour for work performed by counsel in Chicago, Illinois; and $240 per hour for work performed by counsel in Columbus, Ohio.
+
+The Secretary’s last objection involves a paralegal, Michelle Connors, who was billed at the same hourly rate as attorneys in counsel’s Washington, D.C. office. (Sec’y EAJA Answer at 22-23). Respondent defends Connors’ hourly rate. (Resp’t EAJA Reply at 25). The Supreme Court has found paralegal fees may be awarded at the “prevailing market rates.” Richlin Sec. Serv. Co. v. Chertoff , 553 U.S. 571, 576-77 (2008). Although the Secretary objects to Connors’ billed amount, he has not provided the Court with proof demonstrating Connors’ rate exceeded the market rate in the Washington, D.C. area as established above. See, e.g., Am. Civ. Liberties Union of Georgia v. Barnes , 168 F.3d at 428 (demanding reasonably specific and precise objections and proof from party opposing fee award); see also Richlin Sec. Serv. Co. v. Chertoff , 553 U.S.at 579-80 (noting paralegal costs should be calculated from the perspective of the litigant). The Court therefore finds Respondent is entitled to a rate of $258 per hour for the paralegal’s work through July 31, 2025.
+
+Lastly, according to Respondent’s timekeeping records, counsel in the Washington, D.C., office performed all the work on Respondent’s EAJA Application from August 2025 through October 2025. The Court accordingly awards a rate of $259 per hour for the 52 hours Respondent reasonably expended on its EAJA Application and EAJA Reply brief.
+
+The following chart accurately summarizes the attorneys and paralegal involved, the adjusted hours and amount awarded based on applicable market rate adjusted for CPI based on the geographic location of the individual:
+
+Attorney/Paralegal
+
+Hours Awarded
+
+Total Amount Awarded and Adjusted for CPI
+
+CPI
+Hourly Rate
+
+Eric Conn
+
+62.0
+
+$16,038
+
+$258/$259
+
+Lindsay DiSalvo
+
+107.6
+
+$27,770
+
+$258/$259
+
+Mark Trapp
+
+51.4
+
+$12,438
+
+$242
+
+Hema Steele
+
+3.3
+
+$792
+
+$240
+
+Michelle Connors
+
+28.0
+
+$7,230
+
+$258
+
+EAJA Application
+
+32.0
+
+$8,256
+
+$259
+
+EAJA Reply
+
+20.0
+
+$5,160
+
+$259
+
+Total from May 10, 2025 through July 31, 2025
+
+304.3
+
+$77,684
+
+N/A
+
+Based on Respondent’s billing records, and applying the various hourly rates as detailed above, the Court calculates Respondent is entitled to attorneys’ fees totaling $77,684.
+
+Conclusion
+
+For the reasons explained above, Respondent has demonstrated it is entitled to an award of attorney fees, and the Secretary has not demonstrated its position was substantially justified following the depositions of OSHA’s CSHO and the Bismark Area Office Area Director on May 9, 2025. Accordingly, the Court awards Respondent a total of $77,684 in attorneys’ fees for 304.3 hours of litigation of Citation 2, Item 1, and the subsequent EAJA proceeding. The Court awards no amount for documented expenses as those occurred prior to May 10, 2025.
+
+SO ORDERED.
+
+/s/ Patrick B. Augustine
+
+Dated: August 4, 2026
+
+Denver, Colorado
+
+Patrick B. Augustine
+
+Judge, OSHRC
+
+1 5 U.S.C. § 504 provides an agency that conducts an adversary adjudication against a prevailing party shall pay the fees and expenses of the party, unless the adjudication officer finds the position of the agency substantially justified.
+
+2 On January 16, 2026, Respondent filed a Motion for Leave to Supplement Exhibits to EAJA Application , which the Court granted over the Secretary of Labor’s opposition.
+
+3 In general, “[w]here it is highly probable that a Commission decision would be appealed to a particular circuit, the Commission has . . . applied the precedent of that circuit in deciding the case—even though it may differ from the Commission’s precedent.” Kerns Bros. Tree Serv. , No. 96-1719, 2000 WL 294514, at *4 (OSHRC, Mar. 16, 2000) (citation omitted). The Secretary may seek review in the circuit in which the alleged violation occurred or in which the employer’s principal office is located. 29 U.S.C. § 660(b). Here, the alleged violation occurred at Respondent’s worksite in North Dakota, which falls within the Eighth Circuit. The Court therefore primarily applies precedent of the Eight Circuit.
+
+4 Neither party requested additional discovery or an evidentiary hearing for the EAJA proceeding. See 29 C.F.R. § 2204.405 (allowing for additional EAJA proceedings upon a party’s request).
+
+5 The EAJA contains parallel provisions, codified separately, that apply to parties that prevail in proceedings before an administrative agency and to parties that prevail against the United States in civil actions. 5 U.S.C. § 504 (administrative proceedings); 28 U.S.C. § 2412 (civil actions).
+
+6 “ Preponderance of the evidence” has been defined as:
+
+The greater weight of the evidence, not necessarily established by the greater number of witnesses testifying to a fact but by evidence that has the most convincing force; superior evidentiary weight that, though not sufficient to free the mind wholly from all reasonable doubt, is still sufficient to incline a fair and impartial mind to one side of the issue rather than the other.
+
+Preponderance of the Evidence , Black’s Law Dictionary (10th ed. 2014).+
+
+7 Section 1910.132(a) provides, in relevant part, “[p]rotective equipment . . . shall be provided, used, and maintained . . . wherever it is necessary by reason of hazards of processes or environment . . . encountered in a manner capable of causing injury . . . .” 29 C.F.R. § 1910.132(a). The provisions of section 1910.132 “apply to all personal protective equipment (PPE), including personal fall protection systems.” Walking-Working Surfaces and Personal Protective Equipment (Fall Protection Systems), 81 Fed. Reg. 82494, 82617 (Nov. 18, 2016).
+
+8 The Miles Memo is listed on OSHA’s website as a Letter of Interpretation for § 1910.132(d). See https://www.osha.gov/laws-regs/standardinterpretations/1996-10-18 (last visited June 8, 2026). The Miles Memo states, in relevant part:
+
+[I]t would not be appropriate to use the personal protection equipment standard, 29 CFR 1910.132(d), to cite exposure to fall hazards from the tops of rolling stock, unless employees are working atop stock that is positioned inside of or contiguous to a building or other structure where the installation of fall protection is feasible. In such cases, fall protection systems often can be and, in fact, are used in many facilities in the industry.
+
+( Id. ) The Miles Memo further addresses the applicability of the General Duty Clause to fall hazards on rolling stock:
+
+The General Duty Clause, Section 5(a)(1) of the OSH Act, requires an employer to provide employees with a workplace that is free from hazards that are recognized by the employer’s industry and that are likely to cause death or serious physical harm. Thus, where feasible means exist to eliminate or materially reduce the hazard, a citation can be issued for a Section 5(a)(1) violation.
+
+( Id. )
+
+9 “Adversary adjudication” is defined as a formal trial type ex parte proceeding in which the agency is adverse to the party and governed by 5 U.S.C. § 554 “trial type” proceedings, as opposed to an inter partes proceeding in which the agency adjudicates a dispute between the parties or the less formal proceeding of § 555. 5 U.S.C. § 504(b)(1)(C); 29 C.F.R. § 2204.201.
+
+10 As the Court found in its PSJ Order, “feasibility” does not impose a legal obligation without one being applicable. “Feasibility” is a prima facia element the Secretary needs to prove if all other elements of a General Duty Clause violation has been established by the Secretary.
+
+11 When asked whether he disagreed with the Miles Memo, Overson stated, “I’m not going to say that I disagree with it. I think it’s a 30-year-old interpretation; that times have changed.” (Resp’t EAJA Appl. Ex. E at 91). Asked again whether Overson believed OSHA should archive or replace the Miles Memo, the Area Director replied, “I think all interpretation should be evaluated after 10 years.” ( Id. at 99). Overson went on to say, “I think all scenarios should be evaluated over time for technological an economical feasibility,” adding that he believed alternative fall protection systems and methods may be available for employees working atop rolling stock. ( Id. at 100-101).
+
+12 It was this admission by the Secretary’s counsel which should have ended the matter. Secretary’s Counsel affirmed the long-standing position of OSHA contained in the Miles Memo and even admitted in the Secretary’s response to the Motion for Partial Summary Judgment that Respondent did not have a legal obligation to move the rolling stock down rail to be next to the facility which had fall protection systems. (Sec’y Opp. to Resp’t Mot. for Partial Summ. J. at 12). Against this backdrop, the Secretary cannot argue on one hand this was a novel matter for litigation while at the same time affirming the position of the Secretary contained in the Miles Memo that Respondent had no legal obligation to move the rolling stock down rail to be next to the facility.
+
+13 In one case the Secretary relied upon, OSHA cited an employer whose employees did not use their personal fall protection while working within a grain loadout facility equipped with a fall protection system. MFA Enters., Inc., v. Occupational Safety and Health Rev. Comm’n , 153 F.4th 647, 649-50 (8th Cir. 2025). After the Court here issued its ruling on Respondent’s Motion for Partial Summary Judgment , the Eighth Circuit held that OSHA lacks jurisdiction over railcar loadout facilities. Id. at 652.
+
+14 As noted above, the Secretary also asserts it was substantially justified in characterizing the alleged violation as Willful. (Sec’y EAJA Answer at 15-19). Because the Court concludes the Citation was not substantially justified, it is not necessary to address the characterization. Moreover, the Court did not address the Willful characterization of the alleged violation in its PSJ Order dismissing the Citation 2, Item 1. See 29 C.F.R. § 2204.405(a) (“Ordinarily, the determination of an award will be made on the basis of the written record.”).
+
+15 Although the Secretary challenges Respondent’s method of calculating the hours counsel spent on the EAJA Application, he does not directly challenge Respondent’s estimate that 95% of counsel’s billed hours were spent litigating the Willful citation.
+
+16 Even if this argument was considered valid, it does not appear from the timekeeping records that counsel billed Respondent for multiple partners to attend the Secretary’s depositions of three Finley supervisors in June 2025.
+
+17 The Model Rules of Professional Conduct are applicable to all representatives appearing before the Commission. See 29 C. F. R. § 2200.104 (“Standards of conduct”).
+
+18 This amount is totally taken out as the Court—below—adds back in the amount it has awarded as EAJA Application Fees .
+
+19 Although Respondent suggests that “an hourly rate above that set by EAJA is appropriate here” due to its counsel’s specialized experience, Respondent does not request an hourly rate above the statutory maximum, adjusted for inflation. ( See Resp’t EAJA Appl. at 25). Moreover, Respondent has not demonstrated such an enhancement is available in Commission proceedings. See Pierce v. Underwood , 487 U.S. at 572 (identifying knowledge of foreign law or language or experience in niche specialty such as patent law as examples of the “distinctive knowledge or specialized skill” justifying an enhanced fee award).
