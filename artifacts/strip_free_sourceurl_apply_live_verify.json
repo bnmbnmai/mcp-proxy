@@ -1,0 +1,206 @@
+{
+  "job": "apply PR 219 strip sourceUrl from free discovery JSON on ticks.bnm.farm",
+  "ranOn": "apollo",
+  "hostname": "pop-os",
+  "path": "/warning-letters",
+  "priceUsdc": "0.05",
+  "amountAtomic": "50000",
+  "oneAmountAtomic": "20000",
+  "network": "base",
+  "branch": "cursor/apply-strip-free-sourceurl-ec52",
+  "servingSha": "100430e00cef79a2a311420832ab424afb2d7715",
+  "sourcePr": "https://github.com/bnmbnmai/mcp-proxy/pull/219",
+  "sourceBranch": "cursor/strip-free-sourceurl-2c3a",
+  "sourceHead": "100430e00cef79a2a311420832ab424afb2d7715",
+  "stackedOn": "cursor/apply-ofwat-enforcement-c0eb",
+  "stackedOnSha": "daeffb2464f543b816ac5aa0d7ee0894dbc6c12d",
+  "liveServingBefore": "daeffb2464f543b816ac5aa0d7ee0894dbc6c12d",
+  "thisApply": "https://github.com/bnmbnmai/mcp-proxy/pull/220",
+  "boiseHourAtApply": "10",
+  "imagineWindow": false,
+  "systemctlUserRestart": {
+    "unit": "idaho-ticks-x402.service",
+    "ok": true,
+    "otherUnitsRestarted": false,
+    "activeEnterTimestamp": "Wed 2026-09-09 10:52:32 MDT",
+    "pidBefore": "615917",
+    "pidAfter": "1225420",
+    "dockerGwUntouched": "Tue 2026-09-08 18:00:22 MDT",
+    "caddyStartedAt": "2026-09-08T17:07:32.766138574Z",
+    "tunnelStartedAt": "2026-09-08T17:07:32.771343842Z"
+  },
+  "banner": {
+    "warningLetters": "/warning-letters $0.05 USDC",
+    "mcp": "mcp /mcp — 55 tools from /.well-known/x402"
+  },
+  "before": {
+    "wlManifest": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "letterCount": 1346,
+      "asOf": "2026-09-01",
+      "fetchedAt": "2026-09-09T14:07:26.807Z",
+      "q": "citra",
+      "id": "citra100mg-722606-03042026",
+      "paidUrl": "/warning-letters?id=citra100mg-722606-03042026",
+      "hasSourceUrl": true,
+      "hasFdaGov": true,
+      "cardKeys": [
+        "before",
+        "cms",
+        "date",
+        "firm",
+        "id",
+        "issuedOn",
+        "issuingOffice",
+        "page",
+        "paidUrl",
+        "publishedAt",
+        "sourceUrl",
+        "subject"
+      ]
+    },
+    "wlUnpaid": 402,
+    "firmCheck": {
+      "status": 200,
+      "q": "citra",
+      "hitCount": 1,
+      "id": "citra100mg-722606-03042026",
+      "paidUrl": "/warning-letters?id=citra100mg-722606-03042026",
+      "hasSourceUrl": false,
+      "hasFdaGov": false
+    },
+    "wellKnown": {
+      "status": 200,
+      "resourceCount": 55,
+      "extraResourceCount": 55
+    },
+    "siblings": {
+      "/ticks": 402
+    }
+  },
+  "collect": {
+    "status": "not run"
+  },
+  "tests": {
+    "paid-records.test.js": "ok",
+    "firm-check.test.js": "ok",
+    "ticks-door.test.js": "ok",
+    "warning-letters.test.js": "ok"
+  },
+  "live": {
+    "wellKnown": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "resourceCount": 55,
+      "extraResourceCount": 55,
+      "hasWarningLetters": true
+    },
+    "wlManifest": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "q": "citra",
+      "letterCount": 1346,
+      "asOf": "2026-09-01",
+      "fetchedAt": "2026-09-09T14:07:26.807Z",
+      "product": "fda-warning-letter-bodies",
+      "id": "citra100mg-722606-03042026",
+      "paidUrl": "/warning-letters?id=citra100mg-722606-03042026",
+      "hasSourceUrl": false,
+      "hasOfficialUrl": false,
+      "hasPdfUrl": false,
+      "hasHtmlUrl": false,
+      "hasPageUrl": false,
+      "hasFdaGov": false,
+      "cardKeys": [
+        "before",
+        "cms",
+        "date",
+        "firm",
+        "id",
+        "issuedOn",
+        "issuingOffice",
+        "page",
+        "paidUrl",
+        "publishedAt",
+        "subject"
+      ],
+      "schemaFields": [
+        "id",
+        "firm",
+        "cms",
+        "issuedOn",
+        "subject",
+        "issuingOffice",
+        "body"
+      ]
+    },
+    "wlUnpaid": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "50000",
+      "extraName": "USD Coin",
+      "resource": "https://ticks.bnm.farm/warning-letters"
+    },
+    "wlIdUnpaid": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "id": "citra100mg-722606-03042026",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "20000",
+      "extraName": "USD Coin",
+      "resource": "https://ticks.bnm.farm/warning-letters?id=citra100mg-722606-03042026"
+    },
+    "firmCheck": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "q": "citra",
+      "hitCount": 1,
+      "id": "citra100mg-722606-03042026",
+      "paidUrl": "/warning-letters?id=citra100mg-722606-03042026",
+      "priceUsdc": "0.02",
+      "hasSourceUrl": false,
+      "hasOfficialUrl": false,
+      "hasPdfUrl": false,
+      "hasHtmlUrl": false,
+      "hasPageUrl": false,
+      "hasFdaGov": false
+    },
+    "ticksUnpaid": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "50000",
+      "extraName": "USD Coin",
+      "tableWhole": true,
+      "resource": "https://ticks.bnm.farm/ticks"
+    },
+    "siblingManifest": {
+      "/ofwat-enforcement/manifest.json": {
+        "status": 200,
+        "cardCount": 15,
+        "hasSourceUrl": false,
+        "hasFdaGov": false
+      }
+    },
+    "loopback": {
+      "wlUnpaid": 402,
+      "wlManifest": 200,
+      "wlManifestHasSourceUrl": false,
+      "wlManifestHasFdaGov": false,
+      "firm": 200,
+      "firmHasSourceUrl": false,
+      "ticks": 402
+    }
+  },
+  "excluded": {
+    "catalogMain": "not checked out",
+    "lander": "not opened from this apply",
+    "collect": "not run",
+    "newCollectCron": "not started",
+    "dockerGw": "untouched",
+    "otherUnits": "not restarted",
+    "imagineWindow": "10:52 MDT; not 02:00-04:00"
+  }
+}

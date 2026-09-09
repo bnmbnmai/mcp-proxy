@@ -1,0 +1,25 @@
+{
+  "http": 200,
+  "q": "citra",
+  "letterCount": 1346,
+  "asOf": "2026-09-01",
+  "fetchedAt": "2026-09-09T14:07:26.807Z",
+  "id": "citra100mg-722606-03042026",
+  "paidUrl": "/warning-letters?id=citra100mg-722606-03042026",
+  "hasSourceUrl": true,
+  "hasFdaGov": true,
+  "cardKeys": [
+    "before",
+    "cms",
+    "date",
+    "firm",
+    "id",
+    "issuedOn",
+    "issuingOffice",
+    "page",
+    "paidUrl",
+    "publishedAt",
+    "sourceUrl",
+    "subject"
+  ]
+}

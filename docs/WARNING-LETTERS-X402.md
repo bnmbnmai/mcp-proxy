@@ -25,7 +25,7 @@ Alongside those keys the paid JSON adds `records[]` (`id`, `date`, `firm`, `url`
 
 `data/warning-letters/` is gitignored. Letter bodies do not belong in git. The live cache lives on the media-box worker.
 
-Free `GET /warning-letters/manifest.json` on `ticks.bnm.farm` is count / firm / date / subject only. Do not wrap that JSON as the paid payload. Family / basic-auth stay off that host.
+Free `GET /warning-letters/manifest.json` on `ticks.bnm.farm` is count / firm / date / subject + `paidUrl` only. No `sourceUrl` / official deep link. Do not wrap that JSON as the paid payload. Family / basic-auth stay off that host.
 
 ## Env
 
@@ -47,6 +47,8 @@ Cursor cloud VMs gitignore `data/warning-letters/` and cannot restart `idaho-tic
 The HTML first page is 10 rows. `DEFAULT_FIRST_SLICE = 3` was the stub (`letterCount` 3). Collect now walks the official listing AJAX (`recordsTotal` ~3662) and **keeps** cached bodies.
 
 Live after apollo collect + `idaho-ticks-x402.service` restart (2026-08-19): **letterCount 296**, asOf **2026-08-13**, fetchedAt **2026-08-19T15:20:36.317Z**. Price still $0.05. Seventh door is `/mariners-d7`.
+
+Applied on apollo (2026-09-09): **serving SHA `100430e`** (apply-record [PR 220](https://github.com/bnmbnmai/mcp-proxy/pull/220); FF of [PR 219](https://github.com/bnmbnmai/mcp-proxy/pull/219) onto `cursor/apply-ofwat-enforcement-c0eb` @ `daeffb2`). Restarted **only** `idaho-ticks-x402.service` at **2026-09-09 10:52:32 MDT** (PID 1225420). No collect. Public `GET /warning-letters/manifest.json?q=citra` is **200** / letterCount **1346** / asOf **2026-09-01** / fetchedAt **2026-09-09T14:07:26.807Z** with `id` + `paidUrl` and **no** `sourceUrl` / fda.gov deep link (before: same card leaked `sourceUrl`). Unpaid `GET https://ticks.bnm.farm/warning-letters` is **402** at $0.05; `?id=citra100mg-722606-03042026` is **402** at $0.02. `GET /firm-check?q=citra` is **200** with `paidUrl` and no `sourceUrl`. `/ticks` unpaid still **402** (`tableWhole`). `/.well-known/x402` still **55** doors. Banner `mcp /mcp — 55 tools`. No new collect cron. No lander PR from this apply.
 
 ```bash
 # on the media-box / apollo host
