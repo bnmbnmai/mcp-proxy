@@ -1,0 +1,175 @@
+{
+  "job": "apply PR 221 GET /epa-alj onto live ticks.bnm.farm",
+  "ranOn": "apollo",
+  "hostname": "pop-os",
+  "path": "/epa-alj",
+  "priceUsdc": "0.05",
+  "amountAtomic": "50000",
+  "oneAmountAtomic": "20000",
+  "network": "base",
+  "branch": "cursor/apply-epa-alj-6c6a",
+  "servingSha": "dbaed3c08d12af9d36531baf2a719fdaadb1c49a",
+  "sourcePr": "https://github.com/bnmbnmai/mcp-proxy/pull/221",
+  "sourceBranch": "cursor/epa-alj-door-0cd5",
+  "sourceHead": "3bc1dd70f5b7ee2cb1d7c24534bf2c53c20792b4",
+  "stackedOn": "cursor/apply-strip-free-sourceurl-ec52",
+  "stackedOnSha": "e62a38b45c98b183816852b1e8172c8028108343",
+  "liveServingBefore": "100430e00cef79a2a311420832ab424afb2d7715",
+  "thisApply": "https://github.com/bnmbnmai/mcp-proxy/pull/222",
+  "systemctlUserRestart": {
+    "unit": "idaho-ticks-x402.service",
+    "ok": true,
+    "otherUnitsRestarted": false,
+    "activeEnterTimestamp": "Wed 2026-09-09 16:33:40 MDT",
+    "pidBefore": "1225420",
+    "pidAfter": "1510988",
+    "dockerGwUntouched": "none",
+    "caddyStartedAt": "2026-09-08T17:07:32.766138574Z",
+    "tunnelStartedAt": "2026-09-08T17:07:32.771343842Z",
+    "epaAljDirAddedToUnit": true
+  },
+  "banner": {
+    "epaAlj": "/epa-alj $0.05 USDC",
+    "mcp": "mcp /mcp — 56 tools from /.well-known/x402"
+  },
+  "before": {
+    "epaAljUnpaid": 404,
+    "epaAljManifest": 404,
+    "wellKnown": {
+      "status": 200,
+      "resourceCount": 55,
+      "extraResourceCount": 55,
+      "hasEpaAlj": false
+    },
+    "siblings": {
+      "/ticks": 402
+    }
+  },
+  "collect": {
+    "status": "ok",
+    "dir": "$HOME/projects/mcp-proxy/data/epa-alj",
+    "fetchedAt": "2026-09-09T22:33:32.301Z",
+    "asOf": "2026-09-04",
+    "cardCount": 8,
+    "listedCount": 70,
+    "fetchedPdfs": 5,
+    "skippedNoText": 4,
+    "reused": 0,
+    "addedThisRun": 8,
+    "ids": [
+      "CWA-01-2026-0030-2026-09-04",
+      "FIFRA-07-2023-0135-2026-09-01",
+      "CWA-01-2026-0030-2026-08-04",
+      "CWA-10-2025-0023-2026-06-04",
+      "CWA-01-2026-0030-2026-05-27",
+      "CWA-01-2026-0030-2026-05-06",
+      "CWA-10-2025-0023-2026-04-28",
+      "CWA-07-2019-0262-2025-03-26"
+    ]
+  },
+  "live": {
+    "wellKnown": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "resourceCount": 56,
+      "extraResourceCount": 56,
+      "hasEpaAlj": true,
+      "epaAljUrl": "https://ticks.bnm.farm/epa-alj"
+    },
+    "unpaidGet": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "50000",
+      "extraName": "USD Coin",
+      "resource": "https://ticks.bnm.farm/epa-alj"
+    },
+    "unpaidId": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "id": "FIFRA-07-2023-0135-2026-09-01",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "20000",
+      "extraName": "USD Coin",
+      "resource": "https://ticks.bnm.farm/epa-alj?id=FIFRA-07-2023-0135-2026-09-01"
+    },
+    "manifest": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "cardCount": 8,
+      "asOf": "2026-09-04",
+      "fetchedAt": "2026-09-09T22:33:32.301Z",
+      "product": "epa-alj-decision-bodies",
+      "ids": [
+        "CWA-01-2026-0030-2026-09-04",
+        "FIFRA-07-2023-0135-2026-09-01",
+        "CWA-01-2026-0030-2026-08-04",
+        "CWA-10-2025-0023-2026-06-04",
+        "CWA-01-2026-0030-2026-05-27",
+        "CWA-01-2026-0030-2026-05-06",
+        "CWA-10-2025-0023-2026-04-28",
+        "CWA-07-2019-0262-2025-03-26"
+      ],
+      "hasWilson": true,
+      "hasPepperell": true,
+      "wilson": {
+        "id": "FIFRA-07-2023-0135-2026-09-01",
+        "institution": "Timothy Wilson d/b/a Wilson's Pest Control",
+        "docket": "FIFRA-07-2023-0135",
+        "kind": "Initial Decision",
+        "date": "2026-09-01",
+        "paidUrl": "/epa-alj?id=FIFRA-07-2023-0135-2026-09-01"
+      },
+      "pepperell": {
+        "id": "CWA-01-2026-0030-2026-09-04",
+        "institution": "Pepperell, LLC",
+        "docket": "CWA-01-2026-0030",
+        "kind": "ALJ Order",
+        "date": "2026-09-04",
+        "paidUrl": "/epa-alj?id=CWA-01-2026-0030-2026-09-04"
+      },
+      "hasSourceUrl": false,
+      "bodyLeak": false,
+      "cardKeys": [
+        "before",
+        "date",
+        "docket",
+        "id",
+        "institution",
+        "kind",
+        "page",
+        "paidUrl",
+        "publishedAt",
+        "statute",
+        "title"
+      ],
+      "schemaFields": [
+        "id",
+        "institution",
+        "docket",
+        "kind",
+        "date",
+        "title",
+        "statute"
+      ]
+    },
+    "siblingsStill402": {
+      "/ticks": 402,
+      "/oshrc-orders": 402,
+      "/epa-cafo": 402
+    },
+    "loopback": {
+      "unpaidGet": 402,
+      "manifest": 200,
+      "manifestCardCount": 8,
+      "manifestHasSourceUrl": false
+    }
+  },
+  "excluded": {
+    "catalogMain": "not checked out",
+    "newCollectCron": "not started",
+    "dockerGw": "untouched",
+    "otherUnits": "not restarted",
+    "lander": "pasted after BSEE on live bnm.farm bind-mount; OSHRC card not present"
+  }
+}

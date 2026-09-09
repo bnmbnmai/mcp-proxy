@@ -1,0 +1,27 @@
+# apply PR 221 GET /epa-alj onto live ticks.bnm.farm
+# serving SHA dbaed3c (merge of cursor/epa-alj-door-0cd5 @ 3bc1dd7 onto apply-strip-free-sourceurl-ec52 @ e62a38b)
+# idaho-ticks-x402.service restart Wed 2026-09-09 16:33:40 MDT PID 1510988 (was 1225420)
+# Restarted only that unit (systemctl --user). docker-gw / bnm-caddy / bnm-tunnel untouched.
+
+BEFORE (serving 100430e / e62a38b paperwork)
+GET  https://ticks.bnm.farm/.well-known/x402                          200  resources=55  extra.resourceCount=55  no /epa-alj
+GET  https://ticks.bnm.farm/epa-alj                                    404
+GET  https://ticks.bnm.farm/epa-alj/manifest.json                      404
+GET  https://ticks.bnm.farm/ticks                                      402  sibling
+
+AFTER (serving dbaed3c + seed collect cardCount=8 + restart)
+GET  https://ticks.bnm.farm/.well-known/x402                          200  via: 1.1 Caddy  resources=56  extra.resourceCount=56  has /epa-alj
+GET  https://ticks.bnm.farm/epa-alj                                    402  maxAmountRequired=50000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/epa-alj?id=FIFRA-07-2023-0135-2026-09-01   402  maxAmountRequired=20000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/epa-alj/manifest.json                      200  via: 1.1 Caddy  cardCount=8  asOf=2026-09-04  fetchedAt=2026-09-09T22:33:32.301Z  Wilson+Pepperell  NO sourceUrl  NO body
+GET  https://ticks.bnm.farm/ticks                                      402  sibling
+GET  https://ticks.bnm.farm/oshrc-orders                               402  sibling
+GET  https://ticks.bnm.farm/epa-cafo                                   402  sibling
+
+loopback GET http://127.0.0.1:4020/epa-alj                            402
+loopback GET http://127.0.0.1:4020/epa-alj/manifest.json               200  cardCount=8  no sourceUrl
+
+banner: /epa-alj $0.05 USDC
+banner: mcp /mcp — 56 tools from /.well-known/x402
+collect: EPA_ALJ_LIMIT=8 EPA_ALJ_MAX_FETCH=12  listedCount=70 addedThisRun=8 fetchedPdfs=5 skippedNoText=4
+seeds: FIFRA-07-2023-0135-2026-09-01 (Wilson)  CWA-01-2026-0030-2026-09-04 (Pepperell)

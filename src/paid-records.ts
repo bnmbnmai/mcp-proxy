@@ -67,6 +67,7 @@ export const EXTRACTED_BODY_SKUS = [
   "fmshrc-orders",
   "bsee-reports",
   "oshrc-orders",
+  "epa-alj",
 ] as const;
 
 export type ExtractedBodySku = (typeof EXTRACTED_BODY_SKUS)[number];
@@ -155,6 +156,7 @@ export const EPA_CAFO_TYPE = "epa-cafo";
 export const FMSHRC_ORDERS_TYPE = "fmshrc-orders";
 export const BSEE_REPORTS_TYPE = "bsee-reports";
 export const OSHRC_ORDERS_TYPE = "oshrc-orders";
+export const EPA_ALJ_TYPE = "epa-alj";
 export const CFPB_ORDER_TYPE = "cfpb-order";
 export const OFAC_ORDER_TYPE = "ofac-order";
 export const FRB_ORDER_TYPE = "frb-order";
@@ -215,6 +217,7 @@ export const FMSHRC_ORDERS_SOURCE = "https://www.fmshrc.gov/decisions/alj";
 export const BSEE_REPORTS_SOURCE =
   "https://www.bsee.gov/what-we-do/incident-investigations/offshore-incident-investigations/district-investigation-reports";
 export const OSHRC_ORDERS_SOURCE = "https://www.oshrc.gov/decision-search/";
+export const EPA_ALJ_SOURCE = "https://yosemite.epa.gov/oarm/alj/alj_web_docket.nsf/Decisions+and+Orders?OpenView";
 export const CFPB_ORDER_SOURCE = "https://www.consumerfinance.gov/enforcement/actions/";
 export const OFAC_ORDER_SOURCE = "https://ofac.treasury.gov/civil-penalties-and-enforcement-information";
 export const FRB_ORDER_SOURCE = "https://www.federalreserve.gov/supervisionreg/enforcementactions.htm";
@@ -959,6 +962,10 @@ export function paidBseeReportsBody<T extends CardPayload>(payload: T, opts?: Pa
 
 export function paidOshrcOrdersBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
   return paidCardBody(payload, OSHRC_ORDERS_TYPE, OSHRC_ORDERS_SOURCE, opts);
+}
+
+export function paidEpaAljBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, EPA_ALJ_TYPE, EPA_ALJ_SOURCE, opts);
 }
 
 export function paidIcoMpnBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
