@@ -7517,10 +7517,12 @@ async function main(): Promise<void> {
       assert.equal(man.cards?.[0]?.institution, "Timothy Wilson d/b/a Wilson's Pest Control");
       assert.ok(!("body" in (man.cards?.[0] ?? {})));
       assert.ok(!("sourceUrl" in (man.cards?.[0] ?? {})), "free cards must not leak sourceUrl");
+      assert.ok(!("htmlUrl" in (man.cards?.[0] ?? {})));
+      assert.ok(!("pdfUrl" in (man.cards?.[0] ?? {})));
       assert.ok(man.cards?.[0]?.paidUrl);
+      assert.ok(!JSON.stringify(man.cards).includes("yosemite.epa.gov"), "free cards have no official PDF deep link");
       assert.ok(!JSON.stringify(man).includes("%PDF-"));
       assert.ok(!JSON.stringify(man).includes("distributing or selling 10 different pesticides that were not registered"));
-      assert.ok(!JSON.stringify(man).includes("yosemite.epa.gov"));
 
       const paid = await fetch(`${base}${EPA_ALJ_PATH}`, { headers: { "X-PAYMENT": "test" } });
       assert.equal(paid.status, 200);
