@@ -676,7 +676,7 @@ export function buildUntitledLettersManifest(snap: UntitledLettersSnapshot | nul
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: paidBodyCatalogNote("/untitled-letters", 'Full catalog: count + id + firm + date + product + official URL. Not /warning-letters'),
+    note: paidBodyCatalogNote("/untitled-letters", 'Full catalog: count + id + firm + date + product. Not /warning-letters'),
     license: LICENSE,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
     network: "base",

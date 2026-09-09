@@ -756,7 +756,7 @@ export function buildForm483Manifest(snap: Form483Snapshot | null): Record<strin
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: paidBodyCatalogNote("/form-483", 'Full catalog: count + id + firm + dates + official URL'),
+    note: paidBodyCatalogNote("/form-483", 'Full catalog: count + id + firm + dates'),
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
     network: "base",
     asset: "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",

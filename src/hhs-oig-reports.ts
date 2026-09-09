@@ -933,7 +933,7 @@ export function buildHhsOigReportsManifest(snap: HhsOigReportsSnapshot | null): 
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Free index for /hhs-oig-reports. Count + report number + date + official OIG page + PDF URL only. Paid GET /hhs-oig-reports is the official full HHS OIG Audit / Evaluation or VA OIG audit / inspection / review PDF. Same door. License 17 USC 105.",
+    note: "Free index for /hhs-oig-reports. Count + report number + date + title only. Paid GET /hhs-oig-reports is the official full HHS OIG Audit / Evaluation or VA OIG audit / inspection / review PDF. Same door. License 17 USC 105.",
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: PAY_TO,

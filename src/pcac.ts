@@ -844,7 +844,7 @@ export function buildPcacManifest(snap: PcacSnapshot | null): Record<string, unk
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: paidBodyCatalogNote("/pcac", 'Full catalog: count + substance + date + meeting + mediaId + official URL. Not the FR notice or docket 0001'),
+    note: paidBodyCatalogNote("/pcac", 'Full catalog: count + substance + date + meeting + mediaId. Not the FR notice or docket 0001'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

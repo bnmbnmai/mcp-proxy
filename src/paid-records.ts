@@ -580,12 +580,54 @@ export function paidOneUrl(paidPath: string, id: string): string {
   return `${paidPath}?id=${encodeURIComponent(id)}`;
 }
 
+/** Official deep links that let an agent skip ?id= / the page on a free catalog card. */
+export const FREE_OFFICIAL_DEEP_LINK_KEYS = [
+  "sourceUrl",
+  "officialUrl",
+  "pdfUrl",
+  "htmlUrl",
+  "pageUrl",
+] as const;
+
+export function isOfficialDeepLinkKey(key: string): boolean {
+  return (FREE_OFFICIAL_DEEP_LINK_KEYS as readonly string[]).includes(key);
+}
+
+export function stripOfficialDeepLinksFromFreeCard(row: Record<string, unknown>): Record<string, unknown> {
+  const out: Record<string, unknown> = {};
+  for (const [key, value] of Object.entries(row)) {
+    if (isOfficialDeepLinkKey(key)) continue;
+    out[key] = value;
+  }
+  return out;
+}
+
+function stripOfficialDeepLinkSchema(schema: unknown): unknown {
+  const obj = asObject(schema);
+  if (!obj || !Array.isArray(obj.fields)) return schema;
+  return {
+    ...obj,
+    fields: obj.fields.filter((field) => typeof field !== "string" || !isOfficialDeepLinkKey(field)),
+  };
+}
+
+/** Free discovery only. Paid ?id= / page keep sourceUrl attribution. */
+export function stripOfficialDeepLinksFromFreeManifest(manifest: Record<string, unknown>): Record<string, unknown> {
+  const listKey = Array.isArray(manifest.cards) ? "cards" : Array.isArray(manifest.letters) ? "letters" : null;
+  const next: Record<string, unknown> = { ...manifest };
+  if (listKey) {
+    next[listKey] = asList(manifest[listKey]).map(stripOfficialDeepLinksFromFreeCard);
+  }
+  if (manifest.schema) next.schema = stripOfficialDeepLinkSchema(manifest.schema);
+  return next;
+}
+
 export function decorateExtractedBodyManifest(
   manifest: Record<string, unknown>,
   query: CatalogSearchQuery = {},
 ): Record<string, unknown> {
   const listKey = Array.isArray(manifest.cards) ? "cards" : Array.isArray(manifest.letters) ? "letters" : null;
-  if (!listKey) return manifest;
+  if (!listKey) return stripOfficialDeepLinksFromFreeManifest(manifest);
   const paidPath = str(query.paidPath);
   const rows = filterCatalogRows(attachPaidPageCursors(asList(manifest[listKey])), query).map((row) => {
     const id = officialItemId(row);
@@ -595,14 +637,14 @@ export function decorateExtractedBodyManifest(
   const before = str(query.before);
   const date = str(query.date);
   const searching = Boolean(q || before || date);
-  return {
+  return stripOfficialDeepLinksFromFreeManifest({
     ...manifest,
     [listKey]: rows,
     search: q || null,
     before: before || null,
     date: date || null,
     ...(searching ? { matchCount: rows.length } : {}),
-  };
+  });
 }
 
 function officialItemId(row: Record<string, unknown>): string {

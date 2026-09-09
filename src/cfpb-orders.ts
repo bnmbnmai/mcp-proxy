@@ -749,7 +749,7 @@ export function buildCfpbOrdersManifest(snap: CfpbOrderSnapshot | null): Record<
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: paidBodyCatalogNote("/cfpb-orders", 'Full catalog: count + firm + date + title + fileNo + official URL. Not the enforcement index'),
+    note: paidBodyCatalogNote("/cfpb-orders", 'Full catalog: count + firm + date + title + fileNo. Not the enforcement index'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

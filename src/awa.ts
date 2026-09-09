@@ -652,7 +652,7 @@ export function buildAwaManifest(snap: AwaSnapshot | null): Record<string, unkno
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: paidBodyCatalogNote("/awa", 'Full catalog: count + id + firm + date + official URL. Not the Salesforce metadata index. Not /form-483'),
+    note: paidBodyCatalogNote("/awa", 'Full catalog: count + id + firm + date. Not the Salesforce metadata index. Not /form-483'),
     license: LICENSE,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
     network: "base",

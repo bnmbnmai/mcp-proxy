@@ -2338,7 +2338,17 @@ async function main(): Promise<void> {
       const man = (await manifest.json()) as {
         unlisted?: boolean;
         letterCount?: number;
-        letters?: { firm?: string; body?: string }[];
+        letters?: {
+          id?: string;
+          firm?: string;
+          subject?: string;
+          issuingOffice?: string;
+          paidUrl?: string;
+          page?: number;
+          before?: string | null;
+          body?: string;
+          sourceUrl?: string;
+        }[];
         openapi?: string;
         wellKnown?: string;
       };
@@ -2346,16 +2356,31 @@ async function main(): Promise<void> {
       assert.equal(man.letterCount, 1);
       assert.ok(man.openapi?.endsWith(OPENAPI_PATH));
       assert.ok(man.wellKnown?.endsWith(WELL_KNOWN_PATH));
+      assert.equal(man.letters?.[0]?.id, "citra100mg-722606-03042026");
       assert.equal(man.letters?.[0]?.firm, "Citra100mg");
+      assert.equal(man.letters?.[0]?.subject, "Unapproved New Drugs/Misbranded");
+      assert.equal(man.letters?.[0]?.issuingOffice, "Center for Drug Evaluation and Research");
+      assert.equal(man.letters?.[0]?.paidUrl, "/warning-letters?id=citra100mg-722606-03042026");
+      assert.ok(man.letters?.[0]?.page);
+      assert.ok("before" in (man.letters?.[0] ?? {}));
       assert.ok(!JSON.stringify(man).includes("reviewed your website"));
       assert.ok(!("body" in (man.letters?.[0] ?? {})));
+      assert.ok(!("sourceUrl" in (man.letters?.[0] ?? {})), "free WL cards must not leak sourceUrl");
+      assert.ok(!("officialUrl" in (man.letters?.[0] ?? {})));
+      assert.ok(!JSON.stringify(man.letters).includes("fda.gov"), "free WL cards must not leak FDA.gov");
+
+      const index = await fetch(`${base}/warning-letters/index`);
+      assert.equal(index.status, 200, "/warning-letters/index is the free catalog");
+      const indexBody = (await index.json()) as { letters?: { sourceUrl?: string; paidUrl?: string }[] };
+      assert.ok(!("sourceUrl" in (indexBody.letters?.[0] ?? {})));
+      assert.equal(indexBody.letters?.[0]?.paidUrl, "/warning-letters?id=citra100mg-722606-03042026");
 
       const paid = await fetch(`${base}${WARNING_LETTERS_PATH}`, { headers: { "X-PAYMENT": "test" } });
       assert.equal(paid.status, 200);
       const paidBody = (await paid.json()) as {
         product: string;
         unlisted?: boolean;
-        letters: { firm: string; issuedOn: string; subject: string; body: string }[];
+        letters: { firm: string; issuedOn: string; subject: string; body: string; sourceUrl?: string }[];
       };
       assert.equal(paidBody.product, "fda-warning-letter-bodies");
       assert.equal(paidBody.unlisted, undefined);
@@ -2372,6 +2397,18 @@ async function main(): Promise<void> {
       assert.equal(wlPaid.records?.[0]?.id, "citra100mg-722606-03042026");
       assert.equal(wlPaid.records?.[0]?.type, "warning-letter");
       assert.equal(wlPaid.records?.[0]?.firm, "Citra100mg");
+      assert.match(
+        paidBody.letters[0]?.sourceUrl ?? "",
+        /fda\.gov\/inspections-compliance-enforcement-and-criminal-investigations\/warning-letters\/citra100mg-722606-03042026/,
+        "paid page may still attribute sourceUrl",
+      );
+      const paidOne = await fetch(`${base}${WARNING_LETTERS_PATH}?id=citra100mg-722606-03042026`, {
+        headers: { "X-PAYMENT": "test" },
+      });
+      assert.equal(paidOne.status, 200);
+      const paidOneBody = (await paidOne.json()) as { letters?: { sourceUrl?: string; id?: string }[] };
+      assert.equal(paidOneBody.letters?.[0]?.id, "citra100mg-722606-03042026");
+      assert.match(paidOneBody.letters?.[0]?.sourceUrl ?? "", /fda\.gov\/.*citra100mg-722606-03042026/);
     },
   );
 
@@ -2458,6 +2495,8 @@ async function main(): Promise<void> {
       assert.ok(!JSON.stringify(man).includes("false or misleading"));
       assert.ok(!("body" in (man.cards?.[0] ?? {})));
       assert.ok(!("cites" in (man.cards?.[0] ?? {})));
+      assert.ok(!("sourceUrl" in (man.cards?.[0] ?? {})), "free untitled-letter cards must not leak sourceUrl");
+      assert.ok(!JSON.stringify(man.cards).includes("fda.gov/media"));
       assert.ok(!("said" in (man.cards?.[0] ?? {})));
 
       const paid = await fetch(`${base}${UNTITLED_LETTERS_PATH}`, { headers: { "X-PAYMENT": "test" } });
@@ -6507,6 +6546,9 @@ async function main(): Promise<void> {
       assert.equal(man.asOf, "2026-07-21");
       assert.equal(man.cards?.[0]?.facility, "Bio-Lab Inc. Conyers");
       assert.ok(!("body" in (man.cards?.[0] ?? {})));
+      assert.ok(!("sourceUrl" in (man.cards?.[0] ?? {})), "free CSB cards must not leak sourceUrl");
+      assert.ok(!("pageUrl" in (man.cards?.[0] ?? {})), "free CSB cards must not leak pageUrl");
+      assert.ok(!JSON.stringify(man.cards).includes("csb.gov/assets"));
       assert.ok(!JSON.stringify(man).includes("%PDF-"));
       assert.ok(!JSON.stringify(man).includes("trichloroisocyanuric-acid-runaway-decomposition-sequence"));
 
@@ -6612,6 +6654,9 @@ async function main(): Promise<void> {
       assert.equal(man.asOf, "2026-08-31");
       assert.equal(man.cards?.[0]?.reportNumber, "OAS-24-02-004");
       assert.ok(!("body" in (man.cards?.[0] ?? {})));
+      assert.ok(!("sourceUrl" in (man.cards?.[0] ?? {})), "free HHS OIG cards must not leak sourceUrl");
+      assert.ok(!("pageUrl" in (man.cards?.[0] ?? {})), "free HHS OIG cards must not leak pageUrl");
+      assert.ok(!JSON.stringify(man.cards).includes("oig.hhs.gov/documents"));
       assert.ok(!JSON.stringify(man).includes("%PDF-"));
       assert.ok(!JSON.stringify(man).includes("WHY WE DID THIS AUDIT"));
       assert.ok(!JSON.stringify(man).toLowerCase().includes("updated.csv"));

@@ -869,7 +869,7 @@ export function buildCftcOrdersManifest(snap: CftcOrdersSnapshot | null): Record
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: paidBodyCatalogNote("/cftc-orders", 'Full catalog: count + institution + docket + date + official URL. Not the press/teaser'),
+    note: paidBodyCatalogNote("/cftc-orders", 'Full catalog: count + institution + docket + date. Not the press/teaser'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

@@ -689,7 +689,7 @@ export function buildBseeManifest(snap: BseeSnapshot | null): Record<string, unk
     free: true,
     note: paidBodyCatalogNote(
       BSEE_REPORTS_PATH,
-      "Count + title / date / lease / area-block / accident-type + official PDF URL only. Report body is the paid GET /bsee-reports payload. This free manifest lists the full catalog. Skip BSEE Data Center INC Online Query, INC counts, eWell WAR, platform INC dumps, and CSB / PHMSA / FMSHRC / EPA CAFO / NTSB packs.",
+      "Count + title / date / lease / area-block / accident-type only. Report body is the paid GET /bsee-reports payload. This free manifest lists the full catalog. Skip BSEE Data Center INC Online Query, INC counts, eWell WAR, platform INC dumps, and CSB / PHMSA / FMSHRC / EPA CAFO / NTSB packs.",
     ),
     license: LICENSE,
     attribution: ATTRIBUTION,
