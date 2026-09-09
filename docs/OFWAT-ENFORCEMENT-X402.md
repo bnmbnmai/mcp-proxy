@@ -2,11 +2,11 @@
 
 Official **Ofwat-authored Water Industry Act 1991 enforcement-notice / final-decision / section 19 undertakings TEXT** extracted from public PDFs on `ofwat.gov.uk/wp-content/uploads/`. Official public UK government documents (**OGL v3.0** on the PDF face). Does not invent notice text. Does not sell the HTML investigations / publication / consultation card (index + teaser only). Skip Ofwat open-data / performance CSVs. Skip people files.
 
-**Scope lock:** Company / undertaker enforcement PDFs only (South East Water, Thames Water, Southern Water on the first slice). Keyed on official PDF filename stem. Not CMA CA98. Not ICO MPNs. Not Ofsted inspection reports. Not HSE notices.
+**Scope lock:** Company / undertaker enforcement PDFs only (WIA91 enforcement-notice / final-decision / s.19 undertakings). Keyed on official PDF filename stem. Not CMA CA98. Not ICO MPNs. Not Ofsted inspection reports. Not HSE notices. Not PR24 price-control determinations. Not Ofwat Enforcement Guidance.
 
 Always listed on well-known / OpenAPI / llms.txt / shop catalog. Unpaid `GET /ofwat-enforcement` is HTTP 402. MCP at `/mcp` generates an `ofwat-enforcement` tool from live well-known (do not hardcode a door count).
 
-v1 first slice is the three family seed URLs. Two official texts are harvested (South East Water proposal; Thames Water final decision). The Southern Water section 19 undertakings PDF stays a seed URL — this VM could not fetch a body (live Cloudflare challenge; no Wayback `id_` capture). Do not invent that body.
+The 2026-08 first slice was three seed URLs and stayed teaser-blocked at n=3 because collect never walked official `/enforcement-case-in-*` pages (the investigations hub is cards, not PDFs) and default LIMIT/MAX_FETCH was 3. Official Ofwat still publishes many more matching notices (Anglian, Wessex, Yorkshire, South West Water, Dŵr Cymru, further Thames / South East Water texts). Collect now seeds those official PDFs, follows case-page cards, and defaults LIMIT 20 / MAX_FETCH 24 so twice-daily grow can fatten toward growUntil 20. Live `www.ofwat.gov.uk` may still Cloudflare-challenge; Wayback CDX / `id_` is the fallback for official `wp-content/uploads` PDFs only. Do not invent notice text.
 
 ## Paths
 
@@ -23,10 +23,8 @@ Older pages are another **$0.05** on the same URL (`page` / `before`). If the ca
 
 - Official index (not sold): https://www.ofwat.gov.uk/regulated-companies/investigations/
 - Official PDFs: `https://www.ofwat.gov.uk/wp-content/uploads/YYYY/MM/*.pdf`
-- Seed PDFs:
-  - https://www.ofwat.gov.uk/wp-content/uploads/2026/03/Notice-of-Ofwats-proposal-to-issue-an-enforcement-order-and-impose-a-penalty.pdf
-  - https://www.ofwat.gov.uk/wp-content/uploads/2024/08/2025-05-28-Thames-Water-Final-Decision-Document-REDACTED.pdf
-  - https://www.ofwat.gov.uk/wp-content/uploads/2026/02/Notice-of-Ofwats-decision-to-accept-section-19-undertakings-from-Southern-Water-Services-Limited.pdf
+- Official case pages (index + teaser only; PDFs on the card are the sold unit): `/enforcement-case-in-*` plus the sewage-investigation updates page
+- Seed PDFs include the original three plus later official notices (South East Water s.19 decision, Anglian / Wessex / Yorkshire / South West Water s.19, Dŵr Cymru, further Thames texts). See `SEED_LISTINGS` in `src/ofwat-enforcement.ts`.
 - License: **OGL v3.0**. Attribution: Ofwat (Water Services Regulation Authority). Contains public sector information licensed under the Open Government Licence v3.0. Logos reserved.
 
 Paid body keeps `cards[]` fields. Alongside those keys the paid JSON adds `records[]` (`id`, `date`, `firm`, `url`, `type=ofwat-enforcement`), `recordCount`, honest `asOf` / `fetchedAt`, and `source` (the official investigations hub). A repeat buyer diffs `asOf` + record ids.
@@ -60,9 +58,14 @@ npm run build
 sudo systemctl restart idaho-ticks-x402.service
 ```
 
-Collector (later growth; first slice stays thin — do not recrawl a fat archive):
+Collector (twice-daily grow; cached ids do not consume LIMIT):
 
 ```bash
 export OFWAT_ENFORCEMENT_DIR=$HOME/projects/mcp-proxy/data/ofwat-enforcement
-OFWAT_ENFORCEMENT_LIMIT=3 OFWAT_ENFORCEMENT_MAX_FETCH=3 npm run collect:ofwat-enforcement
+# ticks-collect.sh already sets LIMIT=24 MAX_FETCH=36. Bare collect defaults to 20 / 24.
+npm run collect:ofwat-enforcement
 ```
+
+After apply, `/ofwat-enforcement` should log `grew` (n>3) or `current` once the official matching set is cached — not `teaser-blocked` forever. Id/date-only dry-collect proof: `docs/curl/ofwat-enforcement-grow-summary.json`.
+
+Applied on apollo (2026-09-08): **serving SHA `ef036aa`** (apply-record [PR 218](https://github.com/bnmbnmai/mcp-proxy/pull/218); cherry-pick of [PR 216](https://github.com/bnmbnmai/mcp-proxy/pull/216) `7aaeda5` onto `cursor/apply-eis-captcha-bd48` @ `1a363e4` / prior serving `9b8953b`). Restarted **only** `idaho-ticks-x402.service` at **2026-09-08 22:55:23 MDT** (PID 615917). One-door collect EXIT 0: listedCount **15**, `addedThisRun` 12 + reused 3, `fetchedPdfs` 12. Public unpaid manifest **200** / **cardCount 3 → 15** / asOf **2026-03-01** / fetchedAt **2026-09-09T04:54:40.539Z**. Free index is id/institution/date/sourceUrl only (Anglian, Wessex, Yorkshire, South West Water, Dŵr Cymru, Northumbrian, further Thames / South East Water). Unpaid `GET https://ticks.bnm.farm/ofwat-enforcement` is **402** at $0.05; `?id=` SEW proposal is **402** at $0.02. `/.well-known/x402` still lists `/ofwat-enforcement` among **55** doors. Banner `mcp /mcp — 55 tools`. Siblings `/ticks` `/ofgem-enforcement` `/orr-enforcement` still 402. No new collect cron. No lander PR from this apply.

@@ -6,7 +6,7 @@
  * CSVs. Skip people files. Not CMA / ICO / Ofsted / HSE.
  */
 
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
@@ -20,6 +20,17 @@ export const PRODUCT_ID = "ofwat-wia91-enforcement-bodies";
 export const PRODUCT_NAME = "Ofwat Water Industry Act 1991 enforcement-notice text";
 
 export const HUB_URL = "https://www.ofwat.gov.uk/regulated-companies/investigations/";
+export const SEWAGE_INDEX_URL =
+  "https://www.ofwat.gov.uk/investigation-into-sewage-treatment-works-and-networks/";
+export const SEWAGE_UPDATES_URL =
+  "https://www.ofwat.gov.uk/investigation-into-sewage-treatment-works-and-networks/previous-updates-on-the-investigation-into-sewage-treatment-works/";
+export const INDEX_PAGES = [HUB_URL, SEWAGE_INDEX_URL, SEWAGE_UPDATES_URL] as const;
+export const CASE_PAGES = [
+  "https://www.ofwat.gov.uk/enforcement-case-in-yorkshire-waters-management-of-its-sewage-treatment-works-and-sewerage-networks/",
+  "https://www.ofwat.gov.uk/enforcement-case-in-anglian-waters-management-of-its-sewage-treatment-works-and-sewerage-networks/",
+  "https://www.ofwat.gov.uk/enforcement-case-in-thames-waters-management-of-its-sewage-treatment-works-and-sewerage-networks/",
+] as const;
+export const CASE_PATH_RE = /^\/enforcement-case-in-[a-z0-9-]{8,220}\/?$/i;
 export const PDF_HOST = "www.ofwat.gov.uk";
 export const PDF_ORIGIN = "https://www.ofwat.gov.uk";
 export const LICENSE = "Crown copyright / Open Government Licence v3.0";
@@ -81,41 +92,162 @@ const OPEN_DATA =
 const CSV_OR_JSON_WRAP = /^\s*[\[{]|^\s*"[^"]+",|^\s*\w+,(\w+,)+\w+/;
 const HTML_TEASER =
   /\b(read the (?:full )?(?:notice|decision|document)|download the pdf|this consultation has (?:now )?closed)\b/i;
+const NOTICE_BLOB =
+  /\b(notice of ofwat|section[- ]?19|s\.?19|undertakings?|enforcement order|financial penalty|final[- ]decision|proposal to (?:issue|accept|impose))\b/i;
+const NOT_A_NOTICE =
+  /\b(enforcement guidance|approach-to-enforcement|visual[- ]summary|pr24|price control|wrmp|open[- ]data|company monitoring|final determination of price|notification of the pr24|overview of .{0,80}pr24)\b/i;
+const UNDERTAKER =
+  /\b(south east water|thames water|southern water|anglian water|yorkshire water|wessex water|northumbrian water|south west water|d[wŵ]r cymru|welsh water|united utilities|severn trent|hafren dyfrdwy|affinity water|portsmouth water|bristol water|ses water|albion water|ofwat|undertaker)\b/i;
+
+function seed(
+  id: string,
+  docket: string,
+  institution: string,
+  date: string,
+  kind: string,
+  title: string,
+  sourceUrl: string,
+  pageUrl = HUB_URL,
+): OfwatEnforcementListing {
+  return { id, docket, institution, date, kind, title, pageUrl, sourceUrl };
+}
 
 export const SEED_LISTINGS: OfwatEnforcementListing[] = [
-  {
-    id: "Notice-of-Ofwats-proposal-to-issue-an-enforcement-order-and-impose-a-penalty",
-    docket: "sew-enforcement-proposal-2026-03",
-    institution: "South East Water Limited",
-    date: "2026-03-01",
-    kind: "enforcement-notice",
-    title: "Notice of Ofwat's proposal to issue an enforcement order and impose a penalty",
-    pageUrl: HUB_URL,
-    sourceUrl:
-      "https://www.ofwat.gov.uk/wp-content/uploads/2026/03/Notice-of-Ofwats-proposal-to-issue-an-enforcement-order-and-impose-a-penalty.pdf",
-  },
-  {
-    id: "2025-05-28-Thames-Water-Final-Decision-Document-REDACTED",
-    docket: "thames-final-decision-2025-05-28",
-    institution: "Thames Water",
-    date: "2025-05-28",
-    kind: "final-decision",
-    title: "Notice of Ofwat's decision to issue an enforcement order and impose a financial penalty on Thames Water",
-    pageUrl: HUB_URL,
-    sourceUrl:
-      "https://www.ofwat.gov.uk/wp-content/uploads/2024/08/2025-05-28-Thames-Water-Final-Decision-Document-REDACTED.pdf",
-  },
-  {
-    id: "Notice-of-Ofwats-decision-to-accept-section-19-undertakings-from-Southern-Water-Services-Limited",
-    docket: "southern-s19-undertakings-2026-02",
-    institution: "Southern Water Services Limited",
-    date: "2026-02-01",
-    kind: "s19-undertakings",
-    title: "Notice of Ofwat's decision to accept section 19 undertakings from Southern Water Services Limited",
-    pageUrl: HUB_URL,
-    sourceUrl:
-      "https://www.ofwat.gov.uk/wp-content/uploads/2026/02/Notice-of-Ofwats-decision-to-accept-section-19-undertakings-from-Southern-Water-Services-Limited.pdf",
-  },
+  seed(
+    "Notice-of-Ofwats-proposal-to-issue-an-enforcement-order-and-impose-a-penalty",
+    "sew-enforcement-proposal-2026-03",
+    "South East Water Limited",
+    "2026-03-01",
+    "enforcement-notice",
+    "Notice of Ofwat's proposal to issue an enforcement order and impose a penalty",
+    "https://www.ofwat.gov.uk/wp-content/uploads/2026/03/Notice-of-Ofwats-proposal-to-issue-an-enforcement-order-and-impose-a-penalty.pdf",
+  ),
+  seed(
+    "Notice-of-Ofwats-decision-to-accept-section-19-undertakings-from-South-East-Water",
+    "sew-s19-undertakings-2026-03",
+    "South East Water Limited",
+    "2026-03-01",
+    "s19-undertakings",
+    "Notice of Ofwat's decision to accept section 19 undertakings from South East Water",
+    "https://www.ofwat.gov.uk/wp-content/uploads/2026/03/Notice-of-Ofwats-decision-to-accept-section-19-undertakings-from-South-East-Water.pdf",
+  ),
+  seed(
+    "Notice-of-Ofwats-proposal-to-accept-Section-19-undertakings-from-Dwr-Cymru-Cyfyngedig",
+    "dwr-cymru-s19-proposal-2026-03",
+    "Dwr Cymru Cyfyngedig",
+    "2026-03-01",
+    "s19-undertakings",
+    "Notice of Ofwat's proposal to accept Section 19 undertakings from Dwr Cymru Cyfyngedig",
+    "https://www.ofwat.gov.uk/wp-content/uploads/2026/03/Notice-of-Ofwats-proposal-to-accept-Section-19-undertakings-from-Dwr-Cymru-Cyfyngedig.pdf",
+  ),
+  seed(
+    "Notice-of-Ofwats-decision-to-accept-section-19-undertakings-from-Southern-Water-Services-Limited",
+    "southern-s19-undertakings-2026-02",
+    "Southern Water Services Limited",
+    "2026-02-01",
+    "s19-undertakings",
+    "Notice of Ofwat's decision to accept section 19 undertakings from Southern Water Services Limited",
+    "https://www.ofwat.gov.uk/wp-content/uploads/2026/02/Notice-of-Ofwats-decision-to-accept-section-19-undertakings-from-Southern-Water-Services-Limited.pdf",
+  ),
+  seed(
+    "Notice-of-Ofwats-decision-to-accept-section-19-undertakings-from-Wessex-Water-Services-Limited",
+    "wessex-s19-undertakings-2025-11",
+    "Wessex Water Services Limited",
+    "2025-11-01",
+    "s19-undertakings",
+    "Notice of Ofwat's decision to accept section 19 undertakings from Wessex Water Services Limited",
+    "https://www.ofwat.gov.uk/wp-content/uploads/2025/11/Notice-of-Ofwats-decision-to-accept-section-19-undertakings-from-Wessex-Water-Services-Limited.pdf",
+  ),
+  seed(
+    "Ofwats-decision-to-accept-section-19-undertakings-from-Anglian-Water-Services-Limited",
+    "anglian-s19-undertakings-2025-07",
+    "Anglian Water Services Limited",
+    "2025-07-01",
+    "s19-undertakings",
+    "Notice of Ofwat's decision to accept section 19 undertakings from Anglian Water Services Limited",
+    "https://www.ofwat.gov.uk/wp-content/uploads/2025/07/Ofwats-decision-to-accept-section-19-undertakings-from-Anglian-Water-Services-Limited.pdf",
+  ),
+  seed(
+    "Notice-of-Ofwats-proposal-to-accept-Anglians-section-19-undertaking-1",
+    "anglian-s19-proposal-2025-07",
+    "Anglian Water Services Limited",
+    "2025-07-01",
+    "s19-undertakings",
+    "Notice of Ofwat's proposal to accept section 19 undertakings from Anglian Water Services Limited",
+    "https://www.ofwat.gov.uk/wp-content/uploads/2025/07/Notice-of-Ofwats-proposal-to-accept-Anglians-section-19-undertaking-1.pdf",
+  ),
+  seed(
+    "Ofwats-decision-to-accept-section-19-undertakings-from-South-West-Water-Services-Limited",
+    "sww-s19-undertakings-2025-07",
+    "South West Water Limited",
+    "2025-07-01",
+    "s19-undertakings",
+    "Notice of Ofwat's decision to accept section 19 undertakings from South West Water Services Limited",
+    "https://www.ofwat.gov.uk/wp-content/uploads/2025/07/Ofwats-decision-to-accept-section-19-undertakings-from-South-West-Water-Services-Limited.pdf",
+  ),
+  seed(
+    "2025-05-28-Thames-Water-Final-Decision-Document-REDACTED",
+    "thames-final-decision-2025-05-28",
+    "Thames Water",
+    "2025-05-28",
+    "final-decision",
+    "Notice of Ofwat's decision to issue an enforcement order and impose a financial penalty on Thames Water",
+    "https://www.ofwat.gov.uk/wp-content/uploads/2024/08/2025-05-28-Thames-Water-Final-Decision-Document-REDACTED.pdf",
+  ),
+  seed(
+    "2025-05-28-Thames-Waters-Dividend-Payments-and-ConditIon-P30-Final-Decision",
+    "thames-p30-final-decision-2025-05-28",
+    "Thames Water",
+    "2025-05-28",
+    "final-decision",
+    "Notice of Ofwat's decision to impose a financial penalty on Thames Water as a result of its contravention of Condition P30",
+    "https://www.ofwat.gov.uk/wp-content/uploads/2024/12/2025-05-28-Thames-Waters-Dividend-Payments-and-ConditIon-P30-Final-Decision.pdf",
+  ),
+  seed(
+    "Notice-of-Ofwats-decision-to-accept-section-19-undertakings-from-Yorkshire-Water",
+    "yorkshire-s19-undertakings-2024-08",
+    "Yorkshire Water Services Limited",
+    "2024-08-01",
+    "s19-undertakings",
+    "Notice of Ofwat's decision to accept section 19 undertakings from Yorkshire Water",
+    "https://www.ofwat.gov.uk/wp-content/uploads/2024/08/Notice-of-Ofwats-decision-to-accept-section-19-undertakings-from-Yorkshire-Water.pdf",
+  ),
+  seed(
+    "Notice-of-Ofwats-proposal-to-issue-an-enforcement-order-and-impose-a-financial-penalty-on-Thames-Water",
+    "thames-enforcement-proposal-2024-08",
+    "Thames Water",
+    "2024-08-01",
+    "enforcement-notice",
+    "Notice of Ofwat's proposal to issue an enforcement order and impose a financial penalty on Thames Water",
+    "https://www.ofwat.gov.uk/wp-content/uploads/2024/08/Notice-of-Ofwats-proposal-to-issue-an-enforcement-order-and-impose-a-financial-penalty-on-Thames-Water.pdf",
+  ),
+  seed(
+    "Notice-of-Ofwats-proposal-to-issue-an-enforcement-order-and-impose-a-financial-penalty-on-Northumbrian-Water",
+    "northumbrian-enforcement-proposal-2024-08",
+    "Northumbrian Water Limited",
+    "2024-08-01",
+    "enforcement-notice",
+    "Notice of Ofwat's proposal to issue an enforcement order and impose a financial penalty on Northumbrian Water",
+    "https://www.ofwat.gov.uk/wp-content/uploads/2024/08/Notice-of-Ofwats-proposal-to-issue-an-enforcement-order-and-impose-a-financial-penalty-on-Northumbrian-Water.pdf",
+  ),
+  seed(
+    "Ofwats-decision-to-accept-undertakings-from-Thames-Water-Utilities-Limited",
+    "thames-s19-p26-2024-08",
+    "Thames Water",
+    "2024-08-01",
+    "s19-undertakings",
+    "Ofwat's decision to accept undertakings from Thames Water Utilities Limited for the purposes of section 19",
+    "https://www.ofwat.gov.uk/wp-content/uploads/2024/08/Ofwats-decision-to-accept-undertakings-from-Thames-Water-Utilities-Limited.pdf",
+  ),
+  seed(
+    "Ofwats-final-decision-to-impose-a-financial-penalty-on-Dwr-Cymru-Cyfyngedig",
+    "dwr-cymru-penalty-2024-05",
+    "Dwr Cymru Cyfyngedig",
+    "2024-05-01",
+    "final-decision",
+    "Ofwat's final decision to impose a financial penalty on Dwr Cymru Cyfyngedig",
+    "https://www.ofwat.gov.uk/wp-content/uploads/2024/05/Ofwats-final-decision-to-impose-a-financial-penalty-on-Dwr-Cymru-Cyfyngedig.pdf",
+  ),
 ];
 
 function env(name: string, fallback = ""): string {
@@ -178,8 +310,17 @@ export function pdfIdFromUrl(url: string | null | undefined): string | null {
 
 export function isPeopleRow(row: Pick<OfwatEnforcementListing, "institution" | "title" | "id">): boolean {
   const blob = `${row.institution || ""} ${row.title || ""} ${row.id || ""}`;
-  if (/\b(south east water|thames water|southern water|ofwat|undertaker)\b/i.test(blob)) return false;
+  if (UNDERTAKER.test(blob)) return false;
   return PEOPLE_ONLY.test(blob) || /^[A-Z][a-z]+(?:\s+[A-Z][a-z]+){1,3}$/.test((row.institution || "").trim());
+}
+
+export function isCandidateNotice(blob: string): boolean {
+  const t = String(blob || "");
+  if (NOT_A_NOTICE.test(t) && !NOTICE_BLOB.test(t)) return false;
+  if (/\b(final determination of price|notification of the pr24|overview of .{0,80}pr24)\b/i.test(t)) {
+    return false;
+  }
+  return NOTICE_BLOB.test(t);
 }
 
 export function isOpenDataOrCsvUrl(url: string | null | undefined): boolean {
@@ -197,9 +338,12 @@ export function parseHubHtml(html: string, pageUrl = HUB_URL): OfwatEnforcementL
     if (!abs) continue;
     const id = pdfIdFromUrl(abs);
     if (!id || seen.has(id) || isOpenDataOrCsvUrl(abs)) continue;
+    const after = html.slice(m.index, Math.min(html.length, m.index + 280));
+    const linkText = decodeEntities((after.match(/>([\s\S]*?)<\/a>/i)?.[1] || "").replace(/<[^>]+>/g, " "));
+    const title = (linkText || id).slice(0, 180);
+    if (!isCandidateNotice(`${title} ${id} ${abs}`)) continue;
     seen.add(id);
     const around = html.slice(Math.max(0, m.index - 400), Math.min(html.length, m.index + 400));
-    const title = decodeEntities(around.replace(/<[^>]+>/g, " ")).slice(0, 180) || id;
     out.push({
       id,
       docket: id,
@@ -220,7 +364,14 @@ export function parseListingRows(rows: OfwatEnforcementListing[]): OfwatEnforcem
   for (const row of rows) {
     const sourceUrl = officialOfwatPdfUrl(row.sourceUrl);
     const id = row.id || pdfIdFromUrl(sourceUrl) || "";
-    if (!sourceUrl || !id || seen.has(id) || isPeopleRow({ ...row, id }) || isOpenDataOrCsvUrl(sourceUrl)) {
+    if (
+      !sourceUrl ||
+      !id ||
+      seen.has(id) ||
+      isPeopleRow({ ...row, id }) ||
+      isOpenDataOrCsvUrl(sourceUrl) ||
+      !isCandidateNotice(`${row.title || ""} ${id} ${sourceUrl}`)
+    ) {
       continue;
     }
     seen.add(id);
@@ -241,9 +392,40 @@ export function parseListingRows(rows: OfwatEnforcementListing[]): OfwatEnforcem
 function institutionFromBlob(raw: string): string {
   const t = String(raw || "");
   if (/south east water/i.test(t)) return "South East Water Limited";
+  if (/south west water/i.test(t)) return "South West Water Limited";
   if (/thames water/i.test(t)) return "Thames Water";
   if (/southern water/i.test(t)) return "Southern Water Services Limited";
+  if (/anglian water/i.test(t)) return "Anglian Water Services Limited";
+  if (/yorkshire water/i.test(t)) return "Yorkshire Water Services Limited";
+  if (/wessex water/i.test(t)) return "Wessex Water Services Limited";
+  if (/northumbrian water/i.test(t)) return "Northumbrian Water Limited";
+  if (/d[wŵ]r cymru|welsh water/i.test(t)) return "Dwr Cymru Cyfyngedig";
+  if (/united utilities/i.test(t)) return "United Utilities Water Limited";
+  if (/severn trent/i.test(t)) return "Severn Trent Water Limited";
+  if (/hafren dyfrdwy/i.test(t)) return "Hafren Dyfrdwy Cyfyngedig";
   return "";
+}
+
+export function parseCasePageUrls(html: string, pageUrl = HUB_URL): string[] {
+  const out: string[] = [];
+  const seen = new Set<string>();
+  const hrefRe = /href=["']([^"']+)["']/gi;
+  let m: RegExpExecArray | null;
+  while ((m = hrefRe.exec(html))) {
+    try {
+      const u = new URL(m[1].replace(/&amp;/g, "&"), pageUrl);
+      if (!OFFICIAL_HOSTS.has(u.hostname.toLowerCase())) continue;
+      const path = (u.pathname.replace(/\/+$/, "") || "/") + "/";
+      if (!CASE_PATH_RE.test(path) && !CASE_PATH_RE.test(u.pathname)) continue;
+      const abs = `${PDF_ORIGIN}${u.pathname.replace(/\/+$/, "")}/`;
+      if (seen.has(abs)) continue;
+      seen.add(abs);
+      out.push(abs);
+    } catch {
+      /* skip */
+    }
+  }
+  return out;
 }
 
 function kindFromBlob(raw: string): string {
@@ -376,25 +558,46 @@ export function writeOfwatEnforcementSnapshot(snap: OfwatEnforcementSnapshot): v
   writeFileSync(path, JSON.stringify(snap, null, 2) + "\n");
 }
 
+async function fetchPdfCandidate(url: string): Promise<Uint8Array | null> {
+  const res = await fetch(url, {
+    headers: { "User-Agent": HTTP_UA, Accept: "application/pdf,*/*" },
+  });
+  if (!res.ok) return null;
+  const bytes = new Uint8Array(await res.arrayBuffer());
+  return new TextDecoder().decode(bytes.slice(0, 5)) === "%PDF-" ? bytes : null;
+}
+
+async function waybackPdfUrls(official: string): Promise<string[]> {
+  const guessed = [
+    `https://web.archive.org/web/id_/${official}`,
+    `https://web.archive.org/web/2026/${official}`,
+    `https://web.archive.org/web/2025/${official}`,
+    `https://web.archive.org/web/2024/${official}`,
+  ];
+  try {
+    const cdx = `https://web.archive.org/cdx/search/cdx?url=${encodeURIComponent(official)}&output=json&fl=timestamp,statuscode,mimetype&filter=statuscode:200&limit=5`;
+    const res = await fetch(cdx, { headers: { "User-Agent": HTTP_UA, Accept: "application/json" } });
+    if (!res.ok) return guessed;
+    const rows = (await res.json()) as string[][];
+    const captures = rows
+      .slice(1)
+      .filter((row) => row[1] === "200" && /pdf/i.test(row[2] || ""))
+      .map((row) => `https://web.archive.org/web/${row[0]}id_/${official}`);
+    return [...captures, ...guessed];
+  } catch {
+    return guessed;
+  }
+}
+
 export async function fetchOfwatBytes(url: string): Promise<Uint8Array> {
   const official = officialOfwatPdfUrl(url) || url;
-  const res = await fetch(official, {
-    headers: { "User-Agent": HTTP_UA, Accept: "application/pdf,*/*" },
-  });
-  if (res.ok) {
-    const bytes = new Uint8Array(await res.arrayBuffer());
-    if (new TextDecoder().decode(bytes.slice(0, 5)) === "%PDF-") return bytes;
+  const live = await fetchPdfCandidate(official).catch(() => null);
+  if (live) return live;
+  for (const wb of await waybackPdfUrls(official)) {
+    const archived = await fetchPdfCandidate(wb).catch(() => null);
+    if (archived) return archived;
   }
-  const wb = `https://web.archive.org/web/id_/${official}`;
-  const archived = await fetch(wb, {
-    headers: { "User-Agent": HTTP_UA, Accept: "application/pdf,*/*" },
-  });
-  if (!archived.ok) throw new Error(`${official} HTTP ${res.status}; wayback HTTP ${archived.status}`);
-  const bytes = new Uint8Array(await archived.arrayBuffer());
-  if (new TextDecoder().decode(bytes.slice(0, 5)) !== "%PDF-") {
-    throw new Error(`${official} is not an official PDF`);
-  }
-  return bytes;
+  throw new Error(`${official} is not an official PDF (live Cloudflare-blocked; Wayback had no PDF capture)`);
 }
 
 export function pdfToText(pdfPath: string): string {
@@ -412,13 +615,51 @@ function listingDir(): string {
 }
 
 function firstSliceLimit(): number {
-  const n = Number(env("OFWAT_ENFORCEMENT_LIMIT", "3"));
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 3;
+  const n = Number(env("OFWAT_ENFORCEMENT_LIMIT", "20"));
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 20;
 }
 
 function maxFetchLimit(): number {
-  const n = Number(env("OFWAT_ENFORCEMENT_MAX_FETCH", "3"));
-  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 3;
+  const n = Number(env("OFWAT_ENFORCEMENT_MAX_FETCH", "24"));
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 24;
+}
+
+function maxCasePages(): number {
+  const n = Number(env("OFWAT_ENFORCEMENT_MAX_CASES", "24"));
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 24;
+}
+
+function pause(ms: number): Promise<void> {
+  return new Promise((resolvePause) => setTimeout(resolvePause, ms));
+}
+
+function isCloudflareBlock(html: string): boolean {
+  return /you can.?t access this page right now/i.test(html) || /unusual traffic or a technical issue/i.test(html);
+}
+
+export async function fetchOfwatHtml(url: string): Promise<string> {
+  const headers = { "User-Agent": HTTP_UA, Accept: "text/html,*/*" };
+  try {
+    const res = await fetch(url, { headers });
+    if (res.ok) {
+      const html = await res.text();
+      if (html && !isCloudflareBlock(html)) return html;
+    }
+  } catch {
+    /* fall through to Wayback */
+  }
+  const waybacks = [`https://web.archive.org/web/id_/${url}`, `https://web.archive.org/web/2026/${url}`];
+  for (const wb of waybacks) {
+    try {
+      const archived = await fetch(wb, { headers });
+      if (!archived.ok) continue;
+      const html = await archived.text();
+      if (html && !isCloudflareBlock(html)) return html;
+    } catch {
+      /* try next capture */
+    }
+  }
+  throw new Error(`${url} HTML blocked on live Ofwat and Wayback`);
 }
 
 function readNamedFile(dir: string, names: string[]): string | null {
@@ -430,17 +671,61 @@ function readNamedFile(dir: string, names: string[]): string | null {
   return null;
 }
 
+function fixtureHtmlFiles(dir: string): string[] {
+  const named = ["listing-excerpt.html", "listing.html", "hub.html", "case-card-excerpt.html"];
+  let extras: string[] = [];
+  try {
+    extras = readdirSync(dir).filter((name) => /^case-.+\.html$/i.test(name) && !named.includes(name));
+  } catch {
+    extras = [];
+  }
+  return [...named, ...extras];
+}
+
+async function walkOfficialPages(
+  pauseMs: number,
+): Promise<{ listed: OfwatEnforcementListing[]; pages: string[] }> {
+  const listed: OfwatEnforcementListing[] = [];
+  const pages: string[] = [...INDEX_PAGES, ...CASE_PAGES];
+  const seen = new Set<string>(pages);
+  const cap = maxCasePages() + INDEX_PAGES.length;
+  for (let i = 0; i < pages.length && i < cap; i += 1) {
+    const url = pages[i];
+    try {
+      if (pauseMs && i > 0) await pause(pauseMs);
+      const html = await fetchOfwatHtml(url);
+      listed.push(...parseHubHtml(html, url));
+      for (const caseUrl of parseCasePageUrls(html, url)) {
+        if (seen.has(caseUrl) || pages.length >= cap) continue;
+        seen.add(caseUrl);
+        pages.push(caseUrl);
+      }
+    } catch {
+      /* one official page missed; seeds + other pages still grow the bag */
+    }
+  }
+  return { listed, pages };
+}
+
 async function loadOfficialListings(
   dir: string,
+  pauseMs = 0,
 ): Promise<{ listed: OfwatEnforcementListing[]; listedCount: number }> {
   if (dir) {
-    const html = readNamedFile(dir, ["listing-excerpt.html", "listing.html", "hub.html"]);
-    const fromHtml = html ? parseHubHtml(html, HUB_URL) : [];
+    const fromHtml: OfwatEnforcementListing[] = [];
+    for (const name of fixtureHtmlFiles(dir)) {
+      const html = readNamedFile(dir, [name]);
+      if (!html) continue;
+      const pageUrl = /case-/.test(name) ? CASE_PAGES[1] : HUB_URL;
+      fromHtml.push(...parseHubHtml(html, pageUrl));
+    }
     const extra = SEED_LISTINGS.filter((row) => existsSync(join(dir, `${row.id}.txt`)));
     const listed = parseListingRows([...fromHtml, ...extra]);
     return { listed, listedCount: listed.length };
   }
-  return { listed: parseListingRows(SEED_LISTINGS), listedCount: SEED_LISTINGS.length };
+  const walked = await walkOfficialPages(pauseMs);
+  const listed = parseListingRows([...SEED_LISTINGS, ...walked.listed]);
+  return { listed, listedCount: listed.length };
 }
 
 export async function collectOfwatEnforcement(opts?: {
@@ -450,7 +735,7 @@ export async function collectOfwatEnforcement(opts?: {
   maxFetch?: number;
 }): Promise<OfwatEnforcementSnapshot> {
   const dir = opts?.htmlDir ?? listingDir();
-  const { listed: allListed, listedCount } = await loadOfficialListings(dir);
+  const { listed: allListed, listedCount } = await loadOfficialListings(dir, opts?.pauseMs ?? 0);
   const target = opts?.limit ?? firstSliceLimit();
   const fetchCap = opts?.maxFetch ?? (dir ? 0 : maxFetchLimit());
   const cacheDir = ofwatEnforcementDir();

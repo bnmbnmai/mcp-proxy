@@ -1,0 +1,29 @@
+# apply PR 216 /ofwat-enforcement teaser unstick — live ticks.bnm.farm
+# serving SHA ef036aa (cherry-pick 7aaeda5 onto EIS tip 9b8953b / 1a363e4)
+# idaho-ticks-x402.service restart Tue 2026-09-08 22:55:23 MDT PID 615917
+# Restarted only that unit. docker / idaho-ticks-x402-docker-gw untouched.
+
+BEFORE
+GET  https://ticks.bnm.farm/.well-known/x402               200  resources=55  has /ofwat-enforcement
+GET  https://ticks.bnm.farm/ofwat-enforcement              402  maxAmountRequired=50000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/ofwat-enforcement/manifest.json 200  cardCount=3  asOf=2026-03-01  fetchedAt=2026-09-09T04:12:50.391Z  3 seed ids  no body
+GET  https://ticks.bnm.farm/ticks                          402  sibling
+GET  https://ticks.bnm.farm/ofgem-enforcement              402  sibling
+GET  https://ticks.bnm.farm/orr-enforcement                402  sibling
+
+AFTER (cherry-pick ef036aa + one-door collect cardCount 15 + restart)
+GET  https://ticks.bnm.farm/.well-known/x402               200  via: 1.1 Caddy  resources=55  extra.resourceCount=55  has /ofwat-enforcement
+GET  https://ticks.bnm.farm/ofwat-enforcement              402  maxAmountRequired=50000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/ofwat-enforcement?id=Notice-of-Ofwats-proposal-to-issue-an-enforcement-order-and-impose-a-penalty  402  maxAmountRequired=20000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/ofwat-enforcement/manifest.json 200  via: 1.1 Caddy  cardCount=15  asOf=2026-03-01  fetchedAt=2026-09-09T04:54:40.539Z  no body
+GET  https://ticks.bnm.farm/ticks                          402  sibling
+GET  https://ticks.bnm.farm/ofgem-enforcement              402  sibling
+GET  https://ticks.bnm.farm/orr-enforcement                402  sibling
+GET  https://ticks.bnm.farm/eis-reports                    402  sibling
+
+loopback GET http://127.0.0.1:4020/ofwat-enforcement       402
+loopback GET manifest                                      200  cardCount=15
+
+banner: /ofwat-enforcement $0.05 USDC
+banner: mcp /mcp — 55 tools from /.well-known/x402
+collect: EXIT 0 listedCount=15 addedThisRun=12 reused=3 fetchedPdfs=12 skippedNoText=0
