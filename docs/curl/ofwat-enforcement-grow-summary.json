@@ -1,0 +1,49 @@
+{
+  "product": "ofwat-wia91-enforcement-bodies",
+  "status": "ok",
+  "fetchedAt": "2026-09-09T04:35:31.681Z",
+  "asOf": "2026-03-01",
+  "cardCount": 5,
+  "listedCount": 15,
+  "fetchedPdfs": 5,
+  "skippedNoText": 4,
+  "addedThisRun": 5,
+  "note": "Id/date/sourceUrl only. Notice body stays out of git. Live ofwat.gov.uk was Cloudflare 403 from this VM; official texts came from Wayback captures of the same wp-content/uploads URLs.",
+  "cards": [
+    {
+      "id": "Notice-of-Ofwats-proposal-to-issue-an-enforcement-order-and-impose-a-penalty",
+      "institution": "South East Water Limited",
+      "date": "2026-03-01",
+      "kind": "enforcement-notice",
+      "sourceUrl": "https://www.ofwat.gov.uk/wp-content/uploads/2026/03/Notice-of-Ofwats-proposal-to-issue-an-enforcement-order-and-impose-a-penalty.pdf"
+    },
+    {
+      "id": "Ofwats-decision-to-accept-section-19-undertakings-from-South-West-Water-Services-Limited",
+      "institution": "South West Water Limited",
+      "date": "2025-07-01",
+      "kind": "s19-undertakings",
+      "sourceUrl": "https://www.ofwat.gov.uk/wp-content/uploads/2025/07/Ofwats-decision-to-accept-section-19-undertakings-from-South-West-Water-Services-Limited.pdf"
+    },
+    {
+      "id": "Ofwats-decision-to-accept-section-19-undertakings-from-Anglian-Water-Services-Limited",
+      "institution": "Anglian Water Services Limited",
+      "date": "2025-07-01",
+      "kind": "s19-undertakings",
+      "sourceUrl": "https://www.ofwat.gov.uk/wp-content/uploads/2025/07/Ofwats-decision-to-accept-section-19-undertakings-from-Anglian-Water-Services-Limited.pdf"
+    },
+    {
+      "id": "Notice-of-Ofwats-proposal-to-accept-Anglians-section-19-undertaking-1",
+      "institution": "Anglian Water Services Limited",
+      "date": "2025-07-01",
+      "kind": "s19-undertakings",
+      "sourceUrl": "https://www.ofwat.gov.uk/wp-content/uploads/2025/07/Notice-of-Ofwats-proposal-to-accept-Anglians-section-19-undertaking-1.pdf"
+    },
+    {
+      "id": "2025-05-28-Thames-Waters-Dividend-Payments-and-ConditIon-P30-Final-Decision",
+      "institution": "Thames Water",
+      "date": "2025-05-28",
+      "kind": "final-decision",
+      "sourceUrl": "https://www.ofwat.gov.uk/wp-content/uploads/2024/12/2025-05-28-Thames-Waters-Dividend-Payments-and-ConditIon-P30-Final-Decision.pdf"
+    }
+  ]
+}

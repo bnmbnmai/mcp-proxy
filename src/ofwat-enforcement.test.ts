@@ -7,15 +7,18 @@ import { readFileSync as readFs } from "node:fs";
 import {
   ATTRIBUTION,
   CARD_FIELDS,
+  CASE_PAGES,
   HUB_URL,
   LICENSE,
   SEED_LISTINGS,
   buildOfwatEnforcementManifest,
   collectOfwatEnforcement,
+  isCandidateNotice,
   isOfficialOfwatPdf,
   isPeopleRow,
   isRealOfwatEnforcementBody,
   officialOfwatPdfUrl,
+  parseCasePageUrls,
   parseHubHtml,
   parseListingRows,
   parseOfwatEnforcementText,
@@ -44,10 +47,40 @@ async function main(): Promise<void> {
     "hub HTML yields Southern Water seed URL",
   );
   assert.ok(listing.every((r) => officialOfwatPdfUrl(r.sourceUrl)));
-  assert.equal(listing.length, 3, "first slice is the three family PDFs");
+  assert.equal(listing.length, 3, "direct-PDF hub excerpt still yields the three family PDFs");
+
+  const caseCards = parseCasePageUrls(readFx("case-card-excerpt.html"), HUB_URL);
+  assert.ok(
+    caseCards.includes(CASE_PAGES[1]),
+    "investigations hub cards are official /enforcement-case-in-* pages, not PDFs",
+  );
+  assert.ok(caseCards.includes(CASE_PAGES[0]));
+  assert.ok(caseCards.includes(CASE_PAGES[2]));
+  assert.equal(parseHubHtml(readFx("case-card-excerpt.html"), HUB_URL).length, 0, "hub cards are index only");
+
+  const casePage = parseHubHtml(readFx("case-anglian-excerpt.html"), CASE_PAGES[1]);
+  assert.ok(
+    casePage.some((r) => r.id === "Ofwats-decision-to-accept-section-19-undertakings-from-Anglian-Water-Services-Limited"),
+    "case page yields Anglian s.19 decision PDF",
+  );
+  assert.ok(
+    casePage.some((r) => r.id === "Notice-of-Ofwats-decision-to-accept-section-19-undertakings-from-Wessex-Water-Services-Limited"),
+    "case page yields Wessex s.19 decision PDF",
+  );
+  assert.ok(
+    !casePage.some((r) => /enforcement-guidance|pr24|price-controls/i.test(r.sourceUrl)),
+    "skip guidance / PR24 price-control PDFs",
+  );
+  assert.ok(casePage.length >= 3);
+
+  assert.equal(isCandidateNotice("Ofwat's Enforcement Guidance"), false);
+  assert.equal(isCandidateNotice("Notice of Ofwat's decision to accept section 19 undertakings from Yorkshire Water"), true);
 
   const listed = parseListingRows(SEED_LISTINGS);
-  assert.equal(listed.length, 3, "seed lists the three official Ofwat enforcement PDFs");
+  assert.ok(listed.length >= 12, "seeds are the official notices already on ofwat.gov.uk, not a 3-PDF teaser");
+  assert.ok(listed.some((r) => r.id === SEW_ID));
+  assert.ok(listed.some((r) => r.id === THAMES_ID));
+  assert.ok(listed.some((r) => r.sourceUrl === SOUTHERN_PDF));
   assert.ok(listed.every((r) => officialOfwatPdfUrl(r.sourceUrl)));
   assert.equal(officialOfwatPdfUrl(SEW_PDF), SEW_PDF);
   assert.equal(
@@ -157,6 +190,26 @@ async function main(): Promise<void> {
     const merged = await collectOfwatEnforcement({ htmlDir: fixtures, limit: 1, pauseMs: 0 });
     assert.ok(merged.cards.some((c) => c.id === SEW_ID), "re-collect keeps cached bodies");
     assert.ok((merged.reused ?? 0) >= 2);
+
+    const growDir = mkdtempSync(join(tmpdir(), "ofwat-enforcement-grow-"));
+    writeFileSync(join(growDir, "listing-excerpt.html"), readFx("listing-excerpt.html"));
+    writeFileSync(join(growDir, "case-anglian-excerpt.html"), readFx("case-anglian-excerpt.html"));
+    writeFileSync(join(growDir, `${SEW_ID}.txt`), readFx(`${SEW_ID}.txt`));
+    writeFileSync(join(growDir, `${THAMES_ID}.txt`), readFx(`${THAMES_ID}.txt`));
+    writeFileSync(
+      join(growDir, "Ofwats-decision-to-accept-section-19-undertakings-from-Anglian-Water-Services-Limited.txt"),
+      readFx("grow/anglian-s19.txt"),
+    );
+    writeFileSync(
+      join(growDir, "Notice-of-Ofwats-decision-to-accept-section-19-undertakings-from-Wessex-Water-Services-Limited.txt"),
+      readFx("grow/wessex-s19.txt"),
+    );
+    const grown = await collectOfwatEnforcement({ htmlDir: growDir, limit: 20, pauseMs: 0 });
+    assert.ok(grown.cards.length > 3, `dry collect must fatten past the teaser floor (got ${grown.cards.length})`);
+    assert.ok(grown.listedCount && grown.listedCount > 3, "listedCount is no longer stuck at the 3-seed teaser");
+    assert.ok(grown.cards.some((c) => /anglian/i.test(c.institution)));
+    assert.ok(grown.cards.some((c) => /wessex/i.test(c.institution)));
+    assert.ok(grown.cards.every((c) => isRealOfwatEnforcementBody(c.body)));
   } finally {
     if (prevDir === undefined) delete process.env.OFWAT_ENFORCEMENT_DIR;
     else process.env.OFWAT_ENFORCEMENT_DIR = prevDir;
