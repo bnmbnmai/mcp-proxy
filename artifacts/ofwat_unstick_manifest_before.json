@@ -1,0 +1,17 @@
+{
+  "http": 200,
+  "cardCount": 3,
+  "asOf": "2026-03-01",
+  "fetchedAt": "2026-09-09T04:12:50.391Z",
+  "ids": [
+    "Notice-of-Ofwats-proposal-to-issue-an-enforcement-order-and-impose-a-penalty",
+    "Notice-of-Ofwats-decision-to-accept-section-19-undertakings-from-Southern-Water-Services-Limited",
+    "2025-05-28-Thames-Water-Final-Decision-Document-REDACTED"
+  ],
+  "institutions": [
+    "South East Water Limited",
+    "Southern Water Services Limited",
+    "Thames Water"
+  ],
+  "hasBody": false
+}

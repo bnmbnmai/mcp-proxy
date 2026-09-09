@@ -1,0 +1,179 @@
+{
+  "job": "apply PR 216 /ofwat-enforcement teaser unstick onto live ticks.bnm.farm",
+  "ranOn": "apollo",
+  "hostname": "pop-os",
+  "path": "/ofwat-enforcement",
+  "priceUsdc": "0.05",
+  "amountAtomic": "50000",
+  "oneAmountAtomic": "20000",
+  "network": "base",
+  "branch": "cursor/apply-ofwat-enforcement-c0eb",
+  "servingSha": "ef036aa243db240a7594e1055fb5a8df1e563561",
+  "sourcePr": "https://github.com/bnmbnmai/mcp-proxy/pull/216",
+  "sourceBranch": "cursor/unstick-ofwat-enforcement-7803",
+  "sourceHead": "7aaeda55abd92fb283f8620b77571b3bf41e21bc",
+  "stackedOn": "cursor/apply-eis-captcha-bd48",
+  "stackedOnSha": "1a363e4a0f4ad88e84b9c3547527ff430544ff66",
+  "liveServingBefore": "9b8953b8f20a19bef00aa07a899c43e5c13b0416",
+  "thisApply": "https://github.com/bnmbnmai/mcp-proxy/pull/218",
+  "boiseHourAtApply": "22",
+  "imagineWindow": false,
+  "systemctlUserRestart": {
+    "unit": "idaho-ticks-x402.service",
+    "ok": true,
+    "otherUnitsRestarted": false,
+    "activeEnterTimestamp": "Tue 2026-09-08 22:55:23 MDT",
+    "pidBefore": "609988",
+    "pidAfter": "615917",
+    "dockerGwUntouched": "Up 12 hours"
+  },
+  "banner": {
+    "ofwat": "/ofwat-enforcement $0.05 USDC",
+    "mcp": "mcp /mcp — 55 tools from /.well-known/x402"
+  },
+  "before": {
+    "ofwatUnpaid": 402,
+    "ofwatManifest": {
+      "status": 200,
+      "cardCount": 3,
+      "asOf": "2026-03-01",
+      "fetchedAt": "2026-09-09T04:12:50.391Z",
+      "ids": [
+        "Notice-of-Ofwats-proposal-to-issue-an-enforcement-order-and-impose-a-penalty",
+        "Notice-of-Ofwats-decision-to-accept-section-19-undertakings-from-Southern-Water-Services-Limited",
+        "2025-05-28-Thames-Water-Final-Decision-Document-REDACTED"
+      ],
+      "bodyLeak": false
+    },
+    "wellKnown": {
+      "status": 200,
+      "resourceCount": 55,
+      "hasOfwat": true
+    },
+    "siblings": {
+      "/ticks": 402,
+      "/ofgem-enforcement": 402,
+      "/orr-enforcement": 402
+    }
+  },
+  "collect": {
+    "status": "ok",
+    "dir": "$HOME/projects/mcp-proxy/data/ofwat-enforcement",
+    "fetchedAt": "2026-09-09T04:54:40.539Z",
+    "asOf": "2026-03-01",
+    "cardCount": 15,
+    "listedCount": 15,
+    "fetchedPdfs": 12,
+    "skippedNoText": 0,
+    "reused": 3,
+    "addedThisRun": 12,
+    "ids": [
+      "Notice-of-Ofwats-proposal-to-issue-an-enforcement-order-and-impose-a-penalty",
+      "Notice-of-Ofwats-proposal-to-accept-Section-19-undertakings-from-Dwr-Cymru-Cyfyngedig",
+      "Notice-of-Ofwats-decision-to-accept-section-19-undertakings-from-South-East-Water",
+      "Notice-of-Ofwats-decision-to-accept-section-19-undertakings-from-Southern-Water-Services-Limited",
+      "Notice-of-Ofwats-decision-to-accept-section-19-undertakings-from-Wessex-Water-Services-Limited",
+      "Ofwats-decision-to-accept-section-19-undertakings-from-South-West-Water-Services-Limited",
+      "Ofwats-decision-to-accept-section-19-undertakings-from-Anglian-Water-Services-Limited",
+      "Notice-of-Ofwats-proposal-to-accept-Anglians-section-19-undertaking-1",
+      "2025-05-28-Thames-Waters-Dividend-Payments-and-ConditIon-P30-Final-Decision",
+      "2025-05-28-Thames-Water-Final-Decision-Document-REDACTED",
+      "Ofwats-decision-to-accept-undertakings-from-Thames-Water-Utilities-Limited",
+      "Notice-of-Ofwats-proposal-to-issue-an-enforcement-order-and-impose-a-financial-penalty-on-Thames-Water",
+      "Notice-of-Ofwats-proposal-to-issue-an-enforcement-order-and-impose-a-financial-penalty-on-Northumbrian-Water",
+      "Notice-of-Ofwats-decision-to-accept-section-19-undertakings-from-Yorkshire-Water",
+      "Ofwats-final-decision-to-impose-a-financial-penalty-on-Dwr-Cymru-Cyfyngedig"
+    ]
+  },
+  "live": {
+    "wellKnown": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "resourceCount": 55,
+      "extraResourceCount": 55,
+      "hasOfwat": true,
+      "ofwatUrl": "https://ticks.bnm.farm/ofwat-enforcement"
+    },
+    "unpaidGet": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "50000",
+      "extraName": "USD Coin",
+      "resource": "/ofwat-enforcement"
+    },
+    "unpaidId": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "id": "Notice-of-Ofwats-proposal-to-issue-an-enforcement-order-and-impose-a-penalty",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "20000",
+      "extraName": "USD Coin",
+      "resource": "/ofwat-enforcement"
+    },
+    "manifest": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "cardCount": 15,
+      "asOf": "2026-03-01",
+      "fetchedAt": "2026-09-09T04:54:40.539Z",
+      "product": "ofwat-wia91-enforcement-bodies",
+      "institutions": [
+        "South East Water Limited",
+        "Dwr Cymru Cyfyngedig",
+        "Southern Water Services Limited",
+        "Wessex Water Services Limited",
+        "South West Water Limited",
+        "Anglian Water Services Limited",
+        "Thames Water",
+        "Northumbrian Water Limited",
+        "Yorkshire Water Services Limited"
+      ],
+      "bodyLeak": false,
+      "needleHits": {
+        "22.46": false,
+        "Freeze Thaw": false,
+        "Storm Eunice": false,
+        "26,705": false,
+        "£62.8": false
+      },
+      "schemaFields": [
+        "id",
+        "docket",
+        "institution",
+        "date",
+        "kind",
+        "sourceUrl"
+      ]
+    },
+    "siblingsStill402": {
+      "/ticks": 402,
+      "/ofgem-enforcement": 402,
+      "/orr-enforcement": 402,
+      "/eis-reports": 402
+    },
+    "siblingManifests": {
+      "/ofgem-enforcement/manifest.json": {
+        "status": 200,
+        "cardCount": 6
+      },
+      "/orr-enforcement/manifest.json": {
+        "status": 200,
+        "cardCount": 6
+      }
+    },
+    "loopback": {
+      "unpaidGet": 402,
+      "manifest": 200,
+      "manifestCardCount": 15
+    }
+  },
+  "excluded": {
+    "catalogMain": "not checked out",
+    "lander": "not opened from this apply",
+    "newCollectCron": "not started",
+    "dockerGw": "untouched",
+    "otherUnits": "not restarted",
+    "imagineWindow": "22:55 MDT; not 02:00-04:00"
+  }
+}
