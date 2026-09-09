@@ -858,7 +858,7 @@ export function buildCmaCa98Manifest(snap: CmaCa98Snapshot | null): Record<strin
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: paidBodyCatalogNote("/cma-ca98", 'Full catalog: count + institution + docket + date + official URL. Crown/OGL v3.0; logo reserved'),
+    note: paidBodyCatalogNote("/cma-ca98", 'Full catalog: count + institution + docket + date. Crown/OGL v3.0; logo reserved'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

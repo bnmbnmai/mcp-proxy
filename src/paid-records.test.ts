@@ -43,6 +43,8 @@ import {
   isoFromOfficialDate,
   isPlausibleDate,
   decorateExtractedBodyManifest,
+  FREE_OFFICIAL_DEEP_LINK_KEYS,
+  stripOfficialDeepLinksFromFreeCard,
   newestOfficialTextsCopy,
   olderChunkCopy,
   paidBodyCatalogNote,
@@ -1281,6 +1283,47 @@ async function main(): Promise<void> {
   assert.ok((byCursor.cards as { page?: number }[]).every((row) => row.page === 2));
   assert.equal(byCursor.before, page2Index?.before);
   assert.ok((byCursor.cards as { paidUrl?: string; id?: string }[]).every((row) => row.paidUrl === `/gmp?id=${row.id}`));
+  const leakIndex = decorateExtractedBodyManifest(
+    {
+      cards: [
+        {
+          id: "citra100mg-722606-03042026",
+          firm: "Citra100mg",
+          issuedOn: "2026-03-04",
+          subject: "Unapproved New Drugs/Misbranded",
+          issuingOffice: "CDER",
+          sourceUrl: "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/citra100mg-722606-03042026",
+          officialUrl: "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/citra100mg-722606-03042026",
+          pdfUrl: "https://www.fda.gov/media/999/download",
+          htmlUrl: "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/citra100mg-722606-03042026",
+          pageUrl: "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/citra100mg-722606-03042026",
+        },
+      ],
+      schema: { fields: ["id", "firm", "issuedOn", "subject", "issuingOffice", "sourceUrl", "body"] },
+    },
+    { paidPath: "/warning-letters" },
+  );
+  const leakCard = (leakIndex.cards as Record<string, unknown>[])[0];
+  assert.equal(leakCard?.id, "citra100mg-722606-03042026");
+  assert.equal(leakCard?.firm, "Citra100mg");
+  assert.equal(leakCard?.subject, "Unapproved New Drugs/Misbranded");
+  assert.equal(leakCard?.issuingOffice, "CDER");
+  assert.equal(leakCard?.paidUrl, "/warning-letters?id=citra100mg-722606-03042026");
+  for (const key of FREE_OFFICIAL_DEEP_LINK_KEYS) {
+    assert.ok(!(key in (leakCard ?? {})), `free catalog card must drop ${key}`);
+  }
+  assert.ok(!JSON.stringify(leakIndex.cards).includes("fda.gov"), "free cards must not leak official hosts");
+  assert.deepEqual(
+    (leakIndex.schema as { fields?: string[] }).fields,
+    ["id", "firm", "issuedOn", "subject", "issuingOffice", "body"],
+  );
+  const paidAttribution = stripOfficialDeepLinksFromFreeCard({
+    id: "keep-me",
+    paidUrl: "/warning-letters?id=keep-me",
+    sourceUrl: "https://www.fda.gov/x",
+  });
+  assert.equal(paidAttribution.paidUrl, "/warning-letters?id=keep-me");
+  assert.ok(!("sourceUrl" in paidAttribution));
   const oneGmp = paidGmpBody(
     {
       ok: true as const,

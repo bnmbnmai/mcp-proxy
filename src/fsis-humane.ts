@@ -731,7 +731,7 @@ export function buildFsisHumaneManifest(snap: FsisHumaneSnapshot | null): Record
     free: true,
     note: paidBodyCatalogNote(
       FSIS_HUMANE_PATH,
-      "Count + establishment + letter type + date + official PDF URL only. Letter body is the paid GET /fsis-humane payload. This free manifest lists the full catalog. Index HTML is chrome. Skip MPI directory rows, QER table-only packs, HATS time-series, and FOIA people dumps.",
+      "Count + establishment + letter type + date only. Letter body is the paid GET /fsis-humane payload. This free manifest lists the full catalog. Index HTML is chrome. Skip MPI directory rows, QER table-only packs, HATS time-series, and FOIA people dumps.",
     ),
     license: LICENSE,
     attribution: ATTRIBUTION,

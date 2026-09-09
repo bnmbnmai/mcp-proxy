@@ -690,7 +690,7 @@ export function buildOccCdManifest(snap: OccCdSnapshot | null): Record<string, u
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: paidBodyCatalogNote("/occ-cd", 'Full catalog: count + bank + docket + date + official URL. Not ExportToJSON metadata'),
+    note: paidBodyCatalogNote("/occ-cd", 'Full catalog: count + bank + docket + date. Not ExportToJSON metadata'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

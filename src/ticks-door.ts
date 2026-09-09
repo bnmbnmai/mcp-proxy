@@ -31,83 +31,83 @@
  * GET /untitled-letters — FDA Untitled Letter bodies, CDER OPDP + CBER promo ($0.05)
  * GET /untitled-letters/manifest.json — free count + id/firm/date/product (no letter text)
  * GET /awa — USDA APHIS AWA inspection-report observation text ($0.05)
- * GET /awa/manifest.json — free count + id/firm/date/sourceUrl (no observation text)
+ * GET /awa/manifest.json — free count + id/firm/date (no observation text)
  * GET /swisspar — Swissmedic first-authorisation SwissPAR evaluation text ($0.05)
- * GET /swisspar/manifest.json — free count + name/date/MA/sourceUrl (no evaluation text)
+ * GET /swisspar/manifest.json — free count + name/date/MA (no evaluation text)
  * GET /pcac — FDA PCAC 503A briefing-memo evaluation text ($0.05)
- * GET /pcac/manifest.json — free count + substance/date/meeting/mediaId/sourceUrl (no evaluation text)
+ * GET /pcac/manifest.json — free count + substance/date/meeting/mediaId (no evaluation text)
  * GET /ftc-wl — FTC BCP warning-letter PDF text ($0.05)
- * GET /ftc-wl/manifest.json — free count + firm/date/subject/sourceUrl (no letter body)
+ * GET /ftc-wl/manifest.json — free count + firm/date/subject (no letter body)
  * GET /cfpb-orders — CFPB consent-order / administrative-order PDF text ($0.05)
- * GET /cfpb-orders/manifest.json — free count + firm/date/title/fileNo/sourceUrl (no order body)
+ * GET /cfpb-orders/manifest.json — free count + firm/date/title/fileNo (no order body)
  * GET /occ-cd — OCC institution C&D / consent-order PDF text ($0.05)
- * GET /occ-cd/manifest.json — free count + bank/docket/date/sourceUrl (no order body)
+ * GET /occ-cd/manifest.json — free count + bank/docket/date (no order body)
  * GET /fdic-orders — FDIC institution consent-order / C&D PDF text ($0.05)
- * GET /fdic-orders/manifest.json — free count + bank/docket/date/sourceUrl (no order body)
+ * GET /fdic-orders/manifest.json — free count + bank/docket/date (no order body)
  * GET /frb-orders — FRB institution C&D / written-agreement / PCA PDF text ($0.05)
- * GET /frb-orders/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
+ * GET /frb-orders/manifest.json — free count + institution/docket/date (no order body)
  * GET /ncua-orders — NCUA institution consent C&D HTML text ($0.05)
- * GET /ncua-orders/manifest.json — free count + credit union/docket/date/sourceUrl (no order body)
+ * GET /ncua-orders/manifest.json — free count + credit union/docket/date (no order body)
  * GET /fincen-orders — FinCEN institution consent-order PDF text ($0.05)
- * GET /fincen-orders/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
+ * GET /fincen-orders/manifest.json — free count + institution/docket/date (no order body)
  * GET /ferc-orders — FERC institution stipulation-and-consent / show-cause / civil-penalty PDF text ($0.05)
- * GET /ferc-orders/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
+ * GET /ferc-orders/manifest.json — free count + institution/docket/date (no order body)
  * GET /ofac-orders — OFAC institution/company enforcement-release PDF text ($0.05)
- * GET /ofac-orders/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
+ * GET /ofac-orders/manifest.json — free count + institution/docket/date (no order body)
  * GET /bis-orders — BIS institution charging-letter / order / settlement PDF text ($0.05)
- * GET /bis-orders/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
+ * GET /bis-orders/manifest.json — free count + institution/docket/date (no order body)
  * GET /cftc-orders — CFTC institution enforcement-order / settlement PDF text ($0.05)
- * GET /cftc-orders/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
+ * GET /cftc-orders/manifest.json — free count + institution/docket/date (no order body)
  * GET /fifra-orders — EPA FIFRA institution order / consent PDF text ($0.05)
- * GET /fifra-orders/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
+ * GET /fifra-orders/manifest.json — free count + institution/docket/date (no order body)
  * GET /denovo-orders — FDA De Novo classification-order PDF text ($0.05)
- * GET /denovo-orders/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
+ * GET /denovo-orders/manifest.json — free count + institution/docket/date (no order body)
  * GET /ttb-oic — TTB institution Offer in Compromise PDF text ($0.05)
- * GET /ttb-oic/manifest.json — free count + institution/docket/date/sourceUrl (no order body)
+ * GET /ttb-oic/manifest.json — free count + institution/docket/date (no order body)
  * GET /air-letters — USDA APHIS AIR confirmation-letter PDF text ($0.05)
- * GET /air-letters/manifest.json — free count + institution/docket/date/sourceUrl (no letter body)
+ * GET /air-letters/manifest.json — free count + institution/docket/date (no letter body)
  * GET /superfund-rods — EPA Superfund Record of Decision + Five-Year Review PDF text ($0.05)
- * GET /superfund-rods/manifest.json — free count + title/Doc ID/PDF URL (no ROD/FYR body)
+ * GET /superfund-rods/manifest.json — free count + title/Doc ID (no ROD/FYR body)
  * GET /ico-mpn — ICO Monetary Penalty Notice PDF text ($0.05)
- * GET /ico-mpn/manifest.json — free count + institution/docket/date/sourceUrl (no MPN body)
+ * GET /ico-mpn/manifest.json — free count + institution/docket/date (no MPN body)
  * GET /cma-ca98 — UK CMA CA98 institution infringement-decision PDF text ($0.05)
- * GET /cma-ca98/manifest.json — free count + institution/docket/date/sourceUrl (no decision body)
+ * GET /cma-ca98/manifest.json — free count + institution/docket/date (no decision body)
  * GET /ema-referrals — EMA human-medicine referral procedure PDF text ($0.02 id / $0.05 page)
- * GET /ema-referrals/manifest.json — free count + name/date/status/sourceUrl (no procedure body)
+ * GET /ema-referrals/manifest.json — free count + name/date/status (no procedure body)
  * GET /cder-reviews — FDA CDER Integrated Review PDF text ($0.02 id / $0.05 page)
- * GET /cder-reviews/manifest.json — free count + name/date/application/sourceUrl (no review body)
+ * GET /cder-reviews/manifest.json — free count + name/date/application (no review body)
  * GET /npdes-permits — EPA-issued individual NPDES permit PDF text ($0.02 id / $0.05 page)
- * GET /npdes-permits/manifest.json — free count + name/date/permit/sourceUrl (no permit body)
+ * GET /npdes-permits/manifest.json — free count + name/date/permit (no permit body)
  * GET /ofsted-inspections — Ofsted school / provider inspection-report PDF text ($0.02 id / $0.05 page)
- * GET /ofsted-inspections/manifest.json — free count + provider/URN/date/sourceUrl (no report body)
+ * GET /ofsted-inspections/manifest.json — free count + provider/URN/date (no report body)
  * GET /ofwat-enforcement — Ofwat Water Industry Act 1991 enforcement-notice PDF text ($0.02 id / $0.05 page)
- * GET /ofwat-enforcement/manifest.json — free count + institution/docket/date/sourceUrl (no notice body)
+ * GET /ofwat-enforcement/manifest.json — free count + institution/docket/date (no notice body)
  * GET /ofgem-enforcement — Ofgem enforcement-notice / s.27A / provisional-order PDF text ($0.02 id / $0.05 page)
- * GET /ofgem-enforcement/manifest.json — free count + institution/docket/date/sourceUrl (no notice body)
+ * GET /ofgem-enforcement/manifest.json — free count + institution/docket/date (no notice body)
  * GET /gain — USDA FAS GAIN attaché report TEXT ($0.02 id / $0.05 page)
- * GET /gain/manifest.json — free count + report number/country/post/date/sourceUrl (no attaché body)
+ * GET /gain/manifest.json — free count + report number/country/post/date (no attaché body)
  * GET /orr-enforcement — ORR Railways Act s.55 statutory-notice / final-order / investigation-report TEXT ($0.02 id / $0.05 page)
- * GET /orr-enforcement/manifest.json — free count + institution/docket/date/sourceUrl (no notice body)
+ * GET /orr-enforcement/manifest.json — free count + institution/docket/date (no notice body)
  * GET /phmsa-orders — PHMSA-authored NOPV (PCP/PCO) / Final Order / CAO / Consent Order / Decision on Petition TEXT ($0.02 id / $0.05 page)
- * GET /phmsa-orders/manifest.json — free count + operator/CPF/date/sourceUrl (no order body)
+ * GET /phmsa-orders/manifest.json — free count + operator/CPF/date (no order body)
  * GET /aaib-reports — UK AAIB investigation-report PDF text ($0.02 id / $0.05 page)
- * GET /aaib-reports/manifest.json — free count + title/registration/aircraft/date/sourceUrl (no report body)
+ * GET /aaib-reports/manifest.json — free count + title/registration/aircraft/date (no report body)
  * GET /csb-reports — US CSB final investigation report PDF ($0.05 one official PDF)
- * GET /csb-reports/manifest.json — free count + facility/date/title/pageUrl/sourceUrl (no PDF bytes)
+ * GET /csb-reports/manifest.json — free count + facility/date/title (no PDF bytes)
  * GET /hhs-oig-reports — HHS OIG Audit / Evaluation plus VA OIG audit / inspection / review PDFs ($0.05 one official PDF)
- * GET /hhs-oig-reports/manifest.json — free count + report number/date/title/pageUrl/sourceUrl (no PDF bytes)
+ * GET /hhs-oig-reports/manifest.json — free count + report number/date/title (no PDF bytes)
  * GET /eis-reports — EPA NEPA Environmental Impact Statement PDF text ($0.02 id / $0.05 page)
- * GET /eis-reports/manifest.json — free count + CEQ number/date/title/agency/pageUrl (no EIS body)
+ * GET /eis-reports/manifest.json — free count + CEQ number/date/title/agency (no EIS body)
  * GET /fsis-humane — USDA FSIS humane-handling enforcement letter PDF text ($0.02 id / $0.05 page)
- * GET /fsis-humane/manifest.json — free count + establishment/letter type/date/sourceUrl (no letter body)
+ * GET /fsis-humane/manifest.json — free count + establishment/letter type/date (no letter body)
  * GET /epa-cafo — EPA Part 22 CAFO / ESA administrative penalty letter PDF text ($0.02 id / $0.05 page)
- * GET /epa-cafo/manifest.json — free count + institution/docket/date/sourceUrl (no letter body)
+ * GET /epa-cafo/manifest.json — free count + institution/docket/date (no letter body)
  * GET /fmshrc-orders — FMSHRC ALJ + Commission Decision/Order PDF text ($0.02 id / $0.05 page)
- * GET /fmshrc-orders/manifest.json — free count + operator/docket/date/sourceUrl (no decision body)
+ * GET /fmshrc-orders/manifest.json — free count + operator/docket/date (no decision body)
  * GET /bsee-reports — BSEE District Accident Investigation Report PDF text ($0.02 id / $0.05 page)
- * GET /bsee-reports/manifest.json — free count + title/date/lease/area-block/accident-type/sourceUrl (no report body)
+ * GET /bsee-reports/manifest.json — free count + title/date/lease/area-block/accident-type (no report body)
  * GET /oshrc-orders — OSHRC ALJ Decision/Order + Commission Final Order PDF/HTML text ($0.02 id / $0.05 page)
- * GET /oshrc-orders/manifest.json — free count + operator/docket/date/sourceUrl (no decision body)
+ * GET /oshrc-orders/manifest.json — free count + operator/docket/date (no decision body)
  * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
  * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.05). Listed only when a real body is cached.
@@ -538,6 +538,7 @@ import {
   paidWarningLettersBody,
   COLLECT_CADENCE,
   decorateExtractedBodyManifest,
+  stripOfficialDeepLinksFromFreeManifest,
   etagFromPaidEnvelope,
   HTTP_429_COPY,
   ifNoneMatchHits,
@@ -4461,45 +4462,45 @@ export function llmsTxt(): string {
     "- GET /mariners-d17/manifest.json — D17 LNM count + official PDF (not the notice body)",
     "- GET /warning-letters/manifest.json — FDA letter count + firm/date/subject (full catalog + page cursor; ?q= is free search; not the letter body)",
     "- GET /untitled-letters/manifest.json — FDA untitled count + id/firm/date/product (full catalog + page cursor; ?q= is free search; not the letter text)",
-    "- GET /awa/manifest.json — APHIS AWA count + id/firm/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the observation text)",
-    "- GET /swisspar/manifest.json — SwissPAR count + name/date/MA/sourceUrl (full catalog + page cursor; ?q= is free search; not the evaluation text)",
-    "- GET /pcac/manifest.json — FDA PCAC count + substance/date/meeting/mediaId/sourceUrl (full catalog + page cursor; ?q= is free search; not the evaluation text)",
-    "- GET /ftc-wl/manifest.json — FTC BCP count + firm/date/subject/sourceUrl (full catalog + page cursor; ?q= is free search; not the letter body)",
-    "- GET /cfpb-orders/manifest.json — CFPB order count + firm/date/title/fileNo/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
-    "- GET /occ-cd/manifest.json — OCC C&D count + bank/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
-    "- GET /fdic-orders/manifest.json — FDIC order count + bank/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
-    "- GET /frb-orders/manifest.json — FRB order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
-    "- GET /ncua-orders/manifest.json — NCUA order count + credit union/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
-    "- GET /fincen-orders/manifest.json — FinCEN order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
-    "- GET /ferc-orders/manifest.json — FERC order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
-    "- GET /ofac-orders/manifest.json — OFAC order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
-    "- GET /bis-orders/manifest.json — BIS order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
-    "- GET /cftc-orders/manifest.json — CFTC order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
-    "- GET /fifra-orders/manifest.json — EPA FIFRA order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
-    "- GET /denovo-orders/manifest.json — FDA De Novo order count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
-    "- GET /ttb-oic/manifest.json — TTB OIC count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
-    "- GET /air-letters/manifest.json — APHIS AIR letter count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the letter body)",
-    "- GET /superfund-rods/manifest.json — EPA Superfund ROD + FYR count + title/Doc ID/PDF URL (full catalog + page cursor; ?q= is free search; not the ROD/FYR body)",
-    "- GET /ico-mpn/manifest.json — ICO MPN count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the MPN body)",
-    "- GET /cma-ca98/manifest.json — CMA CA98 count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the decision body)",
-    "- GET /ema-referrals/manifest.json — EMA referral count + name/date/status/sourceUrl (full catalog + page cursor; ?q= is free search; not the procedure body)",
-    "- GET /cder-reviews/manifest.json — CDER Integrated Review count + name/date/application/sourceUrl (full catalog + page cursor; ?q= is free search; not the review body)",
-    "- GET /npdes-permits/manifest.json — EPA individual NPDES permit count + name/date/permit/sourceUrl (full catalog + page cursor; ?q= is free search; not the permit body)",
-    "- GET /ofsted-inspections/manifest.json — Ofsted inspection count + provider/URN/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the report body)",
-    "- GET /ofwat-enforcement/manifest.json — Ofwat enforcement count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the notice body)",
-    "- GET /ofgem-enforcement/manifest.json — Ofgem enforcement count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the notice body)",
-    "- GET /gain/manifest.json — GAIN attaché count + report number/country/post/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the attaché body)",
-    "- GET /orr-enforcement/manifest.json — ORR enforcement count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the notice body)",
-    "- GET /phmsa-orders/manifest.json — PHMSA enforcement count + operator/CPF/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the order body)",
-    "- GET /aaib-reports/manifest.json — AAIB investigation count + title/registration/aircraft/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the report body)",
-    "- GET /csb-reports/manifest.json — CSB final-report count + facility/date/title/pageUrl/sourceUrl (full catalog; ?q= is free search; not the PDF bytes)",
-    "- GET /hhs-oig-reports/manifest.json — HHS OIG + VA OIG report count + report number/date/title/pageUrl/sourceUrl (full catalog; ?q= is free search; not the PDF bytes)",
-    "- GET /eis-reports/manifest.json — EPA NEPA EIS count + CEQ number/date/title/agency/pageUrl (full catalog + page cursor; ?q= is free search; not the EIS body)",
-    "- GET /fsis-humane/manifest.json — FSIS humane-handling letter count + establishment/letter type/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the letter body)",
-    "- GET /epa-cafo/manifest.json — EPA CAFO / ESA letter count + institution/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the letter body)",
-    "- GET /fmshrc-orders/manifest.json — FMSHRC Decision/Order count + operator/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the decision body)",
-    "- GET /bsee-reports/manifest.json — BSEE district investigation count + title/date/lease/area-block/accident-type/sourceUrl (full catalog + page cursor; ?q= is free search; not the report body)",
-    "- GET /oshrc-orders/manifest.json — OSHRC Decision/Order count + operator/docket/date/sourceUrl (full catalog + page cursor; ?q= is free search; not the decision body)",
+    "- GET /awa/manifest.json — APHIS AWA count + id/firm/date (full catalog + page cursor; ?q= is free search; not the observation text)",
+    "- GET /swisspar/manifest.json — SwissPAR count + name/date/MA (full catalog + page cursor; ?q= is free search; not the evaluation text)",
+    "- GET /pcac/manifest.json — FDA PCAC count + substance/date/meeting/mediaId (full catalog + page cursor; ?q= is free search; not the evaluation text)",
+    "- GET /ftc-wl/manifest.json — FTC BCP count + firm/date/subject (full catalog + page cursor; ?q= is free search; not the letter body)",
+    "- GET /cfpb-orders/manifest.json — CFPB order count + firm/date/title/fileNo (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /occ-cd/manifest.json — OCC C&D count + bank/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /fdic-orders/manifest.json — FDIC order count + bank/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /frb-orders/manifest.json — FRB order count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /ncua-orders/manifest.json — NCUA order count + credit union/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /fincen-orders/manifest.json — FinCEN order count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /ferc-orders/manifest.json — FERC order count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /ofac-orders/manifest.json — OFAC order count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /bis-orders/manifest.json — BIS order count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /cftc-orders/manifest.json — CFTC order count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /fifra-orders/manifest.json — EPA FIFRA order count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /denovo-orders/manifest.json — FDA De Novo order count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /ttb-oic/manifest.json — TTB OIC count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /air-letters/manifest.json — APHIS AIR letter count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the letter body)",
+    "- GET /superfund-rods/manifest.json — EPA Superfund ROD + FYR count + title/Doc ID (full catalog + page cursor; ?q= is free search; not the ROD/FYR body)",
+    "- GET /ico-mpn/manifest.json — ICO MPN count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the MPN body)",
+    "- GET /cma-ca98/manifest.json — CMA CA98 count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the decision body)",
+    "- GET /ema-referrals/manifest.json — EMA referral count + name/date/status (full catalog + page cursor; ?q= is free search; not the procedure body)",
+    "- GET /cder-reviews/manifest.json — CDER Integrated Review count + name/date/application (full catalog + page cursor; ?q= is free search; not the review body)",
+    "- GET /npdes-permits/manifest.json — EPA individual NPDES permit count + name/date/permit (full catalog + page cursor; ?q= is free search; not the permit body)",
+    "- GET /ofsted-inspections/manifest.json — Ofsted inspection count + provider/URN/date (full catalog + page cursor; ?q= is free search; not the report body)",
+    "- GET /ofwat-enforcement/manifest.json — Ofwat enforcement count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the notice body)",
+    "- GET /ofgem-enforcement/manifest.json — Ofgem enforcement count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the notice body)",
+    "- GET /gain/manifest.json — GAIN attaché count + report number/country/post/date (full catalog + page cursor; ?q= is free search; not the attaché body)",
+    "- GET /orr-enforcement/manifest.json — ORR enforcement count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the notice body)",
+    "- GET /phmsa-orders/manifest.json — PHMSA enforcement count + operator/CPF/date (full catalog + page cursor; ?q= is free search; not the order body)",
+    "- GET /aaib-reports/manifest.json — AAIB investigation count + title/registration/aircraft/date (full catalog + page cursor; ?q= is free search; not the report body)",
+    "- GET /csb-reports/manifest.json — CSB final-report count + facility/date/title (full catalog; ?q= is free search; not the PDF bytes)",
+    "- GET /hhs-oig-reports/manifest.json — HHS OIG + VA OIG report count + report number/date/title (full catalog; ?q= is free search; not the PDF bytes)",
+    "- GET /eis-reports/manifest.json — EPA NEPA EIS count + CEQ number/date/title/agency (full catalog + page cursor; ?q= is free search; not the EIS body)",
+    "- GET /fsis-humane/manifest.json — FSIS humane-handling letter count + establishment/letter type/date (full catalog + page cursor; ?q= is free search; not the letter body)",
+    "- GET /epa-cafo/manifest.json — EPA CAFO / ESA letter count + institution/docket/date (full catalog + page cursor; ?q= is free search; not the letter body)",
+    "- GET /fmshrc-orders/manifest.json — FMSHRC Decision/Order count + operator/docket/date (full catalog + page cursor; ?q= is free search; not the decision body)",
+    "- GET /bsee-reports/manifest.json — BSEE district investigation count + title/date/lease/area-block/accident-type (full catalog + page cursor; ?q= is free search; not the report body)",
+    "- GET /oshrc-orders/manifest.json — OSHRC Decision/Order count + operator/docket/date (full catalog + page cursor; ?q= is free search; not the decision body)",
   ];
   if (listed483) {
     free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (full catalog + page cursor; ?q= is free search; not the observation body)");
@@ -6330,61 +6331,61 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       [WARNING_LETTERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FDA warning-letters free manifest",
-          "Count, firm, date, subject, and official source URL. Not the letter body.",
+          "Count, firm, date, subject, and paidUrl. Not the letter body.",
         ),
       },
       [UNTITLED_LETTERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FDA untitled-letters free manifest",
-          "Count, id, firm, date, product, and official source URL. Not the letter text.",
+          "Count, id, firm, date, product, and paidUrl. Not the letter text.",
         ),
       },
       [AWA_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "APHIS AWA free manifest",
-          "Count, id, firm, date, and official source URL. Not the observation text.",
+          "Count, id, firm, date, and paidUrl. Not the observation text.",
         ),
       },
       [SWISSPAR_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "SwissPAR free manifest",
-          "Count, name, date, MA, and official source URL. Not the evaluation text.",
+          "Count, name, date, MA, and paidUrl. Not the evaluation text.",
         ),
       },
       [PCAC_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FDA PCAC free manifest",
-          "Count, substance, date, meeting, mediaId, and official source URL. Not the evaluation text.",
+          "Count, substance, date, meeting, mediaId, and paidUrl. Not the evaluation text.",
         ),
       },
       [FTC_WL_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FTC BCP warning-letters free manifest",
-          "Count, firm, date, subject, and official PDF URL. Not the letter body.",
+          "Count, firm, date, subject, and paidUrl. Not the letter body.",
         ),
       },
       [CFPB_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "CFPB consent-orders free manifest",
-          "Count, firm, date, title, fileNo, and official PDF URL. Not the order body.",
+          "Count, firm, date, title, fileNo, and paidUrl. Not the order body.",
         ),
       },
       [OCC_CD_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "OCC institution C&D free manifest",
-          "Count, bank, docket, date, and official PDF URL. Not the order body.",
+          "Count, bank, docket, date, and paidUrl. Not the order body.",
         ),
       },
       [FDIC_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FDIC institution orders free manifest",
-          "Count, bank, docket, date, and official PDF URL. Not the order body.",
+          "Count, bank, docket, date, and paidUrl. Not the order body.",
         ),
       },
       [FRB_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FRB institution orders free manifest",
-          "Count, institution, docket, date, and official PDF URL. Not the order body.",
+          "Count, institution, docket, date, and paidUrl. Not the order body.",
         ),
       },
       [NCUA_ORDERS_MANIFEST_PATH]: {
@@ -6396,175 +6397,175 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       [FINCEN_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FinCEN institution orders free manifest",
-          "Count, institution, docket, date, and official PDF URL. Not the order body.",
+          "Count, institution, docket, date, and paidUrl. Not the order body.",
         ),
       },
       [FERC_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FERC institution orders free manifest",
-          "Count, institution, docket, date, and official PDF URL. Not the order body.",
+          "Count, institution, docket, date, and paidUrl. Not the order body.",
         ),
       },
       [OFAC_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "OFAC institution orders free manifest",
-          "Count, institution, docket, date, and official PDF URL. Not the order body.",
+          "Count, institution, docket, date, and paidUrl. Not the order body.",
         ),
       },
       [BIS_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "BIS institution orders free manifest",
-          "Count, institution, docket, date, and official PDF URL. Not the order body.",
+          "Count, institution, docket, date, and paidUrl. Not the order body.",
         ),
       },
       [CFTC_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "CFTC institution orders free manifest",
-          "Count, institution, docket, date, and official PDF URL. Not the order body.",
+          "Count, institution, docket, date, and paidUrl. Not the order body.",
         ),
       },
       [FIFRA_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "EPA FIFRA institution orders free manifest",
-          "Count, institution, docket, date, and official PDF URL. Not the order body.",
+          "Count, institution, docket, date, and paidUrl. Not the order body.",
         ),
       },
       [DENOVO_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FDA De Novo classification orders free manifest",
-          "Count, institution, docket, date, and official PDF URL. Not the order body.",
+          "Count, institution, docket, date, and paidUrl. Not the order body.",
         ),
       },
       [TTB_OIC_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "TTB Offer in Compromise free manifest",
-          "Count, institution, docket, date, and official PDF URL. Not the order body.",
+          "Count, institution, docket, date, and paidUrl. Not the order body.",
         ),
       },
       [AIR_LETTERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "APHIS AIR confirmation letters free manifest",
-          "Count, institution, docket, date, and official PDF URL. Not the letter body.",
+          "Count, institution, docket, date, and paidUrl. Not the letter body.",
         ),
       },
       [SUPERFUND_RODS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "EPA Superfund Records of Decision free manifest",
-          "Count, institution, docket, date, and official PDF URL. Not the ROD body.",
+          "Count, institution, docket, date, and paidUrl. Not the ROD body.",
         ),
       },
       [ICO_MPN_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "ICO Monetary Penalty Notices free manifest",
-          "Count, institution, docket, date, and official PDF URL. Not the MPN body.",
+          "Count, institution, docket, date, and paidUrl. Not the MPN body.",
         ),
       },
       [CMA_CA98_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "UK CMA CA98 infringement decisions free manifest",
-          "Count, institution, docket, date, and official PDF URL. Not the decision body.",
+          "Count, institution, docket, date, and paidUrl. Not the decision body.",
         ),
       },
       [EMA_REFERRALS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "EMA human-medicine referral procedures free manifest",
-          "Count, name, date, status, and official PDF URL. Not the procedure body.",
+          "Count, name, date, status, and paidUrl. Not the procedure body.",
         ),
       },
       [CDER_REVIEWS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FDA CDER Integrated Reviews free manifest",
-          "Count, name, date, application, and official PDF URL. Not the review body.",
+          "Count, name, date, application, and paidUrl. Not the review body.",
         ),
       },
       [NPDES_PERMITS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "EPA individual NPDES permits free manifest",
-          "Count, name, date, permit number, and official PDF URL. Not the permit body.",
+          "Count, name, date, permit number, and paidUrl. Not the permit body.",
         ),
       },
       [OFSTED_INSPECTIONS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "Ofsted inspection reports free manifest",
-          "Count, provider, URN, date, and official PDF URL. Not the report body.",
+          "Count, provider, URN, date, and paidUrl. Not the report body.",
         ),
       },
       [OFWAT_ENFORCEMENT_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "Ofwat enforcement notices free manifest",
-          "Count, institution, docket, date, and official PDF URL. Not the notice body.",
+          "Count, institution, docket, date, and paidUrl. Not the notice body.",
         ),
       },
       [OFGEM_ENFORCEMENT_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "Ofgem enforcement notices free manifest",
-          "Count, institution, docket, date, and official PDF URL. Not the notice body.",
+          "Count, institution, docket, date, and paidUrl. Not the notice body.",
         ),
       },
       [GAIN_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "USDA FAS GAIN attaché reports free manifest",
-          "Count, report number, country, post, date, and official PDF URL. Not the attaché body.",
+          "Count, report number, country, post, date, and paidUrl. Not the attaché body.",
         ),
       },
       [ORR_ENFORCEMENT_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "ORR enforcement notices free manifest",
-          "Count, institution, docket, date, and official PDF URL. Not the notice body.",
+          "Count, institution, docket, date, and paidUrl. Not the notice body.",
         ),
       },
       [PHMSA_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "PHMSA enforcement orders free manifest",
-          "Count, operator, CPF, date, and official PDF URL. Not the order body.",
+          "Count, operator, CPF, date, and paidUrl. Not the order body.",
         ),
       },
       [AAIB_REPORTS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "AAIB investigation reports free manifest",
-          "Count, title, registration, aircraft, date, and official PDF URL. Not the report body.",
+          "Count, title, registration, aircraft, date, and paidUrl. Not the report body.",
         ),
       },
       [CSB_REPORTS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "CSB final investigation reports free manifest",
-          "Count, facility, date, title, official page, and PDF URL. Not the PDF bytes.",
+          "Count, facility, date, title, and paidUrl. Not the PDF bytes.",
         ),
       },
       [HHS_OIG_REPORTS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "HHS OIG audit and evaluation reports free manifest",
-          "Count, report number, date, title, official page, and PDF URL. Not the PDF bytes.",
+          "Count, report number, date, title, and paidUrl. Not the PDF bytes.",
         ),
       },
       [EIS_REPORTS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "EPA NEPA EIS free manifest",
-          "Count, CEQ number, date, title, and official e-NEPA page. Not the PDF bytes.",
+          "Count, CEQ number, date, title, and paidUrl. Not the PDF bytes.",
         ),
       },
       [FSIS_HUMANE_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FSIS humane-handling letters free manifest",
-          "Count, establishment, letter type, date, and official PDF URL. Not the letter body.",
+          "Count, establishment, letter type, date, and paidUrl. Not the letter body.",
         ),
       },
       [EPA_CAFO_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "EPA CAFO / ESA letters free manifest",
-          "Count, institution, docket, date, and official PDF URL. Not the letter body.",
+          "Count, institution, docket, date, and paidUrl. Not the letter body.",
         ),
       },
       [FMSHRC_ORDERS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "FMSHRC Decision/Order free manifest",
-          "Count, operator, docket, date, and official PDF URL. Not the decision body.",
+          "Count, operator, docket, date, and paidUrl. Not the decision body.",
         ),
       },
       [BSEE_REPORTS_MANIFEST_PATH]: {
         get: freeOpenApiOp(
           "BSEE district investigation free manifest",
-          "Count, title, date, lease, area-block, accident-type, and official PDF URL. Not the report body.",
+          "Count, title, date, lease, area-block, accident-type, and paidUrl. Not the report body.",
         ),
       },
       [OSHRC_ORDERS_MANIFEST_PATH]: {
@@ -7877,7 +7878,15 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === CSB_REPORTS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadCsbReportsManifest(url.searchParams.get("q") ?? undefined), req, port));
+    sendJson(
+      res,
+      200,
+      withShopDiscovery(
+        stripOfficialDeepLinksFromFreeManifest(await loadCsbReportsManifest(url.searchParams.get("q") ?? undefined)),
+        req,
+        port,
+      ),
+    );
     return;
   }
 
@@ -7894,7 +7903,17 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
   }
 
   if (path === HHS_OIG_REPORTS_MANIFEST_PATH) {
-    sendJson(res, 200, withShopDiscovery(await loadHhsOigReportsManifest(url.searchParams.get("q") ?? undefined), req, port));
+    sendJson(
+      res,
+      200,
+      withShopDiscovery(
+        stripOfficialDeepLinksFromFreeManifest(
+          await loadHhsOigReportsManifest(url.searchParams.get("q") ?? undefined),
+        ),
+        req,
+        port,
+      ),
+    );
     return;
   }
 

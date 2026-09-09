@@ -1,0 +1,30 @@
+# apply PR 219 strip sourceUrl from free discovery JSON — live ticks.bnm.farm
+# serving SHA 100430e (FF of cursor/strip-free-sourceurl-2c3a onto Ofwat tip daeffb2)
+# idaho-ticks-x402.service restart Wed 2026-09-09 10:52:32 MDT PID 1225420
+# Restarted only that unit. docker-gw / bnm-caddy / bnm-tunnel untouched.
+
+BEFORE (serving daeffb2)
+GET  https://ticks.bnm.farm/.well-known/x402                          200  resources=55
+GET  https://ticks.bnm.farm/warning-letters/manifest.json?q=citra      200  letterCount=1346  id=citra100mg-722606-03042026  paidUrl=/warning-letters?id=…  HAS sourceUrl  HAS fda.gov
+GET  https://ticks.bnm.farm/warning-letters                            402  maxAmountRequired=50000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/firm-check?q=citra                         200  hit id=citra100mg-722606-03042026  paidUrl  no sourceUrl  no fda.gov
+GET  https://ticks.bnm.farm/ticks                                      402  tableWhole  sibling
+
+AFTER (serving 100430e + restart, no collect)
+GET  https://ticks.bnm.farm/.well-known/x402                          200  via: 1.1 Caddy  resources=55  extra.resourceCount=55  has /warning-letters
+GET  https://ticks.bnm.farm/warning-letters/manifest.json?q=citra      200  via: 1.1 Caddy  letterCount=1346  asOf=2026-09-01  fetchedAt=2026-09-09T14:07:26.807Z  id+paidUrl  NO sourceUrl/officialUrl/pdfUrl/htmlUrl/pageUrl  NO fda.gov
+GET  https://ticks.bnm.farm/warning-letters                            402  maxAmountRequired=50000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/warning-letters?id=citra100mg-722606-03042026  402  maxAmountRequired=20000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/firm-check?q=citra                         200  via: 1.1 Caddy  paidUrl  NO sourceUrl  NO fda.gov
+GET  https://ticks.bnm.farm/ticks                                      402  tableWhole=true  maxAmountRequired=50000
+GET  https://ticks.bnm.farm/ofwat-enforcement/manifest.json            200  cardCount=15  NO sourceUrl
+
+loopback GET http://127.0.0.1:4020/warning-letters                    402
+loopback GET manifest?q=citra                                         200  no sourceUrl / no fda.gov
+loopback GET /firm-check?q=citra                                      200  no sourceUrl
+loopback GET /ticks                                                   402
+
+banner: /warning-letters $0.05 USDC
+banner: mcp /mcp — 55 tools from /.well-known/x402
+collect: not run
+tests: paid-records / firm-check / ticks-door / warning-letters ok

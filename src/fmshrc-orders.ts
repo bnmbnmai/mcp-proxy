@@ -665,7 +665,7 @@ export function buildFmshrcManifest(snap: FmshrcSnapshot | null): Record<string,
     free: true,
     note: paidBodyCatalogNote(
       FMSHRC_ORDERS_PATH,
-      "Count + operator + docket + date + official PDF URL only. Decision body is the paid GET /fmshrc-orders payload. This free manifest lists the full catalog. Skip miner discrimination / §105(c) complainant packs, MSHA Open Government violation rows, Blue Book TOC, and free MSHA metadata wraps.",
+      "Count + operator + docket + date only. Decision body is the paid GET /fmshrc-orders payload. This free manifest lists the full catalog. Skip miner discrimination / §105(c) complainant packs, MSHA Open Government violation rows, Blue Book TOC, and free MSHA metadata wraps.",
     ),
     license: LICENSE,
     attribution: ATTRIBUTION,
