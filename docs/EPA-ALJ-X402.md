@@ -46,9 +46,11 @@ systemctl --user restart idaho-ticks-x402.service
 
 Restart **only** that unit. docker / other units untouched.
 
+Applied on apollo (2026-09-09): **serving SHA `dbaed3c`** (apply-record [PR 222](https://github.com/bnmbnmai/mcp-proxy/pull/222); merge of [PR 221](https://github.com/bnmbnmai/mcp-proxy/pull/221) `3bc1dd7` onto `cursor/apply-strip-free-sourceurl-ec52` @ `e62a38b` / prior serving `100430e`). Restarted **only** `idaho-ticks-x402.service` at **2026-09-09 16:33:40 MDT** (PID 1510988). One-door collect EXIT 0: listedCount **70**, `addedThisRun` 8, `fetchedPdfs` 5, skipped 4, asOf **2026-09-04**, fetchedAt **2026-09-09T22:33:32.301Z**. Seeds `FIFRA-07-2023-0135-2026-09-01` (Wilson) and `CWA-01-2026-0030-2026-09-04` (Pepperell) are in the free manifest (case/docket/date/label + `paidUrl` only; **no** `sourceUrl`). Unpaid `GET https://ticks.bnm.farm/epa-alj` is **402** at $0.05; `?id=FIFRA-07-2023-0135-2026-09-01` is **402** at $0.02. `/.well-known/x402` lists `/epa-alj` among **56** doors (was 55). Banner `mcp /mcp — 56 tools`. Siblings `/ticks` `/oshrc-orders` `/epa-cafo` still 402. No new collect cron. Lander card pasted on live bnm.farm after the BSEE card (OSHRC card is not on that lander).
+
 ## Lander card (tv-remote / bnm.farm)
 
-Paste after the OSHRC card. Product + bag size + price only. Count hydrates from the free manifest — do not hardcode a door count.
+Paste after the OSHRC card (live apply: after BSEE; OSHRC card was not on bnm.farm). Product + bag size + price only. Count hydrates from the free manifest — do not hardcode a door count.
 
 ```html
 <article class="card">
