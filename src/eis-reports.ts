@@ -1200,7 +1200,7 @@ export function buildEisReportsManifest(snap: EisReportsSnapshot | null): Record
     free: true,
     note: paidBodyCatalogNote(
       EIS_REPORTS_PATH,
-      "Count + CEQ number + date + title + agency + official e-NEPA page only. EIS body is the paid GET /eis-reports payload. This free manifest lists the full catalog. Search/details HTML is chrome. Skip EPA comment letters and Summary-for-the teasers. Distinct from Superfund RODs.",
+      "Count + CEQ number + date + title + agency only. EIS body is the paid GET /eis-reports payload. This free manifest lists the full catalog. Search/details HTML is chrome. Skip EPA comment letters and Summary-for-the teasers. Distinct from Superfund RODs.",
     ),
     license: LICENSE,
     attribution: ATTRIBUTION,

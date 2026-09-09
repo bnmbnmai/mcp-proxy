@@ -815,7 +815,7 @@ export function buildEpaCafoManifest(snap: EpaCafoSnapshot | null): Record<strin
     free: true,
     note: paidBodyCatalogNote(
       EPA_CAFO_PATH,
-      "Count + institution + docket + date + official PDF URL only. Letter body is the paid GET /epa-cafo payload. This free manifest lists the full catalog. HQ civil-cases HTML is chrome. Skip ECHO JSON, ICIS-FE&C, NPDES permits, FIFRA-only packs, and Superfund RODs.",
+      "Count + institution + docket + date only. Letter body is the paid GET /epa-cafo payload. This free manifest lists the full catalog. HQ civil-cases HTML is chrome. Skip ECHO JSON, ICIS-FE&C, NPDES permits, FIFRA-only packs, and Superfund RODs.",
     ),
     license: LICENSE,
     attribution: ATTRIBUTION,

@@ -230,6 +230,12 @@ async function main(): Promise<void> {
   assert.equal(catalent.matches[0]?.pagePriceUsdc, "0.05");
   assert.equal(catalent.matches[0]?.fetchedAt, "2026-08-26T00:00:00.000Z");
   assert.equal(catalent.matches[0]?.asOf, "2026-07-31");
+  assert.ok(!("sourceUrl" in (catalent.matches[0] ?? {})));
+  assert.ok(!("officialUrl" in (catalent.matches[0] ?? {})));
+  assert.ok(!("pdfUrl" in (catalent.matches[0] ?? {})));
+  assert.ok(!("htmlUrl" in (catalent.matches[0] ?? {})));
+  assert.ok(!("pageUrl" in (catalent.matches[0] ?? {})));
+  assert.ok(!JSON.stringify(catalent.matches).includes("fda.gov"));
   assert.ok(!JSON.stringify(catalent).includes("body"));
   assert.ok(catalent.note.includes("free") || catalent.note.includes("Free"));
   assert.ok(catalent.note.includes("$0.02"));

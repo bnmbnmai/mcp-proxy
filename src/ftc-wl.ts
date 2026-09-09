@@ -627,7 +627,7 @@ export function buildFtcWlManifest(snap: FtcWlSnapshot | null): Record<string, u
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: paidBodyCatalogNote("/ftc-wl", 'Full catalog: count + firm + date + subject + official URL. Not the legal-library index. Not FDA /warning-letters'),
+    note: paidBodyCatalogNote("/ftc-wl", 'Full catalog: count + firm + date + subject. Not the legal-library index. Not FDA /warning-letters'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

@@ -1043,7 +1043,7 @@ export function buildSuperfundRodsManifest(snap: SuperfundRodSnapshot | null): R
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: paidBodyCatalogNote("/superfund-rods", 'Full catalog: title + Doc ID + official PDF URL (plus institution / date). ROD + Five-Year Review report text. Not a Proposed Plan, fact sheet, or FYR letter'),
+    note: paidBodyCatalogNote("/superfund-rods", 'Full catalog: title + Doc ID + institution / date. ROD + Five-Year Review report text. Not a Proposed Plan, fact sheet, or FYR letter'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

@@ -1051,7 +1051,7 @@ export function buildFercOrdersManifest(snap: FercOrdersSnapshot | null): Record
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: paidBodyCatalogNote("/ferc-orders", 'Full catalog: count + institution + docket + date + official URL. Not the civil-penalty index teaser'),
+    note: paidBodyCatalogNote("/ferc-orders", 'Full catalog: count + institution + docket + date. Not the civil-penalty index teaser'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

@@ -684,7 +684,7 @@ export function buildCsbReportsManifest(snap: CsbReportsSnapshot | null): Record
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: "Free index for /csb-reports. Count + facility + date + official CSB page + PDF URL only. Paid GET /csb-reports is the official final investigation report PDF. License 17 USC 105.",
+    note: "Free index for /csb-reports. Count + facility + date + title only. Paid GET /csb-reports is the official final investigation report PDF. License 17 USC 105.",
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: PAY_TO,

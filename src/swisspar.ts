@@ -587,7 +587,7 @@ export function buildSwissparManifest(snap: SwissparSnapshot | null): Record<str
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: paidBodyCatalogNote("/swisspar", 'Full catalog: count + name + date + MA + official URL. Not the A–Z HTML index'),
+    note: paidBodyCatalogNote("/swisspar", 'Full catalog: count + name + date + MA. Not the A–Z HTML index'),
     license: LICENSE,
     attribution: ATTRIBUTION,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",

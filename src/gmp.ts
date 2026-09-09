@@ -718,7 +718,7 @@ export function buildGmpManifest(snap: GmpSnapshot | null): Record<string, unkno
     product: PRODUCT_ID,
     name: PRODUCT_NAME,
     free: true,
-    note: paidBodyCatalogNote("/gmp", 'Full catalog: count + id + firm + dates + rating + official URL. Not the 21k-row search index'),
+    note: paidBodyCatalogNote("/gmp", 'Full catalog: count + id + firm + dates + rating. Not the 21k-row search index'),
     license: OGL_NOTE,
     payTo: "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
     network: "base",
