@@ -1,0 +1,21 @@
+{
+  "product": "epa-nepa-eis-bodies",
+  "cardCount": 1,
+  "asOf": "2026-04-10",
+  "fetchedAt": "2026-09-08T04:04:23.458Z",
+  "amountAtomic": "50000",
+  "oneAmountAtomic": "20000",
+  "ids": [
+    "20260036"
+  ],
+  "titles": [
+    {
+      "id": "20260036",
+      "title": "Construction Permit at the Clinch River Nuclear Site, Final Report",
+      "date": "2026-04-10",
+      "agency": "Nuclear Regulatory Commission",
+      "ceqNumber": "20260036"
+    }
+  ],
+  "bodyLeak": false
+}
