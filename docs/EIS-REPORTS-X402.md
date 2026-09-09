@@ -1,51 +1,57 @@
-# Apply GET /eis-reports onto the live ticks tip
+# Apply GET /eis-reports collect fix (no human captcha)
 
-Official **EPA NEPA Environmental Impact Statement TEXT** extracted from CDX e-NEPA EIS document PDFs (`https://cdxapps.epa.gov/cdx-enepa-II/public/action/eis/search`). 17 U.S.C. § 105. Extracted-body door. Free manifest is titles / CEQ numbers / dates / agencies / links only. Paid `GET ?id=` is one official PDF text. Plain GET is the newest 10 official texts. Skip EPA comment letters and “Summary for the …” teasers. Not Superfund RODs (already live). Habit: last-week FR filings; PDFs since ~Oct 2012.
+Official **EPA NEPA Environmental Impact Statement TEXT** from CDX e-NEPA EIS document PDFs. Door is already live on ticks.bnm.farm at `/eis-reports` (teaser-blocked at `cardCount` 1 since apply). This PR is the collect-path fix only. Do **not** apply from this VM. One media-box worker lane; Chief launches apply.
 
-**Price:** **$0.02** (`20000`) one official text via `?id=`. **$0.05** (`50000`) newest 10 on a plain GET. Wallet stays `0xf59621FC406D266e18f314Ae18eF0a33b8401004`. Not a PDF-cache door. Not a wrap of search/details HTML. Do not invent a 46th SKU besides `/eis-reports`.
+## Root cause (verified 2026-09-09)
 
-**Download gate:** ALTCHA SHA-256 proof-of-work (not a picture captcha). Collector solves it in-process and injects the payload into `#downloadFormCaptcha`. Prefer the public **Download EIS** link (`startDownload('downloadEisDocuments', eisId, groups, set)`) after PoW. If a download **302s to login.gov**, that file is not the public EIS PDF — skip it and take the public Download EIS link. A CDX Login 302 on a raw HTTP POST is a bot/session difference, not a second human puzzle; Chrome + injected PoW already fetched public EIS PDFs. If a real picture captcha (reCAPTCHA/hCaptcha) appears, **stop** and report. Do not ask Bruce to click puzzles.
+Evening all-door collect died in `downloadEisPdfWithChrome` → `tryStart(LAST_WEEK_URL)`:
 
-**Leak-test:** no-auth JSON / `?format=json` / `/api/eis/{id}` do **not** dump EIS body. Free search/details HTML is titles, CEQ numbers, dates, agencies, attachment IDs. Distinctive PDF phrases (`ML26035A285`, `Supplement to NUREG-2226`) are not in the HTML chrome. If a no-auth JSON starts dumping the EIS body, KILL the door.
+```
+BLOCKER: second human captcha (reCAPTCHA/hCaptcha) on CDX e-NEPA.
+```
 
-**First cache (cloud VM unattended):** **2 texts**, asOf **2026-08-28**. Clinch River SEIS `20260036` (live PDF 6,606,213 bytes; extracted text includes `ML26035A285` / `NUREG-2226` / `Docket Number: 50-615`). F-35A Beddown Draft EIS `20260104` (live PDF 101,414,998 bytes). Official PDFs + extracted snapshot stay on Apollo under `data/eis-reports/` (gitignored). Captcha: ALTCHA PoW solved in-collector.
+That was a **false human-captcha trip**, not a new picture puzzle:
 
-This cloud VM is **not** apollo. Do **not** apply live from here. Leave this handoff.
+1. Cookie-less / first-hop GET `?search=&commonSearch=lastWeek` 302s to `?search=&__fsk=…` and **drops** `commonSearch=lastWeek`.
+2. The empty search form still includes leftover `https://www.google.com/recaptcha/api.js` in `<head>` and has **no** `<altcha-widget>`.
+3. Old detector treated `recaptcha/api.js` without the string `altcha-widget` as a human blocker and aborted the whole run.
+4. Details pages and a warmed-session GET `commonSearch=last30Published` still serve `<altcha-widget>` and official rows. Download JS is still “Please check the altcha.” Raw HTTP POST of the download form 302s to CDX Login (bot/session), same as before — Chrome + injected ALTCHA PoW on the **details** page is the public PDF path.
+
+There is no official no-auth PDF URL. Federal Register weekly NOA is titles only. NRC ADAMS 403’d from this VM. Do not ask Bruce to click captchas.
+
+## What changed
+
+- Cookie-session catalog: warm `GET /search`, then `GET last30Published` (the official list that still returns rows). last-week GET stays empty after `__fsk`.
+- Chrome download starts on `/action/eis/details?eisId=` (always has ALTCHA). Never open last-week search first.
+- `looksLikeHumanCaptcha` only fires on a **visible** reCAPTCHA/hCaptcha widget or “Please complete the …” copy. Leftover `recaptcha/api.js` is not a blocker.
 
 ## Apply on apollo / media-box (`systemctl --user`; no sudo)
 
+Merge collect functions into the live EIS tip (`src/eis-reports.ts`). Do not checkout catalog `main` over the live door. Do not replace other doors.
+
 ```bash
 cd ~/projects/mcp-proxy
-git fetch origin cursor/eis-reports-dedd
-git checkout cursor/eis-reports-dedd
-# Chrome is required for live PDF fetch. puppeteer-core is a package.json dep (no bundled Chromium).
-# pdftotext (poppler-utils) is preferred; collector falls back to python3 + pypdf.
-export CHROME_PATH="${CHROME_PATH:-/usr/local/bin/google-chrome}"
+# stack on the live ticks tip (cursor/apply-oshrc-orders-6483)
+# merge src/eis-reports.ts collect + captcha + listing helpers from PR 215
+export CHROME_PATH="${CHROME_PATH:-/usr/bin/google-chrome}"
 test -x "$CHROME_PATH" || CHROME_PATH=$(command -v google-chrome || command -v chromium || true)
 export EIS_REPORTS_DIR=$HOME/projects/mcp-proxy/data/eis-reports
 mkdir -p "$EIS_REPORTS_DIR"
-npm install
 npm run build
-EIS_REPORTS_LIMIT=10 EIS_REPORTS_MAX_FETCH=10 npm run collect:eis-reports
+EIS_REPORTS_LIMIT=20 EIS_REPORTS_MAX_FETCH=10 npm run collect:eis-reports
+# expect cardCount > 1 (target ≥4). captcha.kind remains altcha-pow.
 systemctl --user restart idaho-ticks-x402.service
 ```
 
-Set `EIS_REPORTS_DIR` and `CHROME_PATH` on the unit if they are not already in the environment file. Restart **only** `idaho-ticks-x402.service`. Merge into the live cache. Do not replace other doors. Do not replace the live HHS OIG, CSB, AAIB, or PHMSA caches.
+Restart **only** `idaho-ticks-x402.service`. Verify `https://ticks.bnm.farm/eis-reports/manifest.json` `cardCount` moves above 1.
 
-If prior PDF bytes are already under `data/eis-reports/` (or a copied `/tmp/eis-live-cache/`), collect will extract text from those files and skip a re-download.
+If a **visible** reCAPTCHA/hCaptcha widget appears on the details page (not leftover `api.js`), stop and report. That would be truly human-only.
 
-## Lander card (tv-remote / bnm.farm)
+## Live verify (this VM, 2026-09-09)
 
-Stacked on the HHS OIG lander tip. Product + bag + price only (`$0.02 ?id=`, `$0.05 / 10`). No “not this” copy. Lander PR: https://github.com/bnmbnmai/tv-remote/pull/85 (`cursor/eis-reports-lander-dedd`).
+`EIS_REPORTS_DIR=/tmp/eis-live EIS_REPORTS_LIMIT=3 EIS_REPORTS_MAX_FETCH=3 node build/eis-reports.js`
 
-## After apply
-
-- unpaid `GET https://ticks.bnm.farm/eis-reports` is HTTP 402 at $0.05
-- unpaid `GET ?id=20260104` is HTTP 402 at $0.02
-- free `GET /eis-reports/manifest.json` is HTTP 200, titles/links/counts only, no `body`
-- paid GET returns JSON `cards[].body` + `records[]` (not `application/pdf`)
-- `/.well-known/x402` lists `/eis-reports`
-- `/` shop JSON lists the product
-- `/mcp` tools include `eis-reports` generated from well-known (no hardcoded door count)
-- lander https://bnm.farm/ shows the EIS card
-- catalog `npm run sync:live-shop` is a **later** listing PR on `main` after this apply is live
+- No BLOCKER. `captcha.kind=altcha-pow`, solved in 245–350 ms.
+- Cookie-session last30 listed official rows; details HTML is ALTCHA, not a human widget.
+- First run added Navajo Mine FEIS `20260116` (1.4M chars, official EIS heading). Second run reused that card and added three I-270 chapter texts. **cardCount 1 → 4** on an empty cache.
+- Raw HTTP POST of `downloadAttachment` still 302s to CDX Login — Chrome + injected PoW on details remains the public PDF path.

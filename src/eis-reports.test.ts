@@ -29,7 +29,9 @@ import {
   isSkippedEisAttachment,
   isSummaryTeaserTitle,
   isSuperfundRodDump,
+  looksLikeHumanCaptcha,
   looksLikeLeakedEisBody,
+  looksLikeLeftoverRecaptchaScript,
   looksLikeLoginGov,
   officialEisPageUrl,
   parseDetailsListings,
@@ -101,6 +103,10 @@ async function main(): Promise<void> {
   assert.ok(!looksLikeLeakedEisBody(readFx("lastWeek.html")));
   assert.ok(looksLikeLoginGov("https://secure.login.gov/?redirect=1"));
   assert.ok(!looksLikeLoginGov(readFx("lastWeek.html")));
+  assert.ok(looksLikeLeftoverRecaptchaScript(readFx("empty-search.html")), "empty last-week form still loads leftover recaptcha/api.js");
+  assert.ok(!looksLikeHumanCaptcha(readFx("empty-search.html")), "leftover recaptcha/api.js is not a second human puzzle");
+  assert.ok(looksLikeHumanCaptcha(readFx("human-recaptcha.html")), "visible reCAPTCHA widget is a human blocker");
+  assert.ok(!looksLikeHumanCaptcha(readFx("details-555705.html")), "details chrome is ALTCHA, not human recaptcha");
   assert.ok(isSuperfundRodDump("RECORD OF DECISION Superfund SEMS site cleanup"));
   assert.ok(!isSuperfundRodDump(readFx("20260036.txt")));
   assert.ok(!isRealEisBody(readFx("lastWeek.html")));
