@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html><head><title>Environmental Impact Statement (EIS) Database|USEPA</title></head>
+<body>
+<h1 class="page-title">Environmental Impact Statement (EIS) Database</h1>
+<div>
+  <h4 for="title">EIS Title</h4> F-35A Beddown at Moody Air Force Base, Georgia
+  <h4 for="eisNumber">EIS Number</h4> 20260104
+  <h4 for="type">Document Type</h4> Draft
+  <h4 for="ceqFederalRegisterDate">Federal Register Date</h4> 2026-08-28 00:00:00.0
+  <h4 for="state">State or Territory</h4> GA
+  <h4 for="ceqFederalRegisterDate">Lead Agency</h4> United States Air Force
+  <form method="post" action="/cdx-enepa-II/public/action/eis/details" id="downloadForm">
+    <input type="hidden" name="_csrf" value="FIXTURE" />
+    <input type="hidden" name="captchaResponse" id="downloadFormCaptcha"/>
+    <input type="hidden" name="attachmentId" id="downloadFormAttachmentId"/>
+    <altcha-widget id="altcha" challengeurl="https://cdxapi.epa.gov/altcha/api/v1/retrieveChallenge"
+      naasip="10.0.0.1" naastoken="FIXTURE"></altcha-widget>
+  </form>
+  <strong>EIS Document(s):</strong>
+  <p>
+    <a href="javascript:void(0);" onclick="startDownload('downloadAttachment', '569653')">
+      Summary for the Draft EIS for F-35A Beddown at Moody AFB, GA (Aug 2026).pdf
+    </a>
+    (14 pp, 635.251953125 K)
+  </p>
+  <p>
+    <a href="javascript:void(0);" onclick="startDownload('downloadAttachment', '569535')">
+      Draft EIS for F-35A Beddown at Moody Air Force Base, Georgia (August 2026).pdf
+    </a>
+    (412 pp, 22100 K)
+  </p>
+</div>
+</body></html>
