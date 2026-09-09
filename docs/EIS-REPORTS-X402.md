@@ -47,3 +47,12 @@ systemctl --user restart idaho-ticks-x402.service
 Restart **only** `idaho-ticks-x402.service`. Verify `https://ticks.bnm.farm/eis-reports/manifest.json` `cardCount` moves above 1.
 
 If a **visible** reCAPTCHA/hCaptcha widget appears on the details page (not leftover `api.js`), stop and report. That would be truly human-only.
+
+## Live verify (this VM, 2026-09-09)
+
+`EIS_REPORTS_DIR=/tmp/eis-live EIS_REPORTS_LIMIT=3 EIS_REPORTS_MAX_FETCH=3 node build/eis-reports.js`
+
+- No BLOCKER. `captcha.kind=altcha-pow`, solved in 245–350 ms.
+- Cookie-session last30 listed official rows; details HTML is ALTCHA, not a human widget.
+- First run added Navajo Mine FEIS `20260116` (1.4M chars, official EIS heading). Second run reused that card and added three I-270 chapter texts. **cardCount 1 → 4** on an empty cache.
+- Raw HTTP POST of `downloadAttachment` still 302s to CDX Login — Chrome + injected PoW on details remains the public PDF path.
