@@ -1,0 +1,27 @@
+# apply PR 215 EIS captcha collect fix — live ticks.bnm.farm
+# serving SHA 9b8953b
+# idaho-ticks-x402.service restart Tue 2026-09-08 22:49:40 MDT PID 609988
+# Restarted only that unit. docker untouched.
+
+BEFORE
+GET  https://ticks.bnm.farm/.well-known/x402               200  resources=55  has /eis-reports
+GET  https://ticks.bnm.farm/eis-reports                    402  maxAmountRequired=50000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/eis-reports/manifest.json      200  cardCount=1  asOf=2026-04-10  fetchedAt=2026-09-08T04:04:23.458Z  id=20260036  no body
+GET  https://ticks.bnm.farm/ticks                          402  sibling
+GET  https://ticks.bnm.farm/oshrc-orders                   402  sibling
+
+AFTER (merge 9b8953b + one-door collect cardCount 19 + restart)
+GET  https://ticks.bnm.farm/.well-known/x402               200  via: 1.1 Caddy  resources=55  extra.resourceCount=55  has /eis-reports
+GET  https://ticks.bnm.farm/eis-reports                    402  maxAmountRequired=50000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/eis-reports?id=20260116        402  maxAmountRequired=20000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/eis-reports/manifest.json      200  via: 1.1 Caddy  cardCount=19  asOf=2026-09-08  fetchedAt=2026-09-09T04:49:29.236Z  no body  has 20260116 + 20260036
+GET  https://ticks.bnm.farm/ticks                          402  sibling
+GET  https://ticks.bnm.farm/oshrc-orders                   402  sibling
+
+loopback GET http://127.0.0.1:4020/eis-reports             402
+loopback GET ?id=20260116                                  402
+loopback GET manifest                                      200  cardCount=19
+
+banner: /eis-reports $0.05 USDC
+banner: mcp /mcp — 55 tools from /.well-known/x402
+collect: captcha.kind=altcha-pow tookMs=127 listedCount=143 addedThisRun=9 reused=9 fetchedPdfs=10

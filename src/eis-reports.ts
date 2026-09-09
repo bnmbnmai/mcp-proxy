@@ -6,9 +6,13 @@
  * plain GET is the newest 10 texts ($0.05). Search HTML is chrome.
  * Skip EPA comment letters and "Summary for the" teasers. Not Superfund RODs.
  * Download is POST + ALTCHA SHA-256 PoW (not a picture captcha). Solve in-collector.
- * Prefer the public Download EIS link after PoW. If a download 302s to login.gov,
- * that file is not the public EIS — skip it. Do not stall on a CDX login wall.
- * Habit: last-week FR filings. Kill if a no-auth JSON already dumps the EIS body.
+ * Chrome starts on the details page (has <altcha-widget>). Do not open last-week
+ * search first: the __fsk hop strips commonSearch=lastWeek and the empty form still
+ * loads leftover recaptcha/api.js, which is not a second human puzzle.
+ * Cookie-session GET last30Published is the official catalog that still returns rows.
+ * If a download 302s to login.gov, that file is not the public EIS — skip it.
+ * Habit: last-30 FR filings (last-week GET is empty after __fsk). Kill if a no-auth
+ * JSON already dumps the EIS body.
  */
 
 import { createHash } from "node:crypto";
@@ -113,6 +117,46 @@ export type AltchaChallenge = {
 const HTTP_UA = "bnm-data-shop/1.0 (EPA NEPA EIS PDFs; +https://cdxapps.epa.gov/cdx-enepa-II/public/action/eis/search)";
 const CHROME_UA =
   "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36";
+
+type CookieJar = Map<string, string>;
+
+function newCookieJar(): CookieJar {
+  return new Map();
+}
+
+function storeCookies(jar: CookieJar, res: Response): void {
+  const setter = res.headers.getSetCookie?.() ?? [];
+  const raw = setter.length ? setter : (res.headers.get("set-cookie") ? [res.headers.get("set-cookie") as string] : []);
+  for (const cookie of raw) {
+    const nv = cookie.split(";", 1)[0] || "";
+    const eq = nv.indexOf("=");
+    if (eq <= 0) continue;
+    jar.set(nv.slice(0, eq).trim(), nv.slice(eq + 1).trim());
+  }
+}
+
+function cookieHeader(jar: CookieJar): string {
+  return [...jar.entries()].map(([k, v]) => `${k}=${v}`).join("; ");
+}
+
+async function cdxRequest(url: string, jar: CookieJar, init?: RequestInit, hops = 0): Promise<Response> {
+  if (hops > 8) throw new Error(`CDX redirect hop limit: ${url}`);
+  const headers = new Headers(init?.headers);
+  if (!headers.has("User-Agent")) headers.set("User-Agent", HTTP_UA);
+  const cookie = cookieHeader(jar);
+  if (cookie) headers.set("Cookie", cookie);
+  const res = await fetch(url, { ...init, headers, redirect: "manual" });
+  storeCookies(jar, res);
+  const loc = res.headers.get("location");
+  if (loc && (res.status === 301 || res.status === 302 || res.status === 303 || res.status === 307 || res.status === 308)) {
+    const next = new URL(loc, url);
+    if (next.hostname && next.hostname !== "cdxapps.epa.gov" && next.hostname !== "cdxapi.epa.gov") {
+      return res;
+    }
+    return cdxRequest(next.toString(), jar, { method: "GET" }, hops + 1);
+  }
+  return res;
+}
 
 export const SEED_LISTINGS: EisListing[] = [
   {
@@ -401,11 +445,24 @@ export function looksLikeLoginWall(htmlOrUrl: string): boolean {
   return looksLikeLoginGov(htmlOrUrl) || looksLikeCdxLogin(htmlOrUrl);
 }
 
+export function looksLikeLeftoverRecaptchaScript(html: string): boolean {
+  const t = String(html || "");
+  if (!/recaptcha\/api\.js/i.test(t)) return false;
+  if (/class=["'][^"']*g-recaptcha|grecaptcha\.render|recaptcha\/api2\/anchor|h-captcha|hcaptcha\.com\/1\/api/i.test(t)) {
+    return false;
+  }
+  if (/Please complete the (reCAPTCHA|hCaptcha|picture)/i.test(t)) return false;
+  return true;
+}
+
 export function looksLikeHumanCaptcha(html: string): boolean {
   const t = String(html || "");
-  if (/g-recaptcha|recaptcha\/api\.js|hcaptcha/i.test(t) && !/altcha-widget/i.test(t)) return true;
   if (/Please complete the (reCAPTCHA|hCaptcha|picture)/i.test(t)) return true;
-  return false;
+  const visibleHuman =
+    /class=["'][^"']*g-recaptcha|grecaptcha\.render|recaptcha\/api2\/anchor|h-captcha|hcaptcha\.com\/1\/api/i.test(t);
+  if (!visibleHuman) return false;
+  if (/altcha-widget/i.test(t) && /downloadFormCaptcha|Please check the altcha/i.test(t)) return false;
+  return true;
 }
 
 export function isSuperfundRodDump(text: string): boolean {
@@ -610,13 +667,26 @@ export function readCachedPdf(card: Pick<EisCard, "id"> & { pdfFile?: string }):
   return isPdfBytes(bytes) ? bytes : null;
 }
 
-export async function fetchEisText(url: string): Promise<string> {
-  const res = await fetch(url, {
-    headers: { "User-Agent": HTTP_UA, Accept: "text/html,*/*" },
-    redirect: "follow",
-  });
+export async function fetchEisText(url: string, jar?: CookieJar): Promise<string> {
+  const cookies = jar ?? newCookieJar();
+  const res = await cdxRequest(url, cookies, { headers: { Accept: "text/html,*/*" } });
   if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
   return await res.text();
+}
+
+export async function warmCdxSession(): Promise<CookieJar> {
+  const jar = newCookieJar();
+  await cdxRequest(`${SEARCH_ORIGIN}${SEARCH_PATH}`, jar, { headers: { Accept: "text/html,*/*" } });
+  return jar;
+}
+
+export async function fetchOfficialSearchHtml(jar?: CookieJar): Promise<string> {
+  const cookies = jar ?? (await warmCdxSession());
+  const month = await fetchEisText(LAST_30_URL, cookies);
+  if (parseSearchRows(month).length >= 3) return month;
+  const week = await fetchEisText(LAST_WEEK_URL, cookies);
+  if (parseSearchRows(week).length) return week;
+  return month;
 }
 
 export async function leakTestCdxNoAuth(eisId = "555705"): Promise<{ leaked: boolean; note: string }> {
@@ -827,6 +897,9 @@ export async function downloadEisPdfWithChrome(opts: ChromeDownloadOpts): Promis
           "BLOCKER: second human captcha (reCAPTCHA/hCaptcha) on CDX e-NEPA. Stop. Do not ask Bruce unless it is truly human-only and this is that case.",
         );
       }
+      if (looksLikeLeftoverRecaptchaScript(html) && !/altcha-widget/i.test(html)) {
+        return "retry";
+      }
       if (looksLikeCdxLogin(urlNow) || looksLikeCdxLogin(html)) {
         return "retry";
       }
@@ -868,29 +941,26 @@ export async function downloadEisPdfWithChrome(opts: ChromeDownloadOpts): Promis
       return { bytes, took };
     };
 
-    let lastTook = 0;
-    if (opts.groups) {
-      const publicHit = await tryStart(LAST_WEEK_URL, "downloadEisDocuments");
-      if (publicHit === "skip") {
-        throw new Error(`SKIP: login.gov wall on public Download EIS for eisId=${opts.eisId}; not the public EIS PDF.`);
-      }
-      if (publicHit !== "retry") {
-        return { bytes: publicHit.bytes, captchaTookMs: publicHit.took };
-      }
-      lastTook = 0;
+    const details = detailsUrlFor(opts.eisId);
+    await page.goto(details, { waitUntil: "domcontentloaded" });
+    if (!opts.attachmentId) {
+      const scraped = await page.evaluate(() => {
+        const html = document.documentElement.innerHTML;
+        const docs = html.match(/<strong>\s*EIS Document[\s\S]{0,4000}/i)?.[0] || html;
+        const m = docs.match(/startDownload\(\s*['"]downloadAttachment['"]\s*,\s*['"](\d+)['"]/i);
+        return m?.[1] || "";
+      });
+      if (scraped) opts.attachmentId = scraped;
     }
-    if (opts.attachmentId) {
-      const attachHit = await tryStart(detailsUrlFor(opts.eisId), "downloadAttachment");
-      if (attachHit === "skip") {
-        throw new Error(`SKIP: login.gov wall on attachment ${opts.attachmentId}; not the public EIS PDF.`);
-      }
-      if (attachHit !== "retry") {
-        return { bytes: attachHit.bytes, captchaTookMs: attachHit.took };
-      }
-      lastTook = 0;
+    const attachHit = await tryStart(details, "downloadAttachment");
+    if (attachHit === "skip") {
+      throw new Error(`SKIP: login.gov wall on attachment ${opts.attachmentId || opts.eisId}; not the public EIS PDF.`);
+    }
+    if (attachHit !== "retry") {
+      return { bytes: attachHit.bytes, captchaTookMs: attachHit.took };
     }
     throw new Error(
-      `SKIP: no public EIS PDF after PoW for eisId=${opts.eisId} (login wall or empty download). captchaTookMs=${lastTook}`,
+      `SKIP: no public EIS PDF after PoW for eisId=${opts.eisId} (login wall or empty download). captchaTookMs=0`,
     );
   } finally {
     await browser.close();
@@ -899,17 +969,15 @@ export async function downloadEisPdfWithChrome(opts: ChromeDownloadOpts): Promis
 
 async function loadOfficialListings(dir: string): Promise<{ listed: EisListing[]; listedCount: number }> {
   const fromSearch: ReturnType<typeof parseSearchRows> = [];
+  let jar: CookieJar | undefined;
   if (dir) {
     const searchHtml = readNamedFile(dir, ["lastWeek.html", "last30.html", "search.html", "index.html"]);
     if (searchHtml) fromSearch.push(...parseSearchRows(searchHtml));
   } else {
     try {
-      const week = await fetchEisText(LAST_WEEK_URL);
-      fromSearch.push(...parseSearchRows(week));
-      if (fromSearch.length < 3) {
-        const month = await fetchEisText(LAST_30_URL);
-        fromSearch.push(...parseSearchRows(month));
-      }
+      jar = await warmCdxSession();
+      const catalog = await fetchOfficialSearchHtml(jar);
+      fromSearch.push(...parseSearchRows(catalog));
     } catch {
       /* keep seeds */
     }
@@ -956,7 +1024,7 @@ async function loadOfficialListings(dir: string): Promise<{ listed: EisListing[]
       continue;
     }
     try {
-      const liveHtml = await fetchEisText(row.pageUrl);
+      const liveHtml = await fetchEisText(row.pageUrl, jar);
       if (looksLikeLoginGov(liveHtml)) {
         if (row.downloadGroups || row.attachmentId) enriched.push(row);
         continue;
@@ -1094,7 +1162,7 @@ export async function collectEisReports(opts?: {
       note: dir
         ? "htmlDir collect; ALTCHA not live. Live download is SHA-256 PoW in-collector (not a picture captcha)."
         : captchaSolved
-          ? "ALTCHA SHA-256 PoW solved in-collector. Public Download EIS after PoW. login.gov 302s are skipped."
+          ? "ALTCHA SHA-256 PoW solved in-collector on the details page. leftover recaptcha/api.js is not a second human puzzle. login.gov 302s are skipped."
           : "No new live PDF this run; reused cache or skipped login.gov / empty extract.",
     },
   };

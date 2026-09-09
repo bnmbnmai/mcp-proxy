@@ -1,0 +1,175 @@
+{
+  "job": "apply PR 215 EIS captcha collect fix onto live ticks.bnm.farm",
+  "ranOn": "apollo",
+  "hostname": "pop-os",
+  "path": "/eis-reports",
+  "priceUsdc": "0.05",
+  "amountAtomic": "50000",
+  "oneAmountAtomic": "20000",
+  "network": "base",
+  "branch": "cursor/apply-eis-captcha-bd48",
+  "servingSha": "9b8953b8f20a19bef00aa07a899c43e5c13b0416",
+  "sourcePr": "https://github.com/bnmbnmai/mcp-proxy/pull/215",
+  "sourceBranch": "cursor/eis-captcha-bypass-0f43",
+  "sourceHead": "c20eed3ee05ad8588228c4f909626bb8c8b95087",
+  "stackedOn": "cursor/apply-oshrc-orders-6483",
+  "stackedOnSha": "93d2f1f7adc65200044c0372b40a87af80c47f61",
+  "liveServingBefore": "44e7a2e6a1f97d999d02b68ffda58230a258eb68",
+  "thisApply": "https://github.com/bnmbnmai/mcp-proxy/pull/217",
+  "boiseHourAtApply": "22",
+  "imagineWindow": false,
+  "systemctlUserRestart": {
+    "unit": "idaho-ticks-x402.service",
+    "ok": true,
+    "otherUnitsRestarted": false,
+    "activeEnterTimestamp": "Tue 2026-09-08 22:49:40 MDT",
+    "pidBefore": "291681",
+    "pidAfter": "609988",
+    "dockerGwUntouched": "Up 12 hours"
+  },
+  "banner": {
+    "eis": "/eis-reports $0.05 USDC",
+    "mcp": "mcp /mcp — 55 tools from /.well-known/x402"
+  },
+  "before": {
+    "eisUnpaid": 402,
+    "eisManifest": {
+      "status": 200,
+      "cardCount": 1,
+      "asOf": "2026-04-10",
+      "fetchedAt": "2026-09-08T04:04:23.458Z",
+      "ids": ["20260036"],
+      "bodyLeak": false
+    },
+    "wellKnown": {
+      "status": 200,
+      "resourceCount": 55,
+      "hasEis": true
+    },
+    "siblings": {
+      "/ticks": 402,
+      "/oshrc-orders": 402
+    }
+  },
+  "collect": {
+    "status": "ok",
+    "dir": "$HOME/projects/mcp-proxy/data/eis-reports",
+    "fetchedAt": "2026-09-09T04:49:29.236Z",
+    "asOf": "2026-09-08",
+    "cardCount": 19,
+    "listedCount": 143,
+    "fetchedPdfs": 10,
+    "skipped": 3,
+    "skippedNoText": 2,
+    "reused": 9,
+    "addedThisRun": 9,
+    "captcha": {
+      "kind": "altcha-pow",
+      "solved": true,
+      "tookMs": 127
+    },
+    "ids": [
+      "20260116",
+      "20260115-571342",
+      "20260115-571324",
+      "20260115-571308",
+      "20260115-571302",
+      "20260115-571296",
+      "20260115-571290",
+      "20260115-571284",
+      "20260115-571278",
+      "20260115-571272",
+      "20260115-571260",
+      "20260115-571254",
+      "20260115-571248",
+      "20260115-571242",
+      "20260115-571230",
+      "20260115-571224",
+      "20260115-571218",
+      "20260115-571212",
+      "20260036"
+    ]
+  },
+  "live": {
+    "wellKnown": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "resourceCount": 55,
+      "extraResourceCount": 55,
+      "hasEis": true,
+      "eisUrl": "https://ticks.bnm.farm/eis-reports"
+    },
+    "unpaidGet": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "50000",
+      "extraName": "USD Coin",
+      "resource": "https://ticks.bnm.farm/eis-reports"
+    },
+    "unpaidId": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "id": "20260116",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "20000",
+      "extraName": "USD Coin",
+      "resource": "https://ticks.bnm.farm/eis-reports?id=20260116"
+    },
+    "manifest": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "cardCount": 19,
+      "asOf": "2026-09-08",
+      "fetchedAt": "2026-09-09T04:49:29.236Z",
+      "product": "epa-nepa-eis-bodies",
+      "hasNavajo": true,
+      "hasClinch": true,
+      "navajo": {
+        "id": "20260116",
+        "title": "Navajo Transitional Energy Company's Navajo Mine No Name Permit",
+        "date": "2026-09-08",
+        "agency": "Office of Surface Mining Reclamation and Enforcement"
+      },
+      "clinch": {
+        "id": "20260036",
+        "title": "Construction Permit at the Clinch River Nuclear Site, Final Report",
+        "date": "2026-04-10",
+        "agency": "Nuclear Regulatory Commission"
+      },
+      "bodyLeak": false,
+      "schemaFields": [
+        "id",
+        "ceqNumber",
+        "eisId",
+        "attachmentId",
+        "documentType",
+        "date",
+        "title",
+        "agency",
+        "state",
+        "pageUrl",
+        "sourceUrl"
+      ]
+    },
+    "siblingsStill402": {
+      "/ticks": 402,
+      "/oshrc-orders": 402
+    },
+    "loopback": {
+      "wellKnown": 200,
+      "unpaidGet": 402,
+      "unpaidId": 402,
+      "manifest": 200,
+      "manifestCardCount": 19
+    }
+  },
+  "excluded": {
+    "catalogMain": "not checked out",
+    "lander": "not opened from this apply",
+    "newCollectCron": "not started",
+    "dockerGw": "untouched",
+    "otherUnits": "not restarted",
+    "imagineWindow": "22:49 MDT; not 02:00-04:00"
+  }
+}
