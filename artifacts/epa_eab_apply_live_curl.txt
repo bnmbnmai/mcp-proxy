@@ -1,4 +1,5 @@
 # apply PR 223 GET /epa-eab onto live ticks.bnm.farm
+# apply-record https://github.com/bnmbnmai/mcp-proxy/pull/224
 # serving SHA 6c16a68 (cursor/epa-eab-door-4402 stacked on cursor/apply-epa-alj-6c6a @ f777341)
 # idaho-ticks-x402.service restart Thu 2026-09-10 16:30:55 MDT PID 2737323 (was 1510988)
 # Restarted only that unit (systemctl --user). docker-gw / bnm-caddy / bnm-tunnel untouched.

@@ -15,6 +15,7 @@
   "stackedOn": "cursor/apply-epa-alj-6c6a",
   "stackedOnSha": "f77734124f9e45493df71caea3af0b9f5837c5c4",
   "liveServingBefore": "dbaed3c08d12af9d36531baf2a719fdaadb1c49a",
+  "thisApply": "https://github.com/bnmbnmai/mcp-proxy/pull/224",
   "systemctlUserRestart": {
     "unit": "idaho-ticks-x402.service",
     "ok": true,
