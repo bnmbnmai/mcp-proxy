@@ -1,0 +1,33 @@
+{
+  "host": "127.0.0.1:4027",
+  "EPA_EAB_DIR": "/tmp/epa-eab-prove",
+  "X402_SKIP_SETTLE": "1",
+  "results": {
+    "unpaidPage": { "status": 402, "maxAmountRequired": "50000", "leakedAssented": false },
+    "unpaidId": { "status": 402, "id": "NPDES-26-03-2026-07-15", "maxAmountRequired": "20000" },
+    "sinceEmpty": { "status": 304, "since": "2026-09-08" },
+    "freeManifest": {
+      "status": 200,
+      "cardCount": 4,
+      "asOf": "2026-07-15",
+      "ids": [
+        "NPDES-26-03-2026-07-15",
+        "UIC-26-02-2026-07-07",
+        "NPDES-26-01-2026-04-28",
+        "UIC-25-03-2026-02-02"
+      ],
+      "sourceUrlOnCards": false,
+      "bodyOnCards": false,
+      "leakedAssented": false,
+      "leakedDraftPermit": false
+    },
+    "wellKnownListsEpaEab": true,
+    "shopListsEpaEab": true,
+    "paidId": {
+      "status": 200,
+      "product": "epa-eab-board-order-bodies",
+      "id": "NPDES-26-03-2026-07-15",
+      "bodyHasAssentedMotion": true
+    }
+  }
+}

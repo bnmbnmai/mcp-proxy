@@ -1,0 +1,33 @@
+# apply PR 223 GET /epa-eab onto live ticks.bnm.farm
+# apply-record https://github.com/bnmbnmai/mcp-proxy/pull/224
+# serving SHA 6c16a68 (cursor/epa-eab-door-4402 stacked on cursor/apply-epa-alj-6c6a @ f777341)
+# idaho-ticks-x402.service restart Thu 2026-09-10 16:30:55 MDT PID 2737323 (was 1510988)
+# Restarted only that unit (systemctl --user). docker-gw / bnm-caddy / bnm-tunnel untouched.
+# Added EPA_EAB_DIR to the user unit.
+
+BEFORE (serving f777341 / dbaed3c door code)
+GET  https://ticks.bnm.farm/.well-known/x402                          200  resources=56  extra.resourceCount=56  no /epa-eab
+GET  https://ticks.bnm.farm/epa-eab                                    404
+GET  https://ticks.bnm.farm/epa-eab/manifest.json                      404
+GET  https://ticks.bnm.farm/epa-alj                                    402  sibling
+
+AFTER (serving 6c16a68 + seed collect cardCount=4 + restart)
+GET  https://ticks.bnm.farm/.well-known/x402                          200  via: 1.1 Caddy  resources=57  extra.resourceCount=57  has /epa-eab
+GET  https://ticks.bnm.farm/epa-eab                                    402  maxAmountRequired=50000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/epa-eab?id=NPDES-26-03-2026-07-15          402  maxAmountRequired=20000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/epa-eab/manifest.json                      200  via: 1.1 Caddy  cardCount=4  asOf=2026-07-15  fetchedAt=2026-09-10T22:30:50.231Z  South Essex+Montalban  NO sourceUrl  NO body
+GET  https://ticks.bnm.farm/ticks                                      402  sibling
+GET  https://ticks.bnm.farm/oshrc-orders                               402  sibling
+GET  https://ticks.bnm.farm/epa-alj                                    402  sibling
+GET  https://ticks.bnm.farm/epa-cafo                                   402  sibling
+
+loopback GET http://127.0.0.1:4020/epa-eab                            402
+loopback GET http://127.0.0.1:4020/epa-eab/manifest.json               200  cardCount=4  no sourceUrl
+
+banner: /epa-eab $0.05 USDC
+banner: mcp /mcp — 57 tools from /.well-known/x402
+collect: EPA_EAB_LIMIT=4 EPA_EAB_MAX_FETCH=8  listedCount=13 addedThisRun=4 fetchedPdfs=4 skippedNoText=0
+seeds: NPDES-26-03-2026-07-15 (South Essex)  UIC-26-02-2026-07-07 (Montalban)
+extra: NPDES-26-01-2026-04-28 (Albuquerque moot)  UIC-25-03-2026-02-02 (ExxonMobil moot)
+types: all Type=Permit Board Orders; no Penalty ESA/CAFO twins
+lander: tv-remote / bnm.farm — no EAB card on this tip; not blocking apply
