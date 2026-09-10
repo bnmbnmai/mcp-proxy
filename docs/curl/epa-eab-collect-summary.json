@@ -1,0 +1,56 @@
+{
+  "product": "/epa-eab",
+  "status": "ok",
+  "fetchedAt": "2026-09-10T22:25:58.080Z",
+  "asOf": "2026-07-15",
+  "cardCount": 4,
+  "listedCount": 13,
+  "fetchedPdfs": 4,
+  "skippedNoText": 0,
+  "reused": 0,
+  "addedThisRun": 4,
+  "prefer": "Type=Permit Unpublished Final Orders / Board Orders",
+  "skipped": "Penalty ESA/CAFO Expedited Settlement rows (CAA 26-09C Chase, TSCA 26-01Q Lake City, other *C twins)",
+  "seeds": [
+    "NPDES-26-03-2026-07-15",
+    "UIC-26-02-2026-07-07"
+  ],
+  "cards": [
+    {
+      "id": "NPDES-26-03-2026-07-15",
+      "appeal": "NPDES-26-03",
+      "docket": "MA0100501",
+      "institution": "South Essex Sewerage District",
+      "type": "Permit",
+      "date": "2026-07-15",
+      "result": "Order Granting Petitioner's Motion and Dismissing Petition for Review"
+    },
+    {
+      "id": "UIC-26-02-2026-07-07",
+      "appeal": "UIC-26-02",
+      "docket": "MT52443-12513",
+      "institution": "Montalban Oil and Gas Operations, Inc.",
+      "type": "Permit",
+      "date": "2026-07-07",
+      "result": "Order Dismissing Petition for Review as Untimely"
+    },
+    {
+      "id": "NPDES-26-01-2026-04-28",
+      "appeal": "NPDES-26-01",
+      "docket": "NM0022250",
+      "institution": "Albuquerque Bernalillo County Water Utility Authority",
+      "type": "Permit",
+      "date": "2026-04-28",
+      "result": "Order Dismissing Petition for Review as Moot"
+    },
+    {
+      "id": "UIC-25-03-2026-02-02",
+      "appeal": "UIC-25-03",
+      "docket": "R6-TX-245-C6-0001; R6-TX-245-C6-0002; R6-TX-245-C6-0003",
+      "institution": "ExxonMobil Low Carbon Solutions Onshore Storage, LLC",
+      "type": "Permit",
+      "date": "2026-02-02",
+      "result": "Order Dismissing Petition for Review as Moot"
+    }
+  ]
+}

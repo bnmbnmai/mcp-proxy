@@ -54,6 +54,7 @@ build/fmshrc-orders.*
 build/bsee-reports.*
 build/oshrc-orders.*
 build/epa-alj.*
+build/epa-eab.*
 build/ticks-ams.*
 build/ticks-ams-leftovers.*
 build/paid-records.*
@@ -111,6 +112,7 @@ data/fmshrc-orders/
 data/bsee-reports/
 data/oshrc-orders/
 data/epa-alj/
+data/epa-eab/
 data/ticks-ams/
 data/shop-request-log.jsonl
 data/shop-request-log*.jsonl

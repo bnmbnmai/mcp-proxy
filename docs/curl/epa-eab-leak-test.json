@@ -1,0 +1,60 @@
+{
+  "date": "2026-09-10",
+  "product": "/epa-eab",
+  "verdict": "PASS",
+  "official": {
+    "index": {
+      "url": "https://yosemite.epa.gov/oa/EAB_Web_Docket.nsf/Unpublished~Final~Orders?OpenView",
+      "http": 200,
+      "bytes": 260421,
+      "hasSouthEssex": true,
+      "hasMontalban": true,
+      "has2026Count": 18,
+      "distinctivePhrases": {
+        "Assented Motion to Dismiss": false,
+        "Aaron P. Avila": false,
+        "draft permit modification": false
+      }
+    },
+    "sesdCard": {
+      "url": "https://yosemite.epa.gov/oa/EAB_Web_Docket.nsf/4d60a7db00f72aa685258e06006de32c/045e51645556248785258e35005c159e",
+      "http": 200,
+      "bytes": 41726,
+      "type": "Permit",
+      "result": "Order Granting Petitioner's Motion and Dismissing Petition for Review",
+      "distinctivePhrases": {
+        "Assented Motion to Dismiss": false,
+        "Aaron P. Avila": false,
+        "draft permit modification": false
+      }
+    },
+    "montalbanCard": {
+      "type": "Permit",
+      "result": "Order Dismissing Petition for Review as Untimely",
+      "distinctivePhrasesAbsent": true
+    }
+  },
+  "crossBag": {
+    "epa-alj": {
+      "South Essex": 0,
+      "26-03": 0,
+      "Assented Motion": 0
+    },
+    "epa-cafo": {
+      "South Essex": 0,
+      "26-03": 0,
+      "Assented Motion": 0,
+      "Montalban": 0
+    },
+    "npdes-permits": {
+      "South Essex": 1,
+      "ma0100501": 1,
+      "note": "OK different product \u2014 permit text, not EAB order"
+    }
+  },
+  "pdfBodyHasNeedles": {
+    "Assented Motion to Dismiss": true,
+    "Aaron P. Avila": true,
+    "draft permit modification": true
+  }
+}
