@@ -1,0 +1,186 @@
+{
+  "job": "apply PR 223 GET /epa-eab onto live ticks.bnm.farm",
+  "ranOn": "apollo",
+  "hostname": "pop-os",
+  "path": "/epa-eab",
+  "priceUsdc": "0.05",
+  "amountAtomic": "50000",
+  "oneAmountAtomic": "20000",
+  "network": "base",
+  "branch": "cursor/apply-epa-eab-5575",
+  "servingSha": "6c16a687ebffaf6738881cbe5917602247c61e12",
+  "sourcePr": "https://github.com/bnmbnmai/mcp-proxy/pull/223",
+  "sourceBranch": "cursor/epa-eab-door-4402",
+  "sourceHead": "6c16a687ebffaf6738881cbe5917602247c61e12",
+  "stackedOn": "cursor/apply-epa-alj-6c6a",
+  "stackedOnSha": "f77734124f9e45493df71caea3af0b9f5837c5c4",
+  "liveServingBefore": "dbaed3c08d12af9d36531baf2a719fdaadb1c49a",
+  "systemctlUserRestart": {
+    "unit": "idaho-ticks-x402.service",
+    "ok": true,
+    "otherUnitsRestarted": false,
+    "activeEnterTimestamp": "Thu 2026-09-10 16:30:55 MDT",
+    "pidBefore": "1510988",
+    "pidAfter": "2737323",
+    "dockerGwUntouched": "idaho-ticks-x402-docker-gw.service left running",
+    "caddyStartedAt": "2026-09-08T17:07:32.766138574Z",
+    "tunnelStartedAt": "2026-09-08T17:07:32.771343842Z",
+    "epaEabDirAddedToUnit": true
+  },
+  "banner": {
+    "epaEab": "/epa-eab $0.05 USDC",
+    "mcp": "mcp /mcp — 57 tools from /.well-known/x402"
+  },
+  "before": {
+    "epaEabUnpaid": 404,
+    "epaEabManifest": 404,
+    "wellKnown": {
+      "status": 200,
+      "resourceCount": 56,
+      "extraResourceCount": 56,
+      "hasEpaEab": false
+    },
+    "siblings": {
+      "/epa-alj": 402
+    }
+  },
+  "collect": {
+    "status": "ok",
+    "dir": "$HOME/projects/mcp-proxy/data/epa-eab",
+    "fetchedAt": "2026-09-10T22:30:50.231Z",
+    "asOf": "2026-07-15",
+    "cardCount": 4,
+    "listedCount": 13,
+    "fetchedPdfs": 4,
+    "skippedNoText": 0,
+    "reused": 0,
+    "addedThisRun": 4,
+    "ids": [
+      "NPDES-26-03-2026-07-15",
+      "UIC-26-02-2026-07-07",
+      "NPDES-26-01-2026-04-28",
+      "UIC-25-03-2026-02-02"
+    ]
+  },
+  "live": {
+    "wellKnown": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "resourceCount": 57,
+      "extraResourceCount": 57,
+      "hasEpaEab": true,
+      "epaEabUrl": "https://ticks.bnm.farm/epa-eab"
+    },
+    "unpaidGet": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "50000",
+      "extraName": "USD Coin",
+      "resource": "https://ticks.bnm.farm/epa-eab"
+    },
+    "unpaidId": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "id": "NPDES-26-03-2026-07-15",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "20000",
+      "extraName": "USD Coin",
+      "resource": "https://ticks.bnm.farm/epa-eab?id=NPDES-26-03-2026-07-15"
+    },
+    "manifest": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "cardCount": 4,
+      "asOf": "2026-07-15",
+      "fetchedAt": "2026-09-10T22:30:50.231Z",
+      "product": "epa-eab-board-order-bodies",
+      "ids": [
+        "NPDES-26-03-2026-07-15",
+        "UIC-26-02-2026-07-07",
+        "NPDES-26-01-2026-04-28",
+        "UIC-25-03-2026-02-02"
+      ],
+      "hasSouthEssex": true,
+      "hasMontalban": true,
+      "southEssex": {
+        "id": "NPDES-26-03-2026-07-15",
+        "institution": "South Essex Sewerage District",
+        "appeal": "NPDES-26-03",
+        "docket": "MA0100501",
+        "kind": "Board Order",
+        "type": "Permit",
+        "date": "2026-07-15",
+        "paidUrl": "/epa-eab?id=NPDES-26-03-2026-07-15"
+      },
+      "montalban": {
+        "id": "UIC-26-02-2026-07-07",
+        "institution": "Montalban Oil and Gas Operations, Inc.",
+        "appeal": "UIC-26-02",
+        "docket": "MT52443-12513",
+        "kind": "Board Order",
+        "type": "Permit",
+        "date": "2026-07-07",
+        "paidUrl": "/epa-eab?id=UIC-26-02-2026-07-07"
+      },
+      "hasSourceUrl": false,
+      "bodyLeak": false,
+      "narrativePhrasesAbsent": [
+        "Assented Motion to Dismiss",
+        "Aaron P. Avila",
+        "draft permit modification"
+      ],
+      "cardKeys": [
+        "appeal",
+        "before",
+        "citation",
+        "date",
+        "docket",
+        "id",
+        "institution",
+        "kind",
+        "page",
+        "paidUrl",
+        "publishedAt",
+        "result",
+        "statute",
+        "title",
+        "type"
+      ],
+      "schemaFields": [
+        "id",
+        "institution",
+        "appeal",
+        "docket",
+        "kind",
+        "type",
+        "date",
+        "title",
+        "result",
+        "statute",
+        "citation"
+      ]
+    },
+    "siblingsStill402": {
+      "/ticks": 402,
+      "/oshrc-orders": 402,
+      "/epa-alj": 402,
+      "/epa-cafo": 402
+    },
+    "loopback": {
+      "unpaidGet": 402,
+      "manifest": 200,
+      "manifestCardCount": 4,
+      "manifestHasSourceUrl": false
+    }
+  },
+  "excluded": {
+    "catalogMain": "not checked out",
+    "newCollectCron": "not started",
+    "dockerGw": "untouched",
+    "otherUnits": "not restarted",
+    "lander": "tv-remote / bnm.farm; no EAB Board Orders card on this tip; not blocking apply",
+    "shopLink": "not spent",
+    "redbubble": "not touched"
+  }
+}
