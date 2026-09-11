@@ -1,0 +1,55 @@
+{
+  "date": "2026-09-11",
+  "base": "http://127.0.0.1:4028",
+  "bag": {
+    "cardCount": 4,
+    "listedCount": 653,
+    "fetchedPdfs": 4,
+    "skippedNoText": 0,
+    "asOf": "2026-07-02",
+    "fetchedAt": "2026-09-11T22:49:36.123Z",
+    "ids": ["2026-04", "2026-03", "2026-02", "2025-06"]
+  },
+  "unpaid": {
+    "http": 402,
+    "maxAmountRequired": "50000",
+    "resource": "/faa-civil-penalty",
+    "hasNeedle": false
+  },
+  "unpaidId": {
+    "http": 402,
+    "maxAmountRequired": "20000",
+    "id": "2026-04"
+  },
+  "since": {
+    "http": 304,
+    "query": "since=2026-09-08"
+  },
+  "manifest": {
+    "http": 200,
+    "cardCount": 4,
+    "asOf": "2026-07-02",
+    "hasSourceUrl": false,
+    "hasBody": false,
+    "hasPaidUrl": true,
+    "hasNeedle": false,
+    "hasJudge": false,
+    "ids": ["2026-04", "2026-03", "2026-02", "2025-06"]
+  },
+  "paidId": {
+    "http": 200,
+    "product": "faa-civil-penalty-order-bodies",
+    "id": "2026-04",
+    "hasNeedle": true,
+    "hasJudge": true,
+    "type": "faa-civil-penalty"
+  },
+  "wellKnown": {
+    "http": 200,
+    "lists": true
+  },
+  "shop": {
+    "http": 200,
+    "lists": true
+  }
+}

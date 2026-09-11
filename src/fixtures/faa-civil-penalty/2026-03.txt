@@ -1,0 +1,229 @@
+                  UNITED STATES DEPARTMENT OF TRANSPORTATION
+                        FEDERAL AVIATION ADMINISTRATION
+                                 WASHINGTON, DC
+
+
+In the Matter of:                                        )
+                                                         )
+Michael Bennett                                          )   FAA Order No. 2026-03
+                                                         )   Served: May 6, 2026
+Dkt. No. FAA -2020-0533                                  )
+
+Appearances:
+FOR RESPONDENT:                                              Mr. Michael Bennett, pro se
+
+FOR COMPLAINANT:                                             Taneesha D. Marshall, Esq.
+                                                             Allison Baxter, Esq.
+
+               ORDER GRANTING COMPLAINANT'S MOTION TO DISMISS
+  Complainant filed a Motion to Dismiss, arguing that Respondent Michael
+Bennett failed to file a timely and sufficient notice of appeal. I grant the motion and
+dismiss this matter.
+
+I. Background
+    Complainant charged Respondent Michael Bennett with several regulatory
+violations for improper operation of a small, unmanned aircraft system and sought
+a civil penalty of $2,200.1 Mr. Bennett requested a hearing. Following several cross                     -
+
+
+
+
+motions for summary judgment and Mr. Bennett's waiver of the right to a
+testimonial hearing, Administrative Law Judge (AU) J.E. Sullivan issued the
+Initial Decision assessing an $800 civil penalty.2 At the end of the Initial Decision,
+the AU advised both parties that the "Initial Decision shall be considered a final
+order unless one of the parties files a notice of appeal within 10 days of service of this
+Initial Decision."3 The Initial Decision was served on February 4, 2025.
+
+    Neither party filed a notice of appeal within the 10 days following service of the
+Initial Decision. But on Saturday, February 15, 2025-11 days after service of the
+Initial Decision-Mr. Bennett sent an email (Email) without attachments to the FAA
+
+1   Complaint.
+2   A detailed discussion of the charges and the procedural history is not necessary. This information
+    is summarized in the Initial Decision, found in Attachment A to this order.
+    Initial Decision at 11.
+41d. at 1.
+Hearing Docket.5 The Email included the docket number in the "subject" field, and the
+body stated, "I wish to appeal this ruling. Please instruct me on whom to send the
+appeal."
+
+    In a letter dated February 19, 2025, the FAA Office of Adjudication
+acknowledged receiving Mr. Bennett's Email. Rather than rejecting the Email out of
+hand for procedural and timeliness defects, the Office of Adjudication established a
+schedule for motions and responses.6 If Complainant filed a motion, Mr. Bennett
+had until March 19, 2025, to reply. As discussed more fully below, Complainant
+filed a motion to dismiss and Mr. Bennett replied.
+
+II. Discussion
+    Complainant raises two basic grounds for its Motion to Dismiss. First, it argues
+that the Email is not a notice of appeal because it does not conform to the email
+filing requirements found in 14 CFR § 13.210. Second, it argues that if the Email is
+treated as a notice of appeal, it is untimely under 14 CFR § 13.233(a).8 Each issue
+and Mr. Bennett's responses are discussed below.
+
+   A. Email messages alone are not acceptable filings.
+   Under 14 CFR § 13.210, a party may file documents in an administrative civil
+penalty case using U.S. Mail, a courier, fax, or email.9 Paragraph (h) of the
+regulation explains filing by email:
+
+              (h) Filing by email A document that is filed by email must be attached
+              as a PDF file to an email. The document must be signed in accordance
+              with § 13.207. The email message does not constitute a submission, but
+              serves only to deliver the attached PDF file to the FAA Hearing
+              Docket.
+A notice of appeal that does not conform to this regulation may be accepted when a
+complainant does not object.'° But here, Complainant objects and seeks dismissal.
+
+
+
+
+    The email is attached to the motion as exhibit C -i. It is dated Saturday, February 15, 2025, and it
+    replies to the email serving the Initial Decision on February 4, 2025.
+6   Office of Adjudication Letter of Feb. 19, 2025.
+        Complainant's Motion to Dismiss at 2.
+8   Id. at 3.
+        14 CFR § 13.210(b).
+    °   Harvest, FAA Order No. 2022-08 at 2 n.4 (Dec. 6, 2022).
+
+
+                                                         2
+   The Email speaks for itself and plainly does not comply with paragraph (h). Mr.
+Bennett does not assert otherwise." Instead, he claims technical problems with his
+equipment:
+
+            I was not able that day to structure a separate PDF with a signature
+            page, as my main computer was down and not operable. I cannot do
+            PDFs on my old iPAD that I use for emailing.'2
+Beyond the fact that Mr. Bennett's technical issues are not Complainant's fault, the
+problems also did not prevent him from filing a notice of appeal by other means. As
+already stated, he could have filed by mail, fax, or courier.'3 The rule even allows
+legibly handwritten documents, thus avoiding the need for typewriters, computers,
+or PDF documents.'4 Mr. Bennett did not avail himself of the considerable leeway
+provided in the rules, and he states no good cause justifying his failure to comply.
+Accordingly, I find the Email is not a notice of appeal.
+
+    B. The 10 -day rule also bars the appeal.
+    Complainant also argues that the Email is untimely regardless of whether it is
+treated as a notice of appeal.'5 The regulation requires filing notices of appeal "no
+later than 10 days after service of the written initial decision on the parties."6
+                                ...
+
+
+Although there is an exception for good cause, Mr. Bennett has not demonstrated
+good cause for sending his email on the eleventh day.
+
+    The order in Woodhouse, FAA Order No. 95-9, is a rare example of good cause
+justifying an extension of the appeal deadline.'7 The AU in Woodhouse erroneously
+advised the parties that they had 30 days to file an appeal rather than 10 days.'8
+But no similar error occurred here; AU Sullivan's decision expressly informed Mr.
+Bennett that he had 10 days to appeal.'9
+
+
+
+
+11   See Respondent's Reply to Complainant's Motion to Dismiss at 1.
+12   Id.
+13    14 CFR § 13.210(b). The record shows that Mr. Bennet previously filed paper documents. See, e.g.,
+     Request for Hearing (featuring a timestamp that the Hearing Docket uses for paper filings).
+14   14 CFR § 13.210(e).
+15   Complainant's Motion to Dismiss at 3.
+16 14CFR § 13.233(a).
+17 Woodhouse, FAA Order No. 95-9 (May 9, 1995).
+
+18   Id. at 4.
+19   Initial Decision at 11.
+
+
+                                                       3
+   To fall within the good cause exception, Mr. Bennett argues without support that
+the regulation refers to business days rather than calendar days.2° He also suggests
+that Lincoln's Birthday (February 12) and perhaps Valentine's Day (February 14)
+were Federal holidays.2' He speculates (his term) that Complainant's counsel and
+other FAA employees were not "in their offices" on those days and admits that he
+"certainly was not thinking of [his] legal matter on those days."22
+
+   None of Mr. Bennett's arguments establish good cause. Section 13.212 addresses
+the computation of time and when additional time for weekends and Federal
+holidays is provided:
+
+             (b) The date of an act, event, or default is not included in a
+             computation of time under this subpart.
+
+             (c) The last day of a time period is included unless it is a Saturday,
+             Sunday, or a Federal holiday. If the last day is a Saturday, Sunday, or
+             Federal holiday, the time period runs until the end of the next day that
+             is not a Saturday, Sunday, or Federal holiday.23
+
+Under (b), the date of service of the Initial Decision (February 4, 2025) is not
+included in the 10 days for filing the notice of appeal. Paragraph (c) gives additional
+time oniy if the tenth day lands on a weekend or Federal holiday. Other weekends
+and holidays are not considered. Thus, the deadline is computed using calendar
+days, i.e., without considering intervening weekends or Federal holidays.
+
+   Applying the regulation, Mr. Bennett's deadline to file a notice of appeal was
+February 14, 2025, i.e., Valentine's Day. Federal holidays, defined in 5 U.S.C.
+§ 6103, do not include Valentine's Day.24 Therefore, the deadline for filing a notice of
+appeal remained Friday, February 14, 2025.
+
+   Having found that AU Sullivan informed Mr. Bennett of the 10 -day deadline
+and that good cause for missing the deadline is not present, I conclude that the
+Email message was filed too late to preserve Mr. Bennett's right to an
+administrative appeal.
+
+
+20 Respondent's Reply to Complainant's    Motion to Dismiss at 1.
+21   Id.
+22   Id.
+23 14      CFR § 13.213(b)-(c).
+24    Mr. Bennett does not explain why he considers Valentine's Day to be a Federal holiday. Common
+     experience shows that banks, post offices, and other institutions are open when Valentine's Day
+     falls on a weekday. See also U.S. Office of Personnel Management, Federal Holidays: 2025, at
+     https/fwww.opm.gov/policy -data -oversight/pay-leaveffederal-holidays/#ur12025.
+   C. The rules apply to unrepresented parties.
+      I am mindful that Mr. Bennett elected not to engage an attorney to represent
+him. But the procedural rules apply to all parties, even those without counsel.25
+Moreover, Mr. Bennett's lack of counsel does not grant him special treatment
+because he is uninformed about basic procedures and opted not to familiarize
+himself with the applicable rules.
+
+   The law and facts support this view.26 At the beginning of the case before the
+AU, the Notice of Assignment and Order described procedures for emailing PDFs
+or using alternative filing methods.27 At the end of the case, the Initial Decision
+provided the appeal deadline. Finally, Mr. Bennett admits to not thinking about his
+appeal on Valentine's Day and is unwilling to "spend all [his] time looking up
+regulations."28 Thus, enforcing the procedural rules in his case is not unjust.
+
+III. Conclusion
+    As explained above, Mr. Bennett's Email does not constitute a notice of appeal.
+Further, even if it could be construed as such, Mr. Bennett has not shown good
+cause for submitting it after the required deadline. Accordingly, Complaint's motion
+is granted, and this matter is DISMISSED.
+
+                                                   Issued for the FAA Administrator,29
+
+
+
+
+                                                -Diia R. Rabinowitz
+                                                   Acting Director and
+                                                   Chief Administrative Judge
+                                                   FAA Office of Adjudication
+
+
+
+25    Brown, FAA Order No. 2023-04 at 4 (Apr. 10, 2023) ("Even as a pro se respondent, [Respondent]
+     Brown is expected to know and meet procedural deadlines.") (citing Global Peace Initiative, Inc.,
+     FAA Order No. 2008-8 at 5-6 (Aug. 21, 2008)).
+26    See, e.g., McNeil v. United States, 508 U.S. 106, 113 (1993) (Aside from liberal construction of
+     pleadings and certain prisoner cases, "we have never suggested that procedural rules in ordinary
+     civil litigation should be interpreted so as to excuse mistakes by those who proceed without
+     counsel.").
+27   Notice of Assignment and Order at 4.
+28 Respondent's    Reply to Complainant's Motion to Dismiss at 1.
+29    The Director of the Office of Adjudication may "grant or deny motions to dismiss appeals{.]"
+     Delegation ofAuthority, 81 Fed. Reg. 24686, 24686 (Apr. 26, 2016).
+
+
+                                                        5
+

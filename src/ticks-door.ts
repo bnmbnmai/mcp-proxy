@@ -112,6 +112,8 @@
  * GET /epa-alj/manifest.json — free count + case/docket/date/label (no decision body)
  * GET /epa-eab — EPA EAB Unpublished Final Order / Board Order PDF text ($0.02 id / $0.05 page)
  * GET /epa-eab/manifest.json — free count + case/appeal/date/Type/Result (no Board narrative)
+ * GET /faa-civil-penalty — FAA Civil Penalty Appeals Administrator Order PDF text ($0.02 id / $0.05 page)
+ * GET /faa-civil-penalty/manifest.json — free count + order no/case/docket/dates/subjects (no Order narrative)
  * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
  * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.05). Listed only when a real body is cached.
@@ -493,6 +495,13 @@ import {
   loadEpaEabManifest,
 } from "./epa-eab.js";
 import {
+  FAA_CIVIL_PENALTY_AMOUNT_ATOMIC,
+  FAA_CIVIL_PENALTY_MANIFEST_PATH,
+  FAA_CIVIL_PENALTY_PATH,
+  loadFaaCivilPenalty,
+  loadFaaCivilPenaltyManifest,
+} from "./faa-civil-penalty.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -524,6 +533,7 @@ import {
   paidOshrcOrdersBody,
   paidEpaAljBody,
   paidEpaEabBody,
+  paidFaaCivilPenaltyBody,
   paidFsisHumaneBody,
   paidDenovoOrdersBody,
   paidFdicOrdersBody,
@@ -998,7 +1008,7 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "mariners-d1" | "mariners-d5" | "mariners-d9" | "mariners-d14" | "mariners-d17" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "ema-referrals" | "cder-reviews" | "npdes-permits" | "ofsted-inspections" | "ofwat-enforcement" | "ofgem-enforcement" | "gain" | "orr-enforcement" | "phmsa-orders" | "aaib-reports" | "csb-reports" | "hhs-oig-reports" | "eis-reports" | "fsis-humane" | "epa-cafo" | "fmshrc-orders" | "bsee-reports" | "oshrc-orders" | "epa-alj" | "epa-eab" | "form-483" | "gmp" | "gmp-md";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "mariners-d1" | "mariners-d5" | "mariners-d9" | "mariners-d14" | "mariners-d17" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "ema-referrals" | "cder-reviews" | "npdes-permits" | "ofsted-inspections" | "ofwat-enforcement" | "ofgem-enforcement" | "gain" | "orr-enforcement" | "phmsa-orders" | "aaib-reports" | "csb-reports" | "hhs-oig-reports" | "eis-reports" | "fsis-humane" | "epa-cafo" | "fmshrc-orders" | "bsee-reports" | "oshrc-orders" | "epa-alj" | "epa-eab" | "faa-civil-penalty" | "form-483" | "gmp" | "gmp-md";
 /** Always-public SKUs. /form-483, /gmp, and /gmp-md join only when a real observation body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "ticks",
@@ -1055,6 +1065,7 @@ export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "oshrc-orders",
   "epa-alj",
   "epa-eab",
+  "faa-civil-penalty",
 ];
 
 export function form483IsPublic(): boolean {
@@ -1340,6 +1351,10 @@ function amountAtomicFor(sku: DoorSku): string {
   if (sku === "epa-eab") {
     const raw = env("EPA_EAB_USDC_ATOMIC");
     return raw.length > 0 ? raw : EPA_EAB_AMOUNT_ATOMIC;
+  }
+  if (sku === "faa-civil-penalty") {
+    const raw = env("FAA_CIVIL_PENALTY_USDC_ATOMIC");
+    return raw.length > 0 ? raw : FAA_CIVIL_PENALTY_AMOUNT_ATOMIC;
   }
   if (sku === "form-483") {
     const raw = env("FORM_483_USDC_ATOMIC");
@@ -1769,6 +1784,12 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
       "Call GET /epa-eab when you need official EPA Environmental Appeals Board Unpublished Final Order or substantive Board Order TEXT extracted from yosemite.epa.gov/oa/EAB_Web_Docket.nsf PDFs. License 17 USC 105. Does not invent Board text. Index is case / appeal / date / Type / Result only — full TEXT is in the $FILE PDF. Prefer Type=Permit. Skip Penalty ESA/CAFO rows that twin live /epa-cafo / /fifra-orders. Not OALJ oarm/alj, not RHC oa/rhc, not /npdes-permits permit text. " +
       PAID_WINDOW_COPY,
     resourcePath: EPA_EAB_PATH,
+  },
+  "faa-civil-penalty": {
+    description:
+      "Call GET /faa-civil-penalty when you need official FAA Civil Penalty Appeals Administrator Final Order or Decision & Order TEXT extracted from drs.faa.gov CIVIL_PENALTY_APPEALS PDFs (14 CFR §13.233). License 17 USC 105. Does not invent Order text. Index is order no / case / docket / dates / subjects only — full TEXT is in the DRS PDF (guest session; bare GET is 403). Prefer substantive Order/Decision PDFs. Not /air-letters, not NMS/ASIAS JSON. " +
+      PAID_WINDOW_COPY,
+    resourcePath: FAA_CIVIL_PENALTY_PATH,
   },
   "form-483": {
     description:
@@ -3320,6 +3341,38 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
       },
     ],
   },
+  "faa-civil-penalty": {
+    ok: true,
+    product: "faa-civil-penalty-order-bodies",
+    status: "ok",
+    fetchedAt: "2026-09-11T00:00:00.000Z",
+    asOf: "2026-07-02",
+    source: "https://drs.faa.gov/browse/CIVIL_PENALTY_APPEALS/doctypeDetails",
+    recordCount: 1,
+    records: [
+      {
+        id: "2026-04",
+        date: "2026-07-02",
+        firm: "Matter of Michael Leahey",
+        url: "https://drs.faa.gov/browse/CIVIL_PENALTY_APPEALS/doctypeDetails",
+        type: "faa-civil-penalty",
+      },
+    ],
+    cards: [
+      {
+        id: "2026-04",
+        orderNo: "2026-04",
+        docket: "G13-22-040",
+        kind: "Administrator Order",
+        institution: "Matter of Michael Leahey",
+        date: "2026-07-02",
+        title: "Amicus Curiae Briefs",
+        subjects: "Amicus Curiae Briefs",
+        sourceUrl: "https://drs.faa.gov/browse/CIVIL_PENALTY_APPEALS/doctypeDetails",
+        body: "FEDERAL AVIATION ADMINISTRATION. In the Matter of Michael Leahey. FAA Order No. 2026-04. Official FAA Civil Penalty Appeals Administrator Order extracted from the DRS PDF.",
+      },
+    ],
+  },
   "form-483": {
     ok: true,
     product: "fda-form-483-bodies",
@@ -4544,6 +4597,7 @@ export function llmsTxt(): string {
     `- GET /oshrc-orders — $0.05 — OSHRC ALJ Decision/Order + Commission Final Order text (official oshrc.gov PDF/HTML caches). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /epa-alj — $0.05 — EPA OALJ Initial Decision and Order + ALJ Order text (official yosemite.epa.gov/oarm/alj PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /epa-eab — $0.05 — EPA EAB Unpublished Final Order / Board Order text (official yosemite.epa.gov/oa/EAB_Web_Docket.nsf PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /faa-civil-penalty — $0.05 — FAA Civil Penalty Appeals Administrator Order text (official drs.faa.gov CIVIL_PENALTY_APPEALS PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
   ];
   if (listed483) {
     paid.push(`- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`);
@@ -4615,6 +4669,7 @@ export function llmsTxt(): string {
     "- GET /oshrc-orders/manifest.json — OSHRC Decision/Order count + operator/docket/date (full catalog + page cursor; ?q= is free search; not the decision body)",
     "- GET /epa-alj/manifest.json — EPA OALJ Decision/Order count + case/docket/date/label (full catalog + page cursor; ?q= is free search; not the decision body)",
     "- GET /epa-eab/manifest.json — EPA EAB Board Order count + case/appeal/date/Type/Result (full catalog + page cursor; ?q= is free search; not the Board narrative)",
+    "- GET /faa-civil-penalty/manifest.json — FAA Civil Penalty Appeals Order count + order no/case/docket/dates/subjects (full catalog + page cursor; ?q= is free search; not the Order narrative)",
   ];
   if (listed483) {
     free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (full catalog + page cursor; ?q= is free search; not the observation body)");
@@ -4673,7 +4728,7 @@ function discoveryOrigin(req: IncomingMessage, port: number): string {
 }
 
 function paidDiscoveryPaths(): string[] {
-  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, MARINERS_D1_PATH, MARINERS_D5_PATH, MARINERS_D9_PATH, MARINERS_D14_PATH, MARINERS_D17_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, BSEE_REPORTS_PATH, OSHRC_ORDERS_PATH, EPA_ALJ_PATH, EPA_EAB_PATH];
+  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, MARINERS_D1_PATH, MARINERS_D5_PATH, MARINERS_D9_PATH, MARINERS_D14_PATH, MARINERS_D17_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, BSEE_REPORTS_PATH, OSHRC_ORDERS_PATH, EPA_ALJ_PATH, EPA_EAB_PATH, FAA_CIVIL_PENALTY_PATH];
   if (form483IsPublic()) paths.push(FORM_483_PATH);
   if (gmpIsPublic()) paths.push(GMP_PATH);
   if (gmpMdIsPublic()) paths.push(GMP_MD_PATH);
@@ -4946,6 +5001,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const oshrcOrdersAtomic = amountAtomicFor("oshrc-orders");
   const epaAljAtomic = amountAtomicFor("epa-alj");
   const epaEabAtomic = amountAtomicFor("epa-eab");
+  const faaCivilPenaltyAtomic = amountAtomicFor("faa-civil-penalty");
   const f483Atomic = amountAtomicFor("form-483");
   const gmpAtomic = amountAtomicFor("gmp");
   const gmpMdAtomic = amountAtomicFor("gmp-md");
@@ -5003,6 +5059,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const oshrcOrdersPrice = (Number(oshrcOrdersAtomic) / 1e6).toFixed(2);
   const epaAljPrice = (Number(epaAljAtomic) / 1e6).toFixed(2);
   const epaEabPrice = (Number(epaEabAtomic) / 1e6).toFixed(2);
+  const faaCivilPenaltyPrice = (Number(faaCivilPenaltyAtomic) / 1e6).toFixed(2);
   const f483Price = (Number(f483Atomic) / 1e6).toFixed(2);
   const gmpPrice = (Number(gmpAtomic) / 1e6).toFixed(2);
   const gmpMdPrice = (Number(gmpMdAtomic) / 1e6).toFixed(2);
@@ -5064,6 +5121,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
     "/oshrc-orders ($0.05)",
     "/epa-alj ($0.05)",
     "/epa-eab ($0.05)",
+    "/faa-civil-penalty ($0.05)",
   ];
   if (listed483) paidBits.push("/form-483 ($0.05)");
   if (listedGmp) paidBits.push("/gmp ($0.05)");
@@ -6356,6 +6414,30 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           },
         }),
       },
+      [FAA_CIVIL_PENALTY_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getFaaCivilPenalty",
+          summary: "FAA Civil Penalty Appeals Administrator Order text",
+          description: SKU_COPY["faa-civil-penalty"].description,
+          priceUsdc: faaCivilPenaltyPrice,
+          amountAtomic: faaCivilPenaltyAtomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["faa-civil-penalty"],
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              status: { type: "string" },
+              fetchedAt: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
+              cards: { type: "array", items: { type: "object" } },
+            },
+          },
+        }),
+      },
       ...(listed483
         ? {
             [FORM_483_PATH]: {
@@ -6752,6 +6834,12 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
         get: freeOpenApiOp(
           "EPA EAB Board Order free manifest",
           "Count, case, appeal, date, Type, Result, and paidUrl. Not the Board narrative.",
+        ),
+      },
+      [FAA_CIVIL_PENALTY_MANIFEST_PATH]: {
+        get: freeOpenApiOp(
+          "FAA Civil Penalty Appeals Order free manifest",
+          "Count, order no, case, docket, dates, subjects, and paidUrl. Not the Order narrative.",
         ),
       },
       ...(listed483
@@ -7543,6 +7631,13 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
           amountAtomic: amountAtomicFor("epa-eab"),
           manifest: EPA_EAB_MANIFEST_PATH,
         },
+        {
+          path: FAA_CIVIL_PENALTY_PATH,
+          product: "faa-civil-penalty-order-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("faa-civil-penalty"),
+          manifest: FAA_CIVIL_PENALTY_MANIFEST_PATH,
+        },
         ...(form483IsPublic()
           ? [
               {
@@ -8203,6 +8298,18 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === FAA_CIVIL_PENALTY_MANIFEST_PATH) {
+    sendExtractedManifest(req, res, port, url, await loadFaaCivilPenaltyManifest());
+    return;
+  }
+
+  if (path === FAA_CIVIL_PENALTY_PATH) {
+    await servePaid(req, res, port, "faa-civil-penalty", async (opts) =>
+      paidFaaCivilPenaltyBody(await loadFaaCivilPenalty(), opts),
+    );
+    return;
+  }
+
   if (path === FORM_483_MANIFEST_PATH) {
     sendExtractedManifest(req, res, port, url, await loadForm483Manifest());
     return;
@@ -8238,7 +8345,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, MARINERS_D1_PATH, MARINERS_D1_MANIFEST_PATH, MARINERS_D5_PATH, MARINERS_D5_MANIFEST_PATH, MARINERS_D9_PATH, MARINERS_D9_MANIFEST_PATH, MARINERS_D14_PATH, MARINERS_D14_MANIFEST_PATH, MARINERS_D17_PATH, MARINERS_D17_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, OFWAT_ENFORCEMENT_PATH, OFWAT_ENFORCEMENT_MANIFEST_PATH, OFGEM_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_MANIFEST_PATH, GAIN_PATH, GAIN_MANIFEST_PATH, ORR_ENFORCEMENT_PATH, ORR_ENFORCEMENT_MANIFEST_PATH, PHMSA_ORDERS_PATH, PHMSA_ORDERS_MANIFEST_PATH, AAIB_REPORTS_PATH, AAIB_REPORTS_MANIFEST_PATH, CSB_REPORTS_PATH, CSB_REPORTS_MANIFEST_PATH, HHS_OIG_REPORTS_PATH, HHS_OIG_REPORTS_MANIFEST_PATH, EIS_REPORTS_PATH, EIS_REPORTS_MANIFEST_PATH, FSIS_HUMANE_PATH, FSIS_HUMANE_MANIFEST_PATH, EPA_CAFO_PATH, EPA_CAFO_MANIFEST_PATH, FMSHRC_ORDERS_PATH, FMSHRC_ORDERS_MANIFEST_PATH, BSEE_REPORTS_PATH, BSEE_REPORTS_MANIFEST_PATH, OSHRC_ORDERS_PATH, OSHRC_ORDERS_MANIFEST_PATH, EPA_ALJ_PATH, EPA_ALJ_MANIFEST_PATH, EPA_EAB_PATH, EPA_EAB_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, SAMPLE_PATH, FIRM_CHECK_PATH, X402LIST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, MARINERS_D1_PATH, MARINERS_D1_MANIFEST_PATH, MARINERS_D5_PATH, MARINERS_D5_MANIFEST_PATH, MARINERS_D9_PATH, MARINERS_D9_MANIFEST_PATH, MARINERS_D14_PATH, MARINERS_D14_MANIFEST_PATH, MARINERS_D17_PATH, MARINERS_D17_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, OFWAT_ENFORCEMENT_PATH, OFWAT_ENFORCEMENT_MANIFEST_PATH, OFGEM_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_MANIFEST_PATH, GAIN_PATH, GAIN_MANIFEST_PATH, ORR_ENFORCEMENT_PATH, ORR_ENFORCEMENT_MANIFEST_PATH, PHMSA_ORDERS_PATH, PHMSA_ORDERS_MANIFEST_PATH, AAIB_REPORTS_PATH, AAIB_REPORTS_MANIFEST_PATH, CSB_REPORTS_PATH, CSB_REPORTS_MANIFEST_PATH, HHS_OIG_REPORTS_PATH, HHS_OIG_REPORTS_MANIFEST_PATH, EIS_REPORTS_PATH, EIS_REPORTS_MANIFEST_PATH, FSIS_HUMANE_PATH, FSIS_HUMANE_MANIFEST_PATH, EPA_CAFO_PATH, EPA_CAFO_MANIFEST_PATH, FMSHRC_ORDERS_PATH, FMSHRC_ORDERS_MANIFEST_PATH, BSEE_REPORTS_PATH, BSEE_REPORTS_MANIFEST_PATH, OSHRC_ORDERS_PATH, OSHRC_ORDERS_MANIFEST_PATH, EPA_ALJ_PATH, EPA_ALJ_MANIFEST_PATH, EPA_EAB_PATH, EPA_EAB_MANIFEST_PATH, FAA_CIVIL_PENALTY_PATH, FAA_CIVIL_PENALTY_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, SAMPLE_PATH, FIRM_CHECK_PATH, X402LIST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
 }
 
 export function bindHost(): string {
@@ -8320,6 +8427,7 @@ if (isMain()) {
     console.error(`${OSHRC_ORDERS_PATH} $${Number(amountAtomicFor("oshrc-orders")) / 1e6} USDC`);
     console.error(`${EPA_ALJ_PATH} $${Number(amountAtomicFor("epa-alj")) / 1e6} USDC`);
     console.error(`${EPA_EAB_PATH} $${Number(amountAtomicFor("epa-eab")) / 1e6} USDC`);
+    console.error(`${FAA_CIVIL_PENALTY_PATH} $${Number(amountAtomicFor("faa-civil-penalty")) / 1e6} USDC`);
     console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
     console.error(`${GMP_PATH} $${Number(amountAtomicFor("gmp")) / 1e6} USDC${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
     console.error(`${GMP_MD_PATH} $${Number(amountAtomicFor("gmp-md")) / 1e6} USDC${gmpMdIsPublic() ? "" : " (unlisted until a real MD observation body is cached)"}`);
