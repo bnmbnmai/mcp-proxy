@@ -246,6 +246,11 @@ import {
   EPA_EAB_PATH,
 } from "./epa-eab.js";
 import {
+  FAA_CIVIL_PENALTY_AMOUNT_ATOMIC,
+  FAA_CIVIL_PENALTY_MANIFEST_PATH,
+  FAA_CIVIL_PENALTY_PATH,
+} from "./faa-civil-penalty.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -689,6 +694,7 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.some((r) => r.includes("/oshrc-orders")), "well-known lists /oshrc-orders");
     assert.ok(wk.resources.some((r) => r.includes("/epa-alj")), "well-known lists /epa-alj");
     assert.ok(wk.resources.some((r) => r.includes("/epa-eab")), "well-known lists /epa-eab");
+    assert.ok(wk.resources.some((r) => r.includes("/faa-civil-penalty")), "well-known lists /faa-civil-penalty");
     assert.equal(cdpEnvStatus(), "CDP env not set");
 
     const specRes = await fetch(`${base}${OPENAPI_PATH}`);
@@ -897,6 +903,7 @@ async function main(): Promise<void> {
     assert.ok(spec.paths["/oshrc-orders"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/epa-alj"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/epa-eab"]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths["/faa-civil-penalty"]?.get?.["x-payment-info"]);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
       PUBLIC_BAZAAR_SKUS.length,
@@ -961,6 +968,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /oshrc-orders"));
     assert.ok(llmsBody.includes("GET /epa-alj"));
     assert.ok(llmsBody.includes("GET /epa-eab"));
+    assert.ok(llmsBody.includes("GET /faa-civil-penalty"));
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.includes("GET /gmp-md"));
@@ -7690,6 +7698,142 @@ async function main(): Promise<void> {
     },
   );
 
+  const faaCivilPenaltyDir = mkdtempSync(join(tmpdir(), "faa-civil-penalty-"));
+  const faaCivilPenaltyId = "2026-04";
+  const faaCivilPenaltyBody = [
+    "UNITED STATES DEPARTMENT OF TRANSPORTATION",
+    "FEDERAL AVIATION ADMINISTRATION",
+    "WASHINGTON, DC",
+    "In the Matter of: Michael Leahey",
+    "FAA Order No. 2026-04",
+    "Dkt. No. G13-22-040",
+    "ORDER GRANTING MOTION FOR LEAVE TO FILE AMICUS CURIAE BRIEF",
+    "Diana R. Rabinowitz",
+    ...Array.from({ length: 40 }, (_, i) => `Official FAA Civil Penalty Appeals Administrator Order paragraph ${i + 1}.`),
+  ].join("\n");
+  writeFileSync(
+    join(faaCivilPenaltyDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "faa-civil-penalty-order-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-09-11T00:00:00.000Z",
+      asOf: "2026-07-02",
+      license: "17 USC 105",
+      attribution:
+        "Federal Aviation Administration, Civil Penalty Appeals. Work of the United States Government; 17 U.S.C. § 105.",
+      sources: {
+        listing: "https://drs.faa.gov/browse/CIVIL_PENALTY_APPEALS/doctypeDetails",
+        hub: "https://www.faa.gov/about/office_org/headquarters_offices/agc/practice_areas/adjudication/civil_penalty",
+        pdfHost: "https://drs.faa.gov/api/content/reports/",
+      },
+      cards: [
+        {
+          id: faaCivilPenaltyId,
+          orderNo: "2026-04",
+          institution: "Matter of Michael Leahey",
+          docket: "G13-22-040",
+          kind: "Administrator Order",
+          date: "2026-07-02",
+          served: "2026-07-02",
+          issued: null,
+          title: "ORDER GRANTING MOTION FOR LEAVE TO FILE AMICUS CURIAE BRIEF",
+          subjects: "Amicus Curiae Briefs",
+          guid: "df4fc23a-5ec0-4c54-893d-3fff1e63de03",
+          mimeType: "application/pdf",
+          sourceUrl: "https://drs.faa.gov/browse/CIVIL_PENALTY_APPEALS/doctypeDetails",
+          body: faaCivilPenaltyBody,
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      FAA_CIVIL_PENALTY_DIR: faaCivilPenaltyDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-faa-civil-penalty-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${FAA_CIVIL_PENALTY_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /faa-civil-penalty must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; mimeType?: string; extra?: { pdf?: boolean; priceAtomic?: number } }[];
+      };
+      assert.equal(body402.resource, FAA_CIVIL_PENALTY_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, FAA_CIVIL_PENALTY_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.mimeType, "application/json");
+      assert.equal(body402.accepts[0]?.extra?.pdf, undefined);
+      assert.equal(body402.accepts[0]?.extra?.priceAtomic, Number(SINGLE_DOC_AMOUNT_ATOMIC));
+      const unpaidId = await fetch(`${base}${FAA_CIVIL_PENALTY_PATH}?id=${encodeURIComponent(faaCivilPenaltyId)}`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /faa-civil-penalty?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("%PDF-"));
+      assert.ok(!leak402.includes("ORDER GRANTING MOTION FOR LEAVE TO FILE AMICUS"));
+      assert.ok(!leak402.includes("Diana R. Rabinowitz"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === FAA_CIVIL_PENALTY_PATH), true);
+      assert.equal(shop.products.length, PUBLIC_BAZAAR_SKUS.length);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(FAA_CIVIL_PENALTY_PATH)), "well-known lists /faa-civil-penalty");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /faa-civil-penalty"));
+      assert.ok(llms.includes("Civil Penalty Appeals"));
+      assert.ok(!/GET \/faa-civil-penalty[\s\S]{0,80}air-letters/.test(llms));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[FAA_CIVIL_PENALTY_PATH]);
+      assert.ok(spec.paths[FAA_CIVIL_PENALTY_MANIFEST_PATH]);
+
+      const unpaidSince = await fetch(`${base}${FAA_CIVIL_PENALTY_PATH}?since=2026-09-08`);
+      assert.equal(unpaidSince.status, 304, "empty ?since= delta is 304 unpaid");
+
+      const manifest = await fetch(`${base}${FAA_CIVIL_PENALTY_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "faa-civil-penalty free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        asOf?: string;
+        cards?: { institution?: string; id?: string; body?: string; sourceUrl?: string; paidUrl?: string }[];
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.cards?.[0]?.institution, "Matter of Michael Leahey");
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+      assert.ok(!("sourceUrl" in (man.cards?.[0] ?? {})), "free cards must not leak sourceUrl");
+      assert.ok(!("htmlUrl" in (man.cards?.[0] ?? {})));
+      assert.ok(!("pdfUrl" in (man.cards?.[0] ?? {})));
+      assert.ok(man.cards?.[0]?.paidUrl);
+      assert.ok(!JSON.stringify(man.cards).includes("drs.faa.gov/api/content/reports"), "free cards have no DRS PDF deep link");
+      assert.ok(!JSON.stringify(man).includes("%PDF-"));
+      assert.ok(!JSON.stringify(man).includes("ORDER GRANTING MOTION FOR LEAVE TO FILE AMICUS"));
+      assert.ok(!JSON.stringify(man).includes("Diana R. Rabinowitz"));
+
+      const paid = await fetch(`${base}${FAA_CIVIL_PENALTY_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      assert.match(paid.headers.get("content-type") ?? "", /application\/json/);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { institution: string; date: string; id: string; body: string; sourceUrl?: string }[];
+        records?: { id: string; firm: string; type: string }[];
+      };
+      assert.equal(paidBody.product, "faa-civil-penalty-order-bodies");
+      assert.equal(paidBody.cards[0]?.institution, "Matter of Michael Leahey");
+      assert.equal(paidBody.cards[0]?.id, faaCivilPenaltyId);
+      assert.ok(paidBody.cards[0]?.body.includes("ORDER GRANTING MOTION FOR LEAVE TO FILE AMICUS"));
+      assert.ok(paidBody.cards[0]?.body.includes("Diana R. Rabinowitz"));
+      assert.match(paidBody.cards[0]?.sourceUrl ?? "", /CIVIL_PENALTY_APPEALS/);
+      assert.equal(paidBody.records?.[0]?.type, "faa-civil-penalty");
+      assert.equal(paidBody.records?.[0]?.firm, "Matter of Michael Leahey");
+    },
+  );
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -8466,7 +8610,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -8510,6 +8654,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("oshrc-orders"), true);
   assert.equal(isPublicBazaarSku("epa-alj"), true);
   assert.equal(isPublicBazaarSku("epa-eab"), true);
+  assert.equal(isPublicBazaarSku("faa-civil-penalty"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
