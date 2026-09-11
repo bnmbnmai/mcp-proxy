@@ -9,7 +9,7 @@ Free discovery is leak-clean: order no / case / docket / dates / subjects + `pai
 **Path:** `/faa-civil-penalty` · **$0.05** page / **$0.02** `?id=` · payTo `0xf59621FC406D266e18f314Ae18eF0a33b8401004` · USDC on Base
 **Collector:** DRS guest login + CIVIL_PENALTY_APPEALS metadatas + `/api/content/reports/{guid}` PDF + `pdftotext`.
 **Seeds:** FAA Order **2026-04** Matter of Michael Leahey, dkt **G13-22-040**, served **07/02/2026**. FAA Order **2026-03** Matter of Michael Bennett.
-**Bag (this VM, first slice):** limit 4 / maxFetch 8. Seeds required. Next 2026/2025 Administrator Orders on the first metadatas page (2026-02, 2025-06).
+**Bag (live collect on this VM):** **cardCount 4**, listedCount 653, fetchedPdfs 4, skippedNoText 0, asOf **2026-07-02**, fetchedAt **2026-09-11T22:49:36.123Z**. Seeds required. Additional first-page Administrator Orders: 2026-02 Matter of Skyler Jensen (G13-22-065); 2025-06 Matter of John Nunez (G13-23-021).
 
 MCP tools are generated from live well-known (no hardcoded door count). Catalog `main` is not the door host. Stacked on the live `/epa-eab` apply tip (`cursor/apply-epa-eab-5575`).
 

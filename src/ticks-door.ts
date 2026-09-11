@@ -3366,7 +3366,7 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         kind: "Administrator Order",
         institution: "Matter of Michael Leahey",
         date: "2026-07-02",
-        title: "ORDER GRANTING MOTION FOR LEAVE TO FILE AMICUS CURIAE BRIEF",
+        title: "Amicus Curiae Briefs",
         subjects: "Amicus Curiae Briefs",
         sourceUrl: "https://drs.faa.gov/browse/CIVIL_PENALTY_APPEALS/doctypeDetails",
         body: "FEDERAL AVIATION ADMINISTRATION. In the Matter of Michael Leahey. FAA Order No. 2026-04. Official FAA Civil Penalty Appeals Administrator Order extracted from the DRS PDF.",

@@ -136,6 +136,7 @@ async function main(): Promise<void> {
   );
   assert.ok(manSeed?.sourceUrl);
   assert.ok(!("body" in (manSeed ?? {})));
+  assert.equal((manSeed as { title?: string }).title, "Amicus Curiae Briefs");
 
   const filtered = filterFaaCivilPenaltyManifest(manifest, "leahey");
   assert.ok(Number(filtered.cardCount) >= 1);

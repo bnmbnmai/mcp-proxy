@@ -115,7 +115,7 @@ export const SEED_LISTINGS: FaaCivilPenaltyListing[] = [
     date: "2026-07-02",
     served: "2026-07-02",
     issued: null,
-    title: "ORDER GRANTING MOTION FOR LEAVE TO FILE AMICUS CURIAE BRIEF",
+    title: "Amicus Curiae Briefs",
     subjects: "Amicus Curiae Briefs",
     guid: LEAHEY_GUID,
     mimeType: "application/pdf",
@@ -130,7 +130,7 @@ export const SEED_LISTINGS: FaaCivilPenaltyListing[] = [
     date: "2026-06-11",
     served: "2026-05-06",
     issued: "2026-06-11",
-    title: "ORDER GRANTING COMPLAINANT'S MOTION TO DISMISS",
+    title: "Appeals - Failure to File Notice of Appeal | Appeals - Timeliness of Notice of Appeal",
     subjects: "Appeals - Failure to File Notice of Appeal | Appeals - Timeliness of Notice of Appeal",
     guid: BENNETT_GUID,
     mimeType: "application/pdf",
@@ -286,19 +286,16 @@ export function parseFaaCivilPenaltyText(
   const guid = meta.guid;
   const served = meta.served ?? isoDate(body.slice(0, 2500));
   const issued = meta.issued ?? null;
-  const titleFromBody =
-    body.match(/ORDER GRANTING[^\n]{0,120}|DECISION AND ORDER[^\n]{0,80}|ORDER DENYING[^\n]{0,120}/i)?.[0]?.trim() ??
-    "";
   return {
     id: meta.id || catalogId(orderNo, guid),
     orderNo: orderNo || catalogId("", guid),
     institution: (meta.institution && meta.institution.trim()) || orderNo || guid,
     docket: (meta.docket && meta.docket.trim()) || docketFromText(body),
-    kind: meta.kind || parseKind(`${meta.title ?? ""} ${titleFromBody} ${body.slice(0, 1500)}`),
+    kind: meta.kind || parseKind(`${meta.title ?? ""} ${meta.subjects ?? ""} ${body.slice(0, 1500)}`),
     date: meta.date ?? issued ?? served,
     served,
     issued,
-    title: meta.title || titleFromBody || `FAA Order ${orderNo}`,
+    title: (meta.title && meta.title.trim()) || (meta.subjects && meta.subjects.trim()) || `FAA Order ${orderNo}`,
     subjects: meta.subjects || "",
     guid,
     mimeType: meta.mimeType || "application/pdf",
