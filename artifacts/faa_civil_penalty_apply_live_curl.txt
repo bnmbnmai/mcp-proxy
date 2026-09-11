@@ -1,0 +1,33 @@
+# apply PR 225 GET /faa-civil-penalty onto live ticks.bnm.farm
+# apply-record https://github.com/bnmbnmai/mcp-proxy/pull/226
+# serving SHA 18f8026 (cursor/faa-civil-penalty-eb16 stacked on cursor/apply-epa-eab-5575 @ 39d9648)
+# idaho-ticks-x402.service restart Fri 2026-09-11 16:56:28 MDT PID 3985516 (was 2737323)
+# Restarted only that unit (systemctl --user). docker-gw / bnm-caddy / bnm-tunnel untouched.
+# Added FAA_CIVIL_PENALTY_DIR to the user unit.
+
+BEFORE (serving 6c16a68 / 39d9648)
+GET  https://ticks.bnm.farm/.well-known/x402                          200  resources=57  extra.resourceCount=57  no /faa-civil-penalty
+GET  https://ticks.bnm.farm/faa-civil-penalty                          404
+GET  https://ticks.bnm.farm/epa-eab                                    402  sibling
+
+AFTER (serving 18f8026 + seed collect cardCount=4 + restart)
+GET  https://ticks.bnm.farm/.well-known/x402                          200  via: 1.1 Caddy  resources=58  extra.resourceCount=58  has /faa-civil-penalty
+GET  https://ticks.bnm.farm/faa-civil-penalty                          402  maxAmountRequired=50000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/faa-civil-penalty?id=2026-04               402  maxAmountRequired=20000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/faa-civil-penalty?since=2026-09-08         304  empty unpaid delta
+GET  https://ticks.bnm.farm/faa-civil-penalty/manifest.json            200  via: 1.1 Caddy  cardCount=4  asOf=2026-07-02  fetchedAt=2026-09-11T22:56:22.054Z  Leahey+Bennett  NO sourceUrl  NO Order narrative
+GET  https://ticks.bnm.farm/ticks                                      402  sibling
+GET  https://ticks.bnm.farm/air-letters                                402  sibling
+GET  https://ticks.bnm.farm/epa-eab                                    402  sibling
+GET  https://ticks.bnm.farm/epa-alj                                    402  sibling
+
+loopback GET http://127.0.0.1:4020/faa-civil-penalty                  402
+loopback GET http://127.0.0.1:4020/faa-civil-penalty/manifest.json     200  cardCount=4  no sourceUrl
+
+banner: /faa-civil-penalty $0.05 USDC
+banner: mcp /mcp — 58 tools from /.well-known/x402
+collect: FAA_CIVIL_PENALTY_LIMIT=4 FAA_CIVIL_PENALTY_MAX_FETCH=8  listedCount=653 addedThisRun=4 fetchedPdfs=4 skippedNoText=0
+seeds: 2026-04 (Leahey G13-22-040)  2026-03 (Bennett)
+extra: 2026-02 (Skyler Jensen G13-22-065)  2025-06 (John Nunez G13-23-021)
+titles: free cards keep DRS subjects (Amicus Curiae Briefs), not PDF order captions
+lander: tv-remote / bnm.farm — no FAA Civil Penalty Appeals card on this tip; not blocking apply

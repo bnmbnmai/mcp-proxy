@@ -11,9 +11,7 @@ Free discovery is leak-clean: order no / case / docket / dates / subjects + `pai
 **Seeds:** FAA Order **2026-04** Matter of Michael Leahey, dkt **G13-22-040**, served **07/02/2026**. FAA Order **2026-03** Matter of Michael Bennett.
 **Bag (live collect on this VM):** **cardCount 4**, listedCount 653, fetchedPdfs 4, skippedNoText 0, asOf **2026-07-02**, fetchedAt **2026-09-11T22:49:36.123Z**. Seeds required. Additional first-page Administrator Orders: 2026-02 Matter of Skyler Jensen (G13-22-065); 2025-06 Matter of John Nunez (G13-23-021).
 
-MCP tools are generated from live well-known (no hardcoded door count). Catalog `main` is not the door host. Stacked on the live `/epa-eab` apply tip (`cursor/apply-epa-eab-5575`).
-
-This VM **cannot** apollo-apply. Leave the checklist. Restart **only** `idaho-ticks-x402.service`.
+MCP tools are generated from live well-known (no hardcoded door count). Catalog `main` is not the door host. Stacked on the live `/epa-eab` apply tip (`cursor/apply-epa-eab-5575` / [PR 224](https://github.com/bnmbnmai/mcp-proxy/pull/224)).
 
 ## Leak-test (2026-09-11, PASS)
 
@@ -68,6 +66,8 @@ systemctl --user restart idaho-ticks-x402.service
 ```
 
 Restart **only** that unit. docker / other units untouched. No new collect cron.
+
+Applied on apollo (2026-09-11): **serving SHA `18f8026`** (apply-record [PR 226](https://github.com/bnmbnmai/mcp-proxy/pull/226); [PR 225](https://github.com/bnmbnmai/mcp-proxy/pull/225) `cursor/faa-civil-penalty-eb16` @ `18f8026` stacked on `cursor/apply-epa-eab-5575` @ `39d9648` / prior serving `6c16a68`). Restarted **only** `idaho-ticks-x402.service` at **2026-09-11 16:56:28 MDT** (PID 3985516). Added `FAA_CIVIL_PENALTY_DIR` to the user unit. One-door collect EXIT 0: listedCount **653**, `addedThisRun` 4, `fetchedPdfs` 4, skipped 0, asOf **2026-07-02**, fetchedAt **2026-09-11T22:56:22.054Z**. Seeds `2026-04` (Leahey, G13-22-040) and `2026-03` (Bennett) plus `2026-02` (Skyler Jensen, G13-22-065) and `2025-06` (John Nunez, G13-23-021). Free titles are DRS card subjects, not PDF order captions. Free manifest is order no/case/docket/dates/subjects + `paidUrl` only; **no** `sourceUrl`, no Order narrative. Unpaid `GET https://ticks.bnm.farm/faa-civil-penalty` is **402** at $0.05; `?id=2026-04` is **402** at $0.02. `/.well-known/x402` lists `/faa-civil-penalty` among **58** doors (was 57). Banner `mcp /mcp — 58 tools`. Siblings `/ticks` `/air-letters` `/epa-eab` `/epa-alj` still 402. No new collect cron. Lander card lives in tv-remote / bnm.farm and was not on this tip — apply is not blocked on a second repo.
 
 After apply:
 
