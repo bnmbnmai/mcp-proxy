@@ -1,0 +1,196 @@
+{
+  "job": "apply PR 225 GET /faa-civil-penalty onto live ticks.bnm.farm",
+  "ranOn": "apollo",
+  "hostname": "pop-os",
+  "path": "/faa-civil-penalty",
+  "priceUsdc": "0.05",
+  "amountAtomic": "50000",
+  "oneAmountAtomic": "20000",
+  "network": "base",
+  "branch": "cursor/apply-faa-civil-penalty-f4d0",
+  "servingSha": "18f8026238f9be9e2fffd0f61a6e14de73586cbb",
+  "sourcePr": "https://github.com/bnmbnmai/mcp-proxy/pull/225",
+  "sourceBranch": "cursor/faa-civil-penalty-eb16",
+  "sourceHead": "18f8026238f9be9e2fffd0f61a6e14de73586cbb",
+  "stackedOn": "cursor/apply-epa-eab-5575",
+  "stackedOnSha": "39d9648d94d44e43b37eedd0a67ec28b02db006e",
+  "liveServingBefore": "6c16a687ebffaf6738881cbe5917602247c61e12",
+  "thisApply": "https://github.com/bnmbnmai/mcp-proxy/pull/226",
+  "systemctlUserRestart": {
+    "unit": "idaho-ticks-x402.service",
+    "ok": true,
+    "otherUnitsRestarted": false,
+    "activeEnterTimestamp": "Fri 2026-09-11 16:56:28 MDT",
+    "pidBefore": "2737323",
+    "pidAfter": "3985516",
+    "dockerGwUntouched": "idaho-ticks-x402-docker-gw.service left running",
+    "caddyStartedAt": "2026-09-08T17:07:32.766138574Z",
+    "tunnelStartedAt": "2026-09-08T17:07:32.771343842Z",
+    "faaCivilPenaltyDirAddedToUnit": true
+  },
+  "banner": {
+    "faaCivilPenalty": "/faa-civil-penalty $0.05 USDC",
+    "mcp": "mcp /mcp — 58 tools from /.well-known/x402"
+  },
+  "before": {
+    "faaCivilPenaltyUnpaid": 404,
+    "wellKnown": {
+      "status": 200,
+      "resourceCount": 57,
+      "extraResourceCount": 57,
+      "hasFaaCivilPenalty": false
+    },
+    "siblings": {
+      "/epa-eab": 402
+    }
+  },
+  "collect": {
+    "status": "ok",
+    "dir": "$HOME/projects/mcp-proxy/data/faa-civil-penalty",
+    "fetchedAt": "2026-09-11T22:56:22.054Z",
+    "asOf": "2026-07-02",
+    "cardCount": 4,
+    "listedCount": 653,
+    "fetchedPdfs": 4,
+    "skippedNoText": 0,
+    "reused": 0,
+    "addedThisRun": 4,
+    "ids": [
+      "2026-04",
+      "2026-03",
+      "2026-02",
+      "2025-06"
+    ]
+  },
+  "live": {
+    "wellKnown": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "resourceCount": 58,
+      "extraResourceCount": 58,
+      "hasFaaCivilPenalty": true,
+      "faaCivilPenaltyUrl": "https://ticks.bnm.farm/faa-civil-penalty"
+    },
+    "unpaidGet": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "50000",
+      "extraName": "USD Coin",
+      "resource": "https://ticks.bnm.farm/faa-civil-penalty"
+    },
+    "unpaidId": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "id": "2026-04",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "20000",
+      "extraName": "USD Coin",
+      "resource": "https://ticks.bnm.farm/faa-civil-penalty?id=2026-04"
+    },
+    "emptySince": {
+      "status": 304,
+      "since": "2026-09-08",
+      "via": "1.1 Caddy"
+    },
+    "manifest": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "cardCount": 4,
+      "asOf": "2026-07-02",
+      "fetchedAt": "2026-09-11T22:56:22.054Z",
+      "product": "faa-civil-penalty-order-bodies",
+      "ids": [
+        "2026-04",
+        "2026-03",
+        "2026-02",
+        "2025-06"
+      ],
+      "hasLeahey": true,
+      "hasBennett": true,
+      "leahey": {
+        "id": "2026-04",
+        "institution": "Matter of Michael Leahey",
+        "orderNo": "2026-04",
+        "docket": "G13-22-040",
+        "kind": "Administrator Order",
+        "date": "2026-07-02",
+        "served": "2026-07-02",
+        "title": "Amicus Curiae Briefs",
+        "subjects": "Amicus Curiae Briefs",
+        "paidUrl": "/faa-civil-penalty?id=2026-04"
+      },
+      "bennett": {
+        "id": "2026-03",
+        "institution": "Matter of Michael Bennett",
+        "orderNo": "2026-03",
+        "kind": "Administrator Order",
+        "date": "2026-06-11",
+        "title": "Appeals - Failure to File Notice of Appeal | Appeals - Timeliness of Notice of Appeal",
+        "paidUrl": "/faa-civil-penalty?id=2026-03"
+      },
+      "hasSourceUrl": false,
+      "bodyLeak": false,
+      "narrativePhrasesAbsent": [
+        "ORDER GRANTING MOTION FOR LEAVE TO FILE AMICUS",
+        "Diana R. Rabinowitz"
+      ],
+      "cardKeys": [
+        "before",
+        "date",
+        "docket",
+        "id",
+        "institution",
+        "issued",
+        "kind",
+        "orderNo",
+        "page",
+        "paidUrl",
+        "publishedAt",
+        "served",
+        "subjects",
+        "title"
+      ],
+      "schemaFields": [
+        "id",
+        "institution",
+        "orderNo",
+        "docket",
+        "kind",
+        "date",
+        "served",
+        "issued",
+        "title",
+        "subjects"
+      ]
+    },
+    "siblingsStill402": {
+      "/ticks": 402,
+      "/air-letters": 402,
+      "/epa-eab": 402,
+      "/epa-alj": 402
+    },
+    "shop": {
+      "hasFaaCivilPenalty": true,
+      "productCount": 58,
+      "product": "faa-civil-penalty-order-bodies",
+      "amountAtomic": "50000"
+    },
+    "loopback": {
+      "unpaidGet": 402,
+      "manifest": 200,
+      "manifestCardCount": 4,
+      "manifestHasSourceUrl": false
+    }
+  },
+  "excluded": {
+    "catalogMain": "not checked out",
+    "newCollectCron": "not started",
+    "dockerGw": "untouched",
+    "otherUnits": "not restarted",
+    "lander": "tv-remote / bnm.farm; no FAA Civil Penalty Appeals card on this tip; not blocking apply",
+    "leakRetest": "listing VM already PASSED; not re-scored",
+    "shopLink": "not spent",
+    "redbubble": "not touched"
+  }
+}

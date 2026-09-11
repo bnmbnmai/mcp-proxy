@@ -55,6 +55,7 @@ build/bsee-reports.*
 build/oshrc-orders.*
 build/epa-alj.*
 build/epa-eab.*
+build/faa-civil-penalty.*
 build/ticks-ams.*
 build/ticks-ams-leftovers.*
 build/paid-records.*
@@ -113,6 +114,7 @@ data/bsee-reports/
 data/oshrc-orders/
 data/epa-alj/
 data/epa-eab/
+data/faa-civil-penalty/
 data/ticks-ams/
 data/shop-request-log.jsonl
 data/shop-request-log*.jsonl

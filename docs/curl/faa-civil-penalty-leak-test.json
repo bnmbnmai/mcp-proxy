@@ -1,0 +1,66 @@
+{
+  "date": "2026-09-11",
+  "product": "/faa-civil-penalty",
+  "verdict": "PASS",
+  "official": {
+    "index": {
+      "url": "https://drs.faa.gov/browse/CIVIL_PENALTY_APPEALS/doctypeDetails",
+      "http": 200,
+      "bytes": 22779,
+      "hasLeahey": false,
+      "hasG13": false,
+      "has2026-04": false,
+      "distinctivePhrases": {
+        "ORDER GRANTING MOTION FOR LEAVE TO FILE AMICUS": false,
+        "Diana R. Rabinowitz": false
+      }
+    },
+    "metadatas": {
+      "url": "https://drs.faa.gov/api/browse/doctype/CIVIL_PENALTY_APPEALS/documents/metadatas",
+      "http": 200,
+      "documentListTotalCount": 653,
+      "pageCount": 25,
+      "has2026-04": true,
+      "has2026-03": true,
+      "has2026-02": true,
+      "hasLeahey": true,
+      "hasG13-22-040": true,
+      "note": "order no / case / subjects / dates / docket only — not full narrative",
+      "distinctivePhrases": {
+        "ORDER GRANTING MOTION FOR LEAVE TO FILE AMICUS": false,
+        "Diana R. Rabinowitz": false
+      }
+    },
+    "barePdf": {
+      "url": "https://drs.faa.gov/api/content/reports/df4fc23a-5ec0-4c54-893d-3fff1e63de03",
+      "http": 403,
+      "bytes": 0,
+      "note": "leak-clean, not a free dump"
+    },
+    "guestPdf2026-04": {
+      "guid": "df4fc23a-5ec0-4c54-893d-3fff1e63de03",
+      "http": 200,
+      "bytes": 43992,
+      "magic": "%PDF-",
+      "distinctivePhrases": {
+        "ORDER GRANTING MOTION FOR LEAVE TO FILE AMICUS": true,
+        "Diana R. Rabinowitz": true,
+        "G13-22-040": true
+      }
+    }
+  },
+  "crossBag": {
+    "federalRegister": {
+      "term": "G13-22-040",
+      "count": 0
+    },
+    "air-letters": {
+      "Leahey": 0,
+      "G13-22-040": 0,
+      "Rabinowitz": 0,
+      "ORDER GRANTING MOTION FOR LEAVE TO FILE AMICUS": 0,
+      "note": "OK different product — APHIS AIR letters, not FAA Administrator Orders"
+    }
+  },
+  "notNmsAsias": true
+}
