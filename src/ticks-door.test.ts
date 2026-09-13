@@ -5,7 +5,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, PRODUCT_NAME, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, paidOutputJsonSchema, settlementReceiptHeaders, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2, paymentExtra, sku402Description, isOrganicHay, isWaterTick, buildTicksManifest, countWord } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, PRODUCT_NAME, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, paidOutputJsonSchema, settlementReceiptHeaders, settlementFailureHeaders, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, facilitatorExtra, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2, paymentExtra, sku402Description, isOrganicHay, isWaterTick, buildTicksManifest, countWord } from "./ticks-door.js";
 import { EXTRACTED_BODY_SKUS, PAGE_AMOUNT_ATOMIC, SINGLE_DOC_AMOUNT_ATOMIC } from "./paid-records.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
@@ -319,6 +319,21 @@ async function main(): Promise<void> {
   assert.equal(isOrganicHay({ id: "grain.ams_3802.national.organic.yellow_corn" }), false);
   assert.deepEqual(settlementReceiptHeaders(null, { network: "base" }), {});
   assert.deepEqual(settlementReceiptHeaders(null, { network: "base" }, ""), {});
+  assert.deepEqual(facilitatorExtra(paymentExtra("ticks")), { name: "USD Coin", version: "2" });
+  assert.equal(facilitatorExtra(paymentExtra("ticks")).tableWhole, undefined);
+  assert.equal(facilitatorExtra(paymentExtra("ticks")).pagePriceAtomic, undefined);
+  const failHdr = settlementFailureHeaders(null, { network: "base" });
+  assert.ok(failHdr["PAYMENT-RESPONSE"]);
+  const failReceipt = JSON.parse(Buffer.from(failHdr["PAYMENT-RESPONSE"] ?? "", "base64").toString("utf8")) as {
+    success?: boolean;
+    errorReason?: string;
+    transaction?: string;
+    network?: string;
+  };
+  assert.equal(failReceipt.success, false);
+  assert.equal(failReceipt.errorReason, "settlement_failed");
+  assert.equal(failReceipt.transaction, "");
+  assert.equal(failReceipt.network, NETWORK_V2);
 
   await withServer({
     TICKS_PATH: "",
@@ -8752,6 +8767,61 @@ async function main(): Promise<void> {
   const wellReqs = wellFormed.paymentRequirements as { amount?: string; extra?: { name?: string } };
   assert.equal(wellReqs.amount, TICKS_AMOUNT_ATOMIC);
   assert.equal(wellReqs.extra?.name, "USD Coin", "do not change the /ticks EIP-712 name");
+  assert.deepEqual(
+    wellReqs.extra,
+    { name: "USD Coin", version: "2" },
+    "facilitator extra is EIP-712 only — bag keys stay on the unpaid 402",
+  );
+  assert.deepEqual(wellPayload.accepted?.extra, { name: "USD Coin", version: "2" });
+  const bagOn402 = paymentRequiredBody("https://ticks.bnm.farm/ticks", "ticks").accepts as {
+    extra?: Record<string, unknown>;
+  }[];
+  assert.equal(bagOn402[0]?.extra?.tableWhole, true, "unpaid 402 extra.tableWhole stays");
+  assert.equal(bagOn402[0]?.extra?.pagePriceAtomic, Number(PAGE_AMOUNT_ATOMIC));
+  const baggyAccepted = facilitatorBody(
+    JSON.stringify({
+      ...v1Exact,
+      x402Version: 2,
+      accepted: {
+        scheme: "exact",
+        network: NETWORK_V2,
+        asset: USDC_BASE,
+        amount: TICKS_AMOUNT_ATOMIC,
+        payTo: PAY_TO,
+        maxTimeoutSeconds: 60,
+        extra: paymentExtra("ticks"),
+      },
+    }),
+    ticksReqs,
+  );
+  const baggyPayload = baggyAccepted.paymentPayload as { accepted?: { extra?: Record<string, unknown> } };
+  assert.deepEqual(baggyPayload.accepted?.extra, { name: "USD Coin", version: "2" });
+  assert.deepEqual(
+    cdpFacilitatorBodyProblems(baggyAccepted),
+    [],
+    "client accepted.extra bag keys must be stripped before CDP verify",
+  );
+  const baggyProblems = cdpFacilitatorBodyProblems({
+    x402Version: 2,
+    paymentPayload: {
+      x402Version: 2,
+      accepted: {
+        scheme: "exact",
+        network: NETWORK_V2,
+        asset: USDC_BASE,
+        amount: TICKS_AMOUNT_ATOMIC,
+        payTo: PAY_TO,
+        maxTimeoutSeconds: 60,
+        extra: paymentExtra("ticks"),
+      },
+      payload: v1Exact.payload,
+    },
+    paymentRequirements: (wellFormed.paymentRequirements as Record<string, unknown>),
+  });
+  assert.ok(
+    baggyProblems.some((p) => p.includes("EIP-712") || p.includes("tableWhole") || p.includes("pagePriceAtomic")),
+    baggyProblems.join("; "),
+  );
 
   const hybrid400 = {
     x402Version: 1,
@@ -8850,6 +8920,71 @@ async function main(): Promise<void> {
   );
   await new Promise<void>((resolve, reject) =>
     mockFacilitator.close((err) => (err ? reject(err) : resolve())),
+  );
+
+  const failFacilitator = createServer((req, res) => {
+    const chunks: Buffer[] = [];
+    req.on("data", (c) => chunks.push(Buffer.isBuffer(c) ? c : Buffer.from(c)));
+    req.on("end", () => {
+      let parsed: unknown = {};
+      try {
+        parsed = JSON.parse(Buffer.concat(chunks).toString("utf8"));
+      } catch {
+        parsed = {};
+      }
+      const problems = cdpFacilitatorBodyProblems(parsed);
+      const path = req.url || "";
+      if (problems.length) {
+        res.writeHead(400, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ errorType: "invalid_request", errorMessage: problems[0] }));
+        return;
+      }
+      if (path.endsWith("/verify")) {
+        res.writeHead(200, { "Content-Type": "application/json" });
+        res.end(JSON.stringify({ isValid: true }));
+        return;
+      }
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(JSON.stringify({ success: false, errorReason: "invalid_exact_evm_extra_field", transaction: "" }));
+    });
+  });
+  await new Promise<void>((resolve) => failFacilitator.listen(0, "127.0.0.1", resolve));
+  const failPort = (failFacilitator.address() as AddressInfo).port;
+  await withServer(
+    {
+      X402_FACILITATOR_URL: `http://127.0.0.1:${failPort}`,
+      X402_SKIP_SETTLE: undefined,
+      TICKS_DIR: "",
+      TICKS_PATH: "",
+      CDP_API_KEY_ID: undefined,
+      CDP_API_KEY_SECRET: undefined,
+    },
+    async (base) => {
+      const paid = await fetch(`${base}${TICKS_PATH}`, {
+        headers: { "X-PAYMENT": JSON.stringify(v1Exact) },
+      });
+      assert.equal(paid.status, 402, "settle without a txHash stays 402");
+      const failHdr = paid.headers.get("payment-response");
+      assert.ok(failHdr, "settle-failed 402 still sets PAYMENT-RESPONSE");
+      const failReceipt = JSON.parse(Buffer.from(failHdr ?? "", "base64").toString("utf8")) as {
+        success?: boolean;
+        errorReason?: string;
+        transaction?: string;
+      };
+      assert.equal(failReceipt.success, false);
+      assert.equal(failReceipt.errorReason, "settlement_failed");
+      assert.equal(failReceipt.transaction, "");
+      const unpaid = await fetch(`${base}${TICKS_PATH}`);
+      assert.equal(unpaid.status, 402);
+      assert.equal(unpaid.headers.get("payment-response"), null, "unpaid 402 has no settlement receipt");
+      const body402 = (await unpaid.json()) as { accepts: { extra?: { name?: string; tableWhole?: boolean }; payTo?: string }[] };
+      assert.equal(body402.accepts[0]?.payTo, PAY_TO);
+      assert.equal(body402.accepts[0]?.extra?.name, "USD Coin");
+      assert.equal(body402.accepts[0]?.extra?.tableWhole, true);
+    },
+  );
+  await new Promise<void>((resolve, reject) =>
+    failFacilitator.close((err) => (err ? reject(err) : resolve())),
   );
 
   const habitWlDir = mkdtempSync(join(tmpdir(), "warning-letters-habit-"));

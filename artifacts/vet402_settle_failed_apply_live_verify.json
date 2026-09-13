@@ -1,0 +1,162 @@
+{
+  "job": "apply PR 227 vet402 settle_failed fix onto live ticks.bnm.farm",
+  "ranOn": "apollo",
+  "hostname": "pop-os",
+  "path": "/ticks",
+  "priceUsdc": "0.05",
+  "amountAtomic": "50000",
+  "network": "base",
+  "branch": "cursor/apply-vet402-settle-failed-3f56",
+  "servingSha": "6d81fe70a6cc96c9f2a670420b5d44904e7c0aa5",
+  "servingShaShort": "6d81fe7",
+  "sourcePr": "https://github.com/bnmbnmai/mcp-proxy/pull/227",
+  "sourceBranch": "cursor/vet402-settle-failed-8d6b",
+  "sourceHead": "12d085c3522130f73ae052787908eaba0cc04208",
+  "sourceHeadShort": "12d085c",
+  "stackedOn": "cursor/apply-faa-civil-penalty-f4d0",
+  "stackedOnSha": "d45dc7392971e5069900a5ddaa780df5356d5d32",
+  "liveServingBefore": "18f8026238f9be9e2fffd0f61a6e14de73586cbb",
+  "thisApply": "https://github.com/bnmbnmai/mcp-proxy/pull/228",
+  "systemctlUserRestart": {
+    "unit": "idaho-ticks-x402.service",
+    "ok": true,
+    "otherUnitsRestarted": false,
+    "activeEnterTimestamp": "Sun 2026-09-13 13:11:10 MDT",
+    "activeEnterUtc": "2026-09-13T19:11:10Z",
+    "pidBefore": "3985516",
+    "pidAfter": "2067443",
+    "dockerGwUntouched": "idaho-ticks-x402-docker-gw.service left running (ActiveEnterTimestamp Sun 2026-09-13 12:00:22 MDT, PID 1998798)",
+    "bnmHomelabUntouched": "Tue 2026-09-08 11:07:33 MDT",
+    "dockerContainersStillUp5Days": [
+      "bnm-caddy",
+      "bnm-tunnel"
+    ]
+  },
+  "banner": {
+    "mcp": "mcp /mcp \u2014 58 tools from /.well-known/x402",
+    "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004"
+  },
+  "unitTests": {
+    "ticksDoor": "ticks-door tests ok",
+    "settleLog": "settle-log tests ok",
+    "build": "npm run build exit 0"
+  },
+  "codeOnDisk": {
+    "facilitatorExtra": "src/ticks-door.ts + build/ticks-door.js",
+    "facilitatorExtraKeeps": [
+      "name",
+      "version"
+    ],
+    "unpaidBagKeysStayOn402": [
+      "tableWhole",
+      "pagePriceAtomic"
+    ]
+  },
+  "before": {
+    "unpaidGetTicks": {
+      "status": 402,
+      "amountAtomic": "50000",
+      "extraName": "USD Coin",
+      "tableWhole": true,
+      "pagePriceAtomic": 50000,
+      "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004"
+    }
+  },
+  "live": {
+    "unpaidGetTicks": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "hasPaymentRequired": true,
+      "hasPaymentResponse": false,
+      "maxAmountRequired": "50000",
+      "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+      "extraName": "USD Coin",
+      "extraVersion": "2",
+      "tableWhole": true,
+      "pagePriceAtomic": 50000,
+      "extraKeys": [
+        "firmCheckUrl",
+        "name",
+        "pagePriceAtomic",
+        "sampleUrl",
+        "searchUrl",
+        "tableWhole",
+        "version"
+      ],
+      "resource": "https://ticks.bnm.farm/ticks"
+    },
+    "paymentRequiredDecoded": {
+      "x402Version": 2,
+      "amount": "50000",
+      "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+      "extraName": "USD Coin",
+      "tableWhole": true,
+      "pagePriceAtomic": 50000
+    },
+    "headTicks": {
+      "public": {
+        "status": 402,
+        "hasPaymentRequired": true,
+        "hasPaymentResponse": false,
+        "curlRc": 28,
+        "note": "Cloudflare HTTP/2 HEAD can close early; used --http1.1"
+      },
+      "loopback": {
+        "status": 402,
+        "hasPaymentRequired": true,
+        "hasPaymentResponse": false
+      }
+    },
+    "wellKnown": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "resourceCount": 58,
+      "extraResourceCount": 58,
+      "hasTicks": true,
+      "hasFaaCivilPenalty": true,
+      "noNewDoor": true
+    },
+    "siblingsStill402": {
+      "/faa-civil-penalty": 402,
+      "/epa-eab": 402,
+      "/epa-alj": 402,
+      "/air-letters": 402
+    },
+    "loopback": {
+      "unpaidGet": 402,
+      "amount": "50000",
+      "extraName": "USD Coin",
+      "tableWhole": true,
+      "pagePriceAtomic": 50000,
+      "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+      "hasPaymentResponse": false
+    },
+    "shop": {
+      "status": 200,
+      "productCount": 58,
+      "topKeys": [
+        "asset",
+        "firmCheck",
+        "llmsTxt",
+        "mcp",
+        "network",
+        "note",
+        "openapi",
+        "payTo",
+        "products",
+        "resourceCount",
+        "sample",
+        "shop",
+        "wellKnown"
+      ]
+    }
+  },
+  "excluded": {
+    "catalogMain": "not checked out",
+    "collect": "not run",
+    "dockerGw": "untouched",
+    "otherUnits": "not restarted",
+    "shopUsdc": "not spent",
+    "brucePing": "not sent"
+  }
+}
