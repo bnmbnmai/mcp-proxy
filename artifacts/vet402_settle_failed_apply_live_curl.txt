@@ -1,0 +1,30 @@
+# apply PR 227 vet402 settle_failed fix onto live ticks.bnm.farm
+# apply-record https://github.com/bnmbnmai/mcp-proxy/pull/228
+# serving SHA 6d81fe7 (cherry-pick of 12d085c onto cursor/apply-faa-civil-penalty-f4d0 @ d45dc73 / prior serving 18f8026)
+# idaho-ticks-x402.service restart Sun 2026-09-13 13:11:10 MDT PID 2067443 (was 3985516)
+# Restarted only that unit (systemctl --user). docker-gw / bnm-caddy / bnm-tunnel untouched.
+# npm run build exit 0; node build/ticks-door.test.js → ticks-door tests ok; node build/settle-log.test.js → ok
+# Facilitator extra on disk is EIP-712 name/version only (facilitatorExtra in src/ticks-door.ts + build/ticks-door.js)
+
+BEFORE (serving 18f8026 / apply-record d45dc73)
+GET  https://ticks.bnm.farm/ticks                                      402  maxAmountRequired=50000  extra.name=USD Coin  extra.tableWhole=true  extra.pagePriceAtomic=50000  payTo=0xf596…1004  no PAYMENT-RESPONSE
+
+AFTER (serving 6d81fe7 = PR 227 12d085c stacked on live faa-civil-penalty tip)
+GET  https://ticks.bnm.farm/ticks                                      402  via: 1.1 Caddy  maxAmountRequired=50000  extra.name=USD Coin  extra.version=2  extra.tableWhole=true  extra.pagePriceAtomic=50000  payTo=0xf596…1004  no PAYMENT-RESPONSE
+HEAD https://ticks.bnm.farm/ticks                                      402  PAYMENT-REQUIRED  no PAYMENT-RESPONSE
+GET  https://ticks.bnm.farm/.well-known/x402                          200  via: 1.1 Caddy  resources=58  extra.resourceCount=58  has /ticks  has /faa-civil-penalty  no new door
+GET  https://ticks.bnm.farm/                                          200  productCount=58
+GET  https://ticks.bnm.farm/faa-civil-penalty                          402  sibling
+GET  https://ticks.bnm.farm/epa-eab                                    402  sibling
+GET  https://ticks.bnm.farm/epa-alj                                    402  sibling
+GET  https://ticks.bnm.farm/air-letters                                402  sibling
+
+loopback GET  http://127.0.0.1:4020/ticks                              402  50000  USD Coin  tableWhole  pagePriceAtomic  no PAYMENT-RESPONSE
+loopback HEAD http://127.0.0.1:4020/ticks                              402  PAYMENT-REQUIRED  no PAYMENT-RESPONSE
+
+banner: mcp /mcp — 58 tools from /.well-known/x402
+payTo unchanged: 0xf59621FC406D266e18f314Ae18eF0a33b8401004
+prices unchanged: /ticks $0.05 / 50000
+catalog main: not checked out
+collect: not run
+shop USDC: not spent
