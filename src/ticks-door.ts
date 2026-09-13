@@ -1463,6 +1463,7 @@ function isMarinersSku(sku: DoorSku): boolean {
 /**
  * 402 accepts[].extra — keep EIP-712 USDC name/version, then bag-size / how-to-buy.
  * Bazaar stays on extensions.bazaar, not here.
+ * Facilitator verify/settle must use facilitatorExtra() (name/version only).
  */
 export function paymentExtra(sku: DoorSku): Record<string, unknown> {
   const extra: Record<string, unknown> = {
@@ -4102,9 +4103,52 @@ function resourceInfo(
   return info;
 }
 
+/**
+ * Exact-EVM extra that CDP / x402 verify will accept.
+ *
+ * 402 `accepts[].extra` also carries shop bag-size keys (tableWhole,
+ * pagePriceAtomic, searchUrl, …). Those belong on the unpaid envelope.
+ * Forwarding them on POST /verify and /settle is
+ * `invalid_exact_evm_extra_field` — exact-EVM extra is EIP-712
+ * `name` / `version` plus optional `assetTransferMethod`.
+ */
+export function facilitatorExtra(extra: unknown): Record<string, unknown> {
+  const src = isPlainObject(extra) ? extra : {};
+  const out: Record<string, unknown> = {
+    name: typeof src.name === "string" && src.name.trim() ? src.name.trim() : "USD Coin",
+    version: typeof src.version === "string" && src.version.trim() ? src.version.trim() : "2",
+  };
+  if (
+    src.assetTransferMethod === "eip3009" ||
+    src.assetTransferMethod === "permit2" ||
+    src.assetTransferMethod === "erc7710"
+  ) {
+    out.assetTransferMethod = src.assetTransferMethod;
+  }
+  return out;
+}
+
+function extraFieldProblems(label: string, extra: unknown): string[] {
+  if (extra == null) return [`v2 ${label}.extra is required (EIP-712 name/version)`];
+  if (!isPlainObject(extra)) return [`v2 ${label}.extra must be an object`];
+  const allowed = new Set(["name", "version", "assetTransferMethod"]);
+  const unexpected = Object.keys(extra).filter((key) => !allowed.has(key));
+  const problems: string[] = [];
+  if (unexpected.length) {
+    problems.push(`v2 ${label}.extra must only be EIP-712 fields, not ${unexpected.join(",")}`);
+  }
+  if (typeof extra.name !== "string" || !extra.name) problems.push(`v2 ${label}.extra.name is required`);
+  if (typeof extra.version !== "string" || !extra.version) problems.push(`v2 ${label}.extra.version is required`);
+  return problems;
+}
+
+function normalizeAccepted(accepted: Record<string, unknown>): Record<string, unknown> {
+  return { ...accepted, extra: facilitatorExtra(accepted.extra) };
+}
+
 function v2PaymentRequirements(requirements: Record<string, unknown>): Record<string, unknown> {
   const amount = String(requirements.amount ?? requirements.maxAmountRequired ?? "");
-  const out: Record<string, unknown> = {
+  return {
     scheme: requirements.scheme ?? "exact",
     network: caip2Network(requirements.network),
     asset: requirements.asset,
@@ -4113,9 +4157,8 @@ function v2PaymentRequirements(requirements: Record<string, unknown>): Record<st
     maxTimeoutSeconds: typeof requirements.maxTimeoutSeconds === "number"
       ? requirements.maxTimeoutSeconds
       : 60,
+    extra: facilitatorExtra(requirements.extra),
   };
-  if (isPlainObject(requirements.extra)) out.extra = requirements.extra;
-  return out;
 }
 
 function payloadExtensions(
@@ -4159,6 +4202,8 @@ export function facilitatorPaymentRequirements(
  * paymentPayload.extensions.bazaar is the 402 bazaar block (public SKUs),
  * paymentPayload.accepted matches paymentRequirements, and
  * paymentRequirements is v2 (eip155:8453, amount, no resource / extensions).
+ * accepted.extra and paymentRequirements.extra are EIP-712 only
+ * (name/version). Bag-size keys stay on the unpaid 402 extra.
  */
 export function facilitatorBody(
   payment: string,
@@ -4166,8 +4211,8 @@ export function facilitatorBody(
 ): Record<string, unknown> {
   const raw = paymentPayload(payment);
   const inner = innerPaymentPayload(raw);
-  const accepted = isPlainObject(raw?.accepted) ? raw.accepted : v2PaymentRequirements(requirements);
   const reqs = v2PaymentRequirements(requirements);
+  const accepted = normalizeAccepted(isPlainObject(raw?.accepted) ? raw.accepted : reqs);
   const payload: Record<string, unknown> = {
     x402Version: 2,
     accepted,
@@ -4244,6 +4289,7 @@ export function cdpFacilitatorBodyProblems(body: unknown): string[] {
       if (obj.description != null || obj.mimeType != null) {
         problems.push(`v2 ${label} must not carry resource metadata`);
       }
+      problems.push(...extraFieldProblems(label, obj.extra));
     }
     return problems;
   }
@@ -4354,8 +4400,11 @@ type SettleAttempt = { ok: boolean; txHash?: string };
 async function facilitatorSettle(payment: string, requirements: Record<string, unknown>): Promise<SettleAttempt> {
   const body = await facilitatorPost("/settle", payment, requirements);
   if (!body) return { ok: false };
-  const ok = body.success === true || body.isValid === true || typeof body.transaction === "string";
-  return { ok, txHash: txHashFromSettleBody(body) };
+  const txHash = txHashFromSettleBody(body);
+  // Empty `transaction: ""` on a failed settle must not count as success
+  // (that was delivered_no_receipt: HTTP 200, no receipt, no hash).
+  if (!txHash) return { ok: false };
+  return { ok: body.success !== false, txHash };
 }
 
 function localSettleKeyFile(): string {
@@ -4404,7 +4453,7 @@ async function localEip3009Settle(payment: string, requirements: Record<string, 
         const parsed = JSON.parse(out) as { ok?: boolean; tx?: string };
         const txHash = typeof parsed.tx === "string" && /^0x[0-9a-fA-F]{64}$/.test(parsed.tx) ? parsed.tx : undefined;
         if (parsed.ok && txHash) console.error(`local eip3009 settle ${txHash}`);
-        resolveOk({ ok: parsed.ok === true, txHash });
+        resolveOk({ ok: parsed.ok === true && Boolean(txHash), txHash });
       } catch {
         resolveOk({ ok: false });
       }
@@ -4423,6 +4472,21 @@ async function localEip3009Settle(payment: string, requirements: Record<string, 
 }
 
 
+function encodeSettlementResponse(receipt: Record<string, unknown>): Record<string, string> {
+  const encoded = Buffer.from(JSON.stringify(receipt), "utf8").toString("base64");
+  return {
+    "PAYMENT-RESPONSE": encoded,
+    "X-PAYMENT-RESPONSE": encoded,
+  };
+}
+
+function receiptNetwork(payment: string | null, requirements: Record<string, unknown>): string {
+  const decoded = payment ? decodePayment(payment) : null;
+  const v2 = decoded?.x402Version === 2
+    || (typeof requirements.network === "string" && requirements.network.startsWith("eip155:"));
+  return v2 ? caip2Network(requirements.network) : NETWORK_V1;
+}
+
 /** Base64 SettlementResponse for paid 200s. Only when settle returned a real txHash. */
 export function settlementReceiptHeaders(
   payment: string | null,
@@ -4430,20 +4494,31 @@ export function settlementReceiptHeaders(
   txHash?: string,
 ): Record<string, string> {
   if (!txHash) return {};
-  const decoded = payment ? decodePayment(payment) : null;
-  const v2 = decoded?.x402Version === 2 || (typeof requirements.network === "string" && requirements.network.startsWith("eip155:"));
   const receipt: Record<string, unknown> = {
     success: true,
     transaction: txHash,
-    network: v2 ? caip2Network(requirements.network) : NETWORK_V1,
+    network: receiptNetwork(payment, requirements),
   };
   const payer = payerFromPayment(payment);
   if (payer) receipt.payer = payer;
-  const encoded = Buffer.from(JSON.stringify(receipt), "utf8").toString("base64");
-  return {
-    "PAYMENT-RESPONSE": encoded,
-    "X-PAYMENT-RESPONSE": encoded,
+  return encodeSettlementResponse(receipt);
+}
+
+/** Spec: PAYMENT-RESPONSE is required on settlement failure 402s too. */
+export function settlementFailureHeaders(
+  payment: string | null,
+  requirements: Record<string, unknown>,
+  errorReason = "settlement_failed",
+): Record<string, string> {
+  const receipt: Record<string, unknown> = {
+    success: false,
+    errorReason,
+    transaction: "",
+    network: caip2Network(requirements.network),
   };
+  const payer = payerFromPayment(payment);
+  if (payer) receipt.payer = payer;
+  return encodeSettlementResponse(receipt);
 }
 
 const headResponses = new WeakSet<ServerResponse>();
@@ -7059,7 +7134,10 @@ async function servePaid(
       ...body402,
       error: "Payment present but not settled. Set X402_FACILITATOR_URL or pay with a valid x402 X-PAYMENT header.",
     },
-    { "PAYMENT-REQUIRED": paymentRequiredHeader },
+    {
+      "PAYMENT-REQUIRED": paymentRequiredHeader,
+      ...settlementFailureHeaders(payment, accept),
+    },
   );
 }
 
@@ -7161,7 +7239,10 @@ async function servePaidPdf(
       ...body402,
       error: "Payment present but not settled. Set X402_FACILITATOR_URL or pay with a valid x402 X-PAYMENT header.",
     },
-    { "PAYMENT-REQUIRED": paymentRequiredHeader },
+    {
+      "PAYMENT-REQUIRED": paymentRequiredHeader,
+      ...settlementFailureHeaders(payment, accept),
+    },
   );
 }
 
