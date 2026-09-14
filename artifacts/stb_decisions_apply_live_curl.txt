@@ -1,0 +1,35 @@
+# apply PR 229 GET /stb-decisions onto live ticks.bnm.farm
+# apply-record https://github.com/bnmbnmai/mcp-proxy/pull/230
+# serving SHA 3e1fee6 (cursor/stb-decisions-door-8026 stacked on cursor/apply-vet402-settle-failed-3f56 @ 695171a)
+# idaho-ticks-x402.service restart Mon 2026-09-14 17:03:36 MDT PID 3494014 (was 2067443)
+# Restarted only that unit (systemctl --user). docker-gw / bnm-caddy / bnm-tunnel untouched.
+# Added STB_DECISIONS_DIR to the user unit.
+
+BEFORE (serving 695171a / 6d81fe7)
+GET  https://ticks.bnm.farm/.well-known/x402                          200  resources=58  extra.resourceCount=58  no /stb-decisions
+GET  https://ticks.bnm.farm/stb-decisions                              404
+GET  https://ticks.bnm.farm/faa-civil-penalty                          402  sibling
+GET  https://ticks.bnm.farm/epa-eab                                    402  sibling
+GET  https://ticks.bnm.farm/ticks                                      402  sibling
+
+AFTER (serving 3e1fee6 + first-slice collect cardCount=4 + restart)
+GET  https://ticks.bnm.farm/.well-known/x402                          200  via: 1.1 Caddy  resources=59  extra.resourceCount=59  has /stb-decisions
+GET  https://ticks.bnm.farm/stb-decisions                              402  maxAmountRequired=50000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/stb-decisions?id=53167                     402  maxAmountRequired=20000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/stb-decisions?since=2026-09-14T23:10:00.000Z  304  empty unpaid delta
+GET  https://ticks.bnm.farm/stb-decisions/manifest.json                200  via: 1.1 Caddy  cardCount=4  asOf=2026-09-10  fetchedAt=2026-09-14T23:02:20.913Z  53167+53180+53068+53126  NO sourceUrl  NO Board narrative
+GET  https://ticks.bnm.farm/ticks                                      402  sibling
+GET  https://ticks.bnm.farm/faa-civil-penalty                          402  sibling
+GET  https://ticks.bnm.farm/epa-eab                                    402  sibling
+GET  https://ticks.bnm.farm/epa-alj                                    402  sibling
+GET  https://ticks.bnm.farm/air-letters                                402  sibling
+
+loopback GET http://127.0.0.1:4020/stb-decisions                      402
+loopback GET http://127.0.0.1:4020/stb-decisions/manifest.json         200  cardCount=4  no sourceUrl
+
+banner: /stb-decisions $0.05 USDC
+banner: mcp /mcp — 59 tools from /.well-known/x402
+collect: STB_DECISIONS_LIMIT=4 STB_DECISIONS_MAX_FETCH=8  listedCount=5646 addedThisRun=4 fetchedPdfs=6 skippedNoText=2
+ids: 53167 (EP-558-29 Railroad Cost of Capital—2025)  53180 (FD-36447)  53068 (AB-346-0-X)  53126 (FD-36844)
+seeds: Scout 52932 / 52877 older than current first page — not a frozen list
+lander: tv-remote / bnm.farm — no STB Board Decisions card on this tip; not blocking apply
