@@ -47,6 +47,8 @@ systemctl --user restart idaho-ticks-x402.service
 
 Restart **only** that unit. docker / other units untouched. No new collect cron.
 
+Applied on apollo (2026-09-14): **serving SHA `3e1fee6`** (apply-record [PR 230](https://github.com/bnmbnmai/mcp-proxy/pull/230); FF of [PR 229](https://github.com/bnmbnmai/mcp-proxy/pull/229) `cursor/stb-decisions-door-8026` @ `3e1fee6` onto `cursor/apply-vet402-settle-failed-3f56` @ `695171a` / prior serving `6d81fe7`). Restarted **only** `idaho-ticks-x402.service` at **2026-09-14 17:03:36 MDT** (PID 3494014; was 2067443). Added `STB_DECISIONS_DIR` to the user unit. One-door collect EXIT 0: listedCount **5646**, `addedThisRun` 4, `fetchedPdfs` 6, skipped 2, asOf **2026-09-10**, fetchedAt **2026-09-14T23:02:20.913Z**. First-slice Entire Board Decisions: `53167` EP-558-29 (Railroad Cost of Capital—2025), `53180` FD-36447, `53068` AB-346-0-X, `53126` FD-36844. Scout seeds 52932 / 52877 are older than the current first page — not a frozen list. Free manifest is docket / Decision ID / date / deciding body + `paidUrl` only; **no** `sourceUrl`, no Board narrative. Unpaid `GET https://ticks.bnm.farm/stb-decisions` is **402** at $0.05; `?id=53167` is **402** at $0.02. `/.well-known/x402` lists `/stb-decisions` among **59** doors (was 58). Banner `mcp /mcp — 59 tools`. Siblings `/ticks` `/faa-civil-penalty` `/epa-eab` `/epa-alj` `/air-letters` still 402. No new collect cron (existing 07:45 / 19:45 America/Boise `ticks-collect.sh` walks live well-known). Lander card lives in tv-remote / bnm.farm and was not on this tip — apply is not blocked on a second repo.
+
 After apply:
 
 - unpaid `GET https://ticks.bnm.farm/stb-decisions` is HTTP 402 at $0.05

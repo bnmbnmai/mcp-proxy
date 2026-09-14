@@ -1,0 +1,172 @@
+{
+  "job": "apply PR 229 GET /stb-decisions onto live ticks.bnm.farm",
+  "ranOn": "apollo",
+  "hostname": "pop-os",
+  "path": "/stb-decisions",
+  "priceUsdc": "0.05",
+  "amountAtomic": "50000",
+  "oneAmountAtomic": "20000",
+  "network": "base",
+  "branch": "cursor/apply-stb-decisions-c96e",
+  "servingSha": "3e1fee68566bc3db59f0ca3321900c90475a0460",
+  "sourcePr": "https://github.com/bnmbnmai/mcp-proxy/pull/229",
+  "sourceBranch": "cursor/stb-decisions-door-8026",
+  "sourceHead": "3e1fee68566bc3db59f0ca3321900c90475a0460",
+  "stackedOn": "cursor/apply-vet402-settle-failed-3f56",
+  "stackedOnSha": "695171a82ac37813f8ad235f61d586600c69d732",
+  "liveServingBefore": "695171a82ac37813f8ad235f61d586600c69d732",
+  "thisApply": "https://github.com/bnmbnmai/mcp-proxy/pull/230",
+  "systemctlUserRestart": {
+    "unit": "idaho-ticks-x402.service",
+    "ok": true,
+    "otherUnitsRestarted": false,
+    "activeEnterTimestamp": "Mon 2026-09-14 17:03:36 MDT",
+    "pidBefore": "2067443",
+    "pidAfter": "3494014",
+    "dockerGwUntouched": "idaho-ticks-x402-docker-gw.service left running (PID 2779110, ActiveEnterTimestamp Mon 2026-09-14 03:00:22 MDT)",
+    "caddyStartedAt": "2026-09-08T17:07:32.766138574Z",
+    "tunnelStartedAt": "2026-09-08T17:07:32.771343842Z",
+    "stbDecisionsDirAddedToUnit": true
+  },
+  "banner": {
+    "stbDecisions": "/stb-decisions $0.05 USDC",
+    "mcp": "mcp /mcp — 59 tools from /.well-known/x402"
+  },
+  "before": {
+    "stbDecisionsUnpaid": 404,
+    "wellKnown": {
+      "status": 200,
+      "resourceCount": 58,
+      "extraResourceCount": 58,
+      "hasStbDecisions": false
+    },
+    "siblings": {
+      "/faa-civil-penalty": 402,
+      "/epa-eab": 402,
+      "/ticks": 402
+    }
+  },
+  "collect": {
+    "status": "ok",
+    "dir": "$HOME/projects/mcp-proxy/data/stb-decisions",
+    "fetchedAt": "2026-09-14T23:02:20.913Z",
+    "asOf": "2026-09-10",
+    "cardCount": 4,
+    "listedCount": 5646,
+    "fetchedPdfs": 6,
+    "skippedNoText": 2,
+    "reused": 0,
+    "addedThisRun": 4,
+    "ids": [
+      "53167",
+      "53180",
+      "53068",
+      "53126"
+    ]
+  },
+  "live": {
+    "wellKnown": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "resourceCount": 59,
+      "extraResourceCount": 59,
+      "hasStbDecisions": true,
+      "stbDecisionsUrl": "https://ticks.bnm.farm/stb-decisions"
+    },
+    "unpaidGet": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "50000",
+      "extraName": "USD Coin",
+      "resource": "https://ticks.bnm.farm/stb-decisions"
+    },
+    "unpaidId": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "id": "53167",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "20000",
+      "extraName": "USD Coin",
+      "resource": "https://ticks.bnm.farm/stb-decisions?id=53167"
+    },
+    "emptySince": {
+      "status": 304,
+      "since": "2026-09-14T23:10:00.000Z",
+      "via": "1.1 Caddy"
+    },
+    "manifest": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "cardCount": 4,
+      "asOf": "2026-09-10",
+      "fetchedAt": "2026-09-14T23:02:20.913Z",
+      "product": "stb-board-decision-bodies",
+      "ids": [
+        "53167",
+        "53180",
+        "53068",
+        "53126"
+      ],
+      "first": {
+        "id": "53167",
+        "institution": "RAILROAD COST OF CAPITAL—2025",
+        "decisionId": "53167",
+        "docket": "EP-558-29",
+        "kind": "Board Decision",
+        "decisionType": "Decision",
+        "decidingBody": "Entire Board",
+        "date": "2026-09-10",
+        "title": "RAILROAD COST OF CAPITAL—2025",
+        "paidUrl": "/stb-decisions?id=53167"
+      },
+      "hasSourceUrl": false,
+      "bodyLeak": false,
+      "cardKeys": [
+        "before",
+        "date",
+        "decidingBody",
+        "decisionId",
+        "decisionNo",
+        "decisionType",
+        "docket",
+        "id",
+        "institution",
+        "kind",
+        "page",
+        "paidUrl",
+        "publishedAt",
+        "summary",
+        "title"
+      ]
+    },
+    "siblingsStill402": {
+      "/ticks": 402,
+      "/faa-civil-penalty": 402,
+      "/epa-eab": 402,
+      "/epa-alj": 402,
+      "/air-letters": 402
+    },
+    "shop": {
+      "hasStbDecisions": true,
+      "productCount": 59,
+      "product": "stb-board-decision-bodies",
+      "amountAtomic": "50000"
+    },
+    "loopback": {
+      "unpaidGet": 402,
+      "manifest": 200,
+      "manifestCardCount": 4,
+      "manifestHasSourceUrl": false
+    }
+  },
+  "excluded": {
+    "catalogMain": "not checked out",
+    "newCollectCron": "not started; existing 07:45/19:45 America/Boise ticks-collect.sh walks live well-known",
+    "dockerGw": "untouched",
+    "otherUnits": "not restarted",
+    "lander": "tv-remote / bnm.farm; no STB Board Decisions card on this tip; not blocking apply",
+    "shopLink": "not spent",
+    "redbubble": "not touched"
+  }
+}
