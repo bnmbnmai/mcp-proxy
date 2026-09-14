@@ -251,6 +251,11 @@ import {
   FAA_CIVIL_PENALTY_PATH,
 } from "./faa-civil-penalty.js";
 import {
+  STB_DECISIONS_AMOUNT_ATOMIC,
+  STB_DECISIONS_MANIFEST_PATH,
+  STB_DECISIONS_PATH,
+} from "./stb-decisions.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -710,6 +715,7 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.some((r) => r.includes("/epa-alj")), "well-known lists /epa-alj");
     assert.ok(wk.resources.some((r) => r.includes("/epa-eab")), "well-known lists /epa-eab");
     assert.ok(wk.resources.some((r) => r.includes("/faa-civil-penalty")), "well-known lists /faa-civil-penalty");
+    assert.ok(wk.resources.some((r) => r.includes("/stb-decisions")), "well-known lists /stb-decisions");
     assert.equal(cdpEnvStatus(), "CDP env not set");
 
     const specRes = await fetch(`${base}${OPENAPI_PATH}`);
@@ -919,6 +925,7 @@ async function main(): Promise<void> {
     assert.ok(spec.paths["/epa-alj"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/epa-eab"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/faa-civil-penalty"]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths["/stb-decisions"]?.get?.["x-payment-info"]);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
       PUBLIC_BAZAAR_SKUS.length,
@@ -984,6 +991,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /epa-alj"));
     assert.ok(llmsBody.includes("GET /epa-eab"));
     assert.ok(llmsBody.includes("GET /faa-civil-penalty"));
+    assert.ok(llmsBody.includes("GET /stb-decisions"));
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.includes("GET /gmp-md"));
@@ -1117,6 +1125,7 @@ async function main(): Promise<void> {
       EPA_ALJ_PATH,
       EPA_EAB_PATH,
       FAA_CIVIL_PENALTY_PATH,
+      STB_DECISIONS_PATH,
     ]);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.priceUsdc, "0.05");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
@@ -7850,6 +7859,144 @@ async function main(): Promise<void> {
     },
   );
 
+  const stbDecisionsDir = mkdtempSync(join(tmpdir(), "stb-decisions-"));
+  const stbDecisionsId = "52932";
+  const stbDecisionsBody = [
+    "52932                          SERVICE DATE – JULY 21, 2026",
+    "SURFACE TRANSPORTATION BOARD",
+    "DECISION",
+    "Docket No. FD 32760 (Sub-No. 46)",
+    "BNSF RAILWAY COMPANY—TERMINAL TRACKAGE RIGHTS—KANSAS CITY SOUTHERN",
+    "Decision No. 16",
+    "It is ordered:",
+    "The Board establishes compensation terms for BNSF use of the Rosebluff Lead.",
+    "$9.90 per carload is the compensation rate.",
+    ...Array.from({ length: 40 }, (_, i) => `Official STB Board Decision paragraph ${i + 1}.`),
+  ].join("\n");
+  writeFileSync(
+    join(stbDecisionsDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "stb-board-decision-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-09-14T00:00:00.000Z",
+      asOf: "2026-07-21",
+      license: "17 USC 105",
+      attribution:
+        "Surface Transportation Board. Work of the United States Government; 17 U.S.C. § 105.",
+      sources: {
+        listing: "https://www.stb.gov/proceedings-actions/decisions/",
+        ajax: "https://www.stb.gov/wp-admin/admin-ajax.php",
+        pdfHost: "https://dcms-external.s3.amazonaws.com/DCMS_External_PROD/",
+      },
+      cards: [
+        {
+          id: stbDecisionsId,
+          decisionId: stbDecisionsId,
+          decisionNo: "16",
+          docket: "FD-32760-46",
+          kind: "Board Decision",
+          decisionType: "Decision",
+          decidingBody: "Entire Board",
+          institution:
+            "BNSF Railway Company—Terminal Trackage Rights—Kansas City Southern Railway Company and Union Pacific Railroad Company",
+          date: "2026-07-21",
+          title:
+            "BNSF Railway Company—Terminal Trackage Rights—Kansas City Southern Railway Company and Union Pacific Railroad Company",
+          summary: "Decision No. 16. Compensation terms for BNSF terminal trackage rights.",
+          sourceUrl: "https://dcms-external.s3.amazonaws.com/DCMS_External_PROD/1784658941212/52932.pdf",
+          body: stbDecisionsBody,
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      STB_DECISIONS_DIR: stbDecisionsDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-stb-decisions-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${STB_DECISIONS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /stb-decisions must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; mimeType?: string; extra?: { pdf?: boolean; priceAtomic?: number } }[];
+      };
+      assert.equal(body402.resource, STB_DECISIONS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, STB_DECISIONS_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.mimeType, "application/json");
+      assert.equal(body402.accepts[0]?.extra?.pdf, undefined);
+      assert.equal(body402.accepts[0]?.extra?.priceAtomic, Number(SINGLE_DOC_AMOUNT_ATOMIC));
+      const unpaidId = await fetch(`${base}${STB_DECISIONS_PATH}?id=${encodeURIComponent(stbDecisionsId)}`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /stb-decisions?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("%PDF-"));
+      assert.ok(!leak402.includes("Rosebluff Lead"));
+      assert.ok(!leak402.includes("$9.90 per"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === STB_DECISIONS_PATH), true);
+      assert.equal(shop.products.length, PUBLIC_BAZAAR_SKUS.length);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(STB_DECISIONS_PATH)), "well-known lists /stb-decisions");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /stb-decisions"));
+      assert.ok(llms.includes("Board Decision"));
+      assert.ok(!/GET \/stb-decisions[\s\S]{0,80}Open Data/.test(llms));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[STB_DECISIONS_PATH]);
+      assert.ok(spec.paths[STB_DECISIONS_MANIFEST_PATH]);
+
+      const unpaidSince = await fetch(`${base}${STB_DECISIONS_PATH}?since=2026-09-08`);
+      assert.equal(unpaidSince.status, 304, "empty ?since= delta is 304 unpaid");
+
+      const manifest = await fetch(`${base}${STB_DECISIONS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "stb-decisions free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        asOf?: string;
+        cards?: { institution?: string; id?: string; body?: string; sourceUrl?: string; paidUrl?: string }[];
+      };
+      assert.equal(man.cardCount, 1);
+      assert.match(man.cards?.[0]?.institution ?? "", /BNSF/i);
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+      assert.ok(!("sourceUrl" in (man.cards?.[0] ?? {})), "free cards must not leak sourceUrl");
+      assert.ok(!("htmlUrl" in (man.cards?.[0] ?? {})));
+      assert.ok(!("pdfUrl" in (man.cards?.[0] ?? {})));
+      assert.ok(man.cards?.[0]?.paidUrl);
+      assert.ok(!JSON.stringify(man.cards).includes("dcms-external.s3.amazonaws.com"), "free cards have no DCMS PDF deep link");
+      assert.ok(!JSON.stringify(man).includes("%PDF-"));
+      assert.ok(!JSON.stringify(man).includes("Rosebluff Lead"));
+      assert.ok(!JSON.stringify(man).includes("$9.90 per"));
+
+      const paid = await fetch(`${base}${STB_DECISIONS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      assert.match(paid.headers.get("content-type") ?? "", /application\/json/);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { institution: string; date: string; id: string; body: string; sourceUrl?: string }[];
+        records?: { id: string; firm: string; type: string }[];
+      };
+      assert.equal(paidBody.product, "stb-board-decision-bodies");
+      assert.match(paidBody.cards[0]?.institution ?? "", /BNSF/i);
+      assert.equal(paidBody.cards[0]?.id, stbDecisionsId);
+      assert.ok(paidBody.cards[0]?.body.includes("Rosebluff Lead"));
+      assert.ok(paidBody.cards[0]?.body.includes("$9.90 per"));
+      assert.match(paidBody.cards[0]?.sourceUrl ?? "", /dcms-external\.s3\.amazonaws\.com/);
+      assert.equal(paidBody.records?.[0]?.type, "stb-decisions");
+      assert.match(paidBody.records?.[0]?.firm ?? "", /BNSF/i);
+    },
+  );
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -8563,7 +8710,7 @@ async function main(): Promise<void> {
     },
     async (base) => {
       assert.equal(cdpEnvStatus(), "CDP env not set");
-      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, MARINERS_D1_PATH, MARINERS_D5_PATH, MARINERS_D9_PATH, MARINERS_D14_PATH, MARINERS_D17_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, BSEE_REPORTS_PATH, OSHRC_ORDERS_PATH, EPA_ALJ_PATH, EPA_EAB_PATH, FAA_CIVIL_PENALTY_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
+      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, MARINERS_D1_PATH, MARINERS_D5_PATH, MARINERS_D9_PATH, MARINERS_D14_PATH, MARINERS_D17_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, BSEE_REPORTS_PATH, OSHRC_ORDERS_PATH, EPA_ALJ_PATH, EPA_EAB_PATH, FAA_CIVIL_PENALTY_PATH, STB_DECISIONS_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
         const unpaid = await fetch(`${base}${path}`);
         assert.equal(unpaid.status, 402, `unpaid ${path} must stay 402`);
         const present = await fetch(`${base}${path}`, { headers: { "X-PAYMENT": "test" } });
@@ -8609,6 +8756,7 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.includes(CSB_REPORTS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(HHS_OIG_REPORTS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(EIS_REPORTS_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(STB_DECISIONS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D11_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D7_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D8_PATH)));
@@ -8626,7 +8774,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -8671,6 +8819,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("epa-alj"), true);
   assert.equal(isPublicBazaarSku("epa-eab"), true);
   assert.equal(isPublicBazaarSku("faa-civil-penalty"), true);
+  assert.equal(isPublicBazaarSku("stb-decisions"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");

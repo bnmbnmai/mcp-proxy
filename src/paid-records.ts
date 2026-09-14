@@ -70,6 +70,7 @@ export const EXTRACTED_BODY_SKUS = [
   "epa-alj",
   "epa-eab",
   "faa-civil-penalty",
+  "stb-decisions",
 ] as const;
 
 export type ExtractedBodySku = (typeof EXTRACTED_BODY_SKUS)[number];
@@ -161,6 +162,7 @@ export const OSHRC_ORDERS_TYPE = "oshrc-orders";
 export const EPA_ALJ_TYPE = "epa-alj";
 export const EPA_EAB_TYPE = "epa-eab";
 export const FAA_CIVIL_PENALTY_TYPE = "faa-civil-penalty";
+export const STB_DECISIONS_TYPE = "stb-decisions";
 export const CFPB_ORDER_TYPE = "cfpb-order";
 export const OFAC_ORDER_TYPE = "ofac-order";
 export const FRB_ORDER_TYPE = "frb-order";
@@ -224,6 +226,7 @@ export const OSHRC_ORDERS_SOURCE = "https://www.oshrc.gov/decision-search/";
 export const EPA_ALJ_SOURCE = "https://yosemite.epa.gov/oarm/alj/alj_web_docket.nsf/Decisions+and+Orders?OpenView";
 export const EPA_EAB_SOURCE = "https://yosemite.epa.gov/oa/EAB_Web_Docket.nsf/Unpublished~Final~Orders?OpenView";
 export const FAA_CIVIL_PENALTY_SOURCE = "https://drs.faa.gov/browse/CIVIL_PENALTY_APPEALS/doctypeDetails";
+export const STB_DECISIONS_SOURCE = "https://www.stb.gov/proceedings-actions/decisions/";
 export const CFPB_ORDER_SOURCE = "https://www.consumerfinance.gov/enforcement/actions/";
 export const OFAC_ORDER_SOURCE = "https://ofac.treasury.gov/civil-penalties-and-enforcement-information";
 export const FRB_ORDER_SOURCE = "https://www.federalreserve.gov/supervisionreg/enforcementactions.htm";
@@ -983,6 +986,13 @@ export function paidFaaCivilPenaltyBody<T extends CardPayload>(
   opts?: PaidBodyOpts,
 ): T & PaidBodyWindowEnvelope {
   return paidCardBody(payload, FAA_CIVIL_PENALTY_TYPE, FAA_CIVIL_PENALTY_SOURCE, opts);
+}
+
+export function paidStbDecisionsBody<T extends CardPayload>(
+  payload: T,
+  opts?: PaidBodyOpts,
+): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, STB_DECISIONS_TYPE, STB_DECISIONS_SOURCE, opts);
 }
 
 export function paidIcoMpnBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
