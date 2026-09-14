@@ -166,7 +166,8 @@ async function main(): Promise<void> {
   assert.ok(Number(manifest.cardCount) >= 2);
   const freeCards = manifest.cards as { body?: string; sourceUrl?: string; id?: string }[];
   assert.ok(freeCards.every((c) => !c.body), "collector manifest cards omit body");
-  assert.ok(filterStbDecisionsManifest(manifest, "rosebluff").cardCount);
+  assert.ok(filterStbDecisionsManifest(manifest, "bnsf").cardCount);
+  assert.ok(filterStbDecisionsManifest(manifest, "52932").cardCount);
   assert.ok(parseStbDecisionText(readFx("52932.txt"), SEED_LISTINGS[0]).body.includes(BODY_NEEDLE_SEED));
 }
 

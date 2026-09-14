@@ -3427,7 +3427,7 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
         title:
           "BNSF Railway Company—Terminal Trackage Rights—Kansas City Southern Railway Company and Union Pacific Railroad Company",
         sourceUrl: "https://dcms-external.s3.amazonaws.com/DCMS_External_PROD/1784658941212/52932.pdf",
-        body: "SURFACE TRANSPORTATION BOARD. Docket No. FD 32760 (Sub-No. 46). Decision No. 16. Official STB Board Decision extracted from the DCMS PDF. Compensation terms for BNSF use of the Rosebluff Lead.",
+        body: "SURFACE TRANSPORTATION BOARD. Docket No. FD 32760 (Sub-No. 46). Decision No. 16. Official STB Board Decision extracted from the DCMS PDF.",
       },
     ],
   },

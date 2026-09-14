@@ -598,7 +598,7 @@ export async function walkOfficialStbDecisions(opts?: {
   const nonce = await fetchTableNonce();
   const listed: StbDecisionListing[] = [];
   let listedCount = 0;
-  const pages = opts?.pages ?? Number(env("STB_DECISIONS_PAGES", "2")) || 2;
+  const pages = opts?.pages ?? (Number(env("STB_DECISIONS_PAGES", "2")) || 2);
   for (let page = 1; page <= pages; page += 1) {
     const { rows, total } = await fetchDecisionTablePage({ nonce, page });
     listedCount = Math.max(listedCount, total, listed.length);
