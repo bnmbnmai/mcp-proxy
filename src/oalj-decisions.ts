@@ -357,11 +357,14 @@ export function isRealOaljDecisionBody(text: string): boolean {
   const compact = text.replace(/\s+/g, " ").trim();
   if (compact.length < 800) return false;
   const dol =
-    /U\.S\.\s*Department of Labor|Office of Administrative Law Judges|Board of Alien Labor Certification Appeals|Administrative Review Board/i.test(
+    /U\.S\.?\s*Department of Labor|UNITED STATES DEPARTMENT OF LABOR|Office of Administrative Law Judges|Board of Alien Labor Certification Appeals|Administrative Review Board/i.test(
       text,
     );
   const decision = /DECISION AND ORDER|\bDECISION\b|\bORDER\b/i.test(text);
-  const slip = /It is hereby ORDERED|SO ORDERED|OALJ No\.|BALCA Case No\.|ARB Case No\./i.test(text);
+  const slip =
+    /It is hereby ORDERED|SO ORDERED|OALJ\s+NO|BALCA\s+(Case\s+)?No|ARB\s+(Case\s+)?No|ORDERED that/i.test(
+      text,
+    );
   return dol && decision && slip;
 }
 
@@ -380,8 +383,9 @@ export function parseCaselistHtml(html: string): OaljListing[] {
   let pendingParty = "";
   let pendingCase = "";
   for (const block of blocks) {
-    const text = stripTags(block);
-    const hrefs = [...block.matchAll(/href="([^"]+)"/gi)].map((m) => m[1]);
+    const inner = block.replace(/^[^>]*>/, "");
+    const text = stripTags(inner);
+    const hrefs = [...inner.matchAll(/href="([^"]+)"/gi)].map((m) => m[1]);
     const caseHit = text.match(
       /\b((?:19|20)\d{2}[- ][A-Z]{2,6}[- ]?\d{1,5}|(?:19|20)\d{2}[- ]\d{3,5})\b/i,
     );
@@ -389,7 +393,8 @@ export function parseCaselistHtml(html: string): OaljListing[] {
       pendingCase = normalizeCaseNo(caseHit[1]);
       pendingParty = text
         .replace(caseHit[0], "")
-        .replace(/^[,:\s]+/, "")
+        .replace(/\b(?:OALJ|ARB|BALCA|ALJ|ETA)\s*No\.?\s*[A-Z0-9-]*\s*,?/gi, "")
+        .replace(/^[,:.\s>-]+/, "")
         .replace(/\s+/g, " ")
         .trim();
       continue;
@@ -400,7 +405,14 @@ export function parseCaselistHtml(html: string): OaljListing[] {
       const fromUrl = caseNoFromUrl(sourceUrl);
       const caseNo = fromUrl || pendingCase || normalizeCaseNo(text.match(CASE_NO_RE)?.[1] ?? "");
       if (!caseNo) continue;
-      const title = text.replace(/\s+/g, " ").replace(/\bPDF\b/gi, "").trim() || pendingParty || caseNo;
+      const title =
+        text
+          .replace(/\s+/g, " ")
+          .replace(/\bPDF\b/gi, "")
+          .replace(/^[,:.\s>-]+/, "")
+          .trim() ||
+        pendingParty ||
+        caseNo;
       const listing: OaljListing = {
         id: catalogId(caseNo),
         caseNo,
