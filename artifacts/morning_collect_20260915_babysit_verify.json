@@ -71,7 +71,25 @@
     "/gmp-md",
     "/gmp"
   ],
-  "failures": [],
+  "failures": [
+    {
+      "id": "ticks-public-502-gw",
+      "when": "2026-09-15T10:00:18-0600",
+      "symptom": "public ticks.bnm.farm HTTP 502 on all manifests (~16:04Z Chief box)",
+      "cause": "idaho-ticks-x402-docker-gw.service EMFILE Too many open files (soft 1024); systemd restart 15 at 10:00:22",
+      "ticksDoor": "stayed up PID 3804817 since 2026-09-14T22:58:04-0600 — not restarted",
+      "action": "applied idle-timeout close + LimitNOFILE=16384; restarted docker-gw ONLY at 10:17:27; public 200",
+      "prior": "same EMFILE 2026-09-14T03:00:19-0600 restart 14"
+    }
+  ],
+  "public502": {
+    "ticksRestarted": false,
+    "dockerGwRestarted": true,
+    "recovered": true,
+    "loopbackWellKnown": 200,
+    "publicWellKnown": 200,
+    "publicSuperfund": {"http": 200, "n": 730, "fetchedAt": "2026-09-15T14:41:45.145Z"}
+  },
   "settles": {
     "newLive": "none",
     "newestInbound": {
@@ -84,14 +102,15 @@
   },
   "shopStats": {
     "before": {"searches": 590, "hits": 105257, "paid": 5, "dollars": 0.16},
-    "after": {"searches": 605, "hits": 108032, "paid": 5, "dollars": 0.16},
+    "after": {"searches": 605, "hits": 108052, "paid": 5, "dollars": 0.16},
     "stripUpdated": true
   },
   "boardUpdates": [
-    "x402-shop doing note: morning collect done",
+    "x402-shop doing note: morning collect + public 502/gw fix",
     "x402-reputation doing note: no new settle",
+    "ticks-public-502-gw done: EMFILE docker-gw scored and applied live",
     "shopStats strip refreshed via refresh_shop_stats.py LAN API"
   ],
   "ping_bruce": "no",
-  "ping_bruce_reason": "collect finished clean; no new stranger settle; no ticks restart needed"
+  "ping_bruce_reason": "shop restored; ticks-door never died; gw leak-fix applied on apollo — no Bruce restart needed"
 }
