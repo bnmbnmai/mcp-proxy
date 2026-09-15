@@ -1,0 +1,141 @@
+{
+  "job": "apply PR 231 Superfund stream-write fix onto live ticks.bnm.farm",
+  "ranOn": "apollo",
+  "hostname": "pop-os",
+  "path": "/superfund-rods",
+  "priceUsdc": "0.05",
+  "amountAtomic": "50000",
+  "network": "base",
+  "branch": "cursor/apply-superfund-stream-write-5f88",
+  "servingSha": "ff18566e65329350740756693a93dd6117d83b69",
+  "servingShaShort": "ff18566",
+  "sourcePr": "https://github.com/bnmbnmai/mcp-proxy/pull/231",
+  "sourceBranch": "cursor/superfund-stream-write-da2d",
+  "sourceHead": "c950ab3f647f1f2cb19f51f1bf3ae571ec76713b",
+  "sourceHeadShort": "c950ab3",
+  "stackedOn": "cursor/apply-stb-decisions-c96e",
+  "stackedOnSha": "6b2699a9b4c5b3c9f1813506e7339f44d632d03f",
+  "liveServingBefore": "3e1fee68566bc3db59f0ca3321900c90475a0460",
+  "thisApply": "https://github.com/bnmbnmai/mcp-proxy/pull/232",
+  "systemctlUserRestart": {
+    "unit": "idaho-ticks-x402.service",
+    "ok": true,
+    "otherUnitsRestarted": false,
+    "activeEnterTimestamp": "Mon 2026-09-14 22:58:04 MDT",
+    "activeEnterUtc": "2026-09-15T04:58:04Z",
+    "pidBefore": "3494014",
+    "pidAfter": "3804817",
+    "dockerGwUntouched": "idaho-ticks-x402-docker-gw.service left running (PID 2779110, ActiveEnterTimestamp Mon 2026-09-14 03:00:22 MDT)",
+    "caddyStartedAt": "2026-09-08T17:07:32.766138574Z",
+    "tunnelStartedAt": "2026-09-08T17:07:32.771343842Z"
+  },
+  "banner": {
+    "superfund": "/superfund-rods $0.05 USDC",
+    "stbDecisions": "/stb-decisions $0.05 USDC",
+    "mcp": "mcp /mcp — 59 tools from /.well-known/x402",
+    "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004"
+  },
+  "unitTests": {
+    "superfundRods": "superfund-rods parser tests ok",
+    "build": "npm run build exit 0"
+  },
+  "before": {
+    "fetchedAt": "2026-09-14T15:38:04.610Z",
+    "asOf": "2026-09-11",
+    "cardCount": 701,
+    "snapshotBytes": 528922507,
+    "catalogBytes": 178270,
+    "manifest": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004"
+    },
+    "unpaidGet": {
+      "status": 402,
+      "maxAmountRequired": "50000",
+      "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+      "extraName": "USD Coin"
+    },
+    "wellKnown": {
+      "status": 200,
+      "resourceCount": 59,
+      "hasStbDecisions": true,
+      "hasSuperfundRods": true
+    }
+  },
+  "collect": {
+    "status": "ok",
+    "command": "npm run collect:superfund-rods",
+    "dir": "$HOME/projects/mcp-proxy/data/superfund-rods",
+    "exit": 0,
+    "startedUtc": "2026-09-15T04:58:16Z",
+    "finishedUtc": "2026-09-15T05:01:06Z",
+    "fetchedAt": "2026-09-15T05:00:49.255Z",
+    "asOf": "2026-09-11",
+    "cardCount": 706,
+    "listedCount": 10766,
+    "fetchedPdfs": 0,
+    "skippedNoText": 52,
+    "reused": 337,
+    "addedThisRun": 5,
+    "snapshotBytes": 529955026,
+    "catalogBytes": 179554,
+    "rangeError": false
+  },
+  "live": {
+    "wellKnown": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "resourceCount": 59,
+      "extraResourceCount": 59,
+      "hasStbDecisions": true,
+      "hasSuperfundRods": true,
+      "stbDecisionsUrl": "https://ticks.bnm.farm/stb-decisions",
+      "superfundRodsUrl": "https://ticks.bnm.farm/superfund-rods"
+    },
+    "unpaidGet": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "50000",
+      "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+      "extraName": "USD Coin",
+      "resource": "https://ticks.bnm.farm/superfund-rods"
+    },
+    "manifest": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "cardCount": 706,
+      "asOf": "2026-09-11",
+      "fetchedAt": "2026-09-15T05:00:49.255Z",
+      "product": "epa-superfund-rod-bodies",
+      "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+      "priceUsdc": "0.05",
+      "hasBody": false,
+      "bodyLeak": false
+    },
+    "siblingsStill402": {
+      "/stb-decisions": 402,
+      "/ticks": 402
+    },
+    "loopback": {
+      "unpaidGet": 402,
+      "manifest": 200,
+      "manifestCardCount": 706,
+      "manifestFetchedAt": "2026-09-15T05:00:49.255Z",
+      "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+      "wellKnownResourceCount": 59,
+      "hasStbDecisions": true
+    }
+  },
+  "excluded": {
+    "catalogMain": "not checked out",
+    "newCollectCron": "not started; existing 07:45/19:45 America/Boise ticks-collect.sh walks live well-known",
+    "dockerGw": "untouched",
+    "caddy": "untouched",
+    "tunnel": "untouched",
+    "otherUnits": "not restarted",
+    "shopUsdc": "not spent",
+    "keys": "not printed"
+  }
+}
