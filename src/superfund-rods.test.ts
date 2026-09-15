@@ -20,7 +20,11 @@ import {
   catalogPath,
   collectSuperfundRods,
   loadSuperfundRodsManifest,
+  readSuperfundRodsSnapshot,
   stripJsonStringField,
+  writePrettyJsonBag,
+  writeSuperfundRodsSnapshot,
+  type SuperfundRodSnapshot,
   isFyrChromeTitle,
   isFyrReportTitle,
   isInstitutionOrderRow,
@@ -285,6 +289,7 @@ async function main(): Promise<void> {
   assert.ok(!("body" in ((manifest.cards as object[])[0] ?? {})));
   assert.ok(manBlob.includes("05-711427"));
   assert.equal(manifest.priceUsdc, "0.05");
+  assert.equal(manifest.payTo, "0xf59621FC406D266e18f314Ae18eF0a33b8401004");
   assert.equal(manifest.license, "17 USC 105");
   assert.equal(manifest.attribution, "U.S. EPA");
 
@@ -418,6 +423,85 @@ async function main(): Promise<void> {
   } finally {
     if (fatPrev === undefined) delete process.env.SUPERFUND_RODS_DIR;
     else process.env.SUPERFUND_RODS_DIR = fatPrev;
+  }
+
+  const streamDir = mkdtempSync(join(tmpdir(), "superfund-rods-stream-"));
+  const streamPrev = process.env.SUPERFUND_RODS_DIR;
+  process.env.SUPERFUND_RODS_DIR = streamDir;
+  try {
+    const bodyNeedle = "RECORD OF DECISION\nCERCLA Superfund\nDECLARATION\n";
+    const streamSnap: SuperfundRodSnapshot = {
+      ok: true,
+      product: "epa-superfund-rod-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-09-15T04:48:00.000Z",
+      asOf: "2026-09-11",
+      license: LICENSE,
+      attribution: ATTRIBUTION,
+      listedCount: 3,
+      fetchedPdfs: 0,
+      skippedNoText: 0,
+      reused: 3,
+      addedThisRun: 0,
+      sources: { listing: LISTING_URL, fyrListing: FYR_LISTING_URL, pdfHost: "https://semspub.epa.gov/" },
+      cards: Array.from({ length: 3 }, (_, i) => ({
+        id: `05-${800000 + i}`,
+        docket: `05-${800000 + i}`,
+        pdfId: `05-${800000 + i}.pdf`,
+        institution: `Stream Superfund Site ${i}`,
+        date: "2026-09-11",
+        title: "Record of Decision",
+        sourceUrl: `https://semspub.epa.gov/work/05/${800000 + i}.pdf`,
+        body: `${bodyNeedle}chunk-body-${i}-${"x".repeat(2000)}`,
+      })),
+    };
+    const origStringify = JSON.stringify;
+    JSON.stringify = ((value: unknown, replacer?: unknown, space?: unknown) => {
+      if (
+        value &&
+        typeof value === "object" &&
+        (value as { cards?: unknown }).cards === streamSnap.cards &&
+        Array.isArray((value as { cards?: unknown[] }).cards) &&
+        ((value as { cards: unknown[] }).cards.length === streamSnap.cards.length)
+      ) {
+        throw new RangeError("Invalid string length");
+      }
+      return origStringify(value as never, replacer as never, space as never);
+    }) as typeof JSON.stringify;
+    try {
+      writeSuperfundRodsSnapshot(streamSnap);
+    } finally {
+      JSON.stringify = origStringify;
+    }
+    const raw = readFs(join(streamDir, "snapshot.json"), "utf-8");
+    const parsed = JSON.parse(raw) as typeof streamSnap;
+    assert.equal(parsed.fetchedAt, "2026-09-15T04:48:00.000Z");
+    assert.equal(parsed.asOf, "2026-09-11");
+    assert.equal(parsed.cards.length, 3);
+    assert.equal(parsed.cards[2]?.body.includes("chunk-body-2"), true);
+    const roundTrip = readSuperfundRodsSnapshot();
+    assert.equal(roundTrip?.cards.length, 3);
+    assert.equal(roundTrip?.fetchedAt, streamSnap.fetchedAt);
+    const catalog = JSON.parse(readFs(catalogPath(), "utf-8")) as {
+      fetchedAt?: string;
+      asOf?: string;
+      cardCount?: number;
+      cards?: { id?: string; body?: string }[];
+    };
+    assert.equal(catalog.fetchedAt, "2026-09-15T04:48:00.000Z", "slim catalog must move fetchedAt when the fat bag writes");
+    assert.equal(catalog.asOf, "2026-09-11");
+    assert.equal(catalog.cardCount, 3);
+    assert.equal(catalog.cards?.[0]?.id, "05-800000");
+    assert.ok(!JSON.stringify(catalog).includes("chunk-body-"), "catalog stays slim");
+    assert.equal(buildSuperfundRodsManifest(streamSnap).payTo, "0xf59621FC406D266e18f314Ae18eF0a33b8401004");
+
+    const helperPath = join(streamDir, "helper.json");
+    writePrettyJsonBag(helperPath, { product: "epa-superfund-rod-bodies", cards: [] });
+    assert.equal(JSON.parse(readFs(helperPath, "utf-8")).cards.length, 0);
+  } finally {
+    if (streamPrev === undefined) delete process.env.SUPERFUND_RODS_DIR;
+    else process.env.SUPERFUND_RODS_DIR = streamPrev;
   }
 
   console.log("superfund-rods parser tests ok");
