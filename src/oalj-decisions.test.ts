@@ -116,6 +116,8 @@ async function main(): Promise<void> {
   const johnson = listed.find((r) => r.id === JOHNSON_ID);
   assert.equal(johnson?.board, "balca");
   assert.equal(johnson?.program, "TLC");
+  assert.match(johnson?.institution ?? "", /Philip Johnson/i);
+  assert.ok(!/^[>,]/.test(johnson?.institution ?? ""), "caselist party is not leftover markup");
   assert.ok(johnson?.sourceUrl.includes("oalj.dol.gov/DECISIONS/ALJ/TLC/"));
   const sheffield = listed.find((r) => r.id === SHEFFIELD_ID);
   assert.equal(sheffield?.board, "arb");
