@@ -1,0 +1,31 @@
+# apply PR 231 Superfund stream-write fix onto live ticks.bnm.farm
+# apply-record https://github.com/bnmbnmai/mcp-proxy/pull/232
+# serving SHA ff18566 (cherry-pick c950ab3 onto cursor/apply-stb-decisions-c96e @ 6b2699a / prior serving 3e1fee6)
+# idaho-ticks-x402.service restart Mon 2026-09-14 22:58:04 MDT PID 3804817 (was 3494014)
+# Restarted only that unit (systemctl --user). docker-gw / bnm-caddy / bnm-tunnel untouched.
+
+BEFORE (serving 3e1fee6; bag n=701)
+GET  https://ticks.bnm.farm/superfund-rods/manifest.json                200  via: 1.1 Caddy  cardCount=701  asOf=2026-09-11  fetchedAt=2026-09-14T15:38:04.610Z  payTo=0xf59621FC406D266e18f314Ae18eF0a33b8401004
+GET  https://ticks.bnm.farm/superfund-rods                              402  maxAmountRequired=50000  extra.name=USD Coin  payTo=0xf59621FC406D266e18f314Ae18eF0a33b8401004
+GET  https://ticks.bnm.farm/.well-known/x402                          200  resources=59  has /stb-decisions  has /superfund-rods
+snapshot bytes=528922507  catalog bytes=178270
+
+AFTER (serving ff18566 + collect:superfund-rods EXIT 0 + restart)
+GET  https://ticks.bnm.farm/superfund-rods/manifest.json                200  via: 1.1 Caddy  cardCount=706  asOf=2026-09-11  fetchedAt=2026-09-15T05:00:49.255Z  payTo=0xf59621FC406D266e18f314Ae18eF0a33b8401004  NO body
+GET  https://ticks.bnm.farm/superfund-rods                              402  via: 1.1 Caddy  maxAmountRequired=50000  extra.name=USD Coin  payTo=0xf59621FC406D266e18f314Ae18eF0a33b8401004
+GET  https://ticks.bnm.farm/.well-known/x402                          200  via: 1.1 Caddy  resources=59  extra.resourceCount=59  has /stb-decisions  has /superfund-rods
+GET  https://ticks.bnm.farm/stb-decisions                              402  sibling
+GET  https://ticks.bnm.farm/ticks                                      402  sibling
+
+loopback GET http://127.0.0.1:4020/superfund-rods                      402  payTo unchanged  50000
+loopback GET http://127.0.0.1:4020/superfund-rods/manifest.json         200  cardCount=706  fetchedAt=2026-09-15T05:00:49.255Z
+loopback GET http://127.0.0.1:4020/.well-known/x402                    200  resources=59  has /stb-decisions
+
+banner: /superfund-rods $0.05 USDC
+banner: /stb-decisions $0.05 USDC
+banner: mcp /mcp — 59 tools from /.well-known/x402
+collect: npm run collect:superfund-rods  listedCount=10766 addedThisRun=5 fetchedPdfs=0 skippedNoText=52 reused=337
+fetchedAt moved 2026-09-14T15:38:04.610Z -> 2026-09-15T05:00:49.255Z
+bag n 701 -> 706
+snapshot bytes 528922507 -> 529955026  (no RangeError: Invalid string length)
+payTo unchanged 0xf59621FC406D266e18f314Ae18eF0a33b8401004

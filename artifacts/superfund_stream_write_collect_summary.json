@@ -1,0 +1,17 @@
+{
+  "status": "ok",
+  "fetchedAt": "2026-09-15T05:00:49.255Z",
+  "asOf": "2026-09-11",
+  "cardCount": 706,
+  "listedCount": 10766,
+  "fetchedPdfs": 0,
+  "skippedNoText": 52,
+  "reused": 337,
+  "addedThisRun": 5,
+  "snapshot": "/home/apollo/projects/mcp-proxy/data/superfund-rods/snapshot.json",
+  "snapshotBytes": 529955026,
+  "rangeError": false,
+  "startedUtc": "2026-09-15T04:58:16Z",
+  "finishedUtc": "2026-09-15T05:01:06Z",
+  "exit": 0
+}
