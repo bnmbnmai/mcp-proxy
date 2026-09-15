@@ -6,7 +6,7 @@
  * Not De Novo /denovo-orders. Not FIFRA /fifra-orders. Not CFTC /cftc-orders.
  */
 
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { closeSync, existsSync, mkdirSync, openSync, readFileSync, renameSync, unlinkSync, writeFileSync, writeSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
@@ -774,31 +774,78 @@ export function catalogCardsFromSnapshot(snap: SuperfundRodSnapshot | null): Sup
     }));
 }
 
+function indentPrettyJson(value: unknown, extraSpaces: number): string {
+  const pad = " ".repeat(extraSpaces);
+  return JSON.stringify(value, null, 2)
+    .split("\n")
+    .map((line) => `${pad}${line}`)
+    .join("\n");
+}
+
+/**
+ * Pretty-print a bag/manifest object without one-shot JSON.stringify of the whole
+ * document. Array fields in `chunkKeys` (default `cards`) are written one element
+ * at a time so a ~500MB Superfund snapshot cannot throw RangeError: Invalid string length.
+ */
+export function writePrettyJsonBag(
+  path: string,
+  value: Record<string, unknown>,
+  chunkKeys: ReadonlySet<string> = new Set(["cards"]),
+): void {
+  mkdirSync(dirname(path), { recursive: true });
+  const tmp = `${path}.${process.pid}.tmp`;
+  const fd = openSync(tmp, "w");
+  try {
+    const entries = Object.entries(value).filter(([, v]) => v !== undefined);
+    writeSync(fd, "{\n");
+    for (let i = 0; i < entries.length; i++) {
+      const [key, val] = entries[i]!;
+      const last = i === entries.length - 1;
+      const comma = last ? "\n" : ",\n";
+      if (chunkKeys.has(key) && Array.isArray(val)) {
+        if (val.length === 0) {
+          writeSync(fd, `  ${JSON.stringify(key)}: []${comma}`);
+          continue;
+        }
+        writeSync(fd, `  ${JSON.stringify(key)}: [\n`);
+        for (let j = 0; j < val.length; j++) {
+          writeSync(fd, indentPrettyJson(val[j], 4));
+          writeSync(fd, j < val.length - 1 ? ",\n" : "\n");
+        }
+        writeSync(fd, last ? "  ]\n" : "  ],\n");
+        continue;
+      }
+      writeSync(fd, `  ${JSON.stringify(key)}: ${JSON.stringify(val, null, 2)}${comma}`);
+    }
+    writeSync(fd, "}\n");
+  } catch (err) {
+    closeSync(fd);
+    try {
+      unlinkSync(tmp);
+    } catch {
+      /* tmp may already be gone */
+    }
+    throw err;
+  }
+  closeSync(fd);
+  renameSync(tmp, path);
+}
+
 export function writeSuperfundRodsCatalog(snap: SuperfundRodSnapshot): void {
   const path = catalogPath();
-  mkdirSync(dirname(path), { recursive: true });
   const cards = catalogCardsFromSnapshot(snap);
-  writeFileSync(
-    path,
-    JSON.stringify(
-      {
-        product: PRODUCT_ID,
-        fetchedAt: snap.fetchedAt,
-        asOf: snap.asOf,
-        cardCount: cards.length,
-        cards,
-        sources: snap.sources ?? bagSources(),
-      },
-      null,
-      2,
-    ) + "\n",
-  );
+  writePrettyJsonBag(path, {
+    product: PRODUCT_ID,
+    fetchedAt: snap.fetchedAt,
+    asOf: snap.asOf,
+    cardCount: cards.length,
+    cards,
+    sources: snap.sources ?? bagSources(),
+  });
 }
 
 export function writeSuperfundRodsSnapshot(snap: SuperfundRodSnapshot): void {
-  const path = snapshotPath();
-  mkdirSync(dirname(path), { recursive: true });
-  writeFileSync(path, JSON.stringify(snap, null, 2) + "\n");
+  writePrettyJsonBag(snapshotPath(), { ...snap });
   writeSuperfundRodsCatalog(snap);
 }
 
