@@ -1,0 +1,477 @@
+{
+  "capturedAt": "2026-09-15T14:31:52.061968+00:00",
+  "bags": [
+    {
+      "sku": "ticks",
+      "n": 4951,
+      "fetchedAt": "2026-09-15T14:00:44.057Z",
+      "asOf": null,
+      "mtime": "2026-09-15T14:00:45.238394+00:00",
+      "path": "/home/apollo/logs/ticks-hay-plan.json"
+    },
+    {
+      "sku": "import-alerts",
+      "n": 18939,
+      "fetchedAt": "2026-09-15T14:00:59.063Z",
+      "asOf": "2026-09-14",
+      "mtime": "2026-09-15T14:00:59.150479+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/import-alerts/snapshot.json"
+    },
+    {
+      "sku": "mariners",
+      "n": 185,
+      "fetchedAt": "2026-09-15T14:01:02.574Z",
+      "asOf": "2026-09-09",
+      "mtime": "2026-09-15T14:01:02.574598+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/mariners/snapshot.json"
+    },
+    {
+      "sku": "mariners-d11",
+      "n": 237,
+      "fetchedAt": "2026-09-15T14:01:08.635Z",
+      "asOf": "2026-09-09",
+      "mtime": "2026-09-15T14:01:08.636808+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/mariners-d11/snapshot.json"
+    },
+    {
+      "sku": "mariners-d7",
+      "n": 1914,
+      "fetchedAt": "2026-09-15T14:01:23.980Z",
+      "asOf": "2026-09-09",
+      "mtime": "2026-09-15T14:01:23.986339+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/mariners-d7/snapshot.json"
+    },
+    {
+      "sku": "mariners-d8",
+      "n": 1181,
+      "fetchedAt": "2026-09-15T14:01:41.510Z",
+      "asOf": "2026-09-11",
+      "mtime": "2026-09-15T14:01:41.514946+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/mariners-d8/snapshot.json"
+    },
+    {
+      "sku": "mariners-d1",
+      "n": 653,
+      "fetchedAt": "2026-09-15T14:01:53.078Z",
+      "asOf": "2026-09-09",
+      "mtime": "2026-09-15T14:01:53.083347+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/mariners-d1/snapshot.json"
+    },
+    {
+      "sku": "mariners-d5",
+      "n": 956,
+      "fetchedAt": "2026-09-15T14:02:37.421Z",
+      "asOf": "2026-09-09",
+      "mtime": "2026-09-15T14:02:37.426883+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/mariners-d5/snapshot.json"
+    },
+    {
+      "sku": "mariners-d9",
+      "n": 334,
+      "fetchedAt": "2026-09-15T14:02:39.421Z",
+      "asOf": "2026-09-09",
+      "mtime": "2026-09-15T14:02:39.421952+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/mariners-d9/snapshot.json"
+    },
+    {
+      "sku": "mariners-d14",
+      "n": 123,
+      "fetchedAt": "2026-09-15T14:02:41.054Z",
+      "asOf": "2026-09-09",
+      "mtime": "2026-09-15T14:02:41.054008+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/mariners-d14/snapshot.json"
+    },
+    {
+      "sku": "mariners-d17",
+      "n": 228,
+      "fetchedAt": "2026-09-15T14:02:47.845Z",
+      "asOf": "2026-09-09",
+      "mtime": "2026-09-15T14:02:47.846243+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/mariners-d17/snapshot.json"
+    },
+    {
+      "sku": "warning-letters",
+      "n": 1895,
+      "fetchedAt": "2026-09-15T14:08:50.510Z",
+      "asOf": "2026-09-04",
+      "mtime": "2026-09-15T14:08:50.724810+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/warning-letters/snapshot.json"
+    },
+    {
+      "sku": "untitled-letters",
+      "n": 121,
+      "fetchedAt": "2026-09-15T14:08:53.524Z",
+      "asOf": "2026-08-21",
+      "mtime": "2026-09-15T14:08:53.574909+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/untitled-letters/snapshot.json"
+    },
+    {
+      "sku": "awa",
+      "n": 278,
+      "fetchedAt": "2026-09-15T14:09:21.644Z",
+      "asOf": "2026-08-18",
+      "mtime": "2026-09-15T14:09:21.670882+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/awa/snapshot.json"
+    },
+    {
+      "sku": "swisspar",
+      "n": 215,
+      "fetchedAt": "2026-09-15T14:10:12.638Z",
+      "asOf": "2026-09-02",
+      "mtime": "2026-09-15T14:10:12.932657+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/swisspar/snapshot.json"
+    },
+    {
+      "sku": "pcac",
+      "n": 14,
+      "fetchedAt": "2026-09-15T14:10:35.832Z",
+      "asOf": "2026-05-15",
+      "mtime": "2026-09-15T14:10:35.934454+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/pcac/snapshot.json"
+    },
+    {
+      "sku": "ftc-wl",
+      "n": 132,
+      "fetchedAt": "2026-09-15T14:18:36.256Z",
+      "asOf": "2026-07-06",
+      "mtime": "2026-09-15T14:18:36.325091+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/ftc-wl/snapshot.json"
+    },
+    {
+      "sku": "cfpb-orders",
+      "n": 137,
+      "fetchedAt": "2026-09-15T14:19:26.898Z",
+      "asOf": "2025-01-30",
+      "mtime": "2026-09-15T14:19:27.071849+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/cfpb-orders/snapshot.json"
+    },
+    {
+      "sku": "occ-cd",
+      "n": 510,
+      "fetchedAt": "2026-09-15T14:20:04.612Z",
+      "asOf": "2026-06-16",
+      "mtime": "2026-09-15T14:20:05.161169+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/occ-cd/snapshot.json"
+    },
+    {
+      "sku": "fdic-orders",
+      "n": 26,
+      "fetchedAt": "2026-09-15T14:20:07.728Z",
+      "asOf": "2026-05-13",
+      "mtime": "2026-09-15T14:20:07.752258+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/fdic-orders/snapshot.json"
+    },
+    {
+      "sku": "frb-orders",
+      "n": 414,
+      "fetchedAt": "2026-09-15T14:22:35.990Z",
+      "asOf": "2026-08-14",
+      "mtime": "2026-09-15T14:22:36.191401+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/frb-orders/snapshot.json"
+    },
+    {
+      "sku": "ncua-orders",
+      "n": 12,
+      "fetchedAt": "2026-09-15T14:25:24.281Z",
+      "asOf": "2022-11-29",
+      "mtime": "2026-09-15T14:25:24.284225+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/ncua-orders/snapshot.json"
+    },
+    {
+      "sku": "fincen-orders",
+      "n": 51,
+      "fetchedAt": "2026-09-15T14:25:42.570Z",
+      "asOf": "2026-08-03",
+      "mtime": "2026-09-15T14:25:42.624861+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/fincen-orders/snapshot.json"
+    },
+    {
+      "sku": "ferc-orders",
+      "n": 22,
+      "fetchedAt": "2026-09-15T14:26:33.327Z",
+      "asOf": "2026-08-03",
+      "mtime": "2026-09-15T14:26:33.349618+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/ferc-orders/snapshot.json"
+    },
+    {
+      "sku": "ofac-orders",
+      "n": 25,
+      "fetchedAt": "2026-09-15T14:27:03.838Z",
+      "asOf": "2026-08-12",
+      "mtime": "2026-09-15T14:27:03.849675+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/ofac-orders/snapshot.json"
+    },
+    {
+      "sku": "bis-orders",
+      "n": 162,
+      "fetchedAt": "2026-09-15T14:28:33.092Z",
+      "asOf": "2026-08-24",
+      "mtime": "2026-09-15T14:28:33.357776+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/bis-orders/snapshot.json"
+    },
+    {
+      "sku": "cftc-orders",
+      "n": 19,
+      "fetchedAt": "2026-09-15T14:28:45.260Z",
+      "asOf": "2026-07-31",
+      "mtime": "2026-09-15T14:28:45.281189+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/cftc-orders/snapshot.json"
+    },
+    {
+      "sku": "fifra-orders",
+      "n": 37,
+      "fetchedAt": "2026-09-15T14:31:02.328Z",
+      "asOf": "2026-09-11",
+      "mtime": "2026-09-15T14:31:02.366939+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/fifra-orders/snapshot.json"
+    },
+    {
+      "sku": "denovo-orders",
+      "n": 25,
+      "fetchedAt": "2026-09-15T14:31:04.928Z",
+      "asOf": "2026-08-21",
+      "mtime": "2026-09-15T14:31:04.944028+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/denovo-orders/snapshot.json"
+    },
+    {
+      "sku": "ttb-oic",
+      "n": 27,
+      "fetchedAt": "2026-09-15T14:31:40.567Z",
+      "asOf": "2026-07-10",
+      "mtime": "2026-09-15T14:31:40.572263+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/ttb-oic/snapshot.json"
+    },
+    {
+      "sku": "air-letters",
+      "n": 79,
+      "fetchedAt": "2026-09-15T02:12:09.350Z",
+      "asOf": "2026-09-03",
+      "mtime": "2026-09-15T02:12:09.358830+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/air-letters/snapshot.json"
+    },
+    {
+      "sku": "superfund-rods",
+      "n": 706,
+      "fetchedAt": "2026-09-15T05:00:49.255Z",
+      "asOf": "2026-09-11",
+      "mtime": "2026-09-15T05:01:06.009242+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/superfund-rods/snapshot.json"
+    },
+    {
+      "sku": "ico-mpn",
+      "n": 21,
+      "fetchedAt": "2026-09-15T03:15:00.986Z",
+      "asOf": "2026-08-06",
+      "mtime": "2026-09-15T03:15:01.037615+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/ico-mpn/snapshot.json"
+    },
+    {
+      "sku": "cma-ca98",
+      "n": 36,
+      "fetchedAt": "2026-09-15T03:16:23.880Z",
+      "asOf": "2025-07-16",
+      "mtime": "2026-09-15T03:16:24.516556+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/cma-ca98/snapshot.json"
+    },
+    {
+      "sku": "ema-referrals",
+      "n": 318,
+      "fetchedAt": "2026-09-15T03:19:29.395Z",
+      "asOf": "2026-08-13",
+      "mtime": "2026-09-15T03:19:29.836085+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/ema-referrals/snapshot.json"
+    },
+    {
+      "sku": "cder-reviews",
+      "n": 16,
+      "fetchedAt": "2026-09-15T03:19:30.624Z",
+      "asOf": "2025-03-25",
+      "mtime": "2026-09-15T03:19:30.997126+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/cder-reviews/snapshot.json"
+    },
+    {
+      "sku": "npdes-permits",
+      "n": 16,
+      "fetchedAt": "2026-09-15T03:19:31.638Z",
+      "asOf": "2026-07-20",
+      "mtime": "2026-09-15T03:19:31.887157+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/npdes-permits/snapshot.json"
+    },
+    {
+      "sku": "ofsted-inspections",
+      "n": 16,
+      "fetchedAt": "2026-09-15T03:19:32.104Z",
+      "asOf": "2026-08-18",
+      "mtime": "2026-09-15T03:19:32.112165+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/ofsted-inspections/snapshot.json"
+    },
+    {
+      "sku": "ofwat-enforcement",
+      "n": 15,
+      "fetchedAt": "2026-09-15T03:19:35.374Z",
+      "asOf": "2026-03-01",
+      "mtime": "2026-09-15T03:19:35.656290+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/ofwat-enforcement/snapshot.json"
+    },
+    {
+      "sku": "ofgem-enforcement",
+      "n": 6,
+      "fetchedAt": "2026-09-15T03:19:35.961Z",
+      "asOf": "2026-06-03",
+      "mtime": "2026-09-15T03:19:35.968301+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/ofgem-enforcement/snapshot.json"
+    },
+    {
+      "sku": "gain",
+      "n": 8,
+      "fetchedAt": "2026-09-15T03:19:36.105Z",
+      "asOf": "2026-08-24",
+      "mtime": "2026-09-15T03:19:36.124307+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/gain/snapshot.json"
+    },
+    {
+      "sku": "orr-enforcement",
+      "n": 6,
+      "fetchedAt": "2026-09-15T03:19:36.263Z",
+      "asOf": "2026-03-03",
+      "mtime": "2026-09-15T03:19:36.280312+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/orr-enforcement/snapshot.json"
+    },
+    {
+      "sku": "phmsa-orders",
+      "n": 526,
+      "fetchedAt": "2026-09-15T03:43:59.189Z",
+      "asOf": "2026-08-28",
+      "mtime": "2026-09-15T03:43:59.461807+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/phmsa-orders/snapshot.json"
+    },
+    {
+      "sku": "aaib-reports",
+      "n": 21,
+      "fetchedAt": "2026-09-15T03:44:09.420Z",
+      "asOf": "2026-09-10",
+      "mtime": "2026-09-15T03:44:09.438158+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/aaib-reports/snapshot.json"
+    },
+    {
+      "sku": "csb-reports",
+      "n": 10,
+      "fetchedAt": "2026-09-15T03:44:12.585Z",
+      "asOf": "2026-07-21",
+      "mtime": "2026-09-15T03:44:12.585269+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/csb-reports/snapshot.json"
+    },
+    {
+      "sku": "hhs-oig-reports",
+      "n": 196,
+      "fetchedAt": "2026-09-15T03:44:27.914Z",
+      "asOf": "2026-09-14",
+      "mtime": "2026-09-15T03:44:27.915808+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/hhs-oig-reports/snapshot.json"
+    },
+    {
+      "sku": "eis-reports",
+      "n": 71,
+      "fetchedAt": "2026-09-15T04:26:33.560Z",
+      "asOf": "2026-09-11",
+      "mtime": "2026-09-15T04:26:33.979568+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/eis-reports/snapshot.json"
+    },
+    {
+      "sku": "fsis-humane",
+      "n": 89,
+      "fetchedAt": "2026-09-15T04:26:36.035Z",
+      "asOf": "2026-09-09",
+      "mtime": "2026-09-15T04:26:36.040640+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/fsis-humane/snapshot.json"
+    },
+    {
+      "sku": "epa-cafo",
+      "n": 26,
+      "fetchedAt": "2026-09-15T04:27:12.621Z",
+      "asOf": "2026-09-11",
+      "mtime": "2026-09-15T04:27:12.625923+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/epa-cafo/snapshot.json"
+    },
+    {
+      "sku": "fmshrc-orders",
+      "n": 20,
+      "fetchedAt": "2026-09-15T04:27:14.421Z",
+      "asOf": "2026-08-20",
+      "mtime": "2026-09-15T04:27:14.430987+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/fmshrc-orders/snapshot.json"
+    },
+    {
+      "sku": "bsee-reports",
+      "n": 132,
+      "fetchedAt": "2026-09-15T04:27:15.357Z",
+      "asOf": "2026-07-01",
+      "mtime": "2026-09-15T04:27:15.373020+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/bsee-reports/snapshot.json"
+    },
+    {
+      "sku": "oshrc-orders",
+      "n": 18,
+      "fetchedAt": "2026-09-15T04:27:16.465Z",
+      "asOf": "2026-09-04",
+      "mtime": "2026-09-15T04:27:16.472058+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/oshrc-orders/snapshot.json"
+    },
+    {
+      "sku": "epa-alj",
+      "n": 45,
+      "fetchedAt": "2026-09-15T04:27:42.014Z",
+      "asOf": "2026-09-04",
+      "mtime": "2026-09-15T04:27:42.020954+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/epa-alj/snapshot.json"
+    },
+    {
+      "sku": "epa-eab",
+      "n": 13,
+      "fetchedAt": "2026-09-15T04:27:42.817Z",
+      "asOf": "2026-07-15",
+      "mtime": "2026-09-15T04:27:42.816982+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/epa-eab/snapshot.json"
+    },
+    {
+      "sku": "faa-civil-penalty",
+      "n": 24,
+      "fetchedAt": "2026-09-15T04:27:44.300Z",
+      "asOf": "2026-07-02",
+      "mtime": "2026-09-15T04:27:44.306035+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/faa-civil-penalty/snapshot.json"
+    },
+    {
+      "sku": "stb-decisions",
+      "n": 8,
+      "fetchedAt": "2026-09-15T04:27:51.996Z",
+      "asOf": "2026-09-10",
+      "mtime": "2026-09-15T04:27:51.997304+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/stb-decisions/snapshot.json"
+    },
+    {
+      "sku": "form-483",
+      "n": 1064,
+      "fetchedAt": "2026-09-15T04:28:38.111Z",
+      "asOf": "2026-09-10",
+      "mtime": "2026-09-15T04:28:38.621940+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/form-483/snapshot.json"
+    },
+    {
+      "sku": "gmp",
+      "n": 4099,
+      "fetchedAt": "2026-09-15T04:29:00.406Z",
+      "asOf": "2026-08-11",
+      "mtime": "2026-09-15T04:29:00.589710+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/gmp/snapshot.json"
+    },
+    {
+      "sku": "gmp-md",
+      "n": 683,
+      "fetchedAt": "2026-09-15T04:29:14.845Z",
+      "asOf": "2026-08-11",
+      "mtime": "2026-09-15T04:29:14.883212+00:00",
+      "path": "/home/apollo/projects/mcp-proxy/data/gmp-md/snapshot.json"
+    }
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "when": "2026-09-15T16:08:00Z",
+  "host": "apollo / media-box 192.168.1.243",
+  "tz": "America/Boise",
+  "babysit": {
+    "priorAgent": "bc-4621f123",
+    "thisAgent": "bc-d747dd59-82b9-40e4-ae87-af0dabaa69a6",
+    "parallelCollectStarted": false,
+    "cronPid": 53009,
+    "flock": "held then released after collect done"
+  },
+  "cron": {
+    "morning": "45 7 * * * TZ=America/Boise /home/apollo/projects/mcp-proxy/scripts/ticks-collect.sh",
+    "evening": "45 19 * * * TZ=America/Boise /home/apollo/projects/mcp-proxy/scripts/ticks-collect.sh",
+    "bothPresent": true
+  },
+  "scriptLiveWellKnown": true,
+  "wellKnown": {
+    "loopback": 59,
+    "public": 59,
+    "officialPlusHay": "58 + hay = 59"
+  },
+  "collect": {
+    "started": "2026-09-15T07:45:01-0600",
+    "officialDoorsLine": "2026-09-15T08:00:46-0600 official doors 58 from well-known (hay /ticks separate)",
+    "done": "2026-09-15T09:58:01-0600",
+    "duration": "2h13m",
+    "exit": 0,
+    "walked": 59,
+    "missing": [],
+    "collectFailed": []
+  },
+  "hay": {
+    "publicPath": "/manifest.json",
+    "tickCountBeforePlan": 5218,
+    "tickCountAfter": 4951,
+    "eveningTickCount": 5211,
+    "fetchedAt": "2026-09-15T14:00:44.057Z",
+    "status": "refreshed",
+    "ticksManifestPath": "404 (hay lives at /manifest.json)"
+  },
+  "bagsGrown": [
+    {"sku": "warning-letters", "before": 1845, "after": 1895, "status": "asof-moved"},
+    {"sku": "awa", "before": 254, "after": 278, "status": "asof-moved"},
+    {"sku": "fifra-orders", "before": 36, "after": 37, "status": "asof-moved"},
+    {"sku": "superfund-rods", "before": 706, "after": 730, "status": "asof-moved"},
+    {"sku": "hhs-oig-reports", "before": 196, "after": 199, "status": "asof-moved"},
+    {"sku": "eis-reports", "before": 71, "after": 72, "status": "asof-moved"},
+    {"sku": "epa-cafo", "before": 26, "after": 27, "status": "asof-moved"},
+    {"sku": "stb-decisions", "before": 8, "after": 12, "status": "grew"},
+    {"sku": "form-483", "before": 1064, "after": 1089, "status": "asof-moved"},
+    {"sku": "gmp-md", "before": 683, "after": 698, "status": "asof-moved"}
+  ],
+  "hayNDropped": {"sku": "ticks", "before": 5218, "after": 4951, "status": "refreshed"},
+  "superfundRods": {
+    "publicHttp": 200,
+    "n": 730,
+    "fetchedAt": "2026-09-15T14:41:45.145Z",
+    "asOf": "2026-09-11",
+    "unpaidHttp": 402,
+    "rangeError": false,
+    "overnightN": 706,
+    "overnightFetchedAt": "2026-09-15T05:00:49.255Z"
+  },
+  "spotCheckUnpaid402": [
+    "/ticks",
+    "/superfund-rods",
+    "/form-483",
+    "/eis-reports",
+    "/stb-decisions",
+    "/gmp-md",
+    "/gmp"
+  ],
+  "failures": [],
+  "settles": {
+    "newLive": "none",
+    "newestInbound": {
+      "class": "STRANGER",
+      "when": "2026-09-06T19:00:25Z",
+      "amountUsd": 0.05,
+      "tx": "0x99d05575848e24859ca11bdf2c113ff6ea2e0b9056412dcd4107a687b6208435",
+      "to": "0xf59621FC406D266e18f314Ae18eF0a33b8401004"
+    }
+  },
+  "shopStats": {
+    "before": {"searches": 590, "hits": 105257, "paid": 5, "dollars": 0.16},
+    "after": {"searches": 605, "hits": 108032, "paid": 5, "dollars": 0.16},
+    "stripUpdated": true
+  },
+  "boardUpdates": [
+    "x402-shop doing note: morning collect done",
+    "x402-reputation doing note: no new settle",
+    "shopStats strip refreshed via refresh_shop_stats.py LAN API"
+  ],
+  "ping_bruce": "no",
+  "ping_bruce_reason": "collect finished clean; no new stranger settle; no ticks restart needed"
+}
