@@ -1,0 +1,138 @@
+{
+  "job": "apply merged PR 236 Superfund fail-closed onto live ticks.bnm.farm",
+  "ranOn": "apollo",
+  "hostname": "pop-os",
+  "lan": "192.168.1.243",
+  "path": "/superfund-rods",
+  "priceUsdc": "0.05",
+  "amountAtomic": "50000",
+  "network": "base",
+  "branch": "cursor/apply-superfund-snapshot-load-ae32",
+  "servingSha": "a18f4c0f4ba3048c02eae0fae9008623dcb70796",
+  "servingShaShort": "a18f4c0",
+  "sourcePr": "https://github.com/bnmbnmai/mcp-proxy/pull/236",
+  "sourceBranch": "cursor/superfund-snapshot-load-9465",
+  "sourceHead": "cf3829a107e34e26234a3f58b53d0f3118b5d35c",
+  "sourceHeadShort": "cf3829a",
+  "stackedOn": "cursor/apply-oalj-decisions-a04c",
+  "stackedOnSha": "a18f4c0f4ba3048c02eae0fae9008623dcb70796",
+  "liveServingBefore": "f4c98c8221176b4b341ecd29954d2969bb94248b",
+  "systemctlUserRestart": {
+    "unit": "idaho-ticks-x402.service",
+    "ok": true,
+    "otherUnitsRestarted": false,
+    "activeEnterTimestamp": "Tue 2026-09-15 22:12:58 MDT",
+    "activeEnterUtc": "2026-09-16T04:12:58Z",
+    "pidBefore": "514536",
+    "pidAfter": "821522",
+    "dockerGwUntouched": "idaho-ticks-x402-docker-gw.service left running (PID 195969, ActiveEnterTimestamp Tue 2026-09-15 10:17:27 MDT)",
+    "caddyStartedAt": "2026-09-08T17:07:32.766138574Z",
+    "tunnelStartedAt": "2026-09-08T17:07:32.771343842Z"
+  },
+  "banner": {
+    "superfund": "/superfund-rods $0.05 USDC",
+    "oaljDecisions": "/oalj-decisions $0.05 USDC",
+    "stbDecisions": "/stb-decisions $0.05 USDC",
+    "mcp": "mcp /mcp — 60 tools from /.well-known/x402",
+    "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004"
+  },
+  "unitTests": {
+    "superfundRods": "superfund-rods parser tests ok",
+    "build": "npm run build exit 0"
+  },
+  "liveCodeProof": {
+    "parseSnapshotPretty": [
+      "src/superfund-rods.ts:751",
+      "build/superfund-rods.js:683",
+      "/proc/821522/cwd/build/superfund-rods.js:683"
+    ],
+    "refuseOverwrite": [
+      "src/superfund-rods.ts:1115",
+      "build/superfund-rods.js:1024",
+      "/proc/821522/cwd/build/superfund-rods.js:1024"
+    ],
+    "ticksDoorImports": "build/ticks-door.js imports loadSuperfundRods from ./superfund-rods.js"
+  },
+  "rebuild": {
+    "status": "running",
+    "script": "/tmp/superfund-rebuild-20260915.sh",
+    "pid": 808540,
+    "wrapperPid": 808535,
+    "startedLocal": "2026-09-15T21:59:18-0600",
+    "limit": 2500,
+    "maxFetch": 80,
+    "killed": false,
+    "progress": "healthy; earlier pdftotext of cached PDFs; later EPA HTTPS 161.80.73.166:443; no second all-door collect",
+    "pdfsOnDisk": 801,
+    "snapshotBytes": 8921700,
+    "catalogBytes": 6567,
+    "bagStillThin": true
+  },
+  "live": {
+    "wellKnown": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "resourceCount": 60,
+      "hasOaljDecisions": true,
+      "hasStbDecisions": true,
+      "hasSuperfundRods": true,
+      "superfundRodsUrl": "https://ticks.bnm.farm/superfund-rods"
+    },
+    "unpaidGet": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "50000",
+      "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+      "extraName": "USD Coin",
+      "resource": "https://ticks.bnm.farm/superfund-rods"
+    },
+    "manifest": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "cardCount": 24,
+      "asOf": "2026-09-11",
+      "fetchedAt": "2026-09-16T02:28:53.720Z",
+      "product": "epa-superfund-rod-bodies",
+      "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+      "priceUsdc": "0.05",
+      "hasBody": false,
+      "bodyLeak": false
+    },
+    "siblingsStill402": {
+      "/oalj-decisions": 402,
+      "/stb-decisions": 402,
+      "/oshrc-orders": 402,
+      "/ticks": 402
+    },
+    "loopback": {
+      "unpaidGet": 402,
+      "manifest": 200,
+      "manifestCardCount": 24,
+      "manifestFetchedAt": "2026-09-16T02:28:53.720Z",
+      "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+      "wellKnownResourceCount": 60,
+      "hasOaljDecisions": true,
+      "hasSuperfundRods": true
+    }
+  },
+  "board": {
+    "card": "superfund-snapshot-load",
+    "column": "doing",
+    "via": "LAN POST /todo/api/card"
+  },
+  "ping_bruce": "no",
+  "ping_bruce_reason": "fail-closed code applied; bag still 24; rebuild already in flight; no new settle; Bruce restart not needed",
+  "excluded": {
+    "catalogMain": "not checked out",
+    "newCollectCron": "not started; existing 07:45/19:45 America/Boise ticks-collect.sh walks live well-known",
+    "secondAllDoorCollect": "not started",
+    "farmPlan": "untouched",
+    "dockerGw": "untouched",
+    "caddy": "untouched",
+    "tunnel": "untouched",
+    "otherUnits": "not restarted",
+    "shopUsdc": "not spent",
+    "keys": "not printed"
+  }
+}
