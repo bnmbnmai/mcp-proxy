@@ -19,6 +19,7 @@ import {
   buildSuperfundRodsManifest,
   catalogPath,
   collectSuperfundRods,
+  fetchCapBlocksNewDownload,
   loadSuperfundRodsManifest,
   parseSnapshotPretty,
   readSuperfundRodsSnapshot,
@@ -544,6 +545,11 @@ async function main(): Promise<void> {
     if (refusePrev === undefined) delete process.env.SUPERFUND_RODS_DIR;
     else process.env.SUPERFUND_RODS_DIR = refusePrev;
   }
+
+  assert.equal(fetchCapBlocksNewDownload(80, 80, false), true, "cap blocks a new HTTPS download");
+  assert.equal(fetchCapBlocksNewDownload(80, 80, true), false, "cap must not skip an on-disk PDF");
+  assert.equal(fetchCapBlocksNewDownload(79, 80, false), false, "under cap still downloads");
+  assert.equal(fetchCapBlocksNewDownload(8, 0, false), false, "fetchCap 0 means unlimited");
 
   console.log("superfund-rods parser tests ok");
 }
