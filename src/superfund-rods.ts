@@ -1041,6 +1041,11 @@ function maxFetchLimit(): number {
   return Number.isFinite(n) && n > 0 ? Math.floor(n) : 8;
 }
 
+/** Fetch cap only blocks new HTTPS downloads. Cached PDFs on disk still extract. */
+export function fetchCapBlocksNewDownload(fetchedPdfs: number, fetchCap: number, hasLocalPdf: boolean): boolean {
+  return fetchCap > 0 && fetchedPdfs >= fetchCap && !hasLocalPdf;
+}
+
 function readNamedFile(dir: string, names: string[]): string | null {
   if (!dir) return null;
   for (const name of names) {
@@ -1133,14 +1138,14 @@ export async function collectSuperfundRods(opts?: {
       reused += 1;
       continue;
     }
-    if (fetchCap > 0 && fetchedPdfs >= fetchCap) break;
+    const pdfFile = join(cacheDir, row.pdfId.endsWith(".pdf") ? row.pdfId : `${row.docket}.pdf`);
+    if (fetchCapBlocksNewDownload(fetchedPdfs, fetchCap, existsSync(pdfFile))) break;
     try {
       const localText = readNamedFile(dir, [`${row.docket}.txt`, `${row.id}.txt`, `${row.pdfId}.txt`, row.pdfId.replace(/\.pdf$/i, ".txt")]);
       if (dir && !localText) {
         skippedNoText += 1;
         continue;
       }
-      const pdfFile = join(cacheDir, row.pdfId.endsWith(".pdf") ? row.pdfId : `${row.docket}.pdf`);
       const text =
         localText ??
         (await (async () => {
