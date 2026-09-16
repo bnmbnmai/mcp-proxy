@@ -118,6 +118,8 @@
  * GET /stb-decisions/manifest.json — free count + docket/Decision ID/date/deciding body (no Board narrative)
  * GET /oalj-decisions — DOL OALJ / BALCA / ARB Decision and Order PDF text ($0.02 id / $0.05 page)
  * GET /oalj-decisions/manifest.json — free count + case/board/date/institution (no Decision/Order narrative)
+ * GET /fmc-orders — FMC Reading Room Initial Decision / Commission Order PDF text ($0.02 id / $0.05 page)
+ * GET /fmc-orders/manifest.json — free count + docket/document id/date/institution (no Decision/Order narrative)
  * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
  * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.05). Listed only when a real body is cached.
@@ -520,6 +522,13 @@ import {
   loadOaljDecisionsManifest,
 } from "./oalj-decisions.js";
 import {
+  FMC_ORDERS_AMOUNT_ATOMIC,
+  FMC_ORDERS_MANIFEST_PATH,
+  FMC_ORDERS_PATH,
+  loadFmcOrders,
+  loadFmcOrdersManifest,
+} from "./fmc-orders.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -554,6 +563,7 @@ import {
   paidFaaCivilPenaltyBody,
   paidStbDecisionsBody,
   paidOaljDecisionsBody,
+  paidFmcOrdersBody,
   paidFsisHumaneBody,
   paidDenovoOrdersBody,
   paidFdicOrdersBody,
@@ -1028,7 +1038,7 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "mariners-d1" | "mariners-d5" | "mariners-d9" | "mariners-d14" | "mariners-d17" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "ema-referrals" | "cder-reviews" | "npdes-permits" | "ofsted-inspections" | "ofwat-enforcement" | "ofgem-enforcement" | "gain" | "orr-enforcement" | "phmsa-orders" | "aaib-reports" | "csb-reports" | "hhs-oig-reports" | "eis-reports" | "fsis-humane" | "epa-cafo" | "fmshrc-orders" | "bsee-reports" | "oshrc-orders" | "epa-alj" | "epa-eab" | "faa-civil-penalty" | "stb-decisions" | "oalj-decisions" | "form-483" | "gmp" | "gmp-md";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "mariners-d1" | "mariners-d5" | "mariners-d9" | "mariners-d14" | "mariners-d17" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "ema-referrals" | "cder-reviews" | "npdes-permits" | "ofsted-inspections" | "ofwat-enforcement" | "ofgem-enforcement" | "gain" | "orr-enforcement" | "phmsa-orders" | "aaib-reports" | "csb-reports" | "hhs-oig-reports" | "eis-reports" | "fsis-humane" | "epa-cafo" | "fmshrc-orders" | "bsee-reports" | "oshrc-orders" | "epa-alj" | "epa-eab" | "faa-civil-penalty" | "stb-decisions" | "oalj-decisions" | "fmc-orders" | "form-483" | "gmp" | "gmp-md";
 /** Always-public SKUs. /form-483, /gmp, and /gmp-md join only when a real observation body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "ticks",
@@ -1088,6 +1098,7 @@ export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "faa-civil-penalty",
   "stb-decisions",
   "oalj-decisions",
+  "fmc-orders",
 ];
 
 export function form483IsPublic(): boolean {
@@ -1114,7 +1125,7 @@ export function isPublicBazaarSku(sku: DoorSku): boolean {
   return publicBazaarSkus().includes(sku);
 }
 
-const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six", "twenty-seven", "twenty-eight", "twenty-nine", "thirty", "thirty-one", "thirty-two", "thirty-three", "thirty-four", "thirty-five", "thirty-six", "thirty-seven", "thirty-eight", "thirty-nine", "forty", "forty-one", "forty-two", "forty-three", "forty-four", "forty-five", "forty-six", "forty-seven", "forty-eight", "forty-nine", "fifty", "fifty-one", "fifty-two", "fifty-three", "fifty-four", "fifty-five", "fifty-six", "fifty-seven"] as const;
+const COUNT_WORDS = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty", "twenty-one", "twenty-two", "twenty-three", "twenty-four", "twenty-five", "twenty-six", "twenty-seven", "twenty-eight", "twenty-nine", "thirty", "thirty-one", "thirty-two", "thirty-three", "thirty-four", "thirty-five", "thirty-six", "thirty-seven", "thirty-eight", "thirty-nine", "forty", "forty-one", "forty-two", "forty-three", "forty-four", "forty-five", "forty-six", "forty-seven", "forty-eight", "forty-nine", "fifty", "fifty-one", "fifty-two", "fifty-three", "fifty-four", "fifty-five", "fifty-six", "fifty-seven", "fifty-eight", "fifty-nine", "sixty", "sixty-one"] as const;
 const NEXT_SKU_WORDS = [
   "first",
   "second",
@@ -1174,6 +1185,10 @@ const NEXT_SKU_WORDS = [
   "fifty-sixth",
   "fifty-seventh",
   "fifty-eighth",
+  "fifty-ninth",
+  "sixtieth",
+  "sixty-first",
+  "sixty-second",
 ] as const;
 
 export function countWord(n: number): string {
@@ -1385,6 +1400,10 @@ function amountAtomicFor(sku: DoorSku): string {
   if (sku === "oalj-decisions") {
     const raw = env("OALJ_DECISIONS_USDC_ATOMIC");
     return raw.length > 0 ? raw : OALJ_DECISIONS_AMOUNT_ATOMIC;
+  }
+  if (sku === "fmc-orders") {
+    const raw = env("FMC_ORDERS_USDC_ATOMIC");
+    return raw.length > 0 ? raw : FMC_ORDERS_AMOUNT_ATOMIC;
   }
   if (sku === "form-483") {
     const raw = env("FORM_483_USDC_ATOMIC");
@@ -1833,6 +1852,12 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
       "Call GET /oalj-decisions when you need official DOL OALJ, BALCA, or ARB Decision and Order TEXT extracted from oalj.dol.gov/DECISIONS/ALJ PDFs and dol.gov/sites/dolgov/files/OALJ/PUBLIC/ARB/DECISIONS PDFs listed on dol.gov/agencies/oalj caselists. License 17 USC 105. Does not invent Decision text. Index is case number / board / date / institution only — full TEXT is in the official PDF. Harvest DOL-authored Decision/Order PDFs only. OFLC disclosure XLSX/CSV, FR HTML wraps, and caselist HTML-only are not this SKU. Not /oshrc-orders, not /fmshrc-orders, not /stb-decisions. " +
       PAID_WINDOW_COPY,
     resourcePath: OALJ_DECISIONS_PATH,
+  },
+  "fmc-orders": {
+    description:
+      "Call GET /fmc-orders when you need official Federal Maritime Commission Initial Decision or Commission Order TEXT extracted from www2.fmc.gov/readingroom PDFs (DocumentSearch / ProceedingSearch; /readingroom/documents/{id} 302s to /readingroom/docs/{docket}/{filename}/). License 17 USC 105. Does not invent Decision text. Index is docket / document id / date / institution only — full TEXT is in the official PDF. Harvest FMC-authored Initial Decision / Order on Initial Decision / Commission Order PDFs only. FR HTML wraps, wordpress wp-json CMS, party exceptions, and PHMSA Pipeline Enforcement Raw Data TSV are not this SKU. Not /phmsa-orders, not /stb-decisions, not /oalj-decisions. " +
+      PAID_WINDOW_COPY,
+    resourcePath: FMC_ORDERS_PATH,
   },
   "form-483": {
     description:
@@ -3486,6 +3511,38 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
       },
     ],
   },
+  "fmc-orders": {
+    ok: true,
+    product: "fmc-order-bodies",
+    status: "ok",
+    fetchedAt: "2026-09-16T00:00:00.000Z",
+    asOf: "2026-01-06",
+    source: "https://www2.fmc.gov/ReadingRoom/",
+    recordCount: 1,
+    records: [
+      {
+        id: "23-08-131865",
+        date: "2026-01-06",
+        firm: "Mediterranean Shipping Company, S.A.",
+        url: "https://www2.fmc.gov/readingroom/docs/23-08/(32)%2023-08%20Order%20on%20Initial%20Decision%20(public).pdf/",
+        type: "fmc-orders",
+      },
+    ],
+    cards: [
+      {
+        id: "23-08-131865",
+        docket: "23-08",
+        documentId: "131865",
+        kind: "Order on Initial Decision",
+        board: "commission",
+        institution: "Mediterranean Shipping Company, S.A.",
+        date: "2026-01-06",
+        title: "Served Order on Initial Decision",
+        sourceUrl: "https://www2.fmc.gov/readingroom/docs/23-08/(32)%2023-08%20Order%20on%20Initial%20Decision%20(public).pdf/",
+        body: "FEDERAL MARITIME COMMISSION. Docket No. 23-08. Official FMC Reading Room Initial Decision / Commission Order extracted from the www2.fmc.gov PDF.",
+      },
+    ],
+  },
   "form-483": {
     ok: true,
     product: "fda-form-483-bodies",
@@ -4787,6 +4844,7 @@ export function llmsTxt(): string {
     `- GET /faa-civil-penalty — $0.05 — FAA Civil Penalty Appeals Administrator Order text (official drs.faa.gov CIVIL_PENALTY_APPEALS PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /stb-decisions — $0.05 — STB Board Decision / Order text (official dcms-external.s3.amazonaws.com DCMS PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /oalj-decisions — $0.05 — DOL OALJ / BALCA / ARB Decision and Order text (official oalj.dol.gov and dol.gov/sites OALJ ARB PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /fmc-orders — $0.05 — FMC Reading Room Initial Decision / Commission Order text (official www2.fmc.gov/readingroom PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
   ];
   if (listed483) {
     paid.push(`- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`);
@@ -4861,6 +4919,7 @@ export function llmsTxt(): string {
     "- GET /faa-civil-penalty/manifest.json — FAA Civil Penalty Appeals Order count + order no/case/docket/dates/subjects (full catalog + page cursor; ?q= is free search; not the Order narrative)",
     "- GET /stb-decisions/manifest.json — STB Board Decision count + docket/Decision ID/date/deciding body (full catalog + page cursor; ?q= is free search; not the Board narrative)",
     "- GET /oalj-decisions/manifest.json — DOL OALJ / BALCA / ARB Decision count + case/board/date/institution (full catalog + page cursor; ?q= is free search; not the Decision/Order narrative)",
+    "- GET /fmc-orders/manifest.json — FMC Initial Decision / Commission Order count + docket/document id/date/institution (full catalog + page cursor; ?q= is free search; not the Decision/Order narrative)",
   ];
   if (listed483) {
     free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (full catalog + page cursor; ?q= is free search; not the observation body)");
@@ -5195,6 +5254,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const faaCivilPenaltyAtomic = amountAtomicFor("faa-civil-penalty");
   const stbDecisionsAtomic = amountAtomicFor("stb-decisions");
   const oaljDecisionsAtomic = amountAtomicFor("oalj-decisions");
+  const fmcOrdersAtomic = amountAtomicFor("fmc-orders");
   const f483Atomic = amountAtomicFor("form-483");
   const gmpAtomic = amountAtomicFor("gmp");
   const gmpMdAtomic = amountAtomicFor("gmp-md");
@@ -5255,6 +5315,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const faaCivilPenaltyPrice = (Number(faaCivilPenaltyAtomic) / 1e6).toFixed(2);
   const stbDecisionsPrice = (Number(stbDecisionsAtomic) / 1e6).toFixed(2);
   const oaljDecisionsPrice = (Number(oaljDecisionsAtomic) / 1e6).toFixed(2);
+  const fmcOrdersPrice = (Number(fmcOrdersAtomic) / 1e6).toFixed(2);
   const f483Price = (Number(f483Atomic) / 1e6).toFixed(2);
   const gmpPrice = (Number(gmpAtomic) / 1e6).toFixed(2);
   const gmpMdPrice = (Number(gmpMdAtomic) / 1e6).toFixed(2);
@@ -5319,6 +5380,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
     "/faa-civil-penalty ($0.05)",
     "/stb-decisions ($0.05)",
     "/oalj-decisions ($0.05)",
+    "/fmc-orders ($0.05)",
   ];
   if (listed483) paidBits.push("/form-483 ($0.05)");
   if (listedGmp) paidBits.push("/gmp ($0.05)");
@@ -6683,6 +6745,30 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           },
         }),
       },
+      [FMC_ORDERS_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getFmcOrders",
+          summary: "FMC Initial Decision / Commission Order text",
+          description: SKU_COPY["fmc-orders"].description,
+          priceUsdc: fmcOrdersPrice,
+          amountAtomic: fmcOrdersAtomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["fmc-orders"],
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              status: { type: "string" },
+              fetchedAt: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
+              cards: { type: "array", items: { type: "object" } },
+            },
+          },
+        }),
+      },
       ...(listed483
         ? {
             [FORM_483_PATH]: {
@@ -7097,6 +7183,12 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
         get: freeOpenApiOp(
           "DOL OALJ / BALCA / ARB Decision and Order free manifest",
           "Count, case number, board, date, institution, and paidUrl. Not the Decision/Order narrative.",
+        ),
+      },
+      [FMC_ORDERS_MANIFEST_PATH]: {
+        get: freeOpenApiOp(
+          "FMC Initial Decision / Commission Order free manifest",
+          "Count, docket, document id, date, institution, and paidUrl. Not the Decision/Order narrative.",
         ),
       },
       ...(listed483
@@ -7915,6 +8007,13 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
           amountAtomic: amountAtomicFor("oalj-decisions"),
           manifest: OALJ_DECISIONS_MANIFEST_PATH,
         },
+        {
+          path: FMC_ORDERS_PATH,
+          product: "fmc-order-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("fmc-orders"),
+          manifest: FMC_ORDERS_MANIFEST_PATH,
+        },
         ...(form483IsPublic()
           ? [
               {
@@ -8611,6 +8710,18 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === FMC_ORDERS_MANIFEST_PATH) {
+    sendExtractedManifest(req, res, port, url, await loadFmcOrdersManifest());
+    return;
+  }
+
+  if (path === FMC_ORDERS_PATH) {
+    await servePaid(req, res, port, "fmc-orders", async (opts) =>
+      paidFmcOrdersBody(await loadFmcOrders(), opts),
+    );
+    return;
+  }
+
   if (path === FORM_483_MANIFEST_PATH) {
     sendExtractedManifest(req, res, port, url, await loadForm483Manifest());
     return;
@@ -8646,7 +8757,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, MARINERS_D1_PATH, MARINERS_D1_MANIFEST_PATH, MARINERS_D5_PATH, MARINERS_D5_MANIFEST_PATH, MARINERS_D9_PATH, MARINERS_D9_MANIFEST_PATH, MARINERS_D14_PATH, MARINERS_D14_MANIFEST_PATH, MARINERS_D17_PATH, MARINERS_D17_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, OFWAT_ENFORCEMENT_PATH, OFWAT_ENFORCEMENT_MANIFEST_PATH, OFGEM_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_MANIFEST_PATH, GAIN_PATH, GAIN_MANIFEST_PATH, ORR_ENFORCEMENT_PATH, ORR_ENFORCEMENT_MANIFEST_PATH, PHMSA_ORDERS_PATH, PHMSA_ORDERS_MANIFEST_PATH, AAIB_REPORTS_PATH, AAIB_REPORTS_MANIFEST_PATH, CSB_REPORTS_PATH, CSB_REPORTS_MANIFEST_PATH, HHS_OIG_REPORTS_PATH, HHS_OIG_REPORTS_MANIFEST_PATH, EIS_REPORTS_PATH, EIS_REPORTS_MANIFEST_PATH, FSIS_HUMANE_PATH, FSIS_HUMANE_MANIFEST_PATH, EPA_CAFO_PATH, EPA_CAFO_MANIFEST_PATH, FMSHRC_ORDERS_PATH, FMSHRC_ORDERS_MANIFEST_PATH, BSEE_REPORTS_PATH, BSEE_REPORTS_MANIFEST_PATH, OSHRC_ORDERS_PATH, OSHRC_ORDERS_MANIFEST_PATH, EPA_ALJ_PATH, EPA_ALJ_MANIFEST_PATH, EPA_EAB_PATH, EPA_EAB_MANIFEST_PATH, FAA_CIVIL_PENALTY_PATH, FAA_CIVIL_PENALTY_MANIFEST_PATH, STB_DECISIONS_PATH, STB_DECISIONS_MANIFEST_PATH, OALJ_DECISIONS_PATH, OALJ_DECISIONS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, SAMPLE_PATH, FIRM_CHECK_PATH, X402LIST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, MARINERS_D1_PATH, MARINERS_D1_MANIFEST_PATH, MARINERS_D5_PATH, MARINERS_D5_MANIFEST_PATH, MARINERS_D9_PATH, MARINERS_D9_MANIFEST_PATH, MARINERS_D14_PATH, MARINERS_D14_MANIFEST_PATH, MARINERS_D17_PATH, MARINERS_D17_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, OFWAT_ENFORCEMENT_PATH, OFWAT_ENFORCEMENT_MANIFEST_PATH, OFGEM_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_MANIFEST_PATH, GAIN_PATH, GAIN_MANIFEST_PATH, ORR_ENFORCEMENT_PATH, ORR_ENFORCEMENT_MANIFEST_PATH, PHMSA_ORDERS_PATH, PHMSA_ORDERS_MANIFEST_PATH, AAIB_REPORTS_PATH, AAIB_REPORTS_MANIFEST_PATH, CSB_REPORTS_PATH, CSB_REPORTS_MANIFEST_PATH, HHS_OIG_REPORTS_PATH, HHS_OIG_REPORTS_MANIFEST_PATH, EIS_REPORTS_PATH, EIS_REPORTS_MANIFEST_PATH, FSIS_HUMANE_PATH, FSIS_HUMANE_MANIFEST_PATH, EPA_CAFO_PATH, EPA_CAFO_MANIFEST_PATH, FMSHRC_ORDERS_PATH, FMSHRC_ORDERS_MANIFEST_PATH, BSEE_REPORTS_PATH, BSEE_REPORTS_MANIFEST_PATH, OSHRC_ORDERS_PATH, OSHRC_ORDERS_MANIFEST_PATH, EPA_ALJ_PATH, EPA_ALJ_MANIFEST_PATH, EPA_EAB_PATH, EPA_EAB_MANIFEST_PATH, FAA_CIVIL_PENALTY_PATH, FAA_CIVIL_PENALTY_MANIFEST_PATH, STB_DECISIONS_PATH, STB_DECISIONS_MANIFEST_PATH, OALJ_DECISIONS_PATH, OALJ_DECISIONS_MANIFEST_PATH, FMC_ORDERS_PATH, FMC_ORDERS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, SAMPLE_PATH, FIRM_CHECK_PATH, X402LIST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
 }
 
 export function bindHost(): string {
@@ -8731,6 +8842,7 @@ if (isMain()) {
     console.error(`${FAA_CIVIL_PENALTY_PATH} $${Number(amountAtomicFor("faa-civil-penalty")) / 1e6} USDC`);
     console.error(`${STB_DECISIONS_PATH} $${Number(amountAtomicFor("stb-decisions")) / 1e6} USDC`);
     console.error(`${OALJ_DECISIONS_PATH} $${Number(amountAtomicFor("oalj-decisions")) / 1e6} USDC`);
+    console.error(`${FMC_ORDERS_PATH} $${Number(amountAtomicFor("fmc-orders")) / 1e6} USDC`);
     console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
     console.error(`${GMP_PATH} $${Number(amountAtomicFor("gmp")) / 1e6} USDC${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
     console.error(`${GMP_MD_PATH} $${Number(amountAtomicFor("gmp-md")) / 1e6} USDC${gmpMdIsPublic() ? "" : " (unlisted until a real MD observation body is cached)"}`);

@@ -261,6 +261,11 @@ import {
   OALJ_DECISIONS_PATH,
 } from "./oalj-decisions.js";
 import {
+  FMC_ORDERS_AMOUNT_ATOMIC,
+  FMC_ORDERS_MANIFEST_PATH,
+  FMC_ORDERS_PATH,
+} from "./fmc-orders.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -722,6 +727,7 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.some((r) => r.includes("/faa-civil-penalty")), "well-known lists /faa-civil-penalty");
     assert.ok(wk.resources.some((r) => r.includes("/stb-decisions")), "well-known lists /stb-decisions");
     assert.ok(wk.resources.some((r) => r.includes("/oalj-decisions")), "well-known lists /oalj-decisions");
+    assert.ok(wk.resources.some((r) => r.includes("/fmc-orders")), "well-known lists /fmc-orders");
     assert.equal(cdpEnvStatus(), "CDP env not set");
 
     const specRes = await fetch(`${base}${OPENAPI_PATH}`);
@@ -933,6 +939,7 @@ async function main(): Promise<void> {
     assert.ok(spec.paths["/faa-civil-penalty"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/stb-decisions"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/oalj-decisions"]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths["/fmc-orders"]?.get?.["x-payment-info"]);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
       PUBLIC_BAZAAR_SKUS.length,
@@ -1000,6 +1007,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /faa-civil-penalty"));
     assert.ok(llmsBody.includes("GET /stb-decisions"));
     assert.ok(llmsBody.includes("GET /oalj-decisions"));
+    assert.ok(llmsBody.includes("GET /fmc-orders"));
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.includes("GET /gmp-md"));
@@ -8150,6 +8158,144 @@ async function main(): Promise<void> {
     },
   );
 
+  const fmcOrdersDir = mkdtempSync(join(tmpdir(), "fmc-orders-"));
+  const fmcOrdersId = "23-08-131865";
+  const fmcOrdersBody = [
+    "FEDERAL MARITIME COMMISSION",
+    "Docket No. 23-08",
+    "Order on Initial Decision",
+    "Mediterranean Shipping Company, S.A.",
+    "The Commission reviews the Initial Decision of the Administrative Law Judge under the Shipping Act.",
+    "MSC billed customs agents as notify parties for demurrage and detention through the merchant clause, including charges for non-operating reefers (NORs).",
+    "IT IS ORDERED that the official Initial Decision and Commission Order text extracted here is the paid product.",
+    "SO ORDERED.",
+    ...Array.from({ length: 40 }, (_, i) => `Official FMC Reading Room Decision paragraph ${i + 1}.`),
+  ].join("\n");
+  writeFileSync(
+    join(fmcOrdersDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "fmc-order-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-09-16T00:00:00.000Z",
+      asOf: "2026-01-06",
+      license: "17 USC 105",
+      attribution:
+        "Federal Maritime Commission. Work of the United States Government; 17 U.S.C. § 105.",
+      sources: {
+        listing: "https://www2.fmc.gov/readingroom/DocumentSearch",
+        proceedingSearch: "https://www2.fmc.gov/readingroom/ProceedingSearch",
+        pdfHost: "https://www2.fmc.gov/readingroom/docs/",
+      },
+      cards: [
+        {
+          id: fmcOrdersId,
+          docket: "23-08",
+          documentId: "131865",
+          kind: "Order on Initial Decision",
+          board: "commission",
+          institution: "Mediterranean Shipping Company, S.A.",
+          date: "2026-01-06",
+          title: "Served Order on Initial Decision",
+          filename: "(32) 23-08 Order on Initial Decision (public).pdf",
+          sourceUrl:
+            "https://www2.fmc.gov/readingroom/docs/23-08/(32)%2023-08%20Order%20on%20Initial%20Decision%20(public).pdf/",
+          body: fmcOrdersBody,
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      FMC_ORDERS_DIR: fmcOrdersDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-fmc-orders-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${FMC_ORDERS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /fmc-orders must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; mimeType?: string; extra?: { pdf?: boolean; priceAtomic?: number } }[];
+      };
+      assert.equal(body402.resource, FMC_ORDERS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, FMC_ORDERS_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.mimeType, "application/json");
+      assert.equal(body402.accepts[0]?.extra?.pdf, undefined);
+      assert.equal(body402.accepts[0]?.extra?.priceAtomic, Number(SINGLE_DOC_AMOUNT_ATOMIC));
+      const unpaidId = await fetch(`${base}${FMC_ORDERS_PATH}?id=${encodeURIComponent(fmcOrdersId)}`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /fmc-orders?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("%PDF-"));
+      assert.ok(!leak402.includes("non-operating reefers (NORs)"));
+      assert.ok(!leak402.includes("never loaded onto an ocean vessel after taking the deposit"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === FMC_ORDERS_PATH), true);
+      assert.equal(shop.products.length, PUBLIC_BAZAAR_SKUS.length);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)), "well-known lists /fmc-orders");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /fmc-orders"));
+      assert.ok(llms.includes("FMC"));
+      assert.ok(!/GET \/fmc-orders[\s\S]{0,80}Pipeline Enforcement Raw Data/.test(llms));
+      assert.ok(!/GET \/fmc-orders[\s\S]{0,80}wp-json/.test(llms));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[FMC_ORDERS_PATH]);
+      assert.ok(spec.paths[FMC_ORDERS_MANIFEST_PATH]);
+      const bazaar = JSON.stringify(spec.paths[FMC_ORDERS_PATH]);
+      assert.ok(!bazaar.includes("non-operating reefers (NORs)"));
+      assert.ok(!bazaar.includes("abandoned the car at an inland depot"));
+
+      const unpaidSince = await fetch(`${base}${FMC_ORDERS_PATH}?since=2026-09-08`);
+      assert.equal(unpaidSince.status, 304, "empty ?since= delta is 304 unpaid");
+
+      const manifest = await fetch(`${base}${FMC_ORDERS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "fmc-orders free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        asOf?: string;
+        cards?: { institution?: string; id?: string; body?: string; sourceUrl?: string; paidUrl?: string }[];
+      };
+      assert.equal(man.cardCount, 1);
+      assert.match(man.cards?.[0]?.institution ?? "", /Mediterranean Shipping/i);
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+      assert.ok(!("sourceUrl" in (man.cards?.[0] ?? {})), "free cards must not leak sourceUrl");
+      assert.ok(!("htmlUrl" in (man.cards?.[0] ?? {})));
+      assert.ok(!("pdfUrl" in (man.cards?.[0] ?? {})));
+      assert.ok(man.cards?.[0]?.paidUrl);
+      assert.ok(!JSON.stringify(man.cards).includes("www2.fmc.gov/readingroom/docs"), "free cards have no FMC PDF deep link");
+      assert.ok(!JSON.stringify(man).includes("%PDF-"));
+      assert.ok(!JSON.stringify(man).includes("non-operating reefers (NORs)"));
+      assert.ok(!JSON.stringify(man).includes("never loaded onto an ocean vessel after taking the deposit"));
+
+      const paid = await fetch(`${base}${FMC_ORDERS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      assert.match(paid.headers.get("content-type") ?? "", /application\/json/);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        cards: { institution: string; date: string; id: string; body: string; sourceUrl?: string }[];
+        records?: { id: string; firm: string; type: string }[];
+      };
+      assert.equal(paidBody.product, "fmc-order-bodies");
+      assert.match(paidBody.cards[0]?.institution ?? "", /Mediterranean Shipping/i);
+      assert.equal(paidBody.cards[0]?.id, fmcOrdersId);
+      assert.ok(paidBody.cards[0]?.body.includes("non-operating reefers (NORs)"));
+      assert.ok(paidBody.cards[0]?.body.includes("IT IS ORDERED"));
+      assert.match(paidBody.cards[0]?.sourceUrl ?? "", /www2\.fmc\.gov\/readingroom\/docs/);
+      assert.equal(paidBody.records?.[0]?.type, "fmc-orders");
+      assert.match(paidBody.records?.[0]?.firm ?? "", /Mediterranean Shipping/i);
+    },
+  );
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -8911,6 +9057,7 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.includes(EIS_REPORTS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(STB_DECISIONS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(OALJ_DECISIONS_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(FMC_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D11_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D7_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D8_PATH)));
@@ -8928,7 +9075,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -8975,6 +9122,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("faa-civil-penalty"), true);
   assert.equal(isPublicBazaarSku("stb-decisions"), true);
   assert.equal(isPublicBazaarSku("oalj-decisions"), true);
+  assert.equal(isPublicBazaarSku("fmc-orders"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
