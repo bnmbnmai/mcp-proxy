@@ -252,7 +252,7 @@ export function encodeDocsFilename(filename: string): string {
 export function officialDocsUrl(docket: string, filename: string): string | null {
   const dock = (docket || "").trim();
   const file = (filename || "").trim().split("/").pop() || "";
-  if (!dock || !/\.pdf$/i.test(file)) return null;
+  if (!dock || !/\.pdf$/i.test(file) || /^\.pdf$/i.test(file)) return null;
   return `${READING_ROOM_ORIGIN}/readingroom/docs/${dock}/${encodeDocsFilename(file)}/`;
 }
 
@@ -307,10 +307,14 @@ export function parseBoard(kind: FmcKind): FmcBoard {
 
 export function isFrMirrorBody(text: string): boolean {
   if (/federalregister\.gov|govinfo\.gov\/content\/pkg\/FR/i.test(text)) return true;
-  const agency = /^\s*AGENCY:\s*/im.test(text);
-  const action = /^\s*ACTION:\s*/im.test(text);
-  const summary = /^\s*SUMMARY:\s*/im.test(text);
+  const agency = /(?:^|\s|>)AGENCY:\s*/im.test(text);
+  const action = /(?:^|\s|>)ACTION:\s*/im.test(text);
+  const summary = /(?:^|\s|>)SUMMARY:\s*/im.test(text);
   return agency && action && summary;
+}
+
+export function isFederalRegisterHtml(text: string): boolean {
+  return /<html[\s>]/i.test(text) && /Federal Register/i.test(text) && /AGENCY:/i.test(text);
 }
 
 export function isWordpressCms(text: string): boolean {
@@ -328,7 +332,7 @@ export function isProceedingHtmlOnly(text: string): boolean {
   return (
     /<html[\s>]/i.test(text) &&
     /FMC Reading Room|RadGrid|DocumentSearch|ProceedingSearch/i.test(text) &&
-    !/IT IS ORDERED|INITIAL DECISION/i.test(text.replace(/Served Initial Decision/gi, ""))
+    !/\b(?:IT IS ORDERED|SO ORDERED)\b/i.test(text)
   );
 }
 
@@ -344,7 +348,13 @@ export function keepListing(
 }
 
 export function isRealFmcOrderBody(text: string): boolean {
-  if (isFrMirrorBody(text) || isWordpressCms(text) || isPhmsaTsvKill(text) || isProceedingHtmlOnly(text)) {
+  if (
+    isFrMirrorBody(text) ||
+    isFederalRegisterHtml(text) ||
+    isWordpressCms(text) ||
+    isPhmsaTsvKill(text) ||
+    isProceedingHtmlOnly(text)
+  ) {
     return false;
   }
   const compact = text.replace(/\s+/g, " ").trim();
@@ -395,7 +405,10 @@ export function parseProceedingHtml(html: string, pageDocket = ""): FmcListing[]
         "";
       if (!documentId) continue;
       const hidden = [...row.matchAll(/display:\s*none[^>]*>([^<]*)</gi)].map((m) => decodeEntities(m[1]));
-      const filename = hidden.find((v) => /\.pdf$/i.test(v)) || "";
+      const filename =
+        hidden
+          .filter((v) => /\.pdf$/i.test(v) && !/^\.pdf$/i.test(v))
+          .sort((a, b) => b.length - a.length)[0] || "";
       const title =
         decodeEntities(row.match(/<strong>([^<]+)<\/strong>/i)?.[1] ?? "") ||
         decodeEntities(row.match(/title="([^"]+)"/i)?.[1] ?? "") ||
@@ -714,7 +727,13 @@ export async function collectFmcOrders(opts?: {
           }
           return pdfToText(pdfFile);
         })());
-      if (isFrMirrorBody(text) || isWordpressCms(text) || isPhmsaTsvKill(text) || isProceedingHtmlOnly(text)) {
+      if (
+        isFrMirrorBody(text) ||
+        isFederalRegisterHtml(text) ||
+        isWordpressCms(text) ||
+        isPhmsaTsvKill(text) ||
+        isProceedingHtmlOnly(text)
+      ) {
         skippedNoText += 1;
         continue;
       }

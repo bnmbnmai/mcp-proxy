@@ -33,6 +33,7 @@ import {
   collectFmcOrders,
   discoverProceedingUrls,
   filterFmcOrdersManifest,
+  isFederalRegisterHtml,
   isFrMirrorBody,
   isPhmsaTsvKill,
   isProceedingHtmlOnly,
@@ -128,6 +129,8 @@ async function main(): Promise<void> {
   assert.equal(msc?.kind, "Order on Initial Decision");
   assert.match(msc?.institution ?? "", /Mediterranean Shipping/i);
   assert.ok(msc?.sourceUrl.includes("/readingroom/docs/23-08/"));
+  assert.ok(msc?.sourceUrl.includes("Order%20on%20Initial%20Decision"));
+  assert.ok(!msc?.sourceUrl.includes("/.pdf/"), "hidden extension-only .pdf cell is not the filename");
   assert.ok(msc?.sourceUrl.endsWith("/"));
   const aden = listed.find((r) => r.id === ADENARIWO_ID);
   assert.equal(aden?.board, "alj");
@@ -140,6 +143,7 @@ async function main(): Promise<void> {
   assert.ok(isPhmsaTsvKill(readFx("phmsa-raw.tsv")));
   assert.ok(isWordpressCms(readFx("wp-json.json")));
   assert.ok(isFrMirrorBody(readFx("federalregister.html")));
+  assert.ok(isFederalRegisterHtml(readFx("federalregister.html")));
   assert.ok(isProceedingHtmlOnly(readFx("proceeding-only.html")));
   assert.ok(!isRealFmcOrderBody(readFx("phmsa-raw.tsv")));
   assert.ok(!isRealFmcOrderBody(readFx("wp-json.json")));
