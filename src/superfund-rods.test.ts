@@ -20,7 +20,9 @@ import {
   catalogPath,
   collectSuperfundRods,
   loadSuperfundRodsManifest,
+  parseSnapshotPretty,
   readSuperfundRodsSnapshot,
+  snapshotPath,
   stripJsonStringField,
   writePrettyJsonBag,
   writeSuperfundRodsSnapshot,
@@ -499,9 +501,48 @@ async function main(): Promise<void> {
     const helperPath = join(streamDir, "helper.json");
     writePrettyJsonBag(helperPath, { product: "epa-superfund-rod-bodies", cards: [] });
     assert.equal(JSON.parse(readFs(helperPath, "utf-8")).cards.length, 0);
+
+    const origParse = JSON.parse;
+    JSON.parse = ((text: unknown, reviver?: unknown) => {
+      if (
+        typeof text === "string" &&
+        text.includes("chunk-body-0") &&
+        text.includes("chunk-body-2") &&
+        text.includes('"cards"')
+      ) {
+        throw new RangeError("Invalid string length");
+      }
+      return origParse(text as never, reviver as never);
+    }) as typeof JSON.parse;
+    try {
+      const recovered = parseSnapshotPretty(raw);
+      assert.equal(recovered?.cards.length, 3, "per-card parse must survive JSON.parse RangeError on the fat bag");
+      assert.equal(recovered?.cards[2]?.body.includes("chunk-body-2"), true);
+      assert.equal(recovered?.fetchedAt, "2026-09-15T04:48:00.000Z");
+      const viaRead = readSuperfundRodsSnapshot();
+      assert.equal(viaRead?.cards.length, 3);
+    } finally {
+      JSON.parse = origParse;
+    }
   } finally {
     if (streamPrev === undefined) delete process.env.SUPERFUND_RODS_DIR;
     else process.env.SUPERFUND_RODS_DIR = streamPrev;
+  }
+
+  const refuseDir = mkdtempSync(join(tmpdir(), "superfund-rods-refuse-"));
+  const refusePrev = process.env.SUPERFUND_RODS_DIR;
+  process.env.SUPERFUND_RODS_DIR = refuseDir;
+  try {
+    const snapPath = snapshotPath();
+    writeFileSync(snapPath, "{not-json");
+    await assert.rejects(
+      () => collectSuperfundRods({ jsonDir: fixtures, limit: 1, pauseMs: 0 }),
+      /unreadable Superfund snapshot/,
+    );
+    assert.equal(readFs(snapPath, "utf-8"), "{not-json", "failed load must not replace the bag");
+  } finally {
+    if (refusePrev === undefined) delete process.env.SUPERFUND_RODS_DIR;
+    else process.env.SUPERFUND_RODS_DIR = refusePrev;
   }
 
   console.log("superfund-rods parser tests ok");
