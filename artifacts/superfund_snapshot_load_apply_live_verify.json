@@ -17,6 +17,7 @@
   "stackedOn": "cursor/apply-oalj-decisions-a04c",
   "stackedOnSha": "a18f4c0f4ba3048c02eae0fae9008623dcb70796",
   "liveServingBefore": "f4c98c8221176b4b341ecd29954d2969bb94248b",
+  "thisApply": "https://github.com/bnmbnmai/mcp-proxy/pull/237",
   "systemctlUserRestart": {
     "unit": "idaho-ticks-x402.service",
     "ok": true,
