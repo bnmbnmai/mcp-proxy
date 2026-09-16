@@ -51,6 +51,8 @@ systemctl --user restart idaho-ticks-x402.service
 
 Restart **only** that unit. docker / other units untouched. No new collect cron — existing 07:45 / 19:45 America/Boise `ticks-collect.sh` walks live well-known and runs `build/fmc-orders.js`.
 
+Applied on apollo (2026-09-16): **serving SHA `1e5faa0`** ([PR 239](https://github.com/bnmbnmai/mcp-proxy/pull/239) `cursor/fmc-orders-0443` onto live tip `cursor/apply-oalj-decisions-a04c` / PR 238). Restarted **only** `idaho-ticks-x402.service` at **2026-09-16 17:13:32 MDT** (PID 1808175). Added `FMC_ORDERS_DIR` to the user unit. One-door collect EXIT 0: listedCount **5**, `addedThisRun` 5, `fetchedPdfs` 5, skipped 0, asOf **2026-04-24**, fetchedAt **2026-09-16T23:13:25.691Z**. First-slice: **23-02-136277** BBBY/OOCL Initial Decision, **2033-i-136187** Adenariwo, **2030-i-136166** Gibson, **23-08-131865** MSC Order on Initial Decision (476,847 byte PDF), **23-08-118811** MSC Initial Decision. Scout seeds are examples, not a frozen list. Free manifest is docket / document id / date / institution + `paidUrl` only; **no** `sourceUrl`, no Decision/Order narrative. Unpaid `GET https://ticks.bnm.farm/fmc-orders` is **402** at $0.05; `?id=23-08-131865` is **402** at $0.02. Live `/.well-known/x402` is **61**. Shop index **61**. MCP `tools/list` includes `fmc-orders` from well-known. Lander card is on https://bnm.farm/ (tv-remote `cursor/fmc-orders-lander-0443`).
+
 ## Lander card (tv-remote / bnm.farm)
 
 Paste after the DOL OALJ Decisions card. Product + bag size + price only. Count hydrates from the free manifest — do not hardcode a door count. Copy must say **FMC Initial Decision / Commission Order**, not PHMSA TSV, not Federal Register HTML, not `/stb-decisions` / `/oalj-decisions`.
