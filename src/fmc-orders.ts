@@ -380,6 +380,7 @@ export function proceedingUrl(docket: string): string {
 
 export function parseHeading(raw: string): { docket: string; institution: string } {
   const text = stripTags(raw).replace(/\s+/g, " ").trim();
+  if (/^Last Updated:/i.test(text)) return { docket: "", institution: "" };
   const hit = text.match(/^((?:\d{2}-\d{2}|\d{3,4}\(?[A-Z]?\)?))(?:\s*[-–—]\s*)(.+)$/i);
   if (hit) return { docket: hit[1].trim(), institution: hit[2].trim() };
   return { docket: "", institution: text };
@@ -389,11 +390,15 @@ export function parseProceedingHtml(html: string, pageDocket = ""): FmcListing[]
   const out: FmcListing[] = [];
   const seen = new Set<string>();
   const chunks = html.split(/<(?:h[1-4])\b/i);
+  let lastDocket = pageDocket;
+  let lastInstitution = "";
   for (const chunk of chunks) {
     const headingInner = chunk.match(/^[^>]*>([\s\S]*?)<\/h[1-4]>/i)?.[1] ?? "";
     const heading = headingInner ? parseHeading(headingInner) : { docket: pageDocket, institution: "" };
-    const docket = heading.docket || pageDocket;
-    const institution = heading.institution;
+    if (heading.docket) lastDocket = heading.docket;
+    if (heading.institution) lastInstitution = heading.institution;
+    const docket = heading.docket || lastDocket || pageDocket;
+    const institution = heading.institution || lastInstitution;
     const rows = chunk.match(/<tr\b[^>]*>[\s\S]*?<\/tr>/gi) ?? [];
     for (const row of rows) {
       const text = stripTags(row);

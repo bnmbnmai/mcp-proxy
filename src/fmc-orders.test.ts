@@ -128,6 +128,7 @@ async function main(): Promise<void> {
   assert.equal(msc?.board, "commission");
   assert.equal(msc?.kind, "Order on Initial Decision");
   assert.match(msc?.institution ?? "", /Mediterranean Shipping/i);
+  assert.ok(!/Last Updated/i.test(msc?.institution ?? ""), "Last Updated heading is not the party");
   assert.ok(msc?.sourceUrl.includes("/readingroom/docs/23-08/"));
   assert.ok(msc?.sourceUrl.includes("Order%20on%20Initial%20Decision"));
   assert.ok(!msc?.sourceUrl.includes("/.pdf/"), "hidden extension-only .pdf cell is not the filename");
