@@ -687,17 +687,117 @@ function parseSnapshotFile(raw: unknown): SuperfundRodSnapshot | null {
   return snap;
 }
 
-export function readSuperfundRodsSnapshot(): SuperfundRodSnapshot | null {
-  const path = snapshotPath();
-  if (existsSync(path)) {
-    try {
-      const parsed = parseSnapshotFile(JSON.parse(readFileSync(path, "utf-8")));
-      if (parsed) return parsed;
-    } catch {
-      /* corrupt */
+function skipJsonWs(raw: string, i: number): number {
+  while (i < raw.length && /\s/.test(raw[i]!)) i += 1;
+  return i;
+}
+
+/** Next `{...}` value at/after start. String-aware so ROD/FYR bodies with braces stay intact. */
+function nextJsonObjectSlice(raw: string, start: number): { slice: string; end: number } | null {
+  const i = skipJsonWs(raw, start);
+  if (i >= raw.length || raw[i] !== "{") return null;
+  let depth = 0;
+  let inStr = false;
+  let esc = false;
+  for (let j = i; j < raw.length; j++) {
+    const ch = raw[j]!;
+    if (inStr) {
+      if (esc) {
+        esc = false;
+        continue;
+      }
+      if (ch === "\\") {
+        esc = true;
+        continue;
+      }
+      if (ch === "\"") inStr = false;
+      continue;
+    }
+    if (ch === "\"") {
+      inStr = true;
+      continue;
+    }
+    if (ch === "{") depth += 1;
+    else if (ch === "}") {
+      depth -= 1;
+      if (depth === 0) return { slice: raw.slice(i, j + 1), end: j + 1 };
     }
   }
   return null;
+}
+
+function findCardsArrayStart(raw: string): number {
+  const marker = `"cards"`;
+  let idx = 0;
+  while (idx < raw.length) {
+    const found = raw.indexOf(marker, idx);
+    if (found < 0) return -1;
+    let j = skipJsonWs(raw, found + marker.length);
+    if (raw[j] === ":") {
+      j = skipJsonWs(raw, j + 1);
+      if (raw[j] === "[") return j;
+    }
+    idx = found + marker.length;
+  }
+  return -1;
+}
+
+/**
+ * Parse a Superfund snapshot without one-shot JSON.parse of the whole document.
+ * writePrettyJsonBag already streams the write; a 530MB bag still throws
+ * RangeError on JSON.parse(readFileSync(...)) and evening collect then reused 0
+ * and overwrote 730 cards with the grow-limit slice.
+ */
+export function parseSnapshotPretty(raw: string): SuperfundRodSnapshot | null {
+  try {
+    const parsed = parseSnapshotFile(JSON.parse(raw));
+    if (parsed) return parsed;
+  } catch {
+    /* fall through to per-card parse */
+  }
+  const cardsAt = findCardsArrayStart(raw);
+  if (cardsAt < 0) return null;
+  const cards: SuperfundRodCard[] = [];
+  let i = cardsAt + 1;
+  while (i < raw.length) {
+    i = skipJsonWs(raw, i);
+    if (raw[i] === "]") {
+      i += 1;
+      break;
+    }
+    if (raw[i] === ",") {
+      i += 1;
+      continue;
+    }
+    const obj = nextJsonObjectSlice(raw, i);
+    if (!obj) return null;
+    try {
+      const card = JSON.parse(obj.slice) as SuperfundRodCard;
+      if (!card || typeof card !== "object" || !card.id) return null;
+      cards.push(card);
+    } catch {
+      return null;
+    }
+    i = obj.end;
+  }
+  const slim = `${raw.slice(0, cardsAt + 1)}]${raw.slice(i)}`;
+  try {
+    const wrapper = parseSnapshotFile(JSON.parse(slim));
+    if (wrapper) return { ...wrapper, cards };
+  } catch {
+    /* wrapper missing / corrupt */
+  }
+  return null;
+}
+
+export function readSuperfundRodsSnapshot(): SuperfundRodSnapshot | null {
+  const path = snapshotPath();
+  if (!existsSync(path)) return null;
+  try {
+    return parseSnapshotPretty(readFileSync(path, "utf-8"));
+  } catch {
+    return null;
+  }
 }
 
 export function catalogPath(): string {
@@ -1008,8 +1108,14 @@ export async function collectSuperfundRods(opts?: {
   const fetchCap = opts?.maxFetch ?? (dir ? 0 : maxFetchLimit());
   const cacheDir = superfundRodsDir();
   mkdirSync(cacheDir, { recursive: true });
+  const path = snapshotPath();
+  const priorExisted = existsSync(path);
+  const priorSnap = readSuperfundRodsSnapshot();
+  if (priorExisted && !priorSnap) {
+    throw new Error(`refusing to overwrite unreadable Superfund snapshot ${path}`);
+  }
   const prior = new Map<string, SuperfundRodCard>();
-  for (const card of readSuperfundRodsSnapshot()?.cards ?? []) {
+  for (const card of priorSnap?.cards ?? []) {
     if (isRealSuperfundRodBody(card.body)) prior.set(card.id, card);
   }
   const cards: SuperfundRodCard[] = [];
