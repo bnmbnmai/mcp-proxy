@@ -1,0 +1,37 @@
+# apply PR 234 GET /oalj-decisions onto live ticks.bnm.farm
+# apply-record https://github.com/bnmbnmai/mcp-proxy/pull/235
+# serving SHA f4c98c8 (cherry-pick 5f927a2 + 756aa16 onto cursor/morning-collect-babysit-69a6 @ ccf5710 / prior running ff18566)
+# idaho-ticks-x402.service restart Tue 2026-09-15 16:33:17 MDT PID 514536 (was 3804817)
+# Restarted only that unit (systemctl --user). docker-gw / bnm-caddy / bnm-tunnel untouched.
+
+BEFORE (running ff18566; git tip ccf5710; well-known 59)
+GET  https://ticks.bnm.farm/oalj-decisions                              404  via: 1.1 Caddy
+GET  https://ticks.bnm.farm/oalj-decisions/manifest.json                 404  via: 1.1 Caddy
+GET  https://ticks.bnm.farm/.well-known/x402                          200  resources=59  no /oalj-decisions  has /oshrc-orders  has /fmshrc-orders  has /stb-decisions
+GET  https://ticks.bnm.farm/stb-decisions                              402  maxAmountRequired=50000  extra.name=USD Coin  payTo=0xf59621FC406D266e18f314Ae18eF0a33b8401004
+GET  https://ticks.bnm.farm/oshrc-orders                               402  sibling
+GET  https://ticks.bnm.farm/fmshrc-orders                              402  sibling
+
+AFTER (serving f4c98c8 + collect:oalj-decisions EXIT 0 + restart)
+GET  https://ticks.bnm.farm/.well-known/x402                          200  via: 1.1 Caddy  resources=60  extra.resourceCount=60  has /oalj-decisions  has /oshrc-orders  has /fmshrc-orders  has /stb-decisions
+GET  https://ticks.bnm.farm/oalj-decisions                              402  via: 1.1 Caddy  maxAmountRequired=50000  extra.name=USD Coin  payTo=0xf59621FC406D266e18f314Ae18eF0a33b8401004
+GET  https://ticks.bnm.farm/oalj-decisions?id=2026-spa-00001             402  via: 1.1 Caddy  maxAmountRequired=20000  extra.name=USD Coin  payTo=0xf59621FC406D266e18f314Ae18eF0a33b8401004
+GET  https://ticks.bnm.farm/oalj-decisions?since=2026-09-15T23:00:00.000Z  304  via: 1.1 Caddy
+GET  https://ticks.bnm.farm/oalj-decisions/manifest.json                 200  via: 1.1 Caddy  cardCount=4  asOf=2026-07-30  fetchedAt=2026-09-15T22:33:11.922Z  product=oalj-decision-bodies  payTo=0xf59621FC406D266e18f314Ae18eF0a33b8401004  NO sourceUrl  NO body
+GET  https://ticks.bnm.farm/oshrc-orders                               402  sibling
+GET  https://ticks.bnm.farm/fmshrc-orders                              402  sibling
+GET  https://ticks.bnm.farm/stb-decisions                              402  sibling
+GET  https://ticks.bnm.farm/epa-alj                                    402  sibling
+GET  https://ticks.bnm.farm/ticks                                      402  sibling
+
+loopback GET http://127.0.0.1:4020/oalj-decisions                      402  payTo unchanged  50000
+loopback GET http://127.0.0.1:4020/oalj-decisions/manifest.json         200  cardCount=4  fetchedAt=2026-09-15T22:33:11.922Z
+loopback GET http://127.0.0.1:4020/.well-known/x402                    200  resources=60  has /oalj-decisions  has /stb-decisions
+
+banner: /oalj-decisions $0.05 USDC
+banner: /stb-decisions $0.05 USDC
+banner: mcp /mcp — 60 tools from /.well-known/x402
+collect: npm run collect:oalj-decisions  listedCount=79 addedThisRun=4 fetchedPdfs=4 skippedNoText=0 reused=0
+bag n 0 → 4
+ids: 2026-spa-00001 McLaughlin; 2025-spa-00006 Arms; 2025-spa-00007 McClane; 2026-0010 Sheffield ARB
+payTo unchanged 0xf59621FC406D266e18f314Ae18eF0a33b8401004

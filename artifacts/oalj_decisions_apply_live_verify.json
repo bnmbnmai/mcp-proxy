@@ -1,0 +1,203 @@
+{
+  "job": "apply PR 234 GET /oalj-decisions onto live ticks.bnm.farm",
+  "ranOn": "apollo",
+  "hostname": "pop-os",
+  "path": "/oalj-decisions",
+  "priceUsdc": "0.05",
+  "amountAtomic": "50000",
+  "oneAmountAtomic": "20000",
+  "network": "base",
+  "branch": "cursor/apply-oalj-decisions-a04c",
+  "servingSha": "f4c98c8221176b4b341ecd29954d2969bb94248b",
+  "servingShaShort": "f4c98c8",
+  "sourcePr": "https://github.com/bnmbnmai/mcp-proxy/pull/234",
+  "sourceBranch": "cursor/oalj-decisions-6296",
+  "sourceHead": "756aa168c9cedc72a1e6cf519bdb52c6875349ca",
+  "sourceHeadShort": "756aa16",
+  "stackedOn": "cursor/morning-collect-babysit-69a6",
+  "stackedOnSha": "ccf57106f902ee71d384863d9121d9cd25654cd8",
+  "liveServingBefore": "ff18566e65329350740756693a93dd6117d83b69",
+  "liveGitTipBefore": "ccf57106f902ee71d384863d9121d9cd25654cd8",
+  "thisApply": "https://github.com/bnmbnmai/mcp-proxy/pull/235",
+  "systemctlUserRestart": {
+    "unit": "idaho-ticks-x402.service",
+    "ok": true,
+    "otherUnitsRestarted": false,
+    "activeEnterTimestamp": "Tue 2026-09-15 16:33:17 MDT",
+    "activeEnterUtc": "2026-09-15T22:33:17Z",
+    "pidBefore": "3804817",
+    "pidAfter": "514536",
+    "oaljDecisionsDirAddedToUnit": true,
+    "dockerGwUntouched": "idaho-ticks-x402-docker-gw.service left running (PID 195969, ActiveEnterTimestamp Tue 2026-09-15 10:17:27 MDT)",
+    "caddyStartedAt": "2026-09-08T17:07:32.766138574Z",
+    "tunnelStartedAt": "2026-09-08T17:07:32.771343842Z"
+  },
+  "banner": {
+    "oaljDecisions": "/oalj-decisions $0.05 USDC",
+    "stbDecisions": "/stb-decisions $0.05 USDC",
+    "mcp": "mcp /mcp — 60 tools from /.well-known/x402",
+    "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004"
+  },
+  "unitTests": {
+    "oaljDecisions": "oalj-decisions parser tests ok",
+    "build": "npm run build exit 0"
+  },
+  "before": {
+    "oaljDecisionsUnpaid": 404,
+    "oaljManifest": 404,
+    "wellKnown": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "resourceCount": 59,
+      "extraResourceCount": 59,
+      "hasOaljDecisions": false,
+      "hasOshrcOrders": true,
+      "hasFmshrcOrders": true,
+      "hasStbDecisions": true
+    },
+    "siblings": {
+      "/stb-decisions": 402,
+      "/oshrc-orders": 402,
+      "/fmshrc-orders": 402
+    }
+  },
+  "collect": {
+    "status": "ok",
+    "command": "OALJ_DECISIONS_LIMIT=4 OALJ_DECISIONS_MAX_FETCH=8 npm run collect:oalj-decisions",
+    "dir": "$HOME/projects/mcp-proxy/data/oalj-decisions",
+    "exit": 0,
+    "startedUtc": "2026-09-15T22:32:46Z",
+    "finishedUtc": "2026-09-15T22:33:11Z",
+    "fetchedAt": "2026-09-15T22:33:11.922Z",
+    "asOf": "2026-07-30",
+    "cardCount": 4,
+    "listedCount": 79,
+    "fetchedPdfs": 4,
+    "skippedNoText": 0,
+    "reused": 0,
+    "addedThisRun": 4,
+    "snapshotBytes": 42739,
+    "ids": [
+      "2026-spa-00001",
+      "2025-spa-00006",
+      "2025-spa-00007",
+      "2026-0010"
+    ],
+    "pdftotext": "/usr/bin/pdftotext 24.02.0"
+  },
+  "live": {
+    "wellKnown": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "resourceCount": 60,
+      "extraResourceCount": 60,
+      "hasOaljDecisions": true,
+      "hasOshrcOrders": true,
+      "hasFmshrcOrders": true,
+      "hasStbDecisions": true,
+      "oaljDecisionsUrl": "https://ticks.bnm.farm/oalj-decisions",
+      "collision": false
+    },
+    "unpaidGet": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "50000",
+      "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+      "extraName": "USD Coin",
+      "resource": "https://ticks.bnm.farm/oalj-decisions"
+    },
+    "unpaidId": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "id": "2026-spa-00001",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "20000",
+      "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+      "extraName": "USD Coin",
+      "resource": "https://ticks.bnm.farm/oalj-decisions?id=2026-spa-00001"
+    },
+    "emptySince": {
+      "status": 304,
+      "since": "2026-09-15T23:00:00.000Z",
+      "via": "1.1 Caddy"
+    },
+    "manifest": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "cardCount": 4,
+      "asOf": "2026-07-30",
+      "fetchedAt": "2026-09-15T22:33:11.922Z",
+      "product": "oalj-decision-bodies",
+      "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+      "priceUsdc": "0.05",
+      "ids": [
+        "2026-spa-00001",
+        "2025-spa-00006",
+        "2025-spa-00007",
+        "2026-0010"
+      ],
+      "first": {
+        "id": "2026-spa-00001",
+        "caseNo": "2026-SPA-00001",
+        "board": "oalj",
+        "kind": "Order",
+        "institution": "McLaughlin v. Troy Construction, LLC",
+        "date": "2026-07-30",
+        "title": "Order on Respondent's Motion to Dismiss (ALJ July 30, 2026) (Rosenow)",
+        "paidUrl": "/oalj-decisions?id=2026-spa-00001"
+      },
+      "hasSourceUrl": false,
+      "bodyLeak": false,
+      "cardKeys": [
+        "aljNo",
+        "before",
+        "board",
+        "caseNo",
+        "date",
+        "id",
+        "institution",
+        "kind",
+        "page",
+        "paidUrl",
+        "program",
+        "publishedAt",
+        "title"
+      ]
+    },
+    "siblingsStill402": {
+      "/oshrc-orders": 402,
+      "/fmshrc-orders": 402,
+      "/stb-decisions": 402,
+      "/epa-alj": 402,
+      "/ticks": 402
+    },
+    "shop": {
+      "hasOaljDecisions": true,
+      "productCount": 60,
+      "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004"
+    },
+    "loopback": {
+      "unpaidGet": 402,
+      "unpaidId": 402,
+      "manifest": 200,
+      "manifestCardCount": 4,
+      "manifestHasSourceUrl": false,
+      "wellKnownResourceCount": 60,
+      "hasOaljDecisions": true,
+      "hasStbDecisions": true,
+      "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004"
+    }
+  },
+  "excluded": {
+    "catalogMain": "not checked out",
+    "newCollectCron": "not started; existing 07:45/19:45 America/Boise ticks-collect.sh walks live well-known",
+    "dockerGw": "untouched",
+    "caddy": "untouched",
+    "tunnel": "untouched",
+    "otherUnits": "not restarted",
+    "lander": "tv-remote / bnm.farm; no DOL OALJ Decisions card on this tip; not blocking apply",
+    "shopUsdc": "not spent",
+    "keys": "not printed"
+  }
+}

@@ -57,6 +57,7 @@ build/epa-alj.*
 build/epa-eab.*
 build/faa-civil-penalty.*
 build/stb-decisions.*
+build/oalj-decisions.*
 build/ticks-ams.*
 build/ticks-ams-leftovers.*
 build/paid-records.*
@@ -117,6 +118,7 @@ data/epa-alj/
 data/epa-eab/
 data/faa-civil-penalty/
 data/stb-decisions/
+data/oalj-decisions/
 data/ticks-ams/
 data/shop-request-log.jsonl
 data/shop-request-log*.jsonl
