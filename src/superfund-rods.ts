@@ -687,92 +687,109 @@ function parseSnapshotFile(raw: unknown): SuperfundRodSnapshot | null {
   return snap;
 }
 
-function skipJsonWs(raw: string, i: number): number {
-  while (i < raw.length && /\s/.test(raw[i]!)) i += 1;
+const QUOTE_B = 0x22;
+const BACKSLASH_B = 0x5c;
+const LBRACE_B = 0x7b;
+const RBRACE_B = 0x7d;
+const LBRACK_B = 0x5b;
+const RBRACK_B = 0x5d;
+const COMMA_B = 0x2c;
+const COLON_B = 0x3a;
+const CARDS_KEY = Buffer.from('"cards"');
+
+function isJsonWsByte(b: number): boolean {
+  return b === 0x20 || b === 0x0a || b === 0x0d || b === 0x09;
+}
+
+function skipJsonWsBuf(buf: Buffer, i: number): number {
+  while (i < buf.length && isJsonWsByte(buf[i]!)) i += 1;
   return i;
 }
 
 /** Next `{...}` value at/after start. String-aware so ROD/FYR bodies with braces stay intact. */
-function nextJsonObjectSlice(raw: string, start: number): { slice: string; end: number } | null {
-  const i = skipJsonWs(raw, start);
-  if (i >= raw.length || raw[i] !== "{") return null;
+function nextJsonObjectSliceBuf(buf: Buffer, start: number): { start: number; end: number } | null {
+  const i = skipJsonWsBuf(buf, start);
+  if (i >= buf.length || buf[i] !== LBRACE_B) return null;
   let depth = 0;
   let inStr = false;
   let esc = false;
-  for (let j = i; j < raw.length; j++) {
-    const ch = raw[j]!;
+  for (let j = i; j < buf.length; j++) {
+    const ch = buf[j]!;
     if (inStr) {
       if (esc) {
         esc = false;
         continue;
       }
-      if (ch === "\\") {
+      if (ch === BACKSLASH_B) {
         esc = true;
         continue;
       }
-      if (ch === "\"") inStr = false;
+      if (ch === QUOTE_B) inStr = false;
       continue;
     }
-    if (ch === "\"") {
+    if (ch === QUOTE_B) {
       inStr = true;
       continue;
     }
-    if (ch === "{") depth += 1;
-    else if (ch === "}") {
+    if (ch === LBRACE_B) depth += 1;
+    else if (ch === RBRACE_B) {
       depth -= 1;
-      if (depth === 0) return { slice: raw.slice(i, j + 1), end: j + 1 };
+      if (depth === 0) return { start: i, end: j + 1 };
     }
   }
   return null;
 }
 
-function findCardsArrayStart(raw: string): number {
-  const marker = `"cards"`;
+function findCardsArrayStartBuf(buf: Buffer): number {
   let idx = 0;
-  while (idx < raw.length) {
-    const found = raw.indexOf(marker, idx);
+  while (idx < buf.length) {
+    const found = buf.indexOf(CARDS_KEY, idx);
     if (found < 0) return -1;
-    let j = skipJsonWs(raw, found + marker.length);
-    if (raw[j] === ":") {
-      j = skipJsonWs(raw, j + 1);
-      if (raw[j] === "[") return j;
+    let j = skipJsonWsBuf(buf, found + CARDS_KEY.length);
+    if (buf[j] === COLON_B) {
+      j = skipJsonWsBuf(buf, j + 1);
+      if (buf[j] === LBRACK_B) return j;
     }
-    idx = found + marker.length;
+    idx = found + CARDS_KEY.length;
   }
   return -1;
 }
 
 /**
- * Parse a Superfund snapshot without one-shot JSON.parse of the whole document.
- * writePrettyJsonBag already streams the write; a 530MB bag still throws
- * RangeError on JSON.parse(readFileSync(...)) and evening collect then reused 0
- * and overwrote 730 cards with the grow-limit slice.
+ * Parse a Superfund snapshot without turning the whole file into one UTF-8 string.
+ * V8 throws RangeError: Invalid string length around 512MiB; the live bag is 719MB.
+ * writePrettyJsonBag already streams the write. Per-card JSON.parse stays under the limit.
  */
-export function parseSnapshotPretty(raw: string): SuperfundRodSnapshot | null {
-  try {
-    const parsed = parseSnapshotFile(JSON.parse(raw));
-    if (parsed) return parsed;
-  } catch {
-    /* fall through to per-card parse */
+export function parseSnapshotPrettyFromBuffer(buf: Uint8Array): SuperfundRodSnapshot | null {
+  const bytes = Buffer.isBuffer(buf) ? buf : Buffer.from(buf);
+  return parseSnapshotPrettyFromNodeBuffer(bytes);
+}
+
+function parseSnapshotPrettyFromNodeBuffer(buf: Buffer): SuperfundRodSnapshot | null {
+  const cardsAt = findCardsArrayStartBuf(buf);
+  if (cardsAt < 0) {
+    try {
+      return parseSnapshotFile(JSON.parse(Buffer.from(buf).toString("utf8")));
+    } catch {
+      return null;
+    }
   }
-  const cardsAt = findCardsArrayStart(raw);
-  if (cardsAt < 0) return null;
   const cards: SuperfundRodCard[] = [];
   let i = cardsAt + 1;
-  while (i < raw.length) {
-    i = skipJsonWs(raw, i);
-    if (raw[i] === "]") {
+  while (i < buf.length) {
+    i = skipJsonWsBuf(buf, i);
+    if (buf[i] === RBRACK_B) {
       i += 1;
       break;
     }
-    if (raw[i] === ",") {
+    if (buf[i] === COMMA_B) {
       i += 1;
       continue;
     }
-    const obj = nextJsonObjectSlice(raw, i);
+    const obj = nextJsonObjectSliceBuf(buf, i);
     if (!obj) return null;
     try {
-      const card = JSON.parse(obj.slice) as SuperfundRodCard;
+      const card = JSON.parse(Buffer.from(buf.subarray(obj.start, obj.end)).toString("utf8")) as SuperfundRodCard;
       if (!card || typeof card !== "object" || !card.id) return null;
       cards.push(card);
     } catch {
@@ -780,7 +797,11 @@ export function parseSnapshotPretty(raw: string): SuperfundRodSnapshot | null {
     }
     i = obj.end;
   }
-  const slim = `${raw.slice(0, cardsAt + 1)}]${raw.slice(i)}`;
+  const slim = Buffer.concat([
+    Buffer.from(buf.subarray(0, cardsAt + 1)),
+    Buffer.from("]"),
+    Buffer.from(buf.subarray(i)),
+  ]).toString("utf8");
   try {
     const wrapper = parseSnapshotFile(JSON.parse(slim));
     if (wrapper) return { ...wrapper, cards };
@@ -790,11 +811,22 @@ export function parseSnapshotPretty(raw: string): SuperfundRodSnapshot | null {
   return null;
 }
 
+/**
+ * Parse a Superfund snapshot without one-shot JSON.parse of the whole document.
+ * writePrettyJsonBag already streams the write; a 530MB+ bag still throws
+ * RangeError on JSON.parse(readFileSync(..., "utf-8")) because V8 strings
+ * cap near 512MiB. Evening 2026-09-16 collect then refused the 719MB bag.
+ */
+export function parseSnapshotPretty(raw: string): SuperfundRodSnapshot | null {
+  return parseSnapshotPrettyFromBuffer(Buffer.from(raw, "utf8"));
+}
+
 export function readSuperfundRodsSnapshot(): SuperfundRodSnapshot | null {
   const path = snapshotPath();
   if (!existsSync(path)) return null;
   try {
-    return parseSnapshotPretty(readFileSync(path, "utf-8"));
+    // Never read the fat bag as one UTF-8 string — 719MB > V8 string max.
+    return parseSnapshotPrettyFromBuffer(readFileSync(path));
   } catch {
     return null;
   }
