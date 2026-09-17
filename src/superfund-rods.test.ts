@@ -22,6 +22,7 @@ import {
   fetchCapBlocksNewDownload,
   loadSuperfundRodsManifest,
   parseSnapshotPretty,
+  parseSnapshotPrettyFromBuffer,
   readSuperfundRodsSnapshot,
   snapshotPath,
   stripJsonStringField,
@@ -522,6 +523,10 @@ async function main(): Promise<void> {
       assert.equal(recovered?.fetchedAt, "2026-09-15T04:48:00.000Z");
       const viaRead = readSuperfundRodsSnapshot();
       assert.equal(viaRead?.cards.length, 3);
+      const viaBuf = parseSnapshotPrettyFromBuffer(readFs(join(streamDir, "snapshot.json")));
+      assert.equal(viaBuf?.cards.length, 3, "Buffer parse must not toString the whole fat bag");
+      assert.equal(viaBuf?.cards[2]?.body.includes("chunk-body-2"), true);
+      assert.equal(viaBuf?.fetchedAt, "2026-09-15T04:48:00.000Z");
     } finally {
       JSON.parse = origParse;
     }
