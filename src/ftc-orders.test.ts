@@ -30,6 +30,7 @@ import {
   buildFtcOrdersManifest,
   catalogId,
   collectFtcOrders,
+  isoDate,
   discoverCaseSlugs,
   filterFtcOrdersManifest,
   isCaseHtmlOnly,
@@ -91,6 +92,8 @@ async function main(): Promise<void> {
 
   assert.equal(catalogId("9449", "2026-08-31", "jason-scott-dvm-matter"), SCOTT_ID);
   assert.equal(catalogId("", "2026-09-16", "berettaruger"), BERETTA_ID);
+  assert.equal(isoDate("616193.2026.08.31_administrative_law_judge_decision_on_application_for_review_0.pdf"), "2026-08-31");
+  assert.equal(isoDate("Beretta-Ruger-Order.pdf"), null);
   assert.equal(parseKind("Administrative Law Judge Decision on Application for Review"), "ALJ Decision");
   assert.equal(parseKind("Decision of the Administrative Law Judge on Petition for Review"), "ALJ Decision");
   assert.equal(parseKind("Administrative Law Judge Decision On Review"), "ALJ Decision");

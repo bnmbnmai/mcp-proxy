@@ -203,7 +203,7 @@ export function isoDate(raw: string | null | undefined): string | null {
   if (!raw) return null;
   const iso = raw.match(/(\d{4})-(\d{2})-(\d{2})/);
   if (iso) return `${iso[1]}-${iso[2]}-${iso[3]}`;
-  const dotted = raw.match(/\b(\d{4})\.(\d{2})\.(\d{2})\b/);
+  const dotted = raw.match(/(\d{4})\.(\d{2})\.(\d{2})(?=$|[^\d])/);
   if (dotted) return `${dotted[1]}-${dotted[2]}-${dotted[3]}`;
   const us = raw.match(/\b(\d{1,2})\/(\d{1,2})\/(\d{4})\b/);
   if (us) return `${us[3]}-${us[1].padStart(2, "0")}-${us[2].padStart(2, "0")}`;
@@ -321,8 +321,7 @@ export function isWarningLetterBody(text: string): boolean {
 export function isCaseHtmlOnly(text: string): boolean {
   return (
     /<html[\s>]/i.test(text) &&
-    /node--type-case|cases-proceedings|field--name-field-docket-number/i.test(text) &&
-    !/ADMINISTRATIVE LAW JUDGE DECISION|DECISION OF THE ADMINISTRATIVE LAW JUDGE|DECISION AND ORDER/i.test(text)
+    /node--type-case|cases-proceedings|field--name-field-docket-number/i.test(text)
   );
 }
 
@@ -417,9 +416,10 @@ export function parseCaseHtml(html: string, pageSlug = ""): FtcOrderListing[] {
     const kind = parseKind(title);
     if (!kind) continue;
     const filename = decodeURIComponent(sourceUrl.split("/").pop() || "");
+    const idx = match.index ?? 0;
     const date =
       isoDate(filename) ||
-      isoDate(html.slice(Math.max(0, match.index ?? 0) - 240, (match.index ?? 0) + 80));
+      isoDate(html.slice(Math.max(0, idx - 400), idx + 200));
     const listing: FtcOrderListing = {
       id: catalogId(docket, date, slug),
       docket,
