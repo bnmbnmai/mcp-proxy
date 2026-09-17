@@ -11,12 +11,13 @@ export const TICKS_PUBLIC_CACHE_SOURCE = "USDA farm market prices cache";
 
 const CANONICAL = "https://ticks.bnm.farm";
 
-/** 3–6 line agent prompt with exact shop URLs. */
+/** Short agent prompt with exact shop URLs. */
 export const SAMPLE_HOW_TO_USE = [
   `Search a free index: GET ${CANONICAL}/{door}/manifest.json?q=…`,
   `Then one official text: GET ${CANONICAL}/{door}?id=… ($0.02)`,
   `Or a page of 10: GET ${CANONICAL}/{door} ($0.05; whole current set if n<10)`,
   `Tables: GET ${CANONICAL}/ticks and GET ${CANONICAL}/import-alerts ($0.05 = entire current table)`,
+  `Table rebuy: pay GET /ticks once → store ETag → poll with If-None-Match (or ?since=) → HTTP 304 no charge when unchanged → pay again only when the body/ETag changes`,
   `Paid JSON keys (canned example, not live): GET ${CANONICAL}/sample`,
 ] as const;
 

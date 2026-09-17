@@ -604,6 +604,15 @@ async function main(): Promise<void> {
     assert.equal((oneV2.accepts as { amount?: string }[])[0]?.amount, SINGLE_DOC_AMOUNT_ATOMIC);
     const declared = bazaarExtension("ticks");
     assert.deepEqual(
+      (declared.info as { input?: { queryParams?: unknown; headers?: unknown } }).input?.queryParams,
+      { since: "" },
+    );
+    assert.deepEqual(
+      (declared.info as { input?: { headers?: unknown } }).input?.headers,
+      { "If-None-Match": "" },
+      "402 bazaar must advertise If-None-Match for /ticks rebuy polls",
+    );
+    assert.deepEqual(
       v2.extensions?.bazaar?.info?.input,
       (declared.info as { input: unknown }).input,
     );
@@ -9588,6 +9597,17 @@ async function main(): Promise<void> {
       const llmsBody = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(llmsBody.includes("?since="));
       assert.ok(llmsBody.includes("If-None-Match"));
+      assert.ok(llmsBody.includes("## Table rebuy"), "llms.txt must teach /ticks ETag rebuy");
+      assert.ok(wk.extra?.etag?.includes("pay once"), "well-known etag copy must spell the rebuy habit");
+      const ticksBazaar = bazaarExtension("ticks") as {
+        info?: { input?: { headers?: Record<string, string>; queryParams?: Record<string, string> } };
+      };
+      assert.deepEqual(ticksBazaar.info?.input?.headers, { "If-None-Match": "" });
+      assert.deepEqual(ticksBazaar.info?.input?.queryParams, { since: "" });
+      const iaBazaar = bazaarExtension("import-alerts") as {
+        info?: { input?: { headers?: Record<string, string> } };
+      };
+      assert.deepEqual(iaBazaar.info?.input?.headers, { "If-None-Match": "" });
 
       const unpaidTicks = await fetch(`${base}${TICKS_PATH}`);
       assert.equal(unpaidTicks.status, 402, "unpaid /ticks still 402");
