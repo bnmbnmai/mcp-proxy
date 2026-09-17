@@ -1,0 +1,22 @@
+# apply PR 240 Superfund Buffer reader — live ticks.bnm.farm
+# serving SHA 8a2b12b / merge d56ba151
+# idaho-ticks-x402.service restart Wed 2026-09-16 23:15:38 MDT PID 2129131 (was 1808175)
+# Restarted only that unit. docker-gw / Caddy / tunnel untouched.
+# Rebuild #3 left running PID 2061938. Did not collect.
+
+BEFORE (door still on 17:13 PID; Buffer build on disk since 21:11)
+GET  https://ticks.bnm.farm/superfund-rods/manifest.json  200  via: 1.1 Caddy  cardCount=981  asOf=2026-09-15  fetchedAt=2026-09-17T00:47:26.064Z
+GET  https://ticks.bnm.farm/superfund-rods                 402
+GET  https://ticks.bnm.farm/.well-known/x402               200  resources=61
+readSuperfundRodsSnapshot()  n=981  5348ms  no RangeError  snapshot=719072222 bytes
+
+AFTER (restart 23:15:38 MDT PID 2129131 cwd=/home/apollo/projects/mcp-proxy)
+GET  http://127.0.0.1:4020/superfund-rods/manifest.json    200  cardCount=981  fetchedAt=2026-09-17T00:47:26.064Z  no body
+GET  https://ticks.bnm.farm/superfund-rods/manifest.json  200  via: 1.1 Caddy  cardCount=981  asOf=2026-09-15  fetchedAt=2026-09-17T00:47:26.064Z  bodyLeak=0
+GET  http://127.0.0.1:4020/superfund-rods                  402
+GET  https://ticks.bnm.farm/superfund-rods                 402  PAYMENT-REQUIRED  amount=50000  extra.name=USD Coin
+GET  https://ticks.bnm.farm/.well-known/x402               200  resources=61  extra.resourceCount=61  /superfund-rods + /fmc-orders
+GET  https://ticks.bnm.farm/ticks                          402  sibling
+
+rebuild #3 PID 2061938 still Sl+ RSS~1.8GB  newest PDFs 23:13  bag still 981 / fetchedAt unchanged
+catalog.json 249141 bytes  n=981

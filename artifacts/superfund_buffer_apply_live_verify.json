@@ -1,0 +1,113 @@
+{
+  "job": "apply PR 240 Superfund Buffer reader onto live ticks.bnm.farm",
+  "ranOn": "apollo",
+  "hostname": "pop-os",
+  "lan": "192.168.1.243",
+  "path": "/superfund-rods",
+  "priceUsdc": "0.05",
+  "amountAtomic": "50000",
+  "network": "base",
+  "branch": "cursor/apply-superfund-buffer-4a7c",
+  "servingSha": "8a2b12b7731c062643a3991fa704733cd7089216",
+  "servingShaShort": "8a2b12b",
+  "mergeSha": "d56ba15190f54d3b1bf4f4b848852d94fb14880c",
+  "mergeShaShort": "d56ba151",
+  "sourcePr": "https://github.com/bnmbnmai/mcp-proxy/pull/240",
+  "sourceBranch": "cursor/superfund-buffer-read-736f",
+  "stackedOn": "cursor/fmc-orders-0443",
+  "liveServingBefore": "1808175 started 2026-09-16 17:13:32 MDT (pre-Buffer build)",
+  "systemctlUserRestart": {
+    "unit": "idaho-ticks-x402.service",
+    "ok": true,
+    "otherUnitsRestarted": false,
+    "activeEnterTimestamp": "Wed 2026-09-16 23:15:38 MDT",
+    "activeEnterUtc": "2026-09-17T05:15:38Z",
+    "pidBefore": "1808175",
+    "pidAfter": "2129131",
+    "cwd": "/home/apollo/projects/mcp-proxy",
+    "buildSuperfundRodsJs": "2026-09-16 21:11:03 MDT contains parseSnapshotPrettyFromBuffer"
+  },
+  "banner": {
+    "superfund": "/superfund-rods $0.05 USDC",
+    "fmcOrders": "/fmc-orders $0.05 USDC",
+    "mcp": "mcp /mcp — 61 tools from /.well-known/x402",
+    "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004"
+  },
+  "bufferSmoke": {
+    "fn": "readSuperfundRodsSnapshot",
+    "n": 981,
+    "ms": 5348,
+    "rangeError": false,
+    "fetchedAt": "2026-09-17T00:47:26.064Z",
+    "asOf": "2026-09-15",
+    "status": "ok",
+    "snapshotBytes": 719072222,
+    "path": "/home/apollo/projects/mcp-proxy/data/superfund-rods/snapshot.json"
+  },
+  "rebuild3": {
+    "pid": 2061938,
+    "ppid": 2061935,
+    "script": "/tmp/superfund-rebuild-evening.sh",
+    "started": "2026-09-16T21:59:01-0600",
+    "status": "running",
+    "limit": 2500,
+    "maxFetch": 200,
+    "rssKb": 1864668,
+    "leftRunning": true,
+    "bagGrewPast981": false
+  },
+  "live": {
+    "wellKnown": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "resourceCount": 61,
+      "hasSuperfundRods": true,
+      "hasFmcOrders": true
+    },
+    "unpaidGet": {
+      "status": 402,
+      "via": "1.1 Caddy",
+      "hasPaymentRequired": true,
+      "maxAmountRequired": "50000",
+      "payTo": "0xf59621FC406D266e18f314Ae18eF0a33b8401004",
+      "extraName": "USD Coin",
+      "resource": "https://ticks.bnm.farm/superfund-rods"
+    },
+    "manifest": {
+      "status": 200,
+      "via": "1.1 Caddy",
+      "cardCount": 981,
+      "asOf": "2026-09-15",
+      "fetchedAt": "2026-09-17T00:47:26.064Z",
+      "bodyLeak": false
+    },
+    "siblingsStill402": {
+      "/ticks": 402
+    },
+    "loopback": {
+      "unpaidGet": 402,
+      "manifest": 200,
+      "manifestCardCount": 981,
+      "manifestFetchedAt": "2026-09-17T00:47:26.064Z"
+    }
+  },
+  "shop": {
+    "paid": 5,
+    "dollars": 0.16,
+    "searches": 653,
+    "hits": 118098,
+    "settleJournalLastTs": "2026-09-07T21:32:14.978Z",
+    "newSettle": false
+  },
+  "excluded": {
+    "secondCollect": "not run; hay under 18h; crons 45 7 / 45 19 already present",
+    "redbubble": "parked, not opened",
+    "catalogMain": "not checked out",
+    "dockerGw": "untouched",
+    "caddy": "untouched",
+    "tunnel": "untouched",
+    "otherUnits": "not restarted",
+    "shopUsdc": "not spent",
+    "keys": "not printed"
+  }
+}
