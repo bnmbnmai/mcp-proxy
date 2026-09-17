@@ -22,6 +22,10 @@ from typing import Any
 DEFAULT_STALE_HOURS = 36
 DEFAULT_GROW_UNTIL = 20
 FAT_N = 200
+# Loopback well-known can take >2s while hay/Superfund is busy; 2s caused
+# this-morning fallback to PUBLIC_BAZAAR_SKUS. Prefer live well-known.
+WELL_KNOWN_TIMEOUT = 8
+PUBLIC_WELL_KNOWN_URL = "https://ticks.bnm.farm/.well-known/x402"
 
 
 def cache_n(payload: dict[str, Any] | None) -> int:
@@ -187,19 +191,24 @@ def list_official_doors(
             doors = official_doors_from_well_known(data)
             if doors:
                 return doors, "well-known-file"
+    urls: list[str] = []
     if url:
+        urls.append(url)
+    if PUBLIC_WELL_KNOWN_URL not in urls:
+        urls.append(PUBLIC_WELL_KNOWN_URL)
+    for candidate in urls:
         try:
             from urllib.request import Request, urlopen
 
-            req = Request(url, headers={"User-Agent": "ticks-collect"})
-            with urlopen(req, timeout=2) as resp:
+            req = Request(candidate, headers={"User-Agent": "ticks-collect"})
+            with urlopen(req, timeout=WELL_KNOWN_TIMEOUT) as resp:
                 data = json.loads(resp.read().decode())
             if isinstance(data, dict):
                 doors = official_doors_from_well_known(data)
                 if doors:
                     return doors, "well-known"
         except Exception:
-            pass
+            continue
     if door_src:
         doors = official_doors_from_door_src(door_src)
         if doors:
