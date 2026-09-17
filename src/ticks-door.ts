@@ -3665,19 +3665,25 @@ export function bazaarExtension(sku: DoorSku): Record<string, unknown> {
   // schema.properties.output.required (that was ["type"] and vet402 L2
   // treated it as catalog-declared paid keys → mismatch vs /ticks).
   if (paidSchema) output.schema = paidSchema;
+  const input: Record<string, unknown> = {
+    type: "http",
+    method: "GET",
+    queryParams: isExtractedBodySku(sku)
+      ? { id: "", before: "", since: "", page: "" }
+      : isTableSku(sku)
+        ? { since: "" }
+        : isPdfCacheSku(sku)
+          ? { id: "", before: "" }
+          : {},
+  };
+  // Table doors already honor If-None-Match; advertise it on the 402 bazaar
+  // input so buyer agents do not only see ?since=.
+  if (isTableSku(sku)) {
+    input.headers = { "If-None-Match": "" };
+  }
   return {
     info: {
-      input: {
-        type: "http",
-        method: "GET",
-        queryParams: isExtractedBodySku(sku)
-          ? { id: "", before: "", since: "", page: "" }
-          : isTableSku(sku)
-            ? { since: "" }
-            : isPdfCacheSku(sku)
-              ? { id: "", before: "" }
-            : {},
-      },
+      input,
       output,
     },
     schema: {
@@ -4787,8 +4793,8 @@ export function llmsTxt(): string {
   const listedGmpMd = gmpMdIsPublic();
   const ticksPrice = usdcDisplayFromAtomic(amountAtomicFor("ticks")) ?? "$0.05";
   const paid = [
-    `- GET /ticks — ${ticksPrice} — USDA farm market prices (hay, cattle, grain, dairy, hogs, produce). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water. Paid JSON keeps ticks[] and adds records[] + asOf. ETag / If-None-Match (or ?since=) 304s an unchanged snapshot.`,
-    "- GET /import-alerts — $0.05 — FDA Import Alerts / DWPE firm-product snapshot. Paid JSON keeps ticks[] and adds records[] + asOf. ETag / If-None-Match (or ?since=) 304s an unchanged snapshot.",
+    `- GET /ticks — ${ticksPrice} — USDA farm market prices (hay, cattle, grain, dairy, hogs, produce). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water. Paid JSON keeps ticks[] and adds records[] + asOf. Rebuy: pay once → store ETag → poll If-None-Match (or ?since=) → 304 no charge when unchanged → pay again only when ETag/body changes.`,
+    "- GET /import-alerts — $0.05 — FDA Import Alerts / DWPE firm-product snapshot. Paid JSON keeps ticks[] and adds records[] + asOf. Same ETag / If-None-Match (or ?since=) rebuy habit as /ticks.",
     "- GET /mariners — $0.05 — USCG D13 / Northwest Local Notice to Mariners",
     "- GET /mariners-d11 — $0.05 — USCG D11 / Southwest Local Notice to Mariners",
     "- GET /mariners-d7 — $0.05 — USCG D7 / Southeast Local Notice to Mariners",
@@ -4948,6 +4954,14 @@ export function llmsTxt(): string {
     "",
     `${noNextSkuWord()} Free manifests are not the paid body.`,
     "",
+    "## Table rebuy (/ticks, /import-alerts)",
+    "",
+    "- Pay GET /ticks (or /import-alerts) once ($0.05 = entire current table). Response includes ETag.",
+    "- Store that ETag (and/or fetchedAt/asOf for ?since=).",
+    "- Poll the same URL with If-None-Match: <stored ETag> (or ?since=<fetchedAt|asOf>).",
+    "- HTTP 304 = unchanged snapshot, no charge, no body.",
+    "- When the table changes, ETag changes: unpaid poll is 402 again — pay once more for the whole current table. Same path; not a new SKU.",
+    "",
     "## Prompt for AI",
     "",
     ...SAMPLE_HOW_TO_USE.map((line) => `- ${line}`),
@@ -4999,7 +5013,7 @@ export function wellKnownX402(req: IncomingMessage, port: number): Record<string
       since:
         "Extracted-body doors accept ?since=<ISO timestamp or official catalog id> (same watermark shape as ?before=). Paid GET returns only official texts newer than that watermark. Empty new set: HTTP 304 with ETag, or paid 200 with empty records/ids and a stable asOf/fetchedAt. Newest-10 ?before= and ?id= stay.",
       etag:
-        "GET /ticks and GET /import-alerts send ETag. If-None-Match on an unchanged snapshot returns 304 and does not re-sell the table. If the table changed, the whole current table is returned (existing product). Optional ?since= on those tables 304s when fetchedAt/asOf is not newer.",
+        "GET /ticks and GET /import-alerts send ETag. Buyer habit: pay once, store ETag, poll with If-None-Match → HTTP 304 no charge when unchanged; when the body changes, ETag changes and the same GET is a fresh $0.05 buy of the whole current table. Optional ?since= on those tables 304s when fetchedAt/asOf is not newer.",
       resourceCount: paidDiscoveryPaths().length,
       updateCadence: COLLECT_CADENCE,
       http429: HTTP_429_COPY,
@@ -5091,7 +5105,7 @@ function paidOpenApiOp(opts: {
               required: false,
               schema: { type: "string" },
               description:
-                "ETag from a prior paid GET. Unchanged snapshot returns HTTP 304 and does not re-sell the table.",
+                "ETag from a prior paid GET /ticks (or /import-alerts). Unchanged snapshot returns HTTP 304 and does not re-sell the table. When the body changes, omit or send the new ETag and pay again for the whole current table.",
             },
           ]
         : [],
@@ -5410,7 +5424,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       pagePriceAtomic: Number(PAGE_AMOUNT_ATOMIC),
       pageDefault: paidBodyWindow(),
       since: "ISO timestamp or official catalog id on extracted-body doors; fetchedAt/asOf on /ticks and /import-alerts",
-      etag: "GET /ticks and GET /import-alerts. If-None-Match → 304 when unchanged.",
+      etag: "GET /ticks and GET /import-alerts. Pay once, store ETag, poll If-None-Match → 304 when unchanged; rebuy whole table when ETag changes.",
       updateCadence: COLLECT_CADENCE,
       http429: HTTP_429_COPY,
     },
