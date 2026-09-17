@@ -15,6 +15,7 @@
   "sourcePr": "https://github.com/bnmbnmai/mcp-proxy/pull/240",
   "sourceBranch": "cursor/superfund-buffer-read-736f",
   "stackedOn": "cursor/fmc-orders-0443",
+  "thisApply": "https://github.com/bnmbnmai/mcp-proxy/pull/241",
   "liveServingBefore": "1808175 started 2026-09-16 17:13:32 MDT (pre-Buffer build)",
   "systemctlUserRestart": {
     "unit": "idaho-ticks-x402.service",
