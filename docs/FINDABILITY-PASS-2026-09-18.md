@@ -193,11 +193,13 @@ Higher rank = more missed agent buys if we leave it.
 
 **Do:** this PR syncs README, SHOP-INDEX, `docs/live-well-known.json`, live OpenAPI snapshot, findability report, and retires Apollo submission drafts.
 
-### TAKE-5 — Lander `/ftc-orders` card (TAKE docs PR, PARK apollo)
+### TAKE-5 — Lander `/ftc-orders` card (TAKE patch, PARK apollo)
 
 **Why $:** Honesty, not revenue. `cardCount` is 0. Live WK/llms/OpenAPI already name the door; HTML still has 61 cards.
 
-**Do:** docs-only tv-remote PR on the lander-61 tip. Apollo apply later. Do not bake a fake Live count.
+**Do:** apply [lander-ftc-orders.patch](./lander-ftc-orders.patch) on the lander-61 tip (`homelab/sites/public/home/index.html`), then apollo reload. Hydrate keeps a real 0. Do not bake a fake Live count.
+
+A full-file push to private `tv-remote` from this box failed (MCP argument cap). Ignore branch `cursor/ftc-orders-lander-1775` if it still has upload stubs.
 
 ### TAKE-6 — Harvest `/ftc-orders` (PARK)
 
