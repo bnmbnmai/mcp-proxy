@@ -2,15 +2,17 @@
  * Free cross-door firm check on official caches already indexed here.
  * Searches firm/institution/bank-nameable official indexes that already
  * expose a usable name field: Form 483, FDA warning letters, FDA untitled
- * letters, FTC BCP warning letters, Ofwat, Ofgem, CFPB orders, OCC C&Ds,
- * FDIC orders, and the FDA import-alert catalog.
+ * letters, FTC BCP warning letters, FTC ALJ/Commission orders, FMC orders,
+ * Ofwat, Ofgem, CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog.
  * Does not scrape FDA.gov. Does not return letter bodies or the full import-alert table.
  * Not a paid SKU. Does not invent a new paid door.
  */
 
 import { loadCfpbOrdersManifest } from "./cfpb-orders.js";
 import { loadFdicOrdersManifest } from "./fdic-orders.js";
+import { loadFmcOrdersManifest } from "./fmc-orders.js";
 import { loadForm483Manifest } from "./form-483.js";
+import { loadFtcOrdersManifest } from "./ftc-orders.js";
 import { loadFtcWlManifest } from "./ftc-wl.js";
 import { loadManifest as loadImportAlertsManifest } from "./import-alerts.js";
 import { loadOccCdManifest } from "./occ-cd.js";
@@ -33,6 +35,8 @@ export const FIRM_CHECK_DOORS = [
   "warning-letters",
   "untitled-letters",
   "ftc-wl",
+  "ftc-orders",
+  "fmc-orders",
   "ofwat-enforcement",
   "ofgem-enforcement",
   "cfpb-orders",
@@ -42,7 +46,7 @@ export const FIRM_CHECK_DOORS = [
 ] as const;
 
 export const FIRM_CHECK_NOTE =
-  "Free cross-door search of official caches: Form 483, FDA warning letters, FDA untitled letters, FTC BCP warning letters, Ofwat enforcement, Ofgem enforcement, CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog. Not a paid SKU. Hits name the door, the id or page to buy, and fetchedAt/asOf. One official text is GET ?id= ($0.02). The page of newest 10 official texts is $0.05. The import-alert table stays the entire current table at $0.05. Does not return letter bodies or the full import-alert table.";
+  "Free cross-door search of official caches: Form 483, FDA warning letters, FDA untitled letters, FTC BCP warning letters, FTC ALJ/Commission orders, FMC orders, Ofwat enforcement, Ofgem enforcement, CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog. Not a paid SKU. Hits name the door, the id or page to buy, and fetchedAt/asOf. One official text is GET ?id= ($0.02). The page of newest 10 official texts is $0.05. The import-alert table stays the entire current table at $0.05. Does not return letter bodies or the full import-alert table.";
 
 const BODY_DOOR_ORDER: Record<string, number> = Object.fromEntries(
   FIRM_CHECK_DOORS.map((door, i) => [door, i]),
@@ -53,6 +57,8 @@ export type FirmCheckIndexes = {
   warningLetters?: Record<string, unknown> | null;
   untitledLetters?: Record<string, unknown> | null;
   ftcWl?: Record<string, unknown> | null;
+  ftcOrders?: Record<string, unknown> | null;
+  fmcOrders?: Record<string, unknown> | null;
   ofwatEnforcement?: Record<string, unknown> | null;
   ofgemEnforcement?: Record<string, unknown> | null;
   cfpbOrders?: Record<string, unknown> | null;
@@ -66,6 +72,8 @@ const BODY_INDEX_DOORS: Array<{ door: Exclude<(typeof FIRM_CHECK_DOORS)[number],
   { door: "warning-letters", key: "warningLetters" },
   { door: "untitled-letters", key: "untitledLetters" },
   { door: "ftc-wl", key: "ftcWl" },
+  { door: "ftc-orders", key: "ftcOrders" },
+  { door: "fmc-orders", key: "fmcOrders" },
   { door: "ofwat-enforcement", key: "ofwatEnforcement" },
   { door: "ofgem-enforcement", key: "ofgemEnforcement" },
   { door: "cfpb-orders", key: "cfpbOrders" },
@@ -295,6 +303,8 @@ export async function runFirmCheck(q: string, cap = FIRM_CHECK_CAP): Promise<Fir
     warningLetters,
     untitledLetters,
     ftcWl,
+    ftcOrders,
+    fmcOrders,
     ofwatEnforcement,
     ofgemEnforcement,
     cfpbOrders,
@@ -306,6 +316,8 @@ export async function runFirmCheck(q: string, cap = FIRM_CHECK_CAP): Promise<Fir
     loadWarningLettersManifest(),
     loadUntitledLettersManifest(),
     loadFtcWlManifest(),
+    loadFtcOrdersManifest(),
+    loadFmcOrdersManifest(),
     loadOfwatEnforcementManifest(),
     loadOfgemEnforcementManifest(),
     loadCfpbOrdersManifest(),
@@ -320,6 +332,8 @@ export async function runFirmCheck(q: string, cap = FIRM_CHECK_CAP): Promise<Fir
       warningLetters,
       untitledLetters,
       ftcWl,
+      ftcOrders,
+      fmcOrders,
       ofwatEnforcement,
       ofgemEnforcement,
       cfpbOrders,

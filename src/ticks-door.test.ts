@@ -571,6 +571,8 @@ async function main(): Promise<void> {
       const desc = sku402Description(sku);
       assert.ok(desc.includes(`https://ticks.bnm.farm/${sku}/manifest.json?q=`), `${sku} 402 names free search`);
       assert.ok(desc.length <= 500, `${sku} 402 description is ${desc.length}`);
+      assert.ok(!desc.includes("older page Free search"), `${sku} 402 does not glue older page into Free search`);
+      assert.ok(/[.!?] Free search:/.test(desc), `${sku} 402 punctuates before Free search`);
       assert.ok(!/^Not /m.test(desc) && !desc.includes("Not the"), `${sku} 402 has no leak-test`);
       const extra = paymentExtra(sku);
       assert.equal(extra.name, "USD Coin", `${sku} extra.name stays USDC`);
@@ -585,6 +587,12 @@ async function main(): Promise<void> {
       assert.equal(extra.sampleUrl, "https://ticks.bnm.farm/sample");
       assert.equal(Object.prototype.hasOwnProperty.call(extra, "tableWhole"), false);
     }
+    const ftcOrders402 = sku402Description("ftc-orders");
+    assert.ok(ftcOrders402.includes("GET ?id= one official text ($0.02)"));
+    assert.ok(ftcOrders402.includes("$0.05"));
+    assert.ok(ftcOrders402.includes("https://ticks.bnm.farm/ftc-orders/manifest.json?q="));
+    assert.ok(!ftcOrders402.includes("older page Free search"));
+    assert.ok(/[.!?] Free search:/.test(ftcOrders402));
     const tableExtra = paymentExtra("ticks");
     assert.equal(tableExtra.searchUrl, null);
     assert.equal(tableExtra.tableWhole, true);
