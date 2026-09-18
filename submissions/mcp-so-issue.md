@@ -2,6 +2,8 @@
 
 **Do not publish from a box that is not logged in as `bnmbnmai`.**
 
+x402-list.com ownership update is Bruce-only: [docs/X402LIST-OWNERSHIP-BRUCE.md](../docs/X402LIST-OWNERSHIP-BRUCE.md). Agents must not submit it. No Apollo Proxy revival.
+
 Live door count is [https://ticks.bnm.farm/.well-known/x402](https://ticks.bnm.farm/.well-known/x402), not a hardcoded number.
 
 ## Issue Title

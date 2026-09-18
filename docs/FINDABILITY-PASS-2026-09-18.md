@@ -1,5 +1,9 @@
 # Findability pass — ticks.bnm.farm (2026-09-18)
 
+**Current truth (America/Boise ~2:15am / ~08:15Z):** [FINDABILITY-ADDENDUM-2026-09-18-0215-MDT.md](./FINDABILITY-ADDENDUM-2026-09-18-0215-MDT.md). x402-list ownership is Bruce-only: [X402LIST-OWNERSHIP-BRUCE.md](./X402LIST-OWNERSHIP-BRUCE.md). Agents must not submit it.
+
+The 04:32Z–04:36Z probe below is the morning snapshot. Do not treat its empty `/ftc-orders` bag, 61-card lander, or “mcp-proxy still on 40” row as live. Later the same night: lander FTC card **LIVE**; `/ftc-orders` bag **stocked** (`cardCount` 5); `#247` **merged** (docs/README/OpenAPI already 62 on main). CDP TAKE stays settle-gated PARK execute. x402-list TAKE stays Bruce-email gated.
+
 Galaxy steal: AI-search visibility. Hunt + what we can fix without inventing settles or claiming x402-list ownership.
 
 Probed: `2026-09-18T04:32Z`–`04:36Z` UTC.
@@ -81,7 +85,7 @@ Paths, WK order:
 61. `/gmp`
 62. `/gmp-md`
 
-`/ftc-orders` is the 62nd door after lander-61. Free manifest `cardCount` is **0** (`asOf` null). Door exists; bag is empty. Do not sell it as stocked.
+`/ftc-orders` is the 62nd door after lander-61. **At 04:32Z** the free manifest `cardCount` was **0** (`asOf` null). **Later the same night** the bag is stocked: `cardCount` **5**, `fetchedAt` `2026-09-18T04:40:38.868Z`, `asOf` `2026-08-31`. Sell it as a live door with a small bag, not as empty.
 
 ## 2) CDP discovery (Bazaar)
 
@@ -121,7 +125,7 @@ Listed 36: `/air-letters` `/awa` `/bis-orders` `/cder-reviews` `/cfpb-orders` `/
 
 Missing 26 vs live: `/mariners-d1` `/mariners-d5` `/mariners-d9` `/mariners-d14` `/mariners-d17` `/ofwat-enforcement` `/ofgem-enforcement` `/gain` `/orr-enforcement` `/phmsa-orders` `/aaib-reports` `/csb-reports` `/hhs-oig-reports` `/eis-reports` `/fsis-humane` `/epa-cafo` `/fmshrc-orders` `/bsee-reports` `/oshrc-orders` `/epa-alj` `/epa-eab` `/faa-civil-penalty` `/stb-decisions` `/oalj-decisions` `/fmc-orders` `/ftc-orders`.
 
-Ownership update is `POST /api/v1/services/bnm-data-shop/request-update` then publish a one-time token at `{origin}/.well-known/x402list.txt` and `verify-ownership`. **Not done here.** Needs Bruce email (`brucemccray@gmail.com`).
+Ownership update is `POST /api/v1/services/bnm-data-shop/request-update` then publish a one-time token at `{origin}/.well-known/x402list.txt` and `verify-ownership`. **Not done here.** Needs Bruce email (`brucemccray@gmail.com`). Draft runbook: [X402LIST-OWNERSHIP-BRUCE.md](./X402LIST-OWNERSHIP-BRUCE.md). Agents must not submit. Re-checked `2026-09-18T08:11Z`: still `endpoint_count` 36, description still “36 paid GETs”.
 
 ## 4) x402scan + other public indexes
 
@@ -144,7 +148,7 @@ Not on x402scan: the 25 doors added after that crawl (five extra LNM districts, 
 - lobehub plugin URL 404.
 - mcp.so API: Cloudflare challenge (not readable here).
 - `x402.directory`: TLS failed from this box.
-- Repo `submissions/*` still described **Apollo Proxy** (residential proxy, apolloai.team). Retired in this pass.
+- Repo `submissions/*` still described **Apollo Proxy** (residential proxy, apolloai.team). Retired in this pass. x402-list pointer: [X402LIST-OWNERSHIP-BRUCE.md](./X402LIST-OWNERSHIP-BRUCE.md) (Bruce only; do not revive Apollo).
 
 ## 5) Own rails after lander-61
 
@@ -152,10 +156,10 @@ Not on x402scan: the 25 doors added after that crawl (five extra LNM districts, 
 | --- | --- | --- |
 | ticks `/.well-known/x402` | 62 | Yes |
 | ticks `/` shop JSON | 62 products | Yes |
-| ticks `/llms.txt` + apex `/llms.txt` | “Sixty-two paid GETs”, lists `/ftc-orders` | Yes |
+| ticks `/llms.txt` + apex `/llms.txt` | “Sixty-two paid GETs”, lists `/ftc-orders`; `## Table rebuy` (ETag / If-None-Match) for `/ticks` + `/import-alerts` | Yes |
 | ticks `/openapi.json` | 3.1.0 `1.5.0`, “Sixty-two paid GETs” | Yes |
-| `bnm.farm/` HTML | **61** `class="product"` cards | **No** — missing `/ftc-orders` card, curl block, hydrate, footer license |
-| GitHub `mcp-proxy` `main` (before this PR) | README / SHOP-INDEX / `docs/live-well-known.json` **40**; repo OpenAPI said “forty” | **No** |
+| `bnm.farm/` HTML | **61** `class="product"` cards at 04:32Z; **62 LIVE** by ~2:15am MDT (FTC Orders card on) | **Yes** (after later apply) |
+| GitHub `mcp-proxy` `main` | README / SHOP-INDEX / `docs/live-well-known.json` were **40** before `#247`; **62** on main after `#247` | **Yes** (after `#247`) |
 | lander-61 leftovers (wool/water, Ofwat Live: 2, hardcoded 61) | gone on live HTML | Yes |
 | `shopStats 6 / $0.21` | apply-record / board only; not on public HTML | N/A |
 
@@ -165,7 +169,7 @@ Not on x402scan: the 25 doors added after that crawl (five extra LNM districts, 
 
 Higher rank = more missed agent buys if we leave it.
 
-### TAKE-1 — CDP Bazaar: index the other 61 doors (PARK execute)
+### TAKE-1 — CDP Bazaar: index the other 61 doors (PARK execute, settle-gated)
 
 **Why $:** This is the AI-search surface. `FDA warning letters` / `Form 483` / `import-alerts` / `GMP` already return **other shops**. `/warning-letters` (1997), `/form-483` (1189), `/gmp` (4099), `/import-alerts` (18924), `/superfund-rods` (1204) are live and invisible.
 
@@ -173,11 +177,11 @@ Higher rank = more missed agent buys if we leave it.
 
 **Do not:** invent settles, replay, or fake X-PAYMENT.
 
-### TAKE-2 — x402-list 36 → 62 (PARK, Bruce email)
+### TAKE-2 — x402-list 36 → live well-known (PARK, Bruce email)
 
-**Why $:** Directory agents still read “36 paid GETs”. Missing stocked doors include `/phmsa-orders` (526), extra LNM districts (126–1760 notices), `/hhs-oig-reports` (202), `/bsee-reports` (132), `/fsis-humane` (93), `/eis-reports` (74), `/stb-decisions` (62).
+**Why $:** Directory agents still read “36 paid GETs”. Missing stocked doors include `/phmsa-orders` (526), extra LNM districts (126–1760 notices), `/hhs-oig-reports` (202), `/bsee-reports` (132), `/fsis-humane` (93), `/eis-reports` (74), `/stb-decisions` (62). `/ftc-orders` is now stocked (`cardCount` 5) — include it.
 
-**Do:** Bruce sends `request-update` from the ownership email, publishes `/.well-known/x402list.txt`, verify. New description: live count is well-known; do not hardcode 62. Skip listing `/ftc-orders` as stocked until `cardCount>0`.
+**Do:** Bruce-only runbook [X402LIST-OWNERSHIP-BRUCE.md](./X402LIST-OWNERSHIP-BRUCE.md). Bruce sends `request-update` from the ownership email, publishes `/.well-known/x402list.txt` on ticks.bnm.farm, verify. New description: live count is well-known; do not hardcode 62. Include the $0.02 `?id=` price story.
 
 **Do not:** submit from this agent.
 
@@ -187,23 +191,21 @@ Higher rank = more missed agent buys if we leave it.
 
 **Do:** ask x402scan to recrawl `https://ticks.bnm.farm/.well-known/x402` / server `c6f584c5-…`. No fake volume.
 
-### TAKE-4 — GitHub mcp-proxy copy 40 → live 62 (TAKE, this PR)
+### TAKE-4 — GitHub mcp-proxy copy 40 → live 62 (DONE, `#247`)
 
-**Why $:** Agents and humans that start at the official repo still see 40 doors and “forty” in the checked-in OpenAPI. Cheaper than CDP, but we can ship it without apollo.
+**Why $:** Agents and humans that start at the official repo were still seeing 40 doors and “forty” in the checked-in OpenAPI.
 
-**Do:** this PR syncs README, SHOP-INDEX, `docs/live-well-known.json`, live OpenAPI snapshot, findability report, and retires Apollo submission drafts.
+**Done:** `#247` merged on main. README, SHOP-INDEX, `docs/live-well-known.json`, live OpenAPI snapshot, and the 04:32Z findability report are already 62. Apollo submission drafts were retired there. Do not re-open as a sync.
 
-### TAKE-5 — Lander `/ftc-orders` card (TAKE patch, PARK apollo)
+### TAKE-5 — Lander `/ftc-orders` card (LIVE)
 
-**Why $:** Honesty, not revenue. `cardCount` is 0. Live WK/llms/OpenAPI already name the door; HTML still has 61 cards.
+**Why $:** Honesty. At 04:32Z `cardCount` was 0 and HTML had 61 cards.
 
-**Do:** apply [lander-ftc-orders.patch](./lander-ftc-orders.patch) on the lander-61 tip (`homelab/sites/public/home/index.html`), then apollo reload. Hydrate keeps a real 0. Do not bake a fake Live count.
+**Done later the same night:** public `bnm.farm/` has the FTC Orders / `ftc-orders` card (62 `class="product"`). [lander-ftc-orders.patch](./lander-ftc-orders.patch) is historical. No apollo apply from this box.
 
-A full-file push to private `tv-remote` from this box failed (MCP argument cap). Ignore branch `cursor/ftc-orders-lander-1775` if it still has upload stubs.
+### TAKE-6 — Harvest `/ftc-orders` (DONE)
 
-### TAKE-6 — Harvest `/ftc-orders` (PARK)
-
-Empty door. Indexing it now just advertises a zero bag. Harvest first, then settle/list.
+**At 04:32Z** the door was empty. **Later the same night** free manifest `cardCount` is **5** (`fetchedAt` `2026-09-18T04:40:38.868Z`). Bag is stocked. Do not keep this PARK as empty-door.
 
 ### TAKE-7 — MCP / lobehub / mcp.so (PARK / low)
 
@@ -211,6 +213,7 @@ Official MCP registry is already listed and honest. lobehub 404 and mcp.so chall
 
 ## What this pass changed
 
-- mcp-proxy docs: shop index + OpenAPI snapshot aligned to live WK (62).
+- mcp-proxy docs: shop index + OpenAPI snapshot aligned to live WK (62). Shipped on main as `#247`.
 - submissions: Apollo Proxy leftovers replaced with BNM Data Shop drafts.
-- tv-remote: `/ftc-orders` lander copy PR only if GitHub write to that private repo is available from this run. Live apply still needs apollo.
+- tv-remote: `/ftc-orders` lander copy was still pending apollo at 04:32Z. **Later the same night the lander card is LIVE**; do not treat apply as open work.
+- Later-same-night truth + Bruce-only x402-list draft: [FINDABILITY-ADDENDUM-2026-09-18-0215-MDT.md](./FINDABILITY-ADDENDUM-2026-09-18-0215-MDT.md), [X402LIST-OWNERSHIP-BRUCE.md](./X402LIST-OWNERSHIP-BRUCE.md).
