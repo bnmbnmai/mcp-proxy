@@ -10,6 +10,7 @@ import {
   SKIPPED_SOURCES,
   latestEsmisPdfUrl,
   mergeAmsNationalTicks,
+  mergeFailedAmsSlugs,
   mergePartialAmsSnapshot,
   officialPdfCandidateOrder,
   parseAmsReportText,
@@ -564,6 +565,41 @@ assert.equal(AMS_LEFTOVER_REPORTS.filter((r) => r.kind === "se-barn").length, 5)
   assert.equal(folded.rows.find((r) => r.id.includes("ams_2006"))?.label, "fresh leftover");
   assert.equal(folded.failed.length, 0);
   assert.ok(folded.sources.includes("AMS_1778 Montana Weekly Cattle Auction Summary"));
+}
+{
+  const prev = {
+    ok: true as const,
+    product: "idaho-hay-feeder-ticks" as const,
+    fetchedAt: "2026-09-17T14:01:06.948Z",
+    asOf: "2026-09-16",
+    tickCount: 2,
+    rows: [
+      { id: "produce.ams_na_fv010.atlanta.tomatoes.georgia", group: "produce" as const, commodity: "Tomatoes", label: "keep produce", market: "ATL", classGrade: "x", unit: "$/cwt", price: 1, asOf: "2026-09-16", source: "old", sourceUrl: "https://example.invalid/na_fv010", reportDate: "2026-09-16", series: "keep" },
+      { id: "hay.ams_2904.california.alfalfa.premium", group: "hay" as const, commodity: "Alfalfa", label: "ok hay", market: "CA", classGrade: "x", unit: "$/ton", price: 2, asOf: "2026-09-16", source: "old", sourceUrl: "https://example.invalid/2904", reportDate: "2026-09-16", series: "ok" },
+    ],
+    failed: [],
+    sources: ["AMS_na_fv010 Atlanta Fruit and Vegetable", "AMS_2904 California Direct Hay"],
+  };
+  const next = {
+    ok: true as const,
+    product: "idaho-hay-feeder-ticks" as const,
+    fetchedAt: "2026-09-18T01:58:57.430Z",
+    asOf: "2026-09-17",
+    tickCount: 1,
+    rows: [
+      { id: "hay.ams_2904.california.alfalfa.premium", group: "hay" as const, commodity: "Alfalfa", label: "fresh hay", market: "CA", classGrade: "x", unit: "$/ton", price: 3, asOf: "2026-09-17", source: "new", sourceUrl: "https://example.invalid/2904", reportDate: "2026-09-17", series: "fresh" },
+    ],
+    failed: [{ id: "ams_na_fv010", source: "AMS_na_fv010 Atlanta Fruit and Vegetable", sourceUrl: "https://example.invalid/na_fv010", reason: "fetch failed" }],
+    sources: ["AMS_2904 California Direct Hay"],
+  };
+  const held = mergeFailedAmsSlugs(prev, next);
+  assert.equal(held.tickCount, 2);
+  assert.equal(held.rows.find((r) => r.id.includes("ams_na_fv010"))?.label, "keep produce");
+  assert.equal(held.rows.find((r) => r.id.includes("ams_2904"))?.label, "fresh hay");
+  assert.equal(held.failed.length, 1);
+  assert.equal(held.failed[0]?.id, "ams_na_fv010");
+  assert.ok(held.sources.includes("AMS_na_fv010 Atlanta Fruit and Vegetable"));
+  assert.ok(held.sources.includes("AMS_2904 California Direct Hay"));
 }
 assert.ok(
   ["2998", "2993", "2995", "1598", "1048", "1045", "1051", "1052", "1102", "2997", "2872", "2810", "3802", "2314", "2315", "2306", "2290"].every((s) => slugs.includes(s)),

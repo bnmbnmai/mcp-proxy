@@ -1871,6 +1871,38 @@ export function mergePartialAmsSnapshot(prev: AmsSnapshot, next: AmsSnapshot, sl
   };
 }
 
+/** Full-walk fail-closed: keep previous rows for slugs whose fetch failed this pass. */
+export function mergeFailedAmsSlugs(prev: AmsSnapshot, next: AmsSnapshot): AmsSnapshot {
+  const failedSlugs = new Set(
+    next.failed
+      .map((row) => reportSlugFromFailedId(row.id))
+      .filter((slug): slug is string => Boolean(slug)),
+  );
+  if (failedSlugs.size === 0) return next;
+  const keepRows = prev.rows.filter((row) => {
+    const slug = reportSlugFromTickId(row.id);
+    return Boolean(slug && failedSlugs.has(slug));
+  });
+  if (keepRows.length === 0) return next;
+  const keepSources = prev.sources.filter((label) => {
+    const slug = reportSlugFromSourceLabel(label);
+    return Boolean(slug && failedSlugs.has(slug));
+  });
+  const rows = [...keepRows, ...next.rows];
+  const sources = [...keepSources.filter((label) => !next.sources.includes(label)), ...next.sources];
+  const asOf = rows.map((r) => r.asOf).sort().at(-1) ?? next.asOf ?? prev.asOf;
+  return {
+    ok: true,
+    product: next.product || prev.product,
+    fetchedAt: next.fetchedAt,
+    asOf,
+    tickCount: rows.length,
+    rows,
+    failed: next.failed,
+    sources,
+  };
+}
+
 export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number }): Promise<AmsSnapshot> {
   const dir = opts?.dir ?? amsNationalDir();
   const pauseMs = opts?.pauseMs ?? Number(env("TICKS_AMS_PAUSE_MS") || "1200");
@@ -1932,9 +1964,13 @@ export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number
     sources,
   };
   const filteredSlugs = reports.map((r) => r.slug);
-  const prev = reports.length < AMS_NATIONAL_REPORTS.length ? readAmsSnapshot(dir) : null;
+  const prev = readAmsSnapshot(dir);
   if (prev && prev.rows.length > 0) {
-    snap = mergePartialAmsSnapshot(prev, snap, filteredSlugs);
+    if (reports.length < AMS_NATIONAL_REPORTS.length) {
+      snap = mergePartialAmsSnapshot(prev, snap, filteredSlugs);
+    } else if (failed.length > 0) {
+      snap = mergeFailedAmsSlugs(prev, snap);
+    }
   }
   writeAmsSnapshot(snap, dir);
   return snap;
