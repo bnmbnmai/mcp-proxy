@@ -1,0 +1,52 @@
+--- a/homelab/sites/public/home/index.html
++++ b/homelab/sites/public/home/index.html
+@@ -1116,6 +1116,20 @@
+       <nav class="actions" aria-label="FMC Orders links">
+         <a class="primary" href="https://ticks.bnm.farm/fmc-orders">Endpoint</a>
+         <a href="https://ticks.bnm.farm/fmc-orders/manifest.json">Manifest</a>
++      </nav>
++    </article>
++    <article class="card">
++      <p class="kicker">Product</p>
++      <h2 class="product">FTC Orders</h2>
++      <p class="facts" id="ftc-orders-facts">FTC cases-proceedings ALJ Decision / Commission Decision and Order text. Live bag size hydrates from the free manifest. $0.02 one text / $0.05 newest 10.</p>
++      <div class="meta" aria-label="FTC Orders payment">
++        <span class="pill">Base</span>
++        <span class="pill">USDC</span>
++        <span class="pill" data-nickel="ftc-orders-facts">$0.02 / $0.05</span>
++      </div>
++      <nav class="actions" aria-label="FTC Orders links">
++        <a class="primary" href="https://ticks.bnm.farm/ftc-orders">Endpoint</a>
++        <a href="https://ticks.bnm.farm/ftc-orders/manifest.json?q=">Search</a>
+       </nav>
+     </article>
+     </div>
+@@ -1260,11 +1274,13 @@
+ curl -s https://ticks.bnm.farm/oalj-decisions/manifest.json
+ curl -i https://ticks.bnm.farm/oalj-decisions
+ curl -s https://ticks.bnm.farm/fmc-orders/manifest.json
+-curl -i https://ticks.bnm.farm/fmc-orders</pre>
++curl -i https://ticks.bnm.farm/fmc-orders
++curl -s https://ticks.bnm.farm/ftc-orders/manifest.json
++curl -i https://ticks.bnm.farm/ftc-orders</pre>
+         </div>
+       </details>
+     </section>
+-    <footer>Public data only. Live door count is <a href="https://ticks.bnm.farm/.well-known/x402">/.well-known/x402</a>. Untitled-letter texts, AWA inspection-report observations, FDA PCAC 503A briefing memos, FTC BCP warning-letter texts, CFPB consent-order texts, OCC C&amp;D / consent-order texts, FDIC consent-order / C&amp;D texts, FRB C&amp;D / WA / PCA texts, NCUA C&amp;D / consent-order texts, FinCEN consent-order texts, FERC stipulation / consent-order texts, OFAC enforcement-release texts, BIS charging-letter / order texts, CFTC enforcement-order texts, EPA FIFRA order / consent texts, FDA De Novo classification-order texts, TTB Offer in Compromise texts, USDA APHIS AIR confirmation-letter texts, EPA Superfund ROD texts, FDA CDER Integrated Review texts, EPA-issued individual NPDES permit texts, USDA FAS GAIN attaché report texts, PHMSA pipeline enforcement-order texts, US CSB final investigation report PDFs, HHS OIG audit and evaluation report PDFs, EPA NEPA Environmental Impact Statement texts, USDA FSIS humane-handling enforcement letter texts, EPA Part 22 CAFO / ESA administrative penalty letter texts, FMSHRC ALJ + Commission Decision/Order texts, BSEE District Accident Investigation Report texts, OSHRC ALJ Decision/Order + Commission Final Order texts, EPA OALJ Initial Decision and Order / ALJ Order texts, EPA Environmental Appeals Board Unpublished Final Order / Board Order texts, FAA Civil Penalty Appeals Administrator Final Order / Decision &amp; Order texts, STB Board Decision / Order texts, DOL OALJ / BALCA / ARB Decision and Order texts, and FMC Reading Room Initial Decision / Commission Order texts are 17 USC 105 / US government work. ICO monetary penalty notice texts are OGL v3.0. CMA CA98 infringement-decision texts are Crown copyright / Open Government Licence v3.0. Ofsted school/provider inspection-report texts are Ofsted / Open Government Licence v3.0. Ofwat WIA91 enforcement / s.19 texts are Crown copyright / Open Government Licence v3.0. Ofgem enforcement / s.27A / provisional-order texts are Crown copyright / Open Government Licence v3.0. ORR Railways Act s.55 notice / order / investigation-report texts are Crown copyright / Open Government Licence v3.0. UK AAIB investigation-report texts are Crown copyright / Open Government Licence v3.0. EMA human-referral procedure texts are © European Medicines Agency.</footer>
++    <footer>Public data only. Live door count is <a href="https://ticks.bnm.farm/.well-known/x402">/.well-known/x402</a>. Untitled-letter texts, AWA inspection-report observations, FDA PCAC 503A briefing memos, FTC BCP warning-letter texts, CFPB consent-order texts, OCC C&amp;D / consent-order texts, FDIC consent-order / C&amp;D texts, FRB C&amp;D / WA / PCA texts, NCUA C&amp;D / consent-order texts, FinCEN consent-order texts, FERC stipulation / consent-order texts, OFAC enforcement-release texts, BIS charging-letter / order texts, CFTC enforcement-order texts, EPA FIFRA order / consent texts, FDA De Novo classification-order texts, TTB Offer in Compromise texts, USDA APHIS AIR confirmation-letter texts, EPA Superfund ROD texts, FDA CDER Integrated Review texts, EPA-issued individual NPDES permit texts, USDA FAS GAIN attaché report texts, PHMSA pipeline enforcement-order texts, US CSB final investigation report PDFs, HHS OIG audit and evaluation report PDFs, EPA NEPA Environmental Impact Statement texts, USDA FSIS humane-handling enforcement letter texts, EPA Part 22 CAFO / ESA administrative penalty letter texts, FMSHRC ALJ + Commission Decision/Order texts, BSEE District Accident Investigation Report texts, OSHRC ALJ Decision/Order + Commission Final Order texts, EPA OALJ Initial Decision and Order / ALJ Order texts, EPA Environmental Appeals Board Unpublished Final Order / Board Order texts, FAA Civil Penalty Appeals Administrator Final Order / Decision &amp; Order texts, STB Board Decision / Order texts, DOL OALJ / BALCA / ARB Decision and Order texts, FMC Reading Room Initial Decision / Commission Order texts, and FTC cases-proceedings ALJ Decision / Commission Decision and Order texts are 17 USC 105 / US government work. ICO monetary penalty notice texts are OGL v3.0. CMA CA98 infringement-decision texts are Crown copyright / Open Government Licence v3.0. Ofsted school/provider inspection-report texts are Ofsted / Open Government Licence v3.0. Ofwat WIA91 enforcement / s.19 texts are Crown copyright / Open Government Licence v3.0. Ofgem enforcement / s.27A / provisional-order texts are Crown copyright / Open Government Licence v3.0. ORR Railways Act s.55 notice / order / investigation-report texts are Crown copyright / Open Government Licence v3.0. UK AAIB investigation-report texts are Crown copyright / Open Government Licence v3.0. EMA human-referral procedure texts are © European Medicines Agency.</footer>
+   </div>
+   <script>
+     const addr = "0xf59621FC406D266e18f314Ae18eF0a33b8401004";
+@@ -1563,6 +1579,12 @@
+       if (n == null) return document.getElementById("fmc-orders-facts").innerHTML;
+       return "FMC Reading Room Initial Decision / Commission Order text. Live: <strong>" + n + "</strong> official texts. $0.02 one text / $0.05 newest 10.";
+     });
++    hydrate("ftc-orders-facts", "https://ticks.bnm.farm/ftc-orders/manifest.json", (m) => {
++      const n = publishedCount(m);
++      if (n == null) return document.getElementById("ftc-orders-facts").innerHTML;
++      setNickel("ftc-orders-facts", n);
++      return "FTC cases-proceedings ALJ Decision / Commission Decision and Order text. Live: <strong>" + n + "</strong> official texts. $0.02 one text / $0.05 newest 10. Free search: /ftc-orders/manifest.json?q=.";
++    });
+ 
+     loadJson("https://ticks.bnm.farm/manifest.json")
+       .then((m) => {

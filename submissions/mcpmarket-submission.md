@@ -1,39 +1,32 @@
-# MCPMarket.com Submission
+# MCPMarket.com draft (do not submit except as bnmbnmai)
 
-**Submit at:** https://mcpmarket.com/submit
+**Do not publish from a box that is not logged in as `bnmbnmai`.**
+
+Live door count is https://ticks.bnm.farm/.well-known/x402, not a hardcoded number.
 
 ## Server Details
 
-**Name:** Apollo Proxy MCP Server
+**Name:** BNM Data Shop
 
-**Description:**  
-Give your AI agent access to the web through residential proxies. Fetch any URL through 190+ country exit nodes with rotating or sticky sessions. Pay-per-use via x402 micropayments (USDC on Base).
-
-**npm Package:** @apollo_ai/mcp-proxy
+**Description:**
+Official public-data x402 GETs at ticks.bnm.farm. Table doors $0.05 for the entire current table. Body doors: free search on `/{door}/manifest.json?q=`, then $0.02 one official text or $0.05 a page of 10. USDC on Base.
 
 **GitHub:** https://github.com/bnmbnmai/mcp-proxy
 
-**Homepage:** https://apolloai.team
+**Homepage:** https://bnm.farm/
 
-**Category:** Web / Networking / API Access
+**Remote MCP:** https://ticks.bnm.farm/mcp
 
-**Tags:** proxy, web-scraping, residential-proxy, x402, micropayments, ai-agent
+**Category:** Data
 
-## Tools Provided
-
-1. **proxy_fetch** - Fetch any URL through residential proxies (190+ countries)
-2. **proxy_status** - Check service availability and pricing
-3. **list_countries** - List available proxy exit countries by region
+**Tags:** x402, official-data, usda, fda, usdc, base
 
 ## Pricing
 
-- $0.005 USDC per request
-- 250KB max response
-- 100 req/min rate limit
-- Payments via x402 protocol on Base
+- Tables (`/ticks`, `/import-alerts`): $0.05 entire current table
+- Body doors: $0.02 `?id=` / $0.05 newest 10
+- Free: `/sample`, `/firm-check?q=`, `/{door}/manifest.json`, `/.well-known/x402`, `/openapi.json`, `/llms.txt`
 
-## Why List
+## Why list
 
-- First x402-native proxy service for AI agents
-- Direct competitor to Firecrawl ($0.004/page) but with geo-targeting
-- Works with Claude Desktop, Cursor, any MCP client
+Official public caches, not scraped commentary. Agents should read live well-known, not a hardcoded door count.
