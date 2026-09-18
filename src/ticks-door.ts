@@ -4,7 +4,7 @@
  *
  * GET /ticks — USDA farm market prices ($0.05 USDC on Base)
  * GET /sample — free canned paid-JSON keys (not a SKU)
- * GET /firm-check?q= — free firm-name search across Form 483, warning letters, untitled letters, FTC WL, Ofwat, Ofgem, CFPB/OCC/FDIC, import-alert indexes (not a SKU)
+ * GET /firm-check?q= — free firm-name search across Form 483, warning letters, untitled letters, FTC WL, FTC orders, FMC orders, Ofwat, Ofgem, CFPB/OCC/FDIC, import-alert indexes (not a SKU)
  * GET /.well-known/x402list.txt — free static ownership proof (HTTP 200, not a SKU)
  * GET /import-alerts — FDA Import Alert / DWPE firm ticks ($0.05)
  * GET /import-alerts/manifest.json — free catalog + schema + sample rows
@@ -1463,7 +1463,7 @@ const CANONICAL_ORIGIN = "https://ticks.bnm.farm";
 const CDP_DESCRIPTION_MAX = 500;
 const TABLE_ENTIRE_COPY = "$0.05 = entire current table.";
 const IMPORT_ALERTS_FIRM_CHECK_COPY =
-  `Free firm search across 483, warning letters, untitled letters, FTC/Ofwat/Ofgem/CFPB/OCC/FDIC, and this table: GET ${CANONICAL_ORIGIN}/firm-check?q=`;
+  `Free firm search across 483, warning letters, untitled letters, FTC/FMC/Ofwat/Ofgem/CFPB/OCC/FDIC, and this table: GET ${CANONICAL_ORIGIN}/firm-check?q=`;
 
 function extractedBodyFreeSearchCopy(door: string): string {
   return `Free search: GET ${CANONICAL_ORIGIN}/${door}/manifest.json?q= (HTTP 200) returns id and the ?id= URL. Then pay GET ?id= ($0.02) or the page ($0.05).`;
@@ -1484,10 +1484,23 @@ function sku402Product(sku: DoorSku): string {
 
 function clamp402Description(text: string, mustKeep: string): string {
   if (text.length <= CDP_DESCRIPTION_MAX) return text;
-  const suffix = mustKeep.startsWith(" ") ? mustKeep : ` ${mustKeep}`;
+  const keep = mustKeep.trim();
+  const suffix = keep ? ` ${keep}` : "";
   const budget = CDP_DESCRIPTION_MAX - suffix.length;
-  if (budget < 1) return suffix.trim().slice(0, CDP_DESCRIPTION_MAX);
-  return `${text.slice(0, Math.max(0, text.length - suffix.length)).slice(0, budget).trim()}${suffix}`;
+  if (budget < 1) return keep.slice(0, CDP_DESCRIPTION_MAX);
+  let lead = text;
+  if (keep && text.endsWith(keep)) lead = text.slice(0, text.length - keep.length).trimEnd();
+  if (lead.length <= budget) {
+    const joined = `${lead}${/[.!?]$/.test(lead) ? "" : "."}${suffix}`;
+    return joined.length <= CDP_DESCRIPTION_MAX ? joined : `${lead.slice(0, budget).trim()}${suffix}`;
+  }
+  const window = lead.slice(0, budget);
+  const sentenceEnd = window.lastIndexOf(". ");
+  const cut = (sentenceEnd >= 12 ? window.slice(0, sentenceEnd + 1) : window).trim();
+  const punctuated = /[.!?]$/.test(cut) ? cut : `${cut.replace(/[;:,\s]+$/, "")}.`;
+  const joined = `${punctuated}${suffix}`;
+  if (joined.length <= CDP_DESCRIPTION_MAX) return joined;
+  return `${punctuated.slice(0, Math.max(0, CDP_DESCRIPTION_MAX - suffix.length)).trim()}${suffix}`;
 }
 
 /** 402 accepts[].description — product + bag + price + where free search is. OpenAPI keeps SKU_COPY. */
@@ -4922,7 +4935,7 @@ export function llmsTxt(): string {
   }
   const free = [
     `- GET /sample — free canned paid-JSON keys (table SKU + ?id= body SKU). HTTP 200. Not live cache. Not a SKU.`,
-    `- GET /firm-check?q= — free firm-name search across Form 483, FDA warning letters, FDA untitled letters, FTC BCP warning letters, Ofwat enforcement, Ofgem enforcement, CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog. HTTP 200. Names the door and the id or page to buy ($0.02 one text / $0.05 page or table). Not a SKU.`,
+    `- GET /firm-check?q= — free firm-name search across Form 483, FDA warning letters, FDA untitled letters, FTC BCP warning letters, FTC ALJ/Commission orders, FMC orders, Ofwat enforcement, Ofgem enforcement, CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog. HTTP 200. Names the door and the id or page to buy ($0.02 one text / $0.05 page or table). Not a SKU.`,
     `- GET /openapi.json — OpenAPI 3.1 with x-payment-info for the ${paidCountWord()} paid doors`,
     `- GET /.well-known/x402 — absolute URLs of the ${paidCountWord()} paid routes only`,
     `- GET / — shop JSON (payTo + the ${paidCountWord()} products)`,
