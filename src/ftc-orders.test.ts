@@ -30,7 +30,9 @@ import {
   buildFtcOrdersManifest,
   catalogId,
   collectFtcOrders,
+  enrichFtcOrderCard,
   isoDate,
+  issuedDateFromBody,
   discoverCaseSlugs,
   filterFtcOrdersManifest,
   isCaseHtmlOnly,
@@ -40,10 +42,13 @@ import {
   isRealFtcOrderBody,
   isWarningLetterBody,
   keepListing,
+  nearestDocumentDate,
   officialFtcPdfUrl,
   parseCaseHtml,
+  parseDocketFromText,
   parseKind,
   parseFtcOrderText,
+  writeFtcOrdersSnapshot,
 } from "./ftc-orders.js";
 
 const fixtures = join(dirname(fileURLToPath(import.meta.url)), "../src/fixtures/ftc-orders");
@@ -92,8 +97,15 @@ async function main(): Promise<void> {
 
   assert.equal(catalogId("9449", "2026-08-31", "jason-scott-dvm-matter"), SCOTT_ID);
   assert.equal(catalogId("", "2026-09-16", "berettaruger"), BERETTA_ID);
+  assert.equal(catalogId("9403", "2026-09-17", "182-3000-fleetcor-technologies-matter"), "9403-2026-09-17");
   assert.equal(isoDate("616193.2026.08.31_administrative_law_judge_decision_on_application_for_review_0.pdf"), "2026-08-31");
   assert.equal(isoDate("Beretta-Ruger-Order.pdf"), null);
+  assert.equal(parseDocketFromText("Docket No. D-9403"), "9403");
+  assert.equal(parseDocketFromText("Docket No. C-4798"), "4798");
+  assert.equal(parseDocketFromText("Docket No. C"), "", "unnumbered Commission caption is not a docket");
+  assert.equal(issuedDateFromBody("On December 20, 2019, the Federal Trade Commission filed suit"), null);
+  assert.equal(issuedDateFromBody("ISSUED:\n\n"), null);
+  assert.equal(issuedDateFromBody("FILED 08/31/2026 OSCAR NO. 616193"), "2026-08-31");
   assert.equal(parseKind("Administrative Law Judge Decision on Application for Review"), "ALJ Decision");
   assert.equal(parseKind("Decision of the Administrative Law Judge on Petition for Review"), "ALJ Decision");
   assert.equal(parseKind("Administrative Law Judge Decision On Review"), "ALJ Decision");
@@ -147,6 +159,41 @@ async function main(): Promise<void> {
   assert.equal(beretta?.board, "commission");
   assert.equal(beretta?.kind, "Decision and Order");
   assert.equal(beretta?.date, "2026-09-16");
+  assert.equal(beretta?.docket, "", "official PDF caption is Docket No. C with no number");
+  assert.equal(beretta?.oscar, "", "Commission D&O filename has no OSCAR prefix");
+  const berettaHref = berettaCase.find((r) => r.sourceUrl === BERETTA_URL);
+  assert.ok(berettaHref);
+  assert.equal(
+    nearestDocumentDate(readFx("berettaruger.html"), readFx("berettaruger.html").indexOf("Beretta-Ruger-Order.pdf")),
+    "2026-09-16",
+  );
+
+  const fleetcorCase = parseCaseHtml(
+    readFx("182-3000-fleetcor-technologies-matter.html"),
+    "182-3000-fleetcor-technologies-matter",
+  );
+  const fleetcor = fleetcorCase.find((r) => r.kind === "Decision and Order");
+  assert.equal(fleetcor?.docket, "9403");
+  assert.equal(fleetcor?.date, "2026-09-17");
+  assert.equal(fleetcor?.id, "9403-2026-09-17");
+  assert.equal(fleetcor?.oscar, "", "FleetCor D&O filename has no OSCAR prefix");
+  assert.equal(fleetcor?.board, "commission");
+  const fleetcorText = parseFtcOrderText(readFx("182-3000-fleetcor-technologies-matter.txt"), {
+    ...fleetcor!,
+    id: "182-3000-fleetcor-technologies-matter",
+    date: fleetcor?.date ?? null,
+  });
+  assert.equal(fleetcorText.docket, "9403");
+  assert.equal(fleetcorText.date, "2026-09-17", "case-page date wins over December 20, 2019 lawsuit sentence");
+  assert.equal(fleetcorText.id, "9403-2026-09-17");
+  const fleetcorBodyOnly = parseFtcOrderText(readFx("182-3000-fleetcor-technologies-matter.txt"), {
+    sourceUrl: "https://www.ftc.gov/system/files/ftc_gov/pdf/Fleetcor-DecisionandOrder_1.pdf",
+    caseUrl: "https://www.ftc.gov/legal-library/browse/cases-proceedings/182-3000-fleetcor-technologies-matter",
+    id: "182-3000-fleetcor-technologies-matter",
+  });
+  assert.equal(fleetcorBodyOnly.docket, "9403");
+  assert.equal(fleetcorBodyOnly.date, null, "do not steal the 2019 lawsuit date from the narrative");
+  assert.equal(fleetcorBodyOnly.id, "182-3000-fleetcor-technologies-matter");
 
   assert.ok(isFrMirrorBody(readFx("federalregister.html")));
   assert.ok(isFederalRegisterHtml(readFx("federalregister.html")));
@@ -178,6 +225,41 @@ async function main(): Promise<void> {
   const prevDir = process.env.FTC_ORDERS_DIR;
   process.env.FTC_ORDERS_DIR = cacheDir;
   const snap = await collectFtcOrders({ htmlDir: fixtures, limit: 4, maxFetch: 0 });
+  const dirtyBeretta = snap.cards.find((c) => c.id === BERETTA_ID);
+  assert.ok(dirtyBeretta);
+  writeFtcOrdersSnapshot({
+    ...snap,
+    cards: snap.cards.map((c) =>
+      c.id === BERETTA_ID
+        ? { ...c, id: "berettaruger", date: null, docket: "", oscar: "" }
+        : c,
+    ),
+  });
+  const refreshed = await collectFtcOrders({ htmlDir: fixtures, limit: 4, maxFetch: 0 });
+  const berettaLive = refreshed.cards.find((c) => c.sourceUrl === BERETTA_URL);
+  assert.equal(berettaLive?.id, BERETTA_ID, "refresh upgrades slug-only Commission id to slug-date");
+  assert.equal(berettaLive?.date, "2026-09-16");
+  assert.equal(refreshed.cards.length, snap.cards.length, "refresh does not fatten the first-slice bag");
+  const dirtyFleet = enrichFtcOrderCard(
+    {
+      id: "182-3000-fleetcor-technologies-matter",
+      docket: "9403",
+      oscar: "",
+      kind: "Decision and Order",
+      board: "commission",
+      institution: "Fleetcor Technologies",
+      date: "2019-12-20",
+      title: "Decision and Order",
+      filename: "Fleetcor-DecisionandOrder_1.pdf",
+      sourceUrl: "https://www.ftc.gov/system/files/ftc_gov/pdf/Fleetcor-DecisionandOrder_1.pdf",
+      caseUrl: "https://www.ftc.gov/legal-library/browse/cases-proceedings/182-3000-fleetcor-technologies-matter",
+      body: readFx("182-3000-fleetcor-technologies-matter.txt"),
+    },
+    fleetcor,
+  );
+  assert.equal(dirtyFleet.id, "9403-2026-09-17");
+  assert.equal(dirtyFleet.date, "2026-09-17");
+  assert.equal(dirtyFleet.docket, "9403");
   if (prevDir === undefined) delete process.env.FTC_ORDERS_DIR;
   else process.env.FTC_ORDERS_DIR = prevDir;
 
