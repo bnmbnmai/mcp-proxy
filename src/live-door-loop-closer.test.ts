@@ -32,6 +32,14 @@ async function main(): Promise<void> {
   assert.match(emptyFtc.draftNote, /No outbound/);
   assert.doesNotMatch(emptyFtc.draftNote, /email|twitter|slack/i);
 
+  const filledFtc = classifyLiveDoor("/ftc-orders", {
+    product: "ftc-order-bodies",
+    cardCount: 5,
+    fetchedAt: "2026-09-18T04:40:38.868Z",
+    asOf: "2026-08-31",
+  });
+  assert.equal(filledFtc.empty, false, "live 04:56Z bag of 5 is not empty");
+
   const healthy = classifyLiveDoor(
     "/fmc-orders",
     { cardCount: 12, fetchedAt: "2026-09-18T01:00:00.000Z", asOf: "2026-09-17" },

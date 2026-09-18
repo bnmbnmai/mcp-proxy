@@ -2,15 +2,16 @@
 
 Lists **empty / stale LIVE doors** from public well-known + free manifests. No outbound email, X, Slack, or board send. Does not invent doors or demand.
 
-## Live snapshot (2026-09-18T04:35Z, unpaid / free only)
+## Live snapshot (unpaid / free only)
 
 `GET https://ticks.bnm.farm/.well-known/x402` → **62** resources, includes `/ftc-orders`.
 
-| Path | Bag | Watermark | Status | Draft follow-up |
-| --- | --- | --- | --- | --- |
-| `/ftc-orders` | `cardCount` **0**, `cards` [] | no `fetchedAt` / `asOf` | empty LIVE door | Evening 7:45 America/Boise collect owns the first bag walk. Do not start a second collect. No outbound. Lander paste: [`FTC-ORDERS-X402.md`](./FTC-ORDERS-X402.md) / [tv-remote#98](https://github.com/bnmbnmai/tv-remote/pull/98). |
+| When | Path | Bag | Watermark | Status | Draft follow-up |
+| --- | --- | --- | --- | --- | --- |
+| 2026-09-18T04:35Z | `/ftc-orders` | `cardCount` **0**, `cards` [] | no `fetchedAt` / `asOf` | empty LIVE door | Evening 7:45 America/Boise collect owned the first bag walk. Do not start a second collect. No outbound. |
+| 2026-09-18T04:56Z | `/ftc-orders` | `cardCount` **5** (Beretta/Ruger Decision and Order; 9449 Scott ALJ; 9444 Juarez-Ruffino ALJ; 9443 Overly ALJ; Fleetcor Decision and Order) | `fetchedAt` 2026-09-18T04:40:38Z · `asOf` 2026-08-31 | first bag landed | No second collect. Lander paste still outstanding: [`FTC-ORDERS-X402.md`](./FTC-ORDERS-X402.md) / [tv-remote#98](https://github.com/bnmbnmai/tv-remote/pull/98). |
 
-All other live paid doors returned a positive bag count (`cardCount` / `tickCount` / `letterCount` / `noticeCount`) or a fresh-enough watermark. Mariners / Form 483 / warning-letters use those other count keys — they are **not** empty.
+Cloud 04:35Z list treated `/ftc-orders` as the only empty LIVE door. The 04:56Z unpaid re-read shows evening collect already wrote five free cards. Helper will report **no empty doors** if run against live now. Mariners / Form 483 / warning-letters use other count keys — they are **not** empty.
 
 `GET /llms.txt` on this scan includes **`## Table rebuy`**. Unpaid `GET /ticks` 402 bazaar already advertises `If-None-Match` + `?since=`. PR #243 ETag rebuy docs are **on the serving tip** (`cursor/ftc-orders-apply-7c31` / live SHA `73853b6`). No cherry-pick.
 

@@ -100,7 +100,7 @@ export function classifyLiveDoor(
   else if (staleByAge) reason = `stale>${staleHours}h`;
   const draftNote =
     path === "/ftc-orders" && empty
-      ? "draft only: evening 7:45 America/Boise collect owns the first /ftc-orders bag walk. Do not start a second collect. No outbound send. Lander paste stays in docs/FTC-ORDERS-X402.md until the tv-remote lander PR applies."
+      ? "draft only: evening 7:45 America/Boise collect owns the first /ftc-orders bag walk. Do not start a second collect. No outbound send. Lander paste: docs/FTC-ORDERS-X402.md + tv-remote#98 (live tip, not stub main)."
       : empty
         ? "draft only: empty live bag. Wait for the scheduled collect. No outbound send."
         : staleByAge
@@ -166,7 +166,7 @@ export function renderLoopCloserMarkdown(report: LoopCloserReport): string {
     "",
     "- Do not SSH apollo from cloud. Evening collect owns bag walks.",
     "- Do not invent demand or a second company.",
-    "- `/ftc-orders` lander paste: `docs/FTC-ORDERS-X402.md` (tv-remote live tip, not stub main).",
+    "- `/ftc-orders` lander paste: `docs/FTC-ORDERS-X402.md` + https://github.com/bnmbnmai/tv-remote/pull/98 (live tip, not stub main).",
     `- Outbound: ${report.outbound}.`,
     "",
   ].join("\n");
