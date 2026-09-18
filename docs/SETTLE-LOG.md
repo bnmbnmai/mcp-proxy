@@ -72,6 +72,17 @@ By path: count + USDC. Does not print payer addresses or tx hashes.
 
 The skip-pay rollup is still `node build/shop-request-log.js` (loopback `GET /shop-request-log` only).
 
+## NEW stranger ping (same journal)
+
+After a verified live settle (shop path) or at the end of `ticks-collect.sh` (collect path), scan the **existing** JSONL for a payer class that is not house. Writes one line Chief can `cat`:
+
+```
+~/projects/mcp-proxy/data/stranger-settle-alert.txt
+```
+
+Shape: `/ticks $0.05 stranger` or `none`. No invented settles. See [`STRANGER-SETTLE-ALERT.md`](./STRANGER-SETTLE-ALERT.md).
+
+
 ## Best-effort backfill
 
 Caddy `ticks.bnm.farm` has **no access log**. Past path comes from the request tape.
