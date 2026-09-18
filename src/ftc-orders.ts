@@ -276,12 +276,41 @@ export function oscarFromFilename(filename: string): string {
   return m ? m[1] : "";
 }
 
+export function oscarFromText(text: string, filename = ""): string {
+  return oscarFromFilename(filename) || text.match(/OSCAR\s+NO\.?\s*(\d{6})\b/i)?.[1] || "";
+}
+
 export function catalogId(docket: string, date: string | null, slug: string): string {
   const dock = (docket || "").replace(/\D/g, "");
   if (dock && date) return `${dock}-${date}`;
   const cleanSlug = (slug || "unknown").toLowerCase();
   if (date) return `${cleanSlug}-${date}`;
   return cleanSlug;
+}
+
+/** Docket No. D-9403 / C-4798 / 9449. Bare "Docket No. C" (no digits) is not a docket. */
+export function parseDocketFromText(text: string): string {
+  const prefixed = text.match(/Docket\s+No\.?\s*[CD][-–]?\s*([0-9]{3,5})\b/i);
+  if (prefixed) return prefixed[1];
+  return text.match(/Docket(?:\s+Number|\s+No\.?)\s*([0-9]{3,5})\b/i)?.[1] ?? "";
+}
+
+/** ISSUED / FILED stamps only — not incidental lawsuit dates in the narrative. */
+export function issuedDateFromBody(text: string): string | null {
+  const issued = text.match(
+    /\bISSUED:\s*([A-Za-z]+\s+\d{1,2},\s+\d{4}|\d{1,2}\/\d{1,2}\/\d{4}|\d{4}-\d{2}-\d{2})/i,
+  );
+  if (issued) return isoDate(issued[1]);
+  const filed = text.match(/\bFILED\s+(\d{1,2}\/\d{1,2}\/\d{4})/i);
+  return filed ? isoDate(filed[1]) : null;
+}
+
+/** Case-page document-multi groups put <time datetime> on the group, not the PDF <a>. */
+export function nearestDocumentDate(html: string, idx: number): string | null {
+  const before = html.slice(Math.max(0, idx - 4500), idx + 250);
+  const times = [...before.matchAll(/<time\b[^>]*datetime="(\d{4}-\d{2}-\d{2})/gi)];
+  if (times.length) return times[times.length - 1][1];
+  return isoDate(before);
 }
 
 export function parseKind(raw: string): FtcOrderKind | null {
@@ -388,8 +417,7 @@ export function parseDocket(html: string): string {
     const n = field[1].replace(/\D/g, "");
     if (n) return n;
   }
-  const text = stripTags(html);
-  return text.match(/Docket(?:\s+Number|\s+No\.?)\s*([0-9]{3,5})/i)?.[1] ?? "";
+  return parseDocketFromText(stripTags(html));
 }
 
 export function parseInstitution(html: string): string {
@@ -417,9 +445,7 @@ export function parseCaseHtml(html: string, pageSlug = ""): FtcOrderListing[] {
     if (!kind) continue;
     const filename = decodeURIComponent(sourceUrl.split("/").pop() || "");
     const idx = match.index ?? 0;
-    const date =
-      isoDate(filename) ||
-      isoDate(html.slice(Math.max(0, idx - 400), idx + 200));
+    const date = isoDate(filename) || nearestDocumentDate(html, idx);
     const listing: FtcOrderListing = {
       id: catalogId(docket, date, slug),
       docket,
@@ -453,18 +479,15 @@ export function parseFtcOrderText(
 ): FtcOrderCard {
   const body = text.replace(/\f/g, "\n").trim();
   const sourceUrl = officialFtcPdfUrl(meta.sourceUrl) || meta.sourceUrl;
-  const docket =
-    meta.docket ||
-    body.match(/Docket\s+No\.?\s*C?\s*([0-9]{3,5})/i)?.[1] ||
-    "";
+  const docket = meta.docket || parseDocketFromText(body) || "";
   const filename = meta.filename || decodeURIComponent(sourceUrl.split("/").pop() || "");
-  const date = meta.date ?? isoDate(filename) ?? isoDate(body.slice(0, 900));
+  const date = meta.date ?? isoDate(filename) ?? issuedDateFromBody(body);
   const kind = meta.kind || parseKind(`${meta.title ?? ""} ${body.slice(0, 500)}`) || "ALJ Decision";
   const slug = slugFromCaseUrl(meta.caseUrl || "") || "";
   return {
-    id: meta.id || catalogId(docket, date, slug || filename.replace(/\.pdf$/i, "")),
+    id: catalogId(docket, date, slug || filename.replace(/\.pdf$/i, "")),
     docket,
-    oscar: meta.oscar || oscarFromFilename(filename),
+    oscar: meta.oscar || oscarFromText(body, filename),
     kind,
     board: meta.board || parseBoard(kind),
     institution: (meta.institution && meta.institution.trim()) || docket || kind,
@@ -605,23 +628,65 @@ function readNamedFile(dir: string, names: string[]): string | null {
   return null;
 }
 
+function fillListingGaps(base: FtcOrderListing, extra: FtcOrderListing): FtcOrderListing {
+  const docket = base.docket || extra.docket;
+  const date = base.date ?? extra.date;
+  const oscar = base.oscar || extra.oscar;
+  const slug = slugFromCaseUrl(base.caseUrl || extra.caseUrl) || "";
+  return {
+    ...base,
+    docket,
+    oscar,
+    date,
+    institution: base.institution || extra.institution,
+    title: base.title || extra.title,
+    filename: base.filename || extra.filename,
+    caseUrl: base.caseUrl || extra.caseUrl,
+    id: catalogId(docket, date, slug),
+  };
+}
+
 function mergeListings(listed: FtcOrderListing[]): FtcOrderListing[] {
-  const seen = new Set<string>();
-  const out: FtcOrderListing[] = [];
+  const byUrl = new Map<string, FtcOrderListing>();
   for (const row of [...listed, ...SEED_LISTINGS]) {
     if (!keepListing(row)) continue;
     const id = row.id || catalogId(row.docket, row.date, slugFromCaseUrl(row.caseUrl) || "");
-    if (!id || seen.has(id) || seen.has(row.sourceUrl)) continue;
-    seen.add(id);
-    seen.add(row.sourceUrl);
-    out.push({ ...row, id });
+    if (!id) continue;
+    const next = { ...row, id };
+    const prev = byUrl.get(row.sourceUrl);
+    byUrl.set(row.sourceUrl, prev ? fillListingGaps(prev, next) : next);
   }
+  const out = [...byUrl.values()];
   out.sort((a, b) => `${b.date ?? ""}${b.id}`.localeCompare(`${a.date ?? ""}${a.id}`));
   return out;
 }
 
-export async function walkOfficialFtcOrders(): Promise<{ listed: FtcOrderListing[]; listedCount: number }> {
+export function enrichFtcOrderCard(
+  card: FtcOrderCard,
+  listing?: Partial<FtcOrderListing>,
+): FtcOrderCard {
+  return parseFtcOrderText(card.body, {
+    ...card,
+    ...listing,
+    docket: listing?.docket || card.docket,
+    oscar: listing?.oscar || card.oscar,
+    // Prefer the case-page / filename date. Do not keep a narrative lawsuit date.
+    date: listing?.date,
+    sourceUrl: listing?.sourceUrl || card.sourceUrl,
+    caseUrl: listing?.caseUrl || card.caseUrl,
+    institution: listing?.institution || card.institution,
+    title: listing?.title || card.title,
+    filename: listing?.filename || card.filename,
+    kind: listing?.kind || card.kind,
+    board: listing?.board || card.board,
+  });
+}
+
+export async function walkOfficialFtcOrders(extraSlugs: string[] = []): Promise<{ listed: FtcOrderListing[]; listedCount: number }> {
   const queue = [...SEED_CASES];
+  for (const slug of extraSlugs) {
+    if (slug && !queue.includes(slug)) queue.push(slug);
+  }
   const seenPages = new Set<string>();
   const listed: FtcOrderListing[] = [];
   const cap = maxCasePages();
@@ -651,12 +716,15 @@ export async function walkOfficialFtcOrders(): Promise<{ listed: FtcOrderListing
   return { listed: merged, listedCount: Math.max(merged.length, listed.length, SEED_LISTINGS.length) };
 }
 
-async function loadOfficialListings(dir: string): Promise<{ listed: FtcOrderListing[]; listedCount: number }> {
+async function loadOfficialListings(
+  dir: string,
+  extraSlugs: string[] = [],
+): Promise<{ listed: FtcOrderListing[]; listedCount: number }> {
   if (dir) {
     const listed: FtcOrderListing[] = [];
     const listingHtml = readNamedFile(dir, ["listing-excerpt.html", "listing.html"]);
     const slugs = listingHtml ? discoverCaseSlugs(listingHtml) : [...SEED_CASES];
-    for (const slug of [...new Set([...SEED_CASES, ...slugs])]) {
+    for (const slug of [...new Set([...SEED_CASES, ...slugs, ...extraSlugs])]) {
       const html = readNamedFile(dir, [`${slug}.html`, `${slug}.htm`]);
       if (html) listed.push(...parseCaseHtml(html, slug));
     }
@@ -664,7 +732,7 @@ async function loadOfficialListings(dir: string): Promise<{ listed: FtcOrderList
     return { listed: merged, listedCount: Math.max(merged.length, listed.length, SEED_LISTINGS.length) };
   }
   try {
-    const walked = await walkOfficialFtcOrders();
+    const walked = await walkOfficialFtcOrders(extraSlugs);
     if (walked.listed.length > 0) return walked;
   } catch {
     /* keep seeds */
@@ -678,31 +746,65 @@ export async function collectFtcOrders(opts?: {
   maxFetch?: number;
 }): Promise<FtcOrderSnapshot> {
   const dir = opts?.htmlDir ?? listingDir();
-  const { listed: allListed, listedCount } = await loadOfficialListings(dir);
+  const priorSlugs = (readFtcOrdersSnapshot()?.cards ?? [])
+    .map((c) => slugFromCaseUrl(c.caseUrl) || "")
+    .filter(Boolean);
+  const { listed: allListed, listedCount } = await loadOfficialListings(dir, priorSlugs);
   const target = opts?.limit ?? firstSliceLimit();
   const fetchCap = opts?.maxFetch ?? (dir ? 0 : maxFetchLimit());
   const cacheDir = ftcOrdersDir();
   mkdirSync(cacheDir, { recursive: true });
-  const prior = new Map<string, FtcOrderCard>();
+  const priorById = new Map<string, FtcOrderCard>();
+  const priorByUrl = new Map<string, FtcOrderCard>();
   for (const card of readFtcOrdersSnapshot()?.cards ?? []) {
-    if (isRealFtcOrderBody(card.body) && keepListing(card)) prior.set(card.id, card);
+    if (!isRealFtcOrderBody(card.body) || !keepListing(card)) continue;
+    priorById.set(card.id, card);
+    priorByUrl.set(card.sourceUrl, card);
   }
+  const listedByUrl = new Map(allListed.filter((row) => keepListing(row)).map((row) => [row.sourceUrl, row]));
   const cards: FtcOrderCard[] = [];
   const seen = new Set<string>();
+  const seenUrls = new Set<string>();
   let fetchedPdfs = 0;
   let skippedNoText = 0;
   let reused = 0;
   let addedThisRun = 0;
+
+  const takeCard = (card: FtcOrderCard): void => {
+    if (seenUrls.has(card.sourceUrl) || seen.has(card.id)) return;
+    cards.push(card);
+    seen.add(card.id);
+    seenUrls.add(card.sourceUrl);
+  };
+
+  for (const card of priorByUrl.values()) {
+    takeCard(enrichFtcOrderCard(card, listedByUrl.get(card.sourceUrl)));
+    reused += 1;
+  }
+  // First-slice bag is already populated — refresh metadata only; do not mass-fatten.
+  if (target > 0 && cards.length >= target) {
+    const snap = {
+      ...assembleFtcOrdersSnapshot(cards),
+      listedCount,
+      fetchedPdfs,
+      skippedNoText,
+      reused,
+      addedThisRun,
+    };
+    writeFtcOrdersSnapshot(snap);
+    return snap;
+  }
+
   for (const row of allListed) {
     if (target > 0 && addedThisRun >= target) break;
     if (!keepListing(row)) {
       skippedNoText += 1;
       continue;
     }
-    const cached = prior.get(row.id);
+    if (seenUrls.has(row.sourceUrl) || seen.has(row.id)) continue;
+    const cached = priorById.get(row.id) || priorByUrl.get(row.sourceUrl);
     if (cached) {
-      cards.push(cached);
-      seen.add(row.id);
+      takeCard(enrichFtcOrderCard(cached, row));
       reused += 1;
       continue;
     }
@@ -745,15 +847,11 @@ export async function collectFtcOrders(opts?: {
         skippedNoText += 1;
         continue;
       }
-      cards.push(parsed);
-      seen.add(row.id);
+      takeCard(parsed);
       addedThisRun += 1;
     } catch {
       skippedNoText += 1;
     }
-  }
-  for (const [id, card] of prior) {
-    if (!seen.has(id)) cards.push(card);
   }
   const snap = {
     ...assembleFtcOrdersSnapshot(cards),
