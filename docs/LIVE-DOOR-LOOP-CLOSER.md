@@ -8,7 +8,7 @@ Lists **empty / stale LIVE doors** from public well-known + free manifests. No o
 
 | Path | Bag | Watermark | Status | Draft follow-up |
 | --- | --- | --- | --- | --- |
-| `/ftc-orders` | `cardCount` **0**, `cards` [] | no `fetchedAt` / `asOf` | empty LIVE door | Evening 7:45 America/Boise collect owns the first bag walk. Do not start a second collect. No outbound. Lander paste: [`FTC-ORDERS-X402.md`](./FTC-ORDERS-X402.md). |
+| `/ftc-orders` | `cardCount` **0**, `cards` [] | no `fetchedAt` / `asOf` | empty LIVE door | Evening 7:45 America/Boise collect owns the first bag walk. Do not start a second collect. No outbound. Lander paste: [`FTC-ORDERS-X402.md`](./FTC-ORDERS-X402.md) / [tv-remote#98](https://github.com/bnmbnmai/tv-remote/pull/98). |
 
 All other live paid doors returned a positive bag count (`cardCount` / `tickCount` / `letterCount` / `noticeCount`) or a fresh-enough watermark. Mariners / Form 483 / warning-letters use those other count keys — they are **not** empty.
 
