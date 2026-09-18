@@ -1,49 +1,40 @@
-# MCP.so Submission (GitHub Issue)
+# MCP.so / awesome-mcp-servers draft (do not submit except as bnmbnmai)
 
-**Submit at:** https://github.com/punkpeye/awesome-mcp-servers/issues/new
+**Do not publish from a box that is not logged in as `bnmbnmai`.**
+
+Live door count is [https://ticks.bnm.farm/.well-known/x402](https://ticks.bnm.farm/.well-known/x402), not a hardcoded number.
 
 ## Issue Title
-Add: Apollo Proxy MCP Server - Residential proxy access for AI agents
+
+Add: BNM Data Shop — official public-data x402 GETs
 
 ## Issue Body
 
 ### Server Name
-Apollo Proxy MCP Server
+
+BNM Data Shop
 
 ### Description
-MCP server providing residential proxy access for AI agents. Fetch any URL through 190+ country exit nodes with rotating or sticky sessions. Pay-per-use via x402 micropayments (USDC on Base).
 
-### npm Package
-`@apollo_ai/mcp-proxy`
+Official public data as JSON at https://ticks.bnm.farm. Tables (`/ticks`, `/import-alerts`) $0.05 = entire current table. Body doors: free `/{door}/manifest.json?q=`, then $0.02 one official text (`?id=`) or $0.05 newest 10. USDC on Base. Live paid URLs: `/.well-known/x402`.
 
-### Installation
-```bash
-npm install -g @apollo_ai/mcp-proxy
+### Connect
+
 ```
-
-### Claude Desktop Config
-```json
-{
-  "mcpServers": {
-    "apollo-proxy": {
-      "command": "npx",
-      "args": ["@apollo_ai/mcp-proxy"]
-    }
-  }
-}
+npx -y mcp-remote https://ticks.bnm.farm/mcp
 ```
-
-### Tools
-- `proxy_fetch` - Fetch URL through residential proxy
-- `proxy_status` - Check service status
-- `list_countries` - List 190+ available countries
 
 ### Category
-Web / Networking
+
+Data
 
 ### Pricing
-$0.005/request (x402, USDC on Base)
+
+$0.02 / $0.05 USDC on Base (`eip155:8453`). Not a subscription.
 
 ### Links
-- Homepage: https://apolloai.team
+
+- Shop: https://bnm.farm/
+- Paid host: https://ticks.bnm.farm
 - GitHub: https://github.com/bnmbnmai/mcp-proxy
+- MCP registry: `io.github.bnmbnmai/bnm-data-shop`

@@ -1,13 +1,15 @@
 {
-  "identifier": "apollo-proxy",
-  "author": "Apollo Intelligence Network",
-  "homepage": "https://apolloai.team",
-  "manifest": "https://apolloai.team/.well-known/mcp",
+  "identifier": "bnm-data-shop",
+  "author": "BNM Data Shop",
+  "homepage": "https://bnm.farm/",
+  "manifest": "https://ticks.bnm.farm/openapi.json",
   "meta": {
-    "title": "Apollo Proxy",
-    "description": "Fetch any URL through residential proxies (190+ countries). Pay-per-use via x402 micropayments.",
-    "avatar": "🌐",
-    "tags": ["proxy", "web-scraping", "x402", "micropayments"]
+    "title": "BNM Data Shop",
+    "description": "Official public-data x402 GETs at ticks.bnm.farm. Live paid URLs: /.well-known/x402. Table $0.05; body $0.02 / $0.05. USDC on Base.",
+    "avatar": "📦",
+    "tags": ["x402", "official-data", "usda", "fda", "usdc"]
   },
-  "schemaVersion": 1
+  "schemaVersion": 1,
+  "mcp": "https://ticks.bnm.farm/mcp",
+  "note": "Do not publish except as bnmbnmai. Live door count is well-known, not this file."
 }
