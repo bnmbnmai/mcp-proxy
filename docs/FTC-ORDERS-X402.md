@@ -1,0 +1,85 @@
+# Apply GET /ftc-orders onto the live ticks tip
+
+Official **FTC cases-proceedings ALJ Decision / Commission Decision and Order** TEXT from ugly official PDFs on `ftc.gov/system/files/ftc_gov/pdf/` linked from `ftc.gov/legal-library/browse/cases-proceedings` (OSCAR). 17 U.S.C. § 105. Same extracted-body pipe as `/fmc-orders` / `/oalj-decisions`: free manifest, `?id=` one official text at **$0.02**, plain GET newest 10 at **$0.05**. Habit `?since=` / ETag is the same pipe as sibling body doors. Empty delta is unpaid 304.
+
+Collector shape: walk cases-proceedings listing + case pages → official `/system/files/ftc_gov/pdf/` → `pdftotext`. Scout seeds (Jason Scott DVM Docket 9449 ALJ Decision 2026-08-31, Overly 9443, Juarez-Rufino 9444, Beretta Decision and Order) are **examples, not a frozen list**. Fresh ALJ Decision / Decision of the ALJ / Decision and Order rows are first-class. Habit is ongoing OSCAR / cases-proceedings.
+
+**Harvest FTC-authored ALJ Decision / Decision and Order PDFs only.** Prefer substantive ALJ Decision and Commission Decision and Order bodies.
+
+**KILL / do not wrap:** `/ftc-wl` warning letters. Complaints. ACCO/AAPC. Motions / briefs. Federal Register HTML wraps. CourtListener mirrors. Remand / vacate Commission orders. Distinct from live `/ftc-wl` `/fmc-orders`. Not `/dea-orders`.
+
+Free discovery is leak-clean: counts + docket / OSCAR / date / institution + `paidUrl` only. **No `sourceUrl`** on free cards (live strip). Paid `?id=` / page still attribute the official PDF. Full ALJ Decision / Decision and Order narrative lives in the PDF, not the card JSON.
+
+**Path:** `/ftc-orders` · **$0.05** page / **$0.02** `?id=` · payTo `0xf59621FC406D266e18f314Ae18eF0a33b8401004` · USDC on Base
+**Collector:** case HTML → official FTC PDF + `pdftotext`.
+**Seeds (Scout examples, not a frozen list):** **9449** Jason Scott DVM ALJ Decision served 2026-08-31 (`616193.2026.08.31_..._0.pdf`); **9443** Overly ALJ Decision; **9444** Juarez-Rufino Decision of the ALJ; **Beretta** Decision and Order (`Beretta-Ruger-Order.pdf`).
+
+MCP tools are generated from live well-known (no hardcoded door count). Catalog `main` is not the door host. Stacked on the live FMC apply tip (`cursor/fmc-orders-0443` / `fc83faf`). Branch `cursor/ftc-orders-door-127f`.
+
+## Collect command
+
+```bash
+FTC_ORDERS_DIR=$HOME/projects/mcp-proxy/data/ftc-orders \
+  FTC_ORDERS_LIMIT=5 FTC_ORDERS_MAX_FETCH=8 \
+  npm run collect:ftc-orders
+```
+
+Fixture / dry collect (no secrets, no live PDF fetch):
+
+```bash
+FTC_ORDERS_DIR=/tmp/ftc-orders-dry \
+  FTC_ORDERS_HTML_DIR=src/fixtures/ftc-orders \
+  FTC_ORDERS_LIMIT=5 FTC_ORDERS_MAX_FETCH=0 \
+  npm run collect:ftc-orders
+```
+
+## Apply on apollo / media-box (`systemctl --user`; no sudo)
+
+Restart **only** `idaho-ticks-x402.service`. Do not replace other door caches. Do not checkout catalog `main`. Do not message Bruce.
+
+```bash
+cd ~/projects/mcp-proxy
+git fetch origin cursor/ftc-orders-door-127f
+git checkout cursor/ftc-orders-door-127f
+export FTC_ORDERS_DIR=$HOME/projects/mcp-proxy/data/ftc-orders
+mkdir -p "$FTC_ORDERS_DIR"
+npm run build
+FTC_ORDERS_LIMIT=5 FTC_ORDERS_MAX_FETCH=8 npm run collect:ftc-orders
+# add FTC_ORDERS_DIR to idaho-ticks-x402.service user unit
+systemctl --user restart idaho-ticks-x402.service
+```
+
+Restart **only** that unit. docker / other units untouched. No new collect cron — existing 07:45 / 19:45 America/Boise `ticks-collect.sh` walks live well-known and runs `build/ftc-orders.js` once `/ftc-orders` is on well-known.
+
+Cloud-only this turn: **apollo apply still needed.** Do not SSH from this agent.
+
+After apply, expect unpaid `GET https://ticks.bnm.farm/ftc-orders` **402** at $0.05; `?id=9449-2026-08-31` **402** at $0.02. Live well-known becomes **62** (was 61; `/fmc-orders` already live). Shop index + MCP `tools/list` pick up `ftc-orders` from well-known. Free manifest is docket / OSCAR / date / institution + `paidUrl` only; **no** `sourceUrl`, no Decision/Order narrative.
+
+## Lander card (tv-remote / bnm.farm)
+
+Paste after the FMC Orders card. Product + bag size + price only. Count hydrates from the free manifest — do not hardcode a door count. Copy must say **FTC ALJ Decision / Commission Decision and Order**, not warning letters, not Federal Register HTML, not `/ftc-wl` / `/fmc-orders`.
+
+```html
+<article class="card">
+  <p class="kicker">Product</p>
+  <h2 class="product">FTC Orders</h2>
+  <p class="facts" id="ftc-orders-facts">FTC cases-proceedings ALJ Decision / Commission Decision and Order text. Live bag size hydrates from the free manifest. $0.02 one text / $0.05 newest 10.</p>
+  <div class="meta" aria-label="FTC Orders payment">
+    <span class="pill">Base</span>
+    <span class="pill">USDC</span>
+    <span class="pill" data-nickel="ftc-orders-facts">$0.02 / $0.05</span>
+  </div>
+  <nav class="actions" aria-label="FTC Orders links">
+    <a class="primary" href="https://ticks.bnm.farm/ftc-orders">Endpoint</a>
+    <a href="https://ticks.bnm.farm/ftc-orders/manifest.json">Manifest</a>
+  </nav>
+</article>
+```
+
+```js
+hydrate("ftc-orders-facts", "https://ticks.bnm.farm/ftc-orders/manifest.json", (m) => {
+  const n = publishedCount(m);
+  if (n == null) return document.getElementById("ftc-orders-facts").innerHTML;
+  return "FTC cases-proceedings ALJ Decision / Commission Decision and Order text. Live: <strong>" + n + "</strong> official texts. $0.02 one text / $0.05 newest 10.";
+});
+```
