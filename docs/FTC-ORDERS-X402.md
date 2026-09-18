@@ -51,9 +51,7 @@ systemctl --user restart idaho-ticks-x402.service
 
 Restart **only** that unit. docker / other units untouched. No new collect cron — existing 07:45 / 19:45 America/Boise `ticks-collect.sh` walks live well-known and runs `build/ftc-orders.js` once `/ftc-orders` is on well-known.
 
-Cloud-only this turn: **apollo apply still needed.** Do not SSH from this agent.
-
-After apply, expect unpaid `GET https://ticks.bnm.farm/ftc-orders` **402** at $0.05; `?id=9449-2026-08-31` **402** at $0.02. Live well-known becomes **62** (was 61; `/fmc-orders` already live). Shop index + MCP `tools/list` pick up `ftc-orders` from well-known. Free manifest is docket / OSCAR / date / institution + `paidUrl` only; **no** `sourceUrl`, no Decision/Order narrative.
+Applied on apollo (2026-09-17): **serving SHA `73853b6`** ([PR 244](https://github.com/bnmbnmai/mcp-proxy/pull/244) merge `60b5364` / head `03a23d86` onto live tip `cursor/collect-well-known-timeout-71e6` / `29db46a`; apply-record [PR 245](https://github.com/bnmbnmai/mcp-proxy/pull/245) `cursor/ftc-orders-apply-7c31`). Restarted **only** `idaho-ticks-x402.service` at **2026-09-17 19:11:25 MDT** (PID 3146339). Added `FTC_ORDERS_DIR` to the user unit. Did **not** start a first-slice collect — evening 7:45 owns the next bag walk; free manifest `cardCount` **0** until that walk. Unpaid `GET https://ticks.bnm.farm/ftc-orders` is **402** at $0.05. Live `/.well-known/x402` is **62** and lists `https://ticks.bnm.farm/ftc-orders`. Free `/ftc-orders/manifest.json` is **200**. MCP banner: `62 tools from /.well-known/x402`. Lander card is paste-ready below; no tv-remote lander PR was ready this turn.
 
 ## Lander card (tv-remote / bnm.farm)
 
