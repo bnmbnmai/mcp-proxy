@@ -377,3 +377,23 @@ for sku in "${DOORS[@]}"; do
 done
 
 log "collect done"
+
+# Existing settle journal only. Do not invent settles. One-line Chief ping:
+#   cat "$MCP/data/stranger-settle-alert.txt"
+#   → `/ticks $0.05 stranger`  or  `none`
+if [[ -f "$MCP/build/stranger-settle-alert.js" ]]; then
+  if "$NODE_BIN" "$MCP/build/stranger-settle-alert.js" >>"$LOG" 2>&1; then
+    log "stranger-settle-alert ok"
+  else
+    log "stranger-settle-alert skipped"
+  fi
+fi
+
+# Draft-only empty/stale LIVE door list. No outbound sends.
+if [[ "${DRY_RUN}" != "1" && -f "$MCP/build/live-door-loop-closer.js" ]]; then
+  if "$NODE_BIN" "$MCP/build/live-door-loop-closer.js" --draft-only >>"$LOG" 2>&1; then
+    log "live-door-loop-closer draft ok"
+  else
+    log "live-door-loop-closer skipped"
+  fi
+fi

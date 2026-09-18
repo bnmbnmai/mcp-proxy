@@ -637,6 +637,7 @@ import {
   shopRequestLogPath,
 } from "./shop-request-log.js";
 import { logPaidSettle, payerFromPayment, settleLogPath, txHashFromSettleBody } from "./settle-log.js";
+import { scanStrangerSettleAlert } from "./stranger-settle-alert.js";
 import {
   PRODUCT_PUBLIC_ID,
   SAMPLE_HOW_TO_USE,
@@ -7443,6 +7444,11 @@ async function servePaid(
       payment,
       txHash,
     });
+    try {
+      scanStrangerSettleAlert();
+    } catch {
+      // Alert artifact must never break the 200 / 402 path.
+    }
   };
 
   const maybeNotModified = (body: unknown): boolean => {
@@ -7573,6 +7579,11 @@ async function servePaidPdf(
       payment,
       txHash,
     });
+    try {
+      scanStrangerSettleAlert();
+    } catch {
+      // Alert artifact must never break the 200 / 402 path.
+    }
   };
 
   if (!payment) {

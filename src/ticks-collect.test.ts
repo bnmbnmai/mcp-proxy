@@ -194,6 +194,10 @@ async function main(): Promise<void> {
   assert.match(script, /02:00-04:00 America\/Boise/);
   assert.match(script, /--list-official/);
   assert.match(script, /live well-known/);
+  assert.match(script, /stranger-settle-alert/, "collect path refreshes Chief stranger-settle ping");
+  assert.match(script, /live-door-loop-closer/, "collect path lists empty/stale LIVE doors");
+  assert.match(script, /draft-only/, "loop-closer is draft notes only");
+  assert.doesNotMatch(script, /curl .* (api\.twitter|hooks\.slack|mailto:)/);
   const hayBlock = script.slice(script.indexOf("hay/cattle collect"), script.indexOf("list_official_doors"));
   assert.match(hayBlock, /collect-prices\.py/);
   assert.match(hayBlock, /ticks-ams\.js/);
