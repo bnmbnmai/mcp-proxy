@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html><head><title>Environmental Impact Statement (EIS) Database|USEPA</title></head>
+<body>
+<h1 class="page-title">Environmental Impact Statement (EIS) Database</h1>
+<div>
+  <h4 for="title">EIS Title</h4> Construction Permit at the Clinch River Nuclear Site, Final Report
+  <h4 for="eisNumber">EIS Number</h4> 20260036
+  <h4 for="type">Document Type</h4> Final Supplement
+  <h4 for="ceqFederalRegisterDate">Federal Register Date</h4> 2026-04-10 00:00:00.0
+  <h4 for="state">State or Territory</h4> TN
+  <h4 for="ceqFederalRegisterDate">Lead Agency</h4> Nuclear Regulatory Commission
+  <form method="post" action="/cdx-enepa-II/public/action/eis/details" id="downloadForm">
+    <input type="hidden" name="_csrf" value="FIXTURE" />
+    <input type="hidden" name="captchaResponse" id="downloadFormCaptcha"/>
+    <input type="hidden" name="attachmentId" id="downloadFormAttachmentId"/>
+    <altcha-widget id="altcha" challengeurl="https://cdxapi.epa.gov/altcha/api/v1/retrieveChallenge"
+      naasip="10.0.0.1" naastoken="FIXTURE"></altcha-widget>
+  </form>
+  <strong>EIS Document(s):</strong>
+  <p>
+    <a href="javascript:void(0);" onclick="startDownload('downloadAttachment', '555711')">
+      Supplemental Environmental Impact Statement for a Construction Permit at the Clinch River Nuclear Site, Final Report.pdf
+    </a>
+    (271 pp, 6451.3798828125 K)
+  </p>
+  <strong>Comment Letter(s):</strong>
+  <p>
+    <a href="javascript:void(0);" onclick="startDownload('downloadAttachment', '559132')">
+      20260036 EPA Comments on Clinch River Nuclear Site FSEIS.pdf
+    </a>
+    (2 pp, 208.1015625 K)
+  </p>
+</div>
+</body></html>
