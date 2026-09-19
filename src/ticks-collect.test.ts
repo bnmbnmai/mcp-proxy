@@ -205,7 +205,12 @@ async function main(): Promise<void> {
   assert.doesNotMatch(script, /No NPDES/);
   const listBlock = script.slice(script.indexOf("list_official_doors"), script.indexOf("door_snap"));
   assert.match(listBlock, /well-known/);
+  assert.match(listBlock, /retry live well-known/);
   assert.doesNotMatch(listBlock, /ticks-ams/);
+  const planSrc = readFileSync(join(repoRoot, "scripts/ticks-collect-plan.py"), "utf-8");
+  assert.match(planSrc, /WELL_KNOWN_RETRIES = 3/);
+  assert.match(planSrc, /WELL_KNOWN_TIMEOUT = 15/);
+  assert.match(planSrc, /def fetch_well_known/);
 
   const dry = runDryCollect({
     sku: "cfpb-orders",
