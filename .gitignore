@@ -58,6 +58,10 @@ build/epa-eab.*
 build/faa-civil-penalty.*
 build/stb-decisions.*
 build/oalj-decisions.*
+build/fmc-orders.*
+build/ftc-orders.*
+build/stranger-settle-alert.*
+build/live-door-loop-closer.*
 build/ticks-ams.*
 build/ticks-ams-leftovers.*
 build/paid-records.*
@@ -119,8 +123,14 @@ data/epa-eab/
 data/faa-civil-penalty/
 data/stb-decisions/
 data/oalj-decisions/
+data/fmc-orders/
+data/ftc-orders/
 data/ticks-ams/
 data/shop-request-log.jsonl
 data/shop-request-log*.jsonl
 data/settle.jsonl
 data/settle*.jsonl
+data/stranger-settle-alert.txt
+data/stranger-settle-seen.json
+data/house-payers.txt
+data/live-door-loop-closer.md

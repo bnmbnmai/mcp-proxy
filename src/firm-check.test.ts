@@ -132,6 +132,31 @@ async function main(): Promise<void> {
         },
       ],
     },
+    ftcOrders: {
+      fetchedAt: "2026-09-18T04:40:38.000Z",
+      asOf: "2026-08-31",
+      cards: [
+        {
+          id: "berettaruger",
+          institution: "Beretta/Ruger",
+          title: "Decision and Order",
+          date: "2026-09-16",
+        },
+      ],
+    },
+    fmcOrders: {
+      fetchedAt: "2026-09-16T23:13:25.691Z",
+      asOf: "2026-04-24",
+      cards: [
+        {
+          id: "23-08-131865",
+          institution:
+            "Mediterranean Shipping Company, S.A. - Possible Violations of the Shipping Act, 46 U.S.C. §§ 41102(c), 40501, and 41104(a)(2)(A)",
+          title: "Served Order on Initial Decision",
+          date: "2025-04-24",
+        },
+      ],
+    },
     ofwatEnforcement: {
       fetchedAt: "2026-08-27T00:00:00.000Z",
       asOf: "2026-03-01",
@@ -199,6 +224,8 @@ async function main(): Promise<void> {
     "warning-letters",
     "untitled-letters",
     "ftc-wl",
+    "ftc-orders",
+    "fmc-orders",
     "ofwat-enforcement",
     "ofgem-enforcement",
     "cfpb-orders",
@@ -208,6 +235,8 @@ async function main(): Promise<void> {
   ]);
   assert.ok(FIRM_CHECK_NOTE.includes("FDA untitled letters"));
   assert.ok(FIRM_CHECK_NOTE.includes("FTC BCP warning letters"));
+  assert.ok(FIRM_CHECK_NOTE.includes("FTC ALJ/Commission orders"));
+  assert.ok(FIRM_CHECK_NOTE.includes("FMC orders"));
   assert.ok(FIRM_CHECK_NOTE.includes("Ofwat enforcement"));
   assert.ok(FIRM_CHECK_NOTE.includes("Ofgem enforcement"));
   assert.ok(FIRM_CHECK_NOTE.includes("CFPB orders"));
@@ -279,6 +308,22 @@ async function main(): Promise<void> {
   const ftc = firmCheckFromIndexes("vtron", indexes);
   assert.equal(ftc.matches[0]?.door, "ftc-wl");
   assert.equal(ftc.matches[0]?.firm, "Vtron Inc. d/b/a Vtron Lasers");
+
+  const ftcOrder = firmCheckFromIndexes("Beretta", indexes);
+  assert.equal(ftcOrder.matches[0]?.door, "ftc-orders");
+  assert.equal(ftcOrder.matches[0]?.id, "berettaruger");
+  assert.equal(ftcOrder.matches[0]?.firm, "Beretta/Ruger");
+  assert.equal(ftcOrder.matches[0]?.paidUrl, "/ftc-orders?id=berettaruger");
+  assert.equal(ftcOrder.matches[0]?.pagePaidUrl, "/ftc-orders");
+  assert.ok(!("body" in (ftcOrder.matches[0] ?? {})));
+  assert.ok(!JSON.stringify(ftcOrder.matches).includes("body"));
+
+  const fmcOrder = firmCheckFromIndexes("Mediterranean Shipping", indexes);
+  assert.equal(fmcOrder.matches[0]?.door, "fmc-orders");
+  assert.equal(fmcOrder.matches[0]?.id, "23-08-131865");
+  assert.equal(fmcOrder.matches[0]?.paidUrl, "/fmc-orders?id=23-08-131865");
+  assert.equal(fmcOrder.matches[0]?.pagePaidUrl, "/fmc-orders");
+  assert.ok(!("body" in (fmcOrder.matches[0] ?? {})));
 
   const thames = firmCheckFromIndexes("Thames", indexes);
   assert.equal(thames.matches[0]?.door, "ofwat-enforcement");
