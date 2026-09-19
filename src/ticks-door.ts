@@ -4787,6 +4787,8 @@ function sendJson(res: ServerResponse, status: number, body: unknown, extraHeade
     "Content-Type": "application/json; charset=utf-8",
     "Cache-Control": "no-store",
     "Access-Control-Allow-Origin": "*",
+    // CORS may list ETag on unpaid 402 so the later paid 200 is readable.
+    // The ETag header itself is set only on paid 200 / 304, not on 402.
     "Access-Control-Expose-Headers": "PAYMENT-REQUIRED, X-PAYMENT-RESPONSE, PAYMENT-RESPONSE, ETag",
     "Content-Length": String(Buffer.byteLength(payload)),
     ...extraHeaders,
@@ -4864,7 +4866,7 @@ export function llmsTxt(): string {
   const listedGmpMd = gmpMdIsPublic();
   const ticksPrice = usdcDisplayFromAtomic(amountAtomicFor("ticks")) ?? "$0.05";
   const paid = [
-    `- GET /ticks — ${ticksPrice} — USDA farm market prices (hay, cattle, grain, dairy, hogs, produce). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water. Paid JSON keeps ticks[] and adds records[] + asOf. Rebuy: pay once → store ETag → poll If-None-Match (or ?since=) → 304 no charge when unchanged → pay again only when ETag/body changes.`,
+    `- GET /ticks — ${ticksPrice} — USDA farm market prices (hay, cattle, grain, dairy, hogs, produce). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water. Paid JSON keeps ticks[] and adds records[] + asOf. Rebuy: pay once → store ETag from the paid 200 (unpaid 402 has no ETag) → poll If-None-Match (or ?since=) → 304 no charge when unchanged → pay again only when ETag/body changes.`,
     "- GET /import-alerts — $0.05 — FDA Import Alerts / DWPE firm-product snapshot. Paid JSON keeps ticks[] and adds records[] + asOf. Same ETag / If-None-Match (or ?since=) rebuy habit as /ticks.",
     "- GET /mariners — $0.05 — USCG D13 / Northwest Local Notice to Mariners",
     "- GET /mariners-d11 — $0.05 — USCG D11 / Southwest Local Notice to Mariners",
@@ -5029,8 +5031,8 @@ export function llmsTxt(): string {
     "",
     "## Table rebuy (/ticks, /import-alerts)",
     "",
-    "- Pay GET /ticks (or /import-alerts) once ($0.05 = entire current table). Response includes ETag.",
-    "- Store that ETag (and/or fetchedAt/asOf for ?since=).",
+    "- Pay GET /ticks (or /import-alerts) once ($0.05 = entire current table). ETag arrives on that paid 200, not on the unpaid 402.",
+    "- Store that ETag from the paid 200 (and/or fetchedAt/asOf for ?since=).",
     "- Poll the same URL with If-None-Match: <stored ETag> (or ?since=<fetchedAt|asOf>).",
     "- HTTP 304 = unchanged snapshot, no charge, no body.",
     "- When the table changes, ETag changes: unpaid poll is 402 again — pay once more for the whole current table. Same path; not a new SKU.",
@@ -5086,7 +5088,7 @@ export function wellKnownX402(req: IncomingMessage, port: number): Record<string
       since:
         "Extracted-body doors accept ?since=<ISO timestamp or official catalog id> (same watermark shape as ?before=). Paid GET returns only official texts newer than that watermark. Empty new set: HTTP 304 with ETag, or paid 200 with empty records/ids and a stable asOf/fetchedAt. Newest-10 ?before= and ?id= stay.",
       etag:
-        "GET /ticks and GET /import-alerts send ETag. Buyer habit: pay once, store ETag, poll with If-None-Match → HTTP 304 no charge when unchanged; when the body changes, ETag changes and the same GET is a fresh $0.05 buy of the whole current table. Optional ?since= on those tables 304s when fetchedAt/asOf is not newer.",
+        "Paid 200 on GET /ticks and GET /import-alerts includes ETag. Unpaid 402 does not send ETag. Buyer habit: pay once, store that ETag, poll with If-None-Match → HTTP 304 no charge when unchanged; when the body changes, ETag changes and the same GET is a fresh $0.05 buy of the whole current table. Optional ?since= on those tables 304s when fetchedAt/asOf is not newer.",
       resourceCount: paidDiscoveryPaths().length,
       updateCadence: COLLECT_CADENCE,
       http429: HTTP_429_COPY,
@@ -5218,7 +5220,8 @@ function paidOpenApiOp(opts: {
           "Not Modified. Catalog tip or table snapshot unchanged. No body. Not charged. Send If-None-Match or ?since=.",
       },
       "402": {
-        description: "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body",
+        description:
+          "Payment Required — x402 challenge in PAYMENT-REQUIRED and JSON body. Unpaid 402 does not include ETag; ETag arrives on the paid 200.",
       },
       "429": {
         description: HTTP_429_COPY,
@@ -5500,7 +5503,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       pagePriceAtomic: Number(PAGE_AMOUNT_ATOMIC),
       pageDefault: paidBodyWindow(),
       since: "ISO timestamp or official catalog id on extracted-body doors; fetchedAt/asOf on /ticks and /import-alerts",
-      etag: "GET /ticks and GET /import-alerts. Pay once, store ETag, poll If-None-Match → 304 when unchanged; rebuy whole table when ETag changes.",
+      etag: "Paid 200 on GET /ticks and GET /import-alerts includes ETag. Unpaid 402 does not. Pay once, store ETag, poll If-None-Match → 304 when unchanged; rebuy whole table when ETag changes.",
       updateCadence: COLLECT_CADENCE,
       http429: HTTP_429_COPY,
     },
