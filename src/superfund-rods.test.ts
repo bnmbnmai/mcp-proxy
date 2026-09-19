@@ -90,6 +90,9 @@ async function main(): Promise<void> {
   assert.ok(SEED_LISTINGS.some((r) => r.docket === "05-711427"));
   assert.ok(FYR_SEED_LISTINGS.some((r) => r.docket === "04-11246061"), "Cape Fear 5th FYR is the habit seed");
   assert.ok(FYR_SEED_LISTINGS.every((r) => isFyrReportTitle(r.title)));
+  const src = readFs(join(dirname(fileURLToPath(import.meta.url)), "superfund-rods.ts"), "utf-8");
+  assert.match(src, /AbortSignal\.timeout\(fetchTimeoutMs\(\)\)/, "EPA SEMS PDF fetch must not hang the evening walk");
+  assert.match(src, /SUPERFUND_RODS_FETCH_MS/);
 
   const officialListed = parseMasterCollectionJson(readFx("master-collection-excerpt.json"));
   assert.ok(officialListed.some((r) => r.id === "05-711427" && r.sourceUrl === FEDERATED));
