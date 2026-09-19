@@ -74,7 +74,6 @@ function runDryCollect(opts: {
       TICKS_COLLECT_DRY_RUN: "1",
       TICKS_COLLECT_SKIP_IMAGINE: "1",
       TICKS_COLLECT_SKIP_LIVE_HAY: "1",
-      SKIP_HAY: "1",
       MCP_PROXY_DIR: root,
       TICKS_DIR: ticksDir,
       TICKS_COLLECT_PLAN: join(repoRoot, "scripts/ticks-collect-plan.py"),
@@ -205,7 +204,12 @@ async function main(): Promise<void> {
   assert.doesNotMatch(script, /No NPDES/);
   const listBlock = script.slice(script.indexOf("list_official_doors"), script.indexOf("door_snap"));
   assert.match(listBlock, /well-known/);
+  assert.match(listBlock, /retry live well-known/);
   assert.doesNotMatch(listBlock, /ticks-ams/);
+  const planSrc = readFileSync(join(repoRoot, "scripts/ticks-collect-plan.py"), "utf-8");
+  assert.match(planSrc, /WELL_KNOWN_RETRIES = 3/);
+  assert.match(planSrc, /WELL_KNOWN_TIMEOUT = 15/);
+  assert.match(planSrc, /def fetch_well_known/);
 
   const dry = runDryCollect({
     sku: "cfpb-orders",
@@ -281,11 +285,11 @@ async function main(): Promise<void> {
       },
       {
         sku: "fifra-orders",
-        snapshot: { cardCount: 26, fetchedAt: "2026-08-25T21:57:15.738Z", asOf: "2026-08-25" },
+        snapshot: { cardCount: 26, fetchedAt: new Date().toISOString(), asOf: "2026-08-25" },
       },
       {
         sku: "superfund-rods",
-        snapshot: { cardCount: 29, fetchedAt: "2026-08-25T19:39:00.887Z", asOf: "2026-08-05" },
+        snapshot: { cardCount: 29, fetchedAt: new Date().toISOString(), asOf: "2026-08-05" },
       },
     ],
     ticks: { tickCount: 611, fetchedAt: new Date().toISOString(), asOf: "2026-08-25" },

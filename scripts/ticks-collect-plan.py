@@ -14,6 +14,7 @@ from __future__ import annotations
 import json
 import re
 import sys
+import time
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
@@ -22,9 +23,11 @@ from typing import Any
 DEFAULT_STALE_HOURS = 36
 DEFAULT_GROW_UNTIL = 20
 FAT_N = 200
-# Loopback well-known can take >2s while hay/Superfund is busy; 2s caused
-# this-morning fallback to PUBLIC_BAZAAR_SKUS. Prefer live well-known.
-WELL_KNOWN_TIMEOUT = 8
+# Loopback well-known can stall while hay/Superfund is rewriting the bag.
+# 2s then 8s still fell back to PUBLIC_BAZAAR_SKUS (2026-09-17 morning,
+# 2026-09-18 evening). Retry live well-known before the frozen SKU list.
+WELL_KNOWN_TIMEOUT = 15
+WELL_KNOWN_RETRIES = 3
 PUBLIC_WELL_KNOWN_URL = "https://ticks.bnm.farm/.well-known/x402"
 
 
@@ -176,6 +179,22 @@ def official_doors_from_door_src(path: str) -> list[str]:
     return skus + [s for s in extra if s not in skus]
 
 
+def fetch_well_known(url: str) -> dict[str, Any] | None:
+    """GET one well-known URL. Retry timeouts/5xx so hay-load stalls do not freeze the door list."""
+    from urllib.request import Request, urlopen
+
+    for attempt in range(1, WELL_KNOWN_RETRIES + 1):
+        try:
+            req = Request(url, headers={"User-Agent": "ticks-collect"})
+            with urlopen(req, timeout=WELL_KNOWN_TIMEOUT) as resp:
+                data = json.loads(resp.read().decode())
+            return data if isinstance(data, dict) else None
+        except Exception:
+            if attempt < WELL_KNOWN_RETRIES:
+                time.sleep(attempt)
+    return None
+
+
 def list_official_doors(
     *,
     url: str = "",
@@ -197,18 +216,11 @@ def list_official_doors(
     if PUBLIC_WELL_KNOWN_URL not in urls:
         urls.append(PUBLIC_WELL_KNOWN_URL)
     for candidate in urls:
-        try:
-            from urllib.request import Request, urlopen
-
-            req = Request(candidate, headers={"User-Agent": "ticks-collect"})
-            with urlopen(req, timeout=WELL_KNOWN_TIMEOUT) as resp:
-                data = json.loads(resp.read().decode())
-            if isinstance(data, dict):
-                doors = official_doors_from_well_known(data)
-                if doors:
-                    return doors, "well-known"
-        except Exception:
-            continue
+        data = fetch_well_known(candidate)
+        if isinstance(data, dict):
+            doors = official_doors_from_well_known(data)
+            if doors:
+                return doors, "well-known"
     if door_src:
         doors = official_doors_from_door_src(door_src)
         if doors:

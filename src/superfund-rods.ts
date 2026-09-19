@@ -1028,9 +1028,19 @@ export function readSuperfundRodsCatalog(): {
   }
 }
 
+function fetchTimeoutMs(): number {
+  // EPA SEMS PDFs are multi-MB; 20s (CFPB default) cuts off healthy Superfund downloads.
+  // 8 min unsticks a hung HTTPS without failing the 3–5 min fetches seen 2026-09-18 evening.
+  const n = Number(env("SUPERFUND_RODS_FETCH_MS", "480000"));
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 480000;
+}
+
 export async function fetchSuperfundRodBytes(url: string): Promise<Uint8Array> {
   const official = officialSuperfundRodPdfUrl(url) || url;
-  const res = await fetch(official, { headers: { "User-Agent": HTTP_UA, Accept: "application/pdf" } });
+  const res = await fetch(official, {
+    headers: { "User-Agent": HTTP_UA, Accept: "application/pdf" },
+    signal: AbortSignal.timeout(fetchTimeoutMs()),
+  });
   if (!res.ok) throw new Error(`${official} HTTP ${res.status}`);
   const bytes = new Uint8Array(await res.arrayBuffer());
   if (new TextDecoder().decode(bytes.slice(0, 5)) !== "%PDF-") throw new Error(`${official} is not an official PDF`);
@@ -1043,6 +1053,7 @@ export async function fetchSuperfundRodText(url: string): Promise<string> {
       "User-Agent": HTTP_UA,
       Accept: "application/json,text/html,application/xhtml+xml,application/xml,text/xml;q=0.8,*/*;q=0.5",
     },
+    signal: AbortSignal.timeout(fetchTimeoutMs()),
   });
   if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
   return await res.text();

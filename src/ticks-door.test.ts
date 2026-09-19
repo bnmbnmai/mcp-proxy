@@ -9732,15 +9732,26 @@ async function main(): Promise<void> {
       assert.equal(emptyPage.fetchedAt, "2026-09-02T13:46:18.671Z");
 
       const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
-        paths?: Record<string, { get?: { parameters?: { name?: string }[]; responses?: Record<string, unknown> } }>;
+        paths?: Record<string, { get?: { parameters?: { name?: string }[]; responses?: Record<string, { description?: string } | unknown> } }>;
         info?: { "x-guidance"?: string };
+        "x-agentcash-guidance"?: { etag?: string };
       };
       const wlParams = spec.paths?.[WARNING_LETTERS_PATH]?.get?.parameters?.map((p) => p.name) ?? [];
       assert.ok(wlParams.includes("since"));
       assert.ok(spec.paths?.[WARNING_LETTERS_PATH]?.get?.responses?.["304"]);
       assert.ok(spec.paths?.[TICKS_PATH]?.get?.responses?.["304"]);
       assert.ok(spec.paths?.[TICKS_PATH]?.get?.responses?.["429"]);
+      const ticks402Desc = (spec.paths?.[TICKS_PATH]?.get?.responses?.["402"] as { description?: string } | undefined)
+        ?.description ?? "";
+      assert.match(ticks402Desc, /Unpaid 402 does not include ETag/);
       assert.ok((spec.info?.["x-guidance"] ?? "").includes("?since="));
+      assert.ok(spec["x-agentcash-guidance"]?.etag?.includes("Paid 200"));
+      assert.ok(spec["x-agentcash-guidance"]?.etag?.includes("Unpaid 402 does not"));
+      const sampleHow = (await (await fetch(`${base}${SAMPLE_PATH}`)).json()) as { howToUse?: string[] };
+      assert.ok(
+        sampleHow.howToUse?.some((line) => line.includes("unpaid 402 has no ETag")),
+        "sample Table rebuy must not claim unpaid 402 exposes ETag",
+      );
 
       const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
         extra?: { since?: string; etag?: string; updateCadence?: string; http429?: string; resourceCount?: number };
@@ -9757,7 +9768,11 @@ async function main(): Promise<void> {
       assert.ok(llmsBody.includes("?since="));
       assert.ok(llmsBody.includes("If-None-Match"));
       assert.ok(llmsBody.includes("## Table rebuy"), "llms.txt must teach /ticks ETag rebuy");
+      assert.ok(llmsBody.includes("paid 200"), "Table rebuy must say ETag arrives on the paid 200");
+      assert.ok(llmsBody.includes("unpaid 402"), "Table rebuy must say unpaid 402 has no ETag");
       assert.ok(wk.extra?.etag?.includes("pay once"), "well-known etag copy must spell the rebuy habit");
+      assert.ok(wk.extra?.etag?.includes("Paid 200"), "well-known etag copy must not claim unpaid 402 sends ETag");
+      assert.ok(wk.extra?.etag?.includes("Unpaid 402 does not send ETag"));
       const ticksBazaar = bazaarExtension("ticks") as {
         info?: { input?: { headers?: Record<string, string>; queryParams?: Record<string, string> } };
       };
@@ -9770,6 +9785,15 @@ async function main(): Promise<void> {
 
       const unpaidTicks = await fetch(`${base}${TICKS_PATH}`);
       assert.equal(unpaidTicks.status, 402, "unpaid /ticks still 402");
+      assert.equal(unpaidTicks.headers.get("etag"), null, "unpaid 402 does not include ETag");
+      assert.match(
+        unpaidTicks.headers.get("access-control-expose-headers") ?? "",
+        /ETag/,
+        "CORS may list ETag on 402 for the later paid 200",
+      );
+      const unpaidAlerts = await fetch(`${base}${IMPORT_ALERTS_PATH}`);
+      assert.equal(unpaidAlerts.status, 402, "unpaid /import-alerts still 402");
+      assert.equal(unpaidAlerts.headers.get("etag"), null, "unpaid import-alerts 402 does not include ETag");
       const paidTicks = await fetch(`${base}${TICKS_PATH}`, { headers: { "X-PAYMENT": "test" } });
       assert.equal(paidTicks.status, 200);
       const ticksEtag = paidTicks.headers.get("etag");

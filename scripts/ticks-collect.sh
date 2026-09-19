@@ -284,6 +284,11 @@ list_official_doors() {
 }
 
 list_official_doors
+if [[ "${_door_source}" != well-known && "${_door_source}" != well-known-file ]]; then
+  log "official doors fallback ${_door_source}; retry live well-known"
+  sleep 3
+  list_official_doors
+fi
 if [[ ${#DOORS[@]} -eq 0 ]]; then
   log "official doors 0 from ${_door_source} (well-known + PUBLIC_BAZAAR_SKUS failed)"
 else
