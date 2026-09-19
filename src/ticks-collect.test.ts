@@ -74,7 +74,6 @@ function runDryCollect(opts: {
       TICKS_COLLECT_DRY_RUN: "1",
       TICKS_COLLECT_SKIP_IMAGINE: "1",
       TICKS_COLLECT_SKIP_LIVE_HAY: "1",
-      SKIP_HAY: "1",
       MCP_PROXY_DIR: root,
       TICKS_DIR: ticksDir,
       TICKS_COLLECT_PLAN: join(repoRoot, "scripts/ticks-collect-plan.py"),
@@ -286,11 +285,11 @@ async function main(): Promise<void> {
       },
       {
         sku: "fifra-orders",
-        snapshot: { cardCount: 26, fetchedAt: "2026-08-25T21:57:15.738Z", asOf: "2026-08-25" },
+        snapshot: { cardCount: 26, fetchedAt: new Date().toISOString(), asOf: "2026-08-25" },
       },
       {
         sku: "superfund-rods",
-        snapshot: { cardCount: 29, fetchedAt: "2026-08-25T19:39:00.887Z", asOf: "2026-08-05" },
+        snapshot: { cardCount: 29, fetchedAt: new Date().toISOString(), asOf: "2026-08-05" },
       },
     ],
     ticks: { tickCount: 611, fetchedAt: new Date().toISOString(), asOf: "2026-08-25" },
