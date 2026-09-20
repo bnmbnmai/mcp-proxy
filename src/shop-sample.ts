@@ -8,6 +8,8 @@ export const SAMPLE_PATH = "/sample";
 export const PRODUCT_PUBLIC_ID = "us-hay-cattle-grain-ticks";
 export const PRODUCT_PUBLIC_NAME = "USDA farm market prices";
 export const TICKS_PUBLIC_CACHE_SOURCE = "USDA farm market prices cache";
+/** Agent-facing /ticks commodity set. Eggs stay on dairy rows; name them in copy. */
+export const TICKS_COMMODITY_SET = "hay, cattle, grain, dairy, hogs, produce, eggs";
 
 const CANONICAL = "https://ticks.bnm.farm";
 
@@ -35,7 +37,7 @@ export const SAMPLE_TABLE_SKU = {
   fetchedAt: "2026-01-16T00:00:00Z",
   asOf: "2026-01-15",
   source: TICKS_PUBLIC_CACHE_SOURCE,
-  note: "$0.05 buys the entire current USDA farm market price table (hay, cattle, grain, dairy, hogs, produce). Days between reports are not filled in. Idaho / PNW barns are example geography inside the table, not the SKU name. Not water.",
+  note: `$0.05 buys the entire current USDA farm market price table (${TICKS_COMMODITY_SET}). Days between reports are not filled in. Idaho / PNW barns are example geography inside the table, not the SKU name. Not water.`,
   recordCount: 1,
   records: [
     {
