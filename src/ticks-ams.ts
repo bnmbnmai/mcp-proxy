@@ -8,6 +8,9 @@
  * AMS_2872 National Daily Hog and Pork Summary is the official AMS public PDF, not an
  * LMR dashboard / datamart wrap. Individual LM_HG* / LM_PK* PDFs stay skipped.
  * AMS_2810 National Direct Feeder Pig is the official AMS voluntary weekly print.
+ * AMS_2843 Daily National Shell Egg Index is the official LPGMN public PDF; rows
+ * land on the existing dairy/protein table. Cold-storage AMS_1095 and poultry
+ * AMS_3646/3725 stay leftover — not this pass.
  * Water District 1 rental-pool $/AF is not an AMS source and stays off this table.
  *
  * Prefer live mnreports over NAL/esmis archives. Collect used to unshift ESMIS first and
@@ -169,6 +172,7 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "1100", group: "dairy", region: "central", title: "Fluid Milk and Cream Central", esmisPublication: "" },
   { slug: "1102", group: "dairy", region: "west", title: "Fluid Milk and Cream West", esmisPublication: "" },
   { slug: "2997", group: "dairy", region: "national_organic", title: "Organic Dairy Market News", esmisPublication: "", pdfNames: ["dybdairyorganic"] },
+  { slug: "2843", group: "dairy", region: "national", title: "Daily National Shell Egg Index", esmisPublication: "" },
   { slug: "2872", group: "hogs", region: "national", title: "National Daily Hog and Pork Summary", esmisPublication: "national-daily-hog-pork-summary-report", pdfNames: ["lsddhps"] },
   { slug: "2810", group: "hogs", region: "national", title: "National Direct Feeder Pig", esmisPublication: "" },
   { slug: "2314", group: "produce", region: "new_york", title: "New York Terminal Market Fruit", esmisPublication: "", pdfNames: ["nx_fv010"] },
@@ -216,7 +220,7 @@ export const SKIPPED_SOURCES = [
   { id: "ams_3096_waf", why: "AMS_3096 Eastern Cornbelt Direct Feeder Cattle mnreports 403 WAF; drop rather than leave a silent empty" },
   { id: "se-swine-auction-barns", why: "individual AMS swine-auction barn PDFs leftover — not a national sale-barn mill; AMS_2872 summary + AMS_2810 feeder pig are this hog slice" },
   { id: "sheep-goats", why: "official AMS sheep/lamb/goat PDFs are a leftover slice; LMR boxed-lamb LM_XL* skipped; parser stretch is not small" },
-  { id: "poultry-eggs", why: "official AMS broiler/egg PDFs leftover — different LPGMN family than hog summary / cattle auctions" },
+  { id: "poultry-eggs", why: "leftover official AMS broiler/turkey/breaking-stock PDFs (AMS_3646/3725 and siblings) stay off this slice; AMS_2843 Daily Shell Egg Index is already on /ticks dairy/protein rows" },
   { id: "cotton-rice", why: "official AMS cotton and rice PDFs leftover — not in the grain POS / organic-feedstuffs family this door already parses" },
   { id: "remaining-fv-terminals", why: "Asheville/Columbia/Raleigh/Baltimore/nuts, FV030 onion-potato city sheets, and discontinued MX_FV010 Mexico City leftover; NY/CHI/LA/ATL/DET/PHL/BOS fruit+veg are the national terminal slice" },
   { id: "mx_fv010_discontinued", why: "MX_FV010 is Mexico City terminal fruit, permanently discontinued 2024-02-09 — not a current US terminal print" },
@@ -1260,6 +1264,69 @@ export function parseDairyRetailAds(text: string, report: AmsReport, sourceUrl: 
   return dedupeTicks(out);
 }
 
+const EGG_SECTION_RE =
+  /^(NATIONAL|CALIFORNIA)\s+SHELL EGGS[¹1]?\s*-\s*(Caged|Cage-Free|Free-Range|USDA Organic)\b/i;
+const EGG_ROW_RE =
+  /(?:(?:Graded Loose|Gradeable Nest Run)\s+)?(White|Brown)\s+(Jumbo|Extra Large|Large|Medium|Small|\d+)\s+([\d,]+)\s+(\d+\.\d{2})\s*-\s*(\d+\.\d{2})\s+(\d+\.\d{2})\b/i;
+
+export function parseShellEggIndex(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const asOf = parseReportDate(text);
+  if (!asOf) return [];
+  const out: AmsTick[] = [];
+  let market = "national";
+  let environment = "";
+  let kind = "graded_loose";
+  let basis = "FOB";
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.replace(/\s+/g, " ").trim();
+    if (!line) continue;
+    const hdr = line.match(EGG_SECTION_RE);
+    if (hdr) {
+      market = hdr[1].toLowerCase() === "california" ? "california" : "national";
+      environment = token(hdr[2]);
+      kind = "graded_loose";
+      basis = "FOB";
+      continue;
+    }
+    if (/Cents Per Dozen/i.test(line)) {
+      basis = /Delivered/i.test(line) ? "Delivered" : "FOB";
+      continue;
+    }
+    if (/^Gradeable Nest Run\b/i.test(line)) kind = "nest_run";
+    else if (/^Graded Loose\b/i.test(line)) kind = "graded_loose";
+    if (!environment) continue;
+    const row = line.match(EGG_ROW_RE);
+    if (!row) continue;
+    const volume = Number(row[3].replace(/,/g, ""));
+    const lo = Number(row[4]);
+    const hi = Number(row[5]);
+    const avg = Number(row[6]);
+    if (!Number.isFinite(volume) || volume < 1) continue;
+    if (!Number.isFinite(avg) || avg < 5 || avg > 500) continue;
+    const color = row[1];
+    const cls = row[2];
+    const nest = /^\d+$/.test(cls) || /nest_run|Gradeable Nest Run/i.test(`${kind} ${line}`);
+    const rowKind = nest ? "nest_run" : kind;
+    const classTok = /^\d+$/.test(cls) ? `g${cls}` : token(cls);
+    const id = ["dairy", `ams_${report.slug}`, token(market), environment, token(rowKind), token(color), classTok].join(".");
+    const envLabel = environment.replace(/_/g, " ");
+    const place = market === "california" ? "California" : "National";
+    pushTick(out, report, sourceUrl, asOf, {
+      id,
+      group: "dairy",
+      commodity: "Shell eggs",
+      label: `${place} ${envLabel} ${color} ${cls}${rowKind === "nest_run" ? " nest run" : ""}`,
+      market: `${report.title} — ${place} ${envLabel}`,
+      classGrade: `${rowKind === "nest_run" ? "Gradeable nest run" : "Graded loose Grade A+"}, ${color} ${cls}, ${volume} cases (30-doz), ${basis}`,
+      unit: "cents/dozen",
+      price: roundMoney(avg),
+      lo,
+      hi,
+    });
+  }
+  return dedupeTicks(out);
+}
+
 export function parseDairyRegionalDry(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
   const asOf = parseReportDate(text);
   if (!asOf) return [];
@@ -1632,6 +1699,7 @@ export function parseAmsReportText(text: string, report: AmsReport, sourceUrl: s
     if (report.slug === "2995") return parseDairyRetailAds(text, report, sourceUrl);
     if (report.slug === "1598") return parseDairyDrySummary(text, report, sourceUrl);
     if (report.slug === "2997") return parseDairyOrganicAds(text, report, sourceUrl);
+    if (report.slug === "2843") return parseShellEggIndex(text, report, sourceUrl);
     if (["1045", "1048", "1051", "1052"].includes(report.slug)) {
       return parseDairyRegionalDry(text, report, sourceUrl);
     }
@@ -1933,7 +2001,7 @@ export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number
         parsed = parseAmsReportText(text, report, pdfUrl);
         usedUrl = pdfUrl;
         if (parsed.length > 0) break;
-        lastErr = "official PDF had no parseable hay/cattle/grain/wool/dairy/hogs/produce print";
+        lastErr = "official PDF had no parseable hay/cattle/grain/wool/dairy/hogs/produce/egg print";
       } catch (err) {
         lastErr = err instanceof Error ? err.message : String(err);
       }

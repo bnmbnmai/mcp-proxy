@@ -906,6 +906,8 @@ const PUBLIC_SOURCE_MARKERS = [
   "ams-2872",
   "ams_2810",
   "ams-2810",
+  "ams_2843",
+  "ams-2843",
   "ams_3802",
   "ams-3802",
 ];
@@ -1018,6 +1020,7 @@ export const TICKS_SOURCE_NAMES = [
   "AMS_1052 Lactose",
   "AMS_1102 Fluid milk West",
   "AMS_2997 Organic dairy",
+  "AMS_2843 Daily Shell Egg Index",
   "AMS_2872 National hog/pork summary",
   "AMS_2810 feeder pigs",
   "AMS_3802 National organic grain",
