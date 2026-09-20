@@ -372,6 +372,40 @@ const lactose = parseAmsReportText(
 );
 assert.ok(lactose.some((row) => row.lo === 0.62 && row.hi === 0.72));
 
+const eggs = parseAmsReportText(
+  fx("eggs-shell-index-2843.txt"),
+  report("2843"),
+  "https://www.ams.usda.gov/mnreports/ams_2843.pdf",
+);
+assert.equal(parseReportDate(fx("eggs-shell-index-2843.txt")), "2026-09-18");
+assert.ok(eggs.length >= 14, `expected current shell-egg prints, got ${eggs.length}`);
+assert.ok(eggs.every((row) => row.group === "dairy" && row.id.startsWith("dairy.ams_2843.") && row.unit === "cents/dozen"));
+assert.ok(eggs.every((row) => row.asOf === "2026-09-18"));
+const cagedLarge = eggs.find((row) => row.id === "dairy.ams_2843.national.caged.graded_loose.white.large");
+assert.ok(cagedLarge, "national caged white Large");
+assert.equal(cagedLarge.price, 35.12);
+assert.equal(cagedLarge.lo, 23);
+assert.equal(cagedLarge.hi, 55);
+const cagedJumbo = eggs.find((row) => row.id.endsWith(".caged.graded_loose.white.jumbo"));
+assert.ok(cagedJumbo);
+assert.equal(cagedJumbo.price, 39);
+const cageFreeXl = eggs.find((row) => row.id.includes("cage_free") && row.id.includes("extra_large"));
+assert.ok(cageFreeXl);
+assert.equal(cageFreeXl.price, 41.88);
+const organicNest = eggs.find((row) => row.id.includes("usda_organic") && row.id.includes("nest_run"));
+assert.ok(organicNest, "organic nest-run brown 1");
+assert.equal(organicNest.price, 180);
+const caLarge = eggs.find((row) => row.id === "dairy.ams_2843.california.cage_free.graded_loose.white.large");
+assert.ok(caLarge);
+assert.equal(caLarge.price, 52.17);
+assert.match(caLarge.classGrade, /Delivered/);
+assert.ok(!eggs.some((row) => row.price === 163.95 || row.price === 186.7 || row.price === 128.97), "year-ago is not the print");
+assert.ok(!eggs.some((row) => row.price === 96 || row.price === 147 || row.price === 159.22), "empty current book is not last-week/year-ago");
+assert.ok(!eggs.some((row) => /free_range/.test(row.id)), "free-range had no current volume+wtd print");
+assert.ok(!eggs.some((row) => row.id.includes("volume") || /51,?024|83,?108/.test(String(row.price))), "regional volume matrix is not a tick");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2843")?.group, "dairy");
+assert.ok(!AMS_NATIONAL_REPORTS.some((r) => ["1095", "3646", "3725"].includes(r.slug)), "cold storage and poultry weeklies stay leftover");
+
 const feederPigs = parseAmsReportText(
   fx("hog-feeder-2810.txt"),
   report("2810"),
@@ -602,13 +636,14 @@ assert.equal(AMS_LEFTOVER_REPORTS.filter((r) => r.kind === "se-barn").length, 5)
   assert.ok(held.sources.includes("AMS_2904 California Direct Hay"));
 }
 assert.ok(
-  ["2998", "2993", "2995", "1598", "1048", "1045", "1051", "1052", "1102", "2997", "2872", "2810", "3802", "2314", "2315", "2306", "2290"].every((s) => slugs.includes(s)),
-  "official AMS dairy / hog / organic grain / national terminal-market slugs",
+  ["2998", "2993", "2995", "1598", "1048", "1045", "1051", "1052", "1102", "2997", "2843", "2872", "2810", "3802", "2314", "2315", "2306", "2290"].every((s) => slugs.includes(s)),
+  "official AMS dairy / hog / shell-egg / organic grain / national terminal-market slugs",
 );
 assert.ok(!slugs.includes("3096"), "WAF-empty Eastern Cornbelt Direct Feeder is dropped");
 assert.ok(!slugs.includes("3458") && !slugs.includes("2498"), "LMR hog/pork PDFs stay off the allowlist");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2998")?.group, "dairy");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2993")?.group, "dairy");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2843")?.group, "dairy");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2872")?.group, "hogs");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2810")?.group, "hogs");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2314")?.group, "produce");
@@ -718,6 +753,24 @@ try {
     {
       ok: true,
       product: "idaho-hay-feeder-ticks",
+      fetchedAt: "2026-09-19T16:00:00Z",
+      asOf: "2026-09-18",
+      tickCount: eggs.length,
+      rows: eggs,
+      failed: [],
+      sources: ["AMS_2843 Daily National Shell Egg Index"],
+    },
+    dir,
+  );
+  process.env.TICKS_AMS_DIR = dir;
+  const paidEggs = paidTicksBody(loadTicks());
+  const eggRec = paidEggs.records.find((row) => row.id === "dairy.ams_2843.national.caged.graded_loose.white.large");
+  assert.ok(eggRec, "paid records include AMS_2843 shell eggs");
+  assert.equal(eggRec.type, "dairy");
+  writeAmsSnapshot(
+    {
+      ok: true,
+      product: "idaho-hay-feeder-ticks",
       fetchedAt: "2026-08-27T18:00:00Z",
       asOf: "2026-08-26",
       tickCount: dairyWeekly.length + hogs.length + 1,
@@ -786,6 +839,7 @@ console.log(
     dairyDry: dairyDry.length,
     dairyFluidWest: dairyFluid.length,
     dairyOrganicAds: dairyOrg.length,
+    shellEggs2843: eggs.length,
     hogsSummary: hogs.length,
     feederPigs: feederPigs.length,
     dairySteers1907: dairySteers.length,
