@@ -9,8 +9,12 @@
  * LMR dashboard / datamart wrap. Individual LM_HG* / LM_PK* PDFs stay skipped.
  * AMS_2810 National Direct Feeder Pig is the official AMS voluntary weekly print.
  * AMS_2843 Daily National Shell Egg Index is the official LPGMN public PDF; rows
- * land on the existing dairy/protein table. Cold-storage AMS_1095 and poultry
- * AMS_3646/3725 stay leftover — not this pass.
+ * land on the existing dairy/protein table.
+ * AMS_1095 National Weekly Cold Storage (MD_DA953) is the official Dairy Market
+ * News PDF of selected-center butter/cheese holdings. Holdings are 1,000 lb
+ * inventory prints — not CME/NDPSR $/lb — so they get their own dairy.ams_1095.*
+ * rows instead of overwriting existing butter/cheese price series. Do not wrap
+ * NASS monthly Cold Storage txt/Quick Stats. Poultry AMS_3646/3725 stay leftover.
  * Water District 1 rental-pool $/AF is not an AMS source and stays off this table.
  *
  * Prefer live mnreports over NAL/esmis archives. Collect used to unshift ESMIS first and
@@ -173,6 +177,7 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "1102", group: "dairy", region: "west", title: "Fluid Milk and Cream West", esmisPublication: "" },
   { slug: "2997", group: "dairy", region: "national_organic", title: "Organic Dairy Market News", esmisPublication: "", pdfNames: ["dybdairyorganic"] },
   { slug: "2843", group: "dairy", region: "national", title: "Daily National Shell Egg Index", esmisPublication: "" },
+  { slug: "1095", group: "dairy", region: "national", title: "National Weekly Cold Storage", esmisPublication: "weekly-cold-storage-holdings", pdfNames: ["md_da953"] },
   { slug: "2872", group: "hogs", region: "national", title: "National Daily Hog and Pork Summary", esmisPublication: "national-daily-hog-pork-summary-report", pdfNames: ["lsddhps"] },
   { slug: "2810", group: "hogs", region: "national", title: "National Direct Feeder Pig", esmisPublication: "" },
   { slug: "2314", group: "produce", region: "new_york", title: "New York Terminal Market Fruit", esmisPublication: "", pdfNames: ["nx_fv010"] },
@@ -197,6 +202,7 @@ export const SKIPPED_SOURCES = [
   { id: "feeder-dashboard", why: "National Feeder & Stocker Cattle Dashboard is a web app, not an ugly PDF/HTML report body" },
   { id: "SJ_LS850", why: "https://www.ams.usda.gov/mnreports/SJ_LS850.txt already returns the official plaintext body" },
   { id: "nass-quick-stats", why: "documented no-auth JSON API — KILL" },
+  { id: "nass-monthly-cold-storage", why: "NASS monthly Cold Storage txt/Quick Stats is free structured NASS — KILL; official AMS_1095 weekly PDF is the cold-storage print on this door" },
   { id: "wasde-psd-esr", why: "documented no-auth USDA JSON/CSV — KILL" },
   { id: "ams_3056_3057_3058_3059_2914", why: "already collected on /ticks (Idaho/Oregon/Columbia Basin hay, NW Direct cattle, PNW pulses)" },
   { id: "no-il-ga-direct-hay", why: "AMS hay listing has no Illinois or Georgia Direct Hay report — IL hay is auction-barn PDFs already wired" },
@@ -1327,6 +1333,96 @@ export function parseShellEggIndex(text: string, report: AmsReport, sourceUrl: s
   return dedupeTicks(out);
 }
 
+const COLD_QTY_RE = /\(?-?[\d,]+(?:\.\d+)?\)?/g;
+
+function parseSignedThousands(raw: string): number | null {
+  const t = raw.trim();
+  if (!t) return null;
+  const parenNeg = /^\(.*\)$/.test(t);
+  const n = Number(t.replace(/[(),]/g, ""));
+  if (!Number.isFinite(n)) return null;
+  return parenNeg ? -Math.abs(n) : n;
+}
+
+function pairQuantities(raw: string): [number, number] | null {
+  const qtys = [...raw.matchAll(COLD_QTY_RE)]
+    .map((m) => parseSignedThousands(m[0]))
+    .filter((n): n is number => n != null);
+  if (qtys.length < 2) return null;
+  return [qtys[0], qtys[1]];
+}
+
+/** Official AMS_1095 / MD_DA953 weekly selected-center butter + cheese holdings. */
+export function parseColdStorageWeekly(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const dated: { asOf: string; butter: number; cheese: number }[] = [];
+  let change: { butter: number; cheese: number } | null = null;
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.replace(/\s+/g, " ").trim();
+    if (!line) continue;
+    const dateRow = line.match(/^(\d{1,2}\/\d{1,2}\/\d{4})\s*:\s*(.+)$/);
+    if (dateRow) {
+      const asOf = parseMdY(dateRow[1]);
+      const pair = pairQuantities(dateRow[2]);
+      if (asOf && pair && pair[0] > 100 && pair[1] > 100 && pair[0] < 5_000_000 && pair[1] < 5_000_000) {
+        dated.push({ asOf, butter: pair[0], cheese: pair[1] });
+      }
+      continue;
+    }
+    const chg = line.match(/^Change:\s*(.+)$/i);
+    if (chg) {
+      const pair = pairQuantities(chg[1]);
+      if (pair) change = { butter: pair[0], cheese: pair[1] };
+    }
+  }
+  const current = dated[0];
+  if (!current) return [];
+  const monthStart = dated[1];
+  if (!change && monthStart) {
+    change = { butter: current.butter - monthStart.butter, cheese: current.cheese - monthStart.cheese };
+  }
+  const out: AmsTick[] = [];
+  const products = [
+    { key: "butter" as const, commodity: "Cold storage butter", label: "US selected-center butter holdings" },
+    { key: "cheese" as const, commodity: "Cold storage cheese", label: "US selected-center cheese holdings" },
+  ];
+  for (const product of products) {
+    const holdings = current[product.key];
+    const start = monthStart?.[product.key];
+    const delta = change?.[product.key];
+    const deltaNote =
+      delta == null
+        ? "gross change from first of month not printed"
+        : `MTD ${delta > 0 ? "+" : ""}${delta.toLocaleString("en-US")} (1,000 lb)`;
+    pushTick(out, report, sourceUrl, current.asOf, {
+      id: ["dairy", `ams_${report.slug}`, "national", product.key, "holdings"].join("."),
+      group: "dairy",
+      commodity: product.commodity,
+      label: product.label,
+      market: `${report.title} — National selected centers`,
+      classGrade: `Edible, selected US storage centers, includes government stocks, ${deltaNote}`,
+      unit: "1,000 lb",
+      price: holdings,
+      lo: start ?? holdings,
+      hi: holdings,
+    });
+    if (delta != null) {
+      pushTick(out, report, sourceUrl, current.asOf, {
+        id: ["dairy", `ams_${report.slug}`, "national", product.key, "mtd_change"].join("."),
+        group: "dairy",
+        commodity: product.commodity,
+        label: `${product.label.replace(/holdings$/, "MTD change")}`,
+        market: `${report.title} — National selected centers`,
+        classGrade: "Gross change from first of month, selected US storage centers, includes government stocks",
+        unit: "1,000 lb",
+        price: delta,
+        lo: delta,
+        hi: delta,
+      });
+    }
+  }
+  return dedupeTicks(out);
+}
+
 export function parseDairyRegionalDry(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
   const asOf = parseReportDate(text);
   if (!asOf) return [];
@@ -1700,6 +1796,7 @@ export function parseAmsReportText(text: string, report: AmsReport, sourceUrl: s
     if (report.slug === "1598") return parseDairyDrySummary(text, report, sourceUrl);
     if (report.slug === "2997") return parseDairyOrganicAds(text, report, sourceUrl);
     if (report.slug === "2843") return parseShellEggIndex(text, report, sourceUrl);
+    if (report.slug === "1095") return parseColdStorageWeekly(text, report, sourceUrl);
     if (["1045", "1048", "1051", "1052"].includes(report.slug)) {
       return parseDairyRegionalDry(text, report, sourceUrl);
     }
@@ -2001,7 +2098,7 @@ export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number
         parsed = parseAmsReportText(text, report, pdfUrl);
         usedUrl = pdfUrl;
         if (parsed.length > 0) break;
-        lastErr = "official PDF had no parseable hay/cattle/grain/wool/dairy/hogs/produce/egg print";
+        lastErr = "official PDF had no parseable hay/cattle/grain/wool/dairy/hogs/produce/egg/cold-storage print";
       } catch (err) {
         lastErr = err instanceof Error ? err.message : String(err);
       }
