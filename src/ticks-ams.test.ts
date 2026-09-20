@@ -338,6 +338,124 @@ assert.ok(convCheese, "conventional 6-8 oz shred");
 assert.equal(convCheese.price, 2.55);
 assert.ok(retail.some((row) => row.id.includes("organic")), "organic advertised dairy stays on the same table");
 
+const chickenAds = parseAmsReportText(
+  fx("retail-chicken-2756.txt"),
+  report("2756"),
+  "https://www.ams.usda.gov/mnreports/ams_2756.pdf",
+);
+assert.equal(parseReportDate(fx("retail-chicken-2756.txt")), "2026-09-18");
+assert.ok(chickenAds.length >= 20, `expected national chicken grocery ads, got ${chickenAds.length}`);
+assert.ok(chickenAds.every((row) => row.group === "dairy" && row.id.startsWith("dairy.ams_2756.") && (row.unit === "$/lb" || row.unit === "$/each")));
+assert.ok(chickenAds.every((row) => row.asOf === "2026-09-18"));
+const fryer = chickenAds.find((row) => row.id === "dairy.ams_2756.whole.whole_bagged_fryer.conventional.fresh");
+assert.ok(fryer, "national conventional whole bagged fryer");
+assert.equal(fryer.price, 1.7);
+assert.match(fryer.classGrade, /844/);
+const breastAd = chickenAds.find((row) => row.id === "dairy.ams_2756.parts.breast_boneless_skinless_regular.conventional.fresh");
+assert.ok(breastAd, "national conventional boneless/skinless breast");
+assert.equal(breastAd.price, 2.46);
+assert.ok(!chickenAds.some((row) => row.price === 1.4 && row.id.includes("whole_bagged_fryer.conventional")), "previous-week fryer reprint is not a tick");
+assert.ok(!chickenAds.some((row) => /northeast|southeast|midwest/i.test(row.id)), "regional grocery pages are not ticks");
+const chickenAdsMissing = parseAmsReportText(
+  fx("retail-chicken-2756.txt").replace(/Whole Bagged Fryer\s+Conventional\s+Fresh\s+844[\s\S]*?\n/, ""),
+  report("2756"),
+  "https://www.ams.usda.gov/mnreports/ams_2756.pdf",
+);
+assert.equal(chickenAdsMissing.length, 0, "fail-closed when a required current-week chicken grocery print is missing");
+
+const eggAds = parseAmsReportText(
+  fx("retail-eggs-2757.txt"),
+  report("2757"),
+  "https://www.ams.usda.gov/mnreports/ams_2757.pdf",
+);
+assert.equal(parseReportDate(fx("retail-eggs-2757.txt")), "2026-09-18");
+assert.ok(eggAds.length >= 10, `expected national egg grocery ads, got ${eggAds.length}`);
+assert.ok(eggAds.every((row) => row.group === "dairy" && row.id.startsWith("dairy.ams_2757.") && row.unit === "$/carton"));
+const largeWhite = eggAds.find((row) => row.id === "dairy.ams_2757.shell_egg.large_white_12.conventional.fresh");
+assert.ok(largeWhite, "national conventional large white 12");
+assert.equal(largeWhite.price, 1.42);
+const largeBrownCf = eggAds.find((row) => row.id === "dairy.ams_2757.shell_egg.large_brown_12.cage_free.fresh");
+assert.ok(largeBrownCf, "national cage-free large brown 12");
+assert.equal(largeBrownCf.price, 4.14);
+assert.ok(!eggAds.some((row) => row.price === 0.97 && row.id.includes("large_white_12.conventional")), "previous-week egg reprint is not a tick");
+
+const turkeyAds = parseAmsReportText(
+  fx("retail-turkey-2867.txt"),
+  report("2867"),
+  "https://www.ams.usda.gov/mnreports/ams_2867.pdf",
+);
+assert.ok(turkeyAds.length >= 8, `expected national turkey grocery ads, got ${turkeyAds.length}`);
+const groundTurkey = turkeyAds.find((row) => row.id === "dairy.ams_2867.ground.ground_turkey_93_1_2_lbs.conventional.fresh");
+assert.ok(groundTurkey, "national conventional 93% ground turkey");
+assert.equal(groundTurkey.price, 4.71);
+
+const porkAds = parseAmsReportText(
+  fx("retail-pork-2868.txt"),
+  report("2868"),
+  "https://www.ams.usda.gov/mnreports/ams_2868.pdf",
+);
+assert.ok(porkAds.length >= 20, `expected national pork grocery ads, got ${porkAds.length}`);
+const hamSteak = porkAds.find((row) => row.id === "dairy.ams_2868.ham.ham_steak.conventional.fresh");
+assert.ok(hamSteak, "national conventional ham steak");
+assert.equal(hamSteak.price, 5.1);
+
+const beefAds = parseAmsReportText(
+  fx("retail-beef-3228.txt"),
+  report("3228"),
+  "https://www.ams.usda.gov/mnreports/ams_3228.pdf",
+);
+assert.ok(beefAds.length >= 20, `expected national beef grocery ads, got ${beefAds.length}`);
+const chuckRoast = beefAds.find((row) => row.id === "dairy.ams_3228.chuck.chuck_roast_boneless_regular.conventional.fresh");
+assert.ok(chuckRoast, "national conventional boneless chuck roast");
+assert.equal(chuckRoast.price, 7.82);
+
+const lambAds = parseAmsReportText(
+  fx("retail-lamb-3229.txt"),
+  report("3229"),
+  "https://www.ams.usda.gov/mnreports/ams_3229.pdf",
+);
+assert.ok(lambAds.length >= 4, `expected national lamb grocery ads, got ${lambAds.length}`);
+const loinChops = lambAds.find((row) => row.id === "dairy.ams_3229.loin.loin_chops_regular.antibiotic_free.fresh");
+assert.ok(loinChops, "national antibiotic-free loin chops");
+assert.equal(loinChops.price, 10.87);
+
+const vealAds = parseAmsReportText(
+  fx("retail-veal-3796.txt"),
+  report("3796"),
+  "https://www.ams.usda.gov/mnreports/ams_3796.pdf",
+);
+assert.equal(vealAds.length, 2, `expected lightly-tested veal grocery ads, got ${vealAds.length}`);
+const vealBreast = vealAds.find((row) => row.id === "dairy.ams_3796.breast.breast_regular.conventional.fresh");
+assert.ok(vealBreast, "national conventional veal breast");
+assert.equal(vealBreast.price, 9.99);
+
+const produceAds = parseAmsReportText(
+  fx("retail-specialty-crops-3324.txt"),
+  report("3324"),
+  "https://www.ams.usda.gov/mnreports/fvwretail.pdf",
+);
+assert.equal(parseReportDate(fx("retail-specialty-crops-3324.txt")), "2026-09-18");
+assert.ok(produceAds.length >= 40, `expected national specialty-crops grocery ads, got ${produceAds.length}`);
+assert.ok(produceAds.every((row) => row.group === "produce" && row.id.startsWith("produce.ams_3324.")));
+const honeycrisp = produceAds.find((row) => row.id === "produce.ams_3324.conventional.apples.honeycrisp.per_lb");
+assert.ok(honeycrisp, "national conventional Honeycrisp per lb");
+assert.equal(honeycrisp.price, 2.26);
+const bananas = produceAds.find((row) => row.id === "produce.ams_3324.conventional.bananas.per_lb");
+assert.ok(bananas, "national conventional bananas per lb");
+assert.equal(bananas.price, 0.65);
+assert.ok(produceAds.some((row) => row.id.includes("organic")), "organic advertised produce stays on the same table");
+assert.ok(!produceAds.some((row) => row.price === 2.12 && row.id.includes("honeycrisp")), "last-week Honeycrisp reprint is not a tick");
+const produceAdsMissing = parseAmsReportText(
+  fx("retail-specialty-crops-3324.txt").replace(/Apples\s+Honeycrisp\s+per lb\s+5,195[\s\S]*?\n/, ""),
+  report("3324"),
+  "https://www.ams.usda.gov/mnreports/fvwretail.pdf",
+);
+assert.equal(produceAdsMissing.length, 0, "fail-closed when a required current-week produce grocery print is missing");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2756")?.group, "dairy");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "3324")?.group, "produce");
+assert.deepEqual(AMS_NATIONAL_REPORTS.find((r) => r.slug === "3324")?.pdfNames, ["fvwretail"]);
+assert.ok(!AMS_NATIONAL_REPORTS.some((r) => /cotton|cnwwcmr/i.test(r.slug + r.title)), "cotton weeklies stay parked");
+
 const ndmWest = parseAmsReportText(
   fx("dairy-ndm-west-1048.txt"),
   report("1048"),
@@ -548,6 +666,9 @@ assert.ok(dairyPdfs[0].includes("www.ams.usda.gov/mnreports"));
 const coldPdfs = officialPdfCandidateOrder("1095", [], ["md_da953"]);
 assert.ok(coldPdfs[0].includes("www.ams.usda.gov/mnreports/ams_1095.pdf"));
 assert.ok(coldPdfs.some((u) => /md_da953\.pdf/i.test(u)), "weekly cold storage also tries official MD_DA953 stem");
+const groceryPdfs = officialPdfCandidateOrder("3324", [], ["fvwretail"]);
+assert.ok(groceryPdfs[0].includes("www.ams.usda.gov/mnreports/ams_3324.pdf"));
+assert.ok(groceryPdfs.some((u) => /fvwretail\.pdf/i.test(u)), "specialty-crops grocery ads use official fvwretail stem");
 
 const listing = latestEsmisPdfUrl(fx("esmis-california-listing.html"), "2904");
 assert.equal(
@@ -717,8 +838,8 @@ assert.equal(AMS_LEFTOVER_REPORTS.filter((r) => r.kind === "se-barn").length, 5)
   assert.ok(held.sources.includes("AMS_2904 California Direct Hay"));
 }
 assert.ok(
-  ["2998", "2993", "2995", "1598", "1048", "1045", "1051", "1052", "1102", "2997", "2843", "1095", "3646", "2872", "2810", "3802", "2314", "2315", "2306", "2290"].every((s) => slugs.includes(s)),
-  "official AMS dairy / hog / shell-egg / cold-storage / weekly-chicken / organic grain / national terminal-market slugs",
+  ["2998", "2993", "2995", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "1598", "1048", "1045", "1051", "1052", "1102", "2997", "2843", "1095", "3646", "2872", "2810", "3802", "2314", "2315", "2306", "2290", "3324"].every((s) => slugs.includes(s)),
+  "official AMS dairy / hog / shell-egg / cold-storage / weekly-chicken / grocery-retail / organic grain / national terminal-market slugs",
 );
 assert.ok(!slugs.includes("3096"), "WAF-empty Eastern Cornbelt Direct Feeder is dropped");
 assert.ok(!slugs.includes("3458") && !slugs.includes("2498"), "LMR hog/pork PDFs stay off the allowlist");
@@ -727,6 +848,9 @@ assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2993")?.group, "dairy"
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2843")?.group, "dairy");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "1095")?.group, "dairy");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "3646")?.group, "dairy");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2756")?.group, "dairy");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2757")?.group, "dairy");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "3324")?.group, "produce");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2872")?.group, "hogs");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2810")?.group, "hogs");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2314")?.group, "produce");
@@ -892,6 +1016,27 @@ try {
     {
       ok: true,
       product: "idaho-hay-feeder-ticks",
+      fetchedAt: "2026-09-20T20:00:00Z",
+      asOf: "2026-09-18",
+      tickCount: chickenAds.length + produceAds.length,
+      rows: [...chickenAds, ...produceAds],
+      failed: [],
+      sources: ["AMS_2756 Grocery Store Chicken Feature", "AMS_3324 Grocery Store Specialty Crops Feature"],
+    },
+    dir,
+  );
+  process.env.TICKS_AMS_DIR = dir;
+  const paidRetail = paidTicksBody(loadTicks());
+  const fryerRec = paidRetail.records.find((row) => row.id === "dairy.ams_2756.whole.whole_bagged_fryer.conventional.fresh");
+  assert.ok(fryerRec, "paid records include AMS_2756 grocery chicken ads");
+  assert.equal(fryerRec.type, "dairy");
+  const honeyRec = paidRetail.records.find((row) => row.id === "produce.ams_3324.conventional.apples.honeycrisp.per_lb");
+  assert.ok(honeyRec, "paid records include AMS_3324 grocery produce ads");
+  assert.equal(honeyRec.type, "produce");
+  writeAmsSnapshot(
+    {
+      ok: true,
+      product: "idaho-hay-feeder-ticks",
       fetchedAt: "2026-08-27T18:00:00Z",
       asOf: "2026-08-26",
       tickCount: dairyWeekly.length + hogs.length + 1,
@@ -963,6 +1108,14 @@ console.log(
     shellEggs2843: eggs.length,
     coldStorage1095: cold.length,
     weeklyChicken3646: chicken.length,
+    groceryChicken2756: chickenAds.length,
+    groceryEggs2757: eggAds.length,
+    groceryTurkey2867: turkeyAds.length,
+    groceryPork2868: porkAds.length,
+    groceryBeef3228: beefAds.length,
+    groceryLamb3229: lambAds.length,
+    groceryVeal3796: vealAds.length,
+    groceryProduce3324: produceAds.length,
     hogsSummary: hogs.length,
     feederPigs: feederPigs.length,
     dairySteers1907: dairySteers.length,
