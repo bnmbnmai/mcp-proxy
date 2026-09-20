@@ -454,7 +454,86 @@ assert.equal(produceAdsMissing.length, 0, "fail-closed when a required current-w
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2756")?.group, "dairy");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "3324")?.group, "produce");
 assert.deepEqual(AMS_NATIONAL_REPORTS.find((r) => r.slug === "3324")?.pdfNames, ["fvwretail"]);
-assert.ok(!AMS_NATIONAL_REPORTS.some((r) => /cotton|cnwwcmr/i.test(r.slug + r.title)), "cotton weeklies stay parked");
+
+const cotton = parseAmsReportText(
+  fx("cotton-weekly-3024.txt"),
+  report("3024"),
+  "https://www.ams.usda.gov/mnreports/cnwwcmr.pdf",
+);
+assert.equal(parseReportDate(fx("cotton-weekly-3024.txt")), "2026-09-18");
+assert.ok(cotton.length >= 8, `expected current-week cotton prints, got ${cotton.length}`);
+assert.ok(cotton.every((row) => row.group === "grain" && row.id.startsWith("grain.ams_3024.cotton.") && row.unit === "cents/lb"));
+assert.ok(cotton.every((row) => row.asOf === "2026-09-18"), "asOf is the weekly issue date, not NASS crop-progress reprints");
+assert.ok(cotton.every((row) => /ams_.*cotton/.test(row.id)), "row ids stay *.ams_*cotton*");
+const sevenMkt = cotton.find((row) => row.id === "grain.ams_3024.cotton.seven_market.spot_41_4_34");
+assert.ok(sevenMkt, "7-market weekly avg spot 41-4-34");
+assert.equal(sevenMkt.price, 76.17);
+assert.equal(sevenMkt.lo, 76.99);
+assert.equal(sevenMkt.hi, 77.2);
+assert.equal(sevenMkt.commodity, "Upland cotton");
+const awp = cotton.find((row) => row.id === "grain.ams_3024.cotton.fsa.adjusted_world_price");
+assert.ok(awp, "FSA Adjusted World Price");
+assert.equal(awp.price, 68.92);
+const iceDec = cotton.find((row) => row.id === "grain.ams_3024.cotton.ice.dec_week_ending");
+assert.ok(iceDec, "ICE DEC week-ending settlement");
+assert.equal(iceDec.price, 82.17);
+const aIndex = cotton.find((row) => row.id === "grain.ams_3024.cotton.aindex.far_eastern_week_ending");
+assert.ok(aIndex, "Far Eastern A Index week-ending");
+assert.equal(aIndex.price, 94.35);
+const ldp = cotton.find((row) => row.id === "grain.ams_3024.cotton.fsa.ldp");
+assert.ok(ldp, "FSA Loan Deficiency Payment is an official 0.00 print");
+assert.equal(ldp.price, 0);
+const eastTx = cotton.find((row) => row.id === "grain.ams_3024.cotton.east_texas.new_crop.color_21_32");
+assert.ok(eastTx, "East Texas new-crop spot trade");
+assert.equal(eastTx.price, 81.5);
+const eastTxLight = cotton.find((row) => row.id === "grain.ams_3024.cotton.east_texas.new_crop.color_21_31");
+assert.ok(eastTxLight, "East Texas light new-crop lot");
+assert.equal(eastTxLight.price, 80);
+const eastTxOld = cotton.find((row) => row.id === "grain.ams_3024.cotton.east_texas.crop_2022_2023.color_12");
+assert.ok(eastTxOld, "East Texas 2022/2023-crop lot still traded this week");
+assert.equal(eastTxOld.price, 55);
+const westTx = cotton.find((row) => row.id === "grain.ams_3024.cotton.west_texas.crop_2025.color_21_31");
+assert.ok(westTx, "West Texas 2025-crop spot trade");
+assert.equal(westTx.price, 76);
+const westTxOld = cotton.find((row) => row.id === "grain.ams_3024.cotton.west_texas.crop_2024.color_22_43");
+assert.ok(westTxOld, "West Texas 2024-crop lot still traded this week");
+assert.equal(westTxOld.price, 70.25);
+const dsw = cotton.find((row) => row.id === "grain.ams_3024.cotton.desert_southwest.crop_2025.color_21_31");
+assert.ok(dsw, "Desert Southwest 2025-crop spot trade");
+assert.equal(dsw.price, 80);
+assert.ok(!cotton.some((row) => row.price === 62.98), "year-ago 7-market reprint is not a tick");
+assert.ok(!cotton.some((row) => row.price === 88.22), "last-week ICE DEC reprint is not a tick");
+assert.ok(!cotton.some((row) => row.price === 435588 || row.price === 2304 || row.price === 142100), "classing/export volumes are not ticks");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "3024")?.group, "grain");
+assert.deepEqual(AMS_NATIONAL_REPORTS.find((r) => r.slug === "3024")?.pdfNames, ["cnwwcmr"]);
+assert.ok(!AMS_NATIONAL_REPORTS.some((r) => r.slug === "3804"), "daily AMS_3804 spot quotations stay leftover");
+const cottonMissingSpot = parseAmsReportText(
+  fx("cotton-weekly-3024.txt").replace(/7-Market Weekly Avg\.?\s+Spot Price[\s\S]*?76\.17 cents\/pound/, ""),
+  report("3024"),
+  "https://www.ams.usda.gov/mnreports/cnwwcmr.pdf",
+);
+assert.equal(cottonMissingSpot.length, 0, "fail-closed when the required 7-market spot print is missing");
+const cottonMissingAwp = parseAmsReportText(
+  fx("cotton-weekly-3024.txt").replace(/Adjusted World price 1\/\s+68\.92/, "Adjusted World price 1/"),
+  report("3024"),
+  "https://www.ams.usda.gov/mnreports/cnwwcmr.pdf",
+);
+assert.equal(cottonMissingAwp.length, 0, "fail-closed when the required FSA AWP print is missing");
+const cottonClassic = parseAmsReportText(
+  [
+    "Weekly Cotton Market Review",
+    "week ending Thursday, August 27, 2026",
+    "Quotations for the base quality of cotton in the seven designated markets, averaged 82.88 cents per pound for the week ending Thursday, August 27, 2026.",
+    "Adjusted World Price (AWP) 71.10",
+    "ICE Oct settlement price ended the week at 91.06 cents, compared to 87.02 cents last week.",
+  ].join("\n"),
+  report("3024"),
+  "https://www.ams.usda.gov/mnreports/cnwwcmr.pdf",
+);
+assert.equal(cottonClassic.find((row) => row.id.endsWith("spot_41_4_34"))?.price, 82.88);
+assert.equal(cottonClassic.find((row) => row.id.endsWith("adjusted_world_price"))?.price, 71.1);
+assert.equal(cottonClassic.find((row) => row.id.endsWith("dec_week_ending"))?.price, 91.06);
+assert.ok(!cottonClassic.some((row) => row.price === 87.02), "classic last-week ICE reprint is not a tick");
 
 const ndmWest = parseAmsReportText(
   fx("dairy-ndm-west-1048.txt"),
@@ -669,6 +748,9 @@ assert.ok(coldPdfs.some((u) => /md_da953\.pdf/i.test(u)), "weekly cold storage a
 const groceryPdfs = officialPdfCandidateOrder("3324", [], ["fvwretail"]);
 assert.ok(groceryPdfs[0].includes("www.ams.usda.gov/mnreports/ams_3324.pdf"));
 assert.ok(groceryPdfs.some((u) => /fvwretail\.pdf/i.test(u)), "specialty-crops grocery ads use official fvwretail stem");
+const cottonPdfs = officialPdfCandidateOrder("3024", [], ["cnwwcmr"]);
+assert.ok(cottonPdfs[0].includes("www.ams.usda.gov/mnreports/ams_3024.pdf"));
+assert.ok(cottonPdfs.some((u) => /cnwwcmr\.pdf/i.test(u)), "weekly cotton uses official cnwwcmr stem (ams_3024.pdf is 404)");
 
 const listing = latestEsmisPdfUrl(fx("esmis-california-listing.html"), "2904");
 assert.equal(
@@ -838,8 +920,8 @@ assert.equal(AMS_LEFTOVER_REPORTS.filter((r) => r.kind === "se-barn").length, 5)
   assert.ok(held.sources.includes("AMS_2904 California Direct Hay"));
 }
 assert.ok(
-  ["2998", "2993", "2995", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "1598", "1048", "1045", "1051", "1052", "1102", "2997", "2843", "1095", "3646", "2872", "2810", "3802", "2314", "2315", "2306", "2290", "3324"].every((s) => slugs.includes(s)),
-  "official AMS dairy / hog / shell-egg / cold-storage / weekly-chicken / grocery-retail / organic grain / national terminal-market slugs",
+  ["2998", "2993", "2995", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "1598", "1048", "1045", "1051", "1052", "1102", "2997", "2843", "1095", "3646", "2872", "2810", "3802", "3024", "2314", "2315", "2306", "2290", "3324"].every((s) => slugs.includes(s)),
+  "official AMS dairy / hog / shell-egg / cold-storage / weekly-chicken / grocery-retail / organic grain / cotton weekly / national terminal-market slugs",
 );
 assert.ok(!slugs.includes("3096"), "WAF-empty Eastern Cornbelt Direct Feeder is dropped");
 assert.ok(!slugs.includes("3458") && !slugs.includes("2498"), "LMR hog/pork PDFs stay off the allowlist");
@@ -851,6 +933,7 @@ assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "3646")?.group, "dairy"
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2756")?.group, "dairy");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2757")?.group, "dairy");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "3324")?.group, "produce");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "3024")?.group, "grain");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2872")?.group, "hogs");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2810")?.group, "hogs");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2314")?.group, "produce");
@@ -1047,6 +1130,24 @@ try {
     {
       ok: true,
       product: "idaho-hay-feeder-ticks",
+      fetchedAt: "2026-09-20T22:00:00Z",
+      asOf: "2026-09-18",
+      tickCount: cotton.length,
+      rows: cotton,
+      failed: [],
+      sources: ["AMS_3024 Weekly Cotton Market Review"],
+    },
+    dir,
+  );
+  process.env.TICKS_AMS_DIR = dir;
+  const paidCotton = paidTicksBody(loadTicks());
+  const cottonRec = paidCotton.records.find((row) => row.id === "grain.ams_3024.cotton.seven_market.spot_41_4_34");
+  assert.ok(cottonRec, "paid records include AMS_3024 weekly cotton 7-market spot");
+  assert.equal(cottonRec.type, "grain");
+  writeAmsSnapshot(
+    {
+      ok: true,
+      product: "idaho-hay-feeder-ticks",
       fetchedAt: "2026-08-27T18:00:00Z",
       asOf: "2026-08-26",
       tickCount: dairyWeekly.length + hogs.length + 1,
@@ -1126,6 +1227,7 @@ console.log(
     groceryLamb3229: lambAds.length,
     groceryVeal3796: vealAds.length,
     groceryProduce3324: produceAds.length,
+    weeklyCotton3024: cotton.length,
     hogsSummary: hogs.length,
     feederPigs: feederPigs.length,
     dairySteers1907: dairySteers.length,

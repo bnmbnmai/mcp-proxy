@@ -26,6 +26,12 @@
  * only — previous-week / year-ago reprints and regional detail pages are not
  * ticks. Official bodies are ugly mnreports PDFs (marsapi 403; LMR datamart
  * "Invalid slug id"). AMS_3725 Egg Markets Overview is leftover narrative.
+ * AMS_3024 Weekly Cotton Market Review is the official Cotton Program weekly
+ * (mnreports/cnwwcmr.pdf — ams_3024.pdf is 404). Rows land on the existing
+ * grain table as grain.ams_3024.cotton.*. Current-week price prints only —
+ * year-ago fluff, quality charts, and weather narrative are not ticks.
+ * Daily AMS_3804 spot quotations and cnwwqo quality stay leftover. Do not
+ * wrap MARS / MMN JSON (403 without a key).
  * Water District 1 rental-pool $/AF is not an AMS source and stays off this table.
  *
  * Prefer live mnreports over NAL/esmis archives. Collect used to unshift ESMIS first and
@@ -174,6 +180,7 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "3239", group: "grain", region: "wyoming", title: "Wyoming Daily Grain Bids", esmisPublication: "wyoming-daily-grain-bids" },
   { slug: "2887", group: "grain", region: "national", title: "National Daily Sunflower Canola Millet Flaxseed", esmisPublication: "national-daily-sunflower-canola-millet-and-flaxseed-report" },
   { slug: "3802", group: "grain", region: "national_organic", title: "National Organic Grain and Feedstuffs", esmisPublication: "national-organic-grain-and-feedstuffs", pdfNames: ["lsbnof"] },
+  { slug: "3024", group: "grain", region: "national", title: "Weekly Cotton Market Review", esmisPublication: "weekly-cotton-market-review", pdfNames: ["cnwwcmr"] },
   { slug: "2911", group: "wool", region: "national", title: "National Wool Review", esmisPublication: "national-wool-review-fri" },
   { slug: "2998", group: "dairy", region: "national", title: "Dairy Market News Weekly Report", esmisPublication: "dairy-market-news-weekly-report", pdfNames: ["dywweeklyreport"] },
   { slug: "2993", group: "dairy", region: "national", title: "National Dairy Products Sales Report", esmisPublication: "", pdfNames: ["dywdairyproductssales"] },
@@ -248,7 +255,7 @@ export const SKIPPED_SOURCES = [
   { id: "sheep-goats", why: "official AMS sheep/lamb/goat sale-barn and LMR boxed-lamb LM_XL* leftover; grocery lamb/veal feature ads AMS_3229/3796 are already on /ticks" },
   { id: "poultry-eggs", why: "leftover official AMS broiler-glance/breaking-stock PDFs stay off this slice; AMS_2843 Daily Shell Egg Index, AMS_3646 Weekly National Chicken, and grocery feature ads AMS_2756/2757/2867 are already on /ticks dairy rows" },
   { id: "ams-3725-egg-overview", why: "AMS_3725 Egg Markets Overview is weekly narrative + charts, not a tabular poultry/protein print; do not scrape prose prices. Daily eggs are AMS_2843; retail egg ads are AMS_2757" },
-  { id: "cotton-rice", why: "official AMS cotton and rice PDFs leftover — not in the grain POS / organic-feedstuffs family this door already parses. Cotton weeklies (cnwwcmr) stay parked after grocery-feature ads" },
+  { id: "cotton-rice", why: "official AMS rice PDFs leftover. Daily AMS_3804 / Daily Spot Cotton Quotations and weekly quality cnwwqo stay leftover. Weekly Cotton Market Review (AMS_3024 / cnwwcmr) is already on /ticks grain rows" },
   { id: "remaining-fv-terminals", why: "Asheville/Columbia/Raleigh/Baltimore/nuts, FV030 onion-potato city sheets, and discontinued MX_FV010 Mexico City leftover; NY/CHI/LA/ATL/DET/PHL/BOS fruit+veg are the national terminal slice. Grocery produce ads are AMS_3324 / fvwretail" },
   { id: "mx_fv010_discontinued", why: "MX_FV010 is Mexico City terminal fruit, permanently discontinued 2024-02-09 — not a current US terminal print" },
   { id: "if_fv130_already", why: "Idaho Falls IF_FV130 shipping-point is already on /ticks via farm-plan — do not re-list" },
@@ -2218,6 +2225,237 @@ export function parseProduceTerminal(text: string, report: AmsReport, sourceUrl:
   return dedupeTicks(out);
 }
 
+const COTTON_REQUIRED_IDS = ["cotton.seven_market.spot_41_4_34", "cotton.fsa.adjusted_world_price"] as const;
+
+function flattenCotton(text: string): string {
+  return text.replace(/\u00a0/g, " ").replace(/[ \t]+/g, " ");
+}
+
+function parseCottonAsOf(text: string): string | null {
+  const header = text.match(
+    /Weekly Cotton Market Review[\s\S]{0,200}?(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),\s+(\d{4})/i,
+  );
+  if (header) {
+    const mon = MONTHS[header[1].toLowerCase()];
+    if (mon) return `${header[3]}-${mon}-${header[2].padStart(2, "0")}`;
+  }
+  return parseReportDate(text);
+}
+
+function cottonCents(raw: string): number | null {
+  const n = Number(String(raw).replace(/[¢,]/g, ""));
+  if (!Number.isFinite(n) || n < 0 || n > 200) return null;
+  return n;
+}
+
+function cottonRegionToken(raw: string): string {
+  const t = raw.replace(/\s+/g, " ").trim();
+  if (/east texas/i.test(t)) return "east_texas";
+  if (/west texas/i.test(t)) return "west_texas";
+  if (/desert southwest/i.test(t)) return "desert_southwest";
+  if (/san joaquin/i.test(t)) return "san_joaquin";
+  if (/american pima/i.test(t)) return "american_pima";
+  if (/north delta/i.test(t)) return "north_delta";
+  if (/south delta/i.test(t)) return "south_delta";
+  if (/southeast/i.test(t)) return "southeast";
+  return token(t);
+}
+
+function cottonCropToken(raw: string): string {
+  const years = [...raw.matchAll(/\b(20\d{2})\b/g)].map((m) => m[1]);
+  if (/new-crop/i.test(raw)) return "new_crop";
+  if (years.length >= 2) return `crop_${years[0]}_${years[1]}`;
+  if (years.length === 1) return `crop_${years[0]}`;
+  return "current";
+}
+
+function cottonColorToken(raw: string): string {
+  const range = raw.match(/\bcolor\s+(\d{2})\s*[-–]\s*(\d{2})\b/i);
+  if (range) return `color_${range[1]}_${range[2]}`;
+  const pair = raw.match(/\bcolor\s+(\d{2})\s+and\s+(\d{2})\b/i);
+  if (pair) return `color_${pair[1]}_${pair[2]}`;
+  const one = raw.match(/\bcolor\s+(\d{2})\b/i);
+  if (one) return `color_${one[1]}`;
+  return "";
+}
+
+function pushCottonTick(
+  out: AmsTick[],
+  report: AmsReport,
+  sourceUrl: string,
+  asOf: string,
+  parts: string[],
+  row: {
+    commodity: string;
+    label: string;
+    market: string;
+    classGrade: string;
+    price: number;
+    lo?: number;
+    hi?: number;
+  },
+): void {
+  pushTick(out, report, sourceUrl, asOf, {
+    id: ["grain", `ams_${report.slug}`, ...parts].join("."),
+    group: "grain",
+    unit: "cents/lb",
+    ...row,
+  });
+}
+
+/** Official AMS_3024 / CNWWCMR weekly — current-week cents/lb prints only. */
+export function parseWeeklyCottonReview(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const asOf = parseCottonAsOf(text);
+  if (!asOf) return [];
+  const flat = flattenCotton(text);
+  const out: AmsTick[] = [];
+
+  const spot =
+    flat.match(/7-Market Weekly Avg\.?\s+Spot Price\s*\(\s*41-4-34\s*\):[\s\S]{0,240}?(\d+\.\d{2})\s*cents(?:\s*\/\s*pound)?/i) ??
+    flat.match(/seven designated markets,?\s+averaged\s+(\d+\.\d{2})\s+cents per pound/i);
+  const range = flat.match(/Weekly Range:\s*(\d+\.\d{2})\s*¢?\s*[–-]\s*(\d+\.\d{2})\s*¢/i);
+  const iceDec =
+    flat.match(/ICE\s+DEC\s+Futures\s+Week Ending Settlement\s+Price:\s*(\d+\.\d{2})/i) ??
+    flat.match(/ICE\s+(?:Oct|DEC|Dec)\s+settlement price ended the week at\s+(\d+\.\d{2})/i);
+  const awp =
+    flat.match(/Adjusted World price\s*1?\/?\s+(\d+\.\d{2})/i) ??
+    flat.match(/Adjusted World Price\s*\(AWP\)[^\d]{0,48}(\d+\.\d{2})/i);
+
+  const spotPx = spot ? cottonCents(spot[1]) : null;
+  if (spotPx != null && spotPx >= 20) {
+    const lo = range ? cottonCents(range[1]) : null;
+    const hi = range ? cottonCents(range[2]) : null;
+    pushCottonTick(out, report, sourceUrl, asOf, ["cotton", "seven_market", "spot_41_4_34"], {
+      commodity: "Upland cotton",
+      label: "7-market weekly avg spot 41-4-34",
+      market: `${report.title} — Seven designated markets`,
+      classGrade: "Color 41, leaf 4, staple 34, weekly average, cents/lb",
+      price: roundMoney(spotPx),
+      lo: lo != null && hi != null ? Math.min(lo, hi) : spotPx,
+      hi: lo != null && hi != null ? Math.max(lo, hi) : spotPx,
+    });
+  }
+
+  const awpPx = awp ? cottonCents(awp[1]) : null;
+  if (awpPx != null) {
+    pushCottonTick(out, report, sourceUrl, asOf, ["cotton", "fsa", "adjusted_world_price"], {
+      commodity: "Upland cotton",
+      label: "FSA Adjusted World Price",
+      market: `${report.title} — USDA FSA`,
+      classGrade: "Adjusted World Price, cents/lb, prices in effect this week",
+      price: roundMoney(awpPx),
+      lo: awpPx,
+      hi: awpPx,
+    });
+  }
+
+  const fsaRows: Array<{ re: RegExp; key: string; label: string }> = [
+    { re: /Fine Count Adjustment\s+'?25\s+(\d+\.\d{2})/i, key: "fine_count_adj_25", label: "Fine Count Adjustment 2025" },
+    { re: /Fine Count Adjustment\s+'?26\s+(\d+\.\d{2})/i, key: "fine_count_adj_26", label: "Fine Count Adjustment 2026" },
+    { re: /Coul?rse Count Adjustment\s+(\d+\.\d{2})/i, key: "coarse_count_adj", label: "Coarse Count Adjustment" },
+    { re: /Loan Deficiency Payment\s+(\d+\.\d{2})/i, key: "ldp", label: "Loan Deficiency Payment" },
+    { re: /ELS\s*Competitiveness Payment[\s\S]{0,80}?(\d+\.\d{2})/i, key: "els_competitiveness", label: "ELS Competitiveness Payment" },
+  ];
+  for (const row of fsaRows) {
+    const m = flat.match(row.re);
+    const px = m ? cottonCents(m[1]) : null;
+    if (px == null) continue;
+    pushCottonTick(out, report, sourceUrl, asOf, ["cotton", "fsa", row.key], {
+      commodity: "Upland cotton",
+      label: `FSA ${row.label}`,
+      market: `${report.title} — USDA FSA`,
+      classGrade: `${row.label}, cents/lb`,
+      price: roundMoney(px),
+      lo: px,
+      hi: px,
+    });
+  }
+
+  const icePx = iceDec ? cottonCents(iceDec[1]) : null;
+  if (icePx != null && icePx >= 20) {
+    pushCottonTick(out, report, sourceUrl, asOf, ["cotton", "ice", "dec_week_ending"], {
+      commodity: "Cotton ICE futures",
+      label: "ICE DEC week-ending settlement",
+      market: `${report.title} — ICE`,
+      classGrade: "ICE December cotton futures, week-ending settlement, cents/lb",
+      price: roundMoney(icePx),
+      lo: icePx,
+      hi: icePx,
+    });
+  }
+
+  const iceRows = [...text.matchAll(/^\s*Sep\s+\d{1,2}\s+((?:\d+\.\d{2}\s+)+)/gim)];
+  const lastIce = iceRows.at(-1);
+  if (lastIce) {
+    const nums = [...lastIce[1].matchAll(/\d+\.\d{2}/g)].map((m) => Number(m[0]));
+    const aIndex = nums.length >= 8 ? nums[nums.length - 1] : null;
+    if (aIndex != null && aIndex >= 40 && aIndex <= 200) {
+      pushCottonTick(out, report, sourceUrl, asOf, ["cotton", "aindex", "far_eastern_week_ending"], {
+        commodity: "Cotton A Index",
+        label: "Far Eastern A Index week-ending",
+        market: `${report.title} — Cotton Outlook of Liverpool`,
+        classGrade: "Far Eastern A Index, week-ending print, cents/lb",
+        price: roundMoney(aIndex),
+        lo: aIndex,
+        hi: aIndex,
+      });
+    }
+  }
+
+  let regionLabel = "";
+  let bullet = "";
+  const flushCottonBullet = (): void => {
+    const lot = bullet.replace(/\s+/g, " ").trim();
+    bullet = "";
+    if (!regionLabel || !lot) return;
+    const trade = lot.match(/(?:sold for around|traded for)\s+(\d+\.\d{2})\s+cents/i);
+    const px = trade ? cottonCents(trade[1]) : null;
+    if (px == null || px < 20) return;
+    const region = cottonRegionToken(regionLabel);
+    const crop = cottonCropToken(lot);
+    const color = cottonColorToken(lot);
+    const parts = ["cotton", region, crop];
+    if (color) parts.push(color);
+    const terms = /FOB warehouse/i.test(lot)
+      ? "FOB warehouse"
+      : /FOB car\/truck/i.test(lot)
+        ? "FOB car/truck"
+        : "spot trade";
+    pushCottonTick(out, report, sourceUrl, asOf, parts, {
+      commodity: /pima/i.test(region) ? "American Pima cotton" : "Upland cotton",
+      label: `${regionLabel} ${crop.replace(/_/g, " ")} ${px.toFixed(2)}¢`,
+      market: `${report.title} — ${regionLabel}`,
+      classGrade: `${crop.replace(/_/g, " ")}${color ? `, ${color.replace(/_/g, " ")}` : ""}, ${terms}, current-week trade`,
+      price: roundMoney(px),
+      lo: px,
+      hi: px,
+    });
+  };
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.replace(/\s+/g, " ").trim();
+    if (!line) continue;
+    const regionLine = line.match(
+      /^(East Texas\/South Texas|West Texas,\s*Kansas,\s*Oklahoma|Desert Southwest|San Joaquin Valley|American Pima|North Delta|South Delta)\b/i,
+    );
+    if (regionLine) {
+      flushCottonBullet();
+      regionLabel = regionLine[1].replace(/\s+/g, " ");
+      continue;
+    }
+    if (/^[•·]\s*/.test(line)) {
+      flushCottonBullet();
+      bullet = line.replace(/^[•·]\s*/, "");
+      continue;
+    }
+    if (bullet) bullet += ` ${line}`;
+  }
+  flushCottonBullet();
+
+  const have = new Set(out.map((row) => row.id.replace(/^grain\.ams_[^.]+\./, "")));
+  if (!COTTON_REQUIRED_IDS.every((id) => have.has(id))) return [];
+  return dedupeTicks(out);
+}
+
 export function parseAmsReportText(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
   if (report.group === "hay") return parseHayReport(text, report, sourceUrl);
   if (report.group === "cattle") return parseCattleReport(text, report, sourceUrl);
@@ -2247,6 +2485,9 @@ export function parseAmsReportText(text: string, report: AmsReport, sourceUrl: s
   }
   if (report.slug === "3802" || /organic grain/i.test(report.title)) {
     return parseOrganicGrainReport(text, report, sourceUrl);
+  }
+  if (report.slug === "3024" || /cotton market review/i.test(report.title) || (report.pdfNames ?? []).includes("cnwwcmr")) {
+    return parseWeeklyCottonReview(text, report, sourceUrl);
   }
   return parseGrainReport(text, report, sourceUrl);
 }
@@ -2536,7 +2777,7 @@ export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number
         parsed = parseAmsReportText(text, report, pdfUrl);
         usedUrl = pdfUrl;
         if (parsed.length > 0) break;
-        lastErr = "official PDF had no parseable hay/cattle/grain/wool/dairy/hogs/produce/egg/cold-storage/chicken/grocery-retail print";
+        lastErr = "official PDF had no parseable hay/cattle/grain/wool/dairy/hogs/produce/egg/cold-storage/chicken/grocery-retail/cotton print";
       } catch (err) {
         lastErr = err instanceof Error ? err.message : String(err);
       }
