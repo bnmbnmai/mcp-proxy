@@ -5,7 +5,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, PRODUCT_NAME, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, paidOutputJsonSchema, settlementReceiptHeaders, settlementFailureHeaders, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, facilitatorExtra, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2, paymentExtra, sku402Description, isOrganicHay, isWaterTick, buildTicksManifest, countWord } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, PRODUCT_NAME, TICKS_COMMODITY_SET, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, paidOutputJsonSchema, settlementReceiptHeaders, settlementFailureHeaders, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, facilitatorExtra, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2, paymentExtra, sku402Description, isOrganicHay, isWaterTick, buildTicksManifest, countWord } from "./ticks-door.js";
 import { EXTRACTED_BODY_SKUS, PAGE_AMOUNT_ATOMIC, SINGLE_DOC_AMOUNT_ATOMIC } from "./paid-records.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
@@ -483,6 +483,8 @@ async function main(): Promise<void> {
     assert.ok(ia402Desc.includes("https://ticks.bnm.farm/firm-check?q="));
     const ticks402Desc = sku402Description("ticks");
     assert.ok(ticks402Desc.includes("$0.05 = entire current table."));
+    assert.ok(ticks402Desc.includes(TICKS_COMMODITY_SET));
+    assert.ok(ticks402Desc.includes("eggs"));
     assert.ok(!ticks402Desc.includes("/firm-check"));
     const csb402Desc = sku402Description("csb-reports");
     assert.ok(csb402Desc.includes("https://ticks.bnm.farm/csb-reports/manifest.json?q="));
@@ -1042,7 +1044,8 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /ticks — $0.05"));
     assert.ok(!llmsBody.includes("GET /ticks — $0.02"));
     assert.ok(llmsBody.includes("USDA farm market prices"));
-    assert.ok(llmsBody.includes("hay, cattle, grain, dairy, hogs, produce"));
+    assert.ok(llmsBody.includes(TICKS_COMMODITY_SET));
+    assert.ok(llmsBody.includes("eggs"));
     assert.ok(llmsBody.includes("not water"));
     assert.ok(!llmsBody.toLowerCase().includes("wd1"));
     assert.ok(!llmsBody.includes("Idaho ticks"));
@@ -1080,6 +1083,8 @@ async function main(): Promise<void> {
     assert.ok((specGuidance.paths?.[WARNING_LETTERS_PATH]?.get?.description ?? "").includes("Newest chunk on a plain GET"));
     assert.ok(!(specGuidance.paths?.[WARNING_LETTERS_PATH]?.get?.description ?? "").toLowerCase().includes("entire current cache"));
     assert.ok((specGuidance.paths?.[TICKS_PATH]?.get?.description ?? "").includes("current official USDA farm market prices"));
+    assert.ok((specGuidance.paths?.[TICKS_PATH]?.get?.description ?? "").includes(TICKS_COMMODITY_SET));
+    assert.ok((specGuidance.paths?.[TICKS_PATH]?.get?.description ?? "").includes("eggs"));
     assert.ok((specGuidance.paths?.[TICKS_PATH]?.get?.summary ?? "").includes("USDA farm market prices"));
     const mcpInit = (await (
       await fetch(`${base}${MCP_PATH}`, {
@@ -1210,6 +1215,7 @@ async function main(): Promise<void> {
     assert.ok(Array.isArray(sample.table?.ticks) && sample.table.ticks.length === 1);
     assert.ok(sample.table?.asOf && sample.table.fetchedAt && sample.table.source);
     assert.equal(sample.table?.product, PRODUCT_PUBLIC_ID);
+    assert.ok(JSON.stringify(sample).includes(TICKS_COMMODITY_SET), "/sample note names eggs in the /ticks commodity set");
     assert.ok(sample.body?.id);
     assert.ok(sample.body?.asOf);
     assert.ok(sample.body?.letters?.[0]?.sourceUrl);
