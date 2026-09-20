@@ -18,7 +18,7 @@ import {
   readAmsSnapshot,
   writeAmsSnapshot,
 } from "./ticks-ams.js";
-import { loadTicks, PRODUCT_ID, PRODUCT_NAME } from "./ticks-door.js";
+import { buildTicksManifest, loadTicks, PRODUCT_ID, PRODUCT_NAME, PRODUCT_PUBLIC_ID } from "./ticks-door.js";
 import { paidTicksBody } from "./paid-records.js";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -767,6 +767,16 @@ try {
   const eggRec = paidEggs.records.find((row) => row.id === "dairy.ams_2843.national.caged.graded_loose.white.large");
   assert.ok(eggRec, "paid records include AMS_2843 shell eggs");
   assert.equal(eggRec.type, "dairy");
+  const eggMan = buildTicksManifest("https://ticks.bnm.farm/ticks") as {
+    product?: { id?: string };
+    samples?: { id?: string; group?: string; unit?: string; sample?: boolean }[];
+  };
+  assert.equal(eggMan.product?.id, PRODUCT_PUBLIC_ID);
+  const eggSample = eggMan.samples?.find((row) => row.id === "dairy.ams_2843.national.caged.graded_loose.white.large");
+  assert.ok(eggSample, "manifest samples[] includes AMS_2843 shell eggs");
+  assert.equal(eggSample.sample, true);
+  assert.equal(eggSample.group, "dairy");
+  assert.equal(eggSample.unit, "cents/dozen");
   writeAmsSnapshot(
     {
       ok: true,
