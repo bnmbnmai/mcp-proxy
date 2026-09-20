@@ -14,7 +14,11 @@
  * News PDF of selected-center butter/cheese holdings. Holdings are 1,000 lb
  * inventory prints — not CME/NDPSR $/lb — so they get their own dairy.ams_1095.*
  * rows instead of overwriting existing butter/cheese price series. Do not wrap
- * NASS monthly Cold Storage txt/Quick Stats. Poultry AMS_3646/3725 stay leftover.
+ * NASS monthly Cold Storage txt/Quick Stats.
+ * AMS_3646 Weekly National Chicken is the official LPGMN POS poultry PDF; rows
+ * land on the existing dairy/protein table (dairy.ams_3646.*). Current-week
+ * cents/lb weighted averages only — previous-week reprint is not a tick.
+ * AMS_3725 Egg Markets Overview is leftover narrative/charts, not this table.
  * Water District 1 rental-pool $/AF is not an AMS source and stays off this table.
  *
  * Prefer live mnreports over NAL/esmis archives. Collect used to unshift ESMIS first and
@@ -178,6 +182,7 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "2997", group: "dairy", region: "national_organic", title: "Organic Dairy Market News", esmisPublication: "", pdfNames: ["dybdairyorganic"] },
   { slug: "2843", group: "dairy", region: "national", title: "Daily National Shell Egg Index", esmisPublication: "" },
   { slug: "1095", group: "dairy", region: "national", title: "National Weekly Cold Storage", esmisPublication: "weekly-cold-storage-holdings", pdfNames: ["md_da953"] },
+  { slug: "3646", group: "dairy", region: "national", title: "Weekly National Chicken", esmisPublication: "" },
   { slug: "2872", group: "hogs", region: "national", title: "National Daily Hog and Pork Summary", esmisPublication: "national-daily-hog-pork-summary-report", pdfNames: ["lsddhps"] },
   { slug: "2810", group: "hogs", region: "national", title: "National Direct Feeder Pig", esmisPublication: "" },
   { slug: "2314", group: "produce", region: "new_york", title: "New York Terminal Market Fruit", esmisPublication: "", pdfNames: ["nx_fv010"] },
@@ -226,7 +231,8 @@ export const SKIPPED_SOURCES = [
   { id: "ams_3096_waf", why: "AMS_3096 Eastern Cornbelt Direct Feeder Cattle mnreports 403 WAF; drop rather than leave a silent empty" },
   { id: "se-swine-auction-barns", why: "individual AMS swine-auction barn PDFs leftover — not a national sale-barn mill; AMS_2872 summary + AMS_2810 feeder pig are this hog slice" },
   { id: "sheep-goats", why: "official AMS sheep/lamb/goat PDFs are a leftover slice; LMR boxed-lamb LM_XL* skipped; parser stretch is not small" },
-  { id: "poultry-eggs", why: "leftover official AMS broiler/turkey/breaking-stock PDFs (AMS_3646/3725 and siblings) stay off this slice; AMS_2843 Daily Shell Egg Index is already on /ticks dairy/protein rows" },
+  { id: "poultry-eggs", why: "leftover official AMS broiler-glance/turkey/breaking-stock PDFs stay off this slice; AMS_2843 Daily Shell Egg Index and AMS_3646 Weekly National Chicken are already on /ticks dairy/protein rows" },
+  { id: "ams-3725-egg-overview", why: "AMS_3725 Egg Markets Overview is weekly narrative + charts, not a tabular poultry/protein print; do not scrape prose prices. Daily eggs are AMS_2843; retail egg ads are a later card" },
   { id: "cotton-rice", why: "official AMS cotton and rice PDFs leftover — not in the grain POS / organic-feedstuffs family this door already parses" },
   { id: "remaining-fv-terminals", why: "Asheville/Columbia/Raleigh/Baltimore/nuts, FV030 onion-potato city sheets, and discontinued MX_FV010 Mexico City leftover; NY/CHI/LA/ATL/DET/PHL/BOS fruit+veg are the national terminal slice" },
   { id: "mx_fv010_discontinued", why: "MX_FV010 is Mexico City terminal fruit, permanently discontinued 2024-02-09 — not a current US terminal print" },
@@ -374,7 +380,7 @@ export function parseReportDate(text: string): string | null {
   }
   const grain = text.match(/Grain Report for\s+(\d{1,2}\/\d{1,2}\/\d{4})/i);
   if (grain) return parseMdY(grain[1]);
-  const woolThru = text.match(/Report For:\s*\d{1,2}\/\d{1,2}\/\d{4}\s+thru\s+(\d{1,2}\/\d{1,2}\/\d{4})/i);
+  const woolThru = text.match(/Report For:\s*\d{1,2}\/\d{1,2}\/\d{4}\s+(?:thru|to)\s+(\d{1,2}\/\d{1,2}\/\d{4})/i);
   if (woolThru) return parseMdY(woolThru[1]);
   const named = text.match(
     /\b(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)?\s*(January|February|March|April|May|June|July|August|September|October|November|December|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*\s+(\d{1,2}),\s+(\d{4})\b/i,
@@ -1423,6 +1429,113 @@ export function parseColdStorageWeekly(text: string, report: AmsReport, sourceUr
   return dedupeTicks(out);
 }
 
+const CHICKEN_ROW_RE =
+  /^(.+?)\s+(\d+(?:\.\d+)?)\s*-\s*(\d+(?:\.\d+)?)\s+(\d+(?:\.\d+)?)(?:\s+(-?\d+(?:\.\d+)?))?\s+([\d,]+)\b/;
+
+const CHICKEN_REQUIRED_IDS = [
+  "whole.delivered.national_composite_whole_bird",
+  "whole.delivered.wogs.national_composite_wogs",
+  "parts.fob.breast_b_s",
+  "parts.fob.leg_quarters_bulk",
+] as const;
+
+function chickenItemToken(label: string): string {
+  const cleaned = label.replace(/:+$/, "").trim();
+  if (/^national composite whole(?: bird)?$/i.test(cleaned)) return "national_composite_whole_bird";
+  return token(cleaned);
+}
+
+/** Official AMS_3646 Weekly National Chicken — current-week cents/lb weighted averages. */
+export function parseWeeklyNationalChicken(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const asOf = parseReportDate(text);
+  if (!asOf) return [];
+  const out: AmsTick[] = [];
+  let section = "";
+  let basis = "";
+  let family = "";
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.replace(/\s+/g, " ").trim();
+    if (!line) continue;
+    if (/^Chicken,\s*Whole\b/i.test(line)) {
+      section = "whole";
+      family = "";
+      continue;
+    }
+    if (/^Chicken,\s*Parts\b/i.test(line)) {
+      section = "parts";
+      family = "";
+      continue;
+    }
+    if (/^Export\s*-\s*Fresh\b/i.test(line)) {
+      section = "export_fresh";
+      family = "";
+      continue;
+    }
+    if (/^Export\s*-\s*Frozen\b/i.test(line)) {
+      section = "export_frozen";
+      family = "";
+      continue;
+    }
+    if (/Domestic\b.*\bConventional\b/i.test(line) || /^Export\b.*\bConventional\b/i.test(line)) {
+      basis = /Delivered/i.test(line) ? "delivered" : /FOB/i.test(line) ? "fob" : basis;
+      continue;
+    }
+    if (/^WOG Trading\b/i.test(line)) {
+      family = "wogs";
+      continue;
+    }
+    if (/^Whole Body Trading\b/i.test(line)) {
+      family = "whole_body";
+      continue;
+    }
+    if (/^Regional and Specific\b/i.test(line)) {
+      family = "regional";
+      continue;
+    }
+    if (!section) continue;
+    const row = line.match(CHICKEN_ROW_RE);
+    if (!row) continue;
+    const lo = Number(row[2]);
+    const hi = Number(row[3]);
+    const avg = Number(row[4]);
+    const volume = Number(row[6].replace(/,/g, ""));
+    if (!Number.isFinite(avg) || avg < 1 || avg > 400) continue;
+    if (!Number.isFinite(lo) || !Number.isFinite(hi) || lo < 0 || hi > 400) continue;
+    if (!Number.isFinite(volume) || volume < 1) continue;
+    const item = chickenItemToken(row[1]);
+    if (!item) continue;
+    const idParts = ["dairy", `ams_${report.slug}`, section, basis || "fob"];
+    if (family) idParts.push(family);
+    idParts.push(item);
+    const id = idParts.join(".");
+    const place =
+      section === "export_fresh"
+        ? "Export fresh"
+        : section === "export_frozen"
+          ? "Export frozen"
+          : section === "parts"
+            ? "National parts"
+            : "National whole";
+    const commodity = section === "parts" || section.startsWith("export") ? "Chicken parts" : "Whole chicken";
+    const basisLabel = (basis || "fob").replace(/^./, (c) => c.toUpperCase());
+    pushTick(out, report, sourceUrl, asOf, {
+      id,
+      group: "dairy",
+      commodity,
+      label: `${place} ${row[1].replace(/:+$/, "").trim()}`,
+      market: `${report.title} — ${place}`,
+      classGrade: `Conventional fresh, ${basisLabel}, ${volume.toLocaleString("en-US")} (1,000 lb) current-week trading`,
+      unit: "cents/lb",
+      price: roundMoney(avg),
+      lo,
+      hi,
+    });
+  }
+  const have = new Set(out.map((row) => row.id.replace(/^dairy\.ams_\d+\./, "")));
+  if (!CHICKEN_REQUIRED_IDS.every((id) => have.has(id))) return [];
+  return dedupeTicks(out);
+}
+
 export function parseDairyRegionalDry(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
   const asOf = parseReportDate(text);
   if (!asOf) return [];
@@ -1797,6 +1910,7 @@ export function parseAmsReportText(text: string, report: AmsReport, sourceUrl: s
     if (report.slug === "2997") return parseDairyOrganicAds(text, report, sourceUrl);
     if (report.slug === "2843") return parseShellEggIndex(text, report, sourceUrl);
     if (report.slug === "1095") return parseColdStorageWeekly(text, report, sourceUrl);
+    if (report.slug === "3646") return parseWeeklyNationalChicken(text, report, sourceUrl);
     if (["1045", "1048", "1051", "1052"].includes(report.slug)) {
       return parseDairyRegionalDry(text, report, sourceUrl);
     }
@@ -2098,7 +2212,7 @@ export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number
         parsed = parseAmsReportText(text, report, pdfUrl);
         usedUrl = pdfUrl;
         if (parsed.length > 0) break;
-        lastErr = "official PDF had no parseable hay/cattle/grain/wool/dairy/hogs/produce/egg/cold-storage print";
+        lastErr = "official PDF had no parseable hay/cattle/grain/wool/dairy/hogs/produce/egg/cold-storage/chicken print";
       } catch (err) {
         lastErr = err instanceof Error ? err.message : String(err);
       }
