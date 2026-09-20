@@ -1,0 +1,385 @@
+{
+  "id": "TICK_LIKE_DOOR_HUNT_2026-09-19",
+  "probedAt": "2026-09-20T04:40:00Z",
+  "shop": "https://ticks.bnm.farm",
+  "liveTicks": {
+    "catalog": "https://ticks.bnm.farm/catalog.json",
+    "fetchedAt": "2026-09-20T02:03:34.141Z",
+    "tickCount": 5345,
+    "sourceCount": 155,
+    "groups": ["hay", "cattle", "produce", "grain", "dairy", "hogs", "pulses", "wool"],
+    "emptyOfficial": ["ams_2808", "ams_2770", "ams_2101"],
+    "note": "SE leftover cattle weeklies + five SE barns already on the bag. Do not re-collect those slugs."
+  },
+  "rules": {
+    "leakFirst": "official no-auth JSON/CSV/XLS/TXT or documented API of the BODY -> KILL",
+    "ugly": "paid body is PDF/HTML/scan needing collector+cache; free manifest OK",
+    "license": "US federal 17 USC 105 only; non-US PARK",
+    "habit": "moving number / new page preferred over dead archive",
+    "payerClass": "plus only; do not invent",
+    "sameBody": "fatten /ticks before a new SKU",
+    "price": "$0.05 USDC Base tableWhole unless hay-shaped one-text ($0.02)"
+  },
+  "shortlist": [
+    {
+      "rank": 1,
+      "verdict": "TAKE",
+      "name": "AMS leftover Midwest/Northeast cattle weeklies",
+      "door": "fatten /ticks cattle",
+      "priceUsd": 0.05,
+      "sourceUrl": "https://www.ams.usda.gov/mnreports/ams_2041.pdf",
+      "slugs": ["2041", "1919", "2011", "2056", "1838", "1837", "1847", "1845", "1842", "1841", "1785"],
+      "ugly": true,
+      "habit": "weekly",
+      "license": "17 USC 105",
+      "leakTest": "marsapi.ams.usda.gov/services/v1.1/reports/2041 HTTP 403 Access is denied; mnreports ams_2041/1919/2011/2056/1838/1847/1845/1785.pdf HTTP 200 %PDF; public listPublishedReports/all is slug catalog only",
+      "why": "Same sale-barn PDF family a stranger just paid. Leftover collector already named IL/PA/NY/MO regionals as unread, not the SE slice."
+    },
+    {
+      "rank": 2,
+      "verdict": "TAKE",
+      "name": "AMS sheep/goat auctions + state weeklies",
+      "door": "fatten /ticks new sheep group",
+      "priceUsd": 0.05,
+      "sourceUrl": "https://www.ams.usda.gov/mnreports/ams_1913.pdf",
+      "slugs": ["1913", "2014", "2005", "1833"],
+      "ugly": true,
+      "habit": "sale-day / weekly",
+      "license": "17 USC 105",
+      "leakTest": "marsapi v1.1/reports/1913 HTTP 403; mnreports ams_1913.pdf HTTP 200 %PDF; sa_ls850.pdf 404 — use numbered ams_* only",
+      "why": "Unread official auction prints. Start with New Holland, San Angelo, AL goat weekly, MO sheep/goat weekly."
+    },
+    {
+      "rank": 3,
+      "verdict": "TAKE",
+      "name": "AMS Daily Spot Cotton Quotations + weekly review",
+      "door": "fatten /ticks new cotton group",
+      "priceUsd": 0.05,
+      "sourceUrl": "https://www.ams.usda.gov/mnreports/ams_3804.pdf",
+      "slugs": ["3804"],
+      "ugly": true,
+      "habit": "daily / weekly",
+      "license": "17 USC 105",
+      "leakTest": "marsapi v1.1/reports/3804 HTTP 403; mnreports ams_3804.pdf HTTP 200 %PDF; no no-auth cotton-quote JSON on ams.usda.gov",
+      "why": "Daily official quotes, unread on the 155-source bag. PARK classing quality sheets."
+    },
+    {
+      "rank": 4,
+      "verdict": "TAKE",
+      "name": "AMS poultry/turkey/egg national dailies",
+      "door": "fatten /ticks new poultry group",
+      "priceUsd": 0.05,
+      "sourceUrl": "https://www.ams.usda.gov/mnreports/ams_2856.pdf",
+      "slugs": ["2856", "2740", "2734", "2843", "1624"],
+      "ugly": true,
+      "habit": "daily",
+      "license": "17 USC 105",
+      "leakTest": "marsapi v1.1/reports/2856 HTTP 403; ams_2856/2740/2734/2843.pdf HTTP 200; nw_py044.pdf 404 — bookmark ams_2856",
+      "why": "National glance sheets, not LMR. Same AMS PDF habit as hay/cattle."
+    },
+    {
+      "rank": 5,
+      "verdict": "TAKE",
+      "name": "AMS shipping-point leftovers + national specialty",
+      "door": "fatten /ticks produce",
+      "priceUsd": 0.05,
+      "sourceUrl": "https://www.ams.usda.gov/mnreports/ix_fv110.pdf",
+      "slugs": ["ix_fv110", "ix_fv120", "fr_fv110", "ya_fv110", "ya_fv120", "if_fv110", "fvdidnop", "fvdtvmelon", "fvdtomf", "fvdgrape"],
+      "ugly": true,
+      "habit": "daily",
+      "license": "17 USC 105",
+      "leakTest": "ix_fv110.pdf and fvdidnop.pdf HTTP 200 %PDF; Specialty Crops MMN data API is keyed MARS; if_fv130 already on live bag",
+      "why": "Shipping-point is the farm-gate sibling of terminal produce already sold on /ticks."
+    },
+    {
+      "rank": 6,
+      "verdict": "TAKE",
+      "name": "AMS tallow / variety meats / hides",
+      "door": "fatten /ticks cattle or byproduct rows",
+      "priceUsd": 0.05,
+      "sourceUrl": "https://www.ams.usda.gov/mnreports/ams_2837.pdf",
+      "slugs": ["2837", "2833", "2830", "2839", "2838", "2835", "2834"],
+      "ugly": true,
+      "habit": "daily / weekly",
+      "license": "17 USC 105",
+      "leakTest": "ams_2837.pdf and ams_2833.pdf HTTP 200; LPGMN drop/by-product, not mpr.datamart LMR slugs",
+      "why": "Official packer prints next to cattle already on the door."
+    },
+    {
+      "rank": 7,
+      "verdict": "TAKE",
+      "name": "AMS leftover terminal nuts/onions/potatoes",
+      "door": "fatten /ticks produce",
+      "priceUsd": 0.05,
+      "sourceUrl": "https://www.ams.usda.gov/mnreports/bp_fv030.pdf",
+      "ugly": true,
+      "habit": "daily",
+      "license": "17 USC 105",
+      "leakTest": "same keyed MARS + mnreports PDF as shipping-point; fruit/veg for major terminals already on bag",
+      "why": "Finish terminal tables already started. Skip discontinued/foreign terminals."
+    },
+    {
+      "rank": 8,
+      "verdict": "TAKE",
+      "name": "AMS National Truck Rate FVWTRK",
+      "door": "fatten /ticks produce (no /truck SKU)",
+      "priceUsd": 0.05,
+      "sourceUrl": "https://www.ams.usda.gov/mnreports/fvwtrk.pdf",
+      "slugs": ["fvwtrk"],
+      "ugly": true,
+      "habit": "weekly",
+      "license": "17 USC 105",
+      "leakTest": "fvwtrk.pdf HTTP 200 %PDF; wa_fv190 is a 2022 archive TXT — skip",
+      "why": "One weekly official rate sheet. Ride the existing table."
+    },
+    {
+      "rank": 9,
+      "verdict": "TAKE",
+      "name": "AMS Daily Livestock and Poultry Slaughter",
+      "door": "fatten /ticks",
+      "priceUsd": 0.05,
+      "sourceUrl": "https://www.ams.usda.gov/mnreports/ams_3208.pdf",
+      "slugs": ["3208"],
+      "ugly": true,
+      "habit": "daily",
+      "license": "17 USC 105",
+      "leakTest": "ams_3208.pdf HTTP 200; different body than NASS monthly Livestock Slaughter (Quick Stats) — do not wrap the NASS monthly",
+      "why": "Daily official head counts. Moving number, not a price."
+    }
+  ],
+  "kill": [
+    {
+      "verdict": "KILL",
+      "name": "CFTC Commitments of Traders",
+      "sourceUrl": "https://publicreporting.cftc.gov/resource/6dca-aqww.json",
+      "ugly": false,
+      "habit": "weekly Friday",
+      "license": "17 USC 105",
+      "leakTest": "GET publicreporting.cftc.gov/resource/6dca-aqww.json?$limit=3 HTTP 200 application/json with market_and_exchange_names + positions; .csv HTTP 200; CFTC documents SODA API without token. cftc.gov HTML 403 Cloudflare from this VM is irrelevant.",
+      "why": "Official host serves the positions. PDF is a reprint. Bank Participation / Cotton On-Call / Weekly Swaps sit on the same PRE."
+    },
+    {
+      "verdict": "KILL",
+      "name": "USDA NASS Crop Progress / Quick Stats family",
+      "sourceUrl": "https://esmis.nal.usda.gov/sites/default/release-files/796060/prog3726.txt",
+      "ugly": false,
+      "habit": "weekly in season",
+      "license": "17 USC 105",
+      "leakTest": "prog3726.txt HTTP 200 full official tables (week ending 2026-09-13); prog3726.pdf 200; Quick Stats /api/api_GET documented (401 without free key). NASS JSON-at-release covers Ag Prices / Crop Production / Livestock.",
+      "why": "Body is already TXT + documented API. Also KILL Cattle on Feed, Hogs & Pigs, Grain Stocks, Crop Production, Ag Prices, monthly Livestock Slaughter, Cold Storage."
+    },
+    {
+      "verdict": "KILL",
+      "name": "EIA weekly petroleum + gas storage",
+      "sourceUrl": "https://ir.eia.gov/ngs/wngsr.json",
+      "ugly": false,
+      "habit": "WPSR Wednesday / WNGSR Thursday",
+      "license": "17 USC 105",
+      "leakTest": "ir.eia.gov/ngs/wngsr.json HTTP 200 working-gas body current_week 2026-09-11; wngsr.csv 200; ir.eia.gov/wpsr/table1.csv 200 crude/product balance 9/11/26; EIA API v2 documented",
+      "why": "CSV/JSON is the weekly body."
+    },
+    {
+      "verdict": "KILL",
+      "name": "AMS LMR boxed beef / 5-area / LMR pork / NDPSR",
+      "sourceUrl": "https://mpr.datamart.ams.usda.gov/services/v1.1/reports/2465",
+      "ugly": false,
+      "habit": "daily / weekly",
+      "license": "17 USC 105",
+      "leakTest": "mpr.datamart LMPR API documented, no key. GET /reports/2465 HTTP 200 JSON total_loads + sales buckets (LM_XB463); /2466 5-area thousands of rows; /2453 daily cutout; /2993 NDPSR butter/cheese/whey/NDM. marsapi 403 does not save LMR — different host already dumps the body.",
+      "why": "Do not wrap LMR. AMS_2993 is already on /ticks — flag existing-bag leak, do not unship, do not add more LMR slugs."
+    },
+    {
+      "verdict": "KILL",
+      "name": "WASDE",
+      "sourceUrl": "https://www.usda.gov/oce/commodity/wasde",
+      "ugly": false,
+      "habit": "monthly",
+      "license": "17 USC 105",
+      "leakTest": "Sep 2026 WASDE offered as PDF + XML + Excel + Text on usda.gov/oce; ESMIS keeps xls/xml/txt; historical CSV on usda.gov/historical-wasde-report-data",
+      "why": "Named KILL. Official host already publishes the tables as machine files."
+    },
+    {
+      "verdict": "KILL",
+      "name": "FAS PSD Online",
+      "sourceUrl": "https://apps.fas.usda.gov/psdonline/app/index.html",
+      "ugly": false,
+      "habit": "monthly with WASDE",
+      "license": "17 USC 105",
+      "leakTest": "PSD Online + FAS OpenData /api/psd/* documented",
+      "why": "Named KILL."
+    },
+    {
+      "verdict": "KILL",
+      "name": "FAS Export Sales (ESR)",
+      "sourceUrl": "https://apps.fas.usda.gov/EXPORT-SALES/esrd1.html",
+      "ugly": false,
+      "habit": "weekly",
+      "license": "17 USC 105",
+      "leakTest": "ESRQS: no login for reports, query, and API; CSV/XLSX export",
+      "why": "Named KILL."
+    },
+    {
+      "verdict": "KILL",
+      "name": "AMS Grain Transportation Report tables",
+      "sourceUrl": "https://www.ams.usda.gov/sites/default/files/media/GTRTable1.xlsx",
+      "ugly": false,
+      "habit": "weekly",
+      "license": "17 USC 105",
+      "leakTest": "GTR datasets page lists per-table XLSX; GTRTable1.xlsx HTTP 200 application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "why": "KILL the numbers. Feature article is not a tick."
+    },
+    {
+      "verdict": "KILL",
+      "name": "Named wrap-kills (not re-probed)",
+      "sourceUrl": "",
+      "ugly": false,
+      "habit": "n/a",
+      "license": "mixed",
+      "leakTest": "brief: openFDA, ClinicalTrials, CMS 2567, CBP AD/CVD service-messages, SAM notice JSON, USGS NWIS, FAA NMS-API, ATTOM, Regrid",
+      "why": "Already open official dumps or not 17 USC 105."
+    }
+  ],
+  "park": [
+    {
+      "verdict": "PARK",
+      "name": "Hundreds of remaining individual AMS sale barns",
+      "sourceUrl": "https://marsapi.ams.usda.gov/services/v1/public/listPublishedReports/all",
+      "ugly": true,
+      "habit": "sale-day",
+      "why": "Leftover collector: stay off this slice. Weeklies cover the same prints with less surface. Revisit after TAKE-1."
+    },
+    {
+      "verdict": "PARK",
+      "name": "AMS board/video/internet cattle",
+      "sourceUrl": "https://www.ams.usda.gov/mnreports/ams_2029.pdf",
+      "ugly": true,
+      "habit": "sale-day",
+      "why": "Different family than sale-barn floor sheets. Parser not the one we have."
+    },
+    {
+      "verdict": "PARK",
+      "name": "Seasonal replacement / stock-show specials",
+      "sourceUrl": "https://mymarketnews.ams.usda.gov/filerepo/reports",
+      "ugly": true,
+      "habit": "seasonal / often empty",
+      "why": "Do not invent off-season rows."
+    },
+    {
+      "verdict": "PARK",
+      "name": "Mexico import plaintext AL_LS626/627/635",
+      "sourceUrl": "https://www.ams.usda.gov/mnreports/",
+      "ugly": false,
+      "habit": "recurring",
+      "why": "Official plaintext already — do not wrap."
+    },
+    {
+      "verdict": "PARK",
+      "name": "National Weekly Cattle Beef Summary AMS_2874",
+      "sourceUrl": "https://www.ams.usda.gov/mnreports/ams_2874.pdf",
+      "ugly": true,
+      "habit": "weekly",
+      "why": "mnreports 404 this hunt; leftover already skipped. Do not invent."
+    },
+    {
+      "verdict": "PARK",
+      "name": "AMS cotton classing quality",
+      "sourceUrl": "https://mymarketnews.ams.usda.gov/filerepo/reports",
+      "ugly": true,
+      "habit": "daily / weekly",
+      "why": "Quality not price. Archive-heavy."
+    },
+    {
+      "verdict": "PARK",
+      "name": "AMS GTR feature article only",
+      "sourceUrl": "https://www.ams.usda.gov/services/transportation-analysis/gtr/archive",
+      "ugly": true,
+      "habit": "weekly",
+      "why": "Tables leaked as XLSX. Narrative alone is not a tick."
+    },
+    {
+      "verdict": "PARK",
+      "name": "USDA OIG audit/inspection PDFs",
+      "sourceUrl": "https://www.usda.gov/oig/reports/audit-reports",
+      "ugly": true,
+      "habit": "new report",
+      "why": "Could fatten /hhs-oig-reports later. Not tick-like."
+    },
+    {
+      "verdict": "PARK",
+      "name": "USDA OALJ Agriculture Decisions (PACA / P&S)",
+      "sourceUrl": "https://www.ams.usda.gov/services/enforcement/psd",
+      "ugly": true,
+      "habit": "occasional",
+      "why": "Shop /oalj-decisions is DOL, not USDA. Possible later body sibling. Press-release HTML is too thin."
+    },
+    {
+      "verdict": "PARK",
+      "name": "AMS NOP organic settlements",
+      "sourceUrl": "https://www.ams.usda.gov/services/enforcement/organic",
+      "ugly": false,
+      "habit": "sparse HTML archives",
+      "why": "Not a dense new-page habit."
+    },
+    {
+      "verdict": "PARK",
+      "name": "MSHA fatal investigation reports",
+      "sourceUrl": "https://www.msha.gov/fatality-reports",
+      "ugly": true,
+      "habit": "sparse",
+      "why": "CSB-shaped PDF door, not a tick table. Do not wrap MSHA open-data stats."
+    },
+    {
+      "verdict": "PARK",
+      "name": "USACE Notices to Navigation Interests",
+      "sourceUrl": "https://ndc.ops.usace.army.mil/ords/r/ntni/notices/navigation-notices",
+      "ugly": true,
+      "habit": "new notice",
+      "why": "Mariners sibling. Leak-test ORDS REST before any door — APEX often dumps the table."
+    },
+    {
+      "verdict": "PARK",
+      "name": "NRC ADAMS inspection/event PDFs",
+      "sourceUrl": "https://www.nrc.gov/reading-rm/adams",
+      "ugly": true,
+      "habit": "ongoing",
+      "why": "Heavy collector, not a weekly sheet."
+    },
+    {
+      "verdict": "PARK",
+      "name": "NTSB investigation reports",
+      "sourceUrl": "https://data.ntsb.gov/carol-main-public/api-help",
+      "ugly": true,
+      "habit": "new report",
+      "why": "CAROL API dumps case fields. Narrative PDF might still be ugly — leak-test the narrative field before TAKE."
+    },
+    {
+      "verdict": "PARK",
+      "name": "Federal Reserve Beige Book",
+      "sourceUrl": "https://www.federalreserve.gov/monetarypolicy/beigebook/",
+      "ugly": false,
+      "habit": "8x / year",
+      "why": "Official HTML, not farm-tick ugly."
+    },
+    {
+      "verdict": "PARK",
+      "name": "GAO / CBO / CRS reports",
+      "sourceUrl": "https://www.gao.gov/",
+      "ugly": true,
+      "habit": "new report",
+      "why": "Later body-door hunt. Not tick-like. Several have search/API/RSS."
+    }
+  ],
+  "existingBagLeak": {
+    "slug": "AMS_2993",
+    "onTicks": true,
+    "dump": "https://mpr.datamart.ams.usda.gov/services/v1.1/reports/2993",
+    "action": "Do not unship. Do not add more LMR slugs."
+  },
+  "notDone": [
+    "no deploy",
+    "no collector patch",
+    "no well-known path",
+    "no Bruce message",
+    "no apollo media-box"
+  ]
+}
