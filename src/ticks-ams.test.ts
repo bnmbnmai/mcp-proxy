@@ -404,7 +404,48 @@ assert.ok(!eggs.some((row) => row.price === 96 || row.price === 147 || row.price
 assert.ok(!eggs.some((row) => /free_range/.test(row.id)), "free-range had no current volume+wtd print");
 assert.ok(!eggs.some((row) => row.id.includes("volume") || /51,?024|83,?108/.test(String(row.price))), "regional volume matrix is not a tick");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2843")?.group, "dairy");
-assert.ok(!AMS_NATIONAL_REPORTS.some((r) => ["3646", "3725"].includes(r.slug)), "poultry weeklies stay leftover");
+
+const chicken = parseAmsReportText(
+  fx("weekly-national-chicken-3646.txt"),
+  report("3646"),
+  "https://www.ams.usda.gov/mnreports/ams_3646.pdf",
+);
+assert.equal(parseReportDate(fx("weekly-national-chicken-3646.txt")), "2026-09-18");
+assert.equal(chicken.length, 34, `expected current-week whole/parts/export prints, got ${chicken.length}`);
+assert.ok(chicken.every((row) => row.group === "dairy" && row.id.startsWith("dairy.ams_3646.") && row.unit === "cents/lb"));
+assert.ok(chicken.every((row) => row.asOf === "2026-09-18"), "asOf is the Report For through-date / Friday print");
+const wholeBird = chicken.find((row) => row.id === "dairy.ams_3646.whole.delivered.national_composite_whole_bird");
+assert.ok(wholeBird, "national composite whole bird");
+assert.equal(wholeBird.price, 116.81);
+assert.equal(wholeBird.lo, 81);
+assert.equal(wholeBird.hi, 149);
+assert.equal(wholeBird.commodity, "Whole chicken");
+const wogs = chicken.find((row) => row.id === "dairy.ams_3646.whole.delivered.wogs.national_composite_wogs");
+assert.ok(wogs);
+assert.equal(wogs.price, 115.9);
+const breastBs = chicken.find((row) => row.id === "dairy.ams_3646.parts.fob.breast_b_s");
+assert.ok(breastBs);
+assert.equal(breastBs.price, 121.6);
+assert.equal(breastBs.commodity, "Chicken parts");
+const legQ = chicken.find((row) => row.id === "dairy.ams_3646.parts.fob.leg_quarters_bulk");
+assert.ok(legQ);
+assert.equal(legQ.price, 54.57);
+const exportFrozen = chicken.find((row) => row.id === "dairy.ams_3646.export_frozen.fob.msc_15_20_fat_content");
+assert.ok(exportFrozen);
+assert.equal(exportFrozen.price, 49.36);
+const ribs = chicken.find((row) => row.id.endsWith(".breast_with_ribs"));
+assert.ok(ribs, "parts row with no printed change still has current wtd + volume");
+assert.equal(ribs.price, 109.41);
+assert.ok(!chicken.some((row) => row.price === 116.08 || row.price === 115.13 || row.price === 25.17), "previous-week reprint is not a tick");
+assert.ok(!chicken.some((row) => row.id.includes("volume") || row.price === 7306 || row.price === 8107), "1,000 lb volume is not a tick");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "3646")?.group, "dairy");
+assert.ok(!AMS_NATIONAL_REPORTS.some((r) => r.slug === "3725"), "AMS_3725 Egg Markets Overview stays leftover");
+const chickenMissingBreast = parseAmsReportText(
+  fx("weekly-national-chicken-3646.txt").replace(/Breast - B\/S:.*\n/, ""),
+  report("3646"),
+  "https://www.ams.usda.gov/mnreports/ams_3646.pdf",
+);
+assert.equal(chickenMissingBreast.length, 0, "fail-closed when a required current-week chicken print is missing");
 
 const cold = parseAmsReportText(
   fx("cold-storage-1095.txt"),
@@ -676,8 +717,8 @@ assert.equal(AMS_LEFTOVER_REPORTS.filter((r) => r.kind === "se-barn").length, 5)
   assert.ok(held.sources.includes("AMS_2904 California Direct Hay"));
 }
 assert.ok(
-  ["2998", "2993", "2995", "1598", "1048", "1045", "1051", "1052", "1102", "2997", "2843", "1095", "2872", "2810", "3802", "2314", "2315", "2306", "2290"].every((s) => slugs.includes(s)),
-  "official AMS dairy / hog / shell-egg / cold-storage / organic grain / national terminal-market slugs",
+  ["2998", "2993", "2995", "1598", "1048", "1045", "1051", "1052", "1102", "2997", "2843", "1095", "3646", "2872", "2810", "3802", "2314", "2315", "2306", "2290"].every((s) => slugs.includes(s)),
+  "official AMS dairy / hog / shell-egg / cold-storage / weekly-chicken / organic grain / national terminal-market slugs",
 );
 assert.ok(!slugs.includes("3096"), "WAF-empty Eastern Cornbelt Direct Feeder is dropped");
 assert.ok(!slugs.includes("3458") && !slugs.includes("2498"), "LMR hog/pork PDFs stay off the allowlist");
@@ -685,6 +726,7 @@ assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2998")?.group, "dairy"
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2993")?.group, "dairy");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2843")?.group, "dairy");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "1095")?.group, "dairy");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "3646")?.group, "dairy");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2872")?.group, "hogs");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2810")?.group, "hogs");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2314")?.group, "produce");
@@ -708,6 +750,7 @@ assert.ok(SKIPPED_SOURCES.some((s) => s.id === "dairy-waf-empty"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "se-swine-auction-barns"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "sheep-goats"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "poultry-eggs"));
+assert.ok(SKIPPED_SOURCES.some((s) => s.id === "ams-3725-egg-overview"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "cotton-rice"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "if_fv130_already"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "mx_fv010_discontinued"));
@@ -831,6 +874,24 @@ try {
     {
       ok: true,
       product: "idaho-hay-feeder-ticks",
+      fetchedAt: "2026-09-20T18:00:00Z",
+      asOf: "2026-09-18",
+      tickCount: chicken.length,
+      rows: chicken,
+      failed: [],
+      sources: ["AMS_3646 Weekly National Chicken"],
+    },
+    dir,
+  );
+  process.env.TICKS_AMS_DIR = dir;
+  const paidChicken = paidTicksBody(loadTicks());
+  const chickenRec = paidChicken.records.find((row) => row.id === "dairy.ams_3646.whole.delivered.national_composite_whole_bird");
+  assert.ok(chickenRec, "paid records include AMS_3646 weekly national chicken");
+  assert.equal(chickenRec.type, "dairy");
+  writeAmsSnapshot(
+    {
+      ok: true,
+      product: "idaho-hay-feeder-ticks",
       fetchedAt: "2026-08-27T18:00:00Z",
       asOf: "2026-08-26",
       tickCount: dairyWeekly.length + hogs.length + 1,
@@ -901,6 +962,7 @@ console.log(
     dairyOrganicAds: dairyOrg.length,
     shellEggs2843: eggs.length,
     coldStorage1095: cold.length,
+    weeklyChicken3646: chicken.length,
     hogsSummary: hogs.length,
     feederPigs: feederPigs.length,
     dairySteers1907: dairySteers.length,
