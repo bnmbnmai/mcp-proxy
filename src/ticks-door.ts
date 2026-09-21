@@ -643,6 +643,7 @@ import {
   SAMPLE_HOW_TO_USE,
   SAMPLE_PATH,
   SAMPLE_TABLE_SKU,
+  TICKS_COMMODITY_SET,
   TICKS_PUBLIC_CACHE_SOURCE,
   shopPaidJsonSample,
 } from "./shop-sample.js";
@@ -682,7 +683,7 @@ export { MCP_PATH } from "./ticks-mcp.js";
 export const X402SCAN_SERVER_URL =
   "https://www.x402scan.com/server/c6f584c5-e494-41d1-aa02-2efb07ac3546";
 export const PRODUCT_ID = "idaho-hay-feeder-ticks";
-export { PRODUCT_PUBLIC_ID, SAMPLE_PATH } from "./shop-sample.js";
+export { PRODUCT_PUBLIC_ID, SAMPLE_PATH, TICKS_COMMODITY_SET } from "./shop-sample.js";
 export const PRODUCT_NAME = "USDA farm market prices";
 export const PRODUCT_VERSION = "1.5.0";
 
@@ -908,6 +909,10 @@ const PUBLIC_SOURCE_MARKERS = [
   "ams-2810",
   "ams_2843",
   "ams-2843",
+  "ams_1095",
+  "ams-1095",
+  "ams_3646",
+  "ams-3646",
   "ams_3802",
   "ams-3802",
 ];
@@ -1021,6 +1026,8 @@ export const TICKS_SOURCE_NAMES = [
   "AMS_1102 Fluid milk West",
   "AMS_2997 Organic dairy",
   "AMS_2843 Daily Shell Egg Index",
+  "AMS_1095 National Weekly Cold Storage",
+  "AMS_3646 Weekly National Chicken",
   "AMS_2872 National hog/pork summary",
   "AMS_2810 feeder pigs",
   "AMS_3802 National organic grain",
@@ -1584,7 +1591,7 @@ export function paymentExtra(sku: DoorSku): Record<string, unknown> {
 const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> = {
   ticks: {
     description:
-      "Call GET /ticks when you need the current official USDA farm market prices (hay, cattle, grain, dairy, hogs, produce). USDA AMS nationwide prints plus a few Idaho/PNW barn examples inside the same table — not the SKU. Not forecasts, not private barn deals, not water. JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs.",
+      `Call GET /ticks when you need the current official USDA farm market prices (${TICKS_COMMODITY_SET}). USDA AMS nationwide prints plus a few Idaho/PNW barn examples inside the same table — not the SKU. Not forecasts, not private barn deals, not water. JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs.`,
     resourcePath: TICKS_PATH,
   },
   "import-alerts": {
@@ -3992,6 +3999,7 @@ const SAMPLE_SERIES_IDS = [
   "ams.if_fv130.onion.yellow_hybrid.us1.sack50.jumbo.columbia_umatilla",
   "ibc.id.grain.idaho_falls.barley_malting",
   "ams.2914.pnw.garbanzo",
+  "dairy.ams_2843.national.caged.graded_loose.white.large",
 ];
 
 function originFromResource(resourceUrl: string): string {
@@ -4869,7 +4877,7 @@ export function llmsTxt(): string {
   const listedGmpMd = gmpMdIsPublic();
   const ticksPrice = usdcDisplayFromAtomic(amountAtomicFor("ticks")) ?? "$0.05";
   const paid = [
-    `- GET /ticks — ${ticksPrice} — USDA farm market prices (hay, cattle, grain, dairy, hogs, produce). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water. Paid JSON keeps ticks[] and adds records[] + asOf. Rebuy: pay once → store ETag from the paid 200 (unpaid 402 has no ETag) → poll If-None-Match (or ?since=) → 304 no charge when unchanged → pay again only when ETag/body changes.`,
+    `- GET /ticks — ${ticksPrice} — USDA farm market prices (${TICKS_COMMODITY_SET}). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water. Paid JSON keeps ticks[] and adds records[] + asOf. Rebuy: pay once → store ETag from the paid 200 (unpaid 402 has no ETag) → poll If-None-Match (or ?since=) → 304 no charge when unchanged → pay again only when ETag/body changes.`,
     "- GET /import-alerts — $0.05 — FDA Import Alerts / DWPE firm-product snapshot. Paid JSON keeps ticks[] and adds records[] + asOf. Same ETag / If-None-Match (or ?since=) rebuy habit as /ticks.",
     "- GET /mariners — $0.05 — USCG D13 / Northwest Local Notice to Mariners",
     "- GET /mariners-d11 — $0.05 — USCG D11 / Southwest Local Notice to Mariners",
