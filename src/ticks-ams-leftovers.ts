@@ -5,7 +5,7 @@
  *
  * Apply on the worker tip: add AMS_LEFTOVER_REPORTS into AMS_NATIONAL_REPORTS,
  * then AMS-only collect (`node build/ticks-ams.js`). Do not restart from this VM.
- * Fat eggs / cold storage / poultry / cotton / grocery-retail parsers live in ticks-ams.ts.
+ * Fat eggs / cold storage / poultry (chicken 3646 + turkey 3647) / cotton / grocery-retail parsers live in ticks-ams.ts.
  */
 import { spawnSync } from "node:child_process";
 import { mkdirSync, writeFileSync } from "node:fs";

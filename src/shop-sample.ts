@@ -10,8 +10,9 @@ export const PRODUCT_PUBLIC_NAME = "USDA farm market prices";
 export const TICKS_PUBLIC_CACHE_SOURCE = "USDA farm market prices cache";
 /**
  * Agent-facing /ticks commodity set. Fat rows stay on the existing $0.05 bag:
- * eggs + poultry on dairy.*, cold storage on dairy.ams_1095.*, cotton on
- * grain.ams_3024.*, grocery/retail feature ads on dairy.ams_* / produce.ams_3324.
+ * eggs + poultry (chicken 3646 / turkey 3647) on dairy.*, cold storage on
+ * dairy.ams_1095.*, cotton on grain.ams_3024.*, grocery/retail feature ads on
+ * dairy.ams_* / produce.ams_3324.
  * Name them in free copy. Do not rename product.id.
  */
 export const TICKS_COMMODITY_SET =
@@ -134,4 +135,100 @@ export function shopPaidJsonSample(): Record<string, unknown> {
     table: SAMPLE_TABLE_SKU,
     body: SAMPLE_BODY_SKU,
   };
+}
+
+/**
+ * Preferred live GET /manifest.json samples[]. Same path the ticks door already
+ * uses: look these ids up on the live ticks cache and emit the official row.
+ * Missing ids are skipped — do not invent a price. Apply this list on apollo
+ * `SAMPLE_SERIES_IDS` (ticks-door.ts). Product.id stays us-hay-cattle-grain-ticks.
+ */
+export const TICKS_MANIFEST_SAMPLE_IDS = [
+  "cattle-tf-feeder-steer",
+  "hay.ams_3058.columbia_basin.alfalfa.premium",
+  "ams.if_fv130.onion.yellow_hybrid.us1.sack50.jumbo.columbia_umatilla",
+  "ibc.id.grain.idaho_falls.barley_malting",
+  "ams.2914.pnw.garbanzo",
+  "dairy.ams_2843.national.caged.graded_loose.white.large",
+  "grain.ams_3024.cotton.seven_market.spot_41_4_34",
+  "dairy.ams_3646.whole.delivered.national_composite_whole_bird",
+  "dairy.ams_1095.national.butter.holdings",
+] as const;
+
+/** Group fallback order copied from the live ticks-door manifest builder. */
+export const TICKS_MANIFEST_SAMPLE_GROUPS = [
+  "hay",
+  "cattle",
+  "produce",
+  "grain",
+  "dairy",
+  "hogs",
+  "pulses",
+  "wool",
+] as const;
+
+export type TicksManifestSampleRow = {
+  sample: true;
+  id: string;
+  name: string;
+  group: string;
+  commodity: string | null;
+  market: string | null;
+  unit: string | null;
+  asOf: string | null;
+  price: number | null;
+  source: string | null;
+};
+
+function sampleFieldString(value: unknown): string {
+  return typeof value === "string" ? value : value == null ? "" : String(value);
+}
+
+function sampleFieldNumber(value: unknown): number | null {
+  return typeof value === "number" && Number.isFinite(value) ? value : null;
+}
+
+/** Live-shaped sample object. Price comes from the official tick, never a placeholder. */
+export function sampleFromTickRow(row: Record<string, unknown>, seriesLabel = ""): TicksManifestSampleRow {
+  return {
+    sample: true,
+    id: sampleFieldString(row.id),
+    name: seriesLabel || sampleFieldString(row.label) || sampleFieldString(row.commodity),
+    group: sampleFieldString(row.group),
+    commodity: sampleFieldString(row.commodity) || null,
+    market: sampleFieldString(row.market) || null,
+    unit: sampleFieldString(row.unit) || null,
+    asOf: sampleFieldString(row.asOf) || null,
+    price: sampleFieldNumber(row.price),
+    source: sampleFieldString(row.source) || null,
+  };
+}
+
+/**
+ * Same selection path the live door uses for eggs: preferred ids first, then
+ * one unused row per group until 5 samples exist. Preferred fat rows (eggs,
+ * cotton, chicken 3646, cold 1095) are extra — they do not replace the barn
+ * examples and they are not invented when the cache has no matching tick.
+ */
+export function selectTicksManifestSamples(
+  ticks: readonly Record<string, unknown>[],
+  seriesLabelById: ReadonlyMap<string, string> = new Map(),
+): TicksManifestSampleRow[] {
+  const samples: TicksManifestSampleRow[] = [];
+  const used = new Set<string>();
+  for (const id of TICKS_MANIFEST_SAMPLE_IDS) {
+    const row = ticks.find((t) => sampleFieldString(t.id) === id);
+    if (!row) continue;
+    samples.push(sampleFromTickRow(row, seriesLabelById.get(id) ?? ""));
+    used.add(id);
+  }
+  for (const group of TICKS_MANIFEST_SAMPLE_GROUPS) {
+    if (samples.length >= 5) break;
+    const row = ticks.find((t) => sampleFieldString(t.group) === group && !used.has(sampleFieldString(t.id)));
+    if (!row) continue;
+    const id = sampleFieldString(row.id);
+    samples.push(sampleFromTickRow(row, seriesLabelById.get(id) ?? ""));
+    used.add(id);
+  }
+  return samples;
 }

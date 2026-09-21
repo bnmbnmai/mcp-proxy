@@ -18,6 +18,12 @@
  * AMS_3646 Weekly National Chicken is the official LPGMN POS poultry PDF; rows
  * land on the existing dairy/protein table (dairy.ams_3646.*). Current-week
  * cents/lb weighted averages only — previous-week reprint is not a tick.
+ * AMS_3647 Weekly National Turkey is the official sibling LPGMN POS turkey
+ * weekly (mnreports/ams_3647.pdf). Rows land on the same dairy/protein table
+ * (dairy.ams_3647.*). Current-week cents/lb weighted averages only —
+ * previous-week / year-ago reprints are not ticks. Grocery turkey feature ads
+ * AMS_2867 are not a substitute. AMS_3725 Egg Markets Overview stays leftover
+ * narrative (not the turkey weekly).
  * Weekly grocery / retail feature ads fatten the same $0.05 bag: AMS_2995 dairy
  * ads already live; siblings AMS_2756 chicken, AMS_2757 eggs, AMS_2867 turkey,
  * AMS_2868 pork, AMS_3228 beef, AMS_3229 lamb, AMS_3796 veal land as
@@ -25,7 +31,7 @@
  * ads land on the existing produce group. Current-week advertised wtd avg
  * only — previous-week / year-ago reprints and regional detail pages are not
  * ticks. Official bodies are ugly mnreports PDFs (marsapi 403; LMR datamart
- * "Invalid slug id"). AMS_3725 Egg Markets Overview is leftover narrative.
+ * "Invalid slug id").
  * AMS_3024 Weekly Cotton Market Review is the official Cotton Program weekly
  * (mnreports/cnwwcmr.pdf — ams_3024.pdf is 404). Rows land on the existing
  * grain table as grain.ams_3024.cotton.*. Current-week price prints only —
@@ -204,6 +210,7 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "2843", group: "dairy", region: "national", title: "Daily National Shell Egg Index", esmisPublication: "" },
   { slug: "1095", group: "dairy", region: "national", title: "National Weekly Cold Storage", esmisPublication: "weekly-cold-storage-holdings", pdfNames: ["md_da953"] },
   { slug: "3646", group: "dairy", region: "national", title: "Weekly National Chicken", esmisPublication: "" },
+  { slug: "3647", group: "dairy", region: "national", title: "Weekly National Turkey", esmisPublication: "" },
   { slug: "2872", group: "hogs", region: "national", title: "National Daily Hog and Pork Summary", esmisPublication: "national-daily-hog-pork-summary-report", pdfNames: ["lsddhps"] },
   { slug: "2810", group: "hogs", region: "national", title: "National Direct Feeder Pig", esmisPublication: "" },
   { slug: "2314", group: "produce", region: "new_york", title: "New York Terminal Market Fruit", esmisPublication: "", pdfNames: ["nx_fv010"] },
@@ -253,8 +260,8 @@ export const SKIPPED_SOURCES = [
   { id: "ams_3096_waf", why: "AMS_3096 Eastern Cornbelt Direct Feeder Cattle mnreports 403 WAF; drop rather than leave a silent empty" },
   { id: "se-swine-auction-barns", why: "individual AMS swine-auction barn PDFs leftover — not a national sale-barn mill; AMS_2872 summary + AMS_2810 feeder pig are this hog slice" },
   { id: "sheep-goats", why: "official AMS sheep/lamb/goat sale-barn and LMR boxed-lamb LM_XL* leftover; grocery lamb/veal feature ads AMS_3229/3796 are already on /ticks" },
-  { id: "poultry-eggs", why: "leftover official AMS broiler-glance/breaking-stock PDFs stay off this slice; AMS_2843 Daily Shell Egg Index, AMS_3646 Weekly National Chicken, and grocery feature ads AMS_2756/2757/2867 are already on /ticks dairy rows" },
-  { id: "ams-3725-egg-overview", why: "AMS_3725 Egg Markets Overview is weekly narrative + charts, not a tabular poultry/protein print; do not scrape prose prices. Daily eggs are AMS_2843; retail egg ads are AMS_2757" },
+  { id: "poultry-eggs", why: "leftover official AMS broiler-glance/breaking-stock PDFs stay off this slice; AMS_2843 Daily Shell Egg Index, AMS_3646 Weekly National Chicken, AMS_3647 Weekly National Turkey, and grocery feature ads AMS_2756/2757/2867 are already on /ticks dairy rows" },
+  { id: "ams-3725-egg-overview", why: "AMS_3725 Egg Markets Overview is weekly narrative + charts, not a tabular poultry/protein print; do not scrape prose prices. Daily eggs are AMS_2843; retail egg ads are AMS_2757. Official turkey weekly is AMS_3647, not 3725" },
   { id: "cotton-rice", why: "official AMS rice PDFs leftover. Daily AMS_3804 / Daily Spot Cotton Quotations and weekly quality cnwwqo stay leftover. Weekly Cotton Market Review (AMS_3024 / cnwwcmr) is already on /ticks grain rows" },
   { id: "remaining-fv-terminals", why: "Asheville/Columbia/Raleigh/Baltimore/nuts, FV030 onion-potato city sheets, and discontinued MX_FV010 Mexico City leftover; NY/CHI/LA/ATL/DET/PHL/BOS fruit+veg are the national terminal slice. Grocery produce ads are AMS_3324 / fvwretail" },
   { id: "mx_fv010_discontinued", why: "MX_FV010 is Mexico City terminal fruit, permanently discontinued 2024-02-09 — not a current US terminal print" },
@@ -1863,6 +1870,128 @@ export function parseWeeklyNationalChicken(text: string, report: AmsReport, sour
   return dedupeTicks(out);
 }
 
+const TURKEY_ROW_RE =
+  /^(.+?)\s+(?:Yes|No)\s+(\d+(?:\.\d+)?)\s*-\s*(\d+(?:\.\d+)?)\s+(\d+(?:\.\d+)?)(?:\s+(-?\d+(?:\.\d+)?))?\s+([\d,]+)\b/;
+
+function turkeyHeaderKind(line: string): "skip" | "section" | "basis" | "row" | "cont" {
+  if (/^Turkey,\s*Whole\b/i.test(line) || /^Turkey,\s*Part\b/i.test(line)) return "section";
+  if (/^(?:Domestic|Export)\s*-\s*(?:Fresh|Frozen)\b/i.test(line)) return "basis";
+  if (TURKEY_ROW_RE.test(line)) return "row";
+  if (
+    /Current Weeks Trading|Previous Weeks Trading|Price Range|Wtd Avg|1,000 lbs|^Offer\b/i.test(line) ||
+    /Weekly National Turkey|Agricultural Marketing Service|Livestock, Poultry and Grain Market News/i.test(line) ||
+    /Email us with accessibility|Report For:|USDA AMS Livestock|General inquiries|https?:\/\//i.test(line) ||
+    /\b(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},\s+\d{4}\b/i.test(
+      line,
+    )
+  ) {
+    return "skip";
+  }
+  return "cont";
+}
+
+function attachTurkeyContinuation(rowLine: string, extra: string): string {
+  const m = rowLine.match(/^(.*?)(\s+(?:Yes|No)\s+\d)/);
+  if (!m) return `${rowLine} ${extra}`;
+  const label = `${m[1].replace(/[,\s]+$/, "")} ${extra.replace(/^[,\s]+/, "")}`.replace(/\s+/g, " ").trim();
+  return `${label}${m[2]}${rowLine.slice(m[0].length)}`;
+}
+
+function mergeTurkeyWrappedLines(text: string): string[] {
+  const out: string[] = [];
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.replace(/\s+/g, " ").trim();
+    if (!line) continue;
+    const kind = turkeyHeaderKind(line);
+    if (kind === "cont" && out.length && turkeyHeaderKind(out[out.length - 1]) === "row") {
+      out[out.length - 1] = attachTurkeyContinuation(out[out.length - 1], line);
+      continue;
+    }
+    out.push(line);
+  }
+  return out;
+}
+
+function turkeyItemToken(label: string): string {
+  return token(label.replace(/U\.S\./gi, "US").replace(/:+$/, ""));
+}
+
+function turkeyHasRequired(ids: Iterable<string>): boolean {
+  const list = [...ids];
+  return (
+    list.some((id) => /whole\./.test(id) && /whole_young_(hen|tom)/.test(id)) &&
+    list.some((id) => /breasts_boneless_skinless/.test(id)) &&
+    list.some((id) => /drumsticks_tom/.test(id))
+  );
+}
+
+/** Official AMS_3647 Weekly National Turkey — current-week cents/lb weighted averages. */
+export function parseWeeklyNationalTurkey(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const asOf = parseReportDate(text);
+  if (!asOf) return [];
+  const out: AmsTick[] = [];
+  let section = "";
+  let form = "";
+  let basis = "";
+  for (const line of mergeTurkeyWrappedLines(text)) {
+    if (/^Turkey,\s*Whole\b/i.test(line)) {
+      section = "whole";
+      form = "";
+      basis = "";
+      continue;
+    }
+    if (/^Turkey,\s*Part\b/i.test(line)) {
+      section = "parts";
+      form = "";
+      basis = "";
+      continue;
+    }
+    const basisLine = line.match(/^(Domestic|Export)\s*-\s*(Fresh|Frozen)\s*-.*\b(FOB|Delivered)\b/i);
+    if (basisLine) {
+      if (/^Export$/i.test(basisLine[1])) section = "export";
+      form = basisLine[2].toLowerCase();
+      basis = basisLine[3].toLowerCase();
+      continue;
+    }
+    if (!section || !form || !basis) continue;
+    const row = line.match(TURKEY_ROW_RE);
+    if (!row) continue;
+    const lo = Number(row[2]);
+    const hi = Number(row[3]);
+    const avg = Number(row[4]);
+    const volume = Number(row[6].replace(/,/g, ""));
+    if (!Number.isFinite(avg) || avg < 1 || avg > 800) continue;
+    if (!Number.isFinite(lo) || !Number.isFinite(hi) || lo < 0 || hi > 800) continue;
+    if (!Number.isFinite(volume) || volume < 1) continue;
+    const item = turkeyItemToken(row[1]);
+    if (!item) continue;
+    const id = ["dairy", `ams_${report.slug}`, section, form, basis, item].join(".");
+    const place =
+      section === "export"
+        ? `Export ${form}`
+        : section === "parts"
+          ? `National parts ${form}`
+          : `National whole ${form}`;
+    const commodity = section === "whole" ? "Whole turkey" : "Turkey parts";
+    const basisLabel = basis.replace(/^./, (c) => c.toUpperCase());
+    pushTick(out, report, sourceUrl, asOf, {
+      id,
+      group: "dairy",
+      commodity,
+      label: `${place} ${row[1].replace(/:+$/, "").trim()}`,
+      market: `${report.title} — ${place}`,
+      classGrade: `Conventional ${form}, ${basisLabel}, ${volume.toLocaleString("en-US")} (1,000 lb) current-week trading`,
+      unit: "cents/lb",
+      price: roundMoney(avg),
+      lo,
+      hi,
+    });
+  }
+  const have = new Set(out.map((row) => row.id.replace(/^dairy\.ams_\d+\./, "")));
+  if (!turkeyHasRequired(have)) return [];
+  return dedupeTicks(out);
+}
+
 export function parseDairyRegionalDry(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
   const asOf = parseReportDate(text);
   if (!asOf) return [];
@@ -2470,6 +2599,7 @@ export function parseAmsReportText(text: string, report: AmsReport, sourceUrl: s
     if (report.slug === "2843") return parseShellEggIndex(text, report, sourceUrl);
     if (report.slug === "1095") return parseColdStorageWeekly(text, report, sourceUrl);
     if (report.slug === "3646") return parseWeeklyNationalChicken(text, report, sourceUrl);
+    if (report.slug === "3647") return parseWeeklyNationalTurkey(text, report, sourceUrl);
     if (["1045", "1048", "1051", "1052"].includes(report.slug)) {
       return parseDairyRegionalDry(text, report, sourceUrl);
     }
