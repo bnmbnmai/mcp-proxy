@@ -29,7 +29,7 @@ Same order as live [/.well-known/x402](https://ticks.bnm.farm/.well-known/x402).
 
 | Path | Bag | Price | Search |
 | --- | --- | --- | --- |
-| `/ticks` | USDA farm market prices (hay, cattle, grain, dairy, hogs, produce). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water. Entire current table | $0.05 | [manifest.json](https://ticks.bnm.farm/manifest.json) |
+| `/ticks` | USDA farm market prices (hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water. Entire current table | $0.05 | [manifest.json](https://ticks.bnm.farm/manifest.json) |
 | `/import-alerts` | FDA Import Alerts / DWPE firm-product snapshot. Entire current table | $0.05 | [firm-check?q=](https://ticks.bnm.farm/firm-check?q=) · [manifest.json](https://ticks.bnm.farm/import-alerts/manifest.json) |
 | `/mariners` | USCG D13 / Northwest Local Notice to Mariners. This week's LNM | $0.05 | [manifest.json?q=](https://ticks.bnm.farm/mariners/manifest.json?q=) |
 | `/mariners-d11` | USCG D11 / Southwest Local Notice to Mariners. This week's LNM | $0.05 | [manifest.json?q=](https://ticks.bnm.farm/mariners-d11/manifest.json?q=) |

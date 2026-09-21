@@ -17,21 +17,22 @@ export const MNREPORTS_PDF = (slug) => `https://www.ams.usda.gov/mnreports/ams_$
 export const MARS_REPORT = (slug) => `https://marsapi.ams.usda.gov/services/v1.1/reports/${slug}`;
 /** Official leftover SE weeklies + SE sale barns still unpublished on /ticks. */
 export const AMS_LEFTOVER_REPORTS = [
-    { slug: "2006", group: "cattle", region: "alabama_weekly", title: "Alabama Weekly Cattle Auction Summary", kind: "se-weekly" },
-    { slug: "1704", group: "cattle", region: "florida_weekly", title: "Florida Weekly Livestock Auction Summary", kind: "se-weekly" },
-    { slug: "1933", group: "cattle", region: "georgia_weekly", title: "Georgia Weekly Livestock Auction Summary", kind: "se-weekly" },
-    { slug: "2193", group: "cattle", region: "kentucky_weekly", title: "Kentucky Weekly Livestock Auction Summary", kind: "se-weekly" },
-    { slug: "2063", group: "cattle", region: "tennessee_weekly", title: "Tennessee Weekly Cattle Auction Summary", kind: "se-weekly" },
-    { slug: "2187", group: "cattle", region: "virginia_weekly", title: "Virginia Weekly Cattle Auction Summary", kind: "se-weekly" },
-    { slug: "2091", group: "cattle", region: "north_carolina_weekly", title: "North Carolina Weekly Livestock Auction Summary", kind: "se-weekly" },
-    { slug: "2115", group: "cattle", region: "mississippi_weekly", title: "Mississippi Weekly Livestock Auction Summary", kind: "se-weekly" },
-    { slug: "1963", group: "cattle", region: "south_carolina_weekly", title: "South Carolina Weekly Livestock Auction Summary", kind: "se-weekly" },
-    { slug: "1988", group: "cattle", region: "letohatchee_al", title: "Mid State Stockyards Cattle Auction (Letohatchee)", kind: "se-barn" },
-    { slug: "1946", group: "cattle", region: "calhoun_ga", title: "Calhoun Stockyard Cattle Auction", kind: "se-barn" },
-    { slug: "1995", group: "cattle", region: "uniontown_al", title: "Alabama Livestock Auction Cattle Auction (Uniontown)", kind: "se-barn" },
-    { slug: "1419", group: "cattle", region: "okeechobee_fl_tue", title: "Okeechobee Livestock Auction Cattle Auction (Tuesday)", kind: "se-barn" },
-    { slug: "1997", group: "cattle", region: "florence_al", title: "Tennessee Valley Livestock Cattle Auction (Florence)", kind: "se-barn" },
+    { slug: "2006", group: "cattle", region: "alabama_weekly", title: "Alabama Weekly Cattle Auction Summary", esmisPublication: "", kind: "se-weekly" },
+    { slug: "1704", group: "cattle", region: "florida_weekly", title: "Florida Weekly Livestock Auction Summary", esmisPublication: "", kind: "se-weekly" },
+    { slug: "1933", group: "cattle", region: "georgia_weekly", title: "Georgia Weekly Livestock Auction Summary", esmisPublication: "", kind: "se-weekly" },
+    { slug: "2193", group: "cattle", region: "kentucky_weekly", title: "Kentucky Weekly Livestock Auction Summary", esmisPublication: "", kind: "se-weekly" },
+    { slug: "2063", group: "cattle", region: "tennessee_weekly", title: "Tennessee Weekly Cattle Auction Summary", esmisPublication: "", kind: "se-weekly" },
+    { slug: "2187", group: "cattle", region: "virginia_weekly", title: "Virginia Weekly Cattle Auction Summary", esmisPublication: "", kind: "se-weekly" },
+    { slug: "2091", group: "cattle", region: "north_carolina_weekly", title: "North Carolina Weekly Livestock Auction Summary", esmisPublication: "", kind: "se-weekly" },
+    { slug: "2115", group: "cattle", region: "mississippi_weekly", title: "Mississippi Weekly Livestock Auction Summary", esmisPublication: "", kind: "se-weekly" },
+    { slug: "1963", group: "cattle", region: "south_carolina_weekly", title: "South Carolina Weekly Livestock Auction Summary", esmisPublication: "", kind: "se-weekly" },
+    { slug: "1988", group: "cattle", region: "letohatchee_al", title: "Mid State Stockyards Cattle Auction (Letohatchee)", esmisPublication: "", kind: "se-barn" },
+    { slug: "1946", group: "cattle", region: "calhoun_ga", title: "Calhoun Stockyard Cattle Auction", esmisPublication: "", kind: "se-barn" },
+    { slug: "1995", group: "cattle", region: "uniontown_al", title: "Alabama Livestock Auction Cattle Auction (Uniontown)", esmisPublication: "", kind: "se-barn" },
+    { slug: "1419", group: "cattle", region: "okeechobee_fl_tue", title: "Okeechobee Livestock Auction Cattle Auction (Tuesday)", esmisPublication: "", kind: "se-barn" },
+    { slug: "1997", group: "cattle", region: "florence_al", title: "Tennessee Valley Livestock Cattle Auction (Florence)", esmisPublication: "", kind: "se-barn" },
 ];
+export const AMS_LEFTOVER_SLUGS = AMS_LEFTOVER_REPORTS.map((r) => r.slug);
 export const SKIPPED_LEFTOVERS = [
     { id: "already-on-ticks", why: "Western/plains weeklies and Direct/POS hay-cattle-grain slugs already in AMS_NATIONAL_REPORTS / live latestAsOfBySource" },
     { id: "se-400-barns", why: "Hundreds of remaining SE/Midwest individual barns stay off this slice; five current official SE barns + nine SE weeklies are the unread official pages" },

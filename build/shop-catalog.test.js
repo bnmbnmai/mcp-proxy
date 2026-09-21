@@ -3,6 +3,7 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { assertNoHardcodedDoorCount, extraMcpToolNames, fetchLiveCatalog, LIVE_ORIGIN, paidPathsFromWellKnown, readmeMarkdown, shopIndexMarkdown, skusFromWellKnown, } from "./shop-catalog.js";
+import { TICKS_BAG, TICKS_COMMODITY_SET } from "./shop-sample.js";
 const REQUIRED_LIVE_PATHS = [
     "/ticks",
     "/import-alerts",
@@ -22,6 +23,12 @@ async function main() {
     assert.equal(two.length, 2);
     assert.equal(two[0].path, "/ticks");
     assert.equal(two[0].kind, "table");
+    assert.equal(two[0].bag, TICKS_BAG);
+    assert.ok(TICKS_COMMODITY_SET.includes("eggs"));
+    assert.ok(TICKS_COMMODITY_SET.includes("cold storage"));
+    assert.ok(TICKS_COMMODITY_SET.includes("poultry"));
+    assert.ok(TICKS_COMMODITY_SET.includes("cotton"));
+    assert.ok(TICKS_COMMODITY_SET.includes("grocery retail"));
     assert.equal(two[1].path, "/ofwat-enforcement");
     assert.equal(two[1].kind, "body");
     const md2 = shopIndexMarkdown(two);

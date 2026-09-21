@@ -9,10 +9,12 @@ export type LeftoverReport = {
     group: "cattle";
     region: string;
     title: string;
+    esmisPublication: "";
     kind: LeftoverKind;
 };
 /** Official leftover SE weeklies + SE sale barns still unpublished on /ticks. */
 export declare const AMS_LEFTOVER_REPORTS: readonly LeftoverReport[];
+export declare const AMS_LEFTOVER_SLUGS: readonly string[];
 export declare const SKIPPED_LEFTOVERS: readonly [{
     readonly id: "already-on-ticks";
     readonly why: "Western/plains weeklies and Direct/POS hay-cattle-grain slugs already in AMS_NATIONAL_REPORTS / live latestAsOfBySource";

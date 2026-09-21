@@ -1,7 +1,3 @@
-/**
- * Shop catalog derived from live /.well-known/x402.
- * Door count is whatever well-known lists today — never hardcoded.
- */
 export declare const LIVE_ORIGIN = "https://ticks.bnm.farm";
 export declare const WELL_KNOWN_PATH = "/.well-known/x402";
 export declare const OPENAPI_PATH = "/openapi.json";
