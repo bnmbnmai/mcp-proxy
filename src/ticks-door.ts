@@ -644,6 +644,7 @@ import {
   SAMPLE_PATH,
   SAMPLE_TABLE_SKU,
   TICKS_COMMODITY_SET,
+  TICKS_MANIFEST_SAMPLE_IDS,
   TICKS_PUBLIC_CACHE_SOURCE,
   shopPaidJsonSample,
 } from "./shop-sample.js";
@@ -3993,14 +3994,7 @@ const GROUP_LABELS: { id: string; name: string }[] = [
   { id: "wool", name: "Wool" },
 ];
 
-const SAMPLE_SERIES_IDS = [
-  "cattle-tf-feeder-steer",
-  "hay.ams_3058.columbia_basin.alfalfa.premium",
-  "ams.if_fv130.onion.yellow_hybrid.us1.sack50.jumbo.columbia_umatilla",
-  "ibc.id.grain.idaho_falls.barley_malting",
-  "ams.2914.pnw.garbanzo",
-  "dairy.ams_2843.national.caged.graded_loose.white.large",
-];
+const SAMPLE_SERIES_IDS: readonly string[] = TICKS_MANIFEST_SAMPLE_IDS;
 
 function originFromResource(resourceUrl: string): string {
   return resourceUrl.replace(/\/ticks\/?$/, "") || "https://ticks.bnm.farm";
