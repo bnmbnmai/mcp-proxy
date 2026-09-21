@@ -2,6 +2,8 @@
  * Shop catalog derived from live /.well-known/x402.
  * Door count is whatever well-known lists today — never hardcoded.
  */
+import { TICKS_BAG } from "./shop-sample.js";
+
 export const LIVE_ORIGIN = "https://ticks.bnm.farm";
 export const WELL_KNOWN_PATH = "/.well-known/x402";
 export const OPENAPI_PATH = "/openapi.json";
@@ -39,8 +41,7 @@ export type LivePaidSku = {
 };
 
 const BAG_BY_PATH: Record<string, string> = {
-  "/ticks":
-    "US hay, cattle, and grain ticks (USDA AMS nationwide plus official dairy, hogs, and terminal produce). Entire current table",
+  "/ticks": TICKS_BAG,
   "/import-alerts": "FDA Import Alerts / DWPE firm-product snapshot. Entire current table",
   "/mariners": "USCG D13 / Northwest this week's LNM",
   "/mariners-d11": "USCG D11 / Southwest this week's LNM",
