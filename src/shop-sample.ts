@@ -8,8 +8,14 @@ export const SAMPLE_PATH = "/sample";
 export const PRODUCT_PUBLIC_ID = "us-hay-cattle-grain-ticks";
 export const PRODUCT_PUBLIC_NAME = "USDA farm market prices";
 export const TICKS_PUBLIC_CACHE_SOURCE = "USDA farm market prices cache";
-/** Agent-facing /ticks commodity set. Eggs stay on dairy rows; name them in copy. */
-export const TICKS_COMMODITY_SET = "hay, cattle, grain, dairy, hogs, produce, eggs";
+/**
+ * Agent-facing /ticks commodity set. Fat rows stay on the existing $0.05 bag:
+ * eggs + poultry on dairy.*, cold storage on dairy.ams_1095.*, cotton on
+ * grain.ams_3024.*, grocery/retail feature ads on dairy.ams_* / produce.ams_3324.
+ * Name them in free copy. Do not rename product.id.
+ */
+export const TICKS_COMMODITY_SET =
+  "hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail";
 
 const CANONICAL = "https://ticks.bnm.farm";
 
