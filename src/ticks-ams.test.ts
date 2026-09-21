@@ -14,7 +14,9 @@ import {
   TICKS_BAG,
   TICKS_COMMODITY_SET,
   TICKS_LLMS_BULLET,
+  TICKS_MANIFEST_SAMPLE_IDS,
   TICKS_OPENAPI_DESCRIPTION,
+  selectTicksManifestSamples,
 } from "./shop-sample.js";
 
 const here = dirname(fileURLToPath(import.meta.url));
@@ -155,12 +157,68 @@ assert.ok(!chicken.some((row) => row.price === 116.08 || row.price === 115.13 ||
 assert.ok(!chicken.some((row) => row.id.includes("volume") || row.price === 7306 || row.price === 8107), "1,000 lb volume is not a tick");
 assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "3646")?.group, "dairy");
 assert.ok(!AMS_NATIONAL_REPORTS.some((r) => r.slug === "3725"), "AMS_3725 Egg Markets Overview stays leftover");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "3647")?.group, "dairy");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "3647")?.title, "Weekly National Turkey");
 const chickenMissingBreast = parseAmsReportText(
   fx("weekly-national-chicken-3646.txt").replace(/Breast - B\/S:.*\n/, ""),
   report("3646"),
   "https://www.ams.usda.gov/mnreports/ams_3646.pdf",
 );
 assert.equal(chickenMissingBreast.length, 0, "fail-closed when a required current-week chicken print is missing");
+
+const turkey = parseAmsReportText(
+  fx("weekly-national-turkey-3647.txt"),
+  report("3647"),
+  "https://www.ams.usda.gov/mnreports/ams_3647.pdf",
+);
+assert.equal(parseReportDate(fx("weekly-national-turkey-3647.txt")), "2026-09-18");
+assert.ok(turkey.length >= 10, `expected current-week whole/parts/export turkey prints, got ${turkey.length}`);
+assert.ok(turkey.every((row) => row.group === "dairy" && row.id.startsWith("dairy.ams_3647.") && row.unit === "cents/lb"));
+assert.ok(turkey.every((row) => row.asOf === "2026-09-18"), "asOf is the Report For through-date / Friday print");
+const henFresh = turkey.find((row) => row.id === "dairy.ams_3647.whole.fresh.fob.whole_young_hen_basted_8_16_lb_us_grade_a");
+assert.ok(henFresh, "current-week fresh whole young hen");
+assert.equal(henFresh.price, 184.11);
+assert.equal(henFresh.lo, 183);
+assert.equal(henFresh.hi, 187);
+assert.equal(henFresh.commodity, "Whole turkey");
+const henFrozen = turkey.find((row) => row.id === "dairy.ams_3647.whole.frozen.fob.whole_young_hen_basted_8_16_lb_us_grade_a");
+assert.ok(henFrozen, "current-week frozen whole young hen");
+assert.equal(henFrozen.price, 179.53);
+const tomFrozen = turkey.find((row) => row.id === "dairy.ams_3647.whole.frozen.fob.whole_young_tom_basted_16_24_lb_us_grade_a");
+assert.ok(tomFrozen);
+assert.equal(tomFrozen.price, 183.67);
+const turkeyBreast = turkey.find((row) => row.id === "dairy.ams_3647.parts.fresh.delivered.breasts_boneless_skinless_tom");
+assert.ok(turkeyBreast, "fresh delivered boneless/skinless tom breast");
+assert.equal(turkeyBreast.price, 304.28);
+assert.equal(turkeyBreast.commodity, "Turkey parts");
+const turkeyDrum = turkey.find((row) => row.id === "dairy.ams_3647.parts.fresh.delivered.drumsticks_tom");
+assert.ok(turkeyDrum);
+assert.equal(turkeyDrum.price, 75);
+const turkeyThigh = turkey.find((row) => row.id === "dairy.ams_3647.parts.fresh.fob.thigh_meat_boneless_skinless");
+assert.ok(turkeyThigh, "page-2 thigh meat stays on the open fresh FOB parts book");
+assert.equal(turkeyThigh.price, 121);
+const turkeyExport = turkey.find((row) => row.id === "dairy.ams_3647.export.frozen.delivered.gizzards_defatted");
+assert.ok(turkeyExport);
+assert.equal(turkeyExport.price, 90);
+assert.ok(!turkey.some((row) => row.price === 180 || row.price === 185.5 || row.price === 294.45), "previous-week reprint is not a tick");
+assert.ok(!turkey.some((row) => row.price === 440 || row.price === 133 || row.price === 80 && row.id.includes("whole_young_tom")), "previous-week volume is not a tick");
+assert.ok(!turkey.some((row) => /2867|grocery|feature/i.test(row.source)), "grocery turkey ads are not a substitute");
+const turkeyMissingBreast = parseAmsReportText(
+  fx("weekly-national-turkey-3647.txt").replace(/Breasts,Boneless\/Skinless,[\s\S]*?\n\s*Tom\n/g, ""),
+  report("3647"),
+  "https://www.ams.usda.gov/mnreports/ams_3647.pdf",
+);
+assert.equal(turkeyMissingBreast.length, 0, "fail-closed when a required current-week turkey print is missing");
+const turkeyYearAgo = parseAmsReportText(
+  [
+    fx("weekly-national-turkey-3647.txt"),
+    "Year ago whole young hen 162.40 cents per pound",
+    "Last year reprint 177.40",
+  ].join("\n"),
+  report("3647"),
+  "https://www.ams.usda.gov/mnreports/ams_3647.pdf",
+);
+assert.ok(!turkeyYearAgo.some((row) => row.price === 162.4 || row.price === 177.4), "year-ago reprint is not a tick");
 
 const chickenAds = parseAmsReportText(
   fx("retail-chicken-2756.txt"),
@@ -371,9 +429,50 @@ assert.ok(cottonPdfs.some((u) => /cnwwcmr\.pdf/i.test(u)), "weekly cotton uses o
 
 const slugs = AMS_NATIONAL_REPORTS.map((r) => r.slug);
 assert.ok(
-  ["2843", "1095", "3646", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "3324", "3024"].every((s) => slugs.includes(s)),
+  ["2843", "1095", "3646", "3647", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "3324", "3024"].every((s) => slugs.includes(s)),
   "fat AMS slugs are on the nationwide /ticks walk",
 );
+
+assert.ok(TICKS_MANIFEST_SAMPLE_IDS.includes("dairy.ams_2843.national.caged.graded_loose.white.large"));
+assert.ok(TICKS_MANIFEST_SAMPLE_IDS.includes("grain.ams_3024.cotton.seven_market.spot_41_4_34"));
+assert.ok(TICKS_MANIFEST_SAMPLE_IDS.includes("dairy.ams_3646.whole.delivered.national_composite_whole_bird"));
+assert.ok(TICKS_MANIFEST_SAMPLE_IDS.includes("dairy.ams_1095.national.butter.holdings"));
+assert.equal(PRODUCT_PUBLIC_ID, "us-hay-cattle-grain-ticks");
+const fatSampleTicks = [...eggs, ...cold, ...chicken, ...cotton];
+const fatSamples = selectTicksManifestSamples(
+  fatSampleTicks,
+  new Map([
+    ["dairy.ams_2843.national.caged.graded_loose.white.large", "National caged White Large"],
+    ["grain.ams_3024.cotton.seven_market.spot_41_4_34", "7-market weekly avg spot 41-4-34"],
+    ["dairy.ams_3646.whole.delivered.national_composite_whole_bird", "National composite whole bird"],
+    ["dairy.ams_1095.national.butter.holdings", "US selected-center butter holdings"],
+  ]),
+);
+const eggSample = fatSamples.find((row) => row.id === "dairy.ams_2843.national.caged.graded_loose.white.large");
+const cottonSample = fatSamples.find((row) => row.id === "grain.ams_3024.cotton.seven_market.spot_41_4_34");
+const chickenSample = fatSamples.find((row) => row.id === "dairy.ams_3646.whole.delivered.national_composite_whole_bird");
+const coldSample = fatSamples.find((row) => row.id === "dairy.ams_1095.national.butter.holdings");
+assert.ok(eggSample, "manifest samples[] still prefer the live eggs White Large row");
+assert.equal(eggSample.sample, true);
+assert.equal(eggSample.price, cagedLarge.price);
+assert.equal(eggSample.unit, "cents/dozen");
+assert.ok(cottonSample, "manifest samples[] include a live-shaped cotton row");
+assert.equal(cottonSample.sample, true);
+assert.equal(cottonSample.price, sevenMkt.price);
+assert.equal(cottonSample.group, "grain");
+assert.equal(cottonSample.unit, "cents/lb");
+assert.ok(chickenSample, "manifest samples[] include a live-shaped AMS_3646 chicken row");
+assert.equal(chickenSample.sample, true);
+assert.equal(chickenSample.price, wholeBird.price);
+assert.equal(chickenSample.unit, "cents/lb");
+assert.ok(coldSample, "manifest samples[] include a live-shaped AMS_1095 cold-storage row");
+assert.equal(coldSample.sample, true);
+assert.equal(coldSample.price, butterHold.price);
+assert.equal(coldSample.unit, "1,000 lb");
+assert.ok(!fatSamples.some((row) => row.id.includes("ams_2867")), "grocery turkey ads are not a fat sample substitute");
+const withoutCotton = selectTicksManifestSamples(fatSampleTicks.filter((row) => !String(row.id).includes("ams_3024")));
+assert.ok(!withoutCotton.some((row) => String(row.id).includes("ams_3024")), "missing preferred ids are skipped — no invented cotton price");
+assert.ok(withoutCotton.some((row) => row.id === "dairy.ams_2843.national.caged.graded_loose.white.large"));
 
 const readme = readFileSync(join(repoRoot, "README.md"), "utf8");
 const shopIndex = readFileSync(join(repoRoot, "SHOP-INDEX.md"), "utf8");
@@ -395,6 +494,7 @@ console.log(
     shellEggs2843: eggs.length,
     coldStorage1095: cold.length,
     weeklyChicken3646: chicken.length,
+    weeklyTurkey3647: turkey.length,
     groceryChicken2756: chickenAds.length,
     groceryEggs2757: eggAds.length,
     groceryTurkey2867: turkeyAds.length,

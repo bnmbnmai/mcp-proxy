@@ -8,8 +8,9 @@ export declare const PRODUCT_PUBLIC_NAME = "USDA farm market prices";
 export declare const TICKS_PUBLIC_CACHE_SOURCE = "USDA farm market prices cache";
 /**
  * Agent-facing /ticks commodity set. Fat rows stay on the existing $0.05 bag:
- * eggs + poultry on dairy.*, cold storage on dairy.ams_1095.*, cotton on
- * grain.ams_3024.*, grocery/retail feature ads on dairy.ams_* / produce.ams_3324.
+ * eggs + poultry (chicken 3646 / turkey 3647) on dairy.*, cold storage on
+ * dairy.ams_1095.*, cotton on grain.ams_3024.*, grocery/retail feature ads on
+ * dairy.ams_* / produce.ams_3324.
  * Name them in free copy. Do not rename product.id.
  */
 export declare const TICKS_COMMODITY_SET = "hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail";
@@ -92,4 +93,34 @@ export declare const SAMPLE_BODY_SKU: {
     }];
 };
 export declare function shopPaidJsonSample(): Record<string, unknown>;
+/**
+ * Preferred live GET /manifest.json samples[]. Same path the ticks door already
+ * uses: look these ids up on the live ticks cache and emit the official row.
+ * Missing ids are skipped — do not invent a price. Apply this list on apollo
+ * `SAMPLE_SERIES_IDS` (ticks-door.ts). Product.id stays us-hay-cattle-grain-ticks.
+ */
+export declare const TICKS_MANIFEST_SAMPLE_IDS: readonly ["cattle-tf-feeder-steer", "hay.ams_3058.columbia_basin.alfalfa.premium", "ams.if_fv130.onion.yellow_hybrid.us1.sack50.jumbo.columbia_umatilla", "ibc.id.grain.idaho_falls.barley_malting", "ams.2914.pnw.garbanzo", "dairy.ams_2843.national.caged.graded_loose.white.large", "grain.ams_3024.cotton.seven_market.spot_41_4_34", "dairy.ams_3646.whole.delivered.national_composite_whole_bird", "dairy.ams_1095.national.butter.holdings"];
+/** Group fallback order copied from the live ticks-door manifest builder. */
+export declare const TICKS_MANIFEST_SAMPLE_GROUPS: readonly ["hay", "cattle", "produce", "grain", "dairy", "hogs", "pulses", "wool"];
+export type TicksManifestSampleRow = {
+    sample: true;
+    id: string;
+    name: string;
+    group: string;
+    commodity: string | null;
+    market: string | null;
+    unit: string | null;
+    asOf: string | null;
+    price: number | null;
+    source: string | null;
+};
+/** Live-shaped sample object. Price comes from the official tick, never a placeholder. */
+export declare function sampleFromTickRow(row: Record<string, unknown>, seriesLabel?: string): TicksManifestSampleRow;
+/**
+ * Same selection path the live door uses for eggs: preferred ids first, then
+ * one unused row per group until 5 samples exist. Preferred fat rows (eggs,
+ * cotton, chicken 3646, cold 1095) are extra — they do not replace the barn
+ * examples and they are not invented when the cache has no matching tick.
+ */
+export declare function selectTicksManifestSamples(ticks: readonly Record<string, unknown>[], seriesLabelById?: ReadonlyMap<string, string>): TicksManifestSampleRow[];
 //# sourceMappingURL=shop-sample.d.ts.map

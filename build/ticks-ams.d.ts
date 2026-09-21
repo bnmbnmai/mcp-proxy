@@ -18,6 +18,12 @@
  * AMS_3646 Weekly National Chicken is the official LPGMN POS poultry PDF; rows
  * land on the existing dairy/protein table (dairy.ams_3646.*). Current-week
  * cents/lb weighted averages only — previous-week reprint is not a tick.
+ * AMS_3647 Weekly National Turkey is the official sibling LPGMN POS turkey
+ * weekly (mnreports/ams_3647.pdf). Rows land on the same dairy/protein table
+ * (dairy.ams_3647.*). Current-week cents/lb weighted averages only —
+ * previous-week / year-ago reprints are not ticks. Grocery turkey feature ads
+ * AMS_2867 are not a substitute. AMS_3725 Egg Markets Overview stays leftover
+ * narrative (not the turkey weekly).
  * Weekly grocery / retail feature ads fatten the same $0.05 bag: AMS_2995 dairy
  * ads already live; siblings AMS_2756 chicken, AMS_2757 eggs, AMS_2867 turkey,
  * AMS_2868 pork, AMS_3228 beef, AMS_3229 lamb, AMS_3796 veal land as
@@ -25,7 +31,7 @@
  * ads land on the existing produce group. Current-week advertised wtd avg
  * only — previous-week / year-ago reprints and regional detail pages are not
  * ticks. Official bodies are ugly mnreports PDFs (marsapi 403; LMR datamart
- * "Invalid slug id"). AMS_3725 Egg Markets Overview is leftover narrative.
+ * "Invalid slug id").
  * AMS_3024 Weekly Cotton Market Review is the official Cotton Program weekly
  * (mnreports/cnwwcmr.pdf — ams_3024.pdf is 404). Rows land on the existing
  * grain table as grain.ams_3024.cotton.*. Current-week price prints only —
@@ -149,10 +155,10 @@ export declare const SKIPPED_SOURCES: readonly [{
     readonly why: "official AMS sheep/lamb/goat sale-barn and LMR boxed-lamb LM_XL* leftover; grocery lamb/veal feature ads AMS_3229/3796 are already on /ticks";
 }, {
     readonly id: "poultry-eggs";
-    readonly why: "leftover official AMS broiler-glance/breaking-stock PDFs stay off this slice; AMS_2843 Daily Shell Egg Index, AMS_3646 Weekly National Chicken, and grocery feature ads AMS_2756/2757/2867 are already on /ticks dairy rows";
+    readonly why: "leftover official AMS broiler-glance/breaking-stock PDFs stay off this slice; AMS_2843 Daily Shell Egg Index, AMS_3646 Weekly National Chicken, AMS_3647 Weekly National Turkey, and grocery feature ads AMS_2756/2757/2867 are already on /ticks dairy rows";
 }, {
     readonly id: "ams-3725-egg-overview";
-    readonly why: "AMS_3725 Egg Markets Overview is weekly narrative + charts, not a tabular poultry/protein print; do not scrape prose prices. Daily eggs are AMS_2843; retail egg ads are AMS_2757";
+    readonly why: "AMS_3725 Egg Markets Overview is weekly narrative + charts, not a tabular poultry/protein print; do not scrape prose prices. Daily eggs are AMS_2843; retail egg ads are AMS_2757. Official turkey weekly is AMS_3647, not 3725";
 }, {
     readonly id: "cotton-rice";
     readonly why: "official AMS rice PDFs leftover. Daily AMS_3804 / Daily Spot Cotton Quotations and weekly quality cnwwqo stay leftover. Weekly Cotton Market Review (AMS_3024 / cnwwcmr) is already on /ticks grain rows";
@@ -236,6 +242,8 @@ export declare function parseShellEggIndex(text: string, report: AmsReport, sour
 export declare function parseColdStorageWeekly(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 /** Official AMS_3646 Weekly National Chicken — current-week cents/lb weighted averages. */
 export declare function parseWeeklyNationalChicken(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
+/** Official AMS_3647 Weekly National Turkey — current-week cents/lb weighted averages. */
+export declare function parseWeeklyNationalTurkey(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function parseDairyRegionalDry(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function parseFeederPigReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function parseHogSummary(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
