@@ -1,0 +1,1033 @@
+     NOTICE: This opinion is subject to formal revision before publication in the    Meyers Industries, 281 NLRB 882, 887 (1986) (Meyers
+        bound volumes of NLRB decisions. Readers are requested to notify the
+        Executive Secretary, National Labor Relations Board, Washington, D.C.        II), affd. sub nom. Prill v. NLRB, 835 F.2d 1481 (D.C. Cir.
+        20570, of any typographical or other formal errors so that corrections can   1987), cert. denied 487 U.S. 1205 (1988). Bessler acted
+        be included in the bound volumes.
+                                                                                     concertedly because he raised concerns that employees
+Snowflake, Inc. and Scott Bessler. Case 20–CA–274626                                 had discussed before the meeting and framed his com-
+                  September 16, 2026                                                 plaints in terms of the group. Other employees also spoke
+                                                                                     up in support of Bessler’s speech at the meeting and reiter-
+                    DECISION AND ORDER
+                                                                                     ated the same concerns to management after the meeting.
+     BY CHAIRMAN MURPHY AND MEMBERS PROUTY                                           See id. at 884 (noting that an employee’s conduct “re-
+                        AND MAYER                                                    quires some linkage to group action in order to be deemed
+   On September 15, 2023, Administrative Law Judge                                   ‘concerted’ within the meaning of Section 7”).
+Brian D. Gee issued the attached decision. The Respond-                                 We also agree with the judge that Bessler acted for mu-
+ent filed exceptions and a supporting brief, the General                             tual aid and protection because the API Change Policy
+Counsel filed an answering brief, and the Respondent filed                           was a term and condition of employment. As the judge
+a reply brief.                                                                       found, the Respondent’s management created a strong
+   The National Labor Relations Board has delegated its                              implication that an employee’s repeated failure to follow
+authority in this proceeding to a three-member panel.                                the new policy would lead to discipline or discharge. See
+   The Board has considered the decision and the record in                           Peerless Publications, Inc., 283 NLRB 334, 334 (1987)
+light of the exceptions1 and briefs2 and has decided to af-                          (explaining that “the attachment of express or implied
+firm the judge’s rulings, findings,3 and conclusions, and to                         penalties for breach of the substantive content is what
+adopt the recommended Order as modified and set forth in                             transforms rules or codes of conduct from mere expres-
+full below.4                                                                         sions of opinion or aspiration into terms and conditions of
+   We affirm the judge’s conclusion, for the reasons he                              employment”). We therefore reject the Respondent’s con-
+states and those set forth below, that the Respondent viol-                          tention that the policy was a “purely business/entrepren-
+ated Section 8(a)(1) of the Act by discharging Charging                              eurial decision” outside the scope of the Act. While such
+Party Scott Bessler. To begin, we agree with the judge’s                             a designation may be relevant in the context of bargaining,
+finding that Bessler engaged in protected concerted activ-                           it is not relevant here. The Respondent’s API Change
+ity on August 7, 2020, by “bringing truly group complaints                           Policy directly affected employees’ working conditions,
+to the attention of management” regarding the Respond-                               and Bessler’s criticisms of the Policy, echoed by his
+ent’s introduction of a new “API Change Policy” at a
+meeting attended by employees and management. See
+
+   1
+      There is no merit in the Respondent’s contention on exception that             Cir. 1951). We have carefully examined the record and find no basis for
+the complaint is time-barred by Sec. 10(b) of the Act. The Respondent                reversing the findings.
+                                                                                        4
+terminated Charging Party Scott Bessler on September 29, 2020. Bessler                     We shall modify the judge’s recommended Order to conform to the
+timely filed his unfair labor practice charge on March 23, 2021, within              Board’s standard remedial language and in accordance with our decision
+the 6-month limitation period set forth in Sec. 10(b) of the Act.                    in Vibe Consulting, LLC, 374 NLRB No. 33 (2026). We shall substitute
+   2
+      We reject the Respondent’s arguments, raised for the first time on             a new notice to conform to the Order as modified.
+exceptions, that the Board’s administrative law judges are unconstitu-                  We find it unnecessary to pass on whether the judge correctly refer-
+tionally insulated from removal, the Board’s processes violate parties’              enced stock options in his recommended make-whole remedy and Order,
+due process rights, and the structure of the NLRB violates the separation            as any issue concerning the specific benefits is properly left for the com-
+of powers. The Respondent did not raise these arguments in any form                  pliance stage of this proceeding. Member Prouty notes that stock options
+before the judge. Consequently, these arguments are untimely and there-              are a standard form of compensation as referred to by the Board’s re-
+fore waived. See Yorkaire, Inc., 297 NLRB 401, 401 (1989) (finding                   medial language and that the record evidence indicates that Bessler re-
+argument waived where party failed to raise it to the judge), enfd. 922              tained his stock options throughout his employment with the Respond-
+F.2d 832 (3d Cir. 1990). Moreover, because the Respondent did not                    ent.
+provide any argument in support of these exceptions, we find that they                  In accordance with the Board’s decision in Thryv, Inc., 372 NLRB
+should be disregarded in accordance with Sec. 102.46(a)(1)(ii) of the                No. 22 (2022), vacated in part on other grounds 102 F.4th 727 (5th Cir.
+Board’s Rules and Regulations. See, e.g., St. Paul Park Refining Co.,                2024), the judge ordered the Respondent to compensate employee Scott
+LLC d/b/a Western Refining, 366 NLRB No. 83, slip op. at 1 fn. 3 (2018),             Bessler for any direct or foreseeable pecuniary harms incurred as a result
+enfd. 929 F.3d 610 (8th Cir. 2019)).                                                 of his unlawful discharge. As fully explained in Leo Marine Services,
+   3
+       The Respondent has excepted to some of the judge’s credibility                Inc., 374 NLRB No. 35, slip op. at 5 fn. 17 (2026), Chairman Murphy
+findings. The Board’s established policy is not to overrule an adminis-              and Member Mayer agree to apply Thryv in this case for institutional
+trative law judge’s credibility resolutions unless the clear preponderance           reasons. Member Prouty continues to believe that Thryv was correctly
+of all the relevant evidence convinces us that they are incorrect. Stand-            decided, is well within the Board’s remedial authority, and is necessary
+ard Dry Wall Products, 91 NLRB 544 (1950), enfd. 188 F.2d 362 (3d                    to satisfy the Board’s statutory obligation to provide meaningful make-
+                                                                                     whole relief. See Leo Marine, supra at fn. 17.
+
+
+375 NLRB No. 39
+2                                        DECISIONS OF THE NATIONAL LABOR RELATIONS BOARD
+
+
+coworkers, were therefore for the purpose of mutual aid                        We also reject the Respondent’s assertion that docu-
+and protected by Section 7.5                                                ments produced contemporaneously with Bessler’s dis-
+   Furthermore, in adopting the judge’s finding that the                    charge establish that his discharge was based solely on his
+Respondent had knowledge of Bessler’s protected concer-                     continued poor performance. Although these documents
+ted activity, we reject the Respondent’s contention that                    refer to managers taking steps to mitigate Bessler’s inter-
+Vice President Greg Czajkowski and Human Resources                          personal issues and poor teamwork, such vague references
+Representative Kristin Genegabus were the key decision-                     do not outweigh management’s specific references to
+makers regarding Bessler’s discharge. Senior Director of                    Bessler’s August 7 protected concerted activity.6 Indeed,
+Engineering Zheng Mi, Bessler’s direct supervisor, was                      Mi presented Bessler’s August 7 conduct as the primary
+the key decisionmaker, and he attended the August 7 meet-                   example of why he should be discharged. Additionally,
+ing. He also emailed Czajkowski and Genegabus details                       the Respondent’s tolerance of Bessler’s alleged poor per-
+of Bessler’s allegedly “disruptive” behavior at the August                  formance up until he engaged in protected concerted activ-
+7 meeting when explaining why he should be discharged.                      ity undermines its position. See Moore Business Forms,
+Moreover, many supervisors and managers attended the                        Inc., 288 NLRB 796, 796 fn. 3 (1988) (finding respond-
+August 7 meeting, and their knowledge of Bessler’s pro-                     ent’s discharge of an employee who “by any standard . . .
+tected activity is imputed to the Respondent. See Inter-                    was nonexemplary” insufficient to show that it would
+tape Polymer Corp., 372 NLRB No. 133, slip op. at 15 fn.                    have discharged him absent his Section 7 activity given its
+85 (2023) (collecting cases), enfd. 2024 WL 2764160 (6th                    tolerance of his poor performance for 15 months).7
+Cir. 2024).                                                                    Accordingly, we affirm the judge’s finding that the Re-
+   We also adopt the judge’s finding that the General                       spondent violated Section 8(a)(1) by discharging employ-
+Counsel established direct evidence of the Respondent’s                     ee Scott Bessler because of his August 7 protected concer-
+animus based on statements made by its management,                          ted activity.
+including Mi, relying on Bessler’s August 7 protected                                                 ORDER
+activity as a basis for his discharge.
+                                                                               The National Labor Relations Board orders that the Re-
+   Finally, we affirm the judge’s finding that the Respond-
+                                                                            spondent, Snowflake, Inc., San Mateo, California, its of-
+ent failed to establish that it would have discharged
+                                                                            ficers, agents, successors, and assigns shall
+Bessler even in the absence of his protected activity. As
+                                                                               1. Cease and desist from
+found by the judge, some of the Respondent’s proffered
+                                                                               (a) Discharging employees because they engage in pro-
+reasons for the discharge, namely Bessler’s performance
+                                                                            tected concerted activities.
+ratings from prior quarters and his communications with
+                                                                               (b) In any like or related manner interfering with, re-
+colleagues in an effort to retain his job, were false or not
+                                                                            straining, or coercing employees in the exercise of the
+in fact relied upon. We find these reasons were pretextual
+                                                                            rights guaranteed them by Section 7 of the Act.
+and therefore cannot sustain the Respondent’s defense
+                                                                               2. Take the following affirmative action necessary to
+burden. See Intertape Polymer Corp., 372 NLRB No. 133,
+                                                                            effectuate the policies of the Act.
+slip op. at 7.
+
+
+    5
+      Having adopted the judge’s finding that Bessler engaged in protec-    lished is ‘mutual aid’ in the most literal sense, as nobody doubts.”).
+ted concerted activity on August 7, 2020, we find it unnecessary to pass    Member Prouty would also find that, contrary to the Respondent’s argu-
+on the judge’s finding that Bessler also engaged in protected concerted     ment, the August 4 activity was properly pled. The General Counsel
+activity on August 4 and 26, 2020.                                          identified August 4 as an instance of alleged protected concerted activity
+    Member Prouty would adopt the judge’s finding that Bessler also         in the complaint. Further, Member Prouty finds the August 4 activity is
+engaged in protected concerted activity on August 4, but for a different    closely related to the API Change Policy and was fully and fairly litigated
+reason than stated by the judge. When employee Stefan Parker came to        by both parties at the hearing. See Pergament United Sales, 296 NLRB
+Bessler on August 4 with complaints about his supervisor, Joshua Jen-       333, 334–335 (1989), enfd. 920 F.2d 130 (2d Cir. 1990).
+                                                                               6
+kins, Bessler gave advice on how to best mitigate their conflict. After            Thus, we do not rely on the judge’s statement that there was no
+advising Parker, Bessler met with Jenkins, advocating that Jenkins take     mention of Bessler’s ongoing performance issues in these documents.
+                                                                               7
+steps to create a better working relationship between himself and Parker.         The Respondent filed a bare exception to the judge’s finding that it
+By offering advice and speaking to management, Bessler engaged in           failed to present comparator evidence demonstrating that it discharged
+protected concerted activity pursuant to the well-established solidarity    other employees for similar performance issues. Because the Respond-
+principle. See Fresh & Easy Neighborhood Market, 361 NLRB 151,              ent has not provided any argument in support of this exception, we find
+155-156 (2014) (“[M]ak[ing] common cause with a fellow work[er] over        that it should be disregarded. See St. Paul Park Refining Co., LLC d/b/a
+[that worker’s] separate grievance is a hallmark of such solidarity, even   Western Refining, 366 NLRB No. 83, slip op. at 1 fn. 3. We also reject
+if only one of them . . . has any immediate stake in the outcome.”) (in-    the Respondent’s appeal to civility rules as inapposite because there is
+ternal citations omitted); NLRB v. Peter Cailler Kohler Swiss Chocolates    no work rule at issue here.
+Co., 130 F.2d 503, 505–506 (2d Cir. 1942) (“[T]he solidarity so estab-
+                                                                SNOWFLAKE, INC.                                                                  3
+
+   (a) Within 14 days from the date of this Order, offer                    that the notices are not altered, defaced, or covered by any
+Scott Bessler full reinstatement to his former job or, if that              other material. If the Respondent has gone out of business
+job no longer exists, to a substantially equivalent position,               or closed the facility involved in these proceedings, the
+without prejudice to his seniority or any other rights or                   Respondent shall duplicate and mail, at its own expense, a
+privileges previously enjoyed.                                              copy of the notice to all current employees and former
+   (b) Make Scott Bessler whole for any loss of earnings                    employees employed by the Respondent at any time since
+and other benefits suffered as a result of the discrimination               September 29, 2020.
+against him, in the manner set forth in the remedy section                     (h) Within 21 days after service by the Region, file with
+of the judge’s decision as amended in this decision.                        the Regional Director for Region 20 a sworn certification
+   (c) Compensate Scott Bessler for the adverse tax con-                    of a responsible official on a form provided by the Region
+sequences, if any, of receiving a lump-sum backpay                          attesting to the steps that the Respondent has taken to
+award, and file with the Regional Director for Region 20,                   comply.
+within 21 days of the date the amount of backpay is fixed,                     Dated, Washington, D.C. September 16, 2026
+either by agreement or Board order, a report allocating the
+backpay awards to the appropriate calendar year(s).
+   (d) File with the Regional Director for Region 20, with-                          ______________________________________
+in 21 days of the date the amount of backpay is fixed by                             James R. Murphy,              Chairman
+agreement or Board order or such additional time as the
+Regional Director may allow for good cause shown, a
+copy of Scott Bessler’s corresponding W-2 form(s) re-                                ______________________________________
+flecting the backpay award.                                                          David M. Prouty,             Member
+   (e) Within 14 days from the date of this Order, remove
+from its files any reference to the unlawful discharge, and
+within 3 days thereafter, notify the employee in writing                             ________________________________________
+that this has been done and that the discharge will not be                           Scott A. Mayer,               Member
+used against him in any way.
+   (f) Preserve and, within 14 days of a request, or such
+additional time as the Regional Director may allow for                      (SEAL)           NATIONAL LABOR RELATIONS BOARD
+good cause shown, provide at a reasonable place desig-
+nated by the Board or its agents, all payroll records, social                                           APPENDIX
+security payment records, timecards, personnel records
+and reports, and all other records, including an electronic                                   NOTICE TO EMPLOYEES
+copy of such records if stored in electronic form, neces-                                    POSTED BY ORDER OF THE
+sary to analyze the amount of backpay due under the terms                               NATIONAL LABOR RELATIONS BOARD
+of this Order.                                                                        An Agency of the United States Government
+   (g) Within 14 days after service by the Region, post at                  The National Labor Relations Board has found that we
+its San Mateo, California facility copies of the attached                   violated Federal labor law and has ordered us to post and
+notice marked “Appendix.”8 Copies of the notice, on                         obey this notice.
+forms provided by the Regional Director for Region 20,
+                                                                                 FEDERAL LAW GIVES YOU THE RIGHT TO
+after being signed by the Respondent’s authorized repres-
+entative, shall be posted by the Respondent and main-                                Form, join, or assist a union
+tained for 60 consecutive days in conspicuous places, in-                            Choose representatives to bargain with us on your
+cluding all places where notices to employees are custom-                        behalf
+arily posted. In addition to physical posting of paper no-                           Act together with other employees for your benefit
+tices, notices shall be distributed electronically, such as by                   and protection
+email, posting on an intranet or an internet site, and/or                            Choose not to engage in any of these protected
+other electronic means, if the Respondent customarily                            activities.
+communicates with its employees by such means. Reas-
+onable steps shall be taken by the Respondent to ensure
+
+  8
+    If this Order is enforced by a judgment of a United States court of     United States Court of Appeals Enforcing an Order of the National Labor
+appeals, the words in the notice reading “Posted by Order of the National   Relations Board.”
+Labor Relations Board” shall read “Posted Pursuant to a Judgment of the
+4                                         DECISIONS OF THE NATIONAL LABOR RELATIONS BOARD
+
+
+   WE WILL NOT discharge or otherwise discriminate
+against you because you engage in protected concerted
+activities.
+   WE WILL NOT in any like or related manner interfere
+with, restrain, or coerce you in the exercise of the rights
+listed above.
+   WE WILL, within 14 days from the date of the Board’s
+Order, offer Scott Bessler full reinstatement to his former
+job or, if that job no longer exists, to a substantially equi-
+valent position, without prejudice to his seniority or any                    Jason P. Wong, Esq., for the General Counsel.
+                                                                              Ryan Vann, Esq., Helen Luu, Esq., and Keahn Morris, Esq., for
+other rights or privileges previously enjoyed.                                   the Respondent.
+   WE WILL make Scott Bessler whole for any loss of earn-                     Mr. Scott Bessler, for the Charging Party.
+ings and other benefits resulting from his unlawful dis-
+                                                                                                             DECISION
+charge, less any net interim earnings, plus interest, and WE
+WILL also make him whole for any other direct or foresee-                                            STATEMENT OF THE CASE
+able pecuniary harms suffered as a result of his unlawful                        BRIAN D. GEE, Administrative Law Judge. This case was tried
+discharge, including reasonable search-for-work and in-                       before me using the Zoom for Government Platform from Au-
+terim employment expenses, plus interest.                                     gust 23 to 26 and 31, and September 1 and 2, 2022. The General
+   WE WILL compensate Scott Bessler for the adverse tax                       Counsel issued the complaint and notice of hearing on April 14,
+consequences, if any, of receiving a lump-sum backpay                         2022, and an amendment to complaint on August 5, 2022 (col-
+award, and WE WILL file with the Regional Director for                        lectively, “the complaint”).1 The complaint is based on a charge
+Region 20, within 21 days of the date the amount of back-                     filed by individual Charging Party Scott Bessler (Charging Party
+pay is fixed, either by agreement or Board order, a report                    or Bessler) on March 23, 2021, and served on March 24, 2021.
+                                                                              The complaint alleges that Respondent Snowflake, Inc.
+allocating the backpay awards to the appropriate calendar
+                                                                              (Respondent or Snowflake) violated Section 8(a)(1) of the Na-
+year(s).                                                                      tional Labor Relations Act (the Act) by discharging Bessler on
+   WE WILL file the Regional Director for Region 20, with-                    September 29, 2020, in retaliation for his protected concerted
+in 21 days of the date the amount of backpay is fixed by                      activities. Respondent filed timely answers on April 28 and Au-
+agreement or Board order or such additional time as the                       gust 16, 2022, denying all material allegations.
+Regional Director may allow for good cause shown, a                              Based on a careful review of the entire record, including all
+copy of Scott Bessler’s corresponding W-2 form(s) re-                         posthearing briefs and my observation of the demeanor of the
+flecting the backpay award.                                                   witnesses, I make the following
+   WE WILL, within 14 days from the date of the Board’s                                                 FINDINGS OF FACT2
+Order, remove from our files any reference to the unlawful
+                                                                                                          I. JURISDICTION
+discharge of Scott Bessler, and WE WILL, within 3 days
+thereafter, notify him in writing that this has been done                        Respondent is a Delaware corporation with an office and place
+and that the discharge will not be used against them in any                   of business in San Mateo, California, where it is engaged in the
+way.                                                                          business of cloud-based storage and analytics. In conducting its
+                                                                              business operations during the 12-month period ending March
+             SNOWFLAKE, INC.                                                  31, 2021, Respondent purchased and received at its San Mateo
+   The Board’s decision can be found at ht-                                   facility goods and services valued in excess of $50,000 directly
+tp://www.nlrb.gov/case/ 20-CA-274626 or by using the                          from points located outside of the State of California. (R. An-
+QR code below. Alternatively, you can obtain a copy of                        swer.) Respondent admits, and I find, that at all times material
+                                                                              to the complaint, it has been an employer engaged in commerce
+the decision from the Executive Secretary, National Labor
+                                                                              within the meaning of Section 2(2), (6), and (7) of the Act. I also
+Relations Board, 1015 Half Street, S.E., Washington D.C.                      find that this dispute affects commerce and that the National
+20570 or by calling (202) 273-1940.                                           Labor Relations Board (the Board) has jurisdiction over this
+                                                                              matter, pursuant to Section 10(a) of the Act.
+
+
+   1                                                                             2
+     In its brief, Respondent asserts that the unfair labor practice charge        Abbreviations used in this decision are as follows: “GC Exh.” for
+in this matter was originally dismissed, Charging Party appealed that         General Counsel’s exhibits; “R. Exh.” for Respondent’s exhibits; “Jt.
+dismissal, and the Office of Appeals remanded the case to the Region.         Exh.” for joint exhibits; “Tr.” for citations to the hearing transcript; and
+(R. Br., p. 6.) There is no evidence in the record supporting this. In any    “R. Answer” and “R. Br.” for Respondent’s answer and brief, respect-
+event, it is undisputed that the General Counsel, through the Regional        ively. I refer to Counsel for the General Counsel as “General Counsel.”
+Director of Region 20, issued the complaint on the dates stated above.
+                                                                  SNOWFLAKE, INC.                                                                     5
+
+              II. THE ALLEGED UNFAIR LABOR PRACTICE                            layers of review and testing by designated software engineers.
+                               Facts                                           (Tr. 778–779, 1337–1339.) Relatedly, there is a culture of rigor-
+   This case presents an age-old scenario under the National                   ous debate and discussion amongst both managers and engineers
+Labor Relations Act: an employee engages in Section 7 activity,                in an effort to maintain that high quality product.7 (Tr. 494–495,
+his employer is hostile to that protected conduct, and the em-                 511, 1258–1259, 1348–1349.) In addition to their base salaries,
+ployer retaliates by discharging the employee. However, this                   engineers can be eligible to receive bonuses based on their
+story has been updated for the 21st Century: Respondent is a                   quarterly performance reviews.8 (Jt. Exh. 3, Tr. 52, 318–320,
+multibillion dollar cloud computing firm3 located in Silicon Val-              1343.)
+ley and the alleged discriminatee, Scott Bessler, was an accom-                   In March 2019, Respondent acquired a smaller company
+plished software engineer who received enormous sums of                        called Numeracy, whose main product was a user interface that
+money in salary and stock options.                                             enabled data analysts to connect to data warehouses. Pursuant to
+   Respondent’s business operations include the housing of elec-               this acquisition, Respondent also hired Numeracy co-founders
+tronic information for its 6000 or so customers, many of them                  Josh Jenkins and Brian Smith, as well as engineers Artem Nezvi-
+large corporations, including more than half of the Fortune 500.               gin and Eric Feng. (Tr. 194–195, 1252, 1384.) Once at Snow-
+(Tr. 36, 1338–1339.)4 One of its main products is “Snowsight,”                 flake, Jenkins, Smith, and Nezvigin worked on designing and
+a web interface through which customers can run queries, man-                  building the company’s user interface. Numeracy’s product was
+age users, create virtual warehouses, create and modify data-                  later incorporated as a key component to Snowsight. (Tr. 10341,
+bases, and share data with other Snowflake accounts.5 (Tr. 62.)                1081, 1326–1327.)
+Respondent employs approximately 850 engineers. 6 (Tr. 1337.)                     In July 2019, Respondent acquired another small company
+   During the dates material to the complaint, Grzegorz “Greg”                 called Stride Software, Inc. Charging Party Bessler was a co-
+Czajkowski was the Senior Vice President of Engineering; Leo                   founder and the chief technology officer of Stride. The acquisi-
+Giakoumakis was the Vice President of Engineering; Zheng Mi                    tion was characterized as an “acqui-hire,” a term referencing a
+was the Senior Director of Engineering; Christopher Child was                  corporate acquisition for the purpose of hiring another com-
+the Senior Director, Product Management; Jason Benterou was                    pany’s key staff members as a group, not for the acquired com-
+the Senior Engineering Manager; and Joshua Jenkins was the                     pany’s product. (Tr. 477–479, 1353–1354, 1434–1435.) There
+Head of Design. The parties stipulated that these six managers                 were approximately 16 key employees from Stride who came to
+were Section 2(11) supervisors. Additionally, Respondent ad-                   work for Respondent, including Bessler, his two co-founders,
+mitted that Shravan Narayen was a Senior Product Manager, but                  members of the product team, and the entire Stride engineering
+did not admit his status as a supervisor. (R. Answer, Jt. Exh. 24,             team, which included senior software engineers Megan Schoen-
+Tr. 228–229.) Respondent’s co-founders are Benoit Dageville                    dorf, Matt Naides, and Stefan Parker. (Tr. 36–37, 111,
+and Thierry Cruanes. (Tr. 453, 1361.)                                          258–259.) Respondent’s goal in acquiring Stride was to bolster
+   Respondent emphasizes maintaining the high quality and                      its front end development. (Tr. 1347–1350.) Because Bessler
+functionality of its product through safeguards such as rigorous               was an essential part of the acquisition due to his technical ex-
+testing and review. For example, before new software code can                  pertise, he was given the position of Senior Director—Engineer-
+be merged into to existing code, it must first go through several              ing and was richly compensated by Respondent.9 (Tr. 191.)
+
+
+   3                                                                              7
+      See Snowflake - Snowflake Reports Financial Results for the First              Those debates were mostly civil and business-like. While there was
+Quarter of Fiscal 2024 (last visited September 7, 2023).                       testimony about a few heated or profane outbursts in the workplace,
+   4
+      To aid review, I have included certain citations to the record in my     those were largely not reported directly to human resources. In contrast
+findings of fact. The citations are not necessarily exclusive or exhaust-      to Respondent’s generally congenial work culture, Bessler’s approach
+ive, as my findings and conclusions are based on my review and consid-         could sometimes involve dogged inquiries that others viewed as being
+eration of the entire record.                                                  out of step. More specifically, Bessler could sometimes be unwavering
+   5
+      See Snowsight: The Snowflake Web Interface | Snowflake                   in his viewpoints and rub people the wrong way by constantly asking
+Documentation (last visited September 7, 2023).                                others to defend their assertions with specific examples. As a manager,
+   6
+      Various words and phrases common in the software industry were           this clearly caused others to dislike him. As discussed below, once he
+used in this matter. “UI” refers to “user interface,” which is the part of a   was transitioned to a non-supervisory position, this same communication
+software program that the user sees and interacts with. (Tr. 72.) “Front       style caused others—notably his supervisor Zheng Mi—to be intolerant
+end” refers to the engineering systems pertaining to the UI. “Back end”        of Bessler’s protected concerted advocacy.
+                                                                                  8
+refers to the engineering systems pertaining to the search engine; such              Respondent’s designation of fiscal years is approximately 1 year
+systems typically run on the service provider’s computers and are sys-         ahead of the calendar year. Q3 of 2020 covered the period from August
+tems that the consumer does not necessarily see. (Tr. 1048, 1355–1356.)        1 through October 31, 2019. Q4 of FY 2020 covered November 1, 2019,
+“Software designers” create the visuals, features, and options for the user    through January 31, 2020. Q1 of FY 2021 covered February 1 through
+interface. “Software engineers” write the code needed to bring that            April 30, 2020. Q2 of FY 2021 covered May 1 through July 31, 2020.
+design into existence and to function as planned. (Tr. 63–64, 1332–1333,       Q3 of FY 2021 covered August 1 through October 31, 2020. (Jt. Exh.
+1454.) A “pull request” refers to the process by which engineers either        24, Tr. 668–669.)
+                                                                                  9
+merge new software code into existing code or modify the existing code.              Pursuant to the terms of his offer letter, Bessler was to receive a
+(Tr. 68, 214–216.) “API” stands for “Application Programming Inter-            base annual salary, was eligible for quarterly bonuses, and stock options
+face” and refers to the systems through which different software systems       in Snowflake if he remained employed for 4 years after the acquisition.
+communicate with each other. (Tr. 419.)                                        After 1 year of employment with Respondent, a portion of the options
+                                                                               would vest; over the next 3 years of employment, the remainder of the
+6                                         DECISIONS OF THE NATIONAL LABOR RELATIONS BOARD
+
+
+   Each acquisition requires the new company, its technology,                 tional design reviews, thereby impeding their ability to meet
+and its personnel to be incorporated over time into Snowflake’s               deadlines. (Tr. 39, 43, 240, 416–417.) It also created uncertainty
+larger systems and culture. (Tr. 482, 1043, 1271.) The assimila-              as to when their proposed code was ready to be merged into the
+tion of Stride into Snowflake was not a smooth one. As Parker                 company’s existing software systems. “[I]t just made it very
+observed, “I don’t think Snowflake had a good plan for how to                 hard to know what I needed to do,” Naides explained. “[I]f I saw
+integrate [Stride and Numeracy] . . . so we kind of sort of had to            something that the engineer. . . from the Numeracy acquisition
+figure it out ourselves, in essence, right? So we [Stride engineer-           could do and would be fine, I would then try to follow that as my
+s] came in with a lot of code, and a lot of culture, and a lot of ca-         lead as how I should behave. And then, I would run into issues
+maraderie already, together. And I think it just didn’t blend well            where I would be, you know–I would be told, oh, you need to do
+with the existing engineers that were on the organization.” (Tr.              more. Or it wouldn’t be quite the same process, and so that made
+39.) In general, the emphasis at Respondent was one of rigorous               [it] difficult to know what I should do.” (Tr. 416–417.) They
+testing and checking in an effort to maintain high product qual-              feared that this double standard would negatively impact their
+ity, while the general approach of the former Stride engineers                quarterly evaluations and bonuses. (Tr. 416.) Bessler assured
+emphasized speed and meeting deadlines. (Tr. 511–512,                         them that he would speak to management on their behalf and, in
+778–780, 1043, 1254–1255, 1278–1279, 1383.)                                   the meantime, for them to simply meet the heightened standards.
+   In mid-2019, shortly after the Stride acquisition, Bessler was             Bessler told Naides, “I’ll work on trying to address the double
+assigned as director of the “Apps Team,” the group working on                 standard and try to make things both fairer and more predict-
+upgrading Snowflake’s user interface. The team was comprised                  able.” (Tr. 418–419.) Bessler spoke with both Smith and Jen-
+of approximately 24 engineers from three disparate groups:                    kins about these employee concerns. (Tr. 217–219, 232, 235.)
+former Stride employees, former Numeracy employees, and                          The API Change Proposal. On July 22, Senior Vice President
+existing Snowflake employees. (R. Exh. 39, Tr. 192–195, 1271.)                of Engineering Greg Czajkowski announced the company’s new
+Getting these three groups of engineers on the same page proved               API Change proposal (the proposal), a guideline for which he
+challenging. “[W]e spent the first several months sort of having              was the primary author. To maintain the quality and ease of use
+to agree on everything because we needed to take three com-                   of Snowflake’s APIs, Czajkowski proposed a new system under
+pletely different teams, different working styles, different de-              which engineers seeking to make certain changes or additions to
+veloper environments, different code basis, and mush them all                 APIs would need to submit their proposed code for approval. (Jt.
+into a single thing. . . where we were all working together in one            Exhs. 6, 11, Tr. 1449–1450.) The proposal named different ex-
+place,” said Schoendorf. “And so we had to agree on everything,               perts to handle one of four areas of responsibility. For the area
+and we didn’t agree on anything.” (Tr. 153.)                                  relevant to this case, “Apps and Experiences,” the designated
+   From the start, Bessler was ineffectual as a director.10 Owing             delegates reviewing all proposed changes were Smith and Jen-
+to Bessler’s failure to coalesce the three teams and meet produc-             kins. (Jt. Exh. 6, Tr. 48–49.) The proposal went into effect
+tion targets, Senior Director of Engineering Zheng Mi was as-                 around that time and has remained in effect. (Tr. 1366, 1449.)
+signed to take over control of the Apps Team in May or June                      The proposal did not identify the specific API changes which
+2020.11 A common complaint amongst his supervisory col-                       it governed, but rather established a general framework for the
+leagues and team members was Bessler’s poor communication                     types of code which needed to be submitted for review. It was
+style; he was viewed by many as “not listening to us,” “combat-               “not a list of specific areas or, you know, more specifics, because
+ive and aggressive in his tone,” “unprofessional,” and “dis-                  it’s a very broad definition,” Czajkowski testified. “Essentially
+missive.” By July, it was mutually agreed that Bessler would                  anything that can break or confuse our customer is in the scope.”
+also step down from his position as a director and transition to              (Tr. 1451.) Stated differently, any change to the user interface
+the position of “independent contributor,” a nonsupervisory,                  which could affect a customer was subject to this new review
+principal software engineer position, with no employees report-               process. (Tr. 210, 1451.) Some staff members found the broad,
+ing to him. This reassignment was effective on August 3. (Jt.                 loosely defined scope of the proposal vague or confusing. (Tr.
+Exhs. 9, 10, 13, R. Exhs. 1, 2, 4, 28, 37, Tr. 366–368, 510–511,              1038.) The proposal also lacked specific guidance or standards
+514–516, 604–614, 679–682, 696–699, 1129–1133, 1261.)                         on the features which code needed to pass muster. Rather, the
+   Unrelated to his struggles as a director, numerous engineers               proposal stated that the process of drafting code “exists some-
+confided in Bessler that they felt that the former Numeracy lead-             where at the intersection of engineering and art” and that there
+ers were subjecting their proposed software code to more rigor-               was naturally some discretion that had to come into play when
+ous review than what the former Numeracy engineers were fa-                   deciding which code was acceptable versus which was not. Cza-
+cing. (Tr. 211–212, 236-238, 240, 416.) Schoendorf, Parker,                   jkowski wrote, “We also acknowledge that defining ‘ease of use’
+and Naides complained to Bessler that they felt that Head of                  is difficult, in part because it is somewhat subjective. So our
+Design Josh Jenkins and engineer Brian Smith were applying a                  definition is of the ‘you know it when you see it’ kind.” (Jt. Exh.
+double standard to their work product. For example, Jenkins or                6.) Additionally, he acknowledged that the proposal would
+Smith might require them to conduct extra testing or get addi-                change the way that some engineers approached doing work.
+
+
+options would vest at regular intervals. At the time of his discharge,        units over time is a way to retain key individuals hired as part of corpor-
+Bessler had vested in only a portion of his stock options. (Jt. Exh. 4, Tr.   ate acquisitions. (Tr. 482, 1436.)
+                                                                                 10
+398–400.) This system of vesting in stock options or restricted stock               As a director, Bessler was a Sec. 2(11) supervisor. (Jt. Exh. 24.)
+                                                                                 11
+                                                                                    All dates are for the year 2020, unless indicated otherwise.
+                                                                SNOWFLAKE, INC.                                                                       7
+
+(Tr. 1437–1438.) That change, in turn, could result in opposi-               ible for creating the user interface that would be utilized
+tion: “We realize that this may introduce some friction.” (Jt.               throughout the company. (Tr. 35, 61, 1275–1276.) By August,
+Exh. 6, Tr. 1364, 1436.)                                                     the only team not yet using Core UI was the Snowsight team, so
+   The proposal was implemented to maintain the high quality                 Parker worked with them to migrate over. (Tr. 58, 221.) During
+and functionality of Respondent’s product—it was not intended                this process, called the “Core UI migration,” Parker again per-
+to create a metric for evaluating employee performance. That                 ceived that Snowsight designer Jenkins was unfairly nitpicking,
+said, Czajkowski confirmed that an engineer’s repeated and                   auditing, and reauditing his work. (Tr. 58–59.) On August 4,
+conscious disregard of the proposal could be viewed as a form of             Parker messaged Naides and Bessler via Slack to complain, “I
+insubordination or a performance problem that could result in                [am] getting so fucking fed up with Josh He wants to block
+discipline or even discharge. (Tr. 1352, 1363–1364, 1446.)                   everything,”13 Bessler responded by validating Parker’s frustra-
+Similarly, Senior Director of Product Management Prasanna                    tion and by encouraging him to accept this level of oversight as
+Krishnan explained that, if an engineer regularly failed to follow           the way Respondent operated and as an aspect of their jobs at
+processes, their ratings would be negatively impacted. “If [they]            Snowflake: “its their world and we are just living in it for better
+were not following it regularly and that was not meeting the ex-             or worse.” (GC Exh. 2, Tr. 219–223.) Towards the end of the
+pectations of their job, yes,” she testified. (Tr. 620.) From an             Slack message, Bessler advised Parker to accept Jenkins’ mi-
+employee’s perspective, engineer James Lai interpreted the pro-              cromanaging as a part of their jobs, let the work stack up, and
+posal to mean that he could be disciplined for not following it.             then show management that it resulted in diminished productiv-
+(Tr. 1038.)                                                                  ity: “you are better off not slamming but playing nice and show-
+   Upon issuance of the proposal, the former Stride engineers                ing what their process does. ¶ the only way we can make change
+feared that it might lead to even more scrutiny of their work.               here is to play nice, accept that we can’t change anything yet, and
+Schoendorf, Naides, and Parker told Bessler on Slack that the                demonstrate clearly how things are inefficient. Keep receipts.”
+proposal’s approval system, with its room for subjectivity and its           (GC Exh. 2, Tr. 243–248.)
+selection of Smith and Jenkins as the gatekeepers, could result in              Either later that day or on the following day, August 5, Bessler
+bias. For example, given the perceived distrust of the former                raised this group concern with management. In a one-on-one
+Stride engineers, Smith or Jenkins might unfairly demand addi-               conversation with Jenkins, Bessler reported that, “I told Josh,
+tional testing of their code. This would impede workflow and                 hey, you know, Stefan is feeling like he can’t get his work in, and
+could result in lowered evaluations and bonuses. (Tr. 52–56,                 he’s working really hard to get this stuff done.” He added, “I
+238-241, 416-421.) As Parker explained, “this really opened the              suggested [to Jenkins], like, let’s try to work together with Stefan
+door for kind of that preferential treatment where given these two           to come up with some clear rules of engagement. . .which led to
+newest engineers sort of [having] the final say for what—you                 some of these further discussions about the core UI migration—
+know, what was an acceptable change. . . [the proposal] allowed              or the Snowsight core UI migration approval processes in rela-
+them to have some sort of bias—or preferred treatment to who                 tion to API change, and how they related to the API change
+was making the change.” (Tr. 55.) The former Stride engineers                policy.” (Tr. 232, 235.)
+also feared the proposal, which mandated multiple reviews by                    August 7—Parker’s Lowered Evaluation and Bonus. In early
+busy, high-level personnel, would further slow the pace of their             August, when Zheng Mi reviewed a pull request that Parker had
+work. Naides pointed out that simply “finding an hour for all of             submitted in connection with the Core UI migration, he dis-
+them can take weeks. And so. . . it doesn’t only create more                 covered multiple deficiencies in it. Mi emailed Bessler on Au-
+work, but it also can push the timeline. Because I can’t deal with           gust 7 to tell him about Parker’s errors in the pull request, includ-
+all my reviews until I’ve done my work. So I have to do my                   ing failing to obtain engineering review, lack of testing, and mul-
+work, and then I’m ready to schedule the review, and then that               tiple regressions.14 Emphasizing the need to maintain high qual-
+can push it out for weeks.” (Tr. 422–423.)                                   ity and follow good engineering practices in connection with the
+   In the midst of these discussions, Bessler transitioned to his            Core UI migration, he asked Bessler to speak with Parker about
+new, non-supervisory position as an independent contributor on               this. Bessler agreed to do so even though he was not assigned to
+August 3.12 (Jt. Exh. 13, Tr. 238–241.) Management was hope-                 work on the UI migration. (Jt. Exh. 14.) Bessler informed Parker
+ful that, given his abilities and vision, Bessler would be able to           of his mistakes by sharing Mi’s email. Upon seeing Mi’s com-
+excel in a purely technical position, devoid of managerial or                ments, Parker admitted his errors and explained that he pro-
+leadership duties. Mi said he looked forward to “a nice clean                ceeded with the pull request without first getting engineering
+quarter” for Bessler (R. Exhs. 38 and 39, Tr. 195–197, 690,                  review because he had misunderstood the directions from
+742–743, 883, 1406.)                                                         Snowsight engineer Matt Higgs, who had reviewed many of the
+   The August 4 Complaints About Bias by Jenkins. Parker was                 other pull requests. (Jt. Exh. 14. Tr. 72–73.)
+the senior software engineer leading the “Core UI” team respons-                Later that day, supervisor Jason Benterou messaged Bessler
+
+    12
+       From August 3 forward, Bessler was an employee under Sec. 2(3)        tuation. Unless necessary for clarity, I do not correct those minor errors.
+of the Act and thus protected by the Act. See Tasty Baking Co., 330          Some of these messages also contain comments about coworkers ex-
+NLRB 560, 560 (2000) (Board upheld ALJ’s finding that respondent             pressed in frank and unfiltered terms.
+                                                                                14
+violated Sec. 8(a)(3) by transferring an employee who was previously               A software regression is defined as a type of error where a feature
+demoted from her supervisory position).                                      that had been working stops working. See Software regression -
+    13
+       Some Slack messages, emails, and other informal communications        Wikipedia (last viewed on September 7, 2023).
+in the record contain minor errors in diction, grammar, spelling, or punc-
+8                                        DECISIONS OF THE NATIONAL LABOR RELATIONS BOARD
+
+
+by Slack to tell him that Mi decided to lower Parker’s rating and           individuals, Smith and Jenkins, were the gatekeepers for review
+bonus for the second quarter (Q2) based on the pull request.                could result in biased review and treatment of work product. “I
+Bessler objected to that since the pull request occurred in August          responded that. . .I had heard feedback that people were con-
+and was therefore beyond the July 31 cutoff date for Q2.                    cerned that the—a policy like this being vague and enforced
+Benterou explained management’s view that, while the pull re-               inconsistently,” Bessler testified. (Tr. 261.) Child admitted that
+quest occurred in Q3, it reflected Parker’s lapses in judgment in           this fear was echoed by others, saying that, “some engineers
+Q2. Bessler continued to disagree with the decision, saying, “if            voiced that, that this would add some friction.” (Tr. 535.) Third,
+this is the policy, it needs to be public.” (R. Answer, Tr. 254-            the proposal’s unclear processes might lead engineers to mis-
+256, 1546.)                                                                 takenly fail to follow company processes, thereby resulting in
+   It was in the context of these three ongoing disputes—the                lowered evaluations and bonuses. Bessler said, “since. . . we
+former Stride engineers’ concerns that they were subject to a               judge engineers by how well they follow processes and adjust
+double-standard, belief that Parker had his Q2 evaluation and               their bonus ratings based on it, it was important to have a process
+bonus lowered unjustly, and fears and uncertainties about how               [that was] very clear, so it wasn’t used unfairly.” (Tr. 125, 262,
+the API Change proposal would work—that the “Apps Trio                      437–438, 800–801.) Schoendorf recalled that Bessler said, “if
+Meeting” took place. Bessler’s advocacy at that meeting would               we are going to punish people. . . financially, like, change their
+color the views of managers, especially Mi, towards him going               bonuses based on whether or not they follow process, we need to
+forward and would serve as a crucial basis undergirding Re-                 be really clear on what that process is.” (Tr. 126.) At this point,
+spondent’s decision to discharge him.                                       Mi interjected that Respondent did not punish employees for
+   August 7—The Apps Trio Meeting. On August 7, various                     failing to follow processes. Mi considered it “highly inappropri-
+managers and staff members attended the Apps Trio meeting, a                ate” for Bessler to assert that an engineer’s performance rating
+weekly Zoom call for product managers, engineering leads, and               was lowered for not following company processes. (Tr. 801.)
+designers from four different product teams to have the oppor-              But Bessler pushed back on that assertion based on that morn-
+tunity to raise issues, discuss developments, and update each               ing’s downgrade of Parker’s quarterly evaluation and bonus.
+other about the progress of their projects.15 (Tr. 527–528,                 (Tr. 125–127, 439–440, 800.) Fourth, Bessler warned that the
+1105–1108.) Approximately 25 staff members attended the                     proposal could make getting code approved more difficult and
+meeting, which lasted from 1 to 2 p.m. Mi, Child, Jenkins,                  time-consuming than it already was by requiring approval from
+Bessler, Naides, Schoendorf, Parker, and Product Manager                    two very senior individuals who were already time strapped.
+Shravan Narayen were among those in attendance. (GC Exh. 12,                “[T]he handful of people [who were tasked with reviewing
+Tr. 75–76, 118–119.) Several items were listed on the agenda,               everyone’s proposed changes], they’re very, very senior folks.
+but the lead topic for discussion was the API Change proposal.              And so if you had to go and get these super senior, super busy
+Child discussed the roll out of the proposal, explaining that en-           people to sign off on everything that you were going to [do],
+gineers were now required to get approval from the named soft-              you’d never ship anything again,” testified Schoendorf. (Tr.
+ware architects or their designees before merging new code into             122–124.)
+the company’s existing code. Changes affecting Snowflake’s                     Failing to recognize that Bessler was now an employee en-
+user interface required getting individual approval from Jenkins,           gaged in protected concerted speech, not a supervisor being dif-
+while changes affecting the software’s architecture required                ficult and confrontational, Mi and Child exchanged Slack mes-
+getting the approval from Smith. (Tr. 119–120.)                             sages critical of his “aggressive tone,” which they deemed dis-
+   Based on his prior conversations with coworkers, Bessler                 ruptive and not conducive to a free and open discussion. At 1:29
+raised four concerns at the meeting.16 First, the proposal failed           p.m., Child wrote: “we need to get scott under control some how.
+to clearly explain whether it applied to all changes to Respond-            It’s really hard to have productive group discussions with him in
+ent’s software code or only some changes, such as those that                them.”18 Mi replied at 1:33 p.m.: “Yes, I have been giving feed-
+could affect customers. (Tr. 125, 260–262, 439–440.) Naides                 back. He got a bit better and then relapsed. I think I know the
+recalled that Bessler pointed out that, “it wasn’t necessarily clear        reason, particularly about his comment on penalized because of
+that. . . the intention of the policy was to apply to every change.         not following the process. I will chat with you during 1:1. This
+But that’s how the policy read. So I think his concern was trying           is related to the topic Jason [Benterou] is discussing now.”19 (Jt.
+to make it very clear where it would apply.” 17 (Tr. 439–440.)              Exh. 15, Tr. 538–539.)
+Second, Bessler commented that this system in which just two                   During and after the meeting, Bessler and Mi also had a Slack
+
+   15
+      Some witnesses also referred to it as the “EPD” meeting, referring    was to ship code. And so he was speaking that this was going to make it
+to “engineering, product, and design” or “end product design.” (Tr. 300,    harder to ship code, which was true. This puts one extra check in place.”
+888.)                                                                       (Tr. 534.)
+   16                                                                          19
+      Employees such as Schoendorf, Lai, and others raised the same or            Mi testified that English is his second language, after Mandarin
+similar questions about the proposal, including which situations it would   Chinese. (Tr. 770.) There were a few instances, in both his hearing
+apply to and how it would be enforced. (Tr. 122, 261–262.)                  testimony and in his written communications in exhibits, where there
+   17
+      Supervisor Child conceded that “we had some discussion around         were minor grammatical errors. But Mi testified without the need for a
+what met the bar for needing to go through this process.” (Tr. 504.)        translator, sought clarification of questions from counsel when necessar-
+   18
+      Child conceded at the hearing that Bessler was an employee by this    y, appeared to state his answers only when ready, and otherwise testified
+date and had raised valid issues from an engineer’s perspective: “he was    competently.
+speaking as an individual contributor. And so his—his role at this point
+                                                           SNOWFLAKE, INC.                                                                 9
+
+conversation. Between 1:47 and 1:54 p.m., Bessler wrote that           (the lowering of Parker’s evaluation and bonus for not following
+he was surprised that Mi was asserting that Respondent had not         process) and said that employees were thus concerned that the
+lowered Parker’s evaluation and bonus based on failing to follow       proposal was not sufficiently clear, was overly burdensome, and
+company procedures and urged the company to be transparent on          that failure to abide by these vague processes could result in a
+this point: “if people need to be worried about stiff financial con-   financial penalty. (Tr. 135–139.)
+sequences to every PR merge that should be a known thing.”                On August 11, Mi and Bessler held their weekly 30-minute
+After the meeting, Mi and Bessler continued their messaging.           one-on-one meeting to discuss work. Mi brought up the Apps
+Mi explained his reasons for Parker’s downgrade and reprim-            Trio Meeting and reiterated his view that Bessler’s conduct was
+anded Bessler for speaking out so assertively, “multiple people        “disruptive and intimidating.” Bessler asked for details about
+have given feedback that your interactions during today’s EPD          this so that he could change his behavior, but Mi replied that
+meeting is disruptive and intimidating. We have discussed this.        Bessler just had to internalize the feedback. (Tr. 272–273.) On
+You need to make a change to be productive to the team.” (Jt.          August 12, Child and Bessler had their regularly scheduled one-
+Exh. 16, p. 1.) Mi admitted that he also disapproved of the sub-       on-one. Child also told Bessler that his comments on the Apps
+stance of Bessler’s remarks:                                           Trio meeting were unproductive.20 (Tr. 573.) When Child
+   A: [F]or some reason he brought up someone’s performance            commented that he was surprised that Bessler showed such
+rating. The bonus got affected by not following process. In that       strong feelings about process, Bessler explained that he had just
+meeting, which I think is highly inappropriate. So, I told him not     learned that a colleague had their bonus lowered based on that
+to discuss in the—let’s discuss offline.                               and “so it became clear to me that having vague processes was
+                                                                       —was dangerous for employees.” (Tr. 275–276.)
+     JUDGE GEE: And—and let me just make sure I understand                On August 18, during their one-on-one, Mi gave Bessler his
+     the word. You told Charging Party that that subject was           evaluation for the second quarter. Q2 was from May 1 through
+     inappropriate?                                                    July 31, and thus the evaluation covered Bessler’s performance
+     THE WITNESS: I don’t recall exactly words but in that line.       as a director. Mi gave Bessler a rating of “Meets Most Expecta-
+     So that’s not—that should not be discussed in that meeting.       tions” (MME) as a director. (R. Exh. 47.) As for the upcoming
+                                                                       Q3 as a non-supervisory independent contributor, Mi discussed
+(Tr. 801–802.) Later on in that Slack conversation, Bessler            the projects Bessler would be working on. There was no indica-
+stated that he was merely offering his opinion, and that he de-        tion that Bessler’s job security was in jeopardy. (R. Exh. 47, Tr.
+ferred to Mi and Benterou as the supervisory decisionmakers.           276–279).
+(Jt. Exh. 10, pp. 2–3.) When Bessler asked what he did at the             August 26—The Testing Meeting. Senior Product Manager
+meeting that was so “disruptive or intimidating,” Mi answered          Shravan Narayen scheduled a Zoom meeting on August 26 to
+that “people may feel afraid to discuss with you during meetings       discuss the Snowsight migration to Core UI. Attendees included
+because of your tone.” Mi reiterated his objection to Bessler          Narayen, Parker, Smith, Higgs, and Bessler. Parker asked
+speaking out by saying, “I have no other suggestion than stand-        Bessler to join the meeting as his “back up” who could lend him
+ing in others’ shoes and thinking it over. You will only improve       support. (Tr. 85–86, 279.) Narayen said that he had created a
+if you internalize the feedback. I would not be able to force a        testing checklist for all the features in Snowsight and that it
+change in you.” (Jt. Exh. 16, p. 3.)                                   would be applied to the Core UI team. The checklist would be
+   From the perspective of management, Bessler’s advocacy              applicable only to the Core UI team, which consisted of Parker
+took over the meeting so that there was no time to discuss the         and one other engineer. Narayen proposed that, when Parker
+other agenda items. (Tr. 533.) But, while his remarks may have         made any changes to the code as part of the UI migration, then
+been “vociferous,” “combative,” antagonistic,” or “not collabor-       all software features on the checklist would need to be tested,
+ative,” Bessler uttered no threats and used no profanity. (Tr.         even if those features were untouched by the changes. Narayen
+82–83, 127, 263, 440–441, 530–531, 538.) Schoendorf observed           said this was necessary to maintain the high quality of Respond-
+Bessler’s demeanor as, “[f]rustrated but professional.” (Tr. 127.)     ent’s product, and Smith agreed with that approach. Parker op-
+   At 3:30 p.m., Bessler spoke with Schoendorf, Higgs, and en-         posed this blanket approach as unnecessary and time consuming.
+gineer David Resnick over Zoom about a separate technical mat-         Bessler spoke up to side with Parker, advocating for a more flex-
+ter. Schoendorf asked why Bessler had pushed back so hard              ible approach that would offer Parker discretion as to what
+during the Apps Trio meeting, and he explained that an engineer-       changes to test. Alternatively, Bessler suggested automated
+’s evaluation had been lowered for not following the proposal.         testing or “snapshot testing” in lieu of this blanket approach. (Tr.
+Schoendorf concurred that was unfair. Higgs shared his frustra-        86–87, 279–282.) Bessler also suggested that the checklist be
+tion with the proposal and how it was already hard to get work         applied to all teams, not just Core UI. Narayen said that this was
+done. (Tr. 269–271.) Bessler said he would speak further to            good feedback and that he would get back to them. (Tr.
+management about the proposal. (Tr. 271.)                              280–282.) During the meeting, Bessler did not use any profan-
+   Also, sometime after the meeting, Child sent a Slack message        ity, did not threaten or shout at anybody, and nobody told him
+to Schoendorf to ask her why the meeting had been so conten-           that he was acting inappropriately. Parker described Bessler’s
+tious. Schoendorf explained the context of Bessler’s comments          demeanor during this meeting as “normal.” (Tr. 86–88,
+
+  20
+     By email dated August 10, Child also told Mi that, in his view,   “He questioned the proposal repeatedly, even after you and I chimed in
+Bessler’s conduct at the Apps Trio Meeting was inappropriate because   to try to keep things moving.” (R. Exh. 12.)
+10                                            DECISIONS OF THE NATIONAL LABOR RELATIONS BOARD
+
+
+282–283.)                                                                         sibly some of these executives. He would confer with Geneg-
+   During their one-on-one meeting on September 2, Mi told                        abus to work out a severance package. (Jt. Exh. 18, p. 2.) In
+Bessler that he heard that Bessler had been pushing back on test-                 response to Mi’s email on the evening of September 22, various
+ing, referring to the August 26 meeting with Narayen.21 This                      executive expressed their concurrence on the morning of
+surprised Bessler, since he felt that he had not opposed testing.                 September 23. Also, that morning, Mi informed the executives
+Bessler clarified that he agreed that testing was important and                   of the reasons for his decision, which explicitly included Bessler-
+that he merely suggested automated or snapshot testing. He also                   ’s “disruptive and intimidating” advocacy at the Apps Trio meet-
+said that he suggested that the testing policy be applied evenly to               ing. (Jt. Exh. 18.)
+everyone, not just to Parker. Mi implied that Bessler should                         At 11:30 a.m. on September 23, Bessler emailed Mi to report
+avoid attending such meetings in the future, and Bessler agreed.                  his communications with Smith, Jenkins, and Child; to acknow-
+(Tr. 283–285.)                                                                    ledge his acceptance of Mi’s criticism of his Q2 performance as
+   During their September 22 one-on-one, Mi told Bessler that                     a director; and to request specific feedback so that he could im-
+he was not a good long-term fit for Snowflake and suggested that                  prove as an independent contributor. (Jt. Exh. 19.)
+it was time to start discussing Bessler’s exit from the company.                     Later that day at around 5 p.m., Bessler spoke to Czajkowski
+22
+   Bessler reported that Mi said, “I’d like to come up with a pos-                by Zoom to discuss his options. Czajkowski told Bessler that it
+sible way to part ways.” (Tr. 286.) This sudden change in direc-                  was unlikely that he could remain on Mi’s team, but that he
+tion caught Bessler unawares, as he was just beginning his new                    might be able to transfer to another team. Czajkowski said that
+position as an independent contributor. Bessler asked why this                    “he would not be opposed to a transfer. He would not blacklist
+was happening and Mi answered, “you know, you’re—you’re                           me and that he could give me some time to find a new team.”
+hard to work with.” Bessler said that he had improved his rela-                   Czajkowski said that he would give Bessler one to two weeks to
+tions with Smith, Jenkins, and Child, but Mi retorted that “didn’t                explore the possibility of transferring to a different team. (Tr.
+seem to make a dent” and that Mi had “received plenty of feed-                    288–289.)
+back.” (Tr. 286.) When Bessler insisted that he still wanted to                      That evening, Mi replied to Bessler’s morning email reporting
+work for Snowflake, Mi side-stepped the issue and said that,                      his communications with various team leaders. (Jt. Exh. 19.)
+since Snowflake had its IPO,23 Bessler’s vested stock options                     With a courtesy copy to Genegabus, Mi listed six “key points”
+would be worth millions of dollars. Fearing that Mi had not first                 why Bessler could not remain on his team.25 Reason 1 was based
+consulted with Smith, Jenkins, or Child, Bessler asked if he                      on Bessler being “disruptive and intimidating” at the Apps Trio
+could “bring others into this conversation.” Mi consented to that,                meeting. Reason 3 stated that Bessler was “disruptive during
+saying, “I’m okay being overridden.” But, Mi warned, “don’t                       meetings” in his capacity as an independent contributor, an ap-
+make this messy or there’ll be no severance. Don’t cause a                        parent reference to the August 26 testing meeting. The final
+scene.”24 (Tr. 285–288.)                                                          reason was because Bessler had reached out to others the night
+   Following that one-on-one, both Bessler and Mi sought out                      before to ask for their support, something that “caught people off
+company leaders to make their opposing cases. Bessler contac-                     guard.” Mi added that Bessler had misrepresented their com-
+ted Smith, Child, Jenkins, Czajkowski, then-Technical Program                     ments to him. Based on these things, Mi concluded, “I don’t see
+Manager Jennie Louie, Vice President of Engineering Leo                           how you can play a principal engineer role [on] my team.” (Jt.
+Giakoumakis, and Vice President of Product Christian Kleiner-                     Exh. 19.) (Emphasis added.)
+man on September 22 and 23 to explain what was happening and                         After sending that email, Mi continued to canvass others about
+to discuss his options going forward. (Tr. 293–295, 371.) On                      Bessler. Narayen responded by saying that his issues with
+his end, Mi emailed Respondent’s top executives—co-founders                       Bessler were as a director and that he lacked any firsthand obser-
+Dageville and Cruanes, Czajkowski, Kleinerman, and Human                          vations about Bessler as an independent contributor. Un-
+Resources Business Partner Genegabus—to notify them that he                       deterred, Mi asked Narayen at 8:43 p.m. about Bessler’s conduct
+told Bessler that he would “like to work out a separation plan for                at the August 26 testing meeting. But Narayen backed off his
+him to leave Snowflake.” Mi added, “I stand by my decision,                       earlier critical remarks, saying that after he spoke with Bessler
+and would like to give him a bit [of] time to prepare.” Mi also                   about the matter, he realized that Bessler had spoken up merely
+said that Bessler would be reaching out to others, including pos-                 to protect less senior team members. (GC Exh. 7.) Later in the
+
+    21
+       Sometime after August 26, Narayen apparently told Mi that Bessler          lic.” See ipo-investorbulletin.pdf (sec.gov). Snowflake had its IPO on
+had been difficult at the meeting. But on September 23, Narayen in-               September 15, 2020. See Snowflake IPO raises $3.36 billion in year’s
+formed Mi that he had revised his initial negative view of Bessler’s              biggest U.S. listing | Reuters. (Both sites were last checked on August
+comments about testing “after I got more information on the situation. I          21, 2023).
+                                                                                      24
+talked to [Bessler] directly and he explained that him being difficult was               On cross-examination, Mi admitted that he did not tell Bessler his
+more because he thought my proposal would incentivize worse practices             discharge was effective that day, did not identify any specific date of
+for some of the junior members of the team.” (GC Exh. 7.)                         separation, did not provide Bessler with any termination paperwork, did
+    22
+       I have discredited Mi’s testimony that he discharged Bessler at this       not review with him any termination processes, did not remove his access
+meeting. See the Credibility section below. It was evident to me that             to Respondent’s facilities, and did not terminate his access to Respond-
+Mi’s testimony was exaggerated and solely intended to support the ar-             ent’s computer systems. (Tr. 879–880.) Nor do the notes from this one-
+gument that this matter is time-barred under Section 10(b) of the Act.            on-one make any reference to a discharge. (R. Exh. 47.)
+    23                                                                                25
+       IPO stands for “initial price offering,” and historically refers to “the          Mi confirmed that this email outlined the reasons why he discharged
+first time a company offers its shares of capital stock to the general pub-       Bessler. (Tr. 895.)
+                                                                  SNOWFLAKE, INC.                                                                    11
+
+exchange, Mi conceded that his problems centered on Bessler                     Mi’s testimony was marked by hesitancy, uncertainty, improbab-
+“being difficult” and “less about the technical skills.” (GC Exh.               ility, and lack of corroboration by the documentary evidence.
+7.)                                                                             The following examples stood out to me as being particularly
+   On September 29, Mi spoke by Zoom with Bessler and                           telling. On direct, Mi testified that, during his one on one meet-
+Genegabus. Reading from a script, Mi told Bessler that he was                   ing with Bessler on August 11, Mi supposedly told Bessler that
+being discharged “due to you creating a hostile work environ-                   he was not meeting expectations and that this was his “last
+ment by soliciting help from your colleague[s] to retain your                   chance” and that he had “to improve quickly and significantly.”
+job.” 26 (Tr. 301.) Prior to this, Bessler had never been discip-               (Tr. 819.) I find that each of these assertions was either unsup-
+lined for creating a hostile work environment.27 (Tr. 301–302.)                 ported by the record or unlikely. Mi’s own summary of that Au-
+   Bessler’s last day of work at Snowflake was September 29 and                 gust 11 meeting said nothing about Bessler failing to meet ex-
+his official date of separation was October 2. (Jt. Exh. 22.)                   pectations; to the contrary, Mi rated Bessler as “meeting most
+                             III. CREDIBILITY
+                                                                                expectations.” On cross-examination, Mi conceded that his
+                                                                                notes make no mention of telling Bessler this was his last chance
+   A credibility determination may rest on various factors, in-                 to remain with the company. (Tr. 877.) With regard to the final
+cluding “the context of the witness’ testimony, the witness’ de-                point that Mi supposedly warned Bessler that he had to improve
+meanor, the weight of the respective evidence, established or                   immediately, there is nothing in Mi’s summary to support that—
+admitted facts, inherent probabilities and reasonable inferences                a fact that he also conceded on cross-examination. (Tr. 877.)
+that may be drawn from the record as a whole.” Hills & Dales                    Instead, Mi’s notes from the meeting reflect mundane updates on
+General Hospital, 360 NLRB 611, 617 (2014), citing Double D                     work projects, such as the Core UI migration and the “AX Arch
+Construction Group, 339 NLRB 303, 305 (2003); Daikichi                          Migration.” Moreover, Mi issuing a last chance warning to
+Sushi, 335 NLRB 622, 623 (2001). In making credibility resolu-                  Bessler on this date would not make sense, since Bessler had
+tions, it is well established that the trier of fact may believe some,          begun his new role as an independent contributor just eight days
+but not all, of a witness’ testimony. NLRB v. Universal Camera                  before and there was hope that he would perform better in that
+Corp., 179 F.2d 749 (2d Cir. 1950). In evaluating each side’s                   purely technical capacity. As a second example of testimony
+proffered facts, I have reviewed the entire record and carefully                lacking in plausibility, Mi asserted under oath that he discharged
+observed the demeanor of all the witnesses. I have considered                   Bessler on September 22. (Tr. 842–843.) I discredit Mi’s testi-
+the apparent interests of the witnesses; the inherent probabilities             mony about this event. Mi’s own email to company executives
+in light of other events; corroboration or the lack of it; consisten-           stated that he merely broached the subject of a separation: “I
+cies or inconsistencies within the testimony of each witness and                have told Scott today during 1:1 that I’d like to work out a separa-
+between witnesses with similar apparent interests. See, e.g.,                   tion plan for him to leave Snowflake.” (Jt. Exh. 19, p. 2.) (Em-
+NLRB v. Walton Mfg. Co., 369 U.S. 404, 408 (1962). Testimony                    phasis added.) There was no mention of any discharge being
+in contradiction to my factual findings has been carefully con-                 effectuated. Additionally, nothing in Mi’s notes from the one-
+sidered but discredited. Where there is inconsistent evidence on                on-one reference a discharge. (R. Exh. 47.) Given how signific-
+a material point, my credibility findings are incorporated into my              ant a discharge would have been, I find it improbable that Mi’s
+legal analysis below.                                                           notes would contain no mention of that. Additionally, Mi’s
+   While I credit much of his testimony, I conclude that Bessler                testimony about what he and Bessler said during the September
+sought to minimize his lack of success as a manager. Addition-                  22 meeting was vague, uncertain, and lacking in detail. (Tr.
+ally, based on the credible testimony of several witnesses, as well             843–846.) Based on the foregoing, as well as his demeanor and
+as documentary evidence, he was not frank and forthcoming                       overall testimony, I discredit Mi’s testimony on any facts not
+about how his direct and sometimes incessant communication                      included in Facts section above.
+style could be viewed as off-putting to colleagues.                                 I also discredit key portions of Narayen’s testimony, based on
+   For much of his testimony, Mi came across as an honest wit-                  his inability to recall specifics about various meetings and event-
+ness. However, when it came to crucial testimony about when                     s, eagerness to give any and all biased or vague testimony harm-
+and why he decided to recommend that Bessler be discharged,
+
+   26
+      In the position statement that it submitted in this case to the invest-   at the Apps Trio meeting. (Tr. 888–892.) On this second point, the Gen-
+igating Board agent on April 16, 2021, Respondent disavowed this basis:         eral Counsel asked Mi to confirm that the Apps Trio meeting factored
+“With respect to Mr. Bessler’s conduct the evening of September 22nd            into his discharge recommendation. Mi hesitated, saying that he could
+where he reached out to his coworkers to support his employment at              not answer yes or no to that “trick question.” The Administrative Law
+Snowflake, that cannot form the basis of any retaliation claim from a pure      Judge told Mi that he did not have to say yes or no, but rather could an-
+timing perspective. Mr. Mi had already finalized and communicated the           swer in his own words. To this, Mi said that the Apps Trio meeting was
+decision to terminate Mr. Bessler’s employment on September 22nd.               just “one continuation of Mr. Bessler’s behavior how to interact with
+Therefore, Snowflake could not have terminated Mr. Bessler because he           other people.” General Counsel asked Mi to confirm this testimony:
+pressured his coworkers for support on the evening of September 22nd                Q. BY MR. WONG: So—so Zheng, I under—so I understand you
+since the termination decision had already been made and communicated           didn’t—okay. Let me back up. You said that his inappropriate behavior
+to him prior to those events.” (Emphasis original). (GC Exh. 9, p. 4.)          at the meeting was sort of one of a continuation of—of inappropriate
+   27
+      On cross-examination, Mi added new reasons for the discharge. Mi          behavior, isn’t that right?
+said he decided to discharge Bessler because he was falling short of work           A. That’s correct.
+expectations in two ways: failing to timely produce work and by enga-               (Tr. 892.)
+ging in a pattern of “inappropriate behavior,” which included his conduct
+12                                      DECISIONS OF THE NATIONAL LABOR RELATIONS BOARD
+
+
+ful to Bessler, and lack of candor while under oath. On that final       ployer knew or suspected the employee engaged in such conduct,
+observation, when the General Counsel confronted Narayen with            the employer harbored animus, and the employer took an adverse
+his own Slack message that was supportive of Bessler and harm-           action against the employee motivated at least in part by that
+ful to Respondent’s defense, Narayen incredibly uttered, “I,             animus. If established, the burden shifts to the employer to show
+truthfully, do not know why I typed it.” Even given a moment             that it would have taken the same adverse action, even absent
+to reconsider his testimony, Narayen persisted with the false-           such activity. NLRB v. Transportation Corp., 462 U.S. 393,
+hood: “Yeah. I mean, I make a lot of Slack messages, and I cer-          399–403 (1983); Manno Electric, 321 NLRB 278, 280 fn. 12
+tainly make mistakes in them.” (Tr. 1017.) Based on the above,           (1996), enfd. 127 F.3d 34 (5th Cir. 1997) (per curiam); Intertape
+as well as his demeanor and overall testimony, I discredit Naray-        Polymer Corp., 372 NLRB No. 133, slip op. at 10 (2023). An
+en’s testimony where inconsistent with the facts presented               employer cannot simply present a legitimate reason for its action;
+above.                                                                   rather, it must persuade by a preponderance of the evidence that
+                             ANALYSIS                                    the same action would have taken place in the absence of the
+                                                                         protected conduct. Serrano Painting, 332 NLRB 1363, 1366
+   Paragraphs 5 through 8 of the complaint allege that Bessler           (2000). Where the General Counsel has made a strong showing
+engaged in protected concerted activity on August 4, 7, and 26,          of discriminatory motivation, the employer’s defense burden is
+and that Respondent discharged him on September 29 in retali-            substantial. East End Bus Lines, 366 NLRB No. 180, slip op. at
+ation for that activity, thereby violating Section 8(a)(1). In its       2 (2018); Bally’s Park Place, Inc., 355 NLRB 1319, 1321
+defense, Respondent contends that the complaint in this matter is        (2010), enfd. 646 F.3d 929, 396 U.S. App. D.C. 205 (D.C. Cir.
+time-barred under Section 10(b), the General Counsel failed to           2011).
+establish a prima facie case, and Respondent showed that it                 The analysis in the instant case is nuanced because Bessler had
+would have discharged Bessler even absent any protected con-             been a Section 2(11) supervisor shortly before the events that led
+certed activity.                                                         to his discharge and because as a supervisor he engaged in out-
+   Under Section 8(a)(1), it is unlawful for an employer to dis-         spoken behavior which was not protected, while in his new capa-
+criminate against an employee in retaliation for their protected         city as an employee he engaged in outspoken behavior that was
+concerted activity. When deciding whether an unfair labor prac-          protected by Section 7. In the typical discrimination case, an
+tice has been committed, the Board asks whether the employee’s           employer learns of an employee’s protected concerted activity
+conduct was both concerted and protected. Miller Plastic                 and retaliates by disciplining or discharging them. Here, how-
+Products, 372 NLRB No. 134, slip op. at 3 (2023), Morgan                 ever, Bessler had a history of poor interpersonal skills which
+Corp., 371 NLRB No. 142, slip op. at 2–3 (2022). The “concer-            Respondent did not tolerate and which caused Respondent to
+ted” inquiry focuses on the manner of the employee’s conduct:            lawfully counsel and demote him while he was a supervisor. But
+whether it was engaged in with other employees or on behalf of           once Bessler became an employee on August 3, he came within
+other employees, and not solely by and on behalf of the employ-          the protections of the Act. Starting on that date, it was incumbent
+ee. Meyers Industries (Meyers I), 268 NLRB 493, 497 (1984),              on Respondent to recognize and respect Bessler’s Section 7 right
+remanded sub nom Prill v. NLRB, 755 F. 2d 941 (D.C. Cir.                 to advocate for improved terms and conditions of employment
+1985), cert. denied 474 U.S. 948 (1985), on remand Meyers In-            —even if that advocacy was direct, unwelcome, or confronta-
+dustries (Meyers II), 281 NLRB 882 (1986), affd. sub nom Prill           tional (but not violent or threatening). But Respondent failed to
+v. NLRB, 835 F.2d 1481 (D.C. Cir. 1987), cert. denied 487 U.S.           make that distinction. Instead, Respondent, especially Mi, erred
+1205 (1988). Additionally, concerted activity includes situations        by continuing to view Bessler as a supervisor who was being
+“where individual employees seek to initiate or to induce or to          “inappropriate” and “disruptive,” and who could lawfully be
+prepare for group action, as well as individual employees bring-         discharged on that basis.
+ing truly group complaints to the attention of management.”                 Prima Facie Case. The General Counsel established a strong
+Meyers II, 281 NLRB at 887. The “protected” inquiry focuses              prima facie case. On three dates in August, Bessler engaged in
+on the goal of the employee’s activity: “chiefly, whether the            conduct that was concerted, protected, and known to Respond-
+employee or employees involved seek to improve their terms and           ent. On August 4, Parker discussed with Bessler and Naides his
+conditions of employment or otherwise improve their lot as em-           belief that Jenkins’ auditing and re-auditing of his work was the
+ployees.” Fresh & Easy Neighborhood Market, 361 NLRB 151,                product of bias, a subject that had been widely discussed before
+153 (2014) (citing Eastex, Inc. v. NLRB, 437 NLRB 556, 565               by many engineers. That day or the next, Bessler met with su-
+(1978)). Activity will be considered for mutual aid or protection        pervisor Jenkins to communicate those concerns and to seek
+simply if it “inures to the benefit of all.” Id. at 155 (citing Meyers   changes in Jenkins’ approach to reviewing work. This conduct
+II at 887).                                                              was concerted in that biased review by the former Numeracy
+   The framework for analyzing Section 8(a)(1) allegations turn-         staff had been widely discussed by many engineers, and so
+ing on employer motivation is set forth in Wright Line, 251              Bessler was raising a “truly group complaint.” Meyers II, 281
+NLRB 1083 (1980), enfd. 662 F.2d 899 (1st Cir. 1981), cert.              NLRB at 887. It was for the purpose of mutual aid and protection
+denied 455 U.S. 989 (1982). For the General Counsel to estab-            because Bessler spoke to Jenkins for the purpose of improving
+lish a prima facie case, he must present sufficient evidence that        the review process by eliminating arbitrary considerations and
+the employee’s protected concerted activity was a motivating             instituting greater fairness and predictability. Moreover, Jenkin-
+factor in the adverse action. This can be done by showing that           s’ alleged biased review process could harm Parker’s productiv-
+the employee engaged in protected concerted conduct, the em-             ity and thus his performance evaluations and bonus pay. Morgan
+                                                              SNOWFLAKE, INC.                                                                  13
+
+Corp., supra at 3 (discussions affecting wages were for mutual             activity. There is direct evidence of animus. On cross-examina-
+aid or protection). On August 7, Bessler spoke out against the             tion, Mi admitted that he discharged Bessler because of his “in-
+API Change proposal at the Apps Trio meeting. At this meeting,             appropriate behavior” at the Apps Trio meeting. (Tr. 886–888.)
+which was attended by supervisors Mi, Child, and Jenkins,                  This consisted of Bessler pointing out group concerns about the
+Bessler argued that the proposal failed to clearly identify what           API change proposal which could affect employees’ productiv-
+proposed code it applied to, could result in a biased review pro-          ity, quarterly evaluations, and bonus pay. In short, what Mi
+cess by Smith and Jenkins, might lead to lowered evaluations and           deemed inappropriate was simply a “frank, and not always com-
+bonuses, and could slow down the approval process by mandat-               plimentary, exchange of views” that fell squarely within Section
+ing review by individuals who were already pressed for time.               7’s protections. Beuttcher Mfg. Corp., supra at 527; Climatrol,
+This conduct was concerted in that Bessler raised issues of group          Inc., 329 NLRB 946, 946 fn. 4 (1999) (citing several decisions
+concern, which was evidenced by the fact that other engineers              where the Board deemed references to employees’ “bad atti-
+like Schoendorf and Lai echoed his points. The content of his              tude,” “negative attitude,” and “work attitude” to be covert refer-
+advocacy plainly sought to improve the engineers’ terms and                ences to Section 7 activity). Mi thus admitted that a basis for his
+conditions of employment, such as productivity, evaluations, and           discharge recommendation was Bessler’s protected concerted
+bonus pay.28 See, e.g., Carpenters Local 1109 v. NLRB, 209 Fed.            activity. Austal USA, 356 NLRB 363, 363 (2010)(discriminatory
+Appx. 692 (9th Cir. 2006)(employer violated Section 8(a)(1) by             motive may be established through animus directed to the em-
+discharging an employee for his protected concerted advocacy               ployee or about the employee’s protected activities); Starbucks
+over bonuses and other forms of pay). The proposal also per-               Corp., 372 NLRB No. 50, slip op. at 30 (2023)(animus based on
+tained to terms and conditions because an employee’s repeated              supervisor’s “venting email” complaining about the alleged
+failure to follow it could result in discipline or discharge from          discriminatees’ protected concerted activities). Direct evidence
+employment. King Soopers, Inc., 340 NLRB 628, 628–629                      of animus can also be found in Mi’s September 22–23 email
+(2003) (in the context of a Section 8(a)(5) bargaining allegation,         chain with company executives and his September 23 “key
+the Board stated that, although the employer was not obligated             points” email to Genegabus and Bessler stating that he was tak-
+to bargain over the implementation of its decision, it did have to         ing action based on Bessler’s conduct at the Apps Trio meeting
+bargain over the policy since performance standards that can be            and the testing meeting. The August 7 Slack exchange in which
+enforced by discipline have an effect on job security and are              both Mi and Child criticized Bessler for raising concerns about
+therefore terms and conditions of employment). On August 26,               the API Change proposal provides further direct evidence of
+Bessler joined the testing meeting. After Parker objected to               animus, as did Child’s August 10 email to Mi in which Child
+Narayen’s blanket approach to testing, Bessler concurred with              referred to Bessler’s comments about the API Change proposal
+him. Bessler then suggested that the testing protocols be applied          as “basically [an] attack [on] the entire premise in a meeting of
+to all teams, not just Parker’s Core UI team, and offered possible         24 people” and disapproving of the fact that Bessler “questioned
+alternatives, such as automated testing or snapshot testing.               the proposal repeatedly.” (R. Exh. 12.)
+Bessler’s conduct was concerted in that he was raising group                  There was also ample evidence from which I infer animus.
+concerns about biased treatment of the non-Numeracy engineers.             The timing of the discharge was highly indicative of this.
+It was for the object of mutual aid and protection because Naray-          Bessler had just made the transition to independent contributor
+en’s blanket plan for testing would slow down the work pro-                on August 3, and management was hopeful that he would excel
+cesses of the Core UI team. This, in turn, could impact evalu-             in this new position free of supervisory duties. Despite manage-
+ations and bonus pay. Bessler’s advocacy was known to man-                 ment’s promise of a “clean slate” and hope for “a nice clean
+agement, as Narayen mentioned it to Mi who then questioned                 quarter” as an independent contributor, Mi jettisoned Bessler
+Bessler about “pushing back on testing” just seven days later at           after just two months and just part way through the quarter.29
+their one-on-one meeting. At these three meetings, Bessler did             While Mi made vague and conclusory claims that Bessler “was
+nothing to lose the protections of the Act—he made no threats,             not performing positively” and that Mi’s “recollection” was that
+used no profanity, and engaged in no other misconduct of such a            Bessler had not completed projects during the brief time period
+violent or serious character “as to render the employee unfit for          he had been an independent contributor, no indications of such
+further service.” Lion Elastomers LLC, 372 NLRB No. 83, slip               underperformance can be found in the documentary record. (Jt.
+op. at 2, fn. 12 (2023) (quoting Beuttcher Mfg. Corp., 76 NLRB             Exhs. 17 and 19, R. Exh. 47, Tr. 821–822.) Because I have dis-
+526, 527 (1948)).                                                          credited Mi’s testimony on Bessler being unproductive as an
+   In terms of the adverse employment action, Bessler was dis-             independent contributor, there is no credible evidence to explain
+charged on September 29.                                                   the timing of the discharge based on lawful considerations.
+   The General Counsel presented overwhelming evidence of                  Rather, the obvious driver for the timing of the September dis-
+Respondent’s animus towards Bessler’s protected concerted                  charge was Bessler’s protected concerted activity in August. See
+
+
+   28                                                                         29
+      Respondent asserts that Child’s concerns about Bessler’s conduct           In a Slack message with Child on September 23, it appears that Mi
+during the meeting pertained to his “aggressive tone” not to the content   actually wanted to get rid of Bessler earlier but waited until after the
+of his message. (R. Br., p. 57.) But the manner in which Bessler de-       company’s IPO on September 15. Mi wrote that, with Bessler “well
+livered his message cannot be separated from the content of his message    compensated” from the IPO, he implied that Bessler might more readily
+—his advocacy was part of the res gestae of his protected concerted        accept a separation from the company. (R. Exh. 25, p. 2.)
+activities. Lion Elastomers, supra, at 2.
+14                                     DECISIONS OF THE NATIONAL LABOR RELATIONS BOARD
+
+
+Detroit Newspapers, 342 NLRB 1268, 1271 (2004) (inferring              were let go, her testimony was not supported by any document-
+animus based on the employer’s rush to discipline open union           ary evidence; was so vague as to be unhelpful for purposes of
+adherent); Charter Communications, 366 NLRB No. 46, slip op.           comparison to Bessler (for example, one person was described
+at 7 (2018) (discharge of employee within three months of em-          simply as being “disruptive in meetings” with nothing more); did
+ployer knowledge of Section 7 activity evidence of animus).            not identify a timeframe for these actions other than being before
+    Respondent Failed to Establish a Wright Line Defense. Given        September 2020;30 did not specify whether the individuals were
+this strong prima facie case, the burden shifted to Respondent to      supervisors or employees; and, most critically, failed to indicate
+demonstrate that it would have, not just could have, discharged        the nature of the individuals’ purported misconduct. As to the
+Bessler, even absent his protected concerted activity. I find that     final reason, there was no evidence showing that any of them
+it failed to do so. While Respondent presented reasons for why         engaged in protected concerted activity, a distinction that is ob-
+it could have discharged Bessler, all of them fell far short of        viously important to this case given Mi’s admission that he relied
+showing that it would have discharged for those reasons.               on Bessler’s advocacy at the Apps Trio meeting when deciding
+    As a threshold matter, Respondent raised the affirmative de-       to discharge him. Moreover, Respondent presented no docu-
+fense that the complaint is time-barred under Section 10(b) since      mentary evidence, such as counseling notices, that would make
+Mi “unequivocally informed Bessler of his termination on               possible an informed comparison between these proffered com-
+September 22, 2020.” (R. Br., p. 78.) This defense was unsup-          parators and Bessler.
+ported by the credible evidence because on September 22 Mi                Respondent raised, as an alternate defense that, if it is found
+merely broached the topic of Bessler separating from the com-          that Bessler was discharged within the Section 10(b) period,
+pany and started exploring “possible ways to part.” No credible        Respondent “had reasons to terminate his employment” unre-
+testimony and no documentary evidence showed that Bessler              lated to any protected concerted activity: on September 22,
+was actually discharged on that date. Additionally, on Septem-         Bessler reached out to several others to ask for their support. (R.
+ber 23, Czajkowski told Bessler that, while he could not remain        Brief, p. 120). I find this defense unconvincing because, on
+on Mi’s team, he could have one to two weeks to explore trans-         September 22, Mi affirmatively gave Bessler permission to con-
+ferring to another team. Czajkowski’s offer of a potential trans-      tact others to ask for their support or to explore the possibility of
+fer was incompatible with Respondent’s position that Bessler           transferring to another work team. Moreover, in its position
+was discharged on September 22. Based on my finding that               statement to the Region during the underlying investigation of
+Bessler was not discharged until September 29, I reject Re-            this case, Respondent made clear that it did not rely on this when
+spondent’s argument that the complaint is time-barred.                 deciding to discharge Bessler. (GC Exh. 9, p. 4.)
+    Respondent asserted that it discharged Bessler for perform-           Based on the foregoing, as well as my consideration of the
+ance problems. One group of performance problems was pur-              record as a whole, I find that Respondent violated Section 8(a)(1)
+portedly shown by Bessler’s “below average performance rat-            by discharging Bessler on September 29 in retaliation for his
+ings three quarters in a row.” (R. Br., p. 111.) (Emphasis ori-        protected concerted activities.
+ginal) But these ratings were based on Bessler’s performance as                              CONCLUSIONS OF LAW
+a director, not in his new position as an independent contributor.
+If Respondent had truly been motivated by this, it would have             1. Respondent Snowflake, Inc., is an employer engaged in
+discharged Bessler at the end of Q2, before converting him to          commerce within the meaning of Section 2(2), (6), and (7) of the
+independent contributor. Instead, Respondent waited until              Act.
+Bessler engaged in Section 7 activity. The second group of per-           2. Respondent violated Section 8(a)(1) of the Act on Septem-
+formance problems was based on the assertion that Bessler “con-        ber 29, 2020, by discharging employee Scott Bessler in retali-
+tinued to cause disruptions and confusion in meetings, blocked         ation for him having engaged in protected concerted activities.
+progress on projects, and was not timely delivering on his as-            3. The above violation is an unfair labor practice that affects
+signed projects.” (R. Br., p. 112.) I find this argument unper-        commerce within the meaning of Section 2(6) and (7) of the Act.
+suasive because there is no evidence that Mi actually relied on                                     REMEDY
+such claims when deciding to discharge Bessler—he made no
+                                                                           Having found that Respondent has engaged in certain unfair
+mention of them in his “key points” email to Bessler and Geneg-
+                                                                       labor practices, I recommend that the Board order it to cease and
+abus spelling out the bases for the discharge (Jt. Exh. 19) or in
+                                                                       desist and to take certain affirmative action designed to effectu-
+his emails to company executives on September 22 and 23 (Jt.
+                                                                       ate the policies of the Act. Specifically, having found that the
+Exh. 18) seeking to justify the discharge.
+                                                                       Respondent violated Section 8(a)(1) by discharging employee
+    Respondent presented as comparator evidence examples of
+                                                                       Scott Besler for engaging in protected concerted activity, Re-
+other employees discharged for allegedly underperforming at
+                                                                       spondent shall offer him full reinstatement to his former job or,
+work or being disruptive in meetings, but these examples were
+                                                                       if that job no longer exists, to a substantially equivalent position,
+lacking in detail and documentary support. (Tr. 715–722.) For
+                                                                       without prejudice to his seniority or any other rights or privileges
+example, while Human Resources Representative Genegabus
+                                                                       previously enjoyed. Respondent shall make Bessler whole, with
+spoke generally about the reasons why some of these individuals
+                                                                       interest, for any loss of earnings and other benefits suffered as a
+
+   30
+      Moreover, given that Genegabus’ testimony about the dates of
+discharge was limited to answering leading questions by Respondent’s
+counsel, I am not fully certain these discharges preceded Bessler’s.
+                                                                SNOWFLAKE, INC.                                                                     15
+
+result of his unlawful discharge, including all stock options that            ees because they engage in protected concerted activities or to
+would have vested had Bessler remained employed as an inde-                   discourage employees from engaging in these activities.
+pendent contributor. That backpay shall be computed in accord-                   (b) In any like or related manner interfering with, restraining,
+ance with F. W. Woolworth Co., 90 NLRB 289 (1950), with in-                   or coercing employees in the exercise of the rights guaranteed
+terest at the rate prescribed in New Horizons, 283 NLRB 1173                  them by Section 7 of the Act.
+(1987), compounded daily as prescribed in Kentucky River Med-                    2. Take the following affirmative action necessary to effectu-
+ical Center, 356 NLRB 6 (2010).                                               ate the policies of the Act.
+   Respondent shall compensate Bessler for the adverse tax con-                  (a) Within 14 days from the date of any Board Order, offer
+sequences, if any, of receiving a lump-sum backpay award and                  Scott Bessler full reinstatement to his former job or, if that job
+to file a report with the Regional Director for Region 20 allocat-            no longer exists, to a substantially equivalent position, without
+ing the backpay award to the appropriate calendar year(s). Ad-                prejudice to his seniority or any other rights or privileges previ-
+voServ of New Jersey, Inc., 363 NLRB 1324 (2016). In addition                 ously enjoyed.
+to the backpay allocation report, Respondent shall file with the                 (b) Make Scott Bessler whole for any loss of earnings and
+Regional Director for Region 20 a copy of Bessler’s correspond-               other benefits (including stock options), and for any other direct
+ing W-2 form(s) reflecting the backpay award. Cascade Con-                    or foreseeable pecuniary harms, suffered as a result of his unlaw-
+tainerboard Packaging—Niagara, 370 NLRB No. 76 (2021), as                     ful discharge, in the manner set forth in the remedy section of
+modified in 371 NLRB No. 25 (2021).                                           this decision.
+   In accordance with the decision in King Soopers, Inc., 364                    (c) Compensate Scott Bessler for his search-for-work and
+NLRB 1153 (2016), enfd. in relevant part 859 F.3d 23, 429 U.S.                interim employment expenses, regardless of whether those ex-
+App. D.C. 270 (D.C. Cir. 2017), Respondent shall compensate                   penses exceed his interim earnings.
+Bessler for his search-for-work and interim employment ex-                       (d) Compensate Scott Bessler for the adverse tax con-
+penses regardless of whether those expenses exceed interim                    sequences, if any, of receiving a lump-sum backpay award, and
+earnings, with search-for-work and interim employment ex-                     file with the Regional Director for Region 20, within 21 days of
+penses being calculated separately from taxable net backpay,                  the date the amount of backpay is fixed, either by agreement or
+with interest at the rate prescribed in New Horizons, supra, com-             Board order, a report allocating the backpay award to the appro-
+pounded daily as prescribed in Kentucky River Medical Center,                 priate calendar year(s).
+supra.                                                                           (e) File with the Regional Director for Region 20, within 21
+   In accordance with the decision in Thryv, Inc., 372 NLRB No.               days of the date the amount of backpay is fixed by agreement or
+22 (2022), Respondent shall compensate Bessler for any other                  any Board order or such additional time as the Regional Director
+direct or foreseeable pecuniary harms incurred as a result of the             may allow for good cause shown, a copy of Scott Bessler’s cor-
+unlawful discharge, if any, regardless of whether those expenses              responding W-2 form(s) reflecting the backpay award.
+exceed interim earnings, with compensation for these harms                       (f) Within 14 days from the date of any Order, remove from
+being calculated separately from taxable net backpay, with the                its files any reference to the unlawful discharge of Scott Bessler,
+interest at the rate prescribed in New Horizons, supra, compoun-              and within 3 days thereafter, notify him in writing that this has
+ded daily as prescribed in Kentucky River Medical Center,                     been done and that the discharge will not be used against him in
+supra.                                                                        any way.
+   Finally, Respondent shall remove from its files any reference                 (g) Preserve and, within 14 days of a request, or such addi-
+to the unlawful discharge of Bessler and to notify him in writing             tional time as the Regional Director may allow for good cause
+that this has been done and that the discharge will not be used               shown, provide at a reasonable place designated by the Board or
+against him in any way.                                                       its agents, all payroll records, social security payment records,
+   On these findings of fact and conclusions of law and on the                timecards, personnel records and reports, and all other records,
+entire record, I issue the following recommended31                            including an electronic copy of such records if stored in electron-
+                                ORDER                                         ic form, necessary to analyze the amount of backpay due under
+                                                                              the terms of any Board Order.
+   The Respondent, Snowflake, Inc., San Mateo, California, its                   (h) Within 14 days after service by the Region, post at its fa-
+officers, agents, successors, and assigns, shall                              cility in San Mateo, California, copies of the attached notice
+   1. Cease and desist from                                                   marked “Appendix.”32 Copies of the notice, on forms provided
+   (a) Discharging or otherwise discriminating against employ-                by the Regional Director for Region 20, after being signed by the
+
+   31
+       If no exceptions are filed as provided by Sec. 102.46 of the Board’s   substantial complement of employees has returned to work. If, while
+Rules and Regulations, the findings, conclusions, and recommended             closed or not staffed by a substantial complement of employees due to
+Order shall, as provided in Sec. 102.48 of the Rules, be adopted by the       the pandemic, the Respondent is communicating with its employees by
+Board and all objections to them shall be deemed waived for all purposes.     electronic means, the notice must also be posted by such electronic
+   32
+      If the facility involved in these proceedings is open and staffed by    means within 14 days after service by the Region. If the notice to be
+a substantial complement of employees, the notice must be posted within       physically posted was posted electronically more than 60 days before
+14 days after service by the Region. If the facility involved in these pro-   physical posting of the notice, the notice shall state at the bottom that
+ceedings is closed or not staffed by a substantial complement of employ-      “This notice is the same notice previously [sent or posted] electronically
+ees due to the Coronavirus Disease 2019 (COVID-19) pandemic, the              on [date].” If this Order is enforced by a judgment of a United States
+notice must be posted within 14 days after the facility reopens and a         court of appeals, the words in the notice reading “Posted by Order of the
+16                                      DECISIONS OF THE NATIONAL LABOR RELATIONS BOARD
+
+
+Respondent’s authorized representative, shall be posted by the           offer Scott Bessler full reinstatement to his former job or, if that
+Respondent and maintained for 60 consecutive days in con-                job no longer exists, to a substantially equivalent position,
+spicuous places, including all places where notices to employees         without prejudice to his seniority or any other rights or privileges
+are customarily posted. In addition to physical posting of paper         previously enjoyed.
+notices, notices shall be distributed electronically, such as by            WE WILL make Scott Bessler whole for any loss of earnings
+email, posting on an intranet or an internet site, and/or other elec-    and other benefits (including stock options) resulting from our
+tronic means, if the Respondent customarily communicates with            unlawful discharge of him, less any net interim earnings, plus
+its employees by such means. Reasonable steps shall be taken             interest, and WE WILL also make him whole for any other direct
+by the Respondent to ensure that the notices are not altered, de-        or foreseeable pecuniary harms suffered as a result of the unlaw-
+faced, or covered by any other material. If the Respondent has           ful discharge, including reasonable search-for-work and interim
+gone out of business or closed the facility involved in these pro-       employment expenses, plus interest.
+ceedings, the Respondent shall duplicate and mail, at its own               WE WILL compensate Scott Bessler for the adverse tax con-
+expense, a copy of the notice to all current and former employees        sequences, if any, of receiving a lump-sum award for backpay
+employed by the Respondent at the facility at any time since             and benefits, and WE WILL file with the Regional Director for
+September 29, 2020.                                                      Region 20, within 21 days of the date that the amount of backpay
+   (i) Within 21 days after service by the Region, file with the         is fixed, either by agreement or Board order, a report allocating
+Regional Director for Region 20 a sworn certification of a re-           the backpay award to the appropriate calendar year(s).
+sponsible official on a form provided by the Region attesting to            WE WILL remove from our files any references to our unlawful
+the steps that the Respondent has taken to comply.                       decision to discharge Scott Bessler and, within 3 days thereafter,
+   Dated, Washington, D.C. September 15, 2023                            notify him in writing that this has been done and that the unlaw-
+                            APPENDIX                                     ful discharge will not be used against him in any way.
+                                                                            WE WILL file with the Regional Director for Region 20, within
+                      NOTICE TO EMPLOYEES                                21 days of the date the amount of backpay is fixed by agreement
+                     POSTED BY ORDER OF THE                              or Board order or such additional time as the Regional Director
+                NATIONAL LABOR RELATIONS BOARD                           may allow for good cause shown, a copy of Scott Bessler’s cor-
+             An Agency of the United States Government                   responding W-2 form(s) reflecting the backpay award.
+                                                                                       SNOWFLAKE, INC.
+The National Labor Relations Board has found that we violated
+Federal labor law and has ordered us to post and obey this notice.          The Administrative Law Judge’s decision can be found at
+                                                                         https://www.nlrb.gov/case/ 20-CA-274626 or by using the QR
+        FEDERAL LAW GIVES YOU THE RIGHT TO                               code below. Alternatively, you can obtain a copy of the decision
+         Form, join, or assist a union                                   from the Executive Secretary, National Labor Relations Board,
+         Choose representatives to bargain with us on your               1015 Half Street, S.E., Washington, D.C. 20570, or by calling
+     behalf                                                              (202) 273-1940
+         Act together with other employees for your benefit and
+     protection
+         Choose not to engage in any of these protected
+     activities.
+
+   WE WILL NOT discharge or otherwise discriminate against you
+because you engage in protected concerted activities or to dis-
+courage other employees from engaging in these activities.
+   WE WILL NOT in any like or related manner interfere with,
+restrain, or coerce you in the exercise of the rights listed above.
+   WE WILL, within 14 days from the date of any Board Order,
+
+
+
+
+National Labor Relations Board” shall read “Posted Pursuant to a Judg-
+ment of the United States Court of Appeals Enforcing an Order of the
+National Labor Relations Board.”
+
