@@ -1,0 +1,77 @@
+Federal Communications Commission                             DA 26-237
+
+
+                                               Before the
+                                    Federal Communications Commission
+                                          Washington, D.C. 20554
+
+
+ In the Matter of                                        )
+                                                         )
+ Belthrough LLC                                          )      EB-TCD-24-00037445
+                                                         )      EB Docket No. 22-174
+                                                         )
+
+                     FINAL DETERMINATION ORDER AND REMOVAL ORDER
+
+
+Adopted: March 12, 2026                                                           Released: March 12, 2026
+
+By the Chief, Enforcement Bureau:
+
+I.       INTRODUCTION
+          1.      By this Final Determination Order and Removal Order, the Enforcement Bureau (Bureau)
+finds that Belthrough LLC (Belthrough or Company) has not complied with the requirements of section
+64.1200(n)(2) of the Federal Communications Commission’s (Commission or FCC) rules for voice
+service providers.1 All providers immediately downstream of Belthrough must block and cease accepting
+all traffic from Belthrough beginning 30 calendar days after the release of this Final Determination
+Order.2 Providers may initiate blocking sooner than 30 calendar days from the release of this Final
+Determination Order if they provide the Commission with notice and a brief summary of the basis for
+their determination that Belthrough has failed to effectively mitigate illegal traffic or failed to implement
+effective measures to prevent new and renewing customers from using its network to originate illegal
+calls.3 Furthermore, by this Removal Order, the Bureau removes the certification of Belthrough from the
+Robocall Mitigation Database (RMD). Removal of Belthrough’s certification from the RMD requires all
+intermediate providers and voice service providers to cease accepting all calls directly from the
+Company.4 Belthrough shall not re-file an RMD certification without the prior approval of the Bureau
+and the Wireline Competition Bureau (WCB). This Final Determination Order follows the Bureau’s
+September 10, 2025, Notification of Suspected Illegal Traffic (Notice),5 and the Bureau’s February 19,
+2026, Initial Determination Order and Order to Show Cause (Initial Determination Order).6 Other than
+acknowledging receipt of the Notice, Belthrough took no action in response to either the Notice or the
+Initial Determination Order.
+
+
+
+
+1 See 47 CFR § 64.1200(n)(2).
+
+2 Id. § 64.1200(n)(3).
+
+3 Id.; see id. § 64.1200(k)(4).
+
+4 See 47 CFR § 64.6305(g).
+
+5 Letter from Patrick Webre, Acting Chief, FCC Enforcement Bureau, to Brisa Cruz, Belthrough, LLC, 2025 WL
+
+2622184 (Sept. 10, 2025), https://docs.fcc.gov/public/attachments/DOC-414391A1.pdf (Notice).
+6 Belthrough LLC, EB Docket No. 22-174, Initial Determination Order and Order to Show Cause, DA 26-172 (EB
+
+Feb. 19, 2026) (Initial Determination Order).
+
+                                     Federal Communications Commission                                     DA 26-237
+
+
+II.      BACKGROUND
+         A.        Voice Service Provider Mandatory Blocking Rules7
+         2.       Protecting consumers in the United States from the dangers and risks of unwanted and
+illegal robocalls is the Commission’s top consumer protection priority.8 Voice service providers can—
+and sometimes do—facilitate, or even protect, bad-actor callers.9 When bad-actor callers are shielded by
+bad-actor voice service providers, it is significantly more difficult to stop the calls.10 To address the
+problem, the Commission requires voice service providers to block illegal traffic in some cases.11 On
+May 19, 2022, the Commission adopted the Gateway Provider Order, which built upon the
+Commission’s prior, permissive call blocking rules to require gateway providers to block illegal traffic
+when notified of such traffic by the Commission.12 On May 18, 2023, the Commission expanded the
+mandatory call blocking framework created in the Gateway Provider Order to all voice service
+providers.13
+         3.       Mandatory call blocking pursuant to sections 64.1200(n)(2) and (n)(3) can entail a three-
+step process if the notified provider fails to take action as directed by the Bureau.14 First, a provider will
+receive a notification of suspected illegal traffic from the Bureau requiring the provider to in

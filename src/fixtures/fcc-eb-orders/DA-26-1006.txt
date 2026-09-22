@@ -1,0 +1,90 @@
+Federal Communications Commission                            DA 26-1006
+
+
+                                            Before the
+                                 Federal Communications Commission
+                                       Washington, D.C. 20554
+
+
+ In the Matter of                                      )
+                                                       )
+ Vazquez Broadcasting Corporation                      )      File No.: EB-FIELDNER-24-00037648
+ Licensee of AM Station WSDS                           )      Facility ID: 35335
+                                                       )      FRN: 0022811780
+ Salem Township, Michigan                              )
+                                                       )
+
+                                       NOTICE OF VIOLATION
+
+                                                                           Released: September 18, 2026
+
+By the Regional Director, Region One, Enforcement Bureau:
+
+         1.      This is a Notice of Violation (Notice) issued pursuant to section 1.89 of the
+Commission’s rules1 to Vazquez Broadcasting Corporation (Vazquez Broadcasting), licensee of AM
+radio station WSDS (Station) in Ypsilanti, Michigan. Pursuant to section 1.89(a) of the Commission’s
+rules, issuance of this Notice does not preclude the Enforcement Bureau from further action if warranted,
+including issuing a Notice of Apparent Liability for Forfeiture for the violations noted herein.2
+        2.      On July 14, 2026, an agent of the Enforcement Bureau’s Columbia Office inspected the
+Station and observed the following violations:
+             a. 47 CFR § 73.1820(a): “Entries must be made in the station log…The following
+                information must be entered…(1)(iii) An entry of each test and activation of the
+                Emergency Alert System (EAS) pursuant to the requirement of part 11 of this
+                chapter and the EAS Operating Handbook. Stations may keep EAS data in a
+                special EAS log which shall be maintained at a convenient location; however,
+                this log is considered a part of the station log.” At the time of the inspection,
+                there was no station log available for inspection that included entries of the EAS
+                tests received, including the required weekly or monthly EAS tests from the
+                Local Primary Stations and the Federal Emergency Management Agency's
+                Integrated Public Alert and Warning System (IPAWS). Furthermore, the entries
+                stored in the memory of the Company’s EAS encoder/decoder, a Sage Digital
+                ENDEC, were dated 1997.
+
+             b. 47 CFR § 11.52(d)(1): “EAS Participants must comply with the following
+                requirements: With respect to monitoring for EAS messages that are formatted
+                in accordance with the EAS Protocol, EAS Participants must monitor two EAS
+                sources. The monitoring assignments of each broadcast station and cable system
+                and wireless cable system are specified in the State EAS Plan and FCC
+                Mapbook. They are developed in accordance with FCC monitoring priorities.”
+                The Station was monitoring Local Primary Stations WJR (760 AM) and WWJ
+                (950 AM). But the Michigan State EAS Plan specifies that stations in the
+
+
+1 47 CFR § 1.89.
+
+2 47 CFR § 1.89(a).
+
+                                     Federal Communications Commission                                 DA 26-1006
+
+
+                  Washtenaw-Lenawee Counties, where the WSDS is located, are required to
+                  monitor WEMU (89.1 FM) and WWWW (102.9 FM).3
+
+              c. 47 CFR § 73.1560(a)(1): “Except for AM stations using modulation dependent carrier
+                 level (MDCL) control technology, or as provided for in paragraph (d) of this section, the
+                 antenna input power of an AM station, as determined by the procedures specified in §
+                 73.51 must be maintained as near as practicable to the authorized antenna input power
+                 and may not be less than 90 percent nor greater than 105 percent of the authorized
+                 power.” At the time of inspection, the agent observed that the Station was not using
+                 MDCL control technology and was operating with 1104 Watts of power during the
+                 daytime, which is 36.6% more than the authorized daytime power of 808 Watts.4
+              d. 47 CFR § 73.1560(a)(2): “Whenever the transmitter of an AM station cannot be placed
+                 into the specified operating mode at the time required, transmissions of the station must
+                 be immediately terminated. However, if the radiated field at any bearing or elevation
+                 does not exceed that permitted for that time of day, operation in the mode with the lesser
+                 radiated field may continue under the notification procedures of paragraph (d) of this
+                 section.” At the time of inspection, the Station’s Chief Operator informed the agent that
+                 the Station was incapable of operating within its nighttime parameters. That night, the
+                 agent confirmed with measurements that the Station continued to operate after sunset
+                 with its authorized daytime power and antenna pattern.5
+              e. 47 CFR § 73.69(a): “Each station using a directional antenna must have in operation at
+                 the transmitter site an FCC authorized antenna monitor.” The Station’s license requires it
+                 to use a directional antenna.6 At the time of the inspection, the antenna monitor was not
+                 fully operational and could not provide reliable phase and current readings for each tower
+                 in the Station’s directional antenna array.
+         3.      Pursuant to section 308(b) of the Communications Act of 1934, as amended (Act), and
+section 1.89 of the Commission’s rules, we seek additional information concerning the violations and any
+remedial actions taken.7 Therefore, Vazquez Broadcasting must submit a written statement concerning
+this matter within twenty (20) days of release of this Notice. The response (i) must fully explain each
+violation, including all relevant surrounding facts and circumstances, (ii) must contain a statement of the
+specific action(s) taken to correct each violation and preclude recurrence, and 
