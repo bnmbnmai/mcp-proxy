@@ -78,6 +78,7 @@ export const EXTRACTED_BODY_SKUS = [
   "flra-decisions",
   "ecab-decisions",
   "fcc-eb-orders",
+  "nmb-determinations",
 ] as const;
 
 export type ExtractedBodySku = (typeof EXTRACTED_BODY_SKUS)[number];
@@ -177,6 +178,7 @@ export const NLRB_DECISIONS_TYPE = "nlrb-decisions";
 export const FLRA_DECISIONS_TYPE = "flra-decisions";
 export const ECAB_DECISIONS_TYPE = "ecab-decisions";
 export const FCC_EB_ORDERS_TYPE = "fcc-eb-orders";
+export const NMB_DETERMINATIONS_TYPE = "nmb-determinations";
 export const CFPB_ORDER_TYPE = "cfpb-order";
 export const OFAC_ORDER_TYPE = "ofac-order";
 export const FRB_ORDER_TYPE = "frb-order";
@@ -248,6 +250,7 @@ export const NLRB_DECISIONS_SOURCE = "https://www.nlrb.gov/cases-decisions/decis
 export const FLRA_DECISIONS_SOURCE = "https://www.flra.gov/decisions/authority-decisions";
 export const ECAB_DECISIONS_SOURCE = "https://www.dol.gov/agencies/ecab/decisions";
 export const FCC_EB_ORDERS_SOURCE = "https://www.fcc.gov/edocs/daily-digest";
+export const NMB_DETERMINATIONS_SOURCE = "https://nmb.gov/NMB_Application/index.php/agency-determinations/";
 export const CFPB_ORDER_SOURCE = "https://www.consumerfinance.gov/enforcement/actions/";
 export const OFAC_ORDER_SOURCE = "https://ofac.treasury.gov/civil-penalties-and-enforcement-information";
 export const FRB_ORDER_SOURCE = "https://www.federalreserve.gov/supervisionreg/enforcementactions.htm";
@@ -1063,6 +1066,13 @@ export function paidFccEbOrdersBody<T extends CardPayload>(
   opts?: PaidBodyOpts,
 ): T & PaidBodyWindowEnvelope {
   return paidCardBody(payload, FCC_EB_ORDERS_TYPE, FCC_EB_ORDERS_SOURCE, opts);
+}
+
+export function paidNmbDeterminationsBody<T extends CardPayload>(
+  payload: T,
+  opts?: PaidBodyOpts,
+): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, NMB_DETERMINATIONS_TYPE, NMB_DETERMINATIONS_SOURCE, opts);
 }
 
 export function paidIcoMpnBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
