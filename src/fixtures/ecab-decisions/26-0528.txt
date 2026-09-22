@@ -1,0 +1,263 @@
+                              United States Department of Labor
+                            Employees’ Compensation Appeals Board
+
+ __________________________________________
+                                                                       )
+ C.P., Appellant                                                       )
+                                                                       )          Docket No. 26-0528
+ and                                                                   )          Issued: August 27, 2026
+                                                                       )
+ U.S. POSTAL SERVICE, GERMANTOWN                                       )
+ POST OFFICE, Philadelphia, PA, Employer                               )
+ __________________________________________                            )
+
+Appearances:                                                               Case Submitted on the Record
+Wayne Johnson, Esq., for the appellant1
+Office of Solicitor, for the Director
+
+
+                                        DECISION AND ORDER
+
+                                             Before:
+                            PATRICIA H. FITZGERALD, Deputy Chief Judge
+                                     JANICE B. ASKIN, Judge
+                            VALERIE D. EVANS-HARRELL, Alternate Judge
+
+
+                                                 JURISDICTION
+
+        On May 18, 20262 appellant, through counsel, filed a timely appeal from a November 18,
+2025 merit decision of the Office of Workers’ Compensation Programs (OWCP). Pursuant to the
+Federal Employees’ Compensation Act3 (FECA) and 20 C.F.R. §§ 501.2(c) and 501.3, the Board
+has jurisdiction over the merits of this case.
+
+
+   1
+     In all cases in which a representative has been authorized in a matter before the Board, no claim for a fee for legal
+or other service performed on appeal before the Board is valid unless approved by the Board. 20 C.F.R. § 501.9(e).
+No contract for a stipulated fee or on a contingent fee basis will be approved by the Board. Id. An attorney or
+representative’s collection of a fee without the Board’s approval may constitute a misdemeanor, subject to fine or
+imprisonment for up to one year or both. Id.; see also 18 U.S.C. § 292. Demands for payment of fees to a
+representative, prior to approval by the Board, may be reported to appropriate authorities for investigation.
+  2
+     Under the Board’s Rules of Procedure, an appeal must be filed within 180 days from the date of the last OWCP
+decision. 20 C.F.R. § 501.3(e). An appeal is considered filed upon receipt by the Clerk of the Appellate Boards.
+Id. at § 501.3(f). One hundred and eighty days from November 18, 2025, the date of OWCP’s latest decision, was
+Sunday, May 17, 2026. Because the last day of the 180-day filing period fell on a weekend, appellant had until the
+close of the next business day, Monday, May 18, 2026, to timely file an appeal. Id. at § 501.3(f)(2). As the Clerk of
+the Appellate Boards received the appeal on May 18, 2026, the appeal is timely filed. Id.
+  3
+      5 U.S.C. § 8101 et seq.
+                                                       ISSUES
+
+        The issues are: (1) whether OWCP has met its burden of proof to terminate appellant’s
+wage-loss compensation and medical benefits, effective March 29, 2024, as she no longer had
+disability or residuals causally related to her accepted employment injury; and (2) whether
+appellant has met her burden of proof to establish continuing disability and/or residuals on or after
+March 29, 2024, causally related to the accepted employment injury.
+
+                                              FACTUAL HISTORY
+
+        On August 13, 2019 appellant, then a 52-year-old city letter carrier, filed an occupational
+disease claim (Form CA-2) alleging that she developed a torn rotator cuff in her right shoulder due
+to factors of her federal employment, including lifting heavy flats and reaching overhead.4 She
+noted that she first became aware of her condition on February 1, 2016, and realized its relationship
+to factors of her federal employment on July 17, 2019. Appellant stopped work on
+September 5, 2019. OWCP initially accepted the claim for sprain of right rotator cuff capsule. It
+paid appellant wage-loss compensation on the supplemental rolls effective September 14, 2019,
+and on the periodic rolls effective June 19, 2022.5
+
+      By decision dated March 22, 2022, OWCP expanded the acceptance of the claim to include
+“permanent aggravation of primary osteoarthritis of the right shoulder.”
+
+       On May 4, 2022 appellant underwent OWCP-authorized right shoulder total arthroplasty
+by Dr. Surena Namdari, a Board-certified orthopedic surgeon. In a follow-up visit dated
+September 1, 2022, Dr. Namdari noted that appellant related recurrent right shoulder pain and
+worsening left shoulder pain.6
+
+        On April 27, 2023, OWCP prepared an updated SOAF, which noted the accepted
+employment conditions as sprain of right rotator cuff capsule and “primary osteoarthritis of the
+right shoulder.”
+
+        On May 1, 2023, OWCP referred appellant, the case record, the April 27, 2023 SOAF, and
+a series of questions to Dr. Alexander N. Doman, a Board-certified orthopedic surgeon, for a
+second opinion evaluation.
+
+       In a June 2, 2023 report, Dr. Doman reviewed the SOAF and medical record. He
+performed a physical examination of the right shoulder where he observed limited forward flexion
+
+  4
+     OWCP assigned the present claim OWCP File No. xxxxxx619. Appellant previously filed a traumatic injury
+claim (Form CA-1) for a January 31, 2011 injury, which OWCP accepted for lumbar herniated disc at L5-S1 and
+sprains of the low back, cervical spine, left wrist, and left shoulder under OWCP File No. xxxxxx410. She also
+previously filed a Form CA-1 for a July 26, 2011 injury, which OWCP accepted for lumbar sprain under OWCP File
+No. xxxxxx665. OWCP administratively combined OWCP File Nos. xxxxxx619, xxxxxx665, and xxxxxx410, with
+the latter serving as the master file. Appellant subsequently filed a Form CA-2 on April 6, 2021 alleging that she
+developed right shoulder primary osteoarthritis due to factors of her federal employment, including constant lifting
+and casing mail with her right arm. OWCP denied the claim under OWCP File No. xxxxxx396. It has not
+administratively combined OWCP File No. xxxxxx396 with the other claims.
+  5
+      Appellant was approved for disability retirement and separated from federal service, effective June 15, 2023.
+  6
+      The record reflects that on October 12, 2022 appellant underwent left total shoulder arthroplasty by Dr. Namdari.
+
+
+                                                           2
+and abduction. Dr. Doman diagnosed a “temporary aggravation” of primary osteoarthritis of the
+right shoulder and indicated that “it is particularly noted that the work injury could not have
+resulted in any permanent aggravation or direct causation of the osteoarthritis. Instead, there was
+a temporary aggravation of this condition, which was long ago ceased.” He opined that the work-
+related conditions had resolved, and that appellant was capable of returning to work without
+restrictions, was not in need of any further medical treatment for the accepted employment
+conditions and had reached maximum medical improvement. Dr. Doman attributed the limitations
+that he observed during his physical examination to the “natural history of her underlying
+degenerative condition of the right shoulder.”
+
+       By notice dated August 1, 2023, OWCP advised appellant that it proposed to terminate her
+wage-loss compensation and medical benefits based on Dr. Doman’s opinion that the accepted
+employment-related conditions had ceased without residuals or disability. It afforded her 30 days
+to submit additional evidence or argument challenging the proposed termination.
+
+       In a note dated July 10, 2023, Dr. Namdari noted that all patients who undergo total
+shoulder arthroplasty have a permanent 40-pound lifting restriction after the procedure.7
+
+        By decision dated March 29, 2024, OWCP terminated appellant’s entitlement to wage-loss
+compensation and medical benefits, effective that date. It found that Dr. Doman’s opinion
+constituted the weight of the medical evidence, establishing that she no longer had disability or
+residuals causally related to the accepted employment injury.
+
+      On April 26, 2024 appellant requested an oral hearing before a representative of OWCP’s
+Branch of Hearings and Review, which was held on August 15, 2024.
+
+      By decision dated October 29, 2024, OWCP’s hearing representative affirmed the
+March 29, 2024 termination decision.8
+
+        On October 29, 2025 appellant, through counsel, requested reconsideration.
+
+        By decision dated November 18, 2025, OWCP denied modification.
+
+                                   LEGAL PRECEDENT -- ISSUE 1
+
+       Once OWCP accepts a claim and pays compensation, it has the burden of proof to justify
+modification or termination of an employee’s benefits.9 After it has determined that an employee
+has disability causally related to his or her federal employment, OWCP may not terminate
+compensation without establishing that the disability has ceased or that it is no longer related to
+
+
+
+  7
+    On November 17, 2023 appellant elected to receive retirement benefits from the Office of Personnel Management
+effective January 1, 2024, in lieu of FECA benefits.
+  8
+   By decision dated September 19, 2025, OWCP granted appellant a schedule award for 16 percent permanent
+impairment of the right upper extremity.
+  9
+   C.F., Docket No. 21-0003 (issued January 21, 2022); J.T., Docket No. 19-1723 (issued August 24, 2020); S.P.,
+Docket No. 19-0196 (issued June 24, 2020); S.F., 59 ECAB 642 (2008); Kelly Y. Simpson, 57 ECAB 197 (2005);
+Paul L. Stewart, 54 ECAB 824 (2003).
+
+
+                                                       3
+the employment.10 OWCP’s burden of proof includes the necessity of furnishing rationalized
+medical opinion evidence based on a proper factual and medical background.11 The right to
+medical benefits for an accepted condition is not limited to the period of entitlement for disability.12
+To terminate authorization for medical treatment, OWCP must establish that appellant no longer
+has residuals of an employment-related condition, which would require further medical
+treatment.13
+
+                                         ANALYSIS -- ISSUE 1
+
+       The Board finds that OWCP failed to meet its burden of proof to terminate appellant’s
+wage-loss compensation and medical benefits, effective March 29, 2024.
+
+        OWCP terminated appellant’s entitlement to wage-loss compensation and medical benefits
+based on the opinion of Dr. Doman, who opined that she no longer had disability or residuals
+causally related to the accepted employment injury. The April 27, 2023 SOAF provided to
+Dr. Doman, however, only indicated that OWCP had accepted appellant’s claim for sprain of right
+rotator cuff capsule and “primary osteoarthritis of the right shoulder.” The Board notes that OWCP
+had previously accepted appellant’s claim for a “permanent aggravation of primary osteoarthritis
+of the right shoulder.”
+
+        It is OWCP’s responsibility to provide a complete and proper frame of reference for a
+physician by preparing a SOAF.14 Its procedures provide that the claims examiner is responsible
+for ensuring that the SOAF is correct, complete, unequivocal, and specific. When an OWCP
+medical adviser, second opinion specialist, or referee physician renders a medical opinion based
+on a SOAF which is incomplete or inaccurate or does not use the SOAF as the framework in
+forming his or her opinion, the probative value of the opinion is seriously diminished or negated
+altogether.15 The Board thus finds that Dr. Doman’s opinions are of diminished probative value
+because they were not based on a proper SOAF.16
+
+
+
+
+  10
+    S.P., Docket No. 22-0393 (issued August 26, 2022); A.T., Docket No. 20-0334 (issued October 8, 2020); E.B.,
+Docket No. 18-1060 (issued November 1, 2018).
+  11
+    S.P., id.; C.R., Docket No. 19-1132 (issued October 1, 2020); G.H., Docket No. 18-0414 (issued
+November 14, 2018).
+  12
+     S.P., id.; E.J., Docket No. 20-0013 (issued November 19, 2020); L.W., Docket No. 18-1372 (issued
+February 27, 2019).
+  13
+     C.F., supra note 9; M.E., Docket No. 20-0877 (issued August 17, 2021); L.S., Docket No. 19-0959 (issued
+September 24, 2019); R.P., Docket No. 18-0900 (issued February 5, 2019).
+  14
+    D.M., Docket No. 19-0749 (issued August 19, 2019); N.W., Docket No. 16-1890 (issued June 5, 2017); K.V.,
+Docket No. 15-0960 (issued March 9, 2016).
+  15
+     Federal (FECA) Procedure Manual, Part 3 -- Medical, Requirements for Medical Reports, Chapter 3.600.3
+(October 1990); see also R.P., Docket No. 18-0900 (issued February 5, 2019).
+  16
+    Id.; see also D.J., Docket No. 26-0321 (issued June 12, 2026); M.W., Docket No. 26-0111 (issued April 22,
+2026); B.C., Docket No. 20-1672 (issued February 8, 2023); C.S., Docket No. 20-1475 (issued October 4, 2021).
+
+
+                                                      4
+       In light of the foregoing, the Board finds that OWCP failed to meet its burden of proof to
+terminate appellant’s entitlement to wage-loss compensation and medical benefits, effective
+March 29, 2024.17
+
+                                                    CONCLUSION
+
+        The Board finds that OWCP has failed to meet its burden of proof to terminate appellant’s
+entitlement to wage-loss compensation and medical benefits, effective March 29, 2024.18
+
+                                                         ORDER
+
+      IT IS HEREBY ORDERED THAT the November 18, 2025 merit decision of the Office
+of Workers’ Compensation Programs is reversed.
+
+Issued: August 27, 2026
+Washington, DC
+
+
+
+
+                                                                   Patricia H. Fitzgerald, Deputy Chief Judge
+                                                                   Employees’ Compensation Appeals Board
+
+
+
+
+                                                                   Janice B. Askin, Judge
+                                                                   Employees’ Compensation Appeals Board
+
+
+
+
+                                                                   Valerie D. Evans-Harrell, Alternate Judge
+                                                                   Employees’ Compensation Appeals Board
+
+
+
+
+  17
+     Upon return of the case record, OWCP may consider combining OWCP File No. xxxxxx396 with Master File
+No. xxxxxx410.
+  18
+       In light of the Board’s disposition of Issue 1, Issue 2 is rendered moot.
+
+
+                                                             5
+
