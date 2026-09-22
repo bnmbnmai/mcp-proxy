@@ -39,7 +39,7 @@ Local unpaid proof against that bag: `GET /flra-decisions` **402**, `maxAmountRe
 
 ## Apply on apollo / media-box (`systemctl --user`; no sudo)
 
-Not applied from this PR. Restart **only** `idaho-ticks-x402.service` after checkout of this branch (not catalog `main`). Do not replace other door caches. Do not message Bruce. Do not touch Imagine/RB/Dryland.
+Restart **only** `idaho-ticks-x402.service` after checkout of this branch (not catalog `main`). Do not replace other door caches. Do not message Bruce. Do not touch Imagine/RB/Dryland.
 
 ```bash
 export FLRA_DECISIONS_DIR=$HOME/projects/mcp-proxy/data/flra-decisions
@@ -49,6 +49,8 @@ FLRA_DECISIONS_LIMIT=7 FLRA_DECISIONS_MAX_FETCH=8 FLRA_DECISIONS_PAGES=1 npm run
 ```
 
 Unpaid `GET /flra-decisions` is **402** with `maxAmountRequired` **50000**. Unpaid `GET /flra-decisions?id=` is **402** with **20000**. Free `GET /flra-decisions/manifest.json` is **200** with card metadata only (no `sourceUrl`, no body, no decision PDF, no HTML slip).
+
+Applied on apollo (2026-09-22): fast-forward of [PR 267](https://github.com/bnmbnmai/mcp-proxy/pull/267) `1b8801f` onto live tip `cursor/nlrb-decisions-apply-47f8` @ `4987272` (that commit already stacks on the NLRB apply). Apply-record branch `cursor/flra-decisions-apply-9207`. Restarted **only** `idaho-ticks-x402.service` at **2026-09-22 11:28:15 MDT** (PID 565736; was 533812). Added `FLRA_DECISIONS_DIR` to the user unit. Wired the same dir and grow prefix into `scripts/ticks-collect.sh` (no new cron). One-door collect EXIT 0: listedCount **10**, `cardCount` **7**, `fetchedPdfs` 7, `addedThisRun` 7, skipped 0, asOf **2026-09-22**, fetchedAt **2026-09-22T17:28:09.876Z**. First slice includes scout **74 FLRA 541 / 530 / 524** and non-seed **74 FLRA 508**. Free manifest is citation / case number / date / institution + `paidUrl`; `sources.listing` is the authority-decisions index only. **No** `sourceUrl`, no card body, no `/system/files/decisions/` PDF, no `/decisions/v74/` HTML slip. Unpaid `GET https://ticks.bnm.farm/flra-decisions` is **402** at $0.05 (`50000`); `?id=74-flra-541` is **402** at $0.02 (`20000`). `/.well-known/x402` lists `/flra-decisions` among **64** doors (was 63). Banner `mcp /mcp — 64 tools`. Siblings `/nlrb-decisions` and `/ticks` still 402. payTo unchanged `0xf59621FC406D266e18f314Ae18eF0a33b8401004`. docker / Caddy / tunnel untouched. Lander card is on bnm.farm (tv-remote), hydrating the free manifest (Live: 7).
 
 ## Lander card
 
