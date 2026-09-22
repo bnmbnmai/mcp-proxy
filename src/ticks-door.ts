@@ -126,6 +126,8 @@
  * GET /nlrb-decisions/manifest.json — free count + citation/case/date/institution (no Board Decision narrative)
  * GET /flra-decisions — FLRA Authority Decision PDF text ($0.02 id / $0.05 page)
  * GET /flra-decisions/manifest.json — free count + citation/case/date/institution (no Authority Decision narrative)
+ * GET /ecab-decisions — DOL ECAB FECA Decision and Order PDF text ($0.02 id / $0.05 page)
+ * GET /ecab-decisions/manifest.json — free count + docket/date/institution (no Decision and Order narrative)
  * GET /form-483 — FDA Form 483 observation bodies ($0.05). Listed only when a real body is cached.
  * GET /form-483/manifest.json — free id / date / firm (no observation body)
  * GET /gmp — Health Canada Drug GMP report-card observation bodies ($0.05). Listed only when a real body is cached.
@@ -556,6 +558,13 @@ import {
   loadFlraDecisionsManifest,
 } from "./flra-decisions.js";
 import {
+  ECAB_DECISIONS_AMOUNT_ATOMIC,
+  ECAB_DECISIONS_MANIFEST_PATH,
+  ECAB_DECISIONS_PATH,
+  loadEcabDecisions,
+  loadEcabDecisionsManifest,
+} from "./ecab-decisions.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -594,6 +603,7 @@ import {
   paidFtcOrdersBody,
   paidNlrbDecisionsBody,
   paidFlraDecisionsBody,
+  paidEcabDecisionsBody,
   paidFsisHumaneBody,
   paidDenovoOrdersBody,
   paidFdicOrdersBody,
@@ -1080,7 +1090,7 @@ function env(name: string, fallback = ""): string {
   return (process.env[name] ?? fallback).trim();
 }
 
-export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "mariners-d1" | "mariners-d5" | "mariners-d9" | "mariners-d14" | "mariners-d17" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "ema-referrals" | "cder-reviews" | "npdes-permits" | "ofsted-inspections" | "ofwat-enforcement" | "ofgem-enforcement" | "gain" | "orr-enforcement" | "phmsa-orders" | "aaib-reports" | "csb-reports" | "hhs-oig-reports" | "eis-reports" | "fsis-humane" | "epa-cafo" | "fmshrc-orders" | "bsee-reports" | "oshrc-orders" | "epa-alj" | "epa-eab" | "faa-civil-penalty" | "stb-decisions" | "oalj-decisions" | "fmc-orders" | "ftc-orders" | "nlrb-decisions" | "flra-decisions" | "form-483" | "gmp" | "gmp-md";
+export type DoorSku = "ticks" | "import-alerts" | "mariners" | "mariners-d11" | "mariners-d7" | "mariners-d8" | "mariners-d1" | "mariners-d5" | "mariners-d9" | "mariners-d14" | "mariners-d17" | "warning-letters" | "untitled-letters" | "awa" | "swisspar" | "pcac" | "ftc-wl" | "cfpb-orders" | "occ-cd" | "fdic-orders" | "frb-orders" | "ncua-orders" | "fincen-orders" | "ferc-orders" | "ofac-orders" | "bis-orders" | "cftc-orders" | "fifra-orders" | "denovo-orders" | "ttb-oic" | "air-letters" | "superfund-rods" | "ico-mpn" | "cma-ca98" | "ema-referrals" | "cder-reviews" | "npdes-permits" | "ofsted-inspections" | "ofwat-enforcement" | "ofgem-enforcement" | "gain" | "orr-enforcement" | "phmsa-orders" | "aaib-reports" | "csb-reports" | "hhs-oig-reports" | "eis-reports" | "fsis-humane" | "epa-cafo" | "fmshrc-orders" | "bsee-reports" | "oshrc-orders" | "epa-alj" | "epa-eab" | "faa-civil-penalty" | "stb-decisions" | "oalj-decisions" | "fmc-orders" | "ftc-orders" | "nlrb-decisions" | "flra-decisions" | "ecab-decisions" | "form-483" | "gmp" | "gmp-md";
 /** Always-public SKUs. /form-483, /gmp, and /gmp-md join only when a real observation body is cached. */
 export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "ticks",
@@ -1144,6 +1154,7 @@ export const PUBLIC_BAZAAR_SKUS: readonly DoorSku[] = [
   "ftc-orders",
   "nlrb-decisions",
   "flra-decisions",
+  "ecab-decisions",
 ];
 
 export function form483IsPublic(): boolean {
@@ -1464,6 +1475,10 @@ function amountAtomicFor(sku: DoorSku): string {
   if (sku === "flra-decisions") {
     const raw = env("FLRA_DECISIONS_USDC_ATOMIC");
     return raw.length > 0 ? raw : FLRA_DECISIONS_AMOUNT_ATOMIC;
+  }
+  if (sku === "ecab-decisions") {
+    const raw = env("ECAB_DECISIONS_USDC_ATOMIC");
+    return raw.length > 0 ? raw : ECAB_DECISIONS_AMOUNT_ATOMIC;
   }
   if (sku === "form-483") {
     const raw = env("FORM_483_USDC_ATOMIC");
@@ -1922,7 +1937,7 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
   },
   "oalj-decisions": {
     description:
-      "Call GET /oalj-decisions when you need official DOL OALJ, BALCA, or ARB Decision and Order TEXT extracted from oalj.dol.gov/DECISIONS/ALJ PDFs and dol.gov/sites/dolgov/files/OALJ/PUBLIC/ARB/DECISIONS PDFs listed on dol.gov/agencies/oalj caselists. License 17 USC 105. Does not invent Decision text. Index is case number / board / date / institution only — full TEXT is in the official PDF. Harvest DOL-authored Decision/Order PDFs only. OFLC disclosure XLSX/CSV, FR HTML wraps, and caselist HTML-only are not this SKU. Not /oshrc-orders, not /fmshrc-orders, not /stb-decisions. " +
+      "Call GET /oalj-decisions when you need official DOL OALJ, BALCA, or ARB Decision and Order TEXT extracted from oalj.dol.gov/DECISIONS/ALJ PDFs and dol.gov/sites/dolgov/files/OALJ/PUBLIC/ARB/DECISIONS PDFs listed on dol.gov/agencies/oalj caselists. License 17 USC 105. Does not invent Decision text. Index is case number / board / date / institution only — full TEXT is in the official PDF. Harvest DOL-authored Decision/Order PDFs only. OFLC disclosure XLSX/CSV, FR HTML wraps, and caselist HTML-only are not this SKU. Not /oshrc-orders, not /fmshrc-orders, not /stb-decisions, not /ecab-decisions. " +
       PAID_WINDOW_COPY,
     resourcePath: OALJ_DECISIONS_PATH,
   },
@@ -1949,6 +1964,12 @@ const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> =
       "Call GET /flra-decisions when you need official FLRA Authority Decision TEXT extracted from www.flra.gov/system/files/decisions PDFs indexed by the flra.gov Authority Decisions table. License 17 USC 105. Does not invent Decision text. Index is citation / case number / date / institution only — full TEXT is in the official PDF. Harvest FLRA-authored Authority Decision PDFs (NN FLRA NNN) only. Case digests, ALJ decisions, FSIP decisions, and the HTML slip are not this SKU. No-auth JSON on the decision route does not return the opinion. Not /nlrb-decisions. " +
       PAID_WINDOW_COPY,
     resourcePath: FLRA_DECISIONS_PATH,
+  },
+  "ecab-decisions": {
+    description:
+      "Call GET /ecab-decisions when you need official DOL Employees' Compensation Appeals Board FECA Decision and Order TEXT extracted from dol.gov/sites/dolgov/files/ecab/decisions PDFs indexed by dol.gov/agencies/ecab/decisions month tables. License 17 USC 105. Does not invent Decision text. Index is docket / date / institution only — full TEXT is in the official PDF. Harvest ECAB-authored Decision and Order PDFs only. Order slips, fee-petition orders, the AB-1 form, and the HTML month index are not this SKU. No-auth JSON on the month route does not return the opinion. Not /oalj-decisions. " +
+      PAID_WINDOW_COPY,
+    resourcePath: ECAB_DECISIONS_PATH,
   },
   "form-483": {
     description:
@@ -3732,6 +3753,39 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
       },
     ],
   },
+  "ecab-decisions": {
+    ok: true,
+    product: "ecab-decision-bodies",
+    status: "ok",
+    fetchedAt: "2026-09-22T00:00:00.000Z",
+    asOf: "2026-08-27",
+    source: "https://www.dol.gov/agencies/ecab/decisions",
+    recordCount: 1,
+    records: [
+      {
+        id: "26-0528",
+        date: "2026-08-27",
+        firm: "C.P. and U.S. POSTAL SERVICE, GERMANTOWN POST OFFICE, Philadelphia, PA",
+        url: "https://www.dol.gov/sites/dolgov/files/ecab/decisions/2026/AUG/26-0528.pdf",
+        type: "ecab-decisions",
+      },
+    ],
+    cards: [
+      {
+        id: "26-0528",
+        citation: "Docket No. 26-0528",
+        docket: "26-0528",
+        caseNo: "26-0528",
+        documentId: "26-0528.pdf",
+        kind: "Decision and Order",
+        institution: "C.P. and U.S. POSTAL SERVICE, GERMANTOWN POST OFFICE, Philadelphia, PA",
+        date: "2026-08-27",
+        title: "Docket No. 26-0528",
+        sourceUrl: "https://www.dol.gov/sites/dolgov/files/ecab/decisions/2026/AUG/26-0528.pdf",
+        body: "Employees' Compensation Appeals Board. Docket No. 26-0528. Official ECAB Decision and Order extracted from the dol.gov PDF.",
+      },
+    ],
+  },
   "form-483": {
     ok: true,
     product: "fda-form-483-bodies",
@@ -5039,6 +5093,7 @@ export function llmsTxt(): string {
     `- GET /ftc-orders — $0.05 — FTC cases-proceedings ALJ Decision / Commission Decision and Order text (official ftc.gov/system/files/ftc_gov/pdf PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /nlrb-decisions — $0.05 — NLRB published Board Decision text (official apps.nlrb.gov document PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
     `- GET /flra-decisions — $0.05 — FLRA Authority Decision text (official flra.gov decision PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
+    `- GET /ecab-decisions — $0.05 — DOL ECAB FECA Decision and Order text (official dol.gov ECAB slip PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`,
   ];
   if (listed483) {
     paid.push(`- GET /form-483 — $0.05 — FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs). Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`);
@@ -5117,6 +5172,7 @@ export function llmsTxt(): string {
     "- GET /ftc-orders/manifest.json — FTC ALJ Decision / Commission Decision and Order count + docket/OSCAR/date/institution (full catalog + page cursor; ?q= is free search; not the Decision/Order narrative)",
     "- GET /nlrb-decisions/manifest.json — NLRB Board Decision count + citation/case/date/institution (full catalog + page cursor; ?q= is free search; not the Board Decision narrative)",
     "- GET /flra-decisions/manifest.json — FLRA Authority Decision count + citation/case/date/institution (full catalog + page cursor; ?q= is free search; not the Authority Decision narrative)",
+    "- GET /ecab-decisions/manifest.json — ECAB FECA Decision and Order count + docket/date/institution (full catalog + page cursor; ?q= is free search; not the Decision and Order narrative)",
   ];
   if (listed483) {
     free.push("- GET /form-483/manifest.json — FDA 483 count + id/date/firm (full catalog + page cursor; ?q= is free search; not the observation body)");
@@ -5183,7 +5239,7 @@ function discoveryOrigin(req: IncomingMessage, port: number): string {
 }
 
 function paidDiscoveryPaths(): string[] {
-  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, MARINERS_D1_PATH, MARINERS_D5_PATH, MARINERS_D9_PATH, MARINERS_D14_PATH, MARINERS_D17_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, BSEE_REPORTS_PATH, OSHRC_ORDERS_PATH, EPA_ALJ_PATH, EPA_EAB_PATH, FAA_CIVIL_PENALTY_PATH, STB_DECISIONS_PATH, OALJ_DECISIONS_PATH, FMC_ORDERS_PATH, FTC_ORDERS_PATH, NLRB_DECISIONS_PATH, FLRA_DECISIONS_PATH];
+  const paths = [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, MARINERS_D1_PATH, MARINERS_D5_PATH, MARINERS_D9_PATH, MARINERS_D14_PATH, MARINERS_D17_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, BSEE_REPORTS_PATH, OSHRC_ORDERS_PATH, EPA_ALJ_PATH, EPA_EAB_PATH, FAA_CIVIL_PENALTY_PATH, STB_DECISIONS_PATH, OALJ_DECISIONS_PATH, FMC_ORDERS_PATH, FTC_ORDERS_PATH, NLRB_DECISIONS_PATH, FLRA_DECISIONS_PATH, ECAB_DECISIONS_PATH];
   if (form483IsPublic()) paths.push(FORM_483_PATH);
   if (gmpIsPublic()) paths.push(GMP_PATH);
   if (gmpMdIsPublic()) paths.push(GMP_MD_PATH);
@@ -5464,6 +5520,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const ftcOrdersAtomic = amountAtomicFor("ftc-orders");
   const nlrbDecisionsAtomic = amountAtomicFor("nlrb-decisions");
   const flraDecisionsAtomic = amountAtomicFor("flra-decisions");
+  const ecabDecisionsAtomic = amountAtomicFor("ecab-decisions");
   const f483Atomic = amountAtomicFor("form-483");
   const gmpAtomic = amountAtomicFor("gmp");
   const gmpMdAtomic = amountAtomicFor("gmp-md");
@@ -5528,6 +5585,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   const ftcOrdersPrice = (Number(ftcOrdersAtomic) / 1e6).toFixed(2);
   const nlrbDecisionsPrice = (Number(nlrbDecisionsAtomic) / 1e6).toFixed(2);
   const flraDecisionsPrice = (Number(flraDecisionsAtomic) / 1e6).toFixed(2);
+  const ecabDecisionsPrice = (Number(ecabDecisionsAtomic) / 1e6).toFixed(2);
   const f483Price = (Number(f483Atomic) / 1e6).toFixed(2);
   const gmpPrice = (Number(gmpAtomic) / 1e6).toFixed(2);
   const gmpMdPrice = (Number(gmpMdAtomic) / 1e6).toFixed(2);
@@ -5596,6 +5654,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
     "/ftc-orders ($0.05)",
     "/nlrb-decisions ($0.05)",
     "/flra-decisions ($0.05)",
+    "/ecab-decisions ($0.05)",
   ];
   if (listed483) paidBits.push("/form-483 ($0.05)");
   if (listedGmp) paidBits.push("/gmp ($0.05)");
@@ -7056,6 +7115,30 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
           },
         }),
       },
+      [ECAB_DECISIONS_PATH]: {
+        get: paidOpenApiOp({
+          operationId: "getEcabDecisions",
+          summary: "ECAB FECA Decision and Order text",
+          description: SKU_COPY["ecab-decisions"].description,
+          priceUsdc: ecabDecisionsPrice,
+          amountAtomic: ecabDecisionsAtomic,
+          example: BAZAAR_OUTPUT_EXAMPLE["ecab-decisions"],
+          outputSchema: {
+            type: "object",
+            properties: {
+              ok: { type: "boolean" },
+              product: { type: "string" },
+              status: { type: "string" },
+              fetchedAt: { type: "string" },
+              asOf: { type: "string" },
+              source: { type: "string" },
+              recordCount: { type: "integer" },
+              records: { type: "array", items: { type: "object" } },
+              cards: { type: "array", items: { type: "object" } },
+            },
+          },
+        }),
+      },
       ...(listed483
         ? {
             [FORM_483_PATH]: {
@@ -7494,6 +7577,12 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
         get: freeOpenApiOp(
           "FLRA Authority Decision free manifest",
           "Count, citation, case number, date, institution, and paidUrl. Not the Authority Decision narrative.",
+        ),
+      },
+      [ECAB_DECISIONS_MANIFEST_PATH]: {
+        get: freeOpenApiOp(
+          "ECAB FECA Decision and Order free manifest",
+          "Count, docket, date, institution, and paidUrl. Not the Decision and Order narrative.",
         ),
       },
       ...(listed483
@@ -8350,6 +8439,13 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
           amountAtomic: amountAtomicFor("flra-decisions"),
           manifest: FLRA_DECISIONS_MANIFEST_PATH,
         },
+        {
+          path: ECAB_DECISIONS_PATH,
+          product: "ecab-decision-bodies",
+          priceUsdc: "0.05",
+          amountAtomic: amountAtomicFor("ecab-decisions"),
+          manifest: ECAB_DECISIONS_MANIFEST_PATH,
+        },
         ...(form483IsPublic()
           ? [
               {
@@ -9094,6 +9190,18 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
+  if (path === ECAB_DECISIONS_MANIFEST_PATH) {
+    sendExtractedManifest(req, res, port, url, await loadEcabDecisionsManifest());
+    return;
+  }
+
+  if (path === ECAB_DECISIONS_PATH) {
+    await servePaid(req, res, port, "ecab-decisions", async (opts) =>
+      paidEcabDecisionsBody(await loadEcabDecisions(), opts),
+    );
+    return;
+  }
+
   if (path === FORM_483_MANIFEST_PATH) {
     sendExtractedManifest(req, res, port, url, await loadForm483Manifest());
     return;
@@ -9129,7 +9237,7 @@ export async function handleRequest(req: IncomingMessage, res: ServerResponse, p
     return;
   }
 
-  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, MARINERS_D1_PATH, MARINERS_D1_MANIFEST_PATH, MARINERS_D5_PATH, MARINERS_D5_MANIFEST_PATH, MARINERS_D9_PATH, MARINERS_D9_MANIFEST_PATH, MARINERS_D14_PATH, MARINERS_D14_MANIFEST_PATH, MARINERS_D17_PATH, MARINERS_D17_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, OFWAT_ENFORCEMENT_PATH, OFWAT_ENFORCEMENT_MANIFEST_PATH, OFGEM_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_MANIFEST_PATH, GAIN_PATH, GAIN_MANIFEST_PATH, ORR_ENFORCEMENT_PATH, ORR_ENFORCEMENT_MANIFEST_PATH, PHMSA_ORDERS_PATH, PHMSA_ORDERS_MANIFEST_PATH, AAIB_REPORTS_PATH, AAIB_REPORTS_MANIFEST_PATH, CSB_REPORTS_PATH, CSB_REPORTS_MANIFEST_PATH, HHS_OIG_REPORTS_PATH, HHS_OIG_REPORTS_MANIFEST_PATH, EIS_REPORTS_PATH, EIS_REPORTS_MANIFEST_PATH, FSIS_HUMANE_PATH, FSIS_HUMANE_MANIFEST_PATH, EPA_CAFO_PATH, EPA_CAFO_MANIFEST_PATH, FMSHRC_ORDERS_PATH, FMSHRC_ORDERS_MANIFEST_PATH, BSEE_REPORTS_PATH, BSEE_REPORTS_MANIFEST_PATH, OSHRC_ORDERS_PATH, OSHRC_ORDERS_MANIFEST_PATH, EPA_ALJ_PATH, EPA_ALJ_MANIFEST_PATH, EPA_EAB_PATH, EPA_EAB_MANIFEST_PATH, FAA_CIVIL_PENALTY_PATH, FAA_CIVIL_PENALTY_MANIFEST_PATH, STB_DECISIONS_PATH, STB_DECISIONS_MANIFEST_PATH, OALJ_DECISIONS_PATH, OALJ_DECISIONS_MANIFEST_PATH, FMC_ORDERS_PATH, FMC_ORDERS_MANIFEST_PATH, FTC_ORDERS_PATH, FTC_ORDERS_MANIFEST_PATH, NLRB_DECISIONS_PATH, NLRB_DECISIONS_MANIFEST_PATH, FLRA_DECISIONS_PATH, FLRA_DECISIONS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, SAMPLE_PATH, FIRM_CHECK_PATH, X402LIST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
+  sendJson(res, 404, { error: "not_found", paths: [TICKS_PATH, MANIFEST_PATH, CATALOG_PATH, IMPORT_ALERTS_PATH, IMPORT_ALERTS_MANIFEST_PATH, MARINERS_PATH, MARINERS_MANIFEST_PATH, MARINERS_D11_PATH, MARINERS_D11_MANIFEST_PATH, MARINERS_D7_PATH, MARINERS_D7_MANIFEST_PATH, MARINERS_D8_PATH, MARINERS_D8_MANIFEST_PATH, MARINERS_D1_PATH, MARINERS_D1_MANIFEST_PATH, MARINERS_D5_PATH, MARINERS_D5_MANIFEST_PATH, MARINERS_D9_PATH, MARINERS_D9_MANIFEST_PATH, MARINERS_D14_PATH, MARINERS_D14_MANIFEST_PATH, MARINERS_D17_PATH, MARINERS_D17_MANIFEST_PATH, WARNING_LETTERS_PATH, WARNING_LETTERS_MANIFEST_PATH, UNTITLED_LETTERS_PATH, UNTITLED_LETTERS_MANIFEST_PATH, AWA_PATH, AWA_MANIFEST_PATH, SWISSPAR_PATH, SWISSPAR_MANIFEST_PATH, PCAC_PATH, PCAC_MANIFEST_PATH, FTC_WL_PATH, FTC_WL_MANIFEST_PATH, CFPB_ORDERS_PATH, CFPB_ORDERS_MANIFEST_PATH, OCC_CD_PATH, OCC_CD_MANIFEST_PATH, FDIC_ORDERS_PATH, FDIC_ORDERS_MANIFEST_PATH, FRB_ORDERS_PATH, FRB_ORDERS_MANIFEST_PATH, NCUA_ORDERS_PATH, NCUA_ORDERS_MANIFEST_PATH, FINCEN_ORDERS_PATH, FINCEN_ORDERS_MANIFEST_PATH, FERC_ORDERS_PATH, FERC_ORDERS_MANIFEST_PATH, OFAC_ORDERS_PATH, OFAC_ORDERS_MANIFEST_PATH, BIS_ORDERS_PATH, BIS_ORDERS_MANIFEST_PATH, CFTC_ORDERS_PATH, CFTC_ORDERS_MANIFEST_PATH, FIFRA_ORDERS_PATH, FIFRA_ORDERS_MANIFEST_PATH, DENOVO_ORDERS_PATH, DENOVO_ORDERS_MANIFEST_PATH, TTB_OIC_PATH, TTB_OIC_MANIFEST_PATH, AIR_LETTERS_PATH, AIR_LETTERS_MANIFEST_PATH, SUPERFUND_RODS_PATH, SUPERFUND_RODS_MANIFEST_PATH, ICO_MPN_PATH, ICO_MPN_MANIFEST_PATH, CMA_CA98_PATH, CMA_CA98_MANIFEST_PATH, EMA_REFERRALS_PATH, EMA_REFERRALS_MANIFEST_PATH, CDER_REVIEWS_PATH, CDER_REVIEWS_MANIFEST_PATH, NPDES_PERMITS_PATH, NPDES_PERMITS_MANIFEST_PATH, OFSTED_INSPECTIONS_PATH, OFSTED_INSPECTIONS_MANIFEST_PATH, OFWAT_ENFORCEMENT_PATH, OFWAT_ENFORCEMENT_MANIFEST_PATH, OFGEM_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_MANIFEST_PATH, GAIN_PATH, GAIN_MANIFEST_PATH, ORR_ENFORCEMENT_PATH, ORR_ENFORCEMENT_MANIFEST_PATH, PHMSA_ORDERS_PATH, PHMSA_ORDERS_MANIFEST_PATH, AAIB_REPORTS_PATH, AAIB_REPORTS_MANIFEST_PATH, CSB_REPORTS_PATH, CSB_REPORTS_MANIFEST_PATH, HHS_OIG_REPORTS_PATH, HHS_OIG_REPORTS_MANIFEST_PATH, EIS_REPORTS_PATH, EIS_REPORTS_MANIFEST_PATH, FSIS_HUMANE_PATH, FSIS_HUMANE_MANIFEST_PATH, EPA_CAFO_PATH, EPA_CAFO_MANIFEST_PATH, FMSHRC_ORDERS_PATH, FMSHRC_ORDERS_MANIFEST_PATH, BSEE_REPORTS_PATH, BSEE_REPORTS_MANIFEST_PATH, OSHRC_ORDERS_PATH, OSHRC_ORDERS_MANIFEST_PATH, EPA_ALJ_PATH, EPA_ALJ_MANIFEST_PATH, EPA_EAB_PATH, EPA_EAB_MANIFEST_PATH, FAA_CIVIL_PENALTY_PATH, FAA_CIVIL_PENALTY_MANIFEST_PATH, STB_DECISIONS_PATH, STB_DECISIONS_MANIFEST_PATH, OALJ_DECISIONS_PATH, OALJ_DECISIONS_MANIFEST_PATH, FMC_ORDERS_PATH, FMC_ORDERS_MANIFEST_PATH, FTC_ORDERS_PATH, FTC_ORDERS_MANIFEST_PATH, NLRB_DECISIONS_PATH, NLRB_DECISIONS_MANIFEST_PATH, FLRA_DECISIONS_PATH, FLRA_DECISIONS_MANIFEST_PATH, ECAB_DECISIONS_PATH, ECAB_DECISIONS_MANIFEST_PATH, FORM_483_PATH, FORM_483_MANIFEST_PATH, GMP_PATH, GMP_MANIFEST_PATH, GMP_MD_PATH, GMP_MD_MANIFEST_PATH, SAMPLE_PATH, FIRM_CHECK_PATH, X402LIST_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH] });
 }
 
 export function bindHost(): string {
@@ -9218,6 +9326,7 @@ if (isMain()) {
     console.error(`${FTC_ORDERS_PATH} $${Number(amountAtomicFor("ftc-orders")) / 1e6} USDC`);
     console.error(`${NLRB_DECISIONS_PATH} $${Number(amountAtomicFor("nlrb-decisions")) / 1e6} USDC`);
     console.error(`${FLRA_DECISIONS_PATH} $${Number(amountAtomicFor("flra-decisions")) / 1e6} USDC`);
+    console.error(`${ECAB_DECISIONS_PATH} $${Number(amountAtomicFor("ecab-decisions")) / 1e6} USDC`);
     console.error(`${FORM_483_PATH} $${Number(amountAtomicFor("form-483")) / 1e6} USDC${form483IsPublic() ? "" : " (unlisted until a real 483 body is cached)"}`);
     console.error(`${GMP_PATH} $${Number(amountAtomicFor("gmp")) / 1e6} USDC${gmpIsPublic() ? "" : " (unlisted until a real GMP observation body is cached)"}`);
     console.error(`${GMP_MD_PATH} $${Number(amountAtomicFor("gmp-md")) / 1e6} USDC${gmpMdIsPublic() ? "" : " (unlisted until a real MD observation body is cached)"}`);
