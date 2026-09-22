@@ -64,6 +64,7 @@ build/nlrb-decisions.*
 build/flra-decisions.*
 build/ecab-decisions.*
 build/fcc-eb-orders.*
+build/nmb-determinations.*
 build/stranger-settle-alert.*
 build/live-door-loop-closer.*
 build/ticks-ams.*
@@ -133,6 +134,7 @@ data/nlrb-decisions/
 data/flra-decisions/
 data/ecab-decisions/
 data/fcc-eb-orders/
+data/nmb-determinations/
 data/ticks-ams/
 data/shop-request-log.jsonl
 data/shop-request-log*.jsonl
