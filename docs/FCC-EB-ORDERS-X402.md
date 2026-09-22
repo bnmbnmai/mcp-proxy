@@ -51,7 +51,7 @@ Local fixture bag (2026-09-22, `fetchedPdfs` 0): **cardCount 4**, **listedCount 
 
 ## Apply on apollo / media-box (`systemctl --user`; no sudo)
 
-Restart **only** `idaho-ticks-x402.service` after checkout of this branch (not catalog `main`). Do not replace other door caches. Do not message Bruce. Do not touch Imagine/RB/Dryland. Do not touch Docker, Caddy, or the tunnel. This VM did not restart apollo and did not deploy.
+Restart **only** `idaho-ticks-x402.service` after checkout of this branch (not catalog `main`). Do not replace other door caches. Do not message Bruce. Do not touch Imagine/RB/Dryland. Do not touch Docker, Caddy, or the tunnel.
 
 ```bash
 export FCC_EB_ORDERS_DIR=$HOME/projects/mcp-proxy/data/fcc-eb-orders
@@ -61,6 +61,8 @@ FCC_EB_ORDERS_LIMIT=7 FCC_EB_ORDERS_MAX_FETCH=8 FCC_EB_ORDERS_PAGES=4 npm run co
 ```
 
 Local unpaid proof (`node build/ticks-door.test.js`, 2026-09-22, `X402_SKIP_SETTLE=1`, snapshot DA-26-1006): unpaid `GET /fcc-eb-orders` **402** `maxAmountRequired` **50000**; unpaid `GET /fcc-eb-orders?id=DA-26-1006` **402** **20000**; empty `?since=2026-09-19` **304**; free `GET /fcc-eb-orders/manifest.json` **200** with card metadata and `paidUrl` only (no `sourceUrl`, no body, no `docs.fcc.gov`). Paid `X-PAYMENT` returned **200** with the order body and the official PDF `sourceUrl`.
+
+Applied on apollo (2026-09-22): fast-forward of [PR 271](https://github.com/bnmbnmai/mcp-proxy/pull/271) `19959f8` onto live tip `cursor/ecab-decisions-apply-2155` @ `0870e58`. Apply-record branch `cursor/fcc-eb-orders-apply-6bd2`. Serving checkout includes fetch-header `9e9cb66` (descriptive `bnm-data-shop` User-Agent; PDF `Accept` includes `*/*`). Restarted **only** `idaho-ticks-x402.service` at **2026-09-22 14:35:26 MDT** (PID 727915; was 684898). Added `FCC_EB_ORDERS_DIR` to the user unit (`~/projects/mcp-proxy/data/fcc-eb-orders`). The door commit already exports that dir and the grow prefix in `scripts/ticks-collect.sh` (no new cron). One-door collect EXIT 0: `www.fcc.gov` Daily Digest is Akamai **403** (descriptive User-Agent, Mozilla-compatible, and a browser User-Agent), so the walk found no digest rows. Scout seed PDFs still fetched: `listedCount` **2**, `cardCount` **2**, `fetchedPdfs` **2**, `addedThisRun` 2, skipped 0, asOf **2026-09-18**, fetchedAt **2026-09-22T20:35:18.457Z**. Cards: **DA-26-1006** Vazquez Broadcasting Corporation Notice of Violation; **DA-26-237** Belthrough LLC Final Determination Order. DA-26-987 and DA-26-954 are not in this bag (they are not seeds, and the digest did not return HTML). Free manifest is DA number / date / institution + `paidUrl`; `sources.listing` is the Daily Digest index only. **No** `sourceUrl`, no card body, no `docs.fcc.gov`. Unpaid `GET https://ticks.bnm.farm/fcc-eb-orders` is **402** at $0.05 (`50000`); `?id=DA-26-1006` is **402** at $0.02 (`20000`). A blank `?id=` is trimmed and priced as the page (`50000`), same as live `/ecab-decisions`. `/.well-known/x402` lists `/fcc-eb-orders` among **66** doors (was 65). Banner `mcp /mcp — 66 tools`. Siblings `/ecab-decisions` and `/ticks` still 402. payTo unchanged `0xf59621FC406D266e18f314Ae18eF0a33b8401004`. docker / Caddy / tunnel untouched. Lander card is on bnm.farm (tv-remote `402851b`), hydrating the free manifest (Live: 2).
 
 ## Lander card
 
