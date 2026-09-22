@@ -60,6 +60,7 @@ build/stb-decisions.*
 build/oalj-decisions.*
 build/fmc-orders.*
 build/ftc-orders.*
+build/nlrb-decisions.*
 build/stranger-settle-alert.*
 build/live-door-loop-closer.*
 build/ticks-ams.*
@@ -125,6 +126,7 @@ data/stb-decisions/
 data/oalj-decisions/
 data/fmc-orders/
 data/ftc-orders/
+data/nlrb-decisions/
 data/ticks-ams/
 data/shop-request-log.jsonl
 data/shop-request-log*.jsonl

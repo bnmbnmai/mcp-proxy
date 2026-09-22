@@ -1,0 +1,239 @@
+       NOTICE: This opinion is subject to formal revision before publication in the    and (1) of the Act by failing and refusing to recognize and
+          bound volumes of NLRB decisions. Readers are requested to notify the
+          Executive Secretary, National Labor Relations Board, Washington, D.C.        bargain with the Union following the Union’s certification
+          20570, of any typographical or other formal errors so that corrections can   in Case 05–RC–358137. (Official notice is taken of the
+          be included in the bound volumes.
+                                                                                       record in the representation proceeding as defined in the
+Nexstar Media Corporation d/b/a Newsnation and In-                                     Board’s Rules and Regulations, Sections 102.68 and
+     ternational Brotherhood of Electrical Workers,                                    102.69(d). Frontier Hotel, 265 NLRB 343 (1982).) The
+     Local 1200 a/w International Brotherhood of                                       Respondent filed an answer admitting in part and denying
+     Electrical   Workers,     AFL–CIO.       Case                                     in part the allegations in the complaint and asserting af-
+     05–CA–367812                                                                      firmative defenses.
+                 September 17, 2026                                                       The General Counsel filed a Motion for Summary
+                                                                                       Judgment on July 24. On July 29, the Board issued an
+                      DECISION AND ORDER
+                                                                                       Order Transferring the Proceeding to the Board and a No-
+     BY CHAIRMAN MURPHY AND MEMBERS PROUTY                                             tice to Show Cause why the motion should not be granted.
+                        AND MAYER                                                      On August 14, the Respondent filed a response to the No-
+   This is a refusal-to-bargain case in which Nexstar Me-                              tice to Show Cause. On August 19, the General Counsel
+dia Corporation d/b/a NewsNation (the Respondent) is                                   filed a reply to the Respondent’s response to the Notice to
+contesting the certification of International Brotherhood                              Show Cause.
+of Electrical Workers, Local 1200 a/w International                                       The National Labor Relations Board has delegated its
+Brotherhood of Electrical Workers, AFL–CIO, which the                                  authority in this proceeding to a three-member panel.
+General Counsel refers to as Local 1200 Electrical Work-                                        Ruling on Motion for Summary Judgment
+ers, IBEW, AFL–CIO (the Union) as bargaining repres-                                      The Respondent admits that it has refused to bargain but
+entative in the underlying representation proceeding. Pur-                             asserts that it has no duty to bargain and contests the valid-
+suant to a charge filed on June 18, 2025, by the Union, the                            ity of the Union’s certification of representative based on
+General Counsel issued a complaint on June 29, 2026,1                                  its objections to the election in the underlying representa-
+alleging that the Respondent has violated Section 8(a)(5)                              tion proceeding.2
+
+   1
+      Unless otherwise specified, all dates are 2026.                                     We find no merit to the constitutional claims raised in the Respond-
+   2
+      In its answer, the Respondent denies par. 5(b) of the complaint, in              ent’s answer and in its response to the Notice to Show Cause. The Re-
+part, asserting that the Board improperly certified the Union. It also                 spondent asserts that a hearing in this matter would violate its right to a
+denies par. 5(d) of the complaint, which states that at all times since April          jury trial under the Seventh Amendment to the Constitution. This argu-
+23, 2025, based on Sec. 9(a) of the Act, the Union has been the exclusive              ment is unpersuasive. The Supreme Court has considered, and rejected,
+collective-bargaining representative of the unit. The Respondent also                  that the Act implicates the Seventh Amendment. See NLRB v. Jones &
+denies pars. 6(e) and 6(f) of the complaint, which state that the Respond-             Laughlin Steel Corp., 301 U.S. 1, 48–49 (1937); see also Atlas Roofing
+ent has failed and refused to recognize and bargain with the Union as the              Co. v. OSHRC, 430 U.S. 442, 453–455 (1977) (reaffirming that the Act
+exclusive collective-bargaining representative of the unit. The Respond-               created a public right and that Congress could therefore assign the adju-
+ent further denies pars. 7 and 8 of the complaint, which state that the                dication of that right to the Board without violating the Seventh
+Respondent has violated Sec. 8(a)(5) and (1) of the Act by its failure and             Amendment).
+refusal to bargain with the Union and that its unfair labor practices affect              As to its arguments that Board members and administrative law
+commerce within the meaning of Sec. 2(6) and 2(7) of the Act. The                      judges’ insulation from presidential removal violates Article II of the
+Respondent asserts as affirmative defenses and in its response to the                  Constitution, there is no evidence that the Respondent suffered any harm
+Notice to Show Cause that it has refused to bargain with the Union in                  from the Act’s removal protections. See SJT Holdings, Inc., 372 NLRB
+order to test the certification issued in the representation proceeding                No. 82, slip op. at 1 fn. 4 (2023) (citing Collins v. Yellen, 594 U.S. 220,
+because its objections were improperly overruled; that the Board’s de-                 257–258 (2021), and Calcutt v. FDIC, 37 F.4th 293, 316 (6th Cir. 2022),
+cision in Amazon.com Services LLC, 373 NLRB No. 136 (2024), preven-                    rev’d per curiam on other grounds 598 U.S. 623 (2023)); K & R Con-
+ted the Respondent from holding captive audience meetings in violation                 tractors, LLC v. Keene, 86 F.4th 135, 148–149 (4th Cir. 2023)
+of Sec. 8(c) and the First Amendment; and that the Regional Director                   (“[R]egardless of how we answer the constitutional question presented
+erred in overruling the Respondent’s objections without holding a hear-                by the removal provisions, we would be required to deny the petition
+ing, thereby depriving the Respondent of due process. These representa-                because K & R has not asserted any harm resulting from the allegedly
+tion issues were fully litigated in the representation case. Accordingly,              unconstitutional statutes.”).
+we conclude that the Respondent’s denials of the allegations in pars. 5(b)                Finally, the Respondent asserts as an affirmative defense that the
+and (d), 6(e), and (f), 7, and 8 of the complaint, its affirmative defenses            Regional Director failed to conduct a complete investigation into allega-
+5 and 6, and its response to the Notice to Show Cause do not raise any                 tions of supervisor taint. The Respondent has not, however, offered any
+issues warranting a hearing. In addition, the Respondent has admitted                  explanation or evidence to support this bare assertion. Thus, we find that
+that it is refusing to bargain to test the Union’s certification. Such an              this affirmative defense is insufficient to warrant denial of the General
+admission permits a finding, notwithstanding the Respondent’s denials                  Counsel’s Motion for Summary Judgment. See, e.g., Sysco Central
+and assertions, that the Respondent has failed and refused to recognize                California, Inc., 371 NLRB No. 95, slip op. at 1 fn. 1 (2022); Station
+and bargain with the Union. See Biewer Wisconsin Sawmill, Inc., 306                    GVR Acquisition, LLC d/b/a Green Valley Ranch Resort Spa Casino, 366
+NLRB 732, 732 (1992).
+
+
+375 NLRB No. 40
+2                                       DECISIONS OF THE NATIONAL LABOR RELATIONS BOARD
+
+
+  All representation issues raised by the Respondent were                      All full-time and regular part-time Audio Operators,
+or could have been litigated in the prior representation                       A2/Floor, Freelance Technicians, Lighting Directors,
+proceeding. The Respondent does not offer to adduce at a                       Lighting Technicians, Photographers, Photojournalists,
+hearing any newly discovered and previously unavailable                        Studio Technicians, Videographers, Video Editors, and
+evidence, nor has it established any special circumstances                     Engineers employed by Nexstar Media Corporation
+that would require the Board to reexamine the decision                         d/b/a NewsNation at its facility currently located at 400
+made in the representation proceeding. We therefore find                       North Capitol Street NW, Suite 650, Washington, DC
+that the Respondent has not raised any representation issue                    20001, but excluding all other employees, including
+that is properly litigable in this unfair labor practice                       other editors, office clerical employees, confidential
+proceeding. See Pittsburgh Plate Glass Co. v. NLRB, 313                        employees, managerial employees, professional em-
+U.S. 146, 162 (1941). Accordingly, we grant the Motion                         ployees, guards, and supervisors as defined by the Act.
+for Summary Judgment.3                                                       On May 27, the Board denied the Respondent’s request
+  On the entire record, the Board makes the following                     for review of the Regional Director’s Decision on Objec-
+                     FINDINGS OF FACT                                     tions and Certification of Representative. The Union con-
+                                                                          tinues to be the exclusive collective-bargaining represent-
+                      I. JURISDICTION
+                                                                          ative of the unit employees under Section 9(a) of the Act.
+   At all material times, the Respondent has been a corpor-
+                                                                                             B. Refusal to Bargain
+ation with an office and place of business at 400 North
+Capitol Street NW, Suite 650, Washington, D.C., and has                      On April 24, 2025, by email, and on July 1, 2025, by
+been operating television stations that advertise goods                   text message, the Union requested that the Respondent
+sold nationally and subscribe to national wire services.                  bargain with the Union as the exclusive collective-bar-
+   In conducting its operations during the 12-month period                gaining representative of the unit. Since about April 25,
+ending May 31, 2026, the Respondent derived gross rev-                    2025, and continuing to date, the Respondent has failed
+enues in excess of $100,000 and purchased and received                    and refused to recognize and bargain with the Union as the
+at its Washington, D.C. facility goods valued in excess of                exclusive collective-bargaining representative of the unit.
+$5000 directly from points located outside Washington,                       We find that the Respondent’s conduct constitutes an
+D.C.                                                                      unlawful failure and refusal to recognize and bargain with
+   During the 12-month period ending May 31, 2026, the                    the Union in violation of Section 8(a)(5) and (1) of the
+Respondent has conducted its business operations de-                      Act.4
+scribed above in Washington, D.C., and the Board asserts                                     CONCLUSION OF LAW
+plenary jurisdiction over enterprises in Washington, D.C.                    By failing and refusing since about April 25, 2025, to
+   We find that the Respondent is an employer engaged in                  recognize and bargain with the Union as the exclusive
+commerce within the meaning of Section 2(2), (6), and (7)                 collective-bargaining representative of the employees in
+of the Act and that the Union is a labor organization within              the appropriate unit, the Respondent has engaged in unfair
+the meaning of section 2(5) of the act.                                   labor practices affecting commerce within the meaning of
+           II. ALLEGED UNFAIR LABOR PRACTICES                             Section 8(a)(5) and (1) and Section 2(6) and (7) of the Act.
+                  A. The Certification                                                              REMEDY
+   Following an election conducted by secret ballot on                       Having found that the Respondent has violated Section
+February 13, 2025, the Regional Director issued a De-                     8(a)(5) and (1) of the Act, we shall order it to cease and
+cision on Objections and Certification of Representative                  desist, to bargain on request with the Union and, if an un-
+in Case 05–RC–358137 on April 23, 2025, certifying the                    derstanding is reached, to embody the understanding in a
+Union as the exclusive collective-bargaining representat-                 signed agreement.
+ive of the employees in the following appropriate unit:                      To ensure that the employees are accorded the services
+                                                                          of their selected bargaining agent for the period provided
+
+NLRB No. 58, slip op. at 1 fn. 1 (2018), enfd. sub nom. Operating En-     meaning of Sec. 2(13) of the Act. The Respondent denies, however, that
+gineers Local 501 v. NLRB, 949 F.3d 477 (9th Cir. 2020).                  an unnamed agent held the position of the Respondent’s counsel and has
+   3
+     The Respondent’s request that the complaint be dismissed is there-   been an agent of Respondent within the meaning of Sec. 2(13) of the Act.
+fore denied.                                                              The Respondent’s denial does not preclude summary judgment or raise
+   4
+     In its answer, the Respondent admits that, at all material times,    material issues of fact warranting a hearing because the Respondent
+Chuck Pautsch has held the position of the Respondent’s vice president    admits, in pars. 6(b) and 6(d) of its answer, that it has refused to bargain
+of labor relations and has been a supervisor of Respondent within the     with the Union. C & C Roofing Supply, Inc., 349 NLRB 667, 669 fn. 12
+meaning of Sec. 2(11) of the Act and an agent of Respondent within the    (2007).
+                                                NEXSTAR MEDIA CORP. D/B/A NEWSNATION                                                                3
+
+by law, we shall construe the initial period of the certifica-                  (b) Within 14 days after service by the Region, post at
+tion as beginning on the date the Respondent begins to                       its location in Washington, DC copies of the attached no-
+bargain in good faith with the Union. Mar-Jac Poultry                        tice marked “Appendix.”6 Copies of the notice, on forms
+Co., 136 NLRB 785 (1962); accord Burnett Construction                        provided by the Regional Director for Region 5, after be-
+Co., 149 NLRB 1419, 1421 (1964), enfd. 350 F.2d 57                           ing signed by the Respondent’s authorized representative,
+(10th Cir. 1965); Lamar Hotel, 140 NLRB 226, 229                             shall be posted by the Respondent and maintained for 60
+(1962), enfd. 328 F.2d 600 (5th Cir. 1964), cert. denied                     consecutive days in conspicuous places, including all
+379 U.S. 817 (1964).5                                                        places where notices to employees are customarily posted.
+                          ORDER                                              In addition to physical posting of paper notices, notices
+                                                                             shall be distributed electronically, such as by email, post-
+   The National Labor Relations Board orders that the Re-
+                                                                             ing on an intranet or an internet site, and/or other electron-
+spondent Nexstar Media Corporation d/b/a NewsNation,
+                                                                             ic means, if the Respondent customarily communicates
+Washington, D.C., its officers, agents, successors, and
+                                                                             with its employees by such means. Reasonable steps shall
+assigns, shall
+                                                                             be taken by the Respondent to ensure that the notices are
+   1. Cease and desist from
+                                                                             not altered, defaced, or covered by any other material. If
+   (a) Failing and refusing to recognize and bargain with
+                                                                             the Respondent has gone out of business or closed the fa-
+International Brotherhood of Electrical Workers, Local
+                                                                             cility involved in these proceedings, the Respondent shall
+1200 a/w International Brotherhood of Electrical Worker-
+                                                                             duplicate and mail, at its own expense, a copy of the notice
+s, AFL–CIO (the Union) as the exclusive collective-bar-
+                                                                             to all current employees and former employees employed
+gaining representative of the employees in the bargaining
+                                                                             by the Respondent at any time since April 25, 2025.
+unit.
+                                                                                (c) Within 21 days after service by the Region, file with
+   (b) In any like or related manner interfering with, re-
+                                                                             the Regional Director for Region 5 a sworn certification
+straining, or coercing employees in the exercise of the
+                                                                             of a responsible official on a form provided by the Region
+rights guaranteed them by Section 7 of the Act.
+                                                                             attesting to the steps that the Respondent has taken to
+   2. Take the following affirmative action necessary to
+                                                                             comply.
+effectuate the policies of the Act.
+                                                                                Dated, Washington, D.C. September 17, 2026
+   (a) On request, bargain with the Union as the exclusive
+collective-bargaining representative of the employees in
+the following appropriate unit concerning terms and con-
+                                                                                     ______________________________________
+ditions of employment and, if an understanding is reached,
+                                                                                     James R. Murphy,              Chairman
+embody the understanding in a signed agreement:
+     All full-time and regular part-time Audio Operators,
+     A2/Floor, Freelance Technicians, Lighting Directors,                            ______________________________________
+     Lighting Technicians, Photographers, Photojournalists,                          David M. Prouty,              Member
+     Studio Technicians, Videographers, Video Editors, and
+     Engineers employed by Nexstar Media Corporation
+     d/b/a NewsNation at its facility currently located at 400                      ________________________________________
+     North Capitol Street NW, Suite 650, Washington, DC                             Scott A. Mayer,                 Member
+     20001, but excluding all other employees, including                     (SEAL)        NATIONAL LABOR RELATIONS BOARD
+     other editors, office clerical employees, confidential
+     employees, managerial employees, professional em-
+     ployees, guards, and supervisors as defined by the Act.
+
+    5
+      For the reasons stated in his dissent in Longmont United Hospital,     2–5; see also CP Anchorage Hotel 2 d/b/a Hilton Anchorage, 371 NLRB
+374 NLRB No. 52 (2026), in order to effectuate Sec. 10(c) of the Act,        No. 151 (2022) (Member Prouty, concurring) (setting forth his view that
+Member Prouty believes that additional remedies are required to remedy       notice reading and distribution should be standard for all unfair labor
+the harm caused by an employer’s unlawful refusal to bargain with its        practices found by the Board), enfd. 98 F.4th 314 (D.C. Cir. 2024).
+employees’ chosen union in a test of certification case. To address the      Member Prouty believes that these remedies are necessary where, as
+damage created by the unlawful delay in initiating bargaining, Member        here, employees have been deprived of the benefit of their chosen repres-
+Prouty would also order the Respondent to make the union and affected        entative because of the Respondent's unlawful refusal to bargain.
+                                                                                6
+employees whole for any provable, reasonably quantifiable economic                If this Order is enforced by a judgment of a United States court of
+harm resulting from the unlawful refusal to bargain; provide the union       appeals, the words in the notice reading “Posted by Order of the National
+on-site access to the bargaining unit; adhere to a bargaining schedule;      Labor Relations Board” shall read “Posted Pursuant to a Judgment of the
+post a notice of employee rights for a period of 1 year; and read and dis-   United States Court of Appeals Enforcing an Order of the National Labor
+tribute a remedial notice to employees. See Longmont, supra, slip op. at     Relations Board.”
+4                                 DECISIONS OF THE NATIONAL LABOR RELATIONS BOARD
+
+
+                       APPENDIX                                    All full-time and regular part-time Audio Operators,
+                NOTICE TO EMPLOYEES                                A2/Floor, Freelance Technicians, Lighting Directors,
+               POSTED BY ORDER OF THE                              Lighting Technicians, Photographers, Photojournalists,
+          NATIONAL LABOR RELATIONS BOARD                           Studio Technicians, Videographers, Video Editors, and
+        An Agency of the United States Government                  Engineers employed by Nexstar Media Corporation
+                                                                   d/b/a NewsNation at its facility currently located at 400
+The National Labor Relations Board has found that we               North Capitol Street NW, Suite 650, Washington, DC
+violated Federal labor law and has ordered us to post and          20001, but excluding all other employees, including
+obey this notice.                                                  other editors, office clerical employees, confidential
+    FEDERAL LAW GIVES YOU THE RIGHT TO                             employees, managerial employees, professional em-
+                                                                   ployees, guards, and supervisors as defined by the Act.
+        Form, join, or assist a union
+        Choose representatives to bargain with us on your                 NEXSTAR MEDIA CORPORATION              D/B/A
+    behalf                                                                NEWSNATION
+        Act together with other employees for your benefit
+    and protection                                               The Board’s decision can be found at
+        Choose not to engage in any of these protected         www.nlrb.gov/case/ 05-CA-367812 or by using the QR
+    activities.                                                code below. Alternatively, you can obtain a copy of the
+                                                               decision from the Executive Secretary, National Labor
+   WE WILL NOT fail and refuse to recognize and bargain        Relations Board, 1015 Half Street, S.E., Washington, D.C.
+with International Brotherhood of Electrical Workers,          20570, or by calling (202) 273-1940.
+Local 1200 a/w International Brotherhood of Electrical
+Workers, AFL–CIO (the Union) as the exclusive collect-
+ive-bargaining representative of our employees in the bar-
+gaining unit.
+   WE WILL NOT any like or related manner interfere with,
+restrain, or coerce you in the exercise of the rights listed
+above.
+   WE WILL, on request, bargain with the Union and put in
+writing and sign any agreement reached on terms and con-
+ditions of employment for our employees in the following
+appropriate bargaining unit:
+
