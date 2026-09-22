@@ -1,0 +1,392 @@
+524                                    Decisions of the Federal Labor Relations Authority                   74 FLRA No. 78
+
+
+74 FLRA No. 78                                                    II.      Background and Arbitrator’s Award
+
+                NATIONAL AIR                                                The parties have two CBAs, which as relevant to
+      TRAFFIC CONTROLLERS ASSOCIATION                             this decision contain identical language. 3 The CBAs state,
+                   (Union)                                        in pertinent part:
+
+                             and                                               An employee who has authorized
+                                                                               the withholding of Union dues
+               UNITED STATES                                                   may request revocation of such
+       DEPARTMENT OF TRANSPORTATION                                            authorization after one (1) year
+      FEDERAL AVIATION ADMINISTRATION                                          by completion and submission of
+                  (Agency)                                                     a    Standard     Form     1188
+                                                                               (SF-1188), Cancellation of
+                         0-AR-5877                                             Payroll Deductions for Labor
+                                                                               Organization Dues, to the
+                            _____                                              appropriate payroll processing
+                                                                               center in accordance with the
+                         DECISION                                              procedures below:
+
+                    September 14, 2026                                         (1) First year members: An
+                                                                               SF-1188 may be filed anytime by
+                            _____                                              an employee during the thirty
+                                                                               (30)      calendar-day     period
+ Before the Authority: Colleen Duffy Kiko, Chairman,                           beginning forty-five (45) days
+ and Anne Wagner and Charles O. Arrington, Members                             prior to the anniversary date of
+       (Member Wagner concurring in part and                                   his/her first dues withholding
+                  dissenting in part)                                          and ending fifteen (15) days
+                                                                               prior to the anniversary date. It
+I.       Statement of the Case                                                 is the employee’s responsibility
+                                                                               to ensure timely filing of his/her
+         Arbitrator Alan Symonette issued an award                             revocation forms. Revocation
+finding that the Agency properly processed dues                                forms shall only be accepted by
+revocations pursuant to § 2429.19 of the Authority’s                           the Agency during this time
+Regulations, 1     but      violated      the      parties’                    period. The payroll office shall
+collective-bargaining agreements (the CBAs) 2 by failing                       notify the Union, in writing, of
+to timely notify the Union of these revocations. As                            all revocations and provide a
+remedies for the notice violation, the Arbitrator directed                     copy of the SF-1188 at the time
+the Agency to comply with the CBAs prospectively and to                        the revocation is made effective.
+pay the Union for dues that were not collected between the
+time that the revocations became effective and the time                        (2) All other members: March 1
+that the Agency ultimately notified the Union of the                           shall be the annual date for all
+revocations. The Union filed exceptions alleging the                           revocations of Union dues. The
+award is contrary to law, in part. The Agency filed                            employee must complete and
+exceptions challenging the Arbitrator’s monetary remedy                        submit an SF-1188 to the
+on a number of grounds, including on the basis that it                         Agency between the dates of
+violated the doctrine of sovereign immunity. For the                           January 1 to January 31 of any
+reasons discussed below, we deny the Union’s                                   given year. Upon receipt of a
+contrary-to-law exceptions and grant the Agency’s                              valid revocation form completed
+sovereign-immunity exception. In doing so, we set aside                        and signed by the employee, the
+the portion of the award requiring the Agency to pay                           appropriate Agency payroll
+monetary damages, and we find it unnecessary to reach the                      processing      center      shall
+Agency’s remaining exceptions.                                                 discontinue withholding the dues
+
+1 5 C.F.R. § 2429.19.                                             3 See Award at 2.    We note the record demonstrates that the
+2 The Union represents multiple bargaining units, each with its
+                                                                  relevant provisions in both agreements contain identical
+own agreement.                                                    language and meaning. Compare Union’s Exceptions, Attach. 1
+                                                                  at 41-42 (Consolidated CBA), with Union’s Exceptions,
+                                                                  Attach. 2 at 45-46 (CPC CBA).
+74 FLRA No. 78                        Decisions of the Federal Labor Relations Authority                                       525
+
+
+             from the employee’s pay                            August 10, 2020, the regulation did not take effect until the
+             effective only with the first full                 effective dates of the CBA extensions.” 11
+             pay period which begins after the
+             following March 1. The payroll                              Employee 1 and Employee 2 (the employees)
+             office shall notify the Union, in                  filed dues-withholding authorization forms (SF-1187s)
+             writing, of all revocations and                    that became effective on January 3, 2021, and February 11,
+             provide a copy of the SF-1188 at                   2021, respectively. Thereafter, the CBAs expired and
+             the time the revocation is made                    were extended, with the extensions taking effect on May 3,
+             effective. 4                                       2021, and July 1, 2021. Employee 2 filed her cancellation
+                                                                of payroll deductions for union dues (SF-1188) on April 8,
+         In 2020, the Federal Labor Relations Authority         2022, and Employee 1 filed his SF-1188 on May 10, 2022.
+promulgated a new regulation after notice and comment –         The Agency’s payroll office processed the employees’
+5 C.F.R. § 2429.19 – that states, in pertinent part, “[A]fter   SF-1188s upon receipt, and promptly stopped withholding
+the expiration of the one-year period during which [a dues]     their union dues. The Agency did not notify the Union.
+assignment may not be revoked under 5 U.S.C.
+[§] 7115(a), an employee may initiate the revocation of a                 Subsequently, the Union received separate
+previously authorized assignment at any time that the           regularly generated reports from the Agency that showed
+employee chooses.” 5 When promulgating this regulation,         the employees’ dues were not withheld for the pay periods
+the Authority explained that it would apply “to the             covered by the reports. On request, the Agency provided
+revocation of assignments that were authorized . . . on or      the Union with the employees’ SF-1188s. The Union filed
+after August 10, 2020.” 6 The Authority also stated that,       separate grievances concerning the revocations, and the
+“[l]ike all government[-]wide regulations,” § 2429.19 is        Agency denied both grievances. The Union invoked
+subject to the constraints of § 7116(a)(7) of the               arbitration. The parties agreed to consolidate both
+Federal Service Labor-Management Relations Statute              grievances, and stipulated to the following issues for
+(the Statute), 7 which makes it an unfair labor practice for    arbitration: “Did the [Agency] violate the CBA(s), or
+agencies to enforce most regulations that conflict with a       applicable laws, rules, regulations, including but not
+collective-bargaining agreement if the agreement was in         limited to 5 U.S.C. Chapter 71, or past practice when it
+effect before the regulations were prescribed. 8                processed the SF-1188 dues[-]revocation forms of
+Consequently, the Authority explained, “currently               [the employees]? If so, what shall the remedy be?” 12
+effective agreements will not be destabilized if they
+contain negotiated provisions that conflict with the                      The Arbitrator’s analysis focused on the
+[FLRA regulation].” 9                                           application of § 2429.19 of the Authority’s Regulations to
+                                                                the CBAs. The Arbitrator found that the CBAs provide
+         As relevant here, Article 106 of the CBAs              that “[g]overnment-wide regulations issued during the
+provides that they automatically renew every year, and that     term of [the CBAs] shall become controlling at the time of
+“[g]overnment-wide regulations issued during the term of        the extension [of the CBAs] if they are in conflict with”
+[the CBAs] shall become controlling at the time of              the CBAs. 13 Because § 2429.19 became effective before
+extension if they are in conflict with” the CBAs. 10 The        the CBAs were extended, the Arbitrator found that
+Union and the Agency discussed the applicability of             § 2429.19 controlled over the CBAs and that the Agency
+§ 2429.19 and “agreed that, because the regulation              processed the dues revocations in compliance with
+conflicted with provisions of the CBAs in effect on             § 2429.19. However, the Arbitrator found that the Agency
+
+4 Consolidated CBA at 42; CPC CBA at 45-46.                     6 Miscellaneous and General Requirements, 85 Fed. Reg. 41169,
+5 5 C.F.R. § 2429.19.  Section 7115(a) states,                  41169 (July 9, 2020) (Final Rule).
+          If an agency has received from an employee            7 Id. at 41170.
+
+          in an appropriate unit a written assignment           8 5 U.S.C. § 7116(a)(7) (stating that it is an unfair labor practice
+
+          which authorizes the agency to deduct from            for an agency “to enforce any rule or regulation (other than a rule
+          the pay of the employee amounts for the               or regulation implementing [5 U.S.C. § 2302]) which is in
+          payment of regular and periodic dues of the           conflict with any applicable collective[-]bargaining agreement if
+          exclusive representative of the unit, the             the agreement was in effect before the date the rule or regulation
+          agency shall honor the assignment and make            was prescribed”).
+          an appropriate allotment pursuant to the              9 Final Rule, 85 Fed. Reg. at 41170.
+
+          assignment. Any such allotment shall be               10 Consolidated CBA at 180; CPC CBA at 199.
+
+          made at no cost to the exclusive                      11 Award at 2-3 (quoting stipulated facts).
+
+          representative or the employee. Except as             12 Id. at 4.
+
+          provided under [§ 7115(b)], any such                  13 Id. at 11.
+
+          assignment may not be revoked for a period
+          of [one] year.
+5 U.S.C. § 7115(a).
+526                                     Decisions of the Federal Labor Relations Authority                        74 FLRA No. 78
+
+
+failed to provide the Union with notice of the employees’          February 16, 2023, which means the period for the Agency
+dues revocations as required by the CBAs. As remedies              to file exceptions began on Friday, February 17, 2023, and
+for the violation, the Arbitrator directed the Agency to           ended on Saturday, March 18, 2023. Because that period
+comply with the CBAs’ notice requirements prospectively,           ended on a Saturday, the filing deadline extended to the
+and to “pay the Union for the dues that [were] not collected       next calendar day that was not a Sunday or federal legal
+between the date the respective SF-1188s became effective          holiday: Monday, March 20, 2023. As the Agency filed
+and the date [o]n which the Union was notified.” 14                its exceptions on that date, its exceptions are timely.
+
+          On March 17, 2023, the Union filed exceptions to                Accordingly, we consider the merits of the
+the Arbitrator’s award. On March 20, 2023, the Agency              Agency’s exceptions below.
+also filed exceptions to the award. On March 28, 2023, the
+Authority’s Office of Case Intake and Publication (CIP)            IV.       Analysis and Conclusions
+issued an order directing the Agency to show cause why
+its exceptions should not be dismissed as untimely. On                       Both parties assert that the award is contrary to
+April 6, the Agency submitted a response to CIP’s order.           law. 22 To resolve a contrary-to-law exception, the
+On April 18, 2023, the Union filed an opposition to the            Authority reviews any question of law raised by the
+Agency’s exceptions. Then, on April 21, 2023, the                  exception and the award de novo. 23 In applying a de novo
+Agency filed an opposition to the Union’s exceptions.              standard of review, the Authority assesses whether the
+                                                                   arbitrator’s legal conclusions are consistent with the
+III.       Preliminary Matters                                     applicable standard of law. 24 Under this standard, the
+                                                                   Authority defers to the arbitrator’s underlying factual
+          As noted above, CIP directed the Agency to show          findings, unless the excepting party establishes that they
+cause why its exceptions should not be dismissed as                are nonfacts. 25
+untimely. 15 In this regard, the time limit for filing
+exceptions to an arbitration award is thirty days after the                  A.         The Union fails to demonstrate that the
+date of service of the award. 16 If the arbitrator serves the                           award is contrary to law.
+award by email, then the date of service is the date of email
+transmission. 17 The first day of the filing period is the day                The Union alleges that the Arbitrator’s decision,
+after the date of service. 18 Moreover, if the final day of the    finding that the Agency properly processed the employees’
+filing period falls on a Saturday, then the due date for filing    dues revocations, is contrary to law. 26 Specifically, the
+is the next calendar day that is not a Sunday or federal legal     Union argues § 2429.19 contradicts the plain language of
+holiday. 19                                                        5 U.S.C. § 7115(a) and the legislative history of the
+                                                                   Statute. 27 For support, the Union cites to Authority
+           In response to CIP’s order, the Agency provided         precedent and reiterates the points made by the dissent in
+the email the Arbitrator used to serve the award on the            OPM. 28
+parties. 20 Although the Arbitrator signed and dated the
+award on February 15, 2023, the email shows he                               We assume, without deciding, these arguments
+transmitted it to the parties by email on February 16,             are properly before us, 29 because we deny them on the
+2023. 21 Thus, we find that the date of service was                merits. 30 In OPM, the Authority determined that the plain
+
+14 Id. at 14.                                                      29  Compare Union’s Exceptions, Attach. 8, Arb. Br. at 13
+15 See Order to Show Cause at 2.
+                                                                   (arguing that the Agency misapplied § 2429.19); id. at 16
+16 5 C.F.R. § 2425.2(b).                                           (arguing that the Agency’s processing of the employees’ dues
+17 See id. § 2425.2(c)(3).
+                                                                   revocations violated the CBAs); id. at 19 (generally asserting the
+18 See id. § 2429.21(a)(1)(iii).
+                                                                   rulemaking is arbitrary and capricious), with Union’s Exceptions
+19 See id. § 2429.21(a)(1)(v).
+                                                                   Br. at 9-16 (arguing that § 2429.19 is contrary to the Statute); id.
+20 See Agency’s Resp., Ex. 1 at 1.                                 at 10-11 (arguing that § 2429.19 is inconsistent with the plain
+21 See id. at 1, 15.
+                                                                   language of § 7115(a) of the Statute); id. at 11-12 (arguing that
+22 Agency’s Exceptions Br. at 5-9, 10-11; Union’s Exceptions Br.
+                                                                   § 2429.19 is inconsistent with the legislative history of 5 U.S.C.
+at 9-17.                                                           § 7115(a)); id. at 12-16 (arguing that the Final Rule was improper
+23 U.S. Dep’t of Transp., FAA, 74 FLRA 437, 438 (2026) (citing     and ran afoul of Supreme Court precedent). See 5 C.F.R.
+AFGE, Loc. 3254, 73 FLRA 325, 326 (2022)).                         § 2429.5 (“The Authority will not consider any . . . arguments . . .
+24 Id.                                                             that could have been, but were not, presented . . . before the . . .
+25 Id.
+                                                                   arbitrator.”); see also U.S. DHS, U.S. CBP, 66 FLRA 634,
+26 See Union’s Exceptions Br. at 9-12.                             635-38 (2012).
+27 See id.                                                         30 See Laborers Int’l Union of N. Am., Loc. 1776, 73 FLRA 591,
+28 71 FLRA 571 (2020) (Member Abbott concurring;                   593 n.30 (2023) (then-Member Kiko concurring) (assuming,
+Member DuBester dissenting); see also id. at 576-79 (Dissenting    without deciding, non-meritorious argument was properly raised
+Opinion of Member DuBester).                                       on exceptions).
+74 FLRA No. 78                          Decisions of the Federal Labor Relations Authority                                    527
+
+
+meaning of § 7115(a)’s text does not require that                 notice[-]and[-]comment rulemaking . . . was improper”
+employees may revoke their dues assignments only during           while citing federal court precedent on “Chevron
+annual intervals after the first year. 31 Interpreting            deference,” 42 which has now been overturned. 43 The
+§ 7115(a) of the Statute, the Authority found the phrase          Union does not provide any evidence that the Authority
+providing that an assignment “may not be revoked for a            failed to follow the notice-and-comment requirements of
+period of [one] year” most reasonably establishes a single,       the Administrative Procedures Act, 44 but instead argues
+initial one-year bar on revocation. 32 The Authority added        that the Authority’s “interpretation of § 7115(a)” – as
+that, apart from the limiting conditions set forth in             articulated in OPM and § 2429.19 – would not be entitled
+§ 7115(b), nothing in the text of § 7115(a) expressly             to “Chevron-level deference.” 45 We view these arguments
+addresses revocations after that initial one-year period. 33      as again challenging the Authority’s regulatory rationale.
+Ultimately, the Authority concluded that previous                 Therefore, we reject them for the same reasons as above. 46
+decisions requiring an “annual revocation window”
+– including U.S. Army, U.S. Army Materiel Development                      The Union also alleges that the Arbitrator
+& Readiness Command, Warren, Michigan (Army) 34 –                 misapplied § 2429.19 because the regulation applies only
+reflected a policy determination rather than the                  to dues assignments authorized on or after the parties
+implementation of a statutory mandate. 35                         renewed the CBAs. 47 Because the employees authorized
+                                                                  their dues assignments before the CBAs renewed, the
+          Thereafter, the Authority issued a final rule           Union argues that they could revoke their authorizations
+adopting § 2429.19. 36 As discussed above, § 2429.19 of           only within the annual intervals established in the CBAs. 48
+the Authority’s Regulations states that “[c]onsistent with        Therefore, the Union asserts that the Arbitrator erred in
+the exceptions in 5 U.S.C. [§] 7115(b), after the expiration      finding that the Agency properly processed the employees’
+of the one-year period during which an assignment may             dues revocations by allowing the Agency to “retroactively
+not be revoked under 5 U.S.C. [§] 7115(a), an employee            apply” § 2429.19 to the revocations. 49 The Union’s
+may initiate the revocation of a previously authorized            argument relies on a flawed premise. The final rule
+assignment at any time that the employee chooses.” 37 The         adopting § 2429.19 states: “This rule applies to the
+final rule also noted that the legislative history of § 7115(a)   revocation of assignments that were authorized . . . on or
+of the Statute does not support an interpretation of              after August, 10, 2020.” 50 The employees submitted their
+§ 7115(a) that necessitates annual revocation intervals. 38       SF-1187s, authorizing dues withholding, in January 2021
+While a six-month annual revocation window was                    and February 2021, making them “assignments that were
+mandated by the executive order that created the federal          authorized . . . after August 10, 2020.” 51 Once the CBAs
+labor-management relations program, 39 the Authority              renewed in May 2021 and July 2021, § 2429.19 controlled
+noted that Congress drafted 5 U.S.C. § 7115(a) to “not            over any conflicting provision of the CBAs. 52 The
+mention intervals at all.” 40 For these reasons, and the fact     employees filed their SF-1188s, revoking their dues
+that the Authority recently rejected similar arguments, 41        authorizations, in April 2022 and May 2022. As such,
+the Union’s arguments fail to demonstrate that the                there was no “retroactive application” of § 2429.19
+Authority’s regulatory change, and accompanying                   required in order for the Arbitrator to uphold the Agency’s
+rationale, was in error. Accordingly, the Union’s                 actions here. Accordingly, we find the Arbitrator did not
+arguments fail to demonstrate the Arbitrator erred in             err when he found that the Agency processed the
+applying the lawful regulation.                                   employees’ SF-1188s in compliance with the Authority’s
+
+       In addition, the Union argues that the Authority’s
+change in its “interpretation of [§] 7115(a) through
+
+31 OPM, 71 FLRA at 572.                                           43 See Loper Bright Enters. v. Raimondo, 603 U.S. 369, 373-76
+32 Id. (quoting 5 U.S.C. § 7115(a)).                              (2024) (overruling Chevron U.S.A. Inc. v. Nat. Res. Def. Council,
+33 Id.                                                            Inc., 467 U.S. 837 (1984)).
+34 7 FLRA 194, 199 (1981).                                        44 See Union’s Exceptions Br. at 12-16 (citing 5 U.S.C. § 553).
+35 OPM, 71 FLRA at 573.                                           45 See id. at 15-16.
+36 Final Rule, 85 Fed. Reg. at 41169.                             46 See Withdrawal of Proposed Recission, 91 Fed. Reg.
+37 5 C.F.R. § 2429.19.
+                                                                  at 10774-75.
+38 Final Rule, 85 Fed. Reg. at 41170.                             47 See Union’s Exceptions Br. at 16-17.
+39 See Exec. Order No. 11491, 34 Fed. Reg. 17605, 17614 (1969).   48 See id.
+40 Final Rule, 85 Fed. Reg. at 41170.                             49 See id.
+41 Miscellaneous and General Requirements, 91 Fed. Reg. 10774,    50 Final Rule, 85 Fed. Reg. at 41169.
+
+10774-75 (Mar. 5, 2026) (Withdrawal of Proposed Recission)        51 Id.
+
+(declining to rescind OPM and § 2429.19).                         52 See U.S DOD, Cont. Audit Agency, Cent. Region, 37 FLRA
+42 See Union’s Exceptions Br. at 12-16.                           1218, 1228 (1990) (determining that government-wide
+                                                                  regulations override conflicting provisions when the parties’
+                                                                  collective-bargaining agreement renews).
+528                                      Decisions of the Federal Labor Relations Authority                      74 FLRA No. 78
+
+
+Regulation and federal law governing the revocations of           monetary remedy that the Arbitrator awarded is
+dues assignments. 53                                              non-equitable. Because neither the Arbitrator nor the
+                                                                  Union cites a statutory waiver of sovereign immunity
+         Accordingly,     we           deny    the    Union’s     providing for this remedy, we conclude that sovereign
+contrary-to-law exceptions.                                       immunity barred the Arbitrator from directing the Agency
+                                                                  to pay it. 60
+         B.        The monetary remedy is contrary to law.
+                                                                          Accordingly,       we     grant   the Agency’s
+          The Agency argues that the Arbitrator’s award of        sovereign-immunity exception to the Arbitrator’s award,
+a monetary remedy to the Union is contrary to law because         and we set aside the monetary remedy. Consequently, we
+neither the Arbitrator nor the Union cites a statute that         do not need to address the Agency’s remaining
+waived the federal government’s sovereign immunity                exceptions 61 challenging that remedy. 62
+from paying such a monetary remedy. 54 In this regard,
+there is no right to recover monetary compensation from a         V.        Decision
+federal agency unless Congress waives sovereign
+immunity in a statute. 55 As the Agency contends, neither                 We deny the Union’s contrary-to-law exceptions.
+the Arbitrator nor the Union cites a statutory waiver of          We grant the Agency’s sovereign-immunity exception as
+sovereign immunity that allows the Union to collect               to the Arbitrator’s monetary remedy, and set aside that
+monetary damages as a remedy for the Agency’s failure to          remedy.
+provide notice regarding the revocation of dues
+authorizations.
+
+         In its opposition, the Union contends that this
+monetary remedy “is an equitable award,” which does not
+require a waiver of sovereign immunity. 56 In this regard,
+the Authority, relying on precedent from the U.S. Court of
+Appeals for the District of Columbia Circuit, has found
+that “monetary awards that are ‘legal’ in nature are barred
+by sovereign immunity, [whereas those] that are
+‘equitable’ in nature are not.” 57 The difference is that an
+equitable award “does not attempt to provide the injured
+party with a substitute for a consequential loss, but rather
+attempts to give the plaintiff the very thing to which [it]
+was entitled.” 58 As noted above, the Arbitrator did not err
+in finding that the Agency properly processed the
+employees’ dues revocations, which leaves failure to
+provide the Union with notice as the only redressable
+violation here. Proper notice – not dues payments – was
+the thing to which the Union was entitled under the CBAs,
+as the Arbitrator interpreted them. 59 Consequently, the
+
+53 See Award at 12-13.                                            61 See Agency’s Exceptions at 3 (asserting that its exceptions are
+54 See Agency’s Exceptions at 10-11.                              “exclusively concerning the [monetary] remedy ordered by the
+55 See U.S. Dep’t of Transp., FAA, Detroit, Mich., 64 FLRA 325,   Arbitrator in this case”); id. at 5-7 (arguing that the award is
+328 (2009) (DOT Detroit) (citing U.S. Dep’t of Transp., FAA,      contrary to § 7115); id. at 7-9 (arguing that the award is contrary
+52 FLRA 46, 49 (1996)).                                           to 31 U.S.C. §§ 1301 and 1341 because the Agency was not
+56 Union’s Opp’n to Agency’s Exceptions at 9, 14-16.              authorized to pay dues with appropriated funds); id. at 9-10
+57 U.S. DOJ, Fed. BOP, Metro. Detention Ctr., Guaynabo, P.R.,     (arguing that the remedy fails to draw its essence from the
+68 FLRA 960, 965 (2015) (DOJ Guaynabo) (citing Dep’t of the       CBAs); id. at 11-12 (arguing that the Arbitrator exceeded his
+Army, U.S. Army Commissary, Fort Benjamin Harrison,               authority by issuing a remedy unfounded in the CBAs or federal
+Indianapolis, Ind. v. FLRA, 56 F.3d 273, 276 (D.C. Cir. 1995)     law).
+(Fort Benjamin Harrison)).                                        62 See NLRB Pro. Ass’n, 73 FLRA 50, 53 n.44 (2022) (finding it
+58 Fort Benjamin Harrison, 56 F.3d at 276 (citation modified).    unnecessary to address additional arguments after setting aside
+59 See id.                                                        award based on other argument); see also DOJ Guaynabo,
+60 See id. at 277 (citing Irwin v. Dep’t of VA, 498 U.S. 89, 95   68 FLRA at 966 (finding it unnecessary to address party’s
+(1990)); see also DOJ Guaynabo, 68 FLRA at 965 (monetary          remaining arguments challenging the same portions of the
+award as compensation for “broken arbitration system” was         remedy that were already set aside).
+“legal,” not “equitable,” remedy); DOT Detroit, 64 FLRA
+at 328-29.
+74 FLRA No. 78                          Decisions of the Federal Labor Relations Authority                                          529
+
+
+Member Wagner, concurring in part and dissenting in
+part:
+
+        I agree, for the reasons stated in the decision, that
+the Agency’s exceptions are timely and that the monetary
+remedy is contrary to law. I also agree that the Union has
+not demonstrated that the award is contrary to law.
+However, I do so for reasons different from the majority’s.
+
+          As I have previously stated, I believe that
+§ 7115(a) of the Federal Service Labor-Management
+Relations Statute (the Statute) 1 must be interpreted as
+allowing employees to revoke their dues authorizations
+only at annual intervals, unless an exception in § 7115(b)
+of the Statute 2 applies. 3 Consequently, I believe that
+§ 2429.19 of the Authority’s Regulations (§ 2429.19) 4 is
+inconsistent with § 7115(a) of the Statute. As such, I do
+not join the majority’s defense of § 2429.19 here.
+
+         Nevertheless, I believe that § 2429.19 remains in
+effect unless and until we repeal it through
+notice-and-comment rulemaking 5 or a court invalidates it. 6
+I also believe that arbitrators do not have the authority to
+invalidate an Authority Regulation – even if they generally
+may not apply such a Regulation if it conflicts with a
+pre-existing collective-bargaining agreement. 7 Here,
+however, the Arbitrator interpreted the parties’
+collective-bargaining agreements as providing that
+government-wide regulations in effect before the
+agreements were extended govern over any conflicting
+provisions in the extended agreements. Neither party has
+demonstrated that interpretation is deficient. As such, I
+would find that the Arbitrator was justified in applying
+§ 2429.19. And, for the reasons stated by the majority, I
+agree that the Arbitrator did not misinterpret § 2429.19.
+For these reasons, I agree that the Union has not
+demonstrated that the award is contrary to law, and I would
+deny the Union’s exception.
+
+          Accordingly, I concur in part and dissent in part.
+
+
+1 5 U.S.C. § 7115(a).                                                7  See, e.g., AFGE, Nat’l Citizenship & Immigr. Servs.,
+2 Id. § 7115(b).
+                                                                     Council 119, 73 FLRA 490, 491-92 (2023) (finding arbitration
+3 AFGE, Loc. 3403, 74 FLRA 508, 522 (2026) (Separate Opinion         award contrary to law where arbitrator held that agency could
+of Member Wagner); Miscellaneous and General Requirements,           implement       executive     order   that     conflicted      with
+91 Fed. Reg. 10774, 10777-79 (March 5, 2026) (Dissenting View        collective-bargaining agreement that was extended, due to a
+of Member Wagner).                                                   continuance clause, after the effective date of the executive
+4 5 C.F.R. § 2429.19.                                                order); see also 5 U.S.C. § 7116(a)(7) (stating that it is an unfair
+5 AFGE, AFL-CIO, Loc. 3090 v. FLRA, 777 F.2d 751, 758-59
+                                                                     labor practice for an agency “to enforce any rule or regulation
+(D.C. Cir. 1985) (Local 3090) (setting aside Authority’s decision    (other than a rule or regulation implementing [5 U.S.C. § 2302]
+not to apply its own regulation in adjudicative proceeding).         which is in conflict with any applicable collective[-]bargaining
+6 AT&T v. FCC, 978 F.2d 727, 733 (D.C. Cir. 1992) (rejecting         agreement if the agreement was in effect before the date the rule
+agency’s reliance on Local 3090 to argue that it could not           or regulation was prescribed”).
+disregard its own rule in an adjudication, because such a rule
+would require the agency “to apply a rule in an adjudication until
+it had revoked the rule in a new rulemaking, even if the Supreme
+Court had invalidated the interpretation on which the rule was
+based”).
+

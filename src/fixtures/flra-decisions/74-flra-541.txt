@@ -1,0 +1,230 @@
+74 FLRA No. 80                       Decisions of the Federal Labor Relations Authority                                   541
+
+
+74 FLRA No. 80                                                  April 27, 2022, and the Union filed an opposition on
+                                                                May 17, 2022.
+                  UNITED STATES
+                  MARINE CORPS                                  III.     Analysis and Conclusion:           We lack
+                MARINE AIR GROUND                                        jurisdiction due to Executive Order 12171, as
+          TASK FORCE TRAINING COMMAND                                    amended by Executive Order 14251.
+                  MARINE CORPS
+            AIR GROUND COMBAT CENTER                                     On March 27, 2025, President Donald J. Trump
+          TWENTYNINE PALMS, CALIFORNIA                          issued Executive Order 14251 (EO 14251), which
+                     (Agency)                                   amended Executive Order 12171 (EO 12171) – pursuant
+                                                                to 5 U.S.C. § 7103(b)(1) and 22 U.S.C. § 4103(b) – to
+                            and                                 exclude certain agencies and agency subdivisions from the
+                                                                coverage of the Federal Service Labor-Management
+               AMERICAN FEDERATION                              Relations Statute (the Statute).1
+            OF GOVERNMENT EMPLOYEES
+                    LOCAL 2018                                           Section 7103(b)(1) of the Statute states:
+                      (Union)
+                                                                         The President may issue an order
+                        0-AR-5810                                        excluding any agency or subdivision
+                                                                         thereof     from       coverage       under
+                           _____                                         [the Statute] if the President determines
+                                                                         that—
+           ORDER DISMISSING EXCEPTIONS                                   (A) the agency or subdivision has as a
+                                                                         primary        function       intelligence,
+                    September 22, 2026                                   counterintelligence, investigative, or
+                                                                         national[-]security work, and
+                           _____                                         (B) the provisions of [the Statute] cannot
+                                                                         be applied to that agency or subdivision
+    Before the Authority: Colleen Duffy Kiko, Chairman,                  in    a    manner       consistent     with
+    and Anne Wagner and Charles O. Arrington, Members                    national[-]security requirements and
+                (Member Wagner dissenting)                               considerations.2
+
+I.        Statement of the Case                                           The President determined in EO 14251 that
+                                                                (1) the excluded entities “have as a primary function
+         Arbitrator Michael D. Durick issued an award,          intelligence, counterintelligence, investigative, or
+and the Agency filed exceptions to that award. Because          national[-]security work,” and (2) the Statute “cannot be
+we lack jurisdiction, we dismiss the exceptions.                applied to [the excluded entities] in a manner consistent
+                                                                with       national[-]security      requirements      and
+II.       Background and Arbitrator’s Award                     considerations.”3 Under EO 12171, as amended by
+                                                                EO 14251, the Department of Defense is excluded from
+         The Agency issued the grievant a letter of
+reprimand, and the Union filed a grievance challenging it.
+The Agency denied the grievance, which the parties
+advanced to arbitration. The Arbitrator issued an award
+sustaining the grievance. The Agency filed exceptions on
+
+
+1                                                               2 5 U.S.C. § 7103(b)(1).
+   Exclusions from Federal Labor-Management Relations                                    Section 4103(b) of the Foreign Service
+Programs, EO 14251 (Mar. 27, 2025), 90 Fed. Reg. 14553          Act includes similar wording concerning excluding agency
+(Apr. 3, 2025) (amending Exclusions from the Federal            subdivisions from the coverage of the Foreign Service Act.
+Labor-Management Relations Program, EO 12171, 44 Fed. Reg.      22 U.S.C. § 4103(b).
+                                                                3 EO 14251, sec. 1, 90 Fed. Reg. at 14553.
+66565 (Nov. 19, 1979)). On August 28, 2025, President Trump
+issued Executive Order 14343, which further amended Executive
+Order 12171, to exclude additional agencies and agency
+subdivisions from the coverage of the Statute. Further
+Exclusions from Federal Labor-Management Relations Program,
+Exec. Order No. 14343 (Aug. 28, 2025), 90 Fed. Reg. 42683
+(Sept. 3, 2025).
+542                                       Decisions of the Federal Labor Relations Authority                     74 FLRA No. 80
+
+
+the coverage of the Statute,4 with exceptions not relevant            equities and the public interest, the court held that the
+here.5                                                                government’s national-security interest outweighed
+                                                                      AFGE’s interests in preventing enforcement of
+          As such, the Authority ordered the Agency to                EO 14251.16
+show cause why its exceptions should not be dismissed for
+lack of jurisdiction, based on EO 14251.6 The Agency                           At the early stages of AFGE’s litigation, the
+responded to the order and stated that EO 14251 applied to            Authority placed this case in abeyance. Since then, the
+the Agency and, for that reason, the Authority lacked                 Ninth Circuit made the three important findings mentioned
+jurisdiction over this case.7 Although the Authority                  above. In addition, neither party to this case is currently
+provided the Union an opportunity to reply to the                     involved in any other litigation in which that party is
+Agency’s response,8 the Union did not file a reply.                   challenging EO 14251 or its implementation. Relatedly,
+Consequently, the Union did not provide any reasons why               neither party to this case has obtained a currently active
+EO 14251 should not apply here.                                       injunction concerning EO 14251 or its implementation.
+
+          Apart from the Authority’s proceedings, the                           Moreover, in previous cases where the President
+American Federation of Government Employees and five                  excluded entities from the Statute pursuant to his
+other unions (collectively, AFGE) filed a complaint asking            § 7103(b)(1) authority, the Authority dismissed the cases
+the U.S. District Court for the Northern District of                  due to a lack of jurisdiction.          For example, in
+California to enjoin implementation of EO 14251 and                   U.S. Attorney’s Office, Southern District of Texas,
+declare it unlawful.9 AFGE named the Department of                    Houston, Texas, after the President amended EO 12171 to
+Defense and the Secretary of Defense, among others, as                exclude the U.S. Attorney’s Office from the Statute’s
+defendants.10 The District Court issued a preliminary                 coverage,     the     Authority     dismissed     multiple
+injunction enjoining the agencies and agency subdivisions             unfair-labor-practice cases involving that office.17 In
+identified in EO 14251 from implementing it.11 But the                addition,    Department      of    the    Navy,     Naval
+U.S. Court of Appeals for the Ninth Circuit (Ninth Circuit)           Telecommunications Center, Ward Circle involved an
+stayed the injunction pending appeal,12 and later vacated             EO 12171 exclusion for “particular groupings of
+the injunction.13                                                     employees” within an agency or subdivision.18 In that
+                                                                      case, a union petitioned to represent a unit of employees
+         In its decision vacating the injunction, the                 who belonged to one of the excluded “groupings.”19 Based
+Ninth Circuit made several important findings. First, the             on its determination that EO 12171 applied to the
+court found that AFGE did “not demonstrate[] a likelihood             employees, the Authority dismissed the union’s petition to
+of success or serious questions on the merits” of its                 represent them.20       Further, in AFGE, AFL-CIO,
+challenge to EO 14251.14 Second, the court characterized              Local 2118, the Authority dismissed a negotiability
+ensuring national security as “an urgent objective of the             petition because it involved an entity that EO 12171
+highest order.”15 Third, when considering the balance of              excluded from the Statute’s coverage.21 Importantly, the
+
+
+4 Id., sec. 2(b), § 1-402, 90 Fed. Reg. at 14553.                     8 See Order at 2.
+5 EO 14251 states that the “Secretar[y] of Defense . . . [is]         9  AFGE, AFL-CIO v. Trump, 792 F. Supp. 3d 985, 996-97
+delegated authority under 5 U.S.C. [§ ]7103(b)(1) to issue orders     (N.D. Cal. 2025) (granting preliminary injunction), stayed,
+suspending the application of [§ 7103(b)(1) exclusions from the       148 F.4th 648 (9th Cir. 2025) (per curiam), and vacated by
+Statute] to any subdivisions of the department[] [he] supervise[s],   amended opinion, 178 F.4th 456 (9th Cir. 2026) (AFGE).
+                                                                      10 Id.
+thereby bringing such subdivisions under the coverage of the . . .
+Statute.” Id., sec. 4(a), 90 Fed. Reg. at 14555. There is no          11 Id. at 1006-07. The injunction did not apply to EO 14251’s
+
+contention that such an order applies here. Further, nothing in       foreign-service exclusions, because the plaintiffs did not
+EO 14251 “shall exempt from the coverage of [the Statute] . . .       challenge them. Id. at 1006.
+                                                                      12
+the immediate, local employing offices of any agency police              AFGE, AFL-CIO v. Trump, 148 F.4th at 656.
+                                                                      13 AFGE, 178 F.4th at 469.
+officers, security guards, or firefighters, provided that this
+exclusion does not apply to the Bureau of Prisons.” Id., sec. 2(b),   14 Id. at 466.
+                                                                      15 Id. at 468 (emphasis added) (quoting Holder v. Humanitarian
+§ 1-499, 90 Fed. Reg. at 14554. But neither party contends that
+this provision applies here.                                          L. Project, 561 U.S. 1, 28 (2010)).
+6 Order at 1.                                                         16 Id. at 469.
+7 Resp. at 2.     Two weeks after the Agency’s deadline for           17 57 FLRA 750, 750 (2002).
+                                                                      18 6 FLRA 498, 500 (1981).
+responding to the order, the Agency filed an amended response.
+                                                                      19 Id. at 499-500.
+See Am. Resp. at 1-3. Because the Agency did not request leave
+to file this supplemental submission, we do not consider it. See,     20 Id. at 501 & n.7.
+
+e.g., U.S. Dep’t of the Treasury, IRS, 74 FLRA 126,                   21 2 FLRA 916, 918 (1980).
+
+127 & nn.9-11 (2024) (declining to consider supplemental
+submission because party did not request leave to file it (citing
+5 C.F.R. § 2429.26(a))).
+74 FLRA No. 80                          Decisions of the Federal Labor Relations Authority                                      543
+
+
+Authority did not review the merits of the presidential
+national-security determinations at issue in any of those
+cases before dismissing them.22
+
+          Considering the factors mentioned above –
+including the pertinent precedent – the Authority finds it
+appropriate to take this case out of abeyance at this time,
+and to dismiss the Agency’s exceptions due to a lack of
+jurisdiction.23
+
+IV.       Order
+
+          We dismiss the exceptions.24
+
+
+
+
+22 Unlike the Ninth Circuit in the external litigation discussed     24 See U.S. Att’y’s Off., S. Dist. of Tex., Hous., Tex., 57 FLRA
+
+above, we have no reason to address any constitutional               at 750; Dep’t of the Navy, Naval Telecomm. Ctr., Ward Circle,
+arguments in this case because neither party presented any.          6 FLRA at 501 & n.7; AFGE, AFL-CIO, Loc. 2118, 2 FLRA
+23 See EO 14251, sec. 2(b), § 1-402, 90 Fed. Reg. at 14553           at 918.
+(excluding the “Department of Defense” from the coverage of the
+Statute, with exceptions discussed in note 5). There is no dispute
+here that the Agency is part of the Department of Defense.
+544                                    Decisions of the Federal Labor Relations Authority                      74 FLRA No. 80
+
+
+Member Wagner, dissenting:                                                 For these reasons, I disagree with the majority’s
+                                                                  decision to take this case out of abeyance at this time.
+          Executive Order 12171,1 as amended by                   Accordingly, I dissent. In doing so, I express no view on
+Executive Order 14251,2 provides that, with exceptions            the merits of the exclusions orders or how the majority
+not relevant here, the Agency is excluded from the                applies them in this case.
+coverage of the Federal Service Labor-Management
+Relations Statute (the Statute).3 As the Authority recently
+noted, these orders, as further amended by
+Executive Order 143434 – collectively, “the exclusions
+orders” – “directly concern the Authority’s jurisdiction”
+and “are the subject of ongoing litigation in federal district
+and circuit courts.”5 Given this ongoing litigation, the
+Authority has been “suspend[ing] the processing of cases
+involving parties covered by the exclusions orders as a
+prudential matter,” and has been holding those cases in
+abeyance.6 “As part of its procedures, the [Authority]
+provides parties the opportunity to establish that they are
+not subject to the exclusions orders.”7 “While a case is in
+abeyance, any raised claims are preserved, processing
+deadlines are suspended, and the [Authority] will not issue
+a final order to resolve the issues.”8
+
+         I continue to believe that the most prudent course
+of action is to keep cases covered by the exclusions orders
+in abeyance until the litigation over those orders reaches a
+definitive conclusion – including any actions by the
+U.S. Supreme Court.9         Although the majority cites
+previous examples of the Authority dismissing cases based
+on executive orders that excluded the relevant entities from
+the Statute,10 the executive orders in those cases were not
+the subject of pending litigation. Thus, those cases do not
+support taking the instant case out of abeyance and
+dismissing it at this time. Further, I note that, with specific
+regard to arbitration cases like the one before us, the filing
+of exceptions automatically stays the arbitrator’s award.11
+Therefore, holding such cases in abeyance has no
+meaningful effect on the excepting parties’ interests.
+
+
+
+1                                                                 9 However, I would continue to process cases that fall within
+   Exclusions from the Federal Labor-Management Relations
+Program, Exec. Order No. 12171, 44 Fed. Reg. 66565 (Nov. 19,      exceptions set forth in the exclusions orders. See U.S. Dep’t of
+1979).                                                            the Navy, Navy Region Mid-Atl. Fire & Emergency Servs.,
+2 Exclusions from Federal Labor-Management Relations              Naval Weapons Station Earle, N.J., 74 FLRA 384, 386 (2026)
+Programs, Exec. Order No. 14251, 90 Fed. Reg. 14553 (Apr. 3,      (Chairman Kiko concurring on other grounds) (processing case
+2025).                                                            involving “the immediate, local employing offices of . . .
+3
+  5 U.S.C. §§ 7101-7135.                                          firefighters”); U.S. Dep’t of the Army, Fort Huachuca, Ariz.,
+4 Further Exclusions from the Federal Labor-Management            74 FLRA 317, 318-19 (2025) (same); U.S. Dep’t of the Navy,
+Relations Programs, Exec. Order No. 14343, 90 Fed. Reg. 42683     Commander Navy Region Nw., Fire & Emergency Servs.,
+(Sept. 3, 2025).                                                  74 FLRA 286, 288 (2025) (same).
+5 IFPTE, AFL-CIO, Loc. 777, 74 FLRA 469, 471 (2026).              10 Majority at 4 (citing U.S. Att’y’s Off., S. Dist. of Tex.,
+6 Id.                                                             Hous., Tex., 57 FLRA 750 (2002); Dep’t of the Navy,
+7 Id.                                                             Naval Telecomms. Ctr., Ward Circle, 6 FLRA 498 (1981);
+8 Id.                                                             AFGE, AFL-CIO, Loc. 2118, 2 FLRA 916 (1980)).
+                                                                  11 U.S. Dep’t of Educ., 50 FLRA 34, 34 n.1 (1994) (citing
+
+                                                                  Processing Exceptions to Arbitration Cases, 51 Fed. Reg. 45754
+                                                                  (Dec. 22, 1986)); see also U.S. Dep’t of VA, VA Reg’l Off.,
+                                                                  St. Petersburg, Fla., 58 FLRA 549, 549 n.2 (2003); U.S. Dep’t of
+                                                                  the Navy, Naval Surface Warfare Ctr., Indian Head Div.,
+                                                                  Indian Head, Md., 56 FLRA 848, 852 (2000).
+
