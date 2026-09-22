@@ -1,0 +1,728 @@
+530                                      Decisions of the Federal Labor Relations Authority                        74 FLRA No. 79
+
+
+74 FLRA No. 79                                                       notified employees that as part of its return-to-office
+                                                                     policy, they would have to return to pre-pandemic work
+                UNITED STATES                                        schedules. Then, on February 15, 2024, the Department of
+        DEPARTMENT OF THE TREASURY                                   the Treasury (Treasury) issued a memorandum to all
+      BUREAU OF ENGRAVING AND PRINTING                               bureau and departmental office heads – including the
+                   (Agency)                                          Agency – announcing that, beginning on May 5, 2024,
+                                                                     Treasury would require all “teleworkers to complete at
+                              and                                    least 50[%] of their scheduled work hours at the traditional
+                                                                     office location.” 1 The memorandum (Treasury Memo)
+                 NATIONAL TREASURY                                   “provide[d] guidance for granting exceptions to this
+                  EMPLOYEES UNION                                    requirement and remind[ed] bureaus of the obligation to
+                       (Union)                                       satisfy collective[-]bargaining obligations.” 2 That same
+                                                                     day, February 15, 2024, consistent with the Treasury
+                          0-AR-6030                                  Memo, the Agency issued a new policy, which mandated
+                                                                     that “all [Agency] telework-eligible workers . . . will be
+                             _____                                   required to work on-site and in-person for 50% of their
+                                                                     work hours each month” (the new telework policy). 3 On
+                          DECISION                                   March 1, 2024, the Agency provided the Union with notice
+                                                                     of an opportunity to bargain the telework change with a
+                     September 15, 2026                              deadline of March 25, 2024. The parties met on March 7,
+                                                                     2024, but were unable to reach an agreement. The Union
+                             _____                                   had previously reopened the agreement for term
+                                                                     negotiations in July 2023, 4 and the Union argued that any
+ Before the Authority: Colleen Duffy Kiko, Chairman,                 changes to telework could only be bargained as part of
+ and Anne Wagner and Charles O. Arrington, Members                   those negotiations. 5 The Agency unilaterally implemented
+            (Member Arrington dissenting)                            the new telework policy.
+
+I.        Statement of the Case                                               The Union filed a grievance on April 15, 2024,
+                                                                     alleging that the Agency violated Article 36 of the parties’
+          Arbitrator Chuck Miller issued an award finding            agreement by unilaterally implementing the new telework
+that the Agency violated the parties’ collective-bargaining          policy. The Agency denied the grievance, and the matter
+agreement and the Federal Service Labor-Management                   went to arbitration.
+Relations Statute (the Statute) when it implemented an
+updated telework policy requiring employees to work                           The parties did not stipulate an issue. The
+on-site and in-person for at least 50% of their work hours           Arbitrator summarized the issues based on the allegations
+each month. The Agency filed exceptions alleging that the            included in the Union’s grievance, which the Arbitrator
+award is moot, fails to draw its essence from the parties’           characterized as stating:
+agreement, is contrary to law, and is impossible to
+implement, and that the Arbitrator exceeded his authority.                     The [A]gency breached the contract and
+For the reasons discussed below, we partially dismiss and                      committed an [u]nfair [l]abor [p]ractice
+partially deny the Agency’s exceptions.                                        by instituting a new [t]elework policy,
+                                                                               which does not comply with the parties’
+II.       Background and Arbitrator’s Award                                    collective[-]bargaining      agreement.
+                                                                               Specifically,    ...     the    Agency
+        In 2020, during the COVID-19 pandemic, the                             implemented a mandatory 50[%]
+Agency instructed all employees who were able to                               telework[] policy, and in doing so
+telework at 100% capacity to do so. In 2023, the Agency                        violated the telework portion of the
+
+1 Opp’n, Ex. 4, Department of the Treasury Memorandum at 1.          (July 2023 Union email “open[ed] the contract for term
+2 Id.; see also id. at 2 (“Bureaus and Offices are responsible for
+                                                                     negotiations”).
+satisfying collective[-]bargaining obligations under [the Statute]   5 Award at 8 (“The Union held the position . . . that negotiation
+
+and applicable collective[-]bargaining agreements.”).                of this proposed policy should be done only during term
+3 Award at 6; see also Opp’n, Ex. 5, New Work Environment
+                                                                     negotiations.”); Opp’n, Ex. 13 (Grievance Appeal) at 2 (“If the
+Policy 2024 at 1.                                                    Agency has a basis for restricting its employees to
+4 See Opp’n, Ex. 2, Tr. at 24; Exceptions Br. at 10 (July 2023
+                                                                     50% [telework] it can certainly raise those concerns during term
+Union email opened negotiations); Opp’n, Ex. 8 (Grievance) at 2      negotiations. Attempting, at this juncture, to bargain telework in
+(“the parties are currently negotiating over ground rules for term   the mid-term, is not required and would be piecemeal
+negotiations”); Opp’n, Ex.16 (Union’s Post-Hr’g Br.) at 10           bargaining.”).
+74 FLRA No. 79                        Decisions of the Federal Labor Relations Authority                                        531
+
+
+           [parties’ agreement] and engaged in                              serving written notice and/or proposals
+           piecemeal bargaining during a period of                          on the other during the twenty-fourth
+           negotiations over an open contract. 6                            month of this [a]greement. 11
+
+He further stated:                                                         At arbitration, the Agency asserted that
+                                                                  employees were returning to pre-pandemic work
+           [T]he issue calls for a twofold decision.              schedules and that nothing about the new telework policy
+           First, was the 50% policy one that[] . . .             prohibited employees without a valid telework agreement
+           requires     negotiations     prior    to              from requesting to telework pursuant to Article 36.
+           implementation, and second, if so, was                 According to the Agency, limiting telework to a maximum
+           that requirement satisfied by the                      of 50% per month did not violate the parties’ agreement
+           [Agency’s]      offer     to    negotiate              because Section 2(D) had always provided management
+           implementation of the policy?                          discretion over the scope of approved telework. The
+                                                                  Agency claimed to have met its contractual and statutory
+           To go to the heart of this matter: Was                 obligations by providing the Union with notice and an
+           the 50% in-office requirement saddled                  opportunity to bargain the change in telework policy.
+           to telework a true new and different
+           policy change as the Union maintains, or                         The Arbitrator noted that Section 1 explicitly
+           just a return to the pre-pandemic                      states that “the parties support the broadest possible use of
+           telework policy as the [Agency]                        telework,” and he found that “[l]imiting telework to a
+           maintains? 7                                           maximum of 50% of time during a pay period is the
+                                                                  antithesis of the broadest use of telework.” 12 The
+          Article 36, Section 1 (Section 1) states, in            Arbitrator also found that prior to the pandemic,
+pertinent part, “the parties support the broadest possible        Section 2(D) permitted employees to request and be
+use of telework without diminished employee                       granted telework up to five days per week. However, the
+performance or adverse impact on the [Agency] meeting             Arbitrator found that, under the new telework policy,
+its mission.” 8 Article 36, Section 2(D) (Section 2(D)),          “management’s discretion [was] no longer broad enough
+states in pertinent part, “[n]othing in [Article 36] prohibits    to allow more than” 50% telework per month, and that this
+an authorized management official from approving                  new limitation on “the parameters within which the
+participating employees to telework up to five . . . days         discretion of management can be exercised” was
+per week as a remote worker, in situations deemed                 “undeniably a change in the effect of the plain wording of
+appropriate by management.” 9 Article 37, Section 2 of the        [Section 2(D)].” 13
+parties’ agreement states that the agreement will be in
+effect for a period of four years and “will remain in effect                The Arbitrator rejected the Agency’s assertion
+for yearly periods thereafter, unless written notice is given     that it complied with its contract obligations when it gave
+by either party in the period between four months and two         the Union notice of the change on March 1, 2024, and
+months prior to the expiration date, of its desire to             offered to bargain over the impact and implementation of
+terminate or modify [the] [a]greement.” 10 Additionally,          the change. Because the agreement became effective on
+Article 37, Section 3 states:                                     November 6, 2019, the Arbitrator found that, under the
+                                                                  renegotiation-notice window in Article 37, Section 2, a
+           By mutual consent of the parties, the                  party could provide notice of a desire to renegotiate only
+           express        terms        of        the              between July 6 and September 6. 14 Accordingly, the
+           [parties’ agreement] may be amended                    Arbitrator concluded the Agency’s March 1 notice was
+           at any time. In addition, each party may               untimely. 15 Further, the Arbitrator found that Article 37
+           reopen not more than three existing                    does not contemplate modification outside of the term
+           articles and propose one new article by
+
+6 Award at 2.                                                     14 Id. at 3 (Art. 37, § 2 (“This [a]greement shall remain . . . in
+7 Id. at 11.                                                      effect for yearly periods . . . , unless written notice is given by
+8 Opp’n, Ex. 1, Collective-Bargaining Agreement (CBA) at 100.
+                                                                  either party in the period between four months and two months
+9 Id.
+                                                                  prior to the expiration date.”)), 15 (“[The parties’ agreement]
+10 Id. at 102.
+                                                                  renewed annually . . . , starting on November 6, 2023, unless
+11 Id.
+                                                                  written notice of desire to modify [or terminate] the agreement is
+12 Award at 12.
+                                                                  given between July 6 and September 6 of any year.”).
+13 Id. at 13; see also id. at 14 (finding it a “major change in   15 Id. at 3 (citing Art. 37, § 2).
+
+policy” that no employee requesting telework would be approved
+for a more-than-50% teleworking agreement, which was
+inconsistent with Article 36).
+532                                      Decisions of the Federal Labor Relations Authority                      74 FLRA No. 79
+
+
+period except by mutual agreement, and that the Union did             the parties’ agreement, thereby “opening negotiations.” 18
+not agree to changing the telework policy.                            The Union contends that the Authority should dismiss
+                                                                      these arguments because the Agency failed to raise them
+         The Arbitrator held that the new telework policy             before the Arbitrator. 19
+– requiring employees to work in the office 50% of each
+month – violated Article 36. Further, he determined that                        Both the Union’s decision not to continue
+the Agency’s unilateral implementation of the change                  impact-and-implementation bargaining and its July 11,
+violated Article 37.     Based on these findings, the                 2023, email reopening term negotiations predated the
+Arbitrator concluded that the Agency repudiated                       arbitration proceedings. Further, during arbitration, the
+Article 36 and engaged in piecemeal bargaining in                     Union stated that its email opened term negotiations, 20 any
+violation of § 7116(a)(1) and (5) of the Statute. As                  telework changes should be bargained during term
+remedies, the Arbitrator directed the Agency to: rescind –            negotiations, 21 and the Agency’s attempt to bargain impact
+and cease and desist from implementing – the new                      and implementation outside term negotiations was
+telework policy; restore the pre-pandemic telework                    “piecemeal . . . bad[-]faith bargaining.” 22 Therefore, the
+agreements of employees whose agreements provided for                 Agency should have known to raise its defense regarding
+more than 50% telework; and comply with Article 36 and                unilateral changes to permissive subjects to the Arbitrator.
+the contractual telework system “until and unless changed             But there is no evidence in the record that the Agency did
+in compliance with Article[s] 36 and 37.” 16                          so. Consequently, we dismiss these arguments under
+                                                                      §§ 2425.4(c) and 2429.5 of the Authority’s Regulations. 23
+        The Agency filed exceptions to the award on
+May 8, 2025, and the Union filed an opposition to the                           Additionally, the Agency contends that the award
+Agency’s    exceptions    on     June    6,     2025.                 is moot based on a Presidential Memorandum
+                                                                      (Presidential Memo) 24 and Office of Personnel
+III.       Preliminary Matter: Sections 2425.4(c) and                 Management (OPM) guidance 25 directing agency heads to
+           2429.5 of the Authority’s Regulations bar one              revise telework policies and require employees to return to
+           of the Agency’s arguments.                                 in-person work. 26 The Union argues that, although the
+                                                                      Presidential Memo and the OPM guidance both preceded
+          Under §§ 2425.4(c) and 2429.5 of the Authority’s            the arbitration hearing, the Agency did not argue to the
+Regulations, the Authority will not consider arguments                Arbitrator that either document “had any effect on this
+that could have been, but were not, presented to the                  matter or [on] the Arbitrator’s ability to order a remedy.” 27
+arbitrator. 17                                                        In fact, the Union contends that, at the arbitration hearing,
+                                                                      the Arbitrator asked the parties about “the effect” of the
+         The Agency contends that telework is a                       OPM guidance “on the issue and on the decision . . . to be
+permissive subject of bargaining that it was permitted to             made,” and the Agency declined to take a position because
+unilaterally change because (1) the Union failed to                   it did not “have any guidance” on the issue. 28 The Union
+participate in impact-and-implementation bargaining over              further asserts that, even in its post-hearing brief, the
+the new telework policy, and (2) on July 11, 2023, the                Agency did not raise any argument regarding either
+Union notified the Agency that it intended to renegotiate
+
+16 Id. at 17.                                                         22 Union’s Post-Hr’g Br. at 17.
+17 5 C.F.R. §§ 2425.4(c), 2429.5; see also U.S. Dep’t of VA,          23 NAGE, 71 FLRA 775, 776 n.15 (2020) (dismissing essence
+
+James A. Haley VAMC, Tampa, Fla., 73 FLRA 47, 47-48 (2022).           claim where there was no indication in the record that the
+18 Exceptions Br. at 9-11 (citing AFGE, Loc. 918, 72 FLRA 421,
+                                                                      excepting party raised the relevant contractual argument
+422 (2021) (“[O]nce an agreement has expired, agencies may            at arbitration).
+elect to no longer be bound by provisions that concern a              24 90 Fed. Reg. 8251 (Jan. 28, 2025).
+
+permissive subject of bargaining and . . . may reassert their right   25 OPM, Guidance on Presidential Memorandum Return to
+
+not to negotiate said permissive subjects.”)); see also id. at 10     In-Person        Work       (2025)    (OPM        Guidance),
+(characterizing Union’s July 2023 email as “opening                   https://www.opm.gov/chcoc/latest-memos/guidance-on-
+negotiations”).                                                       presidential-memorandum-return-to-in-person-work.pdf.
+19 Opp’n Br. at 15.                                                   26 Exceptions Br. at 13-14.
+20 Opp’n, Ex. 2, Tr. at 24.                                           27 Opp’n Br. at 14.
+21 Union’s Post-Hr’g Br. at 17 (“the parties should have              28 Id.
+
+addressed the substantive bargaining over telework at the term
+table”); see also id. at 15-16 (arguing telework is a mandatory
+subject of bargaining that would survive the expiration of the
+agreement); Grievance at 2 (stating the parties were currently in
+the midst of term negotiations and arguing the Agency could not
+change or modify the parties’ negotiated telework article “via
+notice of a mid-term change”).
+74 FLRA No. 79                          Decisions of the Federal Labor Relations Authority                                         533
+
+
+document. 29 Accordingly, the Union argues that the                   Agency, as a result of the Presidential Memo and the OPM
+Authority should dismiss these arguments as well. 30                  guidance, “telework is no longer a viable option as of
+                                                                      January 2025,” rendering this entire dispute about
+          The Authority has held that mootness may be                 telework moot. 37 The Presidential Memo instructs
+raised at any stage of the Authority’s proceedings. 31 We             agencies to terminate remote-work arrangements and
+assume, arguendo, that the Agency’s arguments regarding               require full-time, in-person work, but explicitly directs
+the Presidential Memo and the OPM guidance are properly               agencies to implement this instruction “consistent with
+before us. However, for the reasons discussed below, we               applicable law,” and permits agency-head “exemptions.” 38
+find that those arguments lack merit.                                 Likewise, OPM’s guidance reiterates the return-to-office
+                                                                      directive while acknowledging that implementation
+IV.        Analysis and Conclusions                                   remains subject to “any collective[-]bargaining
+                                                                      obligations.” 39 The award requires the Agency to honor
+           A.       The award is not moot.                            the parties’ contractual telework provisions, and there is
+                                                                      nothing in the Presidential Memo or OPM guidance to the
+          As noted above, the Agency argues that the award            contrary. Thus, these directives discouraging telework do
+is moot based on the Presidential Memo and the OPM                    not “completely or irrevocably eradicate[] the effects of
+guidance. 32 The Authority will set aside an arbitration              the alleged [contractual and statutory] violation[s].” 40
+award where the underlying dispute has become moot. 33                Further, the Agency does not argue, let alone demonstrate,
+A dispute becomes moot when the parties no longer have                that there is no reasonable expectation that it will commit
+a legally cognizable interest in the outcome. 34 The burden           similar violations in the future. Accordingly, the Agency
+of demonstrating mootness “is a heavy one.” 35 To                     fails to demonstrate that the award is moot. 41
+establish that a matter is moot, a party must demonstrate
+that (1) there is no reasonable expectation that the alleged                    B.        The Agency does not demonstrate that
+violation will recur; and (2) events have completely or                                   the Arbitrator exceeded his authority.
+irrevocably eradicated the effects of the alleged
+violation. 36                                                                   The Agency contends that the Arbitrator
+                                                                      exceeded his authority by finding that the Agency violated
+        The Agency fails to meet its heavy burden of                  Article 37, which the Agency claims was not one of the
+demonstrating the award is moot. According to the                     articles “the parties had stipulated were at issue.” 42 As
+
+29 Id. at 15.                                                         32 Exceptions Br. at 13-14.
+30 Id. at 14.                                                         33 U.S. DOD, Def. Logistics Agency, 73 FLRA 331, 332 (2022)
+31  Ass’n of Civilian Technicians, Show-Me Army Chapter,              (DLA).
+59 FLRA 378, 380 (2003) (Civilian Technicians). However,              34 U.S. DHS, CBP, U.S. Border Patrol, Laredo Sector, 70 FLRA
+
+Member Wagner notes that the Authority also has held that             921, 922 (2018) (Member DuBester concurring) (citing IAMAW
+“questions of mootness . . . are questions of arbitrability” that     Dist. Lodge 776, 63 FLRA 93, 94 (2009)).
+“must be submitted to an arbitrator for resolution, consistent with   35 USDA, Food Safety & Inspection Serv., 73 FLRA 683, 686
+
+§ 7121” of the Statute. U.S. DHS, U.S. ICE, Wash., D.C.,              (2023) (USDA) (citing Civilian Technicians, 59 FLRA at 380).
+                                                                      36 DLA, 73 FLRA at 332.
+69 FLRA 72, 74 (2015) (Member Pizzella concurring in part and
+                                                                      37 Exceptions Br. at 14.
+dissenting in part on other grounds). Cf. NFFE, Council of
+                                                                      38 Presidential Memo at 1.
+Consol. Locs., 52 FLRA 137, 140 (1996) (holding that “an
+                                                                      39 OPM Guidance at 3.
+arbitrator’s determination regarding the mootness of a grievance
+                                                                      40 DLA, 73 FLRA at 332.
+or an issue is akin to an arbitrator’s determination of procedural
+                                                                      41 See USDA, 73 FLRA at 686 (parties’ agreement to future
+arbitrability under the parties’ collective[-]bargaining
+agreement”). Member Wagner notes that the latter holding is           bargaining did not moot either the award’s finding that the
+consistent with private-sector court precedent. See, e.g., Bimbo      agency had already violated its duty to bargain or the awarded
+Bakeries USA, Inc. v. Bakery, Confectionary, Tobacco Workers          remedy requiring the agency to return to the status quo ante until
+& Grain Millers Union, Twin Cities Loc. 22, 826 F. Supp. 3d           bargaining was completed); U.S. DHS, U.S. CBP, Laredo, Tex.,
+1039, 1046 (D. Minn. 2026) (citing Oil, Chem. & Atomic                66 FLRA 626, 631 (2012) (rejecting argument that a
+Workers Int’l Union Loc. 5-391 v. Conoco, Inc., 64 F. App’x 178,      status-quo-ante remedy was impossible to implement, and
+184-85 (10th Cir. 2003); Loc. Union No. 370 of the Int’l Union        therefore moot, where the agency failed to show a conflict
+of Operating Eng’rs v. Morrison-Knudsen Co., Inc., 786 F.2d           between the remedy and the cited directive).
+                                                                      42 Exceptions Br. at 5-6.
+1356, 1358 (9th Cir. 1986); W. Automatic Mach. Screw Co., Div.
+of Standard Screw Co. v. Int’l Union, United Auto., Aircraft &
+Agric. Implement Workers of Am. (UAW-AFL-CIO), 335 F.2d
+103, 106 (6th Cir. 1964)). Nevertheless, Member Wagner finds
+it unnecessary to resolve the apparent tension between these lines
+of Authority precedent here because, even assuming that the
+Agency’s mootness arguments are properly before us, she agrees
+that they lack merit for the reasons discussed below.
+534                                       Decisions of the Federal Labor Relations Authority                       74 FLRA No. 79
+
+
+relevant here, arbitrators exceed their authority when they                   Accordingly, we find no basis to conclude that
+resolve an issue not submitted to arbitration. 43 When                the Arbitrator exceeded his authority, and we deny the
+parties do not stipulate to the issues, arbitrators have the          Agency’s exception. 53
+discretion to frame them, 44 and the Authority accords the
+arbitrator’s formulation substantial deference. 45 Where an                     C.        The award draws its essence from the
+arbitrator has framed the issues, the Authority examines                                  parties’ agreement.
+only whether the award is directly responsive to the issues
+as framed by the arbitrator. 46 Moreover, arbitrators do not                    The Agency argues the award fails to draw its
+exceed their authority by addressing any issue that is                essence from the parties’ agreement in several respects. 54
+necessary to decide a framed issue. 47                                The Authority will find an arbitration award fails to draw
+                                                                      its essence from a collective-bargaining agreement when
+         The parties did not stipulate to the issues before           the appealing party establishes the award: (1) cannot in
+the Arbitrator. The Arbitrator framed the issues based on             any rational way be derived from the agreement; (2) is so
+the Union’s grievance, which challenged the new telework              unfounded in reason and fact and so unconnected with the
+policy as changing or amending the parties’ agreement. 48             wording and purposes of the agreement as to manifest an
+The Arbitrator’s framed issue included the Union’s                    infidelity to the obligation of the arbitrator; (3) does not
+allegation that the Agency had “engaged in piecemeal                  represent a plausible interpretation of the agreement; or
+bargaining during a period of negotiations over an open               (4) evidences a manifest disregard of the agreement. 55
+contract.” 49 In resolving the framed issues, the Arbitrator          Mere disagreement with an arbitrator’s interpretation and
+found that the new telework policy effectively amended                application of an agreement does not provide a basis for
+the parties’ agreement and concluded that the Agency                  finding an award deficient. 56
+violated both Article 36, which concerns telework, and
+Article 37, which concerns when and how the parties may                          According to the Agency, the Arbitrator’s finding
+amend or reopen existing contract articles. 50 In so finding,         that the Agency violated Article 36 fails to draw its
+the Arbitrator relied upon Article 37 to reject the Agency’s          essence from Section 2(D). 57            As stated above,
+argument that its March 1, 2024, offer to negotiate the               Section 2(D) provides that “[n]othing in [the telework
+impending change had satisfied its bargaining                         article] prohibits an authorized management official from
+obligations. 51 Thus, the Arbitrator’s analysis of Article 37         approving participating employees to telework up to five
+was directly responsive to both the parties’ arguments and            . . . days per week as a remote worker, in situations deemed
+the framed issues, and the Authority precedent cited by the           appropriate by management.” 58 The Arbitrator interpreted
+Agency is inapposite. 52                                              Section 2(D) as permitting employees to request, and
+                                                                      managers to exercise the discretion to approve, telework
+                                                                      up to five days a week. 59 According to the Arbitrator, the
+                                                                      new telework policy prohibits managers from approving
+
+43 U.S. DHS, U.S. CBP, 74 FLRA 403, 409 (2026).                       discretion to open appropriate[-]arrangement negotiations in
+44 AFGE, Loc. 2338, 73 FLRA 522, 523 (2023) (Loc. 2338 I);
+                                                                      March 2024.”), 4 (arguing that “[b]y offering [the Union] the
+Fraternal Ord. of Police, DC Lodge 1, 73 FLRA 408, 411                opportunity to commence appropriate[-]arrangement bargaining,
+(2023).                                                               the Agency complied” with the parties’ agreement).
+45 Loc. 2338 I, 73 FLRA at 523.                                       52 See Exceptions Br. at 5-6 (citing U.S. Dep’t of VA, John J.
+46 Id.
+                                                                      Pershing VA Med. Ctr., 72 FLRA 656, 657-58 (2022)
+47 AFGE, Loc. 2338, 74 FLRA 99, 102-03 (2024) (Loc. 2338 II).
+                                                                      (Member Abbott concurring; Chairman DuBester dissenting in
+48 Award at 2.
+                                                                      part) (granting exceeded-authority exception where arbitrator
+49 Id.; see also Grievance Appeal at 2 (“[A]s the CBA is currently
+                                                                      resolved issue outside of the stipulated issue); U.S. EPA,
+up for bargaining, the Agency’s attempt at piecemeal                  Region 2, N.Y., N.Y., 63 FLRA 476, 479 (2009) (same);
+negotiations on this matter is improper.”); see generally T-Mobile    U.S. Dep’t of the Navy, Naval Sea Logistics Ctr. Detachment Atl.,
+USA, Inc., 365 NLRB 175, 186 n.4 (2017) (“in ‘piecemeal               Indian Head, Md., 57 FLRA 687, 688-89 (2002) (granting
+bargaining’ cases[,] the employer engages in bargaining but           exceeded-authority exception where arbitrator found no violation
+implements a proposal on a single issue before reaching overall       concerning the issue he framed, but nevertheless awarded a
+impasse or agreement”), 186 (“permitting an employer to               remedy concerning an issue not submitted to arbitration)).
+                                                                      53 Loc. 2338 II, 74 FLRA at 102-03.
+unilaterally choose which parts of the collective-bargaining
+                                                                      54 Exceptions Br. at 6-13.
+relationship to honor would allow the employer to continue to . . .
+bargain with the . . . union only in those areas where the employer   55 U.S. DOJ, Fed. BOP, Fed. Corr. Complex, Victorville, Cal.,
+
+holds an advantage, whether legal or economic, thus reducing the      73 FLRA 624, 625-26 (2023).
+                                                                      56 AFGE, Loc. 2369, 73 FLRA 772, 773 (2023) (citing
+possibility of compromise and the ability of the relationship to
+function effectively”).                                               Consumer Fin. Prot. Bureau, 73 FLRA 670, 671 (2023)).
+50 Award at 15.                                                       57 See Exceptions Br. at 7, 11-13.
+51 Id. at 14-15; see also Exceptions, Attach., Agency’s Closing       58 CBA at 100.
+
+Br. at 2 (“In accordance with the law and the                         59 Award at 12-13.
+
+[collective-bargaining agreement], [the Agency] exercised its
+74 FLRA No. 79                         Decisions of the Federal Labor Relations Authority                                    535
+
+
+any employees from teleworking five days per week,                  interpretation, which does not demonstrate that the
+thereby restricting “the parameters within which the                Arbitrator’s interpretation is irrational, unfounded,
+discretion of management can be exercised.” 60 In other             implausible, or in manifest disregard of Article 36. 67 Thus,
+words, by imposing a 50% in‑office minimum, the new                 the Agency’s argument does not establish the award fails
+telework policy eliminates the ability of individual                to draw its essence from the parties’ agreement.
+management officials to approve more than 50% telework
+where they deem it appropriate, thereby conflicting with                       The Agency also contends that it did not violate
+Section 2(D)’s plain language and reserved managerial               Article 37 because it provided notice and invoked
+judgment.     The Agency fails to explain how the                   impact-and-implementation bargaining, and the Union did
+Arbitrator’s finding that the restrictions in the new               not submit proposals. 68 However, when parties have
+telework policy conflict with the flexibility in Section 2(D)       already bargained over a matter, and included that matter
+is irrational, unfounded, implausible, or in manifest               in a collective-bargaining agreement, the parties are bound
+disregard of Section 2(D). 61                                       by that agreement during its term, unless the agreement
+                                                                    provides exceptions. 69 As the Arbitrator noted, Article 37
+         The Agency also asserts that Section 2(D) allows           provides the narrow circumstances under which the parties
+only “participating employees” to work with management              can amend or reopen the parties’ agreement mid-term. In
+to get approval for remote-work arrangements, and                   this regard, the Arbitrator found that Article 37 sets a
+contends that most bargaining-unit employees were not               specific window – July 6 through September 6 – for
+affected by the new telework policy because they did not            “giving written notice of a desire [to] change” the parties’
+have telework agreements in place at the time of the                agreement. 70 The Agency provided the Union notice on
+change. 62 But the Agency does not claim that the parties’          March 1, which the Arbitrator found fell outside that
+agreement defines “participating employees” or cite any             window. 71 Although the Agency claims it satisfied this
+contract wording requiring the Arbitrator to limit                  requirement, it does not contest that it sent its notice in
+Section 2(D)’s application to employees who had executed            March, nor does it explain why notice in March was
+telework agreements as of the time of the change. Thus,             timely. 72
+the Agency’s arguments provide no basis for finding that
+the award fails to draw its essence from the parties’                         The Agency also asserts that the Arbitrator’s
+agreement. 63                                                       determination that the proper forum for bargaining
+                                                                    telework changes was term negotiations – rather than
+          The Agency further argues that it did not violate         mid-term bargaining – fails to draw its essence from
+Article 36 because the parties’ agreement does not                  Article 37. 73 The Agency emphasizes that Article 37
+guarantee telework or require approval of telework                  makes no mention of “term negotiations” and allows
+requests. 64 However, the Arbitrator did not find that the          limited renegotiation during the term of the agreement. 74
+Agency violated Article 36 by failing to guarantee                  However, the Arbitrator determined that the parties’
+telework; instead, he determined that a 50% ceiling on              agreement does not contemplate modification outside of
+telework eliminated the possibility that employees could            the notice period discussed above except by mutual
+telework up to “five . . . days per week as a remote worker,        agreement, and that the Union did not agree to a
+in situations deemed appropriate by management.” 65 The             modification. 75 Because the Agency does not demonstrate
+Agency has not identified any contractual wording in                that it satisfied the midterm-bargaining requirements in
+Article 36 that conflicts with the Arbitrator’s                     Article 37, its arguments reflect mere disagreement with
+interpretation; 66 it merely argues for its preferred               the Arbitrator’s interpretation of Article 37, and thus do
+
+60 Id. at 13.                                                       67 See USDA, Food & Nutrition Serv., 73 FLRA 822, 824 (2024)
+61 See Ass’n of Admin. L. Judges, IFPTE, 74 FLRA 325, 332
+                                                                    (rejecting arguments that “merely disagree[d] with”
+(2026) (IFPTE) (Member Arrington concurring on other                interpretation, where arbitrator “thoroughly discussed the
+grounds).                                                           agreement’s terms and fully explained” his rationale (citing
+62 Exceptions Br. at 7-8.
+                                                                    Fed. Educ. Ass’n, Stateside Region, 73 FLRA 747, 749 (2023))).
+63 IFPTE, 74 FLRA at 332 (noting that excepting party did not       68 Exceptions Br. at 7-8.
+
+identify any contractual wording that required the arbitrator to    69 Cf. AFGE, Loc. 3972, 74 FLRA 252, 254-55 (2025)
+
+reach a different conclusion).                                      (Loc. 3972) (where parties’ agreement expressly governs
+64 Exceptions Br. at 11.
+                                                                    procedures for changing telework agreements, parties do not
+65 Award at 12-13.
+                                                                    have midterm duty to bargain further).
+66 See NTEU, 73 FLRA 315, 320-21 (2022) (Chairman DuBester          70 Award at 15.
+
+concurring on other grounds) (rejecting essence exception where     71 Id.
+
+party “fail[ed] to identify any language” in negotiated agreement   72 Exceptions Br. at 8 (“the Agency . . . properly invoked
+
+that “conflict[ed] with the [a]rbitrator’s determination”).         impact[-]and[-]implementation [bargaining] in March of 2024”).
+                                                                    73 Id.
+                                                                    74 Id. at 8-9.
+                                                                    75 Award at 15.
+536                                     Decisions of the Federal Labor Relations Authority                         74 FLRA No. 79
+
+
+not establish that the award fails to draw its essence from         discretion over individual employees’ work schedules
+the parties’ agreement. 76                                          under the policy, 81 including “the discretion to allow an
+                                                                    employee to telework more . . . than 50%” of the time, 82
+          Finally, the Agency argues that the Arbitrator            and even “up to five days of telework.” 83 The Agency
+“failed to consider the Agency’s substantiated claims that          clearly and unequivocally states that “[t]his management
+the Union failed to challenge material changes to the               discretion is in compliance with” Section 2(D). 84 In other
+[parties’ agreement] both in 2020 and 2023.” 77 The                 words, the Agency reads Section 2(D) as allowing
+Agency does not explain how this renders the award                  individual managers to approve more than 50% telework.
+irrational, implausible, unfounded, or in manifest
+disregard of the agreement. Accordingly, this argument                        In sum, the contract interpretation advanced by
+does not demonstrate that the award fails to draw its               the dissent is not properly before us, and, in fact appears to
+essence from the parties’ agreement. 78                             conflict with the Agency’s arguments. The dissent
+                                                                    erroneously contends that we are “requiring ‘magic words’
+          The dissent contends that the award fails to draw         for the Agency to adequately raise [an] argument.” 85 On
+its essence from Section 2(D). Specifically, the dissent            the contrary, we are simply saying that the Agency does
+argues that: (1) Section 2(D) leaves telework matters to            not use any words that may reasonably be read as taking
+the Agency’s complete discretion; (2) the Agency                    the position that the dissent takes. Accordingly, we
+exercised that discretion and issued a new policy setting           decline to address the merits of the arguments that the
+the amount of telework “deemed appropriate by                       dissent raises. 86
+management” at no more than 50%; (3) the Arbitrator
+improperly interpreted the terms “authorized management                      For the above reasons, we find that the Agency
+official” and “management” in Section 2(D) to have the              has not demonstrated that the award fails to draw its
+same meaning; and (4) once the new telework policy was              essence from the parties’ agreement. Accordingly, we
+implemented, individual supervisors or managers did not             deny the Agency’s essence exceptions.
+have discretion to approve more than 50% telework.
+                                                                              D.         The Agency does not demonstrate the
+         However, as a threshold matter, we note that the                                award is contrary to law.
+Agency itself does not make these arguments, 79 therefore
+precluding us from entertaining them here. 80 Additionally,                 The Agency cites the management rights to “take
+and perhaps more importantly, the Agency’s stated                   whatever actions may be necessary to carry out the agency
+position directly contradicts that espoused by the dissent.         mission during emergencies” 87 and to negotiate, at its
+The Agency repeatedly relies on record evidence for the
+proposition that the new telework policy complied with
+Section 2(D) because managers and supervisors retained
+
+76 Loc. 3972, 74 FLRA at 256 (“simply stating disagreement with     86   Chairman Kiko shares the dissent’s concern that
+the [a]rbitrator’s interpretation does not demonstrate that the     collective-bargaining-agreement         provisions        reserving
+award is deficient” (citing U.S. DOJ, Fed. BOP, Fed. Corr. Inst.,   management discretion over telework-policy determinations
+Elkton, Ohio, 74 FLRA 29, 31 (2024))).                              must be enforced at arbitration. However, as she has previously
+77 Exceptions Br. at 7.
+                                                                    noted, the Authority’s review of arbitration awards is confined to
+78 U.S. Dep’t of the Navy, Commander Navy Region Nw., Fire &
+                                                                    the arguments raised by the parties. AFGE, Loc. 2052, Council
+Emergency Servs., 74 FLRA 286, 291 (2025) (Navy).                   of Prison Locs. 33, 73 FLRA 59, 62 n.48 (2022)
+79 Although the Agency argues generally that management
+                                                                    (Chairman DuBester concurring) (then-Member Kiko, in an
+“maintained discretion” over employees’ telework schedules,         attributed footnote, acknowledging unfairness of arbitrator’s
+Exceptions Br. at 12, it does not argue that the Arbitrator erred   actions, but noting that “because the [u]nion did not raise an
+by interpreting “management” as synonymous with                     unfair-hearing exception, the Authority may not consider it”
+“management official,” or that the new telework policy removed      (citing U.S. Dep’t of VA, Gulf Coast Veterans Health Care Sys.,
+from individual supervisors their discretion to approve more than   69 FLRA 608, 610 (2016)); U.S. Dep’t of VA, 71 FLRA 992, 994
+50% telework.                                                       n.23 (2020) (Member Abbott dissenting) (citing Greenlaw v.
+80 5 C.F.R. § 2425.6 (providing that an excepting party has the
+                                                                    United States, 554 U.S. 237, 244 (2008) (noting the general rule
+burden to raise recognized grounds for reviewing an arbitration     that “our adversary system is designed around the premise that
+award and to provide supporting arguments).                         the parties know what is best for them, and are responsible for
+81 Exceptions Br. at 12-13.
+                                                                    advancing the . . . arguments entitling them to relief” (quoting
+82 Id. at 12.
+                                                                    Castro v. United States, 540 U.S. 375, 381-83 (2003) (Scalia, J.,
+83 Id. at 13.
+                                                                    concurring in part and concurring in judgment))); Burgess v.
+84 Id. (emphasis added).
+                                                                    United States, 874 F.3d 1292, 1300 (11th Cir. 2017) (when “a
+85 Dissent at 14 (emphasis added).
+                                                                    court engages in . . . raising claims or defenses on [a party’s]
+                                                                    behalf, the court may cease to appear as a neutral arbiter, and that
+                                                                    could be damaging to our system of justice”))).
+                                                                    87 Exceptions Br. at 7 (quoting 5 U.S.C. § 7106(a)(2)(D)).
+74 FLRA No. 79                         Decisions of the Federal Labor Relations Authority                                537
+
+
+election, permissive subjects of bargaining, 88 but it does         Agency’s argument is premised on its claim that it is not
+not explain what aspect of the award conflicts with these           lawfully permitted to comply with the award. As
+rights     or       provide    any     supporting       analysis.   discussed above, we have rejected that claim. And the
+Section 2425.6(e)(1) of the Authority’s Regulations                 Agency does not otherwise explain how the award is
+provides that an exception “may be subject to dismissal or          impossible to implement. Accordingly, we deny this
+denial if . . . [t]he excepting party fails to raise and support    exception.
+a ground” listed in § 2425.6(a)-(c). 89 Consistent with
+§ 2425.6(e)(1), when a party does not provide any                   V.        Decision
+arguments to support its exception, the Authority will deny
+the exception. 90 Accordingly, because the Agency fails to                 We partially dismiss and partially deny the
+support its management-rights argument, we deny this                Agency’s exceptions.
+exception. 91
+
+          Further, the Agency alleges the award is contrary
+to law because “[i]t is no longer appropriate for employees
+to be in a telework status unless the telework status meets
+the requirements of the” Presidential Memo and the OPM
+guidance. 92 As discussed in the mootness analysis above,
+the award requires the Agency to honor the parties’
+contractual telework provisions, and there is nothing in the
+Presidential Memo or the OPM guidance to the contrary.
+As noted above, the Presidential Memo and OPM
+guidance state that they must be “implemented consistent
+with applicable law” 93 and are subject to “any
+collective[-]bargaining obligations.” 94 Moreover, the
+award does not remove the Agency’s discretion to
+determine that an individual telework request is not a
+“situation[] deemed appropriate by management.” 95
+Accordingly, the Agency has not established that the
+Presidential Memo or OPM guidance render the award
+unlawful, and we deny this contrary-to-law exception.
+
+          E.        The Agency does not demonstrate that
+                    the award is incomplete, ambiguous, or
+                    contradictory    so   as   to   make
+                    implementation impossible.
+
+         The Agency argues that the award is incomplete,
+ambiguous, or contradictory, so as to make
+implementation of the award impossible. 96 According to
+the Agency, based on the Presidential Memo and the OPM
+guidance, the award “is impossible to implement given the
+current state of telework in the [f]ederal government.” 97
+
+         In order for the Authority to find an award
+deficient as incomplete, ambiguous, or contradictory, the
+appealing party must show that implementation of the
+award is impossible because the meaning and effect of the
+award are too unclear or uncertain. 98 However, the
+
+88 Id. (citing 5 U.S.C. § 7106(a)(2)(D) but quoting wording found   92 Exceptions Br. at 13-14.
+
+in 5 U.S.C. § 7106(b)(1)).                                          93 Presidential Memo at 1.
+89 5 C.F.R. § 2425.6(e)(1).                                         94 OPM Guidance at 2-3.
+90 U.S. Dep’t of VA, Gulf Coast Med. Ctr., Biloxi, Miss., 70 FLRA   95 CBA at 100.
+
+175, 176 (2017).                                                    96 Exceptions Form at 5.
+91 See id. at 176-77 (denying management-rights argument under      97 Exceptions Br. at 14.
+
+§ 2425.6(e)(1) where excepting party failed to provide any          98 Navy, 74 FLRA at 290.
+
+supporting arguments).
+538                                        Decisions of the Federal Labor Relations Authority                          74 FLRA No. 79
+
+
+Member Arrington, dissenting:                                           happening here. The majority claims “the Agency does
+                                                                        not use any words that may reasonably be read as taking
+          Parties   devote       substantial    time    and             the position that the dissent takes.” 6 However, the
+taxpayer-funded resources crafting the terms of                         majority acknowledges that the Agency argues “the
+collective-bargaining agreements. All of that time and                  Arbitrator’s finding that the Agency violated Article 36
+effort is wasted when an arbitrator, or another reviewing               fails to draw its essence from Section 2(D).” 7
+body, does not honor the plain language of negotiated                   Furthermore, the majority does not address the above-cited
+provisions. It is because of this failure, on the Arbitrator            language. For these reasons, I believe the Agency has
+and the majority here, that I dissent.                                  raised this argument.
+
+          The Agency argues the award fails to draw its                           The Authority will find an arbitration award fails
+essence from parties’ agreement because: (1) Article 36,                to draw its essence from a collective-bargaining agreement
+Sections 1 and 2(D) do not contain any language that                    when the appealing party establishes the award: (1) cannot
+“require[s] an authorized management official to approve                in any rational way be derived from the agreement; (2) is
+an employee to telework outside the scope of orders and/or              so unfounded in reason and fact and so unconnected with
+guidance from the Administration, OPM, or the                           the wording and purposes of the agreement as to manifest
+[Agency]” 1; (2) the Agency “still maintained discretion                an infidelity to the obligation of the arbitrator; (3) does not
+over the telework schedule of the employee in compliance                represent a plausible interpretation of the agreement; or
+with Article 36(2)(D)” 2; and (3) the Agency “did not                   (4) evidences a manifest disregard of the agreement. 8 In
+violate [Section 2](D) with the proposed return to work                 this regard, federal circuit courts have found that an
+initiative [because t]he modification allowed for                       arbitrator’s interpretation failed to draw its essence from
+management discretion.” 3 Taking all of these together, it              the parties’ agreement because it was inconsistent with the
+is clear to me, as it should be the majority, the Agency is             plain language of the agreement. 9 Further, the Authority
+arguing that the new telework policy is consistent with the             has granted essence exceptions where the arbitrators’
+discretion accorded management under the plain language                 interpretations were implausible, unfounded, irrational,
+of Section 2(D). Despite the majority’s claim it is not                 and in manifest disregard of the plain language of the
+requiring “magic words” 4 for the Agency to adequately
+raise this argument, 5 I believe that is exactly what is
+
+1 Exceptions Br. at 11.                                                 (3d Cir. 2019) (Monongahela) (vacating arbitrator’s award
+2 Id. at 12.
+                                                                        because arbitrator “ignored [contract’s] plain language” when
+3 Id. at 13.
+                                                                        interpreting contract terms that were “simply not susceptible to
+4 See NTEU v. FLRA, 754 F.3d 1031, 1040 (D.C. Cir. 2014)
+                                                                        more than one reasonable interpretation” (quoting Int’l Union,
+(“A party is not required to invoke ‘magic words’ in order to           United Auto., Aerospace & Agric. Implement Workers of Am.,
+adequately raise an argument before the Authority.” (citing             U.A.W. v. Skinner Engine Co., 188 F.3d 130, 146 (3d Cir.
+U.S. Dep’t of Com., Pat. & Trademark Off. v. FLRA, 672 F.3d             1999))); Citgo Asphalt Refin. Co. v. Paper, Allied-Indus., Chem.,
+1095, 1102 (D.C. Cir. 2012))).                                          & Energy Workers Int’l Union, Loc. No. 2-991, 385 F.3d 809,
+5 Majority at 11-12.
+                                                                        820 (3rd Cir. 2004) (arbitrator’s award failed to draw its essence
+6 Id. at 12.
+                                                                        from parties’ agreement where arbitrator ignored provision of
+7 Id. at 9 (citing Exceptions Br. at 7, 11-13).
+                                                                        agreement expressly allowing employer to make and enforce
+8 U.S. DOJ, Fed. BOP, Fed. Corr. Complex, Victorville, Cal.,
+                                                                        safety rules); Int’l Union, United Mine Workers of Am. v.
+73 FLRA 624, 625-26 (2023).                                             Marrowbone Dev. Co., 232 F.3d 383, 389 (4th Cir. 2000)
+9 E.g., Spero Elec. Corp. v. Int’l Bhd. of Elec. Workers, AFL-CIO,
+                                                                        (arbitrator’s award failed to draw its essence from parties’
+Loc. Union No. 1377, 439 F.3d 324, 329-30 (6th Cir. 2006)               agreement where award “squarely conflict[ed] with the plain
+(arbitrator’s award failed to draw its essence from the parties’        language of” the parties’ negotiated grievance procedure);
+agreement where arbitrator’s conclusion that parties modified           Mountaineer Gas Co. v. Oil, Chem. & Atomic Workers Int’l
+agreement was inconsistent with the agreement’s                         Union, 76 F.3d 606, 610 (4th Cir. 1996) (where arbitrator
+“method-of-modification” clause); Beacon J. Publ’g Co. v.               “ignored the unambiguous language” of employer’s drug policy
+Akron Newspaper Guild, Loc. No. 7, 114 F.3d 596, 601 (6th Cir.          to modify penalty, arbitrator “created an award that failed to draw
+1997) (arbitrator’s award failed to draw its essence from parties’      its essence from the CBA”); Keebler Co. v. Milk Drivers & Dairy
+agreement where award was “incongruous” with clear terms of             Emps. Union, Loc. No. 471, 80 F.3d 284, 288-89 (8th Cir. 1996)
+the collective-bargaining agreement); Int’l Bhd. of Elec.               (finding arbitrator’s award did not draw its essence from parties’
+Workers, Loc. 429 v. Toshiba Am., Inc., 879 F.2d 208, 210-11            agreement where arbitrator erroneously relied on language not
+(6th Cir. 1989) (where contract did not permit arbitrator to review     found in parties’ agreement to impose new obligation on the
+disciplinary penalty, circuit court affirmed district court’s vacatur   parties); Bruno’s, Inc. v. United Food & Com. Workers Int’l
+of arbitrator’s award because arbitrator’s reinstatement remedy         Union, Loc. 1657, 858 F.2d 1529, 1532 (11th Cir. 1988)
+demonstrated a “total disregard of the [contract’s] plain               (affirming district court’s vacatur of arbitration award where
+language”); Monongahela Valley Hosp. Inc. v. United Steel               arbitrator created new rule that conflicted with “the express terms
+Paper & Forestry Rubber Mfg. Allied Indus. & Serv.                      of the collective[-]bargaining agreement”).
+Workers Int’l Union AFL-CIO CLC, 946 F.3d 195, 199-200
+74 FLRA No. 79                          Decisions of the Federal Labor Relations Authority                                           539
+
+
+collective-bargaining agreement. 10     Accordingly, an               determination to find that “conditions of employment” and
+arbitrator’s interpretation is implausible, unfounded,                “working conditions” are interchangeable 15 – irrational.
+irrational, and evidences a manifest disregard of the                 The irrationality of the Arbitrator’s interpretation is further
+parties’ agreement when it is inconsistent with the plain             demonstrated by looking to the common use of the term
+language of the agreement.                                            “management.”          According to Merriam-Webster,
+                                                                      “management” is defined as “the collective body of those
+         Article 36, Section 2(D) (Section 2(D)), states in           who manage or direct an enterprise.” 16 This plain
+pertinent part, “[n]othing in [Article 36] prohibits an               language definition is supported by the fact that
+authorized management official from approving                         “management” is synonymous with “agency” in the
+participating employees to telework up to five (5) days per           federal-labor-relations community. 17 Therefore, “deemed
+week as a remote worker, in situations deemed appropriate             appropriate by management” must mean “deemed
+by management.” 11 It is clear that the plain language of             appropriate by the agency.” That is exactly what happened
+Section 2(D) leaves telework to the complete discretion of            when the Agency set the new telework policy, deeming
+the Agency. Here, the Agency exercised that discretion,               appropriate telework in amounts of 50% or less. For the
+consistent with Section 2(D), and issued a new policy                 Arbitrator’s interpretation to be plausible, Section 2(D)
+setting the amount of telework deemed appropriate by                  would have to read “deemed appropriate by the
+management to no more than 50%. 12 Yet, the Arbitrator                management official.” That is not the case, and the
+found the Agency’s updated telework policy, allowing no               majority rubberstamps this irrational interpretation
+more than 50% telework, violated Section 2(D). This                   without addressing this key fault. 18
+finding is flawed because it nullifies the plain language of
+Section 2(D).                                                                   Not only does the Arbitrator’s interpretation
+                                                                      ignore the plain language of the agreement, but the
+         The Arbitrator disregarded the plain language of             articulated rationale is at-ends with itself. First, the
+Section 2(D) by interpreting “as deemed appropriate by                Arbitrator found that “[t]elework is still a management
+management” to mean the individual authority exercised                decision about what is best for the Agency and the
+by “an authorized management official.”               Such            employees,” implying the Agency has discretion. 19
+interpretation cannot be squared with the plain language of           However, he subsequently found the Agency violated
+the provision: “[n]othing in [Article 36] prohibits an                Section 2(D) because “the parameters within which the
+authorized management official from approving                         discretion of management can be exercised . . . has
+participating employees to telework up to five (5) days per           changed and this is undeniably a change in the effect of the
+week as a remote worker, in situations deemed appropriate             plain wording of [Section 2(D)].” 20 Either Section 2(D)
+by management.” 13 The fact that the Arbitrator interpreted           gives the Agency discretion to determine when telework is
+“authorized management official” and “management” to                  appropriate, or Section 2(D) sets parameters on what is
+mean the same thing 14 is synonymous with the Authority’s             appropriate – but it cannot be both. The absurdity of the
+
+10 E.g., SSA, Off. of the Gen. Couns., 72 FLRA 554, 555 (2021)        difference between ‘conditions of employment’ and ‘working
+(SSA OGC) (setting aside award where there was “no dispute that       conditions’ as those terms are practically applied” (internal
+the [u]nion’s grievance did not comply with” parties’ agreement,      quotation marks omitted)).
+agency raised “procedural-arbitrability issue in a timely manner,”    16 Management, Merriam-Webster.com, https://www.merriam-
+
+and arbitrator’s waiver finding was “not a plausible interpretation   webster.com/dictionary/management (on file with Federal Labor
+of the parties’ agreement”); U.S. DOJ, Fed. BOP, Fed. Corr.           Relations Authority (FLRA)) (last visited Sept. 14, 2026).
+                                                                      17 See U.S. Dep’t of Transp., FAA, 74 FLRA 437, 438 (2026)
+Complex, Coleman, Fla., 71 FLRA 1013, 1014 (2020) (DOJ
+Coleman) (Member DuBester concurring; Member Abbott                   (“[T]he [a]gency argues the award ‘fails to preserve
+concurring) (granting essence exception where arbitrator’s            management’s discretion to decide . . . .’”); NTEU, Chapter 337,
+finding that grievance complied with contractual filing deadline      74 FLRA 412, 414 (2026) (“The [u]nion neither acknowledges,
+was “so unfounded in reason and fact and so unconnected with          nor addresses, [the proposal’s] limitations on the [a]gency’s
+the wording and purpose of the parties’ agreement as to manifest      ability to recall an employee if management determines that in-
+an infidelity to the obligation of the [a]rbitrator” (quoting         person supervision has become warranted.”). But see U.S. DHS,
+U.S. DOJ, Fed. BOP, Fed. Corr. Complex, Coleman, Fla.,                U.S. CBP, 74 FLRA 403, 404 (2026) (stating that “the [u]nion
+71 FLRA 892, 893 (2020) (Member DuBester concurring in                asserted to the [a]gency that the [u]nion needed the right to
+part))).                                                              negotiate with local management” (emphasis added)).
+11 Opp’n, Ex. 1, Collective-Bargaining Agreement (CBA) at 100         18 See Monongahela, 946 F.3d at 199 (“[D]eference
+
+(emphasis added).                                                     [to arbitrators] is not unlimited. If it were, court review would be
+12 Award at 6 (“[T]elework-eligible workers . . . will be required
+                                                                      an oxymoron. Hence we will not ‘rubber stamp’ an arbitrator’s
+to work on-site and in-person for 50% of their work hours each        decision.”); see also U.S. DOJ, Fed. BOP, Fed. Corr. Inst.,
+month.”).                                                             Aliceville, Ala., 72 FLRA 497, 498 (2021) (Chairman DuBester
+13 CBA at 100 (emphasis added).
+                                                                      dissenting) (noting “the Authority is not obligated to blindly
+14 Award at 13.
+                                                                      defer to the erroneous conclusions that are made by arbitrators”).
+15 See AFGE, Loc. 0906, 74 FLRA 146, 151 (2024)                       19 Award at 13.
+
+(then-Member Kiko dissenting) (finding “there is no substantive       20 Id.
+540                                      Decisions of the Federal Labor Relations Authority                        74 FLRA No. 79
+
+
+Arbitrator’s statement is demonstrated by the fact that
+“discretion” 21 and “parameters” 22 are antonyms. 23
+Therefore, unlike the majority, 24 I refuse to condone the
+Arbitrator’s linguistic gymnastics to remove the discretion
+granted by the plain language of Section 2(D). Because
+the Arbitrator’s interpretation is inconsistent with the plain
+language of Section 2(D), I would grant the Agency’s
+essence exception. 25
+
+         For these reasons, I cannot support the majority’s
+failure to uphold the plain language of the parties’
+agreement. Accordingly, I dissent.
+
+
+
+
+21 Discretion, Merriam-Webster.com, https://www.merriam-             23   Antonyms for Discretion, Power Thesauraus.org,
+webster.com/dictionary/discretion (on file with FLRA) (last          https://www.powerthesaurus.org/discretion/antonyms (on file
+visited Sept. 14, 2026) (defining as the “power to choose or         with FLRA) (last visited Sept. 14, 2026) (listing limitation,
+decide freely”).                                                     prohibition, restriction, restraint, and constraint as antonyms of
+22 Parameters, Merriam-Webster.com, https://www.merriam-
+                                                                     discretion).
+webster.com/dictionary/parameter (on file with FLRA) (last           24 Majority at 9.
+
+visited Sept. 14, 2026) (defining as “limit, boundary”); see also    25 SSA OGC, 72 FLRA at 555; DOJ Coleman, 71 FLRA at 1014.
+
+Limit,       Merriam-Webster.com,          https://www.merriam-
+webster.com/dictionary/limit (on file with FLRA) (last visited
+Sept. 14, 2026) (defining as “something that bounds, restrains, or
+confines”).
+
