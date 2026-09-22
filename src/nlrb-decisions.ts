@@ -317,10 +317,12 @@ function emptySources(): NlrbSnapshot["sources"] {
 }
 
 export function ajaxInsertHtml(raw: string): string {
-  const trimmed = raw.trim();
-  if (!trimmed.startsWith("[") && !trimmed.startsWith("{")) return raw;
+  let payload = raw.trim();
+  const textarea = payload.match(/^<textarea>([\s\S]*)<\/textarea>\s*$/i);
+  if (textarea) payload = textarea[1].trim();
+  if (!payload.startsWith("[") && !payload.startsWith("{")) return raw;
   try {
-    const data = JSON.parse(trimmed) as unknown;
+    const data = JSON.parse(payload) as unknown;
     const items = Array.isArray(data) ? data : [data];
     for (const item of items) {
       if (!item || typeof item !== "object") continue;
@@ -722,12 +724,14 @@ export function buildNlrbDecisionsManifest(snap: NlrbSnapshot | null): Record<st
       kind: c.kind,
       date: c.date,
       title: c.title,
-      sourceUrl: c.sourceUrl,
     })),
     schema: {
-      fields: ["id", "institution", "citation", "caseNo", "documentId", "kind", "date", "title", "sourceUrl"],
+      fields: ["id", "institution", "citation", "caseNo", "documentId", "kind", "date", "title"],
     },
-    sources: snap?.sources ?? emptySources(),
+    sources: {
+      listing: (snap?.sources ?? emptySources()).listing,
+      sort: (snap?.sources ?? emptySources()).sort,
+    },
   };
 }
 

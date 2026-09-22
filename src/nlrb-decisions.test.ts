@@ -116,7 +116,12 @@ async function main(): Promise<void> {
   );
 
   const listed = parseBoardDecisionsHtml(readFx("listing-excerpt.json"));
+  const textareaListed = parseBoardDecisionsHtml(`<textarea>${readFx("listing-excerpt.json")}</textarea>`);
   assert.ok(listed.some((r) => r.id === NEXSTAR_ID), `seeds in listing, got ${listed.map((r) => r.id).join(",")}`);
+  assert.ok(
+    textareaListed.some((r) => r.id === "375-nlrb-no-35"),
+    "textarea-wrapped Drupal AJAX still parses a Board Decision beyond the scout seeds",
+  );
   assert.ok(listed.some((r) => r.id === SNOWFLAKE_ID));
   assert.ok(listed.some((r) => r.id === BOLDT_ID));
   assert.ok(listed.some((r) => r.id === "375-nlrb-no-35"), "AJAX walker finds a Board Decision beyond the three scout seeds");
@@ -188,6 +193,9 @@ async function main(): Promise<void> {
   assert.ok(Number(manifest.cardCount) >= 3);
   const freeCards = manifest.cards as { body?: string; sourceUrl?: string; id?: string }[];
   assert.ok(freeCards.every((c) => !c.body), "collector manifest cards omit body");
+  const manifestJson = JSON.stringify(manifest);
+  assert.ok(!manifestJson.includes("apps.nlrb.gov"), "free manifest has no apps.nlrb.gov deep link");
+  assert.ok(freeCards.every((c) => !c.sourceUrl), "collector manifest cards omit sourceUrl");
   assert.ok(filterNlrbDecisionsManifest(manifest, "nexstar").cardCount);
   assert.ok(filterNlrbDecisionsManifest(manifest, "20-CA-274626").cardCount);
   assert.ok(parseNlrbDecisionText(readFx("375-nlrb-no-40.txt"), SEED_LISTINGS[0]).body.includes(BODY_NEEDLE_NEXSTAR));
