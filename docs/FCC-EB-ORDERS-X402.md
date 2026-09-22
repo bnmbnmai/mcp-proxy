@@ -8,7 +8,7 @@ Collector shape: walk `https://www.fcc.gov/edocs/daily-digest` → newest day pa
 
 **Do not sell as this SKU:** Satellite / Space Bureau (`SB`) digest rows, Media Bureau (`MB`) rows, Public Safety and Homeland Security (`PSHSB`, including joint `OMR PSHSB` / `WTB PSHSB`) rows, Wireline (`WCB`), International (`OIA`), and other non-EB bureaus. DOC- public-notice compilations, `.txt` / `.docx` siblings, and `A2` appendices are not the slip. An EB workshop announcement with no order instrument is not this SKU.
 
-`www.fcc.gov` from this cloud VM is Akamai **403** (curl and headless Chrome). The same Daily Digest URL is readable from a fetcher that is not on that block: 2026-09-18 lists DA 26-1006, bureau **EB**, attachment `DA-26-1006A1.pdf`. `docs.fcc.gov` PDFs return `%PDF-` from this VM.
+`www.fcc.gov` Daily Digest is Akamai **403** from the cloud VM and from apollo (descriptive User-Agent, Mozilla-compatible, and a browser User-Agent). Fetch uses the same descriptive `bnm-data-shop` User-Agent live `/oalj-decisions` and `/ecab-decisions` already use (`bnm-data-shop/1.0 (FCC Enforcement Bureau orders; +https://www.fcc.gov/edocs/daily-digest)`). `docs.fcc.gov` returns **406** for `Accept: application/pdf` and `%PDF-` when `Accept` includes `*/*`. PDF fetch uses `application/pdf,application/octet-stream,*/*`. When every digest day is 403, collect still fetches the scout seed PDFs.
 
 ## Leak test (2026-09-22) — not a kill
 

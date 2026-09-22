@@ -113,7 +113,7 @@ export type FccEbSnapshot = {
   cards: FccEbCard[];
 };
 
-const HTTP_UA = "Mozilla/5.0 (compatible; bnm-data-shop/1.0; +https://www.fcc.gov/edocs/daily-digest)";
+const HTTP_UA = "bnm-data-shop/1.0 (FCC Enforcement Bureau orders; +https://www.fcc.gov/edocs/daily-digest)";
 
 export const SEED_LISTINGS: FccEbListing[] = [
   {
@@ -601,7 +601,7 @@ export async function fetchFccText(url: string): Promise<string> {
 export async function fetchFccBytes(url: string): Promise<Uint8Array> {
   const official = officialFccEbPdfUrl(url) || url;
   const res = await fetch(official, {
-    headers: { "User-Agent": HTTP_UA, Accept: "application/pdf,application/octet-stream" },
+    headers: { "User-Agent": HTTP_UA, Accept: "application/pdf,application/octet-stream,*/*" },
     signal: AbortSignal.timeout(25000),
   });
   if (!res.ok) throw new Error(`${official} HTTP ${res.status}`);
