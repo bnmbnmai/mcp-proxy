@@ -48,11 +48,18 @@ NMB_DETERMINATIONS_DIR=/tmp/nmb-determinations-dry \
   npm run collect:nmb-determinations
 ```
 
-## Apply on apollo / media-box
+## Apply on apollo / media-box (`systemctl --user`; no sudo)
 
-Not applied in this PR. Do not restart `idaho-ticks-x402.service`. Do not deploy.
+Restart **only** `idaho-ticks-x402.service` after checkout of this branch (not catalog `main`). Do not replace other door caches. Do not message Bruce. Do not touch Imagine/RB/Dryland. Do not touch Docker, Caddy, or the tunnel.
 
-Unpaid `GET /nmb-determinations` is **402** with `maxAmountRequired` **50000**. Unpaid `GET /nmb-determinations?id=` is **402** with **20000**. Free `GET /nmb-determinations/manifest.json` is **200** with card metadata + `paidUrl` only (no `sourceUrl`, no body, no nmb.gov PDF deep link).
+```bash
+export NMB_DETERMINATIONS_DIR=$HOME/projects/mcp-proxy/data/nmb-determinations
+mkdir -p "$NMB_DETERMINATIONS_DIR"
+NMB_DETERMINATIONS_LIMIT=7 NMB_DETERMINATIONS_MAX_FETCH=8 NMB_DETERMINATIONS_PAGES=2 npm run collect:nmb-determinations
+# add NMB_DETERMINATIONS_DIR to idaho-ticks-x402.service user unit
+```
+
+Applied on apollo (2026-09-22): fast-forward of [PR 273](https://github.com/bnmbnmai/mcp-proxy/pull/273) `fa4793e` onto live tip `cursor/fcc-eb-orders-apply-6bd2` @ `90d1c17` (FCC EB door `9e9cb66`). Apply-record branch `cursor/nmb-determinations-apply-1be0`. Restarted **only** `idaho-ticks-x402.service` at **2026-09-22 16:47:19 MDT** (PID 840884; was 727915). Added `NMB_DETERMINATIONS_DIR` to the user unit (`~/projects/mcp-proxy/data/nmb-determinations`). The door commit already exports that dir and the grow prefix in `scripts/ticks-collect.sh` (no new cron). One-door collect EXIT 0: FY2026 and FY2025 Determinations tables walked, `listedCount` **74**, `cardCount` **7**, `fetchedPdfs` **7**, `addedThisRun` 7, skipped 0, asOf **2026-09-17**, fetchedAt **2026-09-22T22:48:13.562Z**. Cards: **53 NMB No. 34** / R-7687 certification (California Northern Railroad Company), **53 NMB No. 33** / R-7688 certification (Iowa Interstate Railroad), **53 NMB No. 31** / R-7689 dismissal (not a scout seed), **53 NMB No. 30** / R-7690 single-carrier Findings Upon Investigation (Republic Airways / Mesa Airlines), **53 NMB No. 29** / R-7685 certification (Temple & Central Texas Railway), **53 NMB No. 28** / R-7688 Findings Upon Investigation, **53 NMB No. 27** / R-7684 certification. Representation Manual, PEB, and jurisdictional letters stayed off the bag. Free manifest is citation / case / date / institution + `paidUrl`; `sources.listing` is the agency-determinations index only. **No** `sourceUrl`, no card body, no `wp-content/uploads` PDF path. Unpaid `GET https://ticks.bnm.farm/nmb-determinations` is **402** at $0.05 (`50000`); `?id=53-nmb-no-34` is **402** at $0.02 (`20000`). A blank `?id=` is trimmed and priced as the page (`50000`), same as live `/fcc-eb-orders` and `/ecab-decisions`. `/.well-known/x402` lists `/nmb-determinations` among **67** doors (was 66). Banner `mcp /mcp — 67 tools`. Siblings `/fcc-eb-orders` and `/ticks` still 402. payTo unchanged `0xf59621FC406D266e18f314Ae18eF0a33b8401004`. docker / Caddy / tunnel untouched. Lander card is on bnm.farm (tv-remote `43d7201`), hydrating the free manifest (Live: 7).
 
 ## Lander card
 
