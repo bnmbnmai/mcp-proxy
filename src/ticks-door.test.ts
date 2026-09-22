@@ -288,6 +288,12 @@ import {
   ECAB_DECISIONS_PATH,
 } from "./ecab-decisions.js";
 import {
+  BODY_NEEDLE_VZ,
+  FCC_EB_ORDERS_AMOUNT_ATOMIC,
+  FCC_EB_ORDERS_MANIFEST_PATH,
+  FCC_EB_ORDERS_PATH,
+} from "./fcc-eb-orders.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -773,6 +779,7 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.some((r) => r.includes("/nlrb-decisions")), "well-known lists /nlrb-decisions");
     assert.ok(wk.resources.some((r) => r.includes("/flra-decisions")), "well-known lists /flra-decisions");
     assert.ok(wk.resources.some((r) => r.includes("/ecab-decisions")), "well-known lists /ecab-decisions");
+    assert.ok(wk.resources.some((r) => r.includes("/fcc-eb-orders")), "well-known lists /fcc-eb-orders");
     assert.equal(cdpEnvStatus(), "CDP env not set");
 
     const specRes = await fetch(`${base}${OPENAPI_PATH}`);
@@ -989,6 +996,7 @@ async function main(): Promise<void> {
     assert.ok(spec.paths["/nlrb-decisions"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/flra-decisions"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/ecab-decisions"]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths["/fcc-eb-orders"]?.get?.["x-payment-info"]);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
       PUBLIC_BAZAAR_SKUS.length,
@@ -1061,6 +1069,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /nlrb-decisions"));
     assert.ok(llmsBody.includes("GET /flra-decisions"));
     assert.ok(llmsBody.includes("GET /ecab-decisions"));
+    assert.ok(llmsBody.includes("GET /fcc-eb-orders"));
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.includes("GET /gmp-md"));
@@ -1204,6 +1213,7 @@ async function main(): Promise<void> {
       NLRB_DECISIONS_PATH,
       FLRA_DECISIONS_PATH,
       ECAB_DECISIONS_PATH,
+      FCC_EB_ORDERS_PATH,
     ]);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.priceUsdc, "0.05");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
@@ -8895,6 +8905,142 @@ async function main(): Promise<void> {
     },
   );
 
+  const fccEbOrdersDir = mkdtempSync(join(tmpdir(), "fcc-eb-orders-"));
+  const fccEbOrdersId = "DA-26-1006";
+  const fccEbOrdersBody = [
+    "Federal Communications Commission",
+    "DA 26-1006",
+    "Before the Federal Communications Commission",
+    "In the Matter of Vazquez Broadcasting Corporation",
+    "Licensee of AM Station WSDS",
+    "Salem Township, Michigan",
+    "File No.: EB-FIELDNER-24-00037648",
+    "NOTICE OF VIOLATION",
+    "Released: September 18, 2026",
+    "By the Regional Director, Region One, Enforcement Bureau:",
+    BODY_NEEDLE_VZ,
+    ...Array.from({ length: 40 }, (_, i) => `Official FCC Enforcement Bureau order paragraph ${i + 1}.`),
+  ].join("\n");
+  writeFileSync(
+    join(fccEbOrdersDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "fcc-eb-order-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-09-22T00:00:00.000Z",
+      asOf: "2026-09-18",
+      license: "17 USC 105",
+      attribution:
+        "Federal Communications Commission, Enforcement Bureau. Work of the United States Government; 17 U.S.C. § 105.",
+      sources: {
+        listing: "https://www.fcc.gov/edocs/daily-digest",
+        pdfHost: "https://docs.fcc.gov/public/attachments/",
+      },
+      cards: [
+        {
+          id: fccEbOrdersId,
+          citation: "DA 26-1006",
+          docket: "EB-FIELDNER-24-00037648",
+          caseNo: "EB-FIELDNER-24-00037648",
+          documentId: "DA-26-1006A1.pdf",
+          kind: "Notice of Violation",
+          institution: "Vazquez Broadcasting Corporation, licensee of AM Station WSDS, Salem Township, Michigan",
+          date: "2026-09-18",
+          title: "DA 26-1006",
+          sourceUrl: "https://docs.fcc.gov/public/attachments/DA-26-1006A1.pdf",
+          body: fccEbOrdersBody,
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      FCC_EB_ORDERS_DIR: fccEbOrdersDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-fcc-eb-orders-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${FCC_EB_ORDERS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /fcc-eb-orders must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; mimeType?: string; extra?: { pdf?: boolean; priceAtomic?: number } }[];
+      };
+      assert.equal(body402.resource, FCC_EB_ORDERS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, FCC_EB_ORDERS_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.mimeType, "application/json");
+      assert.equal(body402.accepts[0]?.extra?.pdf, undefined);
+      assert.equal(body402.accepts[0]?.extra?.priceAtomic, Number(SINGLE_DOC_AMOUNT_ATOMIC));
+      const unpaidId = await fetch(`${base}${FCC_EB_ORDERS_PATH}?id=${encodeURIComponent(fccEbOrdersId)}`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /fcc-eb-orders?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("%PDF-"));
+      assert.ok(!leak402.includes(BODY_NEEDLE_VZ));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === FCC_EB_ORDERS_PATH), true);
+      assert.equal(shop.products.length, PUBLIC_BAZAAR_SKUS.length);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(FCC_EB_ORDERS_PATH)), "well-known lists /fcc-eb-orders");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /fcc-eb-orders"));
+      assert.ok(llms.includes("Enforcement Bureau"));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[FCC_EB_ORDERS_PATH]);
+      assert.ok(spec.paths[FCC_EB_ORDERS_MANIFEST_PATH]);
+      const bazaar = JSON.stringify(spec.paths[FCC_EB_ORDERS_PATH]);
+      assert.ok(!bazaar.includes(BODY_NEEDLE_VZ));
+
+      const unpaidSince = await fetch(`${base}${FCC_EB_ORDERS_PATH}?since=2026-09-19`);
+      assert.equal(unpaidSince.status, 304, "empty ?since= delta is 304 unpaid");
+
+      const manifest = await fetch(`${base}${FCC_EB_ORDERS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "fcc-eb-orders free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        asOf?: string;
+        cards?: { institution?: string; id?: string; body?: string; sourceUrl?: string; paidUrl?: string; docket?: string }[];
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.asOf, "2026-09-18");
+      assert.match(man.cards?.[0]?.institution ?? "", /Vazquez Broadcasting/i);
+      assert.equal(man.cards?.[0]?.docket, "EB-FIELDNER-24-00037648");
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+      assert.ok(!("sourceUrl" in (man.cards?.[0] ?? {})), "free cards must not leak sourceUrl");
+      assert.ok(man.cards?.[0]?.paidUrl);
+      const manJson = JSON.stringify(man);
+      assert.ok(!manJson.includes("docs.fcc.gov"), "free manifest has no FCC PDF deep link");
+      assert.ok(!manJson.includes("%PDF-"));
+      assert.ok(!manJson.includes(BODY_NEEDLE_VZ));
+
+      const paid = await fetch(`${base}${FCC_EB_ORDERS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      assert.match(paid.headers.get("content-type") ?? "", /application\/json/);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        asOf?: string;
+        cards: { institution: string; date: string; id: string; body: string; sourceUrl?: string }[];
+        records?: { id: string; firm: string; type: string }[];
+      };
+      assert.equal(paidBody.product, "fcc-eb-order-bodies");
+      assert.equal(paidBody.asOf, "2026-09-18");
+      assert.match(paidBody.cards[0]?.institution ?? "", /Vazquez Broadcasting/i);
+      assert.equal(paidBody.cards[0]?.id, fccEbOrdersId);
+      assert.ok(paidBody.cards[0]?.body.includes(BODY_NEEDLE_VZ));
+      assert.match(paidBody.cards[0]?.sourceUrl ?? "", /docs\.fcc\.gov\/public\/attachments\/DA-26-1006A1\.pdf/);
+      assert.equal(paidBody.records?.[0]?.type, "fcc-eb-orders");
+      assert.match(paidBody.records?.[0]?.firm ?? "", /Vazquez Broadcasting/i);
+    },
+  );
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -9608,7 +9754,7 @@ async function main(): Promise<void> {
     },
     async (base) => {
       assert.equal(cdpEnvStatus(), "CDP env not set");
-      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, MARINERS_D1_PATH, MARINERS_D5_PATH, MARINERS_D9_PATH, MARINERS_D14_PATH, MARINERS_D17_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, BSEE_REPORTS_PATH, OSHRC_ORDERS_PATH, EPA_ALJ_PATH, EPA_EAB_PATH, FAA_CIVIL_PENALTY_PATH, STB_DECISIONS_PATH, OALJ_DECISIONS_PATH, FMC_ORDERS_PATH, FTC_ORDERS_PATH, NLRB_DECISIONS_PATH, FLRA_DECISIONS_PATH, ECAB_DECISIONS_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
+      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, MARINERS_D1_PATH, MARINERS_D5_PATH, MARINERS_D9_PATH, MARINERS_D14_PATH, MARINERS_D17_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, BSEE_REPORTS_PATH, OSHRC_ORDERS_PATH, EPA_ALJ_PATH, EPA_EAB_PATH, FAA_CIVIL_PENALTY_PATH, STB_DECISIONS_PATH, OALJ_DECISIONS_PATH, FMC_ORDERS_PATH, FTC_ORDERS_PATH, NLRB_DECISIONS_PATH, FLRA_DECISIONS_PATH, ECAB_DECISIONS_PATH, FCC_EB_ORDERS_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
         const unpaid = await fetch(`${base}${path}`);
         assert.equal(unpaid.status, 402, `unpaid ${path} must stay 402`);
         const present = await fetch(`${base}${path}`, { headers: { "X-PAYMENT": "test" } });
@@ -9661,6 +9807,7 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.includes(NLRB_DECISIONS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(FLRA_DECISIONS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(ECAB_DECISIONS_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(FCC_EB_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D11_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D7_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D8_PATH)));
@@ -9678,7 +9825,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions", "fcc-eb-orders"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -9730,6 +9877,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("nlrb-decisions"), true);
   assert.equal(isPublicBazaarSku("flra-decisions"), true);
   assert.equal(isPublicBazaarSku("ecab-decisions"), true);
+  assert.equal(isPublicBazaarSku("fcc-eb-orders"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
