@@ -237,6 +237,33 @@ async function main(): Promise<void> {
         },
       ],
     },
+    eeocAppellate: {
+      fetchedAt: "2026-09-23T23:00:00.000Z",
+      asOf: "2026-08-24",
+      cards: [
+        {
+          id: "request-2026002858",
+          institution: "Lenard T; Department of Transportation; Federal Aviation Administration",
+          citation: "Request No. 2026002858",
+          docket: "2026002858",
+          caseNo: "2025001848",
+          date: "2026-08-24",
+          title: "Request No. 2026002858",
+          body: "SECRET EEOC APPELLATE BODY",
+          sourceUrl: "https://www.eeoc.gov/secret-2026002858.pdf",
+        },
+        {
+          id: "appeal-2025003976",
+          institution: "Department of the Army",
+          citation: "Appeal No. 2025003976",
+          docket: "2025003976",
+          caseNo: "2025003976",
+          date: "2026-02-26",
+          title: "Appeal No. 2025003976",
+          body: "SECRET EEOC APPEAL BODY",
+        },
+      ],
+    },
     ofwatEnforcement: {
       fetchedAt: "2026-08-27T00:00:00.000Z",
       asOf: "2026-03-01",
@@ -311,6 +338,7 @@ async function main(): Promise<void> {
     "flra-decisions",
     "ecab-decisions",
     "fcc-eb-orders",
+    "eeoc-appellate",
     "ofwat-enforcement",
     "ofgem-enforcement",
     "cfpb-orders",
@@ -327,6 +355,7 @@ async function main(): Promise<void> {
   assert.ok(FIRM_CHECK_NOTE.includes("FLRA Authority decisions"));
   assert.ok(FIRM_CHECK_NOTE.includes("ECAB decisions"));
   assert.ok(FIRM_CHECK_NOTE.includes("FCC Enforcement Bureau orders"));
+  assert.ok(FIRM_CHECK_NOTE.includes("EEOC OFS appellate decisions"));
   assert.ok(FIRM_CHECK_NOTE.includes("Ofwat enforcement"));
   assert.ok(FIRM_CHECK_NOTE.includes("Ofgem enforcement"));
   assert.ok(FIRM_CHECK_NOTE.includes("CFPB orders"));
@@ -463,6 +492,27 @@ async function main(): Promise<void> {
   assert.equal(fcc.matches[0]?.paidUrl, "/fcc-eb-orders?id=DA-26-1006");
   assert.equal(fcc.matches[0]?.pagePaidUrl, "/fcc-eb-orders");
   assert.ok(!JSON.stringify(fcc.matches).includes("SECRET FCC"));
+
+  const eeoc = firmCheckFromIndexes("Lenard", indexes);
+  assert.equal(eeoc.matches[0]?.door, "eeoc-appellate");
+  assert.equal(eeoc.matches[0]?.id, "request-2026002858");
+  assert.equal(eeoc.matches[0]?.paidUrl, "/eeoc-appellate?id=request-2026002858");
+  assert.equal(eeoc.matches[0]?.pagePaidUrl, "/eeoc-appellate");
+  assert.equal(eeoc.matches[0]?.priceUsdc, "0.02");
+  assert.equal(eeoc.matches[0]?.pagePriceUsdc, "0.05");
+  assert.equal(eeoc.matches[0]?.fetchedAt, "2026-09-23T23:00:00.000Z");
+  assert.ok(!("body" in (eeoc.matches[0] ?? {})));
+  assert.ok(!("sourceUrl" in (eeoc.matches[0] ?? {})));
+  assert.ok(!JSON.stringify(eeoc.matches).includes("SECRET EEOC"));
+  assert.ok(!JSON.stringify(eeoc.matches).includes("eeoc.gov"));
+
+  const requestNo = firmCheckFromIndexes("2026002858", indexes);
+  assert.equal(requestNo.matches[0]?.door, "eeoc-appellate");
+  assert.equal(requestNo.matches[0]?.paidUrl, "/eeoc-appellate?id=request-2026002858");
+
+  const appealNo = firmCheckFromIndexes("2025003976", indexes);
+  assert.equal(appealNo.matches[0]?.door, "eeoc-appellate");
+  assert.equal(appealNo.matches[0]?.id, "appeal-2025003976");
 
   const secretBody = firmCheckFromIndexes("SECRET NMB DETERMINATION BODY", indexes);
   assert.equal(secretBody.matchCount, 0);
