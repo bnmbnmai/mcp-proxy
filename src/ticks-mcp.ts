@@ -189,7 +189,7 @@ export function mcpDiscovery(origin = LIVE_ORIGIN, catalog: LivePaidSku[]): Reco
     connect: `npx -y mcp-remote ${base}${MCP_PATH}`,
     source: WELL_KNOWN_PATH,
     note:
-      `Same ${catalog.length} paid GETs as ${WELL_KNOWN_PATH}. Free ${SEARCH_TOOL_NAME} finds id, the ?id= URL ($0.02), and the page cursor; free ${FIRM_CHECK_TOOL_NAME} searches Form 483, FDA warning letters, FDA untitled letters, FTC BCP warning letters, FTC ALJ/Commission orders, FMC orders, Ofwat, Ofgem, CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog; paid ${GET_ONE_TOOL_NAME} is one official text ($0.02); paid ${GET_PAGE_TOOL_NAME} is the page ($0.05). Extracted-body doors: ${newestOfficialTextsCopy()} on a plain GET; older pages on the same URL (?before); ${newerSinceCopy()}. Table doors stay the whole current table; If-None-Match / ETag (or ?since=) 304s an unchanged snapshot. Free ${SEARCH_TOOL_NAME} and ${FIRM_CHECK_TOOL_NAME} are not paid SKUs. Unpaid tool calls still HTTP 402 on the paid URL. Not Bazaar-indexed.`,
+      `Same ${catalog.length} paid GETs as ${WELL_KNOWN_PATH}. Free ${SEARCH_TOOL_NAME} finds id, the ?id= URL ($0.02), and the page cursor; free ${FIRM_CHECK_TOOL_NAME} searches Form 483, FDA warning letters, FDA untitled letters, FTC BCP warning letters, FTC ALJ/Commission orders, FMC orders, NMB representation determinations, NLRB Board decisions, FLRA Authority decisions, ECAB decisions, FCC Enforcement Bureau orders, Ofwat, Ofgem, CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog; paid ${GET_ONE_TOOL_NAME} is one official text ($0.02); paid ${GET_PAGE_TOOL_NAME} is the page ($0.05). Extracted-body doors: ${newestOfficialTextsCopy()} on a plain GET; older pages on the same URL (?before); ${newerSinceCopy()}. Table doors stay the whole current table; If-None-Match / ETag (or ?since=) 304s an unchanged snapshot. Free ${SEARCH_TOOL_NAME} and ${FIRM_CHECK_TOOL_NAME} are not paid SKUs. Unpaid tool calls still HTTP 402 on the paid URL. Not Bazaar-indexed.`,
     freeTools: [SEARCH_TOOL_NAME, FIRM_CHECK_TOOL_NAME],
   };
 }
@@ -490,7 +490,7 @@ export async function handleMcpJsonRpc(
     if (name === FIRM_CHECK_TOOL_NAME) {
       const q = firmCheckQuery(args.q);
       if (!q) {
-        return err(-32602, `firm-check needs q (firm, institution, bank, company, FEI, CMS, or import-alert number).`);
+        return err(-32602, `firm-check needs q (firm, institution, bank, company, docket, citation, FEI, CMS, or import-alert number).`);
       }
       const origin = (opts.origin ?? LIVE_ORIGIN).replace(/\/+$/, "");
       const url = `${origin}${FIRM_CHECK_PATH}?q=${encodeURIComponent(q)}`;

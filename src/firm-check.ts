@@ -3,18 +3,26 @@
  * Searches firm/institution/bank-nameable official indexes that already
  * expose a usable name field: Form 483, FDA warning letters, FDA untitled
  * letters, FTC BCP warning letters, FTC ALJ/Commission orders, FMC orders,
- * Ofwat, Ofgem, CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog.
- * Does not scrape FDA.gov. Does not return letter bodies or the full import-alert table.
+ * NMB representation determinations, NLRB Board decisions, FLRA Authority
+ * decisions, ECAB decisions, FCC Enforcement Bureau orders, Ofwat, Ofgem,
+ * CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog.
+ * Does not scrape FDA.gov. Does not return letter, decision, or order bodies
+ * or the full import-alert table.
  * Not a paid SKU. Does not invent a new paid door.
  */
 
 import { loadCfpbOrdersManifest } from "./cfpb-orders.js";
+import { loadEcabDecisionsManifest } from "./ecab-decisions.js";
+import { loadFccEbOrdersManifest } from "./fcc-eb-orders.js";
 import { loadFdicOrdersManifest } from "./fdic-orders.js";
+import { loadFlraDecisionsManifest } from "./flra-decisions.js";
 import { loadFmcOrdersManifest } from "./fmc-orders.js";
 import { loadForm483Manifest } from "./form-483.js";
 import { loadFtcOrdersManifest } from "./ftc-orders.js";
 import { loadFtcWlManifest } from "./ftc-wl.js";
 import { loadManifest as loadImportAlertsManifest } from "./import-alerts.js";
+import { loadNlrbDecisionsManifest } from "./nlrb-decisions.js";
+import { loadNmbDeterminationsManifest } from "./nmb-determinations.js";
 import { loadOccCdManifest } from "./occ-cd.js";
 import { loadOfgemEnforcementManifest } from "./ofgem-enforcement.js";
 import { loadOfwatEnforcementManifest } from "./ofwat-enforcement.js";
@@ -37,6 +45,11 @@ export const FIRM_CHECK_DOORS = [
   "ftc-wl",
   "ftc-orders",
   "fmc-orders",
+  "nmb-determinations",
+  "nlrb-decisions",
+  "flra-decisions",
+  "ecab-decisions",
+  "fcc-eb-orders",
   "ofwat-enforcement",
   "ofgem-enforcement",
   "cfpb-orders",
@@ -46,7 +59,7 @@ export const FIRM_CHECK_DOORS = [
 ] as const;
 
 export const FIRM_CHECK_NOTE =
-  "Free cross-door search of official caches: Form 483, FDA warning letters, FDA untitled letters, FTC BCP warning letters, FTC ALJ/Commission orders, FMC orders, Ofwat enforcement, Ofgem enforcement, CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog. Not a paid SKU. Hits name the door, the id or page to buy, and fetchedAt/asOf. One official text is GET ?id= ($0.02). The page of newest 10 official texts is $0.05. The import-alert table stays the entire current table at $0.05. Does not return letter bodies or the full import-alert table.";
+  "Free cross-door search of official caches: Form 483, FDA warning letters, FDA untitled letters, FTC BCP warning letters, FTC ALJ/Commission orders, FMC orders, NMB representation determinations, NLRB Board decisions, FLRA Authority decisions, ECAB decisions, FCC Enforcement Bureau orders, Ofwat enforcement, Ofgem enforcement, CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog. Not a paid SKU. Hits name the door, the id or page to buy, and fetchedAt/asOf. One official text is GET ?id= ($0.02). The page of newest 10 official texts is $0.05. The import-alert table stays the entire current table at $0.05. Does not return letter, decision, or order bodies or the full import-alert table.";
 
 const BODY_DOOR_ORDER: Record<string, number> = Object.fromEntries(
   FIRM_CHECK_DOORS.map((door, i) => [door, i]),
@@ -59,6 +72,11 @@ export type FirmCheckIndexes = {
   ftcWl?: Record<string, unknown> | null;
   ftcOrders?: Record<string, unknown> | null;
   fmcOrders?: Record<string, unknown> | null;
+  nmbDeterminations?: Record<string, unknown> | null;
+  nlrbDecisions?: Record<string, unknown> | null;
+  flraDecisions?: Record<string, unknown> | null;
+  ecabDecisions?: Record<string, unknown> | null;
+  fccEbOrders?: Record<string, unknown> | null;
   ofwatEnforcement?: Record<string, unknown> | null;
   ofgemEnforcement?: Record<string, unknown> | null;
   cfpbOrders?: Record<string, unknown> | null;
@@ -74,6 +92,11 @@ const BODY_INDEX_DOORS: Array<{ door: Exclude<(typeof FIRM_CHECK_DOORS)[number],
   { door: "ftc-wl", key: "ftcWl" },
   { door: "ftc-orders", key: "ftcOrders" },
   { door: "fmc-orders", key: "fmcOrders" },
+  { door: "nmb-determinations", key: "nmbDeterminations" },
+  { door: "nlrb-decisions", key: "nlrbDecisions" },
+  { door: "flra-decisions", key: "flraDecisions" },
+  { door: "ecab-decisions", key: "ecabDecisions" },
+  { door: "fcc-eb-orders", key: "fccEbOrders" },
   { door: "ofwat-enforcement", key: "ofwatEnforcement" },
   { door: "ofgem-enforcement", key: "ofgemEnforcement" },
   { door: "cfpb-orders", key: "cfpbOrders" },
@@ -95,6 +118,10 @@ function haystack(row: Record<string, unknown>): string {
   return [
     row.id,
     row.docket,
+    row.citation,
+    row.caseNo,
+    row.documentId,
+    row.kind,
     row.mediaId,
     row.firm,
     row.institution,
@@ -305,6 +332,11 @@ export async function runFirmCheck(q: string, cap = FIRM_CHECK_CAP): Promise<Fir
     ftcWl,
     ftcOrders,
     fmcOrders,
+    nmbDeterminations,
+    nlrbDecisions,
+    flraDecisions,
+    ecabDecisions,
+    fccEbOrders,
     ofwatEnforcement,
     ofgemEnforcement,
     cfpbOrders,
@@ -318,6 +350,11 @@ export async function runFirmCheck(q: string, cap = FIRM_CHECK_CAP): Promise<Fir
     loadFtcWlManifest(),
     loadFtcOrdersManifest(),
     loadFmcOrdersManifest(),
+    loadNmbDeterminationsManifest(),
+    loadNlrbDecisionsManifest(),
+    loadFlraDecisionsManifest(),
+    loadEcabDecisionsManifest(),
+    loadFccEbOrdersManifest(),
     loadOfwatEnforcementManifest(),
     loadOfgemEnforcementManifest(),
     loadCfpbOrdersManifest(),
@@ -334,6 +371,11 @@ export async function runFirmCheck(q: string, cap = FIRM_CHECK_CAP): Promise<Fir
       ftcWl,
       ftcOrders,
       fmcOrders,
+      nmbDeterminations,
+      nlrbDecisions,
+      flraDecisions,
+      ecabDecisions,
+      fccEbOrders,
       ofwatEnforcement,
       ofgemEnforcement,
       cfpbOrders,
