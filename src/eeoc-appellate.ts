@@ -276,14 +276,52 @@ function headerNumber(flat: string): string {
   return best;
 }
 
+const INSTITUTION_STOP = new Set([
+  "decision",
+  "reconsideration",
+  "request",
+  "appeal",
+  "commission",
+  "complainant",
+  "agency",
+]);
+
+const DEPT_TAIL_STOP = new Set([
+  "reconsideration",
+  "decision",
+  "complainant",
+  "secretary",
+  "request",
+  "appeal",
+  "commission",
+]);
+
+export function departmentPhrases(flat: string): string[] {
+  const out: string[] = [];
+  const re = /Department of [A-Z][A-Za-z]+(?:\s+[A-Z][A-Za-z]+){0,3}/g;
+  for (const match of flat.matchAll(re)) {
+    const words = match[0].split(/\s+/);
+    const kept = words.slice(0, 2);
+    for (const word of words.slice(2)) {
+      const bare = word.toLowerCase().replace(/[.,;:]+$/g, "");
+      if (DEPT_TAIL_STOP.has(bare)) break;
+      kept.push(word);
+    }
+    if (kept.length >= 3) out.push(kept.join(" "));
+  }
+  return out;
+}
+
 export function institutionFromText(flat: string): string {
-  const name = flat.match(/([A-Z][a-z]+(?:\s+[A-Z]\.?)?),?\d*\s+Complainant/i)?.[1] ?? "";
-  const departments = [
-    ...flat.matchAll(/Department of [A-Z][A-Za-z]+(?:\s+[A-Z][A-Za-z]+){0,3}/g),
-  ].map((m) => m[0]);
+  const caption = flat.match(/([A-Z][a-z]+(?:\s+[A-Z]\.?)?)\s*,\s*\d*\s*Complainant\s*,/);
+  const name = caption?.[1]?.replace(/\s+/g, " ").trim() ?? "";
+  const departments = departmentPhrases(flat);
   const agencies = [...flat.matchAll(/Federal [A-Z][A-Za-z]+ Administration/g)].map((m) => m[0]);
   const parts: string[] = [];
-  if (name) parts.push(name.replace(/\s+/g, " ").trim());
+  if (name && !INSTITUTION_STOP.has(name.toLowerCase().replace(/\.$/, ""))) parts.push(name);
+  if (/United States Postal Service/.test(flat) && !parts.some((p) => /Postal Service/.test(p))) {
+    parts.push("United States Postal Service");
+  }
   for (const part of [...departments, ...agencies]) {
     if (!parts.includes(part)) parts.push(part);
   }
