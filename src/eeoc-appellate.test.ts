@@ -36,6 +36,8 @@ import {
   isRealEeocAppellateBody,
   keepListing,
   officialEeocPdfUrl,
+  flattenText,
+  institutionFromText,
   parseEeocAppellateHtml,
   parseEeocAppellateText,
 } from "./eeoc-appellate.js";
@@ -112,6 +114,24 @@ async function main(): Promise<void> {
   assert.ok(readFx("request-2026002858.txt").includes(BODY_NEEDLE_2858));
   assert.ok(readFx("request-2026002233.txt").includes(BODY_NEEDLE_2233));
   assert.ok(readFx("appeal-2025003976.txt").includes(BODY_NEEDLE_3976));
+
+  assert.equal(
+    institutionFromText(
+      flattenText("Washington, DC 20013 Walter S., 1 Complainant, v. United States Postal Service DECISION Complainant timely"),
+    ),
+    "Walter S.; United States Postal Service",
+  );
+  assert.equal(
+    institutionFromText(
+      flattenText("Jene M., 1 Complainant, v. Department of Homeland Security RECONSIDERATION Complainant requested"),
+    ),
+    "Jene M.; Department of Homeland Security",
+  );
+  assert.equal(
+    institutionFromText(flattenText("Lenard T,1 Complainant, v. Department of Transportation (Federal Aviation Administration), Agency.")),
+    "Lenard T; Department of Transportation; Federal Aviation Administration",
+  );
+  assert.ok(!/^(DECISION|RECONSIDERATION)$/.test(institutionFromText("DECISION Complainant timely filed")));
 
   const parsed2858 = parseEeocAppellateText(readFx("request-2026002858.txt"), SEED_LISTINGS[0]);
   assert.equal(parsed2858.id, REQUEST_2858_ID);
