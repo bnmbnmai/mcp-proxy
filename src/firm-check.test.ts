@@ -157,6 +157,86 @@ async function main(): Promise<void> {
         },
       ],
     },
+    nmbDeterminations: {
+      fetchedAt: "2026-09-22T22:48:13.562Z",
+      asOf: "2026-09-17",
+      cards: [
+        {
+          id: "53-nmb-no-34",
+          institution: "California Northern Railroad Company; BRS; Signal Department Employees",
+          citation: "53 NMB No. 34",
+          docket: "R-7687",
+          caseNo: "R-7687",
+          documentId: "Certification-R-7687.pdf",
+          kind: "Certification",
+          date: "2026-09-17",
+          title: "53 NMB No. 34",
+          body: "SECRET NMB DETERMINATION BODY",
+          sourceUrl: "https://nmb.gov/secret-r-7687.pdf",
+        },
+      ],
+    },
+    nlrbDecisions: {
+      fetchedAt: "2026-09-22T16:51:49.811Z",
+      asOf: "2026-09-17",
+      cards: [
+        {
+          id: "375-nlrb-no-40",
+          institution: "Nexstar Media Corporation d/b/a NewsNation",
+          citation: "375 NLRB No. 40",
+          caseNo: "05-CA-367812",
+          date: "2026-09-17",
+          title: "375 NLRB No. 40",
+          body: "SECRET NLRB DECISION BODY",
+        },
+      ],
+    },
+    flraDecisions: {
+      fetchedAt: "2026-09-22T17:28:09.876Z",
+      asOf: "2026-09-22",
+      cards: [
+        {
+          id: "74-flra-541",
+          institution:
+            "United States Marine Corps, Marine Air Ground Task Force Training Command, Marine Corps Air Ground Combat Center, Twentynine Palms, California (Agency) and American Federation of Government Employees, Local 2018 (Union)",
+          citation: "74 FLRA 541",
+          caseNo: "0-AR-5810",
+          date: "2026-09-22",
+          title: "74 FLRA 541",
+          body: "SECRET FLRA DECISION BODY",
+        },
+      ],
+    },
+    ecabDecisions: {
+      fetchedAt: "2026-09-22T19:47:28.911Z",
+      asOf: "2026-08-27",
+      cards: [
+        {
+          id: "26-0528",
+          institution: "C.P. and U.S. POSTAL SERVICE, GERMANTOWN POST OFFICE, Philadelphia, PA",
+          citation: "Docket No. 26-0528",
+          docket: "26-0528",
+          date: "2026-08-27",
+          title: "Docket No. 26-0528",
+          body: "SECRET ECAB DECISION BODY",
+        },
+      ],
+    },
+    fccEbOrders: {
+      fetchedAt: "2026-09-22T20:35:18.400Z",
+      asOf: "2026-09-18",
+      cards: [
+        {
+          id: "DA-26-1006",
+          institution: "Vazquez Broadcasting Corporation, licensee of AM Station WSDS, Salem Township, Michigan",
+          citation: "DA 26-1006",
+          docket: "EB-FIELDNER-24-00037648",
+          date: "2026-09-18",
+          title: "DA 26-1006",
+          body: "SECRET FCC EB ORDER BODY",
+        },
+      ],
+    },
     ofwatEnforcement: {
       fetchedAt: "2026-08-27T00:00:00.000Z",
       asOf: "2026-03-01",
@@ -226,6 +306,11 @@ async function main(): Promise<void> {
     "ftc-wl",
     "ftc-orders",
     "fmc-orders",
+    "nmb-determinations",
+    "nlrb-decisions",
+    "flra-decisions",
+    "ecab-decisions",
+    "fcc-eb-orders",
     "ofwat-enforcement",
     "ofgem-enforcement",
     "cfpb-orders",
@@ -237,6 +322,11 @@ async function main(): Promise<void> {
   assert.ok(FIRM_CHECK_NOTE.includes("FTC BCP warning letters"));
   assert.ok(FIRM_CHECK_NOTE.includes("FTC ALJ/Commission orders"));
   assert.ok(FIRM_CHECK_NOTE.includes("FMC orders"));
+  assert.ok(FIRM_CHECK_NOTE.includes("NMB representation determinations"));
+  assert.ok(FIRM_CHECK_NOTE.includes("NLRB Board decisions"));
+  assert.ok(FIRM_CHECK_NOTE.includes("FLRA Authority decisions"));
+  assert.ok(FIRM_CHECK_NOTE.includes("ECAB decisions"));
+  assert.ok(FIRM_CHECK_NOTE.includes("FCC Enforcement Bureau orders"));
   assert.ok(FIRM_CHECK_NOTE.includes("Ofwat enforcement"));
   assert.ok(FIRM_CHECK_NOTE.includes("Ofgem enforcement"));
   assert.ok(FIRM_CHECK_NOTE.includes("CFPB orders"));
@@ -264,8 +354,9 @@ async function main(): Promise<void> {
   assert.ok(!("pdfUrl" in (catalent.matches[0] ?? {})));
   assert.ok(!("htmlUrl" in (catalent.matches[0] ?? {})));
   assert.ok(!("pageUrl" in (catalent.matches[0] ?? {})));
+  assert.ok(!("body" in (catalent.matches[0] ?? {})));
   assert.ok(!JSON.stringify(catalent.matches).includes("fda.gov"));
-  assert.ok(!JSON.stringify(catalent).includes("body"));
+  assert.ok(!JSON.stringify(catalent.matches).includes("body"));
   assert.ok(catalent.note.includes("free") || catalent.note.includes("Free"));
   assert.ok(catalent.note.includes("$0.02"));
   assert.ok(catalent.note.includes("$0.05"));
@@ -324,6 +415,57 @@ async function main(): Promise<void> {
   assert.equal(fmcOrder.matches[0]?.paidUrl, "/fmc-orders?id=23-08-131865");
   assert.equal(fmcOrder.matches[0]?.pagePaidUrl, "/fmc-orders");
   assert.ok(!("body" in (fmcOrder.matches[0] ?? {})));
+
+  const nmb = firmCheckFromIndexes("nmb", indexes);
+  assert.equal(nmb.matches[0]?.door, "nmb-determinations");
+  assert.equal(nmb.matches[0]?.id, "53-nmb-no-34");
+  assert.equal(nmb.matches[0]?.paidUrl, "/nmb-determinations?id=53-nmb-no-34");
+  assert.equal(nmb.matches[0]?.pagePaidUrl, "/nmb-determinations");
+  assert.equal(nmb.matches[0]?.priceUsdc, "0.02");
+  assert.equal(nmb.matches[0]?.pagePriceUsdc, "0.05");
+  assert.equal(nmb.matches[0]?.fetchedAt, "2026-09-22T22:48:13.562Z");
+  assert.ok(!("body" in (nmb.matches[0] ?? {})));
+  assert.ok(!("sourceUrl" in (nmb.matches[0] ?? {})));
+  assert.ok(!JSON.stringify(nmb.matches).includes("SECRET NMB"));
+  assert.ok(!JSON.stringify(nmb.matches).includes("nmb.gov"));
+
+  const california = firmCheckFromIndexes("California Northern", indexes);
+  assert.equal(california.matches[0]?.door, "nmb-determinations");
+  assert.equal(california.matches[0]?.id, "53-nmb-no-34");
+  assert.equal(california.matches[0]?.firm, "California Northern Railroad Company; BRS; Signal Department Employees");
+
+  const r7687 = firmCheckFromIndexes("R-7687", indexes);
+  assert.equal(r7687.matches[0]?.door, "nmb-determinations");
+  assert.equal(r7687.matches[0]?.id, "53-nmb-no-34");
+  assert.equal(r7687.matches[0]?.paidUrl, "/nmb-determinations?id=53-nmb-no-34");
+  assert.ok(!JSON.stringify(r7687).includes("SECRET NMB DETERMINATION BODY"));
+
+  const nlrb = firmCheckFromIndexes("Nexstar", indexes);
+  assert.equal(nlrb.matches[0]?.door, "nlrb-decisions");
+  assert.equal(nlrb.matches[0]?.paidUrl, "/nlrb-decisions?id=375-nlrb-no-40");
+  assert.ok(!JSON.stringify(nlrb.matches).includes("SECRET NLRB"));
+
+  const flra = firmCheckFromIndexes("Twentynine Palms", indexes);
+  assert.equal(flra.matches[0]?.door, "flra-decisions");
+  assert.equal(flra.matches[0]?.id, "74-flra-541");
+  assert.equal(flra.matches[0]?.paidUrl, "/flra-decisions?id=74-flra-541");
+  assert.ok(!JSON.stringify(flra.matches).includes("SECRET FLRA"));
+
+  const ecab = firmCheckFromIndexes("Germantown", indexes);
+  assert.equal(ecab.matches[0]?.door, "ecab-decisions");
+  assert.equal(ecab.matches[0]?.id, "26-0528");
+  assert.equal(ecab.matches[0]?.paidUrl, "/ecab-decisions?id=26-0528");
+  assert.ok(!JSON.stringify(ecab.matches).includes("SECRET ECAB"));
+
+  const fcc = firmCheckFromIndexes("Vazquez", indexes);
+  assert.equal(fcc.matches[0]?.door, "fcc-eb-orders");
+  assert.equal(fcc.matches[0]?.id, "DA-26-1006");
+  assert.equal(fcc.matches[0]?.paidUrl, "/fcc-eb-orders?id=DA-26-1006");
+  assert.equal(fcc.matches[0]?.pagePaidUrl, "/fcc-eb-orders");
+  assert.ok(!JSON.stringify(fcc.matches).includes("SECRET FCC"));
+
+  const secretBody = firmCheckFromIndexes("SECRET NMB DETERMINATION BODY", indexes);
+  assert.equal(secretBody.matchCount, 0);
 
   const thames = firmCheckFromIndexes("Thames", indexes);
   assert.equal(thames.matches[0]?.door, "ofwat-enforcement");
@@ -404,6 +546,8 @@ async function main(): Promise<void> {
       assert.equal(body.matches?.[0]?.page, 1);
       assert.equal(body.matches?.[0]?.fetchedAt, "2026-08-26T00:00:00.000Z");
       assert.equal(body.matches?.[0]?.asOf, "2026-07-31");
+      assert.ok((body.note ?? "").includes("NMB representation determinations"));
+      assert.ok((body.note ?? "").includes("FCC Enforcement Bureau orders"));
       assert.ok((body.note ?? "").includes("Ofwat enforcement"));
       assert.ok((body.note ?? "").includes("Ofgem enforcement"));
 
