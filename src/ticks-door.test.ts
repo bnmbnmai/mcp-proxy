@@ -300,6 +300,12 @@ import {
   NMB_DETERMINATIONS_PATH,
 } from "./nmb-determinations.js";
 import {
+  BODY_NEEDLE_2858,
+  EEOC_APPELLATE_AMOUNT_ATOMIC,
+  EEOC_APPELLATE_MANIFEST_PATH,
+  EEOC_APPELLATE_PATH,
+} from "./eeoc-appellate.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -787,6 +793,7 @@ async function main(): Promise<void> {
     assert.ok(wk.resources.some((r) => r.includes("/ecab-decisions")), "well-known lists /ecab-decisions");
     assert.ok(wk.resources.some((r) => r.includes("/fcc-eb-orders")), "well-known lists /fcc-eb-orders");
     assert.ok(wk.resources.some((r) => r.includes("/nmb-determinations")), "well-known lists /nmb-determinations");
+    assert.ok(wk.resources.some((r) => r.includes("/eeoc-appellate")), "well-known lists /eeoc-appellate");
     assert.equal(cdpEnvStatus(), "CDP env not set");
 
     const specRes = await fetch(`${base}${OPENAPI_PATH}`);
@@ -1005,6 +1012,7 @@ async function main(): Promise<void> {
     assert.ok(spec.paths["/ecab-decisions"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/fcc-eb-orders"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/nmb-determinations"]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths["/eeoc-appellate"]?.get?.["x-payment-info"]);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
       PUBLIC_BAZAAR_SKUS.length,
@@ -1079,6 +1087,7 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes("GET /ecab-decisions"));
     assert.ok(llmsBody.includes("GET /fcc-eb-orders"));
     assert.ok(llmsBody.includes("GET /nmb-determinations"));
+    assert.ok(llmsBody.includes("GET /eeoc-appellate"));
     assert.ok(!llmsBody.includes("GET /form-483"));
     assert.ok(!llmsBody.includes("GET /gmp"));
     assert.ok(!llmsBody.includes("GET /gmp-md"));
@@ -1224,6 +1233,7 @@ async function main(): Promise<void> {
       ECAB_DECISIONS_PATH,
       FCC_EB_ORDERS_PATH,
       NMB_DETERMINATIONS_PATH,
+      EEOC_APPELLATE_PATH,
     ]);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.priceUsdc, "0.05");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
@@ -9185,6 +9195,138 @@ async function main(): Promise<void> {
     },
   );
 
+
+  const eeocAppellateDir = mkdtempSync(join(tmpdir(), "eeoc-appellate-"));
+  const eeocAppellateId = "request-2026002858";
+  const eeocAppellateBody = [
+    "U.S. EQUAL EMPLOYMENT OPPORTUNITY COMMISSION",
+    "Office of Federal Sector",
+    "Lenard T, Complainant,",
+    "Request No. 2026002858",
+    "DECISION ON REQUEST FOR RECONSIDERATION",
+    "29 C.F.R. § 1614.405(c)",
+    BODY_NEEDLE_2858,
+    ...Array.from({ length: 40 }, (_, i) => `Official EEOC OFS appellate paragraph ${i + 1}.`),
+  ].join("\n");
+  writeFileSync(
+    join(eeocAppellateDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "eeoc-appellate-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-09-23T00:00:00.000Z",
+      asOf: "2026-08-24",
+      license: "17 USC 105",
+      attribution: "U.S. Equal Employment Opportunity Commission, Office of Federal Sector. Work of the United States Government; 17 U.S.C. § 105.",
+      sources: {
+        listing: "https://www.eeoc.gov/federal-sector/appellate-decisions",
+        pdfHost: "https://www.eeoc.gov/sites/default/files/",
+      },
+      cards: [
+        {
+          id: eeocAppellateId,
+          citation: "Request No. 2026002858",
+          docket: "2026002858",
+          caseNo: "2025001848",
+          documentId: "2026002858. DEC.pdf",
+          kind: "Request for Reconsideration",
+          institution: "Lenard T; Department of Transportation; Federal Aviation Administration",
+          date: "2026-08-24",
+          title: "Request No. 2026002858",
+          sourceUrl: "https://www.eeoc.gov/sites/default/files/decisions/2026_09_08/2026002858.%20DEC.pdf",
+          body: eeocAppellateBody,
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      EEOC_APPELLATE_DIR: eeocAppellateDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-eeoc-appellate-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${EEOC_APPELLATE_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /eeoc-appellate must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; mimeType?: string; extra?: { pdf?: boolean; priceAtomic?: number } }[];
+      };
+      assert.equal(body402.resource, EEOC_APPELLATE_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, EEOC_APPELLATE_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.mimeType, "application/json");
+      assert.equal(body402.accepts[0]?.extra?.pdf, undefined);
+      assert.equal(body402.accepts[0]?.extra?.priceAtomic, Number(SINGLE_DOC_AMOUNT_ATOMIC));
+      const unpaidId = await fetch(`${base}${EEOC_APPELLATE_PATH}?id=${encodeURIComponent(eeocAppellateId)}`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /eeoc-appellate?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
+
+      const leak402 = JSON.stringify(body402);
+      assert.ok(!leak402.includes("%PDF-"));
+      assert.ok(!leak402.includes(BODY_NEEDLE_2858));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === EEOC_APPELLATE_PATH), true);
+      assert.equal(shop.products.length, PUBLIC_BAZAAR_SKUS.length);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(EEOC_APPELLATE_PATH)), "well-known lists /eeoc-appellate");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /eeoc-appellate"));
+      assert.ok(llms.includes("Office of Federal Sector"));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[EEOC_APPELLATE_PATH]);
+      assert.ok(spec.paths[EEOC_APPELLATE_MANIFEST_PATH]);
+      const bazaar = JSON.stringify(spec.paths[EEOC_APPELLATE_PATH]);
+      assert.ok(!bazaar.includes(BODY_NEEDLE_2858));
+
+      const unpaidSince = await fetch(`${base}${EEOC_APPELLATE_PATH}?since=2026-08-25`);
+      assert.equal(unpaidSince.status, 304, "empty ?since= delta is 304 unpaid");
+
+      const manifest = await fetch(`${base}${EEOC_APPELLATE_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "eeoc-appellate free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        asOf?: string;
+        cards?: { institution?: string; id?: string; body?: string; sourceUrl?: string; paidUrl?: string; docket?: string }[];
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.asOf, "2026-08-24");
+      assert.match(man.cards?.[0]?.institution ?? "", /Lenard T/);
+      assert.equal(man.cards?.[0]?.docket, "2026002858");
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+      assert.ok(!("sourceUrl" in (man.cards?.[0] ?? {})), "free cards must not leak sourceUrl");
+      assert.ok(man.cards?.[0]?.paidUrl);
+      const manJson = JSON.stringify(man);
+      assert.ok(!manJson.includes("sites/default/files"), "free manifest has no eeoc.gov PDF deep link");
+      assert.ok(!manJson.includes("%PDF-"));
+      assert.ok(!manJson.includes(BODY_NEEDLE_2858));
+
+      const paid = await fetch(`${base}${EEOC_APPELLATE_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      assert.match(paid.headers.get("content-type") ?? "", /application\/json/);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        asOf?: string;
+        cards: { institution: string; date: string; id: string; body: string; sourceUrl?: string }[];
+        records?: { id: string; firm: string; type: string }[];
+      };
+      assert.equal(paidBody.product, "eeoc-appellate-bodies");
+      assert.equal(paidBody.asOf, "2026-08-24");
+      assert.match(paidBody.cards[0]?.institution ?? "", /Lenard T/);
+      assert.equal(paidBody.cards[0]?.id, eeocAppellateId);
+      assert.ok(paidBody.cards[0]?.body.includes(BODY_NEEDLE_2858));
+      assert.match(paidBody.cards[0]?.sourceUrl ?? "", /eeoc\.gov\/sites\/default\/files\/decisions\/2026_09_08\/2026002858\.%20DEC\.pdf/);
+      assert.equal(paidBody.records?.[0]?.type, "eeoc-appellate");
+      assert.match(paidBody.records?.[0]?.firm ?? "", /Lenard T/);
+    },
+  );
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -9898,7 +10040,7 @@ async function main(): Promise<void> {
     },
     async (base) => {
       assert.equal(cdpEnvStatus(), "CDP env not set");
-      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, MARINERS_D1_PATH, MARINERS_D5_PATH, MARINERS_D9_PATH, MARINERS_D14_PATH, MARINERS_D17_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, BSEE_REPORTS_PATH, OSHRC_ORDERS_PATH, EPA_ALJ_PATH, EPA_EAB_PATH, FAA_CIVIL_PENALTY_PATH, STB_DECISIONS_PATH, OALJ_DECISIONS_PATH, FMC_ORDERS_PATH, FTC_ORDERS_PATH, NLRB_DECISIONS_PATH, FLRA_DECISIONS_PATH, ECAB_DECISIONS_PATH, FCC_EB_ORDERS_PATH, NMB_DETERMINATIONS_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
+      for (const path of [TICKS_PATH, IMPORT_ALERTS_PATH, MARINERS_PATH, MARINERS_D11_PATH, MARINERS_D7_PATH, MARINERS_D8_PATH, MARINERS_D1_PATH, MARINERS_D5_PATH, MARINERS_D9_PATH, MARINERS_D14_PATH, MARINERS_D17_PATH, WARNING_LETTERS_PATH, UNTITLED_LETTERS_PATH, AWA_PATH, SWISSPAR_PATH, PCAC_PATH, FTC_WL_PATH, CFPB_ORDERS_PATH, OCC_CD_PATH, FDIC_ORDERS_PATH, FRB_ORDERS_PATH, NCUA_ORDERS_PATH, FINCEN_ORDERS_PATH, FERC_ORDERS_PATH, OFAC_ORDERS_PATH, BIS_ORDERS_PATH, CFTC_ORDERS_PATH, FIFRA_ORDERS_PATH, DENOVO_ORDERS_PATH, TTB_OIC_PATH, AIR_LETTERS_PATH, SUPERFUND_RODS_PATH, ICO_MPN_PATH, CMA_CA98_PATH, EMA_REFERRALS_PATH, CDER_REVIEWS_PATH, NPDES_PERMITS_PATH, OFSTED_INSPECTIONS_PATH, OFWAT_ENFORCEMENT_PATH, OFGEM_ENFORCEMENT_PATH, GAIN_PATH, ORR_ENFORCEMENT_PATH, PHMSA_ORDERS_PATH, AAIB_REPORTS_PATH, CSB_REPORTS_PATH, HHS_OIG_REPORTS_PATH, EIS_REPORTS_PATH, FSIS_HUMANE_PATH, EPA_CAFO_PATH, FMSHRC_ORDERS_PATH, BSEE_REPORTS_PATH, OSHRC_ORDERS_PATH, EPA_ALJ_PATH, EPA_EAB_PATH, FAA_CIVIL_PENALTY_PATH, STB_DECISIONS_PATH, OALJ_DECISIONS_PATH, FMC_ORDERS_PATH, FTC_ORDERS_PATH, NLRB_DECISIONS_PATH, FLRA_DECISIONS_PATH, ECAB_DECISIONS_PATH, FCC_EB_ORDERS_PATH, NMB_DETERMINATIONS_PATH, EEOC_APPELLATE_PATH, FORM_483_PATH, GMP_PATH, GMP_MD_PATH]) {
         const unpaid = await fetch(`${base}${path}`);
         assert.equal(unpaid.status, 402, `unpaid ${path} must stay 402`);
         const present = await fetch(`${base}${path}`, { headers: { "X-PAYMENT": "test" } });
@@ -9953,6 +10095,7 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.includes(ECAB_DECISIONS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(FCC_EB_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(NMB_DETERMINATIONS_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(EEOC_APPELLATE_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D11_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D7_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D8_PATH)));
@@ -9970,7 +10113,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions", "fcc-eb-orders", "nmb-determinations"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions", "fcc-eb-orders", "nmb-determinations", "eeoc-appellate"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -10024,6 +10167,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("ecab-decisions"), true);
   assert.equal(isPublicBazaarSku("fcc-eb-orders"), true);
   assert.equal(isPublicBazaarSku("nmb-determinations"), true);
+  assert.equal(isPublicBazaarSku("eeoc-appellate"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
