@@ -1018,6 +1018,24 @@ async function main(): Promise<void> {
       PUBLIC_BAZAAR_SKUS.length,
       "OpenAPI lists the always-public paid paths",
     );
+    assert.equal(spec.paths["/warning-letters/index"]?.get?.["x-auth"]?.mode, "none");
+    assert.equal(spec.paths["/warning-letters/index"]?.get?.["x-payment-info"], undefined);
+    assert.ok(String((spec.paths["/warning-letters/index"]?.get as { description?: string } | undefined)?.description || "").includes("/warning-letters/manifest.json"));
+    assert.equal(spec.paths["/ticks/index"], undefined);
+    assert.equal(spec.paths["/import-alerts/index"], undefined);
+    assert.equal(spec.paths["/mariners/index"], undefined);
+    assert.equal(spec.paths["/csb-reports/index"], undefined);
+    assert.equal(spec.paths["/hhs-oig-reports/index"], undefined);
+    for (const sku of EXTRACTED_BODY_SKUS) {
+      const man = `/${sku}/manifest.json`;
+      const idx = `/${sku}/index`;
+      if (spec.paths[man]) {
+        assert.equal(spec.paths[idx]?.get?.["x-auth"]?.mode, "none", `${idx} is the free catalog`);
+        assert.equal(spec.paths[idx]?.get?.["x-payment-info"], undefined, `${idx} is not a paid SKU`);
+      } else {
+        assert.equal(spec.paths[idx], undefined, `${idx} stays off when ${man} is unlisted`);
+      }
+    }
 
     const llms = await fetch(`${base}${LLMS_PATH}`);
     assert.equal(llms.status, 200);

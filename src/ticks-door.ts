@@ -5625,6 +5625,35 @@ function freeOpenApiOp(summary: string, description: string): Record<string, unk
   };
 }
 
+/** Free `/{door}/index` is the same catalog as `/{door}/manifest.json` on extracted-body doors. */
+function attachExtractedIndexPaths(doc: Record<string, unknown>): Record<string, unknown> {
+  const paths = doc.paths;
+  if (!paths || typeof paths !== "object") return doc;
+  const current = paths as Record<string, { get?: Record<string, unknown> }>;
+  const extra: Record<string, unknown> = {};
+  for (const [path, ops] of Object.entries(current)) {
+    const match = path.match(/^\/([^/]+)\/manifest\.json$/);
+    if (!match || !isExtractedBodySku(match[1])) continue;
+    const indexPath = `/${match[1]}/index`;
+    if (current[indexPath] || extra[indexPath]) continue;
+    const get = ops?.get;
+    if (!get || get["x-payment-info"]) continue;
+    const sku = match[1];
+    const opId = `get${sku.split("-").map((part) => part.charAt(0).toUpperCase() + part.slice(1)).join("")}Index`;
+    const summary = typeof get.summary === "string" ? get.summary : "Free catalog";
+    const prior = typeof get.description === "string" ? get.description : "";
+    extra[indexPath] = {
+      get: {
+        ...get,
+        operationId: opId,
+        summary,
+        description: `Free catalog alias of GET ${path}. Same JSON as that manifest. ${prior}`.trim(),
+      },
+    };
+  }
+  return { ...doc, paths: { ...current, ...extra } };
+}
+
 export function buildOpenApi(req: IncomingMessage, port: number): Record<string, unknown> {
   const origin = discoveryOrigin(req, port);
   const ticksAtomic = amountAtomicFor("ticks");
@@ -5837,7 +5866,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
   if (listedGmp) paidBits.push("/gmp ($0.05)");
   if (listedGmpMd) paidBits.push("/gmp-md ($0.05)");
   const paidList = paidBits.join(", ");
-  return {
+  const doc: Record<string, unknown> = {
     openapi: "3.1.0",
     info: {
       title: "BNM Data Shop",
@@ -7925,6 +7954,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       },
     },
   };
+  return attachExtractedIndexPaths(doc);
 }
 
 function paidOptsFromReq(req: IncomingMessage, sku: DoorSku): PaidBodyOpts | undefined {
