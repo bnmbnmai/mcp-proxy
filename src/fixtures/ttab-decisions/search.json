@@ -1,0 +1,113 @@
+{
+  "recordTotalQuantity": 18908,
+  "results": [
+    {
+      "proceedingNumber": 92081421,
+      "proceedingNumberDisplay": "92081421",
+      "proceedingTypeCd": "CAN",
+      "partyName": "D-Lize srl v. Genex Enterprises LLC and Saniderm Medical, LLC",
+      "applicantMarkGoodService": "DERMALIZE\n[Adhesive bandages, in Class 5]",
+      "opposerMarkGoodService": "DERMALIZE",
+      "decision": "Petition to Cancel Denied",
+      "precedentCitableIndicator": "N",
+      "issue": "14(3)",
+      "decisionTypeCategory": "Final Decision",
+      "documentId": "/legal-proceeding/92081421/decision/CAN_45.pdf",
+      "issueDateStr": "11-SEP-2026",
+      "panelMember": "THURMON;CASAGRANDE;BRADLEY",
+      "groundsForRefusalCategory": [
+        "Other"
+      ]
+    },
+    {
+      "proceedingNumber": 97811850,
+      "proceedingTypeCd": "EXA",
+      "partyName": "Rivers IP Holdings, LLC",
+      "applicantMarkGoodService": "RIVERS",
+      "decision": "Refusal Affirmed",
+      "precedentCitableIndicator": "N",
+      "groundsForRefusalCategory": [
+        "Likelihood of Confusion"
+      ],
+      "issue": "2(d)",
+      "decisionTypeCategory": "Final Decision",
+      "documentId": "/legal-proceeding/97811850/decision/EXA_28.pdf",
+      "issueDateStr": "11-SEP-2026"
+    },
+    {
+      "proceedingNumber": 98651023,
+      "proceedingTypeCd": "EXA",
+      "partyName": "MAP Elite & MAP Prospects LLC",
+      "applicantMarkGoodService": "MAP",
+      "decision": "Refusal Affirmed",
+      "precedentCitableIndicator": "N",
+      "groundsForRefusalCategory": [
+        "Likelihood of Confusion"
+      ],
+      "issue": "2(d)",
+      "decisionTypeCategory": "Final Decision",
+      "documentId": "/legal-proceeding/98651023/decision/EXA_10.pdf",
+      "issueDateStr": "11-SEP-2026"
+    },
+    {
+      "proceedingNumber": 91272167,
+      "proceedingTypeCd": "OPP",
+      "partyName": "Olsman, MacKenzie, Peacock & Wallace, P.C. v. Emily Grace Thomas",
+      "applicantMarkGoodService": "BIRTH JUSTICE",
+      "decision": "Opposition Sustained (based on non-ownership)",
+      "precedentCitableIndicator": "Y",
+      "groundsForRefusalCategory": [
+        "Ownership",
+        "Affirmative defenses"
+      ],
+      "groundsForRefusalSubCategory": [
+        "Other defenses"
+      ],
+      "issue": "2(d); non-ownership",
+      "decisionTypeCategory": "Final Decision",
+      "documentId": "/legal-proceeding/91272167/decision/OPP_88.pdf",
+      "issueDateStr": "10-SEP-2026",
+      "panelMember": "ENGLISH;STANLEY;LAVACHE"
+    },
+    {
+      "proceedingNumber": 97772966,
+      "proceedingTypeCd": "EXA",
+      "partyName": "Silver & Silver, P.A.",
+      "decision": "Refusal Affirmed",
+      "precedentCitableIndicator": "N",
+      "groundsForRefusalCategory": [
+        "Likelihood of Confusion"
+      ],
+      "issue": "2(d)",
+      "decisionTypeCategory": "Final Decision",
+      "documentId": "/legal-proceeding/97772966/decision/EXA_14.pdf",
+      "issueDateStr": "11-SEP-2026"
+    },
+    {
+      "proceedingNumber": 91293506,
+      "proceedingTypeCd": "OPP",
+      "partyName": "Scently LLC v. Scentacious, LLC",
+      "documentId": "None",
+      "issueDateStr": "08-SEP-2026",
+      "decision": "Opposition Dismissed"
+    },
+    {
+      "proceedingNumber": 79355823,
+      "proceedingTypeCd": "EXA",
+      "partyName": "Docket only",
+      "documentId": "/legal-proceeding/79355823/decision/EXA_9.pdf",
+      "issueDateStr": "04-SEP-2026",
+      "decision": "Refusal Affirmed",
+      "issue": "2(e)(1)",
+      "groundsForRefusalCategory": [
+        "Section 2(e)(1) Descriptive/Generic/Disclaimers"
+      ],
+      "decisionTypeCategory": "Final Decision"
+    },
+    {
+      "proceedingNumber": 111,
+      "documentId": "/ttabvue/111/docket.xml",
+      "issueDateStr": "01-SEP-2026"
+    }
+  ]
+}

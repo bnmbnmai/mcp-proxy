@@ -306,6 +306,12 @@ import {
   EEOC_APPELLATE_PATH,
 } from "./eeoc-appellate.js";
 import {
+  BODY_NEEDLE_DERMALIZE,
+  TTAB_DECISIONS_AMOUNT_ATOMIC,
+  TTAB_DECISIONS_MANIFEST_PATH,
+  TTAB_DECISIONS_PATH,
+} from "./ttab-decisions.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -1013,6 +1019,7 @@ async function main(): Promise<void> {
     assert.ok(spec.paths["/fcc-eb-orders"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/nmb-determinations"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/eeoc-appellate"]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths["/ttab-decisions"]?.get?.["x-payment-info"]);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
       PUBLIC_BAZAAR_SKUS.length,
@@ -1252,6 +1259,7 @@ async function main(): Promise<void> {
       FCC_EB_ORDERS_PATH,
       NMB_DETERMINATIONS_PATH,
       EEOC_APPELLATE_PATH,
+      TTAB_DECISIONS_PATH,
     ]);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.priceUsdc, "0.05");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
@@ -9345,6 +9353,128 @@ async function main(): Promise<void> {
     },
   );
 
+  const ttabDir = mkdtempSync(join(tmpdir(), "ttab-decisions-"));
+  const ttabId = "92081421-can-45";
+  const ttabBody = [
+    "UNITED STATES PATENT AND TRADEMARK OFFICE",
+    "Trademark Trial and Appeal Board",
+    "Cancellation No. 92081421",
+    "DERMALIZE",
+    "Decision",
+    BODY_NEEDLE_DERMALIZE,
+    ...Array.from({ length: 40 }, (_, i) => `Official TTAB reading-room paragraph ${i + 1}.`),
+  ].join("\n");
+  writeFileSync(
+    join(ttabDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "ttab-decision-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-09-24T16:00:00.000Z",
+      asOf: "2026-09-11",
+      license: "17 USC 105",
+      attribution: "United States Patent and Trademark Office, Trademark Trial and Appeal Board. Work of the United States Government; 17 U.S.C. § 105.",
+      sources: {
+        listing: "https://ttab-reading-room.uspto.gov/ttab-efoia-api/decision/search",
+        pdfHost: "https://ttab-reading-room.uspto.gov/cms/rest",
+      },
+      cards: [
+        {
+          id: ttabId,
+          proceedingNumber: "92081421",
+          proceedingType: "Cancellation",
+          parties: "D-Lize srl v. Genex Enterprises LLC and Saniderm Medical, LLC",
+          mark: "DERMALIZE",
+          outcome: "Petition to Cancel Denied",
+          precedential: false,
+          grounds: [],
+          issue: "14(3)",
+          kind: "Final Decision",
+          date: "2026-09-11",
+          title: "Cancellation 92081421 DERMALIZE",
+          institution: "D-Lize srl v. Genex Enterprises LLC and Saniderm Medical, LLC",
+          documentId: "/legal-proceeding/92081421/decision/CAN_45.pdf",
+          sourceUrl: "https://ttab-reading-room.uspto.gov/cms/rest/legal-proceeding/92081421/decision/CAN_45.pdf",
+          body: ttabBody,
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      TTAB_DECISIONS_DIR: ttabDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-ttab-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${TTAB_DECISIONS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /ttab-decisions must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; mimeType?: string }[];
+      };
+      assert.equal(body402.resource, TTAB_DECISIONS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, TTAB_DECISIONS_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.mimeType, "application/json");
+      const unpaidId = await fetch(`${base}${TTAB_DECISIONS_PATH}?id=${encodeURIComponent(ttabId)}`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /ttab-decisions?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
+      assert.ok(!JSON.stringify(body402).includes(BODY_NEEDLE_DERMALIZE));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === TTAB_DECISIONS_PATH), true);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(TTAB_DECISIONS_PATH)), "well-known lists /ttab-decisions");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /ttab-decisions"));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[TTAB_DECISIONS_PATH]);
+      assert.ok(spec.paths[TTAB_DECISIONS_MANIFEST_PATH]);
+      assert.ok(spec.paths["/ttab-decisions/index"]);
+
+      const manifest = await fetch(`${base}${TTAB_DECISIONS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "ttab-decisions free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        asOf?: string;
+        cards?: { parties?: string; mark?: string; body?: string; sourceUrl?: string; paidUrl?: string }[];
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.asOf, "2026-09-11");
+      assert.match(man.cards?.[0]?.parties ?? "", /D-Lize/);
+      assert.match(man.cards?.[0]?.mark ?? "", /DERMALIZE/);
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+      assert.ok(!("sourceUrl" in (man.cards?.[0] ?? {})));
+      assert.ok(man.cards?.[0]?.paidUrl);
+      const manJson = JSON.stringify(man);
+      assert.ok(!manJson.includes("/cms/rest"));
+      assert.ok(!manJson.includes(BODY_NEEDLE_DERMALIZE));
+
+      const index = await fetch(`${base}/ttab-decisions/index`);
+      assert.equal(index.status, 200, "/ttab-decisions/index is the free catalog");
+
+      const paid = await fetch(`${base}${TTAB_DECISIONS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        asOf?: string;
+        cards: { parties: string; id: string; body: string }[];
+        records?: { type: string; firm: string }[];
+      };
+      assert.equal(paidBody.product, "ttab-decision-bodies");
+      assert.equal(paidBody.asOf, "2026-09-11");
+      assert.equal(paidBody.cards[0]?.id, ttabId);
+      assert.ok(paidBody.cards[0]?.body.includes(BODY_NEEDLE_DERMALIZE));
+      assert.equal(paidBody.records?.[0]?.type, "ttab-decisions");
+    },
+  );
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -10151,6 +10281,7 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.includes(FCC_EB_ORDERS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(NMB_DETERMINATIONS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(EEOC_APPELLATE_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(TTAB_DECISIONS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D11_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D7_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D8_PATH)));
@@ -10168,7 +10299,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions", "fcc-eb-orders", "nmb-determinations", "eeoc-appellate"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions", "fcc-eb-orders", "nmb-determinations", "eeoc-appellate", "ttab-decisions"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -10223,6 +10354,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("fcc-eb-orders"), true);
   assert.equal(isPublicBazaarSku("nmb-determinations"), true);
   assert.equal(isPublicBazaarSku("eeoc-appellate"), true);
+  assert.equal(isPublicBazaarSku("ttab-decisions"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");

@@ -80,6 +80,7 @@ export const EXTRACTED_BODY_SKUS = [
   "fcc-eb-orders",
   "nmb-determinations",
   "eeoc-appellate",
+  "ttab-decisions",
 ] as const;
 
 export type ExtractedBodySku = (typeof EXTRACTED_BODY_SKUS)[number];
@@ -181,6 +182,7 @@ export const ECAB_DECISIONS_TYPE = "ecab-decisions";
 export const FCC_EB_ORDERS_TYPE = "fcc-eb-orders";
 export const NMB_DETERMINATIONS_TYPE = "nmb-determinations";
 export const EEOC_APPELLATE_TYPE = "eeoc-appellate";
+export const TTAB_DECISIONS_TYPE = "ttab-decisions";
 export const CFPB_ORDER_TYPE = "cfpb-order";
 export const OFAC_ORDER_TYPE = "ofac-order";
 export const FRB_ORDER_TYPE = "frb-order";
@@ -254,6 +256,7 @@ export const ECAB_DECISIONS_SOURCE = "https://www.dol.gov/agencies/ecab/decision
 export const FCC_EB_ORDERS_SOURCE = "https://www.fcc.gov/edocs/daily-digest";
 export const NMB_DETERMINATIONS_SOURCE = "https://nmb.gov/NMB_Application/index.php/agency-determinations/";
 export const EEOC_APPELLATE_SOURCE = "https://www.eeoc.gov/federal-sector/appellate-decisions";
+export const TTAB_DECISIONS_SOURCE = "https://ttab-reading-room.uspto.gov/efoia/efoia-ui/#/search/decisions";
 export const CFPB_ORDER_SOURCE = "https://www.consumerfinance.gov/enforcement/actions/";
 export const OFAC_ORDER_SOURCE = "https://ofac.treasury.gov/civil-penalties-and-enforcement-information";
 export const FRB_ORDER_SOURCE = "https://www.federalreserve.gov/supervisionreg/enforcementactions.htm";
@@ -1113,6 +1116,13 @@ export function paidEeocAppellateBody<T extends CardPayload>(
   opts?: PaidBodyOpts,
 ): T & PaidBodyWindowEnvelope {
   return paidCardBody(payload, EEOC_APPELLATE_TYPE, EEOC_APPELLATE_SOURCE, opts);
+}
+
+export function paidTtabDecisionsBody<T extends CardPayload>(
+  payload: T,
+  opts?: PaidBodyOpts,
+): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, TTAB_DECISIONS_TYPE, TTAB_DECISIONS_SOURCE, opts);
 }
 
 export function paidIcoMpnBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
