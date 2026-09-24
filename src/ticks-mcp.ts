@@ -278,7 +278,7 @@ export function mcpToolDescriptors(
     {
       name: SEARCH_TOOL_NAME,
       description:
-        "Free catalog search on an extracted-body door. Returns matching rows plus id, the ?id= URL ($0.02), and the page cursor ($0.05). Optional before/date filters. Not a paid SKU. Does not return official bodies.",
+        "Free catalog search on an extracted-body door. Returns matching rows plus id, the ?id= URL ($0.02), and the page cursor ($0.05). Optional before=<catalog id or ISO date> and date filters. Not a paid SKU. Does not return official bodies.",
       inputSchema: {
         type: "object" as const,
         properties: {
@@ -292,7 +292,7 @@ export function mcpToolDescriptors(
           },
           before: {
             type: "string",
-            description: "Free filter: page cursor (id) or YYYY-MM-DD older-than date.",
+            description: "Free filter: catalog id (rows after that id, newest first) or ISO date (YYYY-MM-DD or timestamp, earlier dates). Unknown id is an empty list.",
           },
           date: {
             type: "string",
@@ -782,11 +782,11 @@ export async function createTicksMcpServer(origin = ticksOrigin()): Promise<McpS
     SEARCH_TOOL_NAME,
     {
       description:
-        "Free catalog search on an extracted-body door. Returns matching rows plus id, the ?id= URL ($0.02), and the page cursor ($0.05). Optional before/date filters. Not a paid SKU.",
+        "Free catalog search on an extracted-body door. Returns matching rows plus id, the ?id= URL ($0.02), and the page cursor ($0.05). Optional before=<catalog id or ISO date> and date filters. Not a paid SKU.",
       inputSchema: {
         door: z.string().describe("Extracted-body door name, e.g. gmp"),
         q: z.string().optional().describe("Free-text match against the free manifest."),
-        before: z.string().optional().describe("Free filter: page cursor (id) or YYYY-MM-DD older-than date."),
+        before: z.string().optional().describe("Free filter: catalog id (rows after that id, newest first) or ISO date (YYYY-MM-DD or timestamp, earlier dates). Unknown id is an empty list."),
         date: z.string().optional().describe("Free date prefix (YYYY, YYYY-MM, or YYYY-MM-DD)."),
       },
     },

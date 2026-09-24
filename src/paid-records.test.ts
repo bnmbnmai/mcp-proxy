@@ -43,6 +43,7 @@ import {
   isoFromOfficialDate,
   isPlausibleDate,
   decorateExtractedBodyManifest,
+  UNKNOWN_CATALOG_ID_BEFORE_HINT,
   FREE_OFFICIAL_DEEP_LINK_KEYS,
   stripOfficialDeepLinksFromFreeCard,
   newestOfficialTextsCopy,
@@ -1136,7 +1137,7 @@ async function main(): Promise<void> {
   assert.ok(olderChunkCopy(10).includes("?before="));
   assert.equal(
     paidBodyCatalogNote("/gmp", "Full catalog: count + id + firm + date + url"),
-    "Full catalog: count + id + firm + date + url. Free index/search (?q=, optional before/date) stays free and includes id, the ?id= URL ($0.02), and the page cursor ($0.05). GET /gmp?id= is one official text GET ?id= ($0.02). Plain paid GET /gmp is the newest 10 official texts; older chunk if they ask (?before=<id or date>, another $0.05); newer than a watermark ?since=<ISO timestamp or official catalog id> ($0.05; empty new set is 304 or recordCount 0).",
+    "Full catalog: count + id + firm + date + url. Free index/search (?q=, optional before=<catalog id or ISO date>) stays free and includes id, the ?id= URL ($0.02), and the page cursor ($0.05). GET /gmp?id= is one official text GET ?id= ($0.02). Plain paid GET /gmp is the newest 10 official texts; older chunk if they ask (?before=<id or date>, another $0.05); newer than a watermark ?since=<ISO timestamp or official catalog id> ($0.05; empty new set is 304 or recordCount 0).",
   );
   assert.equal(DEFAULT_PAID_BODY_WINDOW, 10);
   assert.ok(newerSinceCopy().includes("?since="));
@@ -1289,13 +1290,79 @@ async function main(): Promise<void> {
   );
   assert.ok((byDate.matchCount as number) >= 1);
   assert.ok((byDate.cards as { date?: string }[]).every((row) => String(row.date ?? "").startsWith(String(byDate.date))));
+  const gmpIndexCards = fatGmpCards.map((c) => ({ id: c.id, firm: c.firm, inspectedOn: c.inspectedOn }));
   const byCursor = decorateExtractedBodyManifest(
-    { cards: fatGmpCards.map((c) => ({ id: c.id, firm: c.firm, inspectedOn: c.inspectedOn })) },
+    { cards: gmpIndexCards },
     { before: page2Index?.before, paidPath: "/gmp" },
   );
-  assert.ok((byCursor.cards as { page?: number }[]).every((row) => row.page === 2));
+  const newestFirstIds = [...indexCards]
+    .sort((a, b) => String(b.date ?? "").localeCompare(String(a.date ?? "")) || String(a.id ?? "").localeCompare(String(b.id ?? "")))
+    .map((row) => row.id);
+  const cursorAt = newestFirstIds.indexOf(String(page2Index?.before ?? ""));
+  assert.ok(cursorAt > 0, "page cursor id sits in the newest-first catalog");
+  const olderIds = newestFirstIds.slice(cursorAt + 1);
+  assert.deepEqual((byCursor.cards as { id?: string }[]).map((row) => row.id), olderIds);
+  assert.ok(olderIds.length > 10, "catalog id cursor returns the older tail, not one paid page");
   assert.equal(byCursor.before, page2Index?.before);
+  assert.equal(byCursor.beforeHint, undefined);
   assert.ok((byCursor.cards as { paidUrl?: string; id?: string }[]).every((row) => row.paidUrl === `/gmp?id=${row.id}`));
+  const page1Id = newestFirstIds[0] ?? "";
+  assert.ok(page1Id);
+  assert.notEqual(page1Id, page2Index?.before, "page 1 id under test is not the old page-boundary cursor");
+  const byPage1Id = decorateExtractedBodyManifest({ cards: gmpIndexCards }, { before: page1Id, paidPath: "/gmp" });
+  assert.ok((byPage1Id.cards as unknown[]).length > 0, "before=<page 1 catalog id> is not empty");
+  assert.ok(!(byPage1Id.cards as { id?: string }[]).some((row) => row.id === page1Id));
+  const byBeforeDate = decorateExtractedBodyManifest({ cards: gmpIndexCards }, { before: "2024-06-01", paidPath: "/gmp" });
+  assert.ok((byBeforeDate.matchCount as number) >= 1);
+  assert.ok((byBeforeDate.cards as { date?: string }[]).every((row) => String(row.date ?? "") < "2024-06-01"));
+  assert.equal(byBeforeDate.beforeHint, undefined);
+  const byIso = decorateExtractedBodyManifest(
+    { cards: gmpIndexCards },
+    { before: "2024-06-01T15:00:00.000Z", paidPath: "/gmp" },
+  );
+  assert.deepEqual(
+    (byIso.cards as { id?: string }[]).map((row) => row.id),
+    (byBeforeDate.cards as { id?: string }[]).map((row) => row.id),
+    "full ISO before= matches the YYYY-MM-DD day",
+  );
+  const unknownBefore = decorateExtractedBodyManifest(
+    { cards: gmpIndexCards },
+    { before: "not-a-catalog-id", paidPath: "/gmp" },
+  );
+  assert.equal((unknownBefore.cards as unknown[]).length, 0);
+  assert.equal(unknownBefore.matchCount, 0);
+  assert.equal(unknownBefore.beforeHint, UNKNOWN_CATALOG_ID_BEFORE_HINT);
+  const doorCursor = (
+    door: string,
+    cards: { id: string; date: string }[],
+  ) => {
+    const full = decorateExtractedBodyManifest({ cards }, { paidPath: `/${door}` });
+    const rows = full.cards as { id: string; date: string }[];
+    const newest = [...rows].sort((a, b) => b.date.localeCompare(a.date) || a.id.localeCompare(b.id));
+    const byId = decorateExtractedBodyManifest({ cards }, { before: newest[0]?.id, paidPath: `/${door}` });
+    assert.deepEqual(
+      (byId.cards as { id: string }[]).map((row) => row.id),
+      newest.slice(1).map((row) => row.id),
+      `${door} before=<id> returns older rows in newest-first order`,
+    );
+    const day = newest[0]?.date ?? "";
+    const byDate = decorateExtractedBodyManifest({ cards }, { before: day, paidPath: `/${door}` });
+    assert.ok((byDate.cards as { date: string }[]).length >= 1, `${door} date form still returns older rows`);
+    assert.ok((byDate.cards as { date: string }[]).every((row) => row.date < day), `${door} date form is older-than`);
+    const missing = decorateExtractedBodyManifest({ cards }, { before: `${door}-missing`, paidPath: `/${door}` });
+    assert.equal((missing.cards as unknown[]).length, 0, `${door} unknown id is empty`);
+    assert.equal(missing.beforeHint, UNKNOWN_CATALOG_ID_BEFORE_HINT);
+  };
+  doorCursor("eeoc-appellate", [
+    { id: "eeoc-2026-002", date: "2026-08-15" },
+    { id: "eeoc-2026-001", date: "2026-09-01" },
+    { id: "eeoc-2025-014", date: "2025-11-02" },
+  ]);
+  doorCursor("nmb-determinations", [
+    { id: "nmb-53-31", date: "2026-07-12" },
+    { id: "nmb-53-34", date: "2026-09-17" },
+    { id: "nmb-53-33", date: "2026-08-01" },
+  ]);
   const leakIndex = decorateExtractedBodyManifest(
     {
       cards: [

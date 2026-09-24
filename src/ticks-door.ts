@@ -1558,7 +1558,7 @@ const PAID_BODY_N = paidBodyWindow();
 const PAID_WINDOW_COPY = `GET ?id= one official text ($0.02). Newest chunk on a plain GET (${newestOfficialTextsCopy(PAID_BODY_N)}, $0.05); older page ?before= another $0.05. ${newerSinceCopy()}.`;
 /** Shop-wide discovery. Free index/search, then pay one text or the page. Never “entire current cache”. */
 const BODY_PAGE_DISCOVERY =
-  `Extracted-body doors: free index/search on /{door}/manifest.json or /{door}/index (?q=, optional before/date), then pay ${oneOfficialTextCopy()} or the page ($0.05). ${newestOfficialTextsCopy(PAID_BODY_N)} on a plain GET ($0.05), or the whole current set if fewer; older pages on the same URL (?before, another $0.05). Poll newer with ?since=<ISO timestamp or official catalog id> ($0.05; empty new set is HTTP 304 or paid recordCount 0). Table doors (/ticks, /import-alerts) stay the whole current table; If-None-Match / ETag (or ?since=) avoids re-buying an unchanged snapshot. ${COLLECT_CADENCE} ${HTTP_429_COPY}`;
+  `Extracted-body doors: free index/search on /{door}/manifest.json or /{door}/index (?q=, optional before=<catalog id or ISO date>), then pay ${oneOfficialTextCopy()} or the page ($0.05). ${newestOfficialTextsCopy(PAID_BODY_N)} on a plain GET ($0.05), or the whole current set if fewer; older pages on the same URL (?before, another $0.05). Poll newer with ?since=<ISO timestamp or official catalog id> ($0.05; empty new set is HTTP 304 or paid recordCount 0). Table doors (/ticks, /import-alerts) stay the whole current table; If-None-Match / ETag (or ?since=) avoids re-buying an unchanged snapshot. ${COLLECT_CADENCE} ${HTTP_429_COPY}`;
 
 const CANONICAL_ORIGIN = "https://ticks.bnm.farm";
 const CDP_DESCRIPTION_MAX = 500;
@@ -5571,7 +5571,7 @@ function paidOpenApiOp(opts: {
 }
 
 const EXTRACTED_MANIFEST_OPENAPI =
-  " Free index/search (?q=, optional before/date) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05). Same URL ?since=<ISO timestamp or official catalog id> is official texts newer than that watermark ($0.05; empty new set is 304 or recordCount 0).";
+  " Free index/search (?q=, optional before=<catalog id or ISO date>) returns id, the ?id= URL ($0.02), and the page cursor ($0.05). A catalog id returns rows after that id (newest first). An ISO date (YYYY-MM-DD or timestamp) returns earlier dates. An unknown id is HTTP 200 with an empty list and beforeHint. GET ?id= is one official text ($0.02). Plain paid GET is the newest 10 official texts ($0.05), or the whole current set if fewer — not the entire cache of a large door. Same URL ?before is the next older page ($0.05). Same URL ?since=<ISO timestamp or official catalog id> is official texts newer than that watermark ($0.05; empty new set is 304 or recordCount 0).";
 
 function freeOpenApiOp(summary: string, description: string): Record<string, unknown> {
   const extractedCatalog =
@@ -5604,7 +5604,7 @@ function freeOpenApiOp(summary: string, description: string): Record<string, unk
               required: false,
               schema: { type: "string" },
               description:
-                "Free filter: page cursor (id) returns that page's rows; YYYY-MM-DD returns older dates. Not charged.",
+                "Catalog id or ISO date (YYYY-MM-DD or full timestamp). An id returns rows after that id, newest first (older entries). A date returns earlier dates. Unknown id: HTTP 200, empty list, beforeHint. Not charged.",
             },
             {
               name: "date",

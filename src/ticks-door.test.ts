@@ -9784,11 +9784,48 @@ async function main(): Promise<void> {
       assert.ok((dated.matchCount ?? 0) >= 1);
       assert.ok((dated.cards ?? []).every((row) => String(row.date ?? "").startsWith("2024-01")));
 
+      const catalogIds = [...(manRows.cards ?? [])]
+        .sort((a, b) => String((b as { date?: string }).date ?? "").localeCompare(String((a as { date?: string }).date ?? "")) || String(a.id ?? "").localeCompare(String(b.id ?? "")))
+        .map((row) => row.id);
+      const cursorAt = catalogIds.indexOf(String(page2Row?.before ?? ""));
+      assert.ok(cursorAt > 0);
       const byCursor = (await (await fetch(`${base}${GMP_MANIFEST_PATH}?before=${encodeURIComponent(page2Row?.before ?? "")}`)).json()) as {
         matchCount?: number;
-        cards?: { page?: number }[];
+        beforeHint?: string;
+        cards?: { id?: string; page?: number }[];
       };
-      assert.ok((byCursor.cards ?? []).every((row) => row.page === 2));
+      assert.deepEqual((byCursor.cards ?? []).map((row) => row.id), catalogIds.slice(cursorAt + 1));
+      assert.ok((byCursor.cards ?? []).length > 10, "manifest ?before=<id> returns the older tail");
+      assert.equal(byCursor.beforeHint, undefined);
+      const page1Id = catalogIds[0] ?? "";
+      assert.ok(page1Id);
+      assert.notEqual(page1Id, page2Row?.before);
+      const byPage1 = (await (await fetch(`${base}${GMP_MANIFEST_PATH}?before=${encodeURIComponent(page1Id)}`)).json()) as {
+        cards?: { id?: string }[];
+        beforeHint?: string;
+      };
+      assert.ok((byPage1.cards ?? []).length > 0, "before=<page 1 catalog id> is not empty");
+      assert.ok(!(byPage1.cards ?? []).some((row) => row.id === page1Id));
+      assert.equal(byPage1.beforeHint, undefined);
+      const byIndexId = (await (await fetch(`${base}/gmp/index?before=${encodeURIComponent(page1Id)}`)).json()) as {
+        cards?: { id?: string }[];
+      };
+      assert.deepEqual((byIndexId.cards ?? []).map((row) => row.id), (byPage1.cards ?? []).map((row) => row.id));
+      const byDate = (await (await fetch(`${base}${GMP_MANIFEST_PATH}?before=2024-06-01`)).json()) as {
+        cards?: { date?: string }[];
+        beforeHint?: string;
+      };
+      assert.ok((byDate.cards ?? []).length >= 1, "date form of before still returns older rows");
+      assert.ok((byDate.cards ?? []).every((row) => String(row.date ?? "") < "2024-06-01"));
+      assert.equal(byDate.beforeHint, undefined);
+      const unknown = (await (await fetch(`${base}${GMP_MANIFEST_PATH}?before=not-a-catalog-id`)).json()) as {
+        cards?: unknown[];
+        beforeHint?: string;
+        matchCount?: number;
+      };
+      assert.equal(unknown.cards?.length, 0);
+      assert.equal(unknown.matchCount, 0);
+      assert.match(String(unknown.beforeHint ?? ""), /Unknown catalog id/);
 
       const mcpSearch = (await (
         await fetch(`${base}${MCP_PATH}`, {

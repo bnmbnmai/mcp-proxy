@@ -132,7 +132,7 @@ export function oneOfficialTextCopy(): string {
 export function paidBodyCatalogNote(paidPath: string, catalogLead: string): string {
   const n = paidBodyWindow();
   const lead = catalogLead.trim().replace(/\.?$/, ".");
-  return `${lead} Free index/search (?q=, optional before/date) stays free and includes id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ${paidPath}?id= is ${oneOfficialTextCopy()}. Plain paid GET ${paidPath} is the ${newestOfficialTextsCopy(n)}; ${olderChunkCopy(n)}; ${newerSinceCopy()}.`;
+  return `${lead} Free index/search (?q=, optional before=<catalog id or ISO date>) stays free and includes id, the ?id= URL ($0.02), and the page cursor ($0.05). GET ${paidPath}?id= is ${oneOfficialTextCopy()}. Plain paid GET ${paidPath} is the ${newestOfficialTextsCopy(n)}; ${olderChunkCopy(n)}; ${newerSinceCopy()}.`;
 }
 
 export const TICKS_CACHE_SOURCE = "USDA farm market prices cache";
@@ -552,11 +552,45 @@ export function searchCatalogRows(rows: Record<string, unknown>[], q: string): R
   });
 }
 
-/** Free index filters. before=<id> is that page; before=<YYYY-MM-DD> is older dates. date= is a prefix. */
+/** Unknown free-manifest ?before=<id>. HTTP 200, empty list, and this hint. The oldest real id stays empty with no hint. */
+export const UNKNOWN_CATALOG_ID_BEFORE_HINT =
+  "Unknown catalog id. before= takes a catalog id (rows after that id, newest first) or an ISO date (YYYY-MM-DD or a full timestamp).";
+
+function sortCatalogRowsNewestFirst(rows: Record<string, unknown>[]): Record<string, unknown>[] {
+  return [...rows].sort((a, b) => {
+    const dateCmp = catalogRowDate(b).localeCompare(catalogRowDate(a));
+    if (dateCmp !== 0) return dateCmp;
+    return officialItemId(a).localeCompare(officialItemId(b));
+  });
+}
+
+/**
+ * Free ?before=. An ISO date (YYYY-MM-DD or timestamp) keeps earlier dates in input order.
+ * A catalog id returns rows after that id in newest-first order (date desc, id asc).
+ * Unknown id is an empty list plus UNKNOWN_CATALOG_ID_BEFORE_HINT.
+ */
+export function applyCatalogBefore(
+  rows: Record<string, unknown>[],
+  before: string,
+): { rows: Record<string, unknown>[]; beforeHint: string | null } {
+  if (isTimeCursor(before)) {
+    const day = before.slice(0, 10);
+    return {
+      rows: rows.filter((row) => (catalogRowDate(row) || "") < day),
+      beforeHint: null,
+    };
+  }
+  const sorted = sortCatalogRowsNewestFirst(rows);
+  const idx = sorted.findIndex((row) => officialItemId(row) === before);
+  if (idx < 0) return { rows: [], beforeHint: UNKNOWN_CATALOG_ID_BEFORE_HINT };
+  return { rows: sorted.slice(idx + 1), beforeHint: null };
+}
+
+/** Free index filters. date= is a prefix. before= is an ISO date or a catalog id. */
 export function filterCatalogRows(
   rows: Record<string, unknown>[],
   query: CatalogSearchQuery = {},
-): Record<string, unknown>[] {
+): { rows: Record<string, unknown>[]; beforeHint: string | null } {
   let out = rows;
   const q = str(query.q);
   if (q) out = searchCatalogRows(out, q);
@@ -565,14 +599,8 @@ export function filterCatalogRows(
     out = out.filter((row) => catalogRowDate(row).startsWith(date));
   }
   const before = str(query.before);
-  if (before) {
-    if (isDateCursor(before)) {
-      out = out.filter((row) => (catalogRowDate(row) || "") < before);
-    } else {
-      out = out.filter((row) => str(row.before) === before);
-    }
-  }
-  return out;
+  if (!before) return { rows: out, beforeHint: null };
+  return applyCatalogBefore(out, before);
 }
 
 export function catalogSearchQueryString(query: CatalogSearchQuery = {}): string {
@@ -668,7 +696,8 @@ export function decorateExtractedBodyManifest(
   const listKey = Array.isArray(manifest.cards) ? "cards" : Array.isArray(manifest.letters) ? "letters" : null;
   if (!listKey) return stripOfficialDeepLinksFromFreeManifest(manifest);
   const paidPath = str(query.paidPath);
-  const rows = filterCatalogRows(attachPaidPageCursors(asList(manifest[listKey])), query).map((row) => {
+  const selected = filterCatalogRows(attachPaidPageCursors(asList(manifest[listKey])), query);
+  const rows = selected.rows.map((row) => {
     const id = officialItemId(row);
     return paidPath && id ? { ...row, paidUrl: paidOneUrl(paidPath, id) } : row;
   });
@@ -682,6 +711,7 @@ export function decorateExtractedBodyManifest(
     search: q || null,
     before: before || null,
     date: date || null,
+    ...(selected.beforeHint ? { beforeHint: selected.beforeHint } : {}),
     ...(searching ? { matchCount: rows.length } : {}),
   });
 }
