@@ -312,6 +312,12 @@ import {
   TTAB_DECISIONS_PATH,
 } from "./ttab-decisions.js";
 import {
+  BODY_NEEDLE_MAVERICK,
+  IBLA_DECISIONS_AMOUNT_ATOMIC,
+  IBLA_DECISIONS_MANIFEST_PATH,
+  IBLA_DECISIONS_PATH,
+} from "./ibla-decisions.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -1020,6 +1026,7 @@ async function main(): Promise<void> {
     assert.ok(spec.paths["/nmb-determinations"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/eeoc-appellate"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/ttab-decisions"]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths["/ibla-decisions"]?.get?.["x-payment-info"]);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
       PUBLIC_BAZAAR_SKUS.length,
@@ -1260,6 +1267,7 @@ async function main(): Promise<void> {
       NMB_DETERMINATIONS_PATH,
       EEOC_APPELLATE_PATH,
       TTAB_DECISIONS_PATH,
+      IBLA_DECISIONS_PATH,
     ]);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.priceUsdc, "0.05");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
@@ -9475,6 +9483,126 @@ async function main(): Promise<void> {
     },
   );
 
+  const iblaDir = mkdtempSync(join(tmpdir(), "ibla-decisions-"));
+  const iblaId = "201-ibla-53";
+  const iblaBody = [
+    "MAVERICK SOLAR, LLC ET AL.",
+    "IBLA 2021-0216 et al. Decided June 16, 2026",
+    "Set aside and remanded.",
+    "OPINION BY ADMINISTRATIVE JUDGE BALLENGER",
+    BODY_NEEDLE_MAVERICK,
+    "201 IBLA 53",
+    ...Array.from({ length: 40 }, (_, i) => `Official IBLA precedential paragraph ${i + 1}.`),
+  ].join("\n");
+  writeFileSync(
+    join(iblaDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "ibla-decision-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-09-24T16:00:00.000Z",
+      asOf: "2026-06-16",
+      license: "17 USC 105",
+      attribution: "U.S. Department of the Interior, Office of Hearings and Appeals, Interior Board of Land Appeals. Work of the United States Government; 17 U.S.C. § 105.",
+      sources: {
+        listing: "https://www.oha.doi.gov/IBLA/Ibladecisions/",
+        chrono: "https://www.doi.gov/oha/organization/ibla/Finding-IBLA-Decisions/Chronological-Index-of-Decisions",
+        pdfHost: "https://www.oha.doi.gov/IBLA/Ibladecisions/",
+      },
+      cards: [
+        {
+          id: iblaId,
+          citation: "201 IBLA 53",
+          volume: 201,
+          page: 53,
+          docket: "IBLA 2021-0216 et al.",
+          parties: "Maverick Solar, LLC et al.",
+          disposition: "Set aside and remanded.",
+          kind: "Precedential decision",
+          institution: "Maverick Solar, LLC et al.",
+          date: "2026-06-16",
+          title: "201 IBLA 53 Maverick Solar, LLC et al.",
+          sourceUrl: "https://www.oha.doi.gov/IBLA/Ibladecisions/201IBLA/201ibla53.pdf",
+          body: iblaBody,
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      IBLA_DECISIONS_DIR: iblaDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-ibla-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${IBLA_DECISIONS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /ibla-decisions must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; mimeType?: string }[];
+      };
+      assert.equal(body402.resource, IBLA_DECISIONS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, IBLA_DECISIONS_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.mimeType, "application/json");
+      const unpaidId = await fetch(`${base}${IBLA_DECISIONS_PATH}?id=${encodeURIComponent(iblaId)}`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /ibla-decisions?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
+      assert.ok(!JSON.stringify(body402).includes(BODY_NEEDLE_MAVERICK));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === IBLA_DECISIONS_PATH), true);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(IBLA_DECISIONS_PATH)), "well-known lists /ibla-decisions");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /ibla-decisions"));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[IBLA_DECISIONS_PATH]);
+      assert.ok(spec.paths[IBLA_DECISIONS_MANIFEST_PATH]);
+      assert.ok(spec.paths["/ibla-decisions/index"]);
+
+      const manifest = await fetch(`${base}${IBLA_DECISIONS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "ibla-decisions free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        asOf?: string;
+        cards?: { parties?: string; citation?: string; body?: string; sourceUrl?: string; paidUrl?: string }[];
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.asOf, "2026-06-16");
+      assert.match(man.cards?.[0]?.parties ?? "", /Maverick Solar/);
+      assert.equal(man.cards?.[0]?.citation, "201 IBLA 53");
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+      assert.ok(!("sourceUrl" in (man.cards?.[0] ?? {})));
+      assert.ok(man.cards?.[0]?.paidUrl);
+      const manJson = JSON.stringify(man);
+      assert.ok(!manJson.includes("201ibla53.pdf"));
+      assert.ok(!manJson.includes(BODY_NEEDLE_MAVERICK));
+
+      const index = await fetch(`${base}/ibla-decisions/index`);
+      assert.equal(index.status, 200, "/ibla-decisions/index is the free catalog");
+
+      const paid = await fetch(`${base}${IBLA_DECISIONS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        asOf?: string;
+        cards: { parties: string; id: string; body: string }[];
+        records?: { type: string; firm: string }[];
+      };
+      assert.equal(paidBody.product, "ibla-decision-bodies");
+      assert.equal(paidBody.asOf, "2026-06-16");
+      assert.equal(paidBody.cards[0]?.id, iblaId);
+      assert.ok(paidBody.cards[0]?.body.includes(BODY_NEEDLE_MAVERICK));
+      assert.equal(paidBody.records?.[0]?.type, "ibla-decisions");
+    },
+  );
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -10282,6 +10410,7 @@ async function main(): Promise<void> {
       assert.ok(wk.resources.some((r) => r.includes(NMB_DETERMINATIONS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(EEOC_APPELLATE_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(TTAB_DECISIONS_PATH)));
+      assert.ok(wk.resources.some((r) => r.includes(IBLA_DECISIONS_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D11_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D7_PATH)));
       assert.ok(wk.resources.some((r) => r.includes(MARINERS_D8_PATH)));
@@ -10299,7 +10428,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions", "fcc-eb-orders", "nmb-determinations", "eeoc-appellate", "ttab-decisions"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions", "fcc-eb-orders", "nmb-determinations", "eeoc-appellate", "ttab-decisions", "ibla-decisions"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -10355,6 +10484,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("nmb-determinations"), true);
   assert.equal(isPublicBazaarSku("eeoc-appellate"), true);
   assert.equal(isPublicBazaarSku("ttab-decisions"), true);
+  assert.equal(isPublicBazaarSku("ibla-decisions"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");

@@ -1,0 +1,90 @@
+WILDEARTH GUARDIANS
+
+IBLA 2019-0002                                                Decided January 15, 2026
+
+       Appeal from a Record of Decision issued by the Pinedale Field Office, Bureau of
+Land Management, approving the Normally Pressured Lance Natural Gas Development
+Project. DOI-BLM-WY-D010-2011-0001-EIS.
+
+      Vacated.
+
+APPEARANCES: Samantha Ruscavage-Barz, Esq., WildEarth Guardians, Santa Fe, New
+Mexico, for WildEarth Guardians; Philip C. Lowe, Esq., and Kimberly Jackson, Esq., U.S.
+Department of the Interior, Office of the Regional Solicitor, Lakewood, Colorado, for the
+Bureau of Land Management; Shannon Leininger, Esq., Wyoming Attorney General’s
+Office, Cheyenne, Wyoming, for the State of Wyoming; Kathleen L. Schroder, Esq., Gail
+L. Wurtzler, Esq., and Courtney M. Shephard, Esq., Davis Graham & Stubbs LLP, Denver,
+Colorado, for Jonah Energy, LLC.
+
+                    OPINION BY ADMINISTRATIVE JUDGE GUNTER
+
+       WildEarth Guardians has appealed a Record of Decision issued by the Pinedale
+Field Office, Bureau of Land Management (BLM), approving the Normally Pressured
+Lance Natural Gas Development Project (the NPL Project).1 WildEarth contends that
+BLM’s approval of the NPL Project violated the Clean Air Act and the National
+Environmental Policy Act (NEPA). We hold that BLM’s Record of Decision was not
+supported by a valid Clean Air Act conformity determination, and we therefore vacate
+the Record of Decision.
+
+                                       SUMMARY
+
+      The NPL Project is a natural gas development project in Wyoming proposed by
+Jonah Energy LLC. BLM approved the Project in a 2018 Record of Decision. BLM made a
+
+
+1
+  Administrative Record (AR), NPL-2717, Bureau of Land Management, Normally
+Pressured Lance Natural Gas Development Project, Record of Decision (Aug. 2018)
+(Record of Decision). BLM has filed the record on appeal as a series of PDF files, each
+with a document number beginning “NPL-.” We cite the number of the document and its
+internal page numbers.
+
+
+                                       201 IBLA 1
+
+                                                                          IBLA 2019-0002
+
+
+determination that the NPL Project, as approved, would satisfy the general conformity
+requirements of the Clean Air Act as stated in regulations promulgated by the U.S.
+Environmental Protection Agency (EPA) and incorporated into Wyoming’s regulations
+and State Implementation Plan. WildEarth argues that BLM’s conformity determination
+failed to analyze emissions from all relevant sources—specifically, Jonah Energy’s
+portable drill rig fleet. Emissions from the drill rig fleet are authorized by a New Source
+Review (NSR) permit issued by Wyoming. BLM excluded the drill rig fleet from its
+conformity analysis in reliance on an exemption for emissions from “stationary sources”
+that “require a permit under the new source review (NSR) program.” We hold that this
+exemption did not apply here. Although we do not question that the drill rig fleet may be
+(and was) subject to an NSR permit, the drill rigs are not “stationary sources,” and the
+unambiguous language of the exemption therefore made it inapplicable.
+
+       WildEarth also argues that the Record of Decision violated Clean Air Act
+conformity requirements because BLM’s conformity determination depended upon a pace
+of development—i.e., a number of wells approved per year—lower than the proposed
+action studied in the Final EIS. This argument is without merit, because that reduced
+pace of development was incorporated into the Record of Decision itself. BLM approved
+the NPL Project only as limited to a number of wells per year that, as BLM determines in
+future site-specific decisions, will maintain emissions below the de minimis threshold for
+conformity.
+
+       Finally, WildEarth argues that BLM violated NEPA by failing to analyze the
+cumulative greenhouse gas emissions from the NPL Project when added to the emissions
+from other specific similar projects that were identified in the EIS. We do not decide this
+question because BLM will likely have to assess its NEPA compliance again before
+reaching any further decision on the NPL Project, and the principles governing that NEPA
+compliance have materially changed since this appeal was filed. We therefore leave it to
+BLM to decide, in the first instance, what NEPA may require at the time of any further
+decision.
+
+                                     BACKGROUND
+
+       Jonah Energy holds Federal oil and gas leases in Sublette County, Wyoming.2
+Jonah Energy proposed to develop the NPL Project on approximately 141,000 acres in
+Sublette County, of which more than 96% was Federal land administered by BLM.3 Most
+of the NPL Project area has been designated by BLM for oil and gas leasing and
+
+
+
+2
+  AR, NPL-2720, Bureau of Land Management, Normally Pressured Lance Natural Gas
+Development Project, Final Environmental Impact Statement at 1-2 (June 2018) (Final

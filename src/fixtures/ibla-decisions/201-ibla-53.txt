@@ -1,0 +1,90 @@
+MAVERICK SOLAR, LLC ET AL.
+
+IBLA 2021-0216 et al.                                         Decided June 16, 2026
+
+Appeals from four decisions issued by the Bureau of Land Management assessing acreage
+rents for three rights-of-way used to accommodate ancillary support facilities for a solar
+energy development project. Grant Nos. CACA-59203 (IBLA 2021-0216 & 2022-0027),
+CACA-59067 (IBLA 2022-0025), and CACA-59080 (IBLA 2022-0026).
+
+      Set aside and remanded.
+
+APPEARANCES: Andrew C. Bell, Esq., Bell Kearns, Ltd., San Francisco, California, for
+Maverick Solar, LLC, Maverick Solar 4, LLC, Maverick Solar 6, LLC, Maverick Solar 7,
+LLC, Maverick Solar 8, LLC; Janell M. Bogue, Esq., Office of the Regional Solicitor, U.S.
+Department of the Interior, Sacramento, California, for the Bureau of Land Management.
+
+                  OPINION BY ADMINISTRATIVE JUDGE BALLENGER
+
+       Maverick Solar, LLC, Maverick Solar 4, LLC, Maverick Solar 6, LLC, Maverick
+Solar 7, LLC, and Maverick Solar 8, LLC (collectively, Appellants) appealed and
+petitioned to stay the effect of four decisions issued by the Palm Springs-South Coast
+(California) Field Office of the Bureau of Land Management (BLM). First, Appellants
+appealed a March 8, 2021, decision assessing a pro rata rent for part of 2021 for their
+right-of-way (ROW) CACA-59203.1 Second, Appellants appealed and petitioned to stay
+three October 2021 decisions assessing 2022 rents for three of their ROWs, including
+CACA-59203.2
+
+
+
+  Administrative Judge Sosin took no part in the consideration of this appeal.
+The Board has granted a protective order for certain materials in each appeal to prevent
+the disclosure of confidential information. This               Decision is
+approved for public release.
+1
+  This appeal was filed by Maverick Solar, LLC, Maverick Solar 6, LLC, Maverick Solar 7,
+LLC, and Maverick Solar 8, LLC, and was docketed as IBLA 2021-0216.
+2
+  The appeals and the corresponding Appellants and ROWs are as follows: IBLA 2022-
+0025, Maverick Solar, LLC, Maverick Solar 4, LLC, Maverick Solar 6, LLC, Maverick Solar
+7, LLC, and Maverick Solar 8, LLC, ROW CACA-59067; IBLA 2022-0026, Maverick Solar
+
+
+
+                 201 IBLA 53 –       APPROVED FOR PUBLIC RELEASE
+
+                                                                     IBLA 2021-0216 et al.
+
+
+                                        SUMMARY
+
+        The Federal Land Policy and Management Act (FLPMA) and its implementing
+regulations require BLM to charge, and ROW holders to pay, fair market value annually
+for use of the public lands encumbered by a ROW. For ROWs used to accommodate
+support facilities for solar energy development projects, BLM charges the ROW holder an
+acreage rent. Departmental regulations provide that these acreage rents are generally
+calculated using a defined set of inputs and formulas, but they also provide for
+adjustments and alternative approaches where application of the rent schedule derived
+from those calculations does not yield an appropriate fair market value. Here, Appellants
+assert that the schedule-based rental rates for their three ROWs exceed fair market value,
+in violation of FLPMA, and they provide both data from their own real estate
+transactions in the area and two third-party professional valuation reports to support
+their claims. BLM largely relies on its adherence to the default regulatory formulas to
+insulate the resulting rental charges from challenge, and while it criticizes Appellants’
+support, it offers no record support of its own. Based on the record on appeal, we find
+that Appellants have met their burden to demonstrate that BLM has not adequately
+justified its rejection of Appellants’ request for an alternative, appraisal-based approach
+to determining fair market value rentals for their ROWs, in the face of the proffered
+support indicating that the schedule-based rents were inconsistent with FLPMA’s
+mandate to charge fair market value as applied to the lands at issue. Accordingly, we set
+aside the appealed acreage rent bills and remand to BLM for reconsideration of its
+assessments in light of the record and this Decision.
+
+                                      BACKGROUND
+
+                                     Legal Background
+
+      BLM grants ROWs for solar energy projects pursuant to Title V of FLPMA and its
+implementing regulations.3 FLPMA requires BLM (as the Secretary’s delegate) to
+
+
+6, LLC, and Maverick Solar 7, LLC, ROW CACA-59080; IBLA 2022-0027, Maverick Solar,
+LLC, Maverick Solar 6, LLC, Maverick Solar 7, LLC, and Maverick Solar 8, LLC, ROW
+CACA-59203.
+3
+  43 U.S.C. § 1761(a)(4); 43 C.F.R. pt. 2800. Citations to Federal statutes and
+regulations are to the versions in effect at the time of the appealed decisions. Since that
+time, the Department has revised the regulations governing the calculation of rents and
+fees for solar energy projects on public lands multiple times. See Rights-of-Way, Leasing,
+and Operations for Renewable Energy, 89 Fed. Reg. 35,634 (May 1, 2024); Revisions to
+the Regulations Regarding Intermittent Energy, 90 Fed. Reg. 36,111 (Aug. 1, 2025)
