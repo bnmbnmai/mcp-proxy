@@ -138,6 +138,7 @@ data/nmb-determinations/
 data/eeoc-appellate/
 data/ttab-decisions/
 data/ibla-decisions/
+data/ccb-determinations/
 data/ticks-ams/
 data/shop-request-log.jsonl
 data/shop-request-log*.jsonl

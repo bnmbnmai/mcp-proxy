@@ -318,6 +318,13 @@ import {
   IBLA_DECISIONS_PATH,
 } from "./ibla-decisions.js";
 import {
+  BODY_NEEDLE_LAU,
+  BODY_NEEDLE_LAU_OPINION,
+  CCB_DETERMINATIONS_AMOUNT_ATOMIC,
+  CCB_DETERMINATIONS_MANIFEST_PATH,
+  CCB_DETERMINATIONS_PATH,
+} from "./ccb-determinations.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -1027,6 +1034,7 @@ async function main(): Promise<void> {
     assert.ok(spec.paths["/eeoc-appellate"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/ttab-decisions"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/ibla-decisions"]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths["/ccb-determinations"]?.get?.["x-payment-info"]);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
       PUBLIC_BAZAAR_SKUS.length,
@@ -1268,6 +1276,7 @@ async function main(): Promise<void> {
       EEOC_APPELLATE_PATH,
       TTAB_DECISIONS_PATH,
       IBLA_DECISIONS_PATH,
+      CCB_DETERMINATIONS_PATH,
     ]);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.priceUsdc, "0.05");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
@@ -9603,6 +9612,126 @@ async function main(): Promise<void> {
     },
   );
 
+  const ccbDir = mkdtempSync(join(tmpdir(), "ccb-determinations-"));
+  const ccbId = "24-ccb-0180";
+  const ccbBody = [
+    "Docket number: 24-CCB-0180",
+    "September 22, 2026",
+    "Ping Lau",
+    "Roselinde Skievaski",
+    "FINAL DETERMINATION",
+    "Copyright Claims Board",
+    BODY_NEEDLE_LAU,
+    BODY_NEEDLE_LAU_OPINION,
+    ...Array.from({ length: 40 }, (_, i) => `Official CCB Final Determination paragraph ${i + 1}.`),
+  ].join("\n");
+  writeFileSync(
+    join(ccbDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "ccb-determination-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-09-25T16:00:00.000Z",
+      asOf: "2026-09-22",
+      license: "17 USC 105",
+      attribution:
+        "United States Copyright Office, Copyright Claims Board. Work of the United States Government; 17 U.S.C. § 105.",
+      sources: {
+        listing: "https://dockets.ccb.gov/search/documents",
+        pdfHost: "https://dockets.ccb.gov/document/download/",
+      },
+      cards: [
+        {
+          id: ccbId,
+          docket: "24-CCB-0180",
+          documentId: "21779",
+          parties: "Ping Lau; Roselinde Skievaski",
+          caption: "Lau v. Skievaski",
+          kind: "Final Determination",
+          institution: "Ping Lau; Roselinde Skievaski",
+          date: "2026-09-22",
+          title: "24-CCB-0180 Final Determination",
+          sourceUrl: "https://dockets.ccb.gov/document/download/21779",
+          body: ccbBody,
+        },
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      CCB_DETERMINATIONS_DIR: ccbDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-ccb-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${CCB_DETERMINATIONS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /ccb-determinations must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; mimeType?: string }[];
+      };
+      assert.equal(body402.resource, CCB_DETERMINATIONS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, CCB_DETERMINATIONS_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.mimeType, "application/json");
+      const unpaidId = await fetch(`${base}${CCB_DETERMINATIONS_PATH}?id=${encodeURIComponent(ccbId)}`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /ccb-determinations?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
+      assert.ok(!JSON.stringify(body402).includes(BODY_NEEDLE_LAU_OPINION));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === CCB_DETERMINATIONS_PATH), true);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(CCB_DETERMINATIONS_PATH)), "well-known lists /ccb-determinations");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /ccb-determinations"));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[CCB_DETERMINATIONS_PATH]);
+      assert.ok(spec.paths[CCB_DETERMINATIONS_MANIFEST_PATH]);
+      assert.ok(spec.paths["/ccb-determinations/index"]);
+
+      const manifest = await fetch(`${base}${CCB_DETERMINATIONS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "ccb-determinations free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        asOf?: string;
+        cards?: { parties?: string; docket?: string; body?: string; sourceUrl?: string; paidUrl?: string }[];
+      };
+      assert.equal(man.cardCount, 1);
+      assert.equal(man.asOf, "2026-09-22");
+      assert.match(man.cards?.[0]?.parties ?? "", /Ping Lau/);
+      assert.equal(man.cards?.[0]?.docket, "24-CCB-0180");
+      assert.ok(!("body" in (man.cards?.[0] ?? {})));
+      assert.ok(!("sourceUrl" in (man.cards?.[0] ?? {})));
+      assert.ok(man.cards?.[0]?.paidUrl);
+      const manJson = JSON.stringify(man);
+      assert.ok(!manJson.includes("/document/download/"));
+      assert.ok(!manJson.includes(BODY_NEEDLE_LAU_OPINION));
+
+      const index = await fetch(`${base}/ccb-determinations/index`);
+      assert.equal(index.status, 200, "/ccb-determinations/index is the free catalog");
+
+      const paid = await fetch(`${base}${CCB_DETERMINATIONS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        asOf?: string;
+        cards: { parties: string; id: string; body: string }[];
+        records?: { type: string; firm: string }[];
+      };
+      assert.equal(paidBody.product, "ccb-determination-bodies");
+      assert.equal(paidBody.asOf, "2026-09-22");
+      assert.equal(paidBody.cards[0]?.id, ccbId);
+      assert.ok(paidBody.cards[0]?.body.includes(BODY_NEEDLE_LAU_OPINION));
+      assert.equal(paidBody.records?.[0]?.type, "ccb-determinations");
+    },
+  );
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -10428,7 +10557,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions", "fcc-eb-orders", "nmb-determinations", "eeoc-appellate", "ttab-decisions", "ibla-decisions"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions", "fcc-eb-orders", "nmb-determinations", "eeoc-appellate", "ttab-decisions", "ibla-decisions", "ccb-determinations"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -10485,6 +10614,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("eeoc-appellate"), true);
   assert.equal(isPublicBazaarSku("ttab-decisions"), true);
   assert.equal(isPublicBazaarSku("ibla-decisions"), true);
+  assert.equal(isPublicBazaarSku("ccb-determinations"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
