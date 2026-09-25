@@ -994,6 +994,10 @@ const PUBLIC_SOURCE_MARKERS = [
   "ams-1095",
   "ams_3646",
   "ams-3646",
+  "ams_2811",
+  "ams-2811",
+  "lsmngfbeef",
+  "national grass fed",
   "ams_3802",
   "ams-3802",
 ];
@@ -1109,6 +1113,7 @@ export const TICKS_SOURCE_NAMES = [
   "AMS_2843 Daily Shell Egg Index",
   "AMS_1095 National Weekly Cold Storage",
   "AMS_3646 Weekly National Chicken",
+  "AMS_2811 Grass-fed beef DTC",
   "AMS_2872 National hog/pork summary",
   "AMS_2810 feeder pigs",
   "AMS_3802 National organic grain",

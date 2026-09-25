@@ -18,7 +18,7 @@ import {
   readAmsSnapshot,
   writeAmsSnapshot,
 } from "./ticks-ams.js";
-import { TICKS_MANIFEST_SAMPLE_IDS, selectTicksManifestSamples } from "./shop-sample.js";
+import { TICKS_COMMODITY_SET, TICKS_MANIFEST_SAMPLE_IDS, selectTicksManifestSamples } from "./shop-sample.js";
 import { buildTicksManifest, loadTicks, PRODUCT_ID, PRODUCT_NAME, PRODUCT_PUBLIC_ID } from "./ticks-door.js";
 import { paidTicksBody } from "./paid-records.js";
 
@@ -536,6 +536,80 @@ assert.equal(cottonClassic.find((row) => row.id.endsWith("adjusted_world_price")
 assert.equal(cottonClassic.find((row) => row.id.endsWith("dec_week_ending"))?.price, 91.06);
 assert.ok(!cottonClassic.some((row) => row.price === 87.02), "classic last-week ICE reprint is not a tick");
 
+const grass = parseAmsReportText(
+  fx("grassfed-beef-2811.txt"),
+  report("2811"),
+  "https://www.ams.usda.gov/mnreports/lsmngfbeef.pdf",
+);
+assert.ok(grass.length >= 70, `expected Q3 grass-fed DTC prints, got ${grass.length}`);
+assert.ok(grass.every((row) => row.group === "dairy" && row.id.startsWith("dairy.ams_2811.grassfed.")));
+assert.ok(grass.every((row) => row.asOf === "2026-09-25"), "asOf is the Friday release date, not quarter-end");
+assert.equal(new Set(grass.map((row) => row.id)).size, grass.length, "grass-fed ids are unique");
+const filet = grass.find((row) => row.id === "dairy.ams_2811.grassfed.retail.steaks.filet_mignon");
+assert.ok(filet, "filet mignon avg");
+assert.equal(filet.price, 41.3);
+assert.equal(filet.lo, 22);
+assert.equal(filet.hi, 79.99);
+assert.equal(filet.unit, "$/lb");
+assert.equal(filet.commodity, "Grass-fed beef");
+const ribeyeRoast = grass.find((row) => row.id === "dairy.ams_2811.grassfed.retail.roasts.ribeye_roast");
+assert.equal(ribeyeRoast?.price, 28.72);
+const brisket = grass.find((row) => row.id === "dairy.ams_2811.grassfed.retail.other.brisket");
+assert.equal(brisket?.price, 13.05);
+const ground90 = grass.find((row) => row.id === "dairy.ams_2811.grassfed.retail.ground.ground_beef_90_or_more");
+assert.equal(ground90?.price, 13.76);
+assert.equal(ground90?.lo, 10);
+assert.equal(ground90?.hi, 20);
+const jerky = grass.find((row) => row.id === "dairy.ams_2811.grassfed.retail.processed.jerky");
+assert.equal(jerky?.price, 45.21);
+const broth = grass.find((row) => row.id === "dairy.ams_2811.grassfed.retail.variety.bone_broth");
+assert.equal(broth?.price, 14.84);
+assert.equal(broth?.unit, "$/quart");
+const tallow = grass.find((row) => row.id === "dairy.ams_2811.grassfed.retail.variety.tallow_rendered");
+assert.equal(tallow?.price, 15.72);
+assert.equal(tallow?.unit, "$/pint");
+const tongue = grass.find((row) => row.id === "dairy.ams_2811.grassfed.retail.variety.tounge");
+assert.equal(tongue?.label, "Tounge");
+assert.equal(tongue?.price, 9.47);
+const hanging = grass.find((row) => row.id === "dairy.ams_2811.grassfed.carcass.hanging_excludes.whole");
+assert.equal(hanging?.price, 5.9);
+assert.equal(hanging?.unit, "$/lb");
+const hangingIn = grass.find((row) => row.id === "dairy.ams_2811.grassfed.carcass.hanging_includes.whole");
+assert.equal(hangingIn?.price, 7.36);
+const netEighth = grass.find((row) => row.id === "dairy.ams_2811.grassfed.carcass.net.eighth");
+assert.equal(netEighth?.price, 13.47);
+const deposit = grass.find((row) => row.id === "dairy.ams_2811.grassfed.fees.deposit.whole");
+assert.equal(deposit?.price, 734.72);
+assert.equal(deposit?.unit, "$/each");
+assert.equal(deposit?.lo, 100);
+assert.equal(deposit?.hi, 2000);
+const depositEighth = grass.find((row) => row.id === "dairy.ams_2811.grassfed.fees.deposit.eighth");
+assert.equal(depositEighth?.price, 133.33);
+const processing = grass.find((row) => row.id === "dairy.ams_2811.grassfed.fees.processing_hanging");
+assert.equal(processing?.price, 0.94);
+assert.equal(processing?.unit, "$/lb");
+const slaughter = grass.find((row) => row.id === "dairy.ams_2811.grassfed.fees.slaughter");
+assert.equal(slaughter?.price, 125);
+assert.equal(slaughter?.unit, "$/head");
+assert.ok(!grass.some((row) => row.price === 84 || row.price === 2), "producer count is not a tick");
+assert.ok(!grass.some((row) => row.asOf === "2026-09-30" || row.asOf === "2026-12-18"), "quarter-end and next release are not asOf");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2811")?.group, "dairy");
+assert.deepEqual(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2811")?.pdfNames, ["lsmngfbeef"]);
+assert.ok(TICKS_COMMODITY_SET.includes("grass-fed DTC"));
+assert.equal(PRODUCT_PUBLIC_ID, "us-hay-cattle-grain-ticks");
+assert.ok(TICKS_MANIFEST_SAMPLE_IDS.includes("dairy.ams_2811.grassfed.retail.steaks.filet_mignon"));
+const grassSamples = selectTicksManifestSamples(grass);
+const filetSample = grassSamples.find((row) => row.id === "dairy.ams_2811.grassfed.retail.steaks.filet_mignon");
+assert.ok(filetSample, "manifest samples[] include the grass-fed filet when the cache has it");
+assert.equal(filetSample.price, 41.3);
+assert.equal(filetSample.unit, "$/lb");
+const grassMissingFilet = parseAmsReportText(
+  fx("grassfed-beef-2811.txt").replace(/Filet Mignon[\s\S]*?41\.30/, ""),
+  report("2811"),
+  "https://www.ams.usda.gov/mnreports/lsmngfbeef.pdf",
+);
+assert.equal(grassMissingFilet.length, 0, "fail-closed when the required filet mignon avg is missing");
+
 const ndmWest = parseAmsReportText(
   fx("dairy-ndm-west-1048.txt"),
   report("1048"),
@@ -849,6 +923,11 @@ assert.ok(groceryPdfs.some((u) => /fvwretail\.pdf/i.test(u)), "specialty-crops g
 const cottonPdfs = officialPdfCandidateOrder("3024", [], ["cnwwcmr"]);
 assert.ok(cottonPdfs[0].includes("www.ams.usda.gov/mnreports/ams_3024.pdf"));
 assert.ok(cottonPdfs.some((u) => /cnwwcmr\.pdf/i.test(u)), "weekly cotton uses official cnwwcmr stem (ams_3024.pdf is 404)");
+const grassPdfs = officialPdfCandidateOrder("2811", [], ["lsmngfbeef"]);
+assert.ok(grassPdfs[0].includes("www.ams.usda.gov/mnreports/ams_2811.pdf"));
+const grassLsm = grassPdfs.findIndex((u) => /www\.ams\.usda\.gov\/mnreports\/lsmngfbeef\.pdf/i.test(u));
+const grassSearch = grassPdfs.findIndex((u) => u.includes("search.ams.usda.gov"));
+assert.ok(grassLsm >= 0 && grassSearch > grassLsm, "lsmngfbeef on www.ams is tried before search.ams");
 
 const listing = latestEsmisPdfUrl(fx("esmis-california-listing.html"), "2904");
 assert.equal(
@@ -1088,8 +1167,8 @@ assert.equal(AMS_LEFTOVER_REPORTS.filter((r) => r.kind === "se-barn").length, 5)
   assert.ok(held.sources.includes("AMS_2904 California Direct Hay"));
 }
 assert.ok(
-  ["2998", "2993", "2995", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "1598", "1048", "1045", "1051", "1052", "1102", "2997", "2843", "1095", "3646", "2872", "2810", "3802", "3024", "2314", "2315", "2306", "2290", "3324"].every((s) => slugs.includes(s)),
-  "official AMS dairy / hog / shell-egg / cold-storage / weekly-chicken / grocery-retail / organic grain / cotton weekly / national terminal-market slugs",
+  ["2998", "2993", "2995", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "1598", "1048", "1045", "1051", "1052", "1102", "2997", "2843", "1095", "3646", "2811", "2872", "2810", "3802", "3024", "2314", "2315", "2306", "2290", "3324"].every((s) => slugs.includes(s)),
+  "official AMS dairy / hog / shell-egg / cold-storage / weekly-chicken / grass-fed DTC / grocery-retail / organic grain / cotton weekly / national terminal-market slugs",
 );
 assert.ok(!slugs.includes("3096"), "WAF-empty Eastern Cornbelt Direct Feeder is dropped");
 assert.ok(!slugs.includes("3458") && !slugs.includes("2498"), "LMR hog/pork PDFs stay off the allowlist");
@@ -1397,6 +1476,7 @@ console.log(
     groceryVeal3796: vealAds.length,
     groceryProduce3324: produceAds.length,
     weeklyCotton3024: cotton.length,
+    grassFed2811: grass.length,
     hogsSummary: hogs.length,
     feederPigs: feederPigs.length,
     dairySteers1907: dairySteers.length,

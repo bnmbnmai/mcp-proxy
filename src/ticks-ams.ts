@@ -38,6 +38,11 @@
  * year-ago fluff, quality charts, and weather narrative are not ticks.
  * Daily AMS_3804 spot quotations and cnwwqo quality stay leftover. Do not
  * wrap MARS / MMN JSON (403 without a key).
+ * AMS_2811 National Grass Fed Beef is the official quarterly LPGMN DTC print
+ * (mnreports/lsmngfbeef.pdf — ams_2811.pdf is 404 HTML). Rows land on the
+ * existing dairy/protein table as dairy.ams_2811.grassfed.*. The tick is the
+ * printed Avg; low–high stays on lo/hi. asOf is the Friday release date
+ * (same issue-date convention as cotton and grocery retail), not quarter-end.
  * Water District 1 rental-pool $/AF is not an AMS source and stays off this table.
  *
  * Prefer live mnreports over NAL/esmis archives. Collect used to unshift ESMIS first and
@@ -211,6 +216,7 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "1095", group: "dairy", region: "national", title: "National Weekly Cold Storage", esmisPublication: "weekly-cold-storage-holdings", pdfNames: ["md_da953"] },
   { slug: "3646", group: "dairy", region: "national", title: "Weekly National Chicken", esmisPublication: "" },
   { slug: "3647", group: "dairy", region: "national", title: "Weekly National Turkey", esmisPublication: "" },
+  { slug: "2811", group: "dairy", region: "national", title: "National Grass Fed Beef", esmisPublication: "", pdfNames: ["lsmngfbeef"] },
   { slug: "2872", group: "hogs", region: "national", title: "National Daily Hog and Pork Summary", esmisPublication: "national-daily-hog-pork-summary-report", pdfNames: ["lsddhps"] },
   { slug: "2810", group: "hogs", region: "national", title: "National Direct Feeder Pig", esmisPublication: "" },
   { slug: "2314", group: "produce", region: "new_york", title: "New York Terminal Market Fruit", esmisPublication: "", pdfNames: ["nx_fv010"] },
@@ -460,12 +466,11 @@ export function esmisPublicationUrl(report: AmsReport): string {
 
 export function mnreportsPdfUrls(slug: string, pdfNames: readonly string[] = []): string[] {
   const stems = [...new Set([`ams_${slug}`, `AMS_${slug}`, ...pdfNames, ...pdfNames.map((n) => n.toLowerCase())])];
-  const urls: string[] = [];
-  for (const stem of stems) {
-    urls.push(`https://www.ams.usda.gov/mnreports/${stem}.pdf`);
-    urls.push(`https://search.ams.usda.gov/mnreports/${stem}.pdf`);
-  }
-  return [...new Set(urls)];
+  // www.ams.usda.gov first for every stem. search.ams.usda.gov often TLS-stalls,
+  // and some mnemonic stems (lsmngfbeef) are the only live PDF after ams_{slug}.pdf 404s.
+  const www = stems.map((stem) => `https://www.ams.usda.gov/mnreports/${stem}.pdf`);
+  const search = stems.map((stem) => `https://search.ams.usda.gov/mnreports/${stem}.pdf`);
+  return [...new Set([...www, ...search])];
 }
 
 /** Live official host first. NAL/esmis archives are fallback only (Sept 2025 copies). */
@@ -2752,7 +2757,246 @@ export function parseWeeklyCottonReview(text: string, report: AmsReport, sourceU
   return dedupeTicks(out);
 }
 
+const GRASSFED_PRICE_RE = /(\d+(?:\.\d+)?)\s+-\s+(\d+(?:\.\d+)?)\s+(\d+(?:\.\d+)?)/g;
+
+const GRASSFED_REQUIRED_SUFFIXES = [
+  "retail.steaks.filet_mignon",
+  "retail.roasts.ribeye_roast",
+  "retail.other.brisket",
+  "retail.ground.ground_beef_90_or_more",
+  "retail.processed.jerky",
+  "retail.variety.bone_broth",
+  "retail.variety.tallow_rendered",
+  "carcass.hanging_excludes.whole",
+  "carcass.hanging_includes.whole",
+  "carcass.net.eighth",
+  "fees.deposit.whole",
+  "fees.deposit.eighth",
+  "fees.processing_hanging",
+  "fees.slaughter",
+] as const;
+
+/** Friday release line. "Fri Sept. 25, 2026" keeps the period after Sept. Next-release "Dec. 18" has no year. */
+function parseGrassFedAsOf(text: string): string | null {
+  const head = text.slice(0, 1200);
+  const m = head.match(
+    /\b(?:Mon|Tue|Wed|Thu|Fri|Sat|Sun)\.?\s+(January|February|March|April|May|June|July|August|September|October|November|December|Sept|Jan|Feb|Mar|Apr|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\.?\s+(\d{1,2}),\s+(\d{4})\b/i,
+  );
+  if (!m) return null;
+  const mon = MONTHS[m[1].toLowerCase()];
+  if (!mon) return null;
+  const day = Number(m[2]);
+  const year = Number(m[3]);
+  if (day < 1 || day > 31 || year < 1990 || year > 2100) return null;
+  return `${m[3]}-${mon}-${m[2].padStart(2, "0")}`;
+}
+
+function grassQuarterNote(text: string): string {
+  const m = text.match(/Quarter\s+(\d)\s*:\s*([A-Za-z]+(?:-[A-Za-z.]+)?)/i);
+  if (!m) return "quarterly";
+  return `Q${m[1]} ${m[2].replace(/\.$/, "")}`;
+}
+
+function peelRetailSection(raw: string): { section: string | null; item: string } {
+  const wide = raw.match(/^\s*(Variety Meats|Steaks|Roasts|Other|Ground|Processed)\s{2,}(\S.*)$/i);
+  if (wide) {
+    const section = wide[1].toLowerCase().startsWith("variety") ? "variety" : token(wide[1]);
+    return { section, item: wide[2].replace(/\s+/g, " ").trim() };
+  }
+  return { section: null, item: raw.replace(/\s+/g, " ").trim() };
+}
+
+function grassItemToken(item: string): string {
+  return token(item.replace(/\(\$\/[^)]+\)/g, " ").replace(/\s+/g, " "));
+}
+
+function grassRetailUnit(item: string): string {
+  if (/\$\/\s*quart/i.test(item)) return "$/quart";
+  if (/\$\/\s*pint/i.test(item)) return "$/pint";
+  return "$/lb";
+}
+
+function grassMoneyOk(lo: number, hi: number, avg: number, unit: string): boolean {
+  if (!Number.isFinite(lo) || !Number.isFinite(hi) || !Number.isFinite(avg)) return false;
+  if (lo <= 0 || hi < lo || avg < lo - 0.001 || avg > hi + 0.001) return false;
+  if (unit === "$/each" || unit === "$/head") return avg <= 5000;
+  return avg >= 0.25 && avg <= 120;
+}
+
+function grassCut(item: string): string | null {
+  const t = item.replace(/\s+/g, " ").trim();
+  if (/^whole$/i.test(t)) return "whole";
+  if (/^half$/i.test(t)) return "half";
+  if (/^quarter$/i.test(t)) return "quarter";
+  if (/^eighth$/i.test(t)) return "eighth";
+  return null;
+}
+
+function grassCutLabel(cut: string): string {
+  return `${cut[0].toUpperCase()}${cut.slice(1)}`;
+}
+
+/** Official AMS_2811 / lsmngfbeef quarterly DTC print. Avg is the tick; low–high is lo/hi. */
+export function parseGrassFedBeef(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const asOf = parseGrassFedAsOf(text);
+  if (!asOf) return [];
+  const quarter = grassQuarterNote(text);
+  const out: AmsTick[] = [];
+  let block: "pre" | "retail" | "carcass" = "pre";
+  let leftSection = "";
+  let rightSection = "";
+  let carcassKind = "";
+  let feeKind = "";
+
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.replace(/\f/g, "").replace(/\s+$/g, "");
+    if (!line.trim()) continue;
+    if (/Direct to Consumer\s*-\s*Retail/i.test(line)) {
+      block = "retail";
+      continue;
+    }
+    if (/Direct to Consumer\s*-\s*Carcass/i.test(line)) {
+      block = "carcass";
+      continue;
+    }
+    if (block === "pre") continue;
+    if (/^Source:\b|^General inquiries\b|^www\.ams\.usda\.gov/i.test(line.trim())) break;
+
+    if (block === "carcass") {
+      if (/Does Not Include Processing/i.test(line)) carcassKind = "hanging_excludes";
+      else if (/Hanging Weight\s*-\s*Includes Processing/i.test(line)) carcassKind = "hanging_includes";
+      else if (/Net Product Weight/i.test(line)) carcassKind = "net";
+      if (/Deposit\s*-\s*Paid by Consumer/i.test(line)) feeKind = "deposit";
+      if (/Processing\s*-\s*Paid by Consumer to Processor/i.test(line)) feeKind = "processor";
+    }
+
+    const prices = [...line.matchAll(GRASSFED_PRICE_RE)];
+    if (prices.length === 0 || prices.length > 2) continue;
+
+    for (let i = 0; i < prices.length; i++) {
+      const match = prices[i];
+      const start = match.index ?? 0;
+      const prevEnd = i === 0 ? 0 : (prices[i - 1].index ?? 0) + prices[i - 1][0].length;
+      const nameRaw = line.slice(prevEnd, start);
+      const lo = Number(match[1]);
+      const hi = Number(match[2]);
+      const avg = Number(match[3]);
+      const side = start < 110 ? "left" : "right";
+
+      if (block === "retail") {
+        const peeled = peelRetailSection(nameRaw);
+        if (peeled.section) {
+          if (side === "left") leftSection = peeled.section;
+          else rightSection = peeled.section;
+        }
+        const section = side === "left" ? leftSection : rightSection;
+        const itemTok = grassItemToken(peeled.item);
+        if (!section || !itemTok) continue;
+        if (/^(section|item|avg)$/i.test(itemTok)) continue;
+        const unit = grassRetailUnit(peeled.item);
+        if (!grassMoneyOk(lo, hi, avg, unit)) continue;
+        const label = peeled.item.replace(/\s*\(\$\/[^)]+\)\s*/g, " ").replace(/\s+/g, " ").trim();
+        pushTick(out, report, sourceUrl, asOf, {
+          id: ["dairy", `ams_${report.slug}`, "grassfed", "retail", section, itemTok].join("."),
+          group: "dairy",
+          commodity: "Grass-fed beef",
+          label,
+          market: `${report.title} — DTC retail`,
+          classGrade: `${quarter} national DTC ${section.replace(/_/g, " ")}, printed ${lo}-${hi} ${unit}`,
+          unit,
+          price: roundMoney(avg),
+          lo: roundMoney(lo),
+          hi: roundMoney(hi),
+        });
+        continue;
+      }
+
+      if (side === "left") {
+        const cut = grassCut(nameRaw);
+        if (!carcassKind || !cut) continue;
+        const unit = "$/lb";
+        if (!grassMoneyOk(lo, hi, avg, unit)) continue;
+        const kindLabel =
+          carcassKind === "hanging_excludes"
+            ? "hanging weight, processing not included"
+            : carcassKind === "hanging_includes"
+              ? "hanging weight, processing included"
+              : "net product weight";
+        pushTick(out, report, sourceUrl, asOf, {
+          id: ["dairy", `ams_${report.slug}`, "grassfed", "carcass", carcassKind, cut].join("."),
+          group: "dairy",
+          commodity: "Grass-fed beef",
+          label: `${grassCutLabel(cut)} carcass`,
+          market: `${report.title} — DTC carcass`,
+          classGrade: `${quarter} ${kindLabel}, printed ${lo}-${hi} ${unit}`,
+          unit,
+          price: roundMoney(avg),
+          lo: roundMoney(lo),
+          hi: roundMoney(hi),
+        });
+        continue;
+      }
+
+      const item = nameRaw.replace(/\s+/g, " ").trim();
+      if (feeKind === "deposit") {
+        const cut = grassCut(item);
+        if (!cut) continue;
+        const unit = "$/each";
+        if (!grassMoneyOk(lo, hi, avg, unit)) continue;
+        pushTick(out, report, sourceUrl, asOf, {
+          id: ["dairy", `ams_${report.slug}`, "grassfed", "fees", "deposit", cut].join("."),
+          group: "dairy",
+          commodity: "Grass-fed beef fees",
+          label: `${grassCutLabel(cut)} deposit`,
+          market: `${report.title} — DTC fees`,
+          classGrade: `${quarter} deposit paid by consumer to producer, printed ${lo}-${hi} ${unit}`,
+          unit,
+          price: roundMoney(avg),
+          lo: roundMoney(lo),
+          hi: roundMoney(hi),
+        });
+        continue;
+      }
+      if (feeKind !== "processor") continue;
+      let feeId = "";
+      let label = "";
+      let unit = "";
+      if (/processing/i.test(item) && /hanging/i.test(item)) {
+        feeId = "processing_hanging";
+        label = "Processing";
+        unit = "$/lb";
+      } else if (/slaughter/i.test(item)) {
+        feeId = "slaughter";
+        label = "Slaughter fee";
+        unit = "$/head";
+      } else {
+        continue;
+      }
+      if (!grassMoneyOk(lo, hi, avg, unit)) continue;
+      pushTick(out, report, sourceUrl, asOf, {
+        id: ["dairy", `ams_${report.slug}`, "grassfed", "fees", feeId].join("."),
+        group: "dairy",
+        commodity: "Grass-fed beef fees",
+        label,
+        market: `${report.title} — DTC fees`,
+        classGrade: `${quarter} paid by consumer to processor, printed ${lo}-${hi} ${unit}`,
+        unit,
+        price: roundMoney(avg),
+        lo: roundMoney(lo),
+        hi: roundMoney(hi),
+      });
+    }
+  }
+
+  const have = new Set(out.map((row) => row.id.replace(/^dairy\.ams_[^.]+\.grassfed\./, "")));
+  if (!GRASSFED_REQUIRED_SUFFIXES.every((id) => have.has(id))) return [];
+  return dedupeTicks(out);
+}
+
 export function parseAmsReportText(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  if (report.slug === "2811" || (report.pdfNames ?? []).includes("lsmngfbeef")) {
+    return parseGrassFedBeef(text, report, sourceUrl);
+  }
   if (report.group === "hay") return parseHayReport(text, report, sourceUrl);
   if (report.group === "cattle") return parseCattleReport(text, report, sourceUrl);
   if (report.group === "wool") return parseWoolReport(text, report, sourceUrl);
@@ -3074,7 +3318,7 @@ export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number
         parsed = parseAmsReportText(text, report, pdfUrl);
         usedUrl = pdfUrl;
         if (parsed.length > 0) break;
-        lastErr = "official PDF had no parseable hay/cattle/grain/wool/dairy/hogs/produce/egg/cold-storage/chicken/grocery-retail/cotton print";
+        lastErr = "official PDF had no parseable hay/cattle/grain/wool/dairy/hogs/produce/egg/cold-storage/chicken/grocery-retail/cotton/grass-fed print";
       } catch (err) {
         lastErr = err instanceof Error ? err.message : String(err);
       }
