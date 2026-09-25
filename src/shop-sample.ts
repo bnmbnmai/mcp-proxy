@@ -12,11 +12,11 @@ export const TICKS_PUBLIC_CACHE_SOURCE = "USDA farm market prices cache";
  * Agent-facing /ticks commodity set. Fat rows stay on the existing $0.05 bag:
  * eggs + poultry (chicken 3646 / turkey 3647) on dairy.*, cold storage on
  * dairy.ams_1095.*, cotton on grain.ams_3024.*, grocery/retail feature ads on
- * dairy.ams_* / produce.ams_3324.
+ * dairy.ams_* / produce.ams_3324, grass-fed DTC on dairy.ams_2811.grassfed.*.
  * Name them in free copy. Do not rename product.id.
  */
 export const TICKS_COMMODITY_SET =
-  "hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail";
+  "hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail, grass-fed DTC";
 
 const CANONICAL = "https://ticks.bnm.farm";
 
@@ -137,6 +137,7 @@ export const TICKS_MANIFEST_SAMPLE_IDS = [
   "grain.ams_3024.cotton.seven_market.spot_41_4_34",
   "dairy.ams_3646.whole.delivered.national_composite_whole_bird",
   "dairy.ams_1095.national.butter.holdings",
+  "dairy.ams_2811.grassfed.retail.steaks.filet_mignon",
 ] as const;
 
 /** Group fallback order copied from the live ticks-door manifest builder. */
@@ -191,8 +192,9 @@ export function sampleFromTickRow(row: Record<string, unknown>, seriesLabel = ""
 /**
  * Same selection path the live door uses for eggs: preferred ids first, then
  * one unused row per group until 5 samples exist. Preferred fat rows (eggs,
- * cotton, chicken 3646, cold 1095) are extra — they do not replace the barn
- * examples and they are not invented when the cache has no matching tick.
+ * cotton, chicken 3646, cold 1095, grass-fed DTC 2811) are extra — they do
+ * not replace the barn examples and they are not invented when the cache has
+ * no matching tick.
  */
 export function selectTicksManifestSamples(
   ticks: readonly Record<string, unknown>[],
