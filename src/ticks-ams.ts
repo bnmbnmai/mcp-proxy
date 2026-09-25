@@ -372,6 +372,10 @@ export function parseReportDate(text: string): string | null {
     /Livestock Weighted Average Report for\s+\d{1,2}\/\d{1,2}\/\d{4}\s*-\s*(\d{1,2}\/\d{1,2}\/\d{4})/i,
   );
   if (livestockThru) return parseMdY(livestockThru[1]);
+  const livestockDay = text.match(
+    /Livestock Weighted Average Report for\s+(\d{1,2}\/\d{1,2}\/\d{4})\b/i,
+  );
+  if (livestockDay) return parseMdY(livestockDay[1]);
   const hayAuction = text.match(/Hay Auction Weighted Average Report for\s+(\d{1,2}\/\d{1,2}\/\d{4})/i);
   if (hayAuction) return parseMdY(hayAuction[1]);
   const organicThru = text.match(/Report for\s+\d{1,2}\/\d{1,2}\/\d{4}\s*-\s*(\d{1,2}\/\d{1,2}\/\d{4})/i);
@@ -712,8 +716,171 @@ export function parseCattleAuctionReport(text: string, report: AmsReport, source
       series: id,
     });
   }
-  const headlines = headlineCattle(out, report, source, sourceUrl, asOf);
-  return dedupeTicks([...headlines, ...out]);
+  if (out.length > 0) {
+    const headlines = headlineCattle(out, report, source, sourceUrl, asOf);
+    return dedupeTicks([...headlines, ...out]);
+  }
+  // Cow sales (Torrington Friday AMS_2101) print slaughter cows/bulls and
+  // replacement stock $/cwt with no steer/heifer rows. Those are the ticks.
+  // Per-unit bred cows are $/head, not this $/cwt series. A sheet with neither
+  // feeder nor slaughter/stock prices stays empty — do not invent.
+  return parseAuctionCowSale(text, report, source, sourceUrl, asOf);
+}
+
+const SLAUGHTER_CLASS_HDR =
+  /^(COWS|BULLS)\s+-\s+(.+?)\s+\(Per Cwt\s*\/\s*Actual Wt\)/i;
+const REPLACEMENT_CLASS_HDR =
+  /^(STOCK COWS|BRED COWS)\s+-\s+(.+?)\s+\((Per Cwt|Per Unit)\s*\/\s*Actual Wt\)/i;
+const REPLACEMENT_ROW_RE =
+  /^(>?\d+(?:-\d+)?)\s+(O|T\d(?:-\d)?)\s+(\d+)\s+(\d+)(?:-(\d+))?\s+(\d+)\s+(\d+(?:\.\d+)?)(?:-(\d+(?:\.\d+)?))?\s+(\d+(?:\.\d+)?)/i;
+
+function auctionCowGradeTok(grade: string): string {
+  if (/boner/i.test(grade)) return "boner";
+  if (/breaker/i.test(grade)) return "breaker";
+  if (/lean/i.test(grade)) return "lean";
+  if (/2-3/.test(grade)) return "ml23";
+  if (/1-2/.test(grade) && /medium|large/i.test(grade)) return "ml12";
+  if (/^1-2$/i.test(grade.trim())) return "12";
+  if (/large 3/i.test(grade)) return "l3";
+  if (/large 2/i.test(grade)) return "l2";
+  if (/medium and large 2/i.test(grade)) return "ml2";
+  if (/medium and large 1/i.test(grade)) return "ml1";
+  if (/large 1/i.test(grade)) return "l1";
+  return token(grade);
+}
+
+function auctionAgeTok(age: string): string {
+  return token(age.replace(/^>/, "over ").replace(/^</, "under "));
+}
+
+/** Slaughter cows/bulls and replacement stock cows when the feeder table is empty. */
+function parseAuctionCowSale(
+  text: string,
+  report: AmsReport,
+  source: string,
+  sourceUrl: string,
+  asOf: string,
+): AmsTick[] {
+  const out: AmsTick[] = [];
+  let section: "" | "slaughter" | "replacement" = "";
+  let sex = "";
+  let grade = "";
+  let perUnit = false;
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.replace(/\s+/g, " ").trim();
+    if (!line) continue;
+    if (/^SLAUGHTER CATTLE$/i.test(line)) {
+      section = "slaughter";
+      sex = "";
+      grade = "";
+      perUnit = false;
+      continue;
+    }
+    if (/^REPLACEMENT CATTLE$/i.test(line)) {
+      section = "replacement";
+      sex = "";
+      grade = "";
+      perUnit = false;
+      continue;
+    }
+    if (/^(FEEDER CATTLE|FEEDER SHEEP|SLAUGHTER SHEEP|SLAUGHTER GOAT|PLEASE NOTE|EXPLANATORY NOTES|SOURCE:)\b/i.test(line)) {
+      section = "";
+      sex = "";
+      grade = "";
+      perUnit = false;
+      continue;
+    }
+    const slaughterHdr = section === "slaughter" ? line.match(SLAUGHTER_CLASS_HDR) : null;
+    if (slaughterHdr) {
+      sex = slaughterHdr[1];
+      grade = slaughterHdr[2];
+      perUnit = false;
+      continue;
+    }
+    const replacementHdr = section === "replacement" ? line.match(REPLACEMENT_CLASS_HDR) : null;
+    if (replacementHdr) {
+      sex = replacementHdr[1];
+      grade = replacementHdr[2];
+      perUnit = /unit/i.test(replacementHdr[3]);
+      continue;
+    }
+    if (!sex || !section || perUnit) continue;
+    if (section === "slaughter") {
+      const row = line.match(AUCTION_CATTLE_ROW);
+      if (!row) continue;
+      const head = Number(row[1]);
+      const wt = Number(row[4]);
+      const lo = Number(row[5]);
+      const hi = row[6] ? Number(row[6]) : lo;
+      const avg = Number(row[7]);
+      if (!Number.isFinite(avg) || avg < 20 || avg > 900) continue;
+      if (!Number.isFinite(wt) || wt < 400 || wt > 3200) continue;
+      const bulls = /bull/i.test(sex);
+      const sexTok = bulls ? "slaughter-bull" : "slaughter-cow";
+      const gradeTok = auctionCowGradeTok(grade);
+      const dressing = line.slice(row[0].length).trim();
+      const id = ["cattle", `ams_${report.slug}`, token(report.region), sexTok, gradeTok, `${wt}lb`].join(".");
+      out.push({
+        id,
+        group: "cattle",
+        commodity: bulls ? "Slaughter bulls" : "Slaughter cows",
+        label: `${report.title} ${sex} ${grade} ${wt} lb`,
+        market: report.title,
+        classGrade: `USDA ${grade}, ${wt} lb, ${head} head${dressing ? `, ${dressing}` : ""}`,
+        unit: "$/cwt",
+        price: roundMoney(avg),
+        lo,
+        hi,
+        asOf,
+        source,
+        sourceUrl,
+        reportDate: asOf,
+        series: id,
+      });
+      continue;
+    }
+    if (!/stock/i.test(sex)) continue;
+    const row = line.match(REPLACEMENT_ROW_RE);
+    if (!row) continue;
+    const age = row[1];
+    const stage = row[2];
+    const head = Number(row[3]);
+    const wt = Number(row[6]);
+    const lo = Number(row[7]);
+    const hi = row[8] ? Number(row[8]) : lo;
+    const avg = Number(row[9]);
+    if (!Number.isFinite(avg) || avg < 20 || avg > 900) continue;
+    if (!Number.isFinite(wt) || wt < 400 || wt > 3200) continue;
+    const gradeTok = auctionCowGradeTok(grade);
+    const id = [
+      "cattle",
+      `ams_${report.slug}`,
+      token(report.region),
+      "replacement-stock-cow",
+      gradeTok,
+      auctionAgeTok(age),
+      token(stage),
+      `${wt}lb`,
+    ].join(".");
+    out.push({
+      id,
+      group: "cattle",
+      commodity: "Stock cows",
+      label: `${report.title} ${sex} ${grade} ${wt} lb`,
+      market: report.title,
+      classGrade: `USDA ${grade}, ${wt} lb, ${head} head, age ${age}, stage ${stage}`,
+      unit: "$/cwt",
+      price: roundMoney(avg),
+      lo,
+      hi,
+      asOf,
+      source,
+      sourceUrl,
+      reportDate: asOf,
+      series: id,
+    });
+  }
+  return dedupeTicks(out);
 }
 
 export function parseCattleReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {

@@ -262,6 +262,54 @@ assert.ok(groceryPdfs.some((u) => /fvwretail\.pdf/i.test(u)), "specialty-crops g
 const cottonPdfs = officialPdfCandidateOrder("3024", [], ["cnwwcmr"]);
 assert.ok(cottonPdfs[0].includes("www.ams.usda.gov/mnreports/ams_3024.pdf"));
 assert.ok(cottonPdfs.some((u) => /cnwwcmr\.pdf/i.test(u)), "weekly cotton uses official cnwwcmr stem (ams_3024.pdf is 404)");
+const torrington = parseAmsReportText(fx("auction-torrington-2101.txt"), report("2101"), "https://www.ams.usda.gov/mnreports/ams_2101.pdf");
+assert.equal(parseReportDate(fx("auction-torrington-2101.txt")), "2026-09-18");
+assert.equal(parseReportDate("Fri Sep 19, 2026\nLivestock Weighted Average Report for 9/18/2026 - Final\n"), "2026-09-18", "single-day auction sale date beats the header weekday");
+assert.equal(torrington.length, 4, `expected boner, lean, bulls, and stock cows, got ${torrington.length}`);
+assert.ok(torrington.every((row) => row.group === "cattle" && row.unit === "$/cwt" && row.asOf === "2026-09-18"));
+assert.ok(torrington.every((row) => row.id.startsWith("cattle.ams_2101.torrington_wy_fri.")));
+const boner = torrington.find((row) => row.id === "cattle.ams_2101.torrington_wy_fri.slaughter-cow.boner.1394lb");
+assert.ok(boner, "slaughter cows Boner 80-85%");
+assert.equal(boner.price, 158.66);
+assert.equal(boner.lo, 153);
+assert.equal(boner.hi, 166);
+assert.equal(boner.commodity, "Slaughter cows");
+assert.match(boner.classGrade, /354 head/);
+assert.match(boner.classGrade, /Average Return to Feed/);
+const lean = torrington.find((row) => row.id === "cattle.ams_2101.torrington_wy_fri.slaughter-cow.lean.1157lb");
+assert.ok(lean, "slaughter cows Lean 85-90%");
+assert.equal(lean.price, 157.37);
+assert.equal(lean.lo, 152);
+assert.equal(lean.hi, 162);
+const bulls = torrington.find((row) => row.id === "cattle.ams_2101.torrington_wy_fri.slaughter-bull.12.1709lb");
+assert.ok(bulls, "slaughter bulls 1-2");
+assert.equal(bulls.price, 183.64);
+assert.equal(bulls.lo, 180);
+assert.equal(bulls.hi, 198);
+assert.equal(bulls.commodity, "Slaughter bulls");
+assert.match(bulls.classGrade, /34 head/);
+const stock = torrington.find((row) => row.id === "cattle.ams_2101.torrington_wy_fri.replacement-stock-cow.ml1.2_4.o.997lb");
+assert.ok(stock, "replacement stock cows");
+assert.equal(stock.price, 270.28);
+assert.equal(stock.lo, 260);
+assert.equal(stock.hi, 281);
+assert.equal(stock.commodity, "Stock cows");
+assert.match(stock.classGrade, /112 head/);
+assert.match(stock.classGrade, /age 2-4/);
+assert.match(stock.classGrade, /stage O/);
+assert.ok(!torrington.some((row) => row.price === 2447.08 || row.price === 2250 || row.price === 2600), "per-unit bred cows are $/head, not a $/cwt tick");
+assert.ok(!torrington.some((row) => row.price === 1285 || row.price === 1010 || row.price === 275), "receipt counts are not ticks");
+assert.ok(!torrington.some((row) => /feeder-steer|feeder-heifer/.test(row.id)));
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2101")?.group, "cattle");
+const feederWithCows = parseAmsReportText(readFileSync(join(repoRoot, "src/fixtures/ams-leftover-cattle-auction.txt"), "utf8"), report("2132"), "https://www.ams.usda.gov/mnreports/ams_2132.pdf");
+assert.ok(feederWithCows.some((row) => row.id.includes("feeder-steer")));
+assert.ok(feederWithCows.some((row) => row.id.includes("feeder-heifer")));
+assert.ok(!feederWithCows.some((row) => /slaughter|cow/.test(row.id)), "feeder auctions keep steer/heifer rows and skip the slaughter block");
+assert.ok(!feederWithCows.some((row) => row.price === 144));
+const missouriDirect = parseAmsReportText(fx("direct-missouri-2808-empty.txt"), report("2808"), "https://www.ams.usda.gov/mnreports/ams_2808.pdf");
+assert.equal(missouriDirect.length, 0, "Missouri Direct 'not established' stays empty");
+const montanaDirect = parseAmsReportText(fx("direct-montana-2770-empty.txt"), report("2770"), "https://www.ams.usda.gov/mnreports/ams_2770.pdf");
+assert.equal(montanaDirect.length, 0, "Montana Direct 'No trades this week' stays empty");
 const slugs = AMS_NATIONAL_REPORTS.map((r) => r.slug);
 assert.ok(["2843", "1095", "3646", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "3324", "3024"].every((s) => slugs.includes(s)), "fat AMS slugs are on the nationwide /ticks walk");
 const readme = readFileSync(join(repoRoot, "README.md"), "utf8");
@@ -289,5 +337,6 @@ console.log(JSON.stringify({
     groceryVeal3796: vealAds.length,
     groceryProduce3324: produceAds.length,
     weeklyCotton3024: cotton.length,
+    torrington2101: torrington.length,
 }));
 //# sourceMappingURL=ticks-ams.test.js.map
