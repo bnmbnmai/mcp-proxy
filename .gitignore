@@ -74,6 +74,7 @@ build/shop-sample.*
 build/firm-check.*
 build/shop-request-log.*
 build/settle-log.*
+build/erc8004.*
 data/import-alerts/
 data/mariners/
 data/mariners-d11/
