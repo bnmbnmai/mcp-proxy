@@ -4,7 +4,9 @@
  *
  * Source of truth for the 14 series (PR 175). Fold into AMS_NATIONAL_REPORTS,
  * then AMS-only collect. Remaining 400+ SE barns, board/video, seasonal specials,
- * plaintext Mexico recaps, AMS_2874, and MO/IL/PA/NY weeklies stay skipped.
+ * plaintext Mexico recaps, AMS_2874, and MO/NY weeklies stay skipped.
+ * Illinois AMS_2041, Indiana AMS_1976, and Pennsylvania AMS_1919 are on the
+ * national /ticks table. AR AMS_2056 stays off.
  */
 export type LeftoverKind = "se-weekly" | "se-barn";
 
