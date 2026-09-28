@@ -1,0 +1,39 @@
+            Feeder Special Market Report
+                 Date: 9 /21/2026
+
+                BEEF                                Cwt=by the weight Hd=by the head
+Head        Weight Break     AvgWt      Low         Avg       Top        PF
+Class:      Steers
+7 hd        430 to 497 lbs        (479)    330.00      387.26     440.00 cwt
+42 hd       536 to 595 lbs        (564)    305.00      371.97     402.50 cwt
+86 hd       614 to 697 lbs        (650)    265.00      354.29     367.50 cwt
+20 hd       705 to 762 lbs        (733)    230.00      326.11     347.50 cwt
+18 hd       800 to 880 lbs        (813)    260.00      295.46     305.00 cwt
+1 hd        945 to 945 lbs        (945)    260.00      260.00     260.00 cwt
+1 hd        1065 to 1065 lbs    (1,065)    235.00      235.00     235.00 cwt
+1 hd        1115 to 1115 lbs    (1,115)    232.50      232.50     232.50 cwt
+176 total   Steers
+Class:      Heifers
+27 hd       510 to 595 lbs        (547)    320.00      356.69     375.00 cwt
+20 hd       625 to 678 lbs        (645)    275.00      332.07     350.00 cwt
+7 hd        708 to 755 lbs        (727)    235.00      282.24     322.50 cwt
+15 hd       805 to 879 lbs        (835)    270.00      295.42     315.00 cwt
+7 hd        960 to 985 lbs        (980)    220.00      239.27     242.50 cwt
+5 hd        1003 to 1003 lbs    (1,003)    240.00      240.00     240.00 cwt
+81 total    Heifers
+Class:      Heifer calfs
+11 hd       262 to 262 lbs        (262)    572.50      572.50     572.50 cwt
+14 hd       325 to 385 lbs        (356)    450.00      488.97     500.00 cwt
+25 hd       400 to 481 lbs        (454)    365.00      431.46     475.00 cwt
+50 total    Heifer calfs
+Class:      Steer calfs
+18 hd       233 to 292 lbs        (266)    550.00      570.44     602.50 cwt
+16 hd       431 to 495 lbs        (451)    200.00      448.63     485.00 cwt
+34 total    Steer calfs
+Class:      Bull calfs
+1 hd        760 to 760 lbs        (760)    270.00      270.00     270.00 cwt
+1 total     Bull calfs
+Class:      Heifer calfs
+1 hd        155 to 155 lbs        (155)    750.00      750.00     750.00 hd
+1 total     Heifer calfs
+

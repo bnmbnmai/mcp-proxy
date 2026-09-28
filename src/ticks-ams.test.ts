@@ -9,8 +9,10 @@ import {
   parseAmsReportText,
   parseProducersLivestockReport,
   parseReportDate,
+  parseTreasureValleyReport,
   producerLatestPosts,
   producerPdfUrl,
+  treasureValleyPdfPosts,
 } from "./ticks-ams.js";
 import {
   PRODUCT_PUBLIC_ID,
@@ -567,9 +569,98 @@ for (const slug of ["1281", "1280", "1245", "1797", "2713", "1889", "1892"]) {
 
 const slugs = AMS_NATIONAL_REPORTS.map((r) => r.slug);
 assert.ok(
-  ["2843", "1095", "3646", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "3324", "3024"].every((s) => slugs.includes(s)),
+  ["2843", "1095", "3646", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "3324", "3024", "2056", "3510", "3512"].every((s) => slugs.includes(s)),
   "fat AMS slugs are on the nationwide /ticks walk",
 );
+assert.ok(!slugs.includes("3798"), "AMS_3798 stays off this pass");
+
+const arkansas = parseAmsReportText(
+  fx("auction-2056.txt"),
+  report("2056"),
+  "https://www.ams.usda.gov/mnreports/ams_2056.pdf",
+);
+assert.equal(parseReportDate(fx("auction-2056.txt")), "2026-09-26");
+assert.equal(arkansas.find((row) => row.id === "cattle.ams_2056.arkansas_weekly.feeder-steer.ml1.275lb")?.price, 500);
+assert.equal(arkansas.length, 138, `Arkansas weekly feeder rows, got ${arkansas.length}`);
+assert.ok(!arkansas.some((row) => row.price === 247.5), "Small and Medium steers stay off the ML grade");
+assert.ok(!arkansas.some((row) => row.id.includes("540lb") && row.price === 235), "Medium and Large 3 heifers are not filed as ML2");
+assert.ok(!arkansas.some((row) => row.price === 516.98), "feeder bulls are not steer rows");
+assert.ok(arkansas.every((row) => row.source.includes("AMS_2056") && row.sourceUrl.endsWith("ams_2056.pdf") && row.asOf === "2026-09-26"));
+
+const byproduct = parseAmsReportText(
+  fx("feed-3510.txt"),
+  report("3510"),
+  "https://www.ams.usda.gov/mnreports/ams_3510.pdf",
+);
+assert.equal(parseReportDate(fx("feed-3510.txt")), "2026-09-25");
+assert.equal(byproduct.length, 18, `AMS_3510 rows, got ${byproduct.length}`);
+const grease = byproduct.find((row) => row.id === "grain.ams_3510.national.choice_white_grease.central_us.trade.fob_t");
+assert.ok(grease, "choice white grease");
+assert.equal(grease.price, 61.5);
+assert.equal(grease.unit, "cents/lb");
+assert.equal(grease.asOf, "2026-09-25");
+assert.equal(byproduct.find((row) => row.id === "grain.ams_3510.national.blood_meal_ruminant.central_us.trade.fob_t")?.price, 1620);
+assert.equal(byproduct.find((row) => row.id === "grain.ams_3510.national.blood_meal_ruminant.minnesota.ask.fob_t")?.price, 1462.5);
+assert.equal(
+  byproduct.filter((row) => row.id.includes("yellow_grease.ca_south")).map((row) => row.id).sort().join(","),
+  "grain.ams_3510.national.yellow_grease.ca_south.ask.dlvd_t,grain.ams_3510.national.yellow_grease.ca_south.ask.fob_t_r",
+);
+assert.ok(!byproduct.some((row) => row.price === 57), "year-ago grease is not a tick");
+assert.ok(byproduct.every((row) => row.source.includes("AMS_3510") && row.sourceUrl.endsWith("ams_3510.pdf") && row.group === "grain"));
+
+const millfeed = parseAmsReportText(
+  fx("feed-3512.txt"),
+  report("3512"),
+  "https://www.ams.usda.gov/mnreports/ams_3512.pdf",
+);
+assert.equal(millfeed.length, 16, `AMS_3512 rows, got ${millfeed.length}`);
+assert.equal(millfeed.find((row) => row.id === "grain.ams_3512.national.wheat_middlings.kc_region.ask.fob_t")?.price, 256.67);
+assert.equal(millfeed.find((row) => row.id === "grain.ams_3512.national.wheat_middlings.kc_region.ask.fob_r")?.price, 166.67);
+assert.equal(millfeed.find((row) => row.id === "hay.ams_3512.national.alfalfa_meal_dehydrated.kc_region.ask.dlvd_t")?.price, 435);
+assert.equal(millfeed.find((row) => row.id === "hay.ams_3512.national.alfalfa_pellets_dehydrated_17.nebraska.ask.fob_t")?.price, 375);
+assert.equal(millfeed.find((row) => row.id === "grain.ams_3512.national.almond_hulls.ca_san_joaquin_valley.ask.dlvd_t")?.price, 136);
+assert.equal(millfeed.filter((row) => row.group === "hay").length, 3);
+assert.ok(millfeed.every((row) => row.source.includes("AMS_3512") && row.sourceUrl.endsWith("ams_3512.pdf") && row.asOf === "2026-09-25"));
+assert.ok(!millfeed.some((row) => row.price === 200 && row.id.includes("wheat_middlings.kc_region.ask.fob_t")), "year-ago midds stay off");
+
+const tvBeefUrl = "https://www.treasurevalleylivestock.com/wp-content/uploads/2026/09/Fridays-Market-Report-Beef.pdf-9-25.pdf";
+const tvDairyUrl = "https://www.treasurevalleylivestock.com/wp-content/uploads/2026/09/Fridays-Market-Report-Dairy.pdf-9-25.pdf";
+const tvFeederUrl = "https://www.treasurevalleylivestock.com/wp-content/uploads/2026/09/Feeder-Special-Market-Report.pdf-9-21.pdf";
+const tvSatUrl = "https://www.treasurevalleylivestock.com/wp-content/uploads/2026/09/Saturdays-Market-Report.pdf-9-26.pdf";
+const tvBeef = parseTreasureValleyReport(fx("private-tv-beef.txt"), "friday-beef", tvBeefUrl);
+const tvDairy = parseTreasureValleyReport(fx("private-tv-dairy.txt"), "friday-dairy", tvDairyUrl);
+const tvFeeder = parseTreasureValleyReport(fx("private-tv-feeder.txt"), "feeder-special", tvFeederUrl);
+const tvSat = parseTreasureValleyReport(fx("private-tv-saturday.txt"), "saturday", tvSatUrl);
+assert.equal(tvBeef.length, 48, `Treasure Valley Friday beef, got ${tvBeef.length}`);
+assert.equal(tvDairy.length, 26, `Treasure Valley Friday dairy, got ${tvDairy.length}`);
+assert.equal(tvFeeder.length, 20, `Treasure Valley feeder special, got ${tvFeeder.length}`);
+assert.equal(tvSat.length, 13, `Treasure Valley Saturday sheep, got ${tvSat.length}`);
+assert.equal(tvBeef.find((row) => row.id === "cattle.private_treasure_valley_caldwell.friday_beef.feeder-steer.520_585")?.price, 316.88);
+assert.equal(tvBeef[0]?.asOf, "2026-09-25");
+assert.ok(!tvBeef.some((row) => row.price >= 1175 || row.price === 4350 || row.price === 1975), "per-head pairs, stock cows, and mixed tops stay off");
+assert.equal(tvDairy.find((row) => row.id === "cattle.private_treasure_valley_caldwell.friday_dairy.dairy-steer.555_595")?.price, 206.83);
+assert.equal(tvDairy[0]?.asOf, "2026-09-25");
+assert.ok(!tvDairy.some((row) => row.price === 425 || row.price === 444.23), "per-head dairy calves stay off");
+assert.equal(tvFeeder.find((row) => row.id === "cattle.private_treasure_valley_caldwell.feeder_special.feeder-steer.536_595")?.price, 371.97);
+assert.equal(tvFeeder[0]?.asOf, "2026-09-21");
+assert.ok(!tvFeeder.some((row) => row.price === 750), "per-head feeder-special calf stays off");
+assert.equal(tvSat.find((row) => row.id === "sheep.private_treasure_valley_caldwell.saturday.lamb.60_77")?.price, 284.43);
+assert.equal(tvSat[0]?.asOf, "2026-09-26");
+assert.ok(tvSat.every((row) => row.group === "sheep"));
+assert.ok(!tvSat.some((row) => /goat/i.test(row.commodity) || row.price === 2.79), "Saturday goats and per-head feeders stay off");
+for (const rows of [tvBeef, tvDairy, tvFeeder, tvSat]) {
+  assert.ok(rows.every((row) => row.internalSourceOnly === true && row.source === "Treasure Valley / Caldwell ID" && row.sourceUrl.startsWith("https://www.treasurevalleylivestock.com/") && row.market.includes("Caldwell ID")));
+  assert.ok(!rows.some((row) => /caldwelllivestock\.com/i.test(row.sourceUrl)));
+}
+const tvHub = `<h2>Full Market Reports:</h2><a href="http://www.treasurevalleylivestock.com/wp-content/uploads/2026/09/Saturdays-Market-Report.pdf-9-26.pdf" title="http://www.treasurevalleylivestock.com/wp-content/uploads/2025/07/Saturdays-Market-Report-7-12.pdf">Saturday Sale - 9/26/26</a><a href="http://www.caldwelllivestock.com/market.pdf">Caldwell TX</a><a href="http://www.treasurevalleylivestock.com/wp-content/uploads/2026/09/Feeder-Special-Market-Report.pdf-9-21.pdf" title="http://www.treasurevalleylivestock.com/wp-content/uploads/2021/02/Feeder-Special-Market-Report.pdf">feeder sale -09/21/2026</a><a href="http://www.treasurevalleylivestock.com/wp-content/uploads/2026/09/Fridays-Market-Report-Beef.pdf-9-25.pdf">Friday Market Report - Beef 9/25/26</a><a href="http://www.treasurevalleylivestock.com/wp-content/uploads/2026/09/Fridays-Market-Report-Dairy.pdf-9-25.pdf">Friday Market Report - Dairy 9/25/26</a><h2>Latest Updates:</h2><a href="http://www.treasurevalleylivestock.com/wp-content/uploads/2020/01/old.pdf">old</a>`;
+const tvPosts = treasureValleyPdfPosts(tvHub);
+assert.deepEqual(tvPosts.map((p) => p.sheet), ["friday-beef", "friday-dairy", "feeder-special", "saturday"]);
+assert.ok(tvPosts.every((p) => p.pdfUrl.startsWith("https://www.treasurevalleylivestock.com/wp-content/uploads/2026/09/")));
+assert.ok(!tvPosts.some((p) => /2025|2021|2020|caldwelllivestock/i.test(p.pdfUrl)));
+assert.ok(SAMPLE_TABLE_SKU.markets.some((row) => row.id === "private_treasure_valley_caldwell"));
+assert.ok(SAMPLE_TABLE_SKU.markets.some((row) => row.id === "ams_2056"));
+assert.ok(SAMPLE_TABLE_SKU.markets.some((row) => row.id === "ams_3510"));
+assert.ok(SAMPLE_TABLE_SKU.markets.some((row) => row.id === "ams_3512"));
 
 const readme = readFileSync(join(repoRoot, "README.md"), "utf8");
 const shopIndex = readFileSync(join(repoRoot, "SHOP-INDEX.md"), "utf8");
@@ -601,5 +692,12 @@ console.log(
     groceryProduce3324: produceAds.length,
     weeklyCotton3024: cotton.length,
     torrington2101: torrington.length,
+    arkansas2056: arkansas.length,
+    feed3510: byproduct.length,
+    feed3512: millfeed.length,
+    treasureValleyBeef: tvBeef.length,
+    treasureValleyDairy: tvDairy.length,
+    treasureValleyFeeder: tvFeeder.length,
+    treasureValleySaturday: tvSat.length,
   }),
 );

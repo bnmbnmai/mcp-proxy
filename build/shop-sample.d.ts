@@ -79,6 +79,22 @@ export declare const SAMPLE_TABLE_SKU: {
         readonly id: "private_producers_vale";
         readonly name: "Producers Livestock Vale";
         readonly sourceUrl: "https://www.producerslivestock.com/market-reports/";
+    }, {
+        readonly id: "private_treasure_valley_caldwell";
+        readonly name: "Treasure Valley Livestock Auction, Caldwell ID";
+        readonly sourceUrl: "https://www.treasurevalleylivestock.com/";
+    }, {
+        readonly id: "ams_2056";
+        readonly name: "Arkansas Weekly Livestock Auction Summary";
+        readonly sourceUrl: "https://www.ams.usda.gov/mnreports/ams_2056.pdf";
+    }, {
+        readonly id: "ams_3510";
+        readonly name: "National Animal By-Product Feedstuff";
+        readonly sourceUrl: "https://www.ams.usda.gov/mnreports/ams_3510.pdf";
+    }, {
+        readonly id: "ams_3512";
+        readonly name: "National Mill-Feeds and Miscellaneous Feedstuff";
+        readonly sourceUrl: "https://www.ams.usda.gov/mnreports/ams_3512.pdf";
     }];
     readonly records: readonly [{
         readonly id: "cattle.ams_1281.okc_west_el_reno.feeder-steer.ml1.826lb";
