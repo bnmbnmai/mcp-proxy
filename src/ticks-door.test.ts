@@ -1326,11 +1326,13 @@ async function main(): Promise<void> {
       body?: { id?: string; asOf?: string; letters?: { body?: string; sourceUrl?: string }[] };
     };
     assert.equal(sample.example, true);
-    assert.ok(Array.isArray(sample.table?.ticks) && sample.table.ticks.length === 1);
-    assert.ok(sample.table?.asOf && sample.table.fetchedAt && sample.table.source);
+    assert.ok(Array.isArray(sample.table?.ticks) && sample.table.ticks.length === 3);
+    assert.equal(sample.table?.asOf, "2026-09-22");
+    assert.ok(sample.table?.fetchedAt && sample.table.source);
     assert.equal(sample.table?.product, PRODUCT_PUBLIC_ID);
     assert.ok(JSON.stringify(sample).includes(TICKS_COMMODITY_SET), "/sample note names eggs in the /ticks commodity set");
-    assert.ok(JSON.stringify(sample).includes("Nationwide USDA AMS (example row)"));
+    assert.ok(JSON.stringify(sample).includes("cattle.ams_1281.okc_west_el_reno.feeder-steer.ml1.826lb"));
+    assert.ok(JSON.stringify(sample).includes("markets"));
     assert.ok(!JSON.stringify(sample).includes("Texas Direct"));
     assert.ok(!/forecast|private barn|\bwater\b/i.test(JSON.stringify(sample.table ?? {})), "sample table has no what-it-isnt copy");
     assert.ok(sample.body?.id);
@@ -1348,7 +1350,7 @@ async function main(): Promise<void> {
     assert.equal(ticksBazaarExample?.product, PRODUCT_PUBLIC_ID);
     assert.ok(!JSON.stringify(ticksBazaarExample).includes("idaho-hay-feeder-ticks"));
     assert.ok(!JSON.stringify(ticksBazaarExample).includes("Texas Direct"));
-    assert.ok(JSON.stringify(ticksBazaarExample).includes("Nationwide USDA AMS (example row)"));
+    assert.ok(JSON.stringify(ticksBazaarExample).includes("cattle.ams_1281.okc_west_el_reno.feeder-steer.ml1.826lb"));
     assert.ok(!/forecast|private barn|\bwater\b/i.test(JSON.stringify(ticksBazaarExample)));
 
     const specSample = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {

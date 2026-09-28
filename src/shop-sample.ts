@@ -1,6 +1,6 @@
 /**
- * Free GET /sample — static canned paid-JSON keys.
- * Not live cache. Not a wrap of the current table. Not a paid SKU.
+ * Free GET /sample — a 3-row slice of paid /ticks JSON keys from September 2026
+ * official prints. Not the entire current table. Not a paid SKU. Not a new path.
  */
 
 export const SAMPLE_PATH = "/sample";
@@ -34,45 +34,103 @@ export const SAMPLE_HOW_TO_USE = [
   `Or a page of 10: GET ${CANONICAL}/{door} ($0.05; whole current set if n<10)`,
   `Tables: GET ${CANONICAL}/ticks and GET ${CANONICAL}/import-alerts ($0.05 = entire current table)`,
   `Table rebuy: pay GET /ticks once → store ETag from the paid 200 (unpaid 402 has no ETag) → poll with If-None-Match (or ?since=) → HTTP 304 no charge when unchanged → pay again only when the body/ETag changes`,
-  `Paid JSON keys (canned example, not live): GET ${CANONICAL}/sample`,
+  `Free 3-row /ticks slice (not the whole $0.05 table): GET ${CANONICAL}/sample`,
 ] as const;
 
 /**
- * Table-SKU keys verified from live 402 extra + paidTicksBody:
- * ticks[], asOf, fetchedAt, source, records[], recordCount, plus bag note.
- * Values are fake placeholders. The row is one nationwide-table example.
- * Idaho/Twin Falls is example geography inside that table.
+ * Table-SKU keys from live paid /ticks JSON: ticks[], asOf, fetchedAt, source,
+ * records[], recordCount, plus markets[]. Three September 2026 rows from the
+ * official PDFs. source and sourceUrl stay on every tick. Not the whole table.
  */
 export const SAMPLE_TABLE_SKU = {
   example: true,
-  comment: "Canned /ticks paid JSON keys. $0.05 = entire current nationwide USDA AMS table.",
+  comment:
+    "Free 3-row slice of GET /ticks paid JSON from September 2026 official prints. $0.05 = entire current table.",
   ok: true,
   product: PRODUCT_PUBLIC_ID,
   status: "ok",
-  fetchedAt: "2026-01-16T00:00:00Z",
-  asOf: "2026-01-15",
+  fetchedAt: "2026-09-25T15:18:53.000Z",
+  asOf: "2026-09-22",
   source: TICKS_PUBLIC_CACHE_SOURCE,
-  note: `$0.05 buys the entire current nationwide USDA AMS table (${TICKS_COMMODITY_SET}), one SKU. Idaho/PNW barns are example rows inside the table. These are canned keys.`,
-  recordCount: 1,
+  note: `$0.05 buys the entire current nationwide USDA AMS table (${TICKS_COMMODITY_SET}), one SKU. This free slice is 3 September 2026 rows. Idaho/PNW barns are example rows inside the table.`,
+  recordCount: 3,
+  markets: [
+    { id: "ams_2770", name: "Montana Direct Feeder Cattle", sourceUrl: "https://www.ams.usda.gov/mnreports/ams_2770.pdf" },
+    { id: "ams_1281", name: "OKC West Livestock Auction (El Reno)", sourceUrl: "https://www.ams.usda.gov/mnreports/ams_1281.pdf" },
+    { id: "ams_1280", name: "Oklahoma National Stockyards Feeder Cattle", sourceUrl: "https://www.ams.usda.gov/mnreports/ams_1280.pdf" },
+    { id: "ams_1245", name: "Joplin Regional Stockyards Feeder Cattle", sourceUrl: "https://www.ams.usda.gov/mnreports/ams_1245.pdf" },
+    { id: "ams_1797", name: "Joplin Regional Stockyards Slaughter/Replacement Cattle", sourceUrl: "https://www.ams.usda.gov/mnreports/ams_1797.pdf" },
+    { id: "ams_2713", name: "Superior Livestock Video Auction", sourceUrl: "https://www.ams.usda.gov/mnreports/ams_2713.pdf" },
+    { id: "ams_1889", name: "Winter Livestock Cattle Auction (Dodge City)", sourceUrl: "https://www.ams.usda.gov/mnreports/ams_1889.pdf" },
+    { id: "ams_1892", name: "Farmers and Ranchers Livestock Commission Cattle Auction (Salina)", sourceUrl: "https://www.ams.usda.gov/mnreports/ams_1892.pdf" },
+    { id: "private_producers_jerome", name: "Producers Livestock Jerome", sourceUrl: "https://www.producerslivestock.com/market-reports/" },
+    { id: "private_producers_vale", name: "Producers Livestock Vale", sourceUrl: "https://www.producerslivestock.com/market-reports/" },
+  ],
   records: [
     {
-      id: "example-ams-alfalfa",
-      date: "2026-01-15",
-      firm: "Nationwide USDA AMS table (example row)",
-      url: "https://example.invalid/ams/example-row.pdf",
-      type: "hay",
+      id: "cattle.ams_1281.okc_west_el_reno.feeder-steer.ml1.826lb",
+      date: "2026-09-22",
+      firm: "OKC West Livestock Auction (El Reno)",
+      url: "https://www.ams.usda.gov/mnreports/ams_1281.pdf",
+      type: "cattle",
+    },
+    {
+      id: "cattle.ams_1245.joplin_feeder.feeder-steer.ml1.1060lb",
+      date: "2026-09-21",
+      firm: "Joplin Regional Stockyards Feeder Cattle",
+      url: "https://www.ams.usda.gov/mnreports/ams_1245.pdf",
+      type: "cattle",
+    },
+    {
+      id: "cattle.ams_2713.superior_video.north_central.feeder-steer.ml1.current.450lb.unweaned",
+      date: "2026-09-17",
+      firm: "Superior Livestock Video Auction — North Central",
+      url: "https://www.ams.usda.gov/mnreports/ams_2713.pdf",
+      type: "cattle",
     },
   ],
   ticks: [
     {
-      id: "example-ams-alfalfa",
-      group: "hay",
-      commodity: "Alfalfa",
-      market: "Nationwide USDA AMS (example row)",
-      unit: "$/ton",
-      asOf: "2026-01-15",
-      price: 185,
-      source: "USDA AMS nationwide table (example row)",
+      id: "cattle.ams_1281.okc_west_el_reno.feeder-steer.ml1.826lb",
+      group: "cattle",
+      commodity: "Steers",
+      market: "OKC West Livestock Auction (El Reno)",
+      classGrade: "USDA Medium and Large 1, 826 lb, 535 head",
+      unit: "$/cwt",
+      asOf: "2026-09-22",
+      price: 330.19,
+      lo: 321,
+      hi: 336,
+      source: "USDA AMS OKC West Livestock Auction (El Reno) Report (AMS_1281)",
+      sourceUrl: "https://www.ams.usda.gov/mnreports/ams_1281.pdf",
+    },
+    {
+      id: "cattle.ams_1245.joplin_feeder.feeder-steer.ml1.1060lb",
+      group: "cattle",
+      commodity: "Steers",
+      market: "Joplin Regional Stockyards Feeder Cattle",
+      classGrade: "USDA Medium and Large 1, 1060 lb, 152 head",
+      unit: "$/cwt",
+      asOf: "2026-09-21",
+      price: 291.42,
+      lo: 289,
+      hi: 292,
+      source: "USDA AMS Joplin Regional Stockyards Feeder Cattle Report (AMS_1245)",
+      sourceUrl: "https://www.ams.usda.gov/mnreports/ams_1245.pdf",
+    },
+    {
+      id: "cattle.ams_2713.superior_video.north_central.feeder-steer.ml1.current.450lb.unweaned",
+      group: "cattle",
+      commodity: "Steers",
+      market: "Superior Livestock Video Auction — North Central",
+      classGrade: "USDA Medium and Large 1, 450 lb, 58 head, Current, Unweaned",
+      unit: "$/cwt",
+      asOf: "2026-09-17",
+      price: 489,
+      lo: 489,
+      hi: 489,
+      source: "USDA AMS Superior Livestock Video Auction Report (AMS_2713)",
+      sourceUrl: "https://www.ams.usda.gov/mnreports/ams_2713.pdf",
     },
   ],
 } as const;
@@ -121,7 +179,7 @@ export function shopPaidJsonSample(): Record<string, unknown> {
   return {
     example: true,
     comment:
-      "Static canned examples of paid JSON keys. HTTP 200. Not live cache data. Not a wrap of the current table. Not a paid SKU.",
+      "Free 3-row /ticks slice plus a canned body-SKU example. HTTP 200. Not the entire current table. Not a paid SKU.",
     howToUse: [...SAMPLE_HOW_TO_USE],
     sample: `${CANONICAL}${SAMPLE_PATH}`,
     table: SAMPLE_TABLE_SKU,
