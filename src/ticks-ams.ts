@@ -40,7 +40,11 @@
  * copy over that official empty. OKC West AMS_1281, Oklahoma National AMS_1280,
  * Joplin feeder AMS_1245 and slaughter/replacement AMS_1797, Superior video
  * AMS_2713, Winter Dodge City AMS_1889, and Farmers & Ranchers Salina KS AMS_1892
- * are rows on this same table. Producers Livestock Jerome ID and Vale OR weekly
+ * are rows on this same table. Illinois weekly AMS_2041, Indiana weekly AMS_1976,
+ * and Pennsylvania weekly AMS_1919 are the same table: printed cattle $/cwt only.
+ * Per-head, sheep, goats, and the Please Note block are not ticks. AR AMS_2056
+ * stays off. Akamai 403s lowercase ams_2041.pdf; the uppercase AMS_2041.pdf
+ * candidate is the official body. Producers Livestock Jerome ID and Vale OR weekly
  * PDFs are internalSourceOnly rows; source and sourceUrl stay on the JSON.
  * Salina UT stays AMS_2037. EIA stays off.
  *
@@ -164,6 +168,9 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "1955", group: "cattle", region: "texas_weekly", title: "Texas Weekly Cattle Auction Summary", esmisPublication: "" },
   { slug: "2167", group: "cattle", region: "iowa_weekly", title: "Iowa Weekly Cattle Auction Summary", esmisPublication: "" },
   { slug: "1821", group: "cattle", region: "missouri_weekly", title: "Missouri Weekly Cattle Auction Summary", esmisPublication: "" },
+  { slug: "2041", group: "cattle", region: "illinois_weekly", title: "Illinois Weekly Cattle Auction Summary", esmisPublication: "illinois-weekly-cattle-auction-summary" },
+  { slug: "1976", group: "cattle", region: "indiana_weekly", title: "Indiana Weekly Auction Summary", esmisPublication: "indiana-weekly-cattle-auction-summary" },
+  { slug: "1919", group: "cattle", region: "pennsylvania_weekly", title: "Pennsylvania Weekly Cattle Auction Summary", esmisPublication: "pennsylvania-weekly-livestock-auction-summary" },
   ...AMS_LEFTOVER_REPORTS,
   { slug: "3148", group: "grain", region: "portland", title: "Portland Daily Grain Bids", esmisPublication: "portland-daily-grain-bids" },
   { slug: "3046", group: "grain", region: "minneapolis", title: "Minneapolis Daily Grain", esmisPublication: "minneapolis-daily-grain-report" },
@@ -253,7 +260,7 @@ export const SKIPPED_SOURCES = [
   { id: "retired-city-grain-txt", why: "sj_gr851 / gx_gr110 / wh_gr110 / jc_gr111 are retired or already plaintext city grain .txt — skip wrapping" },
   { id: "ams_3045_minneapolis_basis", why: "AMS_3045 Minneapolis Daily Basis is a MIAX floor-basis sheet, not a POS bid table" },
   { id: "se-individual-cattle-barns", why: "400+ remaining official SE/Midwest individual sale-barn PDFs stay off this slice; five current official SE barns (1988/1946/1995/1419/1997) + nine SE weeklies are on /ticks. Not a new SKU." },
-  { id: "se-weekly-cattle-summaries", why: "AL/FL/GA/KY/TN/VA/NC/MS/SC weeklies now on /ticks; leftover WV/PA/IN/IL/MO regional weeklies stay off this pass" },
+  { id: "se-weekly-cattle-summaries", why: "AL/FL/GA/KY/TN/VA/NC/MS/SC weeklies now on /ticks. IL AMS_2041, IN AMS_1976, and PA AMS_1919 weeklies are on /ticks. Leftover WV/NY/MO regional weeklies and AR AMS_2056 stay off this pass" },
   { id: "seasonal-specials", why: "official seasonal/replacement/stock-show specials often empty off-season; skip rather than invent" },
   { id: "video-internet-auctions", why: "other feeder internet/board sales stay off this slice; AMS_2713 Superior Livestock Video is on /ticks. Western Video AMS_3242 stays parked" },
   { id: "lmr-slaughter-pdfs", why: "national/regional Direct Slaughter PDFs are LMR fed-cattle tables, not the feeder/POS parser this door already sells" },
@@ -1240,7 +1247,173 @@ export function parseDirectFeederTrades(text: string, report: AmsReport, sourceU
   return dedupeTicks([...headlines, ...unique]);
 }
 
+/** State weeklies whose cash rows are the printed cattle $/cwt table, not feeder-only barns. */
+const WEEKLY_CATTLE_SUMMARY_SLUGS = new Set(["2041", "1976", "1919"]);
+
+const WEEKLY_CATTLE_HDR =
+  /^((?:BEEF\/DAIRY|DAIRY)\s+)?(STEERS|HEIFERS|COWS|BULLS)\s+-\s+(.+?)\s+\((Per Cwt|Per Unit)\s*\/\s*(?:Actual|Estimate)\s*Wt\)/i;
+
+type WeeklySection = "" | "feeder" | "slaughter" | "replacement" | "dairy-calves" | "skip";
+
+function weeklySexKind(
+  section: Exclude<WeeklySection, "" | "skip">,
+  prefix: string,
+  sex: string,
+): { tok: string; commodity: string } {
+  const dairy = /^dairy$/i.test(prefix.trim());
+  const beefDairy = /beef\/dairy/i.test(prefix);
+  const heifer = /heifer/i.test(sex);
+  const cow = /cow/i.test(sex);
+  const bull = /bull/i.test(sex);
+  if (section === "dairy-calves") {
+    if (heifer) return { tok: "feeder-dairy-heifer", commodity: "Dairy heifer calves" };
+    return { tok: "feeder-dairy-bull", commodity: "Dairy bull calves" };
+  }
+  if (section === "feeder" || section === "replacement") {
+    if (dairy && heifer) return { tok: "dairy-heifer", commodity: "Dairy heifers" };
+    if (dairy || bull) return { tok: dairy ? "dairy-steer" : "feeder-bull", commodity: dairy ? "Dairy steers" : "Bulls" };
+    if (beefDairy && heifer) return { tok: "beef-dairy-heifer", commodity: "Beef/dairy heifers" };
+    if (beefDairy) return { tok: "beef-dairy-steer", commodity: "Beef/dairy steers" };
+    if (heifer) return { tok: "feeder-heifer", commodity: "Heifers" };
+    if (cow) return { tok: "replacement-cow", commodity: "Cows" };
+    return { tok: "feeder-steer", commodity: "Steers" };
+  }
+  if (beefDairy && heifer) return { tok: "slaughter-beef-dairy-heifer", commodity: "Beef/dairy heifers" };
+  if (beefDairy) return { tok: "slaughter-beef-dairy-steer", commodity: "Beef/dairy steers" };
+  if (dairy && heifer) return { tok: "slaughter-dairy-heifer", commodity: "Dairy heifers" };
+  if (dairy && cow) return { tok: "slaughter-dairy-cow", commodity: "Dairy cows" };
+  if (dairy && bull) return { tok: "slaughter-dairy-bull", commodity: "Dairy bulls" };
+  if (dairy) return { tok: "slaughter-dairy-steer", commodity: "Dairy steers" };
+  if (heifer) return { tok: "slaughter-heifer", commodity: "Heifers" };
+  if (cow) return { tok: "slaughter-cow", commodity: "Slaughter cows" };
+  if (bull) return { tok: "slaughter-bull", commodity: "Slaughter bulls" };
+  return { tok: "slaughter-steer", commodity: "Steers" };
+}
+
+function weeklyGradeTok(section: WeeklySection, grade: string): string {
+  if (section === "feeder") return cattleGradeTok(grade);
+  if (/boner/i.test(grade)) return "boner";
+  if (/breaker/i.test(grade)) return "breaker";
+  if (/lean/i.test(grade)) return "lean";
+  if (/^1-2$/i.test(grade.trim())) return "12";
+  return token(grade);
+}
+
+function weeklyWeightOk(section: Exclude<WeeklySection, "" | "skip">, wt: number): boolean {
+  if (section === "dairy-calves") return wt >= 40 && wt <= 400;
+  if (section === "slaughter") return wt >= 400 && wt <= 3200;
+  return wt >= 200 && wt <= FEEDER_AVG_WT_MAX;
+}
+
+function weeklyPriceOk(section: Exclude<WeeklySection, "" | "skip">, avg: number): boolean {
+  if (section === "dairy-calves") return avg >= 20 && avg <= 2000;
+  return avg >= 20 && avg <= 900;
+}
+
+/**
+ * IL AMS_2041 / IN AMS_1976 / PA AMS_1919 weekly summaries.
+ * Cash cattle $/cwt in the feeder, slaughter, and feeder-dairy-calf sections.
+ * Per Unit ($/head), sheep, goats, and the Please Note block stay empty.
+ * Does not invent a Current FOB headline. A sheet with no cattle $/cwt stays empty.
+ */
+export function parseWeeklyCattleSummary(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  if (!WEEKLY_CATTLE_SUMMARY_SLUGS.has(report.slug)) return [];
+  const asOf = parseReportDate(text);
+  if (!asOf) return [];
+  const source = `USDA AMS ${report.title} Report (AMS_${report.slug})`;
+  const out: AmsTick[] = [];
+  let section: WeeklySection = "";
+  let sex = "";
+  let grade = "";
+  let kind: { tok: string; commodity: string } | null = null;
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.replace(/\s+/g, " ").trim();
+    if (!line) continue;
+    if (/^FEEDER DAIRY CALVES$/i.test(line)) {
+      section = "dairy-calves";
+      sex = "";
+      kind = null;
+      continue;
+    }
+    if (/^FEEDER CATTLE$/i.test(line)) {
+      section = "feeder";
+      sex = "";
+      kind = null;
+      continue;
+    }
+    if (/^SLAUGHTER CATTLE$/i.test(line)) {
+      section = "slaughter";
+      sex = "";
+      kind = null;
+      continue;
+    }
+    if (/^REPLACEMENT(?:\s+DAIRY)?\s+CATTLE$/i.test(line)) {
+      section = "replacement";
+      sex = "";
+      kind = null;
+      continue;
+    }
+    if (
+      /^(SLAUGHTER|FEEDER)\s+(SHEEP|GOAT)/i.test(line) ||
+      /^PLEASE NOTE\b/i.test(line) ||
+      /^EXPLANATORY NOTES\b/i.test(line)
+    ) {
+      section = "skip";
+      sex = "";
+      kind = null;
+      continue;
+    }
+    if (section === "" || section === "skip") continue;
+    const hdr = line.match(WEEKLY_CATTLE_HDR);
+    if (hdr) {
+      const perCwt = /cwt/i.test(hdr[4] ?? "");
+      if (!perCwt) {
+        sex = "";
+        kind = null;
+        continue;
+      }
+      sex = `${hdr[1] ?? ""}${hdr[2] ?? ""}`.trim();
+      grade = hdr[3] ?? "";
+      kind = weeklySexKind(section, (hdr[1] ?? "").trim(), hdr[2] ?? "");
+      continue;
+    }
+    if (!sex || !kind) continue;
+    const row = line.match(AUCTION_CATTLE_ROW);
+    if (!row) continue;
+    const head = Number(row[1]);
+    const wt = Number(row[4]);
+    const lo = Number(row[5]);
+    const hi = row[6] ? Number(row[6]) : lo;
+    const avg = Number(row[7]);
+    if (!weeklyPriceOk(section, avg) || !weeklyWeightOk(section, wt)) continue;
+    const note = line.slice(row[0].length).replace(/\s+/g, " ").trim();
+    const gradeTok = weeklyGradeTok(section, grade);
+    const id = ["cattle", `ams_${report.slug}`, token(report.region), kind.tok, gradeTok, `${wt}lb`].join(".");
+    out.push({
+      id,
+      group: "cattle",
+      commodity: kind.commodity,
+      label: `${report.title} ${sex} ${grade} ${wt} lb`,
+      market: report.title,
+      classGrade: `USDA ${grade}, ${wt} lb, ${head} head${note ? `, ${note}` : ""}`,
+      unit: "$/cwt",
+      price: roundMoney(avg),
+      lo,
+      hi,
+      asOf,
+      source,
+      sourceUrl,
+      reportDate: asOf,
+      series: id,
+    });
+  }
+  return dedupeTicks(assignUniqueIds(out));
+}
+
 export function parseCattleReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  if (WEEKLY_CATTLE_SUMMARY_SLUGS.has(report.slug)) {
+    return parseWeeklyCattleSummary(text, report, sourceUrl);
+  }
   if (looksLikeVideoAuction(text)) {
     const video = parseVideoAuctionReport(text, report, sourceUrl);
     if (video.length > 0) return video;
