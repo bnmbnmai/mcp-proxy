@@ -33,6 +33,16 @@
  * Daily AMS_3804 spot quotations and cnwwqo quality stay leftover. Do not
  * wrap MARS / MMN JSON (403 without a key).
  * Water District 1 rental-pool $/AF is not an AMS source and stays off this table.
+ * AMS_2770 Montana Direct prints a Delivery/Freight table. Current FOB stays the
+ * cash series. A class with no Current FOB keeps its forward FOB prints (Oct FOB
+ * and the like) so a trade week is not dropped. A live "No trades this week" /
+ * "not established this week" PDF stays empty — do not backfill an older ESMIS
+ * copy over that official empty. OKC West AMS_1281, Oklahoma National AMS_1280,
+ * Joplin feeder AMS_1245 and slaughter/replacement AMS_1797, Superior video
+ * AMS_2713, Winter Dodge City AMS_1889, and Farmers & Ranchers Salina KS AMS_1892
+ * are rows on this same table. Producers Livestock Jerome ID and Vale OR weekly
+ * PDFs are internalSourceOnly rows; source and sourceUrl stay on the JSON.
+ * Salina UT stays AMS_2037. EIA stays off.
  *
  * Prefer live mnreports over NAL/esmis archives. Collect used to unshift ESMIS first and
  * keep the first parseable PDF — that left many Direct Hay/Cattle/Grain rows on Sept 2025
@@ -117,6 +127,8 @@ export const AMS_NATIONAL_REPORTS = [
     { slug: "2101", group: "cattle", region: "torrington_wy_fri", title: "Torrington Livestock Commission Cattle Auction (Friday)", esmisPublication: "" },
     { slug: "2103", group: "cattle", region: "torrington_wy_wed", title: "Torrington Livestock Commission Feeder Cattle Auction (Wednesday)", esmisPublication: "" },
     { slug: "2104", group: "cattle", region: "riverton_wy", title: "Winter Livestock Cattle Auction (Riverton)", esmisPublication: "" },
+    { slug: "1889", group: "cattle", region: "dodge_city_ks", title: "Winter Livestock Cattle Auction (Dodge City)", esmisPublication: "" },
+    { slug: "1892", group: "cattle", region: "salina_ks", title: "Farmers and Ranchers Livestock Commission Cattle Auction (Salina)", esmisPublication: "" },
     { slug: "2106", group: "cattle", region: "wyoming_weekly", title: "Wyoming Weekly Cattle Auction Summary", esmisPublication: "" },
     { slug: "1907", group: "cattle", region: "colorado_weekly", title: "Colorado Weekly Cattle Auction Summary", esmisPublication: "" },
     { slug: "2027", group: "cattle", region: "south_dakota_weekly", title: "South Dakota Weekly Cattle Auction Summary", esmisPublication: "" },
@@ -125,6 +137,11 @@ export const AMS_NATIONAL_REPORTS = [
     { slug: "1895", group: "cattle", region: "kansas_weekly", title: "Kansas Weekly Cattle Auction Summary", esmisPublication: "" },
     { slug: "1784", group: "cattle", region: "new_mexico_weekly", title: "New Mexico Weekly Cattle Auction Summary", esmisPublication: "" },
     { slug: "1831", group: "cattle", region: "oklahoma_weekly", title: "Oklahoma Weekly Cattle Auction Summary", esmisPublication: "" },
+    { slug: "1281", group: "cattle", region: "okc_west_el_reno", title: "OKC West Livestock Auction (El Reno)", esmisPublication: "" },
+    { slug: "1280", group: "cattle", region: "oklahoma_national", title: "Oklahoma National Stockyards Feeder Cattle", esmisPublication: "" },
+    { slug: "1245", group: "cattle", region: "joplin_feeder", title: "Joplin Regional Stockyards Feeder Cattle", esmisPublication: "" },
+    { slug: "1797", group: "cattle", region: "joplin_slaughter", title: "Joplin Regional Stockyards Slaughter/Replacement Cattle", esmisPublication: "" },
+    { slug: "2713", group: "cattle", region: "superior_video", title: "Superior Livestock Video Auction", esmisPublication: "" },
     { slug: "1955", group: "cattle", region: "texas_weekly", title: "Texas Weekly Cattle Auction Summary", esmisPublication: "" },
     { slug: "2167", group: "cattle", region: "iowa_weekly", title: "Iowa Weekly Cattle Auction Summary", esmisPublication: "" },
     { slug: "1821", group: "cattle", region: "missouri_weekly", title: "Missouri Weekly Cattle Auction Summary", esmisPublication: "" },
@@ -218,10 +235,10 @@ export const SKIPPED_SOURCES = [
     { id: "se-individual-cattle-barns", why: "400+ remaining official SE/Midwest individual sale-barn PDFs stay off this slice; five current official SE barns (1988/1946/1995/1419/1997) + nine SE weeklies are on /ticks. Not a new SKU." },
     { id: "se-weekly-cattle-summaries", why: "AL/FL/GA/KY/TN/VA/NC/MS/SC weeklies now on /ticks; leftover WV/PA/IN/IL/MO regional weeklies stay off this pass" },
     { id: "seasonal-specials", why: "official seasonal/replacement/stock-show specials often empty off-season; skip rather than invent" },
-    { id: "video-internet-auctions", why: "feeder cattle internet/video/board sales are a different AMS family than sale-barn floor sheets" },
+    { id: "video-internet-auctions", why: "other feeder internet/board sales stay off this slice; AMS_2713 Superior Livestock Video is on /ticks. Western Video AMS_3242 stays parked" },
     { id: "lmr-slaughter-pdfs", why: "national/regional Direct Slaughter PDFs are LMR fed-cattle tables, not the feeder/POS parser this door already sells" },
     { id: "plaintext-recaps", why: "lswalabama / lswkssum / CO_LS146.txt already return official plaintext — do not wrap" },
-    { id: "facebook-private-barns", why: "Facebook barns, private sale-barn homepages, and Treasure Valley Caldwell stay out — no dated official PDF/HTML print" },
+    { id: "facebook-private-barns", why: "Facebook barns and Treasure Valley Caldwell stay out. Producers Livestock Jerome ID and Vale OR weekly PDFs are on /ticks with internalSourceOnly; source and sourceUrl stay. Salina UT stays AMS_2037, not a private duplicate" },
     { id: "gis-echo-family-herd", why: "GIS wraps, EPA ECHO, and the sold family herd ledger are not /ticks rows" },
     { id: "new-x402-door", why: "no per-barn / per-state / per-region SKU; extra official rows stay on GET /ticks" },
     { id: "ams_2911_marsapi", why: "marsapi /services/v1.2/reports/2911 returns HTTP 403 without a key — parse the official mnreports PDF only" },
@@ -531,6 +548,55 @@ function parseHayRow(line, pkg, cls, region, asOf, report, source, sourceUrl, ou
 const CATTLE_ROW_RE = /^(?:Current FOB\s+)?(\d+)\s+(\d+)(?:\s*-\s*(\d+))?\s+(\d+)\s+(\d+(?:\.\d+)?)(?:\s*-\s*(\d+(?:\.\d+)?))?\s+(\d+(?:\.\d+)?)/i;
 const AUCTION_CATTLE_HDR = /^(STEERS|HEIFERS)\s+-\s+(Medium and Large [12](?:-[23])?|Large [123](?:-[23])?)\s+\(Per Cwt\s*\/\s*Actual Wt\)/i;
 const AUCTION_CATTLE_ROW = /^(\d+)\s+(\d+)(?:-(\d+))?\s+(\d+)\s+(\d+(?:\.\d+)?)(?:-(\d+(?:\.\d+)?))?\s+(\d+(?:\.\d+)?)/;
+/** Feeder avg weights above the old 1050 cap are still $/cwt (OKC 1139, Joplin 1060, Salina 1174). */
+const FEEDER_AVG_WT_MAX = 1400;
+function cattleGradeTok(grade) {
+    if (/2-3/.test(grade))
+        return "ml23";
+    if (/1-2/.test(grade))
+        return "ml12";
+    if (/large 3/i.test(grade))
+        return "l3";
+    if (/medium and large 2/i.test(grade))
+        return "ml2";
+    if (/large 2/i.test(grade))
+        return "ml2";
+    if (/medium and large 1/i.test(grade))
+        return "ml1";
+    if (/large 1/i.test(grade))
+        return "l1";
+    return "ml1";
+}
+function noteFromClassGrade(row) {
+    const parts = row.classGrade.split(", ");
+    return parts.length >= 4 ? parts.slice(3).join(", ") : "";
+}
+/** Suffix only when two printed rows would share an id. Unique rows keep the old id. */
+function assignUniqueIds(rows) {
+    const baseCount = new Map();
+    for (const row of rows)
+        baseCount.set(row.id, (baseCount.get(row.id) ?? 0) + 1);
+    const used = new Set();
+    const seenBase = new Map();
+    const out = [];
+    for (const row of rows) {
+        let id = row.id;
+        if ((baseCount.get(row.id) ?? 0) > 1) {
+            const n = (seenBase.get(row.id) ?? 0) + 1;
+            seenBase.set(row.id, n);
+            const hint = token(noteFromClassGrade(row) || String(n));
+            id = `${row.id}.${hint || n}`;
+        }
+        if (used.has(id)) {
+            const n = (seenBase.get(row.id) ?? 1) + 1;
+            seenBase.set(row.id, n);
+            id = `${id}.${n}`;
+        }
+        used.add(id);
+        out.push(id === row.id ? row : { ...row, id, series: id });
+    }
+    return out;
+}
 export function looksLikeCattleAuction(text) {
     return /Livestock Weighted Average Report for/i.test(text) || /\(Per Cwt\s*\/\s*Actual Wt\)/i.test(text);
 }
@@ -589,7 +655,7 @@ export function parseCattleAuctionReport(text, report, sourceUrl) {
         const avg = Number(row[7]);
         if (!Number.isFinite(avg) || avg < 20 || avg > 900)
             continue;
-        if (!Number.isFinite(wt) || wt < 250 || wt > 1050)
+        if (!Number.isFinite(wt) || wt < 250 || wt > FEEDER_AVG_WT_MAX)
             continue;
         const sexTok = /dairy/i.test(sex)
             ? /heifer/i.test(sex)
@@ -598,18 +664,8 @@ export function parseCattleAuctionReport(text, report, sourceUrl) {
             : /heifer/i.test(sex)
                 ? "feeder-heifer"
                 : "feeder-steer";
-        const gradeTok = /2-3/.test(grade)
-            ? "ml23"
-            : /1-2/.test(grade)
-                ? "ml12"
-                : /large 3/i.test(grade)
-                    ? "l3"
-                    : /large 2/i.test(grade)
-                        ? "ml2"
-                        : /medium and large 2/i.test(grade)
-                            ? "ml2"
-                            : "ml1";
-        const note = /\bunweaned\b/i.test(line) ? "unweaned" : "";
+        const gradeTok = cattleGradeTok(grade);
+        const note = line.slice(row[0].length).replace(/\s+/g, " ").trim();
         const id = ["cattle", `ams_${report.slug}`, token(report.region), sexTok, gradeTok, `${wt}lb`].join(".");
         out.push({
             id,
@@ -636,8 +692,9 @@ export function parseCattleAuctionReport(text, report, sourceUrl) {
         });
     }
     if (out.length > 0) {
-        const headlines = headlineCattle(out, report, source, sourceUrl, asOf);
-        return dedupeTicks([...headlines, ...out]);
+        const unique = assignUniqueIds(out);
+        const headlines = headlineCattle(unique, report, source, sourceUrl, asOf);
+        return dedupeTicks([...headlines, ...unique]);
     }
     // Cow sales (Torrington Friday AMS_2101) print slaughter cows/bulls and
     // replacement stock $/cwt with no steer/heifer rows. Those are the ticks.
@@ -646,7 +703,8 @@ export function parseCattleAuctionReport(text, report, sourceUrl) {
     return parseAuctionCowSale(text, report, source, sourceUrl, asOf);
 }
 const SLAUGHTER_CLASS_HDR = /^(COWS|BULLS)\s+-\s+(.+?)\s+\(Per Cwt\s*\/\s*Actual Wt\)/i;
-const REPLACEMENT_CLASS_HDR = /^(STOCK COWS|BRED COWS)\s+-\s+(.+?)\s+\((Per Cwt|Per Unit)\s*\/\s*Actual Wt\)/i;
+const REPLACEMENT_CLASS_HDR = /^(STOCK COWS|BRED COWS|OPEN HEIFERS)\s+-\s+(.+?)\s+\((Per Cwt|Per Unit)\s*\/\s*(?:Actual|Estimate) Wt\)/i;
+const OPEN_HEIFER_ROW_RE = /^(<?\d+(?:-\d+)?|>\d+)\s+(\d+)\s+(\d+)(?:-(\d+))?\s+(\d+)\s+(\d+(?:\.\d+)?)(?:-(\d+(?:\.\d+)?))?\s+(\d+(?:\.\d+)?)/i;
 const REPLACEMENT_ROW_RE = /^(>?\d+(?:-\d+)?)\s+(O|T\d(?:-\d)?)\s+(\d+)\s+(\d+)(?:-(\d+))?\s+(\d+)\s+(\d+(?:\.\d+)?)(?:-(\d+(?:\.\d+)?))?\s+(\d+(?:\.\d+)?)/i;
 function auctionCowGradeTok(grade) {
     if (/boner/i.test(grade))
@@ -724,6 +782,49 @@ function parseAuctionCowSale(text, report, source, sourceUrl, asOf) {
         }
         if (!sex || !section || perUnit)
             continue;
+        if (section === "replacement" && /open heifer/i.test(sex)) {
+            const row = line.match(OPEN_HEIFER_ROW_RE);
+            if (!row)
+                continue;
+            const age = row[1];
+            const head = Number(row[2]);
+            const wt = Number(row[5]);
+            const lo = Number(row[6]);
+            const hi = row[7] ? Number(row[7]) : lo;
+            const avg = Number(row[8]);
+            if (!Number.isFinite(avg) || avg < 20 || avg > 900)
+                continue;
+            if (!Number.isFinite(wt) || wt < 400 || wt > 3200)
+                continue;
+            const gradeTok = auctionCowGradeTok(grade);
+            const id = [
+                "cattle",
+                `ams_${report.slug}`,
+                token(report.region),
+                "replacement-open-heifer",
+                gradeTok,
+                auctionAgeTok(age),
+                `${wt}lb`,
+            ].join(".");
+            out.push({
+                id,
+                group: "cattle",
+                commodity: "Open heifers",
+                label: `${report.title} ${sex} ${grade} ${wt} lb`,
+                market: report.title,
+                classGrade: `USDA ${grade}, ${wt} lb, ${head} head, age ${age}`,
+                unit: "$/cwt",
+                price: roundMoney(avg),
+                lo,
+                hi,
+                asOf,
+                source,
+                sourceUrl,
+                reportDate: asOf,
+                series: id,
+            });
+            continue;
+        }
         if (section === "slaughter") {
             const row = line.match(AUCTION_CATTLE_ROW);
             if (!row)
@@ -806,14 +907,275 @@ function parseAuctionCowSale(text, report, source, sourceUrl, asOf) {
             series: id,
         });
     }
-    return dedupeTicks(out);
+    return dedupeTicks(assignUniqueIds(out));
+}
+/** Live official PDF is an intentional empty, not a parser miss. */
+export function cattleReportIntentionalEmpty(text) {
+    return /No trades this week/i.test(text) || /not established this week/i.test(text);
+}
+export function looksLikeVideoAuction(text) {
+    return /VIDEO AUCTION/i.test(text) && /Est\.?\s*Wt/i.test(text);
+}
+const VIDEO_REGIONS = /^(North Central|South Central|Southeast|West|Northeast\/Upper Midwest(?:\s*\([^)]*\))?)$/i;
+const VIDEO_HDR = /^(STEERS|HEIFERS|BEEF\/DAIRY STEERS|BEEF\/DAIRY HEIFERS|DAIRY STEERS|DAIRY HEIFERS)\s+-\s+(.+?)\s+\(Per Cwt\s*\/\s*Est\.?\s*Wt\s*\)/i;
+const VIDEO_DELIVERY = "Current|Sep-Oct|Oct-Nov|Nov-Dec|Dec-Jan|Jan-Feb|Feb-Mar|Mar-Apr|Apr-May|May-Jun|Jun-Jul|Jul-Aug|Aug-Sep|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec";
+const VIDEO_ROW_RE = new RegExp(`^(?:(${VIDEO_DELIVERY})\\s+)?(\\d+)\\s+(\\d+)(?:\\s*-\\s*(\\d+))?\\s+(\\d+)\\s+(\\d+(?:\\.\\d+)?)(?:\\s*-\\s*(\\d+(?:\\.\\d+)?))?\\s+(\\d+(?:\\.\\d+)?)(?:\\s+(.+))?$`, "i");
+function videoSex(sex) {
+    if (/beef\/dairy/i.test(sex) && /heifer/i.test(sex))
+        return { tok: "beef-dairy-heifer", commodity: "Beef/dairy heifers" };
+    if (/beef\/dairy/i.test(sex))
+        return { tok: "beef-dairy-steer", commodity: "Beef/dairy steers" };
+    if (/dairy/i.test(sex) && /heifer/i.test(sex))
+        return { tok: "dairy-heifer", commodity: "Dairy heifers" };
+    if (/dairy/i.test(sex))
+        return { tok: "dairy-steer", commodity: "Dairy steers" };
+    if (/heifer/i.test(sex))
+        return { tok: "feeder-heifer", commodity: "Heifers" };
+    return { tok: "feeder-steer", commodity: "Steers" };
+}
+/** Superior AMS_2713 and the same Est. Wt video layout. All printed deliveries, feeder section only. */
+export function parseVideoAuctionReport(text, report, sourceUrl) {
+    const asOf = parseReportDate(text);
+    if (!asOf)
+        return [];
+    const source = `USDA AMS ${report.title} Report (AMS_${report.slug})`;
+    const out = [];
+    let region = "";
+    let sex = "";
+    let grade = "";
+    let delivery = "";
+    let inFeeder = false;
+    for (const raw of text.split(/\r?\n/)) {
+        const line = raw.replace(/\s+/g, " ").trim();
+        if (!line)
+            continue;
+        if (/^FEEDER CATTLE$/i.test(line)) {
+            inFeeder = true;
+            sex = "";
+            grade = "";
+            delivery = "";
+            continue;
+        }
+        if (/^REPLACEMENT CATTLE$/i.test(line)) {
+            if (inFeeder)
+                break;
+            continue;
+        }
+        if (!inFeeder)
+            continue;
+        const regionHit = line.match(VIDEO_REGIONS);
+        if (regionHit) {
+            region = regionHit[1];
+            sex = "";
+            grade = "";
+            delivery = "";
+            continue;
+        }
+        if (/^\([A-Z]{2}(?:,\s*[A-Z]{2})+\)$/.test(line))
+            continue;
+        const hdr = line.match(VIDEO_HDR);
+        if (hdr) {
+            sex = hdr[1];
+            grade = hdr[2];
+            delivery = "";
+            continue;
+        }
+        if (!sex || !region)
+            continue;
+        const row = line.match(VIDEO_ROW_RE);
+        if (!row)
+            continue;
+        if (row[1])
+            delivery = row[1];
+        if (!delivery)
+            continue;
+        const head = Number(row[2]);
+        const wt = Number(row[5]);
+        const lo = Number(row[6]);
+        const hi = row[7] ? Number(row[7]) : lo;
+        const avg = Number(row[8]);
+        const note = (row[9] ?? "").trim();
+        if (!Number.isFinite(avg) || avg < 20 || avg > 900)
+            continue;
+        if (!Number.isFinite(wt) || wt < 200 || wt > FEEDER_AVG_WT_MAX)
+            continue;
+        const kind = videoSex(sex);
+        const id = [
+            "cattle",
+            `ams_${report.slug}`,
+            token(report.region),
+            token(region),
+            kind.tok,
+            cattleGradeTok(grade),
+            token(delivery),
+            `${wt}lb`,
+            ...(note ? [token(note)] : []),
+        ].join(".");
+        out.push({
+            id,
+            group: "cattle",
+            commodity: kind.commodity,
+            label: `${report.title} ${region} ${sex} ${grade} ${delivery} ${wt} lb`,
+            market: `${report.title} — ${region}`,
+            classGrade: `USDA ${grade}, ${wt} lb, ${head} head, ${delivery}${note ? `, ${note}` : ""}`,
+            unit: "$/cwt",
+            price: roundMoney(avg),
+            lo,
+            hi,
+            asOf,
+            source,
+            sourceUrl,
+            reportDate: asOf,
+            series: id,
+        });
+    }
+    return dedupeTicks(assignUniqueIds(out));
+}
+const DIRECT_MONTH = "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec";
+const DIRECT_HDR_RE = /^(?:(?:Beef\/Dairy|Dairy)\s+)?(Steers|Heifers)\s+-\s+(Medium and Large [12](?:-[23])?|Large [123](?:-[23])?)\s+\(Per Cwt\)/i;
+const DIRECT_ROW_RE = new RegExp(`^(?:((?:Current|${DIRECT_MONTH}))\\s+(FOB|DEL)\\s+)?(\\d[\\d,]*)\\s+(\\d+)(?:\\s*-\\s*(\\d+))?\\s+(\\d+)\\s+(\\d+(?:\\.\\d+)?)(?:\\s*-\\s*(\\d+(?:\\.\\d+)?))?\\s+(\\d+(?:\\.\\d+)?)(?:\\s+(.+))?$`, "i");
+/**
+ * Direct-cattle Delivery/Freight table. Current FOB keeps the existing id.
+ * Forward FOB is emitted only for a class that has no Current FOB (Montana Oct FOB).
+ * DEL and basis trades are not $/cwt cash ticks. Returns null when the PDF has no
+ * DIRECT TRADES section so the legacy line parser can still run.
+ */
+export function parseDirectFeederTrades(text, report, sourceUrl) {
+    if (!/DIRECT TRADES/i.test(text))
+        return null;
+    const asOf = parseReportDate(text);
+    if (!asOf)
+        return [];
+    const source = `USDA AMS ${report.title} Report (AMS_${report.slug})`;
+    const drafts = [];
+    let inDirect = false;
+    let sex = "";
+    let grade = "";
+    let delivery = "";
+    let freight = "";
+    for (const raw of text.split(/\r?\n/)) {
+        const line = raw.replace(/\s+/g, " ").trim();
+        if (!line)
+            continue;
+        if (/DIRECT TRADES/i.test(line)) {
+            inDirect = true;
+            sex = "";
+            grade = "";
+            delivery = "";
+            freight = "";
+            continue;
+        }
+        if (!inDirect)
+            continue;
+        if (/^(Please Note|BASIS TRADES|SLAUGHTER|REPLACEMENT)\b/i.test(line)) {
+            inDirect = false;
+            sex = "";
+            continue;
+        }
+        const hdr = line.match(DIRECT_HDR_RE);
+        if (hdr) {
+            sex = hdr[1];
+            grade = hdr[2];
+            delivery = "";
+            freight = "";
+            continue;
+        }
+        if (!sex)
+            continue;
+        const row = line.match(DIRECT_ROW_RE);
+        if (!row)
+            continue;
+        if (row[1] && row[2]) {
+            delivery = row[1];
+            freight = row[2].toUpperCase();
+        }
+        if (!delivery || !freight)
+            continue;
+        const head = Number(row[3].replace(/,/g, ""));
+        const wt = Number(row[6]);
+        const lo = Number(row[7]);
+        const hi = row[8] ? Number(row[8]) : lo;
+        const avg = Number(row[9]);
+        const note = (row[10] ?? "").trim();
+        if (!Number.isFinite(avg) || avg < 20 || avg > 900)
+            continue;
+        if (!Number.isFinite(wt) || wt < 200 || wt > 1600)
+            continue;
+        drafts.push({
+            sex,
+            grade,
+            sexTok: /heifer/i.test(sex) ? "feeder-heifer" : "feeder-steer",
+            gradeTok: cattleGradeTok(grade),
+            delivery,
+            freight,
+            head,
+            wt,
+            lo,
+            hi,
+            avg,
+            note,
+        });
+    }
+    const groups = new Map();
+    for (const draft of drafts) {
+        const key = `${draft.sexTok}|${draft.gradeTok}`;
+        const list = groups.get(key) ?? [];
+        list.push(draft);
+        groups.set(key, list);
+    }
+    const out = [];
+    for (const group of groups.values()) {
+        const current = group.filter((d) => d.freight === "FOB" && /^current$/i.test(d.delivery));
+        const forward = group.filter((d) => d.freight === "FOB" && !/^current$/i.test(d.delivery));
+        const use = current.length > 0 ? current : forward;
+        for (const draft of use) {
+            const forwardTok = current.length > 0 ? "" : `${token(draft.delivery)}_fob`;
+            const id = [
+                "cattle",
+                `ams_${report.slug}`,
+                token(report.region),
+                draft.sexTok,
+                draft.gradeTok,
+                ...(forwardTok ? [forwardTok] : []),
+                `${draft.wt}lb`,
+            ].join(".");
+            out.push({
+                id,
+                group: "cattle",
+                commodity: draft.sex,
+                label: `${report.title} ${draft.sex} ${draft.grade} ${draft.delivery} ${draft.freight} ${draft.wt} lb`,
+                market: report.title,
+                classGrade: `USDA ${draft.grade}, ${draft.wt} lb, ${draft.head} head, ${draft.delivery} ${draft.freight}${draft.note ? `, ${draft.note}` : ""}`,
+                unit: "$/cwt",
+                price: roundMoney(draft.avg),
+                lo: draft.lo,
+                hi: draft.hi,
+                asOf,
+                source,
+                sourceUrl,
+                reportDate: asOf,
+                series: id,
+            });
+        }
+    }
+    const unique = assignUniqueIds(out);
+    const headlines = headlineCattle(unique, report, source, sourceUrl, asOf);
+    return dedupeTicks([...headlines, ...unique]);
 }
 export function parseCattleReport(text, report, sourceUrl) {
+    if (looksLikeVideoAuction(text)) {
+        const video = parseVideoAuctionReport(text, report, sourceUrl);
+        if (video.length > 0)
+            return video;
+    }
     if (looksLikeCattleAuction(text)) {
         const auction = parseCattleAuctionReport(text, report, sourceUrl);
         if (auction.length > 0)
             return auction;
     }
+    const direct = parseDirectFeederTrades(text, report, sourceUrl);
+    if (direct)
+        return direct;
     const asOf = parseReportDate(text);
     if (!asOf)
         return [];
@@ -886,7 +1248,7 @@ export function parseCattleReport(text, report, sourceUrl) {
 function headlineCattle(rows, report, source, sourceUrl, asOf) {
     const out = [];
     for (const sexTok of ["feeder-steer", "feeder-heifer"]) {
-        const subset = rows.filter((r) => r.id.includes(`.${sexTok}.ml1.`));
+        const subset = rows.filter((r) => new RegExp(`\\.${sexTok}\\.ml1\\.\\d+lb(?:\\.|$)`).test(r.id));
         if (subset.length === 0)
             continue;
         const heads = subset.map((r) => Number(r.classGrade.match(/(\d+) head/)?.[1] ?? 0));
@@ -2841,6 +3203,260 @@ export function mergeFailedAmsSlugs(prev, next) {
         sources,
     };
 }
+const PRODUCERS_INDEX = "https://www.producerslivestock.com/market-reports/";
+const PRODUCER_BARNS = {
+    jerome: { title: "Jerome, ID", market: "Producers Livestock Jerome" },
+    vale: { title: "Vale, OR", market: "Producers Livestock Vale" },
+};
+export function producerLatestPosts(html) {
+    const parts = html.split(/<h3>/i);
+    const out = [];
+    for (const part of parts) {
+        const title = part.match(/^([^<]+)/)?.[1]?.replace(/\s+/g, " ").trim();
+        const barn = Object.keys(PRODUCER_BARNS).find((id) => PRODUCER_BARNS[id].title === title);
+        if (!barn)
+            continue;
+        const link = part.match(/href="(https:\/\/www\.producerslivestock\.com\/20\d\d\/[^"]+)"/i);
+        if (!link || /historical|hay/i.test(link[1]))
+            continue;
+        out.push({ barn, postUrl: link[1] });
+    }
+    return out;
+}
+export function producerPdfUrl(html) {
+    const links = [...html.matchAll(/href="(https:\/\/www\.producerslivestock\.com\/wp-content\/uploads\/[^"]+\.pdf)"/gi)];
+    return links[0]?.[1] ?? null;
+}
+function producerAsOf(text) {
+    const m = text.match(/Market Report:\s*(\d{1,2})\/(\d{1,2})\/(\d{2,4})/i);
+    if (!m)
+        return null;
+    const year = m[3].length === 2 ? `20${m[3]}` : m[3];
+    return `${year}-${m[1].padStart(2, "0")}-${m[2].padStart(2, "0")}`;
+}
+function pushProducerTick(out, opts) {
+    if (!Number.isFinite(opts.price) || opts.price < 20 || opts.price > 900)
+        return;
+    const id = ["cattle", `private_producers_${opts.barn}`, opts.kind].join(".");
+    out.push({
+        id,
+        group: "cattle",
+        commodity: opts.commodity,
+        label: opts.label,
+        market: opts.market,
+        classGrade: opts.classGrade,
+        unit: "$/cwt",
+        price: roundMoney(opts.price),
+        lo: roundMoney(opts.lo),
+        hi: roundMoney(opts.hi),
+        asOf: opts.asOf,
+        source: opts.source,
+        sourceUrl: opts.sourceUrl,
+        reportDate: opts.asOf,
+        series: id,
+        internalSourceOnly: true,
+    });
+}
+function rangeMid(lo, hi) {
+    return (lo + hi) / 2;
+}
+/** Jerome (avg + range) and Vale (bulk + top) weekly sheets. $/head rows stay off the $/cwt series. */
+export function parseProducersLivestockReport(text, barn, sourceUrl) {
+    const asOf = producerAsOf(text);
+    if (!asOf)
+        return [];
+    const market = PRODUCER_BARNS[barn].market;
+    const source = `${market} weekly market report`;
+    const out = [];
+    let section = "cows";
+    let steerAt = -1;
+    let heiferAt = -1;
+    const base = {
+        barn,
+        market,
+        source,
+        sourceUrl,
+        asOf,
+    };
+    for (const raw of text.split(/\r?\n/)) {
+        const line = raw.replace(/\s+$/g, "");
+        const flat = line.replace(/\s+/g, " ").trim();
+        if (!flat)
+            continue;
+        if (/^Comments:/i.test(flat) || /^These are extreme/i.test(flat)) {
+            section = "done";
+            continue;
+        }
+        if (/Hol\/Dairy/i.test(flat)) {
+            section = "dairy";
+            steerAt = -1;
+            heiferAt = -1;
+            continue;
+        }
+        if (/^Steers\b/i.test(flat) && /Heifers/i.test(flat)) {
+            if (section !== "dairy")
+                section = "feeders";
+            continue;
+        }
+        if (/AVG\.\s*Price/i.test(line) || (/^Weight\b/i.test(flat) && /\bBulk\b/i.test(line))) {
+            const avgHits = [...line.matchAll(/AVG\.\s*Price/gi)].map((m) => m.index ?? 0);
+            const bulkHits = [...line.matchAll(/\bBulk\b/gi)].map((m) => m.index ?? 0);
+            if (avgHits.length >= 2) {
+                steerAt = avgHits[0];
+                heiferAt = avgHits[1];
+            }
+            else if (bulkHits.length >= 2) {
+                steerAt = bulkHits[0];
+                heiferAt = bulkHits[1];
+            }
+            if (section === "cows")
+                section = "feeders";
+            continue;
+        }
+        if (section === "done")
+            continue;
+        if (section === "cows") {
+            if (/bred|pairs|stock cows|calf/i.test(flat))
+                continue;
+            const trimmed = line.trim();
+            const vale = trimmed.match(/^([A-Za-z][A-Za-z0-9 /#()-]+?)\s{2,}(\d+\.\d{2})-(\d+\.\d{2})\s+(\d+\.\d{2}|-)\s*$/);
+            const jerome = trimmed.match(/^([A-Za-z][A-Za-z0-9 /#()-]+?)\s{2,}(\d+\.\d{2})-(\d+\.\d{2})\s*$/);
+            const hit = vale ?? jerome;
+            if (!hit)
+                continue;
+            const label = hit[1].trim();
+            const lo = Number(hit[2]);
+            const hi = Number(hit[3]);
+            if (lo >= 900)
+                continue;
+            const top = vale && hit[4] !== "-" ? Number(hit[4]) : undefined;
+            const kind = /bull/i.test(label) ? `slaughter-bull.${token(label)}` : `cow.${token(label)}`;
+            pushProducerTick(out, {
+                ...base,
+                kind,
+                commodity: label,
+                label: `${market} ${label}`,
+                classGrade: top ? `${label}, bulk ${lo}-${hi}, top ${top}` : `${label}, ${lo}-${hi}`,
+                price: rangeMid(lo, hi),
+                lo,
+                hi,
+            });
+            continue;
+        }
+        const weight = flat.match(/^(\d{3}-\d{3,}#|\d{3}# and up|900# and up|900 and up)(?=\s|$)/i);
+        if (!weight || steerAt < 0 || heiferAt < 0)
+            continue;
+        const band = token(weight[1]);
+        const dairy = section === "dairy";
+        const sides = [];
+        if (/AVG\.\s*Price/i.test(text)) {
+            for (const hit of line.matchAll(/(\d+\.\d{2})\s+(\d+(?:\.\d+)?)-(\d+(?:\.\d+)?)/g)) {
+                const price = Number(hit[1]);
+                const lo = Number(hit[2]);
+                const hi = Number(hit[3]);
+                if (price > 900 || lo > 900)
+                    continue;
+                sides.push({ price, lo, hi, index: hit.index ?? 0 });
+            }
+        }
+        else {
+            for (const hit of line.matchAll(/(\d+\.\d{2})-(\d+\.\d{2})/g)) {
+                const lo = Number(hit[1]);
+                const hi = Number(hit[2]);
+                if (lo > 900)
+                    continue;
+                const after = line.slice((hit.index ?? 0) + hit[0].length);
+                const topHit = after.match(/^\s+(\d+\.\d{2})\b/);
+                const top = topHit ? Number(topHit[1]) : undefined;
+                sides.push({ price: rangeMid(lo, hi), lo, hi, top, index: hit.index ?? 0 });
+            }
+        }
+        const splitAt = (steerAt + heiferAt) / 2;
+        const steer = sides.length >= 2 ? sides[0] : sides[0] && sides[0].index < splitAt ? sides[0] : null;
+        const heifer = sides.length >= 2 ? sides[1] : sides[0] && sides[0].index >= splitAt ? sides[0] : null;
+        if (steer) {
+            pushProducerTick(out, {
+                ...base,
+                kind: `${dairy ? "dairy-steer" : "feeder-steer"}.${band}`,
+                commodity: dairy ? "Dairy steers" : "Steers",
+                label: `${market} ${dairy ? "dairy steers" : "steers"} ${weight[1]}`,
+                classGrade: `${weight[1]}, ${steer.lo}-${steer.hi}${"top" in steer && steer.top ? `, top ${steer.top}` : ""}`,
+                price: steer.price,
+                lo: steer.lo,
+                hi: steer.hi,
+            });
+        }
+        if (heifer) {
+            pushProducerTick(out, {
+                ...base,
+                kind: `${dairy ? "dairy-heifer" : "feeder-heifer"}.${band}`,
+                commodity: dairy ? "Dairy heifers" : "Heifers",
+                label: `${market} ${dairy ? "dairy heifers" : "heifers"} ${weight[1]}`,
+                classGrade: `${weight[1]}, ${heifer.lo}-${heifer.hi}${"top" in heifer && heifer.top ? `, top ${heifer.top}` : ""}`,
+                price: heifer.price,
+                lo: heifer.lo,
+                hi: heifer.hi,
+            });
+        }
+    }
+    return dedupeTicks(out);
+}
+function shouldCollectProducers() {
+    const only = env("TICKS_AMS_ONLY_SLUGS")
+        .split(",")
+        .map((s) => s.trim())
+        .filter(Boolean);
+    if (/^(1|true|yes)$/i.test(env("TICKS_AMS_LEFTOVERS_ONLY")) && only.length === 0)
+        return false;
+    if (only.length === 0)
+        return true;
+    return only.some((s) => s === "jerome" || s === "vale" || s === "producers");
+}
+async function collectProducers(rows, failed, sources, tmpDir) {
+    let posts = [];
+    try {
+        posts = producerLatestPosts(await fetchText(PRODUCERS_INDEX));
+    }
+    catch (err) {
+        failed.push({
+            id: "private_producers",
+            source: "Producers Livestock market reports",
+            sourceUrl: PRODUCERS_INDEX,
+            reason: err instanceof Error ? err.message : String(err),
+        });
+        return;
+    }
+    for (const post of posts) {
+        const market = PRODUCER_BARNS[post.barn].market;
+        try {
+            const postHtml = await fetchText(post.postUrl);
+            const pdfUrl = producerPdfUrl(postHtml);
+            if (!pdfUrl)
+                throw new Error(`no PDF on ${post.postUrl}`);
+            const fetched = await fetchBytes(pdfUrl);
+            if (!isPdf(fetched.bytes))
+                throw new Error(`not a PDF (${fetched.contentType || "unknown"})`);
+            const pdfPath = join(tmpDir, `producers-${post.barn}.pdf`);
+            writeFileSync(pdfPath, fetched.bytes);
+            const parsed = parseProducersLivestockReport(pdfToText(pdfPath), post.barn, pdfUrl);
+            if (parsed.length === 0)
+                throw new Error("PDF had no parseable $/cwt print");
+            if (parsed.some((row) => !row.source || !row.sourceUrl)) {
+                throw new Error("refusing to emit a producers row without source and sourceUrl");
+            }
+            rows.push(...parsed);
+            sources.push(market);
+        }
+        catch (err) {
+            failed.push({
+                id: `private_producers_${post.barn}`,
+                source: market,
+                sourceUrl: post.postUrl,
+                reason: err instanceof Error ? err.message : String(err),
+            });
+        }
+    }
+}
 export async function collectAmsNational(opts) {
     const dir = opts?.dir ?? amsNationalDir();
     const pauseMs = opts?.pauseMs ?? Number(env("TICKS_AMS_PAUSE_MS") || "1200");
@@ -2871,6 +3487,11 @@ export async function collectAmsNational(opts) {
                 usedUrl = pdfUrl;
                 if (parsed.length > 0)
                     break;
+                const liveMn = /\/mnreports\//i.test(pdfUrl) && !/esmis\.nal\.usda\.gov/i.test(pdfUrl);
+                if (liveMn && cattleReportIntentionalEmpty(text)) {
+                    lastErr = "official PDF reported no trades / not established this week";
+                    break;
+                }
                 lastErr = "official PDF had no parseable hay/cattle/grain/wool/dairy/hogs/produce/egg/cold-storage/chicken/grocery-retail/cotton print";
             }
             catch (err) {
@@ -2891,6 +3512,9 @@ export async function collectAmsNational(opts) {
         }
         if (pauseMs > 0)
             await pause(pauseMs);
+    }
+    if (shouldCollectProducers()) {
+        await collectProducers(rows, failed, sources, tmpDir);
     }
     const asOf = rows.map((r) => r.asOf).sort().at(-1) ?? null;
     let snap = {

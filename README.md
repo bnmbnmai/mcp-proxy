@@ -13,7 +13,7 @@ Unpaid GET on a paid path returns HTTP 402 with `PAYMENT-REQUIRED`. No request b
 
 ## Free (not SKUs)
 
-- `GET /sample` — canned paid-JSON keys. HTTP 200.
+- `GET /sample` — free 3-row /ticks slice. HTTP 200. Not the whole $0.05 table.
 - `GET /firm-check?q=` — firm-name search across official caches. HTTP 200. Names the door and the `?id=` or page to buy.
 - `GET /{door}/manifest.json?q=` — free index/search on every extracted-body door.
 - `GET /.well-known/x402` — the live paid URLs.
