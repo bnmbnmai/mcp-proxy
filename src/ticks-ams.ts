@@ -62,11 +62,15 @@
  * AMS_1889, and Farmers & Ranchers Salina KS AMS_1892 are rows on this same
  * table. Illinois weekly AMS_2041, Indiana weekly AMS_1976, and Pennsylvania
  * weekly AMS_1919 are the same table: printed cattle $/cwt only. Per-head,
- * sheep, goats, and the Please Note block are not ticks. AR AMS_2056 stays
- * off. Akamai 403s lowercase ams_2041.pdf; the uppercase AMS_2041.pdf
- * candidate is the official body. Producers Livestock Jerome ID and Vale OR weekly
- * PDFs are internalSourceOnly rows; source and sourceUrl stay on the JSON.
- * Salina UT stays AMS_2037. EIA stays off.
+ * sheep, goats, and the Please Note block are not ticks on those weeklies.
+ * AMS_2056 Arkansas weekly uses this same auction parser. Akamai 403s lowercase
+ * ams_2041.pdf; the uppercase AMS_2041.pdf candidate is the official body.
+ * Producers Livestock Jerome ID and Vale OR, and Treasure Valley Livestock
+ * Auction (Caldwell ID) weekly PDFs are internalSourceOnly rows; source and
+ * sourceUrl stay on the JSON. Do not scrape caldwelllivestock.com (that is a
+ * Texas barn). AMS_3510 animal by-product and AMS_3512 mill-feed prints land
+ * on the grain/hay table. AMS_3798 stays off. Salina UT stays AMS_2037. EIA
+ * stays off.
  *
  * Prefer live mnreports over NAL/esmis archives. Collect used to unshift ESMIS first and
  * keep the first parseable PDF — that left many Direct Hay/Cattle/Grain rows on Sept 2025
@@ -100,7 +104,7 @@ export const VIEW_REPORT = (slug: string) =>
 
 const HTTP_UA = "bnm-data-shop/1.0 (USDA AMS public market-report PDFs; +https://www.ams.usda.gov/market-news/hay-reports)";
 
-export type AmsGroup = "hay" | "cattle" | "grain" | "wool" | "dairy" | "hogs" | "produce";
+export type AmsGroup = "hay" | "cattle" | "grain" | "wool" | "dairy" | "hogs" | "produce" | "sheep";
 
 export type AmsReport = {
   slug: string;
@@ -206,6 +210,7 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "2041", group: "cattle", region: "illinois_weekly", title: "Illinois Weekly Cattle Auction Summary", esmisPublication: "illinois-weekly-cattle-auction-summary" },
   { slug: "1976", group: "cattle", region: "indiana_weekly", title: "Indiana Weekly Auction Summary", esmisPublication: "indiana-weekly-cattle-auction-summary" },
   { slug: "1919", group: "cattle", region: "pennsylvania_weekly", title: "Pennsylvania Weekly Cattle Auction Summary", esmisPublication: "pennsylvania-weekly-livestock-auction-summary" },
+  { slug: "2056", group: "cattle", region: "arkansas_weekly", title: "Arkansas Weekly Livestock Auction Summary", esmisPublication: "" },
   ...AMS_LEFTOVER_REPORTS,
   { slug: "3148", group: "grain", region: "portland", title: "Portland Daily Grain Bids", esmisPublication: "portland-daily-grain-bids" },
   { slug: "3046", group: "grain", region: "minneapolis", title: "Minneapolis Daily Grain", esmisPublication: "minneapolis-daily-grain-report" },
@@ -239,6 +244,8 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "3239", group: "grain", region: "wyoming", title: "Wyoming Daily Grain Bids", esmisPublication: "wyoming-daily-grain-bids" },
   { slug: "2887", group: "grain", region: "national", title: "National Daily Sunflower Canola Millet Flaxseed", esmisPublication: "national-daily-sunflower-canola-millet-and-flaxseed-report" },
   { slug: "3802", group: "grain", region: "national_organic", title: "National Organic Grain and Feedstuffs", esmisPublication: "national-organic-grain-and-feedstuffs", pdfNames: ["lsbnof"] },
+  { slug: "3510", group: "grain", region: "national", title: "National Animal By-Product Feedstuff", esmisPublication: "" },
+  { slug: "3512", group: "grain", region: "national", title: "National Mill-Feeds and Miscellaneous Feedstuff", esmisPublication: "" },
   { slug: "3024", group: "grain", region: "national", title: "Weekly Cotton Market Review", esmisPublication: "weekly-cotton-market-review", pdfNames: ["cnwwcmr"] },
   { slug: "2911", group: "wool", region: "national", title: "National Wool Review", esmisPublication: "national-wool-review-fri" },
   { slug: "2998", group: "dairy", region: "national", title: "Dairy Market News Weekly Report", esmisPublication: "dairy-market-news-weekly-report", pdfNames: ["dywweeklyreport"] },
@@ -297,12 +304,13 @@ export const SKIPPED_SOURCES = [
   { id: "retired-city-grain-txt", why: "sj_gr851 / gx_gr110 / wh_gr110 / jc_gr111 are retired or already plaintext city grain .txt — skip wrapping" },
   { id: "ams_3045_minneapolis_basis", why: "AMS_3045 Minneapolis Daily Basis is a MIAX floor-basis sheet, not a POS bid table" },
   { id: "se-individual-cattle-barns", why: "400+ remaining official SE/Midwest individual sale-barn PDFs stay off this slice; five current official SE barns (1988/1946/1995/1419/1997) + nine SE weeklies are on /ticks. Not a new SKU." },
-  { id: "se-weekly-cattle-summaries", why: "AL/FL/GA/KY/TN/VA/NC/MS/SC weeklies now on /ticks. IL AMS_2041, IN AMS_1976, and PA AMS_1919 weeklies are on /ticks. Leftover WV/NY/MO regional weeklies and AR AMS_2056 stay off this pass" },
+  { id: "se-weekly-cattle-summaries", why: "AL/FL/GA/KY/TN/VA/NC/MS/SC weeklies now on /ticks. IL AMS_2041, IN AMS_1976, PA AMS_1919, and AR AMS_2056 weeklies are on /ticks. Leftover WV/NY/MO regional weeklies stay off this pass" },
   { id: "seasonal-specials", why: "official seasonal/replacement/stock-show specials often empty off-season; skip rather than invent" },
   { id: "video-internet-auctions", why: "other feeder internet/board sales stay off this slice; AMS_2713 Superior Livestock Video and AMS_3242 Western Video Market are on /ticks" },
   { id: "lmr-slaughter-pdfs", why: "national/regional Direct Slaughter PDFs are LMR fed-cattle tables, not the feeder/POS parser this door already sells" },
   { id: "plaintext-recaps", why: "lswalabama / lswkssum / CO_LS146.txt already return official plaintext — do not wrap" },
-  { id: "facebook-private-barns", why: "Facebook barns and Treasure Valley Caldwell stay out. Producers Livestock Jerome ID and Vale OR weekly PDFs are on /ticks with internalSourceOnly; source and sourceUrl stay. Salina UT stays AMS_2037, not a private duplicate" },
+  { id: "facebook-private-barns", why: "Facebook barns stay out. Producers Livestock Jerome ID and Vale OR, and Treasure Valley Livestock Auction (Caldwell ID) weekly PDFs are on /ticks with internalSourceOnly; source and sourceUrl stay. Do not scrape caldwelllivestock.com (Texas Caldwell Livestock Commission). Salina UT stays AMS_2037, not a private duplicate" },
+  { id: "ams_3798", why: "AMS_3798 stays off this pass. AMS_3510 National Animal By-Product Feedstuff and AMS_3512 National Mill-Feeds are the feed prints on /ticks" },
   { id: "gis-echo-family-herd", why: "GIS wraps, EPA ECHO, and the sold family herd ledger are not /ticks rows" },
   { id: "new-x402-door", why: "no per-barn / per-state / per-region SKU; extra official rows stay on GET /ticks" },
   { id: "ams_2911_marsapi", why: "marsapi /services/v1.2/reports/2911 returns HTTP 403 without a key — parse the official mnreports PDF only" },
@@ -764,7 +772,10 @@ export function parseCattleAuctionReport(text: string, report: AmsReport, source
       inFeeder = true;
       continue;
     }
-    if (/\(Per Cwt/i.test(line) && /^(DAIRY|BEEF\/DAIRY|COWS|BULLS|PAIRS|STOCK|BRED)/i.test(line)) {
+    // Small and Medium, Medium and Large 3, bulls, and per-head classes are not
+    // this steer/heifer series. Clear the previous grade so their rows are not
+    // filed under it (AMS_2056 prints those sections after Medium and Large 2).
+    if (/\(\s*Per\s+(?:Cwt|Unit)\b/i.test(line)) {
       sex = "";
       continue;
     }
@@ -3582,6 +3593,128 @@ export function parseGrassFedBeef(text: string, report: AmsReport, sourceUrl: st
   return dedupeTicks(out);
 }
 
+const FEED_NUM = String.raw`\d{1,3}(?:,\d{3})*\.\d{2}`;
+const FEED_ROW_RE = new RegExp(
+  `^(.+?)\\s+(Trade|Ask|Bid)\\s+(${FEED_NUM}(?:-${FEED_NUM})?)\\s+(No Comp|UNCH(?:-(?:DN|UP)\\s+${FEED_NUM})?|(?:DN|UP)\\s+${FEED_NUM}(?:-(?:UNCH|(?:DN|UP)\\s+${FEED_NUM}))?)\\s+(${FEED_NUM})(?:\\s+(${FEED_NUM}))?\\s+((?:FOB|DLVD)[A-Z0-9/-]*)$`,
+  "i",
+);
+const FEED_CATEGORY_RE =
+  /^(Animal By-Products|Grain By-Products|Rice By-Products|Hay \(Processed\)|Mast)$/i;
+
+function feedMoney(raw: string): number {
+  return Number(raw.replace(/,/g, ""));
+}
+
+function cleanFeedCommodity(raw: string): string {
+  return raw
+    .replace(/^Commodity\s+/i, "")
+    .replace(/\s+N\\?\/?A$/i, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function feedBoilerplate(line: string): boolean {
+  return (
+    /^(source:|email us|general inquir|https?:\/\/|www\.ams\.usda\.gov)/i.test(line) ||
+    /Livestock, Poultry/i.test(line) ||
+    /Dept\. of Ag Market News/i.test(line) ||
+    /National (Animal By-Product|Mill-Feeds)/i.test(line) ||
+    /^Report for\b/i.test(line) ||
+    /^Explanatory Notes/i.test(line) ||
+    /^Price & Basis/i.test(line) ||
+    /^CBOT\/KCBT/i.test(line) ||
+    /^Freight Codes/i.test(line) ||
+    /^FOB: Freight/i.test(line) ||
+    /^DLVD: Delivered/i.test(line) ||
+    /^T: Truck/i.test(line) ||
+    /^Trade Regions/i.test(line) ||
+    /^For more information/i.test(line) ||
+    /accessibility issues/i.test(line)
+  );
+}
+
+/**
+ * AMS_3510 animal by-products and AMS_3512 mill-feeds. Current-week Average
+ * column only — year-ago reprints are not ticks. Alfalfa meals/pellets land
+ * on hay; the rest stay on grain. Official mnreports PDFs.
+ */
+export function parseNationalFeedstuffReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const asOf = parseReportDate(text);
+  if (!asOf) return [];
+  const out: AmsTick[] = [];
+  let pending = "";
+  let commodity = "";
+  let unit: "$/ton" | "cents/lb" | "" = "";
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.replace(/\s+/g, " ").trim();
+    if (!line) continue;
+    if (feedBoilerplate(line)) {
+      pending = "";
+      continue;
+    }
+    if (FEED_CATEGORY_RE.test(line)) {
+      pending = "";
+      continue;
+    }
+    if (/Price\s*\([^)]+\)/i.test(line)) {
+      if (/\$\/\s*ton/i.test(line)) unit = "$/ton";
+      else if (/¢|\/\s*lb/i.test(line)) unit = "cents/lb";
+      if (pending) commodity = cleanFeedCommodity(pending);
+      pending = "";
+      continue;
+    }
+    const row = line.match(FEED_ROW_RE);
+    if (row && commodity && unit) {
+      const region = row[1].trim();
+      const sale = row[2];
+      const range = row[3].split("-").map(feedMoney);
+      const lo = range[0];
+      const hi = range[1] ?? lo;
+      const price = feedMoney(row[5]);
+      const freight = row[7].toUpperCase();
+      const hiBound = unit === "cents/lb" ? 250 : 5000;
+      const loBound = unit === "cents/lb" ? 5 : 20;
+      if (
+        !Number.isFinite(price) ||
+        !Number.isFinite(lo) ||
+        !Number.isFinite(hi) ||
+        price < loBound ||
+        price > hiBound ||
+        lo < loBound ||
+        hi > hiBound
+      ) {
+        continue;
+      }
+      const group: AmsGroup = /alfalfa|hay\b|timothy/i.test(commodity) ? "hay" : "grain";
+      const id = [
+        group,
+        `ams_${report.slug}`,
+        token(report.region),
+        token(commodity),
+        token(region),
+        token(sale),
+        token(freight),
+      ].join(".");
+      pushTick(out, report, sourceUrl, asOf, {
+        id,
+        group,
+        commodity,
+        label: `${report.title} ${commodity} ${region} ${freight}`,
+        market: `${report.title} — ${region}`,
+        classGrade: `${commodity}, ${sale}, ${lo}-${hi}, ${freight}, ${unit}`,
+        unit,
+        price: roundMoney(price),
+        lo: roundMoney(lo),
+        hi: roundMoney(hi),
+      });
+      continue;
+    }
+    if (line.length <= 80 && !/sale type|price change|\bRegion\b|\bBasis\b/i.test(line)) pending = line;
+  }
+  return dedupeTicks(out);
+}
+
+
 export function parseAmsReportText(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
   if (report.slug === "2811" || (report.pdfNames ?? []).includes("lsmngfbeef")) {
     return parseGrassFedBeef(text, report, sourceUrl);
@@ -3612,6 +3745,9 @@ export function parseAmsReportText(text: string, report: AmsReport, sourceUrl: s
   if (report.group === "produce") {
     if (report.slug === "3324") return parseSpecialtyCropsRetail(text, report, sourceUrl);
     return parseProduceTerminal(text, report, sourceUrl);
+  }
+  if (report.slug === "3510" || report.slug === "3512") {
+    return parseNationalFeedstuffReport(text, report, sourceUrl);
   }
   if (report.slug === "3802" || /organic grain/i.test(report.title)) {
     return parseOrganicGrainReport(text, report, sourceUrl);
@@ -3842,6 +3978,7 @@ export function mergeAmsNationalTicks<T extends {
 function reportSlugFromTickId(id: string): string | null {
   const priv = id.match(/\.private_producers_(jerome|vale)\./i);
   if (priv) return `private_producers_${priv[1].toLowerCase()}`;
+  if (/\.private_treasure_valley_caldwell\./i.test(id)) return "private_treasure_valley_caldwell";
   const m = id.match(/\.ams_([a-z0-9_]+)\./i);
   return m ? m[1] : null;
 }
@@ -3849,6 +3986,7 @@ function reportSlugFromTickId(id: string): string | null {
 function reportSlugFromFailedId(id: string): string | null {
   const priv = id.match(/^private_producers_(jerome|vale)$/i);
   if (priv) return `private_producers_${priv[1].toLowerCase()}`;
+  if (/^private_treasure_valley_caldwell/i.test(id)) return "private_treasure_valley_caldwell";
   const m = id.match(/^ams_([a-z0-9_]+)$/i);
   return m ? m[1] : null;
 }
@@ -3856,6 +3994,7 @@ function reportSlugFromFailedId(id: string): string | null {
 function reportSlugFromSourceLabel(label: string): string | null {
   if (/Producers Livestock Jerome/i.test(label)) return "private_producers_jerome";
   if (/Producers Livestock Vale/i.test(label)) return "private_producers_vale";
+  if (/Treasure Valley/i.test(label)) return "private_treasure_valley_caldwell";
   const m = label.match(/^AMS_([a-z0-9_]+)\b/i);
   return m ? m[1] : null;
 }
@@ -4209,6 +4348,281 @@ async function collectProducers(
   }
 }
 
+export const TREASURE_VALLEY_INDEX = "https://www.treasurevalleylivestock.com/";
+export const TREASURE_VALLEY_MARKET = "Treasure Valley Livestock Auction, Caldwell ID";
+export const TREASURE_VALLEY_SOURCE = "Treasure Valley / Caldwell ID";
+
+export type TreasureValleySheet = "friday-beef" | "friday-dairy" | "feeder-special" | "saturday";
+
+const TREASURE_VALLEY_SHEET_ORDER: readonly TreasureValleySheet[] = [
+  "friday-beef",
+  "friday-dairy",
+  "feeder-special",
+  "saturday",
+];
+
+const TREASURE_VALLEY_SHEET_LABEL: Record<TreasureValleySheet, string> = {
+  "friday-beef": "Friday beef",
+  "friday-dairy": "Friday dairy",
+  "feeder-special": "Feeder special",
+  saturday: "Saturday",
+};
+
+const TV_ROW_RE =
+  /^(\d+)\s+hd\s+(\d+)\s+to\s+(\d+)\s+lbs?\s+\(([\d,]+)\)\s+([\d,]+\.\d{2})\s+([\d,]+\.\d{2})\s+([\d,]+\.\d{2})\s+(cwt|hd)\b/i;
+
+function treasureValleySheet(href: string, label: string): TreasureValleySheet | null {
+  const blob = `${href} ${label}`.toLowerCase();
+  if (/dairy/.test(blob)) return "friday-dairy";
+  if (/beef/.test(blob)) return "friday-beef";
+  if (/feeder/.test(blob)) return "feeder-special";
+  if (/saturday/.test(blob)) return "saturday";
+  return null;
+}
+
+/** Current hub buttons only. href is the live PDF; title= often still points at an old file. */
+export function treasureValleyPdfPosts(html: string): { sheet: TreasureValleySheet; pdfUrl: string; label: string }[] {
+  const section = html.split(/Full Market Reports/i)[1]?.split(/Latest Updates/i)[0] ?? "";
+  const out: { sheet: TreasureValleySheet; pdfUrl: string; label: string }[] = [];
+  const seen = new Set<TreasureValleySheet>();
+  for (const match of section.matchAll(/<a\b([^>]*)>([^<]*)<\/a>/gi)) {
+    const attrs = match[1] ?? "";
+    const label = (match[2] ?? "").replace(/\s+/g, " ").trim();
+    const href = attrs.match(/\bhref="([^"]+)"/i)?.[1] ?? "";
+    if (!href || /caldwelllivestock\.com/i.test(href)) continue;
+    if (!/^https?:\/\/(?:www\.)?treasurevalleylivestock\.com\/wp-content\/uploads\/.+\.pdf(?:$|\?)/i.test(href)) continue;
+    const sheet = treasureValleySheet(href, label);
+    if (!sheet || seen.has(sheet)) continue;
+    seen.add(sheet);
+    out.push({ sheet, pdfUrl: href.replace(/^http:\/\//i, "https://"), label });
+  }
+  return out.sort(
+    (a, b) => TREASURE_VALLEY_SHEET_ORDER.indexOf(a.sheet) - TREASURE_VALLEY_SHEET_ORDER.indexOf(b.sheet),
+  );
+}
+
+function tvMoney(raw: string): number {
+  return Number(raw.replace(/,/g, ""));
+}
+
+function tvDate(text: string): string | null {
+  const m = text.match(/Date:\s*(\d{1,2})\s*\/\s*(\d{1,2})\s*\/\s*(\d{4})/i);
+  if (!m) return null;
+  const year = Number(m[3]);
+  if (year < 1990 || year > 2100) return null;
+  return `${m[3]}-${m[1].padStart(2, "0")}-${m[2].padStart(2, "0")}`;
+}
+
+function tvClass(
+  sheet: TreasureValleySheet,
+  cls: string,
+): { group: AmsGroup; kind: string; commodity: string } | null {
+  const name = cls.replace(/\s+/g, " ").trim().toLowerCase();
+  if (/pair|stk|stock|baby|goat/.test(name)) return null;
+  if (sheet === "saturday") {
+    if (name === "lambs" || name === "lamb") return { group: "sheep", kind: "lamb", commodity: "Lambs" };
+    if (name === "ewes" || name === "ewe") return { group: "sheep", kind: "ewe", commodity: "Ewes" };
+    if (name === "wethers" || name === "wether") return { group: "sheep", kind: "wether", commodity: "Wethers" };
+    if (name === "bucks" || name === "buck") return { group: "sheep", kind: "buck", commodity: "Bucks" };
+    return null;
+  }
+  const dairy = sheet === "friday-dairy";
+  if (name === "steers" || name === "steer") {
+    return {
+      group: "cattle",
+      kind: dairy ? "dairy-steer" : "feeder-steer",
+      commodity: dairy ? "Dairy steers" : "Steers",
+    };
+  }
+  if (name === "heifers" || name === "heifer") {
+    return {
+      group: "cattle",
+      kind: dairy ? "dairy-heifer" : "feeder-heifer",
+      commodity: dairy ? "Dairy heifers" : "Heifers",
+    };
+  }
+  if (name === "cows" || name === "cow") {
+    return { group: "cattle", kind: dairy ? "dairy-cow" : "cow", commodity: dairy ? "Dairy cows" : "Cows" };
+  }
+  if (name === "bulls" || name === "bull") {
+    return {
+      group: "cattle",
+      kind: dairy ? "dairy-bull" : "slaughter-bull",
+      commodity: dairy ? "Dairy bulls" : "Bulls",
+    };
+  }
+  if (name === "heiferettes" || name === "heiferette") {
+    return { group: "cattle", kind: "heiferette", commodity: "Heiferettes" };
+  }
+  if (name === "steer calfs" || name === "steer calves" || name === "steer calf") {
+    return {
+      group: "cattle",
+      kind: dairy ? "dairy-steer-calf" : "steer-calf",
+      commodity: dairy ? "Dairy steer calves" : "Steer calves",
+    };
+  }
+  if (name === "heifer calfs" || name === "heifer calves" || name === "heifer calf") {
+    return {
+      group: "cattle",
+      kind: dairy ? "dairy-heifer-calf" : "heifer-calf",
+      commodity: dairy ? "Dairy heifer calves" : "Heifer calves",
+    };
+  }
+  if (name === "bull calfs" || name === "bull calves" || name === "bull calf") {
+    return {
+      group: "cattle",
+      kind: dairy ? "dairy-bull-calf" : "bull-calf",
+      commodity: dairy ? "Dairy bull calves" : "Bull calves",
+    };
+  }
+  return null;
+}
+
+/**
+ * Treasure Valley (Caldwell ID) sale sheets. $/cwt rows only — pairs, stock
+ * cows, baby calves, and $/head goats stay off, same custody as Jerome and Vale.
+ */
+export function parseTreasureValleyReport(
+  text: string,
+  sheet: TreasureValleySheet,
+  sourceUrl: string,
+): AmsTick[] {
+  const asOf = tvDate(text);
+  if (!asOf) return [];
+  const sale = TREASURE_VALLEY_SHEET_LABEL[sheet];
+  const sheetId = sheet.replace(/-/g, "_");
+  const out: AmsTick[] = [];
+  let cls = "";
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.replace(/\s+/g, " ").trim();
+    if (!line) continue;
+    const classHit = line.match(/^Class:\s+(.+)$/i);
+    if (classHit) {
+      cls = classHit[1].trim();
+      continue;
+    }
+    if (/^\d+\s+total\b/i.test(line)) {
+      cls = "";
+      continue;
+    }
+    if (!cls) continue;
+    const row = line.match(TV_ROW_RE);
+    if (!row) continue;
+    if (!/^cwt$/i.test(row[8])) continue;
+    const spec = tvClass(sheet, cls);
+    if (!spec) continue;
+    const head = Number(row[1]);
+    const wtLo = Number(row[2]);
+    const wtHi = Number(row[3]);
+    const avgWt = tvMoney(row[4]);
+    const lo = tvMoney(row[5]);
+    const price = tvMoney(row[6]);
+    const hi = tvMoney(row[7]);
+    const wtMin = spec.group === "sheep" ? 40 : 150;
+    const wtMax = spec.group === "sheep" ? 500 : 3200;
+    if (!Number.isFinite(price) || price < 20 || price > 900) continue;
+    if (!Number.isFinite(lo) || !Number.isFinite(hi) || lo < 20 || hi > 900 || lo > hi) continue;
+    if (!Number.isFinite(avgWt) || avgWt < wtMin || avgWt > wtMax) continue;
+    if (!Number.isFinite(wtLo) || !Number.isFinite(wtHi) || wtLo > wtHi) continue;
+    const id = ["cattle", "private_treasure_valley_caldwell", sheetId, spec.kind, `${wtLo}_${wtHi}`].join(".");
+    const tickId = spec.group === "sheep" ? id.replace(/^cattle\./, "sheep.") : id;
+    out.push({
+      id: tickId,
+      group: spec.group,
+      commodity: spec.commodity,
+      label: `${TREASURE_VALLEY_MARKET} ${sale} ${spec.commodity} ${wtLo}-${wtHi} lb`,
+      market: TREASURE_VALLEY_MARKET,
+      classGrade: `${sale}, ${spec.commodity}, ${wtLo}-${wtHi} lb, avg wt ${avgWt}, ${head} head, ${lo}-${hi}`,
+      unit: "$/cwt",
+      price: roundMoney(price),
+      lo: roundMoney(lo),
+      hi: roundMoney(hi),
+      asOf,
+      source: TREASURE_VALLEY_SOURCE,
+      sourceUrl,
+      reportDate: asOf,
+      series: tickId,
+      internalSourceOnly: true,
+    });
+  }
+  return dedupeTicks(out);
+}
+
+function shouldCollectTreasureValley(): boolean {
+  const only = env("TICKS_AMS_ONLY_SLUGS")
+    .split(",")
+    .map((s) => s.trim().toLowerCase())
+    .filter(Boolean);
+  if (/^(1|true|yes)$/i.test(env("TICKS_AMS_LEFTOVERS_ONLY")) && only.length === 0) return false;
+  if (only.length === 0) return true;
+  return only.some((s) =>
+    ["treasure", "treasure-valley", "caldwell", "tvla", "private_treasure_valley_caldwell"].includes(s),
+  );
+}
+
+async function fetchTreasureValleyPdf(pdfUrl: string): Promise<{ url: string; bytes: Uint8Array }> {
+  const httpsUrl = pdfUrl.replace(/^http:\/\//i, "https://");
+  const httpUrl = httpsUrl.replace(/^https:\/\//i, "http://");
+  let last = "";
+  for (const url of httpsUrl === httpUrl ? [httpsUrl] : [httpsUrl, httpUrl]) {
+    try {
+      const fetched = await fetchBytes(url);
+      if (!isPdf(fetched.bytes)) throw new Error(`not a PDF (${fetched.contentType || "unknown"})`);
+      return { url, bytes: fetched.bytes };
+    } catch (err) {
+      last = err instanceof Error ? err.message : String(err);
+    }
+  }
+  throw new Error(last || `${pdfUrl} no PDF`);
+}
+
+async function collectTreasureValley(
+  rows: AmsTick[],
+  failed: AmsFailed[],
+  sources: string[],
+  tmpDir: string,
+): Promise<void> {
+  let posts: { sheet: TreasureValleySheet; pdfUrl: string; label: string }[] = [];
+  try {
+    posts = treasureValleyPdfPosts(await fetchText(TREASURE_VALLEY_INDEX));
+    if (posts.length === 0) throw new Error("no current market-report PDFs on the hub");
+  } catch (err) {
+    failed.push({
+      id: "private_treasure_valley_caldwell",
+      source: TREASURE_VALLEY_SOURCE,
+      sourceUrl: TREASURE_VALLEY_INDEX,
+      reason: err instanceof Error ? err.message : String(err),
+    });
+    return;
+  }
+  for (const post of posts) {
+    const label = `${TREASURE_VALLEY_SOURCE} ${TREASURE_VALLEY_SHEET_LABEL[post.sheet]}`;
+    try {
+      const fetched = await fetchTreasureValleyPdf(post.pdfUrl);
+      const pdfPath = join(tmpDir, `treasure-valley-${post.sheet}.pdf`);
+      writeFileSync(pdfPath, fetched.bytes);
+      const parsed = parseTreasureValleyReport(pdfToText(pdfPath), post.sheet, fetched.url);
+      if (parsed.length === 0) throw new Error("PDF had no parseable $/cwt print");
+      if (parsed.some((row) => !row.source || !row.sourceUrl || row.internalSourceOnly !== true)) {
+        throw new Error("refusing to emit a Treasure Valley row without source, sourceUrl, and internalSourceOnly");
+      }
+      if (parsed.some((row) => /caldwelllivestock\.com/i.test(row.sourceUrl))) {
+        throw new Error("refusing caldwelllivestock.com (Texas barn)");
+      }
+      rows.push(...parsed);
+      sources.push(label);
+    } catch (err) {
+      failed.push({
+        id: `private_treasure_valley_caldwell_${post.sheet.replace(/-/g, "_")}`,
+        source: label,
+        sourceUrl: post.pdfUrl,
+        reason: err instanceof Error ? err.message : String(err),
+      });
+    }
+  }
+}
+
+
 export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number }): Promise<AmsSnapshot> {
   const dir = opts?.dir ?? amsNationalDir();
   const pauseMs = opts?.pauseMs ?? Number(env("TICKS_AMS_PAUSE_MS") || "1200");
@@ -4267,6 +4681,10 @@ export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number
     await collectProducers(rows, failed, sources, tmpDir);
   }
 
+  if (shouldCollectTreasureValley()) {
+    await collectTreasureValley(rows, failed, sources, tmpDir);
+  }
+
   let mbSnap: MbSnapshot | null = null;
   if (shouldCollectMbCattle()) {
     try {
@@ -4305,6 +4723,7 @@ export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number
   const filteredSlugs = [
     ...reports.map((r) => r.slug),
     ...(shouldCollectProducers() ? ["private_producers_jerome", "private_producers_vale"] : []),
+    ...(shouldCollectTreasureValley() ? ["private_treasure_valley_caldwell"] : []),
   ];
   const prev = readAmsSnapshot(dir);
   if (prev && prev.rows.length > 0) {

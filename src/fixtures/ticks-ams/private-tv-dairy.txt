@@ -1,0 +1,55 @@
+            Friday's Market Report (Dairy)
+                   Date:9/25/2026
+                                           Price Factor cwt=by the weight hd=by the head
+Head        Weight Break       AvgWt       Low         Avg        Top        PF
+Class:      Steers
+4 hd        555 to 595 lbs         (570)      162.50      206.83     247.50 cwt
+1 hd        650 to 650 lbs         (650)      160.00      160.00     160.00 cwt
+3 hd        750 to 750 lbs         (750)      212.50      225.83     252.50 cwt
+1 hd        835 to 835 lbs         (835)      185.00      185.00     185.00 cwt
+9 hd        1011 to 1011 lbs     (1,011)      205.00      205.00     205.00 cwt
+5 hd        1131 to 1131 lbs     (1,131)      202.50      202.50     202.50 cwt
+2 hd        1357 to 1357 lbs     (1,357)      197.50      197.50     197.50 cwt
+25 total    Steers
+Class:      Heifers
+5 hd        505 to 545 lbs         (531)      137.50      188.53     237.50 cwt
+3 hd        555 to 580 lbs         (570)      130.00      193.39     247.50 cwt
+1 hd        635 to 635 lbs         (635)      150.00      150.00     150.00 cwt
+2 hd        812 to 812 lbs         (812)      165.00      165.00     165.00 cwt
+1 hd        885 to 885 lbs         (885)      235.00      235.00     235.00 cwt
+3 hd        1155 to 1180 lbs     (1,166)      180.00      204.08     232.50 cwt
+10 hd       1228 to 1297 lbs     (1,269)      162.50      209.02     222.50 cwt
+33 total    Heifers
+Class:      Cows
+2 hd        940 to 985 lbs         (962)       62.50       72.73      82.50 cwt
+3 hd        1005 to 1050 lbs     (1,028)       92.50      101.37     109.00 cwt
+6 hd        1105 to 1182 lbs     (1,155)      100.00      106.95     111.00 cwt
+23 hd       1200 to 1295 lbs     (1,238)       72.50      118.20     134.00 cwt
+13 hd       1300 to 1390 lbs     (1,341)       62.50      109.52     130.00 cwt
+21 hd       1405 to 1494 lbs     (1,451)       80.00      124.04     145.00 cwt
+14 hd       1501 to 1593 lbs     (1,559)       90.00      129.20     139.00 cwt
+10 hd       1620 to 1690 lbs     (1,639)      115.00      141.04     148.00 cwt
+10 hd       1700 to 1785 lbs     (1,773)      134.00      145.55     147.00 cwt
+3 hd        1858 to 1858 lbs     (1,858)      151.00      151.00     151.00 cwt
+1 hd        2170 to 2170 lbs     (2,170)      140.00      140.00     140.00 cwt
+106 total   Cows
+Class:      Heifer calfs
+1 hd        470 to 470 lbs        (470)       242.50      242.50     242.50 cwt
+1 total     Heifer calfs
+Class:      Baby calfs
+1 hd        80 to 80 lbs            (80)      425.00      425.00     425.00 hd
+1 total     Baby calfs
+Class:      Bull calfs
+1 hd        275 to 275 lbs        (275)       625.00      625.00     625.00 hd
+1 hd        335 to 335 lbs        (335)       850.00      850.00     850.00 hd
+2 total     Bull calfs
+Class:      Heifer calfs
+13 hd      140 to 285 lbs   (197)    200.00    444.23    675.00 hd
+3 hd       305 to 305 lbs   (305)    475.00    475.00    475.00 hd
+1 hd       380 to 380 lbs   (380)    875.00    875.00    875.00 hd
+2 hd       440 to 440 lbs   (440)   1150.00   1150.00   1150.00 hd
+19 total   Heifer calfs
+Class:     Steer calfs
+1 hd       240 to 240 lbs   (240)    600.00    600.00    600.00 hd
+1 total    Steer calfs
+
