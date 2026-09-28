@@ -44,6 +44,10 @@
  * printed Avg; low–high stays on lo/hi. asOf is the Friday release date
  * (same issue-date convention as cotton and grocery retail), not quarter-end.
  * Water District 1 rental-pool $/AF is not an AMS source and stays off this table.
+ * Manitoba Agriculture weekly Cattle/Sheep/Goat Prices PDFs are not AMS slugs.
+ * collectAmsNational folds their per-mart C$/cwt rows onto this same /ticks
+ * snapshot (ticks-mb-cattle.ts). No /mb-cattle-prices path. A free JSON/CSV of
+ * that weekly multi-mart body kills the Manitoba collect.
  * AMS_2770 Montana Direct prints a Delivery/Freight table. Current FOB stays the
  * cash series. A class with no Current FOB keeps its forward FOB prints (Oct FOB
  * and the like) so a trade week is not dropped. A live "No trades this week" /
@@ -67,6 +71,14 @@ import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { join, resolve } from "node:path";
 import { AMS_LEFTOVER_REPORTS, AMS_LEFTOVER_SLUGS } from "./ticks-ams-leftovers.js";
+import {
+  collectMbCattle,
+  foldMbIntoRows,
+  MB_SOURCE_NAME,
+  shouldCollectMbCattle,
+  SOURCE_PAGE as MB_SOURCE_PAGE,
+  type MbSnapshot,
+} from "./ticks-mb-cattle.js";
 
 export { AMS_LEFTOVER_REPORTS, AMS_LEFTOVER_SLUGS };
 
@@ -3997,6 +4009,30 @@ export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number
     await collectProducers(rows, failed, sources, tmpDir);
   }
 
+  let mbSnap: MbSnapshot | null = null;
+  if (shouldCollectMbCattle()) {
+    try {
+      mbSnap = await collectMbCattle();
+      if (mbSnap.killed || mbSnap.rows.length === 0) {
+        failed.push(
+          ...mbSnap.failed.map((row) => ({
+            id: row.id,
+            source: row.source,
+            sourceUrl: row.sourceUrl,
+            reason: row.reason,
+          })),
+        );
+      }
+    } catch (err) {
+      failed.push({
+        id: "mb_ag",
+        source: MB_SOURCE_NAME,
+        sourceUrl: MB_SOURCE_PAGE,
+        reason: err instanceof Error ? err.message : String(err),
+      });
+    }
+  }
+
   const asOf = rows.map((r) => r.asOf).sort().at(-1) ?? null;
   let snap: AmsSnapshot = {
     ok: true,
@@ -4020,6 +4056,25 @@ export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number
       snap = mergeFailedAmsSlugs(prev, snap);
     }
   }
+  if (mbSnap) {
+    const folded = foldMbIntoRows(snap.rows, mbSnap);
+    const droppedMb = mbSnap.killed != null;
+    const addedMb = !droppedMb && mbSnap.rows.length > 0;
+    snap = {
+      ...snap,
+      rows: folded,
+      sources: droppedMb
+        ? snap.sources.filter((label) => label !== MB_SOURCE_NAME)
+        : addedMb && !snap.sources.includes(MB_SOURCE_NAME)
+          ? [...snap.sources, MB_SOURCE_NAME]
+          : snap.sources,
+    };
+  }
+  snap = {
+    ...snap,
+    tickCount: snap.rows.length,
+    asOf: snap.rows.map((row) => row.asOf).sort().at(-1) ?? snap.asOf,
+  };
   writeAmsSnapshot(snap, dir);
   return snap;
 }
