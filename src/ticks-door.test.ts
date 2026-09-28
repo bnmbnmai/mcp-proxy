@@ -539,6 +539,12 @@ async function main(): Promise<void> {
     assert.ok(ticks402Desc.includes("$0.05 = entire current table."));
     assert.ok(ticks402Desc.includes(TICKS_COMMODITY_SET));
     assert.ok(ticks402Desc.includes("eggs"));
+    assert.ok(ticks402Desc.includes("Nationwide USDA AMS"));
+    assert.ok(ticks402Desc.includes("not a separate SKU"));
+    assert.ok(ticks402Desc.includes("https://ticks.bnm.farm/sample"));
+    assert.ok(ticks402Desc.includes("If-None-Match"));
+    assert.ok(ticks402Desc.length <= 500, `ticks 402 description is ${ticks402Desc.length}`);
+    assert.ok(!ticks402Desc.includes("Texas"));
     assert.ok(!ticks402Desc.includes("/firm-check"));
     const csb402Desc = sku402Description("csb-reports");
     assert.ok(csb402Desc.includes("https://ticks.bnm.farm/csb-reports/manifest.json?q="));
@@ -1140,6 +1146,9 @@ async function main(): Promise<void> {
     assert.ok(llmsBody.includes(TICKS_COMMODITY_SET));
     assert.ok(llmsBody.includes("eggs"));
     assert.ok(llmsBody.includes("not water"));
+    assert.ok(llmsBody.includes("one SKU"));
+    assert.ok(llmsBody.includes("example rows"));
+    assert.ok(!llmsBody.includes("Texas Direct"));
     assert.ok(!llmsBody.toLowerCase().includes("wd1"));
     assert.ok(!llmsBody.includes("Idaho ticks"));
     assert.ok(!llmsBody.includes("idaho-hay-feeder-ticks"));
@@ -1318,6 +1327,8 @@ async function main(): Promise<void> {
     assert.ok(sample.table?.asOf && sample.table.fetchedAt && sample.table.source);
     assert.equal(sample.table?.product, PRODUCT_PUBLIC_ID);
     assert.ok(JSON.stringify(sample).includes(TICKS_COMMODITY_SET), "/sample note names eggs in the /ticks commodity set");
+    assert.ok(JSON.stringify(sample).includes("not a state SKU"));
+    assert.ok(!JSON.stringify(sample).includes("Texas Direct"));
     assert.ok(sample.body?.id);
     assert.ok(sample.body?.asOf);
     assert.ok(sample.body?.letters?.[0]?.sourceUrl);
@@ -1332,6 +1343,8 @@ async function main(): Promise<void> {
     }).extensions?.bazaar?.info?.output?.example;
     assert.equal(ticksBazaarExample?.product, PRODUCT_PUBLIC_ID);
     assert.ok(!JSON.stringify(ticksBazaarExample).includes("idaho-hay-feeder-ticks"));
+    assert.ok(!JSON.stringify(ticksBazaarExample).includes("Texas Direct"));
+    assert.ok(JSON.stringify(ticksBazaarExample).includes("not a state SKU"));
 
     const specSample = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as {
       paths: Record<string, { get?: { tags?: string[]; "x-payment-info"?: unknown } }>;

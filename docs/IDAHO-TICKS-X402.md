@@ -2,6 +2,10 @@
 
 Thin pay-per-pull HTTP door. Not the Apollo Intelligence catalog. Not listed on x402scan / Bazaar. Public go-live is later.
 
+## What $0.05 buys
+
+One SKU. `GET /ticks` at **$0.05** is the entire current nationwide USDA AMS farm-market table (hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail, grass-fed DTC), plus stored history points. Idaho/PNW barns (Twin Falls, Blackfoot) are rare example rows inside that table. Not forecasts, not private barn deals, not water, not a 50-state private-barn scrape. Free canned keys: `GET /sample`. Rebuy with the ETag from the paid 200 (`If-None-Match` 304 is no charge). Unpaid 402 has no ETag.
+
 ## Path
 
 ```
