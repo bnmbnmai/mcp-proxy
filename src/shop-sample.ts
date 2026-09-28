@@ -85,6 +85,10 @@ export const SAMPLE_TABLE_SKU = {
     { id: "ams_3242", name: "Western Video Market", sourceUrl: "https://www.ams.usda.gov/mnreports/ams_3242.pdf" },
     { id: "private_producers_jerome", name: "Producers Livestock Jerome", sourceUrl: "https://www.producerslivestock.com/market-reports/" },
     { id: "private_producers_vale", name: "Producers Livestock Vale", sourceUrl: "https://www.producerslivestock.com/market-reports/" },
+    { id: "private_treasure_valley_caldwell", name: "Treasure Valley Livestock Auction, Caldwell ID", sourceUrl: "https://www.treasurevalleylivestock.com/" },
+    { id: "ams_2056", name: "Arkansas Weekly Livestock Auction Summary", sourceUrl: "https://www.ams.usda.gov/mnreports/ams_2056.pdf" },
+    { id: "ams_3510", name: "National Animal By-Product Feedstuff", sourceUrl: "https://www.ams.usda.gov/mnreports/ams_3510.pdf" },
+    { id: "ams_3512", name: "National Mill-Feeds and Miscellaneous Feedstuff", sourceUrl: "https://www.ams.usda.gov/mnreports/ams_3512.pdf" },
   ],
   records: [
     {

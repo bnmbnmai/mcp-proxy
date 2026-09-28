@@ -1,0 +1,61 @@
+                Saturday's Market Report
+                    Date:9/26/2026
+Price Factor cwt=by the weight and Hd =by the head
+
+Head        Weight Break       AvgWt           Low           Avg           Top         PF
+Class:      Feeders
+7 hd        10 to 55 lbs                (23)          1.00          2.79           7.50 hd
+2 hd        70 to 75 lbs                (72)          5.00          7.50          10.00 hd
+9 total     Feeders
+Class:      Wethers
+2 hd        140 to 175 lbs             (157)     180.00        208.89            245.00 cwt
+1 hd        260 to 260 lbs             (260)     107.50        107.50            107.50 cwt
+3 total     Wethers
+Class:      Ewes
+20 hd       80 to 95 lbs                (87)      75.00        123.45            192.50 cwt
+85 hd       100 to 195 lbs             (136)      82.50        157.78            250.00 cwt
+9 hd        200 to 227 lbs             (212)     120.00        121.85            125.00 cwt
+114 total   Ewes
+Class:      Bucks
+3 hd        120 to 195 lbs             (151)     150.00        194.62            255.00 cwt
+3 hd        210 to 290 lbs             (241)     150.00        158.34            165.00 cwt
+1 hd        350 to 350 lbs             (350)      95.00         95.00             95.00 cwt
+7 total     Bucks
+Class:      Lambs
+5 hd        56 to 56 lbs                (56)     307.50        307.50            307.50 cwt
+113 hd      60 to 77 lbs                (70)     242.50        284.43            302.50 cwt
+127 hd      80 to 98 lbs                (89)     262.50        278.38            285.00 cwt
+89 hd       100 to 145 lbs             (112)     125.00        271.20            292.50 cwt
+1 hd        205 to 205 lbs             (205)     112.50        112.50            112.50 cwt
+335 total   Lambs
+Class:      Ewes
+3 hd        41 to 41 lbs                (41)         75.00         75.00          75.00 hd
+10 hd       65 to 77 lbs                (70)         30.00         91.50         140.00 hd
+2 hd        97 to 97 lbs                (97)         95.00         95.00          95.00 hd
+15 total    Ewes
+Class:      Lambs
+37 hd       25 to 55 lbs                (49)      40.00        147.57            185.00 hd
+3 hd        60 to 65 lbs                (63)     180.00        186.67            190.00 hd
+40 total    Lambs
+Class:      Wether goats
+84 hd       10 to 58 lbs                (39)      25.00         90.24            160.00 hd
+51 hd       60 to 75 lbs                (69)      75.00        188.24            210.00 hd
+13 hd       80 to 95 lbs                (86)     140.00        243.85            270.00 hd
+9 hd        100 to 150 lbs             (116)     135.00        227.78            320.00 hd
+1 hd        225 to 225 lbs             (225)     310.00        310.00            310.00 hd
+158 total   Wether goats
+Class:      Nanny goats
+97 hd       15 to 58 lbs      (42)    10.00    89.59   170.00 hd
+69 hd       60 to 78 lbs      (65)    60.00   177.90   220.00 hd
+20 hd       80 to 97 lbs      (85)   110.00   180.25   220.00 hd
+49 hd       100 to 160 lbs   (127)    80.00   184.90   260.00 hd
+235 total   Nanny goats
+Class:      Billy goats
+65 hd       12 to 56 lbs      (42)    15.00    96.38   160.00 hd
+62 hd       60 to 78 lbs      (68)    65.00   184.60   235.00 hd
+15 hd       80 to 97 lbs      (88)   140.00   231.67   270.00 hd
+19 hd       100 to 180 lbs   (131)   135.00   248.95   350.00 hd
+1 hd        200 to 200 lbs   (200)   220.00   220.00   220.00 hd
+1 hd        360 to 360 lbs   (360)   370.00   370.00   370.00 hd
+163 total   Billy goats
+
