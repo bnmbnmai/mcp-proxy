@@ -18,6 +18,13 @@ export const TICKS_PUBLIC_CACHE_SOURCE = "USDA farm market prices cache";
 export const TICKS_COMMODITY_SET =
   "hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail, grass-fed DTC";
 
+/**
+ * Unpaid GET /ticks accepts[].description. CDP limit is 500 characters.
+ * One SKU: nationwide USDA AMS. Idaho/PNW barns stay example rows.
+ */
+export const TICKS_402_DESCRIPTION =
+  `Call GET /ticks when you need the current official USDA farm market prices (${TICKS_COMMODITY_SET}). $0.05 = entire current table. Nationwide USDA AMS; Idaho/PNW barns are example rows in that one table. Sample https://ticks.bnm.farm/sample. Rebuy: paid 200 ETag; If-None-Match 304 is no charge.`;
+
 const CANONICAL = "https://ticks.bnm.farm";
 
 /** Short agent prompt with exact shop URLs. */
@@ -33,38 +40,39 @@ export const SAMPLE_HOW_TO_USE = [
 /**
  * Table-SKU keys verified from live 402 extra + paidTicksBody:
  * ticks[], asOf, fetchedAt, source, records[], recordCount, plus bag note.
- * Values are fake placeholders. Idaho/Twin Falls is not the product name.
+ * Values are fake placeholders. The row is one nationwide-table example.
+ * Idaho/Twin Falls is example geography inside that table.
  */
 export const SAMPLE_TABLE_SKU = {
   example: true,
-  comment: "Canned /ticks paid JSON keys. Not the current cache. $0.05 = entire current table.",
+  comment: "Canned /ticks paid JSON keys. $0.05 = entire current nationwide USDA AMS table.",
   ok: true,
   product: PRODUCT_PUBLIC_ID,
   status: "ok",
   fetchedAt: "2026-01-16T00:00:00Z",
   asOf: "2026-01-15",
   source: TICKS_PUBLIC_CACHE_SOURCE,
-  note: `$0.05 buys the entire current USDA farm market price table (${TICKS_COMMODITY_SET}). Days between reports are not filled in. Idaho / PNW barns are example geography inside the table, not the SKU name. Not water.`,
+  note: `$0.05 buys the entire current nationwide USDA AMS table (${TICKS_COMMODITY_SET}), one SKU. Idaho/PNW barns are example rows inside the table. These are canned keys.`,
   recordCount: 1,
   records: [
     {
-      id: "example-hay-tx-alfalfa",
+      id: "example-ams-alfalfa",
       date: "2026-01-15",
-      firm: "Texas Direct Hay (example geography)",
-      url: "https://example.invalid/ams/ams_2707.pdf",
+      firm: "Nationwide USDA AMS table (example row)",
+      url: "https://example.invalid/ams/example-row.pdf",
       type: "hay",
     },
   ],
   ticks: [
     {
-      id: "example-hay-tx-alfalfa",
+      id: "example-ams-alfalfa",
       group: "hay",
       commodity: "Alfalfa",
-      market: "Texas Direct Hay (example geography)",
+      market: "Nationwide USDA AMS (example row)",
       unit: "$/ton",
       asOf: "2026-01-15",
       price: 185,
-      source: "USDA AMS Texas Direct Hay Report (example)",
+      source: "USDA AMS nationwide table (example row)",
     },
   ],
 } as const;
