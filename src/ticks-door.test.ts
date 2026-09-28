@@ -325,6 +325,15 @@ import {
   CCB_DETERMINATIONS_PATH,
 } from "./ccb-determinations.js";
 import {
+  BODY_NEEDLE_SINGLETON,
+  BODY_NEEDLE_TREVINO,
+  BODY_NEEDLE_TREVINO_EA,
+  BODY_NEEDLE_WOOTEN,
+  USCG_ALJ_DECISIONS_AMOUNT_ATOMIC,
+  USCG_ALJ_DECISIONS_MANIFEST_PATH,
+  USCG_ALJ_DECISIONS_PATH,
+} from "./uscg-alj-decisions.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -1042,6 +1051,7 @@ async function main(): Promise<void> {
     assert.ok(spec.paths["/ttab-decisions"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/ibla-decisions"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/ccb-determinations"]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths["/uscg-alj-decisions"]?.get?.["x-payment-info"]);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
       PUBLIC_BAZAAR_SKUS.length,
@@ -1289,6 +1299,7 @@ async function main(): Promise<void> {
       TTAB_DECISIONS_PATH,
       IBLA_DECISIONS_PATH,
       CCB_DETERMINATIONS_PATH,
+      USCG_ALJ_DECISIONS_PATH,
     ]);
     assert.equal(shop.products.find((p) => p.path === TICKS_PATH)?.priceUsdc, "0.05");
     assert.ok(!shop.products.some((p) => p.path === FORM_483_PATH));
@@ -9757,6 +9768,137 @@ async function main(): Promise<void> {
     },
   );
 
+  const uscgDir = mkdtempSync(join(tmpdir(), "uscg-alj-decisions-"));
+  const uscgPad = Array.from({ length: 30 }, (_, i) => `Official USCG ALJ order paragraph ${i + 1}.`).join(" ");
+  const uscgCard = (
+    id: string,
+    date: string,
+    kind: string,
+    needle: string,
+    extra: string,
+  ) => ({
+    id,
+    docket: id,
+    kind,
+    findings: kind === "Consent Order" ? "Settled" : "Revoked",
+    allegations: "Use of, or addiction to the use of dangerous drugs",
+    date,
+    title: `${id} ${kind}`,
+    respondent: needle,
+    institution: needle,
+    sourceUrl: `https://www.uscg.mil/Portals/0/Headquarters/Administrative%20Law%20Judges/Decisions%20and%20Orders/2026/${id}.pdf`,
+    body: `UNITED STATES COAST GUARD vs. ${needle}, Respondent. Docket Number ${id}. ${kind === "Consent Order" ? "CONSENT ORDER" : "DEFAULT ORDER"}. ${extra} ${uscgPad}`,
+  });
+  writeFileSync(
+    join(uscgDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "uscg-alj-decision-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-09-28T22:00:00.000Z",
+      asOf: "2026-07-09",
+      license: "17 USC 105",
+      attribution:
+        "United States Coast Guard, Office of the Chief Administrative Law Judge. Work of the United States Government; 17 U.S.C. § 105.",
+      sources: {
+        listing: "https://www.uscg.mil/Resources/Administrative-Law-Judges/Decisions/ALJ-Decisions-2026/",
+        pdfHost: "https://www.uscg.mil/Portals/0/Headquarters/Administrative Law Judges/Decisions and Orders/",
+      },
+      cards: [
+        uscgCard("2026-0155", "2026-07-09", "Default Order", BODY_NEEDLE_TREVINO, BODY_NEEDLE_TREVINO_EA),
+        uscgCard("2026-0152", "2026-07-01", "Default Order", BODY_NEEDLE_WOOTEN, "8332444"),
+        uscgCard("2026-0157", "2026-06-01", "Consent Order", BODY_NEEDLE_SINGLETON, "8357522"),
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      USCG_ALJ_DECISIONS_DIR: uscgDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-uscg-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${USCG_ALJ_DECISIONS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /uscg-alj-decisions must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; mimeType?: string }[];
+      };
+      assert.equal(body402.resource, USCG_ALJ_DECISIONS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, USCG_ALJ_DECISIONS_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.mimeType, "application/json");
+      const unpaidId = await fetch(`${base}${USCG_ALJ_DECISIONS_PATH}?id=2026-0155`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /uscg-alj-decisions?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
+      assert.ok(!JSON.stringify(body402).includes(BODY_NEEDLE_TREVINO_EA));
+      assert.ok(!JSON.stringify(body402).includes("Official USCG ALJ order paragraph"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === USCG_ALJ_DECISIONS_PATH), true);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(USCG_ALJ_DECISIONS_PATH)), "well-known lists /uscg-alj-decisions");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /uscg-alj-decisions"));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[USCG_ALJ_DECISIONS_PATH]);
+      assert.ok(spec.paths[USCG_ALJ_DECISIONS_MANIFEST_PATH]);
+      assert.ok(spec.paths["/uscg-alj-decisions/index"]);
+
+      const manifest = await fetch(`${base}${USCG_ALJ_DECISIONS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "uscg-alj-decisions free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        asOf?: string;
+        cards?: { docket?: string; kind?: string; body?: string; sourceUrl?: string; paidUrl?: string }[];
+      };
+      assert.equal(man.cardCount, 3);
+      assert.equal(man.asOf, "2026-07-09");
+      assert.ok(man.cards?.some((card) => card.docket === "2026-0155" && card.kind === "Default Order"));
+      assert.ok(man.cards?.some((card) => card.docket === "2026-0152"));
+      assert.ok(man.cards?.some((card) => card.docket === "2026-0157" && card.kind === "Consent Order"));
+      assert.ok(man.cards?.every((card) => !("body" in card) && !("sourceUrl" in card) && card.paidUrl));
+      const manJson = JSON.stringify(man);
+      assert.ok(!manJson.includes("/Portals/0/"));
+      assert.ok(!manJson.includes(BODY_NEEDLE_TREVINO));
+      assert.ok(!manJson.includes(BODY_NEEDLE_TREVINO_EA));
+
+      const index = await fetch(`${base}/uscg-alj-decisions/index`);
+      assert.equal(index.status, 200, "/uscg-alj-decisions/index is the free catalog");
+
+      const paid = await fetch(`${base}${USCG_ALJ_DECISIONS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        asOf?: string;
+        cards: { id: string; body: string }[];
+        records?: { type: string }[];
+      };
+      assert.equal(paidBody.product, "uscg-alj-decision-bodies");
+      assert.equal(paidBody.asOf, "2026-07-09");
+      const paidIds = paidBody.cards.map((card) => card.id);
+      assert.ok(paidIds.includes("2026-0155"));
+      assert.ok(paidIds.includes("2026-0152"));
+      assert.ok(paidIds.includes("2026-0157"));
+      assert.ok(paidBody.cards.some((card) => card.body.includes(BODY_NEEDLE_TREVINO) && card.body.includes(BODY_NEEDLE_TREVINO_EA)));
+      assert.ok(paidBody.cards.some((card) => card.body.includes(BODY_NEEDLE_WOOTEN)));
+      assert.ok(paidBody.cards.some((card) => card.body.includes(BODY_NEEDLE_SINGLETON)));
+      assert.equal(paidBody.records?.[0]?.type, "uscg-alj-decisions");
+
+      const paidOne = await fetch(`${base}${USCG_ALJ_DECISIONS_PATH}?id=2026-0152`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paidOne.status, 200);
+      const oneBody = (await paidOne.json()) as { cards: { id: string; body: string }[] };
+      assert.equal(oneBody.cards.length, 1);
+      assert.equal(oneBody.cards[0]?.id, "2026-0152");
+      assert.ok(oneBody.cards[0]?.body.includes(BODY_NEEDLE_WOOTEN));
+    },
+  );
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -10582,7 +10724,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions", "fcc-eb-orders", "nmb-determinations", "eeoc-appellate", "ttab-decisions", "ibla-decisions", "ccb-determinations"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions", "fcc-eb-orders", "nmb-determinations", "eeoc-appellate", "ttab-decisions", "ibla-decisions", "ccb-determinations", "uscg-alj-decisions"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -10640,6 +10782,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("ttab-decisions"), true);
   assert.equal(isPublicBazaarSku("ibla-decisions"), true);
   assert.equal(isPublicBazaarSku("ccb-determinations"), true);
+  assert.equal(isPublicBazaarSku("uscg-alj-decisions"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");

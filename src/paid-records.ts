@@ -83,6 +83,7 @@ export const EXTRACTED_BODY_SKUS = [
   "ttab-decisions",
   "ibla-decisions",
   "ccb-determinations",
+  "uscg-alj-decisions",
 ] as const;
 
 export type ExtractedBodySku = (typeof EXTRACTED_BODY_SKUS)[number];
@@ -187,6 +188,7 @@ export const EEOC_APPELLATE_TYPE = "eeoc-appellate";
 export const TTAB_DECISIONS_TYPE = "ttab-decisions";
 export const IBLA_DECISIONS_TYPE = "ibla-decisions";
 export const CCB_DETERMINATIONS_TYPE = "ccb-determinations";
+export const USCG_ALJ_DECISIONS_TYPE = "uscg-alj-decisions";
 export const CFPB_ORDER_TYPE = "cfpb-order";
 export const OFAC_ORDER_TYPE = "ofac-order";
 export const FRB_ORDER_TYPE = "frb-order";
@@ -263,6 +265,8 @@ export const EEOC_APPELLATE_SOURCE = "https://www.eeoc.gov/federal-sector/appell
 export const TTAB_DECISIONS_SOURCE = "https://ttab-reading-room.uspto.gov/efoia/efoia-ui/#/search/decisions";
 export const IBLA_DECISIONS_SOURCE = "https://www.oha.doi.gov/IBLA/Ibladecisions/";
 export const CCB_DETERMINATIONS_SOURCE = "https://dockets.ccb.gov/search/documents";
+export const USCG_ALJ_DECISIONS_SOURCE =
+  "https://www.uscg.mil/Resources/Administrative-Law-Judges/Decisions/ALJ-Decisions-2026/";
 export const CFPB_ORDER_SOURCE = "https://www.consumerfinance.gov/enforcement/actions/";
 export const OFAC_ORDER_SOURCE = "https://ofac.treasury.gov/civil-penalties-and-enforcement-information";
 export const FRB_ORDER_SOURCE = "https://www.federalreserve.gov/supervisionreg/enforcementactions.htm";
@@ -1143,6 +1147,13 @@ export function paidCcbDeterminationsBody<T extends CardPayload>(
   opts?: PaidBodyOpts,
 ): T & PaidBodyWindowEnvelope {
   return paidCardBody(payload, CCB_DETERMINATIONS_TYPE, CCB_DETERMINATIONS_SOURCE, opts);
+}
+
+export function paidUscgAljDecisionsBody<T extends CardPayload>(
+  payload: T,
+  opts?: PaidBodyOpts,
+): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, USCG_ALJ_DECISIONS_TYPE, USCG_ALJ_DECISIONS_SOURCE, opts);
 }
 
 export function paidIcoMpnBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {
