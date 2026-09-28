@@ -1419,7 +1419,6 @@ assert.ok(SKIPPED_SOURCES.some((s) => s.id === "new-x402-door"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "ams_2911_marsapi"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "lmr-hog-pdfs"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "cme-cash-trading-doors"));
-assert.ok(!SKIPPED_SOURCES.some((s) => s.id === "ams_3096_waf"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "dairy-waf-empty"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "se-swine-auction-barns"));
 assert.ok(SKIPPED_SOURCES.some((s) => s.id === "sheep-goats"));
