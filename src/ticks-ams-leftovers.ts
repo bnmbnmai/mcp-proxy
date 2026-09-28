@@ -57,7 +57,7 @@ export const SKIPPED_LEFTOVERS = [
   { id: "plaintext-mexico", why: "AL_LS626 / AL_LS627 / AL_LS635 already return official plaintext — do not wrap" },
   { id: "national-2874-waf", why: "AMS_2874 National Weekly Cattle Beef Summary mnreports 403 on this VM; skip rather than invent or wrap a dashboard" },
   { id: "mo-regional-weeklies", why: "Missouri NE/NC/WC/SW/SE/EC weeklies are leftover Midwest, not this SE slice" },
-  { id: "il-pa-ny-weeklies", why: "Illinois / Pennsylvania / New York weeklies leftover — not SE" },
+  { id: "il-pa-ny-weeklies", why: "Illinois AMS_2041 and Pennsylvania AMS_1919 are on the national /ticks table. New York weeklies stay leftover — not SE. AR AMS_2056 stays off" },
   { id: "marsapi-keyed", why: "marsapi /services/v1.1/reports/{slug} is HTTP 403 without a key — not a no-auth JSON body dump" },
   { id: "facebook-private", why: "Facebook barns and private sale-barn sites stay out" },
   { id: "new-sku", why: "No per-barn / per-state path; extra official rows stay on GET /ticks $0.05 tableWhole" },

@@ -40,7 +40,11 @@
  * copy over that official empty. OKC West AMS_1281, Oklahoma National AMS_1280,
  * Joplin feeder AMS_1245 and slaughter/replacement AMS_1797, Superior video
  * AMS_2713, Winter Dodge City AMS_1889, and Farmers & Ranchers Salina KS AMS_1892
- * are rows on this same table. Producers Livestock Jerome ID and Vale OR weekly
+ * are rows on this same table. Illinois weekly AMS_2041, Indiana weekly AMS_1976,
+ * and Pennsylvania weekly AMS_1919 are the same table: printed cattle $/cwt only.
+ * Per-head, sheep, goats, and the Please Note block are not ticks. AR AMS_2056
+ * stays off. Akamai 403s lowercase ams_2041.pdf; the uppercase AMS_2041.pdf
+ * candidate is the official body. Producers Livestock Jerome ID and Vale OR weekly
  * PDFs are internalSourceOnly rows; source and sourceUrl stay on the JSON.
  * Salina UT stays AMS_2037. EIA stays off.
  *
@@ -108,7 +112,7 @@ export declare const SKIPPED_SOURCES: readonly [{
     readonly why: "400+ remaining official SE/Midwest individual sale-barn PDFs stay off this slice; five current official SE barns (1988/1946/1995/1419/1997) + nine SE weeklies are on /ticks. Not a new SKU.";
 }, {
     readonly id: "se-weekly-cattle-summaries";
-    readonly why: "AL/FL/GA/KY/TN/VA/NC/MS/SC weeklies now on /ticks; leftover WV/PA/IN/IL/MO regional weeklies stay off this pass";
+    readonly why: "AL/FL/GA/KY/TN/VA/NC/MS/SC weeklies now on /ticks. IL AMS_2041, IN AMS_1976, and PA AMS_1919 weeklies are on /ticks. Leftover WV/NY/MO regional weeklies and AR AMS_2056 stay off this pass";
 }, {
     readonly id: "seasonal-specials";
     readonly why: "official seasonal/replacement/stock-show specials often empty off-season; skip rather than invent";
@@ -242,6 +246,13 @@ export declare function parseVideoAuctionReport(text: string, report: AmsReport,
  * DIRECT TRADES section so the legacy line parser can still run.
  */
 export declare function parseDirectFeederTrades(text: string, report: AmsReport, sourceUrl: string): AmsTick[] | null;
+/**
+ * IL AMS_2041 / IN AMS_1976 / PA AMS_1919 weekly summaries.
+ * Cash cattle $/cwt in the feeder, slaughter, and feeder-dairy-calf sections.
+ * Per Unit ($/head), sheep, goats, and the Please Note block stay empty.
+ * Does not invent a Current FOB headline. A sheet with no cattle $/cwt stays empty.
+ */
+export declare function parseWeeklyCattleSummary(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function parseCattleReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function parseGrainReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function parseWoolReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];

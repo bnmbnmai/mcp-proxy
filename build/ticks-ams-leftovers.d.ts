@@ -38,7 +38,7 @@ export declare const SKIPPED_LEFTOVERS: readonly [{
     readonly why: "Missouri NE/NC/WC/SW/SE/EC weeklies are leftover Midwest, not this SE slice";
 }, {
     readonly id: "il-pa-ny-weeklies";
-    readonly why: "Illinois / Pennsylvania / New York weeklies leftover — not SE";
+    readonly why: "Illinois AMS_2041 and Pennsylvania AMS_1919 are on the national /ticks table. New York weeklies stay leftover — not SE. AR AMS_2056 stays off";
 }, {
     readonly id: "marsapi-keyed";
     readonly why: "marsapi /services/v1.1/reports/{slug} is HTTP 403 without a key — not a no-auth JSON body dump";
