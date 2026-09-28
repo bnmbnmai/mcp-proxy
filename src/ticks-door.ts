@@ -1741,7 +1741,7 @@ export function paymentExtra(sku: DoorSku): Record<string, unknown> {
 const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> = {
   ticks: {
     description:
-      `Call GET /ticks when you need the current official USDA farm market prices (${TICKS_COMMODITY_SET}). $0.05 = entire current nationwide USDA AMS table on one GET (one SKU). Idaho/PNW barns (Twin Falls, Blackfoot) are rare example rows inside that table, not the SKU and not a 50-state private-barn scrape. Not forecasts, not private barn deals, not water. JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs. Free canned keys: https://ticks.bnm.farm/sample. Rebuy: store the ETag from the paid 200 (unpaid 402 has no ETag); If-None-Match or ?since= is HTTP 304 with no charge when unchanged.`,
+      `Call GET /ticks when you need the current official USDA farm market prices (${TICKS_COMMODITY_SET}). $0.05 = entire current nationwide USDA AMS table on one GET (one SKU). Idaho/PNW barns (Twin Falls, Blackfoot) are example rows inside that table. JSON ticks plus stored history points. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs. Free canned keys: https://ticks.bnm.farm/sample. Rebuy: store the ETag from the paid 200 (unpaid 402 has no ETag); If-None-Match or ?since= is HTTP 304 with no charge when unchanged.`,
     resourcePath: TICKS_PATH,
   },
   "import-alerts": {
@@ -5376,7 +5376,7 @@ export function llmsTxt(): string {
   const listedGmpMd = gmpMdIsPublic();
   const ticksPrice = usdcDisplayFromAtomic(amountAtomicFor("ticks")) ?? "$0.05";
   const paid = [
-    `- GET /ticks — ${ticksPrice} — USDA farm market prices (${TICKS_COMMODITY_SET}). $0.05 = entire current nationwide USDA AMS table (one SKU). Idaho/PNW barns are example rows inside that table, not the SKU. Not forecasts, not private barn deals, not water. Paid JSON keeps ticks[] and adds records[] + asOf. Free canned keys: https://ticks.bnm.farm/sample. Rebuy: pay once → store ETag from the paid 200 (unpaid 402 has no ETag) → poll If-None-Match (or ?since=) → 304 no charge when unchanged → pay again only when ETag/body changes.`,
+    `- GET /ticks — ${ticksPrice} — USDA farm market prices (${TICKS_COMMODITY_SET}). $0.05 = entire current nationwide USDA AMS table (one SKU). Idaho/PNW barns are example rows inside that table. Paid JSON keeps ticks[] and adds records[] + asOf. Free canned keys: https://ticks.bnm.farm/sample. Rebuy: pay once → store ETag from the paid 200 (unpaid 402 has no ETag) → poll If-None-Match (or ?since=) → 304 no charge when unchanged → pay again only when ETag/body changes.`,
     "- GET /import-alerts — $0.05 — FDA Import Alerts / DWPE firm-product snapshot. Paid JSON keeps ticks[] and adds records[] + asOf. Same ETag / If-None-Match (or ?since=) rebuy habit as /ticks.",
     "- GET /mariners — $0.05 — USCG D13 / Northwest Local Notice to Mariners",
     "- GET /mariners-d11 — $0.05 — USCG D11 / Southwest Local Notice to Mariners",
