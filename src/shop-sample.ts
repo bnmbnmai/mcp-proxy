@@ -39,18 +39,20 @@ export const SAMPLE_HOW_TO_USE = [
 
 /**
  * Table-SKU keys from live paid /ticks JSON: ticks[], asOf, fetchedAt, source,
- * records[], recordCount, plus markets[]. Three September 2026 rows from the
- * official PDFs. source and sourceUrl stay on every tick. Not the whole table.
+ * records[], recordCount, plus markets[]. Envelope fetchedAt and asOf follow
+ * the live bag (manifest fetchedAt, newest tick asOf). The three rows stay the
+ * latest OKC West, Joplin feeder, and Superior prints. source and sourceUrl
+ * stay on every tick. Not the whole table.
  */
 export const SAMPLE_TABLE_SKU = {
   example: true,
   comment:
-    "Free 3-row slice of GET /ticks paid JSON from September 2026 official prints. $0.05 = entire current table.",
+    "Free 3-row slice of GET /ticks paid JSON. Envelope matches the live bag. Rows are the latest OKC West, Joplin, and Superior prints. $0.05 = entire current table.",
   ok: true,
   product: PRODUCT_PUBLIC_ID,
   status: "ok",
-  fetchedAt: "2026-09-25T15:18:53.000Z",
-  asOf: "2026-09-22",
+  fetchedAt: "2026-09-28T15:42:54.479Z",
+  asOf: "2026-09-26",
   source: TICKS_PUBLIC_CACHE_SOURCE,
   note: `$0.05 buys the entire current nationwide USDA AMS table (${TICKS_COMMODITY_SET}), one SKU. This free slice is 3 September 2026 rows. Idaho/PNW barns are example rows inside the table.`,
   recordCount: 3,
