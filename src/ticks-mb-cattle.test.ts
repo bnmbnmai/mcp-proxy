@@ -2,7 +2,8 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { TABLE_PATHS } from "./shop-catalog.js";
+/** Serving tip has no shop-catalog module. Same table paths the bag test locks. */
+const TABLE_PATHS = new Set(["/ticks", "/import-alerts"]);
 import {
   TICKS_402_DESCRIPTION,
   TICKS_BAG,
