@@ -10,17 +10,19 @@ export const TICKS_PUBLIC_CACHE_SOURCE = "USDA farm market prices cache";
  * Agent-facing /ticks commodity set. Fat rows stay on the existing $0.05 bag:
  * eggs + poultry on dairy.*, cold storage on dairy.ams_1095.*, cotton on
  * grain.ams_3024.*, grocery/retail feature ads on dairy.ams_* / produce.ams_3324.
+ * Manitoba Agriculture weekly auction-mart cattle (and the sheep/goat rows in
+ * that same PDF) are C$/cwt rows on this same $0.05 table. Not a new path.
  * Name them in free copy. Do not rename product.id.
  */
 export const TICKS_COMMODITY_SET = "hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail";
 /** OpenAPI GET /ticks description. Same bag. No path-split. */
-export const TICKS_OPENAPI_DESCRIPTION = `Call GET /ticks when you need the current official USDA farm market prices (${TICKS_COMMODITY_SET}). USDA AMS nationwide prints plus a few Idaho/PNW barn examples inside the same table — not the SKU. Not forecasts, not private barn deals, not water. JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs.`;
+export const TICKS_OPENAPI_DESCRIPTION = `Call GET /ticks when you need the current official USDA farm market prices (${TICKS_COMMODITY_SET}). USDA AMS nationwide prints plus a few Idaho/PNW barn examples inside the same table — not the SKU. Manitoba Agriculture weekly auction-mart cattle prices (C$/cwt) are rows on this same table. Not forecasts, not private barn deals, not water. JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs.`;
 /** Unpaid 402 resource + accepts[].description. Keep under CDP 500 chars. */
-export const TICKS_402_DESCRIPTION = `Call GET /ticks when you need the current official USDA farm market prices (${TICKS_COMMODITY_SET}). $0.05 = entire current table.`;
+export const TICKS_402_DESCRIPTION = `Call GET /ticks when you need the current official USDA farm market prices (${TICKS_COMMODITY_SET}). Manitoba weekly auction marts are on this table. $0.05 = entire current table.`;
 /** llms.txt /ticks bullet (price + bag; door adds rebuy sentence). */
-export const TICKS_LLMS_BULLET = `GET /ticks — $0.05 — USDA farm market prices (${TICKS_COMMODITY_SET}). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water.`;
+export const TICKS_LLMS_BULLET = `GET /ticks — $0.05 — USDA farm market prices (${TICKS_COMMODITY_SET}). Idaho / PNW barns are example geography inside the table, not the SKU. Manitoba weekly auction-mart cattle (C$/cwt) is inside this table. Not forecasts, not private barn deals, not water.`;
 /** Catalog / README / SHOP-INDEX /ticks bag cell. */
-export const TICKS_BAG = `USDA farm market prices (${TICKS_COMMODITY_SET}). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water. Entire current table`;
+export const TICKS_BAG = `USDA farm market prices (${TICKS_COMMODITY_SET}). Idaho / PNW barns are example geography inside the table, not the SKU. Manitoba Agriculture weekly auction-mart cattle prices (C$/cwt) are rows on this same table. Not forecasts, not private barn deals, not water. Entire current table`;
 const CANONICAL = "https://ticks.bnm.farm";
 /** Short agent prompt with exact shop URLs. */
 export const SAMPLE_HOW_TO_USE = [
@@ -45,7 +47,7 @@ export const SAMPLE_TABLE_SKU = {
     fetchedAt: "2026-09-25T15:18:53.000Z",
     asOf: "2026-09-22",
     source: TICKS_PUBLIC_CACHE_SOURCE,
-    note: `$0.05 buys the entire current USDA farm market price table (${TICKS_COMMODITY_SET}). This free slice is 3 rows. Days between reports are not filled in. Idaho / PNW barns are example geography inside the table, not the SKU name. Not water.`,
+    note: `$0.05 buys the entire current USDA farm market price table (${TICKS_COMMODITY_SET}), including Manitoba weekly auction-mart cattle prices (C$/cwt) on the same table. This free slice is 3 rows. Days between reports are not filled in. Idaho / PNW barns are example geography inside the table, not the SKU name. Not water.`,
     recordCount: 3,
     markets: [
         { id: "ams_2770", name: "Montana Direct Feeder Cattle", sourceUrl: "https://www.ams.usda.gov/mnreports/ams_2770.pdf" },
