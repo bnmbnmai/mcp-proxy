@@ -49,9 +49,11 @@
  * and the like) so a trade week is not dropped. A live "No trades this week" /
  * "not established this week" PDF stays empty — do not backfill an older ESMIS
  * copy over that official empty. OKC West AMS_1281, Oklahoma National AMS_1280,
- * Joplin feeder AMS_1245 and slaughter/replacement AMS_1797, Superior video
- * AMS_2713, Winter Dodge City AMS_1889, and Farmers & Ranchers Salina KS AMS_1892
- * are rows on this same table. Producers Livestock Jerome ID and Vale OR weekly
+ * Joplin feeder AMS_1245 and slaughter/replacement AMS_1797, Ozarks West Plains
+ * slaughter/replacement AMS_1651, Springfield feeder AMS_1255, Ada feeder
+ * AMS_1830, Superior video AMS_2713, Western Video AMS_3242, Winter Dodge City
+ * AMS_1889, and Farmers & Ranchers Salina KS AMS_1892 are rows on this same
+ * table. Producers Livestock Jerome ID and Vale OR weekly
  * PDFs are internalSourceOnly rows; source and sourceUrl stay on the JSON.
  * Salina UT stays AMS_2037. EIA stays off.
  *
@@ -171,7 +173,11 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "1280", group: "cattle", region: "oklahoma_national", title: "Oklahoma National Stockyards Feeder Cattle", esmisPublication: "" },
   { slug: "1245", group: "cattle", region: "joplin_feeder", title: "Joplin Regional Stockyards Feeder Cattle", esmisPublication: "" },
   { slug: "1797", group: "cattle", region: "joplin_slaughter", title: "Joplin Regional Stockyards Slaughter/Replacement Cattle", esmisPublication: "" },
+  { slug: "1651", group: "cattle", region: "ozarks_west_plains", title: "Ozarks Regional Stockyards Slaughter/Replacement Cattle (West Plains)", esmisPublication: "" },
+  { slug: "1255", group: "cattle", region: "springfield_mo", title: "Springfield Livestock Marketing Center Feeder Cattle", esmisPublication: "" },
+  { slug: "1830", group: "cattle", region: "ada_ok", title: "Southern Oklahoma Livestock Auction Feeder Cattle (Ada)", esmisPublication: "" },
   { slug: "2713", group: "cattle", region: "superior_video", title: "Superior Livestock Video Auction", esmisPublication: "" },
+  { slug: "3242", group: "cattle", region: "western_video", title: "Western Video Market", esmisPublication: "" },
   { slug: "1955", group: "cattle", region: "texas_weekly", title: "Texas Weekly Cattle Auction Summary", esmisPublication: "" },
   { slug: "2167", group: "cattle", region: "iowa_weekly", title: "Iowa Weekly Cattle Auction Summary", esmisPublication: "" },
   { slug: "1821", group: "cattle", region: "missouri_weekly", title: "Missouri Weekly Cattle Auction Summary", esmisPublication: "" },
@@ -268,7 +274,7 @@ export const SKIPPED_SOURCES = [
   { id: "se-individual-cattle-barns", why: "400+ remaining official SE/Midwest individual sale-barn PDFs stay off this slice; five current official SE barns (1988/1946/1995/1419/1997) + nine SE weeklies are on /ticks. Not a new SKU." },
   { id: "se-weekly-cattle-summaries", why: "AL/FL/GA/KY/TN/VA/NC/MS/SC weeklies now on /ticks; leftover WV/PA/IN/IL/MO regional weeklies stay off this pass" },
   { id: "seasonal-specials", why: "official seasonal/replacement/stock-show specials often empty off-season; skip rather than invent" },
-  { id: "video-internet-auctions", why: "other feeder internet/board sales stay off this slice; AMS_2713 Superior Livestock Video is on /ticks. Western Video AMS_3242 stays parked" },
+  { id: "video-internet-auctions", why: "other feeder internet/board sales stay off this slice; AMS_2713 Superior Livestock Video and AMS_3242 Western Video Market are on /ticks" },
   { id: "lmr-slaughter-pdfs", why: "national/regional Direct Slaughter PDFs are LMR fed-cattle tables, not the feeder/POS parser this door already sells" },
   { id: "plaintext-recaps", why: "lswalabama / lswkssum / CO_LS146.txt already return official plaintext — do not wrap" },
   { id: "facebook-private-barns", why: "Facebook barns and Treasure Valley Caldwell stay out. Producers Livestock Jerome ID and Vale OR weekly PDFs are on /ticks with internalSourceOnly; source and sourceUrl stay. Salina UT stays AMS_2037, not a private duplicate" },
@@ -852,7 +858,9 @@ function parseAuctionCowSale(
       perUnit = false;
       continue;
     }
-    if (/^(FEEDER CATTLE|FEEDER SHEEP|SLAUGHTER SHEEP|SLAUGHTER GOAT|PLEASE NOTE|EXPLANATORY NOTES|SOURCE:)\b/i.test(line)) {
+    // Page footers are "Source: USDA AMS…". They are not the end of the sale.
+    // A section header on the previous page (Ozarks replacement) must survive them.
+    if (/^(FEEDER CATTLE|FEEDER SHEEP|SLAUGHTER SHEEP|SLAUGHTER GOAT|PLEASE NOTE|EXPLANATORY NOTES)\b/i.test(line)) {
       section = "";
       sex = "";
       grade = "";
@@ -1007,10 +1015,16 @@ const VIDEO_HDR =
   /^(STEERS|HEIFERS|BEEF\/DAIRY STEERS|BEEF\/DAIRY HEIFERS|DAIRY STEERS|DAIRY HEIFERS)\s+-\s+(.+?)\s+\(Per Cwt\s*\/\s*Est\.?\s*Wt\s*\)/i;
 const VIDEO_DELIVERY =
   "Current|Sep-Oct|Oct-Nov|Nov-Dec|Dec-Jan|Jan-Feb|Feb-Mar|Mar-Apr|Apr-May|May-Jun|Jun-Jul|Jul-Aug|Aug-Sep|Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec";
+const VIDEO_INT = "(?:\\d{1,3}(?:,\\d{3})+|\\d+)";
+const VIDEO_MONEY = `${VIDEO_INT}(?:\\.\\d+)?`;
 const VIDEO_ROW_RE = new RegExp(
-  `^(?:(${VIDEO_DELIVERY})\\s+)?(\\d+)\\s+(\\d+)(?:\\s*-\\s*(\\d+))?\\s+(\\d+)\\s+(\\d+(?:\\.\\d+)?)(?:\\s*-\\s*(\\d+(?:\\.\\d+)?))?\\s+(\\d+(?:\\.\\d+)?)(?:\\s+(.+))?$`,
+  `^(?:(${VIDEO_DELIVERY})\\s+)?(${VIDEO_INT})\\s+(${VIDEO_INT})(?:\\s*-\\s*(${VIDEO_INT}))?\\s+(${VIDEO_INT})\\s+(${VIDEO_MONEY})(?:\\s*-\\s*(${VIDEO_MONEY}))?\\s+(${VIDEO_MONEY})(?:\\s+(.+))?$`,
   "i",
 );
+
+function videoNum(raw: string | undefined): number {
+  return Number(String(raw ?? "").replace(/,/g, ""));
+}
 
 function videoSex(sex: string): { tok: string; commodity: string } {
   if (/beef\/dairy/i.test(sex) && /heifer/i.test(sex)) return { tok: "beef-dairy-heifer", commodity: "Beef/dairy heifers" };
@@ -1042,7 +1056,7 @@ export function parseVideoAuctionReport(text: string, report: AmsReport, sourceU
       delivery = "";
       continue;
     }
-    if (/^REPLACEMENT CATTLE$/i.test(line)) {
+    if (/^(REPLACEMENT|SLAUGHTER) CATTLE$/i.test(line)) {
       if (inFeeder) break;
       continue;
     }
@@ -1068,11 +1082,11 @@ export function parseVideoAuctionReport(text: string, report: AmsReport, sourceU
     if (!row) continue;
     if (row[1]) delivery = row[1];
     if (!delivery) continue;
-    const head = Number(row[2]);
-    const wt = Number(row[5]);
-    const lo = Number(row[6]);
-    const hi = row[7] ? Number(row[7]) : lo;
-    const avg = Number(row[8]);
+    const head = videoNum(row[2]);
+    const wt = videoNum(row[5]);
+    const lo = videoNum(row[6]);
+    const hi = row[7] ? videoNum(row[7]) : lo;
+    const avg = videoNum(row[8]);
     const note = (row[9] ?? "").trim();
     if (!Number.isFinite(avg) || avg < 20 || avg > 900) continue;
     if (!Number.isFinite(wt) || wt < 200 || wt > FEEDER_AVG_WT_MAX) continue;

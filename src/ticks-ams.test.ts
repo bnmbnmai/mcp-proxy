@@ -1093,6 +1093,46 @@ assert.ok(salinaKs.length > 15, `Salina KS should fill, got ${salinaKs.length}`)
 assert.equal(salinaKs.find((row) => row.id === "cattle.ams_1892.salina_ks.feeder-heifer.l1.1123lb")?.price, 249);
 assert.equal(parseReportDate(fx("auction-1892.txt")), "2026-09-24");
 
+const ozarks = parseAmsReportText(fx("auction-1651.txt"), report("1651"), "https://www.ams.usda.gov/mnreports/ams_1651.pdf");
+assert.ok(ozarks.length > 10, `Ozarks West Plains should fill, got ${ozarks.length}`);
+assert.equal(ozarks.find((row) => row.id === "cattle.ams_1651.ozarks_west_plains.slaughter-cow.breaker.1463lb")?.price, 142.43);
+assert.equal(ozarks.find((row) => row.id === "cattle.ams_1651.ozarks_west_plains.slaughter-cow.lean.997lb")?.price, 105.61);
+assert.equal(ozarks.find((row) => row.id === "cattle.ams_1651.ozarks_west_plains.replacement-open-heifer.ml12.2_4.1230lb")?.price, 206.31);
+assert.equal(ozarks.find((row) => row.id === "cattle.ams_1651.ozarks_west_plains.replacement-stock-cow.ml12.2_8.o.1189lb")?.price, 159.24);
+assert.ok(ozarks.every((row) => row.source.includes("AMS_1651") && row.sourceUrl.endsWith("ams_1651.pdf") && row.unit === "$/cwt"));
+assert.ok(!ozarks.some((row) => row.price === 3125.22 || row.price === 4850), "per-head bred cows and pairs are not $/cwt ticks");
+assert.equal(parseReportDate(fx("auction-1651.txt")), "2026-09-23");
+
+const springfield = parseAmsReportText(fx("auction-1255.txt"), report("1255"), "https://www.ams.usda.gov/mnreports/ams_1255.pdf");
+assert.ok(springfield.length > 30, `Springfield should fill, got ${springfield.length}`);
+assert.equal(springfield.find((row) => row.id === "cattle.ams_1255.springfield_mo.feeder-steer.ml1.417lb")?.price, 493.3);
+assert.equal(springfield.find((row) => row.id === "cattle.ams_1255.springfield_mo.feeder-steer.l1.1138lb")?.price, 269);
+assert.equal(springfield.find((row) => row.id === "cattle.ams_1255.springfield_mo.dairy-steer.l3.711lb")?.price, 250);
+assert.ok(springfield.every((row) => row.sourceUrl.includes("1255") && row.group === "cattle"));
+assert.ok(!springfield.some((row) => row.id.includes("bull")), "feeder bulls stay off this $/cwt steer/heifer parse");
+assert.equal(parseReportDate(fx("auction-1255.txt")), "2026-09-23");
+
+const ada = parseAmsReportText(fx("auction-1830.txt"), report("1830"), "https://www.ams.usda.gov/mnreports/ams_1830.pdf");
+assert.ok(ada.length > 40, `Ada should fill, got ${ada.length}`);
+assert.equal(ada.find((row) => row.id === "cattle.ams_1830.ada_ok.feeder-steer.ml1.342lb")?.price, 535);
+assert.ok(ada.find((row) => row.id === "cattle.ams_1830.ada_ok.feeder-steer.ml1.342lb")?.classGrade.includes("Unweaned"));
+assert.equal(ada.find((row) => row.id === "cattle.ams_1830.ada_ok.feeder-heifer.ml1.509lb")?.price, 391);
+assert.ok(ada.every((row) => row.source.includes("AMS_1830") && row.sourceUrl.endsWith("ams_1830.pdf")));
+assert.ok(!ada.some((row) => row.id.includes(".230lb") || row.id.includes(".240lb") || row.id.includes(".245lb")), "under-250 lb calves stay off");
+assert.equal(parseReportDate(fx("auction-1830.txt")), "2026-09-23");
+
+const western = parseAmsReportText(fx("auction-3242.txt"), report("3242"), "https://www.ams.usda.gov/mnreports/ams_3242.pdf");
+assert.ok(western.length > 40, `Western Video should fill, got ${western.length}`);
+const westCurrent = western.find((row) => row.id === "cattle.ams_3242.western_video.north_central.feeder-steer.ml1.current.415lb");
+assert.ok(westCurrent, "North Central current steer");
+assert.equal(westCurrent.price, 544);
+assert.equal(western.find((row) => row.id === "cattle.ams_3242.western_video.north_central.feeder-steer.l1.current.1000lb")?.price, 336.5);
+assert.ok(western.some((row) => row.id.includes("south_central") && row.id.includes("beef-dairy-steer")));
+assert.ok(western.some((row) => row.id.includes(".west.") && row.id.includes("split_loads")));
+assert.ok(western.every((row) => row.source.includes("AMS_3242") && row.sourceUrl.endsWith("ams_3242.pdf") && row.price <= 900));
+assert.ok(!western.some((row) => row.price === 220 || row.price === 4410), "slaughter choice and per-head bred cattle stay off");
+assert.equal(parseReportDate(fx("auction-3242.txt")), "2026-09-15");
+
 const jerome = parseProducersLivestockReport(
   fx("private-jerome.txt"),
   "jerome",
@@ -1126,7 +1166,7 @@ const producerPosts = producerLatestPosts(producerHtml);
 assert.deepEqual(producerPosts.map((p) => p.barn), ["jerome", "vale"]);
 assert.equal(producerPdfUrl(`<a href="https://www.producerslivestock.com/wp-content/uploads/2026/09/VALE9-23-26.pdf">pdf</a>`), "https://www.producerslivestock.com/wp-content/uploads/2026/09/VALE9-23-26.pdf");
 
-for (const slug of ["1281", "1280", "1245", "1797", "2713", "1889", "1892"]) {
+for (const slug of ["1281", "1280", "1245", "1797", "1651", "1255", "1830", "2713", "3242", "1889", "1892"]) {
   assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === slug)?.group, "cattle", slug);
 }
 
