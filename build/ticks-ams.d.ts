@@ -40,9 +40,13 @@
  * copy over that official empty. OKC West AMS_1281, Oklahoma National AMS_1280,
  * Joplin feeder AMS_1245 and slaughter/replacement AMS_1797, Superior video
  * AMS_2713, Winter Dodge City AMS_1889, and Farmers & Ranchers Salina KS AMS_1892
- * are rows on this same table. Producers Livestock Jerome ID and Vale OR weekly
- * PDFs are internalSourceOnly rows; source and sourceUrl stay on the JSON.
- * Salina UT stays AMS_2037. EIA stays off.
+ * are rows on this same table. Producers Livestock Jerome ID and Vale OR, and
+ * Treasure Valley Livestock Auction (Caldwell ID) weekly PDFs are
+ * internalSourceOnly rows; source and sourceUrl stay on the JSON. Do not scrape
+ * caldwelllivestock.com (that is a Texas barn). AMS_2056 Arkansas weekly uses
+ * this same auction parser. AMS_3510 animal by-product and AMS_3512 mill-feed
+ * prints land on the grain/hay table. AMS_3798 stays off. Salina UT stays
+ * AMS_2037. EIA stays off.
  *
  * Prefer live mnreports over NAL/esmis archives. Collect used to unshift ESMIS first and
  * keep the first parseable PDF — that left many Direct Hay/Cattle/Grain rows on Sept 2025
@@ -54,7 +58,7 @@ export declare const PRODUCT_ID = "idaho-hay-feeder-ticks";
 export declare const ESMIS_HOST = "https://esmis.nal.usda.gov";
 export declare const MNREPORTS_PDF: (slug: string) => string;
 export declare const VIEW_REPORT: (slug: string) => string;
-export type AmsGroup = "hay" | "cattle" | "grain" | "wool" | "dairy" | "hogs" | "produce";
+export type AmsGroup = "hay" | "cattle" | "grain" | "wool" | "dairy" | "hogs" | "produce" | "sheep";
 export type AmsReport = {
     slug: string;
     group: AmsGroup;
@@ -123,7 +127,10 @@ export declare const SKIPPED_SOURCES: readonly [{
     readonly why: "lswalabama / lswkssum / CO_LS146.txt already return official plaintext — do not wrap";
 }, {
     readonly id: "facebook-private-barns";
-    readonly why: "Facebook barns and Treasure Valley Caldwell stay out. Producers Livestock Jerome ID and Vale OR weekly PDFs are on /ticks with internalSourceOnly; source and sourceUrl stay. Salina UT stays AMS_2037, not a private duplicate";
+    readonly why: "Facebook barns stay out. Producers Livestock Jerome ID and Vale OR, and Treasure Valley Livestock Auction (Caldwell ID) weekly PDFs are on /ticks with internalSourceOnly; source and sourceUrl stay. Do not scrape caldwelllivestock.com (Texas Caldwell Livestock Commission). Salina UT stays AMS_2037, not a private duplicate";
+}, {
+    readonly id: "ams_3798";
+    readonly why: "AMS_3798 stays off this pass. AMS_3510 National Animal By-Product Feedstuff and AMS_3512 National Mill-Feeds are the feed prints on /ticks";
 }, {
     readonly id: "gis-echo-family-herd";
     readonly why: "GIS wraps, EPA ECHO, and the sold family herd ledger are not /ticks rows";
@@ -267,6 +274,12 @@ export declare function parseOrganicGrainReport(text: string, report: AmsReport,
 export declare function parseProduceTerminal(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 /** Official AMS_3024 / CNWWCMR weekly — current-week cents/lb prints only. */
 export declare function parseWeeklyCottonReview(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
+/**
+ * AMS_3510 animal by-products and AMS_3512 mill-feeds. Current-week Average
+ * column only — year-ago reprints are not ticks. Alfalfa meals/pellets land
+ * on hay; the rest stay on grain. Official mnreports PDFs.
+ */
+export declare function parseNationalFeedstuffReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function parseAmsReportText(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function pdfToText(pdfPath: string): string;
 export declare function officialPdfCandidates(report: AmsReport): Promise<string[]>;
@@ -300,6 +313,21 @@ export declare function producerLatestPosts(html: string): {
 export declare function producerPdfUrl(html: string): string | null;
 /** Jerome (avg + range) and Vale (bulk + top) weekly sheets. $/head rows stay off the $/cwt series. */
 export declare function parseProducersLivestockReport(text: string, barn: ProducerBarnId, sourceUrl: string): AmsTick[];
+export declare const TREASURE_VALLEY_INDEX = "https://www.treasurevalleylivestock.com/";
+export declare const TREASURE_VALLEY_MARKET = "Treasure Valley Livestock Auction, Caldwell ID";
+export declare const TREASURE_VALLEY_SOURCE = "Treasure Valley / Caldwell ID";
+export type TreasureValleySheet = "friday-beef" | "friday-dairy" | "feeder-special" | "saturday";
+/** Current hub buttons only. href is the live PDF; title= often still points at an old file. */
+export declare function treasureValleyPdfPosts(html: string): {
+    sheet: TreasureValleySheet;
+    pdfUrl: string;
+    label: string;
+}[];
+/**
+ * Treasure Valley (Caldwell ID) sale sheets. $/cwt rows only — pairs, stock
+ * cows, baby calves, and $/head goats stay off, same custody as Jerome and Vale.
+ */
+export declare function parseTreasureValleyReport(text: string, sheet: TreasureValleySheet, sourceUrl: string): AmsTick[];
 export declare function collectAmsNational(opts?: {
     dir?: string;
     pauseMs?: number;
