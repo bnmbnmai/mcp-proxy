@@ -141,6 +141,7 @@ data/eeoc-appellate/
 data/ttab-decisions/
 data/ibla-decisions/
 data/ccb-determinations/
+data/uscg-alj-decisions/
 data/ticks-ams/
 data/shop-request-log.jsonl
 data/shop-request-log*.jsonl
