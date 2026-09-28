@@ -336,6 +336,33 @@ assert.equal(ksHeifer.price, 296);
 assert.ok(kansasDirect.some((row) => row.id === "cattle.ams_3097.kansas.feeder-steer.ml12.925lb"), "Beef/Dairy Current FOB still lands as feeder-steer ml12");
 assert.ok(!kansasDirect.some((row) => row.price === 351.5 || row.price === 308 || row.price === 320 || row.price === 312.71), "DEL and forward FOB stay off when Current FOB exists");
 assert.ok(kansasDirect.some((row) => row.id === "cattle.ams_3097.kansas.feeder-heifers-ml1"));
+assert.equal(kansasDirect.find((row) => row.id === "cattle.ams_3097.kansas.feeder-steer.ml12.925lb")?.commodity, "Steers", "Beef/Dairy Current FOB stays commodity Steers");
+const cornbelt = parseAmsReportText(fx("direct-cornbelt-3096.txt"), report("3096"), "https://www.ams.usda.gov/mnreports/ams_3096.pdf");
+assert.equal(parseReportDate(fx("direct-cornbelt-3096.txt")), "2026-09-25");
+assert.equal(cornbelt.length, 5, `Eastern Cornbelt forward FOB should fill, got ${cornbelt.map((r) => r.id).join(",")}`);
+assert.ok(cornbelt.every((row) => row.asOf === "2026-09-25" &&
+    row.unit === "$/cwt" &&
+    row.group === "cattle" &&
+    row.source.includes("AMS_3096") &&
+    row.sourceUrl.includes("3096")));
+const cbSteer = cornbelt.find((row) => row.id === "cattle.ams_3096.eastern_cornbelt.feeder-steer.ml12.oct_fob.850lb");
+assert.ok(cbSteer, "Oct FOB ML1-2 steers");
+assert.equal(cbSteer.price, 306);
+assert.equal(cbSteer.lo, 306);
+assert.equal(cbSteer.hi, 306);
+assert.match(cbSteer.classGrade, /175 head/);
+const cbDairy = cornbelt.find((row) => row.id === "cattle.ams_3096.eastern_cornbelt.dairy-steer.l3.oct_fob.350lb");
+assert.ok(cbDairy, "Dairy Steers Large 3 stay off the beef feeder-steer id");
+assert.equal(cbDairy.price, 434);
+assert.equal(cbDairy.commodity, "Dairy steers");
+assert.match(cbDairy.classGrade, /135 head/);
+assert.equal(cornbelt.find((row) => row.id === "cattle.ams_3096.eastern_cornbelt.feeder-heifer.ml12.oct_fob.750lb")?.price, 304);
+assert.equal(cornbelt.find((row) => row.id === "cattle.ams_3096.eastern_cornbelt.feeder-heifer.ml12.nov_fob.700lb")?.price, 293.5);
+assert.equal(cornbelt.find((row) => row.id === "cattle.ams_3096.eastern_cornbelt.feeder-heifer.ml12.nov_fob.750lb")?.price, 302);
+assert.ok(!cornbelt.some((row) => row.id.includes("feeder-steers-ml1") || row.id.includes("feeder-heifers-ml1")), "forward-only prints are not the Current FOB headline");
+assert.ok(!cornbelt.some((row) => row.id.includes("dairy-steer") && row.price === 302), "heifer continuation row is not a dairy steer");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "3096")?.group, "cattle");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "3096")?.region, "eastern_cornbelt");
 const okc = parseAmsReportText(fx("auction-1281.txt"), report("1281"), "https://www.ams.usda.gov/mnreports/ams_1281.pdf");
 assert.ok(okc.length > 40, `OKC West should fill, got ${okc.length}`);
 assert.ok(okc.every((row) => row.sourceUrl.includes("1281") && row.group === "cattle" && row.unit === "$/cwt"));

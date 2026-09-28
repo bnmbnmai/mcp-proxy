@@ -37,7 +37,10 @@
  * cash series. A class with no Current FOB keeps its forward FOB prints (Oct FOB
  * and the like) so a trade week is not dropped. A live "No trades this week" /
  * "not established this week" PDF stays empty — do not backfill an older ESMIS
- * copy over that official empty. OKC West AMS_1281, Oklahoma National AMS_1280,
+ * copy over that official empty. AMS_3096 Eastern Cornbelt Direct
+ * (IL/IN/MI/MN/OH/KY) is that same table. Akamai 403s the lowercase HTTPS PDF
+ * on HTTP/2; HTTP/1.1 still returns the official body. marsapi stays 403.
+ * OKC West AMS_1281, Oklahoma National AMS_1280,
  * Joplin feeder AMS_1245 and slaughter/replacement AMS_1797, Superior video
  * AMS_2713, Winter Dodge City AMS_1889, and Farmers & Ranchers Salina KS AMS_1892
  * are rows on this same table. Producers Livestock Jerome ID and Vale OR weekly
@@ -49,6 +52,8 @@
  * NAL copies while official still published Aug 2026 bodies on ams.usda.gov/mnreports.
  */
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { request as httpRequest } from "node:http";
+import { request as httpsRequest } from "node:https";
 import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { join, resolve } from "node:path";
@@ -107,6 +112,7 @@ export const AMS_NATIONAL_REPORTS = [
     { slug: "2906", group: "cattle", region: "colorado", title: "Colorado Direct Cattle", esmisPublication: "colorado-direct-cattle-report" },
     { slug: "3455", group: "cattle", region: "iowa", title: "Iowa Direct Feeder Cattle", esmisPublication: "iowa-direct-cattle-report" },
     { slug: "2808", group: "cattle", region: "missouri", title: "Missouri Direct Feeder Cattle", esmisPublication: "" },
+    { slug: "3096", group: "cattle", region: "eastern_cornbelt", title: "Eastern Cornbelt Direct Cattle", esmisPublication: "" },
     { slug: "2770", group: "cattle", region: "montana", title: "Montana Direct Feeder Cattle", esmisPublication: "montana-direct-cattle-report" },
     { slug: "2708", group: "cattle", region: "new_mexico", title: "New Mexico Direct Feeder Cattle", esmisPublication: "new-mexico-direct-cattle-report" },
     { slug: "3184", group: "cattle", region: "south_dakota", title: "South Dakota Direct Feeder Cattle", esmisPublication: "south-dakota-direct-cattle-report" },
@@ -247,7 +253,6 @@ export const SKIPPED_SOURCES = [
     { id: "dairy-regional-narrative", why: "AMS_1090/1089/1091 butter and AMS_1084/1083/1085/1092 cheese regional PDFs printed overages/narrative this week, not dollar prints — skip rather than invent" },
     { id: "dairy-gdt-farmers-markets", why: "GDT 1604, farmers-market dairy, and international DMN PDFs are a leftover dairy slice; not this pass" },
     { id: "dairy-waf-empty", why: "AMS_1043/1044/1046/1047/1049/1050/1053 regional dry slugs 403 WAF on this VM — skip rather than leave silent holes" },
-    { id: "ams_3096_waf", why: "AMS_3096 Eastern Cornbelt Direct Feeder Cattle mnreports 403 WAF; drop rather than leave a silent empty" },
     { id: "se-swine-auction-barns", why: "individual AMS swine-auction barn PDFs leftover — not a national sale-barn mill; AMS_2872 summary + AMS_2810 feeder pig are this hog slice" },
     { id: "sheep-goats", why: "official AMS sheep/lamb/goat sale-barn and LMR boxed-lamb LM_XL* leftover; grocery lamb/veal feature ads AMS_3229/3796 are already on /ticks" },
     { id: "poultry-eggs", why: "leftover official AMS broiler-glance/breaking-stock PDFs stay off this slice; AMS_2843 Daily Shell Egg Index, AMS_3646 Weekly National Chicken, and grocery feature ads AMS_2756/2757/2867 are already on /ticks dairy rows" },
@@ -625,7 +630,7 @@ export function parseCattleAuctionReport(text, report, sourceUrl) {
             grade = "";
             continue;
         }
-        const dairyHdr = line.match(/^DAIRY (STEERS|HEIFERS)\s+-\s+(Medium and Large [12](?:-[23])?|Large [123](?:-[23])?)\s+\(Per Cwt/i);
+        const dairyHdr = line.match(/^DAIRY (STEERS|HEIFERS)\s+-\s+(Medium and Large [12](?:-[23])?|Large [123](?:-[23])?)\s+\(Per Cwt\s*\/\s*(?:Actual|Est\.?)\s*Wt/i);
         if (dairyHdr) {
             sex = `DAIRY ${dairyHdr[1]}`;
             grade = dairyHdr[2];
@@ -1032,11 +1037,23 @@ export function parseVideoAuctionReport(text, report, sourceUrl) {
     return dedupeTicks(assignUniqueIds(out));
 }
 const DIRECT_MONTH = "Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec";
-const DIRECT_HDR_RE = /^(?:(?:Beef\/Dairy|Dairy)\s+)?(Steers|Heifers)\s+-\s+(Medium and Large [12](?:-[23])?|Large [123](?:-[23])?)\s+\(Per Cwt\)/i;
+const DIRECT_HDR_RE = /^((?:Beef\/Dairy|Dairy)\s+)?(Steers|Heifers)\s+-\s+(Medium and Large [12](?:-[23])?|Large [123](?:-[23])?)\s+\(Per Cwt\)/i;
+/** Pure Dairy keeps a dairy-* id. Beef/Dairy stays feeder-* so Kansas Current FOB ids do not move. */
+function directFeederKind(prefix, sex) {
+    if (/^dairy$/i.test(prefix.trim())) {
+        if (/heifer/i.test(sex))
+            return { tok: "dairy-heifer", commodity: "Dairy heifers" };
+        return { tok: "dairy-steer", commodity: "Dairy steers" };
+    }
+    if (/heifer/i.test(sex))
+        return { tok: "feeder-heifer", commodity: "Heifers" };
+    return { tok: "feeder-steer", commodity: "Steers" };
+}
 const DIRECT_ROW_RE = new RegExp(`^(?:((?:Current|${DIRECT_MONTH}))\\s+(FOB|DEL)\\s+)?(\\d[\\d,]*)\\s+(\\d+)(?:\\s*-\\s*(\\d+))?\\s+(\\d+)\\s+(\\d+(?:\\.\\d+)?)(?:\\s*-\\s*(\\d+(?:\\.\\d+)?))?\\s+(\\d+(?:\\.\\d+)?)(?:\\s+(.+))?$`, "i");
 /**
  * Direct-cattle Delivery/Freight table. Current FOB keeps the existing id.
- * Forward FOB is emitted only for a class that has no Current FOB (Montana Oct FOB).
+ * Forward FOB is emitted only for a class that has no Current FOB (Montana Oct FOB,
+ * Eastern Cornbelt Oct/Nov FOB). Pure Dairy is dairy-steer / dairy-heifer.
  * DEL and basis trades are not $/cwt cash ticks. Returns null when the PDF has no
  * DIRECT TRADES section so the legacy line parser can still run.
  */
@@ -1050,6 +1067,7 @@ export function parseDirectFeederTrades(text, report, sourceUrl) {
     const drafts = [];
     let inDirect = false;
     let sex = "";
+    let sexTok = "";
     let grade = "";
     let delivery = "";
     let freight = "";
@@ -1060,6 +1078,7 @@ export function parseDirectFeederTrades(text, report, sourceUrl) {
         if (/DIRECT TRADES/i.test(line)) {
             inDirect = true;
             sex = "";
+            sexTok = "";
             grade = "";
             delivery = "";
             freight = "";
@@ -1070,17 +1089,20 @@ export function parseDirectFeederTrades(text, report, sourceUrl) {
         if (/^(Please Note|BASIS TRADES|SLAUGHTER|REPLACEMENT)\b/i.test(line)) {
             inDirect = false;
             sex = "";
+            sexTok = "";
             continue;
         }
         const hdr = line.match(DIRECT_HDR_RE);
         if (hdr) {
-            sex = hdr[1];
-            grade = hdr[2];
+            const kind = directFeederKind(hdr[1] ?? "", hdr[2] ?? "");
+            sex = kind.commodity;
+            sexTok = kind.tok;
+            grade = hdr[3] ?? "";
             delivery = "";
             freight = "";
             continue;
         }
-        if (!sex)
+        if (!sex || !sexTok)
             continue;
         const row = line.match(DIRECT_ROW_RE);
         if (!row)
@@ -1104,7 +1126,7 @@ export function parseDirectFeederTrades(text, report, sourceUrl) {
         drafts.push({
             sex,
             grade,
-            sexTok: /heifer/i.test(sex) ? "feeder-heifer" : "feeder-steer",
+            sexTok,
             gradeTok: cattleGradeTok(grade),
             delivery,
             freight,
@@ -1167,6 +1189,13 @@ export function parseCattleReport(text, report, sourceUrl) {
         const video = parseVideoAuctionReport(text, report, sourceUrl);
         if (video.length > 0)
             return video;
+    }
+    // Direct sheets say "(Per Cwt)" and print Dairy Steers. The auction header
+    // used to claim that line and mis-file the next numeric row. Read DIRECT TRADES first.
+    if (/DIRECT TRADES/i.test(text)) {
+        const directFirst = parseDirectFeederTrades(text, report, sourceUrl);
+        if (directFirst && (directFirst.length > 0 || cattleReportIntentionalEmpty(text)))
+            return directFirst;
     }
     if (looksLikeCattleAuction(text)) {
         const auction = parseCattleAuctionReport(text, report, sourceUrl);
@@ -2995,6 +3024,53 @@ export function pdfToText(pdfPath) {
 function isPdf(bytes) {
     return bytes.length >= 5 && bytes[0] === 0x25 && bytes[1] === 0x50 && bytes[2] === 0x44 && bytes[3] === 0x46;
 }
+/** Akamai 403s some mnreports PDFs on HTTP/2 (undici fetch). HTTP/1.1 still returns the official body. */
+function fetchBytesHttp1(url, redirects = 0) {
+    return new Promise((resolve, reject) => {
+        let parsed;
+        try {
+            parsed = new URL(url);
+        }
+        catch (err) {
+            reject(err instanceof Error ? err : new Error(String(err)));
+            return;
+        }
+        if (parsed.protocol !== "http:" && parsed.protocol !== "https:") {
+            reject(new Error(`${url} unsupported protocol`));
+            return;
+        }
+        const send = parsed.protocol === "https:" ? httpsRequest : httpRequest;
+        const req = send(parsed, { headers: { "User-Agent": HTTP_UA, Accept: "application/pdf,application/octet-stream,*/*" } }, (res) => {
+            const chunks = [];
+            res.on("data", (chunk) => chunks.push(chunk));
+            res.on("end", () => {
+                const status = res.statusCode ?? 0;
+                const loc = res.headers.location;
+                if (loc && status >= 300 && status < 400 && redirects < 5) {
+                    const next = new URL(loc, url);
+                    if (!/(^|\.)usda\.gov$/i.test(next.hostname)) {
+                        reject(new Error(`${url} redirected off USDA`));
+                        return;
+                    }
+                    fetchBytesHttp1(next.href, redirects + 1).then(resolve, reject);
+                    return;
+                }
+                if (status < 200 || status >= 300) {
+                    reject(new Error(`${url} HTTP ${status}`));
+                    return;
+                }
+                const buf = Buffer.concat(chunks);
+                resolve({
+                    url,
+                    bytes: new Uint8Array(buf),
+                    contentType: String(res.headers["content-type"] ?? ""),
+                });
+            });
+        });
+        req.on("error", reject);
+        req.setTimeout(20000, () => req.destroy(new Error(`${url} timeout`)));
+    });
+}
 async function fetchBytes(url) {
     let lastErr = "";
     for (let attempt = 0; attempt < 3; attempt++) {
@@ -3003,10 +3079,18 @@ async function fetchBytes(url) {
                 headers: { "User-Agent": HTTP_UA, Accept: "application/pdf,application/octet-stream,*/*" },
                 redirect: "follow",
             });
-            if (res.status === 403 && attempt < 2) {
-                lastErr = `${url} HTTP 403`;
-                await pause(1500 * (attempt + 1));
-                continue;
+            if (res.status === 403) {
+                try {
+                    return await fetchBytesHttp1(url);
+                }
+                catch (http1Err) {
+                    lastErr = http1Err instanceof Error ? http1Err.message : String(http1Err);
+                }
+                if (attempt < 2) {
+                    await pause(1500 * (attempt + 1));
+                    continue;
+                }
+                throw new Error(lastErr || `${url} HTTP 403`);
             }
             if (!res.ok)
                 throw new Error(`${url} HTTP ${res.status}`);
