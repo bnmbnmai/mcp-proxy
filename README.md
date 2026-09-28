@@ -35,7 +35,7 @@ Same order as live [/.well-known/x402](https://ticks.bnm.farm/.well-known/x402).
 
 | Path | Bag | Price |
 | --- | --- | --- |
-| `/ticks` | USDA farm market prices (hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water. Entire current table | $0.05 |
+| `/ticks` | USDA farm market prices (hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail). Idaho / PNW barns are example geography inside the table, not the SKU. Manitoba Agriculture weekly auction-mart cattle prices (C$/cwt) are rows on this same table. Not forecasts, not private barn deals, not water. Entire current table | $0.05 |
 | `/import-alerts` | FDA Import Alerts / DWPE firm-product snapshot. Entire current table | $0.05 |
 | `/mariners` | USCG D13 / Northwest Local Notice to Mariners. This week's LNM | $0.05 |
 | `/mariners-d11` | USCG D11 / Southwest Local Notice to Mariners. This week's LNM | $0.05 |
@@ -94,6 +94,15 @@ Same order as live [/.well-known/x402](https://ticks.bnm.farm/.well-known/x402).
 | `/oalj-decisions` | DOL OALJ / BALCA / ARB Decision and Order text (official oalj.dol.gov and dol.gov/sites OALJ ARB PDFs). Newest 10 official texts | $0.02 / $0.05 |
 | `/fmc-orders` | FMC Reading Room Initial Decision / Commission Order text (official www2.fmc.gov/readingroom PDFs). Newest 10 official texts | $0.02 / $0.05 |
 | `/ftc-orders` | FTC cases-proceedings ALJ Decision / Commission Decision and Order text (official ftc.gov/system/files/ftc_gov/pdf PDFs). Newest 10 official texts | $0.02 / $0.05 |
+| `/nlrb-decisions` | NLRB published Board Decision text. Newest 10 official texts | $0.02 / $0.05 |
+| `/flra-decisions` | FLRA Authority Decision text. Newest 10 official texts | $0.02 / $0.05 |
+| `/ecab-decisions` | ECAB FECA Decision and Order text. Newest 10 official texts | $0.02 / $0.05 |
+| `/fcc-eb-orders` | FCC Enforcement Bureau order text. Newest 10 official texts | $0.02 / $0.05 |
+| `/nmb-determinations` | NMB representation determination text. Newest 10 official texts | $0.02 / $0.05 |
+| `/eeoc-appellate` | EEOC OFS appellate decision text. Newest 10 official texts | $0.02 / $0.05 |
+| `/ttab-decisions` | USPTO TTAB reading-room decision text. Newest 10 official texts | $0.02 / $0.05 |
+| `/ibla-decisions` | DOI IBLA precedential decision text. Newest 10 official texts | $0.02 / $0.05 |
+| `/ccb-determinations` | Copyright Claims Board Final Determination text. Newest 10 official texts | $0.02 / $0.05 |
 | `/form-483` | FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs). Newest 10 official texts | $0.02 / $0.05 |
 | `/gmp` | Health Canada Drug GMP report-card observation text + C.02 cites. Newest 10 official texts | $0.02 / $0.05 |
 | `/gmp-md` | Health Canada medical-device report-card observation text + MDR cites. Newest 10 official texts | $0.02 / $0.05 |

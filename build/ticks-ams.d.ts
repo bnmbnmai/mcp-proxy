@@ -33,6 +33,10 @@
  * Daily AMS_3804 spot quotations and cnwwqo quality stay leftover. Do not
  * wrap MARS / MMN JSON (403 without a key).
  * Water District 1 rental-pool $/AF is not an AMS source and stays off this table.
+ * Manitoba Agriculture weekly Cattle/Sheep/Goat Prices PDFs are not AMS slugs.
+ * collectAmsNational folds their per-mart C$/cwt rows onto this same /ticks
+ * snapshot (ticks-mb-cattle.ts). No /mb-cattle-prices path. A free JSON/CSV of
+ * that weekly multi-mart body kills the Manitoba collect.
  * AMS_2770 Montana Direct prints a Delivery/Freight table. Current FOB stays the
  * cash series. A class with no Current FOB keeps its forward FOB prints (Oct FOB
  * and the like) so a trade week is not dropped. A live "No trades this week" /
