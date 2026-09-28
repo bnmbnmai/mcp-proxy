@@ -29,7 +29,7 @@ Same order as live [/.well-known/x402](https://ticks.bnm.farm/.well-known/x402).
 
 | Path | Bag | Price | Search |
 | --- | --- | --- | --- |
-| `/ticks` | USDA farm market prices (hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water. Entire current table | $0.05 | [manifest.json](https://ticks.bnm.farm/manifest.json) |
+| `/ticks` | USDA farm market prices (hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail, production cost). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water. Entire current table | $0.05 | [manifest.json](https://ticks.bnm.farm/manifest.json) |
 | `/import-alerts` | FDA Import Alerts / DWPE firm-product snapshot. Entire current table | $0.05 | [firm-check?q=](https://ticks.bnm.farm/firm-check?q=) · [manifest.json](https://ticks.bnm.farm/import-alerts/manifest.json) |
 | `/mariners` | USCG D13 / Northwest Local Notice to Mariners. This week's LNM | $0.05 | [manifest.json?q=](https://ticks.bnm.farm/mariners/manifest.json?q=) |
 | `/mariners-d11` | USCG D11 / Southwest Local Notice to Mariners. This week's LNM | $0.05 | [manifest.json?q=](https://ticks.bnm.farm/mariners-d11/manifest.json?q=) |
@@ -88,6 +88,16 @@ Same order as live [/.well-known/x402](https://ticks.bnm.farm/.well-known/x402).
 | `/oalj-decisions` | DOL OALJ / BALCA / ARB Decision and Order text (official oalj.dol.gov and dol.gov/sites OALJ ARB PDFs). Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/oalj-decisions/manifest.json?q=) |
 | `/fmc-orders` | FMC Reading Room Initial Decision / Commission Order text (official www2.fmc.gov/readingroom PDFs). Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/fmc-orders/manifest.json?q=) |
 | `/ftc-orders` | FTC cases-proceedings ALJ Decision / Commission Decision and Order text (official ftc.gov/system/files/ftc_gov/pdf PDFs). Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/ftc-orders/manifest.json?q=) |
+| `/nlrb-decisions` | NLRB published Board Decision text. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/nlrb-decisions/manifest.json?q=) |
+| `/flra-decisions` | FLRA Authority Decision text. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/flra-decisions/manifest.json?q=) |
+| `/ecab-decisions` | ECAB FECA Decision and Order text. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/ecab-decisions/manifest.json?q=) |
+| `/fcc-eb-orders` | FCC Enforcement Bureau order text. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/fcc-eb-orders/manifest.json?q=) |
+| `/nmb-determinations` | NMB representation determination text. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/nmb-determinations/manifest.json?q=) |
+| `/eeoc-appellate` | EEOC OFS appellate decision text. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/eeoc-appellate/manifest.json?q=) |
+| `/ttab-decisions` | USPTO TTAB reading-room decision text. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/ttab-decisions/manifest.json?q=) |
+| `/ibla-decisions` | DOI IBLA precedential decision text. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/ibla-decisions/manifest.json?q=) |
+| `/ccb-determinations` | Copyright Claims Board Final Determination text. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/ccb-determinations/manifest.json?q=) |
+| `/uscg-alj-decisions` | USCG ALJ Suspension and Revocation Decisions and Orders text. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/uscg-alj-decisions/manifest.json?q=) |
 | `/form-483` | FDA Form 483 inspectional observation bodies (posted OII FOIA PDFs). Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/form-483/manifest.json?q=) |
 | `/gmp` | Health Canada Drug GMP report-card observation text + C.02 cites. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/gmp/manifest.json?q=) |
 | `/gmp-md` | Health Canada medical-device report-card observation text + MDR cites. Newest 10 official texts | $0.02 / $0.05 | [manifest.json?q=](https://ticks.bnm.farm/gmp-md/manifest.json?q=) |
