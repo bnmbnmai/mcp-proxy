@@ -1,6 +1,6 @@
 /**
- * Free GET /sample — static canned paid-JSON keys.
- * Not live cache. Not a wrap of the current table. Not a paid SKU.
+ * Free GET /sample — a 3-row slice of paid /ticks JSON keys from September 2026
+ * official prints. Not the entire current table. Not a paid SKU. Not a new path.
  */
 export declare const SAMPLE_PATH = "/sample";
 export declare const PRODUCT_PUBLIC_ID = "us-hay-cattle-grain-ticks";
@@ -22,39 +22,122 @@ export declare const TICKS_LLMS_BULLET = "GET /ticks \u2014 $0.05 \u2014 USDA fa
 /** Catalog / README / SHOP-INDEX /ticks bag cell. */
 export declare const TICKS_BAG = "USDA farm market prices (hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail). Idaho / PNW barns are example geography inside the table, not the SKU. Not forecasts, not private barn deals, not water. Entire current table";
 /** Short agent prompt with exact shop URLs. */
-export declare const SAMPLE_HOW_TO_USE: readonly ["Search a free index: GET https://ticks.bnm.farm/{door}/manifest.json?q=…", "Then one official text: GET https://ticks.bnm.farm/{door}?id=… ($0.02)", "Or a page of 10: GET https://ticks.bnm.farm/{door} ($0.05; whole current set if n<10)", "Tables: GET https://ticks.bnm.farm/ticks and GET https://ticks.bnm.farm/import-alerts ($0.05 = entire current table)", "Table rebuy: pay GET /ticks once → store ETag from the paid 200 (unpaid 402 has no ETag) → poll with If-None-Match (or ?since=) → HTTP 304 no charge when unchanged → pay again only when the body/ETag changes", "Paid JSON keys (canned example, not live): GET https://ticks.bnm.farm/sample"];
+export declare const SAMPLE_HOW_TO_USE: readonly ["Search a free index: GET https://ticks.bnm.farm/{door}/manifest.json?q=…", "Then one official text: GET https://ticks.bnm.farm/{door}?id=… ($0.02)", "Or a page of 10: GET https://ticks.bnm.farm/{door} ($0.05; whole current set if n<10)", "Tables: GET https://ticks.bnm.farm/ticks and GET https://ticks.bnm.farm/import-alerts ($0.05 = entire current table)", "Table rebuy: pay GET /ticks once → store ETag from the paid 200 (unpaid 402 has no ETag) → poll with If-None-Match (or ?since=) → HTTP 304 no charge when unchanged → pay again only when the body/ETag changes", "Free 3-row /ticks slice (not the whole $0.05 table): GET https://ticks.bnm.farm/sample"];
 /**
- * Table-SKU keys verified from live 402 extra + paidTicksBody:
- * ticks[], asOf, fetchedAt, source, records[], recordCount, plus bag note.
- * Values are fake placeholders. Idaho/Twin Falls is not the product name.
+ * Table-SKU keys from live paid /ticks JSON: ticks[], asOf, fetchedAt, source,
+ * records[], recordCount, plus markets[]. Three September 2026 rows from the
+ * official PDFs. source and sourceUrl stay on every tick. Not the whole table.
  */
 export declare const SAMPLE_TABLE_SKU: {
     readonly example: true;
-    readonly comment: "Canned /ticks paid JSON keys. Not the current cache. $0.05 = entire current table.";
+    readonly comment: "Free 3-row slice of GET /ticks paid JSON from September 2026 official prints. Not the entire current table. $0.05 = entire current table.";
     readonly ok: true;
     readonly product: "us-hay-cattle-grain-ticks";
     readonly status: "ok";
-    readonly fetchedAt: "2026-01-16T00:00:00Z";
-    readonly asOf: "2026-01-15";
+    readonly fetchedAt: "2026-09-25T15:18:53.000Z";
+    readonly asOf: "2026-09-22";
     readonly source: "USDA farm market prices cache";
-    readonly note: "$0.05 buys the entire current USDA farm market price table (hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail). Days between reports are not filled in. Idaho / PNW barns are example geography inside the table, not the SKU name. Not water.";
-    readonly recordCount: 1;
+    readonly note: "$0.05 buys the entire current USDA farm market price table (hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail). This free slice is 3 rows. Days between reports are not filled in. Idaho / PNW barns are example geography inside the table, not the SKU name. Not water.";
+    readonly recordCount: 3;
+    readonly markets: readonly [{
+        readonly id: "ams_2770";
+        readonly name: "Montana Direct Feeder Cattle";
+        readonly sourceUrl: "https://www.ams.usda.gov/mnreports/ams_2770.pdf";
+    }, {
+        readonly id: "ams_1281";
+        readonly name: "OKC West Livestock Auction (El Reno)";
+        readonly sourceUrl: "https://www.ams.usda.gov/mnreports/ams_1281.pdf";
+    }, {
+        readonly id: "ams_1280";
+        readonly name: "Oklahoma National Stockyards Feeder Cattle";
+        readonly sourceUrl: "https://www.ams.usda.gov/mnreports/ams_1280.pdf";
+    }, {
+        readonly id: "ams_1245";
+        readonly name: "Joplin Regional Stockyards Feeder Cattle";
+        readonly sourceUrl: "https://www.ams.usda.gov/mnreports/ams_1245.pdf";
+    }, {
+        readonly id: "ams_1797";
+        readonly name: "Joplin Regional Stockyards Slaughter/Replacement Cattle";
+        readonly sourceUrl: "https://www.ams.usda.gov/mnreports/ams_1797.pdf";
+    }, {
+        readonly id: "ams_2713";
+        readonly name: "Superior Livestock Video Auction";
+        readonly sourceUrl: "https://www.ams.usda.gov/mnreports/ams_2713.pdf";
+    }, {
+        readonly id: "ams_1889";
+        readonly name: "Winter Livestock Cattle Auction (Dodge City)";
+        readonly sourceUrl: "https://www.ams.usda.gov/mnreports/ams_1889.pdf";
+    }, {
+        readonly id: "ams_1892";
+        readonly name: "Farmers and Ranchers Livestock Commission Cattle Auction (Salina)";
+        readonly sourceUrl: "https://www.ams.usda.gov/mnreports/ams_1892.pdf";
+    }, {
+        readonly id: "private_producers_jerome";
+        readonly name: "Producers Livestock Jerome";
+        readonly sourceUrl: "https://www.producerslivestock.com/market-reports/";
+    }, {
+        readonly id: "private_producers_vale";
+        readonly name: "Producers Livestock Vale";
+        readonly sourceUrl: "https://www.producerslivestock.com/market-reports/";
+    }];
     readonly records: readonly [{
-        readonly id: "example-hay-tx-alfalfa";
-        readonly date: "2026-01-15";
-        readonly firm: "Texas Direct Hay (example geography)";
-        readonly url: "https://example.invalid/ams/ams_2707.pdf";
-        readonly type: "hay";
+        readonly id: "cattle.ams_1281.okc_west_el_reno.feeder-steer.ml1.826lb";
+        readonly date: "2026-09-22";
+        readonly firm: "OKC West Livestock Auction (El Reno)";
+        readonly url: "https://www.ams.usda.gov/mnreports/ams_1281.pdf";
+        readonly type: "cattle";
+    }, {
+        readonly id: "cattle.ams_1245.joplin_feeder.feeder-steer.ml1.1060lb";
+        readonly date: "2026-09-21";
+        readonly firm: "Joplin Regional Stockyards Feeder Cattle";
+        readonly url: "https://www.ams.usda.gov/mnreports/ams_1245.pdf";
+        readonly type: "cattle";
+    }, {
+        readonly id: "cattle.ams_2713.superior_video.north_central.feeder-steer.ml1.current.450lb.unweaned";
+        readonly date: "2026-09-17";
+        readonly firm: "Superior Livestock Video Auction — North Central";
+        readonly url: "https://www.ams.usda.gov/mnreports/ams_2713.pdf";
+        readonly type: "cattle";
     }];
     readonly ticks: readonly [{
-        readonly id: "example-hay-tx-alfalfa";
-        readonly group: "hay";
-        readonly commodity: "Alfalfa";
-        readonly market: "Texas Direct Hay (example geography)";
-        readonly unit: "$/ton";
-        readonly asOf: "2026-01-15";
-        readonly price: 185;
-        readonly source: "USDA AMS Texas Direct Hay Report (example)";
+        readonly id: "cattle.ams_1281.okc_west_el_reno.feeder-steer.ml1.826lb";
+        readonly group: "cattle";
+        readonly commodity: "Steers";
+        readonly market: "OKC West Livestock Auction (El Reno)";
+        readonly classGrade: "USDA Medium and Large 1, 826 lb, 535 head";
+        readonly unit: "$/cwt";
+        readonly asOf: "2026-09-22";
+        readonly price: 330.19;
+        readonly lo: 321;
+        readonly hi: 336;
+        readonly source: "USDA AMS OKC West Livestock Auction (El Reno) Report (AMS_1281)";
+        readonly sourceUrl: "https://www.ams.usda.gov/mnreports/ams_1281.pdf";
+    }, {
+        readonly id: "cattle.ams_1245.joplin_feeder.feeder-steer.ml1.1060lb";
+        readonly group: "cattle";
+        readonly commodity: "Steers";
+        readonly market: "Joplin Regional Stockyards Feeder Cattle";
+        readonly classGrade: "USDA Medium and Large 1, 1060 lb, 152 head";
+        readonly unit: "$/cwt";
+        readonly asOf: "2026-09-21";
+        readonly price: 291.42;
+        readonly lo: 289;
+        readonly hi: 292;
+        readonly source: "USDA AMS Joplin Regional Stockyards Feeder Cattle Report (AMS_1245)";
+        readonly sourceUrl: "https://www.ams.usda.gov/mnreports/ams_1245.pdf";
+    }, {
+        readonly id: "cattle.ams_2713.superior_video.north_central.feeder-steer.ml1.current.450lb.unweaned";
+        readonly group: "cattle";
+        readonly commodity: "Steers";
+        readonly market: "Superior Livestock Video Auction — North Central";
+        readonly classGrade: "USDA Medium and Large 1, 450 lb, 58 head, Current, Unweaned";
+        readonly unit: "$/cwt";
+        readonly asOf: "2026-09-17";
+        readonly price: 489;
+        readonly lo: 489;
+        readonly hi: 489;
+        readonly source: "USDA AMS Superior Livestock Video Auction Report (AMS_2713)";
+        readonly sourceUrl: "https://www.ams.usda.gov/mnreports/ams_2713.pdf";
     }];
 };
 /**

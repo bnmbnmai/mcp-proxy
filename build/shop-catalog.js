@@ -172,13 +172,13 @@ payTo \`${PAY_TO}\` · Base (\`${NETWORK}\`) · USDC \`${USDC}\`
 
 Unpaid GET on a paid path returns HTTP 402. After \`X-PAYMENT\`, the same URL returns JSON. Unpaid 402 \`accepts[].extra\` names \`searchUrl\`, \`oneDocPath\`, \`priceAtomic\`, \`pagePriceAtomic\`, \`pageDefault\`, \`tableWhole\`, \`firmCheckUrl\`, \`sampleUrl\`. \`extra.name\` stays USD Coin.
 
-MCP at \`/mcp\` is generated from live [/.well-known/x402](https://ticks.bnm.farm/.well-known/x402) (one paid tool per paid resource) plus free \`search\` and \`firm-check\`. \`/sample\` is the free canned-keys GET, not an MCP tool and not a SKU.
+MCP at \`/mcp\` is generated from live [/.well-known/x402](https://ticks.bnm.farm/.well-known/x402) (one paid tool per paid resource) plus free \`search\` and \`firm-check\`. \`/sample\` is the free 3-row slice, not an MCP tool and not a SKU.
 
 ## Free (not paid)
 
 | Path | Bag | URL |
 | --- | --- | --- |
-| \`/sample\` | Canned paid-JSON keys. HTTP 200 | [https://ticks.bnm.farm/sample](https://ticks.bnm.farm/sample) |
+| \`/sample\` | Free 3-row /ticks slice. HTTP 200. Not the whole $0.05 table | [https://ticks.bnm.farm/sample](https://ticks.bnm.farm/sample) |
 | \`/firm-check?q=\` | Free firm-name search across official caches. HTTP 200. Names the door and the \`?id=\` or page to buy ($0.02 one text / $0.05 page or table) | [https://ticks.bnm.farm/firm-check?q=](https://ticks.bnm.farm/firm-check?q=) |
 
 ## Live paid GETs
@@ -209,7 +209,7 @@ Unpaid GET on a paid path returns HTTP 402 with \`PAYMENT-REQUIRED\`. No request
 
 ## Free (not SKUs)
 
-- \`GET /sample\` — canned paid-JSON keys. HTTP 200.
+- \`GET /sample\` — free 3-row /ticks slice. HTTP 200. Not the whole $0.05 table.
 - \`GET /firm-check?q=\` — firm-name search across official caches. HTTP 200. Names the door and the \`?id=\` or page to buy.
 - \`GET /{door}/manifest.json?q=\` — free index/search on every extracted-body door.
 - \`GET /.well-known/x402\` — the live paid URLs.

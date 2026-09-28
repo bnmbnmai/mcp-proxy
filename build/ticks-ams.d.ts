@@ -33,6 +33,16 @@
  * Daily AMS_3804 spot quotations and cnwwqo quality stay leftover. Do not
  * wrap MARS / MMN JSON (403 without a key).
  * Water District 1 rental-pool $/AF is not an AMS source and stays off this table.
+ * AMS_2770 Montana Direct prints a Delivery/Freight table. Current FOB stays the
+ * cash series. A class with no Current FOB keeps its forward FOB prints (Oct FOB
+ * and the like) so a trade week is not dropped. A live "No trades this week" /
+ * "not established this week" PDF stays empty — do not backfill an older ESMIS
+ * copy over that official empty. OKC West AMS_1281, Oklahoma National AMS_1280,
+ * Joplin feeder AMS_1245 and slaughter/replacement AMS_1797, Superior video
+ * AMS_2713, Winter Dodge City AMS_1889, and Farmers & Ranchers Salina KS AMS_1892
+ * are rows on this same table. Producers Livestock Jerome ID and Vale OR weekly
+ * PDFs are internalSourceOnly rows; source and sourceUrl stay on the JSON.
+ * Salina UT stays AMS_2037. EIA stays off.
  *
  * Prefer live mnreports over NAL/esmis archives. Collect used to unshift ESMIS first and
  * keep the first parseable PDF — that left many Direct Hay/Cattle/Grain rows on Sept 2025
@@ -104,7 +114,7 @@ export declare const SKIPPED_SOURCES: readonly [{
     readonly why: "official seasonal/replacement/stock-show specials often empty off-season; skip rather than invent";
 }, {
     readonly id: "video-internet-auctions";
-    readonly why: "feeder cattle internet/video/board sales are a different AMS family than sale-barn floor sheets";
+    readonly why: "other feeder internet/board sales stay off this slice; AMS_2713 Superior Livestock Video is on /ticks. Western Video AMS_3242 stays parked";
 }, {
     readonly id: "lmr-slaughter-pdfs";
     readonly why: "national/regional Direct Slaughter PDFs are LMR fed-cattle tables, not the feeder/POS parser this door already sells";
@@ -113,7 +123,7 @@ export declare const SKIPPED_SOURCES: readonly [{
     readonly why: "lswalabama / lswkssum / CO_LS146.txt already return official plaintext — do not wrap";
 }, {
     readonly id: "facebook-private-barns";
-    readonly why: "Facebook barns, private sale-barn homepages, and Treasure Valley Caldwell stay out — no dated official PDF/HTML print";
+    readonly why: "Facebook barns and Treasure Valley Caldwell stay out. Producers Livestock Jerome ID and Vale OR weekly PDFs are on /ticks with internalSourceOnly; source and sourceUrl stay. Salina UT stays AMS_2037, not a private duplicate";
 }, {
     readonly id: "gis-echo-family-herd";
     readonly why: "GIS wraps, EPA ECHO, and the sold family herd ledger are not /ticks rows";
@@ -182,6 +192,8 @@ export type AmsTick = {
     sourceUrl: string;
     reportDate: string;
     series: string;
+    /** Private barn print. Paid JSON still includes source and sourceUrl. */
+    internalSourceOnly?: boolean;
 };
 export type AmsFailed = {
     id: string;
@@ -218,6 +230,18 @@ export declare function officialPdfCandidateOrder(slug: string, esmisUrls?: stri
 export declare function parseHayReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function looksLikeCattleAuction(text: string): boolean;
 export declare function parseCattleAuctionReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
+/** Live official PDF is an intentional empty, not a parser miss. */
+export declare function cattleReportIntentionalEmpty(text: string): boolean;
+export declare function looksLikeVideoAuction(text: string): boolean;
+/** Superior AMS_2713 and the same Est. Wt video layout. All printed deliveries, feeder section only. */
+export declare function parseVideoAuctionReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
+/**
+ * Direct-cattle Delivery/Freight table. Current FOB keeps the existing id.
+ * Forward FOB is emitted only for a class that has no Current FOB (Montana Oct FOB).
+ * DEL and basis trades are not $/cwt cash ticks. Returns null when the PDF has no
+ * DIRECT TRADES section so the legacy line parser can still run.
+ */
+export declare function parseDirectFeederTrades(text: string, report: AmsReport, sourceUrl: string): AmsTick[] | null;
 export declare function parseCattleReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function parseGrainReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function parseWoolReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
@@ -268,6 +292,14 @@ export declare function collectReportFilter(): readonly {
 export declare function mergePartialAmsSnapshot(prev: AmsSnapshot, next: AmsSnapshot, slugs: readonly string[]): AmsSnapshot;
 /** Full-walk fail-closed: keep previous rows for slugs whose fetch failed this pass. */
 export declare function mergeFailedAmsSlugs(prev: AmsSnapshot, next: AmsSnapshot): AmsSnapshot;
+export type ProducerBarnId = "jerome" | "vale";
+export declare function producerLatestPosts(html: string): {
+    barn: ProducerBarnId;
+    postUrl: string;
+}[];
+export declare function producerPdfUrl(html: string): string | null;
+/** Jerome (avg + range) and Vale (bulk + top) weekly sheets. $/head rows stay off the $/cwt series. */
+export declare function parseProducersLivestockReport(text: string, barn: ProducerBarnId, sourceUrl: string): AmsTick[];
 export declare function collectAmsNational(opts?: {
     dir?: string;
     pauseMs?: number;
