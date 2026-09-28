@@ -32,6 +32,14 @@
  * year-ago fluff, quality charts, and weather narrative are not ticks.
  * Daily AMS_3804 spot quotations and cnwwqo quality stay leftover. Do not
  * wrap MARS / MMN JSON (403 without a key).
+ * AMS production-cost reports (fuels, synthetic fertilizer, organic fertilizer)
+ * fatten the same $0.05 bag on a dedicated inputs group: inputs.ams_3051 /
+ * 3195 / 2863 / 3159 / 3621 / 3657 / 3726. Current-week Ask prints only
+ * (Delivery Period Current). $/ton and $/gal stay off hay/cattle $/cwt ids.
+ * US federal AMS text is public domain (17 USC 105). Official body is the
+ * ugly mnreports PDF — do not wrap marsapi (403 without a key). AMS_3776
+ * Maryland Production Cost is discontinued. AMS_3883 Inter-Mountain West and
+ * AMS_3798 Oklahoma Retail Feed stay off this card.
  * Water District 1 rental-pool $/AF is not an AMS source and stays off this table.
  * AMS_2770 Montana Direct prints a Delivery/Freight table. Current FOB stays the
  * cash series. A class with no Current FOB keeps its forward FOB prints (Oct FOB
@@ -54,7 +62,7 @@ export declare const PRODUCT_ID = "idaho-hay-feeder-ticks";
 export declare const ESMIS_HOST = "https://esmis.nal.usda.gov";
 export declare const MNREPORTS_PDF: (slug: string) => string;
 export declare const VIEW_REPORT: (slug: string) => string;
-export type AmsGroup = "hay" | "cattle" | "grain" | "wool" | "dairy" | "hogs" | "produce";
+export type AmsGroup = "hay" | "cattle" | "grain" | "wool" | "dairy" | "hogs" | "produce" | "inputs";
 export type AmsReport = {
     slug: string;
     group: AmsGroup;
@@ -175,6 +183,15 @@ export declare const SKIPPED_SOURCES: readonly [{
 }, {
     readonly id: "if_fv130_already";
     readonly why: "Idaho Falls IF_FV130 shipping-point is already on /ticks via farm-plan — do not re-list";
+}, {
+    readonly id: "ams_3776_maryland_production_cost";
+    readonly why: "AMS_3776 Maryland Production Cost is discontinued — do not add";
+}, {
+    readonly id: "ams_3883_intermountain";
+    readonly why: "AMS_3883 Inter-Mountain West stays off this card — not one of the seven production-cost PDFs";
+}, {
+    readonly id: "ams_3798_oklahoma_retail_feed";
+    readonly why: "AMS_3798 Oklahoma Retail Feed stays off this card — not a production-cost fuel or fertilizer print";
 }];
 export type AmsTick = {
     id: string;
@@ -267,6 +284,12 @@ export declare function parseOrganicGrainReport(text: string, report: AmsReport,
 export declare function parseProduceTerminal(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 /** Official AMS_3024 / CNWWCMR weekly — current-week cents/lb prints only. */
 export declare function parseWeeklyCottonReview(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
+/**
+ * Official AMS production-cost PDFs (fuels / synthetic fertilizer / organic
+ * fertilizer). Current Delivery Period Ask averages only. Change, narrative,
+ * weather, and the FSA interest-rate link are not ticks.
+ */
+export declare function parseProductionCostReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function parseAmsReportText(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 export declare function pdfToText(pdfPath: string): string;
 export declare function officialPdfCandidates(report: AmsReport): Promise<string[]>;

@@ -9,10 +9,11 @@ export const TICKS_PUBLIC_CACHE_SOURCE = "USDA farm market prices cache";
 /**
  * Agent-facing /ticks commodity set. Fat rows stay on the existing $0.05 bag:
  * eggs + poultry on dairy.*, cold storage on dairy.ams_1095.*, cotton on
- * grain.ams_3024.*, grocery/retail feature ads on dairy.ams_* / produce.ams_3324.
+ * grain.ams_3024.*, grocery/retail feature ads on dairy.ams_* / produce.ams_3324,
+ * production-cost fuels and fertilizer on inputs.ams_*.
  * Name them in free copy. Do not rename product.id.
  */
-export const TICKS_COMMODITY_SET = "hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail";
+export const TICKS_COMMODITY_SET = "hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail, production cost";
 /** OpenAPI GET /ticks description. Same bag. No path-split. */
 export const TICKS_OPENAPI_DESCRIPTION = `Call GET /ticks when you need the current official USDA farm market prices (${TICKS_COMMODITY_SET}). USDA AMS nationwide prints plus a few Idaho/PNW barn examples inside the same table — not the SKU. Not forecasts, not private barn deals, not water. JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs.`;
 /** Unpaid 402 resource + accepts[].description. Keep under CDP 500 chars. */

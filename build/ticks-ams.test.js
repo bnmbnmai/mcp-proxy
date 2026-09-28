@@ -2,7 +2,8 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { AMS_NATIONAL_REPORTS, cattleReportIntentionalEmpty, officialPdfCandidateOrder, parseAmsReportText, parseProducersLivestockReport, parseReportDate, producerLatestPosts, producerPdfUrl, } from "./ticks-ams.js";
+import { AMS_NATIONAL_REPORTS, SKIPPED_SOURCES, cattleReportIntentionalEmpty, officialPdfCandidateOrder, parseAmsReportText, parseProducersLivestockReport, parseReportDate, producerLatestPosts, producerPdfUrl, } from "./ticks-ams.js";
+import { leakTestSlug } from "./ticks-ams-leftovers.js";
 import { PRODUCT_PUBLIC_ID, SAMPLE_TABLE_SKU, TICKS_402_DESCRIPTION, TICKS_BAG, TICKS_COMMODITY_SET, TICKS_LLMS_BULLET, TICKS_OPENAPI_DESCRIPTION, } from "./shop-sample.js";
 const here = dirname(fileURLToPath(import.meta.url));
 const repoRoot = here.endsWith("/build") || here.endsWith("\\build") || here.endsWith("/src") || here.endsWith("\\src")
@@ -16,7 +17,7 @@ function report(slug) {
     assert.ok(found, slug);
     return found;
 }
-const FAT_NEEDLES = ["eggs", "cold storage", "poultry", "cotton", "grocery retail"];
+const FAT_NEEDLES = ["eggs", "cold storage", "poultry", "cotton", "grocery retail", "production cost"];
 assert.equal(PRODUCT_PUBLIC_ID, "us-hay-cattle-grain-ticks", "do not rename the public product.id");
 assert.equal(SAMPLE_TABLE_SKU.ticks.length, 3, "free slice stays 3 rows");
 assert.ok(!SAMPLE_TABLE_SKU.asOf.startsWith("2026-01"), "sample is not the January 2026 can");
@@ -402,7 +403,80 @@ for (const slug of ["1281", "1280", "1245", "1797", "2713", "1889", "1892"]) {
     assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === slug)?.group, "cattle", slug);
 }
 const slugs = AMS_NATIONAL_REPORTS.map((r) => r.slug);
-assert.ok(["2843", "1095", "3646", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "3324", "3024"].every((s) => slugs.includes(s)), "fat AMS slugs are on the nationwide /ticks walk");
+assert.ok(["2843", "1095", "3646", "2756", "2757", "2867", "2868", "3228", "3229", "3796", "3324", "3024", "3051", "3195", "2863", "3159", "3621", "3657", "3726"].every((s) => slugs.includes(s)), "fat AMS slugs are on the nationwide /ticks walk");
+const PRODUCTION_COST = [
+    { slug: "3051", file: "production-cost-3051.txt", n: 10, asOf: "2026-09-25", region: "alabama" },
+    { slug: "3195", file: "production-cost-3195.txt", n: 9, asOf: "2026-09-18", region: "illinois" },
+    { slug: "2863", file: "production-cost-2863.txt", n: 6, asOf: "2026-09-18", region: "iowa" },
+    { slug: "3159", file: "production-cost-3159.txt", n: 10, asOf: "2026-09-18", region: "north_carolina" },
+    { slug: "3621", file: "production-cost-3621.txt", n: 16, asOf: "2026-09-18", region: "oklahoma" },
+    { slug: "3657", file: "production-cost-3657.txt", n: 12, asOf: "2026-09-18", region: "pacific_northwest" },
+    { slug: "3726", file: "production-cost-3726.txt", n: 10, asOf: "2026-09-18", region: "pennsylvania" },
+];
+const productionBySlug = {};
+for (const spec of PRODUCTION_COST) {
+    const body = fx(spec.file);
+    assert.ok(!body.trim().startsWith("{") && !body.trim().startsWith("["), `${spec.slug} fixture is the ugly PDF text`);
+    assert.ok(!/marsapi/i.test(body), `${spec.slug} fixture is not a MARS body`);
+    assert.ok(body.includes("Report for week ending"), `${spec.slug} fixture is the official report`);
+    assert.equal(parseReportDate(body), spec.asOf, spec.slug);
+    assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === spec.slug)?.group, "inputs", spec.slug);
+    const rows = parseAmsReportText(body, report(spec.slug), `https://www.ams.usda.gov/mnreports/ams_${spec.slug}.pdf`);
+    assert.equal(rows.length, spec.n, `AMS_${spec.slug} current-week rows`);
+    assert.ok(rows.every((row) => row.group === "inputs" && row.unit !== "$/cwt"), spec.slug);
+    assert.ok(rows.every((row) => row.id.startsWith(`inputs.ams_${spec.slug}.${spec.region}.`)), spec.slug);
+    assert.ok(rows.every((row) => row.unit === "$/ton" || row.unit === "$/gal"), spec.slug);
+    assert.ok(rows.every((row) => row.asOf === spec.asOf && row.reportDate === spec.asOf), spec.slug);
+    assert.ok(rows.every((row) => row.source.includes(`AMS_${spec.slug}`) && row.sourceUrl.endsWith(`/ams_${spec.slug}.pdf`)), spec.slug);
+    assert.ok(rows.every((row) => row.classGrade.includes("Current") && row.price >= (row.lo ?? row.price) && row.price <= (row.hi ?? row.price)), spec.slug);
+    assert.ok(!rows.some((row) => row.internalSourceOnly), spec.slug);
+    assert.ok(!rows.some((row) => /interest|fsa|weather/i.test(row.id)), spec.slug);
+    productionBySlug[spec.slug] = rows;
+}
+const al = productionBySlug["3051"];
+assert.equal(al.find((row) => row.id.endsWith(".urea_46_0_0.ask.fob.ton"))?.price, 778.4);
+assert.equal(al.find((row) => row.id.endsWith(".dap_diammonium_phosphate_18_46_0.ask.fob.ton"))?.price, 961.83);
+assert.equal(al.filter((row) => row.id.includes("manure_solid_poultry")).length, 2);
+assert.equal(al.find((row) => row.id.endsWith(".manure_solid_poultry.ask.fob.ton"))?.price, 20);
+assert.equal(al.find((row) => row.id.endsWith(".manure_solid_poultry.ask.dlvd.ton"))?.price, 82.5);
+assert.equal(al.find((row) => row.id.includes("no_2_diesel_farm"))?.price, 5.49);
+assert.equal(al.find((row) => row.id.includes("no_2_diesel_farm"))?.unit, "$/gal");
+const il = productionBySlug["3195"];
+assert.equal(il.find((row) => row.id.includes("liquid_nitrogen_32_0_0"))?.price, 525);
+assert.equal(il.find((row) => row.id.includes("biodiesel_farm"))?.price, 5.35);
+assert.ok(!il.some((row) => row.id.includes(".organic.")));
+const ia = productionBySlug["2863"];
+assert.equal(ia.find((row) => row.id.includes("anhydrous_ammonia"))?.price, 823.4);
+assert.ok(!ia.some((row) => row.price === 201.6 || row.price === 160.05), "Iowa change column is not the print");
+assert.equal(ia.find((row) => row.id.includes(".propane."))?.price, 1.48);
+const nc = productionBySlug["3159"];
+assert.equal(nc.find((row) => row.id.endsWith(".urea_46_0_0.ask.fob.ton"))?.price, 767.5);
+assert.equal(nc.find((row) => row.id.includes("calcium_nitrate"))?.price, 753.33);
+assert.ok(!nc.some((row) => row.price === 130 || row.price === 6 || row.price === 0.29), "NC narrative dollars are not ticks");
+const ok = productionBySlug["3621"];
+assert.equal(ok.find((row) => row.id.includes("ammonium_polyphosphate_10_34_0"))?.price, 690);
+assert.equal(ok.find((row) => row.id.includes("blend_16_16_16"))?.price, 598);
+assert.equal(ok.find((row) => row.id.includes("no_2_diesel_farm"))?.lo, 4.59);
+assert.equal(ok.find((row) => row.id.includes("no_2_diesel_farm"))?.hi, 5.92);
+const pnw = productionBySlug["3657"];
+const pnwLn = pnw.filter((row) => row.id.includes("liquid_nitrogen_32_0_0"));
+assert.equal(pnwLn.length, 2, "PNW liquid nitrogen is both $/ton and $/gal");
+assert.equal(pnwLn.find((row) => row.unit === "$/ton")?.price, 822.05);
+assert.equal(pnwLn.find((row) => row.unit === "$/gal")?.price, 4.36);
+assert.equal(pnw.find((row) => row.id.includes("calcium_nitrate"))?.price, 31);
+const pa = productionBySlug["3726"];
+assert.equal(pa.find((row) => row.id.includes(".organic.farm.manure_solid_poultry"))?.price, 10.5);
+assert.equal(pa.find((row) => row.id.includes(".lime."))?.price, 15.3);
+assert.equal(pa.find((row) => row.id.includes("no_2_diesel_farm"))?.unit, "$/gal");
+assert.ok(pa.find((row) => row.id.includes("no_2_diesel_farm"))?.classGrade.includes("DLVD"));
+for (const killed of ["3776", "3883", "3798"]) {
+    assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === killed), undefined, `AMS_${killed} stays off /ticks`);
+    assert.ok(SKIPPED_SOURCES.some((row) => row.why.includes(killed)), `SKIPPED_SOURCES names AMS_${killed}`);
+}
+const productionLeaks = await Promise.all(PRODUCTION_COST.map((spec) => leakTestSlug(spec.slug)));
+for (const leak of productionLeaks) {
+    assert.ok(leak.ok, leak.reason);
+}
 const readme = readFileSync(join(repoRoot, "README.md"), "utf8");
 const shopIndex = readFileSync(join(repoRoot, "SHOP-INDEX.md"), "utf8");
 const openapi = JSON.parse(readFileSync(join(repoRoot, "openapi.json"), "utf8"));
@@ -429,5 +503,6 @@ console.log(JSON.stringify({
     groceryProduce3324: produceAds.length,
     weeklyCotton3024: cotton.length,
     torrington2101: torrington.length,
+    productionCost: Object.fromEntries(PRODUCTION_COST.map((spec) => [spec.slug, productionBySlug[spec.slug].length])),
 }));
 //# sourceMappingURL=ticks-ams.test.js.map
