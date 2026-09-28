@@ -37,7 +37,10 @@
  * cash series. A class with no Current FOB keeps its forward FOB prints (Oct FOB
  * and the like) so a trade week is not dropped. A live "No trades this week" /
  * "not established this week" PDF stays empty — do not backfill an older ESMIS
- * copy over that official empty. OKC West AMS_1281, Oklahoma National AMS_1280,
+ * copy over that official empty. AMS_3096 Eastern Cornbelt Direct
+ * (IL/IN/MI/MN/OH/KY) is that same table. Akamai 403s the lowercase HTTPS PDF
+ * on HTTP/2; HTTP/1.1 still returns the official body. marsapi stays 403.
+ * OKC West AMS_1281, Oklahoma National AMS_1280,
  * Joplin feeder AMS_1245 and slaughter/replacement AMS_1797, Superior video
  * AMS_2713, Winter Dodge City AMS_1889, and Farmers & Ranchers Salina KS AMS_1892
  * are rows on this same table. Producers Livestock Jerome ID and Vale OR weekly
@@ -149,9 +152,6 @@ export declare const SKIPPED_SOURCES: readonly [{
     readonly id: "dairy-waf-empty";
     readonly why: "AMS_1043/1044/1046/1047/1049/1050/1053 regional dry slugs 403 WAF on this VM — skip rather than leave silent holes";
 }, {
-    readonly id: "ams_3096_waf";
-    readonly why: "AMS_3096 Eastern Cornbelt Direct Feeder Cattle mnreports 403 WAF; drop rather than leave a silent empty";
-}, {
     readonly id: "se-swine-auction-barns";
     readonly why: "individual AMS swine-auction barn PDFs leftover — not a national sale-barn mill; AMS_2872 summary + AMS_2810 feeder pig are this hog slice";
 }, {
@@ -237,7 +237,8 @@ export declare function looksLikeVideoAuction(text: string): boolean;
 export declare function parseVideoAuctionReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[];
 /**
  * Direct-cattle Delivery/Freight table. Current FOB keeps the existing id.
- * Forward FOB is emitted only for a class that has no Current FOB (Montana Oct FOB).
+ * Forward FOB is emitted only for a class that has no Current FOB (Montana Oct FOB,
+ * Eastern Cornbelt Oct/Nov FOB). Pure Dairy is dairy-steer / dairy-heifer.
  * DEL and basis trades are not $/cwt cash ticks. Returns null when the PDF has no
  * DIRECT TRADES section so the legacy line parser can still run.
  */
