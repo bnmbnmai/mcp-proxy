@@ -3,7 +3,7 @@
  * Thin x402 pay-per-pull door for the BNM Data Shop.
  *
  * GET /ticks — USDA farm market prices ($0.05 USDC on Base)
- * GET /sample — free canned paid-JSON keys (not a SKU)
+ * GET /sample — free 3-row /ticks slice (not a SKU)
  * GET /firm-check?q= — free firm-name search across Form 483, warning letters, untitled letters, FTC WL, FTC orders, FMC orders, NMB/NLRB/FLRA/ECAB/FCC decision doors, Ofwat, Ofgem, CFPB/OCC/FDIC, import-alert indexes (not a SKU)
  * GET /.well-known/x402list.txt — free static ownership proof (HTTP 200, not a SKU)
  * GET /.well-known/erc8004.json — ERC-8004 registration-v1 agentURI (HTTP 200, not a SKU)
@@ -1741,7 +1741,7 @@ export function paymentExtra(sku: DoorSku): Record<string, unknown> {
 const SKU_COPY: Record<DoorSku, { description: string; resourcePath: string }> = {
   ticks: {
     description:
-      `Call GET /ticks when you need the current official USDA farm market prices (${TICKS_COMMODITY_SET}). $0.05 = entire current nationwide USDA AMS table on one GET (one SKU). Idaho/PNW barns (Twin Falls, Blackfoot) are example rows inside that table. JSON ticks plus stored history points. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs. Free canned keys: https://ticks.bnm.farm/sample. Rebuy: store the ETag from the paid 200 (unpaid 402 has no ETag); If-None-Match or ?since= is HTTP 304 with no charge when unchanged.`,
+      `Call GET /ticks when you need the current official USDA farm market prices (${TICKS_COMMODITY_SET}). $0.05 = entire current nationwide USDA AMS table on one GET (one SKU). Idaho/PNW barns (Twin Falls, Blackfoot) are example rows inside that table. JSON ticks plus stored history points. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs. Free 3-row slice: https://ticks.bnm.farm/sample. Rebuy: store the ETag from the paid 200 (unpaid 402 has no ETag); If-None-Match or ?since= is HTTP 304 with no charge when unchanged.`,
     resourcePath: TICKS_PATH,
   },
   "import-alerts": {
@@ -2133,10 +2133,10 @@ const BAZAAR_OUTPUT_EXAMPLE: Record<DoorSku, Record<string, unknown>> = {
     ok: true,
     product: PRODUCT_PUBLIC_ID,
     status: "ok",
-    fetchedAt: "2026-01-16T00:00:00Z",
-    asOf: "2026-01-15",
+    fetchedAt: SAMPLE_TABLE_SKU.fetchedAt,
+    asOf: SAMPLE_TABLE_SKU.asOf,
     source: TICKS_PUBLIC_CACHE_SOURCE,
-    recordCount: 1,
+    recordCount: SAMPLE_TABLE_SKU.recordCount,
     records: [...SAMPLE_TABLE_SKU.records],
     ticks: [...SAMPLE_TABLE_SKU.ticks],
   },
@@ -5376,7 +5376,7 @@ export function llmsTxt(): string {
   const listedGmpMd = gmpMdIsPublic();
   const ticksPrice = usdcDisplayFromAtomic(amountAtomicFor("ticks")) ?? "$0.05";
   const paid = [
-    `- GET /ticks — ${ticksPrice} — USDA farm market prices (${TICKS_COMMODITY_SET}). $0.05 = entire current nationwide USDA AMS table (one SKU). Idaho/PNW barns are example rows inside that table. Paid JSON keeps ticks[] and adds records[] + asOf. Free canned keys: https://ticks.bnm.farm/sample. Rebuy: pay once → store ETag from the paid 200 (unpaid 402 has no ETag) → poll If-None-Match (or ?since=) → 304 no charge when unchanged → pay again only when ETag/body changes.`,
+    `- GET /ticks — ${ticksPrice} — USDA farm market prices (${TICKS_COMMODITY_SET}). $0.05 = entire current nationwide USDA AMS table (one SKU). Idaho/PNW barns are example rows inside that table. Paid JSON keeps ticks[] and adds records[] + asOf. Free 3-row slice: https://ticks.bnm.farm/sample. Rebuy: pay once → store ETag from the paid 200 (unpaid 402 has no ETag) → poll If-None-Match (or ?since=) → 304 no charge when unchanged → pay again only when ETag/body changes.`,
     "- GET /import-alerts — $0.05 — FDA Import Alerts / DWPE firm-product snapshot. Paid JSON keeps ticks[] and adds records[] + asOf. Same ETag / If-None-Match (or ?since=) rebuy habit as /ticks.",
     "- GET /mariners — $0.05 — USCG D13 / Northwest Local Notice to Mariners",
     "- GET /mariners-d11 — $0.05 — USCG D11 / Southwest Local Notice to Mariners",
@@ -5455,7 +5455,7 @@ export function llmsTxt(): string {
     paid.push(`- GET /gmp-md — $0.05 — Health Canada medical-device report-card observation text + MDR cites. Newest ${PAID_BODY_N} official texts. Same URL ?before=<id or date> is the next older ${PAID_BODY_N} for another $0.05.`);
   }
   const free = [
-    `- GET /sample — free canned paid-JSON keys (table SKU + ?id= body SKU). HTTP 200. Not live cache. Not a SKU.`,
+    `- GET /sample — free 3-row /ticks slice plus a canned ?id= body-SKU example. HTTP 200. Not the whole $0.05 table. Not a SKU.`,
     `- GET /firm-check?q= — free firm-name search across Form 483, FDA warning letters, FDA untitled letters, FTC BCP warning letters, FTC ALJ/Commission orders, FMC orders, NMB representation determinations, NLRB Board decisions, FLRA Authority decisions, ECAB decisions, FCC Enforcement Bureau orders, EEOC OFS appellate decisions, Ofwat enforcement, Ofgem enforcement, CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog. HTTP 200. Names the door and the id or page to buy ($0.02 one text / $0.05 page or table). Not a SKU.`,
     `- GET /openapi.json — OpenAPI 3.1 with x-payment-info for the ${paidCountWord()} paid doors`,
     `- GET /.well-known/x402 — absolute URLs of the ${paidCountWord()} paid routes only`,
@@ -5623,7 +5623,7 @@ export function wellKnownX402(req: IncomingMessage, port: number): Record<string
       http429: HTTP_429_COPY,
     },
     instructions:
-      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Pay USDC on Base. ${BODY_PAGE_DISCOVERY} Free canned paid-JSON keys: GET /sample (HTTP 200, not a SKU). Free firm-name search: GET ${FIRM_CHECK_PATH}?q= (HTTP 200, not a SKU). ${SAMPLE_HOW_TO_USE.join(" ")} Free OpenAPI is at /openapi.json. MCP is at /mcp (same ${paidCountWord()} paid GETs plus free search and firm-check, not a new SKU). Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
+      `GET each resource unpaid for HTTP 402 with extensions.bazaar. Pay USDC on Base. ${BODY_PAGE_DISCOVERY} Free 3-row /ticks slice: GET /sample (HTTP 200, not a SKU). Free firm-name search: GET ${FIRM_CHECK_PATH}?q= (HTTP 200, not a SKU). ${SAMPLE_HOW_TO_USE.join(" ")} Free OpenAPI is at /openapi.json. MCP is at /mcp (same ${paidCountWord()} paid GETs plus free search and firm-check, not a new SKU). Only these ${paidCountWord()} paid routes exist. x402scan: ${X402SCAN_SERVER_URL}`,
   };
 }
 
@@ -6072,7 +6072,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       description: "Official public data as JSON. Unpaid paid routes return HTTP 402.",
       contact: { name: "BNM Data Shop", url: "https://bnm.farm/" },
       "x-guidance":
-        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. ${BODY_PAGE_DISCOVERY} Free canned paid-JSON keys: GET /sample (HTTP 200, not a SKU). Free firm-name search: GET ${FIRM_CHECK_PATH}?q= (HTTP 200, not a SKU). Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402 (GET or POST '{}'). MCP at GET/POST /mcp lists one tool per paid GET plus free search, free firm-check, paid get-one ($0.02), and paid get-page ($0.05). Free manifests do not include the paid body. GET has no request body. ${noNextSkuWord()}`,
+        `${paidCountWord().replace(/^./, (c) => c.toUpperCase())} paid GETs: ${paidList}, USDC on Base. ${BODY_PAGE_DISCOVERY} Free 3-row /ticks slice: GET /sample (HTTP 200, not a SKU). Free firm-name search: GET ${FIRM_CHECK_PATH}?q= (HTTP 200, not a SKU). Start at GET /openapi.json or GET /.well-known/x402, then probe the paid URL unpaid for HTTP 402 (GET or POST '{}'). MCP at GET/POST /mcp lists one tool per paid GET plus free search, free firm-check, paid get-one ($0.02), and paid get-page ($0.05). Free manifests do not include the paid body. GET has no request body. ${noNextSkuWord()}`,
     },
     "x-discovery": {
       ownershipProofs: [PAY_TO],
@@ -7773,8 +7773,8 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
         : {}),
       [SAMPLE_PATH]: {
         get: freeOpenApiOp(
-          "Free canned paid-JSON keys",
-          "HTTP 200 static example of /ticks table keys and extracted-body ?id= keys. Marked example:true. Not live cache. Not a paid SKU.",
+          "Free 3-row /ticks slice",
+          "HTTP 200 September 2026 3-row slice of /ticks table keys plus a canned extracted-body ?id= example. Marked example:true. Not the whole table. Not a paid SKU.",
         ),
       },
       [FIRM_CHECK_PATH]: {

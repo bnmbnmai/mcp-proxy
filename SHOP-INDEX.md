@@ -9,7 +9,7 @@ Public, agent-facing list of **live** paid GETs only. Re-read live manifests bef
 - Discovery: [https://ticks.bnm.farm/.well-known/x402](https://ticks.bnm.farm/.well-known/x402)
 - OpenAPI: [https://ticks.bnm.farm/openapi.json](https://ticks.bnm.farm/openapi.json)
 - llms.txt: [https://ticks.bnm.farm/llms.txt](https://ticks.bnm.farm/llms.txt)
-- Sample (free canned paid-JSON keys): [https://ticks.bnm.farm/sample](https://ticks.bnm.farm/sample)
+- Sample (free September 2026 3-row /ticks slice): [https://ticks.bnm.farm/sample](https://ticks.bnm.farm/sample)
 - Firm check (free cross-door search): [https://ticks.bnm.farm/firm-check?q=](https://ticks.bnm.farm/firm-check?q=)
 - Shop JSON: [https://ticks.bnm.farm/](https://ticks.bnm.farm/)
 - Ticks manifest: [https://ticks.bnm.farm/manifest.json](https://ticks.bnm.farm/manifest.json)
@@ -71,7 +71,7 @@ Free manifests carry the full catalog (count, ids, official source URLs). They a
 
 ## Free discovery (not paid)
 
-- `GET /sample` — free canned paid-JSON keys (table SKU + `?id=` body SKU). HTTP 200. Marked `example:true`. Not live cache. Not a paid SKU.
+- `GET /sample` — free September 2026 3-row /ticks slice plus a canned `?id=` body-SKU example. HTTP 200. Marked `example:true`. Not the whole $0.05 table. Not a paid SKU.
 - `GET /` — shop JSON (payTo + live products). Note says free index/search, then pay the page.
 - `GET /.well-known/x402` — absolute URLs of the live paid routes only (not a SKU per page). Lists `/sample` as a free discovery URL, not a resource.
 - `GET /openapi.json` — OpenAPI 3.1 with `x-payment-info`. Body doors: free index/search, then pay the page. Not the entire cache.
