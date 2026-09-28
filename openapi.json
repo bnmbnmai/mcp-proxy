@@ -6,6 +6,18 @@
     "version": "3.0.0"
   },
   "paths": {
+"/ticks": {
+    "get": {
+      "summary": "USDA farm market prices",
+      "description": "Call GET /ticks when you need the current official USDA farm market prices (hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail, grass-fed DTC). USDA AMS nationwide prints plus a few Idaho/PNW barn examples inside the same table \u2014 not the SKU. Manitoba Agriculture weekly auction-mart cattle prices (C$/cwt) are rows on this same table. Not forecasts, not private barn deals, not water. JSON ticks plus stored history points",
+      "responses": {
+        "200": {
+          "description": "Paid table"
+        }
+      }
+    }
+  }
+,
     "/.well-known/x402": {
       "get": {
         "summary": "Discovery Document",

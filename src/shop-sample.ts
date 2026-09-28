@@ -13,6 +13,8 @@ export const TICKS_PUBLIC_CACHE_SOURCE = "USDA farm market prices cache";
  * eggs + poultry (chicken 3646 / turkey 3647) on dairy.*, cold storage on
  * dairy.ams_1095.*, cotton on grain.ams_3024.*, grocery/retail feature ads on
  * dairy.ams_* / produce.ams_3324, grass-fed DTC on dairy.ams_2811.grassfed.*.
+ * Manitoba Agriculture weekly auction-mart cattle (and the sheep/goat rows in
+ * that same PDF) are C$/cwt rows on this same $0.05 table. Not a new path.
  * Name them in free copy. Do not rename product.id.
  */
 export const TICKS_COMMODITY_SET =
@@ -20,10 +22,22 @@ export const TICKS_COMMODITY_SET =
 
 /**
  * Unpaid GET /ticks accepts[].description. CDP limit is 500 characters.
- * One SKU: nationwide USDA AMS. Idaho/PNW barns stay example rows.
+ * One SKU: nationwide USDA AMS. Manitoba marts and Idaho/PNW barns stay rows.
  */
 export const TICKS_402_DESCRIPTION =
-  `Call GET /ticks when you need the current official USDA farm market prices (${TICKS_COMMODITY_SET}). $0.05 = entire current table. Nationwide USDA AMS; Idaho/PNW barns are example rows in that one table. Sample https://ticks.bnm.farm/sample. Rebuy: paid 200 ETag; If-None-Match 304 is no charge.`;
+  `Call GET /ticks when you need the current official USDA farm market prices (${TICKS_COMMODITY_SET}). Manitoba weekly auction marts are on this table. $0.05 = entire current table. Nationwide USDA AMS; Idaho/PNW barns are example rows. Sample https://ticks.bnm.farm/sample. Rebuy: paid 200 ETag; If-None-Match 304 is no charge.`;
+
+/** OpenAPI GET /ticks description. Same bag. No path-split. */
+export const TICKS_OPENAPI_DESCRIPTION =
+  `Call GET /ticks when you need the current official USDA farm market prices (${TICKS_COMMODITY_SET}). USDA AMS nationwide prints plus a few Idaho/PNW barn examples inside the same table — not the SKU. Manitoba Agriculture weekly auction-mart cattle prices (C$/cwt) are rows on this same table. Not forecasts, not private barn deals, not water. JSON ticks plus stored history points; days between reports are not filled in. Paid JSON keeps the old keys and adds records[] (id, date, firm, url, type) plus asOf for diffs.`;
+
+/** llms.txt /ticks bullet (price + bag; door adds rebuy sentence). */
+export const TICKS_LLMS_BULLET =
+  `GET /ticks — $0.05 — USDA farm market prices (${TICKS_COMMODITY_SET}). Idaho / PNW barns are example geography inside the table, not the SKU. Manitoba weekly auction-mart cattle (C$/cwt) is inside this table. Not forecasts, not private barn deals, not water.`;
+
+/** Catalog / README / SHOP-INDEX /ticks bag cell. */
+export const TICKS_BAG =
+  `USDA farm market prices (${TICKS_COMMODITY_SET}). Idaho / PNW barns are example geography inside the table, not the SKU. Manitoba Agriculture weekly auction-mart cattle prices (C$/cwt) are rows on this same table. Not forecasts, not private barn deals, not water. Entire current table`;
 
 const CANONICAL = "https://ticks.bnm.farm";
 
@@ -39,20 +53,22 @@ export const SAMPLE_HOW_TO_USE = [
 
 /**
  * Table-SKU keys from live paid /ticks JSON: ticks[], asOf, fetchedAt, source,
- * records[], recordCount, plus markets[]. Three September 2026 rows from the
- * official PDFs. source and sourceUrl stay on every tick. Not the whole table.
+ * records[], recordCount, plus markets[]. Envelope fetchedAt and asOf follow
+ * the live bag (manifest fetchedAt, newest tick asOf). The three rows stay the
+ * latest OKC West, Joplin feeder, and Superior prints. source and sourceUrl
+ * stay on every tick. Not the whole table.
  */
 export const SAMPLE_TABLE_SKU = {
   example: true,
   comment:
-    "Free 3-row slice of GET /ticks paid JSON from September 2026 official prints. $0.05 = entire current table.",
+    "Free 3-row slice of GET /ticks paid JSON. Envelope matches the live bag. Rows are the latest OKC West, Joplin, and Superior prints. $0.05 = entire current table.",
   ok: true,
   product: PRODUCT_PUBLIC_ID,
   status: "ok",
-  fetchedAt: "2026-09-25T15:18:53.000Z",
-  asOf: "2026-09-22",
+  fetchedAt: "2026-09-28T15:42:54.479Z",
+  asOf: "2026-09-26",
   source: TICKS_PUBLIC_CACHE_SOURCE,
-  note: `$0.05 buys the entire current nationwide USDA AMS table (${TICKS_COMMODITY_SET}), one SKU. This free slice is 3 September 2026 rows. Idaho/PNW barns are example rows inside the table.`,
+  note: `$0.05 buys the entire current nationwide USDA AMS table (${TICKS_COMMODITY_SET}), one SKU, including Manitoba weekly auction-mart cattle prices (C$/cwt). This free slice is 3 September 2026 rows. Idaho/PNW barns are example rows inside the table.`,
   recordCount: 3,
   markets: [
     { id: "ams_2770", name: "Montana Direct Feeder Cattle", sourceUrl: "https://www.ams.usda.gov/mnreports/ams_2770.pdf" },
@@ -63,6 +79,10 @@ export const SAMPLE_TABLE_SKU = {
     { id: "ams_2713", name: "Superior Livestock Video Auction", sourceUrl: "https://www.ams.usda.gov/mnreports/ams_2713.pdf" },
     { id: "ams_1889", name: "Winter Livestock Cattle Auction (Dodge City)", sourceUrl: "https://www.ams.usda.gov/mnreports/ams_1889.pdf" },
     { id: "ams_1892", name: "Farmers and Ranchers Livestock Commission Cattle Auction (Salina)", sourceUrl: "https://www.ams.usda.gov/mnreports/ams_1892.pdf" },
+    { id: "ams_1651", name: "Ozarks Regional Stockyards Slaughter/Replacement Cattle (West Plains)", sourceUrl: "https://www.ams.usda.gov/mnreports/ams_1651.pdf" },
+    { id: "ams_1255", name: "Springfield Livestock Marketing Center Feeder Cattle", sourceUrl: "https://www.ams.usda.gov/mnreports/ams_1255.pdf" },
+    { id: "ams_1830", name: "Southern Oklahoma Livestock Auction Feeder Cattle (Ada)", sourceUrl: "https://www.ams.usda.gov/mnreports/ams_1830.pdf" },
+    { id: "ams_3242", name: "Western Video Market", sourceUrl: "https://www.ams.usda.gov/mnreports/ams_3242.pdf" },
     { id: "private_producers_jerome", name: "Producers Livestock Jerome", sourceUrl: "https://www.producerslivestock.com/market-reports/" },
     { id: "private_producers_vale", name: "Producers Livestock Vale", sourceUrl: "https://www.producerslivestock.com/market-reports/" },
   ],
