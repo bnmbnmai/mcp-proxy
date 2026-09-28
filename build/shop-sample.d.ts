@@ -25,17 +25,19 @@ export declare const TICKS_BAG = "USDA farm market prices (hay, cattle, grain, d
 export declare const SAMPLE_HOW_TO_USE: readonly ["Search a free index: GET https://ticks.bnm.farm/{door}/manifest.json?q=…", "Then one official text: GET https://ticks.bnm.farm/{door}?id=… ($0.02)", "Or a page of 10: GET https://ticks.bnm.farm/{door} ($0.05; whole current set if n<10)", "Tables: GET https://ticks.bnm.farm/ticks and GET https://ticks.bnm.farm/import-alerts ($0.05 = entire current table)", "Table rebuy: pay GET /ticks once → store ETag from the paid 200 (unpaid 402 has no ETag) → poll with If-None-Match (or ?since=) → HTTP 304 no charge when unchanged → pay again only when the body/ETag changes", "Free 3-row /ticks slice (not the whole $0.05 table): GET https://ticks.bnm.farm/sample"];
 /**
  * Table-SKU keys from live paid /ticks JSON: ticks[], asOf, fetchedAt, source,
- * records[], recordCount, plus markets[]. Three September 2026 rows from the
- * official PDFs. source and sourceUrl stay on every tick. Not the whole table.
+ * records[], recordCount, plus markets[]. Envelope fetchedAt and asOf follow
+ * the live bag (manifest fetchedAt, newest tick asOf). The three rows stay the
+ * latest OKC West, Joplin feeder, and Superior prints. source and sourceUrl
+ * stay on every tick. Not the whole table.
  */
 export declare const SAMPLE_TABLE_SKU: {
     readonly example: true;
-    readonly comment: "Free 3-row slice of GET /ticks paid JSON from September 2026 official prints. Not the entire current table. $0.05 = entire current table.";
+    readonly comment: "Free 3-row slice of GET /ticks paid JSON. Envelope matches the live bag. Rows are the latest OKC West, Joplin, and Superior prints. Not the entire current table. $0.05 = entire current table.";
     readonly ok: true;
     readonly product: "us-hay-cattle-grain-ticks";
     readonly status: "ok";
-    readonly fetchedAt: "2026-09-25T15:18:53.000Z";
-    readonly asOf: "2026-09-22";
+    readonly fetchedAt: "2026-09-28T15:42:54.479Z";
+    readonly asOf: "2026-09-26";
     readonly source: "USDA farm market prices cache";
     readonly note: "$0.05 buys the entire current USDA farm market price table (hay, cattle, grain, dairy, hogs, produce, eggs, cold storage, poultry, cotton, grocery retail). This free slice is 3 rows. Days between reports are not filled in. Idaho / PNW barns are example geography inside the table, not the SKU name. Not water.";
     readonly recordCount: 3;
