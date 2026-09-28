@@ -1044,6 +1044,7 @@ const PUBLIC_SERIES_PREFIXES = [
   "dairy.ams_",
   "hogs.ams_",
   "produce.ams_",
+  "inputs.ams_",
   "fiber.ams_",
   "ibc.id.grain.",
   "ams.2914.",
@@ -4551,6 +4552,7 @@ const GROUP_LABELS: { id: string; name: string }[] = [
   { id: "hogs", name: "Hogs" },
   { id: "pulses", name: "Pulses" },
   { id: "wool", name: "Wool" },
+  { id: "inputs", name: "Inputs" },
 ];
 
 const SAMPLE_SERIES_IDS: readonly string[] = TICKS_MANIFEST_SAMPLE_IDS;
@@ -4723,12 +4725,12 @@ export function buildTicksManifest(resourceUrl = "https://ticks.bnm.farm/ticks")
     schema: {
       tickFields: {
         id: "string — deterministic series id",
-        group: "hay | cattle | produce | grain | dairy | hogs | pulses | wool",
+        group: "hay | cattle | produce | grain | dairy | hogs | pulses | wool | inputs",
         commodity: "string",
         label: "string",
         market: "string — geography / barn / shipping point",
         classGrade: "string",
-        unit: "$/ton | $/cwt | $/pair | $/50 lb | $/25 lb | $/bu | $/lb | $/pkg | $/head",
+        unit: "$/ton | $/cwt | $/pair | $/50 lb | $/25 lb | $/bu | $/lb | $/pkg | $/head | $/gal",
         price: "number | null — official print only",
         lo: "number | optional",
         hi: "number | optional",
