@@ -38,6 +38,14 @@
  * year-ago fluff, quality charts, and weather narrative are not ticks.
  * Daily AMS_3804 spot quotations and cnwwqo quality stay leftover. Do not
  * wrap MARS / MMN JSON (403 without a key).
+ * AMS production-cost reports (fuels, synthetic fertilizer, organic fertilizer)
+ * fatten the same $0.05 bag on a dedicated inputs group: inputs.ams_3051 /
+ * 3195 / 2863 / 3159 / 3621 / 3657 / 3726. Current-week Ask prints only
+ * (Delivery Period Current). $/ton and $/gal stay off hay/cattle $/cwt ids.
+ * US federal AMS text is public domain (17 USC 105). Official body is the
+ * ugly mnreports PDF — do not wrap marsapi (403 without a key). AMS_3776
+ * Maryland Production Cost is discontinued. AMS_3883 Inter-Mountain West and
+ * AMS_3798 Oklahoma Retail Feed stay off this card.
  * AMS_2811 National Grass Fed Beef is the official quarterly LPGMN DTC print
  * (mnreports/lsmngfbeef.pdf — ams_2811.pdf is 404 HTML). Rows land on the
  * existing dairy/protein table as dairy.ams_2811.grassfed.*. The tick is the
@@ -104,7 +112,7 @@ export const VIEW_REPORT = (slug: string) =>
 
 const HTTP_UA = "bnm-data-shop/1.0 (USDA AMS public market-report PDFs; +https://www.ams.usda.gov/market-news/hay-reports)";
 
-export type AmsGroup = "hay" | "cattle" | "grain" | "wool" | "dairy" | "hogs" | "produce" | "sheep";
+export type AmsGroup = "hay" | "cattle" | "grain" | "wool" | "dairy" | "hogs" | "produce" | "sheep" | "inputs";
 
 export type AmsReport = {
   slug: string;
@@ -289,6 +297,13 @@ export const AMS_NATIONAL_REPORTS: readonly AmsReport[] = [
   { slug: "bh_fv010", group: "produce", region: "boston", title: "Boston Terminal Market Fruit", esmisPublication: "", pdfNames: ["bh_fv010"] },
   { slug: "bh_fv020", group: "produce", region: "boston", title: "Boston Terminal Market Vegetables", esmisPublication: "", pdfNames: ["bh_fv020"] },
   { slug: "3324", group: "produce", region: "national_retail", title: "Grocery Store Specialty Crops Feature", esmisPublication: "", pdfNames: ["fvwretail"] },
+  { slug: "3051", group: "inputs", region: "alabama", title: "Alabama Production Cost", esmisPublication: "" },
+  { slug: "3195", group: "inputs", region: "illinois", title: "Illinois Production Cost", esmisPublication: "" },
+  { slug: "2863", group: "inputs", region: "iowa", title: "Iowa Production Cost", esmisPublication: "" },
+  { slug: "3159", group: "inputs", region: "north_carolina", title: "North Carolina Production Cost", esmisPublication: "" },
+  { slug: "3621", group: "inputs", region: "oklahoma", title: "Oklahoma Production Cost", esmisPublication: "" },
+  { slug: "3657", group: "inputs", region: "pacific_northwest", title: "Pacific Northwest Production Cost", esmisPublication: "" },
+  { slug: "3726", group: "inputs", region: "pennsylvania", title: "Pennsylvania Production Cost", esmisPublication: "" },
 ];
 
 export const SKIPPED_SOURCES = [
@@ -327,6 +342,9 @@ export const SKIPPED_SOURCES = [
   { id: "remaining-fv-terminals", why: "Asheville/Columbia/Raleigh/Baltimore/nuts, FV030 onion-potato city sheets, and discontinued MX_FV010 Mexico City leftover; NY/CHI/LA/ATL/DET/PHL/BOS fruit+veg are the national terminal slice. Grocery produce ads are AMS_3324 / fvwretail" },
   { id: "mx_fv010_discontinued", why: "MX_FV010 is Mexico City terminal fruit, permanently discontinued 2024-02-09 — not a current US terminal print" },
   { id: "if_fv130_already", why: "Idaho Falls IF_FV130 shipping-point is already on /ticks via farm-plan — do not re-list" },
+  { id: "ams_3776_maryland_production_cost", why: "AMS_3776 Maryland Production Cost is discontinued — do not add" },
+  { id: "ams_3883_intermountain", why: "AMS_3883 Inter-Mountain West stays off this card — not one of the seven production-cost PDFs" },
+  { id: "ams_3798_oklahoma_retail_feed", why: "AMS_3798 Oklahoma Retail Feed stays off this card — not a production-cost fuel or fertilizer print" },
 ] as const;
 
 export type AmsTick = {
@@ -3715,6 +3733,192 @@ export function parseNationalFeedstuffReport(text: string, report: AmsReport, so
 }
 
 
+const PRODUCTION_SECTION_RE = /^(Fertilizer \(Synthetic\)|Fertilizer \(Organic\)|Fuels)$/i;
+const PRODUCTION_UNIT_RE = /^(Fuel Distributor|Distributor|Farm)\s+\(Dollars Per (Ton|Gallon)\)$/i;
+const PRODUCTION_HEAD_RE = /^(.+?)\s+(Ask|Bid)\s+(.+)$/i;
+const PRODUCTION_END_RE = /^(.*)\s+(F\.O\.B\.|DLVD(?:\s*\(Applied\))?)\s+Current$/i;
+
+function normalizeProductionClass(raw: string): string {
+  return raw
+    .replace(/\s+/g, " ")
+    .replace(/(\d)\s+-\s*/g, "$1-")
+    .replace(/-\s+(\d)/g, "-$1")
+    .replace(/\(\s+/g, "(")
+    .replace(/\s+\)/g, ")")
+    .trim();
+}
+
+function productionBucket(section: string): "synthetic" | "organic" | "fuel" {
+  const s = section.toLowerCase();
+  if (s.includes("synthetic")) return "synthetic";
+  if (s.includes("organic")) return "organic";
+  return "fuel";
+}
+
+function productionKindLabel(bucket: "synthetic" | "organic" | "fuel"): string {
+  if (bucket === "synthetic") return "Synthetic fertilizer";
+  if (bucket === "organic") return "Organic fertilizer";
+  return "Fuel";
+}
+
+function productionFreightKey(raw: string): string {
+  if (/applied/i.test(raw)) return "dlvd_applied";
+  if (/dlvd/i.test(raw)) return "dlvd";
+  return "fob";
+}
+
+function isProductionFragment(line: string): boolean {
+  if (!line || line.length > 80) return false;
+  if (/\b(Ask|Bid|Current|Report|Source|Email|Page|http)\b/i.test(line)) return false;
+  if (/F\.O\.B\.|DLVD/i.test(line)) return false;
+  return /^[\w(.-]/.test(line);
+}
+
+function parseProductionTail(tail: string): { lo: number; hi: number; avg: number; freight: string; pkg: string } | null {
+  const end = tail.trim().match(PRODUCTION_END_RE);
+  if (!end) return null;
+  const middle = end[1] ?? "";
+  const freight = (end[2] ?? "").replace(/\s+/g, " ").trim();
+  const nums = [...middle.matchAll(/[\d,]+\.\d{2}/g)];
+  if (nums.length < 2 || nums.length > 4) return null;
+  const vals = nums.map((m) => Number(m[0].replace(/,/g, "")));
+  if (vals.some((n) => !Number.isFinite(n))) return null;
+  const between = middle.slice((nums[0].index ?? 0) + nums[0][0].length, nums[1].index ?? 0);
+  const isRange = /-/.test(between);
+  let lo: number;
+  let hi: number;
+  let avg: number;
+  if (isRange) {
+    if (vals.length < 3) return null;
+    lo = vals[0];
+    hi = vals[1];
+    avg = vals[2];
+  } else {
+    lo = vals[0];
+    hi = vals[0];
+    avg = vals[1];
+    if (Math.abs(lo - avg) > 0.02) return null;
+  }
+  const low = Math.min(lo, hi);
+  const high = Math.max(lo, hi);
+  if (avg < low - 1e-6 || avg > high + 1e-6) return null;
+  return { lo, hi, avg, freight, pkg: middle.slice(0, nums[0].index ?? 0).trim() };
+}
+
+function plausibleProductionPrice(unit: string, price: number): boolean {
+  if (unit === "$/gal") return price >= 0.5 && price <= 25;
+  return price >= 1 && price <= 5000;
+}
+
+/**
+ * Official AMS production-cost PDFs (fuels / synthetic fertilizer / organic
+ * fertilizer). Current Delivery Period Ask averages only. Change, narrative,
+ * weather, and the FSA interest-rate link are not ticks.
+ */
+export function parseProductionCostReport(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
+  const asOf = parseReportDate(text);
+  if (!asOf) return [];
+  const out: AmsTick[] = [];
+  let bucket: "synthetic" | "organic" | "fuel" | null = null;
+  let unit: "$/ton" | "$/gal" | null = null;
+  let channel = "";
+  let pending: {
+    className: string;
+    sale: string;
+    lo: number;
+    hi: number;
+    avg: number;
+    freight: string;
+    pkg: string;
+    bucket: "synthetic" | "organic" | "fuel";
+    unit: "$/ton" | "$/gal";
+    channel: string;
+  } | null = null;
+
+  const flush = (): void => {
+    if (!pending) return;
+    const row = pending;
+    pending = null;
+    const className = normalizeProductionClass(row.className);
+    if (!className || !plausibleProductionPrice(row.unit, row.avg)) return;
+    const freightKey = productionFreightKey(row.freight);
+    const unitKey = row.unit === "$/gal" ? "gal" : "ton";
+    const parts = [
+      "inputs",
+      `ams_${report.slug}`,
+      token(report.region),
+      row.bucket,
+      token(row.channel),
+      token(className),
+      token(row.sale),
+    ];
+    if (row.pkg) parts.push(token(row.pkg));
+    parts.push(freightKey, unitKey);
+    const kind = productionKindLabel(row.bucket);
+    pushTick(out, report, sourceUrl, asOf, {
+      id: parts.join("."),
+      group: "inputs",
+      commodity: className,
+      label: `${report.title} ${className}`,
+      market: report.title,
+      classGrade: `${kind}, ${row.channel}, ${row.sale}, ${row.freight}, Current`,
+      unit: row.unit,
+      price: roundMoney(row.avg),
+      lo: roundMoney(Math.min(row.lo, row.hi)),
+      hi: roundMoney(Math.max(row.lo, row.hi)),
+    });
+  };
+
+  for (const raw of text.split(/\r?\n/)) {
+    const line = raw.replace(/\s+/g, " ").trim();
+    if (!line) {
+      flush();
+      continue;
+    }
+    const section = line.match(PRODUCTION_SECTION_RE);
+    if (section) {
+      flush();
+      bucket = productionBucket(section[1] ?? line);
+      continue;
+    }
+    const unitHeader = line.match(PRODUCTION_UNIT_RE);
+    if (unitHeader) {
+      flush();
+      channel = unitHeader[1] ?? "";
+      unit = /gallon/i.test(unitHeader[2] ?? "") ? "$/gal" : "$/ton";
+      continue;
+    }
+    if (/^(Agriculture Interest Rates|Explanatory Notes)\b/i.test(line)) {
+      flush();
+      bucket = null;
+      continue;
+    }
+    const head = line.match(PRODUCTION_HEAD_RE);
+    const tail = head ? parseProductionTail(head[3] ?? "") : null;
+    if (head && tail && bucket && unit && channel) {
+      flush();
+      pending = {
+        className: head[1] ?? "",
+        sale: head[2] ?? "Ask",
+        lo: tail.lo,
+        hi: tail.hi,
+        avg: tail.avg,
+        freight: tail.freight,
+        pkg: tail.pkg,
+        bucket,
+        unit,
+        channel,
+      };
+      continue;
+    }
+    if (pending && isProductionFragment(line)) {
+      pending.className = `${pending.className} ${line}`;
+    }
+  }
+  flush();
+  return dedupeTicks(out);
+}
+
 export function parseAmsReportText(text: string, report: AmsReport, sourceUrl: string): AmsTick[] {
   if (report.slug === "2811" || (report.pdfNames ?? []).includes("lsmngfbeef")) {
     return parseGrassFedBeef(text, report, sourceUrl);
@@ -3746,6 +3950,7 @@ export function parseAmsReportText(text: string, report: AmsReport, sourceUrl: s
     if (report.slug === "3324") return parseSpecialtyCropsRetail(text, report, sourceUrl);
     return parseProduceTerminal(text, report, sourceUrl);
   }
+  if (report.group === "inputs") return parseProductionCostReport(text, report, sourceUrl);
   if (report.slug === "3510" || report.slug === "3512") {
     return parseNationalFeedstuffReport(text, report, sourceUrl);
   }
@@ -4658,7 +4863,7 @@ export async function collectAmsNational(opts?: { dir?: string; pauseMs?: number
           lastErr = "official PDF reported no trades / not established this week";
           break;
         }
-        lastErr = "official PDF had no parseable hay/cattle/grain/wool/dairy/hogs/produce/egg/cold-storage/chicken/grocery-retail/cotton/grass-fed print";
+        lastErr = "official PDF had no parseable hay/cattle/grain/wool/dairy/hogs/produce/egg/cold-storage/chicken/grocery-retail/cotton/grass-fed/production-cost print";
       } catch (err) {
         lastErr = err instanceof Error ? err.message : String(err);
       }
