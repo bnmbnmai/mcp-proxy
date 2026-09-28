@@ -1221,9 +1221,128 @@ const producerPosts = producerLatestPosts(producerHtml);
 assert.deepEqual(producerPosts.map((p) => p.barn), ["jerome", "vale"]);
 assert.equal(producerPdfUrl(`<a href="https://www.producerslivestock.com/wp-content/uploads/2026/09/VALE9-23-26.pdf">pdf</a>`), "https://www.producerslivestock.com/wp-content/uploads/2026/09/VALE9-23-26.pdf");
 
-for (const slug of ["1281", "1280", "1245", "1797", "1651", "1255", "1830", "2713", "3242", "1889", "1892"]) {
+const illinoisWeekly = parseAmsReportText(
+  fx("weekly-illinois-2041.txt"),
+  report("2041"),
+  "https://www.ams.usda.gov/mnreports/AMS_2041.pdf",
+);
+assert.equal(parseReportDate(fx("weekly-illinois-2041.txt")), "2026-09-26");
+assert.equal(illinoisWeekly.length, 30, `Illinois weekly cash rows, got ${illinoisWeekly.length}`);
+assert.ok(
+  illinoisWeekly.every(
+    (row) =>
+      row.asOf === "2026-09-26" &&
+      row.unit === "$/cwt" &&
+      row.group === "cattle" &&
+      row.price >= 20 &&
+      row.price <= 900 &&
+      row.source.includes("AMS_2041") &&
+      row.sourceUrl.includes("2041"),
+  ),
+);
+const ilSteer = illinoisWeekly.find((row) => row.id === "cattle.ams_2041.illinois_weekly.slaughter-steer.choice_2_4.1461lb");
+assert.ok(ilSteer, "IL Choice 2-4 steers");
+assert.equal(ilSteer.price, 216.75);
+assert.equal(ilSteer.lo, 212);
+assert.equal(ilSteer.hi, 223);
+assert.match(ilSteer.classGrade, /270 head/);
+assert.equal(
+  illinoisWeekly.find((row) => row.id === "cattle.ams_2041.illinois_weekly.slaughter-heifer.choice_2_4.1289lb")?.price,
+  216.52,
+);
+assert.equal(
+  illinoisWeekly.find((row) => row.id === "cattle.ams_2041.illinois_weekly.slaughter-cow.breaker.1451lb")?.price,
+  155.21,
+);
+assert.equal(
+  illinoisWeekly.find((row) => row.id === "cattle.ams_2041.illinois_weekly.slaughter-bull.12.1739lb")?.price,
+  186.03,
+);
+assert.equal(
+  illinoisWeekly.find((row) => row.id === "cattle.ams_2041.illinois_weekly.slaughter-beef-dairy-steer.choice_2_3.1460lb")?.price,
+  210,
+);
+assert.ok(!illinoisWeekly.some((row) => row.id.includes("feeder-") || row.price === 774), "IL had no feeder cattle; receipt total is not a tick");
+assert.ok(!illinoisWeekly.some((row) => /sheep|goat|please note/i.test(row.id + row.commodity)));
+
+const indianaWeekly = parseAmsReportText(
+  fx("weekly-indiana-1976.txt"),
+  report("1976"),
+  "https://www.ams.usda.gov/mnreports/ams_1976.pdf",
+);
+assert.equal(parseReportDate(fx("weekly-indiana-1976.txt")), "2026-09-26");
+assert.equal(indianaWeekly.length, 64, `Indiana weekly cash rows, got ${indianaWeekly.length}`);
+assert.ok(indianaWeekly.every((row) => row.asOf === "2026-09-26" && row.unit === "$/cwt" && row.group === "cattle" && row.source.includes("AMS_1976")));
+assert.equal(
+  indianaWeekly.find((row) => row.id === "cattle.ams_1976.indiana_weekly.feeder-steer.ml1.489lb")?.price,
+  366.61,
+);
+assert.equal(
+  indianaWeekly.find((row) => row.id === "cattle.ams_1976.indiana_weekly.dairy-steer.l3.460lb")?.price,
+  170,
+);
+assert.equal(
+  indianaWeekly.find((row) => row.id === "cattle.ams_1976.indiana_weekly.slaughter-steer.choice_2_3.1368lb")?.price,
+  209.39,
+);
+assert.equal(
+  indianaWeekly.find((row) => row.id === "cattle.ams_1976.indiana_weekly.feeder-dairy-bull.number_1.95lb")?.price,
+  1000,
+);
+assert.match(
+  indianaWeekly.find((row) => row.id === "cattle.ams_1976.indiana_weekly.feeder-dairy-bull.number_1.95lb")?.classGrade ?? "",
+  /Guernsey/,
+);
+const inBeefCross = indianaWeekly.find((row) => row.id === "cattle.ams_1976.indiana_weekly.feeder-dairy-bull.non_graded.85lb");
+assert.ok(inBeefCross, "IN beef-cross dairy bull calf");
+assert.equal(inBeefCross.price, 1457.4);
+assert.match(inBeefCross.classGrade, /Beef Cross/);
+assert.ok(!indianaWeekly.some((row) => row.price === 775 || row.id.endsWith(".260lb") || row.id.endsWith(".655lb")), "per-head dairy heifers stay off");
+assert.ok(!indianaWeekly.some((row) => row.price === 347.83 || row.price === 440 || row.price === 590), "sheep and goat prints stay off");
+assert.ok(!indianaWeekly.some((row) => row.price === 2648), "receipt count is not a tick");
+
+const pennsylvaniaWeekly = parseAmsReportText(
+  fx("weekly-pennsylvania-1919.txt"),
+  report("1919"),
+  "https://www.ams.usda.gov/mnreports/ams_1919.pdf",
+);
+assert.equal(parseReportDate(fx("weekly-pennsylvania-1919.txt")), "2026-09-26");
+assert.equal(pennsylvaniaWeekly.length, 124, `Pennsylvania weekly cash rows, got ${pennsylvaniaWeekly.length}`);
+assert.ok(
+  pennsylvaniaWeekly.every(
+    (row) => row.asOf === "2026-09-26" && row.unit === "$/cwt" && row.group === "cattle" && row.source.includes("AMS_1919") && row.sourceUrl.includes("1919"),
+  ),
+);
+assert.equal(
+  pennsylvaniaWeekly.find((row) => row.id === "cattle.ams_1919.pennsylvania_weekly.slaughter-steer.choice_and_prime_3_4.1565lb")?.price,
+  223.79,
+);
+assert.equal(
+  pennsylvaniaWeekly.find((row) => row.id === "cattle.ams_1919.pennsylvania_weekly.slaughter-heifer.choice_2_3.1387lb")?.price,
+  209.8,
+);
+assert.equal(
+  pennsylvaniaWeekly.find((row) => row.id === "cattle.ams_1919.pennsylvania_weekly.slaughter-dairy-cow.boner.1485lb")?.price,
+  129.18,
+);
+assert.equal(
+  pennsylvaniaWeekly.find((row) => row.id === "cattle.ams_1919.pennsylvania_weekly.slaughter-bull.12.1585lb")?.price,
+  191.56,
+);
+assert.equal(
+  pennsylvaniaWeekly.find((row) => row.id === "cattle.ams_1919.pennsylvania_weekly.feeder-dairy-bull.number_1.93lb.beef_cross")?.price,
+  1355.99,
+);
+assert.ok(!pennsylvaniaWeekly.some((row) => row.price === 4510), "receipt count is not a tick");
+assert.ok(!pennsylvaniaWeekly.some((row) => /please note|basis|del\b/i.test(row.id)));
+
+for (const slug of ["1281", "1280", "1245", "1797", "1651", "1255", "1830", "2713", "3242", "1889", "1892", "2041", "1976", "1919"]) {
   assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === slug)?.group, "cattle", slug);
 }
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "2041")?.region, "illinois_weekly");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "1976")?.region, "indiana_weekly");
+assert.equal(AMS_NATIONAL_REPORTS.find((r) => r.slug === "1919")?.region, "pennsylvania_weekly");
+assert.ok(!AMS_NATIONAL_REPORTS.some((r) => r.slug === "2056"), "AR AMS_2056 stays its own pass");
 
 const dir = mkdtempSync(join(tmpdir(), "ticks-ams-"));
 const snap = writeAmsSnapshot(
@@ -1705,5 +1824,8 @@ console.log(
     mergedTickCount: merged.ticks.length,
     keptTwinFalls: true,
     torrington2101: torrington.length,
+    illinoisWeekly2041: illinoisWeekly.length,
+    indianaWeekly1976: indianaWeekly.length,
+    pennsylvaniaWeekly1919: pennsylvaniaWeekly.length,
   }),
 );
