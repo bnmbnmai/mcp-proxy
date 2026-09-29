@@ -5,7 +5,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { AddressInfo } from "node:net";
 import assert from "node:assert/strict";
-import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, PRODUCT_NAME, TICKS_COMMODITY_SET, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, paidOutputJsonSchema, settlementReceiptHeaders, settlementFailureHeaders, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, facilitatorExtra, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2, paymentExtra, sku402Description, isOrganicHay, isWaterTick, buildTicksManifest, countWord } from "./ticks-door.js";
+import { handleRequest, PAY_TO, TICKS_PATH, USDC_BASE, DEFAULT_TICKS_DIR, loadTicks, MANIFEST_PATH, CATALOG_PATH, WELL_KNOWN_PATH, OPENAPI_PATH, LLMS_PATH, MCP_PATH, SAMPLE_PATH, X402LIST_PATH, PRODUCT_PUBLIC_ID, PRODUCT_NAME, TICKS_COMMODITY_SET, X402SCAN_SERVER_URL, NETWORK_V1, NETWORK_V2, bazaarExtension, paidOutputJsonSchema, settlementReceiptHeaders, settlementFailureHeaders, cdpEnvStatus, facilitatorPaymentRequirements, facilitatorBody, facilitatorExtra, facilitatorFailureDetail, cdpFacilitatorBodyProblems, PUBLIC_BAZAAR_SKUS, isPublicBazaarSku, publicBazaarSkus, paymentRequiredBody, paymentRequiredV2, paymentExtra, sku402Description, isOrganicHay, isWaterTick, buildTicksManifest, countWord } from "./ticks-door.js";
 import { EXTRACTED_BODY_SKUS, PAGE_AMOUNT_ATOMIC, SINGLE_DOC_AMOUNT_ATOMIC } from "./paid-records.js";
 import {
   IMPORT_ALERTS_AMOUNT_ATOMIC,
@@ -11607,6 +11607,68 @@ async function main(): Promise<void> {
     [],
     "client accepted.extra bag keys must be stripped before CDP verify",
   );
+  const v1Echo = (paymentRequiredBody("https://ticks.bnm.farm/ticks", "ticks").accepts as Record<string, unknown>[])[0];
+  const echoedV1 = facilitatorBody(
+    JSON.stringify({
+      x402Version: 2,
+      accepted: v1Echo,
+      payload: v1Exact.payload,
+      resource: { url: "https://ticks.bnm.farm/ticks", mimeType: "application/json" },
+    }),
+    ticksReqs,
+  );
+  assert.deepEqual(
+    cdpFacilitatorBodyProblems(echoedV1),
+    [],
+    "echoing the v1 402 accepts[0] must not be forwarded as paymentPayload.accepted",
+  );
+  const echoedAccepted = (echoedV1.paymentPayload as { accepted?: Record<string, unknown> }).accepted;
+  const echoedReqs = echoedV1.paymentRequirements as Record<string, unknown>;
+  assert.equal(echoedAccepted?.network, NETWORK_V2);
+  assert.equal(echoedAccepted?.amount, TICKS_AMOUNT_ATOMIC);
+  assert.equal(echoedAccepted?.maxAmountRequired, undefined);
+  assert.equal(echoedAccepted?.resource, undefined);
+  assert.equal(echoedAccepted?.description, undefined);
+  assert.equal(echoedAccepted?.mimeType, undefined);
+  assert.deepEqual(echoedAccepted, echoedReqs, "accepted must match our sanitized requirements");
+  const cheapAccepted = facilitatorBody(
+    JSON.stringify({
+      x402Version: 2,
+      accepted: {
+        scheme: "exact",
+        network: NETWORK_V2,
+        asset: USDC_BASE,
+        amount: "1",
+        payTo: PAY_TO,
+        maxTimeoutSeconds: 60,
+        extra: { name: "USD Coin", version: "2" },
+      },
+      payload: v1Exact.payload,
+    }),
+    ticksReqs,
+  );
+  assert.equal(
+    (cheapAccepted.paymentPayload as { accepted?: { amount?: string } }).accepted?.amount,
+    TICKS_AMOUNT_ATOMIC,
+    "client accepted.amount must not lower the price sent to CDP",
+  );
+  assert.equal(
+    facilitatorFailureDetail({
+      errorType: "invalid_request",
+      errorMessage: "'paymentPayload' is invalid: must match one of [x402V2PaymentPayload, x402V1PaymentPayload]",
+    }),
+    "invalid_request: 'paymentPayload' is invalid: must match one of [x402V2PaymentPayload, x402V1PaymentPayload]",
+  );
+  assert.equal(
+    facilitatorFailureDetail({
+      isValid: false,
+      invalidReason: "insufficient_funds",
+      invalidMessage: "payer does not have enough USDC",
+      payer: "0x1111111111111111111111111111111111111111",
+    }),
+    "insufficient_funds: payer does not have enough USDC",
+  );
+  assert.equal(facilitatorFailureDetail({ payer: "0x1111111111111111111111111111111111111111" }), "");
   const baggyProblems = cdpFacilitatorBodyProblems({
     x402Version: 2,
     paymentPayload: {

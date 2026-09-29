@@ -7,7 +7,7 @@
  * 17 USC 105. Distinct from killed PHMSA incident NARRATIVE zip and /ferc-orders.
  */
 
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { homedir } from "node:os";
 import { dirname, join, resolve } from "node:path";
@@ -79,6 +79,8 @@ export type PhmsaOrdersSnapshot = {
   listedCount?: number;
   fetchedPdfs?: number;
   skippedNoText?: number;
+  /** Ids already known to have no PHMSA-authored order text. Next walk does not pause on them. */
+  skippedIds?: string[];
   reused?: number;
   addedThisRun?: number;
   sources: { listing: string; pdfHost: string };
@@ -421,12 +423,21 @@ export function readPhmsaOrdersSnapshot(): PhmsaOrdersSnapshot | null {
 export function writePhmsaOrdersSnapshot(snap: PhmsaOrdersSnapshot): void {
   const path = snapshotPath();
   mkdirSync(dirname(path), { recursive: true });
-  writeFileSync(path, JSON.stringify(snap, null, 2) + "\n");
+  const tmp = `${path}.${process.pid}.tmp`;
+  writeFileSync(tmp, JSON.stringify(snap, null, 2) + "\n");
+  renameSync(tmp, path);
+}
+
+function fetchTimeoutMs(): number {
+  // Mirror Superfund: cap a hung primis fetch. 8 min still allows a slow PDF.
+  const n = Number(env("PHMSA_ORDERS_FETCH_MS", "480000"));
+  return Number.isFinite(n) && n > 0 ? Math.floor(n) : 480000;
 }
 
 export async function fetchPhmsaText(url: string): Promise<string> {
   const res = await fetch(url, {
     headers: { "User-Agent": HTTP_UA, Accept: "text/plain,*/*" },
+    signal: AbortSignal.timeout(fetchTimeoutMs()),
   });
   if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
   return await res.text();
@@ -435,6 +446,7 @@ export async function fetchPhmsaText(url: string): Promise<string> {
 export async function fetchPhmsaBytes(url: string): Promise<Uint8Array> {
   const res = await fetch(url, {
     headers: { "User-Agent": HTTP_UA, Accept: "application/pdf,*/*" },
+    signal: AbortSignal.timeout(fetchTimeoutMs()),
   });
   if (!res.ok) throw new Error(`${url} HTTP ${res.status}`);
   const bytes = new Uint8Array(await res.arrayBuffer());
@@ -488,20 +500,45 @@ function mergeListings(listed: PhmsaOrderListing[], seeds: PhmsaOrderListing[]):
   return out.sort((a, b) => `${b.date ?? ""}${b.id}`.localeCompare(`${a.date ?? ""}${a.id}`));
 }
 
-async function loadOfficialListings(dir: string): Promise<{ listed: PhmsaOrderListing[]; listedCount: number }> {
+/** Healthy bag: real order text is already on disk. An empty or stale file is not a reason to skip. */
+export function phmsaBagHealthy(snap: PhmsaOrdersSnapshot | null): boolean {
+  return Boolean(
+    snap &&
+      snap.status === "ok" &&
+      snap.cards.some((c) => isRealPhmsaOrderBody(c.body) && isOfficialPhmsaPdf(c.sourceUrl)),
+  );
+}
+
+/**
+ * Skip the ~3500-row TSV pause walk when the official row count has not moved.
+ * PHMSA_ORDERS_FORCE_WALK=1 always walks. A failed TSV download is not "unchanged".
+ */
+export function phmsaSkipTsvWalk(
+  prior: PhmsaOrdersSnapshot | null,
+  listedCount: number,
+  forceWalk = false,
+): boolean {
+  if (forceWalk) return false;
+  if (!phmsaBagHealthy(prior)) return false;
+  return typeof prior!.listedCount === "number" && prior!.listedCount > 0 && prior!.listedCount === listedCount;
+}
+
+async function loadOfficialListings(
+  dir: string,
+): Promise<{ listed: PhmsaOrderListing[]; listedCount: number; tsvOk: boolean }> {
   if (dir) {
     const tsv = readNamedFile(dir, ["listing-excerpt.tsv", "listing.tsv", "PHMSA Pipeline Enforcement Raw Data.txt"]);
     const fromTsv = tsv ? parseListingRows(parseTsv(tsv)) : [];
     const extra = SEED_LISTINGS.filter((row) => existsSync(join(dir, `${row.id}.txt`)));
     const listed = mergeListings(fromTsv, extra);
-    return { listed, listedCount: listed.length };
+    return { listed, listedCount: listed.length, tsvOk: true };
   }
   try {
     const tsv = await fetchPhmsaText(TSV_URL);
     const listed = mergeListings(parseListingRows(parseTsv(tsv)), SEED_LISTINGS);
-    return { listed, listedCount: listed.length };
+    return { listed, listedCount: listed.length, tsvOk: true };
   } catch {
-    return { listed: mergeListings([], SEED_LISTINGS), listedCount: SEED_LISTINGS.length };
+    return { listed: mergeListings([], SEED_LISTINGS), listedCount: SEED_LISTINGS.length, tsvOk: false };
   }
 }
 
@@ -516,15 +553,20 @@ export async function collectPhmsaOrders(opts?: {
   maxFetch?: number;
 }): Promise<PhmsaOrdersSnapshot> {
   const dir = opts?.tsvDir ?? listingDir();
-  const { listed: allListed, listedCount } = await loadOfficialListings(dir);
+  const priorSnap = readPhmsaOrdersSnapshot();
+  const { listed: allListed, listedCount, tsvOk } = await loadOfficialListings(dir);
+  const forceWalk = env("PHMSA_ORDERS_FORCE_WALK") === "1";
+  if (!dir && !tsvOk && phmsaBagHealthy(priorSnap)) return priorSnap!;
+  if (phmsaSkipTsvWalk(priorSnap, listedCount, forceWalk)) return priorSnap!;
   const target = opts?.limit ?? firstSliceLimit();
   const fetchCap = opts?.maxFetch ?? (dir ? 0 : maxFetchLimit());
   const cacheDir = phmsaOrdersDir();
   mkdirSync(cacheDir, { recursive: true });
   const prior = new Map<string, PhmsaOrderCard>();
-  for (const card of readPhmsaOrdersSnapshot()?.cards ?? []) {
+  for (const card of priorSnap?.cards ?? []) {
     if (isRealPhmsaOrderBody(card.body)) prior.set(card.id, card);
   }
+  const remembered = new Set((priorSnap?.skippedIds ?? []).filter((id) => typeof id === "string" && id));
   const cards: PhmsaOrderCard[] = [];
   const seen = new Set<string>();
   let fetchedPdfs = 0;
@@ -540,19 +582,24 @@ export async function collectPhmsaOrders(opts?: {
       reused += 1;
       continue;
     }
+    if (remembered.has(row.id)) {
+      skippedNoText += 1;
+      continue;
+    }
     if (fetchCap > 0 && fetchedPdfs >= fetchCap) break;
     try {
       const localText = readNamedFile(dir, [`${row.id}.txt`, `${row.cpf}.txt`]);
       if (dir && !localText) {
         skippedNoText += 1;
+        remembered.add(row.id);
         continue;
       }
-      if (!dir) await pause(opts?.pauseMs ?? 250);
+      const pdfFile = join(cacheDir, `${row.id}.pdf`);
       const text =
         localText ??
         (await (async () => {
-          const pdfFile = join(cacheDir, `${row.id}.pdf`);
           if (!existsSync(pdfFile)) {
+            if (!dir) await pause(opts?.pauseMs ?? 250);
             writeFileSync(pdfFile, await fetchPhmsaBytes(row.sourceUrl));
             fetchedPdfs += 1;
           }
@@ -561,6 +608,7 @@ export async function collectPhmsaOrders(opts?: {
       const parsed = parsePhmsaOrderText(text, row);
       if (!isRealPhmsaOrderBody(parsed.body)) {
         skippedNoText += 1;
+        remembered.add(row.id);
         continue;
       }
       cards.push(parsed);
@@ -578,6 +626,7 @@ export async function collectPhmsaOrders(opts?: {
     listedCount,
     fetchedPdfs,
     skippedNoText,
+    skippedIds: [...remembered].sort(),
     reused,
     addedThisRun,
   };

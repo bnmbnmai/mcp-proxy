@@ -38,7 +38,14 @@ DRY_RUN="${TICKS_COLLECT_DRY_RUN:-}"
 mkdir -p "$(dirname "$LOG")" "$(dirname "$LOCK")"
 
 log() {
-  printf '%s %s\n' "$(date '+%Y-%m-%dT%H:%M:%S%z')" "$*" | tee -a "$LOG"
+  # Line flock so parallel doors cannot tear a status line in the main log.
+  local line
+  line="$(printf '%s %s\n' "$(date '+%Y-%m-%dT%H:%M:%S%z')" "$*")"
+  mkdir -p "$(dirname "$LOG")"
+  {
+    flock -w 60 8
+    printf '%s\n' "$line" | tee -a "$LOG"
+  } 8>>"${LOG}.lock"
 }
 
 # 02:00–03:59 America/Boise is reserved for Imagine.
@@ -185,7 +192,25 @@ export UNTITLED_LETTERS_MAX_FETCH="${UNTITLED_LETTERS_MAX_FETCH:-40}"
 export GMP_LIMIT="${GMP_LIMIT:-50}"
 export GMP_MAX_FETCH="${GMP_MAX_FETCH:-400}"
 
-log "collect start growUntil=${GROW_UNTIL} limit=${GROW_LIMIT} dryRun=${DRY_RUN:-0}"
+# Superfund SEMS PDFs are ~4 min each. GROW_LIMIT 24 was ~2h on this one door.
+# Cap new downloads per pass. Morning 7:45 stays at 6; evening (noon onward,
+# including the 7:45pm pass) stays at 4. SUPERFUND_MAX_NEW_PER_PASS=24 restores
+# the old growth. 0 disables the extra cap. Fetch timeout stays 8 min
+# (SUPERFUND_RODS_FETCH_MS) so a healthy ~4 min PDF is not cut off.
+# SUPERFUND_PASS_DEADLINE_MS (default 40 min) stops starting another download
+# when the pass cannot finish one healthy PDF, then writes prior cards + whatever
+# finished. Other doors keep GROW_LIMIT.
+if [[ -z "${SUPERFUND_MAX_NEW_PER_PASS:-}" ]]; then
+  if (( 10#$hour >= 12 )); then
+    SUPERFUND_MAX_NEW_PER_PASS=4
+  else
+    SUPERFUND_MAX_NEW_PER_PASS=6
+  fi
+fi
+export SUPERFUND_MAX_NEW_PER_PASS
+export SUPERFUND_PASS_DEADLINE_MS="${SUPERFUND_PASS_DEADLINE_MS:-2400000}"
+
+log "collect start growUntil=${GROW_UNTIL} limit=${GROW_LIMIT} superfundNew=${SUPERFUND_MAX_NEW_PER_PASS} dryRun=${DRY_RUN:-0}"
 
 ticks_snapshot() {
   local p
@@ -337,13 +362,46 @@ door_js() {
   esac
 }
 
+# superfund-rods, phmsa-orders, and eis-reports keep separate data dirs.
+# Only eis-reports launches Chrome (its own download dir). Snapshot writes
+# are temp-file renames. The parent keeps the collect flock on fd 9.
+# Imagine is checked before this group starts and again before later doors.
+# A door already started is allowed to finish, same as a serial door.
+parallel_skus=(superfund-rods phmsa-orders eis-reports)
+
+is_parallel_sku() {
+  local sku="$1" one
+  for one in "${parallel_skus[@]}"; do
+    [[ "$one" == "$sku" ]] && return 0
+  done
+  return 1
+}
+
+door_log_path() {
+  local sku="$1"
+  local dir="${TICKS_COLLECT_DOOR_LOG_DIR:-$(dirname "$LOG")}"
+  printf '%s\n' "${dir}/ticks-collect-${sku}.log"
+}
+
+emit() {
+  log "$@"
+  if [[ -n "${door_log:-}" ]]; then
+    printf '%s %s\n' "$(date '+%Y-%m-%dT%H:%M:%S%z')" "$*" >>"$door_log"
+  fi
+}
+
 run_door() {
   local sku="$1"
-  local js snap
+  local door_log="${2:-}"
+  local js snap node_log="$LOG"
+  if [[ -n "$door_log" ]]; then
+    mkdir -p "$(dirname "$door_log")"
+    node_log="$door_log"
+  fi
   js="$(door_js "$sku")"
   snap="$(door_snap "$sku")"
   if [[ ! -f "$js" && "${DRY_RUN}" != "1" ]]; then
-    log "$sku missing $js"
+    emit "$sku missing $js"
     return 0
   fi
   plan_fields "$snap"
@@ -351,26 +409,26 @@ run_door() {
   local action="${_action}"
   local reason="${_reason}"
   if [[ "$action" == "skip" && ( "${DRY_RUN}" == "1" || "${CHECK_ALL}" != "1" ) ]]; then
-    log "/${sku}, ${before}, ${before}, ${reason}"
+    emit "/${sku}, ${before}, ${before}, ${reason}"
     return 0
   fi
   if imagine_busy; then
-    log "stop doors: Imagine/rmbg became active"
+    emit "stop doors: Imagine/rmbg became active"
     return 1
   fi
   if [[ "$action" == "skip" ]]; then
-    log "$sku check n=${before} asOf-delta (plan ${reason})"
+    emit "$sku check n=${before} asOf-delta (plan ${reason})"
   else
-    log "$sku $action n=${before} growUntil=${GROW_UNTIL} limit=${GROW_LIMIT}"
+    emit "$sku $action n=${before} growUntil=${GROW_UNTIL} limit=${GROW_LIMIT}"
   fi
   if [[ "${DRY_RUN}" == "1" ]]; then
-    log "/${sku}, ${before}, ${before}, ${reason}"
+    emit "/${sku}, ${before}, ${before}, ${reason}"
     return 0
   fi
   local extra
   extra="$(door_argv "$sku")"
-  if ! "$NODE_BIN" "$js" ${extra:+$extra} >>"$LOG" 2>&1; then
-    log "$sku collect failed"
+  if ! "$NODE_BIN" "$js" ${extra:+$extra} >>"$node_log" 2>&1; then
+    emit "$sku collect failed"
   fi
   plan_fields "$snap"
   local after="${_n}"
@@ -386,12 +444,63 @@ run_door() {
   elif [[ "$action" == "refresh" ]]; then
     done="refreshed"
   fi
-  log "/${sku}, ${before}, ${after}, ${done}"
+  emit "/${sku}, ${before}, ${after}, ${done}"
+  return 0
+}
+
+run_parallel_collect_doors() {
+  local sku skus=()
+  for sku in "${DOORS[@]}"; do
+    is_parallel_sku "$sku" && skus+=("$sku")
+  done
+  if [[ ${#skus[@]} -lt 2 ]]; then
+    for sku in "${skus[@]}"; do
+      run_door "$sku" || return 1
+    done
+    return 0
+  fi
+  if imagine_busy; then
+    log "stop doors: Imagine/rmbg became active"
+    return 1
+  fi
+  log "parallel doors ${skus[*]} (separate bags; eis-reports is the only Chrome; per-door logs)"
+  local pids=() pid dl fail=0
+  for sku in "${skus[@]}"; do
+    dl="$(door_log_path "$sku")"
+    mkdir -p "$(dirname "$dl")"
+    printf '%s parallel door %s\n' "$(date '+%Y-%m-%dT%H:%M:%S%z')" "$sku" >>"$dl"
+    (
+      run_door "$sku" "$dl"
+    ) &
+    pids+=("$!")
+  done
+  for pid in "${pids[@]}"; do
+    wait "$pid" || fail=1
+  done
+  # A door returns 1 only when Imagine is active. Any other child error
+  # is already logged on that door; later doors still run.
+  if imagine_busy; then
+    log "stop doors: Imagine/rmbg became active"
+    return 1
+  fi
+  if [[ "$fail" -ne 0 ]]; then
+    log "parallel doors: one door exited early; continuing the rest of the collect"
+  fi
   return 0
 }
 
 cd "$MCP"
+parallel_launched=0
 for sku in "${DOORS[@]}"; do
+  # Dry-run stays serial so the plan log order matches the well-known list.
+  if [[ "${DRY_RUN}" != "1" ]] && is_parallel_sku "$sku"; then
+    if [[ "$parallel_launched" == 1 ]]; then
+      continue
+    fi
+    parallel_launched=1
+    run_parallel_collect_doors || break
+    continue
+  fi
   run_door "$sku" || break
 done
 
