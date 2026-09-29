@@ -334,6 +334,23 @@ import {
   USCG_ALJ_DECISIONS_PATH,
 } from "./uscg-alj-decisions.js";
 import {
+  BAY_ID,
+  BAY_URL,
+  BODY_NEEDLE_BAY,
+  BODY_NEEDLE_CARE,
+  BODY_NEEDLE_ECG,
+  BODY_NEEDLE_GILCHRIST,
+  CARE_ID,
+  CARE_URL,
+  CBCA_DECISIONS_AMOUNT_ATOMIC,
+  CBCA_DECISIONS_MANIFEST_PATH,
+  CBCA_DECISIONS_PATH,
+  ECG_ID,
+  ECG_URL,
+  GILCHRIST_ID,
+  GILCHRIST_URL,
+} from "./cbca-decisions.js";
+import {
   FORM_483_AMOUNT_ATOMIC,
   FORM_483_MANIFEST_PATH,
   FORM_483_PATH,
@@ -1052,6 +1069,7 @@ async function main(): Promise<void> {
     assert.ok(spec.paths["/ibla-decisions"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/ccb-determinations"]?.get?.["x-payment-info"]);
     assert.ok(spec.paths["/uscg-alj-decisions"]?.get?.["x-payment-info"]);
+    assert.ok(spec.paths["/cbca-decisions"]?.get?.["x-payment-info"]);
     assert.equal(
       Object.keys(spec.paths).filter((p) => spec.paths[p].get?.["x-payment-info"]).length,
       PUBLIC_BAZAAR_SKUS.length,
@@ -9903,6 +9921,150 @@ async function main(): Promise<void> {
     },
   );
 
+  const cbcaDir = mkdtempSync(join(tmpdir(), "cbca-decisions-"));
+  const cbcaPad = Array.from({ length: 40 }, (_, i) => `Official CBCA slip paragraph ${i + 1}.`).join(" ");
+  const cbcaCard = (
+    id: string,
+    docket: string,
+    program: string,
+    kind: string,
+    date: string,
+    institution: string,
+    sourceUrl: string,
+    needle: string,
+  ) => ({
+    id,
+    docket,
+    caseNo: docket,
+    program,
+    kind,
+    date,
+    judge: "Board",
+    institution,
+    title: `${docket} ${kind}`,
+    sourceUrl,
+    body: `CIVILIAN BOARD OF CONTRACT APPEALS. ${docket}. ${kind.toUpperCase()}. ${needle} ${cbcaPad}`,
+  });
+  writeFileSync(
+    join(cbcaDir, "snapshot.json"),
+    JSON.stringify({
+      ok: true,
+      product: "cbca-decision-bodies",
+      status: "ok",
+      reason: null,
+      fetchedAt: "2026-09-23T22:00:00.000Z",
+      asOf: "2026-09-23",
+      license: "17 USC 105",
+      attribution:
+        "Civilian Board of Contract Appeals, U.S. General Services Administration. Work of the United States Government; 17 U.S.C. § 105.",
+      sources: {
+        cda: "https://www.cbca.gov/decisions/cda-cases.html",
+        fema: "https://www.cbca.gov/decisions/fema.html",
+        relocation: "https://www.cbca.gov/decisions/relocation.html",
+        travel: "https://www.cbca.gov/decisions/travel.html",
+        pdfHost: "https://www.cbca.gov/files/decisions/",
+      },
+      cards: [
+        cbcaCard(GILCHRIST_ID, "CBCA 8825", "cda", "Decision", "2026-09-23", "The Gilchrist Law Firm, P.A.", GILCHRIST_URL, BODY_NEEDLE_GILCHRIST),
+        cbcaCard(ECG_ID, "CBCA 8875", "cda", "Dismissal", "2026-09-21", "ECG GSA 1, LLC", ECG_URL, BODY_NEEDLE_ECG),
+        cbcaCard(CARE_ID, "CBCA 8974-FEMA", "fema", "Decision", "2026-09-21", "Care Plus Bergen", CARE_URL, BODY_NEEDLE_CARE),
+        cbcaCard(BAY_ID, "CBCA 8350-FEMA", "fema", "Order", "2026-08-12", "Board of Trustees of Bay Medical Center", BAY_URL, BODY_NEEDLE_BAY),
+      ],
+    }),
+  );
+
+  await withServer(
+    {
+      CBCA_DECISIONS_DIR: cbcaDir,
+      X402_SKIP_SETTLE: "1",
+      FORM_483_DIR: join(tmpdir(), "form-483-absent-cbca-"),
+    },
+    async (base) => {
+      const unpaid = await fetch(`${base}${CBCA_DECISIONS_PATH}`);
+      assert.equal(unpaid.status, 402, "unpaid GET /cbca-decisions must be 402");
+      const body402 = (await unpaid.json()) as {
+        resource: string;
+        accepts: { maxAmountRequired?: string; mimeType?: string }[];
+      };
+      assert.equal(body402.resource, CBCA_DECISIONS_PATH);
+      assert.equal(body402.accepts[0]?.maxAmountRequired, CBCA_DECISIONS_AMOUNT_ATOMIC);
+      assert.equal(body402.accepts[0]?.mimeType, "application/json");
+      const unpaidId = await fetch(`${base}${CBCA_DECISIONS_PATH}?id=${GILCHRIST_ID}`);
+      assert.equal(unpaidId.status, 402, "unpaid GET /cbca-decisions?id= must be 402");
+      const id402 = (await unpaidId.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(id402.accepts[0]?.maxAmountRequired, SINGLE_DOC_AMOUNT_ATOMIC, "id bag is $0.02");
+      const unpaidSince = await fetch(`${base}${CBCA_DECISIONS_PATH}?since=2026-12-31`);
+      assert.equal(unpaidSince.status, 402, "unpaid GET /cbca-decisions?since= must be 402");
+      const since402 = (await unpaidSince.json()) as { accepts: { maxAmountRequired?: string }[] };
+      assert.equal(since402.accepts[0]?.maxAmountRequired, CBCA_DECISIONS_AMOUNT_ATOMIC, "since bag is $0.05");
+      assert.ok(!JSON.stringify(body402).includes(BODY_NEEDLE_GILCHRIST));
+      assert.ok(!JSON.stringify(body402).includes("Official CBCA slip paragraph"));
+
+      const shop = (await (await fetch(`${base}/`)).json()) as { products: { path: string }[] };
+      assert.equal(shop.products.some((p) => p.path === CBCA_DECISIONS_PATH), true);
+
+      const wk = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as { resources: string[] };
+      assert.ok(wk.resources.some((r) => r.includes(CBCA_DECISIONS_PATH)), "well-known lists /cbca-decisions");
+
+      const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
+      assert.ok(llms.includes("GET /cbca-decisions"));
+
+      const spec = (await (await fetch(`${base}${OPENAPI_PATH}`)).json()) as { paths: Record<string, unknown> };
+      assert.ok(spec.paths[CBCA_DECISIONS_PATH]);
+      assert.ok(spec.paths[CBCA_DECISIONS_MANIFEST_PATH]);
+      assert.ok(spec.paths["/cbca-decisions/index"]);
+
+      const manifest = await fetch(`${base}${CBCA_DECISIONS_MANIFEST_PATH}`);
+      assert.equal(manifest.status, 200, "cbca-decisions free manifest is free");
+      const man = (await manifest.json()) as {
+        cardCount?: number;
+        asOf?: string;
+        cards?: { id?: string; docket?: string; kind?: string; program?: string; body?: string; sourceUrl?: string; paidUrl?: string }[];
+      };
+      assert.equal(man.cardCount, 4);
+      assert.equal(man.asOf, "2026-09-23");
+      assert.ok(man.cards?.some((card) => card.id === GILCHRIST_ID && card.kind === "Decision" && card.program === "cda"));
+      assert.ok(man.cards?.some((card) => card.id === ECG_ID && card.kind === "Dismissal"));
+      assert.ok(man.cards?.some((card) => card.id === CARE_ID && card.program === "fema"));
+      assert.ok(man.cards?.some((card) => card.id === BAY_ID && card.kind === "Order"));
+      assert.ok(man.cards?.every((card) => !("body" in card) && !("sourceUrl" in card) && card.paidUrl));
+      const manJson = JSON.stringify(man);
+      assert.ok(!manJson.includes("/files/decisions/"));
+      assert.ok(!manJson.includes(BODY_NEEDLE_GILCHRIST));
+      assert.ok(!manJson.includes(BODY_NEEDLE_ECG));
+      assert.ok(!manJson.includes(BODY_NEEDLE_CARE));
+      assert.ok(!manJson.includes(BODY_NEEDLE_BAY));
+
+      const index = await fetch(`${base}/cbca-decisions/index`);
+      assert.equal(index.status, 200, "/cbca-decisions/index is the free catalog");
+
+      const paid = await fetch(`${base}${CBCA_DECISIONS_PATH}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paid.status, 200);
+      const paidBody = (await paid.json()) as {
+        product: string;
+        asOf?: string;
+        cards: { id: string; body: string }[];
+        records?: { type: string }[];
+      };
+      assert.equal(paidBody.product, "cbca-decision-bodies");
+      assert.equal(paidBody.asOf, "2026-09-23");
+      const paidIds = paidBody.cards.map((card) => card.id);
+      assert.ok(paidIds.includes(GILCHRIST_ID));
+      assert.ok(paidIds.includes(ECG_ID));
+      assert.ok(paidIds.includes(CARE_ID));
+      assert.ok(paidIds.includes(BAY_ID));
+      assert.ok(paidBody.cards.some((card) => card.body.includes(BODY_NEEDLE_GILCHRIST)));
+      assert.equal(paidBody.records?.[0]?.type, "cbca-decisions");
+
+      const paidOne = await fetch(`${base}${CBCA_DECISIONS_PATH}?id=${GILCHRIST_ID}`, { headers: { "X-PAYMENT": "test" } });
+      assert.equal(paidOne.status, 200);
+      const oneBody = (await paidOne.json()) as { cards: { id: string; body: string }[] };
+      assert.equal(oneBody.cards.length, 1);
+      assert.equal(oneBody.cards[0]?.id, GILCHRIST_ID);
+      assert.ok(oneBody.cards[0]?.body.includes(BODY_NEEDLE_GILCHRIST));
+    },
+  );
+
   const f483Dir = mkdtempSync(join(tmpdir(), "form-483-"));
   writeFileSync(
     join(f483Dir, "snapshot.json"),
@@ -10728,7 +10890,7 @@ async function main(): Promise<void> {
   process.env.FORM_483_DIR = join(tmpdir(), "form-483-absent-final-");
   process.env.GMP_DIR = join(tmpdir(), "gmp-absent-final-");
   process.env.GMP_MD_DIR = join(tmpdir(), "gmp-md-absent-final-");
-  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions", "fcc-eb-orders", "nmb-determinations", "eeoc-appellate", "ttab-decisions", "ibla-decisions", "ccb-determinations", "uscg-alj-decisions"]);
+  assert.deepEqual(PUBLIC_BAZAAR_SKUS, ["ticks", "import-alerts", "mariners", "mariners-d11", "mariners-d7", "mariners-d8", "mariners-d1", "mariners-d5", "mariners-d9", "mariners-d14", "mariners-d17", "warning-letters", "untitled-letters", "awa", "swisspar", "pcac", "ftc-wl", "cfpb-orders", "occ-cd", "fdic-orders", "frb-orders", "ncua-orders", "fincen-orders", "ferc-orders", "ofac-orders", "bis-orders", "cftc-orders", "fifra-orders", "denovo-orders", "ttb-oic", "air-letters", "superfund-rods", "ico-mpn", "cma-ca98", "ema-referrals", "cder-reviews", "npdes-permits", "ofsted-inspections", "ofwat-enforcement", "ofgem-enforcement", "gain", "orr-enforcement", "phmsa-orders", "aaib-reports", "csb-reports", "hhs-oig-reports", "eis-reports", "fsis-humane", "epa-cafo", "fmshrc-orders", "bsee-reports", "oshrc-orders", "epa-alj", "epa-eab", "faa-civil-penalty", "stb-decisions", "oalj-decisions", "fmc-orders", "ftc-orders", "nlrb-decisions", "flra-decisions", "ecab-decisions", "fcc-eb-orders", "nmb-determinations", "eeoc-appellate", "ttab-decisions", "ibla-decisions", "ccb-determinations", "uscg-alj-decisions", "cbca-decisions"]);
   assert.equal(isPublicBazaarSku("warning-letters"), true);
   assert.equal(isPublicBazaarSku("untitled-letters"), true);
   assert.equal(isPublicBazaarSku("awa"), true);
@@ -10787,6 +10949,7 @@ async function main(): Promise<void> {
   assert.equal(isPublicBazaarSku("ibla-decisions"), true);
   assert.equal(isPublicBazaarSku("ccb-determinations"), true);
   assert.equal(isPublicBazaarSku("uscg-alj-decisions"), true);
+  assert.equal(isPublicBazaarSku("cbca-decisions"), true);
   assert.equal(isPublicBazaarSku("form-483"), false, "do not persist /form-483 to Bazaar without a cached body");
   assert.equal(isPublicBazaarSku("gmp"), false, "do not persist /gmp to Bazaar without a cached observation body");
   assert.equal(isPublicBazaarSku("gmp-md"), false, "do not persist /gmp-md to Bazaar without a cached observation body");
