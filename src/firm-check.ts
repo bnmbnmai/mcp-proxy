@@ -120,6 +120,7 @@ function asList(value: unknown): Record<string, unknown>[] {
 }
 
 function haystack(row: Record<string, unknown>): string {
+  // kind, citation, caseNo, and documentId stay aligned with searchCatalogRows. Do not add letter/order bodies.
   return [
     row.id,
     row.docket,
