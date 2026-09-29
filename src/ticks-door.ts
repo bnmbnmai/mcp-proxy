@@ -5179,10 +5179,6 @@ function extraFieldProblems(label: string, extra: unknown): string[] {
   return problems;
 }
 
-function normalizeAccepted(accepted: Record<string, unknown>): Record<string, unknown> {
-  return { ...accepted, extra: facilitatorExtra(accepted.extra) };
-}
-
 function v2PaymentRequirements(requirements: Record<string, unknown>): Record<string, unknown> {
   const amount = String(requirements.amount ?? requirements.maxAmountRequired ?? "");
   return {
@@ -5241,6 +5237,13 @@ export function facilitatorPaymentRequirements(
  * paymentRequirements is v2 (eip155:8453, amount, no resource / extensions).
  * accepted.extra and paymentRequirements.extra are EIP-712 only
  * (name/version). Bag-size keys stay on the unpaid 402 extra.
+ *
+ * Do not forward the client's `accepted` object. The unpaid JSON body is
+ * still v1 (`network: "base"`, `maxAmountRequired`, `resource`, `description`,
+ * `mimeType`). A client that copies `accepts[0]` into `paymentPayload.accepted`
+ * makes CDP /verify HTTP 400 `invalid_request` before it looks at the
+ * signature, so a funded authorization is never checked. The signed
+ * EIP-3009 authorization is checked against our requirements.
  */
 export function facilitatorBody(
   payment: string,
@@ -5249,7 +5252,10 @@ export function facilitatorBody(
   const raw = paymentPayload(payment);
   const inner = innerPaymentPayload(raw);
   const reqs = v2PaymentRequirements(requirements);
-  const accepted = normalizeAccepted(isPlainObject(raw?.accepted) ? raw.accepted : reqs);
+  const accepted = {
+    ...reqs,
+    extra: isPlainObject(reqs.extra) ? { ...reqs.extra } : reqs.extra,
+  };
   const payload: Record<string, unknown> = {
     x402Version: 2,
     accepted,
@@ -5350,6 +5356,24 @@ export function cdpFacilitatorBodyProblems(body: unknown): string[] {
   return problems;
 }
 
+function detailField(value: unknown, max = 240): string {
+  if (typeof value !== "string") return "";
+  const trimmed = value.replace(/\s+/g, " ").trim();
+  return trimmed.length <= max ? trimmed : trimmed.slice(0, max);
+}
+
+/**
+ * CDP /verify and /settle return HTTP 400 both for a schema `invalid_request`
+ * and for a payment problem (`invalidReason` such as a bad signature).
+ * The status line alone cannot tell those apart.
+ */
+export function facilitatorFailureDetail(body: unknown): string {
+  if (!isPlainObject(body)) return "";
+  const reason = detailField(body.errorType) || detailField(body.invalidReason) || detailField(body.errorReason);
+  const message = detailField(body.errorMessage) || detailField(body.invalidMessage) || detailField(body.message);
+  return [reason, message].filter(Boolean).join(": ");
+}
+
 export function cdpEnvStatus(): "set" | "CDP env not set" {
   return env("CDP_API_KEY_ID") && env("CDP_API_KEY_SECRET") ? "set" : "CDP env not set";
 }
@@ -5416,7 +5440,8 @@ async function facilitatorPost(
       }
     }
     if (!res.ok) {
-      console.error(`facilitator ${path} HTTP ${res.status}`);
+      const detail = facilitatorFailureDetail(body);
+      console.error(`facilitator ${path} HTTP ${res.status}${detail ? ` ${detail}` : ""}`);
       return null;
     }
     return body;
