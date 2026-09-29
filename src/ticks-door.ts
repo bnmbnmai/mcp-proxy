@@ -5516,7 +5516,7 @@ export function llmsTxt(): string {
     `- GET /firm-check?q= — free firm-name search across Form 483, FDA warning letters, FDA untitled letters, FTC BCP warning letters, FTC ALJ/Commission orders, FMC orders, NMB representation determinations, NLRB Board decisions, FLRA Authority decisions, ECAB decisions, FCC Enforcement Bureau orders, EEOC OFS appellate decisions, Ofwat enforcement, Ofgem enforcement, CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog. HTTP 200. Names the door and the id or page to buy ($0.02 one text / $0.05 page or table). Not a SKU.`,
     `- GET /openapi.json — OpenAPI 3.1 with x-payment-info for the ${paidCountWord()} paid doors`,
     `- GET /.well-known/x402 — absolute URLs of the ${paidCountWord()} paid routes only`,
-    "- GET /.well-known/erc8004.json — ERC-8004 registration-v1 agentURI (x402Support, MCP https://ticks.bnm.farm/mcp, agentWallet = payTo). Same JSON at /agent-registration.json and /.well-known/agent-registration.json. HTTP 200. Not a SKU. registrations[] is filled after Base IdentityRegistry.register (docs/ERC8004-REGISTER.md).",
+    "- GET /.well-known/erc8004.json — ERC-8004 registration-v1 agentURI (x402Support, MCP https://ticks.bnm.farm/mcp, agentWallet = payTo). Same JSON at /agent-registration.json and /.well-known/agent-registration.json. HTTP 200. Not a SKU. registrations[] is agentId 96169 on eip155:8453:0x8004A169FB4a3325136EB29fA0ceB6D2e539a432.",
     `- GET / — shop JSON (payTo + the ${paidCountWord()} products)`,
     `- GET/POST /mcp — Streamable HTTP MCP for the same ${paidCountWord()} paid GETs plus free search and firm-check. Not a new SKU.`,
     "- GET /manifest.json — USDA farm market price count + schema + official composites (median rollups of ticks already on the door; no listings scrape)",
@@ -8299,7 +8299,7 @@ export function buildOpenApi(req: IncomingMessage, port: number): Record<string,
       [ERC8004_PATH]: {
         get: freeOpenApiOp(
           "ERC-8004 agent registration",
-          "registration-v1 agentURI for the BNM Data Shop seller. x402Support true. MCP https://ticks.bnm.farm/mcp. Unpaid HTTP 200. Not a SKU. registrations[] is filled after Base IdentityRegistry.register.",
+          "registration-v1 agentURI for the BNM Data Shop seller. x402Support true. MCP https://ticks.bnm.farm/mcp. Unpaid HTTP 200. Not a SKU. registrations[] is agentId 96169 on Base Identity Registry 0x8004A169FB4a3325136EB29fA0ceB6D2e539a432.",
         ),
       },
       [AGENT_REGISTRATION_PATH]: {
