@@ -1,7 +1,7 @@
 {
   "generatedFrom": "https://ticks.bnm.farm/.well-known/x402",
-  "generatedAt": "2026-09-18T04:36:56.072Z",
-  "paidGetCount": 62,
+  "generatedAt": "2026-09-29T08:34:55.857Z",
+  "paidGetCount": 72,
   "resources": [
     "/ticks",
     "/import-alerts",
@@ -62,6 +62,16 @@
     "/oalj-decisions",
     "/fmc-orders",
     "/ftc-orders",
+    "/nlrb-decisions",
+    "/flra-decisions",
+    "/ecab-decisions",
+    "/fcc-eb-orders",
+    "/nmb-determinations",
+    "/eeoc-appellate",
+    "/ttab-decisions",
+    "/ibla-decisions",
+    "/ccb-determinations",
+    "/uscg-alj-decisions",
     "/form-483",
     "/gmp",
     "/gmp-md"

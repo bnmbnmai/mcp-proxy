@@ -31,9 +31,17 @@ async function main() {
     assert.ok(TICKS_COMMODITY_SET.includes("grocery retail"));
     assert.equal(two[1].path, "/ofwat-enforcement");
     assert.equal(two[1].kind, "body");
+    const d1 = skusFromWellKnown(fixtureWellKnown(["/mariners-d1"]), {
+        paths: { "/mariners-d1": { get: { summary: "USCG D1 / Northeast LNM", description: "weekly PDF" } } },
+    });
+    assert.equal(d1[0].kind, "mariners");
+    assert.equal(d1[0].price, "$0.05");
+    assert.doesNotMatch(d1[0].bag, /Newest 10/);
+    assert.doesNotMatch(d1[0].searchMd, /\?q=/);
     const md2 = shopIndexMarkdown(two);
     assert.match(md2, /\/ofwat-enforcement/);
-    assert.doesNotMatch(md2, /36 doors|40 doors|Thirty-six|Forty paid/);
+    assert.doesNotMatch(md2, /36 doors|40 doors|Thirty-six|Forty paid|62 paid|72 paid|Snapshot below was/);
+    assert.match(md2, /extensions\.bazaar/);
     assertNoHardcodedDoorCount(md2);
     assertNoHardcodedDoorCount(readmeMarkdown(two));
     const live = await fetchLiveCatalog();
@@ -64,7 +72,10 @@ async function main() {
     assertNoHardcodedDoorCount(server.description);
     for (const path of paths) {
         assert.ok(shopIndexOnDisk.includes(`\`${path}\``), `checked-in SHOP-INDEX lists ${path}`);
+        assert.ok(readmeOnDisk.includes(`\`${path}\``), `checked-in README lists ${path}`);
     }
+    assert.match(shopIndexOnDisk, /extensions\.bazaar/);
+    assert.match(readmeOnDisk, /extensions\.bazaar/);
     assert.ok(!shopIndexOnDisk.includes("36 doors"), "checked-in SHOP-INDEX dropped the stale 36");
     const liveOpenapiHasFour = ["/ofwat-enforcement", "/ofgem-enforcement", "/gain", "/orr-enforcement"].every((p) => Boolean(live.openApi.paths?.[p]));
     assert.ok(liveOpenapiHasFour, "live OpenAPI already lists the four doors");
