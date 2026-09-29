@@ -1182,6 +1182,7 @@ async function main(): Promise<void> {
   assert.equal(EXTRACTED_BODY_SKUS.includes("ccb-determinations"), true);
   assert.equal(EXTRACTED_BODY_SKUS.includes("uscg-alj-decisions"), true);
   assert.equal(EXTRACTED_BODY_SKUS.includes("cbca-decisions"), true);
+  assert.equal(EXTRACTED_BODY_SKUS.includes("mspb-decisions"), true);
   assert.equal((EXTRACTED_BODY_SKUS as readonly string[]).includes("ticks"), false);
 
   const fatGmpCards = Array.from({ length: 120 }, (_, i) => {
@@ -1389,6 +1390,12 @@ async function main(): Promise<void> {
     { id: "cbca-8875-2026-09-21-dismissal", date: "2026-09-21" },
     { id: "cbca-8974-fema-2026-09-21-decision", date: "2026-09-21" },
     { id: "cbca-8350-fema-2026-08-12-order", date: "2026-08-12" },
+  ]);
+  doorCursor("mspb-decisions", [
+    { id: "mspb-np-dc-3443-25-2251-i-1-2026-09-28", date: "2026-09-28" },
+    { id: "mspb-np-ph-0752-24-0241-i-1-2026-09-17", date: "2026-09-17" },
+    { id: "mspb-np-ph-3443-25-1805-i-1-2026-09-17", date: "2026-09-17" },
+    { id: "mspb-p-da-0752-25-0110-i-1-2026-09-01", date: "2026-09-01" },
   ]);
   doorCursor("nmb-determinations", [
     { id: "nmb-53-31", date: "2026-07-12" },
