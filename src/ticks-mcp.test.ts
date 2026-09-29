@@ -207,6 +207,7 @@ async function main(): Promise<void> {
       assert.ok(shop.products.some((p) => p.path === "/fsis-humane"));
       assert.ok(shop.products.some((p) => p.path === "/epa-cafo"));
       assert.ok(shop.products.some((p) => p.path === "/fmshrc-orders"));
+      assert.ok(shop.products.some((p) => p.path === "/msha-fatals"));
       assert.ok(shop.products.some((p) => p.path === "/bsee-reports"));
       assert.ok(shop.products.some((p) => p.path === "/oshrc-orders"));
       assert.ok(shop.products.some((p) => p.path === "/epa-alj"));
@@ -256,6 +257,7 @@ async function main(): Promise<void> {
       assert.ok(localPaths.includes("/fsis-humane"), "local well-known lists /fsis-humane");
       assert.ok(localPaths.includes("/epa-cafo"), "local well-known lists /epa-cafo");
       assert.ok(localPaths.includes("/fmshrc-orders"), "local well-known lists /fmshrc-orders");
+      assert.ok(localPaths.includes("/msha-fatals"), "local well-known lists /msha-fatals");
       assert.ok(localPaths.includes("/bsee-reports"), "local well-known lists /bsee-reports");
       assert.ok(localPaths.includes("/oshrc-orders"), "local well-known lists /oshrc-orders");
       assert.ok(localPaths.includes("/epa-alj"), "local well-known lists /epa-alj");
@@ -354,6 +356,7 @@ async function main(): Promise<void> {
       assert.ok(listBody.result.tools.some((t) => t.name === "fsis-humane"), "MCP tools include /fsis-humane from well-known");
       assert.ok(listBody.result.tools.some((t) => t.name === "epa-cafo"), "MCP tools include /epa-cafo from well-known");
       assert.ok(listBody.result.tools.some((t) => t.name === "fmshrc-orders"), "MCP tools include /fmshrc-orders from well-known");
+      assert.ok(listBody.result.tools.some((t) => t.name === "msha-fatals"), "MCP tools include /msha-fatals from well-known");
       assert.ok(listBody.result.tools.some((t) => t.name === "bsee-reports"), "MCP tools include /bsee-reports from well-known");
       assert.ok(listBody.result.tools.some((t) => t.name === "oshrc-orders"), "MCP tools include /oshrc-orders from well-known");
       assert.ok(listBody.result.tools.some((t) => t.name === "epa-alj"), "MCP tools include /epa-alj from well-known");

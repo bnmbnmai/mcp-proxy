@@ -5,7 +5,7 @@
  * letters, FTC BCP warning letters, FTC ALJ/Commission orders, FMC orders,
  * NMB representation determinations, NLRB Board decisions, FLRA Authority
  * decisions, ECAB decisions, FCC Enforcement Bureau orders, CBCA decisions,
- * MSPB decisions, FERC eLibrary issuances,
+ * MSPB decisions, FERC eLibrary issuances, MSHA fatality final reports,
  * EEOC OFS appellate
  * decisions, Ofwat, Ofgem,
  * CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog.
@@ -18,6 +18,7 @@ import { loadCfpbOrdersManifest } from "./cfpb-orders.js";
 import { loadCbcaManifest } from "./cbca-decisions.js";
 import { loadMspbManifest } from "./mspb-decisions.js";
 import { loadFercManifest } from "./ferc-issuances.js";
+import { loadMshaManifest } from "./msha-fatals.js";
 import { loadEcabDecisionsManifest } from "./ecab-decisions.js";
 import { loadFccEbOrdersManifest } from "./fcc-eb-orders.js";
 import { loadFdicOrdersManifest } from "./fdic-orders.js";
@@ -60,6 +61,7 @@ export const FIRM_CHECK_DOORS = [
   "cbca-decisions",
   "mspb-decisions",
   "ferc-issuances",
+  "msha-fatals",
   "eeoc-appellate",
   "ofwat-enforcement",
   "ofgem-enforcement",
@@ -70,7 +72,7 @@ export const FIRM_CHECK_DOORS = [
 ] as const;
 
 export const FIRM_CHECK_NOTE =
-  "Free cross-door search of official caches: Form 483, FDA warning letters, FDA untitled letters, FTC BCP warning letters, FTC ALJ/Commission orders, FMC orders, NMB representation determinations, NLRB Board decisions, FLRA Authority decisions, ECAB decisions, FCC Enforcement Bureau orders, CBCA decisions, MSPB decisions, FERC eLibrary issuances, EEOC OFS appellate decisions, Ofwat enforcement, Ofgem enforcement, CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog. Not a paid SKU. Hits name the door, the id or page to buy, and fetchedAt/asOf. One official text is GET ?id= ($0.02). The page of newest 10 official texts is $0.05. The import-alert table stays the entire current table at $0.05. Does not return letter, decision, or order bodies or the full import-alert table.";
+  "Free cross-door search of official caches: Form 483, FDA warning letters, FDA untitled letters, FTC BCP warning letters, FTC ALJ/Commission orders, FMC orders, NMB representation determinations, NLRB Board decisions, FLRA Authority decisions, ECAB decisions, FCC Enforcement Bureau orders, CBCA decisions, MSPB decisions, FERC eLibrary issuances, MSHA fatality final reports, EEOC OFS appellate decisions, Ofwat enforcement, Ofgem enforcement, CFPB orders, OCC C&Ds, FDIC orders, and the FDA import-alert catalog. Not a paid SKU. Hits name the door, the id or page to buy, and fetchedAt/asOf. One official text is GET ?id= ($0.02). The page of newest 10 official texts is $0.05. The import-alert table stays the entire current table at $0.05. Does not return letter, decision, or order bodies or the full import-alert table.";
 
 const BODY_DOOR_ORDER: Record<string, number> = Object.fromEntries(
   FIRM_CHECK_DOORS.map((door, i) => [door, i]),
@@ -91,6 +93,7 @@ export type FirmCheckIndexes = {
   cbcaDecisions?: Record<string, unknown> | null;
   mspbDecisions?: Record<string, unknown> | null;
   fercIssuances?: Record<string, unknown> | null;
+  mshaFatals?: Record<string, unknown> | null;
   eeocAppellate?: Record<string, unknown> | null;
   ofwatEnforcement?: Record<string, unknown> | null;
   ofgemEnforcement?: Record<string, unknown> | null;
@@ -115,6 +118,7 @@ const BODY_INDEX_DOORS: Array<{ door: Exclude<(typeof FIRM_CHECK_DOORS)[number],
   { door: "cbca-decisions", key: "cbcaDecisions" },
   { door: "mspb-decisions", key: "mspbDecisions" },
   { door: "ferc-issuances", key: "fercIssuances" },
+  { door: "msha-fatals", key: "mshaFatals" },
   { door: "eeoc-appellate", key: "eeocAppellate" },
   { door: "ofwat-enforcement", key: "ofwatEnforcement" },
   { door: "ofgem-enforcement", key: "ofgemEnforcement" },
@@ -145,6 +149,8 @@ function haystack(row: Record<string, unknown>): string {
     row.mediaId,
     row.firm,
     row.institution,
+    row.operator,
+    row.mine,
     row.bank,
     row.title,
     row.name,
@@ -155,6 +161,9 @@ function haystack(row: Record<string, unknown>): string {
     row.pageId,
     row.product,
     row.country,
+    row.state,
+    row.sector,
+    row.classification,
     row.date,
     row.issuedOn,
     row.publishedOn,
@@ -360,6 +369,7 @@ export async function runFirmCheck(q: string, cap = FIRM_CHECK_CAP): Promise<Fir
     cbcaDecisions,
     mspbDecisions,
     fercIssuances,
+    mshaFatals,
     eeocAppellate,
     ofwatEnforcement,
     ofgemEnforcement,
@@ -382,6 +392,7 @@ export async function runFirmCheck(q: string, cap = FIRM_CHECK_CAP): Promise<Fir
     loadCbcaManifest(),
     loadMspbManifest(),
     loadFercManifest(),
+    loadMshaManifest(),
     loadEeocAppellateManifest(),
     loadOfwatEnforcementManifest(),
     loadOfgemEnforcementManifest(),
@@ -407,6 +418,7 @@ export async function runFirmCheck(q: string, cap = FIRM_CHECK_CAP): Promise<Fir
       cbcaDecisions,
       mspbDecisions,
       fercIssuances,
+      mshaFatals,
       eeocAppellate,
       ofwatEnforcement,
       ofgemEnforcement,

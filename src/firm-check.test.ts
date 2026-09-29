@@ -294,6 +294,30 @@ async function main(): Promise<void> {
         },
       ],
     },
+    mshaFatals: {
+      fetchedAt: "2026-08-11T00:00:00.000Z",
+      asOf: "2026-08-11",
+      cards: [
+        {
+          id: "FAI-F00BE1D-1",
+          mine: "Deer Run Mine",
+          operator: "Patton Mining LLC",
+          institution: "Patton Mining LLC",
+          firm: "Patton Mining LLC",
+          state: "Illinois",
+          sector: "coal",
+          classification: "Machinery",
+          accidentDate: "2026-03-05",
+          reportDate: "2026-08-11",
+          date: "2026-08-11",
+          title: "Deer Run Mine Machinery fatality final report",
+          sourceUrl: "https://www.msha.gov/data-reports/fatality-reports/2026/march-5-2026-fatality/final-report",
+          victimRole: "continuous mining machine operator",
+          rootCauses: ["The red zone was not maintained"],
+          body: "SECRET MSHA BODY miner wearable component",
+        },
+      ],
+    },
     eeocAppellate: {
       fetchedAt: "2026-09-23T23:00:00.000Z",
       asOf: "2026-08-24",
@@ -398,6 +422,7 @@ async function main(): Promise<void> {
     "cbca-decisions",
     "mspb-decisions",
     "ferc-issuances",
+    "msha-fatals",
     "eeoc-appellate",
     "ofwat-enforcement",
     "ofgem-enforcement",
@@ -418,6 +443,7 @@ async function main(): Promise<void> {
   assert.ok(FIRM_CHECK_NOTE.includes("CBCA decisions"));
   assert.ok(FIRM_CHECK_NOTE.includes("MSPB decisions"));
   assert.ok(FIRM_CHECK_NOTE.includes("FERC eLibrary issuances"));
+  assert.ok(FIRM_CHECK_NOTE.includes("MSHA fatality final reports"));
   assert.ok(FIRM_CHECK_NOTE.includes("EEOC OFS appellate decisions"));
   assert.ok(FIRM_CHECK_NOTE.includes("Ofwat enforcement"));
   assert.ok(FIRM_CHECK_NOTE.includes("Ofgem enforcement"));
@@ -594,6 +620,27 @@ async function main(): Promise<void> {
   assert.ok(!JSON.stringify(ferc.matches).includes("SECRET FERC"));
   assert.ok(!JSON.stringify(ferc.matches).includes("Hudspeth County"));
   assert.ok(!JSON.stringify(ferc.matches).includes("elibrary.ferc.gov"));
+
+  const msha = firmCheckFromIndexes("Deer Run", indexes);
+  assert.equal(msha.matches[0]?.door, "msha-fatals");
+  assert.equal(msha.matches[0]?.id, "FAI-F00BE1D-1");
+  assert.equal(msha.matches[0]?.firm, "Patton Mining LLC");
+  assert.equal(msha.matches[0]?.paidUrl, "/msha-fatals?id=FAI-F00BE1D-1");
+  assert.equal(msha.matches[0]?.pagePaidUrl, "/msha-fatals");
+  assert.equal(msha.matches[0]?.priceUsdc, "0.02");
+  assert.equal(msha.matches[0]?.pagePriceUsdc, "0.05");
+  assert.ok(!("body" in (msha.matches[0] ?? {})));
+  assert.ok(!("sourceUrl" in (msha.matches[0] ?? {})));
+  assert.ok(!("victimRole" in (msha.matches[0] ?? {})));
+  assert.ok(!("rootCauses" in (msha.matches[0] ?? {})));
+  assert.ok(!JSON.stringify(msha.matches).includes("SECRET MSHA"));
+  assert.ok(!JSON.stringify(msha.matches).includes("miner wearable component"));
+  assert.ok(!JSON.stringify(msha.matches).includes(".pdf"));
+  assert.ok(!JSON.stringify(msha.matches).includes("msha.gov"));
+
+  const patton = firmCheckFromIndexes("Patton Mining", indexes);
+  assert.equal(patton.matches[0]?.door, "msha-fatals");
+  assert.equal(patton.matches[0]?.id, "FAI-F00BE1D-1");
 
   const eeoc = firmCheckFromIndexes("Lenard", indexes);
   assert.equal(eeoc.matches[0]?.door, "eeoc-appellate");
