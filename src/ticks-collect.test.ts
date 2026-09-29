@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
+import { chmodSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -84,6 +84,69 @@ function runDryCollect(opts: {
   });
   assert.equal(result.status, 0, result.stderr || result.stdout);
   return `${result.stdout}\n${readFileSync(log, "utf-8")}`;
+}
+
+function runParallelDoorProbe(): { log: string; mark: string; root: string } {
+  const root = mkdtempSync(join(tmpdir(), "ticks-collect-parallel-"));
+  const mark = join(root, "mark.txt");
+  const stub = join(root, "stub-node.sh");
+  writeFileSync(
+    stub,
+    `#!/bin/bash
+sku=$(basename "$1" .js)
+printf 'start %s %s\\n' "$sku" "$(date +%s%N)" >> ${JSON.stringify(mark)}
+echo "stub-start $sku"
+sleep 1
+printf 'end %s %s\\n' "$sku" "$(date +%s%N)" >> ${JSON.stringify(mark)}
+echo "stub-end $sku"
+`,
+  );
+  chmodSync(stub, 0o755);
+  const skus = ["cfpb-orders", "superfund-rods", "gmp", "phmsa-orders", "eis-reports"];
+  mkdirSync(join(root, "build"), { recursive: true });
+  for (const sku of skus) {
+    const skuDir = join(root, "data", sku);
+    mkdirSync(skuDir, { recursive: true });
+    writeFileSync(
+      join(skuDir, "snapshot.json"),
+      JSON.stringify({ cardCount: 20, fetchedAt: new Date().toISOString(), asOf: "2026-09-28" }),
+    );
+    writeFileSync(join(root, "build", `${sku}.js`), "// probe\n");
+  }
+  const ticksDir = join(root, "data", "prices");
+  mkdirSync(ticksDir, { recursive: true });
+  writeFileSync(
+    join(ticksDir, "manifest.json"),
+    JSON.stringify({ tickCount: 611, fetchedAt: new Date().toISOString(), asOf: "2026-09-28" }),
+  );
+  const wkPath = join(root, "well-known.json");
+  writeFileSync(
+    wkPath,
+    JSON.stringify({
+      version: 1,
+      resources: ["ticks", ...skus].map((sku) => `https://ticks.bnm.farm/${sku}`),
+    }),
+  );
+  const log = join(root, "ticks-collect.log");
+  const result = spawnSync("bash", [join(repoRoot, "scripts/ticks-collect.sh")], {
+    encoding: "utf8",
+    env: {
+      ...process.env,
+      TZ: "America/Boise",
+      SKIP_HAY: "1",
+      TICKS_COLLECT_SKIP_IMAGINE: "1",
+      TICKS_COLLECT_SKIP_LIVE_HAY: "1",
+      MCP_PROXY_DIR: root,
+      TICKS_DIR: ticksDir,
+      NODE_BIN: stub,
+      TICKS_COLLECT_PLAN: join(repoRoot, "scripts/ticks-collect-plan.py"),
+      TICKS_COLLECT_WELL_KNOWN_FILE: wkPath,
+      TICKS_COLLECT_LOG: log,
+      TICKS_COLLECT_LOCK: join(root, "ticks-collect.lock"),
+    },
+  });
+  assert.equal(result.status, 0, result.stderr || result.stdout);
+  return { log: `${result.stdout}\n${readFileSync(log, "utf-8")}`, mark: readFileSync(mark, "utf8"), root };
 }
 
 async function main(): Promise<void> {
@@ -174,6 +237,9 @@ async function main(): Promise<void> {
   assert.match(script, /SUPERFUND_MAX_NEW_PER_PASS=6/);
   assert.match(script, /SUPERFUND_MAX_NEW_PER_PASS=4/);
   assert.match(script, /SUPERFUND_PASS_DEADLINE_MS="\$\{SUPERFUND_PASS_DEADLINE_MS:-2400000\}"/);
+  assert.match(script, /parallel_skus=\(superfund-rods phmsa-orders eis-reports\)/);
+  assert.match(script, /ticks-collect-\$\{sku\}\.log/);
+  assert.match(script, /flock -w 60 8/);
   assert.match(script, /CFPB_ORDERS/);
   assert.match(script, /FIFRA_ORDERS/);
   assert.match(script, /FDIC_ORDERS/);
@@ -308,6 +374,64 @@ async function main(): Promise<void> {
   assert.match(fatDry, /\/superfund-rods, 29, 29, fresh/);
   assert.doesNotMatch(fatDry, /gmp grow /);
   assert.ok(fatDry.indexOf("/ticks,") < fatDry.indexOf("/gmp,"), "/ticks stays first on a fat pass");
+
+  const dryParallelOrder = runDryCollect({
+    doors: [
+      {
+        sku: "superfund-rods",
+        snapshot: { cardCount: 29, fetchedAt: new Date().toISOString(), asOf: "2026-08-05" },
+      },
+      {
+        sku: "gmp",
+        snapshot: { cardCount: 3550, fetchedAt: new Date().toISOString(), asOf: "2026-08-11" },
+      },
+      {
+        sku: "phmsa-orders",
+        snapshot: { cardCount: 20, fetchedAt: new Date().toISOString(), asOf: "2026-08-11" },
+      },
+    ],
+    ticks: { tickCount: 611, fetchedAt: new Date().toISOString(), asOf: "2026-08-25" },
+  });
+  assert.doesNotMatch(dryParallelOrder, /parallel doors/, "dry-run stays serial");
+  assert.ok(
+    dryParallelOrder.indexOf("/superfund-rods,") < dryParallelOrder.indexOf("/gmp,"),
+    "dry-run keeps well-known order",
+  );
+  assert.ok(
+    dryParallelOrder.indexOf("/gmp,") < dryParallelOrder.indexOf("/phmsa-orders,"),
+    "dry-run does not pull later parallel doors forward",
+  );
+
+  const parallelLive = runParallelDoorProbe();
+  assert.match(parallelLive.log, /parallel doors superfund-rods phmsa-orders eis-reports/);
+  assert.ok(parallelLive.log.indexOf("/cfpb-orders,") < parallelLive.log.indexOf("parallel doors"));
+  assert.ok(parallelLive.log.indexOf("/gmp,") > parallelLive.log.indexOf("/eis-reports,"));
+  assert.ok(parallelLive.log.indexOf("/gmp,") > parallelLive.log.indexOf("/phmsa-orders,"));
+  assert.ok(parallelLive.log.indexOf("/gmp,") > parallelLive.log.indexOf("/superfund-rods,"));
+  for (const sku of ["superfund-rods", "phmsa-orders", "eis-reports"]) {
+    const doorLog = readFileSync(join(parallelLive.root, `ticks-collect-${sku}.log`), "utf8");
+    assert.match(doorLog, new RegExp(`stub-start ${sku}`));
+    assert.match(doorLog, new RegExp(`parallel door ${sku}`));
+  }
+  const bySku = new Map<string, { start: bigint; end: bigint }>();
+  for (const line of parallelLive.mark.trim().split("\n")) {
+    const [kind, sku, ns] = line.split(" ");
+    const row = bySku.get(sku) ?? { start: 0n, end: 0n };
+    if (kind === "start") row.start = BigInt(ns);
+    if (kind === "end") row.end = BigInt(ns);
+    bySku.set(sku, row);
+  }
+  const trio = ["superfund-rods", "phmsa-orders", "eis-reports"].map((sku) => bySku.get(sku)!);
+  const cfpb = bySku.get("cfpb-orders")!;
+  const gmp = bySku.get("gmp")!;
+  assert.ok(trio.every((row) => row.start > 0n && row.end > row.start));
+  const earliestStart = trio.reduce((m, row) => (row.start < m ? row.start : m), trio[0]!.start);
+  const latestStart = trio.reduce((m, row) => (row.start > m ? row.start : m), 0n);
+  const earliestEnd = trio.reduce((m, row) => (row.end < m ? row.end : m), trio[0]!.end);
+  const latestEnd = trio.reduce((m, row) => (row.end > m ? row.end : m), 0n);
+  assert.ok(cfpb.end <= earliestStart, "doors before the group finish first");
+  assert.ok(latestStart < earliestEnd, "superfund, phmsa, and eis overlap");
+  assert.ok(gmp.start >= latestEnd, "a door listed between them waits until the group finishes");
 
   assert.ok(
     listed !== null && listed > 5,
