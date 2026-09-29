@@ -84,6 +84,7 @@ export const EXTRACTED_BODY_SKUS = [
   "ibla-decisions",
   "ccb-determinations",
   "uscg-alj-decisions",
+  "cbca-decisions",
 ] as const;
 
 export type ExtractedBodySku = (typeof EXTRACTED_BODY_SKUS)[number];
@@ -189,6 +190,7 @@ export const TTAB_DECISIONS_TYPE = "ttab-decisions";
 export const IBLA_DECISIONS_TYPE = "ibla-decisions";
 export const CCB_DETERMINATIONS_TYPE = "ccb-determinations";
 export const USCG_ALJ_DECISIONS_TYPE = "uscg-alj-decisions";
+export const CBCA_DECISIONS_TYPE = "cbca-decisions";
 export const CFPB_ORDER_TYPE = "cfpb-order";
 export const OFAC_ORDER_TYPE = "ofac-order";
 export const FRB_ORDER_TYPE = "frb-order";
@@ -267,6 +269,7 @@ export const IBLA_DECISIONS_SOURCE = "https://www.oha.doi.gov/IBLA/Ibladecisions
 export const CCB_DETERMINATIONS_SOURCE = "https://dockets.ccb.gov/search/documents";
 export const USCG_ALJ_DECISIONS_SOURCE =
   "https://www.uscg.mil/Resources/Administrative-Law-Judges/Decisions/ALJ-Decisions-2026/";
+export const CBCA_DECISIONS_SOURCE = "https://www.cbca.gov/decisions/cda-cases.html";
 export const CFPB_ORDER_SOURCE = "https://www.consumerfinance.gov/enforcement/actions/";
 export const OFAC_ORDER_SOURCE = "https://ofac.treasury.gov/civil-penalties-and-enforcement-information";
 export const FRB_ORDER_SOURCE = "https://www.federalreserve.gov/supervisionreg/enforcementactions.htm";
@@ -1154,6 +1157,13 @@ export function paidUscgAljDecisionsBody<T extends CardPayload>(
   opts?: PaidBodyOpts,
 ): T & PaidBodyWindowEnvelope {
   return paidCardBody(payload, USCG_ALJ_DECISIONS_TYPE, USCG_ALJ_DECISIONS_SOURCE, opts);
+}
+
+export function paidCbcaDecisionsBody<T extends CardPayload>(
+  payload: T,
+  opts?: PaidBodyOpts,
+): T & PaidBodyWindowEnvelope {
+  return paidCardBody(payload, CBCA_DECISIONS_TYPE, CBCA_DECISIONS_SOURCE, opts);
 }
 
 export function paidIcoMpnBody<T extends CardPayload>(payload: T, opts?: PaidBodyOpts): T & PaidBodyWindowEnvelope {

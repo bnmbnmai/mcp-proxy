@@ -237,6 +237,24 @@ async function main(): Promise<void> {
         },
       ],
     },
+    cbcaDecisions: {
+      fetchedAt: "2026-09-23T22:00:00.000Z",
+      asOf: "2026-09-23",
+      cards: [
+        {
+          id: "cbca-8825-2026-09-23-decision",
+          institution: "The Gilchrist Law Firm, P.A.",
+          docket: "CBCA 8825",
+          caseNo: "CBCA 8825",
+          program: "cda",
+          kind: "Decision",
+          date: "2026-09-23",
+          title: "CBCA 8825 Decision",
+          sourceUrl: "https://www.cbca.gov/files/decisions/2026/secret.pdf",
+          body: "SECRET CBCA DECISION BODY small claims procedure",
+        },
+      ],
+    },
     eeocAppellate: {
       fetchedAt: "2026-09-23T23:00:00.000Z",
       asOf: "2026-08-24",
@@ -338,6 +356,7 @@ async function main(): Promise<void> {
     "flra-decisions",
     "ecab-decisions",
     "fcc-eb-orders",
+    "cbca-decisions",
     "eeoc-appellate",
     "ofwat-enforcement",
     "ofgem-enforcement",
@@ -355,6 +374,7 @@ async function main(): Promise<void> {
   assert.ok(FIRM_CHECK_NOTE.includes("FLRA Authority decisions"));
   assert.ok(FIRM_CHECK_NOTE.includes("ECAB decisions"));
   assert.ok(FIRM_CHECK_NOTE.includes("FCC Enforcement Bureau orders"));
+  assert.ok(FIRM_CHECK_NOTE.includes("CBCA decisions"));
   assert.ok(FIRM_CHECK_NOTE.includes("EEOC OFS appellate decisions"));
   assert.ok(FIRM_CHECK_NOTE.includes("Ofwat enforcement"));
   assert.ok(FIRM_CHECK_NOTE.includes("Ofgem enforcement"));
@@ -492,6 +512,19 @@ async function main(): Promise<void> {
   assert.equal(fcc.matches[0]?.paidUrl, "/fcc-eb-orders?id=DA-26-1006");
   assert.equal(fcc.matches[0]?.pagePaidUrl, "/fcc-eb-orders");
   assert.ok(!JSON.stringify(fcc.matches).includes("SECRET FCC"));
+
+  const cbca = firmCheckFromIndexes("Gilchrist", indexes);
+  assert.equal(cbca.matches[0]?.door, "cbca-decisions");
+  assert.equal(cbca.matches[0]?.id, "cbca-8825-2026-09-23-decision");
+  assert.equal(cbca.matches[0]?.paidUrl, "/cbca-decisions?id=cbca-8825-2026-09-23-decision");
+  assert.equal(cbca.matches[0]?.pagePaidUrl, "/cbca-decisions");
+  assert.equal(cbca.matches[0]?.priceUsdc, "0.02");
+  assert.equal(cbca.matches[0]?.pagePriceUsdc, "0.05");
+  assert.ok(!("body" in (cbca.matches[0] ?? {})));
+  assert.ok(!("sourceUrl" in (cbca.matches[0] ?? {})));
+  assert.ok(!JSON.stringify(cbca.matches).includes("SECRET CBCA"));
+  assert.ok(!JSON.stringify(cbca.matches).includes("small claims procedure"));
+  assert.ok(!JSON.stringify(cbca.matches).includes("cbca.gov"));
 
   const eeoc = firmCheckFromIndexes("Lenard", indexes);
   assert.equal(eeoc.matches[0]?.door, "eeoc-appellate");
