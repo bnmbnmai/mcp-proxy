@@ -35,15 +35,15 @@ const repoRoot = here.endsWith("/build") || here.endsWith("\\build") || here.end
 
 assert.equal(SAMPLE_TABLE_SKU.ticks.length, 3, "free slice stays 3 rows");
 assert.ok(!SAMPLE_TABLE_SKU.asOf.startsWith("2026-01"), "sample is not the January 2026 can");
-assert.equal(SAMPLE_TABLE_SKU.fetchedAt, "2026-09-28T15:42:54.479Z", "envelope fetchedAt is the live bag manifest");
-assert.equal(SAMPLE_TABLE_SKU.asOf, "2026-09-26", "envelope asOf is the newest tick in the live bag");
+assert.equal(SAMPLE_TABLE_SKU.fetchedAt, "2026-09-29T15:52:59.369Z", "envelope fetchedAt is the live bag manifest");
+assert.equal(SAMPLE_TABLE_SKU.asOf, "2026-09-28", "envelope asOf is the newest tick in the live bag");
 assert.ok(
   SAMPLE_TABLE_SKU.ticks.some((row) => row.id.includes("okc_west") && row.asOf === "2026-09-22" && row.price === 330.19),
   "OKC West row stays the printed sale",
 );
 assert.ok(
-  SAMPLE_TABLE_SKU.ticks.some((row) => row.id.includes("joplin_feeder") && row.asOf === "2026-09-21" && row.price === 291.42),
-  "Joplin feeder row stays the printed sale",
+  SAMPLE_TABLE_SKU.ticks.some((row) => row.id === "cattle.ams_1245.joplin_feeder.feeder-steer.ml1.967lb" && row.asOf === "2026-09-28" && row.price === 304.09 && row.lo === 301 && row.hi === 308),
+  "Joplin feeder row is the current heavy ML1 print",
 );
 assert.ok(
   SAMPLE_TABLE_SKU.ticks.some((row) => row.id.includes("superior_video") && row.asOf === "2026-09-17" && row.price === 489),
