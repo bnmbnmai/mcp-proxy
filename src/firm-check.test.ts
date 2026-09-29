@@ -255,6 +255,25 @@ async function main(): Promise<void> {
         },
       ],
     },
+    mspbDecisions: {
+      fetchedAt: "2026-09-28T16:34:39.000Z",
+      asOf: "2026-09-28",
+      cards: [
+        {
+          id: "mspb-np-dc-3443-25-2251-i-1-2026-09-28",
+          institution: "Tanetta N. Isler, Consumer Product Safety Commission",
+          agency: "Consumer Product Safety Commission",
+          docket: "DC-3443-25-2251-I-1",
+          caseNo: "DC-3443-25-2251-I-1",
+          kind: "nonprecedential",
+          orderKind: "Final Order",
+          date: "2026-09-28",
+          title: "DC-3443-25-2251-I-1 nonprecedential Final Order",
+          sourceUrl: "https://mspbpublic.azurewebsites.net/decisions/nonprecedential/secret.pdf",
+          body: "SECRET MSPB DECISION BODY involuntary due to coercion",
+        },
+      ],
+    },
     eeocAppellate: {
       fetchedAt: "2026-09-23T23:00:00.000Z",
       asOf: "2026-08-24",
@@ -357,6 +376,7 @@ async function main(): Promise<void> {
     "ecab-decisions",
     "fcc-eb-orders",
     "cbca-decisions",
+    "mspb-decisions",
     "eeoc-appellate",
     "ofwat-enforcement",
     "ofgem-enforcement",
@@ -375,6 +395,7 @@ async function main(): Promise<void> {
   assert.ok(FIRM_CHECK_NOTE.includes("ECAB decisions"));
   assert.ok(FIRM_CHECK_NOTE.includes("FCC Enforcement Bureau orders"));
   assert.ok(FIRM_CHECK_NOTE.includes("CBCA decisions"));
+  assert.ok(FIRM_CHECK_NOTE.includes("MSPB decisions"));
   assert.ok(FIRM_CHECK_NOTE.includes("EEOC OFS appellate decisions"));
   assert.ok(FIRM_CHECK_NOTE.includes("Ofwat enforcement"));
   assert.ok(FIRM_CHECK_NOTE.includes("Ofgem enforcement"));
@@ -525,6 +546,19 @@ async function main(): Promise<void> {
   assert.ok(!JSON.stringify(cbca.matches).includes("SECRET CBCA"));
   assert.ok(!JSON.stringify(cbca.matches).includes("small claims procedure"));
   assert.ok(!JSON.stringify(cbca.matches).includes("cbca.gov"));
+
+  const mspb = firmCheckFromIndexes("Isler", indexes);
+  assert.equal(mspb.matches[0]?.door, "mspb-decisions");
+  assert.equal(mspb.matches[0]?.id, "mspb-np-dc-3443-25-2251-i-1-2026-09-28");
+  assert.equal(mspb.matches[0]?.paidUrl, "/mspb-decisions?id=mspb-np-dc-3443-25-2251-i-1-2026-09-28");
+  assert.equal(mspb.matches[0]?.pagePaidUrl, "/mspb-decisions");
+  assert.equal(mspb.matches[0]?.priceUsdc, "0.02");
+  assert.equal(mspb.matches[0]?.pagePriceUsdc, "0.05");
+  assert.ok(!("body" in (mspb.matches[0] ?? {})));
+  assert.ok(!("sourceUrl" in (mspb.matches[0] ?? {})));
+  assert.ok(!JSON.stringify(mspb.matches).includes("SECRET MSPB"));
+  assert.ok(!JSON.stringify(mspb.matches).includes("involuntary due to coercion"));
+  assert.ok(!JSON.stringify(mspb.matches).includes("mspbpublic.azurewebsites.net"));
 
   const eeoc = firmCheckFromIndexes("Lenard", indexes);
   assert.equal(eeoc.matches[0]?.door, "eeoc-appellate");

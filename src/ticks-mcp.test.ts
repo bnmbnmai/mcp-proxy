@@ -227,6 +227,7 @@ async function main(): Promise<void> {
       assert.ok(shop.products.some((p) => p.path === "/ccb-determinations"));
       assert.ok(shop.products.some((p) => p.path === "/uscg-alj-decisions"));
       assert.ok(shop.products.some((p) => p.path === "/cbca-decisions"));
+      assert.ok(shop.products.some((p) => p.path === "/mspb-decisions"));
 
       const wellKnown = (await (await fetch(`${base}${WELL_KNOWN_PATH}`)).json()) as {
         mcp?: string;
@@ -274,6 +275,7 @@ async function main(): Promise<void> {
       assert.ok(localPaths.includes("/ccb-determinations"), "local well-known lists /ccb-determinations");
       assert.ok(localPaths.includes("/uscg-alj-decisions"), "local well-known lists /uscg-alj-decisions");
       assert.ok(localPaths.includes("/cbca-decisions"), "local well-known lists /cbca-decisions");
+      assert.ok(localPaths.includes("/mspb-decisions"), "local well-known lists /mspb-decisions");
 
       const llms = await (await fetch(`${base}${LLMS_PATH}`)).text();
       assert.ok(llms.includes("GET/POST /mcp"));
@@ -370,6 +372,7 @@ async function main(): Promise<void> {
       assert.ok(listBody.result.tools.some((t) => t.name === "ccb-determinations"), "MCP tools include /ccb-determinations from well-known");
       assert.ok(listBody.result.tools.some((t) => t.name === "uscg-alj-decisions"), "MCP tools include /uscg-alj-decisions from well-known");
       assert.ok(listBody.result.tools.some((t) => t.name === "cbca-decisions"), "MCP tools include /cbca-decisions from well-known");
+      assert.ok(listBody.result.tools.some((t) => t.name === "mspb-decisions"), "MCP tools include /mspb-decisions from well-known");
 
       const unpaid = await fetch(`${base}${MCP_PATH}`, {
         method: "POST",
