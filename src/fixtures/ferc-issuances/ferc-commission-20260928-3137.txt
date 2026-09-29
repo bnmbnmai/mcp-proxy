@@ -1,0 +1,216 @@
+Document Accession #: 20260928-3137           Filed Date: 09/28/2026
+
+
+
+
+                                      196 FERC ¶ 61,241
+                                 UNITED STATES OF AMERICA
+                          FEDERAL ENERGY REGULATORY COMMISSION
+
+         Before Commissioners: Laura V. Swett, Chairman;
+                               David Rosner, Lindsay S. See,
+                               Judy W. Chang, and David LaCerte.
+
+         Saguaro Connector Pipeline, L.L.C.                           Docket No. CP23-29-002
+
+                        ORDER GRANTING EXTENSION OF TIME REQUEST
+
+                                        (Issued September 28, 2026)
+
+         1.     On April 1, 2026, Saguaro Connector Pipeline, L.L.C. (Saguaro) filed a motion
+         requesting a three-year extension of time, until February 15, 2030, to construct and place
+         into service its Border Facility, extending from the United States to Mexico. For the
+         reasons discussed below, we grant the extension request.
+
+         I.     Background
+
+         2.      On February 15, 2024, the Commission issued an order granting Saguaro
+         authorization pursuant to section 3 of the Natural Gas Act (NGA), as well as a
+         Presidential Permit, authorizing it to construct and operate a natural gas pipeline and
+         related facilities for the export of natural gas from the United States to Mexico extending
+         approximately 1,000 feet from a point in Hudspeth County, Texas to the center of the
+         Rio Grande River (Border Facility).1 On the Mexican side of the border, the Border
+         Facility pipeline will connect with the Sierra Madre Pipeline, that will extend to a
+         liquified natural gas (LNG) export facility (MXP Project) under development by Mexico
+         Pacific Limited LLC (MPL) on the West Coast of Mexico.2 The Authorization Order
+         required the project to be placed in service by February 15, 2027.
+
+         3.     On April 1, 2026, Saguaro filed a request for a three-year extension of time, until
+         February 15, 2030, to complete construction of the project and make it available for
+         service. Saguaro states that construction of the project has been delayed due to the
+
+
+                1 See Saguaro Connector Pipeline, LLC, 186 FERC ¶ 61,114 (2024)
+
+         (Authorization Order), order on reh’g, 188 FERC ¶ 61,029 (2024) (Rehearing Order),
+         aff’d sub nom. Sierra Club v. FERC, 145 F.4th 74, 80 (D.C. Cir. 2025).
+                2 See Rehearing Order, 188 FERC ¶ 61,029 at P 3; Sierra Club v. FERC, 145 F.4th
+
+         at 80; MPL April 21, 2026 Support Comments at 1-2.
+Document Accession #: 20260928-3137           Filed Date: 09/28/2026
+
+         Docket No. CP23-29-002                                                                -2-
+
+         uncertainty surrounding prior litigation over the Authorization Order, commercial
+         negotiations, and a delay in the commencement of service of the MXP Project.3 Saguaro
+         states that it did not proceed with a final investment decision or construction activities
+         until the U.S. Court of Appeals for the District of Columbia Circuit (D.C. Circuit)
+         affirmed the Authorization Order on August 1, 2025.4 At that time, the company avers
+         that it also resumed negotiations with the original shipper, MPL, and other interested
+         customers.5 Saguaro states that it intends to develop the Border Facility in coordination
+         with the downstream export facility and that MPL requested an extension, until
+         December 15, 2032, of the commercial operation deadline for its U.S. Department of
+         Energy (DOE) authorization to export LNG to non-Free Trade Agreement (FTA)
+         nations.6 Saguaro notes that, in December 2025, DOE issued a notice tolling the
+         expiration of the operation deadline.7 Saguaro asserts that the company and project
+         shipper remain committed to completing the Border Facility to meet growing natural gas
+         demand in Mexico.8
+
+         II.    Notice, Interventions, and Protests
+
+         4.     Notice of Saguaro’s Request for Extension of Time was issued April 8, 2026, and
+         published in the Federal Register on April 13, 2026.9 The notice established April 23,
+         2026, as the deadline for filing interventions, comments, and protests. The Leave it in the
+         Ground Initiative (LINGO) filed a timely motion to intervene10 and comments protesting
+         Saguaro’s extension request, raising concerns regarding legal challenges to the MXP
+
+
+                3 Saguaro April 1, 2026 Request for Extension of Time at 2-3.
+
+
+                4 Id. at 2; Sierra Club v. FERC, 145 F.4th 74.
+
+
+                5 Saguaro April 1, 2026 Request for Extension of Time at 2.
+
+
+                6 Id. at 3.
+
+
+                7 Id. MPL filed a notice informing DOE that, following a change in organization,
+         the entity that owns MPL is now known as Mexico Pacific Holdings, LLC. See Mexico
+         Pacific Limited LLC, Notice Tolling Expiration of Non-FTA Authorization Pending DOE
+         Action, Docket No. 18-70-LNG (Dec. 12, 2025).
+                8 Saguaro April 1, 2026 Request for Extension of Time at 5.
+
+
+                9 91 Fed. Reg. 18840 (Apr. 13, 2026).
+
+
+                10 Timely, unopposed motions to intervene are granted by operation of Rule 214 of
+
+         the Commission’s Rules of Practice and Procedures. See 18 C.F.R. § 385.214 (2025).
+Document Accession #: 20260928-3137           Filed Date: 09/28/2026
+
+         Docket No. CP23-29-002                                                                  -3-
+
+         Project and the viability of the MXP Project and the Border Facility. MPL filed
+         comments in support of the extension of time request.
+
+         III.   Discussion
+
+         5.      The completion date specified in a certificate or authorization order provides what
+         the Commission believes—based on the applicant’s initial project schedule and the
+         Commission’s assessment of circumstances relevant to the specific project—to be a
+         reasonable period of time for the project sponsor to complete construction and make the
+         project available for service.11 However, construction deadlines may be extended for
+         good cause.12 One way good cause can be shown is by the project sponsor demonstrating
+         that it made good faith efforts to meet its deadline but encountered circumstances beyond
+         its control.13 We consider extension requests on a case-by-case basis.14
+
+         6.      Saguaro argues that good cause exists to grant an extension of time. The company
+         states that it deferred reaching a final investment decision and the commencement of
+         construction activities due to uncertainty regarding the outcome of now-resolved legal
+         challenges to the Authorization Order.15 Saguaro emphasizes that since the D.C. Circuit
+         issued a decision resolving the litigation, it has engaged in negotiations with MPL and
+         other shippers that are interested in utilizing the project.16 The company maintains that it
+         needs additional time to secure financing, negotiate with interested shippers, and
+         coordinate the development of the Border Facility with the MXP Project.17 Saguaro
+
+                11 See, e.g., Delfin LNG LLC, 185 FERC ¶ 61,009, at P 9 (2023).
+
+
+                12 18 C.F.R. § 385.2008(a) (2025) (except as otherwise provided by law, allowing
+
+         the relevant decisional authority to extend for good cause the time by which any person is
+         required or allowed to act under any statute, rule, or order).
+                13 Compare Adelphia Gateway, LLC, 178 FERC ¶ 61,030, at P 15 (2022) (granting
+
+         request for extension of time), with Chestnut Ridge Storage LLC, 139 FERC ¶ 61,149, at
+         P 11 (2012) (denying request for extension of time).
+                14 See Chestnut Ridge Storage LLC, 139 FERC ¶ 61,149 at P 8; see also Sierra
+
+         Club v. FERC, 97 F.4th 16, 24 (D.C. Cir. 2024) (“FERC has permissibly adopted a case-
+         by-case, fact-based approach to deciding whether an extension of time is warranted.”).
+                15 See Saguaro April 1, 2026 Request for Extension of Time at 2; MPL April 21,
+
+         2026 Support Comments at 2.
+                16 Saguaro April 1, 2026 Request for Extension of Time at 2.
+
+
+                17 Id. at 2, 4-5.
+Document Accession #: 20260928-3137           Filed Date: 09/28/2026
+
+         Docket No. CP23-29-002                                                                -4-
+
+         notes that MPL has requested an extension of the deadline to commence export
+         operations under its non-FTA export authorization, which DOE has not yet acted on.18
+         Saguaro argues that it and MPL remain committed to the Border Facility.19
+
+         7.      MPL argues that Saguaro was not able to finalize arrangements with MPL due to
+         legal challenges surrounding the Authorization Order, as well as uncertainties related to
+         the status of the MXP Project.20 MPL states that in April of this year DOE withdrew its
+         previously-issued draft environmental assessment and terminated the related National
+         Environmental Policy Act process for a pending amendment to MPL’s DOE export
+         authorization.21 But that it expects any uncertainty surrounding the DOE authorization to
+         be resolved soon.22 MPL states that it continues to pursue the development of the MXP
+         Project and to work with prospective investors to reach a final investment decision for the
+         project.23 MPL emphasizes the importance of the Border Facility to the downstream
+         project and the expansion of available natural gas supply for western Mexico.24
+
+         8.     LINGO argues that Saguaro has not demonstrated good cause for an extension
+         because the purpose of the Border Facility is to provide gas to the MXP Project, which it
+         claims is no longer viable.25 LINGO points to the uncertainty of pending litigation in
+         Mexico regarding environmental permits, safety, property rights, and land use associated
+         with the MXP Project.26 LINGO also contends that there is no clear political support in
+
+                18 Id. at 3.
+
+
+                19 Id. at 4-5.
+
+
+                20 MPL April 21, 2026 Support Comments at 2.
+
+
+                21 Id.On December 28, 2022, MPL filed with DOE an application seeking an
+         additional authorization to export natural gas to Mexico and reexport LNG to FTA and
+         non-FTA nations. DOE states that it continues to review the non-FTA portion of MPL’s
+         application. See Mexico Pacific Limited LLC, Notice of Withdrawal of Draft
+         Environmental Assessment and Termination of the Environmental Assessment Process
+         under the National Environmental Policy Act, Docket No. 22-167-LNG (Apr. 17, 2026).
+                22 MPL April 21, 2026 Support Comments at 2.
+
+
+                23 Id.
+
+
+                24 Id. at 2-3.
+
+
+                25 LINGO April 23, 2026 Comments at 1-2.
+
+
+                26 Id. at 3-4.
+Document Accession #: 20260928-3137           Filed Date: 09/28/2026
+
+         Docket No. CP23-29-002                                                                 -5-
+
+         Mexico for the MXP Project.27 Additionally, LINGO questions whether the MXP Project
+         will be able to secure financing.28
+
+         9.      As stated above, the Commission has found that good cause exists for an extension
+         of time where the authorization holder has made a good faith effort to complete
+         authorized actions within the time allotted but encountered circumstances that prevented
+         it from doing so.29 Saguaro has advanced the project despite experiencing delays due to
+         prior litigation in

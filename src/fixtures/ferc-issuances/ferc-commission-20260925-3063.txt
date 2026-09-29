@@ -1,0 +1,217 @@
+Document Accession #: 20260925-3063          Filed Date: 09/25/2026
+
+
+
+
+                                     196 FERC ¶ 61,236
+                                UNITED STATES OF AMERICA
+                         FEDERAL ENERGY REGULATORY COMMISSION
+
+         Before Commissioners: Laura V. Swett, Chairman;
+                               David Rosner, Lindsay S. See,
+                               Judy W. Chang, and David LaCerte.
+
+         ExxonMobil Oil Corporation                                      Docket No. OR26-1-000
+              v.
+         LOCAP LLC
+
+                                       ORDER ON COMPLAINT
+
+                                       (Issued September 25, 2026)
+
+         1.      On October 24, 2025, ExxonMobil Oil Corporation (EMOC) filed a complaint
+         (Complaint) requesting that the Commission direct LOCAP LLC (LOCAP) to follow its
+         tariff or require modifications to LOCAP’s tariff. For the reasons discussed below, we
+         deny the Complaint.
+
+         I.    Background
+
+         2.     EMOC is a shipper on the LOCAP pipeline system. EMOC states that it operates
+         a Gulf Coast refinery at Baton Rouge (Baton Rouge Refinery). EMOC explains that the
+         Baton Rouge Refinery processes crude petroleum that is transported on LOCAP from
+         U.S. offshore production, sometimes referred to as Mars crude.1
+
+         3.     EMOC states that in mid-June 2025, its Baton Rouge Refinery experienced upset
+         conditions on the desalter and low pH outside of the typical operations envelope of the
+         equipment. EMOC states that when it observed these upset conditions, it began testing
+         crude oil received from the LOCAP system for metals and that tests identified elevated
+         levels of zinc. EMOC explains that further testing of crude samples from earlier in June
+
+
+
+
+               1 Complaint at 1-2.  Mars crude is a blend of crude oil produced from several
+         offshore platforms and transported through the Mars Crude Oil Pipeline to the Mars
+         Cavern owned by LOOP LLC (LOOP Mars Cavern) in Clovelly, Lafourche Parish,
+         Louisiana. EMOC transports Mars crude from the LOOP Mars Cavern on the Mars
+         Pipeline to LOCAP, and then on the LOCAP system to the Baton Rouge Refinery via
+         other pipelines. LOCAP Answer at 5, 7-8; Complaint at 5-6.
+Document Accession #: 20260925-3063            Filed Date: 09/25/2026
+
+         Docket No. OR26-1-000                                                                    -2-
+
+         showed fluctuating levels of zinc during the month.2 EMOC states that zinc is a metal
+         that does not occur naturally in produced crude oil, and its presence would make the
+         crude oil stream unmerchantable.3 EMOC states that it communicated with LOCAP and
+         with Shell Pipeline Company (Shell), LOCAP’s minority owner, about the zinc.4
+
+         4.      EMOC states that on July 10, 2025, EMOC and ExxonMobil Global Trading sent
+         a letter to several producers, other onshore pipelines, and affected refineries sharing their
+         findings of zinc in crude petroleum transported on LOCAP. EMOC states that it notified
+         its trading partners that it would not accept crude deliveries containing zinc. EMOC also
+         states that on July 11, 2025, Shell indicated that the zinc contamination would be
+         remedied by July 18, 2025.
+
+         II.    Complaint
+
+         5.      EMOC argues that LOCAP did not follow its tariff in its response to EMOC’s
+         communication that delivered crude petroleum was not merchantable. EMOC requests
+         that the Commission direct LOCAP to abide by its tariff and respond expeditiously to
+         shipper notifications that the crude petroleum it receives is not merchantable.
+
+         6.      EMOC argues that LOCAP’s tariff prohibits the transportation of crude petroleum
+         shipped on the pipeline that materially affects the quality of the delivered product.5
+         EMOC argues that Items No. 5 and 10 of the LOCAP tariff provide that LOCAP will
+         only transport petroleum, which includes only “the direct liquid product of oil wells, or a
+         mixture of the direct liquids products of oil wells with the indirect liquid products of oil
+         and gas wells including gasoline and liquefied petroleum gases.”6 EMOC further states
+         that zinc is not a direct product of oil wells, and that therefore, LOCAP’s tariff
+         specifically excludes the shipment of zinc or any zinc derivatives from transportation on
+         the LOCAP system.
+
+         7.     EMOC states that Item No. 15 of the LOCAP tariff also prohibits the
+         transportation of zinc because it requires that crude petroleum tendered for shipment be
+         merchantable. According to EMOC, the presence of zinc rendered the shipments at issue
+         not merchantable because it materially affected the quality of other shipments of crude
+
+                2 Complaint at 5.
+
+
+                3 Complaint, Ex. EMC-0002 (Affidavit of Thomas Holden) ¶ 7.
+
+
+                4 Complaint at 5.
+
+
+                5 Id. at 10.
+
+
+                6 Id. at 11.
+Document Accession #: 20260925-3063           Filed Date: 09/25/2026
+
+         Docket No. OR26-1-000                                                                 -3-
+
+         petroleum and disadvantaged other shippers, in violation of Item No. 15 of LOCAP’s
+         tariff.7 EMOC claims that it was disadvantaged as a result of the contaminated crude oil
+         delivered by LOCAP because it was forced to procure alternative supplies to continue its
+         refinery operations.
+
+         8.     EMOC requests that the Commission issue an order directing LOCAP to
+         expeditiously enforce its tariff when it receives contaminated crude petroleum for
+         shipment. Additionally, EMOC requests that the Commission order LOCAP to require
+         all connecting pipelines that deliver to LOCAP’s system to comply with LOCAP’s tariff
+         specifications. EMOC argues that without the enforcement of the tariff requirements, all
+         customers on LOCAP’s system risk additional harm.8
+
+         9.     EMOC requests that if the Commission does not find that LOCAP’s tariff requires
+         LOCAP to immediately exclude crude petroleum that is not merchantable, then the
+         Commission should determine that LOCAP’s tariff is not just and reasonable and should
+         require LOCAP to revise its tariff to prohibit LOCAP from accepting crude oil upon
+         notice from either its own testing or from a shipper that the delivered crude petroleum is
+         not merchantable.9 EMOC also requests an evidentiary hearing to the extent the
+         Commission deems there to be material issues of fact in dispute.10
+
+         III.   Public Notice and Responsive Pleadings
+
+         10.     Notice of the Complaint was issued on October 27, 2025, with answers, protests
+         and interventions due November 24, 2025. Pursuant to Rule 214 of the Commission’s
+         Rules of Practice and Procedure, all timely motions to intervene filed before the issuance
+         of this order are granted.11
+
+         11.  On November 24, 2025, LOCAP filed an answer to the Complaint. On
+         December 10, 2025, EMOC filed an answer to LOCAP’s answer. Rule 213(a)(2) of the
+         Commission’s Rules of Practice and Procedure prohibits answers to answers unless
+
+
+
+
+                7 Id.
+
+
+                8 Id. at 13-14.
+
+
+                9 Id. at 16.
+
+
+                10 Id. at 21.
+
+
+                11 18 C.F.R. § 385.214 (2025).
+Document Accession #: 20260925-3063           Filed Date: 09/25/2026
+
+         Docket No. OR26-1-000                                                                  -4-
+
+         otherwise ordered by the decisional authority.12 We are not persuaded to accept EMOC’s
+         answer to LOCAP’s answer and will, therefore, reject it.
+
+         12.     In its answer, LOCAP argues that the Complaint fails to establish any wrongdoing
+         by LOCAP. LOCAP argues that the tariff does not prohibit or restrict the presence of
+         zinc. While Item No. 5 limits transportation on the pipeline to “petroleum,” LOCAP
+         rejects EMOC’s argument that zinc is outside the tariff’s definition of petroleum and
+         therefore disallowed. LOCAP argues that notwithstanding the presence of any zinc, the
+         petroleum in question was within the tariff’s definition because it was a “direct liquid
+         product of oil wells.”
+
+         13.     LOCAP also argues that the zinc-contaminated crude petroleum is not prohibited
+         by Item No. 15 of the tariff, which requires that shippers tender merchantable crude
+         petroleum with a specific gravity and temperature and not more than 2% of sediment,
+         water, and other impurities.13 LOCAP emphasizes that under Item No. 15, it is the
+         shipper’s duty to tender merchantable crude petroleum, and by tendering crude petroleum
+         to LOCAP, a shipper implicitly affirms that the shipment meets the tariff’s requirements.
+         Further, LOCAP argues its tariff does not require LOCAP to determine whether the crude
+         petroleum a shipper tenders is merchantable or meets a shipper’s specifications.
+         Moreover, LOCAP states that the merchantability standard indicates that LOCAP will not
+         receive crude oil from a shipper if that crude oil materially affects “the quality of other
+         shipments or cause[s] disadvantage to other shippers and/or the Carrier.” Therefore,
+         LOCAP argues that the merchantability requirement is satisfied if a shipment does not
+         materially affect other shippers or the carrier. However, the merchantability requirement
+         is not a guarantee that a shipment of crude petroleum will be suitable for any particular
+         shipper’s commercial purposes. LOCAP states that in this instance, no other shipper was
+         harmed or disadvantaged as a result of EMOC’s shipment, as EMOC’s crude petroleum
+         was not commingled with any other crude petroleum while being transported by
+         LOCAP.14
+
+         14.    Further, LOCAP states that the tariff does not require LOCAP to test shipments of
+         crude petroleum for zinc, nor would it be feasible to do so. Item No. 35 provides that
+         LOCAP will perform tests on the crude petroleum it transports, but these tests will be
+         done to determine “the actual amount of suspended basic sediment, water, and other
+         impurities” in the crude petroleum (which are the quality specifications identified in Item
+
+
+
+                12 18 C.F.R. § 385.213(a)(2) (2025).
+
+
+                13 LOCAP Answer at 13.
+
+
+                14 Id. at 15.
+Document Accession #: 20260925-3063            Filed Date: 09/25/2026
+
+         Docket No. OR26-1-000                                                                     -5-
+
+         No. 10) and these tests will be done by “centrifuge or other tests agreed upon.”15 LOCAP
+         states that testing for zinc is not conducted by centrifuge, but rather by a chemical
+         analysis that takes at least 24 hours and would require additional storage and testing
+         facilities. Therefore, LOCAP argues that Item No. 35 does not require LOCAP to test for
+         zinc, nor does Item No. 35 require LOCAP to disallow shipments on the basis of
+         presence of zinc.
+
+         15.    Finally, LOCAP argues that the Complaint should be dismissed as a violation of
+         section 9 of the Interstate Commerce Act (ICA), as section 9 provides that a complainant
+         may pursue a remedy either before the Commission or in any U.S. district court, but not
+         both venues.16 LOCAP states that EMOC has filed a complaint in the Eastern District of
+         Louisiana for the same issues presented before the Commission.
+
+         I

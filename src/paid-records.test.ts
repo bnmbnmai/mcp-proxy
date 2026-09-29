@@ -1183,6 +1183,7 @@ async function main(): Promise<void> {
   assert.equal(EXTRACTED_BODY_SKUS.includes("uscg-alj-decisions"), true);
   assert.equal(EXTRACTED_BODY_SKUS.includes("cbca-decisions"), true);
   assert.equal(EXTRACTED_BODY_SKUS.includes("mspb-decisions"), true);
+  assert.equal(EXTRACTED_BODY_SKUS.includes("ferc-issuances"), true);
   assert.equal((EXTRACTED_BODY_SKUS as readonly string[]).includes("ticks"), false);
 
   const fatGmpCards = Array.from({ length: 120 }, (_, i) => {
@@ -1396,6 +1397,12 @@ async function main(): Promise<void> {
     { id: "mspb-np-ph-0752-24-0241-i-1-2026-09-17", date: "2026-09-17" },
     { id: "mspb-np-ph-3443-25-1805-i-1-2026-09-17", date: "2026-09-17" },
     { id: "mspb-p-da-0752-25-0110-i-1-2026-09-01", date: "2026-09-01" },
+  ]);
+  doorCursor("ferc-issuances", [
+    { id: "ferc-commission-20260928-3137", date: "2026-09-28" },
+    { id: "ferc-commission-20260925-3063", date: "2026-09-25" },
+    { id: "ferc-alj-20260505-3058", date: "2026-05-05" },
+    { id: "ferc-alj-20251125-3026", date: "2025-11-25" },
   ]);
   doorCursor("nmb-determinations", [
     { id: "nmb-53-31", date: "2026-07-12" },

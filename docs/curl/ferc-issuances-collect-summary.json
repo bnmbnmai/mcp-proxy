@@ -1,0 +1,169 @@
+{
+  "product": "ferc-issuance-bodies",
+  "status": "ok",
+  "fetchedAt": "2026-09-29T19:28:48.864Z",
+  "asOf": "2026-09-28",
+  "cardCount": 9,
+  "listedCount": 820,
+  "fetchedPdfs": 10,
+  "skippedNoText": 1,
+  "addedThisRun": 9,
+  "note": "Id/date/sourceUrl only. Order body stays out of git. listedCount is unique eLibrary rows kept after the client filter (exact Commission Order/Opinion or ALJ Initial Decision, public file, real docket; tests, PRIV twins, notices, and delegated orders dropped), not raw totalHits and not a PDF harvest. Cold collect on 2026-09-29 with FERC_ISSUANCES_LIMIT=8 and FERC_ISSUANCES_MAX_FETCH=8. Commission window starts 2026-01-01. ALJ window starts 2018-01-01. cardCount 9 is that first slice: newest Commission slips plus the pinned ALJ initial decisions. One fetched slip had no extractable order text. Cached ids do not consume a later LIMIT, so a second collect grows the bag.",
+  "cards": [
+    {
+      "id": "ferc-commission-20260928-3137",
+      "accession": "20260928-3137",
+      "docket": "CP23-29-002",
+      "dockets": [
+        "CP23-29-002"
+      ],
+      "kind": "commission",
+      "orderKind": "Commission Order/Opinion",
+      "date": "2026-09-28",
+      "citation": "196 FERC \u00b6 61,241",
+      "institution": "Saguaro Connector Pipeline, L.L.C.",
+      "library": "Gas",
+      "title": "CP23-29-002 Commission Order/Opinion 196 FERC \u00b6 61,241",
+      "sourceUrl": "https://elibrary.ferc.gov/eLibrary/docinfo?accession_number=20260928-3137",
+      "bodyChars": 16129
+    },
+    {
+      "id": "ferc-commission-20260928-3136",
+      "accession": "20260928-3136",
+      "docket": "ER26-3213-000",
+      "dockets": [
+        "ER26-3213-000"
+      ],
+      "kind": "commission",
+      "orderKind": "Commission Order/Opinion",
+      "date": "2026-09-28",
+      "citation": "196 FERC \u00b6 61,240",
+      "institution": "Letter order accepting ISO New England Inc.'s et al. 07/21/2026 filing of revisions to its Transmission, Markets and Services Tariff to cap the Capacity Balancing Ratio at 1.0 etc.",
+      "library": "Electric",
+      "title": "ER26-3213-000 Commission Order/Opinion 196 FERC \u00b6 61,240",
+      "sourceUrl": "https://elibrary.ferc.gov/eLibrary/docinfo?accession_number=20260928-3136",
+      "bodyChars": 20282
+    },
+    {
+      "id": "ferc-commission-20260928-3065",
+      "accession": "20260928-3065",
+      "docket": "PR26-27-001",
+      "dockets": [
+        "PR26-27-001",
+        "PR26-26-001"
+      ],
+      "kind": "commission",
+      "orderKind": "Commission Order/Opinion",
+      "date": "2026-09-28",
+      "citation": "196 FERC \u00b6 61,242",
+      "institution": "Buffalo Run Pipeline LLC et al.",
+      "library": "Gas",
+      "title": "PR26-27-001 Commission Order/Opinion 196 FERC \u00b6 61,242",
+      "sourceUrl": "https://elibrary.ferc.gov/eLibrary/docinfo?accession_number=20260928-3065",
+      "bodyChars": 17390
+    },
+    {
+      "id": "ferc-commission-20260925-3075",
+      "accession": "20260925-3075",
+      "docket": "CP26-31-000",
+      "dockets": [
+        "CP26-31-000"
+      ],
+      "kind": "commission",
+      "orderKind": "Commission Order/Opinion",
+      "date": "2026-09-25",
+      "citation": "196 FERC \u00b6 61,230",
+      "institution": "Rio Grande LNG, LLC et al.",
+      "library": "Gas",
+      "title": "CP26-31-000 Commission Order/Opinion 196 FERC \u00b6 61,230",
+      "sourceUrl": "https://elibrary.ferc.gov/eLibrary/docinfo?accession_number=20260925-3075",
+      "bodyChars": 54093
+    },
+    {
+      "id": "ferc-commission-20260925-3063",
+      "accession": "20260925-3063",
+      "docket": "OR26-1-000",
+      "dockets": [
+        "OR26-1-000"
+      ],
+      "kind": "commission",
+      "orderKind": "Commission Order/Opinion",
+      "date": "2026-09-25",
+      "citation": "196 FERC \u00b6 61,236",
+      "institution": "ExxonMobil Oil Corporation v. LOCAP LLC",
+      "library": "Oil",
+      "title": "OR26-1-000 Commission Order/Opinion 196 FERC \u00b6 61,236",
+      "sourceUrl": "https://elibrary.ferc.gov/eLibrary/docinfo?accession_number=20260925-3063",
+      "bodyChars": 17836
+    },
+    {
+      "id": "ferc-commission-20260925-3056",
+      "accession": "20260925-3056",
+      "docket": "ER26-3292-000",
+      "dockets": [
+        "ER26-3292-000"
+      ],
+      "kind": "commission",
+      "orderKind": "Commission Order/Opinion",
+      "date": "2026-09-25",
+      "citation": "196 FERC \u00b6 61,239",
+      "institution": "San Diego Gas & Electric",
+      "library": "Electric",
+      "title": "ER26-3292-000 Commission Order/Opinion 196 FERC \u00b6 61,239",
+      "sourceUrl": "https://elibrary.ferc.gov/eLibrary/docinfo?accession_number=20260925-3056",
+      "bodyChars": 17820
+    },
+    {
+      "id": "ferc-commission-20260925-3055",
+      "accession": "20260925-3055",
+      "docket": "ER26-3305-000",
+      "dockets": [
+        "ER26-3305-000"
+      ],
+      "kind": "commission",
+      "orderKind": "Commission Order/Opinion",
+      "date": "2026-09-25",
+      "citation": "196 FERC \u00b6 61,238",
+      "institution": "California Independent System Operator Corporation",
+      "library": "Electric",
+      "title": "ER26-3305-000 Commission Order/Opinion 196 FERC \u00b6 61,238",
+      "sourceUrl": "https://elibrary.ferc.gov/eLibrary/docinfo?accession_number=20260925-3055",
+      "bodyChars": 16882
+    },
+    {
+      "id": "ferc-alj-20260505-3058",
+      "accession": "20260505-3058",
+      "docket": "EL24-67-001",
+      "dockets": [
+        "EL24-67-001"
+      ],
+      "kind": "alj",
+      "orderKind": "ALJ Initial Decision",
+      "date": "2026-05-05",
+      "citation": "195 FERC \u00b6 63,017",
+      "institution": "Viridon New York Inc.",
+      "library": "Electric",
+      "title": "EL24-67-001 ALJ Initial Decision 195 FERC \u00b6 63,017",
+      "sourceUrl": "https://elibrary.ferc.gov/eLibrary/docinfo?accession_number=20260505-3058",
+      "bodyChars": 176338
+    },
+    {
+      "id": "ferc-alj-20251125-3026",
+      "accession": "20251125-3026",
+      "docket": "EL02-60-018",
+      "dockets": [
+        "EL02-60-018",
+        "EL02-62-017"
+      ],
+      "kind": "alj",
+      "orderKind": "ALJ Initial Decision",
+      "date": "2025-11-25",
+      "citation": "193 FERC \u00b6 63,028",
+      "institution": "Public Utilities Commission of the State of California et al. v. Sellers of Long-Terms Contracts to the California Department of Water Resources",
+      "library": "Electric",
+      "title": "EL02-60-018 ALJ Initial Decision 193 FERC \u00b6 63,028",
+      "sourceUrl": "https://elibrary.ferc.gov/eLibrary/docinfo?accession_number=20251125-3026",
+      "bodyChars": 560316
+    }
+  ]
+}
